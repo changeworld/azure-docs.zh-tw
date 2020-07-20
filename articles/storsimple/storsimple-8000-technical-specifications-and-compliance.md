@@ -14,16 +14,17 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
-ms.openlocfilehash: b36d721896bd7b4f95d831eded500a96969937c5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 061194422a8c1bc449dbef0c4f04bb8e1db10dea
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60631884"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "68965279"
 ---
 # <a name="technical-specifications-and-compliance-for-the-storsimple-device"></a>適用於 StorSimple 裝置的技術規格和相容性
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
+
+[!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
 
 Microsoft Azure StorSimple 裝置的硬體元件會遵循本文中概述的技術規格與法規標準。 技術規格描述電源與冷卻模組 (PCM)、磁碟機、儲存體容量及機箱。 相容性資訊則涵蓋國際標準、安全性和排放量，以及連接纜線等資訊。
 
@@ -37,14 +38,14 @@ EBOD 機箱使用 580 W PCM，而主要機箱會使用 764 W PCM。 下表列出
 | --- | --- | --- |
 | 最大輸出電力 |580 W |764 |
 | 頻率 |50/60 Hz |50/60 Hz |
-| 選取電壓範圍 |自動設定範圍：90 – 264 V AC，ac、47/63 Hz |自動設定範圍：90-264 V AC，ac、47/63 Hz |
+| 選取電壓範圍 |自動設定範圍：90 - 264 V AC、47/63 Hz |自動設定範圍：90 - 264 V AC、47/63 Hz |
 | 最大瞬間電流 |20 A |20 A |
 | 功率因素校正 |> 95% 額定輸入電壓 |> 95% 額定輸入電壓 |
 | 諧波 |符合 EN61000-3-2 |符合 EN61000-3-2 |
 | 輸出 |5V 待機電壓 \@ 2.0 A |5V 待機電壓 \@ 2.7 A |
 | +5V \@ 42 A |+5V \@ 40 A | |
 | +12V \@ 38 A |+12V \@ 38 A | |
-| 隨插即用 |是 |是 |
+| 隨插即用 |是 |Yes |
 | 開關和 LED |AC ON/OFF 開關和四個狀態指示器 LED |AC ON/OFF 開關和六個狀態指示器 LED |
 | 機箱冷卻 |具有變動風扇速度控制的軸流散熱風扇 |具有變動風扇速度控制的軸流散熱風扇 |
 
@@ -81,7 +82,7 @@ StorSimple 裝置混合搭載 8100 及 8600 的硬碟與固態磁碟機。 8100 
 | 可用容量總計* |~ 15 TB |~ 38 TB |
 | 解決方案的最大容量 (含雲端) |200 TB |500 TB |
 
-<sup>* </sup>- *可用的容量總計包括可供資料、中繼資料及緩衝區使用的容量。您可以在 8100 裝置上佈建最多 8.5 TB 的本機固定磁碟區，或者在較大的 8600 裝置上佈建最多 22.5 TB 的磁碟區。如需詳細資訊，請移至 [StorSimple 本機固定磁碟區](storsimple-8000-local-volume-faq.md)。*
+<sup>* </sup>- *可用的容量總計包括可供資料、中繼資料和緩衝區使用的容量。您可以在8100裝置上布建固定在本機的磁片區，最高可達 8.5 TB，或在較大的8600裝置上布建到 22.5 TB如需詳細資訊，請移至[StorSimple 本機固定磁片](storsimple-8000-local-volume-faq.md)區。*
 
 ## <a name="enclosure-dimensions-and-weight-specifications"></a>機箱尺寸和重量規格
 
@@ -104,7 +105,7 @@ StorSimple 裝置混合搭載 8100 及 8600 的硬碟與固態磁碟機。 8100 
 
 視設定而定，完全裝載的主要機箱重量從 21 至 33 公斤，需要兩個人才能搬動。
 
-| 機箱 | 重量 |
+| 機箱 | Weight |
 | --- | --- |
 | 最大重量 (取決於設定) |30 kg - 33 kg |
 | 空的 (未裝入磁碟機) |21 - 23 kg |
@@ -149,8 +150,8 @@ StorSimple 裝置混合搭載 8100 及 8600 的硬碟與固態磁碟機。 8100 
 
 您的 Microsoft Azure StorSimple 裝置符合下列安全分級：
 
-* 系統產品類型核可：UL、 cUL、 CE
-* 安全合規性：UL 60950 60950、IEC EN 60950
+* 系統產品類型核可：UL、cUL、CE
+* 安全法規遵循：UL 60950、IEC 60950、EN 60950
 
 ## <a name="emc-compliance"></a>EMC 法規遵循
 
@@ -160,8 +161,8 @@ StorSimple 裝置混合搭載 8100 及 8600 的硬碟與固態磁碟機。 8100 
 
 此裝置符合傳導和輻射放射性層級的 EMC 標準。
 
-* 進行放射性限制層級：CFR 47 Part 15B 類別 A EN55022 類別 A CISPR 類別 A
-* 輻射放射性限制層級：CFR 47 Part 15B 類別 A EN55022 類別 A CISPR 類別 A
+* 傳導放射性限制層級：CFR 47 Part 15B Class A EN55022 Class A CISPR Class A
+* 輻射放射性限制層級：CFR 47 Part 15B Class A EN55022 Class A CISPR Class A
 
 ### <a name="harmonics-and-flicker"></a>諧波和變動
 
@@ -173,7 +174,7 @@ StorSimple 裝置混合搭載 8100 及 8600 的硬碟與固態磁碟機。 8100 
 
 ## <a name="ac-power-cord-compliance"></a>AC 電源線相容性
 
-插頭和完整電源線組件必須符合適用於使用裝置之國家或地區的標準，而且必須具有該國家或地區可接受的安全核可。 下表列出適用於美國和歐洲的標準。
+插頭和完整電源線元件必須符合適用于使用裝置之國家/地區的標準，而且必須具有該國家/地區可接受的安全核准。 下表列出適用於美國和歐洲的標準。
 
 ### <a name="ac-power-cords---usa-must-be-nrtl-listed"></a>AC 電源線 - 美國 (必須由 NRTL 列名)
 

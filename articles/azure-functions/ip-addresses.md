@@ -1,20 +1,13 @@
 ---
 title: Azure 中的 IP 位址 中的 IP 位址
 description: 了解如何尋找函式應用程式的輸入和輸出 IP 位址，以及造成其變更的原因。
-services: functions
-documentationcenter: ''
-author: ggailey777
-manager: jeconnoc
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/03/2018
-ms.author: glenga
-ms.openlocfilehash: 83e5a15d8a7f9c01f6a180ebceb715600b8a39db
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: bfd2d573e0a1c78d0ef4c68be224f92e8f689f62
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61035848"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80656775"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>Azure 中的 IP 位址 中的 IP 位址
 
@@ -33,10 +26,10 @@ IP 位址與函式應用程式相關聯，而非與個別函式相關聯。 傳�
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 2. 巡覽至函式應用程式。
-3. 選取 [平台功能]。
-4. 選取 [屬性]，以及 [虛擬 IP 位址] 之下的輸入 IP 位址。
+3. 選取 [平台功能]****。
+4. 選取 [屬性]****，以及 [虛擬 IP 位址]**** 之下的輸入 IP 位址。
 
-## <a name="find-outbound-ip-addresses"></a>函式應用程式輸出 IP 位址
+## <a name="function-app-outbound-ip-addresses"></a><a name="find-outbound-ip-addresses"></a>函式應用程式輸出 IP 位址
 
 每個函式應用程式都有一組可用的輸出 IP 位址。 任何來自應用程式的輸出連線 (例如連往後端資料庫) 都會使用其中一個可用的輸出 IP 位址作為來源 IP 位址。 您事先不知道指定的連線會使用哪個 IP 位址。 基於這個理由，您的後端服務必須對函式應用程式的所有輸出 IP 位址開啟其防火牆。
 
@@ -84,17 +77,17 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 }
 ```
 
- 如需有關此檔案何時更新和 IP 位址何時變更的資訊，請展開[下載中心頁面](https://www.microsoft.com/en-us/download/details.aspx?id=56519)的 [詳細資料] 區段。
+ 如需有關此檔案何時更新和 IP 位址何時變更的資訊，請展開[下載中心頁面](https://www.microsoft.com/en-us/download/details.aspx?id=56519)的 [詳細資料]**** 區段。
 
-## <a name="inbound-ip-address-changes"></a>輸入 IP 位址變更
+## <a name="inbound-ip-address-changes"></a><a name="inbound-ip-address-changes"></a>輸入 IP 位址變更
 
 當您執行下列動作時，輸入 IP 位址**可能**會變更：
 
 - 刪除函式應用程式，並在不同資源群組中重建。
 - 刪除資源群組和區域組合中的最後一個函式應用程式，並予以重建。
-- 刪除 SSL 繫結，例如在[憑證更新](../app-service/app-service-web-tutorial-custom-ssl.md#renew-certificates)期間。
+- 刪除 TLS 系結，例如在[憑證更新](../app-service/configure-ssl-certificate.md#renew-certificate)期間。
 
-當函式應用程式在[取用方案](functions-scale.md#consumption-plan)中執行時，如果您尚未採取任何動作 (例如所列的動作)，輸入 IP 位址也可能會改變。
+當您的函式應用程式在取用[方案](functions-scale.md#consumption-plan)中執行時，即使您未採取任何動作（如[上方所列](#inbound-ip-address-changes)的動作），輸入 IP 位址也可能會變更。
 
 ## <a name="outbound-ip-address-changes"></a>輸出 IP 位址變更
 
@@ -103,7 +96,7 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 * 採取任何可變更輸入 IP 位址的動作。
 * 變更您的 App Service 方案定價層。 您的應用程式可使用的所有可能輸出 IP 位址清單 (適用於所有定價層) 位於 `possibleOutboundIPAddresses` 屬性中。 請參閱[尋找輸出 IP](#find-outbound-ip-addresses)。
 
-當函式應用程式在[取用方案](functions-scale.md#consumption-plan)中執行時，如果您尚未採取任何動作 (例如所列的動作)，輸出 IP 位址也可能會改變。
+當您的函式應用程式在取用[方案](functions-scale.md#consumption-plan)中執行時，即使您未採取任何動作（如[上面所列](#inbound-ip-address-changes)），輸出 IP 位址也可能會變更。
 
 若要故意強制輸出 IP 位址變更：
 
@@ -123,8 +116,8 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 2. 巡覽至函式應用程式。
-3. 選取 [概觀] 索引標籤。
-4. App Service 方案層會出現在 **App Service 方案/定價層**之下。 App Service 環境定價層為 [隔離]。
+3. 選取 [概觀]  索引標籤。
+4. App Service 方案層會出現在 **App Service 方案/定價層**之下。 App Service 環境定價層為 [隔離]****。
  
 或者，您可以使用 [Cloud Shell](../cloud-shell/quickstart.md)：
 

@@ -1,20 +1,18 @@
 ---
 title: 包含檔案
 description: 包含檔案
-services: functions
 author: ggailey777
-manager: jeconnoc
-ms.service: functions
+ms.service: azure-functions
 ms.topic: include
 ms.date: 08/15/2018
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: a8ef570674e2abea3337e5278810d583c7b721a6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1d47e8e29f6114c601d86f73bf3c34023ffe9c40
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61032413"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "76279409"
 ---
 有數種方式可供您新增、更新和刪除函式應用程式設定：
 

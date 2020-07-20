@@ -1,27 +1,25 @@
 ---
-title: 將監視和診斷新增到 Azure 虛擬機器 | Microsoft Docs
-description: 使用 Azure 资源管理器模板新建具有 Azure 诊断扩展的 Windows 虚拟机。
+title: 將監視與診斷新增到 Azure 虛擬機器
+description: 使用 Azure Resource Manager 範本建立具有 Azure 診斷延伸模組的新 Windows 虛擬機器。
 services: virtual-machines-windows
 documentationcenter: ''
-author: sbtron
-manager: jeconnoc
+author: mimckitt
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 8cde8fe7-977b-43d2-be74-ad46dc946058
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 05/31/2017
-ms.author: saurabh
+ms.author: mimckitt
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 00b4a145da9104cab410c5a07f6d7ec5ded5c45d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: d100f054da5f82bc4dea51e054a28cca07f5de7b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60800008"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81258825"
 ---
 # <a name="use-monitoring-and-diagnostics-with-a-windows-vm-and-azure-resource-manager-templates"></a>使用 Windows VM 和 Azure Resource Manager 範本的監視和診斷
 Azure 診斷擴充功能會在以 Windows 為基礎的 Azure 虛擬機器上提供監視和診斷功能。 您可以將擴充功能納入為 Azure Resource Manager 範本的一部分，在虛擬機器上啟用這些功能。 請參閱 [使用 VM 延伸模組編寫 Azure 資源管理員範本](../windows/template-description.md#extensions) ，以取得將任何延伸模組納入為虛擬機器範本一部分的詳細資訊。 本文描述如何將 Azure 診斷延伸模組新增至 Windows 虛擬機器範本。  
@@ -63,7 +61,7 @@ Azure 診斷擴充功能會在以 Windows 為基礎的 Azure 虛擬機器上提�
 ]
 ```
 
-另一個常見的慣例是在範本的根資源節點新增擴充功能組態，而不是在虛擬機器的資源節點底下定義。 使用這個方法時，您必須以「名稱」和「類型」值明確指定擴充功能與虛擬機器之間的階層式關係。 例如︰ 
+另一個常見的慣例是在範本的根資源節點新增擴充功能組態，而不是在虛擬機器的資源節點底下定義。 使用這個方法時，您必須以「名稱」和「類型」值明確指定擴充功能與虛擬機器之間的階層式關係。 例如： 
 
 ```json
 "name": "[concat(variables('vmName'),'Microsoft.Insights.VMDiagnosticsSettings')]",
@@ -168,7 +166,7 @@ PT1M 及 PT1H 的 MetricAggregation 值分別表示超過一分鐘的彙總及�
 
 每個 WADMetrics 資料表都包含下列資料行：
 
-* **PartitionKey**：分割區索引鍵是以 *resourceID* 值作為基礎所建構，可唯一識別 VM 資源。 例如：`002Fsubscriptions:<subscriptionID>:002FresourceGroups:002F<ResourceGroupName>:002Fproviders:002FMicrosoft:002ECompute:002FvirtualMachines:002F<vmName>`  
+* **PartitionKey**：分割區索引鍵是以 *resourceID* 值作為基礎所建構，可唯一識別 VM 資源。 例如： `002Fsubscriptions:<subscriptionID>:002FresourceGroups:002F<ResourceGroupName>:002Fproviders:002FMicrosoft:002ECompute:002FvirtualMachines:002F<vmName>`  
 * **RowKey**：遵循下列格式：`<Descending time tick>:<Performance Counter Name>`。 遞減的時間刻度計算是最大時間刻度減去開始彙總期間時間。 例如，如果取樣期間是從 2015 年 11 月 10 日 00:00Hrs UTC 開始，則計算就是：`DateTime.MaxValue.Ticks - (new DateTime(2015,11,10,0,0,0,DateTimeKind.Utc).Ticks)`。 對於記憶體可用位元組的效能計數器，資料列索引鍵看起來會像：`2519551871999999999__:005CMemory:005CAvailable:0020Bytes`
 * **CounterName**：效能計數器的名稱。 這符合 xml 設定中定義的 *counterSpecifier* 。
 * **Maximum**：彙總期間效能計數器的最大值。

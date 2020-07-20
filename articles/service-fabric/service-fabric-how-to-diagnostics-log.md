@@ -1,25 +1,16 @@
 ---
-title: 從 Azure 或獨立叢集中的 .NET Service Fabric 應用程式產生記錄事件
+title: 從 .NET 應用程式產生記錄事件
 description: 了解如何為裝載在 Azure 叢集或獨立叢集上的 .NET Service Fabric 應用程式新增記錄功能。
-services: service-fabric
-documentationcenter: .net
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/27/2018
 ms.author: srrengar
-ms.openlocfilehash: d1b3dc25dd9bda9d7f9d9152c2a94cea8321f5cf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: caa6d4fc27373e524f4c492635cffbf8b735add8
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60482602"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247212"
 ---
 # <a name="add-logging-to-your-service-fabric-application"></a>為 Service Fabric 應用程式新增記錄功能
 
@@ -105,8 +96,8 @@ internal sealed class ServiceEventSource : EventSource
 
 ASP.NET Core 記錄 ([Microsoft.Extensions.Logging NuGet 套件](https://www.nuget.org/packages/Microsoft.Extensions.Logging)) 是一個為應用程式提供標準記錄 API 的記錄架構。 您可以在 ASP.NET Core 記錄中插入對其他記錄後端的支援。 這可針對所處理應用程式中的記錄提供各種支援，而無須變更太多程式碼。
 
-1. 將 **Microsoft.Extensions.Logging** NuGet 套件新增至您要檢測的專案。 此外，也新增任何提供者套件。 如需詳細資訊，請參閱 [ASP.NET Core 中的記錄](https://docs.microsoft.com/aspnet/core/fundamentals/logging)。
-2. 針對 **Microsoft.Extensions.Logging**，將 **using** 指示詞新增至您的服務檔案。
+1. 將 **Microsoft.Extensions.Logging** NuGet 套件新增至您要檢測的專案。 此外，也新增任何提供者套件。 如需詳細資訊，請參閱 [ASP.NET Core 中的記錄](/aspnet/core/fundamentals/logging)。
+2. 將適用于**Microsoft Extensions**的**using**指示詞新增至您的服務檔案。
 3. 在服務類別內定義私用變數。
 
    ```csharp
@@ -170,19 +161,9 @@ ASP.NET Core 記錄 ([Microsoft.Extensions.Logging NuGet 套件](https://www.nug
 5. 檢測程式碼，就如同在沒有 SeriLog 的情況下使用 ASP.NET Core 一樣。
 
    >[!NOTE]
-   >我們建議您「不要」在上述範例中使用靜態 `Log.Logger`。 Service Fabric 可以在單一處理序內裝載相同服務類型的多個執行個體。 如果您使用靜態 `Log.Logger`，屬性豐富器的最後一個寫入器會顯示所有執行中執行個體的值。 這是為什麼 _logger 變數是服務類別私人成員變數的其中一個原因。 此外，您還必須讓 `_logger` 可供各個服務可能用到的通用程式碼使用。
+   >我們建議您「不要」** 在上述範例中使用靜態 `Log.Logger`。 Service Fabric 可以在單一處理序內裝載相同服務類型的多個執行個體。 如果您使用靜態 `Log.Logger`，屬性豐富器的最後一個寫入器會顯示所有執行中執行個體的值。 這是為什麼 _logger 變數是服務類別私人成員變數的其中一個原因。 此外，您還必須讓 `_logger` 可供各個服務可能用到的通用程式碼使用。
 
 ## <a name="next-steps"></a>後續步驟
 
 - 深入了解 [Service Fabric 中的應用程式監視](service-fabric-diagnostics-event-generation-app.md)。
 - 深入了解如何使用 [EventFlow](service-fabric-diagnostics-event-aggregation-eventflow.md) 和 [Microsoft Azure 診斷](service-fabric-diagnostics-event-aggregation-wad.md)進行記錄。
-
-
-
-
-
-
-
-
-
-

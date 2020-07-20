@@ -1,0 +1,133 @@
+### YamlMime:Landing
+title: ARM 範本文件
+summary: Azure Resource Manager 範本是 JavaScript 物件標記法 (JSON) 檔案，定義了專案的基礎結構和組態。
+metadata:
+  title: ARM 範本文件
+  description: 了解如何開發 Azure Resource Manager 範本，並使用它們來部署 Azure 資源
+  services: azure-resource-manager
+  ms.service: azure-resource-manager
+  ms.subservice: templates
+  ms.topic: landing-page
+  ms.collection: na
+  author: mumian
+  ms.author: jgao
+  ms.date: 07/07/2020
+  ms.openlocfilehash: 4a40b64c72946c84d034e13f3a22b7cda2b9c6aa
+  ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 07/08/2020
+  ms.locfileid: "86118863"
+landingContent:
+- title: 關於 ARM 範本
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是範本？
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: 最佳作法
+      url: template-best-practices.md
+    - text: 常見問題集
+      url: frequently-asked-questions.md
+    - text: 部署模式
+      url: deployment-modes.md
+    - text: 連結的範本
+      url: linked-templates.md
+  - linkListType: video
+    links:
+    - text: 建置 2020 簡報
+      url: https://mybuild.microsoft.com/sessions/82984db4-37a4-4ed3-bf8b-13298841ed18?source=sessions
+- title: 開始使用
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 建立範本 - 入口網站
+      url: quickstart-create-templates-use-the-portal.md
+    - text: 建立範本 - VS Code
+      url: quickstart-create-templates-use-visual-studio-code.md
+    - text: 建立範本 - Visual Studio
+      url: create-visual-studio-deployment-project.md
+  - linkListType: tutorial
+    links:
+    - text: 初學者教學課程
+      url: template-tutorial-create-first-template.md
+    - text: 部署多個執行個體
+      url: template-tutorial-create-multiple-instances.md
+    - text: 設定部署順序
+      url: template-tutorial-create-templates-with-dependent-resources.md
+    - text: 整合金鑰保存庫
+      url: template-tutorial-use-key-vault.md
+- title: 開發範本
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 使用函式
+      url: template-functions.md
+    - text: 定義參數
+      url: template-parameters.md
+    - text: 定義變數
+      url: template-variables.md
+    - text: 定義資源
+      url: template-syntax.md#resources
+    - text: 定義輸出
+      url: template-outputs.md
+  - linkListType: reference
+    links:
+    - text: 範本檔案語法
+      url: template-syntax.md
+    - text: Azure 快速入門範本
+      url: https://azure.microsoft.com/resources/templates/
+- title: 部署範本
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: PowerShell
+      url: deploy-powershell.md
+    - text: Azure CLI
+      url: deploy-cli.md
+    - text: 入口網站
+      url: deploy-portal.md
+    - text: REST API
+      url: deploy-rest.md
+    - text: 假設部署
+      url: template-deploy-what-if.md
+- title: 限域部署
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 訂用帳戶
+      url: deploy-to-subscription.md
+    - text: 管理群組
+      url: deploy-to-management-group.md
+    - text: 租用戶
+      url: deploy-to-tenant.md
+- title: 探索參考內容
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 範本參考
+      url: /azure/templates/
+    - text: REST API
+      url: /rest/api/resources/
+    - text: Azure PowerShell
+      url: /powershell/module/az.resources
+    - text: Azure CLI
+      url: /cli/azure/resource
+    - text: .NET
+      url: /dotnet/api/microsoft.azure.management.resourcemanager
+    - text: Java
+      url: /java/api/com.microsoft.azure.management.resources
+    - text: Python
+      url: /python/api/overview/azure/resources?view=azure-python
+- title: 管理範本
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 匯出範本
+      url: export-template-portal.md
+    - text: CI/CD
+      url: add-template-to-azure-pipelines.md
+    - text: 檢視部署歷程記錄
+      url: deployment-history.md

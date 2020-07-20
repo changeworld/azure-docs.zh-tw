@@ -1,26 +1,17 @@
 ---
-title: 教學課程 - 移除在 Azure Service Fabric Mesh 中執行的應用程式 | Microsoft Docs
+title: 教學課程 - 移除 Azure Service Fabric Mesh 中所執行的應用程式
 description: 在本教學課程中，了解如何移除在 Service Fabric Mesh 中執行的應用程式及刪除資源。
-services: service-fabric-mesh
-documentationcenter: .net
 author: dkkapur
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/11/2019
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: adc5b96f29f610c63bcfa24a3b5f761c04d41d5b
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 4780f81d23f0183837d2aafb9a8e5e2c41faa1cf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339664"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "75351802"
 ---
 # <a name="tutorial-remove-an-application-and-resources"></a>教學課程：移除應用程式和資源
 
@@ -41,7 +32,7 @@ ms.locfileid: "58339664"
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 開始進行本教學課程之前：
 

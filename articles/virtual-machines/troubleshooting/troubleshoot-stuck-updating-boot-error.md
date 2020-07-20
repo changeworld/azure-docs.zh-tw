@@ -4,28 +4,25 @@ description: 了解如何在 Azure VM 的啟動程序停滯於 Windows Update �
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: v-jesits
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/09/2018
 ms.author: genli
-ms.openlocfilehash: cff1577eacd0af86d3ad1c99e1eb2164b64318c4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a41c1f634c030106dd6936676010fea32da8d436
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60443767"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86084013"
 ---
 # <a name="azure-vm-startup-is-stuck-at-windows-update"></a>Azure VM 啟動程序停滯於 Windows Update
 
 本文將協助您解決虛擬機器 (VM) 在啟動期間停滯於 Windows Update 階段的問題。 
 
-> [!NOTE] 
-> Azure 針對建立和使用資源方面，有二種不同的的部署模型：[资源管理器部署模型和经典部署模型](../../azure-resource-manager/resource-manager-deployment-model.md)。 本文涵蓋內容包括如何使用 Resource Manager 部署模型。 建議您針對新的部署使用此模型，而不要使用傳統部署模型。
 
 ## <a name="symptom"></a>徵狀
 
@@ -39,26 +36,31 @@ ms.locfileid: "60443767"
 - 套用更新作業 ##### (共 ##### 項) 時發生嚴重錯誤 <錯誤碼> ($$...)
 
 
-## <a name="solution"></a>解決方法
+## <a name="solution"></a>解決方案
 
 執行更新程序可能需要一些時間，視要更新或回復的更新數而定。 請將 VM 保持在此狀態 8 小時。 如果 VM 在這段期間後仍處於此狀態，請從 Azure 入口網站重新啟動 VM，並確認是否正常啟動。 如果此步驟無法解決問題，請嘗試下列解決方案。
 
 ### <a name="remove-the-update-that-causes-the-problem"></a>移除造成問題的更新
 
 1. 擷取受影響虛擬機器作業系統磁碟的快照集作為備份。 如需詳細資訊，請參閱[擷取磁碟快照集](../windows/snapshot-copy-managed-disk.md)。 
-2. [將 OS 磁碟連結至復原 VM](troubleshoot-recovery-disks-portal-windows.md)。
+2. [將 OS 磁片連結至復原 VM](troubleshoot-recovery-disks-portal-windows.md)。
 3. 當 OS 磁碟連結至復原 VM 後，請執行 **diskmgmt.msc** 來開啟磁碟管理，並確認連結的磁碟是**連線**狀態。 記下為已連結而包含 \windows 資料夾的 OS 磁碟指派的磁碟機代號。 如果該磁碟已加密，請先將其解密，再繼續進行本文件中的後續步驟。
 
 4. 開啟提升權限的命令提示字元執行個體 (以系統管理員身分執行)。 執行下列命令以取得連結的 OS 磁碟上包含的更新套件清單：
 
-        dism /image:<Attached OS disk>:\ /get-packages > c:\temp\Patch_level.txt
+    ```console
+    dism /image:<Attached OS disk>:\ /get-packages > c:\temp\Patch_level.txt
+    ```
 
     例如，若連結的 OS 磁碟是磁碟機 F，請執行下列命令：
 
-        dism /image:F:\ /get-packages > c:\temp\Patch_level.txt
-5. 開啟 C:\temp\Patch_level.txt 檔案，然後由下至上閱讀。 找出處於 [安裝擱置中] 或 [解除安裝擱置中] 狀態的更新。  以下是更新狀態的範例：
+    ```console
+    dism /image:F:\ /get-packages > c:\temp\Patch_level.txt
+    ```
 
-     ```
+5. 開啟 C:\temp\Patch_level.txt 檔案，然後由下至上閱讀。 找出處於 [安裝擱置中]**** 或 [解除安裝擱置中]**** 狀態的更新。  以下是更新狀態的範例：
+
+    ```
     Package Identity : Package_for_RollupFix~31bf3856ad364e35~amd64~~17134.345.1.5
     State : Install Pending
     Release Type : Security Update

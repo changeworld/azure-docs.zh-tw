@@ -2,25 +2,22 @@
 title: Azure 上的 Kubernetes 教學課程 - 準備應用程式
 description: 在本 Azure Kubernetes Service (AKS) 教學課程中，您將了解如何透過 Docker Compose 來準備和建置後續可部署至 AKS 的多容器應用程式。
 services: container-service
-author: iainfoulds
-ms.service: container-service
 ms.topic: tutorial
 ms.date: 12/19/2018
-ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 9212e065ff7f6b0e3df1b90296f54159762bdaf9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: feab8495536b3306fd96793323d51644570b401b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58002019"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "77593155"
 ---
 # <a name="tutorial-prepare-an-application-for-azure-kubernetes-service-aks"></a>教學課程：準備 Azure Kubernetes Service (AKS) 的應用程式
 
 在本教學課程 (七個章節的第一部分) 中，多容器應用程式已準備好用於 Kubernetes。 使用現有的開發工具 (例如 Docker Compose) 在本機建置和測試應用程式。 您會了解如何：
 
 > [!div class="checklist"]
-> * 從 GitHub 複製範例應用程式來源
+> * 從 GitHub 複製應用程式來源的範例
 > * 從範例應用程式來源建立容器映像
 > * 在本機 Docker 環境中測試多容器應用程式
 
@@ -40,9 +37,9 @@ Azure Cloud Shell 不含完成這些教學課程中各個步驟所需的 Docker 
 
 ## <a name="get-application-code"></a>取得應用程式程式碼
 
-本教學課程中使用的範例應用程式是基本投票應用程式。 應用程式是由前端 Web 元件和後端 Redis 執行個體所組成。 Web 元件會封裝至自訂容器映像。 Redis 執行個體會從 Docker Hub 使用未修改的映像。
+本教學課程中使用的應用程式的範例是基本投票應用程式。 應用程式是由前端 Web 元件和後端 Redis 執行個體所組成。 Web 元件會封裝至自訂容器映像。 Redis 執行個體會從 Docker Hub 使用未修改的映像。
 
-使用 [git][] 將範例應用程式複製到您的開發環境：
+使用 [git][] 將應用程式的範例複製到您的開發環境：
 
 ```console
 git clone https://github.com/Azure-Samples/azure-voting-app-redis.git
@@ -66,7 +63,7 @@ cd azure-voting-app-redis
 docker-compose up -d
 ```
 
-完成時，使用 [docker images][docker-images] 命令來查看所建立的映像。 已下載或建立三個映像。 *azure-vote-front* 映像包含前端應用程式，並使用 `nginx-flask` 映像作為基礎映像。 `redis` 映像可用來啟動 Redis 執行個體。
+完成時，使 [docker images][docker-images] 命令來查看所建立的映像。 已下載或建立三個映像。 *azure-vote-front* 映像包含前端應用程式，並使用 `nginx-flask` 映像作為基礎映像。 `redis` 映像可用來啟動 Redis 執行個體。
 
 ```
 $ docker images
@@ -95,7 +92,7 @@ b68fed4b66b6        redis             "docker-entrypoint..."   57 seconds ago   
 
 ## <a name="clean-up-resources"></a>清除資源
 
-應用程式的功能已完成驗證，因此可以停止並移除執行中的容器。 請勿刪除容器映像 - 在下一個教學課程中，會將 azure-vote-front 映像上傳至 Azure Container Registry 執行個體。
+應用程式的功能已完成驗證，因此可以停止並移除執行中的容器。 請勿刪除容器映像 - 在下一個教學課程中，會將 azure-vote-front  映像上傳至 Azure Container Registry 執行個體。
 
 使用 [docker-compose down][docker-compose-down] 命令停止並移除容器執行個體和資源：
 
@@ -103,14 +100,14 @@ b68fed4b66b6        redis             "docker-entrypoint..."   57 seconds ago   
 docker-compose down
 ```
 
-本機應用程式已移除後，您會有包含 Azure 投票應用程式的 Docker 映像 *azure-front-front*，可供下一個教學課程使用。
+本機應用程式已移除後，您會有包含 Azure 投票應用程式的 Docker 映像 azure-vote-front  ，可供下一個教學課程使用。
 
 ## <a name="next-steps"></a>後續步驟
 
 在本教學課程中，應用程式已經過測試並已建立應用程式的容器映像。 您已了解如何︰
 
 > [!div class="checklist"]
-> * 從 GitHub 複製範例應用程式來源
+> * 從 GitHub 複製應用程式來源的範例
 > * 從範例應用程式來源建立容器映像
 > * 在本機 Docker 環境中測試多容器應用程式
 

@@ -1,63 +1,138 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: 表單辨識器文件
+summary: Azure 表單辨識器是一項認知服務，其使用機器學習技術來識別和擷取表單文件中的索引鍵值組和資料表資料。 然後，它會輸出在原始檔中包含關聯性的結構化資料。 非監督式學習可讓模型了解版面配置和欄位資料，而不需手動資料標記或密集編碼。 您也可以使用手動標記的資料進行監督式學習。 以標記的資料定型的模型可以執行得更好，而且可以處理更複雜的文件。
 metadata:
-  title: API 文件 - 表單辨識器 - Azure 認知服務 | Microsoft Docs
-  description: 了解如何使用表單辨識器，以智慧方式從表單文件中擷取索引鍵值資料。
+  title: 表單辨識器文件 - 快速入門、教學課程和 API 參考 - Azure 認知服務 | Microsoft Docs
+  description: Azure 表單辨識器是一項認知服務，其使用機器學習技術來識別和擷取表單文件中的索引鍵值組和資料表資料。 然後，它會輸出在原始檔中包含關聯性的結構化資料。 非監督式學習可讓模型了解版面配置和欄位資料，而不需手動資料標記或密集編碼。 您也可以使用手動標記的資料進行監督式學習。 以標記的資料定型的模型可以執行得更好，而且可以處理更複雜的文件。
   services: cognitive-services
-  author: PatrickFarley
-  manager: cgronlun
   ms.service: cognitive-services
-  ms.subservice: form-recognizer
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: forms-recognizer
   ms.topic: landing-page
-  ms.date: 04/16/2019
+  author: PatrickFarley
   ms.author: pafarley
-ms.custom: seodec18
-abstract:
-  description: Azure 表單辨識器是一項認知服務，其使用機器學習技術來識別和擷取表單文件中的索引鍵值組和資料表資料。 然後，它會輸出在原始檔中包含關聯性的結構化資料。 非監督式學習可讓模型了解欄位與項目之間的配置和關聯性，而不需要手動資料標記或密集編碼和維護。
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/cognitive-services/form-recognizer/overview
-            html: <p>了解表單辨識器。</p>
-            image:
-              src: ../media/index/i_overview.svg
-            title: 什麼是表單辨識器？
-          - href: /azure/cognitive-services/form-recognizer/form-recognizer-container-howto
-            html: <p>了解如何使用表單辨識器容器來剖析表單和資料表資料。</p>
-            image:
-              src: ../media/index/i_get-started.svg
-            title: 安裝及執行容器
-  - title: 5 分鐘快速入門
-    items:
-      - type: paragraph
-        text: 定型表單辨識器模型，並使用下列各項擷取表單中的資料：
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: ./media/logos/logo-curl.svg
-            text: cURL
-            href: quickstarts/curl-train-extract.md
-          - image:
-              src: ./media/logos/logo-python.svg
-            text: Python
-            href: quickstarts/python-train-extract.md
-  - title: 參考
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: API
-            html: '<p><a href="https://aka.ms/form-recognizer/api">表單辨識器 API</a></p>'
-          - title: PowerShell
-            html: '<p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
-          - title: CLI
-            html: '<p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az-cognitiveservices-list">Azure CLI</a></p>'
+  ms.date: 09/05/2019
+  ms.openlocfilehash: f90782dc2edc9ce21b82c6b18e4efe014d160c20
+  ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 07/08/2020
+  ms.locfileid: "86086733"
+landingContent:
+- title: 關於表單辨識器
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是表單辨識器？
+      url: overview.md
+  - linkListType: whats-new
+    links:
+    - text: 表單辨識器的新功能
+      url: whats-new.md
+  - linkListType: video
+    links:
+    - text: AI 驅動的流程自動化與表單辨識器
+      url: https://channel9.msdn.com/Shows/AI-Show/Learn-about-AI-powered-robotic-process-automation-with-Form-Recognizer
+- title: 定型自訂模型和擷取資料
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 使用 .NET SDK
+      url: quickstarts/client-library.md?pivots=programming-language-csharp
+    - text: 使用 Python SDK
+      url: quickstarts/client-library.md?pivots=programming-language-python
+    - text: 使用 Java SDK
+      url: quickstarts/client-library.md?pivots=programming-language-java
+    - text: 使用 JavaScript SDK
+      url: quickstarts/client-library.md?pivots=programming-language-javascript
+    - text: 使用 REST API (cURL)
+      url: quickstarts/curl-train-extract.md
+  - linkListType: tutorial
+    links:
+    - text: 使用表單辨識器搭配 Logic Apps
+      url: tutorial-form-recognizer-with-logic-apps.md
+- title: 建置訓練資料集
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 建置訓練資料集
+      url: build-training-data-set.md
+- title: 使用標籤來定型自訂模型
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 標記的資料
+      url: overview.md#train-with-labels
+  - linkListType: quickstart
+    links:
+    - text: 使用範例標籤工具進行定型
+      url: quickstarts/label-tool.md
+    - text: 使用 REST API 和 Python 以標籤進行定型
+      url: quickstarts/python-labeled-data.md
+- title: 從回條擷取資料
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 使用 .NET SDK
+      url: quickstarts/client-library.md?pivots=programming-language-csharp
+    - text: 使用 Python SDK
+      url: quickstarts/client-library.md?pivots=programming-language-python
+    - text: 使用 Java SDK
+      url: quickstarts/client-library.md?pivots=programming-language-java
+    - text: 使用 JavaScript SDK
+      url: quickstarts/client-library.md?pivots=programming-language-javascript
+    - text: 使用 REST API (cURL)
+      url: quickstarts/curl-train-extract.md
+    - text: 使用 REST API (cURL)
+      url: quickstarts/curl-receipts.md
+- title: 取得文字版面配置資訊
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 使用 .NET SDK
+      url: quickstarts/client-library.md?pivots=programming-language-csharp
+    - text: 使用 Python SDK
+      url: quickstarts/client-library.md?pivots=programming-language-python
+    - text: 使用 Java SDK
+      url: quickstarts/client-library.md?pivots=programming-language-java
+    - text: 使用 JavaScript SDK
+      url: quickstarts/client-library.md?pivots=programming-language-javascript
+    - text: 使用 REST API (cURL)
+      url: quickstarts/curl-train-extract.md
+    - text: 使用 REST API (Python)
+      url: quickstarts/python-layout.md
+- title: 使用容器
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: 安裝及執行容器
+      url: form-recognizer-container-howto.md
+  - linkListType: how-to-guide
+    links:
+    - text: 設定容器
+      url: form-recognizer-container-configuration.md
+  - linkListType: deploy
+    links:
+    - text: 使用容器執行個體
+      url: deploy-form-recognizer-on-container-instances.md
+- title: 參考
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 表單辨識器 API v2.0
+      url: https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm
+    - text: 表單辨識器 API v1.0
+      url: https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api/operations/AnalyzeWithCustomModel
+    - text: .NET SDK
+      url: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/formrecognizer
+    - text: Azure PowerShell
+      url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services
+    - text: Azure 命令列介面 (CLI)
+      url: https://docs.microsoft.com/cli/azure/cognitiveservices#az-cognitiveservices-list
+- title: 說明與意見反應
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: UserVoice
+      url: https://go.microsoft.com/fwlink/?linkid=2090535
+    - text: Stack Overflow
+      url: https://go.microsoft.com/fwlink/?linkid=2087186

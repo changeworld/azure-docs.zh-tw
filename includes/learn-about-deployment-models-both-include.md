@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 11/25/2018
 ms.author: cynthn
-ms.openlocfilehash: 29d84647b4e2601086a7a1a650ab19c321eedc2c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2077cfeda4385781e9a445697b7acda30d7ac403
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61405209"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "76020806"
 ---
 > [!NOTE]
-> Azure 針對建立和使用資源方面，有二種不同的的部署模型：[Resource Manager 和傳統](../articles/azure-resource-manager/resource-manager-deployment-model.md)。 本文將說明如何使用這兩個模型，但 Microsoft 建議大多數新的部署請使用 Resource Manager 模型。
+> Azure 有兩種不同的部署模型可用於建立及使用資源： [Resource Manager 和傳統](../articles/azure-resource-manager/management/deployment-models.md)。 本文將說明如何使用這兩個模型，但 Microsoft 建議大多數新的部署請使用 Resource Manager 模型。

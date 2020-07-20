@@ -1,19 +1,18 @@
 ---
 title: 修復 Azure 匯入/匯出匯入作業 - v1 | Microsoft Docs
 description: 了解如何修復使用 Azure 匯入/匯出服務建立和執行的匯入作業。
-author: muralikk
+author: twooley
 services: storage
 ms.service: storage
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/23/2017
-ms.author: muralikk
+ms.author: twooley
 ms.subservice: common
-ms.openlocfilehash: fda1d3d626c91ba984f08b96c79ab6a2fd2ec74b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: a5c0e9bf94a9953e107de148792af2e39f8bac24
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61477581"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85512287"
 ---
 # <a name="repairing-an-import-job"></a>修復匯入作業
 Microsoft Azure 匯入/匯出服務可能無法將某些檔案或某個檔案的部分複製到 Windows Azure Blob 服務。 部分的失敗原因包括︰  
@@ -32,15 +31,15 @@ Microsoft Azure 匯入/匯出服務可能無法將某些檔案或某個檔案的
   
 |||  
 |-|-|  
-|**/r:**<RepairFile\>|**必要。** 修复文件的路径。该文件用于跟踪修复进度，以及恢复已中断的修复。 每個磁碟機需要一個修復檔案，而且只能有一個。 當您啟動指定磁碟機的修復時，請傳入尚不存在之修復檔的路徑。 若要恢復中斷的修復，您應傳入現有修復檔案名稱。 始终必须指定与目标驱动器对应的修复文件。|  
-|**/logdir:**<LogDirectory\>|**選用。** 日志目录。 詳細資訊記錄檔會寫入至這個目錄。 如未指定記錄檔目錄，則會使用目前的目錄作為記錄檔目錄。|  
+|**/r：**<RepairFile\>|**必要。** 修復檔案的路徑，可追蹤修復進度，並可讓您繼續中斷的修復。 每個磁碟機需要一個修復檔案，而且只能有一個。 當您啟動指定磁碟機的修復時，請傳入尚不存在之修復檔的路徑。 若要恢復中斷的修復，您應傳入現有修復檔案名稱。 一律必須指定對應於目標磁碟機的修復檔。|  
+|**/logdir：**<LogDirectory\>|**選擇性.** 記錄檔目錄。 詳細資訊記錄檔會寫入至這個目錄。 如未指定記錄檔目錄，則會使用目前的目錄作為記錄檔目錄。|  
 |**/d:**<TargetDirectories\>|**必要。** 一或多個以分號分隔的目錄，其中包含所匯入的原始檔。 也可以使用匯入磁碟機，但如果有原始檔的替代位置可用，則非必要。|  
-|**/bk:**<BitLockerKey\>|**可选。** 如果您希望該工具解除鎖定原始檔案所在的加密磁碟機，您應指定 BitLocker 金鑰。|  
+|**/bk：**<BitLockerKey\>|**選擇性.** 如果您希望該工具解除鎖定原始檔案所在的加密磁碟機，您應指定 BitLocker 金鑰。|  
 |**/sn:**<StorageAccountName\>|**必要。** 匯入作業的儲存體帳戶名稱。|  
-|/sk:<StorageAccountKey\>|如果未指定 (且只有在未指定) 容器 SAS 時，才是**必要**參數。 匯入作業之儲存體帳戶的帳戶金鑰。|  
-|**/csas:**<ContainerSas\>|**必需** 的。 存取與匯入作業相關聯的 Blob 所用的容器 SAS。|  
-|**/CopyLogFile:**<DriveCopyLogFile\>|**必要。** 磁碟機複製記錄檔 (詳細資訊記錄檔或錯誤記錄檔) 的路徑。 此檔案是由 Windows Azure 匯入/匯出服務所產生，您可以從與作業相關聯的 blob 儲存體下載。 複製記錄檔包含所要修復之失敗 blob 或檔案的相關資訊。|  
-|**/PathMapFile:**<DrivePathMapFile\>|**選用。** 如果您在相同作業中匯入多個同名的檔案，則為可用來解決模稜兩可情形之文字檔的路徑。 第一次執行此工具時，它可以在此檔案中填入所有模稜兩可的名稱。 後續執行此工具時，會使用此檔案來解決模稜兩可情形。|  
+|**/sk:**<StorageAccountKey\>|未指定容器 SAS 時才**需要**。 匯入作業之儲存體帳戶的帳戶金鑰。|  
+|**/csas:**<ContainerSas\>|未指定儲存體帳戶金鑰時才**需要**。 存取與匯入作業相關聯的 Blob 所用的容器 SAS。|  
+|**/CopyLogFile：**<DriveCopyLogFile\>|**必要。** 磁碟機複製記錄檔 (詳細資訊記錄檔或錯誤記錄檔) 的路徑。 此檔案是由 Windows Azure 匯入/匯出服務所產生，您可以從與作業相關聯的 blob 儲存體下載。 複製記錄檔包含所要修復之失敗 blob 或檔案的相關資訊。|  
+|**/PathMapFile:**<DrivePathMapFile\>|**選擇性.** 如果您在相同作業中匯入多個同名的檔案，則為可用來解決模稜兩可情形之文字檔的路徑。 第一次執行此工具時，它可以在此檔案中填入所有模稜兩可的名稱。 後續執行此工具時，會使用此檔案來解決模稜兩可情形。|  
   
 ## <a name="using-the-repairimport-command"></a>使用 RepairImport 命令  
 若要透過網路串流資料來修復匯入資料，您必須指定內含您使用 `/d` 參數匯入之原始檔的目錄。 您也必須指定您從儲存體帳戶下載的複製記錄檔。 用於修復部分失敗之匯入作業的典型命令行如下所示︰  
@@ -100,7 +99,7 @@ WAImportExport.exe RepairImport /r:C:\WAImportExport\9WM35C2V.rep /d:C:\Users\bo
 ## <a name="next-steps"></a>後續步驟
  
 * [設定 Azure 匯入/匯出工具](storage-import-export-tool-setup-v1.md)   
-* [針對匯入作業準備硬碟](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   
-* [利用複製記錄檔檢閱作業狀態](storage-import-export-tool-reviewing-job-status-v1.md)   
+* [準備匯入工作的硬碟](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   
+* [使用複製記錄檔來檢查作業狀態](storage-import-export-tool-reviewing-job-status-v1.md)   
 * [修復匯出作業](../storage-import-export-tool-repairing-an-export-job-v1.md)   
 * [針對 Azure 匯入/匯出工具進行疑難排解](storage-import-export-tool-troubleshooting-v1.md)

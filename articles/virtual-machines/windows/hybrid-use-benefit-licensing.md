@@ -1,42 +1,32 @@
 ---
-title: 適用於 Windows Server 的 Azure Hybrid Benefit | Microsoft Docs
+title: 適用於 Windows Server 的 Azure Hybrid Benefit
 description: 了解如何發揮 Windows 軟體保證的最大效益，以將內部部署授權帶到 Azure
-services: virtual-machines-windows
-documentationcenter: ''
-author: xujing
-manager: jeconnoc
-editor: ''
-ms.assetid: 332583b6-15a3-4efb-80c3-9082587828b0
+author: xujing-ms
 ms.service: virtual-machines-windows
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 4/22/2018
-ms.author: xujing-ms
-ms.openlocfilehash: 64e9350606748116d2eef247790e88ed0d576c3f
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
-ms.translationtype: MT
+ms.author: xujing
+ms.openlocfilehash: f84d4fcd85f1e718f414e63bbe76fd29fa32427d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57570363"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "81869573"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>適用於 Windows Server 的 Azure Hybrid Benefit
 對於擁有軟體保證的客戶，適用於 Windows Server 的 Azure Hybrid Benefit 讓您能夠以較低的成本來使用內部部署 Windows Server 授權，以及在 Azure 上執行 Windows 虛擬機器。 您可以使用適用於 Windows Server 的 Azure Hybrid Benefit 部署具有 Windows OS 的新虛擬機器。 本文章會詳述使用適用於 Windows Server 的 Azure Hybrid Benefit 來部署新 VM 的步驟，以及您如何更新現有的執行中 VM。 如需有關適用於 Windows Server 之 Azure Hybrid Benefit 的授權和節省成本詳細資訊，請參閱[適用於 Windows Server 的 Azure Hybrid Benefit 授權頁面](https://azure.microsoft.com/pricing/hybrid-use-benefit/)。
 
-> [!Important]
-> 每份 2 處理器授權或每組 16 核心授權能獲得兩個最多 8 核心的執行個體，或一個最多 16 核心的執行個體。 Standard 版本授權的 Azure Hybrid Benefit 只能在內部部署或 Azure 中使用一次。 Datacenter 版本的權益則允許同時用在內部部署與 Azure。
->
+每份 2 處理器授權或每組 16 核心授權能獲得兩個最多 8 核心的執行個體，或一個最多 16 核心的執行個體。 Standard 版本授權的 Azure Hybrid Benefit 只能在內部部署或 Azure 中使用一次。 Datacenter 版本的權益則允許同時用在內部部署與 Azure。
 
-> [!Important]
-> 在所有區域中，現在支援使用適用於 Windows Server 的 Azure Hybrid Benefit 搭配執行 Windows Server OS 的任何 VM，包括具有其他軟體 (例如 SQL Server 或協力廠商 Marketplace 軟體) 的 VM。 
->
+在所有區域中，現在支援使用適用於 Windows Server 的 Azure Hybrid Benefit 搭配執行 Windows Server OS 的任何 VM，包括具有其他軟體 (例如 SQL Server 或協力廠商 Marketplace 軟體) 的 VM。 
 
-> [!NOTE]
-> 針對傳統 Vm，支援僅部署新的 VM 從內部部署自訂映像上。 若要充分利用本文章所支援的功能，您必須先將傳統 VM 移轉至 Resource Manager 模型。
->
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+## <a name="classic-vms"></a>傳統 VM
+
+若為傳統 Vm，則只支援從內部部署自訂映射部署新的 VM。 若要充分利用本文章所支援的功能，您必須先將傳統 VM 移轉至 Resource Manager 模型。
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+ 
 
 ## <a name="ways-to-use-azure-hybrid-benefit-for-windows-server"></a>使用適用於 Windows Server 的 Azure Hybrid Benefit 的方式
 有幾種方式可以搭配 Azure Hybrid Benefit 使用 Windows 虛擬機器：
@@ -74,7 +64,7 @@ az vm create \
     --license-type Windows_Server
 ```
 
-### <a name="template"></a>範本
+### <a name="template"></a>[範本]
 在 Resource Manager 範本內，必須指定 `licenseType` 的額外參數。 您可以進一步了解如何[製作 Azure Resource Manager 範本](../../resource-group-authoring-templates.md)
 ```json
 "properties": {
@@ -103,7 +93,7 @@ az vm create \
     Update-AzVM -ResourceGroupName rg-name -VM $vm
     ```
     
-- 將具有權益的 Windows Server VM 轉換回預付型方案
+- 將具有權益的 Windows Server VM 轉換回隨用隨付
 
     ```powershell
     $vm = Get-AzVM -ResourceGroup "rg-name" -Name "vm-name"
@@ -171,7 +161,7 @@ az vm list --query "[?licenseType=='Windows_Server']" -o table
 ```
 
 ## <a name="deploy-a-virtual-machine-scale-set-with-azure-hybrid-benefit-for-windows-server"></a>使用適用於 Windows Server 的 Azure Hybrid Benefit 部署虛擬機器擴展集
-在虛擬機器擴展集 Resource Manager 範本內，必須在 VirtualMachineProfile 屬性中指定額外參數 `licenseType`。 您可以在建立期間執行這項操作，或更新您的擴展集透過 ARM 範本、 PowerShell、 Azure CLI 或 REST。
+在虛擬機器擴展集 Resource Manager 範本內，必須在 VirtualMachineProfile 屬性中指定額外參數 `licenseType`。 您可以透過 ARM 範本、PowerShell、Azure CLI 或 REST，在您的擴展集建立或更新期間執行此動作。
 
 下列範例使用 ARM 範本搭配 Windows Server 2016 Datacenter 映像︰
 ```json
@@ -197,9 +187,9 @@ az vm list --query "[?licenseType=='Windows_Server']" -o table
 您也可以深入了解如何[修改虛擬機器擴展集](../../virtual-machine-scale-sets/virtual-machine-scale-sets-upgrade-scale-set.md)以便取得更多更新擴展集的方式。
 
 ## <a name="next-steps"></a>後續步驟
-- 深入了解[如何使用 Azure Hybrid Benefit 來節省成本](https://azure.microsoft.com/pricing/hybrid-use-benefit/)
+- 閱讀更多有關[如何使用 Azure Hybrid Benefit 節省成本的](https://azure.microsoft.com/pricing/hybrid-use-benefit/)資訊
 - 深入了解 [Azure Hybrid Benefit 的常見問題集](https://azure.microsoft.com/pricing/hybrid-use-benefit/faq/)
 - 深入了解[適用於 Windows Server 的 Azure Hybrid Benefit 授權詳細指導方針](https://docs.microsoft.com/windows-server/get-started/azure-hybrid-benefit)
 - 深入了解[適用於 Windows Server 的 Azure Hybrid Benefit 和 Azure Site Recovery 能使將應用程式移轉至 Azure 更符合成本效益](https://azure.microsoft.com/blog/hybrid-use-benefit-migration-with-asr/) \(英文\)
 - 深入了解[在 Azure上使用多租用戶裝載權限的 Windows 10](https://docs.microsoft.com/azure/virtual-machines/windows/windows-desktop-multitenant-hosting-deployment) \(英文\)
-- 深入了解[如何使用 Resource Manager 範本](../../azure-resource-manager/resource-group-overview.md)
+- 深入瞭解如何[使用 Resource Manager 範本](../../azure-resource-manager/management/overview.md)

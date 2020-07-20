@@ -1,33 +1,24 @@
 ---
-title: 適用於 VPN 閘道的 Azure PowerShell 範例 | Microsoft Docs
+title: VPN 閘道的 Azure PowerShell 範例
 description: VPN 閘道的 Azure PowerShell 範例。
 services: vpn-gateway
-documentationcenter: ''
-author: WenJason
-manager: digimobile
-editor: ''
-tags: ''
-ms.assetid: ''
+author: cherylmc
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: sample
-ms.tgt_pltfrm: ''
-ms.workload: infrastructure
-origin.date: 04/25/2018
-ms.date: 12/10/2018
-ms.author: v-jay
-ms.openlocfilehash: bdc9fd503f3ae1a3ededb9eba71268765c8801aa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 01/10/2020
+ms.author: cherylmc
+ms.openlocfilehash: fcae37da3ef9c5b2b7633db1dd16cec247a782af
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60539616"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203823"
 ---
 # <a name="azure-powershell-samples-for-vpn-gateway"></a>VPN 閘道的 Azure PowerShell 範例
 
 下表包含 Azure PowerShell 指令碼的連結：
 
-| | |
+| 指令碼 | 描述 |
 |----|----|
 | [建立 VPN 閘道](./scripts/vpn-gateway-sample-create-vpn-gateway-powershell.md) | 建立路由式 VPN 閘道。 |
 | [建立 VPN 閘道和 P2S 組態 - RADIUS](./scripts/vpn-gateway-sample-point-to-site-radius-authentication-powershell.md) | 建立路由式 VPN 閘道，以及會使用 RADIUS 使用者名稱/密碼驗證的 P2S 組態。 |

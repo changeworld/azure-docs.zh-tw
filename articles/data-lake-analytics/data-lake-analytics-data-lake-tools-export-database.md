@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Data Lake Tools for Visual Studio 匯出 U-SQL 資料庫
+title: 匯出 U-SQL database-Azure Data Lake Tools for Visual Studio
 description: 了解如何使用 Azure Data Lake Tools for Visual Studio 匯出 U-SQL 資料庫，並自動將它匯入至本機帳戶。
 services: data-lake-analytics
 author: yanancai
@@ -7,14 +7,14 @@ ms.author: yanacai
 ms.reviewer: jasonwhowell
 ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.service: data-lake-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/27/2017
-ms.openlocfilehash: fe28aa8b88f557d4bbcdabf1de1c4bc6491743ce
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 364682f6bcf2edeecc7af2da6c91e4bfd1de98a4
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60628516"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86117282"
 ---
 # <a name="export-a-u-sql-database"></a>匯出 U-SQL 資料庫
 
@@ -26,18 +26,18 @@ ms.locfileid: "60628516"
 
 ## <a name="export-steps"></a>匯出步驟
 
-### <a name="step-1-export-the-database-in-server-explorer"></a>步驟 1：在 [伺服器總管] 將資料庫匯出
+### <a name="step-1-export-the-database-in-server-explorer"></a>步驟 1：在 [伺服器總管] 中匯出資料庫
 
 您有權限的所有 Data Lake Analytics 帳戶會在 [伺服器總管] 中列出。 匯出資料庫：
 
 1. 在 [伺服器總管] 中，展開包含您想要匯出之資料庫的帳戶。
-2. 以滑鼠右鍵按一下資料庫，然後選取 [匯出]。 
+2. 以滑鼠右鍵按一下資料庫，然後選取 [匯出]****。 
    
     ![伺服器總管 - 匯出資料庫](./media/data-lake-analytics-data-lake-tools-export-database/export-database.png)
 
-     如果 [匯出] 功能表選項無法使用，您需要[將工具更新至最新版本](https://aka.ms/adltoolsvs)。
+     如果 [匯出]**** 功能表選項無法使用，您需要[將工具更新至最新版本](https://aka.ms/adltoolsvs)。
 
-### <a name="step-2-configure-the-objects-that-you-want-to-export"></a>步驟 2：設定您想要匯出的物件
+### <a name="step-2-configure-the-objects-that-you-want-to-export"></a>步驟 2：設定想要匯出的物件
 
 如果您只需要大型資料庫的一小部分，則可以在匯出精靈中設定您想要匯出的物件子集。 
 
@@ -47,7 +47,7 @@ ms.locfileid: "60628516"
 
 ### <a name="step-3-check-the-objects-list-and-other-configurations"></a>步驟 3：檢查物件清單和其他設定
 
-在此步驟中，您可以在 [匯出物件清單] 方塊中確認選取的物件。 如果有任何錯誤，請選取 [上一步] 返回，並正確地設定您想要匯出的物件。
+在此步驟中，您可以在 [匯出物件清單]**** 方塊中確認選取的物件。 如果有任何錯誤，請選取 [上一步]**** 返回，並正確地設定您想要匯出的物件。
 
 您也可以設定匯出目標的其他設定。 設定描述於下表中列出：
 
@@ -69,7 +69,7 @@ ms.locfileid: "60628516"
 
 ## <a name="import-the-exported-database-to-a-local-account"></a>將匯出的資料庫匯入至本機帳戶
 
-將匯出的資料庫匯入的最方便的方式，是在步驟 3 的匯出程序期間選取 [自動匯入本機資料庫] 核取方塊。 如果您沒有選取此方塊，首先，在匯出記錄中尋找匯出的 U-SQL 指令碼。 然後，在本機執行 U-SQL 指令碼，將資料庫匯入至您的本機帳戶。
+將匯出的資料庫匯入的最方便的方式，是在步驟 3 的匯出程序期間選取 [自動匯入本機資料庫]**** 核取方塊。 如果您沒有選取此方塊，首先，在匯出記錄中尋找匯出的 U-SQL 指令碼。 然後，在本機執行 U-SQL 指令碼，將資料庫匯入至您的本機帳戶。
 
 ## <a name="import-the-exported-database-to-a-data-lake-analytics-account"></a>將匯出的資料庫匯入至 Data Lake Analytics 帳戶
 
@@ -80,7 +80,7 @@ ms.locfileid: "60628516"
 
 ## <a name="known-limitations"></a>已知限制
 
-目前，如果您在步驟 3 中選取 [結構描述和資料] 選項，工具會執行 U-SQL 作業來匯出儲存在資料表中的資料。 因為這個緣故，資料匯出程序可能會變慢，而可能會對您產生費用。 
+目前，如果您在步驟 3 中選取 [結構描述和資料]**** 選項，工具會執行 U-SQL 作業來匯出儲存在資料表中的資料。 因為這個緣故，資料匯出程序可能會變慢，而可能會對您產生費用。 
 
 ## <a name="next-steps"></a>後續步驟
 

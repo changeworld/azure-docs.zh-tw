@@ -1,26 +1,17 @@
 ---
 title: 從 Azure Application Insights 匯出至 SQL | Microsoft Docs
 description: 使用 Stream Analytics 持續將 Application Insights 資料匯出至 SQL。
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 48903032-2c99-4987-9948-d6e4559b4a63
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/11/2017
-ms.author: mbullwin
-ms.openlocfilehash: 0166622539a439a99aef7e476519881518baa0b0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3c8586e8a6950e827d1078ca7d9cc3792fa58ae0
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60904586"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087212"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>逐步解說：使用串流分析從 Application Insights 匯出至 SQL
-本文將說明如何使用[連續匯出][export]和 [Azure 串流分析](https://azure.microsoft.com/services/stream-analytics/)，將您的遙測資料從 [Azure Application Insights][start] 移入Azure SQL 資料庫。 
+本文說明如何使用[連續匯出][export]和[Azure 串流分析](https://azure.microsoft.com/services/stream-analytics/)，將您的遙測資料從[Azure 應用程式深入][start]解析移至 Azure SQL Database。 
 
 連續匯出會以 JSON 格式將遙測資料移入 Azure 儲存體。 我們將使用 Azure 串流分析來剖析 JSON 物件，並在資料庫資料表中建立資料列。
 
@@ -70,30 +61,30 @@ ms.locfileid: "60904586"
     ![選擇事件類型](./media/code-sample-export-sql-stream-analytics/085-types.png)
 
 
-1. 可讓一些資料累積。 請休息一下，讓其他人使用您的應用程式一段時間。 遙測資料會送過來，而您會在[計量瀏覽器](../../azure-monitor/app/metrics-explorer.md)中看到統計圖表，並在[診斷搜尋](../../azure-monitor/app/diagnostic-search.md)中看到個別事件。 
+1. 可讓一些資料累積。 請休息一下，讓其他人使用您的應用程式一段時間。 遙測資料會送過來，而您會在[計量瀏覽器](../../azure-monitor/platform/metrics-charts.md)中看到統計圖表，並在[診斷搜尋](../../azure-monitor/app/diagnostic-search.md)中看到個別事件。 
    
     此外，資料會匯出至您的儲存體。 
-2. 在入口網站 (選擇 [瀏覽]、選取您的儲存體帳戶，然後選取 [容器]) 或 Visual Studio 中，檢查匯出的資料。 在 Visual Studio 中，依序選擇 [檢視] 和 [Cloud Explorer]，然後依序開啟 [Azure] 和 [儲存體]。 (如果您沒有此功能表選項，您需要安裝 Azure SDK：開啟 [新增專案] 對話方塊，然後開啟 [Visual C#] / [Cloud] / [取得 Microsoft Azure SDK for .NET]。)
+2. 在入口網站 (選擇 [瀏覽]****、選取您的儲存體帳戶，然後選取 [容器]****) 或 Visual Studio 中，檢查匯出的資料。 在 Visual Studio 中，依序選擇 [檢視] 和 [Cloud Explorer]，然後依序開啟 [Azure] 和 [儲存體]。 (如果您沒有此功能表選項，您需要安裝 Azure SDK：開啟 [新增專案] 對話方塊，然後開啟 [Visual C#] / [Cloud] / [取得 Microsoft Azure SDK for .NET]。)
    
     ![在 Visual Studio 中，依序開啟 [Server Browser]、[Azure]、[儲存體]](./media/code-sample-export-sql-stream-analytics/087-explorer.png)
    
     記下衍生自應用程式名稱和檢測金鑰之路徑名稱的共同部分。 
 
-事件會以 JSON 格式寫入至 Blob 檔案。 每個檔案可能會包含一或多個事件。 因此我們想要讀取事件資料，並篩選出需要的欄位。 我們可以利用資料執行各種作業，但我們現在打算使用串流分析，將資料移至 SQL Database。 這麼做可讓您輕鬆執行許多有趣的查詢工作。
+事件會以 JSON 格式寫入至 Blob 檔案。 每個檔案可能會包含一或多個事件。 因此我們想要讀取事件資料，並篩選出需要的欄位。 我們可以對資料執行各種動作，但我們今天的計畫是使用串流分析將資料移至 SQL Database。 這麼做可讓您輕鬆執行許多有趣的查詢工作。
 
 ## <a name="create-an-azure-sql-database"></a>建立 Azure SQL Database
 同樣地，請從您在 [Azure 入口網站][portal]中的訂用帳戶開始，建立您將寫入資料的資料庫 (和一部新伺服器，除非您已經有新伺服器)。
 
 ![[新增]、[資料]、[SQL]](./media/code-sample-export-sql-stream-analytics/090-sql.png)
 
-確定資料庫伺服器允許存取 Azure 服務：
+請確定伺服器允許存取 Azure 服務：
 
 ![[瀏覽]、[伺服器]、您的伺服器、[設定]、[防火牆]、[允許存取 Azure]](./media/code-sample-export-sql-stream-analytics/100-sqlaccess.png)
 
-## <a name="create-a-table-in-azure-sql-db"></a>在 Azure SQL Database 中建立資料表
+## <a name="create-a-table-in-azure-sql-database"></a>在 Azure SQL Database 中建立資料表
 使用您慣用的管理工具，連接到上一節所建立的資料庫。 在本逐步解說中，我們將使用 [SQL Server 管理工具](https://msdn.microsoft.com/ms174173.aspx) (SSMS)。
 
-![](./media/code-sample-export-sql-stream-analytics/31-sql-table.png)
+![連線到 Azure SQL Database](./media/code-sample-export-sql-stream-analytics/31-sql-table.png)
 
 建立新的查詢，然後執行下列 T-SQL：
 
@@ -135,7 +126,7 @@ CREATE CLUSTERED INDEX [pvTblIdx] ON [dbo].[PageViewsTable]
 
 ```
 
-![](./media/code-sample-export-sql-stream-analytics/34-create-table.png)
+![建立 PageViewsTable](./media/code-sample-export-sql-stream-analytics/34-create-table.png)
 
 在此範例中，我們會使用頁面檢視的資料。 若要查看其他可用的資料，請檢查您的 JSON 輸出，並查看 [匯出資料模型](../../azure-monitor/app/export-data-model.md)。
 
@@ -144,7 +135,7 @@ CREATE CLUSTERED INDEX [pvTblIdx] ON [dbo].[PageViewsTable]
 
 ![串流分析設定](./media/code-sample-export-sql-stream-analytics/SA001.png)
 
-![](./media/code-sample-export-sql-stream-analytics/SA002.png)
+![新增串流分析作業](./media/code-sample-export-sql-stream-analytics/SA002.png)
 
 建立新的工作之後，選取 [前往資源]。
 
@@ -166,7 +157,9 @@ CREATE CLUSTERED INDEX [pvTblIdx] ON [dbo].[PageViewsTable]
 
 [路徑前置詞模式] 會指定串流分析在儲存體中尋找輸入檔案的方式。 您需要將它設定為與連續匯出儲存資料的方式相對應。 請設定如下：
 
-    webapplication27_12345678123412341234123456789abcdef0/PageViews/{date}/{time}
+```sql
+webapplication27_12345678123412341234123456789abcdef0/PageViews/{date}/{time}
+```
 
 在此範例中：
 
@@ -179,10 +172,10 @@ CREATE CLUSTERED INDEX [pvTblIdx] ON [dbo].[PageViewsTable]
 
 > [!TIP]
 > 使用範例函數來檢查您是否已正確設定輸入路徑。 如果此方法失敗：請檢查儲存體中您所選擇的範例時間範圍的資料。 編輯輸入定義，並檢查您是否已正確設定儲存體帳戶、路徑前置詞和日期格式。
-> 
-> 
-> ## <a name="set-query"></a>設定查詢
-> 開啟 [查詢] 區段：
+
+ 
+## <a name="set-query"></a>設定查詢
+開啟 [查詢] 區段：
 
 將預設查詢替換為以下內容：
 
@@ -229,7 +222,7 @@ CREATE CLUSTERED INDEX [pvTblIdx] ON [dbo].[PageViewsTable]
 
 ![在串流分析中選取 [輸出]](./media/code-sample-export-sql-stream-analytics/SA006.png)
 
-指定 SQL Database。
+指定資料庫。
 
 ![填入資料庫的詳細資料](./media/code-sample-export-sql-stream-analytics/SA007.png)
 
@@ -244,12 +237,13 @@ CREATE CLUSTERED INDEX [pvTblIdx] ON [dbo].[PageViewsTable]
 
 經過數分鐘後，即可返回 SQL Server 管理工具，觀看資料的流入。 例如，使用如下查詢：
 
-    SELECT TOP 100 *
-    FROM [dbo].[PageViewsTable]
-
+```sql
+SELECT TOP 100 *
+FROM [dbo].[PageViewsTable]
+```
 
 ## <a name="related-articles"></a>相關文章
-* [使用串流分析匯出至 PowerBI](../../azure-monitor/app/export-power-bi.md )
+* [使用串流分析匯出至 Power BI](../../azure-monitor/app/export-power-bi.md )
 * [屬性類型和值的詳細資料模型參考。](../../azure-monitor/app/export-data-model.md)
 * [Application Insights 中的連續匯出](../../azure-monitor/app/export-telemetry.md)
 * [Application Insights](https://azure.microsoft.com/services/application-insights/)
@@ -258,7 +252,7 @@ CREATE CLUSTERED INDEX [pvTblIdx] ON [dbo].[PageViewsTable]
 
 [diagnostic]: ../../azure-monitor/app/diagnostic-search.md
 [export]: ../../azure-monitor/app/export-telemetry.md
-[metrics]: ../../azure-monitor/app/metrics-explorer.md
+[metrics]: ../../azure-monitor/platform/metrics-charts.md
 [portal]: https://portal.azure.com/
 [start]: ../../azure-monitor/app/app-insights-overview.md
 

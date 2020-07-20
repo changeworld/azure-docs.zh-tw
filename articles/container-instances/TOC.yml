@@ -1,4 +1,4 @@
-- name: Container Instances
+- name: 容器執行個體文件
   href: index.yml
 - name: 概觀
   items:
@@ -13,6 +13,9 @@
       href: container-instances-quickstart-portal.md
     - name: 部署容器執行個體 - PowerShell
       href: container-instances-quickstart-powershell.md
+    - name: 部署容器執行個體 - ARM 範本
+      displayName: Resource Manager
+      href: container-instances-quickstart-template.md
 - name: 教學課程
   items:
     - name: 建立和部署容器映像
@@ -29,6 +32,10 @@
           href: container-instances-multi-container-yaml.md
         - name: 部署容器群組 - Resource Manager
           href: container-instances-multi-container-group.md
+    - name: 與 Azure 服務整合
+      items:
+        - name: 透過 Azure Functions 觸發
+          href: container-instances-tutorial-azure-function-trigger.md
 - name: 範例
   items:
     - name: 程式碼範例
@@ -45,39 +52,55 @@
       href: container-instances-region-availability.md
     - name: 與協調者的關聯
       href: container-instances-orchestrator-relationship.md
-    - name: 安全性考量
-      href: container-instances-image-security.md
-- name: 使用說明指南
+    - name: 安全性
+      items:
+        - name: 安全性基準
+          href: security-baseline.md
+        - name: 安全性考量
+          href: container-instances-image-security.md
+    - name: 虛擬網路
+      href: container-instances-virtual-network-concepts.md
+- name: 操作指南
   items:
     - name: 部署
       items:
-        - name: 在虛擬網路中部署 (預覽)
+        - name: 在虛擬網路中部署
           href: container-instances-vnet.md
         - name: 從 Azure Container Registry 進行部署
           href: container-instances-using-azure-container-registry.md
+        - name: 使用 GitHub 動作部署 (預覽)
+          href: container-instances-github-action.md
+        - name: 加密部署資料
+          href: container-instances-encrypt-data.md
+        - name: 在專用主機上部署
+          href: container-instances-dedicated-hosts.md
+        - name: 使用 Logic Apps 連接器
+          href: ../connectors/connectors-create-api-container-instances.md?toc=/azure/container-instances/toc.json&bc=/azure/container-instances/breadcrumb/toc.json
     - name: 容器案例
       items:
         - name: 為僅執行一次的工作設定重新啟動原則
           href: container-instances-restart-policy.md
         - name: 設定環境變數 (env)
           href: container-instances-environment-variables.md
-        - name: 覆寫容器的進入點
+        - name: 設定容器啟動命令 (entrypoint)
           href: container-instances-start-command.md
         - name: 執行命令 (exec)
           href: container-instances-exec.md
-        - name: 執行 Jenkins 組建編號
-          href: container-instances-jenkins.md
+        - name: 執行設定容器 (初始)
+          href: container-instances-init-container.md
         - name: 使用受控識別 (預覽)
           href: container-instances-managed-identity.md
         - name: 使用 GPU 資源 (預覽)
           href: container-instances-gpu.md
-        - name: 啟用 SSL 端點
+        - name: 在側車中啟用 SSL 端點
           href: container-instances-container-group-ssl.md
+        - name: 公開靜態 IP 位址
+          href: container-instances-application-gateway.md
     - name: 裝載資料磁碟區
       items:
         - name: Azure 檔案共用
           href: container-instances-volume-azure-files.md
-        - name: Secret
+        - name: 祕密
           href: container-instances-volume-secret.md
         - name: 空目錄
           href: container-instances-volume-emptydir.md
@@ -87,6 +110,8 @@
       items:
         - name: 設定活躍度探查
           href: container-instances-liveness-probe.md
+        - name: 設定整備度探查
+          href: container-instances-readiness-probe.md
         - name: 停止並啟動容器
           href: container-instances-stop-start.md
         - name: 更新執行中的容器
@@ -97,7 +122,7 @@
           href: container-instances-monitor.md
         - name: 取得容器記錄和事件
           href: container-instances-get-logs.md
-        - name: 透過 Azure Log Analytics 記錄
+        - name: 使用 Azure 監視器記錄進行記錄
           href: container-instances-log-analytics.md
     - name: 疑難排解
       items:
@@ -121,19 +146,25 @@
       href: /javascript/api/overview/azure/containerinstances
     - name: Resource Manager 範本
       href: /azure/templates/microsoft.containerinstance/containergroups
+    - name: YAML
+      href: container-instances-reference-yaml.md
+    - name: 連接器
+      href: /connectors/aci
 - name: 資源
   items:
     - name: 透過 Microsoft Learn 增進您的技巧
       href: /learn/browse/?products=azure-container-instances
     - name: 區域可用性
       href: 'https://azure.microsoft.com/regions/services/'
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/container-instances/'
     - name: 藍圖
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 提供產品意見反應
       href: 'https://feedback.azure.com/forums/602224-azure-container-instances'
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-container-instances'
     - name: 影片
       href: 'https://azure.microsoft.com/resources/videos/index/?services=container-instances&sort=newest'
+    - name: 常見問題集
+      href: container-instances-faq.md

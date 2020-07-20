@@ -1,137 +1,135 @@
 ---
-title: 登入 Azure 監視器 |Microsoft Docs
-description: 介绍 Azure Monitor 中的用于对监视数据进行高级分析的日志。
+title: Azure 監視器中的記錄 | Microsoft Docs
+description: 描述 Azure 監視器中用來進行監視資料進階分析的記錄。
 documentationcenter: ''
 author: bwren
 manager: carmonm
-editor: tysonn
-ms.service: monitoring
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 0203/26/2019
+ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: ec037b16840afe669ac3934beaa832f850cdcfb0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 17536f49e24da8c508da17c4c2ff5fb2f9bead62
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60809133"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86200877"
 ---
 # <a name="logs-in-azure-monitor"></a>Azure 監視器中的記錄
 
 > [!NOTE]
-> Azure Monitor 收集的所有数据属于以下两种基本类型之一：指标和日志。 本文介绍日志。 有关指标的详细介绍，请参阅 [Azure Monitor 中的指标](data-platform-metrics.md)；有关日志与指标的比较，请参阅 [Azure Monitor 收集的监视数据](data-platform.md)。
+> Azure 監視器所收集的全部資料均符合下列兩個基本類型之一：計量和記錄。 本文說明記錄。 請參閱 [Azure 監視器中的計量](data-platform-metrics.md)來取得計量的詳細描述，以及參閱 [Azure 監視器所收集的監視資料](data-platform.md)以進行兩者的比較。
 
-针对各种源中的数据执行复杂分析时，Azure Monitor 中的日志特别有用。 本文将会介绍如何在 Azure Monitor 中构建日志、可对数据执行哪些操作，以及如何识别需要在日志中存储数据的不同数据源。
+Azure 監視器中的記錄特別適合用於對各種來源的資料執行複雜的分析。 本文說明如何在 Azure 監視器中將記錄結構化、如何處理資料，以及識別在記錄中儲存資料的不同資料來源。
 
 > [!NOTE]
-> 必须将 Azure Monitor 日志与 Azure 中的日志数据源区分开来。 例如，Azure 中的订阅级事件将写入到可以通过 Azure Monitor 菜单查看的[活动日志](activity-logs-overview.md)。 大多数资源会将操作信息写入可转发到不同位置的[诊断日志](diagnostic-logs-overview.md)。 Azure Monitor 日志是一个日志数据平台，它可以收集活动日志和诊断日志以及其他监视数据，以针对整个资源集提供深入分析。
+> 請務必區分 Azure 監視器記錄和 Azure 中記錄資料的來源。 例如，Azure 中的訂用帳戶層級事件會寫入[活動記錄](platform-logs-overview.md)，您可從 [Azure 監視器] 功能表進行檢視。 大部分資源都會將作業資訊寫入[資源記錄](platform-logs-overview.md)，您可將其轉送至不同的位置。 Azure 監視器記錄是一種記錄資料平台，可收集活動記錄和資源記錄及其他監視資料，以提供整個資源集的深入分析。
 
-## <a name="what-are-azure-monitor-logs"></a>什么是 Azure Monitor 日志？
+## <a name="what-are-azure-monitor-logs"></a>什麼是 Azure 監視器記錄？
 
-Azure Monitor 中的日志包含已整理成记录的各种数据，每种数据类型有不同的属性集。 日志可以包含数字值（例如 Azure Monitor 指标），但通常包含带详细说明的文本数据。 日志不同于指标数据之处还在于，日志有结构差异，且通常不按固定时间间隔收集。 与性能数据一样，事件和跟踪等遥测数据也作为 Azure Monitor 日志存储，因此，可将它们合并以进行分析。
+Azure 監視器中的記錄包含不同類型的資料，而資料會針對每個類型組織成不同的屬性集。 記錄可以包含數值 (例如 Azure 監視器計量)，但通常會包含具有詳細說明的文字資料。 其在結構方面進一步與計量資料不同，而且通常不會定期收集。 除了效能資料，還會將事件和追蹤之類的遙測儲存為 Azure 監視器記錄，使其能夠全部組合在一起進行分析。
 
-常见类型的日志项是偶尔收集的事件。 事件是由应用程序或服务创建的，通常包含足够的信息，其本身提供的上下文已经很完整。 例如，事件可以表示已建立或修改特定資源、為了回應增加的流量而啟動新主機，或在應用程式中偵測到錯誤。
+常見的記錄項目類型是偶爾會收集的事件。 事件是由應用程式或服務所建立，而且通常包含足夠的資訊來自行提供完整的內容。 例如，事件可以表示已建立或修改特定資源、為了回應增加的流量而啟動新主機，或在應用程式中偵測到錯誤。
 
- 資料的格式可能有所不同，應用程式可以使用其所需的結構建立自訂記錄。 甚至可以在日志中存储指标数据，以便将其与其他监视数据组合起来，进行趋势推断和其他数据分析。
-
-
-## <a name="what-can-you-do-with-azure-monitor-logs"></a>可对 Azure Monitor 日志执行哪些操作？
-下表列出了 Azure Monitor 中的日志的不同使用方式。
+ 資料的格式可能有所不同，應用程式可以使用其所需的結構建立自訂記錄。 計量資料甚至可以儲存在記錄中，將此資料與其他監視資料結合，以便進行趨勢分析和其他資料分析。
 
 
-|  |  |
+## <a name="what-can-you-do-with-azure-monitor-logs"></a>Azure 監視器記錄有何功用？
+下表列出您可在 Azure 監視器中使用記錄的各種方式。
+
+
+|  | 描述 |
 |:---|:---|
-| 分析 | 使用 Azure 门户中的 [Log Analytics](../log-query/get-started-portal.md) 可以编写[日志查询](../log-query/log-query-overview.md)，并通过强大的数据资源管理器分析引擎以交互方式分析日志数据。<br>使用 Azure 门户中的 [Application Insights 分析控制台](../app/analytics.md)可以编写日志查询，并在 Application Insights 中以交互方式分析日志数据。 |
-| 視覺化 | 将以表格或图表形式呈现的查询结果固定到 [Azure 仪表板](../../azure-portal/azure-portal-dashboards.md)。<br>创建一个[工作簿](../app/usage-workbooks.md)，用于在交互式报表中合并多个数据集。 <br>將查詢的結果匯出到 [Power BI](powerbi.md) 以使用不同的視覺效果，並與 Azure 外部的使用者共用。<br>将查询结果导出到 [Grafana](grafana-plugin.md)，以利用其仪表板功能以及合并其他数据源。|
-| 警示 | 設定[記錄警示規則](alerts-log.md)，在查詢結果符合特定結果時，傳送通知或採取[自動化動作](action-groups.md)。<br>针对作为指标提取的特定日志数据配置[指标警报规则](alerts-metric-logs.md)。 |
-| 擷取 | 使用 [Azure CLI](/cli/azure/ext/log-analytics/monitor/log-analytics) 从命令行访问日志查询结果。<br>使用 [PowerShell cmdlet](https://docs.microsoft.com/powershell/module/az.operationalinsights) 从命令行访问日志查询结果。<br>使用 [REST API](https://dev.loganalytics.io/) 从自定义应用程序访问日志查询结果。 |
-| 匯出 | 使用[逻辑应用](~/articles/logic-apps/index.yml)生成一个工作流，以检索日志数据并将其复制到外部位置。 |
+| **分析** | 在 Azure 入口網站中使用 [Log Analytics](../log-query/get-started-portal.md) 來撰寫 [記錄查詢](../log-query/log-query-overview.md)，並使用強大的資料總管分析引擎以互動方式分析記錄資料。<br>在 Azure 入口網站中使用 [Application Insights 分析主控台](../app/analytics.md)來撰寫記錄查詢，並以互動方式分析來自 Application Insights 的記錄資料。 |
+| **視覺化** | 將轉譯為表格或圖表的查詢結果釘選到 [Azure 儀表板](../../azure-portal/azure-portal-dashboards.md)。<br>建立[活頁簿](../platform/workbooks-overview.md)，以在互動式報告中與多組資料結合。 <br>將查詢的結果匯出到 [Power BI](powerbi.md) 以使用不同的視覺效果，並與 Azure 外部的使用者共用。<br>將查詢的結果匯出至 [Grafana](grafana-plugin.md) 以利用其儀表板功能，並與其他資料來源結合。|
+| **警示** | 設定[記錄警示規則](alerts-log.md)，在查詢結果符合特定結果時，傳送通知或採取[自動化動作](action-groups.md)。<br>針對擷取為計量的某些記錄資料記錄，設定[計量警示規則](alerts-metric-logs.md)。 |
+| **擷取** | 使用 [Azure CLI](/cli/azure/ext/log-analytics/monitor/log-analytics)，從命令列存取記錄查詢結果。<br>使用 [PowerShell Cmdlet](https://docs.microsoft.com/powershell/module/az.operationalinsights)，從命令列存取記錄查詢結果。<br>使用 [REST API](https://dev.loganalytics.io/)，從自訂應用程式存取記錄查詢結果。 |
+| **匯出** | 建立工作流程來擷取記錄資料，並使用 [Logic Apps](~/articles/logic-apps/index.yml) 將其複製到外部位置。 |
 
 
-## <a name="how-is-data-in-azure-monitor-logs-structured"></a>Azure Monitor 日志中的数据是如何构建的？
-Azure Monitor 日志收集的数据存储在 [Log Analytics 工作区](../platform/manage-access.md)中。 可以在订阅中[创建多个工作区](manage-access.md#determine-the-number-of-workspaces-you-need)用于管理不同的日志数据集。 每个工作区包含多个表，每个表存储来自特定源的数据。 所有表共享[一些通用属性](log-standard-properties.md)，每个表根据它所存储的数据类型具有唯一的属性集。 新工作区具有标准的表集，不同的监视解决方案以及在工作区中写入数据的其他服务会添加更多的表。
+## <a name="how-is-data-in-azure-monitor-logs-structured"></a>如何在 Azure 監視器記錄中將資料結構化？
+Azure 監視器記錄收集的資料都會儲存於 [Log Analytics 工作區](../platform/design-logs-deployment.md)中。 每個工作區都包含多個資料表，而每個資料表會儲存來自特定來源的資料。 雖然所有資料表會共用[一些通用屬性](log-standard-properties.md)，但每個資料表都有一組獨特的屬性 (視其儲存的資料類型而定)。 新工作區會有一組標準的資料表，而寫入工作區的各種監視解決方案和其他服務將會新增更多資料表。
 
-Application Insights 中的日志数据使用与工作区相同的 Log Analytics 引擎，但这些数据是针对每个受监视的应用程序单独存储的。 每个应用程序使用标准的表集来保存应用程序请求、异常和页面视图等数据。
+來自 Application Insights 的記錄資料會使用與工作區相同的 Log Analytics 引擎，但該資料會針對每個受監視的應用程式分開儲存。 每個應用程式都有一組標準的資料表可保存資料，例如應用程式要求、例外狀況和頁面檢視。
 
-日志查询将使用 Log Analytics 工作区或 Application Insights 应用程序中的数据。 可以使用[跨资源查询](../log-query/cross-workspace-query.md)结合其他日志数据来分析应用程序数据，或创建包括多个工作区或应用程序的查询。
+記錄查詢會使用 Log Analytics 工作區或 Application Insights 應用程式中的資料。 您可以使用[跨資源查詢](../log-query/cross-workspace-query.md)，同時分析應用程式資料與其他記錄資料，或建立包含多個工作區或應用程式的查詢。
 
 ![工作區](media/data-platform-logs/workspaces.png)
 
 ## <a name="log-queries"></a>記錄查詢
-Azure Monitor 日志中的日志数据都是使用以 [Kusto 查询语言](../log-query/get-started-queries.md)编写的[日志查询](../log-query/log-query-overview.md)检索的，这使得你可以快速检索、合并和分析所收集的数据。 可以在 Azure 门户中使用 [Log Analytics](../log-query/portals.md) 编写和测试日志查询。 这可以通过交互方式使用结果，也可以将其固定到某个仪表板，与其他可视化效果一起查看。
+Azure 監視器記錄中的資料都是使用以 [Kusto 查詢語言](../log-query/get-started-queries.md)撰寫的[記錄查詢](../log-query/log-query-overview.md)來擷取，可讓您快速擷取、彙總及分析收集的資料。 使用 [Log Analytics](../log-query/portals.md)，在 Azure 入口網站中撰寫及測試查詢。 其可讓您以互動方式使用結果，或將結果釘選到儀表板，利用其他視覺效果進行檢視。
 
 ![Log Analytics](media/data-platform-logs/log-analytics.png)
 
-打开 [Application Insights 中的 Log Analytics](../app/analytics.md) 可以分析 Application Insights 数据。
+[從 Application Insights 開啟 Log Analytics](../app/analytics.md)，以分析 Application Insights 資料。
 
 ![Application Insights 分析](media/data-platform-logs/app-insights-analytics.png)
 
-还可以使用 [Log Analytics API](https://dev.loganalytics.io/documentation/overview) 和 [Application Insights REST API](https://dev.applicationinsights.io/documentation/overview) 检索日志数据。
+您也可以使用 [Log Analytics API](https://dev.loganalytics.io/documentation/overview) 和 [Application Insights REST API](https://dev.applicationinsights.io/documentation/overview) 來擷取記錄資料。
 
 
-## <a name="sources-of-azure-monitor-logs"></a>Azure Monitor 日志源
-Azure 監視器可以在 Azure 中及內部部署資源的各種來源收集資料。 下表列出了需要将数据写入 Azure Monitor 日志的不同资源提供的不同数据源。 每个源提供了有关任何所需配置的详细信息的链接。
+## <a name="sources-of-azure-monitor-logs"></a>Azure 監視器記錄的來源
+Azure 監視器可以在 Azure 中及內部部署資源的各種來源收集資料。 下表列出可從將資料寫入 Azure 監視器記錄的不同資源中取得的不同資料來源。 每個資料來源都有一個連結，可提供任何必要設定的詳細資料。
 
-### <a name="azure-tenant-and-subscription"></a>Azure 租户和订阅
+### <a name="azure-tenant-and-subscription"></a>Azure 租用戶與訂用帳戶
 
 | 資料 | 描述 |
 |:---|:---|
-| Azure Active Directory 审核日志 | 通过每个目录的诊断设置进行配置。 参阅[将 Azure AD 日志与 Azure Monitor 日志集成](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)。  |
-| 活動記錄 | 默认会单独存储，可用于近实时的警报。 安装 Activity Log Analytics 解决方案以将数据写入 Log Analytics 工作区。 参阅[收集和分析 Log Analytics 中的 Azure 活动日志](collect-activity-logs.md)。 |
+| Azure Active Directory 稽核記錄 | 透過每個目錄的診斷設定進行設定。 請參閱[整合 Azure AD 記錄與 Azure 監視器記錄](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)。  |
+| 活動記錄 | 預設會分開儲存，並可用於近乎即時的警示。 安裝活動記錄分析解決方案以寫入 Log Analytics 工作區。 請參閱[在 Log Analytics 中收集並分析 Azure 活動記錄](activity-log-collect.md)。 |
 
 ### <a name="azure-resources"></a>Azure 資源
 
 | 資料 | 描述 |
 |:---|:---|
-| 资源诊断 | 配置诊断设置以写入诊断数据，包括将指标写入 Log Analytics 工作区。 参阅[将 Azure 诊断日志流式传输到 Log Analytics](diagnostic-logs-stream-log-store.md)。 |
-| 監視解決方案 | 监视解决方案将其收集的数据写入其 Log Analytics 工作区。 有关解决方案的列表，请参阅 [Azure 中的管理解决方案的数据收集详细信息](../insights/solutions-inventory.md)。 有关安装和使用解决方案的详细信息，请参阅 [Azure Monitor 中的监视解决方案](../insights/solutions.md)。 |
-| 指标 | 将 Azure Monitor 资源的平台指标发送到 Log Analytics 工作区以长期保留日志数据，并使用 [Kusto 查询语言](/azure/kusto/query/)对其他数据类型执行复杂分析。 参阅[将 Azure 诊断日志流式传输到 Log Analytics](diagnostic-logs-stream-log-store.md)。 |
-| Azure 表格儲存體 | 从某些 Azure 资源会将监视数据写入到的 Azure 存储中收集数据。 参阅[将适用于 IIS 的 Azure Blob 存储和适用于事件的 Azure 表存储与 Log Analytics 配合使用](azure-storage-iis-table.md)。 |
+| 資源診斷 | 設定診斷設定以寫入診斷資料，包括將計量寫入 Log Analytics 工作區。 請參閱[將 Azure 資源記錄串流至 Log Analytics](resource-logs-collect-workspace.md)。 |
+| 監視解決方案 | 監視解決方案會將其收集的資料寫入其 Log Analytics 工作區。 請參閱 [Azure 中管理解決方案的資料收集詳細資料](../insights/solutions-inventory.md)，以取得解決方案清單。 如需安裝和使用解決方案的詳細資訊，請參閱 [Azure 監視器中的監視解決方案](../insights/solutions.md)。 |
+| 計量 | 將 Azure 監視器資源的平台計量傳送到 Log Analytics 工作區，可將記錄資料保留較長的時間，以及使用 [Kusto 查詢語言](/azure/kusto/query/)來執行其他資料類型的複雜分析。 請參閱[將 Azure 資源記錄串流至 Log Analytics](resource-logs-collect-storage.md)。 |
+| Azure 表格儲存體 | 從 Azure 儲存體收集資料，其中有些 Azure 資源會寫入監視資料。 請參閱[針對 Log Analytics 的事件，使用 IIS 和 Azure 表格儲存體的 Azure blob 儲存體](diagnostics-extension-logs.md)。 |
 
 ### <a name="virtual-machines"></a>虛擬機器
 
 | 資料 | 描述 |
 |:---|:---|
-|  代理程式資料來源 | 从 [Windows](agent-windows.md) 和 [Linux](../learn/quick-collect-linux-computer.md) 代理收集的数据源包括事件、性能数据和自定义日志。 有关数据源列表和配置详细信息，请参阅 [Azure Monitor 中的代理数据源](data-sources.md)。 |
-| 監視解決方案 | 监视解决方案将其从代理收集的数据写入其 Log Analytics 工作区。 有关解决方案的列表，请参阅 [Azure 中的管理解决方案的数据收集详细信息](../insights/solutions-inventory.md)。 有关安装和使用解决方案的详细信息，请参阅 [Azure Monitor 中的监视解决方案](../insights/solutions.md)。 |
-| System Center Operations Manager | 将 Operations Manager 管理组连接到 Azure Monitor 可将本地代理中的事件和性能数据收集到日志中。 有关此配置的详细信息，请参阅[将 Operations Manager 连接到 Log Analytics](om-agents.md)。 |
+|  代理程式資料來源 | 從 [Windows](agent-windows.md) 和 [Linux](../learn/quick-collect-linux-computer.md) 代理程式收集到的資料來源包含事件、效能資料和自訂記錄。 如需資料來源清單和設定詳細資訊，請參閱 [Azure 監視器中的代理程式資料來源](data-sources.md)。 |
+| 監視解決方案 | 監視解決方案會將從代理程式收集的資料寫入其 Log Analytics 工作區。 請參閱 [Azure 中管理解決方案的資料收集詳細資料](../insights/solutions-inventory.md)，以取得解決方案清單。 如需安裝和使用解決方案的詳細資訊，請參閱 [Azure 監視器中的監視解決方案](../insights/solutions.md)。 |
+| System Center Operations Manager | 將 Operations Manager 管理群組連線至 Azure 監視器，進而將內部部署代理程式中的事件和效能資料收集到記錄中。 如需此設定的詳細資訊，請參閱[將 Operations Manager 連線到 Log Analytics](om-agents.md)。 |
 
 
-### <a name="applications"></a>[應用程式]
+### <a name="applications"></a>應用程式
 
 | 資料 | 描述 |
 |:---|:---|
-| 请求和异常 | 有关应用程序请求和异常的详细数据包含在 _requests_、_pageViews_ 和 _exceptions_ 表中。 对[外部组件](../app/asp-net-dependencies.md)的调用包含在 _dependencies_ 表中。 |
-| 使用情况和性能 | 应用程序性能数据包含在 _requests_、_browserTimings_ 和 _performanceCounters_ 表中。 [自定义指标](../app/api-custom-events-metrics.md#trackevent)的数据包含在 _customMetrics_ 表中。|
-| 跟踪数据 | [分布式跟踪](../app/distributed-tracing.md)的结果存储在 _traces_ 表中。 |
-| 可用性集合 | [可用性测试](../app/monitor-web-app-availability.md)的摘要数据存储在 _availabilityResults_ 表中。 这些测试的详细数据保存在独立的存储中，可通过 Azure 门户中的 Application Insights 访问。 |
+| 要求和例外狀況 | 有關應用程式要求和例外狀況的詳細資料位於 _requests_、_pageViews_及 _exceptions_ 資料表中。 [外部元件](../app/asp-net-dependencies.md) 的呼叫位於 _dependencies_資料表中。 |
+| 使用方式和效能 | 在 _requests_、_browserTimings_ 和 _performanceCounters_ 資料表中可取得應用程式的效能。 [自訂計量](../app/api-custom-events-metrics.md#trackevent)的資料位於 _customMetrics_ 資料表中。|
+| 追蹤資料 | [分散式追蹤](../app/distributed-tracing.md)的結果會儲存在 _traces_ 資料表中。 |
+| 可用性集合 | [可用性測試](../app/monitor-web-app-availability.md)的摘要資料會儲存在 _availabilityResults_ 資料表中。 這些測試的詳細資料位於不同的儲存體，並從 Azure 入口網站中的 Application Insights 存取。 |
 
 ### <a name="insights"></a>深入解析
 
 | 資料 | 描述 |
 |:---|:---|
-| 適用於容器的 Azure 監視器 | [用于容器的 Azure Monitor](../insights/container-insights-overview.md) 收集的库存和性能数据。 有关表的列表，请参阅[容器数据收集详细信息](../insights/container-insights-log-search.md#container-records)。 |
-| 適用於 VM 的 Azure 監視器 | [用于 VM 的 Azure Monitor](../insights/vminsights-overview.md) 收集的映射和性能数据。 有关查询此数据的详细信息，请参阅[如何从用于 VM 的 Azure Monitor 查询日志](../insights/vminsights-log-search.md)。 |
+| 適用於容器的 Azure 監視器 | [適用於容器的 Azure 監視器](../insights/container-insights-overview.md)所收集的清查和效能資料。 如需資料表清單，請參閱[容器資料收集詳細資訊](../insights/container-insights-log-search.md#container-records)。 |
+| 適用於 VM 的 Azure 監視器 | [適用於 VM 的 Azure 監視器](../insights/vminsights-overview.md)所收集的地圖和效能資料。 請參閱[如何從適用於 VM 的 Azure 監視器查詢記錄](../insights/vminsights-log-search.md)，以取得查詢此資料的詳細資料。 |
 
-### <a name="custom"></a>自訂 
+### <a name="custom"></a>Custom 
 
 | 資料 | 描述 |
 |:---|:---|
-| REST API | 将任何 REST 客户端中的数据写入 Log Analytics 工作区。 有关详细信息，请参阅[使用 HTTP 数据收集器 API 将日志数据发送到 Azure Monitor](data-collector-api.md)。
-| 邏輯應用程式 | 使用“Azure Log Analytics 数据收集器”操作将逻辑应用工作流中的任何数据写入 Log Analytics 工作区。 |
+| REST API | 將資料從任何 REST 用戶端寫入 Log Analytics 工作區。 請參閱[使用 HTTP 資料收集器 API 將記錄資料傳送給 Azure 監視器](data-collector-api.md)，以取得詳細資料。
+| 邏輯應用程式 | 使用 **Azure Log Analytics 資料收集器**動作，從邏輯應用程式工作流程將任何資料寫入 Log Analytics 工作區。 |
 
 ### <a name="security"></a>安全性
 
 | 資料 | 描述 |
 |:---|:---|
-| Azure 資訊安全中心 | [Azure 安全中心](/azure/security-center/)将其收集的数据存储在 Log Analytics 工作区中，在该工作区中可以结合其他日志数据对这些收集的数据进行分析。 有关工作区配置的详细信息，请参阅 [Azure 安全中心内的数据收集](../../security-center/security-center-enable-data-collection.md)。 |
-| Azure Sentinel | [Azure Sentinel](/azure/sentinel/) 将来自数据源的数据存储到 Log Analytics 工作区中。 请参阅[连接数据源](/azure/sentinel/connect-data-sources)。  |
+| Azure 資訊安全中心 | [Azure 資訊安全中心](/azure/security-center/)會將其收集的資料儲存在 Log Analytics 工作區中，以便與其他記錄資料一起進行分析。 請參閱 [Azure 資訊安全中心的資料收集](../../security-center/security-center-enable-data-collection.md)，以取得工作區設定的詳細資料。 |
+| Azure Sentinel | [Azure Sentinel](/azure/sentinel/) 會將資料來源的資料儲存到 Log Analytics 工作區。 請參閱[連線資料來源](/azure/sentinel/connect-data-sources)。  |
 
 
 ## <a name="next-steps"></a>後續步驟
 
-- 详细了解 [Azure Monitor 数据平台](data-platform.md)。
-- 了解 [Azure Monitor 中的指标](data-platform-metrics.md)。
+- 深入了解 [Azure 監視器資料平台](data-platform.md)。
+- 了解 [Azure 監視器中的計量](data-platform-metrics.md)。
 - 深入了解可用於 Azure 中不同資源的[監視資料](data-sources.md)。

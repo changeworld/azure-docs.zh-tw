@@ -2,25 +2,20 @@
 title: Azure PowerShell 指令碼範例 - 變更 RDP 連接埠範圍 | Microsoft Docs
 description: Azure PowerShell 指令碼範例 - 變更已部署之叢集的 RDP 連接埠範圍。
 services: service-fabric
-documentationcenter: ''
-author: aljo-microsoft
-manager: chackdan
-editor: ''
 tags: azure-service-management
-ms.assetid: ''
+author: athinanthny
+ms.author: atsenthi
 ms.service: service-fabric
 ms.workload: multiple
-ms.devlang: na
 ms.topic: sample
 ms.date: 03/19/2018
-ms.author: aljo
-ms.custom: mvc
-ms.openlocfilehash: 871fe502a40b4c22f3e57a2f357e940c7f659314
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.custom: sfrev
+ms.openlocfilehash: b3d922cb5a7cdf34e63731ab32f21c94d7b6bca0
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58663922"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "76025012"
 ---
 # <a name="update-the-rdp-port-range-values"></a>更新 RDP 連接埠範圍值
 
@@ -28,7 +23,7 @@ ms.locfileid: "58663922"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-您可以視需要使用 [Azure PowerShell 指南 (英文)](/powershell/azure/overview) 中的指示來安裝 Azure PowerShell。 
+您可以視需要使用 [Azure PowerShell 指南 (英文)](/powershell/azure/overview) 中的指示來安裝 Azure PowerShell。
 
 ## <a name="sample-script"></a>範例指令碼
 
@@ -38,7 +33,7 @@ ms.locfileid: "58663922"
 
 此指令碼會使用下列命令。 下表中的每個命令都會連結至命令特定的文件。
 
-| 命令 | 注意 |
+| Command | 注意 |
 |---|---|
 | [Get-AzResource](/powershell/module/az.resources/get-azresource) | 取得 `Microsoft.Network/loadBalancers` 資源。 |
 |[Set-AzResource](/powershell/module/az.resources/set-azresource)|更新 `Microsoft.Network/loadBalancers` 資源。|

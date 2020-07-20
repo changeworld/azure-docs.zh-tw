@@ -1,23 +1,35 @@
 ---
-title: 使用 Azure 虛擬 WAN 與 Azure 建立站對站連線 |Microsoft Docs
+title: Azure 虛擬 WAN：建立站對站連線
 description: 在本教學課程，您可了解如何使用 Azure 虛擬 WAN 來與 Azure 建立站對站的 VPN 連線。
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 02/26/2019
+ms.date: 07/09/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: 4b44eec5557d2083c38fe2714d93800f79b21b0f
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 219551f2bba229fb627092548fe5c5f5ff8798b9
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58338440"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220590"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>教學課程：使用 Azure 虛擬 WAN 來建立站對站連線
 
-本教學課程會示範如何使用虛擬 WAN，透過 IPsec/IKE (IKEv1 和 IKEv2) VPN 連線來與 Azure 中的資源連線。 此類型的連線需要位於內部部署的 VPN 裝置，且您已對該裝置指派對外開放的公用 IP 位址。 如需有關虛擬 WAN 的詳細資訊，請參閱[虛擬 WAN 概觀](virtual-wan-about.md)
+本教學課程會示範如何使用虛擬 WAN，透過 IPsec/IKE (IKEv1 和 IKEv2) VPN 連線來與 Azure 中的資源連線。 此類型的連線需要位於內部部署的 VPN 裝置，且您已對該裝置指派對外開放的公用 IP 位址。 如需有關虛擬 WAN 的詳細資訊，請參閱[虛擬 WAN 概觀](virtual-wan-about.md)。
+
+在本教學課程中，您將了解如何：
+
+> [!div class="checklist"]
+> * 建立虛擬 WAN
+> * 建立中樞
+> * 建立網站
+> * 將網站連線到中樞
+> * 將 VPN 網站連線到中樞
+> * 將 VNet 連線至中樞
+> * 下載設定檔
+> * 設定 VPN 閘道
 
 > [!NOTE]
 > 如果您有許多網站，通常會使用[虛擬 WAN 夥伴](https://aka.ms/virtualwan)來建立此組態。 不過，如果您慣用網路並且知道如何設定自己的 VPN 裝置，可以自行建立此組態。
@@ -25,96 +37,73 @@ ms.locfileid: "58338440"
 
 ![虛擬 WAN 的圖表](./media/virtual-wan-about/virtualwan.png)
 
-在本教學課程中，您了解如何：
-
-> [!div class="checklist"]
-> * 建立 WAN
-> * 建立網站
-> * 建立中樞
-> * 將中樞連線至網站
-> * 將 VNet 連線至中樞
-> * 下載並套用 VPN 裝置組態
-> * 檢視您的虛擬 WAN
-> * 檢視資源健康情況
-> * 監視連線
-
 ## <a name="before-you-begin"></a>開始之前
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+在開始設定之前，請確認您已符合下列條件：
 
-[!INCLUDE [Before you begin](../../includes/virtual-wan-tutorial-vwan-before-include.md)]
+* 您有一個要連線的虛擬網路。 驗證沒有任何內部部署網路的子網路與您要連線的虛擬網路子網路重疊。 若要在 Azure 入口網站中建立虛擬網路，請參閱[快速入門](../virtual-network/quick-create-portal.md)。
 
-## <a name="vnet"></a>1.建立虛擬網路
+* 您的虛擬網路沒有任何虛擬網路閘道。 如果您的虛擬網路有閘道 (VPN 或 ExpressRoute)，則必須移除所有閘道。 此設定需要將虛擬網路改為連線到虛擬 WAN 中樞閘道。
 
-[!INCLUDE [Create a virtual network](../../includes/virtual-wan-tutorial-vnet-include.md)]
+* 取得中樞區域的 IP 位址範圍。 中樞是虛擬 WAN 建立和使用的虛擬網路。 您為中樞區域指定的位址範圍不能與任何連線的現有虛擬網路重疊。 也不能與連線至內部部署的位址範圍重疊。 如果您不熟悉位於內部部署網路設定的 IP 位址範圍，請與能夠提供那些詳細資料的人員協調。
 
-## <a name="openvwan"></a>2.建立虛擬 WAN
+* 如果您沒有 Azure 訂用帳戶，請建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-透過瀏覽器瀏覽至 [Azure 入口網站](https://aka.ms/azurevirtualwanpreviewfeatures) ，並使用您的 Azure 帳戶登入。
+## <a name="create-a-virtual-wan"></a><a name="openvwan"></a>建立虛擬 WAN
 
-[!INCLUDE [Create a virtual WAN](../../includes/virtual-wan-tutorial-vwan-include.md)]
+透過瀏覽器瀏覽至 Azure 入口網站，並使用您的 Azure 帳戶登入。
 
-## <a name="site"></a>3.建立網站
+1. 瀏覽至 [虛擬 WAN] 頁面。 在入口網站中，按一下 [+建立資源]。 在搜尋方塊中鍵入**虛擬 WAN** 並選取 [輸入]。
+2. 從結果中選取 [虛擬 WAN]。 在 [虛擬 WAN] 頁面中，按一下 [建立]，以開啟 [建立 WAN] 頁面。
+3. 在 [建立 WAN] 頁面的 [基本] 索引標籤中，填寫下列欄位：
 
-建立需要的網站數目，這會與您的實體位置相對應。 例如，如果您在紐約 (NY)、倫敦和洛杉磯 (LA) 各有分公司，就會建立三個不同網站。 這些網站包含您內部部署的 VPN 裝置端點。 在此階段中，您可以只為網站指定一個私人位址空間。
+   ![虛擬 WAN](./media/virtual-wan-site-to-site-portal/vwan.png)
 
-1. 按一下您所建立的 WAN。 在 WAN 頁面的 [WAN 架構] 底下，按一下 [VPN 網站] 以開啟 [VPN 網站] 頁面。
-2. 在 [VPN 網站] 頁面上，按一下 [+ 建立網站]。
-3. 在 [建立網站] 頁面上，填寫下列欄位：
+   * **訂用帳戶** - 選取您要使用的訂用帳戶。
+   * **資源群組** - 建立新的或使用現有的資源群組。
+   * **資源群組位置** - 從下拉式清單中選擇資源位置。 WAN 是全域資源，並不會在特定區域存留。 不過，您必須選取一個區域以方便管理，以及放置所建立的 WAN 資源。
+   * **名稱** - 鍵入要用來稱呼 WAN 的名稱。
+   * **類型：** 基本或標準。 如果您建立基本 WAN，則只能建立基本中樞。 基本中樞只能進行 VPN 站對站連線。
+4. 填寫完欄位之後，選取 [檢閱 + 建立]。
+5. 驗證通過後，選取 [建立]，以建立虛擬 WAN。
 
-   * **名稱** - 這是您要用來參考內部部署網站的名稱。
-   * **公用 IP 位址** - 這是您內部部署網路中 VPN 裝置的公用 IP 位址。
-   * **私人位址空間** - 這是位於內部部署網站上的 IP 位址空間。 流向此位址空間的流量會路由至您本機網站。
-   * **訂用帳戶** - 請確認訂用帳戶。
-   * **資源群組** - 要使用的資源群組。
-   * **位置**。
-4. 按一下 [進階顯示] 即可檢視其他設定。 您可以選取 **BGP** 以啟用 BGP (會在 Azure 中針對為此網站所建立的所有連線啟用此功能)。 您也可以輸入 [裝置資訊] (選擇性欄位)。 這可協助 Azure 小組深入了解您的環境，以便在未來增加額外最佳化的可能性，或協助您進行疑難排解。
-5. 按一下 [確認]。
-6. 按一下 [確認] 之後，檢視 [VPN 網站] 頁面上的狀態。 網站會從 [正在佈建] 變成 [已佈建]。
+## <a name="create-a-hub"></a><a name="hub"></a>建立中樞。
 
-## <a name="hub"></a>4.建立中樞
+中樞是一種虛擬網路，其中包含可用於站對站、ExpressRoute 或點對站功能的閘道。 中樞建立好時，您就需要支付中樞費用，即使您未連結任何網站也是如此。 在虛擬中樞內建立站對站 VPN 閘道需要 30 分鐘的時間。
 
-[!INCLUDE [Create a hub](../../includes/virtual-wan-tutorial-hub-include.md)]
+[!INCLUDE [Create a hub](../../includes/virtual-wan-tutorial-s2s-hub-include.md)]
 
-## <a name="associate"></a>5.將網站與中樞相關聯
+## <a name="create-a-site"></a><a name="site"></a>建立網站
 
-中樞通常應關聯到 VNet 所在相同區域中的網站。
+您現在已準備好建立對應到實體位置的網站。 建立需要的網站數目，這會與您的實體位置相對應。 例如，如果您在紐約 (NY)、倫敦和洛杉磯 (LA) 各有分公司，就會建立三個不同網站。 這些網站包含您內部部署的 VPN 裝置端點。 在虛擬 WAN 中，您可以為每個虛擬中樞建立最多 1000 個網站。 如果您有多個中樞，您可以為其中每一個中樞建立 1000 個網站。 如果您有虛擬 WAN 合作夥伴 (連結插入) CPE 裝置，請向他們確認並了解其對 Azure 有何自動化項目。 一般來說，自動化體驗意指簡單按一下即可將大規模分支資訊匯出至 Azure，以及設定從 CPE 到 Azure 虛擬 WAN VPN 閘道的連線。 如需詳細資訊，請參閱[從 Azure 到 CPE 合作夥伴的自動化指引](virtual-wan-configure-automation-providers.md)。
 
-1. 在 [VPN 網站] 頁面上，選取您想要與中樞相關聯的一或多個網站，然後按一下 [+ 新增中樞關聯]。
-2. 在 [將網站與一或多個中樞相關聯] 頁面上，從下拉式清單中選取中樞。 您可以按一下 [+ 新增關聯] 將網站與其他中樞相關聯。
-3. 您也可以在這裡新增特定 **PSK**，或是使用預設值。
-4. 按一下 [確認]。
-5. 您可以在 [VPN 網站] 頁面上檢視連線狀態。
+[!INCLUDE [Create a site](../../includes/virtual-wan-tutorial-s2s-site-include.md)]
 
-## <a name="vnet"></a>6.將 VNet 連線至中樞
+## <a name="connect-the-vpn-site-to-the-hub"></a><a name="connectsites"></a>將 VPN 網站連線到中樞
 
-在此步驟中，您會在中樞和 VNet 之間建立等互連的連線。 為您想要連線的每個 VNet 重複這些步驟。
+在此步驟中，您會將 VPN 網站連線到中樞。
 
-1. 在虛擬 WAN 頁面上，按一下 [虛擬網路連線]。
-2. 在 [虛擬網路連線] 頁面上，按一下 [+ 新增連線]。
-3. 在 [新增連線] 頁面上，填寫下列欄位︰
+[!INCLUDE [Connect VPN sites](../../includes/virtual-wan-tutorial-s2s-connect-vpn-site-include.md)]
 
-    * **名稱** - 為您的連線命名。
-    * **中樞** - 選取要與此連線產生關聯的中樞。
-    * **訂用帳戶** - 請確認訂用帳戶。
-    * **虛擬網路** - 選取要與此中樞連線的虛擬網路。 虛擬網路不能有現有的虛擬網路閘道。
-4. 按一下 [確定] 來建立對等互連連線。
+## <a name="connect-the-vnet-to-the-hub"></a><a name="vnet"></a>將 VNet 連線到中樞
 
-## <a name="device"></a>7.下載 VPN 組態
+[!INCLUDE [Connect](../../includes/virtual-wan-connect-vnet-hub-include.md)]
+
+## <a name="download-vpn-configuration"></a><a name="device"></a>下載 VPN 組態
 
 若要設定您的內部部署 VPN 裝置，請使用 VPN 裝置組態。
 
 1. 在您的虛擬 WAN 頁面上，按一下 [概觀]。
-2. 在 [概觀] 頁面頂端，按一下 [下載 VPN 組態]。 Azure 會在資源群組 'microsoft-network-[location]' 中建立儲存體帳戶，其中 location 是 WAN 的位置。 將組態套用至您的 VPN 裝置之後，就可以刪除此儲存體帳戶。
+2. 在 [中樞] -> [VPNSite] 頁面的頂端按一下 [下載 VPN 組態]。Azure 會在資源群組 'microsoft-network-[location]' 中建立儲存體帳戶，其中 location 是 WAN 的位置。 將組態套用至您的 VPN 裝置之後，就可以刪除此儲存體帳戶。
 3. 檔案建立完成之後，您可以按一下連結來下載。
-4. 將組態套用至您的 VPN 裝置。
+4. 將組態套用至您的內部部署 VPN 裝置。
 
 ### <a name="understanding-the-vpn-device-configuration-file"></a>了解 VPN 裝置組態檔
 
-裝置組態檔包含設定內部部署 VPN 裝置時要使用的設定。 當您檢視此檔案時，請注意下列資訊：
+裝置設定檔包含了設定內部部署 VPN 裝置時所要使用的設定。 當您檢視此檔案時，請注意下列資訊：
 
 * **vpnSiteConfiguration -** 此區段表示網站連線至虛擬 WAN 時設定的裝置詳細資料。 其中包含分支裝置的名稱和公用 IP 位址。
-* **vpnSiteConnections -** 本區段提供下列相關資訊：
+* **vpnSiteConnections -** 此區段提供與下列設定有關的資訊：
 
     * 虛擬中樞 VNet 的**位址空間**<br>範例：
  
@@ -124,7 +113,7 @@ ms.locfileid: "58338440"
     * 連線至中樞的 Vnet **位址空間**<br>範例：
 
          ```
-        "ConnectedSubnets":["10.2.0.0/16","10.30.0.0/16"]
+        "ConnectedSubnets":["10.2.0.0/16","10.3.0.0/16"]
          ```
     * 虛擬中樞 Vpngateway 的 **IP 位址**。 由於 Vpngateway 的每個連線都由「主動對主動」設定中的 2 個通道組成，因此您會看到此檔案中列出這兩個 IP 位址。 在此範例中，您會看到每個網站的 "Instance0" 和 "Instance1"。<br>範例：
 
@@ -134,7 +123,7 @@ ms.locfileid: "58338440"
         ```
     * **Vpngateway 連線設定詳細資料**，例如 BGP、預先共用金鑰等等。PSK 是自動為您產生的預先共用金鑰。 您隨時都可以在自訂 PSK 的 [概觀] 頁面中編輯連線。
   
-### <a name="example-device-configuration-file"></a>範例裝置組態檔
+### <a name="example-device-configuration-file"></a>範例裝置設定檔
 
   ```
   { 
@@ -153,7 +142,7 @@ ms.locfileid: "58338440"
                "Region":"West Europe",
                "ConnectedSubnets":[ 
                   "10.2.0.0/16",
-                  "10.30.0.0/16"
+                  "10.3.0.0/16"
                ]
             },
             "gatewayConfiguration":{ 
@@ -250,44 +239,23 @@ ms.locfileid: "58338440"
 * VPN 裝置頁面上的指示不是針對虛擬 WAN 所撰寫，但您也可以從組態檔使用虛擬 WAN 的值，手動設定 VPN 裝置。 
 * 適用於 VPN 閘道的可下載裝置組態指令碼不適用於虛擬 WAN，因為組態不同。
 * 新的虛擬 WAN 可以支援 IKEv1 和 IKEv2。
-* 虛擬 WAN 只能使用路由式 VPN 裝置和裝置指示。
+* 虛擬 WAN 可以使用原則式與路由式 VPN 裝置和裝置指示。
 
-## <a name="viewwan"></a>8.檢視您的虛擬 WAN
+## <a name="configure-your-vpn-gateway"></a><a name="gateway-config"></a>設定 VPN 閘道
 
-1. 瀏覽至虛擬 WAN。
-2. 在 [概觀] 頁面中，地圖上的每個點都代表著中樞。 暫留在任一點上，即可檢視中樞健康情況摘要。
-3. 在 [中樞與連線] 區段中，您可以檢視中樞狀態、網站、區域、VPN 連線狀態和輸入與輸出位元組。
+您可以選取 [檢視/設定]，隨時檢視和設定您的 VPN 閘道設定。
 
-## <a name="viewhealth"></a>9.檢視資源健康情況
+:::image type="content" source="media/virtual-wan-site-to-site-portal/view-configuration-1.png" alt-text="檢視設定" lightbox="media/virtual-wan-site-to-site-portal/view-configuration-1-expand.png":::
 
-1. 瀏覽至您的 WAN。
-2. 在 WAN 頁面上的 [支援 + 疑難排解] 區段中，按一下 [健康情況] 並檢視您的資源。
+在 [編輯 VPN 閘道] 頁面上，您可以看到下列設定：
 
-## <a name="connectmon"></a>10.監視連線
+* VPN 閘道的公用 IP 位址 (由 Azure 指派)
+* VPN 閘道的私人 IP 位址 (由 Azure 指派)
+* VPN 閘道的預設 BGP IP 位址 (由 Azure 指派)
+* 自訂 BGP IP 位址的設定選項：此欄位保留給 APIPA (自動私人 IP 定址)。 Azure 在範圍 169.254.21.* 和 169.254.22.* 支援 BGP IP。 Azure 會接受這些範圍內的 BGP 連線，但會使用預設的 BGP IP 來進行撥號連線。
 
-建立連線以監視 Azure VM 和遠端站台之間的通訊。 如需有關如何設定連線監視的資訊，請參閱[監視網路通訊](~/articles/network-watcher/connection-monitor.md)。 來源欄位是 Azure 中的 VM IP，目的地 IP 是位址是網站 IP。
-
-## <a name="cleanup"></a>11.清除資源
-
-您可以使用 [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) 來移除不再需要的資源群組，以及其所包含的所有資源。 將 "myResourceGroup" 取代為您的資源群組名稱，然後執行下列 PowerShell 命令：
-
-```azurepowershell-interactive
-Remove-AzResourceGroup -Name myResourceGroup -Force
-```
+   :::image type="content" source="media/virtual-wan-site-to-site-portal/view-configuration-2.png" alt-text="檢視設定" lightbox="media/virtual-wan-site-to-site-portal/view-configuration-2-expand.png":::
 
 ## <a name="next-steps"></a>後續步驟
-
-在本教學課程中，您已了解如何：
-
-> [!div class="checklist"]
-> * 建立 WAN
-> * 建立網站
-> * 建立中樞
-> * 將中樞連線至網站
-> * 將 VNet 連線至中樞
-> * 下載並套用 VPN 裝置組態
-> * 檢視您的虛擬 WAN
-> * 檢視資源健康情況
-> * 監視連線
 
 若要深入了解虛擬 WAN，請參閱[虛擬 WAN 概觀](virtual-wan-about.md)頁面。

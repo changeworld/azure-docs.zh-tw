@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/24/2018
 ms.author: cephalin
 ms.openlocfilehash: 612c77659760b6a8bc0a62270d4cd7174f2be709
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52440017"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "67174629"
 ---
 ## <a name="create-an-azure-app-service-plan"></a>建立 Azure App Service 方案
 

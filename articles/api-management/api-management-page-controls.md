@@ -9,16 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 11/20/2017
+ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: d87293d89e4009512494bf47f9742ea5901f909a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b826c986a0af26bb79fb0823e4e8626f0165d460
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60656879"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250017"
 ---
 # <a name="azure-api-management-page-controls"></a>Azure API 管理的頁面控制項
 Azure API 管理提供下列可在開發人員入口網站範本中使用的控制項。  
@@ -29,9 +28,11 @@ Azure API 管理提供下列可在開發人員入口網站範本中使用的控�
 <app-actions params="{ appId: '{{app.id}}' }"></app-actions>  
 ```  
   
- 參數的值會以範本資料模型組件的形式來傳入。 大部分情況下，您只要在針對每個控制項所提供的範例中貼上，即可讓其正確運作。 如需參數值的詳細資訊，請參閱控制項可能使用所在之各個範本的資料模型區段。  
-  
- 如需有關使用範本的詳細資訊，請參閱[如何使用範本自訂 API 管理開發人員入口網站](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/)。  
+參數的值會以範本資料模型組件的形式來傳入。 大部分情況下，您只要在針對每個控制項所提供的範例中貼上，即可讓其正確運作。 如需參數值的詳細資訊，請參閱控制項可能使用所在之各個範本的資料模型區段。  
+
+如需有關使用範本的詳細資訊，請參閱[如何使用範本自訂 API 管理開發人員入口網站](./api-management-developer-portal-templates.md)。  
+
+[!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
@@ -39,17 +40,17 @@ Azure API 管理提供下列可在開發人員入口網站範本中使用的控�
   
 -   [app-actions](#app-actions)  
 -   [basic-signin](#basic-signin)  
--   [paging-control](#paging-control)  
+-   [分頁控制](#paging-control)  
 -   [提供者](#providers)  
--   [search-control](#search-control)  
+-   [搜尋-控制項](#search-control)  
 -   [sign-up](#sign-up)  
--   [subscribe-button](#subscribe-button)  
--   [subscription-cancel](#subscription-cancel)  
+-   [訂閱-按鈕](#subscribe-button)  
+-   [訂用帳戶-取消](#subscription-cancel)  
   
-##  <a name="app-actions"></a>app-actions  
+##  <a name="app-actions"></a><a name="app-actions"></a>應用程式動作  
  `app-actions` 控制項會提供使用者介面，以便與開發人員入口網站中 [使用者設定檔] 頁面上的應用程式互動。  
   
- ![app&#45;actions 控制項](./media/api-management-page-controls/APIM-app-actions-control.png "APIM app-actions 控制項")  
+ ![應用程式&#45;動作控制](./media/api-management-page-controls/APIM-app-actions-control.png "APIM 應用程式動作控制項")  
   
 ### <a name="usage"></a>使用量  
   
@@ -68,10 +69,10 @@ Azure API 管理提供下列可在開發人員入口網站範本中使用的控�
   
 -   [應用程式](api-management-user-profile-templates.md#Applications)  
   
-##  <a name="basic-signin"></a>basic-signin  
+##  <a name="basic-signin"></a><a name="basic-signin"></a>基本-登入  
  `basic-signin` 控制項會提供用來在開發人員入口網站的登入頁面中收集使用者登入資訊的控制項。  
   
- ![basic&#45;signin 控制項](./media/api-management-page-controls/APIM-basic-signin-control.png "APIM basic-signin 控制項")  
+ ![基本&#45;登入控制項](./media/api-management-page-controls/APIM-basic-signin-control.png "APIM 基本-登錄控制項")  
   
 ### <a name="usage"></a>使用量  
   
@@ -87,7 +88,7 @@ Azure API 管理提供下列可在開發人員入口網站範本中使用的控�
   
 -   [登入](api-management-page-templates.md#SignIn)  
   
-##  <a name="paging-control"></a>paging-control  
+##  <a name="paging-control"></a><a name="paging-control"></a>paging-control  
  `paging-control` 會在顯示項目清單的開發人員入口網站頁面上提供分頁功能。  
   
  ![分頁控制項](./media/api-management-page-controls/APIM-paging-control.png "APIM 分頁控制項")  
@@ -110,7 +111,7 @@ Azure API 管理提供下列可在開發人員入口網站範本中使用的控�
   
 -   [產品清單](api-management-product-templates.md#ProductList)  
   
-##  <a name="providers"></a>providers  
+##  <a name="providers"></a><a name="providers"></a>都會  
  `providers` 控制項會提供用來在開發人員入口網站的登入頁面中選取驗證提供者的控制項。  
   
  ![提供者控制項](./media/api-management-page-controls/APIM-providers-control.png "APIM 提供者控制項")  
@@ -129,7 +130,7 @@ Azure API 管理提供下列可在開發人員入口網站範本中使用的控�
   
 -   [登入](api-management-page-templates.md#SignIn)  
   
-##  <a name="search-control"></a>search-control  
+##  <a name="search-control"></a><a name="search-control"></a>search-control  
  `search-control` 會在顯示項目清單的開發人員入口網站頁面上提供搜尋功能。  
   
  ![搜尋控制項](./media/api-management-page-controls/APIM-search-control.png "APIM 搜尋控制項")  
@@ -150,10 +151,10 @@ Azure API 管理提供下列可在開發人員入口網站範本中使用的控�
   
 -   [產品清單](api-management-product-templates.md#ProductList)  
   
-##  <a name="sign-up"></a>sign-up  
+##  <a name="sign-up"></a><a name="sign-up"></a>註冊  
  `sign-up` 控制項會提供用來在開發人員入口網站的註冊頁面中收集使用者設定檔資訊的控制項。  
   
- ![註冊控制項](./media/api-management-page-controls/APIM-sign-up-control.png "APIM 註冊控制項")  
+ ![簽署&#45;控制](./media/api-management-page-controls/APIM-sign-up-control.png "APIM 註冊控制")  
   
 ### <a name="usage"></a>使用量  
   
@@ -167,12 +168,12 @@ Azure API 管理提供下列可在開發人員入口網站範本中使用的控�
 ### <a name="developer-portal-templates"></a>開發人員入口網站範本  
  `sign-up` 控制項可用於下列開發人員入口網站範本：  
   
--   [註冊](api-management-page-templates.md#SignUp)  
+-   [登記](api-management-page-templates.md#SignUp)  
   
-##  <a name="subscribe-button"></a>subscribe-button  
+##  <a name="subscribe-button"></a><a name="subscribe-button"></a>subscribe-button  
  `subscribe-button` 會提供用來為使用者訂閱產品的控制項。  
   
- ![subscribe&#45;button 控制項](./media/api-management-page-controls/APIM-subscribe-button-control.png "APIM subscribe-button 控制項")  
+ ![訂閱&#45;按鈕控制項](./media/api-management-page-controls/APIM-subscribe-button-control.png "APIM 訂閱按鈕控制項")  
   
 ### <a name="usage"></a>使用量  
   
@@ -188,10 +189,10 @@ Azure API 管理提供下列可在開發人員入口網站範本中使用的控�
   
 -   [產品](api-management-product-templates.md#Product)  
   
-##  <a name="subscription-cancel"></a>subscription-cancel  
+##  <a name="subscription-cancel"></a><a name="subscription-cancel"></a>subscription-cancel  
  `subscription-cancel` 控制項會提供可在開發人員入口網站的 [使用者設定檔] 頁面中取消產品訂閱的控制項。  
   
- ![subscription&#45;cancel 控制項](./media/api-management-page-controls/APIM-subscription-cancel-control.png "APIM subscription-cancel 控制項")  
+ ![訂用帳戶&#45;取消控制項](./media/api-management-page-controls/APIM-subscription-cancel-control.png "APIM 訂用帳戶-取消控制項")  
   
 ### <a name="usage"></a>使用量  
   

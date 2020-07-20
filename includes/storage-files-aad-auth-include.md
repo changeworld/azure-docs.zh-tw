@@ -5,24 +5,18 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 10/22/2018
+ms.date: 07/30/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 64751e0fcbf9a2255964d0de673e2cc2020ceb9a
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
-ms.translationtype: HT
+ms.openlocfilehash: d470160a9b54af8751371aa4ca58202646c8fab8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50254724"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84263330"
 ---
-[Azure 檔案](../articles/storage/files/storage-files-introduction.md)透過 [Azure Active Directory (Azure AD) Domain Services](../articles/active-directory-domain-services/active-directory-ds-overview.md)，支援「透過 SMB (伺服器訊息區) (預覽) 進行以身分識別為基礎的驗證」。 您加入網域的 Windows 虛擬機器 (VM) 可以使用 [Azure AD](../articles/active-directory/fundamentals/active-directory-whatis.md) 認證存取 Azure 檔案共用。 
+[Azure 檔案儲存體](../articles/storage/files/storage-files-introduction.md)透過內部[部署 Active Directory Domain Services （AD DS）](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview)和[Azure Active Directory Domain Services （Azure AD DS）](../articles/active-directory-domain-services/overview.md)，在伺服器訊息區（SMB）上支援以身分識別為基礎的驗證。 本文著重于 Azure 檔案共用如何在內部部署或 Azure 中使用網域服務，以支援以身分識別為基礎的方式存取 SMB 上的 Azure 檔案共用。 針對您的 Azure 檔案共用啟用身分識別型存取，可讓您以 Azure 檔案共用取代現有的檔案伺服器，而不需要取代現有的目錄服務，以維持順暢的使用者對共用的存取權。 
 
-Azure AD 會使用 [ 角色型存取控制 (RBAC)](../articles/role-based-access-control/overview.md) 驗證身分識別，例如使用者、群組或服務主體。 您可以定義自訂 RBAC 角色，內有幾組用來存取 Azure 檔案的常用權限集。 在指派自訂 RBAC 角色給 Azure AD 身分識別時，會根據這些權限將 Azure 檔案共用的存取權授予身分識別。
+Azure 檔案儲存體會在使用者存取共用和目錄/檔案層級時強制執行授權。 共用層級許可權指派可以在透過[角色型存取控制（RBAC）](../articles/role-based-access-control/overview.md)模型管理的 Azure Active Directory （Azure AD）使用者或群組上執行。 使用 RBAC 時，您用來存取檔案的認證應該可以使用或同步處理到 Azure AD。 您可以將內建的 RBAC 角色（例如儲存體檔案資料 SMB 共用讀取器）指派給 Azure AD 中的使用者或群組，以授與 Azure 檔案共用的讀取權限。
 
-在預覽中，Azure 檔案對所有檔案和檔案共用中的目錄，均支援 [NTFS DACL](https://technet.microsoft.com/library/2006.01.howitworksntfs.aspx) 的保留、繼承和強制執行。 如果您是從檔案共用將資料複製到 Azure 檔案服務，或從 Azure 檔案服務將資料複製到檔案共用，都可以指定維持 NTFS DACL。 如此一來，您可以使用 Azure 檔案實作備份作業，同時在內部部署檔案共用與雲端檔案共用之間保留您的 NTFS DACL。 
-
-> [!NOTE]
-> - 預覽版本的 Linux VM 不支援透過 SMB 的 Azure AD 驗證。 只支援 Windows Server VM。
-> - 針對存取「Azure 檔案服務」的內部部署機器，不支援透過 SMB 進行 Azure AD 驗證。
-> - Azure AD 驗證僅適用於在 2018 年 9 月 24 日之後建立的儲存體帳戶。
-> - 「Azure 檔案同步服務」所管理的 Azure 檔案共用上不支援透過 SMB 的 Azure AD 驗證及 NTFS ACL 持續性。 
+在目錄/檔案層級，Azure 檔案儲存體支援保留、繼承和強制執行[Windows dacl](https://docs.microsoft.com/windows/win32/secauthz/access-control-lists) ，就像任何 windows 檔案伺服器一樣。 您可以選擇在現有檔案共用和 Azure 檔案共用之間透過 SMB 複製資料時，保留 Windows Dacl。 無論您是否計畫強制執行授權，您都可以使用 Azure 檔案共用來備份 Acl 以及您的資料。 

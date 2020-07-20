@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
 ms.openlocfilehash: 2ede7d474406b4b38b9496fbcfddb2a2e6085b58
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
-ms.translationtype: HT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50165450"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "67174195"
 ---
 > [!div class="op_single_selector"]
 > * [Azure 入口網站](../articles/storage/common/storage-e2e-troubleshooting.md)

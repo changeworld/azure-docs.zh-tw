@@ -1,27 +1,17 @@
 ---
-title: 使用 PowerShell 將資料磁碟連結至 Azure 中的 Windows VM | Microsoft Docs
+title: 使用 PowerShell 將資料磁片連結至 Azure 中的 Windows VM
 description: 如何使用 PowerShell 搭配 Resource Manager 部署模型，將新的或現有的資料磁碟連結至 Windows VM。
-services: virtual-machines-windows
-documentationcenter: ''
 author: roygara
-manager: twooley
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 10/16/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 1abc3fc18de3e9c1751c01c984e15ae44f25d5af
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
-ms.translationtype: MT
+ms.openlocfilehash: 6f16784d89d1f3edec491d5c7ae312dbd46212f1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64713120"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84658143"
 ---
 # <a name="attach-a-data-disk-to-a-windows-vm-with-powershell"></a>使用 PowerShell 將資料磁碟連結至 Windows VM
 
@@ -29,12 +19,10 @@ ms.locfileid: "64713120"
 
 首先，請檢閱下列提示：
 
-* 虛擬機器的大小會控制您可以連接的資料磁碟數目。 如需相關資訊，請參閱[虛擬機器的大小](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+* 虛擬機器的大小會控制您可以連接的資料磁碟數目。 如需詳細資訊，請參閱[虛擬機器的大小](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 * 若要使用進階 SSD，您將需要[已啟用進階儲存體的 VM 類型](sizes-memory.md)，例如 DS 系列或 GS 系列的虛擬機器。
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
-
-[!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
+本文會在[Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)內使用 PowerShell，這會持續更新為最新版本。 若要開啟 Cloud Shell，請選取任何程式碼區塊頂端的 [試試看]。
 
 ## <a name="add-an-empty-data-disk-to-a-virtual-machine"></a>將空的資料磁碟新增至虛擬機器
 
@@ -60,7 +48,7 @@ Update-AzVM -VM $vm -ResourceGroupName $rgName
 
 ### <a name="using-managed-disks-in-an-availability-zone"></a>在可用性區域中使用受控磁碟
 
-若要在可用性區域中建立磁碟，請使用 [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig) 並搭配 `-Zone` 參數。 下列範例會在區域 1 建立磁碟。
+若要在可用性區域中建立磁碟，請使用 [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig) 並搭配 `-Zone` 參數。 下列範例會在區域 1** 建立磁碟。
 
 ```powershell
 $rgName = 'myResourceGroup'
@@ -128,4 +116,4 @@ Update-AzVM -VM $vm -ResourceGroupName $rgName
 
 ## <a name="next-steps"></a>後續步驟
 
-建立[快照集](snapshot-copy-managed-disk.md)。
+您也可以使用範本來部署受控磁片。 如需詳細資訊，請參閱[在 Azure Resource Manager 範本中使用受控磁碟或用](using-managed-disks-template-deployments.md)來部署多個資料磁片的[快速入門範本](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-multiple-data-disk)。

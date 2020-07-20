@@ -14,54 +14,79 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: 18c52a47c291181547a9005c273dc1a329b8c207
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 986da8980a569583ef454833957ace85dd1bfbb6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510956"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80351066"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Microsoft Azure 儲存體總管版本資訊
 
-本文包含 Azure 儲存體總管 1.4.3 版和先前版本的版本資訊。
+本文包含 Azure 儲存體總管的最新版本資訊，以及先前版本的版本資訊。 
 
 [Microsoft Azure 儲存體總管](./vs-azure-tools-storage-manage-with-storage-explorer.md) 是一個獨立應用程式，可讓您在 Windows、macOS 和 Linux 上輕鬆使用 Azure 儲存體資料。
 
-## <a name="version-180"></a>版本 1.8.0
-5/1/2019
+若要下載舊版的儲存體總管，您可以流覽 GitHub 存放庫的 [[發行] 頁面](https://github.com/microsoft/AzureStorageExplorer/releases)。
 
-### <a name="download-azure-storage-explorer-180"></a>下載 Azure 儲存體總管 1.8.0
-- [適用於 Windows azure 儲存體總管 1.8.0](https://go.microsoft.com/fwlink/?LinkId=708343)
-- [Mac 的 azure 儲存體總管 1.8.0](https://go.microsoft.com/fwlink/?LinkId=708342)
-- [適用於 Linux 的 azure 儲存體總管 1.8.0](https://go.microsoft.com/fwlink/?LinkId=722418)
+## <a name="version-1110"></a>版本1.11。0
+11/4/2019
 
-### <a name="new"></a>換一個
+### <a name="new"></a>新增
+* Blob、ADLS Gen2 和受控磁碟的作業會使用整合式 AzCopy。 更明確地說，下列作業會使用 AzCopy 完成：
+   * Blob
+      * 開啟以進行編輯 + 上傳
+      * 上傳，包括拖曳 & drop
+      * 下載
+      * 複製 & 貼上 #1249
+      * 刪除
+   * ADLS Gen2 Blob
+      * 上傳，包括拖曳 & drop
+      * 下載
+      * 複製 & 貼上
+      * 刪除，包括資料夾刪除
+   * 受控磁碟
+      * 上傳
+      * 下載
+      * 複製 & 貼上
 
-* 整合式的 AzCopy 版本已更新為版本 10.1.0。
-* Ctrl / Cmd + R 現在可以用來重新整理目前取得焦點的編輯器。 [#1097](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1097)
-* Azure Stack 儲存體 API 版本已變更為 2017年-04-17。
-* ADLS Gen2 管理存取 對話方塊會立即讓遮罩保持同步的方式類似於其他 POSIX 權限的工具。 UI 也會警告您是否有所變更時，會導致使用者或群組的權限超過遮罩的界限。 [#1253](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1253)
-* AzCopy 上傳，計算並設定 MD5 雜湊的旗標已啟用。 [#1223](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1223)
+   此外，整合式 AzCopy 體驗已新增數個經常要求的功能：
+   * 衝突解決方式-在傳輸期間會提示您解決衝突。 #1455
+   * 上傳為分頁 blob-您可以選擇是否要 AzCopy 上傳 .vhd 和 .vhdx 檔案作為分頁 blob。 #1164 和 #1601
+   * 可設定的 AzCopy 參數-已新增數個設定來微調 AzCopy 的效能和資源使用量。 請參閱下方的詳細資料。
 
+* 為了啟用 ADLS Gen2 和 Blob 的多重通訊協定存取，並進一步增強 ADLS Gen2 體驗，我們已為 ADLS Gen2 帳戶新增下列功能：
+   * 使用易記名稱搜尋以設定 ACL 許可權
+   * 查看隱藏的容器，例如 $logs 和 $web
+   * 取得和中斷容器租用
+   * 取得和中斷 Blob 租用 #848
+   * 管理容器存取原則
+   * 設定 Blob 存取層
+   * 複製 & 貼上 Blob
 
-### <a name="preview-features"></a>預覽功能
+* 在此版本中，我們將預覽17種其他語言。 您可以在 [應用程式] → [地區設定] → [語言（預覽）] 底下的 [設定] 頁面上，切換至您所選擇的語言。 我們仍在努力翻譯其他字串，並改善翻譯品質。 如果您有任何關於翻譯的意見反應，或如果您注意到尚未轉譯的字串，請[在 GitHub 上開啟問題](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=%F0%9F%8C%90%20localization&template=bug-report.md&title=)。
+* 在每個版本中，我們會嘗試上架幾個設定，以啟用儲存體總管的微調。 在此版本中，我們新增了設定以進一步設定 AzCopy，以及隱藏服務節點：
+   * AzCopy 頻寬限制-協助控制網路 AzCopy 所使用的數量。 您可以在「傳輸」→「AzCopy」→「最大傳輸速率」中找到此設定。 #1099
+   * AzCopy MD5 檢查-可讓您設定是否及如何在下載時嚴格 AzCopy 檢查 MD5 雜湊。 您可以在「傳輸」→「AzCopy」→「檢查 MD5」找到這種設定。
+   * AzCopy 並行和記憶體緩衝區大小-根據預設，AzCopy 會分析您的電腦，以判斷這些設定是否有合理的預設值。 但是，如果您遇到效能問題，這些先進的設定可以用來進一步量身打造 AzCopy 在電腦上執行的方式。 您可以在 [傳輸] → [AzCopy] 下找到這些設定。 #994
+   * 顯示和隱藏服務節點-這些設定可讓您選擇顯示或隱藏儲存體總管支援的任何 Azure 服務。 您可以在 [服務] 區段下找到這些設定。 #1877
 
-* 设备代码流登录现在可供预览。 若要启用此功能，请转到“预览”→“使用设备代码流登录”。 我们鼓励所有在空白登录窗口中遇到问题的用户试用此功能，因为经过证实，它是一种更可靠的登录方式。
-* 与 AzCopy 集成的存储资源管理器目前可供预览。 若要启用此功能，请转到“预览”→“使用 AzCopy 来改善 Blob 上传和下载”。 使用 AzCopy 应该可以更快且更有效地完成 Blob 传输。
+* 建立受控磁片的快照集時，現在會提供預設名稱。 #1847
+* 附加 Azure AD 時，如果您附加 ADLS Gen2 Blob 容器，則節點旁會顯示 "（ADLS Gen2）"。 #1861
 
 ### <a name="fixes"></a>修正
-
-* [存取原則] 對話方塊上並沒有到期的儲存體的存取原則，將無法再設定到期日。 [#764](https://www.github.com/Microsoft/AzureStorageExplorer/issues/764)
-* 已確定產生的 SAS 時，會正確地使用 「 預存存取原則對一些變更來產生 SAS 對話方塊。 [#1269](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1269)
-* 當嘗試將上傳為非 512 位元組對齊之分頁 Blob 的檔案時，儲存體總管現在會公開更多相關的錯誤。 [#1050](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1050)
-* 複製 Blob 容器的過高的顯示名稱將會失敗。 現在，會使用 Blob 容器的實際名稱。 [#1166](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1166)
-* 嘗試在其名稱中有 unicode 字元 ADLS Gen2 資料夾上執行某些動作將會失敗。 所有動作現在應可都運作。 [#980](https://www.github.com/Microsoft/AzureStorageExplorer/issues/980)
+* 複製、上傳或下載大型磁片時，儲存體總管有時候會無法撤銷操作所涉及的磁片存取權。 這個問題已經修正。 #2048
+* 查看分割區索引鍵查詢時，資料表的統計資料失敗。 這個問題已經修正。 #1886
 
 ### <a name="known-issues"></a>已知問題
-
-* 在執行非 AzCopy Blob 下載時，將大型檔案的 MD5 不正在驗證。 這是因為儲存體 SDK 中的 bug。 [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
-* 使用 RBAC 时，存储资源管理器需要一些管理层权限才能访问存储资源。 有关详细信息，请参阅[故障排除指南](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting)。
-* 在代理后面尝试访问 ADLS Gen2 Blob 可能会失败。
+* 儲存體總管1.11.0 現在需要 DFS 端點（例如 "myaccount.dfs.core.windows.net"）才能附加至 ADLS Gen2 容器。 舊版的儲存體總管允許您使用 blob 端點。 這些附件在升級至1.11.0 之後可能無法再使用。 如果您遇到這個問題，請使用 DFS 端點重新附加。
+* 不會檢查數值設定是否位於有效範圍內。 #2140
+* 將 blob 容器從一個儲存體帳戶複製到樹狀檢視中的另一個，可能會失敗。 我們正在調查此問題。 #2124
+* [自動重新整理] 設定還不會影響 [Blob Explorer] 中的所有作業。
+* Azure Stack 不支援受控磁片功能。
+* 如果磁片上傳或貼上失敗，且在失敗前建立了新的磁片，儲存體總管將不會為您刪除該磁片。
+* 視您取消磁片上傳或貼上的時間而定，您可以讓新磁片處於損毀狀態。 如果發生這種情況，您需要刪除新的磁片，或手動呼叫磁片 Api 以取代磁片的內容，使其不再損毀。
+* 使用 RBAC 時，儲存體總管需要一些管理層許可權，才能存取您的儲存體資源。 如需詳細資訊，請參閱[疑難排解指南](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting)。
 * 中斷連結透過 SAS URI 連結的資源 (例如 Blob 容器) 可能會導致錯誤，使得其他附件無法正確顯示。 若要解決此問題，只需重新整理群組節點。 如需詳細資訊，請參閱 #537。
 * 如果您使用 VS for Mac，而且曾建立自訂 AAD 設定，則您可能無法登入。 若要解決此問題，請刪除 ~/.IdentityService/AadConfigurations 的內容。 如果這麼做無法將您解除封鎖，請在此問題加上註解。
 * Azurite 尚未完全實作所有的儲存體 API。 因此，對於開發儲存體使用 Azurite 時，可能出現未預期的錯誤或行為。
@@ -76,20 +101,26 @@ ms.locfileid: "65510956"
    * 存取層級
    * 虛刪除
    * ADLS Gen2
+   * 受控磁碟
 * 儲存體總管使用的 Electron 殼層具有一些 GPU (圖形處理單元) 硬體加速的問題。 如果儲存體總管顯示空白 (空的) 主視窗，您可以嘗試從命令列啟動儲存體總管並透過新增 `--disable-gpu` 切換停用 GPU 加速：
 
     ```
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* 在 Linux 上執行儲存體總管需要先安裝特定相依性。 檢查儲存體總管[疑難排解指南](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies)如需詳細資訊。
+* 在 Linux 上執行儲存體總管需要先安裝特定相依性。 如需詳細資訊，請參閱儲存體總管[疑難排解指南](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies)。
 
 ## <a name="previous-releases"></a>舊版
 
-* [版本 1.7.0](#version-170)
-* [版本 1.6.2](#version-162)
+* [版本1.10.1 版](#version-1101)
+* [版本1.10。0](#version-1100)
+* [版本1.9。0](#version-190)
+* [版本1.8。1](#version-181)
+* [版本1.8。0](#version-180)
+* [1.7.0 版](#version-170)
+* [1.6.2 版](#version-162)
 * [1.6.1 版](#version-161)
-* [1.6.0 版](#version-160)
+* [版本1.6。0](#version-160)
 * [1.5.0 版](#version-150)
 * [1.4.4 版](#version-144)
 * [1.4.3 版](#version-143)
@@ -98,7 +129,7 @@ ms.locfileid: "65510956"
 * [1.3.0 版](#version-130)
 * [版本 1.2.0](#version-120)
 * [1.1.0 版](#version-110)
-* [1.0.0 版](#version-100)
+* [1\.0.0 版](#version-100)
 * [0.9.6 版](#version-096)
 * [0.9.5 版](#version-095)
 * [0.9.4 和 0.9.3 版](#version-094-and-093)
@@ -122,40 +153,354 @@ ms.locfileid: "65510956"
 * [0.7.20160105.0 版](#version-07201601050)
 * [0.7.20151116.0 版](#version-07201511160)
 
-## <a name="version-170"></a>1.7.0 版
-3/5/2019
+## <a name="version-1101"></a>版本1.10.1 版
+2019/9/19
 
-### <a name="download-azure-storage-explorer-170"></a>下载 Azure 存储资源管理器 1.7.0
-- [适用于 Windows 的 Azure 存储资源管理器 1.7.0](https://go.microsoft.com/fwlink/?LinkId=708343)
-- [适用于 Mac 的 Azure 存储资源管理器 1.7.0](https://go.microsoft.com/fwlink/?LinkId=708342)
-- [适用于 Linux 的 Azure 存储资源管理器 1.7.0](https://go.microsoft.com/fwlink/?LinkId=722418)
+### <a name="hotfix"></a>Hotfix
+* 某些使用者嘗試在其 ADLS Gen 1 帳戶中查看其資料時，1.10.0 發生錯誤。 此錯誤導致 explorer 面板無法正確呈現。 這個問題已經修正。 #1853 #1865
 
-### <a name="new"></a>換一個
+### <a name="new"></a>新增
+* 儲存體總管現在有專用的設定 UI。 您可以從 [編輯] → [設定]，或按一下左側垂直工具列中的 [設定] 圖示（齒輪）來存取它。 這項功能是我們為了提供各種[使用者要求的設定](https://github.com/microsoft/AzureStorageExplorer/labels/%3Abulb%3A%20setting%20candidate)而採取的第一步。 從這個版本開始，支援下列設定：
+  * 佈景主題
+  * Proxy
+  * 退出時登出 #6
+  * 啟用裝置程式碼流程登入
+  * 自動重新整理 #1526
+  * 啟用 AzCopy
+  * AzCopy SAS 持續時間：如果您想要新增其他設定，請[在 GitHub 上開啟問題](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=%3Abulb%3A%20setting%20candidate&template=feature_request.md&title=)，並說明您想要查看的設定。
+* 儲存體總管現在支援受控磁碟。 您可以：
+  * 將內部部署 VHD 上傳至新的磁片
+  * 下載磁片
+  * 跨資源群組和區域複製並貼上磁片
+  * 刪除磁片
+  * 建立磁片的快照集
 
-* 现在，在管理 ADLS Gen2 容器、文件或文件夹的访问权限时，可以更改所有者和拥有组。
-* 在 Windows 上，从产品内部更新存储资源管理器现在属于增量安装操作。 这样应该可以加快更新的速度。 如果你偏向于全新安装，可以自行下载[安装程序](https://azure.microsoft.com/features/storage-explorer/)并手动安装。 #1089
+上傳、下載和跨區域複製的磁片都是由 AzCopy v10 提供技術支援。
+* 儲存體總管現在可以透過 Linux 上的「貼齊存放區」安裝。 當您透過 [貼齊存放區] 安裝時，系統會為您安裝所有相依性，包括 .NET Core！ 我們目前已確認儲存體總管在 Ubuntu 和 CentOS 上正常執行。 如果您在其他 Linux 散發版本上從「貼齊存放區」安裝時遇到問題，請[在 GitHub 上開啟問題](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=snaps&template=bug-report.md&title=)。 若要深入瞭解如何從「貼齊存放區」進行安裝，請參閱我們的[快速入門手冊](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux)。 #68
+* Azure Active Directory （Azure AD）附加兩項重大變更，目的是要讓此功能更適用于 ADLS Gen2 使用者：
+  * 您現在可以選取您要附加的資源所在的租使用者。 這表示您不再需要擁有資源訂用帳戶的 RBAC 存取權。
+  * 如果您要附加 ADLS Gen2 Blob 容器，您現在可以附加至容器中的特定路徑。
+* 管理 ADLS Gen2 檔案和資料夾的 Acl 時，儲存體總管現在會在 ACL 中顯示實體的易記名稱。 #957
+* 透過 OID 新增至 ADLS Gen2 ACL 時，儲存體總管現在會驗證 OID 屬於您租使用者中的有效實體。 #1603
+* 在索引標籤之間流覽的鍵盤快速鍵現在會使用較多的標準按鍵組合。 #1018
+* 按一下索引標籤，即可立即將它關閉。 #1348
+* 如果 AzCopy 傳輸包含略過但沒有失敗，儲存體總管現在會顯示警告圖示，以反白顯示發生的略過。 #1490
+* 整合式 AzCopy 已更新為版本10.2.1。 此外，您現在可以在 [關於] 對話方塊中，查看已安裝的 AzCopy 版本。 #1343
 
-### <a name="preview-features"></a>预览功能
+### <a name="fixes"></a>修正
+* 許多使用者在使用附加的儲存體帳戶時，已遇到各種「無法讀取未定義的版本」或「無法讀取未定義的連接」錯誤。 雖然我們仍繼續調查此問題的根本原因，但在1.10.0 中，我們已改善載入附加儲存體帳戶的錯誤處理。 #1626、#985 和 #1532
+* 瀏覽器樹狀結構（左側）可能會進入狀態，而焦點會重複跳到最上層節點。 這個問題已經修正。 #1596
+* 管理 blob 的快照集時，螢幕讀取器不會讀取與快照集相關聯的時間戳記。 這個問題已經修正。 #1202
+* 未設定 macOS 上的 Proxy 設定，以供驗證程式使用它們。 這個問題已經修正。 #1567
+* 如果主權雲端中的儲存體帳戶是使用名稱和金鑰所連接，AzCopy 將無法使用。 這個問題已經修正。 #1544
+* 透過連接字串附加時，儲存體總管現在會移除尾端空格。 #1387
 
-* 设备代码流登录现在可供预览。 若要启用此功能，请转到“预览”→“使用设备代码流登录”。 我们鼓励所有在空白登录窗口中遇到问题的用户试用此功能，因为经过证实，它是一种更可靠的登录方式。 #938
-* 与 AzCopy 集成的存储资源管理器目前可供预览。 若要启用此功能，请转到“预览”→“使用 AzCopy 来改善 Blob 上传和下载”。 使用 AzCopy 应该可以更快且更有效地完成 Blob 传输。
+### <a name="known-issues"></a>已知問題
+* [自動重新整理] 設定還不會影響 [Blob Explorer] 中的所有作業。
+* Azure Stack 不支援受控磁片功能。
+* 如果磁片上傳或貼上失敗，且在失敗前建立了新的磁片，儲存體總管將不會為您刪除該磁片。
+* 視您取消磁片上傳或貼上的時間而定，您可以讓新磁片處於損毀狀態。 如果發生這種情況，您需要刪除新的磁片，或手動呼叫磁片 Api 以取代磁片的內容，使其不再損毀。
+* 視您取消磁片上傳或貼上的時間而定，您可以讓新磁片處於損毀狀態。 如果發生這種情況，您需要刪除新的磁片，或手動呼叫磁片 Api 以取代磁片的內容，使其不再損毀。
+* 執行非 AzCopy Blob 下載時，不會驗證大型檔案的 MD5。 這是因為儲存體 SDK 中的錯誤所造成。 [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
+* 使用 RBAC 時，儲存體總管需要一些管理層許可權，才能存取您的儲存體資源。 如需詳細資訊，請參閱[疑難排解指南](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting)。
+* 中斷連結透過 SAS URI 連結的資源 (例如 Blob 容器) 可能會導致錯誤，使得其他附件無法正確顯示。 若要解決此問題，只需重新整理群組節點。 如需詳細資訊，請參閱 #537。
+* 如果您使用 VS for Mac，而且曾建立自訂 AAD 設定，則您可能無法登入。 若要解決此問題，請刪除 ~/.IdentityService/AadConfigurations 的內容。 如果這麼做無法將您解除封鎖，請在此問題加上註解。
+* Azurite 尚未完全實作所有的儲存體 API。 因此，對於開發儲存體使用 Azurite 時，可能出現未預期的錯誤或行為。
+* 在少數情況下，樹狀焦點可能會固定在快速存取上。 若要取消固定焦點，您可以 [全部重新整理]。
+* 由於 NodeJS 中的錯誤，造成無法從您的 OneDrive 資料夾上傳。 已修正該 Bug，但是尚未整合至 Electron。 若要解決這個在上傳到 Blob 容器或從 Blob 容器下載時的問題，您可以使用實驗性的 AzCopy 功能。
+* 當目標為 Azure Stack，以附加 Blob 方式上傳特定檔案會失敗。
+* 按一下工作上的 [取消] 之後，該工作可能需要經過一段時間才會取消。 這是因為我們使用這裡所述的取消篩選器因應措施。
+* 如果您選擇錯誤的 PIN/智慧卡憑證，則必須重新啟動，才能使儲存體總管忘記該決定。
+* 重新命名 Blob (個別執行或在重新命名的 Blob 容器內) 不會保留快照集。 Blob、檔案及實體的所有其他屬性和中繼資料在重新命名期間都會保留。
+* Azure Stack 不支援下列功能。 嘗試在使用 Azure Stack 資源時使用這些功能，可能會導致非預期的錯誤。
+   * 檔案共用
+   * 存取層級
+   * 虛刪除
+   * ADLS Gen2
+   * 受控磁碟
+* 儲存體總管使用的 Electron 殼層具有一些 GPU (圖形處理單元) 硬體加速的問題。 如果儲存體總管顯示空白 (空的) 主視窗，您可以嘗試從命令列啟動儲存體總管並透過新增 `--disable-gpu` 切換停用 GPU 加速：
+
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
+
+* 在 Linux 上執行儲存體總管需要先安裝特定相依性。 如需詳細資訊，請參閱儲存體總管[疑難排解指南](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies)。
+
+
+## <a name="version-1100"></a>版本1.10。0
+9/12/2019
+
+### <a name="new"></a>新增
+
+* 儲存體總管現在有專用的設定 UI。 您可以從 [編輯] → [設定]，或按一下左側垂直工具列中的 [設定] 圖示（齒輪）來存取它。 這項功能是我們為了提供各種[使用者要求的設定](https://github.com/microsoft/AzureStorageExplorer/labels/%3Abulb%3A%20setting%20candidate)而採取的第一步。 從這個版本開始，支援下列設定：
+    * 佈景主題
+    * Proxy
+    * 退出時登出[#6](https://www.github.com/Microsoft/AzureStorageExplorer/issues/6)
+    * 啟用裝置程式碼流程登入
+    * 自動重新整理[#1526](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1526)
+    * 啟用 AzCopy
+    * AzCopy SAS 持續時間
+
+    如果您想要新增其他設定，請[在 GitHub 上開啟問題，並說明您想要查看的設定](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=%3Abulb%3A%20setting%20candidate&template=feature_request.md&title=)。
+* 儲存體總管現在支援受控磁碟。 您可以：
+    * 將內部部署 VHD 上傳至新的磁片
+    * 下載磁片
+    * 跨資源群組和區域複製並貼上磁片
+    * 刪除磁片
+    * 建立磁片的快照集
+
+    上傳、下載和跨區域複製的磁片都是由 AzCopy v10 提供技術支援。
+* 儲存體總管現在可以透過 Linux 上的「貼齊存放區」安裝。 當您透過 [貼齊存放區] 安裝時，系統會為您安裝所有相依性，包括 .NET Core！ 我們目前已確認儲存體總管在 Ubuntu 和 CentOS 上正常執行。 如果您在其他 Linux 散發版本上從「貼齊存放區」安裝時遇到問題，請[在 GitHub 上開啟問題](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=snaps&template=bug-report.md&title=)。 若要深入瞭解如何從「貼齊存放區」進行安裝，請參閱我們的[快速入門手冊](https://aka.ms/storageexplorer/snapinformation)。 [#68](https://www.github.com/Microsoft/AzureStorageExplorer/issues/68)
+* Azure Active Directory （Azure AD）附加兩項重大變更，目的是要讓此功能更適用于 ADLS Gen2 使用者： * 您現在可以選取所附加資源所在的租使用者。 這表示您不再需要擁有資源訂用帳戶的 RBAC 存取權。
+        * 如果您要附加 ADLS Gen2 Blob 容器，您現在可以附加至容器中的特定路徑。
+* 管理 ADLS Gen2 檔案和資料夾的 Acl 時，儲存體總管現在會在 ACL 中顯示實體的易記名稱。 [#957](https://www.github.com/Microsoft/AzureStorageExplorer/issues/957)
+* 透過 OID 新增至 ADLS Gen2 ACL 時，儲存體總管現在會驗證 OID 屬於您租使用者中的有效實體。 [#1603](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1603)
+* 在索引標籤之間流覽的鍵盤快速鍵現在會使用較多的標準按鍵組合。 [#1018](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1018)
+* 按一下索引標籤，即可立即將它關閉。 [#1348](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1348)
+* 如果 AzCopy 傳輸包含略過但沒有失敗，儲存體總管現在會顯示警告圖示，以反白顯示發生的略過。 [#1490](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1490)
+* 整合式 AzCopy 已更新為版本10.2.1。 此外，您現在可以在 [關於] 對話方塊中，查看已安裝的 AzCopy 版本。 [#1343](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1343)
 
 ### <a name="fixes"></a>修正
 
-* 现在，在启用 AzCopy 后，可以选择要上传的 Blob 类型。 #1111
-* 以前，如果为 ADLS Gen2 存储帐户启用了静态网站，然后在该帐户中附加名称和密钥，则存储资源管理器将检测不到已启用该分层命名空间。 已修正此問題。 #1081
-* 在 Blob 编辑器中，不再能够按剩余保留天数或状态进行排序。 已修正此問題。 #1106
-* 在版本 1.5.0 之后，存储资源管理器不再会先等待服务器端复制完成，然后在重命名或复制/粘贴操作期间报告成功结果。 已修正此問題。 #976
-* 使用试验性的 AzCopy 功能时，单击“将命令复制到剪贴板”后复制的命令本身不一定始终可运行。 现在，将会复制手动运行传输所需的所有命令。 #1079
-* 以前，如果在代理后面操作，则无法访问 ADLS Gen2 Blob。 这是因为存储 SDK 使用的新网络库中存在一个 bug。 1.7.0 会尝试缓解此问题，但有些人仍可能会遇到问题。 在将来的更新中会发布完整修复措施。 #1090
-* 在 1.7.0 中，“保存文件”对话框现在会正确记住文件的上次保存位置。 #16
-* 在“属性”窗格中，存储帐户的 SKU 层显示为帐户类型。 已修正此問題。 #654
-* 有时，即使正确输入 Blob 的名称，也无法中断该 Blob 的租约。 已修正此問題。 #1070
+* 許多使用者在使用附加的儲存體帳戶時，已遇到各種「無法讀取未定義的版本」或「無法讀取未定義的連接」錯誤。 雖然我們仍繼續調查此問題的根本原因，但在1.10.0 中，我們已改善載入附加儲存體帳戶的錯誤處理。 [#1626](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1626)、 [#985](https://www.github.com/Microsoft/AzureStorageExplorer/issues/985)和[#1532](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1532)
+* 瀏覽器樹狀結構（左側）可能會進入狀態，而焦點會重複跳到最上層節點。 這個問題已經修正。 [#1596](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1596)
+* 管理 blob 的快照集時，螢幕讀取器不會讀取與快照集相關聯的時間戳記。 這個問題已經修正。 [#1202](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1202)
+* 未設定 macOS 上的 Proxy 設定，以供驗證程式使用它們。 這個問題已經修正。 [#1567](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1567)
+* 如果主權雲端中的儲存體帳戶是使用名稱和金鑰所連接，AzCopy 將無法使用。 這個問題已經修正。 [#1544](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1544)
+* 透過連接字串附加時，儲存體總管現在會移除尾端空格。 [#1387](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1387)
 
 ### <a name="known-issues"></a>已知問題
 
-* 使用 RBAC 时，存储资源管理器需要一些管理层权限才能访问存储资源。 有关详细信息，请参阅[故障排除指南](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting)。
-* 在代理后面尝试访问 ADLS Gen2 Blob 可能会失败。
+* [自動重新整理] 設定還不會影響 [Blob Explorer] 中的所有作業。
+* Azure Stack 不支援受控磁片功能。
+* 如果磁片上傳或貼上失敗，且在失敗前建立了新的磁片，儲存體總管將不會為您刪除該磁片。
+* 視您取消磁片上傳或貼上的時間而定，您可以讓新磁片處於損毀狀態。 如果發生這種情況，您需要刪除新的磁片，或手動呼叫磁片 Api 以取代磁片的內容，使其不再損毀。
+* 執行非 AzCopy Blob 下載時，不會驗證大型檔案的 MD5。 這是因為儲存體 SDK 中的錯誤所造成。 [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
+* 使用 RBAC 時，儲存體總管需要一些管理層許可權，才能存取您的儲存體資源。 如需詳細資訊，請參閱[疑難排解指南](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting)。
+* 中斷連結透過 SAS URI 連結的資源 (例如 Blob 容器) 可能會導致錯誤，使得其他附件無法正確顯示。 若要解決此問題，只需重新整理群組節點。 如需詳細資訊，請參閱 #537。
+* 如果您使用 VS for Mac 並已建立自訂 AAD 設定，則可能無法登入。 若要解決此問題，請刪除 ~/.IdentityService/AadConfigurations 的內容。 如果這麼做無法將您解除封鎖，請在此問題加上註解。
+* Azurite 尚未完全實作所有的儲存體 API。 因此，對於開發儲存體使用 Azurite 時，可能出現未預期的錯誤或行為。
+* 在少數情況下，樹狀焦點可能會固定在快速存取上。 若要取消固定焦點，您可以 [全部重新整理]。
+* 由於 NodeJS 中的錯誤，造成無法從您的 OneDrive 資料夾上傳。 已修正該 Bug，但是尚未整合至 Electron。 若要解決這個在上傳到 Blob 容器或從 Blob 容器下載時的問題，您可以使用實驗性的 AzCopy 功能。
+* 當目標為 Azure Stack，以附加 Blob 方式上傳特定檔案會失敗。
+* 按一下工作上的 [取消] 之後，該工作可能需要經過一段時間才會取消。 這是因為我們使用這裡所述的取消篩選器因應措施。
+* 如果您選擇錯誤的 PIN/智慧卡憑證，則必須重新啟動，才能使儲存體總管忘記該決定。
+* 重新命名 Blob (個別執行或在重新命名的 Blob 容器內) 不會保留快照集。 Blob、檔案及實體的所有其他屬性和中繼資料在重新命名期間都會保留。
+* Azure Stack 不支援下列功能。 嘗試在使用 Azure Stack 資源時使用這些功能，可能會導致非預期的錯誤。
+   * 檔案共用
+   * 存取層級
+   * 虛刪除
+   * ADLS Gen2
+   * 受控磁碟
+* 儲存體總管使用的 Electron 殼層具有一些 GPU (圖形處理單元) 硬體加速的問題。 如果儲存體總管顯示空白 (空的) 主視窗，您可以嘗試從命令列啟動儲存體總管並透過新增 `--disable-gpu` 切換停用 GPU 加速：
+
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
+
+* 在 Linux 上執行儲存體總管需要先安裝特定相依性。 如需詳細資訊，請參閱儲存體總管[疑難排解指南](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies)。
+
+## <a name="version-190"></a>版本1.9。0
+7/1/2019
+
+### <a name="download-azure-storage-explorer-190"></a>下載 Azure 儲存體總管1.9。0
+- [適用于 Windows 的 Azure 儲存體總管1.9。0](https://go.microsoft.com/fwlink/?LinkId=708343)
+- [適用于 Mac 的 Azure 儲存體總管1.9。0](https://go.microsoft.com/fwlink/?LinkId=708342)
+- [適用于 Linux 的 Azure 儲存體總管1.9。0](https://go.microsoft.com/fwlink/?LinkId=722418)
+
+### <a name="new"></a>新增
+
+* 您現在可以透過 Azure AD （RBAC 或 ACL 許可權）附加 Blob 容器。 這項功能的目的是要協助具有容器存取權的使用者，而不是容器所在的儲存體帳戶。 如需這項功能的詳細資訊，請參閱我們的消費者入門指南。
+* 取得和中斷租用現在可與 RBAC 搭配使用。 [#1354](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1354)
+* 管理存取原則和設定公用存取層級現在可與 RBAC 搭配使用。 [#1355](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1355)
+* 刪除 blob 資料夾現在可與 RBAC 搭配使用。 [#1450](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1450)
+* 變更 blob 存取層現在可與 RBAC 搭配使用。 [#1446](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1446)
+* 您現在可以透過 [說明] → [重設] 快速重設快速存取。 [#1327](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1327)
+
+### <a name="preview-features"></a>預覽功能
+
+* 裝置程式碼流程登入現在可供預覽。 若要啟用它，請移至 [預覽] → [使用裝置程式碼流程登入]。 我們鼓勵任何已發生空白登入 windows 問題的使用者嘗試這項功能，因為它可能會證明是更可靠的登入形式。
+* 與 AzCopy 整合的儲存體總管目前可供預覽。 若要啟用它，請移至 [預覽] → [使用 AzCopy 改善 Blob 上傳及下載]。 已完成 AzCopy 的 Blob 傳輸，應更快速且更具效能。
+
+### <a name="fixes"></a>修正
+
+* 已修正無法為一個帳戶載入超過50個訂閱。 [#1416](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1416)
+* 修正 [登入] 按鈕無法在直接連結失敗時顯示的資訊列上運作。 [#1358](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1358)
+* 已修正未在 macOS 上上傳應用程式檔。 [#1119](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1119)
+* 已修正失敗的 blob 重新命名時，「全部重試」無法運作的問題。 [#992](https://www.github.com/Microsoft/AzureStorageExplorer/issues/992)
+* 已修正開啟 blob 時，[取消] 無法運作的問題。 [#1464](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1464)
+* 已修正產品中的多個拼寫與工具提示問題。 很多人都感謝回報這些問題！ [#1303](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1303)、 [#1328](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1328)、 [#1329](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1329)、 [#1331](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1331)、 [#1336](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1336)、 [#1352](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1352)、 [#1368](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1368)、 [#1395](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1395)
+
+### <a name="known-issues"></a>已知問題
+
+* 執行非 AzCopy Blob 下載時，不會驗證大型檔案的 MD5。 這是因為儲存體 SDK 中的錯誤所造成。 [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
+* 使用 RBAC 時，儲存體總管需要一些管理層許可權，才能存取您的儲存體資源。 如需詳細資訊，請參閱[疑難排解指南](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting)。
+* 在 proxy 後方嘗試存取 ADLS Gen2 Blob 可能會失敗。
+* 中斷連結透過 SAS URI 連結的資源 (例如 Blob 容器) 可能會導致錯誤，使得其他附件無法正確顯示。 若要解決此問題，只需重新整理群組節點。 如需詳細資訊，請參閱 #537。
+* 如果您使用 VS for Mac，而且曾建立自訂 AAD 設定，則您可能無法登入。 若要解決此問題，請刪除 ~/.IdentityService/AadConfigurations 的內容。 如果這麼做無法將您解除封鎖，請在此問題加上註解。
+* Azurite 尚未完全實作所有的儲存體 API。 因此，對於開發儲存體使用 Azurite 時，可能出現未預期的錯誤或行為。
+* 在少數情況下，樹狀焦點可能會固定在快速存取上。 若要取消固定焦點，您可以 [全部重新整理]。
+* 由於 NodeJS 中的錯誤，造成無法從您的 OneDrive 資料夾上傳。 已修正該 Bug，但是尚未整合至 Electron。 若要解決這個在上傳到 Blob 容器或從 Blob 容器下載時的問題，您可以使用實驗性的 AzCopy 功能。
+* 當目標為 Azure Stack，以附加 Blob 方式上傳特定檔案會失敗。
+* 按一下工作上的 [取消] 之後，該工作可能需要經過一段時間才會取消。 這是因為我們使用這裡所述的取消篩選器因應措施。
+* 如果您選擇錯誤的 PIN/智慧卡憑證，則必須重新啟動，才能使儲存體總管忘記該決定。
+* 重新命名 Blob (個別執行或在重新命名的 Blob 容器內) 不會保留快照集。 Blob、檔案及實體的所有其他屬性和中繼資料在重新命名期間都會保留。
+* Azure Stack 不支援下列功能。 嘗試在使用 Azure Stack 資源時使用這些功能，可能會導致非預期的錯誤。
+   * 檔案共用
+   * 存取層級
+   * 虛刪除
+   * ADLS Gen2
+* 儲存體總管使用的 Electron 殼層具有一些 GPU (圖形處理單元) 硬體加速的問題。 如果儲存體總管顯示空白 (空的) 主視窗，您可以嘗試從命令列啟動儲存體總管並透過新增 `--disable-gpu` 切換停用 GPU 加速：
+
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
+
+* 在 Linux 上執行儲存體總管需要先安裝特定相依性。 如需詳細資訊，請參閱儲存體總管[疑難排解指南](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies)。
+
+## <a name="version-181"></a>版本1.8。1
+5/13/2019
+
+### <a name="hotfixes"></a>Hotfix
+* 在某些情況下，在資源層級按一下 [載入更多] 時，不會傳回下一個資源頁面。 這個問題已經修正。 [#1359](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1359)
+* 在 Windows 上，如果正在下載單一檔案或資料夾，而且檔案或資料夾的名稱具有對 Windows 路徑不正確字元，則 AzCopy 下載將會失敗。 這個問題已經修正。 [#1350](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1350)
+* 在極罕見的情況下，在檔案共用中執行檔案共用的重新命名或重新命名時，如果重新命名的複本失敗，或如果存放裝置探索無法使用 Azure 確認複本是否成功，在複製完成之前，可能會有儲存體總管刪除原始檔案。 這個問題已經修正。
+
+### <a name="new"></a>新增
+
+* 整合式 AzCopy 版本已更新為版本10.1.0。
+* 現在可以使用 Ctrl/Cmd + R 來重新整理目前焦點的編輯器。 [#1097](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1097)
+* Azure Stack 儲存體 API 版本已變更為2017-04-17。
+* ADLS Gen2 的 [管理存取] 對話方塊現在會以類似于其他 POSIX 許可權工具的方式來保持遮罩的同步。 如果進行的變更導致使用者或群組的許可權超過遮罩的範圍，UI 也會警告您。 [#1253](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1253)
+* 針對 AzCopy 上傳，現在已啟用用來計算和設定 MD5 雜湊的旗標。 [#1223](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1223)
+
+
+### <a name="preview-features"></a>預覽功能
+
+* 裝置程式碼流程登入現在可供預覽。 若要啟用它，請移至 [預覽] → [使用裝置程式碼流程登入]。 我們鼓勵任何已發生空白登入 windows 問題的使用者嘗試這項功能，因為它可能會證明是更可靠的登入形式。
+* 與 AzCopy 整合的儲存體總管目前可供預覽。 若要啟用它，請移至 [預覽] → [使用 AzCopy 改善 Blob 上傳及下載]。 已完成 AzCopy 的 Blob 傳輸，應更快速且更具效能。
+
+### <a name="fixes"></a>修正
+
+* [存取原則] 對話方塊將不會再于沒有到期的儲存體存取原則上設定到期日。 [#764](https://www.github.com/Microsoft/AzureStorageExplorer/issues/764)
+* 已對 [產生 SAS] 對話方塊進行一些變更，以確保在產生 SAS 時，會正確使用預存的存取原則。 [#1269](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1269)
+* 嘗試將非512位元組對齊的檔案上傳至分頁 Blob 時，儲存體總管現在會公開更相關的錯誤。 [#1050](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1050)
+* 複製使用顯示名稱的 Blob 容器將會失敗。 現在會使用 Blob 容器的實際名稱。 [#1166](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1166)
+* 嘗試在其名稱中有 unicode 字元的 ADLS Gen2 資料夾上執行特定動作會失敗。 所有動作現在都應該可以正常執行。 [#980](https://www.github.com/Microsoft/AzureStorageExplorer/issues/980)
+
+### <a name="known-issues"></a>已知問題
+
+* 執行非 AzCopy Blob 下載時，不會驗證大型檔案的 MD5。 這是因為儲存體 SDK 中的錯誤所造成。 [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
+* 使用 RBAC 時，儲存體總管需要一些管理層許可權，才能存取您的儲存體資源。 如需詳細資訊，請參閱[疑難排解指南](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting)。
+* 在 proxy 後方嘗試存取 ADLS Gen2 Blob 可能會失敗。
+* 中斷連結透過 SAS URI 連結的資源 (例如 Blob 容器) 可能會導致錯誤，使得其他附件無法正確顯示。 若要解決此問題，只需重新整理群組節點。 如需詳細資訊，請參閱 #537。
+* 如果您使用 VS for Mac，而且曾建立自訂 AAD 設定，則您可能無法登入。 若要解決此問題，請刪除 ~/.IdentityService/AadConfigurations 的內容。 如果這麼做無法將您解除封鎖，請在此問題加上註解。
+* Azurite 尚未完全實作所有的儲存體 API。 因此，對於開發儲存體使用 Azurite 時，可能出現未預期的錯誤或行為。
+* 在少數情況下，樹狀焦點可能會固定在快速存取上。 若要取消固定焦點，您可以 [全部重新整理]。
+* 由於 NodeJS 中的錯誤，造成無法從您的 OneDrive 資料夾上傳。 已修正該 Bug，但是尚未整合至 Electron。 若要解決這個在上傳到 Blob 容器或從 Blob 容器下載時的問題，您可以使用實驗性的 AzCopy 功能。
+* 當目標為 Azure Stack，以附加 Blob 方式上傳特定檔案會失敗。
+* 按一下工作上的 [取消] 之後，該工作可能需要經過一段時間才會取消。 這是因為我們使用這裡所述的取消篩選器因應措施。
+* 如果您選擇錯誤的 PIN/智慧卡憑證，則必須重新啟動，才能使儲存體總管忘記該決定。
+* 重新命名 Blob (個別執行或在重新命名的 Blob 容器內) 不會保留快照集。 Blob、檔案及實體的所有其他屬性和中繼資料在重新命名期間都會保留。
+* Azure Stack 不支援下列功能。 嘗試在使用 Azure Stack 資源時使用這些功能，可能會導致非預期的錯誤。
+   * 檔案共用
+   * 存取層級
+   * 虛刪除
+   * ADLS Gen2
+* 儲存體總管使用的 Electron 殼層具有一些 GPU (圖形處理單元) 硬體加速的問題。 如果儲存體總管顯示空白 (空的) 主視窗，您可以嘗試從命令列啟動儲存體總管並透過新增 `--disable-gpu` 切換停用 GPU 加速：
+
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
+
+* 在 Linux 上執行儲存體總管需要先安裝特定相依性。 如需詳細資訊，請參閱儲存體總管[疑難排解指南](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies)。
+
+## <a name="version-180"></a>版本1.8。0
+2019/5/1
+
+### <a name="new"></a>新增
+
+* 整合式 AzCopy 版本已更新為版本10.1.0。
+* 現在可以使用 Ctrl/Cmd + R 來重新整理目前焦點的編輯器。 [#1097](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1097)
+* Azure Stack 儲存體 API 版本已變更為2017-04-17。
+* ADLS Gen2 的 [管理存取] 對話方塊現在會以類似于其他 POSIX 許可權工具的方式來保持遮罩的同步。 如果進行的變更導致使用者或群組的許可權超過遮罩的範圍，UI 也會警告您。 [#1253](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1253)
+* 針對 AzCopy 上傳，現在已啟用用來計算和設定 MD5 雜湊的旗標。 [#1223](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1223)
+
+
+### <a name="preview-features"></a>預覽功能
+
+* 裝置程式碼流程登入現在可供預覽。 若要啟用它，請移至 [預覽] → [使用裝置程式碼流程登入]。 我們鼓勵任何已發生空白登入 windows 問題的使用者嘗試這項功能，因為它可能會證明是更可靠的登入形式。
+* 與 AzCopy 整合的儲存體總管目前可供預覽。 若要啟用它，請移至 [預覽] → [使用 AzCopy 改善 Blob 上傳及下載]。 已完成 AzCopy 的 Blob 傳輸，應更快速且更具效能。
+
+### <a name="fixes"></a>修正
+
+* [存取原則] 對話方塊將不會再于沒有到期的儲存體存取原則上設定到期日。 [#764](https://www.github.com/Microsoft/AzureStorageExplorer/issues/764)
+* 已對 [產生 SAS] 對話方塊進行一些變更，以確保在產生 SAS 時，會正確使用預存的存取原則。 [#1269](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1269)
+* 嘗試將非512位元組對齊的檔案上傳至分頁 Blob 時，儲存體總管現在會公開更相關的錯誤。 [#1050](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1050)
+* 複製使用顯示名稱的 Blob 容器將會失敗。 現在會使用 Blob 容器的實際名稱。 [#1166](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1166)
+* 嘗試在其名稱中有 unicode 字元的 ADLS Gen2 資料夾上執行特定動作會失敗。 所有動作現在都應該可以正常執行。 [#980](https://www.github.com/Microsoft/AzureStorageExplorer/issues/980)
+
+### <a name="known-issues"></a>已知問題
+
+* 執行非 AzCopy Blob 下載時，不會驗證大型檔案的 MD5。 這是因為儲存體 SDK 中的錯誤所造成。 [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
+* 使用 RBAC 時，儲存體總管需要一些管理層許可權，才能存取您的儲存體資源。 如需詳細資訊，請參閱[疑難排解指南](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting)。
+* 在 proxy 後方嘗試存取 ADLS Gen2 Blob 可能會失敗。
+* 中斷連結透過 SAS URI 連結的資源 (例如 Blob 容器) 可能會導致錯誤，使得其他附件無法正確顯示。 若要解決此問題，只需重新整理群組節點。 如需詳細資訊，請參閱 #537。
+* 如果您使用 VS for Mac，而且曾建立自訂 AAD 設定，則您可能無法登入。 若要解決此問題，請刪除 ~/.IdentityService/AadConfigurations 的內容。 如果這麼做無法將您解除封鎖，請在此問題加上註解。
+* Azurite 尚未完全實作所有的儲存體 API。 因此，對於開發儲存體使用 Azurite 時，可能出現未預期的錯誤或行為。
+* 在少數情況下，樹狀焦點可能會固定在快速存取上。 若要取消固定焦點，您可以 [全部重新整理]。
+* 由於 NodeJS 中的錯誤，造成無法從您的 OneDrive 資料夾上傳。 已修正該 Bug，但是尚未整合至 Electron。 若要解決這個在上傳到 Blob 容器或從 Blob 容器下載時的問題，您可以使用實驗性的 AzCopy 功能。
+* 當目標為 Azure Stack，以附加 Blob 方式上傳特定檔案會失敗。
+* 按一下工作上的 [取消] 之後，該工作可能需要經過一段時間才會取消。 這是因為我們使用這裡所述的取消篩選器因應措施。
+* 如果您選擇錯誤的 PIN/智慧卡憑證，則必須重新啟動，才能使儲存體總管忘記該決定。
+* 重新命名 Blob (個別執行或在重新命名的 Blob 容器內) 不會保留快照集。 Blob、檔案及實體的所有其他屬性和中繼資料在重新命名期間都會保留。
+* Azure Stack 不支援下列功能。 嘗試在使用 Azure Stack 資源時使用這些功能，可能會導致非預期的錯誤。
+   * 檔案共用
+   * 存取層級
+   * 虛刪除
+   * ADLS Gen2
+* 儲存體總管使用的 Electron 殼層具有一些 GPU (圖形處理單元) 硬體加速的問題。 如果儲存體總管顯示空白 (空的) 主視窗，您可以嘗試從命令列啟動儲存體總管並透過新增 `--disable-gpu` 切換停用 GPU 加速：
+
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
+
+* 在 Linux 上執行儲存體總管需要先安裝特定相依性。 如需詳細資訊，請參閱儲存體總管[疑難排解指南](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies)。
+
+## <a name="version-170"></a>1.7.0 版
+3/5/2019
+
+### <a name="download-azure-storage-explorer-170"></a>下載 Azure 儲存體總管1.7。0
+- [適用于 Windows 的 Azure 儲存體總管1.7。0](https://go.microsoft.com/fwlink/?LinkId=708343)
+- [適用于 Mac 的 Azure 儲存體總管1.7。0](https://go.microsoft.com/fwlink/?LinkId=708342)
+- [適用于 Linux 的 Azure 儲存體總管1.7。0](https://go.microsoft.com/fwlink/?LinkId=722418)
+
+### <a name="new"></a>新增
+
+* 您現在可以在管理 ADLS Gen2 容器、檔案或資料夾的存取權時，變更擁有者和擁有群組。
+* 在 Windows 上，更新產品內的儲存體總管現在是累加式安裝。 這應該會產生更快的更新體驗。 如果您偏好全新安裝，則可以自行下載[安裝程式](https://azure.microsoft.com/features/storage-explorer/)，然後手動安裝。 #1089
+
+### <a name="preview-features"></a>預覽功能
+
+* 裝置程式碼流程登入現在可供預覽。 若要啟用它，請移至 [預覽] → [使用裝置程式碼流程登入]。 我們鼓勵任何已發生空白登入 windows 問題的使用者嘗試這項功能，因為它可能會證明是更可靠的登入形式。 #938
+* 與 AzCopy 整合的儲存體總管目前可供預覽。 若要啟用它，請移至 [預覽] → [使用 AzCopy 改善 Blob 上傳及下載]。 已完成 AzCopy 的 Blob 傳輸，應更快速且更具效能。
+
+### <a name="fixes"></a>修正
+
+* 您現在可以選擇您想要上傳的 blob 類型，如同 AzCopy 啟用時。 #1111
+* 先前，如果您已啟用 ADLS Gen2 儲存體帳戶的靜態網站，然後使用名稱和金鑰附加它，儲存體總管就不會偵測到已啟用階層命名空間。 這個問題已經修正。 #1081
+* 在 [blob 編輯器] 中，依剩餘保留天數或狀態已中斷排序。 這個問題已經修正。 #1106
+* 在1.5.0 之後，儲存體總管不會再等待伺服器端複本完成，然後再于重新命名或複製 & 貼上時，才報告成功。 這個問題已經修正。 #976
+* 使用實驗性 AzCopy 功能時，在按一下 [將命令複製到剪貼簿] 之後複製的命令不一定會自行執行。 現在，手動執行傳輸所需的所有命令都會被覆制。 #1079
+* 先前，如果您是在 proxy 後方，就無法存取 ADLS Gen2 的 blob。 這是因為儲存 SDK 所使用的新網路程式庫中有錯誤。 在1.7.0 中，嘗試減輕這個問題，但有些人可能會繼續看到問題。 在未來的更新中將會發行完整的修正程式。 #1090
+* 在1.7.0 中，[儲存檔案] 對話方塊現在會正確地記住您儲存檔案的最後一個位置。 #16
+* 在 [屬性] 面板中，儲存體帳戶的 SKU 層會顯示為帳戶的種類。 這個問題已經修正。 #654
+* 有時候，即使您已正確輸入 blob 的名稱，也無法中斷 blob 的租用。 這個問題已經修正。 #1070
+
+### <a name="known-issues"></a>已知問題
+
+* 使用 RBAC 時，儲存體總管需要一些管理層許可權，才能存取您的儲存體資源。 如需詳細資訊，請參閱[疑難排解指南](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting)。
+* 在 proxy 後方嘗試存取 ADLS Gen2 Blob 可能會失敗。
 * 中斷連結透過 SAS URI 連結的資源 (例如 Blob 容器) 可能會導致錯誤，使得其他附件無法正確顯示。 若要解決此問題，只需重新整理群組節點。 如需詳細資訊，請參閱 #537。
 * 中斷連結透過 SAS URI 連結的資源 (例如 Blob 容器) 可能會導致錯誤，使得其他附件無法正確顯示。 若要解決此問題，只需重新整理群組節點。 如需詳細資訊，請參閱 #537。
 * 如果您使用 VS for Mac，而且曾建立自訂 AAD 設定，則您可能無法登入。 若要解決此問題，請刪除 ~/.IdentityService/AadConfigurations 的內容。 如果這麼做無法將您解除封鎖，請在此問題加上註解。
@@ -176,7 +521,7 @@ ms.locfileid: "65510956"
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* 對於 Linux 使用者，您必須安裝 [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)。
+* 對於 Linux 使用者，您必須安裝 [.NET Core 2.0](https://dotnet.microsoft.com/download/dotnet-core/2.0)。
 * 針對使用 Ubuntu 14.04 的使用者，您必須確定 GCC 已是最新版本，做法是執行下列命令，然後重新啟動電腦即可：
 
     ```
@@ -196,23 +541,23 @@ ms.locfileid: "65510956"
 2019 年 1 月 9 日
 
 ### <a name="hotfixes"></a>Hotfix
-* 在 1.6.1 中，由 ObjectId 新增至 ADLS Gen2 ACL 的實體只要不是使用者便一律新增為群組。 現在，只有群組會新增為群組，「企業應用程式」和「服務主體」等實體則新增為使用者。 [#1049](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1049) \(英文\)
-* 如果 ADLS Gen2 儲存體帳戶沒有容器且已連結名稱和金鑰，則「儲存體總管」無法將該「儲存體帳戶」偵測為 ADLS Gen2。 已修正此問題。 [#1048](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1048) \(英文\)
-* 在 1.6.0 中，在複製和貼上期間發生衝突時，不會提示您解決衝突。 取而代之的是，衝突的複製會直接失敗。 現在，在第一次發生衝突時，將會詢問您要如何解決。 [#1014](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1014) \(英文\)
+* 在 1.6.1 中，由 ObjectId 新增至 ADLS Gen2 ACL 的實體只要不是使用者便一律新增為群組。 現在，只有群組會新增為群組，「企業應用程式」和「服務主體」等實體則新增為使用者。 [#1049](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1049)
+* 如果 ADLS Gen2 儲存體帳戶沒有容器且已連結名稱和金鑰，則「儲存體總管」無法將該「儲存體帳戶」偵測為 ADLS Gen2。 這個問題已經修正。 [#1048](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1048)
+* 在 1.6.0 中，在複製和貼上期間發生衝突時，不會提示您解決衝突。 取而代之的是，衝突的複製會直接失敗。 現在，在第一次發生衝突時，將會詢問您要如何解決。 [#1014](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1014)
 * 由於 API 限制，[管理存取] 對話方塊中的所有 ObjectId 驗證已停都用。 現在只會對使用者 UPN 進行驗證。 [#954](https://www.github.com/Microsoft/AzureStorageExplorer/issues/954)
-* 在 ADLS Gen2 的 [管理存取] 對話方塊中，無法修改群組的權限。 已修正此問題。 [#958](https://www.github.com/Microsoft/AzureStorageExplorer/issues/958)
+* 在 ADLS Gen2 的 [管理存取] 對話方塊中，無法修改群組的權限。 這個問題已經修正。 [#958](https://www.github.com/Microsoft/AzureStorageExplorer/issues/958)
 * 已新增 ADLS Gen2 編輯器的拖放上傳支援。 [#953](https://www.github.com/Microsoft/AzureStorageExplorer/issues/953)
-* ADLS Gen2 檔案和資料夾的 [屬性] 對話方塊中的 URL 屬性有時會遺漏 '/'。 已修正此問題。 [#960](https://www.github.com/Microsoft/AzureStorageExplorer/issues/960)
+* ADLS Gen2 檔案和資料夾的 [屬性] 對話方塊中的 URL 屬性有時會遺漏 '/'。 這個問題已經修正。 [#960](https://www.github.com/Microsoft/AzureStorageExplorer/issues/960)
 * 如果無法取得 ADLS Gen2 容器、檔案或資料夾的目前權限，則錯誤現在會正確顯示於活動記錄中。 [#965](https://www.github.com/Microsoft/AzureStorageExplorer/issues/965)
 * 為了開啟檔案所建立的暫存路徑已縮短，可減少在 Windows 上建立長度超過 MAX_PATH 的路徑的機會。 [#93](https://www.github.com/Microsoft/AzureStorageExplorer/issues/93)
 * 若沒有已登入的使用者或未連結任何資源，[連線] 對話方塊現在可正確地出現。 [#944](https://www.github.com/Microsoft/AzureStorageExplorer/issues/944)
 * 在 1.6.0 中，儲存非 HNS Blob 和檔案的屬性會將每個屬性的值編碼。 這會導致只包含 ASCII 字元的值進行不必要的編碼。 現在，只有當值包含非 ASCII 字元時才會進行編碼。 [#986](https://www.github.com/Microsoft/AzureStorageExplorer/issues/986)
-* 如果使用了 SAS 且 SAS 沒有讀取權限，則無法將資料夾上傳到非 HNS Blob 容器。 已修正此問題。 [#970](https://www.github.com/Microsoft/AzureStorageExplorer/issues/970)
-* 取消 AzCopy 傳輸無法運作。 已修正此問題。 [#943](https://www.github.com/Microsoft/AzureStorageExplorer/issues/943)
-* 嘗試從 ADLS Gen2 Blob 容器下載資料夾時，如果資料夾的名稱中包含空格，則 AzCopy 會失敗。 已修正此問題。 [#990](https://www.github.com/Microsoft/AzureStorageExplorer/issues/990)
+* 如果使用了 SAS 且 SAS 沒有讀取權限，則無法將資料夾上傳到非 HNS Blob 容器。 這個問題已經修正。 [#970](https://www.github.com/Microsoft/AzureStorageExplorer/issues/970)
+* 取消 AzCopy 傳輸無法運作。 這個問題已經修正。 [#943](https://www.github.com/Microsoft/AzureStorageExplorer/issues/943)
+* 嘗試從 ADLS Gen2 Blob 容器下載資料夾時，如果資料夾的名稱中包含空格，則 AzCopy 會失敗。 這個問題已經修正。 [#990](https://www.github.com/Microsoft/AzureStorageExplorer/issues/990)
 * CosmosDB 編輯器已無法在 1.6.0 中使用。 現在已修正。 [#950](https://www.github.com/Microsoft/AzureStorageExplorer/issues/950)
         
-### <a name="new"></a>換一個
+### <a name="new"></a>新增
 
 * 您現在可以使用儲存體總管，透過 [RBAC](https://go.microsoft.com/fwlink/?linkid=2045904&clcid=0x409) 存取您的 Blob 資料。 如果您已登入且儲存體總管無法擷取儲存體帳戶的金鑰，則 OAuth 權杖將在處理資料時用來驗證。
 * 儲存體總管現在支援 ADLS Gen2 Storage 帳戶。 當儲存體總管偵測到儲存體帳戶已啟用階層式命名空間時，您會在您儲存體帳戶的名稱旁邊看見「(ADLS Gen2 預覽)」。 儲存體總管能夠偵測當您登入時是否已啟用階層式命名空間，或您是否已連結具有名稱和金鑰的儲存體帳戶。 對於 ADLS Gen2 儲存體帳戶，您可以使用儲存體總管：
@@ -248,7 +593,7 @@ ms.locfileid: "65510956"
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* 對於 Linux 使用者，您必須安裝 [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)。
+* 對於 Linux 使用者，您必須安裝 [.NET Core 2.0](https://dotnet.microsoft.com/download/dotnet-core/2.0)。
 * 針對使用 Ubuntu 14.04 的使用者，您必須確定 GCC 已是最新版本，做法是執行下列命令，然後重新啟動電腦即可：
 
     ```
@@ -269,19 +614,19 @@ ms.locfileid: "65510956"
 
 ### <a name="hotfixes"></a>Hotfix
 * 由於 API 限制，[管理存取] 對話方塊中的所有 ObjectId 驗證已停都用。 現在只會對使用者 UPN 進行驗證。 [#954](https://www.github.com/Microsoft/AzureStorageExplorer/issues/954)
-* 在 ADLS Gen2 的 [管理存取] 對話方塊中，無法修改群組的權限。 已修正此問題。 [#958](https://www.github.com/Microsoft/AzureStorageExplorer/issues/958)
+* 在 ADLS Gen2 的 [管理存取] 對話方塊中，無法修改群組的權限。 這個問題已經修正。 [#958](https://www.github.com/Microsoft/AzureStorageExplorer/issues/958)
 * 已新增 ADLS Gen2 編輯器的拖放上傳支援。 [#953](https://www.github.com/Microsoft/AzureStorageExplorer/issues/953)
-* ADLS Gen2 檔案和資料夾的 [屬性] 對話方塊中的 URL 屬性有時會遺漏 '/'。 已修正此問題。 [#960](https://www.github.com/Microsoft/AzureStorageExplorer/issues/960)
+* ADLS Gen2 檔案和資料夾的 [屬性] 對話方塊中的 URL 屬性有時會遺漏 '/'。 這個問題已經修正。 [#960](https://www.github.com/Microsoft/AzureStorageExplorer/issues/960)
 * 如果無法取得 ADLS Gen2 容器、檔案或資料夾的目前權限，則錯誤現在會正確顯示於活動記錄中。 [#965](https://www.github.com/Microsoft/AzureStorageExplorer/issues/965)
 * 為了開啟檔案所建立的暫存路徑已縮短，可減少在 Windows 上建立長度超過 MAX_PATH 的路徑的機會。 [#93](https://www.github.com/Microsoft/AzureStorageExplorer/issues/93)
 * 若沒有已登入的使用者或未連結任何資源，[連線] 對話方塊現在可正確地出現。 [#944](https://www.github.com/Microsoft/AzureStorageExplorer/issues/944)
 * 在 1.6.0 中，儲存非 HNS Blob 和檔案的屬性會將每個屬性的值編碼。 這會導致只包含 ASCII 字元的值進行不必要的編碼。 現在，只有當值包含非 ASCII 字元時才會進行編碼。 [#986](https://www.github.com/Microsoft/AzureStorageExplorer/issues/986)
-* 如果使用了 SAS 且 SAS 沒有讀取權限，則無法將資料夾上傳到非 HNS Blob 容器。 已修正此問題。 [#970](https://www.github.com/Microsoft/AzureStorageExplorer/issues/970)
-* 取消 AzCopy 傳輸無法運作。 已修正此問題。 [#943](https://www.github.com/Microsoft/AzureStorageExplorer/issues/943)
-* 嘗試從 ADLS Gen2 Blob 容器下載資料夾時，如果資料夾的名稱中包含空格，則 AzCopy 會失敗。 已修正此問題。 [#990](https://www.github.com/Microsoft/AzureStorageExplorer/issues/990)
+* 如果使用了 SAS 且 SAS 沒有讀取權限，則無法將資料夾上傳到非 HNS Blob 容器。 這個問題已經修正。 [#970](https://www.github.com/Microsoft/AzureStorageExplorer/issues/970)
+* 取消 AzCopy 傳輸無法運作。 這個問題已經修正。 [#943](https://www.github.com/Microsoft/AzureStorageExplorer/issues/943)
+* 嘗試從 ADLS Gen2 Blob 容器下載資料夾時，如果資料夾的名稱中包含空格，則 AzCopy 會失敗。 這個問題已經修正。 [#990](https://www.github.com/Microsoft/AzureStorageExplorer/issues/990)
 * CosmosDB 編輯器已無法在 1.6.0 中使用。 現在已修正。 [#950](https://www.github.com/Microsoft/AzureStorageExplorer/issues/950)
         
-### <a name="new"></a>換一個
+### <a name="new"></a>新增
 
 * 您現在可以使用儲存體總管，透過 [RBAC](https://go.microsoft.com/fwlink/?linkid=2045904&clcid=0x409) 存取您的 Blob 資料。 如果您已登入且儲存體總管無法擷取儲存體帳戶的金鑰，則 OAuth 權杖將在處理資料時用來驗證。
 * 儲存體總管現在支援 ADLS Gen2 Storage 帳戶。 當儲存體總管偵測到儲存體帳戶已啟用階層式命名空間時，您會在您儲存體帳戶的名稱旁邊看見「(ADLS Gen2 預覽)」。 儲存體總管能夠偵測當您登入時是否已啟用階層式命名空間，或您是否已連結具有名稱和金鑰的儲存體帳戶。 對於 ADLS Gen2 儲存體帳戶，您可以使用儲存體總管：
@@ -317,7 +662,7 @@ ms.locfileid: "65510956"
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* 對於 Linux 使用者，您必須安裝 [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)。
+* 對於 Linux 使用者，您必須安裝 [.NET Core 2.0](https://dotnet.microsoft.com/download/dotnet-core/2.0)。
 * 針對使用 Ubuntu 14.04 的使用者，您必須確定 GCC 已是最新版本，做法是執行下列命令，然後重新啟動電腦即可：
 
     ```
@@ -336,7 +681,7 @@ ms.locfileid: "65510956"
 ## <a name="version-160"></a>1.6.0 版
 12/5/2018
 
-### <a name="new"></a>換一個
+### <a name="new"></a>新增
 
 * 您現在可以使用儲存體總管，透過 [RBAC](https://go.microsoft.com/fwlink/?linkid=2045904&clcid=0x409) 存取您的 Blob 資料。 如果您已登入且儲存體總管無法擷取儲存體帳戶的金鑰，則 OAuth 權杖將在處理資料時用來驗證。
 * 儲存體總管現在支援 ADLS Gen2 Storage 帳戶。 當儲存體總管偵測到儲存體帳戶已啟用階層式命名空間時，您會在您儲存體帳戶的名稱旁邊看見「(ADLS Gen2 預覽)」。 儲存體總管能夠偵測當您登入時是否已啟用階層式命名空間，或您是否已連結具有名稱和金鑰的儲存體帳戶。 對於 ADLS Gen2 儲存體帳戶，您可以使用儲存體總管：
@@ -372,7 +717,7 @@ ms.locfileid: "65510956"
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* 對於 Linux 使用者，您必須安裝 [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)。
+* 對於 Linux 使用者，您必須安裝 [.NET Core 2.0](https://dotnet.microsoft.com/download/dotnet-core/2.0)。
 * 針對使用 Ubuntu 14.04 的使用者，您必須確定 GCC 已是最新版本，做法是執行下列命令，然後重新啟動電腦即可：
 
     ```
@@ -391,7 +736,7 @@ ms.locfileid: "65510956"
 ## <a name="version-150"></a>1.5.0 版
 2018 年 10 月 29 日
 
-### <a name="new"></a>換一個
+### <a name="new"></a>新增
 
 * 您現在可以使用 [AzCopy v10 (預覽)](https://github.com/Azure/azure-storage-azcopy) 來上傳和下載 Blob。 若要啟用此功能，請移至 [Experimental] \(實驗性\) 功能表，然後按一下 [Use AzCopy for Improved Blob Upload and Download] \(使用 AzCopy 來改善 Blob 上傳和下載\)。 啟用時，會在下列情況下使用 AzCopy：
    * 將資料夾和檔案上傳到 Blob 容器 (不論是透過工具列還是拖放)。
@@ -436,7 +781,7 @@ ms.locfileid: "65510956"
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* 對於 Linux 使用者，您必須安裝 [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)。
+* 對於 Linux 使用者，您必須安裝 [.NET Core 2.0](https://dotnet.microsoft.com/download/dotnet-core/2.0)。
 * 針對使用 Ubuntu 14.04 的使用者，您必須確定 GCC 已是最新版本，做法是執行下列命令，然後重新啟動電腦即可：
 
     ```
@@ -460,7 +805,7 @@ ms.locfileid: "65510956"
 * 已復原 Azure 資源管理 API 版本，以將 Azure US Government 使用者解除封鎖。 [#696](https://github.com/Microsoft/AzureStorageExplorer/issues/696)
 * 載入進度環現在使用 CSS 動畫來減少儲存體總管所使用的 GPU。 [#653](https://github.com/Microsoft/AzureStorageExplorer/issues/653)
 
-### <a name="new"></a>換一個
+### <a name="new"></a>新增
 * 已針對 SAS 連線和模擬器等大幅改良外部資源附件。 現在您可以：
    * 針對要連結的資源自訂顯示名稱。 [#31](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
    * 使用不同連接埠連結至多個本機模擬器。 [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
@@ -478,7 +823,7 @@ ms.locfileid: "65510956"
 
 ### <a name="known-issues"></a>已知問題
 * 使用模擬器 (例如「Azure 儲存體模擬器」或 Azurite) 時，您將必須讓它們在其預設連接埠上接聽連線。 否則，「儲存體總管」將無法連線至這些模擬器。
-* 如果您使用 VS for Mac，而且曾建立自訂 AAD 設定，則您可能無法登入。 若要解決此問題，請刪除 ~/.IdentityService/AadConfigurations 的內容。 如果這麼做無法將您解除封鎖，請對[此問題](https://github.com/Microsoft/AzureStorageExplorer/issues/97)加上註解。
+* 如果您使用 VS for Mac，而且曾建立自訂 AAD 設定，則您可能無法登入。 若要解決此問題，請刪除 ~/.IdentityService/AadConfigurations 的內容。 如果這麼做無法將您解除封鎖，請對[此問題](https://github.com/Microsoft/AzureStorageExplorer/issues/97)提出意見。
 * Azurite 尚未完全實作所有的儲存體 API。 因此，對於開發儲存體使用 Azurite 時，可能出現未預期的錯誤或行為。
 * 在少數情況下，樹狀焦點可能會固定在快速存取上。 若要取消固定焦點，您可以 [全部重新整理]。
 * 由於 NodeJS 中的錯誤，造成無法從您的 OneDrive 資料夾上傳。 已修正該 Bug，但是尚未整合至 Electron。
@@ -493,7 +838,7 @@ ms.locfileid: "65510956"
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* 對於 Linux 使用者，您必須安裝 [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)。
+* 對於 Linux 使用者，您必須安裝 [.NET Core 2.0](https://dotnet.microsoft.com/download/dotnet-core/2.0)。
 * 針對使用 Ubuntu 14.04 的使用者，您必須確定 GCC 已是最新版本，做法是執行下列命令，然後重新啟動電腦即可：
 
     ```
@@ -516,7 +861,7 @@ ms.locfileid: "65510956"
 * 已復原 Azure 資源管理 API 版本，以將 Azure US Government 使用者解除封鎖。 [#696](https://github.com/Microsoft/AzureStorageExplorer/issues/696)
 * 載入進度環現在使用 CSS 動畫來減少儲存體總管所使用的 GPU。 [#653](https://github.com/Microsoft/AzureStorageExplorer/issues/653)
 
-### <a name="new"></a>換一個
+### <a name="new"></a>新增
 * 已針對 SAS 連線和模擬器等大幅改良外部資源附件。 現在您可以：
    * 針對要連結的資源自訂顯示名稱。 [#31](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
    * 使用不同連接埠連結至多個本機模擬器。 [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
@@ -534,7 +879,7 @@ ms.locfileid: "65510956"
 
 ### <a name="known-issues"></a>已知問題
 * 使用模擬器 (例如「Azure 儲存體模擬器」或 Azurite) 時，您將必須讓它們在其預設連接埠上接聽連線。 否則，「儲存體總管」將無法連線至這些模擬器。
-* 如果您使用 VS for Mac，而且曾建立自訂 AAD 設定，則您可能無法登入。 若要解決此問題，請刪除 ~/.IdentityService/AadConfigurations 的內容。 如果這麼做無法將您解除封鎖，請對[此問題](https://github.com/Microsoft/AzureStorageExplorer/issues/97)加上註解。
+* 如果您使用 VS for Mac，而且曾建立自訂 AAD 設定，則您可能無法登入。 若要解決此問題，請刪除 ~/.IdentityService/AadConfigurations 的內容。 如果這麼做無法將您解除封鎖，請對[此問題](https://github.com/Microsoft/AzureStorageExplorer/issues/97)提出意見。
 * Azurite 尚未完全實作所有的儲存體 API。 因此，對於開發儲存體使用 Azurite 時，可能出現未預期的錯誤或行為。
 * 在少數情況下，樹狀焦點可能會固定在快速存取上。 若要取消固定焦點，您可以 [全部重新整理]。
 * 由於 NodeJS 中的錯誤，造成無法從您的 OneDrive 資料夾上傳。 已修正該 Bug，但是尚未整合至 Electron。
@@ -549,7 +894,7 @@ ms.locfileid: "65510956"
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* 對於 Linux 使用者，您必須安裝 [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)。
+* 對於 Linux 使用者，您必須安裝 [.NET Core 2.0](https://dotnet.microsoft.com/download/dotnet-core/2.0)。
 * 針對使用 Ubuntu 14.04 的使用者，您必須確定 GCC 已是最新版本，做法是執行下列命令，然後重新啟動電腦即可：
 
     ```
@@ -571,7 +916,7 @@ ms.locfileid: "65510956"
 ### <a name="hotfixes"></a>Hotfix
 * 將 Azure 資源管理 API 版本更新為 2018-07-01 以新增新 Azure 儲存體帳戶類型的支援。 [#652](https://github.com/Microsoft/AzureStorageExplorer/issues/652)
 
-### <a name="new"></a>換一個
+### <a name="new"></a>新增
 * 已針對 SAS 連線和模擬器等大幅改良外部資源附件。 現在您可以：
    * 針對要連結的資源自訂顯示名稱。 [#31](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
    * 使用不同連接埠連結至多個本機模擬器。 [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
@@ -589,7 +934,7 @@ ms.locfileid: "65510956"
 
 ### <a name="known-issues"></a>已知問題
 * 使用模擬器 (例如「Azure 儲存體模擬器」或 Azurite) 時，您將必須讓它們在其預設連接埠上接聽連線。 否則，「儲存體總管」將無法連線至這些模擬器。
-* 如果您使用 VS for Mac，而且曾建立自訂 AAD 設定，則您可能無法登入。 若要解決此問題，請刪除 ~/.IdentityService/AadConfigurations 的內容。 如果這麼做無法將您解除封鎖，請對[此問題](https://github.com/Microsoft/AzureStorageExplorer/issues/97)加上註解。
+* 如果您使用 VS for Mac，而且曾建立自訂 AAD 設定，則您可能無法登入。 若要解決此問題，請刪除 ~/.IdentityService/AadConfigurations 的內容。 如果這麼做無法將您解除封鎖，請對[此問題](https://github.com/Microsoft/AzureStorageExplorer/issues/97)提出意見。
 * Azurite 尚未完全實作所有的儲存體 API。 因此，對於開發儲存體使用 Azurite 時，可能出現未預期的錯誤或行為。
 * 在少數情況下，樹狀焦點可能會固定在快速存取上。 若要取消固定焦點，您可以 [全部重新整理]。
 * 由於 NodeJS 中的錯誤，造成無法從您的 OneDrive 資料夾上傳。 已修正該 Bug，但是尚未整合至 Electron。
@@ -604,7 +949,7 @@ ms.locfileid: "65510956"
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* 對於 Linux 使用者，您必須安裝 [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)。
+* 對於 Linux 使用者，您必須安裝 [.NET Core 2.0](https://dotnet.microsoft.com/download/dotnet-core/2.0)。
 * 針對使用 Ubuntu 14.04 的使用者，您必須確定 GCC 已是最新版本，做法是執行下列命令，然後重新啟動電腦即可：
 
     ```
@@ -631,7 +976,7 @@ ms.locfileid: "65510956"
 * 在速度較慢的 Windows 機器上，啟動顯示畫面有時會需要很長的時間才會出現。 [#586](https://github.com/Microsoft/AzureStorageExplorer/issues/586)
 * 即使沒有連結的帳戶或服務，還是會出現 [連線] 對話方塊。 [#588](https://github.com/Microsoft/AzureStorageExplorer/issues/588)
 
-### <a name="new"></a>換一個
+### <a name="new"></a>新增
 * 已針對 SAS 連線和模擬器等大幅改良外部資源附件。 現在您可以：
    * 針對要連結的資源自訂顯示名稱。 [#31](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
    * 使用不同連接埠連結至多個本機模擬器。 [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
@@ -649,7 +994,7 @@ ms.locfileid: "65510956"
 
 ### <a name="known-issues"></a>已知問題
 * 使用模擬器 (例如「Azure 儲存體模擬器」或 Azurite) 時，您將必須讓它們在其預設連接埠上接聽連線。 否則，「儲存體總管」將無法連線至這些模擬器。
-* 如果您使用 VS for Mac，而且曾建立自訂 AAD 設定，則您可能無法登入。 若要解決此問題，請刪除 ~/.IdentityService/AadConfigurations 的內容。 如果這麼做無法將您解除封鎖，請對[此問題](https://github.com/Microsoft/AzureStorageExplorer/issues/97)加上註解。
+* 如果您使用 VS for Mac，而且曾建立自訂 AAD 設定，則您可能無法登入。 若要解決此問題，請刪除 ~/.IdentityService/AadConfigurations 的內容。 如果這麼做無法將您解除封鎖，請對[此問題](https://github.com/Microsoft/AzureStorageExplorer/issues/97)提出意見。
 * Azurite 尚未完全實作所有的儲存體 API。 因此，對於開發儲存體使用 Azurite 時，可能出現未預期的錯誤或行為。
 * 在少數情況下，樹狀焦點可能會固定在快速存取上。 若要取消固定焦點，您可以 [全部重新整理]。
 * 由於 NodeJS 中的錯誤，造成無法從您的 OneDrive 資料夾上傳。 已修正該 Bug，但是尚未整合至 Electron。
@@ -664,7 +1009,7 @@ ms.locfileid: "65510956"
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* 對於 Linux 使用者，您必須安裝 [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)。
+* 對於 Linux 使用者，您必須安裝 [.NET Core 2.0](https://dotnet.microsoft.com/download/dotnet-core/2.0)。
 * 針對使用 Ubuntu 14.04 的使用者，您必須確定 GCC 已是最新版本，做法是執行下列命令，然後重新啟動電腦即可：
 
     ```
@@ -683,7 +1028,7 @@ ms.locfileid: "65510956"
 ## <a name="version-130"></a>版本 1.3.0
 07/09/2018
 
-### <a name="new"></a>換一個
+### <a name="new"></a>新增
 * 現在支援存取靜態網站所使用的 $web 容器。 這可讓您輕鬆上傳及管理您的網站所使用的檔案和資料夾。 [#223](https://github.com/Microsoft/AzureStorageExplorer/issues/223)
 * macOS 上的應用程式列已重整。 變更包括 [檔案] 功能表、一些快速鍵變更，以及應用程式功能表底下的數個新命令。 [#99](https://github.com/Microsoft/AzureStorageExplorer/issues/99)
 * 用於登入 Azure US Government 的授權單位端點已變更為 https://login.microsoftonline.us/
@@ -693,17 +1038,17 @@ ms.locfileid: "65510956"
 *  在某些電腦上，子處理序花了很長的時間才能啟動。 發生這種情況時，會出現「子處理無法及時啟動」錯誤。 為了讓子處理序啟動而配置的時間現在已從 20 增加為 90 秒。 如果您仍然受到此問題影響，請註解連結的 GitHub 問題。 [#281](https://github.com/Microsoft/AzureStorageExplorer/issues/281)
 * 使用沒有讀取權限的 SAS 時，無法上傳大型 blob。 上傳的邏輯已修改成在此案例中運作。 [#305](https://github.com/Microsoft/AzureStorageExplorer/issues/305)
 * 設定容器的公開存取層級會移除所有的存取原則，反之亦然。 現在，若設定公開存取層級和存取原則其中一項，則會同時保留兩者。 [#197](https://github.com/Microsoft/AzureStorageExplorer/issues/197)
-* "AccessTierChangeTime" 在 [屬性] 對話方塊中遭到截斷。 已修正此問題。 [#145](https://github.com/Microsoft/AzureStorageExplorer/issues/145)
-* [建立新目錄] 對話方塊中遺漏 "Microsoft Azure 儲存體總管 -" 前置詞。 已修正此問題。 [#299](https://github.com/Microsoft/AzureStorageExplorer/issues/299)
+* "AccessTierChangeTime" 在 [屬性] 對話方塊中遭到截斷。 這個問題已經修正。 [#145](https://github.com/Microsoft/AzureStorageExplorer/issues/145)
+* [建立新目錄] 對話方塊中遺漏 "Microsoft Azure 儲存體總管 -" 前置詞。 這個問題已經修正。 [#299](https://github.com/Microsoft/AzureStorageExplorer/issues/299)
 * 協助工具：使用 VoiceOver 時難以瀏覽 [新增實體] 對話方塊。 已進行改進。 [#206](https://github.com/Microsoft/AzureStorageExplorer/issues/206)
 * 協助工具：[動作] 和 [屬性] 窗格的摺疊/展開按鈕背景色彩，與黑色高對比佈景主題中類似的 UI 控制項不一致。 此色彩已變更。 [#123](https://github.com/Microsoft/AzureStorageExplorer/issues/123)
-* 協助工具：在黑色高對比佈景主題中，看不見 [屬性] 對話方塊中 'X' 按鈕的焦點樣式。 已修正此問題。 [#243](https://github.com/Microsoft/AzureStorageExplorer/issues/243)
+* 協助工具：在黑色高對比佈景主題中，看不見 [屬性] 對話方塊中 'X' 按鈕的焦點樣式。 這個問題已經修正。 [#243](https://github.com/Microsoft/AzureStorageExplorer/issues/243)
 * 協助工具：[動作] 和 [屬性] 索引標籤遺漏數個 aria 值，進而造成低於標準的螢幕助讀程式體驗。 現在已新增遺漏的 aria 值。 [#316](https://github.com/Microsoft/AzureStorageExplorer/issues/316)
-* 協助工具：系統並未對左側摺疊的樹狀節點提供 aria-expanded 值 false。 已修正此問題。 [#352](https://github.com/Microsoft/AzureStorageExplorer/issues/352)
+* 協助工具：系統並未對左側摺疊的樹狀節點提供 aria-expanded 值 false。 這個問題已經修正。 [#352](https://github.com/Microsoft/AzureStorageExplorer/issues/352)
 
 ### <a name="known-issues"></a>已知問題
 * 中斷連結透過 SAS URI 連結的資源 (例如 Blob 容器) 可能會導致錯誤，使得其他附件無法正確顯示。 若要解決此問題，只需重新整理群組節點。 請參閱[此問題](https://github.com/Microsoft/AzureStorageExplorer/issues/537)，以了解詳細資訊。
-* 如果您使用 VS for Mac，而且曾建立自訂 AAD 設定，則您可能無法登入。 若要解決此問題，請刪除 ~/.IdentityService/AadConfigurations 的內容。 如果這麼做無法將您解除封鎖，請對[此問題](https://github.com/Microsoft/AzureStorageExplorer/issues/97)加上註解。
+* 如果您使用 VS for Mac，而且曾建立自訂 AAD 設定，則您可能無法登入。 若要解決此問題，請刪除 ~/.IdentityService/AadConfigurations 的內容。 如果這麼做無法將您解除封鎖，請對[此問題](https://github.com/Microsoft/AzureStorageExplorer/issues/97)提出意見。
 * Azurite 尚未完全實作所有的儲存體 API。 因此，對於開發儲存體使用 Azurite 時，可能出現未預期的錯誤或行為。
 * 在少數情況下，樹狀焦點可能會固定在快速存取上。 若要取消固定焦點，您可以 [全部重新整理]。
 * 由於 NodeJS 中的錯誤，造成無法從您的 OneDrive 資料夾上傳。 已修正該 Bug，但是尚未整合至 Electron。
@@ -721,7 +1066,7 @@ ms.locfileid: "65510956"
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* 對於 Linux 使用者，您必須安裝 [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)。
+* 對於 Linux 使用者，您必須安裝 [.NET Core 2.0](https://dotnet.microsoft.com/download/dotnet-core/2.0)。
 * 針對使用 Ubuntu 14.04 的使用者，您必須確定 GCC 已是最新版本，做法是執行下列命令，然後重新啟動電腦即可：
 
     ```
@@ -740,7 +1085,7 @@ ms.locfileid: "65510956"
 ## <a name="version-120"></a>版本 1.2.0
 2018 年 12 月 6 日
 
-### <a name="new"></a>換一個
+### <a name="new"></a>新增
 * 如果 [儲存體總管] 只有在從一小部分租用戶載入訂用帳戶時發生失敗，系統將會顯示所有已成功載入的訂用帳戶，並特別針對失敗的租用戶顯示錯誤訊息。 [#159](https://github.com/Microsoft/AzureStorageExplorer/issues/159)
 * 在 Windows 上，當有更新可用時，您現在可以選擇 [關閉時更新]。 選取此選項時，該項更新的安裝程式將會在您關閉 [儲存體總管] 之後執行。 [#21](https://github.com/Microsoft/AzureStorageExplorer/issues/21)
 * 已將 [還原快照集] 新增至檢視檔案共用快照集時的檔案共用編輯器操作功能表。[#131](https://github.com/Microsoft/AzureStorageExplorer/issues/131)
@@ -763,7 +1108,7 @@ ms.locfileid: "65510956"
 
 ### <a name="known-issues"></a>已知問題
 * 使用模擬器 (例如「Azure 儲存體模擬器」或 Azurite) 時，您將必須讓它們在其預設連接埠上接聽連線。 否則，「儲存體總管」將無法連線至這些模擬器。
-* 如果您使用 VS for Mac，而且曾建立自訂 AAD 設定，則您可能無法登入。 若要解決此問題，請刪除 ~/.IdentityService/AadConfigurations 的內容。 如果這麼做無法將您解除封鎖，請對[此問題](https://github.com/Microsoft/AzureStorageExplorer/issues/97)加上註解。
+* 如果您使用 VS for Mac，而且曾建立自訂 AAD 設定，則您可能無法登入。 若要解決此問題，請刪除 ~/.IdentityService/AadConfigurations 的內容。 如果這麼做無法將您解除封鎖，請對[此問題](https://github.com/Microsoft/AzureStorageExplorer/issues/97)提出意見。
 * Azurite 尚未完全實作所有的儲存體 API。 因此，對於開發儲存體使用 Azurite 時，可能出現未預期的錯誤或行為。
 * 在少數情況下，樹狀焦點可能會固定在快速存取上。 若要取消固定焦點，您可以 [全部重新整理]。
 * 由於 NodeJS 中的錯誤，造成無法從您的 OneDrive 資料夾上傳。 已修正該 Bug，但是尚未整合至 Electron。
@@ -778,7 +1123,7 @@ ms.locfileid: "65510956"
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* 對於 Linux 使用者，您必須安裝 [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)。
+* 對於 Linux 使用者，您必須安裝 [.NET Core 2.0](https://dotnet.microsoft.com/download/dotnet-core/2.0)。
 * 針對使用 Ubuntu 14.04 的使用者，您必須確定 GCC 已是最新版本，做法是執行下列命令，然後重新啟動電腦即可：
 
     ```
@@ -797,7 +1142,7 @@ ms.locfileid: "65510956"
 ## <a name="version-110"></a>1.1.0 版
 05/09/2018
 
-### <a name="new"></a>換一個
+### <a name="new"></a>新增
 * 儲存體總管現在支援使用 Azurite。 注意：Azurite 的連線是硬式編碼至預設開發端點。
 * 儲存體總管現在支援僅限 Blob 和 GPV2 儲存體帳戶的存取層。 在[此處](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers)深入了解存取層。
 * 產生 SAS 時，不再需要開始時間。
@@ -817,7 +1162,7 @@ ms.locfileid: "65510956"
 * 從資料表刪除實體時，要求確認的對話方塊會顯示錯誤圖示。 對話方塊現在使用警告圖示。 [#148](https://github.com/Microsoft/AzureStorageExplorer/issues/148)
 
 ### <a name="known-issues"></a>已知問題
-* 如果您使用 VS for Mac，而且曾建立自訂 AAD 設定，則您可能無法登入。 若要解決此問題，請刪除 ~/.IdentityService/AadConfigurations 的內容。 如果這麼做無法將您解除封鎖，請對[此問題](https://github.com/Microsoft/AzureStorageExplorer/issues/97)加上註解。
+* 如果您使用 VS for Mac，而且曾建立自訂 AAD 設定，則您可能無法登入。 若要解決此問題，請刪除 ~/.IdentityService/AadConfigurations 的內容。 如果這麼做無法將您解除封鎖，請對[此問題](https://github.com/Microsoft/AzureStorageExplorer/issues/97)提出意見。
 * Azurite 尚未完全實作所有的儲存體 API。 因此，對於開發儲存體使用 Azurite 時，可能出現未預期的錯誤或行為。
 * 在少數情況下，樹狀焦點可能會固定在快速存取上。 若要取消固定焦點，您可以 [全部重新整理]。
 * 由於 NodeJS 中的錯誤，造成無法從您的 OneDrive 資料夾上傳。 已修正該 Bug，但是尚未整合至 Electron。
@@ -832,7 +1177,7 @@ ms.locfileid: "65510956"
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* 對於 Linux 使用者，您必須安裝 [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)。
+* 對於 Linux 使用者，您必須安裝 [.NET Core 2.0](https://dotnet.microsoft.com/download/dotnet-core/2.0)。
 * 針對使用 Ubuntu 14.04 的使用者，您必須確定 GCC 已是最新版本，做法是執行下列命令，然後重新啟動電腦即可：
 
     ```
@@ -849,15 +1194,15 @@ ms.locfileid: "65510956"
     ```
 
 
-## <a name="version-100"></a>1.0.0 版
+## <a name="version-100"></a>1\.0.0 版
 04/16/2018
 
-### <a name="new"></a>換一個
+### <a name="new"></a>新增
 * 增強式驗證，可讓儲存體總管使用與 Visual Studio 2017 相同的帳戶存放區。 若要使用這項功能，您必須重新登入您的帳戶，並重新設定已篩選的訂用帳戶。
 * 對於 AAD 所支援的 Azure Stack 帳戶，如果已啟用 [目標 Azure Stack]，則儲存體總管現在會擷取 Azure Stack 訂用帳戶。 您不再需要建立自訂登入環境。
 * 已新增數個捷徑，以便進行更快速的導覽。 這些包括切換各種面板並在編輯器之間移動。 如需詳細資訊，請參閱 [檢視] 功能表。
-* GitHub 上現在提供儲存體總管意見反應。 按一下左下方的 [意見反應] 按鈕或移至 [https://github.com/Microsoft/AzureStorageExplorer/issues](https://github.com/Microsoft/AzureStorageExplorer/issues)，即可抵達我們的問題頁面。 請隨意提出建議、回報問題、詢問問題，或留下任何其他形式的意見反應。
-* 如果您遇到 SSL 憑證問題，而且找不到引起問題的憑證，現在可以使用 `--ignore-certificate-errors` 旗標從命令列啟動儲存體總管。 使用這個旗標啟動時，儲存體總管會忽略 SSL 憑證錯誤。
+* GitHub 上現在提供儲存體總管意見反應。 按一下左下方的 [意見反應] 按鈕或前往，即可觸達我們的問題頁面 [https://github.com/Microsoft/AzureStorageExplorer/issues](https://github.com/Microsoft/AzureStorageExplorer/issues) 。 請隨意提出建議、回報問題、詢問問題，或留下任何其他形式的意見反應。
+* 如果您遇到 TLS/SSL 憑證問題，而且找不到有問題的憑證，您現在可以從命令列使用旗標啟動儲存體總管 `--ignore-certificate-errors` 。 使用此旗標啟動時，儲存體總管將會忽略 TLS/SSL 憑證錯誤。
 * Blob 和檔案項目的內容功能表中現在有 [下載] 選項。
 * 已改善協助工具和畫面讀取器支援。 如果您需依賴協助工具功能，請參閱[協助工具文件](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-accessibility)以取得詳細資訊。
 * 儲存體總管現在使用 Electron 1.8.3
@@ -898,7 +1243,7 @@ ms.locfileid: "65510956"
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* 對於 Linux 使用者，您必須安裝 [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)。
+* 對於 Linux 使用者，您必須安裝 [.NET Core 2.0](https://dotnet.microsoft.com/download/dotnet-core/2.0)。
 * 針對使用 Ubuntu 14.04 的使用者，您必須確定 GCC 已是最新版本，做法是執行下列命令，然後重新啟動電腦即可：
 
     ```
@@ -953,7 +1298,7 @@ ms.locfileid: "65510956"
 ## <a name="version-095"></a>0.9.5 版
 02/06/2018
 
-### <a name="new"></a>換一個
+### <a name="new"></a>新增
 
 * 檔案共用快照集的支援：
     * 建立和管理檔案共用的快照集。
@@ -968,7 +1313,7 @@ ms.locfileid: "65510956"
 
 ### <a name="fixes"></a>修正
 * 啟動效能改進。
-* 各種 Bug 修正。
+* 多個錯誤修正。
 
 ### <a name="known-issues"></a>已知問題
 * 儲存體總管不支援 ADFS 帳戶。
@@ -1002,7 +1347,7 @@ ms.locfileid: "65510956"
 ## <a name="version-094-and-093"></a>0.9.4 和 0.9.3 版
 01/21/2018
 
-### <a name="new"></a>換一個
+### <a name="new"></a>新增
 * 在下列情況下，將會重新使用您的現有儲存體總管視窗：
     * 開啟儲存體總管中所產生的直接連結。
     * 從入口網站開啟儲存體總管。
@@ -1056,9 +1401,9 @@ ms.locfileid: "65510956"
 * Azure 美國政府的端點網域不正確。 已修正此問題。
 * [管理帳戶] 面板的 [套用] 按鈕有時不容易按。 這應該不會再發生。
 
-### <a name="new"></a>換一個
+### <a name="new"></a>新增
 * Azure Cosmos DB 預覽支援：
-    * [線上文件](./cosmos-db/storage-explorer.md)
+    * [線上檔](./cosmos-db/storage-explorer.md)
     * 建立資料庫和集合
     * 操作資料
     * 查詢、建立或刪除文件
@@ -1069,7 +1414,7 @@ ms.locfileid: "65510956"
 * 如果儲存體總管偵測到您的網路連線已遺失，現在將在 Blob 上傳/下載期間暫停反覆項目。 然後在網路連線重新建立後，您可以繼續反覆項目。
 * 新增透過捷徑功能表「全部關閉」、「關閉其他」和「關閉」索引標籤的能力。
 * 儲存體總管現在會使用原生對話方塊和原生捷徑功能表。
-* 儲存體總管現在更容易存取。 改善項目包括：
+* 儲存體總管現在更容易存取。 增強功能包括：
     * 改善的螢幕讀取器支援，Windows 上的 NVDA，以及 Mac 上的 VoiceOver
     * 改良的高對比佈景主題
     * 修正鍵盤定位停駐點和鍵盤焦點
@@ -1112,9 +1457,9 @@ ms.locfileid: "65510956"
 
 ## <a name="version-091-and-090"></a>0.9.1 和 0.9.0 版
 10/20/2017
-### <a name="new"></a>換一個
+### <a name="new"></a>新增
 * Azure Cosmos DB 預覽支援：
-    * [線上文件](./cosmos-db/storage-explorer.md)
+    * [線上檔](./cosmos-db/storage-explorer.md)
     * 建立資料庫和集合
     * 操作資料
     * 查詢、建立或刪除文件
@@ -1125,7 +1470,7 @@ ms.locfileid: "65510956"
 * 如果儲存體總管偵測到您的網路連線已遺失，現在將在 Blob 上傳/下載期間暫停反覆項目。 然後在網路連線重新建立後，您可以繼續反覆項目。
 * 新增透過捷徑功能表「全部關閉」、「關閉其他」和「關閉」索引標籤的能力。
 * 儲存體總管現在會使用原生對話方塊和原生捷徑功能表。
-* 儲存體總管現在更容易存取。 改善項目包括：
+* 儲存體總管現在更容易存取。 增強功能包括：
     * 改善的螢幕讀取器支援，Windows 上的 NVDA，以及 Mac 上的 VoiceOver
     * 改良的高對比佈景主題
     * 修正鍵盤定位停駐點和鍵盤焦點
@@ -1134,7 +1479,7 @@ ms.locfileid: "65510956"
 * 如果您嘗試使用無效的 Windows 檔案名稱開啟或下載 Blob，作業會失敗。 儲存體總管現在會偵測 Blob 名稱是否無效，並詢問您是否要加以編碼或略過該 Blob。 儲存體總管也會偵測檔案名稱是否已經過編碼，並詢問您是否要在上傳之前將它解碼。
 * Blob 上傳期間，目標 Blob 容器的編輯器會有時不正確地重新整理。 已修正此問題。
 * 數種形式的連接字串和 SAS URI 支援已回歸。 我們已經處理所有已知的問題，但如果您遇到其他問題，請傳送意見反應。
-* 0.9.0 中有些使用者的更新通知已中斷。 已修正此問題，以及對於受此錯誤影響的使用者，可以在[這裡](https://azure.microsoft.com/features/storage-explorer/)手動下載最新版的儲存體總管
+* 0.9.0 中有些使用者的更新通知已中斷。 已修正此問題，而且對於受到 bug 影響的使用者，您可以在[這裡](https://azure.microsoft.com/features/storage-explorer/)手動下載最新版本的儲存體總管
 
 ### <a name="known-issues"></a>已知問題
 * 儲存體總管不支援 ADFS 帳戶。
@@ -1169,7 +1514,7 @@ ms.locfileid: "65510956"
 ## <a name="version-0816"></a>0.8.16 版
 8/21/2017
 
-### <a name="new"></a>換一個
+### <a name="new"></a>新增
 * 您開啟 blob 時，如果偵測到變更，儲存體總管將提示您上傳已下載的檔案
 * 增強的 Azure Stack 登入體驗
 * 改善同時上傳/下載許多小檔案的效能
@@ -1184,10 +1529,10 @@ ms.locfileid: "65510956"
 
 ### <a name="known-issues"></a>已知問題
 * 目前無法使用名稱和金鑰連接字串。 這將在下一版中予以修正。 在此之前，您可以使用名稱和金鑰附加。
-* 如果尝试打开具有无效 Windows 文件名的文件，下载操作会导致“找不到文件”错误。
-* 对任务单击“取消”后，可能需要一段时间才能取消该任务。 这是 Azure 存储节点库的局限性。
-* 完成 Blob 上传后，系统会刷新启动上传的选项卡。 这是对以前行为的更改，也将导致回转到所在容器的根目录中。
-* 如果选择错误的 PIN/智能卡证书，需要重启存储资源管理器，使其忘记该选择。
+* 如果您嘗試開啟無效 Windows 檔案名稱的檔案，下載會導致找不到檔案的錯誤。
+* 按一下工作上的 [取消] 之後，該工作可能需要經過一段時間才會取消。 此為 Microsoft Azure 儲存體節點程式庫的限制。
+* 完成 Blob 上傳之後，系統會重新整理起始該上傳的索引標籤。 這和先前的行為不同，且會導致您返回所在容器的根。
+* 如果您選擇錯誤的 PIN/智慧卡憑證，則必須重新啟動，才能使儲存體總管忘記該決定。
 * 帳戶設定面板可能會提示您需要重新輸入認證以篩選訂用帳戶。
 * 重新命名 Blob (個別執行或在重新命名的 Blob 容器內) 不會保留快照集。 Blob、檔案及實體的所有其他屬性和中繼資料在重新命名期間都會保留。
 * 雖然 Azure Stack 目前並不支援檔案共用，檔案共用節點仍然會出現在附加的 Azure Stack 儲存體帳戶之下。
@@ -1209,7 +1554,7 @@ ms.locfileid: "65510956"
 ### <a name="version-0814"></a>版本 0.8.14
 06/22/2017
 
-### <a name="new"></a>換一個
+### <a name="new"></a>新增
 
 * 將 Electron 版本更新至 1.7.2 以利用數個重要安全性更新
 * 現已可從 [說明] 功能表快速存取線上疑難排解指南
@@ -1236,16 +1581,16 @@ ms.locfileid: "65510956"
 ### <a name="version-0813"></a>0.8.13 版
 05/12/2017
 
-#### <a name="new"></a>換一個
+#### <a name="new"></a>新增
 
 * 儲存體總管疑難排解[指南][2]
 * 連線至 Azure Stack 訂用帳戶的[指示][3]
 
 #### <a name="fixes"></a>修正
 
-* 已修正：檔案上傳先前很容易造成記憶體不足錯誤
+* 已修正︰檔案上傳先前很容易造成記憶體不足錯誤
 * 已修正：您現在可以使用 PIN/智慧卡登入
-* 已修正：[在入口網站中開啟] 現已可以搭配 Azure 中國 21Vianet、Azure 德國、Azure 美國政府及 Azure Stack 運作
+* 已修正：在入口網站中開啟現在可搭配 Azure 中國的世紀、Azure 德國、Azure 美國政府和 Azure Stack
 * 已修正：先前將資料夾上傳至 Blob 容器時，有時候會發生「作業不合法」錯誤
 * 已修正：先前在管理快照集時會停用 [全選]
 * 已修正：在檢視基底 Blob 的快照集屬性後，可能會覆寫該基底 Blob 的中繼資料
@@ -1271,7 +1616,7 @@ ms.locfileid: "65510956"
 ### <a name="version-0812-and-0811-and-0810"></a>0.8.12、0.8.11 和 0.8.10 版
 04/07/2017
 
-#### <a name="new"></a>換一個
+#### <a name="new"></a>新增
 
 * 儲存體總管現在會在您從更新通知安裝更新之後自動關閉
 * 就地快速存取能針對您經常存取的資源提供加強的使用體驗
@@ -1282,7 +1627,7 @@ ms.locfileid: "65510956"
 * 現已能登入以 Azure Active Directory (AAD) 為基礎的 Azure Stack 帳戶。
 * 現已能將大小超過 32MB 的封存檔案上傳至進階儲存體帳戶
 * 改善協助工具支援
-* 現已能移至 [編輯] -&gt; [SSL 憑證] -&gt; [匯入憑證] 來新增受信任的 Base-64 編碼 X.509 SSL 憑證
+* 您現在可以前往 [編輯- &gt; Ssl 憑證-匯入憑證]，新增信任的 Base-64 編碼的 X.509 TLS/ssl 憑證。 &gt;
 
 #### <a name="fixes"></a>修正
 
@@ -1319,7 +1664,7 @@ ms.locfileid: "65510956"
 >[!VIDEO https://www.youtube.com/embed/SrRPCm94mfE?ecver=1]
 
 
-#### <a name="new"></a>換一個
+#### <a name="new"></a>新增
 
 * 儲存體總管 0.8.9 將會自動下載最新版本的更新。
 * Hotfix：先前使用由入口網站所產生的 SAS URI 來附加儲存體帳戶將會導致錯誤。
@@ -1327,7 +1672,7 @@ ms.locfileid: "65510956"
 * 您現在已可以登入「Azure 中國 21Vianet」、「Azure 德國」及「Azure 美國政府」帳戶。
 * 現已能變更縮放層級。 使用 [檢視] 功能表中的選項來放大、縮小及重設縮放。
 * Blob 和檔案的使用者中繼資料現已支援 Unicode 字元。
-* 協助工具改進。
+* 協助工具改善。
 * 可從更新通知中檢視下個版本的版本資訊。 您也可以從 [說明] 功能表檢視目前版本的資訊。
 
 #### <a name="fixes"></a>修正
@@ -1349,7 +1694,7 @@ ms.locfileid: "65510956"
 
 >[!VIDEO https://www.youtube.com/embed/Me4Y4jxoer8?ecver=1]
 
-#### <a name="new"></a>換一個
+#### <a name="new"></a>新增
 
 * 在剛開始更新、下載或複製工作階段時，您可以在 [活動] 視窗中選擇如何解決衝突
 * 將游標暫留在索引標籤上可以看到儲存體資源的完整路徑
@@ -1369,23 +1714,23 @@ ms.locfileid: "65510956"
 
 * 快速存取僅適用於以訂用帳戶為基礎的項目。 此版本不支援透過金鑰或 SAS 權杖附加的本機資源或資源
 * 視您擁有的資源數量而定，快速存取可能需要幾秒鐘才能瀏覽至目標資源
-* 同时上传 3 组以上的 Blob 或文件可能导致错误
+* 同時上傳超過 3 個 Blob 或檔案群組可能會造成錯誤
 * 搜尋功能在處理超過大約 50,000 個節點的搜尋作業之後，可能會影響效能或造成未處理的例外狀況
 * 在 macOS 上第一次使用儲存體總管時，系統可能會多次要求使用者的許可，以存取鑰匙圈。 建議您選取 [一律允許] 來使系統不會再次顯示該提示
 
 11/18/2016
 ### <a name="version-086"></a>0.8.6 版
 
-#### <a name="new"></a>換一個
+#### <a name="new"></a>新增
 
 * 現已可將常用的服務釘選到 Quick Access 以便瀏覽
-* 現已可在多個索引標籤開啟多個編輯器。 按一下以開啟暫時索引標籤；按兩下以開啟永久索引標籤。您也可以按一下暫時索引標籤來將它設為永久索引標籤
+* 現已可在多個索引標籤開啟多個編輯器。 按一下以開啟暫時索引標籤;按兩下以開啟 [永久] 索引標籤。您也可以按一下 [暫存] 索引標籤，使其成為永久索引標籤
 * 我們已大幅改善上傳及下載的效能和穩定性，尤其是在高效能機器上處理大型檔案的情況
 * 現可在 Blob 容器內建立空白的「虛擬」資料夾
 * 我們已重新推出範圍搜尋，並搭配全新增強的子字串搜尋，因此您現在將會有兩種搜尋的選項：
     * 全域搜尋：請直接在搜尋文字方塊中輸入搜尋字詞
     * 範圍搜尋：按一下位於節點旁邊的放大鏡圖示，然後將搜尋字詞新增至路徑末端，或是以滑鼠右鍵按一下並選取 [從這裡搜尋]
-* 我們已新增多種佈景主題：淺色 (預設)、深色、黑色高對比和白色高對比。 移至 [編輯] -&gt; [佈景主題] 來變更佈景主題喜好設定
+* 已新增多種佈景主題：淺色 (預設)、深色、黑色高對比和白色高對比。 移至 [編輯] -&gt; [佈景主題] 來變更佈景主題喜好設定
 * 您可以修改 Blob 和檔案的屬性
 * 我們現已支援編碼 (base64) 及未編碼的佇列訊息
 * 若使用 Linux，必須為 64 位元作業系統。 針對此版本，我們僅支援 64 位元的 Ubuntu 16.04.1 LTS
@@ -1393,8 +1738,8 @@ ms.locfileid: "65510956"
 
 #### <a name="fixes"></a>修正
 
-* 已修正：畫面凍結的問題
-* 已修正：強化的安全性
+* 已修正︰畫面凍結的問題
+* 已修正：增強安全性
 * 已修正：有時候可能會出現重複的附加帳戶
 * 已修正：具有未定義內容類型的 Blob 可能會產生例外狀況
 * 已修正：先前並無法在空白資料表上開啟 [查詢] 面板
@@ -1406,22 +1751,22 @@ ms.locfileid: "65510956"
 
 * 此版本的儲存體總管並無法在 Ubuntu 14.04 上執行
 * 若要針對相同資源開啟多個索引標籤，請不要持續點選相同的資源。 請先按一下其他資源，然後再返回按一下原始資源，以在另一個索引標籤上再次開啟它
-* 快速访问仅适用于基于订阅的项。 此版本不支援透過金鑰或 SAS 權杖附加的本機資源或資源
+* 快速存取僅適用於以訂用帳戶為基礎的項目。 此版本不支援透過金鑰或 SAS 權杖附加的本機資源或資源
 * 視您擁有的資源數量而定，快速存取可能需要幾秒鐘才能瀏覽至目標資源
-* 同时上传 3 组以上的 Blob 或文件可能导致错误
+* 同時上傳超過 3 個 Blob 或檔案群組可能會造成錯誤
 * 搜尋功能在處理超過大約 50,000 個節點的搜尋作業之後，可能會影響效能或造成未處理的例外狀況
 
-10/03/2016
+2016 年 10 月 3 日
 ### <a name="version-085"></a>0.8.5 版
 
-#### <a name="new"></a>換一個
+#### <a name="new"></a>新增
 
 * 現已能使用由入口網站所產生的 SAS 金鑰來附加儲存體帳戶和資源
 
 #### <a name="fixes"></a>修正
 
 * 已修正：先前在搜尋期間的競爭條件有時候會使節點無法展開
-* 已修正：在以帳戶名稱和金鑰連線至儲存體帳戶時，「使用 HTTP」會無法運作
+* 已修正：在以帳戶名稱和金鑰連線至儲存體帳戶時，[使用 HTTP] 會無法運作
 * 已修正：SAS 金鑰 (特別是由入口網站所產生的 SAS 金鑰) 會傳回「結尾斜線」錯誤
 * 已修正：資料表匯入問題
     * 資料分割索引鍵和列索引鍵有時候會反轉
@@ -1437,7 +1782,7 @@ ms.locfileid: "65510956"
 
 >[!VIDEO https://www.youtube.com/embed/cr5tOGyGrIQ?ecver=1]
 
-#### <a name="new"></a>換一個
+#### <a name="new"></a>新增
 
 * 產生針對儲存體帳戶、容器、佇列、資料表或檔案共用的直接連結，以便共用及輕鬆存取資源 - Windows 與 Mac 作業系統支援
 * 從搜尋方塊搜尋 Blob 容器、資料表、佇列、檔案共用或儲存體帳戶
@@ -1484,7 +1829,7 @@ ms.locfileid: "65510956"
 
 >[!VIDEO https://www.youtube.com/embed/nYgKbRUNYZA?ecver=1]
 
-#### <a name="new"></a>換一個
+#### <a name="new"></a>新增
 
 * 儲存體帳戶是依訂用帳戶進行群組。透過金鑰或 SAS 附加的開發儲存體和資源會顯示在 (本機和附加的) 節點之下
 * 在 [Azure 帳戶設定] 面板中登出帳戶
@@ -1511,7 +1856,7 @@ ms.locfileid: "65510956"
 
 >[!VIDEO https://www.youtube.com/embed/3zEXJcGdl_k?ecver=1]
 
-#### <a name="new"></a>換一個
+#### <a name="new"></a>新增
 
 * 檔案共用支援：檢視、上傳、下載、複製檔案和目錄、SAS URI (建立和連線)
 * 改善透過 SAS URI 或帳戶金鑰連線至儲存體的使用者體驗
@@ -1534,7 +1879,7 @@ ms.locfileid: "65510956"
 05/17/2016
 ### <a name="version-07201605090"></a>0.7.20160509.0 版
 
-#### <a name="new"></a>換一個
+#### <a name="new"></a>新增
 
 * 改善應用程式當機的錯誤處理
 
@@ -1554,7 +1899,7 @@ ms.locfileid: "65510956"
 
 >[!VIDEO https://www.youtube.com/embed/ceX-P8XZ-s8?ecver=1]
 
-#### <a name="new"></a>換一個
+#### <a name="new"></a>新增
 
 * 資料表支援：針對實體的檢視、查詢、匯出、匯入及 CRUD 作業
 * 佇列支援：針對訊息進行檢視、新增、清除佇列
@@ -1586,7 +1931,7 @@ ms.locfileid: "65510956"
 
 ### <a name="version-07201601050"></a>0.7.20160105.0 版
 
-#### <a name="new"></a>換一個
+#### <a name="new"></a>新增
 
 * Linux 支援 (和 OSX 相同的功能)
 * 新增具有共用存取簽章 (SAS) 金鑰的 Blob 容器
@@ -1616,7 +1961,7 @@ ms.locfileid: "65510956"
 11/18/2015
 ### <a name="version-07201511160"></a>0.7.20151116.0 版
 
-#### <a name="new"></a>換一個
+#### <a name="new"></a>新增
 
 * macOS 及 Windows 版本
 * 使用您的「組織帳戶」、「Microsoft 帳戶」、2FA 等來登入以檢視「儲存體帳戶」。

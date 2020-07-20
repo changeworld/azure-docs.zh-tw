@@ -1,26 +1,19 @@
 ---
-title: 在 Azure 上從 Jupyter Notebook 存取資料資源
-description: 如何從 Jupyter Notebook 存取檔案、REST API、資料庫和不同的 Azure 儲存體資源。
-services: app-service
-documentationcenter: ''
-author: kraigb
-manager: douge
-ms.assetid: ee867303-a5e5-4686-b2da-8a0108247d18
-ms.service: azure-notebooks
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+title: 存取 Jupyter 筆記本中的資料-Azure Notebooks 預覽
+description: 瞭解如何從 Jupyter 筆記本存取檔案、REST Api、資料庫和不同的 Azure 儲存體資源。
+ms.topic: how-to
 ms.date: 12/04/2018
-ms.author: kraigb
-ms.openlocfilehash: 14a4191612a5d42836ae4be3ff902ca47a6b06d4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.custom: tracking-python
+ms.openlocfilehash: e0473a885860fad71c066f9d129f859528fa16e1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60634334"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833480"
 ---
 # <a name="access-cloud-data-in-a-notebook"></a>在 Notebook 中存取雲端資料
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 要在 Jupyter Notebook 中執行有趣的工作，必須要有資料。 資料是 Notebook 的原動力。
 
@@ -42,18 +35,18 @@ import requests
 data_url = 'https://data.cityofnewyork.us/resource/gkne-dk5s.json'
 
 # General data request; include other API keys and credentials as needed in the data argument
-response = requests.get(data_url, data={"limit" : "20"})
+response = requests.get(data_url, data={"limit": "20"})
 
 if response.status_code == 200:
     dataframe_rest2 = pandas.DataFrame.from_records(response.json())
     print(dataframe_rest2)
 ```
 
-## <a name="azure-sql-databases"></a>Azure SQL 資料庫
+## <a name="azure-sql-database-and-sql-managed-instance"></a>Azure SQL Database 和 SQL 受控執行個體
 
-您可以藉由 pyodbc 或 pymssql 程式庫的輔助來存取 SQL Server 資料庫。
+您可以使用 pyodbc 或 pymssql 程式庫的協助來存取 SQL Database 或 SQL 受控執行個體中的資料庫。
 
-[使用 Python 查詢 Azure SQL 資料庫](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-python)提供了相關指示，說明如何建立包含 AdventureWorks 資料的資料庫，以及如何查詢該資料。 本文的範例 Notebook 中顯示了相同的程式碼。
+[使用 Python 查詢 AZURE SQL database](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-python)提供有關在包含 AdventureWorks 資料的 SQL Database 中建立資料庫的指示，並示範如何查詢該資料。 本文的範例 Notebook 中顯示了相同的程式碼。
 
 ## <a name="azure-storage"></a>Azure 儲存體
 
@@ -71,7 +64,7 @@ Azure Cosmos DB 針對 JSON 文件提供了具完整索引的 NoSQL 存放區。
 - [使用 Python 建置 SQL API 應用程式](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-python)
 - [使用適用於 MongoDB 的 Azure Cosmos DB API 建置 Flask 應用程式](https://docs.microsoft.com/azure/cosmos-db/create-mongodb-flask)
 - [使用 Python 和 Gremlin API 建立圖形資料庫](https://docs.microsoft.com/azure/cosmos-db/create-graph-python)
-- [使用 Python 和 Azure Cosmos DB 建置 Cassandra 應用程式](https://docs.microsoft.com/azure/cosmos-db/create-cassandra-python)
+- [使用 Python 和 Azure Cosmos DB 建立 Cassandra 應用程式](https://docs.microsoft.com/azure/cosmos-db/create-cassandra-python)
 - [使用 Python 與 Azure Cosmos DB 建置資料表 API 應用程式](https://docs.microsoft.com/azure/cosmos-db/create-table-python)
 
 使用 Cosmos DB 時，您可以使用 [azure-cosmosdb-table](https://pypi.org/project/azure-cosmosdb-table/) 程式庫。
@@ -80,12 +73,12 @@ Azure Cosmos DB 針對 JSON 文件提供了具完整索引的 NoSQL 存放區。
 
 Azure 提供了許多其他資料庫類型供您使用。 以下文章提供了從 Python 存取這些資料庫的指引：
 
-- [適用於 PostgreSQL 的 Azure 資料庫：使用 Python 連線並查詢資料](https://docs.microsoft.com/azure/postgresql/connect-python)
+- [Azure Database for PostgreSQL︰使用 Python 連線及查詢資料](https://docs.microsoft.com/azure/postgresql/connect-python)
 - [快速入門：搭配使用 Azure Redis 快取與 Python](https://docs.microsoft.com/azure/redis-cache/cache-python-get-started)
-- [適用於 MySQL 的 Azure 資料庫：使用 Python 連線並查詢資料](https://docs.microsoft.com/azure/mysql/connect-python)
+- [Azure Database for MySQL︰使用 Python 連線和查詢資料](https://docs.microsoft.com/azure/mysql/connect-python)
 - [Azure Data Factory](https://azure.microsoft.com/services/data-factory/)
   - [Azure Data Factory 的複製精靈](https://azure.microsoft.com/updates/code-free-copy-wizard-for-azure-data-factory/)
 
 ## <a name="next-steps"></a>後續步驟
 
-- [操作說明：使用專案資料檔案](work-with-project-data-files.md)
+- [如何：使用專案資料檔案](work-with-project-data-files.md)

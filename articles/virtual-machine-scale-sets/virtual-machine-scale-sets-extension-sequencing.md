@@ -1,26 +1,19 @@
 ---
-title: 對 Azure 虛擬機器擴展集使用擴充功能排序 | Microsoft Docs
+title: 使用擴充功能排序搭配 Azure 虛擬機器擴展集
 description: 了解在虛擬機器擴展集上部署多個擴充功能時如何擴充功能佈建排序。
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: mayanknayar
-manager: drewm
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
+author: ju-shim
+ms.author: jushiman
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.subservice: extensions
 ms.date: 01/30/2019
-ms.author: manayar
-ms.openlocfilehash: 2e5dfda16c4828b3113fc50d4cffc79fe6ff19e8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: 3271041b9f4db100cd05588129c7d714d4478f10
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60620167"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "83121026"
 ---
 # <a name="sequence-extension-provisioning-in-virtual-machine-scale-sets"></a>為虛擬機器擴展集中的擴充功能佈建排序
 Azure 虛擬機器擴充功能可提供多種功能，例如部署後的設定和管理、監視、安全性等等。 生產環境部署通常會搭配使用多個為 VM 執行個體設定的擴充功能，以達成所需的結果。
@@ -31,7 +24,7 @@ Azure 虛擬機器擴充功能可提供多種功能，例如部署後的設定�
 
 ## <a name="prerequisites"></a>必要條件
 本文假設您已熟悉以下各項：
--   Azure 虛擬機器[延伸模組](../virtual-machines/extensions/overview.md)
+-   Azure 虛擬機器[擴充](../virtual-machines/extensions/overview.md)功能
 -   [修改](virtual-machine-scale-sets-upgrade-scale-set.md)虛擬機器擴展集
 
 ## <a name="when-to-use-extension-sequencing"></a>何時應使用擴充功能排序
@@ -249,7 +242,7 @@ az vmss extension set \
 
 ### <a name="not-able-to-add-extension-with-dependencies"></a>無法新增具有相依性的擴充功能嗎？
 1. 確定 provisionAfterExtensions 中指定的擴充功能已定義於擴展集模型中。
-2. 確定未導入任何循環相依性。 例如，不允許使用下列順序：擴充功能 A -> 擴充功能 B -> 擴充功能 C -> 擴充功能 A
+2. 確定未導入任何循環相依性。 例如，不允許下列順序：擴充功能 a-> 擴充功能 b-> 擴充功能 c-> 擴充功能 a
 3. 確定所相依的任何擴充功能在擴充功能「屬性」下都有「設定」屬性。 例如，如果擴充功能 B 必須在擴充功能 A 之後佈建，則擴充功能 A 的「屬性」下必須要有「設定」欄位。 如果擴充功能未要求任何必要設定，則可以指定空的「設定」屬性。
 
 ### <a name="not-able-to-remove-extensions"></a>無法移除擴充功能嗎？

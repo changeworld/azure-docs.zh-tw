@@ -20,18 +20,12 @@
           href: tutorial-windows-vm-access-datalake.md
         - name: 存取 Azure 儲存體
           href: tutorial-vm-windows-access-storage.md
-        - name: 使用存取金鑰存取 Azure 儲存體
-          href: tutorial-windows-vm-access-storage.md
-        - name: 使用 SAS 存取 Azure 儲存體
-          href: tutorial-windows-vm-access-storage-sas.md
         - name: 存取 Azure SQL
           href: tutorial-windows-vm-access-sql.md
         - name: 存取 Azure Key Vault
           href: tutorial-windows-vm-access-nonaad.md
         - name: 存取 Azure Cosmos DB
           href: tutorial-windows-vm-access-cosmos-db.md
-        - name: 存取 Azure AD Graph API
-          href: tutorial-windows-vm-access-azure-ad-graph.md
         - name: 以使用者指派的受控識別來存取 Azure Resource Manager
           href: tutorial-windows-vm-ua-arm.md
     - name: Linux VM/VMSS
@@ -50,8 +44,6 @@
           href: tutorial-linux-vm-access-cosmos-db.md
         - name: 存取 Azure Container Registry
           href: /azure/container-registry/container-registry-authentication-managed-identity?context=azure/active-directory/managed-identities-azure-resources/context/msi-context
-        - name: 存取 Azure AD Graph API
-          href: tutorial-linux-vm-access-azure-ad-graph.md
         - name: 以使用者指派的受控識別來存取 Azure Resource Manager
           href: msi-tutorial-linux-vm-access-arm.md
     - name: Azure 服務匯流排
@@ -59,10 +51,14 @@
     - name: Azure App Service 和 Azure Functions
       href: /azure/app-service/overview-managed-identity?context=azure/active-directory/managed-identities-azure-resources/context/msi-context
     - name: Azure 事件中心
-      href: /azure/event-hubs/event-hubs-managed-service-identity?context=azure/active-directory/managed-identities-azure-resources/context/msi-context
+      href: /azure/event-hubs/authenticate-managed-identity?context=azure/active-directory/managed-identities-azure-resources/context/msi-context
     - name: Azure Container Instances
       href: /azure/container-instances/container-instances-managed-identity?context=azure/active-directory/managed-identities-azure-resources/context/msi-context
-- name: 使用說明指南
+- name: 概念
+  items:
+    - name: 受控識別和 Azure VM
+      href: how-managed-identities-work-vm.md
+- name: 操作指南
   items:
     - name: 在 VM 上設定受控識別
       items:
@@ -94,7 +90,7 @@
       items:
         - name: 取得存取權杖
           href: how-to-use-vm-token.md
-        - name: 使用受控身分識別登入 Powershell 和 CLI
+        - name: 使用受控身分識別登入 PowerShell 和 CLI
           href: how-to-use-vm-sign-in.md
         - name: 使用 Azure SDK
           href: how-to-use-vm-sdk.md
@@ -139,20 +135,20 @@
     - name: Java
       href: 'https://github.com/Azure/azure-libraries-for-java#ready-to-run-code-samples-for-virtual-machines'
     - name: Python
-      href: /python/api/azure.mgmt.msi
+      href: 'https://docs.microsoft.com/windows/python/'
     - name: Ruby
       href: 'https://rubygems.org/gems/azure_mgmt_msi'
     - name: Node.js
-      href: /javascript/api/ms-rest-azure
+      href: 'https://nodejs.org/en/docs/'
     - name: Go
-      href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/msi/mgmt/2015-08-31-preview/msi'
+      href: 'https://golang.org/doc/'
 - name: 資源
   items:
     - name: 常見問題和已知問題
       href: known-issues.md
     - name: 支援適用於 Azure 資源的受控識別 Azure 服務
       href: services-support-managed-identities.md
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-msi'
     - name: AAD 開發人員論壇
       href: 'https://feedback.azure.com/forums/169401-azure-active-directory/category/164757-developer-experiences'

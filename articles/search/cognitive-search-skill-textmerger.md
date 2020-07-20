@@ -1,24 +1,21 @@
 ---
-title: 文字合併認知搜尋技能 - Azure 搜尋服務
-description: 將一組欄位中的文字合併成一個合併欄位。 在 Azure 搜尋服務擴充管線中使用這項認知技能。
-services: search
-manager: pablocas
+title: 文字合併認知技能
+titleSuffix: Azure Cognitive Search
+description: 將一組欄位中的文字合併成一個合併欄位。 在 Azure 認知搜尋中的 AI 擴充管線中使用這項認知技能。
+manager: nitinme
 author: luiscabrer
-ms.service: search
-ms.devlang: NA
-ms.workload: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: luisca
-ms.custom: seodec2018
-ms.openlocfilehash: bbf2e524d626ac17596ded61746c26f20a6caf1b
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 06/17/2020
+ms.openlocfilehash: f713eb71d375a3388c4b238656355595354b9806
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65021832"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84982011"
 ---
-#    <a name="text-merge-cognitive-skill"></a>文字合併認知技能
+#   <a name="text-merge-cognitive-skill"></a>文字合併認知技能
 
 **文字合併**技能可將一組欄位中的文字合併成單一欄位。 
 
@@ -34,8 +31,8 @@ Microsoft.Skills.Text.MergeSkill
 
 | 參數名稱     | 描述 |
 |--------------------|-------------|
-| insertPreTag  | 要在每次插入之前包含的字串。 預設值為 `" "`。 若要省略空間，請將值設定為 `""`。  |
-| insertPostTag | 要在每次插入之後包含的字串。 預設值為 `" "`。 若要省略空間，請將值設定為 `""`。  |
+| `insertPreTag`    | 要在每次插入之前包含的字串。 預設值為 `" "`。 若要省略空間，請將值設定為 `""`。  |
+| `insertPostTag`   | 要在每次插入之後包含的字串。 預設值為 `" "`。 若要省略空間，請將值設定為 `""`。  |
 
 
 ##  <a name="sample-input"></a>範例輸入
@@ -50,7 +47,7 @@ Microsoft.Skills.Text.MergeSkill
       {
         "text": "The brown fox jumps over the dog",
         "itemsToInsert": ["quick", "lazy"],
-        "offsets": [3, 28],
+        "offsets": [3, 28]
       }
     }
   ]
@@ -111,18 +108,22 @@ Microsoft.Skills.Text.MergeSkill
       "insertPostTag": " ",
       "inputs": [
         {
-          "name":"text", "source": "/document/content"
+          "name":"text", 
+          "source": "/document/content"
         },
         {
-          "name": "itemsToInsert", "source": "/document/normalized_images/*/text"
+          "name": "itemsToInsert", 
+          "source": "/document/normalized_images/*/text"
         },
         {
-          "name":"offsets", "source": "/document/normalized_images/*/contentOffset" 
+          "name":"offsets", 
+          "source": "/document/normalized_images/*/contentOffset" 
         }
       ],
       "outputs": [
         {
-          "name": "mergedText", "targetName" : "merged_text"
+          "name": "mergedText", 
+          "targetName" : "merged_text"
         }
       ]
     }
@@ -143,8 +144,8 @@ Microsoft.Skills.Text.MergeSkill
 }
 ```
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
-+ [預先定義的技能](cognitive-search-predefined-skills.md)
++ [內建技能](cognitive-search-predefined-skills.md)
 + [如何定義技能集](cognitive-search-defining-skillset.md) (英文)
 + [建立索引子 (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)

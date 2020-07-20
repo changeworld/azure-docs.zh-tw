@@ -5,21 +5,19 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 02/01/2019
+ms.date: 02/10/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: deabef0c2c3540e515fe72a161710c95a20fa86f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 50ce8530aca40eed07741f35be1a57bbd7cc1868
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60320038"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77133611"
 ---
 以較高的權限開啟 PowerShell 主控台。
 
-
-
-如果您是以本機執行 Azure PowerShell，請連線到您的 Azure 帳戶。 *Connect-AzAccount* Cmdlet 會提示您輸入認證。 驗證後即會下載您的帳戶設定供 Azure PowerShell 使用。 如果您未在本機執行 PowerShell，而改為在瀏覽器中使用 Azure Cloud Shell 的 [試用]，則可略過這個第一步驟。 您會自動連線至您的 Azure 帳戶。
+如果您是以本機執行 Azure PowerShell，請連線到您的 Azure 帳戶。 *Connect-AzAccount* Cmdlet 會提示您輸入認證。 驗證後即會下載您的帳戶設定供 Azure PowerShell 使用。 如果您改為使用 Azure Cloud Shell，就不需要執行*disconnect-azaccount*。 Azure Cloud Shell 會自動連接到您的 Azure 帳戶。
 
 ```azurepowershell
 Connect-AzAccount

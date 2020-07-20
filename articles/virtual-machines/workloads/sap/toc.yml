@@ -24,6 +24,8 @@
           href: hana-data-tiering-extension-nodes.md
         - name: 作業模型和職責
           href: hana-operations-model.md
+        - name: 相容作業系統
+          href: os-compatibility-matrix-hana-large-instance.md
     - name: 架構
       items:
         - name: 一般架構
@@ -66,7 +68,7 @@
           href: troubleshooting-monitoring.md
         - name: 從 HANA 端進行監視和疑難排解
           href: hana-monitor-troubleshoot.md
-    - name: 作法
+    - name: 如何
       items:
         - name: 透過 Azure 入口網站控制 Azure HANA Large Instances
           href: hana-li-portal.md
@@ -74,18 +76,24 @@
           href: ha-setup-with-stonith.md
         - name: 類型 II SKU 的 OS 備份
           href: os-backup-type-ii-skus.md
+        - name: 為 HANA 大型執行個體啟用 Kdump
+          href: hana-large-instance-enable-kdump.md
         - name: 適用於 HANA 大型執行個體的作業系統升級
           href: os-upgrade-hana-large-instance.md
         - name: 設定 SUSE Linux 的 SMT 伺服器
           href: hana-setup-smt.md
+        - name: HLI 至 Azure VM 的移轉
+          href: hana-large-instance-virtual-machine-migration.md
 - name: Azure 虛擬機器上的 SAP HANA
   items:
-    - name: 單一執行個體 SAP HANA 安裝
+    - name: 在 Azure VM 上安裝 SAP HANA
       href: hana-get-started.md
     - name: S/4 HANA 或 BW/4 HANA SAP CAL 部署指南
       href: cal-s4h.md
     - name: SAP HANA 在 Azure 上的基礎結構設定和作業
       href: hana-vm-operations.md
+    - name: SAP HANA Azure 虛擬機器儲存體設定
+      href: hana-vm-operations-storage.md
     - name: Azure 虛擬機器中的 SAP HANA 可用性
       items:
         - name: Azure 上的 SAP HANA 可用性概觀
@@ -100,18 +108,27 @@
           href: sap-hana-high-availability-rhel.md
         - name: 針對 SAP HANA 向外延展和 SLES 上的 Pacemaker 進行疑難排解
           href: hana-vm-troubleshoot-scale-out-ha-on-sles.md
+        - name: 使用 SLES 上的 Azure NetApp Files 以待命節點相應放大 SAP Hana
+          href: sap-hana-scale-out-standby-netapp-files-suse.md
+        - name: 使用 RHEL 上的 Azure NetApp Files 以待命節點相應放大 SAP Hana
+          href: sap-hana-scale-out-standby-netapp-files-rhel.md
     - name: SAP HANA 備份概觀
       href: sap-hana-backup-guide.md
     - name: SAP HANA 檔案層級備份
       href: sap-hana-backup-file-level.md
-    - name: SAP HANA 儲存體快照備份
-      href: sap-hana-backup-storage-snapshots.md
 - name: Azure 虛擬機器上的 SAP NetWeaver 與 Business One
   items:
     - name: SAP 工作負載規劃和部署檢查清單
       href: sap-deployment-checklist.md
     - name: 在 Azure 上規劃和實作 SAP NetWeaver
       href: planning-guide.md
+      items:
+        - name: SAP 工作負載的 Azure 儲存體類型
+          href: planning-guide-storage.md
+        - name: Azure 虛擬機器支援案例上的 SAP 工作負載
+          href: sap-planning-supported-configurations.md
+        - name: Azure 部署支援哪些 SAP 軟體
+          href: sap-supported-product-on-azure.md
     - name: SAP NetWeaver 部署指南
       href: deployment-guide.md
     - name: 適用於 SAP 工作負載的 DBMS 部署指南
@@ -126,6 +143,8 @@
           href: dbms_guide_ibm.md
         - name: SUSE Linux Enterprise Server 上 Azure VM 的 IBM Db2 LUW 高可用性
           href: dbms-guide-ha-ibm.md
+        - name: Red Hat Enterprise Linux Server 上 Azure VM 的 IBM Db2 LUW 高可用性
+          href: high-availability-guide-rhel-ibm-db2-luw.md
         - name: 適用於 SAP 工作負載的 SAP ASE Azure 虛擬機器 DBMS 部署
           href: dbms_guide_sapase.md
         - name: Azure 上的 SAP MaxDB、liveCache 與內容伺服器部署
@@ -160,12 +179,16 @@
               href: sap-high-availability-guide-wsfc-shared-disk.md
             - name: HA on Windows 和適用於 (A)SCS 執行個體的檔案共用
               href: sap-high-availability-guide-wsfc-file-share.md
+            - name: Windows 上的適用於 SAP NetWeaver 的 HA 搭配 Azure NetApp Files (SMB)
+              href: high-availability-guide-windows-netapp-files-smb.md
             - name: 適用於 (A)SCS 執行個體的 HA on SUSE Linux
               href: high-availability-guide-suse.md
             - name: 適用於 (A)SCS 執行個體的 HA on SUSE Linux 搭配 Azure NetApp Files
               href: high-availability-guide-suse-netapp-files.md
             - name: 適用於 (A)SCS 執行個體的 HA on Red Hat Enterprise Linux
               href: high-availability-guide-rhel.md
+            - name: 適用於 (A)SCS 執行個體的 HA on Red Hat Enterprise Linux 搭配 Azure NetApp Files
+              href: high-availability-guide-rhel-netapp-files.md
         - name: Azure 基礎結構準備
           items:
             - name: Windows 和適用於 (A)SCS 執行個體的共用磁碟
@@ -180,26 +203,38 @@
               href: high-availability-guide-suse-pacemaker.md
             - name: RHEL 上的 Pacemaker
               href: high-availability-guide-rhel-pacemaker.md
+            - name: 在 SAP 高可用性案例中使用 Azure Standard Load Balancer 的 VM 公用端點連線能力
+              href: high-availability-guide-standard-load-balancer-outbound-connections.md
         - name: SAP 安裝
           items:
             - name: Windows 和適用於 (A)SCS 執行個體的共用磁碟
               href: sap-high-availability-installation-wsfc-shared-disk.md
             - name: Windows 和適用於 (A)SCS 執行個體的檔案共用
               href: sap-high-availability-installation-wsfc-file-share.md
+            - name: Windows 上的適用於 SAP NetWeaver 的 HA 搭配 Azure NetApp Files (SMB)
+              href: high-availability-guide-windows-netapp-files-smb.md
             - name: SUSE Linux 和適用於 (A)SCS 執行個體
               href: high-availability-guide-suse.md
             - name: 適用於 (A)SCS 執行個體的 SUSE Linux 和 NFS 搭配 Azure NetApp Files
               href: high-availability-guide-suse-netapp-files.md
             - name: 適用於 SAP NetWeaver on Red Hat Enterprise Linux 的高可用性
               href: high-availability-guide-rhel.md
+            - name: 適用於 (A)SCS 執行個體的 Red Hat Enterprise Linux with NFS 搭配 Azure NetApp Files
+              href: high-availability-guide-rhel-netapp-files.md
         - name: SAP 多重安全性識別碼
           items:
             - name: Windows 和適用於 (A)SCS 執行個體的共用磁碟
               href: sap-ascs-ha-multi-sid-wsfc-shared-disk.md
             - name: Windows 和適用於 (A)SCS 執行個體的檔案共用
               href: sap-ascs-ha-multi-sid-wsfc-file-share.md
+            - name: SLES 和適用於 A(SCS) 執行個體的 Pacemaker 多重 SID
+              href: high-availability-guide-suse-multi-sid.md
+            - name: RHEL 和適用於 A(SCS) 執行個體的 Pacemaker 多重 SID
+              href: high-availability-guide-rhel-multi-sid.md
     - name: 適用於 SAP 災害復原的 Azure Site Recovery
-      href: '../../../site-recovery/site-recovery-workload.md#protect-sap'
+      href: ../../../site-recovery/site-recovery-workload.md#protect-sap
+    - name: 適用於最佳網路延遲的 Azure Proximity Placement Groups (搭配 SAP 應用程式)
+      href: sap-proximity-placement-scenarios.md
 - name: AAD SAP 身分識別整合及單一登入
   items:
     - name: 與 SAP 雲端整合
@@ -226,6 +261,18 @@
       href: 'https://docs.microsoft.com/power-bi/desktop-sap-bw-connector'
     - name: Azure Data Factory 提供 SAP HANA 和 Business Warehouse 資料整合
       href: 'https://azure.microsoft.com/blog/azure-data-factory-offer-sap-hana-and-business-warehouse-data-integration'
+- name: 適用於 SAP 解決方案的 Azure 監視器
+  items:
+    - name: 適用於 SAP 解決方案的 Azure 監視器概觀
+      href: azure-monitor-overview.md
+    - name: 適用於 SAP 解決方案的 Azure 監視器提供者
+      href: azure-monitor-providers.md
+    - name: 適用於 SAP 解決方案的 Azure 監視器常見問題集
+      href: azure-monitor-faq.md
+- name: 參考
+  items:
+    - name: Azure CLI
+      href: /cli/azure/ext/sap-hana/hanainstance
 - name: 資源
   items:
     - name: Azure 藍圖

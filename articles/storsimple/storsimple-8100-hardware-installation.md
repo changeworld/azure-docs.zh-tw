@@ -1,27 +1,23 @@
 ---
-title: 安裝 Microsoft Azure StorSimple 8100 裝置 | Microsoft Docs
+title: 安裝 Microsoft Azure StorSimple 8100 裝置
 description: 描述如何打開包裝、掛接機架和佈線 StorSimple 8100 裝置，再部署和設定軟體。
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
 ms.assetid: 6098a01e-c031-488a-a8d7-0b607ce665e1
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: b367b6e7126a442dc68646ff52a29c955f50b798
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 113b72ddf7e5d508c8a0b577d4004d4fbd83e8e5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60631123"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84699102"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8100-device"></a>打開包裝、掛接機架和佈線 StorSimple 8100 裝置
+
+[!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
+
 ## <a name="overview"></a>概觀
 您的 Microsoft Azure StorSimple 8100 是單一機箱、機架掛接裝置。 本教學課程說明如何在您設定與部署 StorSimple 裝置之前，打開包裝、利用機架掛接和配接 StorSimple 8100 裝置硬體纜線。
 
@@ -102,7 +98,7 @@ ms.locfileid: "60631123"
 提供一組掛接滑軌以用於 19 英吋機櫃。 滑軌已經過測試可以處理最大機箱重量。 這些滑軌也可以進行多個機箱的安裝，而不會損失機櫃內的任何空間。
 
 #### <a name="to-install-the-device-on-the-rails"></a>在滑軌上安裝裝置
-1. 只有在內部滑軌未安裝在您的裝置上時才執行此步驟。 通常，內部滑軌會在工廠安裝。 如果滑軌沒有安裝的話，則在機箱底座側邊安裝左邊和右邊滑軌。 它們是在每一邊使用六個公制螺絲來連接。 為了協助辨識方向，滑軌標示為 [LH – Front] \(左邊 – 前) 和 [RH – Front] \(右邊 – 前)，接至機箱後端的尾端有錐型結尾。<br/>
+1. 只有在內部滑軌未安裝在您的裝置上時才執行此步驟。 通常，內部滑軌會在工廠安裝。 如果滑軌沒有安裝的話，則在機箱底座側邊安裝左邊和右邊滑軌。 它們是在每一邊使用六個公制螺絲來連接。 為了協助辨識方向，滑軌標示為 [LH – Front]**** \(左邊 – 前) 和 [RH – Front]**** \(右邊 – 前)，接至機箱後端的尾端有錐型結尾。<br/>
    
     ![將滑軌連接至機箱底座](./media/storsimple-8100-hardware-installation/HCSAttachingRailSlidestoEnclosureChassis.png)
 
@@ -201,7 +197,7 @@ ms.locfileid: "60631123"
 
    |標籤 | 描述 |
    |----- | ----------- |
-   | 具有使用     | 具有網際網路存取的 LAN |
+   | A    | 具有網際網路存取的 LAN |
    | B    | 控制器 0 |
    | C    | PCM 0 |
    | D    | 控制器 1 |
@@ -236,11 +232,11 @@ ms.locfileid: "60631123"
 2. 識別您的裝置後檔板上的作用中控制器。 閃爍的的藍色 LED 表示控制器作用中。
 3. 使用提供的序列纜線 (如果需要，使用您的膝上型電腦的 USB-序列轉換器)，並將主控台或電腦 (具有裝置的終端機模擬) 連接到作用中控制器的序列連接埠。
 4. 在電腦上安裝序列-USB 驅動程式 (隨附於裝置)。
-5. 設定序列連線，如下所示：115,200 傳輸速率、 8 資料位元、 1 停止位元、 無同位檢查和流程控制設為 None。
+5. 設定序列連線，如下所示：115,200 傳輸速率、8 資料位元、1 停止位元、無同位檢查，以及流程控制設定為 [無]。
 6. 藉由在主控台上按下 Enter 鍵，驗證連線是否正在運作。 序列主控台功能表應該會出現。
 
 > [!NOTE]
-> **熄燈管理**:當裝置已安裝在遠端資料中心或具有有限的存取權的電腦室時，請確定這兩個控制器的序列連接一律會連接至序列主控台開關或類似的設備。 如此可以在網路中斷或非預期失敗時允許頻外遠端控制和支援作業。
+> **燈外管理**：當裝置安裝在遠端資料中心或在具有限制存取的電腦室時，請確定兩個控制器的序列連線一律連接至序列主控台交換器或類似的設備。 如此可以在網路中斷或非預期失敗時允許頻外遠端控制和支援作業。
 > 
 > 
 

@@ -1,5 +1,5 @@
 ---
-title: 從 C++ 連線到適用於 MySQL 的 Azure 資料庫
+title: 使用 C++ 連線 - 適用於 MySQL 的 Azure 資料庫
 description: 本快速入門提供 C++ 程式碼範例，您可用於從 Azure Database for MySQL 連線及查詢資料。
 author: ajlam
 ms.author: andrela
@@ -7,18 +7,18 @@ ms.service: mysql
 ms.custom: mvc
 ms.devlang: cpp
 ms.topic: quickstart
-ms.date: 04/12/2018
-ms.openlocfilehash: b262359b91a2545682e7611c44cfccd2b08da0c1
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 5/26/2020
+ms.openlocfilehash: a8c922912cae72e1b4344d4d970ec9f3b4949d9f
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53544187"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83871503"
 ---
 # <a name="azure-database-for-mysql-use-connectorc-to-connect-and-query-data"></a>適用於 MySQL 的 Azure 資料庫：使用連接器/C++ 連線並查詢資料
 本快速入門示範如何使用 C++ 應用程式來連線到適用於 MySQL 的 Azure 資料庫。 它會顯示如何使用 SQL 陳述式來查詢、插入、更新和刪除資料庫中的資料。 本主題假設您已熟悉使用 C++ 進行開發，但不熟悉適用於 MySQL 的 Azure 資料庫。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 本快速入門使用在以下任一指南中建立的資源作為起點：
 - [使用 Azure 入口網站建立適用於 MySQL 的 Azure 資料庫伺服器](./quickstart-create-mysql-server-database-using-azure-portal.md)
 - [使用 Azure CLI 建立適用於 MySQL 的 Azure 資料庫伺服器](./quickstart-create-mysql-server-database-using-azure-cli.md)
@@ -29,19 +29,22 @@ ms.locfileid: "53544187"
 - 安裝 [MySQL Connector/C++](https://dev.mysql.com/downloads/connector/cpp/) 
 - 安裝 [Boost](https://www.boost.org/)
 
+> [!IMPORTANT] 
+> 確保您用於連線的 IP 位址已使用 [Azure 入口網站](./howto-manage-firewall-using-portal.md)或 [Azure CLI](./howto-manage-firewall-using-cli.md) 新增伺服器的防火牆規則
+
 ## <a name="install-visual-studio-and-net"></a>安裝 Visual Studio 和 .NET
 本節中的步驟假設您已熟悉使用 .NET 進行開發。
 
 ### <a name="windows"></a>**Windows**
-- 安裝 Visual Studio 2017 Community，這是功能完整且可擴充的免費 IDE，用以建立適用於 Android、iOS、Windows 以及 Web 和資料庫應用程式及雲端服務的新式應用程式。 您可以安裝完整的 .NET Framework，或者只安裝 .NET Core：快速入門中的程式碼片段均可搭配使用。 如果您已在電腦上安裝 Visual Studio，請略過後續兩個步驟。
-   1. 下載 [Visual Studio 2017 安裝程式](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15)。 
+- 安裝 Visual Studio 2019 Community。 Visual Studio 2019 Community 是功能完整且可延伸的免費 IDE。 透過此 IDE，您可以建立適用於 Android、iOS、Windows、Web 和資料庫應用程式及雲端服務的現代化應用程式。 您可以安裝完整的 .NET Framework，或者只安裝 .NET Core：快速入門中的程式碼片段均可搭配使用。 如果您已在電腦上安裝 Visual Studio，請略過後續兩個步驟。
+   1. 下載 [Visual Studio 2019 安裝程式](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15)。 
    2. 執行安裝程式並依照安裝提示來完成安裝。
 
 ### <a name="configure-visual-studio"></a>**設定 Visual Studio**
-1. 從 Visual Studio 的專案 -> 屬性 -> 連結器 -> 一般 > 其他程式庫目錄，新增 C++ 連接器的 "\lib\opt" 目錄 (也就是：C:\Program Files (x86)\MySQL\MySQL Connector C++ 1.1.9\lib\opt)。
+1. 從 Visual Studio 的專案 -> 屬性 -> 連結器 -> 一般 > 其他程式庫目錄，新增 C++ 連接器的 "\lib\opt" 目錄 (例如：C:\Program Files (x86)\MySQL\MySQL Connector C++ 1.1.9\lib\opt)。
 2. 從 Visual Studio 的專案 -> 屬性 -> C/C++ -> 一般 -> 其他 Include 目錄：
-   - 新增 C++ 連接器的 "\include" 目錄 (也就是：C:\Program Files (x86)\MySQL\MySQL Connector C++ 1.1.9\include\)。
-   - 新增 Boost 程式庫的根目錄 (也就是：C:\boost_1_64_0\)。
+   - 新增 C++ 連接器的 "\include" 目錄 (例如：C:\Program Files (x86)\MySQL\MySQL Connector C++ 1.1.9\include\)。
+   - 新增 Boost 程式庫的根目錄 (例如：C:\boost_1_64_0\)。
 3. 從 Visual Studio 的專案 -> 屬性 -> 連結器 -> 輸入 > 其他相依性，將 **mysqlcppconn.lib** 新增到文字欄位。
 4. 從步驟 3 的 C++ 連接器程式庫資料夾將 mysqlcppconn.dll 複製到與應用程式可執行檔相同的目錄，或將它新增至環境變數，您的應用程式便可找到它。
 
@@ -57,7 +60,7 @@ ms.locfileid: "53544187"
 ## <a name="connect-create-table-and-insert-data"></a>連線、建立資料表及插入資料
 使用下列程式碼搭配 **CREATE TABLE** 和 **INSERT INTO** SQL 陳述式來連線和載入資料。 此程式碼使用 sql::Driver 類別搭配 connect() 方法來建立 MySQL 連線。 然後，程式碼會使用 createStatement() 和 execute() 方法來執行資料庫命令。 
 
-以建立伺服器和資料庫時所指定的值，取代主機、資料庫名稱、使用者和密碼參數。 
+取代主機、DBName、使用者和密碼參數。 您可以將參數取代為您在建立伺服器和資料庫時所指定的值。 
 
 ```c++
 #include <stdlib.h>
@@ -131,7 +134,7 @@ int main()
 
 使用下列程式碼搭配 **SELECT** SQL 陳述式來連線和讀取資料。 此程式碼使用 sql::Driver 類別搭配 connect() 方法來建立 MySQL 連線。 然後，程式碼會使用 prepareStatement() 和 executeQuery() 方法來執行 select 命令。 接著，程式碼會使用 next() 前往結果中的記錄。 最後，程式碼會使用 getInt() 和 getString() 來剖析記錄中的值。
 
-以建立伺服器和資料庫時所指定的值，取代主機、資料庫名稱、使用者和密碼參數。 
+取代主機、DBName、使用者和密碼參數。 您可以將參數取代為您在建立伺服器和資料庫時所指定的值。 
 
 ```c++
 #include <stdlib.h>
@@ -190,7 +193,7 @@ int main()
 ## <a name="update-data"></a>更新資料
 使用下列程式碼搭配 **UPDATE** SQL 陳述式來連線和讀取資料。 此程式碼使用 sql::Driver 類別搭配 connect() 方法來建立 MySQL 連線。 然後，程式碼會使用 prepareStatement() 和 executeQuery() 方法來執行 update 命令。 
 
-以建立伺服器和資料庫時所指定的值，取代主機、資料庫名稱、使用者和密碼參數。 
+取代主機、DBName、使用者和密碼參數。 您可以將參數取代為您在建立伺服器和資料庫時所指定的值。 
 
 ```c++
 #include <stdlib.h>
@@ -248,7 +251,7 @@ int main()
 ## <a name="delete-data"></a>刪除資料
 使用下列程式碼搭配 **DELETE** SQL 陳述式來連線和讀取資料。 此程式碼使用 sql::Driver 類別搭配 connect() 方法來建立 MySQL 連線。 然後，程式碼會使用 prepareStatement() 和 executeQuery() 方法來執行 update 命令。
 
-以建立伺服器和資料庫時所指定的值，取代主機、資料庫名稱、使用者和密碼參數。 
+取代主機、DBName、使用者和密碼參數。 您可以將參數取代為您在建立伺服器和資料庫時所指定的值。 
 
 ```c++
 #include <stdlib.h>

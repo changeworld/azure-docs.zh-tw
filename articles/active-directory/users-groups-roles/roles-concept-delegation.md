@@ -9,18 +9,17 @@ editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
-ms.date: 01/31/2019
+ms.topic: conceptual
+ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0cb6e2b1df062c3d056bd9a5aa0c1ff89f6636a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 556871b55de60ee592622f9f93c7b7123ba2ed32
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60469106"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84731965"
 ---
 # <a name="delegate-administration-in-azure-active-directory"></a>在 Azure Active Directory 中委派系統管理
 
@@ -73,12 +72,12 @@ ms.locfileid: "60469106"
 
 根據預設，所有使用者都可建立應用程式註冊。 若要選擇性地授與建立應用程式註冊的能力：
 
-* 在 [使用者設定] 中，將 [使用者可以註冊應用程式] 設定為 [否]
+* 在 [使用者設定]**** 中，將 [使用者可以註冊應用程式]**** 設定為 [否]
 * 將使用者指派給應用程式開發人員角色
 
 若要選擇性地授與同意允許應用程式存取資料的能力：
 
-* 在 [使用者設定] 中，將 [使用者可同意應用程式代表自己存取公司資料] 設定為 [否]
+* 在 [使用者設定]**** 中，將 [使用者可同意應用程式代表自己存取公司資料]**** 設定為 [否]
 * 將使用者指派給應用程式開發人員角色
 
 當應用程式開發人員建立新的應用程式註冊時，系統會自動將他們新增為第一個擁有者。
@@ -100,7 +99,7 @@ Azure AD 提供一份廣泛的指南來規劃和執行關於您 Azure AD 系統�
 
 ## <a name="secure-your-administrator-roles"></a>保護您的系統管理員角色
 
-取得具特殊權限帳戶控制權的攻擊者可以造成極大的傷害，因此，首要之務是使用[最低權限存取原則](https://cloudblogs.microsoft.com/enterprisemobility/2018/06/22/baseline-security-policy-for-azure-ad-admin-accounts-in-public-preview/) \(英文\) 來保護這些帳戶，該原則預設適用於所有 Azure AD 租用戶 (處於公開預覽狀態)。 該原則會針對具特殊權限的 Azure AD 帳戶強制執行多重要素驗證。 Azure AD 基準原則涵蓋下列 Azure AD 角色：
+控制特殊許可權帳戶的攻擊者可能會造成重大損害，因此請先使用預設適用于所有 Azure AD 組織的[基準存取原則](https://cloudblogs.microsoft.com/enterprisemobility/2018/06/22/baseline-security-policy-for-azure-ad-admin-accounts-in-public-preview/)來保護這些帳戶（公開預覽）。 該原則會針對具特殊權限的 Azure AD 帳戶強制執行多重要素驗證。 Azure AD 基準原則涵蓋下列 Azure AD 角色：
 
 * 全域管理員
 * SharePoint 管理員

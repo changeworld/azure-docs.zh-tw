@@ -1,21 +1,20 @@
 ---
-title: 設定 ExpressRoute Global Reach：Azure CLI | Microsoft Docs
+title: Azure ExpressRoute：設定 ExpressRoute 全球範圍： CLI
 description: 本文可協助您將 ExpressRoute 線路連結在一起，在內部部署網路之間產生私人網路，並使觸角擴及全球。
 services: expressroute
 author: jaredr80
 ms.service: expressroute
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/12/2018
 ms.author: jaredro
-ms.custom: seodec18
-ms.openlocfilehash: 89ada41c5f3c9cf1ca7a2ac707363f57080c361d
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: df02213f1cba7c25cc77c06f1addcc04a2a4d27a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64869973"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84738391"
 ---
-# <a name="configure-expressroute-global-reach-by-using-the-azure-cli"></a>使用 Azure CLI 中設定 ExpressRoute 觸及全球範圍
+# <a name="configure-expressroute-global-reach-by-using-the-azure-cli"></a>使用 Azure CLI 來設定 ExpressRoute Global 觸及
 
 本文可協助您使用 Azure CLI 設定 Azure ExpressRoute Global Reach。 如需詳細資訊，請參閱 [ExpressRoute Global Reach](expressroute-global-reach.md)。
  
@@ -48,17 +47,17 @@ az account set --subscription <your subscription ID>
 
 ### <a name="identify-your-expressroute-circuits-for-configuration"></a>識別要設定的 ExpressRoute 線路
 
-您可以啟用 ExpressRoute 觸及全球範圍之間的任何兩個 ExpressRoute 線路，前提是它們位於支援的國家/地區，以及在不同的對等互連位置建立。 如果這兩個線路皆為您的訂用帳戶所擁有，您可以選擇任一線路來執行設定，如本文稍後所述。 如果這兩個線路位於不同的 Azure 訂用帳戶，您就必須具備其中一個 Azure 訂用帳戶的授權，並在您於另一個 Azure 訂用帳戶中執行設定命令時傳入它的授權金鑰。
+您可以在任何兩個 ExpressRoute 線路之間啟用 ExpressRoute 全域觸達，只要它們位於支援的國家/地區，並建立于不同的對等互連位置即可。 如果這兩個線路皆為您的訂用帳戶所擁有，您可以選擇任一線路來執行設定，如本文稍後所述。 如果這兩個線路位於不同的 Azure 訂用帳戶，您就必須具備其中一個 Azure 訂用帳戶的授權，並在您於另一個 Azure 訂用帳戶中執行設定命令時傳入它的授權金鑰。
 
 ## <a name="enable-connectivity-between-your-on-premises-networks"></a>在內部部署網路之間啟用連線
 
 執行命令以啟用連線時，請注意下列參數值的需求：
 
-* *peer-circuit* 應該是完整的資源識別碼。 例如︰
+* *peer-circuit* 應該是完整的資源識別碼。 例如：
 
   > /subscriptions/{your_subscription_id}/resourceGroups/{your_resource_group}/providers/Microsoft.Network/expressRouteCircuits/{your_circuit_name}
 
-* *address-prefix* 必須是 "/29" IPv4 子網路 (例如 "10.0.0.0/29")。 我們會使用此子網路中的 IP 位址，在兩個 ExpressRoute 線路之間建立連線。 您不得在 Azure 虛擬網路或內部部署網路中使用此子網路中的位址。
+* *位址首碼*必須是 "/29" IPv4 子網（例如 "10.0.0.0/29"）。 我們會使用此子網路中的 IP 位址，在兩個 ExpressRoute 線路之間建立連線。 您不得在 Azure 虛擬網路或內部部署網路中使用此子網路中的位址。
 
 執行下列 CLI 命令以連接兩條 ExpressRoute 線路：
 
@@ -68,7 +67,7 @@ az network express-route peering connection create -g <ResourceGroupName> --circ
 
 CLI 輸出如下所示：
 
-```azurecli
+```output
 {
   "addressPrefix": "<__.__.__.__/29>",
   "authorizationKey": null,
@@ -104,7 +103,7 @@ CLI 輸出如下所示：
 
    CLI 輸出如下所示：
 
-   ```azurecli
+   ```output
    {
      "authorizationKey": "<authorizationKey>",
      "authorizationUseStatus": "Available",
@@ -135,7 +134,7 @@ CLI 輸出如下所示：
 az network express-route show -n <CircuitName> -g <ResourceGroupName>
 ```
 
-在 CLI 輸出中，您將會看到 *CircuitConnectionStatus*。 它會告訴您這兩個線路之間的連線已建立 (「已連線」) 還是未建立 (「已中斷連線」)。 
+在 CLI 輸出中，您會看到*CircuitConnectionStatus*。 它會告訴您這兩個線路之間的連線已建立 (「已連線」) 還是未建立 (「已中斷連線」)。 
 
 ## <a name="disable-connectivity-between-your-on-premises-networks"></a>在內部部署網路之間停用連線
 
@@ -152,5 +151,5 @@ az network express-route peering connection delete -g <ResourceGroupName> --circ
 ## <a name="next-steps"></a>後續步驟
 
 * [深入了解 ExpressRoute 觸角擴及全球](expressroute-global-reach.md)
-* [驗證 ExpressRoute 連線](expressroute-troubleshooting-expressroute-overview.md)
+* [確認 ExpressRoute 連線能力](expressroute-troubleshooting-expressroute-overview.md)
 * [將 ExpressRoute 線路連結到虛擬網路](expressroute-howto-linkvnet-arm.md)

@@ -2,74 +2,69 @@
   href: index.yml
   items: null
 - name: 概觀
+  expanded: true
   items:
-    - name: 什麼是資料科學 VM？
+    - name: 什麼是資料科學虛擬機器 (DSVM)？
       href: overview.md
-    - name: 什麼是深度學習 VM？
-      href: deep-learning-dsvm-overview.md
-    - name: 什麼是地區人工智慧資料科學虛擬機器 (Geo AI Data Science VM)？
-      href: geo-ai-dsvm-overview.md
+    - name: 資料科學虛擬機器上包含的工具
+      href: tools-included.md
 - name: 快速入門
   expanded: true
   items:
-    - name: 建立 Windows 資料科學 VM
+    - name: 建立 Windows 資料科學虛擬機器
       href: provision-vm.md
-    - name: 建立 Ubuntu 資料科學 VM
+    - name: 建立 Ubuntu 資料科學虛擬機器
       href: dsvm-ubuntu-intro.md
-    - name: 建立 CentOS 資料科學 VM
-      href: linux-dsvm-intro.md
-    - name: 建立深度學習 VM
-      href: provision-deep-learning-dsvm.md
-    - name: 建立地區人工智慧資料科學虛擬機器 (Geo AI Data Science VM)
-      href: provision-geo-ai-dsvm.md
+    - name: 使用 ARM 範本建立 DSVM
+      displayName: Resource Manager
+      href: dsvm-tutorial-resource-manager.md
 - name: 概念
   items:
-    - name: 探索 DSVM
-      href: dsvm-tools-overview.md
     - name: 深度學習和 AI 架構
-      href: dsvm-deep-learning-ai-frameworks.md
-    - name: ML 和資料科學工具
-      href: dsvm-ml-data-science-tools.md
-    - name: Languages
-      href: dsvm-languages.md
+      href: dsvm-tools-deep-learning-frameworks.md
+    - name: 程式設計語言
+      href: dsvm-tools-languages.md
     - name: 開發工具
       href: dsvm-tools-development.md
+    - name: ML 和資料科學工具
+      href: dsvm-tools-data-science.md
+    - name: 資料平台
+      href: dsvm-tools-data-platforms.md
     - name: 資料擷取工具
       href: dsvm-tools-ingestion.md
-    - name: 資料探索和虛擬化工具
-      href: dsvm-tools-explore-and-visualize.md
-    - name: 資料平台
-      href: dsvm-data-platforms.md
-    - name: 範例和逐步解說
-      href: dsvm-samples-and-walkthroughs.md
-- name: 使用說明指南
+    - name: 生產力工具
+      href: dsvm-tools-productivity.md
+    - name: 企業安全性和指導方針
+      href: dsvm-enterprise-overview.md
+- name: 範例
+  href: dsvm-samples-and-walkthroughs.md
+- name: 操作指南
   items:
-    - name: 使用 Windows 資料科學 VM
+    - name: 使用 Windows 資料科學虛擬機器
       href: vm-do-ten-things.md
-    - name: 使用 Linux 資料科學 VM
+    - name: 使用 Linux 資料科學虛擬機器
       href: linux-dsvm-walkthrough.md
-    - name: 使用深度學習 VM
-      href: use-deep-learning-dsvm.md
-    - name: 使用地區人工智慧資料科學虛擬機器 (Geo AI Data Science VM)
-      href: use-geo-ai-dsvm.md
-    - name: 企業版指導方針
-      items:
-        - name: 概觀
-          href: dsvm-enterprise-overview.md
-        - name: 調整大小
-          href: dsvm-pools.md
-        - name: Active Directory 整合
-          href: dsvm-common-identity.md
-        - name: 保護資源存取認證
-          href: dsvm-secure-access-keys.md
+    - name: 建立自動調整資料科學虛擬機器集區
+      href: dsvm-pools.md
+    - name: 與 Active Directory 整合
+      href: dsvm-common-identity.md
+    - name: 保護資源存取認證
+      href: dsvm-secure-access-keys.md
 - name: 資源
   items:
-    - name: R 開發人員指南
-      href: /azure/architecture/data-guide/technology-choices/r-developers-guide
-      maintainContext: true
-    - name: 部落格
-      href: 'https://blogs.technet.microsoft.com/machinelearning/tag/dsvm/'
-    - name: MSDN 論壇
-      href: 'https://social.microsoft.com/Forums/en-US/home?forum=dsvm'
-    - name: 堆疊溢位
+    - name: Microsoft 問與答頁面
+      href: 'https://docs.microsoft.com/answers/topics/azure-data-science-vm.html'
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/search?q=dsvm'
+    - name: R 開發人員指南
+      href: /azure/architecture/data-guide/technology-choices/r-developers-guide?context=azure/machine-learning/data-science-virtual-machine/context/ml-context
+- name: 參考
+  items:
+    - name: Ubuntu 資料科學虛擬機器
+      href: reference-ubuntu-vm.md
+    - name: 版本資訊
+      href: release-notes.md
+    - name: 已知問題
+      href: reference-known-issues.md
+    - name: 取代公告
+      href: reference-deprecation.md

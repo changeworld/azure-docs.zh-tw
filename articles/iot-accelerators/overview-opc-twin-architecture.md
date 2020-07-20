@@ -1,19 +1,19 @@
 ---
 title: OPC 對應項架構 - Azure | Microsoft Docs
-description: OPC 對應項架構
+description: 此文章提供 OPC 對應項架構的概觀。 其中描述伺服器的探索、啟用、瀏覽及監視。
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/26/2018
 ms.topic: overview
-ms.service: iot-industrialiot
+ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: d1c10e056de1bc61b5365550bf2543d2cdf61229
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b8d4424c92ff24c36650e34a5d050bdc5f0f9091
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59783897"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "73819846"
 ---
 # <a name="opc-twin-architecture"></a>OPC 對應項架構
 
@@ -35,6 +35,6 @@ ms.locfileid: "59783897"
 
    ![OPC 對應項的運作方式](media/overview-opc-twin-architecture/opc-twin3.png)
 
-1. 對應項服務 REST 介面也可用來在 OPC 發行者中建立受監視的項目和訂用帳戶。 OPC 發行者可讓遙測資料從 OPC UA 伺服器系統傳送到 IoT 中樞。 如需 OPC 發行者的詳細資訊，請參閱 GitHub 上的 [OPC 發行者](https://github.com/Azure/iot-edge-opc-publisher)存放庫。
+1. 對應項服務 REST 介面也可用來在 OPC 發行者中建立受監視的項目和訂用帳戶。 OPC 發行者可讓遙測資料從 OPC UA 伺服器系統傳送到 IoT 中樞。 如需 OPC 發行者的詳細資訊，請參閱[什麼是 OPC 發行者](overview-opc-publisher.md)。
 
    ![OPC 對應項的運作方式](media/overview-opc-twin-architecture/opc-twin4.png)

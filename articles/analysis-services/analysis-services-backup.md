@@ -1,19 +1,17 @@
 ---
 title: Azure Analysis Services 備份與還原 | Microsoft Docs
-description: 說明如何備份和還原 Azure Analysis Services 資料庫。
+description: 本文說明如何從 Azure Analysis Services 資料庫備份和還原模型中繼資料和資料。
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/09/2019
+ms.date: 05/05/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 31e8e65b382a3a6bcad2998a0babdf9605dc4968
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: aa98a13b84e89c90e29525fb6743ac33faf1d917
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61023863"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82871289"
 ---
 # <a name="backup-and-restore"></a>備份與還原
 
@@ -24,7 +22,10 @@ ms.locfileid: "61023863"
 > 
 > 
 
-备份以 .abf 扩展名保存。 針對記憶體內表格式模型，會同時儲存模型資料和中繼資料。 針對 DirectQuery 表格式模型，則只會儲存模型中繼資料。 視您選擇的選項而定，可以將備份壓縮和加密。
+> [!NOTE]
+> 如果儲存體帳戶位於不同的區域，請設定儲存體帳戶防火牆設定，以允許來自**所選網路**的存取。 在 [防火牆**位址範圍**] 中，指定 Analysis Services 伺服器所在區域的 IP 位址範圍。 支援將儲存體帳戶防火牆設定為允許從所有網路進行存取，但最好是選擇選取的網路並指定 IP 位址範圍。 若要深入瞭解，請參閱[網路連線常見問題](analysis-services-network-faq.md#backup-and-restore)。
+
+備份會以 .abf 副檔名儲存。 針對記憶體內表格式模型，會同時儲存模型資料和中繼資料。 針對 DirectQuery 表格式模型，則只會儲存模型中繼資料。 視您選擇的選項而定，可以將備份壓縮和加密。
 
 
 ## <a name="configure-storage-settings"></a>設定儲存體設定
@@ -32,11 +33,11 @@ ms.locfileid: "61023863"
 
 
 ### <a name="to-configure-storage-settings"></a>設定儲存體設定
-1.  在 Azure 入口網站 > [設定] 中，按一下 [備份]。
+1.  在 Azure 入口網站 > [設定]**** 中，按一下 [備份]****。
 
     ![[設定] 中的 [備份]](./media/analysis-services-backup/aas-backup-backups.png)
 
-2.  按一下 [已啟用]，然後按一下 [儲存體設定]。
+2.  按一下 [已啟用]****，然後按一下 [儲存體設定]****。
 
     ![啟用](./media/analysis-services-backup/aas-backup-enable.png)
 
@@ -48,19 +49,19 @@ ms.locfileid: "61023863"
 
 5. 儲存您的備份設定。
 
-    ![保存备份设置](./media/analysis-services-backup/aas-backup-save.png)
+    ![儲存備份設定](./media/analysis-services-backup/aas-backup-save.png)
 
-## <a name="backup"></a>Backup 
+## <a name="backup"></a>備份
 
 ### <a name="to-backup-by-using-ssms"></a>使用 SSMS 來進行備份
 
-1. 在 SSMS 中，於資料庫上按一下滑鼠右鍵 > [備份]。
+1. 在 SSMS 中，於資料庫上按一下滑鼠右鍵 > [備份]****。
 
-2. 在 [備份資料庫] > [備份檔案] 中，按一下 [瀏覽]。
+2. 在 [**備份資料庫**  >  **備份檔案**] 中，按一下 **[流覽]**。
 
-3. 在 [另存新檔] 對話方塊中，確認資料夾路徑，然後輸入備份檔案的名稱。 
+3. 在 [另存新檔]**** 對話方塊中，確認資料夾路徑，然後輸入備份檔案的名稱。 
 
-4. 在“备份数据库”对话框中，选择选项。
+4. 在 [備份資料庫]**** 對話方塊中，選取選項。
 
     **允許檔案覆寫** - 若要覆寫同名的備份檔案，請選取此選項。 如果未選取此選項，您要儲存的檔案就不能與相同位置中已經存在的檔案同名。
 
@@ -68,13 +69,13 @@ ms.locfileid: "61023863"
 
     **加密備份檔案** - 若要將備份檔案加密，請選取此選項。 此選項需要有使用者提供的密碼來保護備份檔案。 此密碼可防止以還原作業以外的任何其他方式讀取備份資料。 如果您選擇將備份加密，請將密碼儲存在安全的位置。
 
-5. 按一下 [確定] 以建立並儲存備份檔案。
+5. 按一下 [確定]**** 以建立並儲存備份檔案。
 
 
 ### <a name="powershell"></a>PowerShell
-使用 [Backup-ASDatabase](https://docs.microsoft.com/sql/analysis-services/powershell/backup-asdatabase-cmdlet) Cmdlet。
+使用 [Backup-ASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/backup-asdatabase) Cmdlet。
 
-## <a name="restore"></a>Restore
+## <a name="restore"></a>還原
 在還原時，您的備份檔案必須位於您為伺服器所設定的儲存體帳戶中。 如果您需要將備份檔案從內部部署位置移至儲存體帳戶，請使用 [Microsoft Azure 儲存體總管](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)或 [AzCopy](../storage/common/storage-use-azcopy.md) 命令列公用程式。 
 
 
@@ -86,24 +87,24 @@ ms.locfileid: "61023863"
 
 ### <a name="to-restore-by-using-ssms"></a>使用 SSMS 來進行還原
 
-1. 在 SSMS 中，於資料庫上按一下滑鼠右鍵 > [還原]。
+1. 在 SSMS 中，於資料庫上按一下滑鼠右鍵 > [還原]****。
 
-2. 在 [備份資料庫] 對話方塊的 [備份檔案] 中，按一下 [瀏覽]。
+2. 在 [備份資料庫]**** 對話方塊的 [備份檔案]**** 中，按一下 [瀏覽]****。
 
-3. 在 [尋找資料庫檔案] 對話方塊中，選取您想要還原的檔案。
+3. 在 [尋找資料庫檔案]**** 對話方塊中，選取您想要還原的檔案。
 
-4. 在 [還原資料庫] 中，選取資料庫。
+4. 在 [還原資料庫]**** 中，選取資料庫。
 
 5. 指定選項。 安全性選項必須與您備份時所使用的備份選項相符。
 
 
 ### <a name="powershell"></a>PowerShell
 
-使用 [Restore-ASDatabase](https://docs.microsoft.com/sql/analysis-services/powershell/restore-asdatabase-cmdlet) Cmdlet。
+使用 [Restore-ASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/restore-asdatabase) Cmdlet。
 
 
 ## <a name="related-information"></a>相關資訊
 
-[Azure 存储帐户](../storage/common/storage-create-storage-account.md)  
-[高可用性](analysis-services-bcdr.md)     
-[管理 Azure Analysis Services](analysis-services-manage.md)
+[Azure 儲存體帳戶](../storage/common/storage-create-storage-account.md)  
+[高可用性](analysis-services-bcdr.md)      
+[Analysis Services 網路連線常見問題](analysis-services-network-faq.md)

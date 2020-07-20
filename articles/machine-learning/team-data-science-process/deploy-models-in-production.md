@@ -2,20 +2,19 @@
 title: 在生產環境中部署模型 - Team Data Science Process
 description: 如何將模型部署到生產環境，好讓這些模型能夠在進行業務決策時扮演主動角色。
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/30/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 1a75c842989cfbaf7bb1880831fda2bc6994622b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: e3e2ef3340ca836f56176c21cf3d221f0bf172b9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60238353"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "76722232"
 ---
 # <a name="deploy-models-to-production-to-play-an-active-role-in-making-business-decisions"></a>將模型部署到生產環境以便在進行業務決策時扮演主動角色
 
@@ -25,21 +24,21 @@ ms.locfileid: "60238353"
 
 有許多方法和平台可將模型置入生產環境。 以下提供一些選項：
 
-- [使用 Azure Machine Learning 服務部署模型](../service/how-to-deploy-and-where.md)
+- [使用 Azure Machine Learning 部署模型的位置](../how-to-deploy-and-where.md)
 - [在 SQL-Server 中部署模型](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-py6-operationalize-the-model)
-- [Microsoft Machine Learning Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
+- [Microsoft Machine Learning 伺服器](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
 
 >[!NOTE]
 >在部署之前，必須確保模型計分的延遲夠低，以便在生產環境中使用。
 >
 
 >[!NOTE]
->如需使用 Azure Machine Learning Studio 進行部署，請參閱[部署 Azure Machine Learning Web 服務](../studio/publish-a-machine-learning-web-service.md)。
+>如需使用 Azure Machine Learning Studio 進行部署，請參閱[部署 Azure Machine Learning Web 服務](../studio/deploy-a-machine-learning-web-service.md)。
 >
 
 ## <a name="ab-testing"></a>A/B 測試
 
-多個模型在生產環境中時，執行 [A/B 測試](https://en.wikipedia.org/wiki/A/B_testing)來比較模型的效能會很有用。 
+當生產環境中有多個模型時，可以使用[A/B 測試](https://en.wikipedia.org/wiki/A/B_testing)來比較模型效能。 
  
 ## <a name="next-steps"></a>後續步驟
 

@@ -1,0 +1,56 @@
+### YamlMime:Landing
+title: Azure 安全性效能評定文件
+summary: 了解如何在 Azure 上使用我們的最佳做法和指引來保護您的雲端解決方案。
+metadata:
+  title: Azure 安全性效能評定
+  description: Azure 安全性效能評定包含的建議可協助您改善 Azure 上應用程式和資料的安全性。
+  services: security
+  ms.service: security
+  ms.subservice: fundamentals
+  ms.custom: security-benchmark
+  ms.topic: landing-page
+  author: msmbaldwin
+  ms.author: mbaldwin
+  manager: rkarlin
+  ms.date: 12/23/2019
+  ms.openlocfilehash: 7cebc4fb6e676470b46a52cf1ea62e0990e708e9
+  ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 04/30/2020
+  ms.locfileid: "82607738"
+landingContent:
+- title: 關於 Azure 安全性效能評定
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure 安全性效能評定簡介
+      url: introduction.md
+    - text: Azure 資訊安全性控制概觀
+      url: overview.md
+- title: 安全性控制
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 網路安全性
+      url: security-control-network-security.md
+    - text: 記錄和監視
+      url: security-control-logging-monitoring.md
+    - text: 身分識別與存取控制
+      url: security-control-identity-access-control.md
+    - text: 資料保護
+      url: security-control-data-protection.md
+    - text: 弱點管理
+      url: security-control-vulnerability-management.md
+    - text: 查看更多
+      url: security-control-inventory-asset-management.md
+- title: 其他 Azure 安全性資訊
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Azure 安全性基本概念
+      url: ../fundamentals/index.yml
+    - text: 雲端中共同承擔的責任
+      url: ../fundamentals/shared-responsibility.md
+    - text: Azure 資訊安全中心
+      url: ../../security-center/index.yml

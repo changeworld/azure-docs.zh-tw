@@ -1,21 +1,16 @@
 ---
 title: 使用度量警示來監視 Azure 自動化 Runbook
-description: 本文將逐步說明如何根據度量監視 Azure 自動化 Runbook
+description: 此文章說明如何根據計量來監視 Runbook。
 services: automation
-ms.service: automation
-author: georgewallace
-ms.author: gwallace
 ms.date: 11/01/2018
 ms.topic: article
-manager: carmonm
-ms.openlocfilehash: 7932d057a348957d369ba325044055ac8dfe3428
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+ms.openlocfilehash: 20aaee5b699e9721bf9083030604df1385da1915
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62119889"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83828741"
 ---
-# <a name="monitoring-runbooks-with-metric-alerts"></a>使用度量警示來監視 Runbook
+# <a name="monitor-runbooks-with-metric-alerts"></a>使用計量警示監視 Runbook
 
 在本文中，您將了解如何根據 Runbook 的完成狀態來建立警示。
 
@@ -35,10 +30,10 @@ ms.locfileid: "62119889"
 
 2. 您可以在 [設定訊號邏輯] 頁面中定義會觸發警示的邏輯。 歷程記錄圖表下會顯示兩個維度，即 [Runbook 名稱] 和 [狀態]。 維度是可用來篩選結果的不同計量屬性。 針對 [Runbook 名稱]，請選取需要警示的 Runbook，或將所有 Runbook 的警示保留為空白。 針對 [狀態]，請從下拉式清單中選取您要監視的狀態。 出現在下拉式清單中的 Runbook 名稱和狀態值，都僅屬於在過去一週執行的作業。
 
-   如果您要使用警示的狀態或 Runbook 未顯示在下拉式清單中，請按一下維度旁的 **\+**。 此動作會開啟一個對話方塊，讓您輸入最近未針對該維度發出的自訂值。 如果您輸入屬性不存在的值，則不會觸發警示。
+   如果您要使用警示的狀態或 Runbook 未顯示在下拉式清單中，請按一下維度旁的 **\+** 。 此動作會開啟一個對話方塊，讓您輸入最近未針對該維度發出的自訂值。 如果您輸入屬性不存在的值，則不會觸發警示。
 
    > [!NOTE]
-   > 如果您未套用的名稱**RunbookName**維度中，如果有任何 runbook 的符合狀態的準則，其中包括隱藏的系統 runbook，您會收到警示。
+   > 如果您未套用 **RunbookName** 維度的名稱，如果有任何 Runbook 符合狀態準則 (包括隱藏的系統 Runbook)，您就會收到警示。
 
 3. 在 [警示邏輯] 下，定義警示的條件和閾值。 定義的條件會顯示如下的預覽。
 
@@ -71,7 +66,7 @@ ms.locfileid: "62119889"
 > [!NOTE]
 > 將電子郵件地址新增至動作群組時會傳送電子郵件通知，指出該地址已新增至動作群組。
 
-## <a name="notification"></a>通知
+## <a name="receive-notification"></a>接收通知
 
 在符合警示準則時，動作群組將會執行已定義的動作。 在本文的範例中，會傳送一則電子郵件。 下圖以範例說明您在警示觸發之後所收到的電子郵件：
 
@@ -81,7 +76,4 @@ ms.locfileid: "62119889"
 
 ## <a name="next-steps"></a>後續步驟
 
-繼續閱讀下列文章，以深入了解還有哪些方法可將警示功能整合到您的自動化帳戶中。
-
-> [!div class="nextstepaction"]
-> [使用警示來觸發 Azure 自動化 Runbook](automation-create-alert-triggered-runbook.md)
+* 如需詳細資訊，請參閱[使用警示來觸發 Azure 自動化 Runbook](automation-create-alert-triggered-runbook.md)。

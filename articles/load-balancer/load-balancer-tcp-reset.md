@@ -1,33 +1,30 @@
 ---
 title: Azure 中的 Load Balancer 閒置 TCP 重設
-titlesuffix: Azure Load Balancer
-description: 具有閒置逾時雙向 TCP RST 封包的 Load Balancer
+titleSuffix: Azure Load Balancer
+description: 在本文中，您將瞭解在閒置超時時，使用雙向 TCP RST 封包的 Azure Load Balancer。
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 ms.custom: seodec18
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2019
-ms.author: kumud
-ms.openlocfilehash: 4a09492fcb8a7985fa27b6daae89aa5dec0fa6e0
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.author: allensu
+ms.openlocfilehash: 68714053ac92faf8550a3e5f83a526afa1222971
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65413850"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84808468"
 ---
-# <a name="load-balancer-with-tcp-reset-on-idle-public-preview"></a>具有閒置 TCP 重設的負載平衡器 (公開預覽)
+# <a name="load-balancer-with-tcp-reset-on-idle"></a>具有閒置 TCP 重設的 Load Balancer
 
 您可以使用 [Standard Load Balancer](load-balancer-standard-overview.md)，藉由對某個指定規則啟用「閒置時重設 TCP」，來為您的案例建立更容易預測的應用程式行為。 Load Balancer 的預設行為是在達到流程的閒置逾時時，以無訊息模式卸除流程。  啟用此功能會讓 Load Balancer 在閒置逾時的時候，傳送雙向的 TCP 重設 (TCP RST 封包)。  這會讓您的應用程式端點知道，連線已逾時且無法再供使用。  如有需要，端點可以立即建立新的連線。
 
 ![負載平衡器 TCP 重設](media/load-balancer-tcp-reset/load-balancer-tcp-reset.png)
-
->[!NOTE] 
->負載平衡器 TCP 閒置逾時功能重設與目前不提供公開預覽。 此預覽版是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽專用的補充使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
  
 您變更此預設行為，以及對輸入 NAT 規則、負載平衡規則和[輸出規則](https://aka.ms/lboutboundrules)啟用傳送閒置逾時 TCP 重設。  根據規則啟用時，Load Balancer 會在達到所有相符流程的閒置逾時時，將雙向 TCP 重設 (TCP RST 封包) 傳送至用戶端和伺服器端點。
 
@@ -67,16 +64,16 @@ ms.locfileid: "65413850"
       ]
 ```
 
-## <a name="regions"></a> 區域可用性
+## <a name="region-availability"></a><a name="regions"></a>區域可用性
 
 所有區域都有提供。
 
 ## <a name="limitations"></a>限制
 
-- 入口網站無法用來設定或檢視 TCP 重設。  請改為使用範本、REST API、Az CLI 2.0 或 PowerShell。
-- ESTABLISHED 狀態中的 TCP 連線時，才傳送 TCP RST。
+- TCP RST 只會在已建立狀態的 TCP 連線期間傳送。
 
 ## <a name="next-steps"></a>後續步驟
 
-- 深入了解 [Standard Load Balancer](load-balancer-standard-overview.md)。
-- 深入了解[輸出規則](load-balancer-outbound-rules-overview.md)。
+- 深入瞭解[Standard Load Balancer](load-balancer-standard-overview.md)。
+- 深入瞭解[輸出規則](load-balancer-outbound-rules-overview.md)。
+- [設定閒置超時的 TCP RST](load-balancer-tcp-idle-timeout.md)

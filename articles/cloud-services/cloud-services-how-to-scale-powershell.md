@@ -2,24 +2,17 @@
 title: 在 Windows PowerShell 中調整 Azure 雲端服務 |Microsoft Docs
 description: (傳統) 了解如何使用 PowerShell 在 Azure 中相應放大或縮小 Web 角色或背景工作角色。
 services: cloud-services
-documentationcenter: ''
 author: mmccrory
-manager: timlt
-editor: ''
-ms.assetid: ee37dd8c-6714-4c61-adb8-03d6bbf76c9a
 ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2016
-ms.author: mmccrory
-ms.openlocfilehash: 240b34abd2f9b937c8a7ea449ad7f148870a9d33
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: memccror
+ms.openlocfilehash: a1945aad12eb34bad1b593878779e1ceb0dae686
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61433218"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "68359050"
 ---
 # <a name="how-to-scale-a-cloud-service-in-powershell"></a>如何在 PowerShell 中調整雲端服務
 

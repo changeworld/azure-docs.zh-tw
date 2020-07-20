@@ -1,34 +1,35 @@
 ---
-title: 教學課程 - 自訂使用者介面體驗 - Azure Active Directory B2C | Microsoft Docs
-description: 了解如何使用 Azure 入口網站在 Azure Active Directory B2C 中自訂應用程式的使用者介面。
+title: 教學課程：自訂使用者介面
+titleSuffix: Azure AD B2C
+description: 了解如何使用 Azure 入口網站在 Azure Active Directory B2C 中自訂應用程式的使用者介面 (UI)。
 services: B2C
-author: davidmu1
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 02/01/2019
-ms.author: davidmu
+ms.topic: tutorial
+ms.date: 05/11/2020
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c2a84bf72ab68937224ac93bd9ffd035e32c603d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
-ms.translationtype: MT
+ms.openlocfilehash: 235fd429707a418fa193e986b95c9b38fa6c8101
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64702554"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85385020"
 ---
 # <a name="tutorial-customize-the-interface-of-user-experiences-in-azure-active-directory-b2c"></a>教學課程：在 Azure Active Directory B2C 中自訂使用者介面體驗
 
-針對較常見的使用者體驗，例如註冊、登入和設定檔編輯等，您可以使用 Azure Active Directory (Azure AD) B2C 中的[使用者流程](active-directory-b2c-reference-policies.md)。 本教學課程中的資訊可協助您了解如何使用自己的 HTML 和 CSS 檔案，為這些體驗[自訂使用者介面 (UI)](customize-ui-overview.md)。
+針對較常見的使用者體驗，例如註冊、登入和設定檔編輯等，您可以使用 Azure Active Directory B2C (Azure AD B2C) 中的[使用者流程](user-flow-overview.md)。 本教學課程中的資訊可協助您了解如何使用自己的 HTML 和 CSS 檔案，為這些體驗[自訂使用者介面 (UI)](customize-ui-overview.md)。
 
-在本文中，您將了解：
+在本文中，您將學會如何：
 
 > [!div class="checklist"]
 > * 建立 UI 自訂檔案
 > * 更新使用者流程以使用檔案
 > * 測試自訂的 UI
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立 [免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -43,12 +44,12 @@ ms.locfileid: "64702554"
 雖然您可以用很多方式來儲存檔案，但在此教學課程中，您會將這些檔案儲存在 [Azure Blob 儲存體](../storage/blobs/storage-blobs-introduction.md)。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-2. 請確定您使用的目錄中有您的 Azure 訂用帳戶。 在上方功能表中選取 [目錄和訂用帳戶篩選]，然後選擇包含您訂用帳戶的目錄。 此目錄不同於包含您 Azure B2C 租用戶的目錄。
-3. 選擇 Azure 入口網站左上角的 [所有服務]，搜尋並選取 [儲存體帳戶]。 
-4. 選取 [新增] 。
+2. 請確定您使用的目錄中有您的 Azure 訂用帳戶。 在上方功能表中選取 [目錄+訂用帳戶篩選]，然後選擇包含您訂用帳戶的目錄。 此目錄不同於包含您 Azure B2C 租用戶的目錄。
+3. 選擇 Azure 入口網站左上角的 [所有服務]，搜尋並選取 [儲存體帳戶]。
+4. 選取 [新增]。
 5. 在 [資源群組] 下，選取 [新建]，然後輸入新資源群組的名稱並按一下 [確認]。
 6. 輸入儲存體帳戶的名稱。 您選擇的名稱在 Azure 中必須是唯一的、必須介於 3 到 24 個字元的長度，而且只能包含數字和小寫字母。
-7. 選取儲存體帳戶的位置，或接受預設位置。 
+7. 選取儲存體帳戶的位置，或接受預設位置。
 8. 接受所有其他預設值，然後選取 [檢閱 + 建立]，並按一下 [建立]。
 9. 建立儲存體帳戶之後，請選取 [移至資源]。
 
@@ -62,21 +63,21 @@ ms.locfileid: "64702554"
  瀏覽器中的 Azure AD B2C 程式碼會使用最新且標準的方法，從使用者流程中的指定 URL 載入自訂內容。 跨來源資源共用 (CORS) 可允許從其他網域要求網頁上受限制的資源。
 
 1. 在功能表中，選取 [CORS]。
-2. 針對 [允許的來源]，輸入 `https://your-tenant-name.b2clogin.com`。 將 `your-tenant-name` 取代為您的 Azure AD B2C 租用戶名稱。 例如： `https://fabrikam.b2clogin.com`。 輸入您的租用戶名稱時，必須全部使用小寫字母。
-3. 針對 [允許的方法]，選取 `GET` 和 `OPTIONS`。
+2. 針對 [允許的來源]，輸入 `https://your-tenant-name.b2clogin.com`。 將 `your-tenant-name` 取代為您的 Azure AD B2C 租用戶名稱。 例如： `https://fabrikam.b2clogin.com` 。 輸入您的租用戶名稱時，必須全部使用小寫字母。
+3. 對於**允許的方法**，請選取 `GET`,`PUT` 和 `OPTIONS`。
 4. 針對 [允許的標頭]，輸入星號 (*)。
 5. 針對 [公開的標頭]，輸入星號 (*)。
 6. 針對 [最大壽命]，輸入 200。
 
-    ![啟用 CORS](./media/tutorial-customize-ui/enable-cors.png)
+    ![Azure 入口網站中 Azure Blob 儲存體的 CORS 設定頁面](./media/tutorial-customize-ui/enable-cors.png)
 
 5. 按一下 [檔案] 。
 
 ### <a name="create-the-customization-files"></a>建立自訂檔案
 
-若要自訂註冊體驗的 UI，您可以從建立簡單的 HTML 和 CSS 檔案開始。 您可以透過任何方式設定 HTML，但其中必須有識別碼為 `api` 的 **div** 元素。 例如： `<div id="api"></div>`。 當頁面顯示時，Azure AD B2C 會將元素插入 `api` 容器。
+若要自訂註冊體驗的 UI，您可以從建立簡單的 HTML 和 CSS 檔案開始。 您可以透過任何方式設定 HTML，但其中必須有識別碼為 `api` 的 **div** 元素。 例如： `<div id="api"></div>` 。 當頁面顯示時，Azure AD B2C 會將元素插入 `api` 容器。
 
-1. 在本機資料夾中建立下列檔案，並確定您已將 `your-storage-account` 變更為儲存體帳戶名稱，以及將 `your-container` 變更為您建立的容器名稱。 例如： `https://store1.blob.core.windows.net/b2c/style.css`。
+1. 在本機資料夾中建立下列檔案，並確定您已將 `your-storage-account` 變更為儲存體帳戶名稱，以及將 `your-container` 變更為您建立的容器名稱。 例如： `https://store1.blob.core.windows.net/b2c/style.css` 。
 
     ```html
     <!DOCTYPE html>
@@ -85,14 +86,14 @@ ms.locfileid: "64702554"
         <title>My B2C Application</title>
         <link rel="stylesheet" href="https://your-storage-account.blob.core.windows.net/your-container/style.css">
       </head>
-      <body>  
+      <body>
         <h1>My B2C Application</h1>
         <div id="api"></div>
       </body>
     </html>
     ```
 
-    您可以透過任何方式設計頁面，但您建立的任何 HTML 自訂檔案都必須有 **api** div 元素。 
+    您可以透過任何方式設計頁面，但您建立的任何 HTML 自訂檔案都必須有 **api** div 元素。
 
 3. 將檔案儲存為 custom-ui.html。
 4. 建立下列簡單的 CSS，以將所有項目 (包括 Azure AD B2C 插入的項目) 放到註冊或登入頁面的中間。
@@ -103,7 +104,7 @@ ms.locfileid: "64702554"
       text-align: center;
     }
     .intro h2 {
-      text-align: center; 
+      text-align: center;
     }
     .entry {
       width: 300px ;
@@ -111,7 +112,7 @@ ms.locfileid: "64702554"
       margin-right: auto ;
     }
     .divider h2 {
-      text-align: center; 
+      text-align: center;
     }
     .create {
       width: 300px ;
@@ -130,7 +131,7 @@ ms.locfileid: "64702554"
 2. 選取您建立的儲存體帳戶、選取 [Blob]，然後選取您建立的容器。
 3. 選取 [上傳]，瀏覽至 [custom-ui.html] 檔案並加以選取，然後再按一下 [上傳]。
 
-    ![上傳自訂檔案](./media/tutorial-customize-ui/upload-blob.png)
+    ![在入口網站的上傳 Blob 頁面中反白顯示的上傳按鈕和檔案](./media/tutorial-customize-ui/upload-blob.png)
 
 4. 複製已上傳檔案的 URL，以便稍後在教學課程中使用。
 5. 對 style.css 檔案重複步驟 3 和 4。
@@ -149,11 +150,11 @@ ms.locfileid: "64702554"
 2. 按一下頁面頂端的 [執行使用者流程]。
 3. 按一下 [執行使用者流程]  按鈕。
 
-    ![執行註冊或登入使用者流程](./media/tutorial-customize-ui/run-user-flow.png)
+    ![執行使用者流程頁面以註冊或登入使用者流程](./media/tutorial-customize-ui/run-user-flow.png)
 
     您應該會看到類似下列範例的頁面，而頁面上的置中元素會以您所建立的 CSS 檔案為基礎：
 
-    ![使用者流程結果](./media/tutorial-customize-ui/run-now.png) 
+    ![網頁瀏覽器顯示具有自訂 UI 元素的註冊或登入頁面](./media/tutorial-customize-ui/run-now.png)
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -165,4 +166,4 @@ ms.locfileid: "64702554"
 > * 測試自訂的 UI
 
 > [!div class="nextstepaction"]
-> [Azure Active Directory B2C 中的語言自訂](active-directory-b2c-reference-language-customization.md)
+> [設定 Azure Active Directory B2C 中的 UI](customize-ui-overview.md)

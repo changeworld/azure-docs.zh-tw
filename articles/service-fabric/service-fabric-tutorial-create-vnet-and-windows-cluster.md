@@ -1,34 +1,23 @@
 ---
-title: 在 Azure 中建立執行 Windows 的 Service Fabric 叢集 | Microsoft Docs
+title: 在 Azure 中建立執行 Windows 的 Service Fabric 叢集
 description: 在本教學課程中，您會了解如何使用 PowerShell，將 Windows Service Fabric 叢集部署到 Azure 虛擬網路和網路安全性群組。
-services: service-fabric
-documentationcenter: .net
-author: aljo-microsoft
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 03/13/2019
-ms.author: aljo
+ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: dabbefa8ca2073e30948f1c70782f730bceae030
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: a7390858e55a456ec5fb2f851be1a7443be97082
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59049998"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245036"
 ---
 # <a name="tutorial-deploy-a-service-fabric-cluster-running-windows-into-an-azure-virtual-network"></a>教學課程：將執行 Windows 的 Service Fabric 叢集部署到 Azure 虛擬網路
 
-本教學課程是一個系列的第一部分。 您會了解如何使用 PowerShell 和範本，將執行 Windows 的 Azure Service Fabric 叢集部署到 [Azure 虛擬網路](../virtual-network/virtual-networks-overview.md)和[網路安全性群組](../virtual-network/virtual-networks-nsg.md)。 完成時，您會有在雲端執行的叢集，讓您可在其中部署應用程式。 若要建立 Linux 叢集來使用 Azure CLI，請參閱[在 Azure 上建立安全的 Linux 叢集](service-fabric-tutorial-create-vnet-and-linux-cluster.md)。
+本教學課程是一個系列的第一部分。 您會了解如何使用 PowerShell 和範本，將執行 Windows 的 Azure Service Fabric 叢集部署到 [Azure 虛擬網路](../virtual-network/virtual-networks-overview.md)和[網路安全性群組](../virtual-network/virtual-network-vnet-plan-design-arm.md)。 完成時，您會有在雲端執行的叢集，讓您可在其中部署應用程式。 若要建立 Linux 叢集來使用 Azure CLI，請參閱[在 Azure 上建立安全的 Linux 叢集](service-fabric-tutorial-create-vnet-and-linux-cluster.md)。
 
 此教學課程說明的是生產環境案例。 如果您想要建立測試用的更小型叢集，請參閱[建立測試叢集](./scripts/service-fabric-powershell-create-secure-cluster-cert.md)。
 
-在本教學課程中，您了解如何：
+在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
 > * 使用 PowerShell 在 Azure 中建立 VNET
@@ -40,7 +29,7 @@ ms.locfileid: "59049998"
 > * 在 Azure PowerShell 中建立安全的 Service Fabric 叢集
 > * 使用 X.509 憑證保護叢集
 > * 使用 PowerShell 連線到叢集
-> * 刪除叢集
+> * 移除叢集
 
 在本教學課程系列中，您將了解如何：
 > [!div class="checklist"]
@@ -53,13 +42,13 @@ ms.locfileid: "59049998"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 開始進行本教學課程之前：
 
 * 如果您沒有 Azure 訂用帳戶，請建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * 安裝 [Service Fabric SDK 和 PowerShell 模組](service-fabric-get-started.md)。
-* 安裝 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps)。
+* 安裝 [Azure PowerShell](/powershell/azure/install-az-ps)。
 * 檢閱 [Azure 叢集](service-fabric-azure-clusters-overview.md)的重要概念。
 * [規劃及準備](service-fabric-cluster-azure-deployment-preparation.md)生產環境的叢集部署。
 
@@ -84,8 +73,8 @@ ms.locfileid: "59049998"
 * 受保護的憑證 (可在範本參數中設定)。
 * 啟用[反向 Proxy](service-fabric-reverseproxy.md)。
 * 啟用 [DNS 服務](service-fabric-dnsservice.md)。
-* 銅級[持久性層級](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) (可在範本參數中設定)。
-* 銀級[可靠性層級](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) (可在範本參數中設定)。
+* 銅級[持久性層級](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster) (可在範本參數中設定)。
+* 銀級[可靠性層級](service-fabric-cluster-capacity.md#reliability-characteristics-of-the-cluster) (可在範本參數中設定)。
 * 用戶端連線端點：19000 (可在範本參數中設定)。
 * HTTP 閘道端點：19080 (可在範本參數中設定)。
 
@@ -122,7 +111,7 @@ ms.locfileid: "59049998"
 如果需要其他應用程式連接埠，您必須調整 **Microsoft.Network/loadBalancers** 資源和 **Microsoft.Network/networkSecurityGroups** 資源，以允許流量進入。
 
 ### <a name="windows-defender"></a>Windows Defender
-根據預設，會在 Windows Server 2016 上安裝並執行 [Windows Defender 防毒程式](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016)。 某些 SKU 上預設會安裝使用者介面，但並非必要。 針對在範本中宣告的每個節點類型/VM 擴展集，可以使用 [Azure VM 反惡意程式碼擴充功能](/azure/virtual-machines/extensions/iaas-antimalware-windows)來排除 Service Fabric 目錄和程序：
+根據預設，會在 Windows Server 2016 上安裝並執行 [Windows Defender 防毒程式](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016)。 某些 SKU 上預設會安裝使用者介面，但並非必要。 針對在範本中宣告的每個節點類型/VM 擴展集，可以使用 [Azure VM 反惡意程式碼擴充功能](../virtual-machines/extensions/iaas-antimalware-windows.md)來排除 Service Fabric 目錄和程序：
 
 ```json
 {
@@ -156,8 +145,8 @@ ms.locfileid: "59049998"
 
 **參數** | **範例值** | **注意事項** 
 |---|---|---|
-|adminUserName|vmadmin| 叢集 VM 的系統管理員使用者名稱。 [VM 的使用者名稱需求](https://docs.microsoft.com/azure/virtual-machines/windows/faq#what-are-the-username-requirements-when-creating-a-vm)。 |
-|adminPassword|Password#1234| 叢集 VM 的系統管理員密碼。 [VM 的密碼需求](https://docs.microsoft.com/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm)。|
+|adminUserName|vmadmin| 叢集 VM 的系統管理員使用者名稱。 [VM 的使用者名稱需求](../virtual-machines/windows/faq.md#what-are-the-username-requirements-when-creating-a-vm)。 |
+|adminPassword|Password#1234| 叢集 VM 的系統管理員密碼。 [VM 的密碼需求](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)。|
 |clusterName|mysfcluster123| 叢集的名稱。 只能包含字母和數字。 長度可介於 3 到 23 個字元之間。|
 |location|southcentralus| 叢集的位置。 |
 |certificateThumbprint|| <p>如果建立自我簽署憑證或提供憑證檔案，則值應該空白。</p><p>若要使用先前上傳至金鑰保存庫的現有憑證，請填入憑證 SHA1 指紋值。 例如 "6190390162C988701DB5676EB81083EA608DCCF3"。</p> |
@@ -167,7 +156,7 @@ ms.locfileid: "59049998"
 ## <a name="set-up-azure-active-directory-client-authentication"></a>設定 Azure Active Directory 用戶端驗證
 對於部署在裝載於 Azure 上之公用網路中的 Service Fabric 叢集，我們建議從用戶端到節點的相互驗證應採用：
 * 使用 Azure Active Directory 進行用戶端識別。
-* 使用憑證進行伺服器識別，並對 HTTP 通訊使用 SSL 加密。
+* 使用憑證進行伺服器識別，並對 HTTP 通訊使用 TLS 加密。
 
 [建立叢集](#createvaultandcert)之前，必須先設定 Azure Active Directory (Azure AD) 以驗證 Service Fabric 叢集的用戶端。 Azure AD 可讓組織 (稱為租用戶) 管理使用者對應用程式的存取。 
 
@@ -178,12 +167,12 @@ Service Fabric 叢集提供其管理功能的各種進入點 (包括 Web 型 [Se
 
 在本文中，我們假設您已經建立租用戶。 如果您尚未建立租用戶，請先閱讀[如何取得 Azure Active Directory 租用戶](../active-directory/develop/quickstart-create-new-tenant.md)。
 
-為了簡化使用 Service Fabric 叢集設定 Azure AD 所涉及的步驟，我們建立了一組 Windows PowerShell 指令碼。 [將指令碼下載](https://github.com/robotechredmond/Azure-PowerShell-Snippets/tree/master/MicrosoftAzureServiceFabric-AADHelpers/AADTool)到您的電腦。
+為了簡化使用 Service Fabric 叢集設定 Azure AD 所涉及的步驟，我們建立了一組 Windows PowerShell 指令碼。 [將指令碼下載](https://github.com/Azure-Samples/service-fabric-aad-helpers)到您的電腦。
 
 ### <a name="create-azure-ad-applications-and-assign-users-to-roles"></a>建立 Azure AD 應用程式，並將使用者指派給角色
 建立兩個 Azure AD 應用程式來控制對叢集的存取：一個 Web 應用程式和一個原生應用程式。 建立應用程式來代表您的叢集之後，請將使用者指派給 [Service Fabric 所支援的角色](service-fabric-cluster-security-roles.md)︰唯讀和管理員。
 
-執行 `SetupApplications.ps1`，並提供租用戶識別碼、叢集名稱和 Web 應用程式回覆 URL 作為參數。 指定使用者的使用者名稱和密碼。 例如︰
+執行 `SetupApplications.ps1`，並提供租用戶識別碼、叢集名稱和 Web 應用程式回覆 URL 作為參數。 指定使用者的使用者名稱和密碼。 例如：
 
 ```powershell
 $Configobj = .\SetupApplications.ps1 -TenantId '<MyTenantID>' -ClusterName 'mysfcluster123' -WebApplicationReplyUrl 'https://mysfcluster123.eastus.cloudapp.azure.com:19080/Explorer/index.html' -AddResourceAccess
@@ -194,7 +183,7 @@ $Configobj = .\SetupApplications.ps1 -TenantId '<MyTenantID>' -ClusterName 'mysf
 > [!NOTE]
 > 對於國家雲 (例如 Azure Government、Azure 中國、Azure 德國)，指定 `-Location` 參數。
 
-您可以在 [Azure 入口網站](https://portal.azure.com)中找到您的*租用戶識別碼*或目錄識別碼。 選取 [Azure Active Directory] >  [屬性]，然後複製 [目錄識別碼] 值。
+您可以在 [Azure 入口網站](https://portal.azure.com)中找到您的*租用戶識別碼*或目錄識別碼。 選取 [Azure Active Directory]   >  [屬性]  ，然後複製 [目錄識別碼]  值。
 
 *ClusterName* 會用來為指令碼所建立的 Azure AD 應用程式加上前置詞。 它不需要與實際叢集名稱完全相符。 它只會使您能夠更輕鬆地將 Azure AD 成品對應到使用中的 Service Fabric 叢集。
 
@@ -260,7 +249,7 @@ https://&lt;cluster_domain&gt;:19080/Explorer
 }
 ```
 
-在 [azuredeploy.parameters.json][parameters] 參數檔案中新增參數值。 例如︰
+在 [azuredeploy.parameters.json][parameters] 參數檔案中新增參數值。 例如：
 
 ```json
 "aadTenantId": {
@@ -714,7 +703,7 @@ Get-ServiceFabricClusterHealth
 
 ## <a name="clean-up-resources"></a>清除資源
 
-此教學課程系列的其他文章會使用您建立的叢集。 如果您現在不打算繼續閱讀下一篇文章，您可能要[刪除該叢集](service-fabric-cluster-delete.md)以避免產生費用。
+此教學課程系列的其他文章會使用您建立的叢集。 如果您現在不打算繼續閱讀下一篇文章，您可能要[刪除該叢集](./service-fabric-tutorial-delete-cluster.md)以避免產生費用。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -730,7 +719,7 @@ Get-ServiceFabricClusterHealth
 > * 在 Azure PowerShell 中建立安全的 Service Fabric 叢集
 > * 使用 X.509 憑證保護叢集
 > * 使用 PowerShell 連線到叢集
-> * 刪除叢集
+> * 移除叢集
 
 接下來，前進到下列教學課程，以了解如何監視叢集。
 > [!div class="nextstepaction"]

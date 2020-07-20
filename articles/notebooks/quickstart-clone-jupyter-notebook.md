@@ -1,44 +1,41 @@
 ---
-title: 使用 Azure Notebooks 從 GitHub 複製 Jupyter 筆記本
+title: 使用 Azure Notebooks 預覽從 GitHub 複製 Jupyter Notebook
 description: 從 GitHub 存放庫中快速複製 Jupyter 筆記本，並在您的 Azure Notebooks 帳戶中執行。
-services: app-service
-documentationcenter: ''
-author: kraigb
-manager: douge
-ms.assetid: d7122b78-6daa-4bea-883b-ff832cfecef3
-ms.service: azure-notebooks
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: quickstart
 ms.date: 12/04/2018
-ms.author: kraigb
-ms.openlocfilehash: 30625423553b71e848d27d047d4b7bc3add6eaff
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 35352e74a8db071a2f85bd71857d47f3af1953e2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60238730"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85833081"
 ---
-# <a name="quickstart-clone-a-notebook"></a>快速入門：複製筆記本
+# <a name="quickstart-clone-a-notebook-in-azure-notebooks-preview"></a>快速入門：在 Azure Notebooks 預覽中複製 Notebook
 
-許多資料科學家和開發人員將其筆記本儲存在 [GitHub 存放庫](https://github.com)中，這是一個免費的服務，可為許多不同的專案類型提供儲存體和版本控制。 GitHub 通常當作在本機執行的 Jupyter 筆記本上共同作業的一種方式使用。 在此種情況下，每個共同作業者都會維護一份存放庫的本機複本，並從該複本執行筆記本。
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
-複製則可在您的 Azure Notebooks 帳戶中建立 GitHub 筆記本的複本。 此複本獨立於其原始的存放庫；變更僅會儲存在您的 Azure Notebooks 帳戶中，因此不會影響正本。 因為您的複本是在雲端，因此您可以與其他不需要任何本機複本，甚至在自己的電腦上有安裝 Jupyter 的共同作業者共用專案。 複製筆記本也可能只是當作您自己專案的起點，或是為了取得資料檔案。
+在本快速入門中，您會將儲存在 GitHub 中的 Jupyter Notebook 複製到 Azure Notebooks 帳戶。 
+
+GitHub 存放庫提供 Jupyter Notebook 的儲存體和版本控制。 共同作業者會維護存放庫的本機複本，並從這些複本執行 Notebook。 將 Jupyter Notebook 從 GitHub 複製到您的 Azure Notebooks 帳戶，可建立獨立的 Notebook 複本。 變更只會儲存在您的 Azure Notebooks 帳戶中，因此不會影響原始 GitHub 存放庫。 
+
+因為您的 Azure Notebooks 複本位於雲端，因此您可與不需要製作任何本機複本或已在其電腦上安裝 Jupyter 的共同作業者共用該複本。 複製 Notebook 也可能只是當作您自己專案的起點，或是為了取得資料檔案。 
+
+## <a name="prerequisites"></a>Prerequisites
+無。
 
 ## <a name="clone-azure-cognitive-services-notebooks"></a>複製 Azure 認知服務筆記本
 
-1. 前往 [Azure Notebooks](https://notebooks.azure.com) 並登入  (如需詳細資訊，請參閱[快速入門 - 登入 Azure Notebooks](quickstart-sign-in-azure-notebooks.md))。
+1. 前往 [Azure Notebooks](https://notebooks.azure.com) 並登入。 如需詳細資訊，請參閱[快速入門 - 登入 Azure Notebooks](quickstart-sign-in-azure-notebooks.md)。
 
-1. 從您的公用設定檔頁面中，選取頁面頂端的 [我的專案]：
+1. 從您的公用設定檔頁面中，選取頁面頂端的 [我的專案]  ：
 
     ![瀏覽器視窗頂端的 [我的專案] 連結](media/quickstarts/my-projects-link.png)
 
-1. 在 [我的專案] 頁面上，選取向上鍵按鈕 (鍵盤快速鍵：U；當瀏覽器視窗夠寬時，此按鈕會顯示為 [上傳 GitHub 存放庫])：
+1. 在 [我的專案]  頁面上，選取向上鍵按鈕 (鍵盤快速鍵：U；當瀏覽器視窗夠寬時，此按鈕會顯示為 [上傳 GitHub 存放庫]  )：
 
     ![[我的專案] 頁面上的 [上傳 GitHub 存放庫] 命令](media/quickstarts/upload-github-repo-command.png)
 
-1. 在顯示的 [上傳 GitHub 存放庫] 中，輸入或設定下列詳細資料，然後選取 [匯入]：
+1. 在顯示的 [上傳 GitHub 存放庫]  中，輸入或設定下列詳細資料，然後選取 [匯入]  ：
 
    - **GitHub 存放庫**：Microsoft/cognitive-services-notebooks (此名稱可在 [https://github.com/Microsoft/cognitive-services-notebooks](https://github.com/Microsoft/cognitive-services-notebooks) 複製 Azure 認知服務的 Jupyter 筆記本)。
    - **以遞迴方式複製**：(已清除)
@@ -52,21 +49,21 @@ ms.locfileid: "60238730"
 
 1. 複製完成之後，Azure Notebook 會帶您前往新的專案，您可以在那裡看到所有檔案的複本。
 
-    [![](media/quickstarts/completed-clone.png "檢視已完成的複本")](media/quickstarts/completed-clone.png#lightbox)
+    [![](media/quickstarts/completed-clone.png "View of a completed clone")](media/quickstarts/completed-clone.png#lightbox)
 
 ## <a name="share-a-notebook"></a>共用筆記本
 
-1. 若要共用已複製專案的複本，請使用 [共用] 控制或取得連結、取得包含連結的 HTML 或 Markdown 程式碼，或建立包含結的電子郵件訊息：
+1. 若要共用已複製專案的複本，請使用 [共用]  控制或取得連結、取得包含連結的 HTML 或 Markdown 程式碼，或建立包含結的電子郵件訊息：
 
     ![專案共用命令](media/quickstarts/share-project-command.png)
 
-1. 因為您在複製專案時清除了 [公用] 選項，因此複本是私密的。 若要將您的複本設為公用，選取 [專案設定]、在快顯視窗中設定 [公用專案] 選項，然後選取 [儲存]。
+1. 因為您在複製專案時清除了 [公用]  選項，因此複本是私密的。 若要將您的複本設為公用，選取 [專案設定]  、在快顯視窗中設定 [公用專案]  選項，然後選取 [儲存]  。
 
 1. 在專案中選取要執行的筆記本。 例如，Azure 認知服務存放庫中的每個筆記本都是自己獨立的快速入門。 下圖顯示新增認知服務 API 訂用帳戶金鑰，並將搜尋字詞從 "puppies" 變更為 "bunnies" 之後，使用 BingImageSearchAPI 筆記本的結果：
 
     ![執行從 GitHub 複製的 Jupyter 筆記本](media/quickstarts/clone-notebook-result.png)
 
-1. 當您執行筆記本完畢之後，選取 [檔案] > [關閉並終止] 來關閉筆記本及其瀏覽器視窗。
+1. 當您執行筆記本完畢之後，選取 [檔案]   > [關閉並終止]  來關閉筆記本及其瀏覽器視窗。
 
 1. 若要共用專案中的個別筆記本，以滑鼠右鍵按一下筆記本，然後選取 **複製連結** (鍵盤快速鍵：y)：
 

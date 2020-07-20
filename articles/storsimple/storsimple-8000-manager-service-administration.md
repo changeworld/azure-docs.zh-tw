@@ -9,21 +9,21 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2017
 ms.author: alkohli
-ms.openlocfilehash: b5490c4e79ee1458b498f539c0db2cc189fce7f7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c8d8e3b9058b753dc2a6da35878449c94399225e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60723301"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85508039"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-administer-your-storsimple-device"></a>使用 StorSimple 裝置管理員服務管理 StorSimple 裝置
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 本文描述 StorSimple 裝置管理員服務介面，包括如何與其連接、各種可用選項，以及可以透過此 UI 執行的特定工作流程連結。 本指南適用於以下兩者；StorSimple 實體裝置和雲端設備。
 
@@ -63,7 +63,7 @@ StorSimple 裝置管理員服務在 Microsoft Azure 中執行，並連接至多�
 | 有關儲存體帳戶</br>新增儲存體帳戶</br>編輯儲存體帳戶</br>刪除儲存體帳戶</br>替換儲存體帳戶的金鑰 |[管理儲存體帳戶](storsimple-8000-manage-storage-accounts.md) |
 | 關於頻寬範本</br>新增頻寬範本</br>編輯頻寬範本</br>刪除頻寬範本</br>使用預設頻寬範本</br>建立在指定時間啟動的全天頻寬範本 |[管理頻寬範本](storsimple-8000-manage-bandwidth-templates.md) |
 | 關於存取控制記錄</br>建立存取控制記錄</br>編輯存取控制記錄</br>刪除存取控制記錄 |[管理存取控制記錄](storsimple-8000-manage-acrs.md) |
-| 檢視工作詳細資料</br>取消作业 |[管理工作](storsimple-8000-manage-jobs-u2.md) |
+| 檢視作業詳細資料</br>取消工作 |[管理工作](storsimple-8000-manage-jobs-u2.md) |
 | 接收警示通知</br>管理警示</br>檢閱警示 |[檢視和管理 StorSimple 警示](storsimple-8000-manage-alerts.md) |
 | 建立監視圖表 |[監視您的 StorSimple 裝置](storsimple-monitor-device.md) |
 | 新增磁碟區容器</br>修改磁碟區容器</br>刪除磁碟區容器 |[管理磁碟區容器](storsimple-8000-manage-volume-containers.md) |
@@ -78,7 +78,7 @@ StorSimple 裝置管理員服務在 Microsoft Azure 中執行，並連接至多�
 | 停止裝置控制器</br>重新啟動裝置控制器</br>關閉裝置控制器</br>將裝置重設為原廠預設值</br>(上述項目僅適用於內部部署裝置) |[管理 StorSimple 裝置控制器](storsimple-8000-manage-device-controller.md) |
 | 了解 StorSimple 硬體元件</br>監視硬體狀態</br>(上述項目僅適用於內部部署裝置) |[監視硬體元件](storsimple-8000-monitor-hardware-status.md) |
 | 建立支援封裝 |[建立及管理支援封裝](storsimple-8000-contact-microsoft-support.md#start-a-support-session-in-windows-powershell-for-storsimple) |
-| 安裝軟體更新 |[更新您的裝置](storsimple-update-device.md) |
+| 安裝軟體更新 |[更新裝置](storsimple-update-device.md) |
 
 ## <a name="next-steps"></a>後續步驟
 

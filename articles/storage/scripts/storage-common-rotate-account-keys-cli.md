@@ -2,27 +2,21 @@
 title: Azure CLI 指令碼範例 - 輪替儲存體帳戶存取金鑰 | Microsoft Docs
 description: 建立 Azure 儲存體帳戶，然後擷取並輪替其帳戶存取金鑰。
 services: storage
-documentationcenter: na
 author: tamram
-manager: timlt
-editor: tysonn
-ms.assetid: ''
-ms.custom: mvc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: azurecli
+ms.subservice: blobs
+ms.devlang: cli
 ms.topic: sample
 ms.date: 06/22/2017
 ms.author: tamram
-ms.openlocfilehash: ac58886225221677aa003833167ff58cd578255d
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: aa7cba00d865bb7b2c1e0fd1f0059fb35ffff690
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55693916"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80060838"
 ---
-# <a name="create-a-storage-account-and-rotate-its-account-access-keys"></a>建立儲存體帳戶並輪替其帳戶存取金鑰
+# <a name="create-a-storage-account-and-rotate-its-account-access-keys"></a>建立儲存體帳戶，並輪替其帳戶存取金鑰
 
 此指令碼會建立 Azure 儲存體帳戶、顯示儲存體帳戶的新存取金鑰，然後更新 (輪替) 該金鑰。
 
@@ -34,7 +28,7 @@ ms.locfileid: "55693916"
 
 [!code-azurecli-interactive[main](../../../cli_scripts/storage/rotate-storage-account-keys/rotate-storage-account-keys.sh "Rotate storage account keys")]
 
-## <a name="clean-up-deployment"></a>清除部署 
+## <a name="clean-up-deployment"></a>清除部署
 
 執行下列命令來移除資源群組、儲存體帳戶和所有相關資源。
 
@@ -46,7 +40,7 @@ az group delete --name myResourceGroup
 
 此指令碼會使用下列命令來建立儲存體帳戶，並擷取和輪替其存取金鑰。 下表中的每個項目都會連結至特定命令的文件。
 
-| 命令 | 注意 |
+| Command | 注意 |
 |---|---|
 | [az group create](/cli/azure/group) | 建立用來存放所有資源的資源群組。 |
 | [az storage account create](/cli/azure/storage/account) | 在指定的資源群組中建立 Azure 儲存體帳戶。 |

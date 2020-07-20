@@ -8,23 +8,25 @@ ms.topic: include
 ms.date: 03/27/2019
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: 0dd6618bdee8e6810d414d4b04b16a1e0a9c90ed
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: e6c4b07d01a4992e22107cb7d524646f439c37c6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60768704"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84905862"
 ---
-您可以存取從容器產生的主控台記錄。 請先在 Cloud Shell 中執行下列命令來開啟容器記錄：
+若要存取 App Service 中的應用程式程式碼內部產生的主控台記錄，請在[Cloud Shell](https://shell.azure.com)中執行下列命令，以開啟診斷記錄。。
 
 ```azurecli-interactive
-az webapp log config --name <app-name> --resource-group myResourceGroup --docker-container-logging filesystem
+az webapp log config --resource-group <resource-group-name> --name <app-name> --application-logging true --level Verbose
 ```
 
-開啟容器記錄後，請執行下列命令來查看記錄資料流：
+的可能值為 `--level` ： `Error` 、 `Warning` 、 `Info` 和 `Verbose` 。 後續的每個層級都包含上一個層級。 例如： `Error` 只包含錯誤訊息，並 `Verbose` 包含所有訊息。
+
+一旦開啟診斷記錄，請執行下列命令以查看記錄資料流程：
 
 ```azurecli-interactive
-az webapp log tail --name <app-name> --resource-group myResourceGroup
+az webapp log tail --resource-group <resource-group-name> --name <app-name>
 ```
 
 如果您沒有立即看到主控台記錄，請在 30 秒後再查看。

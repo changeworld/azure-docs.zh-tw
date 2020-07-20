@@ -2,115 +2,118 @@
 title: 使用 Git 共同作業撰寫程式碼 - Team Data Science Process
 description: 如何使用 Git 搭配敏捷式計劃進行資料科學專案的共同作業程式碼開發。
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/28/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 551d0cd149c4d1555a40ccf0d7baeff97c6809c2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 0708e395eff90ff5b889c05f0fd5e7a98205c5bc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60336208"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "76721892"
 ---
-# <a name="collaborative-coding-with-git"></a>使用 Git 共同作業撰寫程式碼
+# <a name="collaborative-coding-with-git"></a>使用 Git 共同撰寫程式碼
 
-本文中我們會說明如何使用 Git 作為共用的程式碼開發架構，進行資料科學專案的共同作業程式碼開發。 其中涵蓋如何將這些撰寫程式碼活動連結至[敏捷式開發](agile-development.md)中規劃的工作，以及如何執行程式碼檢閱。
+本文說明如何使用 Git 做為資料科學專案的共同作業程式碼開發架構。 本文說明如何將 Azure Repos 中的程式碼連結 Azure Boards 中的[agile 開發](agile-development.md)工作專案、如何執行程式碼審核，以及如何建立和合併變更的提取要求。
 
+## <a name="link-a-work-item-to-an-azure-repos-branch"></a><a name='Linkaworkitemwithagitbranch-1'></a>將工作專案連結至 Azure Repos 分支 
 
-## 1.<a name='Linkaworkitemwithagitbranch-1'></a>連結工作項目與 Git 分支 
+Azure DevOps 提供一個便利的方式，可將 Azure Boards 的使用者故事或工作專案與 Azure Repos Git 存放庫分支連接在一起。 您可以將使用者案例或工作直接連結至與其相關聯的程式碼。 
 
-Azure DevOps Services 提供連結工作項目 (劇本或工作) 與 Git 分支的便利方式。 這可讓您將劇本或工作直接連接至與它相關聯的程式碼。 
-
-若要將工作項目連接至新分支，請按兩下工作項目，然後在快顯視窗中按一下 [+ 新增連結] 底下的 [建立新的分支]。  
+若要將工作專案連接到新分支，請選取工作專案旁邊的 [**動作**] 省略號（**...**），然後在操作功能表上，流覽至並選取 [**新增分支**]。  
 
 ![1](./media/collaborative-coding-with-git/1-sprint-board-view.png)
 
-提供這個新分支的資訊，例如分支名稱、基底 Git 存放庫和分支。 選擇的 Git 存放庫必須是工作項目所屬的相同專案下的存放庫。 基底分支可以是主要分支或其他某些現有的分支。
+在 [**建立分支**] 對話方塊中，提供新的分支名稱和基底 Azure Repos Git 存放庫和分支。 基底存放庫必須與工作專案位於相同的 Azure DevOps 專案。 基底分支可以是主要分支或另一個現有分支。 選取 [**建立分支**]。 
 
 ![2](./media/collaborative-coding-with-git/2-create-a-branch.png)
 
-為每個劇本工作項目建立 Git 分支是很好的做法。 然後，您可以根據劇本分支，為每個工作工作項目建立分支。 以對應到劇本-工作關係的這種階層方式組織分支，在您有許多人員使用相同專案的不同劇本時，或者有許多人員使用相同劇本的不同工作時，都很有幫助。 當每個小組成員使用不同的分支時，以及當共用分支的時候每個成員使用不同程式碼或其他構件時，衝突能夠降至最低。 
+您也可以使用 Windows 或 Linux 中的下列 Git bash 命令來建立新的分支：
 
-下圖說明建議的 TDSP 分支策略。 您可能不需要像這裡示範的這麼多分支，特別是當您只有一個或兩個人員使用相同專案，或只有一個人員使用劇本的所有工作。 但是將開發分支與主要分支分隔開來，永遠是良好的作法。 這可協助防止發行分支被開發活動中斷。 可以在[成功的 Git 分支模型](https://nvie.com/posts/a-successful-git-branching-model/)中找到 Git 分支模型的完整說明。
+```bash
+git checkout -b <new branch name> <base branch name>
+
+```
+如果您未指定 \<base branch name> ，新的分支會以為基礎 `master` 。 
+
+若要切換至您的工作分支，請執行下列命令： 
+
+```bash
+git checkout <working branch name>
+```
+
+切換至工作分支之後，您就可以開始開發程式碼或檔成品來完成工作專案。 執行 `git checkout master` 會將您切換回 `master` 分支。
+
+為每個使用者案例工作專案建立 Git 分支是很好的作法。 然後，針對每個工作專案，您可以根據使用者案例分支來建立分支。 當您有多個人員在相同專案中使用不同的使用者故事，或針對相同的使用者案例，在不同的工作上，組織對應于使用者故事-工作關係的階層中的分支。 您可以讓每個小組成員在不同的分支，或是在共用分支時，在不同的程式碼或其他成品上工作，以將衝突降到最低。 
+
+下圖顯示 TDSP 的建議分支策略。 您可能不需要像這裡所示的多個分支，特別是當只有一或兩個人在專案上工作，或只有一個人在使用者故事的所有工作上執行時。 但是，將開發分支與主要分支分開，一律是不錯的作法，而且有助於防止發行分支因開發活動而中斷。 如需 Git 分支模型的完整說明，請參閱[成功的 Git 分支模型](https://nvie.com/posts/a-successful-git-branching-model/)。
 
 ![3](./media/collaborative-coding-with-git/3-git-branches.png)
 
-若要切換至您想要使用的分支，請在殼層命令中執行下列命令 (Windows 或 Linux)。 
-
-    git checkout <branch name>
-
-將 <分支名稱\> 變更為「主要」，會讓您切換回**主要**分支。 切換至工作分支之後，您可以開始使用該工作項目，開發完成此項目所需的程式碼或文件構件。 
-
-您也可以將工作項目連結至現有的分支。 在工作項目的 [詳細資料] 分頁中，不是按一下 [建立新的分支]，而是按一下 [+ 新增連結]。 然後，選取您想要連結至工作項目的分支。 
+您也可以將工作項目連結至現有的分支。 在工作專案的 [**詳細資料**] 頁面上，選取 [**新增連結**]。 然後選取要連結工作專案的現有分支，然後選取 **[確定]**。 
 
 ![4](./media/collaborative-coding-with-git/4-link-to-an-existing-branch.png)
 
-您也可以使用 Git Bash 命令建立新的分支。 如果 <基底分支名稱\> 遺漏，<新的分支名稱\> 會根據_主要_分支。 
-    
-    git checkout -b <new branch name> <base branch name>
+## <a name="work-on-the-branch-and-commit-changes"></a><a name='WorkonaBranchandCommittheChanges-2'></a>在分支上工作並認可變更 
 
+在您對工作專案進行變更（例如將 R 腳本檔案新增至本機電腦的分支）之後， `script` 您可以使用下列 Git bash 命令，從您的本機分支將變更認可至上游工作分支：
 
-## 2.<a name='WorkonaBranchandCommittheChanges-2'></a>使用分支並且認可變更 
-
-現在假設您對工作項目的 data\_ingestion 分支進行一些變更，例如在本機機器中的分支上新增 R 檔案。 假設您是在 Git 殼層的該分支中，使用下列 Git 命令，可以將新增的 R 檔案認可至此工作項目的分支：
-
-    git status
-    git add .
-    git commit -m"added a R scripts"
-    git push origin data_ingestion
+```bash
+git status
+git add .
+git commit -m "added an R script file"
+git push origin script
+```
 
 ![5](./media/collaborative-coding-with-git/5-sprint-push-to-branch.png)
 
-## 3.<a name='CreateapullrequestonVSTS-3'></a>在 Azure DevOps Services 上建立提取要求 
+## <a name="create-a-pull-request"></a><a name='CreateapullrequestonVSTS-3'></a>建立提取要求
 
-當您在一些認可和推送之後準備就緒時，若要將目前的分支合併至其基底分支，您可以在 Azure DevOps Services 上建立**提取要求**。 
+在一或多個認可和推送之後，當您準備好要將目前的工作分支合併至其基底分支時，您可以在 Azure Repos 中建立和提交*提取要求*。 
 
-請移至專案的主頁面，然後按一下 [程式碼]。 選取要合併的分支和分支合併所在的 Git 存放庫名稱。 然後按一下 [提取要求]、按一下 [新的提取要求]，在分支上的工作合併至其基底分支之前，建立提取要求檢閱。
+從 Azure DevOps 專案的主頁面，指向左側導覽中的 [**存放庫**  >  **提取要求**]。 然後選取其中一個 [**新增提取要求**] 按鈕，或 [**建立提取要求**] 連結。
 
 ![6](./media/collaborative-coding-with-git/6-spring-create-pull-request.png)
 
-填入有關這項提取要求的一些描述、新增檢閱者，然後送出。
+在 [**新增提取要求**] 畫面上，如有必要，流覽至您想要合併變更的 Git 存放庫和分支。 新增或變更您想要的任何其他資訊。 在 [**審核者**] 底下，新增審核者的名稱，然後選取 [**建立**]。 
 
 ![7](./media/collaborative-coding-with-git/7-spring-send-pull-request.png)
 
-## 4.<a name='ReviewandMerge-4'></a>檢閱及合併 
+## <a name="review-and-merge"></a><a name='ReviewandMerge-4'></a>檢閱及合併
 
-建立提取要求時，您的檢閱者會取得電子郵件通知，以檢閱提取要求。 檢閱者必須檢查變更是否有作用，以及在可行時測試要求者的變更。 根據其評量，檢閱者可以核准或拒絕提取要求。 
+建立提取要求之後，您的審核者會收到一封電子郵件通知，以檢查提取要求。 審核者會測試變更是否正常運作，並盡可能檢查要求者的變更。 審核者可以根據其評量，提出留言、要求變更，以及核准或拒絕提取要求。 
 
 ![8](./media/collaborative-coding-with-git/8-add_comments.png)
 
-![9](./media/collaborative-coding-with-git/9-spring-approve-pullrequest.png)
-
-完成檢閱之後，按一下 [完成] 按鈕，工作分支便會合併到其基底分支。 您可以選擇在工作分支合併之後將其刪除。 
+審核者核准變更之後，您或具有合併許可權的其他人可以將工作分支合併至其基底分支。 選取 [**完成**]，然後在 [**完成提取要求**] 對話方塊中選取 [**完成合併**]。 您可以選擇在工作分支合併之後將其刪除。 
 
 ![10](./media/collaborative-coding-with-git/10-spring-complete-pullrequest.png)
 
-確認左上角要求標示為「已完成」。 
+確認要求已標示為 [**已完成**]。 
 
 ![11](./media/collaborative-coding-with-git/11-spring-merge-pullrequest.png)
 
-當您返回 [程式碼] 底下的存放庫時，系統會告訴您，您已切換到主要分支。
+當您回到左側導覽中的 [**存放庫**] 時，您會看到您已在刪除分支後切換至主要分支 `script` 。
 
 ![12](./media/collaborative-coding-with-git/12-spring-branch-deleted.png)
 
-您也可以使用下列 Git 命令，將工作分支合併到其基底分支，並且在合併之後刪除工作分支：
+您也可以使用下列 Git bash 命令，將 `script` 工作分支合併至其基底分支，並在合併之後刪除工作分支：
 
-    git checkout master
-    git merge data_ingestion
-    git branch -d data_ingestion
+```bash
+git checkout master
+git merge script
+git branch -d script
+```
 
 ![13](./media/collaborative-coding-with-git/13-spring-branch-deleted-commandline.png)
 
-
- 
 ## <a name="next-steps"></a>後續步驟
 
-[資料科學工作的執行](execute-data-science-tasks.md)示範如何使用公用程式來完成幾個一般資料科學工作，例如互動式資料探索、資料分析、報告和模型建立。
+[執行資料科學](execute-data-science-tasks.md)工作顯示如何使用公用程式來完成數個常見的資料科學工作，例如互動式資料探索、資料分析、報告和模型建立。
 
-還會提供逐步解說，說明**特定案例**之程序中的所有步驟。 [範例逐步解說](walkthroughs.md)文章中會列出這些逐步解說以及簡短說明的連結。 這些逐步解說說明如何將雲端、內部部署工具及服務組合成工作流程或管線，以建立智慧型應用程式。 
+[範例](walkthroughs.md)逐步解說會列出特定案例的逐步解說，其中包含連結和縮圖描述。 連結的案例說明如何將雲端和內部部署工具和服務組合成工作流程或管線，以建立智慧型應用程式。 
 

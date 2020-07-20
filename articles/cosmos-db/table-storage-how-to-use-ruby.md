@@ -1,20 +1,20 @@
 ---
-title: 如何搭配 Ruby 使用 Azure 表格儲存體和 Azure Cosmos DB 資料表 API
+title: 使用採用 Ruby 的 Azure Cosmos DB 資料表 API 和 Azure 資料表儲存體
 description: 使用 Azure 資料表儲存體或 Azure Cosmos DB 資料表 API 將結構化資料儲存在雲端。
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: ruby
 ms.topic: sample
 ms.date: 04/05/2018
-author: wmengmsft
-ms.author: wmeng
+author: sakash279
+ms.author: akshanka
 ms.reviewer: sngun
-ms.openlocfilehash: 3603455674485a505a7dbc969554a881947940ae
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 7994b478321c925b3eab73291a109d50b9066fef
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54036251"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "76770867"
 ---
 # <a name="how-to-use-azure-table-storage-and-the-azure-cosmos-db-table-api-with-ruby"></a>如何搭配 Ruby 使用 Azure 表格儲存體和 Azure Cosmos DB 資料表 API
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -58,7 +58,7 @@ Azure.config.storage_access_key = "<your Azure Storage access key>"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 2. 瀏覽至您要使用的儲存體帳戶。
-3. 在右邊的 [設定] 刀鋒視窗中，按一下 [存取金鑰]。
+3. 在右邊的 [設定] 刀鋒視窗中，按一下 [存取金鑰]  。
 4. [存取金鑰] 刀鋒視窗隨即顯示，您會看到存取金鑰 1 和存取金鑰 2。 您可以使用其中一個存取金鑰。
 5. 按一下複製圖示以將金鑰複製到剪貼簿。
 
@@ -94,7 +94,7 @@ azure_table_service.insert_entity("testtable", entity)
 ## <a name="update-an-entity"></a>更新實體
 有多種方法可以用來更新現有的實體：
 
-* **update_entity()：** 透過取代現有實體來進行更新。
+* **update_entity()：** 藉由取代現有實體來更新現有實體。
 * **merge_entity()：** 藉由將新的屬性值合併到現有實體來更新現有實體。
 * **insert_or_merge_entity()：** 藉由取代現有實體來更新現有實體。 如果實體不存在，將會插入新的實體：
 * **insert_or_replace_entity()：** 藉由將新的屬性值合併到現有實體來更新現有實體。 如果實體不存在，將會插入新的實體。
@@ -107,7 +107,7 @@ entity = { "content" => "test entity with updated content",
 azure_table_service.update_entity("testtable", entity)
 ```
 
-使用 **update_entity()** 和 **merge_entity()** 時，如果所要更新的實體不存在，更新作業就會失敗。 因此，如果您想要不論實體是否已經存在都儲存該實體，您應改用 **insert_or_replace_entity()** 或 **insert_or_merge_entity()**。
+使用 **update_entity()** 和 **merge_entity()** 時，如果所要更新的實體不存在，更新作業就會失敗。 因此，如果您想要不論實體是否已經存在都儲存該實體，您應改用 **insert_or_replace_entity()** 或 **insert_or_merge_entity()** 。
 
 ## <a name="work-with-groups-of-entities"></a>使用實體群組
 有時候批次提交多個操作是有意義的，可以確保伺服器會進行不可部分完成的處理。 若要達到此目的，您必須先建立 **Batch** 物件，然後在 **TableService** 上使用 **execute_batch()** 方法。 下列範例示範在一個批次中，提交具備 RowKey 2 和 3 的兩個實體。 請注意，它僅適用於具備相同 PartitionKey 的實體。

@@ -8,15 +8,13 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: jaboes
 ms.custom: include file
-ms.openlocfilehash: 6085eb2b520217c4e678a75032e8a1cb4b9343ec
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 126b488d2bb59e2904bee646301240efe6fe71a4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60581069"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "76037998"
 ---
-# <a name="using-managed-disks-in-azure-resource-manager-templates"></a>在 Azure Resource Manager 範本中使用受控磁碟
-
 本文逐步解說當使用 Azure Resource Manager 範本佈建虛擬機器時，受控與非受控磁碟之間的差異。 這些範例有助於您將使用非受控磁碟的現有範本，更新為使用受控磁碟。 如需參考，我們會使用 [101-vm-simple-windows](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows) \(英文\) 範本作為指南。 如果您想要直接進行比較，您可以看到使用[受控磁碟](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows/azuredeploy.json) \(英文\) 的範本以及使用[非受控磁碟](https://github.com/Azure/azure-quickstart-templates/tree/93b5f72a9857ea9ea43e87d2373bf1b4f724c6aa/101-vm-simple-windows/azuredeploy.json) \(英文\) 的先前版本。
 
 ## <a name="unmanaged-disks-template-formatting"></a>非受控磁碟範本格式
@@ -96,7 +94,16 @@ ms.locfileid: "60581069"
 
 ### <a name="default-managed-disk-settings"></a>預設的受控磁碟設定
 
-若要建立使用受控磁碟的 VM，您不再需要建立儲存體帳戶資源，而且可以更新虛擬機器資源，如下所示。 請特別注意，`apiVersion` 會反映出 `2017-03-30` 和 `osDisk` 和 `dataDisks` 不再參照 VHD 的特定 URI。 部署時若未指定其他屬性，則磁碟會使用以 VM 大小為基礎的儲存體類型。 例如，如果您使用支援 Premium 的 VM 大小 (其名稱包含 "s" 的大小，例如 Standard_D2s_v3)，則系統會使用 Premium_LRS 儲存體。 使用磁碟的 sku 設定來指定儲存體類型。 若未指定名稱，它的 OS 磁碟格式為 `<VMName>_OsDisk_1_<randomstring>`，而每個資料磁碟的格式為 `<VMName>_disk<#>_<randomstring>`。 預設已停用 Azure 磁碟加密；OS 磁碟的快取為 [讀取/寫入]，資料磁碟的快取則為 [無]。 您可能會注意到，在下列範例中仍有儲存體帳戶相依性，但這只適用於儲存體的診斷，而且磁碟儲存體並不需要相依性。
+若要建立具有受控磁片的 VM，您不再需要建立儲存體帳戶資源。 參考下列範本範例，與先前的 unmanaged 磁片範例有一些差異，請注意：
+
+- `apiVersion`是支援受控磁片的版本。
+- `osDisk`和 `dataDisks` 不再參考 VHD 的特定 URI。
+- 部署時，若未指定其他屬性，磁片將會根據 VM 的大小使用儲存體類型。 例如，如果您使用支援高階儲存體的 VM 大小（其名稱中包含 "s" 的大小，例如 Standard_D2s_v3），則預設會設定 premium 磁片。 您可以使用磁片的 sku 設定來指定儲存類型，以變更此值。
+- 如果沒有指定磁片的名稱，它會採用 `<VMName>_OsDisk_1_<randomstring>` OS 磁片和 `<VMName>_disk<#>_<randomstring>` 每個資料磁片的格式。
+  - 如果 VM 是從自訂映射建立，則儲存體帳戶類型和磁片名稱的預設設定會從自訂映射資源中定義的磁片屬性中抓取。 您可以在範本中指定這些值來覆寫這些方法。
+- Azure 磁片加密預設為停用。
+- 根據預設，磁碟快取是作業系統磁片的讀取/寫入，而不是資料磁片的快取。
+- 在下面的範例中，仍有儲存體帳戶相依性，不過這只是為了診斷的儲存，而且不需要磁片儲存體。
 
 ```json
 {
@@ -202,7 +209,7 @@ ms.locfileid: "60581069"
 
 ### <a name="create-managed-availability-sets-with-vms-using-managed-disks"></a>為使用受控磁碟的 VM 建立受控可用性設定組
 
-若要為使用受控磁碟的 VM 建立受控可用性設定組，請將 `sku` 物件新增至可用性設定組資源，並將 `name` 屬性設定為 `Aligned`。 這個屬性可確保每個 VM 的磁碟彼此之間都充分隔離，以避免發生單一失敗點。 另請注意，可用性設定組資源的 `apiVersion` 是設定成 `2017-03-30`。
+若要為使用受控磁碟的 VM 建立受控可用性設定組，請將 `sku` 物件新增至可用性設定組資源，並將 `name` 屬性設定為 `Aligned`。 這個屬性可確保每個 VM 的磁碟彼此之間都充分隔離，以避免發生單一失敗點。 另請注意，可用性設定組資源的 `apiVersion` 是設定成 `2018-10-01`。
 
 ```json
 {
@@ -224,10 +231,10 @@ ms.locfileid: "60581069"
 
 以下是在 Resource Manager 範本中建立標準 SSD 磁碟所需的參數：
 
-* Microsoft.Compute 的 apiVersion 必須設定為 `2018-04-01` (或更新版本)
-* 將 managedDisk.storageAccountType 指定為 `StandardSSD_LRS`
+* Microsoft.Compute 的 apiVersion** 必須設定為 `2018-04-01` (或更新版本)
+* 將 managedDisk.storageAccountType** 指定為 `StandardSSD_LRS`
 
-下列範例示範使用標準 SSD 磁碟的虛擬機器 properties.storageProfile.osDisk 區段：
+下列範例示範使用標準 SSD 磁碟的虛擬機器 properties.storageProfile.osDisk** 區段：
 
 ```json
 "osDisk": {
@@ -252,7 +259,6 @@ ms.locfileid: "60581069"
 * 如需使用受控磁碟的完整範本，請瀏覽下列「Azure 快速入門存放庫」連結。
     * [使用受控磁碟的 Windows VM](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows) \(英文\)
     * [使用受控磁碟的 Linux VM](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-linux) \(英文\)
-    * [受控磁碟範本的完整清單](https://github.com/Azure/azure-quickstart-templates/blob/master/managed-disk-support-list.md) \(英文\)
 * 瀏覽 [Azure 受控磁碟概觀](../articles/virtual-machines/windows/managed-disks-overview.md)文件，深入了解受控磁碟。
 * 瀏覽 [Microsoft.Compute/virtualMachines 範本參考](/azure/templates/microsoft.compute/virtualmachines)文件，檢閱虛擬機器資源的範本參考文件。
 * 瀏覽 [Microsoft.Compute/disks 範本參考](/azure/templates/microsoft.compute/disks)文件，檢閱磁碟資源的範本參考文件。

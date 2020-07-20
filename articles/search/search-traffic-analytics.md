@@ -1,116 +1,146 @@
 ---
-title: 實作搜尋流量分析 - Azure 搜尋服務
-description: 為「Azure 搜尋服務」啟用搜尋流量分析，以將遙測和使用者起始的事件新增到記錄檔。
+title: 搜尋流量分析的遙測
+titleSuffix: Azure Cognitive Search
+description: 啟用 Azure 認知搜尋的搜尋流量分析、使用 Application Insights 收集遙測和使用者起始的事件，然後分析 Power BI 報告中的結果。
 author: HeidiSteen
-manager: cgronlun
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 01/25/2019
+manager: nitinme
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: c30c8bae3e76778a31cdd0695acde52b5b1c6b02
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 03/18/2020
+ms.openlocfilehash: 794c88556fb69aae11c582afd03f548480469e34
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60749553"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684719"
 ---
-# <a name="implement-search-traffic-analytics-in-azure-search"></a>在 Azure 搜尋服務中實作搜尋流量分析
-搜尋流量分析是一種模式，可用來實作搜尋服務的意見反應管道。 這個模式描述必要的資料，以及如何使用監視多平台服務中的業界領導者 Application Insights 來加以收集。
+# <a name="collect-telemetry-data-for-search-traffic-analytics"></a>收集搜尋流量分析的遙測資料
 
-搜尋流量分析可讓您掌握您的搜尋服務，並深入分析您的使用者及其行為。 擁有使用者選擇項目的相關資料，您所做的決定就能夠進一步改善搜尋體驗，並且在結果不如預期時予以中斷。
+搜尋流量分析是一種模式，用來收集有關使用者與 Azure 認知搜尋應用程式互動的遙測資料，例如使用者起始的按一下事件和鍵盤輸入。 您可以使用此資訊來判斷搜尋解決方案的有效性，包括熱門搜尋字詞、點選連結率，以及哪些查詢輸入未產生任何結果。
 
-Azure 搜尋服務所提供的遙測解決方案可整合 Azure Application Insights 和 Power BI，以提供深入的監視和追蹤。 因為只能透過 API 與 Azure 搜尋服務進行互動，必須遵循這個頁面中的指示，由開發人員使用搜尋將遙測進行實作。
+此模式會相依於 [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) ([Azure 監視器](https://docs.microsoft.com/azure/azure-monitor/)的一個功能)，以收集使用者資料。 您必須如此文章所述，在用戶端程式碼中加入檢測設備。 最後，您將需要一個報告機制來分析資料。 我們建議使用 Power BI，但您可以使用應用程式儀表板，或任何連線至 Application Insights 的工具。
+
+> [!NOTE]
+> 此文章中描述的模式適用於您新增至用戶端的程式碼所產生的進階案例和點選流資料。 服務記錄相對容易設定，而且可提供一系列的計量，還可以在入口網站中完成，不需要撰寫程式碼。 因此無論是什麼情況，都建議啟用記錄。 如需詳細資訊，請參閱[收集和分析記錄資料](search-monitor-logs.md)。
 
 ## <a name="identify-relevant-search-data"></a>識別相關的搜尋資料
 
-如需取得實用的搜尋計量，就必須從搜尋應用程式的使用者記錄一些訊號。 這些訊號代表使用者感興趣且認為與其需求相關的內容。
+若要讓搜尋流量分析產生有用的計量，必須針對搜尋應用程式的使用者記錄一些訊號。 這些訊號代表使用者感興趣且認為與其相關的內容。 針對搜尋流量分析，這些訊號包括：
 
-搜尋流量分析需要兩個訊號︰
++ 使用者產生的搜尋事件：只有使用者起始的搜尋查詢才有意義。 用來填入 Facet、其他內容或任何內部資訊的搜尋要求並不重要，而且還會扭曲和偏差結果。
 
-1. 使用者產生的搜尋事件︰僅使用者所起始的搜尋查詢才有趣。 用來填入 Facet、其他內容或任何內部資訊的搜尋要求並不重要，而且還會扭曲和偏差結果。
++ 使用者產生的按一下事件：在搜尋結果頁面上，點選事件通常表示文件為特定搜尋查詢的相關結果。
 
-2. 使用者產生的按一下事件：透過在此文件中按一下，我們意指選取搜尋查詢所傳回之特定搜尋結果的使用者。 點選通常表示文件為特定搜尋查詢的相關結果。
-
-使用相互關聯的識別碼將搜尋和點選事件進行連結，就可以分析您應用程式上的使用者行為。 僅使用搜尋流量記錄並無法取得這些搜尋深入分析。
+透過相互關聯識別碼來連結搜尋與按一下事件，您就可以更深入了解應用程式搜尋功能的性能。
 
 ## <a name="add-search-traffic-analytics"></a>新增搜尋流量分析
 
-必須從搜尋應用程式收集前一節所述的訊號，因為使用者會與其進行互動。 Application Insights 是可延伸的監視解決方案，適用於多個平台，並具有彈性的檢測選項。 使用 Application Insights 可讓您充分利用 Azure 搜尋服務所建立的 Power BI 搜尋報告，使資料分析更輕鬆。
+在 Azure 認知搜尋服務的[入口網站](https://portal.azure.com)頁面中，搜尋流量分析頁面包含了遵循此遙測模式的速查表。 您可以從這個頁面，選取或建立 Application Insights 資源、取得檢測金鑰、複製可針對解決方案調整的程式碼片段，以及下載依據模式中反映的結構描述所建置的 Power BI 報表。
 
-在 Azure 搜尋服務的[入口網站](https://portal.azure.com)頁面中，搜尋流量分析刀鋒視窗包含了遵循此遙測模式的小祕技。 您也可以選取或建立 Application Insights 資源，並查看必要的資料，這些全都放在同一個位置。
+![入口網站中的搜尋流量分析頁面](media/search-traffic-analytics/azuresearch-trafficanalytics.png "入口網站中的搜尋流量分析頁面")
 
-![搜尋流量分析指示][1]
+## <a name="1---set-up-application-insights"></a>1 - 設定 Application Insights
 
-## <a name="1---select-a-resource"></a>1 - 選取資源
+請選取現有的 Application Insights 資源，或者如果您還沒有該個資源，請[建立一個](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)。 如果您使用 [搜尋流量分析] 頁面，可以複製應用程式連線 Application Insights 時所需的檢測金鑰。
 
-如果您還沒有 Application Insights 資源，則必須選取 Application Insights 資源後，才可以加以使用或建立。 您可以使用已在使用中的資源，才可記錄必要的自訂事件。
+擁有 Application Insights 資源之後，就可以遵循[支援的語言和平台的相關指示](https://docs.microsoft.com/azure/azure-monitor/app/platforms)來註冊您的應用程式。 註冊方式很簡單，只要將檢測金鑰從 Application Insights 新增到會設定關聯的程式碼中就完成了。 當您選取現有的資源時，可以在入口網站或 [搜尋流量分析] 頁面中找到金鑰。
 
-在建立新的 Application Insights 資源時，所有應用程式類型都適用於這種情況。 選取最適合您所使用平台的 Application Insights 資源。
+後續步驟中會反映出某些 Visual Studio 專案類型可使用的快捷方式。 該方式只需按幾下滑鼠，就能建立資源並註冊您的應用程式。
 
-您需要檢測金鑰來建立您應用程式的遙測用戶端。 您可以從 Application Insights 入口網站儀表板取得，或可以在搜尋流量分析頁面上，選取您想要使用的執行個體來加以取得。
+1. 針對 Visual Studio 和 ASP.NET 開發，請開啟您的解決方案並選取 [專案] > [新增 Application Insights 遙測]。
+
+1. 按一下 [開始使用]。
+
+1. 透過提供 Microsoft 帳戶、Azure 訂用帳戶和 Application Insights 資源 (預設為新的資源) 來註冊您的應用程式。 按一下 [註冊] 。
+
+此時，您的應用程式已設定為進行應用程式監視，這表示所有頁面載入作業都會以預設計量進行追蹤。 如需和上述步驟有關的詳細資訊，請參閱[啟用 Application Insights 伺服器端遙測](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core#enable-application-insights-server-side-telemetry-visual-studio)。
 
 ## <a name="2---add-instrumentation"></a>2 - 新增檢測
 
-在此階段中，您可以使用上述步驟中建立的 Application Insights 資源，將自己的搜尋應用程式進行檢測。 這個程序有四個步驟︰
+您可以在這個步驟使用您在上述步驟中建立的 Application Insights 資源，來檢測自己的搜尋應用程式。 此程序從建立遙測用戶端開始，共包含四個步驟。
 
-**步驟 1：建立用戶端遙測** 這是將事件傳送至 Application Insights 資源的物件。
+### <a name="step-1-create-a-telemetry-client"></a>步驟 1:建立遙測用戶端
 
-*C#*
+建立會將事件傳送至 Application Insights 的物件。 您可以將檢測設備新增到伺服器端應用程式程式碼，或新增到在瀏覽器中執行的用戶端程式碼，這裡以 C# 和 JavaScript 變體來表示 (針對其他語言，請參閱[支援的平台和架構](https://docs.microsoft.com/azure/application-insights/app-insights-platforms) \(部分機器翻譯\) 的完整清單)。 請選擇可提供您所需資訊深度的方法。
 
-    private TelemetryClient telemetryClient = new TelemetryClient();
-    telemetryClient.InstrumentationKey = "<YOUR INSTRUMENTATION KEY>";
+伺服器端遙測會在應用程式層 (例如，在雲端以 Web 服務形式，或在公司網路中以內部部署應用程式形式執行的應用程式) 擷取計量。 伺服器端遙測會擷取搜尋和按一下事件、文件在結果中的位置，以及查詢資訊，但您的資料收集範圍將會限定在該層所提供的任何資訊。
 
-*JavaScript*
+在用戶端上，您可能會有額外的程式碼，它們或許能夠操作查詢輸入、新增瀏覽，或包含內容 (例如，從首頁和產品頁面起始的查詢)。 如果您的解決方案類似上面所述情況，可以選擇使用用戶端檢測，讓遙測反映出額外的詳細資料。 有關如何收集這個額外詳細資料的問題，已經超出此模式的範圍，但您可以查看[網頁適用的 Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/javascript#explore-browserclient-side-data) 以獲得更多指引。 
 
-    <script type="text/javascript">var appInsights=window.appInsights||function(config){function r(config){t[config]=function(){var i=arguments;t.queue.push(function(){t[config].apply(t,i)})}}var t={config:config},u=document,e=window,o="script",s=u.createElement(o),i,f;s.src=config.url||"//az416426.vo.msecnd.net/scripts/a/ai.0.js";u.getElementsByTagName(o)[0].parentNode.appendChild(s);try{t.cookie=u.cookie}catch(h){}for(t.queue=[],i=["Event","Exception","Metric","PageView","Trace","Dependency"];i.length;)r("track"+i.pop());return r("setAuthenticatedUserContext"),r("clearAuthenticatedUserContext"),config.disableExceptionTracking||(i="onerror",r("_"+i),f=e[i],e[i]=function(config,r,u,e,o){var s=f&&f(config,r,u,e,o);return s!==!0&&t["_"+i](config,r,u,e,o),s}),t}
-    ({
-    instrumentationKey: "<YOUR INSTRUMENTATION KEY>"
-    });
-    window.appInsights=appInsights;
-    </script>
+**使用 C#**
 
-如需了解其他語言和平台，請參閱完整的[清單](https://docs.microsoft.com/azure/application-insights/app-insights-platforms)。
+如果使用 C#，就會在您的應用程式設定中找到 **InstrumentationKey**，例如，如果專案為 ASP.NET，就會找到 appsettings.json。 如果您不確定金鑰位置，請回去參閱註冊指示。
 
-**步驟 2：要求相互關聯的搜尋識別碼** 若要透過點選將搜尋要求相互關聯，則必須擁有與這兩個不同事件相關的相互關聯識別碼。 當您使用標頭進行要求時，Azure 搜尋服務會為您提供搜尋識別碼︰
+```csharp
+private static TelemetryClient _telemetryClient;
 
-*C#*
-
-    // This sample uses the Azure Search .NET SDK https://www.nuget.org/packages/Microsoft.Azure.Search
-
-    var client = new SearchIndexClient(<ServiceName>, <IndexName>, new SearchCredentials(<QueryKey>)
-    var headers = new Dictionary<string, List<string>>() { { "x-ms-azs-return-searchid", new List<string>() { "true" } } };
-    var response = await client.Documents.SearchWithHttpMessagesAsync(searchText: searchText, searchParameters: parameters, customHeaders: headers);
-    IEnumerable<string> headerValues;
-    string searchId = string.Empty;
-    if (response.Response.Headers.TryGetValues("x-ms-azs-searchid", out headerValues)){
-     searchId = headerValues.FirstOrDefault();
+// Add a constructor that accepts a telemetry client:
+public HomeController(TelemetryClient telemetry)
+    {
+        _telemetryClient = telemetry;
     }
+```
 
-*JavaScript*
+**使用 JavaScript**
 
-    request.setRequestHeader("x-ms-azs-return-searchid", "true");
-    request.setRequestHeader("Access-Control-Expose-Headers", "x-ms-azs-searchid");
-    var searchId = request.getResponseHeader('x-ms-azs-searchid');
+```javascript
+<script type="text/javascript">var appInsights=window.appInsights||function(config){function r(config){t[config]=function(){var i=arguments;t.queue.push(function(){t[config].apply(t,i)})}}var t={config:config},u=document,e=window,o="script",s=u.createElement(o),i,f;s.src=config.url||"//az416426.vo.msecnd.net/scripts/a/ai.0.js";u.getElementsByTagName(o)[0].parentNode.appendChild(s);try{t.cookie=u.cookie}catch(h){}for(t.queue=[],i=["Event","Exception","Metric","PageView","Trace","Dependency"];i.length;)r("track"+i.pop());return r("setAuthenticatedUserContext"),r("clearAuthenticatedUserContext"),config.disableExceptionTracking||(i="onerror",r("_"+i),f=e[i],e[i]=function(config,r,u,e,o){var s=f&&f(config,r,u,e,o);return s!==!0&&t["_"+i](config,r,u,e,o),s}),t}
+({
+instrumentationKey: "<YOUR INSTRUMENTATION KEY>"
+});
+window.appInsights=appInsights;
+</script>
+```
 
-**步驟 3：記錄搜尋事件**
+### <a name="step-2-request-a-search-id-for-correlation"></a>步驟 2:要求相互關聯的搜尋識別碼
 
-每當使用者發出搜尋要求時，您應該將其記錄為搜尋事件，並包含下列關於 Application Insights 自訂事件的結構描述︰
+若要透過點選將搜尋要求相互關聯，必須擁有一組與這兩個不同事件相關的相互關聯識別碼。 當您使用 HTTP 標頭要求取得搜尋識別碼時，Azure 認知搜尋會提供您一組搜尋識別碼。
 
-**ServiceName**：(字串) 搜尋服務名稱 **SearchId**：(GUID) 搜尋查詢的唯一識別碼 (包含在搜尋回應中) **IndexName**︰(字串) 要查詢的搜尋服務索引 **QueryTerms**：(字串) 使用者所輸入的搜尋詞彙 **ResultCount**︰(int) 所傳回的文件數目 (包含在搜尋回應中) **ScoringProfile**︰(字串) 所使用的評分設定檔名稱 (如果有)
+擁有搜尋識別碼可讓 Azure 認知搜尋針對要求發出的計量，與您在 Application Insights 中記錄的自訂計量相互關聯。  
+
+**使用 C#**
+
+```csharp
+// This sample uses the .NET SDK https://www.nuget.org/packages/Microsoft.Azure.Search
+
+var client = new SearchIndexClient(<SearchServiceName>, <IndexName>, new SearchCredentials(<QueryKey>)
+
+// Use HTTP headers so that you can get the search ID from the response
+var headers = new Dictionary<string, List<string>>() { { "x-ms-azs-return-searchid", new List<string>() { "true" } } };
+var response = await client.Documents.SearchWithHttpMessagesAsync(searchText: searchText, searchParameters: parameters, customHeaders: headers);
+string searchId = string.Empty;
+if (response.Response.Headers.TryGetValues("x-ms-azs-searchid", out IEnumerable<string> headerValues)){
+    searchId = headerValues.FirstOrDefault();
+}
+```
+
+**使用 JavaScript (呼叫 REST API)**
+
+```javascript
+request.setRequestHeader("x-ms-azs-return-searchid", "true");
+request.setRequestHeader("Access-Control-Expose-Headers", "x-ms-azs-searchid");
+var searchId = request.getResponseHeader('x-ms-azs-searchid');
+```
+
+### <a name="step-3-log-search-events"></a>步驟 3：記錄搜尋事件
+
+每當使用者發出搜尋要求時，您應該將其記錄為搜尋事件，並包含下列關於 Application Insights 自訂事件的結構描述。 請記得只記錄使用者產生的搜尋查詢。
+
++ **SearchServiceName**：(字串) 搜尋服務名稱
++ **SearchId**：(guid) 搜尋查詢的唯一識別碼 (出現在搜尋回應中)
++ **IndexName**：(字串) 要查詢的搜尋服務索引
++ **QueryTerms**：(字串) 使用者輸入的搜尋字詞
++ **ResultCount**：(int) 傳回文件的數目 (出現在搜尋回應中)
++ **ScoringProfile**：(字串) 所使用評分設定檔的名稱 (如果有的話)
 
 > [!NOTE]
-> 將 $count=true 新增至搜尋查詢，要求使用者所產生查詢的計數。 請在[這裡](https://docs.microsoft.com/rest/api/searchservice/search-documents#request)參閱詳細資訊
+> 請將 $count=true 新增至搜尋查詢，以要求使用者所產生查詢的計數。 如需詳細資訊，請參閱[搜尋文件 (REST)](/rest/api/searchservice/search-documents#counttrue--false)。
 >
 
-> [!NOTE]
-> 請記得，務必只記錄使用者所產生的搜尋查詢。
->
+**使用 C#**
 
-*C#*
-
-    var properties = new Dictionary <string, string> {
+```csharp
+var properties = new Dictionary <string, string> {
     {"SearchServiceName", <service name>},
     {"SearchId", <search Id>},
     {"IndexName", <index name>},
@@ -118,90 +148,91 @@ Azure 搜尋服務所提供的遙測解決方案可整合 Azure Application Insi
     {"ResultCount", <results count>},
     {"ScoringProfile", <scoring profile used>}
     };
-    telemetryClient.TrackEvent("Search", properties);
+_telemetryClient.TrackEvent("Search", properties);
+```
 
-*JavaScript*
+**使用 JavaScript**
 
-    appInsights.trackEvent("Search", {
-    SearchServiceName: <service name>,
-    SearchId: <search id>,
-    IndexName: <index name>,
-    QueryTerms: <search terms>,
-    ResultCount: <results count>,
-    ScoringProfile: <scoring profile used>
-    });
+```javascript
+appInsights.trackEvent("Search", {
+SearchServiceName: <service name>,
+SearchId: <search id>,
+IndexName: <index name>,
+QueryTerms: <search terms>,
+ResultCount: <results count>,
+ScoringProfile: <scoring profile used>
+});
+```
 
-**步驟 4：記錄點選事件**
+### <a name="step-4-log-click-events"></a>步驟 4：記錄按一下事件
 
 每當使用者點選文件時，必須記錄這個訊號才可進行搜尋分析。 使用 Application Insights 自訂事件，記錄包含下列結構描述的這些事件：
 
-**ServiceName**：(字串) 搜尋服務名稱 **SearchId**：(GUID) 相關搜尋查詢的唯一識別碼 **DocId**：(字串) 文件識別碼 **Position**(int) 文件在搜尋結果頁面中的排名
++ **ServiceName**：(字串) 搜尋服務名稱
++ **SearchId**：(guid) 相關搜尋查詢的唯一識別碼
++ **DocId**：(字串) 文件識別碼
++ **Position**：(int) 搜尋結果頁面中文件的順位
 
 > [!NOTE]
 > 位置是指您應用程式中的基本順序。 您可以自由地設定這個數字 (只要它一律相同) 以便進行比較。
 >
 
-*C#*
+**使用 C#**
 
-    var properties = new Dictionary <string, string> {
+```csharp
+var properties = new Dictionary <string, string> {
     {"SearchServiceName", <service name>},
     {"SearchId", <search id>},
     {"ClickedDocId", <clicked document id>},
     {"Rank", <clicked document position>}
     };
-    telemetryClient.TrackEvent("Click", properties);
+_telemetryClient.TrackEvent("Click", properties);
+```
 
-*JavaScript*
+**使用 JavaScript**
 
-    appInsights.trackEvent("Click", {
-        SearchServiceName: <service name>,
-        SearchId: <search id>,
-        ClickedDocId: <clicked document id>,
-        Rank: <clicked document position>
-    });
+```javascript
+appInsights.trackEvent("Click", {
+    SearchServiceName: <service name>,
+    SearchId: <search id>,
+    ClickedDocId: <clicked document id>,
+    Rank: <clicked document position>
+});
+```
 
 ## <a name="3---analyze-in-power-bi"></a>3 - 在 Power BI 中分析
 
-在您完成檢測您的應用程式，並確認您的應用程式正確地連線至 Application Insights 之後，可以使用 Azure 搜尋服務針對 Power BI Desktop 所建立的預先定義範本。 
+在您完成您的應用程式檢測，並確認應用程式已正確地連線至 Application Insights 之後，可以下載預先定義的報表範本來分析 Power BI Desktop 中的資料。 此報表包含預先定義的圖表和資料表，可用來分析針對搜尋流量分析擷取的額外資料。
 
-「Azure 搜尋服務」會提供監視 [Power BI 內容套件](https://app.powerbi.com/getdata/services/azure-search)，以便讓您分析記錄資料。 此內容套件會新增預先定義的圖表和資料表，可用來分析為搜尋流量分析擷取的額外資料。 如需詳細資訊，請參閱[內容套件說明網頁](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-search/)。 
+1. 在「Azure 認知搜尋」儀表板左側導覽窗格中的 [設定] 底下，按一下 [搜尋流量分析]。
 
-1. 在「Azure 搜尋服務」儀表板左側導覽窗格的 [設定] 底下，按一下 [搜尋流量分析]。
-
-2. 在 [搜尋流量分析] 頁面上的步驟 3 中，按一下 [取得 Power BI Desktop] 以安裝 Power BI。
+1. 在 [搜尋流量分析] 頁面上的步驟 3 中，按一下 [取得 Power BI Desktop] 以安裝 Power BI。
 
    ![取得 Power BI 報表](./media/search-traffic-analytics/get-use-power-bi.png "取得 Power BI 報表")
 
-2. 在相同頁面上，按一下 [下載 PowerBI 報表]。
+1. 在同一頁面上，按一下 [下載 Power BI 報表]。
 
-3. 報表會在 Power BI Desktop 中開啟，系統會提示您連線至 Application Insights。 您可以在 Azure 入口網站的 Application Insights 資源頁面中找到此資訊。
+1. 報表會在 Power BI Desktop 中開啟，且系統會提示您連線至 Application Insights 並提供認證。 您可以在 Azure 入口網站頁面中，找到您 Application Insights 資源的連線資訊。 針對認證，請提供您用來登入入口網站的相同使用者名稱與密碼。
 
    ![連線至 Application Insights](./media/search-traffic-analytics/connect-to-app-insights.png "連線至 Application Insights")
 
-4. 按一下 [載入]。
+1. 按一下 [載入]。
 
 此報表包含圖表和資料表，可幫助您做出更明智的決策，以改善您的搜尋效能和相關性。
 
 計量包含下列項目：
 
-* 點選率 (CTR)：點選特定文件的使用者數與總搜尋數的比率。
-* 無點選搜尋︰註冊無點選的熱門查詢詞彙
-* 最多點選的文件︰過去 24 小時、7 天和 30 天內，依識別碼排序最多點選的文件。
-* 常用的詞彙文件組︰依點選排序，造成點選相同文件的詞彙。
-* 點選的時間︰自搜尋查詢起按照時間分組的點選
++ 搜尋磁碟區和最熱門的字詞文件組︰依點選排序，造成點選相同文件的字詞。
++ 無點選搜尋︰註冊無點選的熱門查詢詞彙
 
-以下螢幕擷取畫面示範用於分析搜尋流量分析的內建報表和圖表。
+下列螢幕擷取畫面顯示當您使用了所有的結構描述元素時，內建報表的外觀。
 
-![Azure 搜尋服務的 Power BI 儀表板](./media/search-traffic-analytics/AzureSearch-PowerBI-Dashboard.png "Azure 搜尋服務的 Power BI 儀表板")
+![Azure 認知搜尋的 Power BI 儀表板](./media/search-traffic-analytics/azuresearch-powerbi-dashboard.png "Azure 認知搜尋的 Power BI 儀表板")
 
 ## <a name="next-steps"></a>後續步驟
+
 檢測您的搜尋應用程式，取得搜尋服務的強大且詳細相關資料。
 
 您可以在 [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) 上找到詳細資訊，以及瀏覽[價格頁面](https://azure.microsoft.com/pricing/details/application-insights/)頁面來深入了解其不同的服務層級。
 
-深入了解如何建立令人讚嘆的報告。 如需詳細資訊，請參閱[開始使用 Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-getting-started/)
-
-<!--Image references-->
-[1]: ./media/search-traffic-analytics/AzureSearch-TrafficAnalytics.png
-[2]: ./media/search-traffic-analytics/AzureSearch-AppInsightsData.png
-[3]: ./media/search-traffic-analytics/AzureSearch-PBITemplate.png
+深入了解如何建立令人讚嘆的報告。 如需詳細資訊，請參閱[開始使用 Power BI Desktop](https://docs.microsoft.com/power-bi/fundamentals/desktop-getting-started)。

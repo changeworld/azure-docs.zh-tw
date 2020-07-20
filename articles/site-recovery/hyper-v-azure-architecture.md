@@ -1,18 +1,18 @@
 ---
-title: Azure Site Recovery 中的 Hyper-V 至 Azure 災害復原架構 | Microsoft Docs
+title: Azure Site Recovery 中的 hyper-v 嚴重損壞修復架構
 description: 本文概述在使用 Azure Site Recovery 服務部署內部部署 Hyper-V VM (不含 VMM) 至 Azure 的災害復原時所使用的元件和架構。
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 03/18/2019
+ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: f77069592fb34caf409b387f5c8452159f55e296
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e0fd3a6bc62feeb3728fa88b4aad56c8713bce11
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60553271"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134916"
 ---
 # <a name="hyper-v-to-azure-disaster-recovery-architecture"></a>Hyper-V 至 Azure 的災害復原架構
 
@@ -37,7 +37,6 @@ Hyper-V 主機可選擇性第在 System Center Virtual Machine Manager (VMM) 私
 **Hyper-V 至 Azure 架構 (不含 VMM)**
 
 ![架構](./media/hyper-v-azure-architecture/arch-onprem-azure-hypervsite.png)
-
 
 
 ## <a name="architectural-components---hyper-v-with-vmm"></a>架構元件 - 包含 VMM 的 Hyper-V
@@ -68,14 +67,14 @@ Hyper-V 主機可選擇性第在 System Center Virtual Machine Manager (VMM) 私
 ### <a name="enable-protection"></a>啟用保護。
 
 1. 您在 Azure 入口網站或內部部署針對 Hyper-V VM 啟用保護之後，**啟用保護**隨即啟動。
-2. 作業會檢查符合必要條件的機器，然後叫用 [CreateReplicationRelationship](https://msdn.microsoft.com/library/hh850036.aspx) 方法，以使用您進行的設定來設定複寫。
-3. 作業會啟動初始複寫，方法是叫用 [StartReplication](https://msdn.microsoft.com/library/hh850303.aspx) 方法，以初始化完整的 VM 複寫，並且將 VM 的虛擬磁碟傳送至 Azure。
-4. 您可以在 [作業] 索引標籤中監視作業。    ![作業清單](media/hyper-v-azure-architecture/image1.png) ![啟用保護向下鑽研](media/hyper-v-azure-architecture/image2.png)
+2. 作業會檢查符合必要條件的機器，然後叫用 [CreateReplicationRelationship](/windows/win32/hyperv_v2/createreplicationrelationship-msvm-replicationservice) 方法，以使用您進行的設定來設定複寫。
+3. 作業會啟動初始複寫，方法是叫用 [StartReplication](/windows/win32/hyperv_v2/startreplication-msvm-replicationservice) 方法，以初始化完整的 VM 複寫，並且將 VM 的虛擬磁碟傳送至 Azure。
+4. 您可以在 [**工作**] 索引標籤中監視作業。     ![作業清單 ](media/hyper-v-azure-architecture/image1.png) ![啟用保護向下切入](media/hyper-v-azure-architecture/image2.png)
 
 
 ### <a name="initial-data-replication"></a>初始資料複寫
 
-1. 觸發初始複寫後，就會建立 [Hyper-V VM 快照集](https://technet.microsoft.com/library/dd560637.aspx)。
+1. 觸發初始複寫時，會建立[HYPER-V VM 快照](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd560637(v=ws.10))集快照集。
 2. VM 上的虛擬硬碟會逐一複寫，直到它們全部複製到 Azure 為止。 視 VM 大小和網路頻寬而定，這可能需要一些時間。 [了解如何](https://support.microsoft.com/kb/3056159)增加網路頻寬。
 3. 如果在初始複寫進行時發生磁碟變更，Hyper-V 複本複寫追蹤器會以 Hyper-V 複寫記錄 (.hrl) 的形式追蹤變更。 這些記錄檔位於與磁碟相同的資料夾中。 每個磁碟都有一個相關聯的.hrl 檔案會傳送至次要儲存體。 當初始複寫正在進行時，快照和記錄檔會取用磁碟資源。
 4. 初始複寫完成時，就會刪除 VM 快照集。
@@ -84,7 +83,7 @@ Hyper-V 主機可選擇性第在 System Center Virtual Machine Manager (VMM) 私
 
 ### <a name="finalize-protection-process"></a>完成保護程序
 
-1. 當初始複寫完成之後，就會執行 [完成虛擬機器上的保護] 作業。 這會設定網路和其他複寫後設定，讓 VM 受到保護。
+1. 當初始複寫完成之後，就會執行 [完成虛擬機器上的保護]**** 作業。 這會設定網路和其他複寫後設定，讓 VM 受到保護。
 2. 在這個階段，您可以檢查 VM 設定以確定它已準備好進行容錯移轉。 您可以執行 VM 的災害復原演練 (測試容錯移轉)，以檢查它是否如預期般容錯移轉。 
 
 
@@ -105,7 +104,7 @@ Hyper-V 主機可選擇性第在 System Center Virtual Machine Manager (VMM) 私
     - 它會使用固定區塊的區塊處理演算法，將來源和目標檔案分成固定區塊。
     - 系統會產生每個區塊的總和檢查碼。 這些總和檢查碼會相互比較，以決定來源中的哪些區塊必須套用至目標。
 2. 重新同步處理完成之後，應會繼續進行正常的差異複寫。
-3. 如果您不想等候預設外部重新同步處理時數，您可以手動重新同步處理 VM。 例如，如果發生中斷。 若要這樣做，請在入口網站中選取 VM > [重新同步處理]。
+3. 如果您不想等候預設外部重新同步處理時數，您可以手動重新同步處理 VM。 例如，如果發生中斷。 若要這樣做，請在入口網站中選取 VM > [重新同步處理]****。
 
     ![手動重新同步處理](./media/hyper-v-azure-architecture/image4-site.png)
 
@@ -132,7 +131,7 @@ Hyper-V 主機可選擇性第在 System Center Virtual Machine Manager (VMM) 私
 
 1. 開始執行從 Azure 至內部部署網站的計劃性容錯移轉：
     - **將停機時間最小化**：如果您使用這個選項，Site Recovery 會在容錯移轉前同步處理資料。 它會檢查變更的資料區塊並將其下載到內部部署網站，而 Azure VM 會保持執行，以將停機時間最小化。 當您手動指定應該完成的容錯移轉時，系統會關閉 Azure VM，複製任何最終的差異變更，而容錯移轉會開始。
-    - **完整下載**：使用此選項，資料會在容錯移轉期間進行同步處理。 此選項會下載整個磁碟。 它的速度更快，因為未計算任何總和檢查碼，但有更多的停機時間。 如果您已執行複本 Azure VM 一段時間，或已刪除內部部署 VM，請使用這個選項。
+    - **完整下載**：使用此選項時，資料會在容錯移轉期間進行同步處理。 此選項會下載整個磁碟。 它的速度更快，因為未計算任何總和檢查碼，但有更多的停機時間。 如果您已執行複本 Azure VM 一段時間，或已刪除內部部署 VM，請使用這個選項。
     - **建立 VM**：您可以選擇容錯回復到相同的 VM 或替代 VM。 您可指定 Site Recovery 應該建立 VM (如果尚未存在)。
 
 2. 初始同步處理完成之後，您可選擇完成容錯移轉。 完成之後，您可登入內部部署 VM 來檢查一切是否如預期般運作。 在 Azure 入口網站中，您可以看到 Azure VM 已停止。

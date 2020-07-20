@@ -1,25 +1,29 @@
 ---
 title: 如何在 Azure Cosmos DB 中設定多重主機
-description: 了解如何在 Azure Cosmos DB 中對應用程式設定多重主機
-author: rimman
+description: 瞭解如何在 Azure Cosmos DB 中使用不同的 Sdk，為您的應用程式設定多宿主。
+author: markjbrown
 ms.service: cosmos-db
-ms.topic: sample
-ms.date: 04/15/2019
-ms.author: rimman
-ms.openlocfilehash: b862c59002369662d37b6d6a9de28370b0000497
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
-ms.translationtype: HT
+ms.topic: how-to
+ms.date: 12/02/2019
+ms.author: mjbrown
+ms.custom: tracking-python
+ms.openlocfilehash: a07ab3f65fcdeacf37626ad05d0b95ac3f4e7e64
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59682265"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85263663"
 ---
-# <a name="how-to-configure-multi-master-in-your-applications-that-use-azure-cosmos-db"></a>如何在使用 Azure Cosmos DB 的應用程式中設定多重主機
+# <a name="configure-multi-master-in-your-applications-that-use-azure-cosmos-db"></a>在使用 Azure Cosmos DB 的應用程式中設定多重主機
 
-若要在應用程式中使用多重主機功能，您必須在 Azure Cosmos DB 中啟用多區域寫入並設定多路連接功能。 多路連接可藉由設定應用程式部署所在的區域來加以設定。
+所建立的帳戶在啟用多個寫入區域後，您就必須在應用程式中對 ConnectionPolicy 進行兩項變更，DocumentClient 才能在 Azure Cosmos DB 中啟用多重主機及多路連接功能。 在 ConnectionPolicy 內，將 UseMultipleWriteLocations 設定為 true，並將應用程式部署所在區域的名稱傳遞至 SetCurrentLocation。 這會根據所傳入位置的地理鄰近性填入 PreferredLocations 屬性。 如果之後在帳戶中新增新的區域，應用程式便不必更新或重新部署，而是會自動偵測較接近的區域，並在發生區域性事件時自動以該處作為主要位置。
 
-## <a id="netv2"></a>.NET SDK v2
+> [!Note]
+> 最初設定為單一寫入區域的 Cosmos 帳戶，可以設定為多個寫入區域 (也就是多重主機) 而不會產生停機時間。 若要深入了解，請參閱[設定多重寫入區域](how-to-manage-database-account.md#configure-multiple-write-regions)
 
-若要在應用程式中啟用多重主機，請將 `UseMultipleWriteLocations` 設定為 true，並將 `SetCurrentLocation` 設定為要在其中部署應用程式和複寫 Azure Cosmos DB 的區域。
+## <a name="net-sdk-v2"></a><a id="netv2"></a>.NET SDK v2
+
+若要在應用程式中啟用多重主機，請將 `UseMultipleWriteLocations` 設定為 `true`。 此外，將 `SetCurrentLocation` 設定為要在其中部署應用程式的區域，以及複寫 Azure Cosmos DB 的所在區域：
 
 ```csharp
 ConnectionPolicy policy = new ConnectionPolicy
@@ -31,19 +35,48 @@ ConnectionPolicy policy = new ConnectionPolicy
 policy.SetCurrentLocation("West US 2");
 ```
 
-## <a id="netv3"></a>.NET SDK v3 (預覽)
+## <a name="net-sdk-v3"></a><a id="netv3"></a>.NET SDK v3
 
-若要在應用程式中啟用多重主機，請將 `UseCurrentRegion` 設定為要在其中部署應用程式和複寫 Cosmos DB 的區域。
+若要在應用程式中啟用多重主機，請將 `ApplicationRegion` 設定為要在其中部署應用程式和複寫 Cosmos DB 的區域：
 
 ```csharp
-CosmosConfiguration config = new CosmosConfiguration("endpoint", "key");
-config.UseCurrentRegion("West US");
-CosmosClient client = new CosmosClient(config);
+CosmosClient cosmosClient = new CosmosClient(
+    "<connection-string-from-portal>", 
+    new CosmosClientOptions()
+    {
+        ApplicationRegion = Regions.WestUS2,
+    });
 ```
 
-## <a id="java"></a>Java Async SDK
+或者，您可以使用 `CosmosClientBuilder` 和 `WithApplicationRegion` 來達成相同的結果：
 
-若要在應用程式中啟用多重主機，請設定 `policy.setUsingMultipleWriteLocations(true)`，並將 `policy.setPreferredLocations` 設定為要在其中部署應用程式和複寫 Cosmos DB 的區域。
+```csharp
+CosmosClientBuilder cosmosClientBuilder = new CosmosClientBuilder("<connection-string-from-portal>")
+            .WithApplicationRegion(Regions.WestUS2);
+CosmosClient client = cosmosClientBuilder.Build();
+```
+
+## <a name="java-v4-sdk"></a><a id="java4-multi-master"></a> Java V4 SDK
+
+若要在您的應用程式中啟用多宿主，請 `.multipleWriteRegionsEnabled(true)` `.preferredRegions(preferredRegions)` 在 client builder 中呼叫和，其中是包含一個專案的，也 `preferredRegions` `List` 就是要在其中部署應用程式的區域，以及 Cosmos DB 的複寫位置：
+
+# <a name="async"></a>[非同步](#tab/api-async)
+
+   [Java SDK V4](sql-api-sdk-java-v4.md) (Maven [com.azure::azure-cosmos](https://mvnrepository.com/artifact/com.azure/azure-cosmos)) 非同步 API
+
+   [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=ConfigureMultimasterAsync)]
+
+# <a name="sync"></a>[同步處理](#tab/api-sync)
+
+   [Java SDK V4](sql-api-sdk-java-v4.md) (Maven [com.azure::azure-cosmos](https://mvnrepository.com/artifact/com.azure/azure-cosmos)) 同步 API
+
+   [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/sync/SampleDocumentationSnippets.java?name=ConfigureMultimasterSync)]
+
+--- 
+
+## <a name="async-java-v2-sdk"></a><a id="java2-milti-master"></a>非同步 JAVA V2 SDK
+
+JAVA V2 SDK 使用 Maven [.com. azure：： azure cosmosdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb)。 若要在應用程式中啟用多重主機，請設定 `policy.setUsingMultipleWriteLocations(true)`，並將 `policy.setPreferredLocations` 設定為要在其中部署應用程式和複寫 Cosmos DB 的區域：
 
 ```java
 ConnectionPolicy policy = new ConnectionPolicy();
@@ -58,9 +91,9 @@ AsyncDocumentClient client =
         .withConnectionPolicy(policy).build();
 ```
 
-## <a id="javascript"></a>Node.js、JavaScript、TypeScript SDK
+## <a name="nodejs-javascript-and-typescript-sdks"></a><a id="javascript"></a>Node.js、JavaScript 及 TypeScript SDK
 
-若要在應用程式中啟用多重主機，請將 `connectionPolicy.UseMultipleWriteLocations` 設定為 true，並將 `connectionPolicy.PreferredLocations` 設定為要在其中部署應用程式和複寫 Cosmos DB 的區域。
+若要在應用程式中啟用多重主機，請將 `connectionPolicy.UseMultipleWriteLocations` 設定為 `true`。 此外，將 `connectionPolicy.PreferredLocations` 設定為要在其中部署應用程式的區域，以及複寫 Cosmos DB 的所在區域：
 
 ```javascript
 const connectionPolicy: ConnectionPolicy = new ConnectionPolicy();
@@ -75,28 +108,29 @@ const client = new CosmosClient({
 });
 ```
 
-## <a id="python"></a>Python SDK
+## <a name="python-sdk"></a><a id="python"></a>Python SDK
 
-若要在應用程式中啟用多重主機，請將 `connection_policy.UseMultipleWriteLocations` 設定為 true，並將 `connection_policy.PreferredLocations` 設定為要在其中部署應用程式和複寫 Cosmos DB 的區域。
+若要在應用程式中啟用多重主機，請將 `connection_policy.UseMultipleWriteLocations` 設定為 `true`。 此外，將 `connection_policy.PreferredLocations` 設定為要在其中部署應用程式的區域，以及複寫 Cosmos DB 的所在區域。
 
 ```python
 connection_policy = documents.ConnectionPolicy()
 connection_policy.UseMultipleWriteLocations = True
 connection_policy.PreferredLocations = [region]
 
-client = cosmos_client.CosmosClient(self.account_endpoint, {'masterKey': self.account_key}, connection_policy, documents.ConsistencyLevel.Session)
+client = cosmos_client.CosmosClient(self.account_endpoint, {
+                                    'masterKey': self.account_key}, connection_policy, documents.ConsistencyLevel.Session)
 ```
 
 ## <a name="next-steps"></a>後續步驟
 
-接下來，您可以閱讀下列文章：
+請閱讀下列文章：
 
-* [利用工作階段權杖來管理 Azure Cosmos DB 中的一致性](how-to-manage-consistency.md#utilize-session-tokens)
+* [使用工作階段權杖在 Azure Cosmos DB 中管理一致性](how-to-manage-consistency.md#utilize-session-tokens)
 * [Azure Cosmos DB 中的衝突類型和解決原則](conflict-resolution-policies.md)
 * [Azure Cosmos DB 中的高可用性](high-availability.md)
 * [Azure Cosmos DB 中的一致性層級](consistency-levels.md)
 * [在 Azure Cosmos DB 中選擇正確的一致性層級](consistency-levels-choosing.md)
-* [Azure Cosmos DB 中一致性、可用性和效能的取捨](consistency-levels-tradeoffs.md)
+* [Azure Cosmos DB 中的一致性、可用性和效能取捨](consistency-levels-tradeoffs.md)
 * [各種一致性層級的可用性和效能權衡取捨](consistency-levels-tradeoffs.md)
 * [全域調整佈建的輸送量](scaling-throughput.md)
-* [全域散發 - 運作原理](global-dist-under-the-hood.md)
+* [全域散發：幕後](global-dist-under-the-hood.md)

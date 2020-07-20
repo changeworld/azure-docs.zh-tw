@@ -1,21 +1,20 @@
 ---
 title: 使用 Azure 匯入/匯出工具 | Microsoft Docs
 description: 了解如何使用匯入/匯出工具來準備硬碟機，以進行匯入作業、修復匯入作業或修復匯出作業。
-author: muralikk
+author: twooley
 services: storage
 ms.service: storage
 ms.topic: article
 ms.date: 01/15/2017
-ms.author: muralikk
+ms.author: twooley
 ms.subservice: common
-ms.openlocfilehash: 5eaf29623a18f7347ad287e4b8389667f4b4e272
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 35236a95e691d6f7d0444a038e62116a684965a7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61478482"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75978452"
 ---
-# <a name="using-the-azure-importexport-tool"></a>使用 Azure 匯入匯出工具 
+# <a name="using-the-azure-importexport-tool"></a>使用 Azure 匯入匯出工具
 
 Azure 匯入/匯出工具 (WAImportExport.exe) 是用來建立及管理 Azure 匯入/匯出服務的作業，可讓您將大量資料傳入或傳出 Azure Blob 儲存體。
 
@@ -25,10 +24,10 @@ Azure 匯入/匯出工具 (WAImportExport.exe) 是用來建立及管理 Azure �
 
 - 安裝並設定 Azure 匯入/匯出工具。
 - 準備硬碟機進行將資料從您的磁碟機匯入 Azure Blob 儲存體的作業。
-- 使用複製記錄檔檢閱作業的狀態。 
-- 修復匯入作業。 
-- 修復匯出作業。 
-- 針對 Azure 匯入/匯出工具進行疑難排解。 
+- 使用複製記錄檔檢閱作業的狀態。
+- 修復匯入作業。
+- 修復匯出作業。
+- 針對 Azure 匯入/匯出工具進行疑難排解。
 
 ## <a name="next-steps"></a>後續步驟
 

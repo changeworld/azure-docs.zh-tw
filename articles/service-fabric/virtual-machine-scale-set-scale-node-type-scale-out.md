@@ -1,31 +1,19 @@
 ---
-title: 將節點類型新增到 Azure Service Fabric 叢集 | Microsoft Docs
+title: 將節點類型新增至 Azure Service Fabric 叢集
 description: 了解如何透過新增虛擬機器擴展集來相應放大 Service Fabric 叢集。
-services: service-fabric
-documentationcenter: .net
-author: aljo-microsoft
-manager: chackdan
-editor: ''
-ms.assetid: 5441e7e0-d842-4398-b060-8c9d34b07c48
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/13/2019
-ms.author: aljo
-ms.openlocfilehash: ed5bf829e2fbff6c286acdb21a8d0158148483d9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 1e7bae89561d43d717eb4d15e95183761b077443
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60506717"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75463967"
 ---
 # <a name="scale-a-service-fabric-cluster-out-by-adding-a-virtual-machine-scale-set"></a>透過新增虛擬機器擴展集來相應放大 Service Fabric 叢集
 此文會說明如何將新的節點類型新增至現有的叢集，來調整 Azure Service Fabric 叢集的規模。 Service Fabric 叢集是一組由網路連接的虛擬或實體機器，可用來將您的微服務部署到其中並進行管理。 屬於叢集一部分的機器或 VM 都稱為節點。 虛擬機器擴展集是一個 Azure 計算資源，可以用來將一組虛擬機器當做一個集合加以部署和管理。 在 Azure 叢集中定義的每個節點類型，會[設定為不同的擴展集](service-fabric-cluster-nodetypes.md)。 隨後，您即可個別管理每個節點類型。 建立 Service Fabric 叢集之後，您可以透過將新的節點類型 (虛擬機器擴展集) 新增到現有的叢集，來水平調整叢集的規模。  您可以隨時調整叢集，即使正在叢集上執行工作負載，也是如此。  在叢集進行調整時，您的應用程式也會自動調整。
 
 ## <a name="add-an-additional-scale-set-to-an-existing-cluster"></a>將額外的擴展集新增至現有的叢集
-將新的節點類型 （這支援的虛擬機器擴展集） 新增至現有的叢集是類似[升級的主要節點類型](service-fabric-scale-up-node-type.md)，但您不會使用相同的 NodeTypeRef; 顯然不會被停用任何目前正在使用虛擬機器擴展集，以及如果您未更新的主要節點類型，將不會遺失叢集可用性。 
+將新的節點類型（由虛擬機器擴展集支援）新增至現有的叢集，類似于[升級主要節點類型](service-fabric-scale-up-node-type.md)，但您不會使用相同的 NodeTypeRef;顯然不會停用任何主動使用的虛擬機器擴展集，如果您未更新主要節點類型，則不會失去叢集可用性。 
 
 NodeTypeRef 屬性會在虛擬機器擴展集 Service Fabric 擴充功能屬性內宣告：
 ```json

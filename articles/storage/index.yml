@@ -1,143 +1,149 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Hub
 title: Azure 儲存體文件
+summary: Azure 儲存體包括物件、檔案、磁碟、佇列和表格儲存體。 另外還提供適用於混合式儲存體解決方案的服務，以及用於傳送、共用和備份資料的服務。
+brand: azure
 metadata:
-  title: Azure 儲存體文件 - 教學課程和 API 參考 | Microsoft Docs
-  description: Azure 儲存體是受 Microsoft 管理的雲端服務，可提供高度可用、安全、耐用、可擴充和備援的儲存體。 Azure 儲存體包含 Azure Blob、Azure Data Lake Storage Gen2、Azure 檔案服務、Azure 佇列和 Azure 資料表。
-  services: storage
-  author: tamram
-  manager: twooley
+  title: Azure 儲存體文件
+  description: Azure 儲存體文件中樞頁面 指向雲端和混合式儲存體解決方案服務文件的點，以及用於傳送、共用和備份資料的服務。
   ms.service: storage
-  ms.tgt_pltfrm: na
-  ms.devlang: na
-  ms.topic: landing-page
-  ms.date: 06/27/2018
-  ms.author: tamram
-abstract:
-  description: Azure 儲存體是受 Microsoft 管理的服務，可提供高度可用、安全、耐用、可擴充和備援的雲端儲存體。 Azure 儲存體包含 Azure Blob (物件)、Azure Data Lake Storage Gen2、Azure 檔案服務、Azure 佇列和 Azure 資料表。 了解如何透過我們的快速入門及教學課程，在應用程式中運用 Azure 儲存體。
-sections:
-  - title: 5 分鐘快速入門
+  ms.topic: hub-page
+  author: twooley
+  ms.author: twooley
+  ms.date: 05/01/2020
+  ms.openlocfilehash: f4428556c33bc476b21932034fa43b020f9e779d
+  ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 05/03/2020
+  ms.locfileid: "82735023"
+highlightedContent:
+  items:
+  - title: 核心儲存體服務簡介
+    itemType: concept
+    url: /azure/storage/common/storage-introduction?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+  - title: 深入了解儲存體帳戶類型
+    itemType: concept
+    url: /azure/storage/common/storage-account-overview?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+  - title: 建立儲存體帳戶
+    itemType: how-to-guide
+    url: /azure/storage/common/storage-account-create?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+  - title: 深入了解資料備援
+    itemType: concept
+    url: /azure/storage/common/storage-redundancy?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+  - title: 將資料傳輸至 Azure
+    itemType: concept
+    url: /azure/storage/common/storage-choose-data-transfer-solution?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+additionalContent:
+  sections:
+  - title: 雲端儲存空間解決方案
     items:
-      - type: paragraph
-        text: 探索這些快速入門，了解如何使用 Azure 儲存體。
-      - type: table
-        style: dataMatrix
-        columns:
-          - image:
-              src: media/index/portal.svg
-              text: 入口網站
-          - image:
-              src: media/index/logo_powershell.svg
-              text: Powershell
-          - image:
-              src: media/index/cli.svg
-              text: Azure CLI
-          - image:
-              src: media/index/logo_net.svg
-          - image:
-              src: media/index/logo_java.svg
-          - image:
-              src: media/index/logo_python.svg
-          - image:
-              src: media/index/logo_nodejs.svg
-        rows:
-          - title: 建立儲存體帳戶
-            values:
-              - href: /azure/storage/common/storage-quickstart-create-account?tabs=portal
-              - href: /azure/storage/common/storage-quickstart-create-account?tabs=azure-powershell
-              - href: /azure/storage/common/storage-quickstart-create-account?tabs=azure-cli
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-          - title: Blob 快速入門
-            values:
-              - href: /azure/storage/blobs/storage-quickstart-blobs-portal
-              - href: /azure/storage/blobs/storage-quickstart-blobs-powershell
-              - href: /azure/storage/blobs/storage-quickstart-blobs-cli
-              - href: /azure/storage/blobs/storage-quickstart-blobs-dotnet
-              - href: /azure/storage/blobs/storage-quickstart-blobs-java
-              - href: /azure/storage/blobs/storage-quickstart-blobs-python
-              - href: /azure/storage/blobs/storage-quickstart-blobs-nodejs
-          - title: Data Lake Storage Gen2
-            values:
-              - href: /azure/storage/blobs/data-lake-storage-quickstart-create-account
-              - href: /azure/storage/blobs/data-lake-storage-quickstart-create-account
-              - href: /azure/storage/blobs/data-lake-storage-quickstart-create-account
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-  - title: 逐步教學課程
+    - title: 應用程式的物件儲存體
+      links:
+      - url: /azure/storage/blobs/storage-blobs-introduction
+        text: 深入了解非結構化資料的儲存體 (Blob 儲存體)
+      - url: /rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs
+        text: 了解區塊、附加和分頁 Blob
+      - url: /azure/storage/blobs/
+        text: 更多資訊 >
+    - title: 適用於巨量資料分析的儲存體
+      links:
+      - url: /azure/storage/blobs/data-lake-storage-introduction
+        text: 了解企業資料湖的儲存體 (Data Lake Storage)
+      - url: /azure/storage/blobs/data-lake-storage-data-scenarios
+        text: 了解處理巨量資料的選項和工具
+    - title: 雲端裝載的檔案共用
+      links:
+      - url: /azure/storage/files/storage-files-introduction
+        text: 使用核心 Azure 儲存體平台提供的檔案共用 (Azure 檔案儲存體)
+      - url: /azure/azure-netapp-files/azure-netapp-files-introduction
+        text: 使用 NetApp ONTAP 提供的磁碟區 (Azure NetApp Files)
+    - title: IaaS 工作負載的磁碟儲存體
+      links:
+      - url: /azure/virtual-machines/windows/managed-disks-overview
+        text: 深入了解適用於 Azure VM 的區塊層級存放磁碟區
+      - url: /azure/virtual-machines/windows/disks-types
+        text: 了解可用的磁碟類型
+      - url: /azure/virtual-machines/windows/attach-managed-disk-portal
+        text: 將新磁碟新增至 VM - Windows
+      - url: /azure/virtual-machines/linux/attach-disk-portal
+        text: 將資料磁碟附加至 VM - Linux
+    - title: 用於非同步訊息佇列的儲存體
+      links:
+      - url: /azure/storage/queues/storage-queues-introduction
+        text: 深入了解佇列的 Azure 儲存體解決方案 (佇列儲存體)
+      - url: /azure/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted
+        text: 佇列儲存體和服務匯流排佇列的比較
+      - url: /azure/storage/queues/
+        text: 更多資訊 >
+    - title: 儲存結構化 NoSQL 資料
+      links:
+      - url: /azure/storage/tables/table-storage-overview
+        text: 將結構化 NoSQL 資料儲存在雲端 (資料表儲存體和 Cosmos DB)
+      - url: /azure/cosmos-db/table-support
+        text: 資料表儲存體和 Cosmos DB 資料表 API 的比較
+      - url: /azure/storage/tables/
+        text: 更多資訊 >
+  - title: 混合式儲存體解決方案
     items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Blob
-            html: <p>在雲端上傳和處理映像資料</p><ul><li><a href="/azure/storage/blobs/storage-upload-process-images">在雲端上傳和擷取映像資料</a></li><li><a href="/azure/event-grid/resize-images-on-storage-blob-upload-event?toc=%2fazure%2fstorage%2fblobs%2ftoc.json">觸發 Azure Functions 來處理 Blob</a></li><li><a href="/azure/storage/blobs/storage-secure-access-application">保護應用程式資料</a></li><li><a href="/azure/storage/blobs/storage-monitor-troubleshoot-storage-application">進行儲存體的監視和疑難排解</a></li></ul><p>針對高可用性設計應用程式</p><ul><li><a href="/azure/storage/blobs/storage-create-geo-redundant-storage">讓您的應用程式資料保持高可用性</a></li><li><a href="/azure/storage/blobs/storage-simulate-failure-ragrs-account-app">模擬存取讀取權限備援儲存體時失敗</a></li></ul><p><a href="/azure/storage/blobs/storage-unstructured-search">搜尋 Azure 儲存體中的非結構化資料</a></p>
-          - title: Data Lake Storage Gen2
-            html: <p><a href="/azure/storage/blobs/data-lake-storage-handle-data-using-databricks">使用 Azure Databrick 擷取、轉換和載入資料</a></p><p><a href="/azure/storage/blobs/data-lake-storage-use-databricks-spark">使用 Spark 以 DataBricks 存取 Azure Data Lake Storage Gen2 資料</a></p><p><a href="/azure/storage/blobs/data-lake-storage-tutorial-extract-transform-load-hive">使用 Azure HDInsight 上的 Apache Hive 來擷取、轉換和載入資料</a></p>
-  - title: 範例
+    - title: 將內部部署檔案共用擴充至雲端
+      links:
+      - url: /azure/storage/files/storage-sync-files-planning
+        text: 同步處理 Azure 檔案共用與 Windows 檔案伺服器 (Azure FileSync)
+      - url: /azure/storage/files/storage-sync-files-deployment-guide
+        text: 部署 Azure 檔案同步
+      - url: /azure/storage/files/
+        text: 更多資訊 >
+    - title: 線上資料傳輸 (內部部署至 Azure)
+      links:
+      - url: /azure/databox-online/data-box-gateway-overview
+        text: 順暢地將資料傳輸至 Azure (資料箱閘道)
+      - url: /azure/databox-online/data-box-edge-overview
+        text: 傳輸至 Azure 之前對資料進行本機處理 (Azure Stack Edge)
+      - url: /azure/databox-online/
+        text: 更多資訊 >
+    - title: 用於高效能運算的快取 (HPC) 工作負載
+      links:
+      - url: /azure/hpc-cache/hpc-cache-overview
+        text: 使用完全受控的檔案快取服務 (Azure HPC Cache)
+      - url: /azure/avere-vfxt/avere-vfxt-overview
+        text: 快取 Azure 中的內部部署 NAS (Avere vFXT for Azure)
+      - url: /azure/fxt-edge-filer/fxt-overview
+        text: 部署內部部署快取設備 (Azure FXT Edge Filer)
+  - title: 資料作業
     items:
-      - type: paragraph
-        text: 尋找適合一般管理工作的指令碼。
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: '.NET &#58; <a href="https://azure.microsoft.com/resources/samples/?service=storage&term=blob&sort=0&platform=dotnet">Blob</a> | <a     href="https://azure.microsoft.com/resources/samples/?service=storage&term=file&sort=0&platform=dotnet">檔案</a> | <a href="https://azure.microsoft.com/resources/samples/?service=storage&term=queue&sort=0&platform=dotnet">佇列</a>'
-          - html: 'Java &#58; <a href="https://azure.microsoft.com/resources/samples/?service=storage&term=blob&sort=0&platform=java">Blob</a> | <a href="https://azure.microsoft.com/resources/samples/?service=storage&term=file&sort=0&platform=java">檔案</a> | <a href="https://azure.microsoft.com/resources/samples/?service=storage&term=queue&sort=0&platform=java">佇列</a>'
-          - html: <a href="/azure/storage/blobs/storage-samples-blobs-powershell">Azure PowerShell</a>
-          - html: <a href="/azure/storage/blobs/storage-samples-blobs-cli">Azure CLI</a>
-  - title: 透過 Microsoft Learn 增進您的技巧
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Azure 中的資料簡介
-            href: /learn/modules/intro-to-data-in-azure/
-            image:
-              src: /learn/achievements/intro-to-data-in-azure.svg
-              href: //learn/modules/intro-to-data-in-azure/
-          - title: "\_在 Azure 中選擇資料儲存方法"
-            href: /learn/modules/choose-storage-approach-in-azure/
-            image:
-              src: /learn/achievements/choose-storage-approach-in-azure.svg
-              href: /learn/modules/choose-storage-approach-in-azure/
-          - title: 建立 Azure 儲存體帳戶
-            href: /learn/modules/create-azure-storage-account/
-            image:
-              src: /learn/achievements/create-azure-storage-account.svg
-              href: /learn/modules/create-azure-storage-account/
-      - type: paragraph
-        text: <a href="/learn/browse/?products=azure-storage">更多互動式學習...</a>
-  - title: 免費 Pluralsight 影片訓練
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: 在 Azure 上利用 .NET 進行開發
-            href: 'https://app.pluralsight.com/library/courses/developing-dotnet-microsoft-azure-getting-started/table-of-contents'
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
-              href: 'https://app.pluralsight.com/library/courses/developing-dotnet-microsoft-azure-getting-started/table-of-contents'
-          - title: 在 Azure 上利用 Node.js 進行開發
-            href: 'https://app.pluralsight.com/library/courses/developing-nodejs-microsoft-azure-getting-started/table-of-contents'
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
-              href: 'https://app.pluralsight.com/library/courses/developing-nodejs-microsoft-azure-getting-started/table-of-contents'
-  - title: 參考
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: 命令列
-            html: <p><a href="/powershell/storage">PowerShell</a></p><p><a href="/cli/azure/storage">Azure CLI</a></p>
-          - title: Languages
-            html: '<p><a href="/dotnet/api/overview/azure/storage/client?view=azure-dotnet">.NET</a></p><p><a href="/java/api/overview/azure/storage/client?view=azure-java-stable">Java</a></p><p><a href="/javascript/api/overview/azure/storage?view=azure-node-latest">Node.js</a></p><p><a href="/python/api/overview/azure/storage">Python</a></p><p><a href="https://azure.github.io/azure-storage-php/">PHP</a></p><p><a href="https://azure.github.io/azure-storage-ruby">Ruby</a></p><p><a href="https://azure.github.io/azure-storage-cpp">C++</a></p><p><a href="https://github.com/Azure/azure-storage-ios">iOS</a></p><p><a href="https://azure.github.io/azure-storage-android">Android</a></p>'
-          - title: REST
-            html: <p><a href="/rest/api/storageservices">Blob、佇列、資料表和檔案 API</a></p><p><a href="/rest/api/storagerp">儲存體資源提供者 API</a></p><p><a href="/rest/api/storageimportexport">匯入/匯出服務 API</a></p>
+    - title: 離線大量轉送至 Azure
+      links:
+      - url: /azure/databox/data-box-disk-overview
+        text: 傳輸 < 40 TB 的資料 (資料箱磁碟)
+      - url: /azure/databox/data-box-overview
+        text: 傳輸 40 - 500 TB 的資料 (資料箱)
+      - url: /azure/databox/data-box-heavy-overview
+        text: 傳輸 > 500 TB 的資料 (Data Box Heavy)
+      - url: /azure/databox/
+        text: 更多資訊 >
+    - title: 傳輸小型資料集 (線上)
+      links:
+      - url: /azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        text: 使用 AzCopy 命令列工具
+      - url: /azure/storage/blobs/storage-quickstart-blobs-storage-explorer
+        text: 使用 Azure 儲存體總管 GUI 型工具
+    - title: 控制成本
+      links:
+      - url: /azure/storage/blobs/storage-blob-storage-tiers
+        text: 以符合成本效益的方式來分層 Blob 資料 (經常性存取層、非經常性存取層、封存存取層)
+    - title: 共用您的資料
+      links:
+      - url: /azure/data-share/
+        text: 與客戶及合作夥伴共用資料 (Azure Data Share)
+      - url: /azure/data-share/supported-data-stores
+        text: 用於共用的支援資料存放區
+      - url: /azure/data-share/
+        text: 更多資訊 >
+    - title: 備份資料
+      links:
+      - url: /azure/backup/quick-backup-vm-portal
+        text: 備份 VM (Azure 備份)
+      - url: /azure/backup/tutorial-backup-azure-files
+        text: 備份 Azure 檔案共用
+      - url: /azure/backup/
+        text: 更多資訊 >

@@ -3,23 +3,23 @@ title: 使用 Azure CDN 的大型檔案下載最佳化
 description: 本文說明如何將大型檔案下載最佳化。
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/01/2018
-ms.author: magattus
-ms.openlocfilehash: 9793348b47763e6de10992b9a8a4606fc532cc4d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: allensu
+ms.openlocfilehash: 0fb136b6c37c8ef14f85455431fea80099088936
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60636730"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206694"
 ---
 # <a name="large-file-download-optimization-with-azure-cdn"></a>使用 Azure CDN 的大型檔案下載最佳化
 
@@ -83,11 +83,11 @@ CDN 會在收到任何區塊時即予以快取。 不必快取 CDN 快取上的�
 
 您可以設定 **Azure CDN Standard from Akamai** 端點，以透過 Azure 入口網站將大型檔案的傳遞最佳化。 使用 REST API 或任何用戶端 SDK 也都能達到相同目的。 下列步驟示範 **Azure CDN Standard from Akamai** 設定檔透過 Azure 入口網站執行的程序：
 
-1. 若要新增端點，請在 Akamai 的 [CDN 設定檔] 頁面上選取 [端點]。
+1. 若要新增端點，請在 Akamai 的 [CDN 設定檔]**** 頁面上選取 [端點]****。
 
     ![新增端點](./media/cdn-large-file-optimization/cdn-new-akamai-endpoint.png)    
  
-2. 在 [最佳化對象] 下拉式清單中，選取 [下載大型檔案]。
+2. 在 [最佳化對象]**** 下拉式清單中，選取 [下載大型檔案]****。
 
     ![已選取大型檔案最佳化](./media/cdn-large-file-optimization/cdn-large-file-select.png)
 
@@ -104,14 +104,13 @@ CDN 會在收到任何區塊時即予以快取。 不必快取 CDN 快取上的�
 
 CDN 會在收到任何區塊時即予以快取。 不必快取 CDN 快取上的整個檔案。 CDN 快取會提供後續的檔案或位元組範圍要求 。 如果不是在 CDN 快取所有的區塊，就會使用預先擷取向原始伺服器要求區塊。 此最佳化依賴原始伺服器的功能來支援位元組範圍的要求；如果來源伺服器不支援位元組範圍要求，這個最佳化則無效。
 
-### <a name="caching"></a>快取
+### <a name="caching"></a>Caching
 大型檔案最佳化會使用不同的預設從一般 Web 傳遞快取逾期時間。 它會根據 HTTP 回應碼來區分正向快取與負向快取。 如果原始伺服器透過回應中的 Cache-control 或 Expires 標頭指定到期時間，則 CDN 會接受該值。 當原始伺服器未指定，而且檔案符合此最佳化類型的類型和大小條件時，CDN 會使用預設值進行大型檔案最佳化。 否則，CDN 會使用預設值進行一般 Web 傳遞。
 
-
-|    | 一般 Web | 大型檔案最佳化 
+| Caching  | 一般 Web | 大型檔案最佳化 
 --- | --- | --- 
-Caching：Positive <br> HTTP 200、203、300、 <br> 301、302 和 410 | 7 天 |1 天  
-Caching：Neutral <br> HTTP 204、305、404 <br> 和 405 | None | 1 秒 
+快取：正向 <br> HTTP 200、203、300、 <br> 301、302 和 410 | 7 天 |1 日  
+快取：負向 <br> HTTP 204、305、404 <br> 和 405 | 無 | 1 秒 
 
 ### <a name="deal-with-origin-failure"></a>處理原始伺服器失敗
 

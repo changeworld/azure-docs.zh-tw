@@ -1,98 +1,172 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Azure Data Factory 文件
+summary: Azure Data Factory 是 Azure 的雲端 ETL 服務，可用於向外調整無伺服器資料整合和資料轉換。  它提供無程式碼的 UI，可用於直覺撰寫和單一虛擬管理平台的監視與管理。 您也可以將現有的 SSIS 套件平移至 Azure，並在 ADF 中以完全相容的方式執行。 SSIS Integration Runtime 提供完全受控的服務，因此您不必擔心基礎結構管理。
 metadata:
-  title: Azure Data Factory 文件 - 教學課程和 API 參考 | Microsoft Docs
-  description: 了解如何使用 Data Factory 來設定內部部署和雲端來源的雙向自動化資料管線，以便移動和處理資料以供分析。
+  title: Azure Data Factory 文件
+  description: 了解如何使用 Data Factory (雲端資料整合服務)，將資料儲存、移動及處理服務組合成自動化資料管線。 教學課程和其他文件會示範如何設定和管理資料管線，以及如何移動和轉換資料以供分析。
   services: data-factory
-  author: sharonlo101
-  ms.author: shlo
-  manager: craigg
   ms.service: data-factory
-  ms.tgt_pltfrm: na
-  ms.topic: overview
-  ms.date: 08/06/2018
-abstract:
-  description: 了解如何使用 Data Factory (雲端資料整合服務)，將資料儲存、移動及處理服務組合成自動化資料管線。 教學課程和其他文件會示範如何設定和管理資料管線，以及如何移動和轉換資料以供分析。 <p>如果您使用 Data Factory 服務 V1 版，請參閱 <a href=/azure/data-factory/v1/data-factory-introduction>V1 文件</a>。</p>
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: media/index/video.png
-      width: 250
-    title: '新式雲端資料整合的新功能 (1:19:22)'
-    href: 'https://channel9.msdn.com/Events/Build/2018/BRK2204/player'
-    width: 250
-sections:
-  - title: 5 分鐘快速入門
-    items:
-      - type: paragraph
-        text: 了解如何建立 Data Factory 管線來移動資料，並透過下列其中一種快速入門來處理資料：
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: /azure/data-factory/media/index/portal.svg
-            text: Data Factory UI
-            href: /azure/data-factory/quickstart-create-data-factory-portal
-          - image:
-              src: /azure/data-factory/media/index/copy-data-tool.png
-            text: 複製資料工具
-            href: /azure/data-factory/quickstart-create-data-factory-copy-data-tool
-          - image:
-              src: /azure/data-factory/media/index/logo_powershell.svg
-            text: Azure PowerShell
-            href: /azure/data-factory/quickstart-create-data-factory-powershell
-          - image:
-              src: /azure/data-factory/media/index/logo_net.svg
-            text: .NET
-            href: /azure/data-factory/quickstart-create-data-factory-dot-net
-          - image:
-              src: /azure/data-factory/media/index/logo_python.svg
-            text: Python
-            href: /azure/data-factory/quickstart-create-data-factory-python
-          - image:
-              src: /azure/data-factory/media/index/logo_rest.svg
-            text: REST
-            href: /azure/data-factory/quickstart-create-data-factory-rest-api
-          - image:
-              src: /azure/data-factory/media/index/logo_azure_resource_manager.svg
-            text: Resource Manager 範本
-            href: /azure/data-factory/quickstart-create-data-factory-resource-manager-template
-  - title: 逐步教學課程
-    items:
-      - type: paragraph
-        text: 了解如何建立和監視資料處理站：
-      - type: list
-        style: unordered
-        items:
-          - html: 在雲端中複製資料 - <a href="/azure/data-factory/tutorial-copy-data-tool">複製資料工具</a> | <a href="/azure/data-factory/tutorial-copy-data-portal">Data Factory UI</a> | <a href="/azure/data-factory/tutorial-copy-data-dot-net">.NET</a>
-          - html: 將內部部署資料複製到雲端 - <a href="/azure/data-factory/tutorial-hybrid-copy-data-tool">複製資料工具 | <a href="/azure/data-factory/tutorial-hybrid-copy-portal">Data Factory UI</a> | <a href="/azure/data-factory/tutorial-hybrid-copy-powershell">Azure PowerShell</a>
-          - html: 大量複製資料 - <a href="/azure/data-factory/tutorial-bulk-copy-portal">Data Factory UI</a> | <a href="/azure/data-factory/tutorial-bulk-copy">Azure PowerShell</a>
-          - html: 以累加方式複製資料 - <a href="/azure/data-factory/tutorial-incremental-copy-portal">Data Factory UI</a> | <a href="/azure/data-factory/tutorial-incremental-copy-powershell">Azure PowerShell</a>
-          - html: 使用 Spark 轉換雲端中的資料 - <a href="/azure/data-factory/tutorial-transform-data-spark-portal">Data Factory UI</a> | <a href="/azure/data-factory/tutorial-transform-data-spark-powershell">Azure PowerShell</a>
-          - html: 在虛擬網路中轉換資料 - <a href="/azure/data-factory/tutorial-transform-data-hive-virtual-network-portal">Data Factory UI</a> | <a href="/azure/data-factory/tutorial-transform-data-hive-virtual-network">Azure PowerShell</a>
-          - html: 新增分支和鏈結 - <a href="/azure/data-factory/tutorial-control-flow-portal">Data Factory UI</a> | <a href="/azure/data-factory/tutorial-control-flow">.NET</a>
-          - html: 在 Azure 中執行 SSIS 套件 - <a href="/azure/data-factory/tutorial-create-azure-ssis-runtime-portal">Data Factory UI</a> | <a href="/azure/data-factory/tutorial-deploy-ssis-packages-azure">Azure PowerShell</a>
-          - html: Azure Data Factory 中的持續整合和傳遞 (CI/CD) - <a href="/azure/data-factory/continuous-integration-deployment">Data Factory UI</a>
-  - title: 範例
-    items:
-      - type: paragraph
-        text: 使用下列範例來使用 Data Factory
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/data-factory/samples-powershell">PowerShell</a>
-  - title: 參考
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: 命令列
-            html: <p><a href="/powershell/module/az.datafactory/">Azure PowerShell</a></p>
-          - title: 語言
-            html: <p><a href="/dotnet/api/microsoft.azure.management.datafactory">.NET</a></p><p><a href="/python/api/overview/azure/datafactory?view=azure-python">Python</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/datafactory">REST API</a></p>
+  ms.topic: landing-page
+  ms.collection: collection
+  author: markingmyname
+  ms.author: maghan
+  ms.date: 10/02/2019
+  ms.openlocfilehash: fa9decd8a0b7424d040cab9dcd46b919bb4d7df5
+  ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 06/20/2020
+  ms.locfileid: "85116225"
+landingContent:
+- title: 關於 Azure Data Factory
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure 資料處理站是什麼？
+      url: /azure/data-factory/introduction
+  - linkListType: reference
+    links:
+    - text: 白皮書
+      url: /azure/data-factory/whitepapers
+    - text: 定價
+      url: https://azure.microsoft.com/pricing/details/data-factory/
+    - text: 透過範例了解定價
+      url: /azure/data-factory/pricing-concepts
+    - text: 最近的功能更新
+      url: https://azure.microsoft.com/updates/?tag=data-factory
+    - text: ADF 部落格
+      url: https://techcommunity.microsoft.com/t5/Azure-Data-Factory/bg-p/AzureDataFactoryBlog
+    - text: 要求功能
+      url: https://feedback.azure.com/forums/270578-azure-data-factory
+- title: 開始使用
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Azure Data Factory UI
+      url: /azure/data-factory/quickstart-create-data-factory-portal
+    - text: 複製資料工具
+      url: /azure/data-factory/quickstart-create-data-factory-copy-data-tool
+    - text: Azure PowerShell
+      url: /azure/data-factory/quickstart-create-data-factory-powershell
+    - text: .NET
+      url: /azure/data-factory/quickstart-create-data-factory-dot-net
+    - text: Python
+      url: /azure/data-factory/quickstart-create-data-factory-python
+    - text: REST
+      url: /azure/data-factory/quickstart-create-data-factory-rest-api
+    - text: Resource Manager 範本
+      url: /azure/data-factory/quickstart-create-data-factory-resource-manager-template
+- title: 資料移動
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 複製活動概觀
+      url: /azure/data-factory/copy-activity-overview
+    - text: 複製效能微調
+      url: /azure/data-factory/copy-activity-performance
+  - linkListType: overview
+    links:
+    - text: 資料湖和資料倉儲移轉
+      url: /azure/data-factory/data-migration-guidance-overview
+  - linkListType: tutorial
+    links:
+    - text: 複製雲端中的資料
+      url: /azure/data-factory/tutorial-copy-data-tool
+    - text: 將內部部署資料複製到雲端
+      url: /azure/data-factory/tutorial-hybrid-copy-data-tool
+    - text: 複製大量資料
+      url: /azure/data-factory/tutorial-bulk-copy-portal
+    - text: 以累加方式複製資料
+      url: /azure/data-factory/tutorial-incremental-copy-overview
+    - text: 載入 ADLS Gen2
+      url: /azure/data-factory/load-azure-data-lake-storage-gen2
+    - text: 載入 SQL DW
+      url: /azure/data-factory/load-azure-sql-data-warehouse
+    - text: 載入 SAP BW
+      url: /azure/data-factory/load-sap-bw-data
+- title: 資料轉換
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 什麼是對應資料流程？
+      url: /azure/data-factory/concepts-data-flow-overview
+  - linkListType: tutorial
+    links:
+    - text: 建立資料流程
+      url: /azure/data-factory/data-flow-create
+    - text: 資料流程運算式語言
+      url: /azure/data-factory/data-flow-expression-functions
+    - text: 偵錯資料流程
+      url: /azure/data-factory/concepts-data-flow-debug-mode
+    - text: 在管線內執行資料流程活動
+      url: /azure/data-factory/control-flow-execute-data-flow-activity
+    - text: 監視資料流程
+      url: /azure/data-factory/concepts-data-flow-monitoring
+    - text: 資料流程效能
+      url: /azure/data-factory/concepts-data-flow-performance
+- title: 平移 SSIS 套件
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 將 SSIS 套件遷移至 Azure SQL 受控執行個體
+      url: /azure/data-factory/scenario-ssis-migration-ssisdb-mi
+  - linkListType: tutorial
+    links:
+    - text: 在 Azure 中執行 SSIS 套件
+      url: /azure/data-factory/tutorial-deploy-ssis-packages-azure
+  - linkListType: how-to-guide
+    links:
+    - text: 佈建 SSIS 整合執行階段
+      url: /azure/data-factory/create-azure-ssis-integration-runtime
+    - text: 將-SSIS IR 加入虛擬網路
+      url: /azure/data-factory/join-azure-ssis-integration-runtime-virtual-network
+    - text: 使用 Execute SSIS Package 活動執行 SSIS 套件
+      url: /azure/data-factory/how-to-invoke-ssis-package-ssis-activity
+    - text: 排程 SSIS 整合執行階段
+      url: /azure/data-factory/how-to-schedule-azure-ssis-integration-runtime
+    - text: 適用於 SSIS IR 的自訂設定
+      url: /azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup
+    - text: 安裝適用於 SSIS IR 的授權元件
+      url: /azure/data-factory/how-to-develop-azure-ssis-ir-licensed-components
+- title: 安全性
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 資料移動安全性考量
+      url: /azure/data-factory/data-movement-security-considerations
+    - text: 適用於資料處理站的受控識別
+      url: /azure/data-factory/data-factory-service-identity
+    - text: 在 Azure Key Vault 中儲存認證
+      url: /azure/data-factory/store-credentials-in-key-vault
+- title: 撰寫、監視和管理
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 以視覺化方式監視 Azure 資料處理站
+      url: /azure/data-factory/author-visually
+    - text: 原始程式碼控制
+      url: /azure/data-factory/source-control
+    - text: 持續整合和傳遞
+      url: /azure/data-factory/continuous-integration-deployment
+    - text: 反覆式開發法與偵錯
+      url: /azure/data-factory/iterative-development-debugging
+    - text: 以視覺化方式監視
+      url: /azure/data-factory/monitor-visually
+    - text: 使用 Azure 監視器進行監視
+      url: /azure/data-factory/monitor-using-azure-monitor
+    - text: 使用 SDK 進行監視
+      url: /azure/data-factory/monitor-programmatically
+- title: Languages
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure PowerShell
+      url: https://docs.microsoft.com/powershell/module/az.datafactory/
+    - text: .NET
+      url: https://docs.microsoft.com/dotnet/api/microsoft.azure.management.datafactory/
+    - text: Python
+      url: https://docs.microsoft.com/python/api/overview/azure/datafactory?view=azure-python
+    - text: REST
+      url: https://docs.microsoft.com/rest/api/datafactory/
+    - text: Resource Manager 範本
+      url: https://docs.microsoft.com/azure/templates/microsoft.datafactory/allversions

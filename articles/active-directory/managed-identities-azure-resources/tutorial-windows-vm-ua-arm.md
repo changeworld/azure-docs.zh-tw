@@ -1,26 +1,26 @@
 ---
-title: 使用 Windows VM 使用者指派的受控識別來存取 Azure Resource Manager
+title: 教學課程`:` 使用受控識別來存取 Azure Resource Manager - Windows - Azure AD
 description: 本教學課程會逐步引導您在 Windows VM 上利用使用者指派的受控識別，以存取 Azure Resource Manager。
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
 manager: daveba
-editor: daveba
+editor: ''
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/10/2018
+ms.date: 01/14/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6fc7e13cf5ea3991f81d53edcabe0980d799cb0
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: ec9956f0c5d834633646938da19f03e5467a9f6d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59520858"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "75977842"
 ---
 # <a name="tutorial-use-a-user-assigned-managed-identity-on-a-windows-vm-to-access-azure-resource-manager"></a>教學課程：在 Windows VM 上利用使用者指派的受控識別來存取 Azure Resource Manager
 
@@ -39,7 +39,7 @@ ms.locfileid: "59520858"
 
 [!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
@@ -50,13 +50,22 @@ ms.locfileid: "59520858"
 - 若要執行本教學課程中所需的資源建立和角色管理步驟，您的帳戶必須在適當的範圍 (您的訂用帳戶或資源群組) 上具備「擁有者」權限。 如果您需要角色指派的協助，請參閱[使用角色型存取控制來管理 Azure 訂用帳戶資源的存取權](/azure/role-based-access-control/role-assignments-portal)。
 - [安裝最新版的 Azure PowerShell 模組](/powershell/azure/install-az-ps)。 
 - 執行 `Connect-AzAccount` 來建立與 Azure 的連線。
-- 安裝[最新版的 PowerShellGet](/powershell/gallery/installing-psget#for-systems-with-powershell-50-or-newer-you-can-install-the-latest-powershellget)。
+- 安裝[最新版的 PowerShellGet](/powershell/scripting/gallery/installing-psget#for-systems-with-powershell-50-or-newer-you-can-install-the-latest-powershellget)。
 - 執行 `Install-Module -Name PowerShellGet -AllowPrerelease` 以取得 `PowerShellGet` 模組的搶鮮版 (執行此命令以安裝 `Az.ManagedServiceIdentity` 模組後，您可能需要以 `Exit` 退出目前的 PowerShell 工作階段)。
 - 執行 `Install-Module -Name Az.ManagedServiceIdentity -AllowPrerelease` 以安裝 `Az.ManagedServiceIdentity` 模組的發行前版本，以執行本文中由使用者指派的身分識別作業。
 
-## <a name="create-a-user-assigned-identity"></a>建立使用者指派的身分識別
 
-使用者指派的身分識別會以獨立 Azure 資源的形式建立。 Azure 會使用 [New-AzUserAssignedIdentity](/powershell/module/az.managedserviceidentity/get-azuserassignedidentity)，在您的 Azure AD 租用戶中建立一個可指派給一或多個 Azure 服務執行個體的身分識別。
+## <a name="enable"></a>啟用
+
+針對以使用者指派身分識別為基礎的案例，您需要執行下列步驟：
+
+- 建立身分識別
+ 
+- 指派新建立的身分識別
+
+### <a name="create-identity"></a>建立身分識別
+
+本節將說明如何建立使用者指派的身分識別。 使用者指派的身分識別會以獨立 Azure 資源的形式建立。 Azure 會使用 [New-AzUserAssignedIdentity](/powershell/module/az.managedserviceidentity/get-azuserassignedidentity)，在您的 Azure AD 租用戶中建立一個可指派給一或多個 Azure 服務執行個體的身分識別。
 
 [!INCLUDE [ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
@@ -80,18 +89,18 @@ Type: Microsoft.ManagedIdentity/userAssignedIdentities
 }
 ```
 
-## <a name="assign-the-user-assigned-identity-to-a-windows-vm"></a>將使用者指派的身分識別指派給 Windows VM
+### <a name="assign-identity"></a>指派身分識別
 
-使用者指派的身分識別可以由多個 Azure 資源上的用戶端使用。 請使用下列命令，將使用者指派的身分識別指派給單一虛擬機器。 針對 `-IdentityID` 參數，請使用前一個步驟中所傳回的 `Id` 屬性。
+本節將說明如何將使用者指派的身分識別指派給 Windows VM。 使用者指派的身分識別可以由多個 Azure 資源上的用戶端使用。 請使用下列命令，將使用者指派的身分識別指派給單一虛擬機器。 針對 `-IdentityID` 參數，請使用前一個步驟中所傳回的 `Id` 屬性。
 
 ```azurepowershell-interactive
 $vm = Get-AzVM -ResourceGroupName myResourceGroup -Name myVM
 Update-AzVM -ResourceGroupName TestRG -VM $vm -IdentityType "UserAssigned" -IdentityID "/subscriptions/<SUBSCRIPTIONID>/resourcegroups/myResourceGroupVM/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1"
 ```
 
-## <a name="grant-your-user-assigned-identity-access-to-a-resource-group-in-azure-resource-manager"></a>在 Azure Resource Manager 中，將存取資源群組的權利，授予使用者指派的身分識別 
+## <a name="grant-access"></a>授與存取權 
 
-適用於 Azure 資源的受控識別會提供身分識別，可供程式碼用來要求存取權杖，以向支援 Azure AD 驗證的資源 API 進行驗證。 在本教學課程中，您的程式碼將存取 Azure Resource Manager API。 
+本節將說明如何在 Azure Resource Manager 中，將存取資源群組的權利，授予使用者指派的身分識別。 適用於 Azure 資源的受控識別會提供身分識別，可供程式碼用來要求存取權杖，以向支援 Azure AD 驗證的資源 API 進行驗證。 在本教學課程中，您的程式碼將存取 Azure Resource Manager API。 
 
 您必須先將身分識別存取權授與 Azure Resource Manager 中的資源，您的程式碼才能存取 API。 在此情況下，是包含 VM 的資源群組。 將 `<SUBSCRIPTION ID>` 的值更新為適用於環境的值。
 
@@ -114,19 +123,21 @@ ObjectType: ServicePrincipal
 CanDelegate: False
 ```
 
-## <a name="get-an-access-token-using-the-vms-identity-and-use-it-to-call-resource-manager"></a>使用 VM 身分識別取得存取權杖，並使用它來呼叫 Resource Manager 
+## <a name="access-data"></a>存取資料
+
+### <a name="get-an-access-token"></a>取得存取權杖 
 
 其餘課程要從稍早建立的虛擬機器繼續進行。
 
 1. 在 [https://portal.azure.com](https://portal.azure.com) 登入 Azure 入口網站
 
-2. 在入口網站中，瀏覽至 [虛擬機器]，並移至您的 Windows 虛擬機器，在 [概觀]中按一下 [連線]。
+2. 在入口網站中，瀏覽至 [虛擬機器]  ，並移至您的 Windows 虛擬機器，在 [概觀]  中按一下 [連線]  。
 
 3. 輸入您建立 Windows VM 時使用的**使用者名稱**和**密碼**。
 
 4. 現在您已經建立虛擬機器的**遠端桌面連線**，請在遠端工作階段中開啟 **PowerShell**。
 
-5. 使用 PowerShell 的 `Invoke-WebRequest`，向 Azure 資源端點的本機受控識別提出要求，以取得 Azure Resource Manager 的存取權杖。  `client_id` 值就是您在[建立使用者指派的受控識別](#create-a-user-assigned-identity)時所傳回的值。
+5. 使用 PowerShell 的 `Invoke-WebRequest`，向 Azure 資源端點的本機受控識別提出要求，以取得 Azure Resource Manager 的存取權杖。  `client_id` 值就是您在建立使用者指派受控識別時所傳回的值。
 
     ```azurepowershell
     $response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&client_id=af825a31-b0e0-471f-baea-96de555632f9&resource=https://management.azure.com/' -Method GET -Headers @{Metadata="true"}
@@ -134,7 +145,7 @@ CanDelegate: False
     $ArmToken = $content.access_token
     ```
 
-## <a name="read-the-properties-of-a-resource-group"></a>讀取資源群組的屬性
+### <a name="read-properties"></a>讀取屬性
 
 使用在先前步驟中所擷取的存取權杖來存取 Azure Resource Manager，並讀取資源群組的屬性 (您已向使用者指派的身分識別授予該資源群組的存取權)。 將 `<SUBSCRIPTION ID>` 取代為您環境的訂用帳戶識別碼。
 

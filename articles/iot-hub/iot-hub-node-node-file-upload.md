@@ -9,29 +9,29 @@ services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 06/28/2017
-ms.openlocfilehash: 7ad2c9dd89843a36a786eeefee8403d32027e11c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.custom: mqtt
+ms.openlocfilehash: af9743233a61e8e6d816b362d35e6a38735df35b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61443841"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81732255"
 ---
-# <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub"></a>使用 IoT 中樞將檔案從裝置上傳至雲端
+# <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-nodejs"></a>使用 IoT 中樞將檔案從裝置上傳至雲端 (Node.js)
 
 [!INCLUDE [iot-hub-file-upload-language-selector](../../includes/iot-hub-file-upload-language-selector.md)]
 
-本教學課程是以[使用 IoT 中樞傳送雲端到裝置訊息](iot-hub-node-node-c2d.md)教學課程中的程式碼來建置，示範如何使用 [IoT 中樞的檔案上傳功能](iot-hub-devguide-file-upload.md)將檔案上傳至 [Azure Blob 儲存體](../storage/index.yml)。 本教學課程說明如何：
+本教學課程是以[使用 IoT 中樞傳送雲端到裝置訊息](iot-hub-node-node-c2d.md)教學課程中的程式碼來建置，以示範如何使用 [IoT 中樞的檔案上傳功能](iot-hub-devguide-file-upload.md)將檔案上傳至 [Azure Blob 儲存體](../storage/index.yml)。 本教學課程說明如何：
 
-- 安全地將 Azure Blob URI 提供給裝置，以便上傳檔案。
-- 
-- 您可以使用 IoT 中樞檔案上傳通知來觸發在您的應用程式後端中處理此檔案。
+* 安全地將 Azure Blob URI 提供給裝置，以便上傳檔案。
 
-[開始使用 IoT 中樞](quickstart-send-telemetry-node.md)教學課程示範「IoT 中樞」的基本裝置到雲端傳訊功能。 不過，在某些情況下，您無法輕易地將裝置傳送的資料對應到 IoT 中樞接受且相對較小的裝置到雲端訊息。 例如︰
+* 您可以使用 IoT 中樞檔案上傳通知來觸發在您的應用程式後端中處理此檔案。
 
-*  包含映像的大型檔案
-*  影片
-*  取樣高頻率的震動資料
-*  某種經前置處理過的資料。
+[將遙測從裝置傳送至 IoT 中樞](quickstart-send-telemetry-node.md)快速入門會示範 IoT 中樞的基本裝置到雲端傳訊功能。 不過，在某些情況下，您無法輕易地將裝置傳送的資料對應到 IoT 中樞接受且相對較小的裝置到雲端訊息。 例如：
+
+* 包含映像的大型檔案
+* 影片
+* 取樣高頻率的震動資料
+* 某種經前置處理的資料。
 
 這些檔案通常會使用工具 (例如 [Azure Data Factory](../data-factory/introduction.md) 或 [Hadoop](../hdinsight/index.yml) 堆疊) 在雲端中進行批次處理。 當您需要從裝置上傳檔案時，您仍然可以使用安全可靠的 IoT 中樞。
 
@@ -42,13 +42,15 @@ ms.locfileid: "61443841"
 * **ReadFileUploadNotification.js**，它會接收來自 IoT 中樞的檔案上傳通知。
 
 > [!NOTE]
-> IoT 中樞透過 Azure IoT 裝置 SDK 來支援許多裝置平台和語言 (包括 C、.NET、Javascript、Python 和 Java)。 如需有關如何將裝置連接到 Azure IoT 中樞的逐步指示，請參閱 [Azure IoT 開發人員中心]。
+> IoT 中樞透過 Azure IoT 裝置 SDK 來支援許多裝置平台和語言 (包括 C、.NET、Javascript、Python 和 Java)。 如需如何將裝置連線到 Azure IoT 中樞的逐步指示，請參閱 [Azure IoT 開發人員中心]。
 
-若要完成此教學課程，您需要下列項目：
+## <a name="prerequisites"></a>必要條件
 
-* Node.js 4.0.x 版或更新版本。
+* Node.js 10.0.x 版或更新版本。 [準備開發環境](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md)描述如何在 Windows 或 Linux 上安裝本教學課程的 Node.js。
 
 * 使用中的 Azure 帳戶。 (如果您沒有帳戶，只需要幾分鐘的時間就可以建立[免費帳戶](https://azure.microsoft.com/pricing/free-trial/)。)
+
+* 請確定您的防火牆已開啟連接埠 8883。 本文中的裝置範例會使用 MQTT 通訊協定，其會透過連接埠 8883 進行通訊。 某些公司和教育網路環境可能會封鎖此連接埠。 如需此問題的詳細資訊和解決方法，請參閱[連線至 IoT 中樞 (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
 [!INCLUDE [iot-hub-associate-storage](../../includes/iot-hub-associate-storage.md)]
 
@@ -117,6 +119,12 @@ ms.locfileid: "61443841"
 
 9. 將映像檔複製到 `simulateddevice` 資料夾，並重新命名為 `myimage.png`。
 
+## <a name="get-the-iot-hub-connection-string"></a>取得 IoT 中樞連接字串
+
+在本文中，您會建立後端服務，從在[將遙測從裝置傳送至 IoT 中樞](quickstart-send-telemetry-node.md)內建立的 IoT 中樞來接收檔案上傳通知訊息。 若要接收檔案上傳通知訊息，則服務需要**服務連線**權限。 根據預設，每個 IoT 中樞都是透過授與此權限且名為**服務**的共用存取原則所建立。
+
+[!INCLUDE [iot-hub-include-find-service-connection-string](../../includes/iot-hub-include-find-service-connection-string.md)]
+
 ## <a name="receive-a-file-upload-notification"></a>接收檔案上傳通知
 
 在本節中，您要建立一個 Node.js 主控台應用程式，接收來自 IoT 中樞的檔案上傳通知訊息。
@@ -145,7 +153,7 @@ ms.locfileid: "61443841"
     var Client = require('azure-iothub').Client;
     ```
 
-5. 新增 `iothubconnectionstring` 變數，並用它來建立**用戶端**執行個體。  將 `{iothubconnectionstring}` 替換為您在＜建立 IoT 中樞＞一節中為 IoT 中樞所建立的連接字串：
+5. 新增 `iothubconnectionstring` 變數，並用它來建立**用戶端**執行個體。  將 `{iothubconnectionstring}` 預留位置值取代為先前在[取得 IoT 中樞連接字串](#get-the-iot-hub-connection-string)中複製的 IoT 中樞連接字串：
 
     ```javascript
     var connectionString = '{iothubconnectionstring}';
@@ -216,6 +224,8 @@ node SimulatedDevice.js
 
 在本教學課程中，您已學到如何使用 IoT 中樞的檔案上傳功能來簡化從裝置上傳檔案。 您可以利用下列文章繼續探索 IoT 中樞功能和案例：
 
-*  [以程式設計方式建立 IoT 中樞](iot-hub-rm-template-powershell.md)
-*  [C SDK 簡介](iot-hub-device-sdk-c-intro.md)
-*  [Azure IoT SDK](iot-hub-devguide-sdks.md)
+* [以程式設計方式建立 IoT 中樞](iot-hub-rm-template-powershell.md)
+
+* [C SDK 簡介](iot-hub-device-sdk-c-intro.md)
+
+* [Azure IoT SDK](iot-hub-devguide-sdks.md)

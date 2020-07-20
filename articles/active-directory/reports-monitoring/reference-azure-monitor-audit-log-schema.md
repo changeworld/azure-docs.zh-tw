@@ -1,6 +1,6 @@
 ---
-title: 解譯 Azure 監視器中的 Azure Active Directory 稽核記錄檔結構描述 |Microsoft Docs
-description: 描述使用 Azure 監視器中的 Azure AD 稽核記錄檔結構描述
+title: 解讀 Azure 監視器中的 Azure Active Directory audit 記錄架構 |Microsoft Docs
+description: 描述用於 Azure 監視器的 Azure AD audit 記錄架構
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -18,11 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d9f58b213e50a021651f35112a48d8f74ae59571
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60437068"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "68987947"
 ---
 # <a name="interpret-the-azure-ad-audit-logs-schema-in-azure-monitor-preview"></a>解譯 Azure 監視器中的 Azure AD 稽核記錄結構描述 (預覽)
 
@@ -147,7 +146,7 @@ ms.locfileid: "60437068"
 
 ## <a name="field-and-property-descriptions"></a>欄位與屬性描述
 
-| 欄位名稱 | 描述 |
+| 欄位名稱 | Description |
 |------------|-------------|
 | time       | 日期和時間 (UTC)。 |
 | operationName | 作業的名稱。 |
@@ -161,7 +160,7 @@ ms.locfileid: "60437068"
 | callerIpAddress | 發出要求之用戶端的 IP 位址。 | 
 | correlationId | 用戶端傳遞的選擇性 GUID。 它能協助將用戶端作業和伺服器端作業相互關聯，當您在追蹤跨服務的記錄時它會很有用。 |
 | 身分識別 | 當您發出要求時，來自出示之權杖的身分識別。 身分識別可以是使用者帳戶、系統帳戶或服務主體。 |
-| 層級 | 訊息類型。 稽核記錄的層級一律是 *Informational*。 |
+| 等級 | 訊息類型。 稽核記錄的層級一律是 *Informational*。 |
 | location | 資料中心的位置。 |
 | properties | 列出與稽核記錄相關的受支援屬性。 如需詳細資訊，請參閱下一個表格。 | 
 
@@ -174,10 +173,10 @@ ms.locfileid: "60437068"
 | 作業類型 | 類型可以是 *Add*、*Update*、*Delete*。 或 *Other*。 |
 | 目標資源類型 | 指定作業執行所在的目標資源類型。 類型可以是 *Application*、*User*、*Role*、*Policy* | 
 | 目標資源名稱 | 目標資源的名稱。 它可以是應用程式名稱、角色名稱、使用者主體名稱或服務主體名稱。 |
-| additionalTargets | 列出任何特定作業的其他內容。 例如，對於更新作業，舊的值和新的值會列在 *targetUpdatedProperties* 下。 | 
+| additionalTargets | 列出任何特定作業的其他內容。 例如，針對更新作業，舊值和新值會列在 [ *targetUpdatedProperties*] 底下。 | 
 
 ## <a name="next-steps"></a>後續步驟
 
-* [解譯 Azure 監視器中的登入記錄結構描述](reference-azure-monitor-sign-ins-log-schema.md)
+* [解讀 Azure 監視器中的登入記錄架構](reference-azure-monitor-sign-ins-log-schema.md)
 * [Azure 診斷記錄](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)
 * [常見問題集和已知問題](concept-activity-logs-azure-monitor.md#frequently-asked-questions)

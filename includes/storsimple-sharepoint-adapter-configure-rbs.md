@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: f84fe995e65d2b67aaaf4ff9acc4a6a44ce607dc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60633157"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "67174019"
 ---
 > [!NOTE]
 > 變更 StorSimple Adapter for SharePoint 的 RBS 組態時，您必須利用屬於 Domain Admins 群組的使用者帳戶登入。 此外，您必須從瀏覽器 (在和管理中心相同的主機上執行) 存取組態頁面。
@@ -17,19 +17,19 @@ ms.locfileid: "60633157"
 > 
 
 #### <a name="to-configure-rbs"></a>設定 RBS
-1. 開啟 [SharePoint 管理中心] 頁面，並瀏覽至 [系統設定] 。 
-2. 在 [Azure StorSimple] 區段中，按一下 [設定 StorSimple Adapter]。
+1. 開啟 [SharePoint 管理中心]**** 頁面，並瀏覽至 [系統設定]。 
+2. 在 [Azure StorSimple]**** 區段中，按一下 [設定 StorSimple 介面卡]****。
    
     ![設定 StorSimple Adapter](./media/storsimple-sharepoint-adapter-configure-rbs/HCS_SSASP_ConfigRBS1-include.png) 
-3. 在 [設定 StorSimple Adapter]  頁面上：
+3. 在 [設定 StorSimple 介面卡]**** 頁面上：
    
-   1. 請確定已選取 [啟用編輯路徑]  核取方塊。
+   1. 確定已選取 [啟用編輯路徑]**** 核取方塊。
    2. 在文字方塊中，輸入 BLOB 存放區的通用命名慣例 (UNC) 路徑。
       
       > [!NOTE]
       > BLOB 存放區磁碟區必須裝載在設定於 StorSimple 裝置上的 iSCSI 磁碟區。
 
-   3. 按一下每個您想要設定遠端存放的內容資料庫下方的 [啟用]  按鈕。
+   3. 在要針對遠端存放所設定的每個內容資料庫下方，按一下 [啟用]**** 按鈕。
       
       > [!NOTE]
       > BLOB 存放區必須由所有 web 前端 (WFE) 伺服器共用，而且已針對 SharePoint 伺服器陣列設定的使用者帳戶必須可存取此共用權限。
@@ -40,16 +40,16 @@ ms.locfileid: "60633157"
       
       ![設定 StorSimple Adapter 啟用停用](./media/storsimple-sharepoint-adapter-configure-rbs/HCS_ConfigureStorSimpleAdapterEnableDisableMessage-include.png)
 
-   4. 按一下 [更新]  按鈕以套用組態。 當您按一下 [更新]  按鈕時，所有 WFE 伺服器上的 RBS 組態狀態將會更新，且整個伺服器陣列將會啟用 RBS 功能。 下列訊息隨即出現。
+   4. 按一下 [更新]**** 按鈕，以套用設定。 當您按一下 [更新]**** 按鈕時，將會更新所有 WFE 伺服器上的 RBS 設定狀態，而且整個伺服器陣列將會啟用 RBS 功能。 下列訊息隨即出現。
       
       ![配接器組態訊息](./media/storsimple-sharepoint-adapter-configure-rbs/HCS_SSASP_ConfigRBS3-include.png)
       
       > [!NOTE]
-      > 如果要設定 RBS 的 SharePoint 伺服器陣列有非常大量的資料庫 (超過 200 個)，SharePoint 管理中心網頁可能會逾時。如果發生這種情況，請重新整理頁面。 這不會影響設定程序。
+      > 如果您要為具有大量資料庫（大於200）的 SharePoint 伺服器陣列設定 RBS，SharePoint 管理中心網頁可能會超時。如果發生這種情況，請重新整理頁面。 這不會影響設定程序。
 
 4. 驗證組態：
    
-   1. 登入 SharePoint 管理中心網站，並瀏覽至 [設定 StorSimple Adapter] 頁面。
+   1. 登入 SharePoint 管理中心網站，並瀏覽至 [設定 StorSimple Adapter]**** 頁面。
    2. 請檢查組態詳細資料以確定它們符合您所輸入的設定。 
 5. 確認 RBS 正確地運作：
    
@@ -113,7 +113,7 @@ ms.locfileid: "60633157"
    > [!WARNING]
    > 如果您尚未啟用 RBS，我們不建議您將內容資料庫移至 StorSimple 裝置。 這是未經過測試的設定。
    
-9. 前往下一個步驟：[設定記憶體回收](#configure-garbage-collection)。
+9. 移至下一個步驟： [設定記憶體回收](#configure-garbage-collection)。
 
 [6]: https://technet.microsoft.com/library/ff628254(v=office.15).aspx
 [7]: https://technet.microsoft.com/library/ff628255(v=office.14).aspx

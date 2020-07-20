@@ -1,34 +1,23 @@
 ---
-title: 使用 Azure Site Recovery 服務將 Azure IaaS VM 移到其他 Azure 區域 | Microsoft Docs
-description: 使用 Azure Site Recovery，將 Azure IaaS VM 從一個 Azure 區域移至另一個區域。
-services: site-recovery
+title: 使用 Azure Site Recovery 將 Azure VM 移至另一個區域
+description: 使用 Azure Site Recovery，將 Azure VM 從一個 Azure 區域移至另一個區域。
 author: rajani-janaki-ram
 ms.service: site-recovery
 ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: dc49b33fd3e6d582b31af5fe0507884e60205757
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0c7efc94bcde18e7b6ff43726602fa87641f3e76
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58078001"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130615"
 ---
-# <a name="move-azure-vms-to-another-region"></a>將 Azure VM 移動到另一個區域
+# <a name="moving-azure-vms-to-another-azure-region"></a>將 Azure VM 移至另一個 Azure 區域
 
-Azure 會隨著客戶群的增長而擴充，並新增新區域的支援以因應不斷上升的需求。 每月也都會在服務之間新增功能。 您可能想要將虛擬機器 (VM) 移至不同的區域或可用性區域中，以提高可用性。
+本文提供使用 [Azure Site Recovery](site-recovery-overview.md) 將 Azure VM 移至另一個 Azure 區域時的原因概觀和牽涉到的步驟。 
 
-本教學課程將說明您想要移動 VM 的不同案例。 它也會說明如何在目標區域中設定架構，以達到更高的可用性。 
-
-在本教學課程中，您將了解：
-
-> [!div class="checklist"]
-> 
-> * 移動 VM 的原因
-> * 一般架構
-> * 將 VM 依原狀移至目標區域
-> * 移動 VM 以提高可用性
 
 ## <a name="reasons-to-move-azure-vms"></a>移動 Azure VM 的原因
 
@@ -62,11 +51,11 @@ Azure 會隨著客戶群的增長而擴充，並新增新區域的支援以因�
 
      ![單一執行個體 VM 部署於不同層](media/move-vm-overview/regular-deployment.png)
 
-* **每層中的 VM 部署在可用性設定組間**：一層中的每個 VM 會設定於可用性設定組中。 [可用性設定組](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets)可確保您在 Azure 上部署的 VM 會分散到叢集中多個各自獨立的硬體節點。 這可確保當 Azure 內發生硬體或軟體故障時，只有 VM 子集會受到影響，而您的整體解決方案則會維持可用且正常運作。
+* **每層中的 VM 部署在可用性設定組間**：一層中的每個 VM 會設定於可用性設定組中。 [可用性設定組](../virtual-machines/windows/tutorial-availability-sets.md)可確保您在 Azure 上部署的 VM 會分散到叢集中多個各自獨立的硬體節點。 這可確保當 Azure 內發生硬體或軟體故障時，只有 VM 子集會受到影響，而您的整體解決方案則會維持可用且正常運作。
 
      ![可用性設定組間的 VM 部署](media/move-vm-overview/avset.png)
 
-* **每層中的 VM 部署在可用性區域間**：一層中的每個 VM 都會設定於[可用性設定組](https://docs.microsoft.com/azure/availability-zones/az-overview) \(機器翻譯\) 間。 Azure 區域中的可用性區域是由容錯網域和更新網域組成。 例如，如果您在 Azure 區域中建立橫跨三個區域的三個 (或更多) VM，您的 VM 會有效地分散到三個容錯網域和三個更新網域。 Azure 平台會從更新網域中辨識此分佈，以確定不會同時更新不同區域中的 VM。
+* **每層中的 VM 部署在可用性區域間**：一層中的每個 VM 都會設定於[可用性設定組](../availability-zones/az-overview.md) \(機器翻譯\) 間。 Azure 區域中的可用性區域是由容錯網域和更新網域組成。 例如，如果您在 Azure 區域中建立橫跨三個區域的三個 (或更多) VM，您的 VM 會有效地分散到三個容錯網域和三個更新網域。 Azure 平台會從更新網域中辨識此分佈，以確定不會同時更新不同區域中的 VM。
 
      ![可用性區域部署](media/move-vm-overview/zone.png)
 
@@ -92,7 +81,7 @@ Azure 會隨著客戶群的增長而擴充，並新增新區域的支援以因�
 
      ![單一執行個體 VM 部署於不同層](media/move-vm-overview/single-zone.png)
 
-* **每層中的 VM 部署在可用性設定組間**：當您使用 Azure Site Recovery 來為 VM 啟用複寫時，可以在可用性設定組中將 VM 設定為個別的可用性區域。 完成移動作業後，可用性 SLA 將達到 99.9 %。
+* **每層中的 VM 部署在可用性設定組間**：當您使用 Azure Site Recovery 來為 VM 啟用複寫時，可以在可用性設定組中將 VM 設定為個別的可用性區域。 完成移動作業後，可用性 SLA 將達到 99.99%。
 
      ![可用性設定組和可用性區域間的 VM 部署](media/move-vm-overview/aset-azone.png)
 

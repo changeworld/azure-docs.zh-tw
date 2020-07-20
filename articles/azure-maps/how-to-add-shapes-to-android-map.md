@@ -1,34 +1,34 @@
 ---
-title: 新增至 Android 的圖形對應中 Azure 地圖服務 |Microsoft Docs
-description: 如何將圖形新增至對應，使用 Azure 地圖服務的 Android SDK
-author: walsehgal
-ms.author: v-musehg
+title: 將圖形新增至 Android 地圖 |Microsoft Azure 對應
+description: 在本文中，您將瞭解如何使用 Microsoft Azure Maps Android SDK，在地圖上轉譯不同的圖案。
+author: philmea
+ms.author: philmea
 ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: c53a3e01d471f2ca9b0878c374b00ce83848ca28
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: 7a793ff35675c876dc429976ebee96887b12735a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64870998"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80335598"
 ---
-# <a name="add-a-shape-to-a-map-using-azure-maps-android-sdk"></a>新增圖形至對應，使用 Azure 地圖服務的 Android SDK
+# <a name="add-a-shape-to-a-map-using-azure-maps-android-sdk"></a>使用 Azure 地圖服務 Android SDK 將圖形新增至地圖
 
-本文說明如何呈現在使用 Azure 地圖服務的 Android SDK 的地圖上的圖形。
+本文說明如何使用 Azure 地圖服務 Android SDK，在地圖上轉譯圖形。
 
 ## <a name="prerequisites"></a>必要條件
 
-若要完成這篇文章中的程序，必須先安裝[Azure 地圖服務的 Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library)載入對應。
+若要完成本文中的程式，您必須安裝[Azure 地圖服務 Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library)以載入對應。
 
 
-## <a name="add-a-line-to-the-map"></a>將線條加入至對應
+## <a name="add-a-line-to-the-map"></a>在地圖上新增線條
 
-您可以加入對應使用一條線**線條圖層**，請遵循下列步驟來新增一行，在地圖上。
+您可以使用**線條圖層**，在地圖中新增線條，請遵循下列步驟，在地圖上加入線條。
 
-1. 編輯**res > 配置 > activity_main.xml**讓它看起來像下面這樣：
+1. 編輯**res > 配置 > activity_main.xml** ，使其看起來如下所示：
 
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -51,7 +51,7 @@ ms.locfileid: "64870998"
     </FrameLayout>
     ```
 
-2. 複製下列程式碼片段如下**onCreate()** 方法的程式`MainActivity.java`類別。
+2. 將下列程式碼片段複製到您類別的**onCreate （）** 方法中 `MainActivity.java` 。
 
     ```Java
     mapControl.onReady(map -> {
@@ -76,12 +76,13 @@ ms.locfileid: "64870998"
 
     ```
     
-    上述程式碼片段會先取得 Azure 地圖服務地圖控制項執行個體使用**onReady()** 回呼方法。 然後它會建立資料來源物件使用**DataSource**類別，並將它加入至地圖。 然後它會建立一份**點**物件。 A **LineString**是建立從清單中的點，並加入至資料來源。 A**線條圖層**轉譯行包裝在地圖上的資料來源的物件。 然後會建立線條圖層，並加入資料來源。
+    上述程式碼片段會先使用**onReady （）** 回呼方法來取得 Azure 地圖服務的地圖控制項實例。 然後，它會使用**DataSource**類別來建立資料來源物件，並將它加入至對應。 然後，它會建立**Point**物件的清單。 **LineString**是從點清單建立，並加入至資料來源。 **線條圖層**會呈現包裝在地圖上資料來源中的線條物件。 然後會建立線條圖層，並將資料來源加入其中。
 
-    新增上述程式碼片段之後您`MainActivity.java`看起來應該像下面這樣：
+    新增上述程式碼片段之後，您 `MainActivity.java` 的看起來應該如下所示：
     
     ```Java
     package com.example.myapplication;
+
     import android.app.Activity;
     import android.os.Bundle;
     import com.mapbox.geojson.LineString;
@@ -96,8 +97,7 @@ ms.locfileid: "64870998"
     import com.microsoft.azure.maps.mapcontrol.MapControl;
     import static com.microsoft.azure.maps.mapcontrol.options.LineLayerOptions.strokeColor;
     import static com.microsoft.azure.maps.mapcontrol.options.LineLayerOptions.strokeWidth;
-    
-    
+        
     public class MainActivity extends AppCompatActivity {
     
         static{
@@ -133,8 +133,7 @@ ms.locfileid: "64870998"
                 map.layers.add(new LineLayer(dataSource,
                     strokeColor("blue"),
                     strokeWidth(5f)));
-            });
-    
+            });    
         }
     
         @Override
@@ -171,23 +170,22 @@ ms.locfileid: "64870998"
         protected void onSaveInstanceState(Bundle outState) {
             super.onSaveInstanceState(outState);
             mapControl.onSaveInstanceState(outState);
-        }
-    
+        }    
     }
     ```
 
-如果您執行您的應用程式現在，您應該會看到一條線在地圖上，如下所示：
+如果您現在執行應用程式，您應該會在地圖上看到一行，如下所示：
 
 <center>
 
-![Android 的地圖線條](./media/how-to-add-shapes-to-android-map/android-map-line.png)</center>
+![在 Android 地圖上呈現的線條](./media/how-to-add-shapes-to-android-map/android-map-line.png)</center>
 
 
-## <a name="add-a-polygon-to-the-map"></a>將多邊形加入至對應
+## <a name="add-a-polygon-to-the-map"></a>將多邊形新增至地圖
 
-**多邊形圖層**可讓您呈現地圖多邊形的區域。 請遵循下列步驟來新增多邊形在地圖上。
+**多邊形圖層**可讓您將多邊形的區域轉譯為地圖。 請遵循下列步驟，在地圖上加入多邊形。
 
-1. 編輯**res > 配置 > activity_main.xml**讓它看起來像下面這樣：
+1. 編輯**res > 配置 > activity_main.xml** ，使其看起來如下所示：
 
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -210,7 +208,7 @@ ms.locfileid: "64870998"
     </FrameLayout>
     ```
 
-2. 複製下列程式碼片段**onCreate()** 方法的程式`MainActivity.java`類別。
+2. 將下列程式碼片段複製到您類別的**onCreate （）** 方法中 `MainActivity.java` 。
 
     ```Java
     mapControl.onReady(map -> {
@@ -240,9 +238,9 @@ ms.locfileid: "64870998"
     });
     ```
 
-    上述程式碼片段會先取得 Azure 地圖服務地圖控制項執行個體使用**onReady()** 回呼方法。 然後它會建立資料來源物件使用**DataSource**類別，並將它加入至地圖。 A**多邊形**從清單中，然後建立物件**點**物件，並加入至資料來源。 A**多邊形圖層**呈現資料包裝在地圖上的資料來源。 然後建立多邊形圖層來呈現多邊形的區域，並將資料來源加入其中。 A**線條圖層**轉譯行包裝資料來源中的物件。 程式碼片段的最後一個部分會建立線條圖層來呈現多邊形的外框，並將資料來源加入其中。
+    上述程式碼片段會先使用**onReady （）** 回呼方法來取得 Azure 地圖服務的地圖控制項實例。 然後，它會使用**DataSource**類別來建立資料來源物件，並將它加入至對應。 然後會從**Point**物件清單建立**多邊形**物件，並將它加入至資料來源。 **多邊形圖層**會呈現地圖上資料來源中包裝的資料。 接著，它會建立多邊形圖層來轉譯多邊形區域，並將資料來源加入其中。 **線條圖層**會呈現包裝在資料來源中的線條物件。 程式碼片段的最後一個部分會建立線條圖層來呈現多邊形的外框，並將資料來源加入其中。
 
-    新增上述程式碼片段之後您`MainActivity.java`看起來應該像下面這樣：
+    新增上述程式碼片段之後，您 `MainActivity.java` 的看起來應該如下所示：
 
     ```Java
     package com.example.myapplication;
@@ -307,8 +305,7 @@ ms.locfileid: "64870998"
                 map.layers.add(new LineLayer(dataSource,
                     strokeColor("blue"),
                     strokeWidth(2f)));
-            });
-    
+            });    
         }
     
         @Override
@@ -345,21 +342,26 @@ ms.locfileid: "64870998"
         protected void onSaveInstanceState(Bundle outState) {
             super.onSaveInstanceState(outState);
             mapControl.onSaveInstanceState(outState);
-        }
-    
+        }    
     }
     ```
 
-如果您執行您的應用程式現在，您應該會看到多邊形在地圖上，如下所示：
+如果您現在執行應用程式，您應該會在地圖上看到多邊形，如下所示：
 
 <center>
 
-![Android 的地圖多邊形](./media/how-to-add-shapes-to-android-map/android-map-polygon.png)</center>
+![在 Android 地圖上呈現的多邊形](./media/how-to-add-shapes-to-android-map/android-map-polygon.png)</center>
 
 
 ## <a name="next-steps"></a>後續步驟
 
-請參閱下列文章，以深入了解如何設定的地圖樣式
+若要將更多資料新增至您的對應：
 
 > [!div class="nextstepaction"]
-> [Android 的對應中的變更地圖樣式](https://docs.microsoft.com/azure/azure-maps/set-android-map-styles)
+> [新增符號圖層](how-to-add-symbol-to-android-map.md)
+
+> [!div class="nextstepaction"]
+> [新增圖格圖層](how-to-add-tile-layer-android-map.md)
+
+> [!div class="nextstepaction"]
+> [顯示功能資訊](display-feature-information-android.md)

@@ -1,20 +1,13 @@
 ---
 title: 以無訊息方式安裝 Azure 備份伺服器 V2
 description: 使用 PowerShell 指令碼來以無訊息方式安裝 Azure 備份伺服器 V2。 這種安裝也稱為自動安裝。
-services: backup
-author: lingliw
-manager: digimobile
-ms.service: backup
 ms.topic: conceptual
-origin.date: 11/13/2018
-ms.date: 11/26/2018
-ms.author: v-lingwu
-ms.openlocfilehash: 66ed5765a91b607bc5b765926c5df87d13ff6a24
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 11/13/2018
+ms.openlocfilehash: 1539089e713bcf8e959707c6ff4a608f062a7c00
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60253845"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "74172234"
 ---
 # <a name="run-an-unattended-installation-of-azure-backup-server"></a>執行 Azure 備份伺服器 2018 年 9 月2 的自動安裝
 
@@ -24,11 +17,11 @@ ms.locfileid: "60253845"
 
 ## <a name="install-backup-server"></a>安裝備份伺服器
 
-1. 在裝載 Azure 備份伺服器 V2 或更新版本的伺服器上建立文字檔。 (您可以在記事本或其他文字編輯器中建立檔案)。將檔案儲存為 MABSSetup.ini。
+1. 在裝載 Azure 備份伺服器 V2 或更新版本的伺服器上建立文字檔。 （您可以在 [記事本] 或其他文字編輯器中建立檔案）。將檔案儲存為 MABSSetup.ini。
 
 2. 在 MABSSetup.ini 檔案中貼上下列程式碼。 以您的環境值取代括號內的文字 (\< \>)。 範例如下列文字：
 
-   ```
+   ```text
    [OPTIONS]
    UserName=administrator
    CompanyName=<Microsoft Corporation>
@@ -51,22 +44,21 @@ ms.locfileid: "60253845"
 
 3. 儲存檔案。 然後，在安裝伺服器之提升權限的命令提示字元中輸入下列命令：
 
-   ```
+   ```cmd
    start /wait <cdlayout path>/Setup.exe /i  /f <.ini file path>/setup.ini /L <log path>/setup.log
    ```
 
 您可以使用下列旗標來進行安裝：</br>
 **/f**：.ini 檔案路徑</br>
-**/l**:記錄檔路徑</br>
-**/i**:安裝路徑</br>
-**/x**:解除安裝路徑</br>
+**/l**：記錄路徑</br>
+**/i**：安裝路徑</br>
+**/x**：解除安裝路徑</br>
 
 ## <a name="next-steps"></a>後續步驟
+
 在安裝備份伺服器之後，請了解如何準備您的伺服器或開始保護工作負載。
 
 - [準備備份伺服器工作負載](backup-azure-microsoft-azure-backup.md)
 - [使用備份伺服器來備份 VMware 伺服器](backup-azure-backup-server-vmware.md)
-- [使用备份服务器备份 SQL Server](backup-azure-sql-mabs.md)
+- [使用備份伺服器來備份 SQL Server](backup-azure-sql-mabs.md)
 - [在備份伺服器中新增新式備份儲存體](backup-mabs-add-storage.md)
-
-<!-- Update_Description: link update -->

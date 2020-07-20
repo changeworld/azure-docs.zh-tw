@@ -1,6 +1,6 @@
 ---
 title: 回應 Azure 媒體服務事件 | Microsoft Docs
-description: 使用 Azure 事件格線訂閱媒體服務事件。
+description: 本文說明如何使用 Azure 事件方格來訂閱媒體服務事件。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -9,14 +9,13 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/12/2019
+ms.date: 08/08/2019
 ms.author: juliako
-ms.openlocfilehash: cb5d6474a0c830933c712e1008015b5220617c96
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: e24bacb0ea7ab406442022915872fc77e9cc1a5e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60996113"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "74887879"
 ---
 # <a name="handling-event-grid-events"></a>處理事件方格事件
 
@@ -24,7 +23,7 @@ ms.locfileid: "60996113"
 
 媒體服務事件的可用性會繫結至事件格線[可用性](../../event-grid/overview.md)，並且將在其他區域中變成可用狀態，就像事件格線所做的一樣。  
 
-## <a name="media-services-events-and-schemas"></a>媒體服務事件和結構描述
+## <a name="media-services-events-and-schemas"></a>媒體服務事件和架構
 
 Event Grid 使用[事件訂閱](../../event-grid/concepts.md#event-subscriptions)將事件訊息路由至訂閱者。 媒體事件包含了回應資料變更時所需的一切資訊。 因為 eventType 屬性開頭為 “Microsoft.Media”，所以您可以藉此識別出媒體服務事件。
 
@@ -39,6 +38,10 @@ Event Grid 使用[事件訂閱](../../event-grid/concepts.md#event-subscriptions
 * 請忽略您不了解的欄位。  此做法將有助於保持未來可能新增功能的彈性。
 * 使用 "subject" 前置詞和後置詞相符，將事件限制為特定的事件。
 
+> [!NOTE]
+> 事件會受到事件方格[服務等級協定（SLA）](https://azure.microsoft.com/support/legal/sla/event-grid/v1_0/)所約束。 如果您想要使用 Api 取得事件通知，請參閱如何使用[.NET sdk](https://github.com/Azure-Samples/media-services-v3-dotnet)或[JAVA sdk](https://github.com/Azure-Samples/media-services-v3-java)來取用事件的範例。
+
 ## <a name="next-steps"></a>後續步驟
 
-[取得工作狀態事件](job-state-events-cli-how-to.md)
+* [監視事件-入口網站](monitor-events-portal-how-to.md)
+* [監視事件 - CLI](job-state-events-cli-how-to.md)

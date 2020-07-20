@@ -1,27 +1,17 @@
 ---
-title: 從已完成的作業和工作將結果或記錄保存至資料存放區 - Azure Batch | Microsoft Docs
+title: 將作業和工作輸出保存到資料存放區
 description: 深入了解從 Batch 工作和作業保存輸出資料的不同選項。 您可以將資料保存到 Azure 儲存體，或是另一個資料存放區。
-services: batch
-author: laurenhughes
-manager: jeconnoc
-editor: ''
-ms.assetid: 16e12d0e-958c-46c2-a6b8-7843835d830e
-ms.service: batch
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: big-compute
+ms.topic: how-to
 ms.date: 11/14/2018
-ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bc579cd372616563b61e5ba04fe32612f3efb1c7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4ebe0b6d57225eff9f3f1251d5e491c95e9b7ffc
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60549935"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85965105"
 ---
-# <a name="persist-job-and-task-output"></a>持久保存作业和任务输出
+# <a name="persist-job-and-task-output"></a>持續作業及工作輸出
 
 [!INCLUDE [batch-task-output-include](../../includes/batch-task-output-include.md)]
 
@@ -45,23 +35,23 @@ ms.locfileid: "60549935"
 
 ### <a name="use-the-batch-service-api"></a>使用 Batch 服務 API
 
-當您[將工作新增至作業](https://docs.microsoft.com/rest/api/batchservice/add-a-task-to-a-job)或[將工作集合新增至作業](https://docs.microsoft.com/rest/api/batchservice/add-a-collection-of-tasks-to-a-job)時，Batch 服務支援在 Azure 儲存體中指定工作資料的輸出檔案。
+當您[將工作新增至作業](/rest/api/batchservice/add-a-task-to-a-job)或[將工作集合新增至作業](/rest/api/batchservice/add-a-collection-of-tasks-to-a-job)時，Batch 服務支援在 Azure 儲存體中指定工作資料的輸出檔案。
 
 如需有關使用 Batch 服務 API 保存工作輸出的詳細資訊，請參閱[使用 Batch 服務 API 將工作資料保存到 Azure 儲存體](batch-task-output-files.md)。
 
 ### <a name="use-the-batch-file-conventions-library-for-net"></a>使用適用於 .NET 的 Batch 檔案慣例程式庫
 
-Batch 會定義一組選擇性的慣例，可在 Azure 儲存體中命名工作輸出檔案。 [Batch 檔案慣例標準](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions) 描述這些慣例。 檔案慣例標準會以作業和工作名稱作為基礎，針對給定之輸出檔案，決定 Azure 儲存體中的目的地容器和 blob 路徑的名稱。
+Batch 會定義一組選擇性的慣例，可在 Azure 儲存體中命名工作輸出檔案。 [Batch 檔案慣例標準](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files#conventions) 描述這些慣例。 檔案慣例標準會以作業和工作名稱作為基礎，針對給定之輸出檔案，決定 Azure 儲存體中的目的地容器和 blob 路徑的名稱。
 
 您可決定是否要使用檔案慣例標準來命名輸出資料檔案。 您也可以任何方式命名目的地容器和 blob。 如果您要針對命名輸出檔案使用檔案慣例標準，您的輸出檔案就可在 [Azure 入口網站][portal]中檢視。
 
-使用 C# 和 .NET 建置 Batch 解決方案的開發人員可以使用 [適用於 .NET 的檔案慣例][nuget_package] ，根據 [Batch 檔案慣例標準](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions)，將工作資料保存至 Azure 儲存體帳戶。 檔案慣例程式庫可處理將輸出檔案移動至 Azure 儲存體，並使用已知方法命名目的地容器和 blob。
+使用 C# 和 .NET 建置 Batch 解決方案的開發人員可以使用[適用於 .NET 的檔案慣例程式庫][nuget_package]，根據 [Batch 檔案慣例標準](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files#conventions)，將工作資料保存至 Azure 儲存體帳戶。 檔案慣例程式庫可處理將輸出檔案移動至 Azure 儲存體，並使用已知方法命名目的地容器和 blob。
 
 如需使用適用於 .NET 的檔案慣例程式庫來保存工作輸出的詳細資訊，請參閱[使用適用於 .NET 的 Batch 檔案慣例程式庫，將作業和工作資料保存到 Azure 儲存體](batch-task-output-file-conventions.md)。
 
 ### <a name="implement-the-batch-file-conventions-standard"></a>實作 Batch 檔案慣例標準
 
-如果您要使用 .NET 以外的語言，可以在您自己的應用程式中實作 [Batch 檔案慣例標準](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions)。
+如果您要使用 .NET 以外的語言，可以在您自己的應用程式中實作 [Batch 檔案慣例標準](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files#conventions)。
 
 當您需要經過證實的命名配置，或當想要在 Azure 入口網站中檢視工作輸出時，建議您自行實作檔案慣例命名標準。
 
@@ -70,7 +60,7 @@ Batch 會定義一組選擇性的慣例，可在 Azure 儲存體中命名工作�
 您也可以實作自己的完整檔案移動解決方案。 使用這個方法的時機：
 
 - 您想要將工作資料保存到 Azure 儲存體以外的資料存放區。 若要將檔案上傳至諸如 Azure SQL 或 Azure Data Lake 等資料存放區，您可以建立自訂指令碼或可執行檔，以上傳至該位置。 接著，您在執行主要可執行檔之後，可以在命令列上呼叫它。 例如，在 Windows 節點上，您可能會呼叫這兩個命令：`doMyWork.exe && uploadMyFilesToSql.exe`
-- 需对初始结果执行检查点或提前上传操作。
+- 您想要執行檢查點或提前上傳初始結果。
 - 您需要保持更精確地控制錯誤處理。 例如，如果您想要使用工作相依性動作，以特定的工作結束代碼作為基礎來採取某些上傳動作，您將需要實作自己的解決方案。 如需有關工作相依性動作的詳細資訊，請參閱[建立工作相依性，以執行相依於其他工作的工作](batch-task-dependencies.md)。
 
 ## <a name="design-considerations-for-persisting-output"></a>保存輸出的設計考量

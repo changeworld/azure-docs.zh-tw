@@ -1,56 +1,52 @@
 ---
-title: 用戶端應用程式 （Microsoft 驗證程式庫） |Azure
-description: 了解公用用戶端與機密用戶端應用程式中的 Microsoft Authentication Library (MSAL)。
+title: 公用和機密用戶端應用程式（MSAL） |Azure
+titleSuffix: Microsoft identity platform
+description: 深入瞭解 Microsoft 驗證程式庫（MSAL）中的公用用戶端和機密用戶端應用程式。
 services: active-directory
-documentationcenter: dev-center-name
-author: rwike77
-manager: celested
-editor: ''
+author: mmacy
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/25/2019
-ms.author: ryanwi
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f21aa62bae7599cf586ccf6f885ad9f58c148d1f
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 9c3292a31e5f750c16933acf94509e0ad226080a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65077136"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "81534307"
 ---
-# <a name="public-client-and-confidential-client-applications"></a>公開用戶端與機密用戶端應用程式
-Microsoft Authentication Library (MSAL) 定義的用戶端的兩種類型： 公用用戶端與機密用戶端。 他們能夠安全地向授權伺服器，並維護其認證機密性的用戶端來區別兩個用戶端類型。  相反地，Azure AD Authentication Library (ADAL) 已驗證內容 （也就是連線至 Azure AD） 的概念。
+# <a name="public-client-and-confidential-client-applications"></a>公用用戶端和機密用戶端應用程式
+Microsoft 驗證程式庫（MSAL）定義兩種類型的用戶端：公用用戶端和機密用戶端。 這兩種用戶端類型的區別在於能夠安全地向授權伺服器進行驗證，並維護其用戶端認證的機密性。 相較之下，Azure AD 驗證程式庫（ADAL）會使用所謂的*驗證*內容（這是與 Azure AD 的連線）。
 
-- **機密用戶端應用程式**（Web 應用程式、 Web API 或甚至是服務/精靈應用程式） 的伺服器上執行應用程式。 它們被視為難以存取，且因此可讓應用程式祕密。 機密用戶端就能夠保存設定單次祕密。 用戶端的每個執行個體具有不同組態 （包括 clientId 和密碼）。 這些值是很難擷取的使用者。 Web 應用程式是最常見的機密用戶端。 用戶端識別碼透過網頁瀏覽器中，公開，但只在頻道中傳遞密碼且永不會直接公開。
+- **機密用戶端應用程式**是在伺服器（web 應用程式、Web API 應用程式，甚至是服務/daemon 應用程式）上執行的應用程式。 這會被視為很容易存取，因此能夠保存應用程式密碼。 機密用戶端可以保存設定時間秘密。 用戶端的每個實例都有不同的設定（包括用戶端識別碼和用戶端密碼）。 這些值很容易讓使用者進行解壓縮。 Web 應用程式是最常見的機密用戶端。 用戶端識別碼是透過網頁瀏覽器公開的，但密碼只會在後端通道中傳遞，而且永遠不會直接公開。
 
     機密用戶端應用程式： <BR>
-    ![Web 應用程式](media/msal-client-applications/web-app.png) ![Web API](media/msal-client-applications/web-api.png) ![背景/服務](media/msal-client-applications/daemon-service.png)
+    ![Web 應用程式 ](media/msal-client-applications/web-app.png) ![ web API ](media/msal-client-applications/web-api.png) ![ Daemon/服務](media/msal-client-applications/daemon-service.png)
 
-- **公開用戶端應用程式**是裝置或桌上型電腦上或網頁瀏覽器中執行應用程式。 它們不受信任而得以安全地讓應用程式祕密，並因此代表 （它們只支援公用用戶端流程） 的使用者只能存取 Web Api。 公開用戶端將無法保存設定單次祕密，並因此會有任何用戶端祕密。
+- **公用用戶端應用程式**是在裝置或桌上型電腦上或網頁瀏覽器中執行的應用程式。 它們不受信任，無法安全地保存應用程式密碼，因此他們只會代表使用者存取 web Api。 （它們僅支援公用用戶端流程）。公用用戶端無法保存設定時間秘密，因此它們沒有用戶端密碼。
 
-    公開用戶端應用程式： <BR>
-    ![傳統型應用程式](media/msal-client-applications/desktop-app.png) ![Browserless API](media/msal-client-applications/browserless-app.png) ![行動裝置應用程式](media/msal-client-applications/mobile-app.png)
+    公用用戶端應用程式： <BR>
+    ![桌面應用程式 ](media/msal-client-applications/desktop-app.png) ![ Browserless API 行動 ](media/msal-client-applications/browserless-app.png) ![ 應用程式](media/msal-client-applications/mobile-app.png)
 
 > [!NOTE]
-> MSAL.js，公用和機密用戶端應用程式沒有區隔。  MSAL.js 代表用戶端應用程式為使用者代理程式為基礎的應用程式，用戶端程式碼執行在例如網頁瀏覽器使用者代理程式所在的公用用戶端。  由於瀏覽器內容是可公開存取，這些用戶端就不會儲存祕密。
+> 在 MSAL.js 中，不會區分公用和機密用戶端應用程式。  MSAL.js 代表以使用者代理程式為基礎的應用程式、在使用者代理程式（例如網頁瀏覽器）中執行用戶端程式代碼的公用用戶端。 這些用戶端不會儲存秘密，因為瀏覽器內容可公開存取。
 
 ## <a name="comparing-the-client-types"></a>比較用戶端類型
-有一些共通性和公用用戶端與機密用戶端之間的差異應用程式：
+以下是公用用戶端和機密用戶端應用程式之間的一些相似之處：
 
-- 這兩種應用程式會維護使用者的權杖快取，並可以取得權杖，以無訊息模式 （在此權杖已在權杖快取的情況下）。 機密用戶端應用程式也有適用於本身的應用程式的權杖的應用程式權杖快取。
-- 同時管理使用者帳戶和可以從使用者的權杖快取中取得的帳戶、 從其識別項，取得帳戶或移除帳戶。
-- 公開用戶端應用程式有四種方法取得的權杖 （四個驗證流程），而機密用戶端應用程式有三個 （和一種方法來計算身分識別提供者的 URL 授權端點）。 如需詳細資訊，請參閱案例，並取得權杖。
+- 這兩種應用程式都會維護使用者權杖快取，並且可以無訊息方式取得權杖（當令牌已在權杖快取中）。 機密用戶端應用程式也會有應用程式本身適用之權杖的應用程式權杖快取。
+- 這兩種類型的應用程式都會管理使用者帳戶，而且可以從使用者權杖快取取得帳戶、從其識別碼取得帳戶，或移除帳戶。
+- 公用用戶端應用程式有四種方式可取得權杖（四個驗證流程）。 機密用戶端應用程式有三種方式可取得權杖（以及一個計算識別提供者授權端點 URL 的方式）。 如需詳細資訊，請參閱取得[權杖](msal-acquire-cache-tokens.md)。
 
-如果您過去使用 ADAL，您可能會注意到，與 ADAL 的驗證內容，msal 識別碼 （也稱為應用程式識別碼或應用程式識別碼） 在建構應用程式，但不能傳遞一次用戶端必須取得權杖時，重複執行。 這是這兩個公用和機密用戶端應用程式。 機密用戶端應用程式的建構函式也會傳遞用戶端認證： 它們會共用身分識別提供者的密碼。
+如果您已經使用 ADAL，您可能會注意到，與 ADAL 的驗證內容不同的是，在 MSAL 中，用戶端識別碼（也稱為*應用程式識別碼*或*應用程式識別碼*）會在應用程式的結構上傳遞一次。 當應用程式取得權杖時，不需要再次傳遞。 這適用于公用和機密用戶端應用程式。 機密用戶端應用程式的「函式」也會傳遞用戶端認證：與識別提供者共用的密碼。
 
 ## <a name="next-steps"></a>後續步驟
 了解：
-- [用戶端應用程式組態選項](msal-client-application-configuration.md)
-- [具現化用戶端應用程式使用 MSAL.NET](msal-net-initializing-client-applications.md)。
-- [具現化用戶端應用程式使用 MSAL.js](msal-js-initializing-client-applications.md)。
+- [用戶端應用程式設定選項](msal-client-application-configuration.md)
+- [使用 MSAL.NET 具現化用戶端應用程式](msal-net-initializing-client-applications.md)
+- [使用 MSAL.js來具現化用戶端應用程式](msal-js-initializing-client-applications.md)

@@ -3,27 +3,21 @@ title: 監視 Azure 雲端服務 | Microsoft Docs
 description: 描述監視 Azure 雲端服務所涉及的作業以及您的一些選項。
 services: cloud-services
 documentationcenter: ''
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: ''
+author: tgore03
 ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2018
-ms.author: jeconnoc
-ms.openlocfilehash: 844fef9a87c1db06c6415c59d4be26caf928382b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: tagore
+ms.openlocfilehash: 61c794ba03934ae1828ba310f3f776bfb61b652b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61432889"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847252"
 ---
 # <a name="introduction-to-cloud-service-monitoring"></a>雲端服務監視簡介
 
-您可以監視任何雲端服務的關鍵效能計量。 每個雲端服務角色都會收集最少的資料：CPU 使用量、 網路使用量和磁碟使用率。 如果雲端服務已將 `Microsoft.Azure.Diagnostics` 延伸模組套用至角色，則該角色可以收集其他資料點。 本文介紹 Azure Diagnostics for Cloud Services。
+您可以監視任何雲端服務的關鍵效能計量。 每個雲端服務角色都會收集最少資料：CPU 使用量、網路使用量和磁碟使用狀況。 如果雲端服務已將 `Microsoft.Azure.Diagnostics` 延伸模組套用至角色，則該角色可以收集其他資料點。 本文介紹 Azure Diagnostics for Cloud Services。
 
 使用基本監視，角色執行個體的效能計數器資料會依 3 分鐘的間隔進行取樣和收集。 此基本監視資料不會儲存在儲存體帳戶中，而且沒有任何與其建立關聯的額外成本。
 
@@ -40,7 +34,7 @@ ms.locfileid: "61432889"
 
 ## <a name="advanced-monitoring"></a>進階監視
 
-進階監視包含對您想要監視的角色使用 **Azure 診斷**延伸模組 (和選擇性的 Application Insights SDK)。 診斷延伸模組會使用名為 **diagnostics.wadcfgx** 的設定檔 (每個角色)，來設定所監視的診斷計量。 Azure 診斷延伸模組會收集資料並且儲存在 Azure 儲存體帳戶。 這些設定是在 **.wadcfgx**、[.csdef](cloud-services-model-and-package.md#servicedefinitioncsdef) 和 [.cscfg](cloud-services-model-and-package.md#serviceconfigurationcscfg) 檔案中設定。 這表示會有與進階監視建立關聯的額外成本。
+「高級監視」牽涉到在您要監視的角色上使用**Azure 診斷**擴充功能（以及選擇性的 Application Insights SDK）。 診斷延伸模組會使用名為 **diagnostics.wadcfgx** 的設定檔 (每個角色)，來設定所監視的診斷計量。 Azure 診斷延伸模組會收集資料並且儲存在 Azure 儲存體帳戶。 這些設定是在 **.wadcfgx**、[.csdef](cloud-services-model-and-package.md#servicedefinitioncsdef) 和 [.cscfg](cloud-services-model-and-package.md#serviceconfigurationcscfg) 檔案中設定。 這表示會有與進階監視建立關聯的額外成本。
 
 建立每個角色時，Visual Studio 會在其中新增 Azure 診斷延伸模組。 此診斷延伸模組可以收集下列類型的資訊：
 
@@ -54,13 +48,13 @@ ms.locfileid: "61432889"
 * 客戶錯誤記錄
 
 > [!IMPORTANT]
-> 雖然此資料全都會彙總至儲存體帳戶，但是入口網站**不會**提供製作資料圖表的原生方法。 強烈建議您將其他像是 Application Insights 的服務整合到您的應用程式。
+> 雖然此資料會匯總到儲存體帳戶，但入口網站並**不**會提供用來建立資料圖表的原生方式。 強烈建議您將其他像是 Application Insights 的服務整合到您的應用程式。
 
 ## <a name="setup-diagnostics-extension"></a>設定診斷延伸模組
 
-首先，如果您沒有**傳統**儲存體帳戶，則請[建立傳統儲存體帳戶](../storage/common/storage-quickstart-create-account.md)。 請確定建立已指定**傳統部署模型**的儲存體帳戶。
+首先，如果您沒有**傳統**儲存體帳戶，則請[建立傳統儲存體帳戶](../storage/common/storage-account-create.md)。 請確定建立已指定**傳統部署模型**的儲存體帳戶。
 
-接下來，巡覽至 [儲存體帳戶 (傳統)] 資源。 選取 [設定] > [存取金鑰]，然後複製 [主要連接字串] 值。 雲端服務需要有此值。 
+接下來，巡覽至 [儲存體帳戶 (傳統)]**** 資源。 選取 [**設定**]  >  [**存取金鑰**]，然後複製 [**主要連接字串**] 值。 雲端服務需要有此值。 
 
 您必須變更兩個設定檔才能啟用進階診斷：**ServiceDefinition.csdef** 和 **ServiceConfiguration.cscfg**。
 
@@ -100,6 +94,9 @@ ms.locfileid: "61432889"
 
 ## <a name="next-steps"></a>後續步驟
 
-- [深入了解含雲端服務的 Application Insights](../azure-monitor/app/cloudservices.md)
+- [瞭解雲端服務的 Application Insights](../azure-monitor/app/cloudservices.md)
 - [設定效能計數器](diagnostics-performance-counters.md)
+
+
+
 

@@ -1,22 +1,16 @@
 ---
 title: 使用 Azure Batch 執行平行 R 模擬
 description: 教學課程 - 使用 R doAzureParallel 套件在 Azure Batch 中執行 Monte Carlo 財務模擬的逐步指示
-services: batch
-author: laurenhughes
-manager: jeconnoc
-ms.assetid: ''
-ms.service: batch
 ms.devlang: r
 ms.topic: tutorial
 ms.date: 01/23/2018
-ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 557e7d9a35f012d65977d3e0654b55b15ff1e28f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: dc5c022b4722f844e0b3c117bb5961843865bd55
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58106435"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84418172"
 ---
 # <a name="tutorial-run-a-parallel-r-simulation-with-azure-batch"></a>教學課程：使用 Azure Batch 執行平行 R 模擬 
 
@@ -40,7 +34,7 @@ ms.locfileid: "58106435"
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
 
-在 [https://portal.azure.com](https://portal.azure.com) 登入 Azure 入口網站。
+登入 Azure 入口網站：[https://portal.azure.com](https://portal.azure.com)。
 
 [!INCLUDE [batch-common-credentials](../../includes/batch-common-credentials.md)] 
 ## <a name="install-doazureparallel"></a>安裝 doAzureParallel
@@ -110,13 +104,13 @@ generateClusterConfig("cluster.json")
 * 將 `maxTasksPerNode` 增加至 2，以利用每個節點上的兩個核心
 * 將 `dedicatedNodes` 設定為 0，即可嘗試 Batch 可用的低優先順序 VM。 將 `lowPriorityNodes` 的 `min` 設定為 5， 以及將 `max` 設定為 10，或者視需要選擇較小的數字。 
 
-保留其餘設定的預設值，然後儲存檔案。 看起來應該會像下面這樣：
+保留其餘設定的預設值，然後儲存檔案。 看起來應類似下列範例：
 
 ```json
 {
   "name": "myPoolName",
   "vmSize": "Standard_D2_v2",
-  "maxTasksPerNode": 4,
+  "maxTasksPerNode": 2,
   "poolSize": {
     "dedicatedNodes": {
       "min": 0,

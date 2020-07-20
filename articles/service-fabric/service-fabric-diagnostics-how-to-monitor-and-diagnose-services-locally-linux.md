@@ -1,27 +1,16 @@
 ---
-title: 在 Linux 中針對 Azure Service Fabric 應用程式進行偵錯 | Microsoft Docs
+title: 在 Linux 中進行 Azure Service Fabric 應用程式的 Debug
 description: 了解如何在本機 Linux 開發電腦上監視和診斷 Service Fabric 服務。
-services: service-fabric
-documentationcenter: .net
-author: mani-ramaswamy
-manager: chackdan
-editor: ''
-ms.assetid: 4eebe937-ab42-4429-93db-f35c26424321
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/23/2018
-ms.author: subramar
-ms.openlocfilehash: f0b850038a29dd0949def97b359b2b7a5ce920bc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6f637721d24045f5ca3386ffc31775d469e88537
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60392852"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247552"
 ---
-# <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>監視和診斷本機開發設定中的服務
+# <a name="monitor-and-diagnose-services-in-a-local-linux-machine-development-setup"></a>監視和診斷本機 Linux 機器開發設定中的服務
 
 
 > [!div class="op_single_selector"]
@@ -35,9 +24,9 @@ ms.locfileid: "60392852"
 
 ## <a name="debugging-service-fabric-java-applications"></a>針對 Service Fabric Java 應用程式進行偵錯
 
-對於 Java 應用程式，有 [多個記錄架構](https://en.wikipedia.org/wiki/Java_logging_framework) 可用。 由於 `java.util.logging` 是 JRE 的預設選項，它也會用於 [GitHub 中的程式碼範例](https://github.com/Azure-Samples/service-fabric-java-getting-started)。 下列討論說明如何設定 `java.util.logging` 架構。
+對於 Java 應用程式，有 [多個記錄架構](https://en.wikipedia.org/wiki/Java_logging_framework) 可用。 由於 `java.util.logging` 是 JRE 的預設選項，它也會用於 GitHub 中的程式[代碼範例](https://github.com/Azure-Samples/service-fabric-java-getting-started)。 下列討論說明如何設定 `java.util.logging` 架構。
 
-您可以使用 java.util.logging 將應用程式記錄重新導向至記憶體、輸出串流、主控台檔案或通訊端。 对于其中的每个选项，框架中已提供默认处理程序。 您可以建立 `app.properties` 檔案來設定應用程式的檔案處理常式，將所有記錄重新導向至本機檔案。
+您可以使用 java.util.logging 將應用程式記錄重新導向至記憶體、輸出串流、主控台檔案或通訊端。 對於其中每個選項，架構中已經提供預設處理常式。 您可以建立 `app.properties` 檔案來設定應用程式的檔案處理常式，將所有記錄重新導向至本機檔案。
 
 下列程式碼片段包含範例組態︰
 
@@ -58,19 +47,19 @@ java -Djava.library.path=$LD_LIBRARY_PATH -Djava.util.logging.config.file=<path 
 ```
 
 
-此设置会导致在 `/tmp/servicefabric/logs/` 中以轮替方式收集日志。 在此情況下，記錄檔的名稱為 mysfapp%u.%g.log，其中︰
+此設定會導致在 `/tmp/servicefabric/logs/`中以輪替方式收集記錄。 在此情況下，記錄檔的名稱為 mysfapp%u.%g.log，其中︰
 * **%u** 是解決同時 Java 處理序之間衝突的唯一號碼。
 * **%g** 是區分輪替記錄的產生號碼。
 
 依預設，如果未明確設定任何處理常式，則會註冊主控台處理常式。 使用者可以在 /var/log/syslog 下檢視 syslog 中的記錄。
 
-如需詳細資訊，請參閱 [GitHub 中的程式碼範例](https://github.com/Azure-Samples/service-fabric-java-getting-started)。
+如需詳細資訊，請參閱[GitHub 中的程式碼範例](https://github.com/Azure-Samples/service-fabric-java-getting-started)。
 
 
 ## <a name="debugging-service-fabric-c-applications"></a>針對 Service Fabric C# 應用程式進行偵錯
 
 
-有多個架構適用於追蹤 Linux 上的 CoreCLR 應用程式。 如需詳細資訊，請參閱 [GitHub：logging](http:/github.com/aspnet/logging)。  因為 C# 開發人員熟悉 EventSource，本文使用 EventSource 來追蹤 Linux 上的 CoreCLR 範例。
+有多個架構適用於追蹤 Linux 上的 CoreCLR 應用程式。 如需詳細資訊，請參閱[適用于記錄的 .Net 延伸](https://github.com/dotnet/extensions/tree/master/src/Logging)模組。  因為 C# 開發人員熟悉 EventSource，本文使用 EventSource 來追蹤 Linux 上的 CoreCLR 範例。
 
 第一個步驟是加入 System.Diagnostics.Tracing，使您可以將您的記錄寫入記憶體中、輸出串流或主控台檔案。  針對使用 EventSource 進行記錄，請將下列專案加入您的 project.json︰
 
@@ -143,4 +132,4 @@ public static TextWriter Out = Console.Out;
 
 ## <a name="next-steps"></a>後續步驟
 新增至應用程式的相同追蹤程式碼，也可以用來配合診斷 Azure 叢集上的應用程式。 請參閱下列文章，其中討論各種適用於工具的選項，並說明如何設定它們。
-* [如何使用 Azure 诊断收集日志](service-fabric-diagnostics-how-to-setup-lad.md)
+* [如何利用 Azure 診斷收集記錄](./service-fabric-diagnostics-event-aggregation-lad.md)

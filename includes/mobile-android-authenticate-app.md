@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: crdun
 ms.openlocfilehash: eded2d6a9f2c270a2b3ccca296277b0a016733fd
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62119753"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "67174666"
 ---
 1. 在 Android Studio 中開啟專案。
 
-2. 在 Android Studio 的 [專案總管] 中，開啟 `ToDoActivity.java` 檔案並新增下列 import 陳述式：
+2. 在 Android Studio 的 [專案總管]**** 中，開啟 `ToDoActivity.java` 檔案並新增下列 import 陳述式：
 
     ```java
     import java.util.concurrent.ExecutionException;
@@ -27,7 +27,7 @@ ms.locfileid: "62119753"
     import com.microsoft.windowsazure.mobileservices.authentication.MobileServiceUser;
     ```
 
-3. 將下列方法加入至 **ToDoActivity** 類別：
+3. 將以下方法添加到**ToDoActivity**類：
 
     ```java
     // You can choose any unique number here to differentiate auth providers from each other. Note this is the same code at login() and onActivityResult().
@@ -62,7 +62,7 @@ ms.locfileid: "62119753"
     此程式碼會建立一個處理 Google 驗證程序的方法。 將出現對話方塊來顯示已驗證使用者的識別碼。 您只能繼續進行成功驗證。
 
     > [!NOTE]
-    > 如果您使用的不是 Google 身分識別提供者，變更值傳遞給**登入**方法，以下列值之一：_MicrosoftAccount_， _Facebook_， _Twitter_，或_windowsazureactivedirectory_。
+    > 如果您使用的識別提供者不是 Google，請將傳給 **login** 方法的值變更為下列其中一個值：_MicrosoftAccount_、_Facebook_、_Twitter_ 或 _windowsazureactivedirectory_。
 
 4. 在 **OnCreate`MobileServiceClient` 方法中，在具現化** 物件的程式碼後面加入下列這一行程式碼。
 
@@ -72,7 +72,7 @@ ms.locfileid: "62119753"
 
     此呼叫會啟動驗證程序。
 
-5. 將 **onCreate** 方法中 `authenticate();` 後面的其餘程式碼移至新的 **createTable** 方法：
+5. 在**onCreate** `authenticate();`方法中將剩餘的代碼移到新的**createTable**方法：
 
     ```java
     private void createTable() {
@@ -132,7 +132,7 @@ ms.locfileid: "62119753"
     }
     ```
 
-9. 在 [執行] 功能表中，按一下 [執行應用程式] 來啟動應用程式，並以您選擇的身分識別提供者登入。
+9. 在 [執行]**** 功能表中，按一下 [執行應用程式]**** 來啟動應用程式，並以您選擇的身分識別提供者登入。
 
 > [!WARNING]
 > 所述的 URL 配置會區分大小寫。 確認所有出現的 `{url_scheme_of_you_app}` 會使用相同的大小寫。

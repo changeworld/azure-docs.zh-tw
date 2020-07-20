@@ -1,6 +1,6 @@
 ---
 title: 使用 castLabs 將 Widevine 授權傳遞到 Azure 媒體服務 | Microsoft Docs
-description: 本文說明如何使用 Azure 媒體服務 (AMS) 來傳遞 AMS 使用 PlayReady 與 Widevine DRM 動態加密的資料流。 PlayReady 授權來自媒體服務 PlayReady 授權伺服器，Widevine 授權由 castLabs 授權伺服器傳遞。
+description: 本文說明如何使用 Azure 媒體服務 (AMS) 來傳遞 AMS 使用 PlayReady 與 Widevine DRM 動態加密的資料流。
 services: media-services
 documentationcenter: ''
 author: Mingfeiy
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
-ms.author: Mingfeiy;willzhan;Juliako
-ms.openlocfilehash: dfb82e91b0f65b85d34b7e20d57ed9929469321f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.author: Juliako
+ms.reviewer: willzhan
+ms.openlocfilehash: 29a344c739d8d99da2e5c81d41a11c601e48022e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61232560"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "74969134"
 ---
 # <a name="using-castlabs-to-deliver-widevine-licenses-to-azure-media-services"></a>使用 castLabs 將 Widevine 授權傳遞到 Azure 媒體服務 
 > [!div class="op_single_selector"]
@@ -28,11 +28,11 @@ ms.locfileid: "61232560"
 > 
 > 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 本文說明如何使用 Azure 媒體服務 (AMS) 來傳遞 AMS 使用 PlayReady 與 Widevine DRM 動態加密的資料流。 PlayReady 授權來自媒體服務 PlayReady 授權伺服器，Widevine 授權則來自 **castLabs** 授權伺服器。
 
-若要播放受 CENC (PlayReady 和/或 Widevine) 保護的串流內容，您可以使用 [Azure 媒體播放器](https://amsplayer.azurewebsites.net/azuremediaplayer.html)。 如需詳細資訊，請參閱 [AMP 文件](https://amp.azure.net/libs/amp/latest/docs/) 。
+若要播放受 CENC (PlayReady 和/或 Widevine) 保護的串流內容，您可以使用 [Azure 媒體播放器](https://aka.ms/azuremediaplayer)。 如需詳細資訊，請參閱 [AMP 文件](https://amp.azure.net/libs/amp/latest/docs/) 。
 
 以下為 Azure 媒體服務與 castLabs 整合架構概況圖。
 
@@ -55,19 +55,19 @@ castLabs 與 AMS 皆支援使用 JWT (JSON Web Token) 權杖格式進行授權�
 
 下表說明 AMS 中的 JWT 權杖。 
 
-| 簽發者 | 所選安全權杖服務 (STS) 中的簽發者字串 |
+| Issuer | 所選安全權杖服務 (STS) 中的簽發者字串 |
 | --- | --- |
 | 對象 |所使用 STS 中的對象字串 |
 | Claims |一組宣告 |
 | NotBefore |權杖的生效日期 |
-| Expires |權杖的有效期限 |
+| 到期 (Expires) |權杖的有效期限 |
 | SigningCredentials |PlayReady 授權伺服器、castLabs 授權伺服器與 STS 之間共用的金鑰，可以是對稱或非對稱金鑰。 |
 
 ### <a name="jwt-token-in-castlabs"></a>castLabs 中的 JWT 權杖
 
 下表說明 castLabs 中的 JWT 權杖。 
 
-| 名稱 | 描述 |
+| Name | 說明 |
 | --- | --- |
 | optData |JSON 字串，其中包含您的相關資訊。 |
 | crt |JSON 字串，其中包含資產、其授權資訊與播放權限的相關資訊。 |
@@ -101,18 +101,22 @@ castLabs 與 AMS 皆支援使用 JWT (JSON Web Token) 權杖格式進行授權�
 
 ## <a name="playing-back-a-video"></a>播放視訊
 
-若要播放使用一般加密 (PlayReady 和/或 Widevine) 技術加密的視訊，您可以使用 [Azure 媒體播放器](https://amsplayer.azurewebsites.net/azuremediaplayer.html)。 執行主控台應用程式時，會回應內容金鑰識別碼和資訊清單 URL。
+若要播放使用一般加密 (PlayReady 和/或 Widevine) 技術加密的視訊，您可以使用 [Azure 媒體播放器](https://aka.ms/azuremediaplayer)。 執行主控台應用程式時，會回應內容金鑰識別碼和資訊清單 URL。
 
-1. 開啟新索引標籤，並啟動 STS： http://[yourStsName].azurewebsites.net/api/token/assetid/[yourCastLabsAssetId]/contentkeyid/[thecontentkeyid]。
-2. 移至 [Azure Media Player](https://amsplayer.azurewebsites.net/azuremediaplayer.html)。
+1. 開啟新索引標籤，並啟動 STS：http://[yourStsName].azurewebsites.net/api/token/assetid/[yourCastLabsAssetId]/contentkeyid/[thecontentkeyid]。
+2. 移至 [Azure Media Player](https://aka.ms/azuremediaplayer)。
 3. 貼上資料流 URL。
 4. 按一下 [ **進階選項** ] 核取方塊。
-5. 在 [保護]  下拉式清單中選取 PlayReady 和/或 Widevine。
+5. 在 [保護] **** 下拉式清單中選取 PlayReady 和/或 Widevine。
 6. 在 [權杖] 文字方塊中貼上您從 STS 取得的權杖。 
    
    castLab 授權伺服器不需要權杖前有 “Bearer=” 前置詞。 因此請先移除該前置詞，再提交權杖。
 7. 更新播放程式。
 8. 視訊應隨即播放。
+
+## <a name="additional-notes"></a>其他注意事項
+
+* Widevine 是 Google Inc. 所提供的服務，並受到 Google Inc. 的服務條款和隱私權原則所約束。
 
 ## <a name="media-services-learning-paths"></a>媒體服務學習路徑
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

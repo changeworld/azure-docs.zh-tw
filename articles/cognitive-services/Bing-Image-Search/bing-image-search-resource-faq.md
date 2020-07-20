@@ -7,15 +7,15 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
-ms.topic: troubleshooting
+ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: 20b8dbcae36555baf3913ab160575a631e204dd9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: 2d919640431ce014d34372812d9c07bb84d750b2
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59049416"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86184050"
 ---
 # <a name="frequently-asked-questions-faq-about-the-bing-image-search-api"></a>Bing 影像搜尋 API 的常見問題集 (FAQ)
 
@@ -25,7 +25,7 @@ ms.locfileid: "59049416"
 
 下列標頭可能會發生於來自 Bing 影像搜尋 API 的回應。
 
-| `Attribute`         | `Description` |
+| 屬性           | 描述   |
 | ------------------- | ------------- |
 | `X-MSEdge-ClientID` |Bing 已指派給使用者的唯一識別碼 |
 | `BingAPIs-Market`   |用來履行要求的市場 |
@@ -35,19 +35,22 @@ ms.locfileid: "59049416"
 
 不過，當您從 JavaScript 呼叫 Bing 影像搜尋 API 時，您的瀏覽器內建安全性功能 (CORS) 可能會讓您無法存取這些標頭的值。
 
-若要取得標頭的存取權，您可以透過 CORS Proxy 提出 Bing 影像搜尋 API 要求。 來自這類 Proxy 的回應包含 `Access-Control-Expose-Headers` 標頭，可將回應標頭列入白名單並提供給 JavaScript 使用。
+若要取得標頭的存取權，您可以透過 CORS Proxy 提出 Bing 影像搜尋 API 要求。 來自這類 Proxy 的回應包含 `Access-Control-Expose-Headers` 標頭，可將回應標頭列入允許清單並提供給 JavaScript 使用。
 
-您可以輕鬆地安裝 CORS Proxy，讓我們的[教學課程應用程式](tutorial-bing-image-search-single-page-app.md)存取選擇性用戶端標頭。 首先，請[安裝 Node.js](https://nodejs.org/en/download/) (如果尚未安裝)。 在命令提示字元中，輸入下列命令。
+您可以輕鬆地安裝 CORS Proxy，讓我們的[教學課程應用程式](tutorial-bing-image-search-single-page-app.md)存取選擇性用戶端標頭。 首先，請[安裝 Node.js](https://nodejs.org/en/download/) (若尚未安裝)。 在命令提示字元中，輸入下列命令。
 
-    npm install -g cors-proxy-server
+```console
+npm install -g cors-proxy-server
+```
 
-接下來，將 HTML 檔案中的 Bing 影像搜尋 API 端點變更為：
-
-    http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search
+接下來，將 HTML 檔案中的 Bing 影像搜尋 API 端點變更為： \
+`http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search`
 
 最後，使用下列命令啟動 CORS Proxy：
 
-    cors-proxy-server
+```console
+cors-proxy-server
+```
 
 當您使用教學課程應用程式時，請保持開啟命令視窗；關閉視窗會停止 Proxy。 在可展開的 [HTTP 標頭] 區段搜尋結果下，您現在可以看到 `X-MSEdge-ClientID` 標頭 (及其他標頭)，並確認每個要求的此標頭都相同。
 
@@ -61,8 +64,8 @@ ms.locfileid: "59049416"
 
 ## <a name="next-steps"></a>後續步驟
 
-您的問題是否與缺少特性或功能相關？ 請考慮在我們的 [User Voice 網站上要求或對它投票](https://cognitive.uservoice.com/forums/555907-bing-search)。
+您的問題是否與缺少特性或功能相關？ 請考慮在我們的 [User Voice 網站](https://cognitive.uservoice.com/forums/555907-bing-search)上要求或對它投票。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
  [Stack Overflow：認知服務](https://stackoverflow.com/questions/tagged/bing-api)

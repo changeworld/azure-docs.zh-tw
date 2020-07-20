@@ -1,27 +1,28 @@
 ---
-title: 將資料從 Azure Blob 儲存體複製到 SQL Database | Microsoft Docs
+title: 將資料從 Azure Blob 儲存體複製到 Azure SQL Database
 description: 本教學課程提供逐步指示，將資料從 Azure Blob 儲存體複製到 Azure SQL Database。
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 02/20/2019
+ms.date: 11/08/2019
 ms.author: jingwang
-ms.openlocfilehash: 7aadac72aa1c8c7e7085cccba1d8c83ffb3ebc7b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b2293c0dd74903921abb58037afd8eb5db3659d9
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58792417"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513268"
 ---
 # <a name="copy-data-from-azure-blob-to-azure-sql-database-using-azure-data-factory"></a>使用 Azure Data Factory 將資料從 Azure Blob 複製到 Azure SQL Database
 
-在本教學課程中，您會建立 Data Factory 管道，將資料從 Azure Blob 儲存體複製到 Azure SQL Database。 本教學課程中的設定模式從以檔案為基礎的資料存放區複製到關聯式資料存放區。 如需支援作為來源和接收的資料存放區清單，請參閱[支援的資料存放區](copy-activity-overview.md#supported-data-stores-and-formats)表格。
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
+在本教學課程中，您會建立 Data Factory 管道，將資料從 Azure Blob 儲存體複製到 Azure SQL Database。 本教學課程中的設定模式從以檔案為基礎的資料存放區複製到關聯式資料存放區。 如需支援作為來源和接收的資料存放區清單，請參閱[支援的資料存放區和格式](copy-activity-overview.md#supported-data-stores-and-formats)。
 
 您會在本教學課程中執行下列步驟：
 
@@ -30,39 +31,43 @@ ms.locfileid: "58792417"
 > * 建立 Azure 儲存體和 Azure SQL Database 連結服務。
 > * 建立 Azure Blob 和 Azure SQL Database 資料集。
 > * 建立包含複製活動的管道。
-> * 啟動管道執行。
-> * 監視管道和活動執行。
+> * 啟動管線執行。
+> * 監視管線和活動執行。
 
-本教學課程使用 .NET SDK。 您可以使用其他機制來與 Azure Data Factory 互動，請參閱「快速入門」下的範例。
+本教學課程使用 .NET SDK。 您可以使用其他機制來與 Azure Data Factory 互動，請參閱**快速入門**下的範例。
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費 Azure 帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
-* **Azure 儲存體帳戶**。 您會使用 Blob 儲存體作為**來源**資料存放區。 如果您沒有 Azure 儲存體帳戶，請參閱[建立儲存體帳戶](../storage/common/storage-quickstart-create-account.md)一文，按照步驟來建立帳戶。
-* **Azure SQL Database**。 您會使用資料庫作為**接收**資料存放區。 如果您沒有 Azure SQL Database，請參閱[建立 Azure SQL 資料庫](../sql-database/sql-database-get-started-portal.md)一文，按照步驟建立資料庫。
-* **Visual Studio** 2015 或 2017。 本文中的逐步解說使用 Visual Studio 2017。
-* **下載並安裝 [Azure .NET SDK](https://azure.microsoft.com/downloads/)**。
-* 依照[此指示](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)**在 Azure Active Directory 中建立應用程式**。 記下這些值，您在稍後的步驟中會用到：**應用程式識別碼**、**驗證金鑰**和**租用戶識別碼**。 遵循相同文件中的指示，將應用程式指派給「**參與者**」角色。
+* *Azure 儲存體帳戶*。 您會使用 Blob 儲存體作為*來源*資料存放區。 如果您沒有 Azure 儲存體帳戶，請參閱[建立一般用途的儲存體帳戶](../storage/common/storage-account-create.md)。
+* *Azure SQL Database*。 您會使用資料庫作為*接收*資料存放區。 如果您在 Azure SQL Database 中沒有資料庫，請參閱[在 Azure SQL Database 中建立資料庫](../azure-sql/database/single-database-create-quickstart.md)。
+* *Visual Studio*。 本文中的逐步解說是使用 Visual Studio 2019。
+* *[適用於 .NET 的 Azure SDK](/dotnet/azure/dotnet-tools)* 。
+* *Azure Active Directory 應用程式*。 如果您沒有 Azure Active Directory 應用程式，請參閱[建立 Azure Active Directory 應用程式](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)一節 ([如何：使用入口網站來建立 Azure AD 應用程式](../active-directory/develop/howto-create-service-principal-portal.md))。 複製下列值，以便在後續步驟中使用：**應用程式 (用戶端) 識別碼**、**驗證金鑰**，以及**目錄 (租用戶) 識別碼**。 依照同一篇文章中的指示，將應用程式指派給「參與者」角色。
 
 ### <a name="create-a-blob-and-a-sql-table"></a>建立 Blob 和 SQL 資料表
 
-現在，請執行下列步驟，以準備本教學課程的 Azure Blob 和 Azure SQL Database：
+現在，請建立來源 Blob 和接收 SQL 資料表，以準備本教學課程的 Azure Blob 和 Azure SQL Database。
 
 #### <a name="create-a-source-blob"></a>建立來源 Blob
 
-1. 啟動 [記事本]。 複製下列文字，並在磁碟上儲存為 **inputEmp.txt** 檔案。
+首先，建立容器並在其中上傳輸入文字檔，以建立來源 Blob：
 
-    ```
+1. 開啟記事本。 複製下列文字並將其儲存在名為 *inputEmp.txt* 的本機檔案。
+
+    ```inputEmp.txt
     John|Doe
     Jane|Doe
     ```
 
-2. 使用 [Azure 儲存體總管](https://storageexplorer.com/)之類的工具建立 **adfv2tutorial** 容器，然後將 **inputEmp.txt** 檔案上傳至該容器。
+2. 使用 [Azure 儲存體總管](https://azure.microsoft.com/features/storage-explorer/)之類的工具建立 *adfv2tutorial* 容器，然後將 *inputEmp.txt* 檔案上傳至該容器。
 
 #### <a name="create-a-sink-sql-table"></a>建立接收 SQL 資料表
 
-1. 使用下列 SQL 指令碼，在您的 Azure SQL Database 中建立 **dbo.emp** 資料表。
+接下來，建立接收 SQL 資料表：
+
+1. 使用下列 SQL 指令碼，在您的 Azure SQL Database 中建立 *dbo.emp* 資料表。
 
     ```sql
     CREATE TABLE dbo.emp
@@ -76,51 +81,62 @@ ms.locfileid: "58792417"
     CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
     ```
 
-2. 允許 Azure 服務存取 SQL 伺服器。 確定**開啟** Azure SQL 伺服器的 [允許存取 Azure 服務] 設定，讓 Data Factory 服務可以將資料寫入您的 Azure SQL 伺服器。 若要確認並開啟此設定，請執行下列步驟：
+2. 允許 Azure 服務存取 SQL Database。 確定您允許存取伺服器中的 Azure 服務，讓 Data Factory 服務可以將資料寫入 SQL Database。 若要確認並開啟此設定，請執行下列步驟：
 
-    1. 按一下左邊的 [更多服務] 中樞，然後按一下 [SQL Server]。
-    2. 選取您的伺服器，然後按一下 [設定] 下的 [防火牆]。
-    3. 在 [防火牆設定] 頁面中，對 [允許存取 Azure 服務] 按一下 [開啟]。
+    1. 請移至 [Azure 入口網站](https://portal.azure.com)，以管理您的 SQL 伺服器。 搜尋並選取 [SQL 伺服器]。
 
+    2. 選取您的伺服器。
+
+    3. 在 [SQL 伺服器] 功能表的 [安全性] 標題下，選取 [防火牆和虛擬網路]。
+
+    4. 在 [防火牆和虛擬網路] 頁面的 [允許 Azure 服務和資源存取此伺服器] 底下，選取 [開啟]。
 
 ## <a name="create-a-visual-studio-project"></a>建立 Visual Studio 專案
 
-使用 Visual Studio 2015/2017 建立 C# .NET 主控台應用程式。
+使用 Visual Studio，建立 C# .NET 主控台應用程式。
 
-1. 啟動 **Visual Studio**。
-2. 按一下 [檔案]，指向 [新增]，然後按一下 [專案]。
-3. 從右邊的專案類型清單中，選取 [Visual C#] -> [主控台應用程式 (.NET Framework)]。 需要 .NET 4.5.2 版或更新版本。
-4. 在 [名稱] 中輸入 **ADFv2Tutorial**。
-5. 按一下 [確定]  以建立專案。
+1. 開啟 Visual Studio。
+2. 在 [開始] 視窗中，選取 [建立新專案]。
+3. 在 [建立新專案] 視窗中，從專案類型清單中選擇 C# 版本的 [主控台應用程式 (.NET Framework)]。 然後選取 [下一步]。
+4. 在 [設定新專案] 視窗中，輸入 *ADFv2Tutorial* 的 [專案名稱]。 針對 [位置]，瀏覽至或建立用來儲存專案的目錄。 然後選取 [建立]。 新的專案會出現在 Visual Studio IDE 中。
 
 ## <a name="install-nuget-packages"></a>安裝 NuGet 套件
 
-1. 按一下 [工具] -> [NuGet 套件管理員] -> [套件管理員主控台]。
-2. 在 [套件管理員主控台] 中執行下列命令，以安裝套件。 請參閱 [Microsoft.Azure.Management.DataFactory nuget 套件](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/)中的詳細資料。
+接下來，使用 NuGet 套件管理員安裝必要的程式庫套件。
 
-    ```powershell
+1. 在功能表列中，選擇 **工具** > **NuGet 套件管理員** > **套件管理器主控台**。
+2. 在 [套件管理員主控台] 窗格中，執行下列命令以安裝套件。 如需 Azure Data Factory NuGet 套件的詳細資訊，請參閱 [Microsoft.Azure.Management.DataFactory](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/)。
+
+    ```package manager console
     Install-Package Microsoft.Azure.Management.DataFactory
-    Install-Package Microsoft.Azure.Management.ResourceManager
+    Install-Package Microsoft.Azure.Management.ResourceManager -PreRelease
     Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
     ```
 
 ## <a name="create-a-data-factory-client"></a>建立資料處理站用戶端
 
-1. 開啟 **Program.cs**，併入下列陳述式以將參考新增至命名空間。
+請依照下列步驟，建立資料處理站用戶端。
+
+1. 開啟 *Program.cs*，然後使用下列程式碼來覆寫現有的 `using` 陳述式，以新增命名空間的參考。
 
     ```csharp
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using Microsoft.Rest;
+    using Microsoft.Rest.Serialization;
     using Microsoft.Azure.Management.ResourceManager;
     using Microsoft.Azure.Management.DataFactory;
     using Microsoft.Azure.Management.DataFactory.Models;
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
     ```
 
-    
-2. 將下列程式碼新增至 **Main** 方法，以設定變數。 將預留位置取代為您自己的值。 如需目前可使用 Data Factory 的 Azure 區域清單，請在下列頁面上選取您感興趣的區域，然後展開 [分析] 以找出 [Data Factory]：[依區域提供的產品](https://azure.microsoft.com/global-infrastructure/services/)。 資料處理站所使用的資料存放區 (Azure 儲存體、Azure SQL Database 等) 和計算 (HDInsight 等) 可位於其他區域。
+2. 將下列程式碼新增至 `Main`方法，以設定變數。 將 14 個預留位置取代為您自己的值。
+
+    若要查看目前可使用 Data Factory 的 Azure 區域清單，請參閱[依區域提供的產品](https://azure.microsoft.com/global-infrastructure/services/)。 在 [產品] 下拉式清單下，選擇 [瀏覽] > [分析] > [Data Factory]。 然後在 [區域] 下拉式清單中，選擇您感興趣的區域。 方格隨即出現，其中顯示您所選區域的 Data Factory 產品可用性狀態。
+
+    > [!NOTE]
+    > Data Factory 所使用的資料存放區 (例如 Azure 儲存體和 Azure SQL Database) 和計算 (例如 HDInsight) 可位於您為 Data Factory 所選的其他區域中。
 
     ```csharp
     // Set variables
@@ -130,8 +146,8 @@ ms.locfileid: "58792417"
     string subscriptionId = "<your subscription ID to create the factory>";
     string resourceGroup = "<your resource group to create the factory>";
 
-    string region = "East US";
-    string dataFactoryName = "<specify the name of a data factory to create. It must be globally unique.>";
+    string region = "<location to create the data factory in, such as East US>";
+    string dataFactoryName = "<name of data factory to create (must be globally unique)>";
 
     // Specify the source Azure Blob information
     string storageAccount = "<your storage account name to copy data>";
@@ -140,7 +156,12 @@ ms.locfileid: "58792417"
     string inputBlobName = "inputEmp.txt";
 
     // Specify the sink Azure SQL Database information
-    string azureSqlConnString = "Server=tcp:<your server name>.database.windows.net,1433;Database=<your database name>;User ID=<your username>@<your server name>;Password=<your password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30";
+    string azureSqlConnString =
+        "Server=tcp:<your server name>.database.windows.net,1433;" +
+        "Database=<your database name>;" +
+        "User ID=<your username>@<your server name>;" +
+        "Password=<your password>;" +
+        "Trusted_Connection=False;Encrypt=True;Connection Timeout=30";
     string azureSqlTableName = "dbo.emp";
 
     string storageLinkedServiceName = "AzureStorageLinkedService";
@@ -150,20 +171,22 @@ ms.locfileid: "58792417"
     string pipelineName = "Adfv2TutorialBlobToSqlCopy";
     ```
 
-3. 將下列程式碼新增至 **Main** 方法，以建立 **DataFactoryManagementClient** 類別的執行個體。 您會使用此物件來建立資料處理站、連結服務、資料集和管道。 您也可以使用此物件來監視管線執行的詳細資料。
+3. 將下列程式碼新增至 `Main` 方法，以建立 `DataFactoryManagementClient` 類別的執行個體。 您會使用此物件來建立資料處理站、連結服務、資料集和管道。 您也可以使用此物件來監視管線執行的詳細資料。
 
     ```csharp
     // Authenticate and create a data factory management client
     var context = new AuthenticationContext("https://login.windows.net/" + tenantID);
     ClientCredential cc = new ClientCredential(applicationId, authenticationKey);
-    AuthenticationResult result = context.AcquireTokenAsync("https://management.azure.com/", cc).Result;
+    AuthenticationResult result = context.AcquireTokenAsync(
+        "https://management.azure.com/", cc
+    ).Result;
     ServiceClientCredentials cred = new TokenCredentials(result.AccessToken);
     var client = new DataFactoryManagementClient(cred) { SubscriptionId = subscriptionId };
     ```
 
 ## <a name="create-a-data-factory"></a>建立 Data Factory
 
-將下列程式碼新增至 **Main** 方法，以建立**資料處理站**。
+將下列程式碼新增至 `Main` 方法，以建立「資料處理站」。
 
 ```csharp
 // Create a data factory
@@ -172,12 +195,18 @@ Factory dataFactory = new Factory
 {
     Location = region,
     Identity = new FactoryIdentity()
-
 };
-client.Factories.CreateOrUpdate(resourceGroup, dataFactoryName, dataFactory);
-Console.WriteLine(SafeJsonConvert.SerializeObject(dataFactory, client.SerializationSettings));
 
-while (client.Factories.Get(resourceGroup, dataFactoryName).ProvisioningState == "PendingCreation")
+client.Factories.CreateOrUpdate(resourceGroup, dataFactoryName, dataFactory);
+Console.WriteLine(
+    SafeJsonConvert.SerializeObject(dataFactory, client.SerializationSettings)
+);
+
+while (
+    client.Factories.Get(
+        resourceGroup, dataFactoryName
+    ).ProvisioningState == "PendingCreation"
+)
 {
     System.Threading.Thread.Sleep(1000);
 }
@@ -185,11 +214,11 @@ while (client.Factories.Get(resourceGroup, dataFactoryName).ProvisioningState ==
 
 ## <a name="create-linked-services"></a>建立連結的服務
 
-在本教學課程中，您會建立兩個連結服務，分別是針對來源和接收：
+在本教學課程中，您會建立兩個連結服務，分別是針對來源和接收。
 
 ### <a name="create-an-azure-storage-linked-service"></a>建立 Azure 儲存體連結服務
 
-將下列程式碼新增至 **Main** 方法，以建立 **Azure 儲存體連結服務**。 若要深入了解支援的屬性和詳細資料，請參閱 [Azure Blob 連結服務屬性](connector-azure-blob-storage.md#linked-service-properties)。
+將下列程式碼新增至 `Main` 方法，以建立「Azure 儲存體連結服務」。 若要進一步了解支援的屬性和詳細資料，請參閱 [Azure Blob 連結服務屬性](connector-azure-blob-storage.md#linked-service-properties)。
 
 ```csharp
 // Create an Azure Storage linked service
@@ -198,16 +227,24 @@ Console.WriteLine("Creating linked service " + storageLinkedServiceName + "...")
 LinkedServiceResource storageLinkedService = new LinkedServiceResource(
     new AzureStorageLinkedService
     {
-        ConnectionString = new SecureString("DefaultEndpointsProtocol=https;AccountName=" + storageAccount + ";AccountKey=" + storageKey)
+        ConnectionString = new SecureString(
+            "DefaultEndpointsProtocol=https;AccountName=" + storageAccount +
+            ";AccountKey=" + storageKey
+        )
     }
 );
-client.LinkedServices.CreateOrUpdate(resourceGroup, dataFactoryName, storageLinkedServiceName, storageLinkedService);
-Console.WriteLine(SafeJsonConvert.SerializeObject(storageLinkedService, client.SerializationSettings));
+
+client.LinkedServices.CreateOrUpdate(
+    resourceGroup, dataFactoryName, storageLinkedServiceName, storageLinkedService
+);
+Console.WriteLine(
+    SafeJsonConvert.SerializeObject(storageLinkedService, client.SerializationSettings)
+);
 ```
 
 ### <a name="create-an-azure-sql-database-linked-service"></a>建立 Azure SQL Database 連結服務
 
-將下列程式碼新增至 **Main** 方法，以建立 **Azure SQL Database 連結服務**。 若要深入了解支援的屬性和詳細資料，請參閱 [Azure SQL Database 連結服務屬性](connector-azure-sql-database.md#linked-service-properties)。
+將下列程式碼新增至 `Main` 方法，以建立「Azure SQL Database 連結服務」。 若要進一步了解支援的屬性和詳細資料，請參閱 [Azure SQL Database 連結服務屬性](connector-azure-sql-database.md#linked-service-properties)。
 
 ```csharp
 // Create an Azure SQL Database linked service
@@ -219,23 +256,28 @@ LinkedServiceResource sqlDbLinkedService = new LinkedServiceResource(
         ConnectionString = new SecureString(azureSqlConnString)
     }
 );
-client.LinkedServices.CreateOrUpdate(resourceGroup, dataFactoryName, sqlDbLinkedServiceName, sqlDbLinkedService);
-Console.WriteLine(SafeJsonConvert.SerializeObject(sqlDbLinkedService, client.SerializationSettings));
+
+client.LinkedServices.CreateOrUpdate(
+    resourceGroup, dataFactoryName, sqlDbLinkedServiceName, sqlDbLinkedService
+);
+Console.WriteLine(
+    SafeJsonConvert.SerializeObject(sqlDbLinkedService, client.SerializationSettings)
+);
 ```
 
 ## <a name="create-datasets"></a>建立資料集
 
-在本節中，您會建立兩個資料集：一個作為來源，另一個作為接收。 
+在本節中，您會建立兩個資料集：一個作為來源，另一個作為接收。
 
 ### <a name="create-a-dataset-for-source-azure-blob"></a>建立來源 Azure Blob 的資料集
 
-將下列程式碼新增至 **Main** 方法，以建立 **Azure Blob 資料集**。 若要深入了解支援的屬性和詳細資料，請參閱 [Azure Blob 資料集屬性](connector-azure-blob-storage.md#dataset-properties)。
+將下列程式碼新增至 `Main` 方法，以建立「Azure Blob 資料集」。 若要進一步了解支援的屬性和詳細資訊，請參閱 [Azure Blob 資料集屬性](connector-azure-blob-storage.md#dataset-properties)。
 
 您可以定義資料集來代表 Azure Blob 中的來源資料。 此 Blob 資料集會參考您在前一個步驟中建立的 Azure 儲存體連結服務，並描述：
 
-- 複製的來源 Blob 位置：**FolderPath** 和 **FileName**；
-- 指出如何剖析內容的 Blob 格式：**TextFormat** 及其設定 (例如，資料行分隔符號)。
-- 資料結構，包括資料行名稱和資料型別，在此案例中是對應至接收 SQL 資料表。
+- 複製的來源 Blob 位置：`FolderPath` 和 `FileName`
+- Blob 格式，指出如何剖析內容：`TextFormat` 及其設定，例如資料行分隔符號。
+- 資料結構，包括資料行名稱和資料類型，在此案例中對應至接收 SQL 資料表。
 
 ```csharp
 // Create an Azure Blob dataset
@@ -243,8 +285,7 @@ Console.WriteLine("Creating dataset " + blobDatasetName + "...");
 DatasetResource blobDataset = new DatasetResource(
     new AzureBlobDataset
     {
-        LinkedServiceName = new LinkedServiceReference
-        {
+        LinkedServiceName = new LinkedServiceReference {
             ReferenceName = storageLinkedServiceName
         },
         FolderPath = inputBlobPath,
@@ -252,28 +293,25 @@ DatasetResource blobDataset = new DatasetResource(
         Format = new TextFormat { ColumnDelimiter = "|" },
         Structure = new List<DatasetDataElement>
         {
-            new DatasetDataElement
-            {
-                Name = "FirstName",
-                Type = "String"
-            },
-            new DatasetDataElement
-            {
-                Name = "LastName",
-                Type = "String"
-            }
+            new DatasetDataElement { Name = "FirstName", Type = "String" },
+            new DatasetDataElement { Name = "LastName", Type = "String" }
         }
     }
 );
-client.Datasets.CreateOrUpdate(resourceGroup, dataFactoryName, blobDatasetName, blobDataset);
-Console.WriteLine(SafeJsonConvert.SerializeObject(blobDataset, client.SerializationSettings));
+
+client.Datasets.CreateOrUpdate(
+    resourceGroup, dataFactoryName, blobDatasetName, blobDataset
+);
+Console.WriteLine(
+    SafeJsonConvert.SerializeObject(blobDataset, client.SerializationSettings)
+);
 ```
 
 ### <a name="create-a-dataset-for-sink-azure-sql-database"></a>建立接收 Azure SQL Database 的資料集
 
-將下列程式碼新增至 **Main** 方法，以建立 **Azure SQL Database 資料集**。 若要深入了解支援的屬性和詳細資料，請參閱 [Azure SQL Database 資料集屬性](connector-azure-sql-database.md#dataset-properties)。
+將下列程式碼新增至 `Main` 方法，以建立「Azure SQL Database 資料集」。 若要進一步了解支援的屬性和詳細資訊，請參閱 [Azure SQL Database 資料集屬性](connector-azure-sql-database.md#dataset-properties)。
 
-您可以定義資料集來代表 Azure SQL Database 中的接收資料。 此資料集會參考您在前一個步驟中建立的 Azure SQL Database 連結服務。 它也會指定 SQL 資料表，其中保存已複製的資料。 
+您可以定義資料集來代表 Azure SQL Database 中的接收資料。 此資料集會參考您在前一個步驟中建立的 Azure SQL Database 連結服務。 它也會指定 SQL 資料表，其中保存已複製的資料。
 
 ```csharp
 // Create an Azure SQL Database dataset
@@ -288,13 +326,18 @@ DatasetResource sqlDataset = new DatasetResource(
         TableName = azureSqlTableName
     }
 );
-client.Datasets.CreateOrUpdate(resourceGroup, dataFactoryName, sqlDatasetName, sqlDataset);
-Console.WriteLine(SafeJsonConvert.SerializeObject(sqlDataset, client.SerializationSettings));
+
+client.Datasets.CreateOrUpdate(
+    resourceGroup, dataFactoryName, sqlDatasetName, sqlDataset
+);
+Console.WriteLine(
+    SafeJsonConvert.SerializeObject(sqlDataset, client.SerializationSettings)
+);
 ```
 
 ## <a name="create-a-pipeline"></a>建立管線
 
-將下列程式碼新增至 **Main** 方法，以建立**具有複製活動的管線**。 在本教學課程中，此管道包含一個活動：複製活動，可接受 Blob 資料集作為來源，也接受 SQL 資料集作為接收。 若要深入了解複製活動的詳細資料，請參閱[複製活動概觀](copy-activity-overview.md)。
+將下列程式碼新增至 `Main` 方法，以建立「具有複製活動的管線」。 在本教學課程中，此管道包含一個活動：`CopyActivity`，可接受 Blob 資料集作為來源，也接受 SQL 資料集作為接收。 如需複製活動詳細資料的相關資訊，請參閱 [Azure Data Factory 中的複製活動](copy-activity-overview.md)。
 
 ```csharp
 // Create a pipeline with copy activity
@@ -308,41 +351,42 @@ PipelineResource pipeline = new PipelineResource
             Name = "CopyFromBlobToSQL",
             Inputs = new List<DatasetReference>
             {
-                new DatasetReference()
-                {
-                    ReferenceName = blobDatasetName
-                }
+                new DatasetReference() { ReferenceName = blobDatasetName }
             },
             Outputs = new List<DatasetReference>
             {
-                new DatasetReference
-                {
-                    ReferenceName = sqlDatasetName
-                }
+                new DatasetReference { ReferenceName = sqlDatasetName }
             },
             Source = new BlobSource { },
             Sink = new SqlSink { }
         }
     }
 };
+
 client.Pipelines.CreateOrUpdate(resourceGroup, dataFactoryName, pipelineName, pipeline);
-Console.WriteLine(SafeJsonConvert.SerializeObject(pipeline, client.SerializationSettings));
+Console.WriteLine(
+    SafeJsonConvert.SerializeObject(pipeline, client.SerializationSettings)
+);
 ```
 
-## <a name="create-a-pipeline-run"></a>建立管道執行
+## <a name="create-a-pipeline-run"></a>建立管線執行
 
-將下列程式碼新增至 **Main** 方法，以**觸發管線執行**。
+將下列程式碼新增至 `Main` 方法，以「觸發管線執行」。
 
 ```csharp
 // Create a pipeline run
 Console.WriteLine("Creating pipeline run...");
-CreateRunResponse runResponse = client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, pipelineName).Result.Body;
+CreateRunResponse runResponse = client.Pipelines.CreateRunWithHttpMessagesAsync(
+    resourceGroup, dataFactoryName, pipelineName
+).Result.Body;
 Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
 ```
 
-## <a name="monitor-a-pipeline-run"></a>監視管道執行
+## <a name="monitor-a-pipeline-run"></a>監視管線執行
 
-1. 將下列程式碼新增至 **Main** 方法，以持續檢查管線執行的狀態，直到完成複製資料為止。
+現在插入程式碼以檢查管線執行狀態，並取得複製活動執行的詳細資料。
+
+1. 將下列程式碼新增至 `Main`方法，以持續檢查管線執行的狀態，直到完成複製資料為止。
 
     ```csharp
     // Monitor the pipeline run
@@ -350,7 +394,9 @@ Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
     PipelineRun pipelineRun;
     while (true)
     {
-        pipelineRun = client.PipelineRuns.Get(resourceGroup, dataFactoryName, runResponse.RunId);
+        pipelineRun = client.PipelineRuns.Get(
+            resourceGroup, dataFactoryName, runResponse.RunId
+        );
         Console.WriteLine("Status: " + pipelineRun.Status);
         if (pipelineRun.Status == "InProgress")
             System.Threading.Thread.Sleep(15000);
@@ -359,31 +405,36 @@ Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
     }
     ```
 
-2. 將下列程式碼新增至 **Main** 方法，以取出複製活動執行的詳細資料，例如讀取/寫入的資料大小。
+2. 將下列程式碼新增至 `Main` 方法，以取出複製活動執行的詳細資料，例如被讀取或寫入的資料大小。
 
     ```csharp
     // Check the copy activity run details
     Console.WriteLine("Checking copy activity run details...");
 
-    List<ActivityRun> activityRuns = client.ActivityRuns.ListByPipelineRun(
-    resourceGroup, dataFactoryName, runResponse.RunId, DateTime.UtcNow.AddMinutes(-10), DateTime.UtcNow.AddMinutes(10)).ToList(); 
- 
+    RunFilterParameters filterParams = new RunFilterParameters(
+        DateTime.UtcNow.AddMinutes(-10), DateTime.UtcNow.AddMinutes(10)
+    );
+
+    ActivityRunsQueryResponse queryResponse = client.ActivityRuns.QueryByPipelineRun(
+        resourceGroup, dataFactoryName, runResponse.RunId, filterParams
+    );
+
     if (pipelineRun.Status == "Succeeded")
     {
-        Console.WriteLine(activityRuns.First().Output);
+        Console.WriteLine(queryResponse.Value.First().Output);
     }
     else
-        Console.WriteLine(activityRuns.First().Error);
-    
+        Console.WriteLine(queryResponse.Value.First().Error);
+
     Console.WriteLine("\nPress any key to exit...");
     Console.ReadKey();
     ```
 
 ## <a name="run-the-code"></a>執行程式碼
 
-建置並啟動應用程式，然後確認管線執行。
+選擇 [建置] > [建置解決方案] 來建置應用程式。 然後選擇 [偵錯] > [開始偵錯]，然後確認管線執行，以啟動應用程式。
 
-在建立資料處理站、連結服務、資料集、管道和管道執行時，主控台會印出進度。 然後會檢查管道執行狀態。 請等待出現複製活動執行詳細資料及讀取/寫入的資料大小。 然後，使用 SSMS (SQL Server Management Studio) 或 Visual Studio 之類的工具，連線至目的地 Azure SQL Database，檢查資料是否已複製到您指定的資料表。
+在建立資料處理站、連結服務、資料集、管道和管道執行時，主控台會印出進度。 然後會檢查管線執行狀態。 請等待出現複製活動執行詳細資料及讀取/寫入的資料大小。 然後，使用諸如 SQL Server Management Studio (SSMS) 或 Visual Studio 等工具，連線到目的地 Azure SQL Database，並檢查您所指定的目的地資料表是否包含所複製的資料。
 
 ### <a name="sample-output"></a>範例輸出
 
@@ -513,21 +564,19 @@ Checking copy activity run details...
 Press any key to exit...
 ```
 
-
 ## <a name="next-steps"></a>後續步驟
 
-在此範例中的管線會將資料從 Azure Blob 儲存體中的一個位置複製到其他位置。 您已了解如何︰ 
+在此範例中的管線會將資料從 Azure Blob 儲存體中的一個位置複製到其他位置。 您已了解如何︰
 
 > [!div class="checklist"]
 > * 建立資料處理站。
 > * 建立 Azure 儲存體和 Azure SQL Database 連結服務。
 > * 建立 Azure Blob 和 Azure SQL Database 資料集。
-> * 建立包含複製活動的管道。
-> * 啟動管道執行。
+> * 建立包含複製活動的管線。
+> * 啟動管線執行。
 > * 監視管線和活動執行。
 
-
-進入下列教學課程，以了解如何將資料從內部部署複製到雲端： 
+進入下列教學課程，以了解如何將資料從內部部署複製到雲端：
 
 > [!div class="nextstepaction"]
 >[將資料從內部部署複製到雲端](tutorial-hybrid-copy-powershell.md)

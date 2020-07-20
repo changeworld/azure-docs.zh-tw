@@ -1,11 +1,10 @@
 ---
-title: Azure 資訊安全中心快速入門 - 將您的 Linux 電腦上架到資訊安全中心 | Microsoft Docs
+title: 將 Linux 電腦登入 Azure 資訊安全中心 | Microsoft Docs
 description: 本快速入門說明如何將您的 Linux 電腦上架到資訊安全中心。
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security-center
 ms.devlang: na
@@ -14,20 +13,20 @@ ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/02/2018
-ms.author: rkarlin
-ms.openlocfilehash: 9f4e001909fb739aa368e5201649e85cce9906d3
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.author: memildin
+ms.openlocfilehash: 3b7181550fd76f158ec04e9779f4301bd74484e1
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59521915"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435967"
 ---
 # <a name="quickstart-onboard-linux-computers-to-azure-security-center"></a>快速入門：將 Linux 電腦上架到 Azure 資訊安全中心
-將 Azure 訂用帳戶上架之後，您可以透過佈建 Linux 代理程式，為在 Azure 外 (例如，內部部署或其他雲端服務) 執行的 Linux 資源啟用資訊安全中心。
+將 Azure 訂用帳戶上架之後，您可以透過佈建代理程式，為在 Azure 外 (例如，內部部署或其他雲端服務) 執行的 Linux 資源啟用資訊安全中心。 代理程式的名稱為 Log Analytics 代理程式，但其另稱為「OMS 代理程式」。
 
-本快速入門說明如何在 Linux 電腦上安裝 Linux 代理程式。
+本快速入門說明如何在 Linux 電腦上安裝代理程式。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 若要開始使用資訊安全中心，您必須有 Microsoft Azure 訂用帳戶。 如果您沒有訂用帳戶，可以註冊[免費帳戶](https://azure.microsoft.com/pricing/free-trial/)。
 
 確認您是使用資訊安全中心的標準定價層之後，再開始按照本快速入門操作。 如需升級指示，請參閱[將 Azure 訂用帳戶上架到資訊安全中心標準定價層](security-center-get-started.md)。 您可以免費試用資訊安全中心的標準層。 若要深入了解，請參閱[價格頁面](https://azure.microsoft.com/pricing/details/security-center/)。
@@ -35,18 +34,18 @@ ms.locfileid: "59521915"
 ## <a name="add-new-linux-computer"></a>新增 Linux 電腦
 
 1. 登入 [Azure 入口網站](https://azure.microsoft.com/features/azure-portal/)。
-2. 在 [Microsoft Azure] 功能表中，選取 [資訊安全中心]。 [資訊安全中心 - 概觀] 隨即開啟。
+2. 在 [Microsoft Azure]  功能表中，選取 [資訊安全中心]  。 [資訊安全中心 - 概觀]  隨即開啟。
 
    ![資訊安全中心概觀][2]
 
-3. 在 [資訊安全中心] 主功能表下，選取 [開始使用]。
-4. 選取 [開始使用] 索引標籤。![開始使用][3]
+3. 在 [資訊安全中心] 主功能表下，選取 [開始使用]  。
+4. 選取 [開始使用]  索引標籤。![開始使用][3]
 
-5. 按一下 [新增非 Azure 電腦] 底下的 [設定]，隨即會顯示 Log Analytics 工作區清單。 清單中顯示啟用自動佈建之後，資訊安全中心為您建立的預設工作區 (如果適用)。 選取此工作區或其他您要使用的工作區。
+5. 按一下 [新增非 Azure 電腦]  底下的 [設定]  ，隨即會顯示 Log Analytics 工作區清單。 清單中顯示啟用自動佈建之後，資訊安全中心為您建立的預設工作區 (如果適用)。 選取此工作區或其他您要使用的工作區。
 
     ![新增非 Azure 電腦](./media/quick-onboard-linux-computer/non-azure.png)
 
-6. 在 [直接代理程式] 頁面的 [下載並啟動 Linux 代理程式] 下，選取 [複製] 按鈕以複製 *wget* 命令。
+6. 在 [直接代理程式]  頁面的 [下載並啟動 Linux 代理程式]  下，選取 [複製]  按鈕以複製 *wget* 命令。
 
 7. 開啟 [記事本] 並貼上此命令。 將此檔案儲存到可從您的 Linux 電腦存取的位置。
 
@@ -57,15 +56,15 @@ ms.locfileid: "59521915"
 
    ![安裝代理程式][5]
 
-Linux 資訊安全中心代理程式的記錄可以在下列位置找到：*/var/opt/microsoft/omsagent/\<工作區識別碼>/log/*
+代理程式的記錄可以在下列位置找到： */var/opt/microsoft/omsagent/\<工作區識別碼>/log/*
 
   ![代理程式記錄][6]
 
 有時候可能需要最多 30 分鐘，Linux 電腦才會在資訊安全中心中出現。
 
-您現在可於同一處監視您的 Azure VM 和非 Azure 電腦。 在 [計算] 下，您可以檢視所有 VM 和電腦的概觀及建議。 每一欄表示一組建議。 色彩代表 VM 或電腦目前對於該建議的安全性狀態。 資訊安全中心也會在安全性警示中顯示針對這些電腦所偵測到的任何項目。
+您現在可於同一處監視您的 Azure VM 和非 Azure 電腦。 在 [計算]  下，您可以檢視所有 VM 和電腦的概觀及建議。 每一欄表示一組建議。 色彩代表 VM 或電腦目前對於該建議的安全性狀態。 資訊安全中心也會在安全性警示中顯示針對這些電腦所偵測到的任何項目。
 
-  ![[計算] 刀鋒視窗][7]：[計算] 刀鋒視窗上顯示兩個類型的圖示：
+  ![[計算] 刀鋒視窗][7]：[計算]  刀鋒視窗上顯示兩個類型的圖示：
 
   ![icon1](./media/quick-onboard-linux-computer/security-center-monitoring-icon1.png) 非 Azure 電腦
 

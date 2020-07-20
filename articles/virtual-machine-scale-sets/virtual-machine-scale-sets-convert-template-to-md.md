@@ -1,31 +1,25 @@
 ---
-title: 轉換 Azure Resource Manager 擴展集範本以使用受控磁碟 | Microsoft Docs
-description: 轉換擴展集範本至受控磁碟擴展集範本。
+title: 將擴展集範本轉換為使用受控磁碟
+description: 將 Azure Resource Manager 虛擬機器擴展集範本轉換為受控磁片擴展集範本。
 keywords: 虛擬機器擴展集
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: mayanknayar
-manager: jeconnoc
-editor: tysonn
-tags: azure-resource-manager
-ms.assetid: bc8c377a-8c3f-45b8-8b2d-acc2d6d0b1e8
+author: ju-shim
+ms.author: jushiman
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 5/18/2017
-ms.author: manayar
-ms.openlocfilehash: b2d1738b85799079b3af7ab39c5cb1799a38d382
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.subservice: disks
+ms.date: 6/25/2020
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: 03cbe4eb56f3b3b99f87048b699f76b30b7937c8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60731732"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85373959"
 ---
 # <a name="convert-a-scale-set-template-to-a-managed-disk-scale-set-template"></a>轉換擴展集範本至受控磁碟擴展集範本
 
-使用 Resource Manager 範本來建立不使用受控磁碟之擴展集的客戶可能希望修改它以使用受控磁碟。 本文說明如何使用受控磁碟，來作為 [Azure 快速入門範本](https://github.com/Azure/azure-quickstart-templates) (提供 Resource Manager 範本範例的社群導向存放庫) 的提取要求範例。 您可以在 [https://github.com/Azure/azure-quickstart-templates/pull/2998](https://github.com/Azure/azure-quickstart-templates/pull/2998) 找到完整的提取要求，下方則提供相關的差異部分及說明：
+使用 Resource Manager 範本來建立不使用受控磁碟之擴展集的客戶可能希望修改它以使用受控磁碟。 本文說明如何使用受控磁碟，來作為 [Azure 快速入門範本](https://github.com/Azure/azure-quickstart-templates) (提供 Resource Manager 範本範例的社群導向存放庫) 的提取要求範例。 您可以在這裡看到完整的提取要求： [https://github.com/Azure/azure-quickstart-templates/pull/2998](https://github.com/Azure/azure-quickstart-templates/pull/2998) 和差異的相關部分，以及說明：
 
 ## <a name="making-the-os-disks-managed"></a>將 OS 磁碟設定為受控磁碟
 
@@ -124,7 +118,7 @@ ms.locfileid: "60731732"
 擴展集設定中並沒有明確的屬性可決定要使用受控或非受控磁碟。 擴展集會根據儲存體設定檔中的屬性來判斷要使用的磁碟。 因此，修改範本以確保擴展集的儲存體設定檔中有正確的屬性非常重要。
 
 
-## <a name="data-disks"></a>数据磁盘数
+## <a name="data-disks"></a>資料磁碟
 
 根據上面的變更，擴展集會針對 OS 磁碟使用受控磁碟，但對於資料磁碟呢？ 若要新增資料磁碟，請在與 "osDisk" 相同層級的 "storageProfile" 下新增 "dataDisks" 屬性。 屬性的值是 JSON 物件清單，其中每個物件都具有屬性 "lun" (對於 VM 上的每個資料磁碟，這必須是唯一的)、"createOption" ("empty" 是目前唯一支援的選項) 與 "diskSizeGB" (以 GB 為單位的磁碟大小，必須大於 0 並小於 1024)，如下列範例中所示：
 
@@ -144,7 +138,7 @@ ms.locfileid: "60731732"
 
 
 ## <a name="next-steps"></a>後續步驟
-如需使用擴展集的範例 Resource Manager 範本，請在 [Azure 快速入門範本 GitHub 儲存機制](https://github.com/Azure/azure-quickstart-templates)中搜尋 "vmss"。
+例如，使用擴展集 Resource Manager 範本，請在[Azure 快速入門範本 GitHub](https://github.com/Azure/azure-quickstart-templates)儲存機制中搜尋 "vmss"。
 
 如需一般資訊，請參閱 [擴展集的主要登陸頁面](https://azure.microsoft.com/services/virtual-machine-scale-sets/)。
 

@@ -1,22 +1,19 @@
 ---
-title: Azure Container Registry 中的最佳做法
+title: 登錄最佳做法
 description: 了解如何依照這些最佳做法來有效地使用 Azure Container Registry。
-services: container-registry
-author: dlepow
-ms.service: container-registry
 ms.topic: article
 ms.date: 09/27/2018
-ms.author: danlep
-ms.openlocfilehash: 2cf64c7c4f99a57c4a4a6cf03e68e8af803ceca9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: fc84fb8cb98f58e28570095370d55a7358ce3a99
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60787340"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682678"
 ---
 # <a name="best-practices-for-azure-container-registry"></a>Azure Container Registry 的最佳做法
 
 藉由依照這些最佳做法進行操作，您將可協助發揮最大效能，以及以符合成本效益的方式在 Azure 中使用您的私人 Docker 登錄。
+
+關於登錄之中標籤和版本映像的策略，另請參閱標籤和版本設定容器映像的[建議](container-registry-image-tag-version.md)。 
 
 ## <a name="network-close-deployment"></a>網路鄰近部署
 
@@ -37,12 +34,10 @@ ms.locfileid: "60787340"
 
 例如，請思考一下下列容器映像標記。 全公司使用的映象 (例如 `aspnetcore`) 會放在根命名空間中，而「生產」及「行銷」群組所擁有的容器映像則會各自使用自己的命名空間。
 
-```
-contoso.azurecr.io/aspnetcore:2.0
-contoso.azurecr.io/products/widget/web:1
-contoso.azurecr.io/products/bettermousetrap/refundapi:12.3
-contoso.azurecr.io/marketing/2017-fall/concertpromotions/campaign:218.42
-```
+- *contoso.azurecr.io/aspnetcore:2.0*
+- *contoso.azurecr.io/products/widget/web:1*
+- *contoso.azurecr.io/products/bettermousetrap/refundapi:12.3*
+- *contoso.azurecr.io/marketing/2017-fall/concertpromotions/campaign:218.42*
 
 ## <a name="dedicated-resource-group"></a>專用資源群組
 
@@ -50,7 +45,7 @@ contoso.azurecr.io/marketing/2017-fall/concertpromotions/campaign:218.42
 
 雖然您可以對特定主機類型 (例如「Azure 容器執行個體」) 進行實驗，但完成後，您可能會想要刪除該容器執行個體。 不過，您也可能會想要保留已推送到 Azure Container Registry 的映像集合。 藉由將登錄放在它自己的資源群組中，即可將刪除容器執行個體資源群組時意外刪除該登錄中映像集合的風險降到最低。
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>驗證
 
 向 Azure Container Registry 進行驗證時，有兩種主要的案例：個人驗證和服務 (或「遠端控制」) 驗證。 下表提供這些案例的簡要概觀，以及各個案例的建議驗證方法。
 
@@ -63,12 +58,15 @@ contoso.azurecr.io/marketing/2017-fall/concertpromotions/campaign:218.42
 
 ## <a name="manage-registry-size"></a>管理登錄大小
 
-每個[容器登錄 SKU][container-registry-skus] 的儲存體條件約束都要符合典型案例：**基本**可用於開始使用、**標準**可用於大部分的實際執行應用程式，而**進階**可進行大規模效能和[異地複寫][container-registry-geo-replication]。 在整個登錄生命週期，您應該定期刪除未使用的內容來管理其大小。
+每個[容器登錄服務層級][container-registry-skus]的儲存體條件約束都要符合典型案例：**基本**可用於開始使用、**標準**可用於大部分的實際執行應用程式，而**進階**可進行大規模效能和[異地複寫][container-registry-geo-replication]。 在整個登錄生命週期，您應該定期刪除未使用的內容來管理其大小。
 
 使用 Azure CLI 命令 [az acr show-usage][az-acr-show-usage] 來顯示登錄的目前大小：
 
-```console
-$ az acr show-usage --resource-group myResourceGroup --name myregistry --output table
+```azurecli
+az acr show-usage --resource-group myResourceGroup --name myregistry --output table
+```
+
+```output
 NAME      LIMIT         CURRENT VALUE    UNIT
 --------  ------------  ---------------  ------
 Size      536870912000  185444288        Bytes
@@ -87,7 +85,7 @@ Azure Container Registry 支援數種方法供您從容器登錄中刪除映像�
 
 ## <a name="next-steps"></a>後續步驟
 
-在數個個別提供不同功能的層 (稱為 SKU) 中都有提供 Azure Container Registry。 如需有關可用 SKU 的詳細資料，請參閱 [Azure Container Registry SKU](container-registry-skus.md)。
+在數個個別提供不同功能的階層 (也稱為 SKU) 中都有提供 Azure Container Registry。 如需可用服務層級的詳細資訊，請參閱 [Azure Container Registry 服務層](container-registry-skus.md)。
 
 <!-- IMAGES -->
 [delete-repository-portal]: ./media/container-registry-best-practices/delete-repository-portal.png

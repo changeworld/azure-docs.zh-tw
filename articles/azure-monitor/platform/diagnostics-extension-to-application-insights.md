@@ -1,19 +1,16 @@
 ---
-title: 設定 Azure 診斷將資料傳送至 Application Insights
+title: 將 Azure 診斷資料傳送至 Application Insights
 description: 更新 Azure 診斷公用組態以傳送資料至 Application Insights。
-services: azure-monitor
-author: rboucher
-ms.service: azure-monitor
-ms.topic: conceptual
-ms.date: 03/19/2016
-ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: f7e21b805c64522005dce3e7d04aa158e1c21032
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.topic: conceptual
+author: bwren
+ms.author: bwren
+ms.date: 03/19/2016
+ms.openlocfilehash: 80d971abd248ca8253a374b488c693ea9aa2ea3b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60396105"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77672322"
 ---
 # <a name="send-cloud-service-virtual-machine-or-service-fabric-diagnostic-data-to-application-insights"></a>將雲端服務、虛擬機器或 Service Fabric 診斷資料傳送至 Application Insights
 雲端服務、虛擬機器、虛擬機器擴展集和 Service Fabric 全都使用 Azure 診斷擴充功能來收集資料。  Azure 診斷會將資料傳送至 Azure 儲存體資料表。  不過，您也可以使用 Azure 診斷擴充功能 1.5 或更新版本，將所有資料或一部分資料傳送至其他位置。
@@ -58,19 +55,19 @@ Application Insights 的接收器組態範例：
     ]
 }
 ```
-- **Sink** name 屬性是可唯一識別接收器的字串值。
+- **Sink name** ** 屬性是可唯一識別接收器的字串值。
 
 - **ApplicationInsights** 元素指定 Azure 診斷資料送出的 Application Insights 資源的檢測金鑰。
     - 如果您沒有現有的 Application Insights 資源，請參閱[建立新的 Application Insights 資源](../../azure-monitor/app/create-new-resource.md )，以取得建立資源及取得檢測金鑰的詳細資訊。
     - 如果您以 Azure SDK 2.8 和更新版本開發雲端服務，則會自動填入此檢測金鑰。 這個值是根據封裝雲端服務專案時的 **APPINSIGHTS_INSTRUMENTATIONKEY** 服務組態設定。 請參閱[使用含雲端服務的 Application Insights](../../azure-monitor/app/cloudservices.md)。
 
 - **Channels** 元素包含一個或多個 **Channel** 元素。
-    - name屬性可唯一參考該通道。
-    - loglevel  屬性可讓您指定通道允許的記錄等級。 可用的記錄等級從最多到最少資訊依序為：
-        - 詳細資訊
+    - name** 屬性可唯一參考該通道。
+    - loglevel ** 屬性可讓您指定通道允許的記錄等級。 可用的記錄等級從最多到最少資訊依序為：
+        - 「詳細資訊」
         - 資訊
         - 警告
-        - Error
+        - 錯誤
         - 重要
 
 通道就像篩選條件，可讓您選取要傳送至目標接收器的特定記錄等級。 例如，您可以收集詳細記錄，將它們傳送至儲存體，但只將「錯誤」傳送至接收器。
@@ -211,8 +208,8 @@ Application Insights 的接收器組態範例：
 ## <a name="limitations"></a>限制
 
 - **通道只記錄類型，不記錄效能計數器。** 如果您在通道中指定效能計數器元素，將會忽略。
-- **通道的記錄等級不能超過 Azure 診斷收集的記錄等級。** 例如，您不能在 Logs 元素中收集「應用程式記錄」錯誤，也無法嘗試將「詳細資訊」記錄傳送至 Application Insight 接收器。 *ScheduledTransferLogLevelFilter* 屬性一律必須收集與您正嘗試傳送到接收器的記錄相等或更多個記錄。
-- **您無法將 Azure 診斷擴充功能收集的 blob 資料傳送至 Application Insights。** 例如，Directories 節點下指定的任何項目。 針對損毀傾印，實際損毀傾印會傳送至 blob 儲存體，並只會將損毀傾印所產生的通知傳送至 Application Insights。
+- **通道的記錄層級不能超過 Azure 診斷所要收集的記錄層級。** 例如，您不能在 Logs 元素中收集「應用程式記錄」錯誤，也無法嘗試將「詳細資訊」記錄傳送至 Application Insight 接收器。 *ScheduledTransferLogLevelFilter* 屬性一律必須收集與您正嘗試傳送到接收器的記錄相等或更多個記錄。
+- **您無法將 Azure 診斷擴充功能收集的 blob 資料傳送至 Application Insights。** 例如，在 [*目錄*] 節點下指定的任何專案。 針對損毀傾印，實際損毀傾印會傳送至 blob 儲存體，並只會將損毀傾印所產生的通知傳送至 Application Insights。
 
 ## <a name="next-steps"></a>後續步驟
 * 了解如何在 Application Insights 中[檢視您的 Azure 診斷資訊](https://docs.microsoft.com/azure/application-insights/app-insights-cloudservices)。

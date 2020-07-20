@@ -1,4 +1,5 @@
 - name: 說話者辨識文件
+  href: Home.md
 - name: 概觀
   items:
     - name: 深入了解說話者辨識
@@ -12,7 +13,7 @@
           items:
             - name: Android
               href: 'https://github.com/Microsoft/Cognitive-SpeakerRecognition-Android'
-            - name: ' Windows'
+            - name: Windows
               href: 'https://github.com/Microsoft/Cognitive-SpeakerRecognition-Windows'
 - name: 資源
   items:

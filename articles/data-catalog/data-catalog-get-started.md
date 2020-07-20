@@ -1,17 +1,17 @@
 ---
 title: 建立 Azure 資料目錄
-description: 有關如何建立 Azure 資料目錄的快速入門。
+description: 本快速入門說明如何使用 Azure 入口網站來建立 Azure 資料目錄。
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: quickstart
-ms.date: 04/05/2019
-ms.openlocfilehash: f00e9eaf56f3973b357792a8d1923a4b5998e0a2
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.date: 05/26/2020
+ms.openlocfilehash: e37bd22e0bd0f750ef7b4ae9cc8465ed5292883e
+ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59997728"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83860982"
 ---
 # <a name="quickstart-create-an-azure-data-catalog"></a>快速入門：建立 Azure 資料目錄
 
@@ -21,7 +21,10 @@ Azure 資料目錄是完全受控的雲端服務，可作為企業資料資產�
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
+
+> [!Note]
+> 由於 Azure 安全性需求，Azure 資料目錄已強制使用傳輸層安全性 (TLS) 1.2。 TLS 1.0 和 TLS 1.1 已停用。 如果您的電腦未針對 TLS 1.2 進行更新，您可能會遇到執行註冊工具的錯誤。 請參閱[啟用傳輸層安全性 (1.2)](https://docs.microsoft.com/mem/configmgr/core/plan-design/security/enable-tls-1-2) 以針對 TLS 1.2 更新電腦。
 
 若要開始，您需要：
 
@@ -36,7 +39,7 @@ Azure 資料目錄是完全受控的雲端服務，可作為企業資料資產�
 
 1. 移至 [Azure 入口網站](https://portal.azure.com) > [建立資源]，然後選取 [資料目錄]。
 
-    ![建立資料目錄](media/data-catalog-get-started/data-catalog-create.png)
+    ![Azure 資料目錄建立按鈕](media/data-catalog-get-started/data-catalog-create.png)
 
 2. 指定資料目錄的 [名稱]、想要使用的 [訂用帳戶]、目錄的 [位置] 和 [定價層]。 然後選取 [建立]。
 

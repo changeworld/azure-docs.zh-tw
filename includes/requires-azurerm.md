@@ -1,20 +1,24 @@
 ---
-author: sptramer
-ms.author: sttramer
-manager: carmonm
-ms.date: 12/11/2018
 ms.topic: include
-ms.openlocfilehash: a956cd1e029371fa7031d262206b0ce10aa8dbff
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.date: 06/05/2019
+author: dbradish-microsoft
+ms.author: dbradish
+manager: barbkess
+ms.openlocfilehash: 083d2ecb973a2c0ffc6cfddb9cdcb387e6025fb2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60388086"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85378602"
 ---
 > [!IMPORTANT]
 >
-> 使用 PowerShell 中的 Azure 功能需要您安裝 `AzureRM` 模組。 這是一個較舊的模組，僅適用於 Windows PowerShell 5.x，它可以收到重大更新，但不會再取得新的功能。 如果您安裝了 `Az` 模組，則還必須安裝 `AzureRM`。 若要安裝 `AzureRM`：
-> 
-> 1. 使用 `Disable-AzAlias` 停用 `Az` 中的 AzureRM 別名 (如果已啟用)。 在未安裝 `Az` 或停用別名的情況下執行此命令是無害的。
-> 2. 請遵循 [AzureRM 的最新安裝說明](/powershell/azure/install-az-ps)。 即使您安裝了 `AzureRM`，也請更新為最新版本。
+> 使用 PowerShell 中的 Azure 功能需要安裝 `AzureRM` 模組。 這是一個較舊的模組，僅適用於 Windows PowerShell 5.1，而且不會再取得新的功能。
+> 若在相同版本的 PowerShell 上安裝 `Az` 和 `AzureRM` 模組，這兩個模組__不會__相容。
+> 如果您需要這兩個版本：
+>
+> 1. 從 PowerShell 5.1 工作階段中[解除安裝 Az 模組](/powershell/azure/uninstall-az-ps)。
+> 2. 從 PowerShell 5.1 工作階段中[安裝 AzureRM 模組](/powershell/azure/azurerm/install-azurerm-ps)。
+> 3. [下載並安裝 PowerShell Core 6.x 或更新版本](/powershell/scripting/install/installing-powershell-core-on-windows)。
+> 4. 在 PowerShell Core 工作階段中[安裝 Az 模組](/powershell/azure/install-az-ps)。
 

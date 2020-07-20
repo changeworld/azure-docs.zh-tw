@@ -1,11 +1,11 @@
 ---
-title: 範本
-description: 本主題說明 Azure 通知中樞的範本。
+title: Azure 通知中樞範本
+description: 瞭解如何使用適用于 Azure 通知中樞的範本。
 services: notification-hubs
 documentationcenter: .net
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: a41897bb-5b4b-48b2-bfd5-2e3c65edc37e
 ms.service: notification-hubs
 ms.workload: mobile
@@ -13,15 +13,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.devlang: multiple
 ms.topic: article
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: 02473eb5649c7d201b6a54fd57faea997c1a21cc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: e3c64155053517205ab006673bb8f400325ad3c4
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60872076"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86219958"
 ---
-# <a name="templates"></a>範本
+# <a name="notification-hubs-templates"></a>通知中樞範本
 
 範本可讓用戶端應用程式指定它要接收的確切通知格式。 使用範本時，app 可以獲得數個不同的好處，包括下列各項：
 
@@ -60,7 +62,7 @@ ms.locfileid: "60872076"
 
 下圖說明整個程序：
 
-![](./media/notification-hubs-templates/notification-hubs-hello.png)
+![此圖顯示使用跨平臺的範本流程](./media/notification-hubs-templates/notification-hubs-hello.png)
 
 iOS 用戶端 app 註冊的範本如下：
 
@@ -117,9 +119,9 @@ iOS 用戶端 app 註冊的範本如下：
 </table><br/>
 ```
 
-通过使用此模式，后端只需发送一条消息，而不必为应用用户存储特定的个性化选项。 下圖說明這個案例：
+藉由使用此模式，後端只需傳送單一訊息，而不需儲存 app 使用者的特定個人化選項。 下圖說明這個案例：
 
-![](./media/notification-hubs-templates/notification-hubs-registration-specific.png)
+![此圖顯示後端只會將單一訊息傳送到每個平臺。](./media/notification-hubs-templates/notification-hubs-registration-specific.png)
 
 ## <a name="how-to-register-templates"></a>如何註冊範本
 
@@ -131,19 +133,19 @@ iOS 用戶端 app 註冊的範本如下：
 
 下表顯示範本中允許使用的語言：
 
-| 表达式       | 描述 |
+| 運算式       | 描述 |
 | ---------------- | --- |
 | $(prop)          | 具有指定名稱之事件屬性的參考。 屬性名稱不區分大小寫。 如果屬性不存在，這個運算式就會解析成屬性的文字值或空字串。 |
 | $(prop, n)       | 同上，但文字會明確裁剪成 n 字元，例如 $(title, 20) 會將 title 屬性內容裁剪成 20 個字元。 |
 | .(prop, n)       | 同上，但文字會在裁剪之後，後面加上三個點。 裁剪的字串與字尾的總大小不會超過 n 個字元。 .(title, 20) 搭配 “This is the title line” 輸入屬性會產生 **This is the title...** |
-| %(prop)          | 类似于 $(name)，不过其输出已经过 URI 编码。 |
-| #(prop)          | 在 JSON 模板中使用（例如，用于 iOS 和 Android 模板）。<br><br>除了是用於 JSON 範本 (例如，Apple 範本) 之外，此函式的運作方式與先前指定的 $(prop) 完全相同。 在此案例中，如果此函式不是包含在 “{‘,’}” 中 (例如 ‘myJsonProperty’ : ‘#(name)’)，並且其評估結果為 Javascript 格式的數字，例如 regexp:(0&#124;(&#91;1-9&#93;&#91;0-9&#93;*))(\.&#91;0-9&#93;+)?((e&#124;E)(+&#124;-)?&#91;0-9&#93;+)?，則輸出 JSON 會是數字。<br><br>例如，‘badge: ‘#(name)’ 會變成 ‘badge’ :40 (而不是 ‘40‘)。 |
+| %(prop)          | 與 $(name) 類似，但輸出是以 URI 編碼。 |
+| #(prop)          | 用於 JSON 範本 (例如，用於 iOS 與 Android 範本)。<br><br>除了是用於 JSON 範本 (例如，Apple 範本) 之外，此函式的運作方式與先前指定的 $(prop) 完全相同。 在此案例中，如果此函式不是包含在 “{‘,’}” 中 (例如 ‘myJsonProperty’ : ‘#(name)’)，並且其評估結果為 Javascript 格式的數字 (例如 regexp: (0&#124;(&#91;1-9&#93;&#91;0-9&#93;*))(\.&#91;0-9&#93;+)?((e&#124;E)(+&#124;-)?&#91;0-9&#93;+)?)，則輸出 JSON 會是數字。<br><br>例如，‘badge: ‘#(name)’ 會變成 ‘badge’ : 40 (而不是 ‘40‘)。 |
 | ‘text’ 或 “text” | 常值。 常值包含以單引號或雙引號括住的任意文字。 |
 | expr1 + expr2    | 將兩個運算式聯結成單一字串的串連運算子 |
 
 運算式可以是前述任一形式。
 
-使用串連時，整個運算式必須包含在 `{}` 中。 例如： `{$(prop) + ‘ - ’ + $(prop2)}`。
+使用串連時，整個運算式必須包含在 `{}` 中。 例如，`{$(prop) + ‘ - ’ + $(prop2)}`。
 
 例如，以下的範本不是有效的 XML 範本：
 
@@ -157,7 +159,7 @@ iOS 用戶端 app 註冊的範本如下：
 </tile>
 ```
 
-如前文所述，使用串連時，運算式必須包含在大括號中。 例如︰
+如前文所述，使用串連時，運算式必須包含在大括號中。 例如：
 
 ```xml
 <tile>
@@ -168,3 +170,7 @@ iOS 用戶端 app 註冊的範本如下：
   </visual>
 </tile>
 ```
+
+## <a name="next-steps"></a>後續步驟
+
+[瞭解 Azure 通知中樞](notification-hubs-push-notification-overview.md)

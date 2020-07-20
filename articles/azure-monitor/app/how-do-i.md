@@ -1,23 +1,14 @@
 ---
 title: 我如何在 Azure Application Insights 中... | Microsoft Docs
 description: Application Insights 中的常見問題集。
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 48b2b644-92e4-44c3-bc14-068f1bbedd22
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/04/2017
-ms.author: mbullwin
-ms.openlocfilehash: 5e22a3f3b362811fd87460ec41b61a990f4d83fb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bda0091fe06c93150d5b3cae27f278f3fd9a91ea
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60902026"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224463"
 ---
 # <a name="how-do-i--in-application-insights"></a>我如何在 Application Insights 中...？
 ## <a name="get-an-email-when-"></a>... 時收到電子郵件
@@ -25,9 +16,9 @@ ms.locfileid: "60902026"
 設定 [可用性 Web 測試](../../azure-monitor/app/monitor-web-app-availability.md)。
 
 ### <a name="email-if-my-site-is-overloaded"></a>我的網站多載時寄送電子郵件
-針對 **伺服器回應時間** 設定 [警示](../../azure-monitor/app/alerts.md)。 介於 1 到 2 秒之間的閾值應該會運作。
+針對 **伺服器回應時間** 設定 [警示](../../azure-monitor/platform/alerts-log.md)。 介於 1 到 2 秒之間的閾值應該會運作。
 
-![](./media/how-do-i/030-server.png)
+![顯示如何在伺服器回應時間設定警示的螢幕擷取畫面。](./media/how-do-i/030-server.png)
 
 您的 app 也可能會藉由傳回失敗碼顯示資源耗盡的徵兆。 針對 [失敗的要求] 設定警示。
 
@@ -35,32 +26,38 @@ ms.locfileid: "60902026"
 
 ### <a name="email-on-exceptions"></a>傳送電子郵件的例外狀況
 1. [設定例外狀況監視](../../azure-monitor/app/asp-net-exceptions.md)
-2. [設定警示](../../azure-monitor/app/alerts.md) 
+2. [設定警示](../../azure-monitor/platform/alerts-log.md)
 
 ### <a name="email-on-an-event-in-my-app"></a>我的 app 發生事件時寄送電子郵件
-我們假設您想要在特定事件發生時收到電子郵件。 Application Insights 並未直接提供此功能，但它可 [在計量超過某個閾值時傳送警示](../../azure-monitor/app/alerts.md)。
+我們假設您想要在特定事件發生時收到電子郵件。 Application Insights 並未直接提供此功能，但它可 [在計量超過某個閾值時傳送警示](../../azure-monitor/platform/alerts-log.md)。
 
 您可以針對 [自訂計量](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric)設定警示，而不是自訂事件。 撰寫一些程式碼以在事件發生時增加計量：
 
-    telemetry.TrackMetric("Alarm", 10);
+```csharp
+telemetry.TrackMetric("Alarm", 10);
+```
 
-或：
+或者：
 
-    var measurements = new Dictionary<string,double>();
-    measurements ["Alarm"] = 10;
-    telemetry.TrackEvent("status", null, measurements);
+```csharp
+var measurements = new Dictionary<string,double>();
+measurements ["Alarm"] = 10;
+telemetry.TrackEvent("status", null, measurements);
+```
 
 因為警示有兩個狀態，所以當您考慮讓警示結束時必須傳送較低的值：
 
-    telemetry.TrackMetric("Alarm", 0.5);
+```csharp
+telemetry.TrackMetric("Alarm", 0.5);
+```
 
-在 [計量總管](../../azure-monitor/app/metrics-explorer.md) 中建立圖表來查看您的警示：
+在 [計量總管](../../azure-monitor/platform/metrics-charts.md) 中建立圖表來查看您的警示：
 
-![](./media/how-do-i/010-alarm.png)
+![顯示如何在 [計量瀏覽器] 中建立圖表來查看您的警示的螢幕擷取畫面。](./media/how-do-i/010-alarm.png)
 
 現在設定警示在計量一段短時間高於中間值時引發：
 
-![](./media/how-do-i/020-threshold.png)
+![螢幕擷取畫面：顯示如何設定當計量在短時間內超過中間值時引發警示。](./media/how-do-i/020-threshold.png)
 
 將平均期間設定為最小值。
 
@@ -74,11 +71,11 @@ ms.locfileid: "60902026"
 * 由於「警示」和「良好」都會傳送電子郵件，所以您可能要以兩個狀態的條件來重新思考單次發生的事件。 例如，不要採用「作業完成」事件，而採用「作業進行中」的條件，您就可以在工作開始和結束時收到電子郵件。
 
 ### <a name="set-up-alerts-automatically"></a>自動設定警示
-[使用 PowerShell 建立新的警示](../../azure-monitor/app/alerts.md#automation)
+[使用 PowerShell 建立新的警示](../../azure-monitor/platform/alerts-log.md)
 
 ## <a name="use-powershell-to-manage-application-insights"></a>使用 PowerShell 管理 Application Insights
-* [建立新的資源](../../azure-monitor/app/powershell-script-create-resource.md)
-* [建立新的警示](../../azure-monitor/app/alerts.md#automation)
+* [建立新的資源](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#creating-a-resource-automatically)
+* [建立新的警示](../../azure-monitor/platform/alerts-log.md)
 
 ## <a name="separate-telemetry-from-different-versions"></a>區分不同版本的遙測
 
@@ -91,39 +88,39 @@ ms.locfileid: "60902026"
 
 ## <a name="visualize-data"></a>顯現資料
 #### <a name="dashboard-with-metrics-from-multiple-apps"></a>具有來自多個 App 之計量的儀表板
-* 在 [計量總管](../../azure-monitor/app/metrics-explorer.md)中，自訂圖表並將它儲存為我的最愛。 將它釘選到 Azure 儀表板。
+* 在 [計量總管](../../azure-monitor/platform/metrics-charts.md)中，自訂圖表並將它儲存為我的最愛。 將它釘選到 Azure 儀表板。
 
 #### <a name="dashboard-with-data-from-other-sources-and-application-insights"></a>資料來自其他來源和 Application Insights 的儀表板
 * [將遙測匯出至 Power Bi](../../azure-monitor/app/export-power-bi.md )。
 
-或
+Or
 
 * 使用 SharePoint 做為您的儀表板，在 SharePoint web 組件中顯示資料。 [使用連續的匯出和資料流分析來匯出至 SQL](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md)。  使用 PowerView 來檢查資料庫，並建立適用於 PowerView 的 SharePoint web 組件。
 
 <a name="search-specific-users"></a>
 
 ### <a name="filter-out-anonymous-or-authenticated-users"></a>篩選出匿名或已驗證的使用者
-如果您的使用者登入，您可以設定[驗證使用者識別碼](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users)。(它不會自動重新整理)。
+如果您的使用者登入，您可以設定[已驗證的使用者識別碼](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users)。 (它不會自動重新整理)。
 
-接著，您可以：
+您可以：
 
-* 搜尋特定的使用者識別碼
+* 搜尋特定使用者識別碼
 
-![](./media/how-do-i/110-search.png)
+![顯示特定使用者識別碼 searchin 選項的螢幕擷取畫面。](./media/how-do-i/110-search.png)
 
 * 篩選匿名或已驗證使用者的計量
 
-![](./media/how-do-i/115-metrics.png)
+![顯示篩選 metrixs 為匿名或已驗證使用者的螢幕擷取畫面。](./media/how-do-i/115-metrics.png)
 
 ## <a name="modify-property-names-or-values"></a>修改屬性名稱或值
 建立 [篩選器](../../azure-monitor/app/api-filtering-sampling.md#filtering)。 這可讓您先修改或篩選遙測，然後再將它從您的應用程式傳送至 Application Insights。
 
 ## <a name="list-specific-users-and-their-usage"></a>列出特定使用者和其使用方式
-如果您只想要[搜尋特定使用者](#search-specific-users)，就可以設定[驗證使用者識別碼](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users)。
+如果您只想要[搜尋特定使用者](#search-specific-users)，就可以設定[已驗證的使用者識別碼](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users)。
 
 如果您想要使用者清單以及像是他們查看過哪些頁面或登入頻率等資料，則有兩個選項：
 
-* [設定驗證使用者識別碼](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users)、[匯出到資料庫](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md)，然後使用適當的工具來分析使用者資料。
+* [設定已驗證的使用者識別碼](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users)、[匯出到資料庫](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md)，然後使用適當的工具來分析使用者資料。
 * 如果您只有少數的使用者，則可傳送自訂事件或計量、使用感興趣的資料做為計量值或事件名稱，然後設定使用者識別碼做為屬性。 若要分析頁面檢視，可取代標準的 JavaScript trackPageView 呼叫。 若要分析伺服器端遙測，可使用遙測初始設定式，將使用者識別碼新增至所有伺服器遙測。 然後您可以篩選與分割關於使用者識別碼的計量資訊和搜尋。
 
 ## <a name="reduce-traffic-from-my-app-to-application-insights"></a>降低從我的 App 到 Application Insights 的流量
@@ -137,16 +134,25 @@ ms.locfileid: "60902026"
 ## <a name="disable-telemetry"></a>停用遙測
 若要從伺服器 **動態停止和開始** 收集及傳輸遙測資料：
 
+### <a name="aspnet-classic-applications"></a>ASP.NET 傳統應用程式
+
+```csharp
+using  Microsoft.ApplicationInsights.Extensibility;
+
+TelemetryConfiguration.Active.DisableTelemetry = true;
 ```
 
-    using  Microsoft.ApplicationInsights.Extensibility;
+### <a name="other-applications"></a>其他應用程式
+不建議在主控台或 ASP.NET Core 應用程式上使用 `TelemetryConfiguration.Active` singleton。
+如果您自行建立 `TelemetryConfiguration` 執行個體 - 將 `DisableTelemetry` 設定為 `true`。
 
-    TelemetryConfiguration.Active.DisableTelemetry = true;
-```
+針對 ASP.NET Core 應用程式，您可以使用 [ASP.NET Core 相依性插入](/aspnet/core/fundamentals/dependency-injection/)來存取 `TelemetryConfiguration` 執行個體。 如需詳細資訊，請參閱 [ASP.NET Core 應用程式的 ApplicationInsights](../../azure-monitor/app/asp-net-core.md) 一文。
 
+## <a name="disable-selected-standard-collectors"></a>停用選取的標準收集器
+您可以停用標準收集器 (例如效能計數器、HTTP 要求或相依性)
 
-
-若要 **停用選取的標準收集器** (例如效能計數器、HTTP 要求或相依性)，請刪除或註解化 [ApplicationInsights.config](../../azure-monitor/app/api-custom-events-metrics.md)中的相關行。例如，如果您想要傳送自己的 TrackRequest 資料，可以這麼做。
+* **ASP.NET 應用程式** - 刪除 [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) 中的相關行，會將其註解化
+* **ASP.NET Core 應用程式** - 依照 [ApplicationInsights ASP.NET Core](../../azure-monitor/app/asp-net-core.md#configuring-or-removing-default-telemetrymodules) 中的遙測模組組態選項進行
 
 ## <a name="view-system-performance-counters"></a>檢視系統效能計數器
 您可以在計量總管中顯示的計量資訊是一組系統效能計數器。 有一個預先定義且標題為 **伺服器** 的刀鋒視窗會顯示它們其中幾個。
@@ -159,5 +165,5 @@ ms.locfileid: "60902026"
 * **Unix 伺服器** - [安裝 collectd](../../azure-monitor/app/java-collectd.md)
 
 ### <a name="to-display-more-performance-counters"></a>顯示更多效能計數器
-* 首先，[新增圖表](../../azure-monitor/app/metrics-explorer.md) ，並查看計數器是否位於我們提供的基本組合中。
+* 首先，[新增圖表](../../azure-monitor/platform/metrics-charts.md) ，並查看計數器是否位於我們提供的基本組合中。
 * 如果沒有，請[將計數器加入效能計數器模組所收集的組合中](../../azure-monitor/app/performance-counters.md)。

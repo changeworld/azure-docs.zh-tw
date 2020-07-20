@@ -1,23 +1,18 @@
 ---
 title: 常見問題疑難排解
-description: 了解如何針對建立、指派和移除藍圖的問題進行疑難排解。
-author: DCtheGeek
-ms.author: dacoulte
-ms.date: 12/11/2018
+description: 瞭解如何針對建立、指派和移除藍圖等問題進行疑難排解，例如原則違規和藍圖參數函式。
+ms.date: 06/29/2020
 ms.topic: troubleshooting
-ms.service: blueprints
-manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: 42fdd6645a7a0e7cd9a2f0a7bc969e8eee62758c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d1dcd88fd6f7a9ab5035a5977ab5d50f3e6caf54
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60874955"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85557506"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>針對使用 Azure 藍圖發生的錯誤進行疑難排解
 
-您可能會在建立或指派藍圖時遇到錯誤。 此文章說明可能發生的各種錯誤與解決方式。
+建立、指派或移除藍圖時，您可能會遇到錯誤。 此文章說明可能發生的各種錯誤與解決方式。
 
 ## <a name="finding-error-details"></a>尋找錯誤詳細資料
 
@@ -25,9 +20,9 @@ ms.locfileid: "60874955"
 
 1. 在左側窗格中選取 [所有服務]。 搜尋並選取 [藍圖]。
 
-1. 選取 **指派藍圖**從頁面左邊及使用的搜尋方塊來篩選以尋找失敗的指派的藍圖指派。 您也可以依 [佈建狀態] 欄排序指派表格，以查看所有已群組在一起的失敗指派。
+1. 從左邊的頁面選取 [**指派的藍圖**]，然後使用 [搜尋] 方塊來篩選藍圖指派，以尋找失敗的指派。 您也可以依 [佈建狀態]**** 欄排序指派表格，以查看所有已群組在一起的失敗指派。
 
-1. 按一下滑鼠左鍵與藍圖_失敗_狀態或以滑鼠右鍵按一下，然後選取**檢視指派詳細資料**。
+1. 以滑鼠左鍵按一下狀態為 [_失敗_] 的藍圖，或按一下滑鼠右鍵，然後選取 [ **View 指派詳細資料**]。
 
 1. 代表指派失敗的紅色橫幅警告位於藍圖指派頁面的最上方。 按一下該橫幅上的任一處，以取得更多詳細資料。
 
@@ -35,7 +30,7 @@ ms.locfileid: "60874955"
 
 ## <a name="general-errors"></a>一般錯誤
 
-### <a name="policy-violation"></a>案例：違反原則
+### <a name="scenario-policy-violation"></a><a name="policy-violation"></a>案例：違反原則
 
 #### <a name="issue"></a>問題
 
@@ -52,7 +47,7 @@ ms.locfileid: "60874955"
 
 變更藍圖，使其不會與錯誤詳細資料中的原則發生發生衝突。 如果此變更不可行，替代選項就是變更原則指派的範圍，使藍圖不再與原則產生衝突。
 
-### <a name="escape-function-parameter"></a>案例：藍圖參數是函式
+### <a name="scenario-blueprint-parameter-is-a-function"></a><a name="escape-function-parameter"></a>案例：藍圖參數是函式
 
 #### <a name="issue"></a>問題
 
@@ -64,12 +59,28 @@ ms.locfileid: "60874955"
 
 #### <a name="resolution"></a>解決方案
 
-若要將函式作為參數傳遞，請使用 `[` 逸出整個字串，讓藍圖參數看起來像 `[[resourceGroup().tags.myTag]`。 逸出字元會導致「藍圖」在處理藍圖時，將值視為字串。 接著「藍圖」會將函式置於成品上，讓它如預期般地為動態函式。 如需詳細資訊，請參閱 <<c0> [ 範本檔案結構語法](../../../azure-resource-manager/resource-group-authoring-templates.md#syntax)。
+若要將函式作為參數傳遞，請使用 `[` 逸出整個字串，讓藍圖參數看起來像 `[[resourceGroup().tags.myTag]`。 逸出字元會導致「藍圖」在處理藍圖時，將值視為字串。 接著「藍圖」會將函式置於成品上，讓它如預期般地為動態函式。 如需詳細資訊，請參閱[Azure Resource Manager 範本中的語法和運算式](../../../azure-resource-manager/templates/template-expressions.md)。
+
+## <a name="delete-errors"></a>刪除錯誤
+
+### <a name="scenario-assignment-deletion-timeout"></a><a name="assign-delete-timeout"></a>案例：指派刪除超時
+
+#### <a name="issue"></a>問題
+
+刪除藍圖指派並不會完成。
+
+#### <a name="cause"></a>原因
+
+藍圖指派可能會在刪除時卡在非終止狀態。 當藍圖指派所建立的資源仍待刪除，或未將狀態碼傳回 Azure 藍圖時，就會導致此狀態。
+
+#### <a name="resolution"></a>解決方案
+
+處於非終端機狀態的藍圖指派會在_6 小時_的時間內自動標示為**失敗**。 當超時時間調整了藍圖指派的狀態之後，就可以重試刪除。
 
 ## <a name="next-steps"></a>後續步驟
 
 如果您沒有看到您的問題，或無法解決您的問題，請瀏覽下列其中一個管道以取得更多支援：
 
-- 透過 Azure 專家取得解答[Azure 論壇](https://azure.microsoft.com/support/forums/)。
+- 透過 [Azure 論壇](https://azure.microsoft.com/support/forums/)獲得由 Azure 專家所提供的解答。
 - 與 [@AzureSupport](https://twitter.com/azuresupport) 連繫－專為改善客戶體驗而設的官方 Microsoft Azure 帳戶，協助 Azure 社群連接至適當的資源，像是解答、支援及專家等。
 - 如果需要更多協助，您可以提出 Azure 支援事件。 請移至 [Azure 支援網站](https://azure.microsoft.com/support/options/)，然後選取 [取得支援]。

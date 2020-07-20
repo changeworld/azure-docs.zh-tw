@@ -1,53 +1,70 @@
 ---
-title: Azure 計量瀏覽器的進階的功能
-description: 深入了解 Azure 監視器計量瀏覽器進階功能
-author: lingliw
+title: Azure 計量瀏覽器的進階功能
+description: 瞭解 Azure 監視器的 advanced 功能計量瀏覽器
+author: vgorbenko
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 04/12/19
-ms.author: v-lingwu
+ms.date: 01/22/2019
+ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 67e4281b24a7489cf202d82bdddbe99992aac095
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: e6ff33b6a23cb85649a8811a8bef27ab455ab9e6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60256871"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82980893"
 ---
-# <a name="advanced-features-of-azure-metrics-explorer"></a>Azure 計量瀏覽器的進階的功能
+# <a name="advanced-features-of-azure-metrics-explorer"></a>Azure 計量瀏覽器的進階功能
 
 > [!NOTE]
-> 本文假設您已熟悉基本的計量瀏覽器的功能。 如果您是新的使用者，而且想要了解如何建立您第一次的計量圖表，請參閱[開始使用 Azure 計量瀏覽器](metrics-getting-started.md)。
+> 本文假設您已熟悉計量瀏覽器的基本功能。 如果您是新的使用者，而且想要瞭解如何建立您的第一個度量圖表，請參閱[開始使用 Azure 計量瀏覽器](metrics-getting-started.md)。
 
 ## <a name="metrics-in-azure"></a>Azure 中的計量
 
-[Azure 監視器](data-platform-metrics.md)中的計量是隨時間收集並儲存的一系列度量與計數值。 計量包括標準 (或稱為「平台」) 計量與自訂計量。 標準計量是由 Azure 平台本身提供給您使用。 標準計量反映您 Azure 資源的健康情況與使用情形統計資料。 而自訂計量時，會傳送至 Azure 上，使用的應用程式所[自訂事件和度量的 Application Insights API](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics)， [Windows Azure 診斷 (WAD) extension](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-overview)，或由[Azure監視 REST API](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-store-custom-rest-api)。
+[Azure 監視器](data-platform-metrics.md)中的計量是隨時間收集並儲存的一系列度量與計數值。 計量包括標準 (或稱為「平台」) 計量與自訂計量。 標準計量是由 Azure 平台本身提供給您使用。 標準計量反映您 Azure 資源的健康情況與使用情形統計資料。 而自訂計量會由您的應用程式使用[適用于自訂事件和計量的 APPLICATION INSIGHTS API](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics)、 [WINDOWS Azure 診斷（WAD）擴充](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-overview)功能，或[Azure 監視器 REST API](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-store-custom-rest-api)傳送至 Azure。
 
-## <a name="create-views-with-multiple-metrics-and-charts"></a>建立具有多個度量和圖表的檢視
+## <a name="create-views-with-multiple-metrics-and-charts"></a>建立具有多個計量和圖表的視圖
 
-您可以建立圖表的繪製多個計量行或一次顯示多個度量的圖表。 這項功能可讓您：
+您可以建立繪製多個計量線或一次顯示多個度量圖表的圖表。 此功能可讓您：
 
-- 在相同的圖形，請參閱如何一個值上相互關聯相關的度量資訊與另一個
-- 顯示具有不同非常接近的測量單位的度量
-- 以視覺化方式彙總並比較多個資源的計量
+- 將相同圖表上的相關度量相互關聯，以查看一個值與另一個關聯的方式
+- 以接近近的測量單位顯示計量
+- 以視覺化方式匯總和比較多個資源的計量
 
-例如，如果您有 5 個儲存體帳戶，而且您想要知道多少總空間用完其間，您可以建立 （堆疊） 區域圖會顯示所有值的總和與個人在特定時間點的時間。
+例如，如果您有5個儲存體帳戶，而您想要知道在兩者之間取用的總空間，您可以建立一個（堆疊）區域圖，以顯示特定時間點上所有值的個人和總和。
 
-### <a name="multiple-metrics-on-the-same-chart"></a>在相同圖表上的多個計量
+### <a name="multiple-metrics-on-the-same-chart"></a>相同圖表上的多個計量
 
-首先，[建立新的圖表](metrics-getting-started.md#create-your-first-metric-chart)。 按一下 **新增計量**重複步驟，在相同圖表上新增其他計量。
+首先，[建立新的圖表](metrics-getting-started.md#create-your-first-metric-chart)。 按一下 [**新增度量**] 並重複步驟，在相同的圖表上新增另一個度量。
 
    > [!NOTE]
    > 您一般不會想要有具有不同計量單位的計量 (例如「毫秒」與 “KB”) 或其刻度在單一圖表上會呈現大幅差異的計量。 如果是這樣，您應該考慮使用多個圖表。 按一下 [新增圖表] 按鈕以在計量瀏覽器中建立多個圖表。
 
 ### <a name="multiple-charts"></a>多個圖表
 
-按一下 **新增圖表**，並使用不同的計量建立另一個圖表。
+按一下 [**新增圖表**]，並使用不同的度量建立另一個圖表。
 
-### <a name="order-or-delete-multiple-charts"></a>排列或刪除多個圖表
+### <a name="order-or-delete-multiple-charts"></a>排序或刪除多個圖表
 
-若要排序或刪除多個圖表，請按一下省略符號 ( **...** ) 符號以開啟 [圖表] 功能表，然後選擇適當的功能表項目**向上移動**，**下移**，或**刪除**。
+若要排序或刪除多個圖表，請按一下省略號（ **...** ）符號來開啟 [圖表] 功能表，然後選擇 [**上移** **]、[下移]** 或 [**刪除**] 的適當功能表項目。
+
+## <a name="changing-aggregation"></a>變更匯總
+
+當您將度量加入至圖表時，[計量瀏覽器] 會自動預先選取其預設匯總。 在基本案例中，預設值是合理的，但您可以使用不同的匯總來取得有關計量的其他深入解析。 若要在圖表上查看不同的匯總，您必須瞭解 [計量瀏覽器] 的處理方式。 
+
+計量是在一段時間內所捕捉到的一系列測量（或「度量值」）。 當您繪製圖表時，所選計量的值會個別匯總于*時間細微性*。 您可以[使用 [計量瀏覽器時間選擇器] 面板](metrics-getting-started.md#select-a-time-range)來選取時間細微性的大小。 如果您未明確選取時間細微性，則會根據目前選取的時間範圍自動選取時間細微性。 一旦判斷出時間細微性之後，每次細微性間隔期間所捕捉到的度量值就會匯總並放到圖表上，每個時間細微性為一點。
+
+例如，假設圖表顯示在**過去24小時**的時間範圍內，使用**平均**匯總的**伺服器回應時間**度量：
+
+- 如果時間細微性設定為30分鐘，則會從48匯總資料點（例如折線圖連接圖表繪圖區域中的48點）繪製圖表。 也就是每小時24小時 x 2 資料點。 每個點都代表每個相關30分鐘期間內發生之伺服器要求的所有已捕捉回應時間的*平均值*。
+- 如果您將時間細微性切換為15分鐘，則會得到96匯總資料點。  也就是每小時24小時 x 4 資料點。
+
+計量瀏覽器中提供五種基本統計資料匯總類型：**總和**、**計數**、**最小值**、**最大值**和**平均值**。 **總和**匯總有時稱為**總計匯總**。 對於許多計量，計量瀏覽器會隱藏完全無關且無法使用的匯總。
+
+- **總和**–在匯總間隔中所捕捉到的所有值總和
+- **Count** –在匯總間隔中所捕捉到的測量數目。 請注意，在一律以值1來捕捉計量的情況下， **Count**會等於**總和**。 當計量追蹤相異事件的計數，且每個測量都代表一個事件時（也就是每次新的要求出現時，程式碼都會引發計量記錄），這是常見的情況。
+- **平均**–在匯總間隔中所捕捉到的度量值平均值
+- **Min** –在匯總間隔中所捕捉到的最小值
+- **Max** –在匯總間隔中所捕捉到的最大值
 
 ## <a name="apply-filters-to-charts"></a>將篩選條件套用至圖表
 
@@ -55,7 +72,7 @@ ms.locfileid: "60256871"
 
 ### <a name="to-add-a-filter"></a>加入篩選條件
 
-1. 選取圖表上方的 [新增篩選器]
+1. 選取圖表上方的 [新增篩選器]****
 
 2. 選取您要篩選的維度 (屬性)
 
@@ -73,16 +90,16 @@ ms.locfileid: "60256871"
 
 
 
-## <a name="apply-splitting-to-a-chart"></a>套用至圖表分割
+## <a name="apply-splitting-to-a-chart"></a>將分割套用至圖表
 
 您可以依維度來分割計量，以視覺化方式顯示維度的各區段與彼此之間的差異，並識別維度中與其他區段差異較大的區段。
 
 ### <a name="apply-splitting"></a>套用分割
 
-1. 按一下圖表上方的 [套用分割]。
+1. 按一下圖表上方的 [套用分割]****。
  
    > [!NOTE]
-   > 分割不能有多個度量的圖表。 此外，您可以有多個篩選器，但只有一個分割的維度，套用至任何單一的圖表。
+   > 分割無法用於具有多個計量的圖表。 此外，您可以有多個篩選準則，但只能有一個分割維度套用至任何單一圖表。
 
 2. 選擇要據以將圖表分割為不同區段的維度：
 
@@ -92,7 +109,7 @@ ms.locfileid: "60256871"
 
    ![計量影像](./media/metrics-charts/00012.png)
 
-3. 按一下 [分組選取器] 以外的位置以將它關閉。
+3. 按一下 [分組選取器]**** 以外的位置以將它關閉。
 
    > [!NOTE]
    > 在相同維度上同時使用篩選與分割，以隱藏與您的案例不相關的區段，讓圖表更容易閱讀。
@@ -112,13 +129,23 @@ ms.locfileid: "60256871"
 > [!WARNING]
 > 鎖定圖表的 y 軸界限可追蹤一段時間的各種計算或加總，因此 (使用計數、加總、最小或最大彙總) 通常需要指定固定時間細微性，而不依賴自動預設值。 因為使用者調整瀏覽器視窗的大小，或從一個螢幕解析度變換為另一個螢幕解析度時，時間細微性經過修改，會導致圖表上的值變更，因此這有其必要性。 時間細微性中產生的變更會影響圖表的外觀，導致目前選取的 y 軸範圍無效。
 
+## <a name="change-colors-of-chart-lines"></a>變更圖表線條的色彩
+
+設定圖表之後，會自動從預設的調色板中指派色彩給圖表線條。 您可以變更這些色彩。
+
+若要變更圖表線條的色彩，請在圖例中按一下對應于圖表的彩色橫條。 [色彩選擇器] 對話方塊隨即開啟。 使用色彩選擇器來設定線條的色彩。
+
+設定圖表色彩之後，當您將圖表釘選到儀表板時，它們會維持如此。 下一節將說明如何釘選圖表。
+
+![計量影像](./media/metrics-charts/018.png)
+
 ## <a name="pin-charts-to-dashboards"></a>將圖表釘選到儀表板
 
 設定圖表之後，您可以將它加入到儀表板，以便您可以在其他監視遙測情況下重新檢視它，或與您的小組共用。
 
 將已設定的圖表釘選到儀表板：
 
-設定您的圖表之後，按一下圖表右上角的 [圖表動作] 功能表，然後按一下 [釘選到儀表板]。
+設定您的圖表之後，按一下圖表右上角的 [圖表動作]**** 功能表，然後按一下 [釘選到儀表板]****。
 
 ![計量影像](./media/metrics-charts/00013.png)
 
@@ -126,7 +153,7 @@ ms.locfileid: "60256871"
 
 您可以使用已設定的準則來將計量視覺化，以作為計量型警示規則的基礎。 新的警示規則將包含來自您圖表的目標資源、計量、分割及篩選維度。 您稍後將能在警示規則建立窗格上修改這些設定。
 
-### <a name="to-create-a-new-alert-rule-click-new-alert-rule"></a>若要建立新的警示規則，請按一下 [新增警示規則]
+### <a name="to-create-a-new-alert-rule-click-new-alert-rule"></a>若要建立新的警示規則，請按一下 [新增警示規則]****
 
 ![以紅色強調顯示的[新增警示規則] 按鈕](./media/metrics-charts/015.png)
 
@@ -149,3 +176,4 @@ ms.locfileid: "60256871"
 ## <a name="next-steps"></a>後續步驟
 
   閱讀[建立自訂 KPI 儀表板](https://docs.microsoft.com/azure/application-insights/app-insights-tutorial-dashboards)以了解使用計量建立可採取動作之儀表板的最佳做法。
+

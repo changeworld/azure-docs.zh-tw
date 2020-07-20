@@ -1,23 +1,16 @@
 ---
-title: 使用範本部署應用程式的指引 - Azure App Service | Microsoft Docs
-description: 建立 Azure Resource Manager 範本以部署 Web 應用程式的建議。
-services: app-service
-documentationcenter: app-service
+title: 使用範本部署應用程式
+description: 尋找有關建立 Azure Resource Manager 範本以布建和部署 App Service 應用程式的指引。
 author: tfitzmac
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: 780d2134aa00f828a614af6938978e24df3534cd
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: 0a282a412823207e5f662441158000e8c6121796
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56105106"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80637935"
 ---
 # <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>使用 Azure Resource Manager 範本部署 Web 應用程式的指引
 
@@ -28,7 +21,7 @@ ms.locfileid: "56105106"
 要定義 Web 應用程式的相依性，必須先了解 Web 應用程式中的資源彼此互動的方式。 如果您以不正確的順序指定相依性，將可能會導致部署錯誤，或產生競爭情形而致使部署停止。
 
 > [!WARNING]
-> 如果您在範本中納入 MSDeploy 網站延伸模組，則必須將任何組態資源設定為相依於 MSDeploy 資源。 組態變更會導致網站以非同步方式重新啟動。 將組態資源設定為相依於 MSDeploy，可確保在 MSDeploy 完成後，網站才會重新啟動。 若沒有這些相依性，網站即可能在 MSDeploy 的部署程序期間重新啟動。 如需範例範本，請參閱[具有 Web Deploy 相依性的 WordPress 範本](https://github.com/davidebbo/AzureWebsitesSamples/blob/master/ARMTemplates/WordpressTemplateWebDeployDependency.json)。
+> 如果您在範本中納入 MSDeploy 網站延伸模組，則必須將任何組態資源設定為相依於 MSDeploy 資源。 組態變更會導致網站以非同步方式重新啟動。 將組態資源設定為相依於 MSDeploy，可確保在 MSDeploy 完成後，網站才會重新啟動。 若沒有這些相依性，網站即可能在 MSDeploy 的部署程序期間重新啟動。 如需範例範本，請參閱具有 Web Deploy 相依性的[WordPress 範本](https://github.com/davidebbo/AzureWebsitesSamples/blob/master/ARMTemplates/WordpressTemplateWebDeployDependency.json)。
 
 下圖顯示各種 App Service 資源的相依性順序：
 
@@ -47,7 +40,7 @@ ms.locfileid: "56105106"
 **第 3 層**
 * 原始檔控制 - 視 Web 應用程式而定。
 * MSDeploy 網站延伸模組 - 視 Web 應用程式而定。
-* 以伺服器陣列為目標的 Application Insights 執行個體 - 視 Web 應用程式而定。
+* 以 web 應用程式為目標的 Azure 應用程式 Insights 實例-視 web 應用程式而定。
 
 **第 4 層**
 * App Service 憑證 - 取決於存在的原始檔控制或 MSDeploy。 若都不存在，則視 Web 應用程式而定。
@@ -96,11 +89,11 @@ ms.locfileid: "56105106"
 
 1. 移至網站的 [Kudu 主控台](https://github.com/projectkudu/kudu/wiki/Kudu-console)。
 2. 瀏覽至位於 D:\home\LogFiles\SiteExtensions\MSDeploy 上的資料夾。
-3. 尋找 appManagerStatus.xml 和 appManagerLog.xml 檔案。 第一個檔案會記錄狀態。 第二個檔案會記錄錯誤的相關資訊。 如果您不清楚錯誤的涵義，可以在論壇上尋求協助。
+3. 尋找 appManagerStatus.xml 和 appManagerLog.xml 檔案。 第一個檔案會記錄狀態。 第二個檔案會記錄錯誤的相關資訊。 如果您不清楚此錯誤，您可以在尋求[論壇](https://docs.microsoft.com/answers/topics/azure-webapps.html)的協助時加以包含。
 
 ## <a name="choose-a-unique-web-app-name"></a>選擇唯一的 Web 應用程式名稱
 
-Web 應用程式的名稱必須是全域唯一的。 您可以使用很可能是唯一的命名慣例，或使用 [uniqueString 函式](../azure-resource-manager/resource-group-template-functions-string.md#uniquestring)以利產生唯一的名稱。
+Web 應用程式的名稱必須是全域唯一的。 您可以使用很可能是唯一的命名慣例，或使用 [uniqueString 函式](../azure-resource-manager/templates/template-functions-string.md#uniquestring)以利產生唯一的名稱。
 
 ```json
 {
@@ -115,7 +108,7 @@ Web 應用程式的名稱必須是全域唯一的。 您可以使用很可能是
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-如果您的範本包括 [Microsoft.Web/certificates](/azure/templates/microsoft.web/certificates) 資源來繫結 SSL，而且憑證儲存在 Key Vault 中，則您必須確定 App Service 身分識別可以存取憑證。
+如果您的範本包含適用于 TLS/SSL 系結的[Microsoft. Web/](/azure/templates/microsoft.web/certificates) certificate 資源，而且憑證儲存在 Key Vault 中，您必須確定 App Service 身分識別可以存取憑證。
 
 在全域 Azure 中，App Service 服務主體的識別碼為 **abfa0a7c-a6b6-4736-8310-5855508787cd**。 若要授與 App Service 服務主體的 Key Vault 存取，請使用：
 
@@ -129,7 +122,7 @@ Set-AzKeyVaultAccessPolicy `
 
 在 Azure Government 中，App Service 服務主體的識別碼為 **6a02c803-dafd-4136-b4c3-5a6f318b4714**。 使用上述範例中的該識別碼。
 
-在 Key Vault 中，選取 [憑證] 和 [產生/匯入] 以上傳憑證。
+在 Key Vault 中，選取 [憑證]**** 和 [產生/匯入]**** 以上傳憑證。
 
 ![匯入憑證](media/web-sites-rm-template-guidance/import-certificate.png)
 

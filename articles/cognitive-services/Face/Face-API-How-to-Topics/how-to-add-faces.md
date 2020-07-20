@@ -1,38 +1,36 @@
 ---
-title: 範例：新增人臉 - 臉部 API
+title: 範例：將臉部新增至 PersonGroup - 臉部
 titleSuffix: Azure Cognitive Services
-description: 使用臉部 API 新增影像中的人臉。
+description: 本指南示範如何使用 Azure 認知服務的臉部辨識服務，將大量的人員和臉部新增至 PersonGroup 物件。
 services: cognitive-services
 author: SteveMSFT
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: sample
-ms.date: 03/01/2018
+ms.date: 04/10/2019
 ms.author: sbowles
-ms.openlocfilehash: 722a09b782c902642b599460835151928c16c5f4
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 240905d538afc5c0f4b7f0e0bf400fac23c3183f
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859023"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "76169835"
 ---
-# <a name="example-how-to-add-faces"></a>範例：如何新增人臉
+# <a name="add-faces-to-a-persongroup"></a>將臉部新增至 PersonGroup
 
-本指南示範將大量人員和人臉新增至 PersonGroup 的最佳做法。
-相同的策略也適用於 FaceList 和 LargePersonGroup。
-這些範例是使用「臉部 API」用戶端程式庫以 C# 撰寫的。
+本指南示範如何將大量的人員和臉部新增至 PersonGroup 物件。 相同的策略也適用於 LargePersonGroup、FaceList 及 LargeFaceList 物件。 此範例是使用 Azure 認知服務的臉部 .NET 用戶端程式庫以 C# 撰寫的。
 
-## <a name="step-1-initialization"></a>步驟 1：初始化
+## <a name="step-1-initialization"></a>步驟 1:初始化
 
-已宣告數個變數並實作協助程式函式來排程要求。
+下列程式碼會宣告數個變數，並實作協助程式函式來排程臉部新增要求：
 
 - `PersonCount` 是人員的總數。
 - `CallLimitPerSecond` 是根據訂用帳戶層而定的每秒呼叫數上限。
 - `_timeStampQueue` 是要記錄要求時間戳記的佇列。
-- `await WaitCallLimitPerSecondAsync()` 會等到有效才會傳送下一個要求。
+- `await WaitCallLimitPerSecondAsync()` 會等候，直到能夠傳送下一個要求為止。
 
-```CSharp
+```csharp
 const int PersonCount = 10000;
 const int CallLimitPerSecond = 10;
 static Queue<DateTime> _timeStampQueue = new Queue<DateTime>(CallLimitPerSecond);
@@ -60,49 +58,51 @@ static async Task WaitCallLimitPerSecondAsync()
 }
 ```
 
-## <a name="step-2-authorize-the-api-call"></a>步驟 2：授權 API 呼叫
+## <a name="step-2-authorize-the-api-call"></a>步驟 2:授權 API 呼叫
 
-使用用戶端程式庫時，訂用帳戶金鑰會透過 FaceServiceClient 類別的建構函式傳入。 例如︰
+當您使用用戶端程式庫時，必須將訂用帳戶金鑰傳至 **FaceClient** 類別的建構函式。 例如：
 
-```CSharp
-FaceServiceClient faceServiceClient = new FaceServiceClient("<Subscription Key>");
+```csharp
+private readonly IFaceClient faceClient = new FaceClient(
+    new ApiKeyServiceClientCredentials("<SubscriptionKey>"),
+    new System.Net.Http.DelegatingHandler[] { });
 ```
 
-您可以從 Azure 入口網站的 Marketplace 頁面取得訂用帳戶金鑰。 請參閱[訂用帳戶](https://www.microsoft.com/cognitive-services/en-us/sign-up)。
+若要取得訂用帳戶金鑰，請從 Azure 入口網站移至 Azure Marketplace。 如需詳細資訊，請參閱[訂用帳戶](https://www.microsoft.com/cognitive-services/sign-up)。
 
 ## <a name="step-3-create-the-persongroup"></a>步驟 3：建立 PersonGroup
 
 名為 "MyPersonGroup" 的 PersonGroup 用來儲存人員。
 要求時間已排入 `_timeStampQueue` 佇列中，以確保整體驗證。
 
-```CSharp
+```csharp
 const string personGroupId = "mypersongroupid";
 const string personGroupName = "MyPersonGroup";
 _timeStampQueue.Enqueue(DateTime.UtcNow);
-await faceServiceClient.CreatePersonGroupAsync(personGroupId, personGroupName);
+await faceClient.LargePersonGroup.CreateAsync(personGroupId, personGroupName);
 ```
 
-## <a name="step-4-create-the-persons-to-the-persongroup"></a>步驟 4：建立 PersonGroup 的人員
+## <a name="step-4-create-the-persons-for-the-persongroup"></a>步驟 4：針對 PersonGroup 建立人員
 
-同時建立人員，而且會套用 `await WaitCallLimitPerSecondAsync()` 以避免超出呼叫限制。
+同時建立人員，而且也會套用 `await WaitCallLimitPerSecondAsync()` 以避免超出呼叫限制。
 
-```CSharp
-CreatePersonResult[] persons = new CreatePersonResult[PersonCount];
+```csharp
+Person[] persons = new Person[PersonCount];
 Parallel.For(0, PersonCount, async i =>
 {
     await WaitCallLimitPerSecondAsync();
 
     string personName = $"PersonName#{i}";
-    persons[i] = await faceServiceClient.CreatePersonAsync(personGroupId, personName);
+    persons[i] = await faceClient.PersonGroupPerson.CreateAsync(personGroupId, personName);
 });
 ```
 
 ## <a name="step-5-add-faces-to-the-persons"></a>步驟 5：將人臉新增至人員
 
-同時處理將人臉新增至不同的人員，而一個特定人員的人臉則會循序新增。
-同樣會叫用 `await WaitCallLimitPerSecondAsync()` 以確保要求頻率在限制的範圍內。
+同時處理已新增至不同人的臉部。 針對某位特定人員新增的臉部均會進行循序處理。
+同樣地，會叫用 `await WaitCallLimitPerSecondAsync()` 以確保要求頻率在限制的範圍內。
 
-```CSharp
+```csharp
 Parallel.For(0, PersonCount, async i =>
 {
     Guid personId = persons[i].PersonId;
@@ -114,29 +114,29 @@ Parallel.For(0, PersonCount, async i =>
 
         using (Stream stream = File.OpenRead(imagePath))
         {
-            await faceServiceClient.AddPersonFaceAsync(personGroupId, personId, stream);
+            await faceClient.PersonGroupPerson.AddFaceFromStreamAsync(personGroupId, personId, stream);
         }
     }
 });
 ```
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>摘要
 
-在本指南中，您已了解使用大量人員和人臉建立 PersonGroup 的程序。 幾項提醒：
+在本指南中，您已了解使用大量人員和臉部建立 PersonGroup 的流程。 幾項提醒：
 
 - 此策略也適用於 FaceList 和 LargePersonGroup。
-- 可以同時處理對 LargePersonGroup 中的不同 FaceList 或 Person 新增/刪除人臉。
-- 對於 LargePersonGroup 中的一個特定 FaceList 或 Person，應該循序執行相同的作業。
-- 為了簡化內容，本指南略過潛在例外狀況的處理。 如果您想要變得更強固，就應該套用適當的重試原則。
+- 可同時處理對 LargePersonGroup 中的不同 FaceList 或人員新增或刪除臉部。
+- 可循序處理對 LargePersonGroup 中的某個特定 FaceList 或人員新增或刪除臉部。
+- 為了簡單起見，本指南省略了處理潛在例外狀況的方式。 如果您想要變得更強固，請套用適當的重試原則。
 
-以下是先前所說明和示範功能的快速提醒：
+已說明及示範下列功能：
 
-- 使用 [PersonGroup - 建立](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244) API 建立 PersonGroup
-- 使用 [PersonGroup Person - 建立](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c) API 建立人員
-- 使用 [PersonGroup Person - 新增人臉](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) API 將人臉新增至人員
+- 使用 [PersonGroup - 建立](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244) \(英文\) API 來建立 PersonGroup。
+- 使用 [PersonGroup - 建立](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c) \(英文\) API 來建立人員。
+- 使用 [PersonGroup Person - 新增臉部](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) \(英文\) API 來將臉部新增至人員。
 
 ## <a name="related-topics"></a>相關主題
 
-- [如何識別影像中的人臉](HowtoIdentifyFacesinImage.md)
-- [如何偵測影像中的人臉](HowtoDetectFacesinImage.md)
-- [如何使用大規模功能](how-to-use-large-scale.md)
+- [識別影像中的臉部](HowtoIdentifyFacesinImage.md)
+- [偵測影像中的臉部](HowtoDetectFacesinImage.md)
+- [使用大規模功能](how-to-use-large-scale.md)

@@ -1,90 +1,25 @@
 ---
-title: 適用於 PostgreSQL 的 Azure 資料庫 – Hyperscale (Citus) (預覽) 快速入門
-description: 在適用於 PostgreSQL 的 Azure 資料庫 – Hyperscale (Citus) (預覽) 上建立及查詢分散式資料表的快速入門。
+title: 建立分散式資料表 - 超大規模 (Citus) - 適用於 PostgreSQL 的 Azure 資料庫
+description: 在適用於 PostgreSQL 的 Azure 資料庫 - 超大規模 (Citus) 上建立及查詢分散式資料表的快速入門。
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 05/06/2019
-ms.openlocfilehash: 4271d94f07125a870cc4aa859b01db819d583f40
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.date: 05/14/2019
+ms.openlocfilehash: 02e009e6fff2e717693d1579d409199ab179d941
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65406437"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79290326"
 ---
-# <a name="quickstart-create-an-azure-database-for-postgresql---hyperscale-citus-preview-in-the-azure-portal"></a>快速入門：在 Azure 入口網站中建立適用於 PostgreSQL 的 Azure 資料庫 – Hyperscale (Citus) (預覽)
+# <a name="quickstart-create-an-azure-database-for-postgresql---hyperscale-citus-in-the-azure-portal"></a>快速入門：在 Azure 入口網站中建立適用於 PostgreSQL 的 Azure 資料庫 - 超大規模 (Citus)
 
-Azure Database for PostgreSQL 是一種受控服務，您用來在雲端執行、管理及調整高可用性的 PostgreSQL 資料庫。 本快速入門說明如何使用 Azure 入口網站，建立適用於 PostgreSQL 的 Azure 資料庫 – Hyperscale (Citus) (預覽) 伺服器群組。 您將探索分散式資料：進行跨節點的資料表分區化、擷取範例資料，以及在多個節點上執行查詢。
+Azure Database for PostgreSQL 是一種受控服務，您用來在雲端執行、管理及調整高可用性的 PostgreSQL 資料庫。 此快速入門示範如何使用 Azure 入口網站，來建立適用於 PostgreSQL 的 Azure 資料庫 - 超大規模 (Citus) 伺服器群組。 您將探索分散式資料：進行跨節點的資料表分區化、擷取範例資料，以及在多個節點上執行查詢。
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
-
-## <a name="sign-in-to-the-azure-portal"></a>登入 Azure 入口網站
-
-登入 [Azure 入口網站](https://portal.azure.com)。
-
-## <a name="create-an-azure-database-for-postgresql"></a>建立適用於 PostgreSQL 的 Azure 資料庫
-
-請依照下列步驟來建立「適用於 PostgreSQL 的 Azure 資料庫」伺服器：
-1. 按一下 Azure 入口網站左上角的 [建立資源]。
-2. 從 [新增] 頁面中選取 [資料庫]，然後從 [資料庫] 頁面中選取 [適用於 PostgreSQL 的 Azure 資料庫]。
-3. 針對部署選項，按一下 [Hyperscale (Citus) 伺服器群組 - 預覽] 下方的 [建立] 按鈕。
-4. 在新伺服器詳細資料表單中填寫下列資訊︰
-   - 資源群組：按一下此欄位的文字方塊下方的 [新建] 連結。 輸入名稱，例如 **myresourcegroup**。
-   - 伺服器群組名稱：輸入新伺服器群組的唯一名稱，該名稱也會用於伺服器子網域。
-   - 管理員使用者名稱：輸入唯一的使用者名稱 (稍後將用來連線到資料庫)。
-   - 密碼：長度必須至少有 8 個字元，且必須包含下列三種類別的字元 – 英文大寫字母、英文小寫字母、數字 (0-9) 和非英數字元 (!、$、#、% 等)。
-   - 位置：使用最接近使用者的位置，讓他們能以最快速度存取資料。
-
-   > [!IMPORTANT]
-   > 需要伺服器系統管理員登入以及您在此處指定的密碼，稍後才能在本快速入門中登入伺服器及其資料庫。 請記住或記錄此資訊，以供稍後使用。
-
-5. 按一下 [設定伺服器群組]。 讓該區段中的設定維持不變，然後按一下 [儲存]。
-6. 按一下 [檢閱 + 建立]，然後按一下 [建立] 以佈建伺服器。 佈建需要幾分鐘的時間。
-7. 此頁面會重新導向以監視部署。 當即時狀態從 [您的部署正在進行中] 變更為 [您的部署已完成] 時，按一下頁面左側的 [輸出] 功能表項目。
-8. [輸出] 頁面將包含協調器主機名稱，且旁邊會有按鈕可將此值複製到剪貼簿。 請記錄此資訊，以供後續使用。
-
-## <a name="configure-a-server-level-firewall-rule"></a>設定伺服器層級防火牆規則
-
-「適用於 PostgreSQL 的 Azure 資料庫 – Hyperscale (Citus) (預覽)」服務會使用伺服器層級的防火牆。 根據預設，防火牆會防止所有外部應用程式和工具連線到協調器節點及其中的任何資料庫。 我們必須新增規則，以針對特定 IP 位址範圍開啟防火牆。
-
-1. 從您先前複製協調器節點主機名稱的 [輸出] 區段，按一下 [概觀] 功能表項目。
-
-2. 您部署的縮放群組名稱前面會加上 "sg-"。 在資源清單中找到它並且按一下。
-
-3. 按一下左側功能表中 [安全性] 底下的 [防火牆]。
-
-4. 按一下[+ 為目前的用戶端 IP 位址新增防火牆規則] 連結。 最後，按一下 [儲存] 按鈕。
-
-5. 按一下 [檔案] 。
-
-   > [!NOTE]
-   > Azure PostgreSQL 伺服器會透過連接埠 5432 進行通訊。 如果您嘗試從公司網路內進行連線，您網路的防火牆可能不允許透過連接埠 5432 的輸出流量。 若情況如此，除非 IT 部門開啟連接埠 5432，否則您無法連線至 Azure SQL Database 伺服器。
-   >
-
-## <a name="connect-to-the-database-using-psql-in-cloud-shell"></a>在 Cloud Shell 中使用 psql 連線到資料庫
-
-現在，我們將使用 [psql](https://www.postgresql.org/docs/current/app-psql.html) 命令列公用程式來連線到「適用於 PostgreSQL 的 Azure 資料庫」伺服器。
-1. 透過頂端瀏覽窗格上的終端機圖示啟動 Azure Cloud Shell。
-
-   ![適用於 PostgreSQL 的 Azure 資料庫 - Azure Cloud Shell 終端機圖示](./media/quickstart-create-hyperscale-portal/psql-cloud-shell.png)
-
-2. Azure Cloud Shell 會在您的瀏覽器中開啟，讓您能夠輸入 bash 命令。
-
-   ![適用於 PostgreSQL 的 Azure 資料庫 - Azure Shell Bash 提示字元](./media/quickstart-create-hyperscale-portal/psql-bash.png)
-
-3. 在 Cloud Shell 提示字元處，使用 psql 命令來連線到「適用於 PostgreSQL 的 Azure 資料庫」伺服器。 下列格式可用來透過 [psql](https://www.postgresql.org/docs/9.6/static/app-psql.html) 公用程式連線到「適用於 PostgreSQL 的 Azure 資料庫」伺服器：
-   ```bash
-   psql --host=<myserver> --username=myadmin --dbname=citus
-   ```
-
-   例如，下列命令會使用存取認證，連線到 PostgreSQL 伺服器 **mydemoserver.postgres.database.azure.com** 上名為 **citus** 的預設資料庫。 在系統提示時輸入您的伺服器管理員密碼。
-
-   ```bash
-   psql --host=mydemoserver.postgres.database.azure.com --username=myadmin --dbname=citus
-   ```
+[!INCLUDE [azure-postgresql-hyperscale-create-db](../../includes/azure-postgresql-hyperscale-create-db.md)]
 
 ## <a name="create-and-distribute-tables"></a>建立和散發資料表
 
@@ -127,7 +62,7 @@ CREATE TABLE github_users
 );
 ```
 
-`github_events` 的 `payload` 欄位具有 JSONB 資料類型。 JSONB 是 Postgres 中二進位格式的 JSON 資料類型。 這可讓您在單一資料行中輕鬆地儲存更有彈性的結構描述。
+`github_events` 的 `payload` 欄位具有 JSONB 資料類型。 JSONB 是 Postgres 中二進位格式的 JSON 資料類型。 資料類型可讓您在單一資料行中輕鬆地儲存更有彈性的結構描述。
 
 Postgres 可以建立此類型的 `GIN` 索引，該索引將會檢索每個索引鍵和其值。 使用索引，即可利用各種條件快速又輕鬆地查詢承載。 我們會繼續建立幾個索引，再載入我們的資料。 在 psql 中：
 
@@ -143,9 +78,18 @@ SELECT create_distributed_table('github_events', 'user_id');
 SELECT create_distributed_table('github_users', 'user_id');
 ```
 
-我們準備好載入資料。 下載兩個範例檔案 [users.csv](https://examples.citusdata.com/users.csv) 和 [events.csv](https://examples.citusdata.com/events.csv)。 下載檔案之後，使用 psql 連線到資料庫，小心從包含所下載檔案的目錄執行 psql。 使用 `\copy` 命令載入資料：
+我們準備好載入資料。 同樣在 psql 中，使用 curl 和 -O 選項來下載檔案：
 
 ```sql
+\! curl -O https://examples.citusdata.com/users.csv
+\! curl -O https://examples.citusdata.com/events.csv
+```
+
+接下來，將資料從檔案載入至分散式資料表：
+
+```sql
+SET CLIENT_ENCODING TO 'utf8';
+
 \copy github_events from 'events.csv' WITH CSV
 \copy github_users from 'users.csv' WITH CSV
 ```
@@ -174,23 +118,23 @@ ORDER BY hour;
 如果我們在 `user_id` 上聯結，Hyperscale 可以將聯結執行向下推送到分區，進而以平行方式在背景工作角色節點上執行。 例如，讓我們找出建立最多存放庫的使用者：
 
 ```sql
-SELECT login, count(*)
-FROM github_events ge
-JOIN github_users gu
-ON ge.user_id = gu.user_id
-WHERE event_type = 'CreateEvent' AND
-      payload @> '{"ref_type": "repository"}'
-GROUP BY login
-ORDER BY count(*) DESC;
+SELECT gu.login, count(*)
+  FROM github_events ge
+  JOIN github_users gu
+    ON ge.user_id = gu.user_id
+ WHERE ge.event_type = 'CreateEvent'
+   AND ge.payload @> '{"ref_type": "repository"}'
+ GROUP BY gu.login
+ ORDER BY count(*) DESC;
 ```
 
 ## <a name="clean-up-resources"></a>清除資源
 
-在前述步驟中，您在伺服器群組中建立了 Azure 資源。 如果您認為未來不需要這些資源，請刪除伺服器群組。 在您伺服器群組的 [概觀] 頁面中，按一下 [刪除] 按鈕。 當快顯頁面上出現提示時，請確認伺服器群組的名稱，然後按一下最後一個 [刪除] 按鈕。
+在前述步驟中，您在伺服器群組中建立了 Azure 資源。 如果您認為未來不需要這些資源，請刪除伺服器群組。 在您伺服器群組的 [概觀]  頁面中，按一下 [刪除]  按鈕。 當快顯頁面上出現提示時，請確認伺服器群組的名稱，然後按一下最後一個 [刪除]  按鈕。
 
 ## <a name="next-steps"></a>後續步驟
 
-在本快速入門中，您已了解如何佈建 Hyperscale (Citus) 伺服器群組。 您已使用 psql 連線到該群組、建立結構描述，以及分散資料。
+在本快速入門中，您已了解如何佈建 Hyperscale (Citus) 伺服器群組。 您已使用 psql 連線到該群組、建立結構描述，並散發資料。
 
 接下來，遵循教學課程以建置可擴充的多租用戶應用程式。
 > [!div class="nextstepaction"]

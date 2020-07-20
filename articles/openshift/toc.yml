@@ -1,21 +1,93 @@
-- name: OpenShift 文件
-  href: index.md
-- name: 快速入門
+- name: Azure Red Hat OpenShift
+  href: index.yml
+- name: 概觀
   expanded: true
   items:
-    - name: OpenShift：社群範本
-      href: 'https://azure.microsoft.com/resources/templates/openshift-origin-rhel/'
+    - name: 關於 Azure Red Hat OpenShift
+      href: intro-openshift.md
 - name: 教學課程
+  expanded: true
   items:
-    - name: 部署至 Azure VM
-      href: /azure/virtual-machines/linux/openshift-get-started
+    - name: 1 - 建立 Azure Red Hat OpenShift 4 叢集
+      href: tutorial-create-cluster.md
+    - name: 2 - 連線至 Azure Red Hat OpenShift 4 叢集
+      href: tutorial-connect-cluster.md
+    - name: 3 - 刪除 Azure Red Hat OpenShift 4 叢集
+      href: tutorial-delete-cluster.md
+- name: 操作指南
+  items:
+    - name: 建立私人 Azure Red Hat OpenShift 4 叢集
+      href: howto-create-private-cluster-4x.md
+    - name: 設定 Azure Red Hat OpenShift 4 叢集的 DNS 轉送
+      href: dns-forwarding.md
+    - name: 設定 Azure Red Hat OpenShift 4 叢集的 Azure Active Directory 驗證
+      items:
+        - name: 設定 Azure Active Directory 驗證 (CLI)
+          href: configure-azure-ad-cli.md
+        - name: 設定 Azure Active Directory 驗證 (入口網站)
+          href: configure-azure-ad-ui.md
+    - name: Azure Red Hat OpenShift 4 的監視和記錄
+      items:
+        - name: 適用於 Azure Red Hat OpenShift 4 (預覽) 中容器的 Azure 監視器
+          items:
+            - name: 針對適 Azure Red Hat OpenShift 4 (預覽) 中的容器設定 Azure 監視器
+              href: ../azure-monitor/insights/container-insights-azure-redhat4-setup.md
+            - name: 針對 Azure Red Hat OpenShift 3.11 (預覽) 中的容器停用 Azure 監視器
+              href: ../azure-monitor/insights/container-insights-optout-openshift-v4.md
+    - name: Azure Red Hat OpenShift 3.11
+      items:
+        - name: 針對 Azure Red Hat OpenShift 3.11 設定您的 Azure Red Hat OpenShift 開發環境
+          href: howto-setup-environment.md
+          items:
+            - name: 建立 Azure AD 租用戶
+              href: howto-create-tenant.md
+            - name: 建立 Azure AD 應用程式物件和使用者
+              href: howto-aad-app-configuration.md
+        - name: 在 Azure Red Hat OpenShift 3.11 叢集中部署獨立 Prometheus
+          href: howto-deploy-prometheus.md
+        - name: 管理 Azure Red Hat OpenShift 3.11 叢集中的專案
+          href: howto-manage-projects.md
+        - name: 建立私人 Azure Red Hat OpenShift 3.11 叢集
+          href: howto-create-private-cluster-3x.md
+        - name: Azure Red Hat OpenShift 3.11 的監視和記錄
+          items:
+            - name: 適用於 Azure Red Hat OpenShift 3.11 (預覽) 中容器的 Azure 監視器
+              items:
+                - name: 針對 Azure Red Hat OpenShift 3.11 中的容器設定 Azure 監視器
+                  href: ../azure-monitor/insights/container-insights-azure-redhat-setup.md
+                  maintainContext: true
+                - name: 針對 Azure Red Hat OpenShift 3.11 中的容器停用 Azure 監視器
+                  href: ../azure-monitor/insights/container-insights-optout-openshift.md
+                  maintainContext: true
+        - name: 在 Azure Red Hat OpenShift 3.11 中執行具特殊權限的容器
+          href: howto-run-privileged-containers.md
+        - name: Azure Red Hat OpenShift 3.11 中的叢集管理
+          items:
+            - name: 1 - Azure Red Hat OpenShift 3.11 叢集管理員角色
+              href: cluster-administration-cluster-admin-role.md
+            - name: 2 - 管理 Azure Red Hat OpenShift 3.11 中的安全性內容條件約束
+              href: cluster-administration-security-context-constraints.md
+- name: 參考
+  items:
+    - name: Azure Red Hat OpenShift CLI
+      href: /cli/azure/aro
+    - name: Azure Red Hat OpenShift REST API
+      href: /rest/api/openshift
 - name: 資源
   items:
+    - name: 常見問題集
+      href: openshift-faq.md
+    - name: 疑難排解
+      href: troubleshoot.md
+    - name: Azure Red Hat OpenShift 3.11 支援的資源
+      href: supported-resources.md
+    - name: Azure Red Hat OpenShift 4.3 支援的資源
+      href: support-policies-v4.md
+    - name: 區域可用性
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: Azure Red Hat OpenShift 4.3 文件
+      href: 'https://docs.openshift.com/aro/4/welcome/index.html'
+    - name: Azure Red Hat OpenShift 3.11 文件
+      href: 'https://docs.openshift.com/aro/3/welcome/index.html'
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/roadmap/'
-    - name: OpenShift 容器範本
-      href: 'https://github.com/Microsoft/openshift-container-platform'
-    - name: OpenShift Origin
-      href: 'https://docs.openshift.org/latest/getting_started/index.html'
-    - name: OpenShift 網站
-      href: 'https://docs.openshift.org/latest/welcome/index.html'

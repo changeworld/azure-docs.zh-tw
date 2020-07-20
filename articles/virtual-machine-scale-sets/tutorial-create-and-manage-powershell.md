@@ -1,27 +1,20 @@
 ---
-title: 教學課程 - 建立及管理 Azure 虛擬機器擴展集 | Microsoft Docs
+title: 教學課程 - 建立及管理 Azure 虛擬機器擴展集
 description: 了解如何使用 Azure PowerShell 建立虛擬機器擴展集，以及一些常見的管理工作，例如如何啟動和停止執行個體，或變更擴展集容量。
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: cynthn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: ju-shim
+ms.author: jushiman
 ms.topic: tutorial
+ms.service: virtual-machine-scale-sets
+ms.subservice: management
 ms.date: 05/18/2018
-ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: 0eb5a33b91925260c89e0b1c23800614ed637bdb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: 43816c815c206da7e3fec197e54e9e7889c6de47
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57990656"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84735348"
 ---
 # <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-azure-powershell"></a>教學課程：使用 Azure PowerShell 建立及管理虛擬機器擴展集
 
@@ -34,16 +27,16 @@ ms.locfileid: "57990656"
 > * 手動調整擴展集
 > * 執行常見的擴展集管理工作
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-[!INCLUDE [updated-for-az-vm.md](../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../includes/updated-for-az.md)]
 
-[!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 
 
 ## <a name="create-a-resource-group"></a>建立資源群組
-Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 資源群組必須在虛擬機器擴展集之前建立。 使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 命令來建立資源群組。 在此範例中，會在 EastUS 區域中建立名為 myResourceGroup 的資源群組。 
+Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 資源群組必須在虛擬機器擴展集之前建立。 使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 命令來建立資源群組。 在此範例中，會在 EastUS** 區域中建立名為 myResourceGroup** 的資源群組。 
 
 ```azurepowershell-interactive
 New-AzResourceGroup -ResourceGroupName "myResourceGroup" -Location "EastUS"
@@ -140,7 +133,7 @@ IpAddress
 52.168.121.216
 ```
 
-建立您第一個 VM 執行個體的遠端連線。 請指定必要 VM 執行個體的公用 IP 位址和連接埠號碼，如先前的命令所示。 出現提示時，請輸入您在建立擴展集時所使用的認證 (在範例命令中預設為 *azureuser* 和 *P\@ssw0rd!*)。 如果您使用 Azure Cloud Shell，請從本機 PowerShell 提示字元或遠端桌面用戶端執行此步驟。 下列範例會連線至 VM 執行個體 *1*：
+建立您第一個 VM 執行個體的遠端連線。 請指定必要 VM 執行個體的公用 IP 位址和連接埠號碼，如先前的命令所示。 出現提示時，請輸入您在建立擴展集時所使用的認證 (在範例命令中預設為 *azureuser* 和 *P\@ssw0rd!* )。 如果您使用 Azure Cloud Shell，請從本機 PowerShell 提示字元或遠端桌面用戶端執行此步驟。 下列範例會連線至 VM 執行個體 *1*：
 
 ```powershell
 mstsc /v 52.168.121.216:50001
@@ -156,7 +149,7 @@ Azure Marketplace 包含許多可用來建立 VM 執行個體的映像。 若要
 Get-AzVMImagePublisher -Location "EastUS"
 ```
 
-若要檢視給定發行者的映像清單，請使用 [Get-AzVMImageSku](/powershell/module/az.compute/get-azvmimagesku)。 您也可以依 `-PublisherName` 或 `–Offer` 來篩選此映像清單。 在下列範例中，會篩選出發行者名稱為 *MicrosoftWindowsServer*、且供應項目符合 *WindowsServer* 的所有映像的清單：
+若要檢視給定發行者的映像清單，請使用 [Get-AzVMImageSku](/powershell/module/az.compute/get-azvmimagesku)。 您也可以依 `-PublisherName` 或 `-Offer` 來篩選此映像清單。 在下列範例中，會篩選出發行者名稱為 *MicrosoftWindowsServer*、且供應項目符合 *WindowsServer* 的所有映像的清單：
 
 ```azurepowershell-interactive
 Get-AzVMImageSku -Location "EastUS" -PublisherName "MicrosoftWindowsServer" -Offer "WindowsServer"
@@ -198,6 +191,8 @@ New-AzVmss `
   -Credential $cred
 ```
 
+> [!IMPORTANT]
+> 我們建議使用「最新」** 的映像版本。 指定「最新」以使用部署階段可用的最新映像版本。 請注意，即使您使用「最新」辦本，VM 映像也不會在部署階段後自動更新，即使有新版本可供使用也一樣。
 
 ## <a name="understand-vm-instance-sizes"></a>了解 VM 執行個體大小
 VM 執行個體大小 (或 *SKU*) 會決定可供 VM 執行個體使用的計算資源 (例如 CPU、GPU 和記憶體) 數量。 擴展集中的 VM 執行個體必須針對預期的工作負載適當設定大小。
@@ -205,7 +200,7 @@ VM 執行個體大小 (或 *SKU*) 會決定可供 VM 執行個體使用的計算
 ### <a name="vm-instance-sizes"></a>VM 執行個體大小
 下表會將一般 VM 大小分類成各種使用案例。
 
-| 類型                     | 一般大小           |    說明       |
+| 類型                     | 一般大小           |    描述       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [一般用途](../virtual-machines/windows/sizes-general.md)         |Dsv3、Dv3、DSv2、Dv2、DS、D、Av2、A0-7| 平衡的 CPU 對記憶體。 適用於開發/測試及小型到中型應用程式和資料解決方案。  |
 | [計算最佳化](../virtual-machines/windows/sizes-compute.md)   | Fs、F             | CPU 與記憶體的比例高。 適用於中流量應用程式、網路設備，以及批次處理。        |
@@ -239,7 +234,7 @@ Standard_NV6                       6      57344               24        1047552 
 Standard_NV12                     12     114688               48        1047552               696320
 ```
 
-當您在教學課程一開始建立擴展集時，您為 VM 執行個體提供了預設的 VM SKU Standard_DS1_v2。 您可以根據 [Get-AzVMSize](/powershell/module/az.compute/get-azvmsize) 的輸出指定不同的 VM 執行個體大小。 下列範例會使用 `-VmSize` 參數指定 VM 執行個體大小 *Standard_F1*，以建立擴展集。 建立及設定所有擴展集資源和 VM 執行個體需要幾分鐘的時間，而您並不需要部署下列擴展集：
+當您在教學課程一開始建立擴展集時，您為 VM 執行個體提供了預設的 VM SKU Standard_DS1_v2**。 您可以根據 [Get-AzVMSize](/powershell/module/az.compute/get-azvmsize) 的輸出指定不同的 VM 執行個體大小。 下列範例會使用 `-VmSize` 參數指定 VM 執行個體大小 *Standard_F1*，以建立擴展集。 建立及設定所有擴展集資源和 VM 執行個體需要幾分鐘的時間，而您並不需要部署下列擴展集：
 
 ```azurepowershell-interactive
 New-AzVmss `

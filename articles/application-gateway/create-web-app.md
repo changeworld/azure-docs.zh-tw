@@ -1,21 +1,21 @@
 ---
-title: 使用 Azure 應用程式閘道保護 Web 應用程式 - PowerShell
+title: 使用 PowerShell 設定 App Service
+titleSuffix: Azure Application Gateway
 description: 本文提供如何在現有或新的應用程式閘道上將網頁設定為後端主機的指引。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
-origin.date: 10/16/2018
-ms.date: 03/12/2019
-ms.author: v-junlch
-ms.openlocfilehash: dcf21fe111ab742074ab4fe580a021338e1f7c43
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.topic: how-to
+ms.date: 11/15/2019
+ms.author: victorh
+ms.openlocfilehash: 152f3c3254ab01c8aa61acd12c39bd98c8f55038
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62122212"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84808045"
 ---
-# <a name="configure-app-service-with-application-gateway"></a>透過應用程式閘道設定 App Service
+# <a name="configure-app-service-with-application-gateway-using-powershell"></a>使用 PowerShell 設定應用程式閘道的 App Service
 
 應用程式閘道可讓您以 Azure App Service 應用程式或其他多租用戶的服務作為後端集區成員。 在本文中，您將了解如何透過應用程式閘道設定 App Service 應用程式。 第一個範例示範如何將現有的應用程式閘道設定為以 Web 應用程式作為後端集區成員。 第二個範例示範如何建立新的應用程式閘道，並以 Web 應用程式作為後端集區成員。
 
@@ -27,7 +27,7 @@ ms.locfileid: "62122212"
 
 ```powershell
 # FQDN of the web app
-$webappFQDN = "<enter your webapp FQDN i.e mywebsite.chinacloudsites.cn>"
+$webappFQDN = "<enter your webapp FQDN i.e mywebsite.azurewebsites.net>"
 
 # Retrieve the resource group
 $rg = Get-AzResourceGroup -Name 'your resource group name'
@@ -66,13 +66,13 @@ $gitrepo="https://github.com/Azure-Samples/app-service-web-dotnet-get-started.gi
 $webappname="mywebapp$(Get-Random)"
 
 # Creates a resource group
-$rg = New-AzResourceGroup -Name ContosoRG -Location ChinaNorth
+$rg = New-AzResourceGroup -Name ContosoRG -Location Eastus
 
 # Create an App Service plan in Free tier.
-New-AzAppServicePlan -Name $webappname -Location ChinaNorth -ResourceGroupName $rg.ResourceGroupName -Tier Free
+New-AzAppServicePlan -Name $webappname -Location EastUs -ResourceGroupName $rg.ResourceGroupName -Tier Free
 
 # Creates a web app
-$webapp = New-AzWebApp -ResourceGroupName $rg.ResourceGroupName -Name $webappname -Location ChinaNorth -AppServicePlan $webappname
+$webapp = New-AzWebApp -ResourceGroupName $rg.ResourceGroupName -Name $webappname -Location EastUs -AppServicePlan $webappname
 
 # Configure GitHub deployment from your GitHub repo and deploy once to web app.
 $PropertiesObject = @{
@@ -86,13 +86,13 @@ Set-AzResource -PropertyObject $PropertiesObject -ResourceGroupName $rg.Resource
 $subnet = New-AzVirtualNetworkSubnetConfig -Name subnet01 -AddressPrefix 10.0.0.0/24
 
 # Creates a vnet for the application gateway
-$vnet = New-AzVirtualNetwork -Name appgwvnet -ResourceGroupName $rg.ResourceGroupName -Location ChinaNorth -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+$vnet = New-AzVirtualNetwork -Name appgwvnet -ResourceGroupName $rg.ResourceGroupName -Location EastUs -AddressPrefix 10.0.0.0/16 -Subnet $subnet
 
 # Retrieve the subnet object for use later
 $subnet=$vnet.Subnets[0]
 
 # Create a public IP address
-$publicip = New-AzPublicIpAddress -ResourceGroupName $rg.ResourceGroupName -name publicIP01 -location ChinaNorth -AllocationMethod Dynamic
+$publicip = New-AzPublicIpAddress -ResourceGroupName $rg.ResourceGroupName -name publicIP01 -location EastUs -AllocationMethod Dynamic
 
 # Create a new IP configuration
 $gipconfig = New-AzApplicationGatewayIPConfiguration -Name gatewayIP01 -Subnet $subnet
@@ -125,12 +125,12 @@ $rule = New-AzApplicationGatewayRequestRoutingRule -Name rule01 -RuleType Basic 
 $sku = New-AzApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
 
 # Create the application gateway
-$appgw = New-AzApplicationGateway -Name ContosoAppGateway -ResourceGroupName $rg.ResourceGroupName -Location ChinaNorth -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting -Probes $probeconfig -FrontendIpConfigurations $fipconfig  -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku
+$appgw = New-AzApplicationGateway -Name ContosoAppGateway -ResourceGroupName $rg.ResourceGroupName -Location EastUs -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting -Probes $probeconfig -FrontendIpConfigurations $fipconfig  -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku
 ```
 
 ## <a name="get-application-gateway-dns-name"></a>取得應用程式閘道 DNS 名稱
 
-创建网关后，下一步是配置用于通信的前端。 當使用公用 IP 時，應用程式閘道需要動態指派的 DNS 名稱 (不易記住)。 為了確保使用者可以叫用應用程式閘道，可使用 CNAME 記錄來指向應用程式閘道的公用端點。 若要建立別名，請使用連接至應用程式閘道的 PublicIPAddress 元素，擷取應用程式閘道的詳細資料及其關聯的 IP/DNS 名稱。 這可透過 Azure DNS 或其他 DNS 提供者完成，方法是建立一筆指向[公用 IP 位址](../dns/dns-custom-domain.md#public-ip-address)的 CNAME 記錄。 不建議使用 A-records，因為重新啟動應用程式閘道時，VIP 可能會變更。
+建立閘道之後，下一步是設定通訊的前端。 當使用公用 IP 時，應用程式閘道需要動態指派的 DNS 名稱 (不易記住)。 為了確保使用者可以叫用應用程式閘道，可使用 CNAME 記錄來指向應用程式閘道的公用端點。 若要建立別名，請使用連接至應用程式閘道的 PublicIPAddress 元素，擷取應用程式閘道的詳細資料及其關聯的 IP/DNS 名稱。 這可透過 Azure DNS 或其他 DNS 提供者完成，方法是建立一筆指向[公用 IP 位址](../dns/dns-custom-domain.md#public-ip-address)的 CNAME 記錄。 不建議使用 A-records，因為重新啟動應用程式閘道時，VIP 可能會變更。
 
 ```powershell
 Get-AzPublicIpAddress -ResourceGroupName ContosoRG -Name publicIP01
@@ -139,7 +139,7 @@ Get-AzPublicIpAddress -ResourceGroupName ContosoRG -Name publicIP01
 ```
 Name                     : publicIP01
 ResourceGroupName        : ContosoRG
-Location                 : chinanorth
+Location                 : eastus
 Id                       : /subscriptions/<subscription_id>/resourceGroups/ContosoRG/providers/Microsoft.Network/publicIPAddresses/publicIP01
 Etag                     : W/"00000d5b-54ed-4907-bae8-99bd5766d0e5"
 ResourceGuid             : 00000000-0000-0000-0000-000000000000
@@ -154,7 +154,7 @@ IpConfiguration          : {
                             Configurations/frontend1"
                             }
 DnsSettings              : {
-                                "Fqdn": "00000000-0000-xxxx-xxxx-xxxxxxxxxxxx.chinacloudapp.cn"
+                                "Fqdn": "00000000-0000-xxxx-xxxx-xxxxxxxxxxxx.cloudapp.net"
                             }
 ```
 
@@ -166,6 +166,4 @@ DnsSettings              : {
 
 ## <a name="next-steps"></a>後續步驟
 
-了解如何藉由瀏覽下列項目來設定重新導向：[使用 PowerShell 在 Azure 應用程式閘道上設定重新導向](redirect-overview.md)。
-
-<!-- Update_Description: code update -->
+如需了解如何設定重新導向，請參閱[使用 PowerShell 在 Azure 應用程式閘道上設定重新導向](redirect-overview.md)。

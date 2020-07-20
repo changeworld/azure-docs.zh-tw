@@ -3,66 +3,81 @@ title: 在 QnA Maker 知識庫中新增閒聊
 titleSuffix: Azure Cognitive Services
 description: 當您建立 KB 時，將個人閒聊新增至您的 Bot，讓它變得更健談且吸引人。 QnA Maker 可讓您輕鬆地將預先填入的一組最常見閒聊，新增至您的 KB。
 services: cognitive-services
-author: tulasim88
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
-ms.topic: article
-ms.date: 05/07/2019
-ms.author: tulasim
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 08d09680ee1797e73666c185f4430c7ef3079477
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: e06cad8e8ca62330b09e173cf6058905b49f19e4
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65153693"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83992900"
 ---
 # <a name="add-chit-chat-to-a-knowledge-base"></a>在知識庫中新增閒聊
 
-將閒聊新增至您的 Bot，讓它變得更健談且吸引人。 QnA Maker 中的閒聊功能可讓您輕鬆地將預先填入的一組最常見閒聊，新增至您的資料庫 (KB)。 這可以是您 Bot 的特質起始點，並將節省您從頭撰寫它們的時間和成本。  
+將閒聊新增至您的 Bot，讓它變得更健談且吸引人。 QnA Maker 中的閒聊功能可讓您輕鬆地將預先填入的一組最常見閒聊，新增至您的資料庫 (KB)。 這可以是您 Bot 的特質起始點，並將節省您從頭撰寫它們的時間和成本。
 
-此資料集有約 100 個案例的 chit 交談中的多個角色，例如 Professional、 方便和 Witty 語音。 選擇最類似您 Bot 聲音的角色。 假設有使用者查詢，QnA Maker 會嘗試將它與最接近的已知閒聊 QnA 比對。  
+此資料集有大約100個閒聊的案例，也就是多個角色的語音，例如專業、易記和詼諧。 選擇最類似您 Bot 聲音的角色。 假設有使用者查詢，QnA Maker 會嘗試將它與最接近的已知閒聊 QnA 比對。
 
-不同人物的一些範例如下。 您可以看到連同自身個性遭到的詳細資料的所有個性資料集[此處](https://github.com/Microsoft/BotBuilder-PersonalityChat/tree/master/CSharp/Datasets)。
+以下是不同特質的一些範例。 您可以看到所有的個人化[資料集](https://github.com/Microsoft/BotBuilder-PersonalityChat/tree/master/CSharp/Datasets)，以及特質的詳細資訊。
+
+對於的使用者查詢 `When is your birthday?` ，每個特性都有一個樣式的回應：
 
 <!-- added quotes so acrolinx doesn't score these sentences -->
-|使用者查詢|專業|易記|詼諧|
-|--|--|--|--|
-|`You are awesome`|`I aim to serve.`|`Aw, I'm blushing.`|`Flattery. I like it.`|
-|`Are you hungry?`|`I don't need to eat.`|`I only do food for thought.`|`Eating would require a lot of things I don't have. Like a digestive system. And silverware.`|
-|`Sing a song`|`I'm afraid I'm not musically inclined.`|`La la la, tra la la. I'm awesome at this.`|`Those who can, do. Those who can't, don't sing.`|
-|`Will you marry me?`|`I think it's best if we stick to a professional relationship.`|`Definitely didn't see that coming!`|`Sure. Take me to city hall. See what happens.`|
+|風格|範例|
+|--|--|
+|Professional|年齡並不是真的適用于我。|
+|易記|我的年齡並不太長。|
+|詼諧|我是免費使用的。|
+|管也|我沒有年齡。|
+|熱心|我是 bot，所以沒有時間。|
+||
 
 
+## <a name="language-support"></a>語言支援
 
-> [!NOTE]
-> 閒聊支援目前僅以英文提供。 
+閒聊-支援下列語言的交談資料集：
+
+|Language|
+|--|
+|中文|
+|英文|
+|法文|
+|德國|
+|義大利文|
+|日文|
+|韓文|
+|葡萄牙文|
+|西班牙文|
+
 
 ## <a name="add-chit-chat-during-kb-creation"></a>在知識庫建立期間新增閒聊
-在知識庫建立期間，新增來源 URL 和檔案之後，有可供新增閒聊的選項。 選擇您想要作為聊天基底的特質。 如果您不想新增閒聊，或如果您的資料來源中已經有閒聊支援，請選擇 [無]。 
-   
-![在建立期間新增閒聊](../media/qnamaker-how-to-chit-chat/create-kb-chit-chat.png)
+在知識庫建立期間，新增來源 URL 和檔案之後，有可供新增閒聊的選項。 選擇您想要作為聊天基底的特質。 如果您不想新增閒聊，或如果您的資料來源中已經有閒聊支援，請選擇 [無]****。
 
 ## <a name="add-chit-chat-to-an-existing-kb"></a>在現有知識庫中新增閒聊
-選取您的知識庫，並瀏覽至 [設定] 頁面。 有一個連結可連到適當 **.tsv** 格式的所有閒聊資料集。 下載您想要的特質，然後將它上傳為檔案來源。 當您下載並上傳檔案時，務必不要編輯格式或中繼資料。 
-  
+選取您的知識庫，並瀏覽至 [設定]**** 頁面。 有一個連結可連到適當 **.tsv** 格式的所有閒聊資料集。 下載您想要的特質，然後將它上傳為檔案來源。 當您下載並上傳檔案時，務必不要編輯格式或中繼資料。
+
 ![在現有知識庫中新增閒聊](../media/qnamaker-how-to-chit-chat/add-chit-chat-dataset.png)
 
 ## <a name="edit-your-chit-chat-questions-and-answers"></a>編輯您的閒聊問題和回答
-當您編輯知識庫時，您會看到閒聊的新來源，其是以您選取的特質為基礎。 您現在可以新增變更的問題或編輯回應，就像處理任何其他來源一樣。 
+當您編輯知識庫時，您會看到閒聊的新來源，其是以您選取的特質為基礎。 您現在可以新增變更的問題或編輯回應，就像處理任何其他來源一樣。
 
 ![編輯閒聊 QnA](../media/qnamaker-how-to-chit-chat/edit-chit-chat.png)
 
-若要檢視的中繼資料，請選取**檢視選項**工具列中，然後選取**顯示中繼資料**。
+若要查看中繼資料，請選取工具列中的 [**查看選項**]，然後選取 [**顯示中繼資料**]。
 
 ## <a name="add-additional-chit-chat-questions-and-answers"></a>新增其他閒聊問題和回答
-您可以新增不在預先定義集合中的新閒聊 QnA。 確保您不會複製閒聊集已經涵蓋的 QnA 配對。 當您新增任何新的閒聊 QnA 時，它會新增到您的**編輯**來源。 若要確保順位排定程式了解這是閒聊，請新增中繼資料索引鍵/值配對「編輯：閒聊」，如下圖所示：
-   
-![![新增 chit 聊天不](../ media/qnamaker-how-to-chit-chat/add-new-chit-chat.png）](../media/qnamaker-how-to-chit-chat/add-new-chit-chat.png#lightbox)
+您可以新增不在預先定義之資料集中的閒聊-chat QnA 配對。 確保您不會複製閒聊集已經涵蓋的 QnA 配對。 當您新增任何新的閒聊 QnA 時，它會新增到您的**編輯**來源。 若要確保 ranker 瞭解這是閒聊交談，請新增中繼資料索引鍵/值組 "chitchat"，如下圖所示：
+
+![![新增閒聊-交談 Qna](../media/qnamaker-how-to-chit-chat/add-new-chit-chat.png)](../media/qnamaker-how-to-chit-chat/add-new-chit-chat.png#lightbox)
 
 ## <a name="delete-chit-chat-from-an-existing-kb"></a>從現有知識庫中刪除閒聊
-選取您的知識庫，並瀏覽至 [設定] 頁面。 您的特定閒聊來源會以檔案列示，內含選取的特質名稱。 您可以將此當作原始程式檔刪除。
+選取您的知識庫，並瀏覽至 [設定]**** 頁面。 您的特定閒聊來源會以檔案列示，內含選取的特質名稱。 您可以將此當作原始程式檔刪除。
 
 ![從知識庫中刪除閒聊](../media/qnamaker-how-to-chit-chat/delete-chit-chat.png)
 
@@ -71,6 +86,6 @@ ms.locfileid: "65153693"
 > [!div class="nextstepaction"]
 > [匯入知識庫](../Tutorials/migrate-knowledge-base.md)
 
-## <a name="see-also"></a>請參閱 
+## <a name="see-also"></a>另請參閱
 
 [QnA Maker 概觀](../Overview/overview.md)

@@ -5,17 +5,17 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/21/2018
+ms.date: 07/08/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: ae36adc78d8c87d85c64fd61cb3a50dfcae60b85
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 8f8d366961049deb3eda193718ccb553aac930e3
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53995662"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "67666359"
 ---
-您需要支付兩件事︰虛擬網路閘道的每小時計算成本，以及虛擬網路閘道的輸出資料傳輸。 在 [價格](https://azure.microsoft.com/pricing/details/vpn-gateway) 頁面上可以找到價格資訊。
+您需要支付兩件事︰虛擬網路閘道的每小時計算成本，以及虛擬網路閘道的輸出資料傳輸。 在 [價格](https://azure.microsoft.com/pricing/details/vpn-gateway) 頁面上可以找到價格資訊。 如需舊版閘道 SKU 定價，請參閱 [ExpressRoute 定價頁面](https://azure.microsoft.com/pricing/details/expressroute)，然後捲動至 [虛擬網路閘道]  區段。
 
 **虛擬網路閘道計算成本**<br>每個虛擬網路閘道都有每小時計算成本。 價格是以您建立虛擬網路閘道時所指定的閘道 SKU 為基礎。 除了透過閘道流動的資料傳輸以外，此成本屬於閘道本身。 主動-主動設定的成本與主動-被動相同。
 

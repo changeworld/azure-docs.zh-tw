@@ -1,21 +1,19 @@
 ---
 title: 使用 Azure Site Recovery 在災害復原期間進行容錯回復 | Microsoft Docs
 description: 本文概述使用 Azure Site Recovery 服務在災害復原期間容錯回復至內部部署環境時，所要考慮的各種容錯回復和警告。
-services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 03/18/2019
+ms.date: 08/07/2019
 ms.author: raynew
-ms.openlocfilehash: 6f178ef1a0aec7f742bce4c2570962b995876026
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+ms.openlocfilehash: c0eaf28f9aeb4050fd35a6036a53e3e91d00f3eb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62124113"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84691079"
 ---
-# <a name="failback-after-disaster-recovery-of-vmware-vms"></a>容錯回復 VMware vm 的災害復原後
+# <a name="failback-of-vmware-vms-after-disaster-recovery-to-azure"></a>災害復原至 Azure 後的 VMware VM 容錯回復
 
 當您在災害復原程序進行期間容錯移轉至 Azure 之後，您可以容錯回復至內部部署網站。 有兩種不同類型的容錯回復能與 Azure Site Recovery 搭配使用： 
 
@@ -25,7 +23,7 @@ ms.locfileid: "62124113"
 如果您已容錯移轉 VMware 虛擬機器，在它仍存在的前提下，您可以將它容錯回復到相同的來源內部部署虛擬機器。 在此案例中，系統只會將變更複寫回來。 此案例稱為**原始位置復原**。 如果內部部署虛擬機器不存在，則此案例為**替代位置復原**。
 
 > [!NOTE]
-> 您只能容錯回復至原始的 vCenter 和組態伺服器。 您無法部署新的設定伺服器，並使用它進行容錯回復。 此外，您無法將新的 vCenter 新增至現有設定伺服器並容錯回復至新的 vCenter。
+> 您只能容錯回復至原始的 vCenter 和設定伺服器。 您無法部署新的設定伺服器，並使用它進行容錯回復。 此外，您無法將新的 vCenter 新增至現有設定伺服器並容錯回復至新的 vCenter。
 
 ## <a name="original-location-recovery-olr"></a>原始位置復原 (OLR)
 如果您選擇容錯回復至原始虛擬機器，就必須符合下列條件：

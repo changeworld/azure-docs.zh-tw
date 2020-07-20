@@ -1,5 +1,5 @@
 ---
-title: 了解如何在虛擬機器上使用 Azure 資源受控識別來取得存取權杖
+title: 使用虛擬機器上的受控識別來取得存取權杖-Azure AD
 description: 在虛擬機器上使用 Azure 資源受控識別來取得 OAuth 存取權杖的逐步指示和範例。
 services: active-directory
 documentationcenter: ''
@@ -9,18 +9,17 @@ editor: ''
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: abdeb7ce5327db57b8a6ae48fdd8d8c0c81879a7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 51f254bef223294661180f21019ae8c5a842015c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60290780"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608376"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>了解如何在 Azure VM 上使用 Azure 資源受控識別來取得存取權杖 
 
@@ -43,11 +42,11 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
 > [!IMPORTANT]
 > - Azure 資源受控識別的安全性界限是一直都在使用的資源。 所有在虛擬機器上執行的程式碼/指令碼，都可以針對其上提供的任何受控識別要求及擷取權杖。 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
-用戶端應用程式可以要求用於存取指定資源的 Azure 資源受控識別：[僅限應用程式的存取權杖](../develop/developer-glossary.md#access-token)。 此權杖是[以 Azure 資源受控識別服務原則為基礎](overview.md#how-does-it-work)。 因此，用戶端不需要自行註冊就能取得本身服務主體下的存取權杖。 權杖在[需要用戶端認證的服務對服務呼叫](../develop/v1-oauth2-client-creds-grant-flow.md)中適合作為持有人權杖。
+用戶端應用程式可以要求用於存取指定資源的 Azure 資源受控識別：[僅限應用程式的存取權杖](../develop/developer-glossary.md#access-token)。 此權杖是[以 Azure 資源受控識別服務原則為基礎](overview.md#managed-identity-types)。 因此，用戶端不需要自行註冊就能取得本身服務主體下的存取權杖。 權杖在[需要用戶端認證的服務對服務呼叫](../develop/v2-oauth2-client-creds-grant-flow.md)中適合作為持有人權杖。
 
-|  |  |
+| 連結 | 描述 |
 | -------------- | -------------------- |
 | [使用 HTTP 取得權杖](#get-a-token-using-http) | Azure 資源受控識別權杖端點的通訊協定詳細資料 |
 | [使用適用於 .NET 的 Microsoft.Azure.Services.AppAuthentication 程式庫取得權杖](#get-a-token-using-the-microsoftazureservicesappauthentication-library-for-net) | 從 .NET 用戶端使用 Microsoft.Azure.Services.AppAuthentication 程式庫的範例
@@ -64,35 +63,35 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
 
 取得存取權杖的基本介面是以 REST 為基礎，如此可讓用戶端應用程式在可執行 HTTP REST 呼叫的虛擬機器上執行時，可以對其進行存取。 這類似於 Azure AD 的程式設計模型，但用戶端會使用虛擬機器上的端點 (對比於 Azure AD 端點)。
 
-使用 Azure Instance Metadata Service (IMDS) 端點 (建議) 的範例要求：
+使用 Azure Instance Metadata Service (IMDS) 端點 (建議)** 的範例要求：
 
 ```
 GET 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://management.azure.com/' HTTP/1.1 Metadata: true
 ```
 
-| 元素 | 描述 |
+| 元素 | Description |
 | ------- | ----------- |
 | `GET` | HTTP 指令動詞，指出您想要擷取端點中的資料。 在此案例中是 OAuth 存取權杖。 | 
 | `http://169.254.169.254/metadata/identity/oauth2/token` | 適用於 Instance Metadata Service 的 Azure 資源受控識別端點。 |
 | `api-version`  | 一個查詢字串參數，指出 IMDS 端點的 API 版本。 請使用 API `2018-02-01` 版或更新版本。 |
-| `resource` | 查詢字串參數，指出目標資源的應用程式識別碼 URI。 也會出現在所核發權杖的 `aud` (對象) 宣告中。 此範例會要求用來存取 Azure Resource Manager 的權杖，其中包含應用程式識別碼 URI https://management.azure.com/。 |
+| `resource` | 查詢字串參數，指出目標資源的應用程式識別碼 URI。 也會出現在所核發權杖的 `aud` (對象) 宣告中。 此範例會要求用來存取 Azure Resource Manager 的權杖，其中包含應用程式識別碼 URI `https://management.azure.com/`。 |
 | `Metadata` | HTTP 要求標頭欄位，Azure 資源受控識別需要此元素以減輕伺服器端偽造要求 (SSRF) 攻擊。 此值必須設定為 "true" (全部小寫)。 |
 | `object_id` | (選擇性) 查詢字串參數，指出要使用權杖的受控識別 object_id。 如果您的 VM 有多個使用者指派的受控識別，這會是必要項目。|
 | `client_id` | (選擇性) 查詢字串參數，指出要使用權杖的受控識別 client_id。 如果您的 VM 有多個使用者指派的受控識別，這會是必要項目。|
-| `mi_res_id` | （選擇性）查詢字串參數，指出 mi_res_id （Azure 資源識別碼） 的受管理的身分識別您想要的語彙基元。 如果您的 VM 有多個使用者指派的受控識別，這會是必要項目。 |
+| `mi_res_id` | 選擇性查詢字串參數，指出您想要權杖的受控識別 mi_res_id （Azure 資源識別碼）。 如果您的 VM 有多個使用者指派的受控識別，這會是必要項目。 |
 
-使用 Azure 資源受控識別 VM 擴充功能端點的範例要求 (已計劃在 2019 年 1 月淘汰)：
+使用 Azure 資源受控識別 VM 擴充功能端點的範例要求 (已計劃在 2019 年 1 月淘汰)**：
 
 ```http
 GET http://localhost:50342/oauth2/token?resource=https%3A%2F%2Fmanagement.azure.com%2F HTTP/1.1
 Metadata: true
 ```
 
-| 元素 | 描述 |
+| 元素 | Description |
 | ------- | ----------- |
 | `GET` | HTTP 指令動詞，指出您想要擷取端點中的資料。 在此案例中是 OAuth 存取權杖。 | 
 | `http://localhost:50342/oauth2/token` | Azure 資源受控識別端點，其中 50342 是預設連接埠且可設定。 |
-| `resource` | 查詢字串參數，指出目標資源的應用程式識別碼 URI。 也會出現在所核發權杖的 `aud` (對象) 宣告中。 此範例會要求用來存取 Azure Resource Manager 的權杖，其中包含應用程式識別碼 URI https://management.azure.com/。 |
+| `resource` | 查詢字串參數，指出目標資源的應用程式識別碼 URI。 也會出現在所核發權杖的 `aud` (對象) 宣告中。 此範例會要求用來存取 Azure Resource Manager 的權杖，其中包含應用程式識別碼 URI `https://management.azure.com/`。 |
 | `Metadata` | HTTP 要求標頭欄位，Azure 資源受控識別需要此元素以減輕伺服器端偽造要求 (SSRF) 攻擊。 此值必須設定為 "true" (全部小寫)。|
 | `object_id` | (選擇性) 查詢字串參數，指出要使用權杖的受控識別 object_id。 如果您的 VM 有多個使用者指派的受控識別，這會是必要項目。|
 | `client_id` | (選擇性) 查詢字串參數，指出要使用權杖的受控識別 client_id。 如果您的 VM 有多個使用者指派的受控識別，這會是必要項目。|
@@ -348,7 +347,7 @@ echo The managed identities for Azure resources access token is $access_token
 - 由於 Azure 資源受控識別子系統快取中沒有權杖而發生快取遺漏
 - 快取的權杖已過期
 
-## <a name="error-handling"></a>错误处理。
+## <a name="error-handling"></a>錯誤處理
 
 Azure 資源受控識別端點會透過 HTTP 回應訊息標頭的狀態碼欄位 (如 4xx 或 5xx 錯誤) 來發出錯誤通知：
 
@@ -365,23 +364,23 @@ Azure 資源受控識別端點會透過 HTTP 回應訊息標頭的狀態碼欄�
 | 元素 | 描述 |
 | ------- | ----------- |
 | 錯誤   | 錯誤識別碼。 |
-| error_description | 錯誤的詳細資訊描述。 **錯誤描述可以隨時變更。請勿將程式碼撰寫為會針對錯誤描述中的值建立分支。**|
+| error_description | 錯誤的詳細資訊描述。 **錯誤描述可以隨時變更。請勿根據錯誤描述中的值來撰寫分支的程式碼。**|
 
 ### <a name="http-response-reference"></a>HTTP 回應參考
 
 本節會說明可能的錯誤回應。 「200 確定」狀態是成功的回應，而且存取權杖會包含在回應主體 JSON 中 (在 access_token 元素中)。
 
-| 狀態碼 | Error | 錯誤說明 | 解決方法 |
+| 狀態碼 | 錯誤 | 錯誤說明 | 解決方案 |
 | ----------- | ----- | ----------------- | -------- |
-| 400 不正確的要求 | invalid_resource | AADSTS50001：在名為 \<TENANT-ID\> 的租用戶中找不到名為 \<URI\> 的應用程式。 如果租用戶的系統管理員尚未安裝此應用程式或租用戶中的任何使用者尚未同意使用此應用程式，也可能會發生此錯誤。 您可能會將驗證要求傳送至錯誤的租用戶。\ | (僅限 Linux) |
+| 400 不正確的要求 | invalid_resource | AADSTS50001：在名為的 *\<URI\>* 租使用者中找不到名為的應用程式 *\<TENANT-ID\>* 。 如果租用戶的系統管理員尚未安裝此應用程式或租用戶中的任何使用者尚未同意使用此應用程式，也可能會發生此錯誤。 您可能會將驗證要求傳送至錯誤的租用戶。\ | (僅限 Linux) |
 | 400 不正確的要求 | bad_request_102 | 未指定必要的中繼資料標頭 | 要求中遺漏 `Metadata` 要求標頭欄位，或欄位的格式不正確。 值必須指定為 `true` (全部小寫)。 相關範例請參閱前一節 REST 中的「範例要求」。|
-| 401 未經授權 | unknown_source | 未知的來源 *\<URI\>* | 請確認 HTTP GET 要求 URI 的格式正確。 `scheme:host/resource-path` 部分必須指定為 `http://localhost:50342/oauth2/token`。 相關範例請參閱前一節 REST 中的「範例要求」。|
+| 401 未經授權 | unknown_source | 不明來源*\<URI\>* | 請確認 HTTP GET 要求 URI 的格式正確。 `scheme:host/resource-path` 部分必須指定為 `http://localhost:50342/oauth2/token`。 相關範例請參閱前一節 REST 中的「範例要求」。|
 |           | invalid_request | 要求遺漏必要參數、包含無效參數值、多次包含某個參數或格式不正確。 |  |
-|           | unauthorized_client | 用戶端無權使用此方法要求存取權杖。 | 因為要求並未使用本機回送呼叫擴充功能，或是所在的虛擬機器沒有正確設定 Azure 資源受控識別。 如果您需要設定虛擬機器的協助，請參閱[使用 Azure 入口網站在虛擬機器上設定 Azure 資源受控識別](qs-configure-portal-windows-vm.md)。 |
+|           | unauthorized_client | 用戶端無權使用此方法要求存取權杖。 | 由未使用本機回送來呼叫擴充功能的要求，或在未正確設定 Azure 資源受控識別的 VM 上所造成。 如果您需要設定虛擬機器的協助，請參閱[使用 Azure 入口網站在虛擬機器上設定 Azure 資源受控識別](qs-configure-portal-windows-vm.md)。 |
 |           | access_denied | 資源擁有者或授權伺服器已拒絕要求。 |  |
 |           | unsupported_response_type | 授權伺服器不支援使用此方法取得存取權杖。 |  |
 |           | invalid_scope | 要求的範圍無效、未知或格式不正確。 |  |
-| 500 內部伺服器錯誤 | 未知 | 無法從 Active 目錄擷取權杖。 如需詳細資訊，請參閱\<檔案路徑\>中的記錄 | 確認已在虛擬機器上啟用 Azure 資源受控識別。 如果您需要設定虛擬機器的協助，請參閱[使用 Azure 入口網站在虛擬機器上設定 Azure 資源受控識別](qs-configure-portal-windows-vm.md)。<br><br>也請確認 HTTP GET 要求 URI 的格式正確，尤其是查詢字串中指定的資源 URI。 相關範例請參閱前一節 REST 中的「範例要求」，或請參閱[支援 Azure AD 驗證的 Azure 服務](services-support-msi.md)，以取得服務及其各自資源識別碼的清單。
+| 500 內部伺服器錯誤 | 未知 | 無法從 Active 目錄擷取權杖。 如需詳細資訊，請參閱登入*\<file path\>* | 確認已在虛擬機器上啟用 Azure 資源受控識別。 如果您需要設定虛擬機器的協助，請參閱[使用 Azure 入口網站在虛擬機器上設定 Azure 資源受控識別](qs-configure-portal-windows-vm.md)。<br><br>也請確認 HTTP GET 要求 URI 的格式正確，尤其是查詢字串中指定的資源 URI。 相關範例請參閱前一節 REST 中的「範例要求」，或請參閱[支援 Azure AD 驗證的 Azure 服務](services-support-msi.md)，以取得服務及其各自資源識別碼的清單。
 
 ## <a name="retry-guidance"></a>重試指引 
 

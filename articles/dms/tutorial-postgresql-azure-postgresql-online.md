@@ -1,6 +1,7 @@
 ---
-title: 教學課程：使用 Azure 資料庫移轉服務在線上將 PostgreSQL 移轉至適用於 PostgreSQL 的 Azure 資料庫 | Microsoft Docs
-description: 了解如何使用 Azure 資料庫移轉服務，在線上將內部部署的 PostgreSQL 移轉至適用於 PostgreSQL 的 Azure 資料庫。
+title: 教學課程：透過 Azure CLI 將于 postgresql 遷移至適用於 PostgreSQL 的 Azure 資料庫 online
+titleSuffix: Azure Database Migration Service
+description: 瞭解如何透過 CLI 使用 Azure 資料庫移轉服務，從內部部署于 postgresql 到適用於 PostgreSQL 的 Azure 資料庫進行線上遷移。
 services: dms
 author: HJToland3
 ms.author: jtoland
@@ -8,23 +9,22 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc, tutorial
+ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 05/01/2019
-ms.openlocfilehash: 67212986e0478a03ac2ef1b5f30488cc1c7f869d
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
-ms.translationtype: HT
+ms.date: 04/11/2020
+ms.openlocfilehash: e8f79512e132ff4632c067b23ad6e80a76b8d4cf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65137422"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "81113878"
 ---
-# <a name="tutorial-migrate-postgresql-to-azure-database-for-postgresql-online-using-dms"></a>教學課程：在線上使用 DMS 將 PostgreSQL 移轉至適用於 PostgreSQL 的 Azure 資料庫
+# <a name="tutorial-migrate-postgresql-to-azure-db-for-postgresql-online-using-dms-via-the-azure-cli"></a>教學課程：透過 Azure CLI，使用 DMS 將于 postgresql 遷移至 Azure DB for 于 postgresql online
 
 您可以使用 Azure 資料庫移轉服務，在最短的停機時間內將資料庫從內部部署 PostgreSQL 執行個體移轉至[適用於 PostgreSQL 的 Azure 資料庫](https://docs.microsoft.com/azure/postgresql/)。 換句話說，可在最短的應用程式停機時間內完成移轉。 在此教學課程中，您會在 Azure 資料庫移轉服務中使用線上移轉活動，將 **DVD Rental** 範例資料庫從內部部署的 PostgreSQL 9.6 執行個體移轉至適用於 PostgreSQL 的 Azure 資料庫。
 
-在本教學課程中，您了解如何：
+在本教學課程中，您會了解如何：
 > [!div class="checklist"]
-
+>
 > * 使用 pg_dump 公用程式移轉範例結構描述。
 > * 建立 Azure 資料庫移轉服務的執行個體。
 > * 使用 Azure 資料庫移轉服務來建立移轉專案。
@@ -32,44 +32,43 @@ ms.locfileid: "65137422"
 > * 監視移轉。
 
 > [!NOTE]
-> 若要使用「Azure 資料庫移轉服務」來執行線上移轉，必須根據「進階」定價層建立執行個體。
+> 若要使用「Azure 資料庫移轉服務」來執行線上移轉，必須根據「進階」定價層建立執行個體。 我們會將磁片加密，以防止在進行遷移的過程中竊取資料。
 
 > [!IMPORTANT]
 > 為了獲得最佳的移轉體驗，Microsoft 建議在目標資料庫所在的同一個 Azure 區域中，建立 Azure 資料庫移轉服務的執行個體。 跨區域或地理位置移動資料可能使移轉程序變慢，並產生錯誤。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本教學課程，您需要：
 
 * 下載並安裝 [PostgreSQL 社群版](https://www.postgresql.org/download/) 9.5、9.6 或 10。 來源 PostgreSQL 伺服器版本必須是 9.5.11、9.6.7、10 或更新版本。 如需詳細資訊，請參閱[支援的 PostgreSQL 資料庫版本](https://docs.microsoft.com/azure/postgresql/concepts-supported-versions)一文。
 
-    此外，內部部署 PostgreSQL 版本必須符合適用於 PostgreSQL 的 Azure 資料庫版本。 例如，PostgreSQL 9.5.11.5 只能移轉至「適用於 PostgreSQL 的 Azure 資料庫」9.5.11，而無法移轉至 9.6.7。
+    另請注意，目標適用於 PostgreSQL 的 Azure 資料庫版本必須等於或晚于內部部署于 postgresql 版本。 例如，于 postgresql 9.6 只能遷移至適用於 PostgreSQL 的 Azure 資料庫9.6、10或11，但不能適用於 PostgreSQL 的 Azure 資料庫9.5。
+
+* [在適用於 PostgreSQL 的 Azure 資料庫中建立實例](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal)，或[建立適用於 PostgreSQL 的 Azure 資料庫超大規模資料庫（Citus）伺服器](https://docs.microsoft.com/azure/postgresql/quickstart-create-hyperscale-portal)。
+* 使用 Azure Resource Manager 部署模型建立 Azure 資料庫移轉服務的 Microsoft Azure 虛擬網路，以使用[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction)或[VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)為您的內部部署來源伺服器提供站對站連線能力。 如需有關建立虛擬網路的詳細資訊，請參閱[虛擬網路檔](https://docs.microsoft.com/azure/virtual-network/)，特別是快速入門文章，其中包含逐步解說的詳細資料。
 
     > [!NOTE]
-    > 對於 PostgreSQL 第 10 版，目前 DMS 僅支援將 10.3 版移轉到 PostgreSQL 的 Azure 資料庫。 我們計畫在近期內開始支援較新版本的 PostgreSQL。
-
-* [在適用於 PostgreSQL 的 Azure 資料庫中建立執行個體](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal)。  
-* 使用 Azure Resource Manager 部署模型建立 Azure 資料庫移轉服務的 Azure 虛擬網路 (VNet)，以使用 [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) 或 [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) 為您的內部部署來源伺服器提供站對站連線能力。
-
-    > [!NOTE]
-    > 在 VNet 設定期間，如果您搭配與 Microsoft 對等互連的網路使用 ExpressRoute，請將下列服務[端點](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)新增至將佈建服務的子網路：
+    > 在虛擬網路設定期間，如果您搭配與 Microsoft 對等互連的網路使用 ExpressRoute，請將下列服務[端點](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)新增至將布建服務的子網：
+    >
     > * 目標資料庫端點 (例如，SQL 端點、Cosmos DB 端點等)
     > * 儲存體端點
     > * 服務匯流排端點
     >
     > 此為必要設定，因為 Azure 資料庫移轉服務沒有網際網路連線。
 
-* 確定您的 VNet 網路安全性群組 (NSG) 規則不會對 Azure 資料庫移轉服務封鎖下列輸入通訊埠：443、53、9354、445、12000。 如需 Azure VNet NSG 流量篩選的詳細資訊，請參閱[使用網路安全性群組來篩選網路流量](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm)。
+* 請確定您的虛擬網路網路安全性群組（NSG）規則不會對 Azure 資料庫移轉服務封鎖下列輸入通訊埠：443、53、9354、445、12000。 如需虛擬網路 NSG 流量篩選的詳細資訊，請參閱[使用網路安全性群組來篩選網路流量](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm)一文。
 * 設定[用於 Database Engine 存取的 Windows 防火牆](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)。
 * 開啟您的 Windows 防火牆以允許 Azure 資料庫移轉服務存取來源 PostgreSQL Server (依預設會使用 TCP 連接埠 5432)。
 * 使用來源資料庫前面的防火牆應用裝置時，您可能必須新增防火牆規則，才能讓 Azure 資料庫移轉服務存取來源資料庫，以進行移轉。
-* 為適用於 PostgreSQL 的 Azure 資料庫建立伺服器層級的[防火牆規則](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)，以允許 Azure 資料庫移轉服務存取目標資料庫。 提供用於 Azure 資料庫移轉服務之 VNet 的子網路範圍。
+* 為適用於 PostgreSQL 的 Azure 資料庫建立伺服器層級的[防火牆規則](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)，以允許 Azure 資料庫移轉服務存取目標資料庫。 提供用於 Azure 資料庫移轉服務之虛擬網路的子網範圍。
 * 叫用 CLI 有兩種方法：
-    * 在 Azure 入口網站右上角，選取 [Cloud Shell] 按鈕：
+
+  * 在 Azure 入口網站右上角，選取 [Cloud Shell] 按鈕：
 
        ![Azure 入口網站中的 [Cloud Shell] 按鈕](media/tutorial-postgresql-to-azure-postgresql-online/cloud-shell-button.png)
 
-    * 在本機安裝並執行 CLI。 CLI 2.0 是可用於管理 Azure 資源的命令列工具。
+  * 在本機安裝並執行 CLI。 CLI 2.0 是可用於管理 Azure 資源的命令列工具。
 
        若要下載 CLI，請依照[安裝 Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 一文中的指示進行。 該文章也列出支援 CLI 2.0 的平台。
 
@@ -77,9 +76,9 @@ ms.locfileid: "65137422"
 
 * 在 postgresql.config 檔案中啟用邏輯複寫，並設定下列參數：
 
-    * wal_level = **logical**
-    * max_replication_slots = [插槽數目]，建議設定為 **5 個插槽**
-    * max_wal_senders =[並行工作數目] - max_wal_senders 參數設定可執行的並行工作數目，建議設定為 **10 個工作**
+  * wal_level = **logical**
+  * max_replication_slots = [插槽數目]，建議設定為**五個插槽**
+  * max_wal_senders =[並行工作數目] - max_wal_senders 參數設定可執行的並行工作數目，建議設定為 **10 個工作**
 
 ## <a name="migrate-the-sample-schema"></a>移轉範例結構描述
 
@@ -100,7 +99,7 @@ ms.locfileid: "65137422"
 
 2. 在您的目標環境中建立一個空的資料庫，即適用於 PostgreSQL 的 Azure 資料庫。
 
-    如需有關如何連線及建立資料庫的詳細資訊，請參閱[在 Azure 入口網站中建立適用於 PostgreSQL 的 Azure 資料庫伺服器](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal)一文。
+    如需如何連接及建立資料庫的詳細資訊，請參閱在[Azure 入口網站中建立適用於 PostgreSQL 的 Azure 資料庫伺服器](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal)或在[Azure 入口網站中建立適用於 PostgreSQL 的 Azure 資料庫超大規模資料庫（Citus）伺服器](https://docs.microsoft.com/azure/postgresql/quickstart-create-hyperscale-portal)一文。
 
 3. 透過還原結構描述傾印檔案，將結構描述匯入到您所建立的目標資料庫中。
 
@@ -108,15 +107,14 @@ ms.locfileid: "65137422"
     psql -h hostname -U db_username -d db_name < your_schema.sql 
     ```
 
-    例如︰
+    例如：
 
     ```
     psql -h mypgserver-20170401.postgres.database.azure.com  -U postgres -d dvdrental < dvdrentalSchema.sql
     ```
 
 4. 如果您的結構描述中有外部索引鍵，則移轉的初始載入和持續同步將會失敗。 在 PgAdmin 或 psql 中執行下列指令碼，以擷取 drop 外部索引鍵指令碼，並在目的地 (適用於 PostgreSQL 的 Azure 資料庫) 新增外部索引鍵。
-
-    
+  
     ```
     SELECT Queries.tablename
            ,concat('alter table ', Queries.tablename, ' ', STRING_AGG(concat('DROP CONSTRAINT ', Queries.foreignkey), ',')) as DropQuery
@@ -141,7 +139,7 @@ ms.locfileid: "65137422"
           AND ccu.table_schema = tc.table_schema
     WHERE constraint_type = 'FOREIGN KEY') Queries
       GROUP BY Queries.tablename;
-     ```
+    ```
 
     在查詢結果中執行卸除外部索引鍵 (這是第二個資料行)。
 
@@ -160,7 +158,7 @@ ms.locfileid: "65137422"
 
 1. 安裝 dms 同步處理延伸模組：
    * 執行下列命令以登入 Azure：
-       ```
+       ```azurecli
        az login
        ```
 
@@ -168,74 +166,78 @@ ms.locfileid: "65137422"
    * 新增 dms 延伸模組：
        * 若要列出可用的延伸模組，請執行下列命令：
 
-           ```
+           ```azurecli
            az extension list-available –otable
            ```
 
        * 若要安裝延伸模組，請執行下列命令：
 
-           ```
+           ```azurecli
            az extension add –n dms-preview
            ```
 
    * 若要確認是否已正確安裝 dms 延伸模組，請執行下列命令：
 
-       ```
+       ```azurecli
        az extension list -otable
        ```
        您應該會看見下列輸出：
 
-       ```
+       ```output
        ExtensionType    Name
        ---------------  ------
        whl              dms
        ```
 
+      > [!IMPORTANT]
+      > 請確定您的延伸模組版本高於0.11.0。
+
    * 隨時透過執行下列命令查看 DMS 中支援的所有命令：
 
-       ```
+       ```azurecli
        az dms -h
        ```
 
    * 如果您有多個 Azure 訂用帳戶，請執行下列命令來設定您要用來佈建 DMS 服務執行個體的訂用帳戶。
 
-        ```
+        ```azurecli
        az account set -s 97181df2-909d-420b-ab93-1bff15acb6b7
         ```
 
 2. 透過執行下列命令來佈建 DMS 執行個體：
 
-   ```
-   az dms create -l [location] -n <newServiceName> -g <yourResourceGroupName> --sku-name BusinessCritical_4vCores --subnet/subscriptions/{vnet subscription id}/resourceGroups/{vnet resource group}/providers/Microsoft.Network/virtualNetworks/{vnet name}/subnets/{subnet name} –tags tagName1=tagValue1 tagWithNoValue
+   ```azurecli
+   az dms create -l [location] -n <newServiceName> -g <yourResourceGroupName> --sku-name Premium_4vCores --subnet/subscriptions/{vnet subscription id}/resourceGroups/{vnet resource group}/providers/Microsoft.Network/virtualNetworks/{vnet name}/subnets/{subnet name} –tags tagName1=tagValue1 tagWithNoValue
    ```
 
    例如，下列命令會在以下位置建立服務：
+
    * 位置：美國東部 2
    * 訂用帳戶：97181df2-909d-420b-ab93-1bff15acb6b7
    * 資源群組名稱：PostgresDemo
    * DMS 服務名稱：PostgresCLI
 
-   ```
-   az dms create -l eastus2 -g PostgresDemo -n PostgresCLI --subnet /subscriptions/97181df2-909d-420b-ab93-1bff15acb6b7/resourceGroups/ERNetwork/providers/Microsoft.Network/virtualNetworks/AzureDMS-CORP-USC-VNET-5044/subnets/Subnet-1 --sku-name BusinessCritical_4vCores
+   ```azurecli
+   az dms create -l eastus2 -g PostgresDemo -n PostgresCLI --subnet /subscriptions/97181df2-909d-420b-ab93-1bff15acb6b7/resourceGroups/ERNetwork/providers/Microsoft.Network/virtualNetworks/AzureDMS-CORP-USC-VNET-5044/subnets/Subnet-1 --sku-name Premium_4vCores
    ```
 
    建立 DMS 服務執行個體需要大約 10-12 分鐘的時間。
 
 3. 若要識別 DMS 代理程式的 IP 位址，以便將它加入 Postgres pg_hba.conf 檔案，請執行下列命令：
 
-    ```
+    ```azurecli
     az network nic list -g <ResourceGroupName>--query '[].ipConfigurations | [].privateIpAddress'
     ```
 
-    例如︰
+    例如：
 
-    ```
+    ```azurecli
     az network nic list -g PostgresDemo --query '[].ipConfigurations | [].privateIpAddress'
     ```
 
     您應該會取得類似下列位址的結果： 
 
-    ```
+    ```output
     [
       "172.16.136.18"
     ]
@@ -253,7 +255,7 @@ ms.locfileid: "65137422"
 
 5. 接下來，執行下列命令來建立 PostgreSQL 移轉專案：
     
-    ```
+    ```azurecli
     az dms project create -l <location> -g <ResourceGroupName> --service-name <yourServiceName> --source-platform PostgreSQL --target-platform AzureDbforPostgreSQL -n <newProjectName>
     ```
 
@@ -266,8 +268,8 @@ ms.locfileid: "65137422"
    * 來源平台：PostgreSQL
    * 目標平台：AzureDbForPostgreSql
 
-     ```
-     az dms project create -l eastus2 -n PGMigration -g PostgresDemo --service-name PostgresCLI --source-platform PostgreSQL --target-platform AzureDbForPostgreSql
+     ```azurecli
+     az dms project create -l westcentralus -n PGMigration -g PostgresDemo --service-name PostgresCLI --source-platform PostgreSQL --target-platform AzureDbForPostgreSql
      ```
 
 6. 使用下列步驟建立 PostgreSQL 移轉工作。
@@ -276,7 +278,7 @@ ms.locfileid: "65137422"
 
    * 若要查看完整的選項清單，請執行命令：
 
-       ```
+       ```azurecli
        az dms project task create -h
        ```
 
@@ -284,7 +286,7 @@ ms.locfileid: "65137422"
 
        適用於 PostgreSQL 連線的連線 JSON 物件格式。
         
-       ```
+       ```json
        {
                    "userName": "user name",    // if this is missing or null, you will be prompted
                    "password": null,           // if this is missing or null (highly recommended) you will
@@ -298,7 +300,7 @@ ms.locfileid: "65137422"
 
    * 還有一個列出 json 物件的資料庫選項 json 檔案。 針對 PostgreSQL，資料庫選項 JSON 物件的格式如下所示：
 
-       ```
+       ```json
        [
            {
                "name": "source database",
@@ -310,7 +312,7 @@ ms.locfileid: "65137422"
 
    * 使用記事本建立 json 檔案、複製下列命令並貼到檔案中，然後將檔案儲存在 C:\DMS\source.json 中。
 
-        ```
+        ```json
        {
                    "userName": "postgres",    
                    "password": null,           
@@ -323,7 +325,7 @@ ms.locfileid: "65137422"
 
    * 建立名為 target.json 的另一個檔案，並另存為 C:\DMS\target.json。 包含下列命令：
 
-       ```
+       ```json
        {
                "userName": " dms@builddemotarget",    
                "password": null,           
@@ -335,7 +337,7 @@ ms.locfileid: "65137422"
 
    * 建立一個資料庫選項 json 檔案，其中將詳細目錄列為要移轉的資料庫：
 
-       ``` 
+       ```json
        [
            {
                "name": "dvdrental",
@@ -346,7 +348,7 @@ ms.locfileid: "65137422"
 
    * 執行下列命令，該命令會接受來源、目的地與資料庫選項的 json 檔案。
 
-       ``` 
+       ```azurecli
        az dms project task create -g PostgresDemo --project-name PGMigration --source-platform postgresql --target-platform azuredbforpostgresql --source-connection-json c:\DMS\source.json --database-options-json C:\DMS\option.json --service-name PostgresCLI --target-connection-json c:\DMS\target.json –task-type OnlineMigration -n runnowtask    
        ```
 
@@ -354,19 +356,19 @@ ms.locfileid: "65137422"
 
 7. 若要顯示工作的進度，請執行下列命令：
 
-   ```
+   ```azurecli
    az dms project task show --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask
    ```
 
-   或
+   或者
 
-    ```
+    ```azurecli
    az dms project task show --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask --expand output
     ```
 
 8. 您也可以從展開的輸出中查詢 migrationState：
 
-    ```
+    ```azurecli
     az dms project task show --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask --expand output --query 'properties.output[].migrationState | [0]' "READY_TO_COMPLETE"
     ```
 
@@ -374,7 +376,7 @@ ms.locfileid: "65137422"
 
 在輸出檔案中，有幾個參數指出移轉的進度。 例如，查看下面的輸出檔案：
 
-    ```
+  ```output
     "output": [                                 Database Level
           {
             "appliedChanges": 0,        //Total incremental sync applied after full load
@@ -449,7 +451,7 @@ ms.locfileid: "65137422"
       },
       "resourceGroup": "PostgresDemo",
       "type": "Microsoft.DataMigration/services/projects/tasks"
-    ```
+  ```
 
 ## <a name="cutover-migration-task"></a>完全移轉工作
 
@@ -469,19 +471,19 @@ ms.locfileid: "65137422"
 
 1. 使用下列命令，執行完全移轉資料庫移轉工作：
 
-    ```
+    ```azurecli
     az dms project task cutover -h
     ```
 
-    例如︰
+    例如：
 
-    ```
-    az dms project task cutover --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask  --database-name Inventory
+    ```azurecli
+    az dms project task cutover --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask  --object-name Inventory
     ```
 
 2. 若要監視移轉進度，請執行下列命令：
 
-    ```
+    ```azurecli
     az dms project task show --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask
     ```
 
@@ -496,28 +498,28 @@ ms.locfileid: "65137422"
 
 1. 若要取消執行中的工作，請使用下列命令：
 
-    ```
+    ```azurecli
     az dms project task cancel --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask
      ```
 
 2. 若要刪除執行中的工作，請使用下列命令：
-    ```
+    ```azurecli
     az dms project task delete --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask
     ```
 
 3. 若要取消執行中的專案，請使用下列命令：
-     ```
+     ```azurecli
     az dms project task cancel -n runnowtask --project-name PGMigration -g PostgresDemo --service-name PostgresCLI
      ```
 
 4. 若要刪除執行中的專案，請使用下列命令：
-    ```
+    ```azurecli
     az dms project task delete -n runnowtask --project-name PGMigration -g PostgresDemo --service-name PostgresCLI
     ```
 
 5. 若要刪除 DMS 服務，請使用下列命令：
 
-     ```
+     ```azurecli
     az dms delete -g ProgresDemo -n PostgresCLI
      ```
 

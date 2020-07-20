@@ -1,21 +1,21 @@
 ---
 title: 使用 Bing 新聞搜尋 API 來搜尋新聞
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 了解如何傳送一般新聞、熱門話題和頭條新聞的搜尋查詢。
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
-ms.topic: overview
-ms.date: 01/11/2019
+ms.topic: conceptual
+ms.date: 12/18/2019
 ms.author: scottwhi
-ms.openlocfilehash: 612a3961d901f53147ab2f3cfeea20f9c11d96b7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: HT
+ms.openlocfilehash: 6fa12febe99e77efde45bcd2d538de78f618e641
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58087851"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710587"
 ---
 # <a name="search-for-news-with-the-bing-news-search-api"></a>使用 Bing 新聞搜尋 API 來搜尋新聞
 
@@ -27,7 +27,7 @@ Bing 新聞搜尋 API 主要用於尋找及傳回相關的新聞文章，同時�
 
 若您提供使用者可在其中輸入其搜尋字詞的搜尋方塊，請使用 [Bing 自動建議 API](../../bing-autosuggest/get-suggested-search-terms.md) 來改善使用經驗。 API 會根據部分搜尋字詞傳回建議的查詢字串，作為使用者類型。
 
-在使用者輸入其搜尋字詞之後，URL 會先將此字詞編碼，再設定 [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#query) 查詢參數。 例如，如果使用者輸入 *sailing dinghies*，請將 `q` 設定為 `sailing+dinghies` 或 `sailing%20dinghies`。
+在使用者輸入其搜尋字詞之後，URL 會先將此字詞編碼，再設定 [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#query) 查詢參數。 例如，如果使用者輸入 *sailing dinghies*，請將 `q` 設定為 `sailing+dinghies` 或 `sailing%20dinghies`。
 
 ## <a name="get-general-news"></a>取得一般新聞
 
@@ -51,7 +51,7 @@ Host: api.cognitive.microsoft.com
 GET https://api.cognitive.microsoft.com/bing/v7.0/news/search?q=sailing+dinghies+site:contososailing.com&mkt=en-us HTTP/1.1
 ```
 
-以下顯示前一個查詢的回應。 由於 Bing 搜尋 API 的[使用和顯示需求](../useanddisplayrequirements.md)，您必須以回應中提供的順序來顯示每則新聞文章。 如果該文章有叢集化文章，您應該指出有相關文章存在，並在要求時加以顯示。
+以下 JSON 範例顯示前一個查詢的回應。 由於 Bing 搜尋 API 的[使用和顯示需求](../useanddisplayrequirements.md)，您必須以回應中提供的順序來顯示每則新聞文章。 如果該文章有叢集化文章，您應該指出有相關文章存在，並在要求時加以顯示。
 
 ```json
 {
@@ -99,15 +99,15 @@ GET https://api.cognitive.microsoft.com/bing/v7.0/news/search?q=sailing+dinghies
 }
 ```
 
-[新聞](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v5-reference#news) (英文) 回答中會列出 Bing 認為與查詢相關的新聞文章清單。 `totalEstimatedMatches` 欄位包含可供檢視的文章數目估計值。 如需有關如何逐頁瀏覽文章的資訊，請參閱[逐頁瀏覽新聞](../paging-news.md)。
+[新聞](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v5-reference#news) (英文) 回答中會列出 Bing 認為與查詢相關的新聞文章清單。 `totalEstimatedMatches` 欄位包含可供檢視的文章數目估計值。 如需有關如何逐頁瀏覽文章的資訊，請參閱[逐頁瀏覽新聞](../paging-news.md)。
 
-清單中每篇[新聞文章](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v5-reference#newsarticle) (英文) 都包含文章的名稱、描述以及文章在主機網站上的 URL。 如果文章包含影像，物件就會包含影像的縮圖。 使用 `name` 和 `url` 來建立帶領使用者前往主機網站上新聞文章的超連結。 如果文章包含影像，請讓影像也可以使用 `url` 進行點按。 請務必使用 `provider` 來歸類文章。
+清單中每篇[新聞文章](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v5-reference#newsarticle) (英文) 都包含文章的名稱、描述以及文章在主機網站上的 URL。 如果文章包含影像，物件就會包含影像的縮圖。 使用 `name` 和 `url` 來建立帶領使用者前往主機網站上新聞文章的超連結。 如果文章包含影像，請讓影像也可以使用 `url` 進行點按。 請務必使用 `provider` 來歸類文章。
 
 如果 Bing 可以判斷出新聞文章的類別，文章就會包含 `category` 欄位。
 
 ## <a name="get-todays-top-news"></a>取得今天的熱門新聞
 
-若要取得今天的熱門新聞文章，請進行和取得一般新聞相同的要求，不同之處在於不要設定 `q`。
+若要取得今天的熱門新聞文章，您可以如同以前一樣傳送相同的一般新聞要求，讓 `q` 參數取消設定。
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/news/search?q=&mkt=en-us HTTP/1.1
@@ -119,7 +119,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com
 ```
 
-取得熱門新聞的回應幾乎和取得一般新聞相同。 不過，`news` 回應中不會包含 `totalEstimatedMatches` 欄位，原因是其會有一組固定數目的結果。 不同新聞週期可能會有不同的熱門新聞數目。 請務必使用 `provider` 來歸類文章。
+取得熱門新聞的回應幾乎和取得一般新聞相同。 不過，`news` 回應中不會包含 `totalEstimatedMatches` 欄位，原因是其會有一組固定數目的結果。 不同新聞週期可能會有不同的熱門新聞數目。 請務必使用 `provider` 欄位來歸類文章。
 
 ## <a name="get-news-by-category"></a>取得各類別的新聞
 
@@ -135,7 +135,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com
 ```
 
-使用 [category](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#category) 查詢參數來指定要取得的文章類別。 如需可指定的新聞類別清單，請參閱[依市場的新聞類別](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#news-categories-by-market)。
+使用 [category](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#category) 查詢參數來指定要取得的文章類別。 如需可指定的新聞類別清單，請參閱[依市場的新聞類別](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#news-categories-by-market)。
 
 依類別取得新聞的回應幾乎和取得一般新聞相同。 不過，文章全都來自指定的類別。
 
@@ -153,11 +153,11 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com
 ```
 
-請勿包含 [category](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#category) 查詢參數。
+請勿包含 [category](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#category) 查詢參數。
 
 取得頭條新聞的回應和取得今天的熱門新聞相同。 如果文章是頭條新聞文章，其 `headline` 欄位會設定為 **true**。
 
-根據預設，回應中最多會包含 12 篇頭條新聞文章。 若要變更所傳回的頭條新聞文章數目，請指定 [headlineCount](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#headlinecount) 查詢參數。 回應中也會針對每個新聞類別包含最多四個非頭條新聞文章。
+根據預設，回應中最多會包含 12 篇頭條新聞文章。 若要變更所傳回的頭條新聞文章數目，請指定 [headlineCount](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#headlinecount) 查詢參數。 回應中也會針對每個新聞類別包含最多四個非頭條新聞文章。
 
 回應會將叢集視為一篇文章。 因為叢集中可能有數篇文章，回應可能會包含超過 12 篇頭條新聞文章，以及每個類別超過四篇的非頭條新聞文章。
 
@@ -223,7 +223,7 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="getting-related-news"></a>取得相關新聞
 
-如果有其他與新聞文章相關的文章，新聞文章內可能會包括 [clusteredArticles](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#newsarticle-clusteredarticles) 欄位。 下列內容顯示具有叢集化文章的文章。
+如果有其他與新聞文章相關的文章，新聞文章內可能會包括 [clusteredArticles](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle-clusteredarticles) 欄位。 下列內容顯示具有叢集化文章的文章。
 
 ```json
     {

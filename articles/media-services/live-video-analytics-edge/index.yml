@@ -1,0 +1,89 @@
+### YamlMime:Landing
+title: IoT Edge 上的 Live Video Analytics 文件
+summary: 了解如何使用 IoT Edge 上的 Live Video Analytics 分析
+metadata:
+  title: IoT Edge 上的 Live Video Analytics 文件
+  description: 了解如何使用 IoT Edge 上的 Live Video Analytics 分析
+  services: media-services
+  ms.service: media-services
+  ms.subservice: 
+  ms.topic: landing-page
+  ms.collection: collection
+  author: 
+  ms.author: 
+  ms.date: 10/12/2019
+  ms.openlocfilehash: ef82f7ccfabce330c5604a26d74f0491876a1634
+  ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 06/01/2020
+  ms.locfileid: "84259884"
+landingContent:
+- title: 關於 IoT Edge 上的 Live Video Analytics (預覽)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 關於 IoT Edge 上的 Live Video Analytics
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: 媒體圖表
+      url: media-graph-concept.md
+    - text: 影片錄製
+      url: video-recording-concept.md
+    - text: 影片播放
+      url: video-playback-concept.md
+  - linkListType: learn
+    links:
+    - text: 連續影片錄製
+      url: continuous-video-recording-concept.md
+    - text: 以事件為基礎的影片錄製
+      url: event-based-video-recording-concept.md
+    - text: 分析即時影片
+      url: analyze-live-video-concept.md
+- title: 案例
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 開始使用 - IoT Edge 上的 Live Video Analytics
+      url: get-started-detect-motion-emit-events-quickstart.md
+    - text: 偵測動作、將影片剪輯錄製到 Azure 媒體服務
+      url: detect-motion-record-video-clips-media-services-quickstart.md
+    - text: 偵測動作並發出事件
+      url: detect-motion-emit-events-quickstart.md
+    - text: 偵測動作、將影片錄製到邊緣裝置
+      url: detect-motion-record-video-clips-edge-devices-quickstart.md
+    - text: 使用自己的模型執行 Live Video Analytics
+      url: use-your-model-quickstart.md
+  - linkListType: tutorial
+    links:
+    - text: 連續影片錄製
+      url: continuous-video-recording-tutorial.md
+    - text: 以事件為基礎的影片錄製
+      url: event-based-video-recording-tutorial.md
+    - text: 播放多日錄製
+      url: playback-multi-day-recordings-tutorial.md
+- title: 開發
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 建立自訂 Azure Resource Manager 角色
+      url: create-custom-azure-resource-manager-role-how-to.md
+    - text: 部署到 IoT Edge 裝置
+      url: deploy-iot-edge-device.md
+    - text: 監視和記錄
+      url: monitoring-logging.md
+    - text: 播放錄製
+      url: playback-recordings-how-to.md
+    - text: 管理錄製原則
+      url: manage-recording-policy-how-to.md
+    - text: 疑難排解
+      url: troubleshoot-how-to.md
+  - linkListType: reference
+    links:
+    - text: 直接方法
+      url: direct-methods.md
+    - text: 模組對應項組態結構描述
+      url: module-twin-configuration-schema.md
+    - text: 配額和限制
+      url: quotas-limitations.md

@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 05/16/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 14793d7f787780bfc8604e4af11eb05f1ff0d937
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8c82e3d2c978a7980d02bc686346acdcb21dd591
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60859722"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "66425734"
 ---
 |  | **點對站** | **網站間** | **ExpressRoute** |
 | --- | --- | --- | --- |
 | **Azure 支援的服務** |雲端服務及虛擬機器 |雲端服務及虛擬機器 |[服務清單](../articles/expressroute/expressroute-faqs.md#supported-services) |
 | **典型的頻寬** |以閘道 SKU 為基礎 |彙總通常 < 1 Gbps |50 Mbps、100 Mbps、200 Mbps、500 Mbps、1 Gbps、2 Gbps、5 Gbps、10 Gbps |
-| **支援的通訊協定** |安全通訊端通道通訊協定 (SSTP) 和 IPsec |IPsec |透過 VLAN、NSP 的 VPN 技術 (MPLS、VPLS、...) 的直接連接 |
+| **支援的通訊協定** |安全通訊端通道通訊協定 (SSTP)、OpenVPN 和 IPsec |IPsec |透過 VLAN、NSP 的 VPN 技術 (MPLS、VPLS、...) 的直接連接 |
 | **路由** |RouteBased (動態) |我們支援 PolicyBased (靜態路由) 和 RouteBased (動態路由) VPN |BGP |
 | **連接恢復功能** |主動-被動 |主動-被動或主動-主動 |主動-主動 |
 | **典型的使用案例** |原型設計、雲端服務和虛擬機器的開發人員/測試/實驗室案例 |雲端服務和虛擬機器的開發/測試/實驗室案例和小規模生產工作負載 |所有 Azure 服務 (已驗證的清單)、企業層級與關鍵性工作負載、備份、巨量資料、Azure 做為 DR 網站的存取 |

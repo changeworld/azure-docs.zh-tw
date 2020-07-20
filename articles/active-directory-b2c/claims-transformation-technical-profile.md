@@ -1,21 +1,22 @@
 ---
-title: 定義 Azure Active Directory B2C 自訂原則中的宣告轉換技術設定檔 | Microsoft Docs
+title: 定義宣告轉換技術設定檔
+titleSuffix: Azure AD B2C
 description: 定義 Azure Active Directory B2C 自訂原則中的宣告轉換技術設定檔。
 services: active-directory-b2c
-author: davidmu1
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
-ms.author: davidmu
+ms.date: 02/13/2020
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0a2904bec34978a33d25534c9e9b32552191ad88
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 6553b9ec120ca0e1e479b400495b61bc68c88cf3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64705309"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85201203"
 ---
 # <a name="define-a-claims-transformation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>定義 Azure Active Directory B2C 自訂原則中的宣告轉換技術設定檔
 
@@ -23,13 +24,13 @@ ms.locfileid: "64705309"
 
 宣告轉換技術設定檔可讓您呼叫輸出宣告轉換，以操作宣告值、驗證宣告，或設定一組輸出宣告的預設值。
 
-## <a name="protocol"></a>Protocol
+## <a name="protocol"></a>通訊協定
 
 **Protocol** 元素的 **Name** 屬性必須設定為 `Proprietary`。 **handler** 屬性必須包含 Azure AD B2C 所使用之通訊協定處理常式組件的完整名稱：`Web.TPEngine.Providers.ClaimsTransformationProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`。
 
 下列範例顯示的是宣告轉換技術設定檔：
 
-```XML
+```xml
 <TechnicalProfile Id="Facebook-OAUTH-UnLink">
     <DisplayName>Unlink Facebook</DisplayName>
     <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.ClaimsTransformationProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -51,7 +52,7 @@ ms.locfileid: "64705309"
 
 **OutputClaimsTransformations** 元素可能含有 **OutputClaimsTransformation** 的集合，用於修改宣告或產生新的宣告。 下列技術設定檔會呼叫 **RemoveAlternativeSecurityIdByIdentityProvider** 宣告轉換。 此宣告轉換會從 **AlternativeSecurityIds** 的集合中移除社交身分識別。 此技術設定檔的輸出宣告是 **identityProvider2** (設為 `facebook.com`)，以及 **AlternativeSecurityIds**，該宣告含有移除 facebook.com 身分識別後，與該使用者有所關聯的社交身分識別清單。
 
-```XML
+```xml
 <ClaimsTransformations>
   <ClaimsTransformation Id="RemoveAlternativeSecurityIdByIdentityProvider"
 TransformationMethod="RemoveAlternativeSecurityIdByIdentityProvider">
@@ -83,7 +84,7 @@ TransformationClaimType="collection" />
 
 宣告轉換技術設定檔可讓您從任何使用者旅程圖協調流程步驟執行宣告轉換。 在下列範例中，協調流程步驟會呼叫其中一個取消連結的技術設定檔，例如 **UnLink-Facebook-OAUTH**。 此技術設定檔會呼叫宣告轉換技術設定檔 **RemoveAlternativeSecurityIdByIdentityProvider**，其會產生含有使用者社交身分識別清單的全新 **AlternativeSecurityIds2** 宣告，同時從集合中移除 Facebook 身分識別。
 
-```XML
+```xml
 <UserJourney Id="AccountUnLink">
   <OrchestrationSteps>
     ...
@@ -99,11 +100,17 @@ TransformationClaimType="collection" />
 </UserJourney>
 ```
 
+## <a name="metadata"></a>中繼資料
+
+| 屬性 | 必要 | 說明 |
+| --------- | -------- | ----------- |
+| IncludeClaimResolvingInClaimsHandling  | No | 針對輸入和輸出宣告，指定技術設定檔中是否包含[宣告解析](claim-resolver-overview.md)。 可能的值： `true` 、或 `false`   （預設）。 如果您想要在技術設定檔中使用宣告解析程式，請將此設定為 `true` 。 |
+
 ## <a name="use-a-validation-technical-profile"></a>使用驗證技術設定檔
 
 宣告轉換技術設定檔可用來驗證資訊。 在下列範例中，名稱為 **LocalAccountSignUpWithLogonEmail** 的[自我判斷技術設定檔](self-asserted-technical-profile.md)會要求使用者輸入兩次電子郵件，然後呼叫名稱為 **Validate-Email** 的[驗證技術設定檔](validation-technical-profile.md)，以驗證電子郵件。 **Validate-Email** 技術設定檔會呼叫宣告轉換 **AssertEmailAreEqual**，以比較兩個宣告 **email** 和 **emailRepeat**，如果根據指定的比較不相等，則會擲回例外狀況。
 
-```XML
+```xml
 <ClaimsTransformations>
   <ClaimsTransformation Id="AssertEmailAreEqual" TransformationMethod="AssertStringClaimsAreEqual">
     <InputClaims>
@@ -119,7 +126,7 @@ TransformationClaimType="collection" />
 
 宣告轉換技術設定檔會呼叫 **AssertEmailAreEqual** 宣告轉換，其會判斷使用者提供的電子郵件是否相同。
 
-```XML
+```xml
 <TechnicalProfile Id="Validate-Email">
   <DisplayName>Unlink Facebook</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.ClaimsTransformationProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -138,7 +145,7 @@ TransformationClaimType="collection" />
 
 自我判斷技術設定檔可以呼叫驗證技術設定檔，並顯示 **UserMessageIfClaimsTransformationStringsAreNotEqual** 中繼資料中指定的錯誤訊息。
 
-```XML
+```xml
 <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
   <DisplayName>User ID signup</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />

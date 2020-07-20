@@ -1,24 +1,22 @@
 ---
-title: 從 Spark 建立/插入資料至 Azure Cosmos DB Cassandra API
+title: 從 Spark 建立資料並將其插入 Azure Cosmos DB Cassandra API
 description: 本文將詳細說明如何將範例資料插入 Azure Cosmos DB Cassandra API 資料表
-author: rockboyfor
-ms.author: v-yeche
+author: kanshiG
+ms.author: govindk
 ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
-ms.topic: conceptual
-origin.date: 09/24/2018
-ms.date: 03/18/2019
-ms.openlocfilehash: aea646e7a390d5b53f0d4b388cfecd0c80fb19da
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.topic: how-to
+ms.date: 09/24/2018
+ms.openlocfilehash: 56899b7d81f17e678026b1aad7f3e2d9f8b9b0b0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60894040"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85260518"
 ---
-<!--Verify sucessfully-->
 # <a name="createinsert-data-into-azure-cosmos-db-cassandra-api-from-spark"></a>從 Spark 建立/插入資料至 Azure Cosmos DB Cassandra API
-
+ 
 本文將說明如何從 Spark 將範例資料插入 Azure Cosmos DB Cassandra API 中的資料表。
 
 ## <a name="cassandra-api-configuration"></a>Cassandra API 設定
@@ -33,7 +31,7 @@ import com.datastax.spark.connector.cql.CassandraConnector
 import com.microsoft.azure.cosmosdb.cassandra
 
 //Connection-related
-spark.conf.set("spark.cassandra.connection.host","YOUR_ACCOUNT_NAME.cassandra.cosmosdb.azure.cn")
+spark.conf.set("spark.cassandra.connection.host","YOUR_ACCOUNT_NAME.cassandra.cosmosdb.azure.com")
 spark.conf.set("spark.cassandra.connection.port","10350")
 spark.conf.set("spark.cassandra.connection.ssl.enabled","true")
 spark.conf.set("spark.cassandra.auth.username","YOUR_ACCOUNT_NAME")
@@ -139,13 +137,10 @@ select * from books;
 ## <a name="next-steps"></a>後續步驟
 
 將資料插入 Azure Cosmos DB Cassandra AP 資料表後，請繼續閱讀下列文章，以對 Cosmos DB Cassandra API 中儲存的資料執行其他作業：
-
+ 
 * [讀取作業](cassandra-spark-read-ops.md)
 * [作業](cassandra-spark-upsert-ops.md)
 * [刪除作業](cassandra-spark-delete-ops.md)
 * [彙總作業](cassandra-spark-aggregation-ops.md)
 * [資料表複製作業](cassandra-spark-table-copy-ops.md)
 
-<!--Verify sucessfully-->
-<!--Update_Description: new articles on  -->
-<!--ms.date: 03/18/2019-->

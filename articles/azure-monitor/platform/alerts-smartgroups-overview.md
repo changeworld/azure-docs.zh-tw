@@ -1,21 +1,17 @@
 ---
 title: 智慧群組
 description: 智慧群組是警示的彙總，可協助您減少警示干擾
-author: anantr
-services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
+ms.subservice: alerts
 ms.date: 05/15/2018
-ms.author: anantr
-ms.component: alerts
-ms.openlocfilehash: e0bef0fc4f4b61add24c243af0dac64933ad5bab
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 05b05f8bc079bb3768ac2f1a03593bc9260b41aa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60346312"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77665488"
 ---
 # <a name="smart-groups"></a>智慧群組
+
 處理警示時所面臨的一個常見挑戰是篩選干擾以找出真正重要的事情 - 智慧群組的目的就是在解決該問題。  
 
 智慧群組是使用機器學習演算法自動建立的，結合了代表單一問題的相關警示。  當警示建立時，演算法會根據歷史模式、相似的屬性和相似的結構等資訊，將警示加入至新的智慧群組或現有的智慧群組。 例如，如果訂用帳戶中的數個虛擬機上的 % CPU 同時出現突增，並導致許多單獨警示，而且如果此類警示在過去任何時間曾經一起發生，則這些警示可能會分組到一個智慧群組中，表示有可能的共同根本原因。 這表示，對疑難排解警示的人來說，智慧群組不僅可讓他們以單一彙總單元來管理相關警示以減少干擾，也能引導他們了解其警示的可能常見根本原因。
@@ -25,11 +21,12 @@ ms.locfileid: "60346312"
 您可以檢視智慧群組的詳細資料，並以類似您設定警示的方式來設定狀態。 每個警示都是單一專屬智慧群組的成員。 
 
 ## <a name="smart-group-state"></a>智慧群組狀態
-智慧型群組狀態會是類似警示狀態的概念，可讓您在智慧群組層級上管理解析流程。 與警示狀態類似，當建立智慧群組時，其狀態有 [新] 狀態，此狀態可變更為 [已認可] 或 [已關閉]。
+
+智慧型群組狀態會是類似警示狀態的概念，可讓您在智慧群組層級上管理解析流程。 與警示狀態類似，當建立智慧群組時，其狀態有 [新]**** 狀態，此狀態可變更為 [已認可]**** 或 [已關閉]****。
 
 支援下列智慧群組狀態。
 
-| State | 描述 |
+| State | Description |
 |:---|:---|
 | 新增 | 已經偵測到問題，但尚未檢閱。 |
 | 已認可 | 系統管理員已檢閱智慧群組，並已開始處理。 |
@@ -52,7 +49,7 @@ ms.locfileid: "60346312"
 | 區段 | 描述 |
 |:---|:---|
 | 警示 | 列出智慧群組中包含的個別警示。 選取警示以開啟其 [警示詳細資料] 頁面。 |
-| 歷程記錄 | 列出智慧群組採取的每個動作，以及對智慧群組所做的任何變更。 這目前僅限於狀態變更和警示成員資格變更。 |
+| 記錄 | 列出智慧群組採取的每個動作，以及對智慧群組所做的任何變更。 這目前僅限於狀態變更和警示成員資格變更。 |
 
 ## <a name="smart-group-taxonomy"></a>智慧群組分類法
 
@@ -62,4 +59,5 @@ ms.locfileid: "60346312"
 
 - [管理智慧群組](https://aka.ms/managing-smart-groups)
 - [變更警示與智慧群組狀態](https://aka.ms/managing-alert-smart-group-states)
+
 

@@ -1,32 +1,29 @@
 ---
-title: 開始在 Visual Studio .NET MVC 專案中使用 Azure AD
+title: 開始使用 .NET MVC 專案中的 Azure AD |Azure
 description: 使用 Visual Studio 連線服務連線至 Azure AD 或建立 Azure AD 後，如何在 .NET MVC 專案中開始使用 Azure Active Directory
-services: active-directory
 author: ghogen
-manager: douge
-ms.assetid: 1c8b6a58-5144-4965-a905-625b9ee7b22b
-ms.prod: visual-studio-dev15
+manager: jillfra
+ms.prod: visual-studio-windows
 ms.technology: vs-azure
 ms.workload: azure-vs
-ms.topic: conceptual
-origin.date: 03/12/2018
-ms.date: 09/03/2018
-ms.author: v-junlch
+ms.topic: how-to
+ms.date: 03/12/2018
+ms.author: ghogen
 ms.custom: aaddev, vs-azure
-ms.openlocfilehash: 6bbbef3f48eb55c863fdd286113297d79f9b9e02
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 36479acca56aa97a5453a9ab99691ed1993daaf3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60296838"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85477000"
 ---
 # <a name="getting-started-with-azure-active-directory-aspnet-mvc-projects"></a>開始使用 Azure Active Directory (ASP.NET MVC 專案)
 
 > [!div class="op_single_selector"]
-> - [開始使用](vs-active-directory-dotnet-getting-started.md)
+> - [快速入門](vs-active-directory-dotnet-getting-started.md)
 > - [發生什麼情形](vs-active-directory-dotnet-what-happened.md)
 
-本文提供您在透過 Visual Studio 的 [專案] > [連線服務] 命令將 Active Directory 新增至 ASP.NET MVC 專案之後所需的其他指引。 如果您尚未將服務新增至專案，您可以隨時執行此動作。
+本文提供您在透過 Visual Studio 的 [專案] > [連線服務]**** 命令將 Active Directory 新增至 ASP.NET MVC 專案之後所需的其他指引。 如果您尚未將服務新增至專案，您可以隨時執行此動作。
 
 請參閱[我的 MVC 專案發生什麼情形？](vs-active-directory-dotnet-what-happened.md)，了解您的專案在新增連線服務時所做的變更。
 
@@ -86,6 +83,4 @@ ms.locfileid: "60296838"
 ## <a name="next-steps"></a>後續步驟
 
 - [Azure Active Directory 的驗證案例](authentication-scenarios.md)
-- [將「使用 Microsoft 登入」新增至 ASP.NET Web 應用程式](quickstart-v1-aspnet-webapp.md)
-
-<!-- Update_Description: link update -->
+- [將「使用 Microsoft 登入」新增至 ASP.NET Web 應用程式](quickstart-v2-aspnet-webapp.md)

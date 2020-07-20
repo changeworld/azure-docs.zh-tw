@@ -1,19 +1,14 @@
 ---
 title: 查詢 Azure Event Grid 訂用帳戶
-description: 說明如何列出 Azure Event Grid 訂用帳戶。
-services: event-grid
-author: spelluru
-manager: timlt
-ms.service: event-grid
+description: 本文說明如何在您的 Azure 訂用帳戶中列出事件方格訂閱。 您可以根據訂用帳戶的類型提供不同的參數。
 ms.topic: conceptual
-ms.date: 01/04/2019
-ms.author: spelluru
-ms.openlocfilehash: ad9c2d492f70a697ef0e7dc3b7ed03b9938f2468
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 07/07/2020
+ms.openlocfilehash: 3d700f543bc5e3c7add2a346c10acf975e1c2462
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58181685"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120444"
 ---
 # <a name="query-event-grid-subscriptions"></a>查詢 Event Grid 訂用帳戶 
 
@@ -46,7 +41,7 @@ Get-AzEventGridSubscription
 對於 Azure CLI，請使用：
 
 ```azurecli-interactive
-az eventgrid event-subscription list --topic-type-name "Microsoft.Resources.Subscriptions"
+az eventgrid event-subscription list --topic-type-name "Microsoft.Resources.Subscriptions" --location global
 ```
 
 對於 PowerShell，請使用：
@@ -60,7 +55,7 @@ Get-AzEventGridSubscription -TopicTypeName "Microsoft.Resources.Subscriptions"
 對於 Azure CLI，請使用：
 
 ```azurecli-interactive
-az eventgrid event-subscription list --topic-type-name "Microsoft.Resources.ResourceGroups"
+az eventgrid event-subscription list --topic-type-name "Microsoft.Resources.ResourceGroups" --location global
 ```
 
 對於 PowerShell，請使用：
@@ -74,7 +69,7 @@ Get-AzEventGridSubscription -TopicTypeName "Microsoft.Resources.ResourceGroups"
 對於 Azure CLI，請使用：
 
 ```azurecli-interactive
-az eventgrid event-subscription list --resource-group myResourceGroup
+az eventgrid event-subscription list --resource-group myResourceGroup --location global
 ```
 
 對於 PowerShell，請使用：

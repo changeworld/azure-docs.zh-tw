@@ -1,0 +1,115 @@
+- name: Azure Spring Cloud 文件
+  href: index.yml
+  displayName: Azure Spring Cloud
+- name: 概觀
+  items:
+    - name: 什麼是 Azure Spring Cloud？
+      href: spring-cloud-overview.md
+    - name: 適用於 Spring 微服務應用程式的 Java 和基底 OS
+      href: spring-cloud-principles-microservice-apps.md
+- name: 快速入門
+  expanded: true
+  items:
+    - name: 啟動 Spring Cloud 應用程式 - 入口網站
+      href: spring-cloud-quickstart-launch-app-portal.md
+    - name: 啟動 Spring Cloud 應用程式 - Azure CLI
+      href: spring-cloud-quickstart-launch-app-cli.md
+    - name: 啟動 Spring Cloud 應用程式 - 來源
+      href: spring-cloud-launch-from-source.md
+    - name: 啟動 Spring Cloud 應用程式 - Maven
+      href: spring-cloud-quickstart-launch-app-maven.md
+- name: 教學課程
+  items:
+    - name: 手動調整應用程式
+      href: spring-cloud-tutorial-scale-manual.md
+    - name: 警示和動作群組
+      href: spring-cloud-tutorial-alerts-action-groups.md
+    - name: 使用 IntelliJ 部署應用程式
+      href: spring-cloud-tutorial-intellij-deploy-apps.md
+    - name: 斷路器儀表板
+      href: spring-cloud-tutorial-circuit-breaker.md
+    - name: 自訂 DNS 名稱
+      href: spring-cloud-tutorial-custom-domain.md
+    - name: 使用 IntelliJ 部署 Azure Spring Cloud 應用程式
+      href: spring-cloud-tutorial-intellij-deploy-apps.md
+    - name: 使用 Terraform 佈建 Azure Spring Cloud 執行個體
+      href: spring-cloud-tutorial-provision-azure-spring-cloud-instance-terraform.md
+    - name: 使用 Jenkins 的 CI/CD
+      href: /azure/jenkins/tutorial-jenkins-deploy-cli-spring-cloud-service
+    - name: 使用受控識別將 Key Vault 連線至 Azure Spring Cloud 應用程式
+      href: spring-cloud-tutorial-managed-identities-key-vault.md
+- name: 範例
+  items:
+    - name: Azure 原則內建
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
+- name: 概念
+  items:
+    - name: 了解配額和限制
+      href: spring-cloud-quotas.md
+    - name: 了解計量
+      href: spring-cloud-concept-metrics.md
+    - name: Azure Spring Boot Actuator
+      href: spring-cloud-concept-manage-monitor-app-spring-boot-actuator.md
+    - name: 安全性控制
+      href: spring-cloud-concept-security-controls.md
+    - name: 了解應用程式狀態
+      href: spring-cloud-concept-app-status.md
+    - name: 規劃災害復原
+      href: disaster-recovery.md
+- name: 操作指南
+  items:
+    - name: 準備 Java Spring 應用程式以進行部署
+      href: spring-cloud-tutorial-prepare-app-deployment.md
+    - name: 設定 Config Server
+      href: spring-cloud-tutorial-config-server.md
+    - name: 啟用服務註冊
+      href: spring-cloud-service-registration.md
+    - name: 將應用程式繫結至 Azure CosmosDB
+      href: spring-cloud-tutorial-bind-cosmos.md
+    - name: 將應用程式繫結至 Azure Cache for Redis
+      href: spring-cloud-tutorial-bind-redis.md
+    - name: 將應用程式繫結至 Azure MySQL
+      href: spring-cloud-tutorial-bind-mysql.md
+    - name: 啟動、停止和刪除應用程式
+      href: spring-cloud-howto-start-stop-delete.md
+    - name: 設定預備環境
+      href: spring-cloud-howto-staging-environment.md
+    - name: 使用永續性儲存體
+      href: spring-cloud-howto-persistent-storage.md
+    - name: 與 Azure 負載平衡解決方案整合
+      href: spring-cloud-howto-integrate-azure-load-balancers.md
+    - name: 啟用系統指派的受控識別
+      href: spring-cloud-howto-enable-system-assigned-managed-identity.md
+    - name: 自我診斷並解決問題
+      href: spring-cloud-howto-self-diagnose-solve.md
+    - name: 監視
+      items:
+        - name: 分散式追蹤和 App Insights
+          href: spring-cloud-tutorial-distributed-tracing.md
+        - name: 分析記錄和計量
+          href: diagnostic-services.md
+        - name: 即時串流記錄
+          href: spring-cloud-howto-log-streaming.md
+    - name: DevOps 部署
+      items:
+        - name: 使用 Azure DevOps 的 CI/CD
+          href: spring-cloud-howto-cicd.md
+        - name: 使用 GitHub 動作的 CI/CD
+          href: spring-cloud-howto-github-actions.md
+        - name: 在 GitHub Actions 中使用 Key Vault 進行驗證
+          href: spring-cloud-github-actions-key-vault.md
+    - name: 疑難排解
+      items:
+        - name: 疑難排解指南
+          href: spring-cloud-troubleshoot.md
+- name: 參考
+  items:
+    - name: Azure CLI 外掛程式
+      href: 'https://docs.microsoft.com/cli/azure/ext/spring-cloud/spring-cloud'
+    - name: 資源
+      href: spring-cloud-resources.md
+    - name: 常見問題集
+      href: spring-cloud-faq.md
+    - name: REST API 參考資料
+      href: 'https://docs.microsoft.com/rest/api/azurespringclould/'

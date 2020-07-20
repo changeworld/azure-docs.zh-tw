@@ -3,28 +3,28 @@ title: 針對 Azure CDN 中的檔案壓縮進行疑難排解 | Microsoft Docs
 description: 針對 Azure CDN 檔案壓縮的問題進行疑難排解。
 services: cdn
 documentationcenter: ''
-author: zhangmanling
-manager: erikre
+author: sohamnc
+manager: danielgi
 editor: ''
 ms.assetid: a6624e65-1a77-4486-b473-8d720ce28f8b
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 4df8e5d4560a813c47319833a8cd91726abcb8e6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5c56564ee6f07c5d208ea5d3089a2c96fd8bbc33
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60323734"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84888687"
 ---
 # <a name="troubleshooting-cdn-file-compression"></a>CDN 檔案壓縮疑難排解
 這篇文章可協助您針對 [CDN 檔案壓縮](cdn-improve-performance.md)的問題進行疑難排解。
 
-如果在本文章中有任何需要協助的地方，您可以連絡 [MSDN Azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/forums/)上的 Azure 專家。 或者，您也可以提出 Azure 支援事件。 請移至 [Azure 支援網站](https://azure.microsoft.com/support/options/)，然後按一下 [取得支援]。
+如果在本文章中有任何需要協助的地方，您可以連絡 [MSDN Azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/forums/)上的 Azure 專家。 或者，您也可以提出 Azure 支援事件。 請移至 [Azure 支援網站](https://azure.microsoft.com/support/options/)，然後按一下 [取得支援]****。
 
 ## <a name="symptom"></a>徵狀
 已為您的端點啟用壓縮，但會傳回未壓縮的檔案。
@@ -42,6 +42,7 @@ ms.locfileid: "60323734"
 * 要求的內容不適合進行壓縮。
 * 要求的檔案類型未啟用壓縮。
 * HTTP 要求未包含要求有效壓縮類型的標頭。
+* 來源正在傳送區塊的內容。
 
 ## <a name="troubleshooting-steps"></a>疑難排解步驟
 > [!TIP]
@@ -68,7 +69,7 @@ ms.locfileid: "60323734"
 > 
 > 
 
-在 [Azure 入口網站](https://portal.azure.com)中瀏覽至您的端點，然後按一下 [設定] 按鈕。
+在 [Azure 入口網站](https://portal.azure.com)中瀏覽至您的端點，然後按一下 [設定]**** 按鈕。
 
 * 驗證已啟用壓縮。
 * 驗證要壓縮之內容的 MIME 類型已包含在壓縮格式清單中。
@@ -81,10 +82,10 @@ ms.locfileid: "60323734"
 > 
 > 
 
-在 [Azure 入口網站](https://portal.azure.com)中瀏覽至您的端點，然後按一下 [管理] 按鈕。  即會開啟補充入口網站。  將滑鼠移至 [HTTP 大型] 索引標籤上，然後將滑鼠移至 [快取設定] 飛出視窗上。  按一下 [壓縮]。 
+在 [Azure 入口網站](https://portal.azure.com)中瀏覽至您的端點，然後按一下 [管理]**** 按鈕。  即會開啟補充入口網站。  將滑鼠移至 [HTTP 大型]**** 索引標籤上，然後將滑鼠移至 [快取設定]**** 飛出視窗上。  按一下 [壓縮]****。 
 
 * 驗證已啟用壓縮。
-* 驗證 [檔案類型]  清單包含以逗號分隔 (無空格) 的 MIME 類型清單。
+* 驗證 [檔案類型] **** 清單包含以逗號分隔 (無空格) 的 MIME 類型清單。
 * 驗證要壓縮之內容的 MIME 類型已包含在壓縮格式清單中。
 
 ![CDN 進階壓縮設定](./media/cdn-troubleshoot-compression/cdn-compression-settings-premium.png)
@@ -116,6 +117,6 @@ ms.locfileid: "60323734"
 ### <a name="check-the-request-at-the-origin-server-for-a-via-header"></a>在原始伺服器中檢查要求的 **Via** 標頭
 **Via** HTTP 標頭會向 Web 伺服器指出正在由 Proxy 伺服器傳遞要求。  Microsoft IIS Web 伺服器預設不會在要求包含 **Via** 標頭時壓縮回應。  若要覆寫這個行為，請執行下列作業︰
 
-* **IIS 6**:[設定 HcNoCompressionForProxies ="FALSE"，在 IIS Metabase 屬性](/previous-versions/iis/6.0-sdk/ms525390(v=vs.90))
-* **IIS 7 和最多**:[同時設定**noCompressionForHttp10**並**noCompressionForProxies**設為 False，在 伺服器組態](https://www.iis.net/configreference/system.webserver/httpcompression)
+* **IIS 6**： [在 IIS Metabase 屬性中設定 HcNoCompressionForProxies="FALSE"](/previous-versions/iis/6.0-sdk/ms525390(v=vs.90))
+* **IIS 7 和更新版本**：[在伺服器組態中將 **noCompressionForHttp10** 和 **noCompressionForProxies** 設定為 False](https://www.iis.net/configreference/system.webserver/httpcompression)
 

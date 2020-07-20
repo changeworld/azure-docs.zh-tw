@@ -1,85 +1,79 @@
 ---
-title: 設定應用程式以公開 Web API (預覽) | Azure
+title: 設定應用程式以公開 Web API - Microsoft 身分識別平台 | Azure
 description: 了解如何設定應用程式來公開新的權限/範圍和角色，以便讓應用程式可供用戶端應用程式使用。
 services: active-directory
-documentationcenter: ''
-author: CelesteDG
-manager: mtillman
-editor: ''
+author: rwike77
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/25/2018
-ms.author: celested
+ms.date: 08/14/2019
+ms.author: ryanwi
 ms.custom: aaddev
-ms.reviewer: lenalepa, sureshja
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a8ff17656978e6e4e8741c19cda79743560481a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.reviewer: aragra, lenalepa, sureshja
+ms.openlocfilehash: e005ba9c5458849863bd4668ffde1e0f6fb4bf91
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58080840"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "76704216"
 ---
-# <a name="quickstart-configure-an-application-to-expose-web-apis-preview"></a>快速入門：設定應用程式以公開 Web API (預覽)
+# <a name="quickstart-configure-an-application-to-expose-web-apis"></a>快速入門：設定應用程式以公開 Web API
 
 您可以開發 Web API，並藉由公開[權限/範圍](developer-glossary.md#scopes)和[角色](developer-glossary.md#roles)，使其可供用戶端應用程式使用。 正確設定的 web API 即可供使用，就像其他 Microsoft web API 一樣，包括 Graph API 和 Office 365 API。
 
 在本快速入門中，您將了解如何設定應用程式來公開新的範圍，以便將應用程式提供給用戶端應用程式使用。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 開始之前，請先確定您已完成以下先決條件：
 
 * 了解所支援的[權限和同意](v2-permissions-and-consent.md)，在建置其他使用者或應用程式需要使用的應用程式時，這些是務必了解的重要資訊。
 * 擁有已有應用程式在其中註冊的租用戶。
   * 如果您尚未註冊應用程式，請[了解如何使用 Microsoft 身分識別平台來註冊應用程式](quickstart-register-app.md)。
-* 在 Azure 入口網站中選擇加入應用程式註冊預覽版體驗。 本快速入門中的步驟會對應到新的 UI，而且必須選擇加入預覽版體驗才能進行。
 
 ## <a name="sign-in-to-the-azure-portal-and-select-the-app"></a>登入 Azure 入口網站，然後選取應用程式
 
 請先遵循下列步驟，然後才能設定應用程式：
 
 1. 使用公司或學校帳戶或個人的 Microsoft 帳戶登入 [Azure 入口網站](https://portal.azure.com)。
-1. 如果您的帳戶可讓您存取多個租用戶，請在右上角選取您的帳戶，然後將您的入口網站工作階段設定為想要的 Azure AD 租用戶。
-1. 在左側導覽窗格中，選取 [Azure Active Directory] 服務，然後選取 [應用程式註冊 (預覽)]。
-1. 尋找並選取您要設定的應用程式。 在選取應用程式後，您會看到應用程式的 [概觀] 或主要註冊頁面。
+1. 如果您的帳戶可讓您存取多個租用戶，請在右上角選取帳戶，然後將您的入口網站工作階段設定為想要的 Azure AD 租用戶。
+1. 在左側導覽窗格中，選取 [Azure Active Directory]  服務，然後選取 [應用程式註冊]  。
+1. 尋找並選取您要設定的應用程式。 在選取應用程式後，您會看到應用程式的 [概觀]  或主要註冊頁面。
 1. 選擇您想要使用哪一個方法 (UI 還是應用程式資訊清單) 來公開新的範圍：
     * [透過 UI 公開新的範圍](#expose-a-new-scope-through-the-ui)
     * [透過應用程式資訊清單公開新的範圍或角色](#expose-a-new-scope-or-role-through-the-application-manifest)
 
 ## <a name="expose-a-new-scope-through-the-ui"></a>透過 UI 公開新的範圍
 
-[![使用 UI 公開 API](./media/quickstart-update-azure-ad-app-preview/expose-api-through-ui-expanded.png)](./media/quickstart-update-azure-ad-app-preview/expose-api-through-ui-expanded.png#lightbox)
+[![說明如何使用 UI 公開 API](./media/quickstart-update-azure-ad-app-preview/expose-api-through-ui-expanded.png)](./media/quickstart-update-azure-ad-app-preview/expose-api-through-ui-expanded.png#lightbox)
 
 若要透過 UI 公開新的範圍：
 
-1. 從應用程式的 [概觀] 頁面，選取 [公開 API] 區段。
+1. 從應用程式的 [概觀]  頁面，選取 [公開 API]  區段。
 
-1. 選取 [新增範圍]。
+1. 選取 [新增範圍]  。
 
-1. 如果您還未設定 [應用程式識別碼 URI]，您會看到提示要求您輸入。 輸入應用程式識別碼 URI 或使用所提供的 URI，然後選取 [儲存並繼續]。
+1. 如果您還未設定 [應用程式識別碼 URI]  ，您會看到提示要求您輸入。 輸入應用程式識別碼 URI 或使用所提供的 URI，然後選取 [儲存並繼續]  。
 
-1. 當 [新增範圍] 頁面出現時，輸入範圍的資訊：
+1. 當 [新增範圍]  頁面出現時，輸入範圍的資訊：
 
-    | 欄位 | 說明 |
+    | 欄位 | 描述 |
     |-------|-------------|
-    | **範圍名稱** | 為範圍輸入有意義的名稱。<br><br>例如： `Employees.Read.All`。 |
-    | **誰可以同意** | 選取此範圍可由使用者同意，還是必須由管理員同意。 選取 [僅限系統管理員] 以要求較高權限。 |
+    | **範圍名稱** | 為範圍輸入有意義的名稱。<br><br>例如： `Employees.Read.All` 。 |
+    | **誰可以同意** | 選取此範圍可由使用者同意，還是必須由管理員同意。 選取 [僅限系統管理員]  以要求較高權限。 |
     | **管理員同意顯示名稱** | 為範圍輸入有意義的描述，以便讓管理員看到。<br><br>例如， `Read-only access to Employee records` |
     | **管理員同意描述** | 為範圍輸入有意義的描述，以便讓管理員看到。<br><br>例如， `Allow the application to have read-only access to all Employee data.` |
 
     如果使用者可以同意範圍，也請新增下列欄位的值：
 
-    | 欄位 | 說明 |
+    | 欄位 | 描述 |
     |-------|-------------|
     | **使用者同意顯示名稱** | 為範圍輸入有意義的名稱，以便讓使用者看到。<br><br>例如， `Read-only access to your Employee records` |
     | **使用者同意描述** | 為範圍輸入有意義的描述，以便讓使用者看到。<br><br>例如， `Allow the application to have read-only access to your Employee data.` |
 
-1. 完成時，請設定 [狀態] 並選取 [新增範圍]。
+1. 完成時，請設定 [狀態]  並選取 [新增範圍]  。
 
 1. 遵循相關步驟來[確認已向其他應用程式公開 Web API](#verify-the-web-api-is-exposed-to-other-applications)。
 
@@ -89,7 +83,7 @@ ms.locfileid: "58080840"
 
 若要透過應用程式資訊清單公開新的範圍：
 
-1. 從應用程式的 [概觀] 頁面，選取 [資訊清單] 區段。 Web 式的資訊清單編輯器隨即開啟，以供您在入口網站內**編輯**資訊清單。 或者，您也可以選取 [下載] 並在本機編輯資訊清單，然後使用 [上傳] 以將其重新套用到您的應用程式。
+1. 從應用程式的 [概觀]  頁面，選取 [資訊清單]  區段。 Web 式的資訊清單編輯器隨即開啟，以供您在入口網站內**編輯**資訊清單。 或者，您也可以選取 [下載]  並在本機編輯資訊清單，然後使用 [上傳]  以將其重新套用到您的應用程式。
     
     下列範例說明如何藉由將下列 JSON 元素新增至 `oauth2Permissions` 集合，從而在資源/API 上公開稱為 `Employees.Read.All` 的新範圍。
 
@@ -111,14 +105,15 @@ ms.locfileid: "58080840"
    >
    > 稍後您可以視需要公開其他範圍。 請考慮您的 Web API 可能會公開多個與各種不同功能相關聯的範圍。 在執行階段，您的資源可藉由評估所收到之 OAuth 2.0 存取權杖中的範圍 (`scp`) 宣告，來控制 Web API 的存取。
 
-1. 完成時，按一下 [儲存]。 您的 Web API 現在已設定為可供目錄中的其他應用程式使用。
+1. 完成時，按一下 [儲存]  。 您的 Web API 現在已設定為可供目錄中的其他應用程式使用。
 1. 遵循相關步驟來[確認已向其他應用程式公開 Web API](#verify-the-web-api-is-exposed-to-other-applications)。
 
 ## <a name="verify-the-web-api-is-exposed-to-other-applications"></a>確認已向其他應用程式公開 Web API
 
-1. 返回 Azure AD 租用戶，選取 [應用程式註冊]，然後尋找並選取您想要設定的用戶端應用程式。
-1. 重複進行設定用戶端應用程式以存取 Web API 中所述的步驟。
-1. 當您進行到 [選取 API] 步驟時，選取您的資源。 您應該會看到可供用戶端權限要求使用的新範圍。
+1. 返回 Azure AD 租用戶，選取 [應用程式註冊]  ，然後尋找並選取您想要設定的用戶端應用程式。
+1. 重複進行[設定用戶端應用程式以存取 Web API](quickstart-configure-app-access-web-apis.md) 中所述的步驟。
+1. 當您進行到 [選取 API](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis
+) 步驟時，選取您的資源。 您應該會看到可供用戶端權限要求使用的新範圍。
 
 ## <a name="more-on-the-application-manifest"></a>應用程式資訊清單的詳細資料
 

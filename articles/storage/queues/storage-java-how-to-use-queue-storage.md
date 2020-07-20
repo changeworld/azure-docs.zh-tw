@@ -1,42 +1,41 @@
 ---
-title: 如何使用 Java-Azure 儲存體的佇列儲存體
-description: 了解如何使用 Azure 佇列服務來建立和刪除佇列，以及插入、取得和刪除訊息。 範例以 Java 撰寫。
-services: storage
+title: 如何使用 JAVA 的佇列儲存體-Azure 儲存體
+description: 瞭解如何使用佇列儲存體來建立和刪除佇列，以及使用適用于 JAVA 的 Azure 儲存體用戶端程式庫來插入、取得和刪除訊息。
 author: mhopkins-msft
-ms.service: storage
-ms.devlang: java
-ms.topic: article
-ms.date: 12/08/2016
 ms.author: mhopkins
-ms.reviewer: cbrooks
+ms.date: 12/08/2016
+ms.service: storage
 ms.subservice: queues
-ms.openlocfilehash: 3cbd1445640f37cbc63d74d1366c390c774aecd5
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.topic: how-to
+ms.reviewer: dineshm
+ms.openlocfilehash: a0c94f3c9af9220bb3cf6476c50799d1f3313ffc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65151119"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84809235"
 ---
 # <a name="how-to-use-queue-storage-from-java"></a>如何使用 Java 的佇列儲存體
+
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
 
-[!INCLUDE [storage-check-out-samples-java](../../../includes/storage-check-out-samples-java.md)]
+本指南將示範如何使用 Azure 佇列儲存體服務執行一般案例。 相關範例是以 Java 撰寫並使用 [Azure Storage SDK for Java][Azure Storage SDK for Java]。 涵蓋的案例包括**插入**、**查看**、**取得**和**刪除**佇列訊息，以及**建立**和**刪除**佇列。 如需佇列的詳細資訊，請參閱[後續步驟](#next-steps)一節。
 
-## <a name="overview"></a>概觀
-本指南將示範如何使用 Azure 佇列儲存體服務執行一般案例。 相關範例是以 Java 撰寫並使用 [Azure Storage SDK for Java][Azure Storage SDK for Java]。 所涵蓋的案例包括**插入**、**查看**、**取得**和**刪除**佇列訊息，以及**建立**和**刪除**佇列。 如需佇列的詳細資訊，請參閱[後續步驟](#next-steps)一節。
-
-注意：有一套 SDK 可供在 Android 裝置上使用 Azure 儲存體的開發人員使用。 如需詳細資訊，請參閱 [Azure Storage SDK for Android][Azure Storage SDK for Android]。
+> [!IMPORTANT]
+> 本文指的是舊版的 Azure 儲存體用戶端程式庫（適用于 JAVA）。 若要開始使用最新版本，請參閱[快速入門：適用于 JAVA 的 Azure 佇列儲存體用戶端程式庫](storage-quickstart-queues-java.md)
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
-## <a name="create-a-java-application"></a>创建 Java 应用程序
-在本指南中，您將使用的儲存功能可在 Java 應用程式中進行本機呼叫，或在 Azure Web 角色或背景工作角色中執行的程式碼中呼叫。
+## <a name="create-a-java-application"></a>建立 Java 應用程式
 
-若要這樣做，您需要安裝 Java Development Kit (JDK)，並在 Azure 訂用帳戶中建立 Azure 儲存體帳戶。 完成此動作之後，您需要驗證開發系統符合 GitHub 上的 [Azure Storage SDK for Java][Azure Storage SDK for Java] 儲存機制中所列出的最低需求和相依性。 如果系統符合這些需求，則您可以依照指示，從該儲存機制中下載 Azure Storage Libraries for Java 並安裝在系統上。 完成這些工作之後，您就能夠利用本文中的範例來建立 Java 應用程式。
+在本指南中，您將使用可在本機 JAVA 應用程式中執行的儲存體功能，或在 Azure 中的 web 應用程式內執行的程式碼中。
+
+若要這樣做，您需要安裝 Java Development Kit (JDK)，並在 Azure 訂用帳戶中建立 Azure 儲存體帳戶。 完成這項操作之後，您必須確認您的開發系統符合 GitHub 上的[AZURE 儲存體 SDK For JAVA][Azure Storage SDK for Java]儲存機制中所列的最低需求和相依性。 如果系統符合這些需求，則您可以依照指示，從該儲存機制中下載 Azure Storage Libraries for Java 並安裝在系統上。 完成這些工作之後，您就可以建立使用本文中範例的 JAVA 應用程式。
 
 ## <a name="configure-your-application-to-access-queue-storage"></a>設定您的應用程式以存取佇列儲存體
+
 將下列 import 陳述式新增到您要在其中使用 Azure 儲存體 API 存取佇列的 Java 檔案頂端：
 
 ```java
@@ -45,8 +44,9 @@ import com.microsoft.azure.storage.*;
 import com.microsoft.azure.storage.queue.*;
 ```
 
-## <a name="setup-an-azure-storage-connection-string"></a>設定 Azure 儲存體連接字串
-Azure 儲存體用戶端會使用儲存體連接字串來儲存存取資料管理服務時所用的端點與認證。 在用戶端應用程式中執行時，您必須以下列格式提供儲存體連接字串 (其中的 AccountName 和 AccountKey 值要使用您儲存體帳戶的名稱，以及在 [Azure 入口網站](https://portal.azure.com)中針對該儲存體帳戶而列出的主要存取金鑰)。 本範例將示範如何宣告靜態欄位來存放連接字串：
+## <a name="set-up-an-azure-storage-connection-string"></a>設定 Azure 儲存體連接字串
+
+Azure 儲存體用戶端會使用儲存體連接字串來儲存存取資料管理服務時所用的端點與認證。 在用戶端應用程式中執行時，您必須以下列格式提供儲存體連接字串 (其中的 AccountName** 和 AccountKey** 值要使用您儲存體帳戶的名稱，以及在 [Azure 入口網站](https://portal.azure.com)中針對該儲存體帳戶而列出的主要存取金鑰)。 本範例將示範如何宣告靜態欄位來存放連接字串：
 
 ```java
 // Define the connection-string with your values.
@@ -56,7 +56,7 @@ public static final String storageConnectionString =
     "AccountKey=your_storage_account_key";
 ```
 
-在 Microsoft Azure 的角色內執行的應用程式中，此字串可以儲存在服務組態檔 *ServiceConfiguration.cscfg*裡，且可以藉由呼叫 **RoleEnvironment.getConfigurationSettings** 方法來存取。 以下是從服務組態檔中名為 **StorageConnectionString** 的 *Setting* 元素取得連接字串的範例：
+在 Microsoft Azure 的角色內執行的應用程式中，此字串可以儲存在服務組態檔 *ServiceConfiguration.cscfg* 裡，且可以藉由呼叫 **RoleEnvironment.getConfigurationSettings** 方法來存取。 以下是從服務組態檔中名為 **StorageConnectionString** 的 *Setting* 元素取得連接字串的範例：
 
 ```java
 // Retrieve storage account from connection-string.
@@ -67,7 +67,7 @@ String storageConnectionString =
 下列範例假設您已經使用這兩個方法之一來取得儲存體連接字串。
 
 ## <a name="how-to-create-a-queue"></a>作法：建立佇列
-**CloudQueueClient** 物件可讓您取得佇列的參照物件。 下列程式碼將建立 **CloudQueueClient** 物件。 (附註：還有其他方法可建立 **CloudStorageAccount** 物件。如需詳細資訊，請參閱 [Azure 儲存體用戶端 SDK 參考]中的 **CloudStorageAccount**。
+**CloudQueueClient** 物件可讓您取得佇列的參照物件。 下列程式碼將建立 **CloudQueueClient** 物件。 (注意：還有其他方式可建立 **CloudStorageAccount** 物件。如需詳細資訊，請參閱 [Azure 儲存體用戶端 SDK 參考]中的 **CloudStorageAccount**。)
 
 使用 **CloudQueueClient** 物件來取得想要使用佇列的參照。 如果佇列不存在，您可以建立佇列。
 
@@ -95,7 +95,7 @@ catch (Exception e)
 ```
 
 ## <a name="how-to-add-a-message-to-a-queue"></a>作法：將訊息新增至佇列
-若要將訊息插入現有佇列，請先建立新的 **CloudQueueMessage**。 接著，呼叫 **addMessage** 方法。 您可以從字串 (採用 UTF-8 格式) 或位元組陣列建立 **CloudQueueMessage** 。 以下是建立佇列 (如果佇列不存在) 並插入訊息 "Hello, World" 的程式碼。
+若要將訊息插入現有佇列，請先建立新的 **CloudQueueMessage**。 接著，呼叫 **addMessage** 方法。 您可以從字串（採用 UTF-8 格式）或位元組陣列建立**CloudQueueMessage** 。 以下程式碼會建立佇列（如果它不存在），並插入訊息 "Hello，World"。
 
 ```java
 try
@@ -157,7 +157,7 @@ catch (Exception e)
 ```
 
 ## <a name="how-to-change-the-contents-of-a-queued-message"></a>作法：變更佇列訊息的內容
-您可以在佇列中就地變更訊息內容。 如果消息表示工作任务，可使用此功能来更新该工作任务的状态。 下列程式碼將使用新的內容更新佇列訊息，並將可見度逾時設定延長 60 秒。 這可儲存與訊息相關的工作狀態，並提供用戶端多一分鐘的時間繼續處理訊息。 您可以使用此技巧來追蹤佇列訊息上的多步驟工作流程，如果因為硬體或軟體故障而導致某個處理步驟失敗，將無需從頭開始。 通常，您也會保留重試計數，如果訊息重試超過 *n* 次，您會將它刪除。 這麼做可防止每次處理時便觸發應用程式錯誤的訊息。
+您可以在佇列中就地變更訊息內容。 如果訊息代表工作作業，則您可以使用此功能來更新工作作業的狀態。 下列程式碼將使用新的內容更新佇列訊息，並將可見度逾時設定延長 60 秒。 延伸可見度超時會儲存與訊息相關聯的工作狀態，並讓用戶端另一分鐘繼續處理訊息。 您可以使用此技巧來追蹤佇列訊息上的多步驟工作流程，如果因為硬體或軟體故障而導致某個處理步驟失敗，將無需從頭開始。 一般來說，您也會保留重試計數，如果訊息重試超過*n*次，您就會刪除它。 這麼做可防止每次處理時便觸發應用程式錯誤的訊息。
 
 下列程式碼範例會在訊息佇列中搜尋，找出內容符合 "Hello, World" 的第一個訊息，然後修改訊息內容並結束。
 
@@ -271,8 +271,8 @@ catch (Exception e)
 }
 ```
 
-## <a name="how-to-dequeue-the-next-message"></a>作法：將下一個訊息清除佇列
-您的程式碼可以使用兩個步驟來清除佇列訊息。 呼叫 **retrieveMessage**時，您會取得佇列中的下一個訊息。 從 **retrieveMessage** 傳回的訊息，對於從此佇列讀取訊息的任何其他程式碼而言將會是不可見的。 依預設，此訊息會維持 30 秒的不可見狀態。 若要完成將訊息從佇列中移除，您還必須呼叫 **deleteMessage**。 這個移除訊息的兩步驟程序可確保您的程式碼因為硬體或軟體故障而無法處理訊息時，另一個程式碼的執行個體可以取得相同訊息並再試一次。 您的程式碼會在處理完訊息之後立即呼叫 **deleteMessage**。
+## <a name="how-to-dequeue-the-next-message"></a>作法：清除下一個佇列訊息
+您的程式碼可以使用兩個步驟來清除佇列訊息。 呼叫 **retrieveMessage**時，您會取得佇列中的下一個訊息。 從 **retrieveMessage** 傳回的訊息，對於從此佇列讀取訊息的任何其他程式碼而言將會是不可見的。 依預設，此訊息會維持 30 秒的不可見狀態。 若要完成從佇列中移除訊息的作業，您還必須呼叫**deleteMessage**。 這個移除訊息的兩步驟程序可確保您的程式碼因為硬體或軟體故障而無法處理訊息時，另一個程式碼的執行個體可以取得相同訊息並再試一次。 您的程式碼會在處理完訊息之後立即呼叫**deleteMessage** 。
 
 ```java
 try
@@ -306,7 +306,7 @@ catch (Exception e)
 ## <a name="additional-options-for-dequeuing-messages"></a>清除佇列訊息的其他選項
 自訂從佇列中擷取訊息的方法有兩種。 首先，您可以取得一批訊息 (最多 32 個)。 其次，您可以設定較長或較短的可見度逾時，讓您的程式碼有較長或較短的時間可以完全處理每個訊息。
 
-下列程式碼範例使用 **retrieveMessages** 方法，在一次呼叫中取得 20 個訊息。 接著它會使用 **for** 迴圈處理每個訊息。 它也會將可見度逾時設定為每個訊息五分鐘 (300 秒)。 請注意，系統會針對所有訊息同時開始計時五分鐘，所以從呼叫 **retrieveMessages**開始的五分鐘後，任何尚未刪除的訊息都會重新出現。
+下列程式碼範例使用 **retrieveMessages** 方法，在一次呼叫中取得 20 個訊息。 然後，它會使用**for**迴圈處理每個訊息。 它也會將可見度逾時設定為每個訊息五分鐘 (300 秒)。 這五分鐘會同時開始所有的訊息，因此，當呼叫**retrieveMessages**之後，經過五分鐘後，任何尚未刪除的訊息都會再次顯示。
 
 ```java
 try
@@ -389,17 +389,22 @@ catch (Exception e)
 }
 ```
 
+[!INCLUDE [storage-check-out-samples-java](../../../includes/storage-check-out-samples-java.md)]
+
+> [!NOTE]
+> 有一套 SDK 可供在 Android 裝置上使用 Azure 儲存體的開發人員使用。 如需詳細資訊，請參閱 [Azure Storage SDK for Android][Azure Storage SDK for Android]。
+
 ## <a name="next-steps"></a>後續步驟
 了解佇列儲存體的基礎概念之後，請參考下列連結以了解有關更複雜的儲存工作。
 
-* [Azure Storage SDK for Java][Azure Storage SDK for Java]
-* [Azure 儲存體用戶端 SDK 參考][Azure 儲存體用戶端 SDK 參考]
+* [適用于 JAVA 的 Azure 儲存體 SDK][Azure Storage SDK for Java]
+* [Azure 儲存體用戶端 SDK 參考][Azure Storage Client SDK Reference]
 * [Azure 儲存體服務 REST API][Azure Storage Services REST API]
 * [Azure 儲存體團隊部落格][Azure Storage Team Blog]
 
 [Azure SDK for Java]: https://go.microsoft.com/fwlink/?LinkID=525671
 [Azure Storage SDK for Java]: https://github.com/azure/azure-storage-java
 [Azure Storage SDK for Android]: https://github.com/azure/azure-storage-android
-[Azure 儲存體用戶端 SDK 參考]: http://dl.windowsazure.com/storage/javadoc/
+[Azure 儲存體用戶端 SDK 參考]: https://javadoc.io/doc/com.microsoft.azure/azure-core/0.8.0/index.html
 [Azure Storage Services REST API]: https://msdn.microsoft.com/library/azure/dd179355.aspx
 [Azure Storage Team Blog]: https://blogs.msdn.com/b/windowsazurestorage/

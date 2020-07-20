@@ -1,26 +1,25 @@
 ---
 title: 驗證 Azure 流量管理員設定
-description: 此文章將協助您驗證流量管理員設定。
+description: 在本文中，您將瞭解如何驗證您的流量管理員設定，並測試流量路由方法。
 services: traffic-manager
-author: rockboyfor
+author: rohinkoul
 ms.service: traffic-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-origin.date: 03/16/2017
-ms.date: 02/18/2019
-ms.author: v-yeche
-ms.openlocfilehash: 1e954e3c4ebba245d91cfb84ab583b314150e5b2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 03/16/2017
+ms.author: rohink
+ms.openlocfilehash: 894f01244fef94e9f5a60823ba06ff38c01288a1
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60771612"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186991"
 ---
 # <a name="verify-traffic-manager-settings"></a>驗證流量管理員設定
 
-若要测试流量管理器设置，需要在不同的位置准备多个客户端，以便从中运行测试。 然後，在流量管理員設定檔中一次關閉一個端點。
+若要測試您的流量管理員設定，您需要有在不同位置的多個用戶端，讓您可以從中執行測試。 然後，在流量管理員設定檔中一次關閉一個端點。
 
 * 設定低的 DNS TTL，方便快速傳播變更，例如 30 秒。
 * 知道正在測試的設定檔中您 Azure 雲端服務和網站的 IP 位址。
@@ -34,32 +33,34 @@ ms.locfileid: "60771612"
 
 1. 以系統管理員的身分開啟命令或 Windows PowerShell 命令提示字元。
 2. 輸入 `ipconfig /flushdns` 以排清 DNS 解析程式快取。
-3. 键入 `nslookup <your Traffic Manager domain name>`。 例如，下列命令會檢查包含 myapp.contoso 前置詞的網域名稱
+3. 輸入 `nslookup <your Traffic Manager domain name>`。 例如，下列命令會檢查包含 myapp.contoso** 前置詞的網域名稱
 
-        nslookup myapp.contoso.trafficmanager.cn
+    ```powershell
+    nslookup myapp.contoso.trafficmanager.net
+    ```
 
     典型的結果會顯示下列資訊：
 
-    + 为解析此流量管理器域名而访问的 DNS 服务器的 DNS 名称和 IP 地址。
+    + 正在存取 DNS 伺服器的 DNS 名稱和 IP 位址，藉此解析此流量管理員網域名稱。
     + 您在命令行上輸入在 "nslookup" 之後的流量管理員網域名稱，和流量管理員網域名稱解析的 IP 位址。 第二個 IP 位址是要檢查的重點。 它應符合正在測試流量管理員設定檔中其中一個雲端服務或網站的 虛擬 IP (VIP)。
 
 ## <a name="how-to-test-the-failover-traffic-routing-method"></a>如何測試容錯移轉流量路由方法
 
-1. 使所有终结点保持运行状态。
+1. 保持所有端點運作。
 2. 在單一用戶端，使用 nslookup 或類似的公用程式要求公司網域名稱的 DNS 解析。
 3. 確定解析後的 IP 位址與您的主要端點相符。
 4. 關閉您的主要端點或移除監視檔案，所以流量管理員會認為應用程式已關閉。
 5. 等待時間為流量管理員設定檔的 DNS 存留時間 (TTL) 再加上 2 分鐘。 例如，若您的 DNS TTL 為 300 秒 (5 分鐘)，則您必須等待 7 分鐘。
 6. 排清您的 DNS 用戶端快取，使用 nslookup 要求 DNS 解析。 在 Windows 中，您可以使用 ipconfig/flushdns 命令排清 DNS 快取。
 7. 確定解析後的 IP 位址與您的次要端點相符。
-8. 重複此程序，依序關閉每個端點。 請確定 DNS 傳回清單中下一個端點的 IP 位址。 关闭所有终结点后，应该再次得到主终结点的 IP 地址。
+8. 重複此程序，依序關閉每個端點。 請確定 DNS 傳回清單中下一個端點的 IP 位址。 關閉所有端點之後，您應可再次取得主要端點的 IP 位址。
 
 ## <a name="how-to-test-the-weighted-traffic-routing-method"></a>如何測試加權流量路由方法
 
 1. 保持所有端點運作。
-2. 在单个客户端中，使用 nslookup 或类似的实用工具请求对公司域名进行 DNS 解析。
+2. 在單一用戶端，使用 nslookup 或類似的公用程式要求公司網域名稱的 DNS 解析。
 3. 確定解析後的 IP 位址與您的端點之一相符。
-4. 排清 DNS 用戶端快取，然後對每個端點重複步驟 2 和 3。 应该会看到，为每个终结点返回的 IP 地址都不相同。
+4. 排清 DNS 用戶端快取，然後對每個端點重複步驟 2 和 3。 您應該可看到為每個端點傳回不同的 IP 位址。
 
 ## <a name="how-to-test-the-performance-traffic-routing-method"></a>如何測試效能流量路由方法
 
@@ -72,5 +73,3 @@ ms.locfileid: "60771612"
 * [關於流量管理員流量路由方法](traffic-manager-routing-methods.md)
 * [流量管理員的效能考量](traffic-manager-performance-considerations.md)
 * [疑難排解流量管理員的已降級狀態](traffic-manager-troubleshooting-degraded.md)
-
-<!-- Update_Description: update meta properties -->

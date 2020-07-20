@@ -9,11 +9,11 @@ ms.date: 04/04/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 272dbf75f68eff73b360cde7d36776c8303e5064
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60407555"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "67173827"
 ---
 **若要下載 VPN 裝置組態指令碼：**
 
@@ -23,9 +23,9 @@ ms.locfileid: "60407555"
 
 - 如需有關相容的 VPN 裝置資訊，請參閱[ VPN 裝置](../articles/vpn-gateway/vpn-gateway-about-vpn-devices.md)。
 
-- 在配置 VPN 设备之前，对于要使用的 VPN 设备，请查看是否存在任何[已知的设备兼容性问题](../articles/vpn-gateway/vpn-gateway-about-vpn-devices.md#known)。
+- 請在設定 VPN 裝置之前，檢查您要使用的 VPN 裝置是否有任何[已知裝置相容性問題](../articles/vpn-gateway/vpn-gateway-about-vpn-devices.md#known)。
 
-- 有关设备配置设置的链接，请参阅[已验证的 VPN 设备](../articles/vpn-gateway/vpn-gateway-about-vpn-devices.md#devicetable)。 會以最佳方式來提供裝置組態連結。 最好一律洽詢您的裝置製造商以取得最新的組態資訊。 該清單會顯示已完成測試的版本。 如果您的 OS 不在清單中，版本仍然可能相容。 請洽詢您的裝置製造商，以驗證您 VPN 裝置的 OS 版本相容。
+- 如需裝置組態設定的連結，請參閱[已經驗證的 VPN 裝置](../articles/vpn-gateway/vpn-gateway-about-vpn-devices.md#devicetable)。 會以最佳方式來提供裝置組態連結。 最好一律洽詢您的裝置製造商以取得最新的組態資訊。 該清單會顯示已完成測試的版本。 如果您的 OS 不在清單中，版本仍然可能相容。 請洽詢您的裝置製造商，以驗證您 VPN 裝置的 OS 版本相容。
 
 - 如需 VPN 裝置組態的概觀，請參閱[第三方 VPN 裝置組態的概觀](../articles/vpn-gateway/vpn-gateway-3rdparty-device-config-overview.md)。
 

@@ -1,20 +1,16 @@
 ---
-title: 將 Switch 陳述式新增至工作流程 - Azure Logic Apps | Microsoft Docs
+title: 將 switch 陳述式新增至工作流程
 description: 如何建立 Switch 陳述式，以根據 Azure Logic Apps 中的特定值控制工作流程動作
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/08/2018
-ms.openlocfilehash: 2a3f8ee5cba3110d392555fad78c1cb2513b5d4e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 4f24efc4ea306046ab09119b859fa1d0853b25b6
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60683085"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834521"
 ---
 # <a name="create-switch-statements-that-run-workflow-actions-based-on-specific-values-in-azure-logic-apps"></a>建立 Switch 陳述式，以根據 Azure Logic Apps 中的特定值執行工作流程動作
 
@@ -26,13 +22,13 @@ ms.locfileid: "60683085"
 > 如同所有的程式設計語言，Switch 陳述式僅支援等號比較運算子。 如果您需要其他關係運算子 (例如，「大於」)，請使用[條件陳述式](../logic-apps/logic-apps-control-flow-conditional-statement.md)。
 > 若要確認確定性執行行為，案例必須包含唯一且靜態的值，而不是動態的權杖或運算式。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * Azure 訂用帳戶。 如果您沒有訂用帳戶，請[註冊一個免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
 * 若要依循本文中的範例，請使用 Outlook.com 或 Office 365 Outlook 帳戶來[建立此範例邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
-  1. 添加用于发送电子邮件的操作时，请改为查找并选择此操作：**发送审批电子邮件**
+  1. 當您新增要傳送電子郵件的動作時，請改為尋找並選取下列動作：**傳送核准電子郵件**
 
      ![選取 [傳送核准電子郵件]](./media/logic-apps-control-flow-switch-statement/send-approval-email-action.png)
 
@@ -45,7 +41,7 @@ ms.locfileid: "60683085"
 
 1. 例如，將 Switch 陳述式結尾新增至您的範例工作流程結尾。 在最後一個步驟之後，選擇 [新增步驟]。
 
-   如果您要在步驟之間新增 Switch 陳述式，請將指標移您要新增 Switch 陳述式的箭號上。 選擇顯示的**加號** (**+**)，然後選擇 [新增動作]。
+   如果您要在步驟之間新增 Switch 陳述式，請將指標移您要新增 Switch 陳述式的箭號上。 選擇顯示的**加號** ( **+** )，然後選擇 [新增動作]。
 
 1. 在搜尋方塊中，輸入 "switch" 作為篩選條件。 選取此動作：**Switch - 控制**
 
@@ -66,11 +62,11 @@ ms.locfileid: "60683085"
 
 1. 將這些動作新增至對應的案例：
 
-   | 案例 | **SelectedOption** |  動作 |
+   | 案例 | **SelectedOption** | 動作 |
    |--------|--------------------|--------|
    | 案例 1 | **核准** | 新增 Outlook **傳送電子郵件**動作，只在核准者選取**核准**時傳送 RSS 項目的詳細資料。 |
    | 案例 2 | **拒絕** | 新增 Outlook **傳送電子郵件**動作，通知其他核准者 RSS 項目遭到拒絕。 |
-   | 預設值 | None | 不需採取任何動作。 在此範例中，[預設] 案例為空白，因為 **SelectedOption** 只有兩個選項。 |
+   | 預設 | None | 不需採取任何動作。 在此範例中，[預設] 案例為空白，因為 **SelectedOption** 只有兩個選項。 |
    |||
 
    ![已完成 Switch 陳述式](./media/logic-apps-control-flow-switch-statement/finished-switch.png)
@@ -124,7 +120,7 @@ ms.locfileid: "60683085"
 
 ## <a name="get-support"></a>取得支援
 
-* 如有問題，請瀏覽 [Azure Logic Apps 論壇](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
+* 如有任何問題，請瀏覽 [Azure Logic Apps 的 Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)。
 * 若要提交或票選功能與建議，請造訪 [Azure Logic Apps 使用者意見反應網站](https://aka.ms/logicapps-wish)。
 
 ## <a name="next-steps"></a>後續步驟
@@ -132,4 +128,4 @@ ms.locfileid: "60683085"
 * [根據條件 (條件陳述式) 執行步驟](../logic-apps/logic-apps-control-flow-conditional-statement.md)
 * [執行並重複步驟 (迴圈)](../logic-apps/logic-apps-control-flow-loops.md)
 * [執行或合併平行步驟 (分支)](../logic-apps/logic-apps-control-flow-branches.md)
-* [依據群組的動作狀態執行步驟 (範圍)](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)
+* [根據分組的動作狀態執行步驟 (範圍)](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)

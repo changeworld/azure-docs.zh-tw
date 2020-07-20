@@ -1,26 +1,17 @@
 ---
-title: 教學課程 - 清除 Azure Service Fabric Mesh 資源 | Microsoft Docs
+title: 教學課程 - 清除 Azure Service Fabric Mesh 資源
 description: 了解如何移除 Azure Service Fabric Mesh 資源，讓您無需為不再使用的資源支付費用。
-services: service-fabric-mesh
-documentationcenter: .net
 author: dkkapur
-manager: chakdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 09/18/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: a60c42310f0698b8290e7ba6195eeed44fe0b95e
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: b8ce3c795bc9ad212331ce1c1f413fe7fd6da909
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56815785"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246739"
 ---
 # <a name="tutorial-remove-azure-resources"></a>教學課程：移除 Azure 資源
 
@@ -40,7 +31,7 @@ ms.locfileid: "56815785"
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 開始進行本教學課程之前：
 
@@ -48,7 +39,7 @@ ms.locfileid: "56815785"
 
 ## <a name="clean-up-resources"></a>清除資源
 
-本教學課程即將結束。 在您所建立的資源使用完畢後，請加以刪除，如此您即無需為不再使用的資源支付費用。 這一點非常重要，因為 Mesh 是以秒計費的無伺服器服務。 若要深入了解 Mesh 定價，請參閱 https://aka.ms/sfmeshpricing。
+本教學課程即將結束。 在您所建立的資源使用完畢後，請加以刪除，如此您即無需為不再使用的資源支付費用。 這一點非常重要，因為 Mesh 是以秒計費的無伺服器服務。 若要深入了解 Mesh 定價，請參閱 https://aka.ms/sfmeshpricing 。
 
 Azure 所提供的便利措施之一，是在您建立與特定資源群組相關聯的資源後，刪除該資源群組即可刪除所有相關聯的資源。 如此，您就無須逐一加以刪除。
 
@@ -62,7 +53,7 @@ az group delete --resource-group sfmeshTutorial1RG
 Remove-AzureRmResourceGroup -Name sfmeshTutorial1RG
 ```
 
-或者，您可以[從入口網站](../azure-resource-manager/manage-resource-groups-portal.md#delete-resource-groups)刪除 **sfmeshTutorial1RG** 資源群組。 
+或者，您可以[從入口網站](../azure-resource-manager/management/manage-resource-groups-portal.md#delete-resource-groups)刪除 **sfmeshTutorial1RG** 資源群組。 
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -71,4 +62,4 @@ Remove-AzureRmResourceGroup -Name sfmeshTutorial1RG
 * 若要檢視服務對服務通訊的另一個範例，請瀏覽[投票應用程式範例](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/votingapp)
 * 若要深入了解 Service Fabric 資源模型，請參閱 [Service Fabric Mesh 資源模型](service-fabric-mesh-service-fabric-resources.md)。
 * 若要深入了解 Service Fabric Mesh，請閱讀 [Service Fabric Mesh 概觀](service-fabric-mesh-overview.md)。
-* 閱讀 [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) 相關資訊
+* 閱讀 [Cloud Shell](../cloud-shell/overview.md) 相關資訊

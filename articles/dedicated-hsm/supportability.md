@@ -3,7 +3,7 @@ title: 支援能力 - Azure 專用 HSM | Microsoft Docs
 description: 不同案例中「Azure 專用 HSM」的支援選項和責任範圍
 services: dedicated-hsm
 author: johndaw
-manager: barbkess
+manager: rkarlin
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -11,13 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 03/27/2019
-ms.author: barclayn
-ms.openlocfilehash: 8341e9057b07fbb72957eddc342ae875e4591993
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.author: mbaldwin
+ms.openlocfilehash: d83d688707baf6098d63dfde9b4181eb04fb9729
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60912245"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "70881013"
 ---
 # <a name="azure-dedicated-hsm-supportability"></a>Azure 專用 HSM 支援能力
 
@@ -26,12 +25,12 @@ Azure 專用 HSM 服務提供實體裝置以供單獨客戶使用，其具有完
 
 ## <a name="getting-support"></a>取得支援
 
-Microsoft 和 Gemalto 之間的共同成果專用 HSM 的客戶支援。 將由 Microsoft 解決任何硬體問題或網路路徑相關問題，Gemalto 將定址與實際的 HSM，例如設定、 軟體、 韌體與應用程式開發的任何項目。 此支援模型可確保最快速的途徑，最有效的支援。 如果有特定問題的疑問，引發與 Microsoft 的支援要求，並將您導向適當地，我們將確保。 Microsoft 將玩家持續在所有支援的案例中，並尋求最佳的支援體驗，我們的客戶。
+客戶對專用 HSM 的支援是 Microsoft 與 Gemalto 之間的共同工作。 所有硬體問題或網路路徑問題都會由 Microsoft 解決，而與實際 HSM （例如設定、軟體、固件和應用程式開發）進行的任何作業，都會由 Gemalto 處理。 這種支援模型可確保最快速的路由傳送至最有效率的支援。 如果不確定有特定問題，請向 Microsoft 提出支援要求，我們將確保您有適當的指示。 Microsoft 將持續參與所有支援案例，並致力於為客戶提供最佳的支援體驗。
 
 ## <a name="gemalto-support"></a>Gemalto 支援
 
-使用專用的 HSM 服務客戶符合資格 Gemalto 根據其加上支援方案的支援。 這只需要使用 Gemalto 支援入口網站的註冊程序。 將提供這一部分來存取專用的 HSM 服務初始 engagement 與 Microsoft 的客戶識別碼和指示。 此機制可透過[客戶支援入口網站](https://supportportal.gemalto.com/csm/)，從 Gemalto 獲得支援。
-其中值得注意的重點是 Gemalto 將提供所有的軟體及文件，才能使用 （例如，用戶端存取軟體和 Sdk） 的 HSM 透過下載有關客戶支援入口網站。
+使用專用 HSM 服務的客戶根據其 Plus 支援方案，符合 Gemalto 支援的資格。 這只需要使用 Gemalto 支援入口網站的註冊程式。 客戶識別碼和指示將會在與 Microsoft 的初始參與期間提供，以取得專用 HSM 服務的存取權。 此機制可透過[客戶支援入口網站](https://supportportal.gemalto.com/csm/)，從 Gemalto 獲得支援。
+重點是，Gemalto 會透過客戶支援入口網站上的下載，提供使用 HSM 所需的所有軟體和檔（例如，用戶端存取軟體和 Sdk）。
 
 ### <a name="software-components"></a>軟體元件
 
@@ -55,7 +54,7 @@ Gemalto 透過[客戶支援入口網站](https://supportportal.gemalto.com/csm/)
 
 ## <a name="microsoft-support"></a>Microsoft 支援服務
 
-Microsoft 將確保實體 HSM 裝置完全網路存取，且在專供單一客戶的作業狀態。 客戶負責設定、 管理及管理裝置。 Microsoft 職責包括：
+Microsoft 會確保實體 HSM 裝置可透過網路存取，並在運作狀態中，以供單一客戶獨佔使用。 客戶須負責設定、管理和管理裝置。 Microsoft 職責包括：
 
 * 確定裝置有電源和散熱功能
 * 維護 HSM 的運作狀態 (例如，中斷/修復方案)
@@ -76,7 +75,7 @@ Microsoft 透過監控角色 (即非管理角色) 對裝置進行實體序列連
 
 ### <a name="hardware-issues"></a>硬體問題
 
-HSM 裝置具有備援和可更換的電源供應器和風扇裝置。  不過，風扇單位移除仍會導致竄改事件。 發生元件故障時，Microsoft 會使用最適合的程序來解決元件層級問題，將中斷的情況和客戶服務可用性的風險降至最低。
+HSM 裝置具有備援和可更換的電源供應器和風扇裝置。  不過，風扇單元移除仍會造成篡改事件。 發生元件故障時，Microsoft 會使用最適合的程序來解決元件層級問題，將中斷的情況和客戶服務可用性的風險降至最低。
 任何更嚴重的裝置故障，會導致該裝置更換為可用集區的新裝置。 客戶只需將新裝置包含在現有 HA 配對中，即可使其同步，並傳回完整的運作狀態。 故障的裝置必須移除其資料承載裝置，並在資料中心現場進行銷毀。 只有底座會傳回 Gemalto 以供回收。
 
 
@@ -93,7 +92,7 @@ HSM 裝置具有備援和可更換的電源供應器和風扇裝置。  不過�
 
 建議在裝置佈建、應用程式設計或部署之前，先充分了解重要概念，例如高可用性和安全性。
 
-* [部署架構](deployment-architecture.md) (英文)
+* [部署架構](deployment-architecture.md)
 * [高可用性](high-availability.md)
 * [實體安全性](physical-security.md)
 * [網路功能](networking.md)

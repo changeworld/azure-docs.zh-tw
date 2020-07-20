@@ -1,36 +1,35 @@
 ---
-title: Microsoft Genomics：疑難排解指南 | Microsoft Docs
-titleSuffix: Azure
-description: 深入了解疑難排解策略
+title: 疑難排解指南
+titleSuffix: Microsoft Genomics
+description: 瞭解使用 Microsoft Genomics 的疑難排解策略，包括錯誤訊息和解決方法。
 keywords: 疑難排解, 錯誤, 偵錯
-services: microsoft-genomics
+services: genomics
 author: ruchir
-editor: jasonwhowell
 ms.author: ruchir
 ms.service: genomics
 ms.workload: genomics
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 10/29/2018
-ms.openlocfilehash: 78084e6beac7b390b1ea1afe888030c5224856b6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c508c10d619cde1a16d89b446c5cfd1a3ce81daf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60790499"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82100901"
 ---
 # <a name="troubleshooting-guide"></a>疑難排解指南
 
 以下是使用 Microsoft Genomics 服務 (MSGEN) 時，可能發生之一些常見問題的疑難排解祕訣。
 
  如需與疑難排解不相關的常見問題集，請參閱[常見問題](frequently-asked-questions-genomics.md)。
-## <a name="step-1-locate-error-codes-associated-with-the-workflow"></a>步驟 1：找出與工作流程關聯的錯誤碼
+## <a name="step-1-locate-error-codes-associated-with-the-workflow"></a>步驟 1：尋找與工作流程相關聯的錯誤碼
 
 您可以透過下列方式，找到與工作流程相關聯的錯誤訊息：
 
 1. 使用命令列並輸入 `msgen status`
 2. 檢查 standardoutput.txt 的內容。
 
-### <a name="1-using-the-command-line-msgen-status"></a>1.使用命令列 `msgen status`
+### <a name="1-using-the-command-line-msgen-status"></a>1. 使用命令列`msgen status`
 
 ```bash
 msgen status -u URL -k KEY -w ID 
@@ -43,7 +42,7 @@ msgen status -u URL -k KEY -w ID
 
 * URL - API 的基底 URI
 * KEY - Genomics 帳戶的存取金鑰
-    * 若要尋找您的 URL 和 KEY，請前往 Azure 入口網站，然後開啟您的 Microsoft Genomics 帳戶頁面。 在 [管理] 標題之下，選擇 [存取金鑰]。 您可以看到 API URL 以及存取金鑰。
+    * 若要尋找您的 URL 和 KEY，請前往 Azure 入口網站，然後開啟您的 Microsoft Genomics 帳戶頁面。 在 [管理]**** 標題之下，選擇 [存取金鑰]****。 您可以看到 API URL 以及存取金鑰。
 
   
 * ID - 工作流程識別碼
@@ -82,7 +81,7 @@ msgen status -u URL -k KEY -w ID
 msgen status -w 1001 -f "config.txt"
 ```
 
-### <a name="2--examine-the-contents-of-standardoutputtxt"></a>2.檢查 standardoutput.txt 的內容 
+### <a name="2--examine-the-contents-of-standardoutputtxt"></a>2. 檢查 standardoutput.txt 的內容 
 找出有問題之工作流程的輸出容器。 MSGEN 會在每個工作流程執行之後建立 `[workflowfilename].logs.zip` 資料夾。 將資料夾解壓縮以檢視其內容：
 
 * outputFileList.txt - 工作流程期間所產生輸出檔案的清單
@@ -93,16 +92,16 @@ msgen status -w 1001 -f "config.txt"
 若要進行疑難排解，請檢查 standardoutput.txt 的內容，並記下出現的任何錯誤訊息。
 
 
-## <a name="step-2-try-recommended-steps-for-common-errors"></a>步驟 2：請嘗試為常見錯誤的建議的步驟
+## <a name="step-2-try-recommended-steps-for-common-errors"></a>步驟 2：嘗試適用於常見錯誤的建議步驟
 
 本節簡短說明 Microsoft Genomics 服務 (msgen) 輸出的常見錯誤，以及您可以用來解決那些錯誤的策略。 
 
 Microsoft Genomics 服務 (msgen) 可能擲出下列兩種錯誤：
 
-1. 內部服務錯誤：內部的服務，藉由修正參數或輸入的檔案可能無法解析的錯誤。 有時候重新提交工作流程，可能可以修正這些錯誤。
-2. 輸入的錯誤：使用正確的引數，或修正可解決的錯誤檔案格式。
+1. 內部服務錯誤：發生在服務內部，無法藉由修正參數或輸入檔案來解決的錯誤。 有時候重新提交工作流程，可能可以修正這些錯誤。
+2. 輸入錯誤：可藉由使用正確的引數或修正檔案格式來解決的錯誤。
 
-### <a name="1-internal-service-errors"></a>1.內部服務錯誤
+### <a name="1-internal-service-errors"></a>1. 內部服務錯誤
 
 內部服務錯誤不是使用者可採取動作的錯誤。 您可以重新提交工作流程，但如果沒有用，請連絡 Microsoft Genomics 支援服務
 
@@ -110,7 +109,7 @@ Microsoft Genomics 服務 (msgen) 可能擲出下列兩種錯誤：
 |------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 發生內部錯誤。 請嘗試重新提交工作流程。 如果您再次看到此錯誤，請連絡 Microsoft Genomics 支援服務以取得協助 | 再次提交工作流程。 如果問題持續發生，請建立支援[票證](file-support-ticket-genomics.md )來連絡 Microsoft Genomics 支援服務以取得協助。 |
 
-### <a name="2-input-errors"></a>2.輸入錯誤
+### <a name="2-input-errors"></a>2. 輸入錯誤
 
 這些錯誤是使用者可採取動作的錯誤。 根據檔案類型和錯誤碼，Microsoft Genomics 服務輸出不同的錯誤碼。 請遵循以下列出的建議疑難排解步驟。
 
@@ -137,7 +136,7 @@ Microsoft Genomics 服務 (msgen) 可能擲出下列兩種錯誤：
 | FASTQ        | 308        |  FASTQ 讀取錯誤。 兩個讀取都以不同方式回應。 您是否選擇了正確的 FASTQ 檔案？                                                                                       | 請修正 FASTQ 檔案的格式，然後再次提交工作流程。                                                                         |
 |        |       |                                                                                        |                                                                           |
 
-## <a name="step-3-contact-microsoft-genomics-support"></a>步驟 3：請連絡 Microsoft Genomics 支援服務
+## <a name="step-3-contact-microsoft-genomics-support"></a>步驟 3：連絡 Microsoft Genomics 支援服務
 
 如果持續發生作業失敗，或是有任何其他問題，請從 Azure 入口網站連絡 Microsoft Genomics 支援服務。 您可以在[此處](file-support-ticket-genomics.md)找到如何提交支援要求的其他資訊。
 

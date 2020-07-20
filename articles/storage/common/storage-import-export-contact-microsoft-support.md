@@ -4,16 +4,16 @@ description: 了解如何針對與匯入/匯出作業相關的問題，記錄支
 services: storsimple
 author: alkohli
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/29/2018
-ms.author: alkohli;
+ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: b01c8a3fe9b0c0856dceb5c05f449504ce8c75d6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 20ac33a26bfe24eb60e2febc1344859f4e54cdd4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61483217"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514418"
 ---
 # <a name="open-a-support-ticket-for-an-importexport-job"></a>針對匯入/匯出作業開啟支援票證
 
@@ -34,32 +34,32 @@ ms.locfileid: "61483217"
     
     1. 從 [問題類型] 下拉式清單中，選取 [技術]。
     2. 選擇您的**訂用帳戶**。
-    3. 在 [服務] 底下，勾選 [我的服務]。 從下拉式清單中，您可以選取其中一個選項 - [儲存體帳戶管理]、[Blob] 或 [檔案]。 
-        - 如果您選擇 [儲存體帳戶管理]，請選取 [資源] 和 [支援方案]。
+    3. 在 [服務] 底下，勾選 [我的服務]。 從下拉式清單中，您可以選取其中一個選項 - [儲存體帳戶管理]****、[Blob]**** 或 [檔案]****。 
+        - 如果您選擇 [儲存體帳戶管理]****，請選取 [資源]**** 和 [支援方案]****。
             ![選擇 [儲存體帳戶管理]](./media/storage-import-export-contact-microsoft-support/import-export-support3.png)
-        - 如果您選擇 [Blob]，請選取 [資源]、[容器名稱] (選擇性) 及 [支援方案]。
+        - 如果您選擇 [Blob]****，請選取 [資源]****、[容器名稱]**** (選擇性) 及 [支援方案]****。
             ![選擇 [Blob]](./media/storage-import-export-contact-microsoft-support/import-export-support2.png)
-        - 如果您選擇 [檔案]，請選取 [資源]、[檔案共用名稱] (選擇性) 及[ 支援方案]。![選擇 [檔案]](./media/storage-import-export-contact-microsoft-support/import-export-support4.png)
-    4. 单击“下一步”。
+        - 如果您選擇 [檔案]****，請選取 [資源]****、[檔案共用名稱]**** (選擇性) 及[ 支援方案]**。** ![選擇 [檔案]](./media/storage-import-export-contact-microsoft-support/import-export-support4.png)
+    4. 按 [下一步] 。
 
 3. 在 [新增支援要求] 中，選取 [步驟 2 問題]。 在 [問題] 中，執行下列步驟：
     
     1. 針對 [嚴重性]選擇 [C - 最小影響]。 支援將會視需要更新。
-    2. 針對 [問題類型] 選取 [資料移轉]。
-    3. 針對 [類別] 選擇 [匯入 - 匯出]。
+    2. 針對 [問題類型]**** 選取 [資料移轉]****。
+    3. 針對 [類別]**** 選擇 [匯入 - 匯出]****。
     4. 為問題提供 [標題] 和更多 [詳細資料]。
     5. 提供問題開始日期與時間。
     6. 在 [檔案上傳] 中，按一下資料夾圖示以瀏覽至任何其他您想要上傳的檔案。
     7. 勾選 [共用診斷資訊]。
-    8. 单击“下一步”。
+    8. 按 [下一步] 。
 
        ![問題](./media/storage-import-export-contact-microsoft-support/import-export-support5.png)
 
 4. 在 [新增支援要求] 中，按一下 [步驟 3 連絡人資訊]。 在 [連絡人資訊] 中，執行下列步驟：
 
    1. 在 [連絡人選項] 中，提供您偏好的連絡方法 (電話或電子郵件) 以及語言。 會根據您的訂用帳戶方案自動選擇回應時間。
-   2. 在 [連絡人資訊] 中，提供您的姓名、電子郵件、選用連絡方法、國家/地區。 選取 [儲存連絡人變更，以供後續支援要求使用] 核取方塊。
-   3. 按一下頁面底部的 [新增] 。
+   2. 在 [連絡人資訊] 中，提供姓名、電子郵件、選用連絡方法、國家/地區。 選取 [儲存連絡人變更，以供後續支援要求使用]**** 核取方塊。
+   3. 按一下 [建立]。
    
        ![連絡人資訊](./media/storage-import-export-contact-microsoft-support/import-export-support7.png)   
 

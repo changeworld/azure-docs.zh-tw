@@ -1,0 +1,205 @@
+- name: Azure IoT Central 文件
+  href: index.yml
+- name: 概觀
+  items:
+    - name: 何謂 Azure IoT Central
+      href: overview-iot-central.md
+    - name: UI 導覽
+      href: overview-iot-central-tour.md
+    - name: 開發裝置
+      href: overview-iot-central-developer.md
+    - name: 最近更新
+      items:
+        - name: 2020 年 5 月作業和計量更新
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-jobs-and-metrics-feature-updates-may-2020/'
+        - name: 2020 年 5 月儀表板更新
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-may-2020-dashboard-updates/'
+        - name: 2020 年 4 月新功能
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-april-2020-new-features/'
+        - name: 2020 年 4 月更新
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-april-2020-updates/'
+        - name: 2020 年 3 月
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-march-2020-updates/'
+- name: 快速入門
+  expanded: true
+  items:
+    - name: 1. 建立新的應用程式
+      href: quick-deploy-iot-central.md
+    - name: 2. 新增模擬裝置
+      href: quick-create-simulated-device.md
+    - name: 3. 設定規則和動作
+      href: quick-configure-rules.md
+    - name: 4. 監視您的裝置
+      href: quick-monitor-devices.md
+- name: 教學課程
+  items:
+    - name: 進行連線
+      items:
+        - name: 連線到裝置 (Node.js)
+          href: tutorial-connect-device-nodejs.md
+        - name: 連線到裝置 (Python)
+          href: tutorial-connect-device-python.md
+        - name: 連接隨插即用 (預覽) 裝置
+          href: tutorial-connect-pnp-device.md
+        - name: 建立閘道裝置範本
+          href: tutorial-define-gateway-device-type.md
+        - name: 連線到 IoT Edge 裝置
+          href: tutorial-add-edge-as-leaf-device.md
+    - name: 保持連線
+      items:
+        - name: 建立裝置群組
+          href: tutorial-use-device-groups.md
+    - name: 轉換
+      items:
+        - name: 建立規則
+          href: tutorial-create-telemetry-rules.md
+        - name: 探索 IoT Central API
+          href: 'https://docs.microsoft.com/learn/modules/manage-iot-central-apps-with-rest-api/'
+- name: 概念
+  items:
+    - name: 架構
+      href: concepts-architecture.md
+    - name: 什麼是應用程式範本？
+      href: concepts-app-templates.md
+    - name: 什麼是裝置範本？
+      href: concepts-device-templates.md
+    - name: 裝置連線能力
+      href: concepts-get-connected.md
+    - name: 連線 Azure IoT Edge 裝置
+      href: concepts-iot-edge.md
+- name: 操作指南
+  items:
+    - name: 進行連線
+      items:
+        - name: 設定裝置範本
+          href: howto-set-up-template.md
+        - name: 準備及連線 MXChip IoT DevKit
+          href: howto-connect-devkit.md
+        - name: 準備和連線 Azure Sphere DevKit
+          href: howto-connect-sphere.md
+        - name: 準備及連線 RuuviTag 裝置
+          href: howto-connect-ruuvi.md
+        - name: 準備及連線 Rigado Cascade 500
+          href: howto-connect-rigado-cascade-500.md
+        - name: 連線其他 IoT 雲端
+          href: howto-build-iotc-device-bridge.md
+    - name: 保持連線
+      items:
+        - name: 使用 Azure CLI 監視裝置連線能力
+          href: howto-monitor-devices-azure-cli.md
+        - name: 版本裝置範本
+          href: howto-version-device-template.md
+        - name: 管理您的裝置
+          href: howto-manage-devices.md
+        - name: 設定規則
+          href: howto-configure-rules.md
+        - name: 分析您的裝置資料
+          href: howto-create-analytics.md
+        - name: 將圖格新增至您的儀表板
+          href: howto-add-tiles-to-your-dashboard.md
+        - name: 建立 Azure IoT Central 個人儀表板
+          href: howto-create-personal-dashboards.md
+        - name: 執行作業
+          href: howto-run-a-job.md
+    - name: 轉換
+      items:
+        - name: 將資料匯出至 Azure 中的目的地
+          href: howto-export-data.md
+        - name: 建立規則的 Webhook
+          href: howto-create-webhooks.md
+        - name: 使用工作流程與其他服務整合
+          href: howto-configure-rules-advanced.md
+        - name: 連接規則的 Azure 監視器動作群組
+          href: howto-use-action-groups.md
+        - name: 建立自訂規則
+          href: howto-create-custom-rules.md
+        - name: 使用 Databricks 建立自訂分析
+          href: howto-create-custom-analytics.md
+        - name: 在 Power BI 中將資料視覺化
+          href: howto-connect-powerbi.md
+    - name: 系統管理
+      items:
+        - name: 管理您的應用程式
+          items:
+            - name: 變更應用程式設定
+              href: howto-administer.md
+            - name: 管理使用者和角色
+              href: howto-manage-users-roles.md
+            - name: 管理您的帳單
+              href: howto-view-bill.md
+            - name: 自訂應用程式 UI
+              href: howto-customize-ui.md
+            - name: 匯出您的應用程式
+              href: howto-use-app-templates.md
+            - name: 監視應用程式健康情況
+              href: howto-monitor-application-health.md
+            - name: 關於您的應用程式
+              href: howto-get-app-info.md
+        - name: 從其他地方管理
+          items:
+            - name: 從 Azure 入口網站管理
+              href: howto-manage-iot-central-from-portal.md
+            - name: 從 Azure CLI 管理
+              href: howto-manage-iot-central-from-cli.md
+            - name: 從 Azure PowerShell 管理
+              href: howto-manage-iot-central-from-powershell.md
+            - name: 以程式設計方式管理
+              href: howto-manage-iot-central-programmatically.md
+            - name: 從 CSP 入口網站管理
+              href: howto-create-and-manage-applications-csp.md
+        - name: 個人化應用程式
+          items:
+            - name: 管理您的個人喜好設定
+              href: howto-manage-preferences.md
+            - name: 切換即時聊天
+              href: howto-show-hide-chat.md
+- name: 參考
+  items:
+    - name: Azure CLI
+      href: /cli/azure/azure-cli-reference-for-IoT
+- name: 資源
+  items:
+    - name: 支援和協助選項
+      href: /azure/iot-fundamentals/iot-support-help
+    - name: 業界應用程式範本
+      items:
+        - name: 零售
+          href: ../retail/overview-iot-central-retail.md
+        - name: 能源
+          href: ../energy/overview-iot-central-energy.md
+        - name: 政府
+          href: ../government/overview-iot-central-government.md
+        - name: 醫療保健
+          href: ../healthcare/overview-iot-central-healthcare.md
+    - name: Azure IoT 服務
+      items:
+        - name: IoT 中樞
+          href: /azure/iot-hub
+        - name: IoT 中樞裝置佈建服務
+          href: /azure/iot-dps
+        - name: IoT 中心
+          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+        - name: IoT Edge
+          href: /azure/iot-edge
+        - name: IoT 解決方案加速器
+          href: /azure/iot-accelerators
+        - name: IoT 隨插即用
+          href: /azure/iot-pnp
+        - name: Azure 地圖服務
+          href: /azure/azure-maps
+        - name: 時間序列深入解析
+          href: /azure/time-series-insights
+    - name: Azure IoT SDK
+      items:
+        - name: IoT 服務 SDK
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
+        - name: IoT 裝置 SDK
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
+    - name: IoT Central API 參考
+      href: 'https://docs.microsoft.com/rest/api/iotcentral/'
+    - name: 客戶資料要求
+      href: iot-central-customer-data-requests.md
+    - name: 支援的瀏覽器
+      href: iot-central-supported-browsers.md
+    - name: Azure IoT Central (舊版範本)
+      href: 'https://docs.microsoft.com/previous-versions/azure/iot-central/core/overview-iot-central'

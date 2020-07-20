@@ -1,20 +1,15 @@
 ---
-title: Azure Service Fabric Mesh 的 Maven 參考 | Microsoft Docs
+title: Azure Service Fabric 網格 Maven 參考
 description: 包含如何使用 Service Fabric Mesh 的 Maven 外掛程式參考
-services: service-fabric-mesh
-keywords: maven, java, cli
 author: suhuruli
 ms.author: suhuruli
 ms.date: 11/26/2018
 ms.topic: reference
-ms.service: service-fabric-mesh
-manager: subramar
-ms.openlocfilehash: 08e842f5b91bd0ca5f8e8b2a7866f3f9a689ac28
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: bcc3fb7c6c3adce0997d0960c4d98227089b048b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60811625"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75459012"
 ---
 # <a name="maven-plugin-for-service-fabric-mesh"></a>Service Fabric Mesh 的 Maven 外掛程式
 
@@ -39,6 +34,9 @@ ms.locfileid: "60811625"
 ### `azure-sfmesh:addgateway`
 - 以提供的閘道名稱在 `appresources` 資料夾中產生 `gateway` YAML。 
 
+#### `azure-sfmesh:addvolume`
+- `volume`在資料夾中產生具有所提供磁片區名稱的 YAML `appresources` 。
+
 ### `azure-sfmesh:addsecret`
 - 以提供的祕密名稱在 `appresources` 資料夾中產生 `secret` YAML 
 
@@ -54,7 +52,7 @@ ms.locfileid: "60811625"
 - 將所有資源都部署至 Service Fabric 叢集
  
 
-## <a name="usage"></a>使用量
+## <a name="usage"></a>使用方式
 
 若要在您的 Maven Java 應用程式中使用 Maven 外掛程式，請在 pom.xml 檔案中新增下列程式碼片段：
 
@@ -96,7 +94,7 @@ mvn azure-sfmesh:init -DapplicationName=helloworldserver
 執行下列命令以建立網路資源 YAML。 
 
 ```cmd
-mvn azure-sfmesh:addnetwork -DnetworkName=helloworldservicenetwork -DnetworkAddressPrefix=10.0.0.4/22
+mvn azure-sfmesh:addnetwork -DnetworkName=helloworldservicenetwork -DnetworkAddressPrefix=10.0.0.0/22
 ```
 
 - 在 `servicefabric->appresources` 資料夾中建立名為 `network_helloworldservicenetwork` 的網路 YAML

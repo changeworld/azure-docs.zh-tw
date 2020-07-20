@@ -9,11 +9,11 @@ ms.date: 07/30/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: e4d20cd39d2a843ee1ab57a412ac668b3495fdb1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60320031"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "67173803"
 ---
 >[!NOTE]
 >從 2018 年 7 月 1 日起，對 TLS 1.0 和 1.1 的支援將會從 Azure VPN 閘道移除。 VPN 閘道僅支援 TLS 1.2。 若要保有支援，請參閱[用以啟用 TLS 1.2 支援的更新](#tls1)。
@@ -25,6 +25,6 @@ ms.locfileid: "60320031"
 * 3DES (三重資料加密演算法)
 * MD5 (訊息摘要 5)
 
-### <a name="tls1"></a>如何在 Windows 7 和 Windows 8.1 中啟用 TLS 1.2 支援？
+### <a name="how-do-i-enable-support-for-tls-12-in-windows-7-and-windows-81"></a><a name="tls1"></a>如何在 Windows 7 和 Windows 8.1 中啟用 TLS 1.2 支援？
 
 [!INCLUDE [tls 1.2](vpn-gateway-tls-include.md)]

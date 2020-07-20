@@ -1,31 +1,57 @@
 ---
-title: 針對將更新管理、變更追蹤和清查上線時的錯誤進行疑難排解
-description: 了解如何針對將更新管理、變更追蹤和清查解決方案上線時的錯誤進行疑難排解
+title: 針對 Azure 自動化功能部署問題進行疑難排解
+description: 本文說明如何針對部署 Azure 自動化功能時發生的問題進行疑難排解和解決。
 services: automation
-author: georgewallace
-ms.author: gwallace
-ms.date: 03/20/2019
+ms.date: 06/30/2020
 ms.topic: conceptual
 ms.service: automation
-manager: carmonm
-ms.openlocfilehash: 16a03840f6bbf44853cf01e50189a194672d153e
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
-ms.translationtype: MT
+ms.openlocfilehash: ca2f866dc882e003469163a22d32d3d72031443a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65145154"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85801024"
 ---
-# <a name="troubleshoot-errors-when-onboarding-solutions"></a>針對將解決方案上線時的錯誤進行疑難排解
+# <a name="troubleshoot-feature-deployment-issues"></a>針對功能部署問題進行疑難排解
 
-當您將更新管理或變更追蹤和清查等解決方案上線時，可能會發生錯誤。 本文描述可能發生的各種錯誤及解決方法。
+您在 VM 上部署 Azure 自動化更新管理功能或變更追蹤和清查功能時，可能會收到錯誤訊息。 本文描述可能發生的錯誤及解決方法。
 
-## <a name="general-errors"></a>一般錯誤
+## <a name="known-issues"></a>已知問題
 
-### <a name="missing-write-permissions"></a>案例：上線失敗並顯示以下訊息：無法啟用解決方案
+### <a name="scenario-renaming-a-registered-node-requires-unregister-or-register-again"></a><a name="node-rename"></a>案例：重新命名已註冊的節點時，需要再次取消註冊或註冊
 
 #### <a name="issue"></a>問題
 
-您會收到下列訊息之一當您嘗試上架至方案的虛擬機器：
+系統會向 Azure 自動化註冊節點，然後再變更作業系統電腦名稱。 節點中的報告會繼續以原始名稱出現。
+
+#### <a name="cause"></a>原因
+
+重新命名已註冊的節點，並不會更新 Azure 自動化中的節點名稱。
+
+#### <a name="resolution"></a>解決方案
+
+從 Azure 自動化狀態設定取消註冊節點，然後再次註冊。 將無法再使用於之前發佈至服務的報告。
+
+### <a name="scenario-re-signing-certificates-via-https-proxy-isnt-supported"></a><a name="resigning-cert"></a>案例：不支援透過 HTTPS Proxy 重新簽署憑證
+
+#### <a name="issue"></a>問題
+
+透過會終止 HTTPS 流量的 Proxy 進行連線，然後使用新的憑證重新加密流量時，服務不會允許連線。
+
+#### <a name="cause"></a>原因
+
+Azure 自動化不支援重新簽署用來加密流量的憑證。
+
+#### <a name="resolution"></a>解決方案
+
+此問題目前沒有任何因應措施。
+
+## <a name="general-errors"></a>一般錯誤
+
+### <a name="scenario-feature-deployment-fails-with-the-message-the-solution-cannot-be-enabled"></a><a name="missing-write-permissions"></a>案例：功能部署失敗並顯示以下訊息：「無法啟用解決方案」
+
+#### <a name="issue"></a>問題
+
+嘗試在 VM 上啟用功能時，會收到下列其中一則訊息：
 
 ```error
 The solution cannot be enabled due to missing permissions for the virtual machine or deployments
@@ -37,53 +63,70 @@ The solution cannot be enabled on this VM because the permission to read the wor
 
 #### <a name="cause"></a>原因
 
-此錯誤被因不正確或遺漏權限在虛擬機器，工作區，或使用者。
+此錯誤是由於 VM 或工作區的權限不正確或遺失所造成。
 
 #### <a name="resolution"></a>解決方案
 
-確定您有正確的權限可讓虛擬機器上線。 檢閱[讓機器上線所需的權限](../automation-role-based-access-control.md#onboarding)，嘗試讓解決方案再次上線。 如果您收到錯誤`The solution cannot be enabled on this VM because the permission to read the workspace is missing`，請確定您有`Microsoft.OperationalInsights/workspaces/read`能夠找出 VM 是否為上的架到工作區的權限。
+請確定您有正確的[功能部署權限](../automation-role-based-access-control.md#feature-setup-permissions)，然後再次嘗試部署該功能。 如果您收到錯誤訊息 `The solution cannot be enabled on this VM because the permission to read the workspace is missing` ，請參閱下列[疑難排解資訊](update-management.md#failed-to-enable-error)。
 
-### <a name="computer-group-query-format-error"></a>案例：ComputerGroupQueryFormatError
+### <a name="scenario-feature-deployment-fails-with-the-message-failed-to-configure-automation-account-for-diagnostic-logging"></a><a name="diagnostic-logging"></a>案例：功能部署失敗，並出現「無法設定自動化帳戶以進行診斷記錄」訊息
 
 #### <a name="issue"></a>問題
 
-這個錯誤碼表示未正確地將用來將目標設定為解決方案的已儲存搜尋電腦群組查詢格式化。 
+您嘗試在 VM 上啟用功能時，您會收到下列訊息：
+
+```error
+Failed to configure automation account for diagnostic logging
+```
 
 #### <a name="cause"></a>原因
 
-您可能已變更查詢，或者系統可能已變更該查詢。
+這是會由於定價層與訂閱的計費模型不符合而造成的錯誤。 如需詳細資訊，請參閱[在 Azure 監視器中監視使用量和估計成本](https://aka.ms/PricingTierWarning)。
 
 #### <a name="resolution"></a>解決方案
 
-您可以刪除此解決方案的查詢，然後將解決方案重新上線，這樣會重新建立查詢。 您可以在工作區內的 [儲存的搜尋] 下方找到該查詢。 查詢的名稱是 **MicrosoftDefaultComputerGroup**，而查詢的類別是與這個查詢相關聯的解決方案名稱。 如果已啟用多個解決方案，**MicrosoftDefaultComputerGroup** 會在 [儲存的搜尋] 下方多次顯示。
+手動建立您的 Log Analytics 工作區，並重複此功能部署程式，以選取所建立的工作區。
 
-### <a name="policy-violation"></a>案例：PolicyViolation
+### <a name="scenario-computergroupqueryformaterror"></a><a name="computer-group-query-format-error"></a>案例：ComputerGroupQueryFormatError
 
 #### <a name="issue"></a>問題
 
-這個錯誤碼表示部署因違反一個或多個原則而失敗。
+這個錯誤碼表示，對於用來將目標設定為功能的已儲存搜尋電腦群組查詢，並未正確予以格式化。 
+
+#### <a name="cause"></a>原因
+
+您可能已改變查詢，或者系統可能已改變該查詢。
+
+#### <a name="resolution"></a>解決方案
+
+您可以刪除該功能的查詢，然後再次啟用該功能，即會重新建立查詢。 您可以在工作區內的 [儲存的搜尋] 下方找到該查詢。 查詢的名稱是 **MicrosoftDefaultComputerGroup**，而查詢的類別是相關聯功能的名稱。 如果已啟用多個功能，**MicrosoftDefaultComputerGroup** 查詢會在 [儲存的搜尋] 下方多次顯示。
+
+### <a name="scenario-policyviolation"></a><a name="policy-violation"></a>案例：PolicyViolation
+
+#### <a name="issue"></a>問題
+
+這個錯誤碼指出部署因違反一個或多個原則而失敗。
 
 #### <a name="cause"></a>原因 
 
-有一個原則導致作業無法完成。
+原則導致作業無法完成。
 
 #### <a name="resolution"></a>解決方案
 
-若要成功部署解決方案，您必須考量改變指定的原則。 由於可定義的原則有許多不同類型，因此所需的特定變更就要根據違反的原則來決定。 例如，如果在定義原則的資源群組中，拒絕對於該資源群組內特定類型資源之內容的變更權限，您可以執行下列任何一項作業：
+若要成功部署功能，必須考慮改變指定的原則。 由於可定義的原則有許多不同類型，因此所需的變更就要根據違反的原則來決定。 例如，如果在資源群組上定義原則，但拒絕變更某些包含資源內容的權限，您可以選擇下列其中一個修正：
 
 * 完全移除原則。
-* 嘗試上架到不同的資源群組。
-* 透過下列方法修改原則，例如：
-  * 將原則的目標重新設定為特定資源 (例如設定為特定的自動化帳戶)。
-  * 對於原則已設定為拒絕的資源集合進行修改。
+* 嘗試為不同的資源群組啟用此功能。
+* 將原則的目標重定為特定資源，例如自動化帳戶。
+* 對於原則已設定為拒絕的資源集合進行修改。
 
-檢查 Azure 入口網站中右上角的通知，或瀏覽至包含您的自動化帳戶並選取資源群組**部署**下方**設定**檢視失敗部署。 若要深入了解 Azure 原則，請造訪：[Azure 原則的概觀](../../governance/policy/overview.md?toc=%2fazure%2fautomation%2ftoc.json)。
+檢查 Azure 入口網站右上角的通知，或移至包含您自動化帳戶的資源群組，然後選取 [設定] 下方的 [部署] 來檢視失敗的部署。 若要深入了解 Azure 原則，請參閱 [Azure 原則的概觀](../../governance/policy/overview.md?toc=%2fazure%2fautomation%2ftoc.json)。
 
-### <a name="unlink"></a>案例：嘗試取消連結工作區的錯誤
+### <a name="scenario-errors-trying-to-unlink-a-workspace"></a><a name="unlink"></a>案例：嘗試取消連結工作區時發生錯誤
 
 #### <a name="issue"></a>問題
 
-嘗試取消連結工作區時，您會收到下列錯誤：
+您嘗試取消工作區的連結時，收到下列錯誤訊息：
 
 ```error
 The link cannot be updated or deleted because it is linked to Update Management and/or ChangeTracking Solutions.
@@ -91,37 +134,33 @@ The link cannot be updated or deleted because it is linked to Update Management 
 
 #### <a name="cause"></a>原因
 
-當您仍有解決方案使用 Log Analytics 工作區中，取決於您所連結的自動化帳戶，並記錄分析工作區時，就會發生此錯誤。
+您的 Log Analytics 工作區中仍有使用中的功能時，會發生此錯誤 (取決於您的自動化帳戶和連結的 Log Analytics 工作區)。
 
 ### <a name="resolution"></a>解決方案
 
-若要解決此問題，您要從您的工作區移除下列解決方案，如果您使用它們：
+如果您要使用下列功能，請從您的工作區中移除這些資源：
 
 * 更新管理
-* 變更追蹤
+* 變更追蹤與詳細目錄
 * 於下班時間開始/停止 VM
 
-移除解決方案之後，您可以取消連結您的工作區。 請務必清除任何現有的成品，從您的工作區和自動化帳戶從這些解決方案也一樣。  
+移除功能資源之後，您可以取消連結您的工作區。 請務必從您的工作區和您的自動化帳戶清除這些功能的任何現有成品：
 
-* 更新管理
-  * 從您的自動化帳戶中移除更新部署 （排程）
-* 於下班時間開始/停止 VM
-  * 在您的自動化帳戶，在移除解決方案的元件上的任何鎖定**設定** > **鎖定**。
-  * 如需在離峰解決方案期間移除啟動/停止 Vm 的其他步驟查看，請[離峰時間的方案中移除啟動/停止 VM](../automation-solution-vm-management.md##remove-the-solution)。
+* 針對更新管理，請從您的自動化帳戶移除**更新部署 (排程)** 。
+* 若要在停機期間啟動/停止 VM，請在 [設定] > [鎖定] 下，移除自動化帳戶中功能元件的任何鎖定。 如需詳細資訊，請參閱[移除功能](../automation-solution-vm-management.md#remove-the-feature)。
 
-## <a name="mma-extension-failures"></a>MMA 延伸模組失敗
+## <a name="log-analytics-for-windows-extension-failures"></a><a name="mma-extension-failures"></a>適用於 Windows 的 Log Analytics擴充功能失敗
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)] 
 
-部署解決方案時，會部署各種相關的資源。 其中一個資源是「Microsoft Monitoring Agent 延伸模組」或「適用於 Linux 的 Log Analytics 代理程式」。 這些是由負責設定的 Log Analytics 工作區，以更新版本的協調的二進位檔的下載與通訊的虛擬機器的客體代理程式安裝的虛擬機器擴充功能和其他檔案，您是解決方案上架取決於，一旦開始執行。
-您通常最先從出現在「通知中樞」中的通知察覺 MMA 或「適用於 Linux 的 Log Analytics 代理程式」安裝失敗。 按一下通知可提供特定失敗的進一步資訊。 巡覽至資源群組資源，再到其中的部署項目，也會提供所發生部署失敗的詳細資料。
-MMA 或「適用於 Linux 的 Log Analytics 代理程式」可能因各種原因而安裝失敗，解決這些失敗所需採取的步驟會因問題而有所不同。 以下是特定疑難排解步驟。
+安裝適用於 Windows 的 Log Analytics 程式擴充功能可能會因為各種原因而失敗。 下一節描述在部署適用於 Windows 的 Log Analytics 代理程式期間，可能會導致失敗的功能部署問題。
 
-下節說明您可能會遇到登入，會造成失敗的 MMA 延伸模組部署時的各種問題。
+>[!NOTE]
+>適用於 Windows 的 Log Analytics 代理程式是目前在 Microsoft Monitoring Agent (MMA) 的 Azure 自動化中使用的名稱。
 
-### <a name="webclient-exception"></a>案例：在 WebClient 要求期間發生例外狀況
+### <a name="scenario-an-exception-occurred-during-a-webclient-request"></a><a name="webclient-exception"></a>案例：在 WebClient 要求期間發生例外狀況
 
-虛擬機器上的 MMA 延伸模組無法與外部資源通訊且部署會失敗。
+VM 上適用於 Windows 的 Log Analytics 延伸模組無法與外部資源通訊，且部署會失敗。
 
 #### <a name="issue"></a>問題
 
@@ -139,17 +178,16 @@ Please verify the VM has a running VM agent, and can establish outbound connecti
 
 此錯誤的一些可能原因包括：
 
-* 沒有設定在 VM 中，只允許特定連接埠的 proxy。
-
+* VM 中已設定只允許特定連接埠的 Proxy。
 * 防火牆設定已封鎖對必要連接埠和位址的存取。
 
 #### <a name="resolution"></a>解決方案
 
 確定您已開啟適當的連接埠和位址進行通訊。 如需連接埠和位址清單，請參閱[規劃您的網路](../automation-hybrid-runbook-worker.md#network-planning)。
 
-### <a name="transient-environment-issue"></a>案例：安裝失敗，因為暫時性的環境問題
+### <a name="scenario-install-failed-because-of-transient-environment-issues"></a><a name="transient-environment-issue"></a>案例：安裝因暫時性環境問題而失敗
 
-安裝 Microsoft Monitoring Agent 擴充功能無法在部署期間，因為另一個安裝或封鎖安裝的動作
+由於其他安裝或動作封鎖安裝，在部署期間安裝適用於 Windows 的 Log Analytic s擴充功能會失敗。
 
 #### <a name="issue"></a>問題
 
@@ -171,20 +209,20 @@ The Microsoft Monitoring Agent failed to install on this machine. Please try to 
 
 此錯誤的一些可能原因包括：
 
-* 其他安裝正在進行
-* 系統會觸發在範本部署期間重新啟動
+* 其他安裝正在進行。
+* 在範本部署期間已觸發系統重新啟動。
 
 #### <a name="resolution"></a>解決方案
 
-此錯誤本質上是暫時性錯誤。 請重試部署以安裝延伸模組。
+此錯誤在本質上是暫時性的。 請重試部署以安裝延伸模組。
 
-### <a name="installation-timeout"></a>案例：安裝逾時
+### <a name="scenario-installation-timeout"></a><a name="installation-timeout"></a>案例：安裝逾時
 
-安裝 MMA 擴充功能未完成因為逾時。
+適用於 Windows 的 Log Analytics 功能因為逾時之故，並未完成安裝。
 
 #### <a name="issue"></a>問題
 
-下列範例是可能傳回的錯誤訊息：
+以下是可能傳回的錯誤訊息範例：
 
 ```error
 Install failed for plugin (name: Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent, version 1.0.11081.4) with exception Command C:\Packages\Plugins\Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent\1.0.11081.4\MMAExtensionInstall.exe of Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent has exited with Exit code: 15614
@@ -192,16 +230,16 @@ Install failed for plugin (name: Microsoft.EnterpriseCloud.Monitoring.MicrosoftM
 
 #### <a name="cause"></a>原因
 
-發生這個錯誤是因為在安裝期間在負載過重的虛擬機器。
+發生這種類型的錯誤是因為在安裝期間，VM 負載過重。
 
 ### <a name="resolution"></a>解決方案
 
-請在 VM 負載較低時，嘗試安裝 MMA 延伸模組。
+VM 負載較低時，請嘗試安裝適用於 Windows 的 Log Analytic s代理程式擴充功能。
 
 ## <a name="next-steps"></a>後續步驟
 
-如果您沒有看到您的問題，或無法解決您的問題，請瀏覽下列其中一個管道以取得更多支援：
+如果您在這裡沒有看到您的問題，或無法解決您的問題，請嘗試下列其中一個管道以取得其他支援：
 
-* 透過 [Azure 論壇](https://azure.microsoft.com/support/forums/)獲得由 Azure 專家所提供的解答
-* 與 [@AzureSupport](https://twitter.com/azuresupport) 連繫－專為改善客戶體驗而設的官方 Microsoft Azure 帳戶，協助 Azure 社群連接至適當的資源，像是解答、支援及專家等。
-* 如果需要更多協助，您可以提出 Azure 支援事件。 請移至 [Azure 支援網站](https://azure.microsoft.com/support/options/)，然後選取 [取得支援]。
+* 透過 [Azure 論壇](https://azure.microsoft.com/support/forums/)獲得由 Azure 專家所提供的解答。
+* 連線至 [@AzureSupport](https://twitter.com/azuresupport)，這是用來改善客戶體驗的官方 Microsoft Azure 帳戶。 Azure 支援會將 Azure 社群連線到解答、支援及專家。
+* 提出 Azure 支援事件。 請移至 [Azure 支援網站](https://azure.microsoft.com/support/options/)，然後選取 [取得支援]。

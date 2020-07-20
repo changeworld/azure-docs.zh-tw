@@ -1,30 +1,30 @@
 ---
-title: 建置進階的作業排程和週期 - Azure 排程器
+title: 組建先進的作業排程和週期
 description: 了解如何在 Azure 排程器中建立作業的進階排程和週期
 services: scheduler
 ms.service: scheduler
 author: derek1ee
 ms.author: deli
-ms.reviewer: klam
+ms.reviewer: klam, estfan
 ms.suite: infrastructure-services
-ms.assetid: 5c124986-9f29-4cbc-ad5a-c667b37fbe5a
 ms.topic: article
 ms.date: 11/14/2018
-ms.openlocfilehash: a413261d251c8dfc1de9209168ee8137b85009f1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: b85932bf0d4fd080afadef2bc28d6a218b2d627a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60531817"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "78898592"
 ---
 # <a name="build-advanced-schedules-and-recurrences-for-jobs-in-azure-scheduler"></a>在 Azure 排程器中建置作業的進階排程和週期
 
 > [!IMPORTANT]
-> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) 會取代 Azure 排程器，Azure 排程器之後將無法使用。 若要排程作業，請[改為試用 Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md)。 
+> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) 將會取代[即將淘汰的 Azure 排程器](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)。 若要繼續使用您在排程器中設定的作業，請儘快[遷移至 Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) 。 
+>
+> Azure 入口網站中已不再提供排程器，但目前仍然提供 [REST API](/rest/api/scheduler) 和 [Azure 排程器 PowerShell Cmdlets](scheduler-powershell-reference.md)，以便您管理作業和作業集合。
 
 在 [Azure 排程器](../scheduler/scheduler-intro.md)作業內，排程為決定排程器服務何時及如何執行作業的核心。 您可以使用排程器，為作業設定多個單次和週期性排程。 單次排程只會在指定的時間執行一次，而且基本上是僅執行一次的週期性排程。 週期性排程會以指定的頻率來執行。 由於這種彈性，您可以將排程器用於各種商務案例，例如：
 
-* **定期清理資料**：建立每日作業，以刪除所有超過三個月的推文。
+* **定期清除資料**：建立每日作業，以刪除所有超過三個月的推文。
 
 * **封存資料**：建立每月作業，將發票歷程記錄推送到備份服務。
 
@@ -63,15 +63,15 @@ ms.locfileid: "60531817"
 
 此表格提供您在設定作業的週期和排程時可使用之主要 JSON 元素的高階概觀。 
 
-| 元素 | 必要項 | 描述 | 
+| 元素 | 必要 | 說明 | 
 |---------|----------|-------------|
-| **startTime** | 否 | [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601) \(英文\) 的日期時間字串值，會在基本排程中指定作業第一次啟動的時機。 <p>針對複雜的排程，作業一到 **startTime** 就會啟動。 | 
-| **recurrence** | 否 | 適用於作業執行時機的週期規則。 **recurrence** 物件支援下列元素：**frequency**、**interval**、**schedule**、**count** 及 **endTime**。 <p>如果您使用 **recurrence** 元素，也必須使用 **frequency** 元素，而其他 **recurrence** 元素均為選擇性的。 |
+| **時間** | No | [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601) \(英文\) 的日期時間字串值，會在基本排程中指定作業第一次啟動的時機。 <p>針對複雜的排程，作業一到 **startTime** 就會啟動。 | 
+| **定期** | No | 適用於作業執行時機的週期規則。 **recurrence** 物件支援下列元素：**frequency**、**interval**、**schedule**、**count** 及 **endTime**。 <p>如果您使用 **recurrence** 元素，也必須使用 **frequency** 元素，而其他 **recurrence** 元素均為選擇性的。 |
 | **frequency** | 是，當您使用 **recurrence** 時 | 發生次數之間的時間單位，並支援下列值："Minute"、"Hour"、"Day"、"Week"、"Month" 及 "Year" | 
-| **interval** | 否 | 正整數，根據 **frequency** 來決定發生次數之間的時間單位數。 <p>例如，如果 **interval** 為 10 且 **frequency** 為 "Week"，則作業每隔 10 週就會重複執行一次。 <p>以下是適用於每個頻率的最大間隔數目： <p>- 18 個月 <br>- 78 週 <br>- 548 天 <br>- 若為小時和分鐘，則範圍是 1 <= <*interval*> <= 1000。 | 
-| **schedule** | 否 | 根據分鐘標記、小時標記、星期幾和每月執行日來定義週期的變更 | 
-| **count** | 否 | 正整數，指定作業完成之前執行的次數。 <p>例如，若將每日作業的 **count** 設為 7，而且開始日期為星期一，作業就會在星期日完成執行。 如果開始日期已經過去，則會從建立時間計算第一次執行時間。 <p>如果沒有 **endTime** 或 **count**，作業就會無限期執行。 您無法在同一個作業中同時使用**count** 和 **endTime**，但會接受先完成的規則。 | 
-| **endTime** | 否 | [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601) \(英文\) 的日期或日期時間字串值，會指定作業停止執行的時機。 您可以將 **endTime** 的值設定為過去的時間。 <p>如果沒有 **endTime** 或 **count**，作業就會無限期執行。 您無法在同一個作業中同時使用**count** 和 **endTime**，但會接受先完成的規則。 |
+| **期間** | No | 正整數，根據 **frequency** 來決定發生次數之間的時間單位數。 <p>例如，如果 **interval** 為 10 且 **frequency** 為 "Week"，則作業每隔 10 週就會重複執行一次。 <p>以下是適用於每個頻率的最大間隔數目： <p>- 18 個月 <br>- 78 週 <br>- 548 天 <br>- 若為小時和分鐘，則範圍是 1 <= <*interval*> <= 1000。 | 
+| **任務** | No | 根據分鐘標記、小時標記、星期幾和每月執行日來定義週期的變更 | 
+| **計數** | No | 正整數，指定作業完成之前執行的次數。 <p>例如，若將每日作業的 **count** 設為 7，而且開始日期為星期一，作業就會在星期日完成執行。 如果開始日期已經過去，則會從建立時間計算第一次執行時間。 <p>如果沒有 **endTime** 或 **count**，作業就會無限期執行。 您無法在同一個作業中同時使用**count** 和 **endTime**，但會接受先完成的規則。 | 
+| **endTime** | No | [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601) \(英文\) 的日期或日期時間字串值，會指定作業停止執行的時機。 您可以將 **endTime** 的值設定為過去的時間。 <p>如果沒有 **endTime** 或 **count**，作業就會無限期執行。 您無法在同一個作業中同時使用**count** 和 **endTime**，但會接受先完成的規則。 |
 |||| 
 
 例如，此 JSON 結構描述說明作業的基本排程和週期： 
@@ -92,7 +92,7 @@ ms.locfileid: "60531817"
 },
 ``` 
 
-日期和日期時間值
+日期和日期時間值**
 
 * 排程器作業中的日期只包含日期並遵循 [ISO 8601 規格](https://en.wikipedia.org/wiki/ISO_8601) \(英文\)。
 
@@ -109,8 +109,8 @@ ms.locfileid: "60531817"
 | startTime | 無週期 | 週期、無排程 | 週期性有排程 |
 |-----------|---------------|-------------------------|--------------------------|
 | **没有開始時間** | 立即執行一次。 | 立即執行一次。 執行根據上次執行時間算出的後續執行作業。 | 立即執行一次。 根據週期排程執行後續的執行作業。 | 
-| **過去的開始時間** | 立即執行一次。 | 計算開始時間之後的第一個未來執行時間，並在該時間執行。 <p>執行根據上次執行時間算出的後續執行作業。 <p>請參閱這個表格後面的範例。 | 「一到」指定的開始時間就啟動作業。 第一次執行是根據從開始時間計算的排程。 <p>根據週期排程執行後續的執行作業。 | 
-| **在未來或目前時間的開始時間** | 在指定的開始時間執行一次。 | 在指定的開始時間執行一次。 <p>執行根據上次執行時間算出的後續執行作業。 | 「一到」指定的開始時間就啟動作業。 第一次發生是根據排程，從開始時間計算。 <p>根據週期排程執行後續的執行作業。 |
+| **過去的開始時間** | 立即執行一次。 | 計算開始時間之後的第一個未來執行時間，並在該時間執行。 <p>執行根據上次執行時間算出的後續執行作業。 <p>請參閱這個表格後面的範例。 | 「一到」** 指定的開始時間就啟動作業。 第一次執行是根據從開始時間計算的排程。 <p>根據週期排程執行後續的執行作業。 | 
+| **在未來或目前時間的開始時間** | 在指定的開始時間執行一次。 | 在指定的開始時間執行一次。 <p>執行根據上次執行時間算出的後續執行作業。 | 「一到」** 指定的開始時間就啟動作業。 第一次發生是根據排程，從開始時間計算。 <p>根據週期排程執行後續的執行作業。 |
 ||||| 
 
 假設這個範例具備下列條件：過去的開始時間，有週期但無排程。
@@ -159,12 +159,12 @@ ms.locfileid: "60531817"
 
 下表詳細說明 schedule 元素：
 
-| JSON 名稱 | 描述 | 有效值 |
+| JSON 名稱 | Description | 有效值 |
 |:--- |:--- |:--- |
-| **minutes** |作業在該小時的第幾分鐘執行。 |整數陣列。 |
-| **hours** |作業在該日的第幾小時執行。 |整數陣列。 |
-| **weekDays** |作業在該週的第幾天執行。 只能搭配 weekly 頻率指定。 |包含任何下列值的陣列 (最大的陣列大小為 7)：<br />- "Monday"<br />- "Tuesday"<br />- "Wednesday"<br />- "Thursday"<br />- "Friday"<br />- "Saturday"<br />- "Sunday"<br /><br />不區分大小寫。 |
-| **monthlyOccurrences** |決定將在當月哪幾天執行工作。 只能搭配 monthly 頻率指定。 |**monthlyOccurrences** 物件的陣列：<br /> `{ "day": day, "occurrence": occurrence}`<br /><br /> **day** 是作業在當週的第幾天執行。 例如，*{Sunday}* 是當月的每個星期日。 必要。<br /><br />**occurrence** 是當月期間的第幾天發生。 例如，*{Sunday, -1}* 是當月的最後一個星期日。 選用。 |
+| **細節** |作業在該小時的第幾分鐘執行。 |整數陣列。 |
+| **多少** |作業在該日的第幾小時執行。 |整數陣列。 |
+| **周** |作業在該週的第幾天執行。 只能搭配 weekly 頻率指定。 |包含任何下列值的陣列 (最大的陣列大小為 7)：<br />- "Monday"<br />- "Tuesday"<br />- "Wednesday"<br />- "Thursday"<br />- "Friday"<br />- "Saturday"<br />- "Sunday"<br /><br />不區分大小寫。 |
+| **monthlyOccurrences** |決定將在當月哪幾天執行工作。 只能搭配 monthly 頻率指定。 |**monthlyOccurrences** 物件的陣列：<br /> `{ "day": day, "occurrence": occurrence}`<br /><br /> **day** 是作業在當週的第幾天執行。 例如，*{Sunday}* 是當月的每個星期日。 必要。<br /><br />**occurrence** 是當月期間的第幾天發生。 例如，*{Sunday, -1}* 是當月的最後一個星期日。 選擇性。 |
 | **monthDays** |作業將在當月的哪一日執行。 只能搭配 monthly 頻率指定。 |包含下列值的陣列：<br />- <= -1 且 >= -31 的任何值<br />- >= 1 且 <= 31 的任何值|
 
 ## <a name="examples-recurrence-schedules"></a>範例：週期排程
@@ -207,8 +207,9 @@ ms.locfileid: "60531817"
 | `{"minutes":[0,15,30,45], "monthlyOccurrences":[{"day":"friday", "occurrence":-1}]}` |在月份中最後一個星期五每隔 15 分鐘執行一次。 |
 | `{"minutes":[15,45], "hours":[5,17], "monthlyOccurrences":[{"day":"wednesday", "occurrence":3}]}` |在每個月第三個星期三的上午 5:15、上午 5:45、下午 5:15 及下午 5:45 執行。 |
 
-## <a name="see-also"></a>請參閱
+## <a name="next-steps"></a>後續步驟
 
-* [什麼是 Azure 排程器？](scheduler-intro.md)
 * [Azure 排程器概念、術語及實體階層](scheduler-concepts-terms.md)
+* [Azure 排程器 REST API 參考](/rest/api/scheduler)
+* [Azure 排程器 PowerShell Cmdlet 參考](scheduler-powershell-reference.md)
 * [Azure 排程器限制、預設值和錯誤碼](scheduler-limits-defaults-errors.md)

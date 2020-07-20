@@ -11,34 +11,34 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/28/2018
 ms.author: b-juche
-ms.openlocfilehash: bb43a75b6a221c15c8724302797d04c22e04c8d2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e5e0c43aa8c4fbf0db89065e0fab93ee174a4ede
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61086104"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85483664"
 ---
 # <a name="create-a-netapp-account"></a>建立 NetApp 帳戶
 建立 NetApp 帳戶可讓您設定容量集區，並接著建立磁碟區。 您可以使用 [Azure NetApp Files] 刀鋒視窗來建立新的 NetApp 帳戶。
 
 ## <a name="before-you-begin"></a>開始之前
-您必須註冊您的訂用帳戶，以使用 NetApp 資源提供者和公開預覽功能。
+您必須收到來自 Azure NetApp Files 小組的電子郵件，確認您已獲得服務的存取權。 請參閱[提交等候清單要求以存取服務](azure-netapp-files-register.md#waitlist)。
 
-[註冊 Azure NetApp Files](azure-netapp-files-register.md)
+您也必須已註冊您的訂用帳戶，才能使用 NetApp 資源提供者。 請參閱[註冊 NetApp 資源提供者](azure-netapp-files-register.md#resource-provider)。
 
 ## <a name="steps"></a>步驟 
 
 1. 登入 Azure 入口網站。 
 2. 使用下列其中一個方法存取 [Azure NetApp Files] 刀鋒視窗：  
    * 在 Azure 入口網站搜尋方塊中搜尋 **Azure NetApp Files**。  
-   * 按一下導覽中的 [所有服務]，然後篩選為 Azure NetApp Files。  
+   * 按一下導覽中的 [所有服務]****，然後篩選為 Azure NetApp Files。  
 
    您可以藉由按一下 [Azure NetApp Files] 刀鋒視窗旁邊的星號，將其加入「我的最愛」。 
 
-3. 按一下 [+ 新增] 以建立新的 NetApp 帳戶。  
+3. 按一下 [+ 新增]**** 以建立新的 NetApp 帳戶。  
    [新增 NetApp 帳戶] 視窗隨即出現。  
 
 4. 請提供 NetApp 帳戶的下列資訊： 
@@ -54,8 +54,13 @@ ms.locfileid: "61086104"
      ![新增 NetApp 帳戶](../media/azure-netapp-files/azure-netapp-files-new-netapp-account.png)
 
 
-5. 按一下頁面底部的 [新增] 。     
+5. 按一下 [建立]。     
    您剛建立的 NetApp 帳戶現在會出現在 [Azure NetApp Files] 刀鋒視窗中。 
+
+> [!NOTE] 
+> 如果您尚未授與 Azure NetApp Files 服務的存取權，當您嘗試建立第一個 NetApp 帳戶時，將會收到下列錯誤：  
+>
+> `{"code":"DeploymentFailed","message":"At least one resource deployment operation failed. Please list deployment operations for details. Please see https://aka.ms/arm-debug for usage details.","details":[{"code":"NotFound","message":"{\r\n \"error\": {\r\n \"code\": \"InvalidResourceType\",\r\n \"message\": \"The resource type could not be found in the namespace 'Microsoft.NetApp' for api version '2017-08-15'.\"\r\n }\r\n}"}]}`
 
 ## <a name="next-steps"></a>後續步驟  
 

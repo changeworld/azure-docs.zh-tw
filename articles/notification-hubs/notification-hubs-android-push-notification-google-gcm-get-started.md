@@ -1,13 +1,11 @@
 ---
-title: 使用 Azure 通知中樞和 Google 雲端通訊將通知推播至 Android 應用程式 | Microsoft Docs
+title: 使用 Azure 通知中樞和 Google 雲端通訊將推播通知傳送至 Android | Microsoft Docs
 description: 在本教學課程中，您將了解如何使用 Azure 通知中樞和 Google Firebase 雲端通訊，將通知推送至 Android 裝置。
 services: notification-hubs
 documentationcenter: android
 keywords: 推播通知,推播通知,android 推播通知
-author: jwargo
-manager: patniko
-editor: spelluru
-ms.assetid: 8268c6ef-af63-433c-b14e-a20b04a0342a
+author: sethmanheim
+manager: femila
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
@@ -15,17 +13,22 @@ ms.devlang: java
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: 6e82ec9563832c7569fa1cff735a46dad50a8b3b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: 3f2ad007ff0e1012f957c718d125b2e5b2e40964
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57887573"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85249225"
 ---
-# <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-cloud-messaging"></a>教學課程：使用 Azure 通知中樞和 Google 雲端通訊將通知推送至 Android 裝置
+# <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>教學課程：使用 Azure 通知中樞和 Google 雲端通訊 (已淘汰) 將通知推送至 Android 裝置
 
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
+
+> [!WARNING]
+> Google 已於 2018 年 4 月 10 日淘汰 Google 雲端通訊 (GCM)。 GCM 伺服器和用戶端 API 會由其他項目取代，並且很快就會在 2019 年 5 月 29 日進行移除。 如需詳細資訊，請參閱 [GCM 和 FCM 常見問題集](https://developers.google.com/cloud-messaging/faq)。
 
 ## <a name="overview"></a>概觀
 
@@ -38,7 +41,7 @@ ms.locfileid: "57887573"
 > [!IMPORTANT]
 > 本主題示範使用 Google 雲端通訊 (GCM) 的推播通知。 如果您是使用 Google 的 Firebase 雲端通訊 (FCM)，請參閱 [使用 Azure 通知中樞和 FCM 將推播通知傳送至 Android](notification-hubs-android-push-notification-google-fcm-get-started.md)。
 
-您可以從 [此處](https://github.com/Azure/azure-notificationhubs-samples/tree/master/Android/GetStarted)的 GitHub 下載本教學課程的完整程式碼。
+您可以從 [此處](https://github.com/Azure/azure-notificationhubs-android/tree/master/FCMTutorialApp)的 GitHub 下載本教學課程的完整程式碼。
 
 在本教學課程中，您會執行下列動作：
 
@@ -48,7 +51,7 @@ ms.locfileid: "57887573"
 > * 將您的應用程式連接到通知中樞
 > * 測試應用程式
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * **Azure 訂用帳戶**。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費 Azure 帳戶](https://azure.microsoft.com/free/)。
 * [Android Studio](https://go.microsoft.com/fwlink/?LinkId=389797).
@@ -63,25 +66,25 @@ ms.locfileid: "57887573"
 
 ### <a name="configure-gcm-setting-for-the-notification-hub"></a>設定通知中樞的 GCM 設定
 
-1. 在 [通知設定] 中選取 [Google] \(GCM\)。
+1. 在 [通知設定]  中選取 [Google] \(GCM\)  。
 2. 輸入您從 Google Cloud Console 中取得的 **API 金鑰**。
-3. 在工具列上選取 [儲存]。
+3. 在工具列上選取 [儲存]  。
 
     ![Azure 通知中樞 - Google (GCM)](./media/notification-hubs-android-get-started/notification-hubs-gcm-api.png)
 
 現在已將您的通知中樞設定成使用 GCM，而且您已擁有可用來註冊應用程式以接收和傳送推播通知的連接字串。
 
-## <a id="connecting-app"></a>將您的應用程式連接到通知中樞
+## <a name="connect-your-app-to-the-notification-hub"></a><a id="connecting-app"></a>將您的應用程式連接到通知中樞
 
 ### <a name="create-a-new-android-project"></a>建立新的 Android 專案
 
 1. 在 Android Studio 中，啟動新的 Android Studio 專案。
 
    ![Android Studio - 新增專案][13]
-2. 選擇 [電話和平板電腦] 板型規格和您要支援的 [Minimum SDK]。 然後按 [下一步] 。
+2. 選擇 [電話和平板電腦]  板型規格和您要支援的 [Minimum SDK]  。 然後按一下 [下一步]  。
 
    ![Android Studio - 專案建立工作流程][14]
-3. 為主要活動選擇 [空白活動]，並按 [下一步]，然後按一下 [完成]。
+3. 為主要活動選擇 [空白活動]  ，並按 [下一步]  ，然後按一下 [完成]  。
 
 ### <a name="add-google-play-services-to-the-project"></a>新增 Google Play 服務至專案
 
@@ -95,7 +98,7 @@ ms.locfileid: "57887573"
     implementation 'com.microsoft.azure:notification-hubs-android-sdk:0.6@aar'
     implementation 'com.microsoft.azure:azure-notifications-handler:1.0.1@aar'
     ```
-2. 加入下列儲存機制到 **dependencies** 一節之後。
+2. 將下列存放庫新增到 **dependencies** 區段之後。
 
     ```gradle
     repositories {
@@ -107,7 +110,7 @@ ms.locfileid: "57887573"
 
 ### <a name="updating-the-projects-androidmanifestxml"></a>更新專案的 AndroidManifest.xml
 
-1. 若要支援 GCM，請在程式碼中實作執行個體識別碼接聽程式服務，以便使用 [Google 的執行個體識別碼 API](https://developers.google.com/instance-id/) 來[取得註冊權杖](https://developers.google.com/cloud-messaging/android/client#sample-register)。 在本教學課程中，類別名稱為 `MyInstanceIDService`。
+1. 若要支援 GCM，請在程式碼中實作執行個體識別碼接聽程式服務，以便使用 [Google 的執行個體識別碼 API](https://developers.google.com/instance-id/) 來[取得註冊權杖](https://developers.google.com/cloud-messaging/)。 在本教學課程中，類別名稱為 `MyInstanceIDService`。
 
     將下列服務定義新增至 AndroidManifest.xml 檔案的 `<application>` 標籤內。 以 `AndroidManifest.xml` 檔案頂端顯示的實際套件名稱取代 `<your package>` 預留位置。
   
@@ -141,7 +144,7 @@ ms.locfileid: "57887573"
     ```
 4. 在 `</application>` 標籤下面新增下列必要的 GCM 權限。 請以 `AndroidManifest.xml` 檔案頂端顯示的套件名稱取代 `<your package>`。
 
-    如需這些權限的詳細資訊，請參閱 [設定適用於 Android 的 GCM 用戶端應用程式](https://developers.google.com/cloud-messaging/android/client#manifest)。
+    如需這些權限的詳細資訊，請參閱 [設定適用於 Android 的 GCM 用戶端應用程式](https://developers.google.com/cloud-messaging/)。
 
     ```xml
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -155,15 +158,15 @@ ms.locfileid: "57887573"
 
 ### <a name="adding-code"></a>加入程式碼
 
-1. 在 [專案檢視] 中，展開 [app] > [src] > [main] > [java]。 以滑鼠右鍵按一下 **java** 底下您的套件資料夾，並按一下 [新增]，然後按一下 [Java 類別]。 新增名為 `NotificationSettings` 的新類別。
+1. 在 [專案檢視] 中，展開 [app]   > [src]   > [main]   > [java]  。 以滑鼠右鍵按一下 **java** 底下您的套件資料夾，並按一下 [新增]  ，然後按一下 [Java 類別]  。 新增名為 `NotificationSettings` 的新類別。
 
     ![Android Studio - 新增 Java 類別][6]
 
     請在 `NotificationSettings` 類別的下列程式碼中更新這三個預留位置：
 
-   * `SenderId`：您稍早在 [Google Cloud Console](https://cloud.google.com/console) 中取得的專案編號。
-   * `HubListenConnectionString`：您中樞的 `DefaultListenAccessSignature` 連接字串。 在 [Azure 入口網站]中，按一下中樞 [設定] 頁面上的 [存取原則]，即可複製該連接字串。
-   * `HubName`：使用出現在 [Azure 入口網站]中樞頁面中的通知中樞名稱。
+   * `SenderId`:您稍早在 [Google Cloud Console](https://cloud.google.com/console) 中取得的專案編號。
+   * `HubListenConnectionString`:您中樞的 `DefaultListenAccessSignature` 連接字串。 在 [Azure 入口網站]中，按一下中樞 [設定]  頁面上的 [存取原則]  ，即可複製該連接字串。
+   * `HubName`:使用出現在 [Azure 入口網站]中樞頁面中的通知中樞名稱。
 
      `NotificationSettings` 程式碼︰
 
@@ -444,7 +447,7 @@ ms.locfileid: "57887573"
         }
     }
     ```
-14. 在 Android Studio 的功能表列上，按一下 [建置] > [重新建置專案]，確保您的程式碼中未沒有任何錯誤。
+14. 在 Android Studio 的功能表列上，按一下 [建置]   > [重新建置專案]  ，確保您的程式碼中未沒有任何錯誤。
 
 ## <a name="testing-your-app"></a>測試應用程式
 
@@ -465,9 +468,9 @@ ms.locfileid: "57887573"
 
 透過 [Azure 入口網站]傳送推播通知，即可在應用程式中測試推播通知的接收。
 
-1. 在 [疑難排解] 區段中，選取 [測試傳送]。
-2. 針對 [平台]，選取 [Android]。
-3. 選取 [傳送] 來傳送測試通知。
+1. 在 [疑難排解]  區段中，選取 [測試傳送]  。
+2. 針對 [平台]  ，選取 [Android]  。
+3. 選取 [傳送]  來傳送測試通知。
 4. 確認您可在 Android 裝置上看到通知訊息。
 
     ![Azure 通知中樞 - 測試傳送](./media/notification-hubs-android-get-started/notification-hubs-test-send.png)
@@ -478,13 +481,13 @@ ms.locfileid: "57887573"
 
 如果您要在模擬器中測試推播通知，請確定您的模擬器映像支援您為應用程式選擇的 Google API 層級。 如果您的映像不支援原生 Google API，最後會發生 **SERVICE\_NOT\_AVAILABLE** 例外狀況。
 
-除此之外，請確定已將 Google 帳戶新增至執行中模擬器的 [設定] > [帳戶] 之下。 否則，嘗試向 GCM 註冊可能會導致 **AUTHENTICATION\_FAILED** 例外狀況。
+除此之外，請確定已將 Google 帳戶新增至執行中模擬器的 [設定]   > [帳戶]  之下。 否則，嘗試向 GCM 註冊可能會導致 **AUTHENTICATION\_FAILED** 例外狀況。
 
 ## <a name="optional-send-push-notifications-directly-from-the-app"></a>(選擇性) 從應用程式直接傳送推播通知
 
 一般來說，您會使用後端伺服器傳送通知。 在某些情況下，您可能希望能夠直接從用戶端應用程式傳送推播通知。 本節說明如何使用 [Azure 通知中樞 REST API](https://msdn.microsoft.com/library/azure/dn223264.aspx)從用戶端傳送通知。
 
-1. 在 [Android Studio 專案檢視] 中，展開 [App] > [src] > [main] > [res] > [layout]。 開啟 `activity_main.xml` 配置檔案，然後按一下 [文字] 索引標籤以更新檔案的文字內容。 以下列程式碼進行更新，這會加入新的 `Button` 和 `EditText` 控制項，以便將推播通知訊息傳送至通知中樞。 在底部將此程式碼加在 `</RelativeLayout>`之前。
+1. 在 [Android Studio 專案檢視] 中，展開 [App]   > [src]   > [main]   > [res]   > [layout]  。 開啟 `activity_main.xml` 配置檔案，然後按一下 [文字]  索引標籤以更新檔案的文字內容。 以下列程式碼進行更新，這會加入新的 `Button` 和 `EditText` 控制項，以便將推播通知訊息傳送至通知中樞。 在底部將此程式碼加在 `</RelativeLayout>`之前。
 
     ```xml
     <Button
@@ -505,7 +508,7 @@ ms.locfileid: "57887573"
     android:layout_marginBottom="42dp"
     android:hint="@string/notification_message_hint" />
     ```
-2. 在 [Android Studio 專案檢視] 中，展開 [App] > [src] > [main] > [res] > [values]。 開啟 `strings.xml` 檔案並加入新的 `Button` 和 `EditText` 控制項所參考的字串值。 在檔案底部，將下列幾行加在 `</resources>` 之前。
+2. 在 [Android Studio 專案檢視] 中，展開 [App]   > [src]   > [main]   > [res]   > [values]  。 開啟 `strings.xml` 檔案並加入新的 `Button` 和 `EditText` 控制項所參考的字串值。 在檔案底部，將下列幾行加在 `</resources>` 之前。
 
     ```xml
     <string name="send_button">Send Notification</string>
@@ -513,7 +516,7 @@ ms.locfileid: "57887573"
     ```
 3. 在 `NotificationSetting.java` 檔案中，將下列設定新增至 `NotificationSettings` 類別。
 
-    使用中樞的 **DefaultFullSharedAccessSignature** 連接字串更新 `HubFullAccess`。 按一下通知中樞 [設定] 頁面上的 [存取原則]，即可從 [Azure 入口網站]複製此連接字串。
+    使用中樞的 **DefaultFullSharedAccessSignature** 連接字串更新 `HubFullAccess`。 按一下通知中樞 [設定]  頁面上的 [存取原則]  ，即可從 [Azure 入口網站]複製此連接字串。
 
     ```java
     public static String HubFullAccess = "<Enter Your DefaultFullSharedAccess Connection string>";
@@ -627,7 +630,7 @@ ms.locfileid: "57887573"
         return token;
     }
     ```
-8. 在 `MainActivity.java` 中，將下列方法新增至 `MainActivity` 類別，以使用內建 REST API 處理 [傳送通知] 按鈕點選，並將推播通知訊息傳送至中樞。
+8. 在 `MainActivity.java` 中，將下列方法新增至 `MainActivity` 類別，以使用內建 REST API 處理 [傳送通知]  按鈕點選，並將推播通知訊息傳送至中樞。
 
     ```java
     /**

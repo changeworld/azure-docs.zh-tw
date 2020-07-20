@@ -3,23 +3,22 @@ title: 什麼是群組型授權 - Azure Active Directory | Microsoft Docs
 description: 了解 Azure Active Directory 群組型授權，包括其運作方式及最佳做法。
 services: active-directory
 keywords: Azure AD 授權
-author: eross-msft
+author: msaburnley
 manager: daveba
 ms.service: active-directory
 ms.subservice: fundamentals
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/29/2018
-ms.author: lizross
+ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be7094db14f53af939ded2313823bf2749e59a46
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 9eec896e6cccaf58c83820161c54c4f10cfadadd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60248290"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77561556"
 ---
 # <a name="what-is-group-based-licensing-in-azure-active-directory"></a>什麼是 Azure Active Directory 中的群組型授權？
 
@@ -32,9 +31,9 @@ Microsoft 付費的雲端服務 (例如 Office 365、Enterprise Mobility + Secur
 ## <a name="licensing-requirements"></a>授權需求
 您必須具有下列其中一個授權才能使用群組型授權：
 
-- Azure AD Basic 的付費或試用訂用帳戶
+- Azure AD Premium P1 和更新版本的付費或試用訂用帳戶
 
-- Office 365 企業版 E3 或 Office 365 A3 及更新版本的付費或試用版
+- 付費或試用版的 Office 365 企業版 E3 或 Office 365 A3 或 Office 365 GCC G3 或 office 365 E3 for GCCH 或 Office 365 E3 for DOD 和更新版本
 
 ### <a name="required-number-of-licenses"></a>所需的授權數目
 針對指派授權的任何群組，您也必須為每個唯一成員取得授權。 雖然您不必為群組中的每個成員指派授權，但您必須至少要有足夠的授權，才能包含所有成員。 例如，如果您的租用戶中有 1,000 個唯一成員屬於授權群組，則必須至少擁有 1,000 個授權，才能符合授權合約。
@@ -49,7 +48,7 @@ Microsoft 付費的雲端服務 (例如 Office 365、Enterprise Mobility + Secur
 
 - 支援所有需要使用者層級授權的 Microsoft 雲端服務。 這項支援包括所有 Office 365 產品、Enterprise Mobility + Security 和 Dynamics 365。
 
-- 群組型授權因此目前僅透過[Azure 入口網站](https://portal.azure.com)。 如果您主要是使用其他管理入口網站的使用者和群組管理，例如[Microsoft 365 系統管理中心](https://admin.microsoft.com)，若要這樣做，您可以繼續。 但是，若要在群組等級管理授權，您應該使用 Azure 入口網站。
+- 以群組為基礎的授權目前僅透過[Azure 入口網站](https://portal.azure.com)提供。 如果您主要是使用其他管理入口網站進行使用者和群組管理，例如[Microsoft 365 系統管理中心](https://admin.microsoft.com)，您可以繼續執行此動作。 但是，若要在群組等級管理授權，您應該使用 Azure 入口網站。
 
 - Azure AD 會自動管理因群組成員資格變更而產生的授權修改。 一般而言，在成員資格變更後的幾分鐘內，授權修改就會生效。
 

@@ -1,46 +1,28 @@
 ---
-title: 了解如何搭配使用 Azure Cache for Redis 與 Java 的快速入門 | Microsoft Docs
+title: 快速入門：搭配使用 Azure Cache for Redis 與 Java
 description: 在本快速入門中，您將會建立可使用 Azure Cache for Redis 的新 Java 應用程式
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: 29275a5e-2e39-4ef2-804f-7ecc5161eab9
 ms.service: cache
 ms.devlang: java
 ms.topic: quickstart
-ms.tgt_pltfrm: cache
-ms.workload: tbd
-ms.date: 05/23/2018
+ms.date: 05/22/2020
 ms.author: yegu
-ms.custom: mvc
-ms.openlocfilehash: 047350fa957d9ca1fdec50f97a590ba90a42e1b2
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.custom: mvc, seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: 02430e2dfa68ff0ce4bf116666d72a46e1120746
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237761"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848850"
 ---
-# <a name="quickstart-how-to-use-azure-cache-for-redis-with-java"></a>快速入門：如何搭配使用 Azure Cache for Redis 與 Java
+# <a name="quickstart-use-azure-cache-for-redis-with-java"></a>快速入門：搭配使用 Azure Cache for Redis 與 Java
 
+在本快速入門中，您會使用 [Jedis](https://github.com/xetorthio/jedis) Redis 用戶端將 Azure Cache for Redis 納入 Java 應用程式中，以便存取可從 Azure 內的任何應用程式存取的安全、專用快取。
 
-Azure Cache for Redis 可讓您存取由 Microsoft 所管理的專用 Azure Cache for Redis。 從 Microsoft Azure 內的任何應用程式都可以存取您的快取。
+## <a name="prerequisites"></a>Prerequisites
 
-本文示範如何使用適用於 Java 的 [Jedis](https://github.com/xetorthio/jedis) \(英文\) Redis 用戶端來開始使用 Azure Cache for Redis。
-
-![快取應用程式已完成](./media/cache-java-get-started/cache-app-complete.png)
-
-您可以使用任何程式碼編輯器來完成本快速入門中的步驟。 不過，於 Windows、macOS 和 Linux 平台上所提供的 [Visual Studio Code](https://code.visualstudio.com/) 是項不錯的選擇。
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-
-
-## <a name="prerequisites"></a>必要條件
-
-[Apache Maven](https://maven.apache.org/)
-
-
+- Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)
+- [Apache Maven](https://maven.apache.org/download.cgi)
 
 ## <a name="create-an-azure-cache-for-redis"></a>建立 Azure Cache for Redis
 
@@ -50,7 +32,7 @@ Azure Cache for Redis 可讓您存取由 Microsoft 所管理的專用 Azure Cach
 
 為**主機名稱**和**主要**存取金鑰新增環境變數。 您會從程式碼使用這些變數，而不是直接在程式碼中包含敏感性資訊。
 
-```
+```CMD 
 set REDISCACHEHOSTNAME=contosoCache.redis.cache.windows.net
 set REDISCACHEKEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ```
@@ -59,19 +41,19 @@ set REDISCACHEKEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 使用 Maven 產生新的快速入門應用程式：
 
-```
+```CMD
 mvn archetype:generate -DarchetypeGroupId=org.apache.maven.archetypes -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.3 -DgroupId=example.demo -DartifactId=redistest -Dversion=1.0
 ```
 
-變更為新的 redistest 專案目錄。
+變更為新的 redistest  專案目錄。
 
-開啟 pom.xml 檔案，然後新增 [Jedis](https://github.com/xetorthio/jedis) 的相依性：
+開啟 pom.xml  檔案，然後新增 [Jedis](https://github.com/xetorthio/jedis) 的相依性：
 
 ```xml
     <dependency>
         <groupId>redis.clients</groupId>
         <artifactId>jedis</artifactId>
-        <version>2.9.0</version>
+        <version>3.2.0</version>
         <type>jar</type>
         <scope>compile</scope>
     </dependency>
@@ -79,7 +61,7 @@ mvn archetype:generate -DarchetypeGroupId=org.apache.maven.archetypes -Darchetyp
 
 儲存 *pom.xml* 檔案。
 
-開啟 App.java 檔案，並以下列程式碼取代其中的程式碼：
+開啟 App.java  檔案，並以下列程式碼取代其中的程式碼：
 
 ```java
 package example.demo;
@@ -100,7 +82,7 @@ public class App
         String cacheHostname = System.getenv("REDISCACHEHOSTNAME");
         String cachekey = System.getenv("REDISCACHEKEY");
 
-        // Connect to the Azure Cache for Redis over the SSL port using the key.
+        // Connect to the Azure Cache for Redis over the TLS/SSL port using the key.
         JedisShardInfo shardInfo = new JedisShardInfo(cacheHostname, 6380, useSsl);
         shardInfo.setPassword(cachekey); /* Use your access key. */
         Jedis jedis = new Jedis(shardInfo);      
@@ -133,21 +115,20 @@ public class App
 
 此程式碼示範如何使用快取主機名稱和金鑰環境變數來連線至 Azure Cache for Redis 執行個體。 此程式碼也會將字串值儲存到快取中，以及擷取其中的字串值。 `PING` 和 `CLIENT LIST` 命令也會執行。 
 
-儲存 App.java。
+儲存 App.java  。
 
 ## <a name="build-and-run-the-app"></a>建置並執行應用程式
 
 執行下列 Maven 命令，以建置和執行應用程式：
 
-```
+```CMD
 mvn compile
 mvn exec:java -D exec.mainClass=example.demo.App
 ```
 
 在下列範例中，您會看到 `Message` 金鑰先前有快取值，此值是在 Azure 入口網站中使用 Redis 主控台所設定的。 應用程式更新了該快取值。 應用程式也已執行 `PING` 和 `CLIENT LIST` 命令。
 
-![快取應用程式已完成](./media/cache-java-get-started/cache-app-complete.png)
-
+![Azure Cache for Redis 應用程式已完成](./media/cache-java-get-started/azure-cache-redis-complete.png)
 
 ## <a name="clean-up-resources"></a>清除資源
 
@@ -159,17 +140,15 @@ mvn exec:java -D exec.mainClass=example.demo.App
 > 刪除資源群組是無法回復的動作，資源群組和其內的所有資源將會永久刪除。 請確定您不會不小心刪除錯誤的資源群組或資源。 如果您是在包含有需要保留之資源的現有資源群組內，建立用來裝載此範例的資源，則可以從每個資源各自的刀鋒視窗中個別刪除每個資源，而不必刪除正個資源群組。
 >
 
-登入 [Azure 入口網站](https://portal.azure.com)，然後按一下 [資源群組]。
+1. 登入 [Azure 入口網站](https://portal.azure.com)，然後選取 [資源群組]  。
 
-在 [依名稱篩選...] 文字方塊中，輸入您的資源群組名稱。 本文的指示是使用名為 TestResources 的資源群組。 在結果清單中的目標資源群組上方，按一下 **...**，然後按一下 [刪除資源群組]。
+1. 在 [依名稱篩選]  文字方塊中，輸入您的資源群組名稱。 本文的指示是使用名為 TestResources  的資源群組。 在結果清單中的目標資源群組上方，選取 **...** ，然後按一下 [刪除資源群組]  。
 
-![刪除](./media/cache-java-get-started/cache-delete-resource-group.png)
+   ![Azure 資源群組已刪除](./media/cache-java-get-started/azure-cache-redis-delete-resource-group.png)
 
-系統將會要求您確認是否刪除資源。 輸入您的資源群組名稱來確認，然後按一下 [刪除]。
+1. 系統將會要求您確認是否刪除資源。 輸入您資源群組的名稱以進行確認，然後選取 [刪除]  。
 
 片刻過後，系統便會刪除該資源群組及其所有內含的資源。
-
-
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -177,6 +156,3 @@ mvn exec:java -D exec.mainClass=example.demo.App
 
 > [!div class="nextstepaction"]
 > [建立可使用 Azure Cache for Redis 的 ASP.NET Web 應用程式。](./cache-web-app-howto.md)
-
-
-

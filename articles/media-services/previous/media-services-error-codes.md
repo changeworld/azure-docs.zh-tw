@@ -1,6 +1,6 @@
 ---
 title: Azure 媒體服務錯誤代碼 | Microsoft Docs
-description: 本主題提供 Azure 媒體服務錯誤代碼的概觀。
+description: 視問題而定，您可能會收到來自服務的 HTTP 錯誤碼，例如驗證權杖過期至媒體服務中不支援的動作。 本文提供 Azure 媒體服務 v2 API 錯誤碼的總覽。
 author: Juliako
 manager: femila
 editor: ''
@@ -14,15 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: f3c362730e7908e88b363659b7fa580b6f2cddf1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: f5a2dd68d86a7a38fc7f2942351c42c84742d104
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61217154"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "74887062"
 ---
 # <a name="azure-media-services-error-codes"></a>Azure 媒體服務錯誤代碼
-使用 Microsoft Azure 媒體服務時，您可能會根據問題從服務收到 HTTP 錯誤代碼，例如驗證權杖過期到媒體服務中不支援的動作。 以下是媒體服務可能會傳回的「HTTP 錯誤代碼」的清單，以及其可能原因。  
+使用 Microsoft Azure 媒體服務時，您可能會根據問題從服務收到 HTTP 錯誤代碼，例如驗證權杖過期到媒體服務中不支援的動作。 以下是媒體服務可能會傳回的「HTTP 錯誤代碼」**** 的清單，以及其可能原因。  
 
 ## <a name="400-bad-request"></a>400 不正確的要求
 要求包含無效的資訊，並且因為下列其中一個原因遭到拒絕︰
@@ -35,7 +34,7 @@ ms.locfileid: "61217154"
   > 
   > 
 * 已指定未定義的屬性。 屬性名稱在錯誤訊息中。 只能指定屬於指定實體的屬性。 請參閱 [Azure 媒體服務 REST API 參考](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference)，以取得實體及其屬性的清單。
-* 已指定無效的屬性值。 错误消息中提供属性名称。 請參閱先前連結以取得有效屬性類型及其值。
+* 已指定無效的屬性值。 屬性名稱在錯誤訊息中。 請參閱先前連結以取得有效屬性類型及其值。
 * 遺漏必要的屬性值。
 * 指定 URL 的一部分包含不正確的值。
 * 嘗試更新 WriteOnce 屬性。
@@ -52,7 +51,7 @@ ms.locfileid: "61217154"
   * 權杖包含無效的簽章。
 
 ## <a name="403-forbidden"></a>403 禁止
-出于以下原因之一，不允许该请求：
+基於下列原因之一不允許此要求：
 
 * 找不到媒體服務帳戶，或已被刪除。
 * 媒體服務帳戶已停用，且要求類型並非 HTTP GET。 服務作業也會傳回 403 回應。
@@ -89,7 +88,7 @@ ms.locfileid: "61217154"
 * 將資產的儲存體帳戶連結到 IngestManifestAsset，與父項 IngestManifest 所使用的儲存體帳戶不相同。  
 
 ## <a name="500-internal-server-error"></a>500 內部伺服器錯誤
-在處理要求時，媒體服務遇到錯誤，而導致無法繼續處理。 这可能是以下原因之一造成的：
+在處理要求時，媒體服務遇到錯誤，而導致無法繼續處理。 這可能是下列其中一個原因所造成：
 
 * 無法建立資產或作業，因為媒體服務帳戶的服務配額資訊暫時無法使用。
 * 無法建立資產或 IngestManifest blob 儲存體容器，因為帳戶的儲存體帳戶資訊暫時無法使用。
@@ -116,7 +115,7 @@ ms.locfileid: "61217154"
 > 
 > 
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>另請參閱
 [媒體服務管理錯誤代碼](https://msdn.microsoft.com/library/windowsazure/dn167016.aspx)
 
 ## <a name="next-steps"></a>後續步驟

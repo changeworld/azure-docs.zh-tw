@@ -1,5 +1,5 @@
 ---
-title: Azure 後端連線功能的互通性：控制平面分析 | Microsoft Docs
+title: Azure 中的互通性：控制平面分析
 description: 本文提供測試設定的控制平面分析，您可用來分析 Azure 中 ExpressRoute、站對站 VPN 及虛擬網路對等互連之間的互通性。
 documentationcenter: na
 services: networking
@@ -10,14 +10,14 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
-ms.openlocfilehash: 28ce4cfd0c62586510a6f7dfdeca8b552fe9638e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5e41bc86533815c394077bf5276d930fe958cd19
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60425563"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80518279"
 ---
-# <a name="interoperability-in-azure-back-end-connectivity-features-control-plane-analysis"></a>Azure 后端连接功能中的互操作性：控制平面分析
+# <a name="interoperability-in-azure--control-plane-analysis"></a>Azure 中的互通性：控制平面分析
 
 本文說明[測試設定][Setup]的控制平面分析。 您也可以檢閱測試設定的[測試設定組態][Configuration]和[資料平面分析][Data-Analysis]。
 
@@ -27,13 +27,13 @@ ms.locfileid: "60425563"
 
 下圖從中樞虛擬網路 (VNet) 和輪輻 VNet (藍色醒目顯示) 的視角說明網路。 此圖也顯示不同網路的自治系統號碼 (ASN)，以及在不同網路之間交換的路由： 
 
-[![1]][1]
+![1][1]
 
-VNet 的 Azure ExpressRoute 閘道 ASN 與 Microsoft Enterprise Edge Router (MSEE) 的 ASN 不同。 ExpressRoute 閘道使用私人 ASN (值為 **65515**)，MSEE 則使用全球公用 ASN (值為 **12076**)。 當您設定 ExpressRoute 對等互連時，由於 MSEE 為同儕節點，您應使用 **12076** 作為對等 ASN。 在 Azure 端，MSEE 透過 ExpressRoute 閘道建立 eBGP 對等互連。 MSEE 為個別 ExpressRoute 對等互連建立的雙重 eBGP 對等互連於控制平面層級中為公開透明狀態。 因此，當您檢視 ExpressRoute 路由表時，您會看到 VNet 的首碼為 VNet 的 ExpressRoute 閘道 ASN。 
+VNet 的 Azure ExpressRoute 閘道 ASN 與 Microsoft Enterprise Edge Router (MSEE) 的 ASN 不同。 ExpressRoute 閘道使用私人 ASN (值為 **65515**)，MSEE 則使用全球公用 ASN (值為 **12076**)。 當您設定 ExpressRoute 對等互連時，因為 MSEE 是對等體，所以您會使用**12076**作為對等 ASN。 在 Azure 端，MSEE 透過 ExpressRoute 閘道建立 eBGP 對等互連。 MSEE 為個別 ExpressRoute 對等互連建立的雙重 eBGP 對等互連於控制平面層級中為公開透明狀態。 因此，當您查看 ExpressRoute 路由表時，您會看到 vnet 的首碼的 ExpressRoute 閘道 ASN。 
 
 以下顯示 ExpressRoute 路由表範例： 
 
-[![5]][5]
+![5][5]
 
 在 Azure 中，ASN 只有在對等互連視角中才屬重要資訊。 根據預設，Azure VPN 閘道中 ExpressRoute 閘道和 VPN 閘道的 ASN 均為 **65515**。
 
@@ -41,19 +41,19 @@ VNet 的 Azure ExpressRoute 閘道 ASN 與 Microsoft Enterprise Edge Router (MSE
 
 內部部署位置 1 和遠端 VNet 都會透過 ExpressRoute 1 連線到中樞 VNet。 它們會共用相同的拓撲視角，如下圖所示︰
 
-[![2]][2]
+![2][2]
 
 ## <a name="on-premises-location-1-and-the-branch-vnet-perspective-via-a-site-to-site-vpn"></a>透過站對站 VPN 的內部部署位置 1 和分支 VNet 視角
 
-內部部署位置 1 和分支 VNet 都會透過站對站 VPN 連線來連線到中樞 VNet 的 VPN 閘道。 它們會共用相同的拓撲視角，如下圖所示︰
+內部部署位置1和分支 VNet 都會透過站對站 VPN 連線連接到中樞 VNet 的 VPN 閘道。 它們會共用相同的拓撲視角，如下圖所示︰
 
-[![3]][3]
+![3][3]
 
 ## <a name="on-premises-location-2-perspective"></a>內部部署位置 2 視角
 
 內部部署位置 2 會透過 ExpressRoute 2 的私人對等互連連線至中樞 VNet： 
 
-[![4]][4]
+![4][4]
 
 ## <a name="expressroute-and-site-to-site-vpn-connectivity-in-tandem"></a>ExpressRoute 和站對站 VPN 連線串聯
 
@@ -94,10 +94,10 @@ ExpressRoute 作為備援線路組可確保高可用性。 您可以在不同的
 
 
 <!--Image References-->
-[1]: ./media/backend-interoperability/HubView.png "中樞和輪輻 VNet 拓撲視角"
-[2]: ./media/backend-interoperability/Loc1ExRView.png "透過拓撲 ExpressRoute 1 的位置 1 和遠端 VNet 拓撲視角"
-[3]: ./media/backend-interoperability/Loc1VPNView.png "透過站對站 VPN 的位置 1 和分支 VNet 拓撲視角"
-[4]: ./media/backend-interoperability/Loc2View.png "位置 2 拓撲視角"
+[1]: ./media/backend-interoperability/HubView.png "拓撲的中樞和輪輻 VNet 觀點"
+[2]: ./media/backend-interoperability/Loc1ExRView.png "透過 ExpressRoute 1 的位置1和遠端 VNet 拓撲透視圖"
+[3]: ./media/backend-interoperability/Loc1VPNView.png "透過站對站 VPN 的位置1和分支 VNet 拓撲的觀點"
+[4]: ./media/backend-interoperability/Loc2View.png "拓撲的位置2觀點"
 [5]: ./media/backend-interoperability/ExR1-RouteTable.png "ExpressRoute 1 路由表"
 
 <!--Link References-->

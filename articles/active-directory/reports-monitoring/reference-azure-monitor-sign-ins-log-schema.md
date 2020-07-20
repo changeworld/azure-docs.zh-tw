@@ -1,6 +1,6 @@
 ---
-title: Azure 監視器中的 azure Active Directory 登入記錄檔結構描述 |Microsoft Docs
-description: 描述 Azure AD 登入使用 Azure 監視器中的記錄結構描述
+title: Azure 監視器中的登入記錄架構 |Microsoft Docs
+description: 描述用於 Azure 監視器的 Azure AD 登入記錄架構
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -17,14 +17,14 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8ac6c56dca100ea9836158f46881c4eb12213e1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6d7c9713f27643e792ea381e1a2419cbc4b67a99
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60285189"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82129207"
 ---
-# <a name="interpret-the-azure-ad-sign-in-logs-schema-in-azure-monitor"></a>解譯 Azure 監視器中的 Azure AD 單一登入架構
+# <a name="interpret-the-azure-ad-sign-in-logs-schema-in-azure-monitor"></a>解讀 Azure 監視器中的 Azure AD 登入記錄架構
 
 此文章說明 Azure 監視器中的 Azure Active Directory (Azure AD) 登入記錄結構描述。 大部分與登入相關的資訊都會在 `records` 物件的 *Properties* 屬性下提供。
 
@@ -145,8 +145,8 @@ ms.locfileid: "60285189"
 
 | 欄位名稱 | 描述 |
 |------------|-------------|
-| 時間 | 日期和時間 (UTC)。 |
-| resourceId | 此值未對應，您可以放心地略過此欄位。  |
+| Time | 日期和時間 (UTC)。 |
+| ResourceId | 此值未對應，您可以放心地略過此欄位。  |
 | OperationName | 針對登入，這個值一律是 *Sign-in activity*。 |
 | OperationVersion | 用戶端要求的 REST API 版本。 |
 | 類別 | 針對登入，這個值一律是 *SignIn*。 | 
@@ -154,15 +154,20 @@ ms.locfileid: "60285189"
 | ResultType | 登入作業的結果可以是 *Success* 或 *Failure*。 | 
 | ResultSignature | 包含登入作業的錯誤碼 (如果有)。 |
 | ResultDescription | 提供登入作業的錯誤描述。 |
-| DurationMs |  此值未對應，您可以放心地略過此欄位。|
+| riskDetail | riskDetail | 在有風險的使用者、登入或風險偵測的特定狀態之後提供「原因」。 可能的值為： `none` 、 `adminGeneratedTemporaryPassword` 、 `userPerformedSecuredPasswordChange` 、 `userPerformedSecuredPasswordReset` 、 `adminConfirmedSigninSafe` `aiConfirmedSigninSafe` `userPassedMFADrivenByRiskBasedPolicy` `adminDismissedAllRiskForUser` `adminConfirmedSigninCompromised` `unknownFutureValue` 、、、、、。 值 `none` 表示使用者未執行任何動作，或目前未登入。 <br>**注意：** 此屬性的詳細資料需要 Azure AD Premium P2 授權。 其他授權則會傳回值 `hidden` 。 |
+| riskEventTypes | riskEventTypes | 與登入相關聯的風險偵測類型。 可能的值為：、、、、、、、、 `unlikelyTravel` `anonymizedIPAddress` `maliciousIPAddress` `unfamiliarFeatures` `malwareInfectedIPAddress` `suspiciousIPAddress` `leakedCredentials` `investigationsThreatIntelligence` `generic` 和 `unknownFutureValue` 。 |
+| riskLevelAggregated | riskLevel | 匯總的風險層級。 可能的值為： `none` 、 `low` 、 `medium` 、 `high` 、 `hidden` 和 `unknownFutureValue` 。 值 `hidden` 表示未啟用 Azure AD Identity Protection 的使用者或登入。 **注意：** 只有 Azure AD Premium P2 客戶才能使用此屬性的詳細資料。 將會傳回所有其他客戶 `hidden` 。 |
+| riskLevelDuringSignIn | riskLevel | 登入期間的風險層級。 可能的值為： `none` 、 `low` 、 `medium` 、 `high` 、 `hidden` 和 `unknownFutureValue` 。 值 `hidden` 表示未啟用 Azure AD Identity Protection 的使用者或登入。 **注意：** 只有 Azure AD Premium P2 客戶才能使用此屬性的詳細資料。 將會傳回所有其他客戶 `hidden` 。 |
+| riskState | riskState | 報告有風險的使用者、登入或風險偵測的狀態。 可能的值為： `none` 、 `confirmedSafe` 、 `remediated` 、 `dismissed` 、 `atRisk` 、 `confirmedCompromised` 、 `unknownFutureValue` 。 |
+| DurationMs |  此值未對應，您可以放心地略過此欄位。 |
 | CallerIpAddress | 發出要求之用戶端的 IP 位址。 | 
 | CorrelationId | 用戶端傳遞的選擇性 GUID。 此值能協助將用戶端作業和伺服器端作業相互關聯，當您在追蹤跨服務的記錄時它會很有用。 |
 | 身分識別 | 當您發出要求時，來自出示之權杖的身分識別。 它可以是使用者帳戶、系統帳戶或服務主體。 |
-| Level | 提供訊息的類型。 針對稽核，它一律是 *Informational*。 |
-| 位置 | 提供登入活動的位置。 |
-| properties | 列出與登入相關的所有屬性。如需詳細資訊，請參閱 [Microsoft 圖形 API 參考](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin) \(英文\)。 此結構描述使用與登入資源相同的屬性名稱，以提高可讀性。
+| 層級 | 提供訊息的類型。 針對稽核，它一律是 *Informational*。 |
+| Location | 提供登入活動的位置。 |
+| 屬性 | 列出與登入相關聯的所有屬性。如需詳細資訊，請參閱[MICROSOFT GRAPH API 參考](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)。 此結構描述使用與登入資源相同的屬性名稱，以提高可讀性。
 
 ## <a name="next-steps"></a>後續步驟
 
-* [解譯 Azure 監視器中的稽核記錄結構描述](reference-azure-monitor-audit-log-schema.md)
-* [深入了解 Azure 診斷記錄](../../azure-monitor/platform/diagnostic-logs-overview.md)
+* [解讀 Azure 監視器中的 audit 記錄架構](reference-azure-monitor-audit-log-schema.md)
+* [深入瞭解 Azure 平臺記錄](../../azure-monitor/platform/platform-logs-overview.md)

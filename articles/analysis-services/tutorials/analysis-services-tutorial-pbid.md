@@ -1,21 +1,20 @@
 ---
-title: 教學課程 - 使用 Power BI Desktop 連線至 Azure Analysis Services | Microsoft Docs
+title: 教學課程 - 使用 Power BI Desktop 與 Azure Analysis Services 連線 | Microsoft Docs
 author: minewiskan
-manager: kfile
-description: 了解如何使用 Power BI Desktop 連線到 Azure Analysis Services。
+description: 了解如何從 Azure 入口網站取得 Analysis Services 的伺服器名稱，然後使用 Power BI Desktop 來連線到伺服器。
 ms.service: azure-analysis-services
 ms.topic: tutorial
-ms.date: 01/09/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: 5d021aa7a6d55bb071340ebcd8e7090a4b0c2e2f
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 4d8c753f06e58fd1cce1c55eca213637cb70e436
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188805"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "73572324"
 ---
-# <a name="tutorial-connect-with-power-bi-desktop"></a>教學課程：使用 Power BI Desktop 進行連線
+# <a name="tutorial-connect-with-power-bi-desktop"></a>教學課程 - 使用 Power BI Desktop 進行連線
 
 在本教學課程中，您會使用 Power BI Desktop 連線至伺服器上的 adventureworks 範例模型資料庫。 您所完成的工作會模擬一般使用者對模型的連線，並從模型資料建立基本報告。
 
@@ -24,7 +23,7 @@ ms.locfileid: "54188805"
 > * 使用 Power BI Desktop 進行連線
 > * 建立基本報告
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - [新增 adventureworks 範例模型資料庫](../analysis-services-create-sample-model.md)至您的伺服器。
 - 具有 adventureworks 範例模型資料庫的[*讀取*](../analysis-services-server-admins.md)權限。
@@ -38,29 +37,29 @@ ms.locfileid: "54188805"
 ## <a name="get-server-name"></a>取得伺服器名稱
 若要從 Power BI Desktop 連線至您的伺服器，首先您必須要有伺服器名稱。 您可以從入口網站取得伺服器名稱。
 
-在 [Azure 入口網站] > 伺服器 > [概觀]  >  [伺服器名稱] 中，複製伺服器名稱。
+在 [Azure 入口網站]  > 伺服器 > [概觀]   >  [伺服器名稱]  中，複製伺服器名稱。
    
    ![在 Azure 中取得伺服器名稱](./media/analysis-services-tutorial-pbid/aas-copy-server-name.png)
 
 ## <a name="connect-in-power-bi-desktop"></a>在 Power BI Desktop 中連線
 
-1. 在 Power BI Desktop 中，按一下 [取得資料] > [Azure] > [Azure Analysis Services 資料庫]。
+1. 在 Power BI Desktop 中，按一下 [取得資料]   > [Azure]   > [Azure Analysis Services 資料庫]  。
 
    ![取得資料中的連線](./media/analysis-services-tutorial-pbid/aas-pbid-connect-aasserver.png)
 
-2. 在 [伺服器] 中貼上伺服器名稱，然後在 [資料庫] 中輸入 **adventureworks**，然後按一下 [確定]。
+2. 在 [伺服器]  中貼上伺服器名稱，然後在 [資料庫]  中輸入 **adventureworks**，然後按一下 [確定]  。
 
    ![指定伺服器名稱和模型資料庫](./media/analysis-services-tutorial-pbid/aas-pbid-connect-aas-servername.png)
 
 3. 出現提示時，請輸入您的認證。 您所輸入的帳戶至少必須具有 adventureworks 範例模型資料庫的讀取權限。
 
-    adventureworks 模型會在 Power BI Desktop 中開啟，並在 [報告] 檢視中顯示一個空白報告。 [欄位] 清單會顯示所有非隱藏的模型物件。 連線狀態會顯示在右下角。
+    adventureworks 模型會在 Power BI Desktop 中開啟，並在 [報告] 檢視中顯示一個空白報告。 [欄位]  清單會顯示所有非隱藏的模型物件。 連線狀態會顯示在右下角。
 
-4. 在 [視覺效果] 中選取 [群組橫條圖]，然後按一下 [格式]\(滾筒刷圖示)，接著開啟 [資料標籤]。 
+4. 在 [視覺效果]  中選取 [群組橫條圖]  ，然後按一下 [格式]  \(滾筒刷圖示)，接著開啟 [資料標籤]  。 
 
    ![視覺效果](./media/analysis-services-tutorial-pbid/aas-pbid-visualizations-report.png)
 
-5. 在 [欄位] > [網際網路銷售] 資料表中，選取 [網際網路銷售總計] 和 [盈餘] 量值。 在 [產品類別] 資料表中，選取 [產品類別名稱]。
+5. 在 [欄位]   > [網際網路銷售]  資料表中，選取 [網際網路銷售總計]  和 [盈餘]  量值。 在 [產品類別]  資料表中，選取 [產品類別名稱]  。
 
    ![完成報告](./media/analysis-services-tutorial-pbid/aas-pbid-complete-report.png)
 
@@ -71,4 +70,4 @@ ms.locfileid: "54188805"
 不再需要報告時請不要加以儲存，或刪除您先前儲存的檔案。
 
 ## <a name="next-steps"></a>後續步驟
-在本教學課程中，您已了解如何使用 Power BI Desktop 連線至伺服器上的資料模型，並建立基本報告。 如果您不熟悉如何建立資料模型，請參閱 [Adventure Works 網際網路銷售表格式資料模型教學課程](aas-adventure-works-tutorial.md)。
+在本教學課程中，您已了解如何使用 Power BI Desktop 連線至伺服器上的資料模型，並建立基本報告。 如果您不熟悉如何建立資料模型，請參閱 SQL Server Analysis Services 文件中的 [Adventure Works 網際網路銷售表格式資料模型教學課程](https://docs.microsoft.com/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial) \(部分機器翻譯\)。

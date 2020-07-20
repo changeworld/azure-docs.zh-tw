@@ -1,24 +1,22 @@
 ---
-title: 運算子最佳做法 - Azure Kubernetes Services (AKS) 中的進階排程器功能
+title: 排程器功能的最佳做法
+titleSuffix: Azure Kubernetes Service
 description: 了解叢集運算子在 Azure Kubernetes Service (AKS) 中使用進階排程器功能 (如污點和容差、節點選取器和親和性，或 Inter-pod 親和性和反親和性) 的最佳作法
 services: container-service
-author: iainfoulds
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.author: iainfou
-ms.openlocfilehash: 78f54e9e86de7a8b1b80300e0ed79a5e54f29282
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 5b003c9f0c3b47779bd7da92fb64c57830911fae
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65074191"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077842"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Services (AKS) 中進階排程器功能的最佳做法
 
-當您管理 Azure Kubernetes Service (AKS) 中的叢集時，通常必須隔離小組和工作負載。 Kubernetes 排程器提供了進階功能，可讓您控制可以在特定節點上排程哪些 pod，或者如何在叢集中適當地散發多 pod 應用程式。 
+您在管理 Azure Kubernetes Service (AKS) 中的叢集時，往往需要隔離小組和工作負載。 Kubernetes 排程器提供了一些先進的功能，可讓您控制哪些 pod 可以在特定節點上排定，或如何在整個叢集中適當地散發多 pod 應用程式。 
 
-本最佳做法文章著重於叢集運算子的進階 Kubernetes 排程功能。 在本文中，您將了解：
+本最佳做法文章著重於叢集運算子的進階 Kubernetes 排程功能。 在本文中，您將學會如何：
 
 > [!div class="checklist"]
 > * 使用污點和容差來限制可以在節點上排程的 pod
@@ -31,14 +29,14 @@ ms.locfileid: "65074191"
 
 建立 AKS 叢集時，可以部署具有 GPU 支援的節點或大量功能強大的 CPU。 這些節點通常用於巨量資料處理工作負載，例如機器學習 (ML) 或人工智慧 (AI)。 由於這種類型的硬體通常是要部署的昂貴節點資源，因此請限制可在這些節點上排程的工作負載。 您可能希望在叢集中專用某些節點來執行輸入服務，並防止其他工作負載。
 
-這項支援不同的節點是使用多個節點的集區來提供。 AKS 叢集提供一或多個節點的集區。 在 AKS 中的多個節點集區的支援目前為預覽狀態。
+使用多個節點集區，即可提供這種不同節點的支援。 AKS 叢集提供一或多個節點集區。
 
 Kubernetes 排程器可以使用污點和容差來限制可以在節點上執行的工作負載。
 
 * **污點**會套用至節點，該節點指示僅可以在其上排程特定的 pod。
 * 然後**容差**會套用至容器，允許它們*容許*節點的污點。
 
-將 pod 部署至 AKS 叢集時，Kubernetes 只會在容差與污點對齊之節點上排程 pod。 例如，假設您有支援在 AKS 叢集中配備 GPU 的節點的節點集區。 您可以定義名稱，例如 *gpu*，然後定義排程的值。 如果將此值設定為 *NoSchedule*，則如果 pod 未定義適當的容差，則 Kubernetes 排程器無法在節點上排程 pod。
+將 pod 部署至 AKS 叢集時，Kubernetes 只會在容差與污點對齊之節點上排程 pod。 例如，假設您的 AKS 叢集中有一個節點集區，適用于具有 GPU 支援的節點。 您可以定義名稱，例如 *gpu*，然後定義排程的值。 如果將此值設定為 *NoSchedule*，則如果 pod 未定義適當的容差，則 Kubernetes 排程器無法在節點上排程 pod。
 
 ```console
 kubectl taint node aks-nodepool1 sku=gpu:NoSchedule
@@ -75,24 +73,24 @@ spec:
 
 如需污點和容差的相關詳細資訊，請參閱[套用污點和容差][k8s-taints-tolerations]。
 
-如需如何使用 AKS 中的多個節點集區的詳細資訊，請參閱[建立及管理在 AKS 叢集中多個節點的集區][use-multiple-node-pools]。
+如需有關如何在 AKS 中使用多個節點集區的詳細資訊，請參閱[在 AKS 中建立和管理叢集的多個節點][use-multiple-node-pools]集區。
 
-### <a name="behavior-of-taints-and-tolerations-in-aks"></a>Taints 和 tolerations AKS 中的行為
+### <a name="behavior-of-taints-and-tolerations-in-aks"></a>AKS 中污點和容差的行為
 
-當您升級 AKS 中的節點集區時，taints 和 tolerations 依照組模式所要套用至新的節點：
+當您升級 AKS 中的節點集區時，污點和容差會遵循套用至新節點的設定模式：
 
-- **預設的叢集，而不使用虛擬機器擴展支援**
-  - 假設您有一個雙節點叢集- *node1*並*node2*。 當您升級時，其他的節點 (*node3*) 建立。
-  - 從 taints *node1*套用至*node3*，然後*node1*便會刪除。
-  - 在建立另一個新的節點 (名為*node1*，自前一個*node1*已刪除)，而*node2* taints 會套用至新*node1*. 然後， *node2*會被刪除。
-  - 基本上*node1*會變成*node3*，並*node2*會成為*node1*。
+- **使用虛擬機器擴展集的預設叢集**
+  - 假設您有兩個節點的叢集-節點*1*和*節點 2*。 您會升級節點集區。
+  - 會建立兩個額外的節點： *node3*和*node4*，並分別傳遞污點。
+  - 系統會刪除原始的*節點 1*和*節點 2* 。
 
-- **叢集所使用的虛擬機器擴展集**（目前在 AKS 中的預覽）
-  - 同樣地，讓我們假設您有一個雙節點叢集- *node1*並*node2*。 您升級的節點集區。
-  - 建立兩個額外的節點， *node3*並*node4*，並分別 taints 傳遞。
-  - 原始*node1*並*node2*會被刪除。
+- **不支援虛擬機器擴展集的叢集**
+  - 同樣地，假設您有兩個節點的叢集-節點*1*和*節點 2*。 當您升級時，會建立額外的節點（*node3*）。
+  - *節點 1*的污點會套用至*node3*，然後再刪除*節點 1* 。
+  - 會建立另一個新節點（名為*節點 1*，因為先前的*節點 1*已刪除），而*節點 2*的污點會套用至新的節點*1*。 然後，刪除*節點 2* 。
+  - 在本質上，*節點 1*會變成*node3*，而*節點 2*則會變成*節點 1*。
 
-當您調整 AKS 中的節點集區時，taints 和 tolerations 不含依設計。
+當您在 AKS 中調整節點集區時，污點和容差不會透過設計來執行。
 
 ## <a name="control-pod-scheduling-using-node-selectors-and-affinity"></a>使用節點選取器和親和性來控制 pod 排程
 
@@ -103,7 +101,7 @@ spec:
 讓我們看一下使用大量記憶體的節點範例。 這些節點可以提供要求大量記憶體的 pod 的喜好設定。 為了確定資源不會閒置，它們也會允許其他 pod 執行。
 
 ```console
-kubectl label node aks-nodepool1 hardware:highmem
+kubectl label node aks-nodepool1 hardware=highmem
 ```
 
 然後，pod 規格會新增 `nodeSelector` 屬性，以定義與節點上設定之標籤相符的節點選取器：
@@ -124,7 +122,7 @@ spec:
       limits:
         cpu: 4.0
         memory: 16Gi
-    nodeSelector:
+  nodeSelector:
       hardware: highmem
 ```
 
@@ -136,7 +134,7 @@ spec:
 
 節點選取器是將 pod 指派給指定節點的基本方法。 使用*節點親和性*可以獲得更多的彈性。 使用節點親和性，您可以定義如果pod無法與節點匹配會發生什麼事。 您可以*要求* Kubernetes 排程器與加上標籤的主機的 pod 相符。 或者，您可以*偏好*相符項目，但如果沒有相符項目，則允許在其他主機上排程 pod。
 
-下列範例將節點親和性設定為 *requiredDuringSchedulingIgnoredDuringExecution*。 此親和性要求Kubernetes計劃使用具有匹配標籤的節點。 如果沒有可用節點，則 pod 必須等候排程以繼續。 若要允許在其他節點上排程 pod，您可以將值設定為 *preferredDuringScheduledIgnoreDuringExecution*：
+下列範例將節點親和性設定為 *requiredDuringSchedulingIgnoredDuringExecution*。 此親和性要求Kubernetes計劃使用具有匹配標籤的節點。 如果沒有可用節點，則 pod 必須等候排程以繼續。 若要允許在不同節點上排程 pod，您可以改為將值設定為*preferredDuringSchedulingIgnoreDuringExecution*：
 
 ```yaml
 kind: Pod
@@ -157,11 +155,11 @@ spec:
   affinity:
     nodeAffinity:
       requiredDuringSchedulingIgnoredDuringExecution:
-      nodeSelectorTerms:
-      - matchExpressions:
-        - key: hardware
-          operator: In
-          values: highmem
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: hardware
+            operator: In
+            values: highmem
 ```
 
 設定的 *IgnoredDuringExecution* 部分指出如果節點標籤發生變更，則不應從節點中刪除該 pod。 Kubernetes 排程器僅對正在排程的新 pod，而不是已在節點上排程的 pod 使用更新的節點標籤。
@@ -170,16 +168,16 @@ spec:
 
 ### <a name="inter-pod-affinity-and-anti-affinity"></a>Inter-pod 親和性和反親和性
 
-Kubernetes 排程器以邏輯方式隔離工作負載的最後一種方法，是使用 inter-pod 親和性或反親和性。 這些設定定義「不應該」在具有現有相符 pod 的節點上排程 pod，或者「應該」排程。 根據預設，Kubernetes 排程器會嘗試跨節點在複本集中排程多個 pod。 您可以圍繞此行為定義更特定的規則。
+Kubernetes 排程器以邏輯方式隔離工作負載的最後一種方法，是使用 inter-pod 親和性或反親和性。 這些設定定義「不應該」** 在具有現有相符 pod 的節點上排程 pod，或者「應該」** 排程。 根據預設，Kubernetes 排程器會嘗試跨節點在複本集中排程多個 pod。 您可以圍繞此行為定義更特定的規則。
 
-也會使用 Azure Cache for Redis 的 Web 應用程式是一個很好的例子。 您可以使用 pod 反親和性的規則來要求 Kubernetes 排程器跨節點散發複本。 然后，可以使用关联规则来确保在相应缓存所在的同一主机上计划每个 Web 应用组件。 跨節點的 pod 散發如下例所示：
+也會使用 Azure Cache for Redis 的 Web 應用程式是一個很好的例子。 您可以使用 pod 反親和性的規則來要求 Kubernetes 排程器跨節點散發複本。 接著，您可以使用相似性規則，確保每個 web 應用程式元件都排定在與對應快取相同的主機上。 跨節點的 pod 散發如下例所示：
 
 | **節點 1** | **節點 2** | **節點 3** |
 |------------|------------|------------|
 | webapp-1   | webapp-2   | webapp-3   |
 | cache-1    | cache-2    | cache-3    |
 
-這個範例比使用節點選取器或節點親和性更複雜。 透過該部署，您可以控制 Kubernetes 在節點上排程 pod 的方式，並可以邏輯方式隔離資源。 如需此 Web 應用程式使用 Azure Cache for Redis 範例的完整範例，請參閱[在相同的節點上共置 Pod][k8s-pod-affinity]。
+這個範例比使用節點選取器或節點親和性更複雜。 透過該部署，您可以控制 Kubernetes 在節點上排程 pod 的方式，並可以邏輯方式隔離資源。 如需此 web 應用程式與 Azure Cache for Redis 範例的完整範例，請參閱[將 Pod 共置在相同的節點上][k8s-pod-affinity]。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -187,7 +185,7 @@ Kubernetes 排程器以邏輯方式隔離工作負載的最後一種方法，是
 
 * [多租用戶和叢集隔離][aks-best-practices-scheduler]
 * [基本的 Kubernetes 排程器功能][aks-best-practices-scheduler]
-* [驗證和授權][aks-best-practices-identity]
+* [驗證與授權][aks-best-practices-identity]
 
 <!-- EXTERNAL LINKS -->
 [k8s-taints-tolerations]: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/

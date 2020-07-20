@@ -1,48 +1,48 @@
 ---
-title: 快速入門 - 使用 Node.js 向 Bing 當地商家搜尋 API 傳送查詢 | Microsoft Docs
+title: 快速入門 - 傳送查詢至以 Node.js 撰寫的 API - Bing 當地企業搜尋
 titleSuffix: Azure Cognitive Services
-description: 開始在 Node 中使用 Bing 當地商家搜尋 API。
+description: 使用此快速入門開始向 Bing 當地商家搜尋 API 傳送要求，該 API 是 Azure 認知服務。
 services: cognitive-services
-author: mikedodaro
-manager: rosh
+author: aahill
+manager: nitinme
 ms.service: cognitive-services
-ms.topic: article
-ms.date: 11/01/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: d649926a60d115c66a2763cef6b02b4aedbb962c
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
-ms.translationtype: MT
+ms.subservice: bing-local-business
+ms.topic: quickstart
+ms.date: 05/12/2020
+ms.author: aahi
+ms.openlocfilehash: 2b5de1c5bf99ff2516a0eb836d540fc2833d99cb
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57761305"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85611249"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-nodejs"></a>快速入門：使用 Node.js 向 Bing 當地商家搜尋 API 傳送查詢
 
-使用此快速入門開始向 Bing 當地商家搜尋 API 傳送要求，該 API 是 Azure 認知服務。 雖然此簡單應用程式是以 Node.js 撰寫，但 API 是一種與任何程式語言相容的 RESTful Web 服務，可產生 HTTP 要求，並剖析 JSON。
+使用此快速入門了解如何向 Bing 當地企業搜尋 API 傳送要求，該 API 是 Azure 認知服務。 雖然此簡單應用程式是以 Node.js 撰寫，但 API 是一種與任何程式語言相容的 RESTful Web 服務，可產生 HTTP 要求，並剖析 JSON。
 
-此範例應用程式會從 API 取得搜尋查詢 `hotel in Bellevue` 的當地回應資料。
+此範例應用程式會從 API 取得搜尋查詢的當地回應資料。
 
 ## <a name="prerequisites"></a>必要條件
 
+* Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/cognitive-services/)
 * 最新版的 [Node.js](https://nodejs.org/en/download/)。
+* [JavaScript 要求程式庫](https://github.com/request/request)。
+* 擁有 Azure 訂用帳戶之後，在 Azure 入口網站中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title="建立 Bing 搜尋資源"  target="_blank">建立 Bing 搜尋資源<span class="docon docon-navigate-external x-hidden-focus"></span></a>，以取得您的金鑰和端點。 在其部署後，按一下 [前往資源]。
 
-* [JavaScript 要求程式庫](https://github.com/request/request)
-
-您必須有具備 Bing API 的[認知服務 API 帳戶](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 [免費試用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)即足以供本快速入門使用。 使用免費試用所提供的存取金鑰。  另請參閱[認知服務定價 - Bing 搜尋 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
 
 ## <a name="code-scenario"></a>程式碼案例
 
-下列程式碼取得定義，並傳送要求。 其實作的步驟如下：
+下列程式碼會定義並傳送要求，這會在下列步驟中實作：
 
 1. 宣告變數以依主機及路徑指定端點。
 2. 指定查詢，並新增查詢參數。
 3. 建立回應的處理常式函式。
-4. 定義建立要求的搜尋函式，並新增 Ocp-Apim-Subscription-Key 標頭。
+4. 定義建立要求的搜尋函式，並新增 `Ocp-Apim-Subscription-Key` 標題。
 5. 執行搜尋函式。
 
-此示範的完整程式碼如下：
 
-```
+```javascript
 'use strict';
 
 let https = require('https');
@@ -93,6 +93,6 @@ Search();
 
 ## <a name="next-steps"></a>後續步驟
 
-* [當地商家搜尋快速入門](local-quickstart.md)
+* [當地企業搜尋 C# 快速入門](local-quickstart.md)
 * [當地商家搜尋 Java 快速入門](local-search-java-quickstart.md)
 * [當地商家搜尋 Python 快速入門](local-search-python-quickstart.md)

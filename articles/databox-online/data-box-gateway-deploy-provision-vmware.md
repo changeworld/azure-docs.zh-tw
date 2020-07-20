@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 85992224edd10c0a0f233de9f6274cc77e109b22
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: b62441a4b1307a232ad2f592f13253c0759b5431
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58517772"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85564195"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-vmware"></a>教學課程：在 VMware 中佈建 Azure 資料箱閘道
 
@@ -21,16 +21,16 @@ ms.locfileid: "58517772"
 
 本教學課程說明如何在執行 VMware ESXi 6.0、6.5 或 6.7 的主機系統上佈建資料箱閘道。 
 
-您需要有系統管理員權限，才能佈建並連接至虛擬裝置。 佈建及初始安裝程序可能需要大約 10 分鐘的時間才能完成。
+您需要有系統管理員權限，才能佈建並連接至虛擬裝置。 佈建及初始安裝程序可能需要大約 10 分鐘的時間才能完成。 
 
-在本教學課程中，您了解如何：
+在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
 > * 確定主機符合最低裝置需求
 > * 在 VMware 中佈建虛擬裝置
 > * 啟動虛擬裝置，並取得 IP 位址
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立 [免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 
 ## <a name="prerequisites"></a>必要條件
@@ -120,7 +120,7 @@ ms.locfileid: "58517772"
 
     ![選取要上傳的檔案](./media/data-box-gateway-deploy-provision-vmware/image7.png)
 
-10. 按一下 [開啟] 。 就會開始將 VMDK 檔案上傳至指定的資料存放區。 檔案可能需要幾分鐘的時間才能上傳完畢。
+10. 按一下 **[開啟]** 。 就會開始將 VMDK 檔案上傳至指定的資料存放區。 檔案可能需要幾分鐘的時間才能上傳完畢。
 11. 上傳完成之後，檔案就會出現在資料存放區裡您所建立的資料夾中。 現在將第二個 VMDK 檔案上傳至相同的資料存放區。 一旦兩個檔案都上傳，這兩個檔案就會合併成單一檔案。 然後，您會在目錄中看到單一檔案。
 
     ![兩個 VMDK 檔案會合併成單一檔案](./media/data-box-gateway-deploy-provision-vmware/image8.png)
@@ -145,7 +145,7 @@ ms.locfileid: "58517772"
 
     在相同頁面上，按一下 [新增硬碟]，然後選取 [現有硬碟]。 選取資料存放區中的 VMDK 檔案。 這樣會新增 OS 磁碟。 
 
-     !自訂設定頁面[](./media/data-box-gateway-deploy-provision-vmware/image14.png)
+     ![自訂設定頁面](./media/data-box-gateway-deploy-provision-vmware/image14.png)
 
     向下捲動直到您看到 [新增硬碟]，展開它以檢視設定。 將 [虛擬裝置節點] 設為 [IDE 控制器 0]。
 

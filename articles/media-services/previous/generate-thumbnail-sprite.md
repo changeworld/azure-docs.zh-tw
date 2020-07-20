@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.openlocfilehash: e5d32d1bc3bd704b03e58c62251a323ed3f4662c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "61229045"
 ---
 # <a name="generate-a-thumbnail-sprite"></a>產生縮圖原件  
@@ -33,7 +33,7 @@ ms.locfileid: "61229045"
 
     1. 如果 SpriteColumn 設定為 M >= 1，輸出影像將是含有 M 個資料行的矩形。 如果透過 #2 產生的縮圖數目不是 M 的倍數，最後一個資料列就會不完整，並顯示為黑色像素。  
 
-下列是一個範例：
+範例如下：
 
 ```json
 {

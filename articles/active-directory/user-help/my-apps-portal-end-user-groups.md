@@ -1,26 +1,25 @@
 ---
-title: 更新您的群組資訊從 My Apps 入口網站-Azure Active Directory |Microsoft Docs
-description: 了解如何檢視並更新您群組相關的資訊，包括檢視您所擁有的群組、 建立新的群組，檢視的群組的目前成員，但是加入任何群組還不太的一部分。
+title: 在我的應用程式入口網站中更新您的群組資訊 - Azure AD
+description: 了解如何檢視和更新您的群組相關資訊，包括檢視您擁有的群組、建立新群組、檢視您已經是成員的群組，以及加入您不在其中的任何群組。
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 3/21/2019
-ms.author: lizross
+ms.topic: end-user-help
+ms.date: 02/03/2020
+ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 578ca5fa1de338a92280e2dc7cc252fb616e2111
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
-ms.translationtype: MT
+ms.openlocfilehash: 23b7205e63c7991368efe421d5c067e980314611
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64706690"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83741988"
 ---
-# <a name="update-your-groups-info-from-the-my-apps-portal"></a>更新您的群組資訊從 My Apps 入口網站
+# <a name="update-your-groups-info-on-the-my-apps-portal"></a>在我的應用程式入口網站中更新您的群組資訊
+
 您可以透過 [我的應用程式] Web 入口網站使用工作或學校帳戶，來檢視和啟動貴組織的許多雲端式應用程式、更新您的設定檔和帳戶資訊、查看您的**群組**資訊，以及執行您應用程式和群組的**存取權檢閱**。 如果您沒有 [我的應用程式] 入口網站的存取權，則必須連絡技術服務人員以取得權限。
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
@@ -28,145 +27,146 @@ ms.locfileid: "64706690"
 >[!Important]
 >本內容適用於使用者。 如果您是系統管理員，可以在[應用程式管理文件](https://docs.microsoft.com/azure/active-directory/manage-apps)中找到更多關於如何設定和管理雲端式應用程式的資訊。
 
-## <a name="view-your-groups-information"></a>檢視群組資訊
-如果您的系統管理員提供了檢視的權限**群組** 圖格，您可以：
+## <a name="view-your-groups-information"></a>檢視您的群組資訊
 
-- **為群組成員。** 檢視詳細資料，或保留任何群組。
+如果您的系統管理員已授予您檢視 [群組] 圖格的權限，您可以：
 
-- **身為群組擁有者。** 檢視詳細資料、 建立新的群組、 新增或移除成員，或刪除您的群組。
+- **成為群組成員。** 檢視詳細資料或離開任何群組。
 
-### <a name="to-view-your-groups-information"></a>若要檢視您的群組資訊
+- **成為群組擁有者。** 檢視詳細資料、建立新的群組、新增或移除成員，或刪除您的群組。
 
-1.  登入您的公司或學校帳戶。
+### <a name="to-view-your-groups-information"></a>檢視您的群組資訊
 
-2.  開啟網頁瀏覽器並移至 https://myapps.microsoft.com，或使用貴組織所提供的連結。 比方說，您可能會被導向至自訂頁面為您的組織，例如 https://myapps.microsoft.com/contoso.com。
+1. 登入您的公司或學校帳戶。
 
-    **應用程式**頁面隨即出現，顯示的所有雲端應用程式，您的組織所擁有且可供您使用。
+2. 開啟您的網頁瀏覽器並移至 https://myapps.microsoft.com ，或使用您組織所提供的連結。 例如，系統可能將您導向至組織的自訂頁面，例如 https://myapps.microsoft.com/contoso.com 。
 
-    ![在 My Apps 入口網站中的 [應用程式] 頁面](media/my-apps-portal/my-apps-portal-apps-page-groups-tile.png)
+    [應用程式] 頁面隨即出現，其中顯示貴組織所擁有且可供您使用的所有雲端式應用程式。
 
-3. 選取 **群組**磚，以查看您群組相關的資訊。
+    ![我的應用程式入口網站中的 [應用程式] 頁面](media/my-apps-portal/my-apps-portal-apps-page-groups-tile.png)
 
-    ![同時擁有使用 [群組] 頁面和成員群組](media/my-apps-portal/my-apps-portal-groups-page.png)
+3. 選取 [群組] 圖格，以檢視群組相關資訊。
 
-4. 根據您的權限，您可以使用**群組**頁面，即可：
+    ![具備自有和成員群組的群組頁面](media/my-apps-portal/my-apps-portal-groups-page.png)
 
-    - **檢閱您所擁有的群組。** 從您組織內的任何相關資訊群組的檢視擁有**我擁有的群組**區域。 選取特定的群組名稱可以提供更多詳細的群組，包括群組類型、 成員數目、 聯結原則和作用中的成員清單。
+4. 根據您的權限，您可使用 [群組] 頁面來執行下列動作：
 
-    - **建立新的群組。** 與您建立新的群組，以從擁有者**我擁有的群組**區域。 如需特定步驟，請參閱[建立新的群組](#create-a-new-group)一節。
+    - **檢閱您擁有的群組。** 從 [我擁有的群組] 區域，檢視您在貴組織內擁有的任何群組相關資訊。 選取特定群組名稱，系統就會提供更多關於群組的詳細資料，包括群組類型、成員數目、加入原則和作用中成員清單。
 
-    - **編輯現有的群組。** 編輯任何您自己的群組詳細資料。 如需特定步驟，請參閱[編輯現有的群組](#edit-an-existing-group)一節。
+    - **建立新群組。** 從 [我擁有的群組] 區域，以擁有者的身分建立新群組。 如需特定步驟，請參閱本文的[建立新的群組](#create-a-new-group)一節。
 
-    - **新增或移除成員。** 新增或移除您所擁有的群組的成員。 如需特定步驟，請參閱[新增或移除成員](#add-or-remove-a-member)一節。
+    - **編輯現有的群組。** 編輯任何自有群組的詳細資料。 如需特定步驟，請參閱本文的[編輯現有群組](#edit-an-existing-group)一節。
 
-    - **更新 Office 365 群組。** 如果您的組織允許，您可以更新您的 Office 365 群組。 如需特定步驟，請參閱[更新 Office 365 群組](#renew-an-office-365-group)一節。 
+    - **新增或移除成員。** 新增或移除您所擁有群組的成員。 如需特定步驟，請參閱本文的[新增或移除成員](#add-or-remove-a-member)一節。
 
-    - **刪除群組。** 刪除任何您所擁有的群組。 如需特定步驟，請參閱[刪除群組](#delete-a-group)一節。
+    - **更新 Office 365 群組。** 如果貴組織允許，您可更新您的 Office 365 群組。 如需特定步驟，請參閱本文的[更新 Office 365 群組](#renew-an-office-365-group)一節。 
 
-    - **檢閱您的一部分的群組。** 檢視的名稱的任何群組中，您是從成員**我加入的群組**區域。 選取特定的群組名稱可以提供更多詳細的群組，包括群組類型、 成員數目、 聯結原則和作用中的成員清單。
+    - **刪除群組。** 刪除您擁有的任何群組。 如需特定步驟，請參閱本文的[刪除群組](#delete-a-group)一節。
 
-    - **加入群組。** 加入現有的群組，讓原本不在成員，從**我加入的群組**區域。 如需特定步驟，請參閱[加入現有的群組](#join-an-existing-group)。
+    - **檢閱您所屬的群組。** 從 [我加入的群組] 區域，檢視您所屬的任何群組名稱。 選取特定群組名稱，系統就會提供更多關於群組的詳細資料，包括群組類型、成員數目、加入原則和作用中成員清單。
+
+    - **加入群組。** 從 [我加入的群組] 區域，加入您還不是成員的現有群組。 如需特定步驟，請參閱[加入現有群組](#join-an-existing-group)。
 
 ## <a name="create-a-new-group"></a>建立新群組
-1. 在 **群組**頁面上，選取**建立群組**從**我擁有的群組**區域。
 
-    **建立群組**方塊隨即出現。
+1. 在 [群組] 頁面上，從 [我擁有的群組] 區域選取 [建立群組]。
+
+    [建立群組] 方塊隨即出現。
 
     ![建立群組方塊](media/my-apps-portal/my-apps-portal-create-group-page.png)
 
 2. 輸入必要資訊：
 
     - **群組類型：**
-        
+
         - **安全性。** 用來管理成員和電腦對使用者群組所共用之資源的存取權。 例如，您可以針對特定安全性原則建立安全性群組。 透過這麼做，您可以將一組權限同時授與所有成員，而不必個別為每個成員新增權限。
 
-        - **Office 365.** 透過將共用信箱、行事曆、檔案、SharePoint 網站等的存取權授與成員，來提供共同作業的機會。 此選項也可讓您將群組的存取權授與組織外的人員。
+        - **Office 365。** 透過將共用信箱、行事曆、檔案、SharePoint 網站等的存取權授與成員，來提供共同作業的機會。 此選項也可讓您將群組的存取權授與組織外的人員。
 
     - **群組名稱。** 為群組新增名稱，請使用易記且合理的名稱。
 
-    - **群組描述 （選擇性）。** 為群組新增選擇性的描述。
+    - **群組描述 (選擇性)。** 為群組新增選擇性的描述。
 
-    - **群組原則。** 選擇允許所有人加入群組，或只允許群組擁有者，將成員加入。
+    - **群組原則。** 選擇允許每個人加入群組或僅允許群組的擁有者新增成員。
 
-3. 選取 [建立] 。
+3. 選取 [建立]。
 
-    與您建立新的群組為擁有者，並出現在您**我擁有的群組**清單。 因為您是擁有者，此群組也會出現在**我加入的群組**清單。
+    新群組會以您是擁有者的身分建立，而且會出現在 [我擁有的群組] 清單中。 因為您是擁有者，所以此群組也會出現在 [我加入的群組] 清單中。
 
-## <a name="edit-an-existing-group"></a>編輯現有的群組
+## <a name="edit-an-existing-group"></a>編輯現有群組
+
 建立群組之後，您可以編輯其詳細資料，包括更新任何現有的資訊。
 
-### <a name="to-edit-your-details"></a>若要編輯您的詳細資料
-1. 選取您想要從編輯的群組**群組**頁面，然後再選取**編輯詳細資料**上*&lt;group_name&gt;* 頁面。
+1. 從 [群組] 頁面中選取您要編輯的群組，然後在 *&lt;group_name&gt;* 頁面上選取 [編輯詳細資料]。
 
-    **編輯詳細資料**方塊隨即出現，而您可以更新您一開始建立群組時新增的資訊。
+    [編輯詳細資料] 方塊隨即出現，您可更新最初建立群組時所新增的資訊。
 
-2. 讓您的所有變更，然後按**更新**。
+2. 進行所有變更，然後選取 [更新]。
 
 ## <a name="add-or-remove-a-member"></a>新增或移除成員
-您可以新增或移除任何您自己的群組的成員。
 
-### <a name="to-add-or-remove-a-member"></a>若要新增或移除成員
-1. 選取您想要將成員加入，然後選取的群組**+** 上*&lt;group_name&gt;* 頁面。
+您可以新增或移除您所擁有群組的成員。
 
-    ![新增群組成員，與 + 號反白顯示](media/my-apps-portal/my-apps-portal-add-member-link.png)
+1. 選取您想要新增成員的群組，然後在 *&lt;group_name&gt;* 頁面上，選取 **+** 。
 
-2. 搜尋您要新增的成員從**新增成員**方塊，然後按**新增**。
+    ![新增群組成員，其中醒目提示 + 符號](media/my-apps-portal/my-apps-portal-add-member-link.png)
 
-    ![新增成員 方塊中，與要加入的新成員](media/my-apps-portal/my-apps-portal-add-member-page.png)
+2. 從 [新增成員] 方塊中搜尋您要新增的成員，然後選取 [新增]。
 
-    若要開始存取組織的應用程式發佈至新的成員，傳送邀請。
+    ![[新增成員] 方塊，包含要新增的新成員](media/my-apps-portal/my-apps-portal-add-member-page.png)
 
-3. 如果您不小心，新增一個成員，或如果成員已離開組織，您可以選取來移除成員**移除成員**上的成員名稱旁邊*&lt;group_name&gt;* 頁面。
+    系統會將邀請傳送給新成員，以便開始存取組織的應用程式。
 
-    ![移除成員，以反白顯示的 [移除] 連結](media/my-apps-portal/my-apps-portal-remove-member-link.png)
+3. 如果您不小心新增成員，或成員已離開貴組織，您可以在 *&lt;group_name&gt;* 頁面上，選取成員名稱旁邊的 [移除成員] 來移除成員。
+
+    ![移除成員，其中醒目提示移除連結](media/my-apps-portal/my-apps-portal-remove-member-link.png)
 
 ## <a name="renew-an-office-365-group"></a>更新 Office 365 群組
-如果您的組織允許，您可以更新 Office 365 群組，擴充您的到期日。
 
-### <a name="to-renew-a-group"></a>若要更新的群組
-1. 選取您想要更新，然後選取 Office 365 群組**續約群組**。
+如果您的組織允許，您可以更新 Office 365 群組，並延長您的到期日。
 
-    ![更新 Office 365 群組，擴充的到期日](media/my-apps-portal/my-apps-portal-renew-group-link.png)
+1. 選取您要更新的 Office 365 群組，然後選取 [更新群組]。
 
-2. 按一下 **確定**關閉確認訊息。
+    ![更新 Office 365 群組，並延長到期日](media/my-apps-portal/my-apps-portal-renew-group-link.png)
 
-    重新整理頁面之後，您會看到您已更新**上次更新**並**群組到期**日期。
+2. 按一下 [確定] 以關閉確認訊息。
+
+    重新整理頁面之後，您會看到已更新的 [上次更新] 和 [群組到期] 日期。
 
 ## <a name="delete-a-group"></a>刪除群組
-您可以隨時刪除任何您自己的群組。 不過，如果您不小心刪除一組您必須建立它並再次新增成員。
 
-### <a name="to-delete-the-group"></a>若要刪除群組
-1. 選取您想要永久刪除，然後選取的群組**刪除群組**上*&lt;group_name&gt;* 頁面。
+您可以隨時刪除任何自有的群組。 不過，如果不小心刪除了某個群組，就必須建立該群組並再次新增成員。
 
-    ![< 群組名稱 > 頁面，以反白顯示 [刪除群組] 連結](media/my-apps-portal/my-apps-portal-delete-group-link.png)
+1. 選取您要永久刪除的群組，然後在 *&lt;group_name&gt;* 頁面上選取 [刪除群組]。
 
-2. 選取 **是**上確認訊息。
+    ![其中醒目提示 [刪除群組] 連結的 <Group_name> 頁面](media/my-apps-portal/my-apps-portal-delete-group-link.png)
 
-    永久刪除此群組。 
-    
-## <a name="join-an-existing-group"></a>加入現有的群組
-您可以加入現有的群組，從**群組**頁面。
+2. 選取確認訊息上的 [是]。
 
-### <a name="to-join-or-leave-a-group"></a>若要加入或離開群組
+    此群組已永久刪除。
 
-1. 在 **群組**頁面上，選取**加入群組**從**我加入的群組**區域。
+## <a name="join-an-existing-group"></a>加入現有群組
 
-    **加入群組**頁面隨即出現。
+您可以從 [群組] 頁面加入或離開現有的群組。
 
-    ![加入群組 頁面中，加入群組 按鈕反白顯示](media/my-apps-portal/my-apps-portal-join-group-link.png)
+1. 在 [群組] 頁面上，從 [我加入的群組] 區域選取 [加入群組]。
 
-2. 在 **加入群組**頁面上，選取您想要加入、 檢視相關聯的群組詳細資料，以及群組是否可用，然後選取群組的名稱**加入群組**。
+    [加入群組] 頁面隨即出現。
 
-    如果群組需要核准的成員資格的群組擁有者，您輸入的業務理由為何您要加入群組中，系統會要求，然後選取**要求**。 如果群組不需要核准，您立即新增為成員的群組會出現在您**我加入的群組**清單。
+    ![[加入群組] 頁面，其中醒目提示 [加入群組] 按鈕](media/my-apps-portal/my-apps-portal-join-group-link.png)
 
-3. 如果您不小心加入群組，或如果您不再需要它的一部分，您可以選取群組名稱，從**加入群組**頁面，然後再選取**離開群組**。
+2. 在 [加入群組] 頁面上，選取您要加入的群組名稱、檢視相關聯的群組詳細資料，然後如果該群組可供使用，請選取 [加入群組]。
 
-    ![加入群組 頁面中，反白顯示的保留群組按鈕](media/my-apps-portal/my-apps-portal-leave-group-link.png)    
+    如果群組需要群組擁有者核准成員資格，系統會要求您輸入業務理由來說明您需要加入群組的原因，然後選取 [要求]。 如果群組不需要核准，您就會立即新增為成員，而該群組會出現在 [我加入的群組] 清單中。
+
+3. 如果不小心加入了某個群組，或是不再需要屬於該群組，可以從 [加入群組] 頁面選取群組名稱，然後選取 [離開群組]。
+
+    ![[加入群組] 頁面，其中醒目提示 [離開群組] 按鈕](media/my-apps-portal/my-apps-portal-leave-group-link.png)
 
 ## <a name="next-steps"></a>後續步驟
 
-- [存取和使用 My Apps 入口網站上的應用程式](my-apps-portal-end-user-access.md)。
+- [在我的應用程式入口網站上存取和使用應用程式](my-apps-portal-end-user-access.md)。
 
-- [變更您的設定檔資訊](my-apps-portal-end-user-update-profile.md)。
+- [變更設定檔資訊](my-apps-portal-end-user-update-profile.md)。
 
 - [執行您自己的存取權檢閱](my-apps-portal-end-user-access-reviews.md)。

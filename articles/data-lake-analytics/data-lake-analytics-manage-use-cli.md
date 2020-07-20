@@ -1,19 +1,19 @@
 ---
-title: 使用 Azure 命令列介面管理 Azure Data Lake Analytics
+title: 使用 Azure CLI 管理 Azure Data Lake Analytics
 description: 本文說明如何使用 Azure CLI 入口網站來管理 Data Lake Analytics 作業、資料來源和使用者。
 services: data-lake-analytics
 author: jasonwhowell
 ms.author: jasonh
 ms.assetid: 4e5a3a0a-6d7f-43ed-aeb5-c3b3979a1e0a
 ms.service: data-lake-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/29/2018
-ms.openlocfilehash: fa7d46d45c350435c0ffba8f3755ad8bea651c3e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f2e77e31049e2643f1488eb3f6be906de735ad2b
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60387013"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121413"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-command-line-interface-cli"></a>使用 Azure 命令列介面 (CLI) 管理 Azure Data Lake Analytics
 
@@ -22,7 +22,7 @@ ms.locfileid: "60387013"
 了解如何使用 Azure CLI 管理 Azure Data Lake Analytics 帳戶、資料來源、使用者和工作。 若要使用其他工具查看管理主題，請按一下上方的索引標籤選取器。
 
 
-**先決條件**
+## <a name="prerequisites"></a>必要條件
 
 開始進行本教學課程之前，您必須具備下列資源：
 
@@ -30,7 +30,7 @@ ms.locfileid: "60387013"
 
 * Azure CLI。 請參閱 [安裝和設定 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
-   * 下載並安裝 **Azure CLI 工具** [發行前版本](https://github.com/MicrosoftBigData/AzureDataLake/releases) ，才能完成這個示範。
+  * 下載並安裝 **Azure CLI 工具** [發行前版本](https://github.com/MicrosoftBigData/AzureDataLake/releases) ，才能完成這個示範。
 
 * 使用 `az login` 命令進行驗證，並且選取您想要使用的訂用帳戶。 如需使用公司或學校帳戶驗證的詳細資訊，請參閱 [從 Azure CLI 連線至 Azure 訂用帳戶](/cli/azure/authenticate-azure-cli)。
 
@@ -111,7 +111,7 @@ Data Lake Analytics 目前支援以下兩個資料來源：
 
 > [!NOTE]
 > 僅支援 Blob 儲存體簡短名稱。 請勿使用 FQDN，例如 "myblob.blob.core.windows.net"。
-> 
+>
 
 ### <a name="add-additional-data-lake-store-accounts"></a>新增其他的 Data Lake Store 帳戶
 
@@ -146,6 +146,7 @@ Data Lake Analytics 目前支援以下兩個資料來源：
 ![Data Lake Analytics 會列出資料來源](./media/data-lake-analytics-manage-use-cli/data-lake-analytics-list-data-source.png)
 
 ### <a name="delete-data-sources"></a>刪除資料來源：
+
 刪除 Data Lake Store 帳戶：
 
    ```azurecli
@@ -159,6 +160,7 @@ Data Lake Analytics 目前支援以下兩個資料來源：
    ```
 
 ## <a name="manage-jobs"></a>管理工作
+
 您必須擁有 Data Lake Analytics 帳戶，才能建立工作。  如需詳細資訊，請參閱 [管理 Data Lake Analytics 帳戶](#manage-accounts)。
 
 ### <a name="list-jobs"></a>列出工作
@@ -179,7 +181,7 @@ Data Lake Analytics 目前支援以下兩個資料來源：
 
 > [!NOTE]
 > 工作的預設優先順序為 1000，工作的平行處理原則預設程度是 1。
-> 
+>
 >    ```azurecli
 >    az dla job submit --account "<Data Lake Analytics account name>" --job-name "<Name of your job>" --script "<Script to submit>"
 >    ```
@@ -193,11 +195,11 @@ Data Lake Analytics 目前支援以下兩個資料來源：
 
 ## <a name="pipelines-and-recurrences"></a>管線和週期
 
-**取得管線和週期的相關資訊**
+### <a name="get-information-about-pipelines-and-recurrences"></a>取得管線和週期的相關資訊
 
 使用 `az dla job pipeline` 命令來查看先前提交作業的管線資訊。
 
-```
+```azurecli
 az dla job pipeline list --account "<Data Lake Analytics Account Name>"
 
 az dla job pipeline show --account "<Data Lake Analytics Account Name>" --pipeline-identity "<Pipeline ID>"
@@ -205,15 +207,14 @@ az dla job pipeline show --account "<Data Lake Analytics Account Name>" --pipeli
 
 使用 `az dla job recurrence` 命令來查看先前提交作業的週期資訊。
 
-```
+```azurecli
 az dla job recurrence list --account "<Data Lake Analytics Account Name>"
 
 az dla job recurrence show --account "<Data Lake Analytics Account Name>" --recurrence-identity "<Recurrence ID>"
 ```
 
-## <a name="see-also"></a>請參閱
+## <a name="next-steps"></a>後續步驟
 * [Microsoft Azure Data Lake Analytics 概觀](data-lake-analytics-overview.md)
-* [透過 Azure 入口網站開始使用 Data Lake Analytics](data-lake-analytics-get-started-portal.md)
+* [使用 Azure 入口網站開始使用 Data Lake Analytics](data-lake-analytics-get-started-portal.md)
 * [使用 Azure 入口網站管理 Azure Data Lake Analytics](data-lake-analytics-manage-use-portal.md)
-* [使用 Azure 入口網站監視和疑難排解 Azure Data Lake Analytics 作業](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
-
+* [使用 Azure 入口網站監視 Azure Data Lake Analytics 作業並進行疑難排解](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)

@@ -8,12 +8,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/11/2017
-ms.openlocfilehash: 9dbb7905c2a0fed65ede610577e0fa11a1deef92
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: bfd000e2b69f052e25f0ea6cd286b0ca3aef7519
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60345391"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "81759717"
 ---
 # <a name="support-additional-protocols-for-iot-hub"></a>讓 IoT 中樞支援其他通訊協定
 
@@ -23,11 +25,11 @@ ms.locfileid: "60345391"
 
 Azure IoT 通訊協定閘道是通訊協定調適的架構，專門用來與 IoT 中樞的高延展性雙向裝置通訊。 通訊協定閘道是一種傳遞元件，會透過特定通訊協定接受裝置的連接。 透過 AMQP 1.0 橋接 IoT 中樞的流量。
 
-您可以使用 Azure Service Fabric、「Azure 雲端服務」背景工作角色或「Windows 虛擬機器」，以可靈活調整的方式，在 Azure 中部署通訊協定閘道。 此外，可将协议网关部署在本地环境中，例如现场网关。
+您可以使用 Azure Service Fabric、「Azure 雲端服務」背景工作角色或「Windows 虛擬機器」，以可靈活調整的方式，在 Azure 中部署通訊協定閘道。 此外，通訊協定閘道可以部署在內部部署環境中，例如現場閘道。
 
 Azure IoT 通訊協定閘道包含可讓您視需要自訂 MQTT 通訊協定行為的 MQTT 通訊協定配接器。 由於「IoT 中樞」針對 MQTT v3.1.1 通訊協定提供內建支援，因此您應該只有在需要自訂通訊協定或有額外功能的特定需求時，才考慮使用 MQTT 通訊協定配接器。
 
-MQTT 适配器还会演示用来为其他协议构建协议适配器的编程模型。 此外，Azure IoT 通訊協定閘道程式設計模型還可讓您針對特製化處理 (例如自訂驗證、訊息轉換、壓縮/解壓縮，或將裝置與「IoT 中樞」之間的流量加密/解密) 插入自訂元件。
+MQTT 配接器也會示範程式設計模型，此模型可為其他通訊協定建置通訊協定配接器。 此外，Azure IoT 通訊協定閘道程式設計模型還可讓您針對特製化處理 (例如自訂驗證、訊息轉換、壓縮/解壓縮，或將裝置與「IoT 中樞」之間的流量加密/解密) 插入自訂元件。
 
 為了讓您有彈性空間，Azure IoT 通訊協定閘道和 MQTT 實作是以開放原始碼軟體專案的方式來提供。 您可以使用開放原始碼專案，以新增對各種通訊協定和通訊協定版本的支援，或是自訂案例的實作。 
 
@@ -43,6 +45,6 @@ MQTT 适配器还会演示用来为其他协议构建协议适配器的编程模
 
 * [與事件中樞比較](iot-hub-compare-event-hubs.md)
 
-* [調整、 高可用性和災害復原](iot-hub-scaling.md)
+* [調整規格、高可用性和災害復原](iot-hub-scaling.md)
 
 * [IoT 中樞開發人員指南](iot-hub-devguide.md)

@@ -1,19 +1,18 @@
 ---
 title: 連線處理站解決方案功能 - Azure | Microsoft Docs
-description: 概述連線處理站的預先設定解決方案功能。
+description: 本文說明連線處理站預先設定解決方案的功能，例如雲端儀表板、規則和警示。
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: conceptual
-ms.date: 03/08/2019
+ms.date: 06/10/2019
 ms.author: dobett
-ms.openlocfilehash: 25812e10b4c2b90aa4f40c38610c30a26ab11d9d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: c868aa0f1c2449ccf163523c9ded25a31d1d84c4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61449987"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "73820099"
 ---
 # <a name="what-is-connected-factory-iot-solution-accelerator"></a>連線處理站 IoT 解決方案加速器是什麼？
 
@@ -61,11 +60,8 @@ ms.locfileid: "61449987"
 ## <a name="customizability"></a>自訂能力
 
 - 自訂解決方案以滿足特定的業務需求。
-- 完整的解決方案原始程式碼可在 GitHub 上取得。 請參閱[連線處理站預先設定的解決方案](https://github.com/Azure/azure-iot-connected-factory) \(英文\) 存放庫。
+- 完整的解決方案原始程式碼可在 GitHub 上取得。 請參閱[連線](https://github.com/Azure/azure-iot-connected-factory)處理站預先設定的解決方案存放庫。
 
 ## <a name="next-steps"></a>後續步驟
 
-閱讀下列文章，深入了解連線處理站預先設定的解決方案：
-
-* [連線處理站預先設定的解決方案逐步解說](iot-accelerators-connected-factory-sample-walkthrough.md)
-* [為連線的處理站部署閘道]( iot-accelerators-connected-factory-gateway-deployment.md)
+若要深入瞭解連線的處理站解決方案加速器，請參閱快速入門：[嘗試以雲端為基礎的解決方案來管理我的工業 IoT 裝置](quickstart-connected-factory-deploy.md)。

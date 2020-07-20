@@ -1,10 +1,10 @@
 ---
 title: 開始將 Azure AD 與應用程式整合 | Microsoft Docs
-description: 本文是一篇入门指南，介绍如何将 Azure Active Directory (AD) 与本地应用程序和云应用程序集成。
+description: 本文章是整合 Azure Active Directory (AD) 與在內部部署應用程式和雲端應用程式的入門指南。
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.devlang: na
@@ -12,15 +12,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/16/2018
-ms.author: celested
+ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1223c96bffdf125da0c47fc932d46cfa84fa45c8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 0d49c23e5968b0fe1b2d4838978fe1b23931e5e9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60291257"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763086"
 ---
 # <a name="integrating-azure-active-directory-with-applications-getting-started-guide"></a>整合 Azure Active Directory 與應用程式入門指南
 
@@ -50,7 +49,7 @@ ms.locfileid: "60291257"
 * 是否已經在您的內部部署 Active Directory 中建立群組？
   * 您的群組的組織方式？
   * 有哪些群組成員？
-  * 组当前有哪些权限/角色分配？
+  * 群組目前有哪些權限/角色指派？
 * 您是否需要在整合之前清除使用者/群組資料庫？  (這是很重要的問題。 垃圾進，垃圾出 - 應當避免無用資料。)
 
 ### <a name="access-management-inventory"></a>存取管理清查
@@ -77,7 +76,7 @@ ms.locfileid: "60291257"
 透過 Microsoft Azure AD 應用程式 Proxy，您可以從任何地方及任何裝置上安全地為位於您的私人網路上的應用程式提供存取。 在您的環境中安裝應用程式 Proxy 連接器之後，可以輕鬆地使用 Azure AD 來加以設定。
 
 ### <a name="integrating-custom-applications"></a>整合自訂應用程式
-如果您正在撰寫新的應用程式，並想要協助開發人員運用 Azure AD 的強大功能，請參閱 [引導開發人員](../active-directory-applications-guiding-developers-for-lob-applications.md)。
+如果您要撰寫新的應用程式，並想要協助開發人員充分利用 Azure AD 的功能，請參閱[引導開發人員](../active-directory-applications-guiding-developers-for-lob-applications.md)。
 
 如果您想要加入您的自訂應用程式至 Azure 應用程式資源庫，請參閱 [使用 Azure AD 自助 SAML 組態「自備應用程式」](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-now-in-preview/)。
 
@@ -85,17 +84,17 @@ ms.locfileid: "60291257"
 下列文章描述使用 Azure AD 連接器和 Azure AD 將應用程式與 Azure AD 整合之後，您可以管理對應用程式的存取的方式。
 
 * [使用 Azure AD 管理應用程式的存取](what-is-access-management.md)
-* [使用 Azure AD 連接器自動化](user-provisioning.md)
+* [使用 Azure AD 連接器自動化](../app-provisioning/user-provisioning.md)
 * [將使用者指派給應用程式](../active-directory-applications-guiding-developers-assigning-users.md)
 * [將群組指派給應用程式](../active-directory-applications-guiding-developers-assigning-groups.md)
 * [共用帳戶](../active-directory-sharing-accounts.md)
 
 ## <a name="next-steps"></a>後續步驟
-如需深入資訊，您可以從 [GitHub](https://aka.ms/deploymentplans) 下載 Azure Active Directory 部署計劃。 對於資源庫應用程式，您可以透過 [Azure 入口網站](https://portal.azure.com)下載單一登入、條件式存取和使用者佈建的部署計劃。 
+如需深入資訊，您可以從 [GitHub](https://aka.ms/deploymentplans) 下載 Azure Active Directory 部署計劃。 針對資源庫應用程式，您可以透過[Azure 入口網站](https://portal.azure.com)下載單一登入、條件式存取和使用者布建的部署計畫。 
 
 若要從 Azure 入口網站下載部署計劃：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-2. 選取 [企業應用程式] | [挑選應用程式] | [部署計劃]。
+2. 選取 [**企業應用程式**] [  |  **選取應用**程式  |  **部署計畫**]。
 
 請接受[部署計劃問卷調查](https://aka.ms/DeploymentPlanFeedback)，以提供關於部署計劃的意見反應。

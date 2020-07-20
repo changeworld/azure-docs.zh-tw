@@ -1,29 +1,28 @@
 ---
-title: Azure database for PostgreSQL-單一伺服器的定價層
-description: 這篇文章會說明適用於 Azure Database for PostgreSQL-單一伺服器的定價層。
-author: jan-eng
-ms.author: janeng
+title: 定價層-適用於 PostgreSQL 的 Azure 資料庫-單一伺服器
+description: 本文說明適用於 PostgreSQL 的 Azure 資料庫-單一伺服器中的計算和儲存體選項。
+author: rachel-msft
+ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: e2580a57f943ad8da16cfbaeda2ee35d0f4bb691
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.date: 02/25/2020
+ms.openlocfilehash: caa5c0178cda563650928be40d02716868255fb1
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65073188"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121617"
 ---
-# <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>在 Azure Database for PostgreSQL-單一伺服器的定價層
+# <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>適用於 PostgreSQL 的 Azure 資料庫定價層 - 單一伺服器
 
 您可以在下列三個不同定價層其中之一建立「適用於 PostgreSQL 的 Azure 資料庫」伺服器：「基本」、「一般用途」及「記憶體最佳化」。 定價層的差別在於虛擬核心中可佈建的計算數量、每個虛擬核心的記憶體，以及用來儲存資料的儲存體技術。 所有資源都會佈建在 PostgreSQL 伺服器層級。 一個伺服器可以有一個或多個資料庫。
 
-|    | **基本** | **一般用途** | **記憶體最佳化** |
+| 資源/層 | **基本** | **一般用途** | **記憶體優化** |
 |:---|:----------|:--------------------|:---------------------|
 | 計算世代 | Gen 4、Gen 5 | Gen 4、Gen 5 | Gen 5 |
-| 虛擬核心 | 1、2 | 2、4、8、16、32、64 |2、4、8、16、32 |
+| 虛擬核心 | 1, 2 | 2、4、8、16、32、64 |2、4、8、16、32 |
 | 每個虛擬核心的記憶體 | 2 GB | 5 GB | 10 GB |
-| 儲存體大小 | 5 GB 至 1 TB | 5 GB 至 4 TB | 5 GB 至 4 TB |
-| 儲存體類型 | Azure 標準儲存體 | Azure 進階儲存體 | Azure 進階儲存體 |
+| 儲存體大小 | 5 GB 至 1 TB | 5 GB 到 16 TB | 5 GB 到 16 TB |
 | 資料庫備份的保留期限 | 7 至 35 天 | 7 至 35 天 | 7 至 35 天 |
 
 若要選擇定價層，請從下表著手。
@@ -36,95 +35,77 @@ ms.locfileid: "65073188"
 
 建立伺服器之後，虛擬核心數目、硬體世代和定價層 (基本層的來回除外) 可在幾秒內上下變動。 您可以也單獨調高儲存體的數量及延長或縮短備份保留期限，而無須中斷應用程式。 但您無法在建立伺服器之後，變更備份儲存體類型。 如需詳細資訊，請參閱[調整資源](#scale-resources)一節。
 
-
 ## <a name="compute-generations-and-vcores"></a>計算世代和虛擬核心
 
-計算資源會以 vCore 的形式提供，vCore 代表了基礎硬體的邏輯 CPU。 目前，有兩個計算世代可供您選擇，即「第 4 代」和「第 5 代」。 「第 4 代」邏輯 CPU 是以 Intel E5-2673 v3 (Haswell) 2.4-GHz 處理器為基礎。 「第 5 代」邏輯 CPU 是以 Intel E5-2673 v4 (Broadwell) 2.3-GHz 處理器為基礎。 「第 4 代」和「第 5 代」在下列區域中可供使用 ("X" 代表可用)。 
-
-| **Azure 區域** | **第 4 代** | **第 5 代** |
-|:---|:----------:|:--------------------:|
-| 美國中部 |  | X |
-| 美國東部 |  | X |
-| 美國東部 2 |  | X |
-| 美國中北部 |  | X |
-| 美國中南部 |  | X |
-| 美國西部 |  | X |
-| 美國西部 2 |  | X |
-| 巴西南部 |  | X |
-| 加拿大中部 |  | X |
-| 加拿大東部 |  | X |
-| 北歐 |  | X |
-| 西歐 |  | X |
-| 法國中部 |  | X |
-| 英國南部 |  | X |
-| 英國西部 |  | X |
-| 東亞 |  | X |
-| 東南亞 |  | X |
-| 澳洲東部 |  | X |
-| 澳大利亞中部 |  | X |
-| 澳大利亞中部 2 |  | X |
-| 澳大利亞東南部 |  | X |
-| 印度中部 |  | X |
-| 印度南部 |  | X |
-| 印度西部 |  | X |
-| 日本東部 |  | X |
-| 日本西部 |  | X |
-| 南韓中部 |  | X |
-| 南韓南部 |  | X |
-| 中國東部 1 | X |  |
-| 中國東部 2 |  | X |
-| 中國北部 1 | X |  |
-| 中國北部 2 |  | X |
-| 德國中部 |  | X |
-| 美國國防部中央  | X |  |
-| 美國 DoD 東部  | X |  |
-| 美國政府亞利桑那州 |  | X |
-| 美國政府德克薩斯州 |  | X |
-| 美國政府維吉尼亞州 |  | X |
+計算資源會以 vCore 的形式提供，vCore 代表了基礎硬體的邏輯 CPU。 中國東部1、中國北部1、US DoD 中部和 US DoD 東部會利用以 Intel E5-2673 v3 （Haswell） 2.4-GHz 處理器為基礎的 Gen 4 邏輯 Cpu。 所有其他區域都會利用以 Intel E5 2673 v4 （Broadwell） 2.3 GHz 處理器為基礎的 Gen 5 邏輯 Cpu。
 
 ## <a name="storage"></a>儲存體
 
 您佈建的儲存體是「適用於 PostgreSQL 伺服器的 Azure 資料庫」可用的儲存體容量。 儲存體會用於資料庫檔案、暫存檔案、交易記錄和 PostgreSQL 伺服器記錄。 您佈建的儲存體總數也會定義您伺服器可用的 I/O 容量。
 
-|    | **基本** | **一般用途** | **記憶體最佳化** |
+| 儲存體屬性 | **基本** | **一般用途** | **記憶體優化** |
 |:---|:----------|:--------------------|:---------------------|
-| 儲存體類型 | Azure 標準儲存體 | Azure 進階儲存體 | Azure 進階儲存體 |
-| 儲存體大小 | 5 GB 至 1 TB | 5 GB 至 4 TB | 5 GB 至 4 TB |
+| 儲存體類型 | 基本儲存體 | 一般用途儲存體 | 一般用途儲存體 |
+| 儲存體大小 | 5 GB 至 1 TB | 5 GB 到 16 TB | 5 GB 到 16 TB |
 | 儲存體遞增大小 | 1 GB | 1 GB | 1 GB |
-| IOPS | 變數 |3 IOPS/GB<br/>最小值為 100 IOPS<br/>最大值為 6000 IOPS | 3 IOPS/GB<br/>最小值為 100 IOPS<br/>最大值為 6000 IOPS |
+| IOPS | 變數 |3 IOPS/GB<br/>最小值為 100 IOPS<br/>最大 20000 IOPS | 3 IOPS/GB<br/>最小值為 100 IOPS<br/>最大 20000 IOPS |
 
-您可以在建立伺服器期間或之後，新增額外的儲存體容量。 基本層不提供 IOPS 保證。 在一般用途和記憶體最佳化定價層中，IOPS 與佈建的儲存體大小會以 3:1 的比例調整。
+> [!NOTE]
+> 下欄區域支援高達16TB 和 20000 IOPS 的儲存體：美國東部、美國東部2、美國中部、美國西部、美國中北部、美國中南部、北歐、西歐、英國南部、英國西部、東南亞、東亞、日本東部、日本西部、韓國中部、南韓南部、澳大利亞東部、澳大利亞東南部、美國西部2和美國中西部。
+>
+> 所有其他區域最多支援4TB 的儲存體和 6000 IOPS。
+>
 
-您可以在 Azure 入口網站或使用 Azure CLI 命令來監視 I/O 耗用量。 要監視的相關計量包括[儲存體限制、儲存體百分比、已使用的儲存體和 IO 百分比](concepts-monitoring.md)。
+您可以在建立伺服器期間和之後新增額外的儲存體容量，並允許系統根據您工作負載的儲存體耗用量自動成長儲存體。
+
+>[!NOTE]
+> 儲存體只能相應增加，而不能相應縮小。
+
+基本層不提供 IOPS 保證。 在一般用途和記憶體最佳化定價層中，IOPS 與佈建的儲存體大小會以 3:1 的比例調整。
+
+您可以在 Azure 入口網站或使用 Azure CLI 命令來監視 I/O 耗用量。 要監視的相關計量包括[儲存體限制、儲存體百分比、使用的儲存體和 IO 百分比](concepts-monitoring.md)。
 
 ### <a name="reaching-the-storage-limit"></a>到達儲存體限制
 
-當可用的儲存體數量低於 5 GB 或 5% 的佈建儲存體時 (以較低者為準)，伺服器會標記為唯讀狀態。 例如，如果您已佈建 100 GB 的儲存體，並且實際的使用率超過 95 GB，伺服器會標示為唯讀。 或者，如果您已佈建 5 GB 的儲存體，則當可用儲存體小於 250 MB時，伺服器會標示為唯讀。  
+如果可用儲存空間小於512MB 或5% 的布建儲存體大小，則小於 100 GB 已布建儲存體的伺服器會標示為唯讀。 若伺服器中佈建的儲存體超過 100 GB，則只有在可用儲存空間小於 5 GB 時，伺服器所才會標示為唯讀。
+
+例如，如果您布建了 110 GB 的儲存空間，而實際的使用率超過 105 GB，伺服器就會標示為唯讀。 或者，如果您已布建 5 GB 的儲存體，則當可用的存放裝置達到低於 512 MB 時，伺服器會標示為唯讀。
 
 當伺服器設定為唯讀時，所有現有的工作階段都將中斷連接，並且回復未認可的交易。 任何後續的寫入作業和交易認可均失敗。 所有後續的讀取查詢將不會中斷。  
 
 您可以增加伺服器的已佈建儲存體數量，也可以讀寫模式啟動新的工作階段，並刪除資料以回收可用的儲存體。 執行 `SET SESSION CHARACTERISTICS AS TRANSACTION READ WRITE;` 會將目前工作階段設定為讀取寫入模式。 為了避免資料損毀，請勿在伺服器仍處於唯讀狀態時執行任何寫入作業。
 
-我們建議您設定警示，讓系統可在伺服器儲存容量接近閾值時發出通知，以避免進入唯讀狀態。 如需詳細資訊，請參閱[如何設定警示](howto-alert-on-metric.md)的文件。
+建議您開啟存放裝置自動成長，或設定警示，在伺服器存放裝置達到閾值時通知您，以避免進入唯讀狀態。 如需詳細資訊，請參閱[如何設定警示](howto-alert-on-metric.md)的文件。
 
-## <a name="backup"></a>Backup 
+### <a name="storage-auto-grow"></a>儲存體自動成長
 
-服務會自動採用伺服器的備份。 備份的最小保留期限是七天。 您可以設定的保留期限最多為 35 天。 在伺服器的存留期期間，您可以在任何時間點調整保留期限。 您可以選擇本地備援和異地備援備份。 異地備援備份也會儲存在您伺服器所在建立區域的[地理配對區域](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)中。 此備援能力可在發生災害時提供一層保護。 您也可讓伺服器還原到其他任何 Azure 區域，只要其中的服務可使用異地備援備份。 建立伺服器之後，便無法在兩個備份儲存體選項之間做變更。
+存放裝置自動成長可防止您的伺服器用盡儲存空間，並成為唯讀狀態。 如果已啟用儲存體自動成長，儲存體會自動成長，而不會影響工作負載。 對於小於 100 GB 已布建儲存體的伺服器，已布建的儲存體大小會在可用儲存空間低於 1 GB 或10% 的已布建儲存體的最大值時，增加 5 GB。 針對具有超過 100 GB 已布建儲存體的伺服器，當可用儲存空間低於 10 GB 或5% 的布建儲存體大小時，布建的儲存體大小會增加5%。 上述指定的最大儲存體限制適用于。
+
+例如，如果您已布建 1000 GB 的儲存體，而實際的使用率超過 950 GB，則伺服器儲存體大小會增加至 1050 GB。 或者，如果您已布建 10 GB 的儲存體，則儲存體大小會增加至 15 GB，而不超過 1 GB 的儲存體是免費的。
+
+請記住，儲存體只能相應增加，而不能相應縮小。
+
+## <a name="backup"></a>備份
+
+服務會自動採用伺服器的備份。 您可以選取介於7到35天的保留期間。 一般用途和記憶體優化伺服器可以選擇使用異地多餘的儲存空間來進行備份。 若要深入瞭解備份，請參閱[概念文章](concepts-backup.md)。
 
 ## <a name="scale-resources"></a>調整資源
 
 建立伺服器之後，您可以單獨變更虛擬核心、硬體世代、定價層 (基本層的來回除外)、儲存體數量及備份保留期限。 但您無法在建立伺服器之後，變更備份儲存體類型。 虛擬核心數目可相應增加或減少。 備份保留期可在 7 到 35 天的範圍內相應增加或減少。 儲存體大小只能增加。 您可以透過入口網站或 Azure CLI 來調整資源。 如需使用 Azure CLI 進行調整的範例，請參閱[使用 Azure CLI 來監視和調整適用於 PostgreSQL 的 Azure 資料庫伺服器](scripts/sample-scale-server-up-or-down.md)。
 
+> [!NOTE]
+> 儲存體大小只能增加。 增加之後，您就無法再回到較小的儲存體大小。
+
 當您變更虛擬核心數目、硬體世代或定價層時，系統會以新的計算配置建立一個原始伺服器複本。 當新伺服器已啟動並執行之後，連線就會切換到新的伺服器。 在系統切換到新伺服器的期間，您無法建立任何新的連線，且所有未認可的交易皆會復原。 此期間長短可能有所不同，但大部分情況下是少於一分鐘。
 
 調整儲存體和變更備份保留期限完全是線上作業。 運作不會中斷，您的應用程式也不會受到影響。 由於 IOPS 會隨著佈建的儲存體大小進行調整，您可以透過相應增加儲存體來增加伺服器可用的 IOPS。
 
-## <a name="pricing"></a>價格
+## <a name="pricing"></a>定價
 
-如需最新的定價資訊，請參閱服務的[定價頁面](https://azure.microsoft.com/pricing/details/PostgreSQL/)。 若要查看您所需的設定成本，[Azure 入口網站](https://portal.azure.com/#create/Microsoft.PostgreSQLServer)會根據您選取的選項，在 [定價層] 索引標籤中顯示每月成本。 如果您沒有 Azure 訂用帳戶，則可以使用 Azure 價格計算機來取得估計的價格。 在 [Azure 價格計算機](https://azure.microsoft.com/pricing/calculator/)網站上，選取 [新增項目]展開 [資料庫] 類別，然後選擇 [適用於 PostgreSQL 的 Azure 資料庫] 以自訂選項。
+如需最新的定價資訊，請參閱服務的[定價頁面](https://azure.microsoft.com/pricing/details/PostgreSQL/)。 若要查看您所需的設定成本，[Azure 入口網站](https://portal.azure.com/#create/Microsoft.PostgreSQLServer)會根據您選取的選項，在 [定價層]**** 索引標籤中顯示每月成本。 如果您沒有 Azure 訂用帳戶，則可以使用 Azure 價格計算機來取得估計的價格。 在 [Azure 價格計算機](https://azure.microsoft.com/pricing/calculator/)網站上，選取 [新增項目]**** 展開 [資料庫]**** 類別，然後選擇 [適用於 PostgreSQL 的 Azure 資料庫]**** 以自訂選項。
 
 ## <a name="next-steps"></a>後續步驟
 
-- 深入了解如何[在入口網站中建立 PostgreSQL 伺服器](tutorial-design-database-using-azure-portal.md)。
-- 了解[服務限制](concepts-limits.md)。 
+- 瞭解如何[在入口網站中建立于 postgresql 伺服器](tutorial-design-database-using-azure-portal.md)。
+- 了解[服務限制](concepts-limits.md)。
 - 了解如何[使用讀取複本來擴充 (服務)](howto-read-replicas-portal.md)。

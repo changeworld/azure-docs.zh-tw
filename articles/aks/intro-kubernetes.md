@@ -2,28 +2,27 @@
 title: 介紹 Azure Kubernetes Service
 description: 了解 Azure Kubernetes Service 的功能與優點，以在 Azure 中部署及管理容器型應用程式。
 services: container-service
-author: iainfoulds
-ms.service: container-service
 ms.topic: overview
-ms.date: 03/05/2019
-ms.author: iainfou
+ms.date: 05/06/2019
 ms.custom: mvc
-ms.openlocfilehash: a147d95701af166c650411a91fb24e3448cfec09
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 810f887c43b5653513d6848e9b7dd2e7ced070ab
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59995025"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86251326"
 ---
 # <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS)
 
-Azure Kubernetes Service (AKS) 可讓您輕鬆地在 Azure 中部署受控 Kubernetes 叢集。 AKS 可降低管理 Kubernetes 的複雜性和作業負荷，因為是由 Azure 負責大部分的工作。 以主控的 Kubernetes 服務形式，Azure 會為您處理像是健康狀態監視和維護等重要工作。 Kubernetes 主機是由 Azure 管理。 您只管理及維護代理程式節點。 由於是受控 Kubernetes 服務，AKS 是免費的，您只需要針對叢集中的代理程式節點付費，而不用為主機付費。
+Azure Kubernetes Service (AKS) 可讓您輕鬆地在 Azure 中部署受控 Kubernetes 叢集。 AKS 可降低管理 Kubernetes 的複雜性和作業負荷，因為是由 Azure 負責大部分的工作。 以主控的 Kubernetes 服務形式，Azure 會為您處理像是健康狀態監視和維護等重要工作。 Kubernetes 主機是由 Azure 管理。 您只需要管理及維護代理程式節點。 由於是受控 Kubernetes 服務，AKS 是免費的，您只需要針對叢集中的代理程式節點付費，而不用為主機付費。
 
-您可以使用 Azure CLI 或 Resource Manager 範本與 Terraform 等以範本為基礎的部署選項，在 Azure 入口網站中建立 AKS 叢集。 部署 AKS 叢集時，系統會為您部署及設定 Kubernetes 主機與所有節點。 部署程序中也可以設定其他功能，例如進階網路功能、Azure Active Directory 整合及監視功能。
+您可以使用 Azure CLI 或 Resource Manager 範本與 Terraform 等以範本為基礎的部署選項，在 Azure 入口網站中建立 AKS 叢集。 部署 AKS 叢集時，系統會為您部署及設定 Kubernetes 主機與所有節點。 部署程序中也可以設定其他功能，例如進階網路功能、Azure Active Directory 整合及監視功能。 AKS 中支援 Windows Server 容器。
 
 如需 Kubernetes 基本概念的詳細資訊，請參閱 [AKS 的 Kubernetes 核心概念][concepts-clusters-workloads]。
 
-若要開始使用，請在 [Azure 入口網站][aks-portal]中或使用 [Azure CLI][aks-cli] 來完成 AKS 快速入門。
+若要開始使用，請在 [Azure 入口網站中][aks-portal]或[使用 Azure CLI][aks-cli] 來完成 AKS 快速入門。
+
+[!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]
 
 ## <a name="access-security-and-monitoring"></a>存取、安全性和監視
 
@@ -43,13 +42,13 @@ Azure Kubernetes Service (AKS) 可讓您輕鬆地在 Azure 中部署受控 Kuber
 
 如需詳細資訊，請參閱[監視 Azure Kubernetes Service 的容器健康情況][container-health]。
 
-## <a name="cluster-and-node"></a>叢集與節點
+## <a name="clusters-and-nodes"></a>叢集和節點
 
-AKS 節點是在 Azure 虛擬機器上執行的。 您可以將儲存體連接到節點和 Pod、升級叢集節點，以及使用 GPU。
+AKS 節點是在 Azure 虛擬機器上執行的。 您可以將儲存體連接到節點和 Pod、升級叢集節點，以及使用 GPU。 AKS 支援的 Kubernetes 叢集可執行多個節點集區，以支援混合式作業系統和 Windows Server 容器。 Linux 節點會執行自訂的 Ubuntu OS 映像，Windows Server 節點則會執行自訂的 Windows Server 2019 OS 映像。
 
 ### <a name="cluster-node-and-pod-scaling"></a>調整叢集節點與 Pod
 
-視資源變更的需求，執行服務的叢集節點或 Pod 數目可以自動相應增加或減少。 您可以同時使用水平 Pod 自動調整程式或叢集自動調整程式。 此調整方式讓 AKS 叢集視需要自動調整，並且只執行需要的資源。
+視資源變更的需求，執行服務的叢集節點或 Pod 數目可以自動擴大或縮小。 您可以同時使用水平 Pod 自動調整程式或叢集自動調整程式。 此調整方式讓 AKS 叢集視需要自動調整，並且只執行需要的資源。
 
 如需詳細資訊，請參閱[縮放 Azure Kubernetes Service (AKS) 叢集][aks-scale]。
 
@@ -89,7 +88,7 @@ HTTP 應用程式路由附加元件可讓您輕鬆存取已部署到 AKS 叢集�
 
 ## <a name="development-tooling-integration"></a>開發工具整合
 
-Kubernetes 具有豐富的開發和管理工具生態系統，例如 Helm、Draft 和 Visual Studio Code 的 Kubernetes 擴充功能。 這些工具可與 AKS 完美搭配。
+Kubernetes 具有豐富的開發和管理工具生態系統，例如 Helm 和 Visual Studio Code 的 Kubernetes 擴充功能。 這些工具可與 AKS 完美搭配。
 
 此外，Azure Dev Spaces 可為小組提供快速、疊代的 Kubernetes 開發經驗。 使用基本設定，您就可以直接在 AKS 中執行容器並進行偵錯。 若要開始使用，請參閱 [Azure Dev Spaces][azure-dev-spaces]。
 
@@ -125,7 +124,7 @@ Azure Kubernetes Service (AKS) 符合 SOC、ISO、PCI DSS 和 HIPAA 的規範。
 
 <!-- LINKS - internal -->
 [acr-docs]: ../container-registry/container-registry-intro.md
-[aks-aad]: ./azure-ad-integration.md
+[aks-aad]: ./azure-ad-integration-cli.md
 [aks-cli]: ./kubernetes-walkthrough.md
 [aks-gpu]: ./gpu-cluster.md
 [aks-http-routing]: ./http-application-routing.md
@@ -133,14 +132,14 @@ Azure Kubernetes Service (AKS) 符合 SOC、ISO、PCI DSS 和 HIPAA 的規範。
 [aks-portal]: ./kubernetes-walkthrough-portal.md
 [aks-scale]: ./tutorial-kubernetes-scale.md
 [aks-upgrade]: ./upgrade-cluster.md
-[azure-dev-spaces]: https://docs.microsoft.com/azure/dev-spaces/azure-dev-spaces
-[azure-devops]: https://docs.microsoft.com/azure/devops-project/overview
+[azure-dev-spaces]: ../dev-spaces/index.yml
+[azure-devops]: ../devops-project/overview.md
 [azure-disk]: ./azure-disks-dynamic-pv.md
 [azure-files]: ./azure-files-dynamic-pv.md
-[container-health]: ../monitoring/monitoring-container-health.md
+[container-health]: ../azure-monitor/insights/container-insights-overview.md
 [aks-master-logs]: view-master-logs.md
 [aks-supported versions]: supported-kubernetes-versions.md
 [concepts-clusters-workloads]: concepts-clusters-workloads.md
-[kubernetes-rbac]: concepts-identity.md#role-based-access-controls-rbac
+[kubernetes-rbac]: concepts-identity.md#kubernetes-role-based-access-controls-rbac
 [concepts-identity]: concepts-identity.md
 [concepts-storage]: concepts-storage.md

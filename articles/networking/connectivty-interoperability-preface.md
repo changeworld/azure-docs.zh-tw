@@ -1,5 +1,5 @@
 ---
-title: Azure 後端連線功能的互通性：測試設定 | Microsoft Docs
+title: Azure 中的互通性：測試設定 |Microsoft Docs
 description: 本文說明的測試設定可供您分析 Azure 中 ExpressRoute、站對站 VPN 及虛擬網路對等互連之間的互通性。
 documentationcenter: na
 services: networking
@@ -10,14 +10,14 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
-ms.openlocfilehash: 8be546c5dba4c6c694c8cef03a4bdd6005d68189
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3aec41a145d2c94a45a453393831902069b9c41b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60811128"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80518198"
 ---
-# <a name="interoperability-in-azure-back-end-connectivity-features-test-setup"></a>Azure 後端連線功能的互通性：測試設定
+# <a name="interoperability-in-azure--test-setup"></a>Azure 中的互通性：測試設定
 
 本文說明的測試設定，可供您分析 Azure 網路服務如何在控制平面層級和資料平面層級進行相互操作。 讓我們簡短探討 Azure 網路元件：
 
@@ -29,7 +29,7 @@ ms.locfileid: "60811128"
 
 下圖說明測試設定：
 
-[![1]][1]
+![1][1]
 
 測試設定的核心部分是 Azure 區域 1 的中樞 VNet。 中樞 VNet 會以下列方式連線到不同的網路：
 

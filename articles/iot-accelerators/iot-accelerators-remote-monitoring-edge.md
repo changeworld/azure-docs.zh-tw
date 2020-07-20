@@ -10,13 +10,13 @@ ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
 ms.openlocfilehash: a812155474b244682613b38b9b9379fa6cdcdcd8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58166747"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "66117636"
 ---
-# <a name="tutorial-detect-anomalies-at-the-edge-with-the-remote-monitoring-solution-accelerator"></a>教學課程：使用遠端監視解決方案加速器來偵測邊緣異常狀況
+# <a name="tutorial-detect-anomalies-at-the-edge-with-the-remote-monitoring-solution-accelerator"></a>教學課程：使用遠端監視解決方案加速器來偵測異常狀況
 
 在本教學課程中，您會設定遠端監視解決方案，以因應 IoT Edge 裝置所偵測到的異常狀況。 IoT Edge 裝置可讓您在 Edge 處理遙測資料，以減少傳送至解決方案的遙測資料數量，並加快對裝置事件的回應速度。 若要深入了解 Edge 處理的優點，請參閱[什麼是 Azure IoT Edge](../iot-edge/about-iot-edge.md)。
 
@@ -45,7 +45,7 @@ Contoso 想要將智慧型 Edge 模組部署到油泵機，以偵測溫度異常
 
 本教學課程會使用 Linux 虛擬機器作為 IoT Edge 裝置。 您也安裝了 Edge 模組來模擬油料幫浦千斤頂裝置。
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立 [免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [iot-accelerators-tutorial-prereqs](../../includes/iot-accelerators-tutorial-prereqs.md)]
 
@@ -55,20 +55,20 @@ Contoso 想要將智慧型 Edge 模組部署到油泵機，以偵測溫度異常
 
 要將 IoT Edge 裝置新增至遠端監視解決方案加速器，必須執行兩個步驟。 本節說明如何：
 
-* 在遠端監視 Web UI 中的 [Device Explorer] 頁面上新增 IoT Edge 裝置。
+* 在遠端監視 Web UI 中的 [Device Explorer]  頁面上新增 IoT Edge 裝置。
 * 在 Linux 虛擬機器 (VM) 上安裝 IoT Edge 執行階段。
 
 ### <a name="add-an-iot-edge-device-to-your-solution"></a>將 IoT Edge 裝置新增至解決方案
 
-若要將 IoT Edge 裝置新增至遠端監視解決方案加速器，請瀏覽至 Web UI 中的 [Device Explorer] 頁面，然後按一下 [+ 新增裝置]。
+若要將 IoT Edge 裝置新增至遠端監視解決方案加速器，請瀏覽至 Web UI 中的 [Device Explorer]  頁面，然後按一下 [+ 新增裝置]  。
 
-在 [新增裝置] 面板中選擇 **IoT Edge 裝置**，然後輸入 **oil-pump** 作為裝置識別碼。 您可以將其他設定保留為預設值。 然後，按一下 [套用]：
+在 [新增裝置]  面板中選擇 **IoT Edge 裝置**，然後輸入 **oil-pump** 作為裝置識別碼。 您可以將其他設定保留為預設值。 然後，按一下 [套用]  ：
 
 [![新增 IoT Edge 裝置](./media/iot-accelerators-remote-monitoring-edge/addedgedevice-inline.png)](./media/iot-accelerators-remote-monitoring-edge/addedgedevice-expanded.png#lightbox)
 
 記下裝置連接字串，您在本教學課程的下一節將用到此字串。
 
-當您在遠端監視解決方案加速器中對 IoT 中樞註冊裝置時，該裝置會列在 Web UI 中的 [Device Explorer] 頁面上：
+當您在遠端監視解決方案加速器中對 IoT 中樞註冊裝置時，該裝置會列在 Web UI 中的 [Device Explorer]  頁面上：
 
 [![新增 IoT Edge 裝置](./media/iot-accelerators-remote-monitoring-edge/newedgedevice-inline.png)](./media/iot-accelerators-remote-monitoring-edge/newedgedevice-expanded.png#lightbox)
 
@@ -80,19 +80,19 @@ Contoso 想要將智慧型 Edge 模組部署到油泵機，以偵測溫度異常
 
     | 設定 | 值 |
     | ------- | ----- |
-    | 工作 (Job)     | 標記  |
+    | 工作 (Job)     | Tags  |
     | 作業名稱 | AddEdgeTag |
     | Key     | IsOilPump |
     | 值   | Y     |
-    | 類型    | 文字  |
+    | 類型    | Text  |
 
     [![新增標記](./media/iot-accelerators-remote-monitoring-edge/addtag-inline.png)](./media/iot-accelerators-remote-monitoring-edge/addtag-expanded.png#lightbox)
 
-1. 依序按一下 [套用] 和 [關閉]。
+1. 依序按一下 [套用]  和 [關閉]  。
 
-1. 在 [Device Explorer] 頁面上，按一下 [管理裝置群組]。
+1. 在 [Device Explorer]  頁面上，按一下 [管理裝置群組]  。
 
-1. 按一下 [建立新的裝置群組]。 使用下列設定建立新的裝置群組：
+1. 按一下 [建立新的裝置群組]  。 使用下列設定建立新的裝置群組：
 
     | 設定 | 值 |
     | ------- | ----- |
@@ -100,11 +100,11 @@ Contoso 想要將智慧型 Edge 模組部署到油泵機，以偵測溫度異常
     | 欄位   | Tags.IsOilPump |
     | 運算子 | = Equals |
     | 值    | Y |
-    | 類型     | 文字 |
+    | 類型     | Text |
 
     [![建立裝置群組](./media/iot-accelerators-remote-monitoring-edge/createdevicegroup-inline.png)](./media/iot-accelerators-remote-monitoring-edge/createdevicegroup-expanded.png#lightbox)
 
-1. 按一下 [檔案] 。
+1. 按一下 [檔案]  。
 
 您的 IoT Edge 裝置現在位於 **OilPumps** 群組中。
 
@@ -163,7 +163,7 @@ Edge 裝置需要安裝 Edge 執行階段。 在本教學課程中，您將在 A
     | 作業名稱 | EdgeDeviceJob |
     | 訂用帳戶 | 您的 Azure 訂用帳戶 |
     | 資源群組 | IoTEdgeDevices |
-    | 位置 | 美國東部 |
+    | Location | 美國東部 |
     | 裝載環境 | Edge |
     | 串流單位 | 1 |
 
@@ -173,7 +173,7 @@ Edge 裝置需要安裝 Edge 執行階段。 在本教學課程中，您將在 A
 
 1. 在入口網站中的 **EdgeDeviceJob** 串流分析作業中，按一下 [輸出]，然後新增名為**警示**的第二個 **Edge 中樞**輸出。
 
-1. 在入口網站中的 **EdgeDeviceJob** 串流分析作業中，按一下 [查詢]，然後新增下列 **select** 陳述式：
+1. 在入口網站中的 **EdgeDeviceJob** 串流分析作業中，按一下 [查詢]  ，然後新增下列 **select** 陳述式：
 
     ```sql
     SELECT  
@@ -189,7 +189,7 @@ Edge 裝置需要安裝 Edge 執行階段。 在本教學課程中，您將在 A
     HAVING avg(machine.temperature) > 400
     ```
 
-1. 在入口網站中的 **EdgeDeviceJob** 串流分析作業中，按一下 [儲存體帳戶設定]。 新增您在本節一開始新增至 **IoTEdgeDevices** 資源群組的儲存體帳戶。 建立名為 **edgeconfig** 的新容器。
+1. 在入口網站中的 **EdgeDeviceJob** 串流分析作業中，按一下 [儲存體帳戶設定]  。 新增您在本節一開始新增至 **IoTEdgeDevices** 資源群組的儲存體帳戶。 建立名為 **edgeconfig** 的新容器。
 
 下列螢幕擷取畫面顯示已儲存的串流分析作業：
 
@@ -203,21 +203,21 @@ Edge 裝置需要安裝 Edge 執行階段。 在本教學課程中，您將在 A
 
 1. 在 Azure 入口網站中，瀏覽至您遠端監視解決方案中的 IoT 中樞。 您可以在與您的遠端監視解決方案同名的資源群組中找到此 IoT 中樞。
 
-1. 在 IoT 中樞中，按一下 [自動裝置管理] 區段中的 [IoT 中樞]。 按一下 [新增 IoT Edge 部署]。
+1. 在 IoT 中樞中，按一下 [自動裝置管理] 區段中的 [IoT 中樞]。 按一下 [新增 IoT Edge 部署]  。
 
-1. 在 [建立部署 > 名稱和標籤] 頁面上，輸入名稱 **oil-pump-device**。 按 [下一步] 。
+1. 在 [建立部署 > 名稱和標籤]  頁面上，輸入名稱 **oil-pump-device**。 按 [下一步]  。
 
-1. 在 [建立部署 > 新增模組] 頁面上，按一下 [+ 新增]。 選擇 [IoT Edge 模組]。
+1. 在 [建立部署 > 新增模組]  頁面上，按一下 [+ 新增]  。 選擇 [IoT Edge 模組]  。
 
-1. 在 [IoT Edge 自訂模組] 面板中輸入 **temperatureSensor** 作為名稱，並輸入 **asaedgedockerhubtest/asa-edge-test-module:sensor-ad-linux-amd64** 作為映像 URI。 按一下 [檔案] 。
+1. 在 [IoT Edge 自訂模組]  面板中輸入 **temperatureSensor** 作為名稱，並輸入 **asaedgedockerhubtest/asa-edge-test-module:sensor-ad-linux-amd64** 作為映像 URI。 按一下 [檔案]  。
 
-1. 在 [建立部署 > 新增模組] 頁面上，按一下 [+ 新增] 以新增第二個模組。 選擇 [Azure 串流分析模組]。
+1. 在 [建立部署 > 新增模組]  頁面上，按一下 [+ 新增]  以新增第二個模組。 選擇 [Azure 串流分析模組]  。
 
-1. 在 [Edge 部署] 面板中，選取您的訂用帳戶和您在上一節中建立的 **EdgeDeviceJob**。 按一下 [檔案] 。
+1. 在 [Edge 部署]  面板中，選取您的訂用帳戶和您在上一節中建立的 **EdgeDeviceJob**。 按一下 [檔案]  。
 
-1. 在 [建立部署 > 新增模組] 頁面上，按 [下一步]。
+1. 在 [建立部署 > 新增模組]  頁面上，按 [下一步]  。
 
-1. 在 [建立部署 > 指定路由] 頁面上，新增下列程式碼：
+1. 在 [建立部署 > 指定路由]  頁面上，新增下列程式碼：
 
     ```sql
     {
@@ -231,19 +231,19 @@ Edge 裝置需要安裝 Edge 執行階段。 在本教學課程中，您將在 A
 
     此程式碼會將串流分析模組的輸出路由至正確的位置。
 
-    按 [下一步] 。
+    按 [下一步]  。
 
-1. 在 [建立部署 > 指定計量] 頁面上，按 [下一步]。
+1. 在 [建立部署 > 指定計量]  頁面上，按 [下一步]  。
 
-1. 在 [建立部署 > 目標裝置] 頁面上，輸入 10 作為優先順序。 按 [下一步] 。
+1. 在 [建立部署 > 目標裝置]  頁面上，輸入 10 作為優先順序。 按 [下一步]  。
 
-1. 在 [建立部署 > 檢閱部署] 頁面上，按一下 [提交]：
+1. 在 [建立部署 > 檢閱部署]  頁面上，按一下 [提交]  ：
 
     [![檢閱部署](./media/iot-accelerators-remote-monitoring-edge/reviewdeployment-inline.png)](./media/iot-accelerators-remote-monitoring-edge/reviewdeployment-expanded.png#lightbox)
 
-1. 在主要 [IoT Edge] 頁面上，按一下 [IoT Edge 部署]。 您會在部署清單中看到 **oil-pump-device**。
+1. 在主要 [IoT Edge]  頁面上，按一下 [IoT Edge 部署]  。 您會在部署清單中看到 **oil-pump-device**。
 
-1. 按一下 **oil-pump-device** 部署，然後按一下 [下載 IoT Edge 資訊清單]。 將檔案以 **oil-pump-device.json** 的形式儲存至本機電腦上的適當位置。 您會本教學課程的下一節中將需要此檔案。
+1. 按一下 **oil-pump-device** 部署，然後按一下 [下載 IoT Edge 資訊清單]  。 將檔案以 **oil-pump-device.json** 的形式儲存至本機電腦上的適當位置。 您會本教學課程的下一節中將需要此檔案。
 
 您現在已建立要在遠端監視解決方案中匯入作為套件的 IoT Edge 資訊清單。 一般而言，開發人員會建立 IoT Edge 模組和資訊清單檔案。
 
@@ -251,11 +251,11 @@ Edge 裝置需要安裝 Edge 執行階段。 在本教學課程中，您將在 A
 
 在本節中，您已匯入 Edge 資訊清單，作為遠端監視解決方案中的套件。
 
-1. 在遠端監視 Web UI 中瀏覽至 [套件] 頁面，然後按一下 [+ 新增套件]：
+1. 在遠端監視 Web UI 中瀏覽至 [套件]  頁面，然後按一下 [+ 新增套件]  ：
 
     [![新增套件](./media/iot-accelerators-remote-monitoring-edge/newpackage-inline.png)](./media/iot-accelerators-remote-monitoring-edge/newpackage-expanded.png#lightbox)
 
-1. 在 [新增套件] 面板上，選擇 [Edge 資訊清單] 作為套件類型，按一下 [瀏覽] 以尋找您本機電腦上的 **oil-pump-device.json** 檔案，然後按一下 [上傳]：
+1. 在 [新增套件]  面板上，選擇 [Edge 資訊清單]  作為套件類型，按一下 [瀏覽]  以尋找您本機電腦上的 **oil-pump-device.json** 檔案，然後按一下 [上傳]  ：
 
     [![上傳套件](./media/iot-accelerators-remote-monitoring-edge/uploadpackage-inline.png)](./media/iot-accelerators-remote-monitoring-edge/uploadpackage-expanded.png#lightbox)
 
@@ -267,11 +267,11 @@ Edge 裝置需要安裝 Edge 執行階段。 在本教學課程中，您將在 A
 
 現在，您已準備好要將套件部署至裝置。
 
-1. 在遠端監視 Web UI 中瀏覽至 [部署] 頁面，然後按一下 [+ 新增部署]：
+1. 在遠端監視 Web UI 中瀏覽至 [部署]  頁面，然後按一下 [+ 新增部署]  ：
 
     [![新增部署](./media/iot-accelerators-remote-monitoring-edge/newdeployment-inline.png)](./media/iot-accelerators-remote-monitoring-edge/newdeployment-expanded.png#lightbox)
 
-1. 在 [新增部署] 面板中，使用下列設定建立部署：
+1. 在 [新增部署]  面板中，使用下列設定建立部署：
 
     | 選項 | 值 |
     | ------ | ----- |
@@ -283,24 +283,24 @@ Edge 裝置需要安裝 Edge 執行階段。 在本教學課程中，您將在 A
 
     [![建立部署](./media/iot-accelerators-remote-monitoring-edge/createdeployment-inline.png)](./media/iot-accelerators-remote-monitoring-edge/createdeployment-expanded.png#lightbox)
 
-    按一下 [套用]。
+    按一下 [套用]  。
 
 您需要等候幾分鐘讓套件部署至裝置，以及讓遙測資料開始從裝置流出。
 
 [![部署作用中](./media/iot-accelerators-remote-monitoring-edge/deploymentactive-inline.png)](./media/iot-accelerators-remote-monitoring-edge/deploymentactive-expanded.png#lightbox)
 
-[部署] 頁面會顯示下列計量：
+[部署]  頁面會顯示下列計量：
 
-* [已設定目標] 會顯示裝置群組中的裝置數目。
-* [已套用] 會顯示指定已套用部署內容的裝置數目。
-* [已成功] 會顯示從 IoT Edge 用戶端執行階段報告為成功的部署所包含的 Edge 裝置數目。
-* [失敗] 會顯示從 IoT Edge 用戶端執行階段報告為失敗的部署所包含的 Edge 裝置數目。
+* [已設定目標]  會顯示裝置群組中的裝置數目。
+* [已套用]  會顯示指定已套用部署內容的裝置數目。
+* [已成功]  會顯示從 IoT Edge 用戶端執行階段報告為成功的部署所包含的 Edge 裝置數目。
+* [失敗]  會顯示從 IoT Edge 用戶端執行階段報告為失敗的部署所包含的 Edge 裝置數目。
 
 ## <a name="monitor-the-device"></a>監視裝置
 
 您可以在遠端監視 Web UI 中檢視來自油泵裝置的溫度遙測資料：
 
-1. 瀏覽至 [Device Explorer] 頁面，然後選取您的油泵裝置。
+1. 瀏覽至 [Device Explorer]  頁面，然後選取您的油泵裝置。
 1. 在 [裝置詳細資料] 面板的 [遙測] 區段中，按一下 [溫度]：
 
     [![檢視遙測](./media/iot-accelerators-remote-monitoring-edge/viewtelemetry-inline.png)](./media/iot-accelerators-remote-monitoring-edge/viewtelemetry-expanded.png#lightbox)
@@ -309,13 +309,13 @@ Edge 裝置需要安裝 Edge 執行階段。 在本教學課程中，您將在 A
 
 如果您想要在達到閾值時通知操作員，您可以在遠端監視 Web UI 中建立規則：
 
-1. 瀏覽至 [規則] 頁面，然後按一下 [+ 新增規則]。
+1. 瀏覽至 [規則]  頁面，然後按一下 [+ 新增規則]  。
 1. 使用下列設定建立新的規則：
 
     | 選項 | 值 |
     | ------ | ----- |
     | 規則名稱 | 油泵溫度 |
-    | 說明 | 油泵溫度超過 300 度 |
+    | 描述 | 油泵溫度超過 300 度 |
     | 裝置群組 | OilPumps |
     | 計算 | 立即 |
     | 欄位 | 溫度 |
@@ -325,9 +325,9 @@ Edge 裝置需要安裝 Edge 執行階段。 在本教學課程中，您將在 A
 
     [![建立規則](./media/iot-accelerators-remote-monitoring-edge/newrule-inline.png)](./media/iot-accelerators-remote-monitoring-edge/newrule-expanded.png#lightbox)
 
-    按一下 [套用]。
+    按一下 [套用]  。
 
-1. 瀏覽至 [儀表板] 頁面。 當 **oil-pump** 裝置中的溫度超過 300 時，[警示] 面板中會顯示警示。
+1. 瀏覽至 [儀表板]  頁面。 當 **oil-pump** 裝置中的溫度超過 300 時，[警示] 面板中會顯示警示。
 
 ## <a name="next-steps"></a>後續步驟
 

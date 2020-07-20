@@ -10,24 +10,22 @@ tags: azure-resource-manager
 keywords: dsc
 ms.assetid: ea76b7e8-b576-445a-8107-88ea2f3876b9
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: robreed
-ms.openlocfilehash: 6618906f7b1b063de18a4f8a418c1c2744ca1533
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
-ms.translationtype: HT
+ms.openlocfilehash: f7edbd0fd8791829a2d9ffaa4e7c0ee0e561cc5d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55975779"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "73748967"
 ---
 # <a name="pass-credentials-to-the-azure-dscextension-handler"></a>將認證傳遞至 Azure DSCExtension 處理常式
 
 本文涵蓋適用於 Azure 的期望狀態設定 (DSC) 擴充功能。 如需 DSC 擴充處理常式的概觀，請參閱 [Azure 期望狀態設定擴充功能處理常式簡介](dsc-overview.md)。
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+ 
 
 ## <a name="pass-in-credentials"></a>傳入認證
 
@@ -84,11 +82,11 @@ $vm | Update-AzVM
 
 執行此程式碼會提示您輸入認證。 提供認證之後，它會暫時儲存在記憶體中。 使用 **Set-AzVMDscExtension** Cmdlet 發佈認證時，認證會透過 HTTPS 傳輸至 VM。 在 VM 中，Azure 會使用本機 VM 憑證儲存在磁碟上加密的認證。 認證會在記憶體中短暫地解密後再重新加密，以便傳遞給 DSC。
 
-此流程與[使用不含延伸模組處理常式的安全組態](/powershell/dsc/securemof)不同。 Azure 環境提供一個透過憑證以安全傳輸組態資料的方式。 使用 DSC 擴充處理常式時，您不需要在 **ConfigurationData** 中提供 **$CertificatePath** 或 **$CertificateID**/ **$Thumbprint** 項目。
+此流程與[使用不含延伸模組處理常式的安全組態](/powershell/scripting/dsc/pull-server/securemof)不同。 Azure 環境提供一個透過憑證以安全傳輸組態資料的方式。 使用 DSC 擴充處理常式時，您不需要在 **ConfigurationData** 中提供 **$CertificatePath** 或 **$CertificateID**/ **$Thumbprint** 項目。
 
 ## <a name="next-steps"></a>後續步驟
 
 - 取得 [Azure DSC 擴充處理常式簡介](dsc-overview.md)。
 - 查看 [適用於 DSC 擴充功能的 Azure Resource Manager 範本](dsc-template.md)。
-- 如需有關 PowerShell DSC 的詳細資訊，請移至 [PowerShell 文件中心](/powershell/dsc/overview)。
+- 如需有關 PowerShell DSC 的詳細資訊，請移至 [PowerShell 文件中心](/powershell/scripting/dsc/overview/overview)。
 - 如需更多您可以使用 PowerShell DSC 進行管理的功能，以及更多 DSC 資源，請瀏覽 [PowerShell 資源庫](https://www.powershellgallery.com/packages?q=DscResource&x=0&y=0)。

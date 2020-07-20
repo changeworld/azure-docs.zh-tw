@@ -2,21 +2,18 @@
 title: 概念 - 在 Azure Kubernetes Service (AKS) 中調整應用程式
 description: 了解 Azure Kubernetes Service (AKS) 中的調整功能，包括水平 Pod 自動調整程式、叢集自動調整程式，以及 Azure 容器執行個體連接器。
 services: container-service
-author: zr-msft
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
-ms.author: zarhoads
-ms.openlocfilehash: 2070c79a6ce0627280b1793e412002783f385cc0
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 41d4088a0942eb408d3d3c9eeb2d13ff38fc0362
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65074047"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244509"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中調整應用程式的選項
 
-當您在 Azure Kubernetes Service (AKS) 中執行應用程式時，可能需要增加或減少計算資源的數量。 當您需要的應用程式執行個體數目有所變更時，基礎 Kubernetes 節點的數目可能也需要變更。 您可能也需要快速佈建大量的其他應用程式執行個體。
+當您在 Azure Kubernetes Service (AKS) 中執行應用程式時，可能需要增加或減少計算資源的數量。 當您需要的應用程式執行個體數目有所變更時，基礎 Kubernetes 節點的數目可能也需要變更。 您也可能需要快速布建大量的額外應用程式實例。
 
 本文所介紹的核心概念，可協助您在 AKS 中調整應用程式：
 
@@ -27,7 +24,9 @@ ms.locfileid: "65074047"
 
 ## <a name="manually-scale-pods-or-nodes"></a>手動調整 Pod 或節點
 
-您可以手動調整複本 (Pod) 及節點，來測試您的應用程式如何回應可用資源和狀態中的變更。 手動調整資源也可讓您定義用來維護固定成本的資源集數量，例如節點的數目。 若要手動調整，您可以定義複本或節點計數，Kubernetes API 則會安排建立其他 Pod 或清空節點。
+您可以手動調整複本 (Pod) 及節點，來測試您的應用程式如何回應可用資源和狀態中的變更。 手動調整資源也可讓您定義用來維護固定成本的資源集數量，例如節點的數目。 若要手動調整，您可以定義複本或節點計數。 Kubernetes API 接著會根據該複本或節點計數，排程建立額外的 pod 或清空節點。
+
+向下調整節點時，Kubernetes API 會呼叫相關的 Azure 計算 API，並系結至您的叢集所使用的計算類型。 例如，針對以為基礎的叢集 VM 擴展集用來選取要移除哪些節點的邏輯，是由 VM 擴展集 API 所決定。 若要深入瞭解如何在相應減少時選取要移除的節點，請參閱[VMSS 常見問題](../virtual-machine-scale-sets/virtual-machine-scale-sets-faq.md#if-i-reduce-my-scale-set-capacity-from-20-to-15-which-vms-are-removed)。
 
 若要開始手動調整 Pod 和節點，請參閱[在 AKS 中調整應用程式][aks-scale]。
 
@@ -43,35 +42,33 @@ Kubernetes 會使用水平 Pod 自動調整程式 (HPA) 來監視資源需求，
 
 ### <a name="cooldown-of-scaling-events"></a>調整事件中的冷卻時間
 
-因為水平 Pod 自動調整程式每隔 30 秒會檢查計量 API，因此在進行另一項檢查之前，先前的調整事件可能尚未成功完成。 此行為可能會造成水平 Pod 自動調整程式需先變更複本的數目，才能讓先前調整事件接收應用程式工作負載和資源需求，來據以調整。
+因為水平 Pod 自動調整程式每隔 30 秒會檢查計量 API，因此在進行另一項檢查之前，先前的調整事件可能尚未成功完成。 此行為可能會導致水準 pod 自動調整程式在先前的調整事件可以接收應用程式工作負載之前變更複本數目，並據此調整資源需求。
 
-若要盡可能減少這些競爭事件，可以設定冷卻時間或延遲值。 這些值會定義水平 Pod 自動調整程式在調整事件之後，必須等待多久時間，才可以觸發另一個調整事件。 此行為可讓新的複本計數生效，並讓計量 API 反映分散式工作負載。 根據預設，相應增加事件的延遲為 3 分鐘，而相應減少事件的延遲為 5 分鐘
+若要將競爭事件降至最低，請設定延遲值。 這個值會定義在可觸發另一個調整事件之前，水準 pod 自動調整程式必須等待的時間長度。 此行為可讓新的複本計數生效，而計量 API 會反映分散式工作負載。 [Kubernetes 1.12 的相應增加事件沒有延遲](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/#support-for-cooldown-delay)，不過，scale down 事件的延遲預設為5分鐘。
 
-您可能需要調整這些冷卻時間值。 預設的冷卻時間值可能會讓您認為水平 Pod 自動調整程式調整複本計數不夠快速。 例如，若要更快速地增加使用中的複本數目，當您使用 `kubectl` 建立水平 Pod 自動調整程式定義時，請減少 `--horizontal-pod-autoscaler-upscale-delay`。
+目前，您無法從預設值微調這些 cooldown 值。
 
 ## <a name="cluster-autoscaler"></a>叢集自動調整程式
 
-为响应不断变化的 Pod 需求，Kubernetes 有一个群集自动缩放程序（目前在 AKS 中预览），可根据节点池中请求的计算资源调整节点数。 根據預設，叢集自動調整程式每隔 10 秒會檢查 API 伺服器，找出節點計數中任何必要的變更。 如果叢集自動調整判斷需要變更，則您 AKS 叢集中的節點數目會據以增加或減少。 叢集自動調整程式會使用已啟用 RBAC 功能且執行 Kubernetes 1.10.x 或更高版本的 AKS 叢集。
+為了回應變更的 pod 需求，Kubernetes 有一個叢集自動調整程式，可根據節點集區中要求的計算資源來調整節點數目。 根據預設，叢集自動調整程式會每隔10秒檢查一次計量 API 伺服器，以取得節點計數中的任何必要變更。 如果叢集自動調整判斷需要變更，則您 AKS 叢集中的節點數目會據以增加或減少。 叢集自動調整程式會使用已啟用 RBAC 功能且執行 Kubernetes 1.10.x 或更高版本的 AKS 叢集。
 
 ![Kubernetes 叢集自動調整程式](media/concepts-scale/cluster-autoscaler.png)
 
 叢集自動調整程式通常會與水平 Pod 自動調整程式一起使用。 加以結合時，水平 Pod 自動調整程式會根據應用程式需求來增加或減少 Pod 的數目，而叢集自動調整程式會據此來調整所需的節點數目，以執行這些額外的 Pod。
 
-叢集中自動調整程式僅應該在 AKS 叢集與單一節點的集區上的預覽中進行測試。
-
 若要在 AKS 中開始使用叢集自動調整程式，請參閱 [AKS 上的叢集自動調整程式][aks-cluster-autoscaler]。
 
 ### <a name="scale-up-events"></a>相應增加事件
 
-如果節點沒有足夠計算資源可執行所需的 Pod，則該 Pod 將無法完成排程的程序。 除非節點集區內有額外的計算資源可以使用，否則無法啟動 Pod。
+如果節點沒有足夠的計算資源可執行要求的 pod，該 pod 就無法透過排程程式進行。 除非節點集區中有額外的計算資源可供使用，否則 pod 無法啟動。
 
-當叢集自動調整程式注意到因節點集區資源限制而無法排定 Pod 時，會增加節點集區內的節點數目，以提供額外的計算資源。 當這些額外的節點已成功部署且可供在節點集區內使用時，就會將 Pod 排程在節點上執行。
+當叢集自動調整程式注意到因為節點集區資源條件約束而無法排程的 pod 時，節點集區中的節點數目會增加，以提供額外的計算資源。 當這些額外的節點已成功部署且可供在節點集區內使用時，就會將 Pod 排程在節點上執行。
 
 如果您必須快速調整應用程式，某些 Pod 會維持在等候排程的狀態，直到由叢集自動調整程式部署的其他節點可以接受排程的 Pod 為止。 對於具有高載需求的應用程式，您可以使用虛擬節點與 Azure 容器執行個體進行調整。
 
 ### <a name="scale-down-events"></a>相應減少事件
 
-叢集自動調整程式也會針對最近未收到新排程要求的節點，監視 Pod 排程狀態。 此案例指出節點集區具有高於所需的計算資源，且節點的數目可以降低。
+叢集自動調整程式也會監視最近尚未收到新排程要求之節點的 pod 排程狀態。 此案例指出節點集區具有比所需更多的計算資源，而且可以減少節點數目。
 
 依預設，節點若超過 10 分鐘未使用的閾值，則會安排將此節點刪除。 當這種情況發生時，Pod 會排程在節點集區內的其他節點上執行，且叢集自動調整程式會減少節點的數目。
 
@@ -83,7 +80,7 @@ Kubernetes 會使用水平 Pod 自動調整程式 (HPA) 來監視資源需求，
 
 ![Kubernetes 高載調整至 ACI](media/concepts-scale/burst-scaling.png)
 
-ACI 可讓您快速部署容器執行個體，不需要額外的基礎結構成本。 當您與 AKS 連線時，ACI 會變成您 AKS 叢集的安全邏輯擴充功能。 Virtual Kubelet 元件會安裝在您的 AKS 叢集，使 ACI 作為虛擬的 Kubernetes 節點。 接著，Kubernetes 可以排程透過虛擬節點以 ACI 執行個體身分執行的 Pod，而非直接在 AKS 叢集中，以 VM 節點上的 Pod 身分執行。 虚拟节点目前在 AKS 中预览。
+ACI 可讓您快速部署容器執行個體，不需要額外的基礎結構成本。 當您與 AKS 連線時，ACI 會變成您 AKS 叢集的安全邏輯擴充功能。 [虛擬節點][virtual-nodes-cli]元件是以[virtual Kubelet][virtual-kubelet]為基礎，安裝在您的 AKS 叢集中，以虛擬 Kubernetes 節點的形式呈現 ACI。 接著，Kubernetes 可以排程透過虛擬節點以 ACI 執行個體身分執行的 Pod，而非直接在 AKS 叢集中，以 VM 節點上的 Pod 身分執行。
 
 您的應用程式不需要進行任何修改即可使用虛擬節點。 部署可以跨 AKS 和 ACI 調整，且當叢集自動調整程式在 AKS 叢集中部署新的節點時沒有延遲。
 
@@ -95,7 +92,7 @@ ACI 可讓您快速部署容器執行個體，不需要額外的基礎結構成�
 
 - 手動調整 [Pod][aks-manually-scale-pods] 或[節點][aks-manually-scale-nodes]
 - 使用[水平 Pod 自動調整程式][aks-hpa]
-- 使用[叢集自動調整程式][aks-cluster-autoscaler]
+- 使用叢集[自動調整程式][aks-cluster-autoscaler]
 
 如需有關 Kubernetes 及 AKS 核心概念的詳細資訊，請參閱下列文章：
 
@@ -106,6 +103,7 @@ ACI 可讓您快速部署容器執行個體，不需要額外的基礎結構成�
 - [Kubernetes / AKS 儲存體][aks-concepts-storage]
 
 <!-- LINKS - external -->
+[virtual-kubelet]: https://virtual-kubelet.io/
 
 <!-- LINKS - internal -->
 [aks-quickstart]: kubernetes-walkthrough.md
@@ -113,9 +111,10 @@ ACI 可讓您快速部署容器執行個體，不需要額外的基礎結構成�
 [aks-scale]: tutorial-kubernetes-scale.md
 [aks-manually-scale-pods]: tutorial-kubernetes-scale.md#manually-scale-pods
 [aks-manually-scale-nodes]: tutorial-kubernetes-scale.md#manually-scale-aks-nodes
-[aks-cluster-autoscaler]: autoscaler.md
+[aks-cluster-autoscaler]: ./cluster-autoscaler.md
 [aks-concepts-clusters-workloads]: concepts-clusters-workloads.md
 [aks-concepts-security]: concepts-security.md
 [aks-concepts-storage]: concepts-storage.md
 [aks-concepts-identity]: concepts-identity.md
 [aks-concepts-network]: concepts-network.md
+[virtual-nodes-cli]: virtual-nodes-cli.md

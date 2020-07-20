@@ -1,6 +1,6 @@
 ---
-title: Azure 媒體服務的診斷記錄結構描述-Azure
-description: 本文說明 Azure 媒體服務的診斷記錄結構描述。
+title: Azure 媒體服務診斷記錄架構-Azure
+description: 本文示範 Azure 媒體服務診斷記錄架構。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,42 +13,41 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/20/2019
 ms.author: juliako
-ms.openlocfilehash: 394370738bc7996a221300540e68404986d91310
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 37baed076ca074c1d558af36649e90959a0034c9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60322245"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75750885"
 ---
 # <a name="diagnostic-logs-schemas"></a>診斷記錄結構描述
 
-[Azure 監視器](../../azure-monitor/overview.md)可讓您監視計量和診斷的記錄檔，可協助您了解如何執行您的應用程式。 您可以監視媒體服務的診斷記錄檔，並建立警示和通知所收集的計量和記錄檔。 您可以將記錄傳送至[Azure 儲存體](https://azure.microsoft.com/services/storage/)，串流至[Azure 事件中樞](https://azure.microsoft.com/services/event-hubs/)，並將它們以匯出[Log Analytics](https://azure.microsoft.com/services/log-analytics/)，或使用第 3 方服務。
+[Azure 監視器](../../azure-monitor/overview.md)可讓您監視計量和診斷記錄，以協助您瞭解應用程式的執行狀況。 您可以監視媒體服務診斷記錄，並為所收集的計量和記錄建立警示和通知。 您可以將記錄傳送至[Azure 儲存體](https://azure.microsoft.com/services/storage/)、將它們串流至[Azure 事件中樞](https://azure.microsoft.com/services/event-hubs/)，並將它們匯出至[Log Analytics](https://azure.microsoft.com/services/log-analytics/)，或使用協力廠商服務。
 
-如需詳細資訊，請參閱 < [Azure 監視器計量](../../azure-monitor/platform/data-platform.md)並[Azure 監視器診斷記錄](../../azure-monitor/platform/diagnostic-logs-overview.md)。
+如需詳細資訊，請參閱[Azure 監視器計量](../../azure-monitor/platform/data-platform.md)和[Azure 監視器診斷記錄](../../azure-monitor/platform/platform-logs-overview.md)。
 
-這篇文章說明媒體服務診斷記錄結構描述。
+本文說明媒體服務診斷記錄架構。
 
 ## <a name="top-level-diagnostic-logs-schema"></a>最上層診斷記錄結構描述
 
-如需詳細的最上層的診斷記錄結構描述的詳細說明，請參閱[Azure 診斷記錄支援服務、 結構描述和類別](../../azure-monitor/platform/tutorial-dashboards.md)。
+如需最上層診斷記錄架構的詳細描述，請參閱[支援的服務、架構和 Azure 診斷記錄的類別](../../azure-monitor/platform/tutorial-dashboards.md)。
 
-## <a name="key-delivery-log-schema"></a>金鑰傳遞記錄結構描述
+## <a name="key-delivery-log-schema"></a>金鑰傳遞記錄架構
 
-### <a name="properties"></a>properties
+### <a name="properties"></a>屬性
 
-這些屬性專屬於金鑰傳遞記錄結構描述。
+這些是金鑰傳遞記錄架構特有的屬性。
 
-|Name|描述|
+|Name|說明|
 |---|---|
-|keyId|要求的索引鍵識別碼。|
-|keyType|可能是下列其中一個值：「 清除 」 （不加密）、"FairPlay 」、 「 PlayReady"或者"Widevine 」。|
-|policyName|Azure Resource Manager 原則的名稱。|
-|tokenType|權杖類型。|
+|keyId|所要求之金鑰的識別碼。|
+|keyType|可能是下列其中一個值： "Clear" （無加密）、"FairPlay"、"PlayReady" 或 "Widevine"。|
+|policyName|原則的 Azure Resource Manager 名稱。|
+|tokenType|Token 類型。|
 |statusMessage|狀態訊息。|
 
 ### <a name="examples"></a>範例
 
-金鑰傳遞要求結構描述的屬性。
+金鑰傳遞要求架構的屬性。
 
 ```json
 {
@@ -108,6 +107,10 @@ ms.locfileid: "60322245"
 } 
 ```
 
+## <a name="additional-notes"></a>其他注意事項
+
+* Widevine 是 Google Inc. 所提供的服務，並受到 Google Inc. 的服務條款和隱私權原則所約束。
+
 ## <a name="next-steps"></a>後續步驟
 
-[監視媒體服務的計量和診斷記錄](media-services-metrics-diagnostic-logs.md)
+[監視媒體服務計量和診斷記錄](media-services-metrics-diagnostic-logs.md)

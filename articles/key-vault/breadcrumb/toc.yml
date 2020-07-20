@@ -42,7 +42,7 @@
             - name: 憑證
               tocHref: /cli/azure/keyvault/certificate
               topicHref: /azure/key-vault/
-            - name: 金鑰
+            - name: 索引鍵
               tocHref: /cli/azure/keyvault/key
               topicHref: /azure/key-vault/
             - name: 密碼

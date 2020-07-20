@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: aahi
 ms.openlocfilehash: 5575668f164b97142e7c4b2ddb2608c3173426a6
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56738720"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "60499880"
 ---
 # <a name="bing-search-api-use-and-display-requirements"></a>Bing 搜尋 API 使用和顯示需求
 
@@ -37,7 +37,7 @@ ms.locfileid: "56738720"
 |詞彙  |描述  |
 |---------|---------|
 |Answer     | 回應中所傳回的結果類別。 例如，來自 Bing 網路搜尋 API 的回應可能包含網頁結果、映像、影片、視覺物件和新聞類別中的解答。 |
-|Response     | 搜尋 API 的單一呼叫回應中所收到的所有及任何解答和相關聯的資料。 |
+|回應     | 搜尋 API 的單一呼叫回應中所收到的所有及任何解答和相關聯的資料。 |
 |結果    | 解答中資訊的項目。 例如，與單一新聞文章連線的資料集是新聞回應中的結果。 |
 |搜尋 API    | 統稱 Bing 自訂搜尋、實體搜尋、影像搜尋、新聞搜尋、影片搜尋、圖像式搜尋、本地商家搜尋及網路搜尋 API。 |
 
@@ -134,7 +134,7 @@ ms.locfileid: "56738720"
 - 讓使用者存取先前在該裝置上傳回給該使用者的結果 (例如，發生服務中斷時)。
 - 根據該使用者的訊號，在預期到使用者需求而個人化的情況下，儲存主動式查詢所傳回的結果 (例如，發生預期的服務中斷時)。
 
-#### <a name="server"></a>伺服器
+#### <a name="server"></a>Server (伺服器)
 
 只有在下列情況，才可以在您控制的伺服器上，安全地保留單一使用者特定的結果，且只能顯示保留的結果︰
 

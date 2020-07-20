@@ -1,35 +1,23 @@
 ---
-title: 使用 Apache Storm 來接收事件 - Azure 事件中樞 | Microsoft Docs
-description: 本文提供有關如何使用 Apache Storm 從「Azure 事件中樞」接收事件的資訊。
-services: event-hubs
-documentationcenter: ''
-author: ShubhaVijayasarathy
-manager: timlt
-editor: ''
-ms.assetid: ''
-ms.service: event-hubs
-ms.workload: na
-ms.tgt_pltfrm: java
-ms.devlang: multiple
-ms.topic: article
-ms.custom: seodec18
-ms.date: 12/06/2018
-ms.author: shvija
-ms.openlocfilehash: 75a96127c48186befc48b2240f78e49cd5914239
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+title: 快速入門：使用 Apache Storm 接收事件 - Azure 事件中樞
+description: 快速入門：本文提供有關如何使用 Apache Storm 從「Azure 事件中樞」接收事件的資訊。
+ms.topic: quickstart
+ms.date: 06/23/2020
+ms.openlocfilehash: 05973a9a930cd7b42a5a00554c48832065c794ec
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60343407"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85315355"
 ---
-# <a name="receive-events-from-event-hubs-using-apache-storm"></a>使用 Apache Storm 從事件中樞接收事件
+# <a name="quickstart-receive-events-from-event-hubs-using-apache-storm"></a>快速入門：使用 Apache Storm 從事件中樞接收事件
 
-[Apache Storm](https://storm.incubator.apache.org) 是分散式即時運算系統，可簡化未繫結資料串流的可靠處理。 本節說明如何使用「Azure 事件中樞」Storm Spout 來接收來自「事件中樞」的事件。 使用 Apache Storm，您可以將事件分割到多個裝載於不同節點的處理序。 事件中心与 Storm 集成后，通过使用风暴的 Zookeeper 安装以透明方式对事件使用进度执行检查点操作、管理持久检查点以及从事件中心并行接收，简化了事件使用。
+[Apache Storm](https://storm.incubator.apache.org) 是分散式即時運算系統，可簡化未繫結資料串流的可靠處理。 本節說明如何使用「Azure 事件中樞」Storm Spout 來接收來自「事件中樞」的事件。 使用 Apache Storm，您可以將事件分割到多個裝載於不同節點的處理序。 事件中心與 Storm 的整合透過使用 Storm 的 Zookeeper 安裝透明地設定檢查點以檢查其進度、管理持續檢查點以及來自事件中心的平行接收，以簡化事件的使用。
 
 如需事件中樞接收模式的詳細資訊，請參閱 [事件中樞概觀][Event Hubs overview]。
 
-## <a name="prerequisites"></a>必要條件
-快速入門中，您開始之前**建立事件中樞命名空間和事件中樞**。 使用[Azure 入口網站](https://portal.azure.com)建立類型為事件中樞的命名空間，並取得您的應用程式與事件中樞進行通訊所需的管理認證。 若要建立命名空間和事件中樞，請依照[這篇文章](event-hubs-create.md)中的程序操作。 
+## <a name="prerequisites"></a>Prerequisites
+在開始進行本快速入門之前，您必須先**建立事件中樞命名空間和事件中樞**。 請使用 [Azure 入口網站](https://portal.azure.com)建立「事件中樞」類型的命名空間，然後取得您的應用程式與「事件中樞」進行通訊所需的管理認證。 若要建立命名空間和事件中樞，請依照[這篇文章](event-hubs-create.md)中的程序操作。 
 
 ## <a name="create-project-and-add-code"></a>建立專案並新增程式碼
 
@@ -42,12 +30,12 @@ ms.locfileid: "60343407"
     ```shell
     mvn install:install-file -Dfile=target\eventhubs-storm-spout-0.9-jar-with-dependencies.jar -DgroupId=com.microsoft.eventhubs -DartifactId=eventhubs-storm-spout -Dversion=0.9 -Dpackaging=jar
     ```
-4. 在 Eclipse 中，建立新的 Maven 專案 (依序按一下 [檔案]、[新增]、[專案])。
+4. 在 Eclipse 中，建立新的 Maven 專案 (依序按一下 [檔案]  、[新增]  、[專案]  )。
    
     ![[檔案] > [新增] > [專案]][12]
-5. 選取 [使用預設工作區位置]，然後按 [下一步]。
-6. 選取 [maven-archetype-quickstart] 原型，然後按 [下一步]。
-7. 插入 **GroupId** 和 **ArtifactId**，然後按一下 [完成]。
+5. 選取 [使用預設工作區位置]  ，然後按 [下一步]  。
+6. 選取 [maven-archetype-quickstart]  原型，然後按 [下一步]  。
+7. 插入 **GroupId** 和 **ArtifactId**，然後按一下 [完成]  。
 8. 在 **pom.xml** 中，於 `<dependency>` 節點中新增下列相依性。
 
     ```xml  
@@ -245,14 +233,14 @@ ms.locfileid: "60343407"
 ## <a name="next-steps"></a>後續步驟
 您可以造訪下列連結以深入了解事件中樞︰
 
-* [事件中心概述][Event Hubs overview]
+* [事件中心概觀][Event Hubs overview]
 * [建立事件中樞](event-hubs-create.md)
 * [事件中樞常見問題集](event-hubs-faq.md)
 
 <!-- Links -->
 [Event Hubs overview]: event-hubs-what-is-event-hubs.md
 [HDInsight Storm]: ../hdinsight/storm/apache-storm-overview.md
-[採用事件中樞的 HDInsight Storm 範例]: https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/
+[採用事件中樞的 HDInsight Storm 範例]: https://github.com/Azure-Samples/hdinsight-java-storm-eventhub
 
 <!-- Images -->
 

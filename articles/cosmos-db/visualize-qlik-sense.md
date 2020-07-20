@@ -4,15 +4,15 @@ description: 本文說明將 Azure Cosmos DB 連線到 Qlik Sense 並將資料�
 ms.service: cosmos-db
 author: SnehaGunda
 ms.author: sngun
-ms.topic: conceptual
-ms.date: 10/22/2018
+ms.topic: how-to
+ms.date: 05/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 4532962b6fd9f40fad625ab000116e5a617682e5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 986db85ddbf741dc459625dbd763b9cbbba1c429
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60765877"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85263342"
 ---
 # <a name="connect-qlik-sense-to-azure-cosmos-db-and-visualize-your-data"></a>將 Qlik Sense 連線到 Azure Cosmos DB 並將資料視覺化
 
@@ -44,7 +44,7 @@ Qlik Sense 是一種資料視覺效果工具，可將不同來源的資料組合
 
 * 使用快速入門文章中[建立帳戶](create-sql-api-dotnet.md#create-account)一節所述的步驟，來建立 Azure Cosmos DB SQL API 帳戶。
 
-* [建立資料庫和集合](create-sql-api-dotnet.md#create-collection-database)：您可以將集合輸送量值設定為 1000 RU/秒。 
+* [建立資料庫和集合](create-sql-api-java.md#add-a-container)：您可以將集合輸送量值設定為 1000 RU/秒。 
 
 * 將範例視訊遊戲銷售資料載入到您的 Cosmos DB 帳戶。 您可以使用 Azure Cosmos DB 資料移轉工具來匯入資料，您可以[循序](import-data.md#SQLSeqTarget)或[大量匯入](import-data.md#SQLBulkTarget)資料。 大約需要 3-5 分鐘的時間，才能將資料匯入到 Cosmos DB 帳戶。
 
@@ -52,25 +52,25 @@ Qlik Sense 是一種資料視覺效果工具，可將不同來源的資料組合
 
 ## <a name="connect-qlik-sense-to-cosmos-db"></a>將 Qlik Sense 連線到 Cosmos DB
 
-1. 開啟 Qlik Sense，然後選取 [建立新的應用程式]。 提供應用程式的名稱，然後選取 [建立]。
+1. 開啟 Qlik Sense，然後選取 [建立新的應用程式]****。 提供應用程式的名稱，然後選取 [建立]****。
 
-   ![建立新的 Qlik Sense 應用程式](./media/visualize-qlik-sense/create-new-qlik-sense-app.png)
+   :::image type="content" source="./media/visualize-qlik-sense/create-new-qlik-sense-app.png" alt-text="建立新的 Qlik Sense 應用程式":::
 
-2. 成功建立新的應用程式之後，選取 [開啟應用程式]，然後選擇 [從檔案和其他來源新增資料]。 
+2. 成功建立新的應用程式之後，選取 [開啟應用程式]****，然後選擇 [從檔案和其他來源新增資料]****。 
 
-3. 從資料來源中，選取 [ODBC] 以開啟新的連線設定視窗。 
+3. 從資料來源中，選取 [ODBC]**** 以開啟新的連線設定視窗。 
 
-4. 切換至 [使用者 DSN]，然後選擇您稍早建立的 ODBC 連線。 提供連線的名稱，然後選取 [建立]。 
+4. 切換至 [使用者 DSN]****，然後選擇您稍早建立的 ODBC 連線。 提供連線的名稱，然後選取 [建立]****。 
 
-   ![建立新的連線](./media/visualize-qlik-sense/create-new-connection.png)
+   :::image type="content" source="./media/visualize-qlik-sense/create-new-connection.png" alt-text="建立新的連線":::
 
 5. 當您建立連線之後，您可以選擇資料庫、視訊遊戲資料所在的集合，然後進行預覽。
 
-   ![選擇資料庫與集合](./media/visualize-qlik-sense/choose-database-and-collection.png) 
+   :::image type="content" source="./media/visualize-qlik-sense/choose-database-and-collection.png" alt-text="選擇資料庫與集合"::: 
 
-6. 接下來，選取 [新增資料]，將資料載入至 Qlik Sense。 當您將資料載入至 Qlik Sense 之後，您可以產生資料的深入解析並執行分析。 您可以使用深入解析或建置自己的應用程式，來探索視訊遊戲銷售。 下圖說明 
+6. 接下來，選取 [新增資料]****，將資料載入至 Qlik Sense。 當您將資料載入至 Qlik Sense 之後，您可以產生資料的深入解析並執行分析。 您可以使用深入解析或建置自己的應用程式，來探索視訊遊戲銷售。 下圖說明 
 
-   ![顯現資料](./media/visualize-qlik-sense/visualize-data.png)
+   :::image type="content" source="./media/visualize-qlik-sense/visualize-data.png" alt-text="顯現資料":::
 
 ### <a name="limitations-when-connecting-with-odbc"></a>使用 ODBC 連線時的限制 
 

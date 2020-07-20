@@ -1,25 +1,25 @@
 ---
-title: 翻譯工具文字 API 語言方法
-titlesuffix: Azure Cognitive Services
-description: 使用翻譯工具文字 API 語言方法。
+title: 翻譯工具語言方法
+titleSuffix: Azure Cognitive Services
+description: 語言方法會取得翻譯工具的其他作業目前支援的語言集合。
 services: cognitive-services
-author: v-pawal
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
-ms.author: v-jansko
-ms.openlocfilehash: 1713a05590f389a6de70d72e8d62237c7521d808
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: swmachan
+ms.openlocfilehash: 1f4dfc4b80aff01e4b7fe7ebae4850b28cd6a498
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58915759"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588593"
 ---
-# <a name="translator-text-api-30-languages"></a>翻譯工具文字 API 3.0：Languages
+# <a name="translator-30-languages"></a>翻譯工具3.0：語言
 
-取得翻譯工具文字 API 其他作業目前支援的語言集合。 
+取得 Translator 的其他作業目前支援的語言集合。 
 
 ## <a name="request-url"></a>要求 URL
 
@@ -37,18 +37,18 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
   <th>描述</th>
   <tr>
     <td>api-version</td>
-    <td>必要參數。<br/>用戶端要求的 API 版本。 值必須為 `3.0`。</td>
+    <td>必要參數<em></em>。<br/>用戶端要求的 API 版本。 值必須為 `3.0`。</td>
   </tr>
   <tr>
     <td>scope</td>
-    <td>選擇性參數。<br/>以逗號分隔的名稱列表，用於定義要傳回的語言群組。 允許的群組名稱為：`translation`、`transliteration` 和 `dictionary`。 如果未提供任何範圍，則會傳回所有群組，相當於傳遞 `scope=translation,transliteration,dictionary`。 若想要決定哪一組支援語言適合您的案例使用，請參閱[回應物件](#response-body)的說明。</td>
+    <td>*選擇性參數*。<br/>以逗號分隔的名稱列表，用於定義要傳回的語言群組。 允許的群組名稱為：`translation`、`transliteration` 和 `dictionary`。 如果未提供任何範圍，則會傳回所有群組，相當於傳遞 `scope=translation,transliteration,dictionary`。 若想要決定哪一組支援語言適合您的案例使用，請參閱[回應物件](#response-body)的說明。</td>
   </tr>
 </table> 
 
 要求標頭為：
 
 <table width="100%">
-  <th width="20%">headers</th>
+  <th width="20%">標題</th>
   <th>描述</th>
   <tr>
     <td>Accept-Language</td>
@@ -63,7 +63,7 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
 
 不需要驗證便能取得語言資源。
 
-## <a name="response-body"></a>Response body
+## <a name="response-body"></a>回應本文
 
 用戶端使用 `scope` 查詢參數來定義其感興趣的語言群組。
 
@@ -97,11 +97,11 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
 
   `translation` 屬性的值是 (金鑰、值) 組的字典。 每個金鑰均為 BCP 47 語言標記。 金鑰可識別文字翻譯的目標語言或來源語言。 與金鑰相關聯的值是 JSON 物件，其屬性描述了該語言：
 
-  * `name`:顯示 `Accept-Language` 標頭所要求的地區設定語言名稱。
+  * `name`：顯示 `Accept-Language` 標頭所要求的地區設定語言名稱。
 
-  * `nativeName`:以該語言的原文顯示語言名稱。
+  * `nativeName`：以該語言的原文顯示語言名稱。
 
-  * `dir`:文字閱讀方向，`rtl` 代表從右至左的語言，`ltr` 代表從左至右的語言。
+  * `dir`：文字閱讀方向，`rtl` 代表從右至左的語言，`ltr` 代表從左至右的語言。
 
   範例如下：
           
@@ -123,21 +123,21 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
 
   `transliteration` 屬性的值是 (金鑰、值) 組的字典。 每個金鑰均為 BCP 47 語言標記。 金鑰可識別出能在字集間轉換的文字的語言。 與金鑰相關聯的值是 JSON 物件，其屬性描述了該語言及其支援的字集：
 
-  * `name`:顯示 `Accept-Language` 標頭所要求的地區設定語言名稱。
+  * `name`：顯示 `Accept-Language` 標頭所要求的地區設定語言名稱。
 
-  * `nativeName`:以該語言的原文顯示語言名稱。
+  * `nativeName`：以該語言的原文顯示語言名稱。
 
-  * `scripts`:要轉換的字集清單。 `scripts` 清單的每個元素均有屬性：
+  * `scripts`：要轉換的字集清單。 `scripts` 清單的每個元素均有屬性：
 
-    * `code`:識別字集的代碼。
+    * `code`：識別字集的代碼。
 
-    * `name`:顯示 `Accept-Language` 標頭所要求的地區設定字集名稱。
+    * `name`：顯示 `Accept-Language` 標頭所要求的地區設定字集名稱。
 
-    * `nativeName`:以該語言的原文顯示語言名稱。
+    * `nativeName`：以該語言的原文顯示語言名稱。
 
-    * `dir`:文字閱讀方向，`rtl` 代表從右至左的語言，`ltr` 代表從左至右的語言。
+    * `dir`：文字閱讀方向，`rtl` 代表從右至左的語言，`ltr` 代表從左至右的語言。
 
-    * `toScripts`:可用於轉換文字的目標字集清單。 `toScripts` 清單的每個元素均有 `code`、`name`、`nativeName` 和 `dir` 屬性，如先前所述。
+    * `toScripts`：可用於轉換文字的目標字集清單。 `toScripts` 清單的每個元素均有 `code`、`name`、`nativeName` 和 `dir` 屬性，如先前所述。
 
   範例如下：
 
@@ -188,21 +188,21 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
 
   `dictionary` 屬性的值是 (金鑰、值) 組的字典。 每個金鑰均為 BCP 47 語言標記。 此金鑰可識別出可提供替代翻譯和反向翻譯的語言。 此值為 JSON 物件，描述了可用翻譯的來源語言和目標語言：
 
-  * `name`:顯示 `Accept-Language` 標頭所要求的地區設定來源語言名稱。
+  * `name`：顯示 `Accept-Language` 標頭所要求的地區設定來源語言名稱。
 
-  * `nativeName`:以該語言的原文顯示語言名稱。
+  * `nativeName`：以該語言的原文顯示語言名稱。
 
-  * `dir`:文字閱讀方向，`rtl` 代表從右至左的語言，`ltr` 代表從左至右的語言。
+  * `dir`：文字閱讀方向，`rtl` 代表從右至左的語言，`ltr` 代表從左至右的語言。
 
-  * `translations`:具有替代翻譯的語言清單，以及以來源語言表示的查詢範例。 `translations` 清單的每個元素均有屬性：
+  * `translations`：具有替代翻譯的語言清單，以及以來源語言表示的查詢範例。 `translations` 清單的每個元素均有屬性：
 
-    * `name`:顯示 `Accept-Language` 標頭所要求的地區設定目標語言名稱。
+    * `name`：顯示 `Accept-Language` 標頭所要求的地區設定目標語言名稱。
 
-    * `nativeName`:以目標語言的原文顯示目標語言名稱。
+    * `nativeName`：以目標語言的原文顯示目標語言名稱。
 
-    * `dir`:文字閱讀方向，`rtl` 代表從右至左的語言，`ltr` 代表從左至右的語言。
+    * `dir`：文字閱讀方向，`rtl` 代表從右至左的語言，`ltr` 代表從左至右的語言。
     
-    * `code`:識別目標語言的語言代碼。
+    * `code`：識別目標語言的語言代碼。
 
   範例如下：
 
@@ -229,7 +229,7 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
 ## <a name="response-headers"></a>回應標頭
 
 <table width="100%">
-  <th width="20%">headers</th>
+  <th width="20%">標題</th>
   <th>描述</th>
   <tr>
     <td>ETag</td>
@@ -259,11 +259,11 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
   </tr>
   <tr>
     <td>400</td>
-    <td>缺少其中一個查詢參數，或查詢參數無效。 請先修正要求參數再重試。</td>
+    <td>其中一個查詢參數遺失或無效。 請先修正要求參數再重試。</td>
   </tr>
   <tr>
     <td>429</td>
-    <td>呼叫者傳送過多要求。</td>
+    <td>伺服器已拒絕要求，因為用戶端已超過要求限制。</td>
   </tr>
   <tr>
     <td>500</td>
@@ -275,16 +275,12 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
   </tr>
 </table> 
 
-如果發生錯誤，要求也會傳回 JSON 錯誤回應。 錯誤碼是 6 位數的數字，其中結合了 3 位數的 HTTP 狀態碼，後面接著將錯誤進一步分類的 3 位數數字。 [v3 翻譯工具文字 API 參考頁面](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)上可找到常見的錯誤碼。 
+如果發生錯誤，要求也會傳回 JSON 錯誤回應。 錯誤碼是 6 位數的數字，其中結合了 3 位數的 HTTP 狀態碼，後面接著將錯誤進一步分類的 3 位數數字。 您可以在[V3 Translator 參考頁面](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)上找到一般錯誤碼。 
 
 ## <a name="examples"></a>範例
 
 以下範例顯示如何擷取支援文字轉換的語言。
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
-
-```
+```curl
 curl "https://api.cognitive.microsofttranslator.com/languages?api-version=3.0&scope=translation"
 ```
-
----

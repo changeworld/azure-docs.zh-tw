@@ -1,28 +1,23 @@
 ---
-title: 如何設定新的多租用戶應用程式 | Microsoft Docs
+title: 設定應用程式單一登入
 description: 如何為您正在開發並向 Azure AD 註冊的自訂應用程式設定單一登入。
 services: active-directory
-documentationcenter: ''
-author: CelesteDG
-manager: mtillman
-ms.assetid: ''
+author: rwike77
+manager: CelesteDG
 ms.service: active-directory
-ms.subservice: app-mgmt
+ms.subservice: develop
+ms.custom: aaddev
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/11/2018
-ms.author: celested
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc92ff0eea2bbd55330a954746245dd4a5ee75a3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 07/15/2019
+ms.author: ryanwi
+ms.openlocfilehash: 9b6451d29a3a874e09d74cbe664662a395b647f9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60297827"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82890471"
 ---
-# <a name="how-to-configure-a-new-multi-tenant-application"></a>如何設定新的多租用戶應用程式
+# <a name="how-to-configure-single-sign-on-for-an-application"></a>如何設定應用程式的單一登入
 
 在您的應用程式中啟用同盟單一登入 (SSO)，會在針對 OpenID Connect、SAML 2.0 或 WS-Fed 透過 Azure AD 進行同盟時自動啟用。 如果您的使用者儘管目前已經有含 Azure AD 的工作階段還是必須登入，很可能是您的應用程式設定錯誤。
 
@@ -36,7 +31,7 @@ ms.locfileid: "60297827"
 
 ## <a name="next-steps"></a>後續步驟
 
-[Azure AD 的 SSO](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)<br>
+[Azure AD SSO](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)<br>
 
 [在 Android 上啟用跨應用程式的 SSO](https://docs.microsoft.com/azure/active-directory/develop/active-directory-sso-android)<br>
 
@@ -44,6 +39,6 @@ ms.locfileid: "60297827"
 
 [將應用程式整合到 AzureAD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)<br>
 
-[適用於 AzureAD v2.0 交集應用程式的同意與權限](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes)<br>
+[Microsoft 身分識別平台端點中的權限和同意](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes)<br>
 
-[AzureAD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)
+[AzureAD StackOverflow (英文)](https://stackoverflow.com/questions/tagged/azure-active-directory)

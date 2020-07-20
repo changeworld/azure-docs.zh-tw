@@ -1,6 +1,6 @@
 ---
-title: 批次測試
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: 批次測試-LUIS
+titleSuffix: Azure Cognitive Services
 description: 使用批次測試持續調整您的應用程式，改良應用程式及其語言理解能力。
 services: cognitive-services
 author: diberry
@@ -9,33 +9,33 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 03/29/2019
+ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: acb561970b6a8576d1219fc15758e21a3032c9e5
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: a5ebd9b05b2dea9e04d4c9745c13d692ea88fcb8
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59528147"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680418"
 ---
 # <a name="batch-testing-with-1000-utterances-in-luis-portal"></a>在 LUIS 入口網站使用 1000 個語句進行批次測試
 
-批次測試會驗證您[使用中](luis-concept-version.md#active-version)的已訓練模型來評估其預測的精確度。 批次測試可協助您以圖表的型式，檢視目前已訓練模型每個意圖和實體的精確度。 檢閱批次測試結果，採取適當動作以改善精確度，例如，如果您的應用程式經常無法識別正確的意圖，可新增更多意圖的範例語句。
+批次測試會驗證您的有效定型版本，以測量其預測準確度。 批次測試可協助您查看使用中版本中每個意圖和實體的精確度，並以圖表顯示結果。 請檢查批次測試結果，採取適當的動作來改善精確度，例如，如果您的應用程式經常無法識別正確意圖或標記語句中的實體，則將更多範例語句新增至意圖。
 
 ## <a name="group-data-for-batch-test"></a>批次測試的群組資料
 
-重點是用於批次測試的語句，必須是 LUIS 中所沒有的。 如果您有語句的資料集，將這些語句分為三組：加入到意圖的語句、從發佈的端點收到的語句，以及對於已訓練 LUIS 進行批次測試所用的語句。 
+重點是用於批次測試的語句，必須是 LUIS 中所沒有的。 如果您有一組語句的資料，請將語句分成三個集合：新增至意圖的範例語句、從已發行的端點接收的語句，以及在定型後用來進行批次測試語句的 LUIS。
 
-## <a name="a-dataset-of-utterances"></a>語句的資料集
+## <a name="a-data-set-of-utterances"></a>語句的資料集
 
-提交語句的批次檔 (也稱為*資料集*) 進行批次測試。 資料集是 JSON 格式的檔案，其中包含最多 1000 個標示為**非重複**的語句。 您可以在應用程式中測試最多 10 個資料集。 如果您需要測試更多的資料集，可刪除一個資料集，然後加入一個不同的資料集。
+提交語句的批次檔（稱為*資料集*）以進行批次測試。 資料集是 JSON 格式的檔案，包含最多1000標記為**非重複**的語句。 您可以在應用程式中測試最多10個資料集。 如果您需要測試更多項，請先刪除資料集，然後再新增一個。
 
 |**規則**|
 |--|
 |*無重複的語句|
 |1000 個語句或更少|
 
-*重複項目會被視為完全相同的相符字串項目，而不是先權杖化的相符項目。 
+*重複項目會被視為完全相同的相符字串項目，而不是先權杖化的相符項目。
 
 ## <a name="entities-allowed-in-batch-tests"></a>批次測試中允許的實體
 
@@ -46,7 +46,7 @@ ms.locfileid: "59528147"
 
 ## <a name="batch-file-format"></a>批次檔格式
 
-批次檔由語句組成。 每個語句都必須有預期的意圖預測，以及您想要偵測的[機器學習實體](luis-concept-entity-types.md#types-of-entities)。 
+批次檔由語句組成。 每個語句都必須有預期的意圖預測，以及您預期會偵測到的任何[機器學習實體](luis-concept-entity-types.md#types-of-entities)。
 
 ## <a name="batch-syntax-template-for-intents-with-entities"></a>使用實體的意圖批次語法範本
 
@@ -57,7 +57,7 @@ ms.locfileid: "59528147"
   {
     "text": "example utterance goes here",
     "intent": "intent name goes here",
-    "entities": 
+    "entities":
     [
         {
             "entity": "entity name 1 goes here",
@@ -74,7 +74,7 @@ ms.locfileid: "59528147"
 ]
 ```
 
-批次檔會使用 **startPos** 和 **endPos** 屬性，來記錄實體的開頭與結尾。 值是以零為起始的，而且不應以空格作為開頭或結尾。 這與查詢記錄不同，後者使用 startIndex 與 endIndex 屬性。 
+批次檔會使用 **startPos** 和 **endPos** 屬性，來記錄實體的開頭與結尾。 值是以零為起始的，而且不應以空格作為開頭或結尾。 這與查詢記錄不同，後者使用 startIndex 與 endIndex 屬性。
 
 [!INCLUDE [Entity roles in batch testing - currently not supported](../../../includes/cognitive-services-luis-roles-not-supported-in-batch-testing.md)]
 
@@ -97,7 +97,7 @@ ms.locfileid: "59528147"
 
 ## <a name="common-errors-importing-a-batch"></a>匯入批次的常見錯誤
 
-常見錯誤包括： 
+常見錯誤包括：
 
 > * 超過 1000 個語句
 > * 沒有實體屬性的語句 JSON 物件。 屬性可以是空陣列。
@@ -106,15 +106,15 @@ ms.locfileid: "59528147"
 
 ## <a name="batch-test-state"></a>批次測試狀態
 
-LUIS 會追蹤每個資料集的最後一次測試所呈現的狀態。 這包括大小 (批次中的語句數目)、上次執行日期及最後結果 (成功預測的語句數目)。
+LUIS 會追蹤每個資料集最後一項測試的狀態。 這包括大小 (批次中的語句數目)、上次執行日期及最後結果 (成功預測的語句數目)。
 
 <a name="sections-of-the-results-chart"></a>
 
 ## <a name="batch-test-results"></a>批次測試結果
 
-批次測試結果會是散佈圖，也稱為錯誤矩陣。 此圖表是對於批次檔案中的語句以及目前模型的預測意圖和實體進行的 4 向比較。 
+批次測試結果會是散佈圖，也稱為錯誤矩陣。 此圖表是對於批次檔案中的語句以及目前模型的預測意圖和實體進行的 4 向比較。
 
-**誤判**和**漏判**區段的資料點表示錯誤，應該加以調查。 如果所有資料點是在**真肯定**和**真否定**區段上，則針對這個資料集，您應用程式的精確度是完美的。
+**誤判**和**漏判**區段的資料點表示錯誤，應該加以調查。 如果所有資料點都位於**真肯定**和**真否定**區段，則您的應用程式精確度在此資料集上是最佳的。
 
 ![圖表的 4 個區段](./media/luis-concept-batch-test/chart-sections.png)
 
@@ -124,13 +124,13 @@ LUIS 會追蹤每個資料集的最後一次測試所呈現的狀態。 這包�
 
 ## <a name="errors-in-the-results"></a>結果中的錯誤
 
-批次測試中顯示錯誤，表示並未預測出如批次檔中所述之意圖。 圖表的兩個紅色區段會顯示錯誤。 
+批次測試中顯示錯誤，表示並未預測出如批次檔中所述之意圖。 圖表的兩個紅色區段會顯示錯誤。
 
-誤判區段顯示語句對應到不應該對應的意圖或實體。 漏判區段顯示語句未對應到應該對應的意圖或實體。 
+誤判區段顯示語句對應到不應該對應的意圖或實體。 漏判區段顯示語句未對應到應該對應的意圖或實體。
 
 ## <a name="fixing-batch-errors"></a>修正批次錯誤
 
-如果批次測試有錯誤，您可以將更多語句加入到意圖，及/或對於更多語句標示實體，幫助 LUIS 區別不同的意圖。 如果您加入並標示語句，但是測試批次仍然出現預測錯誤，請考慮加入具有特定領域詞彙的[片語清單](luis-concept-feature.md)功能，幫助 LUIS 加速學習。 
+如果批次測試有錯誤，您可以將更多語句加入到意圖，及/或對於更多語句標示實體，幫助 LUIS 區別不同的意圖。 如果您加入並標示語句，但是測試批次仍然出現預測錯誤，請考慮加入具有特定領域詞彙的[片語清單](luis-concept-feature.md)功能，幫助 LUIS 加速學習。
 
 ## <a name="next-steps"></a>後續步驟
 

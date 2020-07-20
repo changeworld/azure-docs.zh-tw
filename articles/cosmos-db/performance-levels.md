@@ -6,18 +6,17 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: sngun
-ms.openlocfilehash: 06fa98ae4acc2252d8866858ed0e2194ed84ff79
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: dace7fb291cef24ad8b48a0791b2fadca22fa71b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60928274"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85556064"
 ---
 # <a name="retiring-the-s1-s2-and-s3-performance-levels"></a>淘汰 S1、S2 和 S3 效能層級
 
 > [!IMPORTANT] 
 > 本文所討論的 S1、S2 和 S3 效能層級即將淘汰，而且再也無法供新的 Azure Cosmos DB 帳戶使用。
->
 
 本文概述 S1、S2 和 S3 效能層級，並討論如何將使用這些效能層級的集合移轉至單一分割區的集合。 閱讀本文後，您將能夠回答下列問題：
 
@@ -26,7 +25,7 @@ ms.locfileid: "60928274"
 - [我該怎麼做才能確保不中斷地的存取我的資料？](#uninterrupted-access)
 - [在移轉之後我的集合會如何變更？](#collection-change)
 - [我移轉至單一資料分割集合之後，我的帳單將如何變更呢？](#billing-change)
-- [如果我需要超過 10 GB 的儲存體會如何？](#more-storage-needed)
+- [如果我需要超過 20 GB 的儲存體，該怎麼辦？](#more-storage-needed)
 - [在計劃性移轉之前，我可以在 S1、S2 和 S3 效能層級之間變更嗎？](#change-before)
 - [如何自己從 S1、S2、S3 效能層級移轉至單一資料分割集合？](#migrate-diy)
 - [如果我是 EA 客戶會受到什麼影響？](#ea-customer)
@@ -39,16 +38,16 @@ S1、S2 和 S3 效能層級不提供標準 Azure Cosmos DB 所提供的彈性。
 
 <a name="compare"></a>
 
-## <a name="how-do-single-partition-collections-and-partitioned-collections-compare-to-the-s1-s2-s3-performance-levels"></a>单区集合和分区集合与 S1、S2、S3 性能级别有哪些区别？
+## <a name="how-do-single-partition-collections-and-partitioned-collections-compare-to-the-s1-s2-s3-performance-levels"></a>單一分割區集合和資料分割的集合與 S1、S2、S3 效能層級之比較為何？
 
 下表比較單一資料分割集合、資料分割集合和 S1、S2、S3 效能層級中可用的輸送量和儲存體選項。 美國東部 2 區域的範例如下︰
 
-|   |資料分割的集合|單一資料分割集合|S1|S2|S3|
+| 配額名稱  |資料分割的集合|單一資料分割集合|S1|S2|S3|
 |---|---|---|---|---|---|
-|最大輸送量|無限|10K RU/秒|250 RU/秒|1 K RU/秒|2.5 K RU/秒|
-|輸送量下限|2.5 K RU/秒|400 RU/秒|250 RU/s|1 K RU/秒|2.5 K RU/秒|
-|儲存體上限|無限|10 GB|10 GB|10 GB|10 GB|
-|價格 (每月)|輸送量：$6 / 100 RU/秒<br><br>儲存體：$0.25/GB|吞吐量：6 美元/100 RU/s<br><br>儲存體：$0.25/GB|$25 美元|$50 美元|$100 美元|
+|最大輸送量|無限制|10K RU/秒|250 RU/秒|1 K RU/秒|2.5 K RU/秒|
+|輸送量下限|2.5 K RU/秒|400 RU/秒|250 RU/秒|1 K RU/秒|2.5 K RU/秒|
+|儲存體上限|無限制|20 GB|20 GB|20 GB|20 GB|
+|價格 (每月)|輸送量：$6 / 100 RU/秒<br><br>儲存體：$0.25/GB|輸送量：$6 / 100 RU/秒<br><br>儲存體：$0.25/GB|$25 美元|$50 美元|$100 美元|
 
 您是 EA 客戶嗎？ 如果是，請參閱[如果我是 EA 客戶會受到什麼影響？](#ea-customer)
 
@@ -76,13 +75,13 @@ S1、S2 和 S3 效能層級不提供標準 Azure Cosmos DB 所提供的彈性。
 
 假設您在美國東部區域有 10 個 S1 集合，每個有 1 GB 的儲存空間，您將這 10 個 S1 集合以 400 RU/秒 (最小層級) 移轉至 10 個單一資料分割集合。 如果您一整個月保留 10 個單一資料分割集合，您的帳單會看起來如下︰
 
-![10 個集合的 S1 價格與使用單一資料分割集合的 10 個集合價格比較會如何](./media/performance-levels/s1-vs-standard-pricing.png)
+:::image type="content" source="./media/performance-levels/s1-vs-standard-pricing.png" alt-text="10 個集合的 S1 價格與使用單一資料分割集合的 10 個集合價格比較會如何" border="false":::
 
 <a name="more-storage-needed"></a>
 
-## <a name="what-if-i-need-more-than-10-gb-of-storage"></a>如果我需要超過 10 GB 的儲存空間怎麼辦？
+## <a name="what-if-i-need-more-than-20-gb-of-storage"></a>如果我需要超過 20 GB 的儲存體，該怎麼辦？
 
-無論您擁有具備 S1、S2 或 S3 效能層級的集合，或是擁有單一分割區的集合，全部都有 10 GB 的可用儲存空間。您可以利用幾乎不受限制的儲存空間，使用 Azure Cosmos DB 資料移轉工具來將資料移轉至分割區的集合。 如需資料分割集合優點的相關詳細資訊，請參閱 [Azure Cosmos DB 中的資料分割與規模調整](sql-api-partition-data.md)。 
+無論您的集合具有 S1、S2 或 S3 效能層級，或具有單一分割區集合，全都有 20 GB 的可用儲存空間，您可以使用 Azure Cosmos DB 資料移轉工具，將您的資料移轉至具有幾乎無限制儲存體的分割集合。 如需資料分割集合優點的相關詳細資訊，請參閱 [Azure Cosmos DB 中的資料分割與規模調整](sql-api-partition-data.md)。 
 
 <a name="change-before"></a>
 

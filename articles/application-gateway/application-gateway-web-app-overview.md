@@ -1,37 +1,37 @@
 ---
-title: 使用 Azure 应用程序网关的多租户后端（例如 Azure 应用服务）概述
+title: 多租使用者後端
+titleSuffix: Azure Application Gateway
 description: 本頁面提供多租用戶後端的應用程式閘道支援概觀。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 03/18/2019
+ms.date: 06/09/2020
 ms.author: victorh
-ms.openlocfilehash: 8434340bb7ed95cc36115c05048b2b67682b5796
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 308098bd1ac49510afccf0a7964face726906332
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60831286"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84628681"
 ---
-# <a name="application-gateway-support-for-multi-tenant-back-ends-such-as-app-service"></a>应用程序网关对多租户后端（例如应用服务）的支持
+# <a name="application-gateway-support-for-multi-tenant-back-ends-such-as-app-service"></a>應用程式閘道支援多租使用者後端（例如 App service）
 
-在 Web 服务器的多租户体系结构设计中，多个网站在同一 Web 服务器实例上运行。 主机名用于区分托管的不同应用程序。 根據預設，應用程式閘道不會變更來自用戶端的連入 HTTP 主機標頭，而會將標頭原封不動地傳送回後端。 这适用于后端池成员，例如 NIC、虚拟机规模集、公共 IP 地址、内部 IP 地址和 FQDN，因为这些资源无需依赖于特定的主机标头或 SNI 扩展即可解析为正确的终结点。 但是，有许多服务（例如 Azure 应用服务 Web 应用和 Azure API 管理）在性质上是多租户的，需要依赖于特定的主机标头或 SNI 扩展才能解析为正确的终结点。 通常，应用程序的 DNS 名称（也是与应用程序网关关联的 DNS 名称）不同于后端服务的域名。 因此，应用程序网关收到的原始请求中的主机标头不同于后端服务的主机名。 正因如此，除非从应用程序网关发往后端的请求中的主机标头已更改为后端服务的主机名，否则多租户后端无法将请求解析为正确的终结点。 
+在 web 伺服器中的多租使用者架構設計中，多個網站都是在相同的 web 伺服器實例上執行。 主機名稱是用來區分裝載的不同應用程式。 根據預設，應用程式閘道不會變更來自用戶端的連入 HTTP 主機標頭，而會將標頭原封不動地傳送回後端。 這適用于後端集區成員（例如 Nic、虛擬機器擴展集、公用 IP 位址、內部 IP 位址和 FQDN），因為它們不依賴特定主機標頭或 SNI 擴充功能來解析為正確的端點。 不過，有許多服務（例如 Azure App 服務 web 應用程式和 Azure API 管理）本質上為多租使用者，且依賴特定主機標頭或 SNI 擴充功能來解析為正確的端點。 通常，應用程式的 DNS 名稱（又就是與應用程式閘道相關聯的 DNS 名稱）與後端服務的功能變數名稱不同。 因此，應用程式閘道收到的原始要求中的主機標頭與後端服務的主機名稱不同。 因此，除非從應用程式閘道到後端的要求中的主機標頭變更為後端服務的主機名稱，否則多租使用者後端無法將要求解析為正確的端點。 
 
-应用程序网关提供相应的功能，让用户根据后端的主机名替代请求中的 HTTP 主机标头。 此功能支持 Azure 应用服务 Web 应用和 API 管理等多租户后端。 這項功能是適用於 v1 和 v2 標準和 WAF Sku。 
+應用程式閘道有個功能可讓使用者根據後端的主機名稱，覆寫要求中的 HTTP 主機標頭。 這項功能可支援多租用戶後端，例如 Azure Web 應用程式和 API 管理。 這項功能同時適用於 v1 和 v2 標準及 WAF SKU。 
 
-![主机替代](./media/application-gateway-web-app-overview/host-override.png)
+![主機覆寫](./media/application-gateway-web-app-overview/host-override.png)
 
 > [!NOTE]
-> 这不适用于 Azure 应用服务环境 (ASE)，因为 ASE 与 Azure 应用服务不同，前者是专用资源，而后者是多租户资源。
+> 這不適用於 Azure App 服務環境（ASE），因為 ASE 是專用的資源，不像 Azure App 服務（這是多租使用者資源）。
 
-## <a name="override-host-header-in-the-request"></a>替代请求中的主机标头
+## <a name="override-host-header-in-the-request"></a>覆寫要求中的主機標頭
 
-指定主机替代的功能在 [HTTP 设置](https://docs.microsoft.com/azure/application-gateway/configuration-overview#http-settings)中定义，可以在创建规则过程中应用到任何后端池。 多租户后端支持通过以下两种方式来替代主机标头和 SNI 扩展：
+指定主機覆寫的功能定義于[HTTP 設定](https://docs.microsoft.com/azure/application-gateway/configuration-overview#http-settings)中，並可在規則建立期間套用至任何後端集區。 支援下列兩種覆寫多租使用者後端主機標頭和 SNI 延伸模組的方法：
 
-- 在 HTTP 设置中显式输入将主机名设置为固定值的功能。 此功能可确保将主机标头替代为该值，前提是在流量流向的后端池中应用了特定的 HTTP 设置。 使用端對端 SSL 時，這個覆寫的主機名稱會使用於 SNI 擴充功能。 這項功能可促成以下案例：其中的後端集區伺服器陣列預期會有不同於連入客戶主機標頭的主機標頭。
+- 能夠將主機名稱設定為在 HTTP 設定中明確輸入的固定值。 這項功能可確保針對套用特定 HTTP 設定之後端集區的所有流量，將主機標頭覆寫為此值。 使用端對端 TLS 時，會在 SNI 延伸模組中使用此覆寫主機名稱。 這項功能可促成以下案例：其中的後端集區伺服器陣列預期會有不同於連入客戶主機標頭的主機標頭。
 
-- 從後端集區成員的 IP 或 FQDN 衍生主機名稱的功能。 HTTP 设置还提供了一个选项，用于从后端池成员的 FQDN 动态选取主机名，前提是配置了从单个后端池成员派生主机名的选项。 使用端對端 SSL 時，此主機名稱衍生自 FQDN 且使用於 SNI 擴充功能。 這項功能可促成以下案例：其中的後端集區可以有兩個或多個多租用戶 PaaS 服務，例如 Azure Web 應用程式，而且每個成員的要求主機標頭包含衍生自其 FQDN 的主機名稱。 为了实现此方案，我们在 HTTP 设置中使用了名为[从后端地址中选取主机名](https://docs.microsoft.com/azure/application-gateway/configuration-overview#pick-host-name-from-backend-address)的开关，此开关会将原始请求中的主机标头动态替代为后端池中指定的标头。  例如，如果您的後端集區 FQDN 包含 「 contoso11.azurewebsites.net"和"contoso22.azurewebsites.net 」，即 contoso.com 原始要求的主機標頭將會覆寫 contoso11.azurewebsites.net 或 contoso22.azurewebsites.net當要求傳送至適當的後端伺服器。 
+- 從後端集區成員的 IP 或 FQDN 衍生主機名稱的功能。 如果使用從個別後端集區成員衍生主機名稱的選項進行設定，HTTP 設定也會提供從後端集區成員的 FQDN 動態挑選主機名稱的選項。 使用端對端 TLS 時，此主機名稱會衍生自 FQDN，並用於 SNI 延伸模組中。 這項功能可促成以下案例：其中的後端集區可以有兩個或多個多租用戶 PaaS 服務，例如 Azure Web 應用程式，而且每個成員的要求主機標頭包含衍生自其 FQDN 的主機名稱。 在執行此案例時，我們會在名為 [[從後端位址挑選主機名稱](https://docs.microsoft.com/azure/application-gateway/configuration-overview#pick-host-name-from-back-end-address)] 的 HTTP 設定中使用參數，它會將原始要求中的主機標頭動態覆寫至後端集區中所述的位置。  例如，如果您的後端集區 FQDN 包含 "contoso11.azurewebsites.net" 和 "contoso22.azurewebsites.net"，則將要求傳送至適當的後端伺服器時，會將 contoso.com 的原始要求主機標頭覆寫為 contoso11.azurewebsites.net 或 contoso22.azurewebsites.net。 
 
   ![Web 應用程式案例](./media/application-gateway-web-app-overview/scenario.png)
 
@@ -39,27 +39,27 @@ ms.locfileid: "60831286"
 
 ## <a name="special-considerations"></a>特殊考量
 
-### <a name="ssl-termination-and-end-to-end-ssl-with-multi-tenant-services"></a>多租户服务的 SSL 终止和端到端 SSL
+### <a name="tls-termination-and-end-to-end-tls-with-multi-tenant-services"></a>具有多租使用者服務的 TLS 終止和端對端 TLS
 
-多租户服务支持 SSL 终止和端到端 SSL 加密。 要在应用程序网关上实现 SSL 终止，仍然需要将 SSL 证书添加到应用程序网关侦听器。 但是，在实现端到端 SSL 时，受信任的 Azure 服务（例如 Azure 应用服务 Web 应用）不需要在应用程序网关中将后端加入白名单。 因此，无需添加任何身份验证证书。 
+多租使用者服務都支援 TLS 終止和端對端 TLS 加密。 針對應用程式閘道上的 TLS 終止，TLS 憑證會繼續新增至應用程式閘道接聽程式。 不過，如果是端對端 TLS，受信任的 Azure 服務（例如 Azure App 服務 web apps）不需要允許應用程式閘道上的後端。 因此，不需要新增任何驗證憑證。 
 
-![端到端 SSL](./media/application-gateway-web-app-overview/end-to-end-ssl.png)
+![端對端 TLS](./media/application-gateway-web-app-overview/end-to-end-ssl.png)
 
-请注意，在上图中，将应用服务选作后端时，不必要添加身份验证证书。
+請注意，在上圖中，選取 [App service] 作為 [後端] 時，不需要新增驗證憑證。
 
 ### <a name="health-probe"></a>健全狀況探查
 
-替代 **HTTP 设置**中的主机标头只会影响请求及其路由， 而不影响运行状况探测行为。 若要讓端對端功能運作，必須修改探查和 HTTP 設定，以反映正確的組態。 除了提供在探测配置中指定主机标头的功能以外，自定义探测还支持从当前配置的 HTTP 设置中派生主机标头的功能。 在探查組態中使用 `PickHostNameFromBackendHttpSettings` 參數即可指定此組態。
+覆寫**HTTP 設定**中的主機標頭，只會影響要求和其路由。 它不會影響健康情況探查行為。 若要讓端對端功能運作，必須修改探查和 HTTP 設定，以反映正確的組態。 除了提供在探查設定中指定主機標頭的功能之外，自訂探查也支援從目前設定的 HTTP 設定衍生主機標頭的功能。 在探查組態中使用 `PickHostNameFromBackendHttpSettings` 參數即可指定此組態。
 
-### <a name="redirection-to-app-services-url-scenario"></a>重定向到应用服务 URL 的情况
+### <a name="redirection-to-app-services-url-scenario"></a>重新導向至 App Service 的 URL 案例
 
-可以是來自應用程式服務的回應中的主機名稱可能會將導向使用者瀏覽器案例 *。 azurewebsites.net 主機名稱，而不是應用程式閘道相關聯的網域。 在以下情况下可能会发生此问题：
+在某些情況下，應用程式服務回應中的主機名稱可能會將使用者瀏覽器導向至 *. azurewebsites.net 主機名稱，而不是與應用程式閘道相關聯的網域。 發生此問題的原因可能是：
 
-- 在应用服务中配置了重定向。 只需在请求中添加一个尾随的斜杠即可配置重定向。
-- Azure AD 身份验证导致重定向。
+- 您已在 App Service 上設定重新導向。 重新導向可以簡單到將尾端斜線加入至要求。
+- 您有 Azure AD 驗證會導致重新導向。
 
-若要解决这种情况，请参阅[排查重定向到应用服务 URL 的问题](https://docs.microsoft.com/azure/application-gateway/troubleshoot-app-service-redirection-app-service-url)。
+若要解決這類情況，請參閱針對重新導向[至 App service 的 URL 問題進行疑難排解](https://docs.microsoft.com/azure/application-gateway/troubleshoot-app-service-redirection-app-service-url)。
 
 ## <a name="next-steps"></a>後續步驟
 
-访问[为应用服务 Web 应用配置应用程序网关](https://docs.microsoft.com/azure/application-gateway/create-web-app)，了解如何为用作后端池成员的多租户应用（例如 Azure 应用服务 Web 应用）设置应用程序网关
+瞭解如何設定應用程式閘道，其中包含多租使用者應用程式，例如 Azure App service web 應用程式做為後端集區成員，方法是造訪使用應用程式閘道的 [設定[App Service web 應用](https://docs.microsoft.com/azure/application-gateway/configure-web-app-portal)程式]

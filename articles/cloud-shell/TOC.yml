@@ -7,9 +7,7 @@
     - name: PowerShell - 快速入門
       href: quickstart-powershell.md
 - name: 功能和工具
-  items:
-    - name: 功能和工具
-      href: features.md
+  href: features.md
 - name: 教學課程
   items:
     - name: Ansible
@@ -22,7 +20,7 @@
       items:
         - name: 建立執行計畫
           href: example-terraform-bash.md
-- name: 使用說明指南
+- name: 操作指南
   items:
     - name: Windows 使用者適用的 PowerShell Cloud Shell
       href: cloud-shell-windows-users.md

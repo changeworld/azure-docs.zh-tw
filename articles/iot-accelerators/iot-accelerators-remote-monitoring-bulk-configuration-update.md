@@ -1,19 +1,19 @@
 ---
 title: 管理已連線到遠端監視的大量裝置 - Azure | Microsoft Docs
 description: 在本教學課程中，您會了解如何管理已連線到遠端監視解決方案的大量裝置。
-author: aditidugar
+author: Philmea
 manager: philmea
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: tutorial
 ms.date: 11/29/2018
-ms.author: adugar
-ms.openlocfilehash: 8a5c74c76662a089675fcbdcd8d5a7ea54b58fd1
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: philmea
+ms.openlocfilehash: eaca93ac8a4e8c660be9618aefb27921a4e0a2eb
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59799029"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "77565573"
 ---
 # <a name="tutorial-manage-your-connected-devices-in-bulk"></a>教學課程：管理已連線的大量裝置
 
@@ -31,7 +31,7 @@ ms.locfileid: "59799029"
 > * 將組態部署至裝置群組中的裝置
 > * 監視部署
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立 [免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 <!--
 If this is going to be a tutorial - we need to split this include into two so that we can accommodate the additional prerequisites:
@@ -39,13 +39,13 @@ If this is going to be a tutorial - we need to split this include into two so th
 [!INCLUDE [iot-accelerators-tutorial-prereqs](../../includes/iot-accelerators-tutorial-prereqs.md)]
 -->
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要依循本教學課程進行操作，您需要在 Azure 訂用帳戶中有一個已部署的遠端監視解決方案加速器執行個體。
 
 如果您尚未部署遠端監視解決方案加速器，則應該先完成[部署雲端式遠端監視解決方案](quickstart-remote-monitoring-deploy.md)快速入口。
 
-您需要 Azure 儲存體帳戶來裝載韌體檔案。 您可以使用現有儲存體帳戶，或在訂用帳戶中[建立新的儲存體帳戶](../storage/common/storage-quickstart-create-account.md)。
+您需要 Azure 儲存體帳戶來裝載韌體檔案。 您可以使用現有儲存體帳戶，或在訂用帳戶中[建立新的儲存體帳戶](../storage/common/storage-account-create.md)。
 
 本教學課程會使用 [IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/) 裝置作為範例裝置。
 
@@ -65,17 +65,17 @@ If this is going to be a tutorial - we need to split this include into two so th
 
 若要在您的瀏覽器中檢視遠端監視解決方案儀表板，請先瀏覽至 [Microsoft Azure IoT 解決方案加速器](https://www.azureiotsolutions.com/Accelerators#dashboard)。 系統可能會要求您使用 Azure 訂用帳戶認證來登入。
 
-接著，請針對您在[快速入門](quickstart-remote-monitoring-deploy.md)中部署的遠端監視解決方案加速器，按一下其圖格上的 [啟動]。
+接著，請針對您在[快速入門](quickstart-remote-monitoring-deploy.md)中部署的遠端監視解決方案加速器，按一下其圖格上的 [啟動]  。
 
 ## <a name="create-a-device-group"></a>建立裝置群組
 
 若要自動更新裝置群組上的韌體，裝置必須是遠端監視解決方案中裝置群組的成員：
 
-1. 在 [裝置] 頁面上，選取您已連線到解決方案加速器的所有 **IoT DevKit** 裝置。 然後，按一下 [作業]。
+1. 在 [裝置]  頁面上，選取您已連線到解決方案加速器的所有 **IoT DevKit** 裝置。 然後，按一下 [作業]  。
 
-1. 在 [作業] 面板中選取 [標記]，將作業名稱設定為 **AddDevKitTag**，然後使用 **Y** 值新增名為 **IsDevKitDevice** 的文字標記。然後按一下 [套用]。
+1. 在 [作業]  面板中選取 [標記]  ，將作業名稱設定為 **AddDevKitTag**，然後使用 **Y** 值新增名為 **IsDevKitDevice** 的文字標記。然後按一下 [套用]  。
 
-1. 現在，您可以使用標記值來建立裝置群組。 在 [裝置] 頁面上，按一下 [管理裝置群組]。
+1. 現在，您可以使用標記值來建立裝置群組。 在 [裝置]  頁面上，按一下 [管理裝置群組]  。
 
 1. 建立文字篩選條件，其在條件中使用 **IsDevKitDevice** 和 **Y** 值。 將裝置群組儲存為 **IoT DevKit 裝置**。
 
@@ -89,9 +89,9 @@ If this is going to be a tutorial - we need to split this include into two so th
 
 1. 確定 IoT DevKit 未連線至您的電腦。 啟動 VS Code，然後將 DevKit 連線至您的電腦。
 
-1. 按 **F1** 開啟命令選擇區，然後輸入並選取 **[IoT Workbench：範例]**。 然後選取 [IoT DevKit] 作為面板。
+1. 按 **F1** 開啟命令選擇區，然後輸入並選取 **[IoT Workbench：範例]** 。 然後選取 [IoT DevKit]  作為面板。
 
-1. 尋找 [韌體 OTA]，然後按一下 [開啟範例]。 新的 VS Code 視窗隨即開啟並顯示 **firmware_ota** 專案資料夾：
+1. 尋找 [韌體 OTA]  ，然後按一下 [開啟範例]  。 新的 VS Code 視窗隨即開啟並顯示 **firmware_ota** 專案資料夾：
 
     ![IoT Workbench，選取韌體 OTA 範例](media/iot-accelerators-remote-monitoring-bulk-configuration-update/iot-workbench-firmware-example.png)
 
@@ -103,7 +103,7 @@ If this is going to be a tutorial - we need to split this include into two so th
 
     ![變更韌體版本](media/iot-accelerators-remote-monitoring-bulk-configuration-update/version-1-0-1.png)
 
-1. 開啟命令選擇區，然後輸入並選取 **[IoT Workbench：裝置]**。 然後選取 [裝置編譯] 來編譯程式碼：
+1. 開啟命令選擇區，然後輸入並選取 **[IoT Workbench：裝置]** 。 然後選取 [裝置編譯]  來編譯程式碼：
 
     ![裝置編譯](media/iot-accelerators-remote-monitoring-bulk-configuration-update/iot-workbench-device-compile.png)
 
@@ -111,7 +111,7 @@ If this is going to be a tutorial - we need to split this include into two so th
 
 ### <a name="generate-the-crc-value-and-calculate-the-firmware-file-size"></a>產生 CRC 值及計算韌體檔案大小
 
-1. 開啟命令選擇區，然後輸入並選取 **[IoT Workbench：裝置]**。 然後選取 [產生 CRC]：
+1. 開啟命令選擇區，然後輸入並選取 **[IoT Workbench：裝置]** 。 然後選取 [產生 CRC]  ：
 
     ![產生 CRC](media/iot-accelerators-remote-monitoring-bulk-configuration-update/iot-workbench-device-crc.png)
 
@@ -123,11 +123,11 @@ If this is going to be a tutorial - we need to split this include into two so th
 
 使用 Azure 儲存體帳戶，以在雲端裝載新的韌體檔案。
 
-1. 在 Azure 入口網站中巡覽至您的儲存體帳戶。 在 [服務] 區段中，選取 [Blob]。 建立稱為 **firmware** 的公用容器來儲存韌體檔案：
+1. 在 Azure 入口網站中巡覽至您的儲存體帳戶。 在 [服務] 區段中，選取 [Blob]  。 建立稱為 **firmware** 的公用容器來儲存韌體檔案：
 
     ![建立資料夾](media/iot-accelerators-remote-monitoring-bulk-configuration-update/blob-folder.png)
 
-1. 若要將韌體檔案上傳至容器，請選取 **firmware** 容器，然後按一下 [上傳]。
+1. 若要將韌體檔案上傳至容器，請選取 **firmware** 容器，然後按一下 [上傳]  。
 
 1. 選取 **FirmwareOTA.ino.bin**。 您在上一節中記下了這個檔案的完整路徑。
 
@@ -137,21 +137,21 @@ If this is going to be a tutorial - we need to split this include into two so th
 
 1. 在 VS Code 中開啟 **FirmwareOTA.ino** 檔案，並將 `currentFirmwareVersion` 變回 `1.0.0`：
 
-    ![1.0.0 版](media/iot-accelerators-remote-monitoring-bulk-configuration-update/version-1-0-1.png)
+    ![1\.0.0 版](media/iot-accelerators-remote-monitoring-bulk-configuration-update/version-1-0-1.png)
 
-1. 開啟命令選擇區，然後輸入並選取 **[IoT Workbench：裝置]**。 然後選取 [裝置上傳]：
+1. 開啟命令選擇區，然後輸入並選取 **[IoT Workbench：裝置]** 。 然後選取 [裝置上傳]  ：
 
     ![裝置上傳](media/iot-accelerators-remote-monitoring-bulk-configuration-update/device-upload.png)
 
 1. VS Code 會驗證程式碼並上傳到您的 IoT DevKit 裝置。
 
-1. 上傳完成時，IoT DevKit 裝置會重新開機。 重新開機完成時，IoT DevKit 的畫面會顯示 **[FW 版本：1.0.0]**，而且會檢查是否有新韌體：
+1. 上傳完成時，IoT DevKit 裝置會重新開機。 重新開機完成時，IoT DevKit 的畫面會顯示 **[FW 版本：1.0.0]** ，而且會檢查是否有新韌體：
 
     ![ota-1](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-1.jpg)
 
 ## <a name="create-a-device-configuration"></a>建立裝置組態
 
-裝置組態會指定您裝置所需的狀態。 一般而言，開發人員會在 Azure 入口網站的 [IoT 裝置組態] 頁面上[建立組態](../iot-hub/iot-hub-automatic-device-management.md#create-a-configuration)。 裝置組態是一個 JSON 文件，可指定您裝置所需的狀態和一組計量。
+裝置組態會指定您裝置所需的狀態。 一般而言，開發人員會在 Azure 入口網站的 [IoT 裝置組態]  頁面上[建立組態](../iot-hub/iot-hub-automatic-device-management.md#create-a-configuration)。 裝置組態是一個 JSON 文件，可指定您裝置所需的狀態和一組計量。
 
 本機電腦上，將下列組態儲存為稱為 **firmware-update.json** 的檔案。 以您先前記下的值取代 `YOURSTRORAGEACCOUNTNAME`、`YOURCHECKSUM` 和 `YOURPACKAGESIZE` 預留位置：
 
@@ -206,11 +206,11 @@ If this is going to be a tutorial - we need to split this include into two so th
 
 在本節中，您會將裝置組態當作套件匯入遠端監視解決方案加速器中。 一般來說，操作員會完成這項工作。
 
-1. 在遠端監視 Web UI 中瀏覽至 [套件] 頁面，然後按一下 [+ 新增套件]：
+1. 在遠端監視 Web UI 中瀏覽至 [套件]  頁面，然後按一下 [+ 新增套件]  ：
 
     ![新增套件](media/iot-accelerators-remote-monitoring-bulk-configuration-update/packagepage.png)
 
-1. 在 [新增套件] 面板中，選擇 [裝置組態] 作為套件類型，並選擇 [韌體] 作為組態類型。 按一下 [瀏覽] 以在本機電腦上尋找 **firmware-update.json** 檔案，然後按一下 [上載]：
+1. 在 [新增套件]  面板中，選擇 [裝置組態]  作為套件類型，並選擇 [韌體]  作為組態類型。 按一下 [瀏覽]  以在本機電腦上尋找 **firmware-update.json** 檔案，然後按一下 [上載]  ：
 
     ![上傳套件](media/iot-accelerators-remote-monitoring-bulk-configuration-update/uploadpackage.png)
 
@@ -220,11 +220,11 @@ If this is going to be a tutorial - we need to split this include into two so th
 
 在本節中，您會建立並執行部署，以將裝置組態套用到您的 IoT DevKit 裝置。
 
-1. 在遠端監視 Web UI 中瀏覽至 [部署] 頁面，然後按一下 [+ 新增部署]：
+1. 在遠端監視 Web UI 中瀏覽至 [部署]  頁面，然後按一下 [+ 新增部署]  ：
 
     ![新增部署](media/iot-accelerators-remote-monitoring-bulk-configuration-update/deploymentpage.png)
 
-1. 在 [新增部署] 面板中，使用下列設定建立部署：
+1. 在 [新增部署]  面板中，使用下列設定建立部署：
 
     |選項|值|
     |---|---|
@@ -237,12 +237,12 @@ If this is going to be a tutorial - we need to split this include into two so th
 
     ![建立部署](media/iot-accelerators-remote-monitoring-bulk-configuration-update/newdeployment.png)
 
-    按一下 [套用]。 您會在 [部署] 頁面中看見新的部署，其中顯示下列計量：
+    按一下 [套用]  。 您會在 [部署]  頁面中看見新的部署，其中顯示下列計量：
 
-    * [已設定目標] 會顯示裝置群組中的裝置數目。
-    * [已套用] 顯示以部署內容更新的裝置數目。
-    * [已成功] 顯示部署中回報成功的裝置數目。
-    * [已失敗] 顯示部署中回報失敗的裝置數目。
+    * [已設定目標]  會顯示裝置群組中的裝置數目。
+    * [已套用]  顯示以部署內容更新的裝置數目。
+    * [已成功]  顯示部署中回報成功的裝置數目。
+    * [已失敗]  顯示部署中回報失敗的裝置數目。
 
 ## <a name="monitor-the-deployment"></a>監視部署
 
@@ -266,7 +266,7 @@ If this is going to be a tutorial - we need to split this include into two so th
 
 ![ota-6](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-6.jpg)
 
-在 [部署] 頁面上，按一下部署可查看裝置更新時的狀態。 您可以在您的裝置群組和您所定義的自訂度量中，看到每個裝置的狀態。
+在 [部署]  頁面上，按一下部署可查看裝置更新時的狀態。 您可以在您的裝置群組和您所定義的自訂度量中，看到每個裝置的狀態。
 
 ![部署詳細資料](media/iot-accelerators-remote-monitoring-bulk-configuration-update/deploymentstatus.png)
 

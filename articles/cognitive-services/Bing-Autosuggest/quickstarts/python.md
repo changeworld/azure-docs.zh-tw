@@ -1,25 +1,26 @@
 ---
 title: 快速入門：使用 Bing 自動建議 REST API 與 Python 建議搜尋查詢
-titlesuffix: Azure Cognitive Services
-description: 取得資訊和程式碼範例，以協助您快速開始使用 Bing 自動建議 API。
+titleSuffix: Azure Cognitive Services
+description: 了解如何快速開始使用 Bing 自動建議 API，即時建議搜尋字詞。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: quickstart
-ms.date: 02/20/2019
+ms.date: 05/06/2020
 ms.author: aahi
-ms.openlocfilehash: 463ace3aa9004bdffe07a16a062a4871b8daf699
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.custom: tracking-python
+ms.openlocfilehash: ea2605258b37c8dd706c5ff82d060d1a14770f63
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57008401"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84608990"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-python"></a>快速入門：使用 Bing 自動建議 REST API 與 Python 建議搜尋查詢
 
-使用本快速入門，呼叫 Bing 自動建議 API，並取得 JSON 回應。 這個簡單的 Python 應用程式會將部分搜尋查詢傳送至 API，並傳回搜尋建議。 雖然此應用程式是以 Python 撰寫的，但 API 是一種與大多數程式設計語言都相容的 RESTful Web 服務。 您可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingAutosuggestv7.py) 上找到此範例的原始程式碼
+本快速入門說明如何呼叫 Bing 自動建議 API，並讀取 JSON 回應。 這個簡單的 Python 應用程式會將部分搜尋查詢傳送至 API，並傳回搜尋建議。 雖然此應用程式是以 Python 撰寫的，但 API 是一種與大多數程式設計語言都相容的 RESTful Web 服務。 您可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingAutosuggestv7.py) 上找到此範例的原始程式碼
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -35,7 +36,7 @@ ms.locfileid: "57008401"
     import http.client, urllib.parse, json
     ```
 
-2. 針對您的 API 主機與路徑、[市場代碼](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference#market-codes)及部份搜尋查詢，建立變數。
+2. 為您的 API 主機與路徑、[市場代碼](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)和部分搜尋查詢建立變數。 請使用下列程式碼中的全域端點，或使用 Azure 入口網站中針對您的資源顯示的[自訂子網域](../../../cognitive-services/cognitive-services-custom-subdomains.md)端點。
 
     ```python
     subscriptionKey = 'enter key here'
@@ -45,7 +46,7 @@ ms.locfileid: "57008401"
     query = 'sail'
     ```
 
-3. 透過對 `?mkt=` 參數附加市場代碼，並對 `&q=` 參數附加查詢，來建立參數字串。
+3. 透過對 `mkt=` 參數附加市場代碼，並對 `q=` 參數附加查詢，來建立參數字串。
 
     ```python
     params = '?mkt=' + mkt + '&q=' + query
@@ -151,4 +152,4 @@ ms.locfileid: "57008401"
 ## <a name="see-also"></a>另請參閱
 
 - [什麼是 Bing 自動建議？](../get-suggested-search-terms.md)
-- [Bing 自動建議 API v7 參考](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference)
+- [Bing 自動建議 API v7 參考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)

@@ -1,11 +1,10 @@
 ---
-title: Azure PowerShell 範例 | Microsoft Docs
+title: Azure PowerShell 範例-網路
 description: Azure PowerShell 範例
 services: virtual-network
 documentationcenter: virtual-network
-author: georgewallace
-manager: timlt
-editor: tysonn
+author: KumudD
+manager: mtillman
 tags: ''
 ms.assetid: ''
 ms.service: virtual-network
@@ -14,19 +13,19 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 05/24/2017
-ms.author: georgewallace
-ms.openlocfilehash: 5bd0b4e33b5bef4d293e0475880692c72bf1504c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: gwallace
+ms.openlocfilehash: 98b72dbb9f3b62fd5985f6245e52293ec31fc682
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60564659"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232537"
 ---
 # <a name="azure-powershell-samples-for-networking"></a>Azure PowerShell 網路範例
 
 下表包含使用 Azure PowerShell 所建置指令碼的連結。
 
-| | |
+| 指令碼 | 描述 |
 |-|-|
 |**Azure 資源之間的連線**||
 | [建立多層式應用程式的虛擬網路](./scripts/virtual-network-powershell-sample-multi-tier-application.md?toc=%2fazure%2fnetworking%2ftoc.json) | 建立具有前端和後端子網路的虛擬網路。 傳送到前端子網路的流量會限制為 HTTP，而傳送到後端子網路的流量則限制為 SQL 且連接埠為 1433。 |
@@ -35,6 +34,5 @@ ms.locfileid: "60564659"
 | [篩選輸入和輸出 VM 網路流量](./scripts/virtual-network-powershell-filter-network-traffic.md?toc=%2fazure%2fnetworking%2ftoc.json) | 建立具有前端和後端子網路的虛擬網路。 傳送到前端子網路的輸入網路流量限制為 HTTP 和 HTTPS。 不允許從後端子網路傳輸至網際網路的輸出流量。 |
 |**負載平衡和流量方向**||
 | [使用 VM 平衡流量負載以達到高可用性](./scripts/load-balancer-windows-powershell-sample-nlb.md?toc=%2fazure%2fnetworking%2ftoc.json) | 依據高可用性和負載平衡組態建立數個虛擬機器。 |
-| [在 VM 上平衡多個網站的負載](./scripts/load-balancer-windows-powershell-load-balance-multiple-websites-vm.md?toc=%2fazure%2fnetworking%2ftoc.json) | 建立具有多個 IP 設定的兩個 VM。這兩個 VM 會加入 Azure 可用性設定組，並可透過 Azure Load Balancer 來存取。 |
 | [跨多個區域導向流量以達到高應用程式可用性](./scripts/traffic-manager-powershell-websites-high-availability.md?toc=%2fazure%2fnetworking%2ftoc.json) |  建立兩個 App Service 方案、兩個 Web 應用程式、一個流量管理員設定檔和兩個流量管理員端點。 |
 | | |

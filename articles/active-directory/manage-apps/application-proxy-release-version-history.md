@@ -1,10 +1,10 @@
 ---
-title: Azure AD 應用程式 Proxy：版本發行歷程記錄 | Microsoft Docs
+title: Azure AD 應用程式 Proxy：版本發行歷程記錄 |Microsoft Docs
 description: 本文列出 Azure AD 應用程式 Proxy 的所有版本，並說明新功能和已修正的問題
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: celested
+author: kenwith
+manager: celestedg
 editor: ''
 ms.assetid: ''
 ms.service: active-directory
@@ -12,82 +12,100 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/05/2019
-ms.subservice: manage-apps
-ms.author: mimart
+ms.date: 04/07/2020
+ms.subservice: app-mgmt
+ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf9ee43c6c6b332c05286da8e330812d7e0db6c2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 83c41a357ebaf65cca8465bfc48dda3dd065c3e0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60441656"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84759992"
 ---
 # <a name="azure-ad-application-proxy-version-release-history"></a>Azure AD 應用程式 Proxy：版本發行歷程記錄
-本文列出的版本和 Azure Active Directory (Azure AD) 應用程式 Proxy 的已發行的功能。 Azure AD 小組會定期以新特性和功能更新應用程式 Proxy。 發行新版本時，會自動更新應用程式 Proxy 連接器。
+本文列出已發行的 Azure Active Directory （Azure AD）應用程式 Proxy 的版本和功能。 Azure AD 小組會定期以新的特性和功能更新應用程式 Proxy。 發行新版本時，會自動更新應用程式 Proxy 連接器。 
 
-以下是一份相關資源：
+我們建議您確定已為您的連接器啟用自動更新，以確保您擁有最新的功能和 bug 修正。 Microsoft 會提供最新連接器版本的直接支援，以及一個先前的版本。
+
+以下是相關資源的清單：
 
 資源 |  詳細資料
 --------- | --------- |
-如何啟用應用程式 Proxy | 啟用應用程式 Proxy 並安裝並註冊連接器的必要條件所述這[教學課程](application-proxy-add-on-premises-application.md)。
-了解 Azure AD 應用程式 Proxy 連接器 | 深入了解[連接器管理](application-proxy-connectors.md)以及連接器[自動升級](application-proxy-connectors.md#automatic-updates)。
+如何啟用應用程式 Proxy | 本[教學](application-proxy-add-on-premises-application.md)課程會說明啟用應用程式 Proxy 以及安裝和註冊連接器的必要條件。
+了解 Azure AD 應用程式 Proxy 連接器 | 深入瞭解[連接器管理](application-proxy-connectors.md)，以及連接器如何[自動升級](application-proxy-connectors.md#automatic-updates)。
 Azure AD 應用程式 Proxy 連接器下載 |  [下載最新的連接器](https://download.msappproxy.net/subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/connector/download)。
 
-## <a name="156120"></a>1.5.612.0
+## <a name="1515260"></a>1.5.1526.0
 
 ### <a name="release-status"></a>發行狀態
 
-2018 年 9 月 20日日：已發行可供下載
+2020年4月7日：已發行以供下載
+
+### <a name="new-features-and-improvements"></a>新功能和改進
+-   連接器只會針對所有連接使用 TLS 1.2。 如需詳細資訊，請參閱[連接器先決條件](application-proxy-add-on-premises-application.md#before-you-begin)。
+- 已改善連接器與 Azure 服務之間的信號。 這包括支援在連接器與 Azure 服務之間進行 WCF 通訊的可靠會話，以及 WebSocket 通訊的 DNS 快取改善。
+- 支援設定連接器和後端應用程式之間的 proxy。 如需詳細資訊，請參閱使用[現有的內部部署 proxy 伺服器](application-proxy-configure-connectors-with-proxy-servers.md)。
+
+### <a name="fixed-issues"></a>已修正的問題
+- 已移除從連接器到 Azure 服務的通訊埠8080的回復。
+- 已新增 WebSocket 通訊的偵錯工具追蹤。 
+- 已解決在後端應用程式 cookie 上設定時保留 SameSite 屬性的問題。
+
+## <a name="156120"></a>1.5.612.0 版
+
+### <a name="release-status"></a>發行狀態
+
+2018年9月20日：已發行以供下載
 
 ### <a name="new-features-and-improvements"></a>新功能和改進
 
-- 已新增的 QlikSense 應用程式的 WebSocket 支援。 若要深入了解如何使用應用程式 Proxy 整合 QlikSense，請參閱這[逐步解說](application-proxy-qlik.md)。 
-- 改進安裝精靈來輕鬆地設定輸出 proxy。 
-- 連接器做為預設通訊協定設定 TLS 1.2。 
-- 加入新的 「 使用者授權合約 (EULA)。  
+- 已新增 QlikSense 應用程式的 WebSocket 支援。 若要深入瞭解如何整合 QlikSense 與應用程式 Proxy，請參閱此[逐步](application-proxy-qlik.md)解說。 
+- 已改善安裝精靈，讓您更輕鬆地設定輸出 proxy。 
+- 將 TLS 1.2 設定為連接器的預設通訊協定。 
+- 已加入新的使用者授權合約（EULA）。  
 
 ### <a name="fixed-issues"></a>已修正的問題
 
-- 已修正的 bug 導致連接器中的某些記憶體流失。
-- 更新 Azure 服務匯流排 」 版本，其中包含用於接點逾時問題的修正。
+- 已修正導致連接器中的記憶體流失的 bug。
+- 已更新 Azure 服務匯流排版本，其中包含連接器超時問題的錯誤修正。
 
 ## <a name="154020"></a>1.5.402.0
 
 ### <a name="release-status"></a>發行狀態
 
-2018 年 1 月 19日日：已發行可供下載
+2018年1月19日：已發行以供下載
 
 ### <a name="fixed-issues"></a>已修正的問題
 
-- 需要網域轉譯在 cookie 中的自訂網域已新增的支援。
+- 已新增對 cookie 中需要網域轉譯的自訂網域的支援。
 
 ## <a name="151320"></a>1.5.132.0
 
 ### <a name="release-status"></a>發行狀態 
 
-2017: 5 月 25日日已發行可供下載 
+2017年5月25日：已發行以供下載 
 
 ### <a name="new-features-and-improvements"></a>新功能和改進 
 
-改善的控制連接器的輸出連線限制的詳細資訊。 
+改善對連接器的輸出連線限制的控制。 
 
 ## <a name="15360"></a>1.5.36.0
 
 ### <a name="release-status"></a>發行狀態
 
-2017 年 4 月 15日日：已發行可供下載
+2017年4月15日：已發行以供下載
 
 ### <a name="new-features-and-improvements"></a>新功能和改進
 
-- 簡化的上架與管理較少的必要連接埠。 應用程式 Proxy 現在需要開啟只有兩個標準的輸出連接埠：443 和 80。 應用程式 Proxy 會繼續使用只連出連線，因此您仍然不需要在 DMZ 中的任何元件。 如需詳細資訊，請參閱我們 [設定文件](application-proxy-add-on-premises-application.md)。  
-- 如果支援您的外部 proxy 或防火牆，您現在可以開啟 dns 的網路，而不是 IP 範圍。 應用程式 Proxy 服務需要連線到 *。 msappproxy.net 和 *。 只有 servicebus.windows.net。
+- 使用較少的必要端口來簡化上架和管理。 應用程式 Proxy 現在只需要開啟兩個標準輸出埠：443和80。 應用程式 Proxy 只會繼續使用輸出連線，因此您仍然不需要 DMZ 中的任何元件。 如需詳細資訊，請參閱我們的設定 [檔](application-proxy-add-on-premises-application.md)。  
+- 如果您的外部 proxy 或防火牆支援，現在您可以透過 DNS 而不是 IP 範圍來開啟您的網路。 應用程式 Proxy 服務只需要連接 *. msappproxy.net 和 *. servicebus.windows.net。
 
 
 ## <a name="earlier-versions"></a>較早的版本
 
-如果您將應用程式 Proxy 連接器版本早於 1.5.36.0，更新為最新的版本，以確保您有最新完整支援的功能。
+如果您使用的應用程式 Proxy 連接器版本早于1.5.36.0，請更新為最新版本，以確保您擁有最新的完整支援功能。
 
 ## <a name="next-steps"></a>後續步驟
-- 深入了解[遠端存取內部部署應用程式可以透過 Azure AD 應用程式 Proxy](application-proxy.md)。
-- 若要開始使用應用程式 Proxy，請參閱[教學課程：新增內部部署應用程式以便透過應用程式 Proxy 進行遠端存取](application-proxy-add-on-premises-application.md)。
+- 深入瞭解[如何透過 Azure AD 應用程式 Proxy 來遠端存取內部部署應用程式](application-proxy.md)。
+- 若要開始使用應用程式 Proxy，請參閱[教學課程：新增內部部署應用程式以透過應用程式 proxy 進行遠端存取](application-proxy-add-on-premises-application.md)。

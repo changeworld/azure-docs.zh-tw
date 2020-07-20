@@ -1,31 +1,20 @@
 ---
-title: 將自訂事件傳送至 Web 端點 - 事件方格、Azure 入口網站
-description: 使用 Azure 事件方格和 Azure 入口網站發佈自訂主題，以及訂閱該主題的事件。 事件是由 Web 應用程式處理。
-services: event-grid
-keywords: ''
-author: spelluru
-ms.author: spelluru
-ms.date: 03/27/2019
+title: 快速入門：將自訂事件傳送至 Web 端點 - 事件方格、Azure 入口網站
+description: 快速入門：使用 Azure 事件方格和 Azure 入口網站發佈自訂主題，以及訂閱該主題的事件。 事件是由 Web 應用程式處理。
+ms.date: 07/07/2020
 ms.topic: quickstart
-ms.service: event-grid
-ms.custom: seodec18
-ms.openlocfilehash: 0861c47ef9f9649dfe223d8abeb51310a87ea4a9
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 21c3d043925d328c671de19444b0fed1c6950bf1
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59549962"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86115225"
 ---
 # <a name="quickstart-route-custom-events-to-web-endpoint-with-the-azure-portal-and-event-grid"></a>快速入門：使用 Azure 入口網站和事件方格，將自訂事件路由傳送至 Web 端點
 
 Azure Event Grid 是一項雲端事件服務。 在本文中，您可使用 Azure 入口網站建立自訂主題、訂閱自訂主題，以及觸發事件來檢視結果。 通常，您會將事件傳送至可處理事件資料及採取行動的端點。 不過，若要簡化這篇文章，您可將事件傳送至可收集及顯示訊息的 Web 應用程式。
 
-當您完成時，您會看到事件資料已傳送至 Web 應用程式。
-
-![檢視結果](./media/custom-event-quickstart-portal/view-result.png)
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
+## <a name="prerequisites"></a>必要條件
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [event-grid-register-provider-portal.md](../../includes/event-grid-register-provider-portal.md)]
@@ -35,30 +24,30 @@ Azure Event Grid 是一項雲端事件服務。 在本文中，您可使用 Azur
 Event Grid 主題會提供使用者定義的端點，作為您發佈事件的目的地。 
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
-2. 選取左導覽功能表中的 [所有服務]，搜尋**事件方格**，然後選取 [事件方格主題]。 
+2. 在主題的搜尋列中，輸入**事件方格主題**，然後從下拉式清單中選取 [事件方格主題]。 
 
-    ![選取事件方格主題](./media/custom-event-quickstart-portal/select-event-grid-topics.png)
+    :::image type="content" source="./media/custom-event-quickstart-portal/select-event-grid-topics.png" alt-text="搜尋並選取事件方格主題":::
 3. 在 [事件方格主題] 頁面上，選取工具列上的 [+ 新增]。 
 
-    ![新增事件方格主題按鈕](./media/custom-event-quickstart-portal/add-event-grid-topic-button.png)
+    :::image type="content" source="./media/custom-event-quickstart-portal/add-event-grid-topic-button.png" alt-text="新增事件方格主題按鈕":::
 4. 在 [建立主題] 頁面上，遵循下列步驟：
-    1. 提供自訂主題的唯一 [名稱]。 主題名稱必須是唯一的，因為它由 DNS 項目表示。 請勿使用影像中顯示的名稱。 而是建立您自己的名稱 - 它必須介於 3 到 50 個字元之間，且只包含值 a-z、A-Z、0-9 和 "-"。
-    2. 選取您的 Azure **訂用帳戶**。
-    3. 選取現有的資源群組或選取 [新建]，然後針對 [資源群組] 輸入 [名稱]。
+    1. 選取您的 Azure **訂用帳戶**。
+    2. 選取現有的資源群組或選取 [新建]，然後針對 [資源群組] 輸入 [名稱]。
+    3. 提供自訂主題的唯一 [名稱]。 主題名稱必須是唯一的，因為它由 DNS 項目表示。 請勿使用影像中顯示的名稱。 而是建立您自己的名稱 - 它必須介於 3 到 50 個字元之間，且只包含值 a-z、A-Z、0-9 和 "-"。
     4. 選取事件方格主題的 [位置]。
-    5. 保留 [事件結構描述] 欄位的預設值 [事件方格結構描述]。 
+    5. 選取頁面底部的 [檢閱 + 建立]。 
 
-       ![建立主題頁面](./media/custom-event-quickstart-portal/create-custom-topic.png)
-    6. 選取 [建立] 。 
-5. 建立自訂主題之後，您會看到成功的通知。 選取 [前往資源群組]。 
+        :::image type="content" source="./media/custom-event-quickstart-portal/create-custom-topic.png" alt-text="建立主題頁面":::
+    6. 在 [建立主題] 頁面的 [檢閱 + 建立] 索引標籤上，選取 [建立]。 
+    
+        :::image type="content" source="./media/custom-event-quickstart-portal/review-create-page.png" alt-text="檢閱設定並建立":::
+5. 部署成功之後，請在搜尋列中再次輸入**事件方格主題**，然後如同之前一樣，從下拉式清單中選取 [事件方格主題]。 
+6. 從清單中選取您建立的主題。 
 
-   ![查看成功通知](./media/custom-event-quickstart-portal/success-notification.png)
-6. 在 [資源群組] 頁面上，選取事件方格主題。 
+    :::image type="content" source="./media/custom-event-quickstart-portal/select-event-grid-topic.png" alt-text="從清單中選取您的主題":::  
+7. 您會看到您主題的 [事件方格主題] 頁面。 讓此頁面保持開啟。 您稍後會在快速入門中使用此值。 
 
-   ![選取事件方格主題參考](./media/custom-event-quickstart-portal/select-event-grid-topic.png)
-7. 您會看到您事件方格的 [事件方格主題] 頁面。 讓此頁面保持開啟。 您稍後會在快速入門中使用此值。 
-
-    ![事件方格主題首頁](./media/custom-event-quickstart-portal/event-grid-topic-home-page.png)
+    :::image type="content" source="./media/custom-event-quickstart-portal/event-grid-topic-home-page.png" alt-text="事件方格主題首頁":::
 
 ## <a name="create-a-message-endpoint"></a>建立訊息端點
 建立自訂主題的訂閱之前，請建立事件訊息的端點。 通常，端點會根據事件資料採取動作。 若要簡化此快速入門，請部署[預先建置的 Web 應用程式](https://github.com/Azure-Samples/azure-event-grid-viewer)以顯示事件訊息。 已部署的解決方案包含 App Service 方案、App Service Web 應用程式，以及 GitHub 中的原始程式碼。
@@ -67,6 +56,8 @@ Event Grid 主題會提供使用者定義的端點，作為您發佈事件的目
 
    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 1. 部署需要幾分鐘的時間才能完成。 成功部署之後，檢視 Web 應用程式，確定它正在執行。 在網頁瀏覽器中，瀏覽至：`https://<your-site-name>.azurewebsites.net`
+
+    如果部署失敗，請檢查錯誤訊息。 這可能是因為已經採用網站名稱。 再次部署範本，並為網站選擇不同的名稱。 
 1. 您看到網站，但其中尚未發佈任何事件。
 
    ![檢視新網站](./media/custom-event-quickstart-portal/view-site.png)
@@ -77,16 +68,16 @@ Event Grid 主題會提供使用者定義的端點，作為您發佈事件的目
 
 1. 現在，在您自訂主題的 [事件方格主題] 頁面上，選取工具列上的 [+ 事件訂閱]。
 
-   ![新增事件訂閱](./media/custom-event-quickstart-portal/new-event-subscription.png)
+    :::image type="content" source="./media/custom-event-quickstart-portal/new-event-subscription.png" alt-text="新增事件訂用帳戶按鈕":::
 2. 在 [建立事件訂閱] 頁面上，遵循下列步驟：
     1. 輸入事件訂閱的 [名稱]。
     3. 選取 [Web Hook] 作為 [端點類型]。 
     4. 選擇 [選取端點]。 
 
-       ![提供事件訂閱值](./media/custom-event-quickstart-portal/provide-subscription-values.png)
+        :::image type="content" source="./media/custom-event-quickstart-portal/provide-subscription-values.png" alt-text="提供事件訂用帳戶值":::
     5. 針對 Web Hook 端點，提供您的 Web 應用程式 URL，並將 `api/updates` 新增至首頁 URL。 選取 [確認選取項目]。
 
-       ![提供端點 URL](./media/custom-event-quickstart-portal/provide-endpoint.png)
+        :::image type="content" source="./media/custom-event-quickstart-portal/provide-endpoint.png" alt-text="提供端點 URL":::
     6. 回到 [建立事件訂閱] 頁面，選取 [建立]。
 
 3. 再次檢視 Web 應用程式，並注意訂用帳戶的驗證事件已傳送給它。 選取眼睛圖示來展開事件資料。 Event Grid 會傳送驗證事件，以便端點確認它要接收事件資料。 Web 應用程式包含用來驗證訂用帳戶的程式碼。
@@ -101,15 +92,18 @@ Event Grid 主題會提供使用者定義的端點，作為您發佈事件的目
 
 
 ### <a name="azure-cli"></a>Azure CLI
-1. 在 Azure 入口網站中選取 [Cloud Shell]。 在 Cloud Shell 視窗的左上角，選取 [Bash]。 
+1. 在 Azure 入口網站中選取 [Cloud Shell]。 Cloud Shell 會在網頁瀏覽器的底部窗格中開啟。 
+
+    :::image type="content" source="./media/custom-event-quickstart-portal/select-cloud-shell.png" alt-text="選取 Cloud Shell 圖示":::
+1. 在 Cloud Shell 視窗的左上角，選取 [Bash]。 
 
     ![Cloud Shell - Bash](./media/custom-event-quickstart-portal/cloud-shell-bash.png)
-1. 執行下列命令以取得主題的**端點**：在您複製並貼上命令之後，請先更新 [主題名稱] 和 [資源群組名稱]，再執行命令。 
+1. 執行下列命令以取得主題的**端點**：在您複製並貼上命令之後，請先更新 [主題名稱] 和 [資源群組名稱]，再執行命令。 您會將範例事件發佈到這個主題端點。 
 
     ```azurecli
     endpoint=$(az eventgrid topic show --name <topic name> -g <resource group name> --query "endpoint" --output tsv)
     ```
-2. 執行下列命令以取得主題的**索引鍵**：在您複製並貼上命令之後，請先更新 [主題名稱] 和 [資源群組名稱]，再執行命令。 
+2. 執行下列命令以取得主題的**索引鍵**：在您複製並貼上命令之後，請先更新 [主題名稱] 和 [資源群組名稱]，再執行命令。 這是事件方格主題的主索引鍵。 若要從 Azure 入口網站取得此金鑰，請切換至 [事件方格主題] 頁面的 [存取金鑰] 索引標籤。 若要能夠將事件張貼到自訂主題，您需要存取金鑰。 
 
     ```azurecli
     key=$(az eventgrid topic key list --name <topic name> -g <resource group name> --query "key1" --output tsv)
@@ -119,7 +113,7 @@ Event Grid 主題會提供使用者定義的端點，作為您發佈事件的目
     ```json
     event='[ {"id": "'"$RANDOM"'", "eventType": "recordInserted", "subject": "myapp/vehicles/motorcycles", "eventTime": "'`date +%Y-%m-%dT%H:%M:%S%z`'", "data":{ "make": "Ducati", "model": "Monster"},"dataVersion": "1.0"} ]'
     ```
-4. 執行下列 **Curl** 命令來張貼事件：
+4. 執行下列 **Curl** 命令來張貼事件：在命令中，`aeg-sas-key` 標頭會設定為您稍早取得的存取金鑰。 
 
     ```
     curl -X POST -H "aeg-sas-key: $key" -d "$event" $endpoint
@@ -128,20 +122,30 @@ Event Grid 主題會提供使用者定義的端點，作為您發佈事件的目
 ### <a name="azure-powershell"></a>Azure PowerShell
 第二個範例會使用 PowerShell 執行類似的步驟。
 
-1. 在 Azure 入口網站中選取 [Cloud Shell]。 在 Cloud Shell 視窗的左上角，選取 [PowerShell]。 請參閱 Azure CLI 區段中的範例 **Cloud Shell** 視窗映像。 
-2. 執行下列命令以取得主題的**端點**：在您複製並貼上命令之後，請先更新 [主題名稱] 和 [資源群組名稱]，再執行命令。 
+1. 在 Azure 入口網站中選取 [Cloud Shell] (或者，移至 `https://shell.azure.com/`)。 Cloud Shell 會在網頁瀏覽器的底部窗格中開啟。 
 
+    :::image type="content" source="./media/custom-event-quickstart-portal/select-cloud-shell.png" alt-text="選取 Cloud Shell 圖示":::
+1. 在 **Cloud Shell** 中，選取 Cloud Shell 視窗左上角的 [PowerShell]。 請參閱 Azure CLI 區段中的範例 **Cloud Shell** 視窗映像。
+2. 設定下列變數。 在您複製並貼上每個命令之後，請先更新 [主題名稱] 和 [資源群組名稱]，再執行命令：
+
+    **資源群組**：
     ```powershell
-    $endpoint = (Get-AzEventGridTopic -ResourceGroupName <resource group name> -Name <topic name>).Endpoint
+    $resourceGroupName = "<resource group name>"
     ```
-3. 執行下列命令以取得主題的**索引鍵**：在您複製並貼上命令之後，請先更新 [主題名稱] 和 [資源群組名稱]，再執行命令。
+
+    **事件方格主題名稱**：    
+    ```powershell
+    $topicName = "<topic name>"
+    ```
+3. 執行下列命令以取得主題的**端點**和**金鑰**：
 
     ```powershell
-    $keys = Get-AzEventGridTopicKey -ResourceGroupName gridResourceGroup -Name <topic name>
+    $endpoint = (Get-AzEventGridTopic -ResourceGroupName $resourceGroupName -Name $topicName).Endpoint
+    $keys = Get-AzEventGridTopicKey -ResourceGroupName $resourceGroupName -Name $topicName
     ```
 4. 準備事件。 在 Cloud Shell 視窗中複製並執行陳述式。 
 
-    ```azurepowershell
+    ```powershell
     $eventID = Get-Random 99999
 
     #Date format should be SortableDateTimePattern (ISO 8601)
@@ -173,31 +177,17 @@ Event Grid 主題會提供使用者定義的端點，作為您發佈事件的目
 ### <a name="verify-in-the-event-grid-viewer"></a>在事件方格檢視器中驗證
 您已觸發此事件，而 Event Grid 會將訊息傳送至您在訂閱時設定的端點。 檢視您的 Web 應用程式以查看剛傳送的事件。
 
-```json
-{
-  "id": "974",
-  "eventType": "recordInserted",
-  "subject": "myapp/vehicles/motorcycles",
-  "eventTime": "2019-03-28T01:11:59+00:00",
-  "data": {
-    "make": "Ducati",
-    "model": "Monster"
-  },
-  "dataVersion": "1.0",
-  "metadataVersion": "1",
-  "topic": "/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/myegridrg/providers/Microsoft.EventGrid/topics/myegridtopic"
-}
-```
+:::image type="content" source="./media/custom-event-quickstart-portal/event-grid-viewer-end.png" alt-text="事件方格檢視器":::
 
 ## <a name="clean-up-resources"></a>清除資源
 如果您打算繼續使用此事件，請勿清除在本文中建立的資源。 否則，請刪除您在本文建立的資源。
 
 1. 選取左功能表上的 [資源群組]。 如果您未在左側功能表上看到它，請選取左側功能表上的 [所有服務]，然後選取 [資源群組]。 
-2. 選取資源群組以啟動 [資源群組] 頁面。 
-3. 選取工具列上的 [刪除資源群組]。 
-4. 輸入資源群組的名稱並選取 [刪除]，以確認刪除。 
 
     ![資源群組](./media/custom-event-quickstart-portal/delete-resource-groups.png)
+1. 選取資源群組以啟動 [資源群組] 頁面。 
+1. 選取工具列上的 [刪除資源群組]。 
+1. 輸入資源群組的名稱並選取 [刪除]，以確認刪除。 
 
     您在映像中看到的其他資源群組是由 Cloud Shell 視窗建立和使用。 如果您不打算稍後使用 Cloud Shell 視窗，請將它刪除。 
 

@@ -1,17 +1,17 @@
 ---
-title: 教學課程：使用 Azure Functions 進行 Azure SignalR 服務驗證
+title: 教學課程：使用 Azure Functions 進行驗證 - Azure SignalR
 description: 在本教學課程中，您會了解如何驗證 Azure Functions 繫結的 Azure SignalR 服務用戶端
 author: sffamily
 ms.service: signalr
 ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: zhshang
-ms.openlocfilehash: 28fb3295ef02d508ef04299398a61ea59828df35
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: dfa17720b34962611d240aa7c35ba8092bf99082
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59278820"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "74158140"
 ---
 # <a name="tutorial-azure-signalr-service-authentication-with-azure-functions"></a>教學課程：使用 Azure Functions 進行 Azure SignalR 服務驗證
 
@@ -25,7 +25,7 @@ ms.locfileid: "59278820"
 * [Azure SignalR 服務](https://azure.microsoft.com/services/signalr-service/?WT.mc_id=serverlesschatlab-tutorial-antchu) - 將新訊息廣播至已連線的聊天用戶端
 * [Azure 儲存體](https://azure.microsoft.com/services/storage/?WT.mc_id=serverlesschatlab-tutorial-antchu) - 裝載聊天用戶端 UI 的靜態網站
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>Prerequisites
 
 以下是建置本教學課程所需的軟體。
 
@@ -45,24 +45,24 @@ ms.locfileid: "59278820"
 
 您將在本機建置並測試 Azure Functions 應用程式。 應用程式會存取 Azure 中必須事先建立的 SignalR 服務執行個體。
 
-1. 按一下 [建立資源] (**+**) 按鈕以建立新的 Azure 資源。
+1. 按一下 [建立資源]  ( **+** ) 按鈕以建立新的 Azure 資源。
 
-1. 搜尋 [SignalR 服務] 並加以選取。 按一下頁面底部的 [新增] 。
+1. 搜尋 [SignalR 服務]  並加以選取。 按一下頁面底部的 [新增]  。
 
     ![新增 SignalR 服務](media/signalr-tutorial-authenticate-azure-functions/signalr-quickstart-new.png)
 
 1. 輸入以下資訊：
 
-    | Name | 值 |
+    | 名稱 | 值 |
     |---|---|
     | 資源名稱 | SignalR 服務執行個體的唯一名稱 |
     | 資源群組 | 使用唯一名稱來建立新的資源群組 |
-    | 位置 | 選取您附近的位置 |
+    | Location | 選取您附近的位置 |
     | 定價層 | 免費 |
 
-1. 按一下頁面底部的 [新增] 。
+1. 按一下頁面底部的 [新增]  。
 
-1. 在部署執行個體之後，請在入口網站中開啟它，然後找出其 [設定] 頁面。 將 [服務模式] 設定變更為 [無伺服器]。
+1. 在部署執行個體之後，請在入口網站中開啟它，然後找出其 [設定] 頁面。 將 [服務模式] 設定變更為 [無伺服器]  。
 
     ![SignalR Service 模式](media/signalr-concept-azure-functions/signalr-service-mode.png)
 
@@ -74,10 +74,10 @@ ms.locfileid: "59278820"
 1. 在新的 VS Code 視窗中，使用功能表中的 `File > Open Folder`，在適當位置建立並開啟一個空的資料夾。 您建置的應用程式將以此作為主要專案資料夾。
 
 1. 在 VS Code 中使用 Azure Functions 擴充功能，初始化主要專案資料夾中的函式應用程式。
-   1. 從功能表中選取 [檢視] > [命令選擇區] (快速鍵 `Ctrl-Shift-P`，macOS：`Cmd-Shift-P`)，以在 VS Code 中開啟命令選擇區。
+   1. 從功能表中選取 [檢視] > [命令選擇區]  (快速鍵 `Ctrl-Shift-P`，macOS：`Cmd-Shift-P`)，以在 VS Code 中開啟命令選擇區。
    1. 搜尋 [Azure Functions：**建立新專案]** 命令，並加以選取。
    1. 此時應會出現主要專案資料夾。 請加以選取 (或使用 [瀏覽] 找出此資料夾)。
-   1. 若要在提示中選擇語言，請選取 [JavaScript]。
+   1. 若要在提示中選擇語言，請選取 [JavaScript]  。
 
       ![建立函數應用程式](media/signalr-tutorial-authenticate-azure-functions/signalr-create-vscode-app.png)
 
@@ -85,7 +85,7 @@ ms.locfileid: "59278820"
 
 本教學課程將使用 Azure Functions 與 Azure SignalR 服務互動。 如同其他大部分的繫結，SignalR 服務繫結也是以擴充功能的形式提供，且必須使用 Azure Functions Core Tools CLI 進行安裝，才能夠使用。
 
-1. 在 VS Code 中，從功能表中選取 [檢視] > [終端機] (Ctrl-\`) 來開啟終端機。
+1. 在 VS Code 中，從功能表中選取 [檢視] > [終端機]  (Ctrl-\`) 來開啟終端機。
 
 1. 確定主要專案資料夾是目前的目錄。
 
@@ -119,7 +119,7 @@ ms.locfileid: "59278820"
     }
     ```
 
-   * 將 Azure SignalR 服務連接字串輸入名為 `AzureSignalRConnectionString` 的設定中。 請在 Azure 入口網站中，從 Azure SignalR 服務資源的 [金鑰] 頁面上取得其值；您可以使用主要或次要連接字串。
+   * 將 Azure SignalR 服務連接字串輸入名為 `AzureSignalRConnectionString` 的設定中。 請在 Azure 入口網站中，從 Azure SignalR 服務資源的 [金鑰]  頁面上取得其值；您可以使用主要或次要連接字串。
    * `WEBSITE_NODE_DEFAULT_VERSION` 設定不會在本機使用，但在部署至 Azure 時即需使用。
    * `Host` 區段會設定本機 Functions 主機的連接埠和 CORS 設定 (此設定在 Azure 中執行時沒有效用)。
 
@@ -145,11 +145,11 @@ ms.locfileid: "59278820"
 
 1. 出現提示時，請提供下列資訊。
 
-    | Name | 值 |
+    | 名稱 | 值 |
     |---|---|
     | 函式應用程式資料夾 | 選取主要專案資料夾 |
-    | 範本 | HTTP 觸發程序 |
-    | Name | negotiate |
+    | [範本] | HTTP 觸發程序 |
+    | 名稱 | negotiate |
     | 授權層級 | 匿名 |
 
     這會建立一個名為 **negotiate** 的資料夾，其中包含新的函式。
@@ -204,11 +204,11 @@ Web 應用程式也需要 HTTP API 以傳送聊天訊息。 您將建立名為 *
 
 1. 出現提示時，請提供下列資訊。
 
-    | Name | 值 |
+    | 名稱 | 值 |
     |---|---|
     | 函式應用程式資料夾 | 選取主要專案資料夾 |
-    | 範本 | HTTP 觸發程序 |
-    | Name | SendMessage |
+    | [範本] | HTTP 觸發程序 |
+    | 名稱 | SendMessage |
     | 授權層級 | 匿名 |
 
     此時會建立名為 **SendMessage** 的資料夾，其中包含新的函式。
@@ -289,7 +289,7 @@ Web 應用程式也需要 HTTP API 以傳送聊天訊息。 您將建立名為 *
 
 1. 按 **F5** 在本機執行函式應用程式，並連結偵錯工具。
 
-1. 在 **index.html** 開啟後，開啟 VS Code 命令選擇區 (`Ctrl-Shift-P`，macOS：`Cmd-Shift-P`)，然後選取 [即時伺服器：**開啟即時伺服器]**，以啟動即時伺服器。 即時伺服器將會在瀏覽器中開啟應用程式。
+1. 在 **index.html** 開啟後，開啟 VS Code 命令選擇區 (`Ctrl-Shift-P`，macOS：`Cmd-Shift-P`)，然後選取 [即時伺服器：**開啟即時伺服器]** ，以啟動即時伺服器。 即時伺服器將會在瀏覽器中開啟應用程式。
 
 1. 應用程式隨即開啟。 在聊天方塊中輸入訊息，然後按 Enter 鍵。 重新整理應用程式，以查看新的訊息。 由於未設定任何驗證，因此所有訊息都會以「匿名」的形式傳送。
 
@@ -309,38 +309,38 @@ Web 應用程式也需要 HTTP API 以傳送聊天訊息。 您將建立名為 *
 
 在 Azure 中執行的函數應用程式必須要有「Azure 儲存體」帳戶。 您也將使用「Azure 儲存體」的靜態網站功能來裝載聊天 UI 的網頁。
 
-1. 在 Azure 入口網站中，按一下 [建立資源] (**+**) 按鈕以建立新的 Azure 資源。
+1. 在 Azure 入口網站中，按一下 [建立資源]  ( **+** ) 按鈕以建立新的 Azure 資源。
 
-1. 選取 [儲存體] 類別，然後選取 [儲存體帳戶]。
+1. 選取 [儲存體]  類別，然後選取 [儲存體帳戶]  。
 
 1. 輸入以下資訊：
 
-    | Name | 值 |
+    | 名稱 | 值 |
     |---|---|
     | 訂用帳戶 | 選取包含 SignalR Service 執行個體的訂用帳戶 |
     | 資源群組 | 選取相同的資源群組 |
     | 資源名稱 | 儲存體帳戶的唯一名稱 |
-    | 位置 | 選取與您的其他資源相同的位置 |
+    | Location | 選取與您的其他資源相同的位置 |
     | 效能 | 標準 |
     | 帳戶類型 | StorageV2 (一般用途 V2) |
     | 複寫 | 本地備援儲存體 (LRS) |
     | 存取層 | 經常性存取 |
 
-1. 按一下 [檢閱 + 建立]，然後按一下 [建立]。
+1. 按一下 [檢閱 + 建立]  ，然後按一下 [建立]  。
 
 ### <a name="configure-static-websites"></a>設定靜態網站
 
 1. 建立「儲存體」帳戶之後，在 Azure 入口網站中開啟該帳戶。
 
-1. 選取 [靜態網站]。
+1. 選取 [靜態網站]  。
 
-1. 選取 [已啟用] 以啟用靜態網站功能。
+1. 選取 [已啟用]  以啟用靜態網站功能。
 
-1. 在 [索引文件名稱] 中，輸入 *index.html*。
+1. 在 [索引文件名稱]  中，輸入 *index.html*。
 
-1. 按一下 [檔案] 。
+1. 按一下 [檔案]  。
 
-1. 隨即會顯示 [主要端點]。 請記下此值。 將必須要有此值，才能設定函數應用程式。
+1. 隨即會顯示 [主要端點]  。 請記下此值。 將必須要有此值，才能設定函數應用程式。
 
 ### <a name="configure-function-app-for-authentication"></a>進行函式應用程式的驗證設定
 
@@ -367,15 +367,15 @@ Web 應用程式也需要 HTTP API 以傳送聊天訊息。 您將建立名為 *
 
 ### <a name="deploy-function-app-to-azure"></a>將函數應用程式部署至 Azure
 
-1. 開啟 VS Code 命令選擇區 (`Ctrl-Shift-P`，macOS：`Cmd-Shift-P`)，然後選取 [Azure Functions：**部署至函式應用程式]**。
+1. 開啟 VS Code 命令選擇區 (`Ctrl-Shift-P`，macOS：`Cmd-Shift-P`)，然後選取 [Azure Functions：**部署至函式應用程式]** 。
 
 1. 出現提示時，請提供下列資訊。
 
-    | Name | 值 |
+    | 名稱 | 值 |
     |---|---|
     | 要部署的資料夾 | 選取主要專案資料夾 |
     | 訂用帳戶 | 選取您的訂用帳戶 |
-    | 函式應用程式 | 選取 [建立新的函式應用程式] |
+    | 函式應用程式 | 選取 [建立新的函式應用程式]  |
     | 函式應用程式名稱 | 輸入唯一名稱 |
     | 資源群組 | 選取與 SignalR 服務執行個體相同的資源群組 |
     | 儲存體帳戶 | 選取您稍早建立的儲存體帳戶 |
@@ -390,13 +390,13 @@ Web 應用程式也需要 HTTP API 以傳送聊天訊息。 您將建立名為 *
 
 1. 出現提示時，請提供下列資訊。
 
-    | Name | 值 |
+    | 名稱 | 值 |
     |---|---|
     | 本機設定檔 | local.settings.json |
     | 訂用帳戶 | 選取您的訂用帳戶 |
     | 函式應用程式 | 選取先前部署的函式應用程式 |
 
-本機設定會上傳至 Azure 中的函式應用程式。 如果系統提示您覆寫現有設定，請選取 [全部皆是]。
+本機設定會上傳至 Azure 中的函式應用程式。 如果系統提示您覆寫現有設定，請選取 [全部皆是]  。
 
 
 ### <a name="enable-app-service-authentication"></a>啟用 App Service 驗證
@@ -409,13 +409,13 @@ App Service 驗證支援以 Azure Active Directory、Facebook、Twitter、Micros
 
 1. 選取訂用帳戶和函式應用程式名稱，以在 Azure 入口網站中開啟函式應用程式。
 
-1. 在已於入口網站中開啟的函式應用程式中，找出 [平台功能] 索引標籤，選取 [驗證/授權]。
+1. 在已於入口網站中開啟的函式應用程式中，找出 [平台功能]  索引標籤，選取 [驗證/授權]  。
 
 1. **開啟** App Service 驗證。
 
-1. 在 [當要求未經驗證時所要採取的動作] 中，選取 [使用 {您先前選取的驗證提供者} 登入]。
+1. 在 [當要求未經驗證時所要採取的動作]  中，選取 [使用 {您先前選取的驗證提供者} 登入]。
 
-1. 在 [允許的外部重新導向 URL] 中，輸入您先前記下的儲存體帳戶主要 Web 端點的 URL。
+1. 在 [允許的外部重新導向 URL]  中，輸入您先前記下的儲存體帳戶主要 Web 端點的 URL。
 
 1. 根據您選擇的登入提供者，依照其隨附文件中的指示完成設定。
 
@@ -445,17 +445,17 @@ Web 應用程式會使用 Azure Blob 儲存體的靜態網站功能進行裝載�
 
 1. 開啟 VS Code 命令選擇區 (`Ctrl-Shift-P`，macOS：`Cmd-Shift-P`)。
 
-1. 搜尋並選取 [Azure Storage:Deploy to Static Website] \(Azure 儲存體: 部署至靜態網站\) 命令。
+1. 搜尋並選取 [Azure Storage:  Deploy to Static Website] \(Azure 儲存體: 部署至靜態網站\) 命令。
 
 1. 輸入下列值：
 
-    | Name | 值 |
+    | 名稱 | 值 |
     |---|---|
     | 訂用帳戶 | 選取您的訂用帳戶 |
     | 儲存體帳戶 | 選取您稍早建立的儲存體帳戶 |
-    | 要部署的資料夾 | 依序選取 [瀏覽] 和 [content] 資料夾 |
+    | 要部署的資料夾 | 依序選取 [瀏覽]  和 [content]  資料夾 |
 
-[content] 資料夾中的檔案現在應該已部署至靜態網站。
+[content]  資料夾中的檔案現在應該已部署至靜態網站。
 
 ### <a name="enable-function-app-cross-origin-resource-sharing-cors"></a>啟用跨原始來源資源共用 (CORS) 的函式應用程式
 
@@ -463,23 +463,23 @@ Web 應用程式會使用 Azure Blob 儲存體的靜態網站功能進行裝載�
 
 1. 在 Azure 入口網站中開啟函式應用程式。
 
-1. 在 [平台功能] 索引標籤底下，選取 [CORS]。
+1. 在 [平台功能]  索引標籤底下，選取 [CORS]  。
 
     ![尋找 CORS](media/signalr-tutorial-authenticate-azure-functions/signalr-find-cors.png)
 
-1. 在 [允許的來源] 區段中，新增以靜態網站「主要端點」作為值 (請移除尾端的 */*) 的項目。
+1. 在 [允許的來源]  區段中，新增以靜態網站「主要端點」  作為值 (請移除尾端的 */* ) 的項目。
 
 1. 為了讓 SignalR JavaScript SDK 能夠從瀏覽器呼叫您的函式應用程式，必須啟用 CORS 中的認證支援。 選取 [啟用 Access-Control-Allow-Credentials] 核取方塊。
 
     ![啟用 Access-Control-Allow-Credentials](media/signalr-tutorial-authenticate-azure-functions/signalr-cors-credentials.png)
 
-1. 按一下 [儲存] 以保存 CORS 設定。
+1. 按一下 [儲存]  以保存 CORS 設定。
 
 ### <a name="try-the-application"></a>嘗試使用應用程式
 
 1. 在瀏覽器中，瀏覽至儲存體帳戶的主要 Web 端點。
 
-1. 選取 [登入]，使用您選擇的驗證提供者進行驗證。
+1. 選取 [登入]  ，使用您選擇的驗證提供者進行驗證。
 
 1. 將公用訊息輸入主要聊天方塊中，以傳送該訊息。
 

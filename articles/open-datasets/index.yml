@@ -1,30 +1,41 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: 開放資料集預覽文件
+### YamlMime:Landing
+title: Azure 開放資料集文件
+summary: Azure 開放資料集是已妥善整理且清理的資料 (包括天氣、人口普查和假日)，您可以使用最少的準備來擴充 ML 模型。
 metadata:
-  title: Azure 開放資料集預覽文件 – 教學課程和 API 參考 | Microsoft Docs
-  description: 了解如何使用 Azure 開放資料集，這是不需要太多準備工作就能運用，且經過精選和整理的資料。 開放資料集是公開的資料，例如適合擴充機器學習服務模型的氣象、人口普查及假日等資料。 教學課程、範例和 API 參考文件會示範操作方法。
+  title: 開放資料集文件 - 教學課程、API 參考 - Azure
+  description: Azure 開放資料集是已妥善整理且清理的資料 (包括天氣、人口普查和假日)，您可以使用最少的準備來擴充 ML 模型。
   ms.service: open-datasets
   ms.topic: landing-page
+  ms.collection: collection
   author: cjgronlund
   ms.author: cgronlun
-  ms.date: 05/02/2019
-  ms.tgt_pltfrm: na
-  ms.devlang: na
-abstract:
-  description: 了解如何使用 Azure 開放資料集，這是不需要太多準備工作就能運用，且經過精選和整理的資料。 開放資料集包含公開的資料，例如適合擴充機器學習服務模型的氣象、人口普查及假日等資料。 教學課程、範例和 API 參考文件會示範操作方法。
-sections:
-  - title: 逐步教學課程
-    items:
-      - type: paragraph
-        text: <a href="tutorial-opendatasets-automl">使用自動化機器學習建置迴歸模型</a>
-  - title: 範例
-    items:
-      - type: paragraph
-        text: <a href="samples">用於擴充資料集的 Notebook</a>
-  - title: 參考
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: '<a href="https://aka.ms/open-datasets-api">API 參考</a>'
+  ms.date: 11/04/2019
+  ms.openlocfilehash: 0453213dd1433989869899d1e886bd87d02340b6
+  ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 05/08/2020
+  ms.locfileid: "82930330"
+landingContent:
+- title: 關於開放式資料集
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是開放資料集？
+      url: overview-what-are-open-datasets.md
+    - text: 範例
+      url: samples.md
+- title: 開始使用
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 使用自動化機器學習建置迴歸模型
+      url: /azure/machine-learning/tutorial-auto-train-models?context=azure/open-datasets/context/open-datasets-context
+    - text: 擴充 Azure Machine Learning 中的影像分類模型
+      url: /azure/machine-learning/tutorial-train-models-with-aml?context=azure/open-datasets/context/open-datasets-context
+- title: 探索參考內容
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Python API
+      url: https://docs.microsoft.com/python/api/azureml-opendatasets/?view=azure-ml-py

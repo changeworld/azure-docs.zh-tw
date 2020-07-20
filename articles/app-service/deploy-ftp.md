@@ -1,26 +1,17 @@
 ---
-title: 使用 FTP/S 部署內容 - Azure App Service | Microsoft Docs
-description: 了解如何使用 FTP 或 FTPS 將您的應用程式部署至 Azure App Service。
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: erikre
-editor: ''
+title: 使用 FTP/S 部署內容
+description: 了解如何使用 FTP 或 FTPS 將您的應用程式部署至 Azure App Service。 藉由停用未加密的 FTP 來改善網站安全性。
 ms.assetid: ae78b410-1bc0-4d72-8fc4-ac69801247ae
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 11/30/2018
-ms.author: cephalin;dariac
+ms.date: 09/18/2019
+ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: db8445ec2b3dd8bdefa661d7f186e720c6fada09
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: fcc7c5b8fa182cace6e3dae0b1cae4cd41c5dcb9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62130104"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "81532576"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>使用 FTP/S 將您的應用程式部署至 Azure App Service
 
@@ -30,26 +21,32 @@ ms.locfileid: "62130104"
 
 ## <a name="open-ftp-dashboard"></a>開啟 FTP 儀表板
 
-在 [Azure 入口網站](https://portal.azure.com)中，開啟應用程式的[資源頁面](../azure-resource-manager/manage-resources-portal.md#manage-resources)。
+1. 在 [ [Azure 入口網站](https://portal.azure.com)中，搜尋並選取 [**應用程式服務**]。
 
-若要開啟 FTP 儀表板，請按一下 [部署中心] > [FTP] > [儀表板]。
+    ![搜尋 [應用程式服務]。](media/app-service-continuous-deployment/search-for-app-services.png)
 
-![開啟 FTP 儀表板](./media/app-service-deploy-ftp/open-dashboard.png)
+2. 選取您想要部署的 web 應用程式。
+
+    ![選取您的應用程式。](media/app-service-continuous-deployment/select-your-app.png)
+
+3. 選取 [**部署中心**] [  >  **FTP**  >  **儀表板**]。
+
+    ![開啟 FTP 儀表板](./media/app-service-deploy-ftp/open-dashboard.png)
 
 ## <a name="get-ftp-connection-information"></a>取得 FTP 連線資訊
 
-在 FTP 儀表板中，按一下 [複製] 複製 FTPS 端點和應用程式認證。
+在 FTP 儀表板中，選取 [**複製**] 以複製 FTPS 端點和應用程式認證。
 
 ![複製 FTP 資訊](./media/app-service-deploy-ftp/ftp-dashboard.png)
 
-建議您使用**應用程式認證**來部署到您的應用程式，因為它對於每個應用程式都是唯一的。 不過，如果您按一下 [使用者認證]，則可以設定使用者層級的認證，以將其用於 FTP/S 登入到訂用帳戶中的所有 App Service 應用程式。
+建議您使用**應用程式認證**來部署到您的應用程式，因為它對於每個應用程式都是唯一的。 不過，如果您按一下 [使用者認證]****，則可以設定使用者層級的認證，以將其用於 FTP/S 登入到訂用帳戶中的所有 App Service 應用程式。
 
 > [!NOTE]
-> 使用用户级凭据向 FTP/FTPS 终结点进行身份验证时需要使用以下格式的用户名： 
+> 使用使用者層級認證向 FTP/FTPS 端點進行驗證時，需要下列格式的使用者名稱： 
 >
 >`<app-name>\<user-name>`
 >
-> 由于用户级凭据链接到用户而不是特定资源，因此用户名必须采用此格式才能将登录操作定向到正确的应用终结点。
+> 由於使用者層級認證會連結至使用者，而不是特定資源，因此使用者名稱必須採用此格式，才能將登入動作導向至正確的應用程式端點。
 >
 
 ## <a name="deploy-files-to-azure"></a>將檔案部署至 Azure
@@ -70,11 +67,11 @@ ms.locfileid: "62130104"
 
 ## <a name="enforce-ftps"></a>強制使用 FTPS
 
-為了增強安全性，您應該只允許 FTP over SSL。 如果您不使用 FTP 部署，您也可以停用 FTP 和 FTPS。
+為了加強安全性，您應該只允許透過 TLS/SSL 的 FTP。 如果您不使用 FTP 部署，您也可以停用 FTP 和 FTPS。
 
-在 [Azure 入口網站](https://portal.azure.com)中您應用程式的資源頁面中，選取左導覽列中的 [應用程式設定]。
+在[Azure 入口網站](https://portal.azure.com)的應用程式資源頁面中，從左側導覽**中選取**  >  **[設定] [一般設定**]。
 
-若要停用未加密的 FTP，請選取 [僅限 FTPS]。 若要完全停用 FTP 和 FTPS，請選取 [停用]。 完成時，按一下 [儲存]。 如果使用 [僅限 FTPS]，您必須瀏覽至 Web 應用程式的 **SSL 設定** 刀鋒視窗，來強制使用 TLS 1.2 或更高版本。 TLS 1.0 和 1.1 不支援 [僅限 FTPS] 功能。
+若要停用未加密的 FTP，請選取 [僅在**FTP 狀態**中**FTPS** ]。 若要完全停用 FTP 和 FTPS，請選取 [**停用**]。 完成時，按一下 [儲存]****。 如果**只使用 FTPS**，您必須流覽至 web 應用程式的 [ **tls/SSL 設定**] 分頁，以強制執行 tls 1.2 或更高版本。 TLS 1.0 和 1.1 不支援 [僅限 FTPS]**** 功能。
 
 ![停用 FTP/S](./media/app-service-deploy-ftp/disable-ftp.png)
 
@@ -89,7 +86,7 @@ ms.locfileid: "62130104"
 ## <a name="troubleshoot-ftp-deployment"></a>疑難排解 FTP 部署
 
 - [如何疑難排解 FTP 部署？](#how-can-i-troubleshoot-ftp-deployment)
-- [我無法連線到 FTP 及發佈我的程式碼。如何解決此問題？](#im-not-able-to-ftp-and-publish-my-code-how-can-i-resolve-the-issue)
+- [我無法 FTP 及發佈我的程式碼。如何解決此問題？](#im-not-able-to-ftp-and-publish-my-code-how-can-i-resolve-the-issue)
 - [如何透過被動模式連線到 Azure App Service 中的 FTP？](#how-can-i-connect-to-ftp-in-azure-app-service-via-passive-mode)
 
 ### <a name="how-can-i-troubleshoot-ftp-deployment"></a>如何疑難排解 FTP 部署？

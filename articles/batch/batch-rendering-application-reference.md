@@ -1,22 +1,20 @@
 ---
-title: 使用轉譯應用程式 - Azure Batch
-description: 如何透過 Azure Batch 使用轉譯應用程式
-services: batch
-ms.service: batch
+title: 使用轉譯應用程式
+description: 如何搭配 Azure Batch 使用轉譯應用程式。 本文將簡單說明如何執行每個轉譯應用程式。
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
-ms.topic: conceptual
-ms.openlocfilehash: 4c93abdfb5c523d48ce115ed7d3251a346937f5f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.topic: how-to
+ms.openlocfilehash: ace3fe7aee6b9ffc7226448b455bcfea1f931458
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60775384"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964867"
 ---
 # <a name="rendering-applications"></a>轉譯應用程式
 
-轉譯應用程式可藉由建立 Batch 作業和工作來使用。 工作命令列屬性會指定適當的命令列和參數。  要建立作業工作，最簡單的方式是使用[這篇文章](https://docs.microsoft.com/azure/batch/batch-rendering-using#using-batch-explorer)中指定的 Batch Explorer 範本。  您可以檢視範本，並視需要修改已建立的版本。
+轉譯應用程式可藉由建立 Batch 作業和工作來使用。 工作命令列屬性會指定適當的命令列和參數。  要建立作業工作，最簡單的方式是使用[這篇文章](./batch-rendering-using.md#using-batch-explorer)中指定的 Batch Explorer 範本。  您可以檢視範本，並視需要修改已建立的版本。
 
 本文將簡單說明如何執行每個轉譯應用程式。
 
@@ -33,7 +31,7 @@ ms.locfileid: "60775384"
 
 叫用 `3dsmaxcmdio.exe` 應用程式以執行集區節點的命令列轉譯。  當工作執行時，此應用程式會位於路徑上。 `3dsmaxcmdio.exe` 應用程式具有與 `3dsmaxcmd.exe` 應用程式相同的可用參數，如 [3ds Max 說明文件](https://help.autodesk.com/view/3DSMAX/2018/ENU/) (「轉譯 | 命令列轉譯」一節) 所說明。
 
-例如︰
+例如：
 
 ```
 3dsmaxcmdio.exe -v:5 -rfw:0 -start:{0} -end:{0} -bitmapPath:"%AZ_BATCH_JOB_PREP_WORKING_DIR%\sceneassets\images" -outputName:dragon.jpg -w:1280 -h:720 "%AZ_BATCH_JOB_PREP_WORKING_DIR%\scenes\dragon.max"

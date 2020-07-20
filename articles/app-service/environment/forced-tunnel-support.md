@@ -1,31 +1,24 @@
 ---
-title: 設定 App Service 環境使用強制通道 - Azure
-description: 輸出流量使用強制通道處理時，讓 App Service Environment 可以運作
-services: app-service
-documentationcenter: na
+title: 設定強制通道
+description: 了解在虛擬網路中強制以通道處理輸出流量時，如何讓 App Service 環境可以運作。
 author: ccompy
-manager: stefsch
 ms.assetid: 384cf393-5c63-4ffb-9eb2-bfd990bc7af1
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 05/29/2018
 ms.author: ccompy
-ms.custom: seodec18
-ms.openlocfilehash: 36324ccd9b6e9470c93949efed6c29a9b8d3ab61
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 6dc002b0ed9e68ea15eaa58c226249837c7df32d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54389295"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85830854"
 ---
 # <a name="configure-your-app-service-environment-with-forced-tunneling"></a>設定 App Service Environment 搭配強制通道
 
 App Service Environment (ASE) 是在客戶的 Azure 虛擬網路之中的 Azure App Service 部署。 許多客戶將其 Azure 虛擬網路設定為內部部署網路 (具備 VPN 或 Azure ExpressRoute 連線) 的擴充。 當您將網際網路繫結流量重新導向至您的 VPN 或虛擬設備時，就會使用強制通道。 虛擬設備通常用來檢查和稽核輸出網路流量。 
 
-ASE 有一些外部相依性，[App Service Environment 網路架構][network]文件會予以說明。 通常所有 ASE 輸出相依性流量都必須都通過與 ASE 一起佈建的 VIP。 如果您變更往返 ASE 的流量路由，但未遵循以下的資訊，您的 ASE 將會停止運作。
+ASE 有一些外部相依性，[App Service 環境網路架構][network]文件會予以說明。 通常所有 ASE 輸出相依性流量都必須都通過與 ASE 一起佈建的 VIP。 如果您變更往返 ASE 的流量路由，但未遵循以下的資訊，您的 ASE 將會停止運作。
 
 在 Azure 虛擬網路中，路由是根據 最長首碼比對 (LPM) 而進行。 如果有多個符合相同 LPM 的路由，則會根據其來源，以下列順序選取路由：
 
@@ -67,7 +60,7 @@ ASE 有一些外部相依性，[App Service Environment 網路架構][network]�
 若要將您的 ASE 子網路設定為略過 BGP 路由：
 
 * 如果您還沒有 UDR，請加以建立並將它指派給您的 ASE 子網路。
-* 在 Azure 入口網站中，開啟指派給 ASE 子網路的路由表 UI。  選取組態。  將 BCP 路由傳播設定為 [停用]。  按一下 [儲存]。 將它關閉的相關文件位於[建立路由表][routetable]文件中。
+* 在 Azure 入口網站中，開啟指派給 ASE 子網路的路由表 UI。  選取組態。  將虛擬網路閘道路由傳播設為「停用」。  按一下 [儲存]。 關閉該功能的相關資訊位於[建立路由表][routetable]文件中。
 
 將 ASE 子網路設定為忽略所有 BGP 路由之後，您的應用程式便無法再觸達內部部署環境。 若要讓您的應用程式能夠存取內部部署資源，請編輯指派給 ASE 子網路的 UDR，並新增內部部署位址範圍的路由。 下一個躍點類型應該設定為虛擬網路閘道。 
 
@@ -76,7 +69,7 @@ ASE 有一些外部相依性，[App Service Environment 網路架構][network]�
 
 若要從您的 ASE 路由傳送所有輸出流量 (移至 Azure SQL 和 Azure 儲存體的流量除外)，請執行下列步驟：
 
-1. 您可以建立路由表並將它指派給 ASC 子網路。 請在 [App Service Environment 管理位址][management]尋找符合您區域的位址。 為下一個躍點為網際網路的位址建立路由。 這些是必要路由，因為 App Service Environment 輸入環境流量必須從它傳送至的相同位址回覆。   
+1. 您可以建立路由表並將它指派給 ASC 子網路。 請在 [App Service 環境管理位址][management]中尋找符合您區域的位址。 為下一個躍點為網際網路的位址建立路由。 這些是必要路由，因為 App Service Environment 輸入環境流量必須從它傳送至的相同位址回覆。   
 
 2. 在您的 ASE 子網路中使用 Azure SQL 和 Azure 儲存體啟用服務端點。  完成此步驟後，您可以使用強制通道設定您的 VNet。
 
@@ -86,7 +79,7 @@ ASE 有一些外部相依性，[App Service Environment 網路架構][network]�
 
 當您在資源上啟用服務端點時，所建立的路由具有高於所有其他路由的優先順序。 如果您使用服務端點搭配強制通道 ASE，Azure SQL 和 Azure 儲存體管理流量不會使用強制通道。 其他 ASE 相依性流量會使用強制通道且不能遺失，否則 ASE 會無法正常運作。
 
-透過 Azure SQL 執行個體在子網路上啟用服務端點時，從該子網路連線的所有 Azure SQL 執行個體都必須啟用服務端點。 如果您想要從相同的子網路存取多個 Azure SQL 執行個體，您就無法在一個 Azure SQL 執行個體啟用服務端點，而不要在另一個執行個體上啟用。  Azure 儲存體與 Azure SQL 的運作方式不同。  當您使用 Azure 儲存體啟用服務端點時，您會封鎖您的子網路存取該資源，，但仍可存取其他 Azure 儲存體帳戶 (即使它們未啟用服務端點)。  
+透過 Azure SQL 執行個體在子網路上啟用服務端點時，從該子網路連線的所有 Azure SQL 執行個體都必須啟用服務端點。 如果您想要從相同的子網路存取多個 Azure SQL 執行個體，您就無法在一個 Azure SQL 執行個體啟用服務端點，而不要在另一個執行個體上啟用。  Azure 儲存體與 Azure SQL 的運作方式不同。  當您使用 Azure 儲存體啟用服務端點時，您會封鎖您的子網路存取該資源，但仍可存取其他 Azure 儲存體帳戶 (即使它們未啟用服務端點)。  
 
 如果您設定對網路篩選設備使用強制通道，請記住，除了 Azure SQL 和 Azure 儲存體以外，ASE 還具有一些相依性。 如果封鎖對這些相依項目的流量，則 ASE 無法正常運作。
 
@@ -96,45 +89,49 @@ ASE 有一些外部相依性，[App Service Environment 網路架構][network]�
 
 若要從您的 ASE 傳輸所有輸出流量 (移至 Azure 儲存體的流量除外)，請執行下列步驟：
 
-1. 您可以建立路由表並將它指派給 ASC 子網路。 請在 [App Service Environment 管理位址][management]尋找符合您區域的位址。 為下一個躍點為網際網路的位址建立路由。 這些是必要路由，因為 App Service Environment 輸入環境流量必須從它傳送至的相同位址回覆。 
+1. 您可以建立路由表並將它指派給 ASC 子網路。 請在 [App Service 環境管理位址][management]中尋找符合您區域的位址。 為下一個躍點為網際網路的位址建立路由。 這些是必要路由，因為 App Service Environment 輸入環境流量必須從它傳送至的相同位址回覆。 
 
 2. 在您的 ASE 子網路中使用 Azure 儲存體啟用服務端點
 
 3. 取得位址，該位址將使用於從您的 App Service Environment 至網際網路的所有輸出流量。 如果您將流量路由傳送至內部部署網路，則這些位址就是您的 NAT 或閘道 IP。 如果您想要透過 NVA 路由傳送 App Service Environment 連出流量，則輸出位址為 NVA 的公用 IP。
 
-4. _若要在現有的 App Service 環境中設定輸出位址：_ 移至 resources.azure.com，然後移至 Subscription/\<subscription id>/resourceGroups/\<ase resource group>/providers/Microsoft.Web/hostingEnvironments/\<ase name>。 接著，您就可以看到描述您 App Service Environment 的 JSON。 確定最上方寫的是「讀取/寫入」。 選取 [編輯]。 向下捲動至底部。 將 **userWhitelistedIpRanges** 值從 **null** 變更為類似以下這樣。 使用您要設為輸出位址範圍的位址。 
+4. _若要在現有的 App Service 環境中設定輸出位址：_ 移至 resource.azure.com 並前往 Subscription/\<subscription id>/resourceGroups/\<ase resource group>/providers/Microsoft.Web/hostingEnvironments/\<ase name>。 接著，您就可以看到描述您 App Service Environment 的 JSON。 確定最上方寫的是「讀取/寫入」。 選取 [編輯]。 向下捲動至底部。 將 **userWhitelistedIpRanges** 值從 **null** 變更為類似以下這樣。 使用您要設為輸出位址範圍的位址。 
 
-        "userWhitelistedIpRanges": ["11.22.33.44/32", "55.66.77.0/24"] 
+    ```json
+    "userWhitelistedIpRanges": ["11.22.33.44/32", "55.66.77.0/24"]
+    ```
 
    選取頂端的 [PUT]。 此選項會觸發 App Service Environment 上的規模調整作業，並調整防火牆。
 
-_若要使用輸出位址來建立您的 ASE_：請依照[使用範本建立 App Service 環境][template]中的指示操作並提取適當的範本。  編輯 azuredeploy.json 檔案中的 "resources" 區段 (但不在 "properties" 區塊中)，而且納入包含您的值的 **userWhitelistedIpRanges** 行。
+_若要使用輸出位址來建立您的 ASE_：請依照[使用範本建立 App Service 環境][template]中的指示操作，並取得適當的範本。  編輯 azuredeploy.json 檔案中的 "resources" 區段 (但不在 "properties" 區塊中)，而且納入包含您的值的 **userWhitelistedIpRanges** 行。
 
-    "resources": [
-      {
+```json
+"resources": [
+    {
         "apiVersion": "2015-08-01",
         "type": "Microsoft.Web/hostingEnvironments",
         "name": "[parameters('aseName')]",
         "kind": "ASEV2",
         "location": "[parameters('aseLocation')]",
         "properties": {
-          "name": "[parameters('aseName')]",
-          "location": "[parameters('aseLocation')]",
-          "ipSslAddressCount": 0,
-          "internalLoadBalancingMode": "[parameters('internalLoadBalancingMode')]",
-          "dnsSuffix" : "[parameters('dnsSuffix')]",
-          "virtualNetwork": {
-            "Id": "[parameters('existingVnetResourceId')]",
-            "Subnet": "[parameters('subnetName')]"
-          },
-        "userWhitelistedIpRanges":  ["11.22.33.44/32", "55.66.77.0/30"]
+            "name": "[parameters('aseName')]",
+            "location": "[parameters('aseLocation')]",
+            "ipSslAddressCount": 0,
+            "internalLoadBalancingMode": "[parameters('internalLoadBalancingMode')]",
+            "dnsSuffix" : "[parameters('dnsSuffix')]",
+            "virtualNetwork": {
+                "Id": "[parameters('existingVnetResourceId')]",
+                "Subnet": "[parameters('subnetName')]"
+            },
+            "userWhitelistedIpRanges":  ["11.22.33.44/32", "55.66.77.0/30"]
         }
-      }
-    ]
+    }
+]
+```
 
 這些變更會將流量直接從 ASE 傳送至 Azure 儲存體，並允許從 ASE 的 VIP 以外的其他位址存取 Azure SQL。
 
-   ![搭配 SQL 白名單使用強制通道][3]
+   ![搭配 SQL 允許清單使用強制通道][3]
 
 ## <a name="preventing-issues"></a>防止問題發生 ##
 

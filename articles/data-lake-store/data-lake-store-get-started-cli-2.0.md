@@ -1,23 +1,19 @@
 ---
-title: 使用 Azure CLI 來開始使用 Azure Data Lake Storage Gen1 | Microsoft Docs
-description: 使用 Azure CLI 建立 Data Lake Storage Gen1 帳戶並執行基本作業
-services: data-lake-store
-documentationcenter: ''
+title: 管理 Azure Data Lake Storage Gen1 帳戶-Azure CLI
+description: 使用 Azure CLI 建立 Data Lake Storage Gen1 帳戶，並執行基本作業。
 author: twooley
-manager: mtillman
 ms.service: data-lake-store
-ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: 9431cc7fa12b86371ce6b2325aca8e13d264442e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 92fd681d05b8e5bd7cf07ecd735acd87698935ef
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60885333"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985784"
 ---
-# <a name="get-started-with-azure-data-lake-store-using-azure-cli"></a>使用 Azure CLI 開始使用 Azure Data Lake Store
+# <a name="get-started-with-azure-data-lake-storage-gen1-using-the-azure-cli"></a>使用 Azure CLI 開始使用 Azure Data Lake Storage Gen1
 
 [!INCLUDE [data-lake-storage-gen1-rename-note.md](../../includes/data-lake-storage-gen1-rename-note.md)]
 
@@ -28,7 +24,7 @@ ms.locfileid: "60885333"
 >
 > 
 
-了解如何使用 Azure CLI 建立 Azure Data Lake Storage Gen1 帳戶並執行基本作業，例如建立資料夾、上傳及下載資料檔案、刪除您的帳戶等等。如需有關 Data Lake Storage Gen1 的詳細資訊，請參閱 [Data Lake Storage Gen1 概觀](data-lake-store-overview.md)。
+瞭解如何使用 Azure CLI 建立 Azure Data Lake Storage Gen1 帳戶，並執行基本作業，例如建立資料夾、上傳和下載資料檔案、刪除您的帳戶等等。如需 Data Lake Storage Gen1 的詳細資訊，請參閱[Data Lake Storage Gen1 的總覽](data-lake-store-overview.md)。
 
 Azure CLI 是管理 Azure 資源的 Azure 命令列體驗。 它可以用於 macOS、Linux 和 Windows。 如需詳細資訊，請參閱 [Azure CLI 概觀](https://docs.microsoft.com/cli/azure)。 您也可以查看 [Azure Data Lake Storage Gen1 CLI 參考](https://docs.microsoft.com/cli/azure/dls)以取得命令和語法的完整清單。
 
@@ -40,7 +36,7 @@ Azure CLI 是管理 Azure 資源的 Azure 命令列體驗。 它可以用於 mac
 
 * **Azure CLI** - 如需相關指示，請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>驗證
 
 此文章使用較簡單的驗證方法搭配 Data Lake Storage Gen1，其中您會以使用者身分登入。 Data Lake Storage Gen1 帳戶和檔案系統的存取層級則由已登入使用者的存取層級所控管。 不過，還有其他方法可向 Data Lake Storage Gen1 進行驗證：**使用者驗證**或**服務對服務驗證**。 如需有關如何驗證的指示和詳細資訊，請參閱[使用者驗證](data-lake-store-end-user-authenticate-using-active-directory.md)或[服務對服務驗證](data-lake-store-authenticate-using-active-directory.md)。
 
@@ -63,7 +59,7 @@ Azure CLI 是管理 Azure 資源的 Azure 命令列體驗。 它可以用於 mac
 
 ## <a name="create-an-azure-data-lake-storage-gen1-account"></a>建立 Azure Data Lake Storage Gen1 帳戶
 
-1. 建立新的資源群組。 在下列命令中，提供您想要使用的參數值。 如果位置名稱包含空格，請將它放在引號中。 例如 "East US 2"。 
+1. 建立新的資源群組。 在下列命令中，提供您想要使用的參數值。 如果位置名稱包含空格，請將它放在引號中。 例如 "美國東部 2"。 
    
     ```azurecli
     az group create --location "East US 2" --name myresourcegroup
@@ -114,27 +110,29 @@ az dls fs list --account mydatalakestoragegen1 --path /mynewfolder
 
 此命令的輸出應類似這樣：
 
-    [
-        {
-            "accessTime": 1491323529542,
-            "aclBit": false,
-            "blockSize": 268435456,
-            "group": "1808bd5f-62af-45f4-89d8-03c5e81bac20",
-            "length": 1589881,
-            "modificationTime": 1491323531638,
-            "msExpirationTime": 0,
-            "name": "mynewfolder/vehicle1_09142014.csv",
-            "owner": "1808bd5f-62af-45f4-89d8-03c5e81bac20",
-            "pathSuffix": "vehicle1_09142014.csv",
-            "permission": "770",
-            "replication": 1,
-            "type": "FILE"
-        }
-    ]
+```output
+[
+    {
+        "accessTime": 1491323529542,
+        "aclBit": false,
+        "blockSize": 268435456,
+        "group": "1808bd5f-62af-45f4-89d8-03c5e81bac20",
+        "length": 1589881,
+        "modificationTime": 1491323531638,
+        "msExpirationTime": 0,
+        "name": "mynewfolder/vehicle1_09142014.csv",
+        "owner": "1808bd5f-62af-45f4-89d8-03c5e81bac20",
+        "pathSuffix": "vehicle1_09142014.csv",
+        "permission": "770",
+        "replication": 1,
+        "type": "FILE"
+    }
+]
+```
 
 ## <a name="rename-download-and-delete-data-from-a-data-lake-storage-gen1-account"></a>重新命名、下載及刪除 Data Lake Storage Gen1 帳戶中的資料 
 
-* **若要重新命名檔案**，請使用下列命令：
+* **若要重新命名**檔案，請使用下列命令：
   
     ```azurecli
     az dls fs move --account mydatalakestoragegen1 --source-path /mynewfolder/vehicle1_09142014.csv --destination-path /mynewfolder/vehicle1_09142014_copy.csv
@@ -151,7 +149,7 @@ az dls fs list --account mydatalakestoragegen1 --path /mynewfolder
     > 
     >
 
-* **若要刪除檔案**，請使用下列命令：
+* **若要刪除**檔案，請使用下列命令：
   
     ```azurecli
     az dls fs delete --account mydatalakestoragegen1 --path /mynewfolder/vehicle1_09142014_copy.csv
@@ -185,19 +183,21 @@ az dls fs list --account mydatalakestoragegen1 --path /mynewfolder
     az dls fs access show --account mydatalakestoragegen1 --path /mynewfolder/vehicle1_09142014.csv
     ```
 
-    輸出應該類似如下範例：
+    輸出應如下所示：
 
-        {
-            "entries": [
-            "user::rwx",
-            "group::rwx",
-            "other::---"
-          ],
-          "group": "1808bd5f-62af-45f4-89d8-03c5e81bac20",
-          "owner": "1808bd5f-62af-45f4-89d8-03c5e81bac20",
-          "permission": "770",
-          "stickyBit": false
-        }
+    ```output
+    {
+        "entries": [
+        "user::rwx",
+        "group::rwx",
+        "other::---"
+        ],
+        "group": "1808bd5f-62af-45f4-89d8-03c5e81bac20",
+        "owner": "1808bd5f-62af-45f4-89d8-03c5e81bac20",
+        "permission": "770",
+        "stickyBit": false
+    }
+    ```
 
 * **若要設定 ACL 的項目**，請使用下列命令︰
 

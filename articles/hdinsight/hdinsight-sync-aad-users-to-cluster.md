@@ -1,23 +1,23 @@
 ---
-title: 將 Azure Active Directory 使用者同步至叢集 - Azure HDInsight
-description: 從 Azure Active Directory 將已驗證的使用者同步至叢集。
-ms.service: hdinsight
+title: 將 Azure Active Directory 使用者同步至 HDInsight 叢集
+description: 將已驗證的使用者從 Azure Active Directory 同步處理至 HDInsight 叢集。
 author: ashishthaps
 ms.author: ashishth
-ms.reviewer: mamccrea
+ms.reviewer: jasonh
+ms.service: hdinsight
+ms.topic: how-to
 ms.custom: hdinsightactive
-ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 2be67c604bebbe9b4c4356e241d1480ca0778d4a
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 11/21/2019
+ms.openlocfilehash: 5b2a195e0a3145e97bf101b3354c2781fff15801
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64688554"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085968"
 ---
 # <a name="synchronize-azure-active-directory-users-to-an-hdinsight-cluster"></a>將 Azure Active Directory 使用者同步至 HDInsight 叢集
 
-[有企業安全性套件 (ESP) 的 HDInsight 叢集](hdinsight-domain-joined-introduction.md)會搭配 Azure Active Directory (Azure AD) 使用者使用增強式驗證，也會使用*角色型存取控制* (RBAC) 原則。 當您將使用者和群組新增至 Azure AD 時，您可以將需要存取權的使用者同步至您的叢集。
+[有企業安全性套件 (ESP) 的 HDInsight 叢集](hdinsight-domain-joined-introduction.md)會搭配 Azure Active Directory (Azure AD) 使用者使用增強式驗證，也會使用*角色型存取控制* (RBAC) 原則。 當您將使用者和群組新增至 Azure AD 時，您可以同步處理需要存取叢集的使用者。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -27,17 +27,17 @@ ms.locfileid: "64688554"
 
 若要檢視您的主機，請開啟 Ambari Web UI。 每個節點會以新的自動升級設定進行更新。
 
-1. 在 [Azure 入口網站](https://portal.azure.com)中，瀏覽至與 ESP 叢集相關聯的 Azure AD 目錄。
+1. 從 [ [Azure 入口網站](https://portal.azure.com)中，流覽至與您的 ESP 叢集相關聯的 Azure AD 目錄。
 
-2. 從左側功能表中選取 [所有使用者]，然後選取 [新增使用者]。
+2. 從左側功能表中選取 [所有使用者]****，然後選取 [新增使用者]****。
 
-    ![所有使用者窗格](./media/hdinsight-sync-aad-users-to-cluster/aad-users.png)
+    ![Azure 入口網站使用者和群組全部](./media/hdinsight-sync-aad-users-to-cluster/users-and-groups-new.png)
 
 3. 完成新增使用者表單。 選取您建立用於指派叢集型權限的群組。 在此範例中，建立名為 "HiveUsers" 的群組，您可以對其指派新使用者。 用於建立 ESP 叢集的[範例指示](hdinsight-domain-joined-configure.md)包含新增兩個群組，分別是 `HiveUsers` 和 `AAD DC Administrators`。
 
-    ![新增使用者窗格](./media/hdinsight-sync-aad-users-to-cluster/aad-new-user.png)
+    ![Azure 入口網站使用者窗格選取群組](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-new-user-form.png)
 
-4. 選取 [建立] 。
+4. 選取 [建立]。
 
 ## <a name="use-the-apache-ambari-rest-api-to-synchronize-users"></a>使用 Apache Ambari REST API 來同步使用者
 
@@ -45,27 +45,27 @@ ms.locfileid: "64688554"
 
 下列方法會搭配 Ambari REST API 使用 POST。 如需詳細資訊，請參閱[使用 Apache Ambari REST API 來管理 HDInsight 叢集](hdinsight-hadoop-manage-ambari-rest-api.md)。
 
-1. [使用 SSH 連線至您的叢集](hdinsight-hadoop-linux-use-ssh-unix.md)。 從 Azure 入口網站中叢集的 [概觀] 窗格，選取 [安全殼層 (SSH)] 按鈕。
+1. 使用 [ssh 命令](hdinsight-hadoop-linux-use-ssh-unix.md)來連線到您的叢集。 編輯以下命令並將 `CLUSTERNAME` 取代為您叢集的名稱，然後輸入命令：
 
-    ![安全殼層 (SSH)](./media/hdinsight-sync-aad-users-to-cluster/ssh.png)
+    ```cmd
+    ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
+    ```
 
-2. 複製顯示的 `ssh` 命令，並將它貼到您的 SSH 用戶端。 出現提示時，輸入 SSH 使用者密碼。
-
-3. 驗證之後，輸入下列命令：
+1. 驗證之後，輸入下列命令：
 
     ```bash
-    curl -u admin:<YOUR PASSWORD> -sS -H "X-Requested-By: ambari" \
+    curl -u admin:PASSWORD -sS -H "X-Requested-By: ambari" \
     -X POST -d '{"Event": {"specs": [{"principal_type": "groups", "sync_type": "existing"}]}}' \
-    "https://<YOUR CLUSTER NAME>.azurehdinsight.net/api/v1/ldap_sync_events"
+    "https://CLUSTERNAME.azurehdinsight.net/api/v1/ldap_sync_events"
     ```
-    
+
     回應應該如下所示：
 
     ```json
     {
       "resources" : [
         {
-          "href" : "http://hn0-hadoop.<YOUR DOMAIN>.com:8080/api/v1/ldap_sync_events/1",
+          "href" : "http://<ACTIVE-HEADNODE-NAME>.<YOUR DOMAIN>.com:8080/api/v1/ldap_sync_events/1",
           "Event" : {
             "id" : 1
           }
@@ -74,17 +74,17 @@ ms.locfileid: "64688554"
     }
     ```
 
-4. 若要查看同步狀態，請執行新的 `curl` 命令：
+1. 若要查看同步狀態，請執行新的 `curl` 命令：
 
     ```bash
-    curl -u admin:<YOUR PASSWORD> https://<YOUR CLUSTER NAME>.azurehdinsight.net/api/v1/ldap_sync_events/1
+    curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/ldap_sync_events/1
     ```
-    
+
     回應應該如下所示：
-    
+
     ```json
     {
-      "href" : "http://hn0-hadoop.YOURDOMAIN.com:8080/api/v1/ldap_sync_events/1",
+      "href" : "http://<ACTIVE-HEADNODE-NAME>.YOURDOMAIN.com:8080/api/v1/ldap_sync_events/1",
       "Event" : {
         "id" : 1,
         "specs" : [
@@ -120,32 +120,33 @@ ms.locfileid: "64688554"
     }
     ```
 
-5. 此結果會顯示狀態是「完成」，已建立一個新的使用者，並且將成員資格指派給使用者。 在此範例中，會將使用者指派給 "HiveUsers" 已同步的 LDAP 群組，因為使用者已新增至 Azure AD 中的該相同群組。
+1. 此結果顯示狀態為 [已**完成**]、已建立一個新的使用者，而且已將成員資格指派給該使用者。 在此範例中，會將使用者指派給 "HiveUsers" 已同步的 LDAP 群組，因為使用者已新增至 Azure AD 中的該相同群組。
 
-> [!NOTE]  
-> 上一個方法只會同步在叢集建立期間於網域設定之 **Access user group** 屬性中指定的 Azure AD 群組。 如需詳細資訊，請參閱[建立 HDInsight 叢集](domain-joined/apache-domain-joined-configure.md)。
+    > [!NOTE]  
+    > 先前的方法只會同步處理在叢集建立期間，網域設定的 [**存取使用者群組**] 屬性中所指定的 Azure AD 群組。 如需詳細資訊，請參閱[建立 HDInsight 叢集](domain-joined/apache-domain-joined-configure.md)。
 
 ## <a name="verify-the-newly-added-azure-ad-user"></a>確認新增的 Azure AD 使用者
 
-開啟 [Apache Ambari Web UI](hdinsight-hadoop-manage-ambari.md) 以確認已新增新的 Azure AD 使用者。 藉由瀏覽至 **`https://<YOUR CLUSTER NAME>.azurehdinsight.net`** 來存取 Ambari Web UI。 輸入叢集系統管理員使用者名稱和密碼。
+開啟 [Apache Ambari Web UI](hdinsight-hadoop-manage-ambari.md) 以確認已新增新的 Azure AD 使用者。 藉由流覽至來存取 Ambari Web UI **`https://CLUSTERNAME.azurehdinsight.net`** 。 輸入叢集系統管理員使用者名稱和密碼。
 
-1. 從 Ambari 儀表板中，選取 [管理員] 功能表底下的 [管理 Ambari]。
+1. 從 Ambari 儀表板中，選取 [管理員]**** 功能表底下的 [管理 Ambari]****。
 
-    ![管理 Ambari](./media/hdinsight-sync-aad-users-to-cluster/manage-ambari.png)
+    ![Apache Ambari 儀表板管理 Ambari](./media/hdinsight-sync-aad-users-to-cluster/manage-apache-ambari.png)
 
-2. 在分頁左側，選取 [使用者 + 群組管理] 功能表群組底下的 [使用者]。
+2. 在分頁左側，選取 [使用者 + 群組管理]**** 功能表群組底下的 [使用者]****。
 
-    ![使用者功能表項目](./media/hdinsight-sync-aad-users-to-cluster/users-link.png)
+    ![[HDInsight 使用者和群組] 功能表](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-users-menu-item.png)
 
 3. 新的使用者應該會列在 [使用者] 資料表中。 類型設定為 `LDAP` 而不是 `Local`。
 
-    ![使用者分頁](./media/hdinsight-sync-aad-users-to-cluster/users.png)
+    ![HDInsight aad 使用者頁面總覽](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-users-page.png)
 
 ## <a name="log-in-to-ambari-as-the-new-user"></a>以新的使用者身分登入 Ambari
 
-當新的使用者 (或任何其他網域使用者) 登入 Ambari 時，他們會使用其完整的 Azure AD 使用者名稱和網域認證。  Ambari 會顯示使用者別名，這是使用者在 Azure AD 中的顯示名稱。 新的範例使用者具有使用者名稱 `hiveuser3@contoso.com`。 在 Ambari 中，這個新的使用者會顯示為 `hiveuser3`，但是使用者是以 `hiveuser3@contoso.com` 身分登入 Ambari。
+當新的使用者 (或任何其他網域使用者) 登入 Ambari 時，他們會使用其完整的 Azure AD 使用者名稱和網域認證。  Ambari 會顯示使用者別名，這是使用者在 Azure AD 中的顯示名稱。
+新的範例使用者具有使用者名稱 `hiveuser3@contoso.com`。 在 Ambari 中，這個新的使用者會顯示為 `hiveuser3`，但是使用者是以 `hiveuser3@contoso.com` 身分登入 Ambari。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 * [在有 ESP 的 HDInsight 中設定 Apache Hive 原則](hdinsight-domain-joined-run-hive.md)
 * [管理具有 ESP 的 HDInsight 叢集](hdinsight-domain-joined-manage.md)

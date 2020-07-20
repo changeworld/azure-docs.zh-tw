@@ -1,30 +1,21 @@
 ---
-title: 教學課程：安裝 Service Fabric 獨立用戶端 - Azure Service Fabric | Microsoft Docs
+title: 安裝 Service Fabric 獨立用戶端
 description: 在本教學課程中，您將了解如何在您於上一篇教學課程文章中建立的叢集上安裝 Service Fabric 獨立用戶端。
-services: service-fabric
-documentationcenter: .net
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 05/11/2018
+ms.date: 07/22/2019
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 1bcb7f9fadc79db0db17336f07f6d58302433c1f
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: bbaf7dfc546c739dfb858be7ef8372eccf60111b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58664024"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "75613936"
 ---
 # <a name="tutorial-install-and-create-service-fabric-cluster"></a>教學課程：安裝和建立 Service Fabric 叢集
 
-Service Fabric 獨立叢集讓您能夠選擇自己的環境，並且在 Service Fabric 所採用的「任何 OS、任何雲端」方法中建立叢集。 在此教學課程系列中，您會建立裝載於 AWS 的獨立叢集，並在其中安裝應用程式。
+Service Fabric 獨立叢集讓您能夠選擇自己的環境，並且在 Service Fabric 所採用的「任何 OS、任何雲端」方法中建立叢集。 在此教學課程系列中，您會建立裝載於 AWS 或 Azure 的獨立叢集，並在其中安裝應用程式。
 
 本教學課程是一個系列的第二部分。 本教學課程將逐步引導您完成建立 Service Fabric 獨立叢集的步驟。
 
@@ -37,9 +28,9 @@ Service Fabric 獨立叢集讓您能夠選擇自己的環境，並且在 Service
 
 ## <a name="download-the-service-fabric-for-windows-server-package"></a>下載 Windows Server 套件的 Service Fabric
 
-Service Fabric 會提供一個安裝套件以建立 Service Fabric 獨立叢集。  在您的本機電腦上[下載安裝套件](https://go.microsoft.com/fwlink/?LinkId=730690)。  成功下載後，請透過 RDP 連線將其複製到您的 EC2 執行個體，並貼在桌面上。
+Service Fabric 會提供一個安裝套件以建立 Service Fabric 獨立叢集。  在您的本機電腦上[下載安裝套件](https://go.microsoft.com/fwlink/?LinkId=730690)。  成功下載後，請透過 RDP 連線將其複製到您的 VM，並貼在桌面上。
 
-選取 zip 檔案並開啟內容功能表，然後選取 [全部解壓縮] > [解壓縮]。  在解壓縮檔案時，您將會在桌面上產生與 zip 檔案名稱相同的資料夾。
+選取 zip 檔案並開啟內容功能表，然後選取 [全部解壓縮]   > [解壓縮]  。  在解壓縮檔案時，您將會在桌面上產生與 zip 檔案名稱相同的資料夾。
 
 如有需要，請在[安裝套件的內容](service-fabric-cluster-standalone-package-contents.md)取得詳細資料。
 

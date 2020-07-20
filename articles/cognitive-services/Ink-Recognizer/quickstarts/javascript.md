@@ -1,44 +1,46 @@
 ---
-title: 快速入門：辨識筆墨辨識器 REST API 與 Node.js 的數位筆跡
-description: 您可以使用手寫辨識器 API 來啟動 體認到數位筆墨筆劃。
+title: 快速入門：使用筆跡辨識器 REST API 與 Node.js 來辨識數位筆跡
+titleSuffix: Azure Cognitive Services
+description: 在本快速入門中使用筆跡辨識器 API 開始辨識數位筆跡筆觸。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
-ms.topic: article
-ms.date: 05/02/2019
+ms.topic: quickstart
+ms.date: 06/30/2020
 ms.author: aahi
-ms.openlocfilehash: febc6e72ed40541a230c606a3ec96a8bffef5036
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
-ms.translationtype: MT
+ms.openlocfilehash: aa16f0cca5e60608518ff914a89a48fa8b8899c5
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65026798"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85980010"
 ---
-# <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-javascript"></a>快速入門：辨識與筆跡辨識器 REST API 和 JavaScript 的數位筆跡
+# <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-javascript"></a>快速入門：使用筆跡辨識器 REST API 與 JavaScript 來辨識數位筆跡
 
-使用本快速入門中，若要開始使用數位筆墨筆劃上的筆墨辨識器 API。 此 JavaScript 應用程式傳送 API 要求，其中包含 JSON 格式的筆墨筆劃資料，並顯示回應。
+使用本快速入門，開始針對數位筆跡筆觸使用筆跡辨識器 API。 此 JavaScript 應用程式會傳送包含 JSON 格式筆跡筆觸資料的 API 要求，並顯示回應。
 
-雖然此應用程式以 Javascript 撰寫，並在網頁瀏覽器中執行，API 是 RESTful web 服務相容於大部分的程式設計語言。
+雖然此應用程式是以 JavaScript 撰寫，且可在 Web 瀏覽器中執行，但 API 是一種與大多數程式設計語言都相容的 RESTful Web 服務。
 
-通常，您會從數位筆跡應用程式呼叫 API。 本快速入門會傳送下列的手寫範例的筆墨筆劃資料，從 JSON 檔案。
+通常您會從數位筆跡應用程式呼叫 API。 本快速入門會從 JSON 檔案針對下列手寫範例傳送筆跡筆觸資料。
 
-![映像的手寫文字](../media/handwriting-sample.jpg)
+![手寫文字的影像](../media/handwriting-sample.jpg)
 
-此快速入門的原始程式碼可以在 [GitHub](https://go.microsoft.com/fwlink/?linkid=2089502) 上找到。
+此快速入門的原始程式碼可以在 [GitHub](https://go.microsoft.com/fwlink/?linkid=2089905) 上找到。
 
 ## <a name="prerequisites"></a>必要條件
 
 - 網頁瀏覽器
-- 在本快速入門範例筆墨筆劃資料可於[GitHub](https://go.microsoft.com/fwlink/?linkid=2089502)。
+- 此快速入門的範例筆跡筆觸資料可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/javascript/InkRecognition/quickstart/example-ink-strokes.json) 上找到。
 
+### <a name="create-an-ink-recognizer-resource"></a>建立筆跡辨識器資源
 
-[!INCLUDE [cognitive-services-ink-recognizer-signup-requirements](../../../../includes/cognitive-services-ink-recognizer-signup-requirements.md)]
+[!INCLUDE [creating an ink recognizer resource](../includes/setup-instructions.md)]
 
 ## <a name="create-a-new-application"></a>建立新的應用程式
 
-1. 在您最愛的 IDE 或編輯器，建立新`.html`檔案。 我們稍後會加入程式碼，則加入基本的 HTML。
+1. 在您最愛的整合式開發環境或編輯器中，建立新的 `.html` 檔案。 接著為其新增基本的 HTML，我們稍後會新增程式碼。
     
     ```html
     <!DOCTYPE html>
@@ -55,9 +57,9 @@ ms.locfileid: "65026798"
     </html>
     ```
 
-2. 內`<body>`標記中，新增下列 html:
+2. 在 `<body>` 標籤內新增下列 html：
     1. 顯示 JSON 要求和回應的兩個文字區域。
-    2. 按鈕，以呼叫`recognizeInk()`將稍後建立的函式。
+    2. 稍後將建立呼叫 `recognizeInk()` 函式的按鈕。
     
     ```HTML
     <!-- <body>-->
@@ -73,11 +75,11 @@ ms.locfileid: "65026798"
 
 ## <a name="load-the-example-json-data"></a>載入範例 JSON 資料
 
-1. 內`<script>`標記中，建立 sampleJson 的變數。 然後建立名為的 JavaScript 函式`openFile()`，便會開啟檔案總管 中，因此您可以選取您的 JSON 檔案。 當`Recognize ink`按一下按鈕時，它將會呼叫此函式，並開始讀取檔案。
-2. 使用`FileReader`物件的`onload()`函式，以非同步方式處理檔案。 
-    1. 取代任何`\n`或`\r`空字串與檔案中的字元。 
-    2. 使用`JSON.parse()`將文字轉換成有效的 JSON
-    3. 更新`request`應用程式中的文字方塊。 使用`JSON.stringify()`格式化 JSON 字串。 
+1. 在 `<script>` 標籤內，建立 sampleJson 的變數。 然後建立名為 `openFile()` 的 JavaScript 函式，其會開啟檔案總管，因此您可以選取您的 JSON 檔案。 按一下 `Recognize ink` 按鈕時，它會呼叫此函式並開始讀取檔案。
+2. 使用 `FileReader` 物件的 `onload()` 函式，以非同步方式處理檔案。 
+    1. 以空字串取代檔案中的任何 `\n` 或 `\r` 字元。 
+    2. 使用 `JSON.parse()` 將文字轉換成有效的 JSON
+    3. 更新應用程式中的 `request` 文字方塊。 使用 `JSON.stringify()` 格式化 JSON 字串。 
     
     ```javascript
     var sampleJson = "";
@@ -94,9 +96,9 @@ ms.locfileid: "65026798"
     };
     ```
 
-## <a name="send-a-request-to-the-ink-recognizer-api"></a>傳送要求至筆墨辨識器 API
+## <a name="send-a-request-to-the-ink-recognizer-api"></a>將要求傳送給筆跡辨識器 API
 
-1. 內`<script>`標記中建立函式呼叫`recognizeInk()`。 此函式稍後將會呼叫 API，並以回應更新頁面。 從下列步驟，此函式中加入程式碼。 
+1. 在 `<script>` 標籤內建立稱為 `recognizeInk()` 的函式。 此函式稍後將會呼叫 API，並以回應更新頁面。 在此函式內使用下列步驟新增程式碼。 
         
     ```javascript
     function recognizeInk() {
@@ -104,18 +106,17 @@ ms.locfileid: "65026798"
     }
     ```
 
-    1. 建立您的端點 URL、 訂用帳戶金鑰，以及範例 JSON 的變數。 然後建立`XMLHttpRequest`傳送 API 要求的物件。 
+    1. 為您的端點 URL、訂用帳戶金鑰及範例 JSON 建立變數。 然後建立 `XMLHttpRequest` 物件以傳送 API 要求。 
         
         ```javascript
         // Replace the below URL with the correct one for your subscription. 
-        // Your endpoint can be found in the Azure portal. For example: https://westus2.api.cognitive.microsoft.com
-        var SERVER_ADDRESS = "YOUR-SUBSCRIPTION-URL";
+        // Your endpoint can be found in the Azure portal. For example: "https://<your-custom-subdomain>.cognitiveservices.azure.com";
+        var SERVER_ADDRESS = process.env["INK_RECOGNITION_ENDPOINT"];
         var ENDPOINT_URL = SERVER_ADDRESS + "/inkrecognizer/v1.0-preview/recognize";
-        // Replace the subscriptionKey string value with your valid subscription key.
-        var SUBSCRIPTION_KEY = "YOUR-SUBSCRIPTION-KEY";
+        var SUBSCRIPTION_KEY = process.env["INK_RECOGNITION_SUBSCRIPTION_KEY"];
         var xhttp = new XMLHttpRequest();
         ```
-    2. 建立傳回的函式，如`XMLHttpRequest`物件。 此函式會剖析從成功的要求，API 回應，並顯示應用程式中。 
+    2. 建立 `XMLHttpRequest` 物件的傳回函式。 此函式會剖析成功要求的 API 回應，並顯示在應用程式中。 
             
         ```javascript
         function returnFunction(xhttp) {
@@ -124,7 +125,7 @@ ms.locfileid: "65026798"
             document.getElementById('response').innerHTML = JSON.stringify(response, null, 2);
         }
         ```
-    3. 建立要求物件的錯誤函式。 此函式會將錯誤記錄至主控台。 
+    3. 建立要求物件的錯誤函式。 此函式會將錯誤記錄到主控台。 
             
         ```javascript
         function errorFunction() {
@@ -132,7 +133,7 @@ ms.locfileid: "65026798"
         }
         ```
 
-    4. 建立要求物件的函式`onreadystatechange`屬性。 當要求物件的整備狀態變更時，將會套用上述的傳回和錯誤函式。
+    4. 為要求物件的 `onreadystatechange` 屬性建立函式。 當要求物件的整備狀態變更時，將會套用上述的傳回和錯誤函式。
             
         ```javascript
         xhttp.onreadystatechange = function () {
@@ -146,7 +147,7 @@ ms.locfileid: "65026798"
         };
         ```
     
-    5. 傳送 API 要求。 新增您的訂用帳戶金鑰，才能`Ocp-Apim-Subscription-Key`標頭，以及組`content-type`至 `application/json`
+    5. 傳送 API 要求。 將您的訂用帳戶金鑰新增至 `Ocp-Apim-Subscription-Key` 標頭，並將 `content-type` 設為 `application/json`
     
         ```javascript
         xhttp.open("PUT", ENDPOINT_URL, true);
@@ -154,19 +155,20 @@ ms.locfileid: "65026798"
         xhttp.setRequestHeader("content-type", "application/json");
         xhttp.send(JSON.stringify(sampleJson));
         };
+        ```
 
-## Run the application and view the response
+## <a name="run-the-application-and-view-the-response"></a>執行應用程式並檢視回應
 
-This application can be run within your web browser. A successful response is returned in JSON format. You can also find the JSON response on [GitHub](https://go.microsoft.com/fwlink/?linkid=2089502):
+此應用程式可在您的 Web 瀏覽器中執行。 成功的回應會以 JSON 格式傳回。 您也可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/javascript/InkRecognition/quickstart/example-response.json) 上找到 JSON 回應：
 
-## Next steps
+## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [REST API reference](https://go.microsoft.com/fwlink/?linkid=2089907)
+> [REST API 參考資料](https://go.microsoft.com/fwlink/?linkid=2089907)
 
-To see how the Ink Recognition API works in a digital inking app, take a look at the following sample applications on GitHub:
-* [C# and Universal Windows Platform(UWP)](https://go.microsoft.com/fwlink/?linkid=2089803)  
-* [C# and Windows Presentation Foundation(WPF)](https://go.microsoft.com/fwlink/?linkid=2089804)
-* [Javascript web-browser app](https://go.microsoft.com/fwlink/?linkid=2089908)       
-* [Java and Android mobile app](https://go.microsoft.com/fwlink/?linkid=2089906)
-* [Swift and iOS mobile app](https://go.microsoft.com/fwlink/?linkid=2089805)
+若要了解筆跡辨識 API 在數位筆跡應用程式中的運作方式，請看位於 GitHub 上的下列應用程式範例：
+* [C# 和通用 Windows 平台 (UWP)](https://go.microsoft.com/fwlink/?linkid=2089803)  
+* [C# 和 Windows Presentation Foundation (WPF)](https://go.microsoft.com/fwlink/?linkid=2089804)
+* [Javascript 網頁瀏覽器應用程式](https://go.microsoft.com/fwlink/?linkid=2089908)       
+* [Java 和 Android 行動裝置應用程式](https://go.microsoft.com/fwlink/?linkid=2089906)
+* [Swift 和 iOS 行動裝置應用程式](https://go.microsoft.com/fwlink/?linkid=2089805)

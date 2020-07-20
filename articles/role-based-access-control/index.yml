@@ -1,56 +1,81 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: RBAC for Azure 資源文件
+### YamlMime:Landing
+title: Azure RBAC 文件
+summary: Azure 角色型存取控制 (Azure RBAC) 是提供 Azure 資源更細緻存取權管理的系統。 Azure RBAC 可讓您區隔小組內的職責，而僅授與使用者執行作業所需的存取權。
 metadata:
-  document_id: null
-  title: Azure 資源中的角色型存取控制 (RBAC) 文件 | Microsoft Docs
-  description: 了解角色型存取控制 (RBAC) 以管理可存取 Azure 資源的人員、這些人員如何使用資源，以及他們存取的區域。
-  services: active-directory
-  author: rolyon
-  manager: mtillman
+  title: Azure RBAC 文件
+  description: 了解 Azure 角色型存取控制 (Azure RBAC) 以管理可存取 Azure 資源的人員、這些人員如何使用資源，以及他們存取的區域。
+  services: role-based-access-control
   ms.service: role-based-access-control
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: na
   ms.topic: landing-page
-  ms.date: 02/16/2019
+  ms.collection: na
+  author: rolyon
   ms.author: rolyon
-abstract:
-  description: 角色型存取控制 (RBAC) 是提供 Azure 資源更細緻存取權管理的系統。 RBAC 可讓您區隔小組內的職責，而僅授與使用者執行作業所需的存取權。
-  aside:
-    image:
-      alt: null
-      height: 112
-      src: media/index/video-thumb-get-started.png
-      width: 200
-    title: '鎖定 Azure 的存取 (1:16)'
-    href: 'https://www.youtube.com/embed/FKBoWWKRnvI'
-    width: 200
-sections:
-  - title: 5 分鐘快速入門
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/role-based-access-control/check-access">檢視使用者存取權</a>
-  - title: 逐步教學課程
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/role-based-access-control/quickstart-assign-role-user-portal">授與使用者存取權 - 入口網站</a>
-          - html: <a href="/azure/role-based-access-control/tutorial-role-assignments-group-powershell">授與群組存取權 - PowerShell</a>
-          - html: <a href="/azure/role-based-access-control/tutorial-custom-role-powershell">建立自訂角色 - PowerShell</a>
-          - html: <a href="/azure/role-based-access-control/tutorial-custom-role-cli">建立自訂角色 - CLI</a>
-  - title: 透過 Microsoft Learn 增進您的技巧
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: 使用角色型存取控制 (RBAC) 保護 Azure 資源
-            href: /learn/modules/secure-azure-resources-with-rbac/
-            image:
-              src: /learn/achievements/secure-azure-resources-with-rbac.svg
-              href: /learn/modules/secure-azure-resources-with-rbac/
-      - type: paragraph
-        text: <a href="/learn/browse/?products=azure-active-directory">更多互動式學習...</a>
+  ms.date: 04/30/2020
+  ms.openlocfilehash: b2661936d82f8d167ec2ef466effcd84d0a972dd
+  ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 05/03/2020
+  ms.locfileid: "82733476"
+landingContent:
+- title: 關於 Azure RBAC
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是 Azure RBAC？
+      url: overview.md
+    - text: 了解不同的角色
+      url: rbac-and-directory-admin-roles.md
+  - linkListType: video
+    links:
+    - text: Microsoft Ignite：鎖定 Azure 存取
+      url: https://www.youtube.com/embed/FKBoWWKRnvI
+- title: 開始使用
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 檢視使用者存取權
+      url: check-access.md
+  - linkListType: tutorial
+    links:
+    - text: 授與使用者存取權 - 入口網站
+      url: quickstart-assign-role-user-portal.md
+    - text: 授與群組存取權 - PowerShell
+      url: tutorial-role-assignments-group-powershell.md
+  - linkListType: learn
+    links:
+    - text: 透過 Azure RBAC 保護 Azure 資源
+      url: https://docs.microsoft.com/learn/modules/secure-azure-resources-with-rbac/
+- title: 管理存取權
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 入口網站
+      url: role-assignments-portal.md
+    - text: 入口網站 - 來賓使用者
+      url: role-assignments-external-users.md
+    - text: PowerShell
+      url: role-assignments-powershell.md
+    - text: Azure CLI
+      url: role-assignments-cli.md
+    - text: REST API
+      url: role-assignments-rest.md
+    - text: '[範本]'
+      url: role-assignments-template.md
+- title: 建立或更新自訂角色
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 自訂角色
+      url: custom-roles.md
+  - linkListType: how-to-guide
+    links:
+    - text: 建立自訂角色 - 入口網站
+      url: custom-roles-portal.md
+  - linkListType: tutorial
+    links:
+    - text: 建立自訂角色 - PowerShell
+      url: tutorial-custom-role-powershell.md
+    - text: 建立自訂角色 - CLI
+      url: tutorial-custom-role-cli.md

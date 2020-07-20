@@ -1,30 +1,25 @@
 ---
-title: 應用程式的服務及隱私權聲明條款 |Azure
+title: 應用程式的服務條款和隱私權聲明 |Azure
 description: 了解如何為註冊使用 Azure AD 的應用程式，設定服務條款和隱私權聲明。
 services: active-directory
-documentationcenter: dev-center-name
-author: CelesteDG
-manager: mtillman
-editor: ''
+author: rwike77
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
-ms.topic: conceptual
-ms.tgt_pltfrm: na
+ms.topic: how-to
 ms.workload: identity
-ms.date: 09/24/2018
-ms.author: celested
-ms.reviwer: lenalepa, sureshja
+ms.date: 05/22/2019
+ms.author: ryanwi
+ms.reviewer: lenalepa, sureshja
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97728fa70f0c5f58510e0e68d27a379b20887703
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 517d6f7f06025b35dd27fa69d1de1b4139de6c8d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60410522"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85478003"
 ---
-# <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>作法：設定應用程式的服務及隱私權聲明條款
+# <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>如何：設定應用程式的服務條款和隱私權聲明
 
 開發人員所建置和管理的應用程式若與 Azure Active Directory (Azure AD) 和 Microsoft 帳戶整合，就應該包含應用程式服務條款和隱私權聲明的連結。 使用者會透過使用者同意體驗看到服務條款和隱私權聲明。 服務條款和隱私權聲明可協助使用者了解應用程式是可信的。 對於面向使用者的多租用戶應用程式 (供多個目錄使用或可供任何 Microsoft 帳戶使用的應用程式) 來說，服務條款和隱私權聲明特別重要。
 
@@ -56,35 +51,22 @@ ms.locfileid: "60410522"
 
 準備好服務條款和隱私權聲明時，即可使用下列其中一種方法在應用程式中新增這些文件的連結：
 
-* [透過 Azure 入口網站](#registered-in-azure-portal)
-* [在應用程式註冊入口網站或開發人員中心](#registered-in-app-reg-portal)
+* [透過 Azure 入口網站](#azure-portal)
 * [使用應用程式物件 JSON](#app-object-json)
-* [使用 MSGraph 搶鮮版 (Beta) REST API](#msgraph-beta-rest-api)
+* [使用 Microsoft Graph API](#msgraph-rest-api)
 
-### <a name="registered-in-azure-portal"></a>如果您之前在 Azure 入口網站中註冊應用程式
-
-如果您之前在 Azure 入口網站中註冊應用程式，請遵循下列步驟。
+### <a name="using-the-azure-portal"></a><a name="azure-portal"></a>使用 Azure 入口網站
+請依照 Azure 入口網站中的步驟執行。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
-2. 瀏覽至 [應用程式註冊] 區段，然後選取應用程式。
-3. 開啟應用程式的 [屬性] 區段。
-4. 填妥 [服務條款 URL] 和 [隱私權聲明 URL] 欄位。
+2. 瀏覽至 [應用程式註冊]**** 區段，然後選取應用程式。
+3. 開啟 [**商標**] 窗格。
+4. 填妥 [服務條款 URL]**** 和 [隱私權聲明 URL]**** 欄位。
 5. 儲存您的變更。
 
-    ![具有服務條款和隱私權聲明 URL 的應用程式屬性區段](./media/howto-add-terms-of-service-privacy-statement/azure-portal-terms-service-privacy-statement-urls.png)
+    ![應用程式屬性包含服務條款和隱私權聲明 Url](./media/howto-add-terms-of-service-privacy-statement/azure-portal-terms-service-privacy-statement-urls.png)
 
-### <a name="registered-in-app-reg-portal"></a>如果您之前在應用程式註冊入口網站中註冊應用程式
-
-如果您之前在應用程式註冊入口網站或開發人員中心註冊應用程式，請遵循下列步驟。
-
-1. 登入[應用程式註冊入口網站](https://apps.dev.microsoft.com/)。
-2. 選取應用程式，然後捲動至 **[設定檔]** 區段。
-3. 填妥 [服務條款 URL] 和 [隱私權聲明 URL] 欄位。
-4. 儲存您的變更。
-
-    ![具有服務條款和隱私權聲明 URL 的應用程式設定檔區段](./media/howto-add-terms-of-service-privacy-statement/app-registration-portal-profile-terms-service-privacy-statement-urls.png)
-
-### <a name="app-object-json"></a>使用應用程式物件 JSON
+### <a name="using-the-app-object-json"></a><a name="app-object-json"></a>使用應用程式物件 JSON
 
 如果您想要直接修改應用程式物件 JSON，則可以在 Azure 入口網站或應用程式註冊入口網站中使用資訊清單編輯器，以包含應用程式的服務條款和隱私權聲明連結。
 
@@ -95,12 +77,12 @@ ms.locfileid: "60410522"
     }
 ```
 
-### <a name="msgraph-beta-rest-api"></a>使用 MSGraph 搶鮮版 (Beta) REST API
+### <a name="using-the-microsoft-graph-api"></a><a name="msgraph-rest-api"></a>使用 Microsoft Graph API
 
-若要以程式設計方式更新所有應用程式，您可以使用 MSGraph 搶鮮版 (Beta) REST API 來更新所有應用程式，讓其包含服務條款和隱私權聲明文件的連結。
+若要以程式設計方式更新您所有的應用程式，您可以使用 Microsoft Graph API 來更新所有應用程式，以包含服務條款和隱私權聲明檔的連結。
 
 ```
-PATCH https://graph.microsoft.com/beta/applications/{application id}
+PATCH https://graph.microsoft.com/v1.0/applications/{application id}
 { 
     "appId": "{your application id}", 
     "info": { 
@@ -115,4 +97,4 @@ PATCH https://graph.microsoft.com/beta/applications/{application id}
 
 > [!NOTE]
 > * 請小心避免覆寫已指派給下列欄位的預先存在值：`supportUrl`、`marketingUrl` 和 `logoUrl`
-> * 當您使用 Azure AD 帳戶登入時，MSGraph 搶鮮版 (Beta) REST API 才能運作。 不支援 Microsoft 個人帳戶。
+> * Microsoft Graph API 僅適用于使用 Azure AD 帳戶登入時。 不支援 Microsoft 個人帳戶。

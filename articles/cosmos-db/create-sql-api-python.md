@@ -1,50 +1,71 @@
 ---
-title: Azure Cosmos DB：使用 Python 和 SQL API 建置應用程式
+title: 快速入門：使用 Azure Cosmos DB SQL API 帳戶建置 Python 應用程式
 description: 提供 Python 程式碼範例，您可用來連線及查詢 Azure Cosmos DB SQL API
-author: SnehaGunda
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 09/24/2018
-ms.author: sngun
-ms.openlocfilehash: b257c1dbbed225bee9adfdb427bd036f0230ea47
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.date: 05/11/2020
+ms.author: anfeldma
+ms.custom:
+- seodec18
+- seo-javascript-september2019
+- seo-python-october2019
+- tracking-python
+ms.openlocfilehash: 1b3a97a11c8d5782b8b7577d6afccbbdaadea0e7
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59565056"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85116565"
 ---
-# <a name="azure-cosmos-db-build-a-python-application-using-azure-cosmos-db-sql-api-account"></a>Azure Cosmos DB：使用 Azure Cosmos DB SQL API 帳戶建置 Python 應用程式
+# <a name="quickstart-build-a-python-application-using-an-azure-cosmos-db-sql-api-account"></a>快速入門：使用 Azure Cosmos DB SQL API 帳戶建置 Python 應用程式
 
 > [!div class="op_single_selector"]
-> * [.NET](create-sql-api-dotnet.md)
-> * [.NET (預覽)](create-sql-api-dotnet-preview.md)
-> * [Java](create-sql-api-java.md)
+> * [.NET V3](create-sql-api-dotnet.md)
+> * [.NET V4](create-sql-api-dotnet-V4.md)
+> * [Java SDK v4](create-sql-api-java.md)
 > * [Node.js](create-sql-api-nodejs.md)
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
->  
 
-Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您可以快速建立及查詢文件、索引鍵/值和圖形資料庫。 所有這些作業都受惠於 Azure Cosmos DB 的散發和調整。
-
-此快速入門示範如何使用 Azure 入口網站建立 Azure Cosmos DB [SQL API](sql-api-introduction.md) 帳戶、文件資料庫和容器。 接著，您要建置和執行以適用於 [SQL API](sql-api-sdk-python.md) 的 Python SDK 為基礎的主控台應用程式。 本快速入門使用 3.0 版的 [Python SDK]。(https://pypi.org/project/azure-cosmos)
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
+在本快速入門中，您會從 Azure 入口網站以及從 Visual Studio Code 搭配從 GitHub 複製的 Python 應用程式，來建立和管理 Azure Cosmos DB SQL API 帳戶。 Azure Cosmos DB 是多模型的資料庫服務，可讓您快速建立及查詢具有全域散發和水平調整功能的文件、資料表、索引鍵/值及圖形資料庫。
 
 ## <a name="prerequisites"></a>必要條件
 
-* [Python 3.6](https://www.python.org/downloads/) \(英文\)，可在您的 `PATH` 中取得 `python` 可執行檔。
-* [Visual Studio Code](https://code.visualstudio.com/)
-* [適用於 Visual Studio Code 的 Python 擴充功能](https://marketplace.visualstudio.com/items?itemName=ms-python.python#overview)
+- 具有有效訂用帳戶的 Azure 帳戶。 [建立免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。 或[免費試用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) (不需 Azure 訂用帳戶)。 您也可以搭配使用 [Azure Cosmos DB 模擬器](https://aka.ms/cosmosdb-emulator)與 `https://localhost:8081` 的 URI 和金鑰 `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==`。
+- [Python 3.6+](https://www.python.org/downloads/)，以及 `PATH` 中的 `python` 可執行檔。
+- [Visual Studio Code](https://code.visualstudio.com/) \(英文\)。
+- 適用於 [Visual Studio Code 的 Python 擴充功能](https://marketplace.visualstudio.com/items?itemName=ms-python.python#overview)。
+- [Git](https://www.git-scm.com/downloads)。 
 
 ## <a name="create-a-database-account"></a>建立資料庫帳戶
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
-## <a name="add-a-collection"></a>新增集合
+## <a name="add-a-container"></a>新增容器
 
-[!INCLUDE [cosmos-db-create-collection](../../includes/cosmos-db-create-collection.md)]
+您現在可以在 Azure 入口網站中使用 [資料總管] 工具，建立資料庫和容器。 
+
+1. 選取 [資料總管] > [新增容器]。 
+    
+    [新增容器] 區域會顯示在最右邊，您可能需要向右捲動才能看到它。
+
+    :::image type="content" source="./media/create-sql-api-python/azure-cosmosdb-data-explorer.png" alt-text="Azure 入口網站資料總管，[新增容器] 窗格":::
+
+2. 在 [新增容器] 頁面上，輸入新容器的設定。
+
+    |設定|建議的值|描述
+    |---|---|---|
+    |**資料庫識別碼**|工作|輸入 *Tasks* 作為新資料庫的名稱。 資料庫名稱必須包含從 1 到 255 個字元，且不能包含 `/, \\, #, ?` 或尾端空格。 核取 [佈建資料庫輸送量] 選項，它可讓您在資料庫中的所有容器內共用佈建到資料庫的輸送量。 此選項也有助於節省成本。 |
+    |**輸送量**|400|讓輸送量保持在每秒 400 個要求單位 (RU/秒)。 如果您想要降低延遲，稍後可以擴大輸送量。| 
+    |**容器識別碼**|項目|輸入 *Items* 作為新容器的名稱。 容器識別碼與資料庫名稱具有相同的字元需求。|
+    |**分割區索引鍵**| /類別| 本文中所述的範例使用 */category* 作為分割區索引鍵。|
+    
+    除了上述的設定，您可以選擇性地為容器新增 [唯一索引鍵]。 在此範例中，讓我們將欄位保留空白。 唯一索引鍵可讓開發人員在資料庫中新增一層資料完整性。 您可在建立容器時建立唯一索引鍵原則，以確保每個資料分割索引鍵一或多個值的唯一性。 若要深入了解，請參閱 [Azure Cosmos DB 中的唯一索引鍵](unique-keys.md)一文。
+    
+    選取 [確定]。 [資料總管] 會顯示新的資料庫和容器。
 
 ## <a name="add-sample-data"></a>新增範例資料
 
@@ -56,18 +77,23 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
 
 ## <a name="clone-the-sample-application"></a>複製範例應用程式
 
-現在，我們將從 GitHub 複製 SQL API 應用程式、設定連接字串，然後加以執行。
+現在，我們將從 GitHub 複製 SQL API 應用程式、設定連接字串，然後加以執行。 本快速入門使用第 4 版的 [Python SDK](https://pypi.org/project/azure-cosmos/#history)。
 
 1. 開啟命令提示字元，建立名為 git-samples 的新資料夾，然後關閉命令提示字元。
 
-    ```bash
-    md "C:\git-samples"
+    ```cmd
+    md "git-samples"
     ```
+   如果您使用 bash 提示字元，應改為使用下列命令︰
+
+   ```bash
+   mkdir "git-samples"
+   ```
 
 2. 開啟 git 終端機視窗 (例如 git bash)，並使用 `cd` 命令變更至要安裝範例應用程式的新資料夾。
 
     ```bash
-    cd "C:\git-samples"
+    cd "git-samples"
     ```
 
 3. 執行下列命令來複製範例存放庫。 此命令會在您的電腦上建立範例應用程式副本。 
@@ -80,96 +106,55 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
 
 現在，返回 Azure 入口網站以取得連接字串資訊，並將它複製到應用程式中。
 
-1. 在 [Azure 入口網站](https://portal.azure.com/)的 Azure Cosmos DB 帳戶中，按一下左側導覽列中的 [金鑰]。 在下一個步驟中，您將使用畫面右側的複製按鈕，將 **URI** 和**主要金鑰**複製到 `CosmosGetStarted.py` 檔案。
+1. 在 [Azure 入口網站](https://portal.azure.com/)的 Azure Cosmos DB 帳戶中，選取左側導覽列中的 [金鑰]。 在下一個步驟中，使用畫面右側的複製按鈕，將 **URI** 和**主要金鑰**複製到 cosmos_get_started.py 檔案中。
 
-    ![在 Azure 入口網站的 [金鑰] 刀鋒視窗中檢視並複製存取金鑰](./media/create-sql-api-dotnet/keys.png)
+    :::image type="content" source="./media/create-sql-api-dotnet/access-key-and-uri-in-keys-settings-in-the-azure-portal.png" alt-text="在 Azure 入口網站的 [金鑰] 設定中取得存取金鑰和 URI":::
 
-2. 在 Visual Studio Code 中開啟 C:\git-samples\azure-cosmos-db-python-getting-started 中的 `CosmosGetStarted.py` 檔案。
+2. 在 Visual Studio Code 中，開啟 \git-samples\azure-cosmos-db-python-getting-started 中的 cosmos_get_started.py 檔案。
 
-3. 從入口網站複製您的 **URI** 值 (使用 [複製] 按鈕)，並使它成為 ``CosmosGetStarted.py`` 中的**端點**金鑰值。 
+3. 從入口網站複製您的 **URI** 值 (使用 [複製] 按鈕)，並使其成為 cosmos_get_started.py 中的**端點**變數值。 
 
-    `'ENDPOINT': 'https://FILLME.documents.azure.com',`
+    `endpoint = 'https://FILLME.documents.azure.com',`
 
-4. 然後，從入口網站複製您的**主要金鑰**值，並使它成為 ``CosmosGetStarted.py`` 中的 **config.PRIMARYKEY** 值。 您現已更新應用程式，使其具有與 Azure Cosmos DB 通訊所需的所有資訊。 
+4. 然後，從入口網站複製您的 [主要金鑰] 值，並使其成為 cosmos_get_started.py 中的 [金鑰] 值。 您現已更新應用程式，使其具有與 Azure Cosmos DB 通訊所需的所有資訊。 
 
-    `'PRIMARYKEY': 'FILLME',`
+    `key = 'FILLME'`
 
-5. 儲存 ``CosmosGetStarted.py`` 檔案。
+5. 儲存 cosmos_get_started.py 檔案。
 
 ## <a name="review-the-code"></a>檢閱程式碼
 
 此為選用步驟。 了解以程式碼建立的資料庫資源，或直接跳到[更新您的連接字串](#update-your-connection-string)。
 
-請注意，如果您熟悉舊版 Python SDK，您可能已習慣看到「集合」和「文件」等字詞。 因為 Azure Cosmos DB 支援多個 API 模型，3.0+ 版的 Python SDK 會使用「容器」這個泛用字詞，此字詞可能是用來說明容器內容的集合、圖表或資料表和「項目」。
+下列程式碼片段全部取自 cosmos_get_started.py 檔案。
 
-下列程式碼片段全部取自 `CosmosGetStarted.py` 檔案。
+* 已初始化 CosmosClient。 請務必如[更新連接字串](#update-your-connection-string)一節所述，更新「端點」和「索引鍵」值。 
 
-* 已初始化 CosmosClient。 請務必如[更新連接字串](#update-your-connection-string)一節所述，更新「端點」和「主要金鑰」值。 
-
-    ```python
-    # Initialize the Cosmos client
-    client = cosmos_client.CosmosClient(url_connection=config['ENDPOINT'], auth={'masterKey': config['MASTERKEY']})
-    ```
+    [!code-python[](~/azure-cosmos-db-python-getting-started/cosmos_get_started.py?name=create_cosmos_client)]
 
 * 已建立新資料庫。
 
-    ```python
-    # Create a database
-    db = client.CreateDatabase({ 'id': config['DATABASE'] })
-    ```
+    [!code-python[](~/azure-cosmos-db-python-getting-started/cosmos_get_started.py?name=create_database_if_not_exists)]
 
-* 已建立新集合。
+* 隨即建立新的容器，其中包含 400 RU/秒的[已佈建輸送量](request-units.md)。 我們選擇 `lastName` 作為[分割索引鍵](partitioning-overview.md#choose-partitionkey)，讓我們能進行可對此屬性進行篩選的有效查詢。 
 
-    ```python
-    # Create collection options
-    options = {
-        'offerThroughput': 400
-    }
+    [!code-python[](~/azure-cosmos-db-python-getting-started/cosmos_get_started.py?name=create_container_if_not_exists)]
 
-    # Create a container
-    container = client.CreateContainer(db['_self'], container_definition, options)
-    ```
+* 有些項目會新增至容器。 容器是可擁有不同架構的項目 (JSON 文件) 集合。 協助程式方法 ```get_[name]_family_item``` 會以 JSON 文件形式，傳回 Azure Cosmos DB 中儲存的系列表示法。
 
-* 有些項目會新增至容器。
+    [!code-python[](~/azure-cosmos-db-python-getting-started/cosmos_get_started.py?name=create_item)]
 
-    ```python
-    # Create and add some items to the container
-    item1 = client.CreateItem(container['_self'], {
-        'serverId': 'server1',
-        'Web Site': 0,
-        'Cloud Service': 0,
-        'Virtual Machine': 0,
-        'message': 'Hello World from Server 1!'
-        }
-    )
+* 已使用 `read_item` 方法執行端點讀取 (索引鍵值查閱)。 我們會列出每個作業的 [RU 費用](request-units.md)。
 
-    item2 = client.CreateItem(container['_self'], {
-        'serverId': 'server2',
-        'Web Site': 1,
-        'Cloud Service': 0,
-        'Virtual Machine': 0,
-        'message': 'Hello World from Server 2!'
-        }
-    )
-    ```
+    [!code-python[](~/azure-cosmos-db-python-getting-started/cosmos_get_started.py?name=read_item)]
 
-* 已使用 SQL 執行查詢
+* 已使用 SQL 查詢語法執行查詢。 因為我們在 WHERE 子句中使用 ```lastName``` 的分割索引鍵值，所以 Azure Cosmos DB 會有效地將此查詢路由傳送至相關的分割區，以改善效能。
 
-    ```python
-    query = {'query': 'SELECT * FROM server s'}
-
-    options = {}
-    options['enableCrossPartitionQuery'] = True
-    options['maxItemCount'] = 2
-
-    result_iterable = client.QueryItems(container['_self'], query, options)
-    for item in iter(result_iterable):
-        print(item['message'])
-    ```
+    [!code-python[](~/azure-cosmos-db-python-getting-started/cosmos_get_started.py?name=query_items)]
    
 ## <a name="run-the-app"></a>執行應用程式
 
-1. 在 Visual Studio Code 中，選取 [檢視]>[命令選擇區]。 
+1. 在 Visual Studio Code 中，選取 [檢視] > [命令選擇區]。 
 
 2. 在提示字元中，輸入 **Python:Select Interpreter**，然後選取要使用的 Python 版本。
 
@@ -177,29 +162,57 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
 
 3. 選取 [檢視] > [整合式終端機] 以開啟 Visual Studio Code 整合式終端機。
 
-4. 在整合式終端機視窗中，確保您在 azure-cosmos-db-python-getting-started 資料夾中。 如果不是，請執行下列命令來切換至範例資料夾。 
+4. 在整合式終端機視窗中，確定您在 azure-cosmos-db-python-getting-started 資料夾中。 如果不是，請執行下列命令來切換至範例資料夾。 
 
-    ```
-    cd "C:\git-samples\azure-cosmos-db-python-getting-started"`
+    ```cmd
+    cd "\git-samples\azure-cosmos-db-python-getting-started"`
     ```
 
 5. 執行以下命令來安裝 azure-cosmos 套件。 
 
-    ```
-    pip3 install azure-cosmos
+    ```python
+    pip install --pre azure-cosmos
     ```
 
     如果您收到有關在嘗試安裝 azure-cosmos 時拒絕存取的錯誤，您必須[以系統管理員身分執行 VS Code](https://stackoverflow.com/questions/37700536/visual-studio-code-terminal-how-to-run-a-command-with-administrator-rights)。
 
-6. 執行下列命令以執行範例，並且在 Azure Cosmos dB 中建立和儲存新文件。
+6. 執行下列命令以執行範例，並且在 Azure Cosmos DB 中建立和儲存新文件。
 
+    ```python
+    python cosmos_get_started.py
     ```
-    python CosmosGetStarted.py
-    ```
 
-7. 若要確認已建立並儲存新項目，請在 Azure 入口網站中，選取 [資料總管]，依序展開 [coll]、[文件]，然後選取 [server1] 文件。 Server1 文件內容符合整合式終端機視窗中傳回的內容。 
-
-    ![在 Azure 入口網站中檢視新文件](./media/create-sql-api-python/azure-cosmos-db-confirm-documents.png)
+7. 若要確認已建立並儲存新項目，請在 Azure 入口網站中，選取 [資料總管] > [AzureSampleFamilyDatabase] > [項目]。 檢視已建立的項目。 例如，以下是適用於 Andersen 家族的範例 JSON 文件：
+   
+   ```json
+   {
+       "id": "Andersen-1569479288379",
+       "lastName": "Andersen",
+       "district": "WA5",
+       "parents": [
+           {
+               "familyName": null,
+               "firstName": "Thomas"
+           },
+           {
+               "familyName": null,
+               "firstName": "Mary Kay"
+           }
+       ],
+       "children": null,
+       "address": {
+           "state": "WA",
+           "county": "King",
+           "city": "Seattle"
+       },
+       "registered": true,
+       "_rid": "8K5qAIYtZXeBhB4AAAAAAA==",
+       "_self": "dbs/8K5qAA==/colls/8K5qAIYtZXc=/docs/8K5qAIYtZXeBhB4AAAAAAA==/",
+       "_etag": "\"a3004d78-0000-0800-0000-5d8c5a780000\"",
+       "_attachments": "attachments/",
+       "_ts": 1569479288
+   }
+   ```
 
 ## <a name="review-slas-in-the-azure-portal"></a>在 Azure 入口網站中檢閱 SLA
 
@@ -211,7 +224,7 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
 
 ## <a name="next-steps"></a>後續步驟
 
-在本快速入門中，您已了解如何建立 Azure Cosmos DB 帳戶、如何使用 [資料總管] 建立集合，以及如何執行應用程式。 您現在可以將其他資料匯入到 Cosmos DB 帳戶。 
+在本快速入門中，您已了解如何建立 Azure Cosmos DB 帳戶、如何使用 [資料總管] 建立容器，以及如何在 Visual Studio Code 中執行 Python 應用程式。 您現在可以將其他資料匯入 Azure Cosmos DB 帳戶中。 
 
 > [!div class="nextstepaction"]
 > [將資料匯入 SQL API 的 Azure Cosmos DB](import-data.md)

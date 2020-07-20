@@ -1,31 +1,31 @@
 ---
 title: 管理影片索引器帳戶
-titlesuffix: Azure Media Services
-description: 本文將說明如何管理連線到 Azure 的影片索引器帳戶。
+titleSuffix: Azure Media Services
+description: 瞭解如何管理連線到 Azure 的影片索引子帳戶。
 services: media-services
 author: Juliako
 manager: femila
 ms.service: media-services
+ms.subservice: video-indexer
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 12/16/2019
 ms.author: juliako
-ms.openlocfilehash: 1515a026ae297a960f220a97449d2258c0b75e58
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 5b9ec1c04dd90af9d9380a1f4d30386c8f9cc3ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60553573"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "79499662"
 ---
 # <a name="manage-a-video-indexer-account-connected-to-azure"></a>管理連線到 Azure 的影片索引器帳戶
 
-本文將示範如何管理連線到您 Azure 訂用帳戶和 Azure 媒體服務帳戶的影片索引器帳戶。
+本文示範如何管理連線到您的 Azure 訂用帳戶的影片索引子帳戶，以及 Azure 媒體服務帳戶。
 
 > [!NOTE]
 > 您必須是影片索引器帳戶的擁有者，才能進行本主題中討論的帳戶設定調整。
 
 ## <a name="prerequisites"></a>必要條件
 
-將您的影片索引器帳戶連線到 Azure，如[連線到 Azure](connect-to-azure.md) 中所述。 
+將您的影片索引器帳戶連線到 Azure，如[連線到 Azure](connect-to-azure.md) 中所述。
 
 請務必遵循文章中的[必要條件](connect-to-azure.md#prerequisites)並檢閱[考量](connect-to-azure.md#considerations)。
 
@@ -35,46 +35,57 @@ ms.locfileid: "60553573"
 
 若要檢視設定：
 
-1. 按一下右上角的使用者圖示，然後選取 [設定]。
+1. 按一下右上角的使用者圖示，然後選取 [**設定**]。
 
-    ![設定](./media/manage-account-connected-to-azure/select-settings.png)
+    ![影片索引子中的設定](./media/manage-account-connected-to-azure/select-settings.png)
 
-2. 在 [設定] 頁面上，選取 [帳戶] 索引標籤。
+2. 在 [設定]**** 頁面上，選取 [帳戶]**** 索引標籤。
 
-如果您的影片索引器帳戶已連線到 Azure，您會看到下列內容：
+如果您的影片索引子帳戶已連線到 Azure，您會看到下列專案：
 
 * 基礎 Azure 媒體服務帳戶的名稱。
 * 執行中和排入佇列的編製索引作業數目。
-* 已配置的保留單元類型與數量。
+* 配置的保留單元的數目和類型。
 
-如果您的帳戶需要做一些調整，您會在 [設定] 頁面上看到與帳戶設定相關的錯誤和警告。 這些訊息包含 Azure 入口網站中確切位置的連結，也就是您必須進行變更的位置。 如需詳細資訊，請參閱之後的[錯誤和警告](#errors-and-warnings)一節。
+如果您的帳戶需要進行一些調整，您會在 [設定] 頁面上看到關於帳戶**設定**的相關錯誤和警告。 這些訊息包含 Azure 入口網站中確切位置的連結，也就是您必須進行變更的位置。 如需詳細資訊，請參閱之後的[錯誤和警告](#errors-and-warnings)一節。
 
-## <a name="auto-scale-reserved-units"></a>自動調整保留單元
+## <a name="repair-the-connection-to-azure"></a>修復與 Azure 的連線
 
-[設定] 頁面可讓您設定媒體保留單元 (RU) 的自動調整。 如果選項為 [開啟]，您可以配置 RU 的數目上限，並確定該影片索引器可自動停止/啟動 RU。 使用此選項時，您不需要為閒置時間支付額外費用，也不會在索引編製負載很高時等候很長的索引編製時間。
+在[影片索引子](https://www.videoindexer.ai/)頁面的 [**更新連線至 Azure 媒體服務**] 對話方塊中，系統會要求您提供下列設定的值：
 
-自動調整不會低於 1 RU 或超過媒體服務帳戶的預設限制。 若要增加限制，請建立服務要求。 如需配額和限制以及如何開啟支援票證的相關資訊，請參閱 [配額和限制](../../media-services/previous/media-services-quotas-and-limitations.md)。
+|設定|說明|
+|---|---|
+|Azure 訂用帳戶識別碼|訂用帳戶識別碼可從 Azure 入口網站擷取。 按一下左面板中的 [**所有服務**]，然後搜尋「訂用帳戶」。 選取 [訂用帳戶]****，並從訂用帳戶清單中選擇需要的識別碼。|
+|Azure 媒體服務資源群組名稱|您在其中建立媒體服務帳戶的資源群組名稱。|
+|應用程式識別碼|您為此影片索引子帳戶建立的 Azure AD 應用程式識別碼（具有指定媒體服務帳戶的許可權）。 <br/><br/>若要取得應用程式識別碼，請流覽至 Azure 入口網站。 在媒體服務帳戶底下，選擇您的帳戶並移至 [ **API 存取**]。 選取 **[使用服務主體 Azure AD App 連線到媒體服務 API]**  ->  ** **。 複製相關的參數。|
+|應用程式金鑰|與您在上面指定的媒體服務帳戶相關聯的 Azure AD 應用程式金鑰。 <br/><br/>若要取得應用程式金鑰，請流覽至 Azure 入口網站。 在媒體服務帳戶底下，選擇您的帳戶並移至 [ **API 存取**]。 選取 **[使用服務主體連線到媒體服務 API] [**  ->  **管理應用程式**  ->  **憑證 & 秘密**]。 複製相關的參數。|
 
-![註冊](./media/manage-account-connected-to-azure/autoscale-reserved-units.png)
+## <a name="autoscale-reserved-units"></a>自動調整保留單元
+
+[**設定**] 頁面可讓您設定媒體保留單元（RU）的自動調整。 如果選項為 [開啟]****，您可以配置 RU 的數目上限，並確定該影片索引器可自動停止/啟動 RU。 使用此選項時，您不需要支付閒置時間的額外費用，但也不會等待索引編制工作完成長時間的索引負載。
+
+自動調整不會相應縮小到 1 RU 以下，或高於媒體服務帳戶的預設限制。 若要增加限制，請建立服務要求。 如需配額和限制以及如何開啟支援票證的相關資訊，請參閱 [配額和限制](../../media-services/previous/media-services-quotas-and-limitations.md)。
+
+![自動調整保留單元影片索引子](./media/manage-account-connected-to-azure/autoscale-reserved-units.png)
 
 ## <a name="errors-and-warnings"></a>錯誤和警告
 
-如果您的帳戶需要做一些調整，您會在 [設定] 頁面上看到與帳戶設定相關的錯誤和警告。 這些訊息包含 Azure 入口網站中確切位置的連結，也就是您必須進行變更的位置。 本節提供有關錯誤和警告訊息的詳細資料。
+如果您的帳戶需要做一些調整，您會在 [設定]**** 頁面上看到與帳戶設定相關的錯誤和警告。 這些訊息包含 Azure 入口網站中確切位置的連結，也就是您必須進行變更的位置。 本節提供有關錯誤和警告訊息的詳細資料。
 
-* Event Grid
+* EventGrid
 
-    您必須使用 Azure 入口網站註冊 EventGrid 資源提供者。 在 [Azure 入口網站](https://portal.azure.com/) 中，前往 [訂用帳戶] > [訂用帳戶] > [資源提供者] > [Microsoft.EventGrid]。 如果不是處於「已註冊」狀態，請按一下 [註冊]。 這需要幾分鐘來完成註冊。 
+    您必須使用 Azure 入口網站註冊 EventGrid 資源提供者。 在 [Azure 入口網站](https://portal.azure.com/) 中，前往 [訂用帳戶]**** > [訂用帳戶] > [資源提供者]**** > [Microsoft.EventGrid]****。 如果未處於**已註冊**的狀態，請選取 [**註冊**]。 這需要幾分鐘來完成註冊。
 
 * 串流端點
 
-    請確定基礎媒體服務帳戶有處於已啟動狀態的預設**串流端點**。 否則，您將無法從此媒體服務帳戶或影片索引器中觀看影片。
+    請確定基礎媒體服務帳戶有處於已啟動狀態的預設**串流端點**。 否則，您將無法在此媒體服務帳戶或影片索引子中觀看影片。
 
-* 媒體保留單元 
+* 媒體保留單元
 
-    您必須在媒體服務資源上配置媒體保留單元，才能編製影片索引。 為了達到最佳的索引編製效能，建議您至少配置 10 個 S3 保留單元。 如需定價資訊，請參閱[媒體服務定價](https://azure.microsoft.com/pricing/details/media-services/)頁面的＜常見問題集＞一節。   
+    您必須在媒體服務資源上配置媒體保留單元，才能編製影片索引。 為了達到最佳的索引編製效能，建議您至少配置 10 個 S3 保留單元。 如需定價資訊，請參閱[媒體服務定價](https://azure.microsoft.com/pricing/details/media-services/)頁面的＜常見問題集＞一節。
 
 ## <a name="next-steps"></a>後續步驟
 
-若要以程式設計方式與連線到 Azure 的試用帳戶和/或 Video Indexer 帳戶互動，請遵循以下指示：[使用 API](video-indexer-use-apis.md)。
+您可以遵循：[使用 api](video-indexer-use-apis.md)中的指示，以程式設計方式與連線到 Azure 的試用帳戶或影片索引子帳戶互動。
 
-您應使用連線至 Azure 時使用的相同 Azure AD 使用者。
+使用與連接到 Azure 時所使用的相同 Azure AD 使用者。

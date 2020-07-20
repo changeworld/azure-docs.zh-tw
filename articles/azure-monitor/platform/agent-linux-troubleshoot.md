@@ -1,40 +1,33 @@
 ---
 title: 針對 Azure Log Analytics Linux 代理程式 進行疑難排解 | Microsoft Docs
-description: 描述 Azure Monitor 中 Log Analytics Linux 代理最常见问题的表现、原因和解决方法。
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+description: 描述 Azure 監視器中適用于 Linux 的 Log Analytics 代理程式最常見問題的徵兆、原因和解決方式。
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 11/13/2018
-ms.author: magoedte
-ms.openlocfilehash: b79f8a44f0fc38dd7e5f9ae7e3ac1fe6e9f6b7b8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+author: bwren
+ms.author: bwren
+ms.date: 11/21/2019
+ms.openlocfilehash: 2343de97d06abdefed2c2977a7341aa411429319
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60776028"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80520748"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>如何針對 Log Analytics Linux 代理程式的問題進行疑難排解 
 
-本文介绍如何排查可能遇到的 Azure Monitor 中的 Log Analytics Linux 代理的相关错误，并提供可能的解决方案建议。
+本文提供在 Azure 監視器中使用適用于 Linux 的 Log Analytics 代理程式所可能遇到的錯誤的疑難排解，並建議可能解決這些問題的解決方案。
 
 如果這些步驟對您都沒有幫助，還有下列支援管道可供使用：
 
 * 具有頂級支援權益的客戶可以透過[頂級支援](https://premier.microsoft.com/)開啟支援要求。
 * 具有 Azure 支援合約的客戶可以在 [Azure 入口網站](https://manage.windowsazure.com/?getsupport=true)開啟支援要求。
 * 使用 [OMI 疑難排解指南](https://github.com/Microsoft/omi/blob/master/Unix/doc/diagnose-omi-problems.md)來診斷 OMI 問題。
-* 提出 [GitHub 問題](https://github.com/Microsoft/OMS-Agent-for-Linux/issues)。
-* 造訪「Log Analytics 意見反應」頁面，以檢閱已提交的構想和錯誤[https://aka.ms/opinsightsfeedback](https://aka.ms/opinsightsfeedback)，或提出新的構想和錯誤。  
+* 提出[GitHub 問題](https://github.com/Microsoft/OMS-Agent-for-Linux/issues)。
+* 請流覽 Log Analytics 意見反應頁面，以查看已提交的想法和 bug， [https://aka.ms/opinsightsfeedback](https://aka.ms/opinsightsfeedback) 或提出新的問題。  
 
 ## <a name="important-log-locations-and-log-collector-tool"></a>重要記錄位置和記錄收集器工具
 
- 檔案 | Path
+ 檔案 | 路徑
  ---- | -----
  Log Analytics Linux 代理程式記錄檔 | `/var/opt/microsoft/omsagent/<workspace id>/log/omsagent.log`
  Log Analytics 代理程式組態記錄檔 | `/var/opt/microsoft/omsconfig/omsconfig.log`
@@ -50,8 +43,8 @@ ms.locfileid: "60776028"
  其他組態 | `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/*.conf`
 
  >[!NOTE]
- >如果您是從 Azure 入口網站中的[資料功能表 Log Analytics [進階設定]](../../azure-monitor/platform/agent-data-sources.md#configuring-data-sources) 為工作區設定了集合，則為效能計數器和 Syslog 編輯組態檔會遭到覆寫。 若要停用所有代理程式的組態，請從 Log Analytics [進階設定] 停用集合，若是單一代理程式，則請執行下列命令：  
-> `sudo su omsagent -c /opt/microsoft/omsconfig/Scripts/OMS_MetaConfigHelper.py --disable`
+ >如果您是從 Azure 入口網站中的[資料功能表 Log Analytics [進階設定]](../../azure-monitor/platform/agent-data-sources.md#configuring-data-sources) 為工作區設定了集合，則為效能計數器和 Syslog 編輯組態檔會遭到覆寫。 若要停用所有代理程式的組態，請從 Log Analytics [進階設定]**** 停用集合，若是單一代理程式，則請執行下列命令：  
+> `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/OMS_MetaConfigHelper.py --disable'`
 
 ## <a name="installation-error-codes"></a>安裝錯誤碼
 
@@ -60,9 +53,9 @@ ms.locfileid: "60776028"
 | NOT_DEFINED | 未安裝必要的相依性，所以不會安裝 auoms auditd 外掛程式 | auoms 安裝失敗，安裝套件 auditd。 |
 | 2 | 提供給殼層組合的選項無效。 請執行 `sudo sh ./omsagent-*.universal*.sh --help` 以了解使用方式 |
 | 3 | 未提供任何選項給殼層組合。 請執行 `sudo sh ./omsagent-*.universal*.sh --help` 以了解使用方式。 |
-| 4 | 套件類型無效或 Proxy 設定無效；omsagent-rpm.sh 套件只能安裝在以 RPM 為基礎的系統上，至於 omsagent-deb.sh 套件，則只能安裝在以 Debian 為基礎的系統上。 建議您使用來自[最新版本](../../azure-monitor/learn/quick-collect-linux-computer.md#install-the-agent-for-linux)的通用安裝程式。 也請進行檢閱，以驗證 Proxy 設定。 |
+| 4 | 套件類型無效或 Proxy 設定無效；omsagent-rpm**.sh 套件只能安裝在以 RPM 為基礎的系統上，至於 omsagent-deb**.sh 套件，則只能安裝在以 Debian 為基礎的系統上。 建議您使用來自[最新版本](../../azure-monitor/learn/quick-collect-linux-computer.md#install-the-agent-for-linux)的通用安裝程式。 也請進行檢閱，以驗證 Proxy 設定。 |
 | 5 | 必須以 root 身分執行殼層組合，否則上架期間會傳回 403 錯誤。 請使用 `sudo` 執行命令。 |
-| 6 | 套件架構無效，或是在上架期間傳回錯誤 200 錯誤；omsagent-x64.sh 套件只能安裝在 64 位元系統上，而 omsagent-x86.sh 套件則只能安裝在 32 位元系統上。 從[最新版本](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/latest)下載架構的正確套件。 |
+| 6 | 套件架構無效，或是在上架期間傳回錯誤 200 錯誤；omsagent-x64.sh 套件只能安裝在 64 位元系統上，而 omsagent-** x86.sh 套件則只能安裝在 32 位元系統上。 從[最新版本](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/latest)下載架構的正確套件。 |
 | 17 | OMS 套件安裝失敗。 查看命令的輸出中是否有 root 失敗。 |
 | 19 | OMI 套件安裝失敗。 查看命令的輸出中是否有 root 失敗。 |
 | 20 | SCX 套件安裝失敗。 查看命令的輸出中是否有 root 失敗。 |
@@ -70,7 +63,7 @@ ms.locfileid: "60776028"
 | 22 | 組合套件安裝失敗。 查看命令的輸出中是否有 root 失敗 |
 | 23 | 已經安裝 SCX 或 OMI 套件。 使用 `--upgrade` 而非 `--install` 來安裝殼層組合。 |
 | 30 | 內部組合錯誤。 提出 [GitHub 問題](https://github.com/Microsoft/OMS-Agent-for-Linux/issues)，並附上輸出中的詳細資料。 |
-| 55 | 不受支持的 openssl 版本或无法连接到 Azure Monitor 或 dpkg 已锁定或缺少 curl 程序。 |
+| 55 | 不支援的 openssl 版本或無法連接到 Azure 監視器或 dpkg 已鎖定或遺失的捲曲程式。 |
 | 61 | 遺失 Python ctypes 程式庫。 安裝 Python ctypes 程式庫或套件 (python-ctypes)。 |
 | 62 | 遺失 tar 程式，請安裝 tar。 |
 | 63 | 遺失 sed 程式，請安裝 sed。 |
@@ -83,10 +76,10 @@ ms.locfileid: "60776028"
 | --- | --- |
 | 2 | 提供給 omsadmin 指令碼的選項無效。 請執行 `sudo sh /opt/microsoft/omsagent/bin/omsadmin.sh -h` 以了解使用方式。 |
 | 3 | 提供給 omsadmin 指令碼的組態無效。 請執行 `sudo sh /opt/microsoft/omsagent/bin/omsadmin.sh -h` 以了解使用方式。 |
-| 4 | 提供給 omsadmin 指令碼的 Proxy 無效。 請確認 Proxy，並查看 [HTTP Proxy 的使用文件](log-analytics-agent.md#network-firewall-requirements)。 |
-| 5 | 从 Azure Monitor 收到 403 HTTP 错误。 如需詳細資訊，請參閱 omsadmin 指令碼的完整輸出。 |
-| 6 | 从 Azure Monitor 收到非 200 HTTP 错误。 如需詳細資訊，請參閱 omsadmin 指令碼的完整輸出。 |
-| 7 | 无法连接到 Azure Monitor。 如需詳細資訊，請參閱 omsadmin 指令碼的完整輸出。 |
+| 4 | 提供給 omsadmin 指令碼的 Proxy 無效。 請確認 Proxy，並查看 [HTTP Proxy 的使用文件](log-analytics-agent.md#firewall-requirements)。 |
+| 5 | 403從 Azure 監視器收到 HTTP 錯誤。 如需詳細資訊，請參閱 omsadmin 指令碼的完整輸出。 |
+| 6 | 從 Azure 監視器收到非200的 HTTP 錯誤。 如需詳細資訊，請參閱 omsadmin 指令碼的完整輸出。 |
+| 7 | 無法連接到 Azure 監視器。 如需詳細資訊，請參閱 omsadmin 指令碼的完整輸出。 |
 | 8 | 上架至 Log Analytics 工作區時發生錯誤。 如需詳細資訊，請參閱 omsadmin 指令碼的完整輸出。 |
 | 30 | 內部指令碼錯誤。 提出 [GitHub 問題](https://github.com/Microsoft/OMS-Agent-for-Linux/issues)，並附上輸出中的詳細資料。 |
 | 31 | 產生代理程式識別碼時發生錯誤。 提出 [GitHub 問題](https://github.com/Microsoft/OMS-Agent-for-Linux/issues)，並附上輸出中的詳細資料。 |
@@ -115,7 +108,7 @@ ms.locfileid: "60776028"
 </match>
  ```
 
-调试日志记录允许按类型、数据项数量和发送所用时间查看批量上传至 Azure Monitor 的信息：
+「偵錯工具記錄」可讓您查看批次上傳至 Azure 監視器以類型、資料項目數目和傳送的時間來分隔：
 
 *啟用偵錯的記錄檔範例︰*
 
@@ -153,25 +146,19 @@ Success sending oms.syslog.authpriv.info x 1 in 0.91s
 </match>
 ```
 
-## <a name="issue--unable-to-connect-through-proxy-to-azure-monitor"></a>問題：无法通过代理连接到 Azure Monitor
+## <a name="issue--unable-to-connect-through-proxy-to-azure-monitor"></a>問題：無法透過 proxy 連接到 Azure 監視器
 
 ### <a name="probable-causes"></a>可能的原因
 * 上架期間指定的 Proxy 不正確
-* Azure Monitor 和 Azure 自动化服务终结点不在数据中心的允许列表中 
+* Azure 監視器和 Azure 自動化服務端點不在您的資料中心的白名單中 
 
 ### <a name="resolution"></a>解決方案
-1. 使用以下命令（启用了 `-v` 选项）通过 Log Analytics Linux 代理重新载入到 Azure Monitor。 它允许通过代理服务器连接到 Azure Monitor 的代理能够进行详细输出。 
+1. 使用下列命令搭配已啟用的選項，以重新上架與適用于 Linux 的 Log Analytics 代理程式 Azure 監視器 `-v` 。 它可讓代理程式透過 proxy 連接到 Azure 監視器的詳細資訊輸出。 
 `/opt/microsoft/omsagent/bin/omsadmin.sh -w <Workspace ID> -s <Workspace Key> -p <Proxy Conf> -v`
 
 2. 檢閱[更新 Proxy 設定](agent-manage.md#update-proxy-settings)一節以驗證您是否已正確設定代理程式透過 Proxy 伺服器通訊。    
-* 仔细检查下列 Azure Monitor 终结点是否在允许列表中：
 
-    |代理程式資源| 連接埠 | 方向 |
-    |------|---------|----------|  
-    |*.ods.opinsights.azure.com | 連接埠 443| 輸入和輸出 |  
-    |*.oms.opinsights.azure.com | 連接埠 443| 輸入和輸出 |  
-    |*.blob.core.windows.net | 連接埠 443| 輸入和輸出 |  
-    |*.azure-automation.net | 連接埠 443| 輸入和輸出 | 
+3. 再次檢查 Azure 監視器[網路防火牆需求](log-analytics-agent.md#firewall-requirements)清單中所述的端點是否已正確新增至允許清單。 如果您使用 Azure 自動化，所需的網路設定步驟也會連結在上方。
 
 ## <a name="issue-you-receive-a-403-error-when-trying-to-onboard"></a>問題：您在嘗試上架時收到 403 錯誤
 
@@ -185,19 +172,46 @@ Success sending oms.syslog.authpriv.info x 1 in 0.91s
 2. 確認您已安裝最新版的 Log Analytics Linux 代理程式。  最新版本現在會通知您時間差異是否造成上架失敗。
 3. 使用正確的工作區識別碼和工作區金鑰並遵循本文前面的安裝指示重新上架。
 
-## <a name="issue-you-see-a-500-and-404-error-in-the-log-file-right-after-onboarding"></a>問題：上架後您隨即在記錄檔中看到 500 與 404 錯誤
+## <a name="issue-you-see-a-500-and-404-error-in-the-log-file-right-after-onboarding"></a>問題︰上架後您隨即在記錄檔中看到 500 與 404 錯誤
 這是已知第一次將 Linux 資料上傳至 Log Analytics 工作區時會發生的問題。 這不會影響正在傳送的資料或服務體驗。
 
-## <a name="issue-you-are-not-seeing-any-data-in-the-azure-portal"></a>問題：您在 Azure 入口網站中看不到任何資料
+
+## <a name="issue-you-see-omiagent-using-100-cpu"></a>問題：您看到使用 100% CPU 的 omiagent
+
+### <a name="probable-causes"></a>可能的原因
+Nss-pem 套件[v 1.0.3-5](https://centos.pkgs.org/7/centos-x86_64/nss-pem-1.0.3-7.el7.x86_64.rpm.html)中的回歸會造成嚴重的效能問題，而我們看到的是 Redhat/Centos 7.x 發行版本中的許多功能。 若要深入瞭解此問題，請參閱下列檔： [libcurl 中的錯誤1667121效能回歸](https://bugzilla.redhat.com/show_bug.cgi?id=1667121)。
+
+效能相關的錯誤根本不會發生，而且很難以重現。 如果您遇到 omiagent 這類問題，應該使用腳本 omiHighCPUDiagnostics.sh，它會在超過特定閾值時收集 omiagent 的堆疊追蹤。
+
+1. 下載腳本 <br/>
+`wget https://raw.githubusercontent.com/microsoft/OMS-Agent-for-Linux/master/tools/LogCollector/source/omiHighCPUDiagnostics.sh`
+
+2. 以 30% CPU 閾值執行診斷24小時 <br/>
+`bash omiHighCPUDiagnostics.sh --runtime-in-min 1440 --cpu-threshold 30`
+
+3. 呼叫堆疊會傾印在 omiagent_trace 檔案中，如果您發現許多捲曲和 NSS 函數呼叫，請遵循以下的解決步驟。
+
+### <a name="resolution-step-by-step"></a>解決方式（逐步解說）
+
+1. 將 nss-pem 套件升級為[v 1.0.3-5. 1. el7_6](https://centos.pkgs.org/7/centos-x86_64/nss-pem-1.0.3-7.el7.x86_64.rpm.html)。 <br/>
+`sudo yum upgrade nss-pem`
+
+2. 如果 nss-pem 無法進行升級（大部分是在 Centos 時），則會將事件降級為 7.29.0-46。 如果您不小心執行「yum update」，則會將捲曲升級為 7.29.0-51，並會再次發生此問題。 <br/>
+`sudo yum downgrade curl libcurl`
+
+3. 重新開機 OMI： <br/>
+`sudo scxadmin -restart`
+
+## <a name="issue-you-are-not-seeing-any-data-in-the-azure-portal"></a>問題︰您在 Azure 入口網站中看不到任何資料
 
 ### <a name="probable-causes"></a>可能的原因
 
-- 加入 Azure Monitor 失败
-- 已阻止连接到 Azure Monitor
+- 上架至 Azure 監視器失敗
+- 已封鎖 Azure 監視器的連接
 - Log Analytics Linux 代理程式資料已備份
 
 ### <a name="resolution"></a>解決方案
-1. 通过检查是否存在以下文件，来检查是否已成功载入 Azure Monitor：`/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf`
+1. 檢查下列檔案是否存在，以確認上架 Azure 監視器是否成功：`/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf`
 2. 使用 `omsadmin.sh` 命令列指示重新上架
 3. 如果使用 Proxy，請參閱稍早所提供的 Proxy 解決步驟。
 4. 在某些情況下，當 Log Analytics Linux 代理程式無法與服務通訊時，系統會將整個緩衝區大小 (亦即 50 MB) 的資料加入佇列。 應該執行下列命令重新啟動代理程式：`/opt/microsoft/omsagent/bin/service_control restart [<workspace id>]`。 
@@ -241,7 +255,7 @@ Success sending oms.syslog.authpriv.info x 1 in 0.91s
 3. 重新啟動 omsagent `sudo /opt/microsoft/omsagent/bin/service_control restart`。
 4. 重新啟動 syslog 服務。
 
-## <a name="issue-you-are-unable-to-uninstall-omsagent-using-purge-option"></a>問題：您無法使用清除選項將 omsagent 解除安裝
+## <a name="issue-you-are-unable-to-uninstall-omsagent-using-purge-option"></a>問題：您無法使用清除選項解除安裝 omsagent
 
 ### <a name="probable-causes"></a>可能的原因
 
@@ -275,25 +289,25 @@ Success sending oms.syslog.authpriv.info x 1 in 0.91s
     </filter>
     ```
 
-## <a name="issue-you-are-not-seeing-any-linux-data"></a>問題：您沒有看到任何 Linux 資料 
+## <a name="issue-you-are-not-seeing-any-linux-data"></a>問題︰您沒有看到任何 Linux 資料 
 
 ### <a name="probable-causes"></a>可能的原因
-* 加入 Azure Monitor 失败
-* 已阻止连接到 Azure Monitor
+* 上架至 Azure 監視器失敗
+* 已封鎖 Azure 監視器的連接
 * 虛擬機器已重新啟動
 * OMI 套件已手動升級為比 Log Analytics Linux 代理程式套件所安裝版本還新的版本
-* DSC 資源在 `omsconfig.log` 記錄中記錄了「找不到類別」錯誤
+* DSC 資源在 `omsconfig.log` 記錄中記錄了「找不到類別」** 錯誤
 * Log Analytics 的資料代理程式已備份
-* DSC 記錄了「目前的組態不存在。請執行 Start-DscConfiguration 命令與 -Path 參數來指定組態檔，並先建立目前的組態。 在 `omsconfig.log` 記錄檔中，但沒有關於 `PerformRequiredConfigurationChecks` 作業的記錄訊息存在。
+* DSC 記錄檔*目前的設定不存在。執行 Update-dscconfiguration 命令搭配-Path 參數，以指定設定檔並先建立目前的設定。* 在 `omsconfig.log` 記錄檔中，但沒有關於 `PerformRequiredConfigurationChecks` 作業的記錄訊息存在。
 
 ### <a name="resolution"></a>解決方案
 1. 安裝所有相依性，例如 auditd 套件。
-2. 通过检查是否存在以下文件，来检查是否已成功加入 Azure Monitor：`/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf`。  如果不成功，請使用 omsadmin.sh 命令列[指示](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md#onboarding-using-the-command-line)重新上架。
+2. 檢查下列檔案是否存在，以確認上架至 Azure 監視器是否成功： `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf` 。  如果不成功，請使用 omsadmin.sh 命令列[指示](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md#onboarding-using-the-command-line)重新上架。
 4. 如果使用 Proxy，請查看上述的 Proxy 疑難排解步驟。
 5. 在某些 Azure 發佈系統中，omid OMI 伺服器精靈未在虛擬機器重新啟動後隨之啟動。 這會導致您看不到 Audit、ChangeTracking 或 UpdateManagement 解決方案相關資料。 因應措施是執行 `sudo /opt/omi/bin/service_control restart` 來手動啟動 omi 伺服器。
 6. OMI 套件手動升級為較新版本後，必須手動加以重新啟動，Log Analytics 代理程式才能繼續運作。 在 OMI 伺服器未於升級後自動啟動的某些散發套件中，此為必要步驟。 請執行 `sudo /opt/omi/bin/service_control restart` 來重新啟動 OMI。
-7. 如果您在 omsconfig.log 中看到 DSC 資源「找不到類別」錯誤，請執行 `sudo /opt/omi/bin/service_control restart`。
-8. 在某些情况下，当 Log Analytics Linux 代理无法与 Azure Monitor 通信时，代理上的数据会备份到整个缓冲区：50 MB。 應該執行下列命令重新啟動代理程式：`/opt/microsoft/omsagent/bin/service_control restart`。
+7. 如果您在 omsconfig.log 中看到 DSC 資源「找不到類別」** 錯誤，請執行 `sudo /opt/omi/bin/service_control restart`。
+8. 在某些情況下，當 Log Analytics Linux 代理程式無法與 Azure 監視器交談時，代理程式上的資料會備份到完整的緩衝區大小： 50 MB。 應該執行下列命令重新啟動代理程式：`/opt/microsoft/omsagent/bin/service_control restart`。
 
     >[!NOTE]
     >此問題已在代理程式 1.1.0-28 版和更新版本中修正
@@ -352,18 +366,18 @@ Success sending oms.syslog.authpriv.info x 1 in 0.91s
 * 未套用入口網站中經過變更的設定
 
 ### <a name="resolution"></a>解決方案
-**背景：**`omsconfig` 是 Log Analytics Linux 代理程式組態代理程式，會每隔五分鐘尋找一次新的入口網站端組態。 此組態接著會套用到位於 /etc/opt/microsoft/omsagent/conf/omsagent.conf 的 Log Analytics Linux 代理程式組態檔。
+**背景：** `omsconfig` 是 Log Analytics Linux 代理程式組態代理程式，會每隔五分鐘尋找一次新的入口網站端組態。 此組態接著會套用到位於 /etc/opt/microsoft/omsagent/conf/omsagent.conf 的 Log Analytics Linux 代理程式組態檔。
 
 * 在某些情況下，Log Analytics Linux 代理程式組態代理程式可能無法與入口網站組態服務進行通訊，以致未套用最新的組態。
   1. 執行 `dpkg --list omsconfig` 或 `rpm -qi omsconfig` 來確認 `omsconfig` 代理程式已安裝。  若未安裝，請重新安裝最新版的 Log Analytics Linux 代理程式。
 
-  2. 通过运行以下命令检查 `omsconfig` 是否可以与 Azure Monitor 进行通信：`sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/GetDscConfiguration.py'`。 此命令會傳回代理程式從服務接收的組態，包括 Syslog 設定、Linux 效能計數器以及自訂記錄。 如果此命令失敗，請執行下列命令 `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/PerformRequiredConfigurationChecks.py'`。 此命令会强制 omsconfig 代理与 Azure Monitor 进行通信并检索最新的配置。
+  2. 執行 `omsconfig` 下列命令，確認代理程式可以與 Azure 監視器通訊 `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/GetDscConfiguration.py'` 。 此命令會傳回代理程式從服務接收的組態，包括 Syslog 設定、Linux 效能計數器以及自訂記錄。 如果此命令失敗，請執行下列命令 `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/PerformRequiredConfigurationChecks.py'`。 此命令會強制 omsconfig 代理程式與 Azure 監視器進行通訊，並取得最新的設定。
 
-## <a name="issue-you-are-not-seeing-any-custom-log-data"></a>問題：您沒有看到任何自訂記錄資料 
+## <a name="issue-you-are-not-seeing-any-custom-log-data"></a>問題︰您沒有看到任何自訂記錄資料 
 
 ### <a name="probable-causes"></a>可能的原因
-* 加入 Azure Monitor 失败。
-* 尚未選取 [將下列組態套用至我的 Linux 伺服器] 設定。
+* 上架到 Azure 監視器失敗。
+* 尚未選取 [將下列組態套用至我的 Linux 伺服器]**** 設定。
 * omsconfig 尚未從服務挑選最新的自訂記錄組態。
 * Log Analytics Linux 代理程式的使用者 `omsagent` 無法存取自訂記錄，因為沒有權限或找不到記錄。  您可能會看到下列錯誤：
  * `[DATETIME] [warn]: file not found. Continuing without tailing it.`
@@ -371,12 +385,12 @@ Success sending oms.syslog.authpriv.info x 1 in 0.91s
 * 已在 Log Analytics Linux 代理程式 1.1.0-217 版中修正的已知競爭條件問題
 
 ### <a name="resolution"></a>解決方案
-1. 通过检查是否存在以下文件，验证是否已成功加入 Azure Monitor：`/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf`。 如果不成功，則：  
+1. 檢查下列檔案是否存在，以確認上架至 Azure 監視器成功： `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf` 。 如果不成功，則：  
 
   1. 使用 omsadmin.sh 命令列[指示](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md#onboarding-using-the-command-line)重新上架。
-  2. 在 Azure 入口網站的 [進階設定] 之下，確定已啟用 [將下列組態套用至我的 Linux 伺服器] 設定。  
+  2. 在 Azure 入口網站的 [進階設定]**** 之下，確定已啟用 [將下列組態套用至我的 Linux 伺服器]**** 設定。  
 
-2. 通过运行以下命令检查 `omsconfig` 是否可以与 Azure Monitor 进行通信：`sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/GetDscConfiguration.py'`。  此命令會傳回代理程式從服務接收的組態，包括 Syslog 設定、Linux 效能計數器以及自訂記錄。 如果此命令失敗，請執行下列命令 `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/PerformRequiredConfigurationChecks.py`。 此命令会强制 omsconfig 代理与 Azure Monitor 进行通信并检索最新的配置。
+2. 執行 `omsconfig` 下列命令，確認代理程式可以與 Azure 監視器通訊 `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/GetDscConfiguration.py'` 。  此命令會傳回代理程式從服務接收的組態，包括 Syslog 設定、Linux 效能計數器以及自訂記錄。 如果此命令失敗，請執行下列命令 `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/PerformRequiredConfigurationChecks.py'`。 此命令會強制 omsconfig 代理程式與 Azure 監視器進行通訊，並取得最新的設定。
 
 **背景：** Log Analytics Linux 代理程式使用者不會以特殊權限使用者 `root` 身分執行，而會以 `omsagent` 使用者身分執行。 在大部分情況下，必須將明確的權限授與給這位使用者，才能讀取特定檔案。 若要授與權限給 `omsagent` 使用者，請執行下列命令︰
 
@@ -391,7 +405,7 @@ Success sending oms.syslog.authpriv.info x 1 in 0.91s
 ```
 sudo sh ./omsagent-*.universal.x64.sh --purge
 ```
-或
+Or
 
 ```
 sudo sh ./onboard_agent.sh --purge

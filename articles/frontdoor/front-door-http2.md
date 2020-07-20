@@ -1,6 +1,6 @@
 ---
-title: Azure Front Door Service - HTTP2 支援 | Microsoft Docs
-description: 此文章可協助您了解 Azure Front Door Service 中的 HTTP/2 支援
+title: Azure Front 門-HTTP2 支援 |Microsoft Docs
+description: 本文可協助您瞭解 Azure Front 中的 HTTP/2 支援
 services: frontdoor
 documentationcenter: ''
 author: sharad4u
@@ -11,15 +11,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 33e738f31be493d5890fc972ec71e7c6cd733bf4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 8a3ae8065553b34a72528cb0f2681e327dc90097
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60736442"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80985179"
 ---
-# <a name="http2-support-in-azure-front-door-service"></a>Azure Front Door Service 中的 HTTP/2 支援
+# <a name="http2-support-in-azure-front-door"></a>Azure Front 中的 HTTP/2 支援
+
+目前，所有 Azure Front 門板設定的 HTTP/2 支援皆為作用中。 客戶不需要採取任何動作。
+
 HTTP/2 是 HTTP/1.1 的重大修訂版。 它提供更快的 Web 效能、更短的回應時間和改善的使用者體驗，但保留常用的 HTTP 方法、狀態碼和語意。 雖然 HTTP/2 是設計來搭配 HTTP 與 HTTPS 使用，但許多用戶端 Web 瀏覽器僅支援透過傳輸層安全性 (TLS) 使用 HTTP/2。
+
+> [!NOTE]
+> HTTP/2 通訊協定支援僅適用于從用戶端到前門的要求。 後端集區中從前端到後端的通訊會透過 HTTP/1.1 進行。 
 
 ### <a name="http2-benefits"></a>HTTP/2 的優點
 
@@ -42,17 +47,13 @@ HTTP/2 的優點包括︰
 
 所有主要瀏覽器都已在其目前的版本中實作 HTTP/2 支援。 不支援的瀏覽器會自動降回 HTTP/1.1。
 
-|[瀏覽器]|最低版本|
+|瀏覽器|最低版本|
 |-------------|------------|
 |Microsoft Edge| 12|
 |Google Chrome| 43|
 |Mozilla Firefox| 38|
 |Opera| 32|
 |Safari| 9|
-
-## <a name="enabling-http2-support-in-azure-front-door-service"></a>啟用 Azure Front Door Service 中的 HTTP/2 支援
-
-目前，所有 Front Door 設定皆已啟用 HTTP/2 支援。 客戶不需要採取任何動作。
 
 ## <a name="next-steps"></a>後續步驟
 

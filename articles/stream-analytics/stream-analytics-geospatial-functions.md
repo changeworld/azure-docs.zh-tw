@@ -1,19 +1,17 @@
 ---
 title: Azure 串流分析地理空間函式簡介
 description: 本文說明 Azure 串流分析作業所使用的地理空間函式。
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: ad789a597da759b9a2d58138c7ed441389a12adb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: f47f34b60c858bb9a0feafd25176e4a811046630
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61479978"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75426232"
 ---
 # <a name="introduction-to-stream-analytics-geospatial-functions"></a>串流分析地理空間函式簡介
 
@@ -27,7 +25,7 @@ Azure 串流分析中的地理空間函式可即時分析串流地理空間資�
 * 異地隔離
 * 跨基地台進行電話追蹤
 
-串流分析查詢語言有數個內建的地理空間函式：**CreateLineString**、**CreatePoint**、**CreatePolygon**、**ST_DISTANCE**、**ST_OVERLAPS**、**ST_INTERSECTS** 與 **ST_WITHIN**。
+串流分析查詢語言具有七個內建的地理空間函式：**CreateLineString**、**Createpoint**、**CreatePolygon**、**ST_DISTANCE**、**ST_OVERLAPS**、**ST_INTERSECTS** 和 **ST_WITHIN**。
 
 ## <a name="createlinestring"></a>CreateLineString
 
@@ -43,18 +41,18 @@ FROM input
 
 ### <a name="input-example"></a>輸入範例  
   
-|緯度|經度|  
+|緯度 (latitude)|經度 (longitude)|  
 |--------------|---------------|  
 |3.0|-10.2|  
 |-87.33|20.2321|  
   
 ### <a name="output-example"></a>輸出範例  
 
- {"type" :"LineString", "coordinates" : [ [-10.2, 3.0], [10.0, 10.0], [10.5, 10.5] ]}
+ {"type" : "LineString", "coordinates" : [ [-10.2, 3.0], [10.0, 10.0], [10.5, 10.5] ]}
 
- {"type" :"LineString", "coordinates" : [ [20.2321, -87.33], [10.0, 10.0], [10.5, 10.5] ]}
+ {"type" : "LineString", "coordinates" : [ [20.2321, -87.33], [10.0, 10.0], [10.5, 10.5] ]}
 
-若要深入了解，請瀏覽 [CreateLineString](https://msdn.microsoft.com/azure/stream-analytics/reference/createlinestring) 參考。
+若要深入了解，請瀏覽 [CreateLineString](https://docs.microsoft.com/stream-analytics-query/createlinestring) 參考。
 
 ## <a name="createpoint"></a>CreatePoint
 
@@ -70,18 +68,18 @@ FROM input
 
 ### <a name="input-example"></a>輸入範例  
   
-|緯度|經度|  
+|緯度 (latitude)|經度 (longitude)|  
 |--------------|---------------|  
 |3.0|-10.2|  
 |-87.33|20.2321|  
   
 ### <a name="output-example"></a>輸出範例
   
- {"type" :"Point", "coordinates" : [-10.2, 3.0]}  
+ {"type" : "Point", "coordinates" : [-10.2, 3.0]}  
   
- {"type" :"Point", "coordinates" : [20.2321, -87.33]}  
+ {"type" : "Point", "coordinates" : [20.2321, -87.33]}  
 
-若要深入了解，請瀏覽 [CreatePoint](https://msdn.microsoft.com/azure/stream-analytics/reference/createpoint) 參考。
+若要深入了解，請瀏覽 [CreatePoint](https://docs.microsoft.com/stream-analytics-query/createpoint) 參考。
 
 ## <a name="createpolygon"></a>CreatePolygon
 
@@ -97,21 +95,21 @@ FROM input
 
 ### <a name="input-example"></a>輸入範例  
   
-|緯度|經度|  
+|緯度 (latitude)|經度 (longitude)|  
 |--------------|---------------|  
 |3.0|-10.2|  
 |-87.33|20.2321|  
   
 ### <a name="output-example"></a>輸出範例  
 
- {"type" :"Polygon", "coordinates" : [[ [-10.2, 3.0], [10.0, 10.0], [10.5, 10.5], [-10.2, 3.0] ]]}
+ {"type" : "Polygon", "coordinates" : [[ [-10.2, 3.0], [10.0, 10.0], [10.5, 10.5], [-10.2, 3.0] ]]}
  
- {"type" :"Polygon", "coordinates" : [[ [20.2321, -87.33], [10.0, 10.0], [10.5, 10.5], [20.2321, -87.33] ]]}
+ {"type" : "Polygon", "coordinates" : [[ [20.2321, -87.33], [10.0, 10.0], [10.5, 10.5], [20.2321, -87.33] ]]}
 
-若要深入了解，請瀏覽 [CreatePolygon](https://msdn.microsoft.com/azure/stream-analytics/reference/createpolygon) 參考。
+若要深入了解，請瀏覽 [CreatePolygon](https://docs.microsoft.com/stream-analytics-query/createpolygon) 參考。
 
 
-## <a name="stdistance"></a>ST_DISTANCE
+## <a name="st_distance"></a>ST_DISTANCE
 `ST_DISTANCE` 函式會傳回兩點之間的距離 (以公尺為單位)。 
 
 下列查詢使用 `ST_DISTANCE` 以在加油站與車輛的距離小於 10 公里時產生事件。
@@ -122,9 +120,9 @@ FROM Cars c
 JOIN Station s ON ST_DISTANCE(c.Location, s.Location) < 10 * 1000
 ```
 
-若要深入了解，請瀏覽 [ST_DISTANCE](https://msdn.microsoft.com/azure/stream-analytics/reference/st-distance) 參考。
+若要深入了解，請瀏覽 [ST_DISTANCE](https://docs.microsoft.com/stream-analytics-query/st-distance) 參考。
 
-## <a name="stoverlaps"></a>ST_OVERLAPS
+## <a name="st_overlaps"></a>ST_OVERLAPS
 `ST_OVERLAPS` 函式會比較兩個多邊形。 如果多邊形重疊，函數會傳回 1。 如果多邊形未重疊，則函數會傳回 0。 
 
 下列查詢使用 `ST_OVERLAPS` 以在大樓位於可能淹水的區域內時產生事件。
@@ -143,9 +141,9 @@ FROM Cars c, Storm s
 JOIN Storm s ON ST_OVERLAPS(c.Location, s.Course)
 ```
 
-若要深入了解，請瀏覽 [ST_OVERLAPS](https://msdn.microsoft.com/azure/stream-analytics/reference/st-overlaps) 參考。
+若要深入了解，請瀏覽 [ST_OVERLAPS](https://docs.microsoft.com/stream-analytics-query/st-overlaps) 參考。
 
-## <a name="stintersects"></a>ST_INTERSECTS
+## <a name="st_intersects"></a>ST_INTERSECTS
 `ST_INTERSECTS` 函式會比較兩個 LineString。 如果 LineString 相交，函式會傳回 1。 如果 LineString 未相交，則函式會傳回 0。
 
 下列查詢範例使用 `ST_INTERSECTS` 來判斷柏油路是否與泥土路相交。
@@ -160,8 +158,8 @@ FROM input
   
 |datacenterArea|stormArea|  
 |--------------------|---------------|  
-|{“type”:”LineString”, “coordinates”: [ [-10.0, 0.0], [0.0, 0.0], [10.0, 0.0] ]}|{“type”:”LineString”, “coordinates”: [ [0.0, 10.0], [0.0, 0.0], [0.0, -10.0] ]}|  
-|{“type”:”LineString”, “coordinates”: [ [-10.0, 0.0], [0.0, 0.0], [10.0, 0.0] ]}|{“type”:”LineString”, “coordinates”: [ [-10.0, 10.0], [0.0, 10.0], [10.0, 10.0] ]}|  
+|{"type"： "LineString"，"座標"： [[-10.0，0.0]，[0.0，0.0]，[10.0，0.0]]}|{"type"： "LineString"，"座標"： [[0.0，10.0]，[0.0，0.0]，[0.0，-10.0]]}|  
+|{"type"： "LineString"，"座標"： [[-10.0，0.0]，[0.0，0.0]，[10.0，0.0]]}|{"type"： "LineString"，"座標"： [[-10.0，10.0]，[0.0，10.0]，[10.0，10.0]]}|  
   
 ### <a name="output-example"></a>輸出範例  
 
@@ -169,9 +167,9 @@ FROM input
   
  0  
 
-若要深入了解，請瀏覽 [ST_INTERSECTS](https://msdn.microsoft.com/azure/stream-analytics/reference/st-intersects) 參考。
+若要深入了解，請瀏覽 [ST_INTERSECTS](https://docs.microsoft.com/stream-analytics-query/st-intersects) 參考。
 
-## <a name="stwithin"></a>ST_WITHIN
+## <a name="st_within"></a>ST_WITHIN
 `ST_WITHIN` 函式可判斷某個點或多邊形是否在某個多邊形內。 如果該多邊形包含點或多邊形，函式會傳回 1。 如果點或多邊形未在所宣告的多邊形內，則函式會傳回 0。
 
 下列查詢範例使用 `ST_WITHIN` 來判斷交貨目的地所在點是否位於指定的倉儲多邊形內。
@@ -186,8 +184,8 @@ FROM input
   
 |deliveryDestination|warehouse|  
 |-------------------------|---------------|  
-|{“type”:”Point”, “coordinates”: [76.6, 10.1]}|{“type”:”Polygon”, “coordinates”: [ [0.0, 0.0], [10.0, 0.0], [10.0, 10.0], [0.0, 10.0], [0.0, 0.0] ]}|  
-|{“type”:”Point”, “coordinates”: [15.0, 15.0]}|{“type”:”Polygon”, “coordinates”: [ [10.0, 10.0], [20.0, 10.0], [20.0, 20.0], [10.0, 20.0], [10.0, 10.0] ]}|  
+|{"type"： "Point"，"座標"： [76.6，10.1]}|{"type"： "多邊形"，"座標"： [[0.0，0.0]，[10.0，0.0]，[10.0，10.0]，[0.0，10.0]，[0.0，0.0]]}|  
+|{"type"： "Point"，"座標"： [15.0，15.0]}|{"type"： "多邊形"，"座標"： [[10.0，10.0]，[20.0，10.0]，[20.0，20.0]，[10.0，20.0]，[10.0，10.0]]}|  
   
 ### <a name="output-example"></a>輸出範例  
 
@@ -195,12 +193,12 @@ FROM input
   
  1  
 
-若要深入了解，請瀏覽 [ST_WITHIN](https://msdn.microsoft.com/azure/stream-analytics/reference/st-within) 參考。
+若要深入了解，請瀏覽 [ST_WITHIN](https://docs.microsoft.com/stream-analytics-query/st-within) 參考。
 
 ## <a name="next-steps"></a>後續步驟
 
 * [Azure Stream Analytics 介紹](stream-analytics-introduction.md)
 * [開始使用 Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [調整 Azure Stream Analytics 工作](stream-analytics-scale-jobs.md)
-* [Azure 流分析查询语言参考](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Azure Stream Analytics 查詢語言參考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure 串流分析管理 REST API 參考](https://msdn.microsoft.com/library/azure/dn835031.aspx)

@@ -1,25 +1,17 @@
 ---
 title: 探索您的 Azure 資源
-description: 了解使用 Resource Graph 查詢語言來瀏覽您的資源，並探索它們連線的方式。
-author: DCtheGeek
-ms.author: dacoulte
-ms.date: 04/23/2019
+description: 了解使用 Resource Graph 查詢語言來瀏覽您的資源，並探索其連線的方式。
+ms.date: 05/20/2020
 ms.topic: conceptual
-ms.service: resource-graph
-manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: 0b4a75558f5e82b707ae5d012acef4d2c5c4b7a0
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
-ms.translationtype: MT
+ms.openlocfilehash: 33bf457a57f7e62b9c99471bcb7676f62046f61d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64723803"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83654494"
 ---
 # <a name="explore-your-azure-resources-with-resource-graph"></a>使用 Resource Graph 探索您的 Azure 資源
 
 Azure Resource Graph 提供了快速且大規模地探索與找出 Azure 資源的功能。 專為快速回應而設計，很適合用來了解您的環境以及組成您的 Azure 資源的屬性。
-
-[!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
 
 ## <a name="explore-virtual-machines"></a>探索虛擬機器
 
@@ -30,16 +22,17 @@ Azure 中的常見資源是虛擬機器。 作為一種資源類型，虛擬機�
 讓我們從一個簡單的查詢開始，以便從我們的環境中取得單一 VM，並查看傳回的屬性。
 
 ```kusto
-where type =~ 'Microsoft.Compute/virtualMachines'
+Resources
+| where type =~ 'Microsoft.Compute/virtualMachines'
 | limit 1
 ```
 
 ```azurecli-interactive
-az graph query -q "where type =~ 'Microsoft.Compute/virtualMachines' | limit 1"
+az graph query -q "Resources | where type =~ 'Microsoft.Compute/virtualMachines' | limit 1"
 ```
 
 ```azurepowershell-interactive
-Search-AzGraph -Query "where type =~ 'Microsoft.Compute/virtualMachines' | limit 1" | ConvertTo-Json -Depth 100
+Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachines' | limit 1" | ConvertTo-Json -Depth 100
 ```
 
 > [!NOTE]
@@ -110,23 +103,24 @@ JSON 結果的結構類似於下列範例：
 ]
 ```
 
-屬性會告訴我們，虛擬機器資源本身，舉凡 SKU、 作業系統、 磁碟和標記的其他資訊，而且訂用帳戶與資源群組的成員。
+屬性告訴我們有關虛擬機器資源本身的其他資訊，包括 SKU、作業系統、磁碟，標記以及它所屬的資源群組和訂用帳戶。
 
 ### <a name="virtual-machines-by-location"></a>依位置劃分的虛擬機器
 
 根據我們對虛擬機器資源的了解，讓我們使用 **location** 屬性依位置計算所有虛擬機器。 若要更新查詢，我們將移除限制並摘要說明位置值的計數。
 
 ```kusto
-where type =~ 'Microsoft.Compute/virtualMachines'
+Resources
+| where type =~ 'Microsoft.Compute/virtualMachines'
 | summarize count() by location
 ```
 
 ```azurecli-interactive
-az graph query -q "where type =~ 'Microsoft.Compute/virtualMachines' | summarize count() by location"
+az graph query -q "Resources | where type =~ 'Microsoft.Compute/virtualMachines' | summarize count() by location"
 ```
 
 ```azurepowershell-interactive
-Search-AzGraph -Query "where type =~ 'Microsoft.Compute/virtualMachines' | summarize count() by location"
+Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachines' | summarize count() by location"
 ```
 
 JSON 結果的結構類似於下列範例：
@@ -155,16 +149,17 @@ JSON 結果的結構類似於下列範例：
 回到原始的虛擬機器屬性，讓我們嘗試尋找 SKU 大小為 **Standard_B2s** 的所有虛擬機器。 查看傳回的 JSON，我們會看到它儲存在 **properties.hardwareprofile.vmsize** 中。 我們將更新查詢以尋找符合這個大小的所有 VM，並僅傳回 VM 和區域的名稱。
 
 ```kusto
-where type =~ 'Microsoft.Compute/virtualMachines' and properties.hardwareProfile.vmSize == 'Standard_B2s'
-| project name, resourceGroup"
+Resources
+| where type =~ 'Microsoft.Compute/virtualMachines' and properties.hardwareProfile.vmSize == 'Standard_B2s'
+| project name, resourceGroup
 ```
 
 ```azurecli-interactive
-az graph query -q "where type =~ 'Microsoft.Compute/virtualMachines' and properties.hardwareProfile.vmSize == 'Standard_B2s' | project name, resourceGroup"
+az graph query -q "Resources | where type =~ 'Microsoft.Compute/virtualMachines' and properties.hardwareProfile.vmSize == 'Standard_B2s' | project name, resourceGroup"
 ```
 
 ```azurepowershell-interactive
-Search-AzGraph -Query "where type =~ 'Microsoft.Compute/virtualMachines' and properties.hardwareProfile.vmSize == 'Standard_B2s' | project name, resourceGroup"
+Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachines' and properties.hardwareProfile.vmSize == 'Standard_B2s' | project name, resourceGroup"
 ```
 
 ### <a name="virtual-machines-connected-to-premium-managed-disks"></a>連線至進階受控磁碟的虛擬機器
@@ -172,21 +167,22 @@ Search-AzGraph -Query "where type =~ 'Microsoft.Compute/virtualMachines' and pro
 如果我們想要取得連結到這些 **Standard_B2s** 虛擬機器的進階受控磁碟詳細資訊，可以展開查詢以提供我們這些受控磁碟的資源識別碼。
 
 ```kusto
-where type =~ 'Microsoft.Compute/virtualmachines' and properties.hardwareProfile.vmSize == 'Standard_B2s'
+Resources
+| where type =~ 'Microsoft.Compute/virtualmachines' and properties.hardwareProfile.vmSize == 'Standard_B2s'
 | extend disk = properties.storageProfile.osDisk.managedDisk
 | where disk.storageAccountType == 'Premium_LRS'
 | project disk.id
 ```
 
 > [!NOTE]
-> 取得 SKU 的另一種方法是使用 **aliases** 屬性 **Microsoft.Compute/virtualMachines/sku.name**。 請參閱[顯示別名](../samples/starter.md#show-aliases)並[顯示不同的別名值](../samples/starter.md#distinct-alias-values)範例。
+> 取得 SKU 的另一種方法是使用 **aliases** 屬性 **Microsoft.Compute/virtualMachines/sku.name**。 請參閱[顯示別名](../samples/starter.md#show-aliases)和[顯示不同的別名值](../samples/starter.md#distinct-alias-values)範例。
 
 ```azurecli-interactive
-az graph query -q "where type =~ 'Microsoft.Compute/virtualmachines' and properties.hardwareProfile.vmSize == 'Standard_B2s' | extend disk = properties.storageProfile.osDisk.managedDisk | where disk.storageAccountType == 'Premium_LRS' | project disk.id"
+az graph query -q "Resources | where type =~ 'Microsoft.Compute/virtualmachines' and properties.hardwareProfile.vmSize == 'Standard_B2s' | extend disk = properties.storageProfile.osDisk.managedDisk | where disk.storageAccountType == 'Premium_LRS' | project disk.id"
 ```
 
 ```azurepowershell-interactive
-  Search-AzGraph -Query "where type =~ 'Microsoft.Compute/virtualmachines' and properties.hardwareProfile.vmSize == 'Standard_B2s' | extend disk = properties.storageProfile.osDisk.managedDisk | where disk.storageAccountType == 'Premium_LRS' | project disk.id"
+Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualmachines' and properties.hardwareProfile.vmSize == 'Standard_B2s' | extend disk = properties.storageProfile.osDisk.managedDisk | where disk.storageAccountType == 'Premium_LRS' | project disk.id"
 ```
 
 結果是一份磁碟識別碼清單。
@@ -206,7 +202,8 @@ az graph query -q "where type =~ 'Microsoft.Compute/virtualmachines' and propert
 ```
 
 ```kusto
-where type =~ 'Microsoft.Compute/disks' and id == '/subscriptions/<subscriptionId>/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/disks/ContosoVM1_OsDisk_1_9676b7e1b3c44e2cb672338ebe6f5166'
+Resources
+| where type =~ 'Microsoft.Compute/disks' and id == '/subscriptions/<subscriptionId>/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/disks/ContosoVM1_OsDisk_1_9676b7e1b3c44e2cb672338ebe6f5166'
 ```
 
 在執行查詢之前，我們怎麼知道 **type** 現在應該是 **Microsoft.Compute/disks**？
@@ -216,11 +213,11 @@ where type =~ 'Microsoft.Compute/disks' and id == '/subscriptions/<subscriptionI
 > 若要使此範例正常運作，必須使用您自己的環境中的結果取代 [識別碼] 欄位。
 
 ```azurecli-interactive
-az graph query -q "where type =~ 'Microsoft.Compute/disks' and id == '/subscriptions/<subscriptionId>/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/disks/ContosoVM1_OsDisk_1_9676b7e1b3c44e2cb672338ebe6f5166'"
+az graph query -q "Resources | where type =~ 'Microsoft.Compute/disks' and id == '/subscriptions/<subscriptionId>/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/disks/ContosoVM1_OsDisk_1_9676b7e1b3c44e2cb672338ebe6f5166'"
 ```
 
 ```azurepowershell-interactive
-Search-AzGraph -Query "where type =~ 'Microsoft.Compute/disks' and id == '/subscriptions/<subscriptionId>/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/disks/ContosoVM1_OsDisk_1_9676b7e1b3c44e2cb672338ebe6f5166'"
+Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/disks' and id == '/subscriptions/<subscriptionId>/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/disks/ContosoVM1_OsDisk_1_9676b7e1b3c44e2cb672338ebe6f5166'"
 ```
 
 JSON 結果的結構類似於下列範例：
@@ -259,35 +256,58 @@ JSON 結果的結構類似於下列範例：
 
 ## <a name="explore-virtual-machines-to-find-public-ip-addresses"></a>瀏覽虛擬機器以尋找公用 IP 位址
 
-這組 Azure CLI 查詢會先尋找及儲存所有連線到虛擬機器的網路介面 (NIC) 資源。 然後它會使用 NIC 清單來尋找每個屬於公用 IP 位址的 IP 位址資源，並儲存這些值。 最後，它會提供公用 IP 位址清單。
+這組查詢會先尋找及儲存所有連線到虛擬機器的網路介面 (NIC) 資源。 然後查詢會使用 NIC 清單來尋找每個屬於公用 IP 位址的 IP 位址資源，並儲存這些值。 最後，查詢會提供公用 IP 位址清單。
 
 ```azurecli-interactive
-# Use Resource Graph to get all NICs and store in the 'nic' variable
-az graph query -q "where type =~ 'Microsoft.Compute/virtualMachines' | project nic = tostring(properties['networkProfile']['networkInterfaces'][0]['id']) | where isnotempty(nic) | distinct nic | limit 20" --output table | tail -n +3 > nics.txt
+# Use Resource Graph to get all NICs and store in the 'nics.txt' file
+az graph query -q "Resources | where type =~ 'Microsoft.Compute/virtualMachines' | project nic = tostring(properties['networkProfile']['networkInterfaces'][0]['id']) | where isnotempty(nic) | distinct nic | limit 20" --output table | tail -n +3 > nics.txt
 
 # Review the output of the query stored in 'nics.txt'
 cat nics.txt
 ```
 
-在下一個查詢中使用 `nics.txt` 檔案來取得相關的網路介面資源詳細資料，其中有一個公用 IP 位址附加至 NIC。
+```azurepowershell-interactive
+# Use Resource Graph to get all NICs and store in the $nics variable
+$nics = Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachines' | project nic = tostring(properties['networkProfile']['networkInterfaces'][0]['id']) | where isnotempty(nic) | distinct nic | limit 20"
+
+# Review the output of the query stored in the variable
+$nics.nic
+```
+
+在下一個查詢中使用檔案 (Azure CLI) 或變數 (Azure PowerShell) 來取得相關的網路介面資源詳細資料，其中有一個公用 IP 位址附加至 NIC。
 
 ```azurecli-interactive
 # Use Resource Graph with the 'nics.txt' file to get all related public IP addresses and store in 'publicIp.txt' file
-az graph query -q="where type =~ 'Microsoft.Network/networkInterfaces' | where id in ('$(awk -vORS="','" '{print $0}' nics.txt | sed 's/,$//')') | project publicIp = tostring(properties['ipConfigurations'][0]['properties']['publicIPAddress']['id']) | where isnotempty(publicIp) | distinct publicIp" --output table | tail -n +3 > ips.txt
+az graph query -q="Resources | where type =~ 'Microsoft.Network/networkInterfaces' | where id in ('$(awk -vORS="','" '{print $0}' nics.txt | sed 's/,$//')') | project publicIp = tostring(properties['ipConfigurations'][0]['properties']['publicIPAddress']['id']) | where isnotempty(publicIp) | distinct publicIp" --output table | tail -n +3 > ips.txt
 
 # Review the output of the query stored in 'ips.txt'
 cat ips.txt
 ```
 
-最後，使用 `ips.txt` 中儲存的公用 IP 位址資源清單，從中取得實際的公用 IP 位址並顯示。
+```azurepowershell-interactive
+# Use Resource Graph  with the $nics variable to get all related public IP addresses and store in $ips variable
+$ips = Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Network/networkInterfaces' | where id in ('$($nics.nic -join "','")') | project publicIp = tostring(properties['ipConfigurations'][0]['properties']['publicIPAddress']['id']) | where isnotempty(publicIp) | distinct publicIp"
+
+# Review the output of the query stored in the variable
+$ips.publicIp
+```
+
+最後，使用檔案 (Azure CLI) 或變數 (Azure PowerShell) 中儲存的公用 IP 位址資源清單，從相關的物件中取得實際的公用 IP 位址並顯示。
 
 ```azurecli-interactive
 # Use Resource Graph with the 'ips.txt' file to get the IP address of the public IP address resources
-az graph query -q="where type =~ 'Microsoft.Network/publicIPAddresses' | where id in ('$(awk -vORS="','" '{print $0}' ips.txt | sed 's/,$//')') | project ip = tostring(properties['ipAddress']) | where isnotempty(ip) | distinct ip" --output table
+az graph query -q="Resources | where type =~ 'Microsoft.Network/publicIPAddresses' | where id in ('$(awk -vORS="','" '{print $0}' ips.txt | sed 's/,$//')') | project ip = tostring(properties['ipAddress']) | where isnotempty(ip) | distinct ip" --output table
 ```
+
+```azurepowershell-interactive
+# Use Resource Graph with the $ips variable to get the IP address of the public IP address resources
+Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Network/publicIPAddresses' | where id in ('$($ips.publicIp -join "','")') | project ip = tostring(properties['ipAddress']) | where isnotempty(ip) | distinct ip"
+```
+
+若要查看如何使用 `join` 運算子在單一查詢中完成這些步驟，請參閱[列出虛擬機器與其網路介面及公用 IP](../samples/advanced.md#join-vmpip) 範例。
 
 ## <a name="next-steps"></a>後續步驟
 
-- 深入了解[查詢語言](query-language.md)
-- 請參閱[入門查詢](../samples/starter.md)中使用的語言
-- 請參閱[進階查詢](../samples/advanced.md)中的進階使用
+- 深入了解[查詢語言](query-language.md)。
+- 請參閱[入門查詢](../samples/starter.md)中使用的語言。
+- 請參閱[進階查詢](../samples/advanced.md)中的進階使用方式。

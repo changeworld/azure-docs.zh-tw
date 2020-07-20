@@ -1,22 +1,17 @@
 ---
-title: 服務對服務驗證︰使用 .NET SDK 搭配 Azure Active Directory 向 Azure Data Lake Storage Gen1 進行驗證 | Microsoft Docs
+title: .NET-服務對服務驗證-Data Lake Storage Gen1
 description: 了解如何使用 .NET SDK 搭配 Azure Active Directory 向 Azure Data Lake Storage Gen1 完成服務對服務驗證
-services: data-lake-store
-documentationcenter: ''
 author: twooley
-manager: cgronlun
-editor: cgronlun
 ms.service: data-lake-store
-ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: be8d4172476ca0613e80e62739b9ab36f8ab4c3b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 19b4ac619ec3e72c787efc8e9f043f42dbd8b09b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60197729"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85505149"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-net-sdk"></a>使用 .NET SDK 向 Azure Data Lake Storage Gen1 進行服務對服務驗證
 > [!div class="op_single_selector"]
@@ -30,37 +25,30 @@ ms.locfileid: "60197729"
 在此文章中，您會了解如何使用 .NET SDK 向 Azure Data Lake Storage Gen1 進行服務對服務驗證。 針對使用 .NET SDK 向 Data Lake Storage Gen1 進行使用者驗證，請參閱[使用 .NET SDK 向 Data Lake Storage Gen1 進行使用者驗證](data-lake-store-end-user-authenticate-net-sdk.md)。
 
 ## <a name="prerequisites"></a>必要條件
-* **Visual Studio 2013、2015 或 2017**。 以下指示使用 Visual Studio 2017。
+* **Visual Studio 2013 或**更新版本。 下列指示使用 Visual Studio 2019。
 
 * **Azure 訂用帳戶**。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
 
 * **建立 Azure Active Directory "Web" 應用程式**。 您必須已經完成[使用 Azure Active Directory 向 Data Lake Storage Gen1 進行服務對服務驗證](data-lake-store-service-to-service-authenticate-using-active-directory.md)中的步驟。
 
 ## <a name="create-a-net-application"></a>建立 .NET 應用程式
-1. 開啟 Visual Studio，建立主控台應用程式。
-2. 從 [檔案] 功能表中，按一下 [新增]，再按 [專案]。
-3. 在 [ **新增專案**] 中，輸入或選取下列值：
+1. 在 Visual Studio 中，依序**選取 [檔案**] 功能表、[**新增**] 和 [**專案**]。
+2. 選擇 [**主控台應用程式（.NET Framework）**]，然後選取 **[下一步]**。
+3. 在 [專案名稱]**** 中，輸入 `CreateADLApplication`，然後選取 [建立]****。
 
-   | 屬性 | Value |
-   | --- | --- |
-   | 類別 |範本/Visual C#/Windows |
-   | 範本 |主控台應用程式 |
-   | Name |CreateADLApplication |
-4. 按一下 [確定]  以建立專案。
-
-5. 將 NuGet 套件新增至您的專案。
+4. 將 NuGet 套件新增至您的專案。
 
    1. 在方案總管中以滑鼠右鍵按一下專案名稱，然後按一下 [ **管理 NuGet 封裝**]。
-   2. 在 [NuGet 套件管理員] 索引標籤中，確定 [套件來源] 設為 [nuget.org]，且已選取 [包含發行前版本] 核取方塊。
+   2. 在 [ **NuGet 套件管理員**] 索引標籤中，確定已選取 [**套件來源**] 設定為 [ **nuget.org** ]，並已勾選 [**發行**前版本] 核取方塊。
    3. 搜尋並安裝下列 NuGet 封裝：
 
       * `Microsoft.Azure.Management.DataLake.Store` - 本教學課程使用 v2.1.3-preview。
       * `Microsoft.Rest.ClientRuntime.Azure.Authentication` - 本教學課程使用 v2.2.12。
 
         ![新增 NuGet 來源](./media/data-lake-store-get-started-net-sdk/data-lake-store-install-nuget-package.png "建立新的 Azure Data Lake 帳戶")
-   4. 關閉 [NuGet 套件管理員]。
+   4. 關閉 [ **NuGet 套件管理員**]。
 
-6. 開啟 **Program.cs**，刪除現有的程式碼，然後納入下列陳述式以新增命名空間的參考。
+5. 開啟 **Program.cs**，刪除現有的程式碼，然後納入下列陳述式以新增命名空間的參考。
 
 ```csharp
 using System;
@@ -122,5 +110,5 @@ private static void Main(string[] args)
 ## <a name="next-steps"></a>後續步驟
 在此文章中，您已了解如何使用 .NET SDK 透過服務對服務驗證向 Data Lake Storage Gen1 進行驗證。 您現在可以看看下列文章，了解如何使用 .NET SDK 搭配 Data Lake Storage Gen1。
 
-* [使用 .NET SDK 對 Data Lake Storage Gen1 進行帳戶管理作業](data-lake-store-get-started-net-sdk.md)
+* [使用.NET SDK 在 Data Lake Storage Gen1 上進行帳戶管理作業](data-lake-store-get-started-net-sdk.md)
 * [使用 .NET SDK 對 Data Lake Storage Gen1 進行資料作業](data-lake-store-data-operations-net-sdk.md)

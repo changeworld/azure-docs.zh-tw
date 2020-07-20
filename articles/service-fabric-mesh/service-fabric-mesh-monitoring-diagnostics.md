@@ -1,26 +1,17 @@
 ---
-title: Azure Service Fabric Mesh 應用程式的監視和診斷 | Microsoft Docs
+title: Azure Service Fabric 網格應用程式中的監視和診斷
 description: 了解如何在 Azure 上監視和診斷 Service Fabric Mesh 應用程式。
-services: service-fabric-mesh
-documentationcenter: .net
 author: srrengar
-manager: timlt
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/19/2019
 ms.author: srrengar
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 36c9a5d75c4a72365638619ab85d451df647feb3
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: e940f0cf0d1547b317cd9e7bd15ac5486d5e70b2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64939830"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248402"
 ---
 # <a name="monitoring-and-diagnostics"></a>監視和診斷
 Azure Service Fabric Mesh 是一個受到完整管理的服務，讓開發人員能夠部署微服務應用程式，而不需管理虛擬機器、儲存體或網路功能。 Service Fabric Mesh 的監視和診斷可歸類為三種主要診斷資料類型：
@@ -40,7 +31,7 @@ az mesh code-package-log get --resource-group <nameOfRG> --app-name <nameOfApp> 
 ```
 
 > [!NOTE]
-> 您可以使用 "az mesh service-replica" 命令來取得複本名稱。 複本名稱會遞增 0 的整數。
+> 您可以使用 "az mesh service-replica" 命令來取得複本名稱。 複本名稱是從0遞增的整數。
 
 從投票應用程式的 VotingWeb.Code 容器查看記錄時，其外觀如下所示：
 
@@ -50,26 +41,26 @@ az mesh code-package-log get --resource-group <nameOfRG> --application-name SbzV
 
 ## <a name="container-metrics"></a>容器計量 
 
-網狀結構環境會顯示少數幾個度量指出您的容器執行的方式。 下列計量是透過 Azure 入口網站和 Azure 監視 CLI:
+網格環境會公開一些計量，指出容器的執行方式。 您可以透過 Azure 入口網站和 Azure 監視器 CLI 取得下列計量：
 
-| 計量 | 描述 | Units|
+| 計量 | 描述 | 單位|
 |----|----|----|
-| CpuUtilization | ActualCpu/AllocatedCpu 百分比 | % |
-| MemoryUtilization | ActualMem/AllocatedMem 百分比 | % |
-| AllocatedCpu | 根據 Azure Resource Manager 範本配置的 Cpu | Millicores |
+| CpuUtilization | 以百分比表示的 ActualCpu/AllocatedCpu | % |
+| MemoryUtilization | 以百分比表示的 ActualMem/AllocatedMem | % |
+| AllocatedCpu | 根據 Azure Resource Manager 範本配置的 Cpu | Millicore |
 | AllocatedMemory | 根據 Azure Resource Manager 範本配置的記憶體 | MB |
-| ActualCpu | CPU 使用率 | Millicores |
+| ActualCpu | CPU 使用量 | Millicore |
 | ActualMemory | 記憶體使用量 | MB |
-| ContainerStatus | 0-無效：容器狀態為不明 <br> 1-擱置中：若要啟動已排程的容器 <br> 2-啟動：容器是進行啟動程序 <br> 3-啟動：已成功啟動容器 <br> 4-停止：正在停止容器 <br> 5-停止時間：已成功停止容器 | N/A |
-| ApplicationStatus | 0-未知：狀態不是可擷取 <br> 1-準備開始：已成功執行應用程式 <br> 2-將升級：沒有正在進行升級 <br> 3-建立：正在建立應用程式 <br> 4-刪除：正在刪除應用程式 <br> 5-失敗：無法部署應用程式 | N/A |
-| ServiceStatus | 0-無效：服務目前沒有健全狀況狀態 <br> 1-[確定]:服務狀況良好  <br> 2-警告：可能有錯誤需要調查 <br> 3-錯誤：發生問題，需要調查 <br> 4-未知：狀態不是可擷取 | N/A |
-| ServiceReplicaStatus | 0-無效：複本目前沒有健全狀況狀態 <br> 1-[確定]:服務狀況良好  <br> 2-警告：可能有錯誤需要調查 <br> 3-錯誤：發生問題，需要調查 <br> 4-未知：狀態不是可擷取 | N/A | 
-| RestartCount | 容器重新啟動的次數 | N/A |
+| ContainerStatus | 0-無效：容器狀態不明 <br> 1-暫止：容器已排程啟動 <br> 2-正在啟動：容器正在啟動中 <br> 3-已啟動：容器已成功啟動 <br> 4-正在停止：正在停止容器 <br> 5-已停止：容器已成功停止 | N/A |
+| ApplicationStatus | 0-未知：無法抓取狀態 <br> 1-就緒：應用程式已成功執行 <br> 2-升級：正在進行升級 <br> 3-建立：正在建立應用程式 <br> 4-正在刪除：正在刪除應用程式 <br> 5-失敗：無法部署應用程式 | N/A |
+| ServiceStatus | 0-無效：服務目前沒有健全狀況狀態 <br> 1-確定：服務狀況良好  <br> 2-警告：可能有一些錯誤需要調查 <br> 3-錯誤：有問題需要調查 <br> 4-未知：無法抓取狀態 | N/A |
+| ServiceReplicaStatus | 0-無效：複本目前沒有健全狀況狀態 <br> 1-確定：服務狀況良好  <br> 2-警告：可能有一些錯誤需要調查 <br> 3-錯誤：有問題需要調查 <br> 4-未知：無法抓取狀態 | N/A | 
+| RestartCount | 容器重新開機次數 | N/A |
 
 > [!NOTE]
-> ServiceStatus 和 ServiceReplicaStatus 值是相同[HealthState](https://docs.microsoft.com/dotnet/api/system.fabric.health.healthstate?view=azure-dotnet) Service Fabric 中。 
+> ServiceStatus 和 ServiceReplicaStatus 值與 Service Fabric 中的[HealthState](/dotnet/api/system.fabric.health.healthstate?view=azure-dotnet)相同。 
 
-每個計量是位於不同的維度，以便您可以看到不同層級的彙總。 目前維度的清單如下所示：
+每個計量都可在不同的維度上使用，因此您可以在不同的層級上查看匯總。 目前的維度清單如下所示：
 
 * ApplicationName
 * ServiceName
@@ -77,42 +68,42 @@ az mesh code-package-log get --resource-group <nameOfRG> --application-name SbzV
 * CodePackageName
 
 > [!NOTE]
-> CodePackageName 維度不是適用於 Linux 的應用程式。 
+> Linux 應用程式無法使用 [CodePackageName] 維度。 
 
-每個維度對應於不同元件[Service Fabric 應用程式模型](service-fabric-mesh-service-fabric-resources.md#applications-and-services)
+每個維度都會對應至[Service Fabric 應用程式模型](service-fabric-mesh-service-fabric-resources.md#applications-and-services)的不同元件
 
 ### <a name="azure-monitor-cli"></a>Azure 監視器 CLI
 
-命令的完整清單位於[Azure 監視器 CLI 文件](https://docs.microsoft.com/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list)但我們已包含下列幾個實用範例 
+[AZURE 監視器 CLI](/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list)檔中提供完整的命令清單，但我們已包含以下幾個實用的範例 
 
 在每個範例中，資源識別碼會遵循此模式
 
 `"/subscriptions/<your sub ID>/resourcegroups/<your RG>/providers/Microsoft.ServiceFabricMesh/applications/<your App name>"`
 
 
-* CPU 使用率的應用程式中的容器
+* 應用程式中容器的 CPU 使用率
 
 ```cli
     az monitor metrics list --resource <resourceId> --metric "CpuUtilization"
 ```
-* 針對每個服務複本的記憶體使用量
+* 每個服務複本的記憶體使用率
 ```cli
     az monitor metrics list --resource <resourceId> --metric "MemoryUtilization" --dimension "ServiceReplicaName"
 ``` 
 
-* 重新啟動在 1 小時 視窗中的每個容器。 
+* 在1小時的時間範圍內重新開機每個容器 
 ```cli
     az monitor metrics list --resource <resourceId> --metric "RestartCount" --start-time 2019-02-01T00:00:00Z --end-time 2019-02-01T01:00:00Z
 ``` 
 
-* 在服務之間的平均 CPU 使用率名為"VotingWeb 」 在 1 小時 視窗
+* 1小時時間範圍內名為 "VotingWeb" 之服務的平均 CPU 使用率
 ```cli
     az monitor metrics list --resource <resourceId> --metric "CpuUtilization" --start-time 2019-02-01T00:00:00Z --end-time 2019-02-01T01:00:00Z --aggregation "Average" --filter "ServiceName eq 'VotingWeb'"
 ``` 
 
 ### <a name="metrics-explorer"></a>計量瀏覽器
 
-計量瀏覽器是在入口網站中您可以在此視覺化您的 Mesh 應用程式的所有計量刀鋒視窗。 在入口網站和 Azure 監視器刀鋒視窗中，後者都可用來檢視所有 Azure 資源支援 Azure 監視器計量中的應用程式的頁面存取此刀鋒視窗。 
+計量瀏覽器是入口網站中的一個分頁，您可以在其中視覺化網格應用程式的所有計量。 此分頁可以在入口網站的應用程式頁面和 Azure 監視器分頁中存取，後者可用來查看支援 Azure 監視器的所有 Azure 資源的計量。 
 
 ![計量瀏覽器](./media/service-fabric-mesh-monitoring-diagnostics/metricsexplorer.png)
 
@@ -127,4 +118,4 @@ In addition to the metrics explorer, we also have a dashboard available out of t
 
 ## <a name="next-steps"></a>後續步驟
 * 若要深入了解 Service Fabric Mesh，請閱讀 [Service Fabric Mesh 概觀](service-fabric-mesh-overview.md)。
-* 若要深入了解 Azure 監視器計量命令，請參閱[Azure 監視器 CLI 文件](https://docs.microsoft.com/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list)。
+* 若要深入瞭解 Azure 監視器計量命令，請參閱[AZURE 監視器 CLI](/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list)檔。

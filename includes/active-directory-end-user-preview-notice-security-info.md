@@ -9,11 +9,11 @@ ms.date: 07/25/2018
 ms.author: lizross
 ms.custom: include file
 ms.openlocfilehash: b645634fc6e0c1edac3951be18dc6eae9ae18877
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60473219"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "67174555"
 ---
 | |
 |--|

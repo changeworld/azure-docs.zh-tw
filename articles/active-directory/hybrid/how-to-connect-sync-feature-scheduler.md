@@ -9,22 +9,22 @@ editor: ''
 ms.assetid: 6b1a598f-89c0-4244-9b20-f4aaad5233cf
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/01/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 309adfbebd4f4b615ac1f4061823ca01f3d3ee15
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: eaeaa8625a5bdb5bbf8ce76a68e616a913da5655
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65139297"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147001"
 ---
-# <a name="azure-ad-connect-sync-scheduler"></a>Azure AD Connect 同步：排程器
-本主題說明 Azure AD Connect 同步處理 （同步處理引擎） 中的內建排程器。
+# <a name="azure-ad-connect-sync-scheduler"></a>Azure AD Connect 同步處理：排程器
+本主題描述 Azure AD Connect 同步處理 (同步處理引擎) 中的內建排程器。
 
 此功能是隨組建 1.1.105.0 (於 2016 年 2 月發行) 一起導入。
 
@@ -36,29 +36,37 @@ Azure AD Connect 同步處理會使用排程器來同步處理您內部部署目
 排程器負責兩項工作：
 
 * **同步處理循環**。 將變更匯入、同步處理及匯出的程序。
-* **維護工作**。 為密碼重設和「裝置註冊服務」(DRS) 更新金鑰和憑證。 清除作業記錄檔中的舊項目。
+* **維護**工作。 為密碼重設和「裝置註冊服務」(DRS) 更新金鑰和憑證。 清除作業記錄檔中的舊項目。
 
 排程器本身永遠處於執行狀態，但是您可以將它設定為只執行這些工作其中之一或完全不執行這些工作。 例如，如果您需要使用自己的同步處理循環程序，您可以將此工作在排程器中停用，但仍執行維護工作。
 
-## <a name="scheduler-configuration"></a>计划程序配置
-若要查看当前配置设置，请转到 PowerShell 并运行 `Get-ADSyncScheduler`。 它會向您顯示類似以下圖片︰
+>[!IMPORTANT]
+>根據預設，每隔30分鐘會執行一次同步處理迴圈。 如果您已修改同步處理 cycley，您必須確定每7天至少會執行一次同步處理迴圈。 
+>
+>* 差異同步處理必須在最後一個差異同步處理的7天內發生。
+>* 在完成完整同步處理後的差異同步處理 () 必須在上一次完整同步處理的7天內發生。
+>
+>若未這麼做，可能會導致同步處理問題，而需要您執行完整的同步處理來解決。 這也適用于處於預備模式的伺服器。
+
+## <a name="scheduler-configuration"></a>排程器組態
+若要查看目前的組態設定，請移至 PowerShell 並執行 `Get-ADSyncScheduler`。 它會向您顯示類似以下圖片︰
 
 ![GetSyncScheduler](./media/how-to-connect-sync-feature-scheduler/getsynccyclesettings2016.png)
 
-如果您在執行這個 Cmdlet 時看到 **無法使用同步命令或 Cmdlet** ，則表示 PowerShell 模組並未載入。 如果您在網域控制站或 PowerShell 限制層級高於預設設定的伺服器上執行 Azure AD Connect，即會發生此問題。 如果看到此错误，则运行 `Import-Module ADSync` 可使该 cmdlet 可用。
+如果您在執行這個 Cmdlet 時看到 **無法使用同步命令或 Cmdlet** ，則表示 PowerShell 模組並未載入。 如果您在網域控制站或 PowerShell 限制層級高於預設設定的伺服器上執行 Azure AD Connect，即會發生此問題。 如果您看到此錯誤，則請執行 `Import-Module ADSync` ，以使 Cmdlet 可供使用。
 
 * **AllowedSyncCycleInterval**。 Azure AD 所允許的同步處理週期最短時間間隔。 同步處理頻率一旦超過此設定，即不受支援。
 * **CurrentlyEffectiveSyncCycleInterval**。 目前作用中的排程。 如果頻率未高於 AllowedSyncInterval，其值就會與 CustomizedSyncInterval (如果已設定) 相同。 如果您使用 1.1.281 之前的組件且變更 CustomizedSyncCycleInterval，將會在下一個同步處理循環後才生效。 從組建 1.1.281 起，變更立即生效。
 * **CustomizedSyncCycleInterval**。 如果您想要讓排程器以預設值 30 分鐘以外的任何其他頻率執行，那麼您要設定此設定。 在上圖中，已將排程器改為設定成每小時執行一次。 如果您將此設定設定成低於 AllowedSyncInterval 的值，則會使用後者。
-* **NextSyncCyclePolicyType**。 Delta (差異) 或 Initial (初始)。 定義下一次執行應該只處理差異變更，還是應該進行完整匯入並同步處理。後者會一併重新處理任何新的或已變更的規則。
+* **NextSyncCyclePolicyType**。 Delta (差異) 或 Initial (初始)。 定義下一次執行應該只處理差異變更，或如果下一次執行應該執行完整匯入和同步。後者也會重新處理任何新的或已變更的規則。
 * **NextSyncCycleStartTimeInUTC**。 排程器下一次啟動下一個同步處理循環的時間。
 * **PurgeRunHistoryInterval**。 應該保留作業記錄的時間。 您可以在同步處理服務管理員中檢閱這些記錄。 這些記錄預設會保留 7 天。
 * **SyncCycleEnabled**。 指出排程器是否要在其作業中一併執行匯入、同步處理及匯出程序。
-* **MaintenanceEnabled**。 显示是否启用了维护过程。 它会更新证书/密钥，并清除操作日志。
+* **MaintenanceEnabled**。 顯示是否已啟用維護程序。 它會更新憑證/金鑰，並清除作業記錄。
 * **StagingModeEnabled**。 顯示是否已啟用 [預備模式](how-to-connect-sync-staging-server.md) 。 如果已啟用此設定，則它會停用執行匯出，但仍執行匯入和同步處理。
 * **SchedulerSuspended**。 由 Connect 在升級時設定，用來防止排程器執行。
 
-可以使用 `Set-ADSyncScheduler`更改上述一些设置。 您可以修改下列參數：
+您可以使用 `Set-ADSyncScheduler`變更這些設定的其中一部分。 您可以修改下列參數：
 
 * CustomizedSyncCycleInterval
 * NextSyncCyclePolicyType
@@ -68,16 +76,16 @@ Azure AD Connect 同步處理會使用排程器來同步處理您內部部署目
 
 在先前的 Azure AD Connect 組建中，**isStagingModeEnabled** 已在 Set-ADSyncScheduler 中公開。 **不支援**設定此屬性。 **SchedulerSuspended** 屬性應該僅供 Connect 修改。 **不支援**直接使用 PowerShell 來修改此屬性。
 
-计划程序配置存储在 Azure AD 中。 如果您有預備伺服器，主要伺服器上的任何變更也會影響預備伺服器 (IsStagingModeEnabled 除外)。
+排程器組態儲存在 Azure AD 中。 如果您有預備伺服器，主要伺服器上的任何變更也會影響預備伺服器 (IsStagingModeEnabled 除外)。
 
 ### <a name="customizedsynccycleinterval"></a>CustomizedSyncCycleInterval
 語法： `Set-ADSyncScheduler -CustomizedSyncCycleInterval d.HH:mm:ss`  
  d - 天、HH - 小時、mm - 分鐘、ss - 秒
 
-示例： `Set-ADSyncScheduler -CustomizedSyncCycleInterval 03:00:00`  
+範例： `Set-ADSyncScheduler -CustomizedSyncCycleInterval 03:00:00`  
 將排程器變更為每隔 3 小時執行一次。
 
-示例： `Set-ADSyncScheduler -CustomizedSyncCycleInterval 1.0:0:0`  
+範例： `Set-ADSyncScheduler -CustomizedSyncCycleInterval 1.0:0:0`  
 將排程器變更為每天執行。
 
 ### <a name="disable-the-scheduler"></a>停用排程器  
@@ -85,7 +93,7 @@ Azure AD Connect 同步處理會使用排程器來同步處理您內部部署目
 
 若要停用排程器，請執行 `Set-ADSyncScheduler -SyncCycleEnabled $false`。
 
-![禁用计划程序](./media/how-to-connect-sync-feature-scheduler/schedulerdisable.png)
+![停用排程器](./media/how-to-connect-sync-feature-scheduler/schedulerdisable.png)
 
 當您完成變更之後，不要忘記使用 `Set-ADSyncScheduler -SyncCycleEnabled $true` 再次啟用排程器。
 
@@ -100,7 +108,7 @@ Azure AD Connect 同步處理會使用排程器來同步處理您內部部署目
 - 在所有的連接器上執行差異同步處理
 - 在所有的連接器上執行匯出
 
-### <a name="full-sync-cycle"></a>完整的同步處理循環
+### <a name="full-sync-cycle"></a>完整同步處理循環
 完整同步處理循環包含下列步驟：
 
 - 在所有的連接器上執行完整匯入
@@ -109,24 +117,24 @@ Azure AD Connect 同步處理會使用排程器來同步處理您內部部署目
 
 您可能因為有一個必須立即同步處理的緊急變更，而需要手動執行循環。 
 
-如果您需要再從 PowerShell 執行手動執行同步處理循環`Start-ADSyncSyncCycle -PolicyType Delta`。
+如果您需要手動執行同步處理迴圈，請從 PowerShell 執行 `Start-ADSyncSyncCycle -PolicyType Delta` 。
 
 若要起始完整同步處理循環，請從 PowerShell 提示字元執行 `Start-ADSyncSyncCycle -PolicyType Initial` 。   
 
-執行完整同步處理循環可能很耗費時間，請閱讀下節來了解如何最佳化這個程序。
+執行完整同步處理週期可能非常耗時，請閱讀下一節以瞭解如何將此程式優化。
 
-### <a name="sync-steps-required-for-different-configuration-changes"></a>同步處理不同的組態變更所需的步驟
-不同的設定變更都需要不同的同步處理步驟，以確保所做的變更會正確套用至所有物件。
+### <a name="sync-steps-required-for-different-configuration-changes"></a>不同設定變更所需的同步步驟
+不同的設定變更需要不同的同步處理步驟，以確保變更已正確套用至所有物件。
 
-- 新增更多的物件或屬性，以匯入從來源目錄 （藉由新增/修改的同步處理規則）
-    - 適用於該來源目錄的連接器上需要完整匯入
+- 新增/修改同步處理規則，將更多物件或屬性從來原始目錄匯入 () 
+    - 在該來原始目錄的連接器上需要完整匯入
 - 對同步處理規則進行變更
-    - 適用於已變更的同步處理規則的連接器上需要有完整的同步處理
+    - 連接器上的已變更同步處理規則需要完整同步處理
 - 變更 [篩選](how-to-connect-sync-configure-filtering.md) 以納入不同數目的物件
-    - 完整匯入所需的連接器上每個 AD 連接器除非您使用屬性型篩選根據已經正在匯入至同步處理引擎的屬性
+    - 在每個 AD 連接器的連接器上都需要完整匯入，除非您使用以屬性為基礎的篩選，這是以已匯入同步處理引擎的屬性為基礎
 
-### <a name="customizing-a-sync-cycle-run-the-right-mix-of-delta-and-full-sync-steps"></a>自訂同步處理循環執行適合差異和完整同步處理步驟的組合
-若要避免執行完整同步處理循環中，您可以標示特定的連接器，以執行完整的步驟，使用下列 cmdlet。
+### <a name="customizing-a-sync-cycle-run-the-right-mix-of-delta-and-full-sync-steps"></a>自訂同步處理週期執行正確的差異和完整同步處理步驟組合
+若要避免執行完整的同步處理迴圈，您可以使用下列 Cmdlet 來標示特定連接器，以執行完整步驟。
 
 `Set-ADSyncSchedulerConnectorOverride -Connector <ConnectorGuid> -FullImportRequired $true`
 
@@ -134,13 +142,13 @@ Azure AD Connect 同步處理會使用排程器來同步處理您內部部署目
 
 `Get-ADSyncSchedulerConnectorOverride -Connector <ConnectorGuid>` 
 
-範例：如果您變更連接器"AD 樹系 A"的同步處理規則並不需要任何要匯入的新屬性，您就可以執行下列 cmdlet 來執行差異同步處理循環的哪個也沒有完整的同步處理步驟該連接器。
+範例：如果您變更了連接器「AD 樹系 A」的同步處理規則，而不需要匯入任何新的屬性，您可以執行下列 Cmdlet 來執行差異同步處理迴圈，這也會對該連接器進行完整的同步處理步驟。
 
 `Set-ADSyncSchedulerConnectorOverride -ConnectorName “AD Forest A” -FullSyncRequired $true`
 
 `Start-ADSyncSyncCycle -PolicyType Delta`
 
-範例：如果您變更同步處理規則 connector"AD 樹系 A"，因此它們現在需要將匯入的新屬性，您會執行下列 cmdlet 來執行差異同步處理循環其也未完整匯入該連接器的完整同步處理步驟。
+範例：如果您對連接器「AD 樹系 A」的同步處理規則進行變更，使其現在需要匯入新的屬性，您會執行下列 Cmdlet 來執行差異同步處理週期，這也會針對該連接器進行完整匯入和完整同步處理步驟。
 
 `Set-ADSyncSchedulerConnectorOverride -ConnectorName “AD Forest A” -FullImportRequired $true`
 
@@ -154,11 +162,11 @@ Azure AD Connect 同步處理會使用排程器來同步處理您內部部署目
 
 ![SyncCycleRunningError](./media/how-to-connect-sync-feature-scheduler/synccyclerunningerror.png)
 
-當同步處理循環正在執行時，您會無法進行組態變更。 可以等到计划程序已完成该过程，但也可以将其停止，以便可以立即进行更改。 停止目前的循環並無任何損害，而且擱置的變更會在下一次執行時處理。
+當同步處理循環正在執行時，您會無法進行組態變更。 您可以等到排程器完成程序，也可以停止它，以便立即進行變更。 停止目前的循環並無任何損害，而且擱置的變更會在下一次執行時處理。
 
-1. 先要使用 PowerShell cmdlet `Stop-ADSyncSyncCycle`指示计划程序停止其当前周期。
-2. 如果使用 1.1.281 之前的版本，停止计划程序并不会使当前连接器停止执行其当前任务。 若要強制停止連接器，請採取下列動作：![StopAConnector](./media/how-to-connect-sync-feature-scheduler/stopaconnector.png)
-   * 從 [開始] 功能表啟動 [同步處理服務]  。 移至 [連接器]，反白選取狀態為 [正在執行] 的連接器，然後從 [動作] 中選取 [停止]。
+1. 首先，使用 PowerShell Cmdlet `Stop-ADSyncSyncCycle`來通知排程器停止其目前的循環。
+2. 如果您使用 1.1.281 之前的組件，停止排程器並不會阻止目前的連接器進行其目前的工作。 若要強制停止連接器，請採取下列動作：![StopAConnector](./media/how-to-connect-sync-feature-scheduler/stopaconnector.png)
+   * 從 [開始] 功能表啟動 **[同步處理服務**]。 移至 [**連接器**]，反白顯示狀態為 [**正在**執行] 的連接器，然後從 [動作] 選取 [**停止**]。
 
 排程器仍在作用中，並且會在下次有機會時重新啟動。
 
@@ -168,7 +176,7 @@ Azure AD Connect 同步處理會使用排程器來同步處理您內部部署目
 如果內建的排程器無法滿足您的需求，您可以使用 PowerShell 來排程連接器。
 
 ### <a name="invoke-adsyncrunprofile"></a>Invoke-ADSyncRunProfile
-可以用这种方式为连接器启动配置文件：
+您可使用下列方式，啟動連接器的設定檔：
 
 ```
 Invoke-ADSyncRunProfile -ConnectorName "name of connector" -RunProfileName "name of profile"
@@ -187,24 +195,24 @@ Invoke-ADSyncRunProfile -ConnectorName "name of connector" -RunProfileName "name
 3. (完整/差異) 從內部部署目錄同步處理，例如 Active Directory
 4. (完整/差異) 從 Azure AD 同步處理
 5. 匯出至 Azure AD
-6. 导出到本地目录，如 Active Directory
+6. 匯出至內部部署目錄，例如 Active Directory
 
 此順序是內建的排程器執行連接器的方式。
 
 ### <a name="get-adsyncconnectorrunstatus"></a>Get-ADSyncConnectorRunStatus
-还可以监视同步引擎以了解它是忙还是空闲。 如果同步處理引擎處於閒置狀態且沒有執行連接器，這個 Cmdlet 會傳回空的結果。 如果連接器正在執行，它會傳回連接器的名稱。
+您也可以監視同步處理引擎，以查看其為忙碌或閒置。 如果同步處理引擎處於閒置狀態且沒有執行連接器，這個 Cmdlet 會傳回空的結果。 如果連接器正在執行，它會傳回連接器的名稱。
 
 ```
 Get-ADSyncConnectorRunStatus
 ```
 
-![连接器运行状态](./media/how-to-connect-sync-feature-scheduler/getconnectorrunstatus.png)  
+![連接器執行狀態](./media/how-to-connect-sync-feature-scheduler/getconnectorrunstatus.png)  
  在上圖中，第一行是來自同步處理引擎處於閒置狀態時。 第二行則是從 Azure AD 連接器執行時。
 
 ## <a name="scheduler-and-installation-wizard"></a>排程器和安裝精靈
 如果您啟動安裝精靈，則排程器將會暫時停用。 此行為是因為系統會假設您進行組態變更，而如果同步處理引擎正在執行中，將會無法套用這些設定。 基於這個理由，請勿讓安裝精靈保持開啟，因為這會阻止同步處理引擎執行任何同步處理動作。
 
 ## <a name="next-steps"></a>後續步驟
-了解有关 [Azure AD Connect 同步](how-to-connect-sync-whatis.md)配置的详细信息。
+深入了解 [Azure AD Connect 同步](how-to-connect-sync-whatis.md) 組態。
 
-了解有关[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。
+深入了解 [整合內部部署身分識別與 Azure Active Directory](whatis-hybrid-identity.md)。

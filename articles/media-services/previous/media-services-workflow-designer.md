@@ -13,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
-ms.author: juliako;johndeu;anilmur
-ms.openlocfilehash: 0ade52d3ae9714f2b370308253e455bcde7ac7a5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: anilmur
+ms.reviewer: juliako;johndeu
+ms.openlocfilehash: 4dceb558532305c6d2e84563e25ab05508423090
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60825127"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "72801949"
 ---
 # <a name="create-advanced-encoding-workflows-with-workflow-designer"></a>使用工作流程設計工具建立進階編碼工作流程  
 ## <a name="overview"></a>概觀
@@ -40,8 +41,8 @@ ms.locfileid: "60825127"
 
 建立工作流程檔案後，此檔案可上傳做為資產，然後用來編碼媒體檔案。 如需如何使用 **.NET** 以 **Media Encoder Premium Workflow** 進行編碼的相關資訊，請參閱[使用 Media Encoder Premium Workflow 進行進階編碼](media-services-encode-with-premium-workflow.md)。
 
-## <a id="existing_workflows"></a>修改現有的工作流程
-可以使用設計工具來修改預設的 [已發佈工作流程](media-services-workflow-designer.md#existing_workflows) 。 您可在 [這裡](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows)取得預設的工作流程檔案。 该文件夹还包含这些文件的相关说明。
+## <a name="modify-existing-workflows"></a><a id="existing_workflows"></a>修改現有的工作流程
+可以使用設計工具來修改預設的 [已發佈工作流程](media-services-workflow-designer.md#existing_workflows) 。 您可在 [這裡](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows)取得預設的工作流程檔案。 資料夾也包含這些檔案的說明。
 
 下列影片示範如何使用設計工具。
 
@@ -50,7 +51,7 @@ ms.locfileid: "60825127"
 
 * 設計工具概觀
 * 基本工作流程 – "Hello World"
-* 创建多个用于 Azure 媒体服务流式处理的输出 MP4 文件
+* 建立多個搭配 Azure 媒體服務串流的輸出 MP4 檔案
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Premium-Encoder-Workflow-Designer-Training-Videos-Day-1/player]
 > 
@@ -61,7 +62,7 @@ ms.locfileid: "60825127"
 
 * 不同來源檔案的案例 – 處理音訊
 * 使用進階邏輯的工作流程
-* 图形阶段
+* 圖形階段
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Premium-Encoder-Workflow-Designer-Training-Videos-Day-2/player]
 > 
@@ -72,13 +73,17 @@ ms.locfileid: "60825127"
 
 * 工作流程/藍圖中的指令碼處理
 * 目前編碼器的限制
-* 問答集
+* 問與答
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Premium-Encoder-Workflow-Designer-Training-Videos-Day-3/player]
 > 
 > 
 
-## <a name="next-step"></a>後續步驟
+## <a name="need-help"></a>需要協助嗎？
+
+您可以藉由瀏覽至[新增支援要求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)來開啟支援票證
+
+## <a name="next-step"></a>下一步
 檢閱媒體服務學習路徑。
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
@@ -86,8 +91,6 @@ ms.locfileid: "60825127"
 ## <a name="provide-feedback"></a>提供意見反應
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-如果您需要支援或有任何關於在工作流程設計工具中建立自訂工作流程的問題，請傳送電子郵件至 mepd@microsoft.com。
-
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>另請參閱
 [Azure Premium 編碼器工作流程設計工具訓練影片](http://johndeutscher.com/2015/07/06/azure-premium-encoder-workflow-designer-training-videos/)
 

@@ -1,18 +1,18 @@
 ---
-title: 教學課程 - 在 Azure DNS 中裝載您的網域和子網域
-description: 本教學課程說明如何設定 Azure DNS 以裝載 DNS 區域。
+title: 教學課程：裝載您的網域和子網域 - Azure DNS
+description: 在本文中，您將了解如何設定 Azure DNS 以裝載 DNS 區域。
 services: dns
-author: vhorne
+author: rohinkoul
 ms.service: dns
 ms.topic: tutorial
 ms.date: 3/11/2019
-ms.author: victorh
-ms.openlocfilehash: c0c5c5fe899c9b9b898973a88c7dac4256959ee4
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.author: rohink
+ms.openlocfilehash: 8f29a2bbe0eb392927dd111b13e2260111ddd18e
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57779771"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710128"
 ---
 # <a name="tutorial-host-your-domain-in-azure-dns"></a>教學課程：在 Azure DNS 上裝載您的網域
 
@@ -21,7 +21,7 @@ ms.locfileid: "57779771"
 假設您項網域名稱註冊機構購買了網域 contoso.net，然後在 Azure DNS 中建立名為 contoso.net 的區域。 由於您是網域的擁有者，註冊機構會提供選項，讓您設定網域的名稱伺服器 (NS) 記錄。 註冊機構會將 NS 記錄儲存在 .net 父系網域中。 然後，當世界各地的網際網路使用者嘗試解析 contoso.net 中的 DNS 記錄時，系統會將他們導向至您在 Azure DNS 區域中的網域。
 
 
-在本教學課程中，您了解如何：
+在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
 > * 建立 DNS 區域。
@@ -32,7 +32,7 @@ ms.locfileid: "57779771"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 您必須提供可用的網域名稱，才能使用可裝載於 Azure DNS 的網域名稱進行測試。 您必須擁有此網域的完整控制權。 完整控制權包括為網域設定名稱伺服器 (NS) 記錄的能力。
 
@@ -40,14 +40,14 @@ ms.locfileid: "57779771"
 
 ## <a name="create-a-dns-zone"></a>建立 DNS 區域
 
-1. 登入 Azure 入口網站。
-1. 在左上方，選取 [建立資源] > [網路] > [DNS 區域]，以開啟 [建立 DNS 區域] 頁面。
+1. 移至 [Azure 入口網站](https://portal.azure.com/)來建立 DNS 區域。 搜尋並選取 [DNS 區域]  。
 
    ![DNS 區域](./media/dns-delegate-domain-azure-dns/openzone650.png)
 
-1. 在 [建立 DNS 區域] 頁面中輸入下列的值，然後選取 [建立]：
+1. 選取 [建立 DNS 區域]  。
+1. 在 [建立 DNS 區域]  頁面中輸入下列的值，然後選取 [建立]  ：
 
-   | **設定** | **值** | **詳細資料** |
+   | **設定** | **ReplTest1** | **詳細資料** |
    |---|---|---|
    |**名稱**|[您的網域名稱] |您所購買的網域名稱。 本教學課程以 contoso.net 作為範例。|
    |**訂用帳戶**|[您的訂用帳戶]|選取要在其中建立區域的訂用帳戶。|
@@ -58,7 +58,7 @@ ms.locfileid: "57779771"
 
 在委派 DNS 區域給 Azure DNS 之前，您必須知道區域的名稱伺服器。 每次建立區域時，Azure DNS 都會配置某個集區中的名稱伺服器。
 
-1. 建立 DNS 區域之後，在 Azure 入口網站的 [我的最愛] 窗格中選取 [所有資源]。 在 [所有資源] 頁面上，選取您的 DNS 區域。 如果您選取的訂用帳戶已有幾個資源，您可以在 [依名稱篩選] 方塊中輸入您的網域名稱，以輕鬆存取應用程式閘道。 
+1. 建立 DNS 區域之後，在 Azure 入口網站的 [我的最愛]  窗格中選取 [所有資源]  。 在 [所有資源]  頁面上，選取您的 DNS 區域。 如果您選取的訂用帳戶已有幾個資源，您可以在 [依名稱篩選]  方塊中輸入您的網域名稱，以輕鬆存取應用程式閘道。 
 
 1. 從 DNS 區域頁面中擷取名稱伺服器。 在此範例中，區域 contoso.net 已被指派名稱伺服器 *ns1-01.azure-dns.com*、*ns2-01.azure-dns.net*、*ns3-01.azure-dns.org* 和 *ns4-01.azure-dns.info*：
 
@@ -111,7 +111,7 @@ Azure DNS 目前不支援使用您區域中名稱伺服器的委派 (有時稱�
 
 如果您想要進行下一個教學課程，您可以保留 **contosoRG** 資源群組。 否則請刪除 **contosoRG** 資源群組，以刪除在本教學課程中建立的資源。
 
-- 選取 **contosoRG** 資源群組，然後選取 [刪除資源群組]。 
+- 選取 **contosoRG** 資源群組，然後選取 [刪除資源群組]  。 
 
 ## <a name="next-steps"></a>後續步驟
 

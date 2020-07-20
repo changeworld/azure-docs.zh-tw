@@ -1,55 +1,44 @@
 - name: 自訂視覺服務文件
   href: index.yml
 - name: 概觀
+  expanded: true
   items:
     - name: 什麼是自訂視覺服務？
       href: home.md
+    - name: 新功能
+      href: whats-new.md
 - name: 快速入門
   items:
-    - name: 使用 .NET SDK
+    - name: 建置分類器
       items:
-        - name: 影像分類
-          href: csharp-tutorial.md
-        - name: 物件偵測
-          href: csharp-tutorial-od.md
-    - name: 使用 Python SDK
+        - name: 使用 Web 入口網站
+          href: getting-started-build-a-classifier.md
+        - name: 使用自訂視覺 SDK
+          href: quickstarts/image-classification.md
+    - name: 建置物件偵測器
       items:
-        - name: 影像分類
-          href: python-tutorial.md
-        - name: 物件偵測
-          href: python-tutorial-od.md
-    - name: 使用 Java SDK
-      items:
-        - name: 影像分類
-          href: java-tutorial.md
-        - name: 物件偵測
-          href: java-tutorial-od.md
-    - name: 使用 Node.js SDK
-      items:
-        - name: 影像分類
-          href: node-tutorial.md
-        - name: 物件偵測
-          href: node-tutorial-object-detection.md
-    - name: 使用 Go SDK
-      items:
-        - name: 影像分類
-          href: go-tutorial.md
-        - name: 物件偵測
-          href: go-tutorial-object-detection.md
+        - name: 使用 Web 入口網站
+          href: get-started-build-detector.md
+        - name: 使用自訂視覺 SDK
+          href: quickstarts/object-detection.md
 - name: 教學課程
   items:
-    - name: 適用於行動裝置的標誌偵測器
+    - name: 在 IoT 裝置上報告視覺狀態
+      href: iot-visual-alerts-tutorial.md
+    - name: 辨識行動裝置上的標誌
       href: logo-detector-mobile.md
-- name: 使用說明指南
+- name: 操作指南
   items:
-    - name: 建置分類器
-      href: getting-started-build-a-classifier.md
     - name: 測試您的模型
       href: test-your-model.md
     - name: 改善您的分類器
       href: getting-started-improving-your-classifier.md
+    - name: 選取一個網域
+      href: select-domain.md
     - name: 使用預測 API
       href: use-prediction-api.md
+    - name: 使用智慧型 Labeler
+      href: suggested-tags.md
     - name: 匯出模型
       items:
         - name: 將您的模型匯出至行動裝置
@@ -60,8 +49,6 @@
           href: export-model-python.md
     - name: 匯出或刪除帳戶資料
       href: ./export-delete-data.md
-    - name: 將有限的試用版專案移動至 Azure
-      href: ./move-your-project-to-azure.md
     - name: 將應用程式更新為 3.0 API
       href: ./update-application-to-3.0-sdk.md
 - name: 參考
@@ -70,14 +57,16 @@
       href: 'https://go.microsoft.com/fwlink/?linkid=865446'
     - name: 自訂視覺預測 API
       href: 'https://go.microsoft.com/fwlink/?linkid=865445'
-    - name: 詞彙
-      href: glossary-of-terms.md
     - name: SDK
       items:
         - name: .NET
           href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/customvision?view=azure-dotnet'
         - name: Java
           href: 'https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/customvision?view=azure-java-stable'
+        - name: Node.js - 訓練
+          href: 'https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-customvision-training/?view=azure-node-latest'
+        - name: Node.js - 預測
+          href: 'https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-customvision-prediction/?view=azure-node-latest'
         - name: Python
           href: 'https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/customvision?view=azure-python'
         - name: Go - 訓練
@@ -87,16 +76,20 @@
 - name: 資源
   items:
     - name: 範例
-      href: 'https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision'
+      href: 'https://docs.microsoft.com/samples/browse/?products=azure&term=vision'
     - name: 限制和配額
       href: limits-and-quotas.md
     - name: UserVoice
       href: 'https://cognitive.uservoice.com/forums/598141-custom-vision-service'
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/microsoft-cognitive'
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
     - name: 區域可用性
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+    - name: 法規遵循
+      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: 加密
+      href: custom-vision-encryption-of-data-at-rest.md
     - name: 版本資訊
       href: release-notes.md

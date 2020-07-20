@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/18/2017
 ms.author: eustacea
-ms.openlocfilehash: b7464e5cc052ecade4a10102de947d37a63c962a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cce3a0e6993ea91236a3ce8c8b14eb6c66f72ad1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60615024"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84717795"
 ---
 # <a name="device-authentication-using-x509-ca-certificates"></a>使用 X.509 CA 憑證進行裝置驗證
 
@@ -24,7 +24,7 @@ ms.locfileid: "60615024"
 * 如何使用 X.509 CA 憑證來簽署裝置
 * 以 X.509 CA 簽署之裝置的驗證方式為何
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 X.509 CA 功能可讓您使用「憑證授權單位」(CA) 向「IoT 中樞」進行裝置驗證。 這大幅簡化了初始裝置註冊程序，以及裝置製造期間的供應鏈物流。 如需了解裝置驗證，請[從這篇有關使用 X.509 CA 憑證之價值的案例文章進行深入了解](iot-hub-x509ca-concept.md)。  建議您先閱讀這篇案例文章再繼續操作，因為此文章會說明為什麼會有後續這些步驟。
 
@@ -40,7 +40,7 @@ X.509 CA 憑證位於您每個裝置的憑證鏈結頂端。  您可以購買或
 
 您也可以建立自我簽署的 X.509 CA 來進行測試，或在封閉式 IoT 網路中使用。
 
-不論您如何取得 X.509 CA 憑證，請務必在任何時候都將其對應的私密金鑰妥善保密及保護。  這對於在 X.509 CA 驗證中建立信任來說是必要的。
+無論您取得 x.509 CA 憑證的方式為何，都請務必保留其對應的私密金鑰密碼，並隨時受到保護。  這對於在 X.509 CA 驗證中建立信任來說是必要的。
 
 了解如何[建立自我簽署的 CA 憑證](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)，您可以使用此憑證在這整個功能描述中進行測試。
 
@@ -50,7 +50,7 @@ X.509 CA 憑證的擁有者可以透過密碼編譯方式簽署中繼 CA，此 C
 
 ![img-generic-cert-chain-of-trust](./media/generic-cert-chain-of-trust.png)
 
-（也稱為分葉憑證） 的裝置憑證必須具備*主體名稱*設為**裝置識別碼**註冊在 Azure IoT 中樞的 IoT 裝置時會用到。 這是必要設定進行驗證。
+裝置憑證（也稱為分葉憑證）必須將 [*主體名稱*] 設為在 Azure IoT 中樞中註冊 IoT 裝置時所使用的**裝置識別碼**（ `CN=deviceId` ）。 需要此設定才能進行驗證。
 
 了解如何[建立憑證鏈結](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) (會在簽署裝置時完成)。
 
@@ -62,7 +62,7 @@ X.509 CA 憑證的擁有者可以透過密碼編譯方式簽署中繼 CA，此 C
 
 證明所有權步驟涉及一個您與「IoT 中樞」之間的密碼編譯查問和回應程序。  由於數位憑證內容是公用的，因而容易遭到竊聽，因此「IoT 中樞」會想要確定您是否真的擁有 CA 憑證。  其做法應該是產生一個您必須以 CA 憑證的對應私密金鑰簽署的隨機查問。  如果您如先前建議的，將私密金鑰妥善保密及保護，則只有您會知道如何完成此步驟。 在此方法中，私密金鑰的保密性就是信任的來源。  簽署查問之後，請上傳包含結果的檔案來完成此步驟。
 
-這裡了解如何[註冊您的 CA 憑證](iot-hub-security-x509-get-started.md#register-x509-ca-certificates-to-your-iot-hub)
+瞭解如何[註冊您的 CA 憑證](iot-hub-security-x509-get-started.md#register-x509-ca-certificates-to-your-iot-hub)
 
 ## <a name="how-to-create-a-device-on-iot-hub"></a>如何在 IoT 中樞上建立裝置
 

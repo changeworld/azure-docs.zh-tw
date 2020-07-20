@@ -3,25 +3,25 @@ title: 應用程式如何出現在存取面板上 | Microsoft Docs
 description: 針對應用程式為什麼出現在存取面板上進行疑難排解
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 07/11/2017
-ms.author: celested
+ms.author: kenwith
 ms.reviewr: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fccf671edbc121501a17975be303453a798837e4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 22ba0709f4c5ca2294f515bdf1a96bff661b7293
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60442823"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84760825"
 ---
 # <a name="how-applications-appear-on-the-access-panel"></a>應用程式如何出現在存取面板上
 
@@ -37,12 +37,12 @@ ms.locfileid: "60442823"
 
 使用者可能因為先前已指派至應用程式，而在存取面板上看見該應用程式。 以下是一些檢查方法：
 
--   [檢查是否已將使用者指派給應用程式](#check-if-a-user-is-assigned-to-the-application)
+-   [檢查使用者是否已指派至應用程式](#check-if-a-user-is-assigned-to-the-application)
 
 -   [檢查使用者是否獲得應用程式相關的授權](#check-if-a-user-is-under-a-license-related-to-the-application)
 
 
-### <a name="check-if-a-user-is-assigned-to-the-application"></a>檢查是否已將使用者指派給應用程式
+### <a name="check-if-a-user-is-assigned-to-the-application"></a>檢查使用者是否已指派至應用程式
 
 若要檢查是否已將使用者指派給應用程式，請遵循下列步驟：
 
@@ -58,13 +58,13 @@ ms.locfileid: "60442823"
 
 6. **搜尋**相關應用程式的名稱。
 
-7. 按一下 [使用者和群組]。
+7. 按一下 [**使用者和群組**]。
 
 8. 檢查使用者是否已指派至應用程式。
 
-   * 如果您想要從應用程式移除使用者，請**按一下使用者的資料列**，然後選取 [刪除]。
+   * 如果您想要從應用程式移除使用者，請**按一下使用者的資料列**，然後選取 [刪除]****。
 
-### <a name="check-if-a-user-is-under-a-license-related-to-the-application"></a>檢查使用者是否已獲應用程式相關的授權
+### <a name="check-if-a-user-is-under-a-license-related-to-the-application"></a>檢查使用者是否獲得應用程式相關的授權
 
 若要檢查使用者獲指派的授權，請遵循下列步驟：
 
@@ -74,17 +74,17 @@ ms.locfileid: "60442823"
 
 3. 在篩選搜尋方塊中輸入 **“Azure Active Directory**”，然後選取 [Azure Active Directory] 項目。
 
-4. 按一下瀏覽功能表中的 [使用者和群組]。
+4. 按一下瀏覽功能表中的 [使用者和群組]****。
 
-5. 按一下 [所有使用者]。
+5. 按一下 [**所有使用者**]。
 
 6. **搜尋**您感興趣的使用者，**按一下資料列**選取該使用者。
 
-7. 按一下 [授權]，查看使用者目前已指派的授權。
+7. 按一下 [授權]****，查看使用者目前已指派的授權。
 
    * 如果已為使用者指派 Office 授權，這會讓第一方 Office 應用程式出現在使用者的存取面板上。
 
-## <a name="problems-related-to-assigning-applications-to-groups"></a>將應用程式指派給群組的相關問題
+## <a name="problems-related-to-assigning-applications-to-groups"></a>指派應用程式給群組的相關問題
 
 使用者可能因為屬於已被指派應用程式的群組，所以能在存取面板上看見該應用程式。 以下是一些檢查方法：
 
@@ -102,13 +102,13 @@ ms.locfileid: "60442823"
 
 3. 在篩選搜尋方塊中輸入 **“Azure Active Directory**”，然後選取 [Azure Active Directory] 項目。
 
-4. 按一下瀏覽功能表中的 [使用者和群組]。
+4. 按一下瀏覽功能表中的 [使用者和群組]****。
 
-5. 按一下 [所有使用者]。
+5. 按一下 [**所有使用者**]。
 
 6. **搜尋**您感興趣的使用者，**按一下資料列**選取該使用者。
 
-7. 按一下 [群組]。
+7. 按一下 [**群組]。**
 
 8. 檢查使用者是否屬於已指派至應用程式的群組。
 
@@ -122,17 +122,17 @@ ms.locfileid: "60442823"
 
 3. 在篩選搜尋方塊中輸入 **“Azure Active Directory**”，然後選取 [Azure Active Directory] 項目。
 
-4. 按一下瀏覽功能表中的 [使用者和群組]。
+4. 按一下瀏覽功能表中的 [使用者和群組]****。
 
-5. 按一下 [所有使用者]。
+5. 按一下 [**所有使用者**]。
 
 6. **搜尋**您感興趣的使用者，**按一下資料列**選取該使用者。
 
-7. 按一下 [群組]。
+7. 按一下 [**群組]。**
 
 8. 按一下特定群組的資料列。
 
-9. 按一下 [授權]，以查看已指派給群組的授權。
+9. 按一下 [授權]****，以查看已指派給群組的授權。
 
    * 如果已將群組指派給 Office 授權，這可能會讓某些第一方 Office 應用程式出現在使用者的存取面板上。
 
@@ -154,4 +154,4 @@ ms.locfileid: "60442823"
 -   Fiddler 追蹤
 
 ## <a name="next-steps"></a>後續步驟
-[使用 Azure Active Directory 管理應用程式](what-is-application-management.md)
+[使用 Azure Active Directory 來管理應用程式](what-is-application-management.md)

@@ -1,19 +1,18 @@
 ---
-title: 委派 Azure DNS 子網域
-description: 了解如何委派 Azure DNS 子網域。
+title: 委派子域-Azure DNS
+description: 在此學習路徑中，開始委派 Azure DNS 子域。
 services: dns
-author: WenJason
+author: rohinkoul
 ms.service: dns
-ms.topic: article
-origin.date: 2/7/2019
-ms.date: 02/25/2019
-ms.author: v-jay
-ms.openlocfilehash: 31543db8e177701ddfe6beaaa3091d6465b0e9cd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.topic: how-to
+ms.date: 2/7/2019
+ms.author: rohink
+ms.openlocfilehash: add7674771fd19f6029a94c46624006f0cf30f1a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60790805"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84710876"
 ---
 # <a name="delegate-an-azure-dns-subdomain"></a>委派 Azure DNS 子網域
 
@@ -32,12 +31,12 @@ ms.locfileid: "60790805"
 
 首先建立 **engineering** 子網域的區域。
 
-1. 從 Azure 入口網站選取 [建立資源]。
-2. 在 [搜尋] 方塊中，輸入 **DNS**，然後選取 [DNS 區域]。
-3. 選取 [建立] 。
-4. 在 [建立 DNS 區域] 窗格中，在 [名稱] 文字方塊中輸入 **engineering.contoso.com**。
+1. 從 [Azure 入口網站中，選取 [**建立資源**]。
+2. 在 [搜尋] 方塊中，輸入 **DNS**，然後選取 [DNS 區域]****。
+3. 選取 [建立]。
+4. 在 [建立 DNS 區域]**** 窗格中，在 [名稱]**** 文字方塊中輸入 **engineering.contoso.com**。
 5. 選取您區域的資源群組。 您可能想要使用同一個資源群組作為上層區域以同時維持類似的資源。
-6. 按一下頁面底部的 [新增] 。
+6. 按一下 [建立]。
 7. 部署成功後，請移至新的區域。
 
 ## <a name="note-the-name-servers"></a>記下名稱伺服器
@@ -55,10 +54,10 @@ ms.locfileid: "60790805"
 接下來建立 **engineering** 區域的名稱伺服器 (NS) 記錄。
 
 1. 瀏覽至父系網域的區域。
-2. 選取 [+ 記錄集]。
-3. 在 [新增記錄集] 窗格中，於 [名稱] 文字方塊中輸入 **engineering**。
-4. 對於 [類型]，請選取 [NS]。
-5. 在 [名稱伺服器] 底下，輸入您先前從 **engineering** 區區域記下的四個名稱伺服器。
+2. 選取 [+ 記錄集]****。
+3. 在 [新增記錄集]**** 窗格中，於 [名稱]**** 文字方塊中輸入 **engineering**。
+4. 對於 [類型]****，請選取 [NS]****。
+5. 在 [名稱伺服器]**** 底下，輸入您先前從 **engineering** 區區域記下的四個名稱伺服器。
 6. 按一下 [確定]。
 
 ## <a name="test-the-delegation"></a>測試委派

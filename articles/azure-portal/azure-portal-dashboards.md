@@ -1,98 +1,181 @@
 ---
-title: 建立和共用 Azure 入口網站儀表板 | Microsoft Docs
-description: 本文說明如何在 Azure 入口網站建立和編輯儀表板。
+title: 在 Azure 入口網站中建立和共用儀表板
+description: 本文說明如何建立、自訂、發佈和共用 Azure 入口網站中的儀表板。
 services: azure-portal
 documentationcenter: ''
 author: sewatson
-manager: doubeby
-editor: tysonn
+manager: mtillman
 ms.assetid: ff422f36-47d2-409b-8a19-02e24b03ffe7
 ms.service: azure-portal
 ms.devlang: NA
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 09/06/2016
-ms.author: kfollis
-ms.openlocfilehash: 693e973fb988a57c15b4ea2fae47f16b4ff39011
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 03/23/2020
+ms.author: mblythe
+ms.openlocfilehash: 06cf0a5692b3d80a07c305f53c9e3801cbdb5110
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60552526"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84764004"
 ---
 # <a name="create-and-share-dashboards-in-the-azure-portal"></a>在 Azure 入口網站中建立和共用儀表板
-您可以建立多個儀表板，並與可存取您 Azure 訂用帳戶的其他人共用。  本文說明建立/編輯、發佈和管理儀表板存取權的基本概念。
 
-## <a name="create-a-dashboard"></a>建立儀表板
-若要建立儀表板，請選取目前的儀表板名稱旁的 [新增儀表板]  按鈕。  
+在 Azure 入口網站中，儀表板是您雲端資源的焦點和組織式觀點。 使用儀表板作為工作區，以便在其中快速啟動日常作業工作及監視資源。 例如，您可以根據專案、工作或使用者角色來建置自訂儀表板。
 
-![建立儀表板](./media/azure-portal-dashboards/new-dashboard.png)
+Azure 入口網站提供預設儀表板做為起點。 您可以編輯預設的儀表板。 建立和自訂其他儀表板，併發布和共用儀表板，讓其他使用者可以使用它們。 本文說明如何建立新的儀表板、自訂介面，以及發佈和共用儀表板。
 
-這個動作會建立全新的空白私人儀表板並讓您進入自訂模式，供您為儀表板命名並新增或重新排列圖格。  處於此模式時，可摺疊的圖格庫會接管左側導覽功能表。  圖格庫可讓您以各種方式尋找 Azure 資源的圖格︰您可以依[資源群組](../azure-resource-manager/resource-group-overview.md#resource-groups)、資源類型、[標籤](../azure-resource-manager/resource-group-using-tags.md)進行瀏覽，或依名稱搜尋資源。  
+## <a name="create-a-new-dashboard"></a>建立新的儀表板
 
-![自訂儀表板](./media/azure-portal-dashboards/customize-dashboard.png)
+在此範例中，我們會建立新的私用儀表板，並指派名稱。 請遵循下列步驟來開始進行：
 
-拖放圖格到儀表板介面上想要的位置來加以新增。
+1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
-未與特定資源相關聯的圖格有新的類別，其名稱為**一般**。  在此範例中，我們釘選 [Markdown] 圖格。  您可以使用此圖格將自訂內容新增至儀表板。  圖格支援純文字、[Markdown 語法](https://daringfireball.net/projects/markdown/syntax)和一組有限的 HTML   (基於安全考量，您無法執行插入 `<script>` 標籤或使用可能會干擾入口網站的特定 CSS 樣式元素等動作)。 
+1. 從 [Azure 入口網站] 功能表中，選取 [**儀表板**]。 您的預設視圖可能已經設定為 [儀表板]。
 
-![新增 Markdown](./media/azure-portal-dashboards/add-markdown.png)
+    ![開啟儀表板](./media/azure-portal-dashboards/portal-menu-dashboard.png)
+
+1. 選取 [**新增儀表板**]。
+
+    ![新儀表板的螢幕擷取畫面](./media/azure-portal-dashboards/create-new-dashboard.png)
+
+    此動作會開啟 [**磚庫**]，您可以在其中選取磚，並使用空白方格來排列磚。
+
+    ![磚庫和空白方格的螢幕擷取畫面](./media/azure-portal-dashboards/dashboard-name.png)
+
+1. 選取 [儀表板] 標籤中的 [**我的儀表板**] 文字，然後輸入可協助您輕鬆識別自訂儀表板的名稱。
+
+1. 選取頁首中的 [**完成自訂**] 以結束編輯模式。
+
+[儀表板] 視圖現在會顯示新的儀表板。 選取儀表板名稱旁的箭號，以查看您可以使用的儀表板。 此清單可能包含其他使用者已建立並共用的儀表板。
 
 ## <a name="edit-a-dashboard"></a>編輯儀表板
-建立儀表板之後，您可以從圖格庫或以圖格表示的刀鋒視窗釘選圖格。 釘選資源群組表示方法。 您可以在瀏覽項目時釘選，或從資源群組刀鋒視窗釘選。 這兩種方法都會釘選以圖格表示的資源群組。
 
-![釘選到儀表板](./media/azure-portal-dashboards/pin-to-dashboard.png)
+現在，讓我們編輯儀表板來新增、調整大小，並排列代表您 Azure 資源的磚。
 
-釘選項目之後，它就會出現在儀表板上。
+### <a name="add-tiles-from-the-dashboard"></a>從儀表板新增磚
 
-![檢視儀表板](./media/azure-portal-dashboards/view-dashboard.png)
+若要將磚新增至儀表板，請遵循下列步驟：
 
-現在我們已將 Markdown 圖格和資源群組釘選到儀表板，接下來，我們可以將圖格調整大小並重新排列為適合的版面配置。
+1. ![ ](./media/azure-portal-dashboards/dashboard-edit-icon.png) 從頁面標頭選取 [編輯] 圖示**編輯**。
 
-藉由將滑鼠游標停留在 "..." 並加以選取或是對圖格按一下滑鼠右鍵，您就可以看到該圖格的所有關聯式命令。 預設會有兩個項目：
+    ![[儀表板] 反白顯示編輯的螢幕擷取畫面](./media/azure-portal-dashboards/dashboard-edit.png)
 
-1. **從儀表板取消釘選** – 從儀表板移除圖格
-2. **自訂** – 進入自訂模式
+1. 流覽**磚圖庫**，或使用 [搜尋] 欄位來尋找您想要的磚。
 
-![自訂圖格](./media/azure-portal-dashboards/customize-tile.png)
+1. 選取 [**新增**]，以預設大小和位置，將磚新增至儀表板。 或者，將磚拖曳至方格，並將它放在您想要的位置。
 
-藉由選取自訂，您可以將圖格調整大小並重新排列。 若要為圖格調整大小，請從關聯式功能表選取新的大小，如下圖所示。
+> [!TIP]
+> 如果您使用多個組織，請將 [**組織身分識別**] 磚新增至儀表板，以清楚地顯示資源所屬的組織。
 
-![對圖格調整大小](./media/azure-portal-dashboards/resize-tile.png)
+### <a name="add-tiles-from-a-resource-page"></a>從資源頁面新增磚
 
-或者，如果圖格支援任何大小，您可以將右下角拖曳到所需大小。
+有另一種方式可以將磚新增至儀表板。 許多資源頁面在命令列中都包含圖釘圖示。 如果您選取圖示，代表來源頁面的磚會釘選到目前作用中的儀表板。 
 
-![對圖格調整大小](./media/azure-portal-dashboards/resize-corner.png)
+![具有釘選圖示的頁面命令列螢幕擷取畫面](./media/azure-portal-dashboards/dashboard-pin-blade.png)
 
-將圖格調整大小之後，檢視儀表板。
+### <a name="resize-or-rearrange-tiles"></a>調整大小或重新排列磚
 
-![檢視圖格](./media/azure-portal-dashboards/view-tile.png)
+若要變更磚的大小或重新排列儀表板上的磚，請遵循下列步驟：
 
-在儀表板完成自訂後，只需選取 [完成自訂] 來結束自訂模式，或按一下滑鼠右鍵並從關聯式功能表選取 [完成自訂]。
+1. ![ ](./media/azure-portal-dashboards/dashboard-edit-icon.png) 從頁面標頭選取 [編輯] 圖示**編輯**。
 
-## <a name="publish-a-dashboard-and-manage-access-control"></a>發佈儀表板和管理存取控制
-當您建立儀表板時，它預設是私人用途，這表示只有您會看得到。  若要讓其他人也能看見，請使用與其他儀表板命令一同出現的 [共用]  按鈕。
+1. 選取磚右上角的內容功能表。 然後，選擇磚大小。 支援任何大小的磚也會在右下角包含「控制碼」，讓您將磚拖曳至您想要的大小。
 
-![共用儀表板](./media/azure-portal-dashboards/share-dashboard.png)
+    ![開啟 [磚大小] 功能表的儀表板螢幕擷取畫面](./media/azure-portal-dashboards/dashboard-tile-resize.png)
 
-系統會要求您選擇可將儀表板發佈至的訂用帳戶和資源群組。 為了將儀表板完美整合到生態系統，我們已將共用儀表板實作為 Azure 資源 (因此，您無法透過輸入電子郵件地址來共用)。  入口網站中大多數圖格所顯示資訊的存取權是由 [Azure 角色型存取控制](../role-based-access-control/role-assignments-portal.md)所控管。 从访问控制角度来看，共享仪表板与虚拟机或存储帐户没有什么不同。  
+1. 選取磚，然後將它拖曳到方格上的新位置來排列您的儀表板。
 
-假設您有 Azure 訂用帳戶，而且已為小組成員指派訂用帳戶的**擁有者**、**參與者**或**讀取者**角色。  作为所有者或参与者的用户能够列出、查看、创建、修改或删除该订阅中的仪表板。  身為讀取者的使用者能夠列出和檢視儀表板，但無法進行修改或刪除。  具有讀取者存取權的使用者能夠對共用的儀表板進行本機編輯，但無法將這些變更發佈回伺服器。  不過，他們可以製作儀表板的私人複本供自己使用。  一如往常，儀表板上的個別圖格會根據其對應的資源，強制執行自己的存取控制規則。  
+### <a name="additional-tile-configuration"></a>其他磚設定
 
-為了方便起見，入口網站的發佈體驗會引導您朝向將儀表板放在稱為 **儀表板**的資源群組中的模式。  
+有些磚可能需要更多的設定，以顯示您想要的資訊。 例如，您必須設定 [**計量圖表**] 圖格，以顯示**Azure 監視器**的度量。 您也可以自訂磚資料來覆寫儀表板的預設時間設定。
 
-![發佈儀表板](./media/azure-portal-dashboards/publish-dashboard.png)
+任何需要設定的磚都會顯示 [**設定磚**] 橫幅，直到您自訂磚為止。 若要自訂磚：
 
-您也可以選擇將儀表板發佈到特定資源群組。  該儀表板的存取控制與資源群組的存取控制相符。  可以管理該資源群組中資源的使用者也可以存取儀表板。
+1. 選取頁首中的 [**完成自訂**] 以結束編輯模式。
 
-![將儀表板發佈至資源群組](./media/azure-portal-dashboards/publish-to-resource-group.png)
+1. 選取橫幅，然後執行必要的設定。
 
-儀表板發佈之後，[共用 + 存取控制]  窗格便會重新整理，並顯示所發佈儀表板的相關資訊，包括用以管理儀表板使用者存取權的連結。  此連結會啟動用來管理任何 Azure 資源存取權的標準角色型存取控制刀鋒視窗。  您隨時都可以透過選取 [共用] 來回到此檢視。
+    ![需要設定之磚的螢幕擷取畫面](./media/azure-portal-dashboards/dashboard-configure-tile.png)
 
-![管理存取控制](./media/azure-portal-dashboards/manage-access.png)
+> [!NOTE]
+> Markdown 圖格可讓您在儀表板上顯示自訂的靜態內容。 這可能是基本指示、影像、一組超連結，甚至是連絡人資訊。 如需使用 markdown 磚的詳細資訊，請參閱[在 Azure 儀表板上使用 markdown 磚來顯示自訂內容](azure-portal-markdown-tile.md)。
+
+### <a name="customize-tile-data"></a>自訂磚資料
+
+儀表板上的資料會自動顯示過去24小時的活動。 若只要顯示此磚的不同時間範圍，請遵循下列步驟：
+
+1. 從內容功能表中選取 [**自訂磚資料**]，或 ![ ](./media/azure-portal-dashboards/dashboard-filter.png) 從磚的左上角選取篩選圖示篩選。
+
+    ![磚內容功能表的螢幕擷取畫面](./media/azure-portal-dashboards/dashboard-customize-tile-data.png)
+
+1. 選取核取方塊，以覆**寫磚層級的儀表板時間設定**。
+
+    ![對話方塊的螢幕擷取畫面，以設定磚時間設定](./media/azure-portal-dashboards/dashboard-override-time-settings.png)
+
+1. 選擇要為此磚顯示的時間範圍。 您可以選擇過去30分鐘到過去30天的時間，或定義自訂範圍。
+
+1. 選擇要顯示的時間細微性。 您可以從一分鐘的增量顯示為一個月。
+
+1. 選取 [套用]。
+
+## <a name="delete-a-tile"></a>刪除磚
+
+若要從儀表板移除磚，請遵循下列步驟：
+
+* 選取磚右上角的內容功能表，然後選取 [**從儀表板移除**]。 或者，
+
+* 選取 [ ![ 編輯] 圖示 [ ](./media/azure-portal-dashboards/dashboard-edit-icon.png) **編輯**] 以進入自訂模式。 將滑鼠停留在磚的右上角，然後選取 [ ![ 刪除] 圖示 ](./media/azure-portal-dashboards/dashboard-delete-icon.png) 刪除圖示，從儀表板移除磚。
+
+   ![顯示如何從儀表板移除磚的螢幕擷取畫面](./media/azure-portal-dashboards/dashboard-delete-tile.png)
+
+## <a name="clone-a-dashboard"></a>複製儀表板
+
+若要使用現有儀表板作為新儀表板的範本，請遵循下列步驟：
+
+1. 請確定 [儀表板] 視圖顯示您要複製的儀表板。
+
+1. 在頁首中，選取 [複製 ![ 圖示 ](./media/azure-portal-dashboards/dashboard-clone.png) **複製**]。
+
+1. 儀表板的複本，名為 [**複製***儀表板名稱*] 會在編輯模式中開啟。 請使用本文中的先前步驟來重新命名及自訂儀表板。
+
+## <a name="publish-and-share-a-dashboard"></a>發行及共用儀表板
+
+當您建立儀表板時，預設為私用，這表示您是唯一可以看到它的人。 若要讓其他人能夠使用儀表板，您可以發行並共用它們。 如需詳細資訊，請參閱[使用以角色為基礎的存取控制來共用 Azure 儀表板](azure-portal-dashboard-share-access.md)。
+
+### <a name="open-a-shared-dashboard"></a>開啟共用的儀表板
+
+若要尋找並開啟共用的儀表板，請遵循下列步驟：
+
+1. 選取儀表板名稱旁邊的箭號。
+
+1. 從顯示的儀表板清單中選取。 如果未列出您想要開啟的儀表板：
+
+    1. 選取 **[流覽所有儀表板]**。
+
+        ![[儀表板] 選取功能表的螢幕擷取畫面](./media/azure-portal-dashboards/dashboard-browse.png)
+
+    1. 在 [**類型**] 欄位中，選取 [**共用儀表板**]。
+
+        ![所有儀表板選取功能表的螢幕擷取畫面](./media/azure-portal-dashboards/dashboard-browse-all.png)
+
+    1. 選取一個或多個訂閱。 您也可以輸入文字來依名稱篩選儀表板。
+
+    1. 從共用的儀表板清單中選取儀表板。
+
+## <a name="delete-a-dashboard"></a>刪除儀表板
+
+若要永久刪除私人或共用的儀表板，請遵循下列步驟：
+
+1. 從儀表板名稱旁邊的清單中，選取您想要刪除的儀表板。
+
+1. ![ ](./media/azure-portal-dashboards/dashboard-delete-icon.png) 從頁面標頭中選取 [刪除] 圖示**刪除**。
+
+1. 若是私人儀表板，請在確認對話方塊上選取 **[確定]** 以移除儀表板。 針對共用的儀表板，請在 [確認] 對話方塊中選取核取方塊，以確認其他人將不再看到已發佈的儀表板。 然後選取 [確定]。
+
+    ![刪除確認的螢幕擷取畫面](./media/azure-portal-dashboards/dashboard-delete-dash.png)
 
 ## <a name="next-steps"></a>後續步驟
-* 若要管理资源，请参阅[使用 Azure 门户管理 Azure 资源](../azure-resource-manager/manage-resources-portal.md)。
-* 若要部署資源，請參閱 [使用 Resource Manager 範本與 Azure 入口網站來部署資源](../azure-resource-manager/resource-group-template-deploy-portal.md)。
 
+* [使用角色型存取控制來共用 Azure 儀表板](azure-portal-dashboard-share-access.md)
+* [以程式設計方式建立 Azure 儀表板](azure-portal-dashboards-create-programmatically.md)

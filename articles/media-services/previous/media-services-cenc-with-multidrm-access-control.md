@@ -12,17 +12,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
-ms.author: willzhan;kilroyh;yanmf;juliako
-ms.openlocfilehash: 336552c142e504ae7296314512f00688e30d032e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.author: willzhan
+ms.reviewer: kilroyh;yanmf;juliako
+ms.openlocfilehash: 4b5a18f0dc5edc06e4800215e88b694e681b5bbb
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61466393"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960457"
 ---
 # <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>使用 Azure 媒體服務設計具有存取控制的內容保護系統 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 設計及建置適用於 Over-The-Pop (OTT) 或線上串流解決方案的數位版權管理 (DRM) 子系統是一項複雜的工作。 操作員/線上視訊提供者通常會將這個工作外包給專門的 DRM 服務提供者。 這份文件的目標是呈現 OTT 或線上串流解決方案中端對端 DRM 子系統的參考設計和實作。
 
@@ -88,7 +88,7 @@ DRM 子系統可能包含下列元件：
 * DRM 封裝
 * DRM 授權傳遞
 * 權利檢查
-* 身份验证/授权
+* 驗證/授權
 * 播放器
 * 來源/內容傳遞網路 (CDN)
 
@@ -145,14 +145,14 @@ DRM 子系統可能包含下列元件：
 
 下表會顯示對應。
 
-| **建置組塊** | **Technology** |
+| **建置組塊** | **技術** |
 | --- | --- |
-| **播放器** |[Azure Media Player](https://azure.microsoft.com/services/media-services/media-player/) |
+| **播放** |[Azure 媒體播放器](https://azure.microsoft.com/services/media-services/media-player/) |
 | **身分識別提供者 (IDP)** |Azure Active Directory (Azure AD) |
 | **Security Token Service (STS)** |Azure AD |
 | **DRM 保護工作流程** |媒體服務動態保護 |
 | **DRM 授權傳遞** |* 媒體服務授權傳遞 (PlayReady、Widevine、FairPlay) <br/>* Axinom 授權伺服器 <br/>* 自訂 PlayReady 授權伺服器 |
-| **原始** |媒體服務串流端點 |
+| **來源** |媒體服務串流端點 |
 | **金鑰管理** |不需要參考實作 |
 | **內容管理** |C# 主控台應用程式 |
 
@@ -188,7 +188,7 @@ DRM 子系統可能包含下列元件：
 ### <a name="implementation-procedures"></a>實作程序
 實作包含下列步驟：
 
-1. 準備測試資產。 編碼/封裝測試視訊為媒體服務中的多位元速率分散 MP4。 這項資產不受 DRM 保護。 DRM 保護稍後會由動態保護完成。
+1. 準備測試資產。 編碼/封裝測試視訊為媒體服務中的多位元速率分散 MP4。 此資產*不*受 DRM 保護。 DRM 保護稍後會由動態保護完成。
 
 2. 建立金鑰識別碼和內容金鑰 (選擇性地從金鑰種子)。 在本例中，並不需要金鑰管理系統，因為數個測試資產只需要單一金鑰識別碼和內容金鑰。
 
@@ -212,20 +212,20 @@ DRM 子系統可能包含下列元件：
 
 9. 下表會顯示測試矩陣。
 
-    | **DRM** | **[瀏覽器]** | **有權限使用者的結果** | **無權限使用者的結果** |
+    | **DRM** | **瀏覽器** | **有權限使用者的結果** | **無權限使用者的結果** |
     | --- | --- | --- | --- |
-    | **PlayReady** |Windows 10 的 Microsoft Edge 或 Internet Explorer 11 |成功 |失败 |
-    | **Widevine** |Chrome、Firefox、Opera |成功 |不合格 |
-    | **FairPlay** |macOS 上的 Safari      |成功 |不合格 |
-    | **AES-128** |大部分的新式瀏覽器  |成功 |不合格 |
+    | **PlayReady** |Windows 10 的 Microsoft Edge 或 Internet Explorer 11 |成功 |失敗 |
+    | **Widevine** |Chrome、Firefox、Opera |成功 |失敗 |
+    | **FairPlay** |macOS 上的 Safari      |成功 |失敗 |
+    | **AES-128** |大部分的新式瀏覽器  |成功 |失敗 |
 
 如需如何針對 ASP.NET MVC 播放器應用程式設定 Azure AD 的相關資訊，請參閱[整合 Azure 媒體服務 OWIN MVC 型應用程式與 Azure Active Directory 並根據 JWT 宣告限制內容金鑰傳遞](http://gtrifonov.com/2015/01/24/mvc-owin-azure-media-services-ad-integration/)。
 
-如需詳細資訊，請參閱 [Azure 媒體服務和動態加密中的 JWT 權杖驗證](http://gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/) (英文)。  
+如需詳細資訊，請參閱[Azure 媒體服務和動態加密中的 JWT 權杖驗證](http://gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/)。  
 
 如需 Azure AD 的資訊：
 
-* 您可以在 [Azure Active Directory 開發人員指南](../../active-directory/develop/v1-overview.md)中找到開發人員的資訊。
+* 您可以在 [Azure Active Directory 開發人員指南](../../active-directory/azuread-dev/v1-overview.md)中找到開發人員的資訊。
 * 您可以在 [管理 Azure AD 租用戶目錄](../../active-directory/fundamentals/active-directory-administer.md)中找到系統管理員的資訊。
 
 ### <a name="some-issues-in-implementation"></a>實作中的一些問題
@@ -233,34 +233,42 @@ DRM 子系統可能包含下列元件：
 
 * 簽發者 URL 的結尾必須為 "/"。 目標對象必須是播放器應用程式用戶端識別碼。 此外，請在簽發者 URL 的結尾新增 "/"。
 
-        <add key="ida:audience" value="[Application Client ID GUID]" />
-        <add key="ida:issuer" value="https://sts.windows.net/[AAD Tenant ID]/" />
+    ```xml
+    <add key="ida:audience" value="[Application Client ID GUID]" />
+    <add key="ida:issuer" value="https://sts.windows.net/[AAD Tenant ID]/" />
+    ```
 
     在 [JWT 解碼器](http://jwt.calebb.net/)中，您會看到 **aud** 和 **iss**，如 JWT 權杖中所示：
 
     ![JWT](./media/media-services-cenc-with-multidrm-access-control/media-services-1st-gotcha.png)
 
-* 將權限新增至應用程式的 Azure AD 中 (在應用程式的 [設定] 索引標籤)。 每個應用程式皆需要權限 (本機和已部署版本)。
+* 將權限新增至應用程式的 Azure AD 中 (在應用程式的 [設定]**** 索引標籤)。 每個應用程式皆需要權限 (本機和已部署版本)。
 
     ![權限](./media/media-services-cenc-with-multidrm-access-control/media-services-perms-to-other-apps.png)
 
 * 當您設定動態 CENC 保護時，請使用正確的簽發者。
 
-        <add key="ida:issuer" value="https://sts.windows.net/[AAD Tenant ID]/"/>
+    ```xml
+    <add key="ida:issuer" value="https://sts.windows.net/[AAD Tenant ID]/"/>
+    ```
 
     下列項目無法運作︰
 
-        <add key="ida:issuer" value="https://willzhanad.onmicrosoft.com/" />
+    ```xml
+    <add key="ida:issuer" value="https://willzhanad.onmicrosoft.com/" />
+    ```
 
-    GUID 是 Azure AD 租用戶識別碼。 您可以在 Azure 入口網站的 [端點] 快顯功能表中找到 GUID。
+    GUID 是 Azure AD 租用戶識別碼。 您可以在 Azure 入口網站的 [端點]**** 快顯功能表中找到 GUID。
 
 * 授與群組成員資格宣告權限。 請確定下列項目位於 Azure AD 應用程式資訊清單檔中： 
 
-    "groupMembershipClaims"："All"    (預設值為 null)
+    "groupMembershipClaims": "All"    (預設值是 null)
 
 * 建立限制需求時，設定適當的 TokenType。
 
-        objTokenRestrictionTemplate.TokenType = TokenType.JWT;
+    ```csharp
+    objTokenRestrictionTemplate.TokenType = TokenType.JWT;
+    ```
 
     因為您新增了 SWT (ACS) 以外的 JWT (Azure AD) 支援，預設 TokenType 是 TokenType.JWT。 如果您使用 SWT/ACS，就必須將權杖設定為 TokenType.SWT。
 
@@ -312,9 +320,9 @@ DRM 授權傳遞服務一律會檢查來自 Azure AD 的目前/有效公開金�
 因為金鑰隨時可能會變換，同盟中繼資料文件中一律會有一個以上的有效公開金鑰可用。 媒體服務授權傳遞可使用文件中指定的任何金鑰。 因為一個金鑰可能很快就會變換，另一個金鑰可能會加以取代，以此類推。
 
 ### <a name="where-is-the-access-token"></a>存取權杖在哪裡？
-如果您在[採用 OAuth 2.0 用戶端認證授與的應用程式識別](../../active-directory/develop/web-api.md)一節中查看 Web 應用程式如何呼叫 API 應用程式，驗證流程如下：
+如果您在[採用 OAuth 2.0 用戶端認證授與的應用程式識別](../../active-directory/azuread-dev/web-api.md)一節中查看 Web 應用程式如何呼叫 API 應用程式，驗證流程如下：
 
-* 使用者在 Web 應用程式中登入 Azure AD。 如需詳細資訊，請參閱 [Web 瀏覽器到 Web 應用程式](../../active-directory/develop/web-app.md)。
+* 使用者在 Web 應用程式中登入 Azure AD。 如需詳細資訊，請參閱 [Web 瀏覽器到 Web 應用程式](../../active-directory/azuread-dev/web-app.md)。
 * Azure AD 授權端點會將使用者代理程式重新導向回到具有授權碼的用戶端應用程式。 使用者代理程式會將授權碼傳回用戶端應用程式的重新導向 URI。
 * Web 應用程式需要取得存取權杖，才能向 Web API 驗證和擷取所需的資源。 它會向 Azure AD 的權杖端點提出要求，並提供認證、用戶端識別碼和 Web API 的應用程式識別碼 URI。 它會呈現授權碼以證明使用者已同意。
 * Azure AD 驗證應用程式，並傳回用來呼叫 Web API 的 JWT 存取權杖。
@@ -335,9 +343,9 @@ DRM 授權傳遞服務一律會檢查來自 Azure AD 的目前/有效公開金�
 
 2. 為資源應用程式新增金鑰。
 
-3. 更新應用程式資訊清單檔案，讓 groupMembershipClaims 屬性具有下列值："groupMembershipClaims":"All"。
+3. 更新應用程式資訊清單檔案，讓 groupMembershipClaims 屬性具有下列值："groupMembershipClaims": "All"。
 
-4. 在指向播放器 Web 應用程式的 Azure AD 應用程式上，於 [其他應用程式的權限] 區段中，新增已在步驟 1 中新增的資源應用程式。 在 [委派的權限] 底下選取 [存取 [resource_name]]。 此選項可給予 Web 應用程式建立存取權杖的權限，從而存取資源應用程式。 如果您使用 Visual Studio 和 Azure Web 應用程式進行開發，請對本機和已部署版本的 Web 應用程式這麼做。
+4. 在指向播放器 Web 應用程式的 Azure AD 應用程式上，於 [其他應用程式的權限]**** 區段中，新增已在步驟 1 中新增的資源應用程式。 在 [委派的權限]**** 底下選取 [存取 [resource_name]]****。 此選項可給予 Web 應用程式建立存取權杖的權限，從而存取資源應用程式。 如果您使用 Visual Studio 和 Azure Web 應用程式進行開發，請對本機和已部署版本的 Web 應用程式這麼做。
 
 Azure AD 所簽發的 JWT 是用來存取指標資源的存取權杖。
 
@@ -367,7 +375,7 @@ Azure AD 所簽發的 JWT 是用來存取指標資源的存取權杖。
 
 有兩種類型的安全性金鑰：
 
-* 對稱金鑰：使用相同的金鑰來產生及驗證 JWT。
+* 對稱金鑰：會使用相同的金鑰來產生及驗證 JWT。
 * 非對稱金鑰：搭配使用 x509 憑證中的私密-公開金鑰組，私密金鑰用來加密/產生 JWT，公開金鑰則用來驗證權杖。
 
 > [!NOTE]
@@ -461,12 +469,17 @@ Widevine 不會防止您對受保護的視訊進行螢幕擷取。
 
 在上述兩個案例中，使用者驗證會保持相同。 它會透過 Azure AD 進行。 唯一的差別在於，JWT 是由自訂 STS 發出，而不是 Azure AD。 設定動態 CENC 保護時，授權傳遞服務限制會指定 JWT 的類型 (對稱或非對稱金鑰)。
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>摘要
+
 本文件討論了透過權杖驗證的 CENC 與多重原生 DRM 和存取控制，它的設計，以及使用 Azure、媒體服務和 Azure 媒體播放器進行實作。
 
 * 會顯示參考設計，其中包含 DRM/CENC 子系統中的所有必要元件。
 * 會在 Azure、媒體服務和媒體播放器上顯示參考實作。
 * 同時也討論到直接牽涉設計和實作的某些主題。
+
+## <a name="additional-notes"></a>其他注意事項
+
+* Widevine 是 Google Inc. 所提供的服務，並受到 Google Inc. 的服務條款和隱私權原則所約束。
 
 ## <a name="media-services-learning-paths"></a>媒體服務學習路徑
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

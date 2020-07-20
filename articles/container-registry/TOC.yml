@@ -1,106 +1,214 @@
-- name: Azure Container Registry
+- name: Azure Container Registry 文件
   href: ./index.yml
-- name: 概觀
-  items:
-    - name: 關於 Container Registry
-      href: container-registry-intro.md
-- name: 快速入門
+- name: 容器登錄
   expanded: true
   items:
-    - name: 建立容器登錄 - CLI
-      href: container-registry-get-started-azure-cli.md
-    - name: 建立容器登錄 - 入口網站
-      href: container-registry-get-started-portal.md
-    - name: 建立容器登錄 - PowerShell
-      href: container-registry-get-started-powershell.md
-    - name: 建置並執行映像 - CLI
-      href: container-registry-quickstart-task-cli.md
-    - name: 將事件傳送至事件格線 - CLI
-      href: container-registry-event-grid-quickstart.md
-- name: 教學課程
-  items:
-    - name: 建置容器映像
+    - name: 概觀
+      expanded: false
       items:
-        - name: 1 - 在 Azure 中建置映像
-          href: container-registry-tutorial-quick-task.md
-        - name: 2 - 自動化映像建置
-          href: container-registry-tutorial-build-task.md
-        - name: 3 - 基底映像更新建置
-          href: container-registry-tutorial-base-image-update.md
-    - name: 異地複寫登錄
+        - name: 關於 Container Registry
+          href: container-registry-intro.md
+    - name: 快速入門
+      expanded: true
       items:
-        - name: 1 - 準備容器登錄
-          href: container-registry-tutorial-prepare-registry.md
-        - name: 2 - 部署 Web 應用程式
-          href: container-registry-tutorial-deploy-app.md
-        - name: 3 - 更新 Web 應用程式
-          href: container-registry-tutorial-deploy-update.md
-- name: 概念
-  items:
-    - name: 容器登錄 SKU
-      href: container-registry-skus.md
-    - name: 映像儲存體
-      href: container-registry-storage.md
-    - name: 內容格式
-      href: container-registry-image-formats.md
-    - name: 異地複寫
-      href: container-registry-geo-replication.md
-    - name: 角色和權限
-      href: container-registry-roles.md
-    - name: 登錄最佳做法
-      href: container-registry-best-practices.md
-- name: 使用說明指南
-  items:
-    - name: 登錄作業
+        - name: 建立容器登錄 - CLI
+          href: container-registry-get-started-azure-cli.md
+        - name: 建立容器登錄 - 入口網站
+          href: container-registry-get-started-portal.md
+        - name: 建立容器登錄 - PowerShell
+          href: container-registry-get-started-powershell.md
+        - name: 建立容器登錄 - ARM 範本
+          displayName: Resource Manager
+          href: container-registry-get-started-geo-replication-template.md
+        - name: 將事件傳送至事件格線 - CLI
+          href: container-registry-event-grid-quickstart.md
+        - name: 建立並推送 Java 映像 - CLI
+          href: container-registry-java-quickstart.md
+    - name: 教學課程
+      expanded: false
       items:
-        - name: 發送和提取映像
-          href: container-registry-get-started-docker-cli.md
-        - name: 檢視存放庫
-          href: container-registry-repositories.md
-        - name: 匯入容器映像
-          href: container-registry-import-images.md
-        - name: 鎖定容器映像
-          href: container-registry-image-lock.md
-        - name: 刪除容器映像
-          href: container-registry-delete.md
-        - name: 升級傳統登錄
-          href: container-registry-upgrade.md
-        - name: 使用 ACR Webhook
-          href: container-registry-webhook.md
-        - name: Helm 圖表存放庫 (預覽)
-          href: container-registry-helm-repos.md
-    - name: 安全性和驗證
-      items:
-        - name: 限制虛擬網路的存取 (預覽)
-          href: container-registry-vnet.md
-        - name: 驗證概觀
-          href: container-registry-authentication.md
+        - name: 異地複寫登錄
           items:
-            - name: 服務主體驗證
-              href: container-registry-auth-service-principal.md
-            - name: 受控識別驗證
-              href: container-registry-authentication-managed-identity.md
-            - name: 從 Azure 容器執行個體進行驗證
-              href: container-registry-auth-aci.md
-            - name: 從 Azure Kubernetes Service (AKS) 進行驗證
-              href: container-registry-auth-aks.md
-        - name: 內容信任 (預覽)
-          href: container-registry-content-trust.md
-    - name: 建置和修補
+            - name: 1 - 準備容器登錄
+              href: container-registry-tutorial-prepare-registry.md
+            - name: 2 - 部署 Web 應用程式
+              href: container-registry-tutorial-deploy-app.md
+            - name: 3 - 更新 Web 應用程式
+              href: container-registry-tutorial-deploy-update.md
+    - name: 範例
       items:
-        - name: ACR 工作
+        - name: Azure 原則內建
+          displayName: 'samples, policies, definitions'
+          href: ./policy-samples.md
+    - name: 概念
+      expanded: false
+      items:
+        - name: 安全性
+          items:
+            - name: 安全性基準
+              href: security-baseline.md
+        - name: 容器登錄層級和限制
+          href: container-registry-skus.md
+        - name: 登錄、存放庫和映像
+          href: container-registry-concepts.md
+        - name: 映像儲存體
+          href: container-registry-storage.md
+        - name: 內容格式
+          href: container-registry-image-formats.md
+        - name: 標記和版本映像
+          href: container-registry-image-tag-version.md
+        - name: 異地複寫
+          href: container-registry-geo-replication.md
+        - name: 登錄最佳做法
+          href: container-registry-best-practices.md
+    - name: 操作指南
+      expanded: false
+      items:
+        - name: 登錄作業
+          items:
+            - name: 發送和提取映像
+              href: container-registry-get-started-docker-cli.md
+            - name: 推送和提取 OCI 成品
+              href: container-registry-oci-artifacts.md
+            - name: 推送和提取 Helm 圖表
+              href: container-registry-helm-repos.md
+            - name: 檢視存放庫
+              href: container-registry-repositories.md
+            - name: 匯入容器映像
+              href: container-registry-import-images.md
+            - name: 傳送成品 (預覽)
+              href: container-registry-transfer-images.md
+            - name: 鎖定容器映像
+              href: container-registry-image-lock.md
+            - name: 刪除容器映像
+              items:
+                - name: 刪除映像資料 - CLI
+                  href: container-registry-delete.md
+                - name: 未標記的資訊清單保留原則 (預覽)
+                  href: container-registry-retention-policy.md
+                - name: 自動清除標記和資訊清單 (預覽)
+                  href: container-registry-auto-purge.md
+            - name: 使用 ACR Webhook
+              href: container-registry-webhook.md
+        - name: 安全性和驗證
+          items:
+            - name: 使用私人端點來限制存取
+              href: container-registry-private-link.md
+            - name: 設定公用登錄存取
+              href: container-registry-access-selected-networks.md
+            - name: 使用服務端點限制存取 (預覽)
+              href: container-registry-vnet.md
+            - name: 使用客戶管理的金鑰加密
+              href: container-registry-customer-managed-keys.md
+            - name: 在防火牆外存取
+              href: container-registry-firewall-access-rules.md
+            - name: 驗證
+              items:
+                - name: 驗證概觀
+                  href: container-registry-authentication.md
+                - name: 使用服務主體進行驗證
+                  href: container-registry-auth-service-principal.md
+                - name: 使用受控識別進行驗證
+                  href: container-registry-authentication-managed-identity.md
+                - name: 使用權杖進行驗證 (預覽)
+                  href: container-registry-repository-scoped-permissions.md
+                - name: 從 Azure 容器執行個體進行驗證
+                  href: container-registry-auth-aci.md
+                - name: 使用提取密碼從 Kubernetes 進行驗證
+                  href: container-registry-auth-kubernetes.md
+                - name: 從 Azure Kubernetes Service (AKS) 進行驗證
+                  href: ../aks/cluster-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json
+                - name: 使用存放庫範圍的權杖進行驗證 (預覽)
+                  href: container-registry-repository-scoped-permissions.md
+            - name: 角色型存取控制
+              href: container-registry-roles.md
+            - name: 內容信任
+              href: container-registry-content-trust.md
+            - name: 使用資訊安全中心掃描影像
+              href: ../security-center/azure-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json
+        - name: 登錄和其他 Azure 服務
+          expanded: false
+          items:
+            - name: Azure Container Instances
+              href: ../container-instances/container-instances-tutorial-prepare-app.md
+            - name: Azure Kubernetes Service (AKS)
+              href: ../aks/tutorial-kubernetes-prepare-app.md
+            - name: Service Fabric
+              href: ../service-fabric/service-fabric-tutorial-create-container-images.md
+        - name: 監視
+          expanded: false
+          items:
+            - name: 診斷和審核記錄
+              href: container-registry-diagnostics-audit-logs.md
+            - name: 使用 Azure 原則來稽核合規性
+              href: container-registry-azure-policy.md
+        - name: 疑難排解
+          expanded: false
+          items:
+            - name: 偵測常見問題
+              href: container-registry-check-health.md
+            - name: 常見問題集
+              href: container-registry-faq.md
+- name: 工作
+  expanded: true
+  items:
+    - name: 概觀
+      expanded: false
+      items:
+        - name: 關於 ACR 工作
           href: container-registry-tasks-overview.md
+    - name: 快速入門
+      expanded: true
+      items:
+        - name: 建置、推送並執行映像 - CLI
+          href: container-registry-quickstart-task-cli.md
+    - name: 教學課程
+      expanded: false
+      items:
+        - name: 自動化容器映像建置
+          items:
+            - name: 1 - 從原始內容建置
+              href: container-registry-tutorial-quick-task.md
+            - name: 2a - 在程式碼認可時建置
+              href: container-registry-tutorial-build-task.md
+            - name: 2b - 在程式碼認可時進行多步驟工作
+              href: container-registry-tutorial-multistep-task.md
+            - name: 3a - 在基礎映像更新時建置
+              href: container-registry-tutorial-base-image-update.md
+            - name: 3b - 在私人基礎映像更新時建置
+              href: container-registry-tutorial-private-base-image-update.md
+            - name: 4 - 依排程建置
+              href: container-registry-tasks-scheduled.md
+    - name: 範例
+      expanded: false
+      items:
+        - name: YAML 和 Dockerfile
+          href: container-registry-tasks-samples.md
+    - name: 概念
+      items:
         - name: 多步驟工作
           href: container-registry-tasks-multi-step.md
-    - name: 登錄和其他 Azure 服務
+        - name: 基底映像更新
+          href: container-registry-tasks-base-images.md
+    - name: 操作指南
+      expanded: false
       items:
-        - name: Azure Container Instances
-          href: ../container-instances/container-instances-tutorial-prepare-app.md
-        - name: Azure Kubernetes Service (AKS)
-          href: ../aks/tutorial-kubernetes-prepare-app.md
-        - name: Service Fabric
-          href: ../service-fabric/service-fabric-tutorial-create-container-images.md
+        - name: 使用受控識別存取受保護的資源
+          items:
+            - name: 啟用工作上的受控識別
+              href: container-registry-tasks-authentication-managed-identity.md
+            - name: 跨登錄驗證
+              href: container-registry-tasks-cross-registry-authentication.md
+            - name: 使用金鑰保存庫進行外部驗證
+              href: container-registry-tasks-authentication-key-vault.md
+        - name: 使用 Resource Manager 範本執行快速工作
+          href: container-registry-task-run-template.md
+        - name: 使用 Buildpacks 建置映像 (預覽)
+          href: container-registry-tasks-pack-build.md
+        - name: 檢視工作記錄
+          href: container-registry-tasks-logs.md
 - name: 參考
+  expanded: false
   items:
     - name: Azure CLI
       href: /cli/azure/acr
@@ -118,26 +226,26 @@
       href: /javascript/api/overview/azure/container-registry
     - name: Resource Manager 範本
       href: /azure/templates/microsoft.containerregistry/registries
-    - name: ACR 工作 YAML
+    - name: 工作 YAML
       href: container-registry-tasks-reference-yaml.md
     - name: Webhook 結構描述
       href: container-registry-webhook-reference.md
     - name: 事件格線結構描述
-      href: ../event-grid/event-schema-container-registry.md
-      maintainContext: true
+      href: ../event-grid/event-schema-container-registry.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json
+    - name: 健康情況檢查錯誤
+      href: container-registry-health-error-reference.md
 - name: 資源
+  expanded: false
   items:
-    - name: 透過 Microsoft Learn 增進您的技巧
-      href: /learn/browse/?products=azure-container-registry
     - name: 區域可用性
       href: 'https://azure.microsoft.com/regions/services/'
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/container-registry/'
     - name: 藍圖
       href: 'https://aka.ms/acr/roadmap'
     - name: 提供產品意見反應
       href: 'https://feedback.azure.com/forums/903958-azure-container-registry'
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-container-registry'
     - name: 影片
       href: 'https://azure.microsoft.com/resources/videos/index/?services=container-registry&sort=newest'

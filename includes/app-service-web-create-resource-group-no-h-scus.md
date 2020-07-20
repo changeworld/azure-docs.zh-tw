@@ -9,11 +9,11 @@ ms.date: 09/18/2018
 ms.author: msangapu
 ms.custom: include file
 ms.openlocfilehash: 458782011623721bb44771d42caa32130e23bbc9
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50035092"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "67174466"
 ---
 [!INCLUDE [resource group intro text](resource-group.md)]
 

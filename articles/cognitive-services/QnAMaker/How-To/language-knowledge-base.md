@@ -1,50 +1,74 @@
 ---
-title: 非英文知識庫 - QnA Maker
+title: 語言概念-QnA Maker
 titleSuffix: Azure Cognitive Services
-description: QnA Maker 支援多種語言的知識庫內容。 不過，個別的 QnA Maker 服務均應保留給單一語言使用。 針對特定 QnA Maker 服務而建立的第一個知識庫，會設定該服務的語言。
+description: QnA Maker 支援多種語言的知識庫內容。 不過，個別的 QnA Maker 服務均應保留給單一語言使用。 第一個建立的知識庫（以特定 QnA Maker 服務為目標）會設定該服務的語言。
 services: cognitive-services
-author: tulasim88
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
-ms.topic: article
-ms.date: 01/14/2019
-ms.author: tulasim
-ms.openlocfilehash: f6c317cc1281a5a9bc18a2057fa12b7b61bb7689
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.topic: conceptual
+ms.date: 09/24/2019
+ms.author: diberry
+ms.openlocfilehash: 38701e8bbef1c5d78eca2242105e81fe7261c0f6
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55875258"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84693085"
 ---
 # <a name="language-support-of-knowledge-base-content-for-qna-maker"></a>QnA Maker 知識庫內容的語言支援
-QnA Maker 支援多種語言的知識庫內容。 不過，個別的 QnA Maker 服務均應保留給單一語言使用。 針對特定 QnA Maker 服務而建立的第一個知識庫，會設定該服務的語言。 請參閱[這裡](../Overview/languages-supported.md)以取得支援的語言清單。
 
-系統會從要擷取的資料來源內容自動辨識語言。 在您建立新的 QnA Maker 服務和該服務中新的知識庫之後，您可以確認語言已正確設定。
+當您在資源中建立第一個知識庫時，會選取服務的語言。 資源中的所有其他知識庫都必須是相同的語言。
 
-1. 瀏覽至 [Azure 入口網站](https://portal.azure.com/)。
+語言會決定 QnA Maker 提供的結果相關性，以回應使用者查詢。
 
-2. 選取 [資源群組]，並瀏覽至部署 QnA Maker 服務的資源群組，然後選取 [Azure 搜尋服務] 資源。
+## <a name="one-language-for-all-knowledge-bases-in-resource"></a>資源中所有知識庫的一種語言
 
-    ![選取 [Azure 搜尋服務] 資源](../media/qnamaker-how-to-language-kb/select-azsearch.png)
+QnA Maker 可讓您在建立第一個知識庫時選取 QnA 服務的語言。 QnA Maker 資源中的所有知識庫，全都必須使用相同的語言。 此語言無法變更。
 
-3. 選取 **testkb** 索引。 此 Azure 搜尋索引一律是第一個建立的索引，且其中包含該服務中所有知識庫的已儲存內容。 
+在一個資源中以不同的語言建立知識庫，會對使用者查詢所提供之結果 QnA Maker 的相關性造成負面影響。
 
-    ![選取測試 KB](../media/qnamaker-how-to-language-kb/select-testkb.png)
+請參閱支援的[語言](../overview/language-support.md#languages-supported)清單，以及語言對比對[與相關性](#query-matching-and-relevance)的影響。
 
-4. 選取顯示 testkb 詳細資料的 [欄位] 區段。
+## <a name="select-language-when-creating-first-knowledge-base"></a>在建立第一個知識庫時選取語言
 
-    ![選取欄位](../media/qnamaker-how-to-language-kb/selectfields.png)
+語言選擇是在資源中建立第一個知識庫的部分步驟。
 
-5. 勾選 [分析器] 的方塊以檢視語言詳細資料。
+![QnA Maker 入口網站為第一個知識庫選取語言的螢幕擷取畫面](../media/language-support/select-language-when-creating-knowledge-base.png)
 
-    ![選取分析器](../media/qnamaker-how-to-language-kb/select-analyzer.png)
+## <a name="query-matching-and-relevance"></a>查詢比對和相關性
+QnA Maker 取決於提供結果的[Azure 認知搜尋語言分析器](https://docs.microsoft.com/rest/api/searchservice/language-support)。
 
-6. 您應該會發現分析器已設定為特定語言。 這是在知識庫建立步驟執行期間自動偵測到的語言。 此語言在資源建立後即無法變更。
+雖然 Azure 認知搜尋功能與支援的語言相同，但 QnA Maker 具有位於 Azure 搜尋服務結果上方的其他 ranker。 在此 ranker 模型中，我們會以下列語言使用一些特殊的語義和單字式功能。
 
-    ![已選取的分析器](../media/qnamaker-how-to-language-kb/selected-analyzer.png)
+|具有其他 ranker 的語言|
+|--|
+|中文|
+|捷克文|
+|荷蘭文|
+|英文|
+|法文|
+|德文|
+|匈牙利文|
+|義大利文|
+|日文|
+|韓文|
+|波蘭文|
+|葡萄牙文|
+|西班牙文|
+|瑞典文|
+
+這項額外的排名是 QnA Maker 的 ranker 的內部工作。
+
+## <a name="verify-language"></a>驗證語言
+
+您可以從 QnA Maker 的 [服務設定] 頁面確認 QnA Maker 資源的語言。
+
+![QnA Maker 入口網站的 [服務設定] 頁面螢幕擷取畫面](../media/language-support/language-knowledge-base.png)
+
 
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [使用 Azure Bot 服務建立 QnA Bot](../Tutorials/create-qna-bot.md)
+> [移轉知識庫](../Tutorials/migrate-knowledge-base.md)

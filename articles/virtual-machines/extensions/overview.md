@@ -1,26 +1,24 @@
 ---
-title: Azure 虛擬機器擴充功能和功能 | Microsoft Docs
+title: Azure 虛擬機器擴充功能和功能
 description: 了解 Azure VM 擴充功能是什麼，以及如何搭配 Azure 虛擬機器使用
 services: virtual-machines-linux
 documentationcenter: ''
-author: roiyz-msft
-manager: jeconnoc
+author: axayjo
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/30/2018
-ms.author: roiyz
-ms.openlocfilehash: a35cba0ab7df80596ba1403765980809635c0249
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 09/12/2019
+ms.author: akjosh
+ms.openlocfilehash: bf17f499c1e8339a1e9abb13cffd5e35c390f564
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60617991"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "74072967"
 ---
 # <a name="azure-virtual-machine-extensions-and-features"></a>Azure 虛擬機器擴充功能和功能
 Azure 虛擬機器 (VM) 擴充功能是在 Azure VM 上提供部署後設定和自動化工作的小型應用程式。您可以使用現有的映像，然後將其自訂為部署的一部分，就不必建置自訂映像。
@@ -51,9 +49,33 @@ Azure 平台裝載許多擴充功能，包括 VM 設定、監視、安全性和�
 ## <a name="anything-else-i-should-be-thinking-about-for-extensions"></a>對於擴充功能，我還應該考慮其他任何事項嗎？
 擴充程式會安裝應用程式。就如同任何應用程式，擴充功能也會有一些需求、會有支援的 Windows 和 Linux 作業系統清單，而且您必須先安裝 Azure VM 代理程式。 有些個別的 VM 擴充功能應用程式可能會有自己的環境必要條件，例如對端點的存取。
 
+## <a name="troubleshoot-extensions"></a>針對擴充功能進行疑難排解
+
+您可以在延伸模組總覽的**疑難排解和支援**一節中找到每個擴充功能的疑難排解資訊。 以下是可用的疑難排解資訊清單：
+
+| 命名空間 | 疑難排解 |
+|-----------|-----------------|
+| dependencyagent. dependencyagentlinux。 | [適用于 Linux 的 Azure 監視器相依性](agent-dependency-linux.md#troubleshoot-and-support) |
+| dependencyagent. dependencyagentwindows。 | [Windows Azure 監視器相依性](agent-dependency-windows.md#troubleshoot-and-support) |
+| azurediskencryptionforlinux。 | [適用于 Linux 的 Azure 磁碟加密](azure-disk-enc-linux.md#troubleshoot-and-support) |
+| azurediskencryption。 | [Windows 適用的 Azure 磁碟加密](azure-disk-enc-windows.md#troubleshoot-and-support) |
+| customscriptextension | [適用于 Windows 的自訂腳本](custom-script-windows.md#troubleshoot-and-support) |
+| microsoft.ostcextensions.customscriptforlinux. customscriptforlinux | [適用于 Linux 的 Desired State Configuration](dsc-linux.md#troubleshoot-and-support) |
+| microsoft. powershell. dsc | [適用于 Windows 的 Desired State Configuration](dsc-windows.md#troubleshoot-and-support) |
+| hpccompute. nvidiagpudriverlinux | [適用於 Linux 的 NVIDIA GPU 驅動程式擴充功能](hpccompute-gpu-linux.md#troubleshoot-and-support) |
+| hpccompute. nvidiagpudriverwindows | [適用于 Windows 的 NVIDIA GPU 驅動程式擴充功能](hpccompute-gpu-windows.md#troubleshoot-and-support) |
+| iaasantimalware。 | [Windows 的反惡意程式碼擴充功能](iaas-antimalware-windows.md#troubleshoot-and-support) |
+| microsoft.enterprisecloud.monitoring. monitoring. omsagentforlinux | [適用于 Linux 的 Azure 監視器](oms-linux.md#troubleshoot-and-support)
+| microsoft.enterprisecloud.monitoring. monitoring. microsoftmonitoringagent | [適用于 Windows 的 Azure 監視器](oms-windows.md#troubleshoot-and-support) |
+| stackify. linuxagent. stackifylinuxageNtextension | [適用于 Linux 的 Stackify 回溯](stackify-retrace-linux.md#troubleshoot-and-support) |
+| vmaccessforlinux. microsoft.ostcextensions.customscriptforlinux | [適用于 Linux 的重設密碼（VMAccess）](vmaccess.md#troubleshoot-and-support) |
+| azurerm.recoveryservices. vmsnapshot | [Linux 的快照集](vmsnapshot-linux.md#troubleshoot-and-support) |
+| azurerm.recoveryservices. vmsnapshot | [Windows 的快照集](vmsnapshot-windows.md#troubleshoot-and-support) |
+
+
 ## <a name="next-steps"></a>後續步驟
 * 如需有關 Linux 代理程式和擴充功能運作方式的詳細資訊，請參閱[適用於 Linux 的 Azure VM 擴充功能和功能](features-linux.md)。
 * 如需有關 Windows 客體代理程式和擴充功能運作方式的詳細資訊，請參閱[適用於 Windows 的 Azure VM 擴充功能和功能](features-windows.md)。  
-* 若要安装 Windows 来宾代理，请参阅 [Azure Windows 虚拟机代理概述](agent-windows.md)。  
-* 若要安装 Linux 代理，请参阅 [Azure Linux 虚拟机代理概述](agent-linux.md)。  
+* 若要安裝 Windows 來賓代理程式，請參閱[Azure Windows 虛擬機器代理程式總覽](agent-windows.md)。  
+* 若要安裝 Linux 代理程式，請參閱[Azure Linux 虛擬機器代理程式總覽](agent-linux.md)。  
 

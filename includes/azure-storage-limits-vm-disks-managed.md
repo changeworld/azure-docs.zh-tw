@@ -8,25 +8,25 @@ ms.topic: include
 ms.date: 12/12/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: dd5c0782e1132f8592d9c6381b541c6f1a7d84cd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2766ea87544f2a21fb654f687eb62dee3c0714ab
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60386292"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80334993"
 ---
-**標準的 HDD 受控磁碟**
+**標準 HDD 受控磁片**  
 [!INCLUDE [disk-storage-standard-hdd-sizes](disk-storage-standard-hdd-sizes.md)]
 
-**SSD 標準受控磁碟**
+**標準 SSD 受控磁片**  
 [!INCLUDE [disk-storage-standard-ssd-sizes](disk-storage-standard-ssd-sizes.md)]
 
-**進階 SSD 受控磁碟：每個磁碟限制**
+**進階 SSD 受控磁片：每一磁片限制**  
 [!INCLUDE [disk-storage-premium-ssd-sizes](disk-storage-premium-ssd-sizes.md)]
 
-**進階 SSD 受控磁碟：每個 VM 限制**
+**進階 SSD 受控磁片：每個 VM 的限制**
 
-| Resource | 預設限制 |
+| 資源 | 限制 |
 | --- | --- |
 | 每個 VM 的最大 IOPS |80,000 IOPS (使用 GS5 虛擬機器) |
 | 每個 VM 的最大輸送量 |2,000 MB/秒 (使用 GS5 虛擬機器) |

@@ -1,0 +1,60 @@
+- name: Azure HPC Cache 文件
+  href: index.yml
+- name: 概觀
+  items:
+    - name: 什麼是 Azure HPC Cache？
+      href: hpc-cache-overview.md
+- name: 概念
+  items:
+    - name: 規劃彙總的命名空間
+      href: hpc-cache-namespace.md
+- name: 操作指南
+  items:
+    - name: Prerequisites
+      href: hpc-cache-prereqs.md
+    - name: 建立快取
+      href: hpc-cache-create.md
+    - name: 新增儲存體
+      items:
+        - name: 新增儲存體目標
+          href: hpc-cache-add-storage.md
+        - name: 將資料移至儲存體目標 (若有需要)
+          items:
+            - name: 預先載入新的 Blob 儲存體
+              href: hpc-cache-ingest.md
+            - name: 替代的資料擷取方法
+              items:
+                - name: 使用平行複製植入快取
+                  href: hpc-cache-ingest-parallelcp.md
+                - name: 使用 msrsync 植入快取
+                  href: hpc-cache-ingest-msrsync.md
+                - name: 使用檔案複製植入快取
+                  href: hpc-cache-ingest-manual.md
+        - name: 編輯儲存體目標
+          href: hpc-cache-edit-storage.md
+    - name: 連接到快取
+      href: hpc-cache-mount.md
+    - name: 管理快取
+      href: hpc-cache-manage.md
+    - name: 設定選擇性設定
+      href: configuration.md
+- name: 參考
+  items:
+    - name: Azure CLI
+      href: /cli/azure/ext/hpc-cache/hpc-cache
+- name: 資源
+  items:
+    - name: 開啟支援票證
+      href: hpc-cache-support-ticket.md
+    - name: 解決 Blob 儲存體帳戶防火牆設定問題
+      href: hpc-cache-blob-firewall-fix.md
+    - name: 針對 NFS 儲存目標的建立進行疑難排解
+      href: troubleshoot-nas.md
+    - name: 從區域性中斷復原
+      href: hpc-region-recovery.md
+    - name: 使用由客戶管理的加密金鑰
+      href: customer-keys.md
+    - name: 使用 Azure NetApp Files 搭配 Azure HPC Cache
+      href: hpc-cache-netapp.md
+    - name: 影片
+      href: 'https://azure.microsoft.com/resources/videos/index/?service=hpc-cache'

@@ -1,6 +1,6 @@
 ---
 title: 教學課程：仲裁 Facebook 內容 - Content Moderator
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 在本教學課程中，您將了解如何使用機器學習型 Content Moderator 來協助仲裁 Facebook 文章和留言。
 services: cognitive-services
 author: PatrickFarley
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 01/18/2019
+ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 662eca2a727f3112f169ab8d669bf18c81700275
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a9a5fe2eed0c0e6cf990183d321a71a7fabfbbee
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57871023"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118644"
 ---
 # <a name="tutorial-moderate-facebook-posts-and-commands-with-azure-content-moderator"></a>教學課程：使用 Azure Content Moderator 仲裁 Facebook 文章和留言
 
@@ -28,11 +28,14 @@ ms.locfileid: "57871023"
 > * 建立接聽來自 Content Moderator 和 Facebook 之 HTTP 事件的 Azure Functions。
 > * 使用 Facebook 應用程式將 Facebook 頁面連結至 Content Moderator。
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 此圖說明此案例中的每個元件：
 
 ![透過 "FBListener" 接收 Facebook 資訊並透過 "CMListener" 傳送資訊的 Content Moderator 圖示](images/tutorial-facebook-moderation.png)
+
+> [!IMPORTANT]
+> 2018 年時，Facebook 已對 Facebook 應用程式實作更嚴格的調查原則。 如果您的應用程式未經過 Facebook 檢閱小組的檢閱與核准，您將無法完成本教學課程的步驟。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -45,11 +48,11 @@ ms.locfileid: "57871023"
 
 ## <a name="configure-image-moderation-workflow"></a>設定影像仲裁工作流程
 
-請參閱[定義、測試和使用工作流程](review-tool-user-guide/workflows.md)指南來建立自訂影像工作流程。 這可讓 Content Moderator 自動檢查 Facebook 上的影像，並將部分影像傳送給檢閱工具。 請記下工作流程的**名稱**。
+請參閱[定義、測試和使用工作流程](review-tool-user-guide/workflows.md)指南來建立自訂影像工作流程。 Content Moderator 會使用此工作流程來自動檢查 Facebook 上的影像，並將部分影像傳送給檢閱工具。 請記下工作流程的**名稱**。
 
 ## <a name="configure-text-moderation-workflow"></a>設定文字仲裁工作流程
 
-同樣地，請參閱[定義、測試和使用工作流程](review-tool-user-guide/workflows.md)指南，但這次要建立自訂文字工作流程。 這可讓 Content Moderator 自動檢查文字內容。 請記下工作流程的**名稱**。
+同樣地，請參閱[定義、測試和使用工作流程](review-tool-user-guide/workflows.md)指南，但這次要建立自訂文字工作流程。 Content Moderator 會使用此工作流程來自動檢查文字內容。 請記下工作流程的**名稱**。
 
 ![設定文字工作流程](images/text-workflow-configure.PNG)
 
@@ -62,65 +65,68 @@ ms.locfileid: "57871023"
 登入 [Azure 入口網站](https://portal.azure.com/)並遵循下列步驟：
 
 1. 建立「Azure 函數應用程式」，如[Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-create-function-app-portal)所示。
-2. 移至新建立的「函式應用程式」。
-3. 在應用程式中，移至 [平台功能] 索引標籤，然後選取 [應用程式設定]。 在下一頁的 [應用程式設定] 區段中，捲動到清單底部，並按一下 [新增設定]。 新增下列索引鍵/值組
+1. 移至新建立的「函式應用程式」。
+1. 在應用程式中，移至 [平台功能] 索引標籤，然後選取 [設定]。 在下一頁的 [應用程式設定] 區段中，選取 [新增應用程式設定] 來新增下列索引鍵/值組：
     
     | 應用程式設定名稱 | value   | 
     | -------------------- |-------------|
-    | cm:TeamId   | 您的 Content Moderator TeamId  | 
-    | cm:SubscriptionKey | 您的 Content Moderator 訂用帳戶金鑰 - 請參閱 [Credentials](review-tool-user-guide/credentials.md) | 
-    | cm:Region | 您的 Content Moderator 區域名稱 (不含空格)。 請參閱上面的注意事項。 |
-    | cm:ImageWorkflow | 要在「影像」上執行之工作流程的名稱 |
-    | cm:TextWorkflow | 要在「文字」上執行之工作流程的名稱 |
-    | cm:CallbackEndpoint | 您稍後在本指南中所建立「CMListener 函數應用程式」的 URL |
-    | fb:VerificationToken | 祕密權杖，此權杖也用來訂閱 Facebook 摘要事件 |
-    | fb:PageAccessToken | Facebook 圖形 API 存取權杖永不過期，可讓函式代表您「隱藏/刪除」文章。 |
+    | `cm:TeamId`   | 您的 Content Moderator TeamId  | 
+    | `cm:SubscriptionKey` | 您的 Content Moderator 訂用帳戶金鑰 - 請參閱 [Credentials](review-tool-user-guide/credentials.md) |
+    | `cm:Region` | 您的 Content Moderator 區域名稱 (不含空格)。 您可以在 Azure 資源 [概觀] 索引標籤的 [位置] 欄位中找到此名稱。|
+    | `cm:ImageWorkflow` | 要在「影像」上執行之工作流程的名稱 |
+    | `cm:TextWorkflow` | 要在「文字」上執行之工作流程的名稱 |
+    | `cm:CallbackEndpoint` | CMListener 函式應用程式 (稍後將在本指南中建立) 的 URL |
+    | `fb:VerificationToken` | 您建立的祕密權杖，用來訂閱 Facebook 摘要事件 |
+    | `fb:PageAccessToken` | Facebook 圖形 API 存取權杖永不過期，可讓函式代表您「隱藏/刪除」文章。 您會在稍後的步驟中取得此權杖。 |
 
     按一下頁面頂端的 [儲存] 按鈕。
 
-1. 使用左側窗格中的 [+]按鈕來顯示 [新增函式] 窗格。
+1. 返回 [平台功能] 索引標籤。使用左側窗格中的 [ **+** ] 按鈕來顯示 [新增函式] 窗格。 您即將建立的函式會收到來自 Facebook 的事件。
 
     ![醒目提示新增函式按鈕的 Azure Functions 窗格。](images/new-function.png)
 
-    然後按一下頁面頂端的 [+ 新增函式]。 此函式會從 Facebook 接收事件。 請依照下列步驟建立此函式：
-
     1. 按一下顯示 **Http 觸發程序**的圖格。
     1. 輸入名稱 **FBListener**。 [授權等級] 欄位應該設定為 [函式]。
-    1. 按一下頁面底部的 [新增] 。
+    1. 按一下 [建立]。
     1. 使用來自 **FbListener/run.csx** 的內容取代 **run.csx** 的內容
 
-    [!code-csharp[FBListener: csx file](~/samples-fbPageModeration/FbListener/run.csx?range=1-160)]
+    [!code-csharp[FBListener: csx file](~/samples-fbPageModeration/FbListener/run.csx?range=1-154)]
 
 1. 建立名為 **CMListener** 的新 **Http 觸發程序**函式。 此函式會從 Content Moderator 接收事件。 使用來自 **CMListener/run.csx** 的內容取代 **run.csx** 的內容
 
-    [!code-csharp[FBListener: csx file](~/samples-fbPageModeration/CmListener/run.csx?range=1-106)]
+    [!code-csharp[FBListener: csx file](~/samples-fbPageModeration/CmListener/run.csx?range=1-110)]
 
 ---
 
 ## <a name="configure-the-facebook-page-and-app"></a>設定 Facebook 頁面和應用程式
+
 1. 建立 Facebook 應用程式。
 
     ![Facebook 開發人員頁面](images/facebook-developer-app.png)
 
     1. 瀏覽至 [Facebook 開發人員入口網站](https://developers.facebook.com/)
-    2. 按一下 [我的應用程式]。
-    3. 新增應用程式。
+    1. 按一下 [我的應用程式]。
+    1. 新增應用程式。
     1. 為其命名
     1. 選取 [Webhook]-> [設定]
     1. 在下拉式功能表中選取 [頁面]，然後選取 [訂閱此物件]
     1. 提供 **FBListener Url** 作為 [回呼網址]，並提供您已在 [函數應用程式設定] 底下設定的 [驗證權杖]
     1. 訂閱之後，向下捲動以摘要並選取 [訂閱]。
+    1. 按一下 [摘要] 資料列的 [測試] 按鈕，將測試訊息傳送至您的 FBListener Azure 函式，然後點擊 [傳送至我的伺服器] 按鈕。 您應該會看到 FBListener 正在接收要求。
 
-2. 建立 Facebook 頁面。
+1. 建立 Facebook 頁面。
+
+    > [!IMPORTANT]
+    > 在 2018 年，Facebook 已對 Facebook 應用程式實作更嚴格的調查。 如果您的應用程式未經過 Facebook 檢閱小組的檢閱與核准，您將無法執行第 2 節、第 3 節及第 4 節。
 
     1. 瀏覽至 [Facebook](https://www.facebook.com/bookmarks/pages)，然後建立一個**新的 Facebook 頁面**。
-    2. 依照下列步驟來允許「Facebook 應用程式」存取此頁面：
+    1. 依照下列步驟來允許「Facebook 應用程式」存取此頁面：
         1. 瀏覽至[圖形 API 測試工具](https://developers.facebook.com/tools/explorer/)。
-        2. 選取 [應用程式]。
-        3. 選取 [粉絲專頁存取權杖]，傳送一個 **Get** 要求。
-        4. 按一下回應中的 [粉絲專頁 ID]。
-        5. 現在，將 **/subscribed_apps** 附加至 URL，然後傳送一個 **Get** (空回應) 要求。
-        6. 提交一個 **Post** 要求。 您會得到像是 **success: true** 的回應。
+        1. 選取 [應用程式]。
+        1. 選取 [粉絲專頁存取權杖]，傳送一個 **Get** 要求。
+        1. 按一下回應中的 [粉絲專頁 ID]。
+        1. 現在，將 **/subscribed_apps** 附加至 URL，然後傳送一個 **Get** (空回應) 要求。
+        1. 提交一個 **Post** 要求。 您會得到像是 **success: true** 的回應。
 
 3. 建立永不過期的「圖形 API」存取權杖。
 

@@ -1,29 +1,30 @@
 ---
-title: 中備份與還原 Azure Database for PostgreSQL-單一伺服器
-description: 深入了解自動備份和還原您的 Azure Database for PostgreSQL 伺服器-單一伺服器。
+title: 備份與還原-適用於 PostgreSQL 的 Azure 資料庫-單一伺服器
+description: 瞭解自動備份和還原您的適用於 PostgreSQL 的 Azure 資料庫伺服器-單一伺服器。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: 08a061a76f1532441817e61d423533bcc0850227
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
-ms.translationtype: MT
+ms.date: 02/25/2020
+ms.openlocfilehash: 3e6dfd5882e49ad903e8cff6f0ec7f3d6bd4a8b7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65068862"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77619617"
 ---
-# <a name="backup-and-restore-in-azure-database-for-postgresql---single-server"></a>中備份與還原 Azure Database for PostgreSQL-單一伺服器
+# <a name="backup-and-restore-in-azure-database-for-postgresql---single-server"></a>適用於 PostgreSQL 的 Azure 資料庫中的備份與還原-單一伺服器
 
 適用於 PostgreSQL 的 Azure 資料庫會自動建立伺服器備份，並將其儲存在使用者設定的本地備援或異地備援儲存體中。 備份可以用來將伺服器還原至某個時間點。 備份和還原可保護資料免於意外損毀或刪除，是商務持續性策略中不可或缺的一部分。
 
 ## <a name="backups"></a>備份
 
-適用於 PostgreSQL 的 Azure 資料庫採用完整、差異及記錄備份。 在您設定的備份保留期限內，這些備份可讓您將伺服器還原至任何時間點。 預設的備份保留期限是七天。 可選擇設定的期限最多為 35 天。 所有備份皆會使用 AES 256 位元加密進行加密。
+適用於 PostgreSQL 的 Azure 資料庫會取得資料檔案和交易記錄檔的備份。 根據支援的儲存體大小上限，我們採用完整和差異備份 (4 TB 儲存體伺服器上限) 或快照集備份 (最多 16 TB 儲存體伺服器上限)。 在您設定的備份保留期限內，這些備份可讓您將伺服器還原至任何時間點。 預設的備份保留期限是七天。 可選擇設定的期限最多為 35 天。 所有備份皆會使用 AES 256 位元加密進行加密。
+
+無法匯出這些備份檔案。 備份只能用於適用於 PostgreSQL 的 Azure 資料庫中的還原作業。 您可以使用[pg_dump](howto-migrate-using-dump-and-restore.md)來複製資料庫。
 
 ### <a name="backup-frequency"></a>備份頻率
 
-一般而言，完整備份每週執行一次、差異備份每天執行兩次，而記錄備份每五分鐘執行一次。 建立伺服器之後，會立即排程第一次完整備份。 在還原大量資料的伺服器上，初次備份可能需要較長時間。 可在其中還原新伺服器的最早時間點，是完成初次完整備份的時間。
+一般來說，完整備份會每週進行一次，而差異備份則針對最大支援的儲存體為 4 TB 的伺服器一天執行兩次。 針對支援的儲存體上限為 16 TB 的伺服器，快照集備份會每天至少執行一次。 針對上述兩種情況，交易記錄備份會每五分鐘執行一次。 在建立伺服器之後，會立即排程完整備份的第一個快照集。 在大型還原的伺服器上，初始完整備份可能需要較長的時間。 可在其中還原新伺服器的最早時間點，是完成初次完整備份的時間。 當快照集瞬間，最多可支援 16 TB 儲存體的伺服器還原到建立時間。
 
 ### <a name="backup-redundancy-options"></a>備份備援選項
 
@@ -38,21 +39,21 @@ ms.locfileid: "65068862"
 
 例如，如果您已佈建的伺服器大小為 250 GB，您就能免費獲得 250 GB 的備份儲存體。 超過 250 GB 的儲存體則會收費。
 
-## <a name="restore"></a>Restore
+## <a name="restore"></a>還原
 
 在適用於 PostgreSQL 的 Azure 資料庫中，還原執行作業會從原始伺服器的備份中建立新的伺服器。
 
 有兩種類型的還原可使用：
 
-- **時間點還原**可搭配任一備份備援選項使用，並在您原始伺服器所在區域中建立新的伺服器。
-- **異地還原**只能您將伺服器設定為使用異地備援儲存體時使用，這可讓您將伺服器還原至不同的區域。
+- **時間點還原**適用于備份複本選項，並在與源伺服器相同的區域中建立新的伺服器。
+- 只有當您將伺服器設定為異地多餘儲存體，而且它可讓您將伺服器還原到不同的區域時，才可以使用**異地還原**。
 
 預估的復原時間取決於數個因素，包括資料庫大小、交易記錄大小、網路頻寬，以及在相同區域中同時進行復原的資料庫總數。 復原時間通常不到 12 小時。
 
 > [!IMPORTANT]
 > 已刪除的伺服器**無法**還原。 如果您刪除伺服器，所有屬於該伺服器的資料庫也會一併刪除，且無法復原。 若要在部署後避免伺服器資源遭到意外刪除或非預期的變更，系統管理員可以利用[管理鎖定](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources)。
 
-### <a name="point-in-time-restore"></a>還原時間點
+### <a name="point-in-time-restore"></a>時間點還原
 
 與備份備援選項無關，您可以在備份保留期限內地任何時間點執行還原。 新伺服器會建立在與原始伺服器相同的 Azure 區域中。 其使用原始伺服器的組態來建立，包含定價層、計算世代、虛擬核心數目、儲存體大小、備份保留期限，以及備份備援選項。
 
@@ -62,7 +63,9 @@ ms.locfileid: "65068862"
 
 ### <a name="geo-restore"></a>異地還原
 
-如果您已將伺服器設定為使用異地備援備份，您可以將伺服器還原到另一個可使用服務的 Azure 區域中。 當您的伺服器因為裝載伺服器區域中的事件而無法使用時，異地還原就是預設的復原選項。 如果區域中的大規模意外導致您無法使用資料庫應用程式，則您可以從異地備援備份，將伺服器還原到任何其他區域中的伺服器。 在建立備份及將它複寫至不同區域之間會有延遲。 此延遲可能最長達一小時，因此當發生災害時，最多可能會遺失最長達一小時的資料。
+如果您已將伺服器設定為使用異地備援備份，您可以將伺服器還原到另一個可使用服務的 Azure 區域中。 最多可支援 4 TB 儲存體的伺服器，可以還原到地理配對區域，或最多支援 16 TB 儲存體的任何區域。 對於支援高達 16 TB 儲存體的伺服器，也可以在任何支援 16 TB 伺服器的區域中還原異地備份。 如需支援的區域清單，請參閱[Azure Database For PostgeSQL 定價層](concepts-pricing-tiers.md)。
+
+當您的伺服器因為裝載伺服器區域中的事件而無法使用時，異地還原就是預設的復原選項。 如果區域中的大規模意外導致您無法使用資料庫應用程式，則您可以從異地備援備份，將伺服器還原到任何其他區域中的伺服器。 在建立備份及將它複寫至不同區域之間會有延遲。 此延遲可能最長達一小時，因此當發生災害時，最多可能會遺失最長達一小時的資料。
 
 在異地還原期間，可以進行變更的伺服器設定包括計算世代、vCore、備份保留期間及備份備援選項。 不支援變更定價層 (基本、一般用途或記憶體最佳化) 或儲存體大小。
 
@@ -71,12 +74,12 @@ ms.locfileid: "65068862"
 從其中任何一種復原機制還原之後，您應執行下列工作，讓您的使用者和應用程式回復正常執行狀態︰
 
 - 如果新伺服器就會取代原始伺服器，則將用戶端和用戶端應用程式重新導向至新伺服器
-- 確定有適當的伺服器層級防火牆規則供使用者連線
+- 請確定已備妥適當的伺服器層級防火牆和 VNet 規則供使用者連接。 這些規則不會從源伺服器複製。
 - 確定有適當的登入和資料庫層級權限
 - 依適當情況設定警示
 
 ## <a name="next-steps"></a>後續步驟
 
+- 瞭解如何使用 [Azure 入口網站](howto-restore-server-portal.md)進行還原。
+- 瞭解如何使用 [Azure CLI](howto-restore-server-cli.md)進行還原。
 - 若要深入了解商務持續性，請參閱 [商務持續性概觀](concepts-business-continuity.md)。
-- 若要使用 Azure 入口網站還原至某個時間點，請參閱 [使用 Azure 入口網站將資料庫還原至時間點](howto-restore-server-portal.md)。
-- 若要使用 Azure CLI 還原至某個時間點，請參閱 [使用 CLI 將資料庫還原至時間點](howto-restore-server-cli.md)。

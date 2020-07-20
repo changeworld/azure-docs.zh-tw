@@ -1,66 +1,57 @@
 ---
 title: 「適用於 PostgreSQL 的 Azure 資料庫」關聯式資料庫服務的概觀。
 description: 提供 Azure Database for PostgreSQL 關聯式資料庫服務的概觀。
-author: rachel-msft
-ms.author: raagyema
+author: jonels-msft
+ms.author: jonels
 ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
-ms.date: 11/14/2018
-ms.openlocfilehash: 318778a83c82b0ddb88f8bbd852442ab389fedb3
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.date: 11/25/2019
+ms.openlocfilehash: deb720638e0921762eb9c5800d218c3cfccb7f55
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54352252"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213596"
 ---
 # <a name="what-is-azure-database-for-postgresql"></a>什麼是 Azure Database for PostgreSQL？
+適用於 PostgreSQL 的 Azure 資料庫是 Microsoft 雲端中專為開發人員建置的關聯式資料庫服務。 此服務是以開放原始碼 [PostgreSQL](https://www.postgresql.org/) 資料庫引擎的社群版本作為基礎，可供用於兩種部署選項：單一伺服器和超大規模 (Citus)。
 
-適用於 PostgreSQL 的 Azure 資料庫是 Microsoft 雲端中以開放原始碼 [PostgreSQL](https://www.postgresql.org/) 資料庫引擎 (版本 9.5、9.6 和 10) 的社群版為基礎的關聯式資料庫服務，目標對象是開發人員。 Azure Database for PostgreSQL 提供：
+## <a name="azure-database-for-postgresql---single-server"></a>適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器
+單一伺服器部署選項可提供：
 
-- 內建高可用性但沒有任何額外成本
-- 可預測的效能，使用預付型方案定價方式
-- 視需要在幾秒內進行縮放
-- 受到保護，可保護機密的待用資料和移動中資料
-- 最多 35 天的自動化備份和時間點還原
+- 內建[高可用性](concepts-high-availability.md)但沒有任何額外成本 (99.99% SLA)
+- 可預測的效能，使用隨用隨付定價方式
+- 在幾秒內就能完成的[隨需垂直調整](concepts-pricing-tiers.md)
+- [監視和警示](concepts-monitoring.md)以評估您的伺服器
 - 企業級安全性與合規性
+- [受到保護以保護](concepts-security.md)機密的待用資料和移動中資料
+- 最多 35 天的[自動備份和指定時間點還原](concepts-business-continuity.md)
 
-上述所有功能幾乎不需要管理，而且免費提供。 這些功能可讓您專注於快速開發應用程式及加快上市時間，而不是將寶貴的時間和資源耗費在管理虛擬機器和基礎結構上。 此外，您可以使用開放原始碼工具與選擇的平台繼續開發應用程式，並提供企業所需的速度和效率而不需要學習新技能。 
 
-本文介紹 Azure Database for PostgreSQL 在效能、延展性和管理能力方面的核心概念和功能。 請參閱下列快速入門，以便開始使用產品：
+上述所有功能幾乎不需要管理，而且免費提供。 這些功能可讓您專注於快速開發應用程式及加快上市時間，而不是將寶貴的時間和資源耗費在管理虛擬機器和基礎結構上。 您可以繼續使用所選擇的開放原始碼工具及平台來開發應用程式，而不需要學習新技能。
 
-- [使用 Azure 入口網站建立 Azure Database for PostgreSQL](quickstart-create-server-database-portal.md)
-- [使用 Azure CLI 建立 Azure Database for PostgreSQL](quickstart-create-server-database-azure-cli.md)
+單一伺服器部署選項提供三個定價層：「基本」、「一般用途」及「記憶體最佳化」。 每一層提供不同的資源功能，來支援您的資料庫工作負載。 您可以在小型資料庫中建置第一個應用程式，一個月只需少許花費，然後調整規模以滿足解決方案的需求。 動態延展性可讓您的資料庫以透明的方式回應快速變化的資源需求。 您只需支付您所需的資源費用。 如需詳細資訊，請參閱 [定價層](concepts-pricing-tiers.md)。
 
-如需一組 Azure CLI 範例，請參閱︰
+## <a name="azure-database-for-postgresql---hyperscale-citus"></a>適用於 PostgreSQL 的 Azure 資料庫 - Hyperscale (Citus)
+超大規模 (Citus) 選項會使用分區化，水平調整多部電腦上的查詢。 其查詢引擎可平行處理從這些伺服器傳入的 SQL 查詢，以提升大型資料集的回應速度。 其可為需要更大規模和效能的應用程式提供服務，這些工作負載通常有逼近或超過 100 GB 的資料。
 
-- [Azure Database for PostgreSQL 的 Azuer CLI 範例](./sample-scripts-azure-cli.md)
+超大規模 (Citus) 部署選項可提供：
 
-## <a name="adjust-performance-and-scale-within-seconds"></a>在幾秒之內即可調整效能和規模
-適用於 PostgreSQL 的 Azure 資料庫服務提供三個定價層：「基本」、「一般用途」及「記憶體最佳化」。 每一層提供不同的資源功能，來支援您的資料庫工作負載。 您可以在小型資料庫中建置第一個應用程式，一個月只需少許花費，然後調整規模以滿足解決方案的需求。 動態延展性可讓您的資料庫以透明的方式回應快速變化的資源需求。 您只需支付您所需的資源費用。 如需詳細資訊，請參閱 [定價層](concepts-pricing-tiers.md)。
+- 使用分區化的跨多部電腦水平調整
+- 跨這些伺服器的查詢平行處理能力，以提升大型資料集的回應速度
+- 多租用戶應用程式、即時作業分析和高輸送量交易式工作負載的絕佳支援
 
-## <a name="monitoring-and-alerting"></a>監視和警示
-如何決定何時應增加或減少？ 您可以使用內建的 Azure 監視和警示功能。 透過這些工具，您可以根據目前或計畫中的效能或儲存體需求，快速評估相應增加或減少的影響。 如需詳細資訊，請參閱[警示](howto-alert-on-metric.md)。
-
-## <a name="keep-your-app-and-business-running"></a>讓您的應用程式和業務持續運作
-Azure 領先業界的 99.99% 可用性服務等級協定 (SLA) (Microsoft 受控資料中心的全球網路提供支援)，可協助讓您的應用程式 24 小時全年無休地運作。 使用每一 Azure Database for PostgreSQL 伺服器，您可以利用內建的安全性、容錯功能，以及可能需要另外設計、購買、建置和管理的資料保護功能。 使用適用於 PostgreSQL 的 Azure 資料庫時，每個定價層都會提供一組完整的業務持續性功能和選項，讓您能夠用來啟動和執行，並持續維持該狀態。 您可以使用[時間點還原](howto-restore-server-portal.md)將資料庫回復成先前的狀態，最久可至 35 天前。 此外，如果裝載資料庫的資料中心發生中斷情形，您可以從最新備份的異地備援複本還原資料庫。
-
-## <a name="secure-your-data"></a>保護您的資料
-Azure 資料庫服務一向重視資料安全性，Azure Database for PostgreSQL 以限制存取、保護靜止和移動中資料及協助監視活動等功能承襲了這項傳統。 如需 Azure 平台安全性的相關資訊，請造訪 [Azure 信任中心](https://azure.microsoft.com/overview/trusted-cloud/) \(英文\)。
-
-適用於 PostgreSQL 的 Azure 資料庫服務針對待用資料會使用儲存體加密，並且符合 FIPS 140-2 規範。 包含備份在內的資料會在磁碟上加密 (不包括執行查詢時由引擎所建立的暫存檔案)。 該服務使用包含在 Azure 儲存體加密中的 AES 256 位元加密，且金鑰是由系統進行管理。 儲存體加密會一律啟用，且無法停用。
-
-根據預設，適用於 PostgreSQL 的 Azure 資料庫服務已設為針對跨網路的動態資料需要 [SSL 連線安全性](./concepts-ssl-connection-security.md)。 在您的資料庫伺服器和用戶端應用程式之間強制使用 SSL 連線，可將伺服器與應用程式之間的資料流加密，有助於抵禦「中間人」攻擊。 (選擇性) 如果您的用戶端應用程式不支援 SSL 連線能力，您可以停用需要 SSL 才能連接到您資料庫服務的功能。
+針對 PostgreSQL 所建置的應用程式可以在超大規模 (Citus) 上執行分散式查詢，只要有標準[連線程式庫](./concepts-connection-libraries.md)並進行些許變更即可。
 
 ## <a name="contacts"></a>連絡人
-若您對適用於 PostgreSQL 的 Azure 資料庫有任何疑問或建議，請傳送電子郵件給適用於 PostgreSQL 的 Azure 資料庫小組 ([@Ask Azure DB for PostgreSQL](mailto:AskAzureDBforPostgreSQL@service.microsoft.com))。 請注意，這不是技術支援的別名。
+若您對適用於 PostgreSQL 的 Azure 資料庫有任何疑問或建議，請傳送電子郵件給適用於 PostgreSQL 的 Azure 資料庫小組 ([@Ask Azure DB for PostgreSQL](mailto:AskAzureDBforPostgreSQL@service.microsoft.com))。 此地址僅供提問一般問題，不可用來傳送支援票證。
 
 此外，請根據您的情況考量下列連絡要點：
-- 若要連絡 Azure 支援，[請從 Azure 入口網站提出票證](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
-- 若要修正您的帳戶問題，請在 Azure 入口網站中提出[支援要求](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
+- 若要連絡 Azure 支援或修正帳戶問題，[請從 Azure 入口網站提出票證](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
 - 若要提供意見反應或要求新功能，請透過 [UserVoice](https://feedback.azure.com/forums/597976-azure-database-for-postgresql) 建立項目。
 
 ## <a name="next-steps"></a>後續步驟
-- 如需成本比較和計算機，請參閱[定價頁面](https://azure.microsoft.com/pricing/details/postgresql/)。
-- 從[建立您的第一個 Azure Database for PostgreSQL](./quickstart-create-server-database-portal.md) 開始。
+- 如需成本比較和計算機，請參閱[定價頁面](https://azure.microsoft.com/pricing/details/postgresql/)。 單一伺服器和超大規模 (Citus) 部署選項也都會提供預付的保留執行個體折扣。如需詳細資訊，請參閱[單一伺服器 RI 定價](concept-reserved-pricing.md)和[超大規模 RI 定價](concepts-hyperscale-reserved-pricing.md)頁面。
+- 從建立第一個適用於 PostgreSQL 的 Azure 資料庫[單一伺服器](./quickstart-create-server-database-portal.md)或[超大規模 (Citus)](./quickstart-create-hyperscale-portal.md) 開始
 - 使用 Python、PHP、Ruby、C\#、Java、Node.js 建置您的第一個應用程式：[連線程式庫](./concepts-connection-libraries.md)

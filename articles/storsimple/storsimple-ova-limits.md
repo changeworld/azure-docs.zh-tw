@@ -12,19 +12,22 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 03/15/2017
+ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 43e8134ede0735c40b18be739f58b7b69e88fce1
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 1fe6b614aa05ab3e774aa2f946b78cabbc9f1a3b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62127857"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "68516718"
 ---
 # <a name="what-are-storsimple-virtual-array-limits"></a>StorSimple Virtual Array 有何限制？
 
 ## <a name="overview"></a>概觀
+
+[!INCLUDE [storsimple-virtual-array-eol-banner](../../includes/storsimple-virtual-array-eol-banner.md)]
+
 當您規劃、部署和操作 Microsoft Azure StorSimple Virtual Array 時，請考慮這些限制。 下表描述虛擬裝置的這些限制。
 
 ## <a name="storsimple-virtual-array-limits"></a>StorSimple Virtual Array 限制

@@ -1,6 +1,6 @@
 ---
-title: 教學課程 - 在 Azure Front Door Service 自訂網域上設定 HTTPS | Microsoft Docs
-description: 在本教學課程中，您將了解如何在 Azure Front Door Service 設定上為自訂網域啟用和停用 HTTPS。
+title: 教學課程 - 在 Azure Front Door 自訂網域上設定 HTTPS | Microsoft Docs
+description: 在本教學課程中，您將了解如何在 Azure Front Door 設定上為自訂網域啟用和停用 HTTPS。
 services: frontdoor
 documentationcenter: ''
 author: sharad4u
@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/05/2018
 ms.author: sharadag
-ms.openlocfilehash: b99132cceb8981a93a8f1c10ccc488d5806f7254
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 56a2246b4f1da51d9b18a34279eff04264530ef5
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59050972"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82160080"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>教學課程：在 Front Door 自訂網域上設定 HTTPS
 
 本教學課程會示範如何為與前端主機區段下 Front Door 建立關聯的自訂網域啟用 HTTPS 通訊協定。 在您的自訂網域上使用 HTTPS 通訊協定 (例如 https:\//www.contoso.com)，確保在網際網路上傳送機密資料時能經由 TLS/SSL 加密安全地傳遞。 當網頁瀏覽器透過 HTTPS 連線到網站時，它會驗證網站安全性憑證，並確認憑證是由合法的憑證授權單位所核發。 此程序可提供安全性，並讓 Web 應用程式免於遭受攻擊。
 
-根據預設，Azure Front Door Service 支援 Front Door 預設主機名稱上的 HTTPS。 舉例來說，當您建立 Front Door 時 (例如 https:\//contoso.azurefd.net)，便會針對向 https://contoso.azurefd.net 發出的要求自動啟用 HTTPS。 但是，當您的自訂網域 'www.contoso.com' 上架後，您便需要另外為此前端主機啟用 HTTPS。   
+根據預設，Azure Front Door 支援 Front Door 預設主機名稱上的 HTTPS。 舉例來說，當您建立 Front Door 時 (例如 `https://contoso.azurefd.net`)，便會針對向 `https://contoso.azurefd.net` 發出的要求自動啟用 HTTPS。 但是，當您的自訂網域 'www.contoso.com' 上架後，您便需要另外為此前端主機啟用 HTTPS。   
 
 自訂 HTTPS 功能的一些重要特色如下：
 
@@ -33,29 +33,29 @@ ms.locfileid: "59050972"
 
 - 可使用完整憑證管理：為您處理所有憑證採購及管理。 憑證會在到期之前自動佈建並更新，進而消除因為憑證到期而中斷服務的風險。
 
-在本教學課程中，您了解如何：
+在本教學課程中，您會了解如何：
 > [!div class="checklist"]
 > - 在您的自訂網域上啟用 HTTPS 通訊協定。
 > - 使用 AFD 受控憑證 
-> - 使用您自己的憑證，即自訂 SSL 憑證
+> - 使用您自己的憑證，即自訂 TLS/SSL 憑證
 > - 驗證網域
 > - 在您的自訂網域上停用 HTTPS 通訊協定
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 您必須先建立 Front Door 和至少一個已上架的自訂網域，才能完成本教學課程中的步驟。 如需詳細資訊，請參閱[教學課程：將自訂網域新增到您的 Front Door](front-door-custom-domain.md)。
 
-## <a name="ssl-certificates"></a>SSL 憑證
+## <a name="tlsssl-certificates"></a>TLS/SSL 憑證
 
-若要啟用 HTTPS 通訊協定以在 Front Door 自訂網域上安全地傳遞內容，您必須使用 SSL 憑證。 您可以選擇使用 Azure Front Door Service 所管理的憑證，或使用您自己的憑證。
+若要啟用 HTTPS 通訊協定以在 Front Door 自訂網域上安全地傳遞內容，您必須使用 TLS/SSL 憑證。 您可以選擇使用 Azure Front Door 所管理的憑證，或使用您自己的憑證。
 
 
 ### <a name="option-1-default-use-a-certificate-managed-by-front-door"></a>選項 1 (預設值)：使用 Front Door 所管理的憑證
 
-使用 Azure Front Door Service 所管理的憑證時，只要按幾下滑鼠就可以開啟 HTTPS 功能。 Azure Front Door Service 會完全處理憑證管理工作，例如購買和更新。 啟用此功能之後，程序就會立即啟動。 如果自訂網域已對應到 Front Door 的預設前端主機 (`{hostname}.azurefd.net`)，則不需要任何進一步的動作。 Front Door 會處理相關步驟並自動完成您的要求。 不過，如果您的自訂網域對應到其他位置，您就必須使用電子郵件來驗證您的網域擁有權。
+使用 Azure Front Door 所管理的憑證時，只要按幾下滑鼠就可以開啟 HTTPS 功能。 Azure Front Door 會完全處理憑證管理工作，例如購買和更新。 啟用此功能之後，程序就會立即啟動。 如果自訂網域已對應到 Front Door 的預設前端主機 (`{hostname}.azurefd.net`)，則不需要任何進一步的動作。 Front Door 會處理相關步驟並自動完成您的要求。 不過，如果您的自訂網域對應到其他位置，您就必須使用電子郵件來驗證您的網域擁有權。
 
 依照下列步驟啟用自訂網域的 HTTPS︰
 
@@ -63,7 +63,7 @@ ms.locfileid: "59050972"
 
 2. 在前端主機清單中，選取您想要啟用 HTTPS，以包含您自訂網域的自訂網域。
 
-3. 在 [自訂網域 HTTPS] 區段下方，按一下 [啟用]，然後選取 [Front Door 受控] 作為憑證來源。
+3. 在 [自訂網域 HTTPS]  區段下方，按一下 [啟用]  ，然後選取 [Front Door 受控]  作為憑證來源。
 
 4. 按一下 [儲存]。
 
@@ -72,22 +72,26 @@ ms.locfileid: "59050972"
 
 ### <a name="option-2-use-your-own-certificate"></a>選項 2：使用您自己的憑證
 
-您可以使用自己的憑證啟用 HTTPS 功能。 此程序會透過與 Azure Key Vault 的整合來進行，因為此一整合可讓您安全地儲存憑證。 Azure Front Door Service 使用此安全機制來取得您的憑證，為此您需要執行一些額外步驟。 當您建立 SSL 憑證時，您必須使用允許的憑證授權單位 (CA) 來加以建立。 否則，如果您使用非允許的 CA，系統會拒絕您的要求。 如需允許 CA 的清單，請參閱[可在 Azure Front Door Service 上啟用自訂 HTTPS 的允許憑證授權單位](front-door-troubleshoot-allowed-ca.md)。
+您可以使用自己的憑證啟用 HTTPS 功能。 此程序會透過與 Azure Key Vault 的整合來進行，而讓您可以安全地儲存您的憑證。 Azure Front Door 使用此安全機制來取得您的憑證，為此您需要執行一些額外步驟。 當您建立 TLS/SSL 憑證時，您必須使用允許的憑證授權單位 (CA) 來加以建立。 否則，如果您使用非允許的 CA，系統會拒絕您的要求。 如需允許 CA 的清單，請參閱[可在 Azure Front Door 上啟用自訂 HTTPS 的允許憑證授權單位](front-door-troubleshoot-allowed-ca.md)。
 
 #### <a name="prepare-your-azure-key-vault-account-and-certificate"></a>準備您的 Azure Key Vault 帳戶和憑證
  
 1. Azure Key Vault：在與您想要啟用自訂 HTTPS 的 Front Door 相同訂用帳戶下，您必須有執行中的 Azure Key Vault 帳戶。 建立 Azure Key Vault 帳戶 (如果您還沒有的話)。
- 
-2. Azure Key Vault 憑證：如果您已擁有憑證，您可以將它直接上傳至您的 Azure Key Vault 帳戶，也可以從與 Azure Key Vault 整合的其中一個合作夥伴 CA 透過 Azure Key Vault 建立新憑證。
 
 > [!WARNING]
-> </br> - Azure Front Door Service 目前僅支援與 Front Door 設定相同訂用帳戶中的 Key Vault 帳戶。 選擇與您 Front Door 不同訂用帳戶下的 Key Vault 將會失敗。
-> </br> - Azure Front Door Service 目前僅支援儲存在「祕密」區段下的 Key Vault 憑證。 若您將其儲存在「憑證」區段下，而非「祕密」區段，則憑證匯入將會失敗。
-> </br> - Azure Front Door Service 目前僅支援使用**不具**密碼 PFX 所上傳的憑證。
+> Azure Front Door 目前僅支援與 Front Door 設定相同訂用帳戶中的 Key Vault 帳戶。 選擇與您 Front Door 不同訂用帳戶下的 Key Vault 將會失敗。
 
-#### <a name="register-azure-front-door-service"></a>註冊 Azure Front Door Service
+2. Azure Key Vault 憑證：如果您已擁有憑證，您可以將它直接上傳至您的 Azure Key Vault 帳戶，也可以從與 Azure Key Vault 整合的其中一個合作夥伴 CA 透過 Azure Key Vault 建立新憑證。 將您的憑證上傳為**憑證**物件，而不是**祕密**。
 
-透過 PowerShell，在您的 Azure Active Directory 中將 Azure Front Door Service 的服務主體作為應用程式註冊。
+> [!NOTE]
+> 對於您自己的 TLS/SSL 憑證，Front Door 不支援採用 EC 加密演算法的憑證。
+
+#### <a name="register-azure-front-door"></a>註冊 Azure Front Door
+
+透過 PowerShell，在您的 Azure Active Directory 中將 Azure Front Door 的服務主體作為應用程式註冊。
+
+> [!NOTE]
+> 此動作需要全域管理員權限，每個租用戶只需要執行**一次**。
 
 1. 如有需要，請在本機電腦的 PowerShell 中安裝 [Azure PowerShell](/powershell/azure/install-az-ps)。
 
@@ -95,34 +99,35 @@ ms.locfileid: "59050972"
 
      `New-AzADServicePrincipal -ApplicationId "ad0e1c7e-6d38-4ba4-9efd-0bc77ba9f037"`              
 
-#### <a name="grant-azure-front-door-service-access-to-your-key-vault"></a>授與 Azure Front Door Service 存取您的金鑰保存庫
+#### <a name="grant-azure-front-door-access-to-your-key-vault"></a>授與 Azure Front Door 存取您的金鑰保存庫
  
-授與 Azure Front Door Service 權限，存取您 Azure Key Vault 帳戶中「祕密」下的憑證。
+授與 Azure Front Door (AFD) 權限，存取您 Azure Key Vault 帳戶中的憑證。
 
-1. 在您的金鑰保存庫帳戶中，於 [設定] 之下選取 [存取原則]，然後選取 [新增] 以建立新原則。
+1. 在您的金鑰保存庫帳戶中，於 [設定] 之下選取 [存取原則]  ，然後選取 [新增]  以建立新原則。
 
-2. 在 [選取主體] 中，搜尋 **ad0e1c7e-6d38-4ba4-9efd-0bc77ba9f037**，然後選擇 [Microsoft.Azure.Frontdoor]。 按一下 [選取] 。
+2. 在 [選取主體]  中，搜尋 **ad0e1c7e-6d38-4ba4-9efd-0bc77ba9f037**，然後選擇 [Microsoft.Azure.Frontdoor]  。 按一下 [選取]。 
 
+3. 在 [祕密權限]  中選取 [取得]  ，以允許 Front Door 擷取憑證。
 
-3. 在 [祕密權限] 中，選取 [取得] 以允許 Front Door 執行這些權限取得及列出憑證。 
+4. 在 [憑證權限]  中選取 [取得]  ，以允許 Front Door 擷取憑證。
 
-4. 選取 [確定] 。 
+5. 選取 [確定]  。 
 
-    Azure Front Door Service 現在可以存取此金鑰保存庫和此金鑰保存庫中儲存的憑證 (祕密)。
+    Azure Front Door (AFD) 現在可以存取此 Key Vault 和此 Key Vault 中儲存的憑證。
  
-#### <a name="select-the-certificate-for-azure-front-door-service-to-deploy"></a>選取讓 Azure Front Door Service 進行部署的憑證
+#### <a name="select-the-certificate-for-azure-front-door-to-deploy"></a>選取讓 Azure Front Door 進行部署的憑證
  
 1. 返回入口網站中的 Front Door。 
 
 2. 在自訂網域清單中，選取您要啟用 HTTPS 的自訂網域。
 
-    [自訂網域] 頁面隨即出現。
+    [自訂網域]  頁面隨即出現。
 
-3. 在憑證管理類型底下，選取 [使用我自己的憑證]。 
+3. 在憑證管理類型底下，選取 [使用我自己的憑證]  。 
 
-4. Azure Front Door Service 需要 Key Vault 帳戶的訂用帳戶與 Front Door 的訂用帳戶相同。 選取金鑰保存庫、憑證 (祕密) 和憑證版本。
+4. Azure Front Door 需要 Key Vault 帳戶的訂用帳戶與 Front Door 的訂用帳戶相同。 選取金鑰保存庫、憑證 (祕密) 和憑證版本。
 
-    Azure Front Door Service 會列出下列資訊： 
+    Azure Front Door 會列出下列資訊： 
     - 您的訂用帳戶識別碼的金鑰保存庫帳戶。 
     - 所選金鑰保存庫底下的憑證 (密碼)。 
     - 可用的憑證版本。 
@@ -140,9 +145,9 @@ ms.locfileid: "59050972"
 
 如果您使用自己的憑證，則不需要進行網域驗證。
 
-您的 CNAME 記錄應該採用下列格式，其中「名稱」是您的自訂網域名稱，而「值」則是您的 Front Door 預設 .azurefd.net 主機名稱：
+您的 CNAME 記錄應該採用下列格式，其中「名稱」  是您的自訂網域名稱，而「值」  則是您的 Front Door 預設 .azurefd.net 主機名稱：
 
-| Name            | 類型  | 值                 |
+| 名稱            | 類型  | 值                 |
 |-----------------|-------|-----------------------|
 | <www.contoso.com> | CNAME | contoso.azurefd.net |
 
@@ -171,7 +176,7 @@ webmaster@&lt;your-domain-name.com&gt;
 hostmaster@&lt;your-domain-name.com&gt;  
 postmaster@&lt;your-domain-name.com&gt;  
 
-您應該會在幾分鐘之內收到邀請您核准要求的電子郵件，如以下範例所示。 如果您使用垃圾郵件篩選器，請將 admin@digicert.com 加入白名單。 如果您未在 24 小時內收到驗證電子郵件，請連絡 Microsoft 支援服務。
+您應該會在幾分鐘之內收到請求您核准要求的電子郵件，如以下範例所示。 如果您使用垃圾郵件篩選器，請將 admin@digicert.com 加入允許清單。 如果您未在 24 小時內收到驗證電子郵件，請連絡 Microsoft 支援服務。
 
 當您按一下核准連結時，系統會將您導向線上核准表單。 遵循表單上的指示；您有兩個驗證選項：
 
@@ -183,11 +188,11 @@ postmaster@&lt;your-domain-name.com&gt;
 
 ## <a name="wait-for-propagation"></a>等待傳播
 
-自訂網域 HTTPS 功能要在網域名稱通過驗證之後 6-8 小時才會啟用。 當流程完成時，Azure 入口網站中的自訂 HTTPS 狀態會設定為 [已啟用]，而且 [自訂網域] 對話方塊中的四個作業步驟會標示為完成。 您的自訂網域現在已準備好使用 HTTPS。
+自訂網域 HTTPS 功能要在網域名稱通過驗證之後 6-8 小時才會啟用。 當流程完成時，Azure 入口網站中的自訂 HTTPS 狀態會設定為 [已啟用]  ，而且 [自訂網域] 對話方塊中的四個作業步驟會標示為完成。 您的自訂網域現在已準備好使用 HTTPS。
 
 ### <a name="operation-progress"></a>作業進度
 
-下表指出啟用 HTTPS 時的作業進度。 啟用 HTTPS 之後，四個作業步驟會出現在 [自訂網域] 對話方塊中。 隨著每個步驟變成作用中狀態，其他子步驟詳細資料會在步驟進行時顯示於下方。 並非所有這些子步驟都會發生。 當步驟成功完成時，旁邊會出現綠色的核取記號。 
+下表列出停用 HTTPS 時的作業進度。 啟用 HTTPS 之後，四個作業步驟會出現在 [自訂網域] 對話方塊中。 隨著每個步驟變成作用中狀態，其他子步驟詳細資料會在步驟進行時顯示於下方。 並非所有這些子步驟都會發生。 各個步驟完成時，旁邊都會出現一個綠色的核取記號。 
 
 | 作業步驟 | 作業子步驟詳細資料 | 
 | --- | --- |
@@ -219,19 +224,19 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 
 ### <a name="disable-the-https-feature"></a>停用 HTTPS 功能 
 
-1. 在 [Azure 入口網站](https://portal.azure.com)中，瀏覽至您的 [Azure Front Door Service] 設定。
+1. 在 [Azure 入口網站](https://portal.azure.com)中，瀏覽至您的 [Azure Front Door]  設定。
 
 2. 在前端主機清單中，按一下您要停用 HTTPS 的自訂網域。
 
-3. 按一下 [停用] 以停用 HTTPS，然後按一下 [儲存]。
+3. 按一下 [停用]  以停用 HTTPS，然後按一下 [儲存]  。
 
 ### <a name="wait-for-propagation"></a>等待傳播
 
-自訂網域 HTTPS 功能停用之後，可能需要 6-8 小時才會生效。 當流程完成時，Azure 入口網站中的自訂 HTTPS 狀態會設定為 [已停用]，而且 [自訂網域] 對話方塊中的三個作業步驟會標示為完成。 您的自訂網域無法再使用 HTTPS。
+自訂網域 HTTPS 功能停用之後，可能需要 6-8 小時才會生效。 當流程完成時，Azure 入口網站中的自訂 HTTPS 狀態會設定為 [已停用]  ，而且 [自訂網域] 對話方塊中的三個作業步驟會標示為完成。 您的自訂網域無法再使用 HTTPS。
 
 #### <a name="operation-progress"></a>作業進度
 
-下表指出停用 HTTPS 時的作業進度。 停用 HTTPS 之後，三個作業步驟會出現在 [自訂網域] 對話方塊中。 隨著每個步驟變成作用中狀態，其他詳細資料會顯示在步驟下方。 當步驟成功完成時，旁邊會出現綠色的核取記號。 
+下表指出停用 HTTPS 時的作業進度。 停用 HTTPS 之後，三個作業步驟會出現在 [自訂網域] 對話方塊中。 隨著每個步驟變成作用中狀態，其他詳細資料會顯示在步驟下方。 各個步驟完成時，旁邊都會出現一個綠色的核取記號。 
 
 | 作業進度 | 作業詳細資料 | 
 | --- | --- |
@@ -247,7 +252,7 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 
 2. *您使用 IP 型或 SNI TLS/SSL？*
 
-    Azure Front Door Service 使用 SNI TLS/SSL。
+    Azure Front Door 使用 SNI TLS/SSL。
 
 3. *如果沒有收到 DigiCert 的驗證電子郵件該怎麼辦？*
 
@@ -255,7 +260,7 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 
 4. *SAN 憑證的安全性是否比專用憑證來得低？*
     
-    SAN 憑證遵循和專用憑證相同的加密與安全性標準。 所有發行的 SSL 憑證都使用 SHA-256 來加強伺服器安全性。
+    SAN 憑證遵循和專用憑證相同的加密與安全性標準。 所有發行的 TLS/SSL 憑證都使用 SHA-256 來加強伺服器安全性。
 
 5. *是否需要我的 DNS 提供者的憑證授權單位授權記錄？*
 

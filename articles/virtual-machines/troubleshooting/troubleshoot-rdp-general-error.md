@@ -4,21 +4,20 @@ description: 了解如何在 Azure 中針對 Windows VM 上的 RDP 一般錯誤�
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: f290a7e16938c66d45fab9b78086f77bfdfe4839
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f996ffa864fb4178ddedecde7c5511d5d9cf39a1
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60319508"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985801"
 ---
 # <a name="troubleshoot-an-rdp-general-error-in-azure-vm"></a>在 Azure VM 中對 RDP 一般錯誤進行疑難排解
 
@@ -59,15 +58,15 @@ ms.locfileid: "60319508"
 
 RDP 接聽程式的設定不正確。
 
-## <a name="solution"></a>解決方法
+## <a name="solution"></a>解決方案
 
-若要解決這個問題，請[備份作業系統磁碟](../windows/snapshot-copy-managed-disk.md)，並[將作業系統磁碟連結至救援 VM](troubleshoot-recovery-disks-portal-windows.md)，然後遵循步驟。
+在遵循下列步驟之前，請擷取受影響虛擬機器作業系統磁碟的快照集作為備份。 若要解決此問題，請使用序列控制或離線修復 VM。
 
 ### <a name="serial-console"></a>序列主控台
 
 #### <a name="step-1-open-cmd-instance-in-serial-console"></a>步驟 1：在序列主控台中開啟 CMD 執行個體
 
-1. 選取 [支援與疑難排解] > [序列主控台 (預覽)] 來存取[序列主控台](serial-console-windows.md)。 如果已在 VM 上啟用此功能，您就能成功連線該 VM。
+1. 選取 [支援與疑難排解]**** > [序列主控台 (預覽)]**** 來存取[序列主控台](serial-console-windows.md)。 如果已在 VM 上啟用此功能，您就能成功連線該 VM。
 
 2. 針對 CMD 執行個體建立新通道。 輸入 **CMD** 以啟動通道來取得通道名稱。
 
@@ -79,29 +78,37 @@ RDP 接聽程式的設定不正確。
 
 #### <a name="step-2-check-the-values-of-rdp-registry-keys"></a>步驟 2：檢查 RDP 登錄機碼的值：
 
-1. 檢查 RDP 是否已被原則停用。
+1. 檢查是否已由群組原則停用 RDP。
 
-      ```
-      REM Get the local policy 
-      reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server " /v fDenyTSConnections
+    ```
+    REM Get the group policy 
+    reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fDenyTSConnections
+    ```
+    如果群組原則指出 RDP 已停用（fDenyTSConnections 值為0x1），請執行下列命令以啟用 TermService 服務。 如果找不到登錄機碼，則沒有設定為停用 RDP 的群組原則。 您可以移至下一個步驟。
 
-      REM Get the domain policy if any
-      reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fDenyTSConnections
-      ```
+    ```
+    REM update the fDenyTSConnections value to enable TermService service
+    reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fDenyTSConnections /t REG_DWORD /d 0 /f
+    ```
+    > [!NOTE]
+    > 此步驟會暫時啟用 TermService 服務。 重新整理群組原則設定時，將會重設變更。 若要解決此問題，您必須檢查本機群組原則或網域群組原則是否已停用 TermService 服務，然後相對地更新原則設定。
+    
+2. 檢查目前的遠端連線設定。
+    ```
+    REM Get the local remote connection setting
+    reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections
+    ```
+    如果命令傳回0x1，則 VM 不允許遠端連線。 然後，使用下列命令來允許遠端連線：
+     ```
+     reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f
+     ```
+    
+1. 檢查終端伺服器的目前組態。
 
-      - 如果網域原則存在，則會覆寫本機原則上的設定。
-      - 如果網域原則指出 RDP 已停用 (1)，請從網域控制站更新 AD 原則。
-      - 如果網域原則指出 RDP 已啟用 (0)，則不需要更新。
-      - 如果網域原則不存在，而本機原則指出 RDP 已停用 (1)，請使用下列命令來啟用 RDP： 
-      
-            reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f
-                  
-
-2. 檢查終端伺服器的目前組態。
-
-      ```
-      reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v TSEnabled
-      ```
+    ```
+    REM Get the local remote connection setting
+    reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v TSEnabled
+    ```
 
       如果命令傳回 0，表示終端伺服器已停用。 那麼請啟用終端伺服器，如下所示：
 
@@ -164,23 +171,23 @@ RDP 接聽程式的設定不正確。
 
 如果仍然發生問題，請移至步驟 2。
 
-#### <a name="step-2-enable-remote-desktop-services"></a>步骤 2：启用远程桌面服务
+#### <a name="step-2-enable-remote-desktop-services"></a>步驟 2：啟用遠端桌面服務
 
 如需詳細資訊，請參閱[無法在 Azure VM 上啟動遠端桌面服務](troubleshoot-remote-desktop-services-issues.md)。
 
-#### <a name="step-3-reset-rdp-listener"></a>步骤 3：重置 RDP 侦听器
+#### <a name="step-3-reset-rdp-listener"></a>步驟 3：重設 RDP 接聽程式
 
 如需詳細資訊，請參閱 [Azure VM 中的遠端桌面時常斷線](troubleshoot-rdp-intermittent-connectivity.md)。
 
 ### <a name="offline-repair"></a>離線修復
 
-#### <a name="step-1-turn-on-remote-desktop"></a>步骤 1：启用远程桌面
+#### <a name="step-1-turn-on-remote-desktop"></a>步驟 1：開啟遠端桌面
 
-1. [將 OS 磁碟連結至復原 VM](../windows/troubleshoot-recovery-disks-portal.md)。
+1. [將 OS 磁片連結至復原 VM](../windows/troubleshoot-recovery-disks-portal.md)。
 2. 啟動復原 VM 的遠端桌面連線。
-3. 確定該磁碟在磁碟管理主控台中標示為 [線上]。 記下指派給已連結 OS 磁碟的磁碟機代號。
+3. 請確定磁片在 [磁片管理] 主控台中標示為 [**線上**]。 記下指派給已連結 OS 磁碟的磁碟機代號。
 4. 啟動復原 VM 的遠端桌面連線。
-5. 開啟提升權限的命令提示字元工作階段 (**以系統管理員身分執行**)。 執行下列指令碼。 在此指令碼中，我們假設指派給已連結 OS 磁碟的磁碟機代號是 F。請將此磁碟機代號取代為 VM 的適當值。
+5. 開啟提升許可權的命令提示字元會話（**以系統管理員身分執行**）。 執行下列指令碼。 在此指令碼中，我們假設指派給已連結 OS 磁碟的磁碟機代號是 F。請將此磁碟機代號取代為 VM 的適當值。
 
       ```
       reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv 
@@ -234,14 +241,14 @@ RDP 接聽程式的設定不正確。
 
 如果仍然發生問題，請移至步驟 2。
 
-#### <a name="step-2-enable-remote-desktop-services"></a>步骤 2：启用远程桌面服务
+#### <a name="step-2-enable-remote-desktop-services"></a>步驟 2：啟用遠端桌面服務
 
 如需詳細資訊，請參閱[無法在 Azure VM 上啟動遠端桌面服務](troubleshoot-remote-desktop-services-issues.md)。
 
-#### <a name="step-3-reset-rdp-listener"></a>步骤 3：重置 RDP 侦听器
+#### <a name="step-3-reset-rdp-listener"></a>步驟 3：重設 RDP 接聽程式
 
 如需詳細資訊，請參閱 [Azure VM 中的遠端桌面時常斷線](troubleshoot-rdp-intermittent-connectivity.md)。
 
-## <a name="need-help-contact-support"></a>需要協助嗎？ 联系支持人员
+## <a name="need-help-contact-support"></a>需要協助嗎？ 請連絡支援人員
 
 如果仍需要協助，請[連絡支援人員](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解決您的問題。

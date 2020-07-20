@@ -3,16 +3,14 @@ title: 開發人員最佳做法 - Azure Kubernetes Services (AKS) 中的 Pod 安
 description: 了解如何在 Azure Kubernetes Services (AKS) 中保護 Pod 的開發人員最佳做法
 services: container-service
 author: zr-msft
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: zarhoads
-ms.openlocfilehash: f9d49d143b31b0b9e73d8a147605935cd88d412b
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
-ms.translationtype: MT
+ms.openlocfilehash: 3a62dcbbec90ec73ded722a6efbbd5907fb21f9f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65073979"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84674035"
 ---
 # <a name="best-practices-for-pod-security-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Services (AKS) 中的 Pod 安全性最佳做法
 
@@ -31,7 +29,7 @@ ms.locfileid: "65073979"
 
 **最佳做法指引** - 若要以不同使用者或群組來執行，並限制基礎節點處理序與服務的存取，請定義 Pod 資訊安全內容設定。 指派所需的最少量權限。
 
-Pod 的執行身分應為定義的使用者或群組，而非「根」，您的應用程式才能正確執行。 Pod 或容器的 `securityContext` 可讓您定義如 *runAsUser* 或 *fsGroup* 的設定，取得適當的權限。 僅指派所需的使用者或群組的權限，並不使用資訊安全內容作為取得其他權限的方式。 *RunAsUser*，權限提升和其他 Linux 功能設定只適用於 Linux 節點和 pod。
+Pod 的執行身分應為定義的使用者或群組，而非「根」，您的應用程式才能正確執行。 Pod 或容器的 `securityContext` 可讓您定義如 *runAsUser* 或 *fsGroup* 的設定，取得適當的權限。 僅指派所需的使用者或群組的權限，並不使用資訊安全內容作為取得其他權限的方式。 *runAsUser*、權限提升和其他 Linux 功能設定僅適用於 Linux 節點和 Pod。
 
 當您的執行身分為非根使用者時，容器無法繫結至具特殊權限的連接埠 1024。 在此案例中，Kubernetes 服務可用來偽裝應用程式在特定連接埠上執行的事實。
 
@@ -68,51 +66,54 @@ spec:
 
 ## <a name="limit-credential-exposure"></a>限制認證公開程度
 
-**最佳做法指引** - 不在應用程式程式碼中定義認證。 使用 Azure 資源的受控身分識別，可讓 Pod 要求存取其他資源。 如 Azure Key Vault 的數位保存庫也應可用來儲存和擷取數位金鑰與認證。 受管理的 pod 適用於 Linux 的 pod 和容器映像只是身分識別。
+**最佳做法指引** - 不在應用程式程式碼中定義認證。 使用 Azure 資源的受控身分識別，可讓 Pod 要求存取其他資源。 如 Azure Key Vault 的數位保存庫也應可用來儲存和擷取數位金鑰與認證。 Pod 受控識別僅適用於 Linux Pod 和容器映射。
 
 若要限制在應用程式程式碼中公開認證的風險，請避免使用固定或共用認證。 認證或金鑰不應直接包含在程式碼中。 如果公開這些認證，就需要更新和重新部署應用程式。 較好的方法是提供 Pod 自己的身分識別和自我驗證方式，或從數位保存庫自動擷取認證。
 
-以下[关联的 AKS 开放源代码项目][aks-associated-projects]可让你自动验证 Pod 或请求凭据和数字保管库中的密钥：
+### <a name="use-azure-container-compute-upstream-projects"></a>使用 Azure 容器計算上游專案
 
-* Azure 資源的受控身分識別，以及
-* Azure Key Vault FlexVol 驅動程式
+> [!IMPORTANT]
+> Azure 技術支援不支援相關聯的 AKS 開放原始碼專案。 這些專案可供使用者自行安裝到叢集，並從社群收集意見反應。
 
-Azure 技术支持不为关联的 AKS 开放源代码项目提供支持。 提供这些项目是为了从我们的社区收集反馈和 bug。 建议不要将这些项目用于生产。
+下列[相關聯的 AKS 開放原始碼專案][aks-associated-projects]可供自動驗證 Pod，或從數位保存庫要求認證和金鑰。 這些專案由 Azure 容器計算上游小組維護，並屬於[可供使用的更廣泛專案清單](https://github.com/Azure/container-compute-upstream/blob/master/README.md#support)一部分。
 
-### <a name="use-pod-managed-identities"></a>使用 Pod 受控身分識別
+ * [Azure Active Directory Pod 身分識別][aad-pod-identity]
+ * [祕密存放區 CSI 驅動程式的 Azure Key Vault 提供者](https://github.com/Azure/secrets-store-csi-driver-provider-azure#usage)
 
-Azure 資源的受控身分識別可讓 Pod 向 Azure 中任何支援此功能的服務自我驗證，例如儲存體、SQL。 獲指派 Azure 身分識別的 Pod 可向 Azure Active Directory 進行驗證，並接收數位權杖。 此數位權杖可向其他 Azure 服務顯示，供其檢查是否已授權 Pod 存取服務和執行所需動作。 這種方法代表資料庫連接字串不需要任何祕密。 Pod 受控身分識別的簡化工作流程如下圖所示：
+#### <a name="use-pod-managed-identities"></a>使用 Pod 受控身分識別
+
+Azure 資源其受控識別可讓 Pod 向任何支援此功能的 Azure 服務進行自我驗證，例如儲存體或 SQL。 獲指派 Azure 身分識別的 Pod 可向 Azure Active Directory 進行驗證，並接收數位權杖。 此數位權杖可向其他 Azure 服務顯示，供其檢查是否已授權 Pod 存取服務和執行所需動作。 這種方法代表資料庫連接字串不需要任何祕密。 Pod 受控身分識別的簡化工作流程如下圖所示：
 
 ![Azure 中 Pod 受控身分識別的簡化工作流程](media/developer-best-practices-pod-security/basic-pod-identity.png)
 
 使用受控身分識別，應用程式程式碼就不需要包含認證以存取服務時，例如 Azure 儲存體。 每個 Pod 都以自己的身分識別驗證，因此您可以稽核和檢閱存取權。 如果應用程式會與其他 Azure 服務連線，請使用受控身分識別來限制重複使用和公開認證的風險。
 
-有关 Pod 标识的详细信息，请参阅[配置 AKS 群集以通过应用程序使用 Pod 托管标识][aad-pod-identity]
+如需 Pod 身分識別的詳細資訊，請參閱[設定 AKS 叢集及使用應用程式來使用 Pod 受控身分識別][aad-pod-identity]
 
-### <a name="use-azure-key-vault-with-flexvol"></a>搭配使用 Azure Key Vault 與 FlexVol
+#### <a name="use-azure-key-vault-with-secrets-store-csi-driver"></a>搭配使用 Azure Key Vault 與祕密存放區 CSI 驅動程式
 
-受控 Pod 身分識別非常適合用來向支援的 Azure 服務進行驗證。 您自己的服務或應用程式若沒有Azure 資源的受控身分識別，仍可使用認證或金鑰來進行驗證。 數位保存庫可用來儲存這些認證。
+使用 Pod 身分識別專案可讓支援的 Azure 服務進行驗證。 如果您自己的服務或應用程式沒有 Azure 資源受控身分識別，則仍可使用認證或金鑰來進行驗證。 數位保存庫可用來儲存這些祕密內容。
 
-當應用程式需要認證時會與數位保存庫通訊，擷取最新的認證，然後再連線到所需的服務。 這個數位保存庫可以是 Azure Key Vault。 下圖顯示使用 Pod 受控身分識別從 Azure Key Vault 擷取認證的簡化工作流程：
+當應用程式需要認證時會與數位保存庫通訊、擷取最新的祕密內容，然後連線到所需的服務。 這個數位保存庫可以是 Azure Key Vault。 下圖顯示使用 Pod 受控身分識別從 Azure Key Vault 擷取認證的簡化工作流程：
 
-![使用 Pod 受控身分識別從 Azure Key Vault 擷取認證的簡化工作流程](media/developer-best-practices-pod-security/basic-key-vault-flexvol.png)
+![使用 Pod 受控身分識別從 Azure Key Vault 擷取認證的簡化工作流程](media/developer-best-practices-pod-security/basic-key-vault.png)
 
-有了 Key Vault，您就可以儲存並定期輪替使用祕密，例如認證、儲存體帳戶金鑰或憑證。 您可以使用 FlexVolum 整合 Azure Key Vault 與 AKS 叢集。 FlexVolume 驅動程式可讓 AKS 叢集從 Key Vault 原生擷取認證，並只會將認證安全地提供給提出要求的 Pod。 請和叢集操作員一起將 Key Vault FlexVol 驅動程式部署到 AKS 節點。 您可以使用 Pod 受控身分識別向 Key Vault 要求存取權，並透過 FlexVolume 驅動程式擷取所需的認證。
+有了 Key Vault，您就可以儲存並定期輪替使用祕密，例如認證、儲存體帳戶金鑰或憑證。 您可使用[祕密存放區 CSI 驅動程式的 Azure Key Vault 提供者](https://github.com/Azure/secrets-store-csi-driver-provider-azure#usage)來整合 Azure Key Vault 與 AKS 叢集。 祕密存放區 CSI 驅動程式可讓 AKS 叢集從 Key Vault 原生擷取祕密內容，並只會將其安全地提供給提出要求的 Pod。 請與叢集操作員合作，以將祕密存放區 CSI 驅動程式部署至 AKS 背景工作節點。 您可使用 Pod 受控身分識別向 Key Vault 要求存取權，並透過祕密存放區 CSI 驅動程式擷取所需的祕密內容。
 
-Azure 金鑰保存庫，搭配 FlexVol 適合搭配應用程式和 Linux 的 pod 和節點上執行的服務。
+搭配祕密存放區 CSI 驅動程式的 Azure Key Vault，可用於需要 1.16 或更新版本 Kubernetes 的 Linux 節點和 Pod。 針對 Windows 節點和 Pod，則需要 1.18 或更新版本的 Kubernetes。
 
 ## <a name="next-steps"></a>後續步驟
 
 本文著重在如何保護您的 Pod。 若要實作這些部分的一些內容，請參閱下列文章：
 
 * [搭配使用 Azure 資源的受控識別與 AKS][aad-pod-identity]
-* [整合 Azure Key Vault 與 AKS][aks-keyvault-flexvol]
+* [整合 Azure Key Vault 與 AKS][aks-keyvault-csi-driver]
 
 <!-- EXTERNAL LINKS -->
-[aad-pod-identity]: https://github.com/Azure/aad-pod-identity#demo-pod
-[aks-keyvault-flexvol]: https://github.com/Azure/kubernetes-keyvault-flexvol
+[aad-pod-identity]: https://github.com/Azure/aad-pod-identity#demo
+[aks-keyvault-csi-driver]: https://github.com/Azure/secrets-store-csi-driver-provider-azure#usage
 [linux-capabilities]: http://man7.org/linux/man-pages/man7/capabilities.7.html
-[selinux-labels]: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.12/#selinuxoptions-v1-core
+[selinux-labels]: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#selinuxoptions-v1-core
 [aks-associated-projects]: https://github.com/Azure/AKS/blob/master/previews.md#associated-projects
 
 <!-- INTERNAL LINKS -->

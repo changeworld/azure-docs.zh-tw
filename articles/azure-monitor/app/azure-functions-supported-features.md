@@ -1,56 +1,52 @@
 ---
-title: Azure Application Insights - 支援 Azure Functions 的功能 | Microsoft Docs
+title: Azure 應用程式 Insights-Azure Functions 支援的功能
 description: 支援 Azure Functions 的 Application Insights 功能
-services: application-insights
-documentationcenter: .net
-author: MS-TimothyMothra
-manager: ''
-ms.service: application-insights
-ms.workload: TBD
-ms.tgt_pltfrm: ibiza
 ms.topic: reference
-ms.date: 10/05/2018
-ms.reviewer: mbullwin
+author: TimothyMothra
 ms.author: tilee
-ms.openlocfilehash: 101c985178b8269b4ff542b94b057330d0c2652a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 4/23/2019
+ms.reviewer: mbullwin
+ms.openlocfilehash: cf0c97fd65f9966bf42fa22e2c8f92263952cb7a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60902242"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77655645"
 ---
 # <a name="application-insights-for-azure-functions-supported-features"></a>適用於 Azure Functions 的 Application Insights 支援的功能
 
-Azure Functions 提供與 Application Insights 的[內建整合](https://docs.microsoft.com/azure/azure-functions/functions-monitoring)，可透過 ILogger 介面來使用。 以下列出目前支援的功能。 請檢閱 Azure Functions 的[開始使用](https://github.com/Azure/Azure-Functions/wiki/App-Insights)指南。
+Azure Functions 提供與 Application Insights 的[內建整合](../../azure-functions/functions-monitoring.md)，可透過 ILogger 介面來使用。 以下列出目前支援的功能。 請檢閱 Azure Functions 的[開始使用](../../azure-functions/functions-monitoring.md#enable-application-insights-integration)指南。
+
+如需函數執行時間版本的詳細資訊，請參閱[這裡](../../azure-functions/functions-versions.md)。
+
+如需 Application Insights 相容版本的詳細資訊，請[參閱相依](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Logging.ApplicationInsights/)性。
 
 ## <a name="supported-features"></a>支援的功能
 
-| Azure Functions                       | V1                | V2 (Ignite 2018)  | 
+| Azure Functions                       | V1                | V2 & V3   | 
 |-----------------------------------    |---------------    |------------------ |
-| **Application Insights .NET SDK**   | **2.5.0**       | **2.9.1**         |
 | | | | 
 | **自動收集**        |                 |                   |               
 | &bull; 要求                     | 是             | 是               | 
 | &bull; 例外狀況                   | 是             | 是               | 
 | &bull; 效能計數器         | 是             | 是               |
 | &bull; 相依性                   |                   |                   |               
-| &nbsp;&nbsp;&nbsp;&mdash; HTTP      |                 | 是               | 
-| &nbsp;&nbsp;&nbsp;&mdash; ServiceBus|                 | 是               | 
-| &nbsp;&nbsp;&nbsp;&mdash; EventHub  |                 | 是               | 
-| &nbsp;&nbsp;&nbsp;&mdash; SQL       |                 | 是               | 
+| &nbsp;&nbsp;&nbsp;&mdash; HTTP      |                 | Yes               | 
+| &nbsp;&nbsp;&nbsp;&mdash; ServiceBus|                 | Yes               | 
+| &nbsp;&nbsp;&nbsp;&mdash; EventHub  |                 | Yes               | 
+| &nbsp;&nbsp;&nbsp;&mdash; SQL       |                 | Yes               | 
 | | | | 
 | **支援的功能**                |                   |                   |               
 | &bull; QuickPulse/LiveMetrics       | 是             | 是               | 
-| &nbsp;&nbsp;&nbsp;&mdash; 保護控制通道|                 | 是               | 
+| &nbsp;&nbsp;&nbsp;&mdash; 保護控制通道|                 | Yes               | 
 | &bull; 取樣                     | 是             | 是               | 
-| &bull; 活動訊號                   |                 | 是               | 
+| &bull; 活動訊號                   |                 | Yes               | 
 | | | | 
-| **相互關聯**                       |                   |                   |               
-| &bull; ServiceBus                     |                   | 是               | 
-| &bull; EventHub                       |                   | 是               | 
+| **Correlation**                       |                   |                   |               
+| &bull; ServiceBus                     |                   | Yes               | 
+| &bull; EventHub                       |                   | Yes               | 
 | | | | 
 | **可設定**                      |                   |                   |           
-| &bull;可完整設定。<br/>如需相關指示，請參閱 [Azure Functions](https://github.com/Microsoft/ApplicationInsights-aspnetcore/issues/759#issuecomment-426687852)。<br/>請參閱 [Asp.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration) 以了解所有選項。               |                   | 是                   | 
+| &bull;可完整設定。<br/>如需相關指示，請參閱 [Azure Functions](https://github.com/Microsoft/ApplicationInsights-aspnetcore/issues/759#issuecomment-426687852)。<br/>請參閱 [Asp.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration) 以了解所有選項。               |                   | Yes                   | 
 
 
 ## <a name="performance-counters"></a>效能計數器
@@ -66,9 +62,9 @@ Azure Functions 提供與 Application Insights 的[內建整合](https://docs.mi
 
 Azure Functions 依預設會在其設定中啟用取樣。 如需詳細資訊，請參閱[設定取樣](https://docs.microsoft.com/azure/azure-functions/functions-monitoring#configure-sampling)。
 
-如果您的專案上執行手動追蹤的遙測的 Application Insights SDK 的相依性，可能會遇到奇怪的行為，如果您的取樣組態不同於函式的取樣組態中。 
+如果您的專案相依于 Application Insights SDK 以進行手動遙測追蹤，則如果您的取樣設定與函式的取樣設定不同，可能會遇到奇怪的行為。 
 
-我們建議使用相同的設定，做為函式。 具有**Functions v2**，您可以取得相同的組態，您的建構函式中使用相依性插入：
+我們建議使用與函式相同的設定。 使用**函數 v2**，您可以在您的函式中使用相依性插入來取得相同的設定：
 
 ```csharp
 using Microsoft.ApplicationInsights;

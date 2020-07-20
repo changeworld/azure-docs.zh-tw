@@ -1,49 +1,47 @@
 ---
-title: Azure Marketplace 的容器供應項目發佈指南
-description: 本文說明在 Marketplace 中發佈容器的需求
+title: Azure Marketplace 中的容器供應專案發佈指南
+description: 本文說明在 Azure Marketplace 中發佈容器供應專案的需求。
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-author: ellacroi
-manager: nunoc
 ms.service: marketplace
-ms.topic: article
-ms.date: 07/09/2018
-ms.author: ellacroi
-ms.openlocfilehash: 41a09be36262ff09c383b8ccb64a94230a11d3f1
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.subservice: partnercenter-marketplace-publisher
+ms.topic: conceptual
+author: keferna
+ms.author: keferna
+ms.date: 04/15/2020
+ms.openlocfilehash: 81069b0340202a0a481522ef1920806026ebcbe1
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64937922"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119390"
 ---
-# <a name="containers-offer-publishing-guide"></a>容器供應項目發佈指南
+# <a name="publishing-guide-for-container-offers"></a>容器供應專案發佈指南
 
-容器供應項目可協助您將容器映像發佈到 Azure Marketplace。 您可以使用本指南來了解這項供應項目的需求。 
+容器供應專案可協助您將容器映射發佈到 Azure Marketplace。 您可以使用本指南來了解這項供應項目的需求。 
 
-這些交易供應項目是透過 Marketplace 來部署並計費的。 使用者會看到的呼籲行動是「立即取得」。
+容器供應專案是透過 Azure Marketplace 部署和計費的交易供應專案。 使用者會看到的呼籲行動是「立即取得」。
 
-當您的解決方案是佈建成 Kubernetes 型 Azure 容器服務的 Docker 容器映像時，請使用「容器」供應項目類型。
+當您的解決方案是以 Kubernetes 為基礎的 Azure 容器服務實例所設定的 Docker 容器映射時，請使用*容器*供應專案類型。 
 
->[!NOTE]
->例如，Azure Kubernetes Service 或「Azure 容器執行個體」之類的 Kubernetes 型 Azure 容器服務、Azure 客戶選擇的 Kubernetes 型容器執行階段。  
+> [!NOTE]
+> Kubernetes 型 Azure 容器服務實例的範例包括 Azure Kubernetes Service 或 Azure 容器實例，這是 Azure 客戶針對以 Kubernetes 為基礎的容器執行時間所做的選擇。  
 
 Microsoft 目前支援免費和自備授權 (BYOL) 授權模型。
 
-## <a name="containers-offer"></a>容器供應項目
+## <a name="container-offer-requirements"></a>容器供應項目需求
 
 | 需求 | 詳細資料 |  
 |:--- |:--- |  
-| 計費和計量 | 支援免費或 BYOL 計費模型。 |  
-| 從 Dockerfile 建置的映像 | 容器映像必須以 Docker 映像規格為基礎，而必須從 Dockerfile 建置。<ul> <li>如需建置 Docker 映像的詳細資訊，請瀏覽＜使用方式＞一節 (網址為 [docs.docker.com/engine/reference/builder/#usage](https://docs.docker.com/engine/reference/builder/#usage))。</li> </ul> |  
-| 裝載於 ACR 中 | 容器映像必須裝載於 Azure Container Registry (ACR) 存放庫中。<ul> <li>如需使用 ACR 的詳細資訊，請瀏覽＜快速入門：使用 Azure 入口網站建立容器登錄＞頁面 (網址為 [docs.microsoft.com/azure/container-registry/container-registry-get-started-portal](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-portal))。</li> </ul> |  
-| 映像標記 | 容器映像必須包含至少 1 個標籤 (最多可容納標籤：16 個)。<ul> <li>如需標記映像的詳細資訊，請瀏覽＜Docker 標籤＞頁面 (網址為 [docs.docker.com/engine/reference/commandline/tag](https://docs.docker.com/engine/reference/commandline/tag))。</li> </ul> |  
+| 計費和計量 | 支援免費或 BYOL 計費模型。<br><br> |  
+| 從 Dockerfile 建立的映射 | 容器映射必須以 Docker 映射規格為基礎，並且是從 Dockerfile 建立而成。<br> <br>如需建立 Docker 映射的詳細資訊，請參閱[Dockerfile 參考](https://docs.docker.com/engine/reference/builder/#usage)的「使用方式」一節。<br><br> |  
+| 在 Azure Container Registry 存放庫中裝載 | 容器映射必須裝載在 Azure Container Registry 存放庫中。<br> <br>如需使用 Azure Container Registry 的詳細資訊，請參閱[快速入門：使用 Azure 入口網站建立私人容器](../container-registry/container-registry-get-started-portal.md)登錄。<br><br> |  
+| 映像標記 | 容器映射必須包含至少一個標記（標記數目上限：16）。<br><br>如需有關標記映射的詳細資訊，請參閱 `docker tag` [Docker 檔](https://docs.docker.com/engine/reference/commandline/tag)網站上的頁面。<br><br> |  
 
 ## <a name="next-steps"></a>後續步驟
 
-如果您還沒有這麼做，請 
+了解如何[使用 Azure Marketplace 來拓展您的雲端業務](https://azuremarketplace.microsoft.com/sell) (若您尚不了解)。
 
-- 在市集中[註冊](https://azuremarketplace.microsoft.com/sell)。
+若要註冊並開始使用合作夥伴中心：
 
-如果您已註冊，且要建立新供應項目或使用現有供應項目，請
-
-- [登入 Cloud Partner 入口網站](https://cloudpartner.azure.com)以建立或完成您的供應項目。
-- 如需詳細資訊，請參閱[容器](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/containers/cpp-containers-offer)。
+- [登入合作夥伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)，以建立或完成您的供應項目。
+- 如需詳細資訊，請參閱[建立 Azure 容器供應](./partner-center-portal/create-azure-container-offer.md)專案。

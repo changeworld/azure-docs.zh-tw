@@ -4,16 +4,16 @@ ms.service: sql-database
 ms.topic: include
 ms.date: 12/10/2018
 ms.author: genemi
-ms.openlocfilehash: e30651cb0ed7d74082163a92acbc428c21018255
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 7943ea13d93fa68b76d333bda5438fb5738f5cd1
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53728529"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86050376"
 ---
 ## <a name="c-program-example"></a>C# 程式範例
 
-本文的下一節會呈現使用 ADO.NET 將 TRANSACT-SQL (T-SQL) 陳述式傳送到 SQL 資料庫的 C# 程式。 C# 程式會示範下列動作：
+本文的下一節會呈現使用 ADO.NET 將 TRANSACT-SQL (T-SQL) 陳述式傳送到 SQL Database 的 C# 程式。 C# 程式會示範下列動作：
 
 - [使用 ADO.NET 連線至 SQL Database](#cs_1_connect)
 - [可傳回 T-SQL 陳述式的方法](#cs_2_return)

@@ -1,28 +1,22 @@
 ---
-title: CLI 範例 - 使用 Azure CLI 進行多個網站的負載平衡 | Microsoft Docs
+title: 平衡多個網站的負載 - Azure CLI - Azure Load Balancer
 description: 此 Azure CLI 指令碼範例示範如何將多個網站負載平衡至相同的虛擬機器
-services: load-balancer
 documentationcenter: load-balancer
-author: KumudD
-manager: jeconnoc
-editor: tysonn
-tags: ''
-ms.assetid: ''
+author: asudbring
 ms.service: load-balancer
 ms.devlang: azurecli
 ms.topic: sample
-ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 04/20/2018
-ms.author: kumud
-ms.openlocfilehash: 41f8a403694eec897ba4a6eb147ab71757d5caa5
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.author: allensu
+ms.openlocfilehash: 80ec18ca722b9833307fc270c710abd93c6fb6f9
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54263929"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "76274629"
 ---
-# <a name="azure-cli-script-example-load-balance-multiple-websites"></a>Azure CLI 指令碼範例：進行多個網站的負載平衡
+# <a name="azure-cli-script-example-load-balance-multiple-websites"></a>Azure CLI 指令碼範例：平衡多個網站的負載
 
 此 Azure CLI 指令碼範例使用可用性設定組成員的兩個虛擬機器 (VM) 建立虛擬網路。 負載平衡器會將兩個不同 IP 位址的流量傳送至這兩個 VM。 執行指令碼之後，您可以將 Web 伺服器軟體部署至 VM 並主控多個網站 (各有自己的 IP 位址)。
 
@@ -47,7 +41,7 @@ az group delete --name myResourceGroup --yes
 
 此指令碼使用下列命令建立資源群組、虛擬網路、負載平衡器和所有相關資源。 下表中的每個命令都會連結至命令特定的文件。
 
-| 命令 | 注意 |
+| Command | 注意 |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | 建立用來存放所有資源的資源群組。 |
 | [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet#az-network-vnet-create) | 建立 Azure 虛擬網路和子網路。 |

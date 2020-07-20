@@ -1,162 +1,253 @@
 ---
-title: 針對 Azure 儲存體帳戶設定自訂網域名稱 | Microsoft Docs
-description: 使用 Azure 入口網站，將您自己的正式名稱 (CNAME) 對應至 Azure 儲存體帳戶中的 Blob 儲存體或 Web 端點。
-services: storage
+title: 將自訂網域對應至 Azure Blob 儲存體端點
+titleSuffix: Azure Storage
+description: 將自訂網域對應至 Azure 儲存體帳戶中的 Blob 儲存體或 web 端點。
 author: normesta
 ms.service: storage
-ms.topic: article
-ms.date: 06/26/2018
+ms.topic: how-to
+ms.date: 01/23/2020
 ms.author: normesta
-ms.reviewer: seguler
+ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 4f6776a5f15cf391f3a65aceb6e9e783d87a2078
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
-ms.translationtype: MT
+ms.openlocfilehash: 95fd62584ef73f3f2f198c84913652f460fc5b1a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148921"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84465536"
 ---
-# <a name="configure-a-custom-domain-name-for-your-azure-storage-account"></a>針對 Azure 儲存體帳戶設定自訂網域名稱
+# <a name="map-a-custom-domain-to-an-azure-blob-storage-endpoint"></a>將自訂網域對應至 Azure Blob 儲存體端點
 
-您可以設定自訂網域名稱，以供存取 Azure 儲存體帳戶中的 Blob 資料。 Azure Blob 儲存體的預設端點是 *\<儲存體帳戶名稱>.blob.core.windows.net*。 您也可以使用產生的 web 端點的一部分[靜態網站功能](storage-blob-static-website.md)。 如果您對應自訂網域和子網域，例如*www\.contoso.com*，到儲存體帳戶的 blob 或 web 端點，您的使用者可以使用該網域存取您的儲存體帳戶中的 blob 資料。
+您可以將自訂網域對應至 blob 服務端點或[靜態網站](storage-blob-static-website.md)端點。 
+
+[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
+
+> [!NOTE] 
+> 這個對應僅適用于子域（例如： `www.contoso.com` ）。 如果您想要在根域（例如：）上使用 web 端點，則必須 `contoso.com` 使用 AZURE CDN。 如需指導方針，請參閱本文的[對應已啟用 HTTPS 的自訂網域](#enable-https)一節。 因為您前往本文的那一節來啟用自訂網域的根域，所以啟用 HTTPS 的那一節內的步驟是選擇性的。 
+
+<a id="enable-http"></a>
+
+## <a name="map-a-custom-domain-with-only-http-enabled"></a>對應僅啟用 HTTP 的自訂網域
+
+這種方法比較簡單，但只會啟用 HTTP 存取。 如果儲存體帳戶設定為需要透過 HTTPS 進行[安全傳輸](../common/storage-require-secure-transfer.md)，則您必須為您的自訂網域啟用 HTTPS 存取。 
+
+若要啟用 HTTPS 存取，請參閱本文的[對應已啟用 HTTPs 的自訂網域](#enable-https)一節。 
+
+<a id="map-a-domain"></a>
+
+### <a name="map-a-custom-domain"></a>對應自訂網域
 
 > [!IMPORTANT]
-> Azure 儲存體尚未以原生方式支援使用自訂網域的 HTTPS。 您目前可以[使用 Azure CDN 透過 HTTPS 以自訂網域存取 Blob](storage-https-custom-domain-cdn.md)。
-> 
-> 
-> [!NOTE]
-> 儲存體帳戶目前支援每個帳戶只能有一個自訂網域名稱。 您無法將自訂網域名稱同時對應至 Web 和 Blob 服務端點。
-> 
-> [!NOTE]
-> 對應沒有只適用於子網域 (例如 www\.contoso.com)。 如果您想要對根網域 (例如 contoso.com)，您可以使用的 web 端點，則您不必[Azure CDN 使用自訂網域](storage-https-custom-domain-cdn.md)
+> 當您完成設定時，使用者會短暫無法使用您的自訂網域。 如果您的網域目前支援的應用程式具有不需要停機的服務等級協定（SLA），請遵循本文的[對應自訂網域與零停機](#zero-down-time)一節中的步驟，以確保使用者可以在 DNS 對應發生時存取您的網域。
 
-下表展示的幾個範例 URL，適用於位在名為 *mystorageaccount* 之儲存體帳戶中的 Blob 資料。 为存储帐户注册的自定义子域是 *www\.contoso.com*：
+如果您要不在乎您的使用者暫時無法使用該網域，請遵循下列步驟。
 
-| 資源類型 | 預設 URL | 自訂網域 URL |
-| --- | --- | --- |
-| 儲存體帳戶 | http://mystorageaccount.blob.core.windows.net | http://www.contoso.com |
-| Blob |http://mystorageaccount.blob.core.windows.net/mycontainer/myblob | http://www.contoso.com/mycontainer/myblob |
-| 根容器 | http://mystorageaccount.blob.core.windows.net/myblob 或 http://mystorageaccount.blob.core.windows.net/$root/myblob| http://www.contoso.com/myblob 或 http://www.contoso.com/$root/myblob |
-| Web |  http://mystorageaccount.[zone].web.core.windows.net/$web/[indexdoc] 或 http://mystorageaccount.[zone].web.core.windows.net/[indexdoc] 或 http://mystorageaccount.[zone].web.core.windows.net/$web 或 http://mystorageaccount.[zone].web.core.windows.net/ | http://www.contoso.com/$web 或 http://www.contoso.com/ 或 http://www.contoso.com/$web/[indexdoc] 或  http://www.contoso.com/[indexdoc] |
+： heavy_check_mark：步驟1：取得儲存體端點的主機名稱。
 
-> [!NOTE]  
-> 如下列各節中所示，Blob 服務端點的所有範例也適用於 Web 服務端點。
+： heavy_check_mark：步驟2：使用您的網域提供者建立正式名稱（CNAME）記錄。
 
-## <a name="direct-vs-intermediary-cname-mapping"></a>直接 CNAME 映射与中间 CNAME 映射
+： heavy_check_mark：步驟3：向 Azure 註冊自訂網域。 
 
-可通过下述两种方法之一将带有子域（例如 www\.contoso.com）前缀的自定义域指向存储帐户的 Blob 终结点： 
-* 使用直接 CNAME 對應。
-* 使用 *asverify* 中繼子網域。
+： heavy_check_mark：步驟4：測試您的自訂網域。
 
-### <a name="direct-cname-mapping"></a>直接 CNAME 對應
+<a id="endpoint"></a>
 
-第一種方法最為簡易，亦即建立正式名稱 (CNAME) 記錄將您的自訂網域與子網域直接對應至 Blob 端點。 CNAME 記錄是將來源網域對應至目的地網域的網域名稱系統 (DNS) 功能。 在示例中，源域是你自己的自定义域和子域（例如 *www\.contoso.com*）。 目的地網域是您的 Blob 服務端點 (例如 *mystorageaccount.blob.core.windows.net*)。
+#### <a name="step-1-get-the-host-name-of-your-storage-endpoint"></a>步驟1：取得儲存體端點的主機名稱 
 
-＜註冊自訂網域＞一節涵蓋直接方法。
-
-### <a name="intermediary-mapping-with-asverify"></a>使用 *asverify* 的中繼對應
-
-第二種方法也使用 CNAME 記錄。 不過，為了避免發生停機，會先採用 Azure 認得的特殊子網域 *asverify*。
-
-將自訂網域對應至 Blob 端點時，會在您於 [Azure 入口網站](https://portal.azure.com)中註冊網域的期間，造成短暫停機。 如果網域目前所支援之應用程式的服務等級協定 (SLA) 要求不得發生停機狀況，請使用 Azure *asverify* 子網域作為中繼註冊步驟。 此步驟可確保讓使用者能夠在 DNS 對應進行時存取您的網域。
-
-使用 *asverify* 子網域來註冊自訂網域涵蓋此中繼方法。
-
-## <a name="register-a-custom-domain"></a>註冊自訂網域
-如果下列陳述與您的情況相符，請使用本節中的程序來註冊網域：
-* 您不在乎網域在短暫的時間內無法供使用者使用。
-* 您的自訂網域目前未裝載應用程式。 
-
-您可以使用 Azure DNS 來設定 Azure Blob 存放區的自訂 DNS 名稱。 如需詳細資訊，請參閱[使用 Azure DNS 為 Azure 服務提供自訂網域設定](https://docs.microsoft.com/azure/dns/dns-custom-domain#blob-storage)。
-
-如果您自訂網域目前支援的應用程式不允許發生任何停機狀況，請依照使用 *asverify* 子網域來註冊自訂網域中所述的程序進行操作。
-
-若要設定自訂網域名稱，請在 DNS 中建立一個新的 CNAME 記錄。 CNAME 記錄會指定網域名稱的別名。 在我們的範例中，它會將自訂網域的位址對應至儲存體帳戶的 Blob 儲存體端點。
-
-您通常可以在網域註冊機構的網站上管理您網域的 DNS 設定。 各註冊機構指定 CNAME 記錄的方法都很類似，只是稍微不同，但概念都一樣。 由於有些基本網域註冊套件並未提供 DNS 設定，因此您可能需要先升級網域註冊套件，然後再建立 CNAME 記錄。
+主機名稱是沒有通訊協定識別碼和尾端斜線的儲存體端點 URL。 
 
 1. 在 [Azure 入口網站](https://portal.azure.com)中，移至您的儲存體帳戶。
 
-1. 在功能表窗格中的 [Blob 服務] 底下，選取 [自訂網域]。  
-   [自訂網域] 窗格隨即開啟。
+2. 在功能表窗格的 [**設定**] 底下，選取 [**屬性**]。  
 
-1. 登入網域註冊機構的網站，然後前往 DNS 管理頁面。  
-   您可能會在名為 [Domain Name] \(網域名稱\)、[DNS] 或 [Name Server Management] \(名稱伺服器管理\) 的區段中找到該頁面。
+3. 將**主要 Blob 服務端點**或**主要靜態網站端點**的值複製到文字檔。 
 
-1. 尋找管理 CNAME 的區段。  
-   您可能需要前往進階設定頁面，然後尋找 [CNAME]、[Alias] \(別名\) 或 [Subdomains] \(子網域\)。
+4. 從該字串移除通訊協定識別碼（*例如*，HTTPS）和尾端斜線。 下表包含範例。
 
-1. 创建新的 CNAME 记录，输入 **www** 或 **photos** 等子域别名（子域是必需的，根域不受支持），然后提供主机名。  
-   主機名稱是您的 Blob 服務端點。 其格式為 *\<mystorageaccount>.blob.core.windows.net*，其中 *mystorageaccount* 是您儲存體帳戶的名稱。 要使用的主機名稱會顯示在 [Azure 入口網站](https://portal.azure.com)之 [自訂網域] 窗格的項目 #1 中。 
+   | 端點的類型 |  端點 | 主機名稱 |
+   |------------|-----------------|-------------------|
+   |blob 服務  | `https://mystorageaccount.blob.core.windows.net/` | `mystorageaccount.blob.core.windows.net` |
+   |靜態網站  | `https://mystorageaccount.z5.web.core.windows.net/` | `mystorageaccount.z5.web.core.windows.net` |
+  
+   請稍後再設定此值。
 
-1. 在 [自訂網域] 窗格的文字方塊中，輸入您的自訂網域名稱 (包含子網域)。  
-   例如，如果域是 *contoso.com*，子域别名是 *www*，请输入 **www\.contoso.com**。 若您的子網域為 *photos*，請輸入 **photos.contoso.com**。
+<a id="create-cname-record"></a>
 
-1. 若要註冊您的自訂網域，請選取 [儲存]。  
-   如果註冊成功，入口網站就會通知您已順利更新您的儲存體帳戶。
+#### <a name="step-2-create-a-canonical-name-cname-record-with-your-domain-provider"></a>步驟2：使用您的網域提供者建立正式名稱（CNAME）記錄
 
-透過 DNS 傳播您的新 CNAME 記錄之後，使用者只要具備適當權限，即可使用您的自訂網域來檢視 Blob 資料。
+建立 CNAME 記錄以指向您的主機名稱。 CNAME 記錄是一種將來源網域名稱對應至目的地網域名稱的 DNS 記錄。
 
-## <a name="register-a-custom-domain-by-using-the-asverify-subdomain"></a>使用 *asverify* 子網域來註冊自訂網域
-如果您自訂網域目前所支援之應用程式的 SLA 要求不得發生任何停機狀況，請依照本節中的程序註冊自訂網域。 您可以建立從 *asverify.\<子網域>.\<自訂網域>* 指向 *asverify.\<儲存體帳戶>.blob.core.windows.net* 的 CNAME，向 Azure 預先註冊您的網域。 接著，您可以建立從 *\<子網域>.\<自訂網域>* 指向 *\<儲存體帳戶>.blob.core.windows.net* 的第二個 CNAME，將傳送到自訂網域的流量導向到您的 Blob 端點。
+1. 登入您的網域註冊機構網站，然後移至 [管理 DNS] 設定頁面。
 
-*asverify* 子網域是 Azure 認可的特殊子網域。 在您自己的子網域前面加上 *asverify*，即表示允許 Azure 無須修改網域的 DNS 記錄即可辨識您的自訂網域。 一旦修改網域的 DNS 記錄，其將會在無停機的情況下對應至 Blob 端點。
+   您可能會在名為 [Domain Name] \(網域名稱\)****、[DNS]**** 或 [Name Server Management] \(名稱伺服器管理\)**** 的區段中找到該頁面。
+
+2. 尋找管理 CNAME 記錄的區段。 
+
+   您可能需要前往進階設定頁面，然後尋找 [CNAME]****、[Alias] \(別名\)**** 或 [Subdomains] \(子網域\)****。
+
+3. 建立 CNAME 記錄。 作為該記錄的一部分，請提供下列專案： 
+
+   - 子域別名，例如 `www` 或 `photos` 。 子域是必要的，不支援根域。 
+      
+   - 您在本文稍早的[取得儲存體端點的主機名稱](#endpoint)一節中取得的主機名稱。 
+
+<a id="register"></a>
+
+#### <a name="step-3-register-your-custom-domain-with-azure"></a>步驟3：向 Azure 註冊您的自訂網域
 
 1. 在 [Azure 入口網站](https://portal.azure.com)中，移至您的儲存體帳戶。
 
-1. 在功能表窗格中的 [Blob 服務] 底下，選取 [自訂網域]。  
-   [自訂網域] 窗格隨即開啟。
+2. 在功能表窗格中的 [Blob 服務]**** 底下，選取 [自訂網域]****。  
 
-1. 登入 DNS 提供者的網站，然後前往 DNS 管理頁面。  
-   您可能會在名為 [Domain Name] \(網域名稱\)、[DNS] 或 [Name Server Management] \(名稱伺服器管理\) 的區段中找到該頁面。
+   ![自訂網域選項](./media/storage-custom-domain-name/custom-domain-button.png "自訂網域")
 
-1. 尋找管理 CNAME 的區段。  
-   您可能需要前往進階設定頁面，然後尋找 [CNAME]、[Alias] \(別名\) 或 [Subdomains] \(子網域\)。
+   [自訂網域]**** 窗格隨即開啟。
 
-1. 建立新的 CNAME 記錄、提供包含 *asverify* 子網域的子網域別名 (例如 **asverify.www** 或 **asverify.photos**)，然後提供主機名稱。  
-   主機名稱是您的 Blob 服務端點。 其格式為 *asverify.\<mystorageaccount>.blob.core.windows.net*，其中 *mystorageaccount* 是您儲存體帳戶的名稱。 要使用的主機名稱會顯示在 [Azure 入口網站](https://portal.azure.com)之 [自訂網域] 窗格的項目 #2 中。
+3. 在 [**功能變數名稱**] 文字方塊中，輸入自訂網域的名稱，包括子域  
+   
+   例如，如果您的網域是*contoso.com* ，而子域別名是*www*，請輸入 `www.contoso.com` 。 如果您的子域是*相片*，請輸入 `photos.contoso.com` 。
 
-1. 在 [自訂網域] 窗格的文字方塊中，輸入您的自訂網域名稱 (包含子網域)。  
-   不包含 *asverify*。 例如，如果域是 *contoso.com*，子域别名是 *www*，请输入 **www\.contoso.com**。 若您的子網域為 *photos*，請輸入 **photos.contoso.com**。
+4. 若要註冊自訂網域，請選擇 [**儲存**] 按鈕。
 
-1. 選取 [使用間接 CNAME 驗證] 核取方塊。
+   當 CNAME 記錄透過功能變數名稱伺服器（DNS）傳播後，如果您的使用者擁有適當的許可權，他們就可以使用自訂網域來查看 blob 資料。
 
-1. 若要註冊您的自訂網域，請選取 [儲存]。  
-   如果註冊成功，入口網站就會通知您已順利更新您的儲存體帳戶。 自訂網域已通過 Azure 的驗證，但傳送至網域的流量尚未路由傳送到儲存體帳戶。
-
-1. 返回 DNS 提供者的網站，然後建立另一個將子網域對應至 Blob 服務端點的 CNAME 記錄。  
-   例如，將子網域指定為 *www* 或 *photos* (無 *asverify*)，並將主機名稱指定為 *\<mystorageaccount>.blob.core.windows.net* (其中 *mystorageaccount* 是您儲存體帳戶的名稱)。 待這個步驟完成後，自訂網域的註冊作業也宣告完成。
-
-1. 最後，您可以刪除包含 *asverify*子網域的新建立 CNAME 記錄，這是只有在中繼步驟中才需要的記錄。
-
-透過 DNS 傳播您的新 CNAME 記錄之後，使用者只要具備適當權限，即可使用您的自訂網域來檢視 Blob 資料。
-
-## <a name="test-your-custom-domain"></a>測試自訂網域
+#### <a name="step-4-test-your-custom-domain"></a>步驟4：測試您的自訂網域
 
 若要確認自訂網域是否對應至 Blob 服務端點，請在儲存體帳戶內的公用容器中建立 Blob。 接著，在網頁瀏覽器中，使用以下格式的 URI 來存取 Blob：`http://<subdomain.customdomain>/<mycontainer>/<myblob>`
 
 例如，若要存取 *photos.contoso.com* 自訂子網域之 *myforms*容器中的 Web 表單，您可以使用以下 URI：`http://photos.contoso.com/myforms/applicationform.htm`
 
-## <a name="deregister-a-custom-domain"></a>取消註冊自訂網域
+<a id="zero-down-time"></a>
 
-若要取消註冊您的 Blob 儲存體端點自訂網域，請使用下列其中一項程序。
+### <a name="map-a-custom-domain-with-zero-downtime"></a>對應自訂網域零停機時間
 
-### <a name="azure-portal"></a>Azure 入口網站
+> [!NOTE]
+> 如果您要不在乎您的使用者暫時無法使用該網域，請考慮遵循本文的[對應自訂網域](#map-a-domain)一節中的步驟。 這是較簡單的方法，其中包含更少的步驟。  
+
+如果您的網域目前支援的應用程式具有不需要停機的服務等級協定（SLA），則請遵循下列步驟，以確保使用者可以在 DNS 對應發生時存取您的網域。 
+
+： heavy_check_mark：步驟1：取得儲存體端點的主機名稱。
+
+： heavy_check_mark：步驟2：使用您的網域提供者建立中繼正式名稱（CNAME）記錄。
+
+： heavy_check_mark：步驟3：使用 Azure 預先註冊自訂網域。
+
+： heavy_check_mark：步驟4：使用您的網域提供者建立 CNAME 記錄。
+
+： heavy_check_mark：步驟5：測試您的自訂網域。
+
+<a id="endpoint-2"></a>
+
+#### <a name="step-1-get-the-host-name-of-your-storage-endpoint"></a>步驟1：取得儲存體端點的主機名稱 
+
+主機名稱是沒有通訊協定識別碼和尾端斜線的儲存體端點 URL。 
+
+1. 在 [Azure 入口網站](https://portal.azure.com)中，移至您的儲存體帳戶。
+
+2. 在功能表窗格的 [**設定**] 底下，選取 [**屬性**]。  
+
+3. 將**主要 Blob 服務端點**或**主要靜態網站端點**的值複製到文字檔。 
+
+4. 從該字串移除通訊協定識別碼（*例如*，HTTPS）和尾端斜線。 下表包含範例。
+
+   | 端點的類型 |  端點 | 主機名稱 |
+   |------------|-----------------|-------------------|
+   |blob 服務  | `https://mystorageaccount.blob.core.windows.net/` | `mystorageaccount.blob.core.windows.net` |
+   |靜態網站  | `https://mystorageaccount.z5.web.core.windows.net/` | `mystorageaccount.z5.web.core.windows.net` |
+  
+   請稍後再設定此值。
+
+#### <a name="step-2-create-a-intermediary-canonical-name-cname-record-with-your-domain-provider"></a>步驟2：使用您的網域提供者建立中繼正式名稱（CNAME）記錄
+
+建立暫存 CNAME 記錄以指向您的主機名稱。 CNAME 記錄是一種將來源網域名稱對應至目的地網域名稱的 DNS 記錄。
+
+1. 登入您的網域註冊機構網站，然後移至 [管理 DNS] 設定頁面。
+
+   您可能會在名為 [Domain Name] \(網域名稱\)****、[DNS]**** 或 [Name Server Management] \(名稱伺服器管理\)**** 的區段中找到該頁面。
+
+2. 尋找管理 CNAME 記錄的區段。 
+
+   您可能需要前往進階設定頁面，然後尋找 [CNAME]****、[Alias] \(別名\)**** 或 [Subdomains] \(子網域\)****。
+
+3. 建立 CNAME 記錄。 作為該記錄的一部分，請提供下列專案： 
+
+   - 子域別名，例如 `www` 或 `photos` 。 子域是必要的，不支援根域。
+
+     將 `asverify` 子域新增至別名。 例如：`asverify.www` 或 `asverify.photos`。
+       
+   - 您在本文稍早的[取得儲存體端點的主機名稱](#endpoint)一節中取得的主機名稱。 
+
+     將子域新增 `asverify` 至主機名稱。 例如： `asverify.mystorageaccount.blob.core.windows.net` 。
+
+4. 若要註冊自訂網域，請選擇 [**儲存**] 按鈕。
+
+   如果註冊成功，入口網站就會通知您已順利更新您的儲存體帳戶。 自訂網域已通過 Azure 的驗證，但傳送至網域的流量尚未路由傳送到儲存體帳戶。
+
+#### <a name="step-3-pre-register-your-custom-domain-with-azure"></a>步驟3：預先向 Azure 註冊您的自訂網域
+
+當您向 Azure 預先註冊自訂網域時，您會允許 Azure 辨識您的自訂網域，而不需要修改網域的 DNS 記錄。 如此一來，當您修改網域的 DNS 記錄時，它將會對應至 blob 端點，而不會有停機時間。
+
+1. 在 [Azure 入口網站](https://portal.azure.com)中，移至您的儲存體帳戶。
+
+2. 在功能表窗格中的 [Blob 服務]**** 底下，選取 [自訂網域]****。  
+
+   ![自訂網域選項](./media/storage-custom-domain-name/custom-domain-button.png "自訂網域")
+
+   [自訂網域]**** 窗格隨即開啟。
+
+3. 在 [**功能變數名稱**] 文字方塊中，輸入自訂網域的名稱，包括子域  
+   
+   例如，如果您的網域是*contoso.com* ，而子域別名是*www*，請輸入 `www.contoso.com` 。 如果您的子域是*相片*，請輸入 `photos.contoso.com` 。
+
+4. 選取 [使用間接 CNAME 驗證]**** 核取方塊。
+
+5. 若要註冊自訂網域，請選擇 [**儲存**] 按鈕。
+  
+   當 CNAME 記錄透過功能變數名稱伺服器（DNS）傳播後，如果您的使用者擁有適當的許可權，他們就可以使用自訂網域來查看 blob 資料。
+
+#### <a name="step-4-create-a-cname-record-with-your-domain-provider"></a>步驟4：使用您的網域提供者建立 CNAME 記錄
+
+建立暫存 CNAME 記錄以指向您的主機名稱。
+
+1. 登入您的網域註冊機構網站，然後移至 [管理 DNS] 設定頁面。
+
+   您可能會在名為 [Domain Name] \(網域名稱\)****、[DNS]**** 或 [Name Server Management] \(名稱伺服器管理\)**** 的區段中找到該頁面。
+
+2. 尋找管理 CNAME 記錄的區段。 
+
+   您可能需要前往進階設定頁面，然後尋找 [CNAME]****、[Alias] \(別名\)**** 或 [Subdomains] \(子網域\)****。
+
+3. 建立 CNAME 記錄。 作為該記錄的一部分，請提供下列專案： 
+
+   - 子域別名，例如 `www` 或 `photos` 。 子域是必要的，不支援根域。
+      
+   - 您在本文稍早的[取得儲存體端點的主機名稱](#endpoint-2)一節中取得的主機名稱。 
+
+#### <a name="step-5-test-your-custom-domain"></a>步驟5：測試您的自訂網域
+
+若要確認自訂網域是否對應至 Blob 服務端點，請在儲存體帳戶內的公用容器中建立 Blob。 接著，在網頁瀏覽器中，使用以下格式的 URI 來存取 Blob：`http://<subdomain.customdomain>/<mycontainer>/<myblob>`
+
+例如，若要存取 *photos.contoso.com* 自訂子網域之 *myforms*容器中的 Web 表單，您可以使用以下 URI：`http://photos.contoso.com/myforms/applicationform.htm`
+
+### <a name="remove-a-custom-domain-mapping"></a>移除自訂網域對應
+
+若要移除自訂網域對應，請取消註冊自訂網域。 請利用下列其中一項程序。
+
+#### <a name="portal"></a>[入口網站](#tab/azure-portal)
 
 若要移除自訂網域設定，請執行下列操作：
 
 1. 在 [Azure 入口網站](https://portal.azure.com)中，移至您的儲存體帳戶。
 
-1. 在功能表窗格中的 [Blob 服務] 底下，選取 [自訂網域]。  
-   [自訂網域] 窗格隨即開啟。
+2. 在功能表窗格中的 [Blob 服務]**** 底下，選取 [自訂網域]****。  
+   [自訂網域]**** 窗格隨即開啟。
 
-1. 清除包含自訂網域名稱的文字方塊內容。
+3. 清除包含自訂網域名稱的文字方塊內容。
 
-1. 選取 [儲存] 按鈕。
+4. 選取 [儲存]**** 按鈕。
 
-順利移除自訂網域後，您會看到已成功更新儲存體帳戶的入口網站通知。
+成功移除自訂網域之後，您會看到已成功更新儲存體帳戶的入口網站通知
 
-### <a name="azure-cli"></a>Azure CLI
+#### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 若要移除自訂網域註冊，請使用 [az storage account update](https://docs.microsoft.com/cli/azure/storage/account) CLI 命令，然後指定空字串 (`""`) 作為 `--custom-domain` 引數值。
 
@@ -178,7 +269,7 @@ ms.locfileid: "65148921"
       --custom-domain ""
   ```
 
-### <a name="powershell"></a>PowerShell
+#### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -201,8 +292,39 @@ ms.locfileid: "65148921"
       -AccountName "mystorageaccount" `
       -CustomDomainName ""
   ```
+---
+
+<a id="enable-https"></a>
+
+## <a name="map-a-custom-domain-with-https-enabled"></a>對應已啟用 HTTPS 的自訂網域
+
+此方法牽涉到更多步驟，但它會啟用 HTTPS 存取。 
+
+如果您不需要使用者使用 HTTPS 來存取您的 blob 或 web 內容，請參閱本文的[對應具有僅啟用 HTTP 的自訂網域](#enable-http)一節。 
+
+若要對應自訂網域並啟用 HTTPS 存取，請執行下列動作：
+
+1. 在您的 blob 或 web 端點上啟用[AZURE CDN](../../cdn/cdn-overview.md) 。 
+
+   如需 Blob 儲存體端點，請參閱[整合 azure 儲存體帳戶與 AZURE CDN](../../cdn/cdn-create-a-storage-account-with-cdn.md)。 
+
+   如需靜態網站端點，請參閱[整合靜態網站與 AZURE CDN](static-website-content-delivery-network.md)。
+
+2. [將 Azure CDN 內容對應至自訂網域](../../cdn/cdn-map-content-to-custom-domain.md)。
+
+3. [在 AZURE CDN 自訂網域上啟用 HTTPS](../../cdn/cdn-custom-ssl.md)。
+
+   > [!NOTE] 
+   > 當您更新靜態網站時，請務必清除 CDN 端點，以清除 CDN edge server 上的快取內容。 如需詳細資訊，請參閱[清除 Azure CDN 端點](../../cdn/cdn-purge-endpoint.md)。
+
+4. 選擇性請參閱下列指引：
+
+   * [使用 AZURE CDN 的共用存取簽章（SAS）權杖](https://docs.microsoft.com/azure/cdn/cdn-storage-custom-domain-https#shared-access-signatures)。
+
+   * [使用 AZURE CDN 的 HTTP 對 HTTPS](https://docs.microsoft.com/azure/cdn/cdn-storage-custom-domain-https#http-to-https-redirection)重新導向。
+
+   * 搭配[使用 Blob 儲存體與 AZURE CDN 時的定價和計費](https://docs.microsoft.com/azure/cdn/cdn-storage-custom-domain-https#http-to-https-redirection)。
 
 ## <a name="next-steps"></a>後續步驟
-* [將自訂網域對應至 Azure 內容傳遞網路 (CDN) 端點](../../cdn/cdn-map-content-to-custom-domain.md)
-* [使用 Azure CDN 透過 HTTPS 以自訂網域存取 Blob](storage-https-custom-domain-cdn.md)
-* [Azure Blob 儲存體中的靜態網站代管 (預覽)](storage-blob-static-website.md)
+
+* [瞭解 Azure Blob 儲存體中的靜態網站裝載](storage-blob-static-website.md)

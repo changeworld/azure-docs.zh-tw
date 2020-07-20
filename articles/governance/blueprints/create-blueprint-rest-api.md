@@ -1,42 +1,31 @@
 ---
-title: 使用 REST API 建立藍圖
-description: 使用 Azure 藍圖可透過 REST API 建立、定義和部署成品。
-author: DCtheGeek
-ms.author: dacoulte
-ms.date: 02/04/2019
+title: 快速入門：使用 REST API 建立藍圖
+description: 在本快速入門中，您將在 REST API 中使用 Azure 藍圖建立、定義和部署成品。
+ms.date: 06/29/2020
 ms.topic: quickstart
-ms.service: blueprints
-manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: 043b67d4b4c708f2d243f9be04fb2a706591947b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: e3cdf28cfe523e52aceefe20294042d28b98e1e2
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59273153"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85971193"
 ---
-# <a name="define-and-assign-an-azure-blueprint-with-rest-api"></a>使用 REST API 定義和指派 Azure 藍圖
+# <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>快速入門：使用 REST API 定義和指派 Azure 藍圖
 
-了解如何建立及指派有助於定義常用模式的藍圖，以根據 Resource Manager 範本、原則、安全性等，開發出可重複使用並可快速部署的組態。 在本教學課程中，您將了解如何使用 Azure 藍圖在您的組織中處理藍圖的建立、發佈和指派等常見工作，例如：
+了解如何建立及指派有助於定義常用模式的藍圖，以根據 Azure Resource Manager 範本 (ARM 範本)、原則、安全性等，開發出可重複使用並可快速部署的組態。 在本教學課程中，您將了解如何使用 Azure 藍圖在您的組織中處理藍圖的建立、發佈和指派等常見工作，例如：
 
-> [!div class="checklist"]
-> - 建立新藍圖並新增各種支援成品
-> - 變更仍在**草稿**狀態的現有藍圖
-> - 將藍圖標示為**已發佈**，代表藍圖已可供指派
-> - 將藍圖指派給現有的訂用帳戶
-> - 檢查指派的藍圖的狀態和進度
-> - 移除已指派給訂用帳戶的藍圖
+## <a name="prerequisites"></a>必要條件
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立 [免費帳戶](https://azure.microsoft.com/free) 。
+- 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free)。
+- 註冊 `Microsoft.Blueprint` 資源提供者。 如需指示，請參閱[資源提供者和類型](../../azure-resource-manager/management/resource-providers-and-types.md)。
 
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="getting-started-with-rest-api"></a>開始使用 REST API
 
 如果您不熟悉 REST API，請先詳閱 [Azure REST API 參考](/rest/api/azure/)，以對 REST API 有一般的了解，特別是要求 URI 和要求本文。 本文使用這些概念提供使用 Azure 藍圖的方向，而且假設您已具備其使用知識。 [ARMClient](https://github.com/projectkudu/ARMClient) 這類工具及其他元件可自動處理授權，建議初學者使用它們。
 
-如需藍圖規格，請參閱 [Azure 藍圖 REST API](/rest/api/blueprints/)。
+如需 Azure 藍圖規格，請參閱 [Azure 藍圖 REST API](/rest/api/blueprints/)。
 
 ### <a name="rest-api-and-powershell"></a>REST API 和 PowerShell
 
@@ -55,7 +44,7 @@ $authHeader = @{
 }
 
 # Invoke the REST API
-$restUri = 'https://management.azure.com/subscriptions/{subscriptionId}?api-version=2016-06-01'
+$restUri = 'https://management.azure.com/subscriptions/{subscriptionId}?api-version=2020-01-01'
 $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
 ```
 
@@ -63,7 +52,7 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
 
 ## <a name="create-a-blueprint"></a>建立藍圖
 
-定義合規性標準模式的第一個步驟，即是以可用的資源規劃藍圖。 我們將建立名為 'MyBlueprint' 的藍圖，以設定訂用帳戶的角色和原則指派。 然後，我們將新增資源群組、Resource Manager 範本，以及資源群組的角色指派。
+定義合規性標準模式的第一個步驟，即是以可用的資源規劃藍圖。 我們將建立名為 'MyBlueprint' 的藍圖，以設定訂用帳戶的角色和原則指派。 然後，我們將新增資源群組、ARM 範本，以及資源群組的角色指派。
 
 > [!NOTE]
 > 使用 REST API 時，會先建立_藍圖_物件。 對於要新增的具有參數的每個_成品_，需要在初始_藍圖_上預先定義參數。
@@ -211,7 +200,7 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
      }
      ```
 
-1. 在資源群組下新增範本。 Resource Manager 範本的**要求本文**包含範本的一般 JSON 元件，且會使用 **properties.resourceGroup** 定義目標資源群組。 此範本也會將 **storageAccountType**、**tagName** 和 **tagValue** 藍圖參數傳至範本，以重複使用這些參數。 藍圖參數可藉由定義 **properties.parameters** 提供給範本使用，並且可在使用索引鍵/值配對來插入值的 JSON 範本內使用。 藍圖和範本參數的名稱可以相同，但是用不同的名字是為了說明每個物件是如何從藍圖傳遞到範本成品。
+1. 在資源群組下新增範本。 ARM 範本的**要求本文**包含範本的一般 JSON 元件，且會使用 **properties.resourceGroup** 定義目標資源群組。 此範本也會將 **storageAccountType**、**tagName** 和 **tagValue** 藍圖參數傳至範本，以重複使用這些參數。 藍圖參數可藉由定義 **properties.parameters** 提供給範本使用，並且可在使用索引鍵/值配對來插入值的 JSON 範本內使用。 藍圖和範本參數的名稱可以相同，但是用不同的名字是為了說明每個物件是如何從藍圖傳遞到範本成品。
 
    - REST API URI
 
@@ -401,7 +390,8 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
 
    - 使用者指派的受控識別
 
-     藍圖指派也可以使用[指派使用者的受控識別](../../active-directory/managed-identities-azure-resources/overview.md)。 在此情況下，要求主體部份的**識別**會變更，如下所示。  分別以您的資源群組名稱取代 `{yourRG}`，並以使用者指派的受控識別名稱取代 `{userIdentity}`。
+     藍圖指派也可以使用[指派使用者的受控識別](../../active-directory/managed-identities-azure-resources/overview.md)。
+     在此情況下，要求主體部份的**識別**會變更，如下所示。 分別以您的資源群組名稱取代 `{yourRG}`，並以使用者指派的受控識別名稱取代 `{userIdentity}`。
 
      ```json
      "identity": {
@@ -416,9 +406,11 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
      **使用者指派的受控識別**可位於使用者指派藍圖具有權限的任何訂用帳戶和資源群組中。
 
      > [!IMPORTANT]
-     > 藍圖不會管理使用者指派的受控識別。 使用者需負責指派足夠的角色和權限，否則藍圖指派將會失敗。
+     > Azure 藍圖不會管理使用者指派的受控識別。 使用者需負責指派足夠的角色和權限，否則藍圖指派將會失敗。
 
-## <a name="unassign-a-blueprint"></a>取消指派藍圖
+## <a name="clean-up-resources"></a>清除資源
+
+### <a name="unassign-a-blueprint"></a>取消指派藍圖
 
 您可以從訂用帳戶中移除藍圖。 移除作業通常會在成品資源已不再需要時執行。 移除藍圖時，會將指派為該藍圖一部份的成品保留下來。 若要移除藍圖指派，請使用下列 REST API 作業：
 
@@ -428,7 +420,7 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
   DELETE https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Blueprint/blueprintAssignments/assignMyBlueprint?api-version=2018-11-01-preview
   ```
 
-## <a name="delete-a-blueprint"></a>刪除藍圖
+### <a name="delete-a-blueprint"></a>刪除藍圖
 
 若要移除藍圖本身，請使用下列 REST API 作業：
 
@@ -440,9 +432,7 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
 
 ## <a name="next-steps"></a>後續步驟
 
-- 了解[藍圖生命週期](./concepts/lifecycle.md)。
-- 了解如何使用[靜態與動態參數](./concepts/parameters.md)。
-- 了解如何自訂[藍圖排序順序](./concepts/sequencing-order.md)。
-- 了解如何使用[藍圖資源鎖定](./concepts/resource-locking.md)。
-- 了解如何[更新現有的指派](./how-to/update-existing-assignments.md)。
-- 使用[一般疑難排解](./troubleshoot/general.md)來解決藍圖指派期間發生的問題。
+在本快速入門中，您已使用 REST API 建立、指派及移除藍圖。 若要深入了解 Azure 藍圖，請繼續閱讀藍圖生命週期文章。
+
+> [!div class="nextstepaction"]
+> [了解藍圖生命週期](./concepts/lifecycle.md)

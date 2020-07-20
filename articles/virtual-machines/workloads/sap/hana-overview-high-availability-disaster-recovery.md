@@ -4,22 +4,20 @@ description: 建立高可用性並為 SAP HANA on Azure (大型執行個體) 的
 services: virtual-machines-linux
 documentationcenter: ''
 author: saghorpa
-manager: jeconnoc
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5b7cc1744ac285df8ed502256c30f77bdc8db81f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 0585c1251ba18e1390f3eee28a989edee6eb8591
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60477560"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77616938"
 ---
 # <a name="sap-hana-large-instances-high-availability-and-disaster-recovery-on-azure"></a>Azure 上 SAP Hana (大型執行個體) 的高可用性和災害復原 
 
@@ -33,9 +31,9 @@ ms.locfileid: "60477560"
 
 Microsoft 可透過 HANA 大型執行個體支援某些 SAP HANA 高可用性功能。 這些功能包括：
 
-- **儲存體複寫**:將所有資料複寫到另一個 Azure 區域中的另一個 HANA 大型執行個體戳記的儲存體系統的能力。 SAP HANA 獨立運作，不依賴此方法。 此功能是提供給 HANA 大型執行個體使用的預設災害復原機制。
-- **HANA 系統複寫**:[的 SAP HANA 中的所有資料複寫](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/b74e16a9e09541749a745f41246a065e.html)到個別的 SAP HANA 系統。 復原時間目標是透過定期的資料複寫而最小化。 SAP HANA 支援非同步、記憶體內同步及同步模式。 同步模式僅用於相同資料中心內或距離 100 公里內的 SAP HANA 系統。 以 HANA 大型執行個體戳記目前的設計而言，HANA 系統複寫只可用於單一區域內的高可用性。 HANA 系統複寫需要第三方反向 Proxy 或路由元件，以便在另一個 Azure 區域中進行災害復原設定。 
-- **主機自動容錯移轉**:HANA 系統複寫的替代方案的 SAP HANA 的本機錯誤復原解決方案。 如果主要節點變得無法使用，您可以相應放大模式設定一或多個待命 SAP HANA 節點，而 SAP HANA 會自動容錯移轉到待命節點。
+- **儲存體複寫：** 儲存體系統將所有資料複寫到另一個 Azure 區域中另一個 HANA 大型執行個體戳記的能力。 SAP HANA 獨立運作，不依賴此方法。 此功能是提供給 HANA 大型執行個體使用的預設災害復原機制。
+- **HANA 系統**複寫：將[SAP Hana 中的所有資料](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/b74e16a9e09541749a745f41246a065e.html)複寫到個別 SAP Hana 系統。 復原時間目標是透過定期的資料複寫而最小化。 SAP HANA 支援非同步、記憶體內同步及同步模式。 同步模式僅用於相同資料中心內或距離 100 公里內的 SAP HANA 系統。 以 HANA 大型執行個體戳記目前的設計而言，HANA 系統複寫只可用於單一區域內的高可用性。 HANA 系統複寫需要第三方反向 Proxy 或路由元件，以便在另一個 Azure 區域中進行災害復原設定。 
+- **主機自動容錯移轉**︰SAP HANA 的本機錯誤復原解決方案，可作為 HANA 系統複寫的替代選項。 如果主要節點變得無法使用，您可以相應放大模式設定一或多個待命 SAP HANA 節點，而 SAP HANA 會自動容錯移轉到待命節點。
 
 SAP HANA on Azure (大型執行個體) 會在四個地緣政治區域 (美國、澳洲、歐洲和日本) 中的兩個 Azure 區域提供。 地緣政治區域內裝載 HANA 大型執行個體戳記的兩個區域，會與個別的專用網路線路連線。 這會用來複寫儲存體快照集，以提供災害復原方法。 複寫不會在預設中建立，但會為訂購災害復原功能的客戶設定。 執行儲存體複寫需要使用 HANA 大型執行個體的儲存體快照集。 您無法選擇 Azure 區域作為 DR 區域，因為該區域位於不同的地緣政治地區。 
 
@@ -44,7 +42,7 @@ SAP HANA on Azure (大型執行個體) 會在四個地緣政治區域 (美國、
 | HANA 大型執行個體所支援的案例 | 高可用性選項 | 災害復原選項 | 註解 |
 | --- | --- | --- | --- |
 | 單一節點 | 無法使用。 | 專用 DR 設定。<br /> 多用途 DR 設定。 | |
-| 主機自動容錯移轉：向外延展 （不論有無待命）<br /> 包括 1 + 1 | 可透過擔任作用中角色的待命節點來實現。<br /> HANA 會控制角色的切換。 | 專用 DR 設定。<br /> 多用途 DR 設定。<br /> 使用儲存體複寫進行的 DR 同步處理。 | HANA 磁碟區組會連接到所有節點。<br /> DR 網站必須具有相同數目的節點。 |
+| 主機自動容錯移轉：向外延展 (不一定有待命)<br /> 包括 1 + 1 | 可透過擔任作用中角色的待命節點來實現。<br /> HANA 會控制角色的切換。 | 專用 DR 設定。<br /> 多用途 DR 設定。<br /> 使用儲存體複寫進行的 DR 同步處理。 | HANA 磁碟區組會連接到所有節點。<br /> DR 網站必須具有相同數目的節點。 |
 | HANA 系統複寫 | 可透過主要或次要設定來實現。<br /> 在容錯移轉的情況下，次要節點會轉而成為主要節點。<br /> HANA 系統複寫和 OS 控制容錯移轉。 | 專用 DR 設定。<br /> 多用途 DR 設定。<br /> 使用儲存體複寫進行的 DR 同步處理。<br /> 若沒有第三方元件，則還無法實現使用 HANA 系統複寫來進行的 DR。 | 另一組不同的磁碟區會連結至每個節點。<br /> 只有生產網站中次要複本的磁碟區會複寫到 DR 位置。<br /> DR 網站需要一組磁碟區。 | 
 
 作為專用 DR 設定時，DR 網站中的 HANA 大型執行個體單位不會用於執行任何其他工作負載或非生產系統。 該單位是被動的，只會在災害容錯移轉執行時部署。 然而，此設定不是許多客戶偏好的選擇。
@@ -70,7 +68,7 @@ SAP HANA on Azure (大型執行個體) 會在四個地緣政治區域 (美國、
 
 若要利用 HANA 大型執行個體的災害復原功能，您必須設計連到兩個 Azure 區域的網路連線。 您需要一條從主要 Azure 區域中的內部部署連接的 ExpressRoute 線路，還需要另一條從內部部署連接到災害復原區域的線路。 此措施可解決 Azure 區域 (包含 Microsoft Enterprise Edge (MSEE) 路由器位置) 發生問題的情況。
 
-作為第二個措施，您可以將連線到一個區域中 SAP HANA on Azure (大型執行個體) 的所有 Azure 虛擬網路，都連線到與其他區域中的 HANA 大型執行個體連線的 ExpressRoute 線路。 透過該「交叉連線」，於區域 1 的 Azure 虛擬網路中執行的服務可以連線到區域 2 的 HANA 大型執行個體單位，反之亦然。 此措施可解決在 Azure 離線的情況下，只有一個 MSEE 位置會連線到內部部署位置的情形。
+作為第二個措施，您可以將連線到一個區域中 SAP HANA on Azure (大型執行個體) 的所有 Azure 虛擬網路，都連線到與其他區域中的 HANA 大型執行個體連線的 ExpressRoute 線路。 透過此*交叉連接*，在區域1中的 Azure 虛擬網路上執行的服務可以連線到區域2中的 HANA 大型實例單位，另一種方式。 此措施可解決在 Azure 離線的情況下，只有一個 MSEE 位置會連線到內部部署位置的情形。
 
 下圖說明災害復原的復原組態案例：
 

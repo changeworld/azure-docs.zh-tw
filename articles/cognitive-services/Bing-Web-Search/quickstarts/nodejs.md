@@ -8,21 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 03/12/2019
+ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 95a27ff17ca74f930fc1a739c0eb94a90bd82ec4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 872a90a0b4f5b348e45b04998067f9e97a3ae987
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57834484"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85611317"
 ---
 # <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-nodejs"></a>快速入門：使用 Bing Web 搜尋 REST API 和 Node.js 來搜尋 Web
 
-使用本快速入門進行對 Bing Web 搜尋 API 第一次的呼叫，並接收 JSON 回應。 這個 Node.js 應用程式會將搜尋要求傳送給 API，並顯示回應。 雖然此應用程式是以 JavaScript 撰寫的，但 API 是一種與大多數程式設計語言都相容的 RESTful Web 服務。
+使用本快速入門，第一次呼叫 Bing Web 搜尋 API。 這個 Node.js 應用程式會將搜尋要求傳送給 API，並顯示 JSON 回應。 雖然此應用程式是以 JavaScript 撰寫的，但 API 是一種與大多數程式設計語言都相容的 RESTful Web 服務。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 以下是執行本快速入門之前的幾個必備項目：
 
@@ -33,8 +33,7 @@ ms.locfileid: "57834484"
 
 ## <a name="create-a-project-and-declare-required-modules"></a>建立專案，並宣告所需的模組
 
-在您最愛的 IDE 或編輯器中建立新的 Node.js 專案。
-然後，將下列程式碼片段複製到您專案內名為 `search.js` 的檔案中。
+在您最愛的 IDE 或編輯器中建立新的 Node.js 專案。 然後，將下列程式碼片段複製到您專案內名為 search.js 的檔案：
 
 ```javascript
 // Use this simple app to query the Bing Web Search API and get a JSON response.
@@ -44,9 +43,9 @@ const https = require('https')
 
 ## <a name="set-the-subscription-key"></a>設定訂用帳戶金鑰
 
-此程式碼片段會使用 `AZURE_SUBSCRIPTION_KEY` 環境變數來儲存您的訂用帳戶金鑰，此作法可有效避免在部署程式碼時意外洩露您的金鑰。 移至[您的 API 頁面](https://azure.microsoft.com/try/cognitive-services/my-apis/?apiSlug=search-api-v7)，以查閱您的訂用帳戶金鑰。
+此程式碼片段會使用 `AZURE_SUBSCRIPTION_KEY` 環境變數來儲存您的訂用帳戶金鑰，此做法可有效避免在部署程式碼時意外洩露您的金鑰。
 
-如果您不熟悉環境變數的使用方式，或想要盡快執行此應用程式，您可以將 `process.env['AZURE_SUBSCRIPTION_KEY']` 取代為您設定為字串的訂用帳戶金鑰。
+如果您不熟悉環境變數的使用方式，或想要盡快執行此應用程式，請將 `process.env['AZURE_SUBSCRIPTION_KEY']` 取代為您設為字串的訂用帳戶金鑰。
 
 ```javascript
 const SUBSCRIPTION_KEY = process.env['AZURE_SUBSCRIPTION_KEY']
@@ -57,7 +56,15 @@ if (!SUBSCRIPTION_KEY) {
 
 ## <a name="create-a-function-to-make-the-request"></a>建立用來提出要求的函式
 
-此函式將提出安全的 GET 要求，將搜尋查詢儲存為路徑中的查詢參數。 `encodeURIComponent` 可用來逸出無效字元，而訂用帳戶金鑰會傳入標頭中。 回呼所接收的[回應](https://nodejs.org/dist/latest-v10.x/docs/api/http.html#http_class_http_serverresponse)會訂閱用以彙總 JSON 主體的 `data` 事件、會記錄任何問題的 `error` 事件，和可據以得知何時應將訊息視為完整的 `end` 事件。 完成後，應用程式會列印有關的標頭和訊息本文。 您可以根據自己的喜好設定來調整色彩和設定深度，深度為 `1` 時可適當摘要回應。
+此函式將提出安全的 GET 要求，並將搜尋查詢儲存為路徑中的查詢參數。 
+
+1. 對於 `hostname` 值，您可以使用下列程式碼中的全域端點，或使用 Azure 入口網站中針對您的資源所顯示的[自訂子網域](../../../cognitive-services/cognitive-services-custom-subdomains.md)端點。  
+
+2. 使用 `encodeURIComponent` 來逸出無效的字元。 訂用帳戶金鑰會在標頭中傳遞。 
+
+3. 回呼所接收的[回應](https://nodejs.org/dist/latest-v10.x/docs/api/http.html#http_class_http_serverresponse)會訂閱用以彙總 JSON 主體的 `data` 事件、會記錄任何問題的 `error` 事件，和可據以得知何時應將訊息視為完整的 `end` 事件。 
+
+4. 當應用程式完成時，其會列印相關的標頭和訊息本文。 您可以調整色彩並設定深度，以符合您的喜好設定。 `1` 的深度會提供回應的良好摘要。
 
 ```javascript
 function bingWebSearch(query) {
@@ -95,7 +102,7 @@ const query = process.argv[2] || 'Microsoft Cognitive Services'
 
 ## <a name="make-a-request-and-print-the-response"></a>提出要求並列印回應
 
-現在，所有定義皆已完成，接著我們將呼叫函式！
+現在所有定義皆已完成，接著我們將呼叫函式。
 
 ```javascript
 bingWebSearch(query)
@@ -103,7 +110,7 @@ bingWebSearch(query)
 
 ## <a name="put-it-all-together"></a>組合在一起
 
-最後一步是執行您的程式碼：`node search.js "<your query>"`。
+最後一步是使用以下命令執行您的程式碼：`node search.js "<your query>"`。
 
 如果想要將您的程式碼與我們的程式碼做比較，以下是完整的程式：
 
@@ -140,7 +147,7 @@ const query = process.argv[2] || 'Microsoft Cognitive Services'
 bingWebSearch(query)
 ```
 
-## <a name="sample-response"></a>範例回應
+## <a name="example-json-response"></a>範例 JSON 回應
 
 來自 Bing Web 搜尋 API 的回應會以 JSON 格式傳回。 本範例回應已截斷而只顯示單一結果。
 
@@ -162,9 +169,9 @@ bingWebSearch(query)
         "snippet": "Knock down barriers between you and your ideas. Enable natural and contextual interaction with tools that augment users' experiences via the power of machine-based AI. Plug them in and bring your ideas to life.",
         "deepLinks": [
           {
-            "name": "Face API",
+            "name": "Face",
             "url": "https://azure.microsoft.com/services/cognitive-services/face/",
-            "snippet": "Add facial recognition to your applications to detect, identify, and verify faces using a Face API from Microsoft Azure. ... Cognitive Services; Face API;"
+            "snippet": "Add facial recognition to your applications to detect, identify, and verify faces using a Face service from Microsoft Azure. ... Cognitive Services; Face service;"
           },
           {
             "name": "Text Analytics",
@@ -269,6 +276,6 @@ bingWebSearch(query)
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [Bing Web 搜尋單頁應用程式教學課程](../tutorial-bing-web-search-single-page-app.md)
+> [Bing Web 搜尋 API 單頁應用程式教學課程](../tutorial-bing-web-search-single-page-app.md)
 
 [!INCLUDE [bing-web-search-quickstart-see-also](../../../../includes/bing-web-search-quickstart-see-also.md)]

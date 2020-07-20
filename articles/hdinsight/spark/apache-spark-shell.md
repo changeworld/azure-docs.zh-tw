@@ -1,53 +1,101 @@
 ---
 title: 在 Azure HDInsight 中使用互動式 Spark Shell
 description: 互動式 Spark Shell 會針對執行 Spark 命令 (一次一個) 及查看結果提供「讀取-執行-列印」的流程。
-ms.service: hdinsight
-author: maxluk
-ms.author: maxluk
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
+ms.topic: how-to
 ms.custom: hdinsightactive
-ms.topic: conceptual
-ms.date: 01/09/2018
-ms.openlocfilehash: 9044ed3ad9cf9ffa2f54d130bb50b37df121b86f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 02/10/2020
+ms.openlocfilehash: 84298c9073f00f0388a9bcb7405369d7c60bcce1
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64696810"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86081174"
 ---
 # <a name="run-apache-spark-from-the-spark-shell"></a>從 Spark Shell 執行 Apache Spark
 
 互動式 [Apache Spark](https://spark.apache.org/) Shell 會提供 REPL (「讀取、求值、輸出」迴圈) 環境，一次執行一個 Spark 命令並查看結果。 此流程適用於開發和偵錯。 Spark 會為每個支援的語言提供一個殼層：Scala、Python 和 R。
 
-## <a name="get-to-an-apache-spark-shell-with-ssh"></a>透過 SSH 使用 Apache Spark Shell
-
-使用 SSH 連線到叢集的主要前端節點，來存取 HDInsight 上的 Apache Spark Shell：
-
-     ssh <sshusername>@<clustername>-ssh.azurehdinsight.net
-
-您可以從 Azure 入口網站，取得您叢集的完整 SSH 命令：
-
-1. 登入 [Azure 入口網站](https://portal.azure.com)。
-2. 瀏覽至您 HDInsight Spark 叢集的窗格。
-3. 選取安全殼層 (SSH)。
-
-    ![Azure 入口網站中的 HDInsight 窗格](./media/apache-spark-shell/hdinsight-spark-blade.png)
-
-4. 複製顯示的 SSH 命令，並在您的終端機中執行該命令。
-
-    ![Azure 入口網站中的 HDInsight SSH 窗格](./media/apache-spark-shell/hdinsight-spark-ssh-blade.png)
-
-如需使用 SSH 連線到 HDInsight 的詳細資訊，請參閱[搭配 HDInsight 使用 SSH](../hdinsight-hadoop-linux-use-ssh-unix.md)。
-
 ## <a name="run-an-apache-spark-shell"></a>執行 Apache Spark Shell
 
-Spark 會為 Scala (spark-shell)、Python (pyspark) 和 R (sparkR) 提供殼層。 在位於 HDInsight 叢集前端節點的 SSH 工作階段中，請輸入下列命令：
+1. 使用 [ssh 命令](../hdinsight-hadoop-linux-use-ssh-unix.md)來連線到您的叢集。 編輯以下命令並將 CLUSTERNAME 取代為您叢集的名稱，然後輸入命令：
 
-    ./bin/spark-shell
-    ./bin/pyspark
-    ./bin/sparkR
+    ```cmd
+    ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
+    ```
 
-現在您可以使用適當的語言輸入 Spark 命令。
+1. Spark 提供 Scala （spark shell）和 Python （pyspark）的 shell。 在您的 SSH 會話中，輸入下列*其中一個*命令：
+
+    ```bash
+    spark-shell
+
+    # Optional configurations
+    # spark-shell --num-executors 4 --executor-memory 4g --executor-cores 2 --driver-memory 8g --driver-cores 4
+    ```
+
+    ```bash
+    pyspark
+
+    # Optional configurations
+    # pyspark --num-executors 4 --executor-memory 4g --executor-cores 2 --driver-memory 8g --driver-cores 4
+    ```
+
+    如果您想要使用任何選用的設定，請務必先參閱[Apache Spark 的 OutOfMemoryError 例外](./apache-spark-troubleshoot-outofmemory.md)狀況。
+
+1. 幾個基本的範例命令。 選擇相關的語言：
+
+    ```spark-shell
+    val textFile = spark.read.textFile("/example/data/fruits.txt")
+    textFile.first()
+    textFile.filter(line => line.contains("apple")).show()
+    ```
+
+    ```pyspark
+    textFile = spark.read.text("/example/data/fruits.txt")
+    textFile.first()
+    textFile.filter(textFile.value.contains("apple")).show()
+    ```
+
+1. 查詢 CSV 檔案。 請注意，下列語言適用于 `spark-shell` 和 `pyspark` 。
+
+    ```scala
+    spark.read.csv("/HdiSamples/HdiSamples/SensorSampleData/building/building.csv").show()
+    ```
+
+1. 查詢 CSV 檔案並將結果儲存在變數中：
+
+    ```spark-shell
+    var data = spark.read.format("csv").option("header", "true").option("inferSchema", "true").load("/HdiSamples/HdiSamples/SensorSampleData/building/building.csv")
+    ```
+
+    ```pyspark
+    data = spark.read.format("csv").option("header", "true").option("inferSchema", "true").load("/HdiSamples/HdiSamples/SensorSampleData/building/building.csv")
+    ```
+
+1. 顯示結果：
+
+    ```spark-shell
+    data.show()
+    data.select($"BuildingID", $"Country").show(10)
+    ```
+
+    ```pyspark
+    data.show()
+    data.select("BuildingID", "Country").show(10)
+    ```
+
+1. 結束
+
+    ```spark-shell
+    :q
+    ```
+
+    ```pyspark
+    exit()
+    ```
 
 ## <a name="sparksession-and-sparkcontext-instances"></a>SparkSession 和 SparkContext 執行個體
 
@@ -57,7 +105,7 @@ Spark 會為 Scala (spark-shell)、Python (pyspark) 和 R (sparkR) 提供殼層�
 
 ## <a name="important-shell-parameters"></a>重要的殼層參數
 
-Spark Shell 命令 (`spark-shell`、`pyspark`或 `sparkR`) 支援許多命令列參數。 若要查看完整的參數清單，請使用參數 `--help` 啟動 Spark Shell。 請注意，某些參數可能只適用於 `spark-submit` (由 Spark Shell 包裝)。
+Spark Shell 命令（ `spark-shell` 或 `pyspark` ）支援許多命令列參數。 若要查看完整的參數清單，請使用參數 `--help` 啟動 Spark Shell。 其中某些參數可能只適用于 `spark-submit` Spark Shell 所包裝的。
 
 | 參數 | description | 範例 |
 | --- | --- | --- |

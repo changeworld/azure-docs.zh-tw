@@ -1,26 +1,28 @@
 ---
-title: Microsoft Azure 儲存體的用戶端 Python 加密 | Microsoft Docs
+title: 使用 Python 的用戶端加密
+titleSuffix: Azure Storage
 description: 適用於 Python 的 Azure 儲存體用戶端程式庫支援適用於您 Azure 儲存體應用程式的最高安全性用戶端加密。
 services: storage
 author: tamram
 ms.service: storage
 ms.devlang: python
-ms.topic: article
-ms.date: 05/11/2017
+ms.topic: how-to
+ms.date: 12/04/2019
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: d04c1e137a190b01554106c041853aa2fd6786d7
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 511166e156591562b2120b58cc420f3fccd1d8c4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65146904"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84804910"
 ---
-# <a name="client-side-encryption-with-python-for-microsoft-azure-storage"></a>Microsoft Azure 儲存體的用戶端 Python 加密
+# <a name="client-side-encryption-with-python"></a>使用 Python 的用戶端加密
+
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 [Azure Storage Client Library for Python (適用於 Python 的 Azure 儲存體用戶端程式庫)](https://pypi.python.org/pypi/azure-storage) 支援在上傳至 Azure 儲存體之前將用戶端應用程式內的資料加密，並在下載至用戶端時解密資料。
 
 > [!NOTE]
@@ -37,7 +39,7 @@ ms.locfileid: "65146904"
 1. Azure 儲存體用戶端程式庫會產生內容加密金鑰 (CEK)，這是使用一次的對稱金鑰。
 2. 使用此 CEK 加密使用者資料。
 3. 然後使用金鑰加密金鑰 (KEK) 包裝 (加密) CEK。 KEK 是以金鑰識別碼識別，且可以是在本機管理的非對稱金鑰組或對稱金鑰。
-   存储客户端库本身永远无法访问 KEK。 程式庫會叫用 KEK 所提供的金鑰包裝演算法。 如有需要，使用者可以選擇使用自訂提供者來包裝/取消包裝金鑰。
+   儲存體用戶端程式庫本身永遠沒有 KEK 的存取權。 程式庫會叫用 KEK 所提供的金鑰包裝演算法。 如有需要，使用者可以選擇使用自訂提供者來包裝/取消包裝金鑰。
 4. 然後，將加密的資料上傳至 Azure 儲存體服務。 包裝的金鑰及一些其他加密中繼資料會儲存為中繼資料 (在 blob 上)，或插補加密的資料 (訊息佇列和資料表實體)。
 
 ### <a name="decryption-via-the-envelope-technique"></a>透過信封技術解密
@@ -93,9 +95,9 @@ ms.locfileid: "65146904"
 3. 然後，已包裝的 CEK 和一些其他加密中繼資料會儲存成額外兩個保留的屬性。 第一個保留的屬性 (\_ClientEncryptionMetadata1) 是字串屬性，保存 IV、版本和已包裝的金鑰的相關資訊。 第二個保留的屬性 (\_ClientEncryptionMetadata2) 二進位屬性，其保留已加密之屬性的相關資訊。 此第二個屬性 (\_ClientEncryptionMetadata2) 中的資訊已自行加密。
 4. 由於加密需要這些額外保留的屬性，使用者現在可能只有 250 個自訂屬性，而不是 252 個。 實體的總大小必須小於 1MB。
 
-   请注意，只有字符串属性可以加密。 如果有其他類型的屬性需要加密，則必須轉換成字串。 加密的字串會做為二進位屬性儲存在服務上，並在解密後轉換回字串 (原始字串，而不是具有 EdmType.STRING 類型的 EntityProperties)。
+   請注意，只有字串屬性可以加密。 如果有其他類型的屬性需要加密，則必須轉換成字串。 加密的字串會做為二進位屬性儲存在服務上，並在解密後轉換回字串 (原始字串，而不是具有 EdmType.STRING 類型的 EntityProperties)。
 
-   針對資料表，除了加密原則之外，使用者必須指定要加密的屬性。 這可透過將這些屬性儲存於 TableEntity 物件中並設定類型為 EdmType.STRING 且將加密設定為 true，或是在 tableservice 物件上設定 encryption_resolver_function。 加密解析程式是函式，接受資料分割索引鍵、資料列索引鍵和屬性名稱，然後傳回布林值，指出是否應該加密該屬性。 在加密期間，用戶端程式庫會使用此資訊，決定將屬性在寫到網路時是否應該加密。 该委托还可以围绕如何加密属性实现逻辑的可能性。 (例如，如果 X，則加密屬性 A，否則加密屬性 A 和 B。)请注意，在读取或查询实体时，不需要提供此信息。
+   針對資料表，除了加密原則之外，使用者必須指定要加密的屬性。 這可透過將這些屬性儲存於 TableEntity 物件中並設定類型為 EdmType.STRING 且將加密設定為 true，或是在 tableservice 物件上設定 encryption_resolver_function。 加密解析程式是函式，接受資料分割索引鍵、資料列索引鍵和屬性名稱，然後傳回布林值，指出是否應該加密該屬性。 在加密期間，用戶端程式庫會使用此資訊，決定將屬性在寫到網路時是否應該加密。 委派也提供關於屬性如何加密的可能邏輯。 （例如，如果 X，則會加密屬性 A，否則會加密屬性 A 和 B）。請注意，讀取或查詢實體時不需要提供此資訊。
 
 ### <a name="batch-operations"></a>批次作業
 單一加密原則適用於批次中的所有資料列。 用戶端程式庫會在內部為批次中的每個資料列產生新的隨機 IV 和隨機 CEK。 使用者也可以選擇為批次中的每個作業加密不同的屬性，作法是在加密解析程式中定義此行為。
@@ -112,15 +114,15 @@ ms.locfileid: "65146904"
 > [!IMPORTANT]
 > 使用用戶端加密時，請留意以下重點：
 > 
-> * 读取或写入到已加密的 Blob 时，请使用完整 Blob 上传命令和范围/完整 Blob 下载命令。 避免使用通訊協定作業寫入加密的 Blob，例如放置區塊、放置區塊清單、撰寫頁面或清除頁面；否則您可能會損毀加密的 Blob，並使它無法讀取。
-> * 對於資料表，存在類似的條件約束。 请注意，不要在未更新加密元数据的情况下更新已加密的属性。
+> * 讀取或寫入加密的 Blob 時，使用整個 Blob 上傳命令及範圍/整個 Blob 下載命令。 避免使用通訊協定作業寫入加密的 Blob，例如放置區塊、放置區塊清單、撰寫頁面或清除頁面；否則您可能會損毀加密的 Blob，並使它無法讀取。
+> * 對於資料表，存在類似的條件約束。 請小心在未更新加密中繼資料時即更新加密的內容。
 > * 如果您在加密 Blob 上設定中繼資料，您可能會覆寫加密所需的加密相關中繼資料，因為設定中繼資料不是加總解密。 快照集也是如此。在為加密的 Blob 建立快照集時，請避免指定中繼資料。 如果必須設定中繼資料，請務必先呼叫 **get_blob_metadata** 方法，以取得目前的加密中繼資料，並避免在設定中繼資料時並行寫入。
 > * 針對僅能使用加密資料的使用者，請在服務物件上啟用 **require_encryption** 旗標。 如需詳細資訊請參閱下方內容。
 
 儲存體用戶端程式庫預期提供的 KEK 與金鑰解析程式會實作下列介面。 [Azure 金鑰保存庫](https://azure.microsoft.com/services/key-vault/) 支援尚未推出，並會在完成時整合到此程式庫。
 
 ## <a name="client-api--interface"></a>用戶端 API / 介面
-在建立儲存體服務物件 (亦即 blockblobservice) 之後，使用者可以將值指派到構成加密原則的欄位：key_encryption_key、key_resolver_function 和 require_encryption。 用户可仅提供 KEK 或解析程序，或同时提供两者。 key_encryption_key 是以金鑰識別碼來識別的基本金鑰類型，且提供包裝/解除包裝的邏輯。 key_resolver_function 在解密程序期間用來解析金鑰。 它會傳回指定金鑰識別碼的有效 KEK。 這可讓使用者從多個位置中管理的多個金鑰之中選擇。
+在建立儲存體服務物件 (亦即 blockblobservice) 之後，使用者可以將值指派到構成加密原則的欄位：key_encryption_key、key_resolver_function 和 require_encryption。 使用者可以僅提供 KEK、僅提供解析程式，或是兩者皆提供。 key_encryption_key 是以金鑰識別碼來識別的基本金鑰類型，且提供包裝/解除包裝的邏輯。 key_resolver_function 在解密程序期間用來解析金鑰。 它會傳回指定金鑰識別碼的有效 KEK。 這可讓使用者從多個位置中管理的多個金鑰之中選擇。
 
 KEK 必須實作下列方法以成功加密資料︰
 
@@ -139,7 +141,7 @@ KEK 必須實作下列方法以成功加密資料︰
   * 叫用金鑰解析程式 (如果指定) 以取得金鑰。 如果已指定解析程式，但沒有金鑰識別碼的對應，則會擲回錯誤。
   * 如果未指定解析程式但指定了金鑰，則如果其識別項符合所需的金鑰識別項，就會使用該金鑰。 如果識別項不符合，則會擲回錯誤。
 
-    Azure.storage.samples 中的加密範例示範更詳細的端對端案例，針對 blob、 佇列和資料表。
+    azure.storage.samples  中的加密範例示範了針對 Blob、佇列及資料表更為詳細的端對端案例。
       KEK 與金鑰解析程式的實作範例已在範例檔案中以 KeyWrapper 和 KeyResolver 的形式個別提供。
 
 ### <a name="requireencryption-mode"></a>RequireEncryption 模式
@@ -151,7 +153,7 @@ KEK 必須實作下列方法以成功加密資料︰
 ```python
 # Create the KEK used for encryption.
 # KeyWrapper is the provided sample implementation, but the user may use their own object as long as it implements the interface above.
-kek = KeyWrapper('local:key1') # Key identifier
+kek = KeyWrapper('local:key1')  # Key identifier
 
 # Create the key resolver used for decryption.
 # KeyResolver is the provided sample implementation, but the user may use whatever implementation they choose so long as the function set on the service object behaves appropriately.
@@ -163,7 +165,8 @@ my_block_blob_service.key_encryption_key = kek
 my_block_blob_service.key_resolver_funcion = key_resolver.resolve_key
 
 # Upload the encrypted contents to the blob.
-my_block_blob_service.create_blob_from_stream(container_name, blob_name, stream)
+my_block_blob_service.create_blob_from_stream(
+    container_name, blob_name, stream)
 
 # Download and decrypt the encrypted contents from the blob.
 blob = my_block_blob_service.get_blob_to_bytes(container_name, blob_name)
@@ -175,7 +178,7 @@ blob = my_block_blob_service.get_blob_to_bytes(container_name, blob_name)
 ```python
 # Create the KEK used for encryption.
 # KeyWrapper is the provided sample implementation, but the user may use their own object as long as it implements the interface above.
-kek = KeyWrapper('local:key1') # Key identifier
+kek = KeyWrapper('local:key1')  # Key identifier
 
 # Create the key resolver used for decryption.
 # KeyResolver is the provided sample implementation, but the user may use whatever implementation they choose so long as the function set on the service object behaves appropriately.
@@ -201,7 +204,7 @@ retrieved_message_list = my_queue_service.get_messages(queue_name)
 ```python
 # Create the KEK used for encryption.
 # KeyWrapper is the provided sample implementation, but the user may use their own object as long as it implements the interface above.
-kek = KeyWrapper('local:key1') # Key identifier
+kek = KeyWrapper('local:key1')  # Key identifier
 
 # Create the key resolver used for decryption.
 # KeyResolver is the provided sample implementation, but the user may use whatever implementation they choose so long as the function set on the service object behaves appropriately.
@@ -209,10 +212,13 @@ key_resolver = KeyResolver()
 key_resolver.put_key(kek)
 
 # Define the encryption resolver_function.
+
+
 def my_encryption_resolver(pk, rk, property_name):
     if property_name == 'foo':
         return True
     return False
+
 
 # Set the KEK and key resolver on the service object.
 my_table_service.key_encryption_key = kek
@@ -224,17 +230,18 @@ my_table_service.insert_entity(table_name, entity)
 
 # Retrieve Entity
 # Note: No need to specify an encryption resolver for retrieve, but it is harmless to leave the property set.
-my_table_service.get_entity(table_name, entity['PartitionKey'], entity['RowKey'])
+my_table_service.get_entity(
+    table_name, entity['PartitionKey'], entity['RowKey'])
 ```
 
-### <a name="using-attributes"></a>使用属性
+### <a name="using-attributes"></a>使用屬性
 如上所述，透過將屬性儲存在 EntityProperty 物件中並設定加密欄位，便可能對該屬性進行加密標記。
 
 ```python
 encrypted_property_1 = EntityProperty(EdmType.STRING, value, encrypt=True)
 ```
 
-## <a name="encryption-and-performance"></a>加密和性能
+## <a name="encryption-and-performance"></a>加密和效能
 請注意，加密您的儲存體資料會造成額外的效能負擔。 必須產生內容金鑰和 IV，內容本身必須經過加密，而且其他中繼資料必須格式化並上傳。 這個額外負荷會因所加密的資料數量而有所不同。 我們建議客戶一定要在開發期間測試其應用程式的效能。
 
 ## <a name="next-steps"></a>後續步驟

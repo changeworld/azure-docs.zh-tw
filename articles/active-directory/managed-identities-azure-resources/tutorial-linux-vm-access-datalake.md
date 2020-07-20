@@ -1,5 +1,5 @@
 ---
-title: 使用 Linux VM 系統指派的受控識別來存取 Azure Data Lake Store
+title: 教學課程`:` 使用受控識別來存取 Azure Data Lake Store - Linux - Azure AD
 description: 本教學課程說明如何使用 Linux VM 系統指派的受控識別，來存取 Azure Data Lake Store。
 services: active-directory
 documentationcenter: ''
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/20/2017
+ms.date: 01/10/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 474165219d7740e63bb5e0a62d08069109a52c31
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: a0fe442741ae0b8fa817c9ea177ff244a413720e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58445944"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "75888510"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-data-lake-store"></a>教學課程：使用 Linux VM 系統指派的受控識別來存取 Azure Data Lake Store
 
@@ -28,39 +28,39 @@ ms.locfileid: "58445944"
 
 本教學課程說明如何將系統指派的受控識別用於 Linux 虛擬機器 (VM)，以存取 Azure Data Lake Store。 您會了解如何： 
 
-在本教學課程中，您了解如何：
+在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
 > * 將您的 VM 存取權授與 Azure Data Lake Store。
 > * 使用 Linux VM 系統指派的受控識別來取得存取權杖，以存取 Azure Data Lake Store。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
-## <a name="grant-your-vm-access-to-azure-data-lake-store"></a>將您的 VM 存取權授與 Azure Data Lake Store
+## <a name="grant-access"></a>授與存取權
 
-現在您可以將您的 VM 存取權授與 Azure Data Lake Store 中的檔案和資料夾。 在這個步驟，您可以使用現有的 Data Lake Store 執行個體或建立新的執行個體。 若要使用 Azure 入口網站建立 Data Lake Store 執行個體，請遵循 [Azure Data Lake Store 快速入門](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal)。 在 [Azure Data Lake Store 文件](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-overview)中，也有使用 Azure CLI 和 Azure PowerShell 的快速入門做法。
+本節說明如何授權給 VM 存取 Azure Data Lake Store 中的檔案和資料夾。 在這個步驟，您可以使用現有的 Data Lake Store 執行個體或建立新的執行個體。 若要使用 Azure 入口網站建立 Data Lake Store 執行個體，請遵循 [Azure Data Lake Store 快速入門](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal)。 在 [Azure Data Lake Store 文件](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-overview)中，也有使用 Azure CLI 和 Azure PowerShell 的快速入門做法。
 
 在 Data Lake Store 中建立新資料夾，並將在該資料夾中讀取、寫入和執行檔案的權限，授予 VM 系統指派的受控識別：
 
-1. 在 Azure 入口網站中，選取左側窗格的 [Data Lake Store]。
+1. 在 Azure 入口網站中，選取左側窗格的 [Data Lake Store]  。
 2. 選取您需要使用的 Data Lake Store 執行個體。
-3. 選取命令列上的 [資料總管]。
-4. 隨即選取 Data Lake Store 執行個體的根資料夾。 在命令列上選取 [存取]。
-5. 選取 [新增] 。  在 [選取] 方塊中，輸入 VM 的名稱，例如 **DevTestVM**。 從搜尋結果中選取您的 VM，然後按一下 [選取]。
-6. 按一下 [選取權限]。  選取 [讀取] 和 [執行]，加入到 [此資料夾]，然後新增為 [僅存取權限]。 選取 [確定]。  權限應該已成功加入。
-7. 關閉 [存取] 窗格。
-8. 針對此教學課程，建立一個新資料夾。 選取命令列中的 [新資料夾]，為新資料夾命名，例如 **TestFolder**。  選取 [確定]。
-9. 選取您所建立的資料夾，然後選取命令列中的 [存取]。
-10. 如同步驟 5，選取 [新增]。 在 [選取] 方塊中，輸入 VM 的名稱。 從搜尋結果中選取您的 VM，然後按一下 [選取]。
-11. 如同步驟 6，選取 [選取權限]。 選取 [讀取]、[寫入] 和 [執行]，新增到 [此資料夾]，並新增為 [存取權限項目及預設權限項目]。 選取 [確定]。  權限應該已成功加入。
+3. 選取命令列上的 [資料總管]  。
+4. 隨即選取 Data Lake Store 執行個體的根資料夾。 在命令列上選取 [存取]  。
+5. 選取 [新增]  。  在 [選取]  方塊中，輸入 VM 的名稱，例如 **DevTestVM**。 從搜尋結果中選取您的 VM，然後按一下 [選取]  。
+6. 按一下 [選取權限]  。  選取 [讀取]  和 [執行]  ，加入到 [此資料夾]  ，然後新增為 [僅存取權限]  。 選取 [確定]  。  權限應該已成功加入。
+7. 關閉 [存取]  窗格。
+8. 針對此教學課程，建立一個新資料夾。 選取命令列中的 [新資料夾]  ，為新資料夾命名，例如 **TestFolder**。  選取 [確定]  。
+9. 選取您所建立的資料夾，然後選取命令列中的 [存取]  。
+10. 如同步驟 5，選取 [新增]  。 在 [選取]  方塊中，輸入 VM 的名稱。 從搜尋結果中選取您的 VM，然後按一下 [選取]  。
+11. 如同步驟 6，選取 [選取權限]  。 選取 [讀取]  、[寫入]  和 [執行]  ，新增到 [此資料夾]  ，並新增為 [存取權限項目及預設權限項目]  。 選取 [確定]  。  權限應該已成功加入。
 
 現在，適用於 Azure 資源的受控識別，可以對您所建立資料夾中的檔案執行所有作業。 如需管理 Data Lake Store 存取權的詳細資訊，請參閱 [Data Lake Store 中的存取控制](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-access-control)一文。
 
-## <a name="get-an-access-token-and-call-the-data-lake-store-file-system"></a>取得存取權杖，並呼叫 Data Lake Store 檔案系統
+## <a name="get-an-access-token"></a>取得存取權杖 
 
-Azure Data Lake Store 原生支援 Azure AD 驗證，因此可直接接受透過適用於 Azure 資源的受控識別所取得的存取權杖。 為了向 Data Lake Store 檔案系統進行驗證，您要將 Azure AD 所簽發的存取權杖傳送至 Data Lake Store 檔案系統端點。 存取權杖位於授權標頭，格式為 "Bearer \<ACCESS_TOKEN_VALUE\>"。  若要深入了解 Data Lake Store 的 Azure AD 驗證支援，請參閱[使用 Azure Active Directory 向 Data Lake Store 進行驗證](https://docs.microsoft.com/azure/data-lake-store/data-lakes-store-authentication-using-azure-active-directory)。
+本節說明如何取得存取權杖及呼叫 Data Lake Store 檔案系統。 Azure Data Lake Store 原生支援 Azure AD 驗證，因此可直接接受透過適用於 Azure 資源的受控識別所取得的存取權杖。 為了向 Data Lake Store 檔案系統進行驗證，您要將 Azure AD 所簽發的存取權杖傳送至 Data Lake Store 檔案系統端點。 存取權杖位於授權標頭，格式為 "Bearer \<ACCESS_TOKEN_VALUE\>"。  若要深入了解 Data Lake Store 的 Azure AD 驗證支援，請參閱[使用 Azure Active Directory 向 Data Lake Store 進行驗證](https://docs.microsoft.com/azure/data-lake-store/data-lakes-store-authentication-using-azure-active-directory)。
 
 在本教學課程中，您使用 cURL 向 Data Lake Store 檔案系統驗證 REST API，以提出 REST 要求。
 
@@ -69,7 +69,7 @@ Azure Data Lake Store 原生支援 Azure AD 驗證，因此可直接接受透過
 
 若要完成這些步驟，您需要 SSH 用戶端。 如果您使用 Windows，您可以在[適用於 Linux 的 Windows 子系統](https://msdn.microsoft.com/commandline/wsl/about)中使用 SSH 用戶端。 如果您需要設定 SSH 用戶端金鑰的協助，請參閱[如何在 Azure 上搭配 Windows 使用 SSH 金鑰](../../virtual-machines/linux/ssh-from-windows.md)，或[如何在 Azure 中建立和使用 Linux VM 的 SSH 公開和私密金鑰組](../../virtual-machines/linux/mac-create-ssh-keys.md)。
 
-1. 在入口網站中，瀏覽至您的 Linux VM。 在 [概觀] 中，選取 [連線]。  
+1. 在入口網站中，瀏覽至您的 Linux VM。 在 [概觀]  中，選取 [連線]  。  
 2. 使用您所選擇的 SSH 用戶端來連線到 VM。 
 3. 在終端機視窗中，使用 CURL 向 Azure 資源端點的本機受控識別提出要求，以取得 Data Lake Store 的存取權杖。 Data Lake Store 的資源識別碼是 `https://datalake.azure.net/`。  請務必包含資源識別項中的結尾斜線。
     

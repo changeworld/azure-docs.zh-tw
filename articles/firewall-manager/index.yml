@@ -1,0 +1,49 @@
+### YamlMime:Landing
+title: Azure 防火牆管理員文件
+summary: 了解如何部署 Azure 防火牆管理員，這是一項全域散發的安全性管理服務。
+metadata:
+  title: Azure 防火牆管理員文件
+  description: 了解如何部署 Azure 防火牆管理員，這是一項全域散發的安全性管理服務。
+  services: firewall
+  ms.service: firewall-manager
+  ms.topic: landing-page
+  author: vhorne
+  ms.author: victorh
+  ms.date: 10/10/2019
+  ms.openlocfilehash: bf7474f1519fbd94be3de8daa15a43775a6a6a0a
+  ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 06/30/2020
+  ms.locfileid: "85561433"
+landingContent:
+- title: 了解 Azure 防火牆管理員
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是 Azure 防火牆管理員？
+      url: overview.md
+    - text: 部署概觀
+      url: deployment-overview.md
+- title: 了解安全虛擬中樞
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 什麼是安全虛擬中樞？
+      url: secured-virtual-hub.md
+- title: 安全性合作夥伴提供者
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 什麼是安全性合作夥伴提供者？
+      url: trusted-security-partners.md
+  - linkListType: how-to-guide
+    links:
+    - text: 部署安全性合作夥伴提供者
+      url: deploy-trusted-security-partner.md
+- title: 保護 Azure 雲端網路
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 使用 Azure 入口網站保護雲端網路
+      url: secure-cloud-network.md

@@ -1,53 +1,54 @@
 ---
-title: Azure 應用程式受控應用程式供應項目發佈指南
-description: 本文說明在 Marketplace 中發佈受控應用程式的需求
-services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-author: ellacroi
-manager: nunoc
+title: Azure 應用程式受控應用程式供應專案發佈指南-Azure Marketplace
+description: 本文說明在 Azure Marketplace 中發行受控應用程式的需求。
 ms.service: marketplace
-ms.topic: article
-ms.date: 12/19/2018
-ms.author: ellacroi
-ms.openlocfilehash: cb7c0bb571dcb9ec763d0247042e93966bfd0b65
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.subservice: partnercenter-marketplace-publisher
+ms.topic: conceptual
+author: msjogarrig
+ms.author: jogarrig
+ms.date: 04/22/2020
+ms.openlocfilehash: 70922b80139015226445ca62026ec6f5a59b751c
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64937808"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119815"
 ---
-# <a name="azure-applications-managed-application-offer-publishing-guide"></a>Azure 應用程式：受控應用程式供應項目發佈指南
+# <a name="publishing-guide-for-azure-managed-applications"></a>Azure 受控應用程式的發佈指南
 
-受控應用程式是在 Marketplace 中發佈解決方案的主要方式之一。 您可以使用本指南來了解這項供應項目的需求。 
+Azure*受控應用程式*供應專案是在 Azure Marketplace 中發佈 azure 應用程式的一種方式。 受控應用程式是透過 Azure Marketplace 部署和計費的交易供應專案。 使用者所看到的動作呼叫會*立即取得*。
 
-這些交易供應項目是透過 Marketplace 來部署並計費的。 使用者會看到的呼籲行動是「立即取得」。
+本文說明受控應用程式供應專案類型的需求。
 
-必須符合下列條件時，請使用「Azure 應用程式：受控應用程式」供應項目類型：
-- 您使用 VM 或整個 IaaS 型解決方案為客戶部署訂用帳戶型解決方案。
-- 您或您的客戶要求由合作夥伴管理解決方案。
+在下列情況下，請使用受控應用程式供應專案類型：
+
+- 您正在使用虛擬機器（VM）或整個基礎結構即服務（IaaS）型解決方案，為您的客戶部署訂用帳戶型解決方案。
+- 您或您的客戶需要由合作夥伴管理解決方案。
 
 >[!NOTE]
->例如，合作夥伴可能是 SI 或受控服務提供者 (MSP)。  
+>例如，合作夥伴可以是系統整合者或受控服務提供者（MSP）。  
 
-## <a name="managed-application-offer"></a>受控應用程式供應項目
+## <a name="managed-application-offer-requirements"></a>受控應用程式供應專案需求
 
 |需求 |詳細資料  |
 |---------|---------|
-|已部署至客戶的 Azure 訂用帳戶 | 受控應用程式必須部署在客戶的訂用帳戶中，且可受第三方管理 | 
-|計費和計量    |  資源會在客戶的 Azure 訂用帳戶中加以佈建。 隨用隨付 (PAYGO) 虛擬機器將透過 Microsoft 與客戶交易，並透過客戶的 Azure 訂用帳戶 (PAYGO) 計費 
-在自備授權的案例中，雖然 Microsoft 會向客戶訂用帳戶中產生的基礎結構成本收費，但您將直接向客戶收取軟體授權費用        |
-|Azure 相容的虛擬硬碟 (VHD)    |   VM 必須建置在 Windows 或 Linux 上。<ul> <ul> <li>如需建立 Linux VHD 的詳細資訊，請參閱 [Azure 背書的 Linux 散發套件](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)。</li> <li>如需建立 Windows VHD 的詳細資訊，請參閱[建立與 Azure 相容的 VHD](./cloud-partner-portal/virtual-machine/cpp-create-vhd.md)。</li> </ul> |
+|Azure 訂用帳戶 | 受控應用程式必須部署至客戶的訂用帳戶，但可由協力廠商管理。 |
+|計費和計量    |  這些資源會在客戶的 Azure 訂用帳戶中提供。 使用隨用隨付付款模型的 Vm 會透過 Microsoft 與客戶交易，並透過客戶的 Azure 訂用帳戶計費。 <br><br> 對於自備授權 Vm，Microsoft 會針對客戶訂用帳戶中所產生的任何基礎結構成本計費，但您會直接向客戶收取軟體授權費用。        |
+|Azure 相容的虛擬硬碟（VHD）    |   VM 必須建置在 Windows 或 Linux 上。<br><br>如需建立 Linux VHD 的詳細資訊，請參閱 [Azure 背書的 Linux 散發套件](../virtual-machines/linux/endorsed-distros.md)。<br><br>如需建立 Windows VHD 的詳細資訊，請參閱[建立 Azure 應用程式供應](./partner-center-portal/create-new-azure-apps-offer.md)專案。 |
 
->[!NOTE]
-> 受控應用程式必須可透過 Marketplace 部署。 如果與客戶的交流是您的關注焦點，則在啟用潛在客戶分享之後，您應該與感興趣的客戶連絡。  
+---
 
->[!Note]
->雲端解決方案提供者 (CSP) 合作夥伴通道選用功能現在可使用。  請參閱[雲端方案提供者](./cloud-solution-providers.md)如需有關行銷您的供應項目，透過 Microsoft CSP 合作夥伴的通道。
+> [!NOTE]
+> 受控應用程式必須可透過 Azure Marketplace 進行部署。 如果需要考慮客戶溝通，請在啟用潛在客戶共用之後，觸及感興趣的客戶。  
+
+> [!Note]
+> 雲端解決方案提供者（CSP）合作夥伴頻道加入宣告現已推出。 如需透過 Microsoft CSP 合作夥伴管道行銷供應專案的詳細資訊，請參閱[雲端解決方案提供者](./cloud-solution-providers.md)。
 
 ## <a name="next-steps"></a>後續步驟
-如果您還沒有這麼做，請 
 
-- 在市集中[註冊](https://azuremarketplace.microsoft.com/sell)。
+了解如何[使用 Azure Marketplace 來拓展您的雲端業務](https://azuremarketplace.microsoft.com/sell) (若您尚不了解)。
 
-如果您已註冊，且要建立新供應項目或使用現有供應項目，請
+若要註冊並開始使用合作夥伴中心：
 
-- [登入 Cloud Partner 入口網站](https://cloudpartner.azure.com)以建立或完成您的供應項目。
+- [登入合作夥伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)，以建立或完成您的供應項目。
+- 如需詳細資訊，請參閱[建立 Azure 應用程式供應](./partner-center-portal/create-new-azure-apps-offer.md)專案。

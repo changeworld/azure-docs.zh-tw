@@ -1,7 +1,13 @@
 - name: 概觀
   items:
-    - name: Oracle VM 的考量
-      href: oracle-considerations.md
+    - name: Oracle 解決方案概觀
+      href: oracle-overview.md
+    - name: Azure VM 中的解決方案
+      href: oracle-vm-solutions.md
+    - name: WebLogic Server Azure 應用程式
+      href: oracle-weblogic.md
+    - name: 使用 OCI 的解決方案
+      href: oracle-oci-overview.md
 - name: 快速入門
   items:
     - name: 建立 Oracle DB
@@ -10,18 +16,26 @@
   items:
     - name: 設定 Oracle ASM
       href: configure-oracle-asm.md
-    - name: 設定 Oracle DataGuard
+    - name: 設定 Oracle Data Guard
       href: configure-oracle-dataguard.md
     - name: 設定 Oracle GoldenGate
       href: configure-oracle-golden-gate.md
 - name: 概念
   items:
+    - name: Oracle 應用程式架構
+      href: oracle-oci-applications.md
+    - name: Oracle 資料庫架構
+      href: oracle-reference-architecture.md
     - name: 建置 Oracle DB
       href: oracle-design.md
     - name: Oracle DB 適用的備份策略
       href: oracle-backup-recovery.md
     - name: Oracle 災害復原選項
       href: oracle-disaster-recovery.md
+- name: 操作指南
+  items:
+    - name: 將 Azure 和 OCI 互相連線
+      href: configure-azure-oci-networking.md
 - name: 資源
   items:
     - name: Azure 藍圖

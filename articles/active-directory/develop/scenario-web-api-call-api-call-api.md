@@ -1,38 +1,35 @@
 ---
-title: Web API 呼叫 web Api （呼叫 Api）-Microsoft 身分識別平台
-description: 了解如何建置 web API，其呼叫下游 web Api （呼叫 web API）。
+title: 呼叫 web Api 的 web API-Microsoft 身分識別平臺 |Azure
+description: 瞭解如何建立呼叫 web Api 的 Web API。
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1cd093cc68a21558dc326221eeaa8c034c24f1c2
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
-ms.translationtype: MT
+ms.openlocfilehash: 6bbd24978891efd147b0c317c1746d13961ce5e9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65074721"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80885084"
 ---
-# <a name="web-api-that-calls-web-apis---call-an-api"></a>呼叫 web Api-的 web API 呼叫的 API
+# <a name="a-web-api-that-calls-web-apis-call-an-api"></a>呼叫 web Api 的 Web API：呼叫 API
 
-語彙基元之後，您可以呼叫受保護的 web API。 這是從您 ASP.NET/ASP.NET Core web API 控制器。
+有了權杖之後，您就可以呼叫受保護的 Web API。 您可以從 Web API 的控制器執行此動作。
 
 ## <a name="controller-code"></a>控制器程式碼
 
-以下是範例程式碼所示的接續[受保護 web API 呼叫 web Api-權杖](scenario-web-api-call-api-acquire-token.md)，稱為 API 控制器的動作，在呼叫 （名為 todolist） 下游 API。
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-一旦您取得權杖，使用它做為持有人權杖來呼叫下游 API。
+下列程式碼會繼續在呼叫 web Api 的 Web API 中顯示的範例[程式碼：取得應用程式的權杖](scenario-web-api-call-api-acquire-token.md)。 程式碼會在 API 控制器的動作中呼叫。 它會呼叫名為*todolist*的下游 API。
 
-```CSharp
+取得權杖之後，請使用它做為持有人權杖來呼叫下游 API。
+
+```csharp
 private async Task GetTodoList(bool isAppStarting)
 {
  ...
@@ -49,7 +46,7 @@ private async Task GetTodoList(bool isAppStarting)
  }
 ...
 
-// Once the token has been returned by MSAL, add it to the http authorization header, before making the call to access the To Do list service.
+// After the token has been returned by Microsoft Authentication Library (MSAL), add it to the HTTP authorization header before making the call to access the To Do list service.
 _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", result.AccessToken);
 
 // Call the To Do list service.
@@ -58,7 +55,36 @@ HttpResponseMessage response = await _httpClient.GetAsync(TodoListBaseAddress + 
 }
 ```
 
+# <a name="java"></a>[Java](#tab/java)
+
+下列程式碼會繼續在呼叫 web Api 的 Web API 中顯示的範例[程式碼：取得應用程式的權杖](scenario-web-api-call-api-acquire-token.md)。 程式碼會在 API 控制器的動作中呼叫。 它會呼叫下游 API MS Graph。
+
+取得權杖之後，請使用它做為持有人權杖來呼叫下游 API。
+
+```Java
+private String callMicrosoftGraphMeEndpoint(String accessToken){
+    RestTemplate restTemplate = new RestTemplate();
+
+    HttpHeaders headers = new HttpHeaders();
+    headers.setContentType(MediaType.APPLICATION_JSON);
+
+    headers.set("Authorization", "Bearer " + accessToken);
+
+    HttpEntity<String> entity = new HttpEntity<>(null, headers);
+
+    String result = restTemplate.exchange("https://graph.microsoft.com/v1.0/me", HttpMethod.GET,
+            entity, String.class).getBody();
+
+    return result;
+}
+```
+
+# <a name="python"></a>[Python](#tab/python)
+尚未提供使用 MSAL Python 來示範此流程的範例。
+
+---
+
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [移至生產環境](scenario-web-api-call-api-production.md)
+> [呼叫 web Api 的 Web API：移至生產環境](scenario-web-api-call-api-production.md)

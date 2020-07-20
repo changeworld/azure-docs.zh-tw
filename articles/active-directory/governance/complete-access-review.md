@@ -1,66 +1,93 @@
 ---
-title: 完成群組或應用程式-Azure Active Directory 的存取權檢閱 |Microsoft Docs
-description: 了解如何完成存取權檢閱的群組成員或在 Azure Active Directory 存取權檢閱的應用程式存取。
+title: 完成 & 應用程式群組的存取權審查-Azure AD
+description: 瞭解如何在 Azure Active Directory 存取評論中完成群組成員或應用程式存取的存取權審查。
 services: active-directory
 documentationcenter: ''
-author: rolyon
-manager: mtillman
+author: msaburnley
+manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: compliance
-ms.date: 05/02/2018
-ms.author: rolyon
+ms.date: 06/18/2020
+ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4265a7e08eab079e55ce91b27142ec3e55b3f3e9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 251ca1dc2b288d3448cdcda0f28335a92c54b431
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60246477"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85078855"
 ---
-# <a name="complete-an-access-review-of-groups-or-applications-in-azure-ad-access-reviews"></a>完成群組的存取權檢閱，或在 Azure AD 中的應用程式存取權檢閱
+# <a name="complete-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>在 Azure AD 存取評論中完成群組和應用程式的存取權檢查
 
-系統管理員可以使用 Azure Active Directory (Azure AD) 為群組成員或指派給應用程式的或使用者[建立存取權檢閱](create-access-review.md)。 Azure AD 會自動傳送電子郵件給檢閱者，提示其檢閱存取權。 如果使用者未收到一封電子郵件，您可以傳送這些指示[檢閱存取權的群組或應用程式](perform-access-review.md)。 (請注意，受指派為檢閱者但尚未接受邀請的來賓，將不會收到一封存取權檢閱所發出的電子郵件，因為他們在檢閱之前必須先接受邀請)。存取權檢閱期間結束後，或如果系統管理員停止存取權檢閱，請依照本文的步驟來查看並套用結果。
+身為系統管理員，您可以[建立群組或應用程式](create-access-review.md)和審核者的存取權審查，以[執行存取權審查](perform-access-review.md)。 本文說明如何查看存取權審查的結果，並套用結果。
 
-## <a name="view-an-access-review-in-the-azure-portal"></a>在 Azure 入口網站中檢視存取權檢閱
+[!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
-1. 移至[存取權檢閱頁面](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/)，選取 [程式集]，並選取包含存取權檢閱控制項的程式。
+## <a name="prerequisites"></a>必要條件
 
-2. 選取 [管理]，並選取存取權檢閱控制項。 如果程式中有許多控制項，您可以篩選特定類型的控制項，並依其狀態排序。 您也可以依據存取權檢閱控制項的名稱或原先建立它之擁有者的顯示名稱來搜尋。 
+- Azure AD Premium P2
+- 全域管理員、使用者系統管理員、安全性系統管理員或安全性讀取者
 
-## <a name="stop-a-review-that-hasnt-finished"></a>停止尚未完成的檢閱
+如需詳細資訊，請參閱[授權需求](access-reviews-overview.md#license-requirements)。
 
-如果檢閱尚未到達排程的結束日期，系統管理員可以選取 [停止] 以提早結束檢閱。 在您停止檢閱之後，就無法再檢閱使用者。 檢閱停止後即無法重新開始。
+## <a name="view-an-access-review"></a>查看存取權審查
 
-## <a name="apply-the-changes"></a>套用變更 
+當審核者完成審核時，您可以追蹤進度。
 
-存取權檢閱完成之後，因為它觸達結束日期，或是系統管理員手動將它停止，而檢閱未設定自動套用，您可以選取 [套用] 以手動套用變更。 檢閱的結果是藉由更新群組或應用程式實作。 若在檢閱中拒絕使用者的存取權，當系統管理員選取此選項時，Azure AD 會移除其成員資格或應用程式指派。 
+1. 登入 Azure 入口網站並開啟 [身分[識別管理] 頁面](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/)。
 
-存取權檢閱完成之後，會設定自動套用，然後檢閱的狀態會從 [已完成] 歷經中繼狀態最後變更為 [已套用] 狀態。 您應該會看到遭到拒絕的使用者 (若有) 在幾分鐘內從資源群組成員資格或應用程式指派中移除。
+1. 在左側功能表中，按一下 [**存取評論**]。
 
-已設定的自動套用檢閱，或選取 [套用] 並不會影響源自內部部署目錄中的群組，或動態群組。 如果您想要變更源自於內部部署的群組，請下載結果，並將那些變更套用至該目錄中的群組圖像。
+1. 在清單中，按一下 [存取權審查]。
 
-## <a name="download-the-results-of-the-review"></a>下載檢閱的結果
+    若要觀看一系列的存取權審查，請流覽至「存取權審查」，您就會發現近期在排程的審查中出現。
 
-若要擷取檢閱的結果，請選取 [核准]，然後選取 [下載]。 可在 Excel 中，或開啟 UTF-8 編碼 CSV 檔案的其他程式中檢視產生的 CSV 檔案。
+    在 [**總覽**] 頁面上，您可以看到進度。 在完成檢閱之前，不會變更目錄中的任何存取權限。
 
-## <a name="optional-delete-a-review"></a>選用：刪除檢閱
-如果您對檢閱不再感興趣，可以將它刪除。 選取 [刪除] 以從 Azure AD 移除檢閱。
+    ![存取審查進度](./media/complete-access-review/overview-progress.png)
 
-> [!IMPORTANT]
-> 刪除執行前不會收到警告，因此請務必確定您想要刪除檢閱。
-> 
-> 
+1. 如果您想要在已達到排程結束日期之前停止存取權審查，請按一下 [**停止**] 按鈕。
+
+    停止審查時，審核者將無法再提供回應。 檢閱停止後即無法重新開始。
+
+1. 如果您不再對存取權審查感興趣，您可以按一下 [**刪除**] 按鈕將其刪除。
+
+## <a name="apply-the-changes"></a>套用變更
+
+如果已啟用 [**自動將結果套用至資源**]，並根據您在**完成設定**中的選擇，則自動套用將會在審核的結束日期之後或當您手動停止審核時執行。
+
+如果 [**自動將結果套用至資源**] 未啟用審核功能，**請按一下 [** 套用] 以手動套用變更。 如果使用者的存取權在審查中遭到**拒絕，當您按一下 [** 套用] 時，Azure AD 會移除其成員資格或應用程式指派。
+
+![套用存取權審查變更](./media/complete-access-review/apply-changes.png)
+
+審核的狀態會從 [**已完成**]**變更為 [** 透過中繼狀態]，例如 [套用] 和 [最後] 以套用 [狀態**結果**]。 您應該會看到遭到拒絕的使用者 (若有的話)，在幾分鐘內從群組成員資格或應用程式指派中移除。
+
+已設定的自動套用檢閱，或選取 [套用]**** 並不會影響源自內部部署目錄中的群組，或動態群組。 如果您想要變更源自於內部部署的群組，請下載結果，並將那些變更套用至該目錄中的群組圖像。
+
+## <a name="retrieve-the-results"></a>擷取結果
+
+若要查看單次存取審查的結果，請按一下 [**結果**] 頁面。 若只要查看使用者的存取權，請在 [搜尋] 方塊中，輸入已檢查其存取權之使用者的顯示名稱或使用者主體名稱。
+
+![取得存取權審查的結果](./media/complete-access-review/retrieve-results.png)
+
+若要查看週期性之作用中存取審核的進度，請按一下 [**結果**] 頁面。
+
+若要查看已完成的存取權檢查實例的結果，請按一下 [**審查歷程記錄**]，然後根據實例的開始和結束日期，從已完成的存取權審核實例清單中選取特定的實例。 您可以從 [**結果**] 頁面取得這個實例的結果。
+
+若要取得存取權審查的所有結果，請按一下 [**下載**] 按鈕。 可在 Excel 中，或開啟 UTF-8 編碼 CSV 檔案的其他程式中檢視產生的 CSV 檔案。
+
+## <a name="remove-users-from-an-access-review"></a>從存取權審查移除使用者
+
+ 根據預設，已刪除的使用者會在 Azure AD 中以已刪除的狀態保留 30 天，在這段期間內，系統管理員可以視需要加以還原。  經過 30 天後，該使用者將永久刪除。  此外，全域管理員可以使用 Azure Active Directory 入口網站，在該時段結束之前明確地[永久刪除最近刪除的使用者](../fundamentals/active-directory-users-restore.md)。  使用者永久刪除後，關於該使用者的資料將會從作用中的存取權檢閱中移除。  與已刪除的使用者有關的稽核資訊仍會保留在稽核記錄中。
 
 ## <a name="next-steps"></a>後續步驟
 
 - [使用 Azure AD 存取權檢閱來管理使用者存取權](manage-user-access-with-access-reviews.md)
 - [使用 Azure AD 存取權檢閱來管理來賓存取權](manage-guest-access-with-access-reviews.md)
-- [管理 Azure AD 存取權檢閱的程式和控制項](manage-programs-controls.md)
 - [建立群組或應用程式的存取權檢閱](create-access-review.md)
 - [在 Azure AD 管理角色中建立使用者的存取權檢閱](../privileged-identity-management/pim-how-to-start-security-review.md)

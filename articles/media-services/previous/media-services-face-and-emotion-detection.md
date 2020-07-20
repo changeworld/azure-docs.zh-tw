@@ -13,16 +13,22 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
-ms.author: milanga;juliako;
-ms.openlocfilehash: 46e60583da79006c133c8d9fac63e27f28bd699f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: juliako
+ms.reviewer: milanga
+ms.openlocfilehash: b8f100d253dc5ecb321934eb49a1aba60595a5e8
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61217156"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232571"
 ---
 # <a name="detect-face-and-emotion-with-azure-media-analytics"></a>使用 Azure 媒體分析偵測臉部和情緒
+
+> [!NOTE]
+> **Azure 媒體臉部偵測器**媒體處理器將被淘汰。 如需淘汰日期，請參閱[舊版元件](legacy-components.md)主題。
+
 ## <a name="overview"></a>概觀
+
 **Azure 媒體臉部偵測器** 媒體處理器 (MP) 能讓您透過臉部表情針對對象的參與情形做出計算、追蹤移動，甚至進行量測。 此服務包含兩個功能： 
 
 * **臉部偵測**
@@ -35,35 +41,35 @@ ms.locfileid: "61217156"
   > 
 * **情緒偵測**
   
-    情绪检测是面部检测媒体处理器的可选组件，它根据检测到的面部返回多个情绪属性的分析，包括快乐、悲伤、恐惧、愤怒等等。 
+    「情緒偵測」是臉部偵測媒體處理器的選擇性元件，它會根據已偵測的臉部，傳回多個情緒屬性的分析，包括快樂、悲傷、恐懼、憤怒等等。 
 
 **Azure 媒體臉部偵測器** MP 目前為預覽功能。
 
 本文提供有關 **Azure 媒體臉部偵測器**的詳細資料，並示範如何搭配適用於 .NET 的媒體服務 SDK 來使用它。
 
 ## <a name="face-detector-input-files"></a>臉部偵測器輸入檔案
-影片檔案。 目前支援下列格式：MP4、MOV 與 WMV。
+影片檔案。 目前支援下列格式：MP4、MOV 及 WMV。
 
 ## <a name="face-detector-output-files"></a>臉部偵測器輸出檔案
 臉部偵測器和追蹤 API 能提供高精確度的臉部位置偵測和追蹤功能，並能在單一影片中偵測到最多 64 個人類臉部。 正面的臉部能提供最佳結果，而側面的臉部和較小的臉部 (小於或等於 24x24 像素) 可能就無法取得相同的精確度。
 
 已偵測並追蹤的臉部將會搭配能以像素為單位表示臉部在影像中位置的座標 (左側、上方、寬度和高度)，以及表示對該人員進行追蹤的臉部識別碼。 臉部識別碼很容易在正面臉部長時間於畫面中遺失或重疊的情況下重設，導致某些人員被指派多個識別碼。
 
-## <a id="output_elements"></a>輸出 JSON 檔案的元素
+## <a name="elements-of-the-output-json-file"></a><a id="output_elements"></a>輸出 JSON 檔案的元素
 
 [!INCLUDE [media-services-analytics-output-json](../../../includes/media-services-analytics-output-json.md)]
 
 臉部偵測器使用分散 (中繼資料可以分解為以時間為基礎的區塊，讓您可以只下載需要的部分) 及分割 (可以在事件過於龐大的情況下對事件進行分解) 的技術。 某些簡單的計算可以協助您轉換資料。 例如，如果事件是從 6300 (刻度) 開始，並擁有 2997 (刻度/每秒) 的時幅，以及 29.97 (畫面/每秒) 的畫面播放速率，則：
 
-* 开始时间/时间刻度 = 2.1 秒
+* 開始/時幅 = 2.1 秒
 * 秒數 x 畫面播放速率 = 63 格畫面
 
 ## <a name="face-detection-input-and-output-example"></a>臉部偵測輸入和輸出範例
 ### <a name="input-video"></a>輸入影片
 [輸入影片](https://ampdemo.azureedge.net/azuremediaplayer.html?url=httpss%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fc8834d9f-0b49-4b38-bcaf-ece2746f1972%2FMicrosoft%20Convergence%202015%20%20Keynote%20Highlights.ism%2Fmanifest&amp;autoplay=false)
 
-### <a name="task-configuration-preset"></a>工作設定 (預設)
-以 **Azure 媒體臉部偵測器**建立工作時，您必須指定設定預設值。 以下配置预设仅适用于面部检测。
+### <a name="task-configuration-preset"></a>工作組態 (預設)
+以 **Azure 媒體臉部偵測器**建立工作時，您必須指定設定預設值。 下列設定預設值僅適用於臉部偵測。
 
 ```json
     {
@@ -75,9 +81,9 @@ ms.locfileid: "61217156"
 ```
 
 #### <a name="attribute-descriptions"></a>屬性描述
-| 属性名称 | 描述 |
+| 屬性名稱 | 描述 |
 | --- | --- |
-| Mode |Fast：較快的處理速度，但較不精確 (預設)。|
+| [模式] |Fast：較快的處理速度，但較不精確 (預設)。|
 
 ### <a name="json-output"></a>JSON 輸出
 下列為 JSON 輸出受到截斷的範例。
@@ -134,7 +140,7 @@ ms.locfileid: "61217156"
 ### <a name="input-video"></a>輸入影片
 [輸入影片](https://ampdemo.azureedge.net/azuremediaplayer.html?url=httpss%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fc8834d9f-0b49-4b38-bcaf-ece2746f1972%2FMicrosoft%20Convergence%202015%20%20Keynote%20Highlights.ism%2Fmanifest&amp;autoplay=false)
 
-### <a name="task-configuration-preset"></a>工作設定 (預設)
+### <a name="task-configuration-preset"></a>工作組態 (預設)
 以 **Azure 媒體臉部偵測器**建立工作時，您必須指定設定預設值。 下列設定預設值指定以情緒偵測為基礎建立 JSON。
 
 ```json
@@ -150,10 +156,10 @@ ms.locfileid: "61217156"
 
 
 #### <a name="attribute-descriptions"></a>屬性描述
-| 属性名称 | 描述 |
+| 屬性名稱 | 描述 |
 | --- | --- |
-| Mode |臉部：僅臉部偵測。<br/>PerFaceEmotion：將每個臉部偵測的情緒單獨傳回。<br/>AggregateEmotion：傳回該畫面中所有臉部的平均情緒值。 |
-| AggregateEmotionWindowMs |在已选择 AggregateEmotion 模式时使用。 指定要用來產生每個彙總結果之影片的長度，以毫秒為單位。 |
+| [模式] |Faces：僅臉部偵測。<br/>PerFaceEmotion：將每個臉部偵測的情緒單獨傳回。<br/>AggregateEmotion：傳回該畫面中所有臉部的平均情緒值。 |
+| AggregateEmotionWindowMs |在已選取 AggregateEmotion 模式時使用。 指定要用來產生每個彙總結果之影片的長度，以毫秒為單位。 |
 | AggregateEmotionIntervalMs |在已選取 AggregateEmotion 模式時使用。 指定產生彙總結果的頻率。 |
 
 #### <a name="aggregate-defaults"></a>彙總預設值
@@ -161,8 +167,8 @@ ms.locfileid: "61217156"
 
 || 預設 | 最大 | 最小 |
 |--- | --- | --- | --- |
-| AggregateEmotionWindowMs |0.5 |2 |0.25|
-| AggregateEmotionIntervalMs |0.5 |1 |0.25|
+| **AggregateEmotionWindowMs** |0.5 |2 |0.25|
+| **AggregateEmotionIntervalMs** |0.5 |1 |0.25|
 
 ### <a name="json-output"></a>JSON 輸出
 彙總情緒的 JSON 輸出 (已截斷)：
@@ -342,7 +348,7 @@ ms.locfileid: "61217156"
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>建立和設定 Visual Studio 專案
 
-設定您的開發環境並在 app.config 檔案中填入連線資訊，如[使用 .NET 進行 Media Services 開發](media-services-dotnet-how-to-use.md)所述。 
+設定您的開發環境，並在 app.config 檔案中填入連接資訊，如[使用 .net 進行媒體服務開發](media-services-dotnet-how-to-use.md)中所述。 
 
 #### <a name="example"></a>範例
 
@@ -520,7 +526,7 @@ namespace FaceDetection
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>相關連結
-[Azure 媒体服务分析概述](media-services-analytics-overview.md)
+[Azure 媒體服務分析概觀](media-services-analytics-overview.md)
 
 [Azure 媒體分析示範](https://amslabs.azurewebsites.net/demos/Analytics.html)
 

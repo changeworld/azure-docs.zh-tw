@@ -11,26 +11,26 @@ ms.topic: include
 ms.date: 07/13/2018
 ms.author: ninarn
 ms.openlocfilehash: 6ead2e0ea326b5c3f2e76e7aa9cc4ab3c50d4154
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60202102"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "67174059"
 ---
 ### <a name="obtain-the-connection-string-from-the-azure-portal"></a>從 Azure 入口網站取得連接字串
 使用 [Azure 入口網站](https://portal.azure.com/)來取得用戶端程式與 Azure SQL Database 進行互動所需的連接字串。
 
-1. 選取 [所有服務] > [SQL 資料庫]。
+1. 選取 [**所有服務**]  >  **[SQL 資料庫**]。
 
-2. 在 [SQL 資料庫] 刀鋒視窗左上角附近的篩選文字方塊中輸入您的資料庫名稱。
+2. 在 [SQL 資料庫]**** 刀鋒視窗左上角附近的篩選文字方塊中輸入您的資料庫名稱。
 
 3. 選取資料庫的資料列。
 
-4. 在刀鋒視窗顯示您的資料庫之後，為了閱讀方便，選取 [最小化] 按鈕來摺疊用於瀏覽和資料庫篩選的刀鋒視窗。
+4. 在刀鋒視窗顯示您的資料庫之後，為了閱讀方便，選取 [最小化]**** 按鈕來摺疊用於瀏覽和資料庫篩選的刀鋒視窗。
 
-5. 在您資料庫的刀鋒視窗上，選取 [顯示資料庫連接字串]。
+5. 在您資料庫的刀鋒視窗上，選取 [顯示資料庫連接字串]****。
 
-6. 複製適當的連接字串。 也就是說，如果您想要使用 ADO.NET 連線庫，請從 [ADO.NET] 索引標籤複製適當的字串。
+6. 複製適當的連接字串。 也就是說，如果您想要使用 ADO.NET 連線庫，請從 [ADO.NET]**** 索引標籤複製適當的字串。
 
     ![複製資料庫的 ADO 連接字串][20-CopyAdoConnectionString]
 

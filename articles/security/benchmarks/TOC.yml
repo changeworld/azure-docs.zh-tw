@@ -1,0 +1,97 @@
+- name: Azure 安全性效能評定
+  href: index.yml
+- name: 簡介
+  href: introduction.md
+- name: 安全性控制
+  expanded: true
+  items:
+    - name: Azure 資訊安全性控制概觀
+      href: overview.md
+    - name: 網路安全性
+      href: security-control-network-security.md
+    - name: 記錄和監視
+      href: security-control-logging-monitoring.md
+    - name: 身分識別與存取控制
+      href: security-control-identity-access-control.md
+    - name: 資料保護
+      href: security-control-data-protection.md
+    - name: 弱點管理
+      href: security-control-vulnerability-management.md
+    - name: 清查和資產管理
+      href: security-control-inventory-asset-management.md
+    - name: 安全設定
+      href: security-control-secure-configuration.md
+    - name: 惡意程式碼防禦
+      href: security-control-malware-defense.md
+    - name: 資料復原
+      href: security-control-data-recovery.md
+    - name: 事件回應
+      href: security-control-incident-response.md
+    - name: 滲透測試和 Red Team 練習
+      href: security-control-penetration-tests-red-team-exercises.md
+- name: Azure 的安全性基準
+  items:
+    - name: Azure 安全性基準概觀
+      href: security-baselines-overview.md
+    - name: API 管理安全性基準
+      href: ../../api-management/security-baseline.md
+    - name: 應用程式閘道安全性基準
+      href: ../../application-gateway/security-baseline.md
+    - name: 自動化安全性基準
+      href: ../../automation/security-baseline.md
+    - name: Azure 備份安全性基準
+      href: ../../backup/security-baseline.md
+    - name: Azure Cache for Redis 安全性基準
+      href: ../../azure-cache-for-redis/security-baseline.md
+    - name: Azure 資料箱安全性基準
+      href: ../../databox/security-baseline.md
+    - name: Azure 資料總管安全性基準
+      href: /azure/data-explorer/security-baseline
+    - name: Azure Data Factory 安全性基準
+      href: ../../data-factory/security-baseline.md
+    - name: 適用於 MySQL 的 Azure 資料庫安全性基準
+      href: ../../mysql/security-baseline.md
+    - name: 適用於 MariaDB 的 Azure 資料庫安全性基準
+      href: ../../mariadb/security-baseline.md
+    - name: 適用於 PostgreSQL 的 Azure 資料庫安全性基準
+      href: ../../postgresql/security-baseline.md
+    - name: Azure Databricks 安全性基準
+      href: ../../azure-databricks/security-baseline.md
+    - name: Azure Functions 安全性基準
+      href: ../../azure-functions/security-baseline.md
+    - name: Azure 原則安全性基準
+      href: ../../governance/policy/concepts/azure-security-benchmark-baseline.md
+    - name: Azure Resource Graph 安全性基準
+      href: ../../governance/resource-graph/concepts/azure-security-benchmark-baseline.md
+    - name: Azure SQL Database 安全性基準
+      href: ../../sql-database/security-baseline.md
+    - name: Azure 儲存體安全性基準
+      href: ../../storage/common/security-baseline.md
+    - name: 批次安全性基準
+      href: ../../batch/security-baseline.md
+    - name: 認知服務安全性基準
+      href: ../../cognitive-services/security-baseline.md
+    - name: 容器執行個體安全性基準
+      href: ../../container-instances/security-baseline.md
+    - name: 容器登錄安全性基準
+      href: ../../container-registry/security-baseline.md
+    - name: Cosmos DB 安全性基準
+      href: ../../cosmos-db/security-baseline.md
+    - name: 客戶加密箱安全性基準
+      href: ../fundamentals/customer-lockbox-security-baseline.md
+    - name: 事件中樞安全性基準
+      href: ../../event-hubs/security-baseline.md
+    - name: ExpressRoute 安全性基準
+      href: ../../expressroute/security-baseline.md
+    - name: HDInsight 安全性基準
+      href: ../../hdinsight/security-baseline.md
+    - name: Key Vault 安全性基準
+      href: ../../key-vault/security-baseline.md
+    - name: Logic Apps 安全性基準
+      href: ../../logic-apps/security-baseline.md
+    - name: 網路監看員安全性基準
+      href: ../../network-watcher/security-baseline.md
+    - name: 串流分析基準
+      href: ../../stream-analytics/security-baseline.md
+    - name: Synapse Analytics 安全性基準
+      href: ../../synapse-analytics/security-baseline.md

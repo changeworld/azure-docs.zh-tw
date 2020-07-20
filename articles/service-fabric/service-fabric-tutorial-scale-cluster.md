@@ -1,37 +1,26 @@
 ---
-title: 在 Azure 中調整 Service Fabric 叢集 | Microsoft Docs
-description: 在本教學課程中，您將了解如何在 Azure 中調整 Service Fabric 叢集。
-services: service-fabric
-documentationcenter: .net
-author: aljo-microsoft
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
+title: 在 Azure 中調整 Service Fabric 叢集
+description: 在本教學課程中，您將了解如何在 Azure 中相應放大和縮小 Service Fabric 叢集，以及如何清除剩餘的資源。
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 03/19/2019
-ms.author: aljo
+ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: fa9b091beacbc98c6939ec0454bd04da2b7561e7
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 05fd29f874d59601942216f907010b94bb7c4058
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59278695"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257099"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>教學課程：在 Azure 中調整 Service Fabric 叢集
 
 本教學課程為系列的第三個部分，解說如何相應放大和縮小現有叢集。 完成時，您將知道如何調整叢集，以及如何清除任何剩餘的資源。  如需如何調整在 Azure 中執行的叢集詳細資訊，請參閱[調整 Service Fabric 叢集](service-fabric-cluster-scaling.md)。
 
-在本教學課程中，您了解如何：
+在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
-> * 新增和移除節點 (相應放大和相應縮小)
-> * 新增和移除節點類型 (相應放大和相應縮小)
-> * 增加節點資源 (相應增加)
+> * 新增和移除節點 (擴增和縮減)
+> * 新增和移除節點類型 (擴增和縮減)
+> * 增加節點資源 (擴大)
 
 在本教學課程系列中，您將了解如何：
 > [!div class="checklist"]
@@ -49,7 +38,7 @@ ms.locfileid: "59278695"
 開始進行本教學課程之前：
 
 * 如果您沒有 Azure 訂用帳戶，請建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* 安裝 [Azure Powershell](https://docs.microsoft.com/powershell/azure/install-Az-ps) 或 [Azure CLI](/cli/azure/install-azure-cli)。
+* 安裝 [Azure PowerShell](/powershell/azure/install-az-ps) 或 [Azure CLI](/cli/azure/install-azure-cli)。
 * 在 Azure 上建立安全的 [Windows 叢集](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
 
 ## <a name="important-considerations-and-guidelines"></a>重要考量和方針
@@ -68,14 +57,14 @@ ms.locfileid: "59278695"
 * 執行生產工作負載的主要節點類型應該具備金級或銀級的[持久性層級][durability]，而且一律具有五個以上的節點。
 * 執行具狀態生產工作負載的非主要節點類型，應一律具有五個以上的節點。
 * 執行無狀態生產工作負載的非主要節點類型，應一律具有兩個以上的節點。
-* 金級或銀級[持久性層級][durability]的任何節點類型，都應一律具有五個以上的節點。
-* 如果將主要節點類型相應縮小 (從中移除節點)，您應該永遠不會將執行個體數目減少為低於[可靠性層級][ reliability]所需的數目。
+* 任何具有金級或銀級[持久性層級][durability]的節點類型，應一律具有五個或更多節點。
+* 如果將主要節點類型相應縮小 (從中移除節點)，您應該永遠不會將執行個體數目減少為低於[可靠性層級][reliability]所需的數目。
 
 如需詳細資訊，請參閱[叢集容量指引](service-fabric-cluster-capacity.md)。
 
 ## <a name="export-the-template-for-the-resource-group"></a>匯出資源群組的範本
 
-建立安全的 [Windows 叢集](service-fabric-tutorial-create-vnet-and-windows-cluster.md)且成功設定資源群組之後，請匯出資源群組的 Resource Manager 範本。 匯出範本，可讓您將叢集及其資源的未來部署自動化，因為範本包含所有完整的基礎結構。  如需匯出範本的詳細資訊，請參閱[使用 Azure 入口網站管理 Azure Resource Manager 資源群組](/azure/azure-resource-manager/manage-resource-groups-portal)。
+建立安全的 [Windows 叢集](service-fabric-tutorial-create-vnet-and-windows-cluster.md)且成功設定資源群組之後，請匯出資源群組的 Resource Manager 範本。 匯出範本，可讓您將叢集及其資源的未來部署自動化，因為範本包含所有完整的基礎結構。  如需匯出範本的詳細資訊，請參閱[使用 Azure 入口網站管理 Azure Resource Manager 資源群組](../azure-resource-manager/management/manage-resource-groups-portal.md)。
 
 1. 在 [Azure 入口網站](https://portal.azure.com)，移至包含叢集的資源群組 (**sfclustertutorialgroup**，前提是您已遵循本教學課程)。 
 
@@ -87,15 +76,15 @@ ms.locfileid: "59278695"
 
 ## <a name="add-nodes-to-or-remove-nodes-from-a-node-type"></a>從節點類型中新增或移除節點
 
-相應縮小和放大，或水平調整時，請變更叢集中的節點數目。 當您相應縮小或放大時，會將更多虛擬機器執行個體新增至擴展集。 這些執行個體會成為 Service Fabric 使用的節點。 擴展集有多個新增的執行個體 (透過相應放大) 時，Service Fabric 會知道並自動回應。 您可以隨時調整叢集，即使正在叢集上執行工作負載，也是如此。
+相應縮小和放大，或水平調整時，請變更叢集中的節點數目。 當您縮減或擴增時，會將更多虛擬機器執行個體新增至擴展集。 這些執行個體會成為 Service Fabric 使用的節點。 擴展集有多個新增的執行個體 (透過相應放大) 時，Service Fabric 會知道並自動回應。 您可以隨時調整叢集，即使正在叢集上執行工作負載，也是如此。
 
 ### <a name="update-the-template"></a>更新範本
 
-從最新部署的資源群組中[匯出範本和參數檔案](#export-the-template-for-the-resource-group)。  開啟 *parameters.json* 檔案。  如果您使用本教學課程中的[範例範本][ template]來部署叢集，則叢集中會有三個叢集類型，以及三個可針對每個節點類型設定節點數目的參數：*nt0InstanceCount*、*nt1InstanceCount* 及 *nt2InstanceCount*。  *nt1InstanceCount* 參數，例如，設定第二個節點類型的執行個體計數，並在相關聯的虛擬機器擴展集中設定 VM 數目。
+從最新部署的資源群組中[匯出範本和參數檔案](#export-the-template-for-the-resource-group)。  開啟 *parameters.json* 檔案。  如果您使用本教學課程中的[範例範本][template]來部署叢集，則叢集中會有三個叢集類型，以及三個可針對每個節點類型設定節點數目的參數：*nt0InstanceCount*、*nt1InstanceCount* 和 *nt2InstanceCount*。  *nt1InstanceCount* 參數，例如，設定第二個節點類型的執行個體計數，並在相關聯的虛擬機器擴展集中設定 VM 數目。
 
 因此，您可以藉由更新 *nt1InstanceCount* 的值，來變更第二個節點類型中的節點數目。  請記住，您無法將節點類型相應放大為 100 個以上的節點。  執行具狀態生產工作負載的非主要節點類型，應一律具有五個以上的節點。 執行無狀態生產工作負載的非主要節點類型，應一律具有兩個以上的節點。
 
-如果您要將銅級[持久性層級][durability]的節點類型相應縮小 (從中移除節點)，則必須[手動移除那些節點的狀態](service-fabric-cluster-scale-up-down.md#manually-remove-vms-from-a-node-typevirtual-machine-scale-set)。  如果是銀級和金級持久性層級，這些步驟就會由平台自動完成。
+如果您要將銅級[持久性層級][durability]的節點類型相應縮小 (從中移除節點)，則必須[手動移除那些節點的狀態](service-fabric-cluster-scale-in-out.md#manually-remove-vms-from-a-node-typevirtual-machine-scale-set)。  如果是銀級和金級持久性層級，這些步驟就會由平台自動完成。
 
 ### <a name="deploy-the-updated-template"></a>部署更新的範本
 將所有變更儲存到 *template.json* 和 *parameters.json* 檔案。  若要部署更新的範本，請執行下列命令：
@@ -104,7 +93,7 @@ ms.locfileid: "59278695"
 New-AzResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "ChangingInstanceCount"
 ```
 或是下列 Azure CLI 命令：
-```azure-cli
+```azurecli
 az group deployment create --resource-group sfclustertutorialgroup --template-file c:\temp\template.json --parameters c:\temp\parameters.json
 ```
 
@@ -810,7 +799,7 @@ az group deployment create --resource-group sfclustertutorialgroup --template-fi
 New-AzResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "AddingNodeType"
 ```
 或是下列 Azure CLI 命令：
-```azure-cli
+```azurecli
 az group deployment create --resource-group sfclustertutorialgroup --template-file c:\temp\template.json --parameters c:\temp\parameters.json
 ```
 
@@ -820,7 +809,7 @@ az group deployment create --resource-group sfclustertutorialgroup --template-fi
 > [!WARNING]
 > 不建議經常使用 Remove-AzServiceFabricNodeType 從生產環境叢集移除節點類型。 它是非常危險的命令，因為它會刪除節點類型後的虛擬機器擴展集資源。 
 
-若要移除節點類型，請執行 [Remove-AzServiceFabricNodeType](/powershell/module/az.servicefabric/remove-azservicefabricnodetype) Cmdlet。  節點類型必須是銀級或金級[持久性層級][ durability]。此 Cmdlet 會刪除與節點類型相關聯的擴展集，而且需要一些時間才能完成。  接著在每個要移除的節點上執行 [Remove-ServiceFabricNodeState](/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps) Cmdlet，以刪除節點狀態，並從叢集中移除節點。 如果節點上有服務，則會先將服務移出至另一個節點。 如果叢集管理員找不到複本/服務的節點，則作業會延遲/封鎖。
+若要移除節點類型，請執行 [Remove-AzServiceFabricNodeType](/powershell/module/az.servicefabric/remove-azservicefabricnodetype) Cmdlet。  節點類型必須是銀級或金級[持久性層級][durability]。此 Cmdlet 會刪除與節點類型相關聯的擴展集，而且需要一些時間才能完成。  接著在每個要移除的節點上執行 [Remove-ServiceFabricNodeState](/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps) Cmdlet，以刪除節點狀態，並從叢集中移除節點。 如果節點上有服務，則會先將服務移出至另一個節點。 如果叢集管理員找不到複本/服務的節點，則作業會延遲/封鎖。
 
 ```powershell
 $groupname = "sfclustertutorialgroup"
@@ -844,19 +833,18 @@ Foreach($node in $nodes)
 ```
 
 ## <a name="increase-node-resources"></a>增加節點資源 
-建立 Service Fabric 叢集之後，您可以垂直調整叢集節點類型 (變更節點的資源) 或將節點類型 VM 的作業系統升級。  
+建立 Service Fabric 叢集之後，您可以使用新的節點類型 (包括更新的 VM SKU 或作業系統映像) 取代原始的節點類型，垂直調整叢集節點類型 (變更節點的資源) 或將節點類型 VM 的作業系統升級。 如需詳細的資訊，請參閱[擴大 Azure Service Fabric 節點類型](service-fabric-scale-up-node-type.md)。
 
-> [!WARNING]
-> 建議您不要變更擴展集/節點類型的 VM SKU，除非它會在銀級持久性或更高層級執行。 變更 VM SKU 大小是就地破壞資料的基礎結構作業。 如果沒有延遲或監視此變更的能力，作業可能會導致具狀態服務的資料遺失，或者甚至對於無狀態工作負載導致其他未預期作業問題。
+> [!IMPORTANT]
+> 請勿嘗試就地變更 VM SKU 或作業系統映像，這是一項危險的作業且不受支援。
 
-> [!WARNING]
-> 建議您不要變更主要節點類型的 VM SKU，這是個非常危險的作業且不受支援。  如果您需要更多叢集容量，則可新增更多 VM 執行個體或其他節點類型。  如果此做法不可行，您可以建立新的叢集，並從舊叢集[還原應用程式狀態](service-fabric-reliable-services-backup-restore.md) (如果適用)。  如果不可行，則可[變更主要節點類型的 VM SKU](service-fabric-scale-up-node-type.md)。
+如果此做法不可行，您可以從舊叢集建立新的叢集並[還原應用程式狀態](service-fabric-reliable-services-backup-restore.md) (如果適用的話)。 您不需要還原任何系統服務狀態，這些狀態會在您部署應用程式到新叢集時重新建立。 如果您之前只在叢集上執行無狀態應用程式，那麼您要做的只有部署應用程式到新叢集，不需還原任何東西。
 
 ### <a name="update-the-template"></a>更新範本
 
 從最新部署的資源群組中[匯出範本和參數檔案](#export-the-template-for-the-resource-group)。  開啟 *parameters.json* 檔案。  如果您使用本教學課程中的[範例範本][template]來部署叢集，則叢集中會有三個節點類型。  
 
-第二個節點類型中的 VM 大小設定於 *vmNodeType1Size* 參數中。  將 *vmNodeType1Size* 參數值從 Standard_D2_V2 變更為 [Standard_D3_V2](/azure/virtual-machines/windows/sizes-general#dv2-series)，這讓每個 VM 執行個體的資源都能加倍。
+第二個節點類型中的 VM 大小設定於 *vmNodeType1Size* 參數中。  將 *vmNodeType1Size* 參數值從 Standard_D2_V2 變更為 [Standard_D3_V2](../virtual-machines/dv2-dsv2-series.md)，這讓每個 VM 執行個體的資源都能加倍。
 
 適用於所有三個節點類型的 VM SKU 設定於 *vmImageSku* 參數中。  同樣地，應該謹慎處理變更節點類型的 VM SKU，不建議針對主要節點類型進行變更。
 
@@ -867,7 +855,7 @@ Foreach($node in $nodes)
 New-AzResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "ScaleUpNodeType"
 ```
 或是下列 Azure CLI 命令：
-```azure-cli
+```azurecli
 az group deployment create --resource-group sfclustertutorialgroup --template-file c:\temp\template.json --parameters c:\temp\parameters.json
 ```
 
@@ -876,27 +864,15 @@ az group deployment create --resource-group sfclustertutorialgroup --template-fi
 在本教學課程中，您已了解如何：
 
 > [!div class="checklist"]
-> * 新增和移除節點 (相應放大和相應縮小)
-> * 新增和移除節點類型 (相應放大和相應縮小)
-> * 增加節點資源 (相應增加)
+> * 新增和移除節點 (擴增和縮減)
+> * 新增和移除節點類型 (擴增和縮減)
+> * 增加節點資源 (擴大)
 
 接下來，請前往下列教學課程，了解如何升級叢集執行階段。
 > [!div class="nextstepaction"]
 > [升級叢集的執行階段](service-fabric-tutorial-upgrade-cluster.md)
 
-[durability]: service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster
-[reliability]: service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster
-[template]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.json
-[parameters]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.Parameters.json
-和相應縮小))
-> * 新增和移除節點類型 (相應放大和相應縮小)
-> * 增加節點資源 (相應增加)
-
-接下來，請前往下列教學課程，了解如何升級叢集執行階段。
-> [!div class="nextstepaction"]
-> [升級叢集的執行階段](service-fabric-tutorial-upgrade-cluster.md)
-
-[durability]: service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster
-[reliability]: service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster
+[durability]: service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster
+[reliability]: service-fabric-cluster-capacity.md#reliability-characteristics-of-the-cluster
 [template]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.json
 [parameters]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.Parameters.json

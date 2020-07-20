@@ -1,32 +1,20 @@
 ---
-title: Service Fabric 叢集安全性：用戶端角色 |Microsoft Docs
+title: Service Fabric 叢集安全性：用戶端角色
 description: 本文說明兩個用戶端角色及提供給這些角色的權限。
-services: service-fabric
-documentationcenter: .net
-author: mani-ramaswamy
-manager: coreysa
-editor: ''
-ms.assetid: 7bc808d9-3609-46a1-ac12-b4f53bff98dd
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/23/2018
-ms.author: subramar
-ms.openlocfilehash: ed000dc4be1ae45382d688d4a596ec745c69d0bb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: abca19e686d39338fcaa2e0b0c8126913135170b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60711148"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75451889"
 ---
 # <a name="role-based-access-control-for-service-fabric-clients"></a>角色型存取控制 (適用於 Service Fabric 用戶端)
-Azure Service Fabric 針對連線到 Service Fabric 叢集的用戶端，支援兩種不同的存取控制類型：系統管理員和使用者。 访问控制可让群集管理员针对不同的用户组限制特定群集操作的访问权限，使群集更加安全。  
+Azure Service Fabric 針對連線到 Service Fabric 叢集的用戶端，支援兩種不同的存取控制類型：系統管理員和使用者。 存取控制可讓叢集系統管理員針對不同的使用者群組限制特定叢集作業的存取權，讓叢集更加安全。  
 
 **系統管理員**可以完整存取管理功能 (包括讀取/寫入功能)。 **使用者**預設只具有管理功能的讀取存取權 (例如查詢功能)，以及解析應用程式和服務的能力。
 
-可在创建群集时为每个角色提供不同的证书，以指定两个客户端角色（管理员和客户端）。 如需有關設定安全 Service Fabric 叢集的詳細資訊，請參閱 [Service Fabric 叢集安全性](service-fabric-cluster-security.md) 。
+您可在建立叢集時為每個角色提供個別的憑證，以指定兩個用戶端角色 (系統管理員和用戶端)。 如需有關設定安全 Service Fabric 叢集的詳細資訊，請參閱 [Service Fabric 叢集安全性](service-fabric-cluster-security.md) 。
 
 ## <a name="default-access-control-settings"></a>預設存取控制設定
 系統管理員存取控制類型可以完整存取所有的 FabricClient API。 它可以在 Service Fabric 叢集上執行任何讀取和寫入，包括下列作業：
@@ -52,9 +40,9 @@ Azure Service Fabric 針對連線到 Service Fabric 叢集的用戶端，支援�
 * **RecoverSystemPartitions**：復原系統服務分割                             
 
 ### <a name="cluster-operations"></a>叢集作業
-* **ProvisionFabric**:MSI 和/或叢集資訊清單佈建                             
+* **ProvisionFabric**：佈建 MSI 和/或叢集資訊清單                             
 * **UpgradeFabric**：啟動叢集升級                             
-* **UnprovisionFabric**:MSI 和/或叢集資訊清單取消佈建                         
+* **UnprovisionFabric**：解除 MSI 和/或叢集資訊清單佈建                         
 * **MoveNextFabricUpgradeDomain**：以明確的更新網域繼續進行叢集升級                             
 * **ReportFabricUpgradeHealth**：以目前的升級進度繼續進行叢集升級                             
 * **StartInfrastructureTask**：啟動基礎結構工作                             
@@ -100,7 +88,7 @@ Azure Service Fabric 針對連線到 Service Fabric 叢集的用戶端，支援�
 系統管理員存取控制也可存取上述作業。
 
 ## <a name="changing-default-settings-for-client-roles"></a>變更用戶端角色的預設設定
-在叢集資訊清單檔案中，您可以視需要提供系統管理員功能給用戶端。 您可以在[建立叢集](service-fabric-cluster-creation-via-portal.md)時，前往 [Fabric 設定] 選項，並在 [名稱]、[系統管理員]、[使用者] 和 [值] 欄位中提供上述設定來變更預設值。
+在叢集資訊清單檔案中，您可以視需要提供系統管理員功能給用戶端。 您可以在[建立叢集](service-fabric-cluster-creation-via-portal.md)時，前往 [Fabric 設定]**** 選項，並在 [名稱]****、[系統管理員]****、[使用者]**** 和 [值]**** 欄位中提供上述設定來變更預設值。
 
 ## <a name="next-steps"></a>後續步驟
 [Service Fabric 叢集安全性](service-fabric-cluster-security.md)

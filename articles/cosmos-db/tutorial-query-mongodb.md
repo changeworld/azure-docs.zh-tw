@@ -1,19 +1,19 @@
 ---
 title: 使用 Azure Cosmos DB 適用於 MongoDB 的 API 查詢資料
-description: 了解如何使用 Azure Cosmos DB 適用於 MongoDB 的 API 查詢資料。
-author: rimman
-ms.author: rimman
+description: 了解如何使用 MongoDB 殼層命令從 Azure Cosmos DB 的 MongoDB API 查詢資料
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: tutorial
-ms.date: 12/26/2018
+ms.date: 12/03/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 8bdd88652019ceb48cfd9f05d1009271f5b7a8c7
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 5283916194d407cebd30ef072907c56ded1c6cb0
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54042983"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85848954"
 ---
 # <a name="query-data-by-using-azure-cosmos-dbs-api-for-mongodb"></a>使用 Azure Cosmos DB 適用於 MongoDB 的 API 查詢資料
 
@@ -58,17 +58,20 @@ ms.locfileid: "54042983"
   "isRegistered": false
 }
 ```
-## <a id="examplequery1"></a> 範例查詢 1 
+## <a name="example-query-1"></a><a id="examplequery1"></a> 範例查詢 1 
 
 在提供上述範例家族文件的情況下，下列查詢會傳回識別碼欄位符合 `WakefieldFamily` 的文件。
 
 **查詢**
-    
-    db.families.find({ id: "WakefieldFamily"})
+
+```bash
+db.families.find({ id: "WakefieldFamily"})
+```
 
 **結果**
 
-    {
+```json
+{
     "_id": "ObjectId(\"58f65e1198f3a12c7090e68c\")",
     "id": "WakefieldFamily",
     "parents": [
@@ -106,19 +109,23 @@ ms.locfileid: "54042983"
     },
     "creationDate": 1431620462,
     "isRegistered": false
-    }
+}
+```
 
-## <a id="examplequery2"></a>範例查詢 2 
+## <a name="example-query-2"></a><a id="examplequery2"></a>範例查詢 2 
 
 下一個查詢會傳回家族中的所有小孩。 
 
 **查詢**
-    
-    db.families.find( { id: "WakefieldFamily" }, { children: true } )
+
+```bash 
+db.families.find( { id: "WakefieldFamily" }, { children: true } )
+``` 
 
 **結果**
 
-    {
+```json
+{
     "_id": "ObjectId("58f65e1198f3a12c7090e68c")",
     "children": [
       {
@@ -138,28 +145,37 @@ ms.locfileid: "54042983"
         "grade": 8
       }
     ]
-    }
+}
+```
 
-
-## <a id="examplequery3"></a>範例查詢 3 
+## <a name="example-query-3"></a><a id="examplequery3"></a>範例查詢 3 
 
 下一個查詢會傳回已註冊的所有家族。 
 
 **查詢**
-    
-    db.families.find( { "isRegistered" : true })
-**結果** 不會傳回任何文件。 
 
-## <a id="examplequery4"></a>範例查詢 4
+```bash
+db.families.find( { "isRegistered" : true })
+``` 
+
+**結果**
+
+不會傳回任何文件。 
+
+## <a name="example-query-4"></a><a id="examplequery4"></a>範例查詢 4
 
 下一個查詢會傳回未註冊的所有家族。 
 
 **查詢**
-    
-    db.families.find( { "isRegistered" : false })
+
+```bash
+db.families.find( { "isRegistered" : false })
+``` 
+
 **結果**
 
-     {
+```json
+{
     "_id": ObjectId("58f65e1198f3a12c7090e68c"),
     "id": "WakefieldFamily",
     "parents": [{
@@ -193,18 +209,22 @@ ms.locfileid: "54042983"
     "creationDate": 1431620462,
     "isRegistered": false
 }
+```
 
-## <a id="examplequery5"></a>範例查詢 5
+## <a name="example-query-5"></a><a id="examplequery5"></a>範例查詢 5
 
 下一個查詢會傳回未註冊且州別為 NY 的所有家族。 
 
 **查詢**
-    
-     db.families.find( { "isRegistered" : false, "address.state" : "NY" })
+
+```bash
+db.families.find( { "isRegistered" : false, "address.state" : "NY" })
+``` 
 
 **結果**
 
-     {
+```json
+{
     "_id": ObjectId("58f65e1198f3a12c7090e68c"),
     "id": "WakefieldFamily",
     "parents": [{
@@ -238,19 +258,22 @@ ms.locfileid: "54042983"
     "creationDate": 1431620462,
     "isRegistered": false
 }
+```
 
-
-## <a id="examplequery6"></a>範例查詢 6
+## <a name="example-query-6"></a><a id="examplequery6"></a>範例查詢 6
 
 下一個查詢會傳回小孩年級為 8 的所有家族。
 
 **查詢**
-  
-     db.families.find( { children : { $elemMatch: { grade : 8 }} } )
+
+```bash
+db.families.find( { children : { $elemMatch: { grade : 8 }} } )
+```
 
 **結果**
 
-     {
+```json
+{
     "_id": ObjectId("58f65e1198f3a12c7090e68c"),
     "id": "WakefieldFamily",
     "parents": [{
@@ -284,14 +307,17 @@ ms.locfileid: "54042983"
     "creationDate": 1431620462,
     "isRegistered": false
 }
+```
 
-## <a id="examplequery7"></a>範例查詢 7
+## <a name="example-query-7"></a><a id="examplequery7"></a>範例查詢 7
 
 下一個查詢會傳回小孩陣列大小為 3 的所有家族。
 
 **查詢**
-  
-      db.Family.find( {children: { $size:3} } )
+
+```bash
+db.Family.find( {children: { $size:3} } )
+```
 
 **結果**
 

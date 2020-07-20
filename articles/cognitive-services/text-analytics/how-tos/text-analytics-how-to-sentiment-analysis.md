@@ -1,152 +1,294 @@
 ---
-title: 使用 Azure 認知服務中的文字分析進行情感分析 | Microsoft Docs
-description: 了解如何使用文字分析 REST API 偵測情感。
+title: 使用文字分析 REST API 執行情感分析
+titleSuffix: Azure Cognitive Services
+description: 本文將說明如何使用 Azure 認知服務文字分析 REST API 來偵測文字中的情感。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 02/26/2019
+ms.date: 05/18/2020
 ms.author: aahi
-ms.openlocfilehash: 0c42e7f8b1fffb9cf998f4cee8d30405a8df74a4
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: acd8fae81baa7ad65b8d9c321c55a6311cbf4c72
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60011294"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84141240"
 ---
-# <a name="example-how-to-detect-sentiment-with-text-analytics"></a>範例：如何使用文字分析來偵測情感
+# <a name="how-to-detect-sentiment-using-the-text-analytics-api"></a>如何：使用文字分析 API 來偵測情感
 
-[情感分析 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9) \(英文\) 會評估文字輸入，並傳回每份文件的情感分數，範圍從 0 (負面) 到 1 (正面)。
+文字分析 API 的情感分析功能會評估文字，並傳回每個句子的情感分數和標籤。 此功能可用來偵測社交媒體、客戶評價及討論論壇中的正面和負面情感。 API 所使用的 AI 模型由服務所提供，您只需要傳送要分析的內容即可。
 
-此功能在偵測社交媒體、客戶評價及討論論壇中的正面和負面情感上非常實用。 內容是由您提供，模型和定型資料則由服務提供。
+傳送情感分析要求之後，API 會傳回情感標籤 (例如「負面」、「中性」和「正面」)，以及句子和文件層級的信賴分數。
 
-情感分析目前支援英文、德文、西班牙文及法文。 其他語言則為預覽狀態。 如需詳細資訊，請參閱[支援的語言](../text-analytics-supported-languages.md)。
+情感分析支援多種語言，且預覽中支援的語言更多。 如需詳細資訊，請參閱[支援的語言](../text-analytics-supported-languages.md)。
 
-> [!TIP]
-> 文字分析也會提供可用來分析情感的 Linux 型 Docker 容器映像，好讓您可以在接近資料的位置[安裝和執行文字分析容器](text-analytics-how-to-install-containers.md)。
+## <a name="sentiment-analysis-versions-and-features"></a>情感分析版本和功能
 
-## <a name="concepts"></a>概念
+[!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
 
-文字分析會使用機器學習分類演算法來產生介於 0 和 1 之間的情感分數。 接近 1 的分數表示正面情感，而接近 0 的分數則表示負面情感。 此模型是使用大量具有情感關聯的文字主體進行預先定型。 目前，您並無法提供自己的定型資料。 此模型會在文字分析期間使用數種技術的組合，包括文字處理、詞類分析、單字放置和單字關聯。 如需有關演算法的詳細資訊，請參閱[文字分析簡介](https://blogs.technet.microsoft.com/machinelearning/2015/04/08/introducing-text-analytics-in-the-azure-ml-marketplace/) \(英文\)。
+| 功能                                   | 情感分析 v3 | 情感分析 v3.1 (預覽) |
+|-------------------------------------------|-----------------------|-----------------------------------|
+| 單一和批次要求的方法    | X                     | X                                 |
+| 情感分數和標籤             | X                     | X                                 |
+| 以 Linux 為基礎的 [Docker 容器](text-analytics-how-to-install-containers.md) | X  |  |
+| 意見挖掘                            |                       | X                                 |
 
-情感分析會針對整份文件執行，而不會擷取對於文字中特定實體的情感。 在實務上，當文件包含一或兩個句子而非大型文字區塊時，會較容易提升評分的準確度。 在客觀評估階段，模型會判斷整份文件是客觀的，還是包含情感的。 主要為客觀的文件不會進展到情感偵測階段，因此分數為 .50，而且不會進一步處理。 針對繼續進行流程的文件，根據在文件中偵測到的情感程度而定，下一個階段將會產生高於或低於 .50 的分數。
+### <a name="sentiment-scoring-and-labeling"></a>情感評分和標籤
 
-## <a name="preparation"></a>準備工作
+v3 中的情感分析會將情感標籤套用至文字 (在句子和文件層級傳回)，每個都有信賴分數。 
 
-情感分析會在您為它提供較小區塊的文字來處理時，產生較高品質的結果。 這與關鍵片語擷取相反，後者在較大型文字區塊上的表現會更好。 若要從這兩個作業中取得最佳結果，請考慮據以重建輸入。
+標籤為 `positive`、`negative` 和 `neutral`。 在文件層級也可傳回 `mixed` 情感標籤。 文件情感的判定方式如下：
 
-您必須具有此格式的 JSON 文件：識別碼、文字、語言
+| 句子情感                                                                            | 傳回的文件標籤 |
+|-----------------------------------------------------------------------------------------------|-------------------------|
+| 文件中至少有一個 `positive` 句子。 其餘句子皆為 `neutral`。 | `positive`              |
+| 文件中至少有一個 `negative` 句子。 其餘句子皆為 `neutral`。 | `negative`              |
+| 文件中至少有一個 `negative` 句子和至少一個 `positive` 句子。    | `mixed`                 |
+| 文件中的所有句子皆為 `neutral`。                                                  | `neutral`               |
 
-文件大小必須少於 5,120 個字元，而且您最多可以針對每個集合擁有 1,000 個項目 (識別碼)。 集合會在要求本文中提交。 以下是您可能提交來進行情感分析的內容範例。
+信賴分數的範圍是從 1 到 0。 接近 1 的分數表示標籤分類的信賴度更高，而較低的分數則表示較低的信賴度。 每個文件或句子中的信賴分數增加最多至 1。
 
-```
-    {
-        "documents": [
-            {
-                "language": "en",
-                "id": "1",
-                "text": "We love this trail and make the trip every year. The views are breathtaking and well worth the hike!"
-            },
-            {
-                "language": "en",
-                "id": "2",
-                "text": "Poorly marked trails! I thought we were goners. Worst hike ever."
-            },
-            {
-                "language": "en",
-                "id": "3",
-                "text": "Everyone in my family liked the trail but thought it was too challenging for the less athletic among us. Not necessarily recommended for small children."
-            },
-            {
-                "language": "en",
-                "id": "4",
-                "text": "It was foggy so we missed the spectacular views, but the trail was ok. Worth checking out if you are in the area."
-            },                
-            {
-                "language": "en",
-                "id": "5",
-                "text": "This is my favorite trail. It has beautiful views and many places to stop and rest"
-            }
-        ]
-    }
-```
+### <a name="opinion-mining"></a>意見挖掘
 
-## <a name="step-1-structure-the-request"></a>步驟 1：建立要求結構
+意見挖掘是情感分析的功能，從版本 3.1-preview.1 開始。 這項功能也稱為自然語言處理 (NLP) 中的層面型情感分析，可提供文字中與各層面相關意見的詳細資訊 (例如產品或服務的屬性)。
 
-關於要求定義的詳細資料可以在[如何呼叫文字分析 API](text-analytics-how-to-call-api.md) 中找到。 為了方便起見，我們將重申下列各點：
+例如，如果客戶留下關於飯店的意見反應，例如「房間很棒，但員工很不友善」，則意見挖掘將會找出文字中的各個層面，以及相關聯的意見和情緒：
 
-+ 建立一個 **POST** 要求。 檢閱適用於此要求的 API 文件：[情感分析 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9)
+| 層面 | 意見    | 情感 |
+|--------|------------|-----------|
+| 房間   | 很棒      | 正面  |
+| staff  | 不友善 | 負面  |
 
-+ 使用 Azure 文字分析資源或具現化的[文字分析容器](text-analytics-how-to-install-containers.md)，來設定可用來分析情感的 HTTP 端點。 它必須包括 `/sentiment` 資源：`https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/sentiment`
+若要在結果中進行意見挖掘，您必須在情感分析的要求中包含 `opinionMining=true` 旗標。 意見挖掘結果會包含在情感分析回應中。
 
-+ 設定要求標頭以包含適用於文字分析作業的存取金鑰。 如需詳細資訊，請參閱[如何尋找端點和存取金鑰](text-analytics-how-to-access-key.md)。
+## <a name="sending-a-rest-api-request"></a>傳送 REST API 要求 
 
-+ 在要求主體中，提供您準備用於此分析的 JSON 文件集合。
+### <a name="preparation"></a>準備
 
-> [!Tip]
-> 使用 [Postman](text-analytics-how-to-call-api.md) 或開啟[文件](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9) \(英文\) 中的 **API 測試主控台**來建立要求結構，並將它 POST 到服務。
+情感分析會在您為其提供較少量的文字進行處理時，產生較高品質的結果。 這與關鍵片語擷取相反，後者在較大型文字區塊上的表現會更好。 若要從這兩個作業中取得最佳結果，請考慮據以重建輸入。
 
-## <a name="step-2-post-the-request"></a>步驟 2：張貼要求
+您必須具有此格式的 JSON 文件：識別碼、文字和語言。
 
-分析會在接收要求時執行。 服務每分鐘最多可接受 100 個要求。 每個要求最多可以是 1 MB。
+每份文件的大小必須低於 5,120 個字元。 每個集合最多可以有 1,000 個項目 (識別碼)。 集合會在要求本文中提交。
 
-請記得，服務是無狀態的。 您的帳戶中並不會儲存任何資料。 結果會在回應中立即傳回。
+## <a name="structure-the-request"></a>建立要求結構
 
+建立 POST 要求。 您可以使用下列參考連結中的 [Postman](text-analytics-how-to-call-api.md) 或 **API 測試主控台**，以快速建構及傳送要求。 
 
-## <a name="step-3-view-results"></a>步驟 3：檢視結果
+#### <a name="version-30"></a>[3.0 版](#tab/version-3)
 
-情感分析師會將文字明確地分類為正面或負面，指派範圍從 0 到 1 的分數。 接近 0.5 的值是中立或不確定的。 0.5 的分數表示中立。 當無法針對情感分析字串，或字串沒有任何情感時，分數一律為 0.5。 例如，如果您使用英文語言代碼傳入西班牙字串，分數將會是 0.5。
+[情感分析 v3 參考](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/Sentiment)
 
-輸出會立即傳回。 您可以將結果串流處理到可接受 JSON 的應用程式，或將輸出儲存到本機系統上的檔案，然後將它匯入能讓您排序、搜尋和操作資料的應用程式。
+#### <a name="version-31-preview1"></a>[版本 3.1-preview.1](#tab/version-3-1)
 
-下列範例顯示本文中文件集合的回應。
+[情感分析 v3.1 參考](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-1/operations/Sentiment)
 
-```
+---
+
+### <a name="request-endpoints"></a>要求端點
+
+使用 Azure 文字分析資源或具現化的[文字分析容器](text-analytics-how-to-install-containers.md)，設定可用來分析情感的 HTTPS 端點。 您必須針對您要使用的版本加上正確的 URL。 例如：
+
+> [!NOTE]
+> 您可以在 Azure 入口網站上找到適用於文字分析資源的金鑰和端點。 您可以在 [資源管理] 下的資源 [快速啟動] 頁面中找到。 
+
+#### <a name="version-30"></a>[3.0 版](#tab/version-3)
+
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/sentiment`
+
+#### <a name="version-31-preview1"></a>[版本 3.1-preview.1](#tab/version-3-1)
+
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.1/sentiment`
+
+若要取得意見挖掘結果，您必須包含 `opinionMining=true` 參數。 例如：
+
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.1/sentiment?opinionMining=true`
+
+根據預設，此參數設定為 `false`。 
+
+---
+
+設定要求標頭以包含您的文字分析 API 金鑰。 在要求主體中，提供您準備用於此分析的 JSON 文件集合。
+
+### <a name="example-sentiment-analysis-request"></a>範例情感分析要求 
+
+以下是您可能提交來進行情感分析的內容範例。 這兩個版本的要求格式是相同的。
+    
+```json
 {
-    "documents": [
-        {
-            "score": 0.9999237060546875,
-            "id": "1"
-        },
-        {
-            "score": 0.0000540316104888916,
-            "id": "2"
-        },
-        {
-            "score": 0.99990355968475342,
-            "id": "3"
-        },
-        {
-            "score": 0.980544924736023,
-            "id": "4"
-        },
-        {
-            "score": 0.99996328353881836,
-            "id": "5"
-        }
-    ],
-    "errors": []
+  "documents": [
+    {
+      "language": "en",
+      "id": "1",
+      "text": "The restaurant had great food and our waiter was friendly."
+    }
+  ]
 }
 ```
 
-## <a name="summary"></a>總結
+### <a name="post-the-request"></a>張貼要求
 
-在本文中，您已了解使用認知服務中的文字分析進行情感分析的概念和工作流程。 摘要說明：
+分析會在接收要求時執行。 如需您每分鐘和每秒鐘可以傳送的要求大小和數量資訊，請參閱概觀中的[資料限制](../overview.md#data-limits)一節。
 
-+ [情感分析 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9) \(英文\) 僅針對特定語言提供。
+文字分析 API 是無狀態的。 您的帳戶中不會儲存任何資料，且結果會在回應中立即傳回。
+
+
+### <a name="view-the-results"></a>View the results
+
+情感分析會傳回整份文件的情感標籤和信賴分數，以及其中的每個句子。 接近 1 的分數表示標籤分類的信賴度更高，而較低的分數則表示較低的信賴度。 文件可以有多個句子，而每個文件或句子中的信賴分數增加最多至 1。
+
+輸出會立即傳回。 您可以將結果串流至接受 JSON 的應用程式，或將輸出儲存到本機系統上的檔案。 然後，將輸出匯入應用程式，以便用來排序、搜尋和操作資料。 由於多語系和表情符號的支援，回應可能會包含文字位移。 如需詳細資訊，請參閱[如何處理位移](../concepts/text-offsets.md)。
+
+#### <a name="version-30"></a>[3.0 版](#tab/version-3)
+
+### <a name="sentiment-analysis-v30-example-response"></a>情感分析 v3.0 的回應範例
+
+情感分析 v3 的回應會包含每個分析的句子和文件的情感標籤和分數。
+
+```json
+{
+    "documents": [
+        {
+            "id": "1",
+            "sentiment": "positive",
+            "confidenceScores": {
+                "positive": 1.0,
+                "neutral": 0.0,
+                "negative": 0.0
+            },
+            "sentences": [
+                {
+                    "sentiment": "positive",
+                    "confidenceScores": {
+                        "positive": 1.0,
+                        "neutral": 0.0,
+                        "negative": 0.0
+                    },
+                    "offset": 0,
+                    "length": 58,
+                    "text": "The restaurant had great food and our waiter was friendly."
+                }
+            ],
+            "warnings": []
+        }
+    ],
+    "errors": [],
+    "modelVersion": "2020-04-01"
+}
+```
+
+#### <a name="version-31-preview1"></a>[版本 3.1-preview.1](#tab/version-3-1)
+
+### <a name="sentiment-analysis-v31-example-response"></a>情感分析 v3.1 的回應範例
+
+情感分析 v3.1 除了 [版本 3.0] 索引標籤中的回應物件之外，還會提供意見挖掘。在下列回應中，「餐廳的餐點很棒，我們的服務生很友善」有兩個層面：「餐點」和「服務生」。 每個層面的 `relations` 屬性都包含 `ref` 值，其中具有相關聯 `documents`、`sentences` 和 `opinions` 物件的 URI 參考。
+
+```json
+{
+    "documents": [
+        {
+            "id": "1",
+            "sentiment": "positive",
+            "confidenceScores": {
+                "positive": 1.0,
+                "neutral": 0.0,
+                "negative": 0.0
+            },
+            "sentences": [
+                {
+                    "sentiment": "positive",
+                    "confidenceScores": {
+                        "positive": 1.0,
+                        "neutral": 0.0,
+                        "negative": 0.0
+                    },
+                    "offset": 0,
+                    "length": 58,
+                    "text": "The restaurant had great food and our waiter was friendly.",
+                    "aspects": [
+                        {
+                            "sentiment": "positive",
+                            "confidenceScores": {
+                                "positive": 1.0,
+                                "negative": 0.0
+                            },
+                            "offset": 25,
+                            "length": 4,
+                            "text": "food",
+                            "relations": [
+                                {
+                                    "relationType": "opinion",
+                                    "ref": "#/documents/0/sentences/0/opinions/0"
+                                }
+                            ]
+                        },
+                        {
+                            "sentiment": "positive",
+                            "confidenceScores": {
+                                "positive": 1.0,
+                                "negative": 0.0
+                            },
+                            "offset": 38,
+                            "length": 6,
+                            "text": "waiter",
+                            "relations": [
+                                {
+                                    "relationType": "opinion",
+                                    "ref": "#/documents/0/sentences/0/opinions/1"
+                                }
+                            ]
+                        }
+                    ],
+                    "opinions": [
+                        {
+                            "sentiment": "positive",
+                            "confidenceScores": {
+                                "positive": 1.0,
+                                "negative": 0.0
+                            },
+                            "offset": 19,
+                            "length": 5,
+                            "text": "great",
+                            "isNegated": false
+                        },
+                        {
+                            "sentiment": "positive",
+                            "confidenceScores": {
+                                "positive": 1.0,
+                                "negative": 0.0
+                            },
+                            "offset": 49,
+                            "length": 8,
+                            "text": "friendly",
+                            "isNegated": false
+                        }
+                    ]
+                }
+            ],
+            "warnings": []
+        }
+    ],
+    "errors": [],
+    "modelVersion": "2020-04-01"
+}
+```
+
+---
+
+## <a name="summary"></a>摘要
+
+在本文中，您已了解使用文字分析 API 進行情感分析的概念和工作流程。 摘要說明：
+
++ 情感分析僅針對特定語言提供。
 + 要求本文中的 JSON 文件包含識別碼、文字和語言代碼。
-+ 使用對您訂用帳戶有效的個人化[存取金鑰和端點](text-analytics-how-to-access-key.md)，將要求 POST 到 `/sentiment` 端點。
-+ 回應輸出 (其包含針對每個文件識別碼的情感分數) 可以串流處理到任何可接受 JSON 的應用程式，包括 Excel 和 Power BI 等。
++ 使用對您訂用帳戶有效的個人化[存取金鑰和端點](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource)，將要求 POST 到 `/sentiment` 端點。
++ 回應輸出 (其包含針對每個文件識別碼的情感分數) 可以串流處理到任何可接受 JSON 的應用程式。 例如，Excel 和 Power BI。
 
-## <a name="see-also"></a>另請參閱 
+## <a name="see-also"></a>另請參閱
 
- [文字分析概觀](../overview.md)  
- [常見問題集 (FAQ)](../text-analytics-resource-faq.md)</br>
- [文字分析產品頁面](//go.microsoft.com/fwlink/?LinkID=759712) 
-
-## <a name="next-steps"></a>後續步驟
-
-> [!div class="nextstepaction"]
-> [擷取關鍵片語](text-analytics-how-to-keyword-extraction.md)
+* [文字分析概觀](../overview.md)
+* [使用文字分析用戶端程式庫](../quickstarts/text-analytics-sdk.md)
+* [新功能](../whats-new.md)

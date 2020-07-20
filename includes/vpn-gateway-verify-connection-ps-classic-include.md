@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/17/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: c1b5560e16b68565c37365ac9c2cba217d9b1b90
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
-ms.translationtype: HT
+ms.openlocfilehash: dd2dd84cbcd50fba48011e1836cdc64a6ad5855d
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53444027"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86040738"
 ---
 您可以使用 'Get-AzureVNetConnection' Cmdlet，驗證連線是否成功。
 
@@ -24,12 +24,14 @@ ms.locfileid: "53444027"
    ```
 2. 完成 Cmdlet 之後，請檢視值。 在下列範例中，[連線狀態] 會顯示為 [已連接]，而您可以看見輸入和輸出位元組。
 
-        ConnectivityState         : Connected
-        EgressBytesTransferred    : 181664
-        IngressBytesTransferred   : 182080
-        LastConnectionEstablished : 1/7/2016 12:40:54 AM
-        LastEventID               : 24401
-        LastEventMessage          : The connectivity state for the local network site 'RMVNetLocal' changed from Connecting to
-                                    Connected.
-        LastEventTimeStamp        : 1/7/2016 12:40:54 AM
-        LocalNetworkSiteName      : RMVNetLocal
+```output
+ConnectivityState         : Connected
+EgressBytesTransferred    : 181664
+IngressBytesTransferred   : 182080
+LastConnectionEstablished : 1/7/2016 12:40:54 AM
+LastEventID               : 24401
+LastEventMessage          : The connectivity state for the local network site 'RMVNetLocal' changed from Connecting to
+                            Connected.
+LastEventTimeStamp        : 1/7/2016 12:40:54 AM
+LocalNetworkSiteName      : RMVNetLocal
+```

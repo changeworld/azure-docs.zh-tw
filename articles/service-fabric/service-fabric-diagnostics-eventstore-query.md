@@ -1,25 +1,16 @@
 ---
-title: 在 Azure Service Fabric 叢集中使用 EventStore API 查詢叢集事件 | Microsoft Docs
+title: 使用 EventStore Api 查詢叢集事件
 description: 了解如何使用 Azure Service Fabric EventStore API 來查詢平台事件
-services: service-fabric
-documentationcenter: .net
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/25/2019
 ms.author: srrengar
-ms.openlocfilehash: facbcd6def7451ca83bdf00fe9b7c7cac2c74945
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2d66248797d577d6894d1125188735ecf71029b0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60392869"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258889"
 ---
 # <a name="query-eventstore-apis-for-cluster-events"></a>針對叢集事件查詢 EventStore API
 
@@ -119,7 +110,7 @@ Body:
 
 ## <a name="query-the-eventstore-programmatically"></a>以程式設計方式查詢 EventStore
 
-您也能透過 [Service Fabric 用戶端程式庫](https://docs.microsoft.com/dotnet/api/overview/azure/service-fabric?view=azure-dotnet#client-library)，以程式設計方式查詢 EventStore。
+您也能透過 [Service Fabric 用戶端程式庫](/dotnet/api/overview/azure/service-fabric?view=azure-dotnet#client-library)，以程式設計方式查詢 EventStore。
 
 在您設定好 Service Fabric 用戶端之後，就可以透過以下方式存取 EventStore 以查詢事件：`sfhttpClient.EventStore.<request>`
 
@@ -209,4 +200,3 @@ var clstrEvents = sfhttpClient.EventsStore.GetClusterEventListAsync(
 *混沌服務：*
 
 有一個能在混沌服務啟動或停止時，於叢集層級公開的事件。 若要查看近期使用混沌服務的資訊，請使用以下查詢：`https://mycluster.cloudapp.azure.com:19080/EventsStore/Cluster/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=ChaosStarted,ChaosStopped`
-

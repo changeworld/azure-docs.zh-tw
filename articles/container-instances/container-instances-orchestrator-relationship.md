@@ -1,23 +1,18 @@
 ---
-title: Azure 容器執行個體和容器協調流程
+title: 容器實例和容器協調流程
 description: 了解 Azure 容器執行個體與容器 Orchestrator 的互動方式。
-services: container-instances
-author: dlepow
-ms.service: container-instances
 ms.topic: article
-ms.date: 11/30/2018
-ms.author: danlep
+ms.date: 04/15/2019
 ms.custom: mvc
-ms.openlocfilehash: 0a1e3c2facc10b68fe4b33d4cd0531f181b1e813
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: f3f8693d1a9a12e7c35d126ab3e3ca53448e5e40
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60581111"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "74533669"
 ---
 # <a name="azure-container-instances-and-container-orchestrators"></a>Azure 容器執行個體和容器 Orchestrator
 
-由於規模較小和應用程式方向的緣故，容器很適合用於敏捷式傳遞環境和微服務式架構。 自動執行和管理大量容器以及其互動方式的工作稱為「協調流程」。 熱門容器協調器包括 Kubernetes、DC/OS 和 Docker Swarm。
+由於規模較小和應用程式方向的緣故，容器很適合用於敏捷式傳遞環境和微服務式架構。 自動執行和管理大量容器以及其互動方式的工作稱為「協調流程」**。 熱門容器協調器包括 Kubernetes、DC/OS 和 Docker Swarm。
 
 Azure 容器執行個體提供了一些基本的協調流程平台排程功能。 但未涵蓋這些平台所提供的較高價值服務，因此事實上可與這些平台互補。 本文說明 Azure 容器執行個體所能處理的項目範圍，以及完整的容器 Orchestrator 如何與其互動。
 
@@ -56,7 +51,7 @@ Orchestrator 可以直接排程使用 Azure 容器執行個體的其他容器，
 
 ## <a name="sample-implementation-virtual-nodes-for-azure-kubernetes-service-aks"></a>範例實作：Azure Kubernetes Service (AKS) 的虛擬節點
 
-若要快速調整 [Azure Kubernetes Service](../aks/intro-kubernetes.md) (AKS) 叢集中的應用程式工作負載，您可以使用在 Azure 容器執行個體中動態建立的「虛擬節點」。 目前處於預覽狀態，虛擬節點能夠進行在 ACI 與 AKS 叢集中執行的 pod 之間的網路通訊。 
+若要快速調整 [Azure Kubernetes Service](../aks/intro-kubernetes.md) (AKS) 叢集中的應用程式工作負載，您可以使用在 Azure 容器執行個體中動態建立的「虛擬節點」**。 虛擬節點能夠進行在 ACI 與 AKS 叢集中執行的 pod 之間的網路通訊。 
 
 虛擬節點目前支援 Linux 容器執行個體。 使用 [Azure CLI](https://go.microsoft.com/fwlink/?linkid=2047538) 或 [Azure 入口網站](https://go.microsoft.com/fwlink/?linkid=2047545)，開始使用虛擬節點。
 
@@ -71,6 +66,6 @@ Orchestrator 可以直接排程使用 Azure 容器執行個體的其他容器，
 <!-- IMAGES -->
 
 <!-- LINKS -->
-[aci-connector-k8s]: https://github.com/virtual-kubelet/virtual-kubelet/tree/master/providers/azure
+[aci-connector-k8s]: https://github.com/virtual-kubelet/azure-aci
 [kubelet-doc]: https://kubernetes.io/docs/admin/kubelet/
 [pod-doc]: https://kubernetes.io/docs/concepts/workloads/pods/pod/

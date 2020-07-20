@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
 ms.openlocfilehash: 6ee1ced2cd4a9fe1782e0af1ee31a45f46ace291
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
-ms.translationtype: HT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50166299"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "67174592"
 ---
 > [!div class="op_single_selector"]
 > * [Azure 入口網站](../articles/storage/common/storage-monitoring-diagnosing-troubleshooting.md)

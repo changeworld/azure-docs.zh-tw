@@ -1,19 +1,19 @@
 ---
 title: 修復 Azure 匯入/匯出匯出作業 - v1 | Microsoft Docs
 description: 了解如何修復使用 Azure 匯入/匯出服務建立和執行的匯出作業。
-author: muralikk
+author: twooley
 services: storage
 ms.service: storage
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/23/2017
-ms.author: muralikk
+ms.author: twooley
 ms.subservice: common
-ms.openlocfilehash: 915cf1e66ec400e0d2461873d9fb3d66be9883fb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 10e209228ad12b377b729bc251eb761b51ff5378
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61477938"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514367"
 ---
 # <a name="repairing-an-export-job"></a>修復匯出作業
 完成匯出作業之後，您可以在內部部署上執行 Microsoft Azure 匯入/匯出工具，以便：  
@@ -24,23 +24,23 @@ ms.locfileid: "61477938"
   
 您必須能夠連線到 Azure 儲存體，才能使用這項功能。  
   
-用於修復匯出作業的命令是 **RepairExport**。
+用來修復匯入工作的命令為 **RepairExport**。
 
 ## <a name="repairexport-parameters"></a>RepairExport 參數
 
 您可以搭配 **RepairExport** 指定下列參數：  
   
-|參數|描述|  
+|參數|說明|  
 |---------------|-----------------|  
-|**/r:<RepairFile\>**|必要。 修復檔案的路徑，可追蹤修復進度，並可讓您繼續中斷的修復。 每個磁碟機必須只能有一個修復檔案。 當您啟動指定磁碟機的修復時，您將會傳入尚不存在之修復檔的路徑。 若要恢復中斷的修復，您應傳入現有修復檔案名稱。 一律必須指定對應於目標磁碟機的修復檔。|  
-|**/logdir:\><LogDirectory**|選用。 記錄檔目錄。 詳細資訊記錄檔會寫入至這個目錄。 如未指定記錄檔目錄，則會使用目前的目錄做為記錄檔目錄。|  
+|**/r:<RepairFile\>**|必要。 修復檔案的路徑，可追蹤修復進度，並可讓您繼續中斷的修復。 每個磁碟機需要一個修復檔案，而且只能有一個。 當您啟動指定磁碟機的修復時，您將會傳入尚不存在之修復檔的路徑。 若要恢復中斷的修復，您應傳入現有修復檔案名稱。 一律必須指定對應於目標磁碟機的修復檔。|  
+|**/logdir:\><LogDirectory**|選擇性。 記錄檔目錄。 詳細資訊記錄檔會寫入至這個目錄。 如未指定記錄檔目錄，則會使用目前的目錄做為記錄檔目錄。|  
 |**/d:<TargetDirectory\>**|必要。 要驗證及修復的目錄。 這通常是匯出磁碟機的根目錄，但也可能是含有匯出檔案複本的網路檔案共用。|  
-|**/bk:<BitLockerKey\>**|選用。 如果您希望該工具解除鎖定存放匯出檔案的加密磁碟機，您應指定 BitLocker 金鑰。|  
-|**/sn:<StorageAccountName\>**|必要。 匯出作業的儲存體帳戶名稱。|  
-|**/sk:<StorageAccountKey\>**|如果未指定 (且只有在未指定) 容器 SAS 時，才是**必要**參數。 匯出作業之儲存體帳戶的帳戶金鑰。|  
-|**/csas:<ContainerSas\>**|如果未指定 (且只有在未指定) 儲存體帳戶金鑰時，才是**必要**參數。 存取與匯出作業相關聯的 Blob 所用的容器 SAS。|  
+|**/bk:<BitLockerKey\>**|選擇性。 如果您希望該工具解除鎖定存放匯出檔案的加密磁碟機，您應指定 BitLocker 金鑰。|  
+|**/sn： <StorageAccountName\>**|必要。 匯出作業的儲存體帳戶名稱。|  
+|**/sk： <StorageAccountKey\>**|未指定容器 SAS 時才**需要**。 匯出作業之儲存體帳戶的帳戶金鑰。|  
+|**/csas： <S a s\>**|未指定儲存體帳戶金鑰時才**需要**。 存取與匯出作業相關聯的 Blob 所用的容器 SAS。|  
 |**/CopyLogFile:<DriveCopyLogFile\>**|必要。 磁碟機複製記錄檔的路徑。 此檔案是由 Windows Azure 匯入/匯出服務所產生，您可以從與作業相關聯的 blob 儲存體下載。 複製記錄檔包含所要修復之失敗 blob 或檔案的相關資訊。|  
-|**/ManifestFile:<DriveManifestFile\>**|選用。 匯出磁碟機的資訊清單檔案路徑。 此檔案是由 Windows Azure 匯入/匯出服務所產生並儲存在匯出磁碟機上，並選擇性地儲存在與作業相關聯之儲存體帳戶的 blob 中。<br /><br /> 工具將會使用此檔案內含的 MD5 雜湊，驗證匯出磁碟機上的檔案內容。 任何被斷定為損毀的檔案都將會下載並重新寫入至目標目錄。|  
+|**/ManifestFile:<DriveManifestFile\>**|選擇性。 匯出磁碟機的資訊清單檔案路徑。 此檔案是由 Windows Azure 匯入/匯出服務所產生並儲存在匯出磁碟機上，並選擇性地儲存在與作業相關聯之儲存體帳戶的 blob 中。<br /><br /> 工具將會使用此檔案內含的 MD5 雜湊，驗證匯出磁碟機上的檔案內容。 任何被斷定為損毀的檔案都將會下載並重新寫入至目標目錄。|  
   
 ## <a name="using-repairexport-mode-to-correct-failed-exports"></a>使用 RepairExport 模式來更正失敗的匯出  
 您可以使用 Azure 匯入/匯出工具來下載無法匯出的檔案。 複製記錄檔會包含無法匯出的檔案清單。  
@@ -51,7 +51,7 @@ ms.locfileid: "61477938"
   
 -   儲存體帳戶金鑰會在移轉過程中變更  
   
-若要在 **RepairExport** 模式中執行此工具，您必須先將含有匯出檔案的磁碟機連接到您的電腦。 接下來，執行 Azure 匯入/匯出工具，並使用 `/d` 參數指定該磁碟機的路徑。 您也必須指定您下載之磁碟機複製記錄檔的路徑。 下列命令行範例會執行工具，以修復任何無法匯出的檔案︰  
+若要以 **RepairExport** 模式執行此工具，您必須先將包含匯出檔案的磁碟機連接至您的電腦。 接下來，執行 Azure 匯入/匯出工具，並使用 `/d` 參數指定該磁碟機的路徑。 您也必須指定您下載之磁碟機複製記錄檔的路徑。 下列命令行範例會執行工具，以修復任何無法匯出的檔案︰  
   
 ```  
 WAImportExport.exe RepairExport /r:C:\WAImportExport\9WM35C3U.rep /d:G:\ /sn:bobmediaaccount /sk:VkGbrUqBWLYJ6zg1m29VOTrxpBgdNOlp+kp0C9MEdx3GELxmBw4hK94f7KysbbeKLDksg7VoN1W/a5UuM2zNgQ== /CopyLogFile:C:\WAImportExport\9WM35C3U.log  
@@ -79,7 +79,7 @@ WAImportExport.exe RepairExport /r:C:\WAImportExport\9WM35C3U.rep /d:G:\ /sn:bob
 此複製記錄檔指出當 Windows Azure 匯入/匯出服務將其中一個 blob 區塊下載至匯出磁碟機上的檔案時所發生的錯誤。 已成功下載檔案的其他元件，並已正確設定檔案長度。 在此情況下，工具會開啟磁碟機上的這個檔案，從儲存體帳戶下載此區塊，並將它寫入至從位移 65536 開始且長度為 65536 的檔案範圍。  
   
 ## <a name="using-repairexport-to-validate-drive-contents"></a>使用 RepairExport 驗證磁碟機內容  
-您也可以使用 Azure 匯入/匯出服務搭配 **RepairExport** 選項，以驗證磁碟機上的內容是否正確。 每個匯出磁碟機上的資訊清單檔案都包含磁碟機內容適用的 MD5。  
+您也可以使用 Azure 匯入/匯出搭配 **RepairExport** 選項，以驗證磁碟機上的內容是否正確。 每個匯出磁碟機上的資訊清單檔案都包含磁碟機內容適用的 MD5。  
   
 Azure 匯入/匯出服務也可以在匯出期間將資訊清單檔案儲存到儲存體帳戶。 當作業完成時，可透過 [Get Job](/rest/api/storageimportexport/jobs) 作業，取得資訊清單檔案的位置。 如需磁碟機資訊清單檔案的格式，請參閱[匯入/匯出服務資訊清單檔案格式](storage-import-export-file-format-metadata-and-properties.md)。  
   
@@ -153,7 +153,7 @@ G:\pictures\wild\canyon.jpg.properties
 ## <a name="next-steps"></a>後續步驟
  
 * [設定 Azure 匯入/匯出工具](storage-import-export-tool-setup-v1.md)   
-* [針對匯入作業準備硬碟](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   
-* [使用复制日志文件查看作业状态](storage-import-export-tool-reviewing-job-status-v1.md)   
+* [準備匯入工作的硬碟](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   
+* [使用複製記錄檔來檢查作業狀態](storage-import-export-tool-reviewing-job-status-v1.md)   
 * [修復匯入作業](storage-import-export-tool-repairing-an-import-job-v1.md)   
 * [針對 Azure 匯入/匯出工具進行疑難排解](storage-import-export-tool-troubleshooting-v1.md)

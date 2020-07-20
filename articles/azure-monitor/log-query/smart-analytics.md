@@ -1,24 +1,16 @@
 ---
 title: Log Analytics 智慧分析範例 | Microsoft Docs
 description: 在 Log Analytics 中使用智慧分析功能執行使用者活動分析的範例。
-services: log-analytics
-documentationcenter: ''
+ms.subservice: logs
+ms.topic: conceptual
 author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.topic: article
-ms.date: 01/15/2019
 ms.author: bwren
-ms.openlocfilehash: f6617a504bbda666ce9ece018ccb0cf02635c360
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 01/15/2019
+ms.openlocfilehash: 51584ccf5f845be8a06b1e049cae11e636edef11
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61425796"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77659827"
 ---
 # <a name="log-analytics-smart-analytics-examples"></a>Log Analytics 智慧分析範例
 本文包含了在 Log Analytics 中使用智慧分析功能執行使用者活動分析的範例。 您可以使用這些範例來分析 Application Insights 監視的應用程式，或使用這些查詢中的概念對其他資料進行類似的分析。 

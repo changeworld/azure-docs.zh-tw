@@ -1,178 +1,234 @@
 ---
-title: 教學課程 - 建立 Azure Red Hat OpenShift 叢集 | Microsoft Docs
+title: 教學課程 - 建立 Azure Red Hat OpenShift 4 叢集
 description: 了解如何使用 Azure CLI 建立 Microsoft Azure Red Hat OpenShift 叢集
-services: container-service
-author: TylerMSFT
-ms.author: twhitney
-manager: jeconnoc
+author: sakthi-vetrivel
+ms.author: suvetriv
 ms.topic: tutorial
-ms.service: openshift
-ms.date: 05/06/2019
-ms.openlocfilehash: 5bc71a2d0f29fed163fb5c93ebd27df7f66a1325
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.service: container-service
+ms.date: 04/24/2020
+ms.openlocfilehash: b78364cef6bfd6cf91e6edf81fd57fa5912125db
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65079473"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260687"
 ---
-# <a name="tutorial-create-an-azure-red-hat-openshift-cluster"></a>教學課程：建立 Azure Red Hat OpenShift 叢集
+# <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>教學課程：建立 Azure Red Hat OpenShift 4 叢集
 
-本教學課程是一個系列的第一部分。 您將了解如何使用 Azure CLI 建立 Microsoft Azure Red Hat OpenShift 叢集、進行調整，然後予以刪除來清除資源。
-
-在系列的第一部分中，您將了解如何：
-
+在本教學課程 (三部分中的第一部分) 中，您將準備環境來建立執行 OpenShift 4 的 Azure Red Hat OpenShift 叢集，並建立叢集。 您將了解如何：
 > [!div class="checklist"]
-> * 建立 Azure Red Hat OpenShift 叢集
+> * 設定必要條件，並建立必要的虛擬網路和子網路
+> * 部署叢集
 
-在本教學課程系列中，您將了解如何：
-> [!div class="checklist"]
-> * 建立 Azure Red Hat OpenShift 叢集
-> * [調整 Azure Red Hat OpenShift 叢集](tutorial-scale-cluster.md)
-> * [刪除 Azure Red Hat OpenShift 叢集](tutorial-delete-cluster.md)
+## <a name="before-you-begin"></a>開始之前
 
-## <a name="prerequisites"></a>必要條件
+如果您選擇在本機安裝和使用 CLI，本教學課程會要求您執行 Azure CLI 2.0.75 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
-開始進行本教學課程之前：
+### <a name="verify-your-permissions"></a>驗證權限
 
-請確定您已[設定開發環境](howto-setup-environment.md)，其中包括：
-- 安裝最新的 CLI
-- 建立租用戶
-- 建立 Azure 應用程式物件
-- 建立 Active Directory 使用者，用來登入在叢集上執行的應用程式。
+若要建立 Azure Red Hat OpenShift 叢集，請在您的 Azure 訂用帳戶、Azure Active Directory 使用者或服務主體上確認下列權限：
 
-## <a name="step-1-sign-in-to-azure"></a>步驟 1：登入 Azure
+|權限|包含 VNet 的資源群組|使用者執行 `az aro create`|服務主體作為 `–client-id` 傳遞|
+|----|:----:|:----:|:----:|
+|**使用者存取系統管理員**|X|X| |
+|**參與者**|X|X|X|
 
-如果您在本機執行 Azure CLI，請開啟 Bash 命令殼層並執行 `az login` 來登入 Azure。
+### <a name="install-the-az-aro-extension"></a>安裝 `az aro` 擴充功能
+`az aro` 擴充功能可讓您使用 Azure CLI，直接從命令列建立、存取和刪除 Azure Red Hat OpenShift 叢集。
 
-```bash
-az login
+請執行下列命令來安裝 `az aro` 擴充功能。
+
+```azurecli-interactive
+az extension add -n aro --index https://az.aroapp.io/stable
 ```
 
- 如果您可存取多個訂用帳戶，請執行 `az account set -s {subscription ID}` 並以您想使用的訂用帳戶取代 `{subscription ID}`。
+如果您已安裝此擴充功能，您可以執行下列命令來進行更新。
 
-## <a name="step-2-create-an-azure-red-hat-openshift-cluster"></a>步驟 2：建立 Azure Red Hat OpenShift 叢集
-
-在 Bash 命令視窗中，設定下列變數：
-
-> [!IMPORTANT]
-> 您的叢集名稱必須全部小寫，否則叢集建立會失敗。
-
-```bash
-CLUSTER_NAME=<cluster name in lowercase>
+```azurecli-interactive
+az extension update -n aro --index https://az.aroapp.io/stable
 ```
 
- 對您在[建立新的應用程式註冊](howto-aad-app-configuration.md#create-a-new-app-registration)步驟 6 中選擇的叢集，使用相同的名稱。
+### <a name="register-the-resource-provider"></a>註冊資源提供者
 
-```bash
-LOCATION=<location>
+接下來，您必須在您的訂用帳戶中註冊 `Microsoft.RedHatOpenShift` 資源提供者。
+
+```azurecli-interactive
+az provider register -n Microsoft.RedHatOpenShift --wait
 ```
 
-選擇要建立叢集的位置。 如需在 Azure 上支援 OpenShift 的 Azure 區域清單，請參閱[支援的區域](supported-resources.md#azure-regions)。 例如： `LOCATION=eastus` 。
+確認已註冊此擴充功能。
 
-將 `FQDN` 設定為叢集的完整名稱。 此名稱是由叢集名稱、位置和結尾附加的 `.cloudapp.azure.com` 所組成。 這與您在[建立新的應用程式註冊](howto-aad-app-configuration.md#create-a-new-app-registration)步驟 6 中建立的登入 URL 相同。 例如︰  
-
-```bash
-FQDN=$CLUSTER_NAME.$LOCATION.cloudapp.azure.com
+```azurecli-interactive
+az -v
 ```
 
-將 `APPID` 設定為您在[建立新的應用程式註冊](howto-aad-app-configuration.md#create-a-new-app-registration)步驟 9 中儲存的值。  
+  您應該會看到如下的輸出。
 
-```bash
-APPID=<app ID value>
+```output
+...
+Extensions:
+aro                                1.0.0
+...
 ```
 
-將 `SECRET` 設定為您在[建立用戶端密碼](howto-aad-app-configuration.md#create-a-client-secret)步驟 6 中儲存的值。  
+### <a name="get-a-red-hat-pull-secret-optional"></a>取得 Red Hat 提取祕密 (選擇性)
 
-```bash
-SECRET=<secret value>
-```
+Red Hat 提取祕密可讓您的叢集存取 Red Hat 容器登錄及其他內容。 此步驟為選用步驟，但建議執行。
 
-將 `TENANT` 設定為您在[建立新的租用戶](howto-create-tenant.md#create-a-new-azure-ad-tenant)步驟 7 中儲存的租用戶識別碼值。  
+1. **[瀏覽至您的 Red Hat OpenShift 叢集管理員入口網站](https://cloud.redhat.com/openshift/install/azure/aro-provisioned) 並登入。**
 
-```bash
-TENANT=<tenant ID>
-```
+   您必須登入 Red Hat 帳戶，或使用您的公司電子郵件建立新的 Red Hat 帳戶，並接受條款及條件。
 
-建立叢集的資源群組。 從您用來定義上述變數的 Bash 殼層執行下列命令：
+2. **按一下下載提取祕密。**
 
-```bash
-az group create --name $CLUSTER_NAME --location $LOCATION
-```
+將儲存的 `pull-secret.txt` 檔案保存在安全的地方 (建立每個叢集時都會用到此檔案)。
 
-### <a name="optional-connect-the-clusters-virtual-network-to-an-existing-virtual-network"></a>選用：將叢集的虛擬網路連線到現有的虛擬網路
+執行 `az aro create` 命令時，您可以使用 `--pull-secret @pull-secret.txt` 參數來參考您的提取祕密。 從您儲存 `pull-secret.txt` 檔案的目錄執行 `az aro create`。 否則，請將 `@pull-secret.txt` 取代為 `@<path-to-my-pull-secret-file>`。
 
-如果您不需將所建立叢集的虛擬網路 (VNET) 連線到現有的 VNET，請略過此步驟。
+如果您要複製提取祕密，或在其他指令碼中參考，您的提取祕密應格式化為有效的 JSON 字串。
 
-首先，取得現有 VNET 的識別碼。 識別碼的格式會是：`/subscriptions/{subscription id}/resourceGroups/{resource group of VNET}/providers/Microsoft.Network/virtualNetworks/{VNET name}`。
+### <a name="prepare-a-custom-domain-for-your-cluster-optional"></a>為叢集準備自訂網域 (選擇性)
 
-如果您不知道網路名稱或現有 VNET 所屬的資源群組，請移至[虛擬網路刀鋒視窗](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Network%2FvirtualNetworks)，然後按一下您的虛擬網路。 [虛擬網路] 頁面隨即出現，其中會列出網路名稱及其所屬的資源群組。
+執行 `az aro create` 命令時，您可以使用 `--domain foo.example.com` 參數來指定叢集的自訂網域。
 
-在 BASH 殼層中使用下列 CLI 命令定義 VNET_ID 變數：
+如果您為叢集提供自訂網域，請注意下列幾點：
 
-```bash
-VNET_ID=$(az network vnet show -n {VNET name} -g {VNET resource group} --query id -o tsv)
-```
+* 建立叢集之後，您必須在 DNS 伺服器中針對指定的 `--domain` 建立 2 個 DNS A 記錄：
+    * **api** - 指向 API 伺服器
+    * **\*.apps** - 指向輸入
+    * 藉由執行下列命令來取得這些值：`az aro show -n -g --query '{api:apiserverProfile.ip, ingress:ingressProfiles[0].ip}'`。
 
-例如：`VNET_ID=$(az network vnet show -n MyVirtualNetwork -g MyResourceGroup --query id -o tsv`
+* OpenShift 主控台將會在 URL (例如 `https://console-openshift-console.apps.foo.example.com`) 中提供，而不是內建的網域 `https://console-openshift-console.apps.<random>.<location>.aroapp.io`。
 
-### <a name="create-the-cluster"></a>建立叢集
+* 根據預設，OpenShift 會針對 `*.apps.<random>.<location>.aroapp.io` 上建立的所有路由使用自我簽署憑證。  如果您在連線至叢集之後選擇使用自訂 DNS，則必須遵循 OpenShift 文件來[為您的輸入控制器設定自訂 CA](https://docs.openshift.com/container-platform/4.3/authentication/certificates/replacing-default-ingress-certificate.html)，以及[為您的 API 伺服器自訂 CA](https://docs.openshift.com/container-platform/4.3/authentication/certificates/api-server.html)。
 
-您現在可以開始建立叢集。
+### <a name="create-a-virtual-network-containing-two-empty-subnets"></a>建立包含兩個空白子網路的虛擬網路
 
- 如果您不會將叢集的虛擬網路連線到現有的虛擬網路，請省略下列範例中的尾端 `--vnet-peer-id $VNET_ID` 參數。
+接下來，您將建立包含兩個空白子網路的虛擬網路。
 
-```bash
-az openshift create --resource-group $CLUSTER_NAME --name $CLUSTER_NAME -l $LOCATION --fqdn $FQDN --aad-client-app-id $APPID --aad-client-app-secret $SECRET --aad-tenant-id $TENANT --vnet-peer-id $VNET_ID
-```
+1. **在您將執行 `az` 命令的殼層環境中，設定下列變數。**
 
-在幾分鐘後，`az openshift create`會 順利完成並傳回 JSON 回應，其中包含您的叢集詳細資料。
+   ```console
+   LOCATION=eastus                 # the location of your cluster
+   RESOURCEGROUP=aro-rg            # the name of the resource group where you want to create your cluster
+   CLUSTER=cluster                 # the name of your cluster
+   ```
+
+1. **建立資源群組。**
+
+    Azure 資源群組是部署及管理 Azure 資源所在的邏輯群組。 建立資源群組時，系統會要求您指定位置。 此位置是儲存資源群組中繼資料的位置，如果您未在資源建立期間指定另一個區域，此位置也會是您在 Azure 中執行資源的位置。 使用 [az group create](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create) 命令來建立資源群組。
+
+    ```azurecli-interactive
+    az group create --name $RESOURCEGROUP --location $LOCATION
+    ```
+
+    下列範例輸出顯示已成功建立的資源群組：
+
+    ```json
+    {
+    "id": "/subscriptions/<guid>/resourceGroups/aro-rg",
+    "location": "eastus",
+    "managedBy": null,
+    "name": "aro-rg",
+    "properties": {
+        "provisioningState": "Succeeded"
+    },
+    "tags": null
+    }
+    ```
+
+2. **建立虛擬網路。**
+
+    執行 OpenShift 4 的 Azure Red Hat OpenShift 叢集需要具有兩個空白子網路的虛擬網路，分別用於主要節點和背景工作角色節點。
+
+    在您稍早建立的相同資源群組中建立新的虛擬網路：
+
+    ```azurecli-interactive
+    az network vnet create \
+    --resource-group $RESOURCEGROUP \
+    --name aro-vnet \
+    --address-prefixes 10.0.0.0/22
+    ```
+
+    下列範例輸出顯示已成功建立的虛擬網路：
+
+    ```json
+    {
+    "newVNet": {
+        "addressSpace": {
+        "addressPrefixes": [
+            "10.0.0.0/22"
+        ]
+        },
+        "id": "/subscriptions/<guid>/resourceGroups/aro-rg/providers/Microsoft.Network/virtualNetworks/aro-vnet",
+        "location": "eastus",
+        "name": "aro-vnet",
+        "provisioningState": "Succeeded",
+        "resourceGroup": "aro-rg",
+        "type": "Microsoft.Network/virtualNetworks"
+    }
+    }
+    ```
+
+3. **為主要節點新增空白子網路。**
+
+    ```azurecli-interactive
+    az network vnet subnet create \
+    --resource-group $RESOURCEGROUP \
+    --vnet-name aro-vnet \
+    --name master-subnet \
+    --address-prefixes 10.0.0.0/23 \
+    --service-endpoints Microsoft.ContainerRegistry
+    ```
+
+4. **為背景工作節點新增空白子網路。**
+
+    ```azurecli-interactive
+    az network vnet subnet create \
+    --resource-group $RESOURCEGROUP \
+    --vnet-name aro-vnet \
+    --name worker-subnet \
+    --address-prefixes 10.0.2.0/23 \
+    --service-endpoints Microsoft.ContainerRegistry
+    ```
+
+5. **[停用主要子網上的子網路私人端點原則](https://docs.microsoft.com/azure/private-link/disable-private-link-service-network-policy)。** 這是能夠連線和管理叢集的必要條件。
+
+    ```azurecli-interactive
+    az network vnet subnet update \
+    --name master-subnet \
+    --resource-group $RESOURCEGROUP \
+    --vnet-name aro-vnet \
+    --disable-private-link-service-network-policies true
+    ```
+
+## <a name="create-the-cluster"></a>建立叢集
+
+執行下列命令來建立叢集： 如果您選擇使用下列其中一個選項，請據以修改命令：
+* (選用) 您可以[傳遞 Red Hat 提取祕密](#get-a-red-hat-pull-secret-optional)，讓您的叢集能夠存取 Red Hat 容器登錄與其他內容。 將 `--pull-secret @pull-secret.txt` 引數新增至您的命令。
+* (選擇性) 您可以[使用自訂網域](#prepare-a-custom-domain-for-your-cluster-optional)。 將 `--domain foo.example.com` 引數新增至您的命令，並將 `foo.example.com` 取代為您自己的自訂網域。
 
 > [!NOTE]
-> 如果您收到的錯誤表示主機名稱不可用，則可能是因為您的叢集名稱並非唯一。 嘗試刪除原始應用程式註冊，並使用不同的叢集名稱重新執行 [建立新的應用程式註冊] (howto-aad-app-configuration.md#create-a-new-app-registration) 中的步驟 (省略建立新使用者的最後一個步驟，因為您已經建立了一個)。
+> 如果您要將任何選擇性引數新增至您的命令，請務必在命令的前一行結尾加上反斜線以關閉引數。
 
-## <a name="step-3-sign-in-to-the-openshift-console"></a>步驟 3：登入 OpenShift 主控台
+```azurecli-interactive
+az aro create \
+  --resource-group $RESOURCEGROUP \
+  --name $CLUSTER \
+  --vnet aro-vnet \
+  --master-subnet master-subnet \
+  --worker-subnet worker-subnet
+```
 
-您現在即可登入新叢集的 OpenShift 主控台。 [OpenShift Web 主控台](https://docs.openshift.com/dedicated/architecture/infrastructure_components/web_console.html)可讓您以視覺化方式呈現、瀏覽及管理 OpenShift 專案的內容。
-
-我們將以您為了測試建立的[新 Azure AD 使用者](howto-aad-app-configuration.md#create-a-new-active-directory-user)登入。 若要這麼做，您需要全新瀏覽器執行個體，該執行個體尚未快取您平常用來登入 Azure 入口網站的身分識別。
-
-1. 開啟 *incognito* 視窗 (Chrome) 或 *InPrivate* 視窗 (Microsoft Edge)。
-2. 瀏覽至您在[建立新的應用程式註冊](howto-aad-app-configuration.md#create-a-new-app-registration)步驟 6 中建立的登入 URL。 例如， https://constoso.eastus.cloudapp.azure.com
-
-> [!NOTE]
-> OpenShift 主控台會建立一個自我簽署憑證。
-> 當瀏覽器中出現系統提示時，請略過警告並接受「不受信任」的憑證。
-
-使用您在[建立新的 Active Directory 使用者](howto-aad-app-configuration.md#create-a-new-active-directory-user)中建立的使用者和密碼登入。當 [要求的權限] 對話方塊出現時，請選取 [代表組織同意] ，然後選取 [接受]。
-
-您現在已登入叢集主控台。
-
-[OpenShift 叢集主控台的螢幕擷取畫面](./media/aro-console.png)
-
- 您可以深入了解如何[使用 OpenShift 主控台](https://docs.openshift.com/dedicated/getting_started/developers_console.html)，以建立 [Red Hat OpenShift](https://docs.openshift.com/dedicated/welcome/index.html) 文件中的映像。
-
-## <a name="step-4-install-the-openshift-cli"></a>步驟 4：安裝 OpenShift CLI
-
-[OpenShift CLI](https://docs.openshift.com/dedicated/cli_reference/get_started_cli.html) (或 OC 工具) 會提供用於管理應用程式和較低層級公用程式的命令，以便與 OpenShift 叢集的各種元件互動。
-
-在 OpenShift 主控台中，按一下右上角您登入名稱旁邊的問號，然後選取 [命令列工具]。  請遵循 [最新版本] 連結來下載和安裝 Linux、 MacOS 或 Windows 支援的 oc CLI。
-
-> [!NOTE]
-> 如果看不到右上角的問號圖示，請從左上角下拉式清單中選取 [服務目錄] 或 [應用程式主控台]。
->
-> 或者，您可以直接[下載 oc CLI](https://www.okd.io/download.html)。
-
-[命令列工具] 頁面提供 `oc login https://<your cluster name>.<azure region>.cloudapp.azure.com --token=<token value>` 形式的命令。  按一下 [複製到剪貼簿] 按鈕來複製此命令。  在終端機視窗中，[設定您的路徑](https://docs.okd.io/latest/cli_reference/get_started_cli.html#installing-the-cli)以包含您本機安裝的 oc 工具。 然後使用您複製的 oc CLI 命令登入叢集。
-
-如果您無法使用上述步驟取得權杖值，請從 `https://<your cluster name>.<azure region>.cloudapp.azure.com/oauth/token/request` 取得權杖值。
+執行 `az aro create` 命令之後，一般大約需要 35 分鐘的時間來建立叢集。
 
 ## <a name="next-steps"></a>後續步驟
 
 在教學課程的這個部分中，您已了解如何：
-
 > [!div class="checklist"]
-> * 建立 Azure Red Hat OpenShift 叢集
+> * 設定必要條件，並建立必要的虛擬網路和子網路
+> * 部署叢集
 
 前進到下一個教學課程：
 > [!div class="nextstepaction"]
-> [調整 Azure Red Hat OpenShift 叢集](tutorial-scale-cluster.md)
+> [連線至 Azure Red Hat OpenShift 叢集](tutorial-connect-cluster.md)

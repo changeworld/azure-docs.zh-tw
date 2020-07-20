@@ -10,16 +10,15 @@ ms.assetid: 5189f3d8-2a4c-4dc8-ab19-11c7df0114d4
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 11/19/2017
+ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 0f339984a9db1a337f97e6db24571004cc34f679
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9bbb7ef46fbde881c8968128870d24a03b046c23
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60657640"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "73176800"
 ---
 # <a name="developer-portal-templates"></a>開發人員入口網站範本
 
@@ -27,19 +26,21 @@ ms.locfileid: "60657640"
   
 如需有關使用範本的詳細資訊，請參閱[如何使用範本自訂 API 管理開發人員入口網站](api-management-developer-portal-templates.md)。  
 
+[!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
+
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-##  <a name="DeveloperPortalTemplates"></a> 開發人員入口網站範本  
+##  <a name="developer-portal-templates"></a><a name="DeveloperPortalTemplates"></a> 開發人員入口網站範本  
   
 -   [API](api-management-api-templates.md)  
     -   [API 清單](api-management-api-templates.md#APIList)  
-    -   [作業](api-management-api-templates.md#Product)  
+    -   [運算](api-management-api-templates.md#Product)  
     -   [程式碼範例](api-management-api-templates.md#CodeSamples)  
-        -   [Curl](api-management-api-templates.md#Curl)  
+        -   [彎曲](api-management-api-templates.md#Curl)  
         -   [C#](api-management-api-templates.md#CSharp)  
         -   [Java](api-management-api-templates.md#Stub)  
         -   [JavaScript](api-management-api-templates.md#JavaScript)  
-        -   [Objective C](api-management-api-templates.md#ObjectiveC)  
+        -   [目標 C](api-management-api-templates.md#ObjectiveC)  
         -   [PHP](api-management-api-templates.md#PHP)  
         -   [Python](api-management-api-templates.md#Python)  
         -   [Ruby](api-management-api-templates.md#Ruby)  
@@ -58,12 +59,12 @@ ms.locfileid: "60657640"
     -   [更新帳戶資訊](api-management-user-profile-templates.md#UpdateAccountInfo)  
 -   [頁面](api-management-page-templates.md)  
     -   [登入](api-management-page-templates.md#SignIn)  
-    -   [注册](api-management-page-templates.md#SignUp)  
+    -   [登記](api-management-page-templates.md#SignUp)  
     -   [找不到頁面](api-management-page-templates.md#PageNotFound)
 
 ## <a name="next-steps"></a>後續步驟  
 
 + [範本參考](api-management-developer-portal-templates-reference.md)  
-+ [数据模型参考](api-management-template-data-model-reference.md)  
++ [資料模型參考](api-management-template-data-model-reference.md)  
 + [頁面控制項](api-management-page-controls.md)  
 + [範本資源](api-management-template-resources.md)

@@ -1,30 +1,17 @@
 ---
 title: 自訂事件和度量的 Application Insights API | Microsoft Docs
 description: 在您的裝置或桌面應用程式、網頁或服務中插入幾行程式碼，來追蹤使用狀況及診斷問題。
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 80400495-c67b-4468-a92e-abf49793a54d
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 03/27/2019
-ms.author: mbullwin
-ms.openlocfilehash: 6e2803590740d84bc99327ce78886f41f3c600df
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 05/11/2020
+ms.openlocfilehash: ae96609446818802b70cab9c31f6527264046eb9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60794416"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "83115654"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>自訂事件和度量的 Application Insights API
 
 在您的應用程式中插入幾行程式碼，以了解使用者對它進行的動作或協助診斷問題。 您可以從裝置和桌面應用程式、Web 用戶端以及 Web 伺服器傳送遙測。 使用 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) 核心遙測 API 來傳送自訂的事件和度量，以及您自己的標準遙測版本。 這個 API 與標準 Application Insights 資料收集器所使用的 API 相同。
-
-> [!NOTE]
-> `TrackMetric()` 不再是針對 .NET 型應用程式傳送自訂計量的慣用方法。 [2.60-beta 3 版](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/CHANGELOG.md#version-260-beta3)的 Application Insights .NET SDK 中引進了新方法 [`TelemetryClient.GetMetric()`](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.getmetric?view=azure-dotnet)。 從 Application Insights .NET SDK [2.72 版](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.getmetric?view=azure-dotnet)起，這項功能現在屬於穩定的版本。
 
 ## <a name="api-summary"></a>API summary
 
@@ -38,28 +25,29 @@ ms.locfileid: "60794416"
 | [`TrackMetric`](#trackmetric) |效能度量，例如與特定事件不相關的佇列長度。 |
 | [`TrackException`](#trackexception) |記錄例外狀況以供診斷。 追蹤與其他事件的發生相對位置，並且檢查堆疊追蹤。 |
 | [`TrackRequest`](#trackrequest) |記錄伺服器要求的頻率和持續時間以進行效能分析。 |
-| [`TrackTrace`](#tracktrace) |診斷記錄訊息。 您也可以擷取第三方記錄。 |
+| [`TrackTrace`](#tracktrace) |資源診斷記錄訊息。 您也可以擷取第三方記錄。 |
 | [`TrackDependency`](#trackdependency) |記錄應用程式所依賴之外部元件呼叫的持續時間及頻率。 |
 
 您可以 [附加屬性和度量](#properties) 至這裡大部分的遙測呼叫。
 
-## <a name="prep"></a>開始之前
+## <a name="before-you-start"></a><a name="prep"></a>在您開始使用 Intune 之前
 
 如果您還沒有 Application Insights SDK 的參考：
 
 * 將 Application Insights SDK 加入至專案：
 
   * [ASP.NET 專案](../../azure-monitor/app/asp-net.md)
-  * [Java 專案](../../azure-monitor/app/java-get-started.md)
+  * [ASP.NET Core 專案](../../azure-monitor/app/asp-net-core.md)
+  * [JAVA 專案](../../azure-monitor/app/java-get-started.md)
   * [Node.js 專案](../../azure-monitor/app/nodejs.md)
   * [每個網頁中的 JavaScript](../../azure-monitor/app/javascript.md) 
 * 在裝置或 Web 伺服器程式碼中，加入：
 
-    *C#:* `using Microsoft.ApplicationInsights;`
+    *C #：*`using Microsoft.ApplicationInsights;`
 
     *Visual Basic：*`Imports Microsoft.ApplicationInsights`
 
-    *Java：* `import com.microsoft.applicationinsights.TelemetryClient;`
+    *JAVA：*`import com.microsoft.applicationinsights.TelemetryClient;`
 
     *Node.js：*`var applicationInsights = require("applicationinsights");`
 
@@ -67,11 +55,16 @@ ms.locfileid: "60794416"
 
 取得 `TelemetryClient` 的執行個體 (除非是在網頁的 JavaScript 中)：
 
+針對適用于 .NET/.NET Core 應用程式的[ASP.NET Core](asp-net-core.md#how-can-i-track-telemetry-thats-not-automatically-collected)應用程式和[非 HTTP/背景工作角色](worker-service.md#how-can-i-track-telemetry-thats-not-automatically-collected)，建議您從相依性插入容器中取得的實例， `TelemetryClient` 如其各自的檔所述。
+
+如果您使用 AzureFunctions v2 + 或 Azure WebJobs v3 +-請遵循此檔：https://docs.microsoft.com/azure/azure-functions/functions-monitoring#version-2x-and-higher
+
 *C#*
 
 ```csharp
 private TelemetryClient telemetry = new TelemetryClient();
 ```
+對於看到此方法已過時訊息的任何人，請造訪[microsoft/ApplicationInsights-dotnet # 1152](https://github.com/microsoft/ApplicationInsights-dotnet/issues/1152) ，以取得進一步的詳細資料。
 
 *Visual Basic*
 
@@ -93,7 +86,7 @@ var telemetry = applicationInsights.defaultClient;
 
 TelemetryClient 具備執行緒安全。
 
-針對 ASP.NET 和 Java 專案，系統會自動擷取傳入 HTTP 要求。 您可以為應用程式的其他模組建立額外的 TelemetryClient 執行個體。 比方說，您可以在中介軟體類別中配置一個 TelemetryClient 執行個體，用來報告商業邏輯事件。 您可以設定 UserId 和 DeviceId 等屬性，藉此辨識機器。 這項資訊會附加至執行個體所傳送的所有事件。 
+針對 ASP.NET 和 Java 專案，系統會自動擷取傳入 HTTP 要求。 您可以為應用程式的其他模組建立額外的 TelemetryClient 執行個體。 比方說，您可以在中介軟體類別中配置一個 TelemetryClient 執行個體，用來報告商業邏輯事件。 您可以設定 UserId 和 DeviceId 等屬性，藉此辨識機器。 這項資訊會附加至執行個體所傳送的所有事件。
 
 *C#*
 
@@ -113,7 +106,7 @@ telemetry.getContext().getDevice().setId("...");
 
 ## <a name="trackevent"></a>TrackEvent
 
-在 Application Insights 中，「自訂事件」是您可以在[計量瀏覽器](../../azure-monitor/app/metrics-explorer.md)顯示為彙總計數，以及在[診斷搜尋](../../azure-monitor/app/diagnostic-search.md)中顯示為個別發生點的資料點。 (它與 MVC 或其他架構的「事件」不相關。)
+在 Application Insights 中，「自訂事件」** 是您可以在[計量瀏覽器](../../azure-monitor/platform/metrics-charts.md)顯示為彙總計數，以及在[診斷搜尋](../../azure-monitor/app/diagnostic-search.md)中顯示為個別發生點的資料點。 (它與 MVC 或其他架構的「事件」不相關。)
 
 在您的程式碼中插入 `TrackEvent` 呼叫，以計算各種事件。 使用者選擇特定功能的頻率、達成特定目標的頻率，或他們犯特定類型錯誤的頻率。
 
@@ -122,7 +115,7 @@ telemetry.getContext().getDevice().setId("...");
 *JavaScript*
 
 ```javascript
-appInsights.trackEvent("WinGame");
+appInsights.trackEvent({name:"WinGame"});
 ```
 
 *C#*
@@ -153,103 +146,16 @@ telemetry.trackEvent({name: "WinGame"});
 
 [Application Insights 分析](analytics.md)的 `customEvents` 資料表中有提供遙測資料。 每個資料列各代表應用程式中的一個 `trackEvent(..)` 呼叫。
 
-如果[取樣](../../azure-monitor/app/sampling.md)運作中，itemCount 屬性會顯示大於 1 的值。 例如，itemCount==10 表示在 trackEvent() 的 10 個呼叫中，取樣處理序只會傳輸其中一個。 若要取得正確的自訂事件計數，您應該使用程式碼，例如 `customEvents | summarize sum(itemCount)`。
+如果[取樣](../../azure-monitor/app/sampling.md)運作中，itemCount 屬性會顯示大於 1 的值。 例如，itemCount==10 表示在 trackEvent() 的 10 個呼叫中，取樣處理序只會傳輸其中一個。 若要取得自訂事件的正確計數，您應該使用之類的程式碼 `customEvents | summarize sum(itemCount)` 。
 
 ## <a name="getmetric"></a>GetMetric
 
-### <a name="examples"></a>範例
-
-*C#*
-
-```csharp
-#pragma warning disable CA1716  // Namespace naming
-
-namespace User.Namespace.Example01
-{
-    using System;
-    using Microsoft.ApplicationInsights;
-    using Microsoft.ApplicationInsights.DataContracts;
-
-    /// <summary>
-    /// Most simple cases are one-liners.
-    /// This is all possible without even importing an additional namespace.
-    /// </summary>
-
-    public class Sample01
-    {
-        /// <summary />
-        public static void Exec()
-        {
-            // *** SENDING METRICS ***
-
-            // Recall how you send custom telemetry with Application Insights in other cases, e.g. Events.
-            // The following will result in an EventTelemetry object to be sent to the cloud right away.
-            TelemetryClient client = new TelemetryClient();
-            client.TrackEvent("SomethingInterestingHappened");
-
-            // Metrics work very similar. However, the value is not sent right away.
-            // It is aggregated with other values for the same metric, and the resulting summary (aka "aggregate" is sent automatically every minute.
-            // To mark this difference, we use a pattern that is similar, but different from the established TrackXxx(..) pattern that sends telemetry right away:
-
-            client.GetMetric("CowsSold").TrackValue(42);
-
-            // *** MULTI-DIMENSIONAL METRICS ***
-
-            // The above example shows a zero-dimensional metric.
-            // Metrics can also be multi-dimensional.
-            // In the initial version we are supporting up to 2 dimensions, and we will add support for more in the future as needed.
-            // Here is an example for a one-dimensional metric:
-
-            Metric animalsSold = client.GetMetric("AnimalsSold", "Species");
-
-            animalsSold.TrackValue(42, "Pigs");
-            animalsSold.TrackValue(24, "Horses");
-
-            // The values for Pigs and Horses will be aggregated separately from each other and will result in two distinct aggregates.
-            // You can control the maximum number of number data series per metric (and thus your resource usage and cost).
-            // The default limits are no more than 1000 total data series per metric, and no more than 100 different values per dimension.
-            // We discuss elsewhere how to change them.
-            // We use a common .NET pattern: TryXxx(..) to make sure that the limits are observed.
-            // If the limits are already reached, Metric.TrackValue(..) will return False and the value will not be tracked. Otherwise it will return True.
-            // This is particularly useful if the data for a metric originates from user input, e.g. a file:
-
-            Tuple<int, string> countAndSpecies = ReadSpeciesFromUserInput();
-            int count = countAndSpecies.Item1;
-            string species = countAndSpecies.Item2;
-
-            if (!animalsSold.TrackValue(count, species))
-
-            {
-                client.TrackTrace($"Data series or dimension cap was reached for metric {animalsSold.Identifier.MetricId}.", SeverityLevel.Error);
-            }
-
-            // You can inspect a metric object to reason about its current state. For example:
-            int currentNumberOfSpecies = animalsSold.GetDimensionValues(1).Count;
-        }
-
-        private static void ResetDataStructure()
-        {
-            // Do stuff
-        }
-
-        private static Tuple<int, string> ReadSpeciesFromUserInput()
-        {
-            return Tuple.Create(18, "Cows");
-        }
-
-        private static int AddItemsToDataStructure()
-        {
-            // Do stuff
-            return 5;
-        }
-    }
-}
-```
+若要瞭解如何有效地使用 GetMetric （）呼叫來捕獲 .NET 和 .NET Core 應用程式的本機預先匯總計量，請造訪[GetMetric](../../azure-monitor/app/get-metric.md)檔。
 
 ## <a name="trackmetric"></a>TrackMetric
 
 > [!NOTE]
-> Microsoft.ApplicationInsights.TelemetryClient.TrackMetric 已在 .NET SDK 中淘汰。 您應該一律預先彙總一段時間的計量，再加以傳送。 使用其中一個 GetMetric(..) 多載來取得可供存取 SDK 預先彙總功能的計量物件。 如果您要實作自己的預先彙總邏輯，則可使用追蹤 (ITelemetry metricTelemetry) 方法來傳送所產生的彙總。 如果您的應用程式需要每次傳送個別遙測項目 (未隨時間彙總)，則可能有事件遙測的使用案例；請參閱 TelemetryClient.TrackEvent (Microsoft.ApplicationInsights.DataContracts.EventTelemetry)。
+> ApplicationInsights. TelemetryClient. TrackMetric 不是傳送計量的慣用方法。 您應該一律預先彙總一段時間的計量，再加以傳送。 使用其中一個 GetMetric(..) 多載來取得可供存取 SDK 預先彙總功能的計量物件。 如果您要執行自己的預先匯總邏輯，您可以使用 TrackMetric （）方法來傳送產生的匯總。 如果您的應用程式需要每次傳送個別遙測項目 (未隨時間彙總)，則可能有事件遙測的使用案例；請參閱 TelemetryClient.TrackEvent (Microsoft.ApplicationInsights.DataContracts.EventTelemetry)。
 
 Application Insights 可以將未附加至特定事件的計量繪製成圖表。 例如，您可以定期監視佇列長度。 當您使用計量時，個別測量的重要性就不如變化和趨勢，因此統計圖表很有用。
 
@@ -299,7 +205,7 @@ telemetry.trackMetric({name: "queueLength", value: 42.0});
 * `valueSum` - 這是測量結果的總和。 若要取得平均值，請將它除以 `valueCount`。
 * `valueCount` - 彙總到這個 `trackMetric(..)` 呼叫的測量數目。
 
-## <a name="page-views"></a>頁面檢視
+## <a name="page-views"></a>網頁檢視
 
 在裝置或網頁應用程式中，每個畫面或頁面載入時預設會傳送頁面檢視遙測。 但是，您可以變更為在其他或不同的時間追蹤頁面檢視。 例如，在顯示索引標籤或刀鋒視窗的應用程式中，您可能想要在使用者每次開啟新的刀鋒視窗時追蹤頁面。
 
@@ -343,7 +249,7 @@ appInsights.trackPageView("tab1", "http://fabrikam.com/page1.htm");
 
 相反地，您可以：
 
-* 在 [trackPageView](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md#trackpageview) 呼叫中設定明確的持續時間：`appInsights.trackPageView("tab1", null, null, null, durationInMilliseconds);`。
+* 在 [trackPageView](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/legacy/API.md#trackpageview) 呼叫中設定明確的持續時間：`appInsights.trackPageView("tab1", null, null, null, durationInMilliseconds);`。
 * 使用頁面檢視計時呼叫 `startTrackPage` 和 `stopTrackPage`。
 
 *JavaScript*
@@ -430,7 +336,7 @@ using (var operation = telemetryClient.StartOperation<RequestTelemetry>("operati
 
 在作業範圍內回報的遙測項目會變成這類作業的「子項目」。 作業內容可以是巢狀。
 
-在搜尋中，會使用作業內容來建立 [相關項目] 清單：
+在搜尋中，會使用作業內容來建立**相關的專案**清單：
 
 ![相關項目](./media/api-custom-events-metrics/21.png)
 
@@ -451,7 +357,7 @@ requests
 
 傳送例外狀況至 Application Insights︰
 
-* 以[計算數目](../../azure-monitor/app/metrics-explorer.md)，來指出問題的頻率。
+* 以[計算數目](../../azure-monitor/platform/metrics-charts.md)，來指出問題的頻率。
 * 以[檢查個別出現次數](../../azure-monitor/app/diagnostic-search.md)。
 
 報告包含堆疊追蹤。
@@ -507,8 +413,8 @@ catch (ex)
 
 SDK 將自動攔截許多例外狀況，所以您不一定需要明確呼叫 TrackException。
 
-* ASP.NET：[撰寫程式碼以攔截例外狀況](../../azure-monitor/app/asp-net-exceptions.md)。
-* Java EE：[自動攔截例外狀況](../../azure-monitor/app/java-get-started.md#exceptions-and-request-failures)。
+* ASP.NET：[撰寫程式碼以攔截例外](../../azure-monitor/app/asp-net-exceptions.md)狀況。
+* JAVA EE：[例外狀況會自動捕捉](../../azure-monitor/app/java-get-started.md#exceptions-and-request-failures)。
 * JavaScript：自動攔截例外狀況。 如果您想要停用自動收集，請在您插入網頁的程式碼片段中加入一行：
 
 ```javascript
@@ -529,7 +435,7 @@ exceptions
 | summarize sum(itemCount) by type
 ```
 
-大多數重要堆疊資訊已擷取到不同的變數中，但您可以拉開 `details` 結構以取得更多資訊。 由於這是動態結構，因此您應該將結果轉換成預期的類型。 例如︰
+大多數重要堆疊資訊已擷取到不同的變數中，但您可以拉開 `details` 結構以取得更多資訊。 由於這是動態結構，因此您應該將結果轉換成預期的類型。 例如：
 
 ```kusto
 exceptions
@@ -545,7 +451,7 @@ exceptions
 
 ## <a name="tracktrace"></a>TrackTrace
 
-使用 TrackTrace 可協助您藉由將 "breadcrumb trail" 傳送至 Application Insights 來診斷問題。 您可以傳送診斷資料區塊，並且在[診斷搜尋](../../azure-monitor/app/diagnostic-search.md)中檢查。
+使用 TrackTrace 可協助您藉由將 "breadcrumb trail" 傳送至 Application Insights 來診斷問題。 您可以傳送診斷資料區塊，並在[診斷搜尋](../../azure-monitor/app/diagnostic-search.md)中加以檢查。
 
 在 .NET 中，[記錄配接器](../../azure-monitor/app/asp-net-trace-logs.md)使用此 API 將第三方記錄傳送至入口網站。
 
@@ -576,23 +482,23 @@ telemetry.trackTrace({
 *用戶端/瀏覽器端 JavaScript*
 
 ```javascript
-trackTrace(message: string, properties?: {[string]:string}, severityLevel?: AI.SeverityLevel)
+trackTrace(message: string, properties?: {[string]:string}, severityLevel?: SeverityLevel)
 ```
 
 記錄診斷事件，例如進入或離開某個方法。
 
- 參數 | 描述
+ 參數 | 說明
 ---|---
 `message` | 診斷資料。 可以比名稱長很多。
-`properties` | 字串與字串的對應：用來在入口網站中[篩選例外狀況](https://azure.microsoft.com/documentation/articles/app-insights-api-custom-events-metrics/#properties)的額外資料。 預設為空白。
-`severityLevel` | 支援的值：[SeverityLevel.ts](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/JavaScript/JavaScriptSDK.Interfaces/Contracts/Generated/SeverityLevel.ts)
+`properties` | 字串與字串的對應：用來在入口網站中[篩選例外](https://azure.microsoft.com/documentation/articles/app-insights-api-custom-events-metrics/#properties)狀況的其他資料。 預設為空白。
+`severityLevel` | 支援的值： [SeverityLevel. ts](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/shared/AppInsightsCommon/src/Interfaces/Contracts/Generated/SeverityLevel.ts)
 
 您可以搜尋訊息內容，但是 (不同於屬性值) 您無法在其中進行篩選。
 
 `message` 上的大小限制比屬性上的限制高得多。
 TrackTrace 的優點在於您可以將較長的資料放在訊息中。 例如，您可以在該處編碼 POST 資料。  
 
-此外，您可以在訊息中新增嚴重性層級。 就像其他遙測一樣，您可以新增屬性值以供協助篩選或搜尋不同的追蹤集。 例如︰
+此外，您可以在訊息中新增嚴重性層級。 就像其他遙測一樣，您可以新增屬性值以供協助篩選或搜尋不同的追蹤集。 例如：
 
 *C#*
 
@@ -621,7 +527,7 @@ telemetry.trackTrace("Slow Database response", SeverityLevel.Warning, properties
 
 ## <a name="trackdependency"></a>TrackDependency
 
-您可以使用 TrackDependency 呼叫來追蹤回應時間以及呼叫外部程式碼片段的成功率。 結果會出現在入口網站中的相依性圖表中。
+您可以使用 TrackDependency 呼叫來追蹤回應時間以及呼叫外部程式碼片段的成功率。 結果會出現在入口網站中的相依性圖表中。 在進行相依性呼叫的任何地方，都必須加入下列程式碼片段。
 
 *C#*
 
@@ -633,12 +539,16 @@ try
 {
     success = dependency.Call();
 }
+catch(Exception ex) 
+{
+    success = false;
+    telemetry.TrackException(ex);
+    throw new Exception("Operation went wrong", ex);
+}
 finally
 {
     timer.Stop();
-    telemetry.TrackDependency("myDependency", "myCall", startTime, timer.Elapsed, success);
-     // The call above has been made obsolete in the latest SDK. The updated call follows this format:
-     // TrackDependency (string dependencyTypeName, string dependencyName, string data, DateTimeOffset startTime, TimeSpan duration, bool success);
+    telemetry.TrackDependency("DependencyType", "myDependency", "myCall", startTime, timer.Elapsed, success);
 }
 ```
 
@@ -646,20 +556,20 @@ finally
 
 ```java
 boolean success = false;
-long startTime = System.currentTimeMillis();
+Instant startTime = Instant.now();
 try {
     success = dependency.call();
 }
 finally {
-    long endTime = System.currentTimeMillis();
-    long delta = endTime - startTime;
+    Instant endTime = Instant.now();
+    Duration delta = Duration.between(startTime, endTime);
     RemoteDependencyTelemetry dependencyTelemetry = new RemoteDependencyTelemetry("My Dependency", "myCall", delta, success);
-    telemetry.setTimeStamp(startTime);
-    telemetry.trackDependency(dependencyTelemetry);
+    RemoteDependencyTelemetry.setTimeStamp(startTime);
+    RemoteDependencyTelemetry.trackDependency(dependencyTelemetry);
 }
 ```
 
-*JavaScript*
+*Node.js*
 
 ```javascript
 var success = false;
@@ -708,7 +618,7 @@ dependencies
 
 ## <a name="flushing-data"></a>排清資料
 
-通常 SDK 會在選擇的時間傳送資料以將對使用者的影響降到最低。 不過，在某些情況下您可能想要排清緩衝區，例如，如果您在會關閉的應用程式中使用 SDK。
+一般來說，SDK 會以固定間隔（通常是30秒）或每次緩衝區已滿（通常是500專案）傳送資料。 不過，在某些情況下您可能想要排清緩衝區，例如，如果您在會關閉的應用程式中使用 SDK。
 
 *C#*
 
@@ -738,7 +648,7 @@ telemetry.flush();
 
 ## <a name="authenticated-users"></a>驗證的使用者
 
-在 Web 應用程式中，預設是透過 Cookie 來識別使用者。 如果使用者從不同的電腦或瀏覽器存取您的 app 或刪除 Cookie，就可能多次計算他們。
+在 web 應用程式中，使用者依預設會[由 cookie 識別](../../azure-monitor/app/usage-segmentation.md#the-users-sessions-and-events-segmentation-tool)。 如果使用者從不同的電腦或瀏覽器存取您的 app 或刪除 Cookie，就可能多次計算他們。
 
 如果使用者登入您的 app，您可以藉由在瀏覽器程式碼中設定經過驗證的使用者識別碼，來取得更正確的計數：
 
@@ -778,11 +688,11 @@ function Authenticated(signInId) {
 appInsights.setAuthenticatedUserContext(validatedId, accountId);
 ```
 
-在[計量瀏覽器](../../azure-monitor/app/metrics-explorer.md)中，您可建立可計算 [已驗證的使用者] 和 [使用者帳戶] 的圖表。
+在[計量瀏覽器](../../azure-monitor/platform/metrics-charts.md)中，您可建立可計算 [已驗證的使用者]**** 和 [使用者帳戶]**** 的圖表。
 
 您也可以[搜尋](../../azure-monitor/app/diagnostic-search.md)具有特定使用者名稱和帳戶的用戶端資料點。
 
-## <a name="properties"></a>使用屬性篩選、搜尋和分割資料
+## <a name="filtering-searching-and-segmenting-your-data-by-using-properties"></a><a name="properties"></a>使用屬性篩選、搜尋和分割資料
 
 您可以將屬性和測量結果附加至您的事件 (同時還有度量，頁面檢視、例外狀況和其他的遙測資料)。
 
@@ -913,7 +823,7 @@ requests
 * 當您從 customDimensions 或 customMeasurements JSON 中擷取值時，其類型為動態，因此您必須將它轉換成 `tostring` 或 `todouble`。
 * 考量到[取樣](../../azure-monitor/app/sampling.md)的可能性，您應該使用 `sum(itemCount)`，而不是 `count()`。
 
-## <a name="timed"></a> 計時事件
+## <a name="timing-events"></a><a name="timed"></a> 計時事件
 
 有時候您想要繪製執行某些動作耗費多少時間的圖表。 例如，您可能想要知道使用者在遊戲中思考選項時花費多少時間。 您可以對此使用測量參數。
 
@@ -946,7 +856,7 @@ long startTime = System.currentTimeMillis();
 
 long endTime = System.currentTimeMillis();
 Map<String, Double> metrics = new HashMap<>();
-metrics.put("ProcessingTime", endTime-startTime);
+metrics.put("ProcessingTime", (double)endTime-startTime);
 
 // Setup some properties
 Map<String, String> properties = new HashMap<>();
@@ -956,7 +866,7 @@ properties.put("signalSource", currentSignalSource.getName());
 telemetry.trackEvent("SignalProcessed", properties, metrics);
 ```
 
-## <a name="defaults"></a>自訂遙測資料的預設屬性
+## <a name="default-properties-for-custom-telemetry"></a><a name="defaults"></a>自訂遙測資料的預設屬性
 
 如果您想為您撰寫的一些自訂事件設定預設屬性值，您可以在 TelemetryClient 執行個體中設定它們。 它們會附加至從該用戶端傳送的每個遙測項目。
 
@@ -966,7 +876,7 @@ telemetry.trackEvent("SignalProcessed", properties, metrics);
 using Microsoft.ApplicationInsights.DataContracts;
 
 var gameTelemetry = new TelemetryClient();
-gameTelemetry.Context.Properties["Game"] = currentGame.Name;
+gameTelemetry.Context.GlobalProperties["Game"] = currentGame.Name;
 // Now all telemetry will automatically be sent with the context property:
 gameTelemetry.TrackEvent("WinGame");
 ```
@@ -975,7 +885,7 @@ gameTelemetry.TrackEvent("WinGame");
 
 ```vb
 Dim gameTelemetry = New TelemetryClient()
-gameTelemetry.Context.Properties("Game") = currentGame.Name
+gameTelemetry.Context.GlobalProperties("Game") = currentGame.Name
 ' Now all telemetry will automatically be sent with the context property:
 gameTelemetry.TrackEvent("WinGame")
 ```
@@ -1006,7 +916,7 @@ gameTelemetry.TrackEvent({name: "WinGame"});
 
 個別遙測呼叫可以覆寫其屬性字典中的預設值。
 
-*針對 JavaScript Web 用戶端*，請使用 JavaScript 遙測初始設定式。
+*針對 javascript web 用戶端*，請使用 javascript 遙測初始化運算式。
 
 *若要將屬性新增至所有遙測*，並包括來自標準集合模組的資料，請[實作 `ITelemetryInitializer`](../../azure-monitor/app/api-filtering-sampling.md#add-properties)。
 
@@ -1040,7 +950,7 @@ TelemetryConfiguration.Active.DisableTelemetry = true;
 telemetry.getConfiguration().setTrackingDisabled(true);
 ```
 
-若要*停用選取的標準收集器* (例如效能計數器、HTTP 要求或相依性)，請刪除或註解化 [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) 中的相關行。例如，如果您想要傳送自己的 TrackRequest 資料，可以這麼做。
+若要*停用選取的標準收集*器（例如效能計數器、HTTP 要求或相依性），請刪除或批註掉[ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md)中的相關行。例如，如果您想要傳送自己的 TrackRequest 資料，可以這麼做。
 
 *Node.js*
 
@@ -1048,7 +958,7 @@ telemetry.getConfiguration().setTrackingDisabled(true);
 telemetry.config.disableAppInsights = true;
 ```
 
-若要在初始化時「停用選取的標準收集器」(例如，效能計數器、HTTP 要求或相依性)，請將設定方法鏈結至您的 SDK 初始化程式碼：
+若要在初始化時「停用選取的標準收集器」**(例如，效能計數器、HTTP 要求或相依性)，請將設定方法鏈結至您的 SDK 初始化程式碼：
 
 ```javascript
 applicationInsights.setup()
@@ -1062,7 +972,7 @@ applicationInsights.setup()
 
 若要在初始化之後停用這些收集器，請使用 Configuration 物件：`applicationInsights.Configuration.setAutoCollectRequests(false)`
 
-## <a name="debug"></a>開發人員模式
+## <a name="developer-mode"></a><a name="debug"></a>開發人員模式
 
 偵錯期間，讓您的遙測透過管線加速很有用，如此您就可以立即看到結果。 您也會取得額外的訊息，協助您追蹤任何遙測的問題。 在生產環境中將它關閉，因為它可能會拖慢您的應用程式。
 
@@ -1080,7 +990,7 @@ TelemetryConfiguration.Active.TelemetryChannel.DeveloperMode = True
 
 *Node.js*
 
-適用於 Node.js，您可以讓開發人員模式藉由啟用內部的記錄，透過`setInternalLogging`並設定`maxBatchSize`為 0，讓您傳送，因為它會收集的遙測。
+針對 Node.js，您可以透過啟用內部記錄 `setInternalLogging` ，並將設定為0，以啟用「開發人員模式」 `maxBatchSize` ，這會在收集遙測資料時立即傳送。
 
 ```js
 applicationInsights.setup("ikey")
@@ -1089,7 +999,7 @@ applicationInsights.setup("ikey")
 applicationInsights.defaultClient.config.maxBatchSize = 0;
 ```
 
-## <a name="ikey"></a>設定已選取自訂遙測的檢測金鑰
+## <a name="setting-the-instrumentation-key-for-selected-custom-telemetry"></a><a name="ikey"></a>設定已選取自訂遙測的檢測金鑰
 
 *C#*
 
@@ -1099,9 +1009,9 @@ telemetry.InstrumentationKey = "---my key---";
 // ...
 ```
 
-## <a name="dynamic-ikey"></a> 動態檢測金鑰
+## <a name="dynamic-instrumentation-key"></a><a name="dynamic-ikey"></a> 動態檢測金鑰
 
-若要避免混合來自開發、測試和實際執行環境的遙測，您可以[建立個別的 Application Insights 資源](../../azure-monitor/app/create-new-resource.md )，並且依據環境變更其金鑰。
+為了避免混合來自開發、測試和生產環境的遙測，您可以[建立不同的 Application Insights 資源](../../azure-monitor/app/create-new-resource.md )並變更其金鑰，視環境而定。
 
 而不是從組態檔取得檢測金鑰，您可以在程式碼中設定。 在初始化方法中設定金鑰，例如 ASP.NET 服務中的 global.aspx.cs：
 
@@ -1151,7 +1061,7 @@ var appInsights = window.appInsights || function(config){ ...
 
 ## <a name="telemetrycontext"></a>TelemetryContext
 
-TelemetryClient 具有內容屬性，其中包含與所有遙測資料一起傳送的值。 它們通常由標準遙測模組設定，但是您也可以自行設定它們。 例如︰
+TelemetryClient 具有內容屬性，其中包含與所有遙測資料一起傳送的值。 它們通常由標準遙測模組設定，但是您也可以自行設定它們。 例如：
 
 ```csharp
 telemetry.Context.Operation.Name = "MyOperationName";
@@ -1160,15 +1070,15 @@ telemetry.Context.Operation.Name = "MyOperationName";
 如果您自行設定這些值，請考慮從 [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) 移除相關的程式碼行，讓您的值和標準值不致混淆。
 
 * **元件**：應用程式及其版本。
-* **裝置**：應用程式執行所在裝置的相關資料  (在 Web 應用程式中，這是傳送遙測的伺服器或用戶端裝置)。
-* **InstrumentationKey**：Azure 中遙測顯示之位置的 Application Insights 資源。 通常會揀選自 ApplicationInsights.config。
+* **裝置**︰應用程式執行所在裝置的相關資料  (在 Web 應用程式中，這是傳送遙測的伺服器或用戶端裝置)。
+* **InstrumentationKey**： Azure 中遙測出現的 Application Insights 資源。 通常會揀選自 ApplicationInsights.config。
 * **位置**：裝置的地理位置。
 * **作業**：在 Web 應用程式中，目前的 HTTP 要求。 在其他應用程式類型中，您可以設定以將事件群組在一起。
-  * **ID**：產生的值，與不同事件相互關聯，如此當您在診斷搜尋中檢查任何事件時，您可以發現相關項目。
+  * **識別碼**：產生的值，可相互關聯不同的事件，因此當您在診斷搜尋中檢查任何事件時，您可以找到相關的專案。
   * **名稱**：識別碼，通常是 HTTP 要求的 URL。
   * **SyntheticSource**：如果不為 null 或空白，這個字串表示要求的來源已被識別為傀儡程式或 Web 測試。 根據預設，會從計量瀏覽器的計算中排除。
 * **屬性**：與所有遙測資料一起傳送的屬性。 可以在個別 Track* 呼叫中覆寫。
-* **工作階段**：使用者的工作階段。 識別碼會設為產生的值，當使用者一段時間沒有作用時會變更。
+* **工作階段**︰使用者的工作階段。 識別碼會設為產生的值，當使用者一段時間沒有作用時會變更。
 * **使用者**：使用者資訊。
 
 ## <a name="limits"></a>限制
@@ -1181,21 +1091,18 @@ telemetry.Context.Operation.Name = "MyOperationName";
 
 ## <a name="reference-docs"></a>參考文件
 
-* [ASP.NET 參考](https://msdn.microsoft.com/library/dn817570.aspx)
-* [Java 參考](http://dl.windowsazure.com/applicationinsights/javadoc/)
+* [ASP.NET 參考](https://docs.microsoft.com/dotnet/api/overview/azure/insights?view=azure-dotnet)
+* [JAVA 參考](https://docs.microsoft.com/java/api/overview/azure/appinsights?view=azure-java-stable/)
 * [JavaScript 參考](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)
-* [Android SDK](https://github.com/Microsoft/ApplicationInsights-Android)
-* [iOS SDK](https://github.com/Microsoft/ApplicationInsights-iOS)
 
 ## <a name="sdk-code"></a>SDK 程式碼
 
-* [ASP.NET 核心 SDK](https://github.com/Microsoft/ApplicationInsights-aspnetcore)
-* [ASP.NET 5](https://github.com/Microsoft/ApplicationInsights-dotnet)
-* [Windows Server 套件](https://github.com/Microsoft/applicationInsights-dotnet-server)
+* [ASP.NET Core SDK](https://github.com/Microsoft/ApplicationInsights-dotnet)
+* [ASP.NET](https://github.com/Microsoft/ApplicationInsights-dotnet)
+* [Windows Server 套件](https://github.com/Microsoft/ApplicationInsights-dotnet)
 * [Java SDK](https://github.com/Microsoft/ApplicationInsights-Java)
 * [Node.js SDK](https://github.com/Microsoft/ApplicationInsights-Node.js)
 * [JavaScript SDK](https://github.com/Microsoft/ApplicationInsights-JS)
-* [所有平台](https://github.com/Microsoft?utf8=%E2%9C%93&query=applicationInsights)
 
 ## <a name="questions"></a>問題
 
@@ -1206,7 +1113,7 @@ telemetry.Context.Operation.Name = "MyOperationName";
 
     是，[資料存取 API](https://dev.applicationinsights.io/)。 其他擷取資料的方法包括[從分析匯出至 Power BI](../../azure-monitor/app/export-power-bi.md ) 和[連續匯出](../../azure-monitor/app/export-telemetry.md)。
 
-## <a name="next"></a>接續步驟
+## <a name="next-steps"></a><a name="next"></a>後續步驟
 
 * [搜尋事件和記錄](../../azure-monitor/app/diagnostic-search.md)
 * [疑難排解](../../azure-monitor/app/troubleshoot-faq.md)

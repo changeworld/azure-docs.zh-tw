@@ -1,40 +1,38 @@
 ---
-title: 教學課程：在 Azure 中使用 SSL 憑證來保護 Linux 網頁伺服器 | Microsoft Docs
-description: 在此教學課程中，您將了解如何搭配使用 Azure CLI 與 Azure Key Vault 中儲存的 SSL 憑證，來保護執行 NGINX 網頁伺服器的 Linux 虛擬機器。
+title: 教學課程：在 Azure 中使用 TLS/SSL 憑證來保護 Linux 網頁伺服器
+description: 在本教學課程中，您將了解如何搭配使用 Azure CLI 與 Azure Key Vault 中儲存的 SSL 憑證，來保護執行 NGINX 網頁伺服器的 Linux 虛擬機器。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
-editor: tysonn
+manager: gwallace
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 7d372dfa845459a63de8ccc1b81e7b1319f47e34
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: ac581b45f3aefe7a386f25c978bfc09adda4e39f
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59524358"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460472"
 ---
-# <a name="tutorial-secure-a-web-server-on-a-linux-virtual-machine-in-azure-with-ssl-certificates-stored-in-key-vault"></a>教學課程：在 Azure 中使用 Key Vault 內儲存的 SSL 憑證，來保護 Linux 虛擬機器上的網頁伺服器
-若要保護網頁伺服器，您可以使用安全通訊端層 (SSL) 憑證將 Web 流量加密。 這些 SSL 憑證可儲存在 Azure Key Vault，並且能夠讓您將憑證安全地部署到 Azure 中的 Linux 虛擬機器 (VM)。 在此教學課程中，您將了解如何：
+# <a name="tutorial-secure-a-web-server-on-a-linux-virtual-machine-in-azure-with-tlsssl-certificates-stored-in-key-vault"></a>教學課程：在 Azure 中使用 Key Vault 內儲存的 TLS/SSL 憑證，來保護 Linux 虛擬機器上的網頁伺服器
+若要保護 Web 伺服器，您可以使用傳輸層安全性 (TLS) (先前稱為安全通訊端層 (SSL)) 憑證來加密網路流量。 這些 TLS/SSL 憑證可儲存在 Azure Key Vault，並且能夠讓您將憑證安全地部署到 Azure 中的 Linux 虛擬機器 (VM)。 在本教學課程中，您將了解如何：
 
 > [!div class="checklist"]
 > * 建立 Azure Key Vault
 > * 產生或上傳憑證至 Key Vault
 > * 建立 VM 並安裝 NGINX 網頁伺服器
-> * 將憑證插入 VM 並使用 SSL 繫結來設定 NGINX
+> * 將憑證插入 VM 並使用 TLS 繫結來設定 NGINX
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+本教學課程會使用 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) 內的 CLI，這會不斷更新至最新版本。 若要開啟 Cloud Shell，請選取任何程式碼區塊頂端的 [試試看]  。
 
-如果您選擇在本機安裝和使用 CLI，此教學課程會要求您執行 Azure CLI 2.0.30 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。
+如果您選擇在本機安裝和使用 CLI，本教學課程會要求您執行 Azure CLI 2.0.30 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。
 
 
 ## <a name="overview"></a>概觀
@@ -44,13 +42,13 @@ Azure Key Vault 會保護密碼編譯金鑰和祕密，像是憑證或密碼。 
 
 
 ## <a name="create-an-azure-key-vault"></a>建立 Azure Key Vault
-建立 Key Vault 和憑證之前，請先使用 [az group create](/cli/azure/group) 來建立資源群組。 下列範例會在 eastus 位置建立名為 myResourceGroupSecureWeb 的資源群組：
+建立 Key Vault 和憑證之前，請先使用 [az group create](/cli/azure/group) 來建立資源群組。 下列範例會在 eastus  位置建立名為 myResourceGroupSecureWeb  的資源群組：
 
 ```azurecli-interactive 
 az group create --name myResourceGroupSecureWeb --location eastus
 ```
 
-接著，使用 [az keyvault create](/cli/azure/keyvault) 建立 Key Vault，並加以啟用以供您在部署 VM 時使用。 每個 Key Vault 都需要唯一的名稱，且應全部使用小寫。 使用您自己唯一的 Key Vault 名稱來取代下列範例中的 *\<mykeyvault>*：
+接著，使用 [az keyvault create](/cli/azure/keyvault) 建立 Key Vault，並加以啟用以供您在部署 VM 時使用。 每個 Key Vault 都需要唯一的名稱，且應全部使用小寫。 使用您自己唯一的 Key Vault 名稱來取代下列範例中的 *\<mykeyvault>* ：
 
 ```azurecli-interactive 
 keyvault_name=<mykeyvault>
@@ -61,7 +59,7 @@ az keyvault create \
 ```
 
 ## <a name="generate-a-certificate-and-store-in-key-vault"></a>產生憑證並儲存於 Key Vault
-若要在生產環境中使用，您應該使用 [az keyvault certificate import](/cli/azure/keyvault/certificate) 來匯入由受信任的提供者所簽署的有效憑證。 在此教學課程中，下列範例示範如何透過使用預設憑證原則的 [az keyvault certificate create](/cli/azure/keyvault/certificate) 來產生自我簽署憑證：
+若要在生產環境中使用，您應該使用 [az keyvault certificate import](/cli/azure/keyvault/certificate) 來匯入由受信任的提供者所簽署的有效憑證。 在本教學課程中，下列範例示範如何透過使用預設憑證原則的 [az keyvault certificate create](/cli/azure/keyvault/certificate) 來產生自我簽署憑證：
 
 ```azurecli-interactive 
 az keyvault certificate create \
@@ -78,15 +76,15 @@ secret=$(az keyvault secret list-versions \
           --vault-name $keyvault_name \
           --name mycert \
           --query "[?attributes.enabled].id" --output tsv)
-vm_secret=$(az vm secret format --secrets "$secret")
+vm_secret=$(az vm secret format --secrets "$secret" -g myResourceGroupSecureWeb --keyvault $keyvault_name)
 ```
 
 ### <a name="create-a-cloud-init-config-to-secure-nginx"></a>建立 Cloud-init 組態來保護 NGINX
-[Cloud-init (英文)](https://cloudinit.readthedocs.io) 是在 Linux VM 初次開機時，廣泛用來自訂它們的方法。 您可以使用 cloud-init 來安裝套件及寫入檔案，或者設定使用者和安全性。 當 cloud-init 在初次開機程序期間執行時，不需要使用任何額外的步驟或必要的代理程式來套用您的組態。
+[Cloud-init (英文)](https://cloudinit.readthedocs.io) 是在 Linux VM 初次開機時，廣泛用來自訂它們的方法。 您可以使用 cloud-init 來安裝封裝和寫入檔案，或者設定使用者和安全性。 當 cloud-init 在初次開機程序期間執行時，不需要使用任何額外的步驟或必要的代理程式來套用您的組態。
 
-當您建立 VM 時，憑證和金鑰會儲存在受保護的 /var/lib/waagent/ 目錄中。 若要自動將憑證新增至 VM 並設定網頁伺服器，請使用 cloud-init。 在此範例中，您會安裝和設定 NGINX Web 伺服器。 您可以使用相同的程序來安裝和設定 Apache。 
+當您建立 VM 時，憑證和金鑰會儲存在受保護的 /var/lib/waagent/  目錄中。 若要自動將憑證新增至 VM 並設定網頁伺服器，請使用 cloud-init。 在此範例中，您會安裝和設定 NGINX Web 伺服器。 您可以使用相同的程序來安裝和設定 Apache。 
 
-建立名為 cloud-init-web-server.txt 的檔案，並貼上下列組態：
+建立名為 cloud-init-web-server.txt  的檔案，並貼上下列組態：
 
 ```yaml
 #cloud-config
@@ -124,7 +122,7 @@ az vm create \
     --secrets "$vm_secret"
 ```
 
-系統需要花幾分鐘的時間來建立 VM、安裝套件及啟動應用程式。 建立 VM 之後，請注意 Azure CLI 所顯示的 `publicIpAddress`。 您可以使用此位址在網頁瀏覽器中存取您的網站。
+系統需要花幾分鐘的時間來建立 VM、安裝封裝和啟動應用程式。 建立 VM 之後，請注意 Azure CLI 所顯示的 `publicIpAddress`。 您可以使用此位址在網頁瀏覽器中存取您的網站。
 
 若要讓 Web 流量安全到達您的 VM，請使用 [az vm open-port](/cli/azure/vm) 從網際網路開啟通訊埠 443：
 
@@ -137,7 +135,7 @@ az vm open-port \
 
 
 ### <a name="test-the-secure-web-app"></a>測試安全的 Web 應用程式
-現在，您可以開啟 Web 瀏覽器，並在網址列輸入 *https:\/\/\<publicIpAddress>*。 提供您自己從 VM 建立程序中取得的公用 IP 位址。 如果您使用自我簽署憑證，請接受安全性警告：
+現在，您可以開啟 Web 瀏覽器，並在網址列輸入 *https:\/\/\<publicIpAddress>* 。 提供您自己從 VM 建立程序中取得的公用 IP 位址。 如果您使用自我簽署憑證，請接受安全性警告：
 
 ![接受 Web 瀏覽器安全性警告](./media/tutorial-secure-web-server/browser-warning.png)
 
@@ -148,13 +146,13 @@ az vm open-port \
 
 ## <a name="next-steps"></a>後續步驟
 
-在此教學課程中，您已使用儲存在 Azure Key Vault 中的 SSL 憑證來保護 NGINX 網頁伺服器。 您已了解如何︰
+在本教學課程中，您已使用儲存在 Azure Key Vault 中的 TLS/SSL 憑證來保護 NGINX 網頁伺服器。 您已了解如何︰
 
 > [!div class="checklist"]
 > * 建立 Azure Key Vault
 > * 產生或上傳憑證至 Key Vault
 > * 建立 VM 並安裝 NGINX 網頁伺服器
-> * 將憑證插入 VM 並使用 SSL 繫結來設定 NGINX
+> * 將憑證插入 VM 並使用 TLS 繫結來設定 NGINX
 
 用以下連結查看預先建立的虛擬機器指令碼範例。
 

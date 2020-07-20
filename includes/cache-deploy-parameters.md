@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 04/02/2019
 ms.author: wesmc
 ms.openlocfilehash: 498a7ee28b9404d0733e4615f4df635a8c904b51
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60118437"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "67173788"
 ---
 ### <a name="cacheskuname"></a>cacheSKUName
 
@@ -30,7 +30,7 @@ ms.locfileid: "60118437"
     },
 ```
 
-範本定義 （Basic、 Standard 或 Premium），此參數允許的值，並指派預設值 （基本），如果未不指定任何值。 「基本」提供單一節點，有多種大小可用，最大為 53 GB。 「標準」提供雙節點「主要/複本」，有多種大小可用，最大為 53 GB，還有高達 99.9% 的 SLA。
+此範本會定義此參數允許的值（基本、標準或高階），如果未指定任何值，則會指派預設值（基本）。 「基本」提供單一節點，有多種大小可用，最大為 53 GB。 「標準」提供雙節點「主要/複本」，有多種大小可用，最大為 53 GB，還有高達 99.9% 的 SLA。
 
 ### <a name="cacheskufamily"></a>cacheSKUFamily
 
@@ -54,7 +54,7 @@ Sku 系列。
 
 新 Azure Cache for Redis 執行個體的大小。
 
-基本和標準的系列：
+針對基本和標準系列：
 
 ```json
     "cacheSKUCapacity": {
@@ -75,13 +75,13 @@ Sku 系列。
     }
 ```
 
-定義進階值快取容量是一樣的只允許的值從 1 跑到 5 而不是從 0 到 6。
+Premium 值快取容量的定義相同，不同之處在于允許的值是從1到5，而不是從0到6。
 
-範本會定義可用於此參數 （0 到 6 個用於基本和標準系列; 1 到 5 個 Premium 系列） 的整數值。 如果未不指定任何值，範本會指派預設值為 0，針對基本和標準，premium 1。
+此範本會定義此參數允許的整數值（基本和標準系列為0到6，Premium 系列為1到5）。 如果未指定任何值，範本會為 Basic 和 Standard 指派0的預設值，1代表 Premium。
 
-值會對應到下列快取大小：
+這些值會對應至下列快取大小：
 
-| Value | 基本和標準<br>快取大小 | 進階<br>快取大小 |
+| 值 | 基本和標準<br>快取大小 | Premium<br>快取大小 |
 | :---: | :------------------------------: | :-------------------: |
 | 0     | 250 MB （預設值）                 | n/a                   |
 | 1     | 1 GB                             | 6 GB （預設值）        |

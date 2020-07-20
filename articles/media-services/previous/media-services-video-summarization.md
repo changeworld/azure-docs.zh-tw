@@ -13,16 +13,22 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/20/2019
-ms.author: milanga;juliako;
-ms.openlocfilehash: 0fcacf68f4b41ed8945a6a40d7da125aef499947
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: juliako
+ms.reviewer: milanga
+ms.openlocfilehash: 1b85cffe497ad0b374edb18a1089412da839cdf8
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60825520"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231840"
 ---
 # <a name="use-azure-media-video-thumbnails-to-create-a-video-summarization"></a>使用 Azure 媒體視訊縮圖建立視訊摘要  
+
+> [!NOTE]
+> **Azure 媒體影片縮圖**媒體處理器將被淘汰。 如需淘汰日期，請參閱[舊版元件](legacy-components.md)主題。
+
 ## <a name="overview"></a>概觀
+
 **Azure 媒體視訊縮圖** 媒體處理器 (MP) 可讓您建立視訊的摘要；當視訊較長而客戶只想預覽摘要時，就非常實用。 例如，客戶可能會想在將滑鼠移至縮圖上時，查看簡短的「視訊摘要」。 透過設定預設值，調整 **Azure 媒體視訊縮圖** 的參數，您即可使用 MP 強大的拍攝偵測和串連技術，以演算法來產生描述性的子剪輯。  
 
 **Azure 媒體視訊縮圖** MP 目前為預覽功能。
@@ -53,18 +59,18 @@ ms.locfileid: "60825520"
 
 目前，您可以變更下列參數：
 
-| 參數 | 描述 |
+| Param | 描述 |
 | --- | --- |
-| outputAudio |指定結果視訊是否要包含任何音訊。 <br/>允許的值包括：True 或 False。 預設值是 True。 |
-| fadeInFadeOut |指定不同的動作縮圖之間是否要使用淡化轉換。  <br/>允許的值包括：True 或 False。  預設值是 True。 |
+| outputAudio |指定結果視訊是否要包含任何音訊。 <br/>允許的值為 True 或 False。 預設值是 True。 |
+| fadeInFadeOut |指定不同的動作縮圖之間是否要使用淡化轉換。  <br/>允許的值為 True 或 False。  預設值是 True。 |
 | maxMotionThumbnailDurationInSecs |整數，指定整個結果視訊的片長。  預設值取決於原始視訊的持續時間。 |
 
 下表說明未使用 **maxMotionThumbnailInSecs** 時的預設持續時間。
 
-|  |  |  |
+|  | Small | 容量 |
 | --- | --- | --- |
-| 視訊持續時間 |d < 3 分鐘 |3 分钟 < d < 15 分钟 |
-| 縮圖持續時間 |15 秒 (2-3 個場景) |30 秒 (3-5 個場景) |
+| **視訊持續時間** |d < 3 分鐘 |3 分鐘 < d < 15 分鐘 |
+| **縮圖持續時間** |15 秒 (2-3 個場景) |30 秒 (3-5 個場景) |
 
 下列 JSON 會設定可用的參數。
 
@@ -101,7 +107,7 @@ ms.locfileid: "60825520"
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>建立和設定 Visual Studio 專案
 
-設定您的開發環境並在 app.config 檔案中填入連線資訊，如[使用 .NET 進行 Media Services 開發](media-services-dotnet-how-to-use.md)所述。 
+設定您的開發環境，並在 app.config 檔案中填入連接資訊，如[使用 .net 進行媒體服務開發](media-services-dotnet-how-to-use.md)中所述。 
 
 #### <a name="example"></a>範例
 
@@ -285,7 +291,7 @@ ms.locfileid: "60825520"
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>相關連結
-[Azure 媒体服务分析概述](media-services-analytics-overview.md)
+[Azure 媒體服務分析概觀](media-services-analytics-overview.md)
 
 [Azure 媒體分析示範](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 

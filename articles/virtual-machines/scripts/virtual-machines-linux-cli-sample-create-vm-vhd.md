@@ -1,11 +1,10 @@
 ---
-title: Azure CLI 指令碼範例 - 使用 VHD 建立 VM | Microsoft Docs
+title: Azure CLI 指令碼範例 - 使用 VHD 建立 VM
 description: Azure CLI 指令碼範例 - 使用虛擬硬碟建立 VM。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: allclark
-manager: douge
-editor: tysonn
+author: cynthn
+manager: gwallace
 tags: azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-linux
@@ -14,14 +13,14 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/09/2017
-ms.author: allclark
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 331bf57c415922a6686ba733b5fbcee24699a152
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: c7260730ccf94e909238c116cb77572463550ed9
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56118253"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "81458551"
 ---
 # <a name="create-a-vm-with-a-virtual-hard-disk"></a>使用虛擬硬碟建立 VM
 
@@ -51,7 +50,7 @@ az group delete -n az-cli-vhd
 
 此指令碼使用下列命令來建立資源群組、虛擬機器、可用性設定組、負載平衡器和所有相關資源。 下表中的每個命令都會連結至命令特定的文件。
 
-| 命令 | 注意 |
+| Command | 注意 |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group) | 建立用來存放所有資源的資源群組。 |
 | [az storage account list](https://docs.microsoft.com/cli/azure/storage/account) | 列出儲存體帳戶 |

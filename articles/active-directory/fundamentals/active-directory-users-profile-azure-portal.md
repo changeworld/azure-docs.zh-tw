@@ -1,23 +1,22 @@
 ---
-title: 新增或更新使用者的設定檔資訊 - Azure Active Directory | Microsoft Docs
+title: 新增或更新使用者設定檔資訊-Azure AD
 description: 有關如何向 Azure Active Directory 中的使用者設定檔新增資訊的指示，包括圖片和作業的詳細資料。
 services: active-directory
-author: eross-msft
+author: msaburnley
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/11/2019
-ms.author: lizross
+ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d710a86bb63765ea8a1a777818ca5f99e38d3a7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 277f4c7016849fbdbac4b5070c2a4db681cc66a9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60248124"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85604007"
 ---
 # <a name="add-or-update-a-users-profile-information-using-azure-active-directory"></a>使用 Azure Active Directory 新增或更新使用者的設定檔資訊
 使用 Azure Active Directory (Azure AD) 新增使用者設定檔資訊，包括個人資料圖片、工作特定資訊，以及一些設定。 如需新增使用者的詳細資訊，請參閱[如何在 Azure Active Directory 中新增或刪除使用者](add-users-azure-active-directory.md)。
@@ -26,31 +25,31 @@ ms.locfileid: "60248124"
 如您所見，使用者設定檔中所提供資訊比您在使用者建立期間可以新增的資訊還多。 所有這些額外資訊都是選擇性，可以依據您的組織需求新增。
 
 ## <a name="to-add-or-change-profile-information"></a>新增或變更設定檔資訊
-1. 以组织的用户管理员身份登录到 [Azure 门户](https://portal.azure.com/)。
+1. 以組織的使用者系統管理員身分登入[Azure 入口網站](https://portal.azure.com/)。
 
-2. 選取 [Azure Active Directory] 並選取 [使用者]，然後選取一位使用者。 例如 _Alain Charon_。
+2. 選取 [Azure Active Directory]**** 並選取 [使用者]****，然後選取一位使用者。 例如 _Alain Charon_。
 
-    [Alain Charon - 設定檔] 頁面隨即出現。
+    [Alain Charon - 設定檔]**** 頁面隨即出現。
 
     ![包括可編輯資訊的使用者設定檔頁面](media/active-directory-users-profile-azure-portal/user-profile-all-blade.png)
 
-3. 選取 [編輯]，選擇性地新增或更新各個可用區段中包含的資訊。
+3. 選取 [編輯]****，選擇性地新增或更新各個可用區段中包含的資訊。
 
     ![顯示可編輯區域的使用者設定檔頁面](media/active-directory-users-profile-azure-portal/user-profile-edit.png)
 
     - **個人資料圖片。** 選取使用者帳戶的縮圖影像。 此圖會出現在 Azure Active Directory 和使用者的個人頁面上，例如 myapps.microsoft.com 頁面。
 
-    - **身分識別。** 新增或更新使用者，例如已婚的最後一個名稱的其他身分識別值。 您可以獨立設定此名稱的名字和姓氏值。 例如，您可以使用它來包含縮寫，公司名稱，或變更顯示名稱的順序。 另舉一例，其名稱為 'Chris Green' 的兩個使用者可使用身分識別字串將其名稱為' Chris B.Green' 'Chris R Green (Contoso)。'
+    - **2x2.** 新增或更新使用者的其他識別值，例如「結婚的姓氏」。 您可以從 [名字] 和 [姓氏] 的值獨立設定此名稱。 例如，您可以使用它來包含姓名縮寫、公司名稱，或變更所顯示的名稱順序。 在另一個範例中，對於名稱為「Chris 綠色」的兩位使用者，您可以使用身分識別字串將其名稱設定為「Chris B」。綠色（Contoso）。
 
     - **工作資訊。** 新增任何工作相關資訊，例如使用者的職稱、部門或經理。
 
-    - **設定。** 決定使用者是否可以登入 Azure Active Directory 租用戶。 您也可以指定使用者的全域位置。
+    - **設置。** 決定使用者是否可以登入 Azure Active Directory 租用戶。 您也可以指定使用者的全域位置。
 
-    - **。** 新增使用者的任何相關連絡資訊。 例如，街道地址或行動電話號碼。
+    - **連絡人資訊。** 新增使用者的任何相關連絡人資訊，但不包括某些使用者的電話或行動連絡人資訊（只有全域管理員可以為系統管理員角色的使用者進行更新）。
 
     - **驗證連絡資訊。** 驗證這項資訊，以確定具有使用者的有效電話號碼和電子郵件地址。 Azure Active Directory 會使用這項資訊，在登入期間確定使用者是真正的使用者。 只有全域系統管理員才能更新驗證連絡資訊。
 
-4. 選取 [ **儲存**]。
+4. 選取 [儲存]。
 
     系統將為使用者儲存您的所有變更。
 

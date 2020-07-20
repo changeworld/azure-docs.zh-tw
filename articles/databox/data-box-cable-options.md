@@ -5,15 +5,14 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
-ms.topic: overview
+ms.topic: how-to
 ms.date: 10/24/2018
 ms.author: alkohli
-ms.openlocfilehash: 4759676eff03606998759a586f758b7a26ead23d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: HT
+ms.openlocfilehash: ffabd917eff1c545bba734ab1621b947ee8d9ae9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58077542"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77920632"
 ---
 # <a name="cabling-options-for-your-azure-data-box"></a>Azure 資料箱的佈線選項
 
@@ -74,7 +73,7 @@ ms.locfileid: "58077542"
 
 請執行下列步驟以連接裝置的纜線。
 
-1. 使用從伺服器直接連到 MGMT 連接埠的 RJ45 乙太網路纜線進行設定。
+1. 使用從個別電腦直接連到 MGMT 連接埠的 RJ45 乙太網路纜線進行設定。
 2. 使用 DATA 3 的 RJ45 或 SFP+ 纜線將 DATA 1 或 DATA 2 連接到伺服器。 建議您使用 10-GbE DATA 1 或 DATA 2 連接埠以達到良好效能。 資料連接埠會透過 10-GbE 交換器連接到具有資料的伺服器。
 3. 使用下列位址，為您要用來連接到裝置的膝上型電腦設定乙太網路介面卡：
 

@@ -3,74 +3,68 @@
 - name: 概觀
   items:
     - name: 什麼是 Azure AD Identity Protection？
-      href: overview.md
-- name: 快速入門
-  items:
-    - name: 偵測到工作階段風險時封鎖存取
-      href: quickstart-sign-in-risk-policy.md
+      href: overview-identity-protection.md
 - name: 概念
   expanded: false
   items:
-    - name: 什麼是弱點？
-      href: vulnerabilities.md
-    - name: 什麼是通知？
-      href: notifications.md
-    - name: 您的登入體驗為何？
-      href: flows.md
-- name: 使用說明指南
+    - name: 安全性概觀
+      href: concept-identity-protection-security-overview.md
+    - name: 有哪些風險？
+      href: concept-identity-protection-risks.md
+    - name: 身分識別保護原則
+      href: concept-identity-protection-policies.md
+    - name: 登入體驗為何？
+      href: concept-identity-protection-user-experience.md
+    - name: Identity Protection 和 B2B 使用者
+      href: concept-identity-protection-b2b.md
+- name: 操作指南
   expanded: true
   items:
-    - name: 身分識別保護
+    - name: 設定通知
+      href: howto-identity-protection-configure-notifications.md
+    - name: 原則組態
       items:
-        - name: 啟用 Azure AD Identity Protection
-          href: enable.md
         - name: 設定 MFA 註冊原則
-          href: howto-mfa-policy.md
-        - name: 設定登入風險原則
-          href: howto-sign-in-risk-policy.md
-        - name: 設定使用者風險原則
-          href: howto-user-risk-policy.md
-        - name: 關閉進行中的風險事件
-          href: howto-close-active-risk-events.md
-        - name: 解除封鎖使用者
-          href: howto-unblock-user.md
-        - name: 模擬風險事件
-          href: playbook.md
-        - name: 常見問題集
-          href: faqs.md
-    - name: 身分識別保護 (已重新整理)
-      items:
-        - name: 概觀
-          href: overview-v2.md
-        - name: 安全性概觀
-          href: security-overview.md
-        - name: 調查有風險的使用者和登入記錄
-          href: howto-investigate-risky-users-signins.md
+          href: howto-identity-protection-configure-mfa-policy.md
         - name: 設定風險原則
-          href: howto-configure-risk-policies.md
-        - name: 改善偵測精確度
-          href: howto-improve-detection-accuracy.md
-        - name: 常見問題和已知問題
-          href: known-issues.md
+          href: howto-identity-protection-configure-risk-policies.md
+    - name: 模擬風險偵測
+      href: howto-identity-protection-simulate-risk.md
+    - name: 調查和補救
+      items:
+        - name: 調查風險
+          href: howto-identity-protection-investigate-risk.md
+        - name: 補救風險偵測和解除封鎖
+          href: howto-identity-protection-remediate-unblock.md
+        - name: 使用 Microsoft Graph API
+          href: howto-identity-protection-graph-api.md
+    - name: 提供風險偵測的意見反應
+      href: howto-identity-protection-risk-feedback.md
+    - name: 常見問題集
+      href: troubleshooting-identity-protection-faq.md
 - name: 參考
   items:
-    - name: 使用 Microsoft Graph API
-      href: graph-get-started.md
-    - name: 風險事件
-      href: risk-events-reference.md
+    - name: 圖形 API
+      items:
+        - name: riskDetection API
+          href: /graph/api/resources/riskdetection?view=graph-rest-v1.0
+        - name: riskyUsers API
+          href: /graph/api/resources/riskyuser?view=graph-rest-v1.0
+        - name: signIn API
+          href: /graph/api/resources/signin?view=graph-rest-v1.0
     - name: 詞彙
-      href: glossary.md
+      href: reference-identity-protection-glossary.md
 - name: 資源
   items:
     - name: Azure 意見反應論壇
       href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
-    - name: MSDN 論壇
-      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=WindowsAzureAD'
-    - name: 價格
+    - name: Microsoft 問與答頁面
+      href: 'https://docs.microsoft.com/answers/topics/azure-active-directory.html'
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/active-directory/'
     - name: 服務更新
       href: ../fundamentals/whats-new.md
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'
     - name: 影片
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory'

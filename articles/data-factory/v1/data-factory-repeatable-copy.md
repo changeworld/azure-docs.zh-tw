@@ -1,24 +1,23 @@
 ---
-title: Azure Data Factory 中的可重複複製 | Microsoft Docs
+title: Azure Data Factory 中的可重複複製
 description: 了解如何在即使將複製資料的配量執行多次的情況下，也能避免產生重複的項目。
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 editor: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 20c916275acd6bb79675c592711b17b277c9fc78
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7188cb5774699fc6e31fc3b8c78068bb33c6f552
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60605204"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84707288"
 ---
 # <a name="repeatable-copy-in-azure-data-factory"></a>Azure Data Factory 中的可重複複製
 
@@ -111,7 +110,7 @@ ID    Product        Quantity    ModifiedDate
 
 Azure Data Factory 會基於可重複性目的使用此資料行，且在過程中 Azure Data Factory 不會對資料表進行任何結構描述變更。 如何使用這個方法：
 
-1. 在目的地 SQL 資料表中定義一個「二進位 (32)」類型的資料行。 此資料行不應該有任何條件約束。 讓我們針對此範例將這個資料行命名為 AdfSliceIdentifier。
+1. 在目的地 SQL 資料表中定義 binary 類型的資料行 **（32）** 。 此資料行不應該有任何條件約束。 讓我們針對此範例將這個資料行命名為 AdfSliceIdentifier。
 
 
     來源資料表：

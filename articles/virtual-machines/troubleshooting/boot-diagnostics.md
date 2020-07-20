@@ -3,27 +3,26 @@ title: Azure 中的 VM 開機診斷 | Microsoft Docs
 description: Azure 中的虛擬機器兩個偵錯功能的概觀
 services: virtual-machines
 author: Deland-Han
-manager: jeconnoc
+manager: dcscontentpm
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: delhan
-ms.openlocfilehash: 59602977c1b7f6dd0524c6535d8458d3eb1a3f26
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: fe2427d008b49daa6222ca981994f0dc2fbea355
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60505850"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "79476581"
 ---
 # <a name="how-to-use-boot-diagnostics-to-troubleshoot-virtual-machines-in-azure"></a>如何使用開機診斷對 Azure 中的虛擬機器進行疑難排解
 
-有許多原因會讓虛擬機器進入無法開機的狀態。 若要針對使用 Resource Manager 部署模型所建立的虛擬機器，解決其所遇到的問題，您可以使用下列偵錯功能：Azure 虛擬機器的主控台輸出和螢幕擷取畫面支援。 
+有許多原因會讓虛擬機器進入無法開機的狀態。 若要解決使用 Resource Manager 部署模型所建立之虛擬機器的問題，您可以使用下列偵錯工具功能： Azure 虛擬機器的主控台輸出和螢幕擷取畫面支援。 
 
-若為 Linux 虛擬機器，您可以在入口網站檢視主控台記錄的輸出。 若為 Windows 和 Linux 虛擬機器，Azure 可讓您從 Hypervisor 查看 VM 的螢幕擷取畫面。 所有區域中的 Azure 虛擬機器都支援這兩項功能。 請注意，螢幕擷取畫面和輸出最多可能需要 10 分鐘的時間才會出現在您的儲存體帳戶中。
+若為 Linux 虛擬機器，您可以在入口網站檢視主控台記錄的輸出。 若為 Windows 和 Linux 虛擬機器，Azure 可讓您從 Hypervisor 查看 VM 的螢幕擷取畫面。 所有區域中的 Azure 虛擬機器都支援這兩項功能。 請注意，螢幕擷取畫面和輸出最多可能需要10分鐘的時間才會出現在您的儲存體帳戶中。
 
-您可以選取 [開機診斷] 選項來檢視記錄和螢幕擷取畫面。
+您可以選取 [開機診斷]**** 選項來檢視記錄和螢幕擷取畫面。
 
 ![Resource Manager](./media/virtual-machines-common-boot-diagnostics/screenshot1.png)
 
@@ -47,7 +46,7 @@ ms.locfileid: "60505850"
 
 下列程序適用於使用 Resource Manager 部署模型所建立的虛擬機器。
 
-在 [管理] 索引標籤上的 [監視] 區段中，確定 [開機診斷] 已開啟。 從 [診斷儲存體帳戶] 下拉式清單中，選取要用來放置診斷檔案的儲存體帳戶。
+在 [管理]**** 索引標籤上的 [監視]**** 區段中，確定 [開機診斷]**** 已開啟。 從 [診斷儲存體帳戶]**** 下拉式清單中，選取要用來放置診斷檔案的儲存體帳戶。
  
 ![建立 VM](./media/virtual-machines-common-boot-diagnostics/enable-boot-diagnostics-vm.png)
 
@@ -79,15 +78,15 @@ ms.locfileid: "60505850"
 }
 ```
 
-如需如何使用範本來部署資源的詳細資訊，請參閱[快速入門：使用 Azure 入口網站建立及部署 Azure Resource Manager 範本](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)。
+如需使用範本部署資源的詳細資訊，請參閱[快速入門：使用 Azure 入口網站建立和部署 Azure Resource Manager 範本](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)。
 
 ## <a name="enable-boot-diagnostics-on-existing-virtual-machine"></a>在現有的虛擬機器上啟用開機診斷 
 
 若要在現有的虛擬機器上啟用開機診斷功能，請遵循下列步驟：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)，然後選取虛擬機器。
-2. 在 [支援 + 疑難排解] 區段中，選取 [開機診斷]，然後選取 [設定] 索引標籤。
-3. 在 [開機診斷] 設定中，將狀態變更為 [開啟]，然後從 [儲存體帳戶] 下拉式清單選取儲存體帳戶。 
+2. 在 [支援 + 疑難排解]**** 區段中，選取 [開機診斷]****，然後選取 [設定]**** 索引標籤。
+3. 在 [開機診斷]**** 設定中，將狀態變更為 [開啟]****，然後從 [儲存體帳戶]**** 下拉式清單選取儲存體帳戶。 
 4. 儲存變更。
 
     ![更新現有的 VM](./media/virtual-machines-common-boot-diagnostics/enable-for-existing-vm.png)

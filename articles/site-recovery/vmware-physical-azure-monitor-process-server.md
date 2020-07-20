@@ -1,100 +1,102 @@
 ---
 title: 監視 Azure Site Recovery 處理序伺服器
-description: 本文說明如何監視 Azure Site Recovery 處理序伺服器。
+description: 本文說明如何監視用於 VMware VM/實體伺服器災害復原的 Azure Site Recovery 處理序伺服器
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 08/24/2019
-ms.author: rayne
-ms.openlocfilehash: 5fac369f15edb3ef0be31d3dc7d7434104c18dfe
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.date: 11/14/2019
+ms.author: raynew
+ms.openlocfilehash: eebaa70cee99380ac67b8f6516a5b08ff2832c86
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64928163"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134730"
 ---
 # <a name="monitor-the-process-server"></a>監視處理序伺服器
 
-本文說明如何監視[Site Recovery](site-recovery-overview.md)處理序伺服器。
+本文說明如何監視 [Site Recovery](site-recovery-overview.md) 處理序伺服器。
 
-- 您設定內部部署 VMware Vm 和實體伺服器至 Azure 的災害復原時，會使用處理序伺服器。
-- 根據預設處理序伺服器會在組態伺服器上執行。 當您部署組態伺服器時，它是預設情況下進行安裝。
-- （選擇性） 若要擴充和處理大量的複寫機器及更高的磁碟區的複寫流量，您可以部署額外、 向外延展處理序伺服器。
+- 當您將內部部署 VMware VM 和實體伺服器的災害復原目的地設定為 Azure 時，便會使用處理序伺服器。
+- 根據預設，處理序伺服器會在設定伺服器上執行。 當您部署設定伺服器時，便會依預設安裝處理序伺服器。
+- (選擇性) 若要擴縮和處理較大量的複寫機器以及較大量的複寫流量，您可以部署額外的擴增處理序伺服器。
 
-[了解更多](vmware-physical-azure-config-process-server-overview.md)有關角色和處理序伺服器的部署。
+[深入了解](vmware-physical-azure-config-process-server-overview.md)處理序伺服器的角色和部署。
 
 ## <a name="monitoring-overview"></a>監視概觀
 
-因為處理序伺服器有這麼多的角色，特別是在複寫的資料快取、 壓縮和傳輸到 Azure，務必監視持續的處理序伺服器健全狀況。
+由於處理序伺服器有如此多角色，特別是在複寫的資料快取、壓縮和傳輸至 Azure，因此請務必持續監視處理伺服器的健康情況。
 
-有許多情況下，通常會影響處理序伺服器的效能。 影響效能的問題會影響階層式 VM 健康情況，最終將處理序伺服器和其複寫的機器推送至 「 重大 」 狀態。 下列情況：
+有幾種常見情況會影響處理序伺服器的效能。 影響效能的問題會對 VM 的健康情況產生串聯效果，最終會將處理序伺服器和其複寫機器推入危急狀態。 這些情況包括：
 
-- 大量的 Vm 會使用處理序伺服器，接近或超過建議的限制。
-- 使用處理序伺服器的 Vm 具有高變換率。
-- Vm 與處理序伺服器之間的網路輸送量並無法複寫資料上傳至處理序伺服器。
-- 處理序伺服器與 Azure 之間的網路輸送量不足，無法上傳至 Azure 的複寫資料從處理序伺服器。
+- 大量 VM 使用處理序伺服器，接近或超過建議的限制。
+- 使用處理序伺服器的 VM 具有高變換率。
+- VM 與處理序伺服器之間的網路輸送量不足，無法將複寫資料上傳到處理序伺服器。
+- 處理序伺服器與 Azure 之間的網路輸送量不足，無法將複寫資料從處理序伺服器上傳至 Azure。
 
-所有這些問題可能會影響 Vm 的復原點目標 (RPO)。 
+這些問題都會影響 VM 的復原點目標 (RPO)。 
 
-**為什麼？** 因為 vm 產生復原點需要有一個共同的點在 VM 上的所有磁碟。 如果一個磁碟有高的變換率、 複寫變慢，或處理序伺服器並不太，它會影響如何有效率地建立復原點。
+**原因為何？** 由於產生 VM 的復原點需要 VM 上的所有磁碟有共有點。 如果某個磁碟的變換率較高、複寫速度很慢，或處理序伺服器不是處於最佳狀態，就會影響復原點的建立效率。
 
 ## <a name="monitor-proactively"></a>主動監視
 
-若要避免問題處理序伺服器，請務必：
+若要避免處理序伺服器發生問題，請務必：
 
-- 了解使用的處理序伺服器的特定需求[容量和調整指引](site-recovery-plan-capacity-vmware.md#capacity-considerations)，請確定處理序伺服器會部署並根據建議執行。
-- 監視警示，並針對問題進行疑難排解，產生時，若要將有效地執行的處理序伺服器。
+- 使用[容量和大小指引](site-recovery-plan-capacity-vmware.md#capacity-considerations)了解處理伺服器的特定需求，並確定處理序伺服器已根據建議完成部署並執行。
+- 監視警示，並針對發生的問題進行疑難排解，讓處理序伺服器保持有效率地運作。
 
 
 ## <a name="process-server-alerts"></a>處理序伺服器警示
 
-處理序伺服器會產生健康情況警示，在下表中彙總的數字。
+處理序伺服器會產生一些健康情況警示，其彙總於下表。
 
 **警示類型** | **詳細資料**
 --- | ---
 ![Healthy][green] | 處理序伺服器已連線且狀況良好。
 ![警告][yellow] | 過去 15 分鐘內的 CPU 使用率 > 80%
-![警告][yellow] | 過去 15 分鐘內的記憶體使用方式 > 80%
-![警告][yellow] | 快取資料夾的可用空間 < 30%的過去 15 分鐘
-![警告][yellow] | 過去 15 分鐘內未執行的處理序伺服器服務
-![重要][red] | CPU 使用率 > 95%長達過去 15 分鐘
-![重要][red] | 記憶體使用量 > 95%長達過去 15 分鐘
-![重要][red] | 快取資料夾的可用空間 < 25%過去 15 分鐘
-![重要][red] | 從處理序伺服器，15 分鐘沒有活動訊號。
+![警告][yellow] | 過去 15 分鐘內記憶體使用量 > 80%
+![警告][yellow] | 過去 15 分鐘內快取資料夾可用空間 < 30%
+![警告][yellow] | Site Recovery 每隔五分鐘監視一次擱置/傳出的資料，且估計處理序伺服器快取中的資料無法在 30 分鐘內上傳至 Azure。
+![警告][yellow] | 處理序伺服器服務在過去 15 分鐘內未執行
+![重大][red] | 過去 15 分鐘內的 CPU 使用率 > 95%
+![重大][red] | 過去 15 分鐘內記憶體使用量 > 95%
+![重大][red] | 過去 15 分鐘內快取資料夾可用空間 < 25%
+![重大][red] | Site Recovery 每隔五分鐘監視一次擱置/傳出的資料，且估計處理序伺服器快取中的資料無法在 45 分鐘內上傳至 Azure。
+![重大][red] | 處理序伺服器已有 15 分鐘未傳來任何活動訊號。
 
 ![資料表索引鍵](./media/vmware-physical-azure-monitor-process-server/table-key.png)
 
 > [!NOTE]
-> 處理序伺服器的整體健全狀況狀態根據產生的最差警示。
+> 處理序伺服器的整體健全狀態取決於產生的最糟糕警示。
 
 
 
-## <a name="monitor-process-server-health"></a>監視處理序伺服器健全狀況
+## <a name="monitor-process-server-health"></a>監視處理伺服器健康狀態
 
-您可以監視您的處理序伺服器的健全狀況狀態，如下所示： 
+您可以監視處理序伺服器的健全狀態，如下所示： 
 
-1. 若要監視的複寫健康情況和複寫的機器，以及其處理序伺服器，在保存庫中的狀態 >**複寫的項目**，按一下您想要監視的機器。
-2. 在 **複寫健康情況**，您可以監視 VM 健康情況狀態。 按一下向下切入，取得錯誤詳細資料的狀態。
+1. 若要監視複寫電腦及其處理序伺服器的複寫健康情況和狀態，請在保存庫 > [複寫的項目] 中，按一下您要監視的電腦。
+2. 在 [複寫健康情況] 中，您可以監視 VM 的健全狀態。 按一下狀態即可向下切入以取得錯誤詳細資料。
 
-    ![VM 儀表板中的處理序伺服器健全狀況](./media/vmware-physical-azure-monitor-process-server/vm-ps-health.png)
+    ![VM 儀表板中的處理序伺服器健康情況](./media/vmware-physical-azure-monitor-process-server/vm-ps-health.png)
 
-4. 在 **處理序伺服器健全狀況**，您可以監視處理序伺服器的狀態。 如需詳細資料向下切入。
+4. 在 [處理序伺服器健康情況] 中，您可以監視處理序伺服器的狀態。 向下切入以取得詳細資料。
 
     ![VM 儀表板中的處理序伺服器詳細資料](./media/vmware-physical-azure-monitor-process-server/ps-summary.png)
 
-5. 健康狀態也可以監視的 VM 上使用的圖形表示。
-    - 向外延展處理序伺服器會反白顯示為橙色，如果有與其建立關聯的警告和紅色，如果有任何重大的問題。 
-    - 如果處理序伺服器在預設部署組態伺服器上執行，然後在組態伺服器就會反白據此。
-    - 若要向下切入，按一下組態伺服器或處理序伺服器。 請注意任何問題，而且任何補救建議。
+5. 您也可以使用 VM 頁面上的圖形表示法來監視健康情況。
+    - 如果有相關聯的警告，則擴增處理序伺服器將會以橙色醒目提示，如果有任何危急問題，則會以紅色醒目提示。 
+    - 如果處理序伺服器正在設定伺服器上的預設部署中執行，則設定伺服器會據以醒目提示。
+    - 若要向下切入，請按一下設定伺服器或處理序伺服器。 請注意任何問題，以及任何補救建議。
 
-您也可以監視處理序下的保存庫中的伺服器**Site Recovery 基礎結構**。 在 **管理 Site Recovery 基礎結構**，按一下**組態伺服器**。 選取組態伺服器相關聯的處理序伺服器和向下切入往下到處理序伺服器詳細資料。
+您也可以在 [Site Recovery 基礎結構] 底下，監視保存庫中的處理序伺服器。 在 [管理 Site Recovery 基礎結構] 中，按一下 [設定伺服器]。 選取與處理序伺服器相關聯的設定伺服器，然後向下切入以取得處理序伺服器的詳細資料。
 
 
 ## <a name="next-steps"></a>後續步驟
 
-- 如果您有任何處理伺服器的問題，請依照我們[疑難排解指引](vmware-physical-azure-troubleshoot-process-server.md)
-- 如果您需要更多協助，請將您的問題貼到 [Azure Site Recovery 論壇](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr) \(英文\) 中。 
+- 如果您有任何處理序伺服器問題，請遵循我們的[疑難排解指引](vmware-physical-azure-troubleshoot-process-server.md)
+- 如果您需要更多協助，請將您的問題貼到 [Azure Site Recovery 的 Microsoft 問與答頁面](/answers/topics/azure-site-recovery.html)。 
 
 [green]: ./media/vmware-physical-azure-monitor-process-server/green.png
 [yellow]: ./media/vmware-physical-azure-monitor-process-server/yellow.png

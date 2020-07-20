@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
-ms.openlocfilehash: eb7deacc068661ca9a4f473ee2d36b7d4464c81c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b06deadae15a8176a49bed88a53884df2b71e473
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60199438"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82189457"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Azure Cloud Shell 的疑難排解和限制
 
@@ -29,63 +29,74 @@ ms.locfileid: "60199438"
 
 ## <a name="general-troubleshooting"></a>一般疑難排解
 
+### <a name="error-running-azuread-cmdlets-in-powershell"></a>在 PowerShell 中執行 AzureAD Cmdlet 時發生錯誤
+
+- **詳細資料**：當您執行如 Cloud Shell 中的 AzureAD Cmdlet 時 `Get-AzureADUser` ，您可能會看到錯誤： `You must call the Connect-AzureAD cmdlet before calling any other cmdlets` 。 
+- **解決**方式：執行 `Connect-AzureAD` Cmdlet。 之前，Cloud Shell 會在 PowerShell 啟動期間自動執行此 Cmdlet。 為了加速開始時間，Cmdlet 不會再自動執行。 您可以 `Connect-AzureAD` 在 PowerShell 中新增至 $PROFILE 檔案，以選擇還原先前的行為。
+
 ### <a name="early-timeouts-in-firefox"></a>在 FireFox 中提前逾時
 
 - **詳細資料**：Cloud Shell 會利用開放式 Websocket 將輸入/輸出傳遞至瀏覽器。 FireFox 預設的原則會提早關閉 Websocket，而造成在 Cloud Shell 中提前逾時。
-- **解決方案**︰開啟 FireFox，然後在 URL 方塊中瀏覽至 "about:config"。 搜尋 "network.websocket.timeout.ping.request"，然後將值從 0 變更為 10。
+- **解決辦法**：開啟 FireFox，然後在 URL 方塊中瀏覽至 "about:config"。 搜尋 "network.websocket.timeout.ping.request"，然後將值從 0 變更為 10。
 
 ### <a name="disabling-cloud-shell-in-a-locked-down-network-environment"></a>在鎖定的網路環境中停用 Cloud Shell
 
-- **詳細資料**：建議系統管理員阻止其使用者存取 Cloud Shell。 Cloud Shell 存取 `ux.console.azure.com` 網域時可能會遭到拒絕，進而停止任何對 Cloud Shell 進入點的存取，例如 portal.azure.com、shell.azure.com、Visual Studio Code 的 Azure 帳戶擴充及 docs.microsoft.com。
-- **解決方案**︰透過環境的網路設定來限制 `ux.console.azure.com` 的存取權。 Cloud Shell 圖示仍會顯示在 portal.azure.com 中，但無法成功連線至該服務。
+- **詳細資料**：建議系統管理員阻止其使用者存取 Cloud Shell。 Cloud Shell 利用網域的存取權， `ux.console.azure.com` 這可能會遭到拒絕，並停止對 Cloud Shell 的 e 的任何存取，包括 portal.azure.com、shell.azure.com、Visual Studio Code Azure 帳戶延伸模組，以及 docs.microsoft.com。 在美國政府雲端中，entrypoint 是 `ux.console.azure.us` ; 沒有對應的 shell.azure.us。
+- **解決**方式：透過 `ux.console.azure.com` 網路設定限制對您環境的存取權 `ux.console.azure.us` 。 Cloud Shell 圖示仍會存在於 Azure 入口網站中，但無法成功連線到服務。
 
 ### <a name="storage-dialog---error-403-requestdisallowedbypolicy"></a>儲存體對話方塊 - 錯誤：403 RequestDisallowedByPolicy
 
-- **詳細資料**：因為您的系統管理員設置的 Azure 原則，透過 Cloud Shell 建立儲存體帳戶失敗。錯誤訊息包括：`The resource action 'Microsoft.Storage/storageAccounts/write' is disallowed by one or more policies.`
-- **解決方案**︰連絡您的 Azure 系統管理員，請他移除或更新拒絕儲存體建立的 Azure 原則。
+- **詳細資料**：透過 Cloud Shell 建立儲存體帳戶時，會因為系統管理員所放置的 Azure 原則指派而不成功。錯誤訊息將包含：`The resource action 'Microsoft.Storage/storageAccounts/write' is disallowed by one or more policies.`
+- **解決**方式：請洽詢您的 Azure 系統管理員，以移除或更新拒絕儲存體建立的 Azure 原則指派。
 
 ### <a name="storage-dialog---error-400-disallowedoperation"></a>儲存體對話方塊 - 錯誤：400 DisallowedOperation
 
 - **詳細資料**：使用 Azure Active Directory 訂用帳戶時，您無法建立儲存體。
-- **解決方案**︰使用能夠建立儲存體資源的 Azure 訂用帳戶。 Azure AD 訂用帳戶無法建立 Azure 資源。
+- **解決方式**：使用能夠建立儲存體資源的 Azure 訂用帳戶。 Azure AD 訂用帳戶無法建立 Azure 資源。
 
-### <a name="terminal-output---error-failed-to-connect-terminal-websocket-cannot-be-established-press-enter-to-reconnect"></a>終端機輸出 - 錯誤：無法與終端機連線：無法建立 websocket。 按 `Enter` 重新連線。
+### <a name="terminal-output---error-failed-to-connect-terminal-websocket-cannot-be-established-press-enter-to-reconnect"></a>終端機輸出 - 錯誤：無法與終端機連線: 無法建立 websocket。 按 `Enter` 重新連線。
 - **詳細資料**：Cloud Shell 必須能夠與 Cloud Shell 基礎結構建立 websocket 連線。
-- **解決方案**︰確認您已將您的網路設定設定為啟用傳送 https 要求和 websocket 要求至 *.console.azure.com 中的網域。
+- **解決辦法**：確認您已將您的網路設定設定為啟用傳送 https 要求和 websocket 要求至 *.console.azure.com 中的網域。
 
 ### <a name="set-your-cloud-shell-connection-to-support-using-tls-12"></a>設定您的 Cloud Shell 連線以支援使用 TLS 1.2
- - **詳細資料**：若要定義 Cloud Shell 連線的 TLS 版本，您必須設定瀏覽器特有的設定。
- - **解決方案**︰瀏覽至瀏覽器的安全性設定，然後選取 [使用 TLS 1.2] 旁的核取方塊。
+ - **詳細資料**：若要定義 Cloud Shell 連接的 TLS 版本，您必須設定瀏覽器特定的設定。
+ - **解決方式**：瀏覽至瀏覽器的安全性設定，然後選取 [使用 TLS 1.2] 旁的核取方塊。
 
 ## <a name="bash-troubleshooting"></a>Bash 疑難排解
 
 ### <a name="cannot-run-the-docker-daemon"></a>無法執行 Docker 精靈
 
 - **詳細資料**：Cloud Shell 會運用容器來裝載您的殼層環境，因此系統會不允許執行精靈。
-- **解決方案**︰運用預設安裝的 [docker-machine](https://docs.docker.com/machine/overview/) 以從遠端 Docker 主機管理 Docker 容器。
+- **解決方式**：運用預設安裝的 [docker-machine](https://docs.docker.com/machine/overview/) 以從遠端 Docker 主機管理 Docker 容器。
 
 ## <a name="powershell-troubleshooting"></a>PowerShell 疑難排解
 
 ### <a name="gui-applications-are-not-supported"></a>不支援 GUI 應用程式
 
 - **詳細資料**：使用者啟動 GUI 應用程式時，不會傳回提示。 例如，當使用者複製已啟用雙因素驗證的私人 GitHub 存放庫時，會顯示一個對話方塊，用以完成雙因素驗證。
-- **解決方案**︰關閉並重新開啟殼層。
+- **解決方式**：關閉並重新開啟殼層。
 
 ### <a name="troubleshooting-remote-management-of-azure-vms"></a>針對 Azure VM 遠端管理進行疑難排解
 > [!NOTE]
 > Azure VM 必須具有公用 IP 位址。
 
 - **詳細資料**：基於 WinRM 的預設 Windows 防火牆設定，使用者可能會看到下列錯誤：`Ensure the WinRM service is running. Remote Desktop into the VM for the first time and ensure it can be discovered.`
-- **解決方案**︰執行 `Enable-AzVMPSRemoting`，在所有目標機器上啟用 PowerShell 遠端所有層面的功能。
+- **解決方式**：執行 `Enable-AzVMPSRemoting`，在所有目標機器上啟用 PowerShell 遠端所有層面的功能。
 
 ### <a name="dir-does-not-update-the-result-in-azure-drive"></a>`dir` 不會更新 Azure 磁碟機中的結果
 
 - **詳細資料**：根據預設，為了最佳化使用者體驗，`dir` 的結果會快取到 Azure 磁碟機中。
-- **解決方案**︰在您建立、更新或移除 Azure 資源後，請執行 `dir -force` 以更新 Azure 磁碟機中的結果。
+- **解決方式**：在您建立、更新或移除 Azure 資源後，請執行 `dir -force` 以更新 Azure 磁碟機中的結果。
 
 ## <a name="general-limitations"></a>一般限制
 
 Azure Cloud Shell 具有下列已知限制：
+
+### <a name="quota-limitations"></a>配額限制
+
+Azure Cloud Shell 的限制為每個區域每個租使用者20個並行使用者。 如果您嘗試開啟比限制更多的同時會話，將會看到「租使用者超過配額」錯誤。 如果您有合理的需要開啟更多會話，而不是這麼做（例如訓練課程），請在您預期的使用量之前，先聯絡支援人員以要求增加配額。
+
+Cloud Shell 是以免費服務的方式提供，其設計目的是用來設定您的 Azure 環境，而不是一般用途的計算平臺。 過多的自動化使用可能會被視為違反 Azure 服務條款，可能會導致 Cloud Shell 存取遭到封鎖。
 
 ### <a name="system-state-and-persistence"></a>系統狀態和持續性
 
@@ -158,9 +169,9 @@ Azure Cloud Shell 會謹慎處理您的個人資料，Azure Cloud Shell 服務�
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
 ### <a name="export"></a>匯出
-若要匯出 Cloud Shell 為您儲存的使用者設定 (例如慣用殼層、字型大小和字型)，請執行下列命令。
+若要匯出**** Cloud Shell 為您儲存的使用者設定 (例如慣用殼層、字型大小和字型)，請執行下列命令。
 
-1. [![](https://shell.azure.com/images/launchcloudshell.png "啟動 Azure Cloud Shell")](https://shell.azure.com)
+1. [![](https://shell.azure.com/images/launchcloudshell.png "Launch Azure Cloud Shell")](https://shell.azure.com)
 2. 在 Bash 或 PowerShell 中執行下列命令：
 
 Bash：
@@ -177,13 +188,13 @@ PowerShell：
   ((Invoke-WebRequest -Uri https://management.azure.com/providers/Microsoft.Portal/usersettings/cloudconsole?api-version=2017-12-01-preview -Headers @{Authorization = "Bearer $token"}).Content | ConvertFrom-Json).properties | Format-List
 ```
 
-### <a name="delete"></a>Delete
-若要刪除 Cloud Shell 為您儲存的使用者設定 (例如慣用殼層、字型大小和字型)，請執行下列命令。 下次您啟動 Cloud Shell 時，系統會要求您再次設置檔案共用。 
+### <a name="delete"></a>刪除
+若要刪除**** Cloud Shell 為您儲存的使用者設定 (例如慣用殼層、字型大小和字型)，請執行下列命令。 下次您啟動 Cloud Shell 時，系統會要求您再次設置檔案共用。 
 
 >[!Note]
 > 如果您刪除您的使用者設定，實際的 Azure 檔案共用將不會刪除。 請移至 Azure 檔案以完成該動作。
 
-1. [![](https://shell.azure.com/images/launchcloudshell.png "啟動 Azure Cloud Shell")](https://shell.azure.com)
+1. [![](https://shell.azure.com/images/launchcloudshell.png "Launch Azure Cloud Shell")](https://shell.azure.com)
 2. 在 Bash 或 PowerShell 中執行下列命令：
 
 Bash：
@@ -199,3 +210,8 @@ PowerShell：
   $token= ((Invoke-WebRequest -Uri "$env:MSI_ENDPOINT`?resource=https://management.core.windows.net/" -Headers @{Metadata='true'}).content |  ConvertFrom-Json).access_token
   Invoke-WebRequest -Method Delete -Uri https://management.azure.com/providers/Microsoft.Portal/usersettings/cloudconsole?api-version=2017-12-01-preview -Headers @{Authorization = "Bearer $token"}
   ```
+## <a name="azure-government-limitations"></a>Azure Government 限制
+Azure Government 中的 Azure Cloud Shell 只能透過 Azure 入口網站存取。
+
+>[!Note]
+> 目前不支援連接到 GCC-適用于 Exchange Online 的高或政府 DoD 雲端。

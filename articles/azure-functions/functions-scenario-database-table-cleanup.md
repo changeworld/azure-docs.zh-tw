@@ -1,46 +1,39 @@
 ---
-title: 使用 Azure Functions 執行資料庫清除工作 | Microsoft Docs
+title: 使用 Azure Functions 執行資料庫清除工作
 description: 使用 Azure Functions 排程可連接到 Azure SQL Database 以定期清除資料列的工作。
-services: functions
-documentationcenter: na
-author: ggailey777
-manager: jeconnoc
 ms.assetid: 076f5f95-f8d2-42c7-b7fd-6798856ba0bb
-ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 10/28/2018
-ms.author: glenga
-ms.openlocfilehash: 4ec2e9b931e6405aca5b4237bc044647af3b8bb3
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.date: 10/02/2019
+ms.openlocfilehash: 974d9da9bb5782672603f1ae8c58742941899a14
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62120665"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85254271"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>使用 Azure Functions 連接到 Azure SQL Database
 
-本文章示範如何使用 Azure Functions 建立可連線至 Azure SQL Database 執行個體的排程作業。 函式程式碼會清除資料庫中資料表中的資料列。 新的 C# 函數是根據 Visual Studio 2017 中預先定義的計時器觸發程序範本所建立。 若要支援此案例，您也必須在函式應用程式中設定資料庫連接字串以作為設定。 此案例會對資料庫使用大量作業。 
+本文說明如何使用 Azure Functions 建立連接至 Azure SQL Database 或 Azure SQL 受控執行個體的排程工作。 函式程式碼會清除資料庫中資料表中的資料列。 新的 c # 函數是根據 Visual Studio 2019 中預先定義的計時器觸發程式範本所建立。 若要支援此案例，您也必須在函式應用程式中設定資料庫連接字串以作為設定。 針對 Azure SQL 受控執行個體您必須[啟用公用端點](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)，才能從 Azure Functions 連接。 此案例會對資料庫使用大量作業。 
 
 如果這是您第一次使用 C# Functions，則您應該先閱讀 [Azure Functions C# 開發人員參考資料](functions-dotnet-class-library.md)。
 
 ## <a name="prerequisites"></a>必要條件
 
-+ 完成[使用 Visual Studio 建立第一個函式](functions-create-your-first-function-visual-studio.md)一文中的步驟，以建立一個以 2.x 版執行階段為目標的本機函數應用程式。 您還必須已將專案發佈至 Azure 中的函數應用程式。
++ 完成[使用 Visual Studio 建立您的第一個](functions-create-your-first-function-visual-studio.md)函式一文中的步驟，以建立以2.x 版或更新版本的執行時間為目標的區域函式應用程式。 您還必須已將專案發佈至 Azure 中的函數應用程式。
 
-+ 本文章將示範在 AdventureWorksLT 範例資料庫的 **SalesOrderHeader** 資料表中執行大量清除作業的 Transact-SQL 命令。 若要建立 AdventureWorksLT 範例資料庫，請完成[在 Azure 入口網站中建立 Azure SQL 資料庫](../sql-database/sql-database-get-started-portal.md)一文中的步驟。
++ 本文章將示範在 AdventureWorksLT 範例資料庫的 **SalesOrderHeader** 資料表中執行大量清除作業的 Transact-SQL 命令。 若要建立 AdventureWorksLT 範例資料庫，請完成[使用 Azure 入口網站在 Azure SQL Database 中建立資料庫](../azure-sql/database/single-database-create-quickstart.md)一文中的步驟。
 
-+ 在此快速入門中，您必須加入您所使用電腦的公用 IP 位址[伺服器層級防火牆規則](../sql-database/sql-database-get-started-portal-firewall.md)。 需要此規則才能從本機電腦存取 SQL Database 執行個體。  
++ 在此快速入門中，您必須加入您所使用電腦的公用 IP 位址[伺服器層級防火牆規則](../sql-database/sql-database-get-started-portal-firewall.md)。 需要此規則才能從您的本機電腦存取 SQL Database 實例。  
 
 ## <a name="get-connection-information"></a>取得連線資訊
 
-完成[在 Azure 入口網站中建立 Azure SQL 資料庫](../sql-database/sql-database-get-started-portal.md)時，您必須取得所建立之資料庫的連接字串。
+當您[使用 Azure 入口網站在 Azure SQL Database 中完成建立資料庫](../azure-sql/database/single-database-create-quickstart.md)時，您必須取得所建立資料庫的連接字串。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 
-1. 從左側功能表中選取 [SQL Database]，然後選取 [SQL 資料庫] 頁面上的資料庫。
+1. 從左側功能表中選取 [SQL Database]****，然後選取 [SQL 資料庫]**** 頁面上的資料庫。
 
-1. 選取 [設定] 下的 [連接字串]，然後複製完整的 **ADO.NET** 連接字串。
+1. 選取 [設定]**** 下的 [連接字串]****，然後複製完整的 **ADO.NET** 連接字串。 針對 Azure SQL 受控執行個體複製公用端點的連接字串。
 
     ![複製 ADO.NET 連接字串。](./media/functions-scenario-database-table-cleanup/adonet-connection-string.png)
 
@@ -50,11 +43,11 @@ ms.locfileid: "62120665"
 
 您必須先將應用程式發佈至 Azure。 如果您尚未這麼做，請[將您的函式應用程式發行至 Azure](functions-develop-vs.md#publish-to-azure)。
 
-1. 在 [方案總管] 中，以滑鼠右鍵按一下函數應用程式專案，然後選擇 [發佈]  >  [管理應用程式設定]。在 [新增應用程式設定名稱] 中選取 [新增設定]，輸入 `sqldb_connection`，然後選取 [確定]。
+1. 在方案總管中，以滑鼠右鍵按一下函式應用程式專案，然後選擇 [**發佈**  >  **編輯 Azure App Service 設定**]。 在 [新增應用程式設定名稱]**** 中選取 [新增設定]****，輸入 `sqldb_connection`，然後選取 [確定]****。
 
     ![函數應用程式的應用程式設定。](./media/functions-scenario-database-table-cleanup/functions-app-service-add-setting.png)
 
-1. 在新的 **sqldb_connection** 設定中，在 **Local** 欄位中貼上您在上一節中複製的連接字串，並將 `{your_username}` 和 `{your_password}` 預留位置取代為實際的值。 選取 [從本機插入值]，將更新的值複製到 **Remote** 欄位中，然後選取 [確定]。
+1. 在新的 **sqldb_connection** 設定中，在 **Local** 欄位中貼上您在上一節中複製的連接字串，並將 `{your_username}` 和 `{your_password}` 預留位置取代為實際的值。 選取 [從本機插入值]****，將更新的值複製到 **Remote** 欄位中，然後選取 [確定]****。
 
     ![新增 SQL 連接字串設定。](./media/functions-scenario-database-table-cleanup/functions-app-service-settings-connection-string.png)
 
@@ -62,29 +55,29 @@ ms.locfileid: "62120665"
 
 ## <a name="add-the-sqlclient-package-to-the-project"></a>將 SqlClient 套件加入專案
 
-您需要新增包含 SqlClient 程式庫的 NuGet 套件。 連接到 SQL Database 需要此資料存取程式庫。
+您需要新增包含 SqlClient 程式庫的 NuGet 套件。 需要此資料存取程式庫才能連接到 SQL Database。
 
-1. 在 Visual Studio 2017 中開啟您的本機函數應用程式專案。
+1. 在 Visual Studio 2019 中開啟您的本機函數應用程式專案。
 
-1. 在 [方案總管] 中，於函數應用程式上按一下滑鼠右鍵，然後選擇 [管理 NuGet 套件]。
+1. 在 [方案總管] 中，於函數應用程式上按一下滑鼠右鍵，然後選擇 [管理 NuGet 套件]****。
 
-1. 在 [瀏覽] 索引標籤上搜尋 ```System.Data.SqlClient```，並在找到後加以選取。
+1. 在 [瀏覽]**** 索引標籤上搜尋 ```System.Data.SqlClient```，並在找到後加以選取。
 
-1. 在 **System.Data.SqlClient** 頁面中，選取版本 `4.5.1`，然後按一下 [安裝]。
+1. 在 **System.Data.SqlClient** 頁面中，選取版本 `4.5.1`，然後按一下 [安裝]****。
 
-1. 當安裝完成時，檢閱所做的變更，然後按一下 [確定] 來關閉 [預覽] 視窗。
+1. 當安裝完成時，檢閱所做的變更，然後按一下 [確定]**** 來關閉 [預覽]**** 視窗。
 
-1. 如果 [授權接受] 視窗出現時，按一下 [我接受]。
+1. 如果 [授權接受] **** 視窗出現時，按一下 [我接受]****。
 
 現在，您可以加入 C# 函數程式碼來連接到 SQL Database。
 
 ## <a name="add-a-timer-triggered-function"></a>新增計時器觸發函式
 
-1. 在 [方案總管] 中，以滑鼠右鍵按一下函數應用程式專案，並依序選擇 [新增]  >  [新專案]。
+1. 在方案總管中，以滑鼠右鍵按一下函數應用程式專案，然後選擇 [**加入**  >  **新的 Azure 函數**]。
 
-1. 選取 **Azure Functions** 範本後，將新的項目命名為 `DatabaseCleanup.cs`，然後選取 [新增]。
+1. 選取 **Azure Functions** 範本後，將新的項目命名為 `DatabaseCleanup.cs`，然後選取 [新增]****。
 
-1. 在 [新增 Azure 函數] 對話方塊中，選擇 [計時器觸發程序]，然後選擇 [確定]。 此對話方塊會建立計時器觸發函數的程式碼檔。
+1. 在 [新增 Azure 函數]**** 對話方塊中，選擇 [計時器觸發程序]****，然後選擇 [確定]****。 此對話方塊會建立計時器觸發函數的程式碼檔。
 
 1. 在檔案頂端開啟新的程式碼，並加入下列 using 陳述式：
 
@@ -127,7 +120,7 @@ ms.locfileid: "62120665"
 
     在第一次執行時，您應該更新 32 個資料列。 下列執行不更新任何資料列，除非您對 SalesOrderHeader 資料表資料進行變更，以便 `UPDATE` 陳述式選取更多資料列。
 
-如果您打算[發佈此函數](functions-develop-vs.md#publish-to-azure)，請記住將 `TimerTrigger` 屬性變更為比每 15 秒更合理的 [cron 排程](functions-bindings-timer.md#cron-expressions)。
+如果您打算[發佈此函數](functions-develop-vs.md#publish-to-azure)，請記住將 `TimerTrigger` 屬性變更為比每 15 秒更合理的 [cron 排程](functions-bindings-timer.md#ncrontab-expressions)。
 
 ## <a name="next-steps"></a>後續步驟
 

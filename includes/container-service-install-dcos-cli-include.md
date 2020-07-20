@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 05/10/2016
 ms.author: rogardle
 ms.openlocfilehash: e2601d5200f0b8ebcfb856bffb871f01b3acb215
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60557516"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "67174627"
 ---
 > [!NOTE]
 > 這適用於使用 DC/OS 型 ACS 叢集時。 若是 Swarm 型 ACS 叢集，就不需要執行此工作。

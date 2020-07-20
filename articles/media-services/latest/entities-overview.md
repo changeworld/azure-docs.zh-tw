@@ -1,6 +1,7 @@
 ---
-title: 篩選、 排序、 分頁的媒體服務實體-Azure |Microsoft Docs
-description: 本文討論 Azure 媒體服務實體的篩選、排序、分頁。
+title: 媒體服務實體的篩選、排序和分頁
+titleSuffix: Azure Media Services
+description: 深入瞭解 Azure 媒體服務 v3 實體的篩選、排序和分頁。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -9,240 +10,120 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/08/2019
+ms.date: 01/21/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 28c880e8709074d808a41d9920361eaa2b20ecc4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7e4f1141a9d4bd58451782e8412063a22565556d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60732360"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80584524"
 ---
-# <a name="filtering-ordering-paging-of-media-services-entities"></a>媒體服務實體的篩選、排序、分頁
+# <a name="filtering-ordering-and-paging-of-media-services-entities"></a>媒體服務實體的篩選、排序和分頁
 
-媒體服務支援下列適用於媒體服務 v3 實體的 OData 查詢選項： 
+本主題討論當您在列出 Azure 媒體服務 v3 實體時可用的 OData 查詢選項和分頁支援。
 
-* $filter 
-* $orderby 
-* $top 
-* $skiptoken 
+## <a name="considerations"></a>考量
 
-運算子說明：
+* 屬於類型之實體的屬性 `Datetime` 一律為 UTC 格式。
+* 在您傳送要求之前，查詢字串中的空白字元應以 URL 編碼。
 
-* Eq = 等於
-* Ne = 不等於
-* Ge = 大於或等於
-* Le = 小於或等於
-* Gt = 大於
-* Lt = 小於
+## <a name="comparison-operators"></a>比較運算子
 
-屬於日期時間類型的實體屬性一律為 UTC 格式。
+您可以使用下列運算子來比較欄位與常數值：
 
-## <a name="page-results"></a>頁面結果
+等號比較運算子：
 
-如果查詢回應包含許多項目，服務會傳回 "\@odata.nextLink" 屬性，以取得下一頁的結果。 這可用來逐頁查看整個結果集。 您無法設定頁面大小。 頁面大小隨實體類型而不同，請參閱以下各節以取得詳細資訊。
+- `eq`：測試欄位是否*等於*常數值。
+- `ne`：測試欄位是否*不等於*常數值。
 
-如果逐頁查看集合時建立或刪除了實體，則所做的變更會反映在傳回的結果中 (如果這些變更屬於尚未下載的集合)。 
+範圍運算子：
 
-> [!TIP]
-> 您應一律使用「下一頁」連結來列舉集合，而不應依存於特定頁面大小。
+- `gt`：測試欄位是否*大於*常數值。
+- `lt`：測試欄位是否*小於*常數值。
+- `ge`：測試欄位是否*大於或等於*常數值。
+- `le`：測試欄位是否*小於或等於*常數值。
 
-## <a name="assets"></a>Assets
+## <a name="filter"></a>篩選
 
-### <a name="filteringordering"></a>篩選/排序
+使用 `$filter` 提供 OData 篩選參數，只尋找您感興趣的物件。
 
-下表說明篩選和排序選項如何套用至[資產](https://docs.microsoft.com/rest/api/media/assets)屬性： 
+下列 REST 範例會篩選資產的 `alternateId` 值：
 
-|名稱|Filter|順序|
-|---|---|---|
-|id|||
-|name|eq、gt、lt| 遞增和遞減|
-|properties.alternateId |eq||
-|properties.assetId |eq||
-|properties.container |||
-|properties.created| eq、gt、lt| 遞增和遞減|
-|properties.description |||
-|properties.lastModified |||
-|properties.storageAccountName |||
-|properties.storageEncryptionFormat | ||
-|type|||
+```
+GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01&$filter=properties/alternateId%20eq%20'unique identifier'
+```
 
-下列 C# 範例會以建立日期篩選：
+下列 c # 範例會篩選資產的建立日期：
 
 ```csharp
 var odataQuery = new ODataQuery<Asset>("properties/created lt 2018-05-11T17:39:08.387Z");
 var firstPage = await MediaServicesArmClient.Assets.ListAsync(CustomerResourceGroup, CustomerAccountName, odataQuery);
 ```
 
-### <a name="pagination"></a>分頁 
+## <a name="order-by"></a>排序依據
 
-在四個已啟用的分類排序中，每一個皆可支援分頁。 目前的頁面大小為 1000。
-
-#### <a name="c-example"></a>C# 範例
-
-下列 C# 範例會示範如何列舉帳戶中的所有資產。
-
-```csharp
-var firstPage = await MediaServicesArmClient.Assets.ListAsync(CustomerResourceGroup, CustomerAccountName);
-
-var currentPage = firstPage;
-while (currentPage.NextPageLink != null)
-{
-    currentPage = await MediaServicesArmClient.Assets.ListNextAsync(currentPage.NextPageLink);
-}
-```
-
-#### <a name="rest-example"></a>REST 範例
-
-請參考下列使用 $skiptoken 的範例。 請務必將 amstestaccount 取代為您的帳戶名稱，並將 api-version 值設為最新版本。
-
-如果您要求的資產清單如下：
+使用 `$orderby` ，依指定的參數排序傳回的物件。 例如：  
 
 ```
-GET  https://management.azure.com/subscriptions/00000000-3761-485c-81bb-c50b291ce214/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01 HTTP/1.1
+GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01$orderby=properties/created%20gt%202018-05-11T17:39:08.387Z
+```
+
+若要以遞增或遞減順序排序結果，請將 `asc` 或附加 `desc` 至功能變數名稱，並以空格分隔。 例如： `$orderby properties/created desc` 。
+
+## <a name="skip-token"></a>略過權杖
+
+如果查詢回應包含許多專案，則服務會傳回一個 `$skiptoken` （ `@odata.nextLink` ）值，讓您用來取得下一個結果頁面。 使用它來逐頁查看整個結果集。
+
+在媒體服務 v3 中，您無法設定頁面大小。 頁面大小會因實體的類型而異。 閱讀下列各節以取得詳細資料。
+
+當您在分頁時建立或刪除實體時，這些變更會反映在傳回的結果中（如果這些變更是在尚未下載之集合的部分中）。
+
+> [!TIP]
+> 請一律使用 `nextLink` 來列舉集合，而不會相依于特定頁面大小。
+>
+> `nextLink`只有當實體有多個頁面時，才會出現此值。
+
+請考慮下列使用的範例 `$skiptoken` 。 請務必將 amstestaccount** 取代為您的帳戶名稱，並將 api-version** 值設為最新版本。
+
+如果您要求的資產清單如下所示：
+
+```
+GET  https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01 HTTP/1.1
 x-ms-client-request-id: dd57fe5d-f3be-4724-8553-4ceb1dbe5aab
 Content-Type: application/json; charset=utf-8
 ```
 
-您將會收到如下所示的回應：
+您會得到類似下面的回應：
 
 ```
 HTTP/1.1 200 OK
- 
+
 {
 "value":[
 {
-"name":"Asset 0","id":"/subscriptions/00000000-3761-485c-81bb-c50b291ce214/resourceGroups/mediaresources/providers/Microsoft.Media/mediaservices/amstestaccount/assets/Asset 0","type":"Microsoft.Media/mediaservices/assets","properties":{
-"assetId":"00000000-5a4f-470a-9d81-6037d7c23eff","created":"2018-12-11T22:12:44.98Z","lastModified":"2018-12-11T22:15:48.003Z","container":"asset-98d07299-5a4f-470a-9d81-6037d7c23eff","storageAccountName":"amsdevc1stoaccount11","storageEncryptionFormat":"None"
+"name":"Asset 0","id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaservices/amstestaccount/assets/Asset 0","type":"Microsoft.Media/mediaservices/assets","properties":{
+"assetId":"00000000-0000-0000-0000-000000000000","created":"2018-12-11T22:12:44.98Z","lastModified":"2018-12-11T22:15:48.003Z","container":"asset-00000000-0000-0000-0000-0000000000000","storageAccountName":"amsacctname","storageEncryptionFormat":"None"
 }
 },
 // lots more assets
 {
-"name":"Asset 517","id":"/subscriptions/00000000-3761-485c-81bb-c50b291ce214/resourceGroups/mediaresources/providers/Microsoft.Media/mediaservices/amstestaccount/assets/Asset 517","type":"Microsoft.Media/mediaservices/assets","properties":{
-"assetId":"00000000-912e-447b-a1ed-0f723913b20d","created":"2018-12-11T22:14:08.473Z","lastModified":"2018-12-11T22:19:29.657Z","container":"asset-fd05a503-912e-447b-a1ed-0f723913b20d","storageAccountName":"amsdevc1stoaccount11","storageEncryptionFormat":"None"
+"name":"Asset 517","id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaservices/amstestaccount/assets/Asset 517","type":"Microsoft.Media/mediaservices/assets","properties":{
+"assetId":"00000000-0000-0000-0000-000000000000","created":"2018-12-11T22:14:08.473Z","lastModified":"2018-12-11T22:19:29.657Z","container":"asset-00000000-0000-0000-0000-000000000000","storageAccountName":"amsacctname","storageEncryptionFormat":"None"
 }
 }
-],"@odata.nextLink":"https:// management.azure.com/subscriptions/00000000-3761-485c-81bb-c50b291ce214/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01&$skiptoken=Asset+517"
+],"@odata.nextLink":"https:// management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01&$skiptoken=Asset+517"
 }
 ```
 
 然後您會藉由傳送 get 要求來要求下一個頁面：
 
 ```
-https://management.azure.com/subscriptions/00000000-3761-485c-81bb-c50b291ce214/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01&$skiptoken=Asset+517
+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01&$skiptoken=Asset+517
 ```
 
-如需其他 REST 範例，請參閱[資產 - 清單](https://docs.microsoft.com/rest/api/media/assets/list)
-
-## <a name="content-key-policies"></a>內容金鑰原則
-
-### <a name="filteringordering"></a>篩選/排序
-
-下表說明這些選項如何套用至[內容金鑰原則](https://docs.microsoft.com/rest/api/media/contentkeypolicies)屬性： 
-
-|名稱|Filter|順序|
-|---|---|---|
-|id|||
-|name|eq、ne、ge、le、gt、lt|遞增和遞減|
-|properties.created |eq、ne、ge、le、gt、lt|遞增和遞減|
-|properties.description |eq、ne、ge、le、gt、lt||
-|properties.lastModified|eq、ne、ge、le、gt、lt|遞增和遞減|
-|properties.options |||
-|properties.policyId|eq、ne||
-|type|||
-
-### <a name="pagination"></a>分頁
-
-在四個已啟用的分類排序中，每一個皆可支援分頁。 目前的頁面大小為 10。
-
-下列 C# 範例說明如何列舉帳戶中的所有**內容金鑰原則**。
-
-```csharp
-var firstPage = await MediaServicesArmClient.ContentKeyPolicies.ListAsync(CustomerResourceGroup, CustomerAccountName);
-
-var currentPage = firstPage;
-while (currentPage.NextPageLink != null)
-{
-    currentPage = await MediaServicesArmClient.ContentKeyPolicies.ListNextAsync(currentPage.NextPageLink);
-}
-```
-
-如需 REST 範例，請參閱[內容金鑰原則 - 清單 (英文)](https://docs.microsoft.com/rest/api/media/contentkeypolicies/list)
-
-## <a name="jobs"></a>工作
-
-### <a name="filteringordering"></a>篩選/排序
-
-下表說明這些選項如何套用至[作業](https://docs.microsoft.com/rest/api/media/jobs)屬性： 
-
-| 名稱    | Filter                        | 順序 |
-|---------|-------------------------------|-------|
-| name                    | eq            | 遞增和遞減|
-| properties.state        | eq、ne        |                         |
-| properties.created      | gt、ge、lt、le| 遞增和遞減|
-| properties.lastModified | gt、ge、lt、le | 遞增和遞減| 
-
-### <a name="pagination"></a>分頁
-
-媒體服務 v3 支援分頁作業。
-
-下列 C# 範例會示範如何列舉帳戶中的作業。
-
-```csharp            
-List<string> jobsToDelete = new List<string>();
-var pageOfJobs = client.Jobs.List(config.ResourceGroup, config.AccountName, "Encode");
-
-bool exit;
-do
-{
-    foreach (Job j in pageOfJobs)
-    {
-        jobsToDelete.Add(j.Name);
-    }
-
-    if (pageOfJobs.NextPageLink != null)
-    {
-        pageOfJobs = client.Jobs.ListNext(pageOfJobs.NextPageLink);
-        exit = false;
-    }
-    else
-    {
-        exit = true;
-    }
-}
-while (!exit);
-
-```
-
-如需 REST 範例，請參閱[資產 - 清單](https://docs.microsoft.com/rest/api/media/jobs/list)
-
-## <a name="streaming-locators"></a>串流定位器
-
-### <a name="filteringordering"></a>篩選/排序
-
-下表顯示這些選項可如何套用至 StreamingLocator 屬性： 
-
-|名稱|Filter|順序|
-|---|---|---|
-|id |||
-|name|eq、ne、ge、le、gt、lt|遞增和遞減|
-|properties.alternativeMediaId  |||
-|properties.assetName   |||
-|properties.contentKeys |||
-|properties.created |eq、ne、ge、le、gt、lt|遞增和遞減|
-|properties.defaultContentKeyPolicyName |||
-|properties.endTime |eq、ne、ge、le、gt、lt|遞增和遞減|
-|properties.startTime   |||
-|properties.streamingLocatorId  |||
-|properties.streamingPolicyName |||
-|type   |||
-
-### <a name="pagination"></a>分頁
-
-在四個已啟用的分類排序中，每一個皆可支援分頁。 目前的頁面大小為 10。
-
-下列 C# 範例說明如何列舉帳戶中的所有 StreamingLocator。
+下列 c # 範例顯示如何列舉帳戶中的所有串流定位器。
 
 ```csharp
 var firstPage = await MediaServicesArmClient.StreamingLocators.ListAsync(CustomerResourceGroup, CustomerAccountName);
@@ -254,56 +135,57 @@ while (currentPage.NextPageLink != null)
 }
 ```
 
-如需 REST 範例，請參閱[串流定位器 - 清單](https://docs.microsoft.com/rest/api/media/streaminglocators/list)
+## <a name="using-logical-operators-to-combine-query-options"></a>使用邏輯運算子結合查詢選項
 
-## <a name="streaming-policies"></a>串流原則
+媒體服務 v3 支援**或**和**和**邏輯運算子。 
 
-### <a name="filteringordering"></a>篩選/排序
+下列 REST 範例會檢查作業的狀態：
 
-下表說明這些選項可如何套用至 StreamingPolicy 屬性： 
-
-|名稱|Filter|順序|
-|---|---|---|
-|id|||
-|name|eq、ne、ge、le、gt、lt|遞增和遞減|
-|properties.commonEncryptionCbcs|||
-|properties.commonEncryptionCenc|||
-|properties.created |eq、ne、ge、le、gt、lt|遞增和遞減|
-|properties.defaultContentKeyPolicyName |||
-|properties.envelopeEncryption|||
-|properties.noEncryption|||
-|type|||
-
-### <a name="pagination"></a>分頁
-
-在四個已啟用的分類排序中，每一個皆可支援分頁。 目前的頁面大小為 10。
-
-下列 C# 範例說明如何列舉帳戶中的所有 StreamingPolicies。
-
-```csharp
-var firstPage = await MediaServicesArmClient.StreamingPolicies.ListAsync(CustomerResourceGroup, CustomerAccountName);
-
-var currentPage = firstPage;
-while (currentPage.NextPageLink != null)
-{
-    currentPage = await MediaServicesArmClient.StreamingPolicies.ListNextAsync(currentPage.NextPageLink);
-}
+```
+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/qbtest/providers/Microsoft.Media/mediaServices/qbtest/transforms/VideoAnalyzerTransform/jobs?$filter=properties/state%20eq%20Microsoft.Media.JobState'Scheduled'%20or%20properties/state%20eq%20Microsoft.Media.JobState'Processing'&api-version=2018-07-01
 ```
 
-如需 REST 範例，請參閱[串流原則 - 清單 (英文)](https://docs.microsoft.com/rest/api/media/streamingpolicies/list)
+您可以用 c # 來建立相同的查詢，如下所示： 
 
-## <a name="transform"></a>轉換
+```csharp
+var odataQuery = new ODataQuery<Job>("properties/state eq Microsoft.Media.JobState'Scheduled' or properties/state eq Microsoft.Media.JobState'Processing'");
+client.Jobs.List(config.ResourceGroup, config.AccountName, VideoAnalyzerTransformName, odataQuery);
+```
 
-### <a name="filteringordering"></a>篩選/排序
+## <a name="filtering-and-ordering-options-of-entities"></a>實體的篩選和排序選項
 
-下表說明這些選項如何套用至[轉換](https://docs.microsoft.com/rest/api/media/transforms)屬性： 
+下表顯示如何將篩選和排序選項套用至不同的實體：
 
-| 名稱    | Filter                        | 順序 |
-|---------|-------------------------------|-------|
-| name                    | eq            | 遞增和遞減|
-| properties.created      | gt、ge、lt、le| 遞增和遞減|
-| properties.lastModified | gt、ge、lt、le | 遞增和遞減|
+|實體名稱|屬性名稱|篩選|單|
+|---|---|---|---|
+|[Assets](https://docs.microsoft.com/rest/api/media/assets/)|NAME|`eq`, `gt`, `lt`, `ge`, `le`|`asc` 和 `desc`|
+||properties.alternateId |`eq`||
+||properties.assetId |`eq`||
+||properties.created| `eq`, `gt`, `lt`| `asc` 和 `desc`|
+|[內容金鑰原則](https://docs.microsoft.com/rest/api/media/contentkeypolicies)|NAME|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` 和 `desc`|
+||properties.created    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` 和 `desc`|
+||properties.description    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`||
+||properties.lastModified|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` 和 `desc`|
+||properties.policyId|`eq`, `ne`||
+|[作業](https://docs.microsoft.com/rest/api/media/jobs)| NAME  | `eq`            | `asc` 和 `desc`|
+||properties.state        | `eq`, `ne`        |                         |
+||properties.created      | `gt`, `ge`, `lt`, `le`| `asc` 和 `desc`|
+||properties.lastModified | `gt`, `ge`, `lt`, `le` | `asc` 和 `desc`| 
+|[串流定位器](https://docs.microsoft.com/rest/api/media/streaminglocators)|NAME|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` 和 `desc`|
+||properties.created    |`eq`, `ne`, `ge`, `le`,  `gt`, `lt`|`asc` 和 `desc`|
+||properties.endTime    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` 和 `desc`|
+|[串流原則](https://docs.microsoft.com/rest/api/media/streamingpolicies)|NAME|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` 和 `desc`|
+||properties.created    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` 和 `desc`|
+|[轉換](https://docs.microsoft.com/rest/api/media/transforms)| NAME | `eq`            | `asc` 和 `desc`|
+|| properties.created      | `gt`, `ge`, `lt`, `le`| `asc` 和 `desc`|
+|| properties.lastModified | `gt`, `ge`, `lt`, `le`| `asc` 和 `desc`|
 
 ## <a name="next-steps"></a>後續步驟
 
-[串流處理檔案](stream-files-dotnet-quickstart.md)
+* [列出資產](https://docs.microsoft.com/rest/api/media/assets/list)
+* [列出內容金鑰原則](https://docs.microsoft.com/rest/api/media/contentkeypolicies/list)
+* [列出作業](https://docs.microsoft.com/rest/api/media/jobs/list)
+* [列出串流原則](https://docs.microsoft.com/rest/api/media/streamingpolicies/list)
+* [列出串流定位器](https://docs.microsoft.com/rest/api/media/streaminglocators/list)
+* [串流處理檔案](stream-files-dotnet-quickstart.md)
+* [配額和限制](limits-quotas-constraints.md)

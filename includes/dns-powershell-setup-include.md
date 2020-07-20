@@ -8,12 +8,12 @@ ms.topic: include file for PowerShell for Azure DNS
 ms.date: 03/21/2018
 ms.author: subsarma
 ms.custom: include file for PowerShell for Azure DNS
-ms.openlocfilehash: 682b3d3fee4ff1cdbed6e05a51fd8828b6eb155f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 32c516ccee3a9f4f7604a3e330285703a776b47d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61293608"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "67133568"
 ---
 ## <a name="set-up-azure-powershell-for-azure-dns"></a>針對 Azure DNS 設定 Azure PowerShell SDK
 
@@ -23,8 +23,8 @@ ms.locfileid: "61293608"
 
 在開始設定之前，請確認您具備下列項目。
 
-* Azure 訂用帳戶。 如果您還沒有 Azure 訂用帳戶，則可以啟用 [MSDN 訂戶權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或註冊[免費帳戶](https://azure.microsoft.com/pricing/free-trial/)。
-* 您必須安裝最新版的 Azure Resource Manager PowerShell Cmdlet。 如需詳細資訊，請參閱 [如何安裝及設定 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
+* Azure 訂用帳戶。 如果您還沒有 Azure 訂用帳戶，您可以啟用[MSDN 訂閱者權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或註冊[免費帳戶](https://azure.microsoft.com/pricing/free-trial/)。
+* 您必須安裝最新版的 Azure Resource Manager PowerShell Cmdlet。 如需詳細資訊，請參閱[如何安裝和設定 Azure PowerShell](/powershell/azureps-cmdlets-docs)。
 
 此外，若要使用私人區域 (公開預覽)，您必須確定您有下列 PowerShell 模組和版本。 
 * AzureRM.Dns - [4.1.0 版](https://www.powershellgallery.com/packages/AzureRM.Dns/4.1.0)或更新版本
@@ -52,7 +52,7 @@ Install-Module -Name AzureRM.Network -Force
 
 ### <a name="sign-in-to-your-azure-account"></a>登入您的 Azure 帳戶
 
-開啟 PowerShell 主控台並連接到您的帳戶。 如需詳細資訊，請參閱 <<c0> [ 登入](/powershell/azure/install-az-ps?view=azps-1.4.0#sign-in)。
+開啟 PowerShell 主控台並連接到您的帳戶。 如需詳細資訊，請參閱[使用 AzureRM 登入](/powershell/azure/azurerm/authenticate-azureps)。
 
 ```powershell
 Connect-AzureRmAccount

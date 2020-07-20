@@ -3,18 +3,18 @@ title: Azure PowerShell 指令碼範例 - 下載裝置組態範本 | Microsoft D
 description: 下載裝置組態範本。
 services: vpn-gateway
 documentationcenter: vpn-gateway
-author: anzaman
+author: yushwang
 ms.service: vpn-gateway
 ms.devlang: powershell
 ms.topic: sample
-ms.date: 04/17/2018
-ms.author: alzam
-ms.openlocfilehash: a4cec6661750935cefd3767be7e10e2674ee8473
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.date: 01/09/2020
+ms.author: yushwang
+ms.openlocfilehash: 11906dfa8a3d7c49b71ff1cdcc51d8ae5c6cbdc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56415471"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "75862407"
 ---
 # <a name="download-vpn-device-template-using-powershell"></a>使用 PowerShell 下載 VPN 裝置範本
 
@@ -48,7 +48,7 @@ Remove-AzResourceGroup -Name TestRG1
 
 此指令碼會使用下列命令來建立部署。 下表中的每個項目都會連結至命令特定的文件。
 
-| 命令 | 注意 |
+| Command | 注意 |
 |---|---|
 | [Get-AzVirtualNetworkGatewaySupportedVpnDevice](/powershell/module/az.network/Get-azVirtualNetworkGatewaySupportedVpnDevice) | 列出所有可用的 VPN 裝置模型和版本。 |
 | [Get-AzVirtualNetworkGatewayConnectionVpnDeviceConfigScript](/powershell/module/az.network/Get-azVirtualNetworkGatewayConnectionVpnDeviceConfigScript) | 下載連線的組態範本。 |

@@ -1,38 +1,28 @@
 ---
-title: 變更 Azure Service Fabric 動作項目中的 FabricTransport 設定 | Microsoft Docs
-description: 深入了解設定 Azure Service Fabric 動作項目通訊設定。
-services: Service-Fabric
-documentationcenter: .net
+title: 變更 FabricTransport 設定
+description: 瞭解如何為不同的動作專案設定設定 Azure Service Fabric 動作專案通訊設定。
 author: suchiagicha
-manager: chackdan
-editor: ''
-ms.assetid: dbed72f4-dda5-4287-bd56-da492710cd96
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 04/20/2017
-ms.author: suchiagicha
-ms.openlocfilehash: b6cff24e5a7812a88673d80476819e51e6f5da35
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.author: pepogors
+ms.openlocfilehash: d5f6d3502662d48cf6ff750c9a695fadfeac97c2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62125063"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256229"
 ---
 # <a name="configure-fabrictransport-settings-for-reliable-actors"></a>設定 Reliable Actors 的 FabricTransport 設定
 
 您可以進行的設定包括︰
-- C#：[FabricTransportRemotingSettings](
-https://docs.microsoft.com/java/api/microsoft.servicefabric.services.remoting.fabrictransport.fabrictransportremotingsettings)
-- Java：[FabricTransportRemotingSettings](https://docs.microsoft.com/java/api/microsoft.servicefabric.services.remoting.fabrictransport.fabrictransportremotingsettings)
+- C#：[FabricTransportRemotingSettings](/java/api/microsoft.servicefabric.services.remoting.fabrictransport.fabrictransportremotingsettings)
+- Java: [FabricTransportRemotingSettings](/java/api/microsoft.servicefabric.services.remoting.fabrictransport.fabrictransportremotingsettings)
 
 您可以下列方式修改 FabricTransport 的預設設定。
 
 ## <a name="assembly-attribute"></a>組件屬性
 
-[FabricTransportActorRemotingProvider](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.actors.remoting.fabrictransport.fabrictransportactorremotingproviderattribute?redirectedfrom=MSDN) 屬性需要在動作項目用戶端和動作項目服務組件上套用。
+[FabricTransportActorRemotingProvider](/dotnet/api/microsoft.servicefabric.actors.remoting.fabrictransport.fabrictransportactorremotingproviderattribute) 屬性需要在動作項目用戶端和動作項目服務組件上套用。
 
 下列範例顯示如何變更 FabricTransport OperationTimeout 設定的預設值：
 

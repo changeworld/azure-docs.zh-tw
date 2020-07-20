@@ -1,13 +1,13 @@
 ---
-title: 快速入門：建立公用標準負載平衡器 - Azure CLI
-titlesuffix: Azure Load Balancer
+title: 快速入門：建立公用負載平衡器 - Azure CLI
+titleSuffix: Azure Load Balancer
 description: 本快速入門說明如何使用 Azure CLI 建立公用負載平衡器
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 manager: twooley
 tags: azure-resource-manager
-Customer intent: I want to create a Standard Load balancer so that I can load balance internet traffic to VMs.
+Customer intent: I want to create a Load balancer so that I can load balance internet traffic to VMs.
 ms.assetid: a8bcdd88-f94c-4537-8143-c710eaa86818
 ms.service: load-balancer
 ms.devlang: na
@@ -15,18 +15,18 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/25/2019
-ms.author: kumud
+ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: a98f65db3739cf3f4771df7a2ef864008f7dbaa9
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 1a2d0322436bd91e92a7018552c5827e021ee74e
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55729365"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851509"
 ---
 # <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-azure-cli"></a>快速入門：使用 Azure CLI 建立標準負載平衡器以平衡 VM 的負載
 
-本快速入門示範如何建立標準負載平衡器。 若要測試負載平衡器，您要部署兩部執行 Ubuntu 伺服器的虛擬機器 (VM)，並平衡兩個 VM 間 Web 應用程式的負載。
+本快速入門示範如何建立公用 Load Balancer。 若要測試負載平衡器，您要部署兩部執行 Ubuntu 伺服器的虛擬機器 (VM)，並平衡兩個 VM 間 Web 應用程式的負載。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
 
@@ -44,13 +44,24 @@ ms.locfileid: "55729365"
     --location eastus
 ```
 
-## <a name="create-a-public-standard-ip-address"></a>建立公用標準 IP 位址
+## <a name="create-a-public-ip-address"></a>建立公用 IP 位址
 
-若要在網際網路上存取您的 Web 應用程式，您需要負載平衡器的公用 IP 位址。 標準負載平衡器只支援標準公用 IP 位址。 使用 [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip)，在 myResourceGroupSLB 中建立名為 myPublicIP 的標準公用 IP 位址。
+若要在網際網路上存取您的 Web 應用程式，您需要負載平衡器的公用 IP 位址。 使用 [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip)，在 myResourceGroupSLB 中建立名為 myPublicIP 的標準區域備援公用 IP 位址。
 
 ```azurecli-interactive
   az network public-ip create --resource-group myResourceGroupSLB --name myPublicIP --sku standard
 ```
+
+若要在區域 1 中建立區域性公用 IP 位址，請使用：
+
+```azurecli-interactive
+  az network public-ip create --resource-group myResourceGroupSLB --name myPublicIP --sku standard --zone 1
+```
+
+使用 `-SKU Basic` 來建立基本公用 IP。 基本公用 IP 與 **標準**負載平衡器不相容。 Microsoft 建議對生產工作負載使用都需要**標準**。
+
+> [!IMPORTANT]
+> 本快速入門的其餘部分假設在上述 SKU 選取程序期間會選擇**標準** SKU。
 
 ## <a name="create-azure-load-balancer"></a>建立 Azure Load Balancer
 
@@ -62,17 +73,20 @@ ms.locfileid: "55729365"
 
 ### <a name="create-the-load-balancer"></a>建立負載平衡器
 
-使用 [az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) 建立名為 **myLoadBalancer** 的公用 Azure Load Balancer，包含名為 **myFrontEnd** 的前端集區、名為 **myBackEndPool** 的後端集區，與您在前一個步驟中建立的公用 IP 位址 **myPublicIP** 相關聯。
+使用 [az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) 建立名為 **myLoadBalancer** 的公用 Azure Load Balancer，包含名為 **myFrontEnd** 的前端集區、名為 **myBackEndPool** 的後端集區，與您在前一個步驟中建立的公用 IP 位址 **myPublicIP** 相關聯。 使用 `--sku basic` 建立基本 Load Balancer。 Microsoft 建議對生產工作負載使用標準 SKU。
 
 ```azurecli-interactive
   az network lb create \
     --resource-group myResourceGroupSLB \
     --name myLoadBalancer \
-    --sku standard
+    --sku standard \
     --public-ip-address myPublicIP \
     --frontend-ip-name myFrontEnd \
     --backend-pool-name myBackEndPool       
-  ```
+```
+
+> [!IMPORTANT]
+> 本快速入門的其餘部分假設在上述 SKU 選取程序期間會選擇**標準** SKU。
 
 ### <a name="create-the-health-probe"></a>建立健康狀態探查
 
@@ -119,7 +133,8 @@ ms.locfileid: "55729365"
     --name myVnet \
     --subnet-name mySubnet
 ```
-###  <a name="create-a-network-security-group"></a>建立網路安全性群組
+
+### <a name="create-a-network-security-group"></a>建立網路安全性群組
 
 如果是標準負載平衡器，後端位址中的 VM 都需要有屬於網路安全性群組的 NIC。 建立網路安全性群組，以定義虛擬網路的輸入連線。
 
@@ -147,39 +162,49 @@ ms.locfileid: "55729365"
     --access allow \
     --priority 200
 ```
+
 ### <a name="create-nics"></a>建立 NIC
 
 使用 [az network nic create](/cli/azure/network/nic#az-network-nic-create) 建立三個網路介面，並使其與公用 IP 位址和網路安全性群組產生關聯。 
 
 ```azurecli-interactive
-for i in `seq 1 2`; do
+
   az network nic create \
     --resource-group myResourceGroupSLB \
-    --name myNic$i \
+    --name myNicVM1 \
     --vnet-name myVnet \
     --subnet mySubnet \
     --network-security-group myNetworkSecurityGroup \
     --lb-name myLoadBalancer \
     --lb-address-pools myBackEndPool
-done
-```
 
+  az network nic create \
+    --resource-group myResourceGroupSLB \
+    --name myNicVM2 \
+    --vnet-name myVnet \
+    --subnet mySubnet \
+    --network-security-group myNetworkSecurityGroup \
+    --lb-name myLoadBalancer \
+    --lb-address-pools myBackEndPool
+  
+  az network nic create \
+    --resource-group myResourceGroupSLB \
+    --name myNicVM3 \
+    --vnet-name myVnet \
+    --subnet mySubnet \
+    --network-security-group myNetworkSecurityGroup \
+    --lb-name myLoadBalancer \
+    --lb-address-pools myBackEndPool
+
+```
 
 ## <a name="create-backend-servers"></a>建立後端伺服器
 
 在此範例中，您要建立三個虛擬機器，作為負載平衡器的後端伺服器。 若要確認已成功建立負載平衡器，您也可在虛擬機器上安裝 NGINX。
 
-### <a name="create-an-availability-set"></a>建立可用性設定組
+如果您要使用基本公用 IP 建立基本 Load Balancer，則必須使用 [az vm availabilityset create](/cli/azure/network/nic) 來建立可用性設定組，以在其中新增您的虛擬機器。 標準 Load Balancer 不需要此額外步驟。 Microsoft 建議使用「標準」。
 
-使用 [az vm availabilityset create](/cli/azure/network/nic) 建立可用性設定組
-
- ```azurecli-interactive
-  az vm availability-set create \
-    --resource-group myResourceGroupSLB \
-    --name myAvailabilitySet
-```
-
-### <a name="create-two-virtual-machines"></a>建立兩部虛擬機器
+### <a name="create-three-virtual-machines"></a>建立三個虛擬機器
 
 您可以使用 cloud-init 組態檔來安裝 NGINX，並在 Linux 虛擬機器上執行 'Hello World' Node.js 應用程式。 您目前的殼層中，建立名為 cloud-init.txt 的檔案，並將下列設定複製及貼到殼層中。 請確定您正確複製整個 cloud-init 檔案，特別是第一行：
 
@@ -223,23 +248,44 @@ runcmd:
   - npm init
   - npm install express -y
   - nodejs index.js
-``` 
- 
+```
+
 使用 [az vm create](/cli/azure/vm#az-vm-create) 建立虛擬機器。
 
- ```azurecli-interactive
-for i in `seq 1 2`; do
+```azurecli-interactive
+
   az vm create \
     --resource-group myResourceGroupSLB \
-    --name myVM$i \
+    --name myVM1 \
     --availability-set myAvailabilitySet \
-    --nics myNic$i \
+    --nics myNicVM1 \
     --image UbuntuLTS \
     --generate-ssh-keys \
-    --custom-data cloud-init.txt
+    --custom-data cloud-init.txt \
     --no-wait
-    done
+   
+  az vm create \
+    --resource-group myResourceGroupSLB \
+    --name myVM2 \
+    --availability-set myAvailabilitySet \
+    --nics myNicVM2 \
+    --image UbuntuLTS \
+    --generate-ssh-keys \
+    --custom-data cloud-init.txt \
+    --no-wait
+
+   az vm create \
+    --resource-group myResourceGroupSLB \
+    --name myVM3 \
+    --availability-set myAvailabilitySet \
+    --nics myNicVM3 \
+    --image UbuntuLTS \
+    --generate-ssh-keys \
+    --custom-data cloud-init.txt \
+    --no-wait
+
 ```
+
 部署 VM 可能需要幾分鐘的時間。
 
 ## <a name="test-the-load-balancer"></a>測試負載平衡器
@@ -252,19 +298,19 @@ for i in `seq 1 2`; do
     --name myPublicIP \
     --query [ipAddress] \
     --output tsv
-``` 
+```
+
    ![測試負載平衡器](./media/load-balancer-standard-public-cli/running-nodejs-app.png)
 
 ## <a name="clean-up-resources"></a>清除資源
 
 若不再需要，您可以使用 [az group delete](/cli/azure/group#az-group-delete) 命令來移除資源群組、負載平衡器和所有相關資源。
 
-```azurecli-interactive 
+```azurecli-interactive
   az group delete --name myResourceGroupSLB
 ```
-## <a name="next-step"></a>後續步驟
-本快速入門中，您已建立標準 Load Balancer、將 VM 加以連結、設定負載平衡器流量規則、健康情況探查，接著測試負載平衡器。 若要深入了解 Azure Load Balancer，請繼續 Azure Load Balancer 的教學課程。
 
-> [!div class="nextstepaction"]
-> [Azure Load Balancer 教學課程](tutorial-load-balancer-standard-public-zone-redundant-portal.md)
+## <a name="next-steps"></a>後續步驟
+在本快速入門中，您已建立標準負載平衡器、將 VM 連結到標準負載平衡器、設定負載平衡器流量規則、健康狀態探查，然後測試負載平衡器。 若要深入了解 Azure Load Balancer，請繼續進行 [Azure 負載平衡器教學課程](tutorial-load-balancer-standard-public-zone-redundant-portal.md)。
 
+深入了解 [Load Balancer 和可用性區域](load-balancer-standard-availability-zones.md)。

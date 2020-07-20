@@ -1,21 +1,21 @@
 ---
 title: 快速入門：使用 REST API 和 Ruby 偵測影像中的人臉
 titleSuffix: Azure Cognitive Services
-description: 在此快速入門中，您可以使用臉部 API 搭配 Ruby 偵測影像中的人臉。
+description: 在本快速入門中，您會使用臉部 REST API 搭配 Ruby 來偵測影像中的臉部。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 02/07/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 52faef37dbd9a3ce324db9665f04d6ac9b223d9c
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: e355ccdaf89d7f0ff63e3137def50792b171a4cc
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56312390"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84985608"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-ruby"></a>快速入門：使用 REST API 和 Ruby 偵測影像中的人臉
 
@@ -23,20 +23,21 @@ ms.locfileid: "56312390"
 
 ## <a name="prerequisites"></a>必要條件
 
-- 臉部 API 訂用帳戶金鑰。 您可以從[試用認知服務](https://azure.microsoft.com/try/cognitive-services/?api=face-api)取得免費的試用訂用帳戶金鑰。 或是，依照[建立認知服務帳戶](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的指示訂閱臉部 API 服務並取得金鑰。
-- 程式碼編輯器，例如 [Visual Studio Code](https://code.visualstudio.com/download)。
+* Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/cognitive-services/)
+* 擁有 Azure 訂用帳戶之後，在 Azure 入口網站中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title="建立 Face 資源"  target="_blank">建立 Face 資源<span class="docon docon-navigate-external x-hidden-focus"></span></a>，以取得您的金鑰和端點。 在其部署後，按一下 [前往資源]****。
+    * 您需要來自所建立資源的金鑰和端點，以將應用程式連線至 Face API。 您稍後會在快速入門中將金鑰和端點貼到下列程式碼中。
+    * 您可以使用免費定價層 (`F0`) 來試用服務，之後可升級至付費層以用於實際執行環境。
+* 程式碼編輯器，例如 [Visual Studio Code](https://code.visualstudio.com/download)
 
 ## <a name="write-the-script"></a>撰寫指令碼
 
-建立新檔案 (faceDetection.rb)，並新增下列程式碼。 這會呼叫指定影像 URL 的人臉識別 API。
+建立新檔案 (faceDetection.rb)__，並新增下列程式碼。 此程式碼會呼叫指定影像 URL 的臉部 API。
 
 ```ruby
 require 'net/http'
 
-# You must use the same location in your REST call as you used to get your
-# subscription keys. For example, if you got your subscription keys from  westus,
-# replace "westcentralus" in the URL below with "westus".
-uri = URI('https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect')
+# replace <My Endpoint String> in the URL below with the string from your endpoint.
+uri = URI('https://<My Endpoint String>.com/face/v1.0/detect')
 uri.query = URI.encode_www_form({
     # Request parameters
     'returnFaceId' => 'true',
@@ -62,7 +63,9 @@ end
 puts response.body
 ```
 
-您將需要以訂用帳戶金鑰更新 `request['Ocp-Apim-Subscription-Key']` 值，而且可能需要變更 `uri` 字串，使其包含正確的區域識別碼 (請參閱[人臉識別 API 文件](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)以取得所有區域端點的清單)。 
+您將需要以訂用帳戶金鑰更新 `request['Ocp-Apim-Subscription-Key']` 值，並變更 `uri` 字串，使它包含正確的端點。
+
+[!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 您也可以變更 `imageUri` 欄位以指向您自己的輸入影像。 您也可以變更 `returnFaceAttributes` 欄位，以指定所要擷取的臉部屬性。
 
@@ -74,7 +77,7 @@ puts response.body
 ruby faceDetection.rb
 ```
 
-您應該會看到所偵測到臉部資料的 JSON 字串列印至主控台。 以下是成功 JSON 回應的範例。
+您應該會看到所偵測到臉部資料的 JSON 字串列印至主控台。 以下文字是成功 JSON 回應的範例。
 
 ```json
 [
@@ -257,7 +260,7 @@ ruby faceDetection.rb
 
 ## <a name="next-steps"></a>後續步驟
 
-在本快速入門中，您已撰寫 Ruby 指令碼來呼叫 Azure 臉部 API，進而偵測影像中的臉部並傳回其屬性。 接下來，請瀏覽臉部 API 參考文件，以取得更多資訊。
+在本快速入門中，您已撰寫 Ruby 指令碼來呼叫 Azure 臉部辨識服務，進而偵測影像中的臉部並傳回其屬性。 接下來，請瀏覽臉部 API 參考文件，以取得更多資訊。
 
 > [!div class="nextstepaction"]
 > [臉部 API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

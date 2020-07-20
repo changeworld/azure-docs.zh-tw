@@ -1,5 +1,5 @@
 - name: Bing 自動建議文件
-  href: index.yml
+  href: ../Bing-Web-Search/index.yml
 - name: 概觀
   items:
     - name: 什麼是 Bing 自動建議？
@@ -7,26 +7,32 @@
     - name: 比較 Bing 搜尋 API
       href: ../Bing-Web-Search/bing-api-comparison.md
       maintainContext: true
-- name: REST API 快速入門
+- name: 快速入門
   expanded: true
   items:
-    - name: 'C#'
-      href: quickstarts/csharp.md
-    - name: Java
-      href: quickstarts/java.md
-    - name: Node.js
-      href: quickstarts/nodejs.md
-    - name: PHP
-      href: quickstarts/php.md
-    - name: Python
-      href: quickstarts/python.md
-    - name: Ruby
-      href: quickstarts/ruby.md
+    - name: REST API
+      items:
+        - name: 'C#'
+          href: quickstarts/csharp.md
+        - name: Java
+          href: quickstarts/java.md
+        - name: Node.js
+          href: quickstarts/nodejs.md
+        - name: PHP
+          href: quickstarts/php.md
+        - name: Python
+          href: quickstarts/python.md
+        - name: Ruby
+          href: quickstarts/ruby.md
+    - name: 用戶端程式庫
+      items:
+        - name: Bing 自動建議用戶端程式庫
+          href: ./quickstarts/client-libraries.md
 - name: 教學課程
   items:
     - name: 單一頁面 Web 應用程式
       href: tutorials/autosuggest.md
-- name: 使用說明指南
+- name: 操作指南
   items:
     - name: 從 v5 升級到 v7
       href: bing-autosuggest-upgrade-guide-v5-to-v7.md
@@ -39,23 +45,25 @@
 - name: 參考
   items:
     - name: Bing 自動建議 API v7
-      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference'
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference'
     - name: Bing 自動建議 API v5
-      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference'
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v5-reference'
     - name: SDK
       items:
         - name: .NET
           href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingautosuggest?view=azure-dotnet'
         - name: Java
-          href: 'https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/autosuggest?view=azure-java-stable'
+          href: 'https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingautosuggest?view=azure-java-stable'
         - name: Go
           href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/autosuggest'
+        - name: Node.js
+          href: 'https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-autosuggest/?view=azure-node-latest'
     - name: 使用和顯示需求
       href: ../Bing-Web-Search/use-display-requirements.md
       maintainContext: true
 - name: 資源
   items:
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/autosuggest-api/'
     - name: UserVoice
       href: 'https://cognitive.uservoice.com/forums/598198-bing-autosuggest'
@@ -71,7 +79,10 @@
       href: 'https://azure.microsoft.com/try/cognitive-services/?api=autosuggest-api'
     - name: 試試看！
       href: 'https://azure.microsoft.com/services/cognitive-services/autosuggest/'
-    - name: 語言與區域支援
+    - name: 語言支援
       href: language-support.md
     - name: Bing 自動建議 API 的分析
-      href: bing-autosuggest-stats.md
+      maintainContext: true
+      href: ../bing-web-search/bing-web-stats.md
+    - name: 法規遵循
+      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'

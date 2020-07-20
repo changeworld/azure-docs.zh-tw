@@ -6,21 +6,34 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: quickstart
-ms.date: 03/12/2019
+ms.date: 09/03/2019
 ms.author: alkohli
-ms.openlocfilehash: bd591ff30755fd68bb2dc673899d0ac993215e68
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.localizationpriority: high
+ms.openlocfilehash: dd429dadcbe67f0ac91da19d6606626b39f34ef5
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57834712"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201088"
 ---
-# <a name="quickstart-deploy-azure-data-box-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站部署 Azure 資料箱
+# <a name="get-started-with-azure-data-box-to-import-data-into-azure"></a>開始使用 Azure 資料箱將資料匯入至 Azure
 
-本快速入門說明如何使用 Azure 入口網站來部署 Azure 資料箱。 這些步驟包括如何連接纜線、進行設定，以及將資料複製到資料箱，以便上傳至 Azure。 快速入門會在 Azure 入口網站和裝置的本機 Web UI 上執行。
+::: zone target="docs"
+
+本快速入門說明如何針對匯入訂單，使用 Azure 入口網站來部署 Azure 資料箱。 這些步驟包括如何連接纜線、進行設定，以及將資料複製到資料箱，以便上傳至 Azure。 快速入門的步驟會在 Azure 入口網站和裝置的本機 Web UI 上執行。
 
 如需部署和追蹤的詳細逐步指示，請移至[教學課程：訂購 Azure 資料箱](data-box-deploy-ordered.md)
 
+::: zone-end 
+
+::: zone target="chromeless"
+
+本指南說明如何使用 Azure 入口網站來部署用於匯入資料的 Azure 資料箱。 這些步驟包括檢查必要條件、以纜線連接您的裝置，以及將資料複製到您的裝置，以將其上傳至 Azure。
+
+::: zone-end
+
+::: zone target="docs"
+ 
 ## <a name="prerequisites"></a>必要條件
 
 開始之前：
@@ -41,11 +54,32 @@ ms.locfileid: "57834712"
     - 一條 RJ-45 CAT 6 網路線 (與 MGMT 網路介面搭配使用)
     - 一條 RJ-45 CAT 6A 或一條 RJ-45 CAT 6 網路線 (與 DATA 3 網路介面搭配使用，分別設定為 10 Gbps 或 1 Gbps)
 
+::: zone-end 
+
+::: zone target="chromeless"
+
+## <a name="prerequisites"></a>必要條件
+
+在您開始前，請確定您已經：
+
+1. 完成[教學課程：訂購 Azure 資料箱](data-box-deploy-ordered.md)。
+2. 收到資料箱，且入口網站中的訂購狀態為 [已交付]。 
+3. 檢閱[資料箱安全指導方針](data-box-safety.md)。
+4. 收到一條用於 100-TB 儲存體裝置的接地電源線。
+5. 有權存取主機電腦，以將其中的資料複製到資料箱。 您的主機電腦必須符合下列條件：
+    - 執行[支援的作業系統](data-box-system-requirements.md)。
+    - 連線至高速網路。 強烈建議您具有至少一個 10 GbE 的連線。 如果無法使用 10 GbE 連線，也可以使用 1 GbE 資料連結，但是複製速度會受到影響。 
+6. 有一個平面可放置資料箱。 若要將裝置平穩或筆直地放在標準機架上，您的機架中需要有 7U 插槽。
+
+::: zone-end
+
+::: zone target="docs"
+
 ## <a name="sign-in-to-azure"></a>登入 Azure
 
-在 [https://portal.azure.com](https://portal.azure.com) 登入 Azure 入口網站。
+登入 Azure 入口網站：[https://portal.azure.com](https://portal.azure.com)。
 
-## <a name="order"></a>順序
+## <a name="order"></a>單
 
 這個步驟需要大約 5 分鐘。
 
@@ -55,6 +89,8 @@ ms.locfileid: "57834712"
 4. 輸入訂單詳細資料和出貨資訊。 如果您的區域可使用服務，請提供通知電子郵件地址、檢閱摘要，然後建立訂單。
 
 一旦建立訂單後，裝置就準備出貨。
+
+
 
 ## <a name="cable"></a>連接纜線 
 
@@ -66,9 +102,9 @@ ms.locfileid: "57834712"
 2. 在將裝置連接纜線之前，請確定您有下列的纜線：
     
     - (已包含) 額定電流為 10 A 或更高的接地電源線，一端帶有 IEC60320 C-13 接點，用於連接裝置。
-    - 一條 RJ-45 CAT 6 網路纜線 (與 MGMT 網路介面搭配使用)
+    - 一條 RJ-45 CAT 6 網路線 (與 MGMT 網路介面搭配使用)
     - 兩條 10 GbE SFP+ Twinax 銅纜線 (搭配 10 Gbps DATA 1、DATA 2 網路介面使用)
-    - 一條 RJ-45 CAT 6A 或一條 RJ-45 CAT 6 網路纜線 (與 DATA 3 網路介面搭配使用，分別設定為 10 Gbps 或 1 Gbps)
+    - 一條 RJ-45 CAT 6A 或一條 RJ-45 CAT 6 網路線 (與 DATA 3 網路介面搭配使用，分別設定為 10 Gbps 或 1 Gbps)
 
 3. 移除裝置並將其放在平面上。 
     
@@ -132,5 +168,7 @@ ms.locfileid: "57834712"
 
 > [!div class="nextstepaction"]
 > [使用 Azure 入口網站來管理資料箱](data-box-portal-admin.md)
+
+::: zone-end
 
 

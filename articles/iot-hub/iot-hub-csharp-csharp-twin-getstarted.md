@@ -7,75 +7,84 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
-ms.date: 05/15/2017
+ms.date: 08/26/2019
 ms.author: robinsh
-ms.openlocfilehash: eec63cbdbdb852aff2cf9c6fa768bdc2580d4665
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.custom: mqtt
+ms.openlocfilehash: 91cebee1196dc38af8ece4086b6e6ab66fdc14da
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60780409"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135552"
 ---
-# <a name="get-started-with-device-twins-netnet"></a>開始使用裝置對應項 (.NET/.NET)
+# <a name="get-started-with-device-twins-net"></a>開始使用裝置對應項 (.NET)
+
 [!INCLUDE [iot-hub-selector-twin-get-started](../../includes/iot-hub-selector-twin-get-started.md)]
 
-在本教學課程結尾，您將會有下列 .NET 主控台應用程式：
+在本教學課程中，您會建立下列 .NET 主控台應用程式：
 
-* **CreateDeviceIdentity**，這是 .NET 應用程式，可建立裝置識別與相關聯的安全性金鑰，來連線到您的模擬裝置應用程式。
+* **AddTagsAndQuery**： 此後端應用程式會新增標籤和查詢裝置對應項。
 
-* **AddTagsAndQuery**，這是 .NET 後端應用程式，可新增標籤和查詢裝置對應項。
-
-* **ReportConnectivity**，這是會模擬裝置的 .NET 裝置應用程式，此裝置會以稍早建立的裝置識別連線到您的 IoT 中樞，並報告其連線狀況。
+* **ReportConnectivity**： 此裝置應用程式會模擬以稍早所建立裝置身分識別來連線到 IoT 中樞並報告其連線狀況的裝置。
 
 > [!NOTE]
 > [Azure IoT SDK](iot-hub-devguide-sdks.md) 一文提供可用來建置裝置和後端應用程式之 Azure IoT SDK 的相關資訊。
-> 
+>
 
-若要完成此教學課程，您需要下列項目：
+## <a name="prerequisites"></a>必要條件
 
-* Visual Studio 2017。
-* 使用中的 Azure 帳戶。 (如果您沒有帳戶，只需要幾分鐘的時間就可以建立[免費帳戶](https://azure.microsoft.com/pricing/free-trial/)。)
+* Visual Studio。
+
+* 使用中的 Azure 帳戶。 如果您沒有帳戶，只需要幾分鐘的時間就可以建立 [免費帳戶](https://azure.microsoft.com/pricing/free-trial/) 。
+
+* 請確定您的防火牆已開啟連接埠 8883。 本文中的裝置範例會使用 MQTT 通訊協定，其會透過連接埠 8883 進行通訊。 某些公司和教育網路環境可能會封鎖此連接埠。 如需此問題的詳細資訊和解決方法，請參閱[連線至 IoT 中樞 (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
 ## <a name="create-an-iot-hub"></a>建立 IoT 中樞
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-### <a name="retrieve-connection-string-for-iot-hub"></a>擷取 IoT 中樞的連接字串
-
-[!INCLUDE [iot-hub-include-find-connection-string](../../includes/iot-hub-include-find-connection-string.md)]
-
 ## <a name="register-a-new-device-in-the-iot-hub"></a>在 IoT 中樞註冊新的裝置
 
 [!INCLUDE [iot-hub-include-create-device](../../includes/iot-hub-include-create-device.md)]
 
+## <a name="get-the-iot-hub-connection-string"></a>取得 IoT 中樞連接字串
+
+[!INCLUDE [iot-hub-howto-twin-shared-access-policy-text](../../includes/iot-hub-howto-twin-shared-access-policy-text.md)]
+
+[!INCLUDE [iot-hub-include-find-custom-connection-string](../../includes/iot-hub-include-find-custom-connection-string.md)]
+
 ## <a name="create-the-service-app"></a>建立服務應用程式
 
-在本節中，您將 (使用 C#) 建立一個 .NET 主控台應用程式，此應用程式會將位置中繼資料新增至與 **myDeviceId** 相關聯的裝置對應項。 接著，它會選取位於美國的裝置來查詢儲存在 IoT 中樞的裝置對應項，再查詢會報告行動電話連線的對應項。
+在本節中，您會建立一個 .NET 主控台應用程式 (使用 C#)，此應用程式會將位置中繼資料新增至與 **myDeviceId** 建立關聯的裝置對應項。 接著，它會選取位於美國的裝置來查詢儲存在 IoT 中樞的裝置對應項，再查詢會報告行動電話連線的對應項。
 
-1. 在 Visual Studio 中，使用“**控制台应用程序**”项目模板将 Visual C# Windows 经典桌面项目添加到当前解决方案。 將專案命名為 **AddTagsAndQuery**。
-   
-    ![新的 Visual C# Windows 傳統桌面專案](./media/iot-hub-csharp-csharp-twin-getstarted/createnetapp.png)
+1. 在 Visual Studio 中，選取 [建立新專案]。 在 [建立新專案] 中，選取 [主控台應用程式 (.NET Framework)]，然後選取 [下一步]。
 
-2. 在 [方案總管] 中，以滑鼠右鍵按一下 **AddTagsAndQuery** 專案，然後按一下 [管理 NuGet 套件...]。
+1. 在 [設定新專案] 中，將專案命名為 **AddTagsAndQuery**。
 
-3. 在 [NuGet 套件管理員] 視窗中，選取 [瀏覽]，並搜尋 **Microsoft.Azure.Devices**。 選取 [安裝] 來安裝 **Microsoft.Azure.Devices** 套件，並接受使用規定。 此程序會下載及安裝 [Azure IoT 服務 SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices/) (英文) NuGet 套件與其相依項目，並新增對它的參考。
-   
-    ![NuGet 封裝管理員視窗](./media/iot-hub-csharp-csharp-twin-getstarted/servicesdknuget.png)
+    ![設定 AddTagsAndQuery 專案](./media/iot-hub-csharp-csharp-twin-getstarted/config-addtagsandquery-app.png)
 
-4. 在 **Program.cs** 檔案開頭處新增下列 `using` 陳述式：
+1. 在 [方案總管] 中，以滑鼠右鍵按一下 [AddTagsAndQuery] 專案，然後選取 [管理 NuGet 套件]。
+
+1. 選取 [瀏覽]，然後搜尋並選取 [Microsoft.Azure.Devices]。 選取 [安裝]。
+
+    ![NuGet 封裝管理員視窗](./media/iot-hub-csharp-csharp-twin-getstarted/nuget-package-addtagsandquery-app.png)
+
+   此步驟會下載及安裝 [Azure IoT 服務 SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices/) NuGet 套件與其相依性，並加入對它的參考。
+
+1. 在 **Program.cs** 檔案開頭處新增下列 `using` 陳述式：
 
     ```csharp  
     using Microsoft.Azure.Devices;
     ```
 
-5. 將下列欄位新增到 **Program** 類別。 將預留位置的值替換為您在上一節中為中樞所建立的 IoT 中樞連接字串。
+1. 將下列欄位新增到 **Program** 類別。 將 `{iot hub connection string}` 取代為在[取得 IoT 中樞連接字串](#get-the-iot-hub-connection-string)內複製的 IoT 中樞連接字串。
 
     ```csharp  
     static RegistryManager registryManager;
     static string connectionString = "{iot hub connection string}";
     ```
 
-6. 將下列方法加入至 **Program** 類別：
+1. 將下列方法加入至 **Program** 類別：
 
     ```csharp  
     public static async Task AddTagsAndQuery()
@@ -91,27 +100,27 @@ ms.locfileid: "60780409"
                 }
             }";
         await registryManager.UpdateTwinAsync(twin.DeviceId, patch, twin.ETag);
-   
+
         var query = registryManager.CreateQuery(
           "SELECT * FROM devices WHERE tags.location.plant = 'Redmond43'", 100);
         var twinsInRedmond43 = await query.GetNextAsTwinAsync();
         Console.WriteLine("Devices in Redmond43: {0}", 
           string.Join(", ", twinsInRedmond43.Select(t => t.DeviceId)));
-   
+
         query = registryManager.CreateQuery("SELECT * FROM devices WHERE tags.location.plant = 'Redmond43' AND properties.reported.connectivity.type = 'cellular'", 100);
         var twinsInRedmond43UsingCellular = await query.GetNextAsTwinAsync();
         Console.WriteLine("Devices in Redmond43 using cellular network: {0}", 
           string.Join(", ", twinsInRedmond43UsingCellular.Select(t => t.DeviceId)));
     }
     ```
-   
-    **RegistryManager** 类公开从该服务与设备孪生交互所需的所有方法。 上面的代码首先初始化 **registryManager** 对象，并检索 **myDeviceId** 的设备孪生，最后使用所需位置信息更新其标记。
-   
-    在更新後，它會執行兩個查詢：第一個只選取位於 **Redmond43** 工廠的裝置對應項，第二個會修改查詢，只選取也透過行動電話網路來連接的裝置。
-   
-    請注意，先前的程式碼在建立 **查詢** 物件時，指定傳回的最大文件數。 **query** 对象包含 **HasMoreResults** 布尔值属性，可以使用它多次调用 **GetNextAsTwinAsync** 方法来检索所有结果。 有一個稱為 **GetNextAsJson** 的方法適用於不是裝置對應項的結果，例如彙總查詢的結果。
 
-7. 最後，將下列幾行新增至 **Main** 方法：
+    **RegistryManager** 類別會公開從服務來與裝置對應項進行互動時所需的所有方法。 先前的程式碼會先初始化 **registryManager** 物件，然後擷取 **myDeviceId** 的裝置對應項，最後會以所需的位置資訊來更新其標籤。
+
+    在更新後，它會執行兩個查詢：第一個只選取位於 **Redmond43** 工廠的裝置對應項，第二個會修改查詢，只選取也透過行動電話網路來連接的裝置。
+
+    先前的程式碼在建立**查詢**物件時，指定傳回的最大文件數。 **query** 物件包含 **HasMoreResults** 布林值屬性，可用來多次叫用 **GetNextAsTwinAsync** 方法以擷取所有結果。 有一個稱為 **GetNextAsJson** 的方法適用於不是裝置對應項的結果，例如彙總查詢的結果。
+
+1. 最後，將下列幾行新增至 **Main** 方法：
 
     ```csharp  
     registryManager = RegistryManager.CreateFromConnectionString(connectionString);
@@ -120,29 +129,27 @@ ms.locfileid: "60780409"
     Console.ReadLine();
     ```
 
-8. 在 [方案總管] 中，開啟 [設定起始專案...]，並確定 **AddTagsAndQuery** 專案的 [動作] 是 [啟動]。 建置方案。
+1. 以滑鼠右鍵按一下 **AddTagsAndQuery** 專案，並選取 [偵錯]，後面接著 [開始新執行個體] 來執行此應用程式。 如果是查詢所有位於 **Redmond43** 中的裝置，您在結果中會看到一個裝置，而如果查詢將結果限於使用行動電話網路的裝置，則您不會看到任何裝置。
 
-9. 以滑鼠右鍵按一下 **AddTagsAndQuery** 專案，並選取 [偵錯]，後面接著 [開始新執行個體] 來執行此應用程式。 如果是查詢所有位於 **Redmond43** 中的裝置，您在結果中會看到一個裝置，而如果查詢將結果限於使用行動電話網路的裝置，則您不會看到任何裝置。
-   
     ![視窗中的查詢結果](./media/iot-hub-csharp-csharp-twin-getstarted/addtagapp.png)
 
 在下一節，您將建立一個裝置應用程式，以報告連線資訊並變更上一節的查詢結果。
 
-## <a name="create-the-device-app"></a>创建设备应用
+## <a name="create-the-device-app"></a>建立裝置應用程式
 
 在本節中，您將建立一個 .NET 主控台應用程式，此應用程式會以 **myDeviceId** 來連線到您的中樞，然後更新其回報屬性，以包含資訊來指出目前使用行動電話通訊網路來連線。
 
-1. 在 Visual Studio 中，使用 [主控台應用程式] 專案範本，將 Visual C# Windows 傳統桌面專案新增至目前的方案。 將專案命名為 **ReportConnectivity**。
-   
-    ![新的 Visual C# Windows 傳統裝置應用程式](./media/iot-hub-csharp-csharp-twin-getstarted/createdeviceapp.png)
-    
-2. 在方案總管中，以滑鼠右鍵按一下 **ReportConnectivity** 專案，然後按一下 [管理 NuGet 套件...]。
+1. 在 Visual Studio 中，選取 [檔案] >  [新增] >  [專案]。 在 [建立新專案] 中，選擇 [主控台應用程式 (.NET Framework)]，然後選取 [下一步]。
 
-3. 在 [NuGet 套件管理員] 視窗中，選取 [瀏覽]，並搜尋 **Microsoft.Azure.Devices.Client**。 選取 [安裝] 來安裝 **Microsoft.Azure.Devices.Client** 套件，並接受使用規定。 此程序會下載及安裝 [Azure IoT 裝置 SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/) NuGet 套件與其相依性，並新增對它的參考。
-   
-    ![NuGet 套件管理員視窗用戶端應用程式](./media/iot-hub-csharp-csharp-twin-getstarted/clientsdknuget.png)
+1. 在 [設定新專案] 中，將專案命名為 **ReportConnectivity**。 針對 [方案] 選擇 [新增至方案]，然後選取 [建立]。
 
-4. 在 **Program.cs** 檔案開頭處新增下列 `using` 陳述式：
+1. 在 [方案總管] 中，以滑鼠右鍵按一下 [ReportConnectivity] 專案，然後選取 [管理 NuGet 套件]。
+
+1. 選取 [瀏覽]，然後搜尋並選擇 [Microsoft.Azure.Devices.Client]。 選取 [安裝]。
+
+   此步驟會下載和安裝 [Azure IoT 裝置 SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/) NuGet 套件及其相依性，並新增其參考。
+
+1. 在 **Program.cs** 檔案開頭處新增下列 `using` 陳述式：
 
     ```csharp  
     using Microsoft.Azure.Devices.Client;
@@ -150,15 +157,14 @@ ms.locfileid: "60780409"
     using Newtonsoft.Json;
     ```
 
-5. 將下列欄位新增到 **Program** 類別。 將預留位置的值取代為您在上一節中所記下的裝置連接字串。
+1. 將下列欄位新增到 **Program** 類別。 將 `{device connection string}` 取代為於 [在 IoT 中樞註冊新裝置](#register-a-new-device-in-the-iot-hub)內記下的裝置連接字串。
 
     ```csharp  
-    static string DeviceConnectionString = "HostName=<yourIotHubName>.azure-devices.net;
-      DeviceId=<yourIotDeviceName>;SharedAccessKey=<yourIotDeviceAccessKey>";
+    static string DeviceConnectionString = "HostName=<yourIotHubName>.azure-devices.net;DeviceId=<yourIotDeviceName>;SharedAccessKey=<yourIotDeviceAccessKey>";
     static DeviceClient Client = null;
     ```
 
-6. 將下列方法加入至 **Program** 類別：
+1. 將下列方法加入至 **Program** 類別：
 
     ```csharp
     public static async void InitClient()
@@ -181,7 +187,7 @@ ms.locfileid: "60780409"
 
     **Client** 物件會公開從裝置來與裝置對應項進行互動時所需的所有方法。 以上所示的程式碼會初始化**用戶端**物件，然後擷取 **myDeviceId** 的裝置對應項。
 
-7. 將下列方法加入至 **Program** 類別：
+1. 將下列方法加入至 **Program** 類別：
 
     ```csharp  
     public static async void ReportConnectivity()
@@ -189,7 +195,7 @@ ms.locfileid: "60780409"
         try
         {
             Console.WriteLine("Sending connectivity data as reported property");
-            
+
             TwinCollection reportedProperties, connectivity;
             reportedProperties = new TwinCollection();
             connectivity = new TwinCollection();
@@ -205,9 +211,9 @@ ms.locfileid: "60780409"
     }
     ```
 
-   上述程式碼會將 **myDeviceId** 的回報屬性更新為連線資訊。
+   上述程式碼會以連線資訊來更新 **myDeviceId** 的報告屬性。
 
-8. 最後，將下列幾行新增至 **Main** 方法：
+1. 最後，將下列幾行新增至 **Main** 方法：
 
     ```csharp
     try
@@ -224,24 +230,28 @@ ms.locfileid: "60780409"
     Console.ReadLine();
     ```
 
-9. 在方案總管中，開啟 [設定起始專案...]，並確定 **ReportConnectivity** 專案的 [動作] 是 [啟動]。 建置方案。
+1. 在 [方案總管] 中，以滑鼠右鍵按一下方案，然後選取 [設定啟始專案]。
 
-10. 以滑鼠右鍵按一下 **ReportConnectivity** 專案，並選取 [偵錯]，後面接著 [開始新執行個體] 來執行此應用程式。 您應該會看到它取得對應項資訊，然後傳送連線作為「回報屬性」。
-   
+1. 在 [通用屬性] > [啟始專案] 中，選取 [多個啟始專案]。 針對 [ReportConnectivity]，選取 [啟動] 作為 [動作]。 選取 [ **確定** ] 以儲存變更。  
+
+1. 以滑鼠右鍵按一下 [ReportConnectivity] 專案，然後依序選取 [偵錯]和 [開始新執行個體] 來執行此應用程式。 您應該會看到應用程式取得對應項資訊，然後傳送連線作為「報告屬性」。
+
     ![執行裝置應用程式以回報連線](./media/iot-hub-csharp-csharp-twin-getstarted/rundeviceapp.png)
-       
-11. 现在设备报告了其连接信息，该信息应出现在两个查询中。 執行 .NET **AddTagsAndQuery** 應用程式，以再次執行查詢。 這次，**myDeviceId** 應該會出現在這兩個查詢結果中。
-   
+
+   在裝置回報其連線資訊之後，應該會出現在這兩個查詢中。
+
+1. 以滑鼠右鍵按一下 [AddTagsAndQuery] 專案，然後選取 [偵錯] > [開始新執行個體] 以再次執行查詢。 這次，**myDeviceId** 應該會出現在這兩個查詢結果中。
+
     ![已成功回報裝置連線](./media/iot-hub-csharp-csharp-twin-getstarted/tagappsuccess.png)
 
 ## <a name="next-steps"></a>後續步驟
 
-在此教學課程中，您在 Azure 入口網站中設定了新的 IoT 中樞，然後在 IoT 中樞的身分識別登錄中建立了裝置身分識別。 您已從後端應用程式將裝置中繼資料新增為標籤，並撰寫模擬裝置應用程式來報告裝置對應項中的裝置連線資訊。 还学习了如何使用类似 SQL 的 IoT 中心查询语言来查询此信息。
+在此教學課程中，您在 Azure 入口網站中設定了新的 IoT 中樞，然後在 IoT 中樞的身分識別登錄中建立了裝置身分識別。 您已從後端應用程式將裝置中繼資料新增為標籤，並撰寫模擬裝置應用程式來報告裝置對應項中的裝置連線資訊。 您也了解如何使 類似 SQL 的 IoT 中樞查詢語言來查詢此資訊。
 
-使用下列資源來了解如何：
+您可從下列資源深入了解：
 
-* 使用[將遙測資料從裝置傳送到 IoT 中樞](quickstart-send-telemetry-dotnet.md)教學課程，從裝置傳送遙測，
+* 若要了解如何從裝置傳送遙測，請參閱[將遙測從裝置傳送至 IoT 中樞](quickstart-send-telemetry-dotnet.md)教學課程。
 
-* 使用裝置對應項所需的屬性來設定裝置，請參閱[使用所需的屬性來設定裝置](tutorial-device-twins.md)教學課程，
+* 若要了解如何使用裝置對應項所需的屬性來設定裝置，請參閱[使用所需的屬性來設定裝置](tutorial-device-twins.md)教學課程。
 
-* 以互動方式控制裝置 (例如，從使用者控制的應用程式開啟風扇)，請參閱[使用直接方法](quickstart-control-device-dotnet.md)教學課程。
+* 若要了解如何以互動方式控制裝置 (例如從使用者控制的應用程式開啟風扇)，請參閱[使用直接方法](quickstart-control-device-dotnet.md)教學課程。

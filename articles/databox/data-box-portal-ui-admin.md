@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
-ms.topic: overview
+ms.topic: how-to
 ms.date: 01/09/2019
 ms.author: alkohli
-ms.openlocfilehash: 5d1c3e4bb1c4b3545c8f051432016348112f16b0
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: 01e3ed9f94b575aae4ce0ed12eb63e3cf40d99ce
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58903641"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84707730"
 ---
 # <a name="use-azure-portal-to-administer-your-data-box-disk"></a>使用 Azure 入口網站來管理資料箱磁碟
 
@@ -27,7 +27,7 @@ ms.locfileid: "58903641"
 
 執行下列步驟以取消訂單。
 
-1.  移至 [概觀 > 取消]。 
+1.  移至 [概觀 > 取消]****。 
 
     ![取消訂單 1](media/data-box-portal-ui-admin/cancel-order1.png)
 
@@ -35,7 +35,7 @@ ms.locfileid: "58903641"
 
     ![取消訂單 2](media/data-box-portal-ui-admin/cancel-order2.png)
 
-3.  一旦訂單取消後，入口網站會更新訂單狀態，並將它顯示為 [已取消]。
+3.  一旦訂單取消後，入口網站會更新訂單狀態，並將它顯示為 [已取消]****。
 
     ![取消訂單 3](media/data-box-portal-ui-admin/cancel-order3.png)
 
@@ -47,15 +47,15 @@ ms.locfileid: "58903641"
 
 請執行下列步驟來複製訂單。
 
-1.  移至 [概觀 > 複製]。 
+1.  移至 [概觀 > 複製]****。 
 
     ![複製訂單 1](media/data-box-portal-ui-admin/clone-order1.png)
 
-2.  所有的訂單詳細資料保持不變。 訂單名稱是原始訂單名稱附加上「-複製」。 請選取核取方塊，以確認您已檢閱隱私權資訊。 按一下頁面底部的 [新增] 。    
+2.  所有的訂單詳細資料保持不變。 訂單名稱是原始訂單名稱附加上「-複製」**。 請選取核取方塊，以確認您已檢閱隱私權資訊。 按一下 [建立]。    
 
 會在幾分鐘內建立複製，且入口網站更新會顯示新的訂單。
 
-[![複製訂單 3](media/data-box-portal-ui-admin/clone-order3.png)](media/data-box-portal-ui-admin/clone-order3.png#lightbox) 
+[![複製順序3](media/data-box-portal-ui-admin/clone-order3.png)](media/data-box-portal-ui-admin/clone-order3.png#lightbox) 
 
 ## <a name="delete-order"></a>刪除訂單
 
@@ -63,15 +63,15 @@ ms.locfileid: "58903641"
 
 您只能將已完成或已取消的訂單刪除。 執行下列步驟來刪除訂單。
 
-1. 移至 [所有資源]。 搜尋您的訂單。
+1. 移至 [**所有資源**]。 搜尋您的訂單。
 
     ![搜尋資料箱磁碟訂單](media/data-box-portal-ui-admin/search-data-box-disk-orders.png)
 
-2. 按一下您想要刪除的訂單，並移至 [概觀]。 從命令列中，按一下 [刪除]。
+2. 按一下您想要刪除的訂單，並移至 [概觀]****。 從命令列按一下 [刪除]****。
 
     ![刪除資料箱磁碟訂單 1](media/data-box-portal-ui-admin/delete-order1.png)
 
-3. 當系統提示時，請輸入訂單的名稱來確認訂單刪除。 按一下 [刪除] 。
+3. 當系統提示時，請輸入訂單的名稱來確認訂單刪除。 按一下 **[刪除]** 。
 
      ![刪除資料箱磁碟訂單 2](media/data-box-portal-ui-admin/delete-order2.png)
 
@@ -81,7 +81,7 @@ ms.locfileid: "58903641"
 如果您磁碟隨附的出貨標籤錯置或遺失，您可能需要下載出貨標籤。 
 
 執行下列步驟，以下載出貨標籤。
-1.  移至 [概觀 > 下載出貨標籤]。 只有在磁碟出貨之後，才可使用此選項。 
+1.  移至 [概觀 > 下載出貨標籤]****。 只有在磁碟出貨之後，才可使用此選項。 
 
     ![下載出貨標籤](media/data-box-portal-ui-admin/download-shipping-label.png)
 
@@ -95,7 +95,7 @@ ms.locfileid: "58903641"
 
 執行下列步驟以編輯訂單。
 
-1. 移至 [訂單詳細資料 > 編輯交貨地址]。
+1. 移至 [訂單詳細資料 > 編輯交貨地址]****。
 
     ![編輯交貨地址 1](media/data-box-portal-ui-admin/edit-shipping-address1.png)
 
@@ -109,7 +109,7 @@ ms.locfileid: "58903641"
 
 請執行下列步驟來編輯通知詳細資料。
 
-1. 移至 [訂單詳細資料 > 編輯通知詳細資料]。
+1. 移至 [訂單詳細資料 > 編輯通知詳細資料]****。
 
     ![編輯通知詳細資料 1](media/data-box-portal-ui-admin/edit-notification-details1.png)
 
@@ -119,7 +119,7 @@ ms.locfileid: "58903641"
 
 ## <a name="view-order-status"></a>檢視訂單狀態
 
-|訂單狀態 |說明 |
+|訂單狀態 |Description |
 |---------|---------|
 |訂購時間     | 已成功下單。 <br> 如果磁碟無法使用，您會收到通知。 <br>如果可使用磁碟，Microsoft 會識別要寄送的磁碟，並準備磁碟包裹。        |
 |已處理     | 訂單處理已完成。 <br> 在訂單處理期間，會發生下列動作：<li>使用 AES-128 BitLocker 加密將磁碟加密。 </li> <li>鎖定資料箱磁碟，以防止未經授權的存取。</li><li>在此程序期間，會產生解除鎖定磁碟的通行金鑰。</li>        |
@@ -128,9 +128,9 @@ ms.locfileid: "58903641"
 |已取貨     |您的退貨已取貨。 <br> 一旦 Azure 資料中心收到出貨時，資料會自動上傳至 Azure。         |
 |已收到     | Azure 資料中心已收到您的磁碟。 複製資料即將開始。        |
 |已複製資料     |資料複製進行中。<br> 等候資料複製完成。         |
-|Completed       |已順利完成訂單。<br> 從伺服器刪除內部部署資料之前，請確認資料已位於 Azure 中。         |
-|已完成，但發生錯誤| 資料複製已完成，但收到錯誤。 <br> 使用 [概觀] 中提供的路徑來檢閱複製記錄。 如需詳細資訊，請移至[下載診斷記錄](data-box-disk-troubleshoot.md#download-diagnostic-logs)。   |
-|Canceled            |訂單便會取消。 <br> 可能是您取消訂單或發現錯誤，而服務將訂單取消。     |
+|已完成       |已順利完成訂單。<br> 從伺服器刪除內部部署資料之前，請確認資料已位於 Azure 中。         |
+|已完成，但發生錯誤| 資料複製已完成，但收到錯誤。 <br> 使用 [概觀]**** 中提供的路徑，檢閱上傳的錯誤記錄。 如需詳細資訊，請移至[下載上傳錯誤記錄](data-box-disk-troubleshoot-upload.md#download-logs)。   |
+|已取消            |訂單便會取消。 <br> 可能是您取消訂單或發現錯誤，而服務將訂單取消。     |
 
 
 

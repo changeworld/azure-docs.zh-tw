@@ -1,67 +1,73 @@
 ---
-title: Windows 虛擬桌面預覽環境-Azure
-description: Windows 虛擬桌面預覽環境的基本項目。
+title: Windows 虛擬桌面環境-Azure
+description: Windows 虛擬桌面環境的基本元素。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 04/12/2019
+ms.date: 04/30/2020
 ms.author: helohr
-ms.openlocfilehash: 6aa6c7326759e480235df5fe9d4b0878cd11024d
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+manager: lizross
+ms.openlocfilehash: d189d5febe54a83cde4fe6cd6aa51e728aa882e6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65142390"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259892"
 ---
-# <a name="windows-virtual-desktop-preview-environment"></a>Windows 虛擬桌面預覽環境
+# <a name="windows-virtual-desktop-environment"></a>Windows 虛擬桌面環境
 
-Windows 虛擬桌面 Preview 是一項服務，可讓使用者輕鬆又安全地存取其虛擬的桌面及 Remoteapp。 本主題會告訴您更多有關於 Windows 虛擬桌面環境的一般結構。
+>[!IMPORTANT]
+>此內容適用於具有 Azure Resource Manager Windows 虛擬桌面物件的 2020 年春季更新版。 如果您使用不含 Azure Resource Manager 物件的 Windows 虛擬桌面 2019 年秋季版，請參閱[這篇文章](./virtual-desktop-fall-2019/environment-setup-2019.md)。
+>
+> Windows 虛擬桌面 2020 年春季更新版目前為公開預覽狀態。 此預覽版本是在沒有服務等級協定的情況下提供，不建議您將其用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 
+> 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="tenants"></a>租用戶
+Windows 虛擬桌面是一種服務，可讓使用者輕鬆且安全地存取其虛擬化的桌面和 Remoteapp。 本主題將告訴您更多有關 Windows 虛擬桌面環境的一般結構。
 
-Windows 虛擬桌面的租用戶是用於管理 Windows 虛擬桌面環境的主要介面。 每個 Windows 虛擬桌面租用戶必須與包含使用者要登入環境的 Azure Active Directory 產生關聯。 從 Windows 的虛擬桌面租用戶中，您可以開始建立主應用程式集區，以執行您的使用者工作負載。
+## <a name="host-pools"></a>主機集區
 
-## <a name="host-pools"></a>主應用程式集區
+主機集區是 Azure 虛擬機器的集合，會在您執行 Windows 虛擬桌面代理程式時，註冊 Windows 虛擬桌面做為工作階段主機。 主機集區中的所有工作階段主機虛擬機器都應該來自相同的映射，以提供一致的使用者體驗。
 
-主應用程式集區是 Azure 虛擬機器，當您執行 Windows 的虛擬桌面代理程式做為工作階段主機註冊到 Windows 虛擬桌面集合。 主應用程式集區中所有工作階段主機虛擬機器應該來自相同的映像，以一致的使用者體驗。
+主機集區可以是下列兩種類型的其中一種：
 
-主應用程式集區可以是下列其中一種：
+- Personal，其中每個工作階段主機都會指派給個別使用者。
+- 集區，其中工作階段主機可以接受來自主機集區內應用程式群組授權的任何使用者的連接。
 
-- 個人、 每個工作階段主機指派給個別使用者的位置。
-- 共用工作階段主機可以接受來自任何主應用程式集區中的應用程式群組獲授權的使用者連線的位置。
-
-您可以在主應用程式集區，以變更其負載平衡行為，可以採取的每個工作階段主機的工作階段數目和使用者可以執行登入他們的 Windows 虛擬桌面工作階段時，主應用程式集區中的工作階段主機上設定其他屬性。 您控制使用者可透過應用程式群組所發佈的資源。
+您可以在主機集區上設定其他內容，以變更其負載平衡行為、每個工作階段主機可以接受的會話數目，以及使用者在登入其 Windows 虛擬桌面會話時，可以對主機集區中的主機執行哪些動作。 您可以透過應用程式群組控制發佈給使用者的資源。
 
 ## <a name="app-groups"></a>應用程式群組
 
-「 應用程式群組是應用程式安裝在主應用程式集區中的工作階段主機的邏輯群組。 「 應用程式群組可以是下列其中一種：
+應用程式群組是主機集區中工作階段主機上所安裝應用程式的邏輯群組。 應用程式群組可以是下列兩種類型之一：
 
-- RemoteApp，讓使用者存取的 Remoteapp 個別選取並發行至應用程式群組
-- Desktop 中，供使用者存取完整的桌面
+- RemoteApp，使用者可在其中存取您個別選取併發布至應用程式群組的 Remoteapp
+- 桌面，使用者在其中存取完整桌面
 
-根據預設，傳統型應用程式群組 （名為 「 桌面應用程式群組 」） 會自動建立每當您建立主應用程式集區。 您可以隨時移除此應用程式群組。 不過，您無法建立傳統型應用程式的另一個群組主應用程式集區中的傳統型應用程式群組存在時。 若要發佈的 Remoteapp，您必須建立 RemoteApp 的應用程式群組。 您可以建立多個不同的背景工作的案例的 RemoteApp 應用程式群組。 不同的 RemoteApp 應用程式群組也可以包含重疊的 Remoteapp。
+根據預設，每當您建立主機集區時，就會自動建立名為「桌面應用程式群組」 ) 的桌面應用程式群組 (。 您可以隨時移除此應用程式群組。 不過，當桌面應用程式群組存在時，您無法在主機集區中建立另一個桌面應用程式群組。 若要發佈 Remoteapp，您必須建立 RemoteApp 應用程式群組。 您可以建立多個 RemoteApp 應用程式群組來配合不同的背景工作案例。 不同的 RemoteApp 應用程式群組也可以包含重迭的 Remoteapp。
 
-若要發行給使用者的資源，您必須將它們指派給應用程式群組。 當將使用者指派給應用程式群組中，請考慮下列事項：
+若要將資源發佈給使用者，您必須將它們指派給應用程式群組。 將使用者指派給應用程式群組時，請考慮下列事項：
 
-- 使用者無法指派給桌面應用程式群組和相同的主應用程式集區中的 RemoteApp 應用程式群組中。
-- 使用者可以指派給相同的主應用程式集區中的多個應用程式群組，其摘要將會累積的這兩個應用程式群組。
+- 使用者可以同時指派至相同主機集區中的桌面應用程式群組和 RemoteApp 應用程式群組。 不過，使用者只能在每個會話啟動一種類型的應用程式群組。 使用者無法同時在單一會話中啟動這兩種類型的應用程式群組。
+- 使用者可以指派給相同主機集區中的多個應用程式群組，而其摘要會累積這兩個應用程式群組。
 
-## <a name="tenant-groups"></a>租用戶群組
+## <a name="workspaces"></a>工作區
 
-Windows 虛擬桌面，在 Windows 虛擬桌面的租用戶會是大部分的安裝和設定的地方。 Windows 虛擬桌面的租用戶所包含的主應用程式集區、 應用程式群組和應用程式群組的使用者指派。 不過，可能有某些情況下，您需要管理多個 Windows 虛擬桌面租用戶，特別是如果您是雲端服務提供者 (CSP) 或主控夥伴。 在這些情況下，您可以使用自訂的 Windows 虛擬桌面的租用戶群組，將每個客戶的 Windows 虛擬桌面的租用戶，並集中管理存取權。 不過，如果您只管理單一的 Windows 虛擬桌面租用戶，租用戶群組的概念並不適用，而且您可以繼續操作及管理您的租用戶中的預設租用戶群組存在。
+工作區是 Windows 虛擬桌面中應用程式群組的邏輯群組。 每個 Windows 虛擬桌面應用程式群組都必須與工作區相關聯，使用者才能看到發佈給他們的遠端應用程式和桌上型電腦。  
 
-## <a name="end-users"></a>終端使用者
+## <a name="end-users"></a>使用者
 
-您已指派使用者給其應用程式群組之後，他們可以連線到任何 Windows 虛擬桌面用戶端的 Windows 虛擬桌面部署。
+將使用者指派給其應用程式群組之後，他們就可以使用任何 Windows 虛擬桌面用戶端連線到 Windows 虛擬桌面部署。
 
 ## <a name="next-steps"></a>後續步驟
 
-深入了解委派的存取權，以及如何將角色指派給使用者[委派的存取，在 Windows 虛擬桌面預覽](delegated-access-virtual-desktop.md)。
+深入瞭解委派的存取權，以及如何[在 Windows 虛擬桌面的委派存取權中](delegated-access-virtual-desktop.md)將角色指派給使用者。
 
-若要了解如何設定 Windows 虛擬桌面租用戶，請參閱[建立租用戶中 Windows 虛擬桌面預覽](tenant-setup-azure-active-directory.md)。
+若要瞭解如何設定您的 Windows 虛擬桌面主機集區，請參閱[使用 Azure 入口網站建立主機](create-host-pools-azure-marketplace.md)集區。
 
-若要了解如何連線到 Windows 虛擬桌面，請參閱下列文章：
+若要瞭解如何連接到 Windows 虛擬桌面，請參閱下列其中一篇文章：
 
-- [從 Windows 10 或 Windows 7 連線](connect-windows-7-and-10.md)
-- [從網頁瀏覽器連線](connect-web.md)
+- [與 Windows 10 或 Windows 7 連接](connect-windows-7-10.md)
+- [使用網頁瀏覽器連接](connect-web.md)
+- [與 Android 用戶端連線](connect-android.md)
+- [與 macOS 用戶端連線](connect-macos.md)
+- [與 iOS 用戶端連線](connect-ios.md)

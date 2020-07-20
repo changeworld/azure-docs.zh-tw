@@ -1,60 +1,54 @@
 ---
 title: Azure Functions 中的觸發程序和繫結
-description: 了解如何使用触发器和绑定将 Azure 函数连接到联机事件和基于云的服务。
-services: functions
-documentationcenter: na
+description: 瞭解如何使用觸發程式和系結，將您的 Azure 函式連線至線上事件和雲端式服務。
 author: craigshoemaker
-manager: jeconnoc
-ms.service: azure-functions
-ms.devlang: multiple
-ms.topic: reference
-origin.date: 02/18/2019
-ms.date: 03/04/2019
-ms.author: v-junlch
-ms.openlocfilehash: 3865f748a9ca2fe09660d6454542d64f73a8e3c1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.topic: conceptual
+ms.date: 02/18/2019
+ms.author: cshoe
+ms.openlocfilehash: ddcf6758c8c648678c69070fa5b65ae6c4947018
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61020957"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252686"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Azure Functions 觸發程序和繫結概念
 
-本文概要介绍有关函数触发器和绑定的概念。
+在本文中，您將瞭解函數觸發程式和系結的高階概念。
 
-触发器是导致函数运行的因素。 触发器定义函数的调用方式，一个函数必须刚好有一个触发器。 触发器具有关联的数据，这些数据通常作为函数的有效负载提供。 
+觸發程式是造成函式執行的原因。 觸發程式會定義叫用函式的方式，而函式必須剛好有一個觸發程式。 觸發程序具有相關聯的資料，它通常提供作為函式的承載。 
 
-绑定到函数是以声明方式将另一个资源连接到该函数的一种方式；绑定可以输入绑定和/或输出绑定的形式进行连接。 绑定中的数据作为参数提供给函数。
+系結至函式是以宣告方式將另一個資源連接至函式的方法;系結可能會連接為*輸入*系結、*輸出*系結或兩者。 來自繫結的資料是作為參數提供給函式。
 
-可根据需要，混合搭配不同的绑定。 绑定是可选的，一个函数可以有一个或多个输入绑定和/或输出绑定。
+您可以混合使用不同繫結，以符合您的需求。 繫結是選擇性的，而且一個函數可能有一或多個輸入和/或輸出繫結。
 
-使用触发器和绑定可以避免对其他服务进行硬编码访问。 您的函式會接收函式參數中的資料 (例如佇列訊息的內容)。 您可以使用函式的傳回值來傳送資料 (例如用以建立佇列訊息)。 
+觸發程式和系結可讓您避免硬式編碼存取其他服務。 您的函式會接收函式參數中的資料 (例如佇列訊息的內容)。 您可以使用函式的傳回值來傳送資料 (例如用以建立佇列訊息)。 
 
-以下示例演示如何实现不同的函数。
+請考慮下列範例，以瞭解如何執行不同的功能。
 
-| 範例案例 | 觸發程序 | 输入绑定 | 输出绑定 |
+| 範例案例 | 觸發程序 | 輸入系結 | 輸出系結 |
 |-------------|---------|---------------|----------------|
-| 新的队列消息抵达，此时会运行一个函数来写入到另一个队列。 | 队列<sup>*</sup> | *None* | 队列<sup>*</sup> |
-|计划的作业读取 Blob 存储内容，并创建新的 Cosmos DB 文档。 | 計時器 | Blob 儲存體 | Cosmos DB |
-|事件网格用于读取 Blob 存储中的映像以及 Cosmos DB 中的文档，以发送电子邮件。 | Event Grid | Blob 存储和 Cosmos DB | SendGrid |
-| 一个 Webhook，它使用 Microsoft Graph 来更新 Excel 工作表。 | HTTP | *None* | Microsoft Graph |
+| 新的佇列訊息抵達，其會執行函式以寫入至另一個佇列。 | 佇列<sup>*</sup> | *無* | 佇列<sup>*</sup> |
+|排程工作會讀取 Blob 儲存體內容，並建立新的 Cosmos DB 檔。 | 計時器 | Blob 儲存體 | Cosmos DB |
+|事件方格是用來從 Blob 儲存體中讀取影像，並使用來自 Cosmos DB 的檔來傳送電子郵件。 | 事件方格 | Blob 儲存體和 Cosmos DB | SendGrid |
+| 使用 Microsoft Graph 來更新 Excel 工作表的 webhook。 | HTTP | *無* | Microsoft Graph |
 
-<sup>\*</sup> 表示不同的队列
+<sup>\*</sup>代表不同的佇列
 
-这些示例并不详尽，旨在演示如何同时使用触发器和绑定。
+這些範例不是完整的，而是提供來說明如何搭配使用觸發程式和系結。
 
-###  <a name="trigger-and-binding-definitions"></a>触发器和绑定的定义
+###  <a name="trigger-and-binding-definitions"></a>觸發程式和系結定義
 
-触发器和绑定的定义根据开发方法的不同而异。
+觸發程式和系結的定義會根據開發方法而有所不同。
 
-| 平台 | 触发器和绑定的配置方式... |
+| 平台 | 觸發程式和系結是由設定的 .。。 |
 |-------------|--------------------------------------------|
-| C# 類別庫 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;使用 C# 特性修饰方法和参数 |
-| 其他所有（包括 Azure 门户） | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;更新 [function.json](./functions-reference.md)（[架构](http://json.schemastore.org/function)） |
+| C# 類別庫 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;使用 c # 屬性裝飾方法和參數 |
+| 所有其他 (包括 Azure 入口網站)  | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;更新 ([架構](http://json.schemastore.org/function)) [上的function.js](./functions-reference.md) |
 
-门户为此配置提供了一个 UI，但你可以通过函数的“集成”选项卡打开“高级编辑器”，来直接编辑文件。
+入口網站會提供此設定的 UI，但是您可以透過函式的 [**整合**] 索引標籤開啟可用的 [ **Advanced editor** ]，直接編輯檔案。
 
-在 .NET 中，参数类型定义了输入数据的数据类型。 例如，使用 `string` 绑定到队列触发器的文本、一个要读取为二进制内容的字节数组，以及一个要反序列化为对象的自定义类型。
+在 .NET 中，參數類型會定義輸入資料的資料類型。 例如，使用系結 `string` 至佇列觸發程式的文字、要讀取為二進位的位元組陣列，以及要還原序列化為物件的自訂類型。
 
 對於 JavaScript 等具有動態類型的語言，則會使用 *function.json* 檔案中的 `dataType` 屬性。 例如，若要讀取二進位格式的 HTTP 要求內容，請將 `dataType` 設定為 `binary`：
 
@@ -71,11 +65,11 @@ ms.locfileid: "61020957"
 
 ## <a name="binding-direction"></a>繫結方向
 
-所有觸發程序和繫結在 [function.json](./functions-reference.md) 檔案中都具有 `direction` 屬性：
+所有觸發程序和繫結在 function.json[](./functions-reference.md) 檔案中都具有 `direction` 屬性：
 
 - 對於觸發程序，方向一律為 `in`
 - 輸入和輸出繫結使用 `in` 和 `out`
-- 某些繫結支援特殊方向 `inout`。 如果使用 `inout`，则只能通过门户中的“集成”选项卡使用“高级编辑器”。
+- 某些繫結支援特殊方向 `inout`。 如果您使用 `inout` ，則只能透過入口網站中的 [**整合**] 索引標籤使用 [ **Advanced editor** ]。
 
 當您使用[類別庫中的屬性](functions-dotnet-class-library.md)來設定觸發程序和繫結時，請在屬性建構函式中提供方向，或從參數類型推斷方向。
 
@@ -86,16 +80,14 @@ ms.locfileid: "61020957"
 如需哪些繫結為預覽狀態或已核准可用於實際執行環境的資訊，請參閱[支援的語言](supported-languages.md)。
 
 ## <a name="resources"></a>資源
-- [绑定表达式和模式](./functions-bindings-expressions-patterns.md)
-- [使用 Azure 函数返回值](./functions-bindings-return-value.md)
-- [如何注册绑定表达式](./functions-bindings-register.md)
+- [繫結運算式和模式](./functions-bindings-expressions-patterns.md)
+- [使用 Azure 函數傳回值](./functions-bindings-return-value.md)
+- [如何註冊系結運算式](./functions-bindings-register.md)
 - 測試：
   - [在 Azure Functions 中測試程式碼的策略](functions-test-a-function.md)
   - [手動執行非 HTTP 觸發的函式](functions-manually-run-non-http.md)
-- [处理绑定错误](./functions-bindings-errors.md)
+- [處理繫結錯誤](./functions-bindings-errors.md)
 
 ## <a name="next-steps"></a>後續步驟
 > [!div class="nextstepaction"]
-> [注册 Azure Functions 绑定扩展](./functions-bindings-register.md)
-
-<!-- Update_Description: wording update -->
+> [註冊 Azure Functions 系結延伸模組](./functions-bindings-register.md)

@@ -1,26 +1,28 @@
 ---
-title: Azure Data Factory 中的 Webhook 活動 |Microsoft Docs
-description: Webhook 的活動不會繼續執行管線，直到它會驗證連接的資料集，與特定使用者指定的準則。
+title: Azure Data Factory 中的 Webhook 活動
+description: Webhook 活動不會繼續執行管線，直到它以使用者指定的特定準則驗證附加的資料集為止。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.reviewer: douglasl
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.author: shlo
-ms.openlocfilehash: 6ec43b06ce266b9ceaddb5dd21cbf52f509d6596
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4056550ae0a71138d136878fc7e3aa5f6f8f4180
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60764300"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "81417873"
 ---
 # <a name="webhook-activity-in-azure-data-factory"></a>Azure Data Factory 中的 Webhook 活動
-若要透過自訂程式碼控制的管線執行，您可以使用 web 勾點活動。 使用 webhook 的活動，客戶可呼叫端點，並傳遞回呼 URL。 管線執行等候後再繼續下一個活動會叫用的回呼。
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+Webhook 活動可以透過您的自訂程式碼來控制管線的執行。 使用 webhook 活動，客戶的程式碼可以呼叫端點，並將回呼 URL 傳遞給它。 管線執行會等待回呼調用，再繼續進行下一個活動。
 
 ## <a name="syntax"></a>語法
 
@@ -49,33 +51,101 @@ ms.locfileid: "60764300"
 
 ```
 
-
 ## <a name="type-properties"></a>類型屬性
 
-
-
-屬性 | 描述 | 允許的值 | 必要項
+屬性 | 描述 | 允許的值 | 必要
 -------- | ----------- | -------------- | --------
-name | Web 攔截程序活動的名稱。 | 字串 | 是 |
-type | 必須設定為**WebHook**。 | 字串 | 是 |
-method | 目標端點的 Rest API 方法。 | 字串。 支援的類型：' POST' | 是 |
-url | 目標端點和路徑 | 字串 (或含有字串之 resultType 的運算式)。 | 是 |
-headers | 傳送至要求的標頭。 例如，若要在要求上設定的語言和類型: [標頭]: {「 接受語言 」:"en-我們"、"Content-type":"application/json"}。 | 字串 (或含有字串之 resultType 的運算式) | 是，Content-type 標頭是必要的。 "headers":{ "Content-Type":"application/json"} |
-body | 代表傳送至端點的承載。 | 主體傳回給呼叫回 URI 應為有效的 JSON。 請在[要求乘載結構描述](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fdata-factory%2Fcontrol-flow-web-activity%23request-payload-schema&amp;data=02%7C01%7Cshlo%40microsoft.com%7Cde517eae4e7f4f2c408d08d6b167f6b1%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636891457414397501&amp;sdata=ljUZv5csQQux2TT3JtTU9ZU8e1uViRzuX5DSNYkL0uE%3D&amp;reserved=0)一節中查看要求乘載的結構描述。 | 是 |
-驗證 | 呼叫端點所使用的驗證方法。 支援的類型為 「 基本 」 或 「 ClientCertificate。 」 如需詳細資訊，請參閱[驗證](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fdata-factory%2Fcontrol-flow-web-activity%23authentication&amp;data=02%7C01%7Cshlo%40microsoft.com%7Cde517eae4e7f4f2c408d08d6b167f6b1%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636891457414397501&amp;sdata=GdA1%2Fh2pAD%2BSyWJHSW%2BSKucqoAXux%2F4L5Jgndd3YziM%3D&amp;reserved=0)一節。 如果不需要驗證，請排除這個屬性。 | 字串 (或含有字串之 resultType 的運算式) | 否 |
-timeout | 活動會等待多久&#39;callBackUri&#39;會叫用。 活動會等待多久 'callBackUri' 會叫用。 預設值是 10mins ("00: 10:00")。 格式是 Timespan 也就是 d.hh:mm:ss | 字串 | 否 |
+**name** | Webhook 活動的名稱。 | String | 是 |
+**type** | 必須設定為 "WebHook"。 | String | 是 |
+**方法** | 目標端點的 REST API 方法。 | 字串。 支援的類型為 "POST"。 | 是 |
+**url** | 目標端點和路徑。 | 字串或具有字串之**resultType**值的運算式。 | 是 |
+**標題** | 傳送至要求的標頭。 以下範例會設定要求的語言和類型： `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }` 。 | 字串或具有字串之**resultType**值的運算式。 | 是。 `Content-Type`需要標頭 `"headers":{ "Content-Type":"application/json"}` ，例如。 |
+**body** | 代表傳送至端點的承載。 | 有效的 JSON，**或值為 JSON 的運算式**。 如需要求裝載的架構，請參閱[要求裝載架構](https://docs.microsoft.com/azure/data-factory/control-flow-web-activity#request-payload-schema)。 | 是 |
+**authentication** | 用來呼叫端點的驗證方法。 支援的類型為「基本」和「ClientCertificate」。 如需詳細資訊，請參閱[驗證](https://docs.microsoft.com/azure/data-factory/control-flow-web-activity#authentication)。 如果不需要驗證，請排除此屬性。 | 字串或具有字串之**resultType**值的運算式。 | 否 |
+**timeout** | 活動等候**callBackUri**指定之回呼的時間長度。 預設值為10分鐘（"00:10:00"）。 值具有 TimeSpan 格式*d*。*hh*：*mm*：*ss*。 | String | 否 |
+**回撥時報告狀態** | 讓使用者報告 webhook 活動的失敗狀態。 | Boolean | 否 |
+
+## <a name="authentication"></a>驗證
+
+Webhook 活動支援下列驗證類型。
+
+### <a name="none"></a>None
+
+如果不需要驗證，請不要包含**驗證**屬性。
+
+### <a name="basic"></a>基本
+
+指定要與基本驗證搭配使用的使用者名稱和密碼。
+
+```json
+"authentication":{
+   "type":"Basic",
+   "username":"****",
+   "password":"****"
+}
+```
+
+### <a name="client-certificate"></a>用戶端憑證
+
+指定以 Base64 編碼的 PFX 檔案內容和密碼。
+
+```json
+"authentication":{
+   "type":"ClientCertificate",
+   "pfx":"****",
+   "password":"****"
+}
+```
+
+### <a name="managed-identity"></a>受控識別
+
+使用 data factory 的受控識別來指定要求存取權杖的資源 URI。 若要呼叫 Azure 資源管理 API，請使用 `https://management.azure.com/`。 如需受控識別如何工作的詳細資訊，請參閱[適用于 Azure 資源的受控識別總覽](/azure/active-directory/managed-identities-azure-resources/overview)。
+
+```json
+"authentication": {
+    "type": "MSI",
+    "resource": "https://management.azure.com/"
+}
+```
+
+> [!NOTE]
+> 如果您的 data factory 設定了 Git 存放庫，您必須將認證儲存在 Azure Key Vault 中，才能使用基本或用戶端憑證驗證。 Azure Data Factory 不會將密碼儲存在 Git 中。
 
 ## <a name="additional-notes"></a>其他注意事項
 
-Azure Data Factory 將會傳入額外的屬性"callBackUri 」 主體 url 端點，並會預期要在指定的逾時值之前叫用此 uri。 如果 uri 不會叫用，活動將會失敗 '逾時' 的狀態。
+Data Factory 會在傳送至 URL 端點的主體中傳遞額外的屬性**callBackUri** 。 Data Factory 預期在指定的超時值之前叫用此 URI。 如果未叫用 URI，活動就會失敗，並出現狀態 "TimedOut"。
 
-Web 勾點活動本身失敗只當自訂端點的呼叫失敗。 可以新增至回呼的主體和後續的活動中所使用的任何錯誤訊息。
+當自訂端點的呼叫失敗時，webhook 活動就會失敗。 任何錯誤訊息都可以加入至回呼主體，並用於後續的活動中。
+
+針對每個 REST API 呼叫，如果端點在一分鐘內沒有回應，用戶端就會超時。 這種行為是標準的 HTTP 最佳作法。 若要修正此問題，請執行202模式。 在目前的案例中，端點會傳回202（已接受），而用戶端會輪詢。
+
+要求的一分鐘超時與活動超時無關。 後者是用來等候**callbackUri**所指定的回呼。
+
+傳回回撥 URI 的主體必須是有效的 JSON。 將 `Content-Type` 標頭設定為 `application/json`。
+
+當您使用回呼屬性的**報告狀態**時，您必須在進行回呼時，將下列程式碼新增至本文：
+
+```json
+{
+    "Output": {
+        // output object is used in activity output
+        "testProp": "testPropValue"
+    },
+    "Error": {
+        // Optional, set it when you want to fail the activity
+        "ErrorCode": "testErrorCode",
+        "Message": "error message to show in activity error"
+    },
+    "StatusCode": "403" // when status code is >=400, activity is marked as failed
+}
+```
 
 ## <a name="next-steps"></a>後續步驟
-請參閱 Data Factory 支援的其他控制流程活動：
 
-- [If Condition 活動](control-flow-if-condition-activity.md)
-- [執行管道活動](control-flow-execute-pipeline-activity.md)
+請參閱下列 Data Factory 支援的控制流程活動：
+
+- [If 條件活動](control-flow-if-condition-activity.md)
+- [執行管線活動](control-flow-execute-pipeline-activity.md)
 - [For Each 活動](control-flow-for-each-activity.md)
 - [取得中繼資料活動](control-flow-get-metadata-activity.md)
 - [查閱活動](control-flow-lookup-activity.md)

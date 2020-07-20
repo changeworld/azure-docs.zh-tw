@@ -1,71 +1,98 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Batch 文件
+### YamlMime:Landing
+title: Azure Batch 文件
+summary: Azure Batch 可在雲端有效率地大規模執行應用程式。 排程需要大量計算的工作，並在無需管理基礎結構的情況下動態調整解決方案的資源。
 metadata:
-  title: Batch 文件 - 教學課程和 API 參考 | Microsoft Docs
-  description: 使用 Batch 在雲端有效率地執行大規模的平行和高效能運算 (HPC) 應用程式。 定義 Azure 計算資源，進而以平行方式或大規模執行應用程式，而不需要手動設定或管理基礎結構。 排程需要大量計算的工作，並依需求動態新增或移除計算資源。 了解如何透過快速入門、教學課程和範例使用 Azure Batch。
-  services: batch
-  author: czeumault
-  manager: carolz
+  title: Azure Batch 文件
+  description: Azure Batch 可在雲端有效率地大規模執行應用程式。 排程需要大量計算的工作，並在無需管理基礎結構的情況下動態調整解決方案的資源。
   ms.service: batch
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
-  ms.date: 11/30/2017
-  ms.author: carolz
-abstract:
-  description: 使用 Batch 在雲端有效率地執行大規模的平行和高效能運算 (HPC) 應用程式。 定義 Azure 計算資源，進而以平行方式或大規模執行應用程式，而不需要手動設定或管理基礎結構。 排程需要大量計算的工作，並依需求動態新增或移除計算資源。 了解如何透過快速入門、教學課程和範例使用 Azure Batch。
-sections:
-  - title: 5 分鐘快速入門
-    items:
-      - type: paragraph
-        text: 了解如何在 Azure 中執行您的第一個 Batch 作業。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_cligeneric.svg'
-            text: Azure CLI
-            href: quick-create-cli
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_portal.svg'
-            text: Azure 入口網站
-            href: quick-create-portal
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_NET.svg'
-            text: .NET
-            href: quick-run-dotnet
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_python.svg'
-            text: Python
-            href: quick-run-python
-  - title: 逐步教學課程
-    items:
-      - type: paragraph
-        text: 了解如何在 Batch 中執行需要進行大量計算的工作負載。
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="tutorial-parallel-dotnet">使用 .NET SDK 進行檔案平行處理</a>
-          - html: <a href="tutorial-parallel-python">使用 Python SDK 進行檔案平行處理</a>
-          - html: <a href="tutorial-rendering-cli">使用 Arnold 進行場景轉譯</a>
-          - html: <a href="tutorial-r-doazureparallel">平行 R 模擬</a>
-  - title: 範例
-    items:
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="cli-samples">Azure CLI</a>
-  - title: 參考
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: 命令列
-            html: <p><a href="/cli/azure/batch">Azure CLI</a></p><p><a href="/powershell/module/az.batch">Azure PowerShell</a></p>
-          - title: 語言
-            html: <p><a href="/dotnet/api/overview/azure/batch">.NET</a></p><p><a href="/java/api/overview/azure/batch">Java</a></p><p><a href="/javascript/api/overview/azure/batch">Node.js</a></p><p><a href="/python/api/overview/azure/batch">Python</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/batchservice">Batch 服務 REST API</a></p><p><a href="/rest/api/batchmanagement/">Batch 管理 REST API</a></p>
+  author: JnHs
+  ms.author: jenhayes
+  ms.date: 09/23/2019
+  ms.openlocfilehash: e5240786ecb26ad0a72c6a9b82cd03ca9050113b
+  ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 07/05/2020
+  ms.locfileid: "85964850"
+landingContent:
+- title: 關於 Azure Batch
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是 Azure Batch？
+      url: batch-technical-overview.md
+  - linkListType: learn
+    links:
+    - text: 免費 Pluralsight 影片訓練
+      url: https://app.pluralsight.com/library/courses/microsoft-azure-batch-getting-started/table-of-contents
+- title: 開始使用
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Azure CLI
+      url: quick-create-cli.md
+    - text: Azure 入口網站
+      url: quick-create-portal.md
+    - text: .NET API
+      url: quick-run-dotnet.md
+    - text: Python API
+      url: quick-run-python.md
+  - linkListType: concept
+    links:
+    - text: 適用於開發人員的工作流程和功能概觀
+      url: batch-service-workflow-features.md
+- title: 逐步指南
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 檔案平行處理 - .NET
+      url: tutorial-parallel-dotnet.md
+    - text: 檔案平行處理 - Python
+      url: tutorial-parallel-python.md
+    - text: OCR with Batch 和 Functions
+      url: tutorial-batch-functions.md
+    - text: 使用 Arnold 進行場景轉譯
+      url: tutorial-rendering-cli.md
+    - text: 使用 Batch Explorer 進行轉譯
+      url: tutorial-rendering-batchexplorer-blender.md
+    - text: 平行 R 模擬
+      url: tutorial-r-doazureparallel.md
+- title: 設定和管理資源
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 建立批次帳戶：
+      url: batch-account-create-portal.md
+    - text: 建立和管理集區
+      url: batch-custom-images.md
+    - text: 同時執行工作
+      url: batch-parallel-node-tasks.md
+    - text: 使用應用程式封裝
+      url: batch-application-packages.md
+  - linkListType: concept
+    links:
+    - text: 支援的 VM 大小
+      url: batch-pool-vm-sizes.md
+    - text: 配額和限制
+      url: batch-quota-limit.md
+    - text: 最佳作法
+      url: best-practices.md
+- title: API 參考資料
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure CLI
+      url: /cli/azure/batch?view=azure-cli-latest
+    - text: Azure PowerShell
+      url: /powershell/module/az.batch/?view=azps-2.6.0
+    - text: .NET
+      url: /dotnet/api/overview/azure/batch?view=azure-dotnet
+    - text: Java
+      url: /java/api/overview/azure/batch?view=azure-java-stable
+    - text: Node.js
+      url: /javascript/api/overview/azure/batch?view=azure-node-latest
+    - text: Python
+      url: /python/api/overview/azure/batch?view=azure-python
+    - text: REST
+      url: /rest/api/batchservice/

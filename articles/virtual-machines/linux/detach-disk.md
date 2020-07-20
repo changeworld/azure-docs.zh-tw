@@ -1,27 +1,17 @@
 ---
-title: 從 Linux VM 中斷資料磁碟連結 | Microsoft Docs
+title: 從 Linux VM 卸離資料磁碟
 description: 了解如何使用 Azure CLI 或 Azure 入口網站，從 Azure 中的虛擬機器中斷資料磁碟連結。
-services: virtual-machines-linux
-documentationcenter: ''
 author: roygara
-manager: twooley
-editor: ''
-tags: azure-service-management
-ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.devlang: azurecli
-ms.topic: article
+ms.topic: how-to
 ms.date: 07/18/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 02cb970b5c70064abbbc71e585fe3dd1540fda90
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
-ms.translationtype: MT
+ms.openlocfilehash: 7a9915f0c523afd755223393e70595364676cd3a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64696708"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84658233"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-linux-virtual-machine"></a>如何從 Linux 虛擬機器中斷資料磁碟連結
 
@@ -115,12 +105,10 @@ az vm disk detach \
 ## <a name="detach-a-data-disk-using-the-portal"></a>使用入口網站來中斷資料磁碟連結
 
 1. 在左窗格中，選取 [虛擬機器]。
-2. 選取含有您想要中斷連結之資料磁碟的虛擬機器，然後按一下 [停止] 以解除配置該 VM。
-3. 在 [虛擬機器] 窗格中，選取 [磁碟]。
-4. 在 [磁碟] 窗格頂端，選取 [編輯]。
-5. 在 [磁碟] 窗格中，在您想要中斷連結的資料磁碟最右側，按一下 ![[中斷連結] 按鈕影像](./media/detach-disk/detach.png) [中斷連結] 按鈕。
-5. 移除磁碟之後，按一下窗格頂端的 [儲存]。
-6. 在 [虛擬機器] 窗格中，按一下 [概觀]，然後按一下窗格頂端的 [啟動] 按鈕以重新啟動 VM。
+1. 在 [虛擬機器] 刀鋒視窗中，選取 [磁碟]。
+1. 在 [磁碟] 刀鋒視窗頂端，選取 [編輯]。
+1. 在 [磁碟] 刀鋒視窗中，在您想要中斷連結的資料磁碟最右側，按一下 ![中斷連結按鈕影像](./media/detach-disk/detach.png) 中斷連結按鈕。
+1. 移除磁碟之後，按一下刀鋒視窗頂端的 [儲存]。
 
 磁碟仍留在儲存體中，但不再連結至虛擬機器。
 

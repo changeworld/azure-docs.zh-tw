@@ -9,50 +9,69 @@
   items:
     - name: 開始使用
       href: video-indexer-get-started.md
+    - name: 邀請使用者
+      href: invite-users.md
 - name: 教學課程
   items:
     - name: 使用影片索引器 API
       href: video-indexer-use-apis.md
+    - name: Logic Apps 連接器
+      href: logic-apps-connector-tutorial.md
+- name: 範例
+  items:
+    - name: 影片索引器範例
+      href: 'https://github.com/Azure-Samples/media-services-video-indexer'
 - name: 概念
-  href: video-indexer-concepts.md
   items:
     - name: 比較影片索引器和媒體服務預設值
       href: compare-video-indexer-with-media-services-presets.md
     - name: 管理多個租用戶
       href: manage-multiple-tenants.md
+    - name: 語言識別模型
+      href: language-identification-model.md
+    - name: 即時串流分析
+      href: live-stream-analysis.md
     - name: 自訂內容模型
       items:
+        - name: 概觀
+          href: customize-content-models-overview.md
+        - name: 動畫字元
+          href: animated-characters-recognition.md
         - name: 品牌
           href: customize-brands-model-overview.md
-        - name: 語言
+        - name: Language
           href: customize-language-model-overview.md
-        - name: Person
+        - name: 個人
           href: customize-person-model-overview.md
 - name: 使用說明指南
   items:
-    - name: 連接到 Azure
+    - name: 連線到 Azure
       href: connect-to-azure.md
     - name: 管理與 Azure 連線的帳戶
       href: manage-account-connected-to-azure.md
-    - name: 使用 API 上傳並為影片製作索引
+    - name: 上傳並為影片製作索引
       href: upload-index-videos.md
     - name: 檢查影片索引器輸出
       href: video-indexer-output-json-v2.md
     - name: 尋找影片中的確切時間
       href: video-indexer-search.md
-    - name: 場景、擷取畫面和主要畫面格
+    - name: 偵測場景、擷取畫面、主要畫面格
       href: scenes-shots-keyframes.md
+    - name: 識別並轉譯多語言內容
+      href: multi-language-identification-transcription.md
     - name: 檢視及編輯影片索引器深入解析
       href: video-indexer-view-edit.md
     - name: 使用編輯器來建立專案
       href: use-editor-create-project.md
-    - name: 從現有影片建立影片深入解析
-      href: video-indexer-create-new.md
     - name: 將小工具內嵌至您的應用程式
       href: video-indexer-embed-widgets.md
+    - name: 災害復原
+      href: video-indexer-disaster-recovery.md
     - name: 自訂內容模型
       items:
-        - name: Person
+        - name: 動畫字元
+          href: animated-characters-recognition.md
+        - name: 個人
           items:
             - name: 使用影片索引器網站
               href: customize-person-model-with-website.md
@@ -64,7 +83,7 @@
               href: customize-brands-model-with-website.md
             - name: 使用影片索引器 API
               href: customize-brands-model-with-api.md
-        - name: 語言
+        - name: Language
           items:
             - name: 使用影片索引器網站
               href: customize-language-model-with-website.md
@@ -78,7 +97,7 @@
   items:
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/roadmap/?category=web-mobile'
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/media-services/'
     - name: 區域可用性
       href: 'https://azure.microsoft.com/regions/services/'
@@ -88,3 +107,9 @@
       href: faq.md
     - name: 法規遵循
       href: 'https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942'
+    - name: 版本資訊
+      href: release-notes.md
+    - name: User Voice
+      href: 'https://cognitive.uservoice.com/forums/598144-video-indexer'
+    - name: 部落格
+      href: 'https://azure.microsoft.com/blog/tag/video-indexer/'

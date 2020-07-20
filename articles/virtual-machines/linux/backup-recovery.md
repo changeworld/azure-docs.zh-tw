@@ -1,26 +1,16 @@
 ---
-title: 概述 Linux Azure VM 的備份選項 | Microsoft Docs
+title: 概述 Linux Vm 的備份選項
 description: 概述 Linux Azure 虛擬機器的備份選項。
-services: virtual-machines-windows
-documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
-editor: tysonn
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machines-linux
-ms.devlang: na
+ms.service: virtual-machines
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
 ms.date: 09/13/2017
 ms.author: cynthn
-ms.openlocfilehash: dcb96b73b93dae759c06995152d032271dbf9234
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: feb7a60fbdcd48c21126b9108cf85cf54917e330
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60543699"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "78969299"
 ---
 # <a name="backup-and-restore-options-for-linux-virtual-machines-in-azure"></a>Azure 中 Linux 虛擬機器的備份和還原選項
 

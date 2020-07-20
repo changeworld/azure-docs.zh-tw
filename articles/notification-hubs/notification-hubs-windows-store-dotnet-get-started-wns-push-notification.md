@@ -3,33 +3,33 @@ title: 使用 Azure 通知中樞將通知傳送至通用 Windows 平台應用程
 description: 了解如何使用 Azure 通知中樞，將通知推播至 Windows 通用平台應用程式。
 services: notification-hubs
 documentationcenter: windows
-author: jwargo
-manager: patniko
-editor: spelluru
-ms.assetid: cf307cf3-8c58-4628-9c63-8751e6a0ef43
+author: sethmanheim
+manager: femila
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 03/22/2019
-ms.author: jowargo
-ms.openlocfilehash: b9fa54a24c5d96f0d3ad48034907f2c6fe5cb385
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.date: 12/05/2019
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 12/04/2019
+ms.openlocfilehash: f78f24ee68545b386169e29a5a52ccc572849ad7
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60006925"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80127065"
 ---
-# <a name="tutorial-send-notifications-to-universal-windows-platform-apps-by-using-azure-notification-hubs"></a>教學課程：使用 Azure 通知中樞將通知傳送至通用 Windows 平台應用程式
+# <a name="tutorial-send-notifications-to-universal-windows-platform-apps-using-azure-notification-hubs"></a>教學課程：使用 Azure 通知中樞將通知傳送至通用 Windows 平台應用程式
 
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
 在本教學課程中，您會使用 Azure 通知中樞將推播通知傳送至通用 Windows 平台 (UWP) 應用程式。 您會使用 Windows 推播通知服務 (WNS)，建立可接收推播通知的空白 Windows 市集應用程式。 接著，使用通知中樞將推播通知廣播到所有執行您應用程式的裝置。
 
 > [!NOTE]
-> 您可以在 [GitHub](https://github.com/Azure/azure-notificationhubs-samples/tree/master/dotnet/GetStartedWindowsUniversal) 上找到本教學課程的完整程式碼。
+> 您可以在 [GitHub](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/UwpSample) 上找到本教學課程的完整程式碼。
 
 請執行下列步驟：
 
@@ -39,17 +39,17 @@ ms.locfileid: "60006925"
 > * 在 Windows 應用程式中建立範例
 > * 傳送測試通知
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - **Azure 訂用帳戶**。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費 Azure 帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-- [Microsoft Visual Studio Community 2015](https://www.visualstudio.com/products/visual-studio-community-vs) 或更新版本。
+- Microsoft Visual Studio 2017 或更新版本。 本教學課程中的範例會使用 [Visual Studio 2019](https://www.visualstudio.com/products)。
 - [已安裝 UWP 應用程式開發工具](https://msdn.microsoft.com/windows/uwp/get-started/get-set-up)
 - 有效的 Windows 市集帳戶
-- 確認已啟用 [從應用程式和其他傳送者取得通知] 設定。 
-    - 在電腦上啟動 [設定] 視窗。
-    - 選取 [系統] 圖格。
-    - 從左側功能表中選取 [通知與動作]。 
-    - 確認已啟用 [從應用程式和其他傳送者取得通知] 設定。 如果未啟用，請加以啟用。 
+- 確認已啟用 [從應用程式和其他傳送者取得通知]  設定。 
+    - 在電腦上啟動 [設定]  視窗。
+    - 選取 [系統]  圖格。
+    - 從左側功能表中選取 [通知與動作]  。 
+    - 確認已啟用 [從應用程式和其他傳送者取得通知]  設定。 如果未啟用，請加以啟用。
 
 完成本教學課程是參加 UWP 應用程式所有其他通知中樞教學課程的先決條件。
 
@@ -57,16 +57,16 @@ ms.locfileid: "60006925"
 
 若要傳送推播通知給 Windows UWP 應用程式，將您的應用程式與 Windows 市集產生關聯。 接著設定您的通知中樞，以便與 WNS 進行整合。
 
-1. 瀏覽至 [Windows 開發人員中心](https://partner.microsoft.com/en-us/dashboard/windows/first-run-experience)，並使用 Microsoft 帳戶登入，然後選取 [建立新的應用程式]。
+1. 瀏覽至 [Windows 開發人員中心](https://partner.microsoft.com/dashboard/windows/first-run-experience)，並使用 Microsoft 帳戶登入，然後選取 [建立新的應用程式]  。
 
     ![新增應用程式按鈕](./media/notification-hubs-windows-store-dotnet-get-started/windows-store-new-app-button.png)
-2. 輸入您的應用程式名稱，然後選取 [保留產品名稱]。 這麼做會為您的應用程式建立新的 Windows 市集註冊。
+2. 輸入您的應用程式名稱，然後選取 [保留產品名稱]  。 這麼做會為您的應用程式建立新的 Windows 市集註冊。
 
     ![儲存應用程式名稱](./media/notification-hubs-windows-store-dotnet-get-started/store-app-name.png)
-3. 展開 [應用程式管理]，然後依序選取 [WNS/MPNS] 和 [線上服務網站]。 登入您的 Microsoft 帳戶。 **[應用程式註冊入口網站]** 會在新的索引標籤中開啟。或者，您可以直接瀏覽至 [應用程式註冊入口網站](https://apps.dev.microsoft.com) 並選取您的應用程式名稱，以取得此頁面。
+3. 展開 [產品管理]  ，然後依序選取 [WNS/MPNS]  和 [線上服務網站]  。 登入您的 Microsoft 帳戶。 [應用程式註冊] 頁面會在新的索引標籤中開啟。或者，您也可以直接瀏覽至 [[我的應用程式](https://apps.dev.microsoft.com)] 頁面，然後選取應用程式名稱以進入此頁面。
 
     ![WNS MPNS 頁面](./media/notification-hubs-windows-store-dotnet-get-started/wns-mpns-page.png)
-4. 請記下 [應用程式密碼] 和 [套件安全性識別碼] \(SID\)。
+4. 請記下 [應用程式密碼]  和 [套件安全性識別碼] \(SID\)  。
 
     >[!WARNING]
     >應用程式密碼與封裝 SID 是重要的安全性認證。 請勿與任何人共用這些值，或與您的應用程式一起散發密碼。
@@ -77,8 +77,8 @@ ms.locfileid: "60006925"
 
 ### <a name="configure-wns-settings-for-the-hub"></a>設定中樞的 WNS 設定
 
-1. 在 [通知設定] 類別中選取 [Windows (WNS)]。
-2. 輸入您在上一節記下的 [套件 SID] 和 [安全性金鑰] 值。
+1. 在 [通知設定]  類別中選取 [Windows (WNS)]  。
+2. 輸入您在上一節記下的 [套件 SID]  和 [安全性金鑰]  值。
 3. 按一下工具列的 [儲存]  。
 
     ![套件 SID 和安全性金鑰方塊](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-configure-wns.png)
@@ -87,22 +87,23 @@ ms.locfileid: "60006925"
 
 ## <a name="create-a-sample-windows-app"></a>在 Windows 應用程式中建立範例
 
-1. 在 Visual Studio 中，開啟 [檔案] 功能表，選取 [新增]，然後選取 [專案]。
-2. 在 [新增專案] 對話方塊中，完成下列步驟：
+1. 在 Visual Studio 中，開啟 [檔案]  功能表，選取 [新增]  ，然後選取 [專案]  。
+2. 在 [建立新專案]  對話方塊中，完成下列步驟：
 
-    1. 展開 **Visual C#**。
-    2. 選取 [Windows 通用]。
-    3. 選取 [空白應用程式] \(通用 Windows\)。
-    4. 輸入專案的 [名稱]  。
-    5. 選取 [確定] 。
+    1. 在頂端的搜尋方塊中，輸入 **Windows Universal**。
+    2. 在搜尋結果中，選取 [空白應用程式 (Universal Windows)]  ，然後選取 [下一步]  。
 
-        ![[新增專案] 對話方塊](./media/notification-hubs-windows-store-dotnet-get-started/new-project-dialog.png)
-3. 接受**目標**和**最小**平台版本的預設值，然後選取 [確定]。
-4. 在 [方案總管] 中，以滑鼠右鍵按一下 Windows 市集應用程式專案，然後依序選取 [市集] 和 [將應用程式與市集建立關聯]。 隨即顯示 [將您的應用程式與 Windows 市集建立關聯]  精靈。
+       ![[新增專案] 對話方塊](./media/notification-hubs-windows-store-dotnet-get-started/new-project-dialog.png)
+
+    3. 在 [設定新專案]  對話方塊中，輸入 [專案名稱]  以及專案檔案的 [位置]  。
+    4. 選取 [建立]  。
+
+3. 接受**目標**和**最小**平台版本的預設值，然後選取 [確定]  。
+4. 在 [方案總管] 中，以滑鼠右鍵按一下 Windows 市集應用程式專案，然後依序選取 [發佈]  和 [將應用程式與市集建立關聯]  。 隨即顯示 [將您的應用程式與 Windows 市集建立關聯]  精靈。
 5. 在此精靈中，使用您的 Microsoft 帳戶登入。
-6. 選取您在步驟 2 中註冊的應用程式，選取 [下一步]，然後選取 [關聯]。 這麼做會將所需的 Windows 市集註冊資訊新增至應用程式資訊清單。
-7. 在 Visual Studio 中，以滑鼠右鍵按一下方案，然後選取 [管理 NuGet 套件] 。 [管理 NuGet 套件] 視窗隨即開啟。
-8. 在搜尋方塊中，輸入 **WindowsAzure.Messaging.Managed**，選取 [安裝] 並接受使用條款。
+6. 選取您在步驟 2 中註冊的應用程式，選取 [下一步]  ，然後選取 [關聯]  。 這麼做會將所需的 Windows 市集註冊資訊新增至應用程式資訊清單。
+7. 在 Visual Studio 中，以滑鼠右鍵按一下方案，然後選取 [管理 NuGet 套件]  。 [管理 NuGet 套件]  視窗隨即開啟。
+8. 在搜尋方塊中，輸入 **WindowsAzure.Messaging.Managed**，選取 [安裝]  並接受使用條款。
 
     ![[管理 NuGet 套件] 視窗][20]
 
@@ -115,7 +116,7 @@ ms.locfileid: "60006925"
     using Windows.UI.Popups;
     ```
 
-10. 在專案的 `App.xaml.cs` 檔案中，找出 `App` 類別，然後新增下列 `InitNotificationsAsync` 方法定義：
+10. 在專案的 `App.xaml.cs` 檔案中，找出 `App` 類別，然後新增下列 `InitNotificationsAsync` 方法定義。 以您在 Azure 入口網站中建立的通知中樞名稱取代 `<your hub name>`，並使用通知中樞 [存取原則]  頁面中的 `DefaultListenSharedAccessSignature` 連接字串來取代 `<Your DefaultListenSharedAccessSignature connection string>`：
 
     ```csharp
     private async void InitNotificationsAsync()
@@ -138,7 +139,7 @@ ms.locfileid: "60006925"
     此程式碼會從 WNS 中擷取應用程式的通道 URI，然後向您的通知中樞註冊該通道 URI。
 
     >[!NOTE]
-    > 使用 Azure 入口網站中顯示的通知中樞名稱，取代 `hub name` 預留位置。 此外，使用您在上一節中從通知中樞的 [存取原則] 頁面取得的 `DefaultListenSharedAccessSignature` 連接字串，取代連接字串預留位置。
+    > 使用 Azure 入口網站中顯示的通知中樞名稱，取代 `hub name` 預留位置。 此外，使用您在上一節中從通知中樞的 [存取原則]  頁面取得的 `DefaultListenSharedAccessSignature` 連接字串，取代連接字串預留位置。
 
 11. 在 `App.xaml.cs` 中的 `OnLaunched` 事件處理常式頂端，將下列呼叫新增至新的 `InitNotificationsAsync` 方法：
 
@@ -148,7 +149,7 @@ ms.locfileid: "60006925"
 
     此動作會保證每次啟動應用程式時，通道 URI 便會在通知中樞中註冊。
 
-12. 按鍵盤的 **F5** 鍵以執行應用程式。 包含註冊金鑰的對話方塊將會顯示。 按一下 [確定] 以關閉對話方塊。
+12. 按鍵盤的 **F5** 鍵以執行應用程式。 包含註冊金鑰的對話方塊將會顯示。 按一下 [確定]  以關閉對話方塊。
 
     ![註冊成功](./media/notification-hubs-windows-store-dotnet-get-started/registration-successful.png)
 
@@ -158,16 +159,16 @@ ms.locfileid: "60006925"
 
 在 [Azure 入口網站](https://portal.azure.com/)中傳送通知，即可在應用程式中快速測試通知的接收。
 
-1. 在 Azure 入口網站中，切換至 [概觀] 索引標籤，然後在工具列上選取 [測試傳送]。
+1. 在 Azure 入口網站中，切換至 [概觀] 索引標籤，然後在工具列上選取 [測試傳送]  。
 
     ![測試傳送按鈕](./media/notification-hubs-windows-store-dotnet-get-started/test-send-button.png)
-2. 在 [測試傳送] 視窗中，執行下列動作：
-    1. 針對 [平台]，選取 [Windows]。
-    2. 針對 [通知類型]，選取 [快顯通知]。
-    3. 選取 [傳送]。
+2. 在 [測試傳送]  視窗中，執行下列動作：
+    1. 針對 [平台]  ，選取 [Windows]  。
+    2. 針對 [通知類型]  ，選取 [快顯通知]  。
+    3. 選取 [傳送]  。
 
         ![[傳送測試] 窗格](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-test-send-wns.png)
-3. 在視窗底部的 [結果] 清單中，檢視傳送作業的結果。 您也會看到警示訊息。
+3. 在視窗底部的 [結果]  清單中，檢視傳送作業的結果。 您也會看到警示訊息。
 
     ![傳送作業的結果](./media/notification-hubs-windows-store-dotnet-get-started/result-of-send.png)
 4. 您會看見通知訊息：在您的桌上型電腦上**測試訊息**。

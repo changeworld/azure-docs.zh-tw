@@ -1,19 +1,18 @@
 ---
 title: Azure Analysis Services 高可用性 | Microsoft Docs
-description: 確保 Azure Analysis Services 的高可用性。
+description: 本文說明 Azure Analysis Services 如何在服務中斷期間提供高可用性。
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/09/2019
+ms.date: 03/30/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 51a0f560a0e4b6ff791d5ed3f9f221eb2eeb9b4d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 78a6d41b638d79111a58830f0cb0d5190ea0796c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61035997"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80408675"
 ---
 # <a name="analysis-services-high-availability"></a>Analysis Services 的高可用性
 
@@ -25,7 +24,7 @@ ms.locfileid: "61035997"
 
 * 將模型部署到其他區域的備援伺服器。 此方法需要平行處理主要伺服器和備援伺服器的資料，以確保所有伺服器保持同步。
 
-* 從主要伺服器[備份](analysis-services-backup.md)資料庫，並還原到備援伺服器上。 例如，您可以讓目標為 Azure 儲存體的夜間備份作業自動進行，並還原到其他區域的其他備援伺服器。 
+* 從主伺服器[備份](analysis-services-backup.md)資料庫，並在重複的伺服器上還原。 例如，您可以讓目標為 Azure 儲存體的夜間備份作業自動進行，並還原到其他區域的其他備援伺服器。 
 
 不論是哪一種情況，如果您的主要伺服器發生中斷，您都必須將報告用戶端中的連接字串，變更為連線到不同區域資料中心的伺服器。 此變更作業應視為最後手段，只有在發生重大的區域資料中心中斷時才應考慮使用。 比較常見的情況是，您可能還未更新所有用戶端上的連線，裝載主要伺服器的資料中心就已從中斷狀態恢復為上線狀態。 
 

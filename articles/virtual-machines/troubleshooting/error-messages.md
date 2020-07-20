@@ -4,7 +4,7 @@ description: 了解當您在 Azure 中佈建及管理虛擬機器時，會遇到
 services: virtual-machines
 documentationcenter: ''
 author: xujing-ms
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines
@@ -12,12 +12,11 @@ ms.topic: troubleshooting
 ms.workload: infrastructure
 ms.date: 5/22/2017
 ms.author: xujing
-ms.openlocfilehash: 5945be210812a6cbc24c9a3bb12414be5212be17
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: f5639d1cf94c77d699dc6de9841698b045ac1f96
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60711198"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "76543013"
 ---
 # <a name="understand-common-error-messages-when-you-manage-virtual-machines-in-azure"></a>了解當您在 Azure 中管理虛擬機器時，常見的錯誤訊息
 
@@ -26,7 +25,7 @@ ms.locfileid: "60711198"
 >[!NOTE]
 > 您可以在此頁面上，或透過 [Azure 意見反應](https://feedback.azure.com/forums/216843-virtual-machines) 並利用 #azerrormessage 標記，發表對於錯誤訊息的意見反應。
 
-## <a name="error-response-format"></a>错误响应格式 
+## <a name="error-response-format"></a>錯誤回應的格式 
 Azure VM 使用下列 JSON 格式來產生錯誤回應：
 
 ```json
@@ -37,7 +36,7 @@ Azure VM 使用下列 JSON 格式來產生錯誤回應：
     "message":"Top level error message",
     "details":[
      {
-      "code":"Inner evel error code",
+      "code":"Inner level error code",
       "message":"Inner level error message"
      }
     ]
@@ -55,7 +54,7 @@ Azure VM 使用下列 JSON 格式來產生錯誤回應：
 |  錯誤碼  |  錯誤訊息  |  
 |  :------| :-------------|  
 |  AcquireDiskLeaseFailed  |  使用 URI 為 {1} 的 blob 建立磁碟 '{0}' 時，無法取得租用。 Blob 已在使用中。  |  
-|  AllocationFailed  |  分配失败。 請嘗試降低 VM 大小或 VM 數，然後稍候再試一次，或是部署到其他可用性設定組或其他 Azure 位置。  |  
+|  AllocationFailed  |  配置失敗。 請嘗試降低 VM 大小或 VM 數，然後稍候再試一次，或是部署到其他可用性設定組或其他 Azure 位置。  |  
 |  AllocationFailed  |  VM 配置因內部錯誤而失敗。 請稍後重試，或嘗試部署至不同的位置。  |
 |  ArtifactNotFound  |  在位置 '{2}' 中找不到發行者為 '{0}' 且類型為 '{1}' 的 VM 擴充功能。  |
 |  ArtifactNotFound  |  在延伸模組存放庫中找不到發行者為 '{0}'、類型為 '{1}' 且類型處理常式版本為 '{2}' 的延伸模組。  |
@@ -99,8 +98,8 @@ Azure VM 使用下列 JSON 格式來產生錯誤回應：
 |  InvalidParameter  |  提供的密碼長度必須介於 {0}-{1} 個字元之間，而且至少必須符合下列其中 {2} 項對密碼複雜性的要求： <ol><li> 包含大寫字元</li><li>包含小寫字元</li><li>包含數字</li><li>包含特殊字元。</li></ol>  |
 |  InvalidParameter  |  不允許指定的系統管理員使用者名稱。  |
 |  InvalidParameter  |  如果從平台或使用者映像建立 VM，將無法連結現有的作業系統磁碟。  |
-|  InvalidParameter  |  容器名稱 {0} 無效。 容器名稱長度必須是 3-63 個字元，而且只能包含小寫英數字元和連字號。 连字符前后必须为字母数字字符。  |
-|  InvalidParameter  |  URL {1} 中的容器名稱 {0} 無效。 容器名稱長度必須是 3-63 個字元，而且只能包含小寫英數字元和連字號。 连字符前后必须为字母数字字符。  |
+|  InvalidParameter  |  容器名稱 {0} 無效。 容器名稱長度必須是 3-63 個字元，而且只能包含小寫英數字元和連字號。 連字號的前面必須加上英數位元。  |
+|  InvalidParameter  |  URL {1} 中的容器名稱 {0} 無效。 容器名稱長度必須是 3-63 個字元，而且只能包含小寫英數字元和連字號。 連字號的前面必須加上英數位元。  |
 |  InvalidParameter  |  URL {0} 中的 blob 名稱包含斜線。 磁碟目前不支援這種作法。  |
 |  InvalidParameter  |  URI {0} 似乎不是正確的 blob URI。  |
 |  InvalidParameter  |  名為 '{0}' 的磁碟已使用相同的 LUN：{1}。  |
@@ -108,7 +107,7 @@ Azure VM 使用下列 JSON 格式來產生錯誤回應：
 |  InvalidParameter  |  無法為指定的映像參考中已定義的磁碟，指定使用者映像覆寫。  |
 |  InvalidParameter  |  名為 '{0}' 的磁碟已使用相同的 VHD URL {1}。  |
 |  InvalidParameter  |  指定的錯誤網域計數 {0} 必須介於 {1} 到 {2} 之間。  |
-|  InvalidParameter  |  授權類型 {0} 無效。 有效授權類型為：Windows_Client 或 Windows_Server (區分大小寫)。  |
+|  InvalidParameter  |  授權類型 {0} 無效。 有效授權類型為: Windows_Client 或 Windows_Server (區分大小寫)。  |
 |  InvalidParameter  |  Linux 主機名稱長度不可超過 {0} 個字元，也不得包含下列字元：{1}。  |
 |  InvalidParameter  |  由於 Linux 佈建代理程式中的已知問題，SSH 公開金鑰的目的地路徑目前僅限於其預設值 {0}。  |
 |  InvalidParameter  |  已有磁碟的 LUN 為 {0}。  |
@@ -125,7 +124,7 @@ Azure VM 使用下列 JSON 格式來產生錯誤回應：
 |  InvalidParameter  |  Windows 電腦名稱長度不可超過 {0} 個字元、完全是數字，或包含下列字元：{1}。  |
 |  MissingMoveDependentResources  |  移動資源要求未包含所有相依的資源。 請查看遺漏資源識別碼的錯誤詳細資料。  |
 |  MoveResourcesHaveInvalidState  |  移動資源要求包含無效儲存體帳戶相關聯的 VM。 請查看這些資源識別碼和參考的儲存體帳戶名稱的詳細資料。  |
-|  MoveResourcesHavePendingOperations  |  移動資源要求包含已暫止作業的資源。 请查看详情获取这些资源 ID。 暫止的作業完成之後，請重試作業。  |
+|  MoveResourcesHavePendingOperations  |  移動資源要求包含已暫止作業的資源。 請查看這些資源識別碼的詳細資料。 暫止的作業完成之後，請重試作業。  |
 |  MoveResourcesNotFound  |  移動資源要求包含找不到的資源。 請查看這些資源識別碼的詳細資料。  |
 |  NetworkingInternalOperationError  |  不明的網路配置錯誤。  |
 |  NetworkingInternalOperationError  |  不明的網路配置錯誤  |
@@ -171,13 +170,13 @@ Azure VM 使用下列 JSON 格式來產生錯誤回應：
 |  OperationNotAllowed  |  無法調整 VM 大小，因為目前已配置可用性設定組的叢集中沒有所要求的大小 {0} 可用。 可用的大小是：{1}。 請前往 https://aka.ms/azure-resizevm，深入了解 VM 的大小調整策略。  |
 |  OperationNotAllowed  |  無法調整 VM 大小，因為目前已配置 VM 的叢集中沒有所要求的大小 {0} 可用。 若要將 VM 大小調整為 {1}，請解除配置 (這是 Azure 入口網站中的 [停止] 作業)，然後再試一次調整大小作業。 請前往 https://aka.ms/azure-resizevm，深入了解 VM 的大小調整策略。  |
 |  OSProvisioningClientError  |  因為正在佈建客體 OS，所以 VM '{0}' 的 OS 佈建失敗。  |
-|  OSProvisioningClientError  |  VM '{0}' 的 OS 佈建失敗。 錯誤詳細資料：{1} 請確認已正確備妥 (一般化) 映像。 <ul><li>適用於 Windows 的指示： https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/  </li></ul> |
-|  OSProvisioningClientError  |  產生 SSH 主機金鑰失敗。 錯誤詳細資料：{0}。 若要解決此問題，請確認 Linux 代理程式是否已正確設定。 <ul><li>您可以於此查看指示： https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux/ </li></ul> |
+|  OSProvisioningClientError  |  VM '{0}' 的 OS 佈建失敗。 錯誤詳細資料：{1} 請確認已正確備妥 (一般化) 映像。 <ul><li>適用於 Windows 的指示：https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/  </li></ul> |
+|  OSProvisioningClientError  |  產生 SSH 主機金鑰失敗。 錯誤詳細資料：{0}。 若要解決此問題，請確認 Linux 代理程式是否已正確設定。 <ul><li>您可以於此查看指示：https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux/ </li></ul> |
 |  OSProvisioningClientError  |  對 VM 指定的使用者名稱不適用於此 Linux 散發套件。 錯誤詳細資料：{0}。  |
 |  OSProvisioningInternalError  |  由於發生內部錯誤，VM '{0}' 的 OS 佈建失敗。  |
 |  OSProvisioningTimedOut  |  VM '{0}'的 OS 佈建未於配置的時間內完成。 VM 仍可能成功完成佈建。 請稍後再查看佈建狀態。  |
-|  OSProvisioningTimedOut  |  VM '{0}'的 OS 佈建未於配置的時間內完成。 VM 仍可能成功完成佈建。 請稍後再查看佈建狀態。 也請確認已正確備妥 (一般化) 映像。   <ul><li>適用於 Windows 的指示： https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/ </li><li> 適用於 Linux 的指示： https://azure.microsoft.com/documentation/articles/virtual-machines-linux-capture-image/</li></ul>  |
-|  OSProvisioningTimedOut  |  VM '{0}'的 OS 佈建未於配置的時間內完成。 不過，已偵測到 VM 客體代理程式正在執行。 這表示客體 OS 尚未備妥做為 VM 映像 (CreateOption=FromImage)。 若要解決此問題，請依現狀使用 VHD 並指定 CreateOption=Attach，或適當備妥它做為映像：   <ul><li>適用於 Windows 的指示： https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/ </li><li> 適用於 Linux 的指示： https://azure.microsoft.com/documentation/articles/virtual-machines-linux-capture-image/</li></ul>  |
+|  OSProvisioningTimedOut  |  VM '{0}'的 OS 佈建未於配置的時間內完成。 VM 仍可能成功完成佈建。 請稍後再查看佈建狀態。 也請確認已正確備妥 (一般化) 映像。   <ul><li>適用於 Windows 的指示：https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/ </li><li> 適用於 Linux 的指示：https://azure.microsoft.com/documentation/articles/virtual-machines-linux-capture-image/</li></ul>  |
+|  OSProvisioningTimedOut  |  VM '{0}'的 OS 佈建未於配置的時間內完成。 不過，已偵測到 VM 客體代理程式正在執行。 這表示客體 OS 尚未備妥做為 VM 映像 (CreateOption=FromImage)。 若要解決此問題，請依現狀使用 VHD 並指定 CreateOption=Attach，或適當備妥它做為映像：   <ul><li>適用於 Windows 的指示：https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/ </li><li> 適用於 Linux 的指示：https://azure.microsoft.com/documentation/articles/virtual-machines-linux-capture-image/</li></ul>  |
 |  OverConstrainedAllocationRequest  |  選取的位置目前沒有所要求的 VM 大小可用。  |
 |  ResourceUpdateBlockedOnPlatformUpdate  |  因為目前正在執行平台更新，所以無法更新資源。 請稍後再試一次。  |
 |  StorageAccountLimitation  |  儲存體帳戶 '{0}' 不支援建立磁碟所需的分頁 blob。  |
@@ -195,7 +194,7 @@ Azure VM 使用下列 JSON 格式來產生錯誤回應：
 |  TargetDiskBlobAlreadyExists  |  由於目標映像 blob {0} 已存在，且未設定覆寫 VHD blob 的旗標，因此擷取作業無法繼續。 請刪除 blob 或設定覆寫 VHD blob 的旗標，然後重試。  |
 |  TargetDiskBlobAlreadyExists  |  因為目標映像 blob {0} 有作用中的租用，所以擷取作業無法繼續。   |
 |  TargetDiskBlobAlreadyExists  |  Blob {0} 已存在。 請提供其他 blob URI 做為磁碟 '{1}' 的目標。  |
-|  TooManyVMRedeploymentRequests  |  VM '{0}' 或此 VM 的相同可用性設定組內的其他 VM 已收到過多部署要求。 请稍后重试。  |
+|  TooManyVMRedeploymentRequests  |  VM '{0}' 或此 VM 的相同可用性設定組內的其他 VM 已收到過多部署要求。 請稍後重試。  |
 |  VHDSizeInvalid  |  對於具有 blob {2} 的磁碟 '{1}'，指定的磁碟大小值 {0} 無效。 磁碟大小必須介於 {3} 和 {4} 之間。  |
 |  VMAgentStatusCommunicationError  |  VM '{0}' 未回報 VM 代理程式或擴充的狀態。 請確認 VM 上有執行中的 VM 代理程式，並可對外建立Azure 儲存體的連線。  |
 |  VMArtifactRepositoryInternalError  |  與構件存放庫通訊以擷取 VM 構件詳細資料時發生錯誤。  |
@@ -205,14 +204,14 @@ Azure VM 使用下列 JSON 格式來產生錯誤回應：
 |  VMExtensionManagementInternalError  |  準備 VM 擴充時發生多個錯誤。 如需詳細資訊，請參閱 VM 擴充執行個體檢視。  |
 |  VMExtensionProvisioningError  |  VM 回報在處理擴充 '{0}' 時失敗。 錯誤訊息："{1}"。  |
 |  VMExtensionProvisioningError  |  多個 VM 擴充無法佈建在 VM 上。 如需詳細資訊，請參閱 VM 擴充執行個體檢視。  |
-|  VMExtensionProvisioningTimeout  |  VM 擴充 '{0}' 的佈建已逾時。擴充安裝可能花太長的時間，或無法取得擴充狀態。  |
+|  VMExtensionProvisioningTimeout  |  VM 擴充功能 ' ' 的布建 {0} 已超時。延伸模組安裝可能會花費太長的時間，或無法取得延伸模組狀態。  |
 |  VMMarketplaceInvalidInput  |  從非 Marketplace 映像建立虛擬機器不需要方案資訊，請移除要求中的方案資訊。 作業系統磁碟名稱是 {0}。  |
 |  VMMarketplaceInvalidInput  |  購買資訊不符。 無法從 Marketplace 映像部署。 作業系統磁碟名稱是 {0}。  |
 |  VMMarketplaceInvalidInput  |  要求中必須有方案資訊，才能從 Marketplace 映像建立虛擬機器。 作業系統磁碟名稱是 {0}。  |
 |  VMNotFound  |  找不到 VM '{0}'。  |
-|  VMRedeploymentFailed  |  因為發生內部錯誤，VM '{0}' 重新部署失敗。 请稍后重试。  |
+|  VMRedeploymentFailed  |  因為發生內部錯誤，VM '{0}' 重新部署失敗。 請稍後重試。  |
 |  VMRedeploymentTimedOut  |  未在分配的時間內完成 VM '{0}' 的重新部署。 可能在後來某個時候成功完成。 不然，您可以重試要求。  |
-|  VMStartTimedOut  |  VM '{0}' 未在分配的時間內啟動。 VM 仍可能成功啟動。 请于稍后检查电源状态。  |
+|  VMStartTimedOut  |  VM '{0}' 未在分配的時間內啟動。 VM 仍可能成功啟動。 請稍後再檢查啟動狀態。  |
 
 
 ## <a name="next-steps"></a>後續步驟

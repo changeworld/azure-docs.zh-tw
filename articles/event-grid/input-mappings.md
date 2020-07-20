@@ -1,19 +1,14 @@
 ---
 title: 將自訂欄位對應到 Azure 事件格線結構描述
-description: 說明如何將自訂結構描述轉換為 Azure 事件格線結構描述。
-services: event-grid
-author: spelluru
-manager: timlt
-ms.service: event-grid
+description: 本文說明當您的事件資料不符合事件方格架構時，如何將自訂架構轉換成 Azure 事件方格架構。
 ms.topic: conceptual
-ms.date: 01/07/2019
-ms.author: spelluru
-ms.openlocfilehash: a0e054be3ab7d4818ac323eb5fb93968f57eca4f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 07/07/2020
+ms.openlocfilehash: 836e7b340c5c89100207e2f9409710b8dfa5e3bf
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60565492"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105518"
 ---
 # <a name="map-custom-fields-to-event-grid-schema"></a>將自訂欄位對應到事件格線結構描述
 

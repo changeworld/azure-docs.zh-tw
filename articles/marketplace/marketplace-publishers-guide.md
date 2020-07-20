@@ -1,25 +1,25 @@
 ---
-title: Azure Marketplace 和 AppSource 發行指南
-description: 適用於應用程式與服務發行者的 Azure Marketplace 和 Microsoft AppSource 概觀。
-services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-author: ellacroi
+title: Microsoft 商業市集發行指南
+description: 概述 Microsoft 合作夥伴的商業市集，他們想要將供應項目發行到 Microsoft AppSource 和 Azure Marketplace。
 ms.service: marketplace
-ms.topic: article
-ms.date: 06/05/2018
-ms.author: ellacroi
-ms.openlocfilehash: a3d75f09ac21fcdb4862cf8eefff0b5c05fd3369
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.subservice: partnercenter-marketplace-publisher
+ms.topic: conceptual
+author: keferna
+ms.author: keferna
+ms.date: 04/12/2020
+ms.openlocfilehash: 2ce8767092fb1b93f743e8a5b81a9fbfb01468bf
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64937618"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120818"
 ---
-# <a name="azure-marketplace-and-appsource-publishing-guide"></a>Azure Marketplace 和 AppSource 發行指南
+# <a name="commercial-marketplace-publishing-guide"></a>商業市集發行指南
 
-Marketplace 發行指南的目的是協助新的與現有的發行者了解如何使用 [Azure Marketplace](https://azuremarketplace.microsoft.com) 和 [Microsoft AppSource](https://appsource.microsoft.com) 中的店面來列出應用程式和服務，與 Microsoft 合作提升業績。
+此發行指南的目的是協助新的與現有的發行者了解如何在商業市集店面、[Azure Marketplace](https://azuremarketplace.microsoft.com) 和 [Microsoft AppSource](https://appsource.microsoft.com) 中列出應用程式和服務，與 Microsoft 合作提升業績。
 
 >[!Note]
->此處的 Marketplace 泛指 Azure Marketplace 和 AppSource。  如需詳細資訊，請參閱[一個市集，二間店面](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace)。
+>此處的 Marketplace 泛指 Azure Marketplace 和 AppSource。  如需詳細資訊，請參閱[一個市集，二間店面](comparing-appsource-azure-marketplace.md)。
 
 本指南涵蓋下列主題： 
 *   Marketplace 是什麼及其運作方式 
@@ -52,7 +52,7 @@ Marketplace 是與 Microsoft 共同舉辦上市活動的跳板，有助於促進
 
 透過 Marketplace 提供的見解和分析，了解產品系列的績效表現。 可進一步了解行銷活動績效、訂單與支出，並了解如何讓解決方案的行銷活動發揮最大效益。
 
-### <a name="marketplace-go-to-market-benefits"></a>Marketplace 的上市權益 
+### <a name="commercial-marketplace-benefits"></a>商業市集權益 
 
 新刊登在 Marketplace 中的商品會享有多樣化的免費權益，以協助合作夥伴在 Marketplace 中拓展業務。 這些權益分為以下類別： 
 
@@ -62,9 +62,9 @@ Marketplace 是與 Microsoft 共同舉辦上市活動的跳板，有助於促進
 
 *   共同銷售：展開您的旅程或加快腳步，透過 Marketplace 與 Microsoft 合作銷售您的產品。 可取用各種方案與支援，與 Microsoft 團隊一同推動聯合銷售。
 
-[提交解決方案](https://azuremarketplace.microsoft.com/sell/signup)到 Marketplace 之後，我們的上線團隊便會連絡您，為您的發行體驗提供支援。
+[提交解決方案](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)到 Marketplace 之後，我們的上線團隊便會連絡您，為您的發行體驗提供支援。  如需詳細資訊，請參閱[如何建立合作夥伴中心帳戶](partner-center-portal/create-account.md)。
 
-如需 Microsoft Go-To-Market 權益的詳細資訊，以及在 Marketplace 上拓展業務的方式，請參閱 [Microsoft Go-To-Market Services](https://partner.microsoft.com/reach-customers/gtm)。
+深入了解您的[商業市集權益](https://docs.microsoft.com//azure/marketplace/gtm-your-marketplace-benefits)。
 
 ## <a name="next-steps"></a>後續步驟
 

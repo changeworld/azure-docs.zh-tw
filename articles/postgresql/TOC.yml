@@ -7,191 +7,352 @@
 - name: 快速入門
   expanded: true
   items:
-    - name: 建立 DB - 入口網站
-      href: quickstart-create-server-database-portal.md
-    - name: 建立 DB - Azure CLI
-      href: quickstart-create-server-database-azure-cli.md
-    - name: 建立 DB - Azure CLI up 命令
-      href: quickstart-create-server-up-azure-cli.md
-    - name: 連線和查詢
+    - name: 單一伺服器
       items:
-        - name: Python
-          href: connect-python.md
-        - name: Node.js
-          href: connect-nodejs.md
-        - name: Java
-          href: connect-java.md
-        - name: Ruby
-          href: connect-ruby.md
-        - name: PHP
-          href: connect-php.md
-        - name: .NET
-          href: connect-csharp.md
-        - name: Go
-          href: connect-go.md
+        - name: 建立 DB - 入口網站
+          href: quickstart-create-server-database-portal.md
+        - name: 建立 DB - Azure CLI
+          href: quickstart-create-server-database-azure-cli.md
+        - name: 建立 DB - Azure CLI up 命令
+          href: quickstart-create-server-up-azure-cli.md
+        - name: 建立 DB - Azure PowerShell
+          href: quickstart-create-postgresql-server-database-using-azure-powershell.md
+        - name: 建立 DB - ARM 範本
+          href: quickstart-create-postgresql-server-database-using-arm-template.md
+          displayName: deploy azure resource manager template
+        - name: 連線和查詢
+          items:
+            - name: Python
+              href: connect-python.md
+            - name: Node.js
+              href: connect-nodejs.md
+            - name: Java
+              href: connect-java.md
+            - name: Ruby
+              href: connect-ruby.md
+            - name: PHP
+              href: connect-php.md
+            - name: .NET
+              href: connect-csharp.md
+            - name: Go
+              href: connect-go.md
+    - name: 超大規模資料庫 (Citus)
+      items:
+        - name: 建立 DB - 入口網站
+          href: quickstart-create-hyperscale-portal.md
 - name: 教學課程
   items:
-    - name: 1 - 設計資料庫
+    - name: 單一伺服器
       items:
-        - name: Azure 入口網站
-          href: tutorial-design-database-using-azure-portal.md
-        - name: Azure CLI
-          href: tutorial-design-database-using-azure-cli.md
-    - name: 2 - 設計 Web 應用程式 - Python
-      href: ../app-service/containers/tutorial-python-postgresql-app.md
-      maintainContext: true
-    - name: 3 - 監視及微調
-      href: tutorial-monitor-and-tune.md
+        - name: 1 - 設計資料庫
+          items:
+            - name: Azure 入口網站
+              href: tutorial-design-database-using-azure-portal.md
+            - name: Azure CLI
+              href: tutorial-design-database-using-azure-cli.md
+            - name: Azure PowerShell
+              href: tutorial-design-database-using-powershell.md
+        - name: 2 - 設計 Web 應用程式 - Python
+          href: ../app-service/containers/tutorial-python-postgresql-app.md
+          maintainContext: true
+        - name: 3 - 監視及微調
+          href: tutorial-monitor-and-tune.md
+    - name: 超大規模資料庫 (Citus)
+      items:
+        - name: 設計多租用戶資料庫
+          href: tutorial-design-database-hyperscale-multi-tenant.md
+        - name: 設計即時儀表板
+          href: tutorial-design-database-hyperscale-realtime.md
 - name: 範例
   items:
     - name: Azure CLI
       href: sample-scripts-azure-cli.md
+    - name: Azure 原則內建
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: 概念
   items:
-    - name: DB 和伺服器
+    - name: 單一伺服器
       items:
-        - name: 伺服器
-          href: concepts-servers.md
-        - name: 支援的版本
-          href: concepts-supported-versions.md
-        - name: PostgreSQL 擴充功能
-          href: concepts-extensions.md
-        - name: 高可用性
-          href: concepts-high-availability.md
-    - name: 資源
-      items:
-        - name: 定價層
-          href: concepts-pricing-tiers.md
-        - name: 限制
-          href: concepts-limits.md
-    - name: 資料存取和安全性
-      items:
-        - name: 防火牆規則
-          href: concepts-firewall-rules.md
-        - name: 設定 SSL
-          href: concepts-ssl-connection-security.md
-        - name: 進階威脅防護
-          href: concepts-data-access-and-security-threat-protection.md
-        - name: VNet
-          href: concepts-data-access-and-security-vnet.md
-    - name: 業務持續性
-      items:
-        - name: 概觀
-          href: concepts-business-continuity.md
-        - name: 備份與還原
-          href: concepts-backup.md
-    - name: 監視與微調
-      items:
+        - name: 資料庫和伺服器
+          items:
+            - name: 伺服器
+              href: concepts-servers.md
+            - name: 支援的版本
+              href: concepts-supported-versions.md
+            - name: PostgreSQL 擴充功能
+              href: concepts-extensions.md
+            - name: 高可用性
+              href: concepts-high-availability.md
+        - name: 資源
+          items:
+            - name: 定價層
+              href: concepts-pricing-tiers.md
+            - name: 預付保留容量
+              href: concept-reserved-pricing.md
+            - name: 限制
+              href: concepts-limits.md
+        - name: 資料存取和安全性
+          items:
+            - name: 安全性概觀
+              href: concepts-security.md
+            - name: 設定 SSL
+              href: concepts-ssl-connection-security.md
+            - name: 連線架構
+              href: concepts-connectivity-architecture.md
+            - name: 防火牆規則
+              href: concepts-firewall-rules.md
+            - name: 虛擬網路
+              href: concepts-data-access-and-security-vnet.md
+            - name: 進階威脅防護
+              href: concepts-data-access-and-security-threat-protection.md
+            - name: Azure AD 驗證
+              href: concepts-aad-authentication.md
+            - name: 私人連結
+              href: concepts-data-access-and-security-private-link.md
+            - name: 資料加密
+              href: concepts-data-encryption-postgresql.md
+            - name: 基礎結構雙重加密
+              href: concepts-infrastructure-double-encryption.md
+            - name: 安全性基準
+              href: security-baseline.md
+        - name: 業務持續性
+          items:
+            - name: 業務持續性簡介
+              displayName: 'backup, restore, backups, restores, georestore, geo-restore, outage'
+              href: concepts-business-continuity.md
+            - name: 備份與還原
+              href: concepts-backup.md
         - name: 監視與微調
-          href: concepts-monitoring.md
-        - name: 伺服器記錄
-          href: concepts-server-logs.md
-        - name: 查詢存放區
           items:
+            - name: 監視與微調
+              href: concepts-monitoring.md
+            - name: 記錄
+              href: concepts-server-logs.md
+            - name: 稽核記錄
+              href: concepts-audit.md
             - name: 查詢存放區
-              href: concepts-query-store.md
-            - name: 查詢存放區使用案例
-              href: concepts-query-store-scenarios.md
-            - name: 查詢存放區最佳做法
-              href: concepts-query-store-best-practices.md
-        - name: 查詢效能深入解析
-          href: concepts-query-performance-insight.md
-        - name: 效能建議
-          href: concepts-performance-recommendations.md
-    - name: 開發
-      items:
-        - name: 連線程式庫
-          href: concepts-connection-libraries.md
-        - name: 恢復連線
-          href: concepts-connectivity.md
-        - name: 使用 Azure Kubernetes Service (AKS) 開發
-          href: concepts-aks.md
-        - name: Java
+              items:
+                - name: 查詢存放區
+                  href: concepts-query-store.md
+                - name: 查詢存放區使用案例
+                  href: concepts-query-store-scenarios.md
+                - name: 查詢存放區最佳做法
+                  href: concepts-query-store-best-practices.md
+            - name: 查詢效能深入解析
+              href: concepts-query-performance-insight.md
+            - name: 效能建議
+              href: concepts-performance-recommendations.md
+        - name: 部署
           items:
-            - name: 設定 Spring Data JDBC
-              href: /java/azure/spring-framework/configure-spring-data-jdbc-with-azure-postgresql
-            - name: 設定 Spring Data JPA
-              href: /java/azure/spring-framework/configure-spring-data-jpa-with-azure-postgresql
-    - name: 複寫
+            - name: 連線程式庫
+              href: concepts-connection-libraries.md
+            - name: 恢復連線
+              href: concepts-connectivity.md
+            - name: 使用 Azure Kubernetes Service (AKS) 開發
+              href: concepts-aks.md
+            - name: Java
+              items:
+                - name: 設定 Spring Data JDBC
+                  href: /java/azure/spring-framework/configure-spring-data-jdbc-with-azure-postgresql
+                - name: 設定 Spring Data JPA
+                  href: /java/azure/spring-framework/configure-spring-data-jpa-with-azure-postgresql
+        - name: 複寫
+          items:
+            - name: 讀取複本
+              href: concepts-read-replicas.md
+            - name: 邏輯解碼
+              href: concepts-logical.md
+        - name: 在區域間移動
+          items:
+            - name: Azure 入口網站
+              href: howto-move-regions-portal.md
+    - name: 超大規模資料庫 (Citus)
       items:
-        - name: 讀取複本
-          href: concepts-read-replicas.md
-- name: 使用說明指南
+        - name: 節點
+          href: concepts-hyperscale-nodes.md
+        - name: 分散式資料
+          href: concepts-hyperscale-distributed-data.md
+        - name: 選擇散發資料行
+          href: concepts-hyperscale-choose-distribution-column.md
+        - name: 資料表共置
+          href: concepts-hyperscale-colocation.md
+        - name: 資料存取和安全性
+          items:
+            - name: 防火牆規則
+              href: concepts-hyperscale-firewall-rules.md
+            - name: 設定 SSL
+              href: concepts-hyperscale-ssl-connection-security.md
+        - name: 業務持續性
+          items:
+            - name: 備份與還原
+              href: concepts-hyperscale-backup.md
+        - name: 監視與微調
+          items:
+            - name: 監視與微調
+              href: concepts-hyperscale-monitoring.md
+        - name: PostgreSQL 擴充功能
+          href: concepts-hyperscale-extensions.md
+        - name: 高可用性
+          href: concepts-hyperscale-high-availability.md
+        - name: 資源
+          items:
+            - name: 設定選項
+              href: concepts-hyperscale-configuration-options.md
+            - name: 預付保留容量
+              href: concepts-hyperscale-reserved-pricing.md
+- name: 操作指南
   items:
-    - name: 建立使用者
-      href: howto-create-users.md
-    - name: 最佳化
+    - name: 單一伺服器
       items:
-        - name: 大量插入
-          href: howto-optimize-bulk-inserts.md
-        - name: Autovacuum
-          href: howto-optimize-autovacuum.md
-        - name: 查詢統計資料集合
-          href: howto-optimize-query-stats-collection.md
-        - name: 快顯通知資料表策略
-          href: howto-optimize-query-time-with-toast-table-storage-strategy.md
-    - name: 管理防火牆
+        - name: 管理伺服器
+          items:
+            - name: Azure 入口網站
+              href: howto-create-manage-server-portal.md
+        - name: 驗證
+          items:
+            - name: 建立使用者
+              href: howto-create-users.md
+            - name: 設定 Azure AD 整合
+              href: howto-configure-sign-in-aad-authentication.md
+            - name: 與受控識別連線
+              href: howto-connect-with-managed-identity.md
+        - name: 最佳化
+          items:
+            - name: 大量插入
+              href: howto-optimize-bulk-inserts.md
+            - name: Autovacuum
+              href: howto-optimize-autovacuum.md
+            - name: 查詢統計資料集合
+              href: howto-optimize-query-stats-collection.md
+            - name: 快顯通知資料表策略
+              href: howto-optimize-query-time-with-toast-table-storage-strategy.md
+        - name: 管理防火牆
+          items:
+            - name: Azure 入口網站
+              href: howto-manage-firewall-using-portal.md
+            - name: Azure CLI
+              href: howto-manage-firewall-using-cli.md
+        - name: 還原伺服器
+          items:
+            - name: Azure 入口網站
+              href: howto-restore-server-portal.md
+            - name: Azure CLI
+              href: howto-restore-server-cli.md
+            - name: Azure PowerShell
+              href: howto-restore-server-powershell.md
+        - name: 移轉資料庫
+          items:
+            - name: 傾印和還原
+              href: howto-migrate-using-dump-and-restore.md
+            - name: 匯入和匯出
+              href: howto-migrate-using-export-and-import.md
+            - name: 最少停機時間的移轉
+              href: howto-migrate-online.md
+        - name: 連線應用程式
+          items:
+            - name: 設定 TLS
+              href: howto-tls-configurations.md
+        - name: 設定伺服器參數
+          items:
+            - name: Azure 入口網站
+              href: howto-configure-server-parameters-using-portal.md
+            - name: Azure CLI
+              href: howto-configure-server-parameters-using-cli.md
+            - name: Azure PowerShell
+              href: howto-configure-server-parameters-using-powershell.md
+        - name: 自動成長的儲存體
+          items:
+            - name: Azure 入口網站
+              href: howto-auto-grow-storage-portal.md
+            - name: Azure CLI
+              href: howto-auto-grow-storage-cli.md
+            - name: Azure PowerShell
+              href: howto-auto-grow-storage-powershell.md
+        - name: 存取記錄
+          items:
+            - name: Azure 入口網站
+              href: howto-configure-server-logs-in-portal.md
+            - name: Azure CLI
+              href: howto-configure-server-logs-using-cli.md
+        - name: 監視
+          items:
+            - name: 建立計量警示
+              href: howto-alert-on-metric.md
+        - name: 疑難排解
+          items:
+            - name: 針對連線問題進行疑難排解
+              href: howto-troubleshoot-common-connection-issues.md
+            - name: 將資料加密進行疑難排解
+              href: howto-data-encryption-troubleshoot.md
+        - name: 進階威脅防護
+          items:
+            - name: Azure 入口網站
+              href: howto-database-threat-protection-portal.md
+        - name: 虛擬網路
+          items:
+            - name: Azure 入口網站
+              href: howto-manage-vnet-using-portal.md
+            - name: Azure CLI
+              href: howto-manage-vnet-using-cli.md
+        - name: 私人連結
+          items:
+            - name: Azure 入口網站
+              href: howto-configure-privatelink-portal.md
+            - name: Azure CLI
+              href: howto-configure-privatelink-cli.md
+        - name: 資料加密
+          items:
+            - name: Azure 入口網站
+              href: howto-data-encryption-portal.md
+            - name: Azure CLI
+              href: howto-data-encryption-cli.md
+            - name: 資料加密驗證
+              href: howto-data-encryption-validation.md
+        - name: 基礎結構雙重加密
+          items:
+            - name: 設定基礎結構雙重加密
+              href: howto-double-encryption.md
+        - name: 重新啟動伺服器
+          items:
+            - name: Azure 入口網站
+              href: howto-restart-server-portal.md
+            - name: Azure CLI
+              href: howto-restart-server-cli.md
+            - name: Azure PowerShell
+              href: howto-restart-server-powershell.md
+        - name: 拒絕公用網路存取
+          items:
+            - name: Azure 入口網站
+              href: howto-deny-public-network-access.md
+        - name: 複寫
+          items:
+            - name: 管理讀取複本 Azure 入口網站
+              href: howto-read-replicas-portal.md
+            - name: 管理讀取複本 Azure CLI，REST API
+              href: howto-read-replicas-cli.md
+            - name: 管理讀取複本 Azure PowerShell
+              href: howto-read-replicas-powershell.md
+    - name: 超大規模資料庫 (Citus)
       items:
-        - name: Azure 入口網站
-          href: howto-manage-firewall-using-portal.md
-        - name: Azure CLI
-          href: howto-manage-firewall-using-cli.md
-    - name: 還原伺服器
-      items:
-        - name: Azure 入口網站
-          href: howto-restore-server-portal.md
-        - name: Azure CLI
-          href: howto-restore-server-cli.md
-    - name: 移轉資料庫
-      items:
-        - name: 傾印和還原
-          href: howto-migrate-using-dump-and-restore.md
-        - name: 匯入和匯出
-          href: howto-migrate-using-export-and-import.md
-        - name: 最少停機時間的移轉
-          href: howto-migrate-online.md
-    - name: 設定伺服器參數
-      items:
-        - name: Azure 入口網站
-          href: howto-configure-server-parameters-using-portal.md
-        - name: Azure CLI
-          href: howto-configure-server-parameters-using-cli.md
-    - name: 存取伺服器記錄
-      items:
-        - name: Azure 入口網站
-          href: howto-configure-server-logs-in-portal.md
-        - name: Azure CLI
-          href: howto-configure-server-logs-using-cli.md
-    - name: 監視
-      items:
-        - name: 建立計量警示
-          href: howto-alert-on-metric.md
-    - name: 疑難排解
-      items:
-        - name: 針對連線問題進行疑難排解
-          href: howto-troubleshoot-common-connection-issues.md
-    - name: 進階威脅防護
-      items:
-        - name: Azure 入口網站
-          href: howto-database-threat-protection-portal.md
-    - name: 虛擬網路
-      items:
-        - name: Azure 入口網站
-          href: howto-manage-vnet-using-portal.md
-        - name: Azure CLI
-          href: howto-manage-vnet-using-cli.md
-    - name: 重新啟動伺服器
-      items:
-        - name: Azure 入口網站
-          href: howto-restart-server-portal.md
-        - name: Azure CLI
-          href: howto-restart-server-cli.md
-    - name: 複寫
-      items:
-        - name: 管理讀取複本 Azure 入口網站
-          href: howto-read-replicas-portal.md
-        - name: 管理讀取複本 Azure CLI
-          href: howto-read-replicas-cli.md
+        - name: 建立使用者
+          href: howto-hyperscale-create-users.md
+        - name: 調整
+          href: howto-hyperscale-scaling.md
+        - name: 管理防火牆
+          items:
+            - name: Azure 入口網站
+              href: howto-hyperscale-manage-firewall-using-portal.md
+        - name: 高可用性
+          href: howto-hyperscale-high-availability.md
+        - name: 監視
+          items:
+            - name: 建立計量警示
+              href: howto-hyperscale-alert-on-metric.md
+        - name: 疑難排解
+          items:
+            - name: 針對連線問題進行疑難排解
+              href: howto-hyperscale-troubleshoot-common-connection-issues.md
 - name: 參考
   items:
     - name: Azure CLI
@@ -208,11 +369,11 @@
       href: 'https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Dbforpostgresql'
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/roadmap/?category=databases'
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/postgresql/'
-    - name: MSDN 論壇
-      href: 'https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=AzureDatabaseforPostgreSQL'
-    - name: 堆疊溢位
+    - name: Microsoft 問與答頁面
+      href: 'https://docs.microsoft.com/answers/topics/azure-database-postgresql.html'
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-database-postgresql'
     - name: 影片
       items:

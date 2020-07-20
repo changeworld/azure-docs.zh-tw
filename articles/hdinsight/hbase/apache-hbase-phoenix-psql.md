@@ -1,19 +1,19 @@
 ---
 title: 使用 psql 來大量載入至 Apache Phoenix - Azure HDInsight
-description: 使用 psql 工具將大量資料載入至 Phoenix 資料表。
+description: 使用 psql 工具，將大量載入資料載入 Azure HDInsight 中的 Apache Phoenix 資料表
 author: ashishthaps
+ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
+ms.topic: how-to
 ms.custom: hdinsightactive
-ms.topic: conceptual
-ms.date: 11/10/2017
-ms.author: ashishth
-ms.openlocfilehash: fe6705dc3dedd521357f924dd433c7eacf88ba84
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 12/17/2019
+ms.openlocfilehash: c46b15c6744ba9d3f83260ffaac24c4ee1cdd776
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64718636"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86079474"
 ---
 # <a name="bulk-load-data-into-apache-phoenix-using-psql"></a>使用 psql 將資料大量載入至 Apache Phoenix
 
@@ -27,13 +27,13 @@ ms.locfileid: "64718636"
 
 使用 MapReduce 進行的大量載入會用於規模大許多的資料磁碟區，通常是在生產環境案例中使用，因為 MapReduce 會使用多個執行緒。
 
-在您開始載入資料之前，請先確認已啟用 Phoenix 且查詢逾時設定與預期的一樣。  請存取您的 HDInsight 叢集 [Apache Ambari](https://ambari.apache.org/) \(英文\) 儀表板，然後依序選取 [HBase] 和 [Configuration] \(設定\) 索引標籤。向下捲動以確認 Apache Phoenix 已設定為 `enabled`，如下所示：
+在您開始載入資料之前，請先確認已啟用 Phoenix 且查詢逾時設定與預期的一樣。  存取您的 HDInsight 叢集[Apache Ambari](https://ambari.apache.org/)儀表板，然後依序選取 [HBase] 和 [設定] 索引標籤。 向下滾動以確認 Apache Phoenix 已設定為， `enabled` 如下所示：
 
-![Apache Phoenix HDInsight 叢集設定](./media/apache-hbase-phoenix-psql/ambari-phoenix.png)
+![Apache Phoenix HDInsight 叢集設定](./media/apache-hbase-phoenix-psql/apache-ambari-phoenix.png)
 
 ### <a name="use-psql-to-bulk-load-tables"></a>使用 `psql` 來大量載入資料表
 
-1. 建立新資料表，然後使用 `createCustomersTable.sql` 檔案名稱來儲存查詢。
+1. 建立名為的檔案 `createCustomersTable.sql` ，並將下列程式碼複製到檔案中。 然後儲存並關閉檔案。
 
     ```sql
     CREATE TABLE Customers (
@@ -44,77 +44,118 @@ ms.locfileid: "64718636"
         Country varchar);
     ```
 
-2. 將 CSV 檔案 (所顯示的範例內容) 以 `customers.csv` 形式複製到 `/tmp/` 目錄，以供載入至新建立的資料表。  使用 `hdfs` 命令將該 CSV 檔案複製到您想要的來源位置。
+1. 建立名為的檔案 `listCustomers.sql` ，並將下列程式碼複製到檔案中。 然後儲存並關閉檔案。
 
+    ```sql
+    SELECT * from Customers;
     ```
+
+1. 建立名為的檔案 `customers.csv` ，並將下列程式碼複製到檔案中。 然後儲存並關閉檔案。
+
+    ```txt
     1,Samantha,260000.0,18,US
     2,Sam,10000.5,56,US
-    3,Anton,550150.0,Norway
-    ... 4997 more rows 
+    3,Anton,550150.0,42,Norway
     ```
 
-    ```bash
-    hdfs dfs -copyToLocal /example/data/customers.csv /tmp/
+1. 建立名為的檔案 `customers2.csv` ，並將下列程式碼複製到檔案中。 然後儲存並關閉檔案。
+
+    ```txt
+    4,Nicolle,180000.0,22,US
+    5,Kate,210000.5,24,Canada
+    6,Ben,45000.0,32,Poland
     ```
 
-3. 建立 SQL SELECT 查詢來確認是否已正確載入輸入資料，然後使用 `listCustomers.sql` 檔案名稱來儲存查詢。 您可以使用任何 SQL 查詢。
-     ```sql
-    SELECT Name, Income from Customers group by Country;
+1. 開啟命令提示字元，並將目錄變更為新建立之檔案的位置。 將下方的 CLUSTERNAME 取代為您 HBase 叢集的實際名稱。 然後執行程式碼，將檔案上傳到叢集的前端節點：
+
+    ```cmd
+    scp customers.csv customers2.csv createCustomersTable.sql listCustomers.sql sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/tmp
     ```
 
-4. 開啟一個「新的」Hadoop 命令視窗來大量載入資料。 首先，使用 `cd` 命令來變更至執行目錄位置，然後使用 `psql` 工具 (Python `psql.py` 命令)。 
+1. 使用 [ssh 命令](../hdinsight-hadoop-linux-use-ssh-unix.md)來連線到您的叢集。 編輯以下命令並將 CLUSTERNAME 取代為您叢集的名稱，然後輸入命令：
 
-    以下範例會預期您已使用 `hdfs` 將 `customers.csv` 檔案從儲存體帳戶複製到本機暫存目錄，如上面步驟 2 所示。
+    ```cmd
+    ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
+    ```
+
+1. 從您的 ssh 會話，將目錄變更為**psql**工具的位置。 執行下列命令：
 
     ```bash
     cd /usr/hdp/current/phoenix-client/bin
-
-    python psql.py ZookeeperQuorum createCustomersTable.sql /tmp/customers.csv listCustomers.sql
     ```
 
-    > [!NOTE]   
-    > 若要判斷 `ZookeeperQuorum` 名稱，請在 `/etc/hbase/conf/hbase-site.xml` 檔案中，使用屬性名稱 `hbase.zookeeper.quorum` 來找出 [Apache ZooKeeper](https://zookeeper.apache.org/) 仲裁字串。
+1. 大量載入資料。 下列程式碼會建立**Customers**資料表，然後上傳資料。
 
-5. 在 `psql` 作業完成之後，您應該會在命令視窗中看到一則訊息：
-
+    ```bash
+    python psql.py /tmp/createCustomersTable.sql /tmp/customers.csv
     ```
-    CSV Upsert complete. 5000 rows upserted
-    Time: 4.548 sec(s)
+
+    作業 `psql` 完成後，您應該會看到類似如下的訊息：
+
+    ```output
+    csv columns from database.
+    CSV Upsert complete. 3 rows upserted
+    Time: 0.081 sec(s)
+    ```
+
+1. 您可以繼續使用 `psql` 來查看 Customers 資料表的內容。 執行下列程式碼：
+
+    ```bash
+    python psql.py /tmp/listCustomers.sql
+    ```
+
+    或者，您可以使用[HBase shell](./query-hbase-with-hbase-shell.md)或[Apache Zeppelin](./apache-hbase-phoenix-zeppelin.md)來查詢資料。
+
+1. 上傳其他資料。 既然資料表已經存在，命令就會指定資料表。 執行下列命令：
+
+    ```bash
+    python psql.py -t CUSTOMERS /tmp/customers2.csv
     ```
 
 ## <a name="use-mapreduce-to-bulk-load-tables"></a>使用 MapReduce 來大量載入資料表
 
 若要進行遍佈整個叢集的更高輸送量載入，請使用 MapReduce 載入工具。 此載入器會先將所有資料轉換成 HFile，然後將所建立的 HFile 提供給 HBase。
 
+1. 這一節會繼續進行 ssh 會話，以及稍早建立的物件。 使用上述步驟，視需要建立 [ **Customers** ] 資料表並**customers.csv**檔案。 如有必要，請重新建立 ssh 連線。
+
+1. 截斷**Customers**資料表的內容。 從開啟的 ssh 會話，執行下列命令：
+
+    ```bash
+    hbase shell
+    truncate 'CUSTOMERS'
+    exit
+    ```
+
+1. 將檔案 `customers.csv` 從您的前端節點複製到 Azure 儲存體。
+
+    ```bash
+    hdfs dfs -put /tmp/customers.csv wasbs:///tmp/customers.csv
+    ```
+
+1. 變更至 MapReduce 大量載入命令的執行目錄：
+
+    ```bash
+    cd /usr/hdp/current/phoenix-client
+    ```
+
 1. 使用 `hadoop` 命令搭配 Phoenix 用戶端 Jar 來啟動 CSV MapReduce 載入器：
 
     ```bash
-    hadoop jar phoenix-<version>-client.jar org.apache.phoenix.mapreduce.CsvBulkLoadTool --table CUSTOMERS --input /data/customers.csv
+    HADOOP_CLASSPATH=/usr/hdp/current/hbase-client/lib/hbase-protocol.jar:/etc/hbase/conf hadoop jar phoenix-client.jar org.apache.phoenix.mapreduce.CsvBulkLoadTool --table Customers --input /tmp/customers.csv
     ```
 
-2. 使用 SQL 陳述式來建立新資料表，就像上面步驟 1 中使用 `CreateCustomersTable.sql` 一樣。
+    上傳完成後，您應該會看到類似如下的訊息：
 
-3. 若要確認資料表的結構描述，請執行 `!describe inputTable`。
-
-4. 判斷輸入資料 (例如範例 `customers.csv` 檔案) 的位置路徑。 輸入檔可能在您的 WASB/ADLS 儲存體帳戶中。 在這個範例案例中，輸入檔是在 `<storage account parent>/inputFolderBulkLoad` 目錄中。
-
-5. 變更至 MapReduce 大量載入命令的執行目錄：
-
-    ```bash
-    cd /usr/hdp/current/phoenix-client/bin
+    ```output
+    19/12/18 18:30:57 INFO client.ConnectionManager$HConnectionImplementation: Closing master protocol: MasterService
+    19/12/18 18:30:57 INFO client.ConnectionManager$HConnectionImplementation: Closing zookeeper sessionid=0x26f15dcceff02c3
+    19/12/18 18:30:57 INFO zookeeper.ZooKeeper: Session: 0x26f15dcceff02c3 closed
+    19/12/18 18:30:57 INFO zookeeper.ClientCnxn: EventThread shut down
+    19/12/18 18:30:57 INFO mapreduce.AbstractBulkLoadTool: Incremental load complete for table=CUSTOMERS
+    19/12/18 18:30:57 INFO mapreduce.AbstractBulkLoadTool: Removing output directory /tmp/50254426-aba6-400e-88eb-8086d3dddb6
     ```
 
-6. 在 `/etc/hbase/conf/hbase-site.xml` 中，使用屬性名稱 `hbase.zookeeper.quorum` 來找出您的 `ZookeeperQuorum` 值。
-
-7. 設定 classpath，然後執行 `CsvBulkLoadTool` 工具命令：
-
-    ```bash
-    /usr/hdp/current/phoenix-client$ HADOOP_CLASSPATH=/usr/hdp/current/hbase-client/lib/hbase-protocol.jar:/etc/hbase/conf hadoop jar /usr/hdp/2.4.2.0-258/phoenix/phoenix-4.4.0.2.4.2.0-258-client.jar
-
-    org.apache.phoenix.mapreduce.CsvBulkLoadTool --table Customers --input /inputFolderBulkLoad/customers.csv –zookeeper ZookeeperQuorum:2181:/hbase-unsecure
-    ```
-
-8. 若要搭配使用 MapReduce 與 Azure Data Lake Storage，請找出 Azure Data Lake Storage 根目錄，即 `hbase-site.xml` 中的 `hbase.rootdir` 值。 在下列命令中，Data Lake Storage 根目錄是 `adl://hdinsightconf1.azuredatalakestore.net:443/hbase1`。 在此命令中，指定 Data Lake Storage 輸入和輸出資料夾作為參數：
+1. 若要搭配使用 MapReduce 與 Azure Data Lake Storage，請找出 Azure Data Lake Storage 根目錄，即 `hbase-site.xml` 中的 `hbase.rootdir` 值。 在下列命令中，Data Lake Storage 根目錄是 `adl://hdinsightconf1.azuredatalakestore.net:443/hbase1`。 在此命令中，指定 Data Lake Storage 輸入和輸出資料夾作為參數：
 
     ```bash
     cd /usr/hdp/current/phoenix-client
@@ -123,6 +164,8 @@ ms.locfileid: "64718636"
 
     org.apache.phoenix.mapreduce.CsvBulkLoadTool --table Customers --input adl://hdinsightconf1.azuredatalakestore.net:443/hbase1/data/hbase/temp/input/customers.csv –zookeeper ZookeeperQuorum:2181:/hbase-unsecure --output  adl://hdinsightconf1.azuredatalakestore.net:443/hbase1/data/hbase/output1
     ```
+
+1. 若要查詢和查看資料，您可以使用**psql** ，如先前所述。 您也可以使用[HBase shell](./query-hbase-with-hbase-shell.md)或[Apache Zeppelin](./apache-hbase-phoenix-zeppelin.md)。
 
 ## <a name="recommendations"></a>建議
 
@@ -141,6 +184,6 @@ ms.locfileid: "64718636"
 ## <a name="next-steps"></a>後續步驟
 
 * [使用 Apache Phoenix 來進行大量資料載入](https://phoenix.apache.org/bulk_dataload.html) \(英文\)
-* [在 HDInsight 中搭配 Linux 型 Apache HBase 叢集使用 Apache Phoenix](../hbase/apache-hbase-phoenix-squirrel-linux.md)
-* [以 Salt 處理的資料表](https://phoenix.apache.org/salted.html) \(英文\)
-* [Apache Phoenix 文法](https://phoenix.apache.org/language/index.html) \(英文\)
+* [在 HDInsight 中搭配 Linux 型 Apache HBase 叢集使用 Apache Phoenix](../hbase/apache-hbase-query-with-phoenix.md)
+* [以 Salt 處理的資料表](https://phoenix.apache.org/salted.html)
+* [Apache Phoenix 文法](https://phoenix.apache.org/language/index.html)

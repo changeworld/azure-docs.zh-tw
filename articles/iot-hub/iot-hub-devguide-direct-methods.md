@@ -6,13 +6,16 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/17/2018
-ms.author: nberdy
-ms.openlocfilehash: d7c63ffe5a318507053f59bf3a18242ee8c327a0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: rezas
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: 873f871625b812937d1e6ac360f7e0565121a4eb
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61327749"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045989"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>了解 IoT 中樞的直接方法並從中樞叫用直接方法
 
@@ -30,15 +33,15 @@ IoT 中樞上具有**服務連線**權限的任何人都可以叫用裝置上的
 
 ## <a name="method-lifecycle"></a>方法生命週期
 
-直接方法是在裝置上實作，而且可能需要方法承載中的零或多個輸入以正確具現化。 您可以透過面向服務的 URI 叫用直接方法 (`{iot hub}/twins/{device id}/methods/`)。 裝置會透過裝置特定的 MQTT 主題 (`$iothub/methods/POST/{method name}/`) 或透過 AMQP 連結 (`IoThub-methodname` 和 `IoThub-status` 應用程式屬性) 收到直接方法。 
+直接方法是在裝置上實作，而且可能需要方法承載中的零或多個輸入以正確具現化。 您可以透過面向服務的 URI 叫用直接方法 (`{iot hub}/twins/{device id}/methods/`)。 裝置會透過裝置特定的 MQTT 主題 (`$iothub/methods/POST/{method name}/`) 或透過 AMQP 連結 (`IoThub-methodname` 和 `IoThub-status` 應用程式屬性) 收到直接方法。
 
 > [!NOTE]
 > 當您在裝置上叫用直接方法時，屬性名稱和值只能包含 US-ASCII 可列印英數字元，下列集合中的任何字元除外︰``{'$', '(', ')', '<', '>', '@', ',', ';', ':', '\', '"', '/', '[', ']', '?', '=', '{', '}', SP, HT}``。
 > 
 
-直接方法是同步的，可能在逾時期間後成功或失敗 (預設︰30 秒，最多可設定為 300 秒)。 在您想要讓裝置只有在線上且接收命令的情況下才採取行動的互動式案例中，直接方法相當有用。 例如，透過手機開燈。 在這些案例中，您想要查看立即成功或失敗，讓雲端服務可以儘速處理結果。 裝置可能會傳回部分訊息本文作為方法的結果，但是不需要方法這麼做。 不保證方法呼叫的順序或任何並行語意。
+直接方法是同步的，而且在超時時間之後成功或失敗（預設值：30秒，可設定為5到300秒）。 在您想要讓裝置只有在線上且接收命令的情況下才採取行動的互動式案例中，直接方法相當有用。 例如，透過手機開燈。 在這些案例中，您想要查看立即成功或失敗，讓雲端服務可以儘速處理結果。 裝置可能會傳回部分訊息本文作為方法的結果，但是不需要方法這麼做。 不保證方法呼叫的順序或任何並行語意。
 
-直接方法從雲端來說，僅限使用 HTTPS，從裝置端來說，則使用 MQTT 或 AMQP。
+直接方法僅適用于雲端端的 HTTPS 和 MQTT、AMQP、MQTT over Websocket，或來自裝置端的 Websocket AMQP。
 
 方法要求和回應的承載是一個 JSON 文件 (大小上限為 128 KB)。
 
@@ -50,7 +53,7 @@ IoT 中樞上具有**服務連線**權限的任何人都可以叫用裝置上的
 
 裝置上的直接方法引動過程是 HTTPS 呼叫，由下列項目組成︰
 
-* 特定裝置的*要求 URI* 與 [API 版本](/rest/api/iothub/service/invokedevicemethod)：
+* 特定裝置的*要求 URI* 與 [API 版本](/rest/api/iothub/service/devicemethod/invokedevicemethod)：
 
     ```http
     https://fully-qualified-iothubname.azure-devices.net/twins/{deviceId}/methods?api-version=2018-06-30
@@ -58,7 +61,7 @@ IoT 中樞上具有**服務連線**權限的任何人都可以叫用裝置上的
 
 * POST *方法*
 
-* 標頭，包含授權、要求識別碼、內容類型及內容編碼。
+* 標頭**，包含授權、要求識別碼、內容類型及內容編碼。
 
 * 透明 JSON *本文*格式如下︰
 
@@ -73,15 +76,25 @@ IoT 中樞上具有**服務連線**權限的任何人都可以叫用裝置上的
     }
     ```
 
-逾時 (秒)。 如果未設定逾時，它會預設為 30 秒。
+`responseTimeoutInSeconds`在要求中提供的值，就是 IoT 中樞服務必須等候在裝置上完成直接方法執行的時間量。 將此超時時間設定為至少是裝置預期的直接方法執行時間。 如果未提供 timeout，則會使用預設值30秒。 的最小和最大值 `responseTimeoutInSeconds` 分別為5和300秒。
+
+`connectTimeoutInSeconds`在要求中提供的值，是呼叫直接方法的時間量，IoT 中樞服務必須等待中斷連線的裝置上線。 預設值為0，表示在直接方法叫用時，裝置必須已上線。 的最大值 `connectTimeoutInSeconds` 為300秒。
 
 #### <a name="example"></a>範例
 
-請參閱以下使用 `curl` 的簡易範例。 
+這個範例可讓您安全地起始要求，以在向 Azure IoT 中樞註冊的 IoT 裝置上叫用直接方法。
+
+若要開始，請使用[適用于 Azure CLI 的 Microsoft Azure IoT 擴充](https://github.com/Azure/azure-iot-cli-extension)功能來建立 SharedAccessSignature。
+
+```bash
+az iot hub generate-sas-token -n <iothubName> -du <duration>
+```
+
+接下來，將 Authorization 標頭取代為您新產生的 SharedAccessSignature，然後修改 `iothubName` 、 `deviceId` `methodName` 和 `payload` 參數，以符合下列範例命令中的實作為 `curl` 。  
 
 ```bash
 curl -X POST \
-  https://iothubname.azure-devices.net/twins/myfirstdevice/methods?api-version=2018-06-30 \
+  https://<iothubName>.azure-devices.net/twins/<deviceId>/methods?api-version=2018-06-30 \
   -H 'Authorization: SharedAccessSignature sr=iothubname.azure-devices.net&sig=x&se=x&skn=iothubowner' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -94,13 +107,24 @@ curl -X POST \
 }'
 ```
 
-### <a name="response"></a>Response
+執行修改過的命令，以叫用指定的直接方法。 成功的要求會傳回 HTTP 200 狀態碼。
+
+> [!NOTE]
+> 上述範例示範如何在裝置上叫用直接方法。  如果您想要在 IoT Edge 模組中叫用直接方法，您必須修改 url 要求，如下所示：
+
+```bash
+https://<iothubName>.azure-devices.net/twins/<deviceId>/modules/<moduleName>/methods?api-version=2018-06-30
+```
+### <a name="response"></a>回應
 
 後端應用程式會接收由下列項目組成的回應：
 
-* HTTP 狀態碼，用於來自 IoT 中樞的錯誤，包括裝置目前未連接的 404 錯誤。
+* *HTTP 狀態碼*：
+  * 200表示成功執行直接方法;
+  * 404表示任一裝置識別碼無效，或在叫用直接方法時裝置不在線上，並于 `connectTimeoutInSeconds` 之後（使用伴隨的錯誤訊息來瞭解根本原因）;
+  * 504表示因裝置未回應中的直接方法呼叫而導致的閘道超時 `responseTimeoutInSeconds` 。
 
-* 標頭，包含 ETag、要求識別碼、內容類型及內容編碼。
+* 標頭**，包含 ETag、要求識別碼、內容類型及內容編碼。
 
 * JSON *本文*格式如下︰
 
@@ -142,7 +166,7 @@ curl -X POST \
 
 方法要求為 QoS 0。
 
-#### <a name="response"></a>Response
+#### <a name="response"></a>回應
 
 裝置會傳送回應至 `$iothub/methods/res/{status}/?$rid={request id}`，其中︰
 
@@ -168,13 +192,13 @@ AMQP 訊息會送達代表方法要求的接收連結。 它包含下列區段�
 
 * AMQP 訊息內文，內含 JSON 形式的方法承載。
 
-#### <a name="response"></a>Response
+#### <a name="response"></a>回應
 
 裝置會建立傳送連結，以在 `amqps://{hostname}:5671/devices/{deviceId}/methods/deviceBound` 位址上傳回方法回應。
 
-此方法的回應會在傳送連結上傳回，且結構如下：
+方法的回應會在傳送連結上傳回，結構如下：
 
-* 相互關聯識別碼屬性，內含方法的要求訊息中所傳遞的要求識別碼。
+* 相互關聯識別碼屬性，其中包含在方法的要求訊息中傳遞的要求識別碼。
 
 * 名為 `IoThub-status` 的應用程式屬性，內含使用者提供的方法狀態。
 

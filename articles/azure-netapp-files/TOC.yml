@@ -19,9 +19,33 @@
       href: azure-netapp-files-resource-limits.md
     - name: Azure NetApp Files 的計量
       href: azure-netapp-files-metrics.md
-    - name: 適用於 Azure NetApp Files 的效能基準測試
-      href: azure-netapp-files-performance-benchmarks.md
-- name: 使用說明指南
+    - name: 效能
+      items:
+        - name: 適用於 Azure NetApp Files 的效能考量
+          href: azure-netapp-files-performance-considerations.md
+        - name: 適用於Azure NetApp Files 的效能基準測試建議
+          href: azure-netapp-files-performance-metrics-volumes.md
+        - name: Linux 的效能評定
+          href: performance-benchmarks-linux.md
+        - name: 與 SMB 效能相關的常見問題集
+          href: azure-netapp-files-smb-performance.md
+    - name: 適用於Azure NetApp Files 的成本模型
+      href: azure-netapp-files-cost-model.md
+    - name: 適用於 Azure NetApp Files 網路方案的指導方針
+      href: azure-netapp-files-network-topologies.md
+    - name: 方案
+      items:
+        - name: 使用 Azure NetApp Files 的方案架構
+          href: azure-netapp-files-solution-architectures.md
+        - name: 使用 Azure NetApp Files 的優點
+          items:
+            - name: 使用 Azure NetApp Files 搭配 Oracle Database 的優點
+              href: solutions-benefits-azure-netapp-files-oracle-database.md
+            - name: 使用 Azure NetApp Files 進行電子設計自動化的優點
+              href: solutions-benefits-azure-netapp-files-electronic-design-automation.md
+    - name: 關於 Azure NetApp 檔案的常見問題集
+      href: azure-netapp-files-faqs.md
+- name: 操作指南
   items:
     - name: 註冊 Azure NetApp Files
       href: azure-netapp-files-register.md
@@ -31,8 +55,12 @@
       href: azure-netapp-files-set-up-capacity-pool.md
     - name: 將子網路委派至 Azure NetApp Files
       href: azure-netapp-files-delegate-subnet.md
-    - name: 建立適用於 Azure NetApp Files 的磁碟區
+    - name: 建立適用於 Azure NetApp Files 的 SMB 磁碟區
+      href: azure-netapp-files-create-volumes-smb.md
+    - name: 建立適用於 Azure NetApp Files 的 NFS 磁碟區
       href: azure-netapp-files-create-volumes.md
+    - name: 針對 Azure NetApp Files 設定 NFSv4.1 預設網域
+      href: azure-netapp-files-configure-nfsv41-domain.md
     - name: 設定 NFS 磁碟區的匯出原則
       href: azure-netapp-files-configure-export-policy.md
     - name: 管理磁碟區
@@ -45,8 +73,12 @@
       href: azure-netapp-files-resize-capacity-pools-or-volumes.md
     - name: 開發
       items:
-        - name: REST
+        - name: REST API
           href: azure-netapp-files-develop-with-rest-api.md
+        - name: REST API 使用 PowerShell
+          href: develop-rest-api-powershell.md
+        - name: Azure NetApp Files SDK 和 CLI 工具
+          href: azure-netapp-files-sdk-cli.md
         - name: 針對 Azure NetApp Files 資源提供者錯誤進行疑難排解
           href: azure-netapp-files-troubleshoot-resource-provider-errors.md
 - name: 參考
@@ -55,3 +87,13 @@
       href: 'https://docs.microsoft.com/rest/api/netapp/'
     - name: Resource Manager 範本
       href: /azure/templates/microsoft.netapp/allversions
+- name: 資源
+  items:
+    - name: 定價
+      href: 'https://azure.microsoft.com/pricing/details/netapp/'
+    - name: 區域可用性
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=netapp'
+    - name: SLA
+      href: 'https://azure.microsoft.com/support/legal/sla/netapp/'
+    - name: 影片
+      href: azure-netapp-files-videos.md

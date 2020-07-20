@@ -1,49 +1,55 @@
 ---
-title: 大規模使用 「 Azure IoT 中樞 」 (CLI) 的自動裝置管理 |Microsoft Docs
-description: 使用 Azure IoT 中樞自動的裝置管理來將設定指派給多個 IoT 裝置
-author: ChrisGMsft
-manager: bruz
+title: 使用 Azure IoT 中樞（CLI）大規模的自動裝置管理 |Microsoft Docs
+description: 使用 Azure IoT 中樞自動設定來管理多個 IoT 裝置或模組
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 04/13/2018
-ms.author: chrisgre
-ms.openlocfilehash: 0302146634904ccf1d87220d3a24553149e10372
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 12/13/2019
+ms.author: robinsh
+ms.openlocfilehash: 60d0ef30a1c7d948a9e837a8bc37c76ace415545
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61320992"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82024960"
 ---
-# <a name="automatic-iot-device-management-at-scale-using-the-azure-cli"></a>自動大規模使用 Azure CLI 的 IoT 裝置管理
+# <a name="automatic-iot-device-and-module-management-using-the-azure-cli"></a>使用 Azure CLI 自動進行 IoT 裝置和模組管理
 
 [!INCLUDE [iot-edge-how-to-deploy-monitor-selector](../../includes/iot-hub-auto-device-config-selector.md)]
 
-Azure IoT 中樞中的自動裝置管理會自動執行許多管理大型裝置艦隊的重複性和複雜工作。 使用自動裝置管理，您可以為目標的一組裝置根據其屬性、 定義所需的設定，然後讓它們進入範圍時，更新裝置的 IoT 中樞。 此更新是使用_自動裝置組態_，它可讓您彙總完成和合規性、 控制代碼合併和衝突，並導入的分段式方法中的組態。
+Azure IoT 中樞的自動裝置管理可自動為大量裝置管理許多重複且複雜工作。 使用自動裝置管理時，您可根據裝置的屬性，以特定的裝置集合作為目標來定義所需設定，並讓 IoT 中樞在這些裝置進入範圍內時更新裝置。 此更新會使用「自動裝置設定」或「自動模組設定」來完成，其可供對完成與合規性進行摘要處理、處理合併與衝突，以及階段式地推出設定。
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-自動裝置管理運作方式，是一組裝置對應項更新所需屬性和報告摘要為基礎的裝置對應項報告屬性。  它引進新的類別與呼叫的 JSON 文件*組態*，有三個部分：
+自動裝置管理的運作方式是以所需屬性來更新一組裝置對應項或模組對應項，並根據對應項回報的屬性來回報摘要。  自動裝置管理採用稱為「設定」的新類別和 JSON 文件，其共有三部分：
 
-* **目標條件**會定義要更新的裝置對應項範圍。 目標條件會以查詢的方式指定於裝置對應項標籤和/或報告屬性上。
+* **目標條件**會定義要更新的裝置對應項或模組對應項範圍。 目標條件會以查詢的方式指定於裝置對應項標籤和/或報告屬性上。
 
-* **目標內容**會定義要在目標裝置對應項中新增或更新的所需屬性。 內容包含了一個路徑，連往所要變更屬性的區段。
+* **目標內容**會定義要在目標裝置對應項或模組對應項中新增或更新的所需屬性。 內容包含了一個路徑，連往所要變更屬性的區段。
 
-* **計量**會定義各種設定狀態 (例如 **Success**、**Progress** 及 **Error**) 的摘要計數。 自訂計量會以查詢的形式指定於裝置對應項報告屬性上。  系統計量是預設計量，用來計算對應項更新的狀態，例如為目標的裝置對應項的數目和已成功更新的對應項的數目。 
+* **計量**會定義各種設定狀態 (例如 **Success**、**Progress** 及 **Error**) 的摘要計數。 自訂計量會以查詢形式來指定於對應項回報屬性上。  系統計量是測量對應項更新狀態的預設計量，例如作為目標的對應項數目，以及成功更新的對應項數目。
+
+自動設定會在建立設定後不久執行第一次，並在之後以五分鐘的間隔執行。 每次執行自動設定時都會執行計量查詢。
 
 ## <a name="cli-prerequisites"></a>CLI 先決條件
 
 * Azure 訂用帳戶中的 [IoT 中樞](../iot-hub/iot-hub-create-using-cli.md)。 
-* 您環境中的 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 您的 Azure CLI 版本至少必須是 2.0.24 或更新版本。 使用 `az –-version` 進行驗證。 這個版本支援 az 擴充命令並引進 Knack 命令架構。 
-* [適用於 Azure CLI 的 IoT 擴充功能](https://github.com/Azure/azure-iot-cli-extension) \(英文\)。
 
-## <a name="implement-device-twins-to-configure-devices"></a>實作裝置對應項來設定裝置
+* 您環境中的 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 Azure CLI 版本至少必須是 2.0.70 或更新版本。 使用 `az –-version` 進行驗證。 這個版本支援 az 擴充命令並引進 Knack 命令架構。 
 
-自動裝置設定需要使用裝置對應項，以同步處理雲端和裝置之間的狀態。  如需使用裝置對應項的指引，請參閱[了解和使用 IoT 中樞的裝置對應項](iot-hub-devguide-device-twins.md)。
+* [適用於 Azure CLI 的 IoT 擴充功能](https://github.com/Azure/azure-cli) \(英文\)。
 
-## <a name="identify-devices-using-tags"></a>使用標記識別裝置
+[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
-您建立的組態之前，您必須指定您想要影響的裝置。 Azure IoT 中樞會使用裝置對應項中的標籤來識別裝置。 每個裝置都可以有多個標記，而您可以利用任何對您解決方案有意義的方式來定義它們。 比方說，如果您管理在不同位置的裝置，請將下列標記新增至裝置對應項：
+## <a name="implement-twins"></a>實作對應項
+
+自動裝置設定需要使用裝置對應項，以同步處理雲端和裝置之間的狀態。  如需詳細資訊，請參閱[了解和使用 Azure IoT 中樞的裝置對應項](iot-hub-devguide-device-twins.md)。
+
+自動模組設定需要使用模組對應項，以同步處理雲端和模組之間的狀態。 如需詳細資訊，請參閱[了解和使用 Azure IoT 中樞的模組對應項](iot-hub-devguide-module-twins.md)。
+
+## <a name="use-tags-to-target-twins"></a>使用標籤將對應項設為目標
+
+在可建立設定之前，您必須指定所要影響的裝置或模組。 Azure IoT 中樞可在裝置對應項中使用標籤來識別裝置，以及在模組對應項中使用標籤來識別模組。 每個裝置或模組都可以有多個標記，而您可利用任何對解決方案有意義的方式來定義。 例如，如果管理的裝置位於不同位置，則可將下列標籤新增至裝置對應項：
 
 ```json
 "tags": {
@@ -56,9 +62,9 @@ Azure IoT 中樞中的自動裝置管理會自動執行許多管理大型裝置�
 
 ## <a name="define-the-target-content-and-metrics"></a>定義目標內容和計量
 
-內容的目標和度量的查詢會指定為 JSON 文件，說明裝置對應項所需的屬性集和報告的屬性，來測量。  若要使用 Azure CLI 建立自動裝置組態，請在本機上將目標內容和計量儲存為 .txt 檔案。 當您執行命令，以將組態套用到您的裝置時，您可以使用後續小節中的檔案路徑。 
+目標內容和計量查詢會指定為 JSON 檔，以描述要設定的裝置對應項或模組對應項所需屬性，以及要測量的屬性。  若要使用 Azure CLI 建立自動設定，請在本機將目標內容和計量儲存為 .txt 檔案。 當您執行命令以將設定套用至裝置時，您會在稍後的章節中使用檔案路徑。
 
-以下是基本目標內容範例：
+以下是自動裝置設定的基本目標內容範例：
 
 ```json
 {
@@ -72,14 +78,38 @@ Azure IoT 中樞中的自動裝置管理會自動執行許多管理大型裝置�
 }
 ```
 
+自動模組設定的行為非常類似，但您 `moduleContent` 的目標不是 `deviceContent` 。
+
+```json
+{
+  "content": {
+    "moduleContent": {
+      "properties.desired.chillerWaterSettings": {
+        "temperature": 38,
+        "pressure": 78
+      }
+    }
+}
+```
+
 以下是計量查詢的範例：
 
 ```json
 {
   "queries": {
-    "Compliant": "select deviceId from devices where configurations.[[chillersettingswashington]].status = 'Applied' AND properties.reported.chillerWaterSettings.status='current'",
-    "Error": "select deviceId from devices where configurations.[[chillersettingswashington]].status = 'Applied' AND properties.reported.chillerWaterSettings.status='error'",
-    "Pending": "select deviceId from devices where configurations.[[chillersettingswashington]].status = 'Applied' AND properties.reported.chillerWaterSettings.status='pending'"
+    "Compliant": "select deviceId from devices where configurations.[[chillerdevicesettingswashington]].status = 'Applied' AND properties.reported.chillerWaterSettings.status='current'",
+    "Error": "select deviceId from devices where configurations.[[chillerdevicesettingswashington]].status = 'Applied' AND properties.reported.chillerWaterSettings.status='error'",
+    "Pending": "select deviceId from devices where configurations.[[chillerdevicesettingswashington]].status = 'Applied' AND properties.reported.chillerWaterSettings.status='pending'"
+  }
+}
+```
+
+模組的計量查詢也類似于裝置的查詢，但您選取 [ `moduleId` 從] `devices.modules` 。 例如： 
+
+```json
+{
+  "queries": {
+    "Compliant": "select deviceId, moduleId from devices.module where configurations.[[chillermodulesettingswashington]].status = 'Applied' AND properties.reported.chillerWaterSettings.status='current'"
   }
 }
 ```
@@ -90,7 +120,7 @@ Azure IoT 中樞中的自動裝置管理會自動執行許多管理大型裝置�
 
 使用以下命令建立組態：
 
-```cli
+```azurecli
    az iot hub configuration create --config-id [configuration id] \
      --labels [labels] --content [file path] --hub-name [hub name] \
      --target-condition [target query] --priority [int] \
@@ -105,45 +135,45 @@ Azure IoT 中樞中的自動裝置管理會自動執行許多管理大型裝置�
 
 * --**hub-name** - 要在其中建立組態的 IoT 中樞名稱。 中樞必須在目前訂用帳戶中。 使用 `az account set -s [subscription name]` 命令切換到所需的訂用帳戶
 
-* --**target-condition** - 輸入目標條件來判斷這個組態會將哪些裝置設為目標。 條件會以裝置對應項標籤或裝置對應項所需屬性為基礎，且應符合運算式格式。 例如，`tags.environment='test'` 或 `properties.desired.devicemodel='4000x'`。 
+* --**目標-條件**-輸入目標條件，以決定將以這種設定為目標的裝置或模組。針對自動裝置設定，條件是以裝置對應項標籤或裝置對應項所需屬性為基礎，且應符合運算式格式。例如，`tags.environment='test'` 或 `properties.desired.devicemodel='4000x'`。針對自動模組設定，條件是以模組對應項標記或模組對應項所需屬性為基礎。 例如，`from devices.modules where tags.environment='test'` 或 `from devices.modules where properties.reported.chillerProperties.model='4000x'`。
 
-* --**priority** - 正整數。 在兩個以上組態目標為相同裝置的事件中，將會套用具有優先順序最高數值的組態。
+* --**優先順序**-正整數。 如果有兩個或多個設定的目標為相同的裝置或模組，則會套用具有最高優先順序數值的設定。
 
-* --**metrics** - 計量查詢的檔案路徑。 計量會提供裝置可能會回報之後套用的設定內容的各種狀態的摘要的計數。 例如，您可以建立擱置設定變更的計量、錯誤的計量，以及成功設定變更的計量。 
+* --**metrics** - 計量查詢的檔案路徑。 計量會提供在套用設定內容後，裝置或模組所回報各種狀態的摘要計數。 例如，您可以建立擱置設定變更的計量、錯誤的計量，以及成功設定變更的計量。 
 
 ## <a name="monitor-a-configuration"></a>監視設定
 
 使用下列命令來顯示組態的內容︰
 
-```cli
+```azurecli
 az iot hub configuration show --config-id [configuration id] \
   --hub-name [hub name]
 ```
 
 * --**config-id** - 存在於 IoT 中樞的組態名稱。
 
-* --**hub-name** - 組態存在於其中的 IoT 中樞名稱。 中樞必須在目前訂用帳戶中。 使用 `az account set -s [subscription name]` 命令切換到所需訂用帳戶
+* --**hub-name** - 組態存在於其中的 IoT 中樞名稱。 中樞必須在目前訂用帳戶中。 使用 `az account set -s [subscription name]` 命令切換到所需的訂用帳戶
 
-在命令視窗中檢查組態。 **metrics** 屬性會列出每個中樞評估的每個計量計數：
+在命令視窗中檢查組態。 **metrics** 屬性會列出每個中樞所評估每個計量的計數：
 
-* **targetedCount** - 系統計量，指定 IoT 中樞中符合目標條件的裝置對應項數目。
+* **targetedCount** -系統計量，指定 IoT 中樞中符合目標條件的裝置 twins 或模組 twins 數目。
 
-* **appliedCount** - 系統計量，指定已套用目標內容的裝置數目。
+* **appliedCount** -系統度量指定已套用目標內容的裝置或模組數目。
 
-* **自訂計量**-您已定義任何計量是使用者計量。
+* **您的自訂度量**-您定義的任何計量都是使用者計量。
 
-您可以使用下列命令，顯示每個計量的裝置識別碼或物件清單：
+您可以使用下列命令，顯示每個計量的裝置識別碼、模組識別碼或物件清單：
 
-```cli
+```azurecli
 az iot hub configuration show-metric --config-id [configuration id] \
    --metric-id [metric id] --hub-name [hub name] --metric-type [type] 
 ```
 
 * --**config-id** - 存在於 IoT 中樞的部署名稱。
 
-* --**metric-id** - 您想要在其中查看裝置識別碼清單的計量名稱，例如 `appliedCount`。
+* --計量 **-識別碼**-您想要查看裝置識別碼或模組識別碼清單的度量名稱，例如 `appliedCount` 。
 
-* --**hub-name** - 部署存在於其中的 IoT 中樞名稱。 中樞必須在目前訂用帳戶中。 使用 `az account set -s [subscription name]` 命令切換到所需的訂用帳戶。
+* --**中樞名稱**-部署所在的 IoT 中樞名稱。 中樞必須在目前訂用帳戶中。 使用 `az account set -s [subscription name]` 命令切換到所需的訂用帳戶。
 
 * --**metric-type** - 計量類型可以是 `system` 或 `user`。  系統計量是 `targetedCount` 和 `appliedCount`。 其他所有計量是使用者計量。
 
@@ -153,15 +183,15 @@ az iot hub configuration show-metric --config-id [configuration id] \
 
 如果您更新目標條件，就會發生下列更新：
 
-* 如果裝置對應項不符合舊的目標條件，但符合新的目標條件，而且此設定為該裝置對應項的最高優先順序設定，則會將此設定套用到該裝置對應項。 
+* 如果對應項不符合舊的目標條件，但符合新的目標條件，且此設定為該對應項的最高優先順序設定，則會套用此設定。 
 
-* 如果裝置對應項不再符合目標條件，系統會將設定中的設定移除，並以優先順序次高的設定來修改該裝置對應項。 
+* 如果目前正在執行此設定的對應項不再符合目標條件，則會移除設定中的設定，並以優先順序次高的設定來修改該對應項。 
 
-* 如果目前執行此設定的裝置對應項不再符合目標條件，也不符合任何其他設定的目標條件，則系統會將設定中的設定移除，且不會對該對應項進行任何其他變更。 
+* 如果目前執行此設定的對應項不再符合目標條件，也不符合任何其他設定的目標條件，則系統會將設定中的設定移除，且不會對該對應項進行任何其他變更。 
 
 使用以下命令更新組態：
 
-```cli
+```azurecli
 az iot hub configuration update --config-id [configuration id] \
    --hub-name [hub name] --set [property1.property2='value']
 ```
@@ -176,25 +206,26 @@ az iot hub configuration update --config-id [configuration id] \
 
     * 標籤 
 
-    * 優先順序
+    * priority
 
 ## <a name="delete-a-configuration"></a>刪除設定
 
-當您刪除設定時，任何裝置對應項都會採用其優先順序次高的設定。 如果裝置對應項不符合任何其他設定的目標條件，則不會套用任何其他設定。 
+當您刪除設定時，任何裝置 twins 或模組 twins 都會採用其下一個最高優先順序的設定。 如果 twins 不符合任何其他設定的目標條件，則不會套用其他設定。 
 
 使用以下命令刪除組態：
 
-```cli
+```azurecli
 az iot hub configuration delete --config-id [configuration id] \
    --hub-name [hub name] 
 ```
+
 * --**config-id** - 存在於 IoT 中樞的組態名稱。
 
 * --**hub-name** - 組態存在於其中的 IoT 中樞名稱。 中樞必須在目前訂用帳戶中。 使用 `az account set -s [subscription name]` 命令切換到所需的訂用帳戶。
 
 ## <a name="next-steps"></a>後續步驟
 
-在本文中，您已了解如何設定和監視大規模的 IoT 裝置。 遵循下列連結以深入了解如何管理 Azure IoT 中樞：
+在本文中，您已了解如何大規模設定和監視 IoT 裝置。 遵循下列連結以深入了解如何管理 Azure IoT 中樞：
 
 * [管理大量的 IoT 中樞裝置身分識別](iot-hub-bulk-identity-mgmt.md)
 * [IoT 中樞計量](iot-hub-metrics.md)

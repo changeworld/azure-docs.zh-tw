@@ -1,0 +1,90 @@
+---
+title: Azure 事件方格中的輸出批次處理 IoT Edge |Microsoft Docs
+description: IoT Edge 上事件方格中的輸出批次處理。
+author: HiteshMadan
+manager: rajarv
+ms.author: himad
+ms.reviewer: spelluru
+ms.date: 07/08/2020
+ms.topic: article
+ms.openlocfilehash: 0ae2261f8278c4d5e1944b01a9731afd293df20b
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171630"
+---
+# <a name="output-batching"></a>輸出批次處理
+
+事件方格支援在單一傳遞要求中傳遞一個以上的事件。 這項功能可讓您增加整體傳遞輸送量，而不需支付 HTTP 每個要求的負荷。 批次處理預設為關閉，而且可以針對每個訂用帳戶開啟。
+
+> [!WARNING]
+> 即使訂閱者程式碼可能必須針對每個批次要求執行更多工作，但處理每個傳遞要求的最大持續期間也不會變更。 傳遞超時預設為60秒。
+
+## <a name="batching-policy"></a>批次處理原則
+
+藉由調整下列兩項設定，可以針對每個訂閱者自訂事件方格的批次處理行為：
+
+* 每批次的事件數上限
+
+  此設定會設定可新增至批次傳遞要求的事件數目上限。
+
+* 慣用的批次大小（以 Kb 為單位）
+
+  此旋鈕可用來進一步控制每個傳遞要求可以傳送的最大 kb 數
+
+## <a name="batching-behavior"></a>批次處理行為
+
+* 全部或無
+
+  事件方格會使用 all 或-none 語義來運作。 它不支援批次傳遞的部分成功。 訂閱者應該謹慎地要求每個批次有多個事件，因為它們可以在60秒內合理地處理。
+
+* 開放式批次處理
+
+  批次處理原則設定不會嚴格限制批次處理行為，並會盡力遵循。 在事件速率較低的情況下，您通常會發現批次大小小於每個批次要求的最大事件數。
+
+* 預設值設定為 OFF
+
+  根據預設，事件方格只會將一個事件新增至每個傳遞要求。 開啟批次處理的方式是在事件訂用帳戶 JSON 中，設定前述文章中所述的其中一項設定。
+
+* 預設值
+
+  在建立事件訂閱時，並不需要指定 (每個批次的事件數上限，以及大約的批次大小（以 kb 為單位）) 的設定。 如果只設定一個設定，事件方格會使用 (可設定的) 預設值。 請參閱下列各節中的預設值，以及如何覆寫它們。
+
+## <a name="turn-on-output-batching"></a>開啟輸出批次處理
+
+```json
+{
+    "properties":
+    {
+        "destination":
+        {
+            "endpointType": "WebHook",
+            "properties":
+             {
+                "endpointUrl": "<your_webhook_url>",
+                "maxEventsPerBatch": 10,
+                "preferredBatchSizeInKilobytes": 64
+             }
+        },
+    }
+}
+```
+
+## <a name="configuring-maximum-allowed-values"></a>設定允許的最大值
+
+下列部署時間設定會控制建立事件訂閱時允許的最大值。
+
+| 屬性名稱 | 描述 |
+| ------------- | ----------- | 
+| `api__deliveryPolicyLimits__maxpreferredBatchSizeInKilobytes` | 旋鈕允許的最大值 `PreferredBatchSizeInKilobytes` 。 預設值 `1033` 。
+| `api__deliveryPolicyLimits__maxEventsPerBatch` | 旋鈕允許的最大值 `MaxEventsPerBatch` 。 預設值 `50` 。
+
+## <a name="configuring-runtime-default-values"></a>設定執行時間預設值
+
+下列部署時間設定會控制每個旋鈕在事件訂用帳戶中未指定時的預設值。 重申一次，必須在事件訂用帳戶上設定至少一個旋鈕，才能開啟批次行為。
+
+| 屬性名稱 | 描述 |
+| ------------- | ----------- |
+| `broker__defaultMaxBatchSizeInBytes` | 只有在指定時，傳遞要求大小上限 `MaxEventsPerBatch` 。 預設值 `1_058_576` 。
+| `broker__defaultMaxEventsPerBatch` | 只有在指定時，才會新增至批次的事件數目上限 `MaxBatchSizeInBytes` 。 預設值 `10` 。

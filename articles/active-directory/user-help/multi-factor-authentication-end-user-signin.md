@@ -1,28 +1,26 @@
 ---
-title: 使用双重验证进行 Azure MFA 登录 - Azure Active Directory | Microsoft Docs
-description: 本頁面將指引您移至何處才能看到 Azure MFA 可用的各種登入方法。
-keywords: 用户身份验证, 登录体验, 使用手机登录, 使用办公电话登录
+title: 搭配公司或學校帳戶使用驗證來登入 - Azure AD
+description: 了解如何使用各種雙重要素驗證方法來登入您的公司或學校帳戶。
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.assetid: b310b762-471b-4b26-887a-a321c9e81d46
 ms.workload: identity
 ms.service: active-directory
 ms.subservice: user-help
-ms.topic: conceptual
+ms.topic: end-user-help
 ms.date: 04/02/2017
-ms.author: lizross
+ms.author: curtand
 ms.reviewer: librown
 ms.custom: end-user, seo-update-azuread-jan
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1350b2d86e18f213d99f1c27d64e371451f5f9b7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: daa2cfae4ed8371e245d12a9f805fe07f31a6d76
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60334390"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83742947"
 ---
-# <a name="the-sign-in-experience-with-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication 的登入體驗
+# <a name="sign-in-to-your-work-or-school-account-using-your-two-factor-verification-method"></a>使用雙重要素驗證方法來登入您的公司或學校帳戶
+
 > [!NOTE]
 > 本文的目的逐步解說典型的登入體驗。 如需登入的說明或疑難排解問題，請參閱 [使用 Azure Multi-Factor Authentication 時碰到困難](multi-factor-authentication-end-user-troubleshoot.md)。
 
@@ -61,13 +59,13 @@ ms.locfileid: "60334390"
    ![Microsoft 傳送通知](./media/multi-factor-authentication-end-user-signin/notify.png)
 
 3. 在電話上開啟通知，然後選取 [驗證] 鍵。 如果貴公司要求 PIN，在此處輸入。
-4. 现在，应该已登录。
+4. 您現在應已登入。
 
 ### <a name="to-sign-in-using-a-verification-code-with-the-microsoft-authenticator-app"></a>使用驗證碼登入 Microsoft 驗證器應用程式
 
 如果您使用 Microsoft Authenticator 應用程式取得驗證碼，則當您開啟應用程式時，會在您的帳戶名稱下面看到一個數字。 這個數字每 30 秒會變更一次，所以您不會使用相同的數字兩次。 當系統要求您輸入驗證碼時，開啟應用程式並使用當下所顯示的任何數字。
 
-1. 使用用户名和密码登录到 Office 365 等应用程序或服务。
+1. 使用您的使用者名稱和密碼登入應用程式或服務，例如 Office 365。
 2. Microsoft 提示您輸入驗證碼。
 
    ![輸入驗證碼](./media/multi-factor-authentication-end-user-signin/verify3.png)

@@ -3,27 +3,27 @@ title: 教學課程：使用 PowerShell 部署到現有的虛擬網路 -Azure �
 description: 示範如何使用 PowerShell 將專用 HSM 部署到現有虛擬網路中的教學課程
 services: dedicated-hsm
 documentationcenter: na
-author: barclayn
-manager: barbkess
+author: msmbaldwin
+manager: rkarlin
 editor: ''
 ms.service: key-vault
 ms.topic: tutorial
 ms.custom: mvc, seodec18
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/07/2018
-ms.author: barclayn
-ms.openlocfilehash: 288ad14110bd446955d6cec7439bfa40a750276c
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.date: 11/11/2019
+ms.author: mbaldwin
+ms.openlocfilehash: c1a847a315a264591c0d003ff691d9938c2bf0f5
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59521640"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79474419"
 ---
 # <a name="tutorial--deploying-hsms-into-an-existing-virtual-network-using-powershell"></a>教學課程 – 使用 PowerShell 將 HSM 部署至現有的虛擬網路
 
 Azure 專用 HSM 服務提供實體裝置以供單獨客戶使用，其具有完整的系統管理控制權和完整的管理責任。 Microsoft 會提供實體硬體，因此必須控制這些裝置的配置方式，以確保有效地管理容量。 因此，在 Azure 訂用帳戶內，通常看不見可供佈建資源的專用 HSM 服務。 任何需要存取專用 HSM 服務的 Azure 客戶都必須先連絡其 Microsoft 客戶代表，要求註冊專用 HSM 服務。 唯有順利完成此程序，才可能進行佈建。
-此教學課程主要示範典型的佈建程序，其中：
+本教學課程主要示範典型的佈建程序，其中：
 
 - 客戶已經有虛擬網路
 - 他們有虛擬機器
@@ -33,19 +33,19 @@ Azure 專用 HSM 服務提供實體裝置以供單獨客戶使用，其具有完
 
 ![多區域部署](media/tutorial-deploy-hsm-powershell/high-availability.png)
 
-此教學課程著重於一對已整合到現有虛擬網路 (請參閱上述的 VNET 1) 的 HSM 和必要的 ExpressRoute 閘道 (請參閱上述的子網路 1)。  所有其他資源都是標準 Azure 資源。 相同的整合程序可以用於上述 VNET 3 上子網路 4 中的 HSM。
+本教學課程著重於一對已整合到現有虛擬網路 (請參閱上述的 VNET 1) 的 HSM 和必要的 ExpressRoute 閘道 (請參閱上述的子網路 1)。  所有其他資源都是標準 Azure 資源。 相同的整合程序可以用於上述 VNET 3 上子網路 4 中的 HSM。
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-Azure 入口網站目前不提供 Azure 專用 HSM ，因此與服務的所有互動都是透過命令列或使用 PowerShell 進行。 此教學課程會在 Azure Cloud Shell 中使用 PowerShell。 如果您不熟悉 PowerShell，請遵循以下的使用者入門指示：[Azure PowerShell 使用者入門](https://docs.microsoft.com/powershell/azure/get-started-azureps)。
+Azure 入口網站目前不提供 Azure 專用 HSM ，因此與服務的所有互動都是透過命令列或使用 PowerShell 進行。 本教學課程會在 Azure Cloud Shell 中使用 PowerShell。 如果您不熟悉 PowerShell，請遵循以下的使用者入門指示：[Azure PowerShell 使用者入門](https://docs.microsoft.com/powershell/azure/get-started-azureps)。
 
 假設：
 
 - 您已完成 Azure 專用 HSM 註冊程序並且獲准使用服務。 若非如此，則連絡 Microsoft 客戶代表以取得詳細資料。 
-- 您已建立這些資源的資源群組，而此教學課程中部署的新資訊將會加入該群組。
+- 您已建立這些資源的資源群組，而本教學課程中部署的新資訊將會加入該群組。
 - 您已經按照上圖建立所需的虛擬網路、子網路和虛擬機器，而現在想要將 2 個 HSM 整合到該部署中。
 
 以下所有指示都假設您已經導覽至 Azure 入口網站，並已開啟 Cloud Shell (選取靠近入口網站右上方的 “\>\_”)。
@@ -192,7 +192,7 @@ New-AzResourceGroupDeployment -ResourceGroupName myRG `
 
 順利完成時 (顯示 “provisioningState”:“Succeeded”)，您可以登入現有的虛擬機器，並使用 SSH 來確保 HSM 裝置的可用性。
 
-## <a name="verifying-the-deployment"></a>驗證部署
+## <a name="verifying-the-deployment"></a>確認部署
 
 若要驗證是否已佈建裝置以及查看裝置屬性，請執行下列命令集。 請確定已適當設定資源群組，且資源名稱完全與您在參數檔案中擁有的資源名稱相同。
 
@@ -245,23 +245,12 @@ SSH 工具用於連線至虛擬機器。 此命令將如下所示，但採用您
 
 ## <a name="delete-or-clean-up-resources"></a>刪除或清除資源
 
-如果您已處理完 HSM 裝置，即可將它當作資源刪除並傳回可用的集區。 執行此作業時的顯著考量就是裝置上的任何敏感性客戶資料。 若要移除敏感性客戶資料，裝置應使用 Gemalto 用戶端來恢復出廠預設值。 請參閱 Gemalto 系統管理員指南中的 SafeNet Network Luna 7 裝置，並考慮依序執行下列命令。
-
-1. `hsm factoryReset -f`
-2. `sysconf config factoryReset -f -service all`
-3. `network interface delete -device eth0`
-4. `network interface delete -device eth1`
-5. `network interface delete -device eth2`
-6. `network interface delete -device eth3`
-7. `my file clear -f`
-8. `my public-key clear -f`
-9. `syslog rotate`
-
+如果您已處理完 HSM 裝置，即可將它當作資源刪除並傳回可用的集區。 執行此作業時的顯著考量就是裝置上的任何敏感性客戶資料。 將裝置「歸零」的最佳方式是讓 HSM 管理員的密碼連錯 3 次 (注意：這裡指的不是裝置管理員，而是實際的 HSM 管理員)。 由於金鑰內容有安全措施保護，裝置必須處於歸零狀態，才能以 Azure 資源的形式刪除。
 
 > [!NOTE]
 > 如果您有關於任何 Gemalto 裝置組態的問題，您應該連絡 [Gemalto 客戶支援](https://safenet.gemalto.com/technical-support/)。
 
-如果您已處理完此資源群組中的資源，即可透過下列命令來移除它們：
+如果您想要移除 Azure 中的 HSM 資源，您可以使用下列命令將 "$" 變數取代為您的唯一參數：
 
 ```powershell
 
@@ -274,7 +263,7 @@ Remove-AzResource -Resourceid /subscriptions/$subId/resourceGroups/$resourceGrou
 
 ## <a name="next-steps"></a>後續步驟
 
-完成此教學課程中的步驟之後，就會佈建專用 HSM 資源並可使用於您的虛擬網路中。 您現在可以慣用部署架構所需的更多資源，讓此部署更加完善。 如需有關協助規劃部署的詳細資訊，請參閱「概念」文件。 建議採用以下設計：主要區域中有兩個 HSM 可處理機架層級的可用性，而次要區域中有兩個 HSM 可處理區域可用性。 此教學課程中所用的範本檔案可輕鬆地作為兩個 HSM 部署的基礎，但必須修改其參數以能夠以符合您的需求。
+完成本教學課程中的步驟之後，就會佈建專用 HSM 資源並可使用於您的虛擬網路中。 您現在可以慣用部署架構所需的更多資源，讓此部署更加完善。 如需有關協助規劃部署的詳細資訊，請參閱「概念」文件。 建議採用以下設計：主要區域中有兩個 HSM 可處理機架層級的可用性，而次要區域中有兩個 HSM 可處理區域可用性。 本教學課程中所用的範本檔案可輕鬆地作為兩個 HSM 部署的基礎，但必須修改其參數以能夠以符合您的需求。
 
 * [高可用性](high-availability.md)
 * [實體安全性](physical-security.md)

@@ -2,8 +2,10 @@
   href: index.yml
 - name: 概觀
   items:
-    - name: 何謂 Azure 備份？
+    - name: Azure 備份概觀
       href: backup-overview.md
+    - name: 定價
+      href: 'https://azure.microsoft.com/pricing/details/backup/'
 - name: 快速入門
   expanded: true
   items:
@@ -13,24 +15,40 @@
       href: quick-backup-vm-powershell.md
     - name: 備份 VM - CLI
       href: quick-backup-vm-cli.md
+    - name: 備份 VM - ARM 範本
+      displayName: Resource Manager
+      href: quick-backup-vm-template.md
 - name: 教學課程
   items:
-    - name: 大規模備份 Azure VM
+    - name: 備份多個 Azure VM
       href: tutorial-backup-vm-at-scale.md
+    - name: 使用 PowerShell 來備份 Azure VM
+      href: tutorial-backup-azure-vm.md
     - name: 還原磁碟
       href: tutorial-restore-disk.md
     - name: 還原個別檔案
       href: tutorial-restore-files.md
+    - name: 在 Azure VM 上備份 SQL Server
+      href: tutorial-sql-backup.md
+    - name: 將 SAP Hana 資料庫備份到 Azure VM
+      href: tutorial-backup-sap-hana-db.md
     - name: 備份 Windows Server
       href: tutorial-backup-windows-server-to-azure.md
     - name: 將檔案還原到 Windows Server
       href: tutorial-backup-restore-files-windows-server.md
+    - name: Azure VM 上的 SAP HANA 資料庫 - 使用 CLI
+      items:
+        - name: 備份 SAP HANA 資料庫 - CLI
+          href: tutorial-sap-hana-backup-cli.md
+        - name: 還原 SAP HANA 資料庫 - CLI
+          href: tutorial-sap-hana-restore-cli.md
+        - name: 管理備份的 SAP HANA 資料庫 - CLI
+          href: tutorial-sap-hana-manage-cli.md
 - name: 範例
   items:
-    - name: Azure PowerShell
-      href: powershell-backup-samples.md
-    - name: Resource Manager 範本
-      href: backup-rm-template-samples.md
+    - name: Azure 原則內建
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: 概念
   items:
     - name: 支援矩陣
@@ -43,6 +61,14 @@
           href: backup-support-matrix-mabs-dpm.md
         - name: MARS 代理程式支援矩陣
           href: backup-support-matrix-mars-agent.md
+        - name: SQL Server 備份支援矩陣
+          href: sql-support-matrix.md
+        - name: SAP Hana 備份支援矩陣
+          href: sap-hana-backup-support-matrix.md
+        - name: Azure 檔案共用備份支援矩陣
+          href: azure-file-share-support-matrix.md
+        - name: Azure 原則支援的 VM SKU
+          href: backup-azure-policy-supported-skus.md
     - name: 常見問題集 (FAQ)
       items:
         - name: 常見問題集 - 復原服務保存庫
@@ -55,26 +81,150 @@
           href: backup-azure-files-faq.md
         - name: 常見問題集 - 將 SQL Server 資料庫備份到 Azure VM
           href: faq-backup-sql-server.md
+        - name: 常見問題集 - 將 SAP Hana 資料庫備份到 Azure VM
+          href: sap-hana-faq-backup-azure-vm.md
+        - name: 常見問題集 - Azure 備份伺服器和 DPM
+          href: backup-azure-dpm-azure-server-faq.md
+        - name: 常見問題集 - Azure 備份監視警示
+          href: backup-azure-monitor-alert-faq.md
     - name: 備份架構
       href: backup-architecture.md
-    - name: 角色型存取控制
-      href: backup-rbac-rs-vault.md
-    - name: 混合式備份的安全性
-      href: backup-azure-security-feature.md
-    - name: 設定離線備份
-      href: backup-azure-backup-import-export.md
-    - name: 適用於 DPM 和 Azure 備份伺服器的離線備份
-      href: backup-azure-backup-server-import-export-.md
-    - name: 取代磁帶媒體櫃
-      href: backup-azure-backup-cloud-as-tape.md
-    - name: Azure 常見安全性屬性
-      href: backup-security-attributes.md
-- name: 作法
+- name: 使用說明指南
   items:
-    - name: Azure 備份伺服器
+    - name: 復原服務保存庫
       items:
-        - name: Azure 備份伺服器保護矩陣
-          href: backup-mabs-protection-matrix.md
+        - name: 概觀
+          href: backup-azure-recovery-services-vault-overview.md
+        - name: 建立
+          href: backup-create-rs-vault.md
+        - name: 刪除
+          href: backup-azure-delete-vault.md
+        - name: 移動
+          href: backup-azure-move-recovery-services-vault.md
+        - name: 管理
+          href: backup-azure-manage-windows-server.md
+    - name: Azure VM 備份
+      items:
+        - name: 概觀
+          href: backup-azure-vms-introduction.md
+        - name: Backup
+          items:
+            - name: 使用 Azure 備份立即還原來備份與還原 Azure VM
+              href: backup-instant-restore-capability.md
+            - name: 建立 Azure VM 時啟用備份
+              href: backup-during-vm-creation.md
+            - name: 從 VM 設定備份 Azure VM
+              href: backup-azure-vms-first-look-arm.md
+            - name: 設定保存庫並啟用 Azure VM 備份
+              href: backup-azure-arm-vms-prepare.md
+            - name: 備份加密的 Azure VM
+              href: backup-azure-vms-encryption.md
+            - name: 設定執行 Linux 的 Azure VM 進行應用程式一致性備份
+              href: backup-azure-linux-app-consistent.md
+        - name: 還原
+          items:
+            - name: 關於 Azure VM 還原
+              href: about-azure-vm-restore.md
+            - name: 在 入口網站中還原 Azure VM
+              href: backup-azure-arm-restore-vms.md
+            - name: 從 Azure VM 備份中復原檔案
+              href: backup-azure-restore-files-from-vm.md
+            - name: 還原已加密的虛擬機器
+              href: backup-azure-vms-encryption.md
+            - name: 還原已加密 VM 的金鑰與祕密
+              href: backup-azure-restore-key-secret.md
+        - name: 管理
+          items:
+            - name: 管理 Azure VM 備份
+              href: backup-azure-manage-vms.md
+    - name: Azure VM 備份上的 SQL Server 資料庫
+      items:
+        - name: 概觀
+          href: backup-azure-sql-database.md
+        - name: Backup
+          href: backup-sql-server-database-azure-vms.md
+        - name: 還原
+          href: restore-sql-database-azure-vm.md
+        - name: 管理
+          href: manage-monitor-sql-database-backup.md
+    - name: 使用 MARS 代理程式的 Windows 備份
+      items:
+        - name: 概觀
+          href: backup-azure-about-mars.md
+        - name: 安裝或升級
+          items:
+            - name: 安裝 MARS 代理程式
+              href: install-mars-agent.md
+            - name: 升級 MARS 代理程式
+              href: upgrade-mars-agent.md
+        - name: Backup
+          items:
+            - name: 備份 Windows Server 檔案和資料夾
+              href: backup-windows-with-mars-agent.md
+            - name: 備份 Windows Server 系統狀態
+              href: backup-azure-system-state.md
+        - name: 還原
+          items:
+            - name: 將檔案從 Azure 復原至 Windows Server
+              href: backup-azure-restore-windows-server.md
+            - name: 還原 Windows Server 系統狀態
+              href: backup-azure-restore-system-state.md
+        - name: 管理
+          href: backup-azure-manage-mars.md
+    - name: Azure 檔案共用備份
+      items:
+        - name: 概觀
+          href: azure-file-share-backup-overview.md
+        - name: 從 Azure 入口網站
+          items:
+            - name: Backup
+              href: backup-afs.md
+            - name: 還原
+              href: restore-afs.md
+            - name: 管理
+              href: manage-afs-backup.md
+        - name: 透過 Azure CLI
+          items:
+            - name: Backup
+              href: backup-afs-cli.md
+            - name: 還原
+              href: restore-afs-cli.md
+            - name: 管理
+              href: manage-afs-backup-cli.md
+        - name: 透過 PowerShell
+          items:
+            - name: Backup
+              href: backup-azure-afs-automation.md
+            - name: 還原
+              href: restore-afs-powershell.md
+            - name: 管理
+              href: manage-afs-powershell.md
+        - name: 使用 REST API
+          items:
+            - name: Backup
+              href: backup-azure-file-share-rest-api.md
+            - name: 還原
+              href: restore-azure-file-share-rest-api.md
+            - name: 管理
+              href: manage-azure-file-share-rest-api.md
+    - name: Azure VM 備份上的 SAP Hana 資料庫
+      items:
+        - name: 概觀
+          href: sap-hana-db-about.md
+        - name: Backup
+          href: backup-azure-sap-hana-database.md
+        - name: 還原
+          href: sap-hana-db-restore.md
+        - name: 管理
+          href: sap-hana-db-manage.md
+    - name: Azure 備份伺服器 (MABS)
+      items:
+        - name: 保護矩陣
+          items:
+            - name: MABS V3 UR1 保護矩陣
+              href: backup-mabs-protection-matrix.md
+            - name: MABS V3 RTM 保護矩陣
+              href: microsoft-azure-backup-server-protection-v3.md
         - name: 安裝或升級
           items:
             - name: 安裝 Azure 備份伺服器
@@ -83,12 +233,14 @@
               href: backup-mabs-add-storage.md
             - name: V12 有哪些新功能
               href: backup-mabs-whats-new-mabs.md
-            - name: 版本資訊 MABS V3
+            - name: 版本資訊 MABS
               href: backup-mabs-release-notes-v3.md
             - name: 自動安裝
               href: backup-mabs-unattended-install.md
         - name: 保護工作負載
           items:
+            - name: 備份 Hyper-V 虛擬機器
+              href: back-up-hyper-v-virtual-machines-mabs.md
             - name: VMware 伺服器
               href: backup-azure-backup-server-vmware.md
             - name: Exchange
@@ -101,6 +253,8 @@
               href: backup-mabs-system-state-and-bmr.md
         - name: 從 Azure 備份伺服器復原資料
           href: backup-azure-alternate-dpm-server.md
+        - name: 使用 Azure 備份伺服器來還原 VMware VM
+          href: restore-azure-backup-server-vmware.md
     - name: Azure Stack 上的 Azure 備份伺服器
       items:
         - name: 安裝 Azure 備份伺服器
@@ -111,55 +265,7 @@
           href: backup-mabs-sharepoint-azure-stack.md
         - name: 保護 SQL Server 資料庫
           href: backup-mabs-sql-azure-stack.md
-    - name: Azure 檔案共用
-      items:
-        - name: 備份 Azure 檔案共用
-          href: backup-azure-files.md
-    - name: 備份 Azure VM
-      items:
-        - name: 關於 Azure VM 備份
-          href: backup-azure-vms-introduction.md
-        - name: 使用 Azure 備份立即還原來備份與還原 Azure VM
-          href: backup-instant-restore-capability.md
-        - name: 備份 Azure VM
-          items:
-            - name: 建立 Azure VM 時啟用備份
-              href: backup-during-vm-creation.md
-            - name: 從 VM 設定備份 Azure VM
-              href: backup-azure-vms-first-look-arm.md
-            - name: 設定保存庫並啟用 Azure VM 備份
-              href: backup-azure-arm-vms-prepare.md
-            - name: 備份加密的 Azure VM
-              href: backup-azure-vms-encryption.md
-            - name: 設定執行 Linux 的 Azure VM 進行應用程式一致性備份
-              href: backup-azure-linux-app-consistent.md
-        - name: 管理及監視 Azure VM 備份
-          items:
-            - name: 管理 Azure VM 備份
-              href: backup-azure-manage-vms.md
-            - name: 監視 Azure 虛擬機器備份的警示
-              href: backup-azure-monitor-vms.md
-        - name: 還原 Azure VM
-          items:
-            - name: 在 入口網站中還原 Azure VM
-              href: backup-azure-arm-restore-vms.md
-            - name: 從 Azure VM 備份中復原檔案
-              href: backup-azure-restore-files-from-vm.md
-            - name: 還原已加密的虛擬機器
-              href: backup-azure-vms-encryption.md
-            - name: 還原已加密 VM 的金鑰與祕密
-              href: backup-azure-restore-key-secret.md
-    - name: 設定 Azure 備份報告
-      items:
-        - name: 設定 Azure 備份報告
-          href: backup-azure-configure-reports.md
-        - name: Azure 備份報告的資料模型
-          href: backup-azure-reports-data-model.md
-        - name: 適用於 Azure 備份的 Log Analytics 資料模型
-          href: backup-azure-log-analytics-data-model.md
-        - name: 更新 Azure 備份中心報告內容套件
-          href: backup-azure-central-reporting-updates.md
-    - name: Data Protection Manager
+    - name: Data Protection Manager (DPM)
       items:
         - name: 在 Azure 入口網站中準備 DPM 工作負載
           href: backup-azure-dpm-introduction.md
@@ -171,96 +277,138 @@
           href: backup-azure-backup-sql.md
         - name: 使用 DPM 備份 SharePoint 伺服器陣列
           href: backup-azure-backup-sharepoint.md
-    - name: 使用 Azure PowerShell
+        - name: 取代磁帶媒體櫃
+          href: backup-azure-backup-cloud-as-tape.md
+    - name: 離線備份
       items:
-        - name: Azure 入口網站中的 Azure VM
-          href: backup-azure-vms-automation.md
-        - name: Azure 入口網站中的 DPM
-          href: backup-dpm-automation.md
-        - name: Azure 入口網站中的 Windows Server
-          href: backup-client-automation.md
-        - name: Azure 入口網站中的 Azure 檔案共用
-          href: backup-azure-afs-automation.md
-        - name: Azure VM 備份中的 SQL
-          href: backup-azure-sql-automation.md
-    - name: 使用 Azure 備份 REST API
+        - name: 概觀
+          href: offline-backup-overview.md
+        - name: 使用 Azure 資料箱進行離線備份
+          href: offline-backup-azure-data-box.md
+        - name: 使用匯入/匯出 (MARS) 進行離線備份
+          href: backup-azure-backup-import-export.md
+        - name: 使用匯入/匯出 (DPM/MABS) 進行離線備份
+          href: backup-azure-backup-server-import-export.md
+        - name: DPM 和 MABS 的離線備份 (舊版)
+          href: offline-backup-server-previous-versions.md
+    - name: 監視和警示
       items:
-        - name: 建立復原服務保存庫
-          href: backup-azure-arm-userestapi-createorupdatevault.md
-        - name: 建立及更新備份原則
-          href: backup-azure-arm-userestapi-createorupdatepolicy.md
-        - name: 備份 Azure VM
-          href: backup-azure-arm-userestapi-backupazurevms.md
-        - name: 還原 Azure VM
-          href: backup-azure-arm-userestapi-restoreazurevms.md
-        - name: 管理 Azure 備份作業
-          href: backup-azure-arm-userestapi-managejobs.md
-    - name: 將 SQL Server 資料庫備份到 Azure VM
+        - name: 使用備份總管
+          href: monitor-azure-backup-with-backup-explorer.md
+        - name: 使用 Azure 入口網站
+          href: backup-azure-monitoring-built-in-monitor.md
+        - name: 使用 Azure 監視器
+          href: backup-azure-monitoring-use-azuremonitor.md
+    - name: 報表
       items:
-        - name: 關於 Azure VM 中的 SQL Server 備份
-          href: backup-azure-sql-database.md
-        - name: 備份 Azure VM 中的 SQL Server 資料庫
-          href: backup-sql-server-database-azure-vms.md
-        - name: 還原 Azure VM 中的 SQL Server 資料庫
-          href: restore-sql-database-azure-vm.md
-        - name: 管理 SQL Server 資料庫備份
-          href: manage-monitor-sql-database-backup.md
-    - name: 將 SAP HANA 資料庫備份到 Azure VM
-      href: backup-azure-sap-hana-database.md
-    - name: Windows Server
+        - name: 設定 Azure 備份報告
+          items:
+            - name: 設定 Azure 備份報告
+              href: configure-reports.md
+        - name: 設定復原服務保存庫的診斷事件
+          items:
+            - name: 使用適用於復原服務保存庫的診斷設定
+              href: backup-azure-diagnostic-events.md
+            - name: 適用於特定資源診斷事件的記錄分析資料模型
+              href: backup-azure-reports-data-model.md
+            - name: 適用於 Azure 備份的 Log Analytics 資料模型 (Azure 診斷模式)
+              href: backup-azure-diagnostics-mode-data-model.md
+    - name: 自動化
       items:
-        - name: 備份 Windows Server 檔案和資料夾
-          href: backup-configure-vault.md
-        - name: 備份 Windows Server 系統狀態
-          href: backup-azure-system-state.md
-        - name: 將檔案從 Azure 復原至 Windows Server
-          href: backup-azure-restore-windows-server.md
-        - name: 還原 Windows Server 系統狀態
-          href: backup-azure-restore-system-state.md
-        - name: 監視及管理復原服務保存庫
-          href: backup-azure-manage-windows-server.md
-    - name: 復原服務保存庫
+        - name: Azure 備份的內建 Azure 原則
+          items:
+            - name: 使用 Azure 原則自動啟用 VM 建立的備份
+              href: backup-azure-auto-enable-backup.md
+            - name: 大規模地設定保存庫診斷設定
+              href: azure-policy-configure-diagnostics.md
+        - name: PowerShell
+          items:
+            - name: Azure 入口網站中的 Azure VM
+              href: backup-azure-vms-automation.md
+            - name: Azure 入口網站中的 DPM
+              href: backup-dpm-automation.md
+            - name: Azure 入口網站中的 Windows Server
+              href: backup-client-automation.md
+            - name: Azure VM 備份中的 SQL
+              href: backup-azure-sql-automation.md
+            - name: Azure PowerShell 範例
+              href: powershell-backup-samples.md
+        - name: 使用 Azure 備份 REST API
+          items:
+            - name: 建立復原服務保存庫
+              href: backup-azure-arm-userestapi-createorupdatevault.md
+            - name: 更新復原服務保存庫的設定
+              href: use-restapi-update-vault-properties.md
+            - name: 建立及更新備份原則
+              href: backup-azure-arm-userestapi-createorupdatepolicy.md
+            - name: 備份 Azure VM
+              href: backup-azure-arm-userestapi-backupazurevms.md
+            - name: 還原 Azure VM
+              href: backup-azure-arm-userestapi-restoreazurevms.md
+            - name: 管理 Azure 備份作業
+              href: backup-azure-arm-userestapi-managejobs.md
+        - name: Resource Manager 範本
+          href: backup-rm-template-samples.md
+    - name: 安全性
       items:
-        - name: 復原服務保存庫概觀
-          href: backup-azure-recovery-services-vault-overview.md
-        - name: 將備份保存庫升級為復原服務保存庫
-          href: backup-azure-upgrade-backup-to-recovery-services.md
-        - name: 刪除復原服務保存庫
-          href: backup-azure-delete-vault.md
-        - name: 移動復原服務保存庫
-          href: backup-azure-move-recovery-services-vault.md
+        - name: 概觀
+          href: security-overview.md
+        - name: 角色型存取控制
+          href: backup-rbac-rs-vault.md
+        - name: 虛刪除
+          items:
+            - name: 概觀
+              href: backup-azure-security-feature-cloud.md
+            - name: 對於虛擬機器
+              href: soft-delete-virtual-machines.md
+            - name: 對於 Azure VM 中的 SQL Server 和 SAP Hana
+              href: soft-delete-sql-saphana-in-azure-vm.md
+        - name: 刪除 Azure 檔案共用的保護
+          href: soft-delete-azure-file-share.md
+        - name: 混合式備份的安全性
+          href: backup-azure-security-feature.md
+        - name: 私人端點
+          href: private-endpoints.md
+        - name: Azure 備份的加密
+          href: backup-encryption.md
+        - name: 使用客戶管理的金鑰進行加密
+          href: encryption-at-rest-with-cmk.md
+        - name: 內建安全性控制
+          href: backup-security-controls.md
+        - name: 安全性基準
+          href: security-baseline.md
     - name: 疑難排解
       items:
         - name: Azure VM
           href: backup-azure-vms-troubleshoot.md
         - name: Azure 備份代理程式或 VM 延伸模組已逾時
           href: backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md
+        - name: Azure 備份代理程式
+          href: backup-azure-mars-troubleshoot.md
         - name: 檔案和資料夾備份速度很慢
           href: backup-azure-troubleshoot-slow-backup-performance-issue.md
         - name: Azure 備份伺服器
           href: backup-azure-mabs-troubleshoot.md
         - name: System Center DPM
           href: backup-azure-scdpm-troubleshooting.md
-        - name: Azure 備份代理程式
-          href: backup-azure-mars-troubleshoot.md
         - name: Azure 檔案共用
           href: troubleshoot-azure-files.md
         - name: SQL Server
           href: backup-sql-server-azure-troubleshoot.md
-    - name: 監視 Azure 備份工作負載
-      items:
-        - name: 使用 Azure 入口網站
-          href: backup-azure-monitoring-built-in-monitor.md
-        - name: 使用 Azure 監視器
-          href: backup-azure-monitoring-use-azuremonitor.md
+        - name: Azure VM 中的 SAP Hana 備份
+          href: backup-azure-sap-hana-database-troubleshoot.md
+        - name: 系統狀態
+          href: backup-azure-system-state-troubleshoot.md
 - name: 參考
   items:
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.recoveryservices.backup
     - name: Azure CLI
       href: /cli/azure/backup?view=azure-cli-latest
-    - name: PowerShell
+    - name: Azure PowerShell
       href: /powershell/module/az.recoveryservices
+    - name: PowerShell – Azure 備份代理程式
+      href: /powershell/module/msonlinebackup
     - name: REST - 備份
       href: /rest/api/backup/
     - name: REST - 復原服務保存庫
@@ -269,14 +417,14 @@
       href: /azure/templates/microsoft.recoveryservices/allversions
 - name: 資源
   items:
+    - name: 法規遵循
+      href: compliance-offerings.md
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/roadmap/'
-    - name: MSDN 論壇
-      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowsazureonlinebackup'
-    - name: 價格
-      href: 'https://azure.microsoft.com/pricing/details/backup/'
+    - name: Microsoft 問與答頁面
+      href: 'https://docs.microsoft.com/answers/topics/azure-backup.html'
     - name: 定價計算機
-      href: 'https://azure.microsoft.com/pricing/calculator/'
+      href: azure-backup-pricing.md
     - name: 服務更新
       href: 'https://azure.microsoft.com/updates/?product=backup'
     - name: 影片

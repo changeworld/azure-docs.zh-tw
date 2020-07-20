@@ -1,19 +1,15 @@
 ---
 title: 開始使用 Azure Service Fabric CLI
 description: 了解如何使用 Azure Service Fabric CLI。 了解如何連線到叢集，以及如何管理應用程式。
-services: service-fabric
-author: Christina-Kang
-manager: chackdan
-ms.service: service-fabric
+author: jeffj6123
 ms.topic: conceptual
-ms.date: 12/06/2018
-ms.author: bikang
-ms.openlocfilehash: d5b6f183a59e3f47aa5867b5e09e06541a6a67db
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 5/19/2020
+ms.author: jejarry
+ms.openlocfilehash: b3714f8401def9bed68e4b0845d025734a480cb3
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60803236"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681794"
 ---
 # <a name="azure-service-fabric-cli"></a>Azure Service Fabric CLI
 
@@ -21,7 +17,7 @@ Azure Service Fabric 命令列介面 (CLI) 是一個命令列公用程式，用�
 
 [!INCLUDE [links to azure cli and service fabric cli](../../includes/service-fabric-sfctl.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 安裝之前，請確定您的環境已安裝 Python 和 pip。 如需詳細資訊，請參閱 [pip 快速入門文件](https://pip.pypa.io/en/latest/quickstart/)和正式的 [Python 安裝文件](https://wiki.python.org/moin/BeginnersGuide/Download)。
 
@@ -33,7 +29,10 @@ Service Fabric CLI 旨在支援 Service Fabric SDK 的最新執行階段版本�
 
 | CLI 版本   | 支援的執行階段版本 |
 |---------------|---------------------------|
-| 最新 (~=7)  | 最新 (~=6.4)            |
+| 最新 (~=10) | 最新 (~=7.1)            |
+| 9.0.0         | 7.1                       |
+| 8.0.0         | 6.5                       |
+| 7.1.0         | 6.4                       |
 | 6.0.0         | 6.3                       |
 | 5.0.0         | 6.2                       |
 | 4.0.0         | 6.1                       |
@@ -42,7 +41,7 @@ Service Fabric CLI 旨在支援 Service Fabric SDK 的最新執行階段版本�
 
 您可以選擇性地指定要安裝的 CLI 目標版本，方法是在 `pip install` 命令加上尾碼 `==<version>`。 例如，1.1.0 版的語法為：
 
-```
+```shell
 pip install -I sfctl==1.1.0
 ```
 
@@ -54,7 +53,7 @@ pip install -I sfctl==1.1.0
 
 有許多方法可在您的平台上安裝 pip 和 Python。 以下這些步驟可以使用 Python 3 與 pip 快速設定主要作業系統。
 
-### <a name="windows"></a> Windows
+### <a name="windows"></a>Windows
 
 針對 Windows 10、Windows Server 2016 和 Windows Server 2012 R2，請使用標準官方安裝指示。 Python 安裝程式預設也會安裝 pip。
 
@@ -68,14 +67,14 @@ pip install -I sfctl==1.1.0
 
 現在您可以開啟新的命令視窗，並取得 Python 和 pip 的版本。
 
-```bat
+```shell
 python --version
 pip --version
 ```
 
 然後執行下列命令來安裝 Azure Service Fabric CLI (sfctl) 及檢視 CLI 說明頁面：
 
-```bat
+```shell
 pip install sfctl
 sfctl -h
 ```
@@ -104,7 +103,7 @@ sfctl -h
 
 ```bash
 export PATH=$PATH:~/.local/bin
-echo "export PATH=$PATH:~/.local/bin" >> .bashrc
+echo "export PATH=$PATH:~/.local/bin" >> .shellrc
 ```
 
 如果使用不正確的資料夾權限在適用於 Linux 的 Windows 子系統上安裝失敗，可能需要以提高的權限再試一次：
@@ -149,7 +148,7 @@ sfctl -h
 
 命令會遵循可重複的結構，而命令的目標前面會加上動詞命令或動作。
 
-```azurecli
+```shell
 sfctl <object> <action>
 ```
 
@@ -162,7 +161,7 @@ sfctl <object> <action>
 > [!WARNING]
 > 請勿於生產環境中使用不安全的 Service Fabric 叢集。
 
-```azurecli
+```shell
 sfctl cluster select --endpoint http://testcluster.com:19080
 ```
 
@@ -170,7 +169,7 @@ sfctl cluster select --endpoint http://testcluster.com:19080
 
 對於使用憑證保護的叢集，您可以指定 PEM 編碼的憑證。 此憑證可以指定為單一檔案或憑證和金鑰組。 若自我簽署憑證不是由 CA 所簽署，您可傳遞 `--no-verify` 選項以略過 CA 驗證。
 
-```azurecli
+```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --no-verify
 ```
 
@@ -182,7 +181,7 @@ sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./clie
 
 例如，若要取得 Service Fabric 叢集健康情況，請使用下列命令：
 
-```azurecli
+```shell
 sfctl cluster health
 ```
 
@@ -219,13 +218,13 @@ sfctl cluster health
 
 Service Fabric CLI 支援以 PEM (.pem 副檔名) 檔案作為用戶端憑證。 如果您從 Windows 使用 PFX 檔案，則必須將這些憑證轉換成 PEM 格式。 若要將 PFX 檔案轉換為 PEM 檔案，請使用下列命令︰
 
-```bash
+```shell
 openssl pkcs12 -in certificate.pfx -out mycert.pem -nodes
 ```
 
 同樣地，若要從 PEM 檔案轉換為 PFX 檔案，您可以使用下列命令 (在此處未提供任何密碼)：
 
-```bash
+```shell
 openssl  pkcs12 -export -out Certificates.pfx -inkey Certificates.pem -in Certificates.pem -passout pass:'' 
 ```
 
@@ -247,13 +246,13 @@ openssl  pkcs12 -export -out Certificates.pfx -inkey Certificates.pem -in Certif
 
 如需特定命令或一組命令的說明，請使用 `-h` 旗標。
 
-```azurecli
+```shell
 sfctl application -h
 ```
 
 以下是另一個範例︰
 
-```azurecli
+```shell
 sfctl application create -h
 ```
 
@@ -261,7 +260,7 @@ sfctl application create -h
 
 若要更新 Service Fabric CLI，請執行下列命令 (以 `pip3` 取代 `pip`，取決於您在原始安裝期間的選擇)：
 
-```bash
+```shell
 pip uninstall sfctl
 pip install sfctl
 ```

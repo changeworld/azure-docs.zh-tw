@@ -1,35 +1,32 @@
 ---
 title: 快速入門 - 使用 Azure CLI 建立服務匯流排佇列 | Microsoft Docs
 description: 在本快速入門中，您會了解如何使用 Azure CLI 來建立服務匯流排佇列。 然後，您會使用 Java 應用程式範例在佇列中傳送和接收訊息。
-services: service-bus-messaging
 author: spelluru
-manager: timlt
-ms.service: service-bus-messaging
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 04/10/2019
+ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: eb19833251fc9ee08a12aaf6ffcef55d59cea5d6
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.openlocfilehash: ed09a72fd5eed72e7a07fefed53bf010a543b658
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59500629"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85337395"
 ---
 # <a name="quickstart-use-the-azure-cli-to-create-a-service-bus-queue"></a>快速入門：使用 Azure CLI 建立服務匯流排佇列
 本快速入門說明如何使用 Azure CLI 和服務匯流排 Java 程式庫，透過服務匯流排傳送和接收訊息。 最後，如果您想要取得更多技術性的細節，您可以針對範例程式碼的關鍵元素[閱讀說明](#understand-the-sample-code)。
 
 [!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
 
-## <a name="prerequisites"></a>必要條件
-如果您沒有 Azure 訂用帳戶，您可以在開始前建立[免費帳戶][]。
+## <a name="prerequisites"></a>Prerequisites
+如果您沒有 Azure 訂用帳戶，您可以在開始前建立[免費帳戶][free account]。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
-如果您使用 [試試看] 按鈕來啟動 Cloud Shell，請使用您的認證來登入 Azure。 
+如果您使用 [試試看]  按鈕來啟動 Cloud Shell，請使用您的認證來登入 Azure。 
 
-如果您是直接透過網頁瀏覽器或透過 Azure 入口網站來啟動 Cloud Shell，當您在 Cloud Shell 的左上角看到 **PowerShell** 時，請切換為 [Bash]。 
+如果您是直接透過網頁瀏覽器或透過 Azure 入口網站來啟動 Cloud Shell，當您在 Cloud Shell 的左上角看到 **PowerShell** 時，請切換為 [Bash]  。 
 
 ## <a name="use-the-azure-cli-to-create-resources"></a>使用 Azure CLI 來建立資源
 在 Cloud Shell 中，從 Bash 提示字元發出下列命令，以佈建服務匯流排資源。 請務必將所有預留位置取代為適當的值。Java 範例程式預期佇列名稱會是 BasicQueue，所以請勿變更。 您可以逐一複製/貼上命令，以便在執行之前取代這些值。 
@@ -367,14 +364,17 @@ void registerReceiver(QueueClient queueClient, ExecutorService executorService) 
 }
 ```
 
+> [!NOTE]
+> 您可以使用[服務匯流排總管](https://github.com/paolosalvatori/ServiceBusExplorer/)來管理服務匯流排資源。 服務匯流排總管可讓使用者連線到服務匯流排命名空間，並以簡便的方式管理傳訊實體。 此工具提供進階的功能 (例如匯入/匯出功能) 或測試主題、佇列、訂用帳戶、轉送服務、通知中樞和事件中樞的能力。 
+
 ## <a name="next-steps"></a>後續步驟
 
-在本文中，您已建立從佇列傳送和接收訊息所需的服務匯流排命名空間和其他資源。 若要深入了解如何撰寫用來傳送和接收訊息的程式碼，請繼續進行**傳送及接收訊息**一節中的教學課程。 
+在本文中，您已建立從佇列傳送和接收訊息所需的服務匯流排命名空間和其他資源。 若要深入了解如何撰寫用來傳送和接收訊息的程式碼，請繼續進行＜傳送及接收訊息＞  一節中的教學課程。 
 
 > [!div class="nextstepaction"]
 > [傳送及接收訊息](service-bus-dotnet-get-started-with-queues.md)
 
-[免費帳戶]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
+[free account]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
 [fully qualified domain name]: https://wikipedia.org/wiki/Fully_qualified_domain_name
 [Install the Azure CLI]: /cli/azure/install-azure-cli
 [az group create]: /cli/azure/group#az_group_create

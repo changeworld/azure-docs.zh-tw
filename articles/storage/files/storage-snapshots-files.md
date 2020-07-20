@@ -1,35 +1,38 @@
 ---
 title: 適用於 Azure 檔案的共用快照集概觀 | Microsoft Docs
 description: Azure 共用快照集是在某個時間點拍攝的 Azure 檔案共用唯讀版本，是備份共用的一個方法。
-services: storage
 author: roygara
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: d83cf20c856d37d337f4eb22c30ee9b6823d096b
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
-ms.translationtype: MT
+ms.openlocfilehash: d415ef165da18312a458d7d14fba18acd1bf44cf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65235809"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84235612"
 ---
-# <a name="overview-of-share-snapshots-for-azure-files"></a>Azure 檔案的共用快照集概觀 
+# <a name="overview-of-share-snapshots-for-azure-files"></a>Azure 檔案的共用快照集概觀
+
 Azure 檔案提供為檔案共用拍攝共用快照集的功能。 共用快照集能擷取該時間點的共用狀態。 在本文中，我們說明共用快照集提供哪些功能，以及如何在您的自訂使用案例中運用這些功能。
 
 ## <a name="when-to-use-share-snapshots"></a>使用共用快照集的時機
 
 ### <a name="protection-against-application-error-and-data-corruption"></a>預防應用程式錯誤和資料損毀
+
 使用檔案共用執行各種作業 (如寫入、讀取、儲存、傳輸和處理) 的應用程式。 設定錯誤的應用程式或導入的非蓄意錯誤 (bug)，可能會導致意外覆寫或毀損幾個區塊。 為防範這些狀況，您可以先建立共用快照集，再部署新的應用程式程式碼。 如果錯誤 (bug) 或應用程式錯誤是因為新部署所引起，您可以將您的資料還原成該檔案共用上的先前版本。 
 
 ### <a name="protection-against-accidental-deletions-or-unintended-changes"></a>預防意外刪除或非預期的變更
+
 假設您正在使用檔案共用中的某個文字檔。 在該文字檔關閉後，您就無法復原變更。 在這些情況下，您必須復原該檔案先前的版本。 如果檔案不小心遭到重新命名或刪除，您可使用共用快照集來復原先前版本的檔案。
 
 ### <a name="general-backup-purposes"></a>一般備份用途
-建立檔案共用之後，您可以定期建立檔案共用的共用快照集，以供資料備份之用。 定期建立的共用快照集，有助於維護先前版本的檔案，因應未來的稽核需求或災害復原之需。
+
+建立檔案共用之後，您可以定期建立檔案共用的共用快照集，以供資料備份之用。 定期建立的共用快照集，有助於維護先前版本的檔案，因應未來的稽核需求或災害復原之需。 我們建議使用[Azure 檔案共用備份](../../backup/azure-file-share-backup-overview.md)做為備份解決方案，以取得和管理快照集。 您也可以使用 CLI 或 PowerShell，自行接管和管理快照集。
 
 ## <a name="capabilities"></a>功能
+
 共用快照集是某個時間點的唯讀資料複本。 您可以使用 REST API 來建立、刪除及管理快照集。 用戶端程式庫、Azure CLI 和 Azure 入口網站亦提供相同的功能。 
 
 您可以使用 REST API 和 SMB 兩者來檢視共用的快照集。 您可以擷取目錄或檔案的版本清單，也可以將特定版本當作磁碟機直接掛接 (僅適用於 Windows - 請參閱[限制](#limits))。 
@@ -38,7 +41,7 @@ Azure 檔案提供為檔案共用拍攝共用快照集的功能。 共用快照�
 
 共用快照集功能會於檔案共用層級提供。 擷取會於個別的檔案層級提供，以允許還原個別檔案。 您可以使用 SMB、REST API、入口網站、用戶端程式庫或 PowerShell/CLI 工具來還原完整的檔案共用。
 
-檔案共用的共用快照集和其基底檔案共用相同。 唯一的差別在於，**DateTime** 值會附加至共用 URI，以表示建立共用快照集的時間。 例如，如果檔案共用 URI 為 http://storagesample.core.file.windows.net/myshare，則共用快照集 URI 會類似於：
+檔案共用的共用快照集和其基底檔案共用相同。 唯一的差別在於，**DateTime** 值會附加至共用 URI，以表示建立共用快照集的時間。 例如，如果檔案共用 URI 是 http:\//storagesample.core.file.Windows.net/myshare，共用快照集 URI 將類似於：
 ```
 http://storagesample.core.file.windows.net/myshare?snapshot=2011-03-09T01:42:34.9360000Z
 ```
@@ -49,7 +52,8 @@ http://storagesample.core.file.windows.net/myshare?snapshot=2011-03-09T01:42:34.
 
 您無法刪除具有共用快照集的共用，除非先刪除所有共用快照集。
 
-## <a name="space-usage"></a>空間使用量 
+## <a name="space-usage"></a>空間使用量
+
 共用快照集具有累加性質。 系統只會儲存最新共用快照集之後變更的資料。 這樣能縮短建立共用快照集所需的時間，也能節省儲存成本。 物件或屬性的任何寫入作業或中繼資料更新作業都算是「變更內容」，因此會儲存在共用快照集內。 
 
 為了節省空間，您可以在變換率最高的期間內刪除共用快照集。
@@ -59,6 +63,7 @@ http://storagesample.core.file.windows.net/myshare?snapshot=2011-03-09T01:42:34.
 快照集不計入 5 TB 的共用限制。 共用快照集佔用的空間總數沒有限制。 但儲存體帳戶限制依然有效。
 
 ## <a name="limits"></a>限制
+
 Azure 檔案服務目前允許的共用快照集最大數目為 200。 保留 200 個共用快照集之後，必須先刪除舊的共用快照集，才能建立新的共用快照集。 
 
 建立共用快照集的同時呼叫數目沒有限制。 特定檔案共用之共用快照集耗用的空間數量沒有限制。 
@@ -66,25 +71,28 @@ Azure 檔案服務目前允許的共用快照集最大數目為 200。 保留 20
 目前無法在 Linux 上掛接共用快照集。 這是因為 Linux SMB 用戶端無法像 Windows 一樣支援掛接快照集。
 
 ## <a name="copying-data-back-to-a-share-from-share-snapshot"></a>從共用快照集將資料複製回共用
+
 涉及檔案和共用快照集的複製作業須遵循下列規則：
 
 您可以將檔案共用快照集內的個別檔案複製到其基底共用或其他任何位置。 您可以從共用快照集還原舊版的檔案，或利用逐一複製檔案的方式還原整個檔案共用。 共用快照集不會提升為基底共用。 
 
 複製過後共用快照集會保持不變，不過系統會將先前共用快照集提供的資料複本覆寫到基底檔案共用。 所有還原的檔案都算是「變更內容」。
 
-您可以將共用快照集內的檔案複製到不同名稱的目的地。 產生的目的地檔案會是一個可寫入的檔案，而不是共用快照集。
+您可以將共用快照集內的檔案複製到不同名稱的不同目的地。 產生的目的地檔案會是一個可寫入的檔案，而不是共用快照集。 在此情況下，您的基底檔案共用會保持不變。
 
 使用某個複本覆寫目的地檔案時，與原始目的地檔案相關聯的所有共用快照集都會保持不變。
 
-## <a name="general-best-practices"></a>一般最佳作法 
-在 Azure 上執行基礎結構時，請盡可能將資料復原所需的備份作業自動化。 自動化的動作比手動程序來得可靠，能協助您加強資料保護和復原能力。 您可以使用 REST API、用戶端 SDK 或指令碼來進行自動化。
+## <a name="general-best-practices"></a>一般最佳作法
+
+我們建議使用[Azure 檔案共用備份](../../backup/azure-file-share-backup-overview.md)做為備份解決方案，以自動化製作快照集及管理快照集。 在 Azure 上執行基礎結構時，請盡可能將資料復原所需的備份作業自動化。 自動化的動作比手動程序來得可靠，能協助您加強資料保護和復原能力。 您可以使用 Azure 檔案共用備份、REST API、用戶端 SDK 或腳本來進行自動化。
 
 在部署共用快照集排程器之前，請審慎考慮共用快照集頻率和保留設定，以避免產生不必要的共用快照集費用。
 
-共用快照集只提供檔案層級的保護。 共用快照集無法避免檔案共用或儲存體帳戶的誤刪情況。 為了預防儲存體帳戶遭到意外刪除，您可以鎖定儲存體帳戶或資源群組。
+共用快照集只提供檔案層級的保護。 共用快照集無法避免檔案共用或儲存體帳戶的誤刪情況。 為了預防儲存體帳戶遭到意外刪除，您可以[啟用虛刪除](storage-files-prevent-file-share-deletion.md)，也可以鎖定儲存體帳戶或資源群組。
 
 ## <a name="next-steps"></a>後續步驟
 - 在下列位置使用共用快照集：
+    - [Azure 檔案共用備份](../../backup/azure-file-share-backup-overview.md)
     - [PowerShell](storage-how-to-use-files-powershell.md)
     - [CLI](storage-how-to-use-files-cli.md)
     - [Windows](storage-how-to-use-files-windows.md#accessing-share-snapshots-from-windows)

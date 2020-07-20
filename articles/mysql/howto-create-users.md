@@ -1,20 +1,27 @@
 ---
-title: 在適用於 MySQL 的 Azure 資料庫伺服器中建立使用者
+title: 建立使用者-適用於 MySQL 的 Azure 資料庫
 description: 本文說明如何建立新的使用者帳戶，來與「適用於 MySQL 的 Azure 資料庫」伺服器互動。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
-ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: 4cd2305ed3d7f88f6c3825d8f7cdb5d81f9a0f6b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.topic: how-to
+ms.date: 4/2/2020
+ms.openlocfilehash: e3616e5f86c9f73eec8fceaca20f149ec1e09b9a
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61460179"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118591"
 ---
-# <a name="create-users-in-azure-database-for-mysql-server"></a>在適用於 MySQL 的 Azure 資料庫伺服器中建立使用者 
+# <a name="create-users-in-azure-database-for-mysql-server"></a>在適用於 MySQL 的 Azure 資料庫伺服器中建立使用者
+
 本主題說明如在「適用於 MySQL 的 Azure 資料庫」伺服器中建立使用者。
+
+> [!NOTE]
+> 偏差-免費通訊
+>
+> Microsoft 支援多樣化和 inclusionary 的環境。 本文包含對_一詞的_參考。 [適用于無偏差通訊的 Microsoft 樣式指南](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)可辨識此為 exclusionary 單字。 本文中會使用這個字來進行一致性，因為它目前是出現在軟體中的單字。 當軟體更新為移除此單字時，此文章將會更新為對齊。
+>
 
 當您第一次建立「適用於 MySQL 的 Azure 資料庫」時，您提供了伺服器管理員登入使用者名稱和密碼。 如需詳細資訊，您可以遵循[快速入門](quickstart-create-mysql-server-database-using-azure-portal.md)。 您可以從 Azure 入口網站找出您的伺服器管理員登入使用者名稱。
 
@@ -22,56 +29,62 @@ ms.locfileid: "61460179"
 
 建立「適用於 MySQL 的 Azure 資料庫」伺服器之後，您可以使用第一個伺服器管理員使用者帳戶，建立其他使用者並授與系統管理員存取權。 此外，伺服器管理員帳戶可以用來建立較低權限的使用者，以存取個別資料庫結構描述。
 
-## <a name="how-to-create-additional-admin-users-in-azure-database-for-mysql"></a>如何在適用於 MySQL 的 Azure 資料庫中建立其他系統管理員使用者
-1. 取得連線資訊和管理員使用者名稱。
-   若要連線到您的資料庫伺服器，您需要完整伺服器名稱和系統管理員登入認證。 您可以從 Azure 入口網站的伺服器 [概觀] 或 [屬性] 頁面輕鬆尋找伺服器名稱和登入資訊。 
+> [!NOTE]
+> 不支援超級許可權和 DBA 角色。 請參閱限制一文中的[許可權](concepts-limits.md#privilege-support)，以瞭解服務中不支援的專案。
 
-2. 使用系統管理員帳戶和密碼來連線到資料庫伺服器。 使用您慣用的用戶端工具，例如 MySQL Workbench、mysql.exe、HeidiSQL 或其他工具。 
+## <a name="how-to-create-additional-admin-users-in-azure-database-for-mysql"></a>如何在適用於 MySQL 的 Azure 資料庫中建立其他系統管理員使用者
+
+1. 取得連線資訊和管理員使用者名稱。
+   若要連線到您的資料庫伺服器，您需要完整伺服器名稱和系統管理員登入認證。 您可以從 Azure 入口網站的伺服器 [概觀]**** 或 [屬性]**** 頁面輕鬆尋找伺服器名稱和登入資訊。
+
+2. 使用系統管理員帳戶和密碼來連線到資料庫伺服器。 使用您慣用的用戶端工具，例如 MySQL Workbench、mysql.exe、HeidiSQL 或其他工具。
    如果您不確定如何連線，請參閱[使用 MySQL Workbench 來連線及查詢資料](./connect-workbench.md)
 
-3. 編輯並執行下列 SQL 程式碼。 將預留位置值 `new_master_user` 替換為您的新使用者名稱。 此語法可將所有資料庫結構描述上列出的特殊權限 (*.*) 授與給使用者名稱 (在此範例中為 new_master_user)。 
+3. 編輯並執行下列 SQL 程式碼。 將預留位置值 `new_master_user` 替換為您的新使用者名稱。 此語法可將所有資料庫結構描述上列出的特殊權限 (*.*) 授與給使用者名稱 (在此範例中為 new_master_user)。
 
    ```sql
    CREATE USER 'new_master_user'@'%' IDENTIFIED BY 'StrongPassword!';
-   
-   GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, RELOAD, PROCESS, REFERENCES, INDEX, ALTER, SHOW DATABASES, CREATE TEMPORARY TABLES, LOCK TABLES, EXECUTE, REPLICATION SLAVE, REPLICATION CLIENT, CREATE VIEW, SHOW VIEW, CREATE ROUTINE, ALTER ROUTINE, CREATE USER, EVENT, TRIGGER ON *.* TO 'new_master_user'@'%' WITH GRANT OPTION; 
-   
+
+   GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, RELOAD, PROCESS, REFERENCES, INDEX, ALTER, SHOW DATABASES, CREATE TEMPORARY TABLES, LOCK TABLES, EXECUTE, REPLICATION SLAVE, REPLICATION CLIENT, CREATE VIEW, SHOW VIEW, CREATE ROUTINE, ALTER ROUTINE, CREATE USER, EVENT, TRIGGER ON *.* TO 'new_master_user'@'%' WITH GRANT OPTION;
+
    FLUSH PRIVILEGES;
    ```
 
-4. 確認授與 
+4. 確認授與
+
    ```sql
    USE sys;
-   
+
    SHOW GRANTS FOR 'new_master_user'@'%';
    ```
 
 ## <a name="how-to-create-database-users-in-azure-database-for-mysql"></a>如何在適用於 MySQL 的 Azure 資料庫中建立資料庫使用者
 
 1. 取得連線資訊和管理員使用者名稱。
-   若要連線到您的資料庫伺服器，您需要完整伺服器名稱和系統管理員登入認證。 您可以從 Azure 入口網站的伺服器 [概觀] 或 [屬性] 頁面輕鬆尋找伺服器名稱和登入資訊。 
+   若要連線到您的資料庫伺服器，您需要完整伺服器名稱和系統管理員登入認證。 您可以從 Azure 入口網站的伺服器 [概觀]**** 或 [屬性]**** 頁面輕鬆尋找伺服器名稱和登入資訊。
 
-2. 使用系統管理員帳戶和密碼來連線到資料庫伺服器。 使用您慣用的用戶端工具，例如 MySQL Workbench、mysql.exe、HeidiSQL 或其他工具。 
+2. 使用系統管理員帳戶和密碼來連線到資料庫伺服器。 使用您慣用的用戶端工具，例如 MySQL Workbench、mysql.exe、HeidiSQL 或其他工具。
    如果您不確定如何連線，請參閱[使用 MySQL Workbench 來連線及查詢資料](./connect-workbench.md)
 
 3. 編輯並執行下列 SQL 程式碼。 將預留位置值 `db_user` 替換為您預定的新使用者名稱，並將預留位置值 `testdb` 替換為您自己的資料庫名稱。
 
-   這個 sql 程式碼語法會建立名為 testdb 的新資料庫作為範例。 然後在 MySQL 服務中建立新的使用者，並將所有特殊權限授與給該使用者的新資料庫結構描述 (testdb.\*)。 
+   這個 sql 程式碼語法會建立名為 testdb 的新資料庫作為範例。 然後在 MySQL 服務中建立新的使用者，並將所有特殊權限授與給該使用者的新資料庫結構描述 (testdb.\*)。
 
    ```sql
    CREATE DATABASE testdb;
-   
+
    CREATE USER 'db_user'@'%' IDENTIFIED BY 'StrongPassword!';
-   
+
    GRANT ALL PRIVILEGES ON testdb . * TO 'db_user'@'%';
-   
+
    FLUSH PRIVILEGES;
    ```
 
 4. 確認資料庫中的授與。
+
    ```sql
    USE testdb;
-   
+
    SHOW GRANTS FOR 'db_user'@'%';
    ```
 
@@ -82,6 +95,7 @@ ms.locfileid: "61460179"
    ```
 
 ## <a name="next-steps"></a>後續步驟
-針對新使用者電腦的 IP 位址開啟防火牆，讓使用者能夠連線：[使用 Azure 入口網站建立和管理適用於 MySQL 的 Azure 資料庫防火牆規則](howto-manage-firewall-using-portal.md)或 [Azure CLI](howto-manage-firewall-using-cli.md)。
 
-如需有關使用者帳戶管理的詳細資訊，請參閱 MySQL 產品文件中的[使用者帳戶管理](https://dev.mysql.com/doc/refman/5.7/en/user-account-management.html)、[GRANT 語法](https://dev.mysql.com/doc/refman/5.7/en/grant.html)和[特殊權限](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html)。
+針對新使用者機器的 IP 位址開啟防火牆，讓使用者能夠連線：[使用 Azure 入口網站建立及管理適用於 MySQL 的 Azure 資料庫防火牆規則](howto-manage-firewall-using-portal.md)或 [Azure CLI](howto-manage-firewall-using-cli.md)。
+
+如需有關使用者帳戶管理的詳細資訊，請參閱 MySQL 產品文件中的[使用者帳戶管理](https://dev.mysql.com/doc/refman/5.7/en/access-control.html)、[GRANT 語法](https://dev.mysql.com/doc/refman/5.7/en/grant.html)和[特殊權限](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html)。

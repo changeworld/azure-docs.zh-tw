@@ -9,11 +9,11 @@ ms.date: 09/17/2018
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: ca4bd3d3b40934323bab8036f3ce72e9281f1de4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61449619"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "67174415"
 ---
 > [!div class="op_single_selector"]
 > * [Windows 上的 C](../articles/iot-accelerators/iot-accelerators-connecting-devices.md)
@@ -58,9 +58,9 @@ ms.locfileid: "61449619"
 
 對於連線到解決方案加速器的裝置，該裝置必須使用有效的認證向 IoT 中樞識別自己。 當您將裝置新增至解決方案時，會有機會儲存包含這些認證的裝置連接字串。 稍後在本教學課程中，您會將裝置連接字串包含在您的用戶端應用程式中。
 
-若要在远程监视解决方案中添加设备，请在解决方案中的 **Device Explorer** 页上完成以下步骤：
+若要在遠端監視解決方案中新增裝置，請在解決方案的 [裝置總管] 頁面中完成下列步驟：
 
-1. 选择“+ 新建设备”，并选择“真实”作为设备类型：
+1. 選擇 [+ 新增裝置]，然後選擇 [Real] 作為 [裝置類型]：
 
     ![新增真實裝置](media/iot-suite-selector-connecting/devicesprovision.png)
 

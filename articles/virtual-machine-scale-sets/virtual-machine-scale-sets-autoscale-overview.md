@@ -1,27 +1,20 @@
 ---
-title: 使用 Azure 虛擬機器擴展集自動調整的概觀 | Microsoft Docs
+title: 使用 Azure 虛擬機器擴展集自動調整的概觀
 description: 深入了解您可以根據效能或依固定的排程自動調整 Azure 虛擬機器擴展集的不同方式
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: cynthn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: d29a3385-179e-4331-a315-daa7ea5701df
+author: avirishuv
+ms.author: avverma
+ms.topic: overview
 ms.service: virtual-machine-scale-sets
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 05/29/2018
-ms.author: cynthn
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 610f3073594f73f04a68865593be6bfb4188d4f1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.subservice: autoscale
+ms.date: 06/30/2020
+ms.reviewer: jushiman
+ms.custom: avverma
+ms.openlocfilehash: 11207dceb29c779c081c140ee8cd362d8a217acf
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60883665"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856739"
 ---
 # <a name="overview-of-autoscale-with-azure-virtual-machine-scale-sets"></a>使用 Azure 虛擬機器擴展集自動調整的概觀
 Azure 虛擬機器擴展集可以自動增加或減少執行您的應用程式的 VM 執行個體數目。 這個自動化和彈性的行為會降低監視和最佳化應用程式效能的管理額外負荷。 您可以建立規則，用以定義對於正面客戶體驗可接受的效能水準。 符合那些定義的閾值時，自動調整規則就會採取動作來調整擴展集的容量。 您也可以排定事件，以在固定時間自動增加或減少擴展集的容量。 本文提供可用效能計量以及可執行的自動調整動作的概觀。
@@ -36,11 +29,11 @@ Azure 虛擬機器擴展集可以自動增加或減少執行您的應用程式�
 
 
 ## <a name="use-host-based-metrics"></a>使用主機型計量
-您可以建立內建於主機計量、可從您的 VM 執行個體取得的自動調整規則。 主機計量可讓您掌握擴展集中 VM 執行個體的效能，而不需要安裝或設定其他代理程式和資料收集。 使用這些計量的自動調整規模規則可以相應放大或相應縮小 VM 執行個體的數目，以回應 CPU 使用量、記憶體需求或磁碟存取。
+您可以建立內建於主機計量、可從您的 VM 執行個體取得的自動調整規則。 主機計量可讓您掌握擴展集中 VM 執行個體的效能，而不需要安裝或設定其他代理程式和資料收集。 使用這些計量的自動調整規模規則可以擴增或縮減 VM 執行個體的數目，以回應 CPU 使用量、記憶體需求或磁碟存取。
 
 可以使用下列其中一個工具來建立使用主機型計量的自動調整規則：
 
-- [Azure 门户](virtual-machine-scale-sets-autoscale-portal.md)
+- [Azure 入口網站](virtual-machine-scale-sets-autoscale-portal.md)
 - [Azure PowerShell](tutorial-autoscale-powershell.md)
 - [Azure CLI](tutorial-autoscale-cli.md)
 - [Azure 範本](tutorial-autoscale-template.md)
@@ -79,12 +72,12 @@ Azure 虛擬機器擴展集可以自動增加或減少執行您的應用程式�
 
 | 彙總類型 |
 |------------------|
-| 平均值          |
+| Average          |
 | 最小值          |
 | 最大值          |
 | 總計            |
-| 最後一頁             |
-| 計數            |
+| Last             |
+| Count            |
 
 使用下列其中一個運算子將計量與您定義的閾值相比較時，則會觸發自動調整規則：
 
@@ -104,10 +97,10 @@ Azure 虛擬機器擴展集可以自動增加或減少執行您的應用程式�
 | 調整規模作業     | 使用案例                                                                                                                               |
 |---------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 | 將計數增加   | 要建立的固定 VM 執行個體數目。 在具有較少數量 VM 的擴展集中很有用。                                           |
-| 將百分比增加 | VM 執行個體以百分比為基礎的增加。 適用於固定增加可能無法大幅改善效能的較大擴展集。 |
+| 增加多少百分比 | VM 執行個體以百分比為基礎的增加。 適用於固定增加可能無法大幅改善效能的較大擴展集。 |
 | 將計數增加至   | 需要建立多個 VM 執行個體，才能達到所需的最大數量。                                                            |
 | 將計數減少   | 要移除的固定 VM 執行個體數目。 在具有較少數量 VM 的擴展集中很有用。                                           |
-| 將百分比減少 | VM 執行個體以百分比為基礎的減少。 適用於固定增加可能無法大幅減少資源耗用量和費用的較大擴展集。 |
+| 減少多少百分比 | VM 執行個體以百分比為基礎的減少。 適用於固定增加可能無法大幅減少資源耗用量和費用的較大擴展集。 |
 | 將計數減少至   | 需要移除多個 VM 執行個體，才能達到所需的最小數量。                                                            |
 
 
@@ -130,7 +123,7 @@ Azure 診斷擴充功能是在 VM 執行個體內部執行的代理程式。 代
 
 下列範例是可能因使用以排程為基礎的自動調整規則獲益的情節：
 
-- 在客戶需求增加時的工作日開始時自動相應放大 VM 執行個體數目。 在工作日結束時，自動調整 VM 中的執行個體數目，在應用程式使用較低的夜間降低資源成本。
+- 在客戶需求增加時的工作日開始時自動擴增 VM 執行個體數目。 在工作日結束時，自動調整 VM 中的執行個體數目，在應用程式使用較低的夜間降低資源成本。
 - 如果部門在月份或會計週期的某些時候會使用大量應用程式，則自動調整 VM 執行個體數目以配合部門的額外需求。
 - 有行銷事件、促銷或節日銷售時，您可以在預期的客戶需求來臨前自動調整 VM 執行個體數目。 
 

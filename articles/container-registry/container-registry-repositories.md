@@ -1,19 +1,13 @@
 ---
-title: Azure 入口網站中的 Azure Container Registry 存放庫
-description: 如何檢視 Azure 入口網站中的 Azure Container Registry 存放庫。
-services: container-registry
-author: cristy
-manager: jeconnoc
-ms.service: container-registry
+title: 在入口網站中查看存放庫
+description: 使用 [Azure 入口網站來觀看 Azure Container Registry 存放庫，以裝載 Docker 容器映射和其他支援的成品。
 ms.topic: article
 ms.date: 01/05/2018
-ms.author: cristyg
-ms.openlocfilehash: 685c978ff206e75d770918f2528a826ad522b706
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 1da72706d2554610a685f71199ab14af5e30ce1a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60427087"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "74456287"
 ---
 # <a name="view-container-registry-repositories-in-the-azure-portal"></a>檢視 Azure 入口網站中的容器登錄存放庫
 
@@ -21,9 +15,9 @@ Azure Container Registry 可讓您將 Docker 容器映像儲存在存放庫中�
 
 ## <a name="prerequisites"></a>必要條件
 
-* **容器登錄庫**:在您的 Azure 訂用帳戶中建立容器登錄。 例如，使用 [Azure 入口網站](container-registry-get-started-portal.md)或 [Azure CLI](container-registry-get-started-azure-cli.md)。
-* **Docker CLI**:安裝[Docker] [ docker-install]在本機電腦，可提供您 Docker 命令列介面。
-* **容器映像**:將映像推送至容器登錄。 如需如何發送和提取映像的指引，請參閱[發送和提取映像](container-registry-get-started-docker-cli.md)。
+* **容器登錄**：在 Azure 訂用帳戶中建立容器登錄。 例如，使用 [Azure 入口網站](container-registry-get-started-portal.md)或 [Azure CLI](container-registry-get-started-azure-cli.md)。
+* **Docker CLI**：在本機電腦安裝 [Docker][docker-install]，可提供您 Docker 命令列介面。
+* **容器映像**：將映像推送至容器登錄。 如需如何發送和提取映像的指引，請參閱[發送和提取映像](container-registry-get-started-docker-cli.md)。
 
 ## <a name="view-repositories-in-azure-portal"></a>在 Azure 入口網站中檢視存放庫
 
@@ -41,7 +35,7 @@ docker push myregistry.azurecr.io/samples/nginx
 
 1. 登入 [Azure 入口網站][portal]
 1. 選取您已將 Nginx 映像推送到其中的 **Azure Container Registry**
-1. 選取 [存放庫] 以查看含有登錄中映像的存放庫清單
+1. 選取 [存放庫]**** 以查看含有登錄中映像的存放庫清單
 1. 選取存放庫以查看該存放庫內的映像標記
 
 例如，如果您已依照[發送和提取映像](container-registry-get-started-docker-cli.md)中的指示來推送 Nginx 映像，您應會看到類似下面的內容：

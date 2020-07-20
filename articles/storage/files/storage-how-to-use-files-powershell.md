@@ -1,62 +1,72 @@
 ---
 title: 使用 Azure PowerShell 管理 Azure 檔案共用的快速入門
 description: 使用此快速入門了解如何使用 Azure PowerShell 管理 Azure 檔案共用。
-services: storage
 author: roygara
 ms.service: storage
 ms.topic: quickstart
 ms.date: 10/26/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 439a1c60942b1540328bf9972d74d7dd4d573a65
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: c0008ab89f4599e2ada51b5637a9665a249bc1c4
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64700654"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85340823"
 ---
 # <a name="quickstart-create-and-manage-an-azure-file-share-with-azure-powershell"></a>快速入門：使用 Azure PowerShell 建立及管理 Azure 檔案共用 
 本指南會逐步說明透過 PowerShell 來使用 [Azure 檔案共用](storage-files-introduction.md)的基本概念。 Azure 檔案共用與其他檔案共用類似，但它儲存在雲端中，並且由 Azure 平台支援。 Azure 檔案共用支援業界標準 SMB 通訊協定，並可在多個機器、應用程式及執行個體上啟用檔案共用。 
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立 [免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
-
-[!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 如果您想要在本機安裝和使用 PowerShell，則本指南將需要 Azure PowerShell 模組 Az 0.7 版或更新版本。 若要確認您所執行的 Azure PowerShell 模組版本，請執行 `Get-Module -ListAvailable Az`。 如果您需要升級，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-Az-ps)。 如果您在本機執行 PowerShell，則也需要執行 `Login-AzAccount` 來登入 Azure 帳戶。
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 如果您尚未擁有 Azure 資源群組，則可以使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)Cmdlet 來建立一個新資源群組。 
 
-下列範例會在美國東部區域建立名為 *myResourceGroup* 的資源群組：
+下列範例會在「美國西部 2」區域建立名為 myResourceGroup 的資源群組：
 
 ```azurepowershell-interactive
+$resourceGroupName = "myResourceGroup"
+$region = "westus2"
+
 New-AzResourceGroup `
-    -Name myResourceGroup `
-    -Location EastUS
+    -Name $resourceGroupName `
+    -Location $region | Out-Null
 ```
 
 ## <a name="create-a-storage-account"></a>建立儲存體帳戶
-儲存體帳戶是可用來部署 Azure 檔案共用或其他儲存體資源 (例如 Blob 或佇列) 的共用儲存體集區。 儲存體帳戶可包含無限制數目的共用，而共用可儲存無限制數目的檔案，最多可達儲存體帳戶的容量限制。
+儲存體帳戶是可供您用來部署 Azure 檔案共用的共用儲存體集區。 儲存體帳戶可包含無限制數目的共用，而共用可儲存無限制數目的檔案，最多可達儲存體帳戶的容量限制。 本範例會建立一般用途第 2 版 (GPv2 儲存體帳戶)，其可以在硬碟 (HDD) 轉動式媒體上儲存標準 Azure 檔案共用或其他儲存體資源 (例如 Blob 或佇列)。 Azure 檔案儲存體也支援進階固態硬碟 (SSD)；FileStorage 儲存體帳戶中可建立進階 Azure 檔案共用。
 
-此範例會使用 [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) Cmdlet 來建立儲存體帳戶。 儲存體帳戶的名稱為 *mystorageaccount\<隨機數字>*，而且該儲存體帳戶的參考會儲存在 **$storageAcct** 變數中。 儲存體帳戶名稱必須是唯一的，因此，請使用 `Get-Random` 為名稱附加一個數字，使其成為唯一名稱。 
+此範例會使用 [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) Cmdlet 來建立儲存體帳戶。 儲存體帳戶的名稱為 mystorageaccount\<random number>，而且該儲存體帳戶的參考會儲存在 **$storageAcct** 變數中。 儲存體帳戶名稱必須是唯一的，因此，請使用 `Get-Random` 為名稱附加一個數字，使其成為唯一名稱。 
 
 ```azurepowershell-interactive 
+$storageAccountName = "mystorageacct$(Get-Random)"
+
 $storageAcct = New-AzStorageAccount `
-                  -ResourceGroupName "myResourceGroup" `
-                  -Name "mystorageacct$(Get-Random)" `
-                  -Location eastus `
-                  -SkuName Standard_LRS 
+    -ResourceGroupName $resourceGroupName `
+    -Name $storageAccountName `
+    -Location $region `
+    -Kind StorageV2 `
+    -SkuName Standard_ZRS `
+    -EnableLargeFileShare
 ```
 
+> [!Note]  
+> 大於 5 TiB 的共用 (每個共用最多可有 100 TiB) 僅適用於本地備援 (LRS) 和區域備援 (ZRS) 儲存體帳戶。 若要建立異地備援 (GRS) 或異地區域備援 (GZRS) 儲存體帳戶，請移除 `-EnableLargeFileShare` 參數。
+
 ## <a name="create-an-azure-file-share"></a>建立 Azure 檔案共用
-現在，您可以建立第一個 Azure 檔案共用。 您可以使用 [New-AzStorageShare](/powershell/module/az.storage/New-AzStorageShare) Cmdlet 來建立檔案共用。 此範例會建立名為 `myshare` 的共用。
+現在，您可以建立第一個 Azure 檔案共用。 您可以使用 [New-AzRmStorageShare](/powershell/module/az.storage/New-AzRmStorageShare) Cmdlet 來建立檔案共用。 此範例會建立名為 `myshare` 的共用。
 
 ```azurepowershell-interactive
-New-AzStorageShare `
-   -Name myshare `
-   -Context $storageAcct.Context
+$shareName = "myshare"
+
+New-AzRmStorageShare `
+    -StorageAccount $storageAcct `
+    -Name $shareName `
+    -QuotaGiB 1024 | Out-Null
 ```
 
 共用名稱必須全部使用小寫字母、數字和單一連字號，但開頭不可以是連字號。 如需有關為檔案共用與檔案命名的完整詳細資料，請參閱 [命名和參考共用、目錄、檔案及中繼資料](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata)。
@@ -70,15 +80,15 @@ Azure 檔案服務提供兩個在 Azure 檔案共用中使用檔案和資料夾�
 - [macOS](storage-how-to-use-files-mac.md)
 
 ### <a name="using-an-azure-file-share-with-the-file-rest-protocol"></a>透過檔案 REST 通訊協定使用 Azure 檔案共用 
-您可以直接使用 File REST 通訊協定 (也就是自己製作 REST HTTP 呼叫)，但最常見的 File REST 通訊協定使用方式是使用 Azure PowerShell 模組、[Azure CLI](storage-how-to-use-files-cli.md) 或「Azure儲存體 SDK」，這些都能以您選擇的指令碼/程式設計語言為 File REST 通訊協定提供良好的包裝函式。  
+您可以使用 File REST 通訊協定 (也就是自己製作 REST HTTP 呼叫)，但最常見的 File REST 通訊協定使用方式是使用 Azure PowerShell 模組、[Azure CLI](storage-how-to-use-files-cli.md) 或「Azure儲存體 SDK」，這些都能以您選擇的指令碼/程式設計語言為 File REST 通訊協定提供良好的包裝函式。  
 
 在大部分的情況下，您會透過 SMB 通訊協定使用 Azure 檔案共用，因為這可讓您使用預期能使用的現有應用程式和工具，但使用檔案 REST API 比使用 SMB 好的原因有很多個，例如：
 
 - 您要從 PowerShell Cloud Shell (無法透過 SMB 掛接檔案共用) 瀏覽檔案共用。
-- 您需要從無法掛接 SMB 共用的用戶端執行指令碼或應用程式，例如未將連接埠 445 解除封鎖的內部部署用戶端。
 - 您要利用無伺服器資源，例如 [Azure Functions](../../azure-functions/functions-overview.md)。 
+- 您要建立會與許多 Azure 檔案共用互動的加值服務，例如執行備份或防毒掃描。
 
-下列範例示範如何搭配 File REST 通訊協定使用 Azure PowerShell 模組，來操作 Azure 檔案共用。 
+下列範例示範如何搭配 File REST 通訊協定使用 Azure PowerShell 模組，來操作 Azure 檔案共用。 `-Context` 參數可用來擷取儲存體帳戶金鑰，以對檔案共用執行指定的動作。 若要擷取儲存體帳戶金鑰，您必須具有儲存體帳戶上 `Owner` 的 RBAC 角色。
 
 #### <a name="create-directory"></a>建立目錄
 若要在 Azure 檔案共用的根目錄建立名為 *myDirectory* 的新目錄，請使用 [New-AzStorageDirectory](/powershell/module/az.storage/New-AzStorageDirectory) Cmdlet。
@@ -86,7 +96,7 @@ Azure 檔案服務提供兩個在 Azure 檔案共用中使用檔案和資料夾�
 ```azurepowershell-interactive
 New-AzStorageDirectory `
    -Context $storageAcct.Context `
-   -ShareName "myshare" `
+   -ShareName $shareName `
    -Path "myDirectory"
 ```
 
@@ -97,22 +107,26 @@ New-AzStorageDirectory `
 
 ```azurepowershell-interactive
 # this expression will put the current date and time into a new file on your scratch drive
-Get-Date | Out-File -FilePath "C:\Users\ContainerAdministrator\CloudDrive\SampleUpload.txt" -Force
+cd "~/CloudDrive/"
+Get-Date | Out-File -FilePath "SampleUpload.txt" -Force
 
 # this expression will upload that newly created file to your Azure file share
 Set-AzStorageFileContent `
    -Context $storageAcct.Context `
-   -ShareName "myshare" `
-   -Source "C:\Users\ContainerAdministrator\CloudDrive\SampleUpload.txt" `
+   -ShareName $shareName `
+   -Source "SampleUpload.txt" `
    -Path "myDirectory\SampleUpload.txt"
 ```   
 
-如果您要在本機執行 PowerShell，則應將 `C:\Users\ContainerAdministrator\CloudDrive\` 替換為存在於您的機器上的路徑。
+如果您要在本機執行 PowerShell，則應將 `~/CloudDrive/` 替換為存在於您的機器上的路徑。
 
 上傳檔案之後，您可以使用 [Get-AzStorageFile](/powershell/module/Az.Storage/Get-AzStorageFile) Cmdlet 來確認檔案已上傳至 Azure 檔案共用。 
 
 ```azurepowershell-interactive
-Get-AzStorageFile -Context $storageAcct.Context -ShareName "myshare" -Path "myDirectory" 
+Get-AzStorageFile `
+    -Context $storageAcct.Context `
+    -ShareName $shareName `
+    -Path "myDirectory\" 
 ```
 
 #### <a name="download-a-file"></a>下載檔案
@@ -121,41 +135,44 @@ Get-AzStorageFile -Context $storageAcct.Context -ShareName "myshare" -Path "myDi
 ```azurepowershell-interactive
 # Delete an existing file by the same name as SampleDownload.txt, if it exists because you've run this example before.
 Remove-Item `
-     -Path "C:\Users\ContainerAdministrator\CloudDrive\SampleDownload.txt" `
-     -Force `
-     -ErrorAction SilentlyContinue
+    -Path "SampleDownload.txt" `
+    -Force `
+    -ErrorAction SilentlyContinue
 
 Get-AzStorageFileContent `
     -Context $storageAcct.Context `
-    -ShareName "myshare" `
-    -Path "myDirectory\SampleUpload.txt" ` 
-    -Destination "C:\Users\ContainerAdministrator\CloudDrive\SampleDownload.txt"
+    -ShareName $shareName `
+    -Path "myDirectory\SampleUpload.txt" `
+    -Destination "SampleDownload.txt"
 ```
 
 下載檔案之後，您可以使用 `Get-ChildItem` 來確認檔案已下載到 PowerShell Cloud Shell 的可用磁碟機。
 
 ```azurepowershell-interactive
-Get-ChildItem -Path "C:\Users\ContainerAdministrator\CloudDrive"
+Get-ChildItem | Where-Object { $_.Name -eq "SampleDownload.txt" }
 ``` 
 
 #### <a name="copy-files"></a>複製檔案
-常見工作之一，是在不同的檔案共用之間複製檔案，或是對 (從) Azure Blob 儲存體容器複製檔案。 若要示範這項功能，您可以建立新的共用，然後使用 [Start-AzStorageFileCopy](/powershell/module/az.storage/Start-AzStorageFileCopy) Cmdlet 將您剛才上傳的檔案複製到這個新的共用。 
+其中一個常見的工作是將檔案從某個檔案共用複製到另一個檔案共用。 若要示範這項功能，您可以建立新的共用，然後使用 [Start-AzStorageFileCopy](/powershell/module/az.storage/Start-AzStorageFileCopy) Cmdlet 將您剛才上傳的檔案複製到這個新的共用。 
 
 ```azurepowershell-interactive
-New-AzStorageShare `
-    -Name "myshare2" `
-    -Context $storageAcct.Context
+$otherShareName = "myshare2"
+
+New-AzRmStorageShare `
+    -StorageAccount $storageAcct `
+    -Name $otherShareName `
+    -QuotaGiB 1024 | Out-Null
   
 New-AzStorageDirectory `
    -Context $storageAcct.Context `
-   -ShareName "myshare2" `
+   -ShareName $otherShareName `
    -Path "myDirectory2"
 
 Start-AzStorageFileCopy `
     -Context $storageAcct.Context `
-    -SrcShareName "myshare" `
+    -SrcShareName $shareName `
     -SrcFilePath "myDirectory\SampleUpload.txt" `
-    -DestShareName "myshare2" `
+    -DestShareName $otherShareName `
     -DestFilePath "myDirectory2\SampleCopy.txt" `
     -DestContext $storageAcct.Context
 ```
@@ -163,21 +180,26 @@ Start-AzStorageFileCopy `
 現在，當您列出新共用中的檔案時，您應該會看到您所複製的檔案。
 
 ```azurepowershell-interactive
-Get-AzStorageFile -Context $storageAcct.Context -ShareName "myshare2" -Path "myDirectory2" 
+Get-AzStorageFile `
+    -Context $storageAcct.Context `
+    -ShareName $otherShareName `
+    -Path "myDirectory2" 
 ```
 
-雖然 `Start-AzStorageFileCopy` Cmdlet 很方便用來進行 Azure 檔案共用與 Azure Blob 儲存體容器之間的臨機操作檔案移動，但我們建議較大型的移動 (就移動的檔案數目和大小而言) 應使用 AzCopy。 深入了解[適用於 Windows 的 AzCopy](../common/storage-use-azcopy.md) 和[適用於 Linux 的 AzCopy](../common/storage-use-azcopy-linux.md)。 AzCopy 必須安裝於本機 - 它不適用於 Cloud Shell。 
+雖然 `Start-AzStorageFileCopy` Cmdlet 可方便您在 Azure 檔案共用之間移動臨機操作檔案，但若要進行移轉和移動較大型的資料，則建議在 Windows 上使用 `robocopy` 以及在 macOS 和 Linux 上使用 `rsync`。 `robocopy` 和 `rsync` 會使用 SMB 來執行資料移動，而不是使用 FileREST API。
 
 ## <a name="create-and-manage-share-snapshots"></a>建立及管理共用快照集
 可以使用 Azure 檔案共用來執行的另一項實用工作，是建立共用快照集。 快照集會保留 Azure 檔案共用的時間點。 共用快照集類似於您可能已經很熟悉的下列作業系統技術：
-- Windows 檔案系統的[磁碟區陰影複製服務 (VSS)](https://docs.microsoft.com/windows/desktop/VSS/volume-shadow-copy-service-portal)，例如 NTFS 和 ReFS
-- Linux 系統的[邏輯磁碟區管理員 (LVM)](https://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux)#Basic_functionality) 快照集
+
+- Windows 檔案系統的[磁碟區陰影複製服務 (VSS)](https://docs.microsoft.com/windows/desktop/VSS/volume-shadow-copy-service-portal)，例如 NTFS 和 ReFS。
+- Linux 系統的[邏輯磁碟區管理員 (LVM)](https://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux)#Basic_functionality) 快照集。
 - macOS 的 [Apple 檔案系統 (APFS)](https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/APFS_Guide/Features/Features.html) 快照集。 
- 您可以對檔案共用 (使用 [Get-AzStorageShare](/powershell/module/az.storage/Get-AzStorageShare)Cmdlet 所擷取) 的 PowerShell 物件使用 `Snapshot` 方法，來為共用建立共用快照集。 
+
+您可以對檔案共用 (使用 [Get-AzStorageShare](/powershell/module/az.storage/Get-AzStorageShare)Cmdlet 所擷取) 的 PowerShell 物件使用 `Snapshot` 方法，來為共用建立共用快照集。 
 
 ```azurepowershell-interactive
-$share = Get-AzStorageShare -Context $storageAcct.Context -Name "myshare"
-$snapshot = $share.Snapshot()
+$share = Get-AzStorageShare -Context $storageAcct.Context -Name $shareName
+$snapshot = $share.CloudFileShare.Snapshot()
 ```
 
 ### <a name="browse-share-snapshots"></a>瀏覽共用快照集
@@ -191,7 +213,9 @@ Get-AzStorageFile -Share $snapshot
 您可以使用下列命令，檢視您為共用建立的快照集清單。
 
 ```azurepowershell-interactive
-Get-AzStorageShare -Context $storageAcct.Context | Where-Object { $_.Name -eq "myshare" -and $_.IsSnapshot -eq $true }
+Get-AzStorageShare `
+        -Context $storageAcct.Context | `
+    Where-Object { $_.Name -eq $shareName -and $_.IsSnapshot -eq $true }
 ```
 
 ### <a name="restore-from-a-share-snapshot"></a>從共用快照集還原
@@ -201,14 +225,15 @@ Get-AzStorageShare -Context $storageAcct.Context | Where-Object { $_.Name -eq "m
 # Delete SampleUpload.txt
 Remove-AzStorageFile `
     -Context $storageAcct.Context `
-    -ShareName "myshare" `
+    -ShareName $shareName `
     -Path "myDirectory\SampleUpload.txt"
- # Restore SampleUpload.txt from the share snapshot
+
+# Restore SampleUpload.txt from the share snapshot
 Start-AzStorageFileCopy `
     -SrcShare $snapshot `
     -SrcFilePath "myDirectory\SampleUpload.txt" `
     -DestContext $storageAcct.Context `
-    -DestShareName "myshare" `
+    -DestShareName $shareName `
     -DestFilePath "myDirectory\SampleUpload.txt"
 ```
 
@@ -216,7 +241,10 @@ Start-AzStorageFileCopy `
 您可以使用 [Remove-AzStorageShare](/powershell/module/az.storage/Remove-AzStorageShare) Cmdlet 搭配包含 `-Share` 參數之 `$snapshot` 參考的變數，來刪除共用快照集。
 
 ```azurepowershell-interactive
-Remove-AzStorageShare -Share $snapshot
+Remove-AzStorageShare `
+    -Share $snapshot `
+    -Confirm:$false `
+    -Force
 ```
 
 ## <a name="clean-up-resources"></a>清除資源
@@ -231,18 +259,20 @@ Remove-AzResourceGroup -Name myResourceGroup
 - 以移除我們為此快速入門建立的 Azure 檔案共用。
 
     ```azurepowershell-interactive
-    Get-AzStorageShare -Context $storageAcct.Context | Where-Object { $_.IsSnapshot -eq $false } | ForEach-Object { 
-        Remove-AzStorageShare -Context $storageAcct.Context -Name $_.Name
-    }
+    Get-AzRmStorageShare -StorageAccount $storageAcct | Remove-AzRmStorageShare -Force
     ```
+
+    > [!Note]  
+    > 您必須先刪除所建立 Azure 檔案共用的所有共用快照集，然後才能刪除 Azure 檔案共用。
 
 - 以移除儲存體帳戶本身 (這表示將會移除我們建立的 Azure 檔案共用，以及您已建立的任何其他儲存體資源，例如 Azure Blob 儲存體容器)。
 
     ```azurepowershell-interactive
-    Remove-AzStorageAccount -ResourceGroupName $storageAcct.ResourceGroupName -Name $storageAcct.StorageAccountName
+    Remove-AzStorageAccount `
+        -ResourceGroupName $storageAcct.ResourceGroupName `
+        -Name $storageAcct.StorageAccountName
     ```
 
 ## <a name="next-steps"></a>後續步驟
-
 > [!div class="nextstepaction"]
 > [什麼是 Azure 檔案服務？](storage-files-introduction.md)

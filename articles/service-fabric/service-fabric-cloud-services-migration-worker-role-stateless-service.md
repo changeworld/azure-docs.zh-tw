@@ -1,25 +1,15 @@
 ---
-title: 將 Azure 雲端服務應用程式轉換成 Service Fabric | Microsoft Docs
+title: 將 Azure 雲端服務應用程式轉換成 Service Fabric
 description: 本指南會比較雲端服務的 Web 角色和背景工作角色以及 Service Fabric 的無狀態服務，以協助您從雲端服務移轉到 Service Fabric。
-services: service-fabric
-documentationcenter: .net
 author: vturecek
-manager: chackdan
-editor: ''
-ms.assetid: 5880ebb3-8b54-4be8-af4b-95a1bc082603
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 10fb44b0e76282ad78e7687beaa2e50e819e5cd9
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+ms.openlocfilehash: caf067f793ca2086bc068907e86a82266627d128
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62109996"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75463335"
 ---
 # <a name="guide-to-converting-web-and-worker-roles-to-service-fabric-stateless-services"></a>將 Web 角色和背景工作角色轉換成 Service Fabric 無狀態服務的指南
 本文說明如何將雲端服務的 Web 角色和背景工作角色移轉至 Service Fabric 無狀態服務。 對於整體架構會大致保持相同的應用程式來說，這是最簡單的雲端服務至 Service Fabric 移轉路徑。
@@ -32,17 +22,17 @@ ms.locfileid: "62109996"
 ![Service Fabric 和雲端服務專案的比較][3]
 
 ## <a name="worker-role-to-stateless-service"></a>背景工作角色至無狀態服務
-從概念上來說，背景工作角色代表無狀態的工作負載，這表示是工作負載的每個執行個體都是相同的，隨時都可將要求路由傳送到任何執行個體。 每個執行個體應該不會記得先前的要求。 工作負載的運作狀態是由外部狀態存放區 (例如 Azure 資料表儲存體或 Azure Document DB) 負責管理。 在 Service Fabric 中，這類工作負載是以無狀態服務來代表。 只要將背景工作角色程式碼轉換成無狀態服務，就能以最簡單的方式將背景工作角色移轉到 Service Fabric。
+從概念上來說，背景工作角色代表無狀態的工作負載，這表示是工作負載的每個執行個體都是相同的，隨時都可將要求路由傳送到任何執行個體。 每個執行個體應該不會記得先前的要求。 工作負載操作所在的狀態是由外部狀態存放區（例如 Azure 表格儲存體或 Azure Cosmos DB）所管理。 在 Service Fabric 中，這類工作負載是以無狀態服務來代表。 只要將背景工作角色程式碼轉換成無狀態服務，就能以最簡單的方式將背景工作角色移轉到 Service Fabric。
 
 ![背景工作角色至無狀態服務][4]
 
 ## <a name="web-role-to-stateless-service"></a>Web 角色至無狀態服務
 和背景工作角色類似，Web 角色也代表無狀態的工作負載，因此在概念上也能對應至 Service Fabric 無狀態服務。 不過，和 Web 角色不同的是，Service Fabric 不支援 IIS。 若要將 Web 應用程式從 Web 角色移轉至無狀態服務，必須先移動到可以自我裝載且不仰賴 IIS 或 System.Web (例如 ASP.NET Core 1) 的 Web 架構。
 
-| **应用程序** | **支援** | **移轉路徑** |
+| **應用程式** | **支援** | **移轉路徑** |
 | --- | --- | --- |
-| ASP.NET Web Forms |否 |轉換為 ASP.NET Core 1 MVC |
-| ASP.NET MVC |使用迁移 |升級至 ASP.NET Core 1 MVC |
+| ASP.NET Web Forms |No |轉換為 ASP.NET Core 1 MVC |
+| ASP.NET MVC |移轉 |升級至 ASP.NET Core 1 MVC |
 | ASP.NET Web API |移轉 |使用自我裝載的伺服器或 ASP.NET Core 1 |
 | ASP.NET Core 1 |是 |N/A |
 
@@ -54,9 +44,9 @@ ms.locfileid: "62109996"
 | Processing |`Run()` |`RunAsync()` |
 | VM 啟動 |`OnStart()` |N/A |
 | VM 停止 |`OnStop()` |N/A |
-| 開啟接聽程式以接收用戶端要求 |不适用 |<ul><li> `CreateServiceInstanceListener()` (針對無狀態)</li><li>`CreateServiceReplicaListener()` (針對具狀態)</li></ul> |
+| 開啟接聽程式以接收用戶端要求 |N/A |<ul><li> `CreateServiceInstanceListener()` (針對無狀態)</li><li>`CreateServiceReplicaListener()` (針對具狀態)</li></ul> |
 
-### <a name="worker-role"></a>辅助角色
+### <a name="worker-role"></a>背景工作角色
 ```csharp
 
 using Microsoft.WindowsAzure.ServiceRuntime;
@@ -110,8 +100,8 @@ namespace Stateless1
 
 背景工作角色和 Service Fabric 服務的生命週期與存留期之間有幾個主要差異：
 
-* **生命週期：** 最大的差異是背景工作角色是 VM，因此其生命週期會繫結至 VM，其中包含 VM 啟動和停止時的事件。 Service Fabric 服務的生命週期則和 VM 的生命週期不同，因此不包含主機 VM 或機器啟動和停止時的事件，因為它們彼此不相關。
-* **存留期：** 當背景工作角色執行個體時，會回收`Run`方法結束。 不過，Service Fabric 服務中的 `RunAsync` 方法可以執行到完成為止，且服務執行個體會維持啟動狀態。 
+* **生命週期：** 最大的差異是背景工作角色是 VM，因此其生命週期繫結至 VM，且包含 VM 啟動和停止時的事件。 Service Fabric 服務的生命週期則和 VM 的生命週期不同，因此不包含主機 VM 或機器啟動和停止時的事件，因為它們彼此不相關。
+* **存留期：** 背景工作角色執行個體會在 `Run` 方法結束時回收。 不過，Service Fabric 服務中的 `RunAsync` 方法可以執行到完成為止，且服務執行個體會維持啟動狀態。 
 
 Service Fabric 為接聽用戶端要求的服務提供選擇性的通訊設定進入點。 RunAsync 和通訊進入點都是 Service Fabric 服務中的選擇性覆寫 (服務可選擇只接聽用戶端要求或只執行處理迴圈，或兩者都選擇)，這就是 RunAsync 方法不必重新啟動服務執行個體就可以結束的原因，因為它可以繼續接聽用戶端要求。
 
@@ -123,7 +113,7 @@ Service Fabric 為接聽用戶端要求的服務提供選擇性的通訊設定�
 | 組態設定和變更通知 |`RoleEnvironment` |`CodePackageActivationContext` |
 | 本機儲存體 |`RoleEnvironment` |`CodePackageActivationContext` |
 | 端點資訊 |`RoleInstance` <ul><li>目前的執行個體︰`RoleEnvironment.CurrentRoleInstance`</li><li>其他角色和執行個體︰`RoleEnvironment.Roles`</li> |<ul><li>`NodeContext` (針對目前的節點位址)</li><li>`FabricClient` 和 `ServicePartitionResolver` (針對服務端點探索)</li> |
-| 环境模拟 |`RoleEnvironment.IsEmulated` |N/A |
+| 環境模擬 |`RoleEnvironment.IsEmulated` |N/A |
 | 同時變更事件 |`RoleEnvironment` |N/A |
 
 ## <a name="configuration-settings"></a>組態設定
@@ -212,7 +202,7 @@ private void CodePackageActivationContext_ConfigurationPackageModifiedEvent(obje
 | --- | --- |
 | 組態位置 |ServiceDefinition.csdef |
 | 權限 |「有限」或「提高」 |
-| 序列 |「簡單」、「背景」、「前景」 |
+| 排序 |「簡單」、「背景」、「前景」 |
 
 ### <a name="cloud-services"></a>雲端服務
 雲端服務中的啟動進入點是在 ServiceDefinition.csdef 中針對每個角色進行設定。 

@@ -1,33 +1,25 @@
 ---
-title: Azure 監視器中的容量和效能解決方案 |Microsoft Docs
-description: 使用監視器 」 中的容量和效能解決方案，協助您了解 HYPER-V 伺服器的容量。
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: 51617a6f-ffdd-4ed2-8b74-1257149ce3d4
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+title: Azure 監視器中的容量與效能解決方案 |Microsoft Docs
+description: 使用 [監視] 中的 [容量與效能解決方案，協助您瞭解 Hyper-v 伺服器的容量。
+ms.subservice: logs
 ms.topic: conceptual
+author: bwren
+ms.author: bwren
 ms.date: 07/13/2017
-ms.author: magoedte
-ms.openlocfilehash: fcf71bf144b559c4867303988d4c1f08b7aa5605
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+ms.openlocfilehash: 75c65cf9f76e711a3aeed764de8b92ed619bad2f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62101909"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77666938"
 ---
-# <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-deprecated"></a>規劃 HYPER-V 虛擬機器容量的容量和效能解決方案 （已過時） 使用
+# <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-deprecated"></a>使用容量與效能解決方案規劃 Hyper-v 虛擬機器容量（已淘汰）
 
 ![容量與效能符號](./media/capacity-performance/capacity-solution.png)
 
 > [!NOTE]
 > 容量與效能解決方案已取代。  已安裝此解決方案的客戶可以繼續使用，但無法將「容量與效能」加入任何新的工作區。
 
-您可以使用監視器 」 中的容量和效能解決方案可協助您了解 HYPER-V 伺服器的容量。 這個解決方案可顯示主機以及在這些 Hyper-V 主機上執行之 VM 的整體使用率 (CPU、記憶體和磁碟)，以讓您深入了解 Hyper-V 環境。 系統會跨所有主機和在其上執行的 VM 來收集 CPU、記憶體和磁碟的計量。
+您可以使用 [監視] 中的容量與效能解決方案，協助您瞭解 Hyper-v 伺服器的容量。 這個解決方案可顯示主機以及在這些 Hyper-V 主機上執行之 VM 的整體使用率 (CPU、記憶體和磁碟)，以讓您深入了解 Hyper-V 環境。 系統會跨所有主機和在其上執行的 VM 來收集 CPU、記憶體和磁碟的計量。
 
 此解決方案：
 
@@ -46,12 +38,12 @@ ms.locfileid: "62101909"
 
 下表描述此方案支援的連接來源。
 
-| 連接的來源 | 支援 | 描述 |
+| 連接的來源 | 支援 | Description |
 |---|---|---|
-| [Windows 代理程式](../../azure-monitor/platform/agent-windows.md) | 是 | 解決方案會從 Windows 代理程式收集容量和效能資料的資訊。 |
-| [Linux 代理程式](../../azure-monitor/learn/quick-collect-linux-computer.md) | 否    | 解決方案不會從直接 Linux 代理程式收集容量和效能資料的資訊。|
-| [SCOM 管理群組](../../azure-monitor/platform/om-agents.md) | 是 |解決方案會從已連線之 SCOM 管理群組中的代理程式收集容量和效能資料。 不需要從 SCOM 代理程式直接連接到 Log Analytics。|
-| [Azure 儲存體帳戶](../../azure-monitor/platform/collect-azure-metrics-logs.md) | 否 | Azure 儲存體不包含容量和效能資料。|
+| [Windows 代理程式](../../azure-monitor/platform/agent-windows.md) | Yes | 解決方案會從 Windows 代理程式收集容量和效能資料的資訊。 |
+| [Linux 代理程式](../../azure-monitor/learn/quick-collect-linux-computer.md) | No    | 解決方案不會從直接 Linux 代理程式收集容量和效能資料的資訊。|
+| [SCOM 管理群組](../../azure-monitor/platform/om-agents.md) | Yes |解決方案會從已連線之 SCOM 管理群組中的代理程式收集容量和效能資料。 不需要從 SCOM 代理程式直接連接到 Log Analytics。|
+| [Azure 儲存體帳戶](../../azure-monitor/platform/collect-azure-metrics-logs.md) | No | Azure 儲存體不包含容量和效能資料。|
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -90,9 +82,9 @@ New Management Pack with id:"Microsoft.IntelligencePacks.CapacityPerformance", v
 
 ### <a name="review-utilization"></a>檢閱使用率
 
-按一下 [容量和效能] 圖格，即可開啟 [容量和效能] 儀表板。 此儀表板包含下表中的資料行。 每個資料行最多會列出十個符合該資料行中指定範圍和時間範圍之準則的項目。 您可以按一下資料行底部的 [查看全部]，或按一下資料行標頭，以執行記錄檔搜尋來傳回所有記錄。
+按一下 [容量和效能] 圖格，即可開啟 [容量和效能] 儀表板。 此儀表板包含下表中的資料行。 每個資料行最多會列出十個符合該資料行中指定範圍和時間範圍之準則的項目。 您可以按一下資料行底部的 [查看全部]****，或按一下資料行標頭，以執行記錄檔搜尋來傳回所有記錄。
 
-- **主機**
+- **主控件**
     - **主機 CPU 使用率** 根據所選時段以圖表顯示主機電腦的 CPU 使用率趨勢和主機清單。 將滑鼠暫留在折線圖上，可檢視特定時間點的詳細資料。 按一下折線圖可在記錄搜尋中檢視更多詳細資料。 按一下任何主機名稱可開啟記錄搜尋並檢視所裝載 VM 的 CPU 計數器詳細資料。
     - **主機記憶體使用率** 根據所選時段以圖表顯示主機電腦的記憶體使用率趨勢和主機清單。 將滑鼠暫留在折線圖上，可檢視特定時間點的詳細資料。 按一下折線圖可在記錄搜尋中檢視更多詳細資料。 按一下任何主機名稱可開啟記錄搜尋並檢視所裝載 VM 的記憶體計數器詳細資料。
 - **虛擬機器**

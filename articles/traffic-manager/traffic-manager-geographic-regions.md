@@ -1,9 +1,9 @@
 ---
-title: Azure 流量管理員地理路由類型使用的國家/地區階層 | Microsoft Docs
+title: 地理路由所使用的國家/區域階層-Azure 流量管理員
 description: 本文列出 Azure 流量管理員地理路由類型使用的國家/地區階層
 services: traffic-manager
 documentationcenter: ''
-author: kumudd
+author: rohinkoul
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,17 +11,16 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2017
-ms.author: kumud
-ms.openlocfilehash: 7e3ea1d2a0c3e8501222d57a92fad917d465022e
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
-ms.translationtype: MT
+ms.author: rohink
+ms.openlocfilehash: 19445c06ccf08d2d7916545ad495c56883616c7a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64867000"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "76938637"
 ---
 # <a name="countryregion-hierarchy-used-by-azure-traffic-manager-for-geographic-traffic-routing-method"></a>Azure 流量管理員用於地理流量路由方法的國家/地區階層
 
-本文列出 Azure 流量管理員中**地理**流量路由方法所使用的國家和區域。 您也可以呼叫 [Azure 流量管理員的 REST API](https://docs.microsoft.com/rest/api/trafficmanager/)，以程式設計方式取得這項資訊。 
+本文列出 Azure 流量管理員中**地理**流量路由方法所使用的國家和區域。 您也可以用程式設計方式呼叫 [ Azure 流量管理員的 REST API](https://docs.microsoft.com/rest/api/trafficmanager/)，以取得這項資訊。 
 
 - WORLD(世界)
 
@@ -99,7 +98,7 @@ ms.locfileid: "64867000"
 
         - ME(蒙特內哥羅)
 
-        - MK （馬其頓北歐）
+        - MK （北馬其頓）
 
         - MT(馬爾他)
 
@@ -121,18 +120,18 @@ ms.locfileid: "64867000"
 
         - SI(斯洛維尼亞)
 
-        - SJ(冷岸)
+        - SJ(挪威屬斯瓦巴)
 
         - SK(斯洛伐克)
 
         - SM(聖馬利諾)
 
         - UA(烏克蘭)
-            - 克里米亞的區域
+            - 克裡米亞的區域
 
         - VA(梵蒂岡)
 
-        - XJ(央棉)
+        - XJ(尖棉)
 
         - XK(科索沃)
 
@@ -270,7 +269,7 @@ ms.locfileid: "64867000"
 
         - TT(千里達及托巴哥)
 
-        - UM(美國外島)
+        - UM （美國外島）
 
         - US(美國)
 
@@ -380,7 +379,7 @@ ms.locfileid: "64867000"
 
         - VG(英屬維京群島)
 
-        - VI(美屬維京群島)
+        - VI （美屬英屬維爾京群島）
 
         - XE(聖佑達修斯)
 

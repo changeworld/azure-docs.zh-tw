@@ -1,108 +1,108 @@
 ---
-title: Azure 的 VMware 解決方案由 CloudSimple-CloudSimple 維護和更新
-description: 描述排定的維護和更新的 CloudSimple 服務程序
+title: CloudSimple 維護和更新
+titleSuffix: Azure VMware Solution by CloudSimple
+description: 說明已排程維護和更新的 CloudSimple 服務程式
 author: sharaths-cs
 ms.author: dikamath
-ms.date: 04/30/2019
+ms.date: 08/20/2019
 ms.topic: article
-ms.service: vmware
+ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 4dde358f10e9ac5054297ff68a0971404c0dc135
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
-ms.translationtype: MT
+ms.openlocfilehash: 826fae1123b355a4143118b53ba649f0939acaf7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65160241"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77025022"
 ---
 # <a name="cloudsimple-maintenance-and-updates"></a>CloudSimple 維護和更新
 
-私用雲端環境被設計來取得任何單一失敗點：
+私用雲端環境的設計是不會有單一失敗點。
 
-* ESXi 叢集依設定 vSphere 的高可用性。 叢集調整大小必須至少一個備用的節點，提供恢復功能。
-* 需要至少三個節點，以提供保護，防止單一失敗的 vSAN 會提供備援的主要儲存體。 vSAN 可以提供更高的恢復功能的較大的叢集設定。
-* vCenter、 PSC 和 NSX Manager Vm 都已設定 RAID 10 存放裝置原則，以防止儲存體失敗。 Vm 會受到 vSphere HA 節點/網路故障。
-* ESXi 主機有風扇和 Nic。
-* TOR 和背面的參數會設定 HA 成對提供恢復功能。
+* ESXi 叢集已設定 vSphere 高可用性（HA）。 叢集的大小會調整為至少有一個備用節點可供復原。
+* 多餘的主要儲存體是由 vSAN 提供，這需要至少三個節點才能針對單一失敗提供保護。 vSAN 可以設定為較大的叢集提供更高的復原能力。
+* vCenter、PSC 和 NSX Manager Vm 都設定了 RAID 10 的儲存體，以避免儲存失敗。 Vm 會藉由 vSphere HA 而受到保護，以防止節點/網路失敗。
+* ESXi 主機具有多餘的風扇和 Nic。
+* TOR 和書脊交換器會在 HA 配對中設定，以提供復原功能。
 
-CloudSimple 持續監視下列 Vm 執行時間和可用性，並提供可用性 Sla:
+CloudSimple 會持續監視下列 Vm 的執行時間和可用性，並提供可用性 Sla：
 
 * ESXi 主機
 * vCenter
 * PSC
 * NSX 管理員
 
-CloudSimple 也會監視下列持續失敗：
+CloudSimple 也會持續監視失敗的下列各項：
 
 * 硬碟
-* 實體 NIC 連接埠
+* 實體 NIC 埠
 * 伺服器
-* 風扇
-* 乘冪
+* 扇形
+* 電源
 * 交換器
-* 交換器連接埠
+* 交換器埠
 
-如果磁碟或節點失敗，新的節點會自動加入至受影響的 VMware 叢集，以立即將它回復到健全狀況。
+如果磁片或節點失敗，新的節點會自動新增至受影響的 VMware 叢集，以立即恢復健全狀況。
 
-CloudSimple 備份、 維護及更新這些私用雲端中的 VMware 項目：
+CloudSimple 會在私人雲端中備份、維護和更新這些 VMware 元素：
 
 * ESXi
-* vCenter 平台服務
-* Controller
+* vCenter 平臺服務
+* 控制器
 * vSAN
 * NSX
 
-## <a name="back-up-and-restore"></a>備份和還原
+## <a name="back-up-and-restore"></a>備份及還原
 
 CloudSimple 備份包括：
 
-* 每晚的增量備份 vCenter PSC 及 DVS 的規則。
-* 使用 vCenter 來備份應用程式層元件的原生 Api。
-* 之前的任何更新或升級的 VMware 管理軟體的自動備份。
-* 在 vCenter 中，才能透過 tls 1.2 加密通道傳輸到 Azure 的資料來源，資料加密。 資料會儲存在 Azure blob 中，跨區域複寫。
+* VCenter、PSC 和 DVS 規則的夜間增量備份。
+* 用來在應用層備份元件的 vCenter 原生 Api。
+* 更新或升級 VMware 管理軟體之前的自動備份。
+* 在資料透過 TLS 1.2 加密通道傳送至 Azure 之前，來源的 vCenter 資料加密。 資料會儲存在 Azure blob 中，其會跨區域複寫。
 
-您可以開啟以要求在還原[支援要求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
+您可以藉由開啟[支援要求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)來要求還原。
 
-## <a name="maintenance"></a>維護 
+## <a name="maintenance"></a>維護
 
-CloudSimple 會執行數種類型的已規劃的維護。
+CloudSimple 會執行數種預定的維護。
 
 ### <a name="backendinternal-maintenance"></a>後端/內部維護
 
-此次維護作業通常需要重新設定實體的資產，或安裝軟體的修補程式。 它不會影響資產提供服務的一般性的取用。 具有備援的 Nic，移至每個實體的機架，一般的網路流量和私用雲端作業不會受到影響。 只有當您的組織需要維護間隔期間使用的完整備援的頻寬，您可能會注意到對效能產生影響。
+這種維護通常牽涉到重新設定實體資產或安裝軟體修補程式。 它不會影響所服務資產的一般耗用量。 使用冗余的 Nic 進入每個實體機架時，一般的網路流量和私人雲端作業不會受到影響。 您可能會注意到，只有在您的組織預期在維護間隔期間使用完整多餘的頻寬時，才會影響效能。
 
-### <a name="cloudsimple-portal-maintenance"></a>CloudSimple 入口網站的維護
+### <a name="cloudsimple-portal-maintenance"></a>CloudSimple 入口網站維護
 
-更新 CloudSimple 控制平面或基礎結構時，需要一些有限的服務停機時間。 目前，維護間隔可以是每月一次為頻繁。 頻率必須拒絕一段時間。 CloudSimple 提供入口網站的維護的通知，並讓儘可能縮短間隔。 在入口網站的維護的間隔內，下列服務繼續運作而造成的影響：
+更新 CloudSimple 控制平面或基礎結構時，需要一些有限的服務停機時間。 目前，維護間隔的頻率可以是每個月一次。 頻率預期會在一段時間後遭到拒絕。 CloudSimple 會提供入口網站維護的通知，並盡可能縮短間隔。 在入口網站維護間隔期間，下列服務會繼續運作而不會產生任何影響：
 
 * VMware 管理平面和應用程式
 * vCenter 存取
-* 所有的網路和儲存體
-* Azure 的所有流量
+* 所有網路功能和存放裝置
+* 所有 Azure 流量
 
 ### <a name="vmware-infrastructure-maintenance"></a>VMware 基礎結構維護
 
-偶爾也會需要 VMware 基礎結構的組態進行變更。  目前，這些間隔可能會發生每隔 1 到 2 月，但是頻率應該拒絕一段時間。 這種類型的維護通常可以完成而不會中斷正常 CloudSimple 服務耗用量。 在 VMware 維護間隔內，下列服務繼續運作而造成的影響：
+有時候，您必須對 VMware 基礎結構的設定進行變更。  目前，這些間隔可能每隔1-2 個月發生一次，但頻率預期會隨著時間而遭到拒絕。 這種類型的維護通常可以執行，而不會中斷 CloudSimple 服務的一般耗用量。 在 VMware 維護間隔期間，下列服務會繼續運作而不會產生任何影響：
 
 * VMware 管理平面和應用程式
 * vCenter 存取
-* 所有的網路和儲存體
-* Azure 的所有流量
+* 所有網路功能和存放裝置
+* 所有 Azure 流量
 
-## <a name="updates-and-upgrades"></a>更新和升級
+## <a name="updates-and-upgrades"></a>更新與升級
 
-CloudSimple 負責生命週期管理的 VMware （ESXi、 vCenter、 PSC 和 NSX） 軟體的私人雲端。
+CloudSimple 負責在私人雲端中管理 VMware 軟體（ESXi、vCenter、PSC 和 NSX）的生命週期。
 
 軟體更新包括：
 
-* **修補程式**。 安全性修補程式或 VMware 所發行的 bug 修正。
-* **更新**。 次要版本的 VMware 堆疊元件的變更。
-* **升級**。 主要版本的 VMware 堆疊元件的變更。
+* **修補程式**。 VMware 發行的安全性修補程式或錯誤修正。
+* **更新**。 VMware 堆疊元件的次要版本變更。
+* **升級**。 VMware 堆疊元件的主要版本變更。
 
-CloudSimple 可用從 VMware 時，測試重大安全性修補程式。 每個 SLA，CloudSimple 推出的安全性修補程式到私用雲端環境一週內。
+CloudSimple 會在從 VMware 提供重大安全性修補程式後立即進行測試。 根據 SLA，CloudSimple 會在一周內匯總私人雲端環境的安全性修補程式。
 
-CloudSimple 提供 VMware 軟體元件的每季的維護更新。 VMware 軟體的新主要版本可用時，CloudSimple 的運作方式與客戶合作，協調適當的維護期間升級。
+CloudSimple 提供 VMware 軟體元件的每季維護更新。 當 VMware 軟體有新的主要版本可供使用時，CloudSimple 會與客戶合作，協調適合的維護時段進行升級。
 
 ## <a name="next-steps"></a>後續步驟
 
-[工作負載 Vm 使用 Veeam 備份](https://docs.azure.cloudsimple.com/backup-workloads-veeam/)。
+[使用 Veeam 備份工作負載 Vm](backup-workloads-veeam.md)

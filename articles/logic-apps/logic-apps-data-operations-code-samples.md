@@ -1,28 +1,22 @@
 ---
-title: 資料作業範例 - Azure Logic Apps | Microsoft Docs
-description: Azure Logic Apps 中資料作業動作定義的程式碼範例
+title: 使用資料作業的程式碼範例
+description: 請嘗試這些程式碼範例，示範如何在使用 Azure Logic Apps 建立的自動化工作流程中使用資料作業
 services: logic-apps
-ms.service: logic-apps
-author: ecfan
-ms.author: v-yiso
-manager: jeconnoc
-ms.topic: reference
-origin.date: 07/25/2018
-ms.date: 12/10/2018
-ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 8de70e8df50b79f27c19c74307d9321ff8cd1eb5
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+ms.reviewer: klam, logicappspm
+ms.topic: conceptual
+ms.date: 09/01/2019
+ms.openlocfilehash: c56c31bb6f56efb10808ce25b6b232089391e831
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62128544"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84712440"
 ---
 # <a name="data-operation-code-samples-for-azure-logic-apps"></a>適用於 Azure Logic Apps 的資料作業程式碼範例
 
 以下是[執行資料作業](../logic-apps/logic-apps-perform-data-operations.md)一文中資料作業動作定義的程式碼範例。 當您想要嘗試自有邏輯應用程式的基礎工作流程定義、Azure 訂用帳戶和 API 連線的範例，您可以使用這些範例。 只要將這些動作定義複製並貼到邏輯應用程式工作流程定義的程式碼檢視編輯器中，然後修改特定工作流程的定義。 
 
-根據 JavaScript 物件標記法 (JSON) 標準，這些動作定義會按照字母順序顯示。 不過，在邏輯應用程式設計工具中，每個定義都會以正確的順序出現在您的工作流程中，因為每個動作定義的 `runAfter` 屬性都會指定執行順序。 
+根據 JavaScript 物件標記法 (JSON) 標準，這些動作定義會按照字母順序顯示。 不過，在邏輯應用程式設計工具中，每個定義都會以正確的順序出現在您的工作流程中，因為每個動作定義的 `runAfter` 屬性都會指定執行順序。
 
 <a name="compose-action-example"></a>
 
@@ -327,7 +321,7 @@ ms.locfileid: "62128544"
 
 <a name="select-action-example"></a>
 
-## <a name="select"></a>选择
+## <a name="select"></a>選取
 
 若要嘗試[**選取**動作範例](../logic-apps/logic-apps-perform-data-operations.md#select-action)，以下是您可以使用的動作定義：
 
@@ -367,11 +361,6 @@ ms.locfileid: "62128544"
    }
 },
 ```
-
-## <a name="get-support"></a>取得支援
-
-* 如有問題，請瀏覽 [Azure Logic Apps 論壇](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
-* 若要提交或票選功能構想，請造訪 [Logic Apps 使用者意見反應網站](https://aka.ms/logicapps-wish)。
 
 ## <a name="next-steps"></a>後續步驟
 

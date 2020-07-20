@@ -3,25 +3,25 @@ title: 登入應用程式時看到非預期的同意提示 | Microsoft Docs
 description: 如何疑難排解使用者會看到已與 Azure AD 整合的應用程式顯示您未預期的同意提示
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 07/11/2017
-ms.author: celested
+ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 178a5e4e2a6ed520a6c58ce07a30684b2d1cbc09
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9559e22a8396de93bbe46f20b76855d9ff00f753
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60443027"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763715"
 ---
 # <a name="unexpected-consent-prompt-when-signing-in-to-an-application"></a>登入應用程式時看到非預期的同意提示
 
@@ -33,7 +33,7 @@ ms.locfileid: "60443027"
 
 還有其他提示預期會在各種案例中發生：
 
-* 應用程式需要的權限集已變更。
+* 應用程式所需的許可權集已變更。
 
 * 原本同意應用程式的使用者不是系統管理員，且現在有不同的使用者 (非系統管理員) 正首次使用應用程式。
 

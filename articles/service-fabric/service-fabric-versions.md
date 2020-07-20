@@ -1,58 +1,54 @@
 ---
-title: Azure Service Fabric 中支援的叢集版本 |Microsoft Docs
-description: 深入了解 Azure Service Fabric 中的叢集版本。
-services: service-fabric
-documentationcenter: .net
-author: aljo-microsoft
-manager: chakdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
+title: Azure 中支援的叢集版本 Service Fabric
+description: 瞭解 Azure Service Fabric 中的叢集版本，包括來自 Service Fabric team blog 的最新發行連結。
 ms.topic: troubleshooting
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 9/24/2018
-ms.author: aljo
-ms.openlocfilehash: 5d4ba32b3074098b3e3c1f2a4f42ac0e069e0a5f
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.date: 06/15/2020
+ms.openlocfilehash: 88c91558360f6be8343c955f8e6185366cd3279a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65409888"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84808921"
 ---
 # <a name="supported-service-fabric-versions"></a>支援的 Service Fabric 版本
 
-請確定您的叢集一律執行支援的 Azure Service Fabric 版本。 至少 60 天之後我們宣布發行新版本的 Service Fabric 中，針對先前版本的支援, 結束。 您可以上找到的新版本的公告[Service Fabric 小組部落格](https://blogs.msdn.microsoft.com/azureservicefabric/)。
+請確定您的叢集一律執行支援的 Azure Service Fabric 版本。 在我們宣佈發行新版本的 Service Fabric 之後，最少60天，對舊版的支援結束。 您會在[Service Fabric 小組的 blog](https://azure.microsoft.com/updates/?product=service-fabric)中找到新版本的公告。
 
-請參閱下列文件，如需有關如何保留您的叢集執行支援的 Service Fabric 版本：
+如需如何讓叢集執行支援的 Service Fabric 版本的詳細資訊，請參閱下列檔：
 
 - [升級 Azure Service Fabric 叢集](service-fabric-cluster-upgrade.md)
-- [升級獨立 Windows Server 叢集執行的 Service Fabric 版本](service-fabric-cluster-upgrade-windows-server.md)
+- [升級在獨立 Windows Server 叢集上執行的 Service Fabric 版本](service-fabric-cluster-upgrade-windows-server.md)
 
 ## <a name="supported-versions"></a>支援的版本
 
-下表列出 Service Fabric 和其支援結束日期的版本。
+下表列出 Service Fabric 的版本及其支援結束日期。
 
-| 在叢集中的 Service Fabric 執行階段 | 可以直接從叢集版本升級 |相容的 SDK 或 NuGet 套件版本 | 結束支援 |
+| 叢集中的 Service Fabric 執行階段 | 可直接自叢集版本升級 |相容的 SDK 或 NuGet 套件版本 | 結束支援 |
 | --- | --- |--- | --- |
-| 5.3.121 之前的所有叢集版本 | 5.1.158.* |小於或等於 2.3 版本 |2017 年 1 月 20 日 |
+| 5.3.121 前的所有叢集版本 | 5.1.158.* |小於或等於 2.3 版本 |2017 年 1 月 20 日 |
 | 5.3.* | 5.1.158.* |小於或等於 2.3 版本 |2017 年 2 月 24 日 |
 | 5.4.* | 5.1.158.* |小於或等於 2.4 版本 |2017 年 5 月 10 日       |
 | 5.5.* | 5.4.164.* |小於或等於 2.5 版本 |2017 年 8 月 10 日    |
 | 5.6.* | 5.4.164.* |小於或等於 2.6 版本 |2017 年 10 月 13 日   |
-| 5.7.* | 5.4.164.* |小於或等於 2.7 版 |2017 年 12 月 15日日  |
-| 6.0.* | 5.6.205.* |小於或等於 2.8 版 |2018 年 3 月 30日日     |
-| 6.1.* | 5.7.221.* |小於或等於 3.0 版 |2018 年 7 月 15 日      |
-| 6.2.* | 6.0.232.* |小於或等於 3.1 版 |2018 年 10 月 26日日   |
-| 6.3.* | 6.1.480.* |小於或等於 3.2 版 |2019 年 3 月 31日日  |
-| 6.4.* | 6.2.301.* |小於或等於 3.3 版 |目前的版本，因此沒有結束日期 |
+| 5.7.* | 5.4.164.* |小於或等於 2.7 版 |2017 年 12 月 15 日  |
+| 6.0.* | 5.6.205.* |小於或等於 2.8 版 |2018年3月30日     |
+| 6.1.* | 5.7.221.* |小於或等於 3.0 版 |2018年7月15日      |
+| 6.2.* | 6.0.232.* |小於或等於 3.1 版 |2018年10月26日   |
+| 6.3.* | 6.1.480.* |小於或等於 3.2 版 |2019年3月31日  |
+| 6.4.* | 6.2.301.* |小於或等於 3.3 版 |2019年9月15日 |
+| 6.5. * | 6.4.617.* |小於或等於版本3。4 |2020年8月1日 |
+| 7.0.466.* | 6.4.664.* |小於或等於版本4。0|2020年8月1日  |
+| 7.0.466.* | 6.5. * |小於或等於版本4。0|2020年8月1日 |
+| 7.0.470.* | 7.0.466.* |小於或等於版本4。0 |2020年8月1日  |
+| 7.0.472.* | 7.0.466.* |小於或等於版本4。0 |2020年8月1日  |
+| 7.1.409.* | 7.0.466.* |小於或等於版本4。0 |目前的版本，因此沒有結束日期 |
+| 7.1.417.* | 7.0.466.* |小於或等於版本4。0 |目前的版本，因此沒有結束日期 |
 
-## <a name="supported-operating-systems"></a>受支援的作業系統
+## <a name="supported-operating-systems"></a>支援的作業系統
 
-下表列出支援的 Service Fabric 版本支援的作業系統。
+下表列出支援的 Service Fabric 版本所支援的作業系統。
 
-| 作業系統 | 最早的受支援的 Service Fabric 版本 |
+| 作業系統 | 最早支援的 Service Fabric 版本 |
 | --- | --- |
 | Windows Server 2012 R2 | 所有版本 |
 | Windows Server 2016 | 所有版本 |
@@ -61,10 +57,11 @@ ms.locfileid: "65409888"
 | Windows Server 1809 | 6.4.654.9590 |
 | Windows Server 2019 | 6.4.654.9590 |
 | Linux Ubuntu 16.04 | 6.0 |
+| Linux Ubuntu 18.04 | 7.1 |
 
 ## <a name="supported-version-names"></a>支援的版本名稱
 
-下表列出 Service Fabric 和其對應的版本號碼的版本名稱。
+下表列出 Service Fabric 的版本名稱及其對應的版本號碼。
 
 | 版本名稱 | Windows 版本號碼 | Linux 版本號碼 |
 | --- | --- | --- |
@@ -77,7 +74,7 @@ ms.locfileid: "65409888"
 | 5.5 CU2 | 5.5.219.0    | NA |
 | 5.5 CU3 | 5.5.227.0    | NA |
 | 5.5 CU4 | 5.5.232.0    | NA |
-| 5.6 RTO | 5.6.204.9494 | NA |
+| 5.6 RTO | 5.6.204.9494 以上 | NA |
 | 5.6 CU2 | 5.6.210.9494 | NA |
 | 5.6 CU3 | 5.6.220.9494 | NA |
 | 5.7 RTO | 5.7.198.9494 | NA |
@@ -102,3 +99,17 @@ ms.locfileid: "65409888"
 | 6.4 CU4 | 6.4.644.9590 | 6.4.639.1 |
 | 6.4 CU5 | 6.4.654.9590 | 6.4.649.1 |
 | 6.4 CU6 | 6.4.658.9590 | NA |
+| 6.4 CU7 | 6.4.664.9590 | 6.4.661.1 |
+| 6.4 CU8 | 6.4.670.9590 | NA |
+| 6.5 RTO | 6.5.639.9590 | 6.5.435.1 |
+| 6.5 CU1 | 6.5.641.9590 | 6.5.454.1 |
+| 6.5 CU2 | 6.5.658.9590 | 6.5.460.1 |
+| 6.5 CU3 | 6.5.664.9590 | 6.5.466.1 |
+| 6.5 CU5 | 6.5.676.9590 | 6.5.467.1 |
+| 7.0 RTO | 7.0.457.9590 | 7.0.457.1 |
+| 7.0 CU2 | 7.0.464.9590 | 7.0.464.1 |
+| 7.0 CU3 | 7.0.466.9590 | 7.0.465.1 |
+| 7.0 CU4 | 7.0.470.9590 | 7.0.469.1 |
+| 7.0 CU6 | 7.0.472.9590 | 7.0.471.1 |
+| 7.1 RTO | 7.1.409.9590 | 7.1.410.1 |
+| 7.1 CU1 | 7.1.417.9590 | 7.1.418.1 |

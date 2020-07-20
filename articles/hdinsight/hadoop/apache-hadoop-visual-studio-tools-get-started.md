@@ -1,278 +1,335 @@
 ---
-title: 使用 Data Lake Tools for Visual Studio 來連線至 Apache Hadoop - Azure HDInsight
-description: 了解如何安裝和使用 Data Lake Tools for Visual Studio 來連線到 Azure HDInsight 中的 Apache Hadoop 叢集，然後執行 Hive 查詢。
+title: Apache Hadoop & Visual Studio Data Lake 工具-Azure HDInsight
+description: 瞭解如何安裝和使用適用于 Visual Studio 的 Data Lake 工具。 使用工具連接到 Azure HDInsight 中的 Apache Hadoop 叢集，然後執行 Hive 查詢。
 keywords: hadoop 工具,hive 查詢,visual studio,visual studio hadoop
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
-ms.topic: conceptual
-ms.date: 02/21/2019
-ms.openlocfilehash: 12d4a690ada0954015e515d616e3eb95ce1bfc3a
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.topic: how-to
+ms.date: 04/14/2020
+ms.openlocfilehash: 5fce1a8e2f4dda8ea84cfd66aa9dc13768ab17e7
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64717590"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077080"
 ---
 # <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-apache-hive-queries"></a>使用 Data Lake Tools for Visual Studio 連線至 Azure HDInsight 及執行 Apache Hive 查詢
 
-了解如何使用[用于 Visual Studio 的 Microsoft Azure Data Lake 和流分析工具](https://www.microsoft.com/download/details.aspx?id=49504)（也称为 Data Lake 工具）连接到 [Azure HDInsight](../hdinsight-hadoop-introduction.md) 中的 Apache Hadoop 群集并提交 Hive 查询。  
+瞭解如何使用 Microsoft Azure Data Lake 和串流分析 Visual Studio （Data Lake 工具）工具。 使用工具來連線到[Azure HDInsight 中的 Apache Hadoop](apache-hadoop-introduction.md)叢集，並提交 Hive 查詢。  
 
-如需使用 HDInsight 的詳細資訊，請參閱 [HDInsight 簡介](../hdinsight-hadoop-introduction.md)和[開始使用 HDInsight](apache-hadoop-linux-tutorial-get-started.md)。  
+如需使用 HDInsight 的詳細資訊，請參閱[開始使用 hdinsight](apache-hadoop-linux-tutorial-get-started.md)。  
 
-如需連線到 Apache Storm 叢集的詳細資訊，請參閱[使用 Visual Studio 開發 HDInsight 上 Apache Storm 的 C# 拓撲](../storm/apache-storm-develop-csharp-visual-studio-topology.md)。
+如需連接到 Apache Storm 的詳細資訊，請參閱[使用 Data Lake 工具開發 Apache Storm 的 c # 拓撲](../storm/apache-storm-develop-csharp-visual-studio-topology.md)。
 
 您可以使用 Data Lake Tools for Visual Studio 來存取 Azure Data Lake Analytics 和 HDInsight。 如需 Data Lake Tools 的相關資訊，請參閱[使用 Data Lake Tools for Visual Studio 開發 U-SQL 指令碼](../../data-lake-analytics/data-lake-analytics-data-lake-tools-get-started.md)。
 
 ## <a name="prerequisites"></a>必要條件
 
-若要完成本教學課程並使用 Data Lake Tools for Visual Studio，您需要下列項目：
+若要完成本文並使用適用于 Visual Studio 的 Data Lake 工具，您需要下列專案：
 
 * Azure HDInsight 叢集。 若要建立 HDInsight 叢集，請參閱[在 Azure HDInsight 中開始使用 Apache Hadoop](apache-hadoop-linux-tutorial-get-started.md)。 若要執行互動式 Apache Hive 查詢，您需要 [HDInsight 互動式查詢](../interactive-query/apache-interactive-query-get-started.md)叢集。  
 
-* [Visual Studio](https://visualstudio.microsoft.com/downloads/)（2013 或更高版本）。  [Visual Studio Community Edition](https://visualstudio.microsoft.com/vs/community/) 是免费的。  另请参阅[安装 Visual Studio 2017](https://docs.microsoft.com/visualstudio/install/install-visual-studio)。
-
-  > [!IMPORTANT]  
-  > Visual Studio 2013 不再支持 Data Lake 工具。 
+* [Visual Studio](https://visualstudio.microsoft.com/downloads/)。 [Visual Studio Community 版本](https://visualstudio.microsoft.com/vs/community/)是免費的。 此處所示的指示適用于[Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)。
 
 ## <a name="install-data-lake-tools-for-visual-studio"></a>安裝 Data Lake Tools for Visual Studio  
-<a name="install-or-update-data-lake-tools-for-visual-studio"></a>
 
-* Visual Studio 2017  
-  在安装期间，请确保至少包含工作负荷“Azure 开发”或“数据存储和处理”。  
+請遵循適當的指示，為您的 Visual Studio 版本安裝 Data Lake 工具：
 
-  对于现有安装，请在菜单栏中导航到“工具” > “获取工具和功能...”打开 Visual Studio 安装程序。  然后至少选择工作负荷“Azure 开发”或“数据存储和处理”。
+* 針對 Visual Studio 2017 或 Visual Studio 2019：
 
-  ![Visual Studio 安装程序的屏幕截图](./media/apache-hadoop-visual-studio-tools-get-started/vs2017_installation.png)
+    在 Visual Studio 安裝期間，請確定您包含**Azure 開發**工作負載或**資料儲存和處理**工作負載。  
 
-* Visual Studio 2013 和 2015  
-  [下载 Data Lake 工具](https://www.microsoft.com/download/details.aspx?id=49504)。 選擇與您的 Visual Studio 版本相符的 Data Lake Tools 版本。  
+    針對現有的 Visual Studio 安裝，請移至 IDE 功能表列，然後選取 [**工具**] [  >  **取得工具和功能**] 以開啟 [Visual Studio 安裝程式]。 在 [**工作負載**] 索引標籤中，選取至少 [ **Azure 開發**] 工作負載（在 [ **Web & 雲端**] 底下）。 或選取**資料儲存和處理**工作負載（在 [**其他工具**組] 底下）。
 
-> [!NOTE]  
-> Data Lake Tools for Visual Studio 目前只有英文版。
+  ![工作負載選取，Visual Studio 安裝程式](./media/apache-hadoop-visual-studio-tools-get-started/vs-installation.png)
 
-## <a name="update-data-lake-tools-for-visual-studio"></a>更新用于 Visual Studio 的 Data Lake 工具  
+* 針對 Visual Studio 2015：
+
+    [下載 Data Lake 工具](https://www.microsoft.com/download/details.aspx?id=49504)。 選擇與您的 Visual Studio 版本相符的 Data Lake Tools 版本。
+
+## <a name="update-data-lake-tools-for-visual-studio"></a>更新 Visual Studio 的 Data Lake 工具  
+
+接下來，請務必將 Data Lake 工具更新為最新版本。
 
 1. 開啟 Visual Studio。
 
-2. 在菜单栏中，导航到“工具” > “扩展和更新...”。
+2. 在 [**開始**] 視窗中，選取 [**不需要程式碼即可繼續**]。
 
-3. 在“扩展和更新”窗口中，展开左侧的“更新”。
+3. 在 Visual Studio IDE] 功能表列中，選擇 [**擴充**功能] [  >  **管理擴充**功能]。
 
-4. 如果有可用的更新，“Azure Data Lake 和流分析工具”会显示在主窗口中。  選取 [更新]。
+4. 在 [**管理擴充**功能] 對話方塊中，展開 [**更新**] 節點。
+
+5. 如果可用更新的清單包含**Azure Data Lake 和串流分析工具**，請選取它。 然後選取其 [**更新**] 按鈕。 [**下載並安裝**] 對話方塊出現並消失之後，Visual Studio 將 [ **Azure Data Lake] 和 [串流分析工具**] 延伸模組新增至更新排程。
+
+6. 關閉所有 Visual Studio 視窗。 [ **VSIX 安裝程式**] 對話方塊隨即出現。
+
+7. 選取 [**授權**] 以閱讀授權條款，然後選取 [**關閉**] 以返回 [ **VSIX 安裝程式**] 對話方塊。
+
+8. 選取 [修改]。 延伸模組更新的安裝隨即開始。 一段時間之後，對話方塊會變更，以顯示其已完成修改。 選取 [**關閉**]，然後重新開機 Visual Studio 以完成安裝。
 
 > [!NOTE]  
 > 您只可以使用 Data Lake Tools 2.3.0.0 版或更新版本，連線到互動式查詢叢集及執行互動式 Hive 查詢。
 
 ## <a name="connect-to-azure-subscriptions"></a>連線到 Azure 訂用帳戶
-您可以使用 Data Lake Tools for Visual Studio 連線到您的 HDInsight 叢集、執行一些基本管理作業，以及執行 Hive 查詢。
+
+您可以使用適用于 Visual Studio 的 Data Lake 工具連接到 HDInsight 叢集、執行一些基本管理作業，以及執行 Hive 查詢。
 
 > [!NOTE]  
-> 如需連線到一般 Hadoop 叢集的相關資訊，請參閱[使用 Visual Studio 撰寫和提交 Hive 查詢](https://blogs.msdn.com/b/xiaoyong/archive/2015/05/04/how-to-write-and-submit-hive-queries-using-visual-studio.aspx)。
+> 如需連線到一般 Hadoop 叢集的相關資訊，請參閱[如何使用 Visual Studio 撰寫和提交 Hive 查詢](https://blogs.msdn.microsoft.com/xiaoyong/2015/05/04/how-to-write-and-submit-hive-queries-using-visual-studio/)。
+
+### <a name="connect-to-an-azure-subscription"></a>連線到 Azure 訂用帳戶
 
 若要連線到您的 Azure 訂用帳戶：
 
 1. 開啟 Visual Studio。
 
-2. 在菜单栏中，导航到“视图” > “服务器资源管理器”。
+2. 在 [**開始**] 視窗中，選取 [**不需要程式碼即可繼續**]。
 
-3. 在服务器资源管理器中右键单击“Azure”并选择“连接到 Microsoft Azure 订阅...”，然后完成登录过程。
+3. 在 IDE 功能表列中，選擇 [ **View**  >  **伺服器總管**]。
 
-4. 在服务器资源管理器中，会显示现有 HDInsight 群集的列表。 如果您沒有任何叢集，可以使用 Azure 入口網站、Azure PowerShell 或 HDInsight SDK 來建立一個。 如需詳細資訊，請參閱[建立 HDInsight 叢集](../hdinsight-hadoop-provision-linux-clusters.md)。
+4. 在**伺服器總管**中，以滑鼠右鍵按一下 [ **Azure**]，選取 **[連線到 Microsoft Azure 訂**用帳戶]，然後完成驗證程式。 在**伺服器總管**中，展開 [ **Azure**  >  **HDInsight** ] 以查看現有 HDInsight 叢集的清單。
 
-   ![伺服器總管中的 Data Lake Tools for Visual Studio 叢集清單的螢幕擷取畫面](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.server.explorer.png "伺服器總管中的 Data Lake Tools for Visual Studio 叢集清單")
+5. 如果您沒有任何叢集，請使用 Azure 入口網站、Azure PowerShell 或 HDInsight SDK 建立一個。 如需詳細資訊，請參閱[在 HDInsight 中設定](../hdinsight-hadoop-provision-linux-clusters.md)叢集。
 
-5. 展開某個 HDInsight 叢集。 **Hive 資料庫**、預設儲存體帳戶、連結的儲存體帳戶，以及 **Hadoop 服務記錄**隨即出現。 您可以進一步展開這些實體。
+   ![HDInsight 叢集清單、伺服器總管、Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-server-explorer.png)
 
-连接到 Azure 订阅后，可执行以下任务。
+6. 展開某個 HDInsight 叢集。 叢集包含**Hive 資料庫**的節點。 此外，預設儲存體帳戶、任何其他連結的儲存體帳戶，以及**Hadoop 服務記錄**。 您可以進一步展開這些實體。
+
+在連線到您的 Azure 訂用帳戶之後，您可以執行下列工作。
+
+### <a name="connect-to-azure-from-visual-studio"></a>從 Visual Studio 連接到 Azure
 
 若要從 Visual Studio 連線到 Azure 入口網站：
 
-1. 在服务器资源管理器中，导航到“Azure” > “HDInsight”并选择你的群集。
+1. 在**伺服器總管**中，展開 [ **Azure**  >  **HDInsight** ]，然後選取您的叢集。
 
-2. 以滑鼠右鍵按一下 HDInsight 叢集，然後選取**在 Azure 入口網站中管理叢集**。
+2. 以滑鼠右鍵按一下 HDInsight 叢集，然後選取 [ **Azure 入口網站中的 [管理**叢集]。
 
-通过 Visual Studio 提问和/或提供反馈：
+### <a name="offer-questions-and-feedback-from-visual-studio"></a>提供 Visual Studio 的問題和意見反應
 
-1. 在服务器资源管理器中，导航到“Azure” > “HDInsight”。
+若要提出問題和，或提供來自 Visual Studio 的意見反應：
 
-2. 右键单击“HDInsight”，并选择“MSDN 论坛”以提问，或选择“提供反馈”以提供反馈。
+1. 從伺服器總管選擇 [ **Azure**  >  **HDInsight**]。
+
+2. 以滑鼠右鍵按一下 [ **HDInsight** ]，然後選取 [ **MSDN 論壇**] 來提出問題，或**提供意見**反應以提供意見反應。
+
+## <a name="link-to-or-edit-a-cluster"></a>連結至或編輯叢集
+
+> [!NOTE]
+> 您目前唯一可以連結的 HDInsight 叢集類型是 Hive 類型。
+
+若要連結 HDInsight 叢集：
+
+1. 以滑鼠右鍵按一下 [ **hdinsight**]，然後選取 [**連結 hdinsight**叢集] 以顯示 [**連結 hdinsight**叢集] 對話方塊。
+
+2. 在表單中輸入**連接 Url** `https://CLUSTERNAME.azurehdinsight.net` 。 當您移至另一個欄位時，叢集**名稱**會自動填入您的 URL 的叢集名稱部分。 然後輸入使用者**名稱**和**密碼**，然後選取 **[下一步]**。
+
+    ![連結叢集、HDInsight Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-link-cluster-dialog.png)
+
+3. 選取 [完成]。 如果叢集連結成功，叢集就會列在 [ **HDInsight** ] 節點底下。
+
+若要更新連結的叢集，請在叢集上按一下滑鼠右鍵，然後選取 [**編輯**]。 然後，您可以更新叢集資訊。
+
+![編輯連結的叢集、HDInsight Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-link-cluster-update.png)
 
 ## <a name="explore-linked-resources"></a>瀏覽連結的資源
-從 [伺服器總管] 中，您可以看到預設的儲存體帳戶，以及任何連結的儲存體帳戶。 如果您展開預設儲存體帳戶，您可以看到儲存體帳戶上的容器。 預設儲存體帳戶和預設容器皆已標示。 在任何容器上按一下滑鼠右鍵以檢視容器內容。
 
-![伺服器總管中 Data Lake Tools for Visual Studio 清單連結資源的螢幕擷取畫面](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.linked.resources.png "清單連結資源")
+從 [伺服器總管] 中，您可以看到預設的儲存體帳戶，以及任何連結的儲存體帳戶。 如果您展開預設儲存體帳戶，您可以看到儲存體帳戶上的容器。 預設儲存體帳戶和預設容器皆已標示。
 
-開啟容器之後，您可以使用下列按鈕來上傳、刪除及下載 Blob：
+![在伺服器總管中 Visual Studio 連結資源的 Data Lake 工具](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-linked-resources.png)
 
-![伺服器總管中 Data Lake Tools for Visual Studio Blob 作業的螢幕擷取畫面](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.blob.operations.png "在伺服器總管中更新、刪除和下載 Blob")
+以滑鼠右鍵按一下容器，然後選取 [ **View container** ] 以查看容器的內容。 開啟容器之後，您可以使用工具列**按鈕來重新**整理 [內容] 清單、 **[上傳 Blob**]、[**刪除選取的 Blob**]、[**開啟 Blob**] 和 [下載（**另存**新檔）] 選取的 blob。
+
+![容器清單和 blob 作業、HDInsight 叢集、Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-blob-operations.png)
 
 ## <a name="run-interactive-apache-hive-queries"></a>執行互動式 Apache Hive 查詢
-[Apache Hive](https://hive.apache.org) 是以 Hadoop 為基礎的資料倉儲基礎結構。 Hive 用於進行資料彙整、查詢及分析。 您可以使用 Data Lake Tools for Visual Studio 從 Visual Studio 執行 Hive 查詢。 如需有關 Hive 的詳細資訊，請參閱[將 Apache Hive 與 HDInsight 搭配使用](hdinsight-use-hive.md)。
 
-[互動式查詢](../interactive-query/apache-interactive-query-get-started.md)在 Apache Hive 2.1 中使用 [LLAP 上的 Hive](https://cwiki.apache.org/confluence/display/Hive/LLAP)。 互動式查詢可將互動功能整合到已儲存的大型資料集上的複雜資料倉儲樣式查詢。 相較於傳統的 Hive 批次作業，在互動式查詢上執行 Hive 查詢比較快速。 如需詳細資訊，請參閱執行 Apache Hive 批次作業。
+[Apache Hive](https://hive.apache.org) 是以 Hadoop 為基礎的資料倉儲基礎結構。 Hive 用於進行資料彙整、查詢及分析。 您可以使用 Data Lake Tools for Visual Studio 從 Visual Studio 執行 Hive 查詢。 如需有關 Hive 的詳細資訊，請參閱[Azure HDInsight 上的 Apache Hive 和 HiveQL 是什麼？](hdinsight-use-hive.md)。
+
+[Azure HDInsight 中的互動式查詢](../interactive-query/apache-interactive-query-get-started.md)會在 Apache Hive 2.1 的[LLAP 上使用 Hive](https://cwiki.apache.org/confluence/display/Hive/LLAP) 。 互動式查詢可將互動性帶入大型儲存資料集上的複雜資料倉儲樣式查詢。 在互動式查詢上執行 Hive 查詢的速度會比傳統的 Hive 批次作業快很多。 
 
 > [!NOTE]  
 > 只有在您連線到 [HDInsight 互動式查詢](../interactive-query/apache-interactive-query-get-started.md)叢集時，您才可以執行互動式 Hive 查詢。
 
-您也可以使用 Data Lake Tools for Visual Studio 來查看 Hive 作業的內容。 Data Lake Tools for Visual Studio 會收集和呈現特定 Hive 作業的 Yarn 記錄。
+您也可以使用適用于 Visual Studio 的 Data Lake 工具來查看 Hive 作業內的內容。 Data Lake Tools for Visual Studio 會收集和呈現特定 Hive 作業的 Yarn 記錄。
 
-在服务器资源管理器中，导航到“Azure” > “HDInsight”并选择你的群集。  后续部分所述的操作将在服务器资源管理器中的此位置着手。
+從**伺服器總管**選擇 [ **Azure**  >  **HDInsight** ]，然後選取您的叢集。  此節點是**伺服器總管**中要遵循之區段的起始點。
 
-### <a name="view-hivesampletable"></a>查看 hivesampletable
-所有 HDInsight 群集都有一个名为 `hivesampletable` 的默认示例 Hive 表。  
+### <a name="view-hivesampletable"></a>檢視 hivesampletable
 
-在群集中，导航到“Hive 数据库” > “默认” > “hivesampletable”。
+所有 HDInsight 叢集都有一個稱為的預設範例 Hive 資料表 `hivesampletable` 。  
 
-* 查看 `hivesampletable` 架构：  
-展开“hivesampletable”。
+從您的叢集中，選擇 [ **Hive 資料庫**] [  >  **預設**  >  **hivesampletable**]。
 
-* 查看 `hivesampletable` 数据：  
-右键单击“hivesampletable”并选择“查看前 100 行”。  這相當於使用 Hive ODBC 驅動程式來執行下列 Hive 查詢：
+* 若要查看 `hivesampletable` 架構：
 
-   `SELECT * FROM hivesampletable LIMIT 100`
+    展開 [ **hivesampletable**]。 欄位的名稱和資料類型 `hivesampletable` 會顯示出來。
 
-  您可以自訂資料列計數。
+* 若要查看 `hivesampletable` 資料：
 
-  ![HDInsight Hive Visual Studio 結構描述查詢的螢幕擷取畫面](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.hive.schema.png "Hive 查詢結果")
+    以滑鼠右鍵按一下 [ **hivesampletable**]，然後選取 [**查看前 100**個數據列]。 100結果的清單會出現在**Hive 資料表： hivesampletable**視窗中。 此動作相當於使用 Hive ODBC 驅動程式來執行下列 Hive 查詢：
+
+    `SELECT * FROM hivesampletable LIMIT 100`
+
+    您可以藉由變更資料**列數目**來自訂資料列計數;您可以從下拉式清單中選擇 [50]、[100]、[200] 或 [1000] 資料列。
 
 ### <a name="create-hive-tables"></a>建立 Hive 資料表
-若要建立 Hive 資料表，您可以使用 GUI 或使用 Hive 查詢。 如需使用 Hive 查詢的相關資訊，請參閱[執行 Apache Hive 查詢](#run.queries)。
 
-1. 在群集中，导航到“Hive 数据库” > “默认”。
+若要建立 Hive 資料表，您可以使用 GUI 或使用 Hive 查詢。 如需使用 Hive 查詢的相關資訊，請參閱[建立和執行 hive 查詢](#create-and-run-hive-queries)。
 
-2. 右键单击“默认”并选择“创建表”。
+1. 從您的叢集中，選擇 [ **Hive 資料庫**] [  >  **預設**]。
 
-3. 根据需要配置表。  
+2. 以滑鼠右鍵按一下 [**預設**]，然後選取 [**建立資料表**]。
 
-4. 選取 [建立資料表] 以提交作業來建立新的 Hive 資料表。
+3. 設定資料表。
 
-    ![HDInsight Visual Studio Tools 建立資料表視窗的螢幕擷取畫面](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.create.hive.table.png "建立 Hive 資料表")
+4. 選取 [**建立資料表**] 按鈕以提交作業，這會建立新的 Hive 資料表。
 
-### <a name="run.queries"></a>创建并运行 Hive 查询
+    ![建立資料表視窗、Hive、HDInsight 叢集、Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-create-hive-table.png)
+
+### <a name="create-and-run-hive-queries"></a>建立和執行 Hive 查詢
+
 您有兩個選項可建立和執行 Hive 查詢：
 
 * 建立特定查詢
 * 建立 Hive 應用程式
 
-若要建立，並執行臨機操作查詢：
+#### <a name="create-an-ad-hoc-query"></a>建立特定查詢
 
-1. 右键单击要运行查询的群集，然后选择“编写 Hive 查询”。  
+若要建立並執行臨機操作查詢：
 
-2. 輸入 Hive 查詢。  
+1. 在您要執行查詢的叢集上按一下滑鼠右鍵，然後選取 [**撰寫 Hive 查詢**]。  
 
-    Hive 編輯器支援 Intellisense。 Data Lake Tools for Visual Studio 支援在編輯 Hive 指令碼時載入遠端中繼資料。 例如，如果键入 `SELECT * FROM`，则 IntelliSense 会列出所有建议的表名称。 若已指定資料表名稱，IntelliSense 會列出資料行名稱。 此工具支援大部分的 Hive DML 陳述式、子查詢及內建 UDF。
+2. 輸入 Hive 查詢。
 
-    ![HDInsight Visual Studio Tools IntelliSense 範例 1 的螢幕擷取畫面](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.intellisense.table.names.png "U-SQL IntelliSense")
+    Hive 編輯器支援 Intellisense。 Data Lake Tools for Visual Studio 支援在編輯 Hive 指令碼時載入遠端中繼資料。 例如，如果您輸入 `SELECT * FROM` ，IntelliSense 會列出所有建議的資料表名稱。 若已指定資料表名稱，IntelliSense 會列出資料行名稱。 此工具支援大部分的 Hive DML 陳述式、子查詢及內建 UDF。
 
-    ![HDInsight Visual Studio Tools IntelliSense 範例 2 的螢幕擷取畫面](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.intellisense.column.names.png "U-SQL IntelliSense")
+    ![IntelliSense 範例1，Hive 臨機操作查詢，HDInsight 叢集，Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-intellisense-table-names.png)
 
-   > [!NOTE]  
-   > IntelliSense 只建議 HDInsight 工具列中已選取的叢集中繼資料。
+    ![IntelliSense 範例2、Hive 臨機操作查詢、HDInsight 叢集 Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-intellisense-column-names.png)
 
-3. 选择执行模式：
+    > [!NOTE]  
+    > IntelliSense 只建議 HDInsight 工具列中已選取的叢集中繼資料。
+
+    以下是您可以使用的範例查詢：
+
+    ```sql
+    SELECT devicemodel, COUNT(devicemodel) AS deviceCount
+    FROM hivesampletable
+    GROUP BY devicemodel
+    ORDER BY devicemodel
+    ```
+
+3. 選擇 [執行模式]：
 
     * **互動式**  
 
-      确保“交互式”已选中，然后选择“执行”。
+        在第一個下拉式清單中，選擇 [ **Interactive**]，然後選取 [**執行**]。
 
-      ![查询和“执行”的屏幕截图](./media/apache-hadoop-visual-studio-tools-get-started/execute.png)  
+        ![互動模式，Hive 臨機操作查詢，HDInsight 叢集，Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-query-execute.png)  
 
-    * **批次**  
+    * **Batch**  
 
-      确保“批处理”已选中，然后选择“提交”。  如果选择高级提交选项，请为脚本配置“作业名称”、“参数”、“其他配置”和“状态目录”。
+        在第一個下拉式清單中，選擇 [ **Batch**]，然後選取 [**提交**]。 或選取 [**提交**] 旁的下拉式圖示，然後選擇 [ **Advanced**]。
 
-      ![查询和“批处理”的屏幕截图](./media/apache-hadoop-visual-studio-tools-get-started/batch.png)  
+        ![批次模式、Hive 臨機操作查詢、HDInsight 叢集、Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-query-batch.png)
 
-      ![HDInsight Hadoop Hive 查詢的螢幕擷取畫面](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.submit.jobs.advanced.png "提交查詢")
+        如果您選取 [advanced submit] 選項，就會出現 [**提交腳本**] 對話方塊。 設定腳本的**作業名稱**、**引數**、**其他**設定和**狀態目錄**。
+
+        ![[提交腳本] 對話方塊、[Hive 臨機操作查詢]、[HDInsight 叢集] Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-submit-jobs-advanced.png)
 
       > [!NOTE]  
-      > 无法将批提交到交互式查询群集。  必须使用交互模式。
+      > 您無法將批次提交至互動式查詢叢集。  您必須使用互動模式。
+
+#### <a name="create-a-hive-application"></a>建立 Hive 應用程式
 
 若要建立和執行 Hive 解決方案：
 
-1. 在菜单栏中，导航到“文件” > “新建” > “项目...”。
+1. 從功能表列中 **，選擇 [** 檔案] [新增] [  >  **New**  >  **專案**]。
 
-2. 在左窗格中，导航到“已安装” > “Azure Data Lake” > “HIVE (HDInsight)”。  
+2. 在 [**建立新專案**] 視窗中，選取 [搜尋] 方塊，然後輸入**Hive**。 然後選擇 [ **Hive 應用程式**] 並選取 **[下一步]**。
 
-3. 在中間窗格中，選取 [Hive 應用程式]。 輸入屬性，然後選取 [確定]。
+3. 在 [**設定您的新專案**] 視窗中輸入**專案名稱**，選取或建立專案**位置**，然後選取 [**建立**]。
 
-    ![HDInsight Visual Studio Tools 工具新 Hive 專案的螢幕擷取畫面](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.new.hive.project.png "從 Visual Studio 建立 Hive 應用程式")
+    ![新的 Hive 應用程式、設定您的新專案視窗、HDInsight Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-new-hive-project.png)
 
-4. 在 [方案總管] 中，按兩下 **Script.hql** 來開啟指令碼。
+4. 在 [方案總管]**** 中，按兩下 **Script.hql** 來開啟指令碼。
 
-### <a name="view-job-summary-and-output"></a>查看作业摘要和输出
+### <a name="view-job-summary-and-output"></a>查看作業摘要和輸出
 
-作业摘要根据选择的是“批处理”还是“交互式”模式而略有不同。
+工作摘要在**批次**和**互動**模式之間有些許差異。
 
-![作业摘要](./media/apache-hadoop-visual-studio-tools-get-started/jobSummary.png "Hive 作业摘要")
+![Hive 作業摘要視窗、批次和互動模式、Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-job-summary.png)
 
-使用“刷新”按钮更新状态，直到作业状态更改为“已完成”。  
+使用 [重新整理 **] 圖示來**更新狀態，直到作業狀態變更為 [**已完成**] 為止。  
 
-* 如需“批处理”模式下的作业详细信息，请选择底部的链接以查看“作业查询”、“作业输出”、“作业日志”或“Yarn 日志”。
+* 如需**批次**模式中的作業詳細資料，請選取底部的連結以查看**作業查詢**、**作業輸出**或**作業記錄**檔，或**查看 Yarn 記錄**。
 
-* 如需“交互式”模式下的作业详细信息，请查看“输出”和“HiveServer2 输出”选项卡。
+* 如需**互動**模式的作業詳細資料，請參閱**輸出**和**HiveServer2 輸出**窗格。
 
-  ![作业详细信息](./media/apache-hadoop-visual-studio-tools-get-started/tabs.png "Hive 作业详细信息")
+    ![Hive 互動式作業輸出、HDInsight 叢集、Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-job-details.png)
 
-### <a name="view-job-graph"></a>查看作业图
+### <a name="view-job-graph"></a>查看作業圖形
 
-目前，仅显示使用 Tez 作为执行引擎的 Hive 作业的作业图。  如需啟用 Tez 的相關資訊，請參閱[在 HDInsight 中使用 Apache Hive](hdinsight-use-hive.md)。  另请参阅[使用 Apache Tez 而不是 Map Reduce](../hdinsight-hadoop-optimize-hive-query.md#use-apache-tez-instead-of-map-reduce)。  
+目前，只會針對使用 Tez 做為執行引擎的 Hive 作業顯示作業圖形。  如需啟用 Tez 的相關資訊，請參閱[Azure HDInsight 上的 Apache Hive 和 HiveQL？](hdinsight-use-hive.md)。  另請參閱[使用 Apache Tez，而非 Map 的縮減](../hdinsight-hadoop-optimize-hive-query.md#use-apache-tez-instead-of-map-reduce)。  
 
-若要檢視頂點內的所有運算子，可按兩下作業圖表的頂點。 您也可以指向特定運算子，以查看有關運算子的更多詳細資料。
+若要查看頂點內的所有運算子，請按兩下作業圖形的頂點。 您也可以指向特定運算子，以查看有關運算子的更多詳細資料。
 
-即使已将 Tez 指定为执行引擎，但如果未启动 Tez 应用程序，则也可能不会显示作业图。  可能的原因是作业不包含 DML 语句，或者在未启动 Tez 应用程序的情况下 DML 语句可以返回。 例如，`SELECT * FROM table1` 不会启动 Tez 应用程序。
+即使將 Tez 指定為執行引擎，如果沒有啟動 Tez 應用程式，作業圖形可能不會出現。  發生這種情況的原因可能是作業未包含 DML 語句。 或者，因為 DML 語句可以在不啟動 Tez 應用程式的情況下傳回。 例如， `SELECT * FROM table1` 不會啟動 Tez 應用程式。
 
-![作业图](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight.fast.path.hive.execution.png "Hive 作业摘要")
+![Apache Hive 作業圖形，Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-fast-path-hive-execution.png)
 
+### <a name="view-task-execution-detail"></a>View task 執行詳細資料
 
-### <a name="task-execution-detail"></a>任务执行详细信息
+從作業圖形中，您可以選取 [工作**執行詳細資料**]，以取得 Hive 作業的結構化和視覺化資訊。 您也可以取得更多作業詳細資料。 如果發生效能問題，您可以使用此檢視來取得有關問題的更多詳細資料。 例如，您可以取得每個工作運作方式的相關資訊，以及每個工作的詳細資訊（資料讀取/寫入、排程/開始/結束時間等等）。 使用此資訊，根據視覺化資訊來微調作業組態或系統架構。
 
-在作业图中，可以选择“任务执行详细信息”获取 Hive 作业的结构化和可视化信息。 您也可以取得更多作業詳細資料。 如果發生效能問題，您可以使用此檢視來取得有關問題的更多詳細資料。 例如，您可以取得每個工作的運作方式資訊，以及每個工作的詳細資訊 (資料讀取/寫入、排程/開始/結束時間等)。 使用此資訊，根據視覺化資訊來微調作業組態或系統架構。
-
-![Data Lake Visual Studio Tools 工作執行檢視視窗的螢幕擷取畫面](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.task.execution.view.png "工作執行檢視")
-
+![工作執行視圖視窗，Data Lake Visual Studio Tools](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-task-execution-view.png)
 
 ### <a name="view-hive-jobs"></a>檢視 Hive 工作
+
 您可以檢視 Hive 工作的工作查詢、工作輸出、工作記錄和 Yarn 記錄。
 
-在工具的最新版本中，您可以藉由收集和呈現 Yarn 記錄來查看 Hive 作業的內容。 Yarn 記錄可協助您調查效能問題。 如需 HDInsight 如何收集 Yarn 記錄的詳細資訊，請參閱[以程式設計方式存取 HDInsight 應用程式記錄](../hdinsight-hadoop-access-yarn-app-logs-linux.md)。
+在最新版本的工具中，您可以藉由收集和呈現 Yarn 記錄來查看 Hive 工作的內容。 Yarn 記錄可協助您調查效能問題。 如需 HDInsight 如何收集 Yarn 記錄的詳細資訊，請參閱[存取 Apache HADOOP Yarn 應用程式記錄](../hdinsight-hadoop-access-yarn-app-logs-linux.md)檔。
 
 若要檢視 Hive 作業：
 
-1. 右键单击某个 HDInsight 群集，并选择“查看作业”。 在該叢集上執行的 Hive 作業清單隨即出現。  
+1. 以滑鼠右鍵按一下 HDInsight 叢集，然後選取 [**查看作業**]。
 
-2. 選取一個工作。 在 [Hive 作業摘要] 視窗中，選取下列其中一項：
-   - **作業查詢**
-   - **工作輸出**
-   - **作業記錄**  
-   - **Yarn 記錄**
+    ![View Job，Apache Hive，HDInsight cluster，Visual Studio](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-view-hive-jobs.png)
 
-     ![HDInsight Visual Studio Tools 檢視 Hive 作業視窗的螢幕擷取畫面](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.view.hive.jobs.png "檢視 Hive 作業")
+    在該叢集上執行的 Hive 作業清單隨即出現。  
 
+2. 選取一個工作。 在 [ **Hive 作業摘要**] 視窗中，選取下列其中一個連結：
+    - **作業查詢**
+    - **作業輸出**
+    - **作業記錄**  
+    - **Yarn 記錄檔**
 
 ## <a name="run-apache-pig-scripts"></a>執行 Apache Pig 指令碼
 
-1. 在菜单栏中，导航到“文件” > “新建” > “项目...”。
+1. 從功能表列中 **，選擇 [** 檔案] [新增] [  >  **New**  >  **專案**]。
 
-2. 在左窗格中，导航到“已安装” > “Azure Data Lake” > “Pig (HDInsight)”。  
+2. 在 [**開始**] 視窗中，選取 [搜尋] 方塊並輸入**Pig**。 然後選取 [ **Pig 應用程式**] 並選取 **[下一步]**。
 
-3. 在中间窗格中选择“Pig 应用程序”。 輸入屬性，然後選取 [確定]。
+3. 在 [**設定您的新專案**] 視窗中輸入**專案名稱**，然後選取或建立專案的**位置**。 然後選取 [建立]。
 
-4. 在“解决方案资源管理器”中，双击“Script.pig”打开脚本。
+4. 在 [IDE**方案總管**] 窗格中，按兩下 [ **pig** ] 以開啟腳本。
 
 ## <a name="feedback-and-known-issues"></a>意見反應和已知問題
+
 * 尚未修正以下問題：未顯示以 null 值開頭的結果。 如果您因為此問題而遭到封鎖，請連絡支援小組。
-* Visual Studio 所建立的 HQL 指令碼是根據使用者的所在區域設定進行編碼。 如果您將指令碼當作二進位檔案上傳到叢集，則指令碼不會正確執行。
+
+* Visual Studio 所建立的 HQL 腳本會根據使用者的本機區域設定進行編碼。 如果您將指令碼當作二進位檔案上傳到叢集，則指令碼不會正確執行。
 
 ## <a name="next-steps"></a>後續步驟
-在本文中，您已了解如何使用 Data Lake Tools for Visual Studio 套件從 Visual Studio 連線到 HDInsight 叢集。 您也了解如何執行 Hive 查詢。 如需詳細資訊，請參閱這些文章：
 
-* [使用用于 Visual Studio 的 Data Lake 工具运行 Apache Hive 查询](apache-hadoop-use-hive-visual-studio.md)
-* [在 HDInsight 中使用 Hadoop Hive](hdinsight-use-hive.md)
-* [開始使用 HDInsight 中的 Apache Hadoop](apache-hadoop-linux-tutorial-get-started.md)
+在本文中，您已了解如何使用 Data Lake Tools for Visual Studio 套件從 Visual Studio 連線到 HDInsight 叢集。 您也了解如何執行 Hive 查詢。 
+
+* [使用 Data Lake Tools for Visual Studio 執行 Apache Hive 查詢](apache-hadoop-use-hive-visual-studio.md)
+* [Azure HDInsight 上的 Apache Hive 和 HiveQL 是什麼？](hdinsight-use-hive.md)
+* [建立 Apache Hadoop 叢集 - 範本](apache-hadoop-linux-tutorial-get-started.md)
 * [在 HDInsight 中提交 Apache Hadoop 作業](submit-apache-hadoop-jobs-programmatically.md)
-* [在 HDInsight 中使用 Apache Hadoop 分析 Twitter 資料](../hdinsight-analyze-twitter-data-linux.md)
-
+* [在 HDInsight 上使用 Apache Hive 與 Apache Hadoop 分析 Twitter 資料](../hdinsight-analyze-twitter-data-linux.md)

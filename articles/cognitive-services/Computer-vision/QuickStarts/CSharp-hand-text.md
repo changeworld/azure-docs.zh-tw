@@ -1,51 +1,50 @@
 ---
-title: 快速入門：擷取手寫文字 - REST、C#
+title: 快速入門：電腦視覺 2.1 和 3.0 - 擷取印刷和手寫文字 - REST、C#
 titleSuffix: Azure Cognitive Services
-description: 在此快速入門中，您可以使用電腦視覺 API 搭配 C# 擷取影像中的手寫文字。
+description: 在本快速入門中，您將搭配使用電腦視覺 API 與 C# 來擷取影像中的印刷和手寫文字。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 03/04/2019
+ms.date: 05/22/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: c1ad38b6dbf4914d3126f2c9166813c286762079
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: b47d579a8b086f86194d7129f5289f9c5c839c85
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60009611"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987523"
 ---
-# <a name="quickstart-extract-handwritten-text-using-the-rest-api-and-c-in-computer-vision"></a>快速入門：在電腦視覺中使用 REST API 與 C# 擷取手寫文字
+# <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-30-rest-api-and-c"></a>快速入門：使用電腦視覺 3.0 REST API 和 C# 擷取印刷及手寫文字
 
-在此快速入門中，您將使用電腦視覺 API 的 REST API 來擷取影像中的手寫文字。 您可以使用[批次讀取](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) API 與[讀取作業結果](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) API，偵測影像中的手寫文字，然後將辨識出的字元擷取到電腦可讀取的字元資料流中。
+在本快速入門中，您將使用電腦視覺 REST API，擷取影像中的印刷及手寫文字。 您可以使用[讀取](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005)和[取得讀取結果](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750)方法來偵測影像中的文字，然後將辨識到的字元擷取為機器可讀的字元串流。 
 
 > [!IMPORTANT]
-> 不同於 [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) 方法，[批次讀取](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb)方法會以非同步方式執行。 這個方法不會在成功回應的主體中傳回任何資訊。 「讀取」方法會改為在 `Operation-Location` 回應標頭欄位中傳回 URI。 您接著可以呼叫這個 URI (它代表[讀取作業結果](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d)方法)，以便檢查狀態並傳回「批次讀取」方法呼叫的結果。
-
-如果您沒有 Azure 訂用帳戶，請在開始前建立 [免費帳戶](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) 。
+> [讀取](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005)方法會以非同步方法執行。 這個方法不會在成功回應的主體中傳回任何資訊。 「批次讀取」方法會改為在 `Operation-Location` 回應標頭欄位的值中傳回 URI。 您接著可以呼叫代表[取得讀取結果](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750)API 的這個 URI，以檢查狀態並傳回「讀取」方法呼叫的結果。
 
 ## <a name="prerequisites"></a>必要條件
 
-- 您必須有 [Visual Studio 2015](https://visualstudio.microsoft.com/downloads/) 或更新版本。
-- 您必須有電腦視覺的訂用帳戶金鑰。 您可以從[試用認知服務](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)取得免費試用的金鑰。 或者，依照[建立認知服務帳戶](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的指示訂閱電腦視覺並取得金鑰。
+* Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/cognitive-services/)
+* 您必須有 [Visual Studio 2015](https://visualstudio.microsoft.com/downloads/) 或更新版本。
+* 擁有 Azure 訂用帳戶之後，在 Azure 入口網站中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title="建立電腦視覺資源"  target="_blank">建立電腦視覺資源<span class="docon docon-navigate-external x-hidden-focus"></span></a>，以取得您的金鑰和端點。 在其部署後，按一下 [前往資源]****。
+    * 您需要來自所建立資源的金鑰和端點，以將應用程式連線至 電腦視覺服務。 您稍後會在快速入門中將金鑰和端點貼到下列程式碼中。
+    * 您可以使用免費定價層 (`F0`) 來試用服務，之後可升級至付費層以用於實際執行環境。
+* 為金鑰和端點 URL (分別名為 `COMPUTER_VISION_SUBSCRIPTION_KEY` 和 `COMPUTER_VISION_ENDPOINT`)，[建立環境變數](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)。
 
 ## <a name="create-and-run-the-sample-application"></a>建立並執行範例應用程式
 
-若要在 Visual Studio 中建立範例，請執行下列步驟：
+在 Visual Studio 中建立範例：
 
 1. 在 Visual Studio 中，使用 Visual C# 主控台應用程式範本建立新的 Visual Studio 解決方案。
-1. 安裝 Newtonsoft.Json NuGet 套件。
-    1. 在功能表中，按一下 [工具]，選取 [NuGet 套件管理員]，然後選取 [管理解決方案的 NuGet 套件]。
-    1. 按一下 [瀏覽] 索引標籤，然後在 [搜尋] 方塊中鍵入 "Newtonsoft.Json"。
-    1. 顯示時選取 [Newtonsoft.Json]，按一下專案名稱旁邊的核取方塊，然後按一下 [安裝]。
-1. 將 `Program.cs` 中的程式碼取代為下列程式碼，然後視需要在程式碼中進行下列變更：
-    1. 將 `subscriptionKey` 的值取代為您的訂用帳戶金鑰。
-    1. 如有需要，請從您取得訂用帳戶金鑰的 Azure 區域，將 `uriBase` 的值取代為[批次讀取](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb)方法的端點 URL。
-1. 執行程式。
-1. 在系統提示時，輸入本機影像的路徑。
+2. 安裝 Newtonsoft.Json NuGet 套件。
+    1. 在功能表中，按一下 [工具]****，選取 [NuGet 套件管理員]****，然後選取 [管理解決方案的 NuGet 套件]****。
+    2. 按一下 [瀏覽]**** 索引標籤，然後在 [搜尋]**** 方塊中鍵入 "Newtonsoft.Json"。
+    3. 顯示時選取 [Newtonsoft.Json]****，按一下專案名稱旁邊的核取方塊，然後按一下 [安裝]****。
+3. 將下列程式碼複製並貼到解決方案中的 Program.cs 檔案內。
+4. 執行程式。
 
 ```csharp
 using Newtonsoft.Json.Linq;
@@ -55,53 +54,41 @@ using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace CSHttpClientSample
 {
     static class Program
     {
-        // Replace <Subscription Key> with your valid subscription key.
-        const string subscriptionKey = "<Subscription Key>";
+        // Add your Computer Vision subscription key and endpoint to your environment variables.
+        static string subscriptionKey = Environment.GetEnvironmentVariable("COMPUTER_VISION_SUBSCRIPTION_KEY");
 
-        // You must use the same Azure region in your REST API method as you used to
-        // get your subscription keys. For example, if you got your subscription keys
-        // from the West US region, replace "westcentralus" in the URL
-        // below with "westus".
-        //
-        // Free trial subscription keys are generated in the "westus" region.
-        // If you use a free trial subscription key, you shouldn't need to change
-        // this region.
-        const string uriBase =
-            "https://westus.api.cognitive.microsoft.com/vision/v2.0/read/core/asyncBatchAnalyze";
+        // An endpoint should have a format like "https://westus.api.cognitive.microsoft.com"
+        static string endpoint = Environment.GetEnvironmentVariable("COMPUTER_VISION_ENDPOINT");
 
-        static void Main()
+        // the Batch Read method endpoint
+        static string uriBase = endpoint + "/vision/v3.0//read/analyze";
+
+        // Add a local image with text here (png or jpg is OK)
+        static string imageFilePath = @"my-image.png";
+
+
+        static void Main(string[] args)
         {
-            // Get the path and filename to process from the user.
-            Console.WriteLine("Handwriting Recognition:");
-            Console.Write(
-                "Enter the path to an image with handwritten text you wish to read: ");
-            string imageFilePath = Console.ReadLine();
+            // Call the REST API method.
+            Console.WriteLine("\nExtracting text...\n");
+            ReadText(imageFilePath).Wait();
 
-            if (File.Exists(imageFilePath))
-            {
-                // Call the REST API method.
-                Console.WriteLine("\nWait a moment for the results to appear.\n");
-                ReadHandwrittenText(imageFilePath).Wait();
-            }
-            else
-            {
-                Console.WriteLine("\nInvalid file path");
-            }
             Console.WriteLine("\nPress Enter to exit...");
             Console.ReadLine();
         }
 
         /// <summary>
-        /// Gets the handwritten text from the specified image file by using
+        /// Gets the text from the specified image file by using
         /// the Computer Vision REST API.
         /// </summary>
-        /// <param name="imageFilePath">The image file with handwritten text.</param>
-        static async Task ReadHandwrittenText(string imageFilePath)
+        /// <param name="imageFilePath">The image file with text.</param>
+        static async Task ReadText(string imageFilePath)
         {
             try
             {
@@ -111,15 +98,11 @@ namespace CSHttpClientSample
                 client.DefaultRequestHeaders.Add(
                     "Ocp-Apim-Subscription-Key", subscriptionKey);
 
-                // Request parameter.
-                string requestParameters = "mode=Handwritten";
-
-                // Assemble the URI for the REST API method.
-                string uri = uriBase + "?" + requestParameters;
+                string url = uriBase;
 
                 HttpResponseMessage response;
 
-                // Two REST API methods are required to extract handwritten text.
+                // Two REST API methods are required to extract text.
                 // One method to submit the image for processing, the other method
                 // to retrieve the text found in the image.
 
@@ -142,7 +125,7 @@ namespace CSHttpClientSample
 
                     // The first REST API method, Batch Read, starts
                     // the async process to analyze the written text in the image.
-                    response = await client.PostAsync(uri, content);
+                    response = await client.PostAsync(url, content);
                 }
 
                 // The response header for the Batch Read method contains the URI
@@ -164,9 +147,9 @@ namespace CSHttpClientSample
                 // If the first REST API method completes successfully, the second 
                 // REST API method retrieves the text written in the image.
                 //
-                // Note: The response may not be immediately available. Handwriting
+                // Note: The response may not be immediately available. Text
                 // recognition is an asynchronous operation that can take a variable
-                // amount of time depending on the length of the handwritten text.
+                // amount of time depending on the length of the text.
                 // You may need to wait or retry this operation.
                 //
                 // This example checks once per second for ten seconds.
@@ -179,9 +162,9 @@ namespace CSHttpClientSample
                     contentString = await response.Content.ReadAsStringAsync();
                     ++i;
                 }
-                while (i < 10 && contentString.IndexOf("\"status\":\"Succeeded\"") == -1);
+                while (i < 60 && contentString.IndexOf("\"status\":\"succeeded\"") == -1);
 
-                if (i == 10 && contentString.IndexOf("\"status\":\"Succeeded\"") == -1)
+                if (i == 60 && contentString.IndexOf("\"status\":\"succeeded\"") == -1)
                 {
                     Console.WriteLine("\nTimeout error.\n");
                     return;
@@ -217,107 +200,203 @@ namespace CSHttpClientSample
 }
 ```
 
+
 ## <a name="examine-the-response"></a>檢查回應
 
 成功的回應會以 JSON 的形式傳回。 範例應用程式會在主控台視窗中剖析並顯示成功的回應，如下列範例所示：
 
+
 ```json
 {
-  "status": "Succeeded",
-  "recognitionResults": [
-    {
-      "page": 1,
-      "clockwiseOrientation": 349.59,
-      "width": 3200,
-      "height": 3200,
-      "unit": "pixel",
-      "lines": [
-        {
-          "boundingBox": [202,618,2047,643,2046,840,200,813],
-          "text": "Our greatest glory is not",
-          "words": [
-            {
-              "boundingBox": [204,627,481,628,481,830,204,829],
-              "text": "Our"
-            },
-            {
-              "boundingBox": [519,628,1057,630,1057,832,518,830],
-              "text": "greatest"
-            },
-            {
-              "boundingBox": [1114,630,1549,631,1548,833,1114,832],
-              "text": "glory"
-            },
-            {
-              "boundingBox": [1586,631,1785,632,1784,834,1586,833],
-              "text": "is"
-            },
-            {
-              "boundingBox": [1822,632,2115,633,2115,835,1822,834],
-              "text": "not"
-            }
-          ]
-        },
-        {
-          "boundingBox": [420,1273,2954,1250,2958,1488,422,1511],
-          "text": "but in rising every time we fall",
-          "words": [
-            {
-              "boundingBox": [423,1269,634,1268,635,1507,424,1508],
-              "text": "but"
-            },
-            {
-              "boundingBox": [667,1268,808,1268,809,1506,668,1507],
-              "text": "in"
-            },
-            {
-              "boundingBox": [874,1267,1289,1265,1290,1504,875,1506],
-              "text": "rising"
-            },
-            {
-              "boundingBox": [1331,1265,1771,1263,1772,1502,1332,1504],
-              "text": "every"
-            },
-            {
-              "boundingBox": [1812, 1263, 2178, 1261, 2179, 1500, 1813, 1502],
-              "text": "time"
-            },
-            {
-              "boundingBox": [2219, 1261, 2510, 1260, 2511, 1498, 2220, 1500],
-              "text": "we"
-            },
-            {
-              "boundingBox": [2551, 1260, 3016, 1258, 3017, 1496, 2552, 1498],
-              "text": "fall"
-            }
-          ]
-        },
-        {
-          "boundingBox": [1612, 903, 2744, 935, 2738, 1139, 1607, 1107],
-          "text": "in never failing ,",
-          "words": [
-            {
-              "boundingBox": [1611, 934, 1707, 933, 1708, 1147, 1613, 1147],
-              "text": "in"
-            },
-            {
-              "boundingBox": [1753, 933, 2132, 930, 2133, 1144, 1754, 1146],
-              "text": "never"
-            },
-            {
-              "boundingBox": [2162, 930, 2673, 927, 2674, 1140, 2164, 1144],
-              "text": "failing"
-            },
-            {
-              "boundingBox": [2703, 926, 2788, 926, 2790, 1139, 2705, 1140],
-              "text": ",",
-              "confidence": "Low"
-            }
-          ]
-        }
-      ]
-    }
-  ]
+  "status": "succeeded",
+  "createdDateTime": "2020-05-28T05:13:21Z",
+  "lastUpdatedDateTime": "2020-05-28T05:13:22Z",
+  "analyzeResult": {
+    "version": "3.0.0",
+    "readResults": [
+      {
+        "page": 1,
+        "language": "en",
+        "angle": 0.8551,
+        "width": 2661,
+        "height": 1901,
+        "unit": "pixel",
+        "lines": [
+          {
+            "boundingBox": [
+              67,
+              646,
+              2582,
+              713,
+              2580,
+              876,
+              67,
+              821
+            ],
+            "text": "The quick brown fox jumps",
+            "words": [
+              {
+                "boundingBox": [
+                  143,
+                  650,
+                  435,
+                  661,
+                  436,
+                  823,
+                  144,
+                  824
+                ],
+                "text": "The",
+                "confidence": 0.958
+              },
+              {
+                "boundingBox": [
+                  540,
+                  665,
+                  926,
+                  679,
+                  926,
+                  825,
+                  541,
+                  823
+                ],
+                "text": "quick",
+                "confidence": 0.57
+              },
+              {
+                "boundingBox": [
+                  1125,
+                  686,
+                  1569,
+                  700,
+                  1569,
+                  838,
+                  1125,
+                  828
+                ],
+                "text": "brown",
+                "confidence": 0.799
+              },
+              {
+                "boundingBox": [
+                  1674,
+                  703,
+                  1966,
+                  711,
+                  1966,
+                  851,
+                  1674,
+                  841
+                ],
+                "text": "fox",
+                "confidence": 0.442
+              },
+              {
+                "boundingBox": [
+                  2083,
+                  714,
+                  2580,
+                  725,
+                  2579,
+                  876,
+                  2083,
+                  855
+                ],
+                "text": "jumps",
+                "confidence": 0.878
+              }
+            ]
+          },
+          {
+            "boundingBox": [
+              187,
+              1062,
+              485,
+              1056,
+              486,
+              1120,
+              189,
+              1126
+            ],
+            "text": "over",
+            "words": [
+              {
+                "boundingBox": [
+                  190,
+                  1064,
+                  439,
+                  1059,
+                  441,
+                  1122,
+                  192,
+                  1126
+                ],
+                "text": "over",
+                "confidence": 0.37
+              }
+            ]
+          },
+          {
+            "boundingBox": [
+              664,
+              1008,
+              1973,
+              1023,
+              1969,
+              1178,
+              664,
+              1154
+            ],
+            "text": "the lazy dog!",
+            "words": [
+              {
+                "boundingBox": [
+                  668,
+                  1008,
+                  923,
+                  1015,
+                  923,
+                  1146,
+                  669,
+                  1117
+                ],
+                "text": "the",
+                "confidence": 0.909
+              },
+              {
+                "boundingBox": [
+                  1107,
+                  1018,
+                  1447,
+                  1023,
+                  1445,
+                  1178,
+                  1107,
+                  1162
+                ],
+                "text": "lazy",
+                "confidence": 0.853
+              },
+              {
+                "boundingBox": [
+                  1639,
+                  1024,
+                  1974,
+                  1023,
+                  1971,
+                  1170,
+                  1636,
+                  1178
+                ],
+                "text": "dog!",
+                "confidence": 0.41
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
 }
 ```
 

@@ -1,6 +1,6 @@
 ---
 title: 教學課程：Azure Active Directory 與 Proxyclick 整合 | Microsoft Docs
-description: 了解如何設定 Azure Active Directory 與 Proxyclick 之間的單一登入。
+description: 在本教學課程中，您會了解如何設定 Azure Active Directory 與 Proxyclick 之間的單一登入。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,240 +15,245 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: b797c7d49495aac90abb31a9214bf2928784a866
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 6a4d1c8a390ebd1194d14c057bb32d3111bf39be
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59262392"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "67093501"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-proxyclick"></a>教學課程：Azure Active Directory 與 Proxyclick 整合
 
 在本教學課程中，您會了解如何整合 Proxyclick 與 Azure Active Directory (Azure AD)。
-將 Proxyclick 與 Azure AD 整合提供下列優點：
+此整合有下列優點：
 
-* 您可以在 Azure AD 中控制可存取 Proxyclick 的人員。
+* 您可以使用 Azure AD 來控制可存取 Proxyclick 的人員。
 * 您可以讓使用者使用其 Azure AD 帳戶自動登入 Proxyclick (單一登入)。
-* 您可以在 Azure 入口網站中集中管理您的帳戶。
+* 您可以集中管理您的帳戶：Azure 入口網站。
 
-若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要深入了解 SaaS 應用程式與 Azure AD 的整合，請參閱 [Azure Active Directory 中的應用程式單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-若要設定 Azure AD 與 Proxyclick 的整合，您需要下列項目：
+若要設定 Azure AD 與 Proxyclick 的整合，您需要具備：
 
-* Azure AD 訂用帳戶。 如果您沒有 Azure AD 環境，您可以在[這裡](https://azure.microsoft.com/pricing/free-trial/)取得一個月的試用帳戶
-* 已啟用 Proxyclick 單一登入的訂用帳戶
+* Azure AD 訂用帳戶。 如果沒有 Azure AD 環境，您可以註冊[一個月的試用版](https://azure.microsoft.com/pricing/free-trial/)。
+* 已啟用單一登入的 Proxyclick 訂用帳戶。
 
 ## <a name="scenario-description"></a>案例描述
 
 在本教學課程中，您會在測試環境中設定和測試 Azure AD 單一登入。
 
-* Proxyclick 支援由 **SP** 和 **IDP** 起始的 SSO
+* Proxyclick 支援 SP 和 IDP 起始的 SSO。
 
-## <a name="adding-proxyclick-from-the-gallery"></a>從資源庫新增 Proxyclick
+## <a name="add-proxyclick-from-the-gallery"></a>從資源庫新增 Proxyclick
 
-若要設定以將 Proxyclick 整合到 Azure AD 中，您需要從資源庫將 Proxyclick 新增到受控的 SaaS 應用程式清單。
+若要設定將 Proxyclick 整合到 Azure AD 中，您需要從資源庫將 Proxyclick 新增到受控的 SaaS 應用程式清單。
 
-**若要從資源庫新增 Proxyclick，請執行下列步驟：**
+1. 在 [Azure 入口網站](https://portal.azure.com)的左窗格中，選取 [Azure Active Directory]  ：
 
-1. 在 **[Azure 入口網站](https://portal.azure.com)** 的左方瀏覽窗格中，按一下 [Azure Active Directory] 圖示。
+    ![選取 Azure Active Directory](common/select-azuread.png)
 
-    ![Azure Active Directory 按鈕](common/select-azuread.png)
-
-2. 瀏覽至 [企業應用程式]，然後選取 [所有應用程式] 選項。
+2. 移至 [企業應用程式]   > [所有應用程式]  ：
 
     ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
-3. 若要新增新的應用程式，請按一下對話方塊頂端的 [新增應用程式] 按鈕。
+3. 若要新增應用程式，請選取視窗頂端的 [新增應用程式]  ：
 
-    ![新增應用程式按鈕](common/add-new-app.png)
+    ![選取 [新增應用程式]](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **Proxyclick**，從結果面板中選取 [Proxyclick]，然後按一下 [新增] 按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **Proxyclick**。 在搜尋結果中，選取 [Proxyclick]  ，然後選取 [新增]  。
 
-     ![結果清單中的 [Proxyclick]](common/search-new-app.png)
+     ![搜尋結果](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>設定和測試 Azure AD 單一登入
 
-在本節中，您會以名為 **Britta Simon** 的測試使用者身分，使用 Proxyclick 來設定和測試 Azure AD 單一登入。
-若要讓單一登入能夠運作，必須建立 Azure AD 使用者與 Proxyclick 中相關使用者之間的連結關聯性。
+在本節中，您會使用名為 Britta Simon 的測試使用者，設定及測試與 Proxyclick 搭配運作的 Azure AD 單一登入。
+若要啟用單一登入，您必須建立 Azure AD 使用者與 Proxyclick 中相關使用者之間的關聯性。
 
-若要搭配 Proxyclick 設定和測試 Azure AD 單一登入，您需要完成下列基本工作：
+若要設定及測試與 Proxyclick 搭配運作的 Azure AD 單一登入，您需要完成下列步驟：
 
-1. **[設定 Azure AD 單一登入](#configure-azure-ad-single-sign-on)** - 讓您的使用者能夠使用此功能。
-2. **[設定 Proxyclick 單一登入](#configure-proxyclick-single-sign-on)** - 在應用程式端設定單一登入設定。
-3. **[建立 Azure AD 測試使用者](#create-an-azure-ad-test-user)** - 使用 Britta Simon 測試 Azure AD 單一登入。
-4. **[指派 Azure AD 測試使用者](#assign-the-azure-ad-test-user)** - 讓 Britta Simon 能夠使用 Azure AD 單一登入。
-5. **[建立 Proxyclick 測試使用者](#create-proxyclick-test-user)** - 讓 Proxyclick 中的 Britta Simon 對應項目得以連結至 Azure AD 中代表該使用者的項目。
-6. **[測試單一登入](#test-single-sign-on)**，驗證組態是否能運作。
+1. **[設定 Azure AD 單一登入](#configure-azure-ad-single-sign-on)** ，讓您的使用者能夠使用此功能。
+2. 在應用程式端 **[設定 Proxyclick 單一登入](#configure-proxyclick-single-sign-on)** 。
+3. **[建立 Azure AD 測試使用者](#create-an-azure-ad-test-user)** ，以測試 Azure AD 單一登入。
+4. **[指派 Azure AD 測試使用者](#assign-the-azure-ad-test-user)** ，為使用者啟用 Azure AD 單一登入。
+5. **[建立 Proxyclick 測試使用者](#create-a-proxyclick-test-user)** ，其會連結至 Azure AD 中代表該使用者的項目。
+6. **[測試單一登入](#test-single-sign-on)** ，以驗證組態是否能運作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>設定 Azure AD 單一登入
 
 在本節中，您會在 Azure 入口網站中啟用 Azure AD 單一登入。
 
-若要搭配 Proxyclick 設定 Azure AD 單一登入，請執行下列步驟：
+若要設定與 Proxyclick 搭配運作的 Azure AD 單一登入，請使用下列步驟：
 
-1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Proxyclick] 應用程式整合頁面上，選取 [單一登入]。
+1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Proxyclick] 應用程式整合頁面上，選取 [單一登入]  ：
 
-    ![設定單一登入連結](common/select-sso.png)
+    ![選取 [單一登入]](common/select-sso.png)
 
-2. 在 [選取單一登入方法] 對話方塊中，選取 [SAML/WS-Fed] 模式以啟用單一登入。
+2. 在 [選取單一登入方法]  對話方塊中，選取 [SAML/WS-Fed]  模式以啟用單一登入：
 
-    ![單一登入選取模式](common/select-saml-option.png)
+    ![選取單一登入方法](common/select-saml-option.png)
 
-3. 在 [以 SAML 設定單一登入] 頁面上，按一下 [編輯] 圖示以開啟 [基本 SAML 設定] 對話方塊。
+3. 在 [以 SAML 設定單一登入]  頁面上選取 [編輯]  圖示，以開啟 [基本 SAML 組態]  對話方塊：
 
-    ![編輯基本 SAML 組態](common/edit-urls.png)
+    ![編輯圖示](common/edit-urls.png)
 
-4. 在 [基本 SAML 設定] 區段上，如果您想要以 **IDP** 起始模式設定應用程式，請執行下列步驟：
+4. 在 [基本 SAML 設定]  對話方塊中，若您想要以 IDP 起始模式設定應用程式，請採取下列步驟。
 
-    ![[Proxyclick 網域及 URL] 單一登入資訊](common/idp-intiated.png)
+    ![[基本 SAML 組態] 對話方塊](common/idp-intiated.png)
 
-    a. 在 [識別碼] 文字方塊中，使用下列模式來輸入 URL：`https://saml.proxyclick.com/init/<companyId>`
+    1. 在 [識別碼]  方塊中，輸入以下模式的 URL：
+   
+       `https://saml.proxyclick.com/init/<companyId>`
 
-    b. 在 [回覆 URL] 文字方塊中，使用下列模式來輸入 URL：`https://saml.proxyclick.com/consume/<companyId>`
+    1. 在 [回覆 URL]  方塊中，輸入以下模式的 URL：
 
-5. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]，然後執行下列步驟：
+       `https://saml.proxyclick.com/consume/<companyId>`
+
+5. 如果您想要以 SP 起始模式設定應用程式，請選取 [設定其他 URL]  。 在 [登入 URL]  方塊中，輸入以下模式的 URL：
+   
+   `https://saml.proxyclick.com/init/<companyId>`
 
     ![[Proxyclick 網域及 URL] 單一登入資訊](common/metadata-upload-additional-signon.png)
 
-    在 [登入 URL] 文字方塊中，以下列模式輸入 URL︰`https://saml.proxyclick.com/init/<companyId>`
+    
 
     > [!NOTE]
-    > 這些都不是真正的值。 您將會使用實際的識別碼、回覆 URL 與登入 URL (稍後會在本教學課程中說明) 來更新這些值。
+    > 這些值都是預留位置。 您需要使用實際的「識別碼」、「回覆 URL」及「登入 URL」。 本教學課程稍後會說明用來取得這些值的步驟。
 
-6. 在 [以 SAML 設定單一登入] 頁面的 [SAML 簽署憑證] 區段中，按一下 [下載]，以依據您的需求從指定選項下載 [憑證 (Base64)]，並儲存在您的電腦上。
+6. 在 [以 SAML 設定單一登入] 頁面的 [SAML 簽署憑證] 區段中，依據您的需求選取 [憑證 (Base64)] 旁邊的 [下載] 連結，並將憑證儲存在您的電腦上：
 
     ![憑證下載連結](common/certificatebase64.png)
 
-7. 在 [設定 Proxyclick] 區段上，依據您的需求複製適當的 URL。
+7. 在 [設定 Proxyclick]  區段上，依據您的需求複製適當的 URL：
 
     ![複製組態 URL](common/copy-configuration-urls.png)
 
-    a. 登入 URL
+    1. **登入 URL**。
 
-    b. Azure AD 識別碼
+    1. **Azure AD 識別碼**。
 
-    c. 登出 URL
+    1. **登出 URL**。
 
 ### <a name="configure-proxyclick-single-sign-on"></a>設定 Proxyclick 單一登入
 
-1. 在不同的網頁瀏覽器視窗中，以系統管理員身分登入您的 Proxyclick 公司網站。
+1. 在新的網頁瀏覽器視窗中，以系統管理員身分登入您的 Proxyclick 公司網站。
 
-2. 選取 [Account & Settings] \(帳戶和設定\)。
+2. 選取 [帳戶和設定]  ：
 
-    ![[Proxyclick 設定]](./media/proxyclick-tutorial/configure1.png)
+    ![選取 [帳戶和設定]](./media/proxyclick-tutorial/configure1.png)
 
-3. 向下捲動至 [INTEGRATIONS] \(整合\)，並選取 [SAML]。
+3. 向下捲動至 [整合]  區段，然後選取 [SAML]  ：
 
-    ![[Proxyclick 設定]](./media/proxyclick-tutorial/configure2.png)
+    ![選取 [SAML]](./media/proxyclick-tutorial/configure2.png)
 
-4. 在 [SAML] 區段中，執行下列步驟：
+4. 在 [SAML]  區段中，採取下列步驟。
 
-    ![[Proxyclick 設定]](./media/proxyclick-tutorial/configure3.png)
+    ![[SAML] 區段](./media/proxyclick-tutorial/configure3.png)
 
-    a. 複製 [SAML 取用者 URL] 值，並且在 Azure 入口網站上貼入 [基本 SAML 設定] 區段的 [回覆 URL] 文字方塊中。
+    1. 複製 [SAML 取用者 URL] 值，並將其貼至 Azure 入口網站中 [基本 SAML 設定] 對話方塊中的 [回覆 URL] 方塊內。
 
-    b. 複製 [SAML SSO Redirect URL] \(SAML SSO 重新導向 URL\) 值，並將其貼到 Azure 入口網站上 [基本 SAML 設定] 區段的 [登入 URL] 和 [識別碼] 文字方塊中。
+    1. 複製 [SAML SSO 重新導向 URL] 值，並將其貼至 Azure 入口網站中 [基本 SAML 設定] 對話方塊中的 [登入 URL] 和 [識別碼] 方塊內。
 
-    c. 將 [SAML Request Method] \(SAML 要求方法\) 選取為 [HTTP Redirect] \(HTTP 重新導向\)。
+    1. 在 [SAML 要求方法]  清單中，選取 [HTTP 重新導向]  。
 
-    d. 在 [簽發者] 文字方塊中，貼上您從 Azure 入口網站複製的 [Azure AD 識別碼] 值。
+    1. 在 [簽發者]  方塊中，貼上您從 Azure 入口網站複製的 **Azure AD 識別碼**值。
 
-    e. 在 [SAML 2.0 端點 URL] 文字方塊中，貼上您從 Azure 入口網站複製的 [登入 URL] 值。
+    1. 在 [SAML 2.0 端點 URL]  方塊中，貼上您從 Azure 入口網站複製的**登入 URL** 值。
 
-    f. 在記事本中開啟您從 Azure 入口網站下載的憑證檔，然後將它貼到 [Certificate] \(憑證\) 文字方塊中。
+    1. 在 [記事本] 中，開啟您從 Azure 入口網站下載的憑證檔案。 將此檔案的內容貼至 [憑證]  方塊中。
 
-    g. 按一下 [儲存變更] 。
+    1. 選取 [Save Changes] \(儲存變更\)  。
 
-### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者 
+### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者
 
-本節的目標是要在 Azure 入口網站中建立一個名為 Britta Simon 的測試使用者。
+在本節中，您會在 Azure 入口網站中建立名為 Britta Simon 的測試使用者。
 
-1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]、[使用者] 和 [所有使用者]。
+1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]  、[使用者]  和 [所有使用者]  ：
 
-    ![[使用者和群組] 與 [所有使用者] 連結](common/users.png)
+    ![選取 [所有使用者]](common/users.png)
 
-2. 在畫面頂端選取 [新增使用者]。
+2. 在畫面頂端選取 [新增使用者]  ：
 
-    ![[新增使用者] 按鈕](common/new-user.png)
+    ![選取 [新增使用者]](common/new-user.png)
 
-3. 在 [使用者] 屬性中，執行下列步驟。
+3. 在 [使用者]  對話方塊中，執行下列步驟。
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱] 欄位中，輸入 **BrittaSimon**。
+    1. 在 [名稱]  方塊中，輸入 **BrittaSimon**。
   
-    b. 在 [使用者名稱] 欄位中，輸入 brittasimon@yourcompanydomain.extension。 例如， BrittaSimon@contoso.com
+    1. 在 [使用者名稱]  方塊中，輸入 **BrittaSimon@\<yourcompanydomain>.\<extension>** 。 (例如，BrittaSimon@contoso.com)。
 
-    c. 選取 [顯示密碼] 核取方塊，然後記下 [密碼] 方塊中顯示的值。
+    1. 選取 [顯示密碼]  ，然後記下 [密碼]  方塊中的值。
 
-    d. 按一下頁面底部的 [新增] 。
+    1. 選取 [建立]  。
 
 ### <a name="assign-the-azure-ad-test-user"></a>指派 Azure AD 測試使用者
 
-在本節中，您會將 Proxyclick 的存取權授與 Britta Simon，讓該使用者能使用 Azure 單一登入。
+在本節中，您會將 Proxyclick 的存取權授與 Britta Simon，讓她能夠使用 Azure 單一登入。
 
-1. 在 Azure 入口網站中，依序選取 [企業應用程式]、[所有應用程式] 及 [Proxyclick]。
+1. 在 Azure 入口網站中，依序選取 [企業應用程式]  、[所有應用程式]  及 [Proxyclick]  。
 
     ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
-2. 在應用程式清單中，選取 [Proxyclick]。
+2. 在應用程式清單中，選取 [Proxyclick]  。
 
-    ![應用程式清單中的 [Proxyclick] 連結](common/all-applications.png)
+    ![應用程式清單](common/all-applications.png)
 
-3. 在左側功能表中，選取 [使用者和群組]。
+3. 在左窗格中，選取 [使用者和群組]  ：
 
-    ![[使用者和群組] 連結](common/users-groups-blade.png)
+    ![選取 [使用者和群組]](common/users-groups-blade.png)
 
-4. 按一下 [新增使用者] 按鈕，然後在 [新增指派] 對話方塊中，選取 [使用者和群組]。
+4. 選取 [新增使用者]，然後在 [新增指派] 對話方塊中，選取 [使用者和群組]。
 
-    ![[新增指派] 窗格](common/add-assign-user.png)
+    ![選取 [新增使用者]](common/add-assign-user.png)
 
-5. 在 [使用者和群組] 對話方塊的 [使用者] 清單中，選取 [Britta Simon]，然後按一下畫面底部的 [選取] 按鈕。
+5. 在 [使用者和群組]  對話方塊的 [使用者] 清單中，選取 [Britta Simon]  ，然後按一下視窗底部的 [選取]  按鈕。
 
-6. 如果您預期使用 SAML 判斷提示中的任何角色值，請在 [選取角色] 對話方塊的清單中選取適當使用者角色，然後按一下畫面底部的 [選取] 按鈕。
+6. 如果您在 SAML 判斷提示中需要角色值，請在 [選取角色]  對話方塊的清單中選取適當的使用者角色。 按一下視窗底部的 [選取]  按鈕。
 
-7. 在 [新增指派] 對話方塊中，按一下 [指派] 按鈕。
+7. 在 [新增指派]  對話方塊中，選取 [指派]  。
 
-### <a name="create-proxyclick-test-user"></a>建立 Proxyclick 測試使用者
+### <a name="create-a-proxyclick-test-user"></a>建立 Proxyclick 測試使用者
 
-若要讓 Azure AD 使用者能夠登入 Proxyclick，必須將使用者佈建到 Proxyclick。 Proxyclick 需以手動方式佈建。
+若要讓 Azure AD 使用者能夠登入 Proxyclick，必須在 Proxyclick 中新增他們。 您需要手動新增他們。
 
-**若要佈建使用者帳戶，請執行下列步驟：**
+若要建立使用者帳戶，請執行下列步驟：
 
 1. 以系統管理員身分登入您的 Proxyclick 公司網站。
 
-1. 在頂端導覽列上按一下 [Colleagues] \(同事\)。
+1. 在視窗頂端選取 [同事]  ：
 
-    ![新增員工](./media/proxyclick-tutorial/user1.png)
+    ![選取 [同事]](./media/proxyclick-tutorial/user1.png)
 
-1. 按一下 [Add Colleague] \(新增同事\)。
+1. 選取 [新增同事]  ：
 
-    ![新增員工](./media/proxyclick-tutorial/user2.png)
+    ![選取 [新增同事]](./media/proxyclick-tutorial/user2.png)
 
-1. 在 [Add a colleague] \(新增同事\) 區段中，執行下列步驟：
+1. 在 [新增同事]  區段中，採取下列步驟。
 
-    ![新增員工](./media/proxyclick-tutorial/user3.png)
+    ![[新增同事] 區段](./media/proxyclick-tutorial/user3.png)
 
-    a. 在 [電子郵件] 文字方塊中，輸入像是 brittasimon@contoso.com 的使用者電子郵件地址。
+    1. 在 [電子郵件]  方塊中，輸入使用者的電子郵件地址。 在此案例中為 **brittasimon\@contoso.com**。
 
-    b. 在 [名字] 文字方塊中，輸入使用者的名字，例如 Britta。
+    1. 在 [名字]  方塊中，輸入使用者的名字。 在此案例中為 **Britta**。
 
-    c. 在 [姓氏] 文字方塊中，輸入使用者的姓氏，例如 Simon。
+    1. 在 [姓氏]  方塊中，輸入使用者的姓氏。 在此案例中為 **Simon**。
 
-    d. 按一下 [新增使用者] 。
+    1. 選取 [新增使用者]  。
 
-### <a name="test-single-sign-on"></a>測試單一登入 
+### <a name="test-single-sign-on"></a>測試單一登入
 
-在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
+您現在必須使用存取面板來測試您的 Azure AD 單一登入組態。
 
-當您在存取面板中按一下 [Proxyclick] 圖格時，應該會自動登入您已設定 SSO 的 Proxyclick。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中選取 [Proxyclick] 圖格時，應該會自動登入您已設定 SSO 的 Proxyclick 執行個體。 如需存取面板的詳細資訊，請參閱[在 My Apps 入口網站上存取和使用應用程式](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [整合 SaaS 應用程式與 Azure Active Directory 的教學課程](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

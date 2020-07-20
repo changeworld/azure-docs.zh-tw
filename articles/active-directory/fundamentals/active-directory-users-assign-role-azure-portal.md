@@ -1,70 +1,84 @@
 ---
-title: 將目錄角色指派給使用者 - Azure Active Directory | Microsoft Docs
+title: 將 Azure AD 角色指派給使用者-Azure Active Directory |Microsoft Docs
 description: 有關如何使用 Azure Active Directory 將系統管理員和非系統管理員角色指派給使用者的指示。
 services: active-directory
-author: eross-msft
+author: msaburnley
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
-ms.topic: conceptual
-ms.date: 09/06/2018
-ms.author: lizross
+ms.topic: how-to
+ms.date: 06/15/2020
+ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd26fa53c91c53893c7f326afda5158fa430be1e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c5dc42d8308b8e20a647f5f64867fd78a1a09c96
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60248171"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223993"
 ---
 # <a name="assign-administrator-and-non-administrator-roles-to-users-with-azure-active-directory"></a>使用 Azure Active Directory 將系統管理員和非系統管理員角色指派給使用者
-如果貴組織的使用者需要管理 Azure Active Directory (Azure AD) 資源的權限，您必須根據使用者需要權限才能執行的動作，在 Azure AD 中為使用者指派適當的角色。
 
-如需可用角色的詳細資訊，請參閱[在 Azure Active Directory 中指派系統管理員角色](../users-groups-roles/directory-assign-admin-roles.md)。 如需新增使用者的詳細資訊，請參閱[將新的使用者新增至 Azure Active Directory](add-users-azure-active-directory.md)。
+在 Azure Active Directory (Azure AD) 中，如果您的其中一個使用者需要管理 Azure AD 資源的許可權，您必須將它們指派給提供所需許可權的角色。 如需管理 Azure 資源的角色，以及哪些角色會管理 Azure AD 資源的相關資訊，請參閱[傳統訂用帳戶管理員角色、Azure 角色和 Azure AD 角色](../../role-based-access-control/rbac-and-directory-admin-roles.md)。
+
+如需可用 Azure AD 角色的詳細資訊，請參閱[在 Azure Active Directory 中指派系統管理員角色](../users-groups-roles/directory-assign-admin-roles.md)。 若要新增使用者，請參閱[將新的使用者新增至 Azure Active Directory](add-users-azure-active-directory.md)。
 
 ## <a name="assign-roles"></a>指派角色
-指派 Azure AD 角色給使用者的常用方式，是在使用者的 [目錄角色] 頁面上指派。
 
-您也可以使用 Privileged Identity Management (PIM) 來指派角色。 如需更多 PIM 使用方式的詳細資訊，請參閱 [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management)。
+將 Azure AD 角色指派給使用者的常見方式是在使用者的 [**指派的角色**] 頁面上。 您也可以使用 Privileged Identity Management (PIM) ，及時提升為角色的資格。 如需如何使用 PIM 的詳細資訊，請參閱[Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management)。
 
-### <a name="to-assign-a-role-to-a-user"></a>若要將角色指派給使用者
-1. 使用目錄的全域系統管理員帳戶登入 [Azure 入口網站](https://portal.azure.com/)。
+> [!Note]
+> 如果您有 Azure AD Premium P2 授權方案，並已使用 PIM，則所有角色管理工作都會在[Privileged Identity Management 體驗](../users-groups-roles/directory-manage-roles-portal.md)中執行。
+>
+> ![在 PIM 中為已經使用 PIM 並具有 Premium P2 授權的使用者，Azure AD 管理的角色](./media/active-directory-users-assign-role-azure-portal/pim-manages-roles-for-p2.png)
 
-2. 選取 [Azure Active Directory] 並選取 [使用者]，然後搜尋並選取要接受角色指派的使用者。 例如 _Alain Charon_。
+## <a name="assign-a-role-to-a-user"></a>將角色指派給使用者
 
-3. 在 [Alain Charon - 設定檔] 頁面上選取 [目錄角色]。
+1. 移至[Azure 入口網站](https://portal.azure.com/)，然後使用目錄的全域管理員帳戶登入。
 
-    隨即會顯示 [Alain Charon - 目錄角色] 頁面。
+2. 搜尋並選取 [Azure Active Directory]。
 
-4. 選取 [新增角色]，選取要指派給 Alain 的角色 (例如 [應用程式系統管理員])，然後選擇 [選取]。
+      ![Azure 入口網站搜尋 Azure Active Directory](media/active-directory-users-assign-role-azure-portal/search-azure-active-directory.png)
 
-    ![[目錄角色] 頁面上顯示所選的角色](media/active-directory-users-assign-role-azure-portal/directory-role-select-role.png)
+3. 選取 [使用者]。
 
-    應用程式系統管理員角色隨即會指派給 Alain Charon，並顯示在 [Alain Charon - 目錄角色] 頁面上。
+4. 搜尋並選取取得角色指派的使用者。 例如 _Alain Charon_。
+
+      ![[所有使用者] 頁面-選取使用者](media/active-directory-users-assign-role-azure-portal/directory-role-select-user.png)
+
+5. 在 [ **Alain Charon-設定檔**] 頁面上，選取 [**指派的角色**]。
+
+    [ **Alain Charon-系統管理角色**] 頁面隨即出現。
+
+6. 選取 [**新增指派**]，選取要指派給 Alain (的角色，例如_應用程式系統管理員_) ，然後選擇 [**選取**]。
+
+    ![[指派的角色] 頁面-顯示選取的角色](media/active-directory-users-assign-role-azure-portal/directory-role-select-role.png)
+
+    應用程式系統管理員角色會指派給 Alain Charon，並出現在 [ **Alain Charon-系統管理角色**] 頁面上。
 
 ## <a name="remove-a-role-assignment"></a>移除角色指派
-如需移除使用者的角色指派，您也可以從 [Alain Charon - 目錄角色] 頁面操作。
+
+如果您需要從使用者移除角色指派，您也可以從 [ **Alain Charon-系統管理角色**] 頁面執行此動作。
 
 ### <a name="to-remove-a-role-assignment-from-a-user"></a>若要移除使用者的角色指派
 
-1. 選取 [Azure Active Directory] 並選取 [使用者]，然後搜尋並選取要移除角色指派的使用者。 例如 _Alain Charon_。
+1. 選取 [Azure Active Directory]**** 並選取 [使用者]****，然後搜尋並選取要移除角色指派的使用者。 例如 _Alain Charon_。
 
-2. 選取 [目錄角色]，選取 [應用程式系統管理員]，然後選取 [移除角色]。
+2. 選取 [**指派的角色**]，選取 [**應用程式系統管理員**]，然後選取 [**移除指派**]。
 
-    ![[目錄角色] 頁面上顯示所選的角色和移除選項](media/active-directory-users-assign-role-azure-portal/directory-role-remove-role.png)
+    ![[指派的角色] 頁面，顯示選取的角色和移除選項](media/active-directory-users-assign-role-azure-portal/directory-role-remove-role.png)
 
-    Alain Charon 的應用程式系統管理員角色隨即會移除，並消失在 [Alain Charon - 目錄角色] 頁面上。
+    [應用程式系統管理員] 角色會從 Alain Charon 移除，且不再出現在 [ **Alain Charon-系統管理角色**] 頁面上。
 
 ## <a name="next-steps"></a>後續步驟
+
 - [新增或刪除使用者](add-users-azure-active-directory.md)
 
 - [新增或變更設定檔資訊](active-directory-users-profile-azure-portal.md)
 
 - [從另一個目錄中新增來賓使用者](../b2b/what-is-b2b.md)
 
-或者，您也可以執行其他使用者管理工作，例如指派委派、使用原則及共用使用者帳戶。 如需其他可用動作的詳細資訊，請參閱 [Azure Active Directory 使用者管理文件](../users-groups-roles/index.yml)。
-
-
+您可以查看的其他使用者管理工作可在[Azure Active Directory 使用者管理檔](../users-groups-roles/index.yml)中取得。

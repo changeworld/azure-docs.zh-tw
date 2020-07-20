@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 媒體服務和 Azure CLI 串流視訊檔案 - CLI | Microsoft Docs
-description: 按照本快速入門的步驟建立新的 Azure 媒體服務帳戶、對檔案進行編碼，然後將它串流到 Azure 媒體播放器。
+title: 使用 Azure 媒體服務和 Azure CLI 來串流影片檔案
+description: 按照本教學課程的步驟建立新的 Azure 媒體服務帳戶、對檔案進行編碼，然後將它串流到 Azure 媒體播放器。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -9,24 +9,24 @@ editor: ''
 keywords: Azure 媒體服務, 串流
 ms.service: media-services
 ms.workload: media
-ms.topic: quickstart
+ms.topic: tutorial
 ms.custom: ''
-ms.date: 02/19/2019
+ms.date: 08/19/2019
 ms.author: juliako
-ms.openlocfilehash: a323cbe4188207fa77525648297b366c9c57121b
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 91259e10966173cb701b867f5b3ed362112beef3
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57244718"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80382778"
 ---
-# <a name="quickstart-stream-video-files---cli"></a>快速入門：串流影片檔案 - CLI
+# <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---azure-cli"></a>教學課程：編碼以 URL 為基礎的遠端檔案及串流處理影片 - Azure CLI
 
-此快速入門說明如何使用 Azure 媒體服務和 Azure CLI，在各種不同的瀏覽器和裝置上輕鬆地編碼和串流視訊。 您可以使用 HTTPS、SAS URL 或 Azure Blob 儲存體中的檔案路徑來指定輸入內容。
+此教學課程說明如何使用 Azure 媒體服務和 Azure CLI，在各種不同的瀏覽器和裝置上輕鬆地編碼和串流視訊。 您可以使用 HTTPS、SAS URL 或 Azure Blob 儲存體中的檔案路徑來指定輸入內容。
 
 本文中的範例會將您透過 HTTPS URL 提供的內容編碼。 媒體服務 v3 目前不支援透過 HTTPS URL 的區塊傳輸編碼。
 
-完成本快速入門時，您將能夠串流視訊。  
+完成本教學課程時，您將能夠串流視訊。  
 
 ![播放影片](./media/stream-files-dotnet-quickstart/final-video.png)
 
@@ -40,7 +40,7 @@ ms.locfileid: "57244718"
 
 ### <a name="create-a-resource-group"></a>建立資源群組
 
-```azurecli
+```azurecli-interactive
 az group create -n amsResourceGroup -l westus2
 ```
 
@@ -48,15 +48,15 @@ az group create -n amsResourceGroup -l westus2
 
 在此範例中，我們將建立一般用途 v2 的標準 LRS 帳戶。
 
-如果您想要以儲存體帳戶進行試驗，請使用 `--sku Standard_LRS`。 在選擇用於生產環境的 SKU 時，請考慮使用 `--sku Standard_RAGRS`，以提供異地複寫功能而確保商務持續性。 如需詳細資訊，請參閱[儲存體帳戶](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest)。
- 
-```azurecli
+如果您想要以儲存體帳戶進行試驗，請使用 `--sku Standard_LRS`。 在選擇用於生產環境的 SKU 時，請考慮使用 `--sku Standard_RAGRS`，以提供異地複寫功能而確保商務持續性。 如需詳細資訊，請參閱[儲存體帳戶](/cli/azure/storage/account)。
+
+```azurecli-interactive
 az storage account create -n amsstorageaccount --kind StorageV2 --sku Standard_LRS -l westus2 -g amsResourceGroup
 ```
 
 ### <a name="create-an-azure-media-services-account"></a>建立 Azure 媒體服務帳戶
 
-```azurecli
+```azurecli-interactive
 az ams account create --n amsaccount -g amsResourceGroup --storage-account amsstorageaccount -l westus2
 ```
 
@@ -83,16 +83,15 @@ az ams account create --n amsaccount -g amsResourceGroup --storage-account amsst
 
 ## <a name="start-the-streaming-endpoint"></a>啟動串流端點
 
-以下 Azure CLI 命令會啟動預設**串流端點**。
+下列 Azure CLI 命令會啟動預設**串流端點**。
 
-```azurecli
+```azurecli-interactive
 az ams streaming-endpoint start  -n default -a amsaccount -g amsResourceGroup
 ```
 
 您會取得如下所示的回應：
 
 ```
-az ams streaming-endpoint start  -n default -a amsaccount -g amsResourceGroup
 {
   "accessControl": null,
   "availabilitySetName": null,
@@ -129,7 +128,7 @@ az ams streaming-endpoint start  -n default -a amsaccount -g amsResourceGroup
 
 建立**轉換**，以設定視訊編碼或分析的一般工作。 在此範例中，我們會進行調適性位元速率編碼。 接著，我們會在所建立的轉換之下提交作業。 此作業是要求媒體服務將轉換套用至指定的視訊或音訊內容。
 
-```azurecli
+```azurecli-interactive
 az ams transform create --name testEncodingTransform --preset AdaptiveStreaming --description 'a simple Transform for Adaptive Bitrate Encoding' -g amsResourceGroup -a amsaccount
 ```
 
@@ -161,7 +160,7 @@ az ams transform create --name testEncodingTransform --preset AdaptiveStreaming 
 
 建立輸出**資產**，以作為編碼作業的輸出。
 
-```azurecli
+```azurecli-interactive
 az ams asset create -n testOutputAssetName -a amsaccount -g amsResourceGroup
 ```
 
@@ -190,13 +189,13 @@ az ams asset create -n testOutputAssetName -a amsaccount -g amsResourceGroup
 
 執行 `az ams job start` 時，您可以設定作業輸出的標籤。 您可接著使用此標籤來識別輸出資產的用途。
 
-- 如果您為標籤指派值，請將 ‘--output-assets’ 設為 “assetname=label”。
-- 若未將值指派給標籤，請將 ‘--output-assets’ 設為 “assetname=”。
+- 如果您為標籤指派值，請將 '--output-assets' 設定為 "assetname=label"。
+- 若未將值指派給標籤，請將 '--output-assets' 設定為 "assetname="。
 
   請注意，我們將 "=" 新增至 `output-assets`。
 
-```azurecli
-az ams job start --name testJob001 --transform-name testEncodingTransform --base-uri 'https://nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/' --files 'Ignite-short.mp4' --output-assets testOutputAssetName= -a amsaccount -g amsResourceGroup 
+```azurecli-interactive
+az ams job start --name testJob001 --transform-name testEncodingTransform --base-uri 'https://nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/' --files 'Ignite-short.mp4' --output-assets testOutputAssetName= -a amsaccount -g amsResourceGroup
 ```
 
 您會取得如下所示的回應：
@@ -238,7 +237,7 @@ az ams job start --name testJob001 --transform-name testEncodingTransform --base
 
 在 5 分鐘後，檢查作業的狀態。 其狀態應為「完成」。 若未完成，請在幾分鐘後再次檢查。 若已完成，請移至下一個步驟並建立**串流定位器**。
 
-```azurecli
+```azurecli-interactive
 az ams job show -a amsaccount -g amsResourceGroup -t testEncodingTransform -n testJob001
 ```
 
@@ -248,7 +247,7 @@ az ams job show -a amsaccount -g amsResourceGroup -t testEncodingTransform -n te
 
 ### <a name="create-a-streaming-locator"></a>建立串流定位器
 
-```azurecli
+```azurecli-interactive
 az ams streaming-locator create -n testStreamingLocator --asset-name testOutputAssetName --streaming-policy-name Predefined_ClearStreamingOnly  -g amsResourceGroup -a amsaccount 
 ```
 
@@ -274,7 +273,7 @@ az ams streaming-locator create -n testStreamingLocator --asset-name testOutputA
 
 ### <a name="get-streaming-locator-paths"></a>取得串流定位器路徑
 
-```azurecli
+```azurecli-interactive
 az ams streaming-locator get-paths -a amsaccount -g amsResourceGroup -n testStreamingLocator
 ```
 
@@ -309,15 +308,16 @@ az ams streaming-locator get-paths -a amsaccount -g amsResourceGroup -n testStre
 }
 ```
 
-複製 HTTP 即時串流 (HLS) 路徑。 在此案例中，此路徑為 `/e01b2be1-5ea4-42ca-ae5d-7fe704a5962f/ignite.ism/manifest(format=m3u8-aapl)`。
+複製 HTTP 即時串流 (HLS) 路徑。 在此案例中，此名稱為 `/e01b2be1-5ea4-42ca-ae5d-7fe704a5962f/ignite.ism/manifest(format=m3u8-aapl)`。
 
-## <a name="build-the-url"></a>建置 URL 
+## <a name="build-the-url"></a>建置 URL
 
 ### <a name="get-the-streaming-endpoint-host-name"></a>取得串流端點主機名稱
 
-```azurecli
+```azurecli-interactive
 az ams streaming-endpoint list -a amsaccount -g amsResourceGroup -n default
 ```
+
 複製 `hostName` 值。 在此案例中，此名稱為 `amsaccount-usw22.streaming.media.azure.net`。
 
 ### <a name="assemble-the-url"></a>組合 URL
@@ -334,26 +334,22 @@ az ams streaming-endpoint list -a amsaccount -g amsResourceGroup -n default
 > 如果播放程式裝載在 HTTPS 網站上，請務必以 "https" 作為 URL 的開頭。
 
 1. 開啟網頁瀏覽器並前往 [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/)。
-2. 在 [URL] 方塊中，貼上您在上一節建置的 URL。 您可以貼上 HLS、 Dash 或 Smooth 格式的 URL。 Azure 媒體播放器將自動使用適當的串流通訊協定，以便在您的裝置上播放。
-3. 選取 [更新播放程式]。
+2. 在 [URL]  方塊中，貼上您在上一節建置的 URL。 您可以貼上 HLS、 Dash 或 Smooth 格式的 URL。 Azure 媒體播放器將自動使用適當的串流通訊協定，以便在您的裝置上播放。
+3. 選取 [更新播放程式]  。
 
 >[!NOTE]
 >Azure 媒體播放器可以用於測試，但不應用於生產環境。
 
 ## <a name="clean-up-resources"></a>清除資源
 
-如果您不再需要資源群組中的任何資源 (包含在此快速入門中建立的媒體服務和儲存體帳戶)，請將資源群組刪除。
+如果您不再需要資源群組中的任何資源 (包含在此教學課程中建立的媒體服務和儲存體帳戶)，請將資源群組刪除。
 
-執行此 CLI 命令：
+執行此 Azure CLI 命令：
 
-```azurecli
+```azurecli-interactive
 az group delete --name amsResourceGroup
 ```
 
-## <a name="see-also"></a>另請參閱
-
-請參閱[作業錯誤碼](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode)。
-
 ## <a name="next-steps"></a>後續步驟
 
-> [CLI 範例](cli-samples.md)
+[媒體服務概觀](media-services-overview.md)

@@ -4,22 +4,20 @@ description: 如何在 Azure Windows VM 中的 SAC 內使用 CMD 和 PowerShell 
 services: virtual-machines-windows
 documentationcenter: ''
 author: alsin
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 55b7e45bb9e600267e1dad0e36e9a97eca9a7d40
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 493340764f507c4fa364a5000f65cc232630b243
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60306878"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77167035"
 ---
 # <a name="windows-commands---cmd-and-powershell"></a>Windows 命令 - CMD 和 PowerShell
 
@@ -29,7 +27,7 @@ ms.locfileid: "60306878"
 
 SAC 可讓您透過序列埠連線至執行中的作業系統。 當您從 SAC 啟動 CMD 時，`sacsess.exe` 會在您執行中的作業系統內啟動 `cmd.exe`。 如果您在透過序列主控台功能連線至 SAC 的同時透過 RDP 連線至 VM，您可以在工作管理員中看到此情形。 您透過 SAC 存取的 CMD，即為您透過 RDP 進行連線時所使用的相同 `cmd.exe`。 可用的命令和工具完全相同，包括從該 CMD 執行個體啟動 PowerShell 的能力。 這是 SAC 與 Windows 修復環境 (WinRE) 之間的主要差異：SAC 可讓您管理執行中的作業系統，而 WinRE 則會開機並進入不同的最低作業系統。 雖然 Azure VM 不支援存取 WinRE 的功能，但在使用序列主控台功能時，可以透過 SAC 來管理 Azure VM。
 
-由於 SAC 限用 80x24 的螢幕緩衝區，且無法往回捲動，請將 `| more` 新增至命令，以逐頁顯示輸出。 您可以使用 `<spacebar>` 檢視下一頁，或使用 `<enter>` 檢視下一行。  
+由於 SAC 限用 80x24 的螢幕緩衝區，且無法往回捲動，請將 `| more` 新增至命令，以逐頁顯示輸出。 您可以使用 `<spacebar>` 檢視下一頁，或使用 `<enter>` 檢視下一行。
 
 `SHIFT+INSERT` 是序列主控台視窗的貼上快速鍵。
 
@@ -46,7 +44,7 @@ SAC 可讓您透過序列埠連線至執行中的作業系統。 當您從 SAC �
 ### <a name="enable-rdp"></a>啟用 RDP
 `reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0`
 
-`reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fDenyTSConnections /t REG_DWORD /d 0` 
+`reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fDenyTSConnections /t REG_DWORD /d 0`
 
 只有已設定相關的群組原則設定時，才需要使用第二個機碼 (在 \Policies 下)。 值若已設定於群組原則中，將會在下一次群組原則重新整理時重寫。
 
@@ -56,12 +54,12 @@ SAC 可讓您透過序列埠連線至執行中的作業系統。 當您從 SAC �
 `sc query termservice`
 ###  <a name="view-service-logon-account"></a>檢視服務登入帳戶
 `sc qc termservice`
-### <a name="set-service-logon-account"></a>設定服務登入帳戶 
+### <a name="set-service-logon-account"></a>設定服務登入帳戶
 `sc config termservice obj= "NT Authority\NetworkService"`
 
 等號後面必須要有空格。
 ### <a name="set-service-start-type"></a>設定服務啟動類型
-`sc config termservice start= demand` 
+`sc config termservice start= demand`
 
 等號後面必須要有空格。 可能的起始值包括 `boot`、`system`、`auto`、`demand`、`disabled`、`delayed-auto`。
 ### <a name="set-service-dependencies"></a>設定服務相依性
@@ -82,11 +80,11 @@ SAC 可讓您透過序列埠連線至執行中的作業系統。 當您從 SAC �
 `sc stop termservice`
 ## <a name="manage-networking-features"></a>管理網路功能
 ### <a name="show-nic-properties"></a>顯示 NIC 屬性
-`netsh interface show interface` 
+`netsh interface show interface`
 ### <a name="show-ip-properties"></a>顯示 IP 屬性
 `netsh interface ip show config`
 ### <a name="show-ipsec-configuration"></a>顯示 IPSec 組態
-`netsh nap client show configuration`  
+`netsh nap client show configuration`
 ### <a name="enable-nic"></a>啟用 NIC
 `netsh interface set interface name="<interface name>" admin=enabled`
 ### <a name="set-nic-to-use-dhcp"></a>設定 NIC 以使用 DHCP
@@ -96,8 +94,8 @@ SAC 可讓您透過序列埠連線至執行中的作業系統。 當您從 SAC �
 
 Azure VM 在客體作業系統中應一律設定為使用 DHCP 來取得 IP 位址。 Azure 靜態 IP 設定仍會使用 DHCP 將靜態 IP 提供給 VM。
 ### <a name="ping"></a>Ping
-`ping 8.8.8.8` 
-### <a name="port-ping"></a>連接埠 Ping  
+`ping 8.8.8.8`
+### <a name="port-ping"></a>連接埠 Ping
 安裝 telnet 用戶端
 
 `dism /online /Enable-Feature /FeatureName:TelnetClient`
@@ -118,7 +116,7 @@ Azure VM 在客體作業系統中應一律設定為使用 DHCP 來取得 IP 位�
 ### <a name="disable-windows-firewall"></a>停用 Windows 防火牆
 `netsh advfirewall set allprofiles state off`
 
-您可以在進行疑難排解時使用此命令，以暫時排除 Windows 防火牆。 它會啟用在下一步 重新啟動，或當您使用下列命令加以啟用。 請勿以停止 Windows 防火牆服務 (MPSSVC) 或基礎篩選引擎 (BFE) 服務的方式來排除 Windows 防火牆。 停止 MPSSVC 或 BFE 將會導致所有連線遭到封鎖。
+您可以在進行疑難排解時使用此命令，以暫時排除 Windows 防火牆。 下次重新開機時，或當您使用下列命令啟用它時，它就會啟用。 請勿以停止 Windows 防火牆服務 (MPSSVC) 或基礎篩選引擎 (BFE) 服務的方式來排除 Windows 防火牆。 停止 MPSSVC 或 BFE 將會導致所有連線遭到封鎖。
 ### <a name="enable-windows-firewall"></a>啟用 Windows 防火牆
 `netsh advfirewall set allprofiles state on`
 ## <a name="manage-users-and-groups"></a>管理使用者和群組
@@ -131,7 +129,7 @@ Azure VM 在客體作業系統中應一律設定為使用 DHCP 來取得 IP 位�
 
 從一般化映像建立的 Azure VM 將會使本機系統管理員帳戶重新命名為在 VM 佈建期間指定的名稱。 因此，該名稱通常不是 `Administrator`。
 ### <a name="enable-user-account"></a>啟用使用者帳戶
-`net user <username> /active:yes`  
+`net user <username> /active:yes`
 ### <a name="view-user-account-properties"></a>檢視使用者帳戶屬性
 `net user <username>`
 
@@ -192,15 +190,15 @@ Azure VM 在客體作業系統中應一律設定為使用 DHCP 來取得 IP 位�
 ### <a name="export-file-permissions-to-text-file"></a>將檔案權限匯出至文字檔
 `icacls %programdata%\Microsoft\Crypto\RSA\MachineKeys /t /c > %temp%\MachineKeys_permissions_before.txt`
 ### <a name="save-file-permissions-to-acl-file"></a>將檔案權限儲存至 ACL 檔案
-`icacls %programdata%\Microsoft\Crypto\RSA\MachineKeys /save %temp%\MachineKeys_permissions_before.aclfile /t`  
+`icacls %programdata%\Microsoft\Crypto\RSA\MachineKeys /save %temp%\MachineKeys_permissions_before.aclfile /t`
 ### <a name="restore-file-permissions-from-acl-file"></a>從 ACL 檔案還原檔案權限
 `icacls %programdata%\Microsoft\Crypto\RSA /save %temp%\MachineKeys_permissions_before.aclfile /t`
 
 使用 `/restore` 時的路徑必須是您在使用 `/save` 時所指定之資料夾的上層資料夾。 在此範例中，`\RSA` 是上述 `/save` 範例中，指定的 `\MachineKeys` 資料夾的上層資料夾。
 ### <a name="take-ntfs-ownership-of-a-folder"></a>取得資料夾的 NTFS 擁有權
-`takeown /f %programdata%\Microsoft\Crypto\RSA\MachineKeys /a /r`  
+`takeown /f %programdata%\Microsoft\Crypto\RSA\MachineKeys /a /r`
 ### <a name="grant-ntfs-permissions-to-a-folder-recursively"></a>以遞迴方式授與資料夾的 NTFS 權限
-`icacls C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c /grant "BUILTIN\Administrators:(F)"`  
+`icacls C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c /grant "BUILTIN\Administrators:(F)"`
 ## <a name="manage-devices"></a>管理裝置
 ### <a name="remove-non-present-pnp-devices"></a>移除不存在的 PNP 裝置
 `%windir%\System32\RUNDLL32.exe %windir%\System32\pnpclean.dll,RunDLL_PnpClean /Devices /Maxclean`
@@ -211,11 +209,11 @@ Azure VM 在客體作業系統中應一律設定為使用 DHCP 來取得 IP 位�
 ### <a name="show-os-version"></a>顯示作業系統版本
 `ver`
 
-或 
+或
 
 `wmic os get caption,version,buildnumber /format:list`
 
-或 
+或
 
 `systeminfo  find /i "os name"`
 
@@ -223,7 +221,7 @@ Azure VM 在客體作業系統中應一律設定為使用 DHCP 來取得 IP 位�
 ### <a name="view-os-install-date"></a>檢視作業系統安裝日期
 `systeminfo | find /i "original"`
 
-或 
+或
 
 `wmic os get installdate`
 ### <a name="view-last-boot-time"></a>檢視上次開機時間
@@ -239,9 +237,9 @@ Azure VM 在客體作業系統中應一律設定為使用 DHCP 來取得 IP 位�
 
 新增 `/f` 將會強制執行中的應用程式關閉，且不會事先警告使用者。
 ### <a name="detect-safe-mode-boot"></a>偵測安全模式開機
-`bcdedit /enum | find /i "safeboot"` 
+`bcdedit /enum | find /i "safeboot"`
 
-# <a name="windows-commands---powershell"></a>Windows 命令 - PowerShell
+## <a name="windows-commands---powershell"></a>Windows 命令 - PowerShell
 
 若要在 SAC 中執行 PowerShell，在出現 CMD 命令提示字元時，請輸入：
 
@@ -250,7 +248,7 @@ Azure VM 在客體作業系統中應一律設定為使用 DHCP 來取得 IP 位�
 > [!CAUTION]
 > 在執行任何其他 PowerShell 命令之前，請先從 PowerShell 工作階段移除 PSReadLine 模組。 目前已知的問題是，在 SAC 中以 PowerShell 工作階段執行 PSReadLine 時，從剪貼簿貼上的文字中可能會插入多餘的字元。
 
-請先確認 PSReadLine 已載入。 在 Windows Server 2016、Windows 10 和 Windows 的更新版本中，會依預設加以載入。 如果它是以手動方式安裝的，則只會出現在舊版的 Windows 上。 
+請先確認 PSReadLine 已載入。 在 Windows Server 2016、Windows 10 和 Windows 的更新版本中，會依預設加以載入。 如果它是以手動方式安裝的，則只會出現在舊版的 Windows 上。
 
 如果此命令傳回提示而沒有輸出，表示模組並未載入，而您可以繼續在 SAC 中正常使用 PowerShell 工作階段。
 
@@ -296,7 +294,7 @@ Azure VM 在客體作業系統中應一律設定為使用 DHCP 來取得 IP 位�
 ### <a name="show-nic-properties"></a>顯示 NIC 屬性
 `get-netadapter | where {$_.ifdesc.startswith('Microsoft Hyper-V Network Adapter')} |  format-list status,name,ifdesc,macadDresS,driverversion,MediaConNectState,MediaDuplexState`
 
-或 
+或
 
 `get-wmiobject win32_networkadapter -filter "servicename='netvsc'" |  format-list netenabled,name,macaddress`
 
@@ -320,6 +318,9 @@ Azure VM 在客體作業系統中應一律設定為使用 DHCP 來取得 IP 位�
 ### <a name="ping"></a>Ping
 `test-netconnection`
 
+> [!NOTE]
+> 寫入進度 Cmdlet 可能無法與此命令搭配使用。 作為緩和措施，您可以 `$ProgressPreference = "SilentlyContinue"` 在 PowerShell 中執行來停用進度列。
+
 或
 
 `get-wmiobject Win32_PingStatus -Filter 'Address="8.8.8.8"' | format-table -autosize IPV4Address,ReplySize,ResponseTime`
@@ -334,15 +335,15 @@ Azure VM 在客體作業系統中應一律設定為使用 DHCP 來取得 IP 位�
 
 `Test-NetConnection` 適用於 2012+。 在 2008R2 中請使用 `Net.Sockets.TcpClient`
 ### <a name="test-dns-name-resolution"></a>測試 DNS 名稱解析
-`resolve-dnsname bing.com` 
+`resolve-dnsname bing.com`
 
-或 
+或
 
 `[System.Net.Dns]::GetHostAddresses('bing.com')`
 
 `Resolve-DnsName` 適用於 2012+。 在 2008R2 中請使用 `System.Net.DNS`。
 ### <a name="show-windows-firewall-rule-by-name"></a>依名稱顯示 Windows 防火牆規則
-`get-netfirewallrule -name RemoteDesktop-UserMode-In-TCP` 
+`get-netfirewallrule -name RemoteDesktop-UserMode-In-TCP`
 ### <a name="show-windows-firewall-rule-by-port"></a>依連接埠顯示 Windows 防火牆規則
 `get-netfirewallportfilter | where {$_.localport -eq 3389} | foreach {Get-NetFirewallRule -Name $_.InstanceId} | format-list Name,Enabled,Profile,Direction,Action`
 
@@ -350,7 +351,7 @@ Azure VM 在客體作業系統中應一律設定為使用 DHCP 來取得 IP 位�
 
 `(new-object -ComObject hnetcfg.fwpolicy2).rules | where {$_.localports -eq 3389 -and $_.direction -eq 1} | format-table Name,Enabled`
 
-`Get-NetFirewallPortFilter` 適用於 2012+。 在 2008R2 中請使用 `hnetcfg.fwpolicy2` COM 物件。 
+`Get-NetFirewallPortFilter` 適用於 2012+。 在 2008R2 中請使用 `hnetcfg.fwpolicy2` COM 物件。
 ### <a name="disable-windows-firewall"></a>停用 Windows 防火牆
 `Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled False`
 
@@ -361,7 +362,7 @@ Azure VM 在客體作業系統中應一律設定為使用 DHCP 來取得 IP 位�
 ### <a name="verify-user-account-is-enabled"></a>確認使用者帳戶已啟用
 `(get-localuser | where {$_.SID -like "S-1-5-21-*-500"}).Enabled`
 
-或 
+或
 
 `(get-wmiobject Win32_UserAccount -Namespace "root\cimv2" -Filter "SID like 'S-1-5-%-500'").Disabled`
 
@@ -369,13 +370,13 @@ Azure VM 在客體作業系統中應一律設定為使用 DHCP 來取得 IP 位�
 ### <a name="add-local-user-to-local-group"></a>將本機使用者新增至本機群組
 `add-localgroupmember -group Administrators -member <username>`
 ### <a name="enable-local-user-account"></a>啟用本機使用者帳戶
-`get-localuser | where {$_.SID -like "S-1-5-21-*-500"} | enable-localuser` 
+`get-localuser | where {$_.SID -like "S-1-5-21-*-500"} | enable-localuser`
 
 此範例會啟用內建的本機系統管理員帳戶，其 SID 一律為 `S-1-5-21-*-500`。 從一般化映像建立的 Azure VM 將會使本機系統管理員帳戶重新命名為在 VM 佈建期間指定的名稱。 因此，該名稱通常不是 `Administrator`。
 ### <a name="view-user-account-properties"></a>檢視使用者帳戶屬性
 `get-localuser | where {$_.SID -like "S-1-5-21-*-500"} | format-list *`
 
-或 
+或
 
 `get-wmiobject Win32_UserAccount -Namespace "root\cimv2" -Filter "SID like 'S-1-5-%-500'" |  format-list Name,Disabled,Status,Lockout,Description,SID`
 
@@ -415,7 +416,7 @@ Azure VM 在客體作業系統中應一律設定為使用 DHCP 來取得 IP 位�
 此範例會建立 `c:\bin` 資料夾，然後將 Sysinternals 工具套件下載並解壓縮至 `c:\bin`。
 ## <a name="miscellaneous-tasks"></a>其他工作
 ### <a name="show-os-version"></a>顯示作業系統版本
-`get-wmiobject win32_operatingsystem | format-list caption,version,buildnumber` 
+`get-wmiobject win32_operatingsystem | format-list caption,version,buildnumber`
 ### <a name="view-os-install-date"></a>檢視作業系統安裝日期
 `(get-wmiobject win32_operatingsystem).converttodatetime((get-wmiobject win32_operatingsystem).installdate)`
 ### <a name="view-last-boot-time"></a>檢視上次開機時間
@@ -423,7 +424,7 @@ Azure VM 在客體作業系統中應一律設定為使用 DHCP 來取得 IP 位�
 ### <a name="view-windows-uptime"></a>檢視 Windows 執行時間
 `"{0:dd}:{0:hh}:{0:mm}:{0:ss}.{0:ff}" -f ((get-date)-(get-wmiobject win32_operatingsystem).converttodatetime((get-wmiobject win32_operatingsystem).lastbootuptime))`
 
-以 `<days>:<hours>:<minutes>:<seconds>:<milliseconds>` 的格式傳回執行時間，例如 `49:16:48:00.00`。 
+以 `<days>:<hours>:<minutes>:<seconds>:<milliseconds>` 的格式傳回執行時間，例如 `49:16:48:00.00`。
 ### <a name="restart-windows"></a>重新啟動 Windows
 `restart-computer`
 

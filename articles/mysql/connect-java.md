@@ -1,47 +1,54 @@
 ---
-title: 使用 Java 連線到適用於 MySQL 的 Azure 資料庫
+title: 使用 Java 連線 - 適用於 MySQL 的 Azure 資料庫
 description: 本快速入門提供 Java 程式碼範例，您可用於從適用於 MySQL 資料庫的 Azure 資料庫連線及查詢資料。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
-ms.custom: mvc, devcenter
+ms.custom: mvc, devcenter, seo-java-july2019, seo-java-august2019
 ms.topic: quickstart
 ms.devlang: java
-ms.date: 02/28/2018
-ms.openlocfilehash: 7ad24a691153161ff2283030a4a597544205de6d
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.date: 5/26/2020
+ms.openlocfilehash: f23b926cf12dbda66bd5b409f5dfeec62ef9fcd5
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58349881"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83870280"
 ---
-# <a name="azure-database-for-mysql-use-java-to-connect-and-query-data"></a>適用於 MySQL 的 Azure 資料庫：使用 Java 連線並查詢資料
-本快速入門示範如何使用 Java 應用程式和 JDBC 驅動程式 [MySQL 連接器/J](https://dev.mysql.com/downloads/connector/j/) 來連線到適用於 MySQL 的 Azure 資料庫。 它會顯示如何使用 SQL 陳述式來查詢、插入、更新和刪除資料庫中的資料。 本文假設您已熟悉使用 Java 進行開發，但不熟悉適用於 MySQL 的 Azure 資料庫。
+# <a name="quickstart-use-java-to-connect-to-and-query-data-in-azure-database-for-mysql"></a>快速入門：使用 Java 來連線及查詢適用於 MySQL 的 Azure 資料庫中的資料
 
-在 [MySQL 連接器範例頁面](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-examples.html)還有許多其他範例和範例程式碼。
+在本快速入門中，您將使用 Java 應用程式和 JDBC 驅動程式 MariaDB Connector/J 連線至適用於 MySQL 的 Azure 資料庫。 接著，您可以使用 SQL 陳述式來查詢、插入、更新和刪除 Mac、Ubuntu Linux 和 Windows 平台中的資料庫所含的資料。 
 
-## <a name="prerequisites"></a>必要條件
-1. 本快速入門使用在以下任一指南中建立的資源作為起點︰
-   - [使用 Azure 入口網站建立適用於 MySQL 的 Azure 資料庫伺服器](./quickstart-create-mysql-server-database-using-azure-portal.md)
-   - [使用 Azure CLI 建立適用於 MySQL 的 Azure 資料庫伺服器](./quickstart-create-mysql-server-database-using-azure-cli.md)
+此主題假設您熟悉如何使用 Java 進行開發，但是初次接觸適用於 MySQL 的 Azure 資料庫。
 
-2. 開啟防火牆並針對您的應用程式調整 SSL 設定，以確保 Azure Database for MySQL 連線安全性，進而連線成功。
+## <a name="prerequisites"></a>Prerequisites
 
-3. 使用下列方式之一取得 MySQL 連接器/J 連接器：
-   - 使用 Maven 套件 [mysql-connector-java](https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22mysql%22%20AND%20a%3A%22mysql-connector-java%22)，並將 [mysql 相依性](https://mvnrepository.com/artifact/mysql/mysql-connector-java/5.1.6)包含在您專案的 POM 檔案中。
-   - 下載 JDBC 驅動程式 [MySQL 連接器/J](https://dev.mysql.com/downloads/connector/j/)，並將 JDBC jar 檔案 (例如 mysql-connector-java-5.1.42-bin.jar) 包含在您的應用程式 classpath 中。 如果您在類別路徑方面有問題，請參閱環境文件以取得類別路徑的詳細資訊，例如 [Apache Tomcat](https://tomcat.apache.org/tomcat-7.0-doc/class-loader-howto.html) 或 [Java SE](https://docs.oracle.com/javase/7/docs/technotes/tools/windows/classpath.html)
+- 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+- 適用於 MySQL 的 Azure 資料庫伺服器。 [使用 Azure 入口網站建立適用於 MySQL 的 Azure 資料庫伺服器](quickstart-create-mysql-server-database-using-azure-portal.md)或[使用 Azure CLI 建立適用於 MySQL 的 Azure 資料庫伺服器](quickstart-create-mysql-server-database-using-azure-cli.md)。
+- 已開啟防火牆以設定「適用於 MySQL 的 Azure 資料庫」連線安全性，且已為您的應用程式設定 SSL 連線設定。
+
+> [!IMPORTANT] 
+> 確保您用於連線的 IP 位址已使用 [Azure 入口網站](./howto-manage-firewall-using-portal.md)或 [Azure CLI](./howto-manage-firewall-using-cli.md) 新增伺服器的防火牆規則
+
+## <a name="obtain-the-mariadb-connector"></a>取得 MariaDB 連接器
+
+使用下列方式之一取得 [MariaDB Connector/J](https://mariadb.com/kb/en/library/mariadb-connector-j/) 連接器：
+   - 使用 Maven 套件 [mariadb-java-client](https://search.maven.org/search?q=a:mariadb-java-client)，並將 [mariadb-java-client 相依性](https://mvnrepository.com/artifact/org.mariadb.jdbc/mariadb-java-client)包含在您專案的 POM 檔案中。
+   - 下載 JDBC 驅動程式 [MariaDB Connector/J](https://downloads.mariadb.org/connector-java/)，並將 JDBC jar 檔案 (例如 mariadb-java-client-2.4.3.jar) 包含在您的應用程式類別路徑中。 請參閱環境文件以取得類別路徑的詳細資訊，例如 [Apache Tomcat](https://tomcat.apache.org/tomcat-7.0-doc/class-loader-howto.html) 或 [Java SE](https://docs.oracle.com/javase/7/docs/technotes/tools/windows/classpath.html)
 
 ## <a name="get-connection-information"></a>取得連線資訊
+
 取得連線到 Azure Database for MySQL 所需的連線資訊。 您需要完整的伺服器名稱和登入認證。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
-2. 從 Azure 入口網站的左側功能表中，按一下 [所有資源]，然後搜尋您所建立的伺服器 (例如 **mydemoserver**)。
-3. 按一下伺服器名稱。
+2. 從 Azure 入口網站的左側功能表中，選取 [所有資源]，然後搜尋您所建立的伺服器 (例如 **mydemoserver**)。
+3. 選取伺服器名稱。
 4. 從伺服器的 [概觀] 面板，記下 [伺服器名稱] 和 [伺服器管理員登入名稱]。 如果您忘記密碼，您也可以從此面板重設密碼。
- ![Azure Database for MySQL 伺服器名稱](./media/connect-java/1_server-overview-name-login.png)
+ ![Azure Database for MySQL 伺服器名稱](./media/connect-java/azure-database-mysql-server-name.png)
 
 ## <a name="connect-create-table-and-insert-data"></a>連線、建立資料表及插入資料
-使用函式搭配 **INSERT** SQL 陳述式，利用下列程式碼來連線和載入資料。 [getConnection()](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-usagenotes-connect-drivermanager.html) 方法用來連線到 MySQL。 [createStatement()](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-usagenotes-statements.html) 和 execute() 方法用來置放和建立資料表。 prepareStatement 物件用來建置 insert 命令，並以 setString() 和 setInt() 繫結參數值。 executeUpdate() 方法會針對每組要插入值的參數執行此命令。 
+
+使用函式搭配 **INSERT** SQL 陳述式，利用下列程式碼來連線和載入資料。 [getConnection()](https://mariadb.com/kb/en/library/about-mariadb-connector-j/#using-drivermanager) 方法用來連線到 MySQL。 [createStatement()](https://mariadb.com/kb/en/library/about-mariadb-connector-j/#creating-a-table-on-a-mariadb-or-mysql-server) 和 execute() 方法用來置放和建立資料表。 prepareStatement 物件用來建置 insert 命令，並以 setString() 和 setInt() 繫結參數值。 executeUpdate() 方法會針對每組要插入值的參數執行此命令。 
 
 以建立自己的伺服器和資料庫時所指定的值，取代主機、資料庫、使用者和密碼參數。
 
@@ -59,24 +66,12 @@ public class CreateTableInsertRows {
         String user = "myadmin@mydemoserver";
         String password = "<server_admin_password>";
 
-        // check that the driver is installed
-        try
-        {
-            Class.forName("com.mysql.jdbc.Driver");
-        }
-        catch (ClassNotFoundException e)
-        {
-            throw new ClassNotFoundException("MySQL JDBC driver NOT detected in library path.", e);
-        }
-
-        System.out.println("MySQL JDBC driver detected in library path.");
-
         Connection connection = null;
 
         // Initialize connection object
         try
         {
-            String url = String.format("jdbc:mysql://%s/%s", host, database);
+            String url = String.format("jdbc:mariadb://%s/%s", host, database);
 
             // Set connection properties.
             Properties properties = new Properties();
@@ -143,7 +138,8 @@ public class CreateTableInsertRows {
 ```
 
 ## <a name="read-data"></a>讀取資料
-使用下列程式碼搭配 **SELECT** SQL 陳述式來讀取資料。 [getConnection()](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-usagenotes-connect-drivermanager.html) 方法用來連線到 MySQL。 [createStatement()](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-usagenotes-statements.html) 和 executeQuery() 方法用來連線和執行 select 陳述式。 結果會使用 [ResultSet](https://docs.oracle.com/javase/tutorial/jdbc/basics/retrieving.html) 物件進行處理。 
+
+使用下列程式碼搭配 **SELECT** SQL 陳述式來讀取資料。 [getConnection()](https://mariadb.com/kb/en/library/about-mariadb-connector-j/#using-drivermanager) 方法用來連線到 MySQL。 [createStatement()](https://mariadb.com/kb/en/library/about-mariadb-connector-j/#creating-a-table-on-a-mariadb-or-mysql-server) 和 executeQuery() 方法用來連線和執行 select 陳述式。 結果會使用 ResultSet 物件進行處理。 
 
 以建立自己的伺服器和資料庫時所指定的值，取代主機、資料庫、使用者和密碼參數。
 
@@ -161,24 +157,12 @@ public class ReadTable {
         String user = "myadmin@mydemoserver";
         String password = "<server_admin_password>";
 
-        // check that the driver is installed
-        try
-        {
-            Class.forName("com.mysql.jdbc.Driver");
-        }
-        catch (ClassNotFoundException e)
-        {
-            throw new ClassNotFoundException("MySQL JDBC driver NOT detected in library path.", e);
-        }
-
-        System.out.println("MySQL JDBC driver detected in library path.");
-
         Connection connection = null;
 
         // Initialize connection object
         try
         {
-            String url = String.format("jdbc:mysql://%s/%s", host, database);
+            String url = String.format("jdbc:mariadb://%s/%s", host, database);
 
             // Set connection properties.
             Properties properties = new Properties();
@@ -230,7 +214,8 @@ public class ReadTable {
 ```
 
 ## <a name="update-data"></a>更新資料
-使用下列程式碼搭配 **UPDATE** SQL 陳述式來變更資料。 [getConnection()](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-usagenotes-connect-drivermanager.html) 方法用來連線到 MySQL。 [prepareStatement()](https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html) 和 executeUpdate() 方法用來準備及執行 update 陳述式。 
+
+使用下列程式碼搭配 **UPDATE** SQL 陳述式來變更資料。 [getConnection()](https://mariadb.com/kb/en/library/about-mariadb-connector-j/#using-drivermanager) 方法用來連線到 MySQL。 [prepareStatement()](https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html) 和 executeUpdate() 方法用來準備及執行 update 陳述式。 
 
 以建立自己的伺服器和資料庫時所指定的值，取代主機、資料庫、使用者和密碼參數。
 
@@ -247,23 +232,12 @@ public class UpdateTable {
         String user = "myadmin@mydemoserver";
         String password = "<server_admin_password>";
 
-        // check that the driver is installed
-        try
-        {
-            Class.forName("com.mysql.jdbc.Driver");
-        }
-        catch (ClassNotFoundException e)
-        {
-            throw new ClassNotFoundException("MySQL JDBC driver NOT detected in library path.", e);
-        }
-        System.out.println("MySQL JDBC driver detected in library path.");
-
         Connection connection = null;
 
         // Initialize connection object
         try
         {
-            String url = String.format("jdbc:mysql://%s/%s", host, database);
+            String url = String.format("jdbc:mariadb://%s/%s", host, database);
             
             // set up the connection properties
             Properties properties = new Properties();
@@ -311,7 +285,8 @@ public class UpdateTable {
 ```
 
 ## <a name="delete-data"></a>刪除資料
-使用下列程式碼搭配 **DELETE** SQL 陳述式來移除資料。 [getConnection()](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-usagenotes-connect-drivermanager.html) 方法用來連線到 MySQL。  [prepareStatement()](https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html) 和 executeUpdate() 方法用來準備及執行 update 陳述式。 
+
+使用下列程式碼搭配 **DELETE** SQL 陳述式來移除資料。 [getConnection()](https://mariadb.com/kb/en/library/about-mariadb-connector-j/#using-drivermanager) 方法用來連線到 MySQL。  [prepareStatement()](https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html) 和 executeUpdate() 方法用來準備及執行 delete 陳述式。 
 
 以建立自己的伺服器和資料庫時所指定的值，取代主機、資料庫、使用者和密碼參數。
 
@@ -327,25 +302,13 @@ public class DeleteTable {
         String database = "quickstartdb";
         String user = "myadmin@mydemoserver";
         String password = "<server_admin_password>";
-        
-        // check that the driver is installed
-        try
-        {
-            Class.forName("com.mysql.jdbc.Driver");
-        }
-        catch (ClassNotFoundException e)
-        {
-            throw new ClassNotFoundException("MySQL JDBC driver NOT detected in library path.", e);
-        }
-
-        System.out.println("MySQL JDBC driver detected in library path.");
 
         Connection connection = null;
 
         // Initialize connection object
         try
         {
-            String url = String.format("jdbc:mysql://%s/%s", host, database);
+            String url = String.format("jdbc:mariadb://%s/%s", host, database);
             
             // set up the connection properties
             Properties properties = new Properties();
@@ -392,7 +355,6 @@ public class DeleteTable {
 ```
 
 ## <a name="next-steps"></a>後續步驟
-在 [MySQL 連接器/J 範例頁面](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-examples.html)還有許多其他範例和範例程式碼。
 
 > [!div class="nextstepaction"]
 > [使用傾印和還原來將 MySQL 資料庫移轉至適用於 MySQL 的 Azure 資料庫](concepts-migrate-dump-restore.md)

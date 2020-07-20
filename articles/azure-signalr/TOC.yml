@@ -7,14 +7,18 @@
 - name: 快速入門
   expanded: true
   items:
-    - name: 'ASP.NET Core - C#'
+    - name: ASP.NET Core - C#
       href: signalr-quickstart-dotnet-core.md
+    - name: ASP.NET - C#
+      href: signalr-quickstart-dotnet.md
     - name: Azure Functions - JavaScript
       href: signalr-quickstart-azure-functions-javascript.md
-    - name: 'Azure Functions - C#'
+    - name: Azure Functions - C#
       href: signalr-quickstart-azure-functions-csharp.md
     - name: Azure Functions - Java
       href: signalr-quickstart-azure-functions-java.md
+    - name: Azure Functions - Python
+      href: signalr-quickstart-azure-functions-python.md
     - name: REST API
       href: signalr-quickstart-rest-api.md
 - name: 教學課程
@@ -27,6 +31,8 @@
       href: 'https://github.com/aspnet/AzureSignalR-samples'
     - name: Azure CLI
       href: signalr-reference-cli.md
+    - name: Azure 原則內建
+      href: ./policy-samples.md
 - name: 概念
   items:
     - name: Azure SignalR Service 內部項目
@@ -41,6 +47,8 @@
           href: signalr-concept-serverless-development-config.md
         - name: 適用於 Azure Functions 的 SignalR Service 繫結參考
           href: ../azure-functions/functions-bindings-signalr-service.md
+        - name: 上游設定
+          href: concept-upstream.md
     - name: 高可用性
       items:
         - name: 復原和災害復原
@@ -49,22 +57,42 @@
       href: signalr-concept-messages-and-connections.md
     - name: 效能考量
       href: signalr-concept-performance.md
-    - name: Authentication
+    - name: 驗證
       href: signalr-concept-authenticate-oauth.md
-- name: 使用說明指南
+    - name: 事件處理
+      href: signalr-concept-event-grid-integration.md
+- name: 操作指南
   items:
     - name: 調整
       items:
+        - name: 單一執行個體
+          href: signalr-howto-scale-signalr.md
         - name: 多個執行個體
           href: signalr-howto-scale-multi-instances.md
     - name: 安全
       items:
         - name: 存取金鑰輪替
           href: signalr-howto-key-rotation.md
+        - name: 使用 Azure 服務標記
+          href: howto-service-tags.md
+        - name: 使用 Azure 私人端點
+          href: howto-private-endpoints.md
+        - name: 管理網路存取控制
+          href: howto-network-access-control.md
+        - name: 使用受控識別
+          href: howto-use-managed-identity.md
     - name: 整合
       items:
         - name: Azure Functions 繫結
           href: signalr-concept-azure-functions.md
+        - name: 事件方格整合
+          href: signalr-howto-event-grid-integration.md
+    - name: 監視
+      items:
+        - name: 使用診斷記錄來監視 SignalR Service
+          href: signalr-howto-diagnostic-logs.md
+        - name: 使用 Azure 原則來稽核合規性
+          href: signalr-howto-azure-policy.md
 - name: 參考
   items:
     - name: Azure CLI
@@ -77,7 +105,7 @@
       href: 'https://github.com/Azure/azure-signalr/blob/dev/specs/ServiceProtocol.md'
 - name: 資源
   items:
-    - name: 解決方案
+    - name: 方案
       href: 'https://docs.microsoft.com/azure/architecture/'
     - name: 客戶案例
       href: 'https://customers.microsoft.com/en-us/search?sq=signalr'
@@ -90,8 +118,8 @@
     - name: 常見問題集
       href: signalr-resource-faq.md
     - name: SignalR 服務訂用帳戶層級限制
-      href: 'https://docs.microsoft.com/azure/azure-subscription-service-limits#signalr-service-limits'
-    - name: 價格
+      href: 'https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#signalr-service-limits'
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/signalr-service/'
     - name: 影片
       href: 'https://www.youtube.com/results?search_query=Azure+SignalR+Core'

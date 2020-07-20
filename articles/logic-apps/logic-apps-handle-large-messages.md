@@ -1,25 +1,17 @@
 ---
-title: 處理大型訊息 - Azure Logic Apps | Microsoft Docs
-description: 了解如何在 Azure Logic Apps 中利用區塊化處理大型訊息大小
+title: 使用區塊化處理大型訊息
+description: 了解如何在以 Azure Logic Apps 建立的自動化工作和工作流程中，使用區塊化來處理大型訊息大小
 services: logic-apps
-documentationcenter: ''
-author: shae-hurst
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
-ms.service: logic-apps
-ms.workload: logic-apps
-ms.devlang: ''
-ms.tgt_pltfrm: ''
+ms.suite: integration
+author: DavidCBerry13
+ms.author: daberry
 ms.topic: article
-ms.date: 4/27/2018
-ms.author: shhurst
-ms.openlocfilehash: 5aa5ea2a39a0fb9f969e965fed14063522197cda
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 12/03/2019
+ms.openlocfilehash: 54828dded5196c86946d99a9cd8cec7a42533661
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60303766"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83117558"
 ---
 # <a name="handle-large-messages-with-chunking-in-azure-logic-apps"></a>在 Azure Logic Apps 中利用區塊化處理大型訊息
 
@@ -47,6 +39,9 @@ Logic Apps 無法直接使用超過訊息大小上限的分塊訊息輸出。 �
 
 這些支援區塊化的連接器終端使用者，並無法查看基礎區塊化通訊協定。 而因為並非所有連接器均支援區塊化，所以這些連接器會在傳入的訊息超過連接器的大小限制時，產生執行階段錯誤。
 
+> [!NOTE]
+> 針對使用區塊化的動作，您無法在這些動作中傳遞觸發程序主體或使用 `@triggerBody()?['Content']` 之類的運算式。 相反地，針對文字或 JSON 檔案內容，您可嘗試使用[**撰寫**動作](../logic-apps/logic-apps-perform-data-operations.md#compose-action)或[建立變數](../logic-apps/logic-apps-create-variables-store-values.md)來處理該內容。 如果觸發程序主體包含其他內容類型 (例如媒體檔案)，則必須執行其他步驟來處理該內容。
+
 <a name="set-up-chunking"></a>
 
 ## <a name="set-up-chunking-over-http"></a>在 HTTP 上設定區塊化
@@ -57,7 +52,7 @@ Logic Apps 無法直接使用超過訊息大小上限的分塊訊息輸出。 �
 
 此外，如果 HTTP 動作尚未啟用區塊化，您也必須在動作的 `runTimeConfiguration` 屬性中設定區塊化。 您可以直接在之後提及的程式碼檢視編輯器，或是此處所述的 Logic Apps 設計工具中，在動作內設定此屬性。
 
-1. 在 HTTP 動作的右上角選擇省略符號按鈕 (**...**)，然後選擇 [設定]。
+1. 在 HTTP 動作的右上角選擇省略符號按鈕 ( **...** )，然後選擇 [設定]。
 
    ![在動作上開啟 [設定] 功能表](./media/logic-apps-handle-large-messages/http-settings.png)
 
@@ -117,18 +112,18 @@ GET 要求將 "Range" 標頭設定為 "bytes=0-1023"，這是位元組範圍。 
 
 1. 您的邏輯應用程式送包含空白訊息本文的起始 HTTP POST 或 PUT 要求。 要求標頭會包含此資訊，提其您邏輯應用程式想要以區塊上傳的內容：
 
-   | Logic Apps 要求標頭欄位 | Value | 類型 | 描述 |
+   | Logic Apps 要求標頭欄位 | 值 | 類型 | 描述 |
    |---------------------------------|-------|------|-------------|
    | **x-ms-transfer-mode** | chunked | String | 指出內容以區塊上傳 |
-   | **x-ms-content-length** | <*content-length*> | 整數  | 進行區塊化前的所有內容大小 (位元組) |
+   | **x-ms-content-length** | <*content-length*> | 整數 | 進行區塊化前的所有內容大小 (位元組) |
    ||||
 
 2. 端點回應 "200" 成功狀態碼和此選擇性資訊：
 
-   | 端點回應標頭欄位 | 類型 | 必要項 | 描述 |
+   | 端點回應標頭欄位 | 類型 | 必要 | 描述 |
    |--------------------------------|------|----------|-------------|
-   | **x-ms-chunk-size** | 整數  | 否 | 建議的區塊大小 (位元組) |
-   | **位置** | String | 否 | 傳送 HTTP PATCH 訊息的 URL 位置 |
+   | **x-ms-chunk-size** | 整數 | 否 | 建議的區塊大小 (位元組) |
+   | **位置** | String | 是 | 傳送 HTTP PATCH 訊息的 URL 位置 |
    ||||
 
 3. 您的邏輯應用程式建立並傳送後續 HTTP PATCH 訊息，每項訊息都帶有此資訊：
@@ -137,14 +132,20 @@ GET 要求將 "Range" 標頭設定為 "bytes=0-1023"，這是位元組範圍。 
 
    * 這些與內容區塊相關的標題詳細資料會在各個 PATCH 訊息中傳出：
 
-     | Logic Apps 要求標頭欄位 | Value | 類型 | 描述 |
+     | Logic Apps 要求標頭欄位 | 值 | 類型 | 描述 |
      |---------------------------------|-------|------|-------------|
      | **Content-Range** | <*range*> | String | 目前內容區塊的位元組範圍，包含開始值、結束值和內容大小總計，例如："bytes=0-1023/10100" |
      | **Content-Type** | <*content-type*> | String | 分塊內容的類型 |
      | **Content-Length** | <*content-length*> | String | 目前區塊的大小長度 (位元組) |
      |||||
 
-4. 端點會在收到每項 PATCH 要求之後回應 "200" 狀態碼，來確認各區塊的接收狀況。
+4. 端點會在收到每項 PATCH 要求之後回應 "200" 狀態碼及下列回應標頭，以確認各區塊的接收狀況：
+
+   | 端點回應標頭欄位 | 類型 | 必要 | 描述 |
+   |--------------------------------|------|----------|-------------|
+   | **Range** | String | 是 | 端點已接收內容的位元組範圍，例如："bytes=0-1023" |   
+   | **x-ms-chunk-size** | 整數 | 否 | 建議的區塊大小 (位元組) |
+   ||||
 
 舉例來說，這項動作定義呈現了將分塊內容傳送至端點的 HTTP POST 要求。 在動作的 `runTimeConfiguration` 屬性中，`contentTransfer` 屬性將 `transferMode` 設定為 `chunked`：
 

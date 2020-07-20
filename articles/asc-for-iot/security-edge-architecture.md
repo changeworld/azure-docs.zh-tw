@@ -1,70 +1,66 @@
 ---
-title: 了解 Azure 資訊安全中心的 IoT Edge 適用的 IoT 安全性模組 |Microsoft Docs
-description: 了解 IoT Edge 的架構和 Azure 資訊安全中心的 IoT 安全性模組的功能。
+title: IoT Edge 的安全性模組
+description: 瞭解適用于 IoT Edge 的 IoT 安全性模組 Azure 資訊安全中心的架構和功能。
 services: asc-for-iot
-ms.service: ascforiot
+ms.service: asc-for-iot
 documentationcenter: na
 author: mlottner
 manager: rkarlin
 editor: ''
 ms.assetid: e78523ae-d70a-456a-818d-f8b1b025d7cb
+ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/25/2019
+ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 847d6238bd42dc7da723dcc9acd47ed09c16dbf9
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
-ms.translationtype: MT
+ms.openlocfilehash: 0eb68f517c4c5b04dd4f92dd1a804dcf5ad24362
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65200589"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "81310634"
 ---
 # <a name="azure-iot-edge-security-module"></a>Azure IoT Edge 安全性模組
 
-> [!IMPORTANT]
-> 適用於 IoT 的 Azure 資訊安全中心目前為公開預覽狀態。
-> 此預覽版的服務等級協定，不提供，且不建議用於生產環境 worklo§1ads。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+[Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/)提供強大的功能，可在邊緣管理和執行商務工作流程。
+IoT Edge 在 IoT 環境中所扮演的關鍵區段，使其對惡意執行者特別具吸引力。
 
-[Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/)提供功能強大的功能，可管理，以及執行在邊緣的商務工作流程。
-IoT Edge 在 IoT 環境中所扮演的重要部分讓它特別能吸引針對惡意執行者。
+適用于 IoT 安全性模組的 Azure 資訊安全中心可為您的 IoT Edge 裝置提供完整的安全性解決方案。
+Azure 資訊安全中心 IoT 模組會收集、匯總及分析來自作業系統和容器系統的原始安全性資料，成為可操作的安全性建議和警示。
 
-IoT 安全性模組的 azure 資訊安全中心 (ASC) 提供完整的安全性解決方案適用於您的 IoT Edge 裝置。
-ASC IoT 模組會收集、 彙總並分析未經處理的安全性資料，從您的作業系統和容器系統，到可操作的安全性建議和警示。
+類似于 IoT 裝置的 IoT 安全性代理程式 Azure 資訊安全中心，IoT Edge 模組的 Azure 資訊安全中心可透過其模組對應項進行高度自訂。
+若要深入瞭解，請參閱[設定您的代理程式](how-to-agent-configuration.md)。
 
-類似於 ASC IoT 裝置的 IoT 安全性代理程式，IoT Edge 模組 ASC 是高度可自訂，透過其模組對應項。
-請參閱[設定代理程式](how-to-agent-configuration.md)若要深入了。
+適用于 IoT Edge 的 IoT 安全性模組 Azure 資訊安全中心提供下列功能：
 
-IoT Edge 適用的 IoT 安全性模組的 ASC 提供下列功能：
+- 從基礎作業系統（Linux）和 IoT Edge 容器系統收集原始安全性事件。
 
-- 從基礎作業系統 (Linux) 和 IoT Edge 容器系統，會收集未經處理的安全性事件。
-  
-  請參閱[IoT 代理程式設定的 ASC](how-to-agent-configuration.md)若要深入了解可用的安全性資料收集器。
+  若要深入瞭解可用的安全性資料收集器，請參閱[IoT 代理程式設定 Azure 資訊安全中心](how-to-agent-configuration.md)。
 
 - IoT Edge 部署資訊清單的分析。
 
-- 透過傳送訊息到彙總未經處理的安全性事件[IoT Edge 中樞](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub)。
+- 將原始安全性事件匯總到透過[IoT Edge 中樞](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub)傳送的訊息。
 
-- 移除透過設定使用的安全性模組對應項。
+- 透過使用安全性模組對應項來移除設定。
 
-  請參閱[設定 IoT 代理程式 ASC](how-to-agent-configuration.md)若要深入了。
+  若要深入瞭解，請參閱[設定 IoT 代理程式的 Azure 資訊安全中心](how-to-agent-configuration.md)。
 
-ASC IoT Edge 適用的 IoT 安全性模組會在 IoT Edge 在特權模式下執行。
-特殊權限的模式，才能讓監視作業系統中，模組和其他 IoT Edge 模組。
+適用于 IoT Edge 的 IoT 安全性模組 Azure 資訊安全中心會在 IoT Edge 底下的特殊許可權模式下執行。
+需要有特殊許可權模式，才能讓模組監視作業系統和其他 IoT Edge 模組。
 
-## <a name="agent-supported-platforms"></a>支援的代理程式的平台
+## <a name="module-supported-platforms"></a>模組支援的平臺
 
-IoT Edge 適用的 IoT 安全性模組的 ASC 是目前僅適用於 Linux。
+適用于 IoT Edge 的 IoT 安全性模組 Azure 資訊安全中心目前僅適用于 Linux。
 
 ## <a name="next-steps"></a>後續步驟
 
-在本文中，您已了解的架構和 ASC 的 IoT 安全性模組的功能適用於 IoT Edge。
+在本文中，您已瞭解適用于 IoT Edge 的 IoT 安全性模組 Azure 資訊安全中心的架構和功能。
 
-若要繼續開始使用 ASC 針對 IoT 部署，請使用下列文章：
+若要繼續開始使用 Azure 資訊安全中心進行 IoT 部署，請使用下列文章：
 
-- 部署[IoT Edge 的安全性模組](how-to-deploy-edge.md)
-- 了解如何[設定安全性模組](how-to-agent-configuration.md)
-- 檢閱 ASC iot[服務必要條件](service-prerequisites.md)
-- 了解如何[啟用 ASC 中您的 IoT 中樞的 IoT 服務](quickstart-onboard-iot-hub.md)
-- 深入了解從服務[ASC IoT 常見問題集](resources-frequently-asked-questions.md)
+- [IoT Edge 的部署安全性模組](how-to-deploy-edge.md)
+- 瞭解如何[設定您的安全性模組](how-to-agent-configuration.md)
+- 審查 IoT[服務必要條件](service-prerequisites.md)的 Azure 資訊安全中心
+- 瞭解如何[在您的 IoT 中樞中啟用 IoT 服務的 Azure 資訊安全中心](quickstart-onboard-iot-hub.md)
+- 深入瞭解[適用于 IoT 的 Azure 資訊安全中心](resources-frequently-asked-questions.md)的服務常見問題

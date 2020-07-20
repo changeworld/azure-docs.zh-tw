@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 74a9764187b15bddf1dc48fa2b7988217d31abce
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60860306"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "67174179"
 ---
 ## <a name="troubleshooting-update-failures"></a>更新失敗的疑難排解
 **如果您看到升級前檢查失敗的通知，該怎麼辦？**
 
-如果前置檢查失敗，請確定您已經查看頁面底部的詳細通知列。 這會提供有關失敗的前置檢查的指引。 下圖顯示這類出現的通知當中的執行個體。 在此情況下，控制器健康狀況檢查和硬體元件健康狀況檢查失敗。 在 [硬體狀態] 區段下，您可以看到**控制器 0** 及**控制器 1** 元件需要注意。
+如果前置檢查失敗，請確定您已經查看頁面底部的詳細通知列。 這會提供有關失敗的前置檢查的指引。 下圖顯示這類出現的通知當中的執行個體。 在此情況下，控制器健康狀況檢查和硬體元件健康狀況檢查失敗。 在 [硬體狀態]**** 區段下，您可以看到**控制器 0** 及**控制器 1** 元件需要注意。
 
   ![前置檢查失敗](./media/storsimple-install-troubleshooting/HCS_PreUpdateCheckFailed-include.png)
 

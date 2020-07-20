@@ -1,21 +1,15 @@
 ---
 title: Azure 快速入門 - 執行 Batch 作業 - .NET
-description: 使用 Batch .NET 用戶端程式庫快速執行 Batch 作業和工作。
-services: batch
-author: laurenhughes
-manager: jeconnoc
-ms.service: batch
-ms.devlang: dotnet
+description: 使用 Batch .NET 用戶端程式庫，從 C# 應用程式快速執行 Azure Batch 範例作業和工作。
 ms.topic: quickstart
 ms.date: 11/29/2018
-ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 6c332861bcaf228e4c1e0a619cf4f84e3be0ba15
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 1163d63f8cbd6afedfb6e5323fa469059fa8021c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65204172"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82117211"
 ---
 # <a name="quickstart-run-your-first-azure-batch-job-with-the-net-api"></a>快速入門：使用 .NET API 執行您的第一個 Azure Batch 作業
 
@@ -27,13 +21,13 @@ ms.locfileid: "65204172"
 
 ## <a name="prerequisites"></a>必要條件
 
-* 適用於 Linux、macOS 或 Windows 的 [Visual Studio 2017](https://www.visualstudio.com/vs) 或 [.NET Core 2.1](https://www.microsoft.com/net/download/dotnet-core/2.1)。 
+* 適用於 Linux、macOS 或 Windows 的 [Visual Studio 2017 或更新版本](https://www.visualstudio.com/vs) \(英文\)，或 [.NET Core 2.1](https://www.microsoft.com/net/download/dotnet-core/2.1) \(英文\)。 
 
 * Batch 帳戶和連結的 Azure 儲存體帳戶。 若要建立這些帳戶，請參閱使用 [Azure 入口網站](quick-create-portal.md)或 [Azure CLI](quick-create-cli.md) 的 Batch 快速入門。 
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
 
-在 [https://portal.azure.com](https://portal.azure.com) 登入 Azure 入口網站。
+登入 Azure 入口網站：[https://portal.azure.com](https://portal.azure.com)。
 
 [!INCLUDE [batch-common-credentials](../../includes/batch-common-credentials.md)]
 
@@ -47,7 +41,7 @@ git clone https://github.com/Azure-Samples/batch-dotnet-quickstart.git
 
 瀏覽至包含 Visual Studio 方案檔 `BatchDotNetQuickstart.sln` 的目錄。
 
-在 Visual Studio 中開啟方案檔，然後使用您為帳戶取得的值來更新 `Program.cs` 中的認證字串。 例如︰
+在 Visual Studio 中開啟方案檔，然後使用您為帳戶取得的值來更新 `Program.cs` 中的認證字串。 例如：
 
 ```csharp
 // Batch account credentials

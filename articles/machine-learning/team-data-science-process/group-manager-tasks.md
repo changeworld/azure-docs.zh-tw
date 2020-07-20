@@ -1,323 +1,262 @@
 ---
 title: Team 資料科學程序群組管理員工作
-description: 資料科學 Team 專案上群組管理員工作的概述。
+description: 請遵循群組管理員在資料科學小組專案上完成之工作的詳細逐步解說。
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: fb0482be1670a96befdd69a5356c9e21476d9f9f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 4ec7f4242e5046e90fdf0eb8c6c0579f402e4f55
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60305078"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "76721348"
 ---
-# <a name="tasks-for-a-group-manager-on-a-data-science-team-project"></a>資料科學 Team 專案的群組管理員工作
+# <a name="team-data-science-process-group-manager-tasks"></a>Team 資料科學程序群組管理員工作
 
-本主題概述希望群組管理員為其資料科學組織完成的工作。 目標是建立在 [Team 資料科學程序](overview.md) (TDSP) 上標準化的共同作業群組環境。 如需人員角色的概述，以及對此程序進行標準化之資料科學小組所處理相關聯工作的大綱，請參閱 [Team 資料科學程序角色和工作](roles-tasks.md)。
+本文描述*群組管理員*針對資料科學組織完成的工作。 [群組管理員] 會管理企業中的整個資料科學單位。 資料科學單位可能有數個小組，而每個團隊都是在不同的業務縱向中處理許多資料科學專案。 群組管理員的目標是要建立共同作業群組環境，以在[Team 資料科學](overview.md)程式（TDSP）上標準化。 如需資料科學小組所處理的所有人員角色和相關工作的大綱，請參閱[小組資料科學流程角色和](roles-tasks.md)工作。
 
-**群組管理員**是在企業中整個資料科學單位的管理員。 一個資料科學單位可能有多個小組，而每個小組負責不同商業垂直市場中的多個資料科學專案。 群組管理員可能會將他們的工作委派給代理人，但與角色相關聯的工作則一樣。 有六個主要工作，如下圖所示：
+下圖顯示六個主要群組管理員設定工作。 群組管理員可將他們的工作委派給代理，但與角色相關聯的工作不會變更。
 
-![0](./media/group-manager-tasks/tdsp-group-manager.png)
+![群組管理員工作](./media/group-manager-tasks/tdsp-group-manager.png)
 
+1. 設定群組的**Azure DevOps 組織**。
+2. 在 Azure DevOps 組織中建立預設的**GroupCommon 專案**。
+3. 在 Azure Repos 中建立**GroupProjectTemplate**存放庫。
+4. 在 Azure Repos 中建立**GroupUtilities**存放庫。
+5. 將 Microsoft TDSP 小組的**ProjectTemplate**和**公用程式**存放庫的內容匯入到群組通用存放庫。
+6. 設定小組成員存取群組的**成員資格**和**許可權**。
 
-> [!NOTE] 
-> 我們概述在下列指示中使用 Azure DevOps Services 來設定 TDSP 群組環境所需的步驟。 我們會指定如何使用 Azure DevOps Services 完成這些工作，因為這是我們在 Microsoft 中實作 TDSP 的方式。 如果針對您的群組使用另一個程式碼裝載平台，必須由群組管理員完成的工作通常不會變更。 但是完成這些工作的方式將會不同。
-
-1. 設定群組的 **Azure DevOps Services**。
-2. 在 Azure DevOps Services 上建立**群組專案** (針對 Azure DevOps Services 使用者)
-3. 建立 **GroupProjectTemplate** 存放庫
-4. 建立 **GroupUtilities** 存放庫
-5. 針對含有 TDSP 存放庫內容的 Azure DevOps Services，植入 **GroupProjectTemplate** 和 **GroupUtilities** 存放庫。
-6. 為小組成員設定**安全性控制**，以存取 GroupProjectTemplate 和 GroupUtilities 存放庫。
-
-以下將詳細說明上述各步驟。 但首先，我們要讓您熟悉各個縮寫，並討論使用存放庫的必要條件。
-
-### <a name="abbreviations-for-repositories-and-directories"></a>存放庫和目錄的縮寫
-
-本教學課程會針對存放庫和目錄使用縮寫名稱。 這些定義讓您更容易遵循存放庫和目錄之間的作業。 在下列各節中，會使用這個標記法：
-
-- **G1**：由 Microsoft 的 TDSP 小組所開發與管理的專案範本存放庫。
-- **G2**：由 Microsoft 的 TDSP 小組所開發與管理的公用程式存放庫。
-- **R1**：Git 上的 GroupProjectTemplate 存放庫，由您設定於 Azure DevOps Services 群組伺服器上。
-- **R2**：Git 上的 GroupUtilities 存放庫，由您設定於 Azure DevOps Services 群組伺服器上。
-- **LG1** 和 **LG2**：您機器上的本機目錄，您會分別將 G1 和 G2 複製到其中。
-- **LR1** 和 **LR2**：您機器上的本機目錄，您會分別將 R1 和 R2 複製到其中。
-
-### <a name="pre-requisites-for-cloning-repositories-and-checking-code-in-and-out"></a>複製存放庫以及簽入和簽出程式碼的必要條件
-
-- Git 必須安裝在您的機器上。 如果您使用資料科學虛擬機器 (DSVM)，則已預先安裝 Git，而您可以繼續作業。 否則，請參閱[平台和工具附錄](platforms-and-tools.md#appendix)。
-- 如果您使用 **Windows DSVM**，您必須在機器上安裝 [Git 認證管理員 (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) \(英文\)。 在 README.md 檔案中，向下捲動至 [下載並安裝] 區段，然後按一下 [最新的安裝程式]。 這個步驟會帶您到最新的安裝程式頁面。 從這裡下載 .exe 安裝程式並執行它。
-- 如果您使用 **Linux DSVM**，請在您的 DSVM 上建立 SSH 公開金鑰，並將它新增到您的群組 Azure DevOps Services。 如需 SSH 的詳細資訊，請參閱[平台和工具附錄](platforms-and-tools.md#appendix)中的**建立 SSH 公開金鑰**一節。
-
-
-## <a name="1-create-account-on-azure-devops-services"></a>1.建立 Azure DevOps Services 的帳戶
-
-Azure DevOps Services 會裝載下列存放庫：
-
-- **群組通用的存放庫**：一般用途的存放庫，可由群組內的多個小組針對多個資料科學專案加以採用。 例如，*GroupProjectTemplate* 和 *GroupUtilities* 存放庫。
-- **小組存放庫**：群組內特定小組的存放庫。 這些存放庫是針對小組的需求而定，可能會由該小組執行的多個專案所採用，但通常不足以供資料科學群組內的多個小組使用。
-- **專案存放庫**：適用於特定專案的存放庫。 這類存放庫通常不足以供由小組執行的多個專案，以及資料科學群組中的多個小組使用。
-
-
-### <a name="setting-up-the-azure-devops-services-sign-into-your-microsoft-account"></a>設定 Azure DevOps Services 登入您的 Microsoft 帳戶
-
-移至 [Visual Studio Online](https://www.visualstudio.com/)、按一下右上角的 [登入]，然後登入您的 Microsoft 帳戶。
-
-![1](./media/group-manager-tasks/login.PNG)
-
-如果您沒有 Microsoft 帳戶，按一下 [立即註冊] 來建立 Microsoft 帳戶，然後使用此帳戶登入。
-
-如果您的組織具有 Visual Studio/MSDN 訂用帳戶，按一下綠色的 [使用您的工作或學校帳戶登入] 方塊，然後使用與此訂用帳戶相關聯的認證登入。
-
-![2](./media/group-manager-tasks/signin.PNG)
-
-
-
-登入之後，按一下右上角的 [建立新帳戶]，如下圖所示：
-
-![3](./media/group-manager-tasks/create-account-1.PNG)
-
-使用下列值，為您想要在 [建立您的帳戶] 精靈中建立的 Azure DevOps Services 填入資訊：
-
-- **伺服器 URL**：使用您自己的「伺服器名稱」取代 mysamplegroup。 伺服器的 URL 將會是： https://\<servername\>.visualstudio.com。
-- **使用以下項目管理程式碼:** 選取 [Git]。
-- **專案名稱：** 輸入 *GroupCommon*。
-- **工作的組織方式:** 選擇 [敏捷式]。
-- **您專案的裝載位置:** 選擇地理位置。 在此範例中，我們選擇 [美國中南部]。
-
-![4](./media/group-manager-tasks/fill-in-account-information.png)
+下列教學課程將逐步解說詳細的步驟。 
 
 > [!NOTE] 
-> 如果您在按一下 [建立新帳戶] 之後看到下列快顯視窗，則需按一下 [變更詳細資料] 來顯示分項的所有欄位。
-
-![5](./media/group-manager-tasks/create-account-2.png)
-
-
-按一下 [繼續]。
-
-## <a name="2-groupcommon-project"></a>2.GroupCommon 專案
-
-[GroupCommon] 頁面 (https://\<servername\>.visualstudio.com/GroupCommon) 會在您的 Azure DevOps Services 建立之後開啟。
-
-![6](./media/group-manager-tasks/server-created-2.PNG)
-
-## <a name="3-create-the-grouputilities-r2-repository"></a>3.建立 GroupUtilities (R2) 存放庫
-
-若要在 Azure DevOps Services 下建立 **GroupUtilities** (R2) 存放庫：
-
-- 若要開啟 [建立新的存放庫] 精靈，請在專案的 [版本控制] 索引標籤上按一下 [新增存放庫]。
-
-  ![7](./media/group-manager-tasks/create-grouputilities-repo-1.png)
-
-- 選取 [Git] 作為**類型**，並輸入 *GroupUtilities* 作為**名稱**，然後按一下 [建立]。
-
-  ![8](./media/group-manager-tasks/create-grouputilities-repo-2.png)
-
-現在您應該會在 [版本控制] 頁面的左側資料行中看見兩個 Git 存放庫 **GroupProjectTemplate** 和 **GroupUtilities**：
-
-![9](./media/group-manager-tasks/two-repo-under-groupCommon.PNG)
-
-
-## <a name="4-create-the-groupprojecttemplate-r1-repository"></a>4.建立 GroupProjectTemplate (R1) 存放庫
-
-Azure DevOps 群組伺服器適用的儲存庫設定包含兩個工作：
-
-- 將預設的 **GroupCommon** 存放庫重新命名為 ***GroupProjectTemplate***。
-- 在專案 **GroupCommon** 下方的 Azure DevOps Services 上建立 **GroupUtilities** 存放庫。
-
-本節會在有關重新命名慣例或我們的存放庫和目錄的備註之後包含第一個工作的指示。 第二個工作的指示則包含於下一節的步驟 4 中。
-
-### <a name="rename-the-default-groupcommon-repository"></a>重新命名預設的 GroupCommon 存放庫
-
-將預設的 **GroupCommon** 存放庫重新命名為 GroupProjectTemplate (在本教學課程中稱為 **R1**)：
-
-- 按一下 [GroupCommon] 專案頁面上的 [在程式碼上共同作業]。 這會帶您前往專案 **GroupCommon** 的預設 Git 存放庫頁面。 此 Git 存放庫目前是空的。
-
-  ![10](./media/group-manager-tasks/rename-groupcommon-repo-3.png)
-
-- 在 [GroupCommon] 之 Git 存放庫頁面上，按一下左上角的 [GroupCommon] (下圖中使用紅色方塊反白顯示的選項)，然後選取 [管理存放庫] (下圖中使用綠色方塊反白顯示的選項)。 此程序會開啟 [控制台]。
-- 選取專案的 [版本控制] 索引標籤。
-
-  ![11](./media/group-manager-tasks/rename-groupcommon-repo-4.png)
-
-- 在左面板中，按一下 [GroupCommon] 存放庫右邊的 [...]，然後選取 [重新命名存放庫]。
-
-  ![12](./media/group-manager-tasks/rename-groupcommon-repo-5.png)
-
-- 在快顯的 [重新命名 GroupCommon 存放庫] 精靈中，於 [存放庫名稱] 方塊中輸入GroupProjectTemplate，然後按一下 [重新命名]。
-
-  ![13](./media/group-manager-tasks/rename-groupcommon-repo-6.png)
-
-
-
-## <a name="5-seed-the-r1--r2-repositories-on-the-azure-devops-services"></a>5.在 Azure DevOps Services 上植入 R1 和 R2 存放庫
-
-在程序的這個階段中，您會植入您在上一節中設定的 *GroupProjectTemplate* (R1) 和 *GroupUtilities* (R2) 存放庫。 這些存放庫是使用由 Microsoft 針對 Team 資料科學程序所管理的 ***ProjectTemplate*** (**G1**) 和 ***Utilities*** (**G2**) 存放庫來植入的。 完成此植入時：
-
-- R1 存放庫所擁有的目錄與文件範本組合，將與 G1 擁有的一樣
-- 您的 R2 存放庫將包含 Microsoft 所開發的資料科學公用程式組合。
-
-植入程序會使用本機 DSVM 上的目錄作為中繼暫存網站。 以下是本節中遵循的步驟：
-
-- G1 & G2 - 複製到 -> LG1 & LG2
-- R1 & R2 - 複製到 -> LR1 & LR2
-- LG1 & LG2 - 檔案複製到 -> LR1 & LR2
-- (選擇性) 自訂 LR1 & LR2
-- LR1 & LR2 - 內容新增到 -> R1 & R2
-
-
-### <a name="clone-g1--g2-repositories-to-your-local-dsvm"></a>將 G1 & G2 存放庫複製到您的本機 DSVM
-
-在此步驟中，您會將 Team 資料科學程序 (TDSP) ProjectTemplate 存放庫 (G1) 和 Utilities (G2) 從 TDSP GitHub 存放庫複製到您本機 DSVM 中的資料夾作為 LG1 和 LG2：
-
-- 建立目錄作為根目錄，來裝載您對存放庫所做的所有複製。
-  -  在 Windows DSVM 中，建立 C:\GitRepos\TDSPCommon 目錄。
-  -  在 Linux DSVM 中，於主目錄中建立 *GitRepos\TDSPCommon* 目錄。
-
-- 從 *GitRepos\TDSPCommon* 目錄執行下列命令組合。
-
-  `git clone https://github.com/Azure/Azure-TDSP-ProjectTemplate`<br>
-  `git clone https://github.com/Azure/Azure-TDSP-Utilities`
-
-  ![14](./media/group-manager-tasks/two-folder-cloned-from-TDSP-windows.PNG)
-
-- 使用我們的縮寫存放庫名稱，以下是這些指令碼已達成的目標：
-    - G1 - 複製到 -> LG1
-    - G2 - 複製到 -> LG2
-- 完成複製之後，您應該可以在 **GitRepos\TDSPCommon** 目錄下看到兩個目錄：ProjectTemplate 和 Utilities。
-
-### <a name="clone-r1--r2-repositories-to-your-local-dsvm"></a>將 R1 & R2 存放庫複製到您的本機 DSVM
-
-在此步驟中，您會在 DSVM 上的 **GitRepos\GroupCommon** 下方，於本機目錄上複製 GroupProjectTemplate 存放庫 (R1) 和 GroupUtilities 存放庫 (R2) (分別稱為 LR1 和 LR2)。
-
-- 若要取得 R1 和 R2 存放庫的 URL，請移至 Azure DevOps Services 的 **GroupCommon** 首頁。 這通常會有 URL https://\<您的 Azure DevOps Services 名稱\>.visualstudio.com/GroupCommon。
-- 按一下 [程式碼]。
-- 選擇 [GroupProjectTemplate] 和 [GroupUtilities] 存放庫。 從 [複製 URL] 元素中複製並儲存每個 URL (如果是 Windows 為 HTTPS；如果是 Linux 則為 SSH)，接著在下列指令碼中使用：
-
-  ![15](./media/group-manager-tasks/find_https_ssh_2.PNG)
-
-- 變更為您的 Windows 或 Linux DSVM 上的 **GitRepos\GroupCommon** 目錄，然後執行下列命令組合來將 R1 和 R2 複製到該目錄。
-
-以下是 Windows 和 Linux 的指令碼：
-
-    # Windows DSVM
-
-    git clone <the HTTPS URL of the GroupProjectTemplate repository>
-    git clone <the HTTPS URL of the GroupUtilities repository>
-
-![16](./media/group-manager-tasks/clone-two-empty-group-reo-windows-2.PNG)
-
-    # Linux DSVM
-
-    git clone <the SSH URL of the GroupProjectTemplate repository>
-    git clone <the SSH URL of the GroupUtilities repository>
-
-![17](./media/group-manager-tasks/clone-two-empty-group-reo-linux-2.PNG)
-
-> [!NOTE] 
-> 預期會收到 LR1 和 LR2 為空的警告訊息。
-
-- 使用我們的縮寫存放庫名稱，以下是這些指令碼已達成的目標：
-    - R1 - 複製到 -> LR1
-    - R2 - 複製到 -> LR2   
-
-
-### <a name="seed-your-groupprojecttemplate-lr1-and-grouputilities-lr2"></a>植入您的 GroupProjectTemplate (LR1) 和 GroupUtilities (LR2)
-
-接下來，在您的本機電腦上，將 GitRepos\TDSPCommon 下方 ProjectTemplate 和 Utilities 目錄的內容 (除了 .git 目錄中的中繼資料) 複製到您在 **GitRepos\GroupCommon** 下的 GroupProjectTemplate 和 GroupUtilities 目錄。 以下是要在此步驟中完成的兩個工作：
-
-- 將 GitRepos\TDSPCommon\ProjectTemplate (**LG1**) 中的檔案複製到 GitRepos\GroupCommon\GroupProjectTemplate (**LR1**)
-- 將 GitRepos\TDSPCommon\Utilities (**LG2**) 中的檔案複製到 GitRepos\GroupCommon\Utilities (**LR2**)。
-
-若要完成這兩個工作，請在 PowerShell 主控台 (Windows) 或殼層指令碼主控台 (Linux) 中執行下列指令碼。 系統會提示您輸入 LG1、LR1、LG2 和 LR2 的完整路徑。 系統會驗證您輸入的路徑。 如果您輸入的目錄不存在，系統會要求您再次輸入。
-
-    # Windows DSVM
-    
-    wget "https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/TDSP/tdsp_local_copy_win.ps1" -outfile "tdsp_local_copy_win.ps1"
-    .\tdsp_local_copy_win.ps1 1
-
-![18](./media/group-manager-tasks/copy-two-folder-to-group-folder-windows-2.PNG)
-
-現在您可以看到已將目錄 LG1 和 LG1 中的檔案 (除了.git 目錄中的檔案) 分別複製到 LR1 和 LR2。
-
-![19](./media/group-manager-tasks/copy-two-folder-to-group-folder-windows.PNG)
-
-    # Linux DSVM
-
-    wget "https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/TDSP/tdsp_local_copy_linux.sh"
-    bash tdsp_local_copy_linux.sh 1
-
-![20](./media/group-manager-tasks/copy-two-folder-to-group-folder-linux-2.PNG)
-
-現在您會看到已將這兩個資料夾中的檔案 (除了.git 目錄中的檔案) 分別複製到 GroupProjectTemplate 和 GroupUtilities。
-
-![21](./media/group-manager-tasks/copy-two-folder-to-group-folder-linux.PNG)
-
-- 使用我們的縮寫存放庫名稱，以下是這些指令碼已達成的目標：
-    - LG1 - 檔案複製到 -> LR1
-    - LG2 - 檔案複製到 -> LR2
-
-### <a name="option-to-customize-the-contents-of-lr1--lr2"></a>自訂 LR1 & LR2 內容的選項
-    
-如果您想要自訂 LR1 和 LR2 的內容以符合您群組的特定需求，則適合在程序的這個階段進行。 您可以修改範本文件、變更目錄結構，並新增您群組已開發或有助於整個群組的現有公用程式。
-
-### <a name="add-the-contents-in-lr1--lr2-to-r1--r2-on-group-server"></a>將 LR1 & LR2 中的內容新增到群組伺服器上的 R1 & R2
-
-現在，您需要將 LR1 和 LR2 中的內容新增到存放庫 R1 和 R2。 以下是您可在 Windows PowerShell 或 Linux 中執行的 git bash 指令。
-
-從 GitRepos\GroupCommon\GroupProjectTemplate 目錄執行下列命令：
-
-    git status
-    git add .
-    git commit -m"push from DSVM"
-    git push
-
--m 選項可讓您設定適用於 git 認可的訊息。
-
-![22](./media/group-manager-tasks/push-to-group-server-2.PNG)
-
-您可以在群組的 Azure DevOps Services 中看到 GroupProjectTemplate 存放庫中的檔案立即同步。
-
-![23](./media/group-manager-tasks/push-to-group-server-showed-up-2.PNG)
-
-最後，變更至 **GitRepos\GroupCommon\GroupUtilities** 目錄，然後執行同一組 git bash命令：
-
-    git status
-    git add .
-    git commit -m"push from DSVM"
-    git push
-
-> [!NOTE] 
-> 如果這是第一次認可 Git 存放庫，您必須在執行 `git commit` 命令之前，設定全域參數 user.name 和 user.email。 執行下列兩個命令：
->
->  `git config --global user.name <your name>`  
->  `git config --global user.email <your email address>`
->
-> 如果您認可多個 Git 存放庫，請在認可各個存放庫時使用相同名稱和電子郵件地址。 使用相同名稱和電子郵件地址，會讓您日後建置 PowerBI 儀表板以追蹤多個存放庫上的 Git 活動時，更為便利。
-
-
-- 使用我們的縮寫存放庫名稱，以下是這些指令碼已達成的目標：
-    - LR1 - 內容新增到 -> R1
-    - LR2 - 內容新增到 -> R2
-
-## <a name="6-add-group-members-to-the-group-server"></a>6.將群組成員新增到群組伺服器
-
-群組 Azure DevOps Services 首頁的右上角，按一下您的使用者名稱旁邊的**齒輪圖示**，然後選取 [安全性] 索引標籤。您可以在這裡將成員新增至您的群組，並授與各種權限。
-
-![24](./media/group-manager-tasks/add_member_to_group.PNG)
-
+> 本文使用 Azure DevOps 來設定 TDSP 群組環境，因為這是在 Microsoft 執行 TDSP 的方式。 如果您的群組使用其他程式碼裝載或開發平臺，則群組管理員的工作會相同，但完成這些工作的方式可能會不同。
+
+## <a name="create-an-organization-and-project-in-azure-devops"></a>在 Azure DevOps 中建立組織和專案
+
+1. 移至 [ [visualstudio.microsoft.com](https://visualstudio.microsoft.com)]，選取右上角的 [登**入**]，然後登入您的 Microsoft 帳戶。 
+   
+   ![登入您的 Microsoft 帳戶](./media/group-manager-tasks/signinvs.png)
+   
+   如果您沒有 Microsoft 帳戶，請選取 [**立即註冊**]、[建立 Microsoft 帳戶]，然後使用此帳戶登入。 如果您的組織有 Visual Studio 訂用帳戶，請使用該訂用帳戶的認證登入。
+   
+1. 登入後，在 [Azure DevOps] 頁面的右上方，選取 [**建立新的組織**]。
+   
+   ![建立新的組織](./media/group-manager-tasks/create-organization.png)
+   
+1. 如果系統提示您同意「服務條款」、「隱私權聲明」和「行為規範」，請選取 [**繼續**]。
+   
+1. 在 [註冊] 對話方塊中，為您的 Azure DevOps 組織命名並接受主機區域指派，或下拉並選取不同的區域。 然後選取 [繼續]。 
+
+1. 在 [**建立要開始的專案**] 下，輸入*GroupCommon*，然後選取 [**建立專案**]。 
+   
+   ![建立專案](./media/group-manager-tasks/create-project.png)
+
+[ **GroupCommon**專案**摘要**] 頁面隨即開啟。 網頁 URL 為*HTTPs： \/ / \<servername> / \<organization-name> /GroupCommon*。
+
+![專案摘要頁面](./media/group-manager-tasks/project-summary.png)
+
+## <a name="set-up-the-group-common-repositories"></a>設定群組通用存放庫
+
+Azure Repos 會裝載群組的下列類型的儲存機制：
+
+- **群組通用存放庫**：資料科學單位中的多個小組可以針對許多資料科學專案採用的一般用途存放庫。 
+- **小組存放庫**：資料科學單位中特定小組的存放庫。 這些存放庫專屬於小組的需求，可用於該小組內的多個專案，但一般不足以供資料科學單位內的多個小組使用。
+- **專案存放庫**：特定專案的存放庫。 這類存放庫可能不足以供小組內的多個專案或資料科學單位中的其他小組使用。
+
+若要在專案中設定群組通用存放庫，您可以： 
+- 將預設的**GroupCommon**存放庫重新命名為**GroupProjectTemplate**
+- 建立新的**GroupUtilities**存放庫
+
+### <a name="rename-the-default-project-repository-to-groupprojecttemplate"></a>將預設專案存放庫重新命名為 GroupProjectTemplate
+
+若要將預設的**GroupCommon**專案存放庫重新命名為**GroupProjectTemplate**：
+
+1. 在 [ **GroupCommon**專案**摘要**] 頁面上，選取 [**存放庫**]。 此動作會帶您前往 GroupCommon 專案的預設**GroupCommon**存放庫，這目前是空的。
+   
+1. 在頁面頂端，下拉 [ **GroupCommon** ] 旁的箭號，然後選取 [**管理存放庫**]。
+   
+   ![管理存放庫](./media/group-manager-tasks/rename-groupcommon-repo-3.png)
+   
+1. 在 [**專案設定**] 頁面上，選取 [ **GroupCommon**] 旁的 [ **...** ]，然後選取 [**重新命名存放庫**]。 
+   
+   ![選取 .。。然後選取 [重新命名存放庫]](./media/group-manager-tasks/rename-groupcommon-repo-4.png)
+   
+1. 在 [**重新命名 GroupCommon 存放庫**] 快顯視窗中，輸入*GroupProjectTemplate*，然後選取 [**重新命名**]。 
+   
+   ![重新命名存放庫](./media/group-manager-tasks/rename-groupcommon-repo-6.png)
+
+### <a name="create-the-grouputilities-repository"></a>建立 GroupUtilities 存放庫
+
+若要建立**GroupUtilities**存放庫：
+
+1. 在 [ **GroupCommon**專案**摘要**] 頁面上，選取 [**存放庫**]。 
+   
+1. 在頁面頂端，下拉 [ **GroupProjectTemplate** ] 旁的箭號，然後選取 [**新增存放庫**]。
+   
+   ![選取新的存放庫](./media/group-manager-tasks/create-grouputilities-repo-1.png)
+   
+1. 在 [**建立新**的存放庫] 對話方塊中，選取 [ **Git** ] 做為**類型**，輸入*GroupUtilities*作為存放**庫名稱**，然後選取 [**建立**]。
+   
+   ![建立 GroupUtilities 存放庫](./media/group-manager-tasks/create-grouputilities-repo-2.png)
+   
+1. 在 [**專案設定**] 頁面的左側導覽中，選取 [**存放庫**] 底下的 [**存放庫**]，以查看兩個群組存放庫： **GroupProjectTemplate**和**GroupUtilities**。
+   
+   ![兩個群組存放庫](./media/group-manager-tasks/two-repositories.png)
+
+## <a name="import-the-microsoft-tdsp-team-repositories"></a>匯入 Microsoft TDSP 小組存放庫
+
+在本教學課程的這個部分中，您會將 Microsoft TDSP 小組所管理之**ProjectTemplate**和**公用程式**存放庫的內容匯入到您的**GroupProjectTemplate**和**GroupUtilities**存放庫。 
+
+若要匯入 TDSP 小組存放庫：
+
+1. 從**GroupCommon**專案首頁的左側導覽中，選取 [**存放庫**]。 預設的**GroupProjectTemplate**存放庫隨即開啟。 
+   
+1. 在 [ **GroupProjectTemplate 是空**的] 頁面上，選取 [匯**入**]。 
+   
+   ![選取 [匯入]](./media/group-manager-tasks/import-repo.png)
+   
+1. 在 [匯**入 git 存放庫**] 對話方塊中，選取 [ **Git** ] 作為 [**來源類型**]，並針對 [**複製 URL**] 輸入*HTTPs： \/ /github.com/Azure/Azure-TDSP-ProjectTemplate.git* 。 然後選取 [匯**入**]。 Microsoft TDSP team ProjectTemplate 存放庫的內容會匯入到您的 GroupProjectTemplate 存放庫。 
+   
+   ![匯入 Microsoft TDSP 小組存放庫](./media/group-manager-tasks/import-repo-2.png)
+   
+1. 在 [**存放庫**] 頁面頂端，下拉並選取 [ **GroupUtilities** ] 存放庫。
+   
+1. 重複匯入程式，將 Microsoft TDSP 小組**公用程式**存放庫（ *HTTPs： \/ /github.com/Azure/Azure-TDSP-Utilities.git*）的內容匯入到您的**GroupUtilities**存放庫。 
+   
+除了*git*目錄中的所有檔案以外，您的每個群組存放庫都包含來自 Microsoft TDSP 小組對應的儲存機制。 
+
+## <a name="customize-the-contents-of-the-group-repositories"></a>自訂群組存放庫的內容
+
+如果您想要自訂群組存放庫的內容以符合群組的特定需求，您可以立即這麼做。 您可以修改檔案、變更目錄結構，或新增您的群組所開發或對群組有説明的檔案。
+
+### <a name="make-changes-in-azure-repos"></a>在 Azure Repos 中進行變更
+
+若要自訂存放庫內容：
+
+1. 在 [ **GroupCommon**專案**摘要**] 頁面上，選取 [**存放庫**]。 
+   
+1. 在頁面頂端，選取您想要自訂的存放庫。
+
+1. 在存放庫目錄結構中，流覽至您要變更的資料夾或檔案。 
+   
+   - 若要建立新的資料夾或檔案，請選取 [**新增**] 旁邊的箭號。 
+     
+     ![建立新檔案](./media/group-manager-tasks/new-file.png)
+     
+   - 若要上傳檔案，請選取 **[上傳**檔案]。 
+     
+     ![上傳檔案](./media/group-manager-tasks/upload-files.png)
+     
+   - 若要編輯現有的檔案，請流覽至該檔案，然後選取 [**編輯**]。 
+     
+     ![編輯檔案](./media/group-manager-tasks/edit-file.png)
+     
+1. 新增或編輯檔案之後，請選取 [**認可**]。
+   
+   ![認可變更](./media/group-manager-tasks/commit.png)
+
+### <a name="make-changes-using-your-local-machine-or-dsvm"></a>使用您的本機電腦或 DSVM 進行變更
+
+如果您想要使用本機電腦或 DSVM 進行變更，並將變更推送到群組存放庫，請確定您有使用 Git 和 Dsvm 的必要條件：
+
+- Azure 訂用帳戶（如果您想要建立 DSVM）。
+- 已在您的電腦上安裝 Git。 如果您使用 DSVM，則會預先安裝 Git。 否則，請參閱[平台和工具附錄](platforms-and-tools.md#appendix)。
+- 如果您想要使用 DSVM，則會在 Azure 中建立並設定 Windows 或 Linux DSVM。 如需詳細資訊和指示，請參閱[資料科學虛擬機器檔](/azure/machine-learning/data-science-virtual-machine/)。
+- 針對安裝在您電腦上的 Windows DSVM， [Git 認證管理員（GCM）](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) 。 在*README.md*檔案中，向下卷到 [**下載並安裝**] 區段，然後選取**最新的安裝程式**。 從安裝程式頁面下載 *.exe*安裝程式，並加以執行。 
+- 針對 Linux DSVM，在您的 DSVM 上設定的 SSH 公開金鑰，並新增到 Azure DevOps 中。 如需詳細資訊和指示，請參閱[平臺和工具附錄](platforms-and-tools.md#appendix)中的**建立 SSH 公用金鑰**一節。 
+
+首先 *，將存放庫複製或複製*到本機電腦。 
+   
+1. 在 [ **GroupCommon**專案**摘要**] 頁面上，選取 [**存放庫**]，然後在頁面頂端選取您要複製的存放庫。
+   
+1. 在 [存放庫] 頁面上，選取右上方的 [**複製**]。
+   
+1. 在 [**複製存放庫**] 對話方塊中，針對 HTTP 連線選取 [ **HTTPS** ]，或針對 Ssh 連線選取 [ **ssh** ]，**然後將 [** 複製 URL] 下的 [複製 URL] 複製到剪貼簿。
+   
+   ![複製存放庫](./media/group-manager-tasks/clone.png)
+   
+1. 在您的本機電腦上，建立下列目錄：
+   
+   - 針對 Windows： **C:\GitRepos\GroupCommon**
+   - 針對 Linux，您主目錄上的 **$/GitRepos/GroupCommon** 
+   
+1. 變更至您所建立的目錄。
+   
+1. 在 Git Bash 中，執行命令`git clone <clone URL>.`
+   
+   例如，下列任一命令都會將**GroupUtilities**存放庫複製到本機電腦上的*GroupCommon*目錄。 
+   
+   **HTTPS 連線：**
+   
+   ```bash
+   git clone https://DataScienceUnit@dev.azure.com/DataScienceUnit/GroupCommon/_git/GroupUtilities
+   ```
+   
+   **SSH 連線：**
+   
+   ```bash
+   git clone git@ssh.dev.azure.com:v3/DataScienceUnit/GroupCommon/GroupUtilities
+   ```
+
+在存放庫的本機複本中進行任何想要的變更之後，您可以將變更推送至共用群組通用存放庫。 
+
+從您的本機**GroupProjectTemplate**或**GroupUtilities**目錄執行下列 Git Bash 命令。
+
+```bash
+git add .
+git commit -m "push from local"
+git push
+```
+
+> [!NOTE]
+> 如果這是您第一次認可至 Git 存放庫，您可能需要在執行命令之前，先設定全域參數*user.name*和*user. email* `git commit` 。 執行下列兩個命令：
+> 
+> `git config --global user.name <your name>`
+> 
+> `git config --global user.email <your email address>`
+> 
+> 如果您要認可數個 Git 存放庫，請針對所有儲存機制使用相同的名稱和電子郵件地址。 建立 Power BI 儀表板以追蹤多個存放庫中的 Git 活動時，使用相同的名稱和電子郵件地址會很方便。
+
+## <a name="add-group-members-and-configure-permissions"></a>新增群組成員及設定許可權
+
+若要將成員新增至群組：
+
+1. 在 Azure DevOps 中，從**GroupCommon**專案首頁，從左側導覽中選取 [**專案設定**]。 
+   
+1. 從 [**專案設定**] [左側流覽] 選取 [**小組**]，然後在 [**小組**] 頁面上選取 [ **GroupCommon] 小組**。 
+   
+   ![設定小組](./media/group-manager-tasks/teams.png)
+   
+1. 在 [**小組設定檔**] 頁面上，選取 [**新增**]。
+   
+   ![新增至 GroupCommon 小組](./media/group-manager-tasks/add-to-team.png)
+   
+1. 在 [**新增使用者和群組**] 對話方塊中，搜尋並選取要新增至群組的成員，然後選取 [**儲存變更**]。 
+   
+   ![新增使用者和群組](./media/group-manager-tasks/add-users.png)
+   
+
+若要設定成員的許可權：
+
+1. 從 [**專案設定**] 左側導覽中，選取 [**許可權**]。 
+   
+1. 在 [**許可權**] 頁面上，選取您想要新增成員的群組。 
+   
+1. 在該群組的頁面上，選取 [**成員**]，然後選取 [**新增**]。 
+   
+1. 在 [**邀請成員**] 快顯視窗中，搜尋並選取要新增至群組的成員，然後選取 [**儲存**]。 
+   
+   ![授與許可權給成員](./media/group-manager-tasks/grant-permissions.png)
 
 ## <a name="next-steps"></a>後續步驟
 
-以下是 Team 資料科學程序定義之角色和工作更詳細描述的連結：
+以下是小組資料科學程式中其他角色和工作的詳細描述連結：
 
-- [資料科學小組的群組管理員工作](group-manager-tasks.md)
 - [資料科學小組的小組負責人工作](team-lead-tasks.md)
 - [資料科學小組的專案負責人工作](project-lead-tasks.md)
-- [資料科學小組的專案個別參與者](project-ic-tasks.md)
+- [資料科學小組的專案個別參與者工作](project-ic-tasks.md)

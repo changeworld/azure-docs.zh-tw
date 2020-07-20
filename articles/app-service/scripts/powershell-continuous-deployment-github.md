@@ -1,36 +1,26 @@
 ---
-title: Azure PowerShell 指令碼範例 - 使用 GitHub 連續部署建立應用程式 | Microsoft Docs
-description: Azure PowerShell 指令碼範例 - 建立可從 GitHub 連續部署的 Web 應用程式
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: erikre
-editor: ''
+title: PowerShell：從 GitHub 持續部署
+description: 了解如何使用 Azure PowerShell 將 App Service 的部署和管理自動化。 此範例說明如何從 GitHub 建立可進行 CI/CD 的應用程式。
 tags: azure-service-management
 ms.assetid: 42f901f8-02f7-4869-b22d-d99ef59f874c
-ms.service: app-service-web
-ms.workload: web
-ms.devlang: na
 ms.topic: sample
 ms.date: 03/20/2017
-ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 7cd0366ff350995a1edf13476b4ad671d3bd3d3d
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: eee6ac9f9c469f9e1a9344ab4a30626c219d7836
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114326"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "74685158"
 ---
 # <a name="create-a-web-app-with-continuous-deployment-from-github"></a>建立可從 GitHub 連續部署的 Web 應用程式
 
-此範例指令碼會在 App Service 中建立 Web 應用程式及其相關資源，然後設定從 GitHub 存放庫進行的連續部署。 如需進行沒有連續部署的 GitHub 部署，請參閱[建立 Web 應用程式並從 GitHub 部署程式碼](powershell-deploy-github.md)。
+此範例指令碼會在 App Service 中建立 Web 應用程式及其相關資源，然後設定從 GitHub 存放庫進行的[持續部署](../deploy-continuous-deployment.md)。 如需進行沒有連續部署的 GitHub 部署，請參閱[建立 Web 應用程式並從 GitHub 部署程式碼](powershell-deploy-github.md)。
 
 您可以視需要使用 [Azure PowerShell 指南](/powershell/azure/overview) \(英文\) 中的指示來安裝 Azure PowerShell，然後執行 `Connect-AzAccount` 來建立與 Azure 的連線。 此外，請確定：
 
-- 已使用 `az login` 命令建立與 Azure 的連線。
-- 應用程式的程式碼位於您擁有的公用或私人 GitHub 存放庫。
-- 您已[在 GitHub 帳戶中建立存取權杖](https://help.github.com/articles/creating-an-access-token-for-command-line-use/)。
+- 應用程式的程式碼位於您擁有的公用或私人 GitHub 存放庫。 若要取得自動組建，請根據[準備存放庫](../deploy-continuous-deployment.md#prepare-your-repository)資料表來結構化您的存放庫。
+- 您已[在 GitHub 帳戶中建立個人存取權杖](https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line)。
 
 ## <a name="sample-script"></a>範例指令碼
 
@@ -50,7 +40,7 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 此指令碼會使用下列命令。 下表中的每個命令都會連結至命令特定的文件。
 
-| 命令 | 注意 |
+| Command | 注意 |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | 建立用來存放所有資源的資源群組。 |
 | [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | 建立 App Service 方案。 |

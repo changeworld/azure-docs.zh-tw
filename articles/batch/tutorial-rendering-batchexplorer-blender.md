@@ -1,37 +1,35 @@
 ---
 title: 使用 Azure Batch 和 Batch Explorer 轉譯 Blender 場景
 description: 教學課程 - 如何使用 Azure Batch 和 Batch Explorer 用戶端應用程式從 Blender 場景轉譯多個畫面格
-services: batch
-ms.service: batch
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: tutorial
-ms.openlocfilehash: 8a512676ab0e56f51c0fb9c59f2e530cfcf73333
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: 65baff827417cebe2289cc821df94acd38a1ae61
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57791421"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964799"
 ---
 # <a name="tutorial-render-a-blender-scene-using-batch-explorer"></a>教學課程：使用 Batch Explorer 轉譯 Blender 場景
 
 本教學課程說明如何轉譯 Blender 示範場景的多個畫面格。 本教學課程會使用 Blender，因為這在用戶端和轉譯的 VM 兩端都可免費使用，但如果您使用 Maya 或 3ds Max 之類的其他應用程式，作業程序也十分類似。
 
-在本教學課程中，您了解如何：
+在本教學課程中，您會了解如何：
 > [!div class="checklist"]
 > * 將 Blend 場景上傳至 Azure 儲存體
 > * 建立含有多個節點的 Batch 集區以執行轉譯
 > * 轉譯多個畫面格
 > * 檢視和下載轉譯的畫面格檔案
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-您需要預付型訂用帳戶或其他 Azure 購買選項，以按使用量付費的方式，在 Batch 中使用轉譯應用程式。 如果您使用提供信用額度金額的免費 Azure 方案，則不支援按使用量付費授權。
+您需要隨用隨付訂用帳戶或其他 Azure 購買選項，以按使用量付費的方式，在 Batch 中使用轉譯應用程式。 如果您使用提供信用額度金額的免費 Azure 方案，則不支援按使用量付費授權。
 
-您需要具有關聯之儲存體帳戶的 Azure Batch 帳戶。  請參閱任何 Batch 快速入門文章以建立 Batch 帳戶，例如 [CLI 文章](https://docs.microsoft.com/azure/batch/quick-create-cli)。
+您需要具有關聯之儲存體帳戶的 Azure Batch 帳戶。  請參閱任何 Batch 快速入門文章以建立 Batch 帳戶，例如 [CLI 文章](./quick-create-cli.md)。
 
-本教學課程中指定的 VM 大小和 VM 數目至少需要 50 個核心的低優先順序核心配額；您可以使用預設配額，但將須使用較小的 VM 大小，而這意味著影像轉譯會較為耗時。 要求增加核心配額的程序詳述於[這篇文章](https://docs.microsoft.com/azure/batch/batch-quota-limit)中。
+本教學課程中指定的 VM 大小和 VM 數目至少需要 50 個核心的低優先順序核心配額；您可以使用預設配額，但將須使用較小的 VM 大小，而這意味著影像轉譯會較為耗時。 要求增加核心配額的程序詳述於[這篇文章](./batch-quota-limit.md)中。
 
 最後，必須要安裝 [Batch Explorer](https://azure.github.io/BatchExplorer/)；它適用於 Windows、OSX 和 Linux。 它是選擇性的，但若安裝了 [Blender](https://www.blender.org/download/)，則可以檢視範例模型檔案。
 
@@ -141,4 +139,4 @@ ms.locfileid: "57791421"
 ## <a name="next-steps"></a>後續步驟
 * 在 [資源庫] 區段中，透過 Batch Explorer 瀏覽可用的轉譯應用程式。
 * 每個應用程式會有數個可用的範本，且數量會隨著時間而增加。  例如，其中會有 Blender 範本，可將單一影像分割為圖格，因而能夠以平行方式轉譯影像的某些部分。
-* 如需轉譯功能的完整說明，請參閱[此處](https://docs.microsoft.com/azure/batch/batch-rendering-service)的系列文章。
+* 如需轉譯功能的完整說明，請參閱[此處](./batch-rendering-service.md)的系列文章。

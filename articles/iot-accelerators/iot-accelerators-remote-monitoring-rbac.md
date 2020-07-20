@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
-ms.openlocfilehash: 9accb41cdb4d780bf137d6872cca022226f902e6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.custom: has-adal-ref
+ms.openlocfilehash: e41d3b47408d29a0463eed5f23117801be107c27
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61443053"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920712"
 ---
 # <a name="configure-role-based-access-controls-in-the-remote-monitoring-solution-accelerator"></a>在遠端監視解決方案加速器中設定角色型存取控制
 
@@ -21,11 +21,11 @@ ms.locfileid: "61443053"
 
 ## <a name="default-settings"></a>預設設定
 
-首次部署远程监视解决方案时，有两个角色：“管理员”和“只读”。
+當第一次部署遠端監視解決方案時，有兩個角色：**系統管理員**和**唯讀**。
 
 擁有 [管理員] 角色的任何使用者具有解決方案的完整存取權，包括下列權限。 具備 [唯讀] 角色的使用者只能夠檢視解決方案。
 
-| 權限            | Admin | 唯讀 |
+| 權限            | 管理 | 唯讀 |
 |----------------       |-------|-----------|
 | 檢視解決方案         | 是   | 是       |
 | 更新警示         | 是   | 否        |
@@ -49,7 +49,7 @@ ms.locfileid: "61443053"
 
 ## <a name="add-or-remove-users"></a>新增或移除使用者
 
-Azure Active Directory 應用程式擁有者可以使用 Azure 入口網站，從遠端監視解決方案新增或移除使用者的角色。 下列步驟會使用當您部署遠端監視解決方案時所建立的 [Azure Active Directory 企業應用程式](../active-directory/manage-apps/add-application-portal.md#find-your-azure-ad-tenant-application)。
+Azure Active Directory 應用程式擁有者可以使用 Azure 入口網站，從遠端監視解決方案新增或移除使用者的角色。 下列步驟會使用當您部署遠端監視解決方案時所建立的 [Azure Active Directory 企業應用程式](../active-directory/manage-apps/view-applications-portal.md)。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
@@ -91,11 +91,11 @@ Azure Active Directory 應用程式擁有者可以使用 Azure 入口網站，�
 
 1. 在 Azure 入口網站中為您的解決方案尋找**應用程式註冊**。 應用程式名稱是遠端監視解決方案的名稱。 在下列螢幕擷取畫面中，解決方案和應用程式顯示名稱為 **contoso-rm4**。
 
-    ![應用程式註冊](media/iot-accelerators-remote-monitoring-rbac/appregistration2.png)
+    ![應用程式註冊](media/iot-accelerators-remote-monitoring-rbac/app-registration-2.png)
 
 1. 選取您的應用程式，然後按一下 [資訊清單]。 您可以看到兩個針對應用程式定義的現有[應用程式角色](https://docs.microsoft.com/azure/architecture/multitenant-identity/app-roles)：
 
-    ![檢視資訊清單](media/iot-accelerators-remote-monitoring-rbac/viewmanifest.png)
+    ![檢視資訊清單](media/iot-accelerators-remote-monitoring-rbac/view-manifest.png)
 
 1. 編輯資訊清單，以新增稱為 **ManageDevices** 的角色，如下列程式碼片段所示。 您需要唯一的字串，例如 GUID 作為新的角色識別碼。 您可以使用 [Online GUID Generator](https://www.guidgenerator.com/) 等服務來產生新的 GUID：
 

@@ -1,34 +1,33 @@
 ---
-title: 準備內部部署 Hyper-V 伺服器以進行 Hyper-V VM 至 Azure 的災害復原 | Microsoft Docs
-description: 了解如何準備內部部署 Hyper-V VM 以便使用 Azure Site Recovery 服務來災害復原至 Azure。
-services: site-recovery
+title: 使用 Azure Site Recovery 進行 Hyper-V VM 至 Azure 的災害復原準備
+description: 了解如何準備內部部署 Hyper-V VM 以便使用 Azure Site Recovery 來對 Azure 進行災害復原。
 author: rayne-wiselman
 ms.service: site-recovery
-ms.topic: article
-ms.date: 04/08/2019
+ms.topic: tutorial
+ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 6e57b629a0007b06af6e37f96e1466e35afafccc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 6f24a259d2d71aa6599f6dd417d5e9fc99734e99
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60996505"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135659"
 ---
 # <a name="prepare-on-premises-hyper-v-servers-for-disaster-recovery-to-azure"></a>準備內部部署 Hyper-V 伺服器以進行至 Azure 的災害復原
 
-本文說明如何準備您的內部部署 HYPER-V 基礎結構，當您想要設定的 Hyper-v Vm 的災害復原至 Azure，使用[Azure Site Recovery](site-recovery-overview.md)。
+本文描述如何使用 [Azure Site Recovery](site-recovery-overview.md) 準備內部部署 Hyper-V 基礎結構，以將 Hyper-V VM 的災害復原設定到 Azure。
 
 
-這是說明如何設定內部部署 HYPER-V Vm 至 Azure 的災害復原一系列的第二個教學課程。 在第一個教學課程中，我們[設定 Azure 元件](tutorial-prepare-azure.md)HYPER-V 嚴重損壞修復所需。
+這是一系列中的第二個教學課程，說明如何為內部部署 Hyper-V VM 設定 Azure 的災害復原。 在[第一個教學課程](tutorial-prepare-azure.md)中，我們針對 Hyper-V 災害復原需求設定 Azure 元件。
 
 在本教學課程中，您將了解如何：
 
 > [!div class="checklist"]
-> * 如果您的 HYPER-V 主機由 System Center VMM 管理，請檢閱 HYPER-V 需求和 VMM 需求。
-> * 如果適用的話，請準備 VMM。
-> * 確認網際網路存取的 Azure 位置。
-> * 準備 Vm，以便您可以在容錯移轉至 Azure 之後存取它們。
+> * 如果您的 Hyper-V 主機是由 System Center VMM 管理，請檢閱 Hyper-V 需求和 VMM 需求。
+> * 準備 VMM (如果適用)。
+> * 確認各個 Azure 位置的網際網路存取。
+> * 準備 VM，讓您可以在容錯移轉至 Azure 之後存取。
 
 > [!NOTE]
 > 這些教學課程示範案例的最簡單部署路徑。 可能的話，會使用預設選項，而不會顯示所有可能的設定與路徑。 如需詳細指示，請檢閱 Site Recovery 目錄的「操作說明」區段中的文章。
@@ -57,12 +56,12 @@ ms.locfileid: "60996505"
 
 ### <a name="prepare-vmm-for-network-mapping"></a>準備 VMM 以進行網路對應
 
-如果您使用 VMM，[網路對應](site-recovery-network-mapping.md)會在內部部署 VMM VM 網路與 Azure 虛擬網路之間進行對應。 對應可確保容錯移轉之後建立的 Azure VM 會連線到正確的網路。
+如果您使用 VMM，[網路對應](./hyper-v-vmm-network-mapping.md)會在內部部署 VMM VM 網路與 Azure 虛擬網路之間進行對應。 對應可確保容錯移轉之後建立的 Azure VM 會連線到正確的網路。
 
 準備 VMM 以進行網路對應，如下所示：
 
-1. 請確定 Hyper-V 主機所在雲端有相關聯的 [VMM 邏輯網路](https://docs.microsoft.com/system-center/vmm/network-logical)。
-2. 請確定您有 [VM 網路](https://docs.microsoft.com/system-center/vmm/network-virtual)連結至邏輯網路。
+1. 請確定 Hyper-V 主機所在雲端有相關聯的 [VMM 邏輯網路](/system-center/vmm/network-logical)。
+2. 請確定您有 [VM 網路](/system-center/vmm/network-virtual)連結至邏輯網路。
 3. 在 VMM 中，將 VM 連線至 VM 網路。
 
 ## <a name="verify-internet-access"></a>確認網際網路存取
@@ -85,15 +84,15 @@ ms.locfileid: "60996505"
 
 若要在容錯移轉後使用 RDP 連線到 Windows VM，請依照下列方式允許存取權：
 
-1. 若要透過網際網路存取，請在內部部署 VM 上啟用 RDP，再進行容錯移轉。 確定已針對 [公用] 設定檔新增 TCP 和 UDP 規則，且在 [Windows 防火牆] > [允許的應用程式] 中已針對所有設定檔允許 RDP。
-2. 若要透過站對站 VPN 存取，請在內部部署機器上啟用 RDP。 您應該在 [Windows 防火牆] -> [允許的應用程式與功能] 中，針對 [網域] 和 [私人] 網路允許 RDP。
-   確認作業系統的 SAN 原則已設為 [OnlineAll]。 [深入了解](https://support.microsoft.com/kb/3031135)。 觸發容錯移轉時，VM 上不應該有任何擱置的 Windows 更新。 如果有，在更新完成之前，您將無法登入虛擬機器。
-3. 在容錯移轉之後，於 Windows Azure VM 上，勾選 [開機診斷] 以檢視 VM 的螢幕擷取畫面。 如果您無法連線，請檢查 VM 是否正在執行，並檢閱這些[疑難排解祕訣](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)。
+1. 若要透過網際網路存取，請在內部部署 VM 上啟用 RDP，再進行容錯移轉。 確定已針對 [公用]  設定檔新增 TCP 和 UDP 規則，且在 [Windows 防火牆]   > [允許的應用程式]  中已針對所有設定檔允許 RDP。
+2. 若要透過站對站 VPN 存取，請在內部部署機器上啟用 RDP。 您應該在 [Windows 防火牆]   -> [允許的應用程式與功能]  中，針對 [網域] 和 [私人]  網路允許 RDP。
+   確認作業系統的 SAN 原則已設為 [OnlineAll]  。 [詳細資訊](https://support.microsoft.com/kb/3031135)。 觸發容錯移轉時，VM 上不應該有任何擱置的 Windows 更新。 如果有，在更新完成之前，您將無法登入虛擬機器。
+3. 在容錯移轉之後，於 Windows Azure VM 上，勾選 [開機診斷]  以檢視 VM 的螢幕擷取畫面。 如果您無法連線，請檢查 VM 是否正在執行，並檢閱這些[疑難排解祕訣](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)。
 
 容錯移轉之後，您可以使用與複寫的內部部署 VM 相同的 IP 位址或不同 IP 位址來存取 Azure VM。 [深入了解](concepts-on-premises-to-azure-networking.md)如何設定 IP 位址以進行容錯移轉。
 
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [設定 Hyper-V VM 至 Azure 的災害復原](tutorial-hyper-v-to-azure.md)
-> [在 VMM 雲端設定 Hyper-V VM 至 Azure 的災害復原](tutorial-hyper-v-vmm-to-azure.md)
+> [設定 Hyper-V VM 至 Azure 的災害復原](./hyper-v-azure-tutorial.md)
+> [在 VMM 雲端設定 Hyper-V VM 至 Azure 的災害復原](./hyper-v-vmm-azure-tutorial.md)

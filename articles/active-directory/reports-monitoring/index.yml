@@ -1,48 +1,59 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure Active Directory 報告和監視
+### YamlMime:Landing
+title: Azure Active Directory 報告和監控文件
+summary: 了解如何使用 Azure AD 中的報告。
 metadata:
-  document_id: null
-  title: Azure Active Directory 報告和監視文件 - 教學課程、快速入門、概念 | Microsoft Docs
-  description: 了解如何設定和測試 Azure Active Directory 報告和監視解決方案
+  title: Azure Active Directory 報告和監控文件
+  description: 了解如何使用報告並在 Azure AD 中進行監控。
   services: active-directory
-  ms.subservice: report-monitor
-  author: priyamohanram
-  manager: daveba
   ms.service: active-directory
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: devices
   ms.topic: landing-page
-  ms.date: 08/14/2018
-  ms.author: priyamo
-abstract:
-  description: 了解如何檢視環境的安全性和稽核報告，或進行長時間監視以深入了解使用模式。 使用 Azure Active Directory (Azure AD) 報告，您可以深入了解環境的安全性和使用模式。 例如，您可以回答下列問題：<ul><li>使用者如何運用應用程式或服務？</li><li>影響環境健康情況的潛在風險是什麼</li><li>如何針對會阻止使用者完成其工作的問題進行疑難排解</li>
-sections:
-  - title: 5 分鐘快速入門
-    items:
-      - type: paragraph
-        text: 了解如何下載活動報告，並將記錄路由傳送至 Azure 儲存體帳戶
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/active-directory/reports-monitoring/quickstart-download-sign-in-report">下載登入報告</a>
-          - html: <a href="/azure/active-directory/reports-monitoring/quickstart-download-audit-report">下載稽核報告</a>
-          - html: <a href="/azure/active-directory/reports-monitoring/quickstart-install-power-bi-content-pack">安裝適用於報告的 Power BI 內容套件</a>
-          - html: <a href="/azure/active-directory/reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account">將記錄路由傳送至儲存體帳戶</a>
-  - title: 逐步教學課程
-    items:
-      - type: paragraph
-        text: 了解如何存取報告，並將活動記錄串流至您選擇的監視系統
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/active-directory/reports-monitoring/tutorial-access-api-with-certificates">使用憑證以程式設計方式存取報告 API</a>
-          - html: <a href="/azure/active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub">將活動記錄串流至事件中樞</a>
-  - title: 參考
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/active-directory/reports-monitoring/reference-sign-ins-error-codes">登入錯誤代碼</a>
-          - html: <a href="/azure/active-directory/reports-monitoring/reference-azure-monitor-audit-log-schema">Azure 監視器中的 Azure AD 稽核記錄結構描述</a>
-          - html: <a href="/azure/active-directory/reports-monitoring/reference-azure-monitor-sign-ins-log-schema">Azure 監視器中的 Azure AD 登入結構描述</a>
+  author: MarkusVi
+  ms.author: markvi
+  ms.date: 08/29/2019
+  ms.collection: M365-identity-device-management
+  ms.openlocfilehash: 28f65417053d136983611cfa07ebedb7de93e25a
+  ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 05/29/2020
+  ms.locfileid: "84168619"
+landingContent:
+- title: 關於 Azure Active Directory 報告和監視
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Active Directory 報告是什麼？
+      url: overview-reports.md
+    - text: 什麼是 Azure Active Directory 監視？
+      url: overview-monitoring.md
+  - linkListType: concept
+    links:
+    - text: 稽核記錄
+      url: concept-audit-logs.md
+    - text: 登入記錄
+      url: concept-sign-ins.md
+    - text: 有風險的登入記錄
+      url: concept-risky-sign-ins.md
+    - text: 標示有風險記錄的使用者
+      url: concept-user-at-risk.md
+    - text: 佈建記錄
+      url: concept-provisioning-logs.md
+- title: 使用 Azure AD 中的報告
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 尋找活動報告
+      url: howto-find-activity-reports.md
+    - text: 修復標幟為有風險的使用者
+      url: howto-remediate-users-flagged-for-risk.md
+    - text: 使用 Azure AD 活頁簿
+      url: howto-use-azure-monitor-workbooks.md
+- title: 使用 Azure AD 中的監視
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 分析 Azure 監視器記錄中的活動記錄
+      url: howto-analyze-activity-logs-log-analytics.md
+    - text: 安裝與使用適用於 Azure AD 的記錄分析檢視
+      url: howto-install-use-log-analytics-views.md

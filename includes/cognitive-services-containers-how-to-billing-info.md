@@ -1,32 +1,30 @@
 ---
-author: diberry
-ms.author: diberry
+author: IEvangelist
+ms.author: dapine
+ms.date: 02/19/2020
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 04/16/2019
-ms.openlocfilehash: e92d1c65d9601c23e7e785f07e2de3e43ea6612b
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 2ac93f5aba722eea78267a512999a5581a887b99
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59684645"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "77474213"
 ---
-用於 Azure 資源的定價層會計費至容器的查詢`<ApiKey>`。
+對容器的查詢會以用於的 Azure 資源定價層計費 `ApiKey` 。
 
-認知服務容器並未授權予執行而不必連接至計費計量的端點。 客戶必須啟用要通訊與計費的端點隨時都的帳單資訊的容器。 認知服務容器不會將客戶資料 (例如正在分析的影像或文字) 傳送至 Microsoft。 
+Azure 認知服務容器未連線至計量/計費端點，因此無法執行授權。 您必須讓容器隨時都能與計量端點進行帳單資訊的通訊。 認知服務容器不會將客戶資料 (例如正在分析的影像或文字) 傳送至 Microsoft。
 
-### <a name="connecting-to-azure"></a>連接到 Azure
+### <a name="connect-to-azure"></a>連線到 Azure
 
-因此容器需要用於計費的引數值，來執行。 這些值可以讓容器連接到計費的端點。 容器會每隔 10 到 15 分鐘回報使用量。 如果容器未連線至 Azure 的允許的時間範圍內，容器會繼續執行，但將不提供查詢，直到還原計費的端點。 在相同的時間間隔為 10 到 15 分鐘 10 次嘗試連線。 如果它無法連線到 10 次嘗試中計費的端點，容器就會停止執行。 
+容器需要計費引數值才能執行。 這些值讓容器能夠連線到計費端點。 容器會每隔 10 到 15 分鐘回報使用量。 如果容器未在允許的時間範圍內連線到 Azure，容器會繼續執行，但在還原計費端點之前不會提供查詢。 以 10 到 15 分鐘的相同時間間隔嘗試連線 10 次。 如果在嘗試10次後無法連接到計費端點，容器就會停止服務要求。
 
 ### <a name="billing-arguments"></a>計費引數
 
-所有這三個下列選項必須指定有效的值，為了讓`docker run`命令來啟動容器：
+當<a href="https://docs.docker.com/engine/reference/commandline/run/" target="_blank"> `docker run` <span class="docon docon-navigate-external x-hidden-focus"></span> </a>下列三個選項都提供有效的值時，此命令會啟動容器：
 
 | 選項 | 描述 |
 |--------|-------------|
-| `ApiKey` | 用來追蹤帳單資訊之認知服務資源的 API 金鑰。<br/>此選項的值必須設定為已佈建 `Billing` 指定資源的 API 金鑰。 |
-| `Billing` | 用來追蹤帳單資訊之認知服務資源的端點。<br/>此選項的值必須設定端點的已佈建的 Azure 資源的 URI。|
-| `Eula` | 表示您已接受容器的授權。<br/>此選項的值必須設定為 `accept`。 |
-
-
+| `ApiKey` | 用來追蹤帳單資訊之認知服務資源的 API 金鑰。<br/>此選項的值必須設定為中指定之已布建資源的 API 金鑰 `Billing` 。 |
+| `Billing` | 用來追蹤帳單資訊之認知服務資源的端點。<br/>此選項的值必須設定為已佈建 Azure 資源的端點 URI。|
+| `Eula` | 表示您接受容器的授權。<br/>此選項的值必須設定為 [**接受**]。 |

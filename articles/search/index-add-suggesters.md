@@ -1,68 +1,105 @@
 ---
-title: 將自動提示查詢加入至索引-Azure 搜尋服務
-description: 啟用 Azure 搜尋服務中的預先輸入的查詢動作，藉由建立建議工具，並形成要求，以叫用自動完成或 autosuggested 查詢詞彙。
-ms.date: 05/02/2019
-services: search
-ms.service: search
+title: 建立建議工具
+titleSuffix: Azure Cognitive Search
+description: 藉由建立會叫用自動完成或 autosuggested 查詢詞彙的建議工具和表述要求，在 Azure 認知搜尋中啟用預先輸入的查詢動作。
+manager: nitinme
+author: HeidiSteen
+ms.author: heidist
+ms.service: cognitive-search
 ms.topic: conceptual
-author: Brjohnstmsft
-ms.author: brjohnst
-ms.manager: cgronlun
-translation.priority.mt:
-- de-de
-- es-es
-- fr-fr
-- it-it
-- ja-jp
-- ko-kr
-- pt-br
-- ru-ru
-- zh-cn
-- zh-tw
-ms.openlocfilehash: 400b1613a87d4de65879a512642e16884c7d03b4
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.date: 04/21/2020
+ms.openlocfilehash: 2a0798ee923624aef9f29c1e9cc30f38b55770a3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65021883"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565323"
 ---
-# <a name="add-suggesters-to-an-index-for-typeahead-in-azure-search"></a>將建議工具新增至 Azure 搜尋服務中的自動提示的索引
+# <a name="create-a-suggester-to-enable-autocomplete-and-suggested-results-in-a-query"></a>建立建議工具，以在查詢中啟用自動完成和建議的結果
 
-A**建議工具**是在建構[Azure 搜尋服務索引](search-what-is-an-index.md)支援 「 搜尋---輸入 」 體驗。 它包含您要啟用自動提示查詢輸入欄位的清單。 索引，在相同的建議工具會支援這些兩種自動提示變化之一或兩者： *autocomplete*完成的詞彙或片語輸入，*建議*提供結果的簡短清單。 
+在「Azure 認知搜尋」中，您可以透過新增至[搜尋索引](search-what-is-an-index.md)的**建議工具**結構來啟用「搜尋即輸入」。 建議工具支援兩種體驗： [*自動完成*]，這會完成整個詞彙查詢的部分輸入，以及邀請按一下以符合特定比對的*建議*。 自動完成會產生查詢。 建議會產生相符的檔。
 
-下列螢幕擷取畫面說明這兩種自動提示功能。 在這個 Xbox 搜尋頁面中，自動完成的項目帶您前往新的搜尋結果頁面上，該查詢中，而這些建議會帶您前往該特定的遊戲頁面的實際結果。 您可以限制自動完成，在搜尋列中的一個項目，或提供如下所示類似的清單。 如需建議，您可能會出現文件最能描述結果的任何部分。
+下列螢幕擷取畫面是[以 c # 建立您的第一個應用程式](tutorial-csharp-type-ahead-and-suggestions.md)說明這兩者。 自動完成會預見可能的詞彙，並以 "in" 完成 "臺灣"。 建議是迷你搜尋結果，其中的欄位（例如飯店名稱）代表來自索引的相符旅館搜尋檔。 如需建議，您可以呈現任何提供描述性資訊的欄位。
 
-![自動完成和建議的查詢的視覺化比較](./media/index-add-suggesters/visual-comparison-suggest-complete.png "的自動完成和建議的查詢的視覺化比較")
+![自動完成和建議查詢的視覺化比較](./media/index-add-suggesters/hotel-app-suggestions-autocomplete.png "自動完成和建議查詢的視覺化比較")
 
-若要在 Azure 搜尋服務中實作這些行為，沒有索引和查詢的元件。 
+您可以單獨或一起使用這些功能。 若要在 Azure 認知搜尋中執行這些行為，有一個索引和查詢元件。 
 
-+ 索引元件是建議工具。 您可以使用入口網站、 REST API 或.NET SDK 來建立建議工具。 
++ 在索引中，將建議工具加入至索引。 您可以使用入口網站、 [REST API](https://docs.microsoft.com/rest/api/searchservice/create-index)或[.net SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggester?view=azure-dotnet)。 本文的其餘部分著重于建立建議工具。
 
-+ 查詢元件是在查詢要求 （建議或自動完成動作） 中指定的動作。 
++ 在查詢要求中，呼叫下列其中一個[api](#how-to-use-a-suggester)。
 
-針對每個欄位已啟用搜尋---輸入時支援。 如果您想體驗類似於螢幕擷取畫面所示，您可以實作相同的搜尋解決方案中這兩種自動提示行為。 這兩個要求的目標*文件*之後使用者已提供至少三個字元的輸入的字串，會傳回集合特定索引和回應。
+針對字串欄位，會針對每個欄位啟用搜尋型別支援。 如果您想要有類似螢幕擷取畫面中所示的體驗，您可以在相同的搜尋解決方案內同時執行這兩個自動提示行為。 這兩個要求都會以特定索引的*檔*集合為目標，而在使用者至少提供了三個字元輸入字串之後，就會傳迴響應。
 
-## <a name="create-a-suggester"></a>建立建議工具
+## <a name="what-is-a-suggester"></a>什麼是建議工具？
 
-雖然建議工具有數個屬性，它會是您啟用自動提示體驗的欄位的集合。 例如，旅遊應用程式應該針對目的地、城市及景點啟用鍵盤預先鍵入緩衝搜尋。 因此，所有的三個欄位會放置在 fields 集合。
+建議工具是一種內部資料結構，可透過儲存前置詞來比對部分查詢，以支援搜尋型別的行為。 如同已標記化的詞彙，前置詞會儲存在反向索引中，每個欄位都是建議工具 fields 集合中所指定的每一個欄位。
 
-若要建立建議工具，加入至索引結構描述。 您可以在索引中的一個建議工具 (具體而言，建議工具集合中的一個建議工具)。 
+## <a name="define-a-suggester"></a>定義建議工具
 
-### <a name="use-the-rest-api"></a>使用 REST API
+若要建立建議工具，請將其中一個加入至[索引架構](https://docs.microsoft.com/rest/api/searchservice/create-index)，並[設定每個屬性](#property-reference)。 建立建議工具的最佳時機是當您同時定義將使用它的欄位時。
 
-在 REST API 中，您可以新增建議工具，透過[Create Index](https://docs.microsoft.com/rest/api/searchservice/create-index)或是[更新索引](https://docs.microsoft.com/rest/api/searchservice/update-index)。 
++ 僅使用字串欄位
+
++ 在欄位上使用預設的標準 Lucene 分析器（ `"analyzer": null` ）或[語言分析器](index-add-language-analyzers.md)（例如， `"analyzer": "en.Microsoft"` ）
+
+### <a name="choose-fields"></a>選擇欄位
+
+雖然建議工具有數個屬性，但它主要是您啟用搜尋型別體驗的字串欄位集合。 每個索引都有一個建議工具，因此建議工具清單必須包含所有提供建議和自動完成內容的欄位。
+
+自動完成可從較大的欄位集區中受益，因為其他內容可能會有更多的詞彙完成。
+
+另一方面，建議您在選擇欄位時，就會產生更好的結果。 請記住，建議是搜尋檔的 proxy，因此您會想要最能代表單一結果的欄位。 區分多個相符專案的名稱、標題或其他唯一欄位的效果最好。 如果欄位包含重複的值，則建議包含相同的結果，而且使用者不會知道要按一下哪一個。
+
+為了滿足搜尋型別體驗，請新增自動完成所需的所有欄位，然後使用 **$select**、 **$top**、 **$filter**和**searchFields**來控制建議的結果。
+
+### <a name="choose-analyzers"></a>選擇分析器
+
+您選擇的分析器會決定如何標記欄位，並在後續加上前置詞。 例如，對於「區分內容」之類的連字號字串，使用語言分析器將會產生這些標記組合：「內容」、「敏感性」、「區分內容」。 當您使用標準 Lucene 分析器時，斷字元字串不存在。 
+
+評估分析器時，請考慮使用[分析文字 API](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) ，深入瞭解詞彙如何標記化，並在後續加上前置詞。 建立索引之後，您可以在字串上嘗試各種分析器來查看權杖輸出。
+
+明確禁止使用[自訂分析器](index-add-custom-analyzers.md)或[預先定義分析器](index-add-custom-analyzers.md#predefined-analyzers-reference)（標準 Lucene 除外）的欄位，以避免結果不佳。
+
+> [!NOTE]
+> 如果您需要解決分析器條件約束，例如，如果您在某些查詢案例中需要關鍵字或 ngram 分析器，則應該針對相同的內容使用兩個不同的欄位。 這可讓其中一個欄位具有建議工具，而另一種則可以使用自訂分析器設定進行設定。
+
+### <a name="when-to-create-a-suggester"></a>建立建議工具的時機
+
+建立建議工具的最佳時機是當您也建立欄位定義本身時。
+
+如果您嘗試使用既有的欄位來建立建議工具，API 將不會允許它。 在編制索引期間，當兩個或多個字元組合中的部分詞彙與整個詞彙一起標記時，會產生前置詞。 假設現有的欄位已標記為 token 化，如果您想要將其新增至建議工具，則必須重建索引。 如需詳細資訊，請參閱[如何重建 Azure 認知搜尋索引](search-howto-reindex.md)。
+
+## <a name="create-using-rest"></a>使用 REST 建立
+
+在 REST API 中，透過 [[建立索引](https://docs.microsoft.com/rest/api/searchservice/create-index)] 或 [[更新索引](https://docs.microsoft.com/rest/api/searchservice/update-index)] 來新增建議工具。 
 
   ```json
   {
-    "name": "hotels",
+    "name": "hotels-sample-index",
     "fields": [
       . . .
+          {
+              "name": "HotelName",
+              "type": "Edm.String",
+              "facetable": false,
+              "filterable": false,
+              "key": false,
+              "retrievable": true,
+              "searchable": true,
+              "sortable": false,
+              "analyzer": "en.microsoft",
+              "indexAnalyzer": null,
+              "searchAnalyzer": null,
+              "synonymMaps": [],
+              "fields": []
+          },
     ],
     "suggesters": [
       {
         "name": "sg",
         "searchMode": "analyzingInfixMatching",
-        "sourceFields": ["hotelName", "category"]
+        "sourceFields": ["HotelName"]
       }
     ],
     "scoringProfiles": [
@@ -70,23 +107,22 @@ A**建議工具**是在建構[Azure 搜尋服務索引](search-what-is-an-index.
     ]
   }
   ```
-建立建議工具之後，新增[建議 API](https://docs.microsoft.com/rest/api/searchservice/suggestions)或是[自動完成 API](https://docs.microsoft.com/rest/api/searchservice/autocomplete)在您的查詢邏輯，來叫用的功能。
 
-### <a name="use-the-net-sdk"></a>使用 .NET SDK
+## <a name="create-using-net"></a>使用 .NET 建立
 
-在C#，定義[建議工具物件](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggester?view=azure-dotnet)。 `Suggesters` 是集合，但它只能接受一個項目。 
+在 c # 中，定義[建議工具物件](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggester?view=azure-dotnet)。 `Suggesters`是集合，但只能接受一個專案。 
 
 ```csharp
 private static void CreateHotelsIndex(SearchServiceClient serviceClient)
 {
     var definition = new Index()
     {
-        Name = "hotels",
+        Name = "hotels-sample-index",
         Fields = FieldBuilder.BuildForType<Hotel>(),
         Suggesters = new List<Suggester>() {new Suggester()
             {
                 Name = "sg",
-                SourceFields = new string[] { "HotelId", "Category" }
+                SourceFields = new string[] { "HotelName", "Category" }
             }}
     };
 
@@ -97,41 +133,44 @@ private static void CreateHotelsIndex(SearchServiceClient serviceClient)
 
 ## <a name="property-reference"></a>屬性參考
 
-建議工具的相關注意事項重點是，有名稱 （建議工具會在要求中的名稱所參考的）、 searchMode (目前只有一個，「 analyzingInfixMatching") 和自動提示已啟用的欄位清單。 
-
-定義建議工具的屬性包含如下：
-
-|屬性      |描述      |
+|屬性      |說明      |
 |--------------|-----------------|
-|`name`        |建議工具名稱。 呼叫時，使用的建議工具名稱[建議 REST API](https://docs.microsoft.com/rest/api/searchservice/suggestions)或是[自動完成 REST API](https://docs.microsoft.com/rest/api/searchservice/autocomplete)。|
-|`searchMode`  |用來搜尋候選片語的策略。 目前唯一支援的模式是 `analyzingInfixMatching`，其可在句子開頭或中間執行彈性的片語比對。|
-|`sourceFields`|建議之內容來源的一或多個欄位清單。 只有類型 `Edm.String` 和 `Collection(Edm.String)` 的欄位可以用來做為提供建議的來源。 您只能使用未設定自訂語言分析器的欄位。<p/>無論是完整的字串搜尋列中的下拉式清單，請指定只擇預期且適當的回應，這些欄位。<p/>旅館名稱是很好的候選項目，因為其有效位數。 詳細資訊的欄位，例如描述和註解是過於密集。 同樣地，重複的欄位，例如類別和標記，會比較沒有效率。 在範例中，我們包含 「 類別 」 仍以示範您可以包含多個欄位。 |
+|`name`        |建議工具的名稱。|
+|`searchMode`  |用來搜尋候選片語的策略。 目前唯一支援的模式是 `analyzingInfixMatching` ，其目前符合詞彙開頭的。|
+|`sourceFields`|建議之內容來源的一或多個欄位清單。 欄位的類型必須是 `Edm.String` 和 `Collection(Edm.String)` 。 如果在欄位上指定分析器，則[此清單](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername?view=azure-dotnet)中必須是名稱為 analyzer （不是自訂分析器）。<p/> 最佳做法是只指定那些會讓自己成為預期和適當回應的欄位，不論它是搜尋列或下拉式清單中的完整字串。<p/>飯店名稱是很好的候選，因為它有精確度。 詳細資訊欄位（如描述和批註）太密集。 同樣地，重複的欄位（例如分類和標記）比較不有效率。 在範例中，我們仍會包含「類別」，以示範您可以包含多個欄位。 |
 
-## <a name="when-to-create-a-suggester"></a>建立建議工具的時機
+<a name="how-to-use-a-suggester"></a>
 
-若要避免重建索引、 建議工具和欄位中指定`sourceFields`必須建立在相同的時間。
+## <a name="use-a-suggester"></a>使用建議工具
 
-如果您新增至現有的索引，其中中包含現有欄位的建議工具`sourceFields`，徹底變更欄位定義，而重建是必要。 如需詳細資訊，請參閱 <<c0> [ 如何重建的 Azure 搜尋服務索引](search-howto-reindex.md)。
+在查詢中使用建議工具。 建立建議工具之後，請呼叫下列其中一個 Api 來進行搜尋型別體驗：
 
-## <a name="how-to-use-a-suggester"></a>如何使用建議工具
++ [建議 REST API](https://docs.microsoft.com/rest/api/searchservice/suggestions) 
++ [自動完成 REST API](https://docs.microsoft.com/rest/api/searchservice/autocomplete) 
++ [SuggestWithHttpMessagesAsync 方法](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations.suggestwithhttpmessagesasync?view=azure-dotnet)
++ [AutocompleteWithHttpMessagesAsync 方法](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations.autocompletewithhttpmessagesasync?view=azure-dotnet&viewFallbackFrom=azure-dotnet)
 
-如先前所述，您可以使用建議工具，建議的查詢、 自動完成，或兩者。 
+在搜尋應用程式中，用戶端程式代碼應該使用程式庫，例如[JQUERY UI 自動完成](https://jqueryui.com/autocomplete/)，以收集部分查詢並提供相符的結果。 如需這項工作的詳細資訊，請參閱[將自動完成或建議的結果新增至用戶端程式代碼](search-autocomplete-tutorial.md)。
 
-建議工具會參考針對要求的作業。 例如，在 GET REST 呼叫中指定`suggest`或`autocomplete`文件集合。 其餘部分，會建立建議工具之後，請使用[建議 API](https://docs.microsoft.com/rest/api/searchservice/suggestions)或[自動完成 API](https://docs.microsoft.com/rest/api/searchservice/autocomplete)在您的查詢邏輯。
+下列 [自動完成] REST API 的呼叫中會說明 API 的使用方式。 這個範例有兩個優點。 首先，如同所有查詢，作業是針對索引的檔集合，而查詢則包含**搜尋**參數，在此案例中會提供部分查詢。 第二，您必須將**suggesterName**新增至要求。 如果索引中未定義建議工具，則對自動完成或建議的呼叫將會失敗。
 
-適用於.NET，使用[SuggestWithHttpMessagesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations.suggestwithhttpmessagesasync?view=azure-dotnet-preview)或是[AutocompleteWithHttpMessagesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations.autocompletewithhttpmessagesasync?view=azure-dotnet-preview&viewFallbackFrom=azure-dotnet)。
-
-如需示範這兩個要求的範例，請參閱 <<c0> [ 新增 Azure 搜尋服務中的 自動完成和建議的範例](search-autocomplete-tutorial.md)。
+```http
+POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2020-06-30
+{
+  "search": "minecraf",
+  "suggesterName": "sg"
+}
+```
 
 ## <a name="sample-code"></a>範例程式碼
 
-[DotNetHowToAutocomplete](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToAutocomplete)範例同時包含C#和 Java 程式碼，並示範建議工具建構、 建議的查詢，自動完成，以及多面向導覽。 
++ 使用[c # 建立您的第一個應用程式（第3課-新增搜尋型別）](tutorial-csharp-type-ahead-and-suggestions.md)範例示範建議工具結構、建議的查詢、自動完成和多面向導覽。 此程式碼範例會在沙箱 Azure 認知搜尋服務上執行，並使用預先載入的飯店索引，因此您只需要按 F5 執行應用程式。 不需要訂用帳戶或登入。
 
-它會使用 Azure 搜尋服務的沙箱和預先載入的索引，所以所有您只需要是按 f5 鍵執行它。 沒有訂用帳戶或登入需要。
++ [DotNetHowToAutocomplete](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToAutocomplete)是較舊的範例，其中包含 c # 和 JAVA 程式碼。 它也會示範建議工具的結構、建議的查詢、自動完成和多面向導覽。 此程式碼範例會使用託管的[NYCJobs](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs)範例資料。 
 
 ## <a name="next-steps"></a>後續步驟
 
-我們建議下列的範例，以瞭解如何要求所建構而成。
+建議您參閱下列文章，以深入瞭解要求的編寫方式。
 
 > [!div class="nextstepaction"]
-> [建議和自動完成範例](search-autocomplete-tutorial.md) 
+> [將自動完成和建議新增至用戶端程式代碼](search-autocomplete-tutorial.md) 

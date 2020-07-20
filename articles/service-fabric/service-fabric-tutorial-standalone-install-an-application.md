@@ -1,26 +1,17 @@
 ---
-title: 教學課程：在獨立 Service Fabric 叢集上安裝應用程式 - Azure Service Fabric | Microsoft Docs
+title: 在獨立叢集上安裝應用程式
 description: 在本教學課程中，您將了解如何將應用程式安裝到獨立 Service Fabric 叢集中。
-services: service-fabric
-documentationcenter: .net
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 05/11/2018
+ms.date: 07/22/2019
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 17bb5f5d8fe7ee407caf0ea5c34dc5380dbd79b0
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 8dd47d27f928cb33e5a2bbc3ba9a6ab2bc044852
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670297"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245376"
 ---
 # <a name="tutorial-deploy-an-application-on-your-service-fabric-standalone-cluster"></a>教學課程：將應用程式部署在 Service Fabric 獨立叢集上
 
@@ -34,11 +25,11 @@ Service Fabric 獨立叢集讓您能夠選擇自己的環境，並且在 Service
 > * 下載範例應用程式
 > * 部署至叢集
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 開始進行本教學課程之前：
 
-* [安裝 Visual Studio 2017](https://www.visualstudio.com/) 並安裝 **Azure 開發**以及 **ASP.NET 和 Web 開發**工作負載。
+* [安裝 Visual Studio 2019](https://www.visualstudio.com/)，並安裝 **Azure 開發**以及 **ASP.NET 和 Web 開發**工作負載。
 * [安裝 Service Fabric SDK](service-fabric-get-started.md)
 
 ## <a name="download-the-voting-sample-application"></a>下載投票應用程式範例
@@ -55,13 +46,13 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 1. 開啟 Visual Studio
 
-2. 選取 [檔案] > [開啟]
+2. 選取 [檔案]   > [開啟] 
 
 3. 瀏覽至您複製 git 存放庫的資料夾，並選取 Voting.sln
 
-4. 以滑鼠右鍵按一下 [方案總管] 中的 `Voting` 應用程式專案，然後選擇 [發佈]。
+4. 以滑鼠右鍵按一下 [方案總管] 中的 `Voting` 應用程式專案，然後選擇 [發佈]  。
 
-5. 選取 [連線端點] 的下拉式清單，並輸入叢集中一個節點的公開 DNS 名稱。  例如， `ec2-34-215-183-77.us-west-2.compute.amazonaws.com:19000`
+5. 選取 [連線端點]  的下拉式清單，並輸入叢集中一個節點的公開 DNS 名稱。  例如： `ec2-34-215-183-77.us-west-2.compute.amazonaws.com:19000` 。 請注意，在 Azure 中不會自動指定完整網域名稱 (FQDN)，但是可以輕易地[在 VM 概觀頁面上設定](../virtual-machines/linux/portal-create-fqdn.md)。
 
 6. 開啟您偏好的瀏覽器，並輸入叢集位址 (連線端點，此應用程式部署於連接埠 8080 - 例如 ec2-34-215-183-77.us-west-2.compute.amazonaws.com:8080)。
 

@@ -1,22 +1,21 @@
 ---
-title: 內部部署上的 Azure AD 密碼保護代理程式版本發行歷程記錄-Azure Active Directory
+title: 密碼保護代理程式發行歷程記錄-Azure Active Directory
 description: 文件版本發行和行為變更歷程記錄
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: article
-ms.date: 02/01/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.date: 11/21/2019
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60ce66b079942944176540826c7f3e7a91b070d2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 71fd33388cb1bdf7c87c44fb3273c6850122a0cc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60358203"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "74847844"
 ---
 # <a name="azure-ad-password-protection-agent-version-history"></a>Azure AD 密碼保護代理程式版本記錄
 
@@ -24,29 +23,29 @@ ms.locfileid: "60358203"
 
 發行日期：3/22/2019
 
-* 修正事件記錄檔訊息中的錯字次要錯誤
-* 為最終的正式運作版本更新的使用者授權合約
+* 修正事件記錄檔訊息中的次要打字錯誤
+* 將 EULA 合約更新為最終正式推出版本
 
 > [!NOTE]
-> 建置 1.2.125.0 為正式運作的組建。 感謝您一次給所有人提供意見反應的產品 ！
+> Build 1.2.125.0 是公開上市版本。 再次感謝大家提供有關產品的意見反應！
 
 ## <a name="121160"></a>1.2.116.0
 
 發行日期：3/13/2019
 
-* 取得 AzureADPasswordProtectionProxy 和 Get AzureADPasswordProtectionDCAgent cmdlet 現在報告軟體版本和目前的 Azure 租用戶具有下列限制：
-  * 軟體版本和 Azure 租用戶資料僅適用於 DC 代理程式和 proxy 執行 1.2.116.0 版本或更新版本。
-  * Azure 租用戶的資料不會報告直到 proxy 重新註冊 （或更新），或樹系已發生。
-* Proxy 服務現在會需要安裝.NET 4.7。
-  * 完整地進行更新的 Windows Server 上時，應該已安裝.NET 4.7。 如果這不是這樣，下載並執行安裝程式，請參閱[for Windows 的.NET Framework 4.7 離線安裝程式](https://support.microsoft.com/en-us/help/3186497/the-net-framework-4-7-offline-installer-for-windows)。
-  * 在 Server Core 系統上可能必須將 /q 旗標傳遞至.NET 4.7 安裝程式，它才會成功。
-* Proxy 服務現在支援自動升級。 自動升級會使用已安裝的並行與 Proxy 服務的 Microsoft Azure AD Connect 代理程式更新程式服務。 預設會開啟自動升級。
-* 可以啟用自動升級，或使用組 AzureADPasswordProtectionProxyConfiguration cmdlet 停用。 使用 Get AzureADPasswordProtectionProxyConfiguration cmdlet 可以查詢的目前設定。
-* DC 代理程式服務二進位的服務已更名為 AzureADPasswordProtectionDCAgent.exe。
-* 服務二進位檔的 Proxy 服務已更名為 AzureADPasswordProtectionProxy.exe。 防火牆規則可能需要協力廠商防火牆是否使用中據此修改。
-  * 注意： 如果已在先前的 Proxy 使用 http proxy 組態檔安裝，需要在重新命名 (從*proxyservice.exe.config*要*AzureADPasswordProtectionProxy.exe.config*) 之後升級。
-* 從 DC 代理程式已移除所有的時間限制功能檢查。
-* 次要 bug 修正和記錄的改善。
+* Register-azureadpasswordprotectionproxy 和 AzureADPasswordProtectionDCAgent Cmdlet 現在會報告軟體版本和目前的 Azure 租使用者，但有下列限制：
+  * 軟體版本和 Azure 租使用者資料僅適用于執行1.2.116.0 或更新版本的 DC 代理程式和 proxy。
+  * 在 proxy 或樹系的重新註冊（或更新）發生之前，可能不會回報 Azure 租使用者資料。
+* Proxy 服務現在需要安裝 .NET 4.7。
+  * .NET 4.7 應該已經安裝在完全更新的 Windows 伺服器上。 如果不是這種情況，請下載並執行[適用于 Windows 的 .NET Framework 4.7 離線安裝程式](https://support.microsoft.com/help/3186497/the-net-framework-4-7-offline-installer-for-windows)中找到的安裝程式。
+  * 在 Server Core 系統上，可能需要將/q 旗標傳遞給 .NET 4.7 安裝程式，才能讓它成功。
+* Proxy 服務現在支援自動升級。 自動升級會使用與 Proxy 服務並存安裝的 Microsoft Azure AD Connect Agent 更新程式服務。 預設會開啟自動升級。
+* 您可以使用 AzureADPasswordProtectionProxyConfiguration Cmdlet 來啟用或停用自動升級。 您可以使用 AzureADPasswordProtectionProxyConfiguration Cmdlet 來查詢目前的設定。
+* DC 代理程式服務的服務二進位檔已重新命名為 AzureADPasswordProtectionDCAgent.exe。
+* Proxy 服務的服務二進位檔已重新命名為 AzureADPasswordProtectionProxy.exe。 如果協力廠商防火牆正在使用中，則可能需要適當地修改防火牆規則。
+  * 注意：如果在先前的 Proxy 安裝中使用 HTTP proxy 設定檔案，在此升級之後，必須將它重新命名（從*proxyservice.exe.config*到*AzureADPasswordProtectionProxy.exe.config*）。
+* 已從 DC 代理程式中移除所有時間限制的功能檢查。
+* 次要 bug 修正和記錄功能改進。
 
 ## <a name="12650"></a>1.2.65.0
 
@@ -54,7 +53,7 @@ ms.locfileid: "60358203"
 
 變更：
 
-* Server Core 上現在支援 DC 代理程式和 Proxy 服務。 最低 OS 需求則與之前相同：適用於 DC 代理程式的 Windows Server 2012 和適用於 Proxy 的 Windows Server 2012 R2。
+* Server Core 上現在支援 DC 代理程式和 Proxy 服務。 最低 OS 需求不會與之前相同： Windows Server 2012 for DC 代理程式和 Windows Server 2012 R2 （適用于 proxy）。
 * Register-AzureADPasswordProtectionProxy 與 Register-AzureADPasswordProtectionForest Cmdlet 現在均支援以裝置代碼為基礎的 Azure 驗證模式。
 * Get-AzureADPasswordProtectionDCAgent Cmdlet 將會忽略已損害和/或無效的服務連接點。 這會修正網域控制站有時在輸出中多次出現的錯誤 (bug)。
 * Get-AzureADPasswordProtectionSummaryReport Cmdlet 將會忽略已損害和/或無效的服務連接點。 這會修正網域控制站有時在輸出中多次出現的錯誤 (bug)。

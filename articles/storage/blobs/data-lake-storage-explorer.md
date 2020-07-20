@@ -1,84 +1,113 @@
 ---
-title: '快速入門：使用 Azure 儲存體總管來管理 Azure Data Lake Storage Gen2 中的資料 '
-description: 在本快速入門中，您將了解如何使用 Azure 儲存體總管搭配 Azure Data Lake Storage Gen2 帳戶建立檔案系統、目錄及檔案。 接下來您會了解如何將檔案下載到本機電腦，以及如何檢視目錄中的所有檔案。
-services: storage
+title: 搭配 Azure Data Lake Storage Gen2 使用 Azure 儲存體總管
+description: 使用 Azure 儲存體總管來管理已啟用階層命名空間（HNS）之儲存體帳戶中的目錄和檔案和目錄存取控制清單（ACL）。
 author: normesta
 ms.subservice: data-lake-storage-gen2
-ms.custom: mvc
 ms.service: storage
-ms.topic: quickstart
-ms.date: 12/05/2018
+ms.topic: how-to
+ms.date: 01/23/2019
 ms.author: normesta
-ms.openlocfilehash: 01743eb7ec7f6650a0fd28fd9c4f090bebd524b3
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
-ms.translationtype: HT
+ms.reviewer: stewu
+ms.openlocfilehash: 4e8b99d4a9c48692551e3aba06aba1a3db385e60
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64939350"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84466046"
 ---
-# <a name="quickstart-use-azure-storage-explorer-to-manage-data-in-an-azure-data-lake-storage-gen2-account"></a>快速入門：使用 Azure 儲存體總管來管理 Azure Data Lake Storage Gen2 帳戶中的資料
+# <a name="use-azure-storage-explorer-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>使用 Azure 儲存體總管來管理中的目錄、檔案和 Acl Azure Data Lake Storage Gen2
 
-在本快速入門中，您將了解如何使用 [Azure 儲存體總管](https://azure.microsoft.com/features/storage-explorer/)建立目錄和 Blob。 接下來您會了解如何將 Blob 下載到本機電腦，以及如何檢視目錄中的所有 Blob。 您也將了解如何建立 Blob 的快照集、管理目錄存取原則，以及建立共用的存取簽章。
+本文說明如何使用[Azure 儲存體總管](https://azure.microsoft.com/features/storage-explorer/)來建立和管理已啟用階層命名空間（HNS）之儲存體帳戶中的目錄、檔案和許可權。
 
 ## <a name="prerequisites"></a>必要條件
 
-[!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
-
-本快速入門會要求您安裝 Azure 儲存體總管。 若要安裝適用於 Windows、Macintosh 或 Linux 的 Azure 儲存體總管，請參閱 [Azure 儲存體總管](https://azure.microsoft.com/features/storage-explorer/)。
+> [!div class="checklist"]
+> * Azure 訂用帳戶。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
+> * 已啟用階層命名空間 (HNS) 的儲存體帳戶。 遵循[下列](data-lake-storage-quickstart-create-account.md)指示以建立帳戶。
+> * Azure 儲存體總管安裝在您的本機電腦上。 若要安裝適用於 Windows、Macintosh 或 Linux 的 Azure 儲存體總管，請參閱 [Azure 儲存體總管](https://azure.microsoft.com/features/storage-explorer/)。
 
 ## <a name="sign-in-to-storage-explorer"></a>登入儲存體總管
 
-第一次啟動時，會顯示 [Microsoft Azure 儲存體總管 - 連線] 視窗。 雖然儲存體總管提供數種方式可連線到儲存體帳戶，但目前只有一種方式支援管理 ACL。
+您第一次啟動儲存體總管時，[Microsoft Azure 儲存體總管 - 連線]**** 視窗會隨即出現。 雖然儲存體總管提供數種方式可連線到儲存體帳戶，但目前只有一種方式支援管理 ACL。
 
 |Task|目的|
 |---|---|
-|新增 Azure 帳戶 | 將您重新導向至貴組織的登入頁面，向 Azure 進行驗證。 如果想要管理及設定 ACL，這是目前唯一支援的驗證方法。 |
+|新增 Azure 帳戶 | 將您重新導向至貴組織的登入頁面，向 Azure 進行驗證。 如果想要管理及設定 ACL，這是目前唯一支援的驗證方法。|
+|使用連接字串或共用存取簽章 URI | 可用來直接存取容器，或是使用 SAS 權杖或共用連接字串的儲存體帳戶。 |
+|使用儲存體帳戶名稱和金鑰| 使用儲存體帳戶的儲存體名稱和儲存體帳戶金鑰來連線到 Azure 儲存體。|
 
-選取 [新增 Azure 帳戶]，然後按一下 [登入]。遵循螢幕上的提示來登入 Azure 帳戶。
+選取 [**新增 Azure 帳戶**]，然後按一下 [登**入 ...**]遵循螢幕上的提示來登入您的 Azure 帳戶。
 
 ![[Microsoft Azure 儲存體總管 - 連線] 視窗](media/storage-quickstart-blobs-storage-explorer/connect.png)
 
-完成連線時，會載入 Azure 儲存體總管，並顯示 [總管] 索引標籤。 這個檢視可讓您深入了解您所有的 Azure 儲存體帳戶，以及透過 [Azure 儲存體模擬器](../common/storage-use-emulator.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)、[Cosmos DB](../../cosmos-db/storage-explorer.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) 帳戶或 [Azure Stack](/azure-stack/user/azure-stack-storage-connect-se?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) 環境設定的本機儲存體。
+完成連線時，會載入 Azure 儲存體總管，並顯示 [總管]**** 索引標籤。 這個檢視可讓您深入了解您所有的 Azure 儲存體帳戶，以及透過 [Azure 儲存體模擬器](../common/storage-use-emulator.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)、[Cosmos DB](../../cosmos-db/storage-explorer.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) 帳戶或 [Azure Stack](/azure-stack/user/azure-stack-storage-connect-se?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) 環境設定的本機儲存體。
 
 ![[Microsoft Azure 儲存體總管 - 連線] 視窗](media/storage-quickstart-blobs-storage-explorer/mainpage.png)
 
-## <a name="create-a-file-system"></a>建立檔案系統
+## <a name="create-a-container"></a>建立容器
 
-Blob 一律會上傳到目錄中。 這可讓您組織 Blob 群組，就像在電腦的資料夾中組織檔案一樣。
+容器會保存目錄和檔案。 若要建立一個，請展開您在後續步驟中建立的儲存體帳戶。 選取 [Blob 容器]****，然後以滑鼠右鍵按一下 [建立 Blob 容器]****。 輸入容器的 [名稱]。 如需命名容器的規則和限制清單，請參閱[建立容器](storage-quickstart-blobs-dotnet.md#create-a-container)一節。 完成時，按**enter**以建立容器。 成功建立容器之後，它會顯示在所選儲存體帳戶的 [ **Blob 容器**] 資料夾底下。
 
-若要建立目錄，請展開您在後續步驟中建立的儲存體帳戶。 選取 [Blob 容器]，然後以滑鼠右鍵按一下並選取 [建立 Blob 容器]。 輸入檔案系統的名稱。 完成時，按 **Enter** 即可建立檔案系統。 一旦成功建立 blob 目錄後，它就會顯示在所選儲存體帳戶的 [Blob 容器] 資料夾底下。
+![Microsoft Azure 儲存體總管-建立容器](media/data-lake-storage-explorer/creating-a-filesystem.png)
 
-![Microsoft Azure 儲存體總管 - 建立檔案系統](media/storage-quickstart-blobs-storage-explorer/creating-a-filesystem.png)
+## <a name="create-a-directory"></a>建立目錄
+
+若要建立目錄，請選取您在繼續步驟中建立的容器。 在 [容器] 功能區中，選擇 [**新增資料夾**] 按鈕。 輸入您的目錄名稱。 完成時，請按**enter**來建立目錄。 成功建立目錄之後，它就會出現在編輯器視窗中。
+
+![Microsoft Azure 儲存體總管-建立目錄](media/data-lake-storage-explorer/creating-a-directory.png)
 
 ## <a name="upload-blobs-to-the-directory"></a>將 Blob 上傳到目錄
 
-Blob 儲存體支援區塊 Blob、附加 Blob 和分頁 Blob。 用來備份 IaaS VM 的 VHD 檔案是分頁 Blob。 附加 Blob 用於記錄，例如當您想要寫入檔案，並繼續新增更多資訊時。 儲存在 Blob 儲存體中的大部分檔案都是區塊 Blob。
+在 [目錄] 功能區上，選擇 [**上傳**] 按鈕。 這項作業可讓您選擇上傳資料夾或檔案。
 
-在目錄功能區中，選取 [上傳]。 這項作業可讓您選擇上傳資料夾或檔案。
+選擇要上傳的檔案或資料夾。
 
-選擇要上傳的檔案或資料夾。 選取 [blob 類型]。 可接受的選項為 [附加]、[頁面] 或 [區塊] blob。
+![Microsoft Azure 儲存體總管 - 上傳 blob](media/data-lake-storage-explorer/upload-file.png)
 
-如果要上傳 .vhd 或 .vhdx 檔案，請選擇 [上傳 .vhd/.vhdx 檔案作為分頁 Blob (建議選項)]。
-
-在 [上傳到資料夾 (選擇性)] 欄位中，儲存檔案的資料夾名稱，或是目錄下資料夾中的資料夾。 如果未選擇任何資料夾，會直接將檔案上傳至目錄底下。
-
-![Microsoft Azure 儲存體總管 - 上傳 blob](media/storage-quickstart-blobs-storage-explorer/uploadblob.png)
-
-當您選取 [確定] 時，所選取的檔案會排入要上傳的佇列中，每個檔案都會上傳。 上傳完成時，結果會顯示在 [活動] 視窗。
+當您選取 [確定]**** 時，所選取的檔案會排入要上傳的佇列中，每個檔案都會上傳。 上傳完成時，結果會顯示在 [活動]**** 視窗。
 
 ## <a name="view-blobs-in-a-directory"></a>檢視目錄中的 Blob
 
-在 [Azure 儲存體總管] 應用程式中，選取儲存體帳戶底下的目錄。 主窗格會顯示所選目錄中的 blob 清單。
+在 [Azure 儲存體總管]**** 應用程式中，選取儲存體帳戶底下的目錄。 主窗格會顯示所選目錄中的 blob 清單。
 
-![Microsoft Azure 儲存體總管 - 列出目錄中的 blob](media/storage-quickstart-blobs-storage-explorer/listblobs.png)
+![Microsoft Azure 儲存體總管 - 列出目錄中的 blob](media/data-lake-storage-explorer/list-files.png)
 
 ## <a name="download-blobs"></a>下載 Blob
 
-若要使用 **Azure 儲存體總管**下載 blob，並選取 blob，請從功能區中選取 [下載]。 檔案對話方塊隨即開啟，讓您可以輸入檔案名稱。 選取 [儲存] 可開始將 blob 下載到本機位置。
+若要使用**Azure 儲存體總管**下載檔案，並選取檔案，請從功能區選取 [**下載**]。 檔案對話方塊隨即開啟，讓您可以輸入檔案名稱。 選取 [**儲存**] 以開始將檔案下載至本機位置。
+
+## <a name="managing-access"></a>管理存取
+
+您可以在容器根目錄設定權限。 若要這樣做，您必須使用有權執行此動作的個別帳戶 (而非使用連接字串) 登入 Azure 儲存體總管。 以滑鼠右鍵按一下容器，然後選取 [管理權限]****，顯示 [管理權限]**** 對話方塊。
+
+![Microsoft Azure 儲存體總管 - 管理目錄存取](media/storage-quickstart-blobs-storage-Explorer/manageperms.png)
+
+[管理權限]**** 對話方塊可讓您管理擁有者和擁有者群組的權限。 它也可以讓您將新的使用者和群組新增到存取控制清單，方便之後管理他們的權限。
+
+若要將新的使用者或群組加到存取控制清單，請選取 [新增使用者或群組]**** 欄位。
+
+輸入和您想要新增至清單的相對應 Azure Active Directory (AAD) 項目，然後選取 [新增]****。
+
+使用者或群組現在將會出現在 [使用者和群組:]**** 欄位中，讓您可以開始管理他們的權限。
+
+> [!NOTE]
+> 最佳做法和建議是在 AAD 中建立安全性群組，並維護群組的權限，而不是維護個別使用者的權限。 如需這項建議和其他最佳做法的詳細資料，請參閱 [Data Lake Storage Gen2 的最佳做法](data-lake-storage-best-practices.md)。
+
+您可以指派兩種權限：存取 ACL 和預設 ACL。
+
+* **存取**：存取 acl 可控制對物件的存取。 檔案和目錄均有存取 ACL。
+
+* **預設值**：與目錄相關聯的 acl 範本，可決定在該目錄下建立的任何子專案的存取 acl。 檔案沒有預設 ACL。
+
+在這兩個類別中，您可以在檔案或目錄上指派三個許可權： [**讀取**]、[**寫入**] 和 [**執行**]。
+
+>[!NOTE]
+> 在這裡選取的項目並不會在目錄內部目前現有的任何項目上設定使用權限。 如果檔案已經存在，必須移至每個項目手動設定使用權限。
+
+您可以管理個別目錄及個別檔案的使用權限，也就是允許您進行更細部的存取控制。 管理目錄和檔案使用權限的程序與上面的描述相同。 以滑鼠右鍵按一下您想要管理使用權限的檔案或目錄，然後依照相同程序進行作業。
 
 ## <a name="next-steps"></a>後續步驟
 
-在本快速入門中，您已了解如何使用 **Azure 儲存體總管**在本機磁碟和 Azure Blob 儲存體之間傳輸檔案。 若要深入了解如何在您的檔案和目錄上設定 ACL，請繼續參閱和此主題有關的操作說明。
+瞭解 Data Lake Storage Gen2 中的存取控制清單。
 
 > [!div class="nextstepaction"]
-> [如何在檔案和目錄上設定 ACL](data-lake-storage-how-to-set-permissions-storage-explorer.md)
+> [Azure Data Lake Storage Gen2 中的存取控制](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)

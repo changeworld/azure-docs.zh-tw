@@ -1,18 +1,17 @@
 ---
-title: 使用適用於 Visual Studio 的 Cloud Explorer 來管理 Azure IoT 裝置 | Microsoft Docs
+title: 以/Visual Studio Cloud Explorer 的 Azure IoT 裝置管理
 description: 使用適用於 Visual Studio 的 Cloud Explorer 來管理 Azure IoT 中樞裝置，並採用直接方法和對應項所需的屬性管理選項。
 author: shizn
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 01/07/2019
+ms.date: 08/20/2019
 ms.author: xshi
-ms.openlocfilehash: 87a0847f5d42e014f3b2691c96446892176b481b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 6fe5a45dda6632c56b3c6714827950e25e7d26af
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60399511"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "73953188"
 ---
 # <a name="use-cloud-explorer-for-visual-studio-for-azure-iot-hub-device-management"></a>使用適用於 Visual Studio 的 Cloud Explorer 來管理 Azure IoT 中樞裝置
 
@@ -31,64 +30,81 @@ ms.locfileid: "60399511"
 
 如需差異的詳細說明和使用這些選項的相關指引，請參閱[裝置對雲端通訊指引](iot-hub-devguide-d2c-guidance.md)和[雲端對裝置通訊指引](iot-hub-devguide-c2d-guidance.md)。
 
-「裝置對應項」是存放裝置狀態資訊 (中繼資料、組態和條件) 的 JSON 文件。 IoT 中樞會為其連線的每個裝置保存裝置對應項。 如需裝置對應項的詳細資訊，請參閱[開始使用裝置對應項](iot-hub-node-node-twin-getstarted.md)。
+裝置對應項是存放包括中繼資料、設定和條件此類裝置狀態資訊的 JSON 文件。 IoT 中樞會為其連線的每個裝置保存裝置對應項。 如需裝置對應項的詳細資訊，請參閱[開始使用裝置對應項](iot-hub-node-node-twin-getstarted.md)。
 
 ## <a name="what-you-learn"></a>您學到什麼
 
-您了解如何使用適用於 Visual Studio 的 [雲端總管] 中，搭配您的開發電腦上的各種管理選項。
+在本文中，您將瞭解如何在開發電腦上使用適用于 Visual Studio 的 Cloud Explorer 搭配各種管理選項。
 
 ## <a name="what-you-do"></a>您要做什麼
 
-使用各種管理選項來執行適用於 Visual Studio 的 Cloud Explorer。
+在本文中，請使用各種管理選項來執行 Visual Studio 的 Cloud Explorer。
 
 ## <a name="what-you-need"></a>您需要什麼
 
-- 作用中的 Azure 訂用帳戶
-- Azure IoT 中樞訂用帳戶
-- Microsoft Visual Studio 2017 Update 8 或更新版本
-- 來自 Visual Studio 安裝程式的 Cloud Explorer 元件 (使用 Azure 工作負載的預設選項)
+您必須符合下列必要條件：
+
+- 有效的 Azure 訂用帳戶。
+
+- 位於您訂用帳戶中的 Azure IoT 中樞。
+
+- Microsoft Visual Studio 2017 Update 9 或更新版本。 本文使用[Visual Studio 2017 或 Visual Studio 2019](https://www.visualstudio.com/vs/)。
+
+- 從 Visual Studio 安裝程式 Cloud Explorer 元件，預設會使用 Azure 工作負載加以選取。
 
 ## <a name="update-cloud-explorer-to-latest-version"></a>將 Cloud Explorer 更新至最新版本
 
-來自 Visual Studio 安裝程式的 Cloud Explorer 元件僅支援監視裝置到雲端和雲端到裝置訊息。 您必須下載並安裝最新的 [Cloud Explorer](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.CloudExplorerForVS) 才能存取管理選項。
+來自 Visual Studio 2017 Visual Studio 安裝程式的 Cloud Explorer 元件僅支援監視裝置到雲端和雲端到裝置的訊息。 若要使用 Visual Studio 2017，請下載並安裝最新的[Cloud Explorer](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.CloudExplorerForVS)。
 
-## <a name="sign-in-to-access-your-iot-hub"></a>登入以存取 IoT 中樞
+## <a name="sign-in-to-access-your-hub"></a>登入以存取您的中樞
 
-1. 在 Visual Studio [Cloud Explorer] 視窗中，按一下帳戶管理圖示。 您可以從 [檢視] > [Cloud Explorer] 功能表開啟 Cloud Explorer 視窗。
+1. 在 Visual Studio 中，選取 [ **View**  >  **Cloud Explorer** ] 以開啟 Cloud Explorer。
 
-    ![按一下 [帳戶管理]](media/iot-hub-visual-studio-cloud-device-messaging/click-account-management.png)
+1. 選取 [帳戶管理] 圖示，以顯示您的訂閱。
 
-1. 在 Cloud Explorer 中按一下 [管理帳戶]。
-1. 若為第一次登入 Azure，請在新視窗中按一下 [新增帳戶]。
-1. 登入之後，系統會顯示您的 Azure 訂用帳戶清單。 選取您想要檢視的 Azure 訂用帳戶並按一下 [套用]。
-1. 展開**您的訂用帳戶** > [IoT 中樞] > **您的 IoT 中樞**，裝置清單會顯示在您的 IoT 中樞節點下。 以滑鼠右鍵按一下某個裝置，以存取管理選項。
+    ![帳戶管理圖示](media/iot-hub-visual-studio-cloud-device-messaging/account-management-icon.png)
 
-    ![管理選項](media/iot-hub-device-management-visual-studio/management-options.png)
+1. 如果您已登入 Azure，就會顯示您的帳戶。 若要第一次登入 Azure，請選擇 [**新增帳戶**]。
+
+1. 選取您想要使用的 Azure 訂用帳戶，然後選擇 [套用 **]。**
+
+1. 依序展開您的訂用帳戶和 [ **IoT 中樞**]。  在每個中樞底下，您可以看到該中樞的裝置。 以滑鼠右鍵按一下某個裝置，以存取管理選項。
+
+    ![管理選項](media/iot-hub-device-management-visual-studio/management-options-vs2019.png)
 
 ## <a name="direct-methods"></a>直接方法
 
-1. 以滑鼠右鍵按一下您的裝置，然後選取 [叫用裝置直接方法]。
-1. 在輸入方塊中輸入方法名稱和承載。
-1. 結果會顯示在 [IoT 中樞] 輸出窗格。
+若要使用直接方法，請執行下列步驟：
 
-## <a name="read-device-twin"></a>讀取裝置對應項
+1. 以滑鼠右鍵按一下您的裝置，然後選取 [叫用裝置直接方法]****。
 
-1. 以滑鼠右鍵按一下您的裝置，然後選取 [編輯裝置對應項]。
-1. **azure-iot-device-twin.json** 檔案與裝置對應項的內容一起開啟。
+1. 在 [叫用**直接方法**] 中輸入方法名稱和承載，然後選取 **[確定]**。
+
+    結果會顯示在**輸出**中。
 
 ## <a name="update-device-twin"></a>更新裝置對應項
 
-1. 對 **azure-iot-device-twin.json** 檔案適度編輯 **tags** 或 **properties.desired** 欄位。
+若要編輯裝置對應項，請執行下列步驟：
+
+1. 以滑鼠右鍵按一下您的裝置，然後選取 [編輯裝置對應項]****。
+
+   檔案**上的azure-iot-device-twin.js**隨即開啟，其中包含裝置對應項的內容。
+
+1. 對**標記**或屬性進行一些編輯 **。所需**的欄位會**在檔案上azure-iot-device-twin.js** 。
+
 1. 按 **Ctrl+S** 來更新裝置對應項。
-1. 結果會顯示在 [IoT 中樞] 輸出窗格。
+
+   結果會顯示在**輸出**中。
 
 ## <a name="send-cloud-to-device-messages"></a>傳送雲端到裝置訊息
 
 若要從您的 IoT 中樞將訊息傳送到裝置，請遵循這些步驟：
 
-1. 以滑鼠右鍵按一下您的裝置，然後選取 [Send C2D Message] \(傳送 C2D 訊息\)。
-1. 在輸入方塊中輸入訊息。
-1. 結果會顯示在 [IoT 中樞] 輸出窗格。
+1. 以滑鼠右鍵按一下您的裝置，然後選取 [Send C2D Message]**** \(傳送 C2D 訊息\)。
+
+1. 在**傳送 C2D 訊息**中輸入訊息，然後選取 **[確定]**。
+
+   結果會顯示在**輸出**中。
 
 ## <a name="next-steps"></a>後續步驟
 

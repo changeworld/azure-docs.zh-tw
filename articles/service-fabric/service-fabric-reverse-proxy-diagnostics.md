@@ -1,24 +1,15 @@
 ---
-title: Azure Service Fabric 反向 Proxy 診斷 | Microsoft Docs
-description: 了解如何在反向 proxy 監視和診斷要求處理。
-services: service-fabric
-documentationcenter: .net
+title: Azure Service Fabric 反向 proxy 診斷
+description: 瞭解如何在 Azure Service Fabric 應用程式的反向 proxy 監視和診斷要求處理。
 author: kavyako
-manager: vipulm
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 08/08/2017
 ms.author: kavyako
-ms.openlocfilehash: c9c8c649208cff95f4ee515d39cc8cca3e2c64bf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: bbc1fe5a76ecb5720bc49e0a082d5e9151b403d8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60726837"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75645458"
 ---
 # <a name="monitor-and-diagnose-request-processing-at-the-reverse-proxy"></a>在反向 proxy 監視和診斷要求處理
 
@@ -37,12 +28,12 @@ ms.locfileid: "60726837"
 
     承載包括︰
 
-   * **traceId**：可将此 GUID 用于关联与单个请求对应的所有事件。 在以下兩個事件中，traceId = **2f87b722-e254-4ac2-a802-fd315c1a0271**，意味著它們屬於相同的要求。
-   * **requestUrl**：请求已发送到的 URL（反向代理 URL）。
-   * **verb**：HTTP 谓词。
-   * **remoteAddress**：发送请求的客户端地址。
-   * **resolvedServiceUrl**：向其解析传入请求的服务终结点 URL。 
-   * **errorDetails**：关于失败的详细信息。
+   * **traceId**：此 GUID 可以讓對應至單一要求的所有事件相互關聯。 在以下兩個事件中，traceId = **2f87b722-e254-4ac2-a802-fd315c1a0271**，意味著它們屬於相同的要求。
+   * **requestUrl**：要求所要送往的 URL (反向 proxy URL)。
+   * **指令動詞**︰HTTP 指令動詞。
+   * **remoteAddress**：傳送要求之用戶端的位址。
+   * **resolvedServiceUrl**：傳入要求解析至的服務端點 URL。 
+   * **errorDetails**︰關於失敗的額外資訊。
 
      ```
      {
@@ -85,8 +76,8 @@ ms.locfileid: "60726837"
     
     在以下範例事件中，反向 proxy 傳回 404，因為它找不到相符的服務端點。
     重要承載項目如下：
-   * **processRequestPhase**：指示发生故障时请求处理的阶段，TryGetEndpoint， 嘗試提取要轉送至的服務端點時。 
-   * **errorDetails**：列出终结点搜索条件。 您可以查看指定的 listenerName = **FrontEndListener**，然而複本端點清單只包含名稱為 **OldListener** 的接聽程式。
+   * **processRequestPhase**：指出發生失敗時的要求處理期間階段，***TryGetEndpoint*** 也就是 嘗試提取要轉送至的服務端點時。 
+   * **errorDetails**：列出端點搜尋準則。 您可以查看指定的 listenerName = **FrontEndListener**，然而複本端點清單只包含名稱為 **OldListener** 的接聽程式。
     
      ```
      {
@@ -104,7 +95,7 @@ ms.locfileid: "60726837"
      }
      }
      ```
-     反向代理返回“404 未找到”的另一个示例为：ApplicationGateway\Http 配置参数 SecureOnlyMode 已设为 true，同时反向代理正在侦听 HTTPS，但所有副本终结点都不安全（侦听 HTTP）。
+     反向 proxy 可能傳回 404 找不到的另一個範例為：ApplicationGateway\Http 組態參數 **SecureOnlyMode** 設為 true，且反向 proxy 在**HTTPS** 接聽，不過所有複本端點都不安全 (在 HTTP 上接聽)。
      反向 proxy 傳回 404，因為它找不到在 HTTPS 上接聽的端點以轉送要求。 在事件承載中分析參數有助於縮小問題範圍：
     
      ```
@@ -200,5 +191,5 @@ ms.locfileid: "60726837"
 ## <a name="next-steps"></a>後續步驟
 * [使用 Windows Azure 診斷的事件彙總和收集](service-fabric-diagnostics-event-aggregation-wad.md)，以便在 Azure 叢集中啟用記錄收集。
 * 若要在 Visual Studio 中檢視 Service Fabric 事件，請參閱[在本機上監視及診斷](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)。
-* 如需 Azure Resource Manager 範本範例，以便使用不同的服務憑證驗證選項來設定安全反向 Proxy，請參閱[設定反向 Proxy 以連接安全的服務](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/ReverseProxySecureSample#configure-reverse-proxy-to-connect-to-secure-services)。
+* 如需 Azure Resource Manager 範本範例，以便使用不同的服務憑證驗證選項來設定安全反向 Proxy，請參閱[設定反向 Proxy 以連接安全的服務](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Reverse-Proxy-Sample#configure-reverse-proxy-to-connect-to-secure-services)。
 * 如需詳細資訊，請讀取 [Service Fabric 反向 proxy](service-fabric-reverseproxy.md)。

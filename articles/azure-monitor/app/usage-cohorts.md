@@ -1,24 +1,16 @@
 ---
 title: Azure Application Insights 使用世代 | Microsoft Docs
 description: 分析具有共通點的一組使用者、工作階段、事件或作業
-services: application-insights
-documentationcenter: ''
-author: NumberByColors
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
+author: NumberByColors
+ms.author: daviste
 ms.date: 04/10/2018
 ms.reviewer: mbullwin
-ms.pm_owner: daviste;NumberByColors
-ms.author: daviste
-ms.openlocfilehash: a575161be0a339973f9c59cc13c2320b38939d04
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 0c552e8f3e732c49da02b2f5704fb9cf312fb3e8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60785039"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77671081"
 ---
 # <a name="application-insights-cohorts"></a>Application Insights 世代
 
@@ -41,31 +33,31 @@ ms.locfileid: "60785039"
 
 1. 開啟 [世代] 工具。
 
-2. 選取 [範本庫] 索引標籤。您會看到各種世代的範本集合。
+2. 選取 [**範本資源庫**] 索引標籤。您會看到各種世代的樣板集合。
 
-3. 選取 [參與的使用者 -- 依使用天數]。
+3. 選取 [參與的使用者 -- 依使用天數]****。
 
     此世代有三個參數：
     * **Activities**，可讓您選擇哪些事件和網頁檢視應計為「使用」。
     * **Period**，月份的定義。
-    * **UsedAtleastCustom**，為計入為參與的使用者，使用者必須在一段期間內使用某項目的次數。
+    * **Usedatleastcustom 為「**，使用者需要在某個期間內使用某個專案來計算為「已參與」的次數。
 
-4. 將 **UsedAtleastCustom** 變更為「**5 天以上**」，並將 [期間] 保留為預設的 28 天。
+4. 將 [ **usedatleastcustom 為「** ] 變更為 [ **5] + [天**]，並將 [**週期**] 保留為預設值28天。
 
     ![參與的使用者](./media/usage-cohorts/003.png)
 
     現在，此世代代表在過去 28 天的五個不同日期中，透過任何自訂事件或網頁檢視傳送的所有使用者識別碼。
 
-5. 選取 [ **儲存**]。
+5. 選取 [儲存]。
 
    > [!TIP]
    > 指定您的世代名稱，例如「參與的使用者 (5 天以上)」。 根據您是否要讓有權存取此 Appication Insights 資源的其他人看見此世代，將它儲存到「我的報告」或「共用報告」。
 
-6. 選取 [回到範本庫]。
+6. 選取 [回到範本庫]****。
 
 ### <a name="what-can-you-do-by-using-this-cohort"></a>此世代有何功能？
 
-開啟 [使用者] 工具。 在 [顯示] 下拉式方塊中，選擇您已根據**使用者所屬範圍**建立的世代。
+開啟 [使用者] 工具。 在 [顯示]**** 下拉式方塊中，選擇您已根據**使用者所屬範圍**建立的世代。
 
 此時，「使用者」工具已篩選出下列使用者世代：
 
@@ -76,7 +68,7 @@ ms.locfileid: "60785039"
 * 您無法透過一般篩選來建立此集合。 日期邏輯更為進階。
 * 您可以使用「使用者」工具中的一般篩選條件進一步篩選此世代。 因此，雖然此世代是以 28 天的時間範圍定義的，您仍可在「使用者」工具中將時間範圍調整為 30、60 或 90 天。
 
-這些篩選可支援更複雜的問題，也就是那些無法透過查詢產生器陳述的問題。 例如，_在過去 28 天中參與的人。這些相同人員在過去 60 天中的行為是如何？_
+這些篩選可支援更複雜的問題，也就是那些無法透過查詢產生器陳述的問題。 其中一個範例是_在過去28天參與的人。這些人在過去60天的行為如何？_
 
 ## <a name="example-events-cohort"></a>範例：事件世代
 
@@ -84,13 +76,13 @@ ms.locfileid: "60785039"
 
 1. 開啟 [世代] 工具。
 
-2. 選取 [範本庫] 索引標籤。您會看到各種世代的範本集合。
+2. 選取 [**範本資源庫**] 索引標籤。您會看到各種世代的樣板集合。
 
-3. 選取 [事件選擇器]。
+3. 選取 [事件選擇器]****。
 
     ![事件選擇器的螢幕擷取畫面](./media/usage-cohorts/006.png)
 
-4. 在 [活動] 下拉式方塊中，選取要納入世代中的事件。
+4. 在 [活動]**** 下拉式方塊中，選取要納入世代中的事件。
 
 5. 儲存世代，並為它命名。
 
@@ -100,7 +92,7 @@ ms.locfileid: "60785039"
 
 ![逐步使用世代工具的動畫影像](./media/usage-cohorts/cohorts0001.gif)
 
-1. 開啟 [世代] 工具，選取 [範本庫] 索引標籤，然後選取 [空白使用者世代]。
+1. 開啟 [世代] 工具，選取 [範本庫]**** 索引標籤，然後選取 [空白使用者世代]****。
 
     ![空白使用者世代](./media/usage-cohorts/001.png)
 
@@ -123,13 +115,13 @@ ms.locfileid: "60785039"
     | where client_CountryOrRegion == "United Kingdom"
     ```
 
-3. 選取 [執行查詢]。 如果您沒有看到使用者識別碼出現在資料表中，請變更為其中應用程式有使用者的國家/地區。
+3. 選取 [執行查詢]****。 如果您沒有看到 [使用者識別碼] 出現在表格中，請變更為您的應用程式有使用者的國家/地區。
 
 4. 儲存世代並為其命名。
 
 ## <a name="frequently-asked-questions"></a>常見問題集
 
-_我已從特定國家/地區定義使用者世代。當我將「使用者」工具中的此世代，與直接設定該國家/地區的篩選條件進行比較時，我看到不同的結果。原因為何？_
+_我已從特定國家/地區定義使用者的世代。當我在 [使用者] 工具中比較此世代，只是在該國家/地區設定篩選器時，我看到不同的結果。因此?_
 
 世代與篩選並不相同。 假設您有來自英國的使用者世代 (如前面範例所定義)，並將其結果與設定「國家或地區 = 英國」篩選條件相比較。
 
@@ -139,6 +131,6 @@ _我已從特定國家/地區定義使用者世代。當我將「使用者」工
 ## <a name="learn-more"></a>深入了解
 
 * [分析查詢語言](https://go.microsoft.com/fwlink/?linkid=856587)
-* [使用者、工作階段、事件](usage-segmentation.md)
+* [使用者、會話、事件](usage-segmentation.md)
 * [使用者流程](usage-flows.md)
 * [使用量概觀](usage-overview.md)

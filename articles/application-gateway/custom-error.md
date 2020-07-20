@@ -1,19 +1,18 @@
 ---
 title: 建立 Azure 應用程式閘道的自訂錯誤頁面
-description: 本文說明如何建立應用程式閘道的自訂錯誤頁面。
+description: 本文說明如何建立應用程式閘道的自訂錯誤頁面。 您可以使用自訂錯誤頁面來搭配您自己的商標和版面配置。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
-origin.date: 02/14/2019
-ms.date: 02/26/2019
-ms.author: v-junlch
-ms.openlocfilehash: abfe33ff679bef125d9bf5b78e1790a1a4c64863
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.topic: how-to
+ms.date: 11/16/2019
+ms.author: victorh
+ms.openlocfilehash: d78f7aa2a02f14dc9b875895e3057bd4dee29b74
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60832000"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84808093"
 ---
 # <a name="create-application-gateway-custom-error-pages"></a>建立應用程式閘道的自訂錯誤頁面
 
@@ -35,6 +34,7 @@ ms.locfileid: "60832000"
 - **兩者** - 定義於接聽程式層級上的自訂錯誤頁面會覆寫在全域層級上設定的頁面。
 
 若要建立自訂錯誤頁面，您必須具備：
+
 - HTTP 回應狀態碼。
 - 錯誤頁面的對應位置。 
 - 可公開存取的 Azure 儲存體 Blob 位置。
@@ -48,18 +48,18 @@ ms.locfileid: "60832000"
 
 1. 在入口網站中瀏覽至 [應用程式閘道]，然後選擇應用程式閘道。
 
-    ![ag-overview](./media/custom-error/ag-overview.png)
-2. 按一下 [接聽程式]，然後瀏覽至您要指定錯誤頁面的特定接聽程式。
+    ![ag-overview](media/custom-error/ag-overview.png)
+2. 按一下 [接聽程式]****，然後瀏覽至您要指定錯誤頁面的特定接聽程式。
 
-    ![應用程式閘道接聽程式](./media/custom-error/ag-listener.png)
+    ![應用程式閘道接聽程式](media/custom-error/ag-listener.png)
 3. 在接聽程式層級上設定 403 WAF 錯誤的自訂錯誤頁面或 502 維護頁面。
 
     > [!NOTE]
     > 目前不支援從 Azure 入口網站建立全域層級的自訂錯誤頁面。
 
-4. 為給定的錯誤狀態碼指定可公開存取的 Blob URL，然後按一下 [儲存]。 應用程式閘道現在已設定自訂錯誤頁面。
+4. 為給定的錯誤狀態碼指定可公開存取的 Blob URL，然後按一下 [儲存]****。 應用程式閘道現在已設定自訂錯誤頁面。
 
-   ![應用程式閘道錯誤碼](./media/custom-error/ag-error-codes.png)
+   ![應用程式閘道錯誤碼](media/custom-error/ag-error-codes.png)
 
 ## <a name="azure-powershell-configuration"></a>Azure PowerShell 組態
 
@@ -76,5 +76,3 @@ ms.locfileid: "60832000"
 ## <a name="next-steps"></a>後續步驟
 
 如需應用程式閘道診斷的相關資訊，請參閱[應用程式閘道的後端健康情況、診斷記錄和計量](application-gateway-diagnostics.md)。
-
-<!-- Update_Description: wording update -->

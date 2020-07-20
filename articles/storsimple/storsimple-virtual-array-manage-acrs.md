@@ -9,24 +9,24 @@ editor: ''
 ms.assetid: e154bb4f-faab-4d92-a593-900c3ddc9595
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1dfc1b0e0576402624bfe62de0e206d9bd7cd1b0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bad0d7adfd77dff53b1582e63a91f2cd87a9233d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60302862"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85507614"
 ---
 # <a name="use-storsimple-device-manager-to-manage-access-control-records-for-storsimple-virtual-array"></a>使用 StorSimple 裝置管理員來管理 StorSimple Virtual Array 的存取控制記錄
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
-存取控制記錄 (ACR) 可讓您指定哪些主機可連接至 StorSimple Virtual Array (也稱為 StorSimple 內部部署虛擬裝置) 上的磁碟區。 ACR 設為特定的磁碟區，並且包含主機的 iSCSI 限定名稱 (IQN)。 當主機嘗試連線到磁碟區時，裝置會檢查與該磁碟區相關聯的 ACR 的 IQN 名稱，如果相符，則會建立連接。 [設定] 區段內的 [存取控制記錄] 刀鋒視窗會顯示主機的存取控制記錄及對應的 IQN。
+存取控制記錄 (ACR) 可讓您指定哪些主機可連接至 StorSimple Virtual Array (也稱為 StorSimple 內部部署虛擬裝置) 上的磁碟區。 ACR 設為特定的磁碟區，並且包含主機的 iSCSI 限定名稱 (IQN)。 當主機嘗試連線到磁碟區時，裝置會檢查與該磁碟區相關聯的 ACR 的 IQN 名稱，如果相符，則會建立連接。 [設定]**** 區段內的 [存取控制記錄]**** 刀鋒視窗會顯示主機的存取控制記錄及對應的 IQN。
 
 ![管理存取控制記錄](./media/storsimple-virtual-array-manage-acrs/ova-manage-acrs.png)
 
@@ -51,9 +51,9 @@ ms.locfileid: "60302862"
 
 ## <a name="add-an-acr"></a>加入 ACR
 
-在 StorSimple 裝置管理員服務的 [設定] 區段內，您可以使用 [存取控制記錄] 刀鋒視窗來新增 ACR。 一般而言，您會讓一個 ACR 與一個磁碟區產生關聯。
+在 StorSimple 裝置管理員服務的 [設定]**** 區段內，您可以使用 [存取控制記錄]**** 刀鋒視窗來新增 ACR。 一般而言，您會讓一個 ACR 與一個磁碟區產生關聯。
 
-如需讓 ACR 與磁碟區產生關聯的相關資訊，請參閱[新增磁碟區](storsimple-virtual-array-deploy3-iscsi-setup.md#step-3-add-a-volume)。
+如需建立 ACR 與磁碟區之關聯的資訊，請移至 [新增磁碟區](storsimple-virtual-array-deploy3-iscsi-setup.md#step-3-add-a-volume)。
 
 > [!IMPORTANT]
 > 將 ACR 指派到磁碟區時，請注意磁碟區並未被多個非叢集主機並行存取，因為這可能會損毀磁碟區。
@@ -63,25 +63,25 @@ ms.locfileid: "60302862"
 
 #### <a name="to-add-an-acr"></a>加入 ACR
 
-1. 在服務登陸頁面上，選取您的服務，按兩下服務名稱，然後在 [設定] 區段內按一下 [存取控制記錄]。
-2. 在 [存取控制記錄] 刀鋒視窗中，按一下 [新增]。
-3. 在 [新增 ACR] 刀鋒視窗中，執行下列動作：
+1. 在服務登陸頁面上，選取您的服務，按兩下服務名稱，然後在 [設定]**** 區段內按一下 [存取控制記錄]****。
+2. 在 [存取控制記錄]**** 刀鋒視窗中，按一下 [新增]****。
+3. 在 [新增 ACR]**** 刀鋒視窗中，執行下列動作：
    
-    1. 提供 ACR 的 [名稱]  。
+    1. 提供 ACR 的 [名稱]****。
     
-    2. 在 [iSCSI 啟動器名稱] 下方，提供 Windows 主機的 IQN 名稱。 若要取得 Windows Server 主機的 IQN，請執行下列動作：
+    2. 在 [iSCSI 啟動器名稱] **** 下方，提供 Windows 主機的 IQN 名稱。 若要取得 Windows Server 主機的 IQN，請執行下列動作：
    
-    3. 在 Windows 主機上啟動 Microsoft iSCSI 啟動器。 在 [iSCSI 啟動器屬性] 視窗的 [設定] 索引標籤上，選取並複製 [啟動器名稱] 欄位的字串。
-    將此字串貼在 [新增 ACR] 刀鋒視窗的 [IQN] 欄位中。
+    3. 在 Windows 主機上啟動 Microsoft iSCSI 啟動器。 在 [iSCSI 啟動器屬性] 視窗的 [設定]**** 索引標籤上，選取並複製 [啟動器名稱]**** 欄位的字串。
+    將此字串貼在 [新增 ACR]**** 刀鋒視窗的 [IQN]**** 欄位中。
    
-    6. 按一下 [新增] 來新增 ACR。  
+    6. 按一下 [新增]**** 來新增 ACR。  
    
         ![新增存取控制記錄](./media/storsimple-virtual-array-manage-acrs/ova-add-acrs.png)
 4. 表格式清單會更新以反映此新增動作。
 
 ## <a name="edit-an-acr"></a>編輯 ACR
 
-在 Azure 入口網站中，在裝置管理員服務的 [設定] 區段內，您可以使用 [存取控制記錄] 刀鋒視窗來編輯 ACR。
+在 Azure 入口網站中，在裝置管理員服務的 [設定]**** 區段內，您可以使用 [存取控制記錄]**** 刀鋒視窗來編輯 ACR。
 
 > [!NOTE]
 > 請勿修改目前正在使用的 ACR。 若要編輯與目前正在使用中的磁碟區相關聯的 ACR，您應該先讓磁碟區離線。
@@ -91,19 +91,19 @@ ms.locfileid: "60302862"
 
 #### <a name="to-edit-an-acr"></a>編輯 ACR
 
-1. 在服務登陸頁面上，選取您的服務，按兩下服務名稱，然後在 [設定] 區段內按一下 [存取控制記錄]。
-2. 在 [存取控制記錄] 刀鋒視窗中，從存取控制記錄的表格式清單中按兩下您想要修改的 ACR。
-3. 在 [編輯存取控制記錄] 刀鋒視窗中，執行下列動作︰
+1. 在服務登陸頁面上，選取您的服務，按兩下服務名稱，然後在 [設定]**** 區段內按一下 [存取控制記錄]****。
+2. 在 [存取控制記錄]**** 刀鋒視窗中，從存取控制記錄的表格式清單中按兩下您想要修改的 ACR。
+3. 在 [編輯存取控制記錄]**** 刀鋒視窗中，執行下列動作︰
    
     1. 提供 ACR 的 IQN。
    
-    2. 按一下刀鋒視窗頂端的 [儲存]，儲存已修改的 ACR。 您會看到下列確認訊息：
+    2. 按一下刀鋒視窗頂端的 [儲存]****，儲存已修改的 ACR。 您會看到下列確認訊息：
    
         ![編輯存取控制記錄](./media/storsimple-virtual-array-manage-acrs/ova-edit-acrs.png)
 
 ## <a name="delete-an-access-control-record"></a>刪除存取控制記錄
 
-您可以使用 Azure 入口網站中的 [設定] 頁面來刪除 ACR。
+您可以使用 Azure 入口網站中的 [設定]**** 頁面來刪除 ACR。
 
 > [!NOTE]
 > 
@@ -115,15 +115,15 @@ ms.locfileid: "60302862"
 
 #### <a name="to-delete-an-access-control-record"></a>刪除存取控制記錄
 
-1. 在服務登陸頁面上，選取您的服務，按兩下服務名稱，然後在 [設定] 區段內按一下 [存取控制記錄]。
+1. 在服務登陸頁面上，選取您的服務，按兩下服務名稱，然後在 [設定]**** 區段內按一下 [存取控制記錄]****。
 
-2. 在 [存取控制記錄] 刀鋒視窗中，從存取控制記錄的表格式清單中按兩下您想要刪除的 ACR。
+2. 在 [存取控制記錄]**** 刀鋒視窗中，從存取控制記錄的表格式清單中按兩下您想要刪除的 ACR。
 
-3. 在 [編輯存取控制記錄] 刀鋒視窗中，按一下 [刪除]。
+3. 在 [編輯存取控制記錄] 刀鋒視窗中，按一下 [刪除]****。
    
     ![刪除 ACR](./media/storsimple-virtual-array-manage-acrs/ova-del-acrs.png)
 
-4. 當系統提示您確認時，按一下 [刪除] 以繼續刪除。 表格式清單會更新以反映此刪除動作。
+4. 當系統提示您確認時，按一下 [刪除]**** 以繼續刪除。 表格式清單會更新以反映此刪除動作。
    
    ![警告訊息](./media/storsimple-virtual-array-manage-acrs/ova-del-acrs-warning.png)
 

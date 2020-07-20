@@ -1,26 +1,26 @@
 ---
-title: Azure Data Factory 中的 If Condition 活動 | Microsoft Docs
+title: Azure Data Factory 中的 If Condition 活動
 description: If Condition 活動允許您根據條件控制處理流程。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.reviewer: douglasl
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: shlo
-ms.openlocfilehash: 52f96b8fc2a1288c652169817a3a73d7b26caac9
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
-ms.translationtype: MT
+ms.openlocfilehash: 9f65ffc9ef24b18ce0f18571c1f3fc91e7ca7fdf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57431490"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85414601"
 ---
 # <a name="if-condition-activity-in-azure-data-factory"></a>Azure Data Factory 中的 If Condition 活動
-If Condition 活動所提供的功能，與 If 陳述式在程式設計語言中提供的功能相同。 它能在條件評估為 `true` 時執行一系列的活動，並在條件評估為 `false` 時執行另一系列的活動。 
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+If Condition 活動所提供的功能，與 If 陳述式在程式設計語言中提供的功能相同。 當條件評估為時，它會執行一組活動 `true` ，而當條件評估為時，會執行另一組活動 `false` 。 
 
 ## <a name="syntax"></a>語法
 
@@ -64,13 +64,13 @@ If Condition 活動所提供的功能，與 If 陳述式在程式設計語言中
 
 ## <a name="type-properties"></a>類型屬性
 
-屬性 | 描述 | 允許的值 | 必要項
+屬性 | 描述 | 允許的值 | 必要
 -------- | ----------- | -------------- | --------
-name | If-Condition 活動的名稱。 | 字串 | 是
-type | 必須設為 [IfCondition] | 字串 | 是
-expression | 必須評估為 true 或 false 的運算式 | 結果類型為布林的運算式 | 是
-ifTrueActivities | 會在運算式評估為 `true` 時執行的一系列活動。 | 陣列 | 是
-ifFalseActivities | 會在運算式評估為 `false` 時執行的一系列活動。 | 陣列 | 是
+NAME | If-Condition 活動的名稱。 | String | Yes
+type | 必須設為 [IfCondition]**** | String | Yes
+expression | 必須評估為 true 或 false 的運算式 | 結果類型為布林的運算式 | Yes
+ifTrueActivities | 會在運算式評估為 `true` 時執行的一系列活動。 | Array | 是
+ifFalseActivities | 會在運算式評估為 `false` 時執行的一系列活動。 | Array | 是
 
 ## <a name="example"></a>範例
 此範例中的管線會將資料從輸入資料夾複製到輸出資料夾。 輸出資料夾是由下列管線參數的值所決定：routeSelection。 如果 routeSelection 的值為 true，資料將會被複製到 outputPath1。 而如果 routeSelection 的值為 false，資料將會被複製到 outputPath2。 
@@ -183,7 +183,7 @@ ifFalseActivities | 會在運算式評估為 `false` 時執行的一系列活動
 
 ```json
 "expression":  {
-    "value":  "@pipeline().parameters.routeSelection == 1", 
+    "value":  "@equals(pipeline().parameters.routeSelection,1)", 
     "type": "Expression"
 }
 ```
@@ -197,10 +197,7 @@ ifFalseActivities | 會在運算式評估為 `false` 時執行的一系列活動
     "properties": {
         "type": "AzureStorage",
         "typeProperties": {
-            "connectionString": {
-                "value": "DefaultEndpointsProtocol=https;AccountName=<Azure Storage account name>;AccountKey=<Azure Storage account key>",
-                "type": "SecureString"
-            }
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<Azure Storage account name>;AccountKey=<Azure Storage account key>"
         }
     }
 }

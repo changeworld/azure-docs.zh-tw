@@ -1,25 +1,13 @@
 ---
-title: Service Fabric 應用程式的容量規劃 | Microsoft Docs
+title: Service Fabric 應用程式的容量規劃
 description: 描述如何識別 Service Fabric 應用程式所需的計算節點的數目
-services: service-fabric
-documentationcenter: .net
-author: mani-ramaswamy
-manager: markfuss
-editor: ''
-ms.assetid: 9fa47be0-50a2-4a51-84a5-20992af94bea
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/23/2018
-ms.author: subramar
-ms.openlocfilehash: d7ca566b86ed79aa773d7af2553223c79ed9944a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: cd5a5c55ff873e4891ac63361d0c4a0b56d70109
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60341996"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75377203"
 ---
 # <a name="capacity-planning-for-service-fabric-applications"></a>Service Fabric 應用程式的容量規劃
 本文將說明您如何估計執行 Azure Service Fabric 應用程式所需的資源量 (CPU、RAM、磁碟儲存空間)。 資源需求隨著時間改變是很常見的。 開發/測試您的服務時通常需要少數資源，之後進入生產環境且您的應用程式受歡迎度增長時會需要更多資源。 設計您的應用程式時，請考慮長期需求，並且選擇可讓您調整以符合高度客戶需求的服務。
@@ -31,7 +19,7 @@ ms.locfileid: "60341996"
 如果是管理 VM 上大量資料的服務，容量規劃應主要著重在大小。 因此，您應該仔細地考量 VM 的 RAM 和磁碟儲存空間容量。 Windows 中的虛擬記憶體管理系統可讓應用程式程式碼將磁碟空間做為 RAM 使用。 此外，Service Fabric 執行階段提供智慧型分頁處理，只將熱資料保留在記憶體，而將冷資料移到磁碟。 因此應用程式就可以使用比 VM 上實際可用還多的記憶體。 有更多 RAM 可完全增加效能，因為 VM 可以在 RAM 中保留更多磁碟儲存空間。 您選取的 VM 要有夠大的磁碟空間來儲存您想要放在 VM 上的資料。 同樣地，VM 也要有足夠的 RAM，提供您想要的效能。 如果您的服務隨著時間成長，您可以加入更多 VM 到叢集，並跨所有 VM 分割資料。
 
 ## <a name="determine-how-many-nodes-you-need"></a>決定您需要多少個節點
-將您的服務進行分割，可讓您相應放大您的服務資料。 如需有關分割的詳細資訊，請參閱 [分割 Service Fabric](service-fabric-concepts-partitioning.md)。 必須將每個資料分割納入單一 VM，但是可以將多個 (小型) 資料分割放在單一 VM 上。 因此，如果有比較多的小型資料分割，比起有比較少的大型資料分割，可提供您更大的彈性。 缺點是有很多資料分割會增加 Service Fabric 的負擔，並且您無法跨資料分割執行交易的作業。 如果您的服務程式碼經常需要存取位於不同的資料分割的資料片段，也會產生更多潛在的網路流量。 设计服务时，应该仔细考虑这些优缺点，以实现有效的分区策略。
+將您的服務進行分割，可讓您相應放大您的服務資料。 如需有關分割的詳細資訊，請參閱 [分割 Service Fabric](service-fabric-concepts-partitioning.md)。 必須將每個資料分割納入單一 VM，但是可以將多個 (小型) 資料分割放在單一 VM 上。 因此，如果有比較多的小型資料分割，比起有比較少的大型資料分割，可提供您更大的彈性。 缺點是有很多資料分割會增加 Service Fabric 的負擔，並且您無法跨資料分割執行交易的作業。 如果您的服務程式碼經常需要存取位於不同的資料分割的資料片段，也會產生更多潛在的網路流量。 設計您的服務時，應該仔細考慮這些優缺點，以達成有效的資料分割策略。
 
 假設您的應用程式有單一可設定狀態服務，其具有您預期一年會成長到 DB_Size GB 的存放區大小。 您願意在經歷該年的成長以外加入更多應用程式 (與資料分割)。  複寫因素 (RF) 決定影響總計 DB_Size 的服務複本數目。 所有複本的總計 DB_Size 是複寫因素乘以 DB_Size。  Node_Size 表示您想要用於服務的每一節點磁碟空間/RAM。 為了達到最佳效能，DB_Size 應符合整個叢集的記憶體，並且選擇接近 VM RAM 的 Node_Size。 如果配置大於 RAM 容量的 Node_Size，您就會依賴 Service Fabric 執行階段提供的分頁處理。 因此，如果整個資料都被視為熱資料 (因為從那時起資料會進入分頁/移出分頁)，您的效能就可能無法達到最佳。 不過，對只有一部分資料是熱資料的許多服務來說，還是比較具成本效益。
 
@@ -43,7 +31,7 @@ Number of Nodes = (DB_Size * RF)/Node_Size
 ```
 
 
-## <a name="account-for-growth"></a>考虑增长
+## <a name="account-for-growth"></a>考慮成長
 除了開始使用的 DB_Size，您可能想要根據您預期服務成長的 DB_Size 來計算節點數目。 然後，隨著服務的成長而讓節點數目成長，使得您不會過度佈建節點數目 但是，資料分割數目應該基於以最大成長執行您的服務時所需的節點數。
 
 最好有一些額外的電腦隨時可用，以便您可以處理任何預期外的尖峰或失敗 (例如有少數 VM 停機)。  雖然這個額外容量要使用您預期的尖峰來決定，但一開始可以多保留幾個 VM (多 5-10%)。
@@ -51,7 +39,7 @@ Number of Nodes = (DB_Size * RF)/Node_Size
 以上假設使用單一的具狀態服務。 如果您有多個具狀態服務，則必須將與其他服務相關聯的 DB_Size 加入方程式。 或者，您可以分別為每個具狀態服務計算節點數目。  您的服務的複本或資料分割可能不平衡。 請記住，有些資料分割的資料可能比其他資料分割還多。 如需有關分割的詳細資訊，請參閱 [最佳作法的分割文章](service-fabric-concepts-partitioning.md)。 不過，上述方程式不受資料分割或複本影響，因為 Service Fabric 會確保複本以最佳化方式分散在節點之間。
 
 ## <a name="use-a-spreadsheet-for-cost-calculation"></a>使用試算表進行成本計算
-現在，讓我們在公式中放入一些實際的數字。 [範例試算表](https://servicefabricsdkstorage.blob.core.windows.net/publicrelease/SF%20VM%20Cost%20calculator-NEW.xlsx) 示範如何規劃包含三種資料物件類型的應用程式的容量。 針對每個物件，我們會估計其大小以及我們預計具有的物件數。 我們也選取對每個物件類型我們想要的複本數。 試算表會計算要在叢集中儲存的記憶體數量總計。
+現在，讓我們在公式中放入一些實際的數字。 [範例試算表](https://github.com/Azure/service-fabric/raw/master/docs_resources/SF_VM_Cost_calculator-NEW.xlsx) 示範如何規劃包含三種資料物件類型的應用程式的容量。 針對每個物件，我們會估計其大小以及我們預計具有的物件數。 我們也選取對每個物件類型我們想要的複本數。 試算表會計算要在叢集中儲存的記憶體數量總計。
 
 然後，我們輸入 VM 大小和每月成本。 根據 VM 大小，試算表會告訴您必須用來將資料分割的最少分割數量，以實際上納入節點。 您可能想要較大量的資料分割以配合您的應用程式特定的計算和網路流量需求。 試算表顯示目前管理使用者設定檔物件的資料分割數目已從 1 增加到 6。
 

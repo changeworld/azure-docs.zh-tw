@@ -4,17 +4,17 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 02/21/2019
 ms.author: rgarcia
-ms.openlocfilehash: 72616d5d79b4dbdb8e14463c706c1626eeb50e97
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 9bd213b63b69a25fb2530cd8f6659abf5357616a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60232587"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "76694269"
 ---
 ## <a name="set-up-authentication"></a>設定驗證
 
-若要存取服務，您需要提供帳戶金鑰、 存取權杖或 Azure Active Directory 驗證權杖。
+若要存取服務，您必須提供帳戶金鑰、存取權杖或 Azure Active Directory 驗證權杖。 您也可以在[驗證概念頁面](/azure/spatial-anchors/concepts/authentication)中深入了解相關資訊。
 
 ### <a name="account-keys"></a>帳戶金鑰
 
-帳戶金鑰是可讓您的應用程式，來向 Azure 空間的錨點服務的認證。 帳戶金鑰的用途是可協助您快速上手。 尤其是在與 Azure 空間的錨點的應用程式整合的開發階段。 此情況下，您也可以將其內嵌於用戶端應用程式中，在開發期間使用帳戶金鑰。 當您繼續開發以外，強烈建議將移至是生產層級，存取權杖或 Azure Active Directory 使用者驗證支援的驗證機制。 若要取得帳戶金鑰進行開發，請瀏覽您 Azure 空間的錨點的帳戶，並瀏覽至 [金鑰] 索引標籤。
+帳戶金鑰是一種認證，可讓您的應用程式向 Azure Spatial Anchors 服務進行驗證。 帳戶金鑰的用途是協助您快速開始使用。 在應用程式與 Azure Spatial Anchors 整合的開發階段，其效用尤其顯著。 因此，您可以在開發期間，將帳戶金鑰內嵌在用戶端應用程式中。 在完成開發階段時，強烈建議您改用屬於生產層級、由存取權杖支援的驗證機制，或是 Azure Active Directory 使用者驗證。 若要取得用於開發的帳戶金鑰，請造訪您的 Azure Spatial Anchors 帳戶，並瀏覽至 [金鑰] 索引標籤。

@@ -1,18 +1,14 @@
 ---
-title: 適用於 Azure 事件方格訂用帳戶的無效信件與重試原則
+title: 死信和重試原則-Azure 事件方格
 description: 說明如何為事件方格自訂事件傳遞選項。 設定無效信件目的地，然後指定要重試傳遞的時間長度。
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/06/2019
-ms.author: spelluru
-ms.openlocfilehash: a1b49fd3a2a85377a56c92aefd1b0056f91895b1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 07/07/2020
+ms.openlocfilehash: 88e782eb7dafc10956120bdae870aa2eb58778a5
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58181957"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105501"
 ---
 # <a name="dead-letter-and-retry-policies"></a>無效信件與重試原則
 
@@ -25,7 +21,9 @@ ms.locfileid: "58181957"
 若要設定無效信件位置，您必須要有儲存體帳戶用以保存無法傳遞至端點的事件。 範例會取得現有儲存體帳戶的資源識別碼。 它們會建立事件訂閱，使用該儲存體帳戶中的容器作為無效信件端點。
 
 > [!NOTE]
-> 儲存體中建立儲存體帳戶和 blob 容器之前先執行本文中的命令。
+> - 在執行本文中的命令之前，請先在儲存體中建立儲存體帳戶和 blob 容器。
+> - 事件方格服務會在此容器中建立 blob。 Blob 的名稱會有事件方格訂用帳戶的名稱，並以大寫顯示所有字母。 例如，如果訂用帳戶的名稱是「我的 Blob 訂閱」，則無效信件 blob 的名稱將會有「我的 BLOB 訂閱」（myblobcontainer/「我的 BLOB-訂用帳戶/2019/8/8/5/111111111-1111-1111-1111-111111111111.json）。 此行為是為了防止在 Azure 服務之間進行處理時的差異。
+
 
 ### <a name="azure-cli"></a>Azure CLI
 

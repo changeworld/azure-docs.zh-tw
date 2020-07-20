@@ -1,17 +1,18 @@
 ---
-author: ecfan
 ms.service: logic-apps
 ms.topic: include
-ms.date: 11/03/2016
+author: ecfan
 ms.author: estfan
-ms.openlocfilehash: b216de0a5094066977467b2899567122d585fb7e
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
-ms.translationtype: HT
+ms.date: 11/03/2016
+ms.openlocfilehash: 635a69fc8e75e3a6249728dc1df31cf839b345c6
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50132997"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789593"
 ---
-#### <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>必要條件
+
 * Azure 帳戶；您可以建立一個 [免費帳戶](https://azure.microsoft.com/free)
 * [Office 365](https://office365.com) 帳戶  
 

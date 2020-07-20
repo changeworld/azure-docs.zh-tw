@@ -1,6 +1,6 @@
 ---
-title: 預先建置的網域參考
-titleSuffix: Azure
+title: 預建網域參考-LUIS
+titleSuffix: Azure Cognitive Services
 description: 預先建立的定義域參考是從 Language Understanding Intelligent Service (LUIS) 預先建立的意圖和實體集合。
 services: cognitive-services
 author: diberry
@@ -8,60 +8,45 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
-ms.date: 05/07/2019
+ms.topic: reference
+ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: 3265477108b7e74d65050408add6c5d5c94b4852
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 05ad340b3856291832ba0521c7da70ad55260384
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65233887"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "78270603"
 ---
 # <a name="prebuilt-domain-reference-for-your-luis-app"></a>您 LUIS 應用程式預先建置的網域參考
 此參考提供[預先建立的定義域](luis-how-to-use-prebuilt-domains.md)相關資訊，這是 LUIS 提供之預先建立的意圖和實體集合。
 
 相反地，[自訂網域](luis-how-to-start-new-app.md)一開始沒有任何意圖和模型。 您可以將任何預先建立的定義域意圖和實體新增至自訂模型。
 
-# <a name="supported-domains-across-cultures"></a>支援跨文化特性的網域
+## <a name="custom-domains-per-language"></a>每一語言的自訂網域
 
-唯一支援的文化特性是英文。 
+下表摘要說明目前支援的網域。 英文的支援通常比其他語言更完整。
 
-<!--
+| 實體類型       | ZH-TW      | ZH-CN   | DE    | FR     | ES    | IT      | PT-BR |  JP  |      KO |        NL |    TR |
+|:-----------------:|:-------:|:-------:|:-----:|:------:|:-----:|:-------:| :-------:| :-------:| :-------:| :-------:|  :-------:|
+| 行事曆  | ✓    | ✓       | ✓    | ✓     | ✓     | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
+|通訊  | ✓    | ✓       | ✓    | ✓     | ✓     | ✓  | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
+| 電子郵件     | ✓    | ✓       | ✓   | ✓     | ✓     | ✓  | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
+| HomeAutomation          | ✓    | ✓       | ✓    | ✓     | ✓     | ✓  | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
+| 備忘錄     | ✓    | ✓       | ✓    | ✓     | ✓     | ✓  | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
+| 地點   | ✓    | ✓       | ✓    | ✓     | ✓     | ✓  | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
+| RestaurantReservation  | ✓    | ✓       | ✓    | ✓     | ✓     | ✓  | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
+| 多     | ✓    | ✓       | ✓    | ✓     | ✓     | ✓  | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
+| 公用事業      | ✓    | ✓        | ✓    | ✓      | ✓     | ✓       | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
+| Weather        | ✓    | ✓        | ✓    | ✓      | ✓     | ✓       | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
+| Web    | ✓    | ✓        | ✓    | ✓      | ✓     | ✓       | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
 
-The table below summarizes the currently supported domains. Support for English is usually more complete than others.
+在中**不支援**預先建立的網域：
 
+* 加拿大法文
+* Hindi
+* 西班牙文墨西哥
 
-| Entity Type       | EN-US      | ZH-CN   | DE    | FR     | ES    | IT      | PT-BR |  JP  |      KO |        NL |    TR |
-|:-----------------:|:-------:|:-------:|:-----:|:------:|:-----:|:-------:| :-------:| :-------:| :-------:| :-------:|  :-------:| 
-| Calendar    | ✓    | ✓       | ✓    | ✓     | ✓     | ✓  | -      | -    | -    | -     | -  |
-| Communication   | ✓    | -       | ✓    | ✓     | ✓     | ✓  | -  | -      | -    | -    | -     | -  |
-| Email           | ✓    | ✓       | ✓   | ✓     | ✓     | ✓  | -  | -      | -    | -    | -     | -  |
-| HomeAutomation           | ✓    | ✓       | ✓    | ✓     | ✓     | ✓  | -  | -      | -    | -    | -     | -  |
-| Notes      | ✓    | ✓       | ✓    | ✓     | ✓     | ✓  | -  | -      | -    | -    | -     | -  |
-| Places    | ✓    | -       | ✓    | ✓     | ✓     | ✓  | -  | -      | -    | -    | -     | -  |
-| RestaurantReservation   | ✓    | ✓       | ✓    | ✓     | ✓     | ✓  | -  | -      | -    | -    | -     | -  |
-| ToDo     | ✓    | ✓       | ✓    | ✓     | ✓     | ✓  | -  | -      | -    | -    | -     | -  |
-| ToDo_IPA        | ✓    | ✓       | ✓    | ✓      | ✓     | ✓       | -  | -      | -    | -    | -     | -  |
-| Utilities          | ✓    | ✓        | ✓    | ✓      | ✓     | ✓       | -  | -      | -    | -    | -     | -  |
-| Weather        | ✓    | ✓        | ✓    | ✓      | ✓     | ✓       | -  | -      | -    | -    | -     | -  |
-| Web    | ✓    | -        | ✓    | ✓      | ✓     | ✓       | -  | -      | -    | -    | -     | -  |
-||||||||||||| 
+## <a name="next-steps"></a>後續步驟
 
--->
-
-<br><br>
-
-|實體類型|description|
-|--|--|
-|行事曆|行事曆是任何項目有關個人會議和約會_不_公用事件 (例如世界杯排程、 西雅圖活動行事曆或泛型的行事曆 (例如哪一天，其目前項目並 fall 開始，時人力天)。|
-|通訊|進行呼叫，要求會傳送簡訊或立即訊息，找出，並新增連絡人和各種其他通訊相關的要求 （通常連出）。 連絡人的名稱唯一查詢不屬於網域通訊。|
-|電子郵件|電子郵件是通訊網域的子網域。 它主要是包含傳送和接收電子郵件訊息的要求。|
-|HomeAutomation|HomeAutomation 網域提供意圖和控管智慧家用裝置相關的實體。 它主要是支援的號誌和空調相關的 [控制] 命令，但有一些其他 electric 所研發的設備的一般化功能。|
-|注意|請注意網域提供意圖和實體來建立備忘稿和寫下使用者的項目。|
-|地點|位置包括企業 」、 「 機構 」、 「 餐廳 」、 「 公共空間和 「 地址。 網域支援尋找和詢問有關的公開位置，例如地點、 作業系統小時和距離資訊的位置。|
-|RestaurantReservation|餐廳保留網域支援意圖處理餐廳的保留項目。|
-|ToDo|ToDo 網域提供的使用者新增、 標示及刪除他們的 todo 項目工作清單的類型。|
-|公用事業|公用程式是一般的網域之間所有 LUIS 預先建置的模型，其中包含常見的意圖和發音不同案例中的。|
-|Weather|天氣網域著重於檢查天氣條件，而且有位置和時間的摘要報告，或檢查天氣狀況的時間。|
-|Web|Web 網域提供的意圖和實體搜尋網站。|
+瞭解[簡單實體](reference-entity-simple.md)。

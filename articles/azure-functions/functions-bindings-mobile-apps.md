@@ -1,27 +1,21 @@
 ---
 title: 適用於 Azure Functions 的 Mobile Apps 繫結
 description: 了解如何在 Azure Functions 中使用 Azure Mobile Apps 繫結。
-services: functions
-documentationcenter: na
 author: craigshoemaker
-manager: jeconnoc
-keywords: azure functions, 函數, 事件處理, 動態運算, 無伺服器架構
-ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 5fd220f15f363c1987f1576009519e4b2feae6b9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3f16f2ef077a1fc3c82075aaf7b7685f941d0a31
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61438120"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82559588"
 ---
 # <a name="mobile-apps-bindings-for-azure-functions"></a>適用於 Azure Functions 的 Mobile Apps 繫結 
 
 > [!NOTE]
-> Azure Mobile Apps 繫結僅適用於 Azure Functions 1.x。 Azure Functions 2.x 中不支援這些繫結。
+> Azure Mobile Apps 繫結僅適用於 Azure Functions 1.x。 Azure Functions 2.x 和更新版本中不支援它們。
 
 本文說明如何在 Azure Functions 中使用 [Azure Mobile Apps](../app-service-mobile/app-service-mobile-value-prop.md)。 Azure Functions 支援 Mobile Apps 的輸入和輸出繫結。
 
@@ -48,7 +42,7 @@ Mobile Apps 輸入繫結會從行動資料表端點載入記錄，並將它傳�
 
 ### <a name="input---c-script-example"></a>輸入 - C# 指令碼範例
 
-下列範例示範 function.json 檔案中的 Mobile Apps 輸入繫結，以及使用此繫結的 [C# 指令碼函式](functions-reference-csharp.md)。 函式會由包含記錄識別碼的佇列訊息觸發。 函式會讀取指定的記錄並修改其 `Text` 屬性。
+下列範例示範 function.json** 檔案中的 Mobile Apps 輸入繫結，以及使用此繫結的 [C# 指令碼函式](functions-reference-csharp.md)。 函式會由包含記錄識別碼的佇列訊息觸發。 函式會讀取指定的記錄並修改其 `Text` 屬性。
 
 以下是 *function.json* 檔案中的繫結資料：
 
@@ -56,17 +50,17 @@ Mobile Apps 輸入繫結會從行動資料表端點載入記錄，並將它傳�
 {
 "bindings": [
     {
-    "name": "myQueueItem",
-    "queueName": "myqueue-items",
-    "connection":"",
-    "type": "queueTrigger",
-    "direction": "in"
+        "name": "myQueueItem",
+        "queueName": "myqueue-items",
+        "connection": "",
+        "type": "queueTrigger",
+        "direction": "in"
     },
     {
         "name": "record",
         "type": "mobileTable",
         "tableName": "MyTable",
-        "id" : "{queueTrigger}",
+        "id": "{queueTrigger}",
         "connection": "My_MobileApp_Url",
         "apiKey": "My_MobileApp_Key",
         "direction": "in"
@@ -93,7 +87,7 @@ public static void Run(string myQueueItem, JObject record)
 
 ### <a name="input---javascript"></a>輸入 - JavaScript
 
-下列範例示範 function.json 檔案中的 Mobile Apps 輸入繫結，以及使用此繫結的 [JavaScript 指令碼函式](functions-reference-node.md)。 函式會由包含記錄識別碼的佇列訊息觸發。 函式會讀取指定的記錄並修改其 `Text` 屬性。
+下列範例示範 function.json** 檔案中的 Mobile Apps 輸入繫結，以及使用此繫結的 [JavaScript 指令碼函式](functions-reference-node.md)。 函式會由包含記錄識別碼的佇列訊息觸發。 函式會讀取指定的記錄並修改其 `Text` 屬性。
 
 以下是 *function.json* 檔案中的繫結資料：
 
@@ -101,17 +95,17 @@ public static void Run(string myQueueItem, JObject record)
 {
 "bindings": [
     {
-    "name": "myQueueItem",
-    "queueName": "myqueue-items",
-    "connection":"",
-    "type": "queueTrigger",
-    "direction": "in"
+        "name": "myQueueItem",
+        "queueName": "myqueue-items",
+        "connection": "",
+        "type": "queueTrigger",
+        "direction": "in"
     },
     {
         "name": "record",
         "type": "mobileTable",
         "tableName": "MyTable",
-        "id" : "{queueTrigger}",
+        "id": "{queueTrigger}",
         "connection": "My_MobileApp_Url",
         "apiKey": "My_MobileApp_Key",
         "direction": "in"
@@ -142,12 +136,12 @@ module.exports = function (context, myQueueItem) {
 
 |function.json 屬性 | 屬性內容 |描述|
 |---------|---------|----------------------|
-| **type**|| 必須設定為 "mobileTable"|
-| **direction**||必須設定為 "in"|
-| **name**|| 函式簽章中的輸入參數名稱。|
+| **type**| n/a | 必須設定為 "mobileTable"|
+| **direction**| n/a |必須設定為 "in"|
+| **name**| n/a | 函式簽章中的輸入參數名稱。|
 |**tableName** |**TableName**|行動裝置應用程式資料表的名稱|
-| **id**| **Id** | 要擷取之記錄的識別碼。 可以是靜態，或以叫用函式的觸發程序作為基礎。 例如，如果您對函式使用佇列觸發程序，`"id": "{queueTrigger}"` 就會使用佇列訊息的字串值作為要擷取的記錄識別碼。|
-|**連接**|**連接**|包含行動裝置應用程式 URL 的應用程式設定名稱。 函式會使用此 URL 針對您的行動裝置應用程式建構所需的 REST 作業。 在包含您的行動裝置應用程式 URL 的函式應用程式中建立應用程式設定，然後在輸入繫結的 `connection` 屬性中，指定應用程式設定的名稱。 URL 看起來像這樣：`http://<appname>.azurewebsites.net`。
+| **id**| **識別碼** | 要擷取之記錄的識別碼。 可以是靜態，或以叫用函式的觸發程序作為基礎。 例如，如果您對函式使用佇列觸發程序，`"id": "{queueTrigger}"` 就會使用佇列訊息的字串值作為要擷取的記錄識別碼。|
+|**connection**|**[連接]**|包含行動裝置應用程式 URL 的應用程式設定名稱。 函式會使用此 URL 針對您的行動裝置應用程式建構所需的 REST 作業。 在包含您的行動裝置應用程式 URL 的函式應用程式中建立應用程式設定，然後在輸入繫結的 `connection` 屬性中，指定應用程式設定的名稱。 URL 看起來像這樣：`http://<appname>.azurewebsites.net`。
 |**apiKey**|**ApiKey**|包含行動裝置應用程式 API 金鑰的應用程式設定名稱。 如果您[在您的 Node.js 行動裝置應用程式中實作 API 金鑰](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key)，或[在您的 .NET 行動裝置應用程式中實作 API 金鑰](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key)，請提供 API 金鑰。 請提供金鑰，在包含 API 金鑰的函式應用程式中建立應用程式設定，然後在具有應用程式設定名稱的輸入繫結中新增 `apiKey` 屬性。 |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
@@ -192,7 +186,7 @@ public static object Run(
 
 ### <a name="output---c-script-example"></a>輸出 - C# 指令碼範例
 
-下列範例示範 function.json 檔案中的 Mobile Apps 輸出繫結，以及使用此繫結的 [C# 指令碼函式](functions-reference-csharp.md)。 函式會由佇列訊息觸發，並使用 `Text` 屬性的硬式編碼值來建立新的記錄。
+下列範例示範 function.json** 檔案中的 Mobile Apps 輸出繫結，以及使用此繫結的 [C# 指令碼函式](functions-reference-csharp.md)。 函式會由佇列訊息觸發，並使用 `Text` 屬性的硬式編碼值來建立新的記錄。
 
 以下是 *function.json* 檔案中的繫結資料：
 
@@ -200,19 +194,19 @@ public static object Run(
 {
 "bindings": [
     {
-    "name": "myQueueItem",
-    "queueName": "myqueue-items",
-    "connection":"",
-    "type": "queueTrigger",
-    "direction": "in"
+        "name": "myQueueItem",
+        "queueName": "myqueue-items",
+        "connection": "",
+        "type": "queueTrigger",
+        "direction": "in"
     },
     {
-    "name": "record",
-    "type": "mobileTable",
-    "tableName": "MyTable",
-    "connection": "My_MobileApp_Url",
-    "apiKey": "My_MobileApp_Key",
-    "direction": "out"
+        "name": "record",
+        "type": "mobileTable",
+        "tableName": "MyTable",
+        "connection": "My_MobileApp_Url",
+        "apiKey": "My_MobileApp_Key",
+        "direction": "out"
     }
 ]
 }
@@ -233,7 +227,7 @@ public static void Run(string myQueueItem, out object record)
 
 ### <a name="output---javascript-example"></a>輸出 - JavaScript 範例
 
-下列範例示範 function.json 檔案中的 Mobile Apps 輸出繫結，以及使用此繫結的 [JavaScript 指令碼函式](functions-reference-node.md)。 函式會由佇列訊息觸發，並使用 `Text` 屬性的硬式編碼值來建立新的記錄。
+下列範例示範 function.json** 檔案中的 Mobile Apps 輸出繫結，以及使用此繫結的 [JavaScript 指令碼函式](functions-reference-node.md)。 函式會由佇列訊息觸發，並使用 `Text` 屬性的硬式編碼值來建立新的記錄。
 
 以下是 *function.json* 檔案中的繫結資料：
 
@@ -241,19 +235,19 @@ public static void Run(string myQueueItem, out object record)
 {
 "bindings": [
     {
-    "name": "myQueueItem",
-    "queueName": "myqueue-items",
-    "connection":"",
-    "type": "queueTrigger",
-    "direction": "in"
+        "name": "myQueueItem",
+        "queueName": "myqueue-items",
+        "connection": "",
+        "type": "queueTrigger",
+        "direction": "in"
     },
     {
-    "name": "record",
-    "type": "mobileTable",
-    "tableName": "MyTable",
-    "connection": "My_MobileApp_Url",
-    "apiKey": "My_MobileApp_Key",
-    "direction": "out"
+        "name": "record",
+        "type": "mobileTable",
+        "tableName": "MyTable",
+        "connection": "My_MobileApp_Url",
+        "apiKey": "My_MobileApp_Key",
+        "direction": "out"
     }
 ],
 "disabled": false
@@ -292,7 +286,7 @@ public static object Run(
 }
 ```
 
-如需完整範例，請參閱[輸出 - C# 範例](#output---c-example)。
+如需完整範例，請參閱[輸出-c # 範例](#output---c-example)。
 
 ## <a name="output---configuration"></a>輸出 - 設定
 
@@ -300,11 +294,11 @@ public static object Run(
 
 |function.json 屬性 | 屬性內容 |描述|
 |---------|---------|----------------------|
-| **type**|| 必須設定為 "mobileTable"|
-| **direction**||必須設定為 "out"|
-| **name**|| 函式簽章中的輸出參數名稱。|
+| **type**| n/a | 必須設定為 "mobileTable"|
+| **direction**| n/a |必須設定為 "out"|
+| **name**| n/a | 函式簽章中的輸出參數名稱。|
 |**tableName** |**TableName**|行動裝置應用程式資料表的名稱|
-|**連接**|**MobileAppUriSetting**|包含行動裝置應用程式 URL 的應用程式設定名稱。 函式會使用此 URL 針對您的行動裝置應用程式建構所需的 REST 作業。 在包含您的行動裝置應用程式 URL 的函式應用程式中建立應用程式設定，然後在輸入繫結的 `connection` 屬性中，指定應用程式設定的名稱。 URL 看起來像這樣：`http://<appname>.azurewebsites.net`。
+|**connection**|**MobileAppUriSetting**|包含行動裝置應用程式 URL 的應用程式設定名稱。 函式會使用此 URL 針對您的行動裝置應用程式建構所需的 REST 作業。 在包含您的行動裝置應用程式 URL 的函式應用程式中建立應用程式設定，然後在輸入繫結的 `connection` 屬性中，指定應用程式設定的名稱。 URL 看起來像這樣：`http://<appname>.azurewebsites.net`。
 |**apiKey**|**ApiKeySetting**|包含行動裝置應用程式 API 金鑰的應用程式設定名稱。 如果您[在您的 Node.js 行動裝置應用程式後端中實作 API 金鑰](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key)，或[在您的 .NET 行動裝置應用程式後端中實作 API 金鑰](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key)，請提供 API 金鑰。 請提供金鑰，在包含 API 金鑰的函式應用程式中建立應用程式設定，然後在具有應用程式設定名稱的輸入繫結中新增 `apiKey` 屬性。 |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]

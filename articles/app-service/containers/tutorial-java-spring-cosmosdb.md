@@ -1,39 +1,37 @@
 ---
-title: 在 Linux 上建置 Java Web 應用程式 - Azure App Service
-description: 使用 Linux 上的 Azure App Service 和 Azure Cosmos DB 建置、部署及調整 Spring Boot Java Web 應用程式。
+title: 教學課程：使用 MongoDB 的 Linux Java 應用程式
+description: 了解如何藉由連線至 Azure 中的 MongoDB (Cosmos DB)，讓資料驅動的 Linux Java 應用程式在 Azure App Service 中運作。
 author: rloutlaw
 ms.author: routlaw
-manager: angerobe
-ms.service: app-service-web
 ms.devlang: java
 ms.topic: tutorial
 ms.date: 12/10/2018
-ms.custom: seodec18
-ms.openlocfilehash: f86949c196507080b32771a1b5470e9911e3e5b7
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.custom: mvc, seodec18, seo-java-july2019, seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: d77b54d5dc20725ba93df82b0a475359c4dfa2b0
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59545779"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84906372"
 ---
-# <a name="tutorial-build-a-java-web-app-using-spring-and-azure-cosmos-db"></a>教學課程：使用 Spring 和 Azure Cosmos DB 來建置 Java Web 應用程式
+# <a name="tutorial-build-a-java-spring-boot-web-app-with-azure-app-service-on-linux-and-azure-cosmos-db"></a>教學課程：使用 Linux 上的 Azure App Service 和 Azure Cosmos DB 建置 Java Spring Boot Web 應用程式
 
 本教學課程會引導您完成在 Azure 上建置、設定、部署及調整 Java Web 應用程式的程序。 當您完成後，[Azure Cosmos DB](/azure/cosmos-db) (在 [Linux 上的 Azure App Service](/azure/app-service/containers) 中執行) 中會有一個儲存資料的 [Spring Boot](https://projects.spring.io/spring-boot/) 應用程式。
 
-![在 Azure Appservice 中執行的 Java 應用程式](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-locally.jpg)
+![將資料儲存在 Azure Cosmos DB 中的 Spring Boot 應用程式](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-locally.jpg)
 
-在本教學課程中，您了解如何：
+在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
 > * 建立 Cosmos DB 資料庫。
 > * 將應用程式範例連線至資料庫，並在本機進行測試
 > * 將應用程式範例部署至 Azure
 > * 來自 App Service 的串流診斷記錄
-> * 新增額外的執行個體來擴充範例應用程式
+> * 新增額外的執行個體來擴增範例應用程式
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 在您自己的電腦上安裝 [Azure CLI](https://docs.microsoft.com/cli/azure/overview)。 
 * [Git](https://git-scm.com/)
@@ -79,7 +77,7 @@ yes | cp -rf .prep/* .
         -n <your-azure-COSMOS-DB-name-in-lower-case-letters>
     ```
 
-4. 取得您的 Azure Cosmos DB 金鑰以連線到應用程式。 將 `primaryMasterKey`、`documentEndpoint` 放在方便取得的地方，因為下一個步驟中會用到。
+4. 取得您的 Azure Cosmos DB 金鑰以連線到應用程式。 請將 `primaryMasterKey`、`documentEndpoint` 放在方便取得的地方，因為下一個步驟將會用到。
 
     ```bash
     az cosmosdb list-keys -g <your-azure-group-name> -n <your-azure-COSMOSDB-name>
@@ -167,15 +165,15 @@ bash-3.2$ mvn package spring-boot:run
 [INFO] TodoApplication - Started TodoApplication in 45.573 seconds (JVM running for 76.534)
 ```
 
-Spring TODO 應用程式啟動之後，您可以使用以下連結從本機存取應用程式：[http://localhost:8080/](http://localhost:8080/)。
+Spring TODO 應用程式啟動之後，您可以使用以下連結從本機存取應用程式：`http://localhost:8080/`。
 
- ![](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-locally.jpg)
+ ![在本機存取 Spring TODO 應用程式](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-locally.jpg)
 
 如果您看到例外狀況，而不是「啟動 TodoApplication」訊息，請確認上一個步驟中的 `bash` 指令碼是否已正確匯出環境變數，以及這些值是否適用於您建立的 Azure Cosmos DB 資料庫。
 
 ## <a name="configure-azure-deployment"></a>設定 Azure 部署
 
-開啟 `initial/spring-boot-todo` 目錄中的 `pom.xml` 檔案，並新增下列[適用於 Azure App Service 的 Maven 外掛程式](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md)組態。
+開啟 `initial/spring-boot-todo` 目錄中的 `pom.xml` 檔案，並新增下列[適用於 Maven 的 Azure Web 應用程式外掛程式](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md)組態。
 
 ```xml    
 <plugins> 
@@ -186,24 +184,38 @@ Spring TODO 應用程式啟動之後，您可以使用以下連結從本機存�
        
     <plugin>
         <groupId>com.microsoft.azure</groupId>
-            <artifactId>azure-webapp-maven-plugin</artifactId>
-            <version>1.4.0</version>
-            <configuration>
-            <deploymentType>jar</deploymentType>
-            
+        <artifactId>azure-webapp-maven-plugin</artifactId>
+        <version>1.9.1</version>
+        <configuration>
+            <schemaVersion>v2</schemaVersion>
+
             <!-- Web App information -->
             <resourceGroup>${RESOURCEGROUP_NAME}</resourceGroup>
             <appName>${WEBAPP_NAME}</appName>
             <region>${REGION}</region>
-            
+
             <!-- Java Runtime Stack for Web App on Linux-->
-            <linuxRuntime>jre8</linuxRuntime>
-            
+            <runtime>
+                 <os>linux</os>
+                 <javaVersion>jre8</javaVersion>
+                 <webContainer>jre8</webContainer>
+             </runtime>
+             <deployment>
+                 <resources>
+                 <resource>
+                     <directory>${project.basedir}/target</directory>
+                     <includes>
+                     <include>*.jar</include>
+                     </includes>
+                 </resource>
+                 </resources>
+             </deployment>
+
             <appSettings>
                 <property>
                     <name>COSMOSDB_URI</name>
                     <value>${COSMOSDB_URI}</value>
-                </property>
+                </property> 
                 <property>
                     <name>COSMOSDB_KEY</name>
                     <value>${COSMOSDB_KEY}</value>
@@ -217,9 +229,9 @@ Spring TODO 應用程式啟動之後，您可以使用以下連結從本機存�
                     <value>-Dserver.port=80</value>
                 </property>
             </appSettings>
-            
+
         </configuration>
-    </plugin>            
+    </plugin>           
     ...
 </plugins>
 ```
@@ -238,19 +250,24 @@ bash-3.2$ mvn azure-webapp:deploy
 [INFO] Building spring-todo-app 2.0-SNAPSHOT
 [INFO] ------------------------------------------------------------------------
 [INFO] 
-[INFO] --- azure-webapp-maven-plugin:1.4.0:deploy (default-cli) @ spring-todo-app ---
-[INFO] Authenticate with Azure CLI 2.0
+[INFO] --- azure-webapp-maven-plugin:1.9.1:deploy (default-cli) @ spring-todo-app ---
+[INFO] Auth Type : AZURE_CLI, Auth Files : [C:\Users\testuser\.azure\azureProfile.json, C:\Users\testuser\.azure\accessTokens.json]
+[INFO] Subscription : xxxxxxxxx
 [INFO] Target Web App doesn't exist. Creating a new one...
 [INFO] Creating App Service Plan 'ServicePlanb6ba8178-5bbb-49e7'...
 [INFO] Successfully created App Service Plan.
 [INFO] Successfully created Web App.
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource to /home/test/e2e-java-experience-in-app-service-linux-part-2/initial/spring-todo-app/target/azure-webapp/spring-todo-app-61bb5207-6fb8-44c4-8230-c1c9e4c099f7
 [INFO] Trying to deploy artifact to spring-todo-app...
+[INFO] Renaming /home/test/e2e-java-experience-in-app-service-linux-part-2/initial/spring-todo-app/target/azure-webapp/spring-todo-app-61bb5207-6fb8-44c4-8230-c1c9e4c099f7/spring-todo-app-2.0-SNAPSHOT.jar to app.jar
+[INFO] Deploying the zip package spring-todo-app-61bb5207-6fb8-44c4-8230-c1c9e4c099f7718326714198381983.zip...
 [INFO] Successfully deployed the artifact to https://spring-todo-app.azurewebsites.net
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
 [INFO] Total time: 02:19 min
-[INFO] Finished at: 2018-10-28T15:32:03-07:00
+[INFO] Finished at: 2019-11-06T15:32:03-07:00
 [INFO] Final Memory: 50M/574M
 [INFO] ------------------------------------------------------------------------
 ```
@@ -263,16 +280,16 @@ open https://spring-todo-app.azurewebsites.net
 
 您應該會看到應用程式正以網址列中的遠端 URL 執行：
 
- ![](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-in-app-service.jpg)
+ ![使用遠端 URL 執行的 Spring Boot 應用程式](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-in-app-service.jpg)
 
 ## <a name="stream-diagnostic-logs"></a>資料流診斷記錄
 
-[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
+[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-linux-no-h.md)]
 
 
-## <a name="scale-out-the-todo-app"></a>擴充 TODO 應用程式
+## <a name="scale-out-the-todo-app"></a>擴增 TODO 應用程式
 
-藉由新增另一個背景工作角色來擴充應用程式：
+藉由新增另一個背景工作角色來擴增應用程式：
 
 ```bash
 az appservice plan update --number-of-workers 2 \

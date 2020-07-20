@@ -5,15 +5,14 @@ services: storage
 author: SnehaGunda
 ms.service: storage
 ms.topic: article
-ms.date: 04/23/2018
+ms.date: 03/09/2020
 ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 8387e41d57edfa0e54ac930c9462714aca571f2a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 1dba3a6f3ebd7b6675e6d0d90d98a45625ad04ee
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60848277"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656901"
 ---
 # <a name="design-scalable-and-performant-tables"></a>設計可擴充且具效能的資料表
 
@@ -37,11 +36,11 @@ ms.locfileid: "60848277"
 <tr>
 <th>PartitionKey</th>
 <th>RowKey</th>
-<th>Timestamp</th>
+<th>時間戳記</th>
 <th></th>
 </tr>
 <tr>
-<td>行銷</td>
+<td>Marketing</td>
 <td>00001</td>
 <td>2014-08-22T00:50:32Z</td>
 <td>
@@ -49,7 +48,7 @@ ms.locfileid: "60848277"
 <tr>
 <th>名字</th>
 <th>姓氏</th>
-<th>年齡</th>
+<th>Age</th>
 <th>電子郵件</th>
 </tr>
 <tr>
@@ -69,11 +68,11 @@ ms.locfileid: "60848277"
 <tr>
 <th>名字</th>
 <th>姓氏</th>
-<th>年齡</th>
+<th>Age</th>
 <th>電子郵件</th>
 </tr>
 <tr>
-<td>Jun</td>
+<td>六月</td>
 <td>Cao</td>
 <td>47</td>
 <td>junc@contoso.com</td>
@@ -81,8 +80,8 @@ ms.locfileid: "60848277"
 </table>
 </tr>
 <tr>
-<td>行銷</td>
-<td>系所</td>
+<td>Marketing</td>
+<td>department</td>
 <td>2014-08-22T00:50:30Z</td>
 <td>
 <table>
@@ -91,14 +90,14 @@ ms.locfileid: "60848277"
 <th>EmployeeCount</th>
 </tr>
 <tr>
-<td>行銷</td>
+<td>Marketing</td>
 <td>153</td>
 </tr>
 </table>
 </td>
 </tr>
 <tr>
-<td>銷售</td>
+<td>Sales</td>
 <td>00010</td>
 <td>2014-08-22T00:50:44Z</td>
 <td>
@@ -106,7 +105,7 @@ ms.locfileid: "60848277"
 <tr>
 <th>名字</th>
 <th>姓氏</th>
-<th>年齡</th>
+<th>Age</th>
 <th>電子郵件</th>
 </tr>
 <tr>
@@ -128,31 +127,20 @@ ms.locfileid: "60848277"
 資料表由一或多個分割所組成，您所做的許多設計決策都牽涉到必須選擇適合的 **PartitionKey** 和 **RowKey** 以最佳化解決方案。 方案可以由單一資料表組成 (其中組織成資料分割的所有實體)，但方案通常會有多個資料表。 資料表可幫助您以邏輯方式組織您的實體，幫助您使用存取控制清單管理資料的存取，而且您可以使用單一儲存體作業放置整個資料表。  
 
 ## <a name="table-partitions"></a>資料表的資料分割
-帳戶名稱、資料表名稱和 **PartitionKey** 這三個項目可共同識別儲存體服務中的分割，而儲存體服務即是表格服務儲存實體的地方。 分割也同時是實體的定址配置的一部分，可定義交易的範圍 (請參閱下方的 [實體群組交易](#entity-group-transactions) )，並打造表格服務調整方式的基礎。 如需分割的詳細資訊，請參閱 [Azure 儲存體延展性和效能目標](../../storage/common/storage-scalability-targets.md)。  
+帳戶名稱、資料表名稱和 **PartitionKey** 這三個項目可共同識別儲存體服務中的分割，而儲存體服務即是表格服務儲存實體的地方。 分割也同時是實體的定址配置的一部分，可定義交易的範圍 (請參閱下方的 [實體群組交易](#entity-group-transactions) )，並打造表格服務調整方式的基礎。 如需分割區的詳細資訊，請參閱[表格儲存體的效能和可擴縮性檢查清單](storage-performance-checklist.md)。  
 
 在表格服務中，個別節點可為一或多個完整資料分割提供服務，且服務會透過動態的負載平衡資料分割在節點間進行調整。 如果某節點的負載過大，表格服務可將由該節點提供服務的分割範圍*分割*到不同的節點；當流量變小時，服務可將分割範圍從靜止節點*合併*回單一節點。  
 
-如需表格服務之內部詳細資料的詳細資訊 (特別是服務管理分割的方式)，請參閱文件 [Microsoft Azure 儲存體：具有高度一致性的高可用性雲端儲存體服務](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx) \(英文\)。  
+如需表格服務之內部詳細資料的詳細資訊 (特別是服務管理分割的方式)，請參閱文件 [Microsoft Azure 儲存體：具有高度一致性的高可用性雲端儲存體服務](https://docs.microsoft.com/archive/blogs/windowsazurestorage/sosp-paper-windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency) \(英文\)。  
 
 ## <a name="entity-group-transactions"></a>實體群組交易
 在資料表服務中，實體群組交易 (EGT) 是唯一的內建機制，可跨越多個實體執行不可部分完成的更新。 EGT 有時也稱為「批次交易」。 EGT 僅能對相同分割 (亦即，共用指定表格中的相同分割索引鍵) 中儲存的實體進行作業。 因此每當您需要跨多個實體執行不可部分完成的交易行為時，您必須確定這些實體位於相同的分割中。 通常就是基於此原因，才需要將多個實體類型放在相同的資料表 (和資料分割) 中，而不讓不同的實體類型使用多個資料表。 單一 EGT 最多可以操作 100 個實體。  如果您送出多個並行 EGT 進行處理，請務必確保這些 EGT 不會在 EGT 的通用實體上運作，否則處理可能會延遲。
 
-EGT 也會帶來需在您設計中評估的潛在取捨。 那就是，使用較多分割會增加應用程式的延展性，因為 Azure 有更多機會可在多個節點間執行負載平衡要求。 但是，使用多個分割可能會在應用程式執行不可部分完成的交易時，及維護資料的嚴格一致性時造成限制。 此外，還有些在分割層級上的特定延展性目標，可能會限制單一節點的預期交易輸送量。 如需深入了解 Azure 儲存體帳戶和表格服務的延展性目標，請參閱 [Azure 儲存體延展性和效能目標](../../storage/common/storage-scalability-targets.md)。   
+EGT 也會帶來需在您設計中評估的潛在取捨。 那就是，使用較多分割會增加應用程式的延展性，因為 Azure 有更多機會可在多個節點間執行負載平衡要求。 但是，使用多個分割可能會在應用程式執行不可部分完成的交易時，及維護資料的嚴格一致性時造成限制。 此外，還有些在分割層級上的特定延展性目標，可能會限制單一節點的預期交易輸送量。 關於 Azure 標準儲存體帳戶的可擴縮性目標，如需詳細資訊，請參閱[標準儲存體帳戶的可擴縮性目標](../common/scalability-targets-standard-account.md)。 如需深入了解表格服務的延展性目標，請參閱[適用於表格儲存體的延展性和效能目標](scalability-targets.md)。
 
 ## <a name="capacity-considerations"></a>容量考量
-下表說明您在設計表格服務方案時所需注意的某些索引鍵值：  
 
-| Azure 儲存體帳戶的容量總計 | 500 TB |
-| --- | --- |
-| Azure 儲存體帳戶中的資料表數目 |僅受限於儲存體帳戶的容量 |
-| 資料表中的資料分割數目 |仅受存储帐户的容量限制 |
-| 資料分割中的實體數目 |僅受限於儲存體帳戶的容量 |
-| 個別實體的大小 |最多 1 MB 和 255 個屬性 (包括 **PartitionKey**、**RowKey** 和 **Timestamp**) |
-|  **PartitionKey** |大小最大为 1 KB 的字符串 |
-|  **RowKey** |大小最多 1 KB 的字串 |
-| 實體群組交易的大小 |交易最多可以包含 100 個實體，而承載大小必須小於 4 MB。 一個 EGT 只能更新實體一次。 |
-
-有关详细信息，请参阅 [了解表服务数据模型](https://msdn.microsoft.com/library/azure/dd179338.aspx)。  
+[!INCLUDE [storage-table-scale-targets](../../../includes/storage-tables-scale-targets.md)]
 
 ## <a name="cost-considerations"></a>成本考量
 表格儲存體比較便宜，但您在評估任何表格服務方案時，均應將容量使用量和交易數目的成本預估同時納入考量。 不過，在許多情況下，儲存反正規化或重複的資料以改善方案的效能或延展性，也是有效措施。 如需定價的詳細資訊，請參閱 [Azure 儲存體定價](https://azure.microsoft.com/pricing/details/storage/)。  

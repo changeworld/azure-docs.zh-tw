@@ -1,49 +1,79 @@
 ---
-title: 動態群組與 B2B 共同作業-Azure Active Directory |Microsoft Docs
+title: 動態群組和 B2B 共同作業-Azure Active Directory |Microsoft Docs
 description: 說明如何搭配 Azure Active Directory B2B 共同作業使用 Azure AD 動態群組
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
-ms.date: 12/14/2017
+ms.topic: how-to
+ms.date: 02/28/2020
 ms.author: mimart
 author: msmimart
-manager: daveba
-ms.reviewer: sasubram
+manager: celestedg
+ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 17f701eb9ad3c083712ddf9e774e6ddbefbe91fd
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 6adf7e6c5abbba3c018f9a03b5167aec7537c704
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65227958"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85386652"
 ---
 # <a name="dynamic-groups-and-azure-active-directory-b2b-collaboration"></a>動態群組與 Azure Active Directory B2B 共同作業
 
 ## <a name="what-are-dynamic-groups"></a>什麼是動態群組？
-[Azure 入口網站](https://portal.azure.com)允許您動態設定 Azure Active Directory (Azure AD) 的安全性群組成員資格。 系統管理員可以設定規則，以填入使用者屬性 （例如 userType、 部門或國家/地區） 為基礎的 Azure AD 中建立的群組。 在安全性群組中，可以根據成員的屬性而自動新增或移除成員。 這些群組可以提供對應用程式或雲端資源 (SharePoint 網站和文件) 的存取，以及將授權指派給成員。 若要深入了解動態群組，請參閱 [Azure Active Directory 中的專用群組](../active-directory-accessmanagement-dedicated-groups.md)。
+[Azure 入口網站](https://portal.azure.com)允許您動態設定 Azure Active Directory (Azure AD) 的安全性群組成員資格。 系統管理員可以設定規則，以根據使用者屬性（例如 userType、部門或國家/地區）填入在 Azure AD 中建立的群組。 在安全性群組中，可以根據成員的屬性而自動新增或移除成員。 這些群組可以提供對應用程式或雲端資源 (SharePoint 網站和文件) 的存取，以及將授權指派給成員。 若要深入了解動態群組，請參閱 [Azure Active Directory 中的專用群組](../active-directory-accessmanagement-dedicated-groups.md)。
 
 需要有適當的 [Azure AD Premium P1 或 P2 授權](https://azure.microsoft.com/pricing/details/active-directory/)，才能建立和使用動態群組。 請參閱[在 Azure Active Directory 中針對動態群組成員資格建立以屬性為基礎的規則](../users-groups-roles/groups-dynamic-membership.md)一文，以深入了解。
 
-## <a name="what-are-the-built-in-dynamic-groups"></a>什麼是內建動態群組？
-「所有使用者」動態群組讓租用戶系統管理員按一下滑鼠即可建立包含租用戶中所有使用者的群組。 根據預設值，「所有使用者」群組包括目錄中的所有使用者 (包括「成員」與「來賓」)。
-在新的 Azure Active Directory 系統管理員入口網站中，您可以選擇在 [群組設定] 檢視中啟用「所有使用者」群組。
+## <a name="creating-an-all-users-dynamic-group"></a>建立「所有使用者」動態群組
+您建立的群組可以包含使用成員資格規則的租用戶內的所有使用者。 未來在租用戶中新增或移除使用者時，系統會自動調整群組的成員資格。
 
-![顯示設定為 [是] 的 [啟用所有使用者群組]](media/use-dynamic-groups/enable-all-users-group.png)
+1. 使用在租使用者中獲指派全域管理員或使用者系統管理員角色的帳戶登入[Azure 入口網站](https://portal.azure.com)。
+1. 選取 **Azure Active Directory**。
+2. 在 [**管理**] 底下，選取 [**群組**]，然後選取 [**新增群組**]。
+1. 在 [**新增群組**] 頁面的 [**群組類型**] 底下，選取 [**安全性**]。 為新群組輸入 [群組名稱]  與 [群組描述]  。 
+2. 在 [**成員資格類型**] 底下，選取 [**動態使用者**]，然後選取 [**新增動態查詢**]。 
+4. 在 [**規則語法**] 文字方塊的上方，選取 [**編輯**]。 在 [**編輯規則語法**] 頁面上，于文字方塊中輸入下列運算式：
 
-## <a name="hardening-the-all-users-dynamic-group"></a>強化「所有使用者」動態群組
-根據預設值，**所有使用者**群組也包含您的 B2B 共同作業 (來賓) 使用者。 您可以使用規則移除來賓使用者，以進一步保護**所有使用者**群組。 下圖顯示已修改為排除來賓的**所有使用者**群組。
+   ```
+   user.objectId -ne null
+   ```
+1. 選取 [確定]。 規則會出現在 [規則語法] 方塊中：
 
-![顯示使用者類型不等於來賓的規則](media/use-dynamic-groups/exclude-guest-users.png)
+   ![所有使用者動態群組的規則語法](media/use-dynamic-groups/all-user-rule-syntax.png)
 
-您可能也會發現，建立一個只包含來賓使用者的新動態群組很有用，這樣可讓您對他們套用原則 (例如 Azure AD 條件式存取原則)。
-這種群組可能如下所示：
+1.  選取 [儲存]。 新的動態群組現在會包含 B2B 來賓使用者和成員使用者。
 
-![顯示使用者類型等於來賓的規則](media/use-dynamic-groups/only-guest-users.png)
+
+1. 選取 [**新增群組**] 頁面上的 [**建立**] 來建立群組。
+
+## <a name="creating-a-group-of-members-only"></a>僅建立成員群組
+
+如果您想要讓群組排除來賓使用者，而且只包含租使用者的成員，請建立如上面所述的動態群組，但在 [**規則語法**] 方塊中，輸入下列運算式：
+
+```
+(user.objectId -ne null) and (user.userType -eq "Member")
+```
+
+下圖顯示已修改為僅包含成員和排除來賓之動態群組的規則語法。
+
+![顯示使用者類型 equals 成員的規則](media/use-dynamic-groups/all-member-user-rule-syntax.png)
+
+## <a name="creating-a-group-of-guests-only"></a>僅建立來賓群組
+
+您可能也會發現，建立一個只包含來賓使用者的新動態群組很有用，這樣可讓您對他們套用原則 (例如 Azure AD 條件式存取原則)。 如上面所述建立動態群組，但在 [**規則語法**] 方塊中，輸入下列運算式：
+
+```
+(user.objectId -ne null) and (user.userType -eq "Guest")
+```
+
+下圖顯示已修改為僅包含來賓和排除成員使用者之動態群組的規則語法。
+
+![顯示使用者類型等於來賓的規則](media/use-dynamic-groups/all-guest-user-rule-syntax.png)
 
 ## <a name="next-steps"></a>後續步驟
 
 - [B2B 共同作業使用者屬性](user-properties.md)
 - [將 B2B 共同作業使用者新增至角色](add-guest-to-role.md)
-- [B2B 共同作業使用者的條件式存取](conditional-access.md)
+- [適用于 B2B 共同作業使用者的條件式存取](conditional-access.md)
 

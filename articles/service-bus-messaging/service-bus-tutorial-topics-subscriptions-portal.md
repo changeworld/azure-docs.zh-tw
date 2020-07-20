@@ -1,26 +1,22 @@
 ---
-title: 教學課程 - 透過 Azure 入口網站使用發佈/訂閱通道和主題篩選來更新零售庫存商品 | Microsoft Docs
+title: 使用 Azure 入口網站和主題/訂用帳戶來更新庫存
 description: 在本教學課程中，您將了解如何從主題和訂用帳戶傳送及接收訊息，以及如何使用 .NET 新增和使用篩選規則
-services: service-bus-messaging
 author: spelluru
-manager: timlt
 ms.author: spelluru
-ms.date: 09/22/2018
+ms.date: 06/23/2020
 ms.topic: tutorial
-ms.service: service-bus-messaging
-ms.custom: mvc
-ms.openlocfilehash: a325b976e657fbdc318a41b3b79b50e77a948e14
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 77a8ef9c96219d2deb08126dc68eafe08d5262d4
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58079838"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341700"
 ---
 # <a name="tutorial-update-inventory-using-azure-portal-and-topicssubscriptions"></a>教學課程：使用 Azure 入口網站和主題/訂用帳戶來更新庫存
 
 Microsoft Azure 服務匯流排是一項多租用戶雲端傳訊服務，可在應用程式和服務之間傳送資訊。 非同步作業可讓您進行靈活的代理傳訊，搭配結構化的先進先出 (FIFO) 傳訊及發佈/訂閱功能。 本教學課程說明如何透過使用 Azure 入口網站和 .NET 的發佈/訂閱通道，在零售庫存案例中使用服務匯流排主題和訂用帳戶。
 
-在本教學課程中，您了解如何：
+在本教學課程中，您會了解如何：
 > [!div class="checklist"]
 > * 使用 Azure 入口網站建立服務匯流排主題，並建立該主題的一或多個訂用帳戶
 > * 使用 .NET 程式碼新增主題篩選
@@ -34,7 +30,7 @@ Microsoft Azure 服務匯流排是一項多租用戶雲端傳訊服務，可在�
 
 如果您沒有 Azure 訂用帳戶，您可以在開始前建立[免費帳戶][]。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本教學課程，請確定您已安裝︰
 
@@ -55,7 +51,7 @@ Microsoft Azure 服務匯流排是一項多租用戶雲端傳訊服務，可在�
 
 佈建命名空間和主題/訂用帳戶，且您已擁有必要的認證之後，您即可在訂用帳戶上建立篩選規則，然後傳送和接收訊息。 您可以在[此 GitHub 範例資料夾](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/TopicFilters)中查看程式碼。
 
-### <a name="send-and-receive-messages"></a>傳送及接收訊息
+## <a name="send-and-receive-messages"></a>傳送及接收訊息
 
 若要執行程式碼，請執行下列動作：
 
@@ -100,7 +96,7 @@ Microsoft Azure 服務匯流排是一項多租用戶雲端傳訊服務，可在�
 
 ## <a name="clean-up-resources"></a>清除資源
 
-不再需要命名空間和佇列時，請加以刪除。 若要這樣做，請在入口網站上選取這些資源，然後按一下 [刪除]。
+不再需要命名空間和佇列時，請加以刪除。 若要這樣做，請在入口網站上選取這些資源，然後按一下 [刪除]  。
 
 ## <a name="understand-the-sample-code"></a>了解範例程式碼
 
@@ -393,6 +389,9 @@ private async Task ReceiveMessages(string subscription)
     await receiver.CloseAsync();
 }
 ```
+
+> [!NOTE]
+> 您可以使用[服務匯流排總管](https://github.com/paolosalvatori/ServiceBusExplorer/)來管理服務匯流排資源。 服務匯流排總管可讓使用者連線到服務匯流排命名空間，並以簡便的方式管理傳訊實體。 此工具提供進階的功能 (例如匯入/匯出功能) 或測試主題、佇列、訂用帳戶、轉送服務、通知中樞和事件中樞的能力。 
 
 ## <a name="next-steps"></a>後續步驟
 

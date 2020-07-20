@@ -1,42 +1,29 @@
 ---
-title: 適用於 MariaDB 的 Azure 資料庫相關限制
+title: 限制 - 適用於 MariaDB 的 Azure 資料庫
 description: 本文說明適用於 MariaDB 的 Azure 資料庫有何限制，例如連線數量和儲存引擎選項。
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 04/15/2019
-ms.openlocfilehash: e191c656c5485377f62073f52dec0b3dbee7537b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 6/25/2020
+ms.openlocfilehash: fc5557c1b20d87d2f96559e1d41efa4576045f09
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61041270"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85392772"
 ---
 # <a name="limitations-in-azure-database-for-mariadb"></a>適用於 MariaDB 的 Azure 資料庫相關限制
 下列各節說明資料庫服務中的容量、儲存引擎支援、權限支援、資料操作陳述式支援，以及功能限制。
 
-## <a name="maximum-connections"></a>最大連線數
-每個定價層和 vCores 的連線數目上限如下所示：
+## <a name="server-parameters"></a>伺服器參數
 
-|定價層|**vCore(s)**| **連線數目上限**|
-|---|---|---|
-|基本| 1| 50|
-|基本| 2| 100|
-|一般用途| 2| 300|
-|一般用途| 4| 625|
-|一般用途| 8| 1250|
-|一般用途| 16| 2500|
-|一般用途| 32| 5000|
-|一般用途| 64| 10000|
-|記憶體最佳化| 2| 600|
-|記憶體最佳化| 4| 1250|
-|記憶體最佳化| 8| 2500|
-|記憶體最佳化| 16| 5000|
-|記憶體最佳化| 32| 10000|
+> [!NOTE]
+> 如果您要尋找伺服器參數（如和）的最小/最大值 `max_connections` `innodb_buffer_pool_size` ，這項資訊已移至**[伺服器參數](./concepts-server-parameters.md)** 文章。
 
-當連線超過限制時，則可能會收到下列錯誤：
-> 錯誤 1040 (08004)：太多連線
+適用於 MariaDB 的 Azure 資料庫支援微調伺服器參數的值。 某些參數的最小和最大值（例如 `max_connections`、 `join_buffer_size` 、 `query_cache_size` ）是由伺服器的定價層和虛擬核心所決定。 如需這些限制的詳細資訊，請參閱[伺服器參數](./concepts-server-parameters.md)。
+
+在初始部署時，Azure for 適用于 mariadb 伺服器會包含時區資訊的系統資料表，但不會填入這些資料表。 時區資料表可藉由從 MySQL 命令列或 MySQL Workbench 等工具呼叫 `mysql.az_load_timezone` 預存程序來填入。 請參閱 [Azure 入口網站](howto-server-parameters.md#working-with-the-time-zone-parameter)或 [Azure CLI](howto-configure-server-parameters-cli.md#working-with-the-time-zone-parameter) 文章，以了解如何呼叫預存程序，以及設定全域或工作階段層級的時區。
 
 ## <a name="storage-engine-support"></a>儲存引擎支援
 
@@ -82,6 +69,9 @@ ms.locfileid: "61041270"
 
 ### <a name="vnet-service-endpoints"></a>VNet 服務端點
 - VNet 服務端點的支援僅適用於一般用途伺服器和記憶體最佳化伺服器。
+
+### <a name="storage-size"></a>儲存體大小
+- 如需每個定價層的儲存體大小限制，請參閱[定價層](concepts-pricing-tiers.md)。
 
 ## <a name="current-known-issues"></a>目前已知問題
 - MariaDB 伺服器執行個體於建立連線後會顯示不正確的伺服器版本。 若要取得正確的伺服器執行個體引擎版本，請使用 `select version();` 命令。

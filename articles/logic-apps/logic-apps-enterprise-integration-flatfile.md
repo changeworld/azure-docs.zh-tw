@@ -1,84 +1,98 @@
 ---
-title: 編碼或解碼一般檔案 - Azure Logic Apps | Microsoft Docs
-description: 使用 Azure Logic Apps 與 Enterprise Integration Pack 來編碼或解碼適用於企業整合的一般檔案
+title: 編碼或解碼一般檔案
+description: 使用企業整合套件在 Azure Logic Apps 中編碼或解碼一般檔案以進行企業整合
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.assetid: 82152dab-c7ad-43df-b721-596559703be8
-ms.date: 07/08/2016
-ms.openlocfilehash: d0ef61b94d7bd604b6c0062341224510f3048c57
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 05/09/2020
+ms.openlocfilehash: 81c1c95e2af7b537a12c8c86245b009005aa0aa2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61467220"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "83005301"
 ---
-# <a name="encode-or-decode-flat-files-with-azure-logic-apps-and-enterprise-integration-pack"></a>使用 Azure Logic Apps 與 Enterprise Integration Pack 來編碼或解碼一般檔案
+# <a name="encode-and-decode-flat-files-in-azure-logic-apps-by-using-the-enterprise-integration-pack"></a>在 Azure Logic Apps 中使用企業整合套件將一般檔案編碼或解碼
 
-在企業對企業 (B2B) 案例中，您可能會希望先將 XML 內容編碼，然後再傳送給企業夥伴。 在邏輯應用程式中，您可以使用一般檔案編碼連接器來執行此動作。 您所建立的邏輯應用程式可從各種來源取得其 XML 內容，包括 HTTP 要求觸發程序、另一個應用程式，或甚至是這其中任一種 [連接器](../connectors/apis-list.md)。 如需邏輯應用程式的詳細資訊，請參閱[邏輯應用程式文件](logic-apps-overview.md "深入了解 Logic Apps")。  
+在企業對企業（B2B）案例中將 XML 內容傳送給商業夥伴之前，您可能想要先對該內容進行編碼。 藉由建立邏輯應用程式，您可以使用「一般檔案 **」連接器來**編碼和解碼一般檔案。 您的邏輯應用程式可以從各種來源取得此 XML 內容，例如要求觸發程式、另一個應用程式，或[Azure Logic Apps 支援](../connectors/apis-list.md)的其他連接器。 如需詳細資訊，請參閱[什麼是 Azure Logic Apps](logic-apps-overview.md)？
 
-## <a name="create-the-flat-file-encoding-connector"></a>建立一般檔案編碼連接器
-請遵循下列步驟，將一般檔案編碼連接器新增到邏輯應用程式。
+## <a name="prerequisites"></a>必要條件
 
-1. 建立邏輯應用程式，並[將它連結到您的整合帳戶](logic-apps-enterprise-integration-accounts.md "了解如何將整合帳戶連結到邏輯應用程式")。 此帳戶包含您將用來編碼 XML 資料的結構描述。  
-1. 將 [要求 - 收到 HTTP 要求時]  觸發程序新增到您的邏輯應用程式。  
-   ![要選取之觸發程序的螢幕擷取畫面](./media/logic-apps-enterprise-integration-b2b/flatfile-1.png)    
-1. 新增一般檔案編碼動作，如下所示︰
-   
-    a. 選取**加號**。
-   
-    b. 選取 [新增動作] 連結 (會在選取加號之後出現)。
-   
-    c. 在搜尋方塊中輸入「一般」，篩選所有動作以取得您想要使用的動作。
-   
-    d. 從清單中選取 [一般檔案編碼] 選項。   
-   ![一般檔案編碼選項的螢幕擷取畫面](media/logic-apps-enterprise-integration-flatfile/flatfile-2.png)   
-1. 在 [一般檔案編碼] 對話方塊上選取 [內容] 文字方塊。  
-   ![內容文字方塊的螢幕擷取畫面](media/logic-apps-enterprise-integration-flatfile/flatfile-3.png)  
-1. 選取內文標記做為您想要編碼的內容。 內文標記將會填入內容欄位。     
-   ![內文標記的螢幕擷取畫面](media/logic-apps-enterprise-integration-flatfile/flatfile-4.png)  
-1. 選取 [結構描述名稱]  清單方塊，然後選擇您想要用來將輸入內容編碼的結構描述。    
-   ![結構描述名稱清單方塊的螢幕擷取畫面](media/logic-apps-enterprise-integration-flatfile/flatfile-5.png)  
-1. 儲存您的工作。   
-   ![儲存圖示的螢幕擷取畫面](media/logic-apps-enterprise-integration-flatfile/flatfile-6.png)  
+* Azure 訂用帳戶。 如果您沒有訂用帳戶，請[註冊一個免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
-此時，您已完成設定一般檔案編碼連接器。 在真實世界應用程式中，您可能想要在企業營運應用程式 (例如 Salesforce) 中儲存已編碼的資料。 或者，您也可以將該編碼資料傳送給交易夥伴。 您可以使用所提供的任一個其他連接器，輕鬆地新增動作來將編碼動作的輸出傳送到 Salesforce，或傳送給交易夥伴。
+* 您想要使用一般**檔案連接器的**邏輯應用程式，以及啟動邏輯應用程式工作流程的觸發程式。 「一般檔案 **」連接器只**提供動作，而非觸發程式。 您可以使用觸發程式或其他動作，將 XML 內容饋送至邏輯應用程式，以進行編碼或解碼。 如果您還不熟悉邏輯應用程式，請檢閱[快速入門：如何建立第一個邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
-您現在可以測試連接器，方法是向 HTTP 端點提出要求，並在要求內文中包含 XML 內容。  
+* 與您的 Azure 訂用帳戶相關聯，並連結至您打算使用一般**檔案連接器之**[邏輯應用程式](logic-apps-enterprise-integration-accounts.md#link-account)的[整合帳戶](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)。 邏輯應用程式與整合帳戶必須位於相同位置或相同的 Azure 區域中。
 
-## <a name="create-the-flat-file-decoding-connector"></a>建立一般檔案解碼連接器
+* 您已上傳至整合帳戶以進行 XML 內容編碼或解碼的一般檔案[架構](logic-apps-enterprise-integration-schemas.md)
 
-> [!NOTE]
-> 為了完成這些步驟，您必須已將結構描述檔案上傳到您的整合帳戶。
+* 至少有兩個您已在整合帳戶中定義的[交易夥伴](logic-apps-enterprise-integration-partners.md)
 
-1. 將 [要求 - 收到 HTTP 要求時]  觸發程序新增到您的邏輯應用程式。  
-   ![要選取之觸發程序的螢幕擷取畫面](./media/logic-apps-enterprise-integration-b2b/flatfile-1.png)    
-1. 新增一般檔案解碼動作，如下所示︰
-   
-    a. 選取**加號**。
-   
-    b. 選取 [新增動作] 連結 (會在選取加號之後出現)。
-   
-    c. 在搜尋方塊中輸入「一般」，篩選所有動作以取得您想要使用的動作。
-   
-    d. 從清單中選取 [一般檔案解碼] 選項。   
-   ![一般檔案解碼選項的螢幕擷取畫面](media/logic-apps-enterprise-integration-flatfile/flatfile-2.png)   
-1. 選取 [內容]  控制項。 這會從先前步驟中產生一份內容清單，讓您可用來做為要解碼的內容。 請注意，來自傳入 HTTP 要求的「內文」  可用來做為要解碼的內容。 您也可以將要解碼的內容直接輸入於 [內容]  控制項中。     
-1. 選取 [內文]  標記。 請注意，內文標記目前位於 [內容]  控制項中。
-1. 選取您想要用來將內容解碼的結構描述名稱。 下列螢幕擷取畫面顯示選取的結構描述名稱是「OrderFile」  。 此結構描述名稱先前已上傳到整合帳戶。
-   
-   ![一般檔案解碼對話方塊的螢幕擷取畫面](media/logic-apps-enterprise-integration-flatfile/flatfile-decode-1.png)    
-1. 儲存您的工作。  
-   ![儲存圖示的螢幕擷取畫面](media/logic-apps-enterprise-integration-flatfile/flatfile-6.png)    
+## <a name="add-flat-file-encode-action"></a>新增一般檔案編碼動作
 
-此時，您已完成設定一般檔案解碼連接器。 在真實世界應用程式中，您可能想要在企業營運應用程式 (例如 Salesforce) 中儲存已解碼的資料。 您可以輕鬆新增動作，來將解碼動作的輸出傳送到 Salesforce。
+1. 在 [Azure 入口網站](https://portal.azure.com)的邏輯應用程式設計工具中，開啟邏輯應用程式。
 
-您現在可以測試連接器，方法是向 HTTP 端點提出要求，並在要求內文中包含您想要解碼的 XML 內容。  
+1. 在邏輯應用程式的觸發程式或動作底下，選取 [**新增步驟] [新增**  >  **動作**]。 這個範例會使用要求觸發程式，其會**在收到 HTTP 要求時**命名，並處理來自邏輯應用程式外部的輸入要求。
+
+   > [!TIP]
+   > 提供 JSON 架構是選擇性的。 如果您有來自輸入要求的範例承載，請選取 [**使用範例承載來產生架構**]，輸入範例承載，然後選取 [**完成**]。 架構會出現在 [**要求主體 JSON 架構**] 方塊中。
+
+1. 在 **[選擇動作**] 底下，輸入 `flat file` 。 從 [動作] 清單中，選取此動作： [一般檔案**編碼**]
+
+   ![選取 [一般檔案編碼] 動作](./media/logic-apps-enterprise-integration-flatfile/select-flat-file-encoding.png)
+
+1. 在 [**內容**] 方塊中按一下，以顯示動態內容清單。 從清單中的 [**收到 HTTP 要求時**] 區段中，選取 [內文 **] 屬性，** 其中包含觸發程式的要求本文輸出，以及要編碼的內容。
+
+   ![從動態內容清單選取要編碼的內容](./media/logic-apps-enterprise-integration-flatfile/select-content-to-encode.png)
+
+   > [!TIP]
+   > 如果您在動態內容清單中看不到 [內文] 屬性，請選取 [**收到 HTTP 要求時**] 區段標籤**旁的 [** **查看更多**]。
+   > 您也可以直接在 [**內容**] 方塊中輸入要解碼的內容。
+
+1. 從 [**架構名稱**] 清單中，選取要用於編碼的連結整合帳戶中的架構，例如：
+
+   ![選取要用於編碼的架構](./media/logic-apps-enterprise-integration-flatfile/select-schema-for-encoding.png)
+
+   > [!NOTE]
+   > 如果清單中沒有出現任何架構，則您的整合帳戶不會包含任何要用於編碼的架構檔案。 將您想要使用的架構上傳至整合帳戶。
+
+1. 儲存您的邏輯應用程式。 若要測試您的連接器，請對 HTTPS 端點提出要求，這會出現在要求觸發程式的**HTTP POST URL**屬性中，並包含您想要在要求主體中編碼的 XML 內容。
+
+您現在已經完成設定一般檔案編碼動作。 在真實世界的應用程式中，您可能會想要將編碼的資料儲存在商務營運（LOB）應用程式中，例如 Salesforce。 或者，您可以將編碼的資料傳送給交易夥伴。 若要將編碼動作的輸出傳送給 Salesforce 或交易夥伴，請使用[Azure Logic Apps 中提供](../connectors/apis-list.md)的其他連接器。
+
+## <a name="add-flat-file-decode-action"></a>新增一般檔案解碼動作
+
+1. 在 [Azure 入口網站](https://portal.azure.com)的邏輯應用程式設計工具中，開啟邏輯應用程式。
+
+1. 在邏輯應用程式的觸發程式或動作底下，選取 [**新增步驟] [新增**  >  **動作**]。 這個範例會使用要求觸發程式，其會**在收到 HTTP 要求時**命名，並處理來自邏輯應用程式外部的輸入要求。
+
+   > [!TIP]
+   > 提供 JSON 架構是選擇性的。 如果您有來自輸入要求的範例承載，請選取 [**使用範例承載來產生架構**]，輸入範例承載，然後選取 [**完成**]。 架構會出現在 [**要求主體 JSON 架構**] 方塊中。
+
+1. 在 **[選擇動作**] 底下，輸入 `flat file` 。 從 [動作] 清單中，選取此動作：一般檔案**解碼**
+
+   ![選取 [一般檔案解碼] 動作](./media/logic-apps-enterprise-integration-flatfile/select-flat-file-decoding.png)
+
+1. 在 [**內容**] 方塊中按一下，以顯示動態內容清單。 從清單的 [**收到 HTTP 要求時**] 區段中，選取 [內文 **] 屬性，** 其中包含觸發程式的要求本文輸出，以及要解碼的內容。
+
+   ![從動態內容清單選取要解碼的內容](./media/logic-apps-enterprise-integration-flatfile/select-content-to-decode.png)
+
+   > [!TIP]
+   > 如果您在動態內容清單中看不到 [內文] 屬性，請選取 [**收到 HTTP 要求時**] 區段標籤**旁的 [** **查看更多**]。 您也可以直接在 [**內容**] 方塊中輸入要解碼的內容。
+
+1. 從 [**架構名稱**] 清單中，選取連結整合帳戶中用於解碼的架構，例如：
+
+   ![選取要用於解碼的架構](./media/logic-apps-enterprise-integration-flatfile/select-schema-for-decoding.png)
+
+   > [!NOTE]
+   > 如果清單中沒有出現任何架構，則您的整合帳戶不會包含任何要用於解碼的架構檔案。 將您想要使用的架構上傳至整合帳戶。
+
+1. 儲存您的邏輯應用程式。 若要測試您的連接器，請對 HTTPS 端點提出要求，這會出現在要求觸發程式的**HTTP POST URL**屬性中，並包含您想要在要求主體中解碼的 XML 內容。
+
+您現在已經完成設定一般檔案解碼動作。 在真實世界的應用程式中，您可能會想要將解碼的資料儲存在商務營運系統（LOB）應用程式中，例如 Salesforce。 或者，您可以將解碼的資料傳送給交易夥伴。 若要將解碼動作的輸出傳送給 Salesforce 或交易夥伴，請使用[Azure Logic Apps 中提供](../connectors/apis-list.md)的其他連接器。
 
 ## <a name="next-steps"></a>後續步驟
-* [深入了解企業整合套件](logic-apps-enterprise-integration-overview.md "了解企業整合套件")。  
 
+* 深入瞭解[企業整合套件](logic-apps-enterprise-integration-overview.md)

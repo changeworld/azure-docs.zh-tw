@@ -1,63 +1,87 @@
 ---
-title: 使用 .NET Core 和 Visual Studio 在雲端建立 Kubernetes 開發人員空間
-titleSuffix: Azure Dev Spaces
+title: 建立 Kubernetes 開發人員空間：Visual Studio 和 .NET Core
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
 ms.custom: vs-azure
 ms.workload: azure-vs
-author: zr-msft
-ms.author: zarhoads
 ms.date: 07/09/2018
 ms.topic: tutorial
-description: 在 Azure 上使用容器和微服務快速進行 Kubernetes 開發
+description: 本教學課程說明如何使用 Azure Dev Spaces 和 Visual Studio 對 Azure Kubernetes Service 上的 .NET Core 應用程式進行偵錯和快速反覆運算
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, 容器, Helm, 服務網格, 服務網格路由傳送, kubectl, k8s
-ms.openlocfilehash: e94134a0c7c3b44a2e4734fe1e91a19f3e26851c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: ba90cbc8bc0267f1fba8c9495886bdc8ce2ac5e3
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59425758"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83995899"
 ---
-# <a name="get-started-on-azure-dev-spaces-with-net-core-and-visual-studio"></a>在使用 .NET Core 和 Visual Studio 的 Azure Dev Spaces 上開始使用
+# <a name="create-a-kubernetes-dev-space-visual-studio-and-net-core-with-azure-dev-spaces"></a>建立 Kubernetes 開發人員空間：搭配 Azure Dev Spaces 使用 Visual Studio 和 .NET Core
 
 在本指南中，您將了解如何：
 
 - 使用 Azure 中受管理的 Kubernetes 叢集，設定 Azure Dev Spaces。
 - 使用 Visual Studio 在容器中反覆開發程式碼。
-- 獨立開發兩個不同的服務，並且使用 Kubernetes 的 DNS 服務探索來呼叫另一個服務。
+- 獨立開發兩種不同的服務，並且使用 Kubernetes 的 DNS 服務探索來呼叫另一個服務。
 - 在小組環境中有效率地開發及測試您的程式碼。
 
 > [!Note]
 > **如果作業出現停滯的情況**，請參閱[疑難排解](troubleshooting.md)一節。
 
+## <a name="install-the-azure-cli"></a>安裝 Azure CLI
+Azure 開發人員空間需要基本的本機電腦設定。 大部分開發人員空間的組態都會儲存在雲端，而且可與其他使用者共用。 從下載和執行 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 著手。
+
+### <a name="sign-in-to-azure-cli"></a>登入 Azure CLI
+登入 Azure。 在終端機視窗中輸入下列命令：
+
+```azurecli
+az login
+```
+
+> [!Note]
+> 如果您沒有 Azure 訂用帳戶，您可以建立[免費帳戶](https://azure.microsoft.com/free)。
+
+#### <a name="if-you-have-multiple-azure-subscriptions"></a>如果您有多個 Azure 訂用帳戶...
+您可以執行下列命令以檢視訂用帳戶： 
+
+```azurecli
+az account list --output table
+```
+
+尋找 *IsDefault* 為 *True* 的訂用帳戶。
+如果這不是您要使用的訂用帳戶，您可以變更預設訂用帳戶：
+
+```azurecli
+az account set --subscription <subscription ID>
+```
 
 ## <a name="create-a-kubernetes-cluster-enabled-for-azure-dev-spaces"></a>建立已針對 Azure Dev Spaces 啟用的 Kubernetes 叢集
 
-1. 在 https://portal.azure.com 登入 Azure 入口網站。
-1. 選擇 [建立資源] > 搜尋 **Kubernetes** > 選取 [Kubernetes Service] > [建立]。
+在命令提示字元中，於[支援 Azure Dev Spaces 的區域][supported-regions]建立資源群組。
 
-   在每個「建立 Kubernetes 叢集」表單的標題底下完成下列步驟，並確認您所選擇的[地區支援 Azure Dev Spaces](https://docs.microsoft.com/azure/dev-spaces/#a-rapid,-iterative-kubernetes-development-experience-for-teams)。
+```azurecli
+az group create --name MyResourceGroup --location <region>
+```
 
-   - **專案詳細資料**：選取 Azure 訂用帳戶，以及新的或現有的 Azure 資源群組。
-   - **叢集詳細資料**：輸入 AKS 叢集的名稱、地區、版本及 DNS 名稱前置詞。
-   - **級別**：選取 AKS 代理程式節點的 VM 大小和節點數目。 如果您開始使用 Azure Dev Spaces，一個節點就足以瀏覽所有功能。 節點計數可以輕易在叢集部署後隨時調整。 請注意，VM 大小無法在 AKS 叢集建立後變更。 不過，部署 AKS 叢集後，您就可以輕鬆地建立具有較大 VM 的新 AKS 叢集，而如果您需要相應增加，請使用 Dev Spaces 重新部署到該較大叢集。
+使用下列命令來建立 Kubernetes 叢集：
 
-   ![Kubernetes 組態設定](media/common/Kubernetes-Create-Cluster-2.PNG)
+```azurecli
+az aks create -g MyResourceGroup -n MyAKS --location <region> --generate-ssh-keys
+```
 
+建立叢集需要幾分鐘的時間。
 
-   完成時，選取 [下一步:驗證]。
+### <a name="configure-your-aks-cluster-to-use-azure-dev-spaces"></a>設定您的 AKS 叢集以使用 Azure Dev Spaces
 
-1. 選擇您想要的角色型存取控制 (RBAC) 設定。 Azure Dev Spaces 會在啟用或停用 RBAC 的情況下支援叢集。
+使用其中包含您 AKS 叢集和 AKS 叢集名稱的資源群組，輸入下列 Azure CLI 命令。 命令會使用 Azure Dev Spaces 的支援來設定您的叢集。
 
-    ![RBAC 設定](media/common/k8s-RBAC.PNG)
-
-1. 選取 [檢閱 + 建立]，然後在完成時選取 [建立]。
+   ```azurecli
+   az aks use-dev-spaces -g MyResourceGroup -n MyAKS
+   ```
+   
+> [!IMPORTANT]
+> Azure Dev Spaces 設定程序會移除叢集中的 `azds` 命名空間 (如果存在的話)。
 
 ## <a name="get-the-visual-studio-tools"></a>取得 Visual Studio 工具
-1. 安裝最新版的 [Visual Studio 2017](https://www.visualstudio.com/vs/)
-1. 在 Visual Studio 安裝程式中，確定已選取以下的工作負載：
-    * ASP.NET 和 Web 開發
-1. 安裝[適用於 Kubernetes 的 Visual Studio Tools](https://aka.ms/get-azds-visualstudio)
+在具有 Azure 開發工作負載的 Windows 上安裝最新版的 [Visual Studio 2019](https://www.visualstudio.com/vs/)。
 
 ## <a name="create-a-web-app-running-in-a-container"></a>建立在容器中執行的 Web 應用程式
 
@@ -65,7 +89,7 @@ ms.locfileid: "59425758"
 
 ### <a name="create-an-aspnet-web-app"></a>建立 ASP.NET Web 應用程式
 
-在 Visual Studio 2017 中，建立新的專案。 目前，此專案必須是 **ASP.NET Core Web 應用程式**。 將專案命名為 '**webfrontend**'。
+在 Visual Studio 中，建立新的專案。 目前，此專案必須是 **ASP.NET Core Web 應用程式**。 將專案命名為 '**webfrontend**'。
 
 ![](media/get-started-netcore-visualstudio/NewProjectDialog1.png)
 
@@ -128,9 +152,16 @@ Visual Studio 會與開發人員空間通訊，以建置和部署應用程式，
 Azure 開發人員空間不只讓程式碼中在 Kubernetes 中執行 - 還可讓您快速地反覆查看您的程式碼變更是否在雲端 Kubernetes 環境中生效。
 
 ### <a name="update-a-content-file"></a>更新內容檔案
-1. 找出檔案 `./Views/Home/Index.cshtml` 並進行 HTML 編輯。 例如，將第 70 行 `<h2>Application uses</h2>` 變更如下：`<h2>Hello k8s in Azure!</h2>`
-1. 儲存檔案。
-1. 移至您的瀏覽器並重新整理頁面。 您應該會看到網頁顯示更新後的 HTML。
+
+
+1. 找出檔案 `./Views/Home/Index.cshtml` 並進行 HTML 編輯。 例如，將[第 73 行 `<h2>Application uses</h2>`](https://github.com/Azure/dev-spaces/blob/master/samples/dotnetcore/getting-started/webfrontend/Views/Home/Index.cshtml#L73) 變更如下： 
+  
+    ```html
+    <h2>Hello k8s in Azure!</h2>`
+    ```
+
+2. 儲存檔案。
+3. 移至您的瀏覽器並重新整理頁面。 您應該會看到網頁顯示更新後的 HTML。
 
 發生什麼情形？ 編輯內容檔案 (例如 HTML 和 CSS) 時，不需要在 .NET Core Web 應用程式中重新編譯，所以作用中 F5 工作階段會自動將任何修改過的內容檔案，直接同步處理到 AKS 中的執行中容器，您即可立即查看內容編輯。
 
@@ -150,3 +181,6 @@ Azure 開發人員空間會以累加方式重新編譯現有容器中的程式�
 
 > [!div class="nextstepaction"]
 > [了解多重服務開發](multi-service-netcore-visualstudio.md)
+
+
+[supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service

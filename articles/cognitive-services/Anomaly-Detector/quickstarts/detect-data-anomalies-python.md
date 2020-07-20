@@ -1,152 +1,106 @@
 ---
-title: 快速入門：偵測異常行為以批次使用異常偵測器 REST API 與 Python |Microsoft Docs
-description: 使用異常偵測器 API 來偵測異常狀況的資料序列視為一個批次，或對串流資料。
+title: 快速入門：使用異常偵測器 REST API 與 Python 偵測批次異常行為
+titleSuffix: Azure Cognitive Services
+description: 在本快速入門中，使用 Anomaly Detector API 來偵測資料序列中的異常狀況 (以批次或串流資料的方式)。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
-ms.topic: article
-ms.date: 03/26/2019
+ms.topic: quickstart
+ms.date: 06/30/2020
 ms.author: aahi
-ms.openlocfilehash: 6b4ddcadfe63f74d115c155354a276e45c6b53f9
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
-ms.translationtype: MT
+ms.custom: tracking-python
+ms.openlocfilehash: 81145dd6409bf93195f6b805ed260d945e7738f2
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59544495"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85982028"
 ---
-# <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-python"></a>快速入門：偵測時間序列資料使用異常偵測器 REST API 和 Python 中的異常
+# <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-python"></a>快速入門：使用異常偵測器 REST API 與 Python 偵測時間序列資料中的異常行為
 
-使用本快速入門中，若要開始使用異常偵測器 API 的兩個偵測模式來偵測異常的時間序列資料。 此 Python 應用程式會傳送包含 JSON 格式的時間序列資料，兩個 API 要求，並取得回應。
+使用本快速入門以開始使用 Anomaly Detector API 的兩個偵測模式，來偵測時間序列資料中的異常狀況。 此 Python 應用程式會傳送包含 JSON 格式時間序列資料的兩個 API 要求，並取得回應。
 
 | API 要求                                        | 應用程式輸出                                                                                                                         |
 |----------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
-| 以批次偵測異常行為                        | JSON 回應，包含時間序列資料和任何偵測到的異常狀況的位置中的每個資料點異常狀態 （和其他資料）。 |
-| 偵測異常的狀態最新的資料點 | JSON 回應，其中包含最新的資料點，時間序列資料中的異常狀態 （和其他資料）。                                                                                                                                         |
+| 以批次方式偵測異常狀況                        | JSON 回應包含時間序列資料中每個資料點的異常狀態 (和其他資料)，以及偵測到的任何異常狀況的位置。 |
+| 偵測最新資料點的異常狀態 | JSON 回應包含時間序列資料中最新資料點的異常狀態 (和其他資料)。                                                                                                                                         |
 
- 雖然此應用程式是以 Python 撰寫的，但 API 是一種與大多數程式設計語言都相容的 RESTful Web 服務。
+ 雖然此應用程式是以 Python 撰寫的，但 API 是一種與大多數程式設計語言都相容的 RESTful Web 服務。 您可以在 [GitHub](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/python-detect-anomalies.py) 上找到此快速入門的原始程式碼。
 
 ## <a name="prerequisites"></a>必要條件
 
+- Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)
+- 擁有 Azure 訂用帳戶之後，在 Azure 入口網站中<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector"  title="建立異常偵測器資源"  target="_blank">建立異常偵測器資源<span class="docon docon-navigate-external x-hidden-focus"></span></a>，以取得您的金鑰和端點。 部署完成後，按一下 [移至資源] 按鈕。
+    - 您需要來自所建立資源的金鑰和端點，以將應用程式連線至異常偵測器 API。 您稍後會在快速入門中將金鑰和端點貼到下列程式碼中。
+    您可以使用免費定價層 (`F0`) 來試用服務，之後可升級至付費層以用於實際執行環境。
 - [Python 2.x 或 3.x](https://www.python.org/downloads/)
+- Python 的[要求程式庫](https://pypi.org/project/requests/)
 
-- [要求程式庫](http://docs.python-requests.org)適用於 python
+- JSON 檔案包含時間序列資料點。 此快速入門的範例資料可以在 [GitHub](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/request-data.json) 上找到。
 
-- JSON 檔案包含時間序列資料點。 本快速入門中的範例資料都位於[GitHub](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/request-data.json)。
-
-[!INCLUDE [cognitive-services-anomaly-detector-data-requirements](../../../../includes/cognitive-services-anomaly-detector-data-requirements.md)]
-
-[!INCLUDE [cognitive-services-anomaly-detector-signup-requirements](../../../../includes/cognitive-services-anomaly-detector-signup-requirements.md)]
-
+[!INCLUDE [anomaly-detector-environment-variables](../includes/environment-variables.md)]
 
 ## <a name="create-a-new-application"></a>建立新的應用程式
 
-1. 在您慣用的文字編輯器或 IDE 中，建立新的 python 檔案。 新增下列匯入。
+1. 建立新的 Python 檔案，並新增下列匯入項目。
 
-    ```python
-    import requests
-    import json
-    ```
+    [!code-python[import statements](~/samples-anomaly-detector/quickstarts/python-detect-anomalies.py?name=imports)]
 
-2. 建立您的訂用帳戶金鑰和您的端點的變數。 以下是您可以用於異常偵測的 Uri。 這些將會附加至您的服務端點，稍後若要建立的 API 要求 Url。
+2. 針對您的訂用帳戶金鑰和端點建立變數。 以下是您可以用於異常偵測的 URI。 這些稍後將會附加至您的服務端點，以建立 API 要求 URL。
 
     |偵測方法  |URI  |
     |---------|---------|
     |批次偵測    | `/anomalydetector/v1.0/timeseries/entire/detect`        |
-    |在最新的資料點上的偵測     | `/anomalydetector/v1.0/timeseries/last/detect`        |
+    |最新資料點上的偵測     | `/anomalydetector/v1.0/timeseries/last/detect`        |
 
-    ```python
-    batch_detection_url = "/anomalydetector/v1.0/timeseries/entire/detect"
-    latest_point_detection_url = "/anomalydetector/v1.0/timeseries/last/detect"
+    [!code-python[initial endpoint and key variables](~/samples-anomaly-detector/quickstarts/python-detect-anomalies.py?name=vars)]
 
-    endpoint = "[YOUR_ENDPOINT_URL]"
-    subscription_key = "[YOUR_SUBSCRIPTION_KEY]"
-    data_location = "[PATH_TO_TIME_SERIES_DATA]"
-    ```
+3. 開啟檔案並使用 `json.load()` 來讀取 JSON 資料檔案。
 
-3. 讀取 JSON 資料檔案中開啟它，並使用`json.load()`。
-
-    ```python
-    file_handler = open(data_location)
-    json_data = json.load(file_handler)
-    ```
+    [!code-python[Open JSON file and read in the data](~/samples-anomaly-detector/quickstarts/python-detect-anomalies.py?name=fileLoad)]
 
 ## <a name="create-a-function-to-send-requests"></a>建立傳送要求的函式
 
-1. 建立新的函式呼叫`send_request()`採用上面所建立的變數。 然後執行下列步驟。
+1. 建立名為 `send_request()` 的新函式，取用上面建立的變數。 然後執行下列步驟。
 
-2. 建立要求的標頭的字典。 設定`Content-Type`要`application/json`，並新增您的訂用帳戶金鑰，以`Ocp-Apim-Subscription-Key`標頭。
+2. 建立要求標頭的字典。 將 `Content-Type` 設為 `application/json`，並將您的訂用帳戶金鑰新增至 `Ocp-Apim-Subscription-Key` 標頭。
 
-3. 傳送要求使用`requests.post()`。 結合您的端點，並針對完整的異常偵測 URL 要求 URL，並包含您的標頭和 json 要求資料。 然後傳回回應。
+3. 使用 `requests.post()` 傳送要求。 針對完整要求 URL 合併您的端點與異常偵測 URL，並包含標頭和 json 要求資料。 然後傳回回應。
 
-```python
-def send_request(endpoint, url, subscription_key, request_data):
-    headers = {'Content-Type': 'application/json', 'Ocp-Apim-Subscription-Key': subscription_key}
-    response = requests.post(endpoint+url, data=json.dumps(request_data), headers=headers)
-    return json.loads(response.content.decode("utf-8"))
-```
+    [!code-python[request method](~/samples-anomaly-detector/quickstarts/python-detect-anomalies.py?name=request)]
 
-## <a name="detect-anomalies-as-a-batch"></a>以批次偵測異常行為
+## <a name="detect-anomalies-as-a-batch"></a>以批次方式偵測異常狀況
 
-1. 建立一個方法，叫做`detect_batch()`來偵測異常行為，整個批次的資料。 呼叫`send_request()`上方建立端點、 url、 訂用帳戶金鑰和 json 資料的方法。
+1. 建立名為 `detect_batch()` 的方法，以批次方式偵測整個資料的異常狀況。 使用端點、URL、訂用帳戶金鑰和 json 資料呼叫上方建立的 `send_request()` 方法。
 
-2. 呼叫`json.dumps()`格式化，並列印到主控台的結果。
+2. 在結果上呼叫 `json.dumps()` 以將其格式化，並列印到主控台。
 
-3. 如果回應包含`code`欄位中，列印的錯誤碼和錯誤訊息。
+3. 如果回應包含 `code` 欄位，則列印錯誤碼和錯誤訊息。
 
-4. 否則資料集中尋找異常狀況的位置。 回應的`isAnomaly`欄位包含與指定的資料點是否為異常狀況相關的布林值。 逐一查看清單中，並列印的任何索引`True`值。 如果找不到任何，這些值會對應到的異常資料點索引。
+4. 否則，在資料集中尋找異常狀況的位置。 回應的 `isAnomaly` 欄位包含與指定的資料點是否為異常相關的布林值。 逐一查看清單，並列印任何 `True` 值的索引。 如果有找到，這些值會對應到異常資料點的索引。
 
-```python
-def detect_batch(request_data):
-    print("Detecting anomalies as a batch")
-    result = send_request(endpoint, batch_detection_url, subscription_key, request_data)
-    print(json.dumps(result, indent=4))
+    [!code-python[detection as a batch](~/samples-anomaly-detector/quickstarts/python-detect-anomalies.py?name=detectBatch)]
 
-    if result.get('code') != None:
-        print("Detection failed. ErrorCode:{}, ErrorMessage:{}".format(result['code'], result['message']))
-    else:
-        # Find and display the positions of anomalies in the data set
-        anomalies = result["isAnomaly"]
-        print("Anomalies detected in the following data positions:")
-        for x in range(len(anomalies)):
-            if anomalies[x] == True:
-                print (x)
-```
+## <a name="detect-the-anomaly-status-of-the-latest-data-point"></a>偵測最新資料點的異常狀態
 
-## <a name="detect-the-anomaly-status-of-the-latest-data-point"></a>偵測異常的狀態最新的資料點
+1. 建立名為 `detect_latest()` 的方法，以判斷時間序列中最新的資料點是否為異常。 使用端點、URL、訂用帳戶金鑰和 json 資料呼叫上方的 `send_request()` 方法。 
 
-1. 建立一個方法，叫做`detect_latest()`判斷時間序列中最新的資料點是否為異常狀況。 呼叫`send_request()`上面的方法與您的端點、 url、 訂用帳戶金鑰和 json 資料。 
+2. 在結果上呼叫 `json.dumps()` 以將其格式化，並列印到主控台。
 
-2. 呼叫`json.dumps()`格式化，並列印到主控台的結果。
+    [!code-python[Latest point detection](~/samples-anomaly-detector/quickstarts/python-detect-anomalies.py?name=detectLatest)]
 
-```python
-def detect_latest(request_data):
-    print("Determining if latest data point is an anomaly")
-    # send the request, and print the JSON result
-    result = send_request(endpoint, latest_point_detection_url, subscription_key, request_data)
-    print(json.dumps(result, indent=4))
-```
+## <a name="send-the-request"></a>傳送要求
 
-## <a name="load-your-time-series-data-and-send-the-request"></a>載入時間序列資料，並傳送要求
+呼叫上面所建立的異常偵測方法。
 
-1. 載入 JSON 時間序列資料開啟的檔案處理常式，並使用`json.load()`上面。 接著呼叫異常上面所建立的偵測方法。
-
-```python
-file_handler = open(data_location)
-json_data = json.load(file_handler)
-
-detect_batch(json_data)
-detect_latest(json_data)
-```
+[!code-python[Method calls](~/samples-anomaly-detector/quickstarts/python-detect-anomalies.py?name=methodCalls)]
 
 ### <a name="example-response"></a>範例回應
 
-成功的回應是以 JSON 格式傳回。 按一下下列連結，可在 GitHub 上檢視 JSON 回應：
+成功的回應會以 JSON 格式傳回。 按一下以下連結，在 GitHub 上檢視 JSON 回應：
 * [批次偵測回應範例](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/batch-response.json)
-* [最新點偵測回應範例](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/latest-point-response.json)
+* [最新資料點偵測回應範例](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/latest-point-response.json)
 
-## <a name="next-steps"></a>後續步驟
-
-> [!div class="nextstepaction"]
-> [REST API 參考資料](https://westus2.dev.cognitive.microsoft.com/docs/services/AnomalyDetector/operations/post-timeseries-entire-detect)
+[!INCLUDE [anomaly-detector-next-steps](../includes/quickstart-cleanup-next-steps.md)]

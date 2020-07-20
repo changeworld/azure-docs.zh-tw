@@ -4,17 +4,17 @@ description: 了解如何使用 Mongoose 架構來儲存和管理 Azure Cosmos D
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
-ms.topic: conceptual
-ms.date: 12/26/2018
-author: sivethe
-ms.author: sivethe
+ms.topic: how-to
+ms.date: 03/20/2020
+author: timsander1
+ms.author: tisande
 ms.custom: seodec18
-ms.openlocfilehash: 23275bc639b445b55cafb72c929514541ba00660
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2ccd352950117d8427809616f78f4a0691319cdf
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61333234"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86023664"
 ---
 # <a name="connect-a-nodejs-mongoose-application-to-azure-cosmos-db"></a>將 Node.js Mongoose 應用程式連線至 Azure Cosmos DB
 
@@ -32,9 +32,19 @@ Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您可以�
 
 ## <a name="create-a-cosmos-account"></a>建立 Cosmos 帳戶
 
-讓我們建立一個 Cosmos 帳戶。 如果您已經擁有想要使用的帳戶，就可以直接跳到設定您的 Node.js 應用程式。 如果您是使用「Azure Cosmos DB 模擬器」，請依照 [Azure Cosmos DB 模擬器](local-emulator.md)的步驟來設定模擬器，然後直接跳到設定您的 Node.js 應用程式。
+讓我們建立一個 Cosmos 帳戶。 如果您已經擁有想要使用的帳戶，就可以直接跳到設定您的 Node.js 應用程式。 如果您使用 Azure Cosmos DB 模擬器，請依照[Azure Cosmos DB 模擬器](local-emulator.md)的步驟來設定模擬器，然後直接跳到設定您的 Node.js 應用程式。
 
 [!INCLUDE [cosmos-db-create-dbaccount-mongodb](../../includes/cosmos-db-create-dbaccount-mongodb.md)]
+
+### <a name="create-a-database"></a>建立資料庫 
+在此應用程式中，我們將討論在 Azure Cosmos DB 中建立集合的兩種方式： 
+- **將每個物件模型儲存在不同的集合中**：我們建議您[建立具有專用輸送量的資料庫](set-throughput.md#set-throughput-on-a-database)。 使用此容量模型可為您提供更佳的成本效益。
+
+    :::image type="content" source="./media/mongodb-mongoose/db-level-throughput.png" alt-text="Node.js 教學課程-Azure 入口網站的螢幕擷取畫面，顯示如何在 Azure Cosmos DB 帳戶的資料總管中建立資料庫，以搭配 Mongoose Node 模組使用":::
+
+- **將所有物件模型儲存在單一 Cosmos DB 集合中**：如果您想要在單一集合中儲存所有模型，您可以只建立新的資料庫，而不選取 [布建輸送量] 選項。 使用此容量模型會針對每個物件模型，建立每個集合各自的輸送量容量。
+
+建立資料庫之後，您將會在下面的環境變數中使用此名稱 `COSMOSDB_DBNAME` 。
 
 ## <a name="set-up-your-nodejs-application"></a>設定您的 Node.js 應用程式
 
@@ -47,8 +57,8 @@ Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您可以�
 
     回答下列問題，您的專案將會準備就緒。
 
-1. 將新檔案加入到資料夾，並將它命名為 ```index.js```。
-1. 使用其中一種 ```npm install``` 選項安裝必要的套件：
+2. 將新檔案加入到資料夾，並將它命名為 ```index.js```。
+3. 使用其中一種 ```npm install``` 選項安裝必要的套件：
    * Mongoose：```npm install mongoose@5 --save```
 
      > [!Note]
@@ -59,23 +69,28 @@ Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您可以�
      >[!Note]
      > ```--save``` 旗標會將相依性加入到 package.json 檔案。
 
-1. 匯入您 index.js 檔案中的相依性。
+4. 匯入您 index.js 檔案中的相依性。
+
     ```JavaScript
-    var mongoose = require('mongoose');
-    var env = require('dotenv').load();    //Use the .env file to load the variables
+   var mongoose = require('mongoose');
+   var env = require('dotenv').config();   //Use the .env file to load the variables
     ```
 
-1. 將您的 Cosmos DB 連接字串和 Cosmos DB 名稱加入到 ```.env``` 檔案。
+5. 將您的 Cosmos DB 連接字串和 Cosmos DB 名稱加入到 ```.env``` 檔案。 以您自己的 Cosmos 帳戶名稱和資料庫名稱取代預留位置 {cosmos-account-name} 和 {dbname}，但不含括弧符號。
 
     ```JavaScript
-    COSMOSDB_CONNSTR=mongodb://{cosmos-user}.documents.azure.com:10255/{dbname}
-    COSMODDB_USER=cosmos-user
-    COSMOSDB_PASSWORD=cosmos-secret
+   # You can get the following connection details from the Azure portal. You can find the details on the Connection string pane of your Azure Cosmos account.
+
+   COSMODDB_USER = "<Azure Cosmos account's user name, usually the database account name>"
+   COSMOSDB_PASSWORD = "<Azure Cosmos account password, this is one of the keys specified in your account>"
+   COSMOSDB_DBNAME = "<Azure Cosmos database name>"
+   COSMOSDB_HOST= "<Azure Cosmos Host name>"
+   COSMOSDB_PORT=10255
     ```
 
-1. 將下列程式碼加入到 index.js 結尾，以使用 Mongoose 架構連線到 Cosmos DB。
+6. 將下列程式碼加入到 index.js 結尾，以使用 Mongoose 架構連線到 Cosmos DB。
     ```JavaScript
-    mongoose.connect(process.env.COSMOSDB_CONNSTR+"?ssl=true&replicaSet=globaldb", {
+   mongoose.connect("mongodb://"+process.env.COSMOSDB_HOST+":"+process.env.COSMOSDB_PORT+"/"+process.env.COSMOSDB_DBNAME+"?ssl=true&replicaSet=globaldb", {
       auth: {
         user: process.env.COSMODDB_USER,
         password: process.env.COSMOSDB_PASSWORD
@@ -89,19 +104,15 @@ Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您可以�
 
     一旦您連線到 Azure Cosmos DB，就可以在 Mongoose 中立即開始設定物件模型。
 
-## <a name="caveats-to-using-mongoose-with-cosmos-db"></a>使用 Mongoose 搭配 Cosmos DB 的注意事項
+## <a name="best-practices-for-using-mongoose-with-cosmos-db"></a>搭配 Cosmos DB 使用 Mongoose 的最佳做法
 
-對於您建立的每個模型，Mongoose 會建立新的集合。 不過，考慮到 Cosmos DB 的按集合計費模型，如果您有多個以稀疏方式填入的物件模型，它可能不是最具成本效益的方式。
+對於您建立的每個模型，Mongoose 會建立新的集合。 這是使用先前討論過的[資料庫層級輸送量選項](set-throughput.md#set-throughput-on-a-database)來解決的最佳做法。 若要使用單一集合，您必須使用 Mongoose[鑒別子](https://mongoosejs.com/docs/discriminators.html)。 鑑別子是結構描述繼承機制。 它們可讓您在相同的底層 MongoDB 集合上建立多個有重疊之結構描述的模型。
 
-本逐步解說涵蓋兩種模型。 首先我們會逐步解說每個集合儲存一種類型的資料。 這是 Mongoose 的實際行為。
-
-Mongoose 也有稱為[鑑別子](https://mongoosejs.com/docs/discriminators.html) \(英文\) 的概念。 鑑別子是結構描述繼承機制。 它們可讓您在相同的底層 MongoDB 集合上建立多個有重疊之結構描述的模型。
-
-您可以將各種資料模型儲存在同一集合中，然後在查詢時使用篩選子句，只提取所需的資料。
+您可以將各種資料模型儲存在同一集合中，然後在查詢時使用篩選子句，只提取所需的資料。 讓我們逐步解說每個模型。
 
 ### <a name="one-collection-per-object-model"></a>每個物件模型一個集合
 
-預設的 Mongoose 行為是在每次您建立物件模型時建立一個 MongoDB 集合。 本節探討如何使用適用於 MongoDB 的 Azure Cosmos DB API 達成這個目的。 當您的物件模型含有大量資料時，建議使用此方法。 這是 Mongoose 的預設操作模型，因此，如果您精通 Mongoose，您可能已很熟悉。
+本節探討如何使用適用於 MongoDB 的 Azure Cosmos DB API 達成這個目的。 這是我們建議的方法，因為它可讓您控制成本和產能。 因此，資料庫的要求單位數量並不取決於物件模型的數目。 這是 Mongoose 的預設作業模式，因此您可能會很熟悉這種情況。
 
 1. 再次開啟您的 ```index.js```。
 
@@ -183,7 +194,7 @@ Mongoose 也有稱為[鑑別子](https://mongoosejs.com/docs/discriminators.html
 
 1. 現在，移至 Azure 入口網站，您會發現 Cosmos DB 中建立了兩個集合。
 
-    ![Node.js 教程 - Azure 门户的屏幕截图，其中显示 Azure Cosmos DB 帐户，并突出显示了多个集合名称 - Node 数据库][multiple-coll]
+   :::image type="content" source="./media/mongodb-mongoose/mongo-mutliple-collections.png" alt-text="Node.js 教學課程-Azure 入口網站的螢幕擷取畫面，其中顯示 Azure Cosmos DB 帳戶，並反白顯示多個集合名稱-Node 資料庫":::
 
 1. 最後，讓我們從 Cosmos DB 讀取資料。 由於我們使用的是預設的 Mongoose 作業模型，讀取作業會和 Mongoose 的其他讀取作業相同。
 
@@ -288,7 +299,7 @@ Mongoose 也有稱為[鑑別子](https://mongoosejs.com/docs/discriminators.html
 
 1. 現在，如果您返回 Azure 入口網站，您會發現您只有一個稱為 ```alldata``` 的集合，其中含有 'Family' 和 'VacationDestinations' 資料。
 
-    ![Node.js 教程 - Azure 门户的屏幕截图，其中显示 Azure Cosmos DB 帐户，并突出显示了集合名称 - Node 数据库][alldata]
+   :::image type="content" source="./media/mongodb-mongoose/mongo-collections-alldata.png" alt-text="Node.js 教學課程-顯示 Azure Cosmos DB 帳戶之 Azure 入口網站的螢幕擷取畫面，其中已反白顯示集合名稱-節點資料庫":::
 
 1. 此外，請注意，每個物件有另一個稱為 ```__type``` 的屬性，可協助您區分兩個不同的物件模型。
 
@@ -312,5 +323,4 @@ Mongoose 也有稱為[鑑別子](https://mongoosejs.com/docs/discriminators.html
 - 了解如何[使用 Robo 3T](mongodb-robomongo.md) 搭配 Azure Cosmos DB 適用於 MongoDB 的 API。
 - 使用 Azure Cosmos DB 適用於 MongoDB 的 API 瀏覽 Cosmos DB [範例](mongodb-samples.md)。
 
-[alldata]: ./media/mongodb-mongoose/mongo-collections-alldata.png
-[multiple-coll]: ./media/mongodb-mongoose/mongo-mutliple-collections.png
+[dbleveltp]: ./media/mongodb-mongoose/db-level-throughput.png

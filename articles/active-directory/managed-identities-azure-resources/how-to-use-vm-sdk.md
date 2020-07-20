@@ -1,5 +1,5 @@
 ---
-title: 如何搭配 Azure SDK 使用 Azure VM 的 Azure 資源受控識別
+title: 在 Azure VM 上使用受控識別搭配 Azure Sdk-Azure AD
 description: 搭配具有 Azure 資源受控識別的 Azure VM 使用 Azure SDK 的程式碼範例。
 services: active-directory
 documentationcenter: ''
@@ -9,18 +9,17 @@ editor: ''
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00c86562e0fdb4e6d62d44088b7aba08e45e22a4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 8edcf144aceb96092bd92690533e1bdd03450896
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60293229"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608427"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-with-azure-sdks"></a>如何搭配 Azure SDK 使用 Azure VM 的 Azure 資源受控識別 
 
@@ -42,7 +41,7 @@ ms.locfileid: "60293229"
 | .NET Core       | [使用 Azure 資源的受控識別從 Linux VM 呼叫 Azure 服務](https://github.com/Azure-Samples/linuxvm-msi-keyvault-arm-dotnet/) |
 | Node.js         | [使用 Azure 資源的受控識別管理資源](https://azure.microsoft.com/resources/samples/resources-node-manage-resources-with-msi/) |
 | Python          | [使用 Azure 資源的受控識別直接從虛擬機器內驗證](https://azure.microsoft.com/resources/samples/resource-manager-python-manage-resources-with-msi/) |
-| Ruby            | [從 Azure 資源的受控識別啟用的虛擬機器管理資源](https://azure.microsoft.com/resources/samples/resources-ruby-manage-resources-with-msi/) |
+| Ruby            | [從 Azure 資源的受控識別啟用的虛擬機器管理資源](https://github.com/Azure-Samples/resources-ruby-manage-resources-with-msi/) |
 
 ## <a name="next-steps"></a>後續步驟
 

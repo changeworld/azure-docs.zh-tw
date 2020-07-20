@@ -1,34 +1,35 @@
 ---
-title: Azure SignalR Service 無伺服器快速入門 - JavaScript
+title: 使用 JavaScript 搭配 Azure Functions 與 SignalR Service 來建立聊天室
 description: 說明如何使用 Azure SignalR 服務與 Azure Functions 來建立聊天室的快速入門。
 author: sffamily
 ms.service: signalr
 ms.devlang: javascript
 ms.topic: quickstart
-ms.date: 03/04/2019
+ms.date: 12/14/2019
 ms.author: zhshang
-ms.openlocfilehash: 0ca73ed314b254f9f73833bb2c4311f03f62508f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: e947864633bf66005a39c89e7d81aef0c96c93e9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59264194"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85829579"
 ---
-# <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-javascript"></a>快速入門：使用 JavaScript 搭配 Azure Functions 與 SignalR 服務來建立聊天室
+# <a name="quickstart-use-javascript-to-create-a-chat-room-with-azure-functions-and-signalr-service"></a>快速入門：使用 JavaScript 搭配 Azure Functions 與 SignalR Service 來建立聊天室
 
-Azure SignalR 服務可讓您輕鬆地新增即時功能到您的應用程式。 Azure Functions 是無伺服器平台，可讓您在不需要管理任何基礎結構的情況下執行您的程式碼。 在此快速入門中，了解如何使用 SignalR 服務與 Functions 來建置無伺服器的即時聊天應用程式。
+Azure SignalR Service 可讓您輕鬆地在應用程式中新增即時功能，而 Azure Functions 是無伺服器平台，可讓您在不需管理任何基礎結構的情況下執行程式碼。 在此快速入門中，您會使用 JavaScript 搭配 SignalR Service 和 Functions，建置無伺服器的即時聊天應用程式。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-此快速入門可以在 macOS、Windows 或 Linux 上執行。
+- 程式碼編輯器，例如 [Visual Studio Code](https://code.visualstudio.com/)。
+- 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+- [Azure Functions Core Tools](https://github.com/Azure/azure-functions-core-tools#installing) 第 2 版或更新版本。 用於在本機執行 Azure Function 應用程式。
+- [Node.js](https://nodejs.org/en/download/) (10.x 版)
 
-請確定您已安裝程式碼編輯器，如 [Visual Studio Code](https://code.visualstudio.com/) \(英文\)。
+   > [!NOTE]
+   > 這些範例應可用於其他版本的 Node.js，請參閱 [Azure Functions 執行階段版本文件](../azure-functions/functions-versions.md#languages)。
 
-安裝 [Azure Functions Core Tools (v2)](https://github.com/Azure/azure-functions-core-tools#installing) 以在本機執行 Azure Function 應用程式。
-
-為了安裝延伸模組，Azure Functions Core Tools 目前需要安裝 [.NET Core SDK](https://www.microsoft.com/net/download)。 不過，建置 JavaScript Azure Function 應用程式不需要 .NET 知識。
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+> [!NOTE]
+> 此快速入門可以在 macOS、Windows 或 Linux 上執行。
 
 ## <a name="log-in-to-azure"></a>登入 Azure
 
@@ -44,7 +45,7 @@ Azure SignalR 服務可讓您輕鬆地新增即時功能到您的應用程式。
 
     ![搜尋 SignalR 服務執行個體](media/signalr-quickstart-azure-functions-csharp/signalr-quickstart-search-instance.png)
 
-1. 選取 [金鑰] 以檢視 SignalR 服務執行個體的連接字串。
+1. 選取 [金鑰]  以檢視 SignalR 服務執行個體的連接字串。
 
 1. 選取並複製主要連接字串。
 
@@ -61,13 +62,7 @@ Azure SignalR 服務可讓您輕鬆地新增即時功能到您的應用程式。
     - **negotiate** - 使用 *SignalRConnectionInfo* 輸入繫結來產生並傳回有效的連線資訊。
     - **messages** - 在要求主體中接收聊天訊息，並使用 *SignalR* 輸出繫結來將訊息廣播給所有已連線的用戶端應用程式。
 
-1. 在終端機中，確定您處於 *src/chat/javascript* 資料夾中。 使用 Azure Functions Core Tools 安裝執行應用程式所需的擴充功能。
-
-    ```bash
-    func extensions install
-    ```
-
-1. 執行函式應用程式。
+1. 在終端機中，確定您處於 *src/chat/javascript* 資料夾中。 執行函式應用程式。
 
     ```bash
     func start
@@ -84,4 +79,4 @@ Azure SignalR 服務可讓您輕鬆地新增即時功能到您的應用程式。
 在此快速入門中，您已在 VS Code 中建置並執行即時無伺服器應用程式。 接著，您將了解入和從 VS Code 部署 Azure Functions。
 
 > [!div class="nextstepaction"]
-> [使用 VS Code 部署 Azure Functions](https://code.visualstudio.com/tutorials/functions-extension/getting-started)
+> [使用 VS Code 部署 Azure Functions](/azure/developer/javascript/tutorial-vscode-serverless-node-01)

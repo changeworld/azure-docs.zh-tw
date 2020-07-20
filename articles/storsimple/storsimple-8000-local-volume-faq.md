@@ -9,20 +9,20 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/26/2017
 ms.author: manuaery
-ms.openlocfilehash: aa69d8b07d31b5cf0386e34c113475cbf4191891
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 483fa81b409e1bd740af85b431a86b6c814831e6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60319542"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85511505"
 ---
 # <a name="storsimple-locally-pinned-volumes-frequently-asked-questions-faq"></a>StorSimple 本機固定磁碟區︰常見問題集 (FAQ)
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 以下是在建立 StorSimple 本機固定磁碟區、將階層式磁碟區轉換成本機固定磁碟區 (反之亦然)，或備份及還原本機固定磁碟區時，您可能會有的問題和解答。
 
 問題和解答可分為下列幾個類別：
@@ -83,7 +83,7 @@ ms.locfileid: "60319542"
 
 同樣地，如果正在擴充現有的本機磁碟區或將分層磁碟區轉換成固定在本機的磁碟區，則建立新固定在本機之磁碟區的作業會排入佇列，直到上一個作業完成為止。 擴充本機固定磁碟區的大小，涉及擴充該磁碟區的現有本機空間。 從階層式轉換成本機固定磁碟區也涉及為所產生的本機固定磁碟區建立本機空間。 在這兩項作業中，建立或擴充本機空間都是長時間執行的作業。
 
-您可以在 StorSimple 裝置管理員服務的 [作業] 刀鋒視窗中檢視這些作業。 系統會持續更新目前積極處理中的作業，以反映空間佈建的進度。 其餘的固定在本機之磁碟區作業會被標示為執行中，但其進度會停止，系統會依其佇列順序來挑選它們。
+您可以在 StorSimple 裝置管理員服務的 [作業]**** 刀鋒視窗中檢視這些作業。 系統會持續更新目前積極處理中的作業，以反映空間佈建的進度。 其餘的固定在本機之磁碟區作業會被標示為執行中，但其進度會停止，系統會依其佇列順序來挑選它們。
 
 **問：**  我刪除了本機固定磁碟區。 當我嘗試建立新的磁碟區時，為什麼看不到回收的空間反映於可用的空間？
 
@@ -114,7 +114,7 @@ ms.locfileid: "60319542"
 
 此警示警告會通知您可能發生這種情況，並確保您透過下列方式及時加以處理：檢閱您的本機快照排程以改為較不常製作本機快照，或刪除不再需要的較舊本機快照。
 
-如果本機快照失效，您會收到資訊警示，伴隨著已失效本機快照的時間戳記清單，通知您特定備份原則的本機快照已經失效。 這些快照會自動遭到刪除，您無法再於 Azure 入口網站的 [備份類別目錄] 刀鋒視窗中進行檢視。
+如果本機快照失效，您會收到資訊警示，伴隨著已失效本機快照的時間戳記清單，通知您特定備份原則的本機快照已經失效。 這些快照會自動遭到刪除，您無法再於 Azure 入口網站的 [備份類別目錄]**** 刀鋒視窗中進行檢視。
 
 ## <a name="questions-about-converting-a-tiered-volume-to-a-locally-pinned-volume"></a>有關將階層式磁碟區轉換成本機固定磁碟區的問題
 **問：**  將階層式磁碟區轉換成本機固定磁碟區時，我發現裝置的速度很慢。 為什麼會發生這種情形？
@@ -140,7 +140,7 @@ ms.locfileid: "60319542"
 
 **答：**  磁碟區轉換可能會因為雲端連線問題而失敗。 裝置最後可能會在一連串失敗嘗試之後停止轉換程序，從雲端關閉階層式資料。 在這種情況下，此磁碟區類型仍持續為轉換前的來源磁碟區，而且︰
 
-* 將會引發重大警示，以通知您磁碟區轉換失敗。  [本機固定磁碟區相關警示](storsimple-8000-manage-alerts.md#locally-pinned-volume-alerts)
+* 將會引發重大警示，以通知您磁碟區轉換失敗。 [本機固定磁碟區相關警示](storsimple-8000-manage-alerts.md#locally-pinned-volume-alerts)
 * 如果您要將階層式磁碟區轉換成本機固定磁碟區，此磁碟區會繼續展現階層式磁碟區的屬性，因為資料可能仍然位於雲端。 建議您解決連線問題，然後重試轉換作業。
 * 同樣地，從本機固定磁碟區轉換成階層式磁碟區失敗時，雖然磁碟區會標示為本機固定磁碟區，但其作用為階層式磁碟區 (因為資料可能已溢出到雲端)。 不過，它會繼續佔用裝置的本機層上的空間。 此空間無法用於其他本機固定磁碟區。 建議您重試此作業，以確保磁碟區轉換已完成，而且可以回收裝置上的本機空間。
 
@@ -163,7 +163,7 @@ ms.locfileid: "60319542"
 
 **問：**  可以在還原期間變更磁碟區的類型嗎？
 
-**答：** 否，您無法在還原期間變更磁碟區類型。
+**答：** 否，您無法在還原期間變更磁片區類型。
 
 * 已刪除的磁碟區會還原為快照中儲存的類型。
 * 無論快照中儲存的類型為何，磁碟區都會根據其目前的類型還原 (請參考前兩個問題)。
@@ -178,14 +178,14 @@ ms.locfileid: "60319542"
 
 **問：**  是否可以複製本機固定磁碟區？
 
-**答：**  是，您可以這麼做。 不過，本機固定磁碟區預設會複製為階層式磁碟區。 有關如何[複製本機固定磁碟區](storsimple-8000-clone-volume-u2.md)
+**答：**  是，您可以這麼做。 不過，本機固定磁碟區預設會複製為階層式磁碟區。 有關如何[複製本機固定磁片區的](storsimple-8000-clone-volume-u2.md)詳細資訊
 
 ## <a name="questions-about-failing-over-a-locally-pinned-volume"></a>有關容錯移轉本機固定磁碟區的問題
 **問：**  我需要將裝置容錯移轉到另一個實體裝置。 我的本機固定磁碟區將會容錯移轉為本機固定或階層式磁碟區？
 
 **答：** 如果目標裝置是執行 StorSimple 8000 系列 Update 3 或更新版本，固定在本機的磁碟區會容錯移轉為本機固定。
 
- [跨越版本的本機固定磁碟區容錯移轉和 DR](storsimple-8000-device-failover-disaster-recovery.md#device-failover-across-software-versions)
+[跨越版本的本機固定磁碟區容錯移轉和 DR](storsimple-8000-device-failover-disaster-recovery.md#device-failover-across-software-versions)
 
 **問：**  本機固定磁碟區是否會在災害復原 (DR) 期間立即還原？
 
@@ -201,5 +201,5 @@ ms.locfileid: "60319542"
 
 **問：**  是否可以將具有本機固定磁碟區的磁碟區容器容錯移轉到雲端應用裝置？
 
-**答：**  是，您可以這麼做。 本機固定磁碟區會容錯移轉為階層式磁碟區。  [跨越版本的本機固定磁碟區容錯移轉和 DR](storsimple-8000-device-failover-disaster-recovery.md#common-considerations-for-device-failover)
+**答：**  是，您可以這麼做。 本機固定磁碟區會容錯移轉為階層式磁碟區。 [跨越版本的本機固定磁碟區容錯移轉和 DR](storsimple-8000-device-failover-disaster-recovery.md#common-considerations-for-device-failover)
 

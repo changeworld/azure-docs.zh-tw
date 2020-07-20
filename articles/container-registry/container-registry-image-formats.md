@@ -1,19 +1,13 @@
 ---
-title: Azure Container Registry 的內容格式
-description: 了解 Azure Container Registry 中支援的內容格式。
-services: container-registry
-author: dlepow
-manager: jeconnoc
-ms.service: container-registry
+title: 支援的內容格式
+description: 瞭解 Azure Container Registry 支援的內容格式，包括 Docker 相容的容器映射、Helm 圖、OCI 映射和 OCI 成品。
 ms.topic: article
-ms.date: 04/18/2019
-ms.author: danlep
-ms.openlocfilehash: fe129847e685c7151a9b7ad7ea65abbd38530733
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 08/30/2019
+ms.openlocfilehash: ab915385f46f83c7b655acd1a48d66df84b50653
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60827454"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84695261"
 ---
 # <a name="content-formats-supported-in-azure-container-registry"></a>Azure Container Registry 中支援的內容格式
 
@@ -21,19 +15,25 @@ ms.locfileid: "60827454"
 
 ## <a name="docker-compatible-container-images"></a>與 Docker 相容的容器映像
 
-支援下列的 Docker 容器映像格式：
+支援下列 Docker 容器映射格式：
 
 * [Docker 映像資訊清單 V2，結構描述 1](https://docs.docker.com/registry/spec/manifest-v2-1/)
 
 * [Docker 映像資訊清單 V2，結構描述 2](https://docs.docker.com/registry/spec/manifest-v2-2/) -包含允許登錄將多平台映像儲存在單一 "image:tag" 參考下的資訊清單
 
-## <a name="oci-images"></a>OCI 映像
+## <a name="oci-images"></a>OCI 影像
 
-Azure Container Registry 也支援符合映像[開放容器計劃 (OCI) 影像格式規格](https://github.com/opencontainers/image-spec/blob/master/spec.md)。 封裝格式包含[獨一性映像格式 (SIF)](https://www.sylabs.io/2018/03/sif-containing-your-containers/)。
+Azure Container Registry 支援符合[開放容器計畫（OCI）影像格式規格](https://github.com/opencontainers/image-spec/blob/master/spec.md)的映射。 封裝格式包括[Singularity 影像格式（SIF）](https://github.com/sylabs/sif)。
+
+## <a name="oci-artifacts"></a>OCI 構件
+
+Azure Container Registry 支援[OCI 散發規格](https://github.com/opencontainers/distribution-spec)，這是一種廠商中立、與雲端無關的規格，可用於儲存、共用、保護和部署容器映射和其他內容類型（成品）。 此規格可讓登錄除了容器映射之外，儲存各種不同的構件。 您可以使用適用于成品的工具來推送和提取成品。 如需範例，請參閱[使用 Azure container Registry 推送和提取 OCI](container-registry-oci-artifacts.md)成品。
+
+若要深入瞭解 OCI 構件，請參閱 GitHub 上的[OCI Registry As Storage （ORAS）存放](https://github.com/deislabs/oras)庫和[OCI 構件](https://github.com/opencontainers/artifacts)儲存機制。
 
 ## <a name="helm-charts"></a>Helm 圖表
 
-Azure Container Registry 可裝載存放庫[Helm 圖表](https://helm.sh/)，用來快速地管理及部署 Kubernetes 應用程式的封裝格式。 支援 [Helm 用戶端](https://docs.helm.sh/using_helm/#installing-helm) 2.11.0 版或更新版本。
+Azure Container Registry 可以裝載[Helm 圖](https://helm.sh/)的存放庫，這是一種用來快速管理和部署 Kubernetes 應用程式的封裝格式。 支援[Helm client](https://docs.helm.sh/using_helm/#installing-helm)第2版（2.11.0 版或更新版本）。
 
 ## <a name="next-steps"></a>後續步驟
 

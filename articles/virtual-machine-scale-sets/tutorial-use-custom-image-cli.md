@@ -1,50 +1,47 @@
 ---
-title: 教學課程 - 透過 Azure CLI 使用擴展集中的自訂 VM 映像 | Microsoft Docs
+title: 教學課程 - 透過 Azure CLI 使用擴展集中的自訂 VM 映像
 description: 了解如何使用 Azure CLI 來建立可用於部署虛擬機器擴展集的自訂 VM 映像
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.subservice: imaging
 ms.topic: tutorial
-ms.date: 03/27/2018
+ms.date: 05/01/2020
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: aafec48f86ee032b112e9bb1100f82fbb3b363ed
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.reviewer: akjosh
+ms.openlocfilehash: 22f3fd44fbeb3d951d4add7b90a0e9aebd863ebf
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56118389"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792831"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-the-azure-cli"></a>教學課程：使用 Azure CLI 建立及使用虛擬機器擴展集的自訂映像
 當您建立擴展集時，您會指定部署 VM 執行個體時所要使用的映像。 若要減少部署 VM 執行個體後的工作數量，您可以使用自訂的 VM 映像。 此自訂 VM 映像包括任何必要的應用程式安裝或組態。 在擴展集中建立的任何 VM 執行個體都會使用自訂 VM 映像，並已可以處理您的應用程式流量。 在本教學課程中，您將了解如何：
 
 > [!div class="checklist"]
-> * 建立及自訂 VM
-> * 取消佈建及一般化 VM
-> * 建立自訂的 VM 映像
-> * 部署使用自訂 VM 映像的擴展集
+> * 建立共用映像庫
+> * 建立特製化映像定義
+> * 建立映像版本
+> * 從特製化映像建立擴展集
+> * 共用映像庫
+
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果您選擇在本機安裝和使用 CLI，則在本教學課程中，您必須執行 Azure CLI 2.0.29 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。
+如果您選擇在本機安裝和使用 CLI，本教學課程會要求您執行 Azure CLI 2.4.0 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。
 
+## <a name="overview"></a>概觀
+
+[共用映像資源庫](shared-image-galleries.md)可簡化跨組織共用自訂映像。 自訂映像類似 Marketplace 映像，但您要自行建立它們。 自訂映像可用於啟動程序設定，例如，預先載入應用程式、應用程式設定和其他 OS 設定。 
+
+共用映像庫可讓您與其他人共用您的自訂 VM 映像。 選擇您要共用的映像、您要開放使用的區域，以及您要共用的對象。 
 
 ## <a name="create-and-configure-a-source-vm"></a>建立並設定來源 VM
 
->[!NOTE]
-> 本教學課程將逐步說明建立及使用一般化 VM 映像的程序。 不支援從特製化 VM 映像建立擴展集。
-
-首先，請使用 [az group create](/cli/azure/group) 來建立資源群組，然後使用 [az vm create](/cli/azure/vm)來建立 VM。 接著，此 VM 會用來當作自訂 VM 映像的來源。 下列範例會在名為 myResourceGroup 的資源群組中建立名為 myVM 的 VM：
+首先，請使用 [az group create](/cli/azure/group) 來建立資源群組，然後使用 [az vm create](/cli/azure/vm)來建立 VM。 接著，此 VM 會用來當作映像的來源。 下列範例會在名為 myResourceGroup  的資源群組中建立名為 myVM  的 VM：
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -57,73 +54,118 @@ az vm create \
   --generate-ssh-keys
 ```
 
-VM 的公用 IP 位址會顯示在 [az vm create](/cli/azure/vm)命令的輸出中。 透過 SSH 連線至 VM 的公用 IP 位址，如下所示：
+> [!IMPORTANT]
+> VM 的**識別碼**會顯示在 [az vm create](/cli/azure/vm) 命令的輸出中。 將此識別碼複製到安全的位置，以便您稍後在本教學課程中使用。
 
-```azurecli-interactive
+VM 的公用 IP 位址也會顯示在 [az vm create](/cli/azure/vm)命令的輸出中。 透過 SSH 連線至 VM 的公用 IP 位址，如下所示：
+
+```console
 ssh azureuser@<publicIpAddress>
 ```
 
-若要自訂您的 VM，請安裝基本 Web 伺服器。 部署擴展集中的 VM 執行個體時，其中就會有執行 Web 應用程式所需的所有必要套件。 請依下列方式使用 `apt-get` 安裝 NGINX：
+若要自訂您的 VM，請安裝基本 Web 伺服器。 部署擴展集中的 VM 執行個體時，其中就會有執行 Web 應用程式所需的所有必要套件。 請依下列方式使用 `apt-get` 安裝 NGINX  ：
 
 ```bash
 sudo apt-get install -y nginx
 ```
 
-準備您的 VM 以作為自訂映像使用的最後一個步驟是取消佈建 VM。 此步驟會從 VM 移除機器專屬的資訊，並讓您能夠從單一映像部署多個 VM。 取消佈建 VM 時，主機名稱會重設為 localhost.localdomain。 SSH 主機金鑰、名稱伺服器設定、根密碼及快取的 DHCP 租用也會一併刪除。
+當您完成時，請輸入 `exit` 來中斷 SSH 連線。
 
-若要取消佈建 VM，請使用 Azure VM 代理程式 (waagent)。 Azure VM 代理程式會安裝在每個 VM 上，用來與 Azure 平台通訊。 `-force` 參數會指示代理程式接受提示，以重設機器專屬的資訊。
+## <a name="create-an-image-gallery"></a>建立映像資源庫 
 
-```bash
-sudo waagent -deprovision+user -force
-```
+映像資源庫是用於啟用映像共用的主要資源。 
 
-關閉與 VM 的 SSH 連線：
+資源庫名稱允許的字元為大寫或小寫字母、數字、點和句點。 資源庫名稱不能包含連字號。   資源庫名稱在您的訂用帳戶內必須是唯一的。 
 
-```bash
-exit
-```
-
-
-## <a name="create-a-custom-vm-image-from-the-source-vm"></a>從來源 VM 建立自訂 VM 映像
-您現在可使用安裝的 Nginx Web 伺服器來自訂來源 VM。 讓我們來建立自訂 VM 映像，以搭配使用擴展集。
-
-若要建立映像，必須解除配置 VM。 使用 [az vm deallocate](/cli//azure/vm) 解除配置 VM。 然後，使用 [az vm generalize](/cli//azure/vm) 將 VM 的狀態設定為一般化，讓 Azure 平台知道 VM 已準備好要使用自訂映像。 您只能從一般化的 VM 建立映像：
-
+使用 [az sig create](/cli/azure/sig#az-sig-create) 建立映像資源庫。 下列範例會在「美國東部」  建立名為 myGalleryRG  的資源群組，以及名為 myGallery  的資源庫。
 
 ```azurecli-interactive
-az vm deallocate --resource-group myResourceGroup --name myVM
-az vm generalize --resource-group myResourceGroup --name myVM
+az group create --name myGalleryRG --location eastus
+az sig create --resource-group myGalleryRG --gallery-name myGallery
 ```
 
-解除配置及一般化 VM 可能需要幾分鐘的時間。
+## <a name="create-an-image-definition"></a>建立映像定義
 
-使用 [az image create](/cli//azure/image) 建立 VM 的映像。 下列範例會從您的 VM 建立名為 myImage 的映像：
+映像定義會建立映像的邏輯群組。 並且可用來管理在其中建立的映像版本相關資訊。 
 
-```azurecli-interactive
-az image create \
-  --resource-group myResourceGroup \
-  --name myImage \
-  --source myVM
+映像定義名稱可以由大寫或小寫字母、數字、點、虛線和句點組成。 
+
+請確定您的映像定義是正確的類型。 如果您已一般化 VM (使用適用於 Windows 的 Sysprep，或適用於 Linux 的 waagent -deprovision)，則應該使用 `--os-state generalized` 建立一般化映像定義。 如果您想要在不移除現有使用者帳戶的情況下使用 VM，請使用 `--os-state specialized` 建立特製化映像定義。
+
+若要深入了解您可以為映像定義指定哪些值，請參閱[映像定義](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#image-definitions)。
+
+使用 [az sig image-definition create](/cli/azure/sig/image-definition#az-sig-image-definition-create)，在資源庫中建立映像定義。
+
+在此範例中，映像定義會命名為 myImageDefinition  ，而且適用於[特製化](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#generalized-and-specialized-images)的 Linux OS 映像。 若要使用 Windows OS 建立映像的定義，請使用 `--os-type Windows`。 
+
+```azurecli-interactive 
+az sig image-definition create \
+   --resource-group myGalleryRG \
+   --gallery-name myGallery \
+   --gallery-image-definition myImageDefinition \
+   --publisher myPublisher \
+   --offer myOffer \
+   --sku mySKU \
+   --os-type Linux \
+   --os-state specialized
 ```
 
+> [!IMPORTANT]
+> 映像定義的**識別碼**會顯示在命令的輸出中。 將此識別碼複製到安全的位置，以便您稍後在本教學課程中使用。
 
-## <a name="create-a-scale-set-from-the-custom-vm-image"></a>從自訂 VM 映像建立擴展集
-使用 [az vmss create](/cli/azure/vmss#az-vmss-create) 建立擴展集。 請勿使用 UbuntuLTS 或 CentOS 這類平台映像，而是指定自訂 VM 映像的名稱。 下列範例會建立名為 myScaleSet 的擴展集，其使用前一步驟中名為 myImage 的自訂映像：
 
-```azurecli-interactive
+## <a name="create-the-image-version"></a>建立映像版本
+
+使用 [az image gallery create-image-version](/cli/azure/sig/image-version#az-sig-image-version-create)，從 VM 建立映像版本。  
+
+映像版本允許的字元是數字及句點。 數字必須在 32 位元整數的範圍內。 格式：*MajorVersion*.*MinorVersion*.*Patch*。
+
+在此範例中，我們的映像版本是 1.0.0  ，而我們即將在「美國中南部」  區域中建立 1 個複本，以及在「美國東部 2」  區域中建立 1 個複本。 複寫區域必須包含來源 VM 所在的區域。
+
+將此範例中 `--managed-image` 的值取代為上一個步驟中的 VM 識別碼。
+
+```azurecli-interactive 
+az sig image-version create \
+   --resource-group myGalleryRG \
+   --gallery-name myGallery \
+   --gallery-image-definition myImageDefinition \
+   --gallery-image-version 1.0.0 \
+   --target-regions "southcentralus=1" "eastus=1" \
+   --managed-image "/subscriptions/<Subscription ID>/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM"
+```
+
+> [!NOTE]
+> 您必須等候映像版本完全完成建立和複寫後，才能使用相同的受控映像來建立另一個映像版本。
+>
+> 建立映像版本時，您也可以藉由新增 `--storage-account-type  premium_lrs`，將映像儲存在「進階」儲存體，或新增 `--storage-account-type  standard_zrs`，將映像儲存在[區域備援儲存體](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs)。
+>
+
+
+
+
+## <a name="create-a-scale-set-from-the-image"></a>從映像建立擴展集
+使用 [`az vmss create`](/cli/azure/vmss#az-vmss-create) 從特製化映像建立擴展集。 
+
+使用 [`az vmss create`](/cli/azure/vmss#az-vmss-create) 建立擴展集，並使用 --specialized 參數來指出映像是特製化映像。 
+
+使用 `--image` 的映像定義識別碼，從可用的最新擴展集執行個體版本建立 VM。 您也可以藉由提供 `--image` 的映像版本識別碼，從特定版本建立擴展集執行個體。 
+
+建立名為 myScaleSet  的擴展集，我們稍早建立的最新版 myImageDefinition  映像。
+
+```azurecli
+az group create --name myResourceGroup --location eastus
 az vmss create \
-  --resource-group myResourceGroup \
-  --name myScaleSet \
-  --image myImage \
-  --admin-username azureuser \
-  --generate-ssh-keys
+   --resource-group myResourceGroup \
+   --name myScaleSet \
+   --image "/subscriptions/<Subscription ID>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition" \
+   --specialized
 ```
 
 建立及設定所有擴展集資源和 VM 需要幾分鐘的時間。
 
 
 ## <a name="test-your-scale-set"></a>測試您的擴展集
-若要允許流量觸達擴展集，並確認 Web 伺服器正常運作，請使用 [az network lb rule create](/cli/azure/network/lb/rule) 建立負載平衡器規則。 下列範例會建立名為 myLoadBalancerRuleWeb 的規則，其會允許 TCP 連接埠 80 上的流量：
+若要允許流量觸達擴展集，並確認 Web 伺服器正常運作，請使用 [az network lb rule create](/cli/azure/network/lb/rule) 建立負載平衡器規則。 下列範例會建立名為 myLoadBalancerRuleWeb  的規則，其會允許 TCP  連接埠 80  上的流量：
 
 ```azurecli-interactive
 az network lb rule create \
@@ -137,7 +179,7 @@ az network lb rule create \
   --protocol tcp
 ```
 
-若要查看作用中的擴展集，可使用 [az network public-ip show](/cli/azure/network/public-ip) 取得負載平衡器的公用 IP 位址。 下列範例會取得建立為擴展集一部分的 myScaleSetLBPublicIP IP 位址︰
+若要查看作用中的擴展集，可使用 [az network public-ip show](/cli/azure/network/public-ip) 取得負載平衡器的公用 IP 位址。 下列範例會取得建立為擴展集一部分的 myScaleSetLBPublicIP  IP 位址︰
 
 ```azurecli-interactive
 az network public-ip show \
@@ -152,6 +194,32 @@ az network public-ip show \
 ![從自訂 VM 映像執行的 Nginx](media/tutorial-use-custom-image-cli/default-nginx-website.png)
 
 
+
+## <a name="share-the-gallery"></a>共用資源庫
+
+您可以使用角色型存取控制 (RBAC) 來跨訂用帳戶共用映像。 您可以在資源庫、映像定義或映像版本上共用映像。 具有映像版本 (甚至可跨訂用帳戶) 讀取權限的使用者，都能夠使用映像版本來部署 VM。
+
+我們建議您在資源庫層級上與其他使用者共用。 若要取得資源庫的物件識別碼，請使用 [az sig show](/cli/azure/sig#az-sig-show)。
+
+```azurecli-interactive
+az sig show \
+   --resource-group myGalleryRG \
+   --gallery-name myGallery \
+   --query id
+```
+
+使用物件識別碼作為範圍，以及使用電子郵件地址和 [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) 對使用者授與共用映像庫的存取權。 將 `<email-address>` 和 `<gallery iD>` 取代為您的個人資訊。
+
+```azurecli-interactive
+az role assignment create \
+   --role "Reader" \
+   --assignee <email address> \
+   --scope <gallery ID>
+```
+
+如需使用 RBAC 共用資源的詳細資訊，請參閱[使用 RBAC 和 Azure CLI 管理存取](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)。
+
+
 ## <a name="clean-up-resources"></a>清除資源
 若要移除您的擴展集與其他資源，請使用 [az group delete](/cli/azure/group) 刪除資源群組及其所有資源。 `--no-wait` 參數不會等待作業完成，就會將控制項傳回給提示字元。 `--yes` 參數會確認您想要刪除資源，而不另外對您提示將要進行此作業。
 
@@ -164,10 +232,11 @@ az group delete --name myResourceGroup --no-wait --yes
 在本教學課程中，您已了解如何使用 Azure CLI 來建立及使用擴展集的自訂 VM 映像：
 
 > [!div class="checklist"]
-> * 建立及自訂 VM
-> * 取消佈建及一般化 VM
-> * 建立自訂的 VM 映像
-> * 部署使用自訂 VM 映像的擴展集
+> * 建立共用映像庫
+> * 建立特製化映像定義
+> * 建立映像版本
+> * 從特製化映像建立擴展集
+> * 共用映像庫
 
 前往下一個教學課程，以了解如何將應用程式部署至擴展集。
 

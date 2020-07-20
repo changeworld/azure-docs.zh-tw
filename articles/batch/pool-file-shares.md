@@ -1,26 +1,13 @@
 ---
-title: Azure Batch 集區的 Azure 檔案共用 | Microsoft Docs
+title: Azure Batch 集區的 Azure 檔案共用
 description: 如何從 Linux 中的計算節點或 Azure Batch 中的 Windows 集區，裝載 Azure Files 共用。
-services: batch
-documentationcenter: ''
-author: laurenhughes
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
-ms.service: batch
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: multiple
-ms.workload: big-compute
+ms.topic: how-to
 ms.date: 05/24/2018
-ms.author: lahugh
-ms.custom: ''
-ms.openlocfilehash: 1e9d039769e7fbcb9c2b7285aa727acd7322bcdf
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+ms.openlocfilehash: cb7e6f158e246319e851ee2edd5b21bae33c3723
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62127823"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780275"
 ---
 # <a name="use-an-azure-file-share-with-a-batch-pool"></a>搭配 Batch 集區使用 Azure 檔案共用
 
@@ -52,7 +39,7 @@ Batch 提供原生 API 支援，您可使用 Azure 儲存體 BLOb 讀取和寫�
 例如，在每個工作命令列中包括 `net use` 命令以裝載檔案共用。 若要裝載檔案共用，需要以下認證：
 
 * **使用者名稱**：AZURE\\\<storageaccountname\>，例如 AZURE\\*mystorageaccountname*
-* **密碼**：<StorageAccountKeyWhichEnds in==>，例如 *XXXXXXXXXXXXXXXXXXXXX==*
+* **密碼**：\<StorageAccountKeyWhichEnds in==>，例如 *XXXXXXXXXXXXXXXXXXXXX==*
 
 下列命令在儲存體帳戶 *mystorageaccountname* 裝載檔案共用 *myfileshare* 作為 *S:* 磁碟機：
 
@@ -129,7 +116,7 @@ apt-get update && apt-get install cifs-utils && sudo mkdir -p /mnt/MyAzureFileSh
 接著，執行 `mount` 命令以裝載檔案共用，藉此提供這些認證：
 
 * **使用者名稱**：\<storageaccountname\>，例如 *mystorageaccountname*
-* **密碼**：<StorageAccountKeyWhichEnds in==>，例如 *XXXXXXXXXXXXXXXXXXXXX==*
+* **密碼**：\<StorageAccountKeyWhichEnds in==>，例如 *XXXXXXXXXXXXXXXXXXXXX==*
 
 下列命令在 */mnt/MyAzureFileShare* 的儲存體帳戶 *mystorageaccountname* 裝載檔案共用 *myfileshare*： 
 
@@ -148,17 +135,18 @@ mount -t cifs //mystorageaccountname.file.core.windows.net/myfileshare /mnt/MyAz
 ```python
 pool = batch.models.PoolAddParameter(
     id=pool_id,
-    virtual_machine_configuration = batchmodels.VirtualMachineConfiguration(
-        image_reference = batchmodels.ImageReference(
+    virtual_machine_configuration=batchmodels.VirtualMachineConfiguration(
+        image_reference=batchmodels.ImageReference(
             publisher="Canonical",
             offer="UbuntuServer",
             sku="16.04.0-LTS",
             version="latest"),
-        node_agent_sku_id = "batch.node.ubuntu 16.04"),
+        node_agent_sku_id="batch.node.ubuntu 16.04"),
     vm_size=_POOL_VM_SIZE,
     target_dedicated_nodes=_POOL_NODE_COUNT,
     start_task=batchmodels.StartTask(
-        command_line="/bin/bash -c \"apt-get update && apt-get install cifs-utils && mkdir -p {} && mount -t cifs {} {} -o vers=3.0,username={},password={},dir_mode=0777,file_mode=0777,serverino\"".format(_COMPUTE_NODE_MOUNT_POINT, _STORAGE_ACCOUNT_SHARE_ENDPOINT, _COMPUTE_NODE_MOUNT_POINT, _STORAGE_ACCOUNT_NAME, _STORAGE_ACCOUNT_KEY),
+        command_line="/bin/bash -c \"apt-get update && apt-get install cifs-utils && mkdir -p {} && mount -t cifs {} {} -o vers=3.0,username={},password={},dir_mode=0777,file_mode=0777,serverino\"".format(
+            _COMPUTE_NODE_MOUNT_POINT, _STORAGE_ACCOUNT_SHARE_ENDPOINT, _COMPUTE_NODE_MOUNT_POINT, _STORAGE_ACCOUNT_NAME, _STORAGE_ACCOUNT_KEY),
         wait_for_success=True,
         user_identity=batchmodels.UserIdentity(
             auto_user=batchmodels.AutoUserSpecification(
@@ -183,6 +171,5 @@ batch_service_client.task.add(job_id, task)
 
 ## <a name="next-steps"></a>後續步驟
 
-* 如需在 Batch 中讀取和寫入資料的其他選項，請參閱 [Batch 功能概觀](batch-api-basics.md)和[持續作業及工作輸出](batch-task-output.md)。
-
+* 關於在 Batch 中讀取和寫入資料的其他選項，請參閱[持續作業及工作輸出](batch-task-output.md)。
 * 另請參閱 [Batch Shipyard](https://github.com/Azure/batch-shipyard) 工具組，其中包括 [Shipyard 訣竅](https://github.com/Azure/batch-shipyard/tree/master/recipes)，以部署 Batch 容器工作負載的檔案系統。

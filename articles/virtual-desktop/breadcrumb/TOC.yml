@@ -1,0 +1,17 @@
+- name: Azure
+  tocHref: /azure
+  topicHref: /azure/index
+  items:
+    - name: Windows 虛擬桌面
+      tocHref: /azure/virtual-desktop
+      topicHref: /azure/virtual-desktop/index
+      items:
+        - name: 參考
+          tocHref: /WindowsServerDocs/remote/remote-desktop-services/clients/rdp-files
+          topicHref: /azure/virtual-desktop/index
+        - name: 參考
+          tocHref: /WindowsServerDocs/remote/remote-desktop-services/virtual-machine-recs
+          topicHref: /azure/virtual-desktop/index
+        - name: 參考
+          tocHref: /WindowsServerDocs/remote/remote-desktop-services/network-guidance
+          topicHref: /azure/virtual-desktop/index

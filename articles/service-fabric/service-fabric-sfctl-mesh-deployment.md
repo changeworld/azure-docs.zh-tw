@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric CLI- sfctl mesh deployment | Microsoft Docs
-description: 描述 Service Fabric CLI sfctl mesh deployment 命令。
-services: service-fabric
-documentationcenter: na
-author: Christina-Kang
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
+title: Azure Service Fabric CLI-sfctl 網狀架構部署
+description: 深入瞭解 sfctl，這是 Azure Service Fabric 命令列介面。 包含用來建立 Service Fabric 網格資源的命令清單。
+author: jeffj6123
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
-ms.date: 12/06/2018
-ms.author: bikang
-ms.openlocfilehash: e6b484dabd77a142961db2d97242896790fa3d8b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 1/16/2020
+ms.author: jejarry
+ms.openlocfilehash: fb2adafab88eb1d3855cdec8268601fb4e15dcbb
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60836947"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257274"
 ---
 # <a name="sfctl-mesh-deployment"></a>sfctl mesh deployment
 建立 Service Fabric Mesh 資源。
@@ -28,51 +19,48 @@ ms.locfileid: "60836947"
 
 |命令|描述|
 | --- | --- |
-| create | 建立 Service Fabric Mesh 資源的部署。 |
+| 建立 | 建立 Service Fabric Mesh 資源的部署。 |
 
 ## <a name="sfctl-mesh-deployment-create"></a>sfctl mesh deployment create
 建立 Service Fabric Mesh 資源的部署。
 
 ### <a name="arguments"></a>引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
-| --input-yaml-files [必要] | 以逗號分隔的所有 yaml 檔案相對/絕對檔案路徑，或包含 yaml 檔案的目錄 (遞迴) 的相對/絕對路徑。 |
-| --parameters | 包含需覆寫參數的 yaml 檔案或 json 物件的相對/絕對路徑。 |
+| --input-yaml-files [必要] | 以逗號分隔的所有 yaml 檔案的相對或絕對檔案路徑，或包含 yaml 檔案之目錄 (遞迴) 的相對或絕對路徑。 |
+| --parameters | Yaml 檔或 json 物件的相對或絕對路徑，其中包含需要覆寫的參數。 |
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|描述|
+|引數|說明|
 | --- | --- |
-| --debug | 增加記錄詳細程度以顯示所有偵錯記錄。 |
+| --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
 | --output -o | 輸出格式。  允許的值\:json、jsonc、table、tsv。  預設值\:json。 |
 | --query | JMESPath 查詢字串。 如需詳細資訊和範例，請參閱 http\://jmespath.org/。 |
-| --verbose | 增加記錄詳細程度。 使用 --debug 為完整偵錯記錄。 |
+| --verbose | 增加記錄詳細資訊。 使用 --debug 來取得完整偵錯記錄。 |
 
 ### <a name="examples"></a>範例
 
 可透過覆寫 yaml 檔案中提到的參數，將所有資源合併並部署到叢集
-
-```
-sfctl mesh deployment create --input-yaml-files ./app.yaml,./network.yaml --parameters
-./param.yaml
+``` 
+sfctl mesh deployment create --input-yaml-files ./app.yaml,./network.yaml --parameters  
+./param.yaml    
 ```
 
 可透過覆寫 yaml 檔案中提到的參數，將目錄中的所有資源合併並部署到叢集
 
-```
+``` 
 sfctl mesh deployment create --input-yaml-files ./resources --parameters ./param.yaml
 ```
 
-可透過覆寫直接以 json 物件方式傳送的參數，將目錄中的所有資源合併並部署到叢集
-
+藉由覆寫直接傳遞為 json 物件的參數，將目錄中的所有資源合併並部署到叢集
+``` 
+sfctl mesh deployment create --input-yaml-files ./resources --parameters "{ 'my_param' :    
+{'value' : 'my_value'} }"   
 ```
-sfctl mesh deployment create --input-yaml-files ./resources --parameters "{ 'my_param' :
-{'value' : 'my_value'} }"
-```
-
 
 ## <a name="next-steps"></a>後續步驟
-- [設定](service-fabric-cli.md) Service Fabric CLI。
-- 了解如何使用[範例指令碼](/azure/service-fabric/scripts/sfctl-upgrade-application)來使用 Service Fabric CLI。
+- [設定](service-fabric-cli.md)Service Fabric CLI。
+- 了解如何使用[範例指令碼](./scripts/sfctl-upgrade-application.md)來使用 Service Fabric CLI。

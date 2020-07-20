@@ -1,23 +1,13 @@
 ---
-title: Azure Batch 集區調整大小開始事件 | Microsoft Docs
-description: Batch 集區調整大小開始事件的參考。
-services: batch
-author: laurenhughes
-manager: jeconnoc
-ms.assetid: ''
-ms.service: batch
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: big-compute
+title: Azure Batch 集區調整大小開始事件
+description: Batch 集區調整大小開始事件的參考。 範例顯示以手動調整大小的方式將集區大小從 0 調整為 2 個節點的集區調整大小開始事件內文。
+ms.topic: reference
 ms.date: 04/20/2017
-ms.author: lahugh
-ms.openlocfilehash: 63abeaca5a9c87945671e79a9c8d7a2512d0d777
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 63576b04b06aad024211d0a50225907c88c138ce
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60774228"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83723726"
 ---
 # <a name="pool-resize-start-event"></a>集區調整大小開始事件
 
@@ -27,10 +17,12 @@ ms.locfileid: "60774228"
 
 ```
 {
-    "poolId": "myPool1",
-    "nodeDeallocationOption": "invalid",
-    "currentDedicated": 0,
-    "targetDedicated": 2,
+    "id": "myPool1",
+    "nodeDeallocationOption": "Invalid",
+    "currentDedicatedNodes": 0,
+    "targetDedicatedNodes": 2,
+    "currentLowPriorityNodes": 0,
+    "targetLowPriorityNodes": 2,
     "enableAutoScale": false,
     "isAutoPool": false
 }
@@ -38,9 +30,11 @@ ms.locfileid: "60774228"
 
 |元素|類型|注意|
 |-------------|----------|-----------|
-|poolId|字串|集區識別碼。|
-|nodeDeallocationOption|字串|指定當集區大小一直減少時，會自集區中移除節點。<br /><br /> 可能的值包括：<br /><br /> **requeue** – 終止執行中工作並重新排入佇列。 當作業啟用時，工作將再次執行。 一旦工作終止，隨即移除節點。<br /><br /> **terminate** – 終止執行中工作。 工作將不會再次執行。 一旦工作終止，隨即移除節點。<br /><br /> **taskcompletion** – 允許目前執行中工作完成。 等待時不排程任何新的工作。 所有工作完成時，即移除節點。<br /><br /> **Retaineddata** - 允許目前執行中工作完成，然後等待所有工作資料保留期到期。 等待時不排程任何新的工作。 當所有工作保留期到期時即移除節點。<br /><br /> 預設值為 requeue。<br /><br /> 如果集區大小增加，則值會設定為 [無效]。|
-|currentDedicated|Int32|目前指派至集區的計算節點數目。|
-|targetDedicated|Int32|向集區要求的計算節點數目。|
-|enableAutoScale|Bool|指定池大小是否随时间自动调整。|
-|isAutoPool|Bool|指定是否已透過作業的 AutoPool 機制建立集區。|
+|`id`|String|集區識別碼。|
+|`nodeDeallocationOption`|String|指定當集區大小一直減少時，會自集區中移除節點。<br /><br /> 可能的值包括：<br /><br /> **requeue** – 終止執行中工作並重新排入佇列。 當作業啟用時，工作將再次執行。 一旦工作終止，隨即移除節點。<br /><br /> **terminate** – 終止執行中工作。 工作將不會再次執行。 一旦工作終止，隨即移除節點。<br /><br /> **taskcompletion** – 允許目前執行中工作完成。 等待時不排程任何新的工作。 所有工作完成時，即移除節點。<br /><br /> **Retaineddata** - 允許目前執行中工作完成，然後等待所有工作資料保留期到期。 等待時不排程任何新的工作。 當所有工作保留期到期時即移除節點。<br /><br /> 預設值為 requeue。<br /><br /> 如果集區大小增加，則值會設定為 [無效]。|
+|`currentDedicatedNodes`|Int32|目前指派至集區的計算節點數目。|
+|`targetDedicatedNodes`|Int32|向集區要求的計算節點數目。|
+|`currentLowPriorityNodes`|Int32|目前指派至集區的計算節點數目。|
+|`targetLowPriorityNodes`|Int32|向集區要求的計算節點數目。|
+|`enableAutoScale`|Bool|指定集區大小是否隨著時間自動調整。|
+|`isAutoPool`|Bool|指定是否已透過作業的 AutoPool 機制建立集區。|

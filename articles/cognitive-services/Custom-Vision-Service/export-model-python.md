@@ -1,21 +1,22 @@
 ---
 title: 教學課程：以 Python 執行 TensorFlow 模型 - 自訂視覺服務
-titlesuffix: Azure Cognitive Services
-description: 以 Python 執行 TensorFlow 模型。
+titleSuffix: Azure Cognitive Services
+description: 以 Python 執行 TensorFlow 模型。 此文章僅適用於從自訂視覺服務中的影像分類專案匯出的模型。
 services: cognitive-services
-author: areddish
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 03/21/2019
-ms.author: areddish
-ms.openlocfilehash: 1e4c08c1e1f9c32c7c397cf187ad2ef91a25c59d
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.date: 04/14/2020
+ms.author: pafarley
+ms.custom: tracking-python
+ms.openlocfilehash: 46ed55e5d6a9156d9ea7909925e92d6c39c8e89d
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58350448"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84609568"
 ---
 # <a name="tutorial-run-tensorflow-model-in-python"></a>教學課程：以 Python 執行 TensorFlow 模型
 
@@ -24,7 +25,7 @@ ms.locfileid: "58350448"
 > [!NOTE]
 > 本教學課程僅適用於從影像分類專案匯出的模型。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要使用教學課程，您需要執行下列動作：
 
@@ -48,7 +49,7 @@ pip install opencv-python
 import tensorflow as tf
 import os
 
-graph_def = tf.GraphDef()
+graph_def = tf.compat.v1.GraphDef()
 labels = []
 
 # These are set to the default names from exported models, update as needed.
@@ -56,7 +57,7 @@ filename = "model.pb"
 labels_filename = "labels.txt"
 
 # Import the TF graph
-with tf.gfile.GFile(filename, 'rb') as f:
+with tf.io.gfile.GFile(filename, 'rb') as f:
     graph_def.ParseFromString(f.read())
     tf.import_graph_def(graph_def, name='')
 
@@ -68,7 +69,7 @@ with open(labels_filename, 'rt') as lf:
 
 ## <a name="prepare-an-image-for-prediction"></a>準備要預測的影像
 
-準備影像有幾個步驟，以預測出正確的形狀。 這些步驟模擬在訓練期間所執行的影像操作：
+若要準備用於預測的影像，您必須執行幾個步驟。 這些步驟模擬在訓練期間所執行的影像操作：
 
 ### <a name="open-the-file-and-create-an-image-in-the-bgr-color-space"></a>開啟檔案，並在 BGR 色彩空間中建立影像
 
@@ -88,7 +89,7 @@ image = update_orientation(image)
 image = convert_to_opencv(image)
 ```
 
-### <a name="deal-with-images-with-a-dimension-1600"></a>處理維度 >1600 的影像
+### <a name="handle-images-with-a-dimension-1600"></a>處理維度 >1600 的影像
 
 ```Python
 # If the image has either w or h greater than 1600 we resize it down respecting
@@ -116,7 +117,7 @@ augmented_image = resize_to_256_square(max_square_image)
 
 ```Python
 # Get the input size of the model
-with tf.Session() as sess:
+with tf.compat.v1.Session() as sess:
     input_tensor_shape = sess.graph.get_tensor_by_name('Placeholder:0').shape.as_list()
 network_input_size = input_tensor_shape[1]
 
@@ -130,6 +131,7 @@ augmented_image = crop_center(augmented_image, network_input_size, network_input
 ```Python
 def convert_to_opencv(image):
     # RGB -> BGR conversion is performed as well.
+    image = image.convert('RGB')
     r,g,b = np.array(image).T
     opencv_image = np.array([b,g,r]).transpose()
     return opencv_image
@@ -179,7 +181,7 @@ def update_orientation(image):
 output_layer = 'loss:0'
 input_node = 'Placeholder:0'
 
-with tf.Session() as sess:
+with tf.compat.v1.Session() as sess:
     try:
         prob_tensor = sess.graph.get_tensor_by_name(output_layer)
         predictions, = sess.run(prob_tensor, {input_node: [augmented_image] })

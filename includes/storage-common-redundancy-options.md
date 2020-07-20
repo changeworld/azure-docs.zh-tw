@@ -5,19 +5,21 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 03/26/2018
+ms.date: 01/14/2020
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 60912adbecbfdb4e6bebd7ddfea59eafa09b985e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 73c2b742ede21a4e86d717d994f8ebc4f16389c9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61477959"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77157208"
 ---
-儲存體帳戶的複寫選項包含：
+儲存體帳戶的冗余選項包括：
 
-* [本地冗余存储 (LRS)](../articles/storage/common/storage-redundancy-lrs.md)：一种简单、低成本的复制策略。 這會在單一儲存體縮放單位內覆寫資料。
-* [區域備援儲存體 (ZRS)](../articles/storage/common/storage-redundancy-zrs.md)：高可用性和耐久性的複寫。 這會跨三個可用性區域同步複寫資料。 
-* [異地備援儲存體 (GRS)](../articles/storage/common/storage-redundancy-grs.md)：为了防范区域性的不可用而提供的跨区域复制。
-* [读取访问异地冗余存储 (RA-GRS)](../articles/storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)：对副本具有读取访问权的跨区域复制。
+* 本機多餘的儲存體（LRS）：簡單、低成本的冗余策略。 資料會在主要區域內以同步方式複製三次。
+* 區域冗余儲存體（ZRS）：需要高可用性之案例的冗余。 資料會以同步方式複製到主要區域中的三個 Azure 可用性區域。
+* 異地冗余存放裝置（GRS）：跨區域冗余以防止區域性中斷。 資料會在主要區域中同步複製三次，然後以非同步方式複製到次要區域。 如需次要區域中資料的讀取權限，請啟用讀取權限異地多餘儲存體（RA-GRS）。
+* 異地區域-多餘儲存體（切換）（預覽）：需要高可用性和最大持久性的案例的冗余。 資料會在主要區域中的三個 Azure 可用性區域之間同步複製，然後以非同步方式複製到次要區域。 如需次要區域中資料的讀取權限，請啟用讀取權限異地區域-多餘儲存體（RA-切換）。
+
+如需 Azure 儲存體中冗余選項的詳細資訊，請參閱[Azure 儲存體冗余](../articles/storage/common/storage-redundancy.md)。

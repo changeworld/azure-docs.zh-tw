@@ -1,6 +1,6 @@
 ---
 title: 使用 Bing 影片搜尋 API 來取得影片見解
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 了解如何使用 Bing 影片搜尋 API，來取得影片的詳細資訊，例如相關的影片。
 services: cognitive-services
 author: swhite-msft
@@ -10,16 +10,16 @@ ms.subservice: bing-video-search
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: scottwhi
-ms.openlocfilehash: b024d61c3542293202f0b409b8b3e520a75168c0
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 7683930af1de0fc4e4d112c1e559358d5d5d5609
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55870719"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "68500602"
 ---
 # <a name="get-insights-about-a-video"></a>取得影片深入解析
 
-Bing 影片搜尋 API 所傳回的每個影片皆包含一個影片識別碼，您可使用該識別碼來取得影片的詳細資訊，例如相關的影片。 若要取得關於影片的見解，請在 API 回應中擷取其 [videoId](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#video-videoid) 權杖。 
+Bing 影片搜尋 API 所傳回的每個影片皆包含一個影片識別碼，您可使用該識別碼來取得影片的詳細資訊，例如相關的影片。 若要取得關於影片的見解，請在 API 回應中擷取其 [videoId](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video-videoid) 權杖。 
 
 ```json
     "value" : [
@@ -34,7 +34,7 @@ Bing 影片搜尋 API 所傳回的每個影片皆包含一個影片識別碼，�
     ],
 ```
 
-之後，使用識別碼將 GET 要求傳送至「影片」詳細資料端點。 將 [id](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#id) 查詢參數設為 `videoId` 權杖。 若要指定您希望取得的深入解析，請設定 [modules](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#modulesrequested) 查詢參數。 若要取得所有深入解析，請將 `modules` 設為 All。 回應會包含您要求的所有見解 (若有)。
+之後，使用識別碼將 GET 要求傳送至「影片」詳細資料端點。 將 [id](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#id) 查詢參數設為 `videoId` 權杖。 若要指定您希望取得的深入解析，請設定 [modules](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#modulesrequested) 查詢參數。 若要取得所有深入解析，請將 `modules` 設為 All。 回應會包含您要求的所有見解 (若有)。
 
 ```cURL
 GET https://api.cognitive.microsoft.com/bing/v7.0/videos/details?q=sailiing+dinghies&id=6DB795E11A6E3CBAAD636DB795E11A6E3CBAAD63&modules=All&mkt=en-us HTTP/1.1  
@@ -48,7 +48,7 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="getting-related-videos-insights"></a>取得相關影片深入解析  
 
-若要取得與指定影片相關的影片，請將 [modules](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#modulesrequested) 查詢參數設為 `RelatedVideos`。
+若要取得與指定影片相關的影片，請將 [modules](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#modulesrequested) 查詢參數設為 `RelatedVideos`。
   
 ```cURL  
 GET https://api.cognitive.microsoft.com/bing/v7.0/videos/details?q=sailiing+dinghies&id=6DB795E11A6E3CBAAD636DB795E11A6E3CBAAD63&modules=RelatedVideos&mkt=en-us HTTP/1.1  
@@ -60,7 +60,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com  
 ```  
 
-此要求的回應會有最上層的 [VideoDetails](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videodetails) 物件，而非 [Videos](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videos) 物件。  
+此要求的回應會有最上層的 [VideoDetails](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videodetails) 物件，而非 [Videos](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) 物件。  
   
 ```json
 {

@@ -6,44 +6,80 @@
       href: overview.md
 - name: 快速入門
   items:
-    - name: 特定應用程式需要 MFA
-      href: app-based-mfa.md
     - name: 需要接受使用條款
       href: require-tou.md
-    - name: 偵測到工作階段風險時封鎖存取
-      href: app-sign-in-risk.md
 - name: 教學課程
   items:
-    - name: 遷移傳統 MFA 原則
-      href: policy-migration-mfa.md
+    - name: 要求使用 Azure Multi-Factor Authentication
+      href: ../authentication/tutorial-enable-azure-mfa.md?toc=/azure/active-directory/conditional-access/toc.json&bc=/azure/active-directory/conditional-access/breadcrumb/toc.json
 - name: 概念
   expanded: false
   items:
-    - name: 基準保護
-      href: baseline-protection.md
-    - name: 條件
-      href: conditions.md
-    - name: 位置條件
-      href: location-condition.md
-    - name: 控制
-      href: controls.md
+    - name: 一般條件式存取原則
+      href: concept-conditional-access-policy-common.md
+    - name: 條件式存取原則元件
+      href: concept-conditional-access-policies.md
+    - name: 指派
+      items:
+        - name: 使用者和群組
+          href: concept-conditional-access-users-groups.md
+        - name: 雲端應用程式或動作
+          href: concept-conditional-access-cloud-apps.md
+        - name: 條件
+          href: concept-conditional-access-conditions.md
+    - name: 存取控制
+      items:
+        - name: 授與
+          href: concept-conditional-access-grant.md
+        - name: 工作階段
+          href: concept-conditional-access-session.md
+    - name: 深入解析和報告
+      href: howto-conditional-access-insights-reporting.md
+    - name: 僅限報告模式
+      href: concept-conditional-access-report-only.md
     - name: 服務相依性
       href: service-dependencies.md
+    - name: 位置條件
+      href: location-condition.md
     - name: 假設工具
       href: what-if-tool.md
-- name: 使用說明指南
+    - name: 自訂控制項
+      href: controls.md
+    - name: 傳統原則移轉
+      href: policy-migration.md
+    - name: 基準保護原則
+      href: concept-baseline-protection.md
+- name: 操作指南
   expanded: true
   items:
     - name: 規劃條件式存取部署
       href: plan-conditional-access.md
     - name: 最佳作法
       href: best-practices.md
+    - name: 一般條件式存取原則
+      items:
+        - name: 封鎖舊式驗證
+          href: howto-conditional-access-policy-block-legacy.md
+        - name: 需要管理員的 MFA
+          href: howto-conditional-access-policy-admin-mfa.md
+        - name: 需要 Azure 管理的 MFA
+          href: howto-conditional-access-policy-azure-management.md
+        - name: 要求所有使用者使用 MFA
+          href: howto-conditional-access-policy-all-users-mfa.md
+        - name: 登入風險型條件式存取
+          href: howto-conditional-access-policy-risk.md
+        - name: 使用者風險型條件式存取
+          href: howto-conditional-access-policy-risk-user.md
+        - name: 保障安全性資訊註冊的安全
+          href: howto-conditional-access-policy-registration.md
+        - name: 依位置封鎖存取
+          href: howto-conditional-access-policy-location.md
+        - name: 需要相容的裝置
+          href: howto-conditional-access-policy-compliant-device.md
+        - name: 封鎖存取
+          href: howto-conditional-access-policy-block-access.md
     - name: 封鎖舊式驗證
       href: block-legacy-authentication.md
-    - name: 遷移傳統原則
-      href: policy-migration.md
-    - name: 登入頻率和瀏覽器持續性控制項
-      href: howto-conditional-access-session-lifetime.md
     - name: 需要已核准的用戶端應用程式
       href: app-based-conditional-access.md
     - name: 需要應用程式保護原則
@@ -54,21 +90,43 @@
       href: untrusted-networks.md
     - name: 需要使用規定
       href: terms-of-use.md
+    - name: 設定僅限報告模式
+      href: howto-conditional-access-report-only.md
+    - name: 登入頻率和瀏覽器持續性控制項
+      href: howto-conditional-access-session-lifetime.md
+    - name: 遷移傳統原則
+      href: policy-migration-mfa.md
+    - name: 疑難排解
+      items:
+        - name: 對登入問題進行疑難排解
+          href: troubleshoot-conditional-access.md
+        - name: 使用 What If 工具進行疑難排解
+          href: troubleshoot-conditional-access-what-if.md
+        - name: 常見問題集
+          href: faqs.md
 - name: 參考
   items:
-    - name: 技術參考
-      href: technical-reference.md
+    - name: 搶鮮版圖形 API
+      items:
+        - name: conditionalAccessPolicy API
+          href: /graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta
+        - name: namedLocation API
+          href: /graph/api/resources/namedlocation?view=graph-rest-beta
+        - name: countryNamedLocation API
+          href: /graph/api/resources/countrynamedlocation?view=graph-rest-beta
+        - name: ipNamedLocation API
+          href: /graph/api/resources/ipnamedlocation?view=graph-rest-beta
 - name: 資源
   items:
     - name: Azure 意見反應論壇
       href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
-    - name: MSDN 論壇
-      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=WindowsAzureAD'
-    - name: 價格
+    - name: Microsoft 問與答頁面
+      href: 'https://docs.microsoft.com/answers/topics/azure-active-directory.html'
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/active-directory/'
     - name: 服務更新
       href: ../fundamentals/whats-new.md
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'
     - name: 影片
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory'

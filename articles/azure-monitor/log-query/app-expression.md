@@ -1,49 +1,42 @@
 ---
 title: Azure 監視器記錄查詢中的 app() 運算式 |Microsoft Docs
-description: 應用程式運算式用於 Azure 監視器記錄檔查詢中，以擷取特定的 Application Insights 應用程式相同的資源群組、 另一個資源群組或另一個訂用帳戶中的資料。
-services: log-analytics
-documentationcenter: ''
+description: 應用程式運算式會用於 Azure 監視器記錄查詢中，以從相同資源群組、另一個資源群組或另一個訂用帳戶中的特定 Application Insights 應用程式抓取資料。
+ms.subservice: logs
+ms.topic: conceptual
 author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.topic: article
-ms.date: 01/25/2019
 ms.author: bwren
-ms.openlocfilehash: a1a605bc733597430f64dceeb6c485db0abf657b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 05/09/2019
+ms.openlocfilehash: 5d31c829487400f8eb239c0b837e53eecafeb900
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60589239"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "83201111"
 ---
 # <a name="app-expression-in-azure-monitor-query"></a>Azure 監視器查詢中的 app() 運算式
 
 在 Azure監視器記錄查詢中，`app` 運算式可用來從相同資源群組、其他資源群組或其他訂用帳戶中的特定 Application Insights 應用程式擷取資料。 這適用於在 Azure 監視器記錄查詢中包含應用程式資料，以及在 Application Insights 查詢中跨多個應用程式查詢資料。
 
+> [!IMPORTANT]
+> 如果您使用以[工作區為基礎的 Application Insights 資源](../app/create-workspace-resource.md)，則不會使用應用程式（）運算式，因為記錄資料儲存在 log Analytics 工作區中。 使用 log （）運算式來撰寫查詢，其中包含多個工作區中的應用程式。 針對同一個工作區中的多個應用程式，您不需要跨工作區查詢。
 
+## <a name="syntax"></a>Syntax
 
-## <a name="syntax"></a>語法
-
-`app(`*識別碼*`)`
+`app(`*標識*`)`
 
 
 ## <a name="arguments"></a>引數
 
-- *識別碼*：使用下表中的其中一個格式來識別應用程式。
+- 識別碼**：使用下表中的其中一個格式來識別應用程式。
 
 | 識別碼 | 描述 | 範例
 |:---|:---|:---|
-| 資源名稱 | 人類可閱讀的應用程式名稱 (也稱為「元件名稱」) | app("fabrikamapp") |
+| 資源名稱 | 人類看得懂的應用程式名稱（也稱為「元件名稱」） | app("fabrikamapp") |
 | 完整名稱 | 使用下列形式的應用程式完整名稱："subscriptionName/resourceGroup/componentName" | app('AI-Prototype/Fabrikam/fabrikamapp') |
-| ID | 應用程式的 GUID | app("988ba129-363e-4415-8fe7-8cbab5447518") |
+| 識別碼 | 應用程式的 GUID | app("988ba129-363e-4415-8fe7-8cbab5447518") |
 | Azure 資源識別碼 | Azure 資源的識別碼 |app("/subscriptions/7293b69-db12-44fc-9a66-9c2005c3051d/resourcegroups/Fabrikam/providers/microsoft.insights/components/fabrikamapp") |
 
 
-## <a name="notes"></a>注意
+## <a name="notes"></a>備註
 
 * 您必須有應用程式的讀取權限。
 * 以應用程式名稱來識別應用程式時，會假設該名稱在所有可存取的訂用帳戶中是唯一的。 如果您有多個應用程式具有該指定名稱，查詢將會因為語意模糊而失敗。 在此情況下，您必須使用其中一種其他識別碼。

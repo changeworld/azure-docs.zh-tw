@@ -1,68 +1,100 @@
 ---
 title: 編輯知識庫 - QnA Maker
-titleSuffix: Azure Cognitive Services
 description: QnA Maker 可讓您提供方便使用的編輯方式，藉以管理知識庫的內容。
-services: cognitive-services
-author: tulasim88
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
-ms.topic: article
-ms.date: 03/26/2019
-ms.author: tulasim
-ms.custom: seodec18
-ms.openlocfilehash: 22d408204b69e0a564103efd29468c6f0d68d93a
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.topic: conceptual
+ms.date: 05/19/2020
+ms.openlocfilehash: 66adf9e1fe227f11514276147de32e8691db7fab
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58577199"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83993570"
 ---
-# <a name="edit-a-knowledge-base-in-qna-maker"></a>在 QnA Maker 中編輯知識庫
+# <a name="edit-qna-pairs-in-your-knowledge-base"></a>在您的知識庫中編輯 QnA 配對
 
 QnA Maker 可讓您提供方便使用的編輯方式，藉以管理知識庫的內容。
 
-<a name="add-datasource"></a>
+QnA 組會從資料來源（例如檔案或 URL）新增，或加入做為編輯來源。 編輯來源表示已在 QnA 入口網站中手動新增 QnA 組。 所有 QnA 的配對都可供編輯。
 
-## <a name="edit-your-knowledge-base-content"></a>編輯您的知識庫的內容
+<a name="add-an-editorial-qna-set"></a>
 
-1.  在上方導覽列中選取 [我的知識庫]。 
+## <a name="add-an-editorial-qna-pair"></a>新增編輯 QnA 組
 
-    您可以看到您建立或與您分享的所有服務，這些服務均按照**上次修改**日期的遞減順序排列。
+1. 登入[QnA 入口網站](https://www.qnamaker.ai/)，然後選取要在其中新增 QnA 組的知識庫。
+1. 在知識庫的 [**編輯**] 頁面上，選取 [新增**QnA**組] 以加入新的 QnA 配對。
 
-    ![我的知識庫](../media/qnamaker-how-to-edit-kb/my-kbs.png)
+    > [!div class="mx-imgBorder"]
+    > ![加入 QnA 組](../media/qnamaker-how-to-edit-kb/add-qnapair.png)
 
-1. 選取特定的知識庫進行編輯。
- 
-1. 選取 [Settings] \(設定) 。 您可以在這裡編輯必要的欄位：[服務名稱]。
-  
-    |目標| 動作|
+1. 在 [新的 QnA 組] 資料列中，新增必要的問題和答案欄位。 其他欄位則是選擇性的。 所有欄位隨時都可以變更。
+
+1. （選擇性）新增**[替代](../Quickstarts/add-question-metadata-portal.md#add-additional-alternatively-phrased-questions)** 片語。 替代片語是任何形式的問題，與原始問題明顯不同，但應該提供相同的答案。
+
+    當您的知識庫已發行，而且您已開啟[主動式學習](use-active-learning.md)時，QnA Maker 會收集可供您接受的替代片語選擇。 選取這些選項是為了增加預測精確度。
+
+1. （選擇性）新增**[中繼資料](../Quickstarts/add-question-metadata-portal.md#add-metadata-to-filter-the-answers)**。 若要查看中繼資料，請選取內容功能表中的 [**視圖選項**]。 中繼資料會針對用戶端應用程式（例如聊天機器人）提供的答案提供篩選準則。
+
+1. （選擇性）新增**[後續追蹤提示](multiturn-conversation.md)**。 後續提示會提供用戶端應用程式的其他交談路徑，以向使用者呈現。
+
+1. 選取 [**儲存並定型**] 以查看包含新 QnA 組的預測。
+
+## <a name="rich-text-editing-for-answer"></a>適用于解答的 Rich text 編輯
+
+您可以透過簡單的工具列，對您的答案文字進行 rtf 編輯，提供 markdown 的樣式。
+
+1. 選取答案的文字區域，rich text 編輯器工具列會顯示在 [QnA 組] 資料列上。
+
+    > [!div class="mx-imgBorder"]
+    > ![Rich 文字編輯器的螢幕擷取畫面，其中包含 QnA 組資料列的問題和答案。](../media/qnamaker-how-to-edit-kb/rich-text-control-qna-pair-row.png)
+
+    任何已在答案中的文字都會正確顯示，因為您的使用者會從 bot 看到它。
+
+1. 編輯文字。 從 rtf 編輯工具列選取 [格式化功能]，或使用切換功能來切換到 markdown 語法。
+
+    > [!div class="mx-imgBorder"]
+    > ![使用 rtf 編輯器來撰寫和格式化文字，並將它儲存為 markdown。](../media/qnamaker-how-to-edit-kb/rich-text-display-image.png)
+
+    |豐富文字編輯器功能|鍵盤快速鍵|
     |--|--|
-    |新增 URL|您可以藉由按一下 [管理知識庫] -> [+ 新增 URL] 連結來新增 URL，以便將新的常見問題集內容新增至知識庫。|
-    |刪除 URL|您可以選取刪除圖示 (即垃圾桶)，以刪除現有 URL。|
-    |重新整理 URL 內容|如果您想要讓知識庫搜耙現有 URL 的最新內容，請選取 [重新整理] 核取方塊。 這會讓知識庫更新為最新的 URL 內容。|
-    |新增檔案|您可以藉由選取 [管理知識庫] 和 [+ 新增檔案]，將受支援的檔案文件新增為知識庫的一部分|
-    |Import|您也可以藉由選取 [匯入知識庫] 按鈕，匯入任何現有的知識庫。 |
-    |更新|知識庫的更新取決於當建立與知識庫相關聯的 QnA Maker 服務時，所使用的**管理定價層**。 如有需要，您也可以從 Azure 入口網站更新管理層。
+    |在 rtf 文字編輯器和 markdown 之間切換。 `</>`|CTRL+M|
+    |黑. **B**|CTR + LB|
+    |斜體，以斜體** _I_表示**|CTRL+I|
+    |未排序清單||
+    |已排序清單||
+    |段落樣式||
+    |影像-新增可從公用 URL 取得的映射。|CTRL+G|
+    |將連結新增至可公開使用的 URL。|CTRL+K|
+    |圖釋-從選取的圖釋新增。|CTRL+E|
+    |[高級] 功能表-[復原]|CTRL+Z|
+    |[高級] 功能表-重做|CTRL+Y|
 
-1. 變更知識庫完成之後，選取頁面右上角的 [儲存並訓練] 以維持變更。    
+1. 使用 rtf 文字工具列中的影像圖示，將影像新增至答案。 就地編輯器需要可公開存取的影像 URL 和影像的替代文字。
 
-    ![儲存並訓練](../media/qnamaker-how-to-edit-kb/save-and-train.png)
 
-    >[!CAUTION]
-    >如果您在選取 [儲存並訓練] 之前就離開此頁面，所有變更都將遺失。
+    > [!div class="mx-imgBorder"]
+    > ![使用 rtf 編輯器新增可公開存取的影像和其替代文字。](../media/qnamaker-how-to-edit-kb/add-image-url-alternate-text.png)
 
-## <a name="add-a-qna-pair"></a>加入 QnA 組
+1. 新增 URL 的連結，方法是選取答案中的文字，然後選取工具列中的 [連結] 圖示，或選取工具列中的 [連結] 圖示，然後輸入新的文字和 URL。
 
-在 **設定**頁面上，選取**新增 QnA 組**知識庫資料表中加入新的資料列。
+    > [!div class="mx-imgBorder"]
+    > ![使用 rtf 編輯器新增可公開存取的影像和其替代文字。](../media/qnamaker-how-to-edit-kb/add-link-to-answer-rich-text-editor.png)
 
-![加入 QnA 組](../media/qnamaker-how-to-edit-kb/add-qnapair.png)
+## <a name="edit-a-qna-pair"></a>編輯 QnA 配對
+
+不論原始資料來源為何，任何 QnA 組中的任何欄位都可以進行編輯。 某些欄位可能因為您目前的 [**視圖選項**] 設定（在內容工具列中找到）而無法顯示。
 
 ## <a name="delete-a-qna-pair"></a>刪除 QnA 組
 
-若要刪除 QnA，請按一下 QnA 資料列最右側的 [刪除] 圖示。 這是永久性的作業。 該作業無法復原。 請考慮先從 [發佈] 頁面匯出知識庫，再刪除 QnA 組。 
+若要刪除 QnA，請按一下 QnA 資料列最右側的 [刪除]**** 圖示。 這是永久性的作業。 該作業無法復原。 請考慮先從 [發佈]**** 頁面匯出知識庫，再刪除 QnA 組。
 
 ![刪除 QnA 組](../media/qnamaker-how-to-edit-kb/delete-qnapair.png)
+
+## <a name="find-the-qna-pair-id"></a>尋找 QnA 配對識別碼
+
+如果您需要找到 QnA 組識別碼，可以在兩個地方找到它：
+
+* 將滑鼠停留在您感興趣之 QnA 組資料列上的 [刪除] 圖示上。 暫留文字包含 QnA 配對識別碼。
+* 匯出知識庫。 知識庫中的每個 QnA 組都會包含 QnA 配對識別碼。
 
 ## <a name="add-alternate-questions"></a>新增替代問題
 
@@ -70,41 +102,31 @@ QnA Maker 可讓您提供方便使用的編輯方式，藉以管理知識庫的�
 
 ![新增替代問題](../media/qnamaker-how-to-edit-kb/add-alternate-question.png)
 
+## <a name="linking-qna-pairs"></a>連結 QnA 配對
+
+[後續的提示](multiturn-conversation.md)會提供連結 QnA 配對。 這是在知識庫層級管理的 QnA 組之間的邏輯連接。 您可以在 QnA Maker 入口網站中編輯後續追蹤提示。
+
+您無法在答案的中繼資料中連結 QnA 配對。
+
 ## <a name="add-metadata"></a>新增中繼資料
 
+藉由先選取 [**視圖選項**]，然後選取 [**顯示中繼資料**] 來新增中繼資料組。 這會顯示 [中繼資料] 資料行。 接下來，選取 **+** 正負號來新增中繼資料組。 此配對包含一個索引鍵和一個值。
 
-選取 [中繼資料] 圖示，以將中繼資料組。 中繼資料組是由一個索引鍵和一個值所組成。
+## <a name="save-changes-to-the-qna-pairs"></a>儲存 QnA 配對的變更
+
+在進行編輯後定期選取 [**儲存並定型**]，以避免遺失變更。
 
 ![新增中繼資料](../media/qnamaker-how-to-edit-kb/add-metadata.png)
 
-> [!TIP]
-> 務必在進行編輯後定期儲存和訓練知識庫，以避免遺失變更。
+## <a name="when-to-use-rich-text-editing-versus-markdown"></a>何時使用 rich text 編輯與 markdown
 
-## <a name="manage-large-knowledge-bases"></a>管理大型知識庫
+使用者可以使用 [格式化] 工具列來快速選取和格式化文字，以提供豐富的答案[文字編輯](#add-an-editorial-qna-set)。
 
-* **資料來源群組**：QnA 是按照擷取資料的資料來源分組。 您可以展開或摺疊資料來源。
-
-    ![使用 QnA Maker 資料來源列來摺疊和展開資料來源問題和答案](../media/qnamaker-how-to-edit-kb/data-source-grouping.png)
-
-* **搜尋知識庫**：您可以使用知識庫資料表頂端的文字方塊來搜尋知識庫。 按一下輸入來搜尋問題、答案或中繼資料內容。 按一下 X 圖示移除搜尋篩選條件。
-
-    ![使用問題和答案上方的 QnA Maker 搜尋方塊，將檢視縮小為僅限符合篩選條件的項目](../media/qnamaker-how-to-edit-kb/search-paginate-group.png)
-
-* **分頁**：快速瀏覽資料來源以管理大型知識庫
-
-    ![使用問題和答案上方的 QnA Maker 分頁功能來瀏覽問題和答案頁面](../media/qnamaker-how-to-edit-kb/pagination.png)
-
-## <a name="delete-knowledge-bases"></a>刪除知識庫
-
-刪除知識庫 (KB) 是永久性的作業。 該作業無法復原。 刪除知識庫之前，您應該從 QnA Maker 入口網站的 [設定] 頁面將知識庫匯出。 
-
-如果您與[共同作業者](collaborate-knowledge-base.md)共用知識庫然後刪除它，則每個人都會無法存取 KB。 
-
-## <a name="delete-azure-resources"></a>刪除 Azure 資源 
-
-如果您刪除任何用於 QnA Maker 知識庫的 Azure 資源，知識庫將無法再運作。 在刪除任何資源之前，請務必先從 [設定] 頁面匯出知識庫。 
+當您需要自動產生內容來建立要匯入做為 CI/CD 管線一部分或用於[批次測試](../Quickstarts/batch-testing.md)的知識庫時， [Markdown](../reference-markdown-format.md)是較好的工具。
 
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
 > [在知識庫上共同作業](./collaborate-knowledge-base.md)
+
+* [管理 QnA Maker 所使用的 Azure 資源](set-up-qnamaker-service-azure.md)

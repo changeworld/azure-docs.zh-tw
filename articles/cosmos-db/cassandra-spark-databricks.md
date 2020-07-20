@@ -6,14 +6,14 @@ ms.author: govindk
 ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/24/2018
-ms.openlocfilehash: 37a06b19285c1196b5d87830ea176d4bd0d4eade
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 30bd3187973de204f27a3be3862351550d6a56f6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60894006"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85260469"
 ---
 # <a name="access-azure-cosmos-db-cassandra-api-data-from-azure-databricks"></a>從 Azure Databricks 存取 Azure Cosmos DB Cassandra API 資料
 
@@ -51,9 +51,9 @@ ms.locfileid: "60894006"
 
 * **Azure Cosmos DB Cassandra API 特有的程式庫：** 需要有自訂連線處理站，才能將 Cassandra Spark 連接器的重試原則設定到 Azure Cosmos DB Cassandra API。 新增 `com.microsoft.azure.cosmosdb:azure-cosmos-cassandra-spark-helper:1.0.0`[Maven 座標](https://search.maven.org/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper/1.0.0/jar)，以將程式庫連結至叢集。
 
-## <a name="sample-notebooks"></a>範例 Notebook
+## <a name="sample-notebooks"></a>範例筆記本
 
-GitHub 存放庫中有一份 Azure Databricks [範例 Notebook](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-notebooks-databricks/tree/master/notebooks/scala) 清單，可供您下載。 這些範例包含如何從 Spark 連線到 Azure Cosmos DB Cassandra API，以及針對資料執行不同的 CRUD 作業。 您也可以[匯入所有 Notebook](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-notebooks-databricks/tree/master/dbc) 到您的 Databricks 叢集工作區並執行它。 
+您可以在 GitHub 存放庫中找到 Azure Databricks[範例筆記本](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-notebooks-databricks/tree/master/notebooks/scala)清單供您下載。 這些範例包含如何從 Spark 連線到 Azure Cosmos DB Cassandra API，以及針對資料執行不同的 CRUD 作業。 您也可以[匯入所有 Notebook](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-notebooks-databricks/tree/master/dbc) 到您的 Databricks 叢集工作區並執行它。 
 
 ## <a name="accessing-azure-cosmos-db-cassandra-api-from-spark-scala-programs"></a>從 Spark Scala 程式存取 Azure Cosmos DB Cassandra API
 

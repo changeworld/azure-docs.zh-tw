@@ -1,25 +1,24 @@
 ---
-title: 使用封包擷取搭配警示和 Azure Functions 進行主動式網路監視 | Microsoft Docs
+title: 使用封包捕獲，利用警示進行主動式網路監視-Azure Functions
+titleSuffix: Azure Network Watcher
 description: 本文說明如何使用 Azure 網路監看員建立警示觸發的封包擷取
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.assetid: 75e6e7c4-b3ba-4173-8815-b00d7d824e11
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: 37e42b05046be27254d2ceb15a59fbdb931ae161
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.author: damendo
+ms.openlocfilehash: fb5ae2408c15baee0f37acaacc780f4d198b1521
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64711922"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84738051"
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>使用封包擷取搭配警示和 Azure Functions 進行主動式網路監視
 
@@ -31,7 +30,7 @@ ms.locfileid: "64711922"
 
 藉由使用 Azure 生態系統內的網路監看員、警示及函式，您可以使用資料和工具主動回應以解決網路中的問題。
 
-![案例][scenario]
+![狀況][scenario]
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -42,7 +41,7 @@ ms.locfileid: "64711922"
 * 網路監看員的現有執行個體。 如果您還沒有，請[建立網路監看員執行個體](network-watcher-create.md)。
 * 在含有 [Windows 擴充功能](../virtual-machines/windows/extensions-nwa.md)或 [Linux 虛擬機器擴充功能](../virtual-machines/linux/extensions-nwa.md)的網路監看員所在區域中的現有虛擬機器。
 
-## <a name="scenario"></a>案例
+## <a name="scenario"></a>狀況
 
 在此範例中，您的 VM 將傳送比平常還要多的 TCP 區段，而且您想要收到警示。 此處使用 TCP 區段做為範例，但您可以使用任何警示條件。
 
@@ -69,11 +68,11 @@ ms.locfileid: "64711922"
 
 第一個步驟是建立 Azure 函式來處理警示，以及建立封包擷取。
 
-1. 在 [Azure 入口網站](https://portal.azure.com)中，選取 [建立資源] > [計算] > [函數應用程式]。
+1. 在 [Azure 入口網站](https://portal.azure.com)中，選取 [建立資源]**** > [計算]**** > [函數應用程式]****。
 
     ![建立函數應用程式][1-1]
 
-2. 在 [函數應用程式] 刀鋒視窗上，輸入下列值，然後選取 [確定] 以建立應用程式︰
+2. 在 [函數應用程式]**** 刀鋒視窗上，輸入下列值，然後選取 [確定]**** 以建立應用程式︰
 
     |**設定** | **值** | **詳細資料** |
     |---|---|---|
@@ -84,13 +83,13 @@ ms.locfileid: "64711922"
     |**位置**|美國中部| 要在其中建立函數應用程式的區域。|
     |**儲存體帳戶**|{自動產生}| Azure Functions 針對一般用途的儲存所需的儲存體帳戶。|
 
-3. 在 [PacketCaptureExample 函數應用程式] 刀鋒視窗上，選取 [函式] > [自訂函式] >[+]。
+3. 在 [PacketCaptureExample 函數應用程式]**** 刀鋒視窗上，選取 [函式]**** > [自訂函式]**** >[+]****。
 
-4. 選取 [HttpTrigger-Powershell]，然後輸入其餘資訊。 最後，若要建立函式，請選取 [建立]。
+4. 選取 [HttpTrigger-Powershell]****，然後輸入其餘資訊。 最後，若要建立函式，請選取 [建立]****。
 
     |**設定** | **值** | **詳細資料** |
     |---|---|---|
-    |**案例**|實驗性|案例類型|
+    |**案例**|實驗|案例類型|
     |**函式命名**|AlertPacketCapturePowerShell|函式的名稱|
     |**授權層級**|函式|函式的授權層級|
 
@@ -121,7 +120,7 @@ ms.locfileid: "64711922"
 
      ![PowerShell 資料夾][functions5]
 
-1. 選取 [函數應用程式設定] > [前往 App Service 編輯器]。
+1. 選取 [函數] [**應用程式設定**] [  >  **移至 App Service 編輯器**]。
 
     ![函數應用程式設定][functions2]
 
@@ -137,11 +136,11 @@ ms.locfileid: "64711922"
 
     * Az.Resources
 
-1. 以滑鼠右鍵按一下**Az.Network**子資料夾，然後選取**上傳檔案**。 
+1. 以滑鼠右鍵按一下 [ **Az. Network** ] 子資料夾，然後選取 **[上傳**檔案]。 
 
-6. 前往 Azure 模組。 在本機**Az.Network**資料夾中，選取資料夾中的所有檔案。 然後選取 [確定]。 
+6. 前往 Azure 模組。 在 [本機**Az. Network** ] 資料夾中，選取資料夾中的所有檔案。 然後選取 [確定]。 
 
-7. 重複這些步驟**Az.Accounts**並**Az.Resources**。
+7. 針對**Az. Accounts**和**az .resources**重複這些步驟。
 
     ![上傳檔案][functions6]
 
@@ -149,7 +148,7 @@ ms.locfileid: "64711922"
 
     ![PowerShell 檔案][functions7]
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>驗證
 
 若要使用 PowerShell Cmdlet，您必須進行驗證。 您可以在函數應用程式中設定驗證。 若要設定驗證，您必須設定環境變數，並將加密金鑰檔案上傳至函數應用程式。
 
@@ -208,11 +207,11 @@ $Encryptedpassword
    > [!NOTE]
    > 建立應用程式時所使用的密碼，應該與稍早在儲存金鑰檔案時所建立的密碼相同。
 
-1. 在 Azure 入口網站中，選取 [訂用帳戶]。 選取要使用的訂用帳戶，然後選取 [存取控制 (IAM)]。
+1. 在 Azure 入口網站中，選取 [訂用帳戶]****。 選取要使用的訂用帳戶，然後選取 [存取控制 (IAM)]****。
 
     ![函式 IAM][functions9]
 
-1. 選擇要使用的帳戶，然後選取 [屬性]。 複製應用程式識別碼。
+1. 選擇要使用的帳戶，然後選取 [屬性]****。 複製應用程式識別碼。
 
     ![函數應用程式識別碼][functions10]
 
@@ -226,7 +225,7 @@ $Encryptedpassword
 
 #### <a name="azurecredpassword"></a>AzureCredPassword
 
-AzureCredPassword 環境變數的值是執行下列 PowerShell 範例所取得的值。 這個範例與前面的＜加密的認證＞一節所顯示的範例相同。 所需的值是 `$Encryptedpassword` 變數的輸出。  這是使用 PowerShell 指令碼所加密的服務主體密碼。
+AzureCredPassword 環境變數的值是執行下列 PowerShell 範例所取得的值。 這個範例與前面的＜加密的認證＞**** 一節所顯示的範例相同。 所需的值是 `$Encryptedpassword` 變數的輸出。  這是使用 PowerShell 指令碼所加密的服務主體密碼。
 
 ```powershell
 #Variables
@@ -247,11 +246,11 @@ $Encryptedpassword
 
 ### <a name="store-the-environment-variables"></a>儲存環境變數
 
-1. 返回函數應用程式。 然後選取 [函數應用程式設定] > [設定應用程式設定]。
+1. 返回函數應用程式。 然後選取 [**函數應用程式設定**] [設定  >  **應用程式設定**]。
 
     ![進行應用程式設定][functions11]
 
-1. 將環境變數及其值新增至應用程式設定，然後選取 [儲存]。
+1. 將環境變數及其值新增至應用程式設定，然後選取 [儲存]****。
 
     ![應用程式設定][functions12]
 
@@ -305,8 +304,7 @@ $Encryptedpassword
                 Write-Output ("Resource Type:  {0}" -f $requestBody.context.resourceType)
 
                 #Get the Network Watcher in the VM's region
-                $nw = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq $requestBody.context.resourceRegion}
-                $networkWatcher = Get-AzNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName
+                $networkWatcher = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq $requestBody.context.resourceRegion}
 
                 #Get existing packetCaptures
                 $packetCaptures = Get-AzNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher
@@ -342,14 +340,14 @@ $Encryptedpassword
 
 ### <a name="create-the-alert-rule"></a>建立警示規則
 
-前往現有的虛擬機器，然後新增警示規則。 如需設定警示相關的詳細文件，請參閱[在 Azure 服務的 Azure 監視器中建立警示 - Azure 入口網站](../monitoring-and-diagnostics/insights-alerts-portal.md)。 在 [警示規則] 刀鋒視窗中輸入下列值，然後選取 [確定]。
+前往現有的虛擬機器，然後新增警示規則。 如需設定警示相關的詳細文件，請參閱[在 Azure 服務的 Azure 監視器中建立警示 - Azure 入口網站](../monitoring-and-diagnostics/insights-alerts-portal.md)。 在 [警示規則]**** 刀鋒視窗中輸入下列值，然後選取 [確定]****。
 
   |**設定** | **值** | **詳細資料** |
   |---|---|---|
   |**名稱**|TCP_Segments_Sent_Exceeded|警示規則的名稱。|
-  |**說明**|傳送的 TCP 區段超出閾值|警示規則的描述。|
+  |**描述**|傳送的 TCP 區段超出閾值|警示規則的描述。|
   |**計量**|傳送的 TCP 區段| 用以觸發警示的計量。 |
-  |**Condition**|大於| 評估計量所用的條件。|
+  |**條件**|大於| 評估計量所用的條件。|
   |**閾值**|100| 觸發警示的計量值。 此值應該設為您環境的有效值。|
   |**期間**|過去五分鐘| 決定尋找計量閾值的期間。|
   |**Webhook**|[函數應用程式中的 Webhook URL]| 先前步驟中所建立函數應用程式中的 Webhook URL。|
@@ -359,7 +357,7 @@ $Encryptedpassword
 
 ## <a name="review-the-results"></a>檢閱結果
 
-觸發警示的準則之後，會建立封包擷取。 前往網路監看員，然後選取 [封包擷取]。 在這個頁面上，您可以選取封包擷取檔案連結以下載封包擷取。
+觸發警示的準則之後，會建立封包擷取。 前往網路監看員，然後選取 [封包擷取]****。 在這個頁面上，您可以選取封包擷取檔案連結以下載封包擷取。
 
 ![檢視封包擷取][functions14]
 

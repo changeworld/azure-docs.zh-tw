@@ -1,21 +1,21 @@
 ---
 title: 教學課程：建立自訂搜尋網頁 - Bing 自訂搜尋
-titlesuffix: Azure Cognitive Services
-description: 描述如何設定自訂搜尋執行個體，並將它整合到網頁。
+titleSuffix: Azure Cognitive Services
+description: 了解如何使用本教學課程來設定自訂的 Bing 搜尋執行個體，並將其整合到網頁。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: tutorial
-ms.date: 03/04/2019
+ms.date: 03/05/2019
 ms.author: aahi
-ms.openlocfilehash: 6f44d4e6e5a0ee940394e09ceff8a425700d34e1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: da1ada27b9420643f6f0b15f0986c245ba585acd
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58100721"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921935"
 ---
 # <a name="tutorial-build-a-custom-search-web-page"></a>教學課程：建置自訂搜尋網頁
 
@@ -34,8 +34,8 @@ Bing 自訂搜尋可讓您針對感興趣的主題，建立量身訂做的搜尋
 
 ## <a name="prerequisites"></a>必要條件
 
-- 若要依照本教學課程，您需要 Bing 自訂搜尋 API 的訂用帳戶金鑰。  若要取得金鑰，請參閱[試用認知服務](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search)。
-- 如果尚未安裝 Visual Studio 2017，您可以下載並使用**免費的** [Visual Studio 2017 Community 版本](https://www.visualstudio.com/downloads/)。
+- 若要依照本教學課程，您需要 Bing 自訂搜尋 API 的訂用帳戶金鑰。  若要取得金鑰，請在 Azure 入口網站中[建立 Bing 自訂搜尋資源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingCustomSearch)。
+- 如果尚未安裝 Visual Studio 2017 或更新版本，您可以下載並使用**免費的** [Visual Studio 2019 Community 版本](https://www.visualstudio.com/downloads/)。
 
 ## <a name="create-a-custom-search-instance"></a>建立自訂搜尋執行個體
 
@@ -45,7 +45,7 @@ Bing 自訂搜尋可讓您針對感興趣的主題，建立量身訂做的搜尋
   
 2. 瀏覽至自訂搜尋[入口網站](https://customsearch.ai)。  
   
-3. 使用 Microsoft 帳戶 (MSA) 登入入口網站。 如果您沒有 MSA，請按一下 [建立 Microsoft 帳戶]。 如果這是您第一次使用入口網站，它會要求您提供存取資料的權限。 按一下 [是] 。  
+3. 使用 Microsoft 帳戶 (MSA) 登入入口網站。 如果您沒有 MSA，請按一下 [建立 Microsoft 帳戶]。 如果這是您第一次使用入口網站，其會要求您提供存取資料的權限。 按一下 [是] 。  
   
 4. 登入之後，按一下 [新增自訂搜尋]。 在 [建立新的自訂搜尋執行個體] 視窗中，輸入有意義的名稱且名稱能夠描述搜尋傳回的內容類型。 您可以隨時變更名稱。  
   
@@ -60,11 +60,11 @@ Bing 自訂搜尋可讓您針對感興趣的主題，建立量身訂做的搜尋
 
 若要包括來自特定網站或 URL 的結果，請將它們加入到 [使用中] 索引標籤。
 
-1.  在 [設定] 頁面上，按一下 [使用中] 索引標籤，並輸入要在搜尋中包括的一或多個網站的 URL。
+1. 在 [設定] 頁面上，按一下 [使用中] 索引標籤，並輸入要在搜尋中包括的一或多個網站的 URL。
 
     ![定義編輯器 [使用中] 索引標籤的螢幕擷取畫面](../media/customSrchEditor.png)
 
-2.  若要確認您的執行個體會傳回結果，請在右邊的預覽窗格中輸入查詢。 Bing 只會針對已編製索引的公用網站傳回結果。
+2. 若要確認您的執行個體會傳回結果，請在右邊的預覽窗格中輸入查詢。 Bing 只會針對已編製索引的公用網站傳回結果。
 
 ## <a name="add-blocked-entries"></a>加入已封鎖的項目
 
@@ -103,7 +103,7 @@ Bing 自訂搜尋可讓您針對感興趣的主題，建立量身訂做的搜尋
   
    ![[託管的 UI] 選取色彩佈景主題的螢幕擷取畫面](./media/custom-search-hosted-ui-select-color-theme.png)  
 
-   若需要微調色彩佈景主題以便與您的 Web 應用程式完美整合，請按一下 [自訂佈景主題]。 並非所有色彩設定都會套用到所有版面配置佈景主題。 若要變更色彩，請在對應的文字方塊中輸入色彩的 RGB HEX 值 (例如 #366eb8)。 或者，按一下色彩按鈕並按一下適合您的陰影。 選取色彩時務必考慮可存取性。
+   若需要微調色彩佈景主題來與您的 Web 應用程式完美整合，請按一下 [自訂佈景主題]。 並非所有色彩設定都會套用到所有版面配置佈景主題。 若要變更色彩，請在對應的文字方塊中輸入色彩的 RGB HEX 值 (例如 #366eb8)。 或者，按一下色彩按鈕並按一下適合您的陰影。 選取色彩時務必考慮可存取性。
   
    ![[託管的 UI] 自訂色彩佈景主題的螢幕擷取畫面](./media/custom-search-hosted-ui-customize-color-theme.png)  
 
@@ -116,7 +116,7 @@ Bing 自訂搜尋可讓您針對感興趣的主題，建立量身訂做的搜尋
 
    ![[託管的 UI] 進階設定步驟的螢幕擷取畫面](./media/custom-search-hosted-ui-advanced-configurations.png)  
   
-5. 從下拉式清單選取您的訂用帳戶金鑰。 或者，您可以手動輸入訂用帳戶金鑰。 如需有關取得金鑰的詳細資訊，請參閱[嘗試認知服務](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search-api)。  
+5. 從下拉式清單選取您的訂用帳戶金鑰。 或者，您可以手動輸入訂用帳戶金鑰。
   
    ![[託管的 UI] 其他設定步驟的螢幕擷取畫面](./media/custom-search-hosted-ui-subscription-key.png)
 
@@ -130,7 +130,7 @@ Bing 自訂搜尋可讓您針對感興趣的主題，建立量身訂做的搜尋
 - 選項 1：將提供的 JavaScript 程式碼片段整合到您的應用程式中。
 - 選項 2：使用提供的 HTML 端點。
 
-本教學課程的其餘部分說明**選項 1：Javascript 程式碼片段**。  
+本教學課程的其餘部分說明**選項 1：JavaScript 程式碼片段**。  
 
 ## <a name="set-up-your-visual-studio-solution"></a>設定您的 Visual Studio 方案
 

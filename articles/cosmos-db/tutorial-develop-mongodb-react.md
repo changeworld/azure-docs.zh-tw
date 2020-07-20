@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 09/05/2017
+ms.date: 09/05/2018
 ms.author: jopapa
 ms.reviewer: sngun
-ms.openlocfilehash: ef245c2ef5da2b3dc9780e772a71e8ef896e1aff
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 4efaa90281ddcebf1b800e1016578e38c24be651
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56959794"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "69614108"
 ---
 # <a name="create-a-mongodb-app-with-react-and-azure-cosmos-db"></a>使用 React 和 Azure Cosmos DB 建立 MongoDB 應用程式  
 
@@ -34,7 +34,7 @@ ms.locfileid: "56959794"
 
 您想要以 Angular 建置此範例應用程式嗎？ 請參閱 [Angular 教學課程影片系列](tutorial-develop-mongodb-nodejs.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 * [Node.js](https://www.nodejs.org)
 
 ### <a name="finished-project"></a>已完成的專案
@@ -69,7 +69,7 @@ ms.locfileid: "56959794"
 
 ## <a name="read-and-create-heroes-in-the-app"></a>在應用程式中讀取和建立 Hero
 
-這部影片示範如何讀取 Hero 和在 Cosmos DB 資料庫中建立 Hero，以及如何使用 Postman 和 React UI 測試這些方法。 
+這部影片示範如何讀取 Hero 和在 Cosmos 資料庫中建立 Hero，以及如何使用 Postman 和 React UI 測試這些方法。 
 
 > [!VIDEO https://www.youtube.com/embed/AQK9n_8fsQI] 
 
@@ -89,8 +89,8 @@ ms.locfileid: "56959794"
 
 如果您將不繼續使用此應用程式，請使用下列步驟，在 Azure 入口網站中刪除本教學課程所建立的所有資源。 
 
-1. 從 Azure 入口網站的左側功能表中，按一下 [資源群組]，然後按一下您所建立資源的名稱。 
-2. 在資源群組頁面上，按一下 [刪除]，在文字方塊中輸入要刪除之資源的名稱，然後按一下 [刪除]。
+1. 從 Azure 入口網站的左側功能表中，按一下 [資源群組]  ，然後按一下您所建立資源的名稱。 
+2. 在資源群組頁面上，按一下 [刪除]  ，在文字方塊中輸入要刪除之資源的名稱，然後按一下 [刪除]  。
 
 ## <a name="next-steps"></a>後續步驟
 

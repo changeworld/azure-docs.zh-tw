@@ -13,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
-ms.author: juliako;anilmur
-ms.openlocfilehash: d3eb2affe76374eb35ac724dff0204f43b567e09
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: juliako
+ms.reviewer: anilmur
+ms.openlocfilehash: 259e32d55f25c4a146b7ff358eb503763dd5fab2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61225695"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "69016578"
 ---
 # <a name="encode-an-asset-with-media-encoder-standard-using-net"></a>使用 .NET 透過 Media Encoder Standard 為資產編碼  
 
@@ -29,10 +30,10 @@ ms.locfileid: "61225695"
 
 建議一律將來源檔編碼為調適性位元速率 MP4 集，然後使用[動態封裝](media-services-dynamic-packaging-overview.md)將該集合轉換為所要的格式。 
 
-如果您的輸出資產是儲存體加密，必須設定資產傳遞原則。 如需詳細資訊，請參閱[設定資產傳遞原則](media-services-dotnet-configure-asset-delivery-policy.md)。
+如果您的輸出資產是儲存體加密，必須設定資產傳遞原則。 如需詳細資訊，請參閱設定[資產傳遞原則](media-services-dotnet-configure-asset-delivery-policy.md)。
 
 > [!NOTE]
-> MES 會產生一個輸出檔案，其名稱包含輸入檔案名稱的前 32 個字元。 名稱是以預設檔案中指定的名稱為基礎。 例如，"FileName": "{Basename}_{Index}{Extension}"。 {Basename} 替换为输入文件名的前 32 个字符。
+> MES 會產生一個輸出檔案，其名稱包含輸入檔案名稱的前 32 個字元。 名稱是以預設檔案中指定的名稱為基礎。 例如，"FileName": "{Basename}_{Index}{Extension}"。 {Basename} 會由輸入檔案名稱的前 32 個字元取代。
 > 
 > 
 
@@ -47,7 +48,7 @@ ms.locfileid: "61225695"
 
 輸出資產也包含隨附關於輸入資產中繼資料的檔案。 中繼資料 XML 檔案的名稱具備下列格式︰<asset_id>_metadata.xml (例如：41114ad3-eb5e-4c57-8d92-5354e2b7d4a4_metadata.xml)，其中的 <asset_id> 是輸入資產的 AssetId 值。 [這裡](media-services-input-metadata-schema.md)說明了此輸入中繼資料 XML 的結構描述。
 
-输出资产还包含提供输出资产相关元数据的文件。 中繼資料 XML 檔案的名稱具備下列格式︰<source_file_name>_manifest.xml (例如：BigBuckBunny_manifest.xml)。 [這裡](media-services-output-metadata-schema.md)說明了此輸出中繼資料 XML 的結構描述。
+輸出資產也包含隨附關於輸出資產中繼資料的檔案。 中繼資料 XML 檔案的名稱具備下列格式︰<source_file_name>_manifest.xml (例如：BigBuckBunny_manifest.xml)。 [這裡](media-services-output-metadata-schema.md)說明了此輸出中繼資料 XML 的結構描述。
 
 如果您想要檢查這兩個中繼資料檔案的任一個，可以建立 SAS 定位器並將檔案下載到您的本機電腦。 您可以找到關於如何建立 SAS 定位器的範例，並且下載使用媒體服務 .NET SDK 擴充功能的檔案。
 
@@ -60,7 +61,7 @@ ms.locfileid: "61225695"
 
 * 建立編碼工作。
 * 取得對 Media Encoder Standard 編碼器的參考
-* 指定要使用[彈性資料流](media-services-autogen-bitrate-ladder-with-mes.md)預設值。 
+* 指定以使用彈性[資料流程](media-services-autogen-bitrate-ladder-with-mes.md)預設值。 
 * 將單一編碼工作加入工作。 
 * 指定要編碼的輸入資產。
 * 建立包含已編碼資產的輸出資產。
@@ -69,7 +70,7 @@ ms.locfileid: "61225695"
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>建立和設定 Visual Studio 專案
 
-設定您的開發環境並在 app.config 檔案中填入連線資訊，如[使用 .NET 進行 Media Services 開發](media-services-dotnet-how-to-use.md)所述。 
+設定您的開發環境，並在 app.config 檔案中填入連接資訊，如[使用 .net 進行媒體服務開發](media-services-dotnet-how-to-use.md)中所述。 
 
 #### <a name="example"></a>範例 
 
@@ -209,6 +210,6 @@ namespace MediaEncoderStandardSample
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="next-steps"></a>後續步驟
-[如何使用媒體編碼器標準搭配 .NET 產生縮圖](media-services-dotnet-generate-thumbnail-with-mes.md)
-[媒體服務編碼概觀](media-services-encode-asset.md)
+[如何使用媒體編碼器標準搭配 .net](media-services-dotnet-generate-thumbnail-with-mes.md) 
+ 產生縮圖[媒體服務編碼總覽](media-services-encode-asset.md)
 

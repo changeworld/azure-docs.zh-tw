@@ -1,5 +1,5 @@
 ---
-title: 教學課程 - 將 Azure Active Directory 記錄串流到 Azure 事件中樞 | Microsoft Docs
+title: 教學課程 - 將記錄串流到 Azure 事件中樞 | Microsoft Docs
 description: 深入了解如何設定 Azure 診斷以將 Azure Active Directory 記錄推送到事件中樞
 services: active-directory
 documentationcenter: ''
@@ -17,53 +17,53 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 906da7ac6b0086e4efca7c38171668a08f687d19
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: eba44252672248b983d7f6e0c843f638e5f73447
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59995588"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "74007644"
 ---
 # <a name="tutorial-stream-azure-active-directory-logs-to-an-azure-event-hub"></a>教學課程：將 Azure Active Directory 記錄串流到 Azure 事件中樞
 
 在本教學課程中，您會了解如何設定 Azure 監視器診斷設定，以將 Azure Active Directory (Azure AD) 記錄串流到 Azure 事件中樞。 使用這個機制將記錄與 Splunk 和 QRadar 等第三方安全性資訊與事件管理 (SIEM) 工具整合在一起。
 
-## <a name="prerequisites"></a>必要條件 
+## <a name="prerequisites"></a>Prerequisites 
 
 若要使用此功能，您必須要有：
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，您可以[註冊免費試用](https://azure.microsoft.com/free/)。
 * Azure AD 租用戶。
-* 使用者，身分是該 Azure AD 租用戶的「全域管理員」或「安全性管理員」。
+* 使用者，身分是該 Azure AD 租用戶的「全域管理員」  或「安全性管理員」  。
 * Azure 訂用帳戶中的事件中樞命名空間和事件中樞。 了解如何[建立事件中樞](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)。
 
 ## <a name="stream-logs-to-an-event-hub"></a>將記錄串流至事件中樞
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。 
 
-2. 選取 [Azure Active Directory]  >  [活動]  >  [稽核記錄]。 
+2. 選取 [Azure Active Directory]   >  [監視]   >  [稽核記錄]  。 
 
-3. 選取 [匯出設定]。  
+3. 選取 [匯出設定]  。  
     
-4. 在 [診斷設定] 窗格中，執行下列其中一項：
-    * 若要變更現有設定，請選取 [編輯設定]。
-    * 若要新增設定，請選取 [新增診斷設定]。  
+4. 在 [診斷設定]  窗格中，執行下列其中一項：
+    * 若要變更現有設定，請選取 [編輯設定]  。
+    * 若要新增設定，請選取 [新增診斷設定]  。  
       您最多可以有三個設定。
 
       ![匯出設定](./media/quickstart-azure-monitor-stream-logs-to-event-hub/ExportSettings.png)
 
-5. 請選取 [串流到事件中樞] 核取方塊，然後選取 [事件中樞/設定]。
+5. 請選取 [串流到事件中樞]  核取方塊，然後選取 [事件中樞/設定]  。
 
 6. 選取您想要將記錄路由傳送到其中的 Azure 訂用帳戶和事件中樞命名空間。  
     訂用帳戶和事件中樞命名空間都必須與記錄串流來源的 Azure AD 租用戶產生關聯。 您也可以在要將記錄傳送到其中的事件中樞命名空間內，指定事件中樞。 如果未指定事件中樞，則會在命名空間中建立一個事件中樞，具有預設名稱 **insights-logs-audit**。
 
-7. 選取 [確定] 以結束事件中樞設定。
+7. 選取 [確定]  以結束事件中樞設定。
 
 8. 執行下列其中一個動作或兩個動作都執行：
-    * 若要將稽核記錄傳送到儲存體帳戶，請選取 [AuditLogs] 核取方塊。 
-    * 若要將登入記錄傳送到儲存體帳戶，請選取 [SignInLogs] 核取方塊。
+    * 若要將稽核記錄傳送到儲存體帳戶，請選取 [AuditLogs]  核取方塊。 
+    * 若要將登入記錄傳送到儲存體帳戶，請選取 [SignInLogs]  核取方塊。
 
-9. 選取 [儲存] 以儲存設定。
+9. 選取 [儲存]  以儲存設定。
 
     ![診斷設定](./media/quickstart-azure-monitor-stream-logs-to-event-hub/DiagnosticSettings.png)
 
@@ -76,6 +76,9 @@ ms.locfileid: "59995588"
 資料顯示在事件中樞後，您便可透過兩種方式存取和讀取資料：
 
 * **設定支援的 SIEM 工具**。 為了讀取事件中樞內的資料，大部分工具皆需要事件中樞連接字串和 Azure 訂用帳戶的特定權限。 第三方工具與 Azure 監視器的整合包括但不限於：
+    
+    * **ArcSight**：如需如何將 Azure AD 記錄與 Splunk 整合在一起的詳細資訊，請參閱[使用 Azure 監視器將 Azure Active Directory 記錄與 ArcSight 整合](howto-integrate-activity-logs-with-arcsight.md)。
+    
     * **Splunk**：如需如何將 Azure AD 記錄與 Splunk 整合在一起的詳細資訊，請參閱[如何使用 Azure 監視器將 Azure AD 記錄與 Splunk 整合在一起](tutorial-integrate-activity-logs-with-splunk.md)。
     
     * **IBM QRadar**：DSM 與 Azure 事件中樞通訊協定均可在 [IBM 支援](https://www.ibm.com/support)中下載取得。 如需有關與 Azure 整合的詳細資訊，請移至 [IBM QRadar Security Intelligence Platform 7.3.0](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0) 網站。
@@ -87,6 +90,7 @@ ms.locfileid: "59995588"
 
 ## <a name="next-steps"></a>後續步驟
 
+* [使用 Azure 監視器將 Azure Active Directory 記錄與 ArcSight 整合](howto-integrate-activity-logs-with-arcsight.md)
 * [使用 Azure 監視器將 Azure AD 記錄與 Splunk 整合](tutorial-integrate-activity-logs-with-splunk.md)
 * [使用 Azure 監視器將 Azure AD 記錄與 SumoLogic 整合](howto-integrate-activity-logs-with-sumologic.md)
 * [解譯 Azure 監視器中的稽核記錄結構描述](reference-azure-monitor-audit-log-schema.md)

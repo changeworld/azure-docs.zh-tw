@@ -1,26 +1,25 @@
 ---
-title: 教學課程：使用 Apache Storm 搭配 Apache Kafka 來讀取和寫入資料 - Azure HDInsight
+title: 教學課程：Apache Storm 搭配 Apache Kafka - Azure HDInsight
 description: 了解如何在 HDInsight 上搭配使用 Apache Storm 與 Apache Kafka 以建立串流管線。 在本教學課程中，您會使用 KafkaBolt 與 KafkaSpout 元件從 Kafka 串流處理資料。
-services: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
-ms.date: 12/06/2018
-ms.openlocfilehash: dca789a850e5df58024d13b8f592765e55c39485
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.date: 06/25/2019
+ms.openlocfilehash: 6c600c4cfe96b849786664aa878ec1f84407da5b
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58316944"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963524"
 ---
 # <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>教學課程：在 HDInsight 上搭配使用 Apache Storm 與 Apache Kafka
 
 本教學課程說明如何使用 [Apache Storm](https://storm.apache.org/) 拓撲，對 HDInsight 上的 [Apache Kafka](https://kafka.apache.org/) 讀取和寫入資料。 本教學課程也會說明如何將資料保存至 Storm 叢集上與 [Apache Hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html) 相容的儲存體。
 
-在本教學課程中，您了解如何：
+在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
 > * Storm 和 Kafka
@@ -59,28 +58,28 @@ ms.locfileid: "58316944"
 > 
 > 為了方便您使用，本文件會連結至可建立所有必要 Azure 資源的範本。 
 >
-> 如需在虛擬網路中使用 HDInsight 的詳細資訊，請參閱[使用 Azure 虛擬網路擴充 HDInsight](hdinsight-extend-hadoop-virtual-network.md) 文件。
+> 如需在虛擬網路中使用 HDInsight 的詳細資訊，請參閱[規劃 HDInsight 的虛擬網路](hdinsight-plan-virtual-network-deployment.md)文件。
 
 ## <a name="storm-and-kafka"></a>Storm 和 Kafka
 
 Apache Storm 提供數個用來處理 Apache Kafka 的元件。 在本教學課程中會使用下列元件：
 
-* `org.apache.storm.kafka.KafkaSpout`：此元件會從 Kafka 讀取資料。 此元件依存於下列元件：
+* `org.apache.storm.kafka.KafkaSpout`:此元件會從 Kafka 讀取資料。 此元件依存於下列元件：
 
-    * `org.apache.storm.kafka.SpoutConfig`：提供 Spout 元件的組態。
+    * `org.apache.storm.kafka.SpoutConfig`:提供 Spout 元件的組態。
 
     * `org.apache.storm.spout.SchemeAsMultiScheme` 和 `org.apache.storm.kafka.StringScheme`：來自 Kafka 的資料如何轉換為 Storm Tuple。
 
-* `org.apache.storm.kafka.bolt.KafkaBolt`：此元件會將資料寫入至 Kafka。 此元件依存於下列元件：
+* `org.apache.storm.kafka.bolt.KafkaBolt`:此元件會將資料寫入至 Kafka。 此元件依存於下列元件：
 
-    * `org.apache.storm.kafka.bolt.selector.DefaultTopicSelector`：說明寫入的目標主題。
+    * `org.apache.storm.kafka.bolt.selector.DefaultTopicSelector`:說明寫入的目標主題。
 
-    * `org.apache.kafka.common.serialization.StringSerializer`：設定 Bolt 以將資料序列化為字串值。
+    * `org.apache.kafka.common.serialization.StringSerializer`:設定 Bolt 以將資料序列化為字串值。
 
-    * `org.apache.storm.kafka.bolt.mapper.FieldNameBasedTupleToKafkaMapper`：從在 Strom 拓樸內使用的 Tuple 資料結構對應至儲存在 Kafka 中的欄位。
+    * `org.apache.storm.kafka.bolt.mapper.FieldNameBasedTupleToKafkaMapper`:從在 Strom 拓樸內使用的 Tuple 資料結構對應至儲存在 Kafka 中的欄位。
 
 這些是 `org.apache.storm : storm-kafka` 套件中提供的元件。 請使用與 Storm 版本相符的套件版本。 對於 HDInsight 3.6，適用的 Storm 版本為 1.1.0。
-您也需要 `org.apache.kafka : kafka_2.10` 套件，其中包含其他 Kafka 元件。 請使用與 Kafka 版本相符的套件版本。 對於 HDInsight 3.6，適用的 Kafka 版本為 0.10.0.0。
+您也需要 `org.apache.kafka : kafka_2.10` 套件，其中包含其他 Kafka 元件。 請使用與 Kafka 版本相符的套件版本。 對於 HDInsight 3.6，適用的 Kafka 版本為 1.1.1。
 
 下列 XML 是 `pom.xml` 中對於 [Apache Maven](https://maven.apache.org/) 專案的相依性宣告：
 
@@ -95,7 +94,7 @@ Apache Storm 提供數個用來處理 Apache Kafka 的元件。 在本教學課�
 <dependency>
     <groupId>org.apache.kafka</groupId>
     <artifactId>kafka_2.10</artifactId>
-    <version>0.10.0.0</version>
+    <version>1.1.1</version>
     <!-- Exclude components that are loaded from the Storm cluster at runtime -->
     <exclusions>
         <exclusion>
@@ -131,21 +130,21 @@ Apache Storm 提供數個用來處理 Apache Kafka 的元件。 在本教學課�
     >
     > 此指令碼動作位於 [https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh](https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh)，且會套用至 Storm 叢集的監督員和 nimbus 節點。 如需使用指令碼動作的詳細資訊，請參閱 [使用指令碼動作自訂 HDInsight](hdinsight-hadoop-customize-cluster-linux.md) 文件。
 
-拓撲是使用 [Flux](https://storm.apache.org/releases/1.1.2/flux.html) 來定義的。 Storm 0.10.x 引進了 Flux，可讓您區隔拓撲組態與程式碼。 若為使用 Flux 架構的拓撲，拓撲定義於 YAML 檔案中。 YAML 檔案可以納入為拓撲的一部分。 它也可以是您提交拓撲時使用的獨立檔案。 Flux 也支援執行階段的變數替代 (在此範例中使用)。
+拓撲是使用 [Flux](https://storm.apache.org/releases/current/flux.html) 來定義的。 Storm 0.10.x 引進了 Flux，可讓您區隔拓撲組態與程式碼。 若為使用 Flux 架構的拓撲，拓撲定義於 YAML 檔案中。 YAML 檔案可以納入為拓撲的一部分。 它也可以是您提交拓撲時使用的獨立檔案。 Flux 也支援執行階段的變數替代 (在此範例中使用)。
 
 在執行階段會針對這些拓撲設定下列參數：
 
-* `${kafka.topic}`：拓樸讀取/寫入的 Kafka 主題名稱。
+* `${kafka.topic}`:拓樸讀取/寫入的 Kafka 主題名稱。
 
-* `${kafka.broker.hosts}`：Kafka 訊息代理程式執行所在的主機。 KafkaBolt 在寫入 Kafka 時會使用訊息代理程式資訊。
+* `${kafka.broker.hosts}`:Kafka 訊息代理程式執行所在的主機。 KafkaBolt 在寫入 Kafka 時會使用訊息代理程式資訊。
 
-* `${kafka.zookeeper.hosts}`：Kafka 叢集中 Zookeeper 執行所在的主機。
+* `${kafka.zookeeper.hosts}`:Kafka 叢集中 Zookeeper 執行所在的主機。
 
-* `${hdfs.url}`：HDFSBolt 元件的檔案系統 URL。 指出資料會寫入至「Azure 儲存體」帳戶還是 Azure Data Lake Storage。
+* `${hdfs.url}`:HDFSBolt 元件的檔案系統 URL。 指出資料會寫入至「Azure 儲存體」帳戶還是 Azure Data Lake Storage。
 
-* `${hdfs.write.dir}`：寫入資料的目標目錄。
+* `${hdfs.write.dir}`:寫入資料的目標目錄。
 
-如需有關 Flux 拓撲的詳細資訊，請參閱 [https://storm.apache.org/releases/1.1.2/flux.html](https://storm.apache.org/releases/1.1.2/flux.html)。
+如需有關 Flux 拓撲的詳細資訊，請參閱 [https://storm.apache.org/releases/current/flux.html](https://storm.apache.org/releases/current/flux.html)。
 
 ### <a name="kafka-writer"></a>Kafka 寫入器
 
@@ -367,13 +366,13 @@ streams:
 
 專案包含名為 `dev.properties` 的檔案，用來傳遞拓撲所使用的參數。 它會定義下列屬性：
 
-| dev.properties 檔案 | 說明 |
+| dev.properties 檔案 | 描述 |
 | --- | --- |
 | `kafka.zookeeper.hosts` | Kafka 叢集的 [Apache ZooKeeper](https://zookeeper.apache.org/) 主機。 |
 | `kafka.broker.hosts` | Kafka 代理程式主機 (背景工作節點)。 |
 | `kafka.topic` | 拓撲所使用的 Kafka 主題。 |
 | `hdfs.write.dir` | Kafka 讀取器拓撲寫入的目標目錄。 |
-| `hdfs.url` | Storm 叢集所使用的檔案系統。 對於 Azure 儲存體帳戶，請使用 `wasb:///` 值。 對於 Azure Data Lake Storage Gen2，請使用 `abfs:///` 值。 對於 Azure Data Lake Storage Gen1，請使用 `adl:///` 值。 |
+| `hdfs.url` | Storm 叢集所使用的檔案系統。 對於 Azure 儲存體帳戶，請使用 `wasb://` 值。 對於 Azure Data Lake Storage Gen2，請使用 `abfs://` 值。 對於 Azure Data Lake Storage Gen1，請使用 `adl://` 值。 |
 
 ## <a name="create-the-clusters"></a>建立叢集
 
@@ -381,7 +380,7 @@ Apache Kafka on HDInsight 不提供透過公用網際網路存取 Kafka 訊息�
 
 下圖顯示 Storm 與 Kafka 之間的通訊流程︰
 
-![Azure 虛擬網路中的 Storm 和 Kafka 叢集圖表](./media/hdinsight-apache-storm-with-kafka/storm-kafka-vnet.png)
+![Azure 虛擬網路中的 Storm 和 Kafka 叢集圖表](./media/hdinsight-apache-storm-with-kafka/apache-storm-kafka-vnet.png)
 
 > [!NOTE]  
 > 叢集上的其他服務 (例如 SSH 和 [Apache Ambari](https://ambari.apache.org/)) 可以透過網際網路存取。 如需有關適用於 HDInsight 的公用連接埠詳細資訊，請參閱 [HDInsight 所使用的連接埠和 URI](hdinsight-hadoop-port-settings-for-services.md)。
@@ -389,11 +388,11 @@ Apache Kafka on HDInsight 不提供透過公用網際網路存取 Kafka 訊息�
 若要建立 Azure 虛擬網路，然後在其中建立 Kafka 和 Storm 叢集，請使用下列步驟：
 
 1. 使用以下按鈕，在 Azure 入口網站中登入 Azure 並開啟範本。
-   
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fhdinsight-storm-java-kafka%2Fmaster%2Fcreate-kafka-storm-clusters-in-vnet.json" target="_blank"><img src="./media/hdinsight-apache-storm-with-kafka/deploy-to-azure.png" alt="Deploy to Azure"></a>
-   
-    Azure Resource Manager 範本位於 **https://github.com/Azure-Samples/hdinsight-storm-java-kafka/blob/master/create-kafka-storm-clusters-in-vnet.json**。 它會建立下列資源︰
-    
+
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fhdinsight-storm-java-kafka%2Fmaster%2Fcreate-kafka-storm-clusters-in-vnet.json" target="_blank"><img src="./media/hdinsight-apache-storm-with-kafka/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
+
+    Azure Resource Manager 範本位於 **https://github.com/Azure-Samples/hdinsight-storm-java-kafka/blob/master/create-kafka-storm-clusters-in-vnet.json** 。 它會建立下列資源︰
+
     * Azure 資源群組
     * Azure 虛擬網路
     * Azure 儲存體帳戶
@@ -411,7 +410,7 @@ Apache Kafka on HDInsight 不提供透過公用網際網路存取 Kafka 訊息�
       | --- | --- |
       | 訂用帳戶 | 您的 Azure 訂用帳戶 |
       | 資源群組 | 包含資源的資源群組。 |
-      | 位置 | 資源建立所在的 Azure 區域。 |
+      | Location | 資源建立所在的 Azure 區域。 |
       | Kafka 叢集名稱 | Kafka 叢集的名稱。 |
       | Storm 叢集名稱 | Storm 叢集的名稱。 |
       | 叢集登入使用者名稱 | 叢集的管理員使用者名稱。 |
@@ -472,7 +471,9 @@ Apache Kafka on HDInsight 不提供透過公用網際網路存取 Kafka 訊息�
 
     傳回的值類似下列文字︰
 
-        wn0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092,wn1-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092
+    ```output
+    wn0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092,wn1-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092
+     ```
 
     > [!IMPORTANT]  
     > 雖然叢集可能有兩個以上的訊息代理程式主機，您並不需要提供客戶端完整的主機名單。 列出一兩個主機便已足夠。
@@ -499,7 +500,9 @@ Apache Kafka on HDInsight 不提供透過公用網際網路存取 Kafka 訊息�
 
     傳回的值類似下列文字︰
 
-        zk0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181,zk2-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181
+    ```output
+    zk0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181,zk2-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181
+    ```
 
     > [!IMPORTANT]  
     > 雖然可能有兩個以上的 Zookeeper 節點，您並不需要提供客戶端完整的主機名單。 列出一兩個主機便已足夠。
@@ -508,9 +511,11 @@ Apache Kafka on HDInsight 不提供透過公用網際網路存取 Kafka 訊息�
 
 3. 編輯專案根目錄中的 `dev.properties` 檔案。 請將 __Kafka__ 叢集的訊息代理程式和 Zookeeper 主機資訊新增至此檔案中相符的行。 下例是使用先前步驟中的範例值所設定：
 
-        kafka.zookeeper.hosts: zk0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181,zk2-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181
-        kafka.broker.hosts: wn0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092,wn1-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092
-        kafka.topic: stormtopic
+    ```bash
+    kafka.zookeeper.hosts: zk0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181,zk2-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181
+    kafka.broker.hosts: wn0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092,wn1-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092
+    kafka.topic: stormtopic
+    ```
 
     > [!IMPORTANT]  
     > 為使用 Azure 儲存體帳戶的叢集設定 `hdfs.url` 項目。 若要使用此拓撲搭配使用 Data Lake Storage 的 Storm 叢集，請將此值從 `wasb` 變更為 `adl`。
@@ -565,13 +570,13 @@ Kafka 會將資料儲存到_主題_中。 在啟動 Storm 拓撲之前，您必�
 
     此命令使用的參數如下：
 
-    * `org.apache.storm.flux.Flux`：使用 Flux 來設定及執行此拓撲。
+    * `org.apache.storm.flux.Flux`:使用 Flux 來設定及執行此拓撲。
 
-    * `--remote`：將拓撲提交至 Nimbus。 拓撲會分散於叢集中的背景工作節點。
+    * `--remote`:將拓撲提交至 Nimbus。 拓撲會分散於叢集中的背景工作節點。
 
-    * `-R /writer.yaml`：使用 `writer.yaml` 檔案來設定拓撲。 `-R` 表示此資源包含在 jar 檔案中。 剛檔案位於 jar 的根目錄中，所以 `/writer.yaml` 是它的路徑。
+    * `-R /writer.yaml`:使用 `writer.yaml` 檔案來設定拓撲。 `-R` 表示此資源包含在 jar 檔案中。 剛檔案位於 jar 的根目錄中，所以 `/writer.yaml` 是它的路徑。
 
-    * `--filter`：使用 `dev.properties` 檔案的值填入 `writer.yaml` 拓撲的項目。 例如，使用檔案的 `kafka.topic` 項目值取代拓撲定義的 `${kafka.topic}` 項目。
+    * `--filter`:使用 `dev.properties` 檔案的值填入 `writer.yaml` 拓撲的項目。 例如，使用檔案的 `kafka.topic` 項目值取代拓撲定義的 `${kafka.topic}` 項目。
 
 ## <a name="start-the-reader"></a>開始讀取器
 
@@ -589,11 +594,13 @@ Kafka 會將資料儲存到_主題_中。 在啟動 Storm 拓撲之前，您必�
 
     輸出大致如下：
 
-        Found 173 items
-        -rw-r--r--   1 storm supergroup       5137 2018-04-09 19:00 /stormdata/hdfs-bolt-4-0-1523300453088.txt
-        -rw-r--r--   1 storm supergroup       5128 2018-04-09 19:00 /stormdata/hdfs-bolt-4-1-1523300453624.txt
-        -rw-r--r--   1 storm supergroup       5131 2018-04-09 19:00 /stormdata/hdfs-bolt-4-10-1523300455170.txt
-        ...
+    ```output
+    Found 173 items
+      -rw-r--r--   1 storm supergroup       5137 2018-04-09 19:00 /stormdata/hdfs-bolt-4-0-1523300453088.txt
+      -rw-r--r--   1 storm supergroup       5128 2018-04-09 19:00 /stormdata/hdfs-bolt-4-1-1523300453624.txt
+      -rw-r--r--   1 storm supergroup       5131 2018-04-09 19:00 /stormdata/hdfs-bolt-4-10-1523300455170.txt
+      ...
+    ```
 
 3. 若要檢視檔案內容，請使用下列命令。 請將 `filename.txt` 取代為檔案名稱：
 
@@ -603,13 +610,19 @@ Kafka 會將資料儲存到_主題_中。 在啟動 Storm 拓撲之前，您必�
 
     以下文字是檔案內容的範例：
 
-        four score and seven years ago
-        snow white and the seven dwarfs
-        i am at two with nature
-        snow white and the seven dwarfs
-        i am at two with nature
-        four score and seven years ago
-        an apple a day keeps the doctor away
+    > 八十七年前
+    >
+    > 白雪公主與七矮人
+    >
+    > 我本質上就是矛盾
+    >
+    > 白雪公主與七矮人
+    >
+    > 我本質上就是矛盾
+    >
+    > 八十七年前
+    >
+    > 一天一蘋果，醫生遠離我
 
 ## <a name="stop-the-topologies"></a>停止拓撲
 
@@ -630,15 +643,9 @@ Kafka 會將資料儲存到_主題_中。 在啟動 Storm 拓撲之前，您必�
 2. 找出要刪除的資源群組，然後以滑鼠右鍵按一下清單右側的 [更多] 按鈕 (...)。
 3. 選取 [刪除資源群組]，並加以確認。
 
-> [!WARNING]  
-> HDInsight 叢集的計費起自叢集建立時，終至叢集刪除時。 計費是以每分鐘按比例計算，因此不再使用時，請一律刪除您的叢集。
-> 
-> 刪除 HDInsight 叢集上的 Kafka，也會刪除 Kafka 中儲存的任何資料。
-
 ## <a name="next-steps"></a>後續步驟
 
 在本教學課程中，您已了解如何使用 [Apache Storm](https://storm.apache.org/) 拓撲對 HDInsight 上的 [Apache Kafka](https://kafka.apache.org/) 進行寫入和讀取。 您也已了解如何將資料儲存至 HDInsight 所使用的 [Apache Hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html) 相容儲存體。
 
-若要深入了解如何使用 HDInsight 上的 Kafka，請參閱[使用 Apache Kafka Producer 和 Consumer API](kafka/apache-kafka-producer-consumer-api.md) 文件。
-
-如需部署和監視以 Linux 為基礎的 HDInsight 上的拓撲相關資訊，請參閱[部署和管理以 Linux 為基礎的 HDInsight 上的 Apache Storm 拓撲](storm/apache-storm-deploy-monitor-topology-linux.md)
+> [!div class="nextstepaction"]
+> [使用 Apache Kafka 產生者與取用者 API](kafka/apache-kafka-producer-consumer-api.md)

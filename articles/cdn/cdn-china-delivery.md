@@ -3,24 +3,23 @@ title: 在中國使用 Azure CDN 所傳遞的內容 | Microsoft Docs
 description: 了解如何使用 Azure 內容傳遞網路 (CDN) 將內容傳遞給中國使用者。
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.author: magattus
+ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: ce136a341809b1a485e86337f428b4685eba22f7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: fa144c7ebd68e6f5dd192fca83dc6f306d7b8d63
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60681503"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "81254099"
 ---
 # <a name="china-content-delivery-with-azure-cdn"></a>在中國使用 Azure CDN 所傳遞的內容
 
@@ -34,23 +33,23 @@ ms.locfileid: "60681503"
 
 - 全球的 Azure CDN：
 
-     - 入口網站： https://portal.azure.com  
+     - 入口網站：https://portal.azure.com  
 
      - 執行中國以外的內容傳遞
 
-     - 四個定價層：Microsoft 標準、 Verizon 標準、 Verizon 和 Akamai 標準
+     - 四個定價層：Microsoft 標準、Verizon 標準、Verizon 進階和 Akamai 標準
 
-     - [Documentation](https://docs.microsoft.com/azure/cdn/)
+     - [文件](https://docs.microsoft.com/azure/cdn/)
 
 - 中國的 Azure CDN：
 
-     - 入口網站： https://portal.azure.cn
+     - 入口網站：https://portal.azure.cn
 
      - 執行中國內部的內容傳遞
 
-     - 兩個定價層：Standard 和 premium
+     - 兩個定價層：標準和進階
 
-     - [Documentation](https://docs.azure.cn/en-us/cdn/)
+     - [文件](https://docs.azure.cn/en-us/cdn/)
  
 
 ## <a name="next-steps"></a>後續步驟
@@ -63,7 +62,7 @@ ms.locfileid: "60681503"
 
 - [使用 Azure 內容傳遞網路](https://docs.azure.cn/en-us/cdn/cdn-how-to-use)
 
-- [中國的 Azure 服務可用性](https://docs.microsoft.com/azure/china/china-get-started-service-availability)
+- [中國的 Azure 服務可用性](https://docs.microsoft.com/azure/china/concepts-service-availability)
 
 
 

@@ -1,20 +1,21 @@
 ---
-title: 以 Python 開始使用 Azure 表格儲存體和 Azure Cosmos DB 資料表 API
+title: 使用採用 Python 的 Azure Cosmos DB 資料表 API 和 Azure 資料表儲存體
 description: 使用 Azure 資料表儲存體或 Azure Cosmos DB 資料表 API 將結構化資料儲存在雲端。
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: python
 ms.topic: sample
 ms.date: 04/05/2018
-author: wmengmsft
-ms.author: wmeng
+author: sakash279
+ms.author: akshanka
 ms.reviewer: sngun
-ms.openlocfilehash: 11b47483eaf39e7445ece8b9e38d81a6a2404cc6
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.custom: tracking-python
+ms.openlocfilehash: 0d24f5621786ce292d98ae1fc6dd8fafc5b69c55
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756592"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84556229"
 ---
 # <a name="get-started-with-azure-table-storage-and-the-azure-cosmos-db-table-api-using-python"></a>以 Python 開始使用 Azure 表格儲存體和 Azure Cosmos DB 資料表 API
 
@@ -33,13 +34,13 @@ Azure 表格儲存體和 Azure Cosmos DB 是可將結構化的 NoSQL 資料儲�
 
 在進行此範例中的案例時，您可以參閱 [Azure Cosmos DB SDK for Python API 參考資料](https://docs.microsoft.com/python/api/overview/azure/cosmosdb?view=azure-python) \(英文\)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 您需要下列項目才能成功完成此範例︰
 
 - [Python](https://www.python.org/downloads/) 2.7、3.3、3.4、3.5 或 3.6
 - [適用於 Python 的 Azure Cosmos DB 資料表 SDK ](https://pypi.python.org/pypi/azure-cosmosdb-table/)。 此 SDK 與 Azure 表格儲存體和 Azure Cosmos DB 資料表 API 連線。
-- [Azure 儲存體帳戶](../storage/common/storage-quickstart-create-account.md)或 [Azure Cosmos DB 帳戶](https://azure.microsoft.com/try/cosmosdb/)
+- [Azure 儲存體帳戶](../storage/common/storage-account-create.md)或 [Azure Cosmos DB 帳戶](https://azure.microsoft.com/try/cosmosdb/)
 
 ## <a name="create-an-azure-service-account"></a>建立 Azure 服務帳戶
 [!INCLUDE [cosmos-db-create-azure-service-account](../../includes/cosmos-db-create-azure-service-account.md)]
@@ -76,12 +77,12 @@ table_service = TableService(account_name='myaccount', account_key='mykey')
 若要連線到 Azure Cosmos DB，從 Azure 入口網站複製您的主要連接字串，並使用複製的連接字串建立 [TableService][py_TableService] 物件：
 
 ```python
-table_service = TableService(connection_string='DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey;TableEndpoint=myendpoint;)
+table_service = TableService(connection_string='DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey;TableEndpoint=myendpoint;')
 ```
 
 ## <a name="create-a-table"></a>建立資料表
 
-呼叫 [create_table] [ py_create_table]以建立資料表。
+呼叫 [create_table][py_create_table] 以建立資料表。
 
 ```python
 table_service.create_table('tasktable')
@@ -94,7 +95,8 @@ table_service.create_table('tasktable')
 此範例會建立一個代表實體的字典物件，然後將該物件傳遞至 [insert_entity][py_insert_entity] 方法，以將它新增至資料表：
 
 ```python
-task = {'PartitionKey': 'tasksSeattle', 'RowKey': '001', 'description' : 'Take out the trash', 'priority' : 200}
+task = {'PartitionKey': 'tasksSeattle', 'RowKey': '001',
+        'description': 'Take out the trash', 'priority': 200}
 table_service.insert_entity('tasktable', task)
 ```
 
@@ -120,7 +122,8 @@ table_service.insert_entity('tasktable', task)
 若要更新實體的所有屬性值，請呼叫 [update_entity][py_update_entity] 方法。 此範例說明如何以實體的更新版本取代現有的實體：
 
 ```python
-task = {'PartitionKey': 'tasksSeattle', 'RowKey': '001', 'description' : 'Take out the garbage', 'priority' : 250}
+task = {'PartitionKey': 'tasksSeattle', 'RowKey': '001',
+        'description': 'Take out the garbage', 'priority': 250}
 table_service.update_entity('tasktable', task)
 ```
 
@@ -128,16 +131,18 @@ table_service.update_entity('tasktable', task)
 
 ```python
 # Replace the entity created earlier
-task = {'PartitionKey': 'tasksSeattle', 'RowKey': '001', 'description' : 'Take out the garbage again', 'priority' : 250}
+task = {'PartitionKey': 'tasksSeattle', 'RowKey': '001',
+        'description': 'Take out the garbage again', 'priority': 250}
 table_service.insert_or_replace_entity('tasktable', task)
 
 # Insert a new entity
-task = {'PartitionKey': 'tasksSeattle', 'RowKey': '003', 'description' : 'Buy detergent', 'priority' : 300}
+task = {'PartitionKey': 'tasksSeattle', 'RowKey': '003',
+        'description': 'Buy detergent', 'priority': 300}
 table_service.insert_or_replace_entity('tasktable', task)
 ```
 
 > [!TIP]
-> [update_entity][py_update_entity] 方法會取代現有實體其所有的屬性與值，您也可以用於移除現有實體的屬性。 您可以使用 [merge_entity][py_merge_entity] 方法以新或已修改的屬性值來更新現有的實體，而不完全取代該實體。
+> [update_entity][py_update_entity] 方法會取代現有實體其所有的屬性與值，您也可以用它們來移除現有實體的屬性。 您可以使用 [merge_entity][py_merge_entity] 方法以新的或已修改的屬性值來更新現有的實體，而不完全取代該實體。
 
 ## <a name="modify-multiple-entities"></a>修改多個實體
 
@@ -148,8 +153,10 @@ table_service.insert_or_replace_entity('tasktable', task)
 ```python
 from azure.cosmosdb.table.tablebatch import TableBatch
 batch = TableBatch()
-task004 = {'PartitionKey': 'tasksSeattle', 'RowKey': '004', 'description' : 'Go grocery shopping', 'priority' : 400}
-task005 = {'PartitionKey': 'tasksSeattle', 'RowKey': '005', 'description' : 'Clean the bathroom', 'priority' : 100}
+task004 = {'PartitionKey': 'tasksSeattle', 'RowKey': '004',
+           'description': 'Go grocery shopping', 'priority': 400}
+task005 = {'PartitionKey': 'tasksSeattle', 'RowKey': '005',
+           'description': 'Clean the bathroom', 'priority': 100}
 batch.insert_entity(task004)
 batch.insert_entity(task005)
 table_service.commit_batch('tasktable', batch)
@@ -158,8 +165,10 @@ table_service.commit_batch('tasktable', batch)
 批次也可以與內容管理員語法搭配使用：
 
 ```python
-task006 = {'PartitionKey': 'tasksSeattle', 'RowKey': '006', 'description' : 'Go grocery shopping', 'priority' : 400}
-task007 = {'PartitionKey': 'tasksSeattle', 'RowKey': '007', 'description' : 'Clean the bathroom', 'priority' : 100}
+task006 = {'PartitionKey': 'tasksSeattle', 'RowKey': '006',
+           'description': 'Go grocery shopping', 'priority': 400}
+task007 = {'PartitionKey': 'tasksSeattle', 'RowKey': '007',
+           'description': 'Clean the bathroom', 'priority': 100}
 
 with table_service.batch('tasktable') as batch:
     batch.insert_entity(task006)
@@ -181,7 +190,8 @@ print(task.priority)
 您可以提供一個含 **filter** 參數的篩選字串，來查詢一組實體。 此範例會對 PartitionKey 套用篩選條件，以尋找西雅圖中的所有工作：
 
 ```python
-tasks = table_service.query_entities('tasktable', filter="PartitionKey eq 'tasksSeattle'")
+tasks = table_service.query_entities(
+    'tasktable', filter="PartitionKey eq 'tasksSeattle'")
 for task in tasks:
     print(task.description)
     print(task.priority)
@@ -189,7 +199,7 @@ for task in tasks:
 
 ## <a name="query-a-subset-of-entity-properties"></a>查詢實體屬性的子集
 
-您也可以限制會為查詢中的每個實體傳回哪些屬性。 這項稱為「投射」的技術可減少頻寬並提高查詢效能 (尤其是對大型實體或結果集而言)。 使用 **select** 參數並傳遞您要傳回到用戶端的屬性名稱。
+您也可以限制會為查詢中的每個實體傳回哪些屬性。 這項稱為「投射」的技術可減少頻寬並提高查詢效能 (尤其是對大型實體或結果集而言)  。 使用 **select** 參數並傳遞您要傳回到用戶端的屬性名稱。
 
 下列程式碼中的查詢只會傳回資料表中各實體的說明。
 
@@ -197,14 +207,15 @@ for task in tasks:
 > 下列程式碼片段只針對 Azure 儲存體運作。 儲存體模擬器並不支援此程式碼片段。
 
 ```python
-tasks = table_service.query_entities('tasktable', filter="PartitionKey eq 'tasksSeattle'", select='description')
+tasks = table_service.query_entities(
+    'tasktable', filter="PartitionKey eq 'tasksSeattle'", select='description')
 for task in tasks:
     print(task.description)
 ```
 
 ## <a name="delete-an-entity"></a>刪除實體
 
-透過將實體的 **PartitionKey** 與 **RowKey** 傳遞至 [delete_entity][py_delete_entity] 方法來刪除實體。
+藉由將實體的 **PartitionKey** 與 **RowKey** 傳遞至 [delete_entity][py_delete_entity] 方法，將實體刪除。
 
 ```python
 table_service.delete_entity('tasktable', 'tasksSeattle', '001')
@@ -212,7 +223,7 @@ table_service.delete_entity('tasktable', 'tasksSeattle', '001')
 
 ## <a name="delete-a-table"></a>刪除資料表
 
-如果您不再需要資料表及其內的任何實體，請呼叫 [delete_table][py_delete_table] 方法將資料表永久地從 Azure 儲存體中刪除。
+如果您不再需要資料表及其內的任何實體，請呼叫 [delete_table][py_delete_table] 方法，將資料表永久地從 Azure 儲存體中刪除。
 
 ```python
 table_service.delete_table('tasktable')

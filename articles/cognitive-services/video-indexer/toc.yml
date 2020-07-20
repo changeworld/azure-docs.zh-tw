@@ -14,7 +14,7 @@
   items:
     - name: 從 v1 遷移至 v2
       href: ../../media-services/video-indexer/migrate-from-v1-to-v2.md
-    - name: 連接到 Azure
+    - name: 連線到 Azure
       href: ../../media-services/video-indexer/connect-to-azure.md
     - name: 管理與 Azure 連線的帳戶
       href: ../../media-services/video-indexer/manage-account-connected-to-azure.md

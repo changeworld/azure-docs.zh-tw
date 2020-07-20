@@ -2,23 +2,23 @@
 title: 新增或移除群組成員 - Azure Active Directory | Microsoft Docs
 description: 關於如何使用 Azure Active Directory 從群組新增或移除成員的指示。
 services: active-directory
-author: eross-msft
+author: msaburnley
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/23/2018
-ms.author: lizross
+ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3dafdf4c67e8d3d74109b3879fb0deacd79b1774
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 23b4076fe91d807fd67218ef9576a3bf1ff65f21
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60249109"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85604330"
 ---
 # <a name="add-or-remove-group-members-using-azure-active-directory"></a>使用 Azure Active Directory 新增或移除群組成員
 使用 Azure Active Directory，您可以繼續新增和移除群組成員。
@@ -27,17 +27,17 @@ ms.locfileid: "60249109"
 
 1. 使用目錄的全域系統管理員帳戶登入 [Azure 入口網站](https://portal.azure.com)。
 
-2. 選取 [Azure Active Directory]，然後選取 [群組]。
+2. 選取 [Azure Active Directory]****，然後選取 [群組]****。
 
-3. 從 [群組 - 所有群組] 頁面，搜尋並選取您要新增成員的群組。 在此案例中，請使用我們先前建立的群組 [MDM 原則 - 西部]。
+3. 從 [群組 - 所有群組]**** 頁面，搜尋並選取您要新增成員的群組。 在此案例中，請使用我們先前建立的群組 [MDM 原則 - 西部]****。
 
-    ![已醒目提示群組名稱的 [群組 - 所有群組] 頁面](media/active-directory-groups-members-azure-portal/group-all-groups-screen.png)
+    ![群組-所有群組頁面，已反白顯示群組名稱](media/active-directory-groups-members-azure-portal/group-all-groups-screen.png)
 
-4. 從 [MDM 原則 - 西部概觀] 頁面的 [管理] 區域中，選取 [成員]。
+4. 從 [MDM 原則 - 西部概觀]**** 頁面的 [管理]**** 區域中，選取 [成員]****。
 
     ![已醒目提示 [成員] 選項的 [MDM 原則 - 西部概觀] 頁面](media/active-directory-groups-members-azure-portal/group-overview-blade.png)
 
-5. 選取 [新增成員]，然後搜尋並選取您要新增至群組的每個成員，然後選擇 [選取]。
+5. 選取 [新增成員]****，然後搜尋並選取您要新增至群組的每個成員，然後選擇 [選取]****。
 
     您會收到一則訊息，指出已成功新增成員。
 
@@ -47,9 +47,9 @@ ms.locfileid: "60249109"
 
 ## <a name="to-remove-group-members"></a>移除群組成員
 
-1. 從 [群組 - 所有群組] 頁面，搜尋並選取您要移除成員的群組。 我們會再次使用 [MDM 原則 - 西部]。
+1. 從 [群組 - 所有群組]**** 頁面，搜尋並選取您要移除成員的群組。 我們會再次使用 [MDM 原則 - 西部]****。
 
-2. 從 [管理] 區域中選取 [成員]，搜尋並選取要移除的成員名稱，然後選取 [移除]。
+2. 從 [管理]**** 區域中選取 [成員]****，搜尋並選取要移除的成員名稱，然後選取 [移除]****。
 
     ![具有 [移除] 選項的成員資訊頁面](media/active-directory-groups-members-azure-portal/remove-members-from-group.png)
 

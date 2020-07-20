@@ -1,34 +1,47 @@
 ---
-title: JavaScript 範例-Azure Active Directory B2C |Microsoft Docs
+title: JavaScript 範例
+titleSuffix: Azure AD B2C
 description: 了解在 Azure Active Directory B2C 中使用 JavaScript。
 services: active-directory-b2c
-author: davidmu1
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 04/25/2019
-ms.author: davidmu
+ms.topic: how-to
+ms.date: 02/10/2020
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 972c8ec1b67161a3998a1b165072f584db2f7fbb
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: a92810841ee5d656b23105d6f40c763847971c4f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64570517"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85387791"
 ---
 # <a name="javascript-samples-for-use-in-azure-active-directory-b2c"></a>適用於 Azure Active Directory B2C 中的 JavaScript 範例
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-您可以將自己的 JavaScript 用戶端程式碼新增到您的 Azure Active Directory (Azure AD) B2C 應用程式。 若要啟用您的應用程式的 JavaScript，您必須新增項目您[自訂原則](active-directory-b2c-overview-custom.md)，選取[頁面合約](page-contract.md)，並使用[b2clogin.com](b2clogin.md)在要求中。 本文說明如何變更您的自訂原則，以啟用指令碼執行。
+您可以將自己的 JavaScript 用戶端程式代碼新增至您的 Azure Active Directory B2C （Azure AD B2C）應用程式。
+
+若要為您的應用程式啟用 JavaScript：
+
+* 將元素新增至您的[自訂原則](custom-policy-overview.md)
+* 選取[頁面配置](page-layout.md)
+* 在您的要求中使用[b2clogin.com](b2clogin.md)
+
+本文說明如何變更自訂原則以啟用指令碼執行。
 
 > [!NOTE]
-> 如果您想要為使用者流程中啟用 JavaScript，請參閱[JavaScript 和頁面合約版本在 Azure Active Directory B2C](user-flow-javascript-overview.md)。
+> 如果您想要為使用者流程啟用 JavaScript，請參閱[Azure Active Directory B2C 中的 javascript 和頁面配置版本](user-flow-javascript-overview.md)。
 
 ## <a name="prerequisites"></a>必要條件
 
-選取您的應用程式的使用者介面項目頁面合約。 如果您想要使用 JavaScript，您必須針對您自訂原則中的所有內容定義，定義頁面合約版本。
+### <a name="select-a-page-layout"></a>選取頁面配置
+
+* 為應用程式的使用者介面元素選取[頁面配置](contentdefinitions.md#select-a-page-layout)。
+
+    如果您想要使用 JavaScript，您必須[define a page layout version](contentdefinitions.md#migrating-to-page-layout) `contract` 針對自訂原則中的*所有*內容定義，使用頁面版本定義頁面配置版本。
 
 ## <a name="add-the-scriptexecution-element"></a>新增 ScriptExecution 元素
 
@@ -37,7 +50,7 @@ ms.locfileid: "64570517"
 1. 開啟您的自訂原則檔案。 例如 *SignUpOrSignin.xml*。
 2. 將 **ScriptExecution** 元素新增到 **RelyingParty** 的 **UserJourneyBehaviors** 元素：
 
-    ```XML
+    ```xml
     <RelyingParty>
       <DefaultUserJourney ReferenceId="B2CSignUpOrSignInWithPassword" />
       <UserJourneyBehaviors>
@@ -48,31 +61,13 @@ ms.locfileid: "64570517"
     ```
 3. 儲存並上傳該檔案。
 
-## <a name="guidelines-for-using-javascript"></a>使用 JavaScript 的指導方針
-
-在您使用 JavaScript 來自訂應用程式的介面時，請遵循這些指導方針：
-
-- 不要將 Click 事件繫結到 `<a>` HTML 元素上。
-- 不要採用 Azure AD B2C 程式碼或註解上的相依性。
-- 不要變更 Azure AD B2C HTML 元素的順序或階層。 使用 Azure AD B2C 原則來控制 UI 元素的順序。
-- 您可以呼叫任何 RESTful 服務，但有下列考量：
-    - 您可能需要將 RESTful 服務 CORS 設定為允許用戶端 HTTP 呼叫。
-    - 確定您的 RESTful 服務是安全的，並僅使用 HTTPS 通訊協定。
-    - 不要直接使用 JavaScript 來呼叫 Azure AD B2C 端點。
-- 您可以內嵌 JavaScript 或連結至外部的 JavaScript 檔案。 使用外部 JavaScript 檔案時，請務必使用絕對 URL，而非相對 URL。
-- JavaScript 架構：
-    - Azure AD B2C 會使用特定版本的 jQuery。 不要包含其他版本的 jQuery。 在相同頁面上使用多個版本會導致問題。
-    - 不支援使用 RequireJS。
-    - Azure AD B2C 不支援大部分的 JavaScript 架構。
-- 可以呼叫 `window.SETTINGS`、`window.CONTENT` 物件來讀取 Azure AD B2C 設定，例如目前的 UI 語言。 請不要變更這些物件的值。
-- 若要自訂 Azure AD B2C 錯誤訊息，請在原則中使用當地語系化。
-- 如果可以透過原則來達成某個事項，便建議使用原則來達成它。
+[!INCLUDE [active-directory-b2c-javascript-guidelines](../../includes/active-directory-b2c-javascript-guidelines.md)]
 
 ## <a name="javascript-samples"></a>JavaScript 範例
 
 ### <a name="show-or-hide-a-password"></a>顯示或隱藏密碼
 
-協助客戶成功註冊的常見方式，便是允許他們查看自己所輸入的密碼。 此選項可讓使用者輕鬆地查看其密碼，並視需要做出更正，以協助他們完成註冊。 任何輸入密碼的欄位都會有具有 [顯示密碼] 標籤的核取方塊。  這可讓使用者以純文字的形式查看密碼。 將此程式碼片段包含到您適用於自我判斷頁面的註冊或登入範本：
+協助客戶成功註冊的常見方式，便是允許他們查看自己所輸入的密碼。 此選項可讓使用者輕鬆地查看其密碼，並視需要做出更正，以協助他們完成註冊。 任何輸入密碼的欄位都會有具有 [顯示密碼]**** 標籤的核取方塊。  這可讓使用者以純文字的形式查看密碼。 將此程式碼片段包含到您適用於自我判斷頁面的註冊或登入範本：
 
 ```Javascript
 function makePwdToggler(pwd){
@@ -118,7 +113,7 @@ setupPwdTogglers();
 
 ### <a name="add-terms-of-use"></a>新增使用規定
 
-將下列程式碼包含到您在自己的頁面中想包含 [使用規定] 核取方塊的位置。 在您的本機帳戶註冊和社交帳戶註冊頁面中，通常會需要這個核取方塊。
+將下列程式碼包含到您在自己的頁面中想包含 [使用規定]**** 核取方塊的位置。 在您的本機帳戶註冊和社交帳戶註冊頁面中，通常會需要這個核取方塊。
 
 ```Javascript
 function addTermsOfUseLink() {
@@ -143,8 +138,8 @@ function addTermsOfUseLink() {
 }
 ```
 
-在程式碼中，請將 `termsOfUseUrl` 取代為您使用規定合約的連結。 為您的目錄中，建立新的使用者屬性，稱為**termsOfUse** ，然後包含**termsOfUse**作為使用者屬性。
+在程式碼中，請將 `termsOfUseUrl` 取代為您使用規定合約的連結。 針對您的目錄，建立名為**termsOfUse**的新使用者屬性，然後將**termsOfUse**納入為使用者屬性。
 
 ## <a name="next-steps"></a>後續步驟
 
-如需如何自訂應用程式之使用者介面的詳細資訊，請參閱[在 Azure Active Directory B2C 中使用自訂原則來自訂應用程式的使用者介面](active-directory-b2c-ui-customization-custom.md)。
+如需如何自訂應用程式之使用者介面的詳細資訊，請參閱[在 Azure Active Directory B2C 中使用自訂原則來自訂應用程式的使用者介面](custom-policy-ui-customization.md)。

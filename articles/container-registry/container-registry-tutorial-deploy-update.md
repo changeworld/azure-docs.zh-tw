@@ -1,19 +1,15 @@
 ---
-title: 教學課程 - 將更新的容器映像推送至區域 Azure 應用程式部署
-description: 將修改的 Docker 映像推送至進行異地複寫的 Azure Container Registry，然後查看變更自動部署至在多個區域中執行的 Web 應用程式。 這是三段式教學課程的第三段。
-services: container-registry
-author: dlepow
-ms.service: container-registry
+title: 教學課程 - 將更新推送至異地複寫的登錄
+description: 將更新的 Docker 映像推送至進行異地複寫的 Azure Container Registry，然後查看變更自動部署至在多個區域中執行的 Web 應用程式。 這是三段式教學課程的第三段。
 ms.topic: tutorial
 ms.date: 04/30/2018
-ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: d9faa89d33dde7da35ad4490b78b9a1d023274ae
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 9222ac31e067cba6a0ffa71143c90f906ba6ff7f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53256616"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "74454700"
 ---
 # <a name="tutorial-push-an-updated-container-image-to-a-geo-replicated-container-registry-for-regional-web-app-deployments"></a>教學課程：將更新的容器映像推送至進行異地複寫的容器登錄以進行區域 Web 應用程式部署
 
@@ -78,7 +74,7 @@ docker build . -f ./AcrHelloworld/Dockerfile -t <acrName>.azurecr.io/acr-hellowo
 
 ## <a name="push-image-to-azure-container-registry"></a>將映像推送至 Azure Container Registry
 
-接下來，將更新的 *acr-helloworld* 容器映像推送至您進行異地複寫的登錄。 此時，您要執行一個 `docker push` 命令，將更新的映像同時部署至「美國西部」和「美國東部」兩個區域中的登錄複本。
+接下來，將更新的 *acr-helloworld* 容器映像推送至您進行異地複寫的登錄。 此時，您要執行一個 `docker push` 命令，將更新的映像同時部署至「美國西部」  和「美國東部」  兩個區域中的登錄複本。
 
 ```bash
 docker push <acrName>.azurecr.io/acr-helloworld:v1
@@ -103,11 +99,11 @@ v1: digest: sha256:4c3f2211569346fbe2d1006c18cbea2a4a9dcc1eb3a078608cef70d3a186e
 
 複寫映像時，您會看到觸發的 Azure Container Registry Webhook。
 
-若要查看您在上一個教學課程中將容器部署至*用於容器的 Web 應用程式*時所建立的區域 Webhook，請在 Azure 入口網站中瀏覽至您的容器登錄，然後在 [服務] 下選取 [Webhook]。
+若要查看您在上一個教學課程中將容器部署至*用於容器的 Web 應用程式*時所建立的區域 Webhook，請在 Azure 入口網站中瀏覽至您的容器登錄，然後在 [服務]  下選取 [Webhook]  。
 
 ![Azure 入口網站中的容器登錄 Webhook][tutorial-portal-01]
 
-選取每個 Webhook 可檢視其呼叫及回應的歷程記錄。 您應該會在兩個 Webhook 記錄中看到**推送**動作的資料列。 此時，位於「美國西部」區域的 Webhook 記錄顯示在上一個步驟中由 `docker push` 觸發的**推送**動作：
+選取每個 Webhook 可檢視其呼叫及回應的歷程記錄。 您應該會在兩個 Webhook 記錄中看到**推送**動作的資料列。 此時，位於「美國西部」  區域的 Webhook 記錄顯示在上一個步驟中由 `docker push` 觸發的**推送**動作：
 
 ![Azure 入口網站中的容器登錄 Webhook 記錄 (美國西部)][tutorial-portal-02]
 
@@ -119,11 +115,11 @@ Webhook 會通知 Web 應用程式新的映像已推送至登錄，此作業會�
 
 ![Azure 入口網站中的 App Service 概觀][tutorial-portal-03]
 
-若要查看更新過的應用程式，請選取 App Service 概觀中的連結。 以下是在「美國西部」中執行之應用程式的範例檢視：
+若要查看更新過的應用程式，請選取 App Service 概觀中的連結。 以下是在「美國西部」  中執行之應用程式的範例檢視：
 
 ![在美國西部區域中執行之已修改 Web 應用程式的瀏覽器檢視][deployed-app-westus-modified]
 
-在您的瀏覽器中檢視，確認更新的容器映像也已部署至「美國東部」部署。
+在您的瀏覽器中檢視，確認更新的容器映像也已部署至「美國東部」  部署。
 
 ![在美國東部區域中執行之已修改 Web 應用程式的瀏覽器檢視][deployed-app-eastus-modified]
 

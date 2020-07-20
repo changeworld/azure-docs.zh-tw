@@ -1,35 +1,27 @@
 ---
-title: 使用 CLI 交換 Azure VM 的 OS 磁碟 | Microsoft Docs'
+title: 使用 CLI 在 OS 磁片之間交換
 description: 使用 CLI 變更 Azure 虛擬機器所使用的作業系統磁碟。
-services: virtual-machines-linux
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.subservice: disks
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 04/24/2018
 ms.author: cynthn
-ms.openlocfilehash: b17647a09c88491e2486046b1ca99ee277f0cc28
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: a8c879ae56eb22d9817841667d33e37109a4f63d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61473870"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "81759412"
 ---
 # <a name="change-the-os-disk-used-by-an-azure-vm-using-the-cli"></a>使用 CLI 變更 Azure VM 所使用的 OS 磁碟
 
 
-如果您目前有 VM，但想要交換備份磁碟的磁碟或另一個 OS 磁碟，可以使用 Azure CLI 來交換 OS 磁碟。 您不需要刪除並重新建立 VM。 甚至可以使用另一個資源群組中的受控磁碟，只要該磁碟並非使用中即可。
+如果您目前有 VM，但想要交換備份磁碟的磁碟或另一個 OS 磁碟，可以使用 Azure CLI 來交換 OS 磁碟。 您不需要刪除及重新建立虛擬機器。 甚至可以使用另一個資源群組中的受控磁碟，只要該磁碟並非使用中即可。
 
 必須停止\解除配置虛擬機器，然後才能使用不同受控磁碟的資源識別碼取代該受控磁碟的資源識別碼。 
 
-請確定虛擬機器大小和儲存類型能和您想要附加的磁碟相容。 例如，如果您想要使用的磁碟是進階儲存體，VM 就必須能夠支援進階儲存體 (例如 DS 系列的大小)。
+請確定虛擬機器大小和儲存類型能和您想要附加的磁碟相容。 舉例而言，如果您想要使用的磁碟是進階儲存體，虛擬機器就需能支援進階儲存體 (例如 DS 系列的大小)。
 
 本文需要 Azure CLI 2.0.25 版或更高版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。 
 

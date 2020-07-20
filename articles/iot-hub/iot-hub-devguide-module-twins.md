@@ -1,22 +1,22 @@
 ---
 title: 了解 Azure IoT 中樞模組對應項 | Microsoft Docs
 description: 開發人員指南 - 使用模組對應項來同步處理 IoT 中樞與裝置之間的狀態和設定資料
-author: chrissie926
+author: ash2017
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 04/26/2018
-ms.author: menchi
-ms.openlocfilehash: cd0a9a66f3014a39a73cf04badfc67cd2ff4c3de
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 06/29/2020
+ms.author: asrastog
+ms.openlocfilehash: ef622d950595752e616608ef56d8df66b8a9813f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61363199"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610144"
 ---
 # <a name="understand-and-use-module-twins-in-iot-hub"></a>了解和使用 IoT 中樞的模組對應項
 
-本文假設您已先讀過[了解和使用 Azure IoT 中樞的裝置對應項](iot-hub-devguide-device-twins.md)。 在 IoT 中樞的每個裝置身分識別下，您可以建立最多 20 個模組身分識別。 每個模組身分識別都會隱含地產生模組對應項。 模組對應項和裝置對應項很類似，它們是存放模組狀態資訊 (包括中繼資料、設定和條件) 的 JSON 文件。 Azure IoT 中樞會為您連線到 IoT 中樞的每個模組維護模組對應項。 
+本文假設您已先讀過[了解和使用 Azure IoT 中樞的裝置對應項](iot-hub-devguide-device-twins.md)。 在 IoT 中樞中，您可以在每個裝置身分識別下建立最多50個模組身分識別。 每個模組身分識別都會隱含地產生模組對應項。 模組對應項和裝置對應項很類似，它們是存放模組狀態資訊 (包括中繼資料、設定和條件) 的 JSON 文件。 Azure IoT 中樞會為您連線到 IoT 中樞的每個模組維護模組對應項。 
 
 在裝置端，IoT 中樞裝置 SDK 可讓您建立會個別向 IoT 中樞建立獨立連線的模組。 這項功能可讓您針對裝置上的不同元件使用不同的命名空間。 例如，您的販賣機具有三個不同的感應器。 每個感應器都由公司中的不同部門控制。 您可以為每個感應器建立一個模組。 如此一來，每個部門只能將作業或直接方法傳送至其所控制的感應器，以避免衝突和使用者錯誤。
 
@@ -51,7 +51,7 @@ ms.locfileid: "61363199"
 
 * **報告屬性**。 搭配所需屬性使用，以便同步處理模組的設定或條件。 模組應用程式可以設定報告屬性，而解決方案後端則可以讀取並查詢它們。
 
-* **模組身分識別屬性**。 模組對應項 JSON 文件的根目錄包含來自對應模組身分識別的唯讀屬性，此身分識別儲存在[身分識別登錄](iot-hub-devguide-identity-registry.md)中。
+* **模組識別屬性**。 模組對應項 JSON 文件的根目錄包含來自對應模組身分識別的唯讀屬性，此身分識別儲存在[身分識別登錄](iot-hub-devguide-identity-registry.md)中。
 
 ![裝置對應項的架構表示法](./media/iot-hub-devguide-device-twins/module-twin.jpg)
 
@@ -113,9 +113,9 @@ ms.locfileid: "61363199"
 
 ### <a name="desired-property-example"></a>所需屬性範例
 
-在上述範例中，解決方案後端和模組應用程式會使用 `telemetryConfig` 模組對應項的所需屬性和報告屬性，以同步處理此模組的遙測設定。 例如︰
+在上述範例中，解決方案後端和模組應用程式會使用 `telemetryConfig` 模組對應項的所需屬性和報告屬性，以同步處理此模組的遙測設定。 例如：
 
-1. 解决方案后端使用所需配置值设置所需属性。 以下是含有所需屬性集的文件部分︰
+1. 解決方案後端會以所需組態值來設定所需屬性。 以下是含有所需屬性集的文件部分︰
 
     ```json
     ...
@@ -168,15 +168,15 @@ ms.locfileid: "61363199"
     }
     ```
 
-* **替换所需属性**。 此作業可讓解決方案後端完全覆寫所有現有的所需屬性，並以新的 JSON 文件取代 `properties/desired`。
+* **取代所需屬性**。 此作業可讓解決方案後端完全覆寫所有現有的所需屬性，並以新的 JSON 文件取代 `properties/desired`。
 
 * **取代標籤**。 此作業可讓解決方案後端完全覆寫所有現有的標籤，並以新的 JSON 文件取代 `tags`。
 
 * **接收對應項通知**。 這項作業可以在對應項修改時通知方案後端。 若要這樣做，您的 IoT 解決方案必須建立路由，並將資料來源設為等於 *twinChangeEvents*。 根據預設，不會傳送任何對應項通知，亦即預先不存在這類路由。 如果變更率太高，或基於其他原因，例如內部失敗，IoT 中樞可能只會傳送一個包含所有變更的通知。 因此，如果您的應用程式需要可靠地稽核和記錄所有中間狀態，您應該使用裝置到雲端的訊息。 對應項通知訊息包含屬性和內文。
 
-  - properties
+  - 屬性
 
-    | 名稱 | Value |
+    | 名稱 | 值 |
     | --- | --- |
     $content-type | application/json |
     $iothub-enqueuedtime |  傳送通知的時間 |
@@ -186,12 +186,12 @@ ms.locfileid: "61363199"
     moduleId | 模組的識別碼 |
     hubName | IoT 中樞名稱 |
     operationTimestamp | 作業的 [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) 時間戳記 |
-    iothub-message-schema | deviceLifecycleNotification |
+    iothub-message-schema | twinChangeNotification |
     opType | "replaceTwin" 或 "updateTwin" |
 
     訊息系統屬性前面會加上 `$` 符號。
 
-  - body
+  - 主體
         
     本節包含所有對應項變更 (JSON 格式)。 它使用的格式與修補程式的格式相同，差別在於它可以包含所有對應項區段︰tags、properties.reported、properties.desired，而且包含 “$metadata” 項目。 例如，
 
@@ -236,46 +236,68 @@ ms.locfileid: "61363199"
 
 標籤、所需屬性和報告屬性是具有下列限制的 JSON 物件：
 
-* JSON 物件中的所有索引鍵是區分大小寫的 64 個位元組的 UTF-8 UNICODE 字串。 允許的字元會排除 UNICODE 控制字元 (區段 C0 和 C1)，以及 `.`、SP 和 `$`。
+* **金鑰**： JSON 物件中的所有金鑰都是以 utf-8 編碼、區分大小寫，且長度上限為 1 KB。 允許的字元會排除 UNICODE 控制字元 (區段 C0 和 C1)，以及 `.`、`$` 和 SP。
 
-* JSON 物件中的所有值可以屬於下列 JSON 類型︰布林值、數字、字串、物件。 不允許使用陣列。 整數的最大值是 4503599627370495 和整數的最小值是 -4503599627370496。
+* **值**： json 物件中的所有值都可以是下列 JSON 類型：布林值、數位、字串、物件。 不允許使用陣列。
 
-* 標籤、所需屬性和報告屬性中所有 JSON 物件的深度上限為 5。 例如，下列物件有效：
+    * 整數的最小值可以是-4503599627370496，而最大值為4503599627370495。
 
-    ```json
-    {
-        ...
-        "tags": {
-            "one": {
-                "two": {
-                    "three": {
-                        "four": {
-                            "five": {
-                                "property": "value"
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        ...
-    }
-    ```
+    * 字串值是以 UTF-8 編碼，且最大長度可以是 4 KB。
 
-* 所有字串值的最大長度為 512 個位元組。
+* **深度**：標記、所需屬性和報告屬性中的 JSON 物件深度上限為10。 例如，下列物件是有效的：
+
+   ```json
+   {
+       ...
+       "tags": {
+           "one": {
+               "two": {
+                   "three": {
+                       "four": {
+                           "five": {
+                               "six": {
+                                   "seven": {
+                                       "eight": {
+                                           "nine": {
+                                               "ten": {
+                                                   "property": "value"
+                                               }
+                                           }
+                                       }
+                                   }
+                               }
+                           }
+                       }
+                   }
+               }
+           }
+       },
+       ...
+   }
+   ```
 
 ## <a name="module-twin-size"></a>模組對應項大小
 
-「IoT 中樞」會對 `tags`、`properties/desired` 和 `properties/reported` 的個別總計值 (排除唯讀元素) 分別強制執行 8 KB 大小的限制。
+IoT 中樞在的值上強制執行 8 KB 的大小限制 `tags` ，以及每個和的值都有 32 kb 的大小限制 `properties/desired` `properties/reported` 。 這些總計是專有的唯讀元素 `$etag` ，例如、 `$version` 和 `$metadata/$lastUpdated` 。
 
-大小的計算方式是計算所有字元的數量，並排除在字串常數之外的 UNICODE 控制字元 (區段 C0 和 C1) 和空格。
+對應項大小的計算方式如下：
+
+* 針對 JSON 檔中的每個屬性，IoT 中樞累積的計算，並加入屬性的索引鍵和值的長度。
+
+* 屬性索引鍵會被視為以 UTF8 編碼的字串。
+
+* 簡單的屬性值會視為 UTF8 編碼的字串、數值（8個位元組）或布林值（4個位元組）。
+
+* 以 UTF8 編碼的字串大小是藉由計算所有字元來計算，但不包括 UNICODE 控制字元（區段 C0 和 C1）。
+
+* 複雜的屬性值（嵌套物件）是根據屬性索引鍵的匯總大小和其所包含的屬性值計算而得。
 
 IoT 中樞會拒絕 (並出現錯誤) 將會讓這些文件的大小增加到超過限制的所有作業。
 
 ## <a name="module-twin-metadata"></a>模組對應項中繼資料
 
 IoT 中樞會為模組對應項所需屬性和報告屬性中的每個 JSON 物件保有上次更新的時間戳記。 時間戳記採用 UTC 格式，並以 [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) 格式 `YYYY-MM-DDTHH:MM:SS.mmmZ` 進行編碼。
-例如︰
+例如：
 
 ```json
 {
@@ -327,7 +349,7 @@ IoT 中樞會為模組對應項所需屬性和報告屬性中的每個 JSON 物�
 ## <a name="optimistic-concurrency"></a>開放式並行存取
 
 標籤、所需屬性和報告屬性全都支援開放式並行存取。
-依據 [RFC7232](https://tools.ietf.org/html/rfc7232)，標籤會有一個 ETag 來表示該標籤的 JSON 表示法。 您可以從解決方案後端在條件式更新作業中使用 ETag，以確保一致性。
+標記具有每個[依據 rfc7232](https://tools.ietf.org/html/rfc7232)的 ETag，代表標記的 JSON 標記法。 您可以從解決方案後端在條件式更新作業中使用 ETag，以確保一致性。
 
 模組對應項所需屬性和報告屬性沒有 ETag，但是有一定會遞增的 `$version` 值。 類似於 ETag，更新端可以使用版本強制達到更新的一致性。 例如報告屬性的模組應用程式，或是所需屬性的解決方案後端。
 

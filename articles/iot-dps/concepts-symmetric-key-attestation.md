@@ -1,19 +1,19 @@
 ---
 title: Azure IoT 中樞裝置佈建服務 - 對稱金鑰證明
-description: 本文將在概念上略述使用 IoT 中樞裝置佈建服務時的對稱金鑰證明。
+description: 本文提供使用 IoT 裝置布建服務（DPS）的對稱金鑰證明概念總覽。
 author: wesmc7777
 ms.author: wesmc
-ms.date: 08/18/2018
+ms.date: 04/04/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
-ms.openlocfilehash: 2f6e1e1a27e32e567cf0eaa8ff7a99046ed81bbe
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+manager: philmea
+ms.openlocfilehash: 0e3d343c0a68dd527e4e8e8d23e5b3843a216a78
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60746060"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84705367"
 ---
 # <a name="symmetric-key-attestation"></a>對稱金鑰證明
 
@@ -46,9 +46,9 @@ SAS 權杖具有下列格式：
 
 下列為每個權杖的元件：
 
-| Value | 描述 |
+| 值 | 描述 |
 | --- | --- |
-| {signature} |HMAC-SHA256 簽章字串。 對於個別註冊，此簽章是使用對稱金鑰（主要或次要）來執行雜湊所產生的。 對於註冊群組，衍生自註冊群組索引鍵的索引鍵會用來執行雜湊。 雜湊是在表單的訊息上執行：`URL-encoded-resourceURI + "\n" + expiry`。 **重要**：必须先从 base64 解码密钥，然后才能将其用于执行 HMAC-SHA256 计算。 此外，簽章結果必須以 URL 編碼。 |
+| {signature} |HMAC-SHA256 簽章字串。 對於個別註冊，此簽章是使用對稱金鑰（主要或次要）來執行雜湊所產生的。 對於註冊群組，衍生自註冊群組索引鍵的索引鍵會用來執行雜湊。 雜湊是在表單的訊息上執行：`URL-encoded-resourceURI + "\n" + expiry`。 **重要事項**：金鑰必須是從 base64 解碼而來，才能用來執行 HMAC-SHA256 計算的金鑰。 此外，簽章結果必須以 URL 編碼。 |
 | {resourceURI} |可以使用此權杖存取的註冊端點 URI，開頭為裝置佈建服務執行個體的範圍 ID。 例如， `{Scope ID}/registrations/{Registration ID}` |
 | {expiry} |從新紀元時間 (Epoch) 1970 年 1 月 1日 00:00:00 UTC 時間至今秒數的 UTF8 字串。 |
 | {URL-encoded-resourceURI} |小寫資源 URI 的小寫 URL 編碼 |
@@ -75,7 +75,7 @@ sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6
 
 對於裝置定義註冊識別碼後，註冊群組的對稱金鑰會用來計算註冊識別碼的 [HMAC-SHA256](https://wikipedia.org/wiki/HMAC)雜湊，以產生衍生的裝置金鑰。 下列 C# 程式碼可以執行註冊識別碼的雜湊：
 
-```C#
+```csharp
 using System; 
 using System.Security.Cryptography; 
 using System.Text;  
@@ -92,7 +92,7 @@ public static class Utils
 } 
 ```
 
-```C#
+```csharp
 String deviceKey = Utils.ComputeDerivedSymmetricKey(Convert.FromBase64String(masterKey), registrationId);
 ```
 
@@ -114,6 +114,6 @@ String deviceKey = Utils.ComputeDerivedSymmetricKey(Convert.FromBase64String(mas
 
 您了解對稱金鑰證明後，請參閱下列文章以瞭解詳細資訊：
 
-* [快速入門：使用對稱金鑰佈建模擬的裝置](quick-create-simulated-device-symm-key.md)
+* [快速入門：使用對稱金鑰來佈建模擬的裝置](quick-create-simulated-device-symm-key.md)
 * [了解自動佈建中的概念](./concepts-auto-provisioning.md)
 * [開始使用自動佈建](./quick-setup-auto-provision.md) 

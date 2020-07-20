@@ -1,22 +1,22 @@
 ---
-title: 各地區上市情況 」 及 「 貨幣支援 |Azure
-description: Azure Marketplace 和 AppSource 中的各地區上市
-services: Azure, Marketplace, Compute, Storage, Networking
-author: qianw211
+title: Microsoft 商業市集的地理可用性和貨幣支援
+description: 商業市集交易的地理可用性和貨幣支援
 ms.service: marketplace
-ms.topic: article
-ms.date: 02/28/2019
-ms.author: ellacroi
-ms.openlocfilehash: 215a15da2868a4543ba1108899981f40f7bf4e07
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.subservice: partnercenter-marketplace-publisher
+ms.topic: conceptual
+author: keferna
+ms.author: keferna
+ms.date: 01/29/2020
+ms.openlocfilehash: 57d1564c155a553571499a47a5c1d83c80c074b3
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64938263"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120002"
 ---
-# <a name="geographic-availability-and-currency-support"></a>各地區上市情況和貨幣的支援
+# <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>商業市集的地理可用性和貨幣支援
 
-Azure Marketplace 供應項目可以購買的 141 的地理位置，客戶的帳單地址，所定義，而且交易可以完成 17 的貨幣。 下的表列出每個支援的地理位置，其[ISO 3166 兩位數字法典](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)，和指派的貨幣。
+商業市集供應項目可以在 141 個地區 (以客戶帳單地址定義的地區) 購買，而交易可以用 17 種貨幣完成。 下表列出每個支援的地理位置、其 [ISO 3166 的兩位數 Alpha 代碼](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)，以及指派的貨幣。
 
 |   國家/地區名稱               |   ISO-2   |   貨幣   |
 |-------------------------------------|-----------|--------------|
@@ -44,10 +44,11 @@ Azure Marketplace 供應項目可以購買的 141 的地理位置，客戶的帳
 | 汶萊                              | BN        | 美元          |
 | 保加利亞                            | BG        | 歐元          |
 | 喀麥隆                            | CM        | 美元          |
-| 加拿大                              | CA        | 加拿大幣          |
+| Canada                              | CA        | 加拿大幣          |
 | 維德角                          | CV        | 美元          |
 | 開曼群島                      | KY        | 美元          |
 | 智利                               | CL        | 美元          |
+| 中國\**                            | CN        | N/A          |
 | 哥倫比亞                            | CO        | 美元          |
 | 哥斯大黎加                          | CR        | 美元          |
 | 象牙海岸                       | CI        | 美元          |
@@ -147,12 +148,12 @@ Azure Marketplace 供應項目可以購買的 141 的地理位置，客戶的帳
 | 突尼西亞                             | TN        | 美元          |
 | 土耳其                              | TR        | 美元          |
 | 土庫曼                        | TM        | 美元          |
-| Vatican City （教廷）             | VA        | 歐元          |
-| 美屬維爾京群島 | VI        | 美元          |
+| 梵蒂岡 (教廷)             | VA        | 歐元          |
+| 美屬維京群島 | VI        | 美元          |
 | 烏干達                              | UG        | 美元          |
 | 烏克蘭                             | UA        | 美元          |
 | 阿拉伯聯合大公國                | AE        | 美元          |
-| 英國                      | GB        | 英鎊          |
+| United Kingdom                      | GB        | 英鎊          |
 | 美國                       | US        | 美元          |
 | 烏拉圭                             | UY        | 美元          |
 | 烏茲別克                          | UZ        | 美元          |
@@ -163,4 +164,6 @@ Azure Marketplace 供應項目可以購買的 141 的地理位置，客戶的帳
 | 辛巴威                            | ZW        | 美元          |
 |   |   |   |
 
-\* 巴西的客戶，Marketplace 透過雲端解決方案提供者 (CSP) 會使用美元。
+\* 對於巴西的客戶，透過雲端解決方案提供者 (CSP) 的 Marketplace 會使用美元。
+
+\** 僅限免費和 BYOL VM 映像。

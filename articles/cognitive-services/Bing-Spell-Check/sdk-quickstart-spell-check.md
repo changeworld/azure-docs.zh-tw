@@ -1,21 +1,21 @@
 ---
 title: 快速入門：使用適用於 C# 的 Bing 拼字檢查 SDK 進行檢查拼字
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 開始使用 Bing 拼字檢查 REST API 來檢查拼字和文法。
 services: cognitive-services
-author: mikedodaro
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: quickstart
-ms.date: 02/20/2019
-ms.author: v-gedod
-ms.openlocfilehash: 3487656f72f315aa15ce003a8dfd279c45d1f992
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 12/16/2019
+ms.author: aahi
+ms.openlocfilehash: 1cda7032d5bfe58e9f8bcbdb8b18dd597a691441
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58105738"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "78273538"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-sdk-for-c"></a>快速入門：使用適用於 C# 的 Bing 拼字檢查 SDK 進行檢查拼字
 
@@ -23,10 +23,10 @@ ms.locfileid: "58105738"
 
 ## <a name="application-dependencies"></a>應用程式相依性
 
-* 任何一版的 [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)。
+* [Visual Studio 2017 或更新版本](https://visualstudio.microsoft.com/downloads/)的任何版本。
 * Bing 拼字檢查 [NuGet 套件](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.SpellCheck)
 
-若要將 Bing 拼字檢查 SDK 新增至您的專案，請在 Visual Studio 中從 [方案總管] 按一下 `Manage NuGet Packages`。 新增 `Microsoft.Azure.CognitiveServices.Language.SpellCheck` 套件。 此套件也會安裝下列相依性：
+若要將 Bing 拼字檢查 SDK 新增至您的專案，請在 Visual Studio 中選取 [方案總管]  中的 [管理 NuGet 套件]  。 新增 `Microsoft.Azure.CognitiveServices.Language.SpellCheck` 套件。 此套件也會安裝下列相依性：
 
 * Microsoft.Rest.ClientRuntime
 * Microsoft.Rest.ClientRuntime.Azure
@@ -70,9 +70,10 @@ ms.locfileid: "58105738"
 2. 取得第一個拼字檢查結果 (如果有的話)。 列印所傳回的第一個拼錯的字組 (Token)、Token 類型和建議數目。
 
     ```csharp
-    if (firstspellCheckResult != null){
-        var firstspellCheckResult = result.Body.FlaggedTokens.FirstOrDefault();
+    var firstspellCheckResult = result.Body.FlaggedTokens.FirstOrDefault();
     
+    if (firstspellCheckResult != null)
+    {
         Console.WriteLine("SpellCheck Results#{0}", result.Body.FlaggedTokens.Count);
         Console.WriteLine("First SpellCheck Result token: {0} ", firstspellCheckResult.Token);
         Console.WriteLine("First SpellCheck Result Type: {0} ", firstspellCheckResult.Type);
@@ -80,23 +81,27 @@ ms.locfileid: "58105738"
     }
     ```
 
-3. 取得第一個建議的修正 (如果有的話)。列印建議分數，以及建議的字組。 
+3. 取得第一項建議的更正 (如果有的話)。 列印建議分數，以及建議的字組。 
 
     ```csharp
-            var suggestions = firstspellCheckResult.Suggestions;
+    var suggestions = firstspellCheckResult.Suggestions;
 
-            if (suggestions?.Count > 0)
-            {
-                var firstSuggestion = suggestions.FirstOrDefault();
-                Console.WriteLine("First SpellCheck Suggestion Score: {0} ", firstSuggestion.Score);
-                Console.WriteLine("First SpellCheck Suggestion : {0} ", firstSuggestion.Suggestion);
-            }
-   }
+    if (suggestions?.Count > 0)
+    {
+        var firstSuggestion = suggestions.FirstOrDefault();
+        Console.WriteLine("First SpellCheck Suggestion Score: {0} ", firstSuggestion.Score);
+        Console.WriteLine("First SpellCheck Suggestion : {0} ", firstSuggestion.Suggestion);
+    }
+    ```
 
-## Next steps
+## <a name="run-the-application"></a>執行應用程式
+
+建置並執行專案。 如果您使用 Visual Studio，請按 **F5** 來進行檔案偵錯。
+
+## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [Create a single page web-app](tutorials/spellcheck.md)
+> [建立單頁 Web 應用程式](tutorials/spellcheck.md)
 
-- [What is the Bing Spell Check API?](overview.md)
-- [Bing Spell Check C# SDK reference guide](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingspellcheck?view=azure-dotnet)
+- [什麼是 Bing 拼字檢查 API？](overview.md)
+- [Bing 拼字檢查 C# SDK 參考指南](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingspellcheck?view=azure-dotnet)

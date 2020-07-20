@@ -1,29 +1,26 @@
 ---
-title: 連線至 Azure AD 時對 WebAPI 專案所做的變更
-description: 說明當您使用 Visual Studio 連線至 Azure AD 時，您的 WebAPI 專案會發生什麼狀況
-services: active-directory
+title: 連接到 Azure AD 時對 WebAPI 專案所做的變更
+description: 說明當您使用 Visual Studio 連接到 Azure AD 時，WebAPI 專案會發生什麼事
 author: ghogen
-manager: douge
-ms.assetid: 57630aee-26a2-4326-9dbb-ea2a66daa8b0
-ms.prod: visual-studio-dev15
-ms.technology: vs-azure
+manager: jillfra
 ms.workload: azure-vs
-ms.topic: conceptual
+ms.prod: visual-studio-windows
+ms.technology: vs-azure
+ms.topic: how-to
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f4946251cf72d7869ec5fc2f0fd844b9c06ac34
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7075fbd098736bb297f4a2e3a93aecca5b9182a8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60353273"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85478853"
 ---
 # <a name="what-happened-to-my-webapi-project-visual-studio-azure-active-directory-connected-service"></a>我的 WebAPI 專案 (Visual Studio Azure Active Directory 連線服務) 發生什麼狀況
 
 > [!div class="op_single_selector"]
-> - [開始使用](vs-active-directory-webapi-getting-started.md)
+> - [快速入門](vs-active-directory-webapi-getting-started.md)
 > - [發生什麼情形](vs-active-directory-webapi-what-happened.md)
 
 本文說明在[使用 Visual Studio 新增 Azure Active Directory 連線服務](vs-active-directory-add-connected-service.md)時，對 ASP.NET WebAPI、ASP.NET 單頁應用程式和 ASP.NET Azure API 專案會進行哪些明確的變更。 本文也適用於 Visual Studio 2015 中的 ASP.NET Azure 行動服務專案。
@@ -93,7 +90,7 @@ ms.locfileid: "60353273"
 
 - 已在 `System.IdentityModel.Tokens.Jwt` 的 `<runtime><assemblyBinding>` 節點下新增 `<dependentAssembly>` 元素。
 
-- 如果您選取了 [讀取目錄資料] 選項，則會在 `<appSettings>` 下新增下列組態項目：
+- 如果您選取了 [讀取目錄資料]**** 選項，則會在 `<appSettings>` 下新增下列組態項目：
 
     ```xml
     <add key="ida:Password" value="<Your Azure AD app's new password>" />
@@ -131,4 +128,4 @@ ms.locfileid: "60353273"
 ## <a name="next-steps"></a>後續步驟
 
 - [Azure Active Directory 的驗證案例](authentication-scenarios.md)
-- [將「使用 Microsoft 登入」新增至 ASP.NET Web 應用程式](quickstart-v1-aspnet-webapp.md)
+- [將「使用 Microsoft 登入」新增至 ASP.NET Web 應用程式](quickstart-v2-aspnet-webapp.md)

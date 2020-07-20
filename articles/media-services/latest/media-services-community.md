@@ -1,6 +1,6 @@
 ---
-title: Azure 媒體服務社群概觀 | Microsoft Docs
-description: 此 Azure 媒體服務社群頁面討論您可以提出問題、 提供意見反應，並取得更新媒體服務的不同方式。
+title: Azure 媒體服務 v3 社群概觀
+description: 此 Azure 媒體服務社群頁面討論您可針對媒體服務，詢問問題、提供意見反應，以及取得相關更新的不同方式。
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -11,18 +11,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 04/19/2019
+ms.date: 01/22/2020
 ms.author: juliako
-ms.openlocfilehash: 6a3c02c1f14c37317a03cb6ebe63bcddc92f3253
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
-ms.translationtype: MT
+ms.openlocfilehash: ab775e8d93111f7494d2bf321216e2725c438fc8
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64710173"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83828487"
 ---
-# <a name="azure-media-services-community"></a>Azure 媒體服務社群  
+# <a name="azure-media-services-v3-community"></a>Azure 媒體服務 v3 社群  
 
-此 Azure 媒體服務社群頁面討論您可以提出問題、 提供意見反應，並取得更新媒體服務的不同方式。
+此 Azure 媒體服務社群頁面討論您可針對媒體服務，詢問問題、提供意見反應，以及取得相關更新的不同方式。
 
 ## <a name="provide-feedback-and-make-suggestions"></a>提供意見反應並提出建議
 
@@ -32,7 +31,7 @@ ms.locfileid: "64710173"
 
 ### <a name="twitter"></a>Twitter
 
-您可以使用[ @MSFTAzureMedia ](https://twitter.com/MSFTAzureMedia)與我們連絡，或在 Twitter 上追蹤更新的 twitter 控制代碼。 使用[ @AzureSupport ](https://twitter.com/azuresupport) twitter 控制代碼，以要求在 Twitter 上的支援。  
+您可以使用 [@MSFTAzureMedia](https://twitter.com/MSFTAzureMedia) twitter 控制代碼，在 Twitter 上與我們連絡或追蹤更新。 使用 [@AzureSupport](https://twitter.com/azuresupport) twitter 控制代碼，以在 Twitter 上要求支援。  
 
 ### <a name="online-forums"></a>線上論壇
 
@@ -40,24 +39,11 @@ ms.locfileid: "64710173"
 
 目前，MSDN 是媒體服務小組的主要社群論壇。
 
-[![MSDN](./media/media-services-community/msdn.png)](https://social.msdn.microsoft.com/forums/azure/home?forum=MediaServices) 
+[![MSDN](./media/media-services-community/msdn.png)](https://docs.microsoft.com/answers/topics/azure-media-services.html) 
 
 小組也會監視 Stack Overflow 上標記 'azure-media-services' 的問題。
 
 [![StackOverflow](./media/media-services-community/stack-overflow.png)](https://stackoverflow.com/questions/tagged/azure-media-services) 
-
-## <a name="contact-the-team"></a>連絡小組
-
-主要支援電子郵件的 azure 媒體服務： **amshelp\@microsoft.com**。
-
-下表列出功能子小組的電子郵件：
-
-| 功能 | 電子郵件 |
-| --- | --- |
-| Azure 媒體播放器 |ampinfo@microsoft.com |
-| Azure 媒體瀏覽器 |amse@microsoft.com |
-| 工作流程設計工具 |mepd@microsoft.com |
-| 即時串流和封裝 |amslived@microsoft.com |
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -6,19 +6,19 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 04/29/2019
+ms.date: 08/05/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 95e4e3f3acc52c230405f0c0cc4a05b03b21a386
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 9bc0d25e19ad3412e62eb3386b0faf3ae5d2a444
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65153797"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "68782598"
 ---
 # <a name="fail-over-and-reprotect-azure-vms-between-regions"></a>在區域之間容錯移轉及重新保護 Azure VM
 
-本教學課程說明如何使用 [Azure Site Recovery](site-recovery-overview.md) 服務將 Azure 虛擬機器 (VM) 容錯移轉到次要 Azure 區域。 在容錯移轉之後，您會重新保護 VM。 在本教學課程中，您了解如何：
+本教學課程說明如何使用 [Azure Site Recovery](site-recovery-overview.md) 服務將 Azure 虛擬機器 (VM) 容錯移轉到次要 Azure 區域。 在容錯移轉之後，您會重新保護 VM。 在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
 > * 容錯移轉 Azure VM
@@ -28,7 +28,7 @@ ms.locfileid: "65153797"
 > 本教學課程包含採用預設設定和最低自訂的最簡單路徑。 如需更複雜的案例，請使用「操作說明」之下關於 Azure VM 的文章。
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 開始之前，請檢閱關於容錯移轉的[相關常見問題](site-recovery-faq.md#failover)。
 - 確定您已完成[災害復原演練](azure-to-azure-tutorial-dr-drill.md)，檢查一切是否如預期般運作。
@@ -36,23 +36,23 @@ ms.locfileid: "65153797"
 
 ## <a name="run-a-failover-to-the-secondary-region"></a>執行容錯移轉至次要區域
 
-1. 在 [複寫的項目] 中，選取您要容錯移轉的 VM > [容錯移轉]。
+1. 在 [複寫的項目]  中，選取您要容錯移轉的 VM > [容錯移轉]  。
 
    ![容錯移轉](./media/azure-to-azure-tutorial-failover-failback/failover.png)
 
-2. 在 [容錯移轉] 中，選取要容錯移轉的目標**復原點**。 您可以使用下列其中一個選項：
+2. 在 [容錯移轉]  中，選取要容錯移轉的目標**復原點**。 您可以使用下列其中一個選項：
 
    * **最新** (預設值)：在 Site Recovery 服務中處理所有資料，並提供最低的復原點目標 (RPO)。
    * **最近處理**：將虛擬機器還原到 Site Recovery 服務已處理的最新復原點。
-   * **自訂**：容錯移轉至特定復原點。 此選項適合用於執行測試容錯移轉。
+   * [自訂]  ：容錯移轉至特定復原點。 此選項適合用於執行測試容錯移轉。
 
-3. 如果想在觸發容錯移轉之前，讓 Site Recovery 嘗試將來源 VM 關機，請選取 [先將機器關機再開始容錯移轉]。 即使關機失敗，仍會繼續容錯移轉。 Site Recovery 並不會在容錯移轉後清除來源。
+3. 如果想在觸發容錯移轉之前，讓 Site Recovery 嘗試將來源 VM 關機，請選取 [先將機器關機再開始容錯移轉]  。 關機有助於確保不會遺失資料。 即使關機失敗，仍會繼續容錯移轉。 Site Recovery 並不會在容錯移轉後清除來源。
 
-4. 在 [作業] 頁面上追蹤容錯移轉進度。
+4. 在 [作業]  頁面上追蹤容錯移轉進度。
 
-5. 容錯移轉之後，登入虛擬機器進行驗證。 如果您想要前往虛擬機器的另一個復原點，您可以使用 [變更復原點] 選項。
+5. 容錯移轉之後，登入虛擬機器進行驗證。 如果您想要前往虛擬機器的另一個復原點，您可以使用 [變更復原點]  選項。
 
-6. 一旦您滿意容錯移轉的虛擬機器，您可以 [認可] 容錯移轉。
+6. 一旦您滿意容錯移轉的虛擬機器，您可以 [認可]  容錯移轉。
    認可會刪除服務可用的所有復原點。 您現在無法變更復原點。
 
 > [!NOTE]
@@ -64,14 +64,14 @@ ms.locfileid: "65153797"
 
 在 VM 容錯移轉之後，您需要重新保護它，使其能複寫回到主要區域。
 
-1. 確定 VM 處於 [已認可容錯移轉] 狀態，並檢查主要區域是否使用，而且您可以建立及存取其中的新資源。
-2. 在 [保存庫] > [已複寫的項目] 中，以滑鼠右鍵按一下已容錯移轉的 VM，然後選取 [重新保護]。
+1. 確定 VM 處於 [已認可容錯移轉]  狀態，並檢查主要區域是否使用，而且您可以建立及存取其中的新資源。
+2. 在 [保存庫]   > [已複寫的項目]  中，以滑鼠右鍵按一下已容錯移轉的 VM，然後選取 [重新保護]  。
 
    ![按一下滑鼠右鍵可重新保護](./media/azure-to-azure-tutorial-failover-failback/reprotect.png)
 
 2. 確認已經選取保護方向 (次要到主要區域)。
 3. 檢閱**資源群組、網路、儲存體和可用性設定組**資訊。 在重新保護作業期間會建立任何標記為新的資源。
-4. 按一下 [確定] 以觸發重新保護作業。 這項作業會在目標網站植入最新資料。 然後，它會將差異複寫到主要區域。 VM 目前處於受保護的狀態。
+4. 按一下 [確定]  以觸發重新保護作業。 這項作業會在目標網站植入最新資料。 然後，它會將差異複寫到主要區域。 VM 目前處於受保護的狀態。
 
 ## <a name="next-steps"></a>後續步驟
 - 在重新保護之後，[了解如何](azure-to-azure-tutorial-failback.md)容錯回復到可用的主要區域。

@@ -1,33 +1,26 @@
 ---
-title: 在執行 Linux 的虛擬機器上設定軟體 RAID | Microsoft Docs
+title: 在 Linux VM 上設定軟體 RAID
 description: 了解如何使用 mdadm，在 Azure 的 Linux 上設定 RAID。
-services: virtual-machines-linux
-documentationcenter: na
 author: rickstercdn
-manager: jeconnoc
-editor: tysonn
-tag: azure-service-management,azure-resource-manager
-ms.assetid: f3cb2786-bda6-4d2c-9aaf-2db80f490feb
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/02/2017
 ms.author: rclaus
 ms.subservice: disks
-ms.openlocfilehash: e773fdcb031f0f8f896ea40d76231fd54a603dc4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 3471ccfa0899f73969c511dea283c2d0d7051af8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60328794"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84659781"
 ---
 # <a name="configure-software-raid-on-linux"></a>在 Linux 上設定軟體 RAID
 在 Azure 的 Linux 虛擬機器上使用軟體 RAID，以單一 RAID 裝置的形式顯示多個連接的資料磁碟，這種案例很常遇到。 相較於只使用單一磁碟，這通常可用來提高效能並允許增加輸送量。
 
 ## <a name="attaching-data-disks"></a>連接資料磁碟
 設定 RAID 裝置需要兩個以上的空白資料磁碟。  建立 RAID 裝置的主要原因是要提升磁碟 IO 效能。  根據 IO 需求，您可以選擇連接儲存在標準儲存體且一個磁碟最多具有 500 IO/ps 的磁碟，或進階儲存體且一個磁碟最多具有 5000 IO/ps 的磁碟。 本文不會詳細說明如何佈建資料磁碟以及將其連接至 Linux 虛擬機器。  請參閱 Microsoft Azure 文章[連接磁碟](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)，取得如何在 Azure 上將空白資料磁碟連接至 Linux 虛擬機器的詳細指示。
+
+> [!IMPORTANT]
+>請勿混用不同大小的磁片，這麼做會導致 raidset 的效能受限於最慢的磁片。 
 
 ## <a name="install-the-mdadm-utility"></a>安裝 mdadm 公用程式
 * **Ubuntu**
@@ -122,19 +115,19 @@ ms.locfileid: "60328794"
 
 1. 在新的 RAID 裝置上建立檔案系統
    
-    a. **CentOS、Oracle Linux、SLES 12、openSUSE 和 Ubuntu**
+    **CentOS、Oracle Linux、SLES 12、openSUSE 和 Ubuntu**
 
     ```bash   
     sudo mkfs -t ext4 /dev/md127
     ```
    
-    b. **SLES 11**
+    **SLES 11**
 
     ```bash
     sudo mkfs -t ext3 /dev/md127
     ```
    
-    c. **SLES 11** - 啟用 boot.md 並建立 mdadm.conf
+    **SLES 11** - 啟用 boot.md 並建立 mdadm.conf
 
     ```bash
     sudo -i chkconfig --add boot.md
@@ -144,13 +137,13 @@ ms.locfileid: "60328794"
    > [!NOTE]
    > 在 SUSE 系統上進行這些變更之後，可能需要重新開機。 針對 SLES 12，這在並 *非* 必要步驟。
    > 
-   > 
+   
 
 ## <a name="add-the-new-file-system-to-etcfstab"></a>將新的檔案系統新增至 /etc/fstab
 > [!IMPORTANT]
 > 不當編輯 /etc/fstab 檔案會導致系統無法開機。 如果不確定，請參閱散發套件的文件，以取得如何適當編輯此檔案的相關資訊。 在編輯之前，也建議先備份 /etc/fstab 檔案。
 
-1. 为新文件系统创建所需的安装点，例如：
+1. 建立新檔案系統所需的掛接點，例如：
 
     ```bash
     sudo mkdir /data
@@ -163,7 +156,7 @@ ms.locfileid: "60328794"
     /dev/md127: UUID="aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee" TYPE="ext4"
     ```
 
-1. 在文本编辑器中打开 /etc/fstab，并为新文件系统添加条目，例如：
+1. 在文字編輯器中開啟 /etc/fstab，並為新檔案系統新增項目，例如：
 
     ```bash   
     UUID=aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee  /data  ext4  defaults  0  2
@@ -220,7 +213,7 @@ ms.locfileid: "60328794"
 
 有兩種方式可在 Linux VM 中啟用 TRIM 支援。 像往常一樣，請參閱您的散發套件以了解建議的方法︰
 
-- 在 `/etc/fstab` 中使用 `discard` 装载选项，例如：
+- 在 `/etc/fstab` 中使用 `discard` 掛接選項，例如：
 
     ```bash
     UUID=aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee  /data  ext4  defaults,discard  0  2

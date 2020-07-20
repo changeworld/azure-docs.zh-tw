@@ -1,27 +1,27 @@
 ---
-title: Azure PowerShell 指令碼範例 - 建立 Azure 防火牆測試環境
-description: Azure PowerShell 指令碼範例 - 建立 Azure 防火牆測試環境。
+title: 建立 Azure 防火牆測試環境
+description: 此指令碼範例會建立防火牆和測試網路環境。 此網路具有一個 VNet 和三個子網路。
 services: virtual-network
 author: vhorne
 ms.service: firewall
 ms.devlang: powershell
 ms.topic: sample
-ms.date: 8/13/2018
+ms.date: 11/19/2019
 ms.author: victorh
-ms.openlocfilehash: 6e85bd6ec51cff27fed6d0b2d9e73f94325e4d4f
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 6cb0eafce354ba54dd161fee52efe46677ad2765
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58500231"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "74195892"
 ---
 # <a name="create-an-azure-firewall-test-environment"></a>建立 Azure 防火牆測試環境
 
-此指令碼範例會建立防火牆和測試網路環境。 網路有一個 VNet，包含三個子網路：AzureFirewallSubnet 和 ServersSubnet 以及 JumpboxSubnet。 ServersSubnet 和 JumpboxSubnet 中各有一個 2 核心 Windows Server。
+此指令碼範例會建立防火牆和測試網路環境。 網路有一個 VNet，包含三個子網路：AzureFirewallSubnet  和 ServersSubnet  以及 JumpboxSubnet  。 ServersSubnet 和 JumpboxSubnet 中各有一個 2 核心 Windows Server。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-防火牆位於 AzureFirewallSubnet 中，並使用應用程式規則集合進行設定，其中包含單一規則可允許存取 www.microsoft.com。
+防火牆位於 AzureFirewallSubnet 中，並使用應用程式規則集合進行設定，其中包含允許存取 `www.microsoft.com` 的單一規則。
 
 所建立的使用者定義路由會將 ServersSubnet 中的網路流量指向通過防火牆，該防火牆會套用防火牆規則。
 
@@ -59,7 +59,7 @@ Remove-AzResourceGroup -Name AzfwSampleScriptEastUS -Force
 
 此指令碼會使用下列命令來建立資源群組、虛擬網路及網路安全性群組。 下表中的每個命令都會連結至命令特定的文件：
 
-| 命令 | 注意 |
+| Command | 注意 |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | 建立用來存放所有資源的資源群組。 |
 | [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) | 建立子網路設定物件 |

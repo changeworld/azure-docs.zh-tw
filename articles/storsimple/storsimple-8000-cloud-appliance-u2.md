@@ -14,14 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/08/2017
 ms.author: alkohli
-ms.openlocfilehash: df7866d4f87f55523e8139232e48d81cb17c80e4
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 01ce952ea774ba852c83d0d6aa3fe38d5dfd677e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62117319"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84711845"
 ---
 # <a name="deploy-and-manage-a-storsimple-cloud-appliance-in-azure-update-3-and-later"></a>部署和管理 Azure 中的 StorSimple 雲端設備 (Update 3 和更新版本)
+
+[!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
 
 ## <a name="overview"></a>概觀
 
@@ -44,8 +46,8 @@ StorSimple 雲端設備可以在兩種模型中使用，標準 8010 (前身為 1
 | --- | --- | --- |
 | **最大容量** |30 TB |64 TB |
 | **Azure VM** |Standard_A3 (4 核心、7 GB 記憶體)| Standard_DS3 (4 核心、14 GB 記憶體)|
-| **區域可用性** |所有 Azure 區域 |支援進階儲存體和 DS3 Azure VM 的 Azure 區域<br></br>使用[這份清單](https://azure.microsoft.com/regions/services/)，查看您的區域是否提供「虛擬機器 > DS 系列」和「儲存體 > 磁碟儲存體」。 |
-| **儲存體類型** |將 Azure 標準儲存體使用於本機磁碟<br></br> 了解如何 [建立標準儲存體帳戶](../storage/common/storage-create-storage-account.md) |將 Azure 進階儲存體使用於本機磁碟<sup>2</sup> <br></br> |
+| **區域可用性** |所有 Azure 區域 |支援進階儲存體和 DS3 Azure VM 的 Azure 區域<br></br>使用[這份清單](https://azure.microsoft.com/regions/services/)，查看您的區域是否提供「虛擬機器 > DS 系列」**** 和「儲存體 > 磁碟儲存體」****。 |
+| **儲存類型** |將 Azure 標準儲存體使用於本機磁碟<br></br> 了解如何 [建立標準儲存體帳戶](../storage/common/storage-create-storage-account.md) |將 Azure 進階儲存體使用於本機磁碟<sup>2</sup> <br></br> |
 | **工作負載指引** |從備份的檔案的項目層級擷取 |雲端開發和測試案例 <br></br>低延遲和更高的效能工作負載<br></br>災害復原的次要裝置 |
 
 <sup>1</sup> *前身為 1100*。
@@ -189,11 +191,11 @@ StorSimple Snapshot Manager 軟體位於您的 Windows 主機上，而且可讓�
 
 若要將雲端應用裝置連線至相同虛擬網路中的主機伺服器，您需要雲端應用裝置的內部或私人 IP 位址。 執行下列步驟來取得雲端應用裝置的私人 IP 位址
 
-1. 移至您雲端應用裝置的基礎虛擬機器。 虛擬機器與您的雲端應用裝置具有相同的名稱。 移至 [所有資源]，提供雲端應用裝置的名稱和訂用帳戶，然後選取作為虛擬機器的類型。 在所呈現的虛擬機器清單中，選取及按一下對應至雲端應用裝置的虛擬機器。
+1. 移至您雲端應用裝置的基礎虛擬機器。 虛擬機器與您的雲端應用裝置具有相同的名稱。 移至 [所有資源]****，提供雲端應用裝置的名稱和訂用帳戶，然後選取作為虛擬機器的類型。 在所呈現的虛擬機器清單中，選取及按一下對應至雲端應用裝置的虛擬機器。
 
      ![選取您雲端應用裝置的虛擬機器](./media/storsimple-8000-cloud-appliance-u2/sca-vm.png)
 
-2. 移至 [設定 > 網路]。 在右窗格中，您會看到雲端應用裝置的私人 IP 位址。 請將此記下。
+2. 移至 [設定 > 網路]****。 在右窗格中，您會看到雲端應用裝置的私人 IP 位址。 請將此記下。
 
     ![取得您雲端應用裝置的私人 IP 位址](./media/storsimple-8000-cloud-appliance-u2/sca-private-ip-vm-networking.png)
 
@@ -229,12 +231,12 @@ StorSimple Snapshot Manager 軟體位於您的 Windows 主機上，而且可讓�
 
 如需逐步程序，請移至 [停用及刪除 StorSimple 裝置](storsimple-8000-deactivate-and-delete-device.md)。
 
-只要雲端設備在 StorSimple 裝置管理員服務刀鋒視窗上顯示為已停用，您就能從 [裝置] 刀鋒視窗的裝置清單中，將該雲端設備刪除。
+只要雲端設備在 StorSimple 裝置管理員服務刀鋒視窗上顯示為已停用，您就能從 [裝置]**** 刀鋒視窗的裝置清單中，將該雲端設備刪除。
 
 ### <a name="start-stop-and-restart-a-cloud-appliance"></a>將雲端設備啟動、停止和重新啟動
 不同於 StorSimple 實體裝置，在 StorSimple 雲端設備上並沒有開啟電源或關閉電源按鈕可供使用。 但是，有時您可能需要將雲端設備停止並重新啟動。
 
-若要將雲端設備啟動、停止和重新啟動，最簡單的方式是透過虛擬機器服務刀鋒視窗。 執行虛擬機器服務。 從 VM 清單中，找出對應至您雲端設備 (相同名稱) 的 VM，然後按一下 VM 名稱。 當您檢視虛擬機器刀鋒視窗時，雲端設備狀態為 [執行中]，因為它在建立之後，依預設會加以啟動。 您隨時都能啟動、停止及重新啟動虛擬機器。
+若要將雲端設備啟動、停止和重新啟動，最簡單的方式是透過虛擬機器服務刀鋒視窗。 執行虛擬機器服務。 從 VM 清單中，找出對應至您雲端設備 (相同名稱) 的 VM，然後按一下 VM 名稱。 當您檢視虛擬機器刀鋒視窗時，雲端設備狀態為 [執行中]****，因為它在建立之後，依預設會加以啟動。 您隨時都能啟動、停止及重新啟動虛擬機器。
 
 [!INCLUDE [Stop and restart cloud appliance](../../includes/storsimple-8000-stop-restart-cloud-appliance.md)]
 

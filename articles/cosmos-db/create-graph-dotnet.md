@@ -1,19 +1,19 @@
 ---
-title: 使用 Gremlin API 來建置 Azure Cosmos DB .NET Framework 或 Core 應用程式
+title: 使用 Gremlin API 來建置 Azure Cosmos DB .NET Framework、Core 應用程式
 description: 提供可用來連線及查詢 Azure Cosmos DB 的 .NET Framework/Core 程式碼範例
 author: luisbosquez
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 01/08/2018
+ms.date: 02/21/2020
 ms.author: lbosq
-ms.openlocfilehash: 3f10c8d38d37682e2a949397d9747ec094bdb9af
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a85df3e437f2c1ec93996cdaacfccadeaa47cc99
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58170100"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118248"
 ---
 # <a name="quickstart-build-a-net-framework-or-core-application-using-the-azure-cosmos-db-gremlin-api-account"></a>快速入門：使用 Azure Cosmos DB Gremlin API 帳戶建置 .NET Framework 或 Core 應用程式
 
@@ -32,9 +32,7 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
 
 ## <a name="prerequisites"></a>必要條件
 
-如果尚未安裝 Visual Studio 2017，您可以下載並使用「免費的」[Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/)。 務必在 Visual Studio 設定期間啟用 **Azure 開發**。
-
-如果您已安裝 Visual Studio 2017，請確定已安裝最多至 [Visual Studio 2017 Update 3](https://www.visualstudio.com/en-us/news/releasenotes/vs2017-relnotes)。
+如果尚未安裝 Visual Studio 2019，您可以下載並使用**免費**的 [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)。 務必在 Visual Studio 設定期間啟用 **Azure 開發**。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -85,74 +83,21 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
 
 下列程式碼片段全部取自 Program.cs 檔案。
 
-* 根據以上 (第 19 行) 建立的帳戶，設定您的連線參數： 
+* 根據上面建立的帳戶來設定您的連線參數： 
 
-    ```csharp
-    private static string hostname = "your-endpoint.gremlin.cosmosdb.azure.com";
-    private static int port = 443;
-    private static string authKey = "your-authentication-key";
-    private static string database = "your-database";
-    private static string collection = "your-graph-container";
-    ```
+   :::code language="csharp" source="~/azure-cosmosdb-graph-dotnet/GremlinNetSample/Program.cs" id="configureConnectivity":::
 
-* 要執行的 Gremlin 命令會列於字典 (第 26 行) 中：
+* 要執行的 Gremlin 命令會列於字典中：
 
-    ```csharp
-    private static Dictionary<string, string> gremlinQueries = new Dictionary<string, string>
-    {
-        { "Cleanup",        "g.V().drop()" },
-        { "AddVertex 1",    "g.addV('person').property('id', 'thomas').property('firstName', 'Thomas').property('age', 44)" },
-        { "AddVertex 2",    "g.addV('person').property('id', 'mary').property('firstName', 'Mary').property('lastName', 'Andersen').property('age', 39)" },
-        { "AddVertex 3",    "g.addV('person').property('id', 'ben').property('firstName', 'Ben').property('lastName', 'Miller')" },
-        { "AddVertex 4",    "g.addV('person').property('id', 'robin').property('firstName', 'Robin').property('lastName', 'Wakefield')" },
-        { "AddEdge 1",      "g.V('thomas').addE('knows').to(g.V('mary'))" },
-        { "AddEdge 2",      "g.V('thomas').addE('knows').to(g.V('ben'))" },
-        { "AddEdge 3",      "g.V('ben').addE('knows').to(g.V('robin'))" },
-        { "UpdateVertex",   "g.V('thomas').property('age', 44)" },
-        { "CountVertices",  "g.V().count()" },
-        { "Filter Range",   "g.V().hasLabel('person').has('age', gt(40))" },
-        { "Project",        "g.V().hasLabel('person').values('firstName')" },
-        { "Sort",           "g.V().hasLabel('person').order().by('firstName', decr)" },
-        { "Traverse",       "g.V('thomas').out('knows').hasLabel('person')" },
-        { "Traverse 2x",    "g.V('thomas').out('knows').hasLabel('person').out('knows').hasLabel('person')" },
-        { "Loop",           "g.V('thomas').repeat(out()).until(has('id', 'robin')).path()" },
-        { "DropEdge",       "g.V('thomas').outE('knows').where(inV().has('id', 'mary')).drop()" },
-        { "CountEdges",     "g.E().count()" },
-        { "DropVertex",     "g.V('thomas').drop()" },
-    };
-    ```
+   :::code language="csharp" source="~/azure-cosmosdb-graph-dotnet/GremlinNetSample/Program.cs" id="defineQueries":::
 
+* 使用上面提供的參數來建立新的 `GremlinServer` 和 `GremlinClient` 連線物件：
 
-* 使用以上 (第 52 行) 提供的參數，建立 `GremlinServer` 連線物件：
+   :::code language="csharp" source="~/azure-cosmosdb-graph-dotnet/GremlinNetSample/Program.cs" id="defineClientandServerObjects":::
 
-    ```csharp
-    var gremlinServer = new GremlinServer(hostname, port, enableSsl: true, 
-                                                    username: "/dbs/" + database + "/colls/" + collection, 
-                                                    password: authKey);
-    ```
+* 使用 `GremlinClient` 物件搭配非同步工作，執行每個 Gremlin 查詢。 您可以從上一個步驟中定義的字典讀取 Gremlin 查詢，然後加以執行。 之後，使用 Newtonsoft.Json 套件中的 `JsonSerializer` 類別，取得結果並讀取已格式化為字典的值：
 
-* 建立新的 `GremlinClient` 物件 (第 56 行)：
-
-    ```csharp
-    var gremlinClient = new GremlinClient(gremlinServer);
-    ```
-
-* 使用 `GremlinClient` 物件搭配非同步工作 (第 63 行)，執行每個 Gremlin 查詢。 這將從以上 (第 26 行) 定義的字典讀取 Gremlin 查詢：
-
-    ```csharp
-    var results = await gremlinClient.SubmitAsync<dynamic>(query.Value);
-    ```
-
-* 使用 Newtonsoft.Json 中的 `JsonSerializer` 類別，擷取結果並讀取已格式化為字典的值：
-
-    ```csharp
-    foreach (var result in results)
-    {
-        // The vertex results are formed as dictionaries with a nested dictionary for their properties
-        string output = JsonConvert.SerializeObject(result);
-        Console.WriteLine(String.Format("\tResult:\n\t{0}", output));
-    }
-    ```
+   :::code language="csharp" source="~/azure-cosmosdb-graph-dotnet/GremlinNetSample/Program.cs" id="executeQueries":::
 
 ## <a name="update-your-connection-string"></a>更新您的連接字串
 
@@ -164,31 +109,24 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
 
    **Gremlin 端點** - 當您使用 Gremlin.Net 程式庫連線至圖形帳戶時，將會使用此值。
 
-    ![複製端點](./media/create-graph-dotnet/endpoint.png)
+    :::image type="content" source="./media/create-graph-dotnet/endpoint.png" alt-text="複製端點":::
 
-   若要執行此範例，請複製 [Gremlin 端點] 值，並刪除結尾處的連接埠號碼，使 URI 變成 `https://<your cosmos db account name>.gremlin.cosmosdb.azure.com`
+   若要執行此範例，請複製 [Gremlin 端點] 值，並刪除結尾處的連接埠號碼，使 URI 變成 `https://<your cosmos db account name>.gremlin.cosmosdb.azure.com`。 端點值看起來應該像 `testgraphacct.gremlin.cosmosdb.azure.com`
 
-2. 在 Program.cs 中，將此值貼在第 19 行 `hostname` 變數中的 `your-endpoint` 上。 
+1. 接下來，瀏覽至 [金鑰] 索引標籤，然後從 Azure 入口網站複製 [主要金鑰] 值。 
 
-    `"private static string hostname = "<your cosmos db account name>.gremlin.cosmosdb.azure.com";`
+1. 在複製您帳戶的 URI 與主要金鑰後，請在執行應用程式的本機電腦上，將該字串儲存到新的環境變數中。 若要設定環境變數，請開啟命令提示字元視窗，然後執行下列命令。 請務必取代 <Your_Azure_Cosmos_account_URI> 和 <Your_Azure_Cosmos_account_PRIMARY_KEY> 值。
 
-    端點值現在看起來應該像這樣：
+   ```console
+   setx EndpointUrl "<your Azure Cosmos account name>.gremlin.cosmosdb.azure.com"
+   setx PrimaryKey "<Your_Azure_Cosmos_account_PRIMARY_KEY>"
+   ```
 
-    `"private static string hostname = "testgraphacct.gremlin.cosmosdb.azure.com";`
+1. 開啟 Program.cs 檔案，並使用上面所建立的資料庫和容器 (也是圖形名稱) 名稱來更新「資料庫」和「容器」變數。
 
-3. 接著，瀏覽至 [索引鍵] 索引標籤，並從入口網站複製 [主索引鍵] 值，然後將其貼在 `authkey` 變數中，並取代第 21 行的 `"your-authentication-key"` 預留位置。 
+    `private static string database = "your-database-name";` `private static string container = "your-container-or-graph-name";`
 
-    `private static string authKey = "your-authentication-key";`
-
-4. 使用以上建立的資料庫資訊，將資料庫名稱貼在第 22 行的 `database` 變數內。 
-
-    `private static string database = "your-database";`
-
-5. 同樣地，使用以上建立的容器資訊，將集合 (也是圖形名稱) 貼在第 23 行的 `collection` 變數內。 
-
-    `private static string collection = "your-collection-or-graph";`
-
-6. 儲存 Program.cs 檔案。 
+1. 儲存 Program.cs 檔案。 
 
 您現已更新應用程式，使其具有與 Azure Cosmos DB 通訊所需的所有資訊。 
 
@@ -208,7 +146,7 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
 
     您可以縮放圖形、展開圖形顯示空間、新增其他頂點，並在顯示介面上移動頂點。
 
-    ![在 Azure 入口網站的資料總管中檢視圖形](./media/create-graph-dotnet/graph-explorer.png)
+    :::image type="content" source="./media/create-graph-dotnet/graph-explorer.png" alt-text="在 Azure 入口網站的資料總管中檢視圖形":::
 
 ## <a name="review-slas-in-the-azure-portal"></a>在 Azure 入口網站中檢閱 SLA
 

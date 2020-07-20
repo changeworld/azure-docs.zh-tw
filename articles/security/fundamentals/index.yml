@@ -1,0 +1,101 @@
+### YamlMime:Landing
+title: Azure 安全性基本概念文件
+summary: 了解如何在 Azure 上使用我們的最佳做法和指引來保護您的雲端解決方案。
+metadata:
+  title: Azure 安全性基本概念文件
+  description: 了解如何在 Azure 上保護您的雲端解決方案。
+  services: security
+  ms.service: security
+  ms.subservice: fundamentals
+  ms.topic: landing-page
+  author: TerryLanfear
+  ms.author: terrylan
+  manager: rkarlin
+  ms.date: 10/28/2019
+  ms.openlocfilehash: 62a0bc67624c27ccd8185edb8be1a8cb3f16a9b1
+  ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 04/10/2020
+  ms.locfileid: "81115231"
+landingContent:
+- title: 關於 Azure 安全性
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure 安全性簡介
+      url: overview.md
+    - text: 安全性技術功能
+      url: technical-capabilities.md
+  - linkListType: concept
+    links:
+    - text: Microsoft 如何保障 Azure 基礎結構的安全性
+      url: infrastructure.md
+- title: 開始使用
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 雲端中共同承擔的責任
+      url: shared-responsibility.md
+    - text: 安全性服務與技術
+      url: services-technologies.md
+    - text: 內建安全性控制
+      url: security-controls.md
+- title: 降低威脅的風險
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure 資訊安全中心
+      url: ../../security-center/security-center-intro.md
+  - linkListType: concept
+    links:
+    - text: 管理與監視
+      url: management-monitoring-overview.md
+    - text: 進階威脅偵測
+      url: threat-detection.md
+- title: 保護叢集解決方案的最佳做法
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 網路安全性
+      url: network-best-practices.md
+    - text: IaaS 工作負載
+      url: iaas.md
+    - text: 身分識別管理和存取控制
+      url: identity-management-best-practices.md
+    - text: PaaS 部署
+      url: paas-deployments.md
+    - text: 資料安全性與加密
+      url: data-encryption-best-practices.md
+    - text: 作業安全性
+      url: operational-best-practices.md
+- title: 保護您的 Azure 資源
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 待用加密
+      url: encryption-atrest.md
+    - text: 資料保護
+      url: database-security-overview.md
+    - text: 網路安全性
+      url: network-overview.md
+    - text: 虛擬機器安全性
+      url: virtual-machines-overview.md
+    - text: 身分識別安全性
+      url: identity-management-overview.md
+  - linkListType: learn
+    links:
+    - text: 保護雲端應用程式
+      url: https://docs.microsoft.com/learn/paths/secure-your-cloud-apps/
+- title: 建置安全性技能
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: 實作網路安全性
+      url: https://docs.microsoft.com/learn/paths/implement-network-security
+    - text: 管理身分識別與存取
+      url: https://docs.microsoft.com/learn/paths/manage-identity-and-access
+    - text: 實作資源管理安全性
+      url: https://docs.microsoft.com/learn/paths/implement-resource-mgmt-security
+    - text: 實作虛擬機器主機安全性
+      url: https://docs.microsoft.com/learn/paths/implement-host-security

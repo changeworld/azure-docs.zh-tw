@@ -2,48 +2,42 @@
 title: 包含檔案
 description: 包含檔案
 services: functions
-author: craigshoemaker
-ms.service: functions
+author: ggailey777
+ms.service: azure-functions
 ms.topic: include
-ms.date: 09/25/2018
-ms.author: cshoe
+ms.date: 05/25/2019
+ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: fc5b43dcdee394fea023124171fb42c1a18224dc
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 94cac0932da5880e5e7b8a8fac3870b5bc464af9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64733275"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75564668"
 ---
-延伸模組套件組合請透過在設定 Azure Functions 小組所發行的所有繫結*host.json*檔案。 針對本機開發，請確定您有最新版[Azure Functions Core Tools](../articles/azure-functions/functions-run-local.md#install-the-azure-functions-core-tools)。
+## <a name="register-extensions"></a>註冊延伸模組
 
-若要使用延伸模組套件組合，更新*host.json*檔案，以包含下列項目`extensionBundle`:
+除了 HTTP 和計時器觸發程式以外，執行時間2.x 版和更新版本中的函式系結會實作為擴充封裝。 在2.x 版和之後的 Azure Functions 執行時間中，您必須明確地為函式中使用的系結類型註冊擴充功能。 例外狀況為 HTTP 系結和計時器觸發程式，這不需要延伸模組。
 
-```json
-{
-    "version": "2.0",
-    "extensionBundle": {
-        "id": "Microsoft.Azure.Functions.ExtensionBundle",
-        "version": "[1.*, 2.0.0)"
-    }
-}
+您可以選擇個別安裝系結延伸模組，也可以將延伸模組配套參考新增至專案檔案上的 host.js。 延伸模組配套會移除在使用多個系結類型時，發生套件相容性問題的機會。 這是註冊系結延伸模組的建議方法。 延伸模組配套也會移除安裝 .NET Core 2.x SDK 的需求。 
+
+### <a name="extension-bundles"></a>延伸模組配套
+
+[!INCLUDE [Register extensions](functions-extension-bundles.md)]
+
+若要深入瞭解，請參閱[註冊 Azure Functions](../articles/azure-functions/functions-bindings-register.md#extension-bundles)系結延伸模組。 您應該先將延伸模組配套新增至 host.js，然後再將系結新增至檔案 function.js。
+
+### <a name="register-individual-extensions"></a>註冊個別的延伸模組
+
+如果您需要安裝不在配套中的延伸模組，可以針對特定系結手動註冊個別的延伸模組套件。 
+
+> [!NOTE]
+> 若要使用手動註冊擴充功能 `func extensions install` ，您必須安裝 .Net Core 2.X SDK。
+
+在更新 function.json** 檔案以包含函式所需的所有繫結後，請在專案資料夾中執行下列命令。
+
+```bash
+func extensions install
 ```
 
-- `id`屬性參照 Microsoft Azure 函式延伸模組套件組合的命名空間。
-- `version`參考套件組合的版本。
-
-以套件組合變更的套件組合版本遞增。 只有當套件組合中的移動主要版本時，才發生主要版本變更。 `version`屬性使用[間隔標記法來指定版本範圍](https://docs.microsoft.com/nuget/reference/package-versioning#version-ranges-and-wildcards)。 Functions 執行階段一律會挑選版本範圍或間隔所定義的最高允許版本。
-
-一旦您在專案中參考延伸模組套件組合，然後所有的預設繫結可供您的函式。 提供的繫結[延伸模組套件組合](https://github.com/Azure/azure-functions-extension-bundles/blob/master/src/Microsoft.Azure.Functions.ExtensionBundle/extensions.json)是：
-
-|Package  |Version  |
-|---------|---------|
-|Microsoft.Azure.WebJobs.Extensions.CosmosDB|3.0.3|
-|Microsoft.Azure.WebJobs.Extensions.DurableTask|1.8.0|
-|Microsoft.Azure.WebJobs.Extensions.EventGrid|2.0.0|
-|Microsoft.Azure.WebJobs.Extensions.EventHubs|3.0.3|
-|Microsoft.Azure.WebJobs.Extensions.SendGrid|3.0.0|
-|Microsoft.Azure.WebJobs.Extensions.ServiceBus|3.0.3|
-|Microsoft.Azure.WebJobs.Extensions.SignalRService|1.0.0|
-|Microsoft.Azure.WebJobs.Extensions.Storage|3.0.4|
-|Microsoft.Azure.WebJobs.Extensions.Twilio|3.0.0|
+此命令會讀取 function.json** 檔案，查看您需要哪些套件，加以安裝，然後重建擴充專案。 它會在目前版本中新增任何新繫結，但不會更新現有的繫結。 在安裝新的繫結時，使用 `--force` 選項將現有繫結更新為最新版本。

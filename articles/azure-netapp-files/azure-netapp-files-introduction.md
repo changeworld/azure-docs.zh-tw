@@ -1,5 +1,5 @@
 ---
-title: Azure NetApp Files 簡介 | Microsoft Docs
+title: 什麼是 Azure NetApp Files | Microsoft Docs
 description: 提供 Azure NetApp Files 和主要工作的概觀。
 services: azure-netapp-files
 documentationcenter: ''
@@ -14,22 +14,25 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 03/28/2018
 ms.author: b-juche
-ms.openlocfilehash: d7eb73c8fb4573084ba0a213282fdb71e14ff5fa
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 33a90f876f5ce35b52bb2d5625fa9d91a0a33dee
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59546735"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "65522983"
 ---
-# <a name="introduction-to-azure-netapp-files"></a>Azure NetApp Files 簡介
-Azure NetApp Files 服務是企業等級、高效能、計量檔案儲存體服務。 Azure NetApp Files 支援任何工作負載類型，預設為高度可用。 您可以選取保證的服務和效能層級，並且透過服務設定快照集。 
+# <a name="what-is-azure-netapp-files"></a>什麼是 Azure NetApp Files
+
+Azure NetApp Files 服務是企業等級、高效能、計量檔案儲存體服務。 Azure NetApp Files 支援任何工作負載類型，預設為高度可用。 您可以選取服務和效能層級，並且透過服務設定快照集。 
+
+## <a name="learn-how-to-use-azure-netapp-files"></a>了解如何使用 Azure NetApp Files
 
 Azure NetApp Files 文件提供了使用 Azure NetApp Files 來建立及管理磁碟區的指示。 
 
 > [!IMPORTANT] 
-> 您需要加入「公開預覽計畫」並可存取 Microsoft.NetApp Azure 資源提供者，才能進行本文件中所說明的所有工作。 若要要求加入「公開預覽」計畫，請參閱[註冊 Azure NetApp Files](azure-netapp-files-register.md)。 
+> 這份文件中描述的所有工作都需要您具備 Azure NetApp Files 服務的存取權。 若要要求服務的存取權，請參閱[提交存取服務的等候清單要求](azure-netapp-files-register.md#waitlist)。
 
-**開始使用** 
+## <a name="next-steps"></a>後續步驟
 
 * [了解 Azure NetApp Files 的儲存體階層](azure-netapp-files-understand-storage-hierarchy.md) 
-* [快速入門：設定 Azure NetApp Files 並建立磁碟區](azure-netapp-files-quickstart-set-up-account-create-volumes.md)
+* [快速入門：設定 Azure NetApp Files 並建立 NFS 磁碟區](azure-netapp-files-quickstart-set-up-account-create-volumes.md)

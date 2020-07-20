@@ -6,28 +6,27 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 08/13/2019
 ms.author: alkohli
-ms.openlocfilehash: d0ef3e407fd256b4db351f86b51964cbcb16e819
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: db6e2eadbf19d78a203a4d4ba6111ad88430b192
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60747667"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "68985936"
 ---
 # <a name="safely-install-and-operate-your-azure-data-box"></a>安全地安裝和操作您的 Azure 資料箱
 ![警告圖示](./media/data-box-safety/warning_icon.png)
- ![閱讀安全性注意事項圖示](./media/data-box-safety/read_safety_and_health_information_icon.png) **讀取的安全性和健全狀況資訊**
+![閱讀安全性注意事項圖示](./media/data-box-safety/read_safety_and_health_information_icon.png) **讀取的安全性和健全狀況資訊**
 
 在使用 Azure 資料箱之前，請閱讀本文中的所有安全資訊。 如果未遵照指示操作，可能導致火災、觸電或其他傷害，或是財產損失。
 
 ## <a name="safety-icon-conventions"></a>安全性圖示慣例
 以下是您在檢閱安全性預防措施時會發現的圖示，這些措施可在您設定與執行資料箱時看到。
 
-| 圖示 | 描述 |
+| 圖示 | Description |
 |:--- |:--- |
 | ![危險圖示](./media/data-box-safety/warning_icon.png) **危險！** |指出危險的情況，如果無法避免，將會導致死亡或嚴重傷害。 此訊號文字僅限用於最極端的情況。 |
-| ![警告圖示](./media/data-box-safety/warning_icon.png) **警告！** |指出危險的情況，如果無法避免，可能會導致死亡或嚴重傷害。 |
+| ![警告圖示 ](./media/data-box-safety/warning_icon.png) **警告！** |指出危險的情況，如果無法避免，可能會導致死亡或嚴重傷害。 |
 | ![警告圖示](./media/data-box-safety/warning_icon.png) **小心！** |指出危險的情況，如果無法避免，可能會導致次要或中度的傷害。 |
 | ![注意事項圖示](./media/data-box-safety/notice_icon.png) **注意事項：** |表示重要資訊，但與危險無關。 |
 | ![電擊圖示](./media/data-box-safety/electrical_shock_hazard_icon.png) **電擊危險** |高電壓。 |
@@ -40,8 +39,8 @@ ms.locfileid: "60747667"
 
 ![警告圖示](./media/data-box-safety/warning_icon.png) ![觸電圖示](./media/data-box-safety/electrical_shock_hazard_icon.png)![沒有使用者可自行維修的零件圖示](./media/data-box-safety/no_user_serviceable_parts_icon.png) **注意** 
 
-* 檢查「已接收」的裝置是否受損。 如果裝置機箱已損毀，請連絡 Microsoft 支援服務以取得替換品。 請勿嘗試操作裝置。 
-* 裝置配有防篡改螺絲。 如果您懷疑裝置功能異常，請連絡 Microsoft 支援服務以取得替換品。 請勿嘗試維修裝置。 
+* 檢查「已接收」** 的裝置是否受損。 如果裝置主機殼已損毀，[請聯絡 Microsoft 支援服務](data-box-disk-contact-microsoft-support.md)以取得更換。 請勿嘗試操作裝置。 
+* 裝置配有防篡改螺絲。 如果您懷疑裝置的運作不正常，[請聯絡 Microsoft 支援服務](data-box-disk-contact-microsoft-support.md)以取得替代方案。 請勿嘗試維修裝置。 
 * 裝置不含使用者可自行維修的零件。 內含具危險性的電壓、電流和能階。 請勿開啟。 請將裝置寄回給 Microsoft 進行維修。
 
 ![警告圖示](./media/data-box-safety/warning_icon.png) ![超重圖示](./media/data-box-safety/heavy_weight_hazard_icon.png) **警告！** 
@@ -54,7 +53,7 @@ ms.locfileid: "60747667"
 * 將裝置放在平坦而穩固的平面上，以避免不慎傾倒掉落。
 * 以機架掛接的設備不可作為架子或工作空間使用。 請勿將資料箱放置在以機架掛接的設備上。 對延伸的機架掛接裝置增加任何形式的負載，可能會造成翻覆掉落的風險，而導致人員傷亡或產品受損。
 
-![警告圖示](./media/data-box-safety/warning_icon.png) **警告！**
+![警告圖示 ](./media/data-box-safety/warning_icon.png) **警告！**
 
 * 在裝置能獲得良好通風的工作區域中設置裝置。
 * 將裝置安裝在沒有導電汙染物的溫控室內區域，並且讓裝置保有足夠的空氣流通空間。
@@ -77,14 +76,14 @@ ms.locfileid: "60747667"
 * 在您移動單元，或者認為單元受到任何損毀時，請一律拔除電源。
 * 提供適當的電源及電力多載保護，以符合下列電源規格：
 
-    - 电压：100 V AC 到 240 V AC
-    - 电流：最大 6 A
-    - 頻率：50 Hz 到 60 Hz
+    - 電壓：100 V AC 至 240 V AC
+    - 電流：6 A (最大值)
+    - 頻率：50 Hz 至 60 Hz
 
-![警告圖示](./media/data-box-safety/warning_icon.png) **注意：**
+![警告圖示警告 ](./media/data-box-safety/warning_icon.png) **：**
 
 * 本裝置包含幣式電池。 請勿嘗試維修裝置。 本裝置的電池並非使用者可自行維修的零件。 
-* **仅限维修人员**：如果使用不当的类型更换电池，将存在爆炸的风险。 請依照指示處置使用過的電池。
+* **僅限維修服務人員**：電池若更換為不正確的型號可能有爆炸的風險。 請依照指示處置使用過的電池。
 
 ![注意事項圖示](./media/data-box-safety/notice_icon.png) **注意事項：**
 
@@ -101,10 +100,10 @@ ms.locfileid: "60747667"
 - 評定為資訊技術設備 (ITE)，依設計應在一般資料室環境中運作。 本產品在其他環境中的適用性可能需要進一步的評估。
 - 依設計可與 NRTL Listed (UL、CSA、ETL 等) 和 IEC/EN 60950-1 或 IEC/EN 62368-1 相容 (標示為 CE) 資訊技術設備搭配使用。
 - 設計為在下列環境中運作。 
-    - 工作温度：50° 到 95°F（10° 到 35°C）
+    - 操作溫度：50° 至 95° F (10° 至 35° C)
     - 儲存體溫度：-4° 至 122° F (-20° 至 50° C)
-    - 相对湿度：15% 到 85%（无冷凝） 
-    - 工作海拔：经测试高达 6500 英尺（0 到 2000 米）
+    - 相對溼度：15% 至 85% (非凝結狀態) 
+    - 操作海拔高度：最高測試值為 6500 英呎 (0 公尺至 2000 公尺)
 
 如需電力供應額定功率，請參閱隨附於裝置的裝置額定功率標籤。 
 
@@ -116,9 +115,9 @@ ms.locfileid: "60747667"
 
 ![注意事項圖示](./media/data-box-safety/notice_icon.png) **注意事項：** 
 
-本設備已經測試證明符合 FCC 規章第 15 條有關 A 級數位裝置的限制規定。 這些限制旨在提供合理的保護，以防止在商業環境中操作設備時的有害干擾。 本設備會產生、使用及可能散發射頻能量；如果未遵照說明手冊安裝和使用，可能對無線電通訊造成有害干擾。 在住宅區使用本設備可能造成有害干擾，在此情況下，使用者將必須自費修正干擾情況。
+本設備已經測試證明符合 FCC 規章第 15 條有關 A 級數位裝置的限制規定。 這些限制旨在提供合理的保護，以防止在商業環境中操作設備時的有害干擾。 本設備會產生、使用及可能散發射頻能量；如果未遵照說明手冊安裝和使用，可能對無線電通訊造成有害干擾。 此設備在居住區中的操作可能會造成有害干擾，在這種情況下，使用者必須以自己的費用來更正干擾。
 
-本裝置符合 FCC 規章第 15 條的規定和加拿大工業部豁免授權 RSS 標準。 操作时需满足以下两个条件：(1) 本设备不会造成有害干扰；(2) 本设备必须接受任何干扰，包括可能导致设备意外运行的干扰。
+本裝置符合 FCC 規章第 15 條的規定和加拿大工業部豁免授權 RSS 標準。 操作應遵循以下兩項條件：(1) 本裝置不得造成有害干擾，以及 (2) 本裝置必須接受任何接收到的干擾，包括可能導致不當操作裝置的干擾。
 
 ![加拿大](./media/data-box-safety/canada.png)
 
@@ -126,13 +125,13 @@ CAN ICES-3(A)/NMB-3(A)
 
 Microsoft Corporation, One Microsoft Way, Redmond, WA 98052, USA。
 
-美国：(800) 426-9400
+美國：(800) 426-9400
 
 加拿大：(800) 933-4750
 
-**歐盟：**
+**歐洲聯集：**
 
-您可於此處取得 EU 符合性聲明。
+[要求歐盟符合性聲明的複本](mailto:CSI_Compliance@microsoft.com)。
 
 ![警告圖示](./media/data-box-safety/warning_icon.png) **警告：** 
 
@@ -142,7 +141,7 @@ Microsoft Corporation, One Microsoft Way, Redmond, WA 98052, USA。
 
 ![電池處置圖示](./media/data-box-safety/battery_disposal_icon.png)
 
-產品本身或其電池或包裝上若有此符號，表示該產品及其所包含的任何電池均不得連同住居垃圾一起處置。 您需自行負責將其交由適當的收集點進行電池、電氣和電子設備的回收。 這種個別的收集和回收將有助於保護天然資源，以及防止因不當的處置而導致電池、電氣和電子設備可能包含的危險物質外洩，進而對人體健康和環境造成潛在的負面後果。 如需應將電池、電氣和電子廢棄物送交何處處理的詳細資訊，請洽詢您當地的縣 (市)/自治區辦公室、住居垃圾處置服務人員，或是您購買本產品的商店。 請連絡*erecycle\@microsoft.com* WEEE 上的其他資訊。
+產品本身或其電池或包裝上若有此符號，表示該產品及其所包含的任何電池均不得連同住居垃圾一起處置。 您需自行負責將其交由適當的收集點進行電池、電氣和電子設備的回收。 這種個別的收集和回收將有助於保護天然資源，以及防止因不當的處置而導致電池、電氣和電子設備可能包含的危險物質外洩，進而對人體健康和環境造成潛在的負面後果。 如需應將電池、電氣和電子廢棄物送交何處處理的詳細資訊，請洽詢您當地的縣 (市)/自治區辦公室、住居垃圾處置服務人員，或是您購買本產品的商店。 如需 WEEE 的詳細資訊，請聯絡*erecycle \@ microsoft.com* 。
 
 本產品包含一或多個幣式電池。
 

@@ -9,22 +9,21 @@ editor: ''
 ms.assetid: 53f57d17-07af-457f-a0e8-741e52fbbc2a
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
-ms.openlocfilehash: 9d222097f9fb99a24f6213584a3419ed777f4a22
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 684554c5eaf3f5fa2701bad2d49c082595552adb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61408405"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85515191"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-troubleshoot-the-storsimple-virtual-array"></a>使用 StorSimple 裝置管理員服務來針對 StorSimple Virtual Array 進行疑難排解
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
-StorSimple 裝置管理員在服務摘要刀鋒視窗內提供 [診斷並解決問題] 設定，並醒目提示虛擬陣列可能經常發生的一些問題，以及如何解決。 本教學課程介紹 StorSimple 裝置管理員服務內提供的自助式疑難排解功能。
+StorSimple 裝置管理員在服務摘要刀鋒視窗內提供 [診斷並解決問題]**** 設定，並醒目提示虛擬陣列可能經常發生的一些問題，以及如何解決。 本教學課程介紹 StorSimple 裝置管理員服務內提供的自助式疑難排解功能。
 
 ![診斷並解決問題](./media/storsimple-virtual-array-diagnose-problems/diagnose-problems-main.png)
 
@@ -34,9 +33,9 @@ StorSimple 裝置管理員在服務摘要刀鋒視窗內提供 [診斷並解決�
 
 #### <a name="to-diagnose-an-issue-with-your-virtual-array"></a>若要診斷虛擬陣列的問題
 
-1. 在 StorSimple 裝置管理員服務摘要刀鋒視窗的左窗格中，按一下 [診斷並解決問題] 來檢視常見問題的清單。
+1. 在 StorSimple 裝置管理員服務摘要刀鋒視窗的左窗格中，按一下 [診斷並解決問題]**** 來檢視常見問題的清單。
 
-2. 對於您遇到的問題，**展開**症狀來檢閱 [建議步驟]，以協助您針對問題進行疑難排解。 想要的話，您也可以檢閱提供給您進一步參考的詳細文件連結。
+2. 對於您遇到的問題，**展開**症狀來檢閱 [建議步驟]****，以協助您針對問題進行疑難排解。 想要的話，您也可以檢閱提供給您進一步參考的詳細文件連結。
    
     ![針對問題進行疑難排解](./media/storsimple-virtual-array-diagnose-problems/diagnose-problems-offline.png)
 

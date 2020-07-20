@@ -1,477 +1,464 @@
 ---
-title: 快速入門：搭配使用 REST API 與 Python 來將模型定型並擷取表單資料 - 表單辨識器
+title: 快速入門：搭配使用 REST API 與 Python 將模型定型並擷取表單資料 - 表單辨識器
 titleSuffix: Azure Cognitive Services
 description: 在本快速入門中，您將搭配使用表單辨識器 REST API 和 Python 來定型模型，並從表單中擷取資料。
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
-ms.subservice: form-recognizer
+ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 04/24/2019
+ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 98d1870105038c4314a6b038ec198342bb2ca1d0
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.custom: tracking-python
+ms.openlocfilehash: 64f5eefa465c3f7fc9e7c0040ca64797a806bc6e
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65026676"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86028053"
 ---
-# <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-using-rest-api-with-python"></a>快速入門：搭配使用 REST API 與 Python 來將表單辨識器模型定型並擷取表單資料
+# <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-python"></a>快速入門：搭配使用 REST API 與 Python 將表單辨識器模型定型並擷取表單資料
 
-在本快速入門中，您將搭配使用表單辨識器的 REST API 與 Python 來定型及評分表單，以擷取機碼值組和資料表。
+在本快速入門中，您將搭配使用 Azure 表單辨識器的 REST API 與 Python 來定型及評分表單，以擷取金鑰/值組和資料表。
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立 [免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="prerequisites"></a>必要條件
 
--  您必須獲得表單辨識器有限存取預覽版的存取權。 若要存取此預覽服務，請先填寫並提交[認知服務表單辨識器存取要求](https://aka.ms/FormRecognizerRequestAccess)表單。 
-- 如果您想要在本機執行此範例，就必須安裝 [Python](https://www.python.org/downloads/)。
-- 您必須有表單辨識器的訂用帳戶金鑰。 若要取得訂用帳戶金鑰，請參閱[取得訂用帳戶金鑰](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。
-- 您必須至少有五個類型相同的表單。 您可以使用本快速入門的[範例資料集](https://go.microsoft.com/fwlink/?linkid=2090451)。
+若要完成此快速入門，您必須：
+- 已安裝 [Python](https://www.python.org/downloads/) (如果您想要在本機執行此範例)。
+- 至少有五個相同類型的表單。 您將使用此資料來定型模型。 您的表單可以是不同的檔案類型，但必須是相同類型的文件。 您可以使用本快速入門的[範例資料集](https://go.microsoft.com/fwlink/?linkid=2090451)。 將訓練檔案上傳至 Azure 儲存體帳戶中 Blob 儲存體容器的根目錄。
 
-## <a name="create-and-run-the-sample"></a>建立並執行範例
+> [!NOTE]
+> 本快速入門使用 URL 存取的遠端文件。 若要改為使用本機檔案，請參閱[參考文件](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync) (英文)。
 
-若要建立及執行範例，請對下方的程式碼片段進行下列變更：
 
-1. 將 `<subscription_key>` 的值取代為您的訂用帳戶金鑰。
-1. 請在您取得訂用帳戶金鑰的 Azure 區域中，將 `<Endpoint>` 的值取代為表單辨識器資源的端點 URL。
-1. 將 `<SAS URL>` 取代為 Azure Blob 儲存體容器的共用存取簽章 (SAS) URL，也就是定型資料所在的位置。  
+## <a name="create-a-form-recognizer-resource"></a>建立表單辨識器資源
+
+[!INCLUDE [create resource](../includes/create-resource.md)]
+
+## <a name="train-a-form-recognizer-model"></a>定型表單辨識器模型
+
+首先，您需要一組 Azure 儲存體 Blob 容器中的定型資料。 您至少要有五個類型/結構相同的已填妥表單 (PDF 文件和/或影像) 作為主要輸入資料。 或者，您可以使用單一空白表單和兩個已填寫的表單。 空白表單的檔案名稱必須包含「空白」一詞。 請參閱[為自訂模型建置訓練資料集](../build-training-data-set.md)，以獲得如何將訓練資料放在一起的祕訣和選項。
+
+> [!NOTE]
+> 您可以使用標記資料功能，事先手動為部分或所有定型資料加上標籤。 這是更複雜的程序，但可產生較佳的定型模型。 若要深入了解，請參閱概觀的[以標籤定型](../overview.md#train-with-labels)一節。
+
+若要使用 Azure Blob 容器中的文件來定型表單辨識器模型，請執行下列 Python 程式碼以呼叫 **[定型自訂模型](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync)** API。 執行程式碼之前，請進行下列變更：
+
+1. 將 `<SAS URL>` 取代為 Azure Blob 儲存體容器的共用存取簽章 (SAS) URL。 若要擷取 SAS URL，請開啟 Microsoft Azure 儲存體總管、以滑鼠右鍵按一下您的容器，然後選取 [取得共用存取簽章]。 確定 [讀取] 和 [列出] 權限均已勾選，再按一下 [建立]。 然後，複製 [URL] 區段的值。 其格式應該為：`https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`。
+1. 將 `<subscription key>` 取代為您在先前的步驟中複製的訂用帳戶金鑰。
+1. 將 `<endpoint>` 取代為您表單辨識器資源的端點 URL。
+1. 將 `<Blob folder name>` 取代為您的表單所在之 Blob 儲存體中的資料夾路徑。 如果您的表單位於容器的根目錄，請將此字串保留為空白。
 
     ```python
-    ########### Python Form Recognizer Train #############
-    from requests import post as http_post
-
+    ########### Python Form Recognizer Labeled Async Train #############
+    import json
+    import time
+    from requests import get, post
+    
     # Endpoint URL
-    base_url = r"<Endpoint>" + "/formrecognizer/v1.0-preview/custom"
+    endpoint = r"<endpoint>"
+    post_url = endpoint + r"/formrecognizer/v2.0/custom/models"
     source = r"<SAS URL>"
+    prefix = "<Blob folder name>"
+    includeSubFolders = False
+    useLabelFile = False
+    
     headers = {
         # Request headers
         'Content-Type': 'application/json',
-        'Ocp-Apim-Subscription-Key': '<Subscription Key>',
+        'Ocp-Apim-Subscription-Key': '<subsription key>',
     }
-    url = base_url + "/train" 
-    body = {"source": source}
+    
+    body =     {
+        "source": source,
+        "sourceFilter": {
+            "prefix": prefix,
+            "includeSubFolders": includeSubFolders
+        },
+        "useLabelFile": useLabelFile
+    }
+    
     try:
-        resp = http_post(url = url, json = body, headers = headers)
-        print("Response status code: %d" % resp.status_code)
-        print("Response body: %s" % resp.json())
+        resp = post(url = post_url, json = body, headers = headers)
+        if resp.status_code != 201:
+            print("POST model failed (%s):\n%s" % (resp.status_code, json.dumps(resp.json())))
+            quit()
+        print("POST model succeeded:\n%s" % resp.headers)
+        get_url = resp.headers["location"]
     except Exception as e:
-        print(str(e))
+        print("POST model failed:\n%s" % str(e))
+        quit() 
     ```
-1. 將程式碼儲存為副檔名為 `.py` 的檔案。 例如： `form-recognize-train.py`。
-1. 開啟命令提示字元視窗。
-1. 出現提示時，使用 `python` 命令執行範例。 例如： `python form-recognize-train.py`。
+1. 將程式碼儲存在副檔名為 .py 的檔案中。 例如 *form-recognizer-train.py*。
+1. 開啟 [命令提示字元] 視窗。
+1. 出現提示時，使用 `python` 命令執行範例。 例如： `python form-recognizer-train.py` 。
 
-您會收到 `200 (Success)` 回應及下列 JSON 輸出：
+## <a name="get-training-results"></a>取得定型結果
+
+在您開始定型作業之後，請使用傳回的識別碼來取得作業的狀態。 將下列程式碼新增到 Python 指令碼底部。 這會在新的 API 呼叫中，使用來自定型呼叫的識別碼值。 定型作業採非同步方式進行，因此這個指令碼會定期呼叫 API，直到定型狀態完成為止。 我們建議的間隔為一秒以上。
+
+```python 
+n_tries = 15
+n_try = 0
+wait_sec = 5
+max_wait_sec = 60
+while n_try < n_tries:
+    try:
+        resp = get(url = get_url, headers = headers)
+        resp_json = resp.json()
+        if resp.status_code != 200:
+            print("GET model failed (%s):\n%s" % (resp.status_code, json.dumps(resp_json)))
+            quit()
+        model_status = resp_json["modelInfo"]["status"]
+        if model_status == "ready":
+            print("Training succeeded:\n%s" % json.dumps(resp_json))
+            quit()
+        if model_status == "invalid":
+            print("Training failed. Model is invalid:\n%s" % json.dumps(resp_json))
+            quit()
+        # Training still running. Wait and retry.
+        time.sleep(wait_sec)
+        n_try += 1
+        wait_sec = min(2*wait_sec, max_wait_sec)     
+    except Exception as e:
+        msg = "GET model failed:\n%s" % str(e)
+        print(msg)
+        quit()
+print("Train operation did not complete within the allocated time.")
+```
+
+定型程序完成時，您會收到有如下 JSON 內容的 `201 (Success)` 回應：
 
 ```json
-{
-  "modelId": "59e2185e-ab80-4640-aebc-f3653442617b",
-  "trainingDocuments": [
-    {
-      "documentName": "Invoice_1.pdf",
-      "pages": 1,
-      "errors": [],
-      "status": "success"
-    },
-    {
-      "documentName": "Invoice_2.pdf",
-      "pages": 1,
-      "errors": [],
-      "status": "success"
-    },
-    {
-      "documentName": "Invoice_3.pdf",
-      "pages": 1,
-      "errors": [],
-      "status": "success"
-    },
-    {
-      "documentName": "Invoice_4.pdf",
-      "pages": 1,
-      "errors": [],
-      "status": "success"
-    },
-    {
-      "documentName": "Invoice_5.pdf",
-      "pages": 1,
-      "errors": [],
-      "status": "success"
-    }
-  ],
-  "errors": []
+{ 
+  "modelInfo":{ 
+    "status":"ready",
+    "createdDateTime":"2019-10-08T10:20:31.957784",
+    "lastUpdatedDateTime":"2019-10-08T14:20:41+00:00",
+    "modelId":"1cfb372bab404ba3aa59481ab2c63da5"
+  },
+  "trainResult":{ 
+    "trainingDocuments":[ 
+      { 
+        "documentName":"invoices\\Invoice_1.pdf",
+        "pages":1,
+        "errors":[ 
+
+        ],
+        "status":"succeeded"
+      },
+      { 
+        "documentName":"invoices\\Invoice_2.pdf",
+        "pages":1,
+        "errors":[ 
+
+        ],
+        "status":"succeeded"
+      },
+      { 
+        "documentName":"invoices\\Invoice_3.pdf",
+        "pages":1,
+        "errors":[ 
+
+        ],
+        "status":"succeeded"
+      },
+      { 
+        "documentName":"invoices\\Invoice_4.pdf",
+        "pages":1,
+        "errors":[ 
+
+        ],
+        "status":"succeeded"
+      },
+      { 
+        "documentName":"invoices\\Invoice_5.pdf",
+        "pages":1,
+        "errors":[ 
+
+        ],
+        "status":"succeeded"
+      }
+    ],
+    "errors":[ 
+
+    ]
+  },
+  "keys":{ 
+    "0":[ 
+      "Address:",
+      "Invoice For:",
+      "Microsoft",
+      "Page"
+    ]
+  }
 }
 ```
 
-請記下 `"modelId"` 值，下面的步驟會需要該值。
-  
-## <a name="extract-key-value-pairs-and-tables-from-forms"></a>從表單擷取機碼值組與資料表
+請複製 `"modelId"` 值，以便在下列步驟中使用。
 
-接下來，您會分析文件，並從中擷取機碼值組和資料表。 執行下列 Python 指令碼來呼叫**模型 - 分析** API。 執行命令之前，請進行下列變更：
+[!INCLUDE [analyze forms](../includes/python-custom-analyze.md)]
 
-1. 將 `<Endpoint>` 取代為您使用表單辨識器訂用帳戶金鑰所取得的端點。 您可以在表單辨識器的資源概觀索引標籤中找到此項目。
-1. 將 `<File Path>` 取代為要從中擷取資料的表單所在的檔案路徑位置或 URL。
-1. 將 `<modelID>` 取代為您在上一個定型模型步驟中收到的模型識別碼。
-1. 將 `<file type>` 取代為檔案類型 - 支援的類型為 pdf、影像/jpeg、影像/png。
-1. 將 `<subscription key>` 取代為訂用帳戶金鑰。
-
-    ```python
-    ########### Python Form Recognizer Analyze #############
-    from requests import post as http_post
-    
-    # Endpoint URL
-    base_url = r"<Endpoint>" + "/formrecognizer/v1.0-preview/custom"
-    file_path = r"<File Path>"
-    model_id = "<modelID>"
-    headers = {
-        # Request headers
-        'Content-Type': 'application/<file type>',
-        'Ocp-Apim-Subscription-Key': '<subscription key>',
-    }
-
-    try:
-        url = base_url + "/models/" + model_id + "/analyze" 
-        with open(file_path, "rb") as f:
-            data_bytes = f.read()  
-        resp = http_post(url = url, data = data_bytes, headers = headers)
-        print("Response status code: %d" % resp.status_code)    
-        print("Response body:\n%s" % resp.json())   
-    except Exception as e:
-        print(str(e))
-    ```
-
-1. 將程式碼儲存為副檔名為 `.py` 的檔案。 例如： `form-recognize-analyze.py`。
-1. 開啟命令提示字元視窗。
-1. 出現提示時，使用 `python` 命令執行範例。 例如： `python form-recognize-analyze.py`。
-
-### <a name="examine-the-response"></a>檢查回應
-
-成功的回應會以 JSON 格式傳回，代表從表單中擷取的機碼值組與資料表。
+程序完成時，您會收到有 JSON 內容的 `200 (Success)` 回應，且該內容採用下列格式。 為了簡單起見，我們已將回應內容縮短。 主要索引鍵/值組的關聯和資料表位於 `"pageResults"` 節點中。 如果您也透過 *includeTextDetails* URL 參數指定了純文字擷取，則 `"readResults"` 節點會顯示文件中所有文字的內容和位置。
 
 ```bash
 {
-  "status": "success",
-  "pages": [
-    {
-      "number": 1,
-      "height": 792,
-      "width": 612,
-      "clusterId": 0,
-      "keyValuePairs": [
-        {
-          "key": [
-            {
-              "text": "Address:",
-              "boundingBox": [
-                57.4,
-                683.1,
-                100.5,
-                683.1,
-                100.5,
-                673.7,
-                57.4,
-                673.7
-              ]
-            }
-          ],
-          "value": [
-            {
-              "text": "1 Redmond way Suite",
-              "boundingBox": [
-                57.4,
-                671.3,
-                154.8,
-                671.3,
-                154.8,
-                659.2,
-                57.4,
-                659.2
-              ],
-              "confidence": 0.86
-            },
-            {
-              "text": "6000 Redmond, WA",
-              "boundingBox": [
-                57.4,
-                657.1,
-                146.9,
-                657.1,
-                146.9,
-                645.5,
-                57.4,
-                645.5
-              ],
-              "confidence": 0.86
-            },
-            {
-              "text": "99243",
-              "boundingBox": [
-                57.4,
-                643.4,
-                85,
-                643.4,
-                85,
-                632.3,
-                57.4,
-                632.3
-              ],
-              "confidence": 0.86
-            }
-          ]
-        },
-        {
-          "key": [
-            {
-              "text": "Invoice For:",
-              "boundingBox": [
-                316.1,
-                683.1,
-                368.2,
-                683.1,
-                368.2,
-                673.7,
-                316.1,
-                673.7
-              ]
-            }
-          ],
-          "value": [
-            {
-              "text": "Microsoft",
-              "boundingBox": [
-                374,
-                687.9,
-                418.8,
-                687.9,
-                418.8,
-                673.7,
-                374,
-                673.7
-              ],
-              "confidence": 1
-            },
-            {
-              "text": "1020 Enterprise Way",
-              "boundingBox": [
-                373.9,
-                673.5,
-                471.3,
-                673.5,
-                471.3,
-                659.2,
-                373.9,
-                659.2
-              ],
-              "confidence": 1
-            },
-            {
-              "text": "Sunnayvale, CA 87659",
-              "boundingBox": [
-                373.8,
-                659,
-                479.4,
-                659,
-                479.4,
-                645.5,
-                373.8,
-                645.5
-              ],
-              "confidence": 1
-            }
-          ]
-        }
-      ],
-      "tables": [
-        {
-          "id": "table_0",
-          "columns": [
-            {
-              "header": [
-                {
-                  "text": "Invoice Number",
-                  "boundingBox": [
-                    38.5,
-                    585.2,
-                    113.4,
-                    585.2,
-                    113.4,
-                    575.8,
-                    38.5,
-                    575.8
-                  ]
-                }
-              ],
-              "entries": [
-                [
-                  {
-                    "text": "34278587",
-                    "boundingBox": [
-                      38.5,
-                      547.3,
-                      82.8,
-                      547.3,
-                      82.8,
-                      537,
-                      38.5,
-                      537
-                    ],
-                    "confidence": 1
-                  }
+  "analyzeResult":{ 
+    "readResults":[ 
+      { 
+        "page":1,
+        "width":8.5,
+        "height":11.0,
+        "angle":0,
+        "unit":"inch",
+        "lines":[ 
+          { 
+            "text":"Contoso",
+            "boundingBox":[ 
+              0.5278,
+              1.0597,
+              1.4569,
+              1.0597,
+              1.4569,
+              1.4347,
+              0.5278,
+              1.4347
+            ],
+            "words":[ 
+              { 
+                "text":"Contoso",
+                "boundingBox":[ 
+                  0.5278,
+                  1.0597,
+                  1.4569,
+                  1.0597,
+                  1.4569,
+                  1.4347,
+                  0.5278,
+                  1.4347
                 ]
+              }
+            ]
+          },
+          ...
+          { 
+            "text":"PT",
+            "boundingBox":[ 
+              6.2181,
+              3.3528,
+              6.3944,
+              3.3528,
+              6.3944,
+              3.5417,
+              6.2181,
+              3.5417
+            ],
+            "words":[ 
+              { 
+                "text":"PT",
+                "boundingBox":[ 
+                  6.2181,
+                  3.3528,
+                  6.3944,
+                  3.3528,
+                  6.3944,
+                  3.5417,
+                  6.2181,
+                  3.5417
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "version":"2.0.0",
+    "errors":[ 
+
+    ],
+    "documentResults":[ 
+
+    ],
+    "pageResults":[ 
+      { 
+        "page":1,
+        "clusterId":1,
+        "keyValuePairs":[ 
+          { 
+            "key":{ 
+              "text":"Address:",
+              "boundingBox":[ 
+                0.7972,
+                1.5125,
+                1.3958,
+                1.5125,
+                1.3958,
+                1.6431,
+                0.7972,
+                1.6431
+              ],
+              "elements":[ 
+                "#/readResults/0/lines/1/words/0"
               ]
             },
-            {
-              "header": [
-                {
-                  "text": "Invoice Date",
-                  "boundingBox": [
-                    139.7,
-                    585.2,
-                    198.5,
-                    585.2,
-                    198.5,
-                    575.8,
-                    139.7,
-                    575.8
-                  ]
-                }
+            "value":{ 
+              "text":"1 Redmond way Suite 6000 Redmond, WA 99243",
+              "boundingBox":[ 
+                0.7972,
+                1.6764,
+                2.15,
+                1.6764,
+                2.15,
+                2.2181,
+                0.7972,
+                2.2181
               ],
-              "entries": [
-                [
-                  {
-                    "text": "6/18/2017",
-                    "boundingBox": [
-                      139.7,
-                      546.8,
-                      184,
-                      546.8,
-                      184,
-                      537,
-                      139.7,
-                      537
-                    ],
-                    "confidence": 1
-                  }
-                ]
+              "elements":[ 
+                "#/readResults/0/lines/4/words/0",
+                "#/readResults/0/lines/4/words/1",
+                "#/readResults/0/lines/4/words/2",
+                "#/readResults/0/lines/4/words/3",
+                "#/readResults/0/lines/6/words/0",
+                "#/readResults/0/lines/6/words/1",
+                "#/readResults/0/lines/6/words/2",
+                "#/readResults/0/lines/8/words/0"
               ]
             },
-            {
-              "header": [
-                {
-                  "text": "Invoice Due Date",
-                  "boundingBox": [
-                    240.5,
-                    585.2,
-                    321,
-                    585.2,
-                    321,
-                    575.8,
-                    240.5,
-                    575.8
-                  ]
-                }
+            "confidence":0.86
+          },
+          { 
+            "key":{ 
+              "text":"Invoice For:",
+              "boundingBox":[ 
+                4.3903,
+                1.5125,
+                5.1139,
+                1.5125,
+                5.1139,
+                1.6431,
+                4.3903,
+                1.6431
               ],
-              "entries": [
-                [
-                  {
-                    "text": "6/24/2017",
-                    "boundingBox": [
-                      240.5,
-                      546.8,
-                      284.8,
-                      546.8,
-                      284.8,
-                      537,
-                      240.5,
-                      537
-                    ],
-                    "confidence": 1
-                  }
-                ]
+              "elements":[ 
+                "#/readResults/0/lines/2/words/0",
+                "#/readResults/0/lines/2/words/1"
               ]
             },
-            {
-              "header": [
-                {
-                  "text": "Charges",
-                  "boundingBox": [
-                    341.3,
-                    585.2,
-                    381.2,
-                    585.2,
-                    381.2,
-                    575.8,
-                    341.3,
-                    575.8
-                  ]
-                }
+            "value":{ 
+              "text":"Microsoft 1020 Enterprise Way Sunnayvale, CA 87659",
+              "boundingBox":[ 
+                5.1917,
+                1.4458,
+                6.6583,
+                1.4458,
+                6.6583,
+                2.0347,
+                5.1917,
+                2.0347
               ],
-              "entries": [
-                [
-                  {
-                    "text": "$56,651.49",
-                    "boundingBox": [
-                      387.6,
-                      546.4,
-                      437.5,
-                      546.4,
-                      437.5,
-                      537,
-                      387.6,
-                      537
-                    ],
-                    "confidence": 1
-                  }
-                ]
+              "elements":[ 
+                "#/readResults/0/lines/3/words/0",
+                "#/readResults/0/lines/5/words/0",
+                "#/readResults/0/lines/5/words/1",
+                "#/readResults/0/lines/5/words/2",
+                "#/readResults/0/lines/7/words/0",
+                "#/readResults/0/lines/7/words/1",
+                "#/readResults/0/lines/7/words/2"
               ]
             },
-            {
-              "header": [
-                {
-                  "text": "VAT ID",
-                  "boundingBox": [
-                    442.1,
-                    590,
-                    474.8,
-                    590,
-                    474.8,
-                    575.8,
-                    442.1,
-                    575.8
-                  ]
-                }
-              ],
-              "entries": [
-                [
-                  {
-                    "text": "PT",
-                    "boundingBox": [
-                      447.7,
-                      550.6,
-                      460.4,
-                      550.6,
-                      460.4,
-                      537,
-                      447.7,
-                      537
-                    ],
-                    "confidence": 1
-                  }
+            "confidence":0.86
+          },
+          ...
+        ],
+        "tables":[ 
+          { 
+            "caption":null,
+            "rows":2,
+            "columns":5,
+            "cells":[ 
+              { 
+                "rowIndex":0,
+                "colIndex":0,
+                "header":true,
+                "text":"Invoice Number",
+                "boundingBox":[ 
+                  0.5347,
+                  2.8722,
+                  1.575,
+                  2.8722,
+                  1.575,
+                  3.0028,
+                  0.5347,
+                  3.0028
+                ],
+                "elements":[ 
+                  "#/readResults/0/lines/9/words/0",
+                  "#/readResults/0/lines/9/words/1"
                 ]
-              ]
-            }
-          ]
-        }
-      ]
-    }
-  ],
-  "errors": []
+              },
+              { 
+                "rowIndex":0,
+                "colIndex":1,
+                "header":true,
+                "text":"Invoice Date",
+                "boundingBox":[ 
+                  1.9403,
+                  2.8722,
+                  2.7569,
+                  2.8722,
+                  2.7569,
+                  3.0028,
+                  1.9403,
+                  3.0028
+                ],
+                "elements":[ 
+                  "#/readResults/0/lines/10/words/0",
+                  "#/readResults/0/lines/10/words/1"
+                ]
+              },
+              { 
+                "rowIndex":0,
+                "colIndex":2,
+                "header":true,
+                "text":"Invoice Due Date",
+                "boundingBox":[ 
+                  3.3403,
+                  2.8722,
+                  4.4583,
+                  2.8722,
+                  4.4583,
+                  3.0028,
+                  3.3403,
+                  3.0028
+                ],
+                "elements":[ 
+                  "#/readResults/0/lines/11/words/0",
+                  "#/readResults/0/lines/11/words/1",
+                  "#/readResults/0/lines/11/words/2"
+                ]
+              },
+              ...
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "lastUpdatedDateTime":"2019-10-07T19:32:18+00:00",
+  "status":"succeeded",
+  "createdDateTime":"2019-10-07T19:32:15+00:00"
 }
 ```
 
+## <a name="improve-results"></a>改善結果
+
+[!INCLUDE [improve results](../includes/improve-results-unlabeled.md)]
+
 ## <a name="next-steps"></a>後續步驟
 
-在本指南中，您已搭配使用表單辨識器 REST API 和 Python 來定型模型，並在範例案例中加以執行。 接下來，請參閱參考文件來深入探索表單辨識器 API。
+在本快速入門中，您已搭配使用表單辨識器 REST API 和 Python 來定型模型，並在範例案例中加以執行。 接下來，請參閱參考文件來深入探索表單辨識器 API。
 
 > [!div class="nextstepaction"]
-> [REST API 參考文件](https://aka.ms/form-recognizer/api)
+> [REST API 參考文件](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)

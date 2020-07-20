@@ -8,18 +8,24 @@ ms.topic: include
 ms.date: 05/01/2019
 ms.author: juliako
 ms.custom: include file
-ms.openlocfilehash: b0f93f950b55052ea8d8b31538c47226413dc82a
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
-ms.translationtype: HT
+ms.openlocfilehash: 9d8de8826fc3dfcc2360eb3b6c82b3ff8d65d845
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149218"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "79461226"
 ---
-## <a name="access-the-media-services-api"></a>存取媒體服務 API
+### <a name="access-the-media-services-api"></a>存取媒體服務 API
 
 若要連線到 Azure Media Services API，您可使用 Azure AD 服務主體驗證。 下列命令會建立 Azure AD 應用程式，並將服務主體連結到帳戶。 您應使用傳回值來設定您的應用程式。
 
 執行指令碼之前，您應以建立資源時所選擇的名稱取代 `amsaccount` 和 `amsResourceGroup`。 `amsaccount` 是連結服務主體的 Azure 媒體服務名稱。
+
+如果您有多個訂用帳戶的存取權，請先將使用中的訂用帳戶設定為其中已建立媒體服務帳戶的訂用帳戶。
+
+```azurecli
+az account set --subscription subscriptionId
+```
 
 此命令會傳回 `json` 輸出︰
 

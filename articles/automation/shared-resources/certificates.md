@@ -1,78 +1,77 @@
 ---
-title: Azure 自動化中的憑證資產
-description: 证书将安全地存储在 Azure 自动化中，以便可以通过 Runbook 或 DSC 配置访问这些证书，对 Azure 和第三方资源进行身份验证。  這篇文章說明憑證的詳細資料，以及如何以文字和圖形化編寫形式加以使用。
+title: 管理 Azure 自動化中的憑證
+description: 本文說明如何處理憑證以供 Runbook 和 DSC 設定存取。
 services: automation
 ms.service: automation
 ms.subservice: shared-capabilities
-author: georgewallace
-ms.author: gwallace
+author: mgoedtel
+ms.author: magoedte
 ms.date: 04/02/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d230fa97d009f0ee2a3bc86a0b6b7c8d40687a46
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 918e34114faa7a57e54ec45c1cca8036462a8fa1
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61216027"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187382"
 ---
-# <a name="certificate-assets-in-azure-automation"></a>Azure 自動化中的憑證資產
+# <a name="manage-certificates-in-azure-automation"></a>管理 Azure 自動化中的憑證
 
-证书将安全地存储在 Azure 自动化中，以便可以使用 Azure 资源管理器资源的 **Get-AzureRmAutomationCertificate** 活动通过 Runbook 或 DSC 配置访问这些证书。 這個功能可讓您建立使用憑證進行驗證的 Runbook 和 DSC 設定，或將它們新增至 Azure 或協力廠商資源。
+Azure 自動化使用 Azure Resource Manager 資源的 [Get-AzAutomationCertificate](/powershell/module/Az.Automation/Get-AzAutomationCertificate?view=azps-3.7.0) Cmdlet，安全地儲存憑證以供 Runbook 和 DSC 設定存取。 安全憑證存放區可供建立使用憑證進行驗證的 Runbook 和 DSC 設定，或將其新增至 Azure 或協力廠商資源。
 
 >[!NOTE]
->Azure 自動化中的安全資產包括認證、憑證、連接和加密的變數。 這些資產都會經過加密，並使用為每個自動化帳戶產生的唯一金鑰儲存在 Azure 自動化中。 此金鑰會儲存在系統管理的 Key Vault 中。 在儲存安全資產之前，系統會從 Key Vault 載入金鑰，然後用來加密資產。 此程序是由 Azure 自動化所管理。
+>Azure 自動化中的安全資產包括認證、憑證、連接和加密的變數。 這些資產都會使用為每個自動化帳戶產生的唯一金鑰來進行加密並儲存在自動化中。 自動化會將金鑰儲存在系統管理的 Key Vault 服務中。 在儲存安全資產之前，自動化會從 Key Vault 載入金鑰，然後將其用來加密資產。 
 
-## <a name="azurerm-powershell-cmdlets"></a>AzureRM PowerShell Cmdlet
+## <a name="powershell-cmdlets-to-access-certificates"></a>用來存取憑證的 PowerShell Cmdlet
 
-針對 AzureRM，下表中的 Cmdlet 可透過 Windows PowerShell 來建立和管理自動化認證資產。 可在自动化 Runbook 和 DSC 配置中使用的 [AzureRM.Automation 模块](/powershell/azure/overview)已随附了这些 cmdlet。
+下表中的 Cmdlet 會使用 PowerShell 來建立及管理自動化憑證。 其會隨附於 [Az 模組](modules.md#az-modules)。
 
-|Cmdlet|描述|
+|Cmdlet |描述|
+| --- | ---|
+|[Get-AzAutomationCertificate](/powershell/module/Az.Automation/Get-AzAutomationCertificate?view=azps-3.7.0)|擷取要在 Runbook 或 DSC 組態中使用的憑證相關資訊。 您只能使用內部 `Get-AutomationCertificate` Cmdlet 來擷取憑證本身。|
+|[New-AzAutomationCertificate](/powershell/module/Az.Automation/New-AzAutomationCertificate?view=azps-3.7.0)|在自動化中建立新的憑證。|
+|[Remove-AzAutomationCertificate](/powershell/module/Az.Automation/Remove-AzAutomationCertificate?view=azps-3.7.0)|從自動化中移除憑證。|
+|[Set-AzAutomationCertificate](/powershell/module/Az.Automation/Set-AzAutomationCertificate?view=azps-3.7.0)|設定現有憑證的屬性，包括上傳憑證檔案和設定 **.pfx** 檔案的密碼。|
+
+您也可以使用 [Add-AzureCertificate](/powershell/module/servicemanagement/azure/add-azurecertificate) Cmdlet 來上傳指定雲端服務的服務憑證。
+
+## <a name="internal-cmdlets-to-access-certificates"></a>用來存取憑證的內部 Cmdlet
+
+下表中內部 Cmdlet 可用來存取 Runbook 中的憑證。 此 Cmdlet 隨附於全域模組 `Orchestrator.AssetManagement.Cmdlets`。 如需詳細資訊，請參閱[內部 Cmdlet](modules.md#internal-cmdlets)。
+
+| 內部 Cmdlet | 描述 |
 |:---|:---|
-|[Get-AzureRmAutomationCertificate](/powershell/module/azurerm.automation/get-azurermautomationcertificate)|擷取要在 Runbook 或 DSC 組態中使用的憑證相關資訊。 您只能從 Get-AutomationCertificate 活動擷取憑證本身。|
-|[New-AzureRmAutomationCertificate](/powershell/module/azurerm.automation/new-azurermautomationcertificate)|建立新的憑證到 Azure 自動化。|
-[Remove-AzureRmAutomationCertificate](/powershell/module/azurerm.automation/remove-azurermautomationcertificate)|從 Azure 自動化中移除憑證。|
-|[Set-AzureRmAutomationCertificate](/powershell/module/azurerm.automation/set-azurermautomationcertificate)|設定現有的憑證，包括上傳憑證檔案和設定 .pfx 的密碼屬性。|
-|[Add-AzureCertificate](/powershell/module/servicemanagement/azure/add-azurecertificate)|上傳指定雲端服務的服務憑證。|
-
-## <a name="activities"></a>活動
-
-下表中的活動是用來存取 Runbook 和 DSC 設定中的憑證。
-
-| 活動 | 描述 |
-|:---|:---|
-|Get-AutomationCertificate|取得要在 Runbook 或 DSC 組態中使用的憑證。 傳回 [System.Security.Cryptography.X509Certificates.X509Certificate2](/dotnet/api/system.security.cryptography.x509certificates.x509certificate2) 物件。|
+|`Get-AutomationCertificate`|取得要在 Runbook 或 DSC 組態中使用的憑證。 傳回 [System.Security.Cryptography.X509Certificates.X509Certificate2](/dotnet/api/system.security.cryptography.x509certificates.x509certificate2) 物件。|
 
 > [!NOTE] 
-> 您應該避免在 Runbook 或 DSC 設定中 **Get-AutomationCertificate** 的 –Name 參數中使用變數，因為它會使在設計階段中探索 Runbook 或 DSC 設定與自動化變數之間的相依性變得複雜。
+> 您應該避免在 Runbook 或 DSC 設定中 `Get-AutomationCertificate` 的 `Name` 參數內使用變數。 這類變數可能會在設計階段將 Runbook 或 DSC 設定與自動化變數之間的相依性探索複雜化。
 
-## <a name="python2-functions"></a>Python2 函式
+## <a name="python-2-functions-to-access-certificates"></a>用來存取憑證的 Python 2 函式
 
-下表中的函式用於存取 Python2 Runbook 中的憑證。
+使用下表中函式來存取 Python 2 Runbook 中的憑證。
 
 | 函式 | 描述 |
 |:---|:---|
-| automationassets.get_automation_certificate | 擷取憑證資產的相關資訊。 |
+| `automationassets.get_automation_certificate` | 擷取憑證資產的相關資訊。 |
 
 > [!NOTE]
-> 您必須在 Python Runbook 的頂端匯入 **automationassets** 模組，才能存取資產函式。
+> 您必須在 Python Runbook 的開頭匯入 `automationassets` 模組，才能存取資產函式。
 
-## <a name="creating-a-new-certificate"></a>建立新憑證
+## <a name="create-a-new-certificate"></a>建立新的憑證
 
-建立新憑證時，您會將 cer 或 pfx 檔案上傳到 Azure 自動化。 如果您將憑證標示為可匯出，那麼您可以將它傳送到 Azure 自動化憑證存放區外部。 如果证书不可导出，则它只可用于在 Runbook 或 DSC 配置中签名。 Azure 自動化需要讓憑證擁有提供者：**Microsoft Enhanced RSA 與 AES 密碼編譯提供者**。
+當建立新的憑證時，您會將 .cer 或 .pfx 檔案上傳到自動化。 如果您將憑證標示為可匯出，則可將其傳送到自動化憑證存放區外部。 如果不可匯出，則只能將其用於 Runbook 或 DSC 設定內的簽署。 自動化要求憑證具有提供者：**Microsoft 增強的 RSA 與 AES 密碼編譯提供者**。
 
-### <a name="to-create-a-new-certificate-with-the-azure-portal"></a>使用 Azure 入口網站建立新憑證
+### <a name="create-a-new-certificate-with-the-azure-portal"></a>使用 Azure 入口網站建立新的憑證
 
-1. 在自动化帐户中，单击“资产”磁贴打开“资产”页。
-2. 单击“证书”磁贴打开“证书”页。
-3. 单击页面顶部的“添加证书”。
-4. 在 [ **名稱** ] 方塊中輸入憑證的名稱。
-5. 若要瀏覽 .cer 或 .pfx 檔案，請按一下 [上傳憑證檔案] 下方的 [選取檔案]。 如果选择了 .pfx 文件，请指定密码，以及是否可以导出该文件。
-6. 按一下 [ **建立** ] 以儲存新的憑證資產。
+1. 從自動化帳戶，選取 [資產] > [憑證] > [新增憑證]。
+1. 在 [名稱] 欄位中，鍵入憑證的名稱。
+1. 若要瀏覽 **.cer** 或 **.pfx** 檔案，請在 [上傳憑證檔案] 下，選擇 [選取檔案]。 如果您選取 **.pfx** 檔案，請指定密碼並指出其是否可匯出。
+1. 選取 [建立] 以儲存新的憑證資產。
 
-### <a name="to-create-a-new-certificate-with-powershell"></a>使用 PowerShell 创建新证书
+### <a name="create-a-new-certificate-with-powershell"></a>使用 PowerShell 建立新的憑證
 
-下列範例示範如何建立新的自動化憑證，並將其標示為可匯出。 這樣會匯入現有的 pfx 檔案。
+下列範例示範如何建立新的自動化憑證，並將其標示為可匯出。 此範例會匯入現有的 **.pfx** 檔案。
 
 ```powershell-interactive
 $certificateName = 'MyCertificate'
@@ -80,12 +79,12 @@ $PfxCertPath = '.\MyCert.pfx'
 $CertificatePassword = ConvertTo-SecureString -String 'P@$$w0rd' -AsPlainText -Force
 $ResourceGroup = "ResourceGroup01"
 
-New-AzureRmAutomationCertificate -AutomationAccountName "MyAutomationAccount" -Name $certificateName -Path $PfxCertPath –Password $CertificatePassword -Exportable -ResourceGroupName $ResourceGroup
+New-AzAutomationCertificate -AutomationAccountName "MyAutomationAccount" -Name $certificateName -Path $PfxCertPath –Password $CertificatePassword -Exportable -ResourceGroupName $ResourceGroup
 ```
 
-### <a name="create-a-new-certificate-with-resource-manager-template"></a>使用 Resource Manager 範本建立新的憑證
+### <a name="create-a-new-certificate-with-a-resource-manager-template"></a>使用 Resource Manager 範本建立新的憑證
 
-下列範例示範如何將憑證部署至您使用 Resource Manager 範本透過 PowerShell 的自動化帳戶：
+下列範例示範如何使用 Resource Manager 範本，以透過 PowerShell 將憑證部署到自動化帳戶：
 
 ```powershell-interactive
 $AutomationAccountName = "<automation account name>"
@@ -123,38 +122,38 @@ $json = @"
 "@
 
 $json | out-file .\template.json
-New-AzureRmResourceGroupDeployment -Name NewCert -ResourceGroupName TestAzureAuto -TemplateFile .\template.json
+New-AzResourceGroupDeployment -Name NewCert -ResourceGroupName TestAzureAuto -TemplateFile .\template.json
 ```
 
-## <a name="using-a-certificate"></a>使用憑證
+## <a name="get-a-certificate"></a>取得憑證
 
-若要使用憑證，請使用 **Get-AutomationCertificate** 活動。 不能使用 [Get-AzureRmAutomationCertificate](/powershell/module/azurerm.automation/get-azurermautomationcertificate) cmdlet，因为它返回有关证书资产的信息，而不是证书本身的信息。
+若要擷取憑證，請使用內部 `Get-AutomationCertificate` Cmdlet。 您無法使用 [Get-AzAutomationCertificate](/powershell/module/Az.Automation/Get-AzAutomationCertificate?view=azps-3.7.0) Cmdlet，因為這會傳回憑證資產的資訊，而不是憑證本身。
 
-### <a name="textual-runbook-sample"></a>文字式 Runbook 範例
+### <a name="textual-runbook-example"></a>文字式 Runbook 範例
 
-下列範例程式碼示範如何將憑證新增到 Runbook 中的雲端服務。 在此範例中，密碼是擷取自加密的自動化變數。
+下列範例示範如何將憑證新增至 Runbook 中的雲端服務。 在此範例中，密碼是擷取自加密的自動化變數。
 
 ```powershell-interactive
 $serviceName = 'MyCloudService'
 $cert = Get-AutomationCertificate -Name 'MyCertificate'
-$certPwd = Get-AzureRmAutomationVariable -ResourceGroupName "ResourceGroup01" `
+$certPwd = Get-AzAutomationVariable -ResourceGroupName "ResourceGroup01" `
 –AutomationAccountName "MyAutomationAccount" –Name 'MyCertPassword'
 Add-AzureCertificate -ServiceName $serviceName -CertToDeploy $cert
 ```
 
-### <a name="graphical-runbook-sample"></a>圖形化 Runbook 範例
+### <a name="graphical-runbook-example"></a>圖形化 Runbook 範例
 
-通过在“库”窗格中右键单击证书并选择“添加到画布”，将 **Get-AutomationCertificate** 添加到图形 Runbook。
+將一個代表內部 `Get-AutomationCertificate` Cmdlet 的活動新增至圖形化 Runbook，方法是以滑鼠右鍵按一下 [程式庫] 窗格中的 [憑證]，然後選取 [新增至畫布]。
 
-![將憑證新增至畫布](../media/certificates/automation-certificate-add-to-canvas.png)
+![將憑證新增至畫布的螢幕擷取畫面](../media/certificates/automation-certificate-add-to-canvas.png)
 
-下圖顯示在圖形化 Runbook 中使用憑證的範例。 这与上面演示如何从文本 Runbook 向云服务添加证书的示例相同。
+下圖顯示在圖形化 Runbook 中使用憑證的範例。 
 
-![範例圖形化編寫](../media/certificates/graphical-runbook-add-certificate.png)
+![圖形化編寫範例的螢幕擷取畫面](../media/certificates/graphical-runbook-add-certificate.png)
 
-### <a name="python2-sample"></a>Python2 範例
+### <a name="python-2-example"></a>Python 2 範例
 
-下列範例示範如何存取 Python2 Runbook 中的憑證。
+下列範例示範如何存取 Python 2 Runbook 中的憑證。
 
 ```python
 # get a reference to the Azure Automation certificate
@@ -166,4 +165,7 @@ print cert
 
 ## <a name="next-steps"></a>後續步驟
 
-- 若要深入了解使用連結控制您的 Runbook 設計用來執行的活動之邏輯流程，請參閱[圖形化編寫中的連結](../automation-graphical-authoring-intro.md#links-and-workflow)。 
+* 若要深入了解用來存取憑證的 Cmdlet，請參閱[管理 Azure 自動化中的模組](modules.md)。
+* 如需 Runbook 的一般資訊，請參閱 [Azure 自動化中的 Runbook 執行](../automation-runbook-execution.md)。
+* 如需 DSC 設定的詳細資料，請參閱 [Azure 自動化狀態設定概觀](../automation-dsc-overview.md)。 
+

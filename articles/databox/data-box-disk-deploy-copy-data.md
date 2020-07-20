@@ -1,26 +1,40 @@
 ---
-title: 將資料複製到您的 Microsoft Azure 資料箱磁碟 | Microsoft Docs
+title: 將資料複製到 Azure 資料箱磁碟的教學課程 | Microsoft Docs
 description: 使用本教學課程以了解如何將資料複製到您的 Azure 資料箱磁碟
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 04/16/2019
+ms.date: 09/03/2019
 ms.author: alkohli
-Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 418b158b127a688314fb3a0a506d116cc27da98c
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.localizationpriority: high
+ms.openlocfilehash: ff57a67d5e6d617d6d51c924161f586f90f92c3c
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59678491"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231534"
 ---
+::: zone target="docs"
+
 # <a name="tutorial-copy-data-to-azure-data-box-disk-and-verify"></a>教學課程：將資料複製到 Azure 資料箱磁碟並確認
+
+::: zone-end
+
+::: zone target="chromeless"
+
+## <a name="copy-data-to-azure-data-box-disk-and-validate"></a>將資料複製到 Azure 資料箱磁碟並驗證
+
+連接磁碟並將其解除鎖定之後，您可以將資料從來源資料伺服器複製到磁碟。 資料複製完成之後，請驗證資料以確保其會成功上傳至 Azure。
+
+::: zone-end
+
+::: zone target="docs"
 
 本教學課程說明如何從主機電腦複製資料，然後產生總和檢查碼來確認資料完整性。
 
-在本教學課程中，您了解如何：
+在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
 > * 將資料複製到資料箱磁碟
@@ -31,7 +45,7 @@ ms.locfileid: "59678491"
 在您開始前，請確定：
 - 您已完成[教學課程：安裝和設定您的 Azure 資料箱磁碟](data-box-disk-deploy-set-up.md)。
 - 您的磁碟已解除鎖定，並連線到用戶端電腦。
-- 您用來將資料複製到磁碟的用戶端電腦必須執行[支援的作業系統](data-box-disk-system-requirements.md##supported-operating-systems-for-clients)。
+- 您用來將資料複製到磁碟的用戶端電腦必須執行[支援的作業系統](data-box-disk-system-requirements.md#supported-operating-systems-for-clients)。
 - 請確定資料的預定儲存體類型符合[支援的儲存體類型](data-box-disk-system-requirements.md#supported-storage-types-for-upload)。
 - 檢閱 [Azure 物件大小限制中的受控磁碟限制](data-box-disk-limits.md#azure-object-size-limits)。
 
@@ -86,18 +100,18 @@ ms.locfileid: "59678491"
     
     命令的參數和選項會以表格形式顯示，如下所示：
     
-    |參數/選項  |說明 |
+    |參數/選項  |描述 |
     |--------------------|------------|
     |來源            | 指定來源目錄的路徑。        |
-    |目的地       | 指定目的地目錄的路徑。        |
+    |Destination       | 指定目的地目錄的路徑。        |
     |/E                  | 複製子目錄，包含空的目錄。 |
     |/MT[:N]             | 建立具有 N 個執行緒的多執行緒複製，其中 N 是介於 1 到 128 之間的整數。 <br>N 的預設值為 8。        |
-    |/R:\<N>             | 指定失敗複製的重試次數。 N 的預設值為 1000000 (1 百萬次重試)。        |
-    |/W:\<N>             | 指定重試之間的等待時間 (以秒為單位)。 N 的預設值為 30 (等候時間 30 秒)。        |
+    |/R: \<N>             | 指定失敗複製的重試次數。 N 的預設值為 1000000 (1 百萬次重試)。        |
+    |/W: \<N>             | 指定重試之間的等待時間 (以秒為單位)。 N 的預設值為 30 (等候時間 30 秒)。        |
     |/NFL                | 指定不會記錄檔案名稱。        |
     |/NDL                | 指定不會記錄目錄名稱。        |
     |/FFT                | 假設 FAT 檔案時間 (兩秒精確度)。        |
-    |/Log:\<記錄檔>     | 將狀態輸出寫入至記錄檔 (覆寫現有記錄檔)。         |
+    |/Log:\<Log File>     | 將狀態輸出寫入至記錄檔 (覆寫現有記錄檔)。         |
 
     您可採平行方式使用多個磁碟，在每個磁碟上執行多項作業。
 
@@ -250,6 +264,8 @@ ms.locfileid: "59678491"
 
     `DataBoxDiskSplitCopy.exe PrepImport /config:<configFile.json> /ResumeSession`
 
+如果您在使用分割複製工具時看到錯誤，請移至如何[針對分割複製工具錯誤進行疑難排解](data-box-disk-troubleshoot-data-copy.md)。
+
 資料複製完成之後，接下來您可以驗證資料。 如果您使用「分割複製」工具，請略過驗證 (「分割複製」工具也會進行驗證)，並進入下一個教學課程。
 
 
@@ -257,7 +273,7 @@ ms.locfileid: "59678491"
 
 如果您未使用「分割複製」工具複製資料，則必須驗證資料。 若要確認資料，請執行下列步驟。
 
-1. 在磁碟機的 DataBoxDiskImport 資料夾中執行 `DataBoxDiskValidation.cmd`，以進行總和檢查碼驗證。
+1. 在磁碟機的 DataBoxDiskImport 資料夾中執行 `DataBoxDiskValidation.cmd`，以進行總和檢查碼驗證。 這僅適用於 Windows 環境。 Linux 使用者必須驗證複製到磁碟的來源資料是否符合[必要條件](https://docs.microsoft.com/azure/databox/data-box-disk-limits)。
     
     ![資料箱磁碟驗證工具的輸出](media/data-box-disk-deploy-copy-data/data-box-disk-validation-tool-output.png)
 
@@ -271,6 +287,8 @@ ms.locfileid: "59678491"
 
 3. 如果使用了多個磁碟，請對每個磁碟執行命令。
 
+如果您在驗證期間看到錯誤，請參閱[針對驗證錯誤進行疑難排解](data-box-disk-troubleshoot.md)。
+
 ## <a name="next-steps"></a>後續步驟
 
 在本教學課程中，您已了解 Azure 資料箱磁碟的相關主題，像是：
@@ -283,3 +301,40 @@ ms.locfileid: "59678491"
 
 > [!div class="nextstepaction"]
 > [將您的 Azure 資料箱寄回給 Microsoft](./data-box-disk-deploy-picked-up.md)
+
+::: zone-end
+
+::: zone target="chromeless"
+
+### <a name="copy-data-to-disks"></a>將資料複製到磁碟
+
+執行下列步驟以從電腦連線到資料箱磁碟，並且複製資料。
+
+1. 檢視已解除鎖定磁碟機的內容。 根據建立資料箱磁碟訂單時所選取的選項而定，磁碟中預先建立的資料夾和子資料夾清單會有所不同。
+2. 將資料複製到與適當資料格式相對應的資料夾。 例如，將非結構化資料複製到 *BlockBlob* 資料夾、將 VHD 或 VHDX 資料複製到 *PageBlob* 資料夾，以及將檔案複製到 *AzureFile*。 如果資料格式與適當資料夾 (儲存體類型) 不相符，則在稍後步驟中，資料上傳至 Azure 的作業將會失敗。
+
+    - 確定所有容器、Blob 和檔案都符合 [Azure 命名慣例](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions)和 [Azure 物件大小限制](data-box-disk-limits.md#azure-object-size-limits)。 如果未遵循這些規則或限制，則將資料上傳至 Azure 的作業將會失敗。     
+    - 如果訂單的其中一個儲存體目的地為受控磁碟，請參閱[受控磁碟](data-box-disk-limits.md#managed-disk-naming-conventions)的命名慣例。
+    - 系統會在 Azure 儲存體帳戶中為 BlockBlob 和 PageBlob 資料夾下的每個子資料夾建立容器。 BlockBlob 和 PageBlob 資料夾下的所有檔案，都會複製到 Azure 儲存體帳戶下的預設容器 $root。 $root 容器中的任何檔案一律會上傳為區塊 Blob。
+    - 在 AzureFile 資料夾內建立子資料夾。 這個子資料夾會對應至雲端中的檔案共用。 將檔案複製到子資料夾。 直接複製到 *AzureFile* 資料夾的檔案會失敗並上傳為區塊 Blob。
+    - 如果根目錄中有檔案和資料夾存在，則您必須在開始複製資料之前，將這些項目移到不同的資料夾。
+
+3. 請使用檔案總管的拖放功能，或任何與 SMB 相容的檔案複製工具 (例如 Robocopy)，來複製資料。 您可以使用下列命令起始多個複製作業：
+
+    ```
+    Robocopy <source> <destination>  * /MT:64 /E /R:1 /W:1 /NFL /NDL /FFT /Log:c:\RobocopyLog.txt
+    ```
+4. 開啟目標資料夾，以檢視並確認已複製的檔案。 如果您在複製程序期間遇到任何錯誤，請下載記錄檔以進行疑難排解。 記錄檔位於 robocopy 命令所指定的位置。
+
+如果您使用多個磁碟，而且具有必須分割並複製到所有磁碟上的大型資料集，請使用[分割和複製](data-box-disk-deploy-copy-data.md#split-and-copy-data-to-disks)的選擇性程序。
+
+### <a name="validate-data"></a>驗證資料
+
+請執行下列步驟以驗證資料。
+
+1. 在磁碟機的 DataBoxDiskImport 資料夾中執行 `DataBoxDiskValidation.cmd`，以進行總和檢查碼驗證。
+2. 使用選項 2 來驗證您的檔案並產生總和檢查碼。 視您的資料大小而定，此步驟可能需要一段時間。 如果在驗證和產生總和檢查碼期間發生任何錯誤，您會收到通知及錯誤記錄的連結。
+
+    如需有關資料驗證的詳細資訊，請參閱[驗證資料](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-copy-data#validate-data)。 如果您在驗證期間遇到錯誤，請參閱[針對驗證錯誤進行疑難排解](data-box-disk-troubleshoot.md)。
+
+::: zone-end

@@ -1,23 +1,17 @@
 ---
 author: CelesteDG
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.topic: include
-origin.date: 08/06/2018
-ms.date: 09/06/2018
-ms.author: v-junlch
-ms.openlocfilehash: 2bf0c0c9a7af3ecc3b85d1bd449ac25ee211987c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.date: 05/13/2019
+ms.author: celested
+ms.openlocfilehash: f4abe0b4fb70726da4ede3d4b05f5214f549bf41
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60250192"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680334"
 ---
 ## <a name="help-and-support"></a>說明及支援
 
-如果您需要協助、需要回報問題，或需要深入了解您的支援選項，請參閱下列文章：
-
-> [!div class="nextstepaction"]
-> [開發人員的說明與支援](../articles/active-directory/develop/developer-support-help-options.md)
-
-<!-- ms.date: 09/06/2018 -->
+如果您需要協助、想要回報問題，或想要深入了解您的支援選項，請參閱[開發人員的協助與支援](../articles/active-directory/develop/developer-support-help-options.md)。

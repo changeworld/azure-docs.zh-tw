@@ -1,25 +1,16 @@
 ---
-title: 刪除 Azure Service Fabric 動作項目 | Microsoft Docs
-description: 瞭解如何手動刪除 Service Fabric Reliable Actors 及其狀態。
-services: service-fabric
-documentationcenter: .net
+title: 刪除 Azure Service Fabric 執行者
+description: 瞭解如何在 Azure Service Fabric 應用程式中手動並完全刪除 Reliable Actors 及其狀態。
 author: amanbha
-manager: chackdan
-editor: vturecek
-ms.assetid: b91384cc-804c-49d6-a6cb-f3f3d7d65a8e
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/19/2018
 ms.author: amanbha
-ms.openlocfilehash: e297a6f42774f29e2eca4a410b695d5bbb636300
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d977b6fea71d246610b0e6ef2d9e17d587f1e9ad
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60726599"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253536"
 ---
 # <a name="delete-reliable-actors-and-their-state"></a>刪除 Reliable Actors 及其狀態
 已停用動作項目的記憶體回收只會清除動作項目物件；但不會移除動作項目的狀態管理員中儲存的資料。 重新啟用動作項目後，會再次透過狀態管理員提供其資料。 在動作項目將資料儲存於狀態管理員後停用，而永遠不會重新啟用的情況下，可能需要清除其資料。
@@ -47,7 +38,7 @@ myActorServiceProxy.deleteActorAsync(actorToDelete);
 
 * **作用中動作項目**
   * 動作項目會從作用中動作項目清單中移除並且停用。
-  * 该执行组件的状态会被永久删除。
+  * 其狀態會永久刪除。
 * **非作用中動作項目**
   * 其狀態會永久刪除。
 
@@ -55,12 +46,12 @@ myActorServiceProxy.deleteActorAsync(actorToDelete);
 
 如需有關 Reliable Actors 的詳細資訊，請參閱下列內容：
 * [動作項目計時器和提醒](service-fabric-reliable-actors-timers-reminders.md)
-* [動作項目事件](service-fabric-reliable-actors-events.md)
-* [動作項目重新進入](service-fabric-reliable-actors-reentrancy.md)
-* [执行组件诊断和性能监视](service-fabric-reliable-actors-diagnostics.md)
-* [動作項目 API 參考文件](https://msdn.microsoft.com/library/azure/dn971626.aspx)
-* [C# 示例代码](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
-* [Java 範例程式碼 (英文)](https://github.com/Azure-Samples/service-fabric-java-getting-started)
+* [動作專案事件](service-fabric-reliable-actors-events.md)
+* [動作專案重新進入](service-fabric-reliable-actors-reentrancy.md)
+* [動作項目診斷與效能監視](service-fabric-reliable-actors-diagnostics.md)
+* [動作項目 API 參考文件](/previous-versions/azure/dn971626(v=azure.100))
+* [C # 範例程式碼](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
+* [JAVA 範例程式碼](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-lifecycle/garbage-collection.png

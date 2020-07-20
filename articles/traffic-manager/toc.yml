@@ -10,6 +10,8 @@
       href: quickstart-create-traffic-manager-profile.md
     - name: 建立流量管理員設定檔 - PowerShell
       href: quickstart-create-traffic-manager-profile-powershell.md
+    - name: 建立流量管理員設定檔 - Azure CLI
+      href: quickstart-create-traffic-manager-profile-cli.md
 - name: 教學課程
   items:
     - name: 低延遲的路由傳送流量
@@ -81,12 +83,18 @@
       href: traffic-manager-load-balancing-azure.md
     - name: 測量流量管理員效能
       href: traffic-manager-performance-considerations.md
-    - name: 啟用診斷記錄
+    - name: 啟用資源記錄
       href: traffic-manager-diagnostic-logs.md
     - name: 使用 Azure PowerShell 管理流量管理員
       href: traffic-manager-powershell-arm.md
     - name: 將您的網際網路網域指向流量管理員
       href: traffic-manager-point-internet-domain.md
+    - name: 子網路覆寫
+      items:
+        - name: 設定子網路覆寫 - Azure CLI
+          href: traffic-manager-subnet-override-cli.md
+        - name: 設定子網路覆寫 - PowerShell
+          href: traffic-manager-subnet-override-powershell.md
     - name: 疑難排解
       items:
         - name: 疑難排解 Azure 流量管理員上的已降級狀態
@@ -106,33 +114,25 @@
     - name: Ruby
       href: 'https://www.rubydoc.info/gems/azure_mgmt_traffic_manager'
     - name: Python
-      href: 'http://azure-sdk-for-python.readthedocs.io/en/latest/sample_azure-mgmt-trafficmanager.html'
+      href: 'https://azure.github.io/azure-sdk-for-python/ref/Traffic-Manager.html'
     - name: REST
       href: 'https://msdn.microsoft.com/library/mt163667.aspx'
     - name: Resource Manager 範本
       href: /azure/templates/microsoft.network/trafficmanagerprofiles
-- name: 相關參考
-  items:
-    - name: 應用程式閘道
-      href: /azure/application-gateway/
-    - name: 負載平衡器
-      href: /azure/load-balancer/
-    - name: Azure DNS
-      href: /azure/dns/
 - name: 資源
   items:
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 部落格
       href: 'https://azure.microsoft.com/blog/topics/networking/'
-    - name: MSDN 論壇
-      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork'
-    - name: 價格
+    - name: Microsoft 問與答頁面
+      href: 'https://docs.microsoft.com/answers/topics/azure-virtual-network.html'
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/traffic-manager/'
     - name: 定價計算機
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: 服務限制
-      href: '../azure-subscription-service-limits.md#traffic-manager-limits'
+      href: '../azure-resource-manager/management/azure-subscription-service-limits.md#traffic-manager-limits'
     - name: 服務更新
       href: 'https://azure.microsoft.com/updates/?product=traffic-manager'
     - name: SLA

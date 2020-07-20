@@ -1,25 +1,26 @@
 ---
-title: 教學課程 - 自動執行容器映像建置 - Azure Container Registry 工作
+title: 教學課程 - 在程式碼認可上建置映像
 description: 在本教學課程中，您會了解如何設定「Azure Container Registry 工作」，以在您將原始程式碼認可至 Git 存放庫時，自動在雲端觸發容器映像建置。
-services: container-registry
-author: dlepow
-ms.service: container-registry
 ms.topic: tutorial
-ms.date: 09/24/2018
-ms.author: danlep
+ms.date: 05/04/2019
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 5aa637938433eb1f906f0a4d81038cec0d6c6dcc
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 2f70b829e2202c3d28adcfbbb07338923c43e8a8
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58893005"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "78402839"
 ---
 # <a name="tutorial-automate-container-image-builds-in-the-cloud-when-you-commit-source-code"></a>教學課程：於認可原始程式碼時在雲端自動執行容器映像建置
 
-除了[快速工作](container-registry-tutorial-quick-task.md)以外，ACR 工作也支援透過「建置工作」的自動化 Docker 容器映像建置。 在本教學課程中，您會使用 Azure CLI 建立工作，以在將原始程式碼認可至 Git 存放庫時在雲端中自動觸發映像建置。
+除了[快速工作](container-registry-tutorial-quick-task.md)之外，ACR 工作還能在您將原始程式碼認可至 Git 存放庫時，自動化雲端中的 Docker 容器映像建置。 ACR 工作支援的 Git 內容包括公用或私人 GitHub 或 Azure 存放庫。
 
-在本教學課程中，系列的第二段：
+> [!NOTE]
+> 目前，ACR 工作不支援 GitHub Enterprise 存放庫中的認可或提取要求觸發程序。
+
+在本教學課程中，當您將原始程式碼認可至 Git 存放庫時，ACR 工作會建置並推送在 Dockerfile 中指定的單一容器映像。 若要建立[多步驟工作](container-registry-tasks-multi-step.md)，以在認可程式碼時，使用 YAML 檔案來定義建置、推送及選擇性測試多個容器的步驟，請參閱[教學課程：於認可原始程式碼時在雲端執行多步驟容器工作流程](container-registry-tutorial-multistep-task.md)。 如需 ACR 工作的概觀，請參閱[使用 ACR 工作自動化作業系統和架構修補](container-registry-tasks-overview.md)
+
+本教學課程內容：
 
 > [!div class="checklist"]
 > * 建立工作
@@ -33,53 +34,17 @@ ms.locfileid: "58893005"
 
 如果您想要在本機使用 Azure CLI，必須安裝 Azure CLI **2.0.46** 版或更新版本，並使用 [az login][az-login] 登入。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級 CLI，請參閱[安裝 Azure CLI][azure-cli]。
 
-## <a name="prerequisites"></a>必要條件
+[!INCLUDE [container-registry-task-tutorial-prereq.md](../../includes/container-registry-task-tutorial-prereq.md)]
 
-### <a name="get-sample-code"></a>取得範例程式碼
-
-本教學課程假設您已完成[上一個教學課程](container-registry-tutorial-quick-task.md)中的步驟，並已派生和複製範例存放庫。 如果您尚未完成上一個教學課程的[必要條件](container-registry-tutorial-quick-task.md#prerequisites)一節中的步驟，請先加以完成，再繼續操作。
-
-### <a name="container-registry"></a>容器登錄
-
-您的 Azure 訂用帳戶中必須要有 Azure 容器登錄，才能完成本教學課程。 如果您需要登錄，請參閱[上一個教學課程](container-registry-tutorial-quick-task.md)或[快速入門：使用 Azure CLI 建立容器登錄](container-registry-get-started-azure-cli.md)。
-
-## <a name="overview-of-acr-tasks"></a>ACR 工作概觀
-
-工作會定義自動化建置的屬性，包括容器映像原始程式碼的位置和觸發建置的事件。 工作中定義的事件發生時 (例如認可至 Git 存放庫)，ACR 工作即會在雲端中起始容器映像建置。 根據預設，它接著會將已成功建置的映像推送至工作中指定的 Azure 容器登錄。
-
-ACR 工作目前支援下列觸發程序：
-
-* 認可至 Git 存放庫
-* 基底映像更新
-
-在本教學課程中，您的 ACR 工作會建置並推送在 Dockerfile 中指定的單一容器映像。 ACR 工作也可執行[多步驟工作](container-registry-tasks-multi-step.md)，使用 YAML 檔案來定義相關步驟，以建置、推送並選擇性地測試多個容器。
-
-## <a name="create-a-build-task"></a>建立建置工作
-
-在本節中，您會先建立用於 ACR 工作的 GitHub 個人存取權杖 (PAT)。 接著，您會建立工作，以在程式碼認可至存放庫的分支時觸發建置。
-
-### <a name="create-a-github-personal-access-token"></a>建立 GitHub 個人存取權杖
-
-為了在認可至 Git 存放庫時觸發建置，ACR 工作需要以個人存取權杖 (PAT) 存取存放庫。 請依照下列步驟在 GitHub 中產生 PAT：
-
-1. 瀏覽至 GitHub 上的 PAT 建立頁面 (https://github.com/settings/tokens/new)
-1. 輸入權杖的簡短**說明**，例如「ACR 工作示範」
-1. 在 **repo** 下，啟用 **repo:status** 和 **public_repo**
-
-   ![GitHub 中的個人存取權杖產生頁面的螢幕擷取畫面][build-task-01-new-token]
-
-1. 選取 [產生權杖] 按鈕 (系統可能會要求您確認密碼)
-1. 在**安全的位置**複製並儲存產生的權杖 (當您在下一節定義工作時，將會使用此權杖)
-
-   ![GitHub 中已產生的個人存取權杖的螢幕擷取畫面][build-task-02-generated-token]
-
-### <a name="create-the-build-task"></a>建立建置工作
+## <a name="create-the-build-task"></a>建立建置工作
 
 現在，您已完成啟用 ACR 工作以讀取認可狀態以及在存放庫中建立 Webhook 所需的步驟，接下來可以建立工作，以在認可至存放庫時觸發容器映像建置。
 
-首先，請在這些殼層環境變數中填入您的環境適用的值。 此步驟並不是必要動作，但可簡化在本教學課程中執行多行 Azure CLI 命令的作業。 若未填入這些環境變數，則必須在命令範例中的每個對應之處手動取代各個變數。
+首先，請在這些殼層環境變數中填入您的環境適用的值。 此步驟並不是必要動作，但可簡化在本教學課程中執行多行 Azure CLI 命令的作業。 若未填入這些環境變數，則必須手動取代命令範例中出現的每個值。
 
-```azurecli-interactive
+[![內嵌啟動](https://shell.azure.com/images/launchcloudshell.png "啟動 Azure Cloud Shell")](https://shell.azure.com)
+
+```console
 ACR_NAME=<registry-name>        # The name of your Azure container registry
 GIT_USER=<github-username>      # Your GitHub user account name
 GIT_PAT=<personal-access-token> # The PAT you generated in the previous section
@@ -93,7 +58,6 @@ az acr task create \
     --name taskhelloworld \
     --image helloworld:{{.Run.ID}} \
     --context https://github.com/$GIT_USER/acr-build-helloworld-node.git \
-    --branch master \
     --file Dockerfile \
     --git-access-token $GIT_PAT
 ```
@@ -101,19 +65,11 @@ az acr task create \
 > [!IMPORTANT]
 > 如果您先前已在預覽期間使用 `az acr build-task` 命令建立工作，則必須使用 [az acr task][az-acr-task] 命令重新建立這些工作。
 
-此工作會指定只要有程式碼認可至 `--context` 所指定之存放庫中的「主要」分支，ACR 工作即會從該分支中的程式碼建置容器映像。 系統會使用 `--file` 所指定、位於存放庫根目錄中的 Dockerfile 來建置映像。 `--image` 引數會針對映像標記的版本部分指定 `{{.Run.ID}}` 的參數化值，以確保建置的映像會與特定的組建相互關聯，並加上唯一標記。
+此工作會指定只要有程式碼認可至 `--context` 所指定之存放庫中的「主要」  分支，ACR 工作即會從該分支中的程式碼建置容器映像。 系統會使用 `--file` 所指定、位於存放庫根目錄中的 Dockerfile 來建置映像。 `--image` 引數會針對映像標記的版本部分指定 `{{.Run.ID}}` 的參數化值，以確保建置的映像會與特定的組建相互關聯，並加上唯一標記。
 
 成功執行的 [az acr task create][az-acr-task-create] 命令會產生如下的輸出：
 
-```console
-$ az acr task create \
->     --registry $ACR_NAME \
->     --name taskhelloworld \
->     --image helloworld:{{.Run.ID}} \
->     --context https://github.com/$GIT_USER/acr-build-helloworld-node.git \
->     --branch master \
->     --file Dockerfile \
->     --git-access-token $GIT_PAT
+```output
 {
   "agentConfiguration": {
     "cpu": 2
@@ -180,9 +136,7 @@ az acr task run --registry $ACR_NAME --name taskhelloworld
 
 根據預設，`az acr task run` 命令會在您執行命令時將記錄輸出串流處理至主控台。
 
-```console
-$ az acr task run --registry $ACR_NAME --name taskhelloworld
-
+```output
 2018/09/17 22:51:00 Using acb_vol_9ee1f28c-4fd4-43c8-a651-f0ed027bbf0e as the home volume
 2018/09/17 22:51:00 Setting up Docker configuration...
 2018/09/17 22:51:02 Successfully set up Docker configuration
@@ -254,13 +208,13 @@ Run ID: da2 was successful after 27s
 
 首先，請確定您位於[存放庫][sample-repo]的本機複本所在的目錄中：
 
-```azurecli-interactive
+```console
 cd acr-build-helloworld-node
 ```
 
 接著，執行下列命令以建立新檔案，然後將其認可並推送至 GitHub 上的存放庫分支：
 
-```azurecli-interactive
+```console
 echo "Hello World!" > hello.txt
 git add hello.txt
 git commit -m "Testing ACR Tasks"
@@ -269,8 +223,7 @@ git push origin master
 
 在您執行 `git push` 命令時，系統可能會要求您提供 GitHub 認證。 請提供您的 GitHub 使用者名稱，並輸入您先前為密碼建立的個人存取權杖 (PAT)。
 
-```console
-$ git push origin master
+```azurecli-interactive
 Username for 'https://github.com': <github-username>
 Password for 'https://githubuser@github.com': <personal-access-token>
 ```
@@ -283,8 +236,7 @@ az acr task logs --registry $ACR_NAME
 
 輸出會類似於下列內容，顯示目前正在執行 (或最後執行) 的工作：
 
-```console
-$ az acr task logs --registry $ACR_NAME
+```output
 Showing logs of the last created run.
 Run ID: da4
 
@@ -303,9 +255,7 @@ az acr task list-runs --registry $ACR_NAME --output table
 
 此命令的輸出應類似於下列內容。 ACR 工作已執行的流程執行會顯示出來，且最新工作的 [觸發程序] 資料行中會出現「Git 認可」：
 
-```console
-$ az acr task list-runs --registry $ACR_NAME --output table
-
+```output
 RUN ID    TASK             PLATFORM    STATUS     TRIGGER     STARTED               DURATION
 --------  --------------  ----------  ---------  ----------  --------------------  ----------
 da4       taskhelloworld  Linux       Succeeded  Git Commit  2018-09-17T23:03:45Z  00:00:44
@@ -326,12 +276,11 @@ da1                       Linux       Succeeded  Manual      2018-09-17T22:29:59
 
 <!-- LINKS - Internal -->
 [azure-cli]: /cli/azure/install-azure-cli
-[az-acr-task]: /cli/azure/acr
-[az-acr-task-create]: /cli/azure/acr
-[az-acr-task-run]: /cli/azure/acr
-[az-acr-task-list-runs]: /cli/azure/acr
+[az-acr-task]: /cli/azure/acr/task
+[az-acr-task-create]: /cli/azure/acr/task#az-acr-task-create
+[az-acr-task-run]: /cli/azure/acr/task#az-acr-task-run
+[az-acr-task-list-runs]: /cli/azure/acr/task#az-acr-task-list-runs
 [az-login]: /cli/azure/reference-index#az-login
 
-<!-- IMAGES -->
-[build-task-01-new-token]: ./media/container-registry-tutorial-build-tasks/build-task-01-new-token.png
-[build-task-02-generated-token]: ./media/container-registry-tutorial-build-tasks/build-task-02-generated-token.png
+
+

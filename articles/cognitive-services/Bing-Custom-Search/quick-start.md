@@ -1,21 +1,21 @@
 ---
-title: 快速入門：建立第一個 Bing 自訂搜尋執行個體 | Microsoft Docs
-titlesuffix: Azure Cognitive Services
-description: 使用本文建立可以搜尋您定義之網域和網頁的自訂 Bing 執行個體。
+title: 快速入門：建立第一個 Bing 自訂搜尋執行個體
+titleSuffix: Azure Cognitive Services
+description: 使用本快速入門來建立可搜尋您所定義網域和網頁的自訂 Bing 執行個體。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: quickstart
-ms.date: 02/12/2019
+ms.date: 03/24/2020
 ms.author: aahi
-ms.openlocfilehash: d7a0c29ad3386fcdf85292b6e2852842a971c076
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: b8287250df4e278d4904e31121ed7d2df208e1c9
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56231904"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "80238846"
 ---
 # <a name="quickstart-create-your-first-bing-custom-search-instance"></a>快速入門：建立您的第一個 Bing 自訂搜尋執行個體
 
@@ -25,7 +25,7 @@ ms.locfileid: "56231904"
 
 ![Bing 自訂搜尋入口網站的圖片](media/blockedCustomSrch.png)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [cognitive-services-bing-custom-search-prerequisites](../../../includes/cognitive-services-bing-custom-search-signup-requirements.md)]
 
@@ -33,20 +33,20 @@ ms.locfileid: "56231904"
 
 建立 Bing 自訂搜尋執行個體：
 
-1. 按一下 [Bing 自訂搜尋入口網站](https://customsearch.ai)網頁上的 [開始使用]，並使用您的 Microsoft 帳戶登入。
+1. 按一下 [Bing 自訂搜尋入口網站](https://customsearch.ai)網頁上的 [開始使用]  ，並使用您的 Microsoft 帳戶登入。
 
-2. 按一下 [新執行個體]，然後輸入描述性名稱。 您可以隨時變更執行個體的名稱。
+2. 按一下 [新執行個體]  ，然後輸入描述性名稱。 您可以隨時變更執行個體的名稱。
  
-3. 在 [搜尋體驗] 的 [使用中] 索引標籤下，輸入您要在搜尋中包括的一或多個網站的 URL。 
+3. 在 [搜尋體驗]  的 [使用中]  索引標籤下，輸入您要在搜尋中包括的一或多個網站的 URL。 
 
     > [!NOTE]
     > Bing 自訂搜尋執行個體只會傳回公用且經過 Bing 編製索引之網域和網頁的結果。
 
 4. 您可以使用 Bing 自訂搜尋入口網站的右側輸入查詢，並檢查搜尋執行個體所傳回的搜尋結果。 如果未傳回任何結果，請嘗試輸入其他 URL。  
 
-5. 按一下 [發佈]，將變更發佈至生產環境中，並更新執行個體的端點。
+5. 按一下 [發佈]  ，將變更發佈至生產環境中，並更新執行個體的端點。
 
-6.  按一下 [生產] 索引標籤的 [端點] 下方，複製您的**自訂組態識別碼**。 您需要將此識別碼附加到呼叫中的 `customconfig=` 查詢參數，藉此呼叫自訂搜尋 API。
+6.  按一下 [端點]  下方的 [生產]  索引標籤，複製您的**自訂組態識別碼**。 您需要將此識別碼附加到呼叫中的 `customconfig=` 查詢參數，藉此呼叫自訂搜尋 API。
 
 
 ## <a name="next-steps"></a>後續步驟

@@ -1,28 +1,26 @@
 ---
-title: 使用 Data Factory 進行排程和執行 | Microsoft Docs
+title: 使用 Data Factory 進行排程和執行
 description: 了解 Azure Data Factory 應用程式模型的排程和執行層面。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.assetid: 088a83df-4d1b-4ac1-afb3-0787a9bd1ca5
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: 2d7fc45faf1fb77c7d9181e5a2419096dd1ad0f1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e0707f9a7694741f54771699f5aeb3b452b11b8c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61258901"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85319715"
 ---
 # <a name="data-factory-scheduling-and-execution"></a>Data Factory 排程和執行
 > [!NOTE]
-> 本文適用於 Data Factory 的第 1 版。 如果您使用目前版本的 Data Factory 服務，請參閱[管線執行和觸發程序](../concepts-pipeline-execution-triggers.md)一文。
+> 本文適用於 Data Factory 第 1 版。 如果您使用目前版本的 Data Factory 服務，請參閱[管線執行和觸發程序](../concepts-pipeline-execution-triggers.md)一文。
 
 本文說明 Azure Data Factory 應用程式模型的排程和執行層面。 本文假設您已了解 Data Factory 應用程式模型的基本概念，包括活動、管線、連結的服務和資料集。 請看下列文章，了解 Azure Data Factory 的基本概念：
 
@@ -31,7 +29,7 @@ ms.locfileid: "61258901"
 * [資料集](data-factory-create-datasets.md) 
 
 ## <a name="start-and-end-times-of-pipeline"></a>管線的開始和結束時間
-管線僅在其「開始」時間與「結束」時間之間有作用。 在開始時間之前或結束時間之後就不會執行。 如果管線已暫停，不論其開始和結束時間為何，都不會執行。 若要執行管線，則不該將它暫停。 您可以在管線定義中找到這些設定 (start、end、paused)： 
+管線只有在其**開始**時間和**結束**時間之間才會處於作用中狀態。 在開始時間之前或結束時間之後就不會執行。 如果管線已暫停，不論其開始和結束時間為何，都不會執行。 若要執行管線，則不該將它暫停。 您可以在管線定義中找到這些設定 (start、end、paused)： 
 
 ```json
 "start": "2017-04-01T08:00:00Z",
@@ -52,16 +50,16 @@ ms.locfileid: "61258901"
 },
 ```
 
-如下圖所示，為活動指定排程會在管線的開始和結束時間內，建立一系列輪轉時段。 輪轉時段是一系列大小固定、非重疊的連續時間間隔。 活動的這些邏輯輪轉時段稱為「活動時段」。
+如下圖所示，為活動指定排程會在管線的開始和結束時間內，建立一系列輪轉時段。 輪轉時段是一系列大小固定、非重疊的連續時間間隔。 活動的這些邏輯輪轉時段稱為「活動時段」****。
 
 ![活動排程器範例](media/data-factory-scheduling-and-execution/scheduler-example.png)
 
 活動的 **scheduler** 屬性是選擇性的。 如果您指定此屬性，它就必須符合您在活動輸出資料集的定義中指定的頻率。 目前，驅動排程的是輸出資料集。 因此，即使活動不會產生任何輸出，您也必須指定輸出資料集。 
 
 ## <a name="specify-schedule-for-a-dataset"></a>為資料集指定排程
-Data Factory 管線中的一個活動可以接受零個或多個輸入「資料集」，並且會產生一個或多個輸出資料集。 針對活動，您可以在資料集定義中使用 **availability** 區段，來指定提供輸入資料或產生輸出資料的頻率。 
+Data Factory 管線中的一個活動可以接受零個或多個輸入「資料集」****，並且會產生一個或多個輸出資料集。 針對活動，您可以在資料集定義中使用 **availability** 區段，來指定提供輸入資料或產生輸出資料的頻率。 
 
-**availability** 區段中的 **frequency** 會指定時間單位。 允許的 Frequency 值為：Minute、Hour、Day、Week 及 Month。 availability 區段中的 **interval** 屬性會指定 frequency 的倍數。 例如：如果將輸出資料集的 frequency 設定為 Day，並將 interval 是設定為 1，就會每天產生輸出資料。 如果您將 frequency 指定為 minute，建議您將 interval 設定為不小於 15。 
+**availability** 區段中的 **frequency** 會指定時間單位。 允許的 frequency 值為：Minute、Hour、Day、Week 及 Month。 availability 區段中的 **interval** 屬性會指定 frequency 的倍數。 例如：如果將輸出資料集的 frequency 設定為 Day，並將 interval 是設定為 1，就會每天產生輸出資料。 如果您將 frequency 指定為 minute，建議您將 interval 設定為不小於 15。 
 
 在下列範例中，會每小時提供輸入資料，並每小時產生輸出資料 (`"frequency": "Hour", "interval": 1`)。 
 
@@ -166,13 +164,13 @@ Data Factory 管線中的一個活動可以接受零個或多個輸入「資料�
 
 在此範例中，活動會在管線的開始與結束時間之間每小時執行一次。 針對三小時的時段 (上午 8 點 - 上午 9 點、上午 9 點 - 上午 10 點，以及上午 10 點 - 上午 11 點) 會每小時產生一次輸出資料。 
 
-活動執行所取用或產生的每個資料單位稱為「資料配量」。 下表顯示具有一個輸入資料集和一個輸出資料集的活動範例： 
+活動執行所取用或產生的每個資料單位稱為「資料配量」****。 下表顯示具有一個輸入資料集和一個輸出資料集的活動範例： 
 
 ![可用性排程器](./media/data-factory-scheduling-and-execution/availability-scheduler.png)
 
 上圖顯示輸入和輸出資料集的每小時資料配量。 圖中顯示 3 個已經可供處理的輸入配量。 10-11 AM 活動正在進行中，會產生 10-11 AM 輸出配量。 
 
-您可以使用下列變數來存取與資料集 JSON 中目前配量關聯的時間間隔：[SliceStart](data-factory-functions-variables.md#data-factory-system-variables) 和 [SliceEnd](data-factory-functions-variables.md#data-factory-system-variables)。 同樣地，您可以使用 WindowStart 和 WindowEnd，來存取與活動時段關聯的時間間隔。 活動的排程必須與活動之輸出資料集的排程相符。 因此，SliceStart 和 SliceEnd 值會分別與 WindowStart 和 WindowEnd 值相同。 如需有關這些變數的詳細資訊，請參閱 [Data Factory 函式與系統變數](data-factory-functions-variables.md#data-factory-system-variables)文章。  
+您可以使用 [SliceStart](data-factory-functions-variables.md#data-factory-system-variables) 和 [SliceEnd](data-factory-functions-variables.md#data-factory-system-variables) 變數，來存取與資料集 JSON 中目前配量關聯的時間間隔。 同樣地，您可以使用 WindowStart 和 WindowEnd，來存取與活動時段關聯的時間間隔。 活動的排程必須與活動之輸出資料集的排程相符。 因此，SliceStart 和 SliceEnd 值會分別與 WindowStart 和 WindowEnd 值相同。 如需有關這些變數的詳細資訊，請參閱 [Data Factory 函式與系統變數](data-factory-functions-variables.md#data-factory-system-variables)文章。  
 
 您可以在活動 JSON 中針對不同用途使用這些變數。 例如，您可以使用它們從代表時間序列資料 (例如：上午 8 點到上午 9 點) 的輸入和輸出資料集選取資料。 此範例也使用 **WindowStart** 和 **WindowEnd** 來選取活動執行的相關資料，並將它複製到具有適當 **folderPath** 的 Blob。 **folderPath** 會參數化為讓每小時具有個別的資料夾。  
 
@@ -182,15 +180,15 @@ Data Factory 管線中的一個活動可以接受零個或多個輸入「資料�
 您已了解資料集定義之 availability 區段中 frequency 和 interval 屬性的使用方式。 還有一些影響活動的排程和執行的其他屬性。 
 
 ### <a name="dataset-availability"></a>資料集可用性 
-下表描述您在 **availability** 區段中可使用的屬性：
+下表描述您可以在 [**可用性**] 區段中使用的屬性：
 
-| 屬性 | 描述 | 必要項 | 預設值 |
+| 屬性 | 說明 | 必要 | 預設 |
 | --- | --- | --- | --- |
-| frequency |指定資料集配量生產的時間單位。<br/><br/><b>支援的頻率</b>：Minute、Hour、Day、Week、Month |是 |NA |
-| interval |指定頻率的倍數<br/><br/>「頻率 x 間隔」會決定產生配量的頻率。<br/><br/>如果您需要將資料集以每小時為單位來切割，請將 <b>Frequency</b> 設定為 <b>Hour</b>，將 <b>interval</b> 設定為 <b>1</b>。<br/><br/><b>注意</b>：如果您將 Frequency 指定為 Minute，建議您將 interval 設定為不小於 15 |是 |NA |
-| style |指定是否應該在間隔開始/結束時產生配量。<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul><br/><br/>如果 Frequency 設為 Month，style 設為 EndOfInterval，則會在當月最後一天產生配量。 如果 style 設為 StartOfInterval，則會在每月的第一天產生配量。<br/><br/>如果 Frequency 設為 Day，style 設為 EndOfInterval，則會在當天最後一個小時產生配量。<br/><br/>如果 Frequency 設為 Hour，style 設為 EndOfInterval，則會在每小時結束時產生配量。 例如，若為下午 1 – 2 點期間的配量，此配量會在下午 2 點產生。 |否 |EndOfInterval |
-| anchorDateTime |定義排程器用來計算資料集配量界限的時間絕對位置。 <br/><br/><b>注意</b>：如果 AnchorDateTime 有比頻率更細微的日期部分，則系統會忽略那些更細微的部分。 <br/><br/>例如，如果 <b>interval</b> 為 <b>hourly</b> (frequency：hour 且 interval：1)，而且 <b>AnchorDateTime</b> 包含<b>分鐘和秒鐘</b>，則會忽略 AnchorDateTime 的<b>分鐘和秒鐘</b>部分。 |否 |01/01/0001 |
-| Offset |所有資料集配量的開始和結束移位所依據的時間範圍。 <br/><br/><b>注意</b>：如果同時指定 anchorDateTime 和 offset，結果會是合併的位移。 |否 |NA |
+| frequency |指定資料集配量生產的時間單位。<br/><br/><b>支援的頻率</b>：Minute、Hour、Day、Week、Month |Yes |NA |
+| interval |指定頻率的倍數<br/><br/>「頻率 x 間隔」會決定產生配量的頻率。<br/><br/>如果您需要將資料集以每小時為單位來切割，請將 <b>Frequency</b> 設定為 <b>Hour</b>，將 <b>interval</b> 設定為 <b>1</b>。<br/><br/><b>注意</b>：如果您將 Frequency 指定為 Minute，建議您將 interval 設定為不小於 15 |Yes |NA |
+| 樣式 |指定是否應該在間隔開始/結束時產生配量。<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul><br/><br/>如果 Frequency 設為 Month，style 設為 EndOfInterval，則會在當月最後一天產生配量。 如果 style 設為 StartOfInterval，則會在每月的第一天產生配量。<br/><br/>如果 Frequency 設為 Day，style 設為 EndOfInterval，則會在當天最後一個小時產生配量。<br/><br/>如果 Frequency 設為 Hour，style 設為 EndOfInterval，則會在每小時結束時產生配量。 例如，若為下午 1 – 2 點期間的配量，此配量會在下午 2 點產生。 |No |EndOfInterval |
+| anchorDateTime |定義排程器用來計算資料集配量界限的時間絕對位置。 <br/><br/><b>注意</b>：如果 AnchorDateTime 有比頻率更細微的日期部分，則系統會忽略那些更細微的部分。 <br/><br/>例如，如果 <b>interval</b> 為 <b>hourly</b> (frequency: hour 且 interval: 1) 而且 <b>AnchorDateTime</b> 包含<b>分鐘和秒鐘</b>，則會忽略 AnchorDateTime 的<b>分鐘和秒鐘</b>部分。 |No |01/01/0001 |
+| Offset |所有資料集配量的開始和結束移位所依據的時間範圍。 <br/><br/><b>注意</b>︰如果同時指定 anchorDateTime 和 offset，結果會是合併的位移。 |No |NA |
 
 ### <a name="offset-example"></a>位移範例
 根據預設，每日 (`"frequency": "Day", "interval": 1`) 配量的開始時間是 UTC 時間上午 12 點 (午夜)。 如果您希望將開始時間改為 UTC 時間上午 6 點，請依照下列程式碼片段所示設定位移： 
@@ -232,10 +230,10 @@ Data Factory 管線中的一個活動可以接受零個或多個輸入「資料�
 
 資料集中的 **policy** 區段定義資料集配量必須符合的準則或條件。 下表說明您可以在 **policy** 區段中使用的屬性：
 
-| 原則名稱 | 描述 | 適用於 | 必要項 | 預設值 |
+| 原則名稱 | Description | 適用於 | 必要 | 預設 |
 | --- | --- | --- | --- | --- |
-| minimumSizeMB | 驗證 **Azure Blob** 中的資料是否符合最小的大小需求 (以 MB 為單位)。 |Azure Blob |否 |NA |
-| minimumRows | 驗證 **Azure SQL 資料庫**或 **Azure 資料表**中的資料是否包含最小的資料列數。 |<ul><li>Azure SQL Database</li><li>Azure 資料表</li></ul> |否 |NA |
+| minimumSizeMB | 驗證 **Azure Blob** 中的資料是否符合最小的大小需求 (以 MB 為單位)。 |Azure Blob |No |NA |
+| minimumRows | 驗證**Azure SQL Database**或**Azure 資料表**中的資料是否包含最小的資料列數目。 |<ul><li>Azure SQL Database</li><li>Azure 資料表</li></ul> |No |NA |
 
 #### <a name="examples"></a>範例
 **minimumSizeMB：**
@@ -268,14 +266,14 @@ Data Factory 管線中的一個活動可以接受零個或多個輸入「資料�
 ## <a name="activity-policies"></a>活動原則
 原則會影響活動的執行階段行為，特別是在處理資料表配量的時候。 下表提供詳細資料。
 
-| 屬性 | 允許的值 | 預設值 | 描述 |
+| 屬性 | 允許的值 | 預設值 | 說明 |
 | --- | --- | --- | --- |
-| 並行 |整數  <br/><br/>最大值：10 |1 |活動的並行執行數目。<br/><br/>它可決定不同配量上可以發生的平行活動執行數目。 例如，如果活動需要處理大量可用的資料，具有較大的並行值會加快資料處理。 |
+| 並行 |整數 <br/><br/>最大值：10 |1 |活動的並行執行數目。<br/><br/>它可決定不同配量上可以發生的平行活動執行數目。 例如，如果活動需要處理大量可用的資料，具有較大的並行值會加快資料處理。 |
 | executionPriorityOrder |NewestFirst<br/><br/>OldestFirst |OldestFirst |決定正在處理之資料配量的順序。<br/><br/>例如，如果您有 2 個配量 (一個發生在下午 4 點，另一個發生在下午 5 點)，而兩者都暫停執行。 如果您將 executionPriorityOrder 設為 NewestFirst，則會先處理下午 5 點的配量。 同樣地，如果您將 executionPriorityOrder 設為 OldestFIrst，則會處理下午 4 點的配量。 |
-| retry |整數 <br/><br/>最大值可以是 10 |0 |在配量的資料處理標示為 [失敗] 前的重試次數。 資料配量的活動執行會一直重試，直到指定的重試計數為止。 在失敗後會儘速完成重試。 |
-| timeout |TimeSpan |00:00:00 |活動的逾時。 範例：00:10:00 (意指逾時 10 分鐘)<br/><br/>如果您未指定值 (或值為 0)，代表無限逾時。<br/><br/>如果配量的資料處理時間超過逾時值，該活動會遭到取消，且系統會嘗試重試處理。 重試次數取決於 retry 屬性。 若發生逾時，狀態會設為 TimedOut。 |
-| delay |TimeSpan |00:00:00 |指定配量之資料處理開始之前的延遲。<br/><br/>資料配量的活動執行會在 Delay 超出預期執行時間後開始。<br/><br/>範例：00:10:00 (意指延遲 10 分鐘) |
-| longRetry |整數 <br/><br/>最大值：10 |1 |配量執行失敗之前的長時間重試嘗試次數。<br/><br/>多個 longRetry 嘗試之間以 longRetryInterval 隔開。 所以如果您需要指定重試嘗試之間的時間，請使用 longRetry。 如果您指定 Retry 和 longRetry 兩者，每個 longRetry 嘗試都包含 Retry 嘗試，且最大嘗試次數是 Retry * longRetry。<br/><br/>例如，如果活動原則的設定如下︰<br/>Retry：3<br/>longRetry：2<br/>longRetryInterval：01:00:00<br/><br/>假設只有一個要執行的配量 (狀態是 Waiting)，且活動執行每次都失敗。 一開始會有 3 次連續執行嘗試。 在每次嘗試之後，配量狀態會是 Retry。 在前 3 次嘗試結束之後，配量狀態會是 LongRetry。<br/><br/>一個小時 (也就是 longRetryInteval 的值) 之後，會有另一組 3 次連續執行嘗試。 在那之後，配量狀態會是 Failed，不會再嘗試重試。 因此全部已進行 6 次嘗試。<br/><br/>如果任何執行成功，配量狀態會是 Ready 且不會再嘗試重試。<br/><br/>longRetry 可能用於下列情況：相依資料達到不具決定性的次數，或進行資料處理的整體環境很脆弱。 在這類情況下逐一進行重試並沒有幫助，而在一段時間後進行重試則會導致所要的結果。<br/><br/>提醒：請勿設定較大的 longRetry 或 longRetryInterval 值。 較大的值通常表示其他系統問題。 |
+| retry |整數<br/><br/>最大值可以是 10 |0 |在配量的資料處理標示為 [失敗] 前的重試次數。 資料配量的活動執行會一直重試，直到指定的重試計數為止。 在失敗後會儘速完成重試。 |
+| timeout |TimeSpan |00:00:00 |活動的逾時。 範例︰00:10:00 (意指逾時 10 分鐘)<br/><br/>如果您未指定值 (或值為 0)，代表無限逾時。<br/><br/>如果配量的資料處理時間超過逾時值，該活動會遭到取消，且系統會嘗試重試處理。 重試次數取決於 retry 屬性。 若發生逾時，狀態會設為 TimedOut。 |
+| delay |TimeSpan |00:00:00 |指定配量之資料處理開始之前的延遲。<br/><br/>資料配量的活動執行會在 Delay 超出預期執行時間後開始。<br/><br/>範例︰00:10:00 (意指延遲 10 分鐘) |
+| longRetry |整數<br/><br/>最大值：10 |1 |配量執行失敗之前的長時間重試嘗試次數。<br/><br/>多個 longRetry 嘗試之間以 longRetryInterval 隔開。 所以如果您需要指定重試嘗試之間的時間，請使用 longRetry。 如果您指定 Retry 和 longRetry 兩者，每個 longRetry 嘗試都包含 Retry 嘗試，且最大嘗試次數是 Retry * longRetry。<br/><br/>例如，如果活動原則的設定如下︰<br/>Retry：3<br/>longRetry：2<br/>longRetryInterval：01:00:00<br/><br/>假設只有一個要執行的配量 (狀態是 Waiting)，且活動執行每次都失敗。 一開始會有 3 次連續執行嘗試。 在每次嘗試之後，配量狀態會是 Retry。 在前 3 次嘗試結束之後，配量狀態會是 LongRetry。<br/><br/>一個小時 (也就是 longRetryInteval 的值) 之後，會有另一組 3 次連續執行嘗試。 在那之後，配量狀態會是 Failed，不會再嘗試重試。 因此全部已進行 6 次嘗試。<br/><br/>如果任何執行成功，配量狀態會是 Ready 且不會再嘗試重試。<br/><br/>longRetry 可能用於下列情況：相依資料達到不具決定性的次數，或進行資料處理的整體環境很脆弱。 在這類情況下逐一進行重試並沒有幫助，而在一段時間後進行重試則會導致所要的結果。<br/><br/>提醒：請勿設定較大的 longRetry 或 longRetryInterval 值。 較大的值通常表示其他系統問題。 |
 | longRetryInterval |TimeSpan |00:00:00 |長時間重試嘗試之間的延遲 |
 
 如需詳細資訊，請參閱[管線](data-factory-create-pipelines.md)一文。 
@@ -332,7 +330,7 @@ Data Factory 監視和管理工具可讓您深入診斷記錄以了解失敗的�
 
 **輸入資料集**
 
-每小時輸入檔案會針對指定日期在資料夾中卸除。 輸入的可用性設定為 **Hour** (frequency：Hour，interval:1)。
+每小時輸入檔案會針對指定日期在資料夾中卸除。 輸入的可用性設定為 **小時** (頻率：小時、間隔：1)。
 
 ```json
 {
@@ -361,7 +359,7 @@ Data Factory 監視和管理工具可讓您深入診斷記錄以了解失敗的�
 ```
 **輸出資料集**
 
-每天會在當天的資料夾中建立一個輸出檔。 輸出的可用性設定為 **Day** (frequency:Day 和 interval:1)。
+每天會在當天的資料夾中建立一個輸出檔。 輸出的可用性設定為 **日** (頻率：日、間隔：1)。
 
 ```json
 {
@@ -390,7 +388,7 @@ Data Factory 監視和管理工具可讓您深入診斷記錄以了解失敗的�
 
 **活動：管線中的 Hive 活動**
 
-Hive 指令碼會收到適當的「日期時間」  資訊，做為使用 **WindowStart** 變數的參數，如下列程式碼片段所示。 Hive 指令碼會使用此變數將資料從正確的資料夾載入，並執行彙總來產生輸出。
+Hive 指令碼會收到適當的「日期時間」 ** 資訊，做為使用 **WindowStart** 變數的參數，如下列程式碼片段所示。 Hive 指令碼會使用此變數將資料從正確的資料夾載入，並執行彙總來產生輸出。
 
 ```json
 {  
@@ -452,7 +450,7 @@ Data Factory 會藉由對齊輸出資料配量的時間期間來自動找出要�
 
 您必須指定對於每個活動執行，Data Factory 應該針對每週輸入資料集使用上一週的資料配量。 使用 Azure Data Factory 的函式來實作此行為，如下列程式碼片段所示。
 
-**輸入1：Azure blob**
+**Input1：Azure Blob**
 
 第一個輸入是將會每日更新的 Azure Blob。
 
@@ -482,7 +480,7 @@ Data Factory 會藉由對齊輸出資料配量的時間期間來自動找出要�
 }
 ```
 
-**輸入2：Azure blob**
+**Input2：Azure Blob**
 
 Input2 是將會每週更新的 Azure Blob。
 
@@ -512,9 +510,9 @@ Input2 是將會每週更新的 Azure Blob。
 }
 ```
 
-**輸出：Azure blob**
+**輸出：Azure Blob**
 
-每天會在資料夾中建立一個當天的輸出檔。 輸出的可用性設定為 **day** (frequency:Day，interval:1)。
+每天會在資料夾中建立一個當天的輸出檔。 輸出的可用性設定為 **日** (頻率：日、間隔：1)。
 
 ```json
 {
@@ -606,7 +604,7 @@ Hive 活動接受 2 個輸入，並且每日產生輸出配量。 您可以針�
 
 CopyActivity1
 
-輸入：Dataset。 輸出：Dataset2。
+輸入：Dataset1。 輸出：Dataset2。
 
 CopyActivity2
 
@@ -697,15 +695,15 @@ CopyActivity2
 
 請注意，在此範例中，是將第一個複製活動的輸出資料集 (Dataset2) 指定為第二個活動的輸入。 因此，只有當來自第一個活動的輸出資料集準備就緒時，第二個活動才會執行。  
 
-在範例中，CopyActivity2 可以有不同的輸入 (例如 Dataset3)，但是您必須指定 Dataset2 做為 CopyActivity2 的輸入，因此在 CopyActivity1 完成之前，活動不會執行。 例如︰
+在範例中，CopyActivity2 可以有不同的輸入 (例如 Dataset3)，但是您必須指定 Dataset2 做為 CopyActivity2 的輸入，因此在 CopyActivity1 完成之前，活動不會執行。 例如：
 
 CopyActivity1
 
-輸入：Dataset1。 輸出：Dataset2。
+輸入︰Dataset1。 輸出：Dataset2。
 
 CopyActivity2
 
-輸入：Dataset3、Dataset2。 輸出：Dataset4。
+輸入︰Dataset3、Dataset2。 輸出︰Dataset4。
 
 ```json
 {

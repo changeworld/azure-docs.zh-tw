@@ -1,25 +1,21 @@
 ---
-title: 在 Azure Cloud Shell 中使用 Azure 資源的受控識別 | Microsoft Docs
+title: 在 Azure Cloud Shell 中使用資源的受控識別
 description: 在 Azure Cloud Shell 中使用 MSI 驗證程式碼
 services: azure
-documentationcenter: ''
 author: maertendMSFT
-manager: timlt
+ms.author: damaerte
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: azure
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 04/14/2018
-ms.author: damaerte
-ms.openlocfilehash: 7cadaaf67f9c6923ee9e9eb2596941aa8e1f0c9b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a5d49a16324a5a97f4a0507f9abf47ea602ea072
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60199477"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "72328705"
 ---
 # <a name="use-managed-identities-for-azure-resources-in-azure-cloud-shell"></a>在 Azure Cloud Shell 中使用 Azure 資源的受控識別
 

@@ -1,17 +1,17 @@
 ---
-title: 使用 Azure 入口網站重新啟動適用於 MariaDB 的 Azure 資料庫伺服器
+title: 重新開機伺服器-Azure 入口網站-適用於 MariaDB 的 Azure 資料庫
 description: 本文說明如何使用 Azure 入口網站重新啟動適用於 MariaDB 的 Azure 資料庫伺服器。
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
-ms.topic: conceptual
-ms.date: 2/7/2019
-ms.openlocfilehash: 232037562c4a84ee9217e2e89a0da2ffdc37d560
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.topic: how-to
+ms.date: 3/18/2020
+ms.openlocfilehash: 369d19d98946f8309c7f2053f4453e09a7ed902f
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "60745730"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121056"
 ---
 # <a name="restart-azure-database-for-mariadb-server-using-azure-portal"></a>使用 Azure 入口網站重新啟動適用於 MariaDB 的 Azure 資料庫伺服器
 本主題說明如何重新啟動適用於 MariaDB 的 Azure 資料庫伺服器。 您可能會為了進行維護而需要重新啟動伺服器，進而在伺服器執行作業時導致短暫中斷。
@@ -22,7 +22,7 @@ ms.locfileid: "60745730"
 
 ## <a name="prerequisites"></a>必要條件
 若要完成本操作說明指南，您需要：
-- [MariaDB 伺服器的 Azure 資料庫](./quickstart-create-mariadb-server-database-using-azure-portal.md)
+- [適用於 MariaDB 的 Azure 資料庫伺服器](./quickstart-create-mariadb-server-database-using-azure-portal.md)
 
 ## <a name="perform-server-restart"></a>執行伺服器重新啟動
 
@@ -30,11 +30,11 @@ ms.locfileid: "60745730"
 
 1. 在 Azure 入口網站中，選取適用於 MariaDB 的 Azure 資料庫伺服器。
 
-2. 在伺服器 [概觀] 頁面的工具列中，按一下 [重新啟動]。
+2. 在伺服器 [概觀]**** 頁面的工具列中，按一下 [重新啟動]****。
 
    ![適用於 MariaDB 的 Azure 資料庫 - 概觀 - 重新啟動按鈕](./media/howto-restart-server-portal/2-server.png)
 
-3. 按一下 [是] 以確認要重新啟動伺服器。
+3. 按一下 [是]**** 以確認要重新啟動伺服器。
 
    ![適用於 MariaDB 的 Azure 資料庫 -重新啟動確認](./media/howto-restart-server-portal/3-restart-confirm.png)
 

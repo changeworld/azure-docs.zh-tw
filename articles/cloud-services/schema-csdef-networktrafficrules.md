@@ -1,5 +1,6 @@
 ---
-title: Azure 雲端服務定義。NetworkTrafficRules 結構描述 | Microsoft Docs
+title: Azure 雲端服務 Def NetworkTrafficRules 架構 |Microsoft Docs
+description: 深入瞭解 NetworkTrafficRules，這會限制可存取角色內部端點的角色。 它會與服務定義檔中的角色結合。
 ms.custom: ''
 ms.date: 04/14/2015
 services: cloud-services
@@ -10,15 +11,14 @@ ms.tgt_pltfrm: ''
 ms.topic: reference
 ms.assetid: 351b369f-365e-46c1-82ce-03fc3655cc88
 caps.latest.revision: 17
-author: jpconnock
-ms.author: jeconnoc
-manager: timlt
-ms.openlocfilehash: 8925943b0a5d151d55adedcfe3f01b5a14c63c1b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+author: tgore03
+ms.author: tagore
+ms.openlocfilehash: e53c10395ec3168e656633cc43fb2d01902209fa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60613891"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "79534723"
 ---
 # <a name="azure-cloud-services-definition-networktrafficrules-schema"></a>Azure 雲端服務定義 NetworkTrafficRules 結構描述
 `NetworkTrafficRules` 節點是服務定義檔中的選擇性元素，它指定角色如何彼此通訊。 它會限制哪些角色可以存取特定角色的內部端點。 `NetworkTrafficRules` 不是獨立元素；它會與服務定義檔中的兩個或多個角色結合。
@@ -54,7 +54,7 @@ ms.locfileid: "60613891"
 
 [OnlyAllowTrafficTo 元素](#OnlyAllowTrafficTo)
 
-[Destinations 元素](#Destinations)
+[目的地元素](#Destinations)
 
 [RoleEndpoint 元素](#RoleEndpoint)
 
@@ -64,16 +64,16 @@ AllowAllTraffic 元素
 
 [FromRole 元素](#FromRole)
 
-##  <a name="NetworkTrafficRules"></a> NetworkTrafficRules 元素
+##  <a name="networktrafficrules-element"></a><a name="NetworkTrafficRules"></a>NetworkTrafficRules 元素
 `NetworkTrafficRules` 元素會指定哪些角色可以與另一個角色上的哪個端點進行通訊。 服務可以包含一個 `NetworkTrafficRules` 定義。
 
-##  <a name="OnlyAllowTrafficTo"></a> OnlyAllowTrafficTo 元素
+##  <a name="onlyallowtrafficto-element"></a><a name="OnlyAllowTrafficTo"></a>OnlyAllowTrafficTo 元素
 `OnlyAllowTrafficTo` 元素描述目的地端點和可與其通訊之角色的集合。 您可以指定多個 `OnlyAllowTrafficTo` 節點。
 
-##  <a name="Destinations"></a> Destinations 元素
+##  <a name="destinations-element"></a><a name="Destinations"></a> Destinations 元素
 `Destinations` 元素描述可與之通訊的 RoleEndpoints 集合。
 
-##  <a name="RoleEndpoint"></a> RoleEndpoint 元素
+##  <a name="roleendpoint-element"></a><a name="RoleEndpoint"></a>RoleEndpoint 元素
 `RoleEndpoint` 元素描述允許與其通訊之角色上的端點。 如果角色上有多個端點，您可以指定多個 `RoleEndpoint` 元素。
 
 | 屬性      | 類型     | 描述 |
@@ -84,19 +84,23 @@ AllowAllTraffic 元素
 ## <a name="allowalltraffic-element"></a>AllowAllTraffic 元素
 `AllowAllTraffic` 元素是一個規則，允許所有角色與 `Destinations` 節點中定義的端點通訊。
 
-##  <a name="WhenSource"></a> WhenSource 元素
+##  <a name="whensource-element"></a><a name="WhenSource"></a>WhenSource 元素
 `WhenSource` 元素描述可以與 `Destinations` 節點中定義的端點通訊之角色集合。
 
 | 屬性 | 類型     | 描述 |
 | --------- | -------- | ----------- |
 | `matches` | `string` | 必要。 指定允許通訊時要套用的規則。 唯一支援的值為 `AnyRule`。|
   
-##  <a name="FromRole"></a> FromRole 元素
+##  <a name="fromrole-element"></a><a name="FromRole"></a>FromRole 元素
 `FromRole` 元素指定可以與 `Destinations` 節點中定義的端點通訊之角色。 如果有多個角色可以與端點通訊，您可以指定多個 `FromRole` 元素。
 
 | 屬性  | 類型     | 描述 |
 | ---------- | -------- | ----------- |
 | `roleName` | `string` | 必要。 要允許其進行通訊的角色名稱。|
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>另請參閱
 [雲端服務 (傳統) 定義結構描述](schema-csdef-file.md)
+
+
+
+

@@ -1,25 +1,19 @@
 ---
 title: Azure Blockchain Workbench 架構
-description: Azure Blockchain Workbench 架構及其元件的概觀。
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
-ms.date: 05/09/2019
-ms.topic: article
-ms.service: azure-blockchain
-ms.reviewer: zeyadr
-manager: femila
-ms.openlocfilehash: 8dc8304e97ff66356a8874a146231f0042e5f509
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+description: 概述 Azure Blockchain Workbench 預覽架構及其元件。
+ms.date: 09/05/2019
+ms.topic: conceptual
+ms.reviewer: brendal
+ms.openlocfilehash: ef56d0fdac74bf447fce01e772abed8a2b07c27b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510132"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85253421"
 ---
 # <a name="azure-blockchain-workbench-architecture"></a>Azure Blockchain Workbench 架構
 
-Azure Blockchain Workbench 會提供使用數個 Azure 元件的解決方案，來簡化區塊鏈應用程式的開發。 您可以使用 Azure Marketplace 中的解決方案範本來部署 Blockchain Workbench。 範本可讓您挑選要部署的模組和元件，包括區塊鏈堆疊、用戶端應用程式類型及 IoT 整合支援。 Blockchain Workbench 一經部署，即可提供 Web 應用程式、iOS 應用程式和 Android 應用程式的存取權。
+Azure Blockchain Workbench Preview 藉由提供使用數個 Azure 元件的解決方案，來簡化區塊鏈應用程式開發。 您可以使用 Azure Marketplace 中的解決方案範本來部署 Blockchain Workbench。 範本可讓您挑選要部署的模組和元件，包括區塊鏈堆疊、用戶端應用程式類型及 IoT 整合支援。 Blockchain Workbench 一經部署，即可提供 Web 應用程式、iOS 應用程式和 Android 應用程式的存取權。
 
 ![Blockchain Workbench 架構](./media/architecture/architecture.png)
 
@@ -45,16 +39,16 @@ Workbench 會為 Web 和行動裝置 (iOS、Android) 提供自動產生的用戶
 * 上傳並部署他們自己的智慧合約。
 * 在特定角色的內容中對使用者指派智慧合約的存取權。
 
-如需詳細資訊，請參閱 [GitHub 上的 Azure Blockchain Workbench 範例用戶端應用程式](https://github.com/Azure-Samples/blockchain/tree/master/blockchain-development-kit/connect/mobile/blockchain-workbench/workbench-client)。
+如需詳細資訊，請參閱 [GitHub 上的 Azure Blockchain Workbench 範例用戶端應用程式](https://github.com/Azure-Samples/blockchain-devkit/tree/master/connect/mobile)。
 
 ## <a name="gateway-service-api"></a>閘道服務 API
 
-Blockchain Workbench 包含以 REST 為基礎的閘道服務 API。 在寫入至區塊鏈時，API 會產生訊息並傳遞至事件代理人。 當 API 要求資料時，系統會將查詢傳送到鏈結關閉 SQL 資料庫。 SQL 資料庫包含鏈結資料的複本和中繼資料，後者會提供所支援智慧合約的內容和組態資訊。 查詢會以合約中繼資料所通知的格式，從鏈結關閉複本傳回所需的資料。
+Blockchain Workbench 包含以 REST 為基礎的閘道服務 API。 在寫入至區塊鏈時，API 會產生訊息並傳遞至事件代理人。 當 API 要求資料時，查詢會傳送至脫離鏈的資料庫。 資料庫包含連鎖資料和中繼資料的複本，可為支援的智慧合約提供內容和設定資訊。 查詢會以合約中繼資料所通知的格式，從鏈結關閉複本傳回所需的資料。
 
 開發人員可以存取閘道服務 API 來建置或整合區塊鏈解決方案，而不必依賴 Blockchain Workbench 用戶端應用程式來進行。
 
 > [!NOTE]
-> 為了對 API 的存取啟用驗證，會在 Azure Active Directory 中註冊兩個用戶端應用程式。 Azure Active Directory 必須對每個應用程式類型 (原生和 Web) 使用不同的應用程式註冊。 
+> 為了對 API 的存取啟用驗證，會在 Azure Active Directory 中註冊兩個用戶端應用程式。 Azure Active Directory 必須對每個應用程式類型 (原生和 Web) 使用不同的應用程式註冊。
 
 ## <a name="message-broker-for-incoming-messages"></a>內送郵件的訊息代理人
 
@@ -76,7 +70,7 @@ Blockchain Workbench 會自動部署兩種類型的事件消費者。 其中一�
 
 ### <a name="database-consumer"></a>資料庫取用者
 
-資料庫取用者會從服務匯流排取得訊息，然後將資料推送至連結的資料庫，例如 SQL 資料庫。
+資料庫取用者會從服務匯流排取得訊息，並將資料推送至附加的資料庫，例如 Azure SQL Database 中的資料庫。
 
 ### <a name="storage-consumer"></a>儲存體取用者
 
@@ -84,7 +78,7 @@ Blockchain Workbench 會自動部署兩種類型的事件消費者。 其中一�
 
 ## <a name="transaction-builder-and-signer"></a>交易產生器和簽署者
 
-如果輸入訊息代理人上的訊息需要寫入至區塊鏈，將會由 DLT 取用者負責處理。 DLT 取用者是一項服務，其會擷取訊息 (其中包含所要執行交易的中繼資料)，然後將資訊傳送至「交易產生器和簽署者」。 「交易產生器和簽署者」會將以資料為基礎的區塊鏈交易與所需的 區塊鏈目的地組合在一起。 一經組合，便會簽署交易。 私密金鑰會儲存在 Azure Key Vault。
+如果輸入訊息代理人上的訊息需要寫入至區塊鏈，將會由 DLT 取用者負責處理。 DLT 取用者是一項服務，其會擷取訊息 (其中包含所要執行交易的中繼資料)，然後將資訊傳送至「交易產生器和簽署者」**。 「交易產生器和簽署者」** 會將以資料為基礎的區塊鏈交易與所需的 區塊鏈目的地組合在一起。 一經組合，便會簽署交易。 私密金鑰會儲存在 Azure Key Vault。
 
  Blockchain Workbench 會從 Key Vault 擷取適當的私密金鑰，並在 Key Vault 外簽署交易。 一經簽署，交易就會傳送至交易路由器和總帳。
 
@@ -97,11 +91,11 @@ Blockchain Workbench 會自動部署兩種類型的事件消費者。 其中一�
 分散式總帳技術 (DLT) 監看員會監視連結至 Blockchain Workbench 的區塊鏈上所發生的事件。
 事件會反映個人和系統的相關資訊。 例如，建立新的合約執行個體、執行交易和變更狀態。 系統會擷取事件並傳送至輸出訊息代理人，以供下游取用者取用。
 
-例如，SQL 取用者會監視事件、取用事件，並在 SQL 資料庫中填入所包含的值。 進行複製可在鏈結關閉存放區中重新建立鏈結資料的複本。
+例如，SQL 取用者會監視事件、使用它們，並在資料庫中填入包含的值。 進行複製可在鏈結關閉存放區中重新建立鏈結資料的複本。
 
-## <a name="azure-sql-database"></a>Azure SQL 資料庫
+## <a name="azure-sql-database"></a>Azure SQL Database
 
-連結至 Blockchain Workbench 的 Azure SQL 資料庫會儲存合約定義、組態中繼資料，以及可透過 SQL 存取並儲存在區塊鏈中的資料複本。 直接存取資料庫，即可輕鬆地對此資料進行查詢、視覺化或分析。 開發人員和其他使用者可以使用資料庫來進行報告、分析或其他以資料為中心的整合。 例如，使用者可以使用 Power BI 將交易資料視覺化。
+附加至 Blockchain Workbench 的資料庫會儲存合約定義、設定中繼資料，以及儲存在區塊鏈中之 SQL 可存取的資料複本。 直接存取資料庫，即可輕鬆地對此資料進行查詢、視覺化或分析。 開發人員和其他使用者可以使用資料庫來進行報告、分析或其他以資料為中心的整合。 例如，使用者可以使用 Power BI 將交易資料視覺化。
 
 這個鏈結關閉儲存體可讓企業組織在 SQL 中 (而不是在區塊鏈總帳中) 查詢資料。 此外，藉由對不限定於區塊鏈技術堆疊的標準結構描述標準化，鏈結關閉儲存體可跨專案、案例和組織重複使用報告和其他成品。
 

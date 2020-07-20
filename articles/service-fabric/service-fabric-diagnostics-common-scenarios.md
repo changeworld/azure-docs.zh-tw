@@ -1,29 +1,18 @@
 ---
-title: Azure Service Fabric 診斷常見案例 | Microsoft Docs
-description: 了解如何針對 Azure Service Fabric 的常見案例進行疑難排解
-services: service-fabric
-documentationcenter: .net
-author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
+title: Azure Service Fabric 診斷常見案例
+description: 了解如何針對 Azure Service Fabric 應用程式內常見的監視和診斷案例進行疑難排解。
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/25/2019
-ms.author: srrengar
-ms.openlocfilehash: 265aea1b8873d812859b39175c732c3e7118cbb5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f92bc02082d8bcd9d917f05c93d3da413f772cd0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60394122"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257727"
 ---
 # <a name="diagnose-common-scenarios-with-service-fabric"></a>針對 Service Fabric 的常見案例進行診斷
 
-本文說明使用者在 Service Fabric 的監視和診斷領域所經常遇到的案例。 呈現的案例涵蓋所有 3 個 Service Fabric 層級：應用程式、叢集和基礎結構。 每個解決方案使用 Application Insights 和 Azure 監視器記錄檔，Azure 監視工具，來完成每個案例。 每個解決方案中的步驟，讓使用者簡介如何使用 Application Insights 和 Azure 監視器記錄內容中的 Service Fabric。
+本文說明使用者在 Service Fabric 的監視和診斷領域所經常遇到的案例。 呈現的案例涵蓋所有 3 個 Service Fabric 層級：應用程式、叢集和基礎結構。 每個解決方案都使用 Application Insights 和 Azure 監視器記錄 (Azure 監視工具) 來解決每個案例。 每個解決方案中的步驟都會向使用者介紹，如何在 Service Fabric 的範圍內使用 Application Insights 和 Azure 監視器記錄。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -77,7 +66,7 @@ ms.locfileid: "60394122"
 
 5. 按一下頂端的 [新增警示規則]，現在，每當有根據這項查詢的事件抵達時，您就會在所選擇的通訊方法中收到警示。
 
-    ![Azure 監視器記錄新警示](media/service-fabric-diagnostics-common-scenarios/oms-create-alert.png)
+    ![Azure 監視器記錄 - 新增警示](media/service-fabric-diagnostics-common-scenarios/oms-create-alert.png)
 
 ## <a name="how-can-i-be-alerted-of-application-upgrade-rollbacks"></a>如何收到應用程式升級復原的警示？
 
@@ -129,10 +118,10 @@ ms.locfileid: "60394122"
 
 ## <a name="how-do-i-track-performance-of-my-reliable-services-and-actors"></a>如何追蹤 Reliable Services 和 Reliable Actors 的效能？
 
-若要跟踪应用程序中 Reliable Services 或 Actors 的性能，还应收集“Service Fabric 执行组件”、“执行组件方法”、“服务”和“服务方法”计数器。 下面是要收集的可靠服务和执行组件性能计数器
+若要追蹤應用程式中的 Reliable Services 或 Reliable Actors 效能，也請新增Service Fabric Actor、Actor Method、Service 和 Service Method 計數器。 以下是要收集的可靠服務和執行者效能計數器範例
 
 >[!NOTE]
->当前无法通过 Log Analytics 代理收集 Service Fabric 性能计数器，但可以通过[其他诊断解决方案](service-fabric-diagnostics-partners.md)进行收集
+>Log Analytics 代理程式目前無法收集 Service Fabric 效能計數器，但可以由[其他診斷解決方案](service-fabric-diagnostics-partners.md)收集
 
 * `Service Fabric Service(*)\\Average milliseconds per request`
 * `Service Fabric Service Method(*)\\Invocations/Sec`
@@ -143,9 +132,10 @@ ms.locfileid: "60394122"
 
 ## <a name="next-steps"></a>後續步驟
 
-* [在 AI 中設定警示](../azure-monitor/app/alerts.md)以收到效能或使用方式的變更通知
+* [查詢常見的程式碼套件啟用錯誤](./service-fabric-diagnostics-code-package-errors.md)
+* [在 AI 中設定警示](../azure-monitor/platform/alerts-log.md)以收到效能或使用方式的變更通知
 * [Application Insights 的智慧偵測](../azure-monitor/app/proactive-diagnostics.md)會對傳送至 AI 的遙測資料執行主動式分析，對可能的效能問題提出警告。
-* 深入了解 Azure 監視器記錄檔[警示](../log-analytics/log-analytics-alerts.md)來協助偵測與診斷。
-* 針對內部部署叢集 Azure 監視器記錄檔會提供可用來將資料傳送至 Azure 監視器記錄檔的閘道 (HTTP 正向 Proxy)。 深入的了解，在[無法存取網際網路的電腦連線到 Azure 監視器記錄檔使用 Log Analytics 閘道](../azure-monitor/platform/gateway.md)
-* 熟悉[記錄搜尋和查詢](../log-analytics/log-analytics-log-searches.md)作為 Azure 監視器記錄的一部分提供的功能
-* 取得 Azure 監視器記錄檔和它所提供的更詳細的概觀，請閱讀[什麼是 Azure 監視器記錄檔？](../operations-management-suite/operations-management-suite-overview.md)
+* 深入了解 Azure 監視器記錄[警示](../azure-monitor/platform/alerts-overview.md)，以協助偵測和診斷。
+* 針對內部部署叢集，Azure 監視器記錄提供閘道 (HTTP 正向 Proxy)，可用於將資料傳送至 Azure 監視器記錄。 如需詳細資訊，請參閱[使用 Log Analytics 閘道將未連上網際網路的電腦連線到 Azure 監視器記錄](../azure-monitor/platform/gateway.md)
+* 熟悉 Azure 監視器記錄中提供的[記錄搜尋和查詢](../azure-monitor/log-query/log-query-overview.md)功能
+* 若要更深入了解 Azure 監視器記錄及其提供的功能，請參閱[什麼是 Azure 監視器記錄？](../azure-monitor/overview.md)

@@ -1,23 +1,23 @@
 ---
 title: 註冊 Azure 資料目錄中的資料資產
-description: 如何在 Azure 資料目錄中註冊資料資產
+description: 本教學課程說明如何在 Azure 資料目錄中註冊資料資產。
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: tutorial
-ms.date: 04/08/2019
-ms.openlocfilehash: 91f7967915fd19ae47ca207913f979aa56fcd27f
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.date: 08/01/2019
+ms.openlocfilehash: 10733dc59d7b143657c67e24d45d4a7c920cbd03
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60011699"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255189"
 ---
 # <a name="tutorial-register-data-assets-in-azure-data-catalog"></a>教學課程：註冊 Azure 資料目錄中的資料資產
 
-在本教學課程中，您可使用註冊工具，向目錄註冊 Azure SQL 資料庫範例中的資料資產。 註冊的過程會從資料來源及其包含的資產中，擷取重要的結構化中繼資料 (例如名稱、類型和位置)，並將該中繼資料複製到目錄。 資料來源及資料資產會留在原地，但目錄會利用中繼資料，讓您更輕鬆探索和了解資料來源及其資料。
+在本教學課程中，您可使用註冊工具，向目錄註冊資料庫範例中的資料資產。 註冊的過程會從資料來源及其包含的資產中，擷取重要的結構化中繼資料 (例如名稱、類型和位置)，並將該中繼資料複製到目錄。 資料來源及資料資產會留在原地，但目錄會利用中繼資料，讓您更輕鬆探索和了解資料來源及其資料。
 
-在本教學課程中，您了解如何：
+在本教學課程中，您會了解如何：
 > [!div class="checklist"]
 > * 註冊資料資產 
 > * 搜尋資料資產
@@ -39,11 +39,11 @@ ms.locfileid: "60011699"
 
 ### <a name="register-a-data-source"></a>註冊資料來源
 
-您會註冊 [Azure SQL 資料庫範例](../sql-database/sql-database-single-database-get-started.md)中的資料資產 (資料表)，但如果您偏好使用熟悉且與您的角色相關的資料，也可以使用任何支援的資料來源。 如需支援的資料來源清單，請參閱 [支援的資料來源](data-catalog-dsr.md)。
+您會註冊 Azure SQL Database [資料庫範例](../azure-sql/database/single-database-create-quickstart.md)中的資料資產 (資料表)，但如果您偏好使用熟悉且與您的角色相關的資料，也可以使用任何支援的資料來源。 如需支援的資料來源清單，請參閱 [支援的資料來源](data-catalog-dsr.md)。
 
-我們在本教學課程使用的 Azure SQL 資料庫名稱為 *RLSTest*。
+我們在本教學課程使用的資料庫名稱為 *RLSTest*。
 
-您現在可以使用 Azure 資料目錄，註冊 Azure SQL 資料庫範例中的資料資產。
+您現在可以使用 Azure 資料目錄，註冊資料庫範例中的資料資產。
 
 1. 移至 [Azure 資料目錄首頁](http://azuredatacatalog.com)，然後選取 [發佈資料]。
 
@@ -61,17 +61,17 @@ ms.locfileid: "60011699"
 
     ![Azure 資料目錄--資料來源](media/register-data-assets-tutorial/data-catalog-data-sources.png)
 
-5. 輸入您的 Azure SQL 資料庫範例的 SQL Server 連接屬性，然後選取 [連線]。
+5. 輸入 Azure SQL Database 中資料庫範例的 SQL Server 連線屬性，然後選取 [連線]。
 
    ![Azure 資料目錄--SQL Server 連線設定](media/register-data-assets-tutorial/data-catalog-sql-server-connection.png)
 
-6. 為您的資料資產註冊中繼資料。 在此範例中，您將註冊 Azure SQL 資料庫範例命名空間中的 **Product** 物件：
+6. 為您的資料資產註冊中繼資料。 在此範例中，您將註冊範例命名空間中的 **Product** 物件：
 
-    1. 在 [伺服器階層] 樹狀目錄中，展開 Azure SQL 資料庫範例，然後選取 [SalesLT]。
+    1. 在 [伺服器階層] 樹狀目錄中，展開資料庫範例，然後選取 [SalesLT]。
 
     2. 使用 CTRL 鍵並選取 [Product]、[ProductCategory]、[ProductDescription] 和 [ProductModel]。
 
-    3. 選取**移動選取的箭頭** (**>**)。 此動作會將所有選取的物件移至 [準備註冊的物件]  清單。
+    3. 選取**移動選取的箭頭** ( **>** )。 此動作會將所有選取的物件移至 [準備註冊的物件]  清單。
 
           ![Azure 資料目錄教學課程--瀏覽並選取物件](media/register-data-assets-tutorial/data-catalog-server-hierarchy.png)
 
@@ -85,7 +85,7 @@ ms.locfileid: "60011699"
 
           ![Azure 資料目錄教學課程--要註冊的物件](media/register-data-assets-tutorial/data-catalog-objects-register.png)
 
-    8. 選取 [註冊]。 Azure 資料目錄會註冊您選取的物件。 本練習中會註冊從您的 Azure SQL 資料庫範例中選取的物件。 註冊工具會從資料資產擷取中繼資料，並將該資料複製到 Azure 資料目錄服務。 資料會保留在它目前的位置。 資料仍然在原始系統的系統管理員及原則的控制之下。
+    8. 選取 [註冊]。 Azure 資料目錄會註冊您選取的物件。 本練習中會註冊從您的資料庫範例中選取的物件。 註冊工具會從資料資產擷取中繼資料，並將該資料複製到 Azure 資料目錄服務。 資料會保留在它目前的位置。 資料仍然在原始系統的系統管理員及原則的控制之下。
 
           ![Azure 資料目錄--已註冊的物件](media/register-data-assets-tutorial/data-catalog-registered-objects.png)
 
@@ -93,7 +93,7 @@ ms.locfileid: "60011699"
 
         ![Azure 資料目錄入口網站中的物件](media/register-data-assets-tutorial/data-catalog-view-portal.png)
 
-在本練習中，您已註冊 Azure SQL 資料庫範例中的物件，讓整個組織裡的使用者可以輕鬆探索它們。
+在本練習中，您已註冊 Azure SQL Database 資料庫範例中的物件，讓整個組織裡的使用者可以輕鬆加以探索。
 
 在下一個練習中，您將學習如何探索已註冊的資料資產。
 
@@ -176,9 +176,9 @@ ms.locfileid: "60011699"
 
 2. 清除 [物件類型] 底下的 [資料表] 篩選。
 
-3. 按 **ENTER**鍵。
+3. 按 ENTER 鍵。
 
-4. 確認您在搜尋結果中看到已註冊的 **Product**、**ProductCategory** 和 **ProductDescription** 資料表以及 Azure SQL 資料庫。
+4. 確認您在搜尋結果中看到已註冊的 **Product**、**ProductCategory** 和 **ProductDescription** 資料表以及 SQL 資料庫。
 
     ![Azure 資料目錄--比較搜尋結果](media/register-data-assets-tutorial/data-catalog-comparison-operator-results.png)
 
@@ -251,9 +251,9 @@ Azure 資料目錄支援支援群眾外包 (crowd-sourcing) 的註解作法。 A
 
 ### <a name="sql-server-management-studio"></a>SQL Server Management Studio
 
-在本練習中，您連接到使用 Azure 資料目錄找到的資料資產。 在 Azure 資料目錄入口網站中，您可以使用整合到 [開啟於]  功能表中的用戶端應用程式來直接連接。 您也可以使用資產中繼資料中包含的連接位置資訊，與您所選的任何應用程式連接。 例如︰您可以使用 SQL Server Management Studio 連線到 Azure SQL 資料庫，以存取本教學課程中註冊的資料資產中的資料。
+在本練習中，您連接到使用 Azure 資料目錄找到的資料資產。 在 Azure 資料目錄入口網站中，您可以使用整合到 [開啟於]  功能表中的用戶端應用程式來直接連接。 您也可以使用資產中繼資料中包含的連接位置資訊，與您所選的任何應用程式連接。 例如︰您可以使用 SQL Server Management Studio 連線到 Azure SQL Database，以存取本教學課程中註冊的資料資產中的資料。
 
-1. 開啟 **SQL Server Management Studio**。
+1. 開啟 [SQL Server Management Studio]。
 
 2. 在 [連線到伺服器] 對話方塊中，輸入 Azure 資料目錄入口網站 [屬性] 窗格中的伺服器名稱。
 
@@ -312,7 +312,7 @@ Azure 資料目錄支援支援群眾外包 (crowd-sourcing) 的註解作法。 A
 > [!NOTE]
 > 目錄的預設行為是允許任何使用者註冊任何資料來源，並允許任何使用者刪除任何已註冊的資料資產。 標準版 Azure 資料目錄中包含的管理功能提供其他選項，可用來取得資產的所有權、限制誰可以探索資產，以及限制誰可以刪除資產。
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>摘要
 
 在本教學課程中，您已瀏覽 Azure 資料目錄的基本功能，包括註冊、註解、探索和管理企業資料資產。 既然您已經完成本教學課程，現在可以開始使用。 您可以立即開始註冊您和小組所依賴的資料來源，並邀請同事使用目錄。
 

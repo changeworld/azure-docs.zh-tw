@@ -10,18 +10,18 @@ tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: overview
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 9/18/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: 2ebc678bffbbbe5d512d620b8f77ac0a245c0aff
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
-ms.translationtype: HT
+ms.openlocfilehash: b2a0a0527ffaedacbabcf19435fbc1772b632816
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59579116"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84707492"
 ---
 # <a name="enable-containers-to-use-azure-virtual-network-capabilities"></a>讓容器使用 Azure 虛擬網路功能
 
@@ -53,13 +53,13 @@ Pod 會在屬於虛擬網路的虛擬機器中提供。 適用於 Pod 的 IP 位
 
 ## <a name="limits"></a>限制
 
-外掛程式針對每部虛擬機器最多支援 250 個 Pod，並且在虛擬網路中最多支援 16,000 個 Pod。 對於 [Azure Kubernetes Service](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-kubernetes-service-limits) 而言，這些限制均不相同。
+外掛程式針對每部虛擬機器最多支援 250 個 Pod，並且在虛擬網路中最多支援 16,000 個 Pod。 對於 [Azure Kubernetes Service](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-kubernetes-service-limits) 而言，這些限制均不相同。
 
 ## <a name="using-the-plug-in"></a>使用外掛程式
 
 外掛程式可透過下列方式使用，以針對 Pod 或 Docker 容器提供基本的虛擬網路連結：
 
-- **Azure Kubernetes Service**：外掛程式會整合到 Azure Kubernetes Service (AKS)，並可藉由選擇 [進階網路] 選項來使用。 進階網路功能可讓您在現有或新的虛擬網路中部署 Kubernetes 叢集。 若要深入了解進階網路功能及其設定步驟，請參閱 [AKS 中的網路設定](../aks/networking-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+- **Azure Kubernetes Service**：外掛程式會整合到 Azure Kubernetes Service (AKS)，並可藉由選擇 [進階網路]  選項來使用。 進階網路功能可讓您在現有或新的虛擬網路中部署 Kubernetes 叢集。 若要深入了解進階網路功能及其設定步驟，請參閱 [AKS 中的網路設定](../aks/networking-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 - **AKS-Engine**：AKS-Engine 是一種工具，產生在 Azure 中部署 Kubernetes 叢集的 Azure Resource Manager 範本。 如需詳細指示，請參閱[部署適用於 AKS-Engine Kubernetes 叢集的外掛程式](deploy-container-networking.md#deploy-the-azure-virtual-network-container-network-interface-plug-in)。
 - **在 Azure 中建立自己的 Kubernetes 叢集**：外掛程式可用來針對您在 Kubernetes 叢集中自行部署的 Pod 提供基本網路功能，而不依賴 AKS 或 AKS-Engine 之類的工具。 在此案例中，已在叢集中的每部虛擬機器上安裝並啟用外掛程式。 如需詳細指示，請參閱[部署自行部署的 Kubernetes 叢集外掛程式](deploy-container-networking.md#deploy-plug-in-for-a-kubernetes-cluster)。
 - **Azure 中適用於 Docker 容器的虛擬網路連結**：如果您不想建立 Kubernetes 叢集，並且想要在虛擬機器中建立具有虛擬網路連結的 Docker 容器，即可使用外掛程式。 如需詳細指示，請參閱[部署適用於 Docker 的外掛程式](deploy-container-networking.md#deploy-plug-in-for-docker-containers)。

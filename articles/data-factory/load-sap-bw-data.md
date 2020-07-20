@@ -1,274 +1,279 @@
 ---
-title: 使用 Azure Data Factory 從 SAP Business Warehouse 中載入資料 |Microsoft Docs
-description: 使用 Azure Data Factory 從 SAP Business Warehouse (BW) 複製資料
+title: 從 SAP Business 倉儲載入資料
+description: 使用 Azure Data Factory 從 SAP Business 倉儲（BW）複製資料
 services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: craigg
+ms.author: jingwang
+manager: shwang
 ms.reviewer: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 03/19/2019
-ms.author: jingwang
-ms.openlocfilehash: 9a123ed45b5857aa40fc9853a95c528833ba8aa9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.custom: seo-lt-2019
+ms.date: 05/22/2019
+ms.openlocfilehash: 5403abab0f93edf14237dcc73f29ffb00a6581f0
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60548665"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86081276"
 ---
-# <a name="copy-data-from-sap-business-warehouse-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 SAP Business Warehouse 複製資料
+# <a name="copy-data-from-sap-business-warehouse-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 SAP Business 倉儲複製資料
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-本文說明如何使用 Azure Data Factory 將資料從 SAP Business Warehouse (BW) 透過開啟中樞複製到 Azure Data Lake 儲存體 Gen2。 您可以使用類似的程序，將資料複製到其他[支援的接收資料存放區](copy-activity-overview.md#supported-data-stores-and-formats)。
+本文說明如何使用 Azure Data Factory，透過 Open Hub 將資料從 SAP Business 倉儲（BW）複製到 Azure Data Lake Storage Gen2。 您可以使用類似的程式，將資料複製到其他[支援的接收資料存放區](copy-activity-overview.md#supported-data-stores-and-formats)。
 
 > [!TIP]
-> 如需將資料從 SAP BW，包括 SAP BW Open Hub 整合和差異擷取流程中，複製的一般資訊，請參閱[使用 Azure Data Factory 將資料複製從 SAP Business Warehouse，透過開啟中樞](connector-sap-business-warehouse-open-hub.md)。
+> 如需從 SAP BW 複製資料的一般資訊（包括 SAP BW 開放式中樞整合和差異抽取流程），請參閱[使用 Azure Data Factory，透過 Open hub 從 SAP Business 倉儲複製資料](connector-sap-business-warehouse-open-hub.md)。
 
 ## <a name="prerequisites"></a>必要條件
 
-- **Azure Data Factory**:如果您沒有帳戶，請依照下列步驟來[建立資料處理站](quickstart-create-data-factory-portal.md#create-a-data-factory)。
+- **Azure Data Factory**：如果您沒有，請遵循步驟來[建立資料](quickstart-create-data-factory-portal.md#create-a-data-factory)處理站。
 
-- **SAP BW 開啟中樞目的地 (OHD) 使用的目的型別 「 資料庫資料表 」**:若要建立 OHD 或檢查您 OHD 已正確設定，Data Factory 整合，請參閱[SAP BW 開放式中心目的地組態](#sap-bw-open-hub-destination-configurations)一節。
+- **SAP BW 開啟目的地類型為「資料庫資料表」的中樞目的地（OHD）**：若要建立 OHD，或檢查您的 OHD 是否已正確設定以進行 Data Factory 整合，請參閱本文的[SAP BW 開啟中樞目的地](#sap-bw-open-hub-destination-configurations)設定一節。
 
-- **SAP BW 使用者需要下列權限**:
+- **SAP BW 使用者需要下列許可權**：
 
-  - 遠端函式呼叫 (RFC) 的授權和 SAP BW。
-  - 「 執行 」 活動的權限**S_SDSAUTH**授權物件。
+  - 遠端函式呼叫（RFC）和 SAP BW 的授權。
+  - **S_SDSAUTH**授權物件之「執行」活動的許可權。
 
-- **A[自我裝載整合執行階段 (IR)](concepts-integration-runtime.md#self-hosted-integration-runtime)與 SAP.NET connector 3.0**。 請依照下列這些設定步驟：
+- **具有 SAP .net connector 3.0 的[自我裝載整合執行時間（IR）](concepts-integration-runtime.md#self-hosted-integration-runtime) **。 請遵循下列設定步驟：
 
-  1. 安裝並註冊為自我裝載的整合執行階段，3.13 或更新版本。 （此程序在本文稍後說明）。
+  1. 安裝和註冊自我裝載整合執行時間3.13 版或更新版本。 （本文稍後會說明此程式）。
 
-  2. 下載[64 位元 SAP 連接器，適用於 Microsoft.NET 3.0](https://support.sap.com/en/product/connectors/msnet.html)從 SAP 的網站，並將它安裝在自我裝載 IR 的同一部電腦上 在安裝期間，請確定您選取**組件安裝到 GAC**中**選擇性設定步驟**對話方塊中，下列影像所示：
+  2. 從 SAP 的網站下載[64 位 Sap Connector For Microsoft .net 3.0](https://support.sap.com/en/product/connectors/msnet.html) ，並將它安裝在與自我裝載 IR 相同的電腦上。 在安裝期間，請確定您在 [**選擇性安裝程式步驟**] 對話方塊中選取 [將**元件安裝到 GAC** ]，如下圖所示：
 
-     ![設定 SAP.NET 連接器 對話方塊](media/connector-sap-business-warehouse-open-hub/install-sap-dotnet-connector.png)
+     ![設定 SAP .NET Connector 對話方塊](media/connector-sap-business-warehouse-open-hub/install-sap-dotnet-connector.png)
 
-## <a name="do-a-full-copy-from-sap-bw-open-hub"></a>從 SAP BW Open Hub 中執行的完整複本
+## <a name="do-a-full-copy-from-sap-bw-open-hub"></a>從 SAP BW 開放式中樞執行完整複本
 
-在 Azure 入口網站中，移至您的 data factory。 選取 **編寫與監視**個別索引標籤中開啟 Data Factory UI。
+在 Azure 入口網站，移至您的資料處理站。 選取 [**作者 & 監視器**]，以在個別的索引標籤中開啟 Data Factory UI。
 
-1. 在 **讓我們開始**頁面上，選取**複製資料**以開啟 複製資料工具。
+1. 在 [**現在就開始**吧] 頁面上，選取 [**資料複製**] 以開啟 [資料複製] 工具。
 
-2. 在 [**屬性**頁面上，指定**工作名稱**，然後選取**下一步]**。
+2. 在 [**屬性**] 頁面上，指定工作**名稱**，然後選取 **[下一步]**。
 
-3. 在 **來源資料存放區**頁面上，選取 **+ 建立新的連接**。 選取  **SAP BW Open Hub**從連接器資源庫，然後選取**繼續**。 若要篩選的連接器，您可以輸入**SAP**在搜尋方塊中。
+3. 在 [**來源資料存放區**] 頁面上，選取 [ **+ 建立新連接**]。 從連接器資源庫選取 [ **SAP BW 開啟中樞**]，然後選取 [**繼續**]。 若要篩選連接器，您可以在 [搜尋] 方塊中輸入**SAP** 。
 
-4. 在 **指定 SAP BW Open Hub 連接**頁面上，依照下列步驟來建立新的連接。
+4. 在 [**指定 SAP BW 開啟中樞**連線] 頁面上，依照下列步驟建立新的連接。
 
-   ![建立 SAP BW Open Hub 連結的服務頁面](media/load-sap-bw-data/create-sap-bw-open-hub-linked-service.png)
+   ![建立 SAP BW 開啟中樞連結服務頁面](media/load-sap-bw-data/create-sap-bw-open-hub-linked-service.png)
 
-   1. 從**透過整合執行階段連線**清單中，選取現有的自我裝載 ir。 或者，如果您還沒有帳戶，請建立一個選擇。
+   1. 從 [透過**整合運行**時間連線] 清單中，選取現有的自我裝載 IR。 或者，如果您還沒有的話，請選擇建立一個。
 
-      若要建立新的自我裝載的 IR，請選取 **+ 新增**，然後選取**自我裝載**。 請輸入**名稱**，然後選取**下一步**。 選取 **快速安裝**目前的電腦上安裝，或遵循**手動安裝**所提供的步驟。
+      若要建立新的自我裝載 IR，請選取 [ **+ 新增**]，然後選取 [**自我**裝載]。 輸入**名稱**，然後選取 **[下一步]**。 選取 [**快速安裝**] 以在目前的電腦上安裝，或遵循所提供的**手動設定**步驟。
 
-      中所述[必要條件](#prerequisites)，請確定您有適用於 Microsoft.NET 3.0 安裝自我裝載整合執行階段執行所在的同一部電腦上使用 SAP 連接器。
+      如[必要條件](#prerequisites)中所述，請確定您已將 SAP Connector for Microsoft .net 3.0 安裝在自我裝載 IR 執行所在的同一部電腦上。
 
-   2. 填寫 SAP BW**伺服器名稱**，**系統編號**，**用戶端識別碼****語言**(如果以外**EN**)**使用者名**，並**密碼**。
+   2. 填入 [SAP BW**伺服器名稱**、[**系統編號**]、[**用戶端識別碼]、** [**語言**] （如果不是**EN**）、[**使用者名稱**] 和 [**密碼**]。
 
-   3. 選取 **測試連接**若要驗證的設定，然後選取**完成**。
+   3. 選取 [**測試連接**] 以驗證設定，然後選取 **[完成]**。
 
-   4. 建立新的連線。 選取 [下一步] 。
+   4. 隨即建立新的連接。 選取 [下一步]。
 
-5. 在 **選取 開啟中樞目的地**頁面上，瀏覽開啟 SAP BW 中可用的中樞目的地。 選取以複製資料，然後選取 OHD**下一步**。
+5. 在 [**選取開啟中樞目的地**] 頁面上，流覽 SAP BW 中可用的開放中樞目的地。 選取要從中複製資料的 OHD，然後選取 **[下一步]**。
 
-   ![選取 SAP BW 開放式中心目的地資料表](media/load-sap-bw-data/select-sap-bw-open-hub-table.png)
+   ![選取 SAP BW 開啟中樞目的地資料表](media/load-sap-bw-data/select-sap-bw-open-hub-table.png)
 
-6. 篩選條件，如果您需要指定其中一個。 如果您 OHD 只包含資料的單一資料傳輸程序 (DTP) 執行以單一要求識別碼，或您要確定您 DTP 完畢，而且您想要複製的資料清除**排除上次要求**核取方塊。
+6. 指定篩選準則（如果您需要的話）。 如果您的 OHD 只包含具有單一要求識別碼之單一資料傳輸程式（DTP）執行的資料，或者您確定您的 DTP 已完成，而您想要複製資料，請清除 [**排除最後一個要求**] 核取方塊。
 
-   深入了解這些設定[SAP BW 開放式中心目的地組態](#sap-bw-open-hub-destination-configurations)一節。 選取 **驗證**来再次將傳回的資料。 然後，選取 [下一步]。
+   若要深入瞭解這些設定，請參閱本文的[SAP BW 開啟中樞目的地](#sap-bw-open-hub-destination-configurations)設定一節。 選取 [**驗證**] 以再次檢查將傳回的資料。 然後選取 [下一步]。
 
-   ![設定 SAP BW Open Hub 篩選器](media/load-sap-bw-data/configure-sap-bw-open-hub-filter.png)
+   ![設定 SAP BW 開啟中樞篩選器](media/load-sap-bw-data/configure-sap-bw-open-hub-filter.png)
 
-7. 在 **目的地資料存放區**頁面上，選取 **+ 建立新的連接** > **Azure Data Lake 儲存體 Gen2**  >  **繼續**。
+7. 在 [**目的地資料存放區**] 頁面上，選取 [ **+ 建立新的連接**]  >  **Azure Data Lake Storage Gen2**  >  **繼續**]。
 
-8. 在 **指定的 Azure Data Lake 儲存體連接**頁面上，依照下列步驟來建立連線。
+8. 在 [**指定 Azure Data Lake Storage 連接**] 頁面上，依照下列步驟來建立連線。
 
-   ![建立 ADLS Gen2 連結的服務頁面](media/load-sap-bw-data/create-adls-gen2-linked-service.png)
+   ![建立 ADLS Gen2 連結服務頁面](media/load-sap-bw-data/create-adls-gen2-linked-service.png)
 
-   1. 選取 將 Data Lake 儲存體能夠 Gen2 的帳戶，從**名稱**下拉式清單。
-   2. 選取 [完成] 以建立連線。 然後，選取 [下一步]。
+   1. 從 [**名稱**] 下拉式清單中選取支援 Data Lake Storage Gen2 的帳戶。
+   2. 選取 [完成]**** 以建立連線。 然後選取 [下一步]。
 
-9. 在 **選擇輸出檔案或資料夾**頁面上，輸入**copyfromopenhub**做為輸出資料夾名稱。 然後，選取 [下一步]。
+9. 在 [**選擇輸出檔案或資料夾**] 頁面上，輸入**copyfromopenhub**作為輸出檔案夾名稱。 然後選取 [下一步]。
 
-   ![選擇輸出資料夾頁面](media/load-sap-bw-data/choose-output-folder.png)
+   ![選擇輸出檔案夾頁面](media/load-sap-bw-data/choose-output-folder.png)
 
-10. 在 [**檔案格式設定**頁面上，選取**下一步]** 以使用預設設定。
+10. 在 [**檔案格式設定**] 頁面上，選取 **[下一步]** 以使用預設設定。
 
-    ![指定接收格式 頁面](media/load-sap-bw-data/specify-sink-format.png)
+    ![指定接收格式頁面](media/load-sap-bw-data/specify-sink-format.png)
 
-11. 在 **設定**頁面上，展開**效能設定**。 輸入的值**複製平行處理原則程度**5 以平行方式載入從 SAP BW 等。 然後，選取 [下一步]。
+11. 在 [**設定**] 頁面上，展開 [**效能設定**]。 針對 [**複製平行**處理原則的程度] （例如5）輸入值，以平行方式從 SAP BW 載入。 然後選取 [下一步]。
 
-    ![設定 複製設定](media/load-sap-bw-data/configure-copy-settings.png)
+    ![設定複製設定](media/load-sap-bw-data/configure-copy-settings.png)
 
-12. 在 **摘要**頁面上，檢閱設定。 然後，選取 [下一步]。
+12. 在 [摘要]  頁面上，檢閱設定。 然後選取 [下一步]。
 
-13. 在 **部署**頁面上，選取**監視器**來監視管線。
+13. 在 [**部署**] 頁面上，選取 [**監視**] 來監視管線。
 
     ![部署頁面](media/load-sap-bw-data/deployment.png)
 
-14. 請注意，**監視器**頁面左側的索引標籤會自動選取。 **動作**資料行包含連結可供檢視活動執行詳細資料，以及重新執行管線。
+14. 請注意，系統會自動選取頁面左側的 [**監視**] 索引標籤。 [**動作**] 資料行會包含 [查看活動-執行詳細資料] 的連結，以及重新執行管線。
 
-    ![監視檢視的管線](media/load-sap-bw-data/pipeline-monitoring.png)
+    ![管線監視視圖](media/load-sap-bw-data/pipeline-monitoring.png)
 
-15. 若要檢視與此管線執行相關聯的活動執行，請選取**檢視活動執行**中**動作**資料行。 管線中只有一個活動 (複製活動)，所以您只會看到一個項目。 若要切換回管線執行檢視，請選取**管線**頂端的連結。 選取 [重新整理] 即可重新整理清單。
+15. 若要查看與管線執行相關聯的活動執行，請選取 [**動作**] 資料行中的 [**查看活動執行**]。 管線中只有一個活動 (複製活動)，所以您只會看到一個項目。 若要切換回 [管線-執行] 視圖，請選取頂端的 [**管線**] 連結。 選取 [重新整理] 即可重新整理清單。
 
-    ![活動監控 畫面](media/load-sap-bw-data/activity-monitoring.png)
+    ![活動監視畫面](media/load-sap-bw-data/activity-monitoring.png)
 
-16. 若要監視每個複製活動執行詳細資料，請選取**詳細資料**連結，也就是下面的眼鏡圖示**動作**[活動監控] 檢視中。 可用的詳細資料包含的資料磁碟區從來源複製到接收、 資料輸送量、 執行步驟和持續時間和使用的組態。
+16. 若要監視每個複製活動的執行詳細資料，請選取 [**詳細資料**] 連結，這是 [活動-監視] 視圖中 [**動作**] 下方的眼鏡圖示。 可用的詳細資料包括從來源複製到接收的資料量、資料輸送量、執行步驟和持續時間，以及所使用的設定。
 
-    ![活動監控 詳細資料](media/load-sap-bw-data/activity-monitoring-details.png)
+    ![活動監視詳細資料](media/load-sap-bw-data/activity-monitoring-details.png)
 
-17. 若要檢視**最大的要求識別碼**，請回到活動監控檢視，然後選取**輸出**之下**動作**。
+17. 若要查看**最大要求識別碼**，請回到 [活動監視] 視圖，然後選取 [**動作**] 底下的 [**輸出**]。
 
     ![活動輸出畫面](media/load-sap-bw-data/activity-output.png)
 
     ![活動輸出詳細資料檢視](media/load-sap-bw-data/activity-output-details.png)
 
-## <a name="do-an-incremental-copy-from-sap-bw-open-hub"></a>從 SAP BW Open Hub 進行增量複本
+## <a name="incremental-copy-from-sap-bw-open-hub"></a>從 SAP BW 開放式中樞進行增量複製
 
 > [!TIP]
-> 請參閱[SAP BW Open Hub 連接器差異擷取流程](connector-sap-business-warehouse-open-hub.md#delta-extraction-flow)若要了解 Data Factory 中的 SAP BW Open Hub 連接器從 SAP BW 所複製的增量資料。 這篇文章也有助於您了解基本的連接器設定。
+> 請參閱[SAP BW 開啟中樞連接器差異抽取流程](connector-sap-business-warehouse-open-hub.md#delta-extraction-flow)，以瞭解 Data Factory 中的 SAP BW 開放式中樞連接器如何從 SAP BW 複製增量資料。 本文也可以協助您瞭解基本連接器設定。
 
-現在，讓我們繼續來設定從 SAP BW Open Hub 增量複本。
+現在，讓我們繼續從 SAP BW 開放式集線器設定增量複製。
 
-增量複本會使用 「 高水位線 」 機制為基礎**要求識別碼**。 SAP BW 開放式中心目的地自動產生該識別碼的 DTP。 下圖顯示此工作流程：
+增量複製會使用以**要求識別碼**為基礎的「高水位線」機制。 該識別碼會在 DTP SAP BW 開放式中樞目的地中自動產生。 下圖顯示此工作流程：
 
-![累加複製工作流程的流程圖](media/load-sap-bw-data/incremental-copy-workflow.png)
+![累加式複製工作流程流程圖](media/load-sap-bw-data/incremental-copy-workflow.png)
 
-在 data factory**讓我們開始**頁面上，選取**從範本建立管線**使用內建的範本。
+在 [data factory] 的 [**開始**使用] 頁面上，選取 [**從範本建立管線**] 以使用內建範本。
 
-1. 搜尋**SAP BW**尋找並選取**Incremental 從 SAP BW 複製至 Azure Data Lake 儲存體 Gen2**範本。 此範本會將資料複製到 Azure Data Lake 儲存體 Gen2。 您可以使用類似的工作流程，將複製到其他的接收類型。
+1. 搜尋**SAP BW** ，以尋找並選取**從 SAP BW 到 Azure Data Lake Storage Gen2**範本的累加式複製。 此範本會將資料複製到 Azure Data Lake Storage Gen2。 您可以使用類似的工作流程，複製到其他接收類型。
 
-2. 在範本的主要頁面上，選取或建立下列的三個連線，然後選取**使用此範本**視窗右下角。
+2. 在範本的主頁面上，選取或建立下列三個連接，然後選取視窗右下角的 [**使用此範本**]。
 
-   - **Azure Blob 儲存體**:在此逐步解說中，我們必須使用 Azure Blob 儲存體來儲存高水位線，也就是*max 複製要求識別碼*。
-   - **SAP BW 開啟中樞**:這是要從其中複製資料的來源。 請參閱先前的完整複製逐步解說中，如需詳細的設定。
-   - **Azure Data Lake 儲存體 Gen2**:這是要將資料複製到接收。 請參閱先前的完整複製逐步解說中，如需詳細的設定。
+   - **Azure blob 儲存體**：在此逐步解說中，我們會使用 azure blob 儲存體來儲存高水位線，這是*複製的最大要求識別碼*。
+   - **SAP BW 開啟中樞**：這是用來複製資料的來源。 請參閱先前的完整複製逐步解說，以取得詳細設定。
+   - **Azure Data Lake Storage Gen2**：這是要將資料複製到其中的接收。 請參閱先前的完整複製逐步解說，以取得詳細設定。
 
-   ![從 SAP BW 範本的增量複製](media/load-sap-bw-data/incremental-copy-from-sap-bw-template.png)
+   ![SAP BW 範本的累加式複製](media/load-sap-bw-data/incremental-copy-from-sap-bw-template.png)
 
-3. 此範本會產生具有下列三個活動的管線，並使其鏈結上成功：*查閱*，*將資料複製*，以及*Web*。
+3. 此範本會產生包含下列三個活動的管線，並使其連結至成功：*查閱*、*資料複製*和*Web*。
 
-   移至管線**參數** 索引標籤。您會看到您需要提供的所有組態。
+   移至 [管線**參數**] 索引標籤。您會看到需要提供的所有設定。
 
-   ![從 SAP BW 設定增量複製](media/load-sap-bw-data/incremental-copy-from-sap-bw-pipeline-config.png)
+   ![從 SAP BW 設定進行增量複製](media/load-sap-bw-data/incremental-copy-from-sap-bw-pipeline-config.png)
 
-   - **SAPOpenHubDestinationName**:指定 Open Hub 資料表名稱，要從其中複製資料。
+   - **SAPOpenHubDestinationName**：指定要從中複製資料的開放中樞資料表名稱。
 
-   - **ADLSGen2SinkPath**:指定將資料複製到目的地 Azure 資料湖儲存體 Gen2 路徑。 如果路徑不存在，Data Factory 複製活動會建立在執行期間的路徑。
+   - **Data_Destination_Container**：指定要將資料複製到其中的目的地 Azure Data Lake Storage Gen2 容器。 如果容器不存在，則 Data Factory 複製活動會在執行期間建立一個。
+  
+   - **Data_Destination_Directory**：指定要複製資料的 Azure Data Lake Storage Gen2 容器下的資料夾路徑。 如果路徑不存在，則 Data Factory 複製活動會在執行期間建立路徑。
+  
+   - **HighWatermarkBlobContainer**：指定用來儲存高水位線值的容器。
 
-   - **HighWatermarkBlobPath**:指定的路徑來儲存高水位線值，例如`container/path`。
+   - **HighWatermarkBlobDirectory**：指定容器下的資料夾路徑來儲存高水位線值。
 
-   - **HighWatermarkBlobName**:指定 blob 名稱，來儲存高水位線值，例如`requestIdCache.txt`。 在 Blob 儲存體，移至對應的路徑的 HighWatermarkBlobPath + HighWatermarkBlobName，這類*container/path/requestIdCache.txt*。 建立 blob 以 0 的內容。
+   - **HighWatermarkBlobName**：指定用來儲存高水位線值的 blob 名稱，例如 `requestIdCache.txt` 。 在 Blob 儲存體中，移至 HighWatermarkBlobContainer + HighWatermarkBlobDirectory + HighWatermarkBlobName 的對應路徑，例如*container/path/requestIdCache.txt*。 建立具有內容0的 blob。
 
       ![Blob 內容](media/load-sap-bw-data/blob.png)
 
-   - **LogicAppURL**:此範本中，我們會使用 WebActivity 來呼叫 Azure Logic Apps，若要在 Blob 儲存體設定高水位線值。 或者，您可以使用 Azure SQL Database 來儲存它。 您可以使用預存程序活動來更新值。
+   - **LogicAppURL**：在此範本中，我們會使用 WebActivity 來呼叫 Azure Logic Apps 來設定 Blob 儲存體中的高水位線值。 或者，您可以使用 Azure SQL Database 來儲存它。 使用預存程式活動來更新值。
 
-      您必須先建立邏輯應用程式，下列影像所示。 然後，貼入**HTTP POST URL**。
+      您必須先建立邏輯應用程式，如下圖所示。 然後，貼上**HTTP POST URL**。
 
       ![邏輯應用程式設定](media/load-sap-bw-data/logic-app-config.png)
 
-      1. 移至 Azure 入口網站。 選取新**Logic Apps**服務。 選取  **+ 空白邏輯應用程式**以前往**Logic Apps 設計工具**。
+      1. 移至 Azure 入口網站。 選取新的**Logic Apps**服務。 選取 [ **+ 空白邏輯應用程式**] 以移至**Logic Apps 設計**工具。
 
-      2. 建立的觸發程序**HTTP 要求時收到**。 指定的 HTTP 要求主體如下所示：
+      2. **在收到 HTTP 要求時**，建立的觸發程式。 指定 HTTP 要求主體，如下所示：
 
          ```json
          {
             "properties": {
                "sapOpenHubMaxRequestId": {
                   "type": "string"
-               },
-               "type": "object"
-            }
+               }
+            },
+            "type": "object"
          }
          ```
 
-      3. 新增**建立 blob**動作。 針對**資料夾路徑**並**Blob 名稱**，使用您先前設定中的相同值**HighWatermarkBlobPath**和**HighWatermarkBlobName**.
+      3. 新增 [**建立 blob** ] 動作。 針對 [**資料夾路徑**] 和 [ **Blob 名稱**]，使用您先前在*HighWatermarkBlobContainer + HighWatermarkBlobDirectory*和*HighWatermarkBlobName*中設定的相同值。
 
-      4. 選取 [ **儲存**]。 然後，將複製的值**HTTP POST URL** Data Factory 管線中使用。
+      4. 選取 [儲存]。 然後，複製**HTTP POST URL**的值，以在 Data Factory 管線中使用。
 
-4. 提供 Data Factory 管線參數之後，請選取**偵錯** > **完成**叫用執行以驗證設定。 或者，選取**全部發佈**若要發行的變更，然後選取**觸發程序**執行測試回合。
+4. 提供 Data Factory 管線參數之後，**請選取**  >  **[檢查] [完成]** 以叫用執行來驗證設定。 或者，選取 [**發行**] 以發行所有變更，然後選取 [**新增觸發**程式] 來執行執行。
 
-## <a name="sap-bw-open-hub-destination-configurations"></a>SAP BW 開放式中心目的地組態
+## <a name="sap-bw-open-hub-destination-configurations"></a>SAP BW 開啟中樞目的地設定
 
-本節將介紹設定 SAP BW 側邊，以使用 Data Factory 中的 SAP BW Open Hub 連接器，將資料複製。
+本節介紹如何設定 SAP BW 端，以在 Data Factory 中使用 SAP BW 開放式中樞連接器來複製資料。
 
-### <a name="configure-delta-extraction-in-sap-bw"></a>設定 SAP BW 中的差異擷取
+### <a name="configure-delta-extraction-in-sap-bw"></a>在 SAP BW 中設定差異解壓縮
 
-如果您需要歷程記錄的複製和增量複本或是只有增量複本，請在 SAP BW 設定差異擷取。
+如果您同時需要歷程記錄複製和增量複製，或是只有增量複製，請在 SAP BW 中設定差異提取。
 
-1. 建立的開放式中心目的地。 您可以建立 OHD SAP 交易 RSA1，會自動建立必要的轉換和資料傳輸程序中。 套用下列設定：
+1. 建立開啟的中樞目的地。 您可以在 [SAP 交易 RSA1] 中建立 OHD，這會自動建立必要的轉換和資料傳輸程式。 套用下列設定：
 
-   - **ObjectType**:您可以使用任何物件類型。 在這裡，我們使用**InfoCube**做為範例。
-   - **目的型別**:選取 **資料庫資料表**。
-   - **資料表的索引鍵**:選取 **技術的索引鍵**。
-   - **擷取**：選取 **插入資料表中保留的資料和插入資料錄**。
+   - **ObjectType**：您可以使用任何物件類型。 在這裡，我們會使用**InfoCube**作為範例。
+   - **目的地類型**：選取 [**資料庫資料表**]。
+   - **資料表的索引鍵**：選取 [技術] [**金鑰**]。
+   - [**解壓縮**]：選取 [**保留資料]，並將記錄插入資料表**。
 
-   ![建立 SAP BW OHD 差異擷取對話方塊](media/load-sap-bw-data/create-sap-bw-ohd-delta.png)
+   ![建立 SAP BW OHD 差異解壓縮對話方塊](media/load-sap-bw-data/create-sap-bw-ohd-delta.png)
 
-   ![建立 SAP BW OHD delta2 擷取對話方塊](media/load-sap-bw-data/create-sap-bw-ohd-delta2.png)
+   ![建立 SAP BW OHD delta2 解壓縮對話方塊](media/load-sap-bw-data/create-sap-bw-ohd-delta2.png)
 
-   您可能會增加平行 DTP 執行 SAP 工作程序數目：
+   您可能會增加適用于 DTP 的平行執行中 SAP 工作進程的數目：
 
-   ![create-sap-bw-ohd-delta3](media/load-sap-bw-data/create-sap-bw-ohd-delta3.png)
+   ![建立-sap-bw-ohd-delta3](media/load-sap-bw-data/create-sap-bw-ohd-delta3.png)
 
-2. 排程中處理序鏈結 DTP。
+2. 在處理常式鏈中排程 DTP。
 
-   如果您尚未已壓縮的所需的資料列，僅適用於 cube 的差異 DTP。 請確定 BW cube 壓縮不執行之前 DTP Open Hub 資料表。 若要這樣做最簡單的方式是將 DTP 整合到您現有的處理序鏈結。 在下列範例中，（以 OHD) DTP 插入之間的處理序鏈結*調整*（彙總套件） 和*摺疊*（cube 壓縮） 的步驟。
+   只有在尚未壓縮必要的資料列時，cube 的差異 DTP 才會運作。 請確定 BW cube 壓縮不是在 DTP 的開放中樞資料表之前執行。 最簡單的方法是將 DTP 整合到您現有的程式鏈。 在下列範例中，會將 DTP （OHD）插入到*調整* *（匯總匯總）和折*迭（cube 壓縮）步驟之間的程式鏈。
 
-   ![建立 SAP BW 處理序鏈結流程圖](media/load-sap-bw-data/create-sap-bw-process-chain.png)
+   ![建立 SAP BW 進程鏈流程圖](media/load-sap-bw-data/create-sap-bw-process-chain.png)
 
-### <a name="configure-full-extraction-in-sap-bw"></a>設定 SAP BW 中的完整擷取
+### <a name="configure-full-extraction-in-sap-bw"></a>在 SAP BW 中設定完整解壓縮
 
-除了差異擷取，您可以使用相同的 SAP BW InfoProvider 完整擷取。 這通常適用於 如果您想要執行完整複本，但不是累加，或您想要[重新同步處理差異擷取](#resync-delta-extraction)。
+除了差異解壓縮以外，您可能還想要完全解壓縮相同的 SAP BW InfoProvider。 如果您想要執行完整複本但不是增量，或想要重新同步處理[差異解壓縮](#resync-delta-extraction)，這通常適用。
 
-您不能有一個以上的 DTP 的相同 OHD。 因此，您必須建立其他 OHD 差異擷取前。
+同一個 OHD 不能有多個 DTP。 因此，您必須先建立額外的 OHD，再進行差異提取。
 
-![建立完整的 SAP BW OHD](media/load-sap-bw-data/create-sap-bw-ohd-full.png)
+![建立 SAP BW OHD full](media/load-sap-bw-data/create-sap-bw-ohd-full.png)
 
-完整載入 OHD，選擇不同的選項比差異擷取：
+針對完整 load OHD，請選擇不同于差異解壓縮的選項：
 
-- 在 OHD:設定**擷取**選項設定為**刪除的資料和插入記錄**。 否則，資料也將擷取許多次，當您重複 BW 處理序鏈結中的 DTP。
+- 在 OHD 中：將 [**解壓縮**] 選項設定為 [**刪除資料] 和 [插入記錄**]。 否則，當您在 BW 程式鏈中重複 DTP 時，將會多次解壓縮資料。
 
-- 在 DTP:設定**擷取模式**要**完整**。 您必須將變更從自動建立的 DTP**差異**要**完整**之後立即 OHD 建立時，此映像所示：
+- 在 [DTP：將**解壓縮模式**設定為**完整**]。 建立 OHD 之後，您必須立即將自動建立的 DTP 從**差異**變更為**Full** ，如下圖所示：
 
-   ![建立 SAP BW OHD 為 「 完整 」 擷取設定 對話方塊](media/load-sap-bw-data/create-sap-bw-ohd-full2.png)
+   ![建立為「完整」解壓縮設定的 SAP BW OHD 對話方塊](media/load-sap-bw-data/create-sap-bw-ohd-full2.png)
 
-- 在 Data Factory 的 BW Open Hub 連接器：關閉**排除上次要求**。 否則，執行任何動作將擷取。
+- 在 Data Factory 的 BW 開放式中樞連接器中： [關閉] [**排除上一個要求**]。 否則，將不會解壓縮任何內容。
 
-您通常會以手動方式執行完整的 DTP。 或者，您可以建立處理序鏈結完整 DTP。 它通常是獨立於您現有的處理序鏈結的另一個鏈結。 在任一情況下，*確定 DTP 會完成啟動之前擷取，使用 Data Factory 複製*。 否則，只有部分的資料將會複製。
+您通常會以手動方式執行完整的 DTP。 或者，您可以建立完整 DTP 的程式鏈。 這通常是獨立于現有程式鏈之外的個別鏈。 不論是哪一種情況，請*先確定 DTP 已完成，再使用 Data Factory 複製開始解壓縮*。 否則，只會複製部分資料。
 
-### <a name="run-delta-extraction-the-first-time"></a>執行差異擷取第一次
+### <a name="run-delta-extraction-the-first-time"></a>第一次執行差異解壓縮
 
-第一次的差異擷取就技術上來說*完整擷取*。 它會將資料複製時，預設情況下，SAP BW Open Hub 連接器會排除最後一個要求。 針對第一次的差異擷取，沒有擷取資料的 Data Factory 複製活動所直到後續 DTP 產生差異資料中的資料表，並提供個別的要求識別碼。 有兩種方式可避免這種情況：
+第一個差異解壓縮在技術上是*完整的解壓縮*。 根據預設，SAP BW 開放式中樞連接器會在複製資料時排除最後一個要求。 針對第一個差異解壓縮，Data Factory 複製活動不會解壓縮任何資料，直到後續的 DTP 在具有個別要求識別碼的資料表中產生差異資料為止。 有兩種方式可以避免這種情況：
 
-- 關閉**排除上次要求**第一次的差異擷取的選項。 請確定第一次的差異 DTP 完畢之前啟動差異擷取第一次。
--  使用程序重新同步的差異擷取、 下一節中所述。
+- 關閉第一個差異解壓縮的 [**排除最後一個要求**] 選項。 第一次啟動差異解壓縮之前，請確定第一個差異 DTP 已完成。
+-  使用 resyncing 差異解壓縮的程式，如下一節所述。
 
-### <a name="resync-delta-extraction"></a>重新同步處理差異擷取
+### <a name="resync-delta-extraction"></a>重新同步處理差異解壓縮
 
-下列情況下變更 SAP BW cube 中的資料，但不是會考慮差異 DTP:
+下列案例會變更 SAP BW cube 中的資料，但差異 DTP 不會考慮：
 
-- SAP BW 選擇性刪除 （資料列使用任何篩選條件）
-- SAP BW （屬於錯誤的要求） 的要求刪除
+- SAP BW 選擇性刪除（使用任何篩選準則的資料列）
+- SAP BW 要求刪除（錯誤的要求）
 
-SAP 開放式中心目的地不是資料超市控制資料中的目標 （2015年之後的所有 SAP BW 支援封裝）。 因此，您可以刪除 cube 中的資料，而不需要變更 OHD 中的資料。 然後，您必須重新同步使用 Data Factory 之 cube 的資料：
+SAP 開放式中樞目的地不是資料超市控制的資料目標（在2015之後，所有 SAP BW 都支援封裝）。 因此，您可以從 cube 刪除資料，而不需要變更 OHD 中的資料。 接著，您必須使用 Data Factory 重新同步處理 cube 的資料：
 
-1. （透過 SAP 中使用完整的 DTP），Data Factory 中執行完整的擷取。
-2. 刪除差異 DTP Open Hub 資料表中的所有資料列。
-3. 設定狀態的差異 DTP 要**已提取**。
+1. 在 Data Factory 中執行完整的解壓縮（藉由使用 SAP 中的完整 DTP）。
+2. 刪除開放中樞資料表中的所有資料列，以取得差異 DTP。
+3. 將差異 DTP 的狀態設定為 [已**提取**]。
 
-在此之後，所有後續的差異 DTPs 和 Data Factory 差異擷取如預期般運作。
+在此之後，所有後續的差異 DTPs 和 Data Factory 差異提取都會如預期般運作。
 
-若要設定的差異 DTP 狀態來**已提取**，您可以使用下列選項來手動執行差異 DTP:
+若要將差異 DTP 的狀態設定為 [已**提取**]，您可以使用下列選項，以手動方式執行差異 dtp：
 
-    *No Data Transfer; Delta Status in Source: Fetched*
+*無資料傳輸;來源中的差異狀態：已提取*
 
 ## <a name="next-steps"></a>後續步驟
 
-深入了解 SAP BW Open Hub 連接器支援：
+深入瞭解 SAP BW 開放式中樞連接器支援：
 
 > [!div class="nextstepaction"]
->[SAP 商務倉儲 Open Hub 連接器](connector-sap-business-warehouse-open-hub.md)
+>[SAP Business 倉儲開放式中樞連接器](connector-sap-business-warehouse-open-hub.md)

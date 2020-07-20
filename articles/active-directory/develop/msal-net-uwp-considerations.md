@@ -1,50 +1,67 @@
 ---
-title: 通用 Windows 平台考量 (Microsoft Authentication Library for.NET) |Azure
-description: 使用 Microsoft Authentication Library for.NET (MSAL.NET) 使用通用 Windows 平台時，請了解特定的考量。
+title: UWP 考慮（MSAL.NET） |Azure
+titleSuffix: Microsoft identity platform
+description: 瞭解搭配適用于 .NET 的 Microsoft 驗證程式庫（MSAL.NET）使用通用 Windows 平臺（UWP）的考慮。
 services: active-directory
-documentationcenter: dev-center-name
-author: rwike77
-manager: celested
-editor: ''
+author: mmacy
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/24/2019
-ms.author: ryanwi
+ms.date: 07/16/2019
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb8076df5482c91942349e0a052794f3fe945a5f
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 0654bce86cf5fb0b5bd117e444721e95f137dd47
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65076506"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82652684"
 ---
-# <a name="universal-windows-platform-specific-considerations-with-msalnet"></a>使用 MSAL.NET 的通用 Windows 平台專屬考量
-在 Xamarin iOS 上有使用 MSAL.NET 時，您必須考慮到幾項考量。
+# <a name="considerations-for-using-universal-windows-platform-with-msalnet"></a>搭配 MSAL.NET 使用通用 Windows 平臺的考慮
+使用通用 Windows 平臺（UWP）搭配 MSAL.NET 的應用程式開發人員應該考慮本文所提供的概念。
 
 ## <a name="the-usecorporatenetwork-property"></a>UseCorporateNetwork 屬性
-在 WinRT 平台中`PublicClientApplication`具有下列布林值屬性``UseCorporateNetwork``。 這個屬性允許 Win8.1 和 UWP 應用程式可受益於整合式 Windows 驗證 （並因此與使用者的 SSO 登入作業系統） 的使用者是否登入的帳戶在同盟 Azure AD 租用戶。 這會運用 WAB （Web 驗證代理人）。 
+在 Windows 執行階段（WinRT）平臺上， `PublicClientApplication` 具有布林值屬性 `UseCorporateNetwork` 。 此屬性可讓 Windows 8.1 應用程式和 UWP 應用程式受益于整合式 Windows 驗證（IWA）（如果使用者已登入具有同盟 Azure Active Directory （Azure AD）租使用者的帳戶）。 已登入作業系統的使用者也可以使用單一登入（SSO）。 當您設定 `UseCorporateNetwork` 屬性時，MSAL.NET 會使用 web 驗證訊息代理程式（WAB）。
 
 > [!IMPORTANT]
-> 此屬性設定為 true 時，假設應用程式開發人員，具有應用程式中啟用整合式 Windows 驗證 (IWA)。 這個項目：
-> - 在  ``Package.appxmanifest`` UWP 應用程式中**功能**索引標籤上，啟用下列功能：
->   - 企業驗證
->   - 私人網路 (用戶端和伺服器)
->   - 共用的使用者憑證
+> 將 `UseCorporateNetwork` 屬性設定為 true 時，會假設應用程式開發人員已在應用程式中啟用 IWA。 若要啟用 IWA：
+> - 在 UWP 應用程式的 `Package.appxmanifest` [**功能**] 索引標籤上，啟用下列功能：
+>   - **企業驗證**
+>   - **私人網路 (用戶端和伺服器)**
+>   - **共用使用者憑證**
 
-因為要求的企業驗證] 或 [共用使用者憑證的功能的應用程式需要較高層級的驗證，以接受 [Windows 存放區]，預設未啟用 IWA，而且並非所有開發人員可能想要執行較高驗證層級。 
+預設不會啟用 IWA，因為 Microsoft Store 需要高層級的驗證，才能接受要求企業驗證或共用使用者憑證功能的應用程式。 並非所有開發人員都想要執行此層級的驗證。
 
-在 UWP 平台 (WAB) 上的基礎實作無法正常運作在企業案例中已啟用條件式存取的位置。 徵兆是，使用者會嘗試使用 Windows hello 登入，並建議選擇未找到憑證，但是 pin 的憑證，或在使用者選擇，但永遠不會收到 Pin 提示。 因應措施為使用替代方法 (使用者名稱/密碼 + 電話驗證)，但並不好的經驗。 
+在 UWP 平臺上，基礎的 WAB 執行在啟用條件式存取的企業案例中無法正常運作。 當使用者嘗試使用 Windows Hello 登入時，會看到此問題的徵兆。 當要求使用者選擇憑證時：
+
+- 找不到 PIN 的憑證。
+- 使用者選擇憑證之後，系統不會提示他們輸入 PIN。
+
+您可以嘗試使用替代方法（例如使用者名稱-密碼和電話驗證）來避免這個問題，但體驗並不好。
+
+## <a name="troubleshooting"></a>疑難排解
+
+某些客戶在特定的企業環境中回報了下列登入錯誤，他們知道他們有網際網路連線，而且該連線與公用網路搭配運作。
+
+```Text
+We can't connect to the service you need right now. Check your network connection or try this again later.
+```
+
+您可以確定 WAB （基礎 Windows 元件）允許私人網路，以避免此問題。 您可以藉由設定登錄機碼來執行此動作：
+
+```Text
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\authhost.exe\EnablePrivateNetwork = 00000001
+```
+
+如需詳細資訊，請參閱[Web 驗證訊息代理程式-Fiddler](https://docs.microsoft.com/windows/uwp/security/web-authentication-broker#fiddler)。
 
 ## <a name="next-steps"></a>後續步驟
-在下列範例中提供更多詳細資料：
+下列範例會提供詳細資訊。
 
 範例 | 平台 | 描述 
 |------ | -------- | -----------|
-|[active-directory-dotnet-native-uwp-v2](https://github.com/azure-samples/active-directory-dotnet-native-uwp-v2) | UWP | 使用 msal.net，存取 Microsoft Graph 進行使用者驗證與 Azure AD v2.0 端點的通用 Windows 平台用戶端應用程式。 <br>![拓撲](media/msal-net-uwp-considerations/topology-native-uwp.png)|
-|[https://github.com/Azure-Samples/active-directory-xamarin-native-v2](https://github.com/Azure-Samples/active-directory-xamarin-native-v2) | Xamarin iOS、Android、UWP | 展示如何使用 MSAL 來驗證 MSA 與 Azure AD 透過 AAD v2.0 端點，並存取 Microsoft Graph 與產生的語彙基元的簡單 Xamarin Forms 應用程式。 <br>![拓撲](media/msal-net-uwp-considerations/topology-xamarin-native.png)|
+|[active directory-dotnet-原生-uwp-v2](https://github.com/azure-samples/active-directory-dotnet-native-uwp-v2) | UWP | 使用 MSAL.NET 的 UWP 用戶端應用程式。 它會存取使用 Azure AD 2.0 端點進行驗證之使用者的 Microsoft Graph。 <br>![拓撲](media/msal-net-uwp-considerations/topology-native-uwp.png)|
+|[active directory-xamarin-native-v2](https://github.com/Azure-Samples/active-directory-xamarin-native-v2) | Xamarin iOS、Android、UWP | 簡單的 Xamarin Forms 應用程式，示範如何使用 MSAL 來驗證 Microsoft 個人帳戶，並透過 Azure AD 2.0 端點 Azure AD。 它也會說明如何存取 Microsoft Graph 並顯示產生的權杖。 <br>![拓撲](media/msal-net-uwp-considerations/topology-xamarin-native.png)|

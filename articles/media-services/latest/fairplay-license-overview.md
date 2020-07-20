@@ -1,6 +1,6 @@
 ---
 title: 媒體服務和 Apple FairPlay 授權支援 - Azure | Microsoft Docs
-description: 本主題概要說明 Apple FairPlay 授權需求和組態。
+description: 本主題提供 Apple FairPlay 授權需求和設定的總覽。
 author: juliako
 manager: femila
 editor: ''
@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/08/2018
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 6d4b7ba842d08723b90a4f2491d9e79e68dd932e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4a3516d96e397944adcd31628a561a243e178c2d
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60733567"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86183030"
 ---
 # <a name="apple-fairplay-license-requirements-and-configuration"></a>Apple FairPlay 授權需求和設定 
 
@@ -35,7 +35,7 @@ Azure 媒體服務可讓您使用 **Apple FairPlay** (AES-128 CBC) 來加密您�
 * Apple 要求內容擁有者必須取得 [部署套件](https://developer.apple.com/contact/fps/)。 說明您已使用媒體服務實作金鑰安全性模組 (KSM)，現在想要求最終的 FPS 套件。 最終 FPS 套件包含相關指示，用以產生憑證和取得應用程式密碼金鑰 (ASK)。 您可使用 ASK 來設定 FairPlay。
 * 必須在媒體服務金鑰/授權傳遞端設定下列各項︰
 
-    * **應用程式憑證 (AC)**：這是包含私密金鑰的 .pfx 檔案。 您可建立這個檔案並以密碼加密。 .pfx 檔案應採用 Base64 格式。
+    * **應用程式憑證 (AC)**︰這是包含私密金鑰的 .pfx 檔案。 您可建立這個檔案並以密碼加密。 .pfx 檔案應採用 Base64 格式。
 
         下列步驟說明如何產生 FairPlay 的 .pfx 憑證檔案：
 
@@ -49,7 +49,7 @@ Azure 媒體服務可讓您使用 **Apple FairPlay** (AES-128 CBC) 來加密您�
 
             "C:\OpenSSL-Win32\bin\openssl.exe" pkcs12 -export -out FairPlay-out.pfx -inkey privatekey.pem -in FairPlay-out.pem -passin file:privatekey-pem-pass.txt
             
-    * **應用程式憑證密碼**：用來建立 .pfx 檔案的密碼。
+    * **應用程式憑證密碼** - 用來建立 .pfx 檔案的密碼。
     * **ASK**：當您使用 Apple 開發人員入口網站產生憑證時，會收到此金鑰。 每個開發小組都會收到一個唯一的 ASK。 儲存一份 ASK，並將它存放在安全的地方。 您必須使用媒體服務將 ASK 設定為 FairPlayAsk。
     
 * FPS 用戶端必須設定下列各項︰
@@ -61,6 +61,9 @@ Azure 媒體服務可讓您使用 **Apple FairPlay** (AES-128 CBC) 來加密您�
   * .der 檔案
   * .pfx 檔案
   * .pfx 的密碼
+  
+> [!NOTE]
+> Azure 媒體服務不會在封裝或金鑰傳遞期間檢查憑證到期日。 憑證過期後，它將繼續正常執行。
 
 ## <a name="fairplay-and-player-apps"></a>FairPlay 和播放應用程式
 
@@ -108,7 +111,7 @@ private static ContentKeyPolicyFairPlayConfiguration ConfigureFairPlayPolicyOpti
         RentalAndLeaseKeyType =
                 ContentKeyPolicyFairPlayRentalAndLeaseKeyType
                 .PersistentUnlimited,
-        RentalDuration = 2249
+        RentalDuration = 2249 // in seconds
     };
 
     return fairPlayConfiguration;

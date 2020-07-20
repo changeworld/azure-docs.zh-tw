@@ -1,31 +1,30 @@
 ---
-title: 檢視特定位置中 Azure 區域的相對延遲 | Microsoft Docs
+title: 從特定位置查看 Azure 區域的相對延遲
 description: 了解如何檢視特定位置中 Azure 區域跨網際網路提供者的相對延遲。
 services: network-watcher
 documentationcenter: ''
-author: KumudD
-manager: twooley
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
+author: damendo
 ms.service: virtual-network
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/14/2017
-ms.author: kumud
+ms.author: damendo
 ms.custom: ''
-ms.openlocfilehash: b4a50657442422786f49c931aa6c2610d49846b1
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 938315dac80ae51984851083753a9cb8f77662b2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64939867"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84737898"
 ---
 # <a name="view-relative-latency-to-azure-regions-from-specific-locations"></a>檢視特定位置中 Azure 區域的相對延遲
 
-在本教學課程中，了解如何使用 Azure [網路監看員](network-watcher-monitoring-overview.md)服務來協助您以您的使用者人數統計為基礎，決定要在哪一個 Azure 區域部署您的應用程式或服務。 此外，還可以使用它來協助您評估對 Azure 的服務提供者連線。  
+> [!WARNING]
+> 這項功能目前為預覽狀態，仍在測試穩定性。
+
+在本教學課程中，了解如何使用 Azure [網路監看員](network-watcher-monitoring-overview.md)服務來協助您以您的使用者人數統計為基礎，決定要在哪一個 Azure 區域部署您的應用程式或服務。 此外，您還可以使用它來協助評估服務提供者與 Azure 的連線。  
         
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -46,7 +45,7 @@ New-AzNetworkWatcher -Name NetworkWatcher_eastus -ResourceGroupName NetworkWatch
 
 ## <a name="compare-relative-network-latencies-to-a-single-azure-region-from-a-specific-location"></a>比較相對的網路延遲與特定位置中的單一 Azure 區域
 
-從特定位置到服務部署所在的 Azure 區域來評估服務提供者，或是針對使用者報告的問題 (例如「站台變慢」) 進行疑難排解。 例如，下列命令會傳回美國華盛頓州與美國西部 2 Azure 區域、在 2017 年 12 月 13 日至 15 日之間的平均相對網際網路服務提供者延遲：
+評估服務提供者，或針對報告問題的使用者進行疑難排解，例如「網站緩慢」，從特定位置到部署服務的 azure 區域。 例如，下列命令會傳回美國華盛頓州與美國西部 2 Azure 區域、在 2017 年 12 月 13 日至 15 日之間的平均相對網際網路服務提供者延遲：
 
 ```powershell
 Get-AzNetworkWatcherReachabilityReport `
@@ -60,7 +59,7 @@ Get-AzNetworkWatcherReachabilityReport `
 ```
 
 > [!NOTE]
-> 您在前一個命令中指定的區域不必與您擷取網路監看員時所指定的區域相同。 前一個命令只會要求您指定現有的網路監看員。 網路監看員可位於任何區域。 如果您指定 `-Country` 和 `-State` 的值，它們必須是有效的。 值會區分大小寫。 資料可供有限數目的國家/地區、 州和城市。 在 執行命令[檢視可用的國家/地區、 狀態、 城市及提供者](#view-available)以檢視可用的國家/地區、 城市及狀態，以使用與前一個命令的清單。 
+> 您在前一個命令中指定的區域不必與您擷取網路監看員時所指定的區域相同。 前一個命令只會要求您指定現有的網路監看員。 網路監看員可位於任何區域。 如果您指定 `-Country` 和 `-State` 的值，它們必須是有效的。 值會區分大小寫。 資料適用于有限數量的國家/地區、州和城市。 執行 [[查看可用的國家/地區](#view-available)]、[狀態]、[城市] 和 [提供者] 中的命令，以查看要與前一個命令搭配使用的可用國家/地區、城市和州的清單。 
 
 > [!WARNING]
 > 您必須針對 `-StartTime` 和 `-EndTime` 指定過去 30 天內的日期。 指定先前的日期會導致未傳回任何資料。
@@ -105,7 +104,7 @@ ReachabilityReport : [
                      ]
 ```
 
-在傳回的輸出中，[分數] 的值是跨區域和提供者時的相對延遲。 1 分是最差 (最高) 的延遲，而 100 分是最低的延遲。 相對延遲是以一日平均計算。 在上述範例中，兩天的延遲顯然都相同，且兩個提供者的延遲之間差異很小，此外，兩個提供者的延遲在 1-100 級別中顯然也都很低。 儘管這是預期行為，因為美國華盛頓州實際上是接近美國西部 2 Azure 區域，而有時結果並未如預期。 您指定的日期範圍越大，在一段時間可平均的延遲就更多。
+在傳回的輸出中，[分數]**** 的值是跨區域和提供者時的相對延遲。 1 分是最差 (最高) 的延遲，而 100 分是最低的延遲。 相對延遲是以一日平均計算。 在上述範例中，兩天的延遲顯然都相同，且兩個提供者的延遲之間差異很小，此外，兩個提供者的延遲在 1-100 級別中顯然也都很低。 儘管這是預期行為，因為美國華盛頓州實際上是接近美國西部 2 Azure 區域，而有時結果並未如預期。 您指定的日期範圍越大，在一段時間可平均的延遲就更多。
 
 ## <a name="compare-relative-network-latencies-across-azure-regions-from-a-specific-location"></a>比較跨 Azure 區域與特定位置中的相對網路延遲
 
@@ -125,17 +124,17 @@ Get-AzNetworkWatcherReachabilityReport `
 > [!NOTE]
 > 不同於您指定單一位置時，如果您不指定位置，或是指定多個位置，例如「美國西部 2」、「美國西部」，就必須在執行命令時，指定網際網路服務提供者。 
 
-## <a name="view-available"></a>檢視可用的國家/地區、 狀態、 城市及提供者
+## <a name="view-available-countriesregions-states-cities-and-providers"></a><a name="view-available"></a>查看可用的國家/地區、州、城市和提供者
 
-使用特定的網際網路服務提供者、 國家/地區、 州和城市的資料。 若要檢視一份所有可用的網際網路服務提供者、 國家/地區、 州和城市，您可以檢視資料，輸入下列命令：
+資料適用于特定的網際網路服務提供者、國家/地區、州和城市。 若要查看所有可用的網際網路服務提供者、國家/地區、州和城市的清單，您可以在其中查看的資料，請輸入下列命令：
 
 ```powershell
 Get-AzNetworkWatcherReachabilityProvidersList -NetworkWatcherName NetworkWatcher_eastus -ResourceGroupName NetworkWatcherRG
 ```
 
-只有使用的國家/地區、 州和城市先前命令所傳回的資料。 前一個命令會要求您指定現有的網路監看員。 範例已在名為 *NetworkWatcherRG*的資源群組中指定 NetworkWatcher_eastus 網路監看員，但是您可以指定任何現有的網路監看員。 如果您沒有現有的網路監看員，請建立一個網路監看員，方法是完成[建立網路監看員](#create-a-network-watcher)中的工作。 
+資料僅適用于先前命令所傳回的國家/地區、州和城市。 前一個命令會要求您指定現有的網路監看員。 範例已在名為 *NetworkWatcherRG*的資源群組中指定 NetworkWatcher_eastus** 網路監看員，但是您可以指定任何現有的網路監看員。 如果您沒有現有的網路監看員，請建立一個網路監看員，方法是完成[建立網路監看員](#create-a-network-watcher)中的工作。 
 
-在執行前一個命令後，您可以篩選傳回的輸出，方法是指定 [國家/地區]、[州] 和 [城市] 的有效值。  例如，若要檢視美國境內華盛頓州的西雅圖中可用的網際網路服務提供者清單，請輸入下列命令：
+在執行前一個命令後，您可以篩選傳回的輸出，方法是指定 [國家/地區]****、[州]**** 和 [城市]**** 的有效值。  例如，若要檢視美國境內華盛頓州的西雅圖中可用的網際網路服務提供者清單，請輸入下列命令：
 
 ```powershell
 Get-AzNetworkWatcherReachabilityProvidersList `
@@ -147,4 +146,4 @@ Get-AzNetworkWatcherReachabilityProvidersList `
 ```
 
 > [!WARNING]
-> 針對 [國家/地區] 指定的值必須是大寫和小寫。 針對 [州] 和 [城市] 指定的值必須是小寫。 值必須列在執行不包含 [國家/地區]、[州] 和 [城市] 值的命令之後所傳回的輸出中。 如果您指定了不正確的大小寫，或所指定的 [國家/地區]、[州] 或 [城市] 值不在執行不包含這些屬性的值之命令之後傳回的輸出中，傳回的輸出就是空白的。
+> 針對 [國家/地區]**** 指定的值必須是大寫和小寫。 針對 [州]**** 和 [城市]**** 指定的值必須是小寫。 值必須列在執行不包含 [國家/地區]****、[州]**** 和 [城市]**** 值的命令之後所傳回的輸出中。 如果您指定了不正確的大小寫，或所指定的 [國家/地區]****、[州]**** 或 [城市]**** 值不在執行不包含這些屬性的值之命令之後傳回的輸出中，傳回的輸出就是空白的。

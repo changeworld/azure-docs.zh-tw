@@ -1,24 +1,13 @@
 ---
-title: Azure 服務匯流排訊息計數 | Microsoft Docs
-description: 擷取 Azure 服務匯流排訊息的計數。
-services: service-bus-messaging
-documentationcenter: ''
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+title: Azure 服務匯流排訊息計數
+description: 使用 Azure Resource Manager 和 Azure 服務匯流排 NamespaceManager Api，抓取佇列和訂用帳戶中保留的訊息計數。
 ms.topic: article
-ms.date: 01/23/2019
-ms.author: aschhab
-ms.openlocfilehash: adfd8c5849cfee69805715378a3f56ec9f685b00
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 06/23/2020
+ms.openlocfilehash: d0e1a7a5c6eb0b281b4e6ac08135f41f28ecbec8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60403953"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85341272"
 ---
 # <a name="message-counters"></a>訊息計數器
 
@@ -38,11 +27,16 @@ ms.locfileid: "60403953"
 
 -   [ActiveMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.activemessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_ActiveMessageCount)：佇列或訂用帳戶中處於作用中狀態，而且可供傳遞的訊息。
 -   [DeadLetterMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.deadlettermessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_DeadLetterMessageCount)：無效信件佇列中的訊息。
--   [ScheduledMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.scheduledmessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_ScheduledMessageCount)：已排程的狀態中的訊息。
+-   [ScheduledMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.scheduledmessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_ScheduledMessageCount)：處於已排程狀態的訊息。
 -   [TransferDeadLetterMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.transferdeadlettermessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_TransferDeadLetterMessageCount)：無法傳送到另一個佇列或主題，而且已移動到傳送無效信件佇列的訊息。
 -   [TransferMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.transfermessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_TransferMessageCount)：等待傳送到另一個佇列或主題的訊息。
 
 如果應用程式想要依據佇列長度調整資源，它應該採用循序漸進的方式來進行。 取得訊息計數是在訊息代理程式中是項昂貴的作業，頻繁執行會直接對實體效能造成不良影響。
+
+> [!NOTE]
+> 傳送至服務匯流排主題的訊息會轉送至該主題的訂用帳戶。 因此，主題本身的作用中訊息計數為0，因為這些訊息已成功轉送到訂用帳戶。 取得訂用帳戶的訊息計數，並確認其大於0。 雖然您會在訂用帳戶中看到訊息，但它們實際上是儲存在主題所擁有的儲存體中。 
+
+如果您查看訂用帳戶，則會有非零的訊息計數（這會為整個實體新增最多323MB 的空間）。
 
 ## <a name="next-steps"></a>後續步驟
 

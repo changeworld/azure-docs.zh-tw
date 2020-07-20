@@ -1,24 +1,17 @@
 ---
 title: 在 Azure 監視器中收集 Linux 應用程式效能 | Microsoft Docs
 description: 本文詳細說明如何設定適用於 Linux 的 Log Analytics 代理程式，以收集 MySQL 和 Apache HTTP Server 的效能計數器。
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: tysonn
-ms.assetid: f1d5bde4-6b86-4b8e-b5c1-3ecbaba76198
-ms.service: log-analytics
+ms.subservice: logs
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
+author: bwren
+ms.author: bwren
 ms.date: 05/04/2017
-ms.author: magoedte
-ms.openlocfilehash: ea74440a5c8a9a2584e742ec72ccf888b6bb5ad9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 10851754bda73fc769e613153582e491265ebb71
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60628909"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963235"
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-azure-monitor"></a>在 Azure 監視器中收集 Linux 應用程式的效能計數器 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
@@ -41,14 +34,14 @@ MySQL 驗證檔案儲存在 `/var/opt/microsoft/mysql-cimprov/auth/omsagent/mysq
 ### <a name="authentication-file-format"></a>驗證檔案格式
 以下是 MySQL OMI 驗證檔案的格式
 
-    [Port]=[Bind-Address], [username], [Base64 encoded Password]
-    (Port)=(Bind-Address), (username), (Base64 encoded Password)
-    (Port)=(Bind-Address), (username), (Base64 encoded Password)
-    AutoUpdate=[true|false]
+> [埠] = [Bind-Address]，[username]，[Base64 編碼的密碼]  
+> （埠） = （系結位址）、（使用者名稱）、（Base64 編碼的密碼）  
+> （埠） = （系結位址）、（使用者名稱）、（Base64 編碼的密碼）  
+> 自動更新 = [true | false]  
 
 下表說明驗證檔案中的項目。
 
-| 屬性 | 描述 |
+| 屬性 | 說明 |
 |:--|:--|
 | Port | 代表 MySQL 執行個體目前正在接聽的連接埠。 連接埠 0 指定後面的屬性用於預設執行個體。 |
 | 繫結位址| 目前的 MySQL 繫結位址。 |
@@ -61,7 +54,7 @@ MySQL OMI 驗證檔案可以定義預設執行個體和連接埠號碼，讓您�
 
 下表提供執行個體設定範例 
 
-| 描述 | 檔案 |
+| Description | 檔案 |
 |:--|:--|
 | 預設執行個體和連接埠為 3308 的執行個體。 | `0=127.0.0.1, myuser, cnBwdA==`<br>`3308=, ,`<br>`AutoUpdate=true` |
 | 預設執行個體，以及連接埠為 3308 且具有不同使用者名稱密碼的執行個體。 | `0=127.0.0.1, myuser, cnBwdA==`<br>`3308=127.0.1.1, myuser2,cGluaGVhZA==`<br>`AutoUpdate=true` |
@@ -70,14 +63,14 @@ MySQL OMI 驗證檔案可以定義預設執行個體和連接埠號碼，讓您�
 ### <a name="mysql-omi-authentication-file-program"></a>MySQL OMI 驗證檔案程式
 安裝 MySQL OMI 提供者時會隨附 MySQL OMI 驗證檔案程式，可用來編輯 MySQL OMI 驗證檔案。 驗證檔案程式位於下列位置。
 
-    /opt/microsoft/mysql-cimprov/bin/mycimprovauth
+`/opt/microsoft/mysql-cimprov/bin/mycimprovauth`
 
 > [!NOTE]
 > omsagent 帳戶必須可讀取認證檔案。 建議以 omsgent 身分執行 mycimprovauth 命令。
 
 下表提供使用 mycimprovauth 語法的詳細資料。
 
-| 作業 | 範例 | 描述
+| 操作 | 範例 | 描述
 |:--|:--|:--|
 | autoupdate *false or true* | mycimprovauth autoupdate false | 設定是否在重新啟動或更新時自動更新驗證檔案。 |
 | default *bind-address username password* | mycimprovauth default 127.0.0.1 root pwd | 在 MySQL OMI 驗證檔案中設定預設執行個體。<br>應以純文字輸入 password 欄位 - MySQL OMI 驗證檔案中的密碼將會以 Base 64 編碼。 |
@@ -88,15 +81,18 @@ MySQL OMI 驗證檔案可以定義預設執行個體和連接埠號碼，讓您�
 
 下列命令範例會為 localhost 上的 MySQL 伺服器定義預設使用者帳戶。  應以純文字輸入 password 欄位 - MySQL OMI 驗證檔案中的密碼將會以 Base 64 編碼
 
-    sudo su omsagent -c '/opt/microsoft/mysql-cimprov/bin/mycimprovauth default 127.0.0.1 <username> <password>'
-    sudo /opt/omi/bin/service_control restart
+```console
+sudo su omsagent -c '/opt/microsoft/mysql-cimprov/bin/mycimprovauth default 127.0.0.1 <username> <password>'
+sudo /opt/omi/bin/service_control restart
+```
 
 ### <a name="database-permissions-required-for-mysql-performance-counters"></a>MySQL 效能計數器所需的資料庫權限
 MySQL 使用者需要存取下列查詢，才能收集 MySQL 伺服器的效能資料。 
 
-    SHOW GLOBAL STATUS;
-    SHOW GLOBAL VARIABLES:
-
+```sql
+SHOW GLOBAL STATUS;
+SHOW GLOBAL VARIABLES:
+```
 
 MySQL 使用者需要下列預設資料表的 SELECT 存取權。
 
@@ -105,9 +101,10 @@ MySQL 使用者需要下列預設資料表的 SELECT 存取權。
 
 執行下列 grant 命令，可以授與這些權限。
 
-    GRANT SELECT ON information_schema.* TO ‘monuser’@’localhost’;
-    GRANT SELECT ON mysql.* TO ‘monuser’@’localhost’;
-
+```sql
+GRANT SELECT ON information_schema.* TO ‘monuser’@’localhost’;
+GRANT SELECT ON mysql.* TO ‘monuser’@’localhost’;
+```
 
 > [!NOTE]
 > 若要將權限授與 MySQL 監視使用者，則授與使用者必須具有 'GRANT option' 權限以及正在授與的權限。
@@ -139,12 +136,14 @@ MySQL 使用者需要下列預設資料表的 SELECT 存取權。
 
 ## <a name="apache-http-server"></a>Apache HTTP Server 
 如果在安裝 omsagent 組合時於電腦上偵測到 Apache HTTP Server，則會自動安裝 Apache HTTP Server 的效能監視提供者。 此提供者所依賴的 Apache 模組必須載入至 Apache HTTP Server，才能存取效能資料。 您可以使用下列命令載入此模組：
-```
+
+```console
 sudo /opt/microsoft/apache-cimprov/bin/apache_config.sh -c
 ```
 
 若要卸載 Apache 監視模組，請執行下列命令︰
-```
+
+```console
 sudo /opt/microsoft/apache-cimprov/bin/apache_config.sh -u
 ```
 

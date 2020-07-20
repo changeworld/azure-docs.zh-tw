@@ -1,145 +1,177 @@
 ---
-title: 透過 Azure Migrate 使用機器相依性分組機器 | Microsoft Docs
-description: 說明如何透過 Azure Migrate 服務使用機器相依性來建立評量。
-author: rayne-wiselman
-ms.service: azure-migrate
-ms.topic: article
-ms.date: 12/05/2018
-ms.author: raynew
-ms.openlocfilehash: af47678b19209936aed86c132a8a3f400c3a7e8f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+title: 在 Azure Migrate Server 評估中設定以代理程式為基礎的相依性分析
+description: 本文說明如何在 Azure Migrate Server 評估中設定以代理程式為基礎的相依性分析。
+ms.topic: how-to
+ms.date: 6/09/2020
+ms.openlocfilehash: 1a656ec734ff098dd5835f653010c7f298c13b38
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60596783"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109989"
 ---
-# <a name="group-machines-using-machine-dependency-mapping"></a>使用機器相依性對應分組機器
+# <a name="set-up-dependency-visualization"></a>設定相依性視覺效果
 
-本文說明如何將機器相依性視覺化，建立機器群組以進行 [Azure Migrate](migrate-overview.md) 評量。 在執行評量前，若想要透過交叉檢查機器相依性的方式，對信心等級較高的虛擬機器群組進行評估，通常會使用此方法。 相依性視覺效果可協助您有效地規劃移轉至 Azure。 它可協助您確保不會遺留任何動作，且在您要移轉至 Azure 時，不會發生意外的中斷。 您可以探索所有需要一起移轉的交互相依系統，以及識別執行中的系統是否仍為使用者提供服務，還是應該解除委任而非移轉。
+本文說明如何在 Azure Migrate：伺服器評估中設定無代理程式相依性分析。 相依性[分析](concepts-dependency-visualization.md)可協助您找出並瞭解您想要評估並遷移至 Azure 的機器之間的相依性。
+
+## <a name="before-you-start"></a>在您開始使用 Intune 之前
+
+- 如需瞭解代理程式相依性分析的支援和部署需求，請參閱：
+    - [VMware VM](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agent-based)
+    - [實體伺服器](migrate-support-matrix-physical.md#agent-based-dependency-analysis-requirements)
+    - [Hyper-v vm](migrate-support-matrix-hyper-v.md#agent-based-dependency-analysis-requirements)。
+- 請確定您已執行下列動作：
+    - 具有 Azure Migrate 專案。 如果您沒有這麼做，請立即[建立](how-to-add-tool-first-time.md)一個。
+    - 請確認您已將 [Azure Migrate：伺服器評估工具][新增](how-to-assess.md)至專案。
+    - 設定[Azure Migrate 設備](migrate-appliance.md)以探索內部部署機器。 設備會探索內部部署機器，並將中繼資料和效能資料傳送至 Azure Migrate：伺服器評量。 設定設備以進行下列動作：
+        - [VMware](how-to-set-up-appliance-vmware.md)Vm.
+        - [Hyper-v](how-to-set-up-appliance-hyper-v.md)Vm.
+        - [實體伺服器](how-to-set-up-appliance-physical.md)。
+- 若要使用相依性視覺效果，您可以將[Log Analytics 工作區](../azure-monitor/platform/manage-access.md)與 Azure Migrate 專案產生關聯：
+    - 只有在設定 Azure Migrate 設備及探索 Azure Migrate 專案中的機器之後，才可以附加工作區。
+    - 請確定您在訂用帳戶中有一個包含 Azure Migrate 專案的工作區。
+    - 此工作區必須位於「美國東部」、「東南亞」或「西歐」區域。 其他區域中的工作區則無法與專案相關聯。
+    - 此工作區必須位於[支援服務對應](../azure-monitor/insights/vminsights-enable-overview.md#prerequisites)的區域中。
+    - 您可以將新的或現有的 Log Analytics 工作區與 Azure Migrate 專案建立關聯。
+    - 您第一次設定電腦的相依性視覺效果時，會附加工作區。 Azure Migrate 專案的工作區在新增之後就無法進行修改。
+    - 在 Log Analytics 中，與 Azure Migrate 相關聯的工作區會標記上遷移專案金鑰和專案名稱。
+
+## <a name="associate-a-workspace"></a>建立工作區的關聯
+
+1. 探索要評估的機器之後，請在 [**伺服器**  >  **Azure Migrate：伺服器評估**] 中按一下 **[總覽**]。  
+2. 在 [ **Azure Migrate：伺服器評估**] 中，按一下 [**基本**]。
+3. 在 [ **OMS 工作區**] 中，按一下 [**需要**設定]。
+
+     ![設定 Log Analytics 工作區](./media/how-to-create-group-machine-dependencies/oms-workspace-select.png)   
+
+4. 在 [**設定 OMS 工作區**] 中，指定您要建立新的工作區，還是使用現有的。
+    - 您可以從「遷移專案」訂用帳戶中的所有工作區，選取現有的工作區。
+    - 您需要讀者存取工作區才能建立關聯。
+5. 如果您建立新的工作區，請選取其位置。
+
+    ![新增工作區](./media/how-to-create-group-machine-dependencies/workspace.png)
+
+
+## <a name="download-and-install-the-vm-agents"></a>下載並安裝虛擬機器代理程式
+
+在您要分析的每部電腦上安裝代理程式。
 
 > [!NOTE]
-> 在 Azure Government 中無法使用相依性視覺效果功能。
+> 針對 System Center Operations Manager 2012 R2 或更新版本監視的機器，您不需要安裝 MMA 代理程式。 服務對應與 Operations Manager 整合。 [遵循](../azure-monitor/insights/service-map-scom.md#prerequisites)整合指引。
 
-## <a name="prepare-for-dependency-visualization"></a>為相依性視覺效果做準備
-Azure Migrate 會利用 Azure 監視器記錄檔，以啟用機器的相依性視覺效果中的服務對應解決方案。
+1. 在 [ **Azure Migrate：伺服器評定**] 中，按一下 [探索到的**伺服器**]。
+2. 針對您想要使用相依性視覺效果分析的每部機器，按一下 [相依性] 欄中的 [**需要代理程式安裝** **]** 。
+3. 在 [相依性 **]** 頁面中，下載適用于 Windows 或 LINUX 的 MMA 和 Dependency agent。
+4. 在 [**設定 MMA 代理程式**] 底下，複製 [工作區識別碼] 和 [金鑰]。 當您安裝 MMA 代理程式時，您需要這些。
 
-### <a name="associate-a-log-analytics-workspace"></a>與 Log Analytics 工作區建立關聯
-若要利用相依性視覺效果，您需要將新的或現有的 Log Analytics 工作區與 Azure Migrate 專案建立關聯。 您只能在建立移轉專案的相同訂用帳戶中，建立或連結工作區。
+    ![安裝代理程式](./media/how-to-create-group-machine-dependencies/dependencies-install.png)
 
-- 若要將 Log Analytics 工作區連結至專案，請在 [概觀] 中，移至專案的 [基本資訊] 區段，然後按一下 [需要設定]
 
-    ![與 Log Analytics 工作區建立關聯](./media/concepts-dependency-visualization/associate-workspace.png)
+## <a name="install-the-mma"></a>安裝 MMA
 
-- 與工作區建立關聯時，您可以選擇建立新的工作區，或連結現有的工作區：
-  - 建立新工作區時，您必須指定工作區的名稱。 然後會在和移轉專案相同之 [Azure 地理區](https://azure.microsoft.com/global-infrastructure/geographies/)的區域中建立工作區。
-  - 當您連結現有的工作區時，您能以和移轉專案相同的方式，從相同訂用帳戶中所有的可用工作區中挑選。 請注意，系統只會列出那些在[支援服務對應](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-configure#supported-azure-regions)的區域中建立的工作區。 若要能夠連結工作區，請確定您有該工作區的「讀取者」存取權。
+在您要分析的每一部 Windows 或 Linux 機器上安裝 MMA。
 
-> [!NOTE]
-> 您無法變更與移轉專案相關聯的工作區。
-
-### <a name="download-and-install-the-vm-agents"></a>下載並安裝虛擬機器代理程式
-在您設定工作區之後，您必須在待評估的每個內部部署機器上，下載及安裝代理程式。 此外，如果您的機器沒有網際網路連線，則需要下載並安裝 [Log Analytics 閘道](../azure-monitor/platform/gateway.md)。
-
-1. 在 [概觀] 中，按一下 [管理] > [機器]，並選取所需的機器。
-2. 在 [相依性] 資料行中，按一下 [安裝代理程式]。
-3. 至 [相依性] 頁面，下載 Microsoft Monitoring Agent (MMA) 及相依性代理程式，安裝到要進行評估的每個虛擬機器上。
-4. 複製工作區識別碼與金鑰。 在內部部署機器上安裝 MMA 時，需要用到這些識別碼與金鑰。
-
-> [!NOTE]
-> 若要自動安裝代理程式，可使用任何部署工具 (例如 System Center Configuration Manager) 或使用我們的合作夥伴工具 [Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration)，其具有 Azure Migrate 的代理程式部署解決方案。
-
-### <a name="install-the-mma"></a>安裝 MMA
-
-#### <a name="install-the-agent-on-a-windows-machine"></a>在 Windows 電腦上安裝代理程式
+### <a name="install-mma-on-a-windows-machine"></a>在 Windows 電腦上安裝 MMA
 
 在 Windows 電腦上安裝代理程式：
 
 1. 按兩下下載的代理程式。
-2. 在 [歡迎] 頁面中按 [下一步]。 在 [授權條款] 頁面上，按一下 [我同意] 以接受授權。
-3. 在 [目的地資料夾] 中，保留或修改預設的安裝資料夾 > [下一步]。
-4. 在 [代理程式安裝選項] 中，選取 [Azure Log Analytics] > [下一步]。
-5. 按一下 [新增] 以新增 Log Analytics 工作區。 貼上您從入口網站複製的工作區識別碼和金鑰。 单击“下一步”。
+2. 在 [歡迎] 頁面中按 [下一步]。 在 [**授權條款**] 頁面上，按一下 [**我同意**接受授權]。
+3. 在 [目的地資料夾]**** 中，保留或修改預設的安裝資料夾 > [下一步]****。
+4. 在 [代理程式安裝選項]**** 中，選取 [Azure Log Analytics]**** > [下一步]****。
+5. 按一下 [新增]**** 以新增 Log Analytics 工作區。 貼上您從入口網站複製的工作區識別碼和金鑰。 按 [下一步] 。
 
-您可以從命令列或使用 System Center Configuration Manager 等自動化的方法來安裝代理程式。 [了解更多](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent)有關如何使用這些方法來安裝 MMA 代理程式。
+您可以從命令列或使用自動化方法（例如 Configuration Manager 或[Intigua](https://www.intigua.com/intigua-for-azure-migration)）來安裝代理程式。
+- [了解更多](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration)有關如何使用這些方法來安裝 MMA 代理程式。
+- MMA 代理程式也可以使用此[指令碼](https://go.microsoft.com/fwlink/?linkid=2104394)來安裝。
+- [深入瞭解](../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems)MMA 所支援的 Windows 作業系統。
 
-#### <a name="install-the-agent-on-a-linux-machine"></a>在 Linux 電腦上安裝代理程式
+### <a name="install-mma-on-a-linux-machine"></a>在 Linux 電腦上安裝 MMA
 
-在 Linux 電腦上安裝代理程式：
+若要在 Linux 電腦上安裝 MMA：
 
 1. 使用 scp/sftp 將適當的套件組合 (x86 或 x64) 傳輸到 Linux 電腦。
 2. 使用 --安裝引數安裝套件組合。
 
     ```sudo sh ./omsagent-<version>.universal.x64.sh --install -w <workspace id> -s <workspace key>```
 
-[了解更多](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-linux-operating-systems) MMA 支援的 Linux 作業系統清單。
+[了解更多](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems) MMA 支援的 Linux 作業系統清單。 
 
-#### <a name="install-the-agent-on-a-machine-monitored-by-scom"></a>在 SCOM 監視的電腦上安裝代理程式
+## <a name="install-the-dependency-agent"></a>安裝相依性代理程式
 
-對於受 System Center Operations Manager 2012 R2 或更新版本監視的電腦，不需要安裝 MMA 代理程式。 服務對應已與 SCOM 整合，此整合可利用 SCOM MMA 收集必要的相依性資料。 您可以使用[此處](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites)的指導方針來啟用整合。 但請注意，在這些電腦上必須安裝相依性代理程式。
-
-
-### <a name="install-the-dependency-agent"></a>安裝相依性代理程式
 1. 若要在 Windows 電腦上安裝相依性代理程式，請按兩下安裝檔案，並遵循精靈的指示。
 2. 若要在 Linux 電腦上安裝相依性代理程式，請使用下列命令以 root 身分安裝：
 
     ```sh InstallDependencyAgent-Linux64.bin```
 
-深入了解 [Windows](../azure-monitor/insights/service-map-configure.md#supported-windows-operating-systems) 與 [Linux](../azure-monitor/insights/service-map-configure.md#supported-linux-operating-systems) 作業系統的相依性代理程式支援。
+- [深入了解](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples)如何使用指令碼安裝 Dependency 代理程式。
+- [深入瞭解](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems)Dependency agent 所支援的作業系統。
 
-[深入了解](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#installation-script-examples)如何使用指令碼安裝 Dependency 代理程式。
+
+## <a name="create-a-group-using-dependency-visualization"></a>使用相依性視覺效果建立群組
+
+現在，建立一個群組進行評估。 
 
 
-## <a name="create-a-group"></a>建立群組
+> [!NOTE]
+> 您想要將相依性視覺化的群組不應該包含超過 10 部的機器。 如果您有超過10部電腦，請將它們分割成較小的群組。
 
-1. 安裝代理程式之後，請移至入口網站，然後按一下[管理] > [機器]。
-2. 搜尋安裝代理程式的機器。
-3. 機器的 [相依性] 資料行現在應會顯示為**檢視相依性**。 按一下資料行以檢視機器的相依性。
-4. 機器的相依性對應會顯示下列詳細資料：
-    - 往返機器的輸入 (用戶端) 和輸出 (伺服器) TCP 連線
-        - 未安裝 MMA 和相依性代理程式的相依機器會依連接埠號碼分組
-        - 已安裝 MMA 和相依性代理程式的相依機器會以不同的方塊顯示
-    - 在機器內執行的處理序，您可以展開每個機器方塊，以檢視處理序
-    - 每部機器的完整網域名稱、作業系統、MAC 位址等屬性，您可以按一下每個機器方塊來檢視這些詳細資料
+1. 在 [ **Azure Migrate：伺服器評定**] 中，按一下 [探索到的**伺服器**]。
+2. 在 [相依性 **]** 資料行中，按一下您想要檢查之每部機器的 [查看相依性 **]** 。
+3. 在 [相依性對應] 上，您可以看到下列各項：
+    - 電腦的輸入（用戶端）和輸出（伺服器） TCP 連線。
+    - 未安裝相依性代理程式的相依機器會依埠號碼分組。
+    - 已安裝 dependency agent 的相依機器會顯示為不同的方塊。
+    - 在機器內執行的進程。 展開每個電腦方塊以查看處理常式。
+    - 電腦屬性（包括 FQDN、作業系統、MAC 位址）。 按一下每個機器方塊以查看詳細資料。
 
-      ![檢視電腦相依性](./media/how-to-create-group-machine-dependencies/machine-dependencies.png)
+4. 您可以按一下時間範圍標籤中的持續時間，以查看不同持續時間的相依性。
+    - 根據預設，範圍是一小時。 
+    - 您可以修改時間範圍，或指定開始和結束日期，以及持續時間。
+    - 時間範圍最長可達一小時。 如果您需要較長的範圍，請使用 Azure 監視器來查詢相依資料的時間較長。
 
-4. 您可以按一下時間範圍標籤中的持續時間，以查看不同持續時間的相依性。 根據預設，範圍是一小時。 您可以修改時間範圍，或指定開始和結束日期，以及持續時間。
+5. 識別要群組在一起的相依機器之後，請使用 Ctrl + 按一下來選取地圖上的多部機器，然後按一下 [**群組機器**]。
+6. 指定群組名稱。
+7. 確認 Azure Migrate 已探索到相依機器。
 
-   > [!NOTE]
-   >    目前，相依性視覺效果 UI 不支援選取超過一小時的時間範圍。 使用 Azure 監視器記錄到[查詢相依性資料](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies)較長的持續期間內。
+    - 如果 Azure Migrate：伺服器評估找不到相依電腦，您就無法將它新增至群組。
+    - 若要新增電腦，請再次執行探索，並確認已探索到機器。
 
-5. 找出您需要劃為同一群組的相依機器後，請使用 Ctrl + 按一下來選取對應中的多部機器，然後按一下 [群組機器]。
-6. 指定群組名稱。 確認 Azure Migrate 已探索到相依機器。
+8. 如果您需要建立此群組的評估，請選取核取方塊來建立新的群組評估。
+8. 按一下 [確定]**** 以儲存群組。
 
-    > [!NOTE]
-    > 如果 Azure Migrate 未探索到相依機器，您就無法將它新增至群組。 若要將這類機器新增至群組，您必須使用 vCenter Server 中的正確範圍，再次執行探索程序，並確定 Azure Migrate 已探索到機器。  
+建立群組之後，建議您在群組中的所有機器上安裝代理程式，然後將整個群組的相依性視覺化。
 
-7. 如果您需要建立此群組的評估，請選取核取方塊來建立新的群組評估。
-8. 按一下 [確定] 以儲存群組。
+## <a name="query-dependency-data-in-azure-monitor"></a>Azure 監視器中的查詢相依性資料
 
-一旦建立群組之後，建議您在群組的所有機器上安裝代理程式，並將整個群組的相依性視覺化來調整群組。
+您可以在與 Azure Migrate 專案相關聯的 Log Analytics 工作區中，查詢服務對應所捕捉的相依性資料。 Log Analytics 是用來撰寫和執行 Azure 監視器記錄查詢。
 
-## <a name="query-dependency-data-from-azure-monitor-logs"></a>查詢 Azure 監視器記錄檔的相依性資料
+- [瞭解如何](../azure-monitor/insights/service-map.md#log-analytics-records)在 Log Analytics 中搜尋服務對應的資料。
+- [取得](../azure-monitor/log-query/get-started-queries.md)在[log Analytics](../azure-monitor/log-query/get-started-portal.md)中撰寫記錄查詢的總覽。
 
-使用 Azure Migrate 專案相關聯的 Log Analytics 工作區中的查詢擷取服務對應相依性資料。 [了解更多](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#log-analytics-records)查詢 Azure 監視器中的服務對應資料表的相關記錄。 
+執行相依性資料的查詢，如下所示：
 
-若要執行的 Kusto 查詢：
+1. 安裝代理程式之後，請移至入口網站，然後按一下 [概觀]****。
+2. 在 [ **Azure Migrate：伺服器評估**] 中，按一下 **[總覽**]。 按一下向下箭號以展開 [**基本**]。
+3. 在 [ **OMS 工作區**] 中，按一下工作區名稱。
+3. 在 [Log Analytics 工作區] 頁面上 > **[一般**]，按一下 [**記錄**]。
+4. 撰寫查詢，然後按一下 [**執行**]。
 
-1. 安裝代理程式之後，請移至入口網站，然後按一下 [概觀]。
-2. 在 [概觀] 中，移至專案的 [Essentials] 區域，然後按一下 [OMS 工作區] 旁提供的工作區名稱。
-3. 在 Log Analytics 工作區頁面上，按一下 [一般] > [記錄]。
-4. 撰寫查詢，以蒐集使用 Azure 監視器記錄檔的相依性資料。 在下一節中找到查詢範例。
-5. 按一下 [執行] 以執行查詢。 
+### <a name="sample-queries"></a>範例查詢
 
-[了解更多](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)關於如何撰寫 Kusto 查詢。 
+以下是一些您可以用來解壓縮相依性資料的範例查詢。
 
-### <a name="sample-azure-monitor-logs-queries"></a>範例 Azure 監視器的記錄查詢
+- 您可以修改查詢以擷取慣用的資料點。
+- [查看](../azure-monitor/insights/service-map.md#log-analytics-records)相依性資料記錄的完整清單。
+- [查看](../azure-monitor/insights/service-map.md#sample-log-searches)其他範例查詢。
 
-以下是可用來擷取相依性資料的範例查詢。 您可以修改查詢以擷取您慣用的資料點。 相依性資料記錄中的欄位的完整清單可[此處](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#log-analytics-records)。 尋找更多的範例查詢[此處](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#sample-log-searches)。
+#### <a name="sample-review-inbound-connections"></a>範例：審查輸入連接
 
-#### <a name="summarize-inbound-connections-on-a-set-of-machines"></a>彙總一組機器上的輸入的連線
+檢查一組 Vm 的輸入連線。
 
-請注意，對於連線計量，VMConnection，資料表中的記錄並不代表個別的實體網路連線。 多個實體網路連線會分組為邏輯連接。 [了解更多](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#connections)如何實體網路連線的相關資料會彙總成單一的邏輯記錄中 VMConnection。 
+- 連接計量（VMConnection）資料表中的記錄不代表個別的實體網路連線。
+- 將多個實體網路連線分組為一個邏輯連線。
+- [深入瞭解](../azure-monitor/insights/service-map.md#connections)如何在 VMConnection 中匯總實體網路連接資料。
 
 ```
 // the machines of interest
@@ -147,15 +179,17 @@ let ips=materialize(ServiceMapComputer_CL
 | summarize ips=makeset(todynamic(Ipv4Addresses_s)) by MonitoredMachine=ResourceName_s
 | mvexpand ips to typeof(string));
 let StartDateTime = datetime(2019-03-25T00:00:00Z);
-let EndDateTime = datetime(2019-03-30T01:00:00Z); 
+let EndDateTime = datetime(2019-03-30T01:00:00Z);
 VMConnection
-| where Direction == 'inbound' 
+| where Direction == 'inbound'
 | where TimeGenerated > StartDateTime and TimeGenerated  < EndDateTime
 | join kind=inner (ips) on $left.DestinationIp == $right.ips
 | summarize sum(LinksEstablished) by Computer, Direction, SourceIp, DestinationIp, DestinationPort
 ```
 
-#### <a name="summarize-volume-of-data-sent-and-received-on-inbound-connections-between-a-set-of-machines"></a>彙總資料傳送和接收的一組機器之間的傳入連接的磁碟的區
+#### <a name="sample-summarize-sent-and-received-data"></a>範例：摘要已傳送和接收的資料
+
+這個範例會摘要說明一組機器之間的輸入連接所傳送和接收的資料量。
 
 ```
 // the machines of interest
@@ -163,9 +197,9 @@ let ips=materialize(ServiceMapComputer_CL
 | summarize ips=makeset(todynamic(Ipv4Addresses_s)) by MonitoredMachine=ResourceName_s
 | mvexpand ips to typeof(string));
 let StartDateTime = datetime(2019-03-25T00:00:00Z);
-let EndDateTime = datetime(2019-03-30T01:00:00Z); 
+let EndDateTime = datetime(2019-03-30T01:00:00Z);
 VMConnection
-| where Direction == 'inbound' 
+| where Direction == 'inbound'
 | where TimeGenerated > StartDateTime and TimeGenerated  < EndDateTime
 | join kind=inner (ips) on $left.DestinationIp == $right.ips
 | summarize sum(BytesSent), sum(BytesReceived) by Computer, Direction, SourceIp, DestinationIp, DestinationPort
@@ -173,6 +207,6 @@ VMConnection
 
 ## <a name="next-steps"></a>後續步驟
 
-- [深入了解](https://docs.microsoft.com/azure/migrate/resources-faq#dependency-visualization)相依性視覺效果的常見問題集。
-- [了解如何](how-to-create-group-dependencies.md)將群組相依性視覺化來調整群組。
-- [深入了解](concepts-assessment-calculation.md)評定的計算方式。
+[建立](how-to-create-assessment.md)群組的評量。
+
+

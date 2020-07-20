@@ -1,25 +1,16 @@
 ---
-title: 針對 Azure Service Fabric 建立混亂與容錯移轉測試 | Microsoft Docs
+title: 建立 Azure Service Fabric 的混亂和容錯移轉測試
 description: 使用 Service Fabric 混亂測試和容錯移轉測試案例來引發錯誤並確認服務的可靠性。
-services: service-fabric
-documentationcenter: .net
 author: motanv
-manager: rsinha
-editor: toddabel
-ms.assetid: 8eee7e89-404a-4605-8f00-7e4d4fb17553
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 06/07/2017
+ms.date: 10/1/2019
 ms.author: motanv
-ms.openlocfilehash: d12c5097d4ba5e0ccfe0e2b2cbc8ccd758c32d98
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 336cd048704055e07de1a20f0694bd5816265a8a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60865001"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245563"
 ---
 # <a name="testability-scenarios"></a>Testability 案例
 雲端基礎結構之類的大型分散式系統本身並不可靠。 Azure Service Fabric 讓開發人員能夠撰寫可在不可靠的基礎結構上執行的服務。 為了撰寫高品質的服務，開發人員必須能夠產生這類不可靠的基礎結構，才能測試其服務的穩定性。
@@ -49,14 +40,14 @@ ms.locfileid: "60865001"
 以目前的形式來看，混亂測試的錯誤產生引擎只會引發安全的錯誤。 這表示因為沒有外部錯誤，所以永遠不會發生仲裁或資料遺失。
 
 ### <a name="important-configuration-options"></a>重要的組態選項
-* **TimeToRun**：測試會執行成功完成前的總時間。 測試可以提前完成，而不必等驗證失敗。
-* **MaxClusterStabilizationTimeout**：最大的叢集變成狀況良好的測試失敗前所等待的時間量。 執行的檢查會查看叢集健康情況或服務健康情況是否正常、服務分割區是否達到目標複本的設定大小，以及是否沒有 InBuild 複本。
-* **MaxConcurrentFaults**：每個反覆運算中，引發最大並行錯誤數。 數量越大，測試會越積極，因此導致更複雜的容錯移轉和轉換組合。 無論此組態的數量多高，測試都能保證缺少外部錯誤時，就不會發生仲裁或資料遺失。
+* **TimeToRun**：測試在成功完成前的總執行時間。 測試可以提前完成，而不必等驗證失敗。
+* **MaxClusterStabilizationTimeout**：測試失敗前，等候叢集變成狀況良好的時間上限。 執行的檢查會查看叢集健康情況或服務健康情況是否正常、服務分割區是否達到目標複本的設定大小，以及是否沒有 InBuild 複本。
+* **MaxConcurrentFaults**：每個反覆運算中引發的最大並行錯誤數。 數量越大，測試會越積極，因此導致更複雜的容錯移轉和轉換組合。 無論此組態的數量多高，測試都能保證缺少外部錯誤時，就不會發生仲裁或資料遺失。
 * **EnableMoveReplicaFaults**：啟用或停用造成主要或次要複本移動的錯誤。 預設會停用這些錯誤。
-* **WaitTimeBetweenIterations**：反覆項目，也就是在一輪的錯誤與對應的驗證之間要等候的時間量。
+* **WaitTimeBetweenIterations**：反覆運算之間的等待時間長度，也就是在一輪的錯誤與對應的驗證後等待下一輪。
 
 ### <a name="how-to-run-the-chaos-test"></a>如何執行混亂測試
-C# 示例
+C# 範例
 
 ```csharp
 using System;
@@ -133,6 +124,8 @@ class Test
 
 PowerShell
 
+Service Fabric Powershell 模組包含兩種開始混亂案例的方式。 `Invoke-ServiceFabricChaosTestScenario`是以用戶端為基礎，而且如果用戶端機器在測試期間關閉，將不會再引進任何錯誤。 或者，還有一組命令，用來在機器關機時讓測試保持執行狀態。 `Start-ServiceFabricChaos`會使用名為 FaultAnalysisService 的具狀態且可靠的系統服務，確保在 TimeToRun 啟動之前，會持續引進錯誤。 `Stop-ServiceFabricChaos`可以用來手動停止案例，並 `Get-ServiceFabricChaosReport` 取得報表。 如需詳細資訊，請參閱[Azure Service Fabric Powershell 參考](/powershell/module/servicefabric/?view=azureservicefabricps)和[Service Fabric 叢集中的引發控制混亂](service-fabric-controlled-chaos.md)。
+
 ```powershell
 $connection = "localhost:19000"
 $timeToRun = 60
@@ -160,10 +153,10 @@ Invoke-ServiceFabricChaosTestScenario -TimeToRunMinute $timeToRun -MaxClusterSta
 容錯移轉測試會引發選定的錯誤，然後在服務上執行驗證，以確保其穩定性。 容錯移轉測試一次只會引發一個錯誤，不像混亂測試中可能會有多個錯誤。 如果在每個錯誤後，服務分割區沒有在設定的逾時內變穩定，測試會失敗。 此測試只會引發安全的錯誤。 這表示因為沒有外部錯誤，所以不會發生仲裁或資料遺失。
 
 ### <a name="important-configuration-options"></a>重要的組態選項
-* **PartitionSelector**:指定需要做為目標的資料分割的選取器物件。
-* **TimeToRun**：測試會執行完成前的總時間。
-* **MaxServiceStabilizationTimeout**:最大的叢集變成狀況良好的測試失敗前所等待的時間量。 執行的檢查會查看服務健康情況是否正常，或是所有分割區是否達到目標複本的設定大小，以及是否沒有 InBuild 複本。
-* **WaitTimeBetweenFaults**：每個容錯網域和驗證的循環之間要等候的時間量。
+* **PartitionSelector**：指定需要做為目標分割區的選取器物件。
+* **TimeToRun**：測試在完成前的總執行時間。
+* **MaxServiceStabilizationTimeout**：測試失敗前，等候叢集變成狀況良好的時間上限。 執行的檢查會查看服務健康情況是否正常，或是所有分割區是否達到目標複本的設定大小，以及是否沒有 InBuild 複本。
+* **WaitTimeBetweenFaults**：每個錯誤和驗證的循環之間要等候的時間長度。
 
 ### <a name="how-to-run-the-failover-test"></a>如何執行容錯移轉測試
 **C#**

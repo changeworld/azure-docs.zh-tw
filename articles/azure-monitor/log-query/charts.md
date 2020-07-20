@@ -1,24 +1,16 @@
 ---
 title: 從 Azure 監視器記錄查詢建立圖表 | Microsoft Docs
 description: 說明 Azure 監視器中能以不同方式顯示您記錄資料的不同視覺效果。
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 08/16/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 07d0866bd697587da170a00e8077a57035989d32
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 08/16/2018
+ms.openlocfilehash: 8a515f01bfa9f8ec579c51b806c997d79b629250
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60594040"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77670316"
 ---
 # <a name="creating-charts-and-diagrams-from-azure-monitor-log-queries"></a>從 Azure 監視器記錄查詢建立圖表
 
@@ -42,7 +34,7 @@ Heartbeat
 
 ![資料表](media/charts/table-display.png)
 
-若要取的更好的檢視，請選取 [圖表]，然後選擇 [圓形圖] 選項以將結果視覺化：
+若要取的更好的檢視，請選取 [圖表]****，然後選擇 [圓形圖]**** 選項以將結果視覺化：
 
 ![圓形圖](media/charts/charts-and-diagrams-pie.png)
 
@@ -57,7 +49,7 @@ Perf
 | summarize avg(CounterValue), percentiles(CounterValue, 50, 95)  by bin(TimeGenerated, 1h)
 ```
 
-選取 [折線圖] 圖表顯示選項：
+選取**折線圖**顯示選項：
 
 ![折線圖](media/charts/charts-and-diagrams-multiSeries.png)
 

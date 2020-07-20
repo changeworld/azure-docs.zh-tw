@@ -1,34 +1,34 @@
 ---
 title: 什麼是筆跡辨識器？ - 筆跡辨識器 API
-titlesuffix: Azure Cognitive Services
-description: 將筆跡辨識器整合到您的應用程式、網站、工具與其他解決方案，以提供...
+titleSuffix: Azure Cognitive Services
+description: 將筆跡辨識器整合到您的應用程式、網站、工具與其他解決方案，以允許將筆跡筆觸資料視為輸入來辨識和使用。
 services: cognitive-services
-author: erhopf
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
-ms.topic: tutorial
-ms.date: 05/02/2019
-ms.author: erhopf
-ms.openlocfilehash: 0ed1a72a5dc61458200b72c768ad722656b820d8
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.topic: overview
+ms.date: 12/17/2019
+ms.author: aahi
+ms.openlocfilehash: 2d00a489af35f5960aaeb1dda7add5337d48d57d
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65026688"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "75448158"
 ---
 # <a name="what-is-the-ink-recognizer-api"></a>什麼是筆跡辨識器 API？
 
 
 筆墨辨識器認知服務會提供雲端式 REST API 來分析及辨識數位筆跡內容。 不同於使用光學字元辨識 (OCR) 的服務，此 API 需要以數位筆跡筆觸資料作為輸入。 數位筆跡筆觸是按時間排序的 2D 位置點 (X,Y 座標) 集合，可表示數位筆或手指等輸入工具的動作。 然後，其會辨識輸入的圖形和手寫內容，並傳回包含所有已辨識實體的 JSON 回應。
 
-![流程圖：描述如何將筆跡筆觸輸入傳送給 API](media/ink-recognizer-pen-graph.png)
+![流程圖：描述如何將筆跡筆觸輸入傳送給 API](media/ink-recognizer-pen-graph.svg)
 
 ## <a name="features"></a>特性
 
 使用筆跡辨識器 API 可輕鬆辨識應用程式中的手寫內容。 
 
-|功能  |說明  |
+|功能  |描述  |
 |---------|---------|
 | 手寫辨識 | 可辨識 63 種核心[語言和地區設定](language-support.md)的手寫內容。 | 
 | 版面配置辨識 | 取得關於數位筆跡內容的結構化資訊。 將內容拆解成書寫區、段落、線條、文字、項目符號清單。 然後，應用程式可以使用版面配置資訊來建置額外的功能，例如自動設定清單格式和圖形對齊。 |
@@ -52,7 +52,7 @@ ms.locfileid: "65026688"
 請嘗試下列語言版本的快速入門，以便開始對筆跡辨識器 API 發出呼叫。
 * [C#](quickstarts/csharp.md)
 * [Java](quickstarts/java.md)
-* [JavaScript](quickstarts/csharp.md)
+* [JavaScript](quickstarts/javascript.md)
 
 若要了解筆跡辨識 API 在數位筆跡應用程式中的運作方式，請看位於 GitHub 上的下列應用程式範例：
 * [C# 和通用 Windows 平台 (UWP)](https://go.microsoft.com/fwlink/?linkid=2089803)  

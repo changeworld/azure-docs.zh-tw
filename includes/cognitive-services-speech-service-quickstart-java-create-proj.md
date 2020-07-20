@@ -2,14 +2,14 @@
 author: erhopf
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 2/20/2019
+ms.date: 02/10/2020
 ms.author: erhopf
-ms.openlocfilehash: 9469fd6a1ffc61e90948178b105abd9f83e55fde
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 4fa32668faa72973f765a75d4edc3e4598b43652
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65020700"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84609271"
 ---
 1. 啟動 Eclipse。
 
@@ -35,18 +35,18 @@ ms.locfileid: "65020700"
 
    ![套件總管的螢幕擷取畫面](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-04-convert-to-maven-project.png)
 
-1. [建立新的 POM] 視窗隨即出現。 在 [群組識別碼] 欄位中輸入 **com.microsoft.cognitiveservices.speech.samples**，並且在 [成品識別碼] 欄位中輸入 **quickstart**。 然後選取 [完成]。
+1. [建立新的 POM] 視窗隨即出現。 在 [群組識別碼] 欄位中輸入 *com.microsoft.cognitiveservices.speech.samples*，並且在 [成品識別碼] 欄位中輸入 *quickstart*。 然後選取 [完成]。
 
    ![建立新的 POM 的螢幕擷取畫面](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-05-configure-maven-pom.png)
 
-1. 開啟 **pom.xml** 檔案並加以編輯。
+1. 開啟 *pom.xml* 檔案並加以編輯。
 
    * 在檔案結尾的 `</project>` 結尾標記之前，建立 `repositories` 元素並讓其參考語音 SDK 的 Maven 存放庫，如下所示：
 
-     [!code-xml[POM Repositories](~/samples-cognitive-services-speech-sdk/quickstart/java-jre/pom.xml#repositories)]
+     [!code-xml[POM Repositories](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-microphone/pom.xml#repositories)]
 
-   * 此外，新增以語音 SDK 1.5.0 版作為相依性的 `dependencies` 元素：
+   * 同時新增 `dependencies` 元素，並以語音 SDK 版本1.12.1 做為相依性：
 
-     [!code-xml[POM Dependencies](~/samples-cognitive-services-speech-sdk/quickstart/java-jre/pom.xml#dependencies)]
+     [!code-xml[POM Dependencies](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-microphone/pom.xml#dependencies)]
 
    * 儲存變更。

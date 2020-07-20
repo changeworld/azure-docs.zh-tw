@@ -1,24 +1,22 @@
 ---
-title: 使用 Data Factory 和 Batch 來處理大型資料集 | Microsoft Docs
+title: 使用 Data Factory 和 Batch 來處理大型資料集
 description: 說明如何使用 Azure Batch 的平行處理功能來處理 Azure Data Factory 管線中的大量資料。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.assetid: 688b964b-51d0-4faa-91a7-26c7e3150868
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: e95f167cf6dcfe90fff1c2be174ca197cb2aa004
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: ab4e2f480ab0ef2deea3909d56f4fe1da17bbd07
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65204029"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85321400"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>使用 Data Factory 和 Batch 來處理大型資料集
 > [!NOTE]
@@ -40,10 +38,10 @@ ms.locfileid: "65204029"
 
  如果您不熟悉 Batch，下列文章將可協助您了解本文所述解決方案的架構/實作：   
 
-* [Batch 的基本概念](../../batch/batch-technical-overview.md)
-* [Batch 功能概觀](../../batch/batch-api-basics.md)
+* [Batch 的基本概念](../../azure-sql/database/sql-database-paas-overview.md)
+* [Batch 功能概觀](../../batch/batch-service-workflow-features.md)
 
-（選擇性） 若要深入了解 Batch，請參閱[Batch 文件](https://docs.microsoft.com/azure/batch/)。
+(選擇性) 若要深入了解 Batch，請參閱 [Batch 文件](https://docs.microsoft.com/azure/batch/)。
 
 ## <a name="why-azure-data-factory"></a>為何使用 Azure Data Factory？
 Data Factory 是雲端架構資料整合服務，用來協調以及自動移動和轉換資料。 您可以使用 Data Factory 來建立受控資料管線，以將資料從內部部署和雲端資料存放區移至集中式資料存放區。 Azure Blob 儲存體便是一個例子。 您可以使用 Data Factory 透過 Azure HDInsight 和 Azure Machine Learning 之類的服務來處理/轉換資料。 您也可以排定讓資料管線以排程方式執行 (例如每小時、每天及每週)。 您一眼就能監視及管理管線來找出問題點並採取行動。
@@ -88,15 +86,15 @@ Data Factory 包含內建的活動。 例如，使用「複製」活動可將資
 
 **時間：** 如果您熟悉 Azure、Data Factory 及 Batch 的基本概念，並已符合下列先決條件，則此解決方案需要 1 到 2 小時的時間來完成。
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>Prerequisites
 #### <a name="azure-subscription"></a>Azure 訂用帳戶
 如果您沒有 Azure 訂用帳戶，您可以快速建立免費的試用帳戶。 如需詳細資訊，請參閱[免費試用](https://azure.microsoft.com/pricing/free-trial/)。
 
 #### <a name="azure-storage-account"></a>Azure 儲存體帳戶
-在本教學課程中，您會使用儲存體帳戶來儲存資料。 如果您沒有儲存體帳戶，請參閱[建立儲存體帳戶](../../storage/common/storage-quickstart-create-account.md)。 範例解決方案會使用 Blob 儲存體。
+在本教學課程中，您會使用儲存體帳戶來儲存資料。 如果您沒有儲存體帳戶，請參閱[建立儲存體帳戶](../../storage/common/storage-account-create.md)。 範例解決方案會使用 Blob 儲存體。
 
 #### <a name="azure-batch-account"></a>Azure Batch 帳戶
-使用 [Azure 入口網站](https://portal.azure.com/)來建立儲存體帳戶。 如需詳細資訊，請參閱[建立及管理 Batch 帳戶](../../batch/batch-account-create-portal.md)。 請記下 Batch 帳戶名稱和帳戶金鑰。 您也可以使用[新增 AzBatchAccount](https://docs.microsoft.com/powershell/module/az.batch/new-azbatchaccount) cmdlet 來建立 Batch 帳戶。 如需有關如何使用此 Cmdlet 的指示，請參閱 [開始使用 Batch PowerShell Cmdlet](../../batch/batch-powershell-cmdlets-get-started.md)。
+使用 [Azure 入口網站](https://portal.azure.com/)來建立儲存體帳戶。 如需詳細資訊，請參閱[建立及管理 Batch 帳戶](../../batch/batch-account-create-portal.md)。 請記下 Batch 帳戶名稱和帳戶金鑰。 您也可以使用 [New-AzBatchAccount](https://docs.microsoft.com/powershell/module/az.batch/new-azbatchaccount) Cmdlet 來建立 Batch 帳戶。 如需有關如何使用此 Cmdlet 的指示，請參閱 [開始使用 Batch PowerShell Cmdlet](../../batch/batch-powershell-cmdlets-get-started.md)。
 
 此範例解決方案會使用 Batch (透過資料處理站管線間接使用)，以平行方式在計算節點集區 (受控 VM 集合) 上處理資料。
 
@@ -124,7 +122,7 @@ Data Factory 包含內建的活動。 例如，使用「複製」活動可將資
    f. 選取 [確定] 以建立集區。
 
 #### <a name="azure-storage-explorer"></a>Azure 儲存體總管
-您將使用 [Azure 儲存體總管 6](https://azurestorageexplorer.codeplex.com/) 或 [CloudXplorer](http://clumsyleaf.com/products/cloudxplorer) (來自 ClumsyLeaf Software) 來檢查和更改您儲存體專案中的資料。 您也可以檢查和更改雲端所裝載應用程式之記錄中的資料。
+您將使用 [Azure 儲存體總管 6](https://azurestorageexplorer.codeplex.com/) 或 [CloudXplorer](https://clumsyleaf.com/products/cloudxplorer) (來自 ClumsyLeaf Software) 來檢查和更改您儲存體專案中的資料。 您也可以檢查和更改雲端所裝載應用程式之記錄中的資料。
 
 1. 建立名為 **mycontainer** 且具有私人存取權 (無匿名存取權) 的容器。
 
@@ -182,9 +180,9 @@ public IDictionary<string, string> Execute(
 
    a. 啟動 Visual Studio 2012/2013/2015。
 
-   b. 選取 [檔案] > [新增] > [專案]。
+   b. 選取 [File] \(檔案\) >  [New] \(新增\) >  [Project] \(專案\)。
 
-   c. 展開 [範本]，然後選取 [Visual C#]**\#**。 在此逐步解說中，您使用 C\# 中，但您可以使用任何 .NET 語言來開發自訂活動。
+   c. 展開 [範本]，然後選取 [Visual C#] **\#** 。 在此逐步解說中，您使用 C\# 中，但您可以使用任何 .NET 語言來開發自訂活動。
 
    d. 從右邊的專案類型清單中選取 [類別庫]。
 
@@ -192,7 +190,7 @@ public IDictionary<string, string> Execute(
 
    f. 在 [位置] 中選取 **C:\\ADF**。 建立 [ADF] 資料夾 (如果不存在)。
 
-   g. 選取 [確定] 以建立專案。
+   g. 選取 [確定] 可建立專案。
 
 1. 選取 [工具] > [NuGet 套件管理員] > [套件管理員主控台]。
 
@@ -213,10 +211,10 @@ public IDictionary<string, string> Execute(
     using System.Globalization;
     using System.Diagnostics;
     using System.Linq;
-    
+
     using Microsoft.Azure.Management.DataFactories.Models;
     using Microsoft.Azure.Management.DataFactories.Runtime;
-    
+
     using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.Blob;
     ```
@@ -243,15 +241,15 @@ public IDictionary<string, string> Execute(
        Activity activity,
        IActivityLogger logger)
     {
-    
+
        // Declare types for the input and output data stores.
        AzureStorageLinkedService inputLinkedService;
-    
+
        Dataset inputDataset = datasets.Single(dataset => dataset.Name == activity.Inputs.Single().Name);
-    
+
        foreach (LinkedService ls in linkedServices)
            logger.Write("linkedService.Name {0}", ls.Name);
-    
+
        // Use the First method instead of Single because we are using the same
        // Azure Storage linked service for input and output.
        inputLinkedService = linkedServices.First(
@@ -259,15 +257,15 @@ public IDictionary<string, string> Execute(
            linkedService.Name ==
            inputDataset.Properties.LinkedServiceName).Properties.TypeProperties
            as AzureStorageLinkedService;
-    
+
        string connectionString = inputLinkedService.ConnectionString; // To create an input storage client.
        string folderPath = GetFolderPath(inputDataset);
        string output = string.Empty; // for use later.
-    
+
        // Create the storage client for input. Pass the connection string.
        CloudStorageAccount inputStorageAccount = CloudStorageAccount.Parse(connectionString);
        CloudBlobClient inputClient = inputStorageAccount.CreateCloudBlobClient();
-    
+
        // Initialize the continuation token before using it in the do-while loop.
        BlobContinuationToken continuationToken = null;
        do
@@ -279,34 +277,34 @@ public IDictionary<string, string> Execute(
                                     continuationToken,
                                     null,
                                     null);
-    
+
            // The Calculate method returns the number of occurrences of
            // the search term "Microsoft" in each blob associated
            // with the data slice.
            //
            // The definition of the method is shown in the next step.
            output = Calculate(blobList, logger, folderPath, ref continuationToken, "Microsoft");
-    
+
        } while (continuationToken != null);
-    
+
        // Get the output dataset by using the name of the dataset matched to a name in the Activity output collection.
        Dataset outputDataset = datasets.Single(dataset => dataset.Name == activity.Outputs.Single().Name);
-    
+
        folderPath = GetFolderPath(outputDataset);
-    
+
        logger.Write("Writing blob to the folder: {0}", folderPath);
-    
+
        // Create a storage object for the output blob.
        CloudStorageAccount outputStorageAccount = CloudStorageAccount.Parse(connectionString);
        // Write the name of the file.
        Uri outputBlobUri = new Uri(outputStorageAccount.BlobEndpoint, folderPath + "/" + GetFileName(outputDataset));
-    
+
        logger.Write("output blob URI: {0}", outputBlobUri.ToString());
        // Create a blob and upload the output text.
        CloudBlockBlob outputBlob = new CloudBlockBlob(outputBlobUri, outputStorageAccount.Credentials);
        logger.Write("Writing {0} to the output blob", output);
        outputBlob.UploadText(output);
-    
+
        // The dictionary can be used to chain custom activities together in the future.
        // This feature is not implemented yet, so just return an empty dictionary.
        return new Dictionary<string, string>();
@@ -324,41 +322,41 @@ public IDictionary<string, string> Execute(
        {
            return null;
        }
-    
+
        AzureBlobDataset blobDataset = dataArtifact.Properties.TypeProperties as AzureBlobDataset;
        if (blobDataset == null)
        {
            return null;
        }
-    
+
        return blobDataset.FolderPath;
     }
-    
+
     /// <summary>
     /// Gets the fileName value from the input/output dataset.
     /// </summary>
-    
+
     private static string GetFileName(Dataset dataArtifact)
     {
        if (dataArtifact == null || dataArtifact.Properties == null)
        {
            return null;
        }
-    
+
        AzureBlobDataset blobDataset = dataArtifact.Properties.TypeProperties as AzureBlobDataset;
        if (blobDataset == null)
        {
            return null;
        }
-    
+
        return blobDataset.FileName;
     }
-    
+
     /// <summary>
     /// Iterates through each blob (file) in the folder, counts the number of instances of the search term in the file,
     /// and prepares the output text that is written to the output blob.
     /// </summary>
-    
+
     public static string Calculate(BlobResultSegment Bresult, IActivityLogger logger, string folderPath, ref BlobContinuationToken token, string searchTerm)
     {
        string output = string.Empty;
@@ -418,7 +416,7 @@ public IDictionary<string, string> Execute(
     {
     // Get the list of input blobs from the input storage client object.
     BlobResultSegment blobList = inputClient.ListBlobsSegmented(folderPath,
-    
+
                          true,
                                    BlobListingDetails.Metadata,
                                    null,
@@ -426,13 +424,13 @@ public IDictionary<string, string> Execute(
                                    null,
                                    null);
     // Return a string derived from parsing each blob.
-    
+
      output = Calculate(blobList, logger, folderPath, ref continuationToken, "Microsoft");
-    
+
     } while (continuationToken != null);
 
     ```
-   如需詳細資訊，請參閱 [ListBlobsSegmented](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_blob_container.listblobssegmented) 方法的文件。
+   如需詳細資訊，請參閱 [ListBlobsSegmented](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob.cloudblobcontainer.listblobssegmented) 方法的文件。
 
 1. 以邏輯方式逐一查看 blob 集的程式碼會在 do-while 迴圈中執行。 在 **Execute** 方法中，執行 do-while 迴圈會將 blob 清單傳遞至名為 **Calculate** 的方法。 此方法會傳回名為 **output** 的字串變數，也就是在區段中逐一查看所有 blob 的結果。
 
@@ -456,14 +454,14 @@ public IDictionary<string, string> Execute(
 
     ```csharp
     AzureBlobDataset blobDataset = dataArtifact.Properties.TypeProperties as AzureBlobDataset;
-    
+
     return blobDataset.FolderPath;
     ```
 1. 程式碼會呼叫 **GetFileName** 方法來擷取檔案名稱 (blob 名稱)。 此程式碼與先前用來取得資料夾路徑的程式碼類似。
 
     ```csharp
     AzureBlobDataset blobDataset = dataArtifact.Properties.TypeProperties as AzureBlobDataset;
-    
+
     return blobDataset.FileName;
     ```
 1. 藉由建立 URI 物件寫入檔案的名稱。 URI 建構函式使用 **BlobEndpoint** 屬性傳回容器名稱。 新增資料夾路徑和檔案名稱以建構輸出 blob URI。  
@@ -525,7 +523,7 @@ test custom activity Microsoft test custom activity Microsoft
 
 下列逐步解說將提供其他詳細資料。
 
-#### <a name="step-1-create-the-data-factory"></a>步驟 1：建立 Data Factory
+#### <a name="step-1-create-the-data-factory"></a>步驟 1:建立 Data Factory
 1. 登入 [Azure 入口網站](https://portal.azure.com/)之後，執行下列步驟：
 
    a. 選取左側功能表上的 [新增]。
@@ -548,7 +546,7 @@ test custom activity Microsoft test custom activity Microsoft
 
    ![Data Factory 頁面](./media/data-factory-data-processing-using-batch/image6.png)
 
-#### <a name="step-2-create-linked-services"></a>步驟 2：建立連結的服務
+#### <a name="step-2-create-linked-services"></a>步驟 2:建立連結的服務
 已連結的服務會將資料存放區或計算服務連結至資料處理站。 在此步驟中，您會將儲存體帳戶和 Batch 帳戶連結至資料處理站。
 
 #### <a name="create-an-azure-storage-linked-service"></a>建立 Azure 儲存體連結服務
@@ -558,7 +556,7 @@ test custom activity Microsoft test custom activity Microsoft
 
    ![新增資料存放區](./media/data-factory-data-processing-using-batch/image7.png)
 
-1. 將**帳戶名稱**取代成您儲存體帳戶的名稱。 將**帳戶金鑰**取代成儲存體帳戶的存取金鑰。 若要了解如何取得儲存體存取金鑰，請參閱[檢視、複製和重新產生儲存體存取金鑰](../../storage/common/storage-account-manage.md#access-keys)。
+1. 將**帳戶名稱**取代成您儲存體帳戶的名稱。 將**帳戶金鑰**取代成儲存體帳戶的存取金鑰。 若要了解如何取得儲存體存取金鑰，請參閱[管理儲存體帳戶存取金鑰](../../storage/common/storage-account-keys-manage.md)。
 
 1. 選取命令列上的 [部署] 以部署連結服務。
 
@@ -580,7 +578,7 @@ test custom activity Microsoft test custom activity Microsoft
    d. 針對 **batchUri** JSON 屬性，輸入 Batch URI。
 
       > [!IMPORTANT]
-      > [Batch 帳戶] 刀鋒視窗中的 URL 格式如下：\<accountname\>.\<region\>.batch.azure.com。 針對 JSON 指令碼中的 **batchUri** 屬性，您必須從該 URL 中移除 a88"accountname."**。 例如 `"batchUri": "https://eastus.batch.azure.com"`。
+      > **Batch 帳戶**分頁的 URL 採用下列格式： \<accountname\> . \<region\> 。batch.azure.com。 針對 JSON 指令碼中的 **batchUri** 屬性，您必須從該 URL 中移除 a88"accountname."**。 例如 `"batchUri": "https://eastus.batch.azure.com"`。
       >
       >
 
@@ -592,7 +590,7 @@ test custom activity Microsoft test custom activity Microsoft
       > 與支援 HDInsight 的情況不同，Data Factory 服務針對 Batch 並不支援隨選選項。 在資料處理站中，您只能使用自己的 Batch 集區。
       >
       >
-   
+
    e. 指定作業系統系列設定的 **StorageLinkedService** for the **StorageLinkedService** 。 您已在前述步驟中建立此連結服務。 此儲存體會做為檔案和記錄的預備區域。
 
 1. 選取命令列上的 [部署] 以部署連結服務。
@@ -795,9 +793,9 @@ test custom activity Microsoft test custom activity Microsoft
 
    * 管線中只有一個活動，且其類型為 **DotNetActivity**。
    * **AssemblyName** 已設定為 DLL **MyDotNetActivity.dll** 的名稱。
-   * **EntryPoint** 設定為 **MyDotNetActivityNS.MyDotNetActivity**。 在您的程式碼中，它基本上是 \<namespace\>.\<classname\>。
+   * **EntryPoint** 設定為 **MyDotNetActivityNS.MyDotNetActivity**。 基本上是如此 \<namespace\> 。\<classname\> 在您的程式碼中。
    * **PackageLinkedService** 已設為 **StorageLinkedService**，這會指向包含自訂活動 zip 檔案的 Blob 儲存體。 如果您針對輸入/輸出檔案和自訂活動 zip 檔案使用不同的儲存體帳戶，就必須建立另一個儲存體已連結服務。 本文假設您使用相同的儲存體帳戶。
-   * **PackageFile** 設定為 **customactivitycontainer/MyDotNetActivity.zip**。 其格式為 \<containerforthezip\>/\<nameofthezip.zip\>。
+   * **PackageFile** 設定為 **customactivitycontainer/MyDotNetActivity.zip**。 其格式為 \<containerforthezip\> / \<nameofthezip.zip\> 。
    * 自訂活動會採用 **InputDataset** 做為輸入和 **OutputDataset** 做為輸出。
    * 自訂活動的 **linkedServiceName** 屬性會指向 **AzureBatchLinkedService**，這可讓 Data Factory 知道自訂活動必須在 Batch 上執行。
    * **並行** 設定很重要。 如果您使用預設值 1，則即使 Batch 集區中有兩個以上的計算節點，系統仍會逐一處理配量。 因此，您將無法利用 Batch 的平行處理功能。 如果您將 **concurrency** 設定為更大的值 (例如 2)，即表示可以同時處理兩個配量 (對應至 Batch 中的兩個工作)。 在此情況下，會同時運用 Batch 集區中的兩個 VM。 請適當地設定 concurrency 屬性。
@@ -902,11 +900,11 @@ Data Factory 服務會在 Batch 中建立一個名為 `adf-poolname:job-xxx` 的
 
     ```
     Trace\_T\_D\_12/6/2015 1:43:35 AM\_T\_D\_\_T\_D\_Verbose\_T\_D\_0\_T\_D\_Loading assembly file MyDotNetActivity...
-    
+
     Trace\_T\_D\_12/6/2015 1:43:35 AM\_T\_D\_\_T\_D\_Verbose\_T\_D\_0\_T\_D\_Creating an instance of MyDotNetActivityNS.MyDotNetActivity from assembly file MyDotNetActivity...
-    
+
     Trace\_T\_D\_12/6/2015 1:43:35 AM\_T\_D\_\_T\_D\_Verbose\_T\_D\_0\_T\_D\_Executing Module
-    
+
     Trace\_T\_D\_12/6/2015 1:43:38 AM\_T\_D\_\_T\_D\_Information\_T\_D\_0\_T\_D\_Activity e3817da0-d843-4c5c-85c6-40ba7424dce2 finished successfully
     ```
 1. 在 zip 檔案中包含 **PDB** 檔案，如此錯誤詳細資料才會包含錯誤發生時的呼叫堆疊等資訊。
@@ -927,7 +925,7 @@ Data Factory 服務會在 Batch 中建立一個名為 `adf-poolname:job-xxx` 的
    >
 1. 自訂活動不會使用來自您套件的 **app.config** 檔案。 因此，如果您的程式碼會從組態檔讀取任何連接字串，在執行階段就會無法運作。 使用 Batch 時，最佳做法是將所有祕密都存放在 Azure Key Vault 中。 然後使用憑證型服務主體來保護 Key Vault，再將憑證散發至 Batch 集區。 .NET 自訂活動將可在執行階段從 Key Vault 存取祕密。 這個一般解決方案可以擴展至任何類型的祕密，而不僅限於連接字串。
 
-    有一個較簡單的因應措施，但並非最佳做法。 您可以建立一個具有連接字串設定的 SQL Database 已連結服務。 接著，建立一個使用該已連結服務的資料集，然後將資料集以虛擬輸入資料集的形式鏈結至自訂 .NET 活動。 接著，您便可以在自訂活動程式碼中存取連結服務的連接字串。 這樣應該可以在執行階段正常運作。  
+    有一個較簡單的因應措施，但並非最佳做法。 您可以使用連接字串設定來建立 SQL Database 連結服務。 接著，建立一個使用該已連結服務的資料集，然後將資料集以虛擬輸入資料集的形式鏈結至自訂 .NET 活動。 接著，您便可以在自訂活動程式碼中存取連結服務的連接字串。 這樣應該可以在執行階段正常運作。  
 
 #### <a name="extend-the-sample"></a>擴充範例
 您可以延伸這個範例來深入了解 Data Factory 和 Batch 功能。 例如，若要處理不同時間範圍的配量，請執行下列步驟：
@@ -938,13 +936,13 @@ Data Factory 服務會在 Batch 中建立一個名為 `adf-poolname:job-xxx` 的
 
 1. 建立 [每個 VM 的工作數上限] 較低/較高的集區。 若要使用您建立的新集區，請更新資料處理站解決方案中的 Batch 已連結服務。 如需有關 [每個 VM 的工作數上限] 設定的詳細資訊，請參閱＜步驟 4：建立並執行具有自訂活動的管線＞。
 
-1. 建立具有**自動調整**功能的 Batch 集區。 自動調整 Batch 集區中的計算節點係指動態調整應用程式所使用的處理能力。 
+1. 建立具有**自動調整**功能的 Batch 集區。 自動調整 Batch 集區中的計算節點係指動態調整應用程式所使用的處理能力。
 
     這裡的範例公式會產生下列行為。 一開始建立集區時，會從一個 VM 開始。 $PendingTasks 計量會定義處於執行中和作用中 (已排入佇列) 狀態的工作數目。 公式會尋找過去 180 秒內的平均擱置中工作數目，並據以設定 TargetDedicated。 它會確保 TargetDedicated 一律不會超過 25 部 VM。 集區會隨著新工作的提交而自動成長。 隨著工作完成，VM 會逐一變成可用，而自動調整功能將會縮減這些 VM。 您可以視需要調整 startingNumberOfVMs 和 maxNumberofVMs。
- 
+
     自動調整公式：
 
-    ``` 
+    ```
     startingNumberOfVMs = 1;
     maxNumberofVMs = 25;
     pendingTaskSamplePercent = $PendingTasks.GetSamplePercent(180 * TimeInterval_Second);
@@ -962,7 +960,7 @@ Data Factory 服務會在 Batch 中建立一個名為 `adf-poolname:job-xxx` 的
 處理資料之後，您可以使用 Power BI 之類的線上工具來取用資料。 以下連結可協助您了解 Power BI，以及如何在 Azure 中加以使用：
 
 * [在 Power BI 中探索資料集](https://powerbi.microsoft.com/documentation/powerbi-service-get-data/)
-* [開始使用 Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-getting-started/)
+* [開始使用 Power BI Desktop](https://docs.microsoft.com/power-bi/fundamentals/desktop-getting-started)
 * [重新整理 Power BI 中的資料](https://powerbi.microsoft.com/documentation/powerbi-refresh-data/)
 * [Azure 與 Power BI：基本概觀](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)
 
@@ -974,8 +972,8 @@ Data Factory 服務會在 Batch 中建立一個名為 `adf-poolname:job-xxx` 的
   * [在 Data Factory 管線中使用自訂活動](data-factory-use-custom-activities.md)
 * [Azure Batch](https://azure.microsoft.com/documentation/services/batch/)
 
-  * [Batch 的基本概念](../../batch/batch-technical-overview.md)
-  * [Batch 功能概觀](../../batch/batch-api-basics.md)
+  * [Batch 的基本概念](../../azure-sql/database/sql-database-paas-overview.md)
+  * [Batch 功能的總覽](../../batch/batch-service-workflow-features.md)）
   * [在 Azure 入口網站中建立和管理 Batch 帳戶](../../batch/batch-account-create-portal.md)
   * [開始使用適用於 .NET 的 Batch 用戶端程式庫](../../batch/quick-run-dotnet.md)
 

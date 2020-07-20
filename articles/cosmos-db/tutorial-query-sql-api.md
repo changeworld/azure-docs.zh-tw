@@ -1,19 +1,19 @@
 ---
-title: 如何在 Azure Cosmos DB 中使用 SQL 進行查詢？
-description: 了解如何在 Azure Cosmos DB 中使用 SQL 進行查詢
-author: rimman
-ms.author: rimman
+title: 教學課程：如何在 Azure Cosmos DB 中使用 SQL 進行查詢？
+description: 教學課程：了解如何透過查詢園地在 Azure Cosmos DB 中使用 SQL 進行查詢
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.custom: tutorial-develop, mvc
 ms.topic: tutorial
-ms.date: 05/10/2017
+ms.date: 11/05/2019
 ms.reviewer: sngun
-ms.openlocfilehash: bc9835876e8b87213ddbae65e43222467e751ea3
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: e8d1498520ea0c59372ec4e1096b6f2b4bcf885f
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56241626"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921128"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-sql-api"></a>教學課程：使用 SQL API 查詢 Azure Cosmos DB
 
@@ -56,16 +56,17 @@ Azure Cosmos DB [SQL API](documentdb-introduction.md) 支援使用 SQL 來查詢
   "isRegistered": false
 }
 ```
+
 ## <a name="where-can-i-run-sql-queries"></a>我可以在哪裡執行 SQL 查詢？
 
 您可以使用 Azure 入口網站中的 [資料總管]、透過 [REST API 和 SDK](sql-api-sdk-dotnet.md)，甚至是 [Query Playground](https://www.documentdb.com/sql/demo) (在一組現有的範例資料上執行查詢)，來執行查詢。
 
 如需有關 SQL 查詢的詳細資訊，請參閱：
-* [SQL 查詢和 SQL 語法](how-to-sql-query.md)
+* [SQL 查詢和 SQL 語法](sql-query-getting-started.md)
 
 ## <a name="prerequisites"></a>必要條件
 
-本教學課程會假設您具備 Azure Cosmos DB 帳戶和集合。 不符合上述其中任何一項條件嗎？ 完成 [5 分鐘快速入門](create-mongodb-nodejs.md)。
+本教學課程會假設您具備 Azure Cosmos DB 帳戶和集合。 沒有這些資源嗎？ 完成 [5 分鐘快速入門](create-cosmosdb-resources-portal.md)。
 
 ## <a name="example-query-1"></a>範例查詢 1
 
@@ -73,9 +74,11 @@ Azure Cosmos DB [SQL API](documentdb-introduction.md) 支援使用 SQL 來查詢
 
 **查詢**
 
+```sql
     SELECT * 
     FROM Families f 
     WHERE f.id = "WakefieldFamily"
+```
 
 **結果**
 
@@ -114,19 +117,30 @@ Azure Cosmos DB [SQL API](documentdb-introduction.md) 支援使用 SQL 來查詢
 
 **查詢**
 
+```sql
     SELECT c.givenName 
     FROM Families f 
     JOIN c IN f.children 
     WHERE f.id = 'WakefieldFamily'
+```
 
 **結果**
 
-[ { "givenName":"Jesse" }, { "givenName":"Lisa" } ]
+```
+[
+    {
+        "givenName": "Jesse"
+    },
+    {
+        "givenName": "Lisa"
+    }
+]
+```
 
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您已完成下列操作：
+在本教學課程中，您已完成下列工作：
 
 > [!div class="checklist"]
 > * 了解如何使用 SQL 來進行查詢  

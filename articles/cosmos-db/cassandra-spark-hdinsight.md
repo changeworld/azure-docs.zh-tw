@@ -6,14 +6,14 @@ ms.author: govindk
 ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/24/2018
-ms.openlocfilehash: f728baedf9e325f224ce52e64325064f553d2671
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4848bdceef084d587c839f2af93d1ff5a43c850b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60893697"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85260564"
 ---
 # <a name="access-azure-cosmos-db-cassandra-api-from-spark-on-yarn-with-hdinsight"></a>透過 HDInsight 從 Spark on YARN 存取 Azure Cosmos DB Cassandra API
 
@@ -29,7 +29,7 @@ ms.locfileid: "60893697"
 
 * [檢閱使用 Cassandra API 的程式碼範例](cassandra-spark-generic.md#next-steps)
 
-* [如果您願意，可以使用 cqlsh 進行驗證](cassandra-spark-generic.md##connecting-to-azure-cosmos-db-cassandra-api-from-spark)
+* [如果您願意，可以使用 cqlsh 進行驗證](cassandra-spark-generic.md#connecting-to-azure-cosmos-db-cassandra-api-from-spark)
 
 * **Spark2 中的 Cassandra API 組態** - 適用於 Cassandra 的 Spark 連接器需要將 Cassandra 連線詳細資料初始化以作為 Spark 內容的一部分。 當您啟動 Jupyter Notebook 時，Spark 工作階段和內容即已初始化，建議您不要停止並重新初始化 Spark 內容，除非初始化已完成，且每個組態皆設定為 HDInsight 預設 Jupyter Notebook 啟動程序的一部分。 有個解決方法是將 Cassandra 執行個體詳細資料直接新增至 Ambari (Spark2) 服務組態。 這是個別叢集的一次性活動，在完成後需要重新啟動 Spark2 服務。
  

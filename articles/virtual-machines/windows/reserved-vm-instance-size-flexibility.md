@@ -1,24 +1,20 @@
 ---
-title: 虛擬機器大小彈性 - Azure 保留的 VM 執行個體 | Microsoft Docs
+title: 虛擬機器大小彈性-Azure 保留的 VM 執行個體
 description: 了解當您使用預訂的 VM 執行個體時，預訂折扣適用何種大小系列。
-services: virtual-machines-windows
-documentationcenter: ''
-author: manish-shukla01
-manager: manish-shukla01
-editor: ''
-ms.service: virtual-machines-windows
-ms.devlang: na
+author: bandersmsft
+ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: conceptual
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/03/2018
-ms.author: manshuk
-ms.openlocfilehash: 7d503d77d51c2abe06485ed33060653e47b00f53
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 02/18/2020
+ms.reviewer: yashar
+ms.openlocfilehash: 8b322535fe7b0437c1d3644584fde71e219dcf47
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60251162"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82099915"
 ---
+# <a name="virtual-machine-size-flexibility-with-reserved-vm-instances"></a>利用保留 VM 執行個體獲得虛擬機器大小彈性
 [!INCLUDE [virtual-machines-common-reserved-vm-instance-size-flexibility](../../../includes/virtual-machines-common-reserved-vm-instance-size-flexibility.md)]
 

@@ -1,86 +1,106 @@
 ---
-title: 將重新導向 URL 設定為 b2clogin.com - Azure Active Directory B2C | Microsoft Docs
+title: 將應用程式和 Api 遷移至 b2clogin.com
+titleSuffix: Azure AD B2C
 description: 了解如何在 Azure Active Directory B2C 的重新導向 URL 中使用 b2clogin.com。
 services: active-directory-b2c
-author: davidmu1
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 01/28/2019
-ms.author: davidmu
+ms.topic: how-to
+ms.date: 12/04/2019
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5f706a086c3dfe24f22e63cfe84f330d866eca70
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 4297ee64742b81e86eb8b85c0a6c405fac07d67f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64703081"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85386159"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>將 Azure Active Directory B2C 的重新導向 URL 設定為 b2clogin.com
 
-當您為 Azure Active Directory (Azure AD) B2C 應用程式中的註冊和登入設定識別提供者時，必須指定重新導向 URL。 過去是使用 login.microsoftonline.com，現在您應該使用 b2clogin.com。
+當您在 Azure Active Directory B2C （Azure AD B2C）應用程式中設定註冊和登入的身分識別提供者時，您需要指定重新導向 URL。 您不應該再于應用程式和 Api 中參考*login.microsoftonline.com* 。 相反地，請將*b2clogin.com*用於所有新的應用程式，並將現有的應用程式從*login.microsoftonline.com*遷移至*b2clogin.com*。
 
-使用 b2clogin.com 可提供額外的優點，例如：
+## <a name="deprecation-of-loginmicrosoftonlinecom"></a>取代 login.microsoftonline.com
 
-- Microsoft 服務在 Cookie 標頭中所耗用的空間會縮小。
-- 您的 URL 不再包含對 Microsoft 的參考。 例如： `https://your-tenant-name.b2clogin.com/tenant-id/oauth2/authresp`。
+在2019年12月04日，我們已于**2020 年12月**的 Azure AD B2C 中宣佈排程淘汰 login.microsoftonline.com 支援：
 
->[!NOTE]
-> 您可以使用租用戶名稱和租用戶的 GUID，如下所示：
-> * `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com` (這仍然是指`onmicrosoft.com`)
-> * `https://your-tenant-name.b2clogin.com/your-tenant-guid` （在此情況下沒有任何參考到 Microsoft 完全）
->
-> 不過，您無法使用_自訂網域_您的 Azure Active Directory B2C 租用戶，例如`https://your-tenant-name.b2clogin.com/your-custom-domain-name`會_不_運作。
+[Azure Active Directory B2C 是淘汰 login.microsoftonline.com](https://azure.microsoft.com/updates/b2c-deprecate-msol/)
 
-請考慮這些設定在使用 b2clogin.com 時可能需要變更：
+Login.microsoftonline.com 的淘汰會在2020年12月4日 Azure AD B2C 生效，讓現有的租使用者一（1）年遷移至 b2clogin.com。 2019年12月4日之後建立的新租使用者將不會接受來自 login.microsoftonline.com 的要求。 B2clogin.com 端點上的所有功能都保持不變。
 
-- 請將您識別提供者應用程式中的重新導向 URL 設定為使用 b2clogin.com。 
-- 設定讓 Azure AD B2C 應用程式將 b2clogin.com 用於使用者流程參考和權杖端點。 
-- 如果您使用 MSAL，則必須將 **ValidateAuthority** 屬性設定為 `false`。
-- 請確定您變更在 CORS 設定中針對[使用者介面自訂](active-directory-b2c-ui-customization-custom-dynamic.md)定義的任何**允許的來源**。  
+取代 login.microsoftonline.com 並不會影響租使用者 Azure Active Directory。 只有 Azure Active Directory B2C 的租使用者會受到這項變更的影響。
 
-## <a name="change-redirect-urls"></a>變更重新導向 URL
+## <a name="benefits-of-b2clogincom"></a>B2clogin.com 的優點
 
-若要使用 b2clogin.com，請在識別提供者應用程式的設定中，尋找受信任的 URL 清單，並將其變更為重新導向回 Azure AD B2C。  目前您可能將它設定為重新導向回某個 login.microsoftonline.com 網站。 
+當您使用*b2clogin.com*作為重新導向 URL 時：
 
-您將必須變更重新導向 URL，以便授權 `your-tenant-name.b2clogin.com`。 請務必以您的 Azure AD B2C 租用戶名稱取代 `your-tenant-name`，且如果 URL 中有 `/te`，便將其移除。 每個識別提供者的這個 URL 都略有差異，因此請查看對應的頁面以取得確切的 URL。
+* Microsoft 服務在 Cookie 標頭中所耗用的空間會縮小。
+* 重新導向 Url 不再需要包含 Microsoft 的參考。
+* 自訂頁面支援 JavaScript 用戶端程式代碼（目前處於[預覽](user-flow-javascript-overview.md)狀態）。 基於安全性限制，如果您使用*login.microsoftonline.com*，就會從自訂頁面中移除 JavaScript 程式碼和 HTML 表單元素。
 
-您可以在下列文章中找到識別提供者的設定資訊：
+## <a name="overview-of-required-changes"></a>必要變更的總覽
 
-- [Microsoft 帳戶](active-directory-b2c-setup-msa-app.md)
-- [Facebook](active-directory-b2c-setup-fb-app.md)
-- [Google](active-directory-b2c-setup-goog-app.md)
-- [Amazon](active-directory-b2c-setup-amzn-app.md)
-- [LinkedIn](active-directory-b2c-setup-li-app.md)
-- [Twitter](active-directory-b2c-setup-twitter-app.md)
-- [GitHub](active-directory-b2c-setup-github-app.md)
-- [微博](active-directory-b2c-setup-weibo-app.md)
-- [QQ](active-directory-b2c-setup-qq-app.md)
-- [微信](active-directory-b2c-setup-wechat-app.md)
-- [Azure AD](active-directory-b2c-setup-oidc-azure-active-directory.md)
-- [自訂 OIDC](active-directory-b2c-setup-oidc-idp.md)
+將您的應用程式遷移至*b2clogin.com*時，您可能需要進行幾項修改：
 
-## <a name="update-your-application"></a>更新您的應用程式
+* 將身分識別提供者應用程式中的 [重新導向 URL] 變更為參考*b2clogin.com*。
+* 更新您的 Azure AD B2C 應用程式，以在其使用者流程和權杖端點參考中使用*b2clogin.com* 。
+* 更新您在 CORS 設定中為[使用者介面自訂](custom-policy-ui-customization.md)所定義的任何**允許原始來源**。
 
-您 Azure AD B2C 應用程式可能有數個地方 (例如使用者流程參考和權杖端點) 都會參考 `login.microsoftonline.com`。  請確定您的授權端點、權杖端點及簽發者都已更新成使用 `your-tenant-name.b2clogin.com`。  
+## <a name="change-identity-provider-redirect-urls"></a>變更識別提供者重新導向 Url
 
-## <a name="set-the-validateauthority-property"></a>設定 ValidateAuthority 屬性
+在您已建立應用程式的每個識別提供者網站上，將所有信任的 Url 變更為 [重新導向至]， `your-tenant-name.b2clogin.com` 而不是 [ *login.microsoftonline.com*]。
 
-如果您使用 MSAL，請將 **ValidateAuthority** 屬性設定為 `false`。 當 **ValidateAuthority** 設定為 `false` 時，可允許重新導向到 b2clogin.com。 
+您可以使用兩種格式來 b2clogin.com 重新導向 Url。 第一種方式是使用租使用者識別碼（GUID）取代您的租使用者功能變數名稱，讓「Microsoft」不會出現在 URL 中的任何位置：
 
-下列範例示範如何設定該屬性：
-
-在[適用於 .NET 的 MSAL](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)：
-
-```CSharp
- ConfidentialClientApplication client = new ConfidentialClientApplication(...); // can also be PublicClientApplication
- client.ValidateAuthority = false;
+```
+https://{your-tenant-name}.b2clogin.com/{your-tenant-id}/oauth2/authresp
 ```
 
-和在[適用於 JavaScript 的 MSAL](https://github.com/AzureAD/microsoft-authentication-library-for-js) 中：
+第二個選項會以形式使用您的租使用者功能變數名稱 `your-tenant-name.onmicrosoft.com` 。 例如：
 
-```Javascript
+```
+https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/oauth2/authresp
+```
+
+針對這兩種格式：
+
+* 將 `{your-tenant-name}` 取代為您的 Azure AD B2C 租用戶名稱。
+* `/te`如果它存在於 URL 中，請移除。
+
+## <a name="update-your-applications-and-apis"></a>更新您的應用程式和 Api
+
+已啟用 Azure AD B2C 的應用程式和 Api 中的程式碼可能會 `login.microsoftonline.com` 在數個位置參考。 例如，您的程式碼可能會參考使用者流程和權杖端點。 將下列內容更新為，改為參考 `your-tenant-name.b2clogin.com` ：
+
+* 授權端點
+* 權杖端點
+* 權杖簽發者
+
+例如，Contoso 的註冊/登入原則的授權單位端點現在會是：
+
+```
+https://contosob2c.b2clogin.com/00000000-0000-0000-0000-000000000000/B2C_1_signupsignin1
+```
+
+如需將以 OWIN 為基礎的 web 應用程式遷移至 b2clogin.com 的詳細資訊，請參閱將[OWIN 型 Web API 遷移至 b2clogin.com](multiple-token-endpoints.md)。
+
+若要遷移受 Azure AD B2C 保護的 Azure API 管理 Api，請參閱[使用 Azure AD B2C 保護 AZURE Api 管理 api](secure-api-management.md)的「[遷移至 b2clogin.com](secure-api-management.md#migrate-to-b2clogincom) 」一節。
+
+## <a name="microsoft-authentication-library-msal"></a>Microsoft Authentication Library (MSAL)
+
+### <a name="validateauthority-property"></a>ValidateAuthority 屬性
+
+如果您使用的是[MSAL.NET][msal-dotnet] v2 或更早版本，請將用戶端具現化上的**ValidateAuthority**屬性設定為， `false` 以允許重新導向至*b2clogin.com*。 MSAL.NET v3 和更新版本不需要此設定。
+
+```csharp
+ConfidentialClientApplication client = new ConfidentialClientApplication(...); // Can also be PublicClientApplication
+client.ValidateAuthority = false; // MSAL.NET v2 and earlier **ONLY**
+```
+
+如果您是使用[JavaScript 的 MSAL][msal-js]：
+
+```JavaScript
 this.clientApplication = new UserAgentApplication(
   env.auth.clientId,
   env.auth.loginAuthority,
@@ -90,3 +110,15 @@ this.clientApplication = new UserAgentApplication(
   }
 );
 ```
+
+## <a name="next-steps"></a>後續步驟
+
+如需將以 OWIN 為基礎的 web 應用程式遷移至 b2clogin.com 的詳細資訊，請參閱將[OWIN 型 Web API 遷移至 b2clogin.com](multiple-token-endpoints.md)。
+
+若要遷移受 Azure AD B2C 保護的 Azure API 管理 Api，請參閱[使用 Azure AD B2C 保護 AZURE Api 管理 api](secure-api-management.md)的「[遷移至 b2clogin.com](secure-api-management.md#migrate-to-b2clogincom) 」一節。
+
+<!-- LINKS - External -->
+[msal-dotnet]: https://github.com/AzureAD/microsoft-authentication-library-for-dotnet
+[msal-dotnet-b2c]: https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/AAD-B2C-specifics
+[msal-js]: https://github.com/AzureAD/microsoft-authentication-library-for-js
+[msal-js-b2c]: ../active-directory/develop/msal-b2c-overview.md

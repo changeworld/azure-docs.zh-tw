@@ -1,133 +1,90 @@
 ---
-title: CEF 資料連接至 Azure 的 Sentinel 預覽 |Microsoft Docs
-description: 了解如何將 CEF 資料連接至 Azure 的 Sentinel。
+title: 將 CEF 資料連線至 Azure Sentinel 預覽 |Microsoft Docs
+description: 連接外部解決方案，以使用 Linux 電腦作為 proxy，將一般事件格式（CEF）訊息傳送至 Azure Sentinel。
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
-ms.assetid: cbf5003b-76cf-446f-adb6-6d816beca70f
-ms.service: sentinel
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/02/2019
-ms.author: rkarlin
-ms.openlocfilehash: 8c0b895c3ef811268c7b67393a5382362601d875
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.date: 11/26/2019
+ms.author: yelevin
+ms.openlocfilehash: 34091e0c9f18cb87a240054f534f474710eb421d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65204397"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563935"
 ---
-# <a name="connect-your-external-solution-using-common-event-format"></a>連接您外部解決方案中使用常見事件格式
+# <a name="connect-your-external-solution-using-common-event-format"></a>使用一般事件格式來連接您的外部解決方案
 
-> [!IMPORTANT]
-> Azure Sentinel 目前為公開預覽狀態。
-> 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-您可以連接 Azure Sentinel 外部的解決方案，可讓您將 Syslog 中儲存的記錄檔。 如果您的應用裝置可讓您將記錄檔儲存為 Syslog 常見事件格式 (CEF)，與 Azure Sentinel 整合可讓您輕鬆地執行分析和查詢資料。
+當您連接會傳送 CEF 訊息的外部解決方案時，有三個步驟可連接 Azure Sentinel：
+
+步驟1：藉[由部署代理程式來連接 CEF](connect-cef-agent.md)步驟2：[執行解決方案特定步驟](connect-cef-solution-config.md)步驟3：[驗證連線能力](connect-cef-verify.md)
+
+本文說明連線的運作方式、提供必要條件，並提供在安全性解決方案上部署代理程式的步驟，以在 Syslog 上傳送通用事件格式（CEF）訊息。 
 
 > [!NOTE] 
-> 資料會儲存在您在執行 Azure Sentinel 的工作區的地理位置。
+> 資料會儲存在您執行 Azure Sentinel 之工作區的地理位置中。
 
-## <a name="how-it-works"></a>運作方式
-
-Azure Sentinel 與您的 CEF 設備之間的連線會發生在三個步驟：
-
-1. 在應用裝置上，您需要設定這些值，以便應用裝置會傳送所需之登入 Azure Sentinel Syslog 代理程式的必要格式。 只要您也在 Azure Sentinel 代理程式上的 Syslog 精靈修改，您可以修改這些參數在您的應用裝置。
-    - 通訊協定 = UDP
-    - 連接埠 = 514
-    - 設備 = 本機 4
-    - 格式 = CEF
-2. Syslog 代理程式收集的資料，並將它安全地傳送至 Log Analytics，它會在其中剖析和豐富。
-3. 代理程式在 Log Analytics 工作區中儲存的資料，因此如有需要使用分析、 相互關聯規則和儀表板可供查詢。
-
-
-## <a name="step-1-connect-to-your-cef-appliance-via-dedicated-azure-vm"></a>步驟 1：連接到您的 CEF 應用裝置，透過專用的 Azure VM
-
-您必須部署在專用的 Linux 機器上的代理程式 (VM 或內部部署上) 以支援應用裝置與 Azure Sentinel 之間的通訊。 您可以透過自動或手動來部署代理程式。 自動部署 Resource Manager 範本為基礎，而且您專用的 Linux 機器是您要在 Azure 中建立新的 VM 時，才可以使用。
+若要進行此連線，您必須在專用的 Linux 機器（VM 或內部部署）上部署代理程式，以支援設備與 Azure Sentinel 之間的通訊。 下圖說明 Azure 中 Linux VM 的事件設定。
 
  ![Azure 中的 CEF](./media/connect-cef/cef-syslog-azure.png)
 
-或者，您可以透過手動方式在現有的 Azure VM、在另一個雲端中的 VM 或在內部部署機器上部署代理程式。 
+或者，如果您在另一個雲端或內部部署機器中使用 VM，則會有此設定。 
 
  ![內部部署的 CEF](./media/connect-cef/cef-syslog-onprem.png)
 
-### <a name="deploy-the-agent-in-azure"></a>部署在 Azure 中的代理程式
 
+## <a name="security-considerations"></a>安全性考量
 
-1. 在 Azure Sentinel 入口網站中，按一下**資料連接器**，然後選取您的設備類型。 
+請務必根據貴組織的安全性原則來設定電腦的安全性。 例如，您可以設定您的網路以配合公司網路安全性原則，並變更背景程式中的埠和通訊協定，以符合您的需求。 您可以使用下列指示來改善您的電腦安全性性設定：  [Azure 中的安全 VM](../virtual-machines/linux/security-policy.md)、[網路安全性的最佳作法](../security/fundamentals/network-best-practices.md)。
 
-1. 底下**Linux Syslog 代理程式設定**:
-   - 選擇**自動部署**如果您想要建立新的機器會預先安裝 Azure Sentinel 代理程式，並且包含所有組態必要，如上面所述。 選取 **自動部署**然後按一下**自動代理程式部署**。 這會帶您前往 [購買] 頁面的專用的 Linux 虛擬機器，即會自動連接到您的工作區。 VM 處於**標準 D2s v3 系列 （2 個 vcpu，8 GB 記憶體）** 且具有公用 IP 位址。
-      1. 在 **自訂部署**頁面提供您詳細資料並選擇使用者名稱和密碼，如果您同意條款及條件，購買的 VM。
-      1. 設定您的應用裝置傳送記錄檔使用 [連接] 頁面中列出的設定。 泛型的常見事件格式 connector，使用這些設定：
-         - 通訊協定 = UDP
-         - 連接埠 = 514
-         - 設備 = 本機 4
-         - 格式 = CEF
-   - 選擇**手動部署**如果您想要使用現有的 VM 以專用的 Azure Sentinel 代理程式應該安裝至其上的 Linux 機器。 
-      1. 底下**下載並安裝代理程式 Syslog**，選取**Azure Linux 虛擬機器**。 
-      1. 在 **虛擬機器**隨即開啟的畫面中，選取您想要使用，然後按一下的機器**Connect**。
-      1. 在 [連接器] 畫面中，在**設定和轉送的 Syslog**，將您的 Syslog 服務精靈是否**rsyslog.d**或**syslog ng**。 
-      1. 複製下列命令，並在您的應用裝置上加以執行：
-          - 如果您選取 rsyslog.d:
-              
-            1. 告訴 Syslog 服務精靈設備 local_4 上接聽，並將 Syslog 訊息傳送至 Azure 的 Sentinel 代理程式使用連接埠 25226。 `sudo bash -c "printf 'local4.debug  @127.0.0.1:25226' > /etc/rsyslog.d/security-config-omsagent.conf"`
-            
-            2. 下載並安裝[security_events 組態檔](https://aka.ms/asi-syslog-config-file-linux)，會設定為接聽連接埠 25226 上的 Syslog 代理程式。 `sudo wget -O /etc/opt/microsoft/omsagent/{0}/conf/omsagent.d/security_events.conf "https://aka.ms/syslog-config-file-linux"` 其中{0}應該取代為您的工作區的 GUID。
-            
-            1. 重新啟動 syslog 精靈 `sudo service rsyslog restart`<br> 如需詳細資訊，請參閱[rsyslog 文件](https://www.rsyslog.com/doc/v8-stable/tutorials/tls_cert_summary.html)
-           
-          - 如果您已選取 syslog ng:
+若要在安全性解決方案和 Syslog 電腦之間使用 TLS 通訊，您必須將 Syslog daemon （rsyslog 或 Syslog）設定為在 TLS 中進行通訊：[使用 tls Rsyslog 加密 Syslog 流量](https://www.rsyslog.com/doc/v8-stable/tutorials/tls_cert_summary.html)，[並使用 tls-Syslog-ng 加密記錄檔訊息](https://support.oneidentity.com/technical-documents/syslog-ng-open-source-edition/3.22/administration-guide/60#TOPIC-1209298)。
 
-              1. 告訴 Syslog 服務精靈設備 local_4 上接聽，並將 Syslog 訊息傳送至 Azure 的 Sentinel 代理程式使用連接埠 25226。 `sudo bash -c "printf 'filter f_local4_oms { facility(local4); };\n  destination security_oms { tcp(\"127.0.0.1\" port(25226)); };\n  log { source(src); filter(f_local4_oms); destination(security_oms); };' > /etc/syslog-ng/security-config-omsagent.conf"`
-              2. 下載並安裝[security_events 組態檔](https://aka.ms/asi-syslog-config-file-linux)，會設定為接聽連接埠 25226 上的 Syslog 代理程式。 `sudo wget -O /etc/opt/microsoft/omsagent/{0}/conf/omsagent.d/security_events.conf "https://aka.ms/syslog-config-file-linux"` 其中{0}應該取代為您的工作區的 GUID。
+ 
+## <a name="prerequisites"></a>必要條件
+請確定您用來做為 proxy 的 Linux 機器正在執行下列其中一個作業系統：
 
-              3. 重新啟動 syslog 精靈 `sudo service syslog-ng restart` <br>如需詳細資訊，請參閱[syslog ng 文件](https://www.syslog-ng.com/technical-documents/doc/syslog-ng-open-source-edition/3.16/mutual-authentication-using-tls/2)
-      2. 重新啟動 Syslog 代理程式，使用下列命令： `sudo /opt/microsoft/omsagent/bin/service_control restart [{workspace GUID}]`
-      1. 確認沒有任何錯誤的代理程式記錄檔中執行下列命令： `tail /var/opt/microsoft/omsagent/log/omsagent.log`
-
-### <a name="deploy-the-agent-on-an-on-premises-linux-server"></a>部署內部部署 Linux 伺服器上的代理程式
-
-如果您未使用 Azure，以手動方式部署 Azure Sentinel 代理程式專用的 Linux 伺服器上執行。
-
-
-1. 在 Azure Sentinel 入口網站中，按一下**資料連接器**，然後選取您的設備類型。
-1. 底下建立專用的 Linux VM **Linux Syslog 代理程式設定**選擇**手動部署**。
-   1. 底下**下載並安裝代理程式 Syslog**，選取**非 Azure Linux 機器**。 
-   1. 在 **直接代理程式**畫面隨即開啟，並選取**Agent for Linux**下載代理程式，或執行下列命令來下載您的 Linux 機器上：   `wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w {workspace GUID} -s gehIk/GvZHJmqlgewMsIcth8H6VqXLM9YXEpu0BymnZEJb6mEjZzCHhZgCx5jrMB1pVjRCMhn+XTQgDTU3DVtQ== -d opinsights.azure.com`
-      1. 在 [連接器] 畫面中，在**設定和轉送的 Syslog**，將您的 Syslog 服務精靈是否**rsyslog.d**或**syslog ng**。 
-      1. 複製下列命令，並在您的應用裝置上加以執行：
-         - 如果您選取 rsyslog:
-           1. 告訴 Syslog 服務精靈設備 local_4 上接聽，並將 Syslog 訊息傳送至 Azure 的 Sentinel 代理程式使用連接埠 25226。 `sudo bash -c "printf 'local4.debug  @127.0.0.1:25226' > /etc/rsyslog.d/security-config-omsagent.conf"`
-            
-           2. 下載並安裝[security_events 組態檔](https://aka.ms/asi-syslog-config-file-linux)，會設定為接聽連接埠 25226 上的 Syslog 代理程式。 `sudo wget -O /etc/opt/microsoft/omsagent/{0}/conf/omsagent.d/security_events.conf "https://aka.ms/syslog-config-file-linux"` 其中{0}應該取代為您的工作區的 GUID。
-           3. 重新啟動 syslog 精靈 `sudo service rsyslog restart`
-         - 如果您已選取 syslog ng:
-            1. 告訴 Syslog 服務精靈設備 local_4 上接聽，並將 Syslog 訊息傳送至 Azure 的 Sentinel 代理程式使用連接埠 25226。 `sudo bash -c "printf 'filter f_local4_oms { facility(local4); };\n  destination security_oms { tcp(\"127.0.0.1\" port(25226)); };\n  log { source(src); filter(f_local4_oms); destination(security_oms); };' > /etc/syslog-ng/security-config-omsagent.conf"`
-            2. 下載並安裝[security_events 組態檔](https://aka.ms/asi-syslog-config-file-linux)，會設定為接聽連接埠 25226 上的 Syslog 代理程式。 `sudo wget -O /etc/opt/microsoft/omsagent/{0}/conf/omsagent.d/security_events.conf "https://aka.ms/syslog-config-file-linux"` 其中{0}應該取代為您的工作區的 GUID。
-            3. 重新啟動 syslog 精靈 `sudo service syslog-ng restart`
-      1. 重新啟動 Syslog 代理程式，使用下列命令： `sudo /opt/microsoft/omsagent/bin/service_control restart [{workspace GUID}]`
-      1. 確認沒有任何錯誤的代理程式記錄檔中執行下列命令： `tail /var/opt/microsoft/omsagent/log/omsagent.log`
+- 64 位元
+  - CentOS 6 和 7
+  - Amazon Linux 2017.09
+  - Oracle Linux 6 和 7
+  - Red Hat Enterprise Linux Server 6 和 7
+  - Debian GNU/Linux 8 和 9
+  - Ubuntu Linux 14.04 LTS、16.04 LTS 和 18.04 LTS
+  - SUSE Linux Enterprise Server 12
+- 32 位元
+   - CentOS 6
+   - Oracle Linux 6
+   - Red Hat Enterprise Linux Server 6
+   - Debian GNU/Linux 8 和 9
+   - Ubuntu Linux 14.04 LTS 和 16.04 LTS
+ 
+ - Daemon 版本
+   - Syslog-ng： 2.1-3.22。1
+   - Rsyslog： v8
   
-## <a name="step-2-validate-connectivity"></a>步驟 2：驗證連線能力
-
-可能需要多達 20 分鐘，直到您的記錄檔開始出現在 Log Analytics 中。 
-
-1. 請確定您的記錄檔會進入 Syslog 代理程式中的正確連接埠。 Syslog 代理程式電腦執行下列命令：`tcpdump -A -ni any  port 514 -vv` 此命令會顯示從裝置到 Syslog 機器資料流處理的記錄檔。請確定記錄檔會收到來源應用裝置上的右側連接埠和正確的設備。
-2. 檢查 Syslog 服務精靈與代理程式之間的通訊。 Syslog 代理程式電腦執行下列命令：`tcpdump -A -ni any  port 25226 -vv` 此命令會顯示從裝置到 Syslog 機器資料流處理的記錄檔。請確定記錄檔，也在代理程式上接收。
-3. 如果這兩個這些命令提供成功的結果，請檢查以查看您的記錄檔會同時抵達的 Log Analytics。 從這些設備串流處理的所有事件會都出現在 Log Analytics 中的未經處理格式`CommonSecurityLog`型別。
-1. 若要檢查如果發生錯誤，或記錄檔未抵達，請查看 `tail /var/opt/microsoft/omsagent/<workspace id>/log/omsagent.log`
-4. 請確定您 Syslog 訊息的預設大小限制為 2048 個位元組 (2 KB)。 如果記錄檔太長，更新 security_events.conf 使用下列命令： `message_length_limit 4096`
-6. 若要在 Log Analytics 中的相關的結構描述使用 CEF 事件中，搜尋**CommonSecurityLog**。
+ - 支援的 Syslog Rfc
+   - Syslog RFC 3164
+   - Syslog RFC 5424
+ 
+請確定您的電腦也符合下列需求： 
+- 權限
+    - 您的電腦上必須具有更高的許可權（sudo）。 
+- 軟體需求
+    - 確定您的電腦上正在執行 Python
 
 
 
 ## <a name="next-steps"></a>後續步驟
-在本文件中，您已了解如何連線至 Azure 的 Sentinel 的 CEF 設備。 若要深入了解 Azure Sentinel，請參閱下列文章：
-- 了解如何[了解您的資料，與潛在的威脅](quickstart-get-visibility.md)。
-- 開始[偵測威脅與 Azure Sentinel](tutorial-detect-threats.md)。
+在本檔中，您已瞭解如何將 CEF 設備連線到 Azure Sentinel。 若要深入了解 Azure Sentinel，請參閱下列文章：
+- 深入了解如何[取得資料的可見度以及潛在威脅](quickstart-get-visibility.md)。
+- 開始[使用 Azure Sentinel 偵測威脅](tutorial-detect-threats.md)。
 

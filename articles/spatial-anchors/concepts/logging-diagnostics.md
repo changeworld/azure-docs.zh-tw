@@ -1,29 +1,28 @@
 ---
-title: 記錄與診斷 Azure 空間的錨點功能 |Microsoft Docs
-description: 深入說明如何產生及擷取記錄和診斷 Azure 空間的錨點中。
+title: 記錄和診斷
+description: 如何在 Azure 空間錨點中產生和取出記錄和診斷的深入說明。
 author: ramonarguelles
-manager: vicenterivera
+manager: vriveras
 services: azure-spatial-anchors
-ms.author: ramonarguelles
+ms.author: rgarcia
 ms.date: 02/22/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 134023c0884ce3a402b99806f1bf19dcb59ecc32
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: f4359db1deda2295a66bcb97cf374d0fe9bc3ef7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60564862"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "74270134"
 ---
-# <a name="logging-and-diagnostics-in-azure-spatial-anchors"></a>記錄與診斷 Azure 空間的錨點功能
+# <a name="logging-and-diagnostics-in-azure-spatial-anchors"></a>Azure 空間錨點中的記錄和診斷
 
-Azure 空間的錨點會提供適用於應用程式開發的標準記錄機制。 空間的錨點的診斷記錄模式時，您需要進行偵錯的詳細資訊。 診斷記錄會儲存環境的映像。
+Azure 空間錨點提供標準記錄機制，適用于應用程式開發。 當您需要更多的偵錯工具資訊時，空間錨點診斷記錄模式非常有用。 診斷記錄會儲存環境的影像。
 
 ## <a name="standard-logging"></a>標準記錄
-在空間的錨點 API 中，您可以訂閱的記錄機制，以取得應用程式開發和偵錯很有用的記錄。 標準記錄 Api 不會儲存環境的圖片裝置磁碟上。 SDK 會提供這些記錄檔，做為事件回呼。 它要將這些記錄檔整合到應用程式的記錄機制。
+在空間錨點 API 中，您可以訂閱記錄機制，以取得有用的記錄以進行應用程式開發和偵測。 標準記錄 Api 不會將環境的圖片儲存在裝置磁片上。 SDK 會提供這些記錄做為事件回呼。 您必須將這些記錄檔整合至應用程式的記錄機制。
 
-### <a name="configuration-of-log-messages"></a>記錄檔訊息的組態
-有兩個回呼的使用者感興趣。 下列範例示範如何將工作階段設定。
+### <a name="configuration-of-log-messages"></a>記錄訊息的設定
+使用者有兩個有意義的回呼。 下列範例顯示如何設定會話。
 
 ```csharp
     cloudSpatialAnchorSession = new CloudSpatialAnchorSession();
@@ -40,25 +39,25 @@ Azure 空間的錨點會提供適用於應用程式開發的標準記錄機制�
 
 ### <a name="events-and-properties"></a>事件和屬性
 
-這些事件回呼會提供處理記錄檔和錯誤都會從工作階段：
+系統會提供這些事件回呼，以處理來自會話的記錄和錯誤：
 
-- [LogLevel](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.loglevel):指定要接收事件，從執行階段的詳細程度。
-- [OnLogDebug](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.onlogdebug):提供標準的偵錯記錄檔事件。
-- [錯誤](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.error)：提供執行階段視為錯誤的記錄事件。
+- [LogLevel](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.loglevel)：指定要從執行時間接收之事件的詳細資料層級。
+- [OnLogDebug](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.onlogdebug)：提供標準的 debug 記錄事件。
+- [錯誤](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.error)：提供執行時間視為錯誤的記錄事件。
 
 ## <a name="diagnostics-logging"></a>診斷記錄
 
-除了標準模式的作業記錄中，空間的錨點也會有診斷模式。 診斷模式會擷取環境的映像，並加以記錄至磁碟。 您可以使用此模式中偵錯特定種類的問題，例如透過可預測方式找不到錨點。 啟用診斷記錄，只以重現特定問題。 然後停用它。 通常執行您的應用程式時，請勿啟用診斷。
+除了用於記錄作業的標準模式以外，空間錨點也具有診斷模式。 診斷模式會捕獲環境的映射，並將其記錄到磁片中。 您可以使用此模式來偵測特定種類的問題，例如無法以可預測的方式找出錨點。 僅啟用診斷記錄以重現特定的問題。 然後將它停用。 當您正常執行應用程式時，請勿啟用診斷功能。
 
-支援互動期間與 Microsoft，Microsoft 代表可能會詢問您是否願意送出診斷組合，以進一步調查。 在此情況下，您可能會決定要啟用診斷，並重現問題，因此您可以送出診斷的套件組合。 
+在與 Microsoft 的支援互動期間，Microsoft 代表可能會詢問您是否願意提交診斷配套以進行進一步調查。 在此情況下，您可能會決定啟用診斷並重現問題，以便您可以提交診斷配套。
 
-如果您的診斷記錄檔向 Microsoft 提交沒有先前的通知 Microsoft 代表，提交會變成未回應。
+如果您將診斷記錄提交給 Microsoft，但未事先收到 Microsoft 代表的通知，則提交將會未經解答。
 
-下列各節說明如何啟用診斷模式以及如何提交給 Microsoft 的診斷記錄檔。
+下列各節說明如何啟用診斷模式，以及如何將診斷記錄提交給 Microsoft。
 
 ### <a name="enable-diagnostics-logging"></a>啟用診斷記錄
 
-當您啟用診斷記錄的工作階段時，工作階段中的所有作業都有對應的診斷記錄本機檔案系統中。 在記錄期間環境影像會儲存到磁碟。
+當您啟用診斷記錄的會話時，會話中的所有作業在本機檔案系統中都會有對應的診斷記錄。 在記錄期間，環境的映射會儲存至磁片。
 
 ```csharp
 private void ConfigureSession()
@@ -86,9 +85,9 @@ private void ConfigureSession()
 }
 ```
 
-### <a name="submit-the-diagnostics-bundle"></a>送出診斷套件組合
+### <a name="submit-the-diagnostics-bundle"></a>提交診斷配套
 
-下列程式碼片段示範如何提交給 Microsoft 的診斷組合。 此搭售方案將會包含環境之後啟用診斷工作階段所擷取的映像。 
+下列程式碼片段顯示如何將診斷配套提交給 Microsoft。 此配套會包含在啟用診斷之後，由會話所捕捉到的環境影像。
 
 ```csharp
 // method to handle the diagnostics bundle submission
@@ -104,9 +103,9 @@ private async Task CreateAndSubmitBundle()
 }
 ```
 
-### <a name="parts-of-a-diagnostics-bundle"></a>診斷套件組合的組件
-診斷套件組合可能包含下列資訊：
+### <a name="parts-of-a-diagnostics-bundle"></a>診斷配套的元件
+診斷配套可能包含下列資訊：
 
-- **主要畫面格影像**:已啟用 [診斷] 時，工作階段期間擷取環境的映像。
-- **記錄**：執行階段所記錄的記錄事件。
-- **工作階段中繼資料**:識別工作階段的中繼資料。
+- 主要**畫面格影像**：啟用診斷時，在會話期間所捕捉到的環境影像。
+- **記錄**：執行時間所記錄的記錄事件。
+- **會話中繼資料**：可識別會話的中繼資料。

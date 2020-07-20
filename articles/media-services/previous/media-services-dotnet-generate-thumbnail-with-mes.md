@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 6bc29c098bcf7ef1d1a2e2532a00c95f0ec7e927
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3c5e22c14d0df46ddac9a503f43df8d54c3c93d5
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61244224"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964748"
 ---
 # <a name="how-to-generate-thumbnails-using-media-encoder-standard-with-net"></a>如何搭配 .NET 使用 Media Encoder Standard 產生縮圖 
 
@@ -281,7 +281,7 @@ ms.locfileid: "61244224"
 
 上述範例已討論如何提交產生影像的編碼工作，但您也可以在縮圖產生時結合視訊/音訊編碼。 下列 JSON 和 XML 預設值會告知**媒體編碼器標準**在編碼期間產生縮圖。
 
-### <a id="json"></a>JSON 預設值
+### <a name="json-preset"></a><a id="json"></a>JSON 預設值
 如需結構描述的資訊，請參閱[這個](https://msdn.microsoft.com/library/mt269962.aspx)文章。
 
 ```json
@@ -346,7 +346,7 @@ ms.locfileid: "61244224"
     }
 ```
 
-### <a id="xml"></a>XML 預設值
+### <a name="xml-preset"></a><a id="xml"></a>XML 預設值
 如需結構描述的資訊，請參閱[這個](https://msdn.microsoft.com/library/mt269962.aspx)文章。
 
 ```csharp
@@ -401,16 +401,19 @@ ms.locfileid: "61244224"
     </Preset>   
 ```
 
-## <a id="code_sample"></a>使用 .NET 編碼視訊並產生縮圖
+## <a name="encode-video-and-generate-thumbnail-with-net"></a><a id="code_sample"></a>使用 .NET 編碼視訊並產生縮圖
 
 下列程式碼範例使用媒體服務 .NET SDK 執行下列工作：
 
 * 建立編碼工作。
 * 取得對 Media Encoder Standard 編碼器的參考
 * 載入預設 [XML](media-services-dotnet-generate-thumbnail-with-mes.md#xml) 或 [JSON](media-services-dotnet-generate-thumbnail-with-mes.md#json)，其包含產生縮圖所需的編碼預設以及資訊。 您可以在檔案中儲存此 [XML](media-services-dotnet-generate-thumbnail-with-mes.md#xml) 或 [JSON](media-services-dotnet-generate-thumbnail-with-mes.md#json)，並使用下列程式碼載入檔案。
-  
-        // Load the XML (or JSON) from the local file.
-        string configuration = File.ReadAllText(fileName);  
+
+    ```csharp
+    // Load the XML (or JSON) from the local file.
+    string configuration = File.ReadAllText(fileName);  
+    ```
+
 * 將單一編碼工作加入工作。 
 * 指定要編碼的輸入資產。
 * 建立包含已編碼資產的輸出資產。
@@ -551,14 +554,14 @@ namespace EncodeAndGenerateThumbnails
 * 為 Start/Step/Range 使用明確的時間戳記會假設輸入來源至少為 1 分鐘的長度。
 * 具有 Start、Step 和 Range 字串屬性的 Jpg/Png/BmpImage 項目 - 這些可以解譯為：
   
-  * 畫面格數目 (如果是非負整數)，例如 "Start":"120"，
-  * 相對於持續時間 (如果以 % 尾碼表示)，例如 "Start":"15%"，或
-  * 時間戳記 (如果以 HH:MM:SS... format。 例如 "Start" :"00:01:00"
+  * 畫面格數目 (如果是非負整數)，例如 "Start": "120"、
+  * 相對於持續時間 (如果以 % 尾碼表示)，例如 "Start": "15%"，或
+  * 時間戳記 (如果以 HH:MM:SS... format。 例如 "Start" : "00:01:00"
     
     您可以隨意混合使用標記法。
     
     此外， Start 也支援特殊的巨集 (即 {Best})，它會嘗試判斷第一個「 有趣 」的內容畫面。附註：(Start 設為 {Best} 時，會忽略 Step 與 Range)
-  * 預設：Start:{Best}
+  * 預設值：Start:{Best}
 * 必須明確地提供每個影像格式的輸出格式：Jpg/Png/BmpFormat。 顯示時，MES 會比對 JpgVideo 與 JpgFormat，依此類推。 OutputFormat 引進了新的影像轉碼器特定巨集 (即 {Index})，必須針對影像輸出格式提供一次 (只需一次)。
 
 ## <a name="next-steps"></a>後續步驟
@@ -571,6 +574,6 @@ namespace EncodeAndGenerateThumbnails
 ## <a name="provide-feedback"></a>提供意見反應
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>另請參閱
 [媒體服務編碼概觀](media-services-encode-asset.md)
 

@@ -2,19 +2,19 @@
 title: 訓練模型 - 自訂翻譯工具
 titleSuffix: Azure Cognitive Services
 description: 建置翻譯模型時，訓練模型是很重要的步驟。 訓練會根據您為該訓練選取的文件來進行。
-author: rajdeep-in
-manager: christw
+author: swmachan
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 02/21/2019
-ms.author: v-rada
+ms.date: 05/26/2020
+ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 2045041a9ee4872e4510e5ee0deba258b0342557
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: c29a0b8b429705bb0315c37fc6fe63eb8d77511f
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58437283"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996698"
 ---
 # <a name="train-a-model"></a>將模型定型
 
@@ -34,11 +34,11 @@ ms.locfileid: "58437283"
 
     -  語言組：這會顯示專案的原始和目標語言。
 
-    -  範例句子：顯示從原始檔案擷取的句子數目。
+    -  來源句子：顯示從來源檔案解壓縮的句子數目。
 
-    -  範例句子：顯示從目標檔案擷取的句子數目。
+    -  目標句子：顯示從目標檔案解壓縮的句子數目。
 
-    ![訓練模型](media/how-to/how-to-train-model.png)
+    ![定型模型](media/how-to/how-to-train-model.png)
 
 3.  選取 [訓練] 按鈕。
 
@@ -53,7 +53,7 @@ ms.locfileid: "58437283"
     ![訓練模型頁面](media/how-to/how-to-train-model-3.png)
 
 >[!Note]
->自訂轉譯器支援 10 個並行的訓練，在任何時間點工作區中的時間。
+>自訂翻譯在任何時間點都支援工作區中的10個並行訓練。
 
 
 ## <a name="edit-a-model"></a>編輯模型

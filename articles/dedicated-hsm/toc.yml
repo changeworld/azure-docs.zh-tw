@@ -22,10 +22,12 @@
       href: physical-security.md
     - name: 支援能力
       href: supportability.md
-- name: 使用說明指南
+- name: 操作指南
   items:
     - name: 決定部署架構
       href: deployment-architecture.md
+    - name: 疑難排解
+      href: troubleshoot.md
 - name: 資源
   items:
     - name: 常見問題集

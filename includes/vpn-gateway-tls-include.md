@@ -2,21 +2,20 @@
 title: 包含檔案
 description: 包含檔案
 services: vpn-gateway
-author: WenJason
+author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-origin.date: 07/27/2018
-ms.date: 01/21/2019
-ms.author: v-jay
+ms.date: 07/27/2018
+ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 0d5c3b55d20be19d4aeb92b82d6e44d417259a7b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60319986"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "67173805"
 ---
-1. 以滑鼠右鍵按一下 [命令提示字元]，然後選取 [以系統管理員身分執行]，以使用較高的權限開啟命令提示字元。
+1. 以滑鼠右鍵按一下 [命令提示字元]****，然後選取 [以系統管理員身分執行]****，以使用較高的權限開啟命令提示字元。
 2. 在命令提示字元中執行下列命令：
 
    ```

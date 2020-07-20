@@ -1,27 +1,19 @@
 ---
-title: Azure PowerShell 指令碼範例 - 手動調整 Web 應用程式 | Microsoft Docs
-description: Azure PowerShell 指令碼範例 - 手動調整 Web 應用程式
-services: app-service\web
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
+title: PowerShell：手動調整 Web 應用程式
+description: 了解如何使用 Azure PowerShell 將 App Service 的部署和管理自動化。 此範例說明如何手動調整應用程式。
+author: msangapu-msft
 tags: azure-service-management
 ms.assetid: de5d4285-9c7d-4735-a695-288264047375
-ms.service: app-service
-ms.devlang: multiple
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: web
 ms.date: 03/20/2017
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: 0699bc284233f259fc345b9b2b97b9dda8820454
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.custom: mvc, seodec18
+ms.openlocfilehash: cb0af65f938baf24b2af574b21e09e099b70ba85
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59491930"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80060288"
 ---
 # <a name="scale-a-web-app-manually-using-powershell"></a>使用 PowerShell 來手動調整 Web 應用程式
 
@@ -47,7 +39,7 @@ Remove-AzResourceGroup -Name $ResourceGroupName -Force
 
 此指令碼會使用下列命令。 下表中的每個命令都會連結至命令特定的文件。
 
-| 命令 | 注意 |
+| Command | 注意 |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | 建立用來存放所有資源的資源群組。 |
 | [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | 建立 App Service 方案。 |

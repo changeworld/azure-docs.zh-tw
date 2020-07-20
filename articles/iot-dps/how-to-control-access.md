@@ -1,23 +1,22 @@
 ---
 title: IoT 裝置佈建服務中的安全性端點 | Microsoft Docs
-description: 概念 - 如何控制後端應用程式之 IoT 裝置佈建服務的存取權。 包含安全性權杖的相關資訊。
+description: 概念-如何控制後端應用程式對 IoT 裝置布建服務（DPS）的存取權。 包含安全性權杖的相關資訊。
 author: wesmc7777
-manager: timlt
+manager: philmea
 ms.service: iot-dps
 services: iot-dps
 ms.topic: conceptual
-ms.date: 09/28/2017
+ms.date: 04/09/2019
 ms.author: wesmc
-ms.openlocfilehash: 7ff622ceac9c49eda7ba6bca1a8bb3aaabccb816
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 2a7e0932d226b1533c039b8529c2c11de06cf525
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60626636"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "79285145"
 ---
 # <a name="control-access-to-azure-iot-hub-device-provisioning-service"></a>控制 Azure IoT 中樞裝置佈建服務的存取權
 
-本文說明用來保護 IoT 裝置佈建服務的選項。 佈建服務使用權限，授與每個端點的存取權。 權限可根據功能限制服務執行個體的存取權。
+本文說明用來保護 IoT 裝置佈建服務的選項。 佈建服務使用權限**，授與每個端點的存取權。 權限可根據功能限制服務執行個體的存取權。
 
 本文章說明：
 
@@ -34,12 +33,12 @@ ms.locfileid: "60626636"
 
 * **共用存取授權原則**。 共用存取原則可以授與上面所列[權限](#device-provisioning-service-permissions)的任意組合。 您可以在 [Azure 入口網站][lnk-management-portal]中定義原則，或使用 [裝置佈建服務 REST API][lnk-resource-provider-apis] 以程式設計方式定義原則。 新建立的佈建服務有下列預設原則︰
 
-* **provisioningserviceowner**：具備所有權限的原則。
+* **provisioningserviceowner**︰具備所有權限的原則。
 
 > [!NOTE]
 > 如需詳細資訊，請參閱[權限](#device-provisioning-service-permissions)。
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>驗證
 
 Azure IoT 中樞裝置佈建服務可根據共用存取原則驗證權杖，以授與端點的存取權。 安全性認證 (例如對稱金鑰) 決不會在網路上傳送。
 
@@ -75,11 +74,11 @@ SharedAccessSignature sr =
 
 以下是預期的值：
 
-| Value | 描述 |
+| 值 | 描述 |
 | --- | --- |
-| {signature} |HMAC-SHA256 簽章字串，格式為： `{URL-encoded-resourceURI} + "\n" + expiry`。 **重要事項**：金鑰是從 base64 解碼而來，並且會做為用來執行 HMAC-SHA256 計算的金鑰。|
+| {signature} |HMAC-SHA256 簽章字串，格式為： `{URL-encoded-resourceURI} + "\n" + expiry`。 **重要**：金鑰是從 base64 解碼而來，並且會做為用來執行 HMAC-SHA256 計算的金鑰。|
 | {expiry} |從新紀元時間 (Epoch) 1970 年 1 月 1日 00:00:00 UTC 時間至今秒數的 UTF8 字串。 |
-| {URL-encoded-resourceURI} | 小寫資源 URI 的小寫 URL 編碼。 可使用此權杖存取之端點的 URI 前置詞 (依區段)，開頭為 IoT 裝置佈建服務的主機名稱 (無通訊協定)。 例如： `mydps.azure-devices-provisioning.net`。 |
+| {URL-encoded-resourceURI} | 小寫資源 URI 的小寫 URL 編碼。 可使用此權杖存取之端點的 URI 前置詞 (依區段)，開頭為 IoT 裝置佈建服務的主機名稱 (無通訊協定)。 例如： `mydps.azure-devices-provisioning.net` 。 |
 | {policyName} |此權杖所參考的共用存取原則名稱。 |
 
 **前置詞的注意事項**︰URI 前置詞是依區段 (而不是依字元) 計算。 例如，`/a/b` 是 `/a/b/c` 的前置詞，而不是 `/a/bc` 的前置詞。
@@ -137,7 +136,7 @@ def generate_sas_token(uri, key, policy_name, expiry=3600):
 
 ### <a name="use-security-tokens-from-service-components"></a>使用來自服務元件的安全性權杖
 
-如前所述，服务组件使用共享访问策略只能生成安全令牌，授予适当权限。
+服務元件只能使用授與適當權限的共用存取原則來產生安全性權杖，如上所述。
 
 以下是在端點上公開的服務功能︰
 
@@ -190,5 +189,5 @@ var token = generateSasToken(endpoint, policyKey, policyName, 60);
 [img-add-shared-access-policy]: ./media/how-to-control-access/how-to-add-shared-access-policy.PNG
 [lnk-sdks]: ../iot-hub/iot-hub-devguide-sdks.md
 [lnk-management-portal]: https://portal.azure.com
-[lnk-azure-resource-manager]: ../azure-resource-manager/resource-group-overview.md
+[lnk-azure-resource-manager]: ../azure-resource-manager/management/overview.md
 [lnk-resource-provider-apis]: https://docs.microsoft.com/rest/api/iot-dps/

@@ -1,48 +1,37 @@
 ---
-title: Xamarin iOS 考量 (Microsoft Authentication Library for.NET) |Azure
-description: 使用 Xamarin iOS 使用 Microsoft Authentication Library for.NET (MSAL.NET) 時，請了解特定的考量。
+title: Xamarin iOS 考慮（MSAL.NET） |Azure
+titleSuffix: Microsoft identity platform
+description: 瞭解搭配使用 Xamarin iOS 與適用于 .NET 的 Microsoft 驗證程式庫（MSAL.NET）的考慮。
 services: active-directory
-documentationcenter: dev-center-name
-author: rwike77
-manager: celested
-editor: ''
+author: jmprieur
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/24/2019
-ms.author: ryanwi
+ms.date: 07/16/2019
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb07fa00b9e1d917cb64df18fff6466dd5c0193d
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 7125559dd39e1626634dae7c45b0744bfff57d8c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65406961"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82652664"
 ---
-# <a name="xamarin-ios-specific-considerations-with-msalnet"></a>Xamarin iOS 專屬 MSAL.NET 考量
-在 Xamarin iOS 中，有幾個使用 MSAL.NET 時，您必須考慮到的考量
+# <a name="considerations-for-using-xamarin-ios-with-msalnet"></a>使用 Xamarin iOS 搭配 MSAL.NET 的考慮
+當您在 Xamarin iOS 上使用適用于 .NET 的 Microsoft 驗證程式庫（MSAL.NET）時，您應該： 
 
-- [IOS 12 和驗證的已知的問題](#known-issues-with-ios-12-and-authentication)
-- [覆寫並實作`OpenUrl`函式中 `AppDelegate`](#implement-openurl)
-- [啟用 Keychain 群組](#enable-keychain-groups)
-- [啟用權杖快取共用](#enable-token-cache-sharing-across-ios-applications)
-- [啟用金鑰鏈存取](#enable-keychain-access)
+- 在中覆寫並執行 `OpenUrl` 函數 `AppDelegate` 。
+- 啟用 keychain 群組。
+- 啟用權杖快取共用。
+- 啟用 keychain 存取。
+- 瞭解 iOS 12 和驗證的已知問題。
 
-## <a name="known-issues-with-ios-12-and-authentication"></a>IOS 12 和驗證的已知的問題
-Microsoft 已發行[資訊安全摘要報告](https://github.com/aspnet/AspNetCore/issues/4647)提供 iOS12 與某些類型的驗證之間的不相容性的相關資訊。 不相容性符號社交、 WSFed 和 OIDC 登入。 本忠告也會提供有關開發人員可執行以移除目前的安全性限制，由 ASP.NET 新增至他們的應用程式變得與 iOS12 相容的指引。  
+## <a name="implement-openurl"></a>執行 OpenUrl
 
-在開發 Xamarin iOS 上的 MSAL.NET 應用程式時，嘗試從 iOS 12 登入網站時，您可能會看到無限迴圈 (如下所示[ADAL 問題](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/issues/1329)。 
-
-您也可能會看到使用 iOS 12 的 ASP.NET Core OIDC 驗證中斷在此所述的 Safari [WebKit 問題](https://bugs.webkit.org/show_bug.cgi?id=188165)。
-
-## <a name="implement-openurl"></a>實作 OpenUrl
-
-首先您必須覆寫`OpenUrl`方法`FormsApplicationDelegate`衍生類別並呼叫`AuthenticationContinuationHelper.SetAuthenticationContinuationEventArgs`。
+覆寫 `OpenUrl` `FormsApplicationDelegate` 衍生類別的方法，並呼叫 `AuthenticationContinuationHelper.SetAuthenticationContinuationEventArgs` 。 以下是範例：
 
 ```csharp
 public override bool OpenUrl(UIApplication app, NSUrl url, NSDictionary options)
@@ -52,77 +41,81 @@ public override bool OpenUrl(UIApplication app, NSUrl url, NSDictionary options)
 }
 ```
 
-您也需要定義 URL 配置，而需要呼叫另一個應用程式、 特定形式的重新導向 URL，然後註冊在此重新導向 URL 的應用程式的權限[Azure 入口網站](https://portal.azure.com)。
+同時執行下列工作： 
+* 定義 URL 配置。
+* 需要您應用程式的許可權，才能呼叫另一個應用程式。
+* 具有特定形式的重新導向 URL。
+* 在[Azure 入口網站](https://portal.azure.com)中註冊重新導向 URL。
 
-## <a name="enable-keychain-groups"></a>啟用 KeyChain 群組
+### <a name="enable-keychain-access"></a>啟用 keychain 存取
 
-若要讓權杖快取的工作，並有`AcquireTokenSilentAsync`方法的工作，必須有多個步驟：
-1. 啟用金鑰鏈存取在您*`* Entitlements.plist* 檔案，並指定**Keychain 群組**中套件組合識別碼。
-2. 選取  *`*Entitlements.plist*`* 中的檔案**自訂權利**iOS 專案選項 視窗中的欄位**套件組合簽署 檢視**。
-3. XCode 時簽署憑證，請確定會使用相同的 Apple id。
+若要啟用 keychain 存取，請確定您的應用程式具有 keychain 存取群組。 當您使用 API 建立應用程式時，可以設定 keychain 存取群組 `WithIosKeychainSecurityGroup()` 。
 
-## <a name="enable-token-cache-sharing-across-ios-applications"></a>啟用 iOS 應用程式之間共用的權杖快取
+若要受益于快取和單一登入（SSO），請在您的所有應用程式中，將 keychain 存取群組設定為相同的值。
 
-從 MSAL 2.x 中，您可以指定要用來保存跨多個應用程式的權杖快取 keychain 安全性群組。 這可讓您分享幾個具有相同金鑰鏈安全性群組，包括開發的應用程式之間的權杖快取[ADAL.NET](https://aka.ms/adal-net)，MSAL.NET Xamarin.iOS 應用程式和原生 iOS 應用程式開發具有[ADAL.objc](https://github.com/AzureAD/azure-activedirectory-library-for-objc)或是[MSAL.objc](https://github.com/AzureAD/microsoft-authentication-library-for-objc))。
-
-共用權杖快取可讓單一登入 (SSO) 之間的所有使用相同的金鑰鏈安全性群組應用程式。
-
-若要讓單一登入，您需要設定`PublicClientApplication.iOSKeychainSecurityGroup`中所有的應用程式的相同值的屬性。
-
-這個範例使用 MSAL v3.x 會是：
+此安裝程式的範例會使用 MSAL 4.x：
 ```csharp
 var builder = PublicClientApplicationBuilder
      .Create(ClientId)
-     .WithIosKeychainSecurityGroup("com.microsoft.msalrocks")
+     .WithIosKeychainSecurityGroup("com.microsoft.adalcache")
      .Build();
 ```
 
-這個範例使用 MSAL v2.7.x 會是：
-
-```csharp
-PublicClientApplication.iOSKeychainSecurityGroup = "com.microsoft.msalrocks";
-```
-
-> [!NOTE]
-> `KeychainSecurityGroup`屬性已被取代。 先前在 MSAL 2.x 中，開發人員被迫使用時，包含 TeamId 前置詞`KeychainSecurityGroup`屬性。 
-> 
-> 現在，從 MSAL 2.7.x，MSAL 會解析此 TeamId 前置詞在執行階段時使用`iOSKeychainSecurityGroup`屬性。 當使用這個屬性的值不能包含 TeamId 前置詞。 
-> 
-> 使用新`iOSKeychainSecurityGroup`屬性，不需要開發人員提供 TeamId。 `KeychainSecurityGroup`屬性現已過時。 
-
-## <a name="enable-keychain-access"></a>啟用金鑰鏈存取
-
-Msal 2.x 和 ADAL 4.x TeamId 用來存取可讓單一登入 (SSO) 的相同發行者的應用程式之間提供驗證程式庫的金鑰鏈。 
-
-何謂[TeamIdentifierPrefix](/xamarin/ios/deploy-test/provisioning/entitlements?tabs=vsmac) (TeamId)？ 它是 App Store 中的唯一識別碼 （公司或個人）。 AppId 是唯一的應用程式。 如果您有多個應用程式，TeamId 的所有應用程式將會相同，但 AppId 會不同。 Keychain 存取群組加上 TeamId 自動為每個群組的系統。 它是作業系統強制來自相同發行者的應用程式可以存取的共用金鑰鏈。 
-
-初始化時`PublicClientApplication`，如果您收到`MsalClientException`訊息： `TeamId returned null from the iOS keychain...`，您必須執行 iOS 的 Xamarin 應用程式中的下列：
-
-1. 在 VS 中偵錯 索引標籤下前往 nameOfMyApp.iOS 屬性...
-2. 然後移至 iOS 套件組合簽署 
-3. 在 自訂權利下按一下 ...從您的應用程式中選取 Entitlements.plist 檔案
-4. 在 csproj 檔案中的 iOS 應用程式，您應該有現在包含此行： `<CodesignEntitlements>Entitlements.plist</CodesignEntitlements>`
-5. **重建**專案。
-
-這是*此外*若要啟用金鑰鏈存取中的`Entitlements.plist`檔案，使用以下存取群組或您自己：
+也請在檔案中啟用 keychain 存取 `Entitlements.plist` 。 請使用下列存取群組或您自己的存取群組。
 
 ```xml
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "https://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
 <dict>
   <key>keychain-access-groups</key>
   <array>
     <string>$(AppIdentifierPrefix)com.microsoft.adalcache</string>
   </array>
 </dict>
-</plist>
 ```
+
+當您使用 `WithIosKeychainSecurityGroup()` API 時，MSAL 會自動將您的安全性群組附加至應用程式*小組識別碼*（）的結尾 `AppIdentifierPrefix` 。 MSAL 會新增您的安全性群組，因為當您在 Xcode 中建立應用程式時，它會執行相同的動作。 這就是為什麼檔案中的權利 `Entitlements.plist` 必須包含在 `$(AppIdentifierPrefix)` keychain 存取群組之前的原因。
+
+如需詳細資訊，請參閱[iOS 權利檔](https://developer.apple.com/documentation/security/keychain_services/keychain_items/sharing_access_to_keychain_items_among_a_collection_of_apps)。 
+
+### <a name="enable-token-cache-sharing-across-ios-applications"></a>啟用跨 iOS 應用程式的權杖快取共用
+
+從 MSAL 2.x 開始，您可以指定 keychain 存取群組，在多個應用程式中保存權杖快取。 此設定可讓您在具有相同 keychain 存取群組的數個應用程式之間共用權杖快取。 您可以在[ADAL.NET](https://aka.ms/adal-net)應用程式、MSAL.NET Xamarin iOS 應用程式，以及在[ADAL. objc](https://github.com/AzureAD/azure-activedirectory-library-for-objc)或[MSAL](https://github.com/AzureAD/microsoft-authentication-library-for-objc)中開發的原生 iOS 應用程式之間共用權杖現金。
+
+藉由共用權杖快取，您可以在所有使用相同 keychain 存取群組的應用程式之間，允許單一登入（SSO）。
+
+若要啟用此快取共用，請使用 `WithIosKeychainSecurityGroup()` 方法，在共用相同快取的所有應用程式中，將 keychain 存取群組設定為相同的值。 本文中的第一個程式碼範例會示範如何使用方法。
+
+稍早在本文中，您已瞭解 MSAL 會在 `$(AppIdentifierPrefix)` 您每次使用 API 時新增 `WithIosKeychainSecurityGroup()` 。 MSAL 會新增此元素，因為小組識別碼 `AppIdentifierPrefix` 可確保只有相同發行者所建立的應用程式可以共用 keychain 存取權。
+
+> [!NOTE]
+> `KeychainSecurityGroup`屬性已被取代。
+> 
+> 從 MSAL 2.x 開始，開發人員在 `TeamId` 使用屬性時，會強制包含前置詞 `KeychainSecurityGroup` 。 但從 MSAL 2.7. x 開始，當您使用新的 `iOSKeychainSecurityGroup` 屬性時，MSAL 會在執行時間解析 `TeamId` 前置詞。 當您使用此屬性時，請不要在 `TeamId` 值中包含前置詞。 不需要前置詞。
+>
+> 因為 `KeychainSecurityGroup` 屬性已過時，請使用 `iOSKeychainSecurityGroup` 屬性。
+
+### <a name="use-microsoft-authenticator"></a>使用 Microsoft Authenticator
+
+您的應用程式可以使用 Microsoft Authenticator 做為 broker 來啟用：
+
+- **Sso**：當您啟用 sso 時，您的使用者不需要登入每個應用程式。
+- **裝置識別**：藉由存取裝置憑證，使用裝置識別來進行驗證。 此憑證會在加入工作場所的裝置上建立。 如果租使用者系統管理員啟用與裝置相關的條件式存取，您的應用程式就會準備就緒。
+- **應用程式識別驗證**：當應用程式呼叫訊息代理程式時，它會傳遞其重新導向 URL。 訊息代理程式會驗證重新導向 URL。
+
+如需如何啟用訊息代理程式的詳細資訊，請參閱[在 Xamarin iOS 和 Android 應用程式上使用 Microsoft Authenticator 或 Microsoft Intune 公司入口網站](msal-net-use-brokers-with-xamarin-apps.md)。
+
+## <a name="known-issues-with-ios-12-and-authentication"></a>IOS 12 和驗證的已知問題
+Microsoft 發行了有關 iOS 12 與某些驗證類型之間不相容性的[安全性摘要報告](https://github.com/aspnet/AspNetCore/issues/4647)。 不相容會中斷社交、WSFed 和 OIDC 的登入。安全性摘要報告可協助開發人員瞭解如何從其應用程式移除 ASP.NET 的安全性限制，使其與 iOS 12 相容。  
+
+當您在 Xamarin iOS 上開發 MSAL.NET 應用程式時，當您嘗試從 iOS 12 登入網站時，可能會看到無限迴圈。 這種行為與此[ADAL 問題](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/issues/1329)類似。 
+
+您也可能會看到 ASP.NET Core OIDC authentication 與 iOS 12 Safari 的中斷。 如需詳細資訊，請參閱此[WebKit 問題](https://bugs.webkit.org/show_bug.cgi?id=188165)。
 
 ## <a name="next-steps"></a>後續步驟
 
-中提供更多詳細資料[iOS 的特定考量](https://github.com/azure-samples/active-directory-xamarin-native-v2#ios-specific-considerations)段落下面的範例的 readme.md 檔案：
+如需 Xamarin iOS 屬性的相關資訊，請參閱下列範例 README.md 檔案的[iOS 特有考慮](https://github.com/Azure-Samples/active-directory-xamarin-native-v2/tree/master/1-Basic#ios-specific-considerations)段落：
 
-範例 | 平台 | 說明 
+範例 | 平台 | 描述
 ------ | -------- | -----------
-[https://github.com/Azure-Samples/active-directory-xamarin-native-v2](https://github.com/azure-samples/active-directory-xamarin-native-v2) | Xamarin iOS、Android、UWP | 展示如何使用 MSAL 來驗證 MSA 與 Azure AD 透過 AAD V2.0 端點，並存取 Microsoft Graph 與產生的語彙基元的簡單 Xamarin Forms 應用程式。 <br>![拓撲](media/msal-net-xamarin-ios-considerations/topology.png)
+[https://github.com/Azure-Samples/active-directory-xamarin-native-v2](https://github.com/azure-samples/active-directory-xamarin-native-v2) | Xamarin iOS、Android、通用 Windows 平臺（UWP） | 簡單的 Xamarin Forms 應用程式，示範如何使用 MSAL 來驗證 Microsoft 個人帳戶，並透過 Azure AD 2.0 端點 Azure AD。 應用程式也會顯示如何使用產生的權杖來存取 Microsoft Graph。
+
+<!--- https://github.com/Azure-Samples/active-directory-xamarin-native-v2/blob/master/ReadmeFiles/Topology.png -->

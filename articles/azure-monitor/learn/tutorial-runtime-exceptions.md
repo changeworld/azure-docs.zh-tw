@@ -1,21 +1,18 @@
 ---
 title: 使用 Azure Application Insights 診斷執行階段例外狀況 | Microsoft Docs
 description: 使用 Azure Application Insights 來尋找並診斷應用程式執行階段例外狀況的教學課程。
-services: application-insights
-keywords: ''
+ms.subservice: application-insights
+ms.topic: tutorial
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/19/2017
-ms.service: application-insights
 ms.custom: mvc
-ms.topic: tutorial
-manager: carmonm
-ms.openlocfilehash: 267e790cec3c915330f8f72053458527ee7bfead
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 91a0e4b052571a509ec7122e4440a8eaf58839be
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58095563"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "77670418"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>使用 Azure Application Insights 尋找並診斷執行階段例外狀況
 
@@ -30,11 +27,11 @@ Azure Application Insights 會從您的應用程式收集遙測，以協助識�
 > * 建立新的工作項目，以更正錯誤程式碼
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本教學課程：
 
-- 使用下列工作負載安裝 [Visual Studio 2017](https://www.visualstudio.com/downloads/)：
+- 使用下列工作負載安裝 [Visual Studio 2019](https://www.visualstudio.com/downloads/)：
     - ASP.NET 和 Web 開發
     - Azure 開發
 - 下載並安裝 [Visual Studio 快照集偵錯工具](https://aka.ms/snapshotdebugger) \(英文\)。
@@ -49,12 +46,12 @@ Azure Application Insights 會從您的應用程式收集遙測，以協助識�
 ## <a name="analyze-failures"></a>分析失敗
 Application Insights 會收集應用程式中的任何失敗，並可讓您檢視錯誤在不同作業間的發生頻率，以協助您專注於影響最大的部分。  您可以再向下鑽研這些失敗的詳細資料，以識別根本原因。   
 
-1. 選取 [Application Insights]，然後選取您的訂用帳戶。  
+1. 選取 [Application Insights]  ，然後選取您的訂用帳戶。  
 2. 若要開啟 [失敗] 面板中，請選取 [調查] 功能表下方的 [失敗]，或按一下 [失敗的要求] 圖形。
 
     ![失敗的要求](media/tutorial-runtime-exceptions/failed-requests.png)
 
-3. 針對應用程式的每個作業，[失敗的要求] 面板會顯示失敗的要求計數和受影響的使用者數目。  您可以依使用者排序這項資訊，以識別對使用者影響最大的失敗。  在此範例中，**GET Employees/Create** 和 **GET Customers/Details** 是可能的調查候選項目，因其失敗的數目和受影響的使用者為數眾多。  選取作業會在右面板顯示關於此作業的進一步資訊。
+3. 針對應用程式的每個作業，[失敗的要求]  面板會顯示失敗的要求計數和受影響的使用者數目。  您可以依使用者排序這項資訊，以識別對使用者影響最大的失敗。  在此範例中，**GET Employees/Create** 和 **GET Customers/Details** 是可能的調查候選項目，因其失敗的數目和受影響的使用者為數眾多。  選取作業會在右面板顯示關於此作業的進一步資訊。
 
     ![[失敗的要求] 面板](media/tutorial-runtime-exceptions/failed-requests-blade.png)
 
@@ -75,10 +72,10 @@ Application Insights 會收集應用程式中的任何失敗，並可讓您檢�
     ![例外狀況詳細資料](media/tutorial-runtime-exceptions/failed-requests-exception.png)
 
 ## <a name="identify-failing-code"></a>識別失敗的程式碼
-快照集偵錯工具會收集您應用程式中最常見之例外狀況的快照集，以協助您診斷生產環境中的根本原因。  您可以檢視入口網站中的偵錯快照集，以查看呼叫堆疊並檢查每個呼叫堆疊框架的變數。 接著，您可選擇下載該快照集並在 Visual Studio 2017 Enterprise 中開啟，以對原始程式碼進行偵錯。
+快照集偵錯工具會收集您應用程式中最常見之例外狀況的快照集，以協助您診斷生產環境中的根本原因。  您可以檢視入口網站中的偵錯快照集，以查看呼叫堆疊並檢查每個呼叫堆疊框架的變數。 接著，您可選擇下載該快照集並在 Visual Studio 2019 Enterprise 中開啟，以對原始程式碼進行偵錯。
 
-1. 在例外狀況的內容中，按一下 [開啟偵錯快照集]。
-2. [偵錯快照集] 面板隨即開啟，並顯示要求的呼叫堆疊。  按一下任一方法，即可檢視所有區域變數在要求時的值。  從這個範例最上方的方法開始，我們可以看到沒有值的區域變數。
+1. 在例外狀況的內容中，按一下 [開啟偵錯快照集]  。
+2. [偵錯快照集]  面板隨即開啟，並顯示要求的呼叫堆疊。  按一下任一方法，即可檢視所有區域變數在要求時的值。  從這個範例最上方的方法開始，我們可以看到沒有值的區域變數。
 
     ![偵錯快照集](media/tutorial-runtime-exceptions/debug-snapshot-01.png)
 
@@ -86,7 +83,7 @@ Application Insights 會收集應用程式中的任何失敗，並可讓您檢�
 
     ![偵錯快照集](media/tutorial-runtime-exceptions/debug-snapshot-02.png)
 
-4. 您可以接著選擇將此快照集下載至 Visual Studio，以在其中尋找需要修正的實際程式碼。 若要這麼做，請按一下 [下載快照集]。
+4. 您可以接著選擇將此快照集下載至 Visual Studio，以在其中尋找需要修正的實際程式碼。 若要這麼做，請按一下 [下載快照集]  。
 5. 快照集就會載入到 Visual Studio。
 6. 您可以立即在 Visual Studio Enterprise 中執行偵錯工作階段，以快速地識別造成例外狀況的程式碼。
 
@@ -98,16 +95,16 @@ Application Insights 收集的所有資料都會儲存在 Azure Log Analytics �
 
 1. 按一下程式碼上方的 CodeLens 資訊，可檢視 Application Insights 所提供的遙測。
 
-    ![代碼](media/tutorial-runtime-exceptions/codelens.png)
+    ![程式碼](media/tutorial-runtime-exceptions/codelens.png)
 
-1. 按一下 [分析影響] 以開啟 Application Insights 分析。  它已填入數個查詢，提供失敗要求的詳細資料，例如受影響的使用者、瀏覽器和區域。<br><br>![分析](media/tutorial-runtime-exceptions/analytics.png)<br>
+1. 按一下 [分析影響]  以開啟 Application Insights 分析。  它已填入數個查詢，提供失敗要求的詳細資料，例如受影響的使用者、瀏覽器和區域。<br><br>![分析](media/tutorial-runtime-exceptions/analytics.png)<br>
 
 ## <a name="add-work-item"></a>新增工作項目
 如果您將 Application Insights 與追蹤系統 (例如 Azure DevOps 或 GitHub) 連結，即可直接從 Application Insights 建立工作項目。
 
-1. 返回 Application Insights 中的 [例外狀況屬性] 面板。
-2. 按一下 [新增工作項目]。
-3. [新增工作項目] 面板隨即開啟，並顯示關於例外狀況的詳細資料。  您可以新增任何額外的資訊，然後再將它儲存。
+1. 返回 Application Insights 中的 [例外狀況屬性]  面板。
+2. 按一下 [新增工作項目]  。
+3. [新增工作項目]  面板隨即開啟，並顯示關於例外狀況的詳細資料。  您可以新增任何額外的資訊，然後再將它儲存。
 
     ![新增工作項目](media/tutorial-runtime-exceptions/new-work-item.png)
 

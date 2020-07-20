@@ -1,23 +1,23 @@
 ---
-title: 建立 Apache Spark 機器學習服務管線 - Azure HDInsight
-description: 使用 Apache Spark 機器學習服務程式庫以建立資料管線。
+title: 建立 Apache Spark 機器學習管線-Azure HDInsight
+description: 使用 Apache Spark 機器學習程式庫，在 Azure HDInsight 中建立資料管線。
 ms.service: hdinsight
-author: maxluk
-ms.author: maxluk
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
-ms.topic: conceptual
-ms.date: 01/19/2018
-ms.openlocfilehash: c539460177a0a85938b886d161803e1fdf0e9e68
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.topic: how-to
+ms.date: 07/22/2019
+ms.openlocfilehash: c270e9865aff30184ea236f56ab20ede78c5d577
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64730189"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86075445"
 ---
 # <a name="create-an-apache-spark-machine-learning-pipeline"></a>建立 Apache Spark 機器學習服務管線
 
-Apache Spark 可調整機器學習服務程式庫 (MLlib) 可將模型化功能引進分散式環境。 Spark 封裝 [`spark.ml`](https://spark.apache.org/docs/latest/ml-pipeline.html) 是 DataFrame 上建立的一組高階 API。 這些 API 可協助您建立及調整實用的機器學習服務管線。  *Spark 機器學習服務*是指以 MLlib DataFrame 為基礎的 API，而不是之前以 RDD 為基礎的管線 API。
+Apache Spark 可調整機器學習服務程式庫 (MLlib) 可將模型化功能引進分散式環境。 Spark 套件 [`spark.ml`](https://spark.apache.org/docs/latest/ml-pipeline.html) 是以資料框架為基礎的一組高階 api。 這些 API 可協助您建立及調整實用的機器學習服務管線。  *Spark 機器學習服務*是指以 MLlib DataFrame 為基礎的 API，而不是之前以 RDD 為基礎的管線 API。
 
 機器學習服務 (ML) 管線是將多個機器學習服務演算法結合在一起的完整工作流程。 需要許多步驟以進行處理並從資料學習，需要一連串的演算法。 管線定義機器學習服務流程的階段和順序。 在 MLlib 中，管線階段會以 PipelineStages 的特定順序表示，其中 Transformer 和 Estimator 會各自執行工作。
 
@@ -29,7 +29,7 @@ Transformer 或 Estimator 的每個無狀態執行個體皆有自己唯一的識
 
 ## <a name="pipeline-example"></a>管線範例
 
-為了示範機器學習服務管線的實際應用情況，此範例針對您的 HDInsight 叢集 (Azure 儲存體或 Data Lake Storage)，使用在預設儲存體中預先載入的 `HVAC.csv` 資料檔案範例。 若要檢視檔案的內容，請瀏覽至 `/HdiSamples/HdiSamples/SensorSampleData/hvac` 目錄。 `HVAC.csv` 包含一系列各種建築物中 HVAC (暖氣、通風和空調) 系統的目標和實際溫度。 目標是在資料上定型模型，並為指定的建築物產生預測溫度。
+為了示範機器學習服務管線的實際應用情況，此範例針對您的 HDInsight 叢集 (Azure 儲存體或 Data Lake Storage)，使用在預設儲存體中預先載入的 `HVAC.csv` 資料檔案範例。 若要檢視檔案的內容，請瀏覽至 `/HdiSamples/HdiSamples/SensorSampleData/hvac` 目錄。 `HVAC.csv` 包含一系列各種建築物中 HVAC (暖氣、通風和空調**) 系統的目標和實際溫度。 目標是在資料上定型模型，並為指定的建築物產生預測溫度。
 
 下列程式碼：
 
@@ -56,19 +56,23 @@ from pyspark.sql import Row
 LabeledDocument = Row("BuildingID", "SystemInfo", "label")
 
 # Define a function that parses the raw CSV file and returns an object of type LabeledDocument
+
+
 def parseDocument(line):
     values = [str(x) for x in line.split(',')]
     if (values[3] > values[2]):
         hot = 1.0
     else:
-        hot = 0.0        
+        hot = 0.0
 
     textValue = str(values[4]) + " " + str(values[5])
 
     return LabeledDocument((values[6]), textValue, hot)
 
+
 # Load the raw HVAC.csv file, parse it using the function
-data = sc.textFile("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
+data = sc.textFile(
+    "wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
 
 documents = data.filter(lambda s: "Date" not in s).map(parseDocument)
 training = documents.toDF()
@@ -128,6 +132,6 @@ only showing top 20 rows
 
 `model` 物件現在可以用來進行預測。 如需此機器學習服務應用程式的完整範例，以及執行的逐步指示，請參閱[在 Azure HDInsight 上建立 Apache Spark 機器學習服務應用程式](apache-spark-ipython-notebook-machine-learning.md)。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 * [在 Azure 上使用 Scala 與 Apache Spark 的資料科學](../../machine-learning/team-data-science-process/scala-walkthrough.md)

@@ -1,51 +1,32 @@
 ---
 title: Azure 監視器記錄查詢中的函式 | Microsoft Docs
 description: 本文說明如何在 Azure 監視器中使用函式從另一個記錄查詢呼叫查詢。
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 11/15/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 7eb5f090026b415e3c980116a9317594f4ca8115
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 05/18/2018
+ms.openlocfilehash: 5fb9e48a6d6a0b95b61478a7877e9b46dd8963e9
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60728061"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649388"
 ---
 # <a name="using-functions-in-azure-monitor-log-queries"></a>在 Azure 監視器記錄查詢中使用函式
-
-> [!NOTE]
-> 您應該先完成[開始使用 Analytics 入口網站](get-started-portal.md)與[開始使用查詢](get-started-queries.md)，再完成此課程。
-
-[!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
-
 
 若要將記錄查詢搭配使用另一個查詢，您可以將它儲存為函式。 這可讓您將複雜的查詢分成多個組件予以簡化，並可讓您重複使用具有多個查詢的通用程式碼。
 
 ## <a name="create-a-function"></a>建立函式
 
-按一下 Azure 入口網站中建立的函式與 Log Analytics**儲存**然後提供下表中的資訊。
+按一下 [儲存]，然後提供下表中的資訊，以在 Azure 入口網站中使用記錄分析建立函式。
 
 | 設定 | 描述 |
 |:---|:---|
 | 名稱           | 在 [查詢總管] 中顯示查詢名稱。 |
 | 另存新檔        | 函式 |
 | 函式別名 | 簡短名稱，以在其他查詢中使用函式。 不能包含空格，且必須是唯一的。 |
-| Category       | 在 [查詢總管] 用來組織已儲存查詢與函式的類別。 |
+| 類別       | 在 [查詢總管] 用來組織已儲存查詢與函式的類別。 |
 
-> [!NOTE]
-> Azure 監視器中的函式不能包含另一個函式。
-
-> [!NOTE]
-> 您可以在 Azure 監視器記錄查詢中儲存函式，但目前不適用於 Application Insights 查詢。
 
 
 

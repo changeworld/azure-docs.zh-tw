@@ -1,24 +1,22 @@
 ---
-title: 轉譯概觀 - Azure Batch
+title: 轉譯概觀
 description: 使用 Azure 進行轉譯的簡介及 Azure Batch 轉譯功能的概觀
-services: batch
-ms.service: batch
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
-ms.topic: conceptual
-ms.openlocfilehash: d4423b22c4c8afea5afa9c7040e081665b17ba87
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.topic: how-to
+ms.openlocfilehash: 850f4e3754af790e6b9bab5c68c9bd10849bba37
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60774024"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85965275"
 ---
 # <a name="rendering-using-azure"></a>使用 Azure 進行轉譯
 
 轉譯是取用 3D 模型並將其轉換成 2D 影像的程序。 3D 場景檔案可在 Autodesk 3ds Max、Autodesk Maya 和 Blender 等應用程式中撰寫。  Autodesk Maya、Autodesk Arnold、Chaos Group V-Ray 和 Blender Cycles 等轉譯應用程式可產生 2D 影像。  有時候，會從場景檔案建立單一映像。 不過，一般通常會建立多個影像的模型並加以轉譯，然後將其結合在動畫中。
 
-媒體和娛樂業的特效 (VFX) 會大量使用轉譯工作負載。 在許多其他如廣告、 零售、 石油和天然氣及製造也會使用轉譯。
+媒體和娛樂業的特效 (VFX) 會大量使用轉譯工作負載。 其他如廣告、零售、石油和天然氣及製造等許多產業，也會使用轉譯。
 
 轉譯的程序會耗用大量運算資源；其間可能會產生許多畫面格/影像，且每個影像的轉譯可能都會耗時數小時。  因此，轉譯非常適合使用批次處理工作負載，利用 Azure 和 Azure Batch 以平行方式執行許多轉譯。
 
@@ -50,7 +48,7 @@ ms.locfileid: "60774024"
 
 最常見的案例，是要以 PipelineFX Qube、Royal Render 或 Thinkbox Deadline 等轉譯管理應用程式來管理現有內部部署轉譯伺服器陣列的環境。  其需求是必須使用 Azure VM 擴充內部部署轉譯伺服器陣列容量。
 
-轉譯管理軟體可能內建有 Azure 支援，或者，我們可以啟用新增 Azure 支援的外掛程式。 如需與支援的轉譯管理員和啟用的功能有關的詳細資訊，請參閱[使用轉譯管理員](https://docs.microsoft.com/azure/batch/batch-rendering-render-managers)的相關文章。
+轉譯管理軟體可能內建有 Azure 支援，或者，我們可以啟用新增 Azure 支援的外掛程式。 如需與支援的轉譯管理員和啟用的功能有關的詳細資訊，請參閱[使用轉譯管理員](./batch-rendering-render-managers.md)的相關文章。
 
 ### <a name="custom-rendering-workflow"></a>自訂轉譯工作流程
 
@@ -79,9 +77,9 @@ Azure Batch 可用於許多工作負載，但下列功能是專為簡化和加�
 您可透過數種方式來使用 Azure Batch，而這些方法也都適用於 Azure Batch 轉譯。
 
 * API：
-  * 使用 [REST](https://docs.microsoft.com/rest/api/batchservice)、[.NET](https://docs.microsoft.com/dotnet/api/overview/azure/batch)、[Python](https://docs.microsoft.com/python/api/overview/azure/batch)、[Java](https://docs.microsoft.com/java/api/overview/azure/batch) 或其他支援的 API 撰寫程式碼。  開發人員可將 Azure Batch 功能整合到其現有的應用程式或工作流程中，無論在雲端還是內部部署皆可。  例如，[Autodesk Maya 外掛程式](https://github.com/Azure/azure-batch-maya)可利用 Batch Python API 來叫用 Batch、建立和管理集區、提交作業和工作，以及監視狀態。
+  * 使用 [REST](/rest/api/batchservice)、[.NET](/dotnet/api/overview/azure/batch)、[Python](/python/api/overview/azure/batch)、[Java](/java/api/overview/azure/batch) 或其他支援的 API 撰寫程式碼。  開發人員可將 Azure Batch 功能整合到其現有的應用程式或工作流程中，無論在雲端還是內部部署皆可。  例如，[Autodesk Maya 外掛程式](https://github.com/Azure/azure-batch-maya)可利用 Batch Python API 來叫用 Batch、建立和管理集區、提交作業和工作，以及監視狀態。
 * 命令列工具：
-  * [Azure 命令列](https://docs.microsoft.com/cli/azure/)或 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) 可用來編寫 Batch 適用的指令碼。
+  * [Azure 命令列](/cli/azure/)或 [Azure PowerShell](/powershell/azure/overview) 可用來編寫 Batch 適用的指令碼。
   * 特別是，Batch CLI 範本支援大幅簡化了建立集區和提交作業的程序。
 * UI：
   * [Batch Explorer](https://github.com/Azure/BatchExplorer) 是一種跨平台的用戶端工具，不僅也可讓 Batch 帳戶受到管理及監視，還提供比 Azure 入口網站 UI 更豐富的功能。  我們提供了針對各種支援的應用程式而設計的集區和作業範本集，可用來輕鬆建立集區及提交作業。
@@ -97,9 +95,9 @@ Azure Batch 可用於許多工作負載，但下列功能是專為簡化和加�
 
 請參閱下列簡介教學課程，開始試用 Azure Batch 轉譯：
 
-* [使用 Batch Explorer 轉譯 Blender 場景](https://docs.microsoft.com/azure/batch/tutorial-rendering-batchexplorer-blender)
-* [使用 Batch CLI 轉譯 Autodesk 3ds Max 場景](https://docs.microsoft.com/azure/batch/tutorial-rendering-cli)
+* [使用 Batch Explorer 轉譯 Blender 場景](./tutorial-rendering-batchexplorer-blender.md)
+* [使用 Batch CLI 轉譯 Autodesk 3ds Max 場景](./tutorial-rendering-cli.md)
 
 ## <a name="next-steps"></a>後續步驟
 
-在[這篇文章](https://docs.microsoft.com/azure/batch/batch-rendering-applications)中確認 Azure Marketplace VM 映像包含的轉譯應用程式和版本清單。
+在[這篇文章](./batch-rendering-applications.md)中確認 Azure Marketplace VM 映像包含的轉譯應用程式和版本清單。

@@ -1,71 +1,66 @@
 ---
-title: 在 Azure 資訊安全中心內保護 App Service | Microsoft Docs
-description: 本文可協助您開始在「Azure 資訊安全中心」內保護 App Service。
+title: 保護您的 Azure App Service web 應用程式和 Api
+description: 本文可協助您開始在 Azure 資訊安全中心中保護您的 Azure App Service web 應用程式和 Api。
 services: security-center
 documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: e8518710-fcf9-44a8-ae4b-8200dfcded1a
 ms.service: security-center
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 1/27/2019
-ms.author: monhaber
-ms.openlocfilehash: ea738535ae9326109a7c3fdd0b5d0c4f4691fdf0
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+ms.date: 01/27/2019
+ms.author: memildin
+ms.openlocfilehash: 2d81e1a1218add504e1e35015276b6924da0e3e3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62095263"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77616474"
 ---
-# <a name="protect-app-service-with-azure-security-center"></a>使用 Azure 資訊安全中心來保護 App Service
-本文可協助您使用「Azure 資訊安全中心」來監視及保護在 App Service 上執行的應用程式。
+# <a name="protect-your-azure-app-service-web-apps-and-apis"></a>保護您的 Azure App Service web 應用程式和 Api
 
-App Service 可讓您以所選程式設計語言來建置及裝載 Web 應用程式，而無需管理基礎結構。 App Service 提供自動調整功能和高可用性、同時支援 Windows 和 Linux，並可從 GitHub、Azure DevOps 或任何 Git 存放庫進行自動化部署。 
+Azure App Service 是完全受控的平臺，可用於建立及裝載您的 web 應用程式和 Api，而不必擔心管理基礎結構的問題。 它提供管理、監視和營運見解，以符合企業級的效能、安全性和合規性需求。 如需詳細資訊，請參閱[Azure App Service](https://azure.microsoft.com/services/app-service/)。
 
-Web 應用程式中的弱點經常會遭到攻擊者利用，因為對網際網路上的幾乎所有組織來說，它們都具有一個通用且動態的介面。 對在 App Service 上執行之應用程式所發出要求會經過部署在全球各地 Azure 資料中心內的數個閘道，這些閘道會負責將每個要求路由傳送至其相對應的應用程式。 
+若要為您的 Azure App Service 方案啟用「先進的威脅防護」，您必須：
 
-「Azure 資訊安全中心」可針對在 App Service 中執行的應用程式，在 VM 或內部部署執行個體的沙箱中執行評量和建議。 藉由利用 Azure 作為雲端提供者所具備的可見性，「資訊安全中心」將可分析您的 App Service 內部記錄，以監視是否有通常會跨數個目標執行的常見 Web 應用程式攻擊。
+* 訂閱 Azure 資訊安全中心的標準定價層
+* 啟用 App Service 計畫，如下所示。 資訊安全中心與 App Service 原生整合，因而不需要部署和上線-整合是透明的。
+* 具有與專用機器相關聯的 App Service 計畫。 支援的方案包括：基本、標準、Premium、隔離或 Linux。 資訊安全中心不支援「免費」、「共用」或「耗用量」方案。 如需詳細資訊，請參閱[App Service 計畫](https://azure.microsoft.com/pricing/details/app-service/plans/)。
 
-「資訊安全中心」會利用雲端規模來識別您 App Service 應用程式上的攻擊並將焦點放在新興的攻擊上，在攻擊者處於偵察階段時，便進行掃描來識別多個裝載在 Azure 上之網站的弱點。 「資訊安全中心」會使用分析和機器學習模型來涵蓋所有允許客戶與其應用程式進行互動 (不論是透過 HTTP 還是透過管理方法) 的介面。 此外，作為 Azure 中的第一方服務，「資訊安全中心」也處於獨特的地位，負責提供涵蓋此 PaaS 之基礎計算節點的主機型安全性分析，讓「資訊安全中心」能夠偵測到對已遭惡意探索之 Web 應用程式的攻擊。
+啟用 App Service 方案後，資訊安全中心會評估 App Service 方案所涵蓋的資源，並根據其發現產生安全性建議。 資訊安全中心保護您的 App Service 在其中執行的 VM 實例和管理介面。 它也會監視傳送給在 App Service 中執行之應用程式的要求和回應，以及從這些應用程式傳送的要求和回應。
 
-## <a name="prerequisites"></a>必要條件
-
-若要監視及保護您的 App Service，您必須有一個與專屬機器相關的 App Service 方案。 這些方案包括：基本、標準、進階、隔離式或 Linux。 「Azure 資訊安全中心」不支援「免費」、「共用」或「使用量」方案。 如需詳細資訊，請參閱 [App Service 方案](https://azure.microsoft.com/pricing/details/app-service/plans/)。
-
-## <a name="security-center-protection"></a>資訊安全中心保護
-
-「Azure 資訊安全中心」會保護您 App Service 執行所在的 VM 執行個體及管理介面。 它也會監視傳送給在 App Service 中執行之應用程式的要求和回應，以及從這些應用程式傳送的要求和回應。
-
-「資訊安全中心」會與 App Service 原生整合，因此無須進行部署及上線 - 會完全在背景中完成整合。
-
+資訊安全中心利用雲端的規模，以及 Azure 做為雲端提供者的可見度，來監視常見的 web 應用程式攻擊。 資訊安全中心可以探索您應用程式的攻擊，並找出新興的攻擊-即使攻擊者是在偵察階段，掃描以識別多個 Azure 託管應用程式的弱點。 身為 Azure 原生服務，資訊安全中心也位於唯一的位置，可提供涵蓋此 PaaS 之基礎計算節點的主機型安全性分析，讓資訊安全中心能夠偵測到對已被利用的 web 應用程式的攻擊。 如需詳細資訊，請參閱[Azure App Service 的威脅防護](threat-protection.md#app-services)。
 
 
 ## <a name="enabling-monitoring-and-protection-of-app-service"></a>啟用 App Service 監視和保護
 
-1. 在 Azure 中，選擇 [資訊安全中心]。
-2. 移至 [安全性原則]，然後選擇一個訂用帳戶。
-3. 在訂用帳戶的資料列結尾，按一下 [編輯設定]。
-4. 在 [定價層] 底下的 [應用程式服務] 資料列中，將方案切換至 [已啟用]。
+1. 在 [Azure 入口網站中，選擇 [資訊安全中心]。
+2. 移至 [**定價] & 設定**]，然後選擇訂用帳戶。
+3. 在 [定價層]**** 底下的 [應用程式服務]**** 資料列中，將方案切換至 [已啟用]****。
 
-![App Service 切換](./media/security-center-app-services/app-services-toggle.png)
+    [![在您的標準層訂用帳戶中啟用應用程式服務](media/security-center-app-services/app-services-toggle.png)](media/security-center-app-services/app-services-toggle.png#lightbox)
+
 
 >[!NOTE]
-> 針對資源數量列出的執行個體數目代表您開啟定價層刀鋒視窗時，作用中的相關 App Service 執行個體數目。 由於此數目會依據您選取的調整規模選項變更，因此您需付費的執行個體數目也會相應地修改。
+> 針對您的**資源數量**列出的實例數目，代表在您開啟 [定價層] 分頁時，在此訂用帳戶上所有 App Service 方案中的計算實例總數。
+>
+> Azure App Service 提供各種不同的方案。 您的 App Service 方案會定義要執行之 web 應用程式的一組計算資源。 這些就相當於傳統 web 裝載中的伺服器陣列。 一或多個應用程式可設定為在相同的計算資源上執行 (或在相同的 App Service 方案中執行)。
+>
+>若要驗證計數，請前往 Azure 入口網站中的 [App Service 方案]，您可以在其中看到每個方案所使用的計算實例數目。 
 
-若要停用您 App Service 的監視和建議，請重複此程序並將 **App Service** 方案切換至 [已停用]。
 
 
 
-## <a name="see-also"></a>請參閱
-在本文中，您已來了解如何使用「Azure 資訊安全中心」的監視功能。 若要深入了解「Azure 資訊安全中心」，請參閱下列主題：
+
+
+若要停用您 App Service 的監視和建議，請重複此程序並將 **App Service** 方案切換至 [已停用]****。
+
+
+
+## <a name="see-also"></a>另請參閱
+在本文中，您已來了解如何使用「Azure 資訊安全中心」的監視功能。 若要深入了解「Azure 資訊安全中心」，請參閱下列文章：
 
 * [在 Azure 資訊安全中心設定安全性原則](tutorial-security-policy.md)：了解如何在 Azure 資訊安全中心設定安全性設定。
-* [管理及回應 Azure 資訊安全中心的安全性警示](security-center-managing-and-responding-alerts.md)：了解如何管理和回應安全性警示。
-* [應用程式服務](security-center-virtual-machine-protection.md#app-services)：檢視所列出應用程式服務環境的健康情況摘要。
-* [使用 Azure 資訊安全中心監視合作夥伴解決方案](security-center-partner-solutions.md)：了解如何監視合作夥伴解決方案的健全狀態。
-* [Azure 資訊安全中心常見問題](security-center-faq.md)：尋找有關使用服務的常見問題。
-* [Azure 安全性部落格](https://blogs.msdn.com/b/azuresecurity/)：尋找有關 Azure 安全性與相容性的部落格文章。
+* [管理與回應 Azure 資訊安全中心的安全性警示](security-center-managing-and-responding-alerts.md)：了解如何管理與回應安全性警示。
+* [應用程式服務](security-center-virtual-machine-protection.md#app-services)：查看具有健康情況摘要的 app service 環境清單。
+* [使用 Azure 資訊安全中心監視合作夥伴解決方案](security-center-partner-solutions.md)：了解如何監視合作夥伴解決方案的健全狀況。
+* [Azure 安全性 blog](https://blogs.msdn.com/b/azuresecurity/)：尋找有關 Azure 安全性與合規性的 Blog 文章。

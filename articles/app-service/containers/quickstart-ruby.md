@@ -1,42 +1,32 @@
 ---
-title: 在 Linux 上建立 Ruby Web 應用程式 - Azure App Service | Microsoft Docs
-description: 了解如何使用 Linux 上的 App Service 來建立 Ruby on Rails 應用程式。
+title: 快速入門：建立 Linux Ruby 應用程式
+description: 藉由將您的第一個 Ruby 應用程式部署至 App Service 中的 Linux 容器，在 Azure App Service 上開始使用 Linux 應用程式。
 keywords: azure app service, linux, oss, ruby, rails
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: jeconnoc
-editor: ''
 ms.assetid: 6d00c73c-13cb-446f-8926-923db4101afa
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
-ms.date: 03/27/2019
-ms.author: cephalin
-ms.custom: seodec18
-ms.openlocfilehash: 29126171a2d808153c7578d911e0725641ec39ff
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.date: 07/11/2019
+ms.custom: mvc, cli-validate, seodec18
+ms.openlocfilehash: 33723e6dd8fbcd91d2d5863816786c0f08cdf923
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59545140"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "80045841"
 ---
 # <a name="create-a-ruby-on-rails-app-in-app-service-on-linux"></a>在 Linux 上的 App Service 中建立 Ruby on Rails 應用程式
 
-[Linux 上的 Azure App Service](app-service-linux-intro.md) 提供可高度擴充、自我修復的 Web 主機服務。 本快速入門示範如何建立基本的 [Ruby on Rails](https://rubyonrails.org/) 應用程式，然後將它當作 Linux 上的 Web 應用程式部署至 Azure。
+[Linux 上的 App Service](app-service-linux-intro.md) 使用 Linux 作業系統提供可高度擴充、自我修復的 Web 主機服務。 本快速入門教學課程會說明如何使用 [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) \(部分機器翻譯\) 將 Ruby on Rails 應用程式部署至 Linux 上的 Azure App Service。
 
 > [!NOTE]
 > Ruby 開發堆疊目前僅支援 Ruby on Rails。 如果您想要使用不同的平台 (例如 Sinatra)，或是要使用[不支援的 Ruby 版本](app-service-linux-intro.md)，則必須[在自訂容器中加以執行](quickstart-docker-go.md)。
 
-![Hello-world](./media/quickstart-ruby/hello-world-updated.png)
+![Hello-world](./media/quickstart-ruby/hello-world-configured.png)
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>必要條件
 
-* <a href="https://www.ruby-lang.org/en/documentation/installation/#rubyinstaller" target="_blank">安裝 Ruby 2.3 或更高版本</a>
+* <a href="https://www.ruby-lang.org/en/documentation/installation/#rubyinstaller" target="_blank">安裝 Ruby 2.6 或更高版本</a>
 * <a href="https://git-scm.com/" target="_blank">安裝 Git</a>
 
 ## <a name="download-the-sample"></a>下載範例
@@ -51,7 +41,7 @@ git clone https://github.com/Azure-Samples/ruby-docs-hello-world
 
 在本機執行應用程式，以便您查看它在部署至 Azure 時的樣貌。 開啟終端機視窗，切換至 `hello-world` 目錄，然後使用 `rails server` 命令啟動伺服器。
 
-第一個步驟是安裝必要的 Gem。 範例中包含 `Gemfile`，因此您不需要指定要安裝的 Gem。 為此我們將使用搭配程式：
+第一個步驟是安裝必要的 Gem。 範例中包含 `Gemfile`，因此請直接執行下列命令：
 
 ```bash
 bundle install
@@ -65,7 +55,7 @@ bundle exec rails server
 
 使用網頁瀏覽器，瀏覽至 `http://localhost:3000`，在本機測試應用程式。
 
-![已設定 Hello World](./media/quickstart-ruby/hello-world-configured.png)
+![已設定 Hello World](./media/quickstart-ruby/hello-world-updated.png)
 
 [!INCLUDE [Try Cloud Shell](../../../includes/cloud-shell-try-it.md)]
 
@@ -79,7 +69,7 @@ bundle exec rails server
 
 [!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-ruby-linux-no-h.md)] 
 
-瀏覽至網站以查看您使用內建映像新建立的 Web 應用程式。 以您的 Web 應用程式名稱取代 _&lt;app name>_。
+瀏覽至應用程式以查看您使用內建映像新建立的 Web 應用程式。 以您的 Web 應用程式名稱取代 _&lt;app name>_ 。
 
 ```bash
 http://<app_name>.azurewebsites.net
@@ -91,47 +81,42 @@ http://<app_name>.azurewebsites.net
 
 ## <a name="deploy-your-application"></a>部署應用程式
 
-執行下列命令，將本機應用程式部署至您的 Azure 網站：
+執行下列命令，將本機應用程式部署至您的 Azure Web 應用程式：
 
 ```bash
 git remote add azure <Git deployment URL from above>
-git add -A
-git commit -m "Initial deployment commit"
 git push azure master
 ```
 
 確認遠端部署作業報告成功。 此命令會產生類似下列文字的輸出：
 
 ```bash
-remote: Using sass-rails 5.0.6
-remote: Updating files in vendor/cache
-remote: Bundle gems are installed into ./vendor/bundle
-remote: Updating files in vendor/cache
-remote: ~site/repository
+remote: Using turbolinks 5.2.0
+remote: Using uglifier 4.1.20
+remote: Using web-console 3.7.0
+remote: Bundle complete! 18 Gemfile dependencies, 78 gems now installed.
+remote: Bundled gems are installed into `/tmp/bundle`
+remote: Zipping up bundle contents
+remote: .......
+remote: ~/site/repository
 remote: Finished successfully.
 remote: Running post deployment command(s)...
 remote: Deployment successful.
-To https://<your web app name>.scm.azurewebsites.net/<your web app name>.git
-  579ccb....2ca5f31  master -> master
-myuser@ubuntu1234:~workspace/<app name>$
+remote: App container will begin restart within 10 seconds.
+To https://<app-name>.scm.azurewebsites.net/<app-name>.git
+   a6e73a2..ae34be9  master -> master
 ```
 
-一旦部署完成後，使用 [`az webapp restart`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-restart) 命令來重新啟動 Web 應用程式，部署才會生效，如下所示：
-
-```azurecli-interactive
-az webapp restart --name <app name> --resource-group myResourceGroup
-```
-
-瀏覽至您的網站並確認結果。
+部署完成之後，請等候 10 秒來讓 Web 應用程式重新啟動，然後瀏覽至 Web 應用程式並確認結果。
 
 ```bash
-http://<app name>.azurewebsites.net
+http://<app-name>.azurewebsites.net
 ```
 
-![更新的 Web 應用程式](./media/quickstart-ruby/hello-world-updated.png)
+![更新的 Web 應用程式](./media/quickstart-ruby/hello-world-configured.png)
 
 > [!NOTE]
-> 當應用程式重新啟動時，嘗試瀏覽網站會導致 HTTP 狀態碼 `Error 503 Server unavailable`。 可能需要幾分鐘才能完全重新啟動。
+> 當應用程式重新啟動時，您可以在瀏覽器或 `Hey, Ruby developers!` 預設頁面中觀察 HTTP 狀態碼 `Error 503 Server unavailable`。 應用程式可能需要幾分鐘才能完全重新啟動。
 >
 
 [!INCLUDE [Clean-up section](../../../includes/cli-script-clean-up.md)]

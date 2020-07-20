@@ -1,7 +1,7 @@
 ---
 title: 物件偵測 - 電腦視覺
 titleSuffix: Azure Cognitive Services
-description: 了解使用量和限制的 Computer Vision API-物件偵測功能相關的概念。
+description: 瞭解電腦視覺 API 使用方式和限制之物件偵測功能的相關概念。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 012ab849c926de332da55361c79c76c5a1311169
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 3957e15a09bd7e7ecd814d169451af3241108b64
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60001842"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "80131664"
 ---
-# <a name="detect-common-objects-in-images"></a>偵測影像中的通用物件
+# <a name="detect-common-objects-in-images"></a>偵測影像中的一般物件
 
-物件偵測與[標記功能](concept-tagging-images.md)類似，但 API 會傳回每個所找到物件的週框方塊座標 (以像素為單位)。 例如，如果影像包含狗、貓或人物，「偵測」作業就會列出這些物件及其在影像中的座標。 您可以使用此功能來處理影像中物件間的關聯性。 还可以确定图像中是否有多个相同标记的实例。
+物件偵測與[標記功能](concept-tagging-images.md)類似，但 API 會傳回每個所找到物件的週框方塊座標 (以像素為單位)。 例如，如果影像包含狗、貓或人物，「偵測」作業就會列出這些物件及其在影像中的座標。 您可以使用此功能來處理影像中物件間的關聯性。 它也可讓您判斷影像中是否有多個相同標記的實例。
 
-偵測 API 會根據在影像中識別到的物件或生物來套用標記。 目前，沒有任何標記的分類法和物件偵測分類之間的正式關聯性。 从概念上讲，检测 API 仅查找对象和生物，而标记 API 还可以包含诸如“室内”等上下文术语，这些术语不能使用边界框进行本地化。
+偵測 API 會根據在影像中識別到的物件或生物來套用標記。 標記分類法和物件偵測分類法之間目前沒有正式關聯性。 在概念層級中，「偵測 API」只會尋找物件和生活，而標籤 API 也可以包含「室內」等內容詞彙，而不能使用周框方塊來當地語系化。
 
 ## <a name="object-detection-example"></a>物件偵測範例
 
@@ -89,15 +89,15 @@ ms.locfileid: "60001842"
 
 ## <a name="limitations"></a>限制
 
-请务必注意对象检测的限制，以便可以避免或缓解误报（缺少对象）和有限详细信息的影响。
+請務必注意物件偵測的限制，讓您可以避免或降低錯誤否定（遺漏物件）和有限詳細資料的影響。
 
-* 如果对象小（小于图像的 5%），则通常不删除对象。
-* 如果对象紧密地排列在一起（例如一摞盘子），则通常不会检测到对象。
+* 如果物件很小（小於5% 的影像），通常不會偵測到它們。
+* 通常不會偵測到物件（例如，一疊盤子）的相片順序。
 * 無法依品牌或產品名稱區分物件 (例如貨架上有不同種類的汽水)。 不過，您可以使用[品牌偵測](concept-brand-detection.md)功能，從影像中取得品牌資訊。
 
 ## <a name="use-the-api"></a>使用 API
 
-物件偵測功能是[分析影像](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API 的一部分。 您可以透過原生 SDK 或 REST 呼叫來呼叫此 API。 包含`Objects`中**visualFeatures**查詢參數。 然後，當您取得完整的 JSON 回應時，只是將字串剖析內容的`"objects"`一節。
+物件偵測功能是[分析影像](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API 的一部分。 您可以透過原生 SDK 或 REST 呼叫來呼叫此 API。 包含`Objects`在**visualFeatures**查詢參數中。 然後，當您取得完整的 JSON 回應時，只要剖析`"objects"`區段內容的字串即可。
 
-* [快速入門：分析影像 (.NET SDK)](./quickstarts-sdk/csharp-analyze-sdk.md)
-* [快速入門：分析影像 (REST API)](./quickstarts/csharp-analyze.md)
+* [快速入門：電腦視覺 .NET SDK](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
+* [快速入門：分析影像（REST API）](./quickstarts/csharp-analyze.md)

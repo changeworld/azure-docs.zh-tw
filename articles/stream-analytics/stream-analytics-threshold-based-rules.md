@@ -1,26 +1,22 @@
 ---
-title: 在 Azure 串流分析中處理可設定閾值型規則
+title: Azure 串流分析中可設定的閾值型規則
 description: 本文說明如何使用參考資料在 Azure 串流分析中達成具有可設定閾值型規則的警示解決方案。
-services: stream-analytics
-author: rockboyfor
-ms.author: v-yeche
-manager: digimobile
-ms.reviewer: jasonh
+author: mamccrea
+ms.author: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
-origin.date: 04/30/2018
-ms.date: 08/20/2018
-ms.openlocfilehash: ce2cf6ebdfd74549114e94e4c7356e387576d3c8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.topic: how-to
+ms.date: 04/30/2018
+ms.openlocfilehash: 215835bf7f1e6676adba6541da70dcb86fc3500c
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60761721"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039036"
 ---
 # <a name="process-configurable-threshold-based-rules-in-azure-stream-analytics"></a>在 Azure 串流分析中處理可設定閾值型規則
 本文說明如何使用參考資料在 Azure 串流分析中達成使用可設定閾值型規則的警示解決方案。
 
-## <a name="scenario-alerting-based-on-adjustable-rule-thresholds"></a>案例：可調整規則的臨界值警示依據
+## <a name="scenario-alerting-based-on-adjustable-rule-thresholds"></a>案例：根據可調整的規則閾值發出警示
 當傳入的串流事件達到特定的值，或根據傳入串流事件的彙總值超出特定閾值時，您可能需要產生警示作為輸出。 設定串流分析查詢，來比較值與靜態閾值 (這是固定且預先決定的) 非常簡單。 您可以將固定的閾值以硬式編碼寫在使用簡單數值比較 (大於、小於和等於) 的串流查詢語法中。
 
 在某些情況下，閾值需要能更輕鬆地進行設定，而不需在每次閾值變更時都要編輯查詢語法。 而在其他情況中，您可能需要利用相同的查詢來處理多個裝置或使用者 (每個使用者在每種裝置種類上都有不同的閾值)。 
@@ -47,6 +43,7 @@ ms.locfileid: "60761721"
 - 請注意，規則有 **operator** 欄位，這會在查詢語法後段以動態方式解譯 `AVGGREATEROREQUAL`。 
 - 規則會針對具有值 `C1` 的特定維度索引鍵 `2` 篩選資料。 其他的欄位是空白字串，表示不會透過那些事件欄位篩選輸入串流。 您可以設定額外的 CPU 規則，來視需要篩選其他相符的欄位。
 - 並非所有的資料行都包含在輸出警示事件中。 在本案例中，`includedDim` 索引鍵的 `2` 號被開啟為 `TRUE`，表示串流當中的事件資料 2 號欄位將會包含在合格的輸出事件中。 其他欄位則不會包含在警示輸出中，但您可以調整欄位清單。
+
 
 ```json
 {
@@ -292,4 +289,3 @@ HAVING
 "alert":"hot node AVG CPU over 90","avg":96.5,"min":95.0,"max":98.0,
 "dim0":null,"dim1":null,"dim2":"N024","dim3":null,"dim4":null}
 ```
-<!--Update_Description: updat meta properties, wording update-->

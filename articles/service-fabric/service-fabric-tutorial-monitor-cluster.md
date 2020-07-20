@@ -1,32 +1,23 @@
 ---
-title: 在 Azure 中監視 Service Fabric 叢集 | Microsoft Docs
+title: 在 Azure 中監視 Service Fabric 叢集
 description: 在本教學課程中，您將了解如何藉由檢視 Service Fabric 事件、查詢 EventStore API、監視效能計數器，以及檢視健康情況報告，來監視叢集。
-services: service-fabric
-documentationcenter: .net
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 03/13/2019
+ms.date: 07/22/2019
 ms.author: srrengar
 ms.custom: mvc
-ms.openlocfilehash: 9838c6e31e3bb7031d98e615fd96049f22dd8d30
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 5cde4967e85dbdab0b2d7177f9c09836a2082db2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59045640"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244951"
 ---
 # <a name="tutorial-monitor-a-service-fabric-cluster-in-azure"></a>教學課程：在 Azure 中監視 Service Fabric 叢集
 
 不論任何雲端環境，針對工作負載的開發、測試及部署進行監視和診斷都極為重要。 本教學課程為一個系列中的第二部分，示範如何使用事件、效能計數器和健康情況報表來監視和診斷 Service Fabric 叢集。   如需詳細資訊，請參閱關於[叢集監控](service-fabric-diagnostics-overview.md#platform-cluster-monitoring)和[基礎結構監視](service-fabric-diagnostics-overview.md#infrastructure-performance-monitoring)的概觀。
 
-在本教學課程中，您了解如何：
+在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
 > * 檢視 Service Fabric 事件
@@ -50,7 +41,7 @@ ms.locfileid: "59045640"
 開始進行本教學課程之前：
 
 * 如果您沒有 Azure 訂用帳戶，請建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* 安裝 [Azure Powershell](https://docs.microsoft.com/powershell/azure/install-Az-ps) 或 [Azure CLI](/cli/azure/install-azure-cli)。
+* 安裝 [Azure PowerShell](/powershell/azure/install-az-ps) 或 [Azure CLI](/cli/azure/install-azure-cli)。
 * 建立安全的 [Windows 叢集](service-fabric-tutorial-create-vnet-and-windows-cluster.md) 
 * 設定叢集的[診斷收集](service-fabric-tutorial-create-vnet-and-windows-cluster.md#configurediagnostics_anchor)
 * 在叢集中啟用 [EventStore 服務](service-fabric-tutorial-create-vnet-and-windows-cluster.md#configureeventstore_anchor)
@@ -62,7 +53,7 @@ Azure 監視器記錄會從裝載於雲端的應用程式和服務收集和分�
 
 若要存取 Service Fabric 分析解決方案，移至 [Azure 入口網站](https://portal.azure.com)，然後選取您建立 Service Fabric 分析解決方案所在的資源群組。
 
-選取資源 **ServiceFabric(mysfomsworkspace)**。
+選取資源 **ServiceFabric(mysfomsworkspace)** 。
 
 在 [概觀] 中，您會看到每個已啟用解決方案的圖格均以圖形形式顯示，其中包括一個適用於 Service Fabric 的圖格。 按一下 [Service Fabric] 圖形以繼續進行「Service Fabric 分析」解決方案。
 
@@ -133,7 +124,7 @@ ServiceFabricOperationalEvent
 | project EventId, EventName = 'NodeUpOperational', TaskName, Computer, EventMessage, TimeGenerated
 | sort by TimeGenerated 
 ``` 
- 
+
 傳回 HealthState == 3 (錯誤) 的健康情況報告，並從 EventMessage 欄位擷取其他屬性：
 
 ```kusto
@@ -200,7 +191,7 @@ ServiceFabricReliableServiceEvent
 | sort by TimeGenerated desc
 ```
 
-啟動及完成 runasync 服務時，您可以看到不同的事件，它們通常是在部署和升級發生的。
+啟動及完成 `runasync` 服務時，您可以看到不同的事件，這些事件通常是在部署和升級發生的。
 
 ![Service Fabric 解決方案 Reliable Services](media/service-fabric-tutorial-monitor-cluster/oms-reliable-services-events-selection.png)
 
@@ -236,7 +227,7 @@ ServiceFabricReliableActorEvent
 ## <a name="view-performance-counters-with-azure-monitor-logs"></a>使用 Azure 監視器記錄檢視效能計數器
 若要檢視效能計數器，請依序移至 [Azure 入口網站](https://portal.azure.com)及您建立 Service Fabric 分析解決方案所在的資源群組。 
 
-依序選取資源 **ServiceFabric(mysfomsworkspace)**、[Log Analytics 工作區] 及 [進階設定]。
+依序選取資源 **ServiceFabric(mysfomsworkspace)** 、[Log Analytics 工作區] 及 [進階設定]。
 
 按一下 [資料]，然後按一下 [Windows 效能計數器]。 有一個預設計數器清單，您可以從中選擇啟用，也可以設定收集間隔。 您也可以新增想收集的[其他效能計數器](service-fabric-diagnostics-event-generation-perf.md)。 [本文](/windows/desktop/PerfCtrs/specifying-a-counter-path)參照適當的格式。 按一下 [儲存]，然後按一下 [確定]。
 
@@ -496,5 +487,5 @@ Get-ServiceFabricService -ApplicationName fabric:/System | Get-ServiceFabricServ
 > [!div class="nextstepaction"]
 > [調整叢集](service-fabric-tutorial-scale-cluster.md)
 
-[durability]: service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster
+[durability]: service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster
 [template]: https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.json

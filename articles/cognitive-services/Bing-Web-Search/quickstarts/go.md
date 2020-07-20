@@ -8,30 +8,28 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 03/12/2019
+ms.date: 05/22/2020
 ms.author: aahi
 ms.reviewer: nhoyadx@gmail.com, v-gedod, erhopf
 ms.custom: seodec2018
-ms.openlocfilehash: b7bf73c2948b302ec8294b7dc2ff2dc8f220c91b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3ea8375d1ed999d4b617a9d2a78ec53ad22543ac
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57843878"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85602174"
 ---
 # <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-go"></a>快速入門：使用 Bing Web 搜尋 REST API 和 Go 來搜尋 Web
 
-使用本快速入門進行對 Bing Web 搜尋 API 第一次的呼叫，並接收 JSON 回應。 這個 Go 應用程式會將搜尋要求傳送給 API，並顯示回應。 雖然此應用程式是以 Go 撰寫的，但 API 是一種與大多數的程式設計語言都相容的 RESTful Web 服務。
+使用本快速入門，第一次呼叫 Bing Web 搜尋 API。 這個 Go 應用程式會將搜尋要求傳送給 API，並顯示 JSON 回應。 雖然此應用程式是以 Go 撰寫的，但 API 是一種與大多數的程式設計語言都相容的 RESTful Web 服務。
 
-另請參閱[認知服務定價 - Bing 搜尋 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
+ 本快速入門中的程式碼範例只需要核心程式庫，沒有外部相依性。  
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 以下是執行本快速入門之前的幾個必備項目：
 
 * [Go 二進位檔](https://golang.org/dl/) (英文)
 * 訂用帳戶金鑰
-
-本快速入門只需要**核心**程式庫，沒有外部相依性。  
 
 [!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]  
 
@@ -113,7 +111,13 @@ type BingAnswer struct {
 
 ## <a name="declare-the-main-function-and-define-variables"></a>宣告 main 函式並定義變數  
 
-此程式碼會宣告 main 函式，並設定必要的變數。 請確認端點正確，並將 `token` 值換成您的 Azure 帳戶中有效的訂用帳戶金鑰。 請自行取代 `searchTerm` 的值來自訂搜尋查詢。
+此程式碼會宣告 main 函式，並設定必要的變數： 
+
+1. 對於 `endpoint` 值，您可以使用下列程式碼中的全域端點，或使用 Azure 入口網站中針對您的資源所顯示的[自訂子網域](../../../cognitive-services/cognitive-services-custom-subdomains.md)端點。 
+
+2. 請確認端點正確，並將 `token` 值換成您的 Azure 帳戶中有效的訂用帳戶金鑰。 
+ 
+3. (選擇性) 取代 `searchTerm` 的值以自訂搜尋查詢。
 
 ```go
 // Declare the main function. This is required for all Go programs.
@@ -172,7 +176,7 @@ if err != nil {
 
 ## <a name="handle-the-response"></a>處理回應
 
-還記得我們稍早建立的結構嗎？ 我們要使用它來格式化回應並列印搜尋結果。
+使用我們先前建立的結構來格式化回應，並列印搜尋結果。
 
 ```go
 // Create a new answer.  
@@ -189,7 +193,7 @@ for _, result := range ans.WebPages.Value {
 
 ## <a name="put-it-all-together"></a>組合在一起
 
-最後一步就是驗證您的程式碼並執行！ 如果想要將您的程式碼與我們的程式碼做比較，以下是完整的程式：
+最後一步就是驗證您的程式碼並執行。 如果想要將您的程式碼與我們的程式碼做比較，以下是完整的程式：
 
 ```go
 package main
@@ -307,14 +311,13 @@ func main() {
 }
 ```
 
-## <a name="sample-response"></a>範例回應  
+## <a name="example-json-response"></a>範例 JSON 回應
 
-來自 Bing Web 搜尋 API 的回應會以 JSON 格式傳回。 這個範例回應已透過 `BingAnswer` 結構來格式化，且會顯示 `result.Name` 和 `result.URL`。
+來自 Bing Web 搜尋 API 的回應會以 JSON 格式傳回。 這個範例回應已使用 `BingAnswer` 結構來格式化，且會顯示 `result.Name` 和 `result.URL`。
 
 ```go
 Microsoft Cognitive Services || https://www.microsoft.com/cognitive-services
 Cognitive Services | Microsoft Azure || https://azure.microsoft.com/services/cognitive-services/
-Cognitive Service Try experience | Microsoft Azure || https://azure.microsoft.com/try/cognitive-services/
 What is Microsoft Cognitive Services? | Microsoft Docs || https://docs.microsoft.com/azure/cognitive-services/Welcome
 Microsoft Cognitive Toolkit || https://www.microsoft.com/en-us/cognitive-toolkit/
 Microsoft Customers || https://customers.microsoft.com/en-us/search?sq=%22Microsoft%20Cognitive%20Services%22&ff=&p=0&so=story_publish_date%20desc
@@ -326,6 +329,6 @@ Cognitive Services - msdn.microsoft.com || https://msdn.microsoft.com/magazine/m
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [Bing Web 搜尋單頁應用程式教學課程](../tutorial-bing-web-search-single-page-app.md)
+> [Bing Web 搜尋 API 單頁應用程式教學課程](../tutorial-bing-web-search-single-page-app.md)
 
 [!INCLUDE [bing-web-search-quickstart-see-also](../../../../includes/bing-web-search-quickstart-see-also.md)]

@@ -1,22 +1,13 @@
-- name: Azure Marketplace 和 AppSource 文件
-  href: index.md
+- name: 商業市集文件
+  href: index.yml
   items:
-    - name: Azure Marketplace 和 AppSource 藍圖
+    - name: 商業市集更新
       href: ./marketplace-roadmap.md
-    - name: Azure Marketplace 原則和條款
+    - name: 商業市集原則和條款
       href: ./policies-terms.md
-    - name: Azure Marketplace 和 AppSource 概觀和優點
+    - name: 商業市集概觀和權益
       href: ./marketplace-publishers-guide.md
       items:
-        - name: 成為 Marketplace 上的發行者
-          href: ./become-publisher.md
-          items:
-            - name: 建立 Microsoft 帳戶
-              href: ./guidelines.md
-            - name: 在開發人員中心註冊
-              href: ./register-dev-center.md
-            - name: Azure 合作夥伴客戶使用狀況屬性
-              href: ./azure-partner-customer-usage-attribution.md
         - name: 一個市集，二間店面
           href: ./comparing-appsource-azure-marketplace.md
         - name: 發佈選項與考量
@@ -24,20 +15,22 @@
           items:
             - name: 潛在客戶管理
               href: ./lead-management-for-cloud-marketplace.md
-            - name: 在 Azure Marketplace 中交易
+            - name: 在商業市集中交易
               href: ./marketplace-commercial-transaction-capabilities-and-considerations.md
             - name: 私人供應項目
               href: ./private-offers.md
             - name: 標準合約
               href: ./standard-contract.md
+            - name: Azure 合作夥伴客戶使用狀況屬性
+              href: ./azure-partner-customer-usage-attribution.md
         - name: 依供應項目類型的發行指南
           href: ./publisher-guide-by-offer-type.md
           items:
             - name: 虛擬機器
               href: ./marketplace-virtual-machines.md
-            - name: Azure 應用程式：解決方案範本
+            - name: Azure 應用程式解決方案範本
               href: ./marketplace-solution-templates.md
-            - name: Azure 應用程式：受控應用程式
+            - name: Azure 應用程式受控應用程式
               href: ./marketplace-managed-apps.md
             - name: SaaS 應用程式
               href: ./marketplace-saas-applications-technical-publishing-guide.md
@@ -47,16 +40,18 @@
               href: ./iot-edge-module.md
             - name: 諮詢服務
               href: ./consulting-services.md
-            - name: Office 365、Dynamics 365 和 Power BI 發佈指南
+            - name: Office 365、Dynamics 365 和 Power BI
               href: ./appsource-offer-publishing-guide.md
-            - name: 使用 Azure Active Directory 來啟用 AppSource 和 Marketplace 清單
+            - name: 使用 Azure AD 啟用供應項目驗證
               href: ./enable-appsource-marketplace-using-azure-ad.md
+            - name: 整合式解決方案
+              href: ./integrated-solutions-for-publishers.md
         - name: 行銷最佳做法
           href: ./gtm-marketing-best-practices.md
           items:
             - name: 陳列供應項目的最佳做法
               href: ./gtm-offer-listing-best-practices.md
-            - name: 如何取得精選項目
+            - name: 取得精選項目
               href: ./gtm-how-to-get-featured.md
             - name: Marketplace 內容驗證
               href: ./marketplace-criteria-content-validation.md
@@ -65,401 +60,233 @@
         - name: 您的 Marketplace 權益
           href: ./gtm-your-marketplace-benefits.md
           items:
-            - name: 透過 Microsoft 推廣您的業務
-              href: ./gtm-promote-your-business.md
+            - name: 共同銷售合作夥伴參與
+              href: ./marketplace-co-sell.md
             - name: 慣用的解決方案
               href: ./preferred-solutions.md
             - name: 整合式解決方案
               href: ./integrated-solutions.md
-        - name: 支援 Azure Marketplace 和 AppSource
+        - name: 支援商業市集
           href: ./support-azure-marketplace.md
           items:
-            - name: Marketplace 常見問題集
+            - name: 商業市集常見問題集
               href: ./marketplace-faq-publisher-guide.md
             - name: 各地區上市情況和貨幣
               href: ./marketplace-geo-availability-currencies.md
-- name: 雲端合作夥伴入口網站
-  href: ./cloud-partner-portal-orig/cloud-partner-portal-getting-started-with-the-cloud-partner-portal.md
+- name: 合作夥伴中心中的商業市集
   items:
-    - name: 入口網站導覽
-      href: ./cloud-partner-portal/portal-tour/cpp-portal-tour.md
+    - name: 商業市集概觀
+      href: ./partner-center-portal/commercial-marketplace-overview.md
+    - name: 移轉常見問題集
+      href: ./cloud-partner-portal-migration-faq.md
+    - name: 帳戶管理
       items:
-        - name: 入口網站巡覽
-          href: ./cloud-partner-portal/portal-tour/cpp-portal-navigation.md
-        - name: 新增供應項目功能表
-          href: ./cloud-partner-portal/portal-tour/cpp-new-offer-menu.md
-        - name: 所有供應項目頁面
-          href: ./cloud-partner-portal/portal-tour/cpp-all-offers-page.md
-        - name: 核准頁面
-          href: ./cloud-partner-portal/portal-tour/cpp-approvals-page.md
-        - name: 所有發行者頁面
-          href: ./cloud-partner-portal/portal-tour/cpp-all-publishers-page.md
-        - name: 使用者分頁
-          href: ./cloud-partner-portal/portal-tour/cpp-users-page.md
-        - name: 稽核歷程記錄頁面
-          href: ./cloud-partner-portal/portal-tour/cpp-history-page.md
-        - name: 見解頁面
-          href: ./cloud-partner-portal/portal-tour/cpp-insights-page.md
-    - name: 連接埠管理
-      href: ./cloud-partner-portal/portal-manage/cpp-portal-management.md
+        - name: 建立新的合作夥伴中心帳戶
+          href: ./partner-center-portal/create-account.md
+        - name: 管理合作夥伴中心帳戶
+          href: ./partner-center-portal/manage-account.md
+        - name: 尋找或建立公司工作帳戶
+          href: ./partner-center-portal/company-work-accounts.md
+        - name: 將帳戶從 CPP 移轉到合作夥伴中心
+          href: ./partner-center-portal/account-migration-from-cpp-to-pc.md
+    - name: 建立新的供應項目
       items:
-        - name: 管理帳戶的必要條件
-          href: ./cloud-partner-portal/portal-manage/cpp-manage-prerequisites.md
-        - name: 管理發行設定檔
-          href: ./cloud-partner-portal/portal-manage/cpp-manage-publisher-profile.md
-        - name: 管理使用者
-          href: ./cloud-partner-portal/portal-manage/cpp-manage-users.md
-    - name: 企業管理
-      items:
-        - name: SEO 指引
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-seo-guidance.md
-        - name: GDPR 合規性
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-gdpr.md
-        - name: 私人 SKU
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md
-        - name: 管理潛在客戶
+        - name: Azure 應用程式供應項目
           items:
-            - name: 設定潛在客戶
-              href: ./cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads.md
+            - name: 建立 Azure 應用程式供應項目
+              href: ./partner-center-portal/create-new-azure-apps-offer.md
+            - name: Azure 應用程式計量付費計費
+              href: ./partner-center-portal/azure-app-metered-billing.md
+            - name: 處理檢閱意見反應
+              href: ./partner-center-portal/azure-apps-review-feedback.md
+            - name: 用於上線的 API
+              href: ./partner-center-portal/azure-app-apis.md
+        - name: Azure 容器供應項目
+          items:
+            - name: 預備技術資產
+              href: ./partner-center-portal/create-azure-container-technical-assets.md
+            - name: 建立 Azure 容器供應項目
+              href: ./partner-center-portal/create-azure-container-offer.md
+        - name: 虛擬機器供應項目
+          items:
+            - name: 建立 Azure 虛擬機器供應項目
+              href: ./partner-center-portal/azure-vm-create-offer.md
+            - name: 建立 Azure VM 技術資產
+              items:
+                - name: 虛擬機器認證 - 問題與解決方案
+                  href: ./partner-center-portal/vm-certification-issues-solutions.md
+                - name: 建立 Azure VM 技術資產
+                  href: ./partner-center-portal/create-azure-vm-technical-asset.md
+                - name: Azure VM 技術資產常見問題集
+                  href: ./partner-center-portal/common-issues-during-vhd-creation.md
+                - name: 認證 Azure VM 映像
+                  href: ./partner-center-portal/azure-vm-image-certification.md
+                - name: SAS URI
+                  items:
+                    - name: 取得 SAS URI
+                      href: ./partner-center-portal/get-sas-uri.md
+                    - name: SAS URI 常見問題集
+                      href: ./partner-center-portal/common-sas-uri-issues.md
+        - name: 諮詢服務
+          items:
+            - name: 必要條件
+              href: ./partner-center-portal/consulting-service-prerequisites.md
+            - name: 建立諮詢服務供應項目
+              href: ./partner-center-portal/create-consulting-service-offer.md
+        - name: Dynamics 365 供應項目
+          items:
+            - name: 建立 Dynamics 365 for Customer Engagement 和 PowerApps 供應項目
+              href: ./partner-center-portal/create-new-customer-engagement-offer.md
+            - name: 建立 Dynamics 365 for Operations 供應項目
+              href: ./partner-center-portal/create-new-operations-offer.md
+            - name: 建立 Dynamics 365 Business Central 供應項目
+              href: ./partner-center-portal/create-new-business-central-offer.md
+        - name: IoT Edge 模組供應項目
+          items:
+            - name: 建立 IoT Edge 模組供應項目
+              href: ./partner-center-portal/azure-iot-edge-module-creation.md
+            - name: 預備 IoT Edge 模組技術資產
+              href: ./partner-center-portal/create-iot-edge-module-asset.md
+        - name: 受控服務供應項目
+          items:
+            - name: 建立受控服務供應項目
+              href: ./partner-center-portal/create-new-managed-service-offer.md
+        - name: Power BI 應用程式供應項目
+          items:
+            - name: 發佈概觀
+              href: ./partner-center-portal/create-power-bi-app-overview.md
+            - name: 建立 Power BI 應用程式供應項目
+              href: ./partner-center-portal/create-power-bi-app-offer.md
+        - name: SaaS 供應項目
+          items:
+            - name: SaaS 供應項目建立檢查清單
+              href: ./partner-center-portal/offer-creation-checklist.md
+            - name: 建立 SaaS 供應項目
+              href: ./partner-center-portal/create-new-saas-offer.md
+            - name: SaaS 履行 API
+              href: ./partner-center-portal/pc-saas-fulfillment-apis.md
+              items:
+                - name: 註冊 SaaS 應用程式
+                  href: ./partner-center-portal/pc-saas-registration.md
+                - name: SaaS 履行 API v2
+                  href: ./partner-center-portal/pc-saas-fulfillment-api-v2.md
+                - name: SaaS 履行 API v1 (已淘汰)
+                  href: ./partner-center-portal/pc-saas-fulfillment-api-v1.md
+                - name: SaaS 履行 API - 常見問題集
+                  href: ./partner-center-portal/saas-fulfillment-apis-faq.md
+            - name: SaaS 計量帳單
+              href: ./partner-center-portal/saas-metered-billing.md
+        - name: 潛在客戶管理概觀
+          href: ./partner-center-portal/commercial-marketplace-get-customer-leads.md
+          items:
+            - name: Azure Blob
+              href: ./partner-center-portal/commercial-marketplace-lead-management-instructions-azure-blob.md
             - name: Azure 資料表
-              href: ./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table.md
-            - name: Dynamics
-              href: ./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics.md
+              href: ./partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table.md
+            - name: Dynamics 365 for Customer Engagement
+              href: ./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md
             - name: HTTPS 端點
-              href: ./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-https.md
+              href: ./partner-center-portal/commercial-marketplace-lead-management-instructions-https.md
             - name: Marketo
-              href: ./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-marketo.md
+              href: ./partner-center-portal/commercial-marketplace-lead-management-instructions-marketo.md
             - name: Salesforce
-              href: ./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce.md
-        - name: Seller Insights
+              href: ./partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce.md
+        - name: Marketplace 計量服務
           items:
-            - name: 開始使用
-              href: ./cloud-partner-portal-orig/si-getting-started.md
-            - name: 新功能
-              href: ./cloud-partner-portal-orig/si-changes.md
-            - name: Web Analytics
-              href: ./cloud-partner-portal-orig/web-analytics.md
-            - name: 定義
-              href: ./cloud-partner-portal-orig/si-insights-definitions-v4.md
-            - name: Insights 常見問題集
-              href: ./cloud-partner-portal-orig/si-faqs.md
-    - name: Marketplace 供應項目
-      href: ./cloud-partner-portal/cpp-marketplace-offers.md
-      items:
-        - name: 管理供應項目
-          href: ./cloud-partner-portal/manage-offers/cpp-manage-offers.md
-          items:
-            - name: 建立供應項目
-              href: ./cloud-partner-portal/manage-offers/cpp-create-offer.md
-            - name: 發佈供應項目
-              href: ./cloud-partner-portal/manage-offers/cpp-publish-offer.md
-            - name: 檢視供應項目狀態
-              href: ./cloud-partner-portal/manage-offers/cpp-view-status-offer.md
-            - name: 更新供應項目
-              href: ./cloud-partner-portal/manage-offers/cpp-update-offer.md
-            - name: 刪除供應項目
-              href: ./cloud-partner-portal/manage-offers/cpp-delete-offer.md
+            - name: 異常偵測服務
+              href: ./partner-center-portal/anomaly-detection-service-for-metered-billing.md
+            - name: 驗證策略
+              href: ./partner-center-portal/marketplace-metering-service-authentication.md
+            - name: Marketplace 計量服務 API
+              href: ./partner-center-portal/marketplace-metering-service-apis.md
+            - name: Marketplace 計量服務 API - 常見問題集
+              href: ./partner-center-portal/marketplace-metering-service-apis-faq.md
         - name: 試用產品
           items:
             - name: 什麼是試用產品？
-              href: ./cloud-partner-portal/test-drive/what-is-test-drive.md
-            - name: Azure Resource Manager 試用產品
-              href: ./cloud-partner-portal/test-drive/azure-resource-manager-test-drive.md
-            - name: 裝載的試用產品
-              href: ./cloud-partner-portal/test-drive/hosted-test-drive.md
-            - name: 邏輯應用程式試用產品
-              href: ./cloud-partner-portal/test-drive/logic-app-test-drive.md
-            - name: 試用產品的轉換範例
-              href: ./cloud-partner-portal/test-drive/transforming-examples-for-test-drive.md
-            - name: 行銷與最佳做法
-              href: ./cloud-partner-portal/test-drive/marketing-and-best-practices.md
-        - name: Azure 應用程式供應項目
-          href: ./cloud-partner-portal/azure-applications/cpp-azure-app-offer.md
+              href: ./what-is-test-drive.md
+            - name: 試用產品技術設定
+              href: ./test-drive-technical-configuration.md
+            - name: Azure Resource Manager 的試用產品
+              href: ./azure-resource-manager-test-drive.md
+        - name: 共同銷售選項
+          href: ./partner-center-portal/commercial-marketplace-co-sell.md
           items:
-            - name: 必要條件
-              href: ./cloud-partner-portal/azure-applications/cpp-prerequisites.md
-            - name: 建立 Azure 應用程式供應項目
-              href: ./cloud-partner-portal/azure-applications/cpp-create-offer.md
-              items:
-                - name: 供應項目設定索引標籤
-                  href: ./cloud-partner-portal/azure-applications/cpp-offer-settings-tab.md
-                - name: SKU 索引標籤
-                  href: ./cloud-partner-portal/azure-applications/cpp-skus-tab.md
-                - name: 試用產品索引標籤
-                  href: ./cloud-partner-portal/azure-applications/cpp-testdrive-tab.md
-                - name: Marketplace 索引標籤
-                  href: ./cloud-partner-portal/azure-applications/cpp-marketplace-tab.md
-                - name: 支援索引標籤
-                  href: ./cloud-partner-portal/azure-applications/cpp-support-tab.md
-            - name: 建立技術資產
-              href: ./cloud-partner-portal/azure-applications/cpp-create-technical-assets.md
-            - name: 發佈 Azure 應用程式供應項目
-              href: ./cloud-partner-portal/azure-applications/cpp-publish-offer.md
-            - name: 處理檢閱意見反應
-              href: ./cloud-partner-portal/azure-applications/cpp-handling-review-feedback.md
-            - name: 更新現有供應項目
-              href: ./cloud-partner-portal/azure-applications/cpp-update-existing-offer.md
-        - name: 諮詢服務
-          href: ./cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer.md
-          items:
-            - name: 必要條件
-              href: ./cloud-partner-portal/consulting-services/cpp-consulting-service-prerequisites.md
-            - name: 建立諮詢服務供應項目
-              href: ./cloud-partner-portal/consulting-services/cpp-consulting-service-create-offer.md
-              items:
-                - name: 供應項目設定索引標籤
-                  href: ./cloud-partner-portal/consulting-services/cpp-consulting-service-define-offer-settings.md
-                - name: 電子店面詳細資料索引標籤
-                  href: ./cloud-partner-portal/consulting-services/cpp-consulting-service-storefront-details.md
-            - name: 發佈諮詢服務供應項目
-              href: ./cloud-partner-portal/consulting-services/cpp-consulting-service-publish-offer.md
-        - name: 容器供應項目
-          href: ./cloud-partner-portal/containers/cpp-containers-offer.md
-          items:
-            - name: 必要條件
-              href: ./cloud-partner-portal/containers/cpp-prerequisites.md
-            - name: 建立容器供應項目
-              href: ./cloud-partner-portal/containers/cpp-create-offer.md
-              items:
-                - name: 供應項目設定索引標籤
-                  href: ./cloud-partner-portal/containers/cpp-offer-settings-tab.md
-                - name: SKU 索引標籤
-                  href: ./cloud-partner-portal/containers/cpp-skus-tab.md
-                - name: Marketplace 索引標籤
-                  href: ./cloud-partner-portal/containers/cpp-marketplace-tab.md
-                - name: 支援索引標籤
-                  href: ./cloud-partner-portal/containers/cpp-support-tab.md
-            - name: 建立容器技術資產
-              href: ./cloud-partner-portal/containers/cpp-create-technical-assets.md
-            - name: 發佈容器供應項目
-              href: ./cloud-partner-portal/containers/cpp-publish-offer.md
-            - name: 更新現有供應項目
-              href: ./cloud-partner-portal/containers/cpp-update-existing-offer.md
-        - name: Dynamics 365 for Business Central 供應項目
-          href: ./cloud-partner-portal-orig/cpp-business-central-offer.md
-          items:
-            - name: 發佈概觀
-              href: ./cloud-partner-portal-orig/d365-finance-overview-publish-your-app.md
-            - name: 建立新的供應項目
-              href: ./cloud-partner-portal-orig/d365-finance-create-new-offer.md
-            - name: 供應項目
-              href: ./cloud-partner-portal-orig/d365-finance-create-offer-settings.md
-            - name: 技術詳細資訊
-              href: ./cloud-partner-portal-orig/d365-finance-create-offer-technical-details.md
-            - name: 店面詳細資料
-              href: ./cloud-partner-portal-orig/d365-finance-create-storefront-details.md
-            - name: 發佈程序
-              href: ./cloud-partner-portal-orig/d365-finance-app-publishing-process.md
-        - name: Dynamics 365 for Customer Engagement 供應項目
-          href: ./cloud-partner-portal/dyn365ce/cpp-customer-engagement-offer.md
-          items:
-            - name: 必要條件
-              href: ./cloud-partner-portal/dyn365ce/cpp-prerequisites.md
-            - name: 建立 Customer Engagement 供應項目
-              href: ./cloud-partner-portal/dyn365ce/cpp-create-offer.md
-              items:
-                - name: 供應項目設定索引標籤
-                  href: ./cloud-partner-portal/dyn365ce/cpp-offer-settings-tab.md
-                - name: '[技術資訊] 索引標籤'
-                  href: ./cloud-partner-portal/dyn365ce/cpp-technical-info-tab.md
-                - name: 試用產品索引標籤
-                  href: ./cloud-partner-portal/dyn365ce/cpp-testdrive-tab.md
-                - name: 電子店面詳細資料索引標籤
-                  href: ./cloud-partner-portal/dyn365ce/cpp-storefront-details-tab.md
-                - name: 連絡人索引標籤
-                  href: ./cloud-partner-portal/dyn365ce/cpp-contacts-tab.md
-            - name: 建立 Customer Engagement 技術資產
-              href: ./cloud-partner-portal/dyn365ce/cpp-create-technical-assets.md
-            - name: 發佈 Customer Engagement 供應項目
-              href: ./cloud-partner-portal/dyn365ce/cpp-publish-offer.md
-        - name: Dynamics 365 for Operations 供應項目
-          href: ./cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md
-          items:
-            - name: 必要條件
-              href: ./cloud-partner-portal-orig/pre-requisites.md
-            - name: 發佈方式
-              href: ./cloud-partner-portal-orig/manage-dynamics-365-for-operations.md
-            - name: LCS 訂用帳戶
-              href: ./cloud-partner-portal-orig/lcs-subscription.md
-            - name: 程式碼升級
-              href: ./cloud-partner-portal-orig/code-upgrade.md
-            - name: 資料實體
-              href: ./cloud-partner-portal-orig/data-entities.md
-            - name: BPM 和方法
-              href: ./cloud-partner-portal-orig/bpm-and-methodologies.md
-            - name: 說明 Wiki
-              href: ./cloud-partner-portal-orig/help-wiki.md
-        - name: IoT Edge 模組供應項目
-          href: ./cloud-partner-portal/iot-edge-module/cpp-offer-process-parts.md
-          items:
-            - name: 必要條件
-              href: ./cloud-partner-portal/iot-edge-module/cpp-prerequisites.md
-            - name: 建立 IoT Edge 模組供應項目
-              href: ./cloud-partner-portal/iot-edge-module/cpp-create-offer.md
-              items:
-                - name: 供應項目設定索引標籤
-                  href: ./cloud-partner-portal/iot-edge-module/cpp-offer-settings-tab.md
-                - name: SKU 索引標籤
-                  href: ./cloud-partner-portal/iot-edge-module/cpp-skus-tab.md
-                - name: Marketplace 索引標籤
-                  href: ./cloud-partner-portal/iot-edge-module/cpp-marketplace-tab.md
-                - name: 支援索引標籤
-                  href: ./cloud-partner-portal/iot-edge-module/cpp-support-tab.md
-            - name: 建立 IoT Edge 模組技術資產
-              href: ./cloud-partner-portal/iot-edge-module/cpp-create-technical-assets.md
-            - name: 發佈 IoT Edge 模組供應項目
-              href: ./cloud-partner-portal/iot-edge-module/cpp-publish-offer.md
-            - name: 更新現有供應項目
-              href: ./cloud-partner-portal/iot-edge-module/cpp-update-existing-offer.md
-        - name: Power BI 應用程式供應項目
-          href: ./cloud-partner-portal/power-bi/cpp-power-bi-offer.md
-          items:
-            - name: 必要條件
-              href: ./cloud-partner-portal/power-bi/cpp-prerequisites.md
-            - name: 建立 Power BI 應用程式供應項目
-              href: ./cloud-partner-portal/power-bi/cpp-create-offer.md
-              items:
-                - name: 供應項目設定索引標籤
-                  href: ./cloud-partner-portal/power-bi/cpp-offer-settings-tab.md
-                - name: '[技術資訊] 索引標籤'
-                  href: ./cloud-partner-portal/power-bi/cpp-technical-info-tab.md
-                - name: 電子店面詳細資料索引標籤
-                  href: ./cloud-partner-portal/power-bi/cpp-storefront-details-tab.md
-                - name: 連絡人索引標籤
-                  href: ./cloud-partner-portal/power-bi/cpp-contacts-tab.md
-            - name: 建立 Power BI 應用程式技術資產
-              href: ./cloud-partner-portal/power-bi/cpp-create-technical-assets.md
-            - name: 發佈 Power BI 應用程式供應項目
-              href: ./cloud-partner-portal/power-bi/cpp-publish-offer.md
-            - name: 更新現有供應項目
-              href: ./cloud-partner-portal/power-bi/cpp-update-existing-offer.md
-        - name: SaaS 應用程式供應項目
-          href: ./cloud-partner-portal/saas-app/cpp-saas-offer.md
-          items:
-            - name: 必要條件
-              href: ./cloud-partner-portal/saas-app/cpp-prerequisites.md
-            - name: 建立 SaaS 應用程式供應項目
-              href: ./cloud-partner-portal/saas-app/cpp-create-offer.md
-              items:
-                - name: 供應項目設定索引標籤
-                  href: ./cloud-partner-portal/saas-app/cpp-offer-settings-tab.md
-                - name: '[技術資訊] 索引標籤'
-                  href: ./cloud-partner-portal/saas-app/cpp-technical-info-tab.md
-                - name: 方案索引標籤
-                  href: ./cloud-partner-portal/saas-app/cpp-plans-tab.md
-                - name: 通道資訊索引標籤
-                  href: ./cloud-partner-portal/saas-app/cpp-channel-info-tab.md
-                - name: 試用產品索引標籤
-                  href: ./cloud-partner-portal/saas-app/cpp-testdrive-tab.md
-                - name: 電子店面詳細資料索引標籤
-                  href: ./cloud-partner-portal/saas-app/cpp-storefront-tab.md
-                - name: 連絡人索引標籤
-                  href: ./cloud-partner-portal/saas-app/cpp-contacts-tab.md
-            - name: 發佈供應項目
-              href: ./cloud-partner-portal/saas-app/cpp-publish-offer.md
-            - name: 更新現有供應項目
-              href: ./cloud-partner-portal/saas-app/cpp-update-existing-offer.md
-            - name: SaaS 履行 API
-              href: ./cloud-partner-portal/saas-app/cpp-saas-fulfillment-apis.md
-              items:
-                - name: 註冊 SaaS 應用程式
-                  href: ./cloud-partner-portal/saas-app/cpp-saas-registration.md
-                - name: SaaS API v1 (已淘汰)
-                  href: ./cloud-partner-portal/saas-app/cpp-saas-fulfillment-api-v1.md
-                - name: SaaS API v2
-                  href: ./cloud-partner-portal/saas-app/cpp-saas-fulfillment-api-v2.md
-        - name: 虛擬機器供應項目
-          href: ./cloud-partner-portal/virtual-machine/cpp-virtual-machine-offer.md
-          items:
-            - name: 必要條件
-              href: ./cloud-partner-portal/virtual-machine/cpp-prerequisites.md
-            - name: 建立 VM 供應項目
-              href: ./cloud-partner-portal/virtual-machine/cpp-create-offer.md
-              items:
-                - name: 供應項目設定索引標籤
-                  href: ./cloud-partner-portal/virtual-machine/cpp-offer-settings-tab.md
-                - name: SKU 索引標籤
-                  href: ./cloud-partner-portal/virtual-machine/cpp-skus-tab.md
-                - name: 試用產品索引標籤
-                  href: ./cloud-partner-portal/virtual-machine/cpp-test-drive-tab.md
-                - name: Marketplace 索引標籤
-                  href: ./cloud-partner-portal/virtual-machine/cpp-marketplace-tab.md
-                - name: 支援索引標籤
-                  href: ./cloud-partner-portal/virtual-machine/cpp-support-tab.md
-            - name: 建立 VM 技術資產
-              href: ./cloud-partner-portal/virtual-machine/cpp-create-technical-assets.md
-              items:
-                - name: 建立 VHD
-                  href: ./cloud-partner-portal/virtual-machine/cpp-create-vhd.md
-                - name: 常見 VHD 建立問題
-                  href: ./cloud-partner-portal/virtual-machine/cpp-common-vhd-creation-issues.md
-                - name: 連接到 VM
-                  href: ./cloud-partner-portal/virtual-machine/cpp-connect-vm.md
-                - name: 設定 VM
-                  href: ./cloud-partner-portal/virtual-machine/cpp-configure-vm.md
-                - name: Windows 遠端管理
-                  href: ./cloud-partner-portal/virtual-machine/cpp-winrm-over-https.md
-                  items:
-                    - name: 在建立 VM 後設定 WinRM
-                      href: ./cloud-partner-portal/virtual-machine/cpp-configure-winrm-after-vm-creation.md
-                - name: 部署 VM
-                  href: ./cloud-partner-portal/virtual-machine/cpp-deploy-vm-vhd.md
-                  items:
-                    - name: 建立使用者 VM 映像
-                      href: ./cloud-partner-portal/virtual-machine/cpp-create-user-image.md
-                    - name: 建立金鑰保存庫憑證
-                      href: ./cloud-partner-portal/virtual-machine/cpp-create-key-vault-cert.md
-                      items:
-                        - name: 金鑰保存庫部署範本
-                          href: ./cloud-partner-portal/virtual-machine/cpp-key-vault-deploy-template.md
-                - name: 從使用者 VHD 部署 VM
-                  href: ./cloud-partner-portal/virtual-machine/cpp-deploy-vm-user-image.md
-                  items:
-                    - name: VHD 部署範本
-                      href: ./cloud-partner-portal/virtual-machine/cpp-deploy-json-template.md
-                    - name: 從 Marketplace 部署 VM
-                      href: ./cloud-partner-portal/virtual-machine/cpp-deploy-vm-marketplace.md
-                - name: 認證 VM 映像
-                  href: ./cloud-partner-portal/virtual-machine/cpp-certify-vm.md
-                - name: VM 自我測試用戶端
-                  href: ./cloud-partner-portal/virtual-machine/cpp-selftest-client.md
-                - name: 取得 SAS URI
-                  href: ./cloud-partner-portal/virtual-machine/cpp-get-sas-uri.md
-                - name: 常見的 SAS URL 問題
-                  href: ./cloud-partner-portal/virtual-machine/cpp-common-sas-url-issues.md
-            - name: 發佈 VM 供應項目
-              href: ./cloud-partner-portal/virtual-machine/cpp-publish-offer.md
-            - name: 更新現有供應項目
-              href: ./cloud-partner-portal/virtual-machine/cpp-update-existing-offer.md
-    - name: API 參考
+            - name: 國家及區域代碼
+              href: ./partner-center-portal/commercial-marketplace-co-sell-countries.md
+            - name: 狀態碼
+              href: ./partner-center-portal/commercial-marketplace-co-sell-states.md
+    - name: 檢閱並發佈
+      href: review-publish-offer.md
+    - name: 更新現有供應項目
+      href: ./partner-center-portal/update-existing-offer.md
+    - name: 啟動權益
+      href: ./partner-center-portal/marketplace-rewards.md
+    - name: 合作夥伴中心分析
+      items:
+        - name: 商業市集的分析
+          href: ./partner-center-portal/analytics.md
+        - name: 摘要儀表板
+          href: ./partner-center-portal/summary-dashboard.md
+        - name: 訂單儀表板
+          href: ./partner-center-portal/orders-dashboard.md
+        - name: 使用量儀表板
+          href: ./partner-center-portal/usage-dashboard.md
+        - name: 客戶儀表板
+          href: ./partner-center-portal/customer-dashboard.md
+        - name: Marketplace 見解儀表板
+          href: ./partner-center-portal/insights-dashboard.md
+        - name: 下載儀表板
+          href: ./partner-center-portal/downloads-dashboard.md
+        - name: 評分與評論儀表板
+          href: ./partner-center-portal/ratings-reviews.md
+        - name: 常見問題集與術語
+          href: ./partner-center-portal/faq-terminology.md
+    - name: 取得付款
+      items:
+        - name: 取得付款
+          href: ./partner-center-portal/get-paid.md
+        - name: 設定支出帳戶和稅賦形式
+          href: ./partner-center-portal/set-up-your-payout-account-tax-forms.md
+        - name: 付款閾值、方法和時間範圍
+          href: ./partner-center-portal/payment-thresholds-methods-timeframes.md
+        - name: 支出摘要概觀
+          href: ./partner-center-portal/payout-summary-overview.md
+        - name: 支出摘要
+          href: ./partner-center-portal/payout-summary.md
+        - name: 支出原則詳細資料
+          href: ./partner-center-portal/payout-policy-details.md
+        - name: 稅賦詳細資訊
+          href: ./partner-center-portal/tax-details-paid-transactions.md
+    - name: CPP API 參考
       items:
         - name: 概觀
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-overview.md
+          href: ./cloud-partner-portal-api-overview.md
         - name: 必要條件
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-prerequisites.md
+          href: ./cloud-partner-portal-api-prerequisites.md
         - name: 考量
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-considerations.md
+          href: ./cloud-partner-portal-api-considerations.md
         - name: 並行控制
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-concurrency-control.md
+          href: ./cloud-partner-portal-api-concurrency-control.md
         - name: 擷取供應項目
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-retrieve-offers.md
+          href: ./cloud-partner-portal-api-retrieve-offers.md
         - name: 擷取特定供應項目
-          href: ./cloud-partner-portal-orig//cloud-partner-portal-api-retrieve-specific-offer.md
+          href: ./cloud-partner-portal-api-retrieve-specific-offer.md
         - name: 新增或修改供應項目
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-creating-offer.md
+          href: ./cloud-partner-portal-api-creating-offer.md
         - name: 擷取供應項目狀態
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-retrieve-offer-status.md
+          href: ./cloud-partner-portal-api-retrieve-offer-status.md
         - name: 發佈供應項目
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-publish-offer.md
+          href: ./cloud-partner-portal-api-publish-offer.md
         - name: 擷取作業
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-retrieve-operations.md
+          href: ./cloud-partner-portal-api-retrieve-operations.md
         - name: 取消作業
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-cancel-operations.md
+          href: ./cloud-partner-portal-api-cancel-operations.md
         - name: 上線
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-go-live.md
+          href: ./cloud-partner-portal-api-go-live.md
         - name: 虛擬機器供應項目定價
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-setting-price.md
+          href: ./cloud-partner-portal-api-setting-price.md
         - name: 針對驗證錯誤進行疑難排解
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-troubleshooting-authentication-errors.md
-    - name: 取得支援
-      href: ./cloud-partner-portal-orig/cloud-partner-portal-support-for-cloud-partner-portal.md
+          href: ./cloud-partner-portal-api-troubleshooting-authentication-errors.md
+    - name: 支援選項
+      href: ./partner-center-portal/support.md

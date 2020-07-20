@@ -1,0 +1,90 @@
+- name: 網際網路對等互連文件
+  href: index.yml
+- name: 概觀
+  items:
+    - name: 關於網際網路對等互連
+      href: overview.md
+    - name: 網際網路對等互連與對等互連服務
+      href: overview-peering-service.md
+- name: 概念
+  items:
+    - name: 對等互連原則
+      href: policy.md
+- name: 操作指南
+  items:
+    - name: 設定 Microsoft 對等互連的必要條件
+      href: prerequisites.md
+    - name: 直接對等互連逐步解說
+      href: walkthrough-direct-all.md
+    - name: Exchange 對等互連逐步解說
+      href: walkthrough-exchange-all.md
+    - name: 對等服務夥伴逐步解說
+      href: walkthrough-peering-service-all.md
+    - name: 將對等 ASN 與 Azure 訂用帳戶互連
+      items:
+        - name: 入口網站
+          href: howto-subscription-association-portal.md
+        - name: Azure PowerShell
+          href: howto-subscription-association-powershell.md
+    - name: 在直接對等互連上啟用對等互連服務
+      items:
+        - name: 入口網站
+          href: howto-peering-service-portal.md
+        - name: Azure PowerShell
+          href: howto-peering-service-powershell.md
+    - name: 建立或修改直接對等互連
+      items:
+        - name: 入口網站
+          href: howto-direct-portal.md
+        - name: Azure PowerShell
+          href: howto-direct-powershell.md
+    - name: 將舊版直接對等互連轉換為 Azure 資源
+      items:
+        - name: 入口網站
+          href: howto-legacy-direct-portal.md
+        - name: Azure PowerShell
+          href: howto-legacy-direct-powershell.md
+    - name: 建立或修改 Exchange 對等互連
+      items:
+        - name: 入口網站
+          href: howto-exchange-portal.md
+        - name: Azure PowerShell
+          href: howto-exchange-powershell.md
+    - name: 將舊版 Exchange 對等互連轉換為 Azure 資源
+      items:
+        - name: 入口網站
+          href: howto-legacy-exchange-portal.md
+        - name: Azure PowerShell
+          href: howto-legacy-exchange-powershell.md
+    - name: 透過路由伺服器建立或修改 Exchange 對等互連
+      items:
+        - name: 入口網站
+          href: how-to-exchange-route-server-portal.md
+- name: 參考
+  items:
+    - name: Azure CLI
+      href: 'https://docs.microsoft.com/cli/azure/network'
+    - name: Azure PowerShell
+      href: 'https://docs.microsoft.com/powershell/module/az.network'
+    - name: Java
+      href: 'https://docs.microsoft.com/java/api/'
+    - name: Node.js
+      href: 'https://docs.microsoft.com/javascript/azure#azure-sdk'
+    - name: Python
+      href: 'https://azure.microsoft.com/develop/python/'
+    - name: Resource Manager 範本
+      href: 'https://docs.microsoft.com/azure/templates/microsoft.network/allversions'
+- name: 資源
+  items:
+    - name: 透過 Microsoft Learn 增進您的技巧
+      href: 'https://docs.microsoft.com/learn/browse/'
+    - name: Azure 藍圖
+      href: 'https://azure.microsoft.com/roadmap/?category=networking'
+    - name: 網路部落格
+      href: 'https://azure.microsoft.com/blog/topics/networking'
+    - name: 網路意見反應
+      href: 'https://feedback.azure.com/forums/217313-networking?category_id=77469'
+    - name: 網際網路對等互連常見問題集
+      href: faqs.md
+    - name: 對等互連服務常見問題集
+      href: service-faqs.md

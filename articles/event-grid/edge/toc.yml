@@ -1,0 +1,68 @@
+- name: 事件方格 IoT Edge 文件
+  href: index.yml
+- name: 切換至 Azure 事件方格文件
+  href: ../overview.md
+- name: 概觀
+  items:
+    - name: 什麼是 IoT Edge 上的事件方格？
+      href: overview.md
+- name: 教學課程
+  items:
+    - name: 在本機發佈和訂閱事件
+      href: pub-sub-events-webhook-local.md
+    - name: 在雲端發佈和訂閱事件
+      href: pub-sub-events-webhook-cloud.md
+    - name: 將事件轉送至 Azure 事件方格
+      href: forward-events-event-grid-cloud.md
+    - name: 將事件轉送至 Azure IoT 中樞
+      href: forward-events-iothub.md
+    - name: 在本機回應 Blob 儲存體事件
+      href: react-blob-storage-events-locally.md
+- name: 範例
+  href: 'https://github.com/Azure/event-grid-iot-edge'
+- name: 概念
+  items:
+    - name: Event Grid 概念
+      href: concepts.md
+    - name: 事件處理常式和目的地
+      href: event-handlers.md
+    - name: 安全性和驗證
+      href: security-authentication.md
+    - name: 事件結構描述
+      href: event-schemas.md
+    - name: 傳遞和重試
+      href: delivery-retry.md
+    - name: 輸出批次處理
+      href: delivery-output-batching.md
+    - name: 進階篩選
+      href: advanced-filtering.md
+- name: 操作指南
+  items:
+    - name: 保存狀態
+      items:
+        - name: Linux
+          href: persist-state-linux.md
+        - name: Windows
+          href: persist-state-windows.md
+    - name: 監視主題和訂用帳戶
+      href: monitor-topics-subscriptions.md
+    - name: 設定 API 通訊協定
+      href: configure-api-protocol.md
+    - name: 設定用戶端驗證
+      href: configure-client-auth.md
+    - name: 設定 Webhook 訂閱者驗證
+      href: configure-webhook-subscriber-auth.md
+    - name: 設定身分識別驗證
+      href: configure-identity-auth.md
+    - name: 疑難排解
+      href: troubleshoot.md
+- name: 參考
+  items:
+    - name: REST API
+      href: api.md
+    - name: 設定事件方格
+      href: configure-event-grid.md
+    - name: 模組對應項組態結構描述
+      href: twin-json.md
+    - name: 版本資訊
+      href: release-notes.md

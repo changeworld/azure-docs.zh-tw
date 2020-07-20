@@ -1,25 +1,16 @@
 ---
-title: 使用 Azure Service Fabric Explorer 視覺化叢集 | Microsoft Docs
+title: 使用 Azure Service Fabric Explorer 視覺化您的叢集
 description: Service Fabric Explorer 是一種應用程式，可檢查和管理 Microsoft Azure Service Fabric 叢集中的雲端應用程式和節點。
-services: service-fabric
-documentationcenter: .net
 author: mikkelhegn
-manager: msfussell
-editor: ''
-ms.assetid: c875b993-b4eb-494b-94b5-e02f5eddbd6a
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 01/24/2019
 ms.author: mikhegn
-ms.openlocfilehash: 358ebfa601ff8e4d2fb6ae91e51516cb0a933af7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 92f6f495f6aac23785dd2a21672747bffb07e2e3
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60716520"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256249"
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>使用 Service Fabric 總管視覺化叢集
 
@@ -29,10 +20,10 @@ Service Fabric Explorer (SFX) 是開放原始碼工具，可檢查及管理 Azur
 
 您可以使用下列連結將 Service Fabric Explorer 下載為桌面應用程式：
 
--  Windows
+- Windows
   - https://aka.ms/sfx-windows
 
--  Linux
+- Linux
   - https://aka.ms/sfx-linux-x86
   - https://aka.ms/sfx-linux-x64
 
@@ -46,7 +37,7 @@ Service Fabric Explorer (SFX) 是開放原始碼工具，可檢查及管理 Azur
 
 ### <a name="running-service-fabric-explorer-from-the-cluster"></a>從叢集執行 Service Fabric Explorer
 
-Service Fabric Explorer 也裝載於 Service Fabric 叢集的 HTTP 管理端點。 若要在 web 瀏覽器中啟動 SFX，瀏覽至叢集的 HTTP 管理端點從任何瀏覽器-例如 https:\//clusterFQDN:19080。
+Service Fabric Explorer 也裝載於 Service Fabric 叢集的 HTTP 管理端點。 若要在網頁瀏覽器中啟動 SFX，請從任何瀏覽器流覽至叢集的 HTTP 管理端點，例如 HTTPs： \/ /clusterFQDN：19080。
 
 針對開發人員工作站設定，您可以瀏覽至 https://localhost:19080/Explorer，在本機叢集上啟動 Service Fabric Explorer。 請參閱此文章以[準備您的開發環境](service-fabric-get-started.md)。
 
@@ -56,12 +47,12 @@ Service Fabric Explorer 也裝載於 Service Fabric 叢集的 HTTP 管理端點�
 >
 
 ## <a name="connect-to-a-service-fabric-cluster"></a>連線至 Service Fabric 叢集
-若要連線至 Service Fabric 叢集，您需要叢集管理端點 (FQDN/IP) 和 HTTP 管理端點連接埠 (預設為 19080)。 例如 https\:/ / mysfcluster.westus.cloudapp.azure.com:19080。 使用 [連線至 localhost] 核取方塊，連線至工作站上的本機叢集。
+若要連線至 Service Fabric 叢集，您需要叢集管理端點 (FQDN/IP) 和 HTTP 管理端點連接埠 (預設為 19080)。 例如 HTTPs \: //mysfcluster.westus.cloudapp.azure.com:19080。 使用 [連線至 localhost] 核取方塊，連線至工作站上的本機叢集。
 
 ### <a name="connect-to-a-secure-cluster"></a>連線到安全的叢集
 您可以為使用憑證或使用 Azure Active Directory (AAD) 來控制用戶端對您 Service Fabric 叢集的存取。
 
-如果您嘗試連線到安全叢集，則視叢集的設定而定，您將必須出示用戶端憑證或使用 AAD 來登入。
+如果您嘗試連線到安全的叢集，則視叢集的設定而定，您將需要出示用戶端憑證或使用 AAD 登入。
 
 ## <a name="understand-the-service-fabric-explorer-layout"></a>了解 Service Fabric 總管配置
 您可以使用左邊的樹狀目錄來瀏覽 Service Fabric 總管。 在樹狀目錄的根目錄，叢集儀表板會提供您叢集的概觀，包括應用程式和節點健康情況的摘要。
@@ -92,7 +83,7 @@ Service Fabric 叢集中的節點會橫跨容錯網域和升級網域的二維�
 ## <a name="actions"></a>動作
 「Service Fabric 總管」提供一個對您叢集內的節點、應用程式及服務快速叫用動作的方式。
 
-例如，若要刪除某個應用程式執行個體，請從左邊的樹狀目錄選擇該應用程式，然後選擇 [動作] > [刪除應用程式]。
+例如，若要刪除應用程式實例，請從左邊的樹狀目錄中選擇應用程式，然後選擇 [**動作**] [  >  **刪除應用程式**]。
 
 ![在 Service Fabric 總管中刪除應用程式][sfx-delete-application]
 
@@ -103,7 +94,7 @@ Service Fabric 叢集中的節點會橫跨容錯網域和升級網域的二維�
 >
 >
 
-您也可以使用 Service Fabric Explorer，為指定的應用程式類型和版本建立應用程式執行個體。 在樹狀檢視中選擇應用程式類型，然後在右邊窗格中按一下您想要的版本旁邊的 [建立應用程式執行個體]  連結。
+您也可以使用 Service Fabric Explorer，為指定的應用程式類型和版本建立應用程式執行個體。 在樹狀檢視中選擇應用程式類型，然後在右邊窗格中按一下您想要的版本旁邊的 [建立應用程式執行個體] **** 連結。
 
 ![在 Service Fabric Explorer 中建立應用程式執行個體][sfx-create-app-instance]
 
@@ -123,16 +114,36 @@ EventStore 是平台所提供的功能，可提供可在 Service Fabric Explorer
 >[!NOTE]
 >截至 Service Fabric 6.4 版為止， EventStore API 僅適用於在 Azure 上執行的 Windows 叢集。 我們正在將這個功能和我們的獨立叢集移植到 Linux。
 
+## <a name="image-store-viewer"></a>映射存放區檢視器
+映射存放區檢視器是使用原生映射存放區所提供的功能，可讓您查看映射存放區的目前內容，以及取得檔案和資料夾資訊，以及移除檔案/資料夾。
 
+![Service Fabric 總管叢集對應][sfx-imagestore]
+
+## <a name="backup-and-restore"></a>備份與還原
+Service Fabric Explorer 提供與[備份和還原](./service-fabric-reliable-services-backup-restore.md)互動的能力。 若要查看 SFX 中的備份和還原功能，必須啟用 [advanced] 模式。
+
+![啟用 advanced 模式][0]
+ 
+可能的作業如下：
+
+* 建立、編輯和刪除備份原則。
+* 啟用和停用應用程式、服務或分割區的備份。
+* 暫停和繼續應用程式、服務或分割區的備份。
+* 觸發和追蹤分割區的備份。
+* 觸發和追蹤分割區的還原。
+
+如需備份和還原服務的詳細資訊，請參閱[REST API 參考](/rest/api/servicefabric/sfclient-index-backuprestore)。
 ## <a name="next-steps"></a>後續步驟
-* [在 Visual Studio 中管理 Service Fabric 應用程式](service-fabric-manage-application-in-visual-studio.md)
+* [在 Visual Studio 中管理您的 Service Fabric 應用程式](service-fabric-manage-application-in-visual-studio.md)
 * [使用 PowerShell 部署 Service Fabric 應用程式](service-fabric-deploy-remove-applications.md)
 
 <!--Image references-->
-[sfx-cluster-dashboard]: ./media/service-fabric-visualizing-your-cluster/SfxClusterDashboard.png
-[sfx-cluster-map]: ./media/service-fabric-visualizing-your-cluster/SfxClusterMap.png
-[sfx-application-tree]: ./media/service-fabric-visualizing-your-cluster/SfxApplicationTree.png
-[sfx-service-essentials]: ./media/service-fabric-visualizing-your-cluster/SfxServiceEssentials.png
-[sfx-delete-application]: ./media/service-fabric-visualizing-your-cluster/SfxDeleteApplication.png
-[sfx-create-app-instance]: ./media/service-fabric-visualizing-your-cluster/SfxCreateAppInstance.png
+[sfx-cluster-dashboard]: ./media/service-fabric-visualizing-your-cluster/sfx-cluster-dashboard.png
+[sfx-cluster-map]: ./media/service-fabric-visualizing-your-cluster/sfx-cluster-map.png
+[sfx-application-tree]: ./media/service-fabric-visualizing-your-cluster/sfx-application-tree.png
+[sfx-service-essentials]: ./media/service-fabric-visualizing-your-cluster/sfx-service-essentials.png
+[sfx-delete-application]: ./media/service-fabric-visualizing-your-cluster/sfx-delete-application.png
+[sfx-create-app-instance]: ./media/service-fabric-visualizing-your-cluster/sfx-create-app-instance.png
 [sfx-eventstore]: ./media/service-fabric-diagnostics-eventstore/eventstore.png
+[sfx-imagestore]: ./media/service-fabric-visualizing-your-cluster/sfx-image-store.png
+[0]: ./media/service-fabric-backuprestoreservice/advanced-mode.png

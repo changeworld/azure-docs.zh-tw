@@ -1,49 +1,56 @@
 ---
-title: Azure HDInsight 中的托管标识
-description: 提供 Azure HDInsight 中托管标识的实现概述。
+title: Azure HDInsight 中的受控識別
+description: 提供 Azure HDInsight 中受控識別的執行總覽。
 author: hrasheed-msft
-ms.service: hdinsight
-ms.custom: hdinsightactive
-ms.topic: conceptual
-ms.date: 03/12/2019
 ms.author: hrasheed
-ms.openlocfilehash: 5012b669b7460a44cb2732d7db7bf76fd1f567cf
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.reviewer: jasonh
+ms.service: hdinsight
+ms.topic: conceptual
+ms.custom: hdinsightactive
+ms.date: 04/15/2020
+ms.openlocfilehash: 1081865a2e138af38ba171197719f08dedf6ffdb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64715755"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "81408930"
 ---
-# <a name="managed-identities-in-azure-hdinsight"></a>Azure HDInsight 中的托管标识
+# <a name="managed-identities-in-azure-hdinsight"></a>Azure HDInsight 中的受控識別
 
-托管标识是在 Azure Active Directory (Azure AD) 中注册的标识，其凭据由 Azure 管理。 使用托管标识，无需在 Azure AD 中注册服务主体，也无需维护证书等凭据。
+受控識別是在 Azure Active Directory （Azure AD）中註冊的身分識別，其認證是由 Azure 管理。 使用受控識別時，您不需要在 Azure AD 中註冊服務主體。 或維護認證，例如憑證。
 
-可以在 Azure HDInsight 中使用托管标识，使群集能够访问 Azure AD 域服务、访问 Azure Key Vault，或访问 Azure Data Lake Storage Gen2 中的文件。
+受控識別會在 Azure HDInsight 中用來存取 Azure AD 網域服務，或在需要時存取 Azure Data Lake Storage Gen2 中的檔案。
 
-有两种类型的托管标识：用户分配的托管标识和系统分配的托管标识。 Azure HDInsight 使用用户分配的托管标识。 用户分配的托管标识创建为独立的 Azure 资源，可将其分配到一个或多个 Azure 服务实例。 相比之下，系统分配的托管标识是在 Azure AD 中创建的，系统会自动在特定的 Azure 服务实例上直接启用它。 然后，系统分配的该托管标识的生存期将绑定到启用该托管标识的服务实例的生存期。
+受控識別有兩種類型：使用者指派和系統指派。 Azure HDInsight 僅支援使用者指派的受控識別。 HDInsight 不支援系統指派的受控識別。 使用者指派的受控識別會建立為獨立的 Azure 資源，您可以將其指派給一或多個 Azure 服務實例。 相反地，系統指派的受控識別會建立在 Azure AD 中，然後直接在特定 Azure 服務實例上啟用。 系統指派的受控識別的生命週期接著會系結至其啟用所在之服務實例的生命週期。
 
-## <a name="hdinsight-managed-identity-implementation"></a>HDInsight 托管标识的实现
+## <a name="hdinsight-managed-identity-implementation"></a>HDInsight 受控識別執行
 
-在 Azure HDInsight 中，托管标识是在群集的每个节点上预配的。 但是，这些标识组件只可由 HDInsight 服务使用。 目前没有任何支持的方法可用于通过 HDInsight 群集节点上安装的托管标识生成访问令牌。 对于某些 Azure 服务，托管标识是使用某个终结点实现的。使用该终结点，可以自行获取用来与其他 Azure 服务交互的访问令牌。
+在 Azure HDInsight 中，受管理的身分識別會布建在叢集的每個節點上。 不過，這些身分識別元件僅供 HDInsight 服務使用。 目前沒有任何支援的方法可使用安裝在 HDInsight 叢集節點上的受控識別來產生存取權杖。 針對某些 Azure 服務，受控識別會使用可供您用來取得存取權杖的端點來執行。 使用權杖與您自己的其他 Azure 服務互動。
 
-## <a name="create-a-managed-identity"></a>建立受控身分識別
+## <a name="create-a-managed-identity"></a>建立受控識別
 
-可以使用下列方法之一來建立受控身分識別：
+您可以使用下列任何方法來建立受控識別：
 
-* [Azure 门户](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)
+* [Azure 入口網站](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)
 * [Azure PowerShell](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)
 * [Azure Resource Manager](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-arm.md)
 * [Azure CLI](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)
 
-托管标识的剩余配置步骤取决于使用该托管标识的方案。
+設定受控識別的其餘步驟取決於將使用它的案例。
 
-## <a name="managed-identity-scenarios-in-azure-hdinsight"></a>Azure HDInsight 中的托管标识方案
+## <a name="managed-identity-scenarios-in-azure-hdinsight"></a>Azure HDInsight 中的受控識別案例
 
-Azure HDInsight 中的多种方案都会使用托管标识。 有关详细的设置和配置说明，请参阅相关文档：
+受控識別會在多個案例的 Azure HDInsight 中使用。 如需詳細的安裝和設定指示，請參閱相關檔：
 
-* [Azure Data Lake Storage Gen2](hdinsight-hadoop-use-data-lake-storage-gen2.md#create-a-user-managed-identity)
+* [Azure Data Lake Storage Gen2](hdinsight-hadoop-use-data-lake-storage-gen2.md#create-a-user-assigned-managed-identity) \(部分機器翻譯\)
 * [企業安全性套件](domain-joined/apache-domain-joined-configure-using-azure-adds.md#create-and-authorize-a-managed-identity)
-* [Kafka 攜帶您自己的金鑰 (BYOK)](kafka/apache-kafka-byok.md#get-started-with-byok)
+* [客戶管理的金鑰磁碟加密](disk-encryption.md)
+
+## <a name="faq"></a>常見問題集
+
+### <a name="what-happens-if-i-delete-the-managed-identity-after-the-cluster-creation"></a>如果我在叢集建立之後刪除受控識別，會發生什麼事？
+
+當需要受控識別時，您的叢集會遇到問題。 在建立叢集之後，目前沒有任何方法可更新或變更受控識別。 因此我們的建議是要確保在叢集執行時間期間不會刪除受控識別。 或者，您可以重新建立叢集並指派新的受控識別。
 
 ## <a name="next-steps"></a>後續步驟
 

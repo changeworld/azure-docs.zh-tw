@@ -1,31 +1,31 @@
 ---
-title: 使用 Azure 彈性資料庫作業清除 SSISDB 記錄 | Microsoft Docs
+title: 使用 Azure 彈性資料庫作業清除 SSISDB 記錄
 description: 本文將說明如何使用 Azure 彈性資料庫作業來觸發用於清除 SSISDB 記錄的預存程序，進而清除 SSISDB 記錄
 services: data-factory
-documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/13/2018
+ms.date: 07/09/2020
 author: swinarko
 ms.author: sawinark
+manager: mflasko
 ms.reviewer: douglasl
-manager: craigg
-ms.openlocfilehash: 1afc40bd601c06def57ae59797d31a5edf4095bd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c7a4a1a839282618e9723e5fc916770a789fc32b
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61345539"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187606"
 ---
 # <a name="clean-up-ssisdb-logs-with-azure-elastic-database-jobs"></a>使用 Azure 彈性資料庫作業清除 SSISDB 記錄
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 本文將說明如何使用 Azure 彈性資料庫作業來觸發預存程序，以清除 SQL Server Integration Services 目錄資料庫 (`SSISDB`) 的記錄。
 
 彈性資料庫作業是一項 Azure 服務，可讓您輕鬆地對一個資料庫或一組資料庫設定自動化作業或執行作業。 您可以使用 Azure 入口網站、Transact-SQL、PowerShell 或 REST API 來排程、執行和監視這些作業。 使用彈性資料庫作業來觸發一次清除記錄或依排程清除記錄的預存程序。 您可以根據 SSISDB 資源使用量選擇排程間隔，以避免資料庫負載過重。
 
-如需詳細資訊，請參閱[使用彈性資料庫作業管理資料庫群組](../sql-database/elastic-jobs-overview.md)。
+如需詳細資訊，請參閱[使用彈性資料庫作業管理資料庫群組](../azure-sql/database/elastic-jobs-overview.md)。
 
 下列各節將說明如何觸發預存程序 `[internal].[cleanup_server_retention_window_exclusive]`，以將保留週期 (由系統管理員設定) 以外的 SSISDB 記錄移除。
 
@@ -33,7 +33,7 @@ ms.locfileid: "61345539"
 
 [!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
 
-下列 PowerShell 指令碼範例會建立新的彈性作業來觸發清除 SSISDB 記錄的預存程序。 如需詳細資訊，請參閱[使用 PowerShell 建立彈性作業代理程式](../sql-database/elastic-jobs-powershell.md)。
+下列 PowerShell 指令碼範例會建立新的彈性作業來觸發清除 SSISDB 記錄的預存程序。 如需詳細資訊，請參閱[使用 PowerShell 建立彈性作業代理程式](../azure-sql/database/elastic-jobs-powershell-create.md)。
 
 ### <a name="create-parameters"></a>建立參數
 
@@ -41,7 +41,7 @@ ms.locfileid: "61345539"
 # Parameters needed to create the Job Database
 param(
 $ResourceGroupName = $(Read-Host "Please enter an existing resource group name"),
-$AgentServerName = $(Read-Host "Please enter the name of an existing Azure SQL server(for example, yhxserver) to hold the SSISDBLogCleanup job database"),
+$AgentServerName = $(Read-Host "Please enter the name of an existing logical SQL server(for example, yhxserver) to hold the SSISDBLogCleanup job database"),
 $SSISDBLogCleanupJobDB = $(Read-Host "Please enter a name for the Job Database to be created in the given SQL Server"),
 # The Job Database should be a clean,empty,S0 or higher service tier. We set S0 as default.
 $PricingTier = "S0",
@@ -52,7 +52,7 @@ $SSISDBLogCleanupAgentName = $(Read-Host "Please enter a name for your new Elast
 # Parameters needed to create the job credential in the Job Database to connect to SSISDB
 $PasswordForSSISDBCleanupUser = $(Read-Host "Please provide a new password for SSISDBLogCleanup job user to connect to SSISDB database for log cleanup"),
 # Parameters needed to create a login and a user in the SSISDB of the target server
-$SSISDBServerEndpoint = $(Read-Host "Please enter the name of the target Azure SQL server which contains SSISDB you need to cleanup, for example, myserver") + '.database.windows.net',
+$SSISDBServerEndpoint = $(Read-Host "Please enter the name of the target logical SQL server which contains SSISDB you need to cleanup, for example, myserver") + '.database.windows.net',
 $SSISDBServerAdminUserName = $(Read-Host "Please enter the target server admin username for SQL authentication"),
 $SSISDBServerAdminPassword = $(Read-Host "Please enter the target server admin password for SQL authentication"),
 $SSISDBName = "SSISDB",
@@ -191,7 +191,7 @@ $Job | Set-AzureRmSqlElasticJob -IntervalType $IntervalType -IntervalCount $Inte
     SELECT * FROM jobs.target_groups WHERE target_group_name = 'SSISDBTargetGroup';
     SELECT * FROM jobs.target_group_members WHERE target_group_name = 'SSISDBTargetGroup';
     ```
-4. 針對 SSISDB 資料庫授與適當的權限。 SSISDB 目錄必須具有適當的權限，才能讓預存程序順利地執行 SSISDB 記錄清除作業。 如需詳細指引，請參閱[管理登入](../sql-database/sql-database-manage-logins.md)。
+4. 針對 SSISDB 資料庫授與適當的權限。 SSISDB 目錄必須具有適當的權限，才能讓預存程序順利地執行 SSISDB 記錄清除作業。 如需詳細指引，請參閱[管理登入](../azure-sql/database/logins-create-manage.md)。
 
     ```sql
     -- Connect to the master database in the target server including SSISDB 

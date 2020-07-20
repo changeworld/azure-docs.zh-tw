@@ -1,36 +1,29 @@
 ---
-title: 在 Azure 擴展集範本中參考現有的虛擬網路 | Microsoft Docs
+title: 在 Azure 擴展集範本中參考現有的虛擬網路
 description: 了解如何將虛擬網路新增到現有的「Azure 虛擬機器擴展集」範本
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: mayanknayar
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
+author: ju-shim
+ms.author: jushiman
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.subservice: networking
 ms.date: 04/26/2019
-ms.author: manayar
-ms.openlocfilehash: 8b75b9898eb767866c0843594a82570cfb65d122
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
-ms.translationtype: MT
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: fab6e6742fa43e1e38ee661b67896ae4aa11b3ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64868960"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "83124817"
 ---
 # <a name="add-reference-to-an-existing-virtual-network-in-an-azure-scale-set-template"></a>在 Azure 擴展集範本中新增對現有虛擬網路的參考
 
-這篇文章說明如何修改[基本的擴展集範本](virtual-machine-scale-sets-mvss-start.md)部署到現有的虛擬網路，而不是建立一個新。
+本文說明如何修改[基本擴展集範本](virtual-machine-scale-sets-mvss-start.md)，以部署到現有的虛擬網路，而不是建立新的。
 
 ## <a name="change-the-template-definition"></a>變更範本定義
 
-在 [前一篇文章](virtual-machine-scale-sets-mvss-start.md)我們建立基本的擴展集範本。 我們現在會使用較早的範本，並修改它來建立範本來部署擴展集到現有的虛擬網路。 
+在[上一篇文章中](virtual-machine-scale-sets-mvss-start.md)，我們建立了基本的擴展集範本。 我們現在會使用先前的範本並加以修改，以建立將擴展集部署至現有虛擬網路的範本。 
 
-首先，新增 `subnetId` 參數。 這個字串會傳遞至擴展集組態，讓擴展集可識別要將虛擬機器部署到的預建子網路。 這個字串必須是格式的： `/subscriptions/<subscription-id>resourceGroups/<resource-group-name>/providers/Microsoft.Network/virtualNetworks/<virtual-network-name>/subnets/<subnet-name>`
+首先，新增 `subnetId` 參數。 這個字串會傳遞至擴展集組態，讓擴展集可識別要將虛擬機器部署到的預建子網路。 這個字串的格式必須是：`/subscriptions/<subscription-id>resourceGroups/<resource-group-name>/providers/Microsoft.Network/virtualNetworks/<virtual-network-name>/subnets/<subnet-name>`
 
 例如，若要將擴展集部署到名稱為 `myvnet`、子網路為 `mysubnet`、資源群組為 `myrg` 和訂用帳戶為 `00000000-0000-0000-0000-000000000000` 的現有虛擬網路，subnetId 會是：`/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myrg/providers/Microsoft.Network/virtualNetworks/myvnet/subnets/mysubnet`。
 
@@ -89,7 +82,7 @@ ms.locfileid: "64868960"
          "capacity": 2
 ```
 
-最後，傳入`subnetId`使用者所設定的參數 (而不是使用`resourceId`若要取得相同部署中的 vnet 識別碼，這是基本的可行擴展集範本的作法)。
+最後，傳入使用者所 `subnetId` 設定的參數（而不是使用 `resourceId` 來取得相同部署中的 vnet 識別碼，也就是基本可行擴展集範本的用途）。
 
 ```diff
                        "name": "myIpConfig",

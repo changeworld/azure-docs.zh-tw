@@ -1,24 +1,26 @@
 ---
-title: 複製資料工具 - Azure Data Factory | Microsoft Docs
+title: Azure Data Factory 中的複製資料工具
 description: 提供有關 Azure Data Factory UI 中複製資料工具的資訊
 services: data-factory
 documentationcenter: ''
 author: dearandyxu
-manager: craigg
+manager: anandsub
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 06/18/2018
+ms.date: 06/17/2020
 ms.author: yexu
-ms.openlocfilehash: 107687c785433f81870449d1445136b5148a4d2c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a10f7c3dda4d16a264cf52f9fddcf2bf0ed93348
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60787646"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84907497"
 ---
 # <a name="copy-data-tool-in-azure-data-factory"></a>Azure Data Factory 中的複製資料工具
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 Azure Data Factory「複製資料」工具把將資料內嵌到 Data Lake 的程序 (通常是端對端資料整合案例中的第一步) 簡化並最佳化。  它可節省時間，尤其是當您第一次使用 Azure Data Factory 從資料來源內嵌資料的時候。 使用此工具的一些優點包括：
 
 - 使用 Azure Data Factory「複製資料」工具時，您不需要了解已連結的服務、資料集、管線、活動及觸發程序的 Data Factory 定義。 
@@ -35,7 +37,7 @@ Azure Data Factory「複製資料」工具把將資料內嵌到 Data Lake 的程
 
 若要啟動「複製資料」工具，請按一下您資料處理站首頁上的 [複製資料] 圖格。
 
-![開始使用頁面 -「複製資料」工具連結](./media/copy-data-tool/get-started-page.png)
+![開始使用頁面 -「複製資料」工具連結](./media/doc-common-process/get-started-page.png)
 
 
 ## <a name="intuitive-flow-for-loading-data-into-a-data-lake"></a>將資料載入至 Data Lake 的直覺式流程
@@ -78,7 +80,7 @@ Azure Data Factory「複製資料」工具把將資料內嵌到 Data Lake 的程
 ![篩選資料庫中的資料](./media/copy-data-tool/filter-data-in-database.png)
 
 ### <a name="filter-data-in-an-azure-blob-folder"></a>篩選 Azure Blob 資料夾中的資料
-您可以在資料夾路徑中使用變數，以從資料夾中複製資料。 支援的變數包括︰**{year}****{month}****{day}****{hour}** 及 **{minute}**。 例如︰inputfolder/{year}/{month}/{day}。 
+您可以在資料夾路徑中使用變數，以從資料夾中複製資料。 支援的變數包括︰ **{year}** **{month}** **{day}** **{hour}** 及 **{minute}** 。 例如︰inputfolder/{year}/{month}/{day}。 
 
 假設您的輸入資料夾格式如下︰ 
 
@@ -91,11 +93,11 @@ Azure Data Factory「複製資料」工具把將資料內嵌到 Data Lake 的程
 
 按一下 [檔案或資料夾] 的 [瀏覽] 按鈕、瀏覽至其中一個資料夾 (例如 2016->03->01->02)，然後按一下 [選擇]。 您應該會在文字方塊中看到 2016/03/01/02。 
 
-接著，將 **2016** 取代為 **{year}**、**03** 取代為 **{month}**、**01** 取代為 **{day}**，以及 **02** 取代為 **{hour}**，然後按 **Tab** 鍵。 您應該會看到選取這四個變數之格式的下拉式清單︰
+接著，將 **2016** 取代為 **{year}** 、**03** 取代為 **{month}** 、**01** 取代為 **{day}** ，以及 **02** 取代為 **{hour}** ，然後按 **Tab** 鍵。 您應該會看到選取這四個變數之格式的下拉式清單︰
 
 ![篩選檔案或資料夾](./media/copy-data-tool/filter-file-or-folder.png)
 
-「複製資料」工具會在建立管線時，產生含有運算式、函式及可用來代表 {year}、{month}、{day}、{hour} 及 {minute} 之系統變數的參數。 如需詳細資訊，請參閱[如何讀取或寫入分割的資料](how-to-read-write-partitioned-data.md)一文。
+「複製資料」工具會在建立管線時，產生含有運算式、函式及可用來代表 {year}、{month}、{day}、{hour} 及 {minute} 之系統變數的參數。
 
 ## <a name="scheduling-options"></a>排程選項
 您可以執行複製作業一次，或按照排程 (每小時、每日等) 執行。 這些選項可用於各個不同環境的連接器，包括內部部署、雲端及本機桌面。 

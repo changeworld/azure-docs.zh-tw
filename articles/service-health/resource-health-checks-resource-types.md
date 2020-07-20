@@ -1,17 +1,13 @@
 ---
 title: 透過 Azure 資源健康狀態支援的資源類型 | Microsoft Docs
 description: 透過 Azure 資源健康狀態支援的資源類型
-author: stephbaron
-ms.author: stbaron
 ms.topic: conceptual
-ms.service: service-health
 ms.date: 01/29/2019
-ms.openlocfilehash: 0f79a1eed044814d6c2e27f4eadb5ba68a47303f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 38c7e0754649d650521cc510bcac326496bcec38
+ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60622278"
+ms.lasthandoff: 05/24/2020
+ms.locfileid: "83816093"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Azure 資源健康狀態中的資源類型和健康情況檢查
 以下是依資源類型透過資源健康狀態執行之所有檢查的完整清單。
@@ -26,7 +22,12 @@ ms.locfileid: "60622278"
 |---|
 |<ul><li>Api 管理服務是否已啟動並執行？</li></ul>|
 
-## <a name="microsoftcacheredisredis"></a>Microsoft.CacheRedis/Redis
+## <a name="microsoftbatchbatchaccounts"></a>Microsoft.Batch/batchAccounts
+|執行的檢查|
+|---|
+|<ul><li>Batch 帳戶是否已啟動且正在執行？</li><li>是否已超過此 Batch 帳戶的集區配額？</li></ul>|
+
+## <a name="microsoftcacheredis"></a>Microsoft.Cache/Redis
 |執行的檢查|
 |---|
 |<ul><li>所有快取節點是否已啟動且執行中？</li><li>可以從資料中心內觸達快取嗎？</li><li>快取是否已觸達連線數目上限？</li><li> 快取是否已用盡其可用的記憶體？ </li><li>快取是否發生大量頁面錯誤？</li><li>快取是否負載過重？</li></ul>|
@@ -39,27 +40,32 @@ ms.locfileid: "60622278"
 ## <a name="microsoftclassiccomputevirtualmachines"></a>Microsoft.classiccompute/virtualmachines
 |執行的檢查|
 |---|
-|<ul><li>主機伺服器是否已啟動且執行中？</li><li>主機 OS 是否已開機完成？</li><li>虛擬機器容器是否已佈建和啟動？</li><li>主機和儲存體帳戶之間是否有網路連線能力？</li><li>客體 OS 是否已完成開機？</li><li>是否有持續性的規劃維護？</li></ul>|
+|<ul><li>主機伺服器是否已啟動且執行中？</li><li>主機 OS 是否已開機完成？</li><li>虛擬機器容器是否已佈建和啟動？</li><li>主機和儲存體帳戶之間是否有網路連線能力？</li><li>客體 OS 是否已完成開機？</li><li>是否有持續性的規劃維護？</li><li>主機硬體的效能是否降低且預期即將失敗？</li></ul>|
 
 ## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft.cognitiveservices/accounts
 |執行的檢查|
 |---|
 |<ul><li>可以從資料中心內觸達帳戶嗎？</li><li>是否有可用的認知服務資源提供者？</li><li>適當區域中是否有可用的辨識服務？</li><li>可以在保存資源中繼資料的儲存體帳戶上執行讀取作業嗎？</li><li>是否已觸達 API 呼叫配額？</li><li>是否已觸達 API 呼叫讀取上限？</li></ul>|
 
+## <a name="microsoftcomputehostgroupshosts"></a>Microsoft.compute/hostgroups/hosts
+|執行的檢查|
+|---|
+|<ul><li>主機是否已啟動且正在執行</li><li>主機硬體的效能是否降低？</li><li>主機是否已解除配置？</li><li>主機硬體服務是否已修復到其他硬體？</li></ul>|
+
 ## <a name="microsoftcomputevirtualmachines"></a>Microsoft.compute/virtualmachines
 |執行的檢查|
 |---|
-|<ul><li>裝載此虛擬機器的伺服器是否已啟動且執行中？</li><li>主機 OS 是否已開機完成？</li><li>虛擬機器容器是否已佈建和啟動？</li><li>主機和儲存體帳戶之間是否有網路連線能力？</li><li>客體 OS 是否已完成開機？</li><li>是否有持續性的規劃維護？</li></ul>|
+|<ul><li>裝載此虛擬機器的伺服器是否已啟動且執行中？</li><li>主機 OS 是否已開機完成？</li><li>虛擬機器容器是否已佈建和啟動？</li><li>主機和儲存體帳戶之間是否有網路連線能力？</li><li>客體 OS 是否已完成開機？</li><li>是否有持續性的規劃維護？</li><li>主機硬體的效能是否降低且預期即將失敗？</li></ul>|
 
 ## <a name="microsoftdatafactoryfactories"></a>Microsoft.datafactory/factories
 |執行的檢查|
 |---|
-|<ul><li>是否已經執行的管線失敗？</li><li>在叢集主控狀況良好的 Data Factory？</li></ul>|
+|<ul><li>是否有管線執行失敗？</li><li>裝載 Data Factory 的叢集是否良好？</li></ul>|
 
 ## <a name="microsoftdatalakeanalyticsaccounts"></a>Microsoft.datalakeanalytics/accounts
 |執行的檢查|
 |---|
-|<ul><li>使用者在提交或列出其 Data Lake Analytics 作業時是否遇到問題？</li><li>是 Data Lake Analytics 作業無法完成，因為系統錯誤？</li></ul>|
+|<ul><li>使用者在提交或列出其 Data Lake Analytics 作業時是否遇到問題？</li><li>Data Lake Analytics 作業是否因為系統錯誤而無法完成？</li></ul>|
 
 
 ## <a name="microsoftdatalakestoreaccounts"></a>Microsoft.datalakestore/accounts
@@ -70,22 +76,27 @@ ms.locfileid: "60622278"
 ## <a name="microsoftdatamigrationservices"></a>Microsoft.datamigration/services
 |執行的檢查|
 |---|
-|<ul><li>資料庫移轉服務來佈建失敗？</li><li>資料庫移轉服務停止因非使用狀態或使用者的要求？</li></ul>|
+|<ul><li>資料庫移轉服務是否無法佈建？</li><li>資料庫移轉服務是否因為沒有動作或使用者要求而停止？</li></ul>|
+
+## <a name="microsoftdatashareaccounts"></a>Microsoft.DataShare/accounts
+|執行的檢查|
+|---|
+|<ul><li>Data Share 帳戶是否已啟動且正在執行？</li><li>裝載 Data Share 的叢集是否良好？</li></ul>|
 
 ## <a name="microsoftdbformariadbservers"></a>Microsoft.DBforMariaDB/servers
 |執行的檢查|
 |---|
-|<ul><li>是伺服器因維修而無法使用？</li><li>是因為重新設定而無法使用的伺服器嗎？</li></ul>|
+|<ul><li>伺服器是否因為維護而無法使用？</li><li>伺服器是否因為重新設定而無法使用？</li></ul>|
 
 ## <a name="microsoftdbformysqlservers"></a>Microsoft.DBforMySQL/servers
 |執行的檢查|
 |---|
-|<ul><li>是伺服器因維修而無法使用？</li><li>是因為重新設定而無法使用的伺服器嗎？</li></ul>|
+|<ul><li>伺服器是否因為維護而無法使用？</li><li>伺服器是否因為重新設定而無法使用？</li></ul>|
 
 ## <a name="microsoftdbforpostgresqlservers"></a>Microsoft.DBforPostgreSQL/servers
 |執行的檢查|
 |---|
-|<ul><li>是伺服器因維修而無法使用？</li><li>是因為重新設定而無法使用的伺服器嗎？</li></ul>|
+|<ul><li>伺服器是否因為維護而無法使用？</li><li>伺服器是否因為重新設定而無法使用？</li></ul>|
 
 ## <a name="microsoftdevicesiothubs"></a>Microsoft.devices/iothubs
 |執行的檢查|
@@ -100,37 +111,52 @@ ms.locfileid: "60622278"
 ## <a name="microsofteventhubnamespaces"></a>Microsoft.eventhub/namespaces
 |執行的檢查|
 |---|
-|<ul><li>事件中樞命名空間發生使用者產生的錯誤？</li><li>事件中樞命名空間目前正在升級嗎？</li></ul>|
+|<ul><li>事件中樞命名空間是否遇到使用者產生的錯誤？</li><li>事件中樞命名空間目前是否正在升級？</li></ul>|
 
 ## <a name="microsofthdinsightclusters"></a>Microsoft.hdinsight/clusters
 |執行的檢查|
 |---|
-|<ul><li>是核心服務在 HDInsight 叢集上使用嗎？</li><li>HDInsight 叢集可以存取 BYOK 待用的金鑰嗎？</li></ul>|
+|<ul><li>HDInsight 叢集上是否有可用的核心服務？</li><li>HDInsight 叢集是否可存取待用 BYOK 加密的金鑰？</li></ul>|
 
 ## <a name="microsoftkeyvaultvaults"></a>Microsoft.KeyVault/vaults
 |執行的檢查|
 |---|
 |<ul><li>對金鑰保存庫執行的要求是否因為 Azure KeyVault 平台問題而失敗？</li><li>對金鑰保存庫執行的要求是否因為客戶發出太多要求而遭到節流？</li></ul>|
 
+## <a name="microsoftmachinelearningwebservices"></a>Microsoft.MachineLearning/webServices
+|執行的檢查|
+|---|
+|<ul><li>Web 服務是否已啟動且正在執行？</li></ul>|
+
+## <a name="microsoftmediamediaservices"></a>Microsoft.Media/mediaservices
+|執行的檢查|
+|---|
+|<ul><li>媒體服務是否已啟動且正在執行？</li></ul>|
+
 ## <a name="microsoftnetworkapplicationgateways"></a>Microsoft.network/applicationgateways
 |執行的檢查|
 |---|
-|<ul><li>是效能降低的應用程式閘道？</li><li>應用程式閘道是否可用？</li></ul>|
+|<ul><li>應用程式閘道的效能是否降低？</li><li>應用程式閘道是否可用？</li></ul>|
 
 ## <a name="microsoftnetworkconnections"></a>Microsoft.network/connections
 |執行的檢查|
 |---|
 |<ul><li>VPN 通道是否已連線？</li><li>連線中有設定衝突嗎？</li><li>是否正確設定預先共用的金鑰？</li><li>是否可連線到 VPN 內部部署裝置？</li><li>IPSec/IKE 安全性原則中是否有不相符之處？</li><li>S2S VPN 連線是否正確佈建，還是處於失敗狀態？</li><li>VNET 對 VNET 連線是否正確佈建，還是處於失敗狀態？</li></ul>|
 
-## <a name="microsoftnetworkexpressreoutecircuits"></a>Microsoft.network/expressreoutecircuits
+## <a name="microsoftnetworkexpressroutecircuits"></a>Microsoft.network/expressroutecircuits
 |執行的檢查|
 |---|
-|<ul><li>狀況良好的 ExpressRoute 線路嗎？</li></ul>|
+|<ul><li>ExpressRoute 線路是否良好？</li></ul>|
 
 ## <a name="microsoftnetworkfrontdoors"></a>Microsoft.network/frontdoors
 |執行的檢查|
 |---|
-|<ul><li>為前端的後端回應發生錯誤健康狀態探查？</li><li>延遲組態變更嗎？</li></ul>|
+|<ul><li>Front Door 後端是否向健康狀態探查回報了錯誤？</li><li>設定變更是否有延遲？</li></ul>|
+
+## <a name="microsoftnetworkloadbalancers"></a>Microsoft.network/LoadBalancers
+|執行的檢查|
+|---|
+|<ul><li>負載平衡端點是否可用？</li></ul>|
 
 ## <a name="microsoftnetworkvirtualnetworkgateways"></a>Microsoft.network/virtualNetworkGateways
 |執行的檢查|
@@ -145,7 +171,7 @@ ms.locfileid: "60622278"
 ## <a name="microsoftoperationalinsightsworkspaces"></a>Microsoft.operationalinsights/workspaces
 |執行的檢查|
 |---|
-|<ul><li>是否有工作區的延遲編製索引？</li></ul>|
+|<ul><li>工作區是否有索引延遲？</li></ul>|
 
 ## <a name="microsoftpowerbidedicatedcapacities"></a>Microsoft.PowerBIDedicated/Capacities
 |執行的檢查|
@@ -155,7 +181,7 @@ ms.locfileid: "60622278"
 ## <a name="microsoftpowerbiworkspacecollections"></a>Microsoft.PowerBI/workspaceCollections
 |執行的檢查|
 |---|
-|<ul><li>主機作業系統是否已啟動且執行中？</li><li>是否可從資料中心外部觸達 workspaceCollection？</li><li>是 Power BI 資源提供者可用？</li><li>在適當的區域是 Power BI 服務？</li></ul>|
+|<ul><li>主機作業系統是否已啟動且執行中？</li><li>是否可從資料中心外部觸達 workspaceCollection？</li><li>Power BI 資源提供者是否可用？</li><li>適當區域中是否有可用的 Power BI 服務？</li></ul>|
 
 ## <a name="microsoftsearchsearchservices"></a>Microsoft.search/searchServices
 |執行的檢查|
@@ -167,10 +193,20 @@ ms.locfileid: "60622278"
 |---|
 |<ul><li>客戶是否遇到使用者產生的服務匯流排錯誤？</li><li>使用者是否遇到服務匯流排命名空間升級以致暫時性錯誤增加？</li></ul>|
 
-## <a name="microsoftsqlserverdatabase"></a>Microsoft.SQL/Server/database
+## <a name="microsoftservicefabricclusters"></a>Microsoft.ServiceFabric/clusters
 |執行的檢查|
 |---|
-|<ul><li> 是否已經登入資料庫？</li></ul>|
+|<ul><li>Service Fabric 叢集是否已啟動且正在執行？</li><li>是否可透過 Azure Resource Manager 管理 Service Fabric 叢集？</li></ul>|
+
+## <a name="microsoftsqlmanagedinstancesdatabases"></a>Microsoft.SQL/managedInstances/databases
+|執行的檢查|
+|---|
+|<ul><li>資料庫是否已啟動且正在執行？</li></ul>|
+
+## <a name="microsoftsqlserversdatabases"></a>Microsoft.SQL/servers/databases
+|執行的檢查|
+|---|
+|<ul><li>是否已經登入資料庫？</li></ul>|
 
 ## <a name="microsoftstoragestorageaccounts"></a>Microsoft.Storage/storageAccounts
 |執行的檢查|
@@ -192,7 +228,7 @@ ms.locfileid: "60622278"
 |---|
 |<ul><li>主機伺服器是否已啟動且執行中？</li><li>網際網路資訊服務是否執行中？</li><li>負載平衡器是否執行中？</li><li>可以從資料中心內觸達 Web 應用程式嗎？</li><li>裝載網站內容的儲存體帳戶是否可用？</li></ul>|
 
-# <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>後續步驟
 -  請參閱 [Azure 服務健康狀態儀表板的簡介](service-health-overview.md)和 [Azure 資源健康狀態的簡介](resource-health-overview.md)來了解更多相關資訊。 
 -  [關於 Azure 資源健康狀態的常見問題集](resource-health-faq.md)
 - 設定警示，如此就能收到健康情況問題的通知。 如需詳細資訊，請參閱[設定適用於服務健康情況事件的警示](../azure-monitor/platform/alerts-activity-log-service-notifications.md)。 

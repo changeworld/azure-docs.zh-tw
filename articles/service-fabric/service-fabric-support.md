@@ -1,25 +1,16 @@
 ---
-title: 了解 Azure Service Fabric 支援選項 | Microsoft Docs
+title: 了解 Azure Service Fabric 支援選項
 description: 支援的 Azure Service Fabric 叢集版本和檔案支援票證連結
-services: service-fabric
-documentationcenter: .net
 author: pkcsf
-manager: jpconnock
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: troubleshooting
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 8/24/2018
 ms.author: pkc
-ms.openlocfilehash: a931de8be07d41cf4daab63aa7691973ee158452
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ae49a59c2629d9f9461d298ada555d314c0c9f22
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60545056"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256963"
 ---
 # <a name="azure-service-fabric-support-options"></a>Azure Service Fabric 支援選項
 
@@ -35,15 +26,15 @@ ms.locfileid: "60545056"
 - [Microsoft 頂級支援](https://support.microsoft.com/en-us/premier)。
 
 > [!Note]
-> 青銅可靠性層級上執行的叢集可讓您執行只測試工作負載。 如果您使用銅牌可靠性上執行的叢集時遇到問題，Microsoft 支援小組將協助您減輕此問題，，但不是會執行根本原因分析。 請參閱[叢集的可靠性特性](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-reliability-characteristics-of-the-cluster)如需詳細資訊。
+> 在銅級可靠性層上執行的叢集或單一節點叢集僅供執行測試工作負載。 如果使用在銅級可靠性上執行的叢集或單一節點叢集時遇到問題，Microsoft 支援小組會協助減輕問題，但不會執行根本原因分析。 如需詳細資訊，請參閱[叢集的可靠性特性](./service-fabric-cluster-capacity.md#reliability-characteristics-of-the-cluster) (機器翻譯)。
 >
-> 如需有關什麼是必要的可進行生產叢集的詳細資訊，請參閱[生產環境的整備檢查清單](https://docs.microsoft.com/azure/service-fabric/service-fabric-production-readiness-checklist)。
+> 如需生產環境就緒叢集必要條件的詳細資訊，請參閱[生產整備檢查清單](./service-fabric-production-readiness-checklist.md) (機器翻譯)。
 
 <a id="getlivesitesupportonprem"></a>
 
 ## <a name="report-production-issues-or-request-paid-support-for-standalone-service-fabric-clusters"></a>報告實際執行問題，或要求獨立 Service Fabric 叢集的付費支援
 
-對於報告內部部署或其他雲端上部署之 Service Fabric 叢集的問題，在 [Microsoft 支援入口網站](https://support.microsoft.com/oas/default.aspx?prid=16146)上建立專業支援票證。
+對於報告內部部署或其他雲端上部署之 Service Fabric 叢集的問題，在 [Microsoft 支援入口網站](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)上建立專業支援票證。
 
 深入了解：
 
@@ -64,20 +55,21 @@ ms.locfileid: "60545056"
 
 ### <a name="azure-feedback-forum"></a>Azure 意見反應論壇
 
-[Service Fabric 的 Azure 意見反應論壇][uservoice-forum]是您用來提交對於產品的大功能構想的最佳位置，因為檢閱最受歡迎的要求是我們中程至長程規劃的一部分。 我們希望您在社群中集結您的建議的支援。
+[Service Fabric 的 Azure 意見反應論壇][uservoice-forum]是用來提交對於產品的大功能構想的最佳位置，因為檢閱最受歡迎要求是中程至長程規劃的一部分。 我們希望您在社群中集結您的建議的支援。
 
 ## <a name="service-fabric-preview-versions---unsupported-for-production-use"></a>Service Fabric 預覽版本 - 不支援用於生產環境
 
-我们会不时发布包含重要功能的版本，希望用户对这些功能提供反馈，这些版本将作为预览版发布。 這些預覽版本只能用於測試目的。 您的生產叢集應一律執行支援的穩定 Service Fabric 版本。 預覽版本一律從 255 作為主要和次要版本號碼的開頭。 例如，如果您看到 Service Fabric 版本 255.255.5703.949，該發行版本只能使用於測試叢集並處於預覽狀態。 這些預覽版本也會在 [Service Fabric 小組部落格](https://blogs.msdn.microsoft.com/azureservicefabric)上宣告，並且有內含功能的詳細資料。
-這些預覽版本沒有付費的支援選項。 使用[報告 Azure Service Fabric 問題](https://docs.microsoft.com/azure/service-fabric/service-fabric-support#report-azure-service-fabric-issues)底下所列的其中一個選項來提出問題或提供意見反應。
+有時候，我們會以預覽形式發行包含我們想得到意見反應之重要功能的版本。 這些預覽版本只能用於測試目的。 您的生產叢集應一律執行支援的穩定 Service Fabric 版本。 預覽版本一律從 255 作為主要和次要版本號碼的開頭。 例如，如果您看到 Service Fabric 版本 255.255.5703.949，該發行版本只能使用於測試叢集並處於預覽狀態。 這些預覽版本也會在 [Service Fabric 小組部落格](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric)上宣告，並且有內含功能的詳細資料。
+這些預覽版本沒有付費的支援選項。 使用[報告 Azure Service Fabric 問題](#report-azure-service-fabric-issues)底下所列的其中一個選項來提出問題或提供意見反應。
 
 ## <a name="next-steps"></a>後續步驟
 
 [支援的 Service Fabric 版本](service-fabric-versions.md)
 
 <!--references-->
-[msdn-forum]: https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureServiceFabric
+[Microsoft Q&A question page]: /answers/topics/azure-service-fabric.html
 [stackoverflow]: https://stackoverflow.com/questions/tagged/azure-service-fabric
 [uservoice-forum]: https://feedback.azure.com/forums/293901-service-fabric
 [acom-docs]: https://aka.ms/servicefabricdocs
 [sample-repos]: https://aka.ms/servicefabricsamples
+[msdn-forum]: https://social.msdn.microsoft.com/forums/azure/en-US/home?category=windowsazureplatform

@@ -14,59 +14,59 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: 0196d39f5b131bc54e00412beb7fdf10b7352336
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 3d4e45d1bf53bab4d1f9c45367f9d051f1668e2b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65075141"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "76309054"
 ---
-### <a name="authenticationresult-properties-in-msalnet"></a>在 MSAL.NET AuthenticationResult 屬性
+### <a name="authenticationresult-properties-in-msalnet"></a>MSAL.NET 中的 AuthenticationResult 屬性
 
-若要取得權杖方法會傳回`AuthenticationResult`(或者，若為非同步方法， `Task<AuthenticationResult>`。
+取得權杖的方法會傳回 `AuthenticationResult` 。 若是非同步方法，會傳回 `Task<AuthenticationResult>` 。
 
-在 MSAL.NET，`AuthenticationResult`公開 （expose):
+在 MSAL.NET 中，會 `AuthenticationResult` 公開：
 
-- `AccessToken` Web api 來存取資源。 這個參數是字串，通常是以 base64 編碼的 JWT，但用戶端應該永遠不會查看內部存取權杖。 格式不保證保持穩定，而且可以進行加密的資源。 根據用戶端上的存取權杖內容的人員撰寫程式碼是其中一個最大錯誤和用戶端邏輯符號的來源。 另請參閱[存取權杖](../articles/active-directory/develop/access-tokens.md)
-- `IdToken` （這個參數是編碼的 JWT） 的使用者。 請參閱[識別碼權杖](../articles/active-directory/develop/id-tokens.md)
-- `ExpiresOn` 會告知權杖的到期日期/時間
-- `TenantId` 包含在其中發現使用者的租用戶。 來賓使用者 （Azure AD B2B 案例），租用戶識別碼會是 「 來賓 」 租用戶沒有唯一的租用戶。
-權杖會傳遞使用者，當`AuthenticationResult`也包含此使用者的相關資訊。 針對機密用戶端流程，其中將權杖要求 （適用於應用程式） 沒有使用者，此使用者資訊是 null。
-- `Scopes`針對發出的權杖。
+- `AccessToken`用於存取資源的 Web API。 這個參數是一個字串，通常是以64編碼的 JWT。 用戶端應該永遠不會在存取權杖內部查看。 此格式不保證會維持穩定，而且可以針對資源進行加密。 撰寫相依于用戶端上存取權杖內容的程式碼，是其中一個最大的錯誤來源，也就是用戶端邏輯中斷。 如需詳細資訊，請參閱[存取權杖](../articles/active-directory/develop/access-tokens.md)。
+- `IdToken`適用于使用者。 這個參數是已編碼的 JWT。 如需詳細資訊，請參閱[識別碼權杖](../articles/active-directory/develop/id-tokens.md)。
+- `ExpiresOn`告知權杖到期的日期和時間。
+- `TenantId`包含在其中找到使用者的租使用者。 對於 Azure Active Directory （Azure AD） B2B 案例中的來賓使用者，租使用者識別碼是來賓租使用者，而不是唯一的租使用者。
+為使用者傳遞權杖時， `AuthenticationResult` 也會包含此使用者的相關資訊。 對於要求應用程式沒有使用者權杖的機密用戶端流程，此使用者資訊是 null。
+- `Scopes`已發出權杖的。
 - 使用者的唯一識別碼。
 
 ### <a name="iaccount"></a>IAccount
 
-MSAL.NET 定義帳戶的概念 (透過`IAccount`介面)。 這項重大變更提供正確的語意： 相同的使用者可以在不同的 Azure 中有數個帳戶，因為 AD 目錄。 也 MSAL.NET 提供更好的資訊，在來賓案例的情況下，因為提供的主帳戶資訊。
-下圖顯示的結構`IAccount`介面：
+MSAL.NET 透過介面定義帳戶的概念 `IAccount` 。 這種重大變更會提供正確的語法。 相同的使用者可以在不同的 Azure AD 目錄中有數個帳戶。 此外，MSAL.NET 會在來賓案例中提供更好的資訊，因為提供了 home 帳戶資訊。
+下圖顯示介面的結構 `IAccount` 。
 
-![image](https://user-images.githubusercontent.com/13203188/44657759-4f2df780-a9fe-11e8-97d1-1abbffade340.png)
+![IAccount 介面結構](https://user-images.githubusercontent.com/13203188/44657759-4f2df780-a9fe-11e8-97d1-1abbffade340.png)
 
-`AccountId`類別會識別特定的租用戶中的帳戶。 它具有下列屬性：
+`AccountId`類別會使用下表所示的屬性來識別特定租使用者中的帳戶。
 
-| 屬性 | 描述 |
+| 屬性 | 說明 |
 |----------|-------------|
-| `TenantId` | GUID，也就是帳戶所在的租用戶識別碼的字串表示。 |
-| `ObjectId` | GUID，這是擁有租用戶中的帳戶的使用者識別碼的字串表示。 |
-| `Identifier` | 帳戶的唯一識別碼。 `Identifier` 串連`ObjectId`和`TenantId`分隔逗號和是 base64 編碼。 |
+| `TenantId` | GUID 的字串表示，這是帳戶所在租使用者的識別碼。 |
+| `ObjectId` | GUID 的字串表示，也就是擁有租使用者帳戶的使用者識別碼。 |
+| `Identifier` | 帳戶的唯一識別碼。 `Identifier`是的串連 `ObjectId` ，並以 `TenantId` 逗號分隔。 它們不是以64編碼的基礎。 |
 
-`IAccount`介面代表單一帳戶的相關資訊。 相同的使用者可能會出現在不同的租用戶，也就是使用者可以擁有多個帳戶。 其成員都是：
+`IAccount`介面代表單一帳戶的相關資訊。 相同的使用者可以出現在不同的租使用者中，這表示使用者可以有多個帳戶。 下表顯示其成員。
 
-| 屬性 | 描述 |
+| 屬性 | 說明 |
 |----------|-------------|
-| `Username` | 字串，包含可顯示的值，UserPrincipalName (UPN) 格式，例如john.doe@contoso.com。 而 HomeAccountId 和 HomeAccountId.Identifier 不可以是 null，這個字串可以是 null。 這個屬性會取代`DisplayableId`屬性`IUser`MSAL.NET 舊版本中。 |
-| `Environment` | 字串，包含身分識別提供者，此帳戶，例如`login.microsoftonline.com`。 這個屬性會取代`IdentityProvider`的屬性`IUser`，差異在於`IdentityProvider`也有租用戶 （除了雲端環境中） 的相關資訊，而這裡的值是主應用程式。 |
-| `HomeAccountId` | AccountId 為使用者的主帳戶。 此屬性唯一識別使用者在 Azure AD 租用戶。 |
+| `Username` | 包含 UserPrincipalName （UPN）格式之可顯示值的字串，例如 john.doe@contoso.com 。 這個字串可以是 null，而不像 HomeAccountId 和 HomeAccountId。 Identifier，這不是 null。 這個屬性會取代 `DisplayableId` `IUser` 舊版 MSAL.NET 中的屬性。 |
+| `Environment` | 包含此帳戶之識別提供者的字串，例如 `login.microsoftonline.com` 。 除了雲端環境之外，此屬性會取代的 `IdentityProvider` 屬性 `IUser` ，除了 `IdentityProvider` 也有租使用者的相關資訊。 在這裡，此值只是主機。 |
+| `HomeAccountId` | 使用者之主帳戶的帳戶識別碼。 此屬性可唯一識別 Azure AD 租使用者之間的使用者。 |
 
-### <a name="using-the-token-to-call-a-protected-api"></a>使用權杖來呼叫受保護的 API
+### <a name="use-the-token-to-call-a-protected-api"></a>使用權杖來呼叫受保護的 API
 
-一次`AuthenticationResult`MSAL 傳回 (在`result`)，您需要將它新增到 HTTP 授權標頭，再進行呼叫，以存取受保護的 Web API。
+`AuthenticationResult`在中的 MSAL 傳回之後 `result` ，請將它新增至 HTTP 授權標頭，然後再進行呼叫以存取受保護的 Web API。
 
-```CSharp
+```csharp
 httpClient = new HttpClient();
 httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", result.AccessToken);
 
-// Call Web API.
+// Call the web API.
 HttpResponseMessage response = await _httpClient.GetAsync(apiUri);
 ...
 }

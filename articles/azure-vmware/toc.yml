@@ -1,0 +1,64 @@
+- name: Azure VMware 解決方案 (AVS)
+  href: index.yml
+- name: 概觀
+  items:
+    - name: 關於 Azure VMware 解決方案 (AVS)
+      href: introduction.md
+- name: 教學課程
+  items:
+    - name: 1 - 網路規劃
+      href: tutorial-network-checklist.md
+    - name: 2 - 建立 AVS 私人雲端
+      href: tutorial-create-private-cloud.md
+    - name: 3 - 設定網路功能
+      href: tutorial-configure-networking.md
+    - name: 4 - 存取私人雲端
+      href: tutorial-access-private-cloud.md
+    - name: 5 - 擴充私人雲端
+      href: tutorial-scale-private-cloud.md
+    - name: 6 - 建立內容庫
+      href: tutorial-deploy-vm-content-library.md
+- name: 概念
+  items:
+    - name: 私人雲端和叢集
+      href: concepts-private-clouds-clusters.md
+    - name: 私人雲端網路和內部連線能力
+      href: concepts-networking.md
+    - name: 私人雲端中的儲存體
+      href: concepts-storage.md
+    - name: 私人雲端的存取和身分識別
+      href: concepts-identity.md
+    - name: 角色型存取控制
+      href: concepts-rbac.md
+    - name: 私人雲端升級
+      href: concepts-upgrades.md
+- name: 操作指南
+  items:
+    - name: 設定 HCX
+      href: hybrid-cloud-extension-installation.md
+    - name: 管理 DHCP
+      href: manage-dhcp.md
+    - name: 災害復原
+      href: disaster-recovery.md
+    - name: AVS 的 Azure 備份伺服器
+      items:
+        - name: 為 AVS 設定 Azure 備份伺服器
+          href: set-up-mabs-for-avs.md
+        - name: 使用 Azure 備份伺服器來備份 AVS VM
+          href: backup-avs-vms-with-mabs.md
+    - name: Azure 原生整合
+      items:
+        - name: API 管理
+          href: concepts-api-management.md
+        - name: 中樞與輪幅
+          href: concepts-avs-hub-and-spoke-integration.md
+- name: 參考
+  items: null
+- name: 資源
+  items:
+    - name: 疑難排解
+      items:
+        - name: 取得 AVS 部署或佈建失敗的協助
+          href: fix-deployment-provisioning-failures.md
+    - name: 常見問題集
+      href: faq.md

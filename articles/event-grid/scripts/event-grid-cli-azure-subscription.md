@@ -1,22 +1,15 @@
 ---
 title: Azure CLI 指令碼範例 - 訂閱 Azure 訂用帳戶 | Microsoft Docs
-description: Azure CLI 指令碼範例 - 訂閱 Azure 訂用帳戶
-services: event-grid
-documentationcenter: na
-author: tfitzmac
-ms.service: event-grid
+description: 本文提供範例 Azure CLI 指令碼，示範如何使用 Azure CLI 訂閱 Azure 事件方格事件。
 ms.devlang: azurecli
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 11/02/2018
-ms.author: tomfitz
-ms.openlocfilehash: 9d1aa53ede323c2bb536c74eeaaba9fd28b01712
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.date: 07/08/2020
+ms.openlocfilehash: 04d69d440dc971908b1fe2931721c50e671cd7d9
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037527"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171392"
 ---
 # <a name="subscribe-to-events-for-an-azure-subscription-with-azure-cli"></a>使用 Azure CLI 訂閱 Azure 訂用帳戶的事件
 
@@ -40,7 +33,7 @@ ms.locfileid: "51037527"
 
 此指令碼會使用下列命令來建立事件訂用帳戶。 下表中的每個命令都會連結至命令特定的文件。
 
-| 命令 | 注意 |
+| Command | 注意 |
 |---|---|
 | [az eventgrid event-subscription create](/cli/azure/eventgrid/event-subscription#az-eventgrid-event-subscription-create) | 建立事件格線訂用帳戶。 |
 | [az eventgrid event-subscription create](/cli/azure/ext/eventgrid/eventgrid/event-subscription#ext-eventgrid-az-eventgrid-event-subscription-create) - 延伸模組版本 | 建立事件格線訂用帳戶。 |

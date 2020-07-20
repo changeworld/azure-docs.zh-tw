@@ -1,32 +1,29 @@
 ---
-title: 連線至 Microsoft Translator - Azure Logic Apps | Microsoft Docs
+title: 連線至 Microsoft Translator
 description: 使用 Microsoft Translator REST API 和 Azure Logic Apps 來翻譯文字和執行其他語言工作
-author: ecfan
-manager: jeconnoc
-ms.author: estfan
-ms.date: 11/07/2016
-ms.topic: article
-ms.service: logic-apps
 services: logic-apps
-ms.reviewer: klam, LADocs
 ms.suite: integration
+ms.reviewer: klam, logicappspm
+ms.topic: article
+ms.date: 11/07/2016
 tags: connectors
-ms.openlocfilehash: 29212cf1c1f06ecae9892e0fc8aaaa4a01b2612b
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+ms.openlocfilehash: ec809a897ce2579125c8797dc8c1d8c7d30a8f9c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62105780"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "74789565"
 ---
 # <a name="get-started-with-the-microsoft-translator-connector"></a>開始使用 Microsoft Translator 連接器
+
 連線到 Microsoft Translator 來翻譯文字、偵測語言種類等等。 您可以利用 Microsoft Translator 來： 
 
 * 根據您從 Microsoft Translator 所取得的資料，來建置您的商務流程。 
 * 使用動作來翻譯文字、偵測語言種類等等。 這些動作會收到回應，然後輸出能讓其他動作使用的資料。 舉例來說，當 Dropbox 中有新檔案建立時，您可以利用 Microsoft Translator 把該檔案中的文字翻譯成另一種語言。
 
-您可以從建立邏輯應用程式立即開始，請參閱[建立邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
+您現在可以開始建立邏輯應用程式，請參閱[建立邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
 ## <a name="create-a-connection-to-microsoft-translator"></a>建立至 Microsoft Translator 的連線
+
 > [!INCLUDE [Steps to create a connection to Microsoft Translator](../../includes/connectors-create-api-microsofttranslator.md)]
 > 
 > 

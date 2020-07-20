@@ -1,40 +1,37 @@
 ---
-title: 如何為指定的 API 選取權限 | Microsoft Docs
-description: 如何為針對 Azure AD 開發的應用程式或要向 Azure AD 註冊的自訂應用程式尋找驗證端點。
+title: 取得 Azure AD 應用程式註冊的端點
+titleSuffix: Microsoft identity platform
+description: 如何尋找您正在開發或向 Azure AD 註冊之自訂應用程式的驗證端點。
 services: active-directory
-documentationcenter: ''
-author: CelesteDG
-manager: mtillman
-ms.assetid: ''
+author: rwike77
+manager: CelesteDG
 ms.service: active-directory
-ms.subservice: app-mgmt
+ms.subservice: develop
+ms.custom: aaddev
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/11/2018
-ms.author: celested
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a0962e5381a6e0a8da96bc7379c38aae73ee400
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 05/07/2020
+ms.author: ryanwi
+ms.openlocfilehash: dc37ce474ad3226f5dbf7e6efd687ddf55f7da03
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60250344"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82926675"
 ---
-# <a name="how-to-configure-endpoints"></a>如何設定端點
+# <a name="how-to-discover-endpoints"></a>如何探索端點
 
 您可以在 [Azure 入口網站](https://portal.azure.com)尋找應用程式的驗證端點。
 
--   瀏覽至 [Azure 入口網站](https://portal.azure.com)。
+1. 登入 [Azure 入口網站](https://portal.azure.com)。
+1. 選取 **Azure Active Directory**。
+1. 在 [**管理**] 底下，選取 [**應用程式註冊**]，然後選取頂端功能表中的 [**端點**]。
 
--   從左方的瀏覽窗格，按一下 [Azure Active Directory]。
+    [**端點**] 頁面隨即顯示，其中顯示您租使用者的驗證端點。
+    
+    使用符合您要搭配**應用程式（用戶端）識別碼**使用之驗證通訊協定的端點，來製作您的應用程式特定的驗證要求。
 
--   按一下 [應用程式註冊]，然後選擇 [端點]。
-
--   這樣會開啟 [端點] 頁面，其中列出您租用戶的所有驗證端點。
-
--   使用您所使用之驗證通訊協定特定的端點搭配應用程式識別碼，來製作您應用程式的特定驗證要求。
+**國家**雲端（例如 Azure AD 中國、德國和美國政府）有自己的應用程式註冊入口網站和 Azure AD 驗證端點。 若要深入瞭解，請[流覽國家](authentication-national-cloud.md)雲端。
 
 ## <a name="next-steps"></a>後續步驟
-[Azure Active Directory 開發人員指南](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)
+
+如需有關不同 Azure 環境中端點的詳細資訊，請參閱[國家雲端總覽](authentication-national-cloud.md)。

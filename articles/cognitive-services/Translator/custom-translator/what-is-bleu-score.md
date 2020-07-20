@@ -1,20 +1,20 @@
 ---
 title: 什麼是 BLEU 分數？ - 自訂翻譯工具
 titleSuffix: Azure Cognitive Services
-description: BLEU 是指對於相同來源句子的自動翻譯與一或多個人工參考翻譯之間的差異所做的量測。 BLEU 演算法會比較自動翻譯的連續片語與它在參考翻譯中找到的連續片語，並以加權方式計算相符項數目。
-author: rajdeep-in
-manager: christw
+description: BLEU 是針對相同來源句子的機器翻譯和人類建立的參考翻譯之間的差異測量。
+author: swmachan
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 02/21/2019
-ms.author: v-rada
-ms.openlocfilehash: 8d249d29841466c40c0fd96df92cccecdce2dc62
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.date: 05/26/2020
+ms.author: swmachan
+ms.openlocfilehash: b35dce5a2b572e5a3f11601d5e67efb2da02cdec
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57760336"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83997055"
 ---
 # <a name="what-is-a-bleu-score"></a>什麼是 BLEU 分數？
 
@@ -26,7 +26,7 @@ BLEU 演算法會比較自動翻譯的連續片語與它在參考翻譯中找到
 
 ## <a name="how-bleu-works"></a>BLEU 的運作方式為何？
 
-BLEU 的作用在於能夠為測試主體算出個別句子判斷錯誤的平均值，進而與人為判斷產生適當的關聯，而不是試圖找出每個句子確切的人為判斷。
+BLEU 的優點是，它會將測試主體的個別句子判斷錯誤平均地相互關聯，而不是嘗試為每個句子設計精確的人為判斷。
 
 如需 BLEU 分數的詳細討論，請參閱[這裡](https://youtu.be/-UqDljMymMg)。
 

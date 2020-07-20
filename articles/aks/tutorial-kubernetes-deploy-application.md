@@ -2,18 +2,15 @@
 title: Azure 上的 Kubernertes 教學課程 - 部署應用程式
 description: 在本 Azure Kubernetes Service (AKS) 教學課程中，您會使用 Azure Container Registry 中儲存的自訂映像，將多容器應用程式部署至您的叢集。
 services: container-service
-author: zr-msft
-ms.service: container-service
 ms.topic: tutorial
 ms.date: 12/19/2018
-ms.author: zarhoads
 ms.custom: mvc
-ms.openlocfilehash: dc3d4f0b2658c82a50f58d976a47607dead1abce
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.openlocfilehash: 3b614fcb6692f35884af2fc4e19210267ab8ab04
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60149524"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "77593269"
 ---
 # <a name="tutorial-run-applications-in-azure-kubernetes-service-aks"></a>教學課程：執行 Azure Kubernetes Service (AKS) 中的應用程式
 
@@ -102,20 +99,20 @@ kubectl get service azure-vote-front --watch
 一開始，*azure-vote-front* 服務的 *EXTERNAL-IP* 會顯示為 *pending*：
 
 ```
-azure-vote-front   10.0.34.242   <pending>     80:30676/TCP   7s
+azure-vote-front   LoadBalancer   10.0.34.242   <pending>     80:30676/TCP   5s
 ```
 
 當 *EXTERNAL-IP* 位址從 *pending* 變成實際的公用 IP 位址時，請使用 `CTRL-C` 停止 `kubectl` 監看式流程。 下列範例輸出會顯示已指派給服務的有效公用 IP 位址：
 
 ```
-azure-vote-front   10.0.34.242   52.179.23.131   80:30676/TCP   2m
+azure-vote-front   LoadBalancer   10.0.34.242   52.179.23.131   80:30676/TCP   67s
 ```
 
 若要查看應用程式的實際運作情況，請開啟網頁瀏覽器並瀏覽至服務的外部 IP 位址：
 
 ![Azure 上 Kubernetes 叢集的影像](media/container-service-kubernetes-tutorials/azure-vote.png)
 
-如果應用程式並未載入，可能是因為您的映像登錄發生授權問題。 若要檢視容器的狀態，請使用 `kubectl get pods` 命令。 如果無法提取容器映像，請參閱[允許使用 Kubernetes 祕密存取容器登錄](https://docs.microsoft.com/azure/container-registry/container-registry-auth-aks#access-with-kubernetes-secret)。
+如果應用程式並未載入，可能是因為您的映像登錄發生授權問題。 若要檢視容器的狀態，請使用 `kubectl get pods` 命令。 如果無法提取容器映像，請參閱[從 Azure Kubernetes Service 對 Azure Container Registry 進行驗證](cluster-container-registry-integration.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

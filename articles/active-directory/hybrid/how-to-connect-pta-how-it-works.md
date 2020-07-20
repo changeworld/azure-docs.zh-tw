@@ -11,20 +11,20 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/19/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59cd52dbdf6c13900cde592aeb52d8bf9abf850f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e794b66341d4e7c478fd526107cc35c7c745fa7f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60347768"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85358322"
 ---
-# <a name="azure-active-directory-pass-through-authentication-technical-deep-dive"></a>Azure Active Directory 傳遞驗證：深入技術性討論
-本文概述 Azure Active Directory (Azure AD)傳遞驗證的運作方式。 如需深層技術和安全性資訊，請參閱[安全性深入探討](how-to-connect-pta-security-deep-dive.md)一文。
+# <a name="azure-active-directory-pass-through-authentication-technical-deep-dive"></a>Azure Active Directory 傳遞驗證：技術深入探討
+本文概述 Azure Active Directory (Azure AD)傳遞驗證的運作方式。 如需深入的技術和安全性資訊，請參閱[安全性深入探討](how-to-connect-pta-security-deep-dive.md)一文。
 
 ## <a name="how-does-azure-active-directory-pass-through-authentication-work"></a>Azure Active Directory 傳遞驗證運作方式
 
@@ -34,9 +34,9 @@ ms.locfileid: "60347768"
 當使用者嘗試登入 Azure AD 所保護的應用程式，並且在租用戶上啟用傳遞驗證，則會執行下列步驟：
 
 1. 使用者嘗試存取應用程式，例如 [Outlook Web App](https://outlook.office365.com/owa/)。
-2. 如果使用者尚未登入，則會將使用者重新導向 Azure AD [使用者登入] 頁面。
-3. 使用者將其使用者名稱輸入 [Azure AD 登入] 頁面中，然後選取 [下一步] 按鈕。
-4. 使用者將其密碼輸入 [Azure AD 登入] 頁面中，然後選取 [登入] 按鈕。
+2. 如果使用者尚未登入，則會將使用者重新導向 Azure AD [使用者登入]**** 頁面。
+3. 使用者將其使用者名稱輸入 [Azure AD 登入] 頁面中，然後選取 [下一步]**** 按鈕。
+4. 使用者將其密碼輸入 [Azure AD 登入] 頁面中，然後選取 [登入]**** 按鈕。
 5. 接收登入要求時，Azure AD 會將使用者名稱和密碼 (使用驗證代理程式的公開金鑰加密) 置於佇列。
 6. 內部部署驗證代理程式會從佇列中擷取使用者名稱和加密的密碼。 請注意，代理程式不會經常輪詢佇列中的要求，而是會透過預先建立的持續連線來擷取要求。
 7. 代理程式會使用其私密金鑰將密碼解密。
@@ -55,9 +55,9 @@ ms.locfileid: "60347768"
 - [快速入門](how-to-connect-pta-quick-start.md)：開始使用 Azure AD 傳遞驗證。
 - [從 AD FS 遷移到傳遞驗證](https://aka.ms/adfstoPTADP) \(英文\) - 從 AD FS (或其他同盟技術) 遷移到傳遞驗證的詳細指南。
 - [智慧鎖定](../authentication/howto-password-smart-lockout.md)：在租用戶中設定智慧鎖定功能以保護使用者帳戶。
-- [常見問題集](how-to-connect-pta-faq.md)：取得常見問題的解答。
+- [常見問題](how-to-connect-pta-faq.md)：尋找常見問題的解答。
 - [疑難排解](tshoot-connect-pass-through-authentication.md)：了解如何解決傳遞驗證功能的常見問題。
 - [安全性深入探討](how-to-connect-pta-security-deep-dive.md)：取得傳遞驗證功能的深入技術資訊。
 - [Azure AD 無縫 SSO](how-to-connect-sso.md)：深入了解此互補功能。
-- [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) \(英文\)：使用 Azure Active Directory 論壇提出新功能要求。
+- [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect)：使用 Azure Active Directory 論壇提出新功能要求。
 

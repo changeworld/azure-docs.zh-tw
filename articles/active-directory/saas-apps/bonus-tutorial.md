@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ffc2e8c186ce485f7df19b3f797aaa8982735f5
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: ea9c88f8eb8ac7b72f11ff286d2294df8cb70860
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60003950"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "74232051"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bonusly"></a>教學課程：Azure Active Directory 與 Bonusly 整合
 
@@ -35,7 +35,7 @@ ms.locfileid: "60003950"
 若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要設定 Azure AD 與 Bonusly 整合，您需要下列項目：
 
@@ -54,19 +54,19 @@ ms.locfileid: "60003950"
 
 **若要從資源庫新增 Bonusly，請執行下列步驟：**
 
-1. 在 **[Azure 入口網站](https://portal.azure.com)** 的左方瀏覽窗格中，按一下 [Azure Active Directory] 圖示。
+1. 在 **[Azure 入口網站](https://portal.azure.com)** 的左方瀏覽窗格中，按一下 [Azure Active Directory]  圖示。
 
     ![Azure Active Directory 按鈕](common/select-azuread.png)
 
-2. 瀏覽至 [企業應用程式]，然後選取 [所有應用程式] 選項。
+2. 瀏覽至 [企業應用程式]  ，然後選取 [所有應用程式]  選項。
 
     ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
-3. 若要新增新的應用程式，請按一下對話方塊頂端的 [新增應用程式] 按鈕。
+3. 若要新增新的應用程式，請按一下對話方塊頂端的 [新增應用程式]  按鈕。
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **Bonusly**，從結果面板中選取 [Bonusly]，然後按一下 [新增] 按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **Bonusly**，從結果面板中選取 [Bonusly]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
     ![結果清單中的 Bonusly](common/search-new-app.png)
 
@@ -82,7 +82,7 @@ ms.locfileid: "60003950"
 3. **[建立 Azure AD 測試使用者](#create-an-azure-ad-test-user)** - 使用 Britta Simon 測試 Azure AD 單一登入。
 4. **[指派 Azure AD 測試使用者](#assign-the-azure-ad-test-user)** - 讓 Britta Simon 能夠使用 Azure AD 單一登入。
 5. **[建立 Bonusly 測試使用者](#create-bonusly-test-user)** - 在 Bonusly 中建立一個與 Azure AD 中代表使用者之項目連結的 Britta Simon 對應項目。
-6. **[測試單一登入](#test-single-sign-on)**，驗證組態是否能運作。
+6. **[測試單一登入](#test-single-sign-on)** ，驗證組態是否能運作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>設定 Azure AD 單一登入
 
@@ -90,36 +90,36 @@ ms.locfileid: "60003950"
 
 若要使用 Bonusly 設定 Azure AD 單一登入，請執行下列步驟：
 
-1. 在 [Azure 入口網站](https://portal.azure.com/) 的 [Bonusly] 應用程式整合頁面上，選取 [單一登入]。
+1. 在 [Azure 入口網站](https://portal.azure.com/) 的 [Bonusly]  應用程式整合頁面上，選取 [單一登入]  。
 
     ![設定單一登入連結](common/select-sso.png)
 
-2. 在 [選取單一登入方法] 對話方塊中，選取 [SAML/WS-Fed] 模式以啟用單一登入。
+2. 在 [選取單一登入方法]  對話方塊中，選取 [SAML/WS-Fed]  模式以啟用單一登入。
 
     ![單一登入選取模式](common/select-saml-option.png)
 
-3. 在 [以 SAML 設定單一登入] 頁面上，按一下 [編輯] 圖示以開啟 [基本 SAML 設定] 對話方塊。
+3. 在 [以 SAML 設定單一登入] 頁面上，按一下 [編輯] 圖示以開啟 [基本 SAML 設定] 對話方塊。   
 
     ![編輯基本 SAML 組態](common/edit-urls.png)
 
-4. 在 [基本 SAML 組態] 區段上，執行下列步驟：
+4. 在 [基本 SAML 組態]  區段上，執行下列步驟：
 
     ![Bonusly 網域及 URL 單一登入資訊](common/idp-reply.png)
 
-    在 [回覆 URL] 文字方塊中，使用下列模式來輸入 URL：`https://Bonus.ly/saml/<tenant-name>`
+    在 [回覆 URL]  文字方塊中，使用下列模式來輸入 URL：`https://Bonus.ly/saml/<tenant-name>`
 
     > [!NOTE]
     > 這不是真正的值。 請使用實際的「回覆 URL」來更新此值。 請連絡 [Bonusly 用戶端支援小組](https://bonus.ly/contact)以取得該值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
 
-5. 在 [SAML 簽署憑證] 區段中，按一下 [編輯] 按鈕以開啟 [SAML 簽署憑證] 對話方塊。
+5. 在 [SAML 簽署憑證]  區段中，按一下 [編輯]  按鈕以開啟 [SAML 簽署憑證]  對話方塊。
 
     ![編輯 SAML 簽署憑證](common/edit-certificate.png)
 
-6. 在 [SAML 簽署憑證] 區段中，複製 [指紋] 並儲存在您的電腦上。
+6. 在 [SAML 簽署憑證]  區段中，複製 [指紋]  並儲存在您的電腦上。
 
     ![複製指紋值](common/copy-thumbprint.png)
 
-7. 在 [設定 Bonusly] 區段上，依據您的需求複製適當的 URL。
+7. 在 [設定 Bonusly]  區段上，依據您的需求複製適當的 URL。
 
     ![複製組態 URL](common/copy-configuration-urls.png)
 
@@ -133,34 +133,34 @@ ms.locfileid: "60003950"
 
 1. 在不同的瀏覽器視窗中，登入您的 **Bonusly** 租用戶。
 
-1. 在頂端工具列中，按一下 [設定]，然後選取 [整合與應用程式]。
+1. 在頂端工具列中，按一下 [設定]  ，然後選取 [整合與應用程式]  。
 
     ![Bonusly 社交區段](./media/bonus-tutorial/ic773686.png "Bonusly")
-1. 在 [單一登入] 下方，選取 [SAML]。
+1. 在 [單一登入]  下方，選取 [SAML]  。
 
 1. 在 [SAML]  對話頁面上，執行下列步驟：
 
     ![Bonusly Saml 對話方塊頁面](./media/bonus-tutorial/ic773687.png "Bonusly")
 
-    a. 在 [IdP SSO 目標 URL] 文字方塊中，貼上您從 Azure 入口網站複製的 [登入 URL] 值。
+    a. 在 [IdP SSO 目標 URL]  文字方塊中，貼上您從 Azure 入口網站複製的 [登入 URL]  值。
 
-    b. 在 [IdP 登入 URL] 文字方塊中，貼上您從 Azure 入口網站複製的 [登入 URL] 值。
+    b. 在 [IdP 登入 URL]  文字方塊中，貼上您從 Azure 入口網站複製的 [登入 URL]  值。
 
-    c. 在 [IdP 簽發者] 文字方塊中，貼上您從 Azure 入口網站複製的 [Azure AD 識別碼] 值。
+    c. 在 [IdP 簽發者]  文字方塊中，貼上您從 Azure 入口網站複製的 [Azure AD 識別碼]  值。
     
-    d. 將從 Azure 入口網站複製的 ****[指紋] 值貼到 [Cert Fingerprint] \(憑證指紋\) 文字方塊中。
+    d. 在 [憑證指紋] 文字方塊中貼上從 Azure 入口網站複製的 [指紋] 值。
     
-    e. 按一下 [檔案] 。
+    e. 按一下 [檔案]  。
 
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者
 
 本節的目標是要在 Azure 入口網站中建立一個名為 Britta Simon 的測試使用者。
 
-1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]、[使用者] 和 [所有使用者]。
+1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]  、[使用者]  和 [所有使用者]  。
 
     ![[使用者和群組] 與 [所有使用者] 連結](common/users.png)
 
-2. 在畫面頂端選取 [新增使用者]。
+2. 在畫面頂端選取 [新增使用者]  。
 
     ![[新增使用者] 按鈕](common/new-user.png)
 
@@ -168,27 +168,27 @@ ms.locfileid: "60003950"
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱] 欄位中，輸入 **BrittaSimon**。
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
   
-    b. 在 [使用者名稱] 欄位中，輸入 `brittasimon@yourcompanydomain.extension`。 例如， BrittaSimon@contoso.com
+    b. 在 [使用者名稱]  欄位中，輸入 `brittasimon@yourcompanydomain.extension`。 例如， BrittaSimon@contoso.com
 
-    c. 選取 [顯示密碼] 核取方塊，然後記下 [密碼] 方塊中顯示的值。
+    c. 選取 [顯示密碼]  核取方塊，然後記下 [密碼] 方塊中顯示的值。
 
-    d. 按一下頁面底部的 [新增] 。
+    d. 按一下頁面底部的 [新增]  。
 
 ### <a name="assign-the-azure-ad-test-user"></a>指派 Azure AD 測試使用者
 
 在本節中，您會將 Bonusly 的存取權授與 Britta Simon，讓她能夠使用 Azure 單一登入。
 
-1. 在 Azure 入口網站中，依序選取 [企業應用程式]、[所有應用程式] 及 [Bonusly]。
+1. 在 Azure 入口網站中，依序選取 [企業應用程式]  、[所有應用程式]  及 [Bonusly]  。
 
     ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
-2. 在應用程式清單中，選取 [Bonusly]。
+2. 在應用程式清單中，選取 [Bonusly]  。
 
     ![應用程式清單中的 Bonusly 連結](common/all-applications.png)
 
-3. 在左側功能表中，選取 [使用者和群組]。
+3. 在左側功能表中，選取 [使用者和群組]  。
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
@@ -196,24 +196,24 @@ ms.locfileid: "60003950"
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 
-5. 在 [使用者和群組] 對話方塊的 [使用者] 清單中，選取 [Britta Simon]，然後按一下畫面底部的 [選取] 按鈕。
+5. 在 [使用者和群組]  對話方塊的 [使用者] 清單中，選取 [Britta Simon]  ，然後按一下畫面底部的 [選取]  按鈕。
 
-6. 如果您預期使用 SAML 判斷提示中的任何角色值，請在 [選取角色] 對話方塊的清單中選取適當使用者角色，然後按一下畫面底部的 [選取] 按鈕。
+6. 如果您預期使用 SAML 判斷提示中的任何角色值，請在 [選取角色]  對話方塊的清單中選取適當使用者角色，然後按一下畫面底部的 [選取]  按鈕。
 
-7. 在 [新增指派] 對話方塊中，按一下 [指派] 按鈕。
+7. 在 [新增指派]  對話方塊中，按一下 [指派]  按鈕。
 
 ### <a name="create-bonusly-test-user"></a>建立 Bonusly 測試使用者
 
 若要讓 Azure AD 使用者可以登入 Bonusly，必須將他們佈建到 Bonusly。 Bonusly 需以手動方式佈建。
 
 > [!NOTE]
-> 您可使用任何其他的 Bonusly 使用者帳戶建立工具，或是使用 Bonusly 提供的 API 來佈建 AAD 使用者帳戶。 
+> 您可使用任何其他的 Bonusly 使用者帳戶建立工具，或是使用 Bonusly 提供的 API，來佈建 Azure AD 使用者帳戶。 
 
 **若要設定使用者佈建，請執行下列步驟：**
 
 1. 在網頁瀏覽器視窗中，登入您的 Bonusly 租用戶。
 
-1. 按一下 [設定] 。
+1. 按一下 [設定]  。
 
     ![設定](./media/bonus-tutorial/ic781041.png "設定")
 
@@ -221,25 +221,25 @@ ms.locfileid: "60003950"
 
     ![使用者和獎勵](./media/bonus-tutorial/ic781042.png "使用者和獎勵")
 
-1. 按一下 [管理使用者] 。
+1. 按一下 [管理使用者]  。
 
     ![管理使用者](./media/bonus-tutorial/ic781043.png "管理使用者")
 
-1. 按一下 [新增使用者] 。
+1. 按一下 [新增使用者]  。
 
-    ![新增使用者](./media/bonus-tutorial/ic781044.png "新增使用者")
+    ![加入使用者](./media/bonus-tutorial/ic781044.png "新增使用者")
 
 1. 在 [加入使用者]  對話方塊中，執行下列步驟：
 
-    ![新增使用者](./media/bonus-tutorial/ic781045.png "新增使用者")  
+    ![加入使用者](./media/bonus-tutorial/ic781045.png "新增使用者")  
 
-    a. 在 [名字] 文字方塊中，輸入使用者的名字，例如 **Britta**。
+    a. 在 [名字]  文字方塊中，輸入使用者的名字，例如 **Britta**。
 
-    b. 在 [姓氏] 文字方塊中，輸入使用者的姓氏，例如 **Simon**。
+    b. 在 [姓氏]  文字方塊中，輸入使用者的姓氏，例如 **Simon**。
 
-    c. 在 [Email] \(電子郵件\) 文字方塊中，輸入使用者的電子郵件，如 `brittasimon\@contoso.com`。
+    c. 在 [Email]  \(電子郵件\) 文字方塊中，輸入使用者的電子郵件，如 `brittasimon\@contoso.com`。
 
-    d. 按一下 [檔案] 。
+    d. 按一下 [檔案]  。
 
     > [!NOTE]
     > Azure AD 帳戶持有者會收到一封包含連結的電子郵件，以在啟用帳戶前進行確認。  

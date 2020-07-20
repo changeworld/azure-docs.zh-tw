@@ -1,54 +1,54 @@
 ---
 title: 如何搭配 Azure Functions 使用 Azure Cosmos DB 變更摘要
-description: 搭配 Azure Functions 使用 Azure Cosmos DB 變更摘要
-author: rimman
+description: 使用 Azure Functions 連接到 Azure Cosmos DB 變更摘要。 之後，您可以建立在每個新事件上觸發的被動 Azure 函式。
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/12/2019
-ms.author: rimman
+ms.date: 12/03/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 18780deba1910b3ea77f7313bfb6d204dacabd82
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: e452f03721551adada69a36b1ce69e57f1111f55
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64692761"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85834058"
 ---
-# <a name="serverless-event-based-architectures-with-azure-cosmos-db-and-azure-functions"></a>使用 Azure Cosmos DB 與 Azure Functions 的無伺服器事件型架構
+# <a name="serverless-event-based-architectures-with-azure-cosmos-db-and-azure-functions"></a>具有 Azure Cosmos DB 和 Azure Functions 的無伺服器事件架構
 
-Azure Functions 提供最簡單的方式來連接到[變更摘要](change-feed.md)。 您可以建立小型反應式 Azure 函式，將會自動觸發在您的 Azure Cosmos 容器的變更摘要中的每個新事件。
+Azure Functions 提供最簡單的方式來連接到[變更](change-feed.md)摘要。 您可以建立小型的被動 Azure Functions，將會在 Azure Cosmos 容器的變更摘要中的每個新事件上自動觸發。
 
-![使用 Azure Cosmos DB 觸發程序無伺服器與事件為基礎的函數](./media/change-feed-functions/functions.png)
+:::image type="content" source="./media/change-feed-functions/functions.png" alt-text="以無伺服器事件為基礎的函式使用 Cosmos DB 的 Azure Functions 觸發程式" border="false":::
 
-具有[Azure Cosmos DB 觸發程序](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger)，您可以利用[變更摘要處理器](./change-feed-processor.md)的調整和可靠的事件偵測功能，而不需要維護任何[背景工作角色基礎結構](./change-feed-processor.md#implementing-the-change-feed-processor-library)。 把重點放在您的 Azure 函式邏輯而不需擔心事件來源的管線的其餘部分。 您甚至可以混合使用任何其他觸發程序[Azure Functions 繫結](../azure-functions/functions-triggers-bindings.md#supported-bindings)。
+使用[Cosmos DB 的 Azure Functions 觸發程式](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md)，您可以利用[變更摘要處理器](./change-feed-processor.md)的調整和可靠的事件偵測功能，而不需要維護任何背景[工作基礎結構](./change-feed-processor.md)。 只需專注于 Azure 函式的邏輯，而不需擔心事件來源管線的其餘部分。 您甚至可以將觸發程式與任何其他[Azure Functions](../azure-functions/functions-triggers-bindings.md#supported-bindings)系結混合在一起。
 
 > [!NOTE]
-> 目前，用於與核心 (SQL) API 僅支援 Azure Cosmos DB 觸發程序。
+> 目前，僅支援將 Cosmos DB 的 Azure Functions 觸發程式用於 Core （SQL） API。
 
-## <a name="requirements"></a>需求
+## <a name="requirements"></a>規格需求
 
-若要實作無伺服器事件為基礎的流量，您需要：
+若要執行無伺服器事件型流程，您需要：
 
-* **受監視的容器**:受監視的容器是受監視的 Azure Cosmos 容器，並會據以產生變更摘要的資料。 任何插入和受監視的容器 (例如 CRUD) 變更會反映在容器的變更摘要中。
-* **租用容器**:租用容器會跨多個維護狀態，並動態無伺服器的 Azure 函式執行個體，並可讓您動態調整。 此租用容器可以手動或自動建立 Azure Cosmos DB Trigger.To 自動建立租用容器，請設定*CreateLeaseCollectionIfNotExists*中的旗標[組態](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration). 資料分割的租用容器都必須有`/id`資料分割索引鍵定義。
+* **受監視的容器**：受監視的容器是受監視的 Azure Cosmos 容器，它會儲存產生變更摘要的資料。 受監視容器的任何插入、更新都會反映在容器的變更摘要中。
+* **租用容器**：租用容器會維護多個和動態無伺服器 Azure 函式實例之間的狀態，並啟用動態調整。 Cosmos DB 的 Azure Functions 觸發程式可以手動或自動建立此租用容器。 若要自動建立租用容器，[請在設定](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration)中設定*CreateLeaseCollectionIfNotExists*旗標。 分割的租用容器必須要有分割區索引 `/id` 鍵定義。
 
-## <a name="create-your-azure-cosmos-db-trigger"></a>建立 Azure Cosmos DB 觸發程序
+## <a name="create-your-azure-functions-trigger-for-cosmos-db"></a>建立 Cosmos DB 的 Azure Functions 觸發程式
 
-在所有 Azure Functions IDE 和 CLI 的整合現在支援使用 Azure Cosmos DB 觸發程序中建立您的 Azure 函式：
+在所有 Azure Functions IDE 和 CLI 整合中，現在都支援使用 Cosmos DB 的 Azure Functions 觸發程式來建立 Azure 函數：
 
-* [Visual Studio 擴充功能](../azure-functions/functions-develop-vs.md)適用於 Visual Studio 使用者。
-* [Visual Studio 核心延伸模組](https://code.visualstudio.com/tutorials/functions-extension/create-function)Visual Studio Code 使用者。
-* 最後[Core CLI 工具](../azure-functions/functions-run-local.md#create-func)跨平台 IDE 無從驗證體驗。
+* Visual Studio 使用者的[Visual Studio 延伸](../azure-functions/functions-develop-vs.md)模組。
+* Visual Studio Code 使用者的[Visual Studio Code 延伸](/azure/developer/javascript/tutorial-vscode-serverless-node-01)模組。
+* 最後，是[核心 CLI 工具](../azure-functions/functions-run-local.md#create-func)，適用于跨平臺的 IDE 中立體驗。
 
-## <a name="run-your-azure-cosmos-db-trigger-locally"></a>在本機執行 Azure Cosmos DB 觸發程序
+## <a name="run-your-trigger-locally"></a>在本機執行您的觸發程式
 
-您可以執行您[在本機 Azure Function](../azure-functions/functions-develop-local.md)具有[Azure Cosmos DB 模擬器](./local-emulator.md)建立及開發您無伺服器事件為基礎的流程而不需要有 Azure 訂用帳戶，或不會產生任何費用。
+您可以使用[Azure Cosmos DB 模擬器](./local-emulator.md)在[本機執行 Azure](../azure-functions/functions-develop-local.md)函式，以在沒有 Azure 訂用帳戶的情況下，建立和開發無伺服器事件為基礎的流程，或產生任何成本。
 
-如果您想要測試雲端中的即時案例，您可以[免費試用 Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)沒有任何信用卡或所需的 Azure 訂用帳戶。
+如果您想要在雲端中測試即時案例，您可以[免費試用 Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) ，而不需要任何信用卡或 Azure 訂用帳戶。
 
 ## <a name="next-steps"></a>後續步驟
 
-您現在可以繼續深入了解變更摘要在下列文章：
+您現在可以在下列文章中繼續深入了解變更摘要：
 
 * [變更摘要的概觀](change-feed.md)
 * [讀取變更摘要的方式](read-change-feed.md)

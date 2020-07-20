@@ -1,35 +1,110 @@
 - name: Azure 認知服務文件
-  href: index.md
+  href: index.yml
 - name: 概觀
   expanded: true
   items:
-    - name: 什麼是認知服務？
+    - name: 認知服務是什麼？
       href: Welcome.md
+    - name: 認知服務文件中有何新資訊？
+      href: whats-new-docs.md
+    - name: 認知服務和機器學習
+      href: cognitive-services-and-machine-learning.md
+    - name: 認知服務的自訂子網域
+      href: cognitive-services-custom-subdomains.md
     - name: 語言支援
       href: language-support.md
-    - name: 容器支援
-      href: cognitive-services-container-support.md
 - name: 快速入門
   items:
-    - name: 建立帳戶
+    - name: 使用 Azure 入口網站建立新的資源
       href: cognitive-services-apis-create-account.md
-    - name: Authentication
+    - name: 使用 Azure CLI 建立新的資源
+      href: cognitive-services-apis-create-account-cli.md
+    - name: 使用 ARM 範本建立新的資源
+      displayName: Resource Manager
+      href: resource-manager-template.md
+    - name: 診斷記錄
+      href: diagnostic-logging.md
+- name: 範例
+  items:
+    - name: Azure 原則內建
+      href: ./policy-samples.md
+- name: 安全性
+  items:
+    - name: 認知服務安全性
+      href: cognitive-services-security.md
+    - name: 認知服務的虛擬網路
+      href: cognitive-services-virtual-networks.md
+    - name: 設定客戶管理的金鑰
+      href: ./encryption/cognitive-services-encryption-keys-portal.md
+    - name: 驗證認知服務的要求
       href: authentication.md
+    - name: 安全性基準
+      href: security-baseline.md
+- name: 容器支援
+  items:
+    - name: 容器支援
+      href: cognitive-services-container-support.md
+    - name: 容器映像標籤
+      href: ./containers/container-image-tags.md
+    - name: 容器常見問題集
+      href: ./containers/container-faq.md
+    - name: 容器配方
+      items:
+        - name: 容器重複使用
+          href: ./containers/container-reuse-recipe.md
+        - name: 部署到 Azure 容器執行個體
+          href: ./containers/azure-container-instance-recipe.md
+        - name: 部署到 Azure Kubernetes
+          href: ./containers/azure-kubernetes-recipe.md
+        - name: 透過 Docker Compose 部署
+          href: ./containers/docker-compose-recipe.md
+    - name: 其他 Azure 容器服務
+      items:
+        - name: Azure Container Instances
+          href: ../container-instances/container-instances-tutorial-prepare-app.md
+        - name: Azure Container Registry
+          href: ../container-registry/container-registry-get-started-azure-cli.md
+        - name: Azure Kubernetes Service (AKS)
+          href: ../aks/tutorial-kubernetes-prepare-app.md
+- name: 巨量資料
+  items:
+    - name: 巨量資料的認知服務
+      href: ./big-data/cognitive-services-for-big-data.md
+    - name: 開始使用
+      href: ./big-data/getting-started.md
+    - name: 範例
+      items:
+        - name: Python
+          href: ./big-data/samples-python.md
+        - name: Scala
+          href: ./big-data/samples-scala.md
+    - name: 食譜
+      items:
+        - name: 配方：異常偵測器
+          href: ./big-data/recipes/anomaly-detection.md
+        - name: 配方：藝術總管
+          href: ./big-data/recipes/art-explorer.md
 - name: 資源
   items:
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/roadmap/?category=cognitive-services'
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/'
     - name: 定價計算機
       href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: 法規遵循
+      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: 支援和說明選項
+      href: cognitive-services-support-options.md
+    - name: 服務等級協定 (SLA)
+      href: 'https://azure.microsoft.com/support/legal/sla/cognitive-services/v1_1/'
     - name: 影片
       href: 'https://azure.microsoft.com/resources/videos/index/?services=cognitive-services'
+    - name: 部落格
+      href: 'https://azure.microsoft.com/blog/topics/cognitive-services/'
     - name: 服務更新
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
     - name: 提供產品意見反應
       href: 'https://cognitive.uservoice.com/'
     - name: 管理辦法
       href: 'https://go.microsoft.com/fwlink/?LinkId=698895'
-    - name: 知識庫
-      href: 'https://cognitive.uservoice.com/knowledgebase'

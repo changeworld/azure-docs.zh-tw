@@ -1,25 +1,24 @@
 ---
-title: 適用於 Windows 的 Azure 磁碟加密 | Microsoft Docs
+title: Windows 適用的 Azure 磁碟加密
 description: 使用虛擬機器擴充功能將 Azure 磁碟加密部署至 Windows 虛擬機器。
 services: virtual-machines-windows
 documentationcenter: ''
 author: ejarvi
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 06/12/2018
+ms.date: 03/19/2020
 ms.author: ejarvi
-ms.openlocfilehash: 46699fb1add42d23a11234d5cd05e4a9627a91fd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e975e1757b77b4aab52a59d1f0709ef9cadae94e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60800054"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80066873"
 ---
 # <a name="azure-disk-encryption-for-windows-microsoftazuresecurityazurediskencryption"></a>適用於 Windows 的 Azure 磁碟加密 (Microsoft.Azure.Security.AzureDiskEncryption)
 
@@ -29,88 +28,157 @@ Azure 磁碟加密會利用 BitLocker 在執行 Windows 的 Azure 虛擬機器�
 
 ## <a name="prerequisites"></a>必要條件
 
-如需先決條件的完整清單，請參閱 [Azure 磁碟加密先決條件](
-../../security/azure-security-disk-encryption-prerequisites.md)。
+如需必要條件的完整清單，請參閱[適用于 Windows vm 的 Azure 磁碟加密](../windows/disk-encryption-overview.md)，特別是下列各節：
 
-### <a name="operating-system"></a>作業系統
-
-如需目前的 Windows 版本清單，請參閱 [Azure 磁碟加密先決條件](../../security/azure-security-disk-encryption-prerequisites.md)。
-
-### <a name="internet-connectivity"></a>網際網路連線
-
-Azure 磁碟加密需要網際網路連線以存取 Active Directory、Key Vault、儲存體和套件管理端點。  如需網路安全性設定的詳細資訊，請參閱 [Azure 磁碟加密先決條件](
-../../security/azure-security-disk-encryption-prerequisites.md)。
+- [支援的 VM 與作業系統](../windows/disk-encryption-overview.md#supported-vms-and-operating-systems)
+- [網路需求](../windows/disk-encryption-overview.md#networking-requirements)
+- [群組原則需求](../windows/disk-encryption-overview.md#group-policy-requirements)
 
 ## <a name="extension-schema"></a>擴充功能結構描述
+
+Azure 磁碟加密（ADE）的延伸模組架構有兩個版本：
+- 2.2 版-不使用 Azure Active Directory （AAD）屬性的較新建議架構。
+- v1.1-需要 Azure Active Directory （AAD）屬性的舊版架構。 
+
+若要選取目標架構， `typeHandlerVersion` 屬性必須設定為等於您要使用的架構版本。
+
+### <a name="schema-v22-no-aad-recommended"></a>架構2.2：無 AAD （建議）
+
+建議所有新的 Vm 使用2.2 架構，而且不需要 Azure Active Directory 屬性。
 
 ```json
 {
   "type": "extensions",
   "name": "[name]",
-  "apiVersion": "2015-06-15",
+  "apiVersion": "2019-07-01",
+  "location": "[location]",
+  "properties": {
+        "publisher": "Microsoft.Azure.Security",
+        "type": "AzureDiskEncryption",
+        "typeHandlerVersion": "2.2",
+        "autoUpgradeMinorVersion": true,
+        "settings": {
+          "EncryptionOperation": "[encryptionOperation]",
+          "KeyEncryptionAlgorithm": "[keyEncryptionAlgorithm]",
+          "KeyVaultURL": "[keyVaultURL]",
+          "KekVaultResourceId": "[keyVaultResourceID]",
+          "KeyEncryptionKeyURL": "[keyEncryptionKeyURL]",
+          "KeyVaultResourceId": "[keyVaultResourceID]",
+          "SequenceVersion": "sequenceVersion]",
+          "VolumeType": "[volumeType]"
+        }
+  }
+}
+```
+
+
+### <a name="schema-v11-with-aad"></a>架構 v1.1：使用 AAD 
+
+1.1 架構需要 `aadClientID` ，而且 `aadClientSecret` `AADClientCertificate` 不建議針對新的 vm 使用或和。
+
+使用 `aadClientSecret`：
+
+```json
+{
+  "type": "extensions",
+  "name": "[name]",
+  "apiVersion": "2019-07-01",
   "location": "[location]",
   "properties": {
     "protectedSettings": {
-      "AADClientSecret": "[aadClientSecret]",
-    },
+      "AADClientSecret": "[aadClientSecret]"
+    },    
     "publisher": "Microsoft.Azure.Security",
+    "type": "AzureDiskEncryption",
+    "typeHandlerVersion": "1.1",
     "settings": {
       "AADClientID": "[aadClientID]",
       "EncryptionOperation": "[encryptionOperation]",
       "KeyEncryptionAlgorithm": "[keyEncryptionAlgorithm]",
-      
-      "KeyEncryptionKeyURL": "[keyEncryptionKeyURL]",
-          "KekVaultResourceId": "[keyVaultResourceID]",
-      
       "KeyVaultURL": "[keyVaultURL]",
-          "KeyVaultResourceId": "[keyVaultResourceID]",
-
-      "EncryptionOperation": "[encryptionOperation]",
+      "KeyVaultResourceId": "[keyVaultResourceID]",
+      "KekVaultResourceId": "[keyVaultResourceID]",
+      "KeyEncryptionKeyURL": "[keyEncryptionKeyURL]",
       "SequenceVersion": "sequenceVersion]",
       "VolumeType": "[volumeType]"
-    },
-    "type": "AzureDiskEncryption",
-    "typeHandlerVersion": "[extensionVersion]"
+    }
   }
 }
 ```
+
+使用 `AADClientCertificate`：
+
+```json
+{
+  "type": "extensions",
+  "name": "[name]",
+  "apiVersion": "2019-07-01",
+  "location": "[location]",
+  "properties": {
+    "protectedSettings": {
+      "AADClientCertificate": "[aadClientCertificate]"
+    },    
+    "publisher": "Microsoft.Azure.Security",
+    "type": "AzureDiskEncryption",
+    "typeHandlerVersion": "1.1",
+    "settings": {
+      "AADClientID": "[aadClientID]",
+      "EncryptionOperation": "[encryptionOperation]",
+      "KeyEncryptionAlgorithm": "[keyEncryptionAlgorithm]",
+      "KeyVaultURL": "[keyVaultURL]",
+      "KeyVaultResourceId": "[keyVaultResourceID]",
+      "KekVaultResourceId": "[keyVaultResourceID]",
+      "KeyEncryptionKeyURL": "[keyEncryptionKeyURL]",
+      "SequenceVersion": "sequenceVersion]",
+      "VolumeType": "[volumeType]"
+    }
+  }
+}
+```
+
 
 ### <a name="property-values"></a>屬性值
 
 | 名稱 | 值 / 範例 | 資料類型 |
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.Azure.Security | string |
-| type | AzureDiskEncryptionForWindows| string |
-| typeHandlerVersion | 1.0, 1.1, 2.2 (VMSS) | int |
-| (選擇性) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | GUID | 
-| (選擇性) AADClientSecret | password | string |
-| (選擇性) AADClientCertificate | thumbprint | string |
-| EncryptionOperation | EnableEncryption | string | 
-| KeyEncryptionAlgorithm | RSA-OAEP, RSA1_5 | string |
-| KeyEncryptionKeyURL | url | string |
-| KeyVaultResourceId | 资源 URI | string |
-| KekVaultResourceId | 资源 URI | string |
-| KeyVaultURL | url | string |
-| SequenceVersion | uniqueidentifier | string |
-| VolumeType | 作業系統、資料、全部 | string |
+| apiVersion | 2019-07-01 | date |
+| publisher | Microsoft.Azure.Security | 字串 |
+| type | AzureDiskEncryption | 字串 |
+| typeHandlerVersion | 2.2、1。1 | 字串 |
+| （1.1 架構）AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | guid | 
+| （1.1 架構）AADClientSecret | 密碼 | 字串 |
+| （1.1 架構）AADClientCertificate | thumbprint | 字串 |
+| EncryptionOperation | EnableEncryption、EnableEncryptionFormatAll | 字串 | 
+| （選擇性-預設的 RSA-OAEP）KeyEncryptionAlgorithm | 'RSA-OAEP'、'RSA-OAEP-256'、'RSA1_5' | 字串 |
+| KeyVaultURL | url | 字串 |
+| Keyvaultresourceid 值 | url | 字串 |
+| 選擇性KeyEncryptionKeyURL | url | 字串 |
+| 選擇性KekVaultResourceId | url | 字串 |
+| 選擇性SequenceVersion | UNIQUEIDENTIFIER | 字串 |
+| VolumeType | 作業系統、資料、全部 | 字串 |
 
 ## <a name="template-deployment"></a>範本部署
-如需範本部署的範例，請參閱[從資源庫映像建立新的加密 Windows VM](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-new-vm-gallery-image)。
 
-## <a name="azure-cli-deployment"></a>Azure CLI 部署
+如需以架構2.2 為基礎之範本部署的範例，請參閱 Azure 快速入門範本[201-加密-執行-不含 aad 的 windows vm](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm-without-aad)。
 
-您可以在最新的 [Azure CLI 文件](/cli/azure/vm/encryption?view=azure-cli-latest)中找到相關指示。 
+如需以架構 v1.1 為基礎之範本部署的範例，請參閱 Azure 快速入門範本[201-加密-windows-vm](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm)。
+
+>[!NOTE]
+> 此外，如果將 `VolumeType` 參數設定為 All，只有在資料磁片格式正確時，才會將其加密。 
 
 ## <a name="troubleshoot-and-support"></a>疑難排解與支援
 
 ### <a name="troubleshoot"></a>疑難排解
 
-請參閱 [Azure 磁碟加密疑難排解指南](../../security/azure-security-disk-encryption-tsg.md)。
+如需疑難排解資訊，請參閱 [Azure 磁碟加密疑難排解指南](../windows/disk-encryption-troubleshooting.md)。
 
 ### <a name="support"></a>支援
 
-如果您在本文中有任何需要協助的地方，您可以連絡 [MSDN Azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/community/)上的 Azure 專家。 或者，您可以提出 Azure 支援事件。 請移至 [Azure 支援網站](https://azure.microsoft.com/support/options/)，然後選取 [取得支援]。 如需使用 Azure 支援的資訊，請參閱 [Microsoft Azure 支援常見問題集](https://azure.microsoft.com/support/faq/)。
+如果您在本文中有任何需要協助的地方，您可以連絡 [MSDN Azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/community/)上的 Azure 專家。 
+
+或者，您可以提出 Azure 支援事件。 移至[Azure 支援](https://azure.microsoft.com/support/options/)，然後選取 [取得支援]。 如需使用 Azure 支援的相關資訊，請參閱[Microsoft Azure 支援常見問題](https://azure.microsoft.com/support/faq/)。
 
 ## <a name="next-steps"></a>後續步驟
-如需擴充功能的詳細資訊，請參閱[虛擬機器擴充功能和 Windows 功能](features-windows.md)。
+
+* 如需擴充功能的詳細資訊，請參閱[虛擬機器擴充功能和 Windows 功能](features-windows.md)。
+* 如需 Windows Azure 磁碟加密的詳細資訊，請參閱[windows 虛擬機器](../../security/fundamentals/azure-disk-encryption-vms-vmss.md#windows-virtual-machines)。

@@ -1,35 +1,31 @@
 ---
-title: Azure AD Connect 同步：在 Azure AD Connect 同步中進行設定變更 | Microsoft Docs
+title: Azure AD Connect 同步：在 Azure AD Connect 同步中變更設定
 description: 逐步解說如何對 Azure AD Connect 同步處理中的組態進行變更。
 services: active-directory
-documentationcenter: ''
 author: billmath
 manager: daveba
-editor: ''
 ms.assetid: 7b9df836-e8a5-4228-97da-2faec9238b31
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/30/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 31fe3877fd6098b18686b9d99a012cbfbef7c300
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ea7f2fbd910f574a6486f1db2eaa9b99a4e3ca3e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60244340"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85357863"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect 同步：如何變更預設組態
 本文的目的在於逐步解說如何對 Azure Active Directory (Azure AD) Connect 同步處理中的預設組態進行變更。其中提供一些常見案例的步驟。 具備此知識，您應該能夠根據自己的商務規則對自己的組態進行簡單的變更。
 
 > [!WARNING]
-> 若您變更預設的同步處理規則，則系統在下次更新 Azure AD Connect 時會覆寫這些變更，導致非預期且可能不想要的同步處理結果。
+> 如果您變更預設現成的同步規則，則下次更新 Azure AD Connect 時會覆寫這些變更，導致非預期且可能無用的同步處理結果。
 >
-> 現成可用的同步處理規則具有憑證指紋。 如果您變更這些規則，將不再符合憑證指紋。 未來當您嘗試套用新版的 Azure AD Connect 時可能會遇到問題。 僅利用本文所述的方式進行變更。
+> 預設現成的同步規則具有指紋。 如果您變更這些規則，將不再符合憑證指紋。 未來當您嘗試套用新版的 Azure AD Connect 時可能會遇到問題。 僅利用本文所述的方式進行變更。
 
 ## <a name="synchronization-rules-editor"></a>同步處理規則編輯器
 同步處理規則編輯器用於查看和變更預設組態。 您可以在 [開始] 功能表的 [Azure AD Connect] 群組之下找到它。  
@@ -60,7 +56,7 @@ ms.locfileid: "60244340"
 1. 按一下 [新增規則] 。
 2. 在 [說明] 頁面上輸入下列各項：  
    ![輸入規則篩選](./media/how-to-connect-sync-change-the-configuration/description2.png)  
-   * **名稱**：賦予規則描述性名稱。
+   * **Name**：賦予規則描述性名稱。
    * **描述**：讓其他人可以了解規則用途的一些說明。
    * **連線系統**：這是可在其中找到物件的系統。 在此案例中，請選取 [Active Directory 連接器]。
    * **連線系統/Metaverse 物件類型**：分別選取 [使用者] 和 [人員]。
@@ -71,7 +67,7 @@ ms.locfileid: "60244340"
    ![輸入規則範圍篩選器](./media/how-to-connect-sync-change-the-configuration/scopingfilter.png)  
    此區段用來定義應套用規則的物件。 如果保留空白，規則會套用到所有的使用者物件。 但會包括會議室、服務帳戶，以及其他非人員的使用者物件。
 4. 在 [聯結規則] 頁面上，將欄位保留空白。
-5. 在 [轉換] 頁面上，將 [FlowType] 變更為 [運算式]。 針對 [目標屬性]，選取 [givenName]。 並針對 [來源]，輸入 **PCase([givenName])**。
+5. 在 [轉換] 頁面上，將 [FlowType] 變更為 [運算式]。 針對 [目標屬性]，選取 [givenName]。 並針對 [來源]，輸入 **PCase([givenName])** 。
    ![輸入規則轉換](./media/how-to-connect-sync-change-the-configuration/transformations.png)  
    同步處理引擎會區分函式名稱和屬性名稱的大小寫。 如果您輸入錯誤，您會在新增規則時看到警告。 您可以儲存並繼續執行，但必須重新開啟並修正規則。
 6. 按一下 [新增]  以儲存規則。
@@ -101,7 +97,7 @@ ms.locfileid: "60244340"
    3. 使用 [範圍] 來尋找您要用來測試變更的物件。 選取物件，然後按一下 [預覽] 。 
    4. 在新畫面上，選取 [認可預覽]。  
    ![Commit preview](./media/how-to-connect-sync-change-the-configuration/commitpreview.png)  
-    變更現已認可至 Metaverse。
+   變更現已認可至 Metaverse。
 
 **在 metaverse 中檢視物件**  
 
@@ -140,19 +136,19 @@ ms.locfileid: "60244340"
 
 ### <a name="length-of-attributes"></a>屬性的長度
 字串屬性預設可編索引，且最大長度為 448 個字元。 如果您使用的字串屬性可能包含更多字元，請確定在屬性流程中包含下列項目：  
-`attributeName` <- `Left([attributeName],448)`。
+`attributeName` <- `Left([attributeName],448)`＞。
 
 ### <a name="changing-the-userprincipalsuffix"></a>變更 userPrincipalSuffix
 由於使用者未必會知道 Active Directory 中的 userPrincipalName 屬性，因此這個屬性可能不適合做為登入識別碼。 您可以利用 Azure AD Connect 同步處理安裝精靈來選擇不同的屬性，例如 mail。 但是在某些情況下必須計算屬性。
 
 例如，Contoso 公司有兩個 Azure AD 目錄，一個用於生產環境，一個用於測試。 他們想讓其測試租用戶中的使用者在登入識別碼中使用其他後置詞：  
-`userPrincipalName` <- `Word([userPrincipalName],1,"@") & "@contosotest.com"`。
+`userPrincipalName` <- `Word([userPrincipalName],1,"@") & "@contosotest.com"`＞。
 
 在此運算式中，取出第一個 @-sign 左邊的所有內容 (Word)，然後使用固定的字串串連。
 
 ### <a name="convert-a-multi-value-attribute-to-single-value"></a>將多重值屬性轉換成單一值
 Active Directory 中的某些屬性在結構描述中是多重值，但是在 [Active Directory 使用者和電腦] 中看起來是單一值。 描述屬性是其中一個範例：  
-`description` <- `IIF(IsNullOrEmpty([description]),NULL,Left(Trim(Item([description],1)),448))`。
+`description` <- `IIF(IsNullOrEmpty([description]),NULL,Left(Trim(Item([description],1)),448))`＞。
 
 在此運算式中，如果屬性有值，請取屬性中的第一個項目 (*Item*)、移除開頭和結尾的空格 (*Trim*)，然後保留字串中的前 448 個字元 (*Left*)。
 
@@ -204,7 +200,7 @@ Azure AD Connect 可對 1.1.524.0 版和更新版本之**使用者**物件的 **
 
 - Azure AD 只接受兩個 UserType 屬性值：**Member** 和 **Guest**。
 - 如果 Azure AD Connect 未啟用 UserType 屬性的同步處理，透過目錄同步處理所建立的 Azure AD 使用者就會將 UserType 屬性設定為 **Member**。
-- Azure AD 不允許 Azure AD Connect 變更現有 Azure AD 使用者的 UserType 屬性。 若要設定此屬性，就只能在建立 Azure AD 使用者期間進行。
+- 在 1.5.30.0 版之前，Azure AD 不允許以 Azure AD Connect 變更現有 Azure AD 使用者的 UserType 屬性。 在較舊版本中，只能在建立 Azure AD 使用者時設定此屬性，並[透過 Powershell 變更](/powershell/module/azuread/set-azureaduser?view=azureadps-2.0)。
 
 在啟用 UserType 屬性的同步處理之前，您必須先決定要如何從內部部署 Active Directory 衍生此屬性。 以下是最常見的方法：
 
@@ -214,7 +210,7 @@ Azure AD Connect 可對 1.1.524.0 版和更新版本之**使用者**物件的 **
 
 - 或者，您也可以從其他屬性衍生 UserType 屬性的值。 例如，如果使用者的內部部署 userPrincipalName 屬性是以 <em>@partners.fabrikam123.org</em> 網域部分作為結尾，您就需要以 **Guest** 身分來同步處理所有使用者。 
 
-    如先前所述，Azure AD Connect 不允許 Azure AD Connect 變更現有 Azure AD 使用者的 UserType 屬性。 因此，您必須確定您租用戶中所有現有 Azure AD 使用者的 UserType 屬性設定方式，都與您決定使用的邏輯一致。
+    如先前所述，較舊版本的 Azure AD Connect 不允許以 Azure AD Connect 變更現有 Azure AD 使用者的 UserType 屬性。 因此，您必須確定您租用戶中所有現有 Azure AD 使用者的 UserType 屬性設定方式，都與您決定使用的邏輯一致。
 
 為 UserType 屬性啟用同步處理的步驟可總結為以下幾項︰
 
@@ -229,7 +225,7 @@ Azure AD Connect 可對 1.1.524.0 版和更新版本之**使用者**物件的 **
 >[!NOTE]
 > 本節的剩餘內容會說明這些步驟。 用來說明這些步驟的環境是某個 Azure AD 部署，其具有單一樹系拓撲，但沒有自訂的同步處理規則。 如果您設定了多樹系拓撲和自訂同步處理規則，或具有預備伺服器，則需要據此現況調整這些步驟。
 
-### <a name="step-1-disable-the-sync-scheduler-and-verify-there-is-no-synchronization-in-progress"></a>步驟 1：停用同步排程器，並確認沒有任何同步處理在進行中
+### <a name="step-1-disable-the-sync-scheduler-and-verify-there-is-no-synchronization-in-progress"></a>步驟 1:停用同步排程器，並確認沒有任何同步處理在進行中
 若要避免將不想要的變更匯出到 Azure AD，請確定在您更新同步處理規則時系統不會進行同步處理。 若要停用內建的同步排程器︰
 
  1. 在 Azure AD Connect 伺服器上啟動 PowerShell 工作階段。
@@ -237,7 +233,7 @@ Azure AD Connect 可對 1.1.524.0 版和更新版本之**使用者**物件的 **
  3. 移至 [開始] > [同步處理服務] 來開啟 Synchronization Service Manager。
  4. 移至 [作業] 索引標籤，確認沒有任何作業是「進行中」狀態。
 
-### <a name="step-2-add-the-source-attribute-to-the-on-premises-ad-connector-schema"></a>步驟 2：在內部部署 AD 連接器結構描述中新增來源屬性
+### <a name="step-2-add-the-source-attribute-to-the-on-premises-ad-connector-schema"></a>步驟 2:在內部部署 AD 連接器結構描述中新增來源屬性
 並非所有 Azure AD 屬性都會匯入至內部部署 AD 連接器空間。 若要在所匯入屬性的清單中新增來源屬性︰
 
  1. 移至 Synchronization Service Manager 中的 [連接器] 索引標籤。
@@ -247,7 +243,7 @@ Azure AD Connect 可對 1.1.524.0 版和更新版本之**使用者**物件的 **
  5. 按一下 [確定] 來進行儲存。
 ![在內部部署 AD 連接器結構描述中新增來源屬性](./media/how-to-connect-sync-change-the-configuration/usertype1.png)
 
-### <a name="step-3-add-the-usertype-to-the-azure-ad-connector-schema"></a>步驟 3：將 UserType 新增至 Azure AD 連接器結構描述
+### <a name="step-3-add-the-usertype-attribute-to-the-azure-ad-connector-schema"></a>步驟3：將 UserType 屬性新增至 Azure AD 連接器架構
 根據預設，系統不會在 Azure AD Connect 空間中匯入 UserType 屬性。 若要在所匯入屬性的清單中新增 UserType 屬性︰
 
  1. 移至 Synchronization Service Manager 中的 [連接器] 索引標籤。
@@ -266,19 +262,19 @@ Azure AD Connect 可對 1.1.524.0 版和更新版本之**使用者**物件的 **
 3. 按一下 [新增規則] 按鈕以建立新的輸入規則。
 4. 在 [描述] 索引標籤下，提供下列設定︰
 
-    | 屬性 | Value | 詳細資料 |
+    | 屬性 | 值 | 詳細資料 |
     | --- | --- | --- |
-    | Name | 提供名稱 | 例如，*In from AD – User UserType* |
+    | 名稱 | 提供名稱 | 例如，*In from AD – User UserType* |
     | 描述 | 提供描述 |  |
-    | 连接的系统 | 選取內部部署 AD 連接器 |  |
-    | 连接的系统对象类型 | **使用者** |  |
-    | Metaverse 对象类型 | **人員** |  |
+    | 連線系統 | 選取內部部署 AD 連接器 |  |
+    | 連線系統物件類型 | **使用者** |  |
+    | Metaverse 物件類型 | **人員** |  |
     | 連結類型 | **Join** |  |
     | 優先順序 | 選擇 1–99 之間的數字 | 1–99 已保留供自訂同步處理規則使用。 請勿挑選已由其他同步處理規則使用的值。 |
 
 5. 移至 [範圍篩選器] 索引標籤，並**使用下列子句來新增單一範圍篩選器群組**：
 
-    | 屬性 | 运算符 | Value |
+    | 屬性 | 運算子 | 值 |
     | --- | --- | --- |
     | adminDescription | NOTSTARTWITH | 使用者\_ |
 
@@ -308,19 +304,19 @@ Azure AD Connect 可對 1.1.524.0 版和更新版本之**使用者**物件的 **
 3. 按一下 [新增規則] 按鈕。
 4. 在 [描述] 索引標籤下，提供下列設定︰
 
-    | 屬性 | Value | 詳細資料 |
+    | 屬性 | 值 | 詳細資料 |
     | ----- | ------ | --- |
-    | Name | 提供名稱 | 例如，*Out to AAD – User UserType* |
+    | 名稱 | 提供名稱 | 例如，*Out to AAD – User UserType* |
     | 描述 | 提供描述 ||
     | 連線系統 | 選取 AAD 連接器 ||
     | 連線系統物件類型 | **使用者** ||
-    | Metaverse 对象类型 | **人員** ||
+    | Metaverse 物件類型 | **人員** ||
     | 連結類型 | **Join** ||
     | 優先順序 | 選擇 1–99 之間的數字 | 1–99 已保留供自訂同步處理規則使用。 請勿挑選已由其他同步處理規則使用的值。 |
 
 5. 移至 [範圍篩選器] 索引標籤，並使用兩個子句來新增**單一範圍篩選器群組**：
 
-    | 屬性 | 运算符 | Value |
+    | 屬性 | 運算子 | 值 |
     | --- | --- | --- |
     | sourceObjectType | EQUAL | User |
     | cloudMastered | NOTEQUAL | True |
@@ -344,7 +340,7 @@ Azure AD Connect 可對 1.1.524.0 版和更新版本之**使用者**物件的 **
 
 1. 在 [內部部署 AD 連接器] 上執行 [完整匯入]：
 
-   1. 移至 Synchronization Service Manager 中的 [作業] 索引標籤。
+   1. 移至 Synchronization Service Manager 中的 [連接器] 索引標籤。
    2. 以滑鼠右鍵按一下 [內部部署 AD 連接器]，然後選取 [執行]。
    3. 在彈出的對話方塊中選取 [完整匯入]，然後按一下 [確定]。
    4. 請等候作業完成。

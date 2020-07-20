@@ -4,16 +4,16 @@ description: Azure 儲存體的合規性供應項目摘要
 services: storage
 author: fhryo-msft
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: fryu
 ms.subservice: common
-ms.openlocfilehash: 1ad41b0b7391236a15b7c1be7d42ed81aaf5b51a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c24db9fb1b411de31ba8d086b6baa418f656c920
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61483429"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514395"
 ---
 # <a name="azure-storage-compliance-offerings"></a>Azure 儲存體合規性供應項目
 
@@ -64,7 +64,6 @@ ms.locfileid: "61483429"
 * [MAS + ABS (新加坡)](https://aka.ms/AzureCompliance)
 * [MPAA](https://www.microsoft.com/trustcenter/compliance/mpaa)
 * [NEN-7510 (荷蘭)](https://www.microsoft.com/trustcenter/compliance/nen-7510)
-* [NHS IG Toolkit (英國)](https://www.microsoft.com/trustcenter/Compliance/NHS)
 * [PCI DSS](https://www.microsoft.com/trustcenter/compliance/pci)
 * [共用評定](https://aka.ms/AzureCompliance)
 * [SOX](https://www.microsoft.com/trustcenter/compliance/SOX)

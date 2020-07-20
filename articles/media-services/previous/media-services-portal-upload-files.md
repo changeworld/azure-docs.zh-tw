@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 3ebeb3c601dd3f734265d49d60728056561928be
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3327304916c30863bb4de4b4d18c41ba3c58270d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61127800"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84982555"
 ---
 # <a name="upload-files-to-a-media-services-account-in-the-azure-portal"></a>在 Azure 入口網站中將檔案上傳至媒體服務帳戶 
 
@@ -30,30 +30,30 @@ ms.locfileid: "61127800"
 > 
 
 > [!NOTE]
-> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，請參閱[從 v2 至 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
+> 媒體服務 v2 不會再新增任何新的特性或功能。 如需使用入口網站的最新上傳檔案，請參閱[使用入口網站上傳、編碼和串流內容](../latest/manage-assets-quickstart.md)。<br/>此外，請參閱：[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
 
 在 Azure 媒體服務中，您會將數位檔案上傳到到資產。 資產可以包含視訊、音訊、影像、縮圖集合、文字播放軌及隱藏式輔助字幕檔案 (以及這些檔案的中繼資料)。 上傳檔案之後，您的內容會安全地儲存在雲端，以進一步進行處理和串流處理。
 
 媒體服務有處理檔案的檔案大小上限。 如需有關檔案大小限制的詳細資訊，請參閱[媒體服務配額和限制](media-services-quotas-and-limitations.md)。
 
-若要完成此教學課程，您需要 Azure 帳戶。 如需詳細資訊，請參閱 [Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。 
+若要完成此教學課程，您需要 Azure 帳戶。 如需詳細資訊，請參閱[Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。 
 
 ## <a name="upload-files"></a>上傳檔案
 1. 在 [Azure 入口網站](https://portal.azure.com/)中，選取您的 Azure 媒體服務帳戶。
-2. 選取 **設定** > **資產**。 然後，選取 [上傳] 按鈕。
+2. 選取 [**設定**] [  >  **資產**]。 然後，選取 [上傳]**** 按鈕。
    
     ![上傳檔案](./media/media-services-portal-vod-get-started/media-services-upload.png)
    
-    [上傳視訊資產]  視窗隨即出現。
+    [上傳視訊資產] **** 視窗隨即出現。
    
    > [!NOTE]
    > 媒體服務不會限制上傳影片的檔案大小。
  
-3. 在您的電腦上，移至您要上傳的影片。 選取影片，然後選取 [確定]。  
+3. 在您的電腦上，移至您要上傳的影片。 選取影片，然後選取 [確定]****。  
    
     隨即開始上傳。 您可以在檔名底下看到進度。  
 
-上傳完成後，新資產會列在 [資產] 窗格中。 
+上傳完成後，新資產會列在 [資產]**** 窗格中。 
 
 ## <a name="media-services-learning-paths"></a>媒體服務學習路徑
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

@@ -1,57 +1,70 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure 開發人員空間
+### YamlMime:Landing
+title: Azure Dev Spaces 文件
+summary: Azure Dev Spaces 是 AKS 的擴充功能，可讓您在較大的應用程式內容中輕鬆執行和偵錯您的程式碼。 您可以對程式碼進行端對端測試，在執行於叢集中的程式碼上叫用中斷點，並在小組成員之間共用開發叢集而不受干擾。
 metadata:
-  title: Azure 開發人員空間
-  meta.description: Rapid Kubernetes development with containers and microservices on Azure.
+  title: Azure Dev Spaces 文件
+  description: Azure Dev Spaces 是 AKS 的擴充功能，可讓您在較大的應用程式內容中輕鬆執行和偵錯您的程式碼。 您可以對程式碼進行端對端測試，在執行於叢集中的程式碼上叫用中斷點，並在小組成員之間共用開發叢集而不受干擾。
   services: azure-dev-spaces
-  author: zr-msft
   ms.service: azure-dev-spaces
   ms.topic: landing-page
-  ms.date: 08/23/2018
+  author: zr-msft
   ms.author: zarhoads
-sections:
-  - title: 提供小組快速、疊代的 Kubernetes 開發經驗
-    items:
-      - type: paragraph
-        text: 只需最基本的開發人員機器設定，您即可直接在 Azure Kubernetes Service (AKS) 中反覆執行和偵錯容器。  您也可以在共用的 Kubernetes 叢集中與小組共同作業，並進行與其他元件的端對端測試，無需複寫或模擬相依性。 透過 Azure Dev Spaces，您可以在 Windows、Mac 或 Linux 上使用熟悉的工具 (例如 Visual Studio、Visual Studio Code 或命令列) 進行開發。
-      - type: markdown
-        text: |-
-          > [!IMPORTANT]
-          > 僅有**美國東部**、**美國東部 2**、**美國中部**、**美國西部 2**、**歐洲北部**、**歐洲西部**、**東南亞**、**加拿大中部**和**加拿大東部**區域的 AKS 叢集支援 Azure Dev Spaces。 Azure Dev Spaces 支援使用 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 或 [Visual Studio Code](https://code.visualstudio.com/download) 搭配在 Linux、MacOS 或 Windows 8 或更新版本上安裝的 [Azure Dev Spaces 擴充功能](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds)，以在 AKS 上建置和執行應用程式。 它也支援使用 [Visual Studio 2017](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs) 搭配在 Windows 8 或更新版本上安裝的 Web 開發工作負載和[適用於 Kubernetes 的 Visual Studio Tools](https://aka.ms/get-vsk8stools)。
-  - title: 開始使用 Azure Dev Spaces
-    items:
-      - type: paragraph
-        text: 請選取語言特定指南以開始使用：
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_java.svg'
-            text: Java
-            href: quickstart-java.md
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_vs-code.svg'
-            text: .NET 和 VS Code
-            href: quickstart-netcore.md
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_visual-studio.svg'
-            text: .NET 和 Visual Studio
-            href: quickstart-netcore-visualstudio.md
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_nodejs.svg'
-            text: Node.js
-            href: quickstart-nodejs.md
-  - title: Azure 開發人員空間如何簡化 Kubernetes 開發
-    items:
-      - type: paragraph
-        text: Azure Dev Spaces 可透過下列方式協助開發小組在 Kubernetes 上更具生產力
-      - type: list
-        style: unordered
-        items:
-          - text: 盡可能減少每個小組成員的本機開發人員機器設定，並直接在 Azure 中受管理的 Kubernetes 叢集 AKS 中工作。
-          - text: 使用 Visual Studio 2017 或 Visual Studio Code 直接在 Kubernetes 中快速地反覆執行和偵錯程式碼。
-          - text: 產生可讓您從開發到生產環境中一體適用的 Docker 和 Kubernetes 組態即程式碼資產。
-          - text: 與您的小組共用受管理的 Kubernetes 叢集，並共同合作。 在隔離環境中開發您的程式碼，並對其他元件進行端對端測試，而無須複寫或模擬相依性。
-      - type: markdown
-        text: '![](media/azure-dev-spaces/collaborate-graphic.gif)'
+  manager: gwallace
+  ms.date: 09/30/2019
+  ms.openlocfilehash: ea9865d35b25b5691f702b91c6255f0f703c3e90
+  ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 06/03/2020
+  ms.locfileid: "84310031"
+landingContent:
+- title: 關於 Azure Dev Spaces
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是 Azure Dev Spaces？
+      url: about.md
+  - linkListType: concept
+    links:
+    - text: Azure Dev Spaces 如何運作
+      url: how-dev-spaces-works.md
+  - linkListType: how-to-guide
+    links:
+    - text: 安裝 Azure Dev Spaces
+      url: how-to/install-dev-spaces.md
+- title: 開發和測試微服務
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 執行和偵錯微服務
+      url: quickstart-netcore.md
+    - text: 在一組微服務中與小組共同作業
+      url: quickstart-team-development.md
+  - linkListType: how-to-guide
+    links:
+    - text: 將 Dev Spaces 整合到您的 CI/CD 管線中，以進行更佳的端對端測試
+      url: how-to/setup-cicd.md
+- title: 進階案例
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 使用自訂 NuGet 摘要
+      url: how-to/use-custom-nuget-feed.md
+    - text: 使用私人 Helm 存放庫
+      url: how-to/use-private-helm-repo.md
+    - text: 與 Windows 容器互動
+      url: how-to/run-dev-spaces-windows-containers.md
+    - text: 針對自訂輸入和 HTTPS 使用 traefik
+      url: how-to/ingress-https-traefik.md
+    - text: 針對自訂輸入和 HTTPS 使用 NGINX
+      url: how-to/ingress-https-nginx.md
+- title: 預覽功能
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 使用 GitHub Actions 搭配 Azure Dev Spaces
+      url: how-to/github-actions.md
+    - text: 將 Visual Studio Code 和 Kubernetes 與本機處理序搭配使用
+      url: how-to/local-process-kubernetes-vs-code.md
+    - text: 將 Visual Studio 和 Kubernetes 與本機處理序搭配使用
+      url: how-to/local-process-kubernetes-visual-studio.md

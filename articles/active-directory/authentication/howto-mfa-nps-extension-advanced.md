@@ -1,22 +1,21 @@
 ---
-title: 設定 Azure MFA NPS 擴充功能-Azure Active Directory
+title: 設定 Azure MFA NPS 延伸模組-Azure Active Directory
 description: 安裝 NPS 延伸模組之後，請使用下列步驟進行進階設定，例如 IP 允許清單和 UPN 取代。
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/11/2018
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5bfae3b3be7812ff50ed90a61d495877141bbc7e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 34d92af88106151e7efba679c53c5b5bd1c07dcd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60414897"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80653793"
 ---
 # <a name="advanced-configuration-options-for-the-nps-extension-for-multi-factor-authentication"></a>Multi-Factor Authentication 之 NPS 延伸模組的進階設定選項
 
@@ -30,25 +29,28 @@ ms.locfileid: "60414897"
 
 若要設定替代登入識別碼，請移至 `HKLM\SOFTWARE\Microsoft\AzureMfa`，然後編輯下列登錄值：
 
-| Name | 類型 | 預設值 | 描述 |
+| 名稱 | 類型 | 預設值 | 說明 |
 | ---- | ---- | ------------- | ----------- |
-| LDAP_ALTERNATE_LOGINID_ATTRIBUTE | string | 空白 | 指定您想要使用的 Active Directory 屬性名稱，而非 UPN。 此屬性用作 AlternateLoginId 屬性。 如果此登錄值設定為[有效的 Active Directory 屬性](https://msdn.microsoft.com/library/ms675090.aspx) (例如，mail 或 displayName)，則會使用屬性的值來取代使用者的 UPN 以進行驗證。 如果此登錄值是空的或未設定，則會停用 AlternateLoginId，並以使用者的 UPN 進行驗證。 |
+| LDAP_ALTERNATE_LOGINID_ATTRIBUTE | 字串 | 空白 | 指定您想要使用的 Active Directory 屬性名稱，而非 UPN。 此屬性用作 AlternateLoginId 屬性。 如果此登錄值設定為[有效的 Active Directory 屬性](https://msdn.microsoft.com/library/ms675090.aspx) (例如，mail 或 displayName)，則會使用屬性的值來取代使用者的 UPN 以進行驗證。 如果此登錄值是空的或未設定，則會停用 AlternateLoginId，並以使用者的 UPN 進行驗證。 |
 | LDAP_FORCE_GLOBAL_CATALOG | boolean | False | 使用此旗標，可在查閱 AlternateLoginId 時強制使用通用類別目錄進行 LDAP 搜尋。 將網域控制站設定為通用類別目錄，並將 AlternateLoginId 屬性新增至通用類別目錄，然後啟用此旗標。 <br><br> 如果設定 LDAP_LOOKUP_FORESTS (不是空的)，則**此旗標會強制執行為 true**，不論登錄設定的值為何。 在此情況下，NPS 延伸模組需要使用每個樹系的 AlternateLoginId 屬性來設定通用類別目錄。 |
-| LDAP_LOOKUP_FORESTS | string | 空白 | 提供要搜尋的樹系清單 (以分號分隔)。 例如，*contoso.com;foobar.com*。 如果設定此登錄值，NPS 延伸模組會依列出順序反覆搜尋所有樹系，並傳回第一個成功的 AlternateLoginId 值。 如果未設定此登錄值，AlternateLoginId 查閱會侷限於目前網域。|
+| LDAP_LOOKUP_FORESTS | 字串 | 空白 | 提供要搜尋的樹系清單 (以分號分隔)。 例如，*contoso.com;foobar.com*。 如果設定此登錄值，NPS 延伸模組會依列出順序反覆搜尋所有樹系，並傳回第一個成功的 AlternateLoginId 值。 如果未設定此登錄值，AlternateLoginId 查閱會侷限於目前網域。|
 
 若要針對替代登入識別碼問題進行疑難排解，請使用[替代登入識別碼錯誤](howto-mfa-nps-extension-errors.md#alternate-login-id-errors)的建議步驟。
 
 ## <a name="ip-exceptions"></a>IP 例外狀況
 
-如果您需要監視伺服器可用性 (例如，如果負載平衡器確認哪些伺服器在傳送工作負載之前執行)，則不會想要驗證要求封鎖這些檢查。 相反地，建立一份您知道服務帳戶所使用的 IP 位址清單，並停用該清單的 Multi-Factor Authentication 需求。 
+如果您需要監視伺服器可用性 (例如，如果負載平衡器確認哪些伺服器在傳送工作負載之前執行)，則不會想要驗證要求封鎖這些檢查。 相反地，建立一份您知道服務帳戶所使用的 IP 位址清單，並停用該清單的 Multi-Factor Authentication 需求。
 
-若要設定 IP 允許清單，請移至 `HKLM\SOFTWARE\Microsoft\AzureMfa`，然後設定下列登錄值： 
+若要設定 IP 允許清單，請移至 `HKLM\SOFTWARE\Microsoft\AzureMfa` ，然後設定下列登錄值：
 
-| Name | 類型 | 預設值 | 描述 |
+| 名稱 | 類型 | 預設值 | 說明 |
 | ---- | ---- | ------------- | ----------- |
-| IP_WHITELIST | string | 空白 | 提供 IP 位址清單 (以分號分隔)。 包含產生服務要求之機器的 IP 位址，例如 NAS/VPN 伺服器。 不支援 IP 範圍和子網路。 <br><br> 例如，*10.0.0.1;10.0.0.2;10.0.0.3*。
+| IP_WHITELIST | 字串 | 空白 | 提供 IP 位址清單 (以分號分隔)。 包含產生服務要求之機器的 IP 位址，例如 NAS/VPN 伺服器。 不支援 IP 範圍和子網。 <br><br> 例如，*10.0.0.1;10.0.0.2;10.0.0.3*。
 
-從允許清單中的 IP 位址傳入要求時，會跳過雙步驟驗證。 IP 允許清單會與 RADIUS 要求之 *ratNASIPAddress* 屬性中所提供的 IP 位址進行比較。 如果傳入沒有 ratNASIPAddress 屬性的 RADIUS 要求，則會記錄下列警告：「P_WHITE_LIST_WARNING::IP 允許清單將會予以忽略，因為 RADIUS 要求的 NasIpAddress 屬性中遺漏來源 IP」。
+> [!NOTE]
+> 安裝程式預設不會建立此登錄機碼，而且在重新開機服務時，AuthZOptCh 記錄檔中會出現錯誤。 您可以忽略記錄檔中的這個錯誤，但如果不需要建立此登錄機碼，則不會傳回錯誤訊息。
+
+從中存在的 IP 位址傳入要求時 `IP_WHITELIST` ，會跳過雙步驟驗證。 IP 清單會與 RADIUS 要求的*傳入沒有 ratnasipaddress*屬性中所提供的 ip 位址進行比較。 如果傳入沒有 ratNASIPAddress 屬性的 RADIUS 要求，則會記錄下列警告：「P_WHITE_LIST_WARNING::IP 允許清單將會予以忽略，因為 RADIUS 要求的 NasIpAddress 屬性中遺漏來源 IP」。
 
 ## <a name="next-steps"></a>後續步驟
 

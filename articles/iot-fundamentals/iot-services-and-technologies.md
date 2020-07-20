@@ -1,113 +1,95 @@
 ---
 title: Azure 物聯網 (IoT) 技術與解決方案
-description: 提供一系列的 PaaS/SaaS 技術與解決方案，以供組建 Azure IoT 解決方案之用。
-author: robinsh
+description: 說明可供用來建置 Azure IoT 解決方案的技術和服務集合。
+author: dominicbetts
 ms.service: iot-fundamentals
 services: iot-fundamentals
 ms.topic: overview
-ms.date: 10/09/2018
-ms.author: robinsh
-ms.openlocfilehash: dd80095f50aa7bff488ac24e498afc0b41958dc0
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.date: 01/15/2020
+ms.author: dobett
+ms.openlocfilehash: 0b04b5170c13f6f6c3fd74976461f03e4367060a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57403442"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "77046069"
 ---
-# <a name="internet-of-things-iot-technologies-and-solutions-paas-and-saas"></a>物聯網 (IoT) 技術與解決方案：PaaS 和 SaaS
+# <a name="azure-technologies-and-services-for-creating-iot-solutions"></a>用來建立 IoT 解決方案的 Azure 技術和服務
 
-Microsoft 已建立一個能支援所有客戶需求的產品組合，讓每個人都能享用數位轉換的優點。 Azure IoT 產品組合概述可用的 PaaS/SaaS 技術與解決方案。 它提供兩種途徑讓您建立自己的解決方案：
+Azure IoT 技術和服務可讓您選擇建立各種 IoT 解決方案，以便讓組織進行數位轉型。 例如，您可以：
 
-- 平台即服務 (PaaS)：使用下列任何服務建置您的應用程式。
-    - [Azure IoT 解決方案加速器](https://www.azureiotsolutions.com/)是預先設定的企業級解決方案集合，可讓您加快自訂 IoT 解決方案的開發速度，或是 
-    - [Azure Digital Twins](https://azure.microsoft.com/services/digital-twins/) 服務，可讓您建立實體環境的模型，以使用空間智慧圖形和特定網域物件模型建立內容感知的 IoT 解決方案。
+- 使用 [Azure IoT Central](https://apps.azureiotcentral.com) (受控 IoT 應用程式平台) 來建置及部署安全的企業級 IoT 解決方案。 IoT Central 具有一系列產業專屬的應用程式範本 (例如零售和醫療保健)，可加速您的解決方案開發流程。
+- 擴充適用於 Azure IoT [解決方案加速器](https://www.azureiotsolutions.com)的開放原始碼程式碼基底，以實作常見的 IoT 案例，例如遠端監視或預測性維護。
+- 使用 Azure IoT 平台服務 (例如 [Azure IoT 中樞](../iot-hub/about-iot-hub.md)和 [Azure IoT 裝置 SDK](../iot-hub/iot-hub-devguide-sdks.md)) 從頭開始建置自訂的 IoT 解決方案。
 
-- 軟體即服務 (SaaS)：可讓您快速開始使用 [Azure IoT 中心](https://azure.microsoft.com/services/iot-central/)這個新的 SaaS 解決方案，來開發 IoT 應用程式，而無須接觸到複雜的 IoT 解決方案。 如果您的組織缺少資源而無法建立您自己的 IoT 解決方案，Azure IoT 中心是一種無程式碼的 IoT 解決方案，可以在數分鐘內建立裝置型號、儀表板和規則。
+![Azure IoT 技術、服務和解決方案](./media/iot-services-and-technologies/iot-technologies-services.png)
 
-![Azure IoT 技術和解決方案](./media/iot-services-and-technologies/paas-saas-technologies-solutions.png)
+## <a name="azure-iot-central"></a>Azure IoT 中心
 
-## <a name="solutions"></a>解決方案
+[IoT Central 應用程式平台](https://apps.azureiotcentral.com)可降低開發、管理及維護企業級 IoT 解決方案的負擔和成本。 IoT Central 的可自訂 Web UI 能讓您監視裝置狀況、建立規則，以及在數百萬個裝置的整個生命週期中管理裝置及其資料。 IoT Central 中的 API 介面可讓您獲得程式設計權限，以設定 IoT 解決方案並與其互動。
 
-快速開始使用解決方案加速器和 SaaS 供應項目。 選擇預先設定的解決方案，讓您能夠使用常見的 IoT 案例，例如遠端監視、預測性維護，以及連線的處理站，以建立可完全自訂的解決方案。 或使用 Azure IoT 中心這個完全受控、端對端解決方案，讓您無須具備雲端解決方案的專長，也能運用強大的 IoT 情節。
+Azure IoT Central 是完全受控的應用程式平台，可供您用來建立自訂的 IoT 解決方案。 IoT Central 會使用應用程式範本來建立解決方案。 有適用於一般解決方案的範本，也有適用於特定產業 (例如能源、醫療保健、政府和零售) 的範本。 IoT Central 應用程式範本可讓您在幾分鐘內就部署好 IoT Central 應用程式，然後再使用主題、儀表板和檢視加以自訂。
 
-### <a name="azure-iot-solution-accelerators-paas"></a>Azure IoT 解決方案加速器 (PaaS)
+從 [Azure IoT 認證裝置目錄](https://catalog.azureiotsolutions.com)選擇裝置，以快速連線到您的解決方案。 使用 IoT Central Web UI 來監視和管理您的裝置，讓這些裝置保持良好且連線的狀態。 使用連接器和 API 來整合 IoT Central 應用程式與其他商務應用程式。
 
-Azure IoT 解決方案加速器是可自訂的 PaaS 解決方案，能提供高階功能來控管您的 IoT 解決方案。 如果您的企業正為已連線作業實作 IoT，或有物聯網產品方面的特定自訂需求，Azure IoT 解決方案加速器會提供您所需要的控制項。 
+作為完全受控的應用程式平台，IoT Central 具有簡單且可預測的定價模型。
 
-有大量裝置或裝置型號的組織，以及尋求連線的處理站解決方案的製造商，都是從 IoT 解決方案加速器獲益的例子。 IoT 解決方案加速器會建立針對複雜需求量身打造且可高度自訂的解決方案，以提供： 
+## <a name="azure-iot-solution-accelerators"></a>Azure IoT 解決方案加速器
 
-- 預先建置的解決方案
-    - 遠端監視
-    - 連線的處理站
-    - 預測性維護
-    - 裝置模擬
-- 能夠快速部署
-- 縮短價值時間
-- 具備強大控管功能的解決方案 
- 
-### <a name="azure-iot-central-saas"></a>Azure IoT 中心 (SaaS)
+[Azure IoT 解決方案加速器](https://www.azureiotsolutions.com)是企業級可自訂解決方案的集合。 您可以原封不動地部署這些解決方案，也可以使用開放原始碼 Java 或 .NET 原始程式碼來開發自訂的 IoT 解決方案。
 
-Azure 的 IoT 中心是完全受控的 SaaS 解決方案，讓您無須具備豐富的 IoT 體驗也能快速開始使用。 如果您的企業追求速度勝於自訂，SaaS 模型最符合您的 IoT 實作需求。 
+Azure IoT 解決方案加速器可提升您對 IoT 解決方案的控制能力。 解決方案加速器包含預先建置而可用於常見 IoT 案例的解決方案，因此您可以在幾分鐘內就部署到 Azure 訂用帳戶中。 這些案例包括：
 
-裝置型號較少、可預測情節較多，且 IoT/IT 能力有限的組織，現在能夠透過 SaaS 方法享有 IoT 的優點。 過去缺乏時間、經費與專業能力而無法開發物聯網產品的公司，現在可以快速地開始使用 Azure IoT 中心。 Microsoft 一直領導產業提供成熟的 SaaS 解決方案，以處理常見的 IoT 實作需求。 
+  - 遠端監視
+  - 連線的處理站
+  - 預測性維護
+  - 裝置模擬
 
-- 完全受控的 IoT SaaS
-- 無須具備雲端解決方案開發專業能力
-- 可針對您的需求設定
-- 適用於簡單的 IoT 需求
+所有解決方案加速器的開放原始碼程式碼基底都可以在 GitHub 上取得。 請下載程式碼以自訂解決方案加速器來符合您特有的 IoT 需求。
 
-### <a name="compare-azure-iot-solution-accelerators-and-azure-iot-central"></a>比較 Azure IoT 解決方案加速器與 Azure IoT 中心
+解決方案加速器會使用必須在 Azure 訂用帳戶中才能管理的 Azure 服務 (例如 Azure IoT 中樞和 Azure 儲存體)。
 
-若要實作典型的 [IoT 解決方案架構](/azure/iot-fundamentals/iot-introduction)，Azure IoT 提供了 [Azure IoT 解決方案加速器](/azure/iot-suite)及 [Azure IoT 中心](https://www.microsoft.com/internet-of-things/iot-central-saas-solutions)等數種選擇，分別滿足不同的客戶需求。
+## <a name="custom-solutions"></a>自訂解決方案
 
-[Azure IoT 中樞](https://azure.microsoft.com/services/iot-hub/)是 Azure IoT 中心和 Azure IoT 解決方案加速器都會使用的核心 Azure PaaS。 IoT 中樞可在數百萬個 IoT 裝置和一個雲端解決方案之間啟用可靠且安全的雙向通訊。 IoT 中樞可協助您因應 IoT 實作挑戰，例如：
+若要從頭開始建置 IoT 解決方案，或擴充使用 IoT Central 或解決方案加速器所建立的解決方案，請使用下列一或多項 Azure IoT 技術和服務：
+
+### <a name="devices"></a>裝置
+
+使用其中一個 [Azure IoT 入門套件](https://catalog.azureiotsolutions.com/kits)來開發 IoT 裝置，或從 [Azure IoT 認證裝置目錄](https://catalog.azureiotsolutions.com)中選擇要使用的裝置。 使用開放原始碼[裝置 SDK](../iot-hub/iot-hub-devguide-sdks.md) 來實作內嵌程式碼。 裝置 SDK 支援多種作業系統，例如 Linux、Windows 和即時作業系統。 有適用於多種程式設計語言的 SDK，例如 [C](https://github.com/Azure/azure-iot-sdk-c)、[Node.js](https://github.com/Azure/azure-iot-sdk-node)、[Java](https://github.com/Azure/azure-iot-sdk-java)、[.NET](https://github.com/Azure/azure-iot-sdk-csharp) 和 [Python](https://github.com/Azure/azure-iot-sdk-python)。
+
+您可以使用 [IoT 隨插即用預覽版](../iot-pnp/overview-iot-plug-and-play.md)服務，進一步簡化為裝置建立內嵌程式碼的方式。 IoT 隨插即用可讓解決方案開發人員將裝置與解決方案整合，而不需要撰寫任何內嵌程式碼。 IoT 隨插即用的核心是說明裝置功能的「裝置功能模型」  結構描述。 使用裝置功能模型來產生內嵌裝置程式碼，並設定雲端式解決方案，例如 IoT Central 應用程式。
+
+[Azure IoT Edge](../iot-edge/about-iot-edge.md) 可讓您將部分的 IoT 工作負載從 Azure 雲端服務卸載至您的裝置。 IoT Edge 可以減少解決方案中的延遲、減少裝置與雲端交換的資料量，以及啟用離線案例。 您可以從 IoT Central 和一些解決方案加速器來管理 IoT Edge 裝置。
+
+[Azure Sphere](https://docs.microsoft.com/azure-sphere/product-overview/what-is-azure-sphere) 是安全且高階應用程式平台，搭配可供連網裝置使用的內建通訊及安全性功能。 其包含安全的微控制器單元、自訂的 Linux 型作業系統，以及可提供持續、可更新安全性的雲端式安全性服務。
+
+### <a name="cloud-connectivity"></a>雲端連線能力
+
+[Azure IoT 中樞](../iot-hub/about-iot-hub.md)服務可在數百萬個 IoT 裝置和一個雲端式解決方案之間實現可靠且安全的雙向通訊。 [Azure IoT 中樞裝置佈建服務](../iot-dps/about-iot-dps.md)是 IoT 中樞的協助程式服務。 此服務可自動就將裝置以 Just-in-Time 的方式佈建到正確的 IoT 中樞，您完全不必介入。 這些功能可讓客戶以安全且可擴充的方式佈建數百萬個裝置。
+
+IoT 中樞是解決方案加速器的核心元件，可供您用來因應 IoT 實作挑戰，例如：
 
 * 大量裝置的連線能力和管理。
 * 大量的遙測資料擷取。
 * 裝置的命令與控制。
 * 裝置安全性的強制執行。
 
-選擇 Azure IoT 產品是規劃您 IoT 解決方案的重要部分。 IoT 中樞是獨立的 Azure 服務，本身不會提供端對端的 IoT 解決方案。 IoT 中樞可以作為任何 IoT 解決方案的起點，而且不需要透過 Azure IoT 解決方案加速器或 Azure IoT 中心就可使用。 Azure IoT 解決方案加速器和 Azure IoT 中心都會使用 IoT 中樞與其他 Azure 服務。 下表彙總了 Azure IoT 解決方案加速器和 Azure IoT 中心之間的主要差異，可協助您根據需求做出正確的選擇：
+### <a name="bridging-the-gap-between-the-physical-and-digital-worlds"></a>消除實體和數位世界的隔閡
 
-|                        | Azure IoT 解決方案加速器 | Azure IoT 中心 |
-| ---------------------- | --------- | ----------- |
-| 主要用途 | 加速開發需要最大彈性的自訂 IoT 解決方案。 | 加速簡易 IoT 解決方案上市時間，不需要深入的服務自訂。 |
-| 存取基礎 PaaS 服務          | 您可存取基礎 Azure 服務來加以管理，或視需要加以取代。 | SaaS。 完全受控的解決方案，不會公開基礎服務。 |
-| 彈性            | 高。 微服務的程式碼是開放原始碼，您可以使用任何您認為合適的方式修改它。 此外，您可以自訂部署基礎結構。| 中。 您可以使用以內建瀏覽器為基礎的使用者體驗，自訂解決方案模型和 UI 層面。 基礎結構無法自訂，因為並不會公開各種元件。|
-| 技能層級                 | 中高。 需要 Java 或 .NET 技能來自訂解決方案後端。 您需要 JavaScript 技能來自訂視覺效果。 | 低。 您需要有建立模型的技能來自訂解決方案。 不需要編寫程式碼的技能。 |
-| 上手體驗 | 解決方案加速器可實作常見的 IoT 案例。 可在幾分鐘內部署完成。 | 應用程式範本和裝置範本會提供預先建置的模型。 可在幾分鐘內部署完成。 |
-| 價格                | 您可以微調該服務以控制成本。 | 簡單且可預測的定價結構。 |
+[Azure Digital Twins](../digital-twins/about-digital-twins.md) 是一項 IoT 服務，可讓您建立實體環境的模型。 其會使用空間智慧圖形，以建立人員、空間和裝置之間的關聯性模型。 讓數位世界與實體世界之間的資料相互關聯，您即可建立內容感知的解決方案。
 
-決定使用哪個產品來建置 IoT 解決方案的最重要因素如下：
-
-* 您的業務需求
-* 您要建置的解決方案類型
-* 以長期來看，貴組織建置與維護解決方案的一套技能
-
-## <a name="technologies-paas"></a>技術 (PaaS)
-
-透過平台服務最完整的 IoT 產品組合，跨越 Azure 平台的平台即服務 (PaaS) 技術可讓您輕鬆地建立、自訂及控制您 IoT 解決方案的各個層面。 與數十億個 IoT 裝置建立雙向溝通，並大規模地管理您的 IoT 裝置。 然後將您的 IoT 裝置資料與如 Azure Cosmos DB 與 Azure 時間序列深入解析等其他平台服務整合，以加強整個解決方案中的見解。 
-
-### <a name="device-support"></a>裝置支援
-
-善用 [Azure IoT 入門套件](https://catalog.azureiotsolutions.com/kits)或從[裝置目錄](https://catalog.azureiotsolutions.com/)的上百個 IoT 認證裝置中作出選擇，充滿自信地開始您的 IoT 專案。 所有裝置皆為平台中立並經過測試，能夠順暢連接 IoT 中樞。
-使用開放原始碼[裝置 SDK](/azure/iot-hub/iot-hub-devguide-sdks)，將您所有的裝置連接至 Azure IoT。 SDK 支援多種作業系統，例如 Linux、Windows 及即時作業系統，並支援多種程式設計語言，像是 [C](https://github.com/Azure/azure-iot-sdk-c)、[Node.js](https://github.com/Azure/azure-iot-sdk-node)、[Java](https://github.com/Azure/azure-iot-sdk-java)、[.NET](https://github.com/Azure/azure-iot-sdk-csharp) 及 [Python](https://github.com/Azure/azure-iot-sdk-python)。
-
-### <a name="iot"></a>IoT 
-[Azure IoT 中樞](https://azure.microsoft.com/services/iot-hub/)是一項完全受控的服務，可在數百萬個 IoT 裝置和一個解決方案後端之間啟用可靠且安全的雙向通訊。 Azure IoT 中樞裝置佈建服務是 IoT 中樞的協助程式服務，無須人為介入，即可對正確的 IoT 中樞進行 Just-In-Time 自動佈建，讓客戶能以安全又可調整的方式佈建數百萬個裝置。
-
-### <a name="edge"></a>Edge
-[Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/) 是一項 IoT 服務。 這項服務提供客戶在裝置上分析資料的服務，也稱為 「就地型」。 將部分的工作負載就地化，便可減少延遲並能選擇離線情節。
-
-### <a name="spatial-intelligence"></a>空間智慧
-[Azure Digital Twins](https://azure.microsoft.com/services/digital-twins/) 是一項 IoT 服務，可讓您建立實體環境的模型。 它可提供空間智慧圖形，以建立人員、空間和裝置之間的關聯性模型。 讓數位世界與實體世界之間的資料相互關聯，您即可建立內容感知的解決方案。  
+Iot Central 使用 Digital Twins 來讓真實世界中的裝置和資料與數位模型保持同步，從而讓使用者能夠監視和管理已連線的裝置。
 
 ### <a name="data-and-analytics"></a>資料與分析
-充分運用您 IoT 解決方案中一系列的 Azure 資料與分析 PaaS 供應項目，從透過 Azure 機器學讓雲端智慧就地化、使用 Azure Data Lake 以符合經濟效益的方法儲存 IoT 裝置資料，一直到使用 [Azure 時間序列深入解析](https://azure.microsoft.com/services/time-series-insights/)視覺化 IoT 裝置中的大量資料。
 
-### <a name="visualization-and-integration"></a>視覺效果與整合
-Microsoft Azure 提供完整的雲端解決方案，其中結合了持續成長的整合式雲端服務集合，透過業界領先的承諾來為您的資料提供保護與隱私權。 深入了解 [Microsoft Azure](https://azure.microsoft.com/)。
+IoT 裝置通常會產生大量的時間序列資料，例如來自感應器的溫度讀數。 [Azure 時間序列深入解析](../time-series-insights/time-series-insights-overview.md)可以連線到 IoT 中樞、從您的裝置讀取遙測串流、儲存該資料，以及讓您查詢該資料並將其視覺化。
+
+[Azure 地圖服務](/azure/azure-maps)是地理空間服務的集合，採用最新的地圖資料為 Web 和行動裝置應用程式提供準確的地理內容。 您可以使用 REST API、網頁型 JavaScript 控制項或 Android SDK 來建置應用程式。
 
 ## <a name="next-steps"></a>後續步驟
 
-請參閱 [IoT 中樞文件的開始使用一節](/azure/iot-hub/iot-hub-get-started) (英文) 以快速輕鬆地體驗 IoT 功能。 如需更深入的實際操作體驗，請嘗試其中一個 [IoT Edge 教學課程](/azure/iot-edge/tutorial-simulate-device-windows) (英文)。
+如需實際操作體驗，請嘗試下列其中一個快速入門：
+
+- [建立 Azure IoT Central 應用程式](../iot-central/core/quick-deploy-iot-central.md)
+- [將遙測資料從裝置傳送到 IoT 中樞](../iot-hub/quickstart-send-telemetry-cli.md)
+- [試用雲端式遠端監視解決方案](../iot-accelerators/quickstart-remote-monitoring-deploy.md)

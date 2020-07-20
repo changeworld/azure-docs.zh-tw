@@ -1,29 +1,19 @@
 ---
-title: 在 Azure 中使用 Docker Compose 連接至 Linux VM | Microsoft Docs
-description: 如何透過 Azure CLI 在 Linux 虛擬機器上安裝與使用 Docker 和 Compose
-services: virtual-machines-linux
-documentationcenter: ''
+title: 使用 Docker Compose
+description: 如何在具有 Azure CLI 的 Linux 虛擬機器上安裝和使用 Docker 並加以撰寫。
 author: cynthn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 02ab8cf9-318d-4a28-9d0c-4a31dccc2a84
 ms.service: virtual-machines-linux
-ms.devlang: azurecli
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
 ms.date: 02/14/2019
 ms.author: cynthn
-ms.openlocfilehash: 03501ea774cf58a4be88ed9155e5cfdfb99f0379
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 434a3ef8c9bc1738252d59a5dca5bec16d85e45e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61474060"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "78970313"
 ---
 # <a name="get-started-with-docker-and-compose-to-define-and-run-a-multi-container-application-in-azure"></a>在 Azure 中開始使用 Docker 和 Compose 定義並執行多容器應用程式
-借助 [Compose](https://github.com/docker/compose)，可以使用简单的文本文件定义由多个 Docker 容器组成的应用程序。 接著，您可以透過單一命令來啟動應用程式，此命令會執行所需的一切準備工作，以部署您的已定義環境。 作为示例，本文说明如何在 Ubuntu VM 上使用后端 MariaDB SQL 数据库快速设置 WordPress 博客。 您也可以使用 Compose 來設定更複雜的應用程式。
+使用 [[撰寫](https://github.com/docker/compose)] 時，您可以使用簡單的文字檔來定義由多個 Docker 容器所組成的應用程式。 接著，您可以透過單一命令來啟動應用程式，此命令會執行所需的一切準備工作，以部署您的已定義環境。 舉例來說，本文將說明如何藉由 Ubuntu VM 上的後端 MariaDB SQL 資料庫來快速設定 WordPress 部落格。 您也可以使用 Compose 來設定更複雜的應用程式。
 
 本文最後一次測試是在 2019 年 2 月 14 日，使用 [Azure Cloud Shell](https://shell.azure.com/bash) 和 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 2.0.58 版進行的。
 
@@ -36,13 +26,13 @@ ms.locfileid: "61474060"
 az group create --name myDockerGroup --location eastus
 ```
 
-建立名為 cloud-init.txt 的檔案並貼上下列組態。 輸入 `sensible-editor cloud-init.txt` 可建立檔案，並查看可用的編輯器清單。 
+建立名為 cloud-init.txt** 的檔案並貼上下列組態。 輸入 `sensible-editor cloud-init.txt` 可建立檔案，並查看可用的編輯器清單。 
 
 ```yaml
 #include https://get.docker.com
 ```
 
-現在，使用 [az vm create](/cli/azure/vm#az-vm-create) 建立 VM。 使用 `--custom-data` 参数传入 cloud-init 配置文件。 如果您將檔案儲存於目前工作目錄之外的位置，請提供 cloud-init.txt 組態的完整路徑。 下列範例會建立名為 *myDockerVM* 的 VM，並針對 Web 流量開啟連接埠 80。
+現在，使用 [az vm create](/cli/azure/vm#az-vm-create) 建立 VM。 使用 `--custom-data` 參數以傳入 cloud-init 組態檔。 如果您將檔案儲存於目前工作目錄之外的位置，請提供 cloud-init.txt 組態的完整路徑。 下列範例會建立名為 *myDockerVM* 的 VM，並針對 Web 流量開啟連接埠 80。
 
 ```azurecli-interactive
 az vm create \
@@ -103,13 +93,13 @@ db:
 ```
 
 ## <a name="start-the-containers-with-compose"></a>以 Compose 啟動容器
-在與您 docker-compose.yml 檔案相同的目錄中，執行下列命令 (根據您的環境，您可能需要使用 `sudo` 執行 `docker-compose`)：
+在與您 docker-compose.yml** 檔案相同的目錄中，執行下列命令 (根據您的環境，您可能需要使用 `sudo` 執行 `docker-compose`)：
 
 ```bash
 sudo docker-compose up -d
 ```
 
-這個命令會啟動 docker-compose.yml 中指定的 Docker 容器。 此步驟需要幾分鐘的時間來完成。 您會看到類似以下的輸出：
+這個命令會啟動 docker-compose.yml** 中指定的 Docker 容器。 此步驟需要幾分鐘的時間來完成。 您會看到類似以下的輸出：
 
 ```
 Creating wordpress_db_1...
@@ -118,7 +108,7 @@ Creating wordpress_wordpress_1...
 ```
 
 
-若要確認容器是否已啟動，請輸入 `sudo docker-compose ps`。 应看到类似如下的内容：
+若要確認容器是否已啟動，請輸入 `sudo docker-compose ps`。 您應該會看到如下的內容：
 
 ```
         Name                       Command               State         Ports

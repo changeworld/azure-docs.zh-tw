@@ -4,12 +4,12 @@ ms.service: virtual-machines-linux
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 5df1f7ff44a1603dd03d1d803ae9960dc124781e
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 76a080d40721fa78ad703f77f6dbe7a3363ab77e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50227374"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "68857334"
 ---
 ## <a name="install-wordpress"></a>安裝 WordPress
 
@@ -45,7 +45,6 @@ GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP,ALTER
 ON wordpress.*
 TO wordpress@localhost
 IDENTIFIED BY 'yourPassword';
-FLUSH PRIVILEGES;
 ```
 
 執行下列命令來建立資料庫：
@@ -86,6 +85,6 @@ sudo ln -s /usr/share/wordpress /var/www/html/wordpress
 sudo mv /etc/wordpress/config-localhost.php /etc/wordpress/config-default.php
 ```
 
-您現在即可完成 WordPress 設定並且在平台上發佈。 現在開啟瀏覽器並前往 `http://yourPublicIPAddress/wordpress`。 替換為您 VM 的公用 IP 位址。 該頁面看起來應該類似下圖。
+您現在即可完成 WordPress 設定並且在平台上發佈。 開啟瀏覽器並前往 `http://yourPublicIPAddress/wordpress`。 替換為您 VM 的公用 IP 位址。 該頁面看起來應該類似下圖。
 
 ![WordPress 安裝頁面](./media/virtual-machines-linux-tutorial-wordpress/wordpressstartpage.png)

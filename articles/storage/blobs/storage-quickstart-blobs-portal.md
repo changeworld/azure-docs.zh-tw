@@ -1,25 +1,26 @@
 ---
-title: Azure 快速入門 - 使用 Azure 入口網站在物件儲存體中建立 Blob | Microsoft Docs
+title: 快速入門 - 使用 Azure 入口網站建立 Blob
+titleSuffix: Azure Storage
 description: 在本快速入門中，您會在物件 (Blob) 儲存體中使用 Azure 入口網站。 然後，使用 Azure 入口網站將 blob 上傳至 Azure 儲存體、下載 blob，以及列出容器中的 blob。
 services: storage
 author: tamram
-ms.custom: mvc
 ms.service: storage
+ms.subservice: blobs
 ms.topic: quickstart
-ms.date: 11/14/2018
+ms.date: 04/16/2020
 ms.author: tamram
-ms.openlocfilehash: 84753f2c3ab19a0cc9d72ef8ce5011dfc8e5a8da
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: a9a048801c6bea74e6b5318eeedf76f92709bee6
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51711883"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535159"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-the-azure-portal"></a>快速入門：使用 Azure 入口網站上傳、下載及列出 Blob
 
 在本快速入門中，您會了解如何使用 [Azure 入口網站](https://portal.azure.com/)在 Azure 儲存體中建立容器，並且在該容器中上傳和下載區塊 blob。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
@@ -28,36 +29,35 @@ ms.locfileid: "51711883"
 若要在 Azure 入口網站中建立容器，請遵循下列步驟：
 
 1. 在 Azure 入口網站中瀏覽至新的儲存體帳戶。
-2. 在儲存體帳戶的左窗格中，捲動到 [Blob 服務] 區段，然後選取 [Blob]。
-3. 選取 [+ 容器] 按鈕。
+2. 在儲存體帳戶的左窗格中，捲動到 [Blob 服務]  區段，然後選取 [容器]  。
+3. 選取 [+ 容器]  按鈕。
 4. 輸入新容器的名稱。 容器名稱必須是小寫，以字母或數字開頭，並且只能包含字母、數字和虛線 (-) 字元。 如需關於容器和 Blob 名稱的詳細資訊，請參閱[命名和參考容器、Blob 及中繼資料](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)。
-5. 設定容器的公用存取層級。 預設層級是 [私用 (沒有匿名存取權)]。
-6. 選取 [確定] 以建立容器。
+5. 設定容器的公用存取層級。 預設層級是 [私用 (沒有匿名存取權)]  。
+6. 選取 [確定]  以建立容器。
 
     ![顯示如何在 Azure 入口網站中建立容器的螢幕擷取畫面](media/storage-quickstart-blobs-portal/create-container.png)
 
 ## <a name="upload-a-block-blob"></a>上傳區塊 Blob
 
-區塊 Blob 是由組合以成為 Blob 的資料區塊所組成。 使用 Blob 儲存體的大部分案例會採用區塊 Blob。 區塊 Blob 十分適用於在雲端中儲存文字和二進位資料，例如檔案、映像和影片。 本快速入門示範如何使用區塊 Blob。 
+區塊 Blob 是由組合以成為 Blob 的資料區塊所組成。 使用 Blob 儲存體的大部分案例會採用區塊 Blob。 區塊 Blob 十分適用於在雲端中儲存文字和二進位資料，例如檔案、映像和影片。 本快速入門示範如何使用區塊 Blob。
 
 若要將區塊 Blob 上傳到 Azure 入口網站中的新容器，請遵循下列步驟：
 
 1. 在 Azure 入口網站中，瀏覽至您在上一節中建立的容器。
-2. 選取容器以顯示它所包含的 Blob 清單。 此容器是新的，因此尚未包含任何 Blob。
-3. 選取 [上傳] 按鈕，以將 Blob 上傳至容器。
-4. 瀏覽您本機檔案系統以找出要上傳為區塊 Blob 的檔案，然後選取 [上傳]。
-     
+1. 選取容器以顯示它所包含的 Blob 清單。 此容器是新的，因此尚未包含任何 Blob。
+1. 選取 [上傳]  按鈕以開啟 [上傳] 刀鋒視窗，然後瀏覽您的本機檔案系統，尋找要上傳做為區塊 blob 的檔案。 您可以選擇性地展開進階區段，進行上傳作業的其他設定。
+
     ![顯示如何從本機磁碟機上傳 Blob 的螢幕擷取畫面](media/storage-quickstart-blobs-portal/upload-blob.png)
 
-5. 選取 [驗證類型]。 預設值為 **SAS**。
-6. 用這種方式上傳任意數量的 Blob。 您會看到新的 Blob 現在列在容器內。
+1. 選取 [上傳]  按鈕上傳 Blob。
+1. 用這種方式上傳任意數量的 Blob。 您會看到新的 Blob 現在列在容器內。
 
 ## <a name="download-a-block-blob"></a>下載區塊 Blob
 
 您可以下載區塊 Blob，以在瀏覽器中顯示或儲存到本機檔案系統。 若要下載區塊 Blob，請遵循下列步驟：
 
-1. 瀏覽至您在上一節中上傳的 Blob 清單。 
-2. 以滑鼠右鍵按一下您要下載的 Blob，然後選取 [下載]。 
+1. 瀏覽至您在上一節中上傳的 Blob 清單。
+1. 以滑鼠右鍵按一下您要下載的 Blob，然後選取 [下載]  。
 
 ## <a name="clean-up-resources"></a>清除資源
 
@@ -66,9 +66,9 @@ ms.locfileid: "51711883"
 若要刪除容器：
 
 1. 在 Azure 入口網站中，瀏覽至儲存體帳戶中的容器清單。
-2. 選取要刪除的容器。
-3. 選取 [更多] 按鈕 (**...**)，然後選取 [刪除]。
-4. 確認您要刪除容器。
+1. 選取要刪除的容器。
+1. 選取 [更多]  按鈕 ( **...** )，然後選取 [刪除]  。
+1. 確認您要刪除容器。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -76,4 +76,3 @@ ms.locfileid: "51711883"
 
 > [!div class="nextstepaction"]
 > [Blob 儲存體作業操作說明](storage-dotnet-how-to-use-blobs.md)
-

@@ -1,11 +1,11 @@
 ---
 title: 使用 PowerShell 來部署和管理通知中樞
-description: 如何使用 PowerShell 來進行自動化的通知中樞建立和管理
+description: 如何使用 PowerShell 來建立和管理通知中樞以進行自動化
 services: notification-hubs
 documentationcenter: ''
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: 7c58f2c8-0399-42bc-9e1e-a7f073426451
 ms.service: notification-hubs
 ms.workload: mobile
@@ -13,13 +13,14 @@ ms.tgt_pltfrm: powershell
 ms.devlang: na
 ms.topic: article
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: 4dbbaeea736dd46478ad9992201ea28bd7bfc2ba
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: e6334659d41ba201cfdde190ccc9bfa0d58009e3
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61457833"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891189"
 ---
 # <a name="deploy-and-manage-notification-hubs-using-powershell"></a>使用 PowerShell 來部署和管理通知中樞
 
@@ -36,18 +37,18 @@ Azure PowerShell 隨附的 Cmdlet 無法直接支援「管理通知中樞」。 
 
 ## <a name="prerequisites"></a>必要條件
 
-- Azure 訂用帳戶。 Azure 是基于订阅的平台。 如需取得訂用帳戶的詳細資訊，請參閱[購買選項]、[成員供應項目]或[免費試用版]。
+- Azure 訂用帳戶。 Azure 是訂閱型平台。 如需取得訂用帳戶的詳細資訊，請參閱[購買選項]、[成員供應項目]或[免費試用版]。
 - 具備 Azure PowerShell 的電腦。 如需指示，請參閱 [安裝並設定 Azure PowerShell]。
 - 大致了解 PowerShell 指令碼、NuGet 封裝和 .NET Framework。
 
-## <a name="including-a-reference-to-the-net-assembly-for-service-bus"></a>包含对适用于服务总线的 .NET 程序集的引用
+## <a name="including-a-reference-to-the-net-assembly-for-service-bus"></a>包括對服務匯流排之 .NET 組件的參考
 
 Azure PowerShell 中的 PowerShell Cmdlet 尚未提供「管理 Azure 通知中樞」。 若要佈建通知中樞，可以使用 [Microsoft Azure 通知中樞 NuGet 套件](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)中所提供的 .NET 用戶端。
 
 首先，請確定指令碼可以找到 **Microsoft.Azure.NotificationHubs.dll** 組件，其在 Visual Studio 專案中會以 NuGet 套件的形式安裝。 為了要有使用彈性，指令碼會執行這些步驟：
 
 1. 判斷叫用的路徑。
-2. 周遊路徑，直到找到名為 `packages`的資料夾為止。 當您安裝 Visual Studio 專案的 NuGet 封裝時，會建立這個資料夾。
+2. 周遊路徑，直到找到名為 `packages` 的資料夾為止。 當您安裝 Visual Studio 專案的 NuGet 封裝時，會建立這個資料夾。
 3. 以遞迴方式在 `packages` 資料夾中搜尋名為 `Microsoft.Azure.NotificationHubs.dll` 的組件。
 4. 參考組件，以供稍後使用這些類型。
 
@@ -74,7 +75,7 @@ catch [System.Exception]
 
 ## <a name="create-the-namespacemanager-class"></a>建立 `NamespaceManager` 類別
 
-若要佈建通知中樞，請從 SDK 建立 [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.azure.notificationhubs.namespacemanager.aspx) 類別的執行個體。
+若要佈建通知中樞，請從 SDK 建立 [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager?view=azure-dotnet) 類別的執行個體。
 
 您可以使用 Azure PowerShell 隨附的 [Get-AzureSBAuthorizationRule] Cmdlet 來擷取用來提供連接字串的授權規則。 `$NamespaceManager` 變數會儲存 `NamespaceManager` 執行個體的參照。 使用 `$NamespaceManager` 佈建通知中樞。
 
@@ -147,8 +148,8 @@ else
 ## <a name="additional-resources"></a>其他資源
 
 - [使用 PowerShell 管理服務匯流排](../service-bus-messaging/service-bus-powershell-how-to-provision.md)
-- [如何使用 PowerShell 指令碼來建立服務匯流排佇列、主題及訂用帳戶](https://blogs.msdn.com/b/paolos/archive/2014/12/02/how-to-create-a-service-bus-queues-topics-and-subscriptions-using-a-powershell-script.aspx)
-- [如何使用 PowerShell 指令碼來建立服務匯流排命名空間與事件中樞](https://blogs.msdn.com/b/paolos/archive/2014/12/01/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script.aspx)
+- [如何使用 PowerShell 指令碼來建立服務匯流排佇列、主題及訂閱](https://docs.microsoft.com/archive/blogs/paolos/how-to-create-service-bus-queues-topics-and-subscriptions-using-a-powershell-script)
+- [如何使用 PowerShell 指令碼來建立服務匯流排命名空間與事件中樞](https://docs.microsoft.com/archive/blogs/paolos/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script)
 
 也有一些現成的指令碼可供下載：
 

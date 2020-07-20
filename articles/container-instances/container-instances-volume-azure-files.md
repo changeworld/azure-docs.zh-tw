@@ -1,27 +1,25 @@
 ---
-title: 在 Azure 容器執行個體中掛接 Azure 檔案磁碟區
+title: 將 Azure 檔案儲存體磁片區掛接至容器群組
 description: 了解如何掛接 Azure 檔案磁碟區來保存 Azure 容器執行個體的狀態
-services: container-instances
-author: dlepow
-manager: jeconnoc
-ms.service: container-instances
 ms.topic: article
-ms.date: 11/05/2018
-ms.author: danlep
+ms.date: 07/02/2020
 ms.custom: mvc
-ms.openlocfilehash: 365264d40554f45533e2ddf0aeb9d85f3e8f8d2d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: eaf5e0704ba2ea4f0e0a30d61e4ae1d2ad1bf58d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60564016"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259475"
 ---
 # <a name="mount-an-azure-file-share-in-azure-container-instances"></a>在 Azure 容器執行個體中掛接 Azure 檔案共用
 
-根據預設，Azure 容器執行個體都是無狀態的。 如果容器損毀或停止，其所有狀態都會遺失。 若要在容器超過存留期後保存其狀態，您必須從外部存放區掛接磁碟區。 本文示範如何掛接使用 [Azure 檔案](../storage/files/storage-files-introduction.md)建立的 Azure 檔案共用，以便與 Azure 容器執行個體搭配使用。 Azure 檔案提供雲端中完全受控的檔案共用，可透過業界標準伺服器訊息區 (SMB) 通訊協定來存取。 將 Azure 檔案共用與 Azure 容器執行個體搭配使用，可提供類似於將 Azure 檔案共用與 Azure 虛擬機器搭配使用的檔案共用功能。
+根據預設，Azure 容器執行個體都是無狀態的。 如果容器損毀或停止，其所有狀態都會遺失。 若要在容器超過存留期後保存其狀態，您必須從外部存放區掛接磁碟區。 如本文所示，Azure 容器實例可以掛接以[Azure 檔案儲存體](../storage/files/storage-files-introduction.md)建立的 azure 檔案共用。 Azure 檔案儲存體提供了裝載于 Azure 儲存體中的完全受控檔案共用，可透過業界標準伺服器訊息區 (SMB) 通訊協定來存取。 將 Azure 檔案共用與 Azure 容器執行個體搭配使用，可提供類似於將 Azure 檔案共用與 Azure 虛擬機器搭配使用的檔案共用功能。
 
 > [!NOTE]
-> 目前只有 Linux 容器才能掛接 Azure 檔案共用。 雖然我們致力於將所有功能帶入 Windows 容器，但是您可以在 [Azure 容器執行個體配額和區域可用性](container-instances-quotas.md)中找到目前的平台差異。
+> 目前只有 Linux 容器才能掛接 Azure 檔案共用。 在[總覽](container-instances-overview.md#linux-and-windows-containers)中尋找目前的平臺差異。
+>
+> 將 Azure 檔案儲存體共用掛接至容器實例與 Docker [bind 裝載](https://docs.docker.com/storage/bind-mounts/)類似。 請注意，如果您將共用掛接到檔案或目錄所在的容器目錄中，這些檔案或目錄就會被掛接遮蔽，而且在容器執行時無法存取。
+>
 
 ## <a name="create-an-azure-file-share"></a>建立 Azure 檔案共用
 
@@ -42,29 +40,33 @@ az storage account create \
     --sku Standard_LRS
 
 # Create the file share
-az storage share create --name $ACI_PERS_SHARE_NAME --account-name $ACI_PERS_STORAGE_ACCOUNT_NAME
+az storage share create \
+  --name $ACI_PERS_SHARE_NAME \
+  --account-name $ACI_PERS_STORAGE_ACCOUNT_NAME
 ```
 
 ## <a name="get-storage-credentials"></a>取得儲存體認證
 
 若要在 Azure 容器執行個體中掛接 Azure 檔案共用來作為磁碟區，您需要三個值：儲存體帳戶名稱、共用名稱和儲存體存取金鑰。
 
-如果您使用上述指令碼，儲存體帳戶名稱會儲存於 $ACI_PERS_STORAGE_ACCOUNT_NAME 變數中。 若要查看帳戶名稱，請輸入：
+* **儲存體帳戶名稱**-如果您使用上述腳本，儲存體帳戶名稱會儲存在 `$ACI_PERS_STORAGE_ACCOUNT_NAME` 變數中。 若要查看帳戶名稱，請輸入：
 
-```console
-echo $ACI_PERS_STORAGE_ACCOUNT_NAME
-```
+  ```console
+  echo $ACI_PERS_STORAGE_ACCOUNT_NAME
+  ```
 
-我們已知道共用名稱 (在上述指令碼中定義為 acishare)，因此只差儲存體帳戶金鑰，此金鑰可以使用下列命令來找到：
+* **共用名稱**-這個值已經是已知的 (定義為 `acishare` 上述腳本中的) 
 
-```azurecli-interactive
-STORAGE_KEY=$(az storage account keys list --resource-group $ACI_PERS_RESOURCE_GROUP --account-name $ACI_PERS_STORAGE_ACCOUNT_NAME --query "[0].value" --output tsv)
-echo $STORAGE_KEY
-```
+* **儲存體帳戶金鑰**-您可以使用下列命令來找到此值：
 
-## <a name="deploy-container-and-mount-volume"></a>部署容器和掛接磁碟區
+  ```azurecli-interactive
+  STORAGE_KEY=$(az storage account keys list --resource-group $ACI_PERS_RESOURCE_GROUP --account-name $ACI_PERS_STORAGE_ACCOUNT_NAME --query "[0].value" --output tsv)
+  echo $STORAGE_KEY
+  ```
 
-若要掛接 Azure 檔案共用以作為容器中的磁碟區，請在您使用 [az container create][az-container-create] 建立容器時，指定共用和磁碟區掛接點。 如果您已遵循上述步驟，您可以使用下列命令來掛接先前建立的共用並建立容器：
+## <a name="deploy-container-and-mount-volume---cli"></a>部署容器和載入磁片區-CLI
+
+若要使用 Azure CLI 將 Azure 檔案共用掛接為容器中的磁片區，請在使用[az container create][az-container-create]建立容器時，指定共用和磁片區掛接點。 如果您已遵循先前的步驟，您可以使用下列命令來掛接您稍早建立的共用，以建立容器：
 
 ```azurecli-interactive
 az container create \
@@ -79,23 +81,161 @@ az container create \
     --azure-file-volume-mount-path /aci/logs/
 ```
 
-`--dns-name-label` 值在您建立容器執行個體所在的 Azure 區域中必須是唯一的。 如果您在執行命令時收到 **DNS 名稱標籤**錯誤訊息，請更新上方命令中的值。
+此 `--dns-name-label` 值在您建立容器實例所在的 Azure 區域中必須是唯一的。 如果您在執行命令時收到 **DNS 名稱標籤**錯誤訊息，請更新上方命令中的值。
 
 ## <a name="manage-files-in-mounted-volume"></a>管理已掛接磁碟區中的檔案
 
-容器啟動後，您可以使用 Microsoft 部署簡單的 web 應用程式[aci hellofiles] [ aci-hellofiles]中位於指定掛接路徑之 Azure 檔案共用中建立的小型文字檔案的映像。 使用 [az container show][az-container-show] 命令取得 Web 應用程式的完整網域名稱 (FQDN)：
+一旦容器啟動之後，您就可以使用透過 Microsoft [aci-aci-hellofiles][aci-hellofiles]映射部署的簡單 web 應用程式，在 Azure 檔案共用中，于您指定的掛接路徑建立小型文字檔。 使用 [az container show][az-container-show] 命令取得 Web 應用程式的完整網域名稱 (FQDN)：
 
 ```azurecli-interactive
-az container show --resource-group $ACI_PERS_RESOURCE_GROUP --name hellofiles --query ipAddress.fqdn
+az container show --resource-group $ACI_PERS_RESOURCE_GROUP \
+  --name hellofiles --query ipAddress.fqdn --output tsv
 ```
 
-您可以使用 [Azure 入口網站][portal]或 [Microsoft Azure 儲存體總管][storage-explorer]之類的工具擷取和檢查寫入至檔案共用的檔案。
+使用應用程式儲存文字之後，您可以使用[Azure 入口網站][portal]或[Microsoft Azure 儲存體總管][storage-explorer]之類的工具來抓取和檢查檔案，或寫入檔案共用的檔案。
+
+## <a name="deploy-container-and-mount-volume---yaml"></a>部署容器和掛接磁片區-YAML
+
+您也可以部署容器群組，並在具有 Azure CLI 和[YAML 範本](container-instances-multi-container-yaml.md)的容器中裝載磁片區。 部署由多個容器組成的容器群組時，YAML 範本部署是慣用的方法。
+
+下列 YAML 範本會定義一個容器群組，其中包含一個以映射建立的容器 `aci-hellofiles` 。 容器會掛接先前建立為磁片區的 Azure 檔案共用*acishare* 。 在指示的位置，輸入裝載檔案共用之儲存體帳戶的名稱和儲存體金鑰。 
+
+如同在 CLI 範例中，此 `dnsNameLabel` 值在您建立容器實例所在的 Azure 區域中必須是唯一的。 如有需要，請更新 YAML 檔中的值。
+
+```yaml
+apiVersion: '2019-12-01'
+location: eastus
+name: file-share-demo
+properties:
+  containers:
+  - name: hellofiles
+    properties:
+      environmentVariables: []
+      image: mcr.microsoft.com/azuredocs/aci-hellofiles
+      ports:
+      - port: 80
+      resources:
+        requests:
+          cpu: 1.0
+          memoryInGB: 1.5
+      volumeMounts:
+      - mountPath: /aci/logs/
+        name: filesharevolume
+  osType: Linux
+  restartPolicy: Always
+  ipAddress:
+    type: Public
+    ports:
+      - port: 80
+    dnsNameLabel: aci-demo
+  volumes:
+  - name: filesharevolume
+    azureFile:
+      sharename: acishare
+      storageAccountName: <Storage account name>
+      storageAccountKey: <Storage account key>
+tags: {}
+type: Microsoft.ContainerInstance/containerGroups
+```
+
+若要透過 YAML 範本進行部署，請將上述 YAML 儲存到名為 `deploy-aci.yaml` 的檔案，然後使用  參數執行 [az container create`--file`][az-container-create] 命令：
+
+```azurecli
+# Deploy with YAML template
+az container create --resource-group myResourceGroup --file deploy-aci.yaml
+```
+## <a name="deploy-container-and-mount-volume---resource-manager"></a>部署容器和載入磁片區-Resource Manager
+
+除了 CLI 和 YAML 部署之外，您還可以使用 Azure [Resource Manager 範本](/azure/templates/microsoft.containerinstance/containergroups)來部署容器群組，並在容器中裝載磁片區。
+
+首先，填入範本的容器群組 `properties` 區段中的 `volumes` 陣列。 
+
+然後，針對您想要在其中掛接磁片區的每個容器， `volumeMounts` 在容器定義的區段中填入陣列 `properties` 。
+
+下列 Resource Manager 範本會定義一個容器群組，其中包含一個以映射建立的容器 `aci-hellofiles` 。 容器會掛接先前建立為磁片區的 Azure 檔案共用*acishare* 。 在指示的位置，輸入裝載檔案共用之儲存體帳戶的名稱和儲存體金鑰。 
+
+如先前範例所示，此 `dnsNameLabel` 值在您建立容器實例所在的 Azure 區域中必須是唯一的。 如有需要，請更新範本中的值。
+
+```JSON
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "variables": {
+    "container1name": "hellofiles",
+    "container1image": "mcr.microsoft.com/azuredocs/aci-hellofiles"
+  },
+  "resources": [
+    {
+      "name": "file-share-demo",
+      "type": "Microsoft.ContainerInstance/containerGroups",
+      "apiVersion": "2019-12-01",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "containers": [
+          {
+            "name": "[variables('container1name')]",
+            "properties": {
+              "image": "[variables('container1image')]",
+              "resources": {
+                "requests": {
+                  "cpu": 1,
+                  "memoryInGb": 1.5
+                }
+              },
+              "ports": [
+                {
+                  "port": 80
+                }
+              ],
+              "volumeMounts": [
+                {
+                  "name": "filesharevolume",
+                  "mountPath": "/aci/logs"
+                }
+              ]
+            }
+          }
+        ],
+        "osType": "Linux",
+        "ipAddress": {
+          "type": "Public",
+          "ports": [
+            {
+              "protocol": "tcp",
+              "port": "80"
+            }
+          ],
+          "dnsNameLabel": "aci-demo"
+        },
+        "volumes": [
+          {
+            "name": "filesharevolume",
+            "azureFile": {
+                "shareName": "acishare",
+                "storageAccountName": "<Storage account name>",
+                "storageAccountKey": "<Storage account key>"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
+```
+
+若要使用 Resource Manager 範本進行部署，請將上述 JSON 儲存到名為的檔案 `deploy-aci.json` ，然後使用參數執行[az deployment group create][az-deployment-group-create]命令 `--template-file` ：
+
+```azurecli
+# Deploy with Resource Manager template
+az deployment group create --resource-group myResourceGroup --template-file deploy-aci.json
+```
+
 
 ## <a name="mount-multiple-volumes"></a>掛接多個磁碟區
 
-若要在容器執行個體中掛接多個磁碟區，您必須使用 [Azure Resource Manager 範本](/azure/templates/microsoft.containerinstance/containergroups)或 YAML 檔案進行部署。
+若要在容器實例中掛接多個磁片區，您必須使用[Azure Resource Manager 範本](/azure/templates/microsoft.containerinstance/containergroups)、YAML 檔或其他程式設計方法進行部署。 若要使用範本或 YAML 檔案，請提供共用詳細資料，並 `volumes` 在檔案的區段中填入陣列來定義磁片區 `properties` 。 
 
-若要使用範本，請提供共用詳細資料，並藉由在範本的 `properties` 區段中填入 `volumes` 陣列來定義磁碟區。 例如，如果您已在儲存體帳戶 *myStorageAccount* 中建立名為 *share1* 和 *share2* 的兩個 Azure 檔案共用，則會顯示與下列類似的 `volumes` 陣列：
+例如，如果您在儲存體帳戶*myStorageAccount*中建立兩個名為*share1*和*share2*的 Azure 檔案儲存體共用，則 `volumes` Resource Manager 範本中的陣列會如下所示：
 
 ```JSON
 "volumes": [{
@@ -129,8 +269,6 @@ az container show --resource-group $ACI_PERS_RESOURCE_GROUP --name hellofiles --
 }]
 ```
 
-若要使用 Azure Resource Manager 範本來查看容器執行個體部署範例，請參閱[部署容器群組](container-instances-multi-container-group.md)。 如需使用 YAML 檔案的範例，請參閱[使用 YAML 部署多容器群組](container-instances-multi-container-yaml.md)。
-
 ## <a name="next-steps"></a>後續步驟
 
 了解如何在 Azure 容器執行個體中掛接其他類型的磁碟區：
@@ -147,3 +285,4 @@ az container show --resource-group $ACI_PERS_RESOURCE_GROUP --name hellofiles --
 <!-- LINKS - Internal -->
 [az-container-create]: /cli/azure/container#az-container-create
 [az-container-show]: /cli/azure/container#az-container-show
+[az-deployment-group-create]: /cli/azure/deployment/group#az-deployment-group-create

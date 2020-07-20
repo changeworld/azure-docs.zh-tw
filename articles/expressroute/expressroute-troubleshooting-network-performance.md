@@ -1,22 +1,22 @@
 ---
-title: 針對虛擬網路效能問題進行疑難排解：Azure | Microsoft Docs
+title: 針對網路連結效能進行疑難排解： Azure
 description: 本頁提供測試 Azure 網路連結效能的標準化方法。
 services: expressroute
 author: tracsman
 ms.service: expressroute
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 12/20/2017
 ms.author: jonor
 ms.custom: seodec18
-ms.openlocfilehash: 9ec310ffaa9d2bb297abde9341bf7b6c2dc763b4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5390915436d38939b83a1599f8fb564cfbd11bdb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60883257"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84738238"
 ---
 # <a name="troubleshooting-network-performance"></a>網路效能疑難排解
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 Azure 提供穩定且快速的方式，從您的內部部署網路連線到 Azure。 大型和小型的客戶可以成功使用站對站 VPN 和 ExpressRoute 等方法，在 Azure 中經營其業務。 但是當效能不符合您預期的情況或先前的經驗時，會發生什麼事？ 本文件可協助您將測試方式標準化，並為您的特定環境制訂基準。
 
 本文件說明如何在兩部主機之間輕鬆且一致地測試網路延遲和頻寬。 本文件也針對查看 Azure 網路的方式提供一些建議，並協助您隔離問題點。 討論的 PowerShell 指令碼和工具在網路上 (要測試之連結的任一端) 需要有兩部主機。 一部主機必須是 Windows 伺服器或桌面，另一部主機則可以是 Windows 或 Linux。 
@@ -26,9 +26,9 @@ Azure 提供穩定且快速的方式，從您的內部部署網路連線到 Azur
 >
 >
 
-## <a name="network-components"></a>網路構成要素
+## <a name="network-components"></a>網路元件
 深入了解疑難排解之前，讓我們先討論一些通用的術語和構成要素。 這個討論可確保我們將考慮端對端鏈結中，可在 Azure 中連線的每個構成要素。
-[![1]][1]
+![1][1]
 
 我將說明最高層級的三種主要網路路由網域；
 
@@ -93,7 +93,7 @@ AzureCT PowerShell 模組有兩個構成要素，分別是[可用性測試][Avai
 
     PowerShell 輸出格式如下所示：
 
-    [![4]][4]
+    ![4][4]
 
     所有 iPerf 和 PSPing 測試的詳細結果都位於 AzureCT 工具目錄 "C:\ACTTools" 下的個別文字檔中。
 
@@ -118,7 +118,7 @@ AzureCT PowerShell 模組有兩個構成要素，分別是[可用性測試][Avai
 ## <a name="advanced-expressroute-troubleshooting"></a>進階 ExpressRoute 疑難排解
 如果您不確定雲端邊緣實際上的位置，隔離 Azure 構成要素可能是一個挑戰。 使用 ExpressRoute 時，邊緣是一個名為 Microsoft Enterprise Edge (MSEE) 的網路構成要素。 **使用 ExpressRoute 時**，MSEE 是進入 Microsoft 網路的第一個連絡點，以及離開 Microsoft 網路的最後一個躍點。 當您在 VNet 閘道與 ExpressRoute 線路之間建立連接物件時，您實際上是在建立與 MSEE 的連線。 將 MSEE 辨識為第一個或最後一個躍點 (視您前往的方向而定) 對於隔離 Azure 網路問題至關緊要，因為這可以證明問題是在 Azure 中，還是在 WAN 或公司網路的下游。 
 
-[![2]][2]
+![2][2]
 
 >[!NOTE]
 > 請注意，MSEE 不在 Azure 雲端。 ExpressRoute 實際上是在 Microsoft 網路的邊緣，而不是在 Azure 中。 一旦您將 ExpressRoute 連線到 MSEE 之後，表示您已經連線到 Microsoft 的網路，然後您可以從那裡再移至任何雲端服務，例如 Office 365 (利用 Microsoft 對等互連) 或 Azure (利用私人和/或 Microsoft 對等互連)。
@@ -130,7 +130,7 @@ AzureCT PowerShell 模組有兩個構成要素，分別是[可用性測試][Avai
 ### <a name="test-plan"></a>測試計劃
 1. 在 VM1 和 VM2 之間執行 Get-LinkPerformance 測試。 此測試會針對問題是否出在本機，提供深入見解。 如果此測試產生可接受的延遲和頻寬結果，您可以將本機的 VNet 網路標示為良好。
 2. 假設本機的 VNet 流量良好，請在 VM1 和 VM3 之間執行 Get-LinkPerformance 測試。 此測試會透過 Microsoft 網路，向下連線至 MSEE，然後再連回 Azure。 如果此測試產生可接受的延遲和頻寬結果，您可以將 Azure 網路標示為良好。
-3. 如果排除 Azure，您可以在公司網路上執行一連串類似的測試。 如果測試結果也良好，則應該與您的服務提供者或 ISP 共同診斷您的 WAN 連線。 範例：在兩個分公司之間，或您的電腦與資料中心伺服器之間，執行這項測試。 根據您要測試的內容，找出可以運用該途徑的端點 (伺服器、電腦等)。
+3. 如果排除 Azure，您可以在公司網路上執行一連串類似的測試。 如果測試結果也良好，則應該與您的服務提供者或 ISP 共同診斷您的 WAN 連線。 範例：在兩個分公司之間，或您的支援人員及資料中心伺服器之間，執行這項測試。 根據您要測試的內容，找出可以運用該途徑的端點 (伺服器、電腦等)。
 
 >[!IMPORTANT]
 > 請務必針對您標示一天時間的每個測試，執行測試並將結果記錄在一個通用位置 (我喜歡用 OneNote 或 Excel)。 每個測試回合都應該有相同的輸出，因此您可以跨測試回合比較所產生的資料，而不會有資料上的「漏洞」。 多項測試間的一致性是我使用 AzureCT 進行疑難排解的主要原因。 *神奇之處*不在於我執行的確切負載案例中，而是在於我可以從每個測試取得*一致的測試和資料輸出*。 如果您之後發現問題是偶爾發生的，則記錄時間以及每次獲得一致的資料特別有幫助。 一開始努力收集資料，便可以避免花費數小時重新測試相同的案例 (我在多年前學到了這一點)。
@@ -146,7 +146,7 @@ AzureCT PowerShell 模組有兩個構成要素，分別是[可用性測試][Avai
 
 透過 Azure，一旦您盡可能地詳細隔離問題之後，就可以檢閱 [Azure 網路文件][Network Docs]，之後如果仍然需要，[請開啟支援票證][Ticket Link]。
 
-## <a name="references"></a>參考
+## <a name="references"></a>參考資料
 ### <a name="latencybandwidth-expectations"></a>延遲/頻寬期望
 >[!TIP]
 > 您要測試的端點之間的地理延遲 (英哩或公里) 是目前最大的延遲構成要素。 雖然沒有相關的設備延遲 (實體和虛擬構成要素、躍點數目等)，但處理 WAN 連線時，地理位置已經公認是整體延遲的最大構成要素。 同樣重要的是要注意，距離是光纖行程的距離，而不是直線距離或路段圖地圖距離。 這個距離很難準確無誤。 因此，我通常使用網際網路上的城市距離計算機，而且知道這種方法是非常不準確的測量方法，但足以設定一般預期。
@@ -160,7 +160,7 @@ AzureCT PowerShell 模組有兩個構成要素，分別是[可用性測試][Avai
  - 在啟用私人對等互連時識別之位置中的 10Gbps Premium ExpressRoute 線路。
  - 在指定的區域中，具有 UltraPerformance 閘道的 Azure VNet。
  - 在 VNet 上執行 Windows Server 2016 的 DS5v2 VM。 在已安裝 AzureCT 的情況下，從預設 Azure 映像 (未最佳化或自訂) 建置的 VM 未加入網域。
- - 所有測試都是使用 AzureCT Get-LinkPerformance 命令，而且六個測試回合中，每個測試回合都有 5 分鐘的負載測試。 例如︰
+ - 所有測試都是使用 AzureCT Get-LinkPerformance 命令，而且六個測試回合中，每個測試回合都有 5 分鐘的負載測試。 例如：
 
     ```powershell
     Get-LinkPerformance -RemoteHost 10.0.0.1 -TestSeconds 300
@@ -169,7 +169,7 @@ AzureCT PowerShell 模組有兩個構成要素，分別是[可用性測試][Avai
  - 「延遲」資料行的資料來自無負載測試 (不執行 iPerf 的 TCP 延遲測試)。
  - 「最大頻寬」資料行的資料來自視窗大小為 1-Mb 的 16 個 TCP 流量負載測試。
 
-[![3]][3]
+![3][3]
 
 ### <a name="latencybandwidth-results"></a>延遲/頻寬結果
 >[!IMPORTANT]
@@ -190,7 +190,7 @@ AzureCT PowerShell 模組有兩個構成要素，分別是[可用性測試][Avai
 | Seattle | 日本東部       |  7,705 公里 | 106 毫秒 |  14.6 Mbits/秒 |  1.22 Gbits/秒 |
 | Seattle | 英國南部         |  7,708 公里 | 146 毫秒 |  10.6 Mbits/秒 |   896 Mbits/秒 |
 | Seattle | 西歐      |  7,834 公里 | 153 毫秒 |  10.2 Mbits/秒 |   761 Mbits/秒 |
-| Seattle | 澳洲東部   | 12,484 公里 | 165 毫秒 |   9.4 Mbits/秒 |   794 Mbits/秒 |
+| Seattle | 澳大利亞東部   | 12,484 公里 | 165 毫秒 |   9.4 Mbits/秒 |   794 Mbits/秒 |
 | Seattle | 東南亞   | 12,989 公里 | 170 毫秒 |   9.2 Mbits/秒 |   756 Mbits/秒 |
 | Seattle | 巴西南部 *   | 10,930 公里 | 189 毫秒 |   8.2 Mbits/秒 |   699 Mbits/秒 |
 | Seattle | 印度南部      | 12,918 公里 | 202 毫秒 |   7.7 Mbits/秒 |   634 Mbits/秒 |
@@ -198,11 +198,11 @@ AzureCT PowerShell 模組有兩個構成要素，分別是[可用性測試][Avai
 \* 巴西延遲是不錯的範例，其中的直線距離明顯不同於光纖運行距離。 我本來預期延遲大約為 160 毫秒，但是實際上是 189 毫秒。 與我預期不符的這項差異可能表示某個地方存在網路問題，但最有可能的是光纖運行並不是以直線進入巴西，而是距離西雅圖還超過 1,000 公里左右，才能到達巴西。
 
 ## <a name="next-steps"></a>後續步驟
-1. 從 GitHub 下載「Azure 連線能力工具組」，網址是：[https://aka.ms/AzCT][ACT]
+1. 從 GitHub 下載 Azure 連線工具組，網址為[https://aka.ms/AzCT][ACT]
 2. 依照指示進行[連結效能測試][Performance Doc]
 
 <!--Image References-->
-[1]: ./media/expressroute-troubleshooting-network-performance/network-components.png "Azure 網路構成要素"
+[1]: ./media/expressroute-troubleshooting-network-performance/network-components.png "Azure 網路元件"
 [2]: ./media/expressroute-troubleshooting-network-performance/expressroute-troubleshooting.png "ExpressRoute 疑難排解"
 [3]: ./media/expressroute-troubleshooting-network-performance/test-diagram.png "效能測試環境"
 [4]: ./media/expressroute-troubleshooting-network-performance/powershell-output.png "PowerShell 輸出"

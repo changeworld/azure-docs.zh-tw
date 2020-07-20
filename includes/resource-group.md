@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 03/12/2018
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: 9774de9e5a975439468e2619841608c8d02548b9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f82e66053585340e9b2d25b139fc9f64fefc6f52
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60342323"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "75370201"
 ---
-[資源群組](../articles/azure-resource-manager/resource-group-overview.md#terminology)是一個邏輯容器，可在其中部署與管理 Azure 資源 (例如 Web 應用程式、資料庫和儲存體帳戶)。 例如，您可以選擇在稍候透過一個簡單的步驟刪除整個資源群組。
+[資源群組](../articles/azure-resource-manager/management/overview.md#terminology)是一個邏輯容器，可在其中部署與管理 Azure 資源 (例如 Web 應用程式、資料庫和儲存體帳戶)。 例如，您可以選擇在稍候透過一個簡單的步驟刪除整個資源群組。

@@ -4,45 +4,140 @@
   items:
     - name: 什麼是 QnA Maker？
       href: Overview/overview.md
+    - name: 新功能
+      href: whats-new.md
 - name: 快速入門
   items:
-    - name: 建立新的知識庫
-      href: How-To/create-knowledge-base.md
-    - name: 從知識庫中獲得答案
+    - name: 透過 QnA Maker 入口網站
       items:
-        - name: 使用 Postman
-          href: Quickstarts/get-answer-from-kb-using-postman.md
-        - name: 使用 cURL
-          href: Quickstarts/get-answer-from-kb-using-cURL.md
+        - name: 1. 建立知識庫
+          href: Quickstarts/create-publish-knowledge-base.md
+        - name: 2. 新增具有中繼資料的問題
+          href: Quickstarts/add-question-metadata-portal.md
+        - name: 3. 使用 Postman 或 cURL 來獲得答案
+          href: Quickstarts/get-answer-from-knowledge-base-using-url-tool.md
+    - name: 使用 REST
+      href: Quickstarts/quickstart-rest-curl.md
+    - name: 使用 SDK
+      href: Quickstarts/quickstart-sdk.md
+- name: 教學課程
+  items:
+    - name: 與 Power Virtual Agents 整合
+      href: Tutorials/integrate-with-power-virtual-assistant-fallback-topic.md
+    - name: 使用批次檔進行測試
+      href: Quickstarts/batch-testing.md
+- name: 概念
+  items:
+    - name: 規劃您的知識庫
+      href: Concepts/plan.md
+    - name: Azure 資源
+      href: Concepts/azure-resources.md
+    - name: 與其他人共用作業
+      href: Concepts/role-based-access-control.md
+    - name: 設計知識庫
+      items:
+        - name: 針對語言
+          href: Concepts/design-language-culture.md
+        - name: 針對用戶端應用程式
+          href: Concepts/integration-with-other-applications.md
+    - name: 資料來源和內容
+      items:
+        - name: 從資料來源匯入
+          href: Concepts/knowledge-base.md
+        - name: 已匯入內容類型
+          href: Concepts/content-types.md
+        - name: 問與答組
+          href: Concepts/question-answer-set.md
+    - name: 知識庫生命週期
+      items:
+        - name: 開發生命週期
+          href: Concepts/development-lifecycle-knowledge-base.md
+          displayName: 'version control, test, index, publish, monitor usage, create'
+        - name: 利用主動式學習建議進行改善
+          href: Concepts/active-learning-suggestions.md
+    - name: 查詢知識庫
+      items:
+        - name: 取得答案
+          displayName: 'DefaultAnswer, Default answer'
+          href: Concepts/query-knowledge-base.md
+        - name: 信賴分數
+          href: Concepts/confidence-score.md
+    - name: 最佳作法
+      href: Concepts/best-practices.md
+      displayName: 'tag, rank, score, threshold, question, alternate, filter, synonym, answer, active learning, collaborate, alteration, metadata, bot, personality, extraction, chit-chat'
+    - name: 使用 QnA Maker 與 LUIS
+      href: choose-natural-language-processing-service.md
+- name: 操作指南
+  items:
+    - name: 管理 Azure 資源
+      items:
+        - name: 管理資源
+          href: How-To/set-up-qnamaker-service-azure.md
+          displayName: 'azure, resource, key, upgrade, pricing, tier,'
+        - name: 共同作業
+          href: How-To/collaborate-knowledge-base.md
+        - name: 開啟主動式學習
+          href: How-To/use-active-learning.md
+        - name: 變更預設答案
+          href: How-To/change-default-answer.md
+    - name: 管理知識庫
+      items:
+        - name: 建立知識庫
+          href: How-To/manage-knowledge-bases.md
+        - name: 語言選擇
+          href: How-To/language-knowledge-base.md
+        - name: 新增閒聊
+          href: How-to/chit-chat-knowledge-base.md
+        - name: 遷移至新的知識庫
+          href: Tutorials/migrate-knowledge-base.md
+          displayName: 'metadata, pair'
+        - name: 測試
+          href: How-To/test-knowledge-base.md
+    - name: 管理 QnA 配對
+      items:
+        - name: 編輯 QnA 配對
+          href: How-To/edit-knowledge-base.md
+        - name: 新增後續提示
+          href: How-To/multiturn-conversation.md
+          displayName: 'multi-turn dialogs, parent question, child question, filtering, metadata, state, context, prompt, follow-up, followup, flow, conversation, previous question'
+        - name: 取得建議的替代問題
+          href: How-to/improve-knowledge-base.md
+          displayName: 'active learning, suggestion, dialog prompt, train api, feedback loop, autolearn, auto-learn, user setting, service setting, services setting, accept, reject, filter by suggestion, filter active learning, clusterHead, totalAutoSuggestedCount, totalUserSuggestedCount, autoSuggestedCount, userSuggestedCount'
+        - name: 新增受保護的 SharePoint 檔案
+          href: How-To/add-sharepoint-datasources.md
+          displayName: 'Sharepoint, secure, AAD, azure directory, admin, permission, authorization, file, authentication'
+    - name: 查詢知識庫
+      href: How-To/metadata-generateanswer-usage.md
+      displayName: 'isTest, test, route, request, http, post, body, header, json, metadata, top, strictFilters, GenerateAnswer, API, answer, RankerType, id, text, question, context, 200, 2xx, 400, 401, 403, 404'
+    - name: 分析和遙測
+      href: How-To/get-analytics-knowledge-base.md
     - name: 使用 REST API
       items:
         - name: 建立新的知識庫
           items:
-            - name: 'C#'
+            - name: C#
               href: Quickstarts/create-new-kb-csharp.md
             - name: Go
               href: Quickstarts/create-new-kb-go.md
             - name: Java
               href: Quickstarts/create-new-kb-java.md
-            - name: Node.js
-              href: Quickstarts/create-new-kb-nodejs.md
             - name: Python
               href: Quickstarts/create-new-kb-python.md
         - name: 發佈知識庫
           items:
-            - name: 'C#'
+            - name: C#
               href: Quickstarts/publish-kb-csharp.md
             - name: Go
               href: Quickstarts/publish-kb-go.md
             - name: Java
               href: Quickstarts/publish-kb-java.md
             - name: Node.js
-              href: Quickstarts/publish-kb-nodejs.md
+              href: Quickstarts/publish-kb-nodejs.md#publish-a-knowledge-base
             - name: Python
               href: Quickstarts/publish-kb-python.md
-        - name: 從知識庫中獲得答案
+        - name: 取得答案
           items:
-            - name: 'C#'
+            - name: C#
               href: Quickstarts/get-answer-from-knowledge-base-csharp.md
             - name: Go
               href: Quickstarts/get-answer-from-knowledge-base-go.md
@@ -52,130 +147,78 @@
               href: Quickstarts/get-answer-from-knowledge-base-nodejs.md
             - name: Python
               href: Quickstarts/get-answer-from-knowledge-base-python.md
-- name: 教學課程
-  items:
-    - name: 建立知識庫並回應
-      displayName: 'curl, publish, chit-chat, chit chat'
-      href: Tutorials/create-publish-query-in-portal.md
-    - name: '使用 C# 建立知識庫並回應'
-      href: Tutorials/create-publish-answer.md
-    - name: 建立 QnA Maker Bot
-      href: Tutorials/create-qna-bot.md
-- name: 概念
-  items:
-    - name: 知識庫
-      href: Concepts/knowledge-base.md
-      displayName: 'metadata, pair'
-    - name: 知識庫的開發生命週期
-      href: Concepts/development-lifecycle-knowledge-base.md
-    - name: 最佳作法
-      href: Concepts/best-practices.md
-      displayName: 'tag, rank, score, threshold, question, alternate, filter, synonym, answer, active learning, collaborate, alteration, metadata, bot, personality, extraction, chit-chat'
-    - name: 信賴分數
-      displayName: 'DefaultAnswer, Default answer'
-      href: Concepts/confidence-score.md
-    - name: 支援的資料來源
-      href: Concepts/data-sources-supported.md
-      displayName: 'metadata, pair, sharepoint, authentication, permissions, faq, pdf, excel, xls, rtf, html, txt, tsv, url, end of line, new line, carriage return, markdown, commonmark, format, standard'
-- name: 使用說明指南
-  items:
-    - name: 編輯知識庫
-      items:
-        - name: 編輯知識庫
-          href: How-To/edit-knowledge-base.md
-        - name: 使用後續提示建立多回合交談
-          href: How-To/multiturn-conversation.md
-          displayName: 'multi-turn dialogs, parent question, child question, filtering, metadata, state, context, prompt, follow-up, followup, flow, conversation, previous question'
-        - name: 新增閒聊
-          href: How-to/chit-chat-knowledge-base.md
-        - name: 新增受保護的 Sharepoint 檔案
-          href: How-To/add-sharepoint-datasources.md
-          displayName: 'Sharepoint, secure, AAD, azure directory, admin, permission, authorization, file, authentication'
-    - name: 管理知識庫
-      items:
-        - name: 建立和發佈知識庫
-          href: Quickstarts/create-publish-knowledge-base.md
-          displayName: 'create bot, bot, publish to bot, test, edit'
-        - name: 取得答案
-          href: How-To/metadata-generateanswer-usage.md
-          displayName: 'isTest, test, route, request, http, post, body, header, json, metadata, top, strictFilters, GenerateAnswer, API, answer'
-        - name: 建立透過知識庫啟用的 Bot
-          href: Tutorials/integrate-qnamaker-luis.md
-        - name: 以不同語言建立知識庫
-          href: How-To/language-knowledge-base.md
-        - name: 移轉知識庫
-          href: Tutorials/migrate-knowledge-base.md
-          displayName: 'metadata, pair'
-        - name: 在知識庫上共同作業
-          href: How-To/collaborate-knowledge-base.md
-        - name: 測試知識庫
-          href: How-To/test-knowledge-base.md
-        - name: 使用主動學習來改善知識庫
-          href: How-to/improve-knowledge-base.md
-          displayName: 'active learning, suggestion, dialog prompt, train api, feedback loop, autolearn, auto-learn, user setting, service setting, services setting, accept, reject, filter by suggestion, filter active learning'
-    - name: 管理服務
-      items:
-        - name: 設定 QnA Maker 服務
-          href: How-To/set-up-qnamaker-service-azure.md
-        - name: 取得知識庫的分析
-          href: How-To/get-analytics-knowledge-base.md
-        - name: 管理金鑰
-          href: How-To/key-management.md
-        - name: 選擇 QnA Maker 部署的容量
-          href: Tutorials/choosing-capacity-qnamaker-deployment.md
-        - name: 升級 QnA Maker 服務
-          href: How-To/upgrade-qnamaker-service.md
-        - name: 建立 QnA Maker 的商務持續性方案
-          href: How-To/business-continuity-plan.md
-        - name: 疑難排解和更新 QnAMaker 執行階段
-          href: How-To/troubleshooting-runtime.md
-    - name: 使用 REST API
-      items:
-        - name: 'C#'
-          href: Quickstarts/csharp.md
-        - name: Java
-          href: Quickstarts/java.md
-        - name: Node.js
-          href: Quickstarts/nodejs.md
-        - name: Python
-          href: Quickstarts/python.md
-        - name: Go
-          href: Quickstarts/go.md
 - name: 參考
   items:
-    - name: REST API 參考
-      href: 'https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff'
-    - name: 常見問題集
-      href: faqs.md
+    - name: 語言支援
+      href: Overview/language-support.md
     - name: 限制
       href: limits.md
-    - name: 詞彙
-      href: glossary.md
-    - name: HTTP 回應碼
-      displayName: '200, 2xx, 400, 401, 403, 404'
-      href: http-response-codes.md
+    - name: 角色型存取控制 (RBAC)
+      href: reference-role-based-access-control.md
+    - name: 疑難排解
+      href: troubleshooting.md
+    - name: 服務設定
+      href: reference-app-service.md
+    - name: 內容和資料格式
+      items:
+        - name: 內容格式指導方針
+          href: reference-document-format-guidelines.md
+        - name: URL
+          href: reference-document-type-url.md
+        - name: 匯入和匯出資料指導方針
+          href: reference-data-guidelines.md
+    - name: 顯示格式
+      href: reference-markdown-format.md
+    - name: 批次測試格式
+      href: reference-tsv-format-batch-testing.md
+    - name: REST API 參考
+      items:
+        - name: 編寫 API
+          href: 'https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase'
+        - name: GenerateAnswer API
+          href: 'https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer'
+        - name: 將 API 定型
+          href: 'https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train'
     - name: 範例
       items:
         - name: QnA Maker 的說明機器人
           href: 'https://aka.ms/qnamakerhelpbotsample'
     - name: SDK
       items:
-        - name: 'C#'
+        - name: C#
           items:
-            - name: NuGet
+            - name: 參考文件
+              href: 'https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker?view=azure-dotnet'
+            - name: Nuget 套件
               href: 'https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Knowledge.QnAMaker/'
+            - name: 範例
+              href: 'https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp'
         - name: Go
           items:
+            - name: 參考文件
+              href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v4.0/qnamaker'
             - name: SDK
               href: 'https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v4.0/qnamaker'
-        - name: Node.js
+            - name: 範例
+              href: 'https://github.com/Azure-Samples/cognitive-services-qnamaker-go'
+        - name: JavaScript
           items:
-            - name: NPM
-              href: 'https://www.npmjs.com/package/azure-cognitiveservices-qnamaker'
+            - name: 參考文件
+              href: 'https://docs.microsoft.com/javascript/api/%40azure/cognitiveservices-qnamaker/index?view=azure-node-latest'
+            - name: NPM - 製作
+              href: 'https://www.npmjs.com/package/@azure/cognitiveservices-qnamaker'
+            - name: NPM - 查詢執行階段
+              href: 'https://www.npmjs.com/package/@azure/cognitiveservices-qnamaker-runtime'
+            - name: 範例
+              href: 'https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs'
         - name: Python
           items:
+            - name: 參考文件
+              href: 'https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker?view=azure-python'
             - name: Pip
               href: 'https://pypi.org/project/azure-cognitiveservices-knowledge-qnamaker/'
+            - name: 範例
+              href: 'https://github.com/Azure-Samples/cognitive-services-qnamaker-python'
         - name: Ruby
           items:
             - name: Gem
@@ -184,17 +227,21 @@
   items:
     - name: 區域可用性
       href: 'https://azure.microsoft.com/global-infrastructure/services/'
+    - name: 法規遵循
+      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: 加密
+      href: qna-maker-encryption-of-data-at-rest.md
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 價格和限制
       href: 'https://aka.ms/qnamaker-pricing'
-    - name: 語言支援
-      href: Overview/language-support.md
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/QnAMaker'
     - name: UserVoice
-      href: 'https://aka.ms/qnamaker-uservoice'
-    - name: Search
+      href: 'https://cognitive.uservoice.com/forums/578689-qna-maker-api'
+    - name: 搜尋
       href: 'https://docs.microsoft.com/search/index?search=QnAMaker'
     - name: 部落格
       href: 'https://blog.botframework.com/category/QnAMaker/'
+- name: QnA Maker 入口網站
+  href: 'https://www.qnamaker.ai'

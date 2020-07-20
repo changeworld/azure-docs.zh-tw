@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric 獨立叢集調整 | Microsoft Docs
+title: Azure Service Fabric 獨立叢集調整
 description: 了解 Service Fabric 獨立叢集的相應縮小、相應放大、相應增加或相應減少。
-services: service-fabric
-documentationcenter: .net
 author: dkkapur
-manager: chackdan
-editor: aljo
-ms.assetid: 5441e7e0-d842-4398-b060-8c9d34b07c48
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/13/2018
 ms.author: dekapur
-ms.openlocfilehash: 05049b9b08b4630c4299a6d3054c7815b082af52
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3195f1f409ab5cb87cd0520192a3dd362e188a3f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60516044"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610229"
 ---
 # <a name="scaling-service-fabric-standalone-clusters"></a>調整 Service Fabric 獨立叢集
 Service Fabric 叢集是一組由網路連接的虛擬或實體機器，可用來將您的微服務部署到其中並進行管理。 屬於叢集一部分的機器或 VM 都稱為節點。 叢集有可能包含數千個節點。 在建立 Service Fabric 叢集之後，您可以水平調整叢集 (變更節點數目)，或以垂直方式調整 (變更節點的資源)。  您可以隨時調整叢集，即使正在叢集上執行工作負載，也是如此。  在叢集進行調整時，您的應用程式也會自動調整。
@@ -37,7 +28,7 @@ Service Fabric 叢集是一組由網路連接的虛擬或實體機器，可用�
 移除節點可能會起始多個升級作業。 有些節點會標示 `IsSeedNode=”true”` 標記，而可藉由使用 [Get-ServiceFabricClusterManifest](/powershell/module/servicefabric/get-servicefabricclustermanifest) 來查詢叢集資訊清單而加以識別。 移除這類節點所需的時間可能比移除其他節點長，因為在這類案例中，需要將種子節點四處移動。 叢集必須至少維持三個主要節點類型的節點。
 
 > [!WARNING]
-> 我們建議不要使節點計數低於該叢集之[可靠性層級的叢集大小](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster)。 這將會影響「Service Fabric 系統服務」複寫整個叢集的能力，而將使叢集變得不穩定或甚至損毀。
+> 我們建議不要使節點計數低於該叢集之[可靠性層級的叢集大小](service-fabric-cluster-capacity.md#reliability-characteristics-of-the-cluster)。 這將會影響「Service Fabric 系統服務」複寫整個叢集的能力，而將使叢集變得不穩定或甚至損毀。
 >
 
 在調整獨立叢集時，請記住下列指導方針︰

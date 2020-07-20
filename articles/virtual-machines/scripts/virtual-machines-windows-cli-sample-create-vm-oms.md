@@ -1,11 +1,10 @@
 ---
-title: Azure CLI 範例 - 建立執行 Azure 監視器的 Azure VM | Microsoft Docs
+title: Azure CLI 範例 - 建立執行 Azure 監視器的 Azure VM
 description: Azure CLI 範例 - 建立執行 Windows Server 2016 VM 和 Azure 監視器的 Azure VM。
 services: virtual-machines-Windows
 documentationcenter: virtual-machines
 author: rickstercdn
-manager: jeconnoc
-editor: tysonn
+manager: gwallace
 tags: ''
 ms.assetid: ''
 ms.service: virtual-machines-windows
@@ -16,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 02/23/2017
 ms.author: rclaus
 ms.custom: mvc,seodec18
-ms.openlocfilehash: 2565433b8f42a3b81b843a972dd27850cce124b8
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: b3c8c045b7d773f6345072ed46c4a668d0db8ec5
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57543316"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "81459469"
 ---
 # <a name="monitor-a-vm-with-azure-monitor-logs"></a>透過 Azure 監視器記錄來監視 VM
 
@@ -47,7 +46,7 @@ az group delete --name myResourceGroup --yes
 
 此指令碼使用下列命令來建立資源群組、虛擬機器和所有相關資源。 下表中的每個命令都會連結至命令特定的文件。
 
-| 命令 | 注意 |
+| Command | 注意 |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group) | 建立用來存放所有資源的資源群組。 |
 | [az vm create](https://docs.microsoft.com/cli/azure/vm) | 建立虛擬機器，並將它連線到網路卡、虛擬網路、子網路及 NSG。 此命令也會指定要使用的虛擬機器映像和管理認證。  |

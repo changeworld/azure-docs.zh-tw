@@ -8,35 +8,35 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 03/12/2019
+ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 871cca9fe2b3ff50202feb4925a267b93d432700
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2c13931c7ab7c084b635abb7080f97de6d4bf4bb
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57842068"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873899"
 ---
 # <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-c"></a>快速入門：使用 Bing Web 搜尋 REST API 和 C# 來搜尋 Web
 
-使用本快速入門進行對 Bing Web 搜尋 API 第一次的呼叫，並接收 JSON 回應。 這個 C# 應用程式會將搜尋要求傳送給 API，並顯示回應。 雖然此應用程式是以 C# 撰寫的，但 API 是一種與大多數程式設計語言都相容的 RESTful Web 服務。
+使用本快速入門，第一次呼叫 Bing Web 搜尋 API。 這個 C# 應用程式會將搜尋要求傳送給 API，並顯示 JSON 回應。 雖然此應用程式是以 C# 撰寫的，但 API 是一種與大多數程式設計語言都相容的 RESTful Web 服務。
 
-## <a name="prerequisites"></a>必要條件
+本快速入門中的這個範例程式僅使用 .NET Core 類別。
+
+## <a name="prerequisites"></a>Prerequisites
 
 以下是執行本快速入門之前的幾個必備項目：
 
-* Windows:[Visual Studio 2017](https://www.visualstudio.com/downloads/)
+* Windows：[Visual Studio 2017 或更新版本](https://www.visualstudio.com/downloads/)
 * Linux/macOS：[Mono](https://www.mono-project.com/)  
 * 訂用帳戶金鑰
-
-這個範例程式只使用 .NET Core 類別。
 
 [!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
 
 ## <a name="create-a-project-and-declare-dependencies"></a>建立專案並宣告相依性
 
-在 Visual Studio 或 Mono 中建立新專案。 然後使用此程式碼匯入必要的命名空間和類型。
+在 Visual Studio 或 Mono 中建立新專案。 使用下列程式碼來匯入必要的命名空間和類型：
 
 ```csharp
 using System;
@@ -62,7 +62,13 @@ namespace BingSearchApisQuickstart
 
 ## <a name="define-variables"></a>定義變數
 
-必須先設定幾個變數才能繼續。 請確認 `uriBase` 有效，並將 `accessKey` 值換成您的 Azure 帳戶中有效的訂用帳戶金鑰。 請自行取代 `searchTerm` 的值來自訂搜尋查詢。 請記得將此程式碼新增至 `Program` 類別，如先前所述。
+必須先設定幾個變數才能繼續。 將此程式碼新增至您在上一節中建立的 `Program` 類別： 
+
+1. 對於 `uriBase` 值，您可以使用下列程式碼中的全域端點，或使用 Azure 入口網站中針對您的資源所顯示的[自訂子網域](../../../cognitive-services/cognitive-services-custom-subdomains.md)端點。 
+
+2. 請確認 `uriBase` 有效，並將 `accessKey` 值換成您的 Azure 帳戶中的訂用帳戶金鑰。 
+
+3. (選擇性) 取代 `searchTerm` 的值以自訂搜尋查詢。 
 
 ```csharp
 // Enter a valid subscription key.
@@ -78,9 +84,9 @@ const string searchTerm = "Microsoft Cognitive Services";
 
 ## <a name="declare-the-main-method"></a>宣告 Main 方法
 
-`Main()` 是必要方法，也是程式啟動時叫用的第一個方法。 在此應用程式中，main 方法會驗證 `accessKey`、提出要求及列印回應。
+`Main()` 方法是必要方法，也是您啟動程式時所叫用的第一個方法。 在此應用程式中，main 方法會驗證 `accessKey`、提出要求及列印回應。
 
-請記住，`main()` 取決於接下來幾節所建立的方法。
+`main()` 方法取決於您在下一節中建立的方法。
 
 ```csharp
 static void Main()
@@ -109,7 +115,7 @@ static void Main()
 
 ## <a name="create-a-struct-for-search-results"></a>建立搜尋結果的結構
 
-此結構會傳回具有相關標題的搜尋結果。 對 Bing Web 搜尋 API 提出要求時，會呼叫此結構來建立結果物件。
+建立一個結構，以傳回具有相關標頭的搜尋結果。 當您對 Bing Web 搜尋 API 提出要求時，呼叫此結構來建立結果物件。
 
 ```csharp
 // Returns search results with headers.
@@ -158,7 +164,7 @@ static SearchResult BingWebSearch(string searchQuery)
 
 ## <a name="format-the-response"></a>將回應格式化
 
-這個方法會格式化 JSON 回應，主要是縮排並新增分行符號。
+這個方法主要藉由縮排並新增分行符號，將 JSON 回應格式化。
 
 ```csharp
 /// <summary>
@@ -235,9 +241,9 @@ static string JsonPrettyPrint(string json)
 
 ## <a name="put-it-all-together"></a>組合在一起
 
-最後一步就是執行您的程式碼！ 如果想要將您的程式碼與我們的程式碼做比較，[GitHub 上提供程式碼範例](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingWebSearchv7.cs) (英文)。
+最後一步是執行您的程式碼。 如果想要將您的程式碼與我們的程式碼做比較，請參閱 [GitHub 上的範例程式碼](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingWebSearchv7.cs)。
 
-## <a name="sample-response"></a>範例回應
+## <a name="example-json-response"></a>範例 JSON 回應
 
 來自 Bing Web 搜尋 API 的回應會以 JSON 格式傳回。 本範例回應已截斷而只顯示單一結果。  
 
@@ -259,9 +265,9 @@ static string JsonPrettyPrint(string json)
         "snippet": "Knock down barriers between you and your ideas. Enable natural and contextual interaction with tools that augment users' experiences via the power of machine-based AI. Plug them in and bring your ideas to life.",
         "deepLinks": [
           {
-            "name": "Face API",
+            "name": "Face",
             "url": "https://azure.microsoft.com/services/cognitive-services/face/",
-            "snippet": "Add facial recognition to your applications to detect, identify, and verify faces using a Face API from Microsoft Azure. ... Cognitive Services; Face API;"
+            "snippet": "Add facial recognition to your applications to detect, identify, and verify faces using the Face service from Microsoft Azure. ... Cognitive Services; Face service;"
           },
           {
             "name": "Text Analytics",
@@ -366,6 +372,6 @@ static string JsonPrettyPrint(string json)
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [Bing Web 搜尋單頁應用程式教學課程](../tutorial-bing-web-search-single-page-app.md)
+> [Bing Web 搜尋 API 單頁應用程式教學課程](../tutorial-bing-web-search-single-page-app.md)
 
 [!INCLUDE [bing-web-search-quickstart-see-also](../../../../includes/bing-web-search-quickstart-see-also.md)]

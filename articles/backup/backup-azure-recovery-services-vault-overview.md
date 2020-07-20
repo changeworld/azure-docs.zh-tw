@@ -1,19 +1,13 @@
 ---
 title: 復原服務保存庫概觀
 description: 復原服務保存庫和 Azure 備份保存庫之間的概觀與比較。
-services: backup
-author: rayne-wiselman
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
-ms.date: 8/10/2018
-ms.author: raynew
-ms.openlocfilehash: 924b36701ecf21f6bd84938aeefbf25e47fcbaa7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 08/10/2018
+ms.openlocfilehash: 798f49629ad1012e8cc9ac3ed43f5beddd6eefeb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60699229"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84248901"
 ---
 # <a name="recovery-services-vaults-overview"></a>復原服務保存庫概觀
 
@@ -23,9 +17,9 @@ ms.locfileid: "60699229"
 
 ## <a name="comparing-recovery-services-vaults-and-backup-vaults"></a>比較復原服務保存庫與備份保存庫
 
-如果您仍有「備份」保存庫，它們會自動被升級為「復原服務」保存庫。 到了 2017 年11 月，所有備份保存庫都會自動被升級為復原服務保存庫。
+如果您仍有備份保存庫，則會自動將其升級為復原服務保存庫。 到了 2017 年11 月，所有備份保存庫都會自動被升級為復原服務保存庫。
 
-復原服務保存庫是以 Azure 的 Azure Resource Manager 模型作為基礎，而備份保存庫則是以 Azure Service Manager 模型為作為基礎。 當您將備份保存庫升級至復原服務保存庫時，備份資料在升級程序期間及升級程序之後都會維持不變。 復原服務保存庫可提供備份保存庫無法使用的功能，例如︰
+復原服務保存庫是以 Azure 的 Azure Resource Manager 模型為基礎，不過備份保存庫是以 Azure Service Manager 模型為基礎。 當您將備份保存庫升級至復原服務保存庫時，備份資料在升級程序期間及升級程序之後都會維持不變。 復原服務保存庫可提供備份保存庫無法使用的功能，例如︰
 
 - **可協助保護備份資料安全的增強功能**︰透過復原服務保存庫，Azure 備份能提供安全性功能來保護雲端備份。 這些安全性功能可確保您能保護您的備份，並安全地將資料復原，即使生產和備份伺服器遭到入侵也一樣。 [深入了解](backup-azure-security-feature.md)
 
@@ -35,10 +29,19 @@ ms.locfileid: "60699229"
 
 - **保護 Azure 虛擬機器的所有設定**︰復原服務保存庫會保護以 Resource Manager 為基礎的 VM，包括進階磁碟、受控磁碟及加密的 VM。 將備份保存庫升級至復原服務保存庫，讓您有機會可將以 Service Manager 為基礎的 VM 升級至以 Resource Manager 為基礎的 VM。 在升級保存庫時，您可以保留以 Service Manager 為基礎的 VM 復原點，並設定已升級 (已啟用 Resource Manager) 的 VM 保護。 [深入了解](https://azure.microsoft.com/blog/azure-backup-recovery-services-vault-ga)
 
-- **IaaS VM 的立即還原**︰您可以使用復原服務保存庫，從 IaaS VM 還原檔案和資料夾，而非還原整個 VM，這樣可加速還原時間。 IaaS VM 的立即還原適用於 Windows 和 Linux VM。 [深入了解](https://azure.microsoft.com/blog/instant-file-recovery-from-azure-linux-vm-backup-using-azure-backup-preview)
+- **IaaS VM 的立即還原**︰您可以使用復原服務保存庫，從 IaaS VM 還原檔案和資料夾，而非還原整個 VM，這樣可加速還原時間。 IaaS VM 的立即還原適用於 Windows 和 Linux VM。 [深入了解](backup-instant-restore-capability.md)
+
+## <a name="storage-settings-in-the-recovery-services-vault"></a>復原服務保存庫中的儲存體設定
+
+復原服務保存庫是一個實體，可儲存一段時間以來建立的備份和復原點。 復原服務保存庫也包含與受保護虛擬機器相關聯的備份原則。
+
+Azure 備份會自動處理保存庫的儲存體。 瞭解如何[變更存放裝置設定](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-storage-redundancy)。
+
+若要深入瞭解儲存體冗余，請參閱關於[異地](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs)和[本機](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs)冗余的文章。
 
 ## <a name="managing-your-recovery-services-vaults-in-the-portal"></a>在入口網站中管理復原服務保存庫
-建立和管理 Azure 入口網站中的復原服務保存庫很輕鬆，因為備份服務已整合至其他 Azure 服務。 這項整合代表您可以在目標服務的內容中，建立或管理復原服務保存庫。 例如，若要檢視 VM 的復原點，請選取您的 VM，然後按一下 [作業] 功能表中的 [備份]。
+
+建立和管理 Azure 入口網站中的復原服務保存庫很輕鬆，因為備份服務已整合至其他 Azure 服務。 這項整合代表您可以在目標服務的內容中，** 建立或管理復原服務保存庫。 例如，若要檢視 VM 的復原點，請選取您的 VM，然後按一下 [作業] 功能表中的 [備份]****。
 
 ![復原服務保存庫詳細資料 VM](./media/backup-azure-recovery-services-vault-overview/rs-vault-in-context-vm.png)
 
@@ -56,26 +59,37 @@ ms.locfileid: "60699229"
 > 復原服務保存庫遭刪除後的 24 小時內，無法以相同名稱重新建立。 請使用不同的資源名稱，或選擇不同的資源群組，或在 24 小時後重試一次。
 
 ### <a name="back-up-data"></a>備份資料
+
 - [備份 Azure VM](backup-azure-vms-first-look-arm.md)
 - [備份 Windows Server 或 Windows 工作站](backup-try-azure-backup-in-10-mins.md)
 - [將 DPM 工作負載備份到 Azure](backup-azure-dpm-introduction.md)
 - [準備使用 Azure 備份伺服器來備份工作負載](backup-azure-microsoft-azure-backup.md)
 
 ### <a name="manage-recovery-points"></a>管理復原點
+
 - [管理 Azure VM 備份](backup-azure-manage-vms.md)
 - [管理檔案和資料夾](backup-azure-manage-windows-server.md)
 
 ### <a name="restore-data-from-the-vault"></a>從保存庫還原資料
+
 - [復原 Azure VM 中的個別檔案](backup-azure-restore-files-from-vm.md)
 - [還原 Azure VM](backup-azure-arm-restore-vms.md)
 
 ### <a name="secure-the-vault"></a>保護保存庫
+
 - [保護復原服務保存庫中的雲端備份資料](backup-azure-security-feature.md)
 
+## <a name="azure-advisor"></a>Azure Advisor
 
+[Azure Advisor](https://docs.microsoft.com/azure/advisor/)是個人化的雲端顧問，可協助優化 Azure 的使用。 它會分析您的 Azure 使用量並提供及時建議，以協助優化和保護您的部署。 它提供四種類別的建議：高可用性、安全性、效能和成本。
+
+Azure Advisor 針對未備份的 Vm 提供每小時的[建議](https://docs.microsoft.com/azure/advisor/advisor-high-availability-recommendations#protect-your-virtual-machine-data-from-accidental-deletion)，因此您永遠不會錯過備份重要的 vm。 您也可以藉由 snoozing 來控制建議。  您可以按一下 [建議]，並藉由指定保存庫（儲存備份的位置）和備份原則（備份複本的排程）來啟用線上 Vm 上的備份。
+
+![Azure Advisor](./media/backup-azure-recovery-services-vault-overview/azure-advisor.png)
 
 ## <a name="next-steps"></a>後續步驟
+
 使用下列文章進行：</br>
 [備份 IaaS VM](backup-azure-arm-vms-prepare.md)</br>
 [備份 Azure 備份伺服器](backup-azure-microsoft-azure-backup.md)</br>
-[備份 Windows Server](backup-configure-vault.md)
+[備份 Windows Server](backup-windows-with-mars-agent.md)

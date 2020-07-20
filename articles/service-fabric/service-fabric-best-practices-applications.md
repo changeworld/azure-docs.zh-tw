@@ -1,92 +1,86 @@
 ---
-title: Azure Service Fabric 應用程式設計最佳做法 |Microsoft Docs
-description: 開發 Service Fabric 應用程式的最佳作法。
-services: service-fabric
-documentationcenter: .net
+title: Azure Service Fabric 應用程式設計最佳做法
+description: 使用 Azure Service Fabric 開發應用程式和服務的最佳作法和設計考慮。
 author: markfussell
-manager: chackdan
-editor: ''
-ms.assetid: 19ca51e8-69b9-4952-b4b5-4bf04cded217
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 04/26/2019
-ms.author: msfussell
-ms.openlocfilehash: 55f043effc7cdb102acea856e89c58f660d0cde5
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.date: 06/18/2019
+ms.author: mfussell
+ms.openlocfilehash: 742cd9b1e7480fcc510b61d8987e42b499a1ff20
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65237743"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261186"
 ---
 # <a name="azure-service-fabric-application-design-best-practices"></a>Azure Service Fabric 應用程式設計最佳做法
 
-本文提供 Service Fabric 上建置應用程式和服務的最佳作法指引。
+本文提供在 Azure Service Fabric 上建立應用程式和服務的最佳作法指引。
  
 ## <a name="get-familiar-with-service-fabric"></a>熟悉 Service Fabric
-* [因此，您想要了解 Service Fabric？](service-fabric-content-roadmap.md)
-* 了解[Service Fabric 應用程式案例](service-fabric-application-scenarios.md)
-* 然後了解程式設計模型選擇使用[Service Fabric 程式設計模型概觀](service-fabric-choose-framework.md)
+* 閱讀，[讓您瞭解 Service Fabric？](service-fabric-content-roadmap.md)一文。
+* 閱讀[Service Fabric 應用程式案例](service-fabric-application-scenarios.md)的相關資訊。
+* 閱讀[Service Fabric 程式設計模型總覽](service-fabric-choose-framework.md)，瞭解程式設計模型的選擇。
 
 
 
-## <a name="application-design-guidance"></a>應用程式的設計指引
-熟悉[一般架構](https://docs.microsoft.com/azure/architecture/reference-architectures/microservices/service-fabric)Service Fabric 應用程式並將其[設計考量](https://docs.microsoft.com/azure/architecture/reference-architectures/microservices/service-fabric#design-considerations)。
+## <a name="application-design-guidance"></a>應用程式設計指引
+熟悉 Service Fabric 應用程式的[一般架構](/azure/architecture/reference-architectures/microservices/service-fabric)及其[設計考慮](/azure/architecture/reference-architectures/microservices/service-fabric#design-considerations)。
 
 ### <a name="choose-an-api-gateway"></a>選擇 API 閘道
-使用 API 閘道服務可以相應放大的後端服務進行通訊。使用的最常見的 API 閘道服務有：
+使用 API 閘道服務來與後端服務通訊，然後再進行相應放大。最常見的 API 閘道服務是：
 
-- [Azure API 管理](https://docs.microsoft.com/azure/service-fabric/service-fabric-api-management-overview)，這是[與 Service Fabric 整合](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-deploy-api-management)
-- [Azure IoT 中樞](https://docs.microsoft.com/azure/iot-hub/)或是[Azure 事件中樞](https://docs.microsoft.com/azure/event-hubs/)使用[ServiceFabricProcessor](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/ServiceFabricProcessor)來讀取事件中樞分割區
-- [Træfik 反向 proxy](https://blogs.msdn.microsoft.com/azureservicefabric/2018/04/05/intelligent-routing-on-service-fabric-with-traefik/)使用[Azure Service Fabric 提供者](https://docs.traefik.io/configuration/backends/servicefabric/)
-- [Azure 應用程式閘道](https://docs.microsoft.com/azure/application-gateway/)附註： 這樣並未直接整合到 Service Fabric 和 Azure API 管理通常是偏好的選擇
-- 建置您自己[ASP.NET Core](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-communication-aspnetcore) web 應用程式閘道
+- [與 Service Fabric 整合](./service-fabric-tutorial-deploy-api-management.md)的[Azure API 管理](./service-fabric-api-management-overview.md)。
+- [Azure IoT 中樞](../iot-hub/index.yml)或[Azure 事件中樞](../event-hubs/index.yml)，使用[ServiceFabricProcessor](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Microsoft.Azure.EventHubs.ServiceFabricProcessor)從事件中樞分割區讀取。
+- 使用[Azure Service Fabric 提供者](https://docs.traefik.io/v1.6/configuration/backends/servicefabric/) [Træfik 反向 proxy](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric)。
+- [Azure 應用程式閘道](../application-gateway/index.yml)。
 
-### <a name="choose-stateless-services"></a>選擇無狀態服務
-我們建議您一律先建置無狀態服務使用[Reliable Services](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-introduction) Azure Database、 Azure CosmosDB 或 Azure 儲存體中儲存狀態。 需要外部化的狀態是適用於大部分的開發人員更熟悉的方法，並可讓您也利用查詢功能上的存放區。  
+   > [!NOTE] 
+   > Azure 應用程式閘道未與 Service Fabric 直接整合。 Azure API 管理通常是慣用的選擇。
+- 您自己的自訂建立[ASP.NET Core](./service-fabric-reliable-services-communication-aspnetcore.md) web 應用程式閘道。
 
-### <a name="when-to-choose-stateful-services"></a>選擇 具狀態服務的時機
-當您有低延遲的案例且需要保持接近計算的資料，請考慮具狀態服務。 範例包括數位對應項的 IoT 裝置、 遊戲狀態、 工作階段狀態快取資料庫中的資料和長時間執行的工作流程來追蹤呼叫其他服務。
+### <a name="stateless-services"></a>無狀態服務
+我們建議您一律從使用[Reliable Services](./service-fabric-reliable-services-introduction.md)建立無狀態服務，並將狀態儲存在 Azure 資料庫、Azure Cosmos DB 或 Azure 儲存體開始。 對於大部分的開發人員而言，外部化狀態是比較熟悉的方法。 此方法也可讓您利用存放區上的查詢功能。  
+
+### <a name="when-to-use-stateful-services"></a>使用具狀態服務的時機
+當您有低延遲的案例，而且需要將資料保持在接近計算時，請考慮具狀態服務。 某些範例案例包括 IoT 數位對應項裝置、遊戲狀態、會話狀態、從資料庫快取資料，以及長時間執行的工作流程來追蹤對其他服務的呼叫。
 
 決定資料保留時間範圍：
 
-- 快取的資料-您使用快取到外部存放區的延遲會造成問題的地方。 使用具狀態服務，因為您自己的資料快取，或考慮使用[開放原始碼 SoCreate service fabric-分散式-快取](https://github.com/SoCreate/service-fabric-distributed-cache)。 在此案例中，您可能會遺失快取中的所有資料，並不重要。
-- 時間繫結的資料-您需要保留資料更接近來計算延遲一段時間，但該資料可以負擔會在遺失*災害*案例。 比方說，許多資料都必須關閉的 IoT 解決方案的計算，例如計算過去幾天內，平均溫度，不過，如果遺失此資料，然後將特定的資料點記錄不重要。 也在此案例中您通常不在乎的個別資料點，只會定期寫入外部儲存體計算平均值的備份。  
-- 長期的資料-可靠的集合可以儲存您的資料永久。 不過，在此情況下您需要[準備進行災害復原](https://docs.microsoft.com/azure/service-fabric/service-fabric-disaster-recovery)包括[設定定期備份原則](https://docs.microsoft.com/azure/service-fabric/service-fabric-backuprestoreservice-configure-periodic-backup)叢集。 作用中，您設定如果損毀您的叢集在災害情況下，會發生什麼情況、 您想要建立新的叢集，以及如何部署新的應用程式執行個體，並從最新的備份復原。
+- 快取的**資料**。 當外部存放區的延遲發生問題時，請使用快取。 使用具狀態服務作為您自己的資料快取，或考慮使用[開放原始碼 SoCreate Service Fabric 分散式](https://github.com/SoCreate/service-fabric-distributed-cache)快取。 在此案例中，如果您遺失快取中的所有資料，就不需要擔心。
+- **時間限制的資料**。 在此案例中，您需要讓資料保持接近計算一段時間以等待延遲，但是您可以承受遺失損*毀的資料。* 例如，在許多 IoT 解決方案中，資料必須接近計算，例如計算過去幾天的平均溫度時，但如果遺失這項資料，則記錄的特定資料點並不重要。 此外，在此案例中，您通常不在意備份個別的資料點。 您只會備份定期寫入外部儲存體的計算平均值值。  
+- **長期資料**。 可靠的集合可以永久儲存您的資料。 但是在這種情況下，您必須為嚴重損壞[修復做準備](./service-fabric-disaster-recovery.md)，包括為您的叢集設定[定期備份原則](./service-fabric-backuprestoreservice-configure-periodic-backup.md)。 實際上，您會設定當您的叢集損毀時，會發生什麼情況，您需要建立新的叢集，以及如何部署新的應用程式實例，並從最新的備份復原。
 
-節省成本並改善可用性：
-- 因為您不會造成從遠端存放區的資料存取和交易成本，而不需要使用另一個服務，例如 Azure Redis，您可以減少使用具狀態服務的成本。
-- 使用具狀態服務，主要是針對儲存體而非計算是昂貴且不建議使用。 具狀態服務視為不耗費資源的本機儲存體與計算。
-- 藉由移除其他服務的相依性，您可以改善您的服務可用性。 具有以 HA 叢集中的狀態會隔離您與其他服務停機或延遲問題。
+節省成本並提升可用性：
+- 您可以使用具狀態服務來降低成本，因為您不會產生來自遠端存放區的資料存取和交易成本，而且因為您不需要使用另一項服務，例如 Azure Cache for Redis。
+- 使用主要用於儲存體的具狀態服務，而不是用於計算，但我們不建議您這麼做。 將具狀態服務視為具有便宜的本機儲存體的計算。
+- 藉由移除其他服務的相依性，您可以改善服務可用性。 在叢集中管理 HA 的狀態，可隔離您與其他服務停機或延遲問題。
 
-## <a name="how-to-properly-work-with-reliable-services"></a>如何使用 Reliable Services 正常運作
-Reliable Services 可讓您輕鬆地建立無狀態與具狀態服務。 讀取[Reliable Services 簡介](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-introduction)
-- 受限於[取消語彙基元](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-lifecycle#stateful-service-primary-swaps)中`RunAsync()`無狀態與具狀態服務的方法和`ChangeRole()`對於具狀態服務的方法。 如果沒有這麼做，Service Fabric 不知道如果可以關閉您的服務。 比方說，不接受取消語彙基元會導致更長的應用程式升級的時間。
--   開盤和收盤[通訊接聽程式](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-communication)及時，而且接受取消語彙基元。
--   永遠不會混合使用非同步程式碼的同步處理程式碼。 例如，請勿使用`.GetAwaiter().GetResult()`在您的非同步呼叫; 它必須是非同步*一路*透過呼叫堆疊。
+## <a name="how-to-work-with-reliable-services"></a>如何使用 Reliable Services
+Service Fabric Reliable Services 可讓您輕鬆地建立無狀態和具狀態服務。 如需詳細資訊，請參閱[Reliable Services 簡介](./service-fabric-reliable-services-introduction.md)。
+- 請一律接受無狀態和具狀態服務之方法中的[取消權杖](./service-fabric-reliable-services-lifecycle.md#stateful-service-primary-swaps) `RunAsync()` ，以及具 `ChangeRole()` 狀態服務的方法。 如果您沒有這麼做，Service Fabric 不知道您的服務是否可以關閉。 例如，如果您不接受解除標記，可能會有更長的應用程式升級時間。
+-    及時開啟和關閉[通訊](./service-fabric-reliable-services-communication.md)接聽程式，並接受解除標記。
+-    絕對不要將同步處理常式代碼與非同步程式碼混合。 例如，請勿 `.GetAwaiter().GetResult()` 在您的 async 呼叫中使用。 透過呼叫堆疊以非同步*方式*使用。
 
-## <a name="how-to-properly-work-with-reliable-actors"></a>如何使用 Reliable Actors 正常運作
-Reliable Actors 可讓您輕鬆地建立可設定狀態、 虛擬動作項目。 讀取[Reliable Actors 簡介](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-actors-introduction)
+## <a name="how-to-work-with-reliable-actors"></a>如何使用 Reliable Actors
+Service Fabric Reliable Actors 可讓您輕鬆地建立具狀態的虛擬執行者。 如需詳細資訊，請參閱[Reliable Actors 簡介](./service-fabric-reliable-actors-introduction.md)。
 
-- 請慎重考慮使用發佈/訂閱訊息之間調整應用程式的動作項目。 例如，[開放原始碼 SoCreate pub/sub](https://service-fabric-pub-sub.socreate.it/)或是[Azure 服務匯流排](https://docs.microsoft.com/azure/service-bus/)。
-- 動作項目狀態為[儘可能細分](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-actors-state-management#best-practices)。
-- 管理[動作項目的生命週期](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-actors-state-management#best-practices)。 如果您將無法再使用它們，請刪除動作項目。 使用時，這是特別[VolatileState 提供者](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-actors-state-management#state-persistence-and-replication)所有狀態儲存在記憶體中。
-- 由於他們[開啟基礎並行](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-actors-introduction#concurrency)動作項目最適合使用做為獨立的物件。 請勿建立多個動作項目、 同步的方法呼叫 （每個最有可能成為個別的網路呼叫） 的圖形或有循環的動作項目要求;這些將會大幅影響效能和規模。
-- 請勿混合使用非同步程式碼; 的同步處理程式碼它必須一直是非同步，以防止發生效能問題。
-- 沒有動作項目中進行長時間執行的呼叫，它會封鎖其他對相同的動作項目，因為回合式並行處理的呼叫。
-- 如果與使用其他服務通訊[Service Fabric 遠端處理](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-communication-remoting)，而您需要建立`ServiceProxyFactory`，然後建立該家工廠[動作項目服務](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-actors-using)層級和*不*動作項目層級。
+- 請認真考慮在您的動作專案之間使用 pub/sub 訊息來調整應用程式。 提供此服務的工具組括[開放原始碼 SoCreate Service Fabric Pub/Sub](https://service-fabric-pub-sub.socreate.it/)和[Azure 服務匯流排](/azure/service-bus/)。
+- 盡可能將動作專案狀態設為更[精細](./service-fabric-reliable-actors-state-management.md#best-practices)。
+- 管理[執行者的生命週期](./service-fabric-reliable-actors-state-management.md#best-practices)。 如果您不打算再次使用動作專案，請將其刪除。 當您使用[volatile 狀態提供者](./service-fabric-reliable-actors-state-management.md#state-persistence-and-replication)時，刪除不必要的執行者特別重要，因為所有狀態都會儲存在記憶體中。
+- 由於動作專案是以[回合為基礎](./service-fabric-reliable-actors-introduction.md#concurrency)，因此最適合當做獨立物件使用。 請勿建立多動作專案、同步方法呼叫的圖形， (每一種都可能成為個別的網路呼叫) 或建立迴圈動作專案要求。 這些會大幅影響效能和規模。
+- 請勿將同步處理常式代碼與非同步程式碼混合。 一致地使用 async 來避免發生效能問題。
+- 不要在動作專案中進行長時間執行的呼叫。 長時間執行的呼叫將會封鎖對相同動作專案的其他呼叫，因為回合型並行。
+- 如果您使用[Service Fabric 遠端處理](./service-fabric-reliable-services-communication-remoting.md)來與其他服務通訊，而且您要建立 `ServiceProxyFactory` ，請在動作專案[-服務](./service-fabric-reliable-actors-using.md)層級建立 factory，而*不*是在動作專案層級。
 
 
 ## <a name="application-diagnostics"></a>應用程式診斷
-- 新增徹底[應用程式記錄](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-generation-app)服務呼叫中。 這有助於診斷的情況下，服務彼此呼叫。 例如，當 A]-> [B]-> [C]-> [的 D 的任何位置; 呼叫可能會失敗如果沒有足夠的記錄，，很難診斷。 如果服務因為呼叫磁碟區太多記錄，至少務必來記錄錯誤和警告。
+深入瞭解如何在服務呼叫中新增[應用程式記錄](./service-fabric-diagnostics-event-generation-app.md)。 這可協助您診斷服務彼此呼叫的案例。 例如，當呼叫 B 呼叫 C 呼叫 D 時，呼叫可能會在任何地方失敗。 如果您沒有足夠的記錄，則很難診斷失敗。 如果服務因為呼叫磁片區而記錄太多，請務必至少記錄錯誤和警告。
 
-## <a name="iot-and-messaging-applications"></a>IoT 和傳訊應用程式
-當讀取訊息[Azure IoT 中樞](https://docs.microsoft.com/azure/iot-hub/)或是[Azure 事件中樞](https://docs.microsoft.com/azure/event-hubs/)使用[ServiceFabricProcessor](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/ServiceFabricProcessor) ，整合了 Service Fabric Reliable Services 來維護從事件中樞讀取的狀態會分割並將新訊息推送至您的服務，透過`IEventProcessor::ProcessEventsAsync()`方法。
+## <a name="iot-and-messaging-applications"></a>IoT 和訊息應用程式
+當您從[Azure IoT 中樞](../iot-hub/index.yml)或[Azure 事件中樞](../event-hubs/index.yml)讀取訊息時，請使用[ServiceFabricProcessor](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/ServiceFabricProcessor)。 ServiceFabricProcessor 會與 Service Fabric Reliable Services 整合，以維護從事件中樞分割區讀取的狀態，並透過方法將新訊息推送至您的服務 `IEventProcessor::ProcessEventsAsync()` 。
 
 
-## <a name="design-guidance-on-azure"></a>在 Azure 上的設計指引
-* 請瀏覽[Azure 架構中心](https://docs.microsoft.com/azure/architecture/microservices/)如需設計指引[在 Azure 上建置微服務](https://docs.microsoft.com/azure/architecture/microservices/)
+## <a name="design-guidance-on-azure"></a>Azure 上的設計指導方針
+* 如需在[azure 上建立微服務](/azure/architecture/microservices/)的設計指引，請造訪[azure 架構中心](/azure/architecture/microservices/)。
 
-* 請瀏覽[開始使用 Azure 遊戲](https://docs.microsoft.com/gaming/azure/)如需設計指引[使用 Service Fabric 的遊戲製作服務](https://docs.microsoft.com/gaming/azure/reference-architectures/multiplayer-synchronous-sf)
+* 如需在[遊戲服務中使用 Service Fabric](/gaming/azure/reference-architectures/multiplayer-synchronous-sf)的設計指引，請流覽[開始使用 Azure 以取得遊戲](/gaming/azure/)。

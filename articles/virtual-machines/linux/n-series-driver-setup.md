@@ -1,33 +1,25 @@
 ---
-title: 適用於 Linux 的 Azure N 系列 GPU 驅動程式設定 | Microsoft Docs
+title: 適用於 Linux 的 Azure N 系列 GPU 驅動程式設定
 description: 如何針對 Azure 中執行 Linux 的 N 系列 VM 設定 NVIDIA GPU 驅動程式
 services: virtual-machines-linux
-documentationcenter: ''
-author: cynthn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: d91695d0-64b9-4e6b-84bd-18401eaecdde
+author: vikancha-MSFT
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 01/09/2019
-ms.author: cynthn
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7c80b821d6bd0263473ba0178eea148f7a2d5773
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.author: vikancha
+ms.openlocfilehash: 1d463242c923d766b500c1ede796e399e7af9c54
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62123928"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84735926"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>在執行 Linux 的 N 系列 VM 上安裝 NVIDIA GPU 驅動程式
 
-若要利用 Azure N 系列 VM (執行 Linux) 的 GPU 功能，您必須安裝 NVIDIA GPU 驅動程式。 [NVIDIA GPU 驅動程式擴充功能](../extensions/hpccompute-gpu-linux.md)會在 N 系列 VM 上安裝適當的 NVIDIA CUDA 或 GRID 驅動程式。 使用 Azure 入口網站或者 Azure CLI 或 Azure Resource Manager 範本之類的工具，安裝或管理擴充功能。 如需支援的發佈和部署步驟，請參閱 [NVIDIA GPU 驅動程式擴充功能文件](../extensions/hpccompute-gpu-linux.md)。
+若要利用 NVIDIA GPU 所支援 Azure N 系列 VM 的 GPU 功能，則必須安裝 NVIDIA GPU 驅動程式。 [NVIDIA GPU 驅動程式擴充功能](../extensions/hpccompute-gpu-linux.md)會在 N 系列 VM 上安裝適當的 NVIDIA CUDA 或 GRID 驅動程式。 使用 Azure 入口網站或者 Azure CLI 或 Azure Resource Manager 範本之類的工具，安裝或管理擴充功能。 如需支援的發佈和部署步驟，請參閱 [NVIDIA GPU 驅動程式擴充功能文件](../extensions/hpccompute-gpu-linux.md)。
 
-如果您選擇手動安裝 GPU 驅動程式，本文提供支援的發佈、驅動程式，以及安裝和驗證步驟。 驅動程式手動設定資訊也適用於 [Windows VM](../windows/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+如果選擇手動安裝 NVIDIA GPU 驅動程式，本文提供支援的發行版本、驅動程式，以及安裝和驗證步驟。 驅動程式手動設定資訊也適用於 [Windows VM](../windows/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 如需 N 系列 VM 規格、儲存體容量與磁碟的詳細資料，請參閱 [GPU Linux VM 大小](sizes-gpu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 
 
@@ -158,7 +150,7 @@ sudo reboot
 
 ## <a name="rdma-network-connectivity"></a>RDMA 網路連線
 
-可以在支援 RDMA 的 N 系列 VM (例如部署在同一個可用性設定組或 VM 擴展集的單一放置群組中的 NC24r) 上啟用 RDMA 網路連線能力。 RDMA 網路可針對搭配 Intel MPI 5.x 或更新版本執行的應用程式，支援訊息傳遞介面 (MPI) 流量。 其他需求如下：
+可在支援 RDMA 的 N 系列 VM (例如部署在同一個可用性設定組或虛擬機器 (VM) 擴展集的單一放置群組中 NC24r) 上啟用 RDMA 網路連線能力。 RDMA 網路可針對搭配 Intel MPI 5.x 或更新版本執行的應用程式，支援訊息傳遞介面 (MPI) 流量。 其他需求如下：
 
 ### <a name="distributions"></a>散發
 
@@ -170,9 +162,9 @@ sudo reboot
 
 * **CentOS 型 7.4 HPC** - 已在 VM 上安裝 RDMA 驅動程式和 Intel MPI 5.1。
 
-## <a name="install-grid-drivers-on-nv-or-nvv2-series-vms"></a>在 NV 或 NVv2 系列 VM 上安裝 GRID 驅動程式
+## <a name="install-grid-drivers-on-nv-or-nvv3-series-vms"></a>在 NV 或 NVv3 系列 VM 上安裝 GRID 驅動程式
 
-若要在 NV 或 NVv2 系列 VM 上安裝 NVIDIA GRID 驅動程式，請以 SSH 連線至每個 VM，並遵循您 Linux 發行版本的步驟。 
+若要在 NV 或 NVv3 系列 VM 上安裝 NVIDIA GRID 驅動程式，請以 SSH 連線至每部 VM，並遵循 Linux 發行版本的步驟。 
 
 ### <a name="ubuntu"></a>Ubuntu 
 
@@ -187,9 +179,11 @@ sudo reboot
 
    sudo apt-get dist-upgrade -y
 
-  sudo apt-get install build-essential ubuntu-desktop -y
-  ```
-3. 停用與 NVIDIA 驅動程式不相容的 Nouveau 核心驅動程式。 (僅在 NV 或 NVv2 VM 上使用 NVIDIA 驅動程式。)若要這樣做，請建立中的檔案`/etc/modprobe.d`名為`nouveau.conf`含有下列內容：
+   sudo apt-get install build-essential ubuntu-desktop -y
+   
+   sudo apt-get install linux-azure -y
+   ```
+3. 停用與 NVIDIA 驅動程式不相容的 Nouveau 核心驅動程式。 (僅在 NV 或 NVv2 VM 上使用 NVIDIA 驅動程式。)若要這樣做，請使用下列內容以在名為 `nouveau.conf` 的 `/etc/modprobe.d` 中建立檔案：
 
    ```
    blacklist nouveau
@@ -226,8 +220,15 @@ sudo reboot
  
    ```
    IgnoreSP=FALSE
+   EnableUI=FALSE
    ```
-9. 重新啟動 VM 並繼續確認安裝。
+   
+9. 從 `/etc/nvidia/gridd.conf` 移除下列內容 (如果有的話)：
+ 
+   ```
+   FeatureType=0
+   ```
+10. 重新啟動 VM 並繼續確認安裝。
 
 
 ### <a name="centos-or-red-hat-enterprise-linux"></a>CentOS 或 Red Hat Enterprise Linux 
@@ -242,9 +243,11 @@ sudo reboot
    sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
  
    sudo yum install dkms
+   
+   sudo yum install hyperv-daemons
    ```
 
-2. 停用與 NVIDIA 驅動程式不相容的 Nouveau 核心驅動程式。 (僅在 NV 或 NV2 VM 上使用 NVIDIA 驅動程式。)若要這樣做，請建立中的檔案`/etc/modprobe.d`名為`nouveau.conf`含有下列內容：
+2. 停用與 NVIDIA 驅動程式不相容的 Nouveau 核心驅動程式。 (僅在 NV 或 NV2 VM 上使用 NVIDIA 驅動程式。)若要這樣做，請使用下列內容以在名為 `nouveau.conf` 的 `/etc/modprobe.d` 中建立檔案：
 
    ```
    blacklist nouveau
@@ -290,8 +293,15 @@ sudo reboot
  
    ```
    IgnoreSP=FALSE
+   EnableUI=FALSE 
    ```
-9. 重新啟動 VM 並繼續確認安裝。
+9. 從 `/etc/nvidia/gridd.conf` 移除下列內容 (如果有的話)：
+ 
+   ```
+   FeatureType=0
+   ```
+10. 重新啟動 VM 並繼續確認安裝。
+
 
 ### <a name="verify-driver-installation"></a>確認驅動程式安裝
 
@@ -345,6 +355,7 @@ fi
 ## <a name="troubleshooting"></a>疑難排解
 
 * 您可以使用 `nvidia-smi` 設定持續性模式，如此當您需要查詢卡片時，命令的輸出更快。 若要設定持續性模式，請執行 `nvidia-smi -pm 1`。 請注意，如果重新啟動 VM，模式設定就會消失。 您一律可以編寫指令碼在啟動時執行模式設定。
+* 如果已將 NVIDIA CUDA 驅動程式更新為最新版本，且發現 RDMA 連線不再有效，請[重新安裝 RDMA 驅動程式](https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup#rdma-network-connectivity)以重新建立該連線。 
 
 ## <a name="next-steps"></a>後續步驟
 

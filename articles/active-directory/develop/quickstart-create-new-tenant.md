@@ -1,31 +1,25 @@
 ---
-title: 建立 Azure Active Directory 租用戶 | Microsoft Docs
+title: 建立 Azure Active Directory 租用戶
 description: 了解如何建立 Azure AD 租用戶，以供註冊及建置應用程式使用。
 services: active-directory
-documentationcenter: ''
-author: CelesteDG
-manager: mtillman
-editor: ''
-ms.assetid: 1f4b24eb-ab4d-4baa-a717-2a0e5b8d27cd
+author: rwike77
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
-ms.date: 02/05/2019
-ms.author: celested
-ms.reviewer: dadobali
-ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f569b497afe01db0fc4c3aa29589e6f2c538faf
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 03/12/2020
+ms.author: ryanwi
+ms.reviewer: jmprieur
+ms.custom: aaddev, identityplatformtop40, fasttrack-edit
+ms.openlocfilehash: 19c94a4807b8958fa8b1ec46ccae660c7cbe92de
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58108656"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256691"
 ---
-# <a name="quickstart-set-up-a-dev-environment"></a>快速入門：設定開發環境
+# <a name="quickstart-set-up-a-tenant"></a>快速入門：設定租用戶
 
 Microsoft 身分識別平台可讓開發人員建置以各種自訂 Microsoft 365 環境與身分識別為目標的應用程式。 若要開始使用 Microsoft 身分識別平台，您將須存取一個環境 (也稱為 Azure AD 租用戶)，在該環境中註冊及管理應用程式、存取 Microsoft 365 的資料，以及部署自訂條件式存取與租用戶限制。
 
@@ -40,7 +34,7 @@ Microsoft 身分識別平台可讓開發人員建置以各種自訂 Microsoft 36
 * 公司與學校 (Azure AD 帳戶) 或 Microsoft 帳戶 (例如 outlook.com 與 live.com)
 * 社交與本機帳戶 (Azure AD B2C)
 
-快速入門分成兩種案例，視您要建置的應用程式類型而定。 如果您需要有關身分識別類型的更多幫助，請查看[關於 Microsoft 身分識別平台](about-microsoft-identity-platform.md)
+快速入門分成兩種案例，視您要建置的應用程式類型而定。
 
 ## <a name="work-and-school-accounts-or-personal-microsoft-accounts"></a>公司與學校帳戶，或個人 Microsoft 帳戶
 
@@ -62,7 +56,7 @@ Microsoft 身分識別平台可讓開發人員建置以各種自訂 Microsoft 36
 
 ### <a name="create-a-new-azure-ad-tenant"></a>建立新的 Azure AD 租用戶
 
-如果您還沒有 Azure AD 租用戶，或是想要針對開發目的建立一個新的租用戶，請依照[目錄建立經驗](https://portal.azure.com/#create/Microsoft.AzureActiveDirectory)中所述的步驟執行。 您必須提供下列資訊才能建立新的租用戶：
+如果您還沒有 Azure AD 租用戶，或是想要針對開發目的建立一個新的租用戶，請參閱[快速入門](../fundamentals/active-directory-access-create-new-tenant.md)，或直接依照[目錄建立經驗](https://portal.azure.com/#create/Microsoft.AzureActiveDirectory)中的指示操作。 您必須提供下列資訊才能建立新的租用戶：
 
 - **組織名稱**
 - **初始網域** - 這會是 *.onmicrosoft.com 的一部分。 您可以稍後自訂更多網域設定。
@@ -77,6 +71,6 @@ Microsoft 身分識別平台可讓開發人員建置以各種自訂 Microsoft 36
 
 ## <a name="next-steps"></a>後續步驟
 
-* 嘗試程式碼撰寫快速入門，並開始驗證使用者。 
-* 如需更多深入的程式碼範例，請參閱文件的**教學課程**一節。
-* 想要將您的應用程式部署至雲端嗎？ 請參閱[將容器部署至 Azure](https://docs.microsoft.com/azure/index#pivot=products&panel=containers)。 
+* [註冊應用程式](quickstart-register-app.md)，並與 Microsoft 身分識別平台整合。 
+* 了解[驗證的基本概念](authentication-scenarios.md)。
+* 如需訂用帳戶與 Azure AD 租用戶之間關聯性的詳細資料，請參閱[將 Azure 訂用帳戶與 Azure Active Directory 租用戶建立關聯或將其新增至其中](../fundamentals/active-directory-how-subscriptions-associated-directory.md)。

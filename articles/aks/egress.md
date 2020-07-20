@@ -1,18 +1,16 @@
 ---
-title: Azure Kubernetes Service (AKS) 中適用於輸出流量的靜態 IP 位址
+title: 將靜態 IP 用於輸出流量
+titleSuffix: Azure Kubernetes Service
 description: 了解如何在 Azure Kubernetes Service (AKS) 叢集中，建立和使用適用於輸出流量的靜態公用 IP 位址
 services: container-service
-author: iainfoulds
-ms.service: container-service
 ms.topic: article
 ms.date: 03/04/2019
-ms.author: iainfou
-ms.openlocfilehash: 6612d801804cdd1e092b50977230f24b378e64ba
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f66a33f49d856abde97756a2b4b483cfa6050d0a
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60466421"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86205782"
 ---
 # <a name="use-a-static-public-ip-address-for-egress-traffic-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中使用適用於輸出流量的靜態公用 IP 位址
 
@@ -24,7 +22,10 @@ ms.locfileid: "60466421"
 
 此文章假設您目前具有 AKS 叢集。 如果您需要 AKS 叢集，請參閱[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 入口網站][aks-quickstart-portal]的 AKS 快速入門。
 
-还需安装并配置 Azure CLI 2.0.59 或更高版本。 執行  `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱 [安裝 Azure CLI][install-azure-cli]。
+您也必須安裝並設定 Azure CLI 2.0.59 版或更新版本。 執行  `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱 [安裝 Azure CLI][install-azure-cli]。
+
+> [!IMPORTANT]
+> 本文使用*基本*SKU 負載平衡器搭配單一節點集區。 此設定不適用於多個節點集區，因為有多個節點集區不支援*基本*SKU 負載平衡器。 如需使用*標準*SKU 負載平衡器的詳細資訊，請參閱[在 Azure Kubernetes Service (AKS 中使用公用 Standard Load Balancer) ][slb] 。
 
 ## <a name="egress-traffic-overview"></a>輸出流量概觀
 
@@ -34,7 +35,7 @@ ms.locfileid: "60466421"
 
 ## <a name="create-a-static-public-ip"></a>建立靜態公用 IP
 
-當您建立靜態公用 IP 位址來與 AKS 搭配使用時，必須在**節點**資源群組中建立 IP 位址資源。 使用 [az aks show][az-aks-show] 命令來取得資源群組名稱，並新增 `--query nodeResourceGroup` 查詢參數。 下列範例會在 *myResourceGroup* 資源群組名稱中，取得 AKS 叢集名稱 *myAKSCluster* 的節點資源群組：
+使用 [az aks show][az-aks-show] 命令來取得資源群組名稱，並新增 `--query nodeResourceGroup` 查詢參數。 下列範例會在 *myResourceGroup* 資源群組名稱中，取得 AKS 叢集名稱 *myAKSCluster* 的節點資源群組：
 
 ```azurecli-interactive
 $ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
@@ -95,7 +96,7 @@ spec:
 kubectl apply -f egress-service.yaml
 ```
 
-此服務會在 Azure Load Balancer 上設定新的前端 IP。 如果您未設定任何其他 IP，則**所有**輸出流量現在都應該會使用此位址。 在 Azure Load Balancer 上設定多個位址時，輸出會使用該負載平衡器上的第一個 IP。
+此服務會在 Azure Load Balancer 上設定新的前端 IP。 如果您未設定任何其他 IP，則**所有**輸出流量現在都應該會使用此位址。 在 Azure Load Balancer 上設定多個位址時，這些公用 IP 位址中的任何一個都是輸出流程的候選項，而且會隨機選取一個。
 
 ## <a name="verify-egress-address"></a>確認輸出位址
 
@@ -123,7 +124,7 @@ $ curl -s checkip.dyndns.org
 
 ## <a name="next-steps"></a>後續步驟
 
-若要避免在 Azure Load Balancer 上維護多個公用 IP 位址，您可以改用輸入控制器。 輸入控制器會提供 SSL/TLS 終止、支援 URI 重寫及上游 SSL/TLS 加密等其他權益。 如需詳細資訊，請參閱[在 AKS 中建立基本的輸入控制器][ingress-aks-cluster]。
+若要避免在 Azure Load Balancer 上維護多個公用 IP 位址，您可以改用輸入控制器。 輸入控制器會提供 SSL/TLS 終止、支援 URI 重寫及上游 SSL/TLS 加密等其他權益。 如需詳細資訊，請參閱[在 AKS 中建立基本的連入控制器][ingress-aks-cluster]。
 
 <!-- LINKS - internal -->
 [az-network-public-ip-create]: /cli/azure/network/public-ip#az-network-public-ip-create
@@ -136,3 +137,4 @@ $ curl -s checkip.dyndns.org
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [install-azure-cli]: /cli/azure/install-azure-cli
+[slb]: load-balancer-standard.md

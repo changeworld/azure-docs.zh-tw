@@ -3,24 +3,24 @@ title: 教學課程 - 將 Azure CDN 新增至 Azure App Service Web 應用程式
 description: 在本教學課程中，Azure 內容傳遞網路 (CDN) 會新增至 Azure App Service Web 應用程式，以從您在世界各地的客戶附近的伺服器快取和傳遞靜態檔案。
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/14/2018
-ms.author: magattus
+ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 33b47d33262a4968a0eafb9ec70ef73e50975735
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 18054e47a987a7e79e9083b6f7a2f20b059c7f28
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602812"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "81254604"
 ---
 # <a name="tutorial-add-azure-cdn-to-an-azure-app-service-web-app"></a>教學課程：將 Azure CDN 新增至 Azure App Service Web 應用程式
 
@@ -72,11 +72,11 @@ ms.locfileid: "53602812"
 
 ![在入口網站中建立設定檔和端點](media/cdn-add-to-web-app/portal-new-endpoint.png)
 
-| 設定 | 建議的值 | 說明 |
+| 設定 | 建議的值 | 描述 |
 | ------- | --------------- | ----------- |
 | **CDN 設定檔** | myCDNProfile | CDN 設定檔是定價層相同的 CDN 端點集合。 |
 | **定價層** | 標準 Akamai | [定價層](cdn-features.md)指定提供者和可用的功能。 本教學課程使用標準 Akamai。 |
-| **CDN 端點名稱** | azureedge.net 網域中任何唯一的名稱 | 您可以在網域 *&lt;endpointname&gt;*.azureedge.net 上存取您的快取資源。
+| **CDN 端點名稱** | azureedge.net 網域中任何唯一的名稱 | 您可以在網域 *&lt;endpointname&gt;* .azureedge.net 上存取您的快取資源。
 
 選取 [建立] 以建立 CDN 設定檔。
 
@@ -210,7 +210,7 @@ Azure CDN 提供下列快取行為選項︰
 
 從 [查詢字串快取行為] 下拉式清單中，選取 [快取每個唯一 URL]。
 
-選取 [ **儲存**]。
+選取 [儲存]。
 
 ![選取查詢字串快取行為](media/cdn-add-to-web-app/portal-select-caching-behavior.png)
 

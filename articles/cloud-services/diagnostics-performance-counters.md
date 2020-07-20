@@ -3,23 +3,16 @@ title: 在 Azure 雲端服務中收集效能計數器 | Microsoft Docs
 description: 了解如何在雲端服務中使用 Azure 診斷和 Application Insights 來探索、使用及建立效能計數器。
 services: cloud-services
 documentationcenter: .net
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: ''
+author: tgore03
 ms.service: cloud-services
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 02/02/2018
-ms.author: jeconnoc
-ms.openlocfilehash: 68101be211335d51eb4bf99361ea36b73fa19218
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.author: tagore
+ms.openlocfilehash: 3b4028a09f69acd5d7a6579b4610785ed32e227d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60653734"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77469522"
 ---
 # <a name="collect-performance-counters-for-your-azure-cloud-service"></a>為您的 Azure 雲端服務收集效能計數器
 
@@ -105,11 +98,11 @@ Get-Counter -ListSet * | Where-Object CounterSetName -eq "Processor" | Select -E
 <!-- ... cut to save space ... -->
 ```
 
-每個效能計數器表示為 `<Counters>` 底下的 `<Add>` 元素。 `PerformanceCounter` 屬性會定義要收集哪個效能計數器。 `ReportAs` 屬性是要在 Azure 入口網站中針對效能計數器顯示的標題。 您收集的任何效能計數器都會放入入口網站中名為「自訂」的分類。 不同於 Azure 診斷，您無法設定收集這些效能計數器並傳送至 Azure 的間隔。 使用 Application Insights，會每分鐘收集效能計數器並傳送。 
+每個效能計數器表示為 `<Counters>` 底下的 `<Add>` 元素。 `PerformanceCounter` 屬性會定義要收集哪個效能計數器。 `ReportAs` 屬性是要在 Azure 入口網站中針對效能計數器顯示的標題。 您收集的任何效能計數器都會放入入口網站中名為「自訂」**** 的分類。 不同於 Azure 診斷，您無法設定收集這些效能計數器並傳送至 Azure 的間隔。 使用 Application Insights，會每分鐘收集效能計數器並傳送。 
 
 Application Insights 會自動收集下列效能計數器：
 
-* \Process(??APP_WIN32_PROC??)\%Processor Time
+* \Process （？APP_WIN32_PROC？？） \%處理器時間
 * \Memory\Available Bytes
 * \.NET CLR Exceptions(??APP_CLR_PROC??)\# of Exceps Thrown / sec
 * \Process(??APP_WIN32_PROC??)\Private Bytes
@@ -121,13 +114,13 @@ Application Insights 會自動收集下列效能計數器：
 ### <a name="azure-diagnostics"></a>Azure 診斷
 
 > [!IMPORTANT]
-> 雖然此資料全都會彙總至儲存體帳戶，但是入口網站**不會**提供製作資料圖表的原生方法。 強烈建議您將其他像是 Application Insights 的診斷服務整合到您的應用程式。
+> 雖然此資料會匯總到儲存體帳戶，但入口網站並**不**會提供用來建立資料圖表的原生方式。 強烈建議您將其他像是 Application Insights 的診斷服務整合到您的應用程式。
 
 雲端服務的 Azure 診斷延伸模組可讓您指定想要收集哪些計數器。 若要設定 Azure 診斷，請參閱[雲端服務監視概觀](cloud-services-how-to-monitor.md#setup-diagnostics-extension)。
 
-您想要收集的效能計數器會在 **diagnostics.wadcfgx** 檔案中定義。 在 Visual Studio 中開啟此檔案 (針對每個角色定義) 並且尋找 **DiagnosticsConfiguration** > **PublicConfig** > **WadCfg** > **DiagnosticMonitorConfiguration** > **PerformanceCounters** 元素。 新增新的 **PerformanceCounterConfiguration** 元素作為子項目。 這個元素具有兩個屬性：`counterSpecifier` 和 `sampleRate`。 `counterSpecifier` 屬性會定義要收集哪個系統效能計數器集合 (在上一節中概述)。 `sampleRate` 值表示該值輪詢的頻率。 整體而言，所有效能計數器都會根據父代 `PerformanceCounters` 元素的 `scheduledTransferPeriod` 屬性值，傳送到 Azure。
+您想要收集的效能計數器會在 **diagnostics.wadcfgx** 檔案中定義。 在 Visual Studio 中開啟此檔案（以每個角色定義），並尋找**DiagnosticsConfiguration**  >  **PublicConfig**  >  **diagnostics.wadcfg**  >  **DiagnosticMonitorConfiguration**  >  **PerformanceCounters**元素。 新增新的 **PerformanceCounterConfiguration** 元素作為子項目。 這個元素具有兩個屬性：`counterSpecifier` 和 `sampleRate`。 `counterSpecifier` 屬性會定義要收集哪個系統效能計數器集合 (在上一節中概述)。 `sampleRate` 值表示該值輪詢的頻率。 整體而言，所有效能計數器都會根據父代 `PerformanceCounters` 元素的 `scheduledTransferPeriod` 屬性值，傳送到 Azure。
 
-如需有關 `PerformanceCounters` 結構描述元素的詳細資訊，請參閱 [Azure 診斷結構描述](../azure-monitor/platform/diagnostics-extension-schema-1dot3.md#performancecounters-element)。
+如需有關 `PerformanceCounters` 結構描述元素的詳細資訊，請參閱 [Azure 診斷結構描述](../azure-monitor/platform/diagnostics-extension-schema-windows.md#performancecounters-element)。
 
 `sampleRate` 屬性定義的期間會使用 XML 持續時間資料類型來表示效能計數器輪詢的頻率。 在下列範例中，速率設為 `PT3M`，表示 `[P]eriod[T]ime[3][M]inutes`：每隔三分鐘。
 
@@ -265,7 +258,7 @@ counterServiceUsed.Increment();
 
 ### <a name="azure-diagnostics"></a>Azure 診斷
 
-如先前所述，您想要收集的效能計數器會在 **diagnostics.wadcfgx** 檔案中定義。 在 Visual Studio 中開啟此檔案 (針對每個角色定義) 並且尋找 **DiagnosticsConfiguration** > **PublicConfig** > **WadCfg** > **DiagnosticMonitorConfiguration** > **PerformanceCounters** 元素。 新增新的 **PerformanceCounterConfiguration** 元素作為子項目。 將 `counterSpecifier` 屬性設為您在程式碼中建立之效能計數器的分類和名稱。 
+如先前所述，您想要收集的效能計數器會在 **diagnostics.wadcfgx** 檔案中定義。 在 Visual Studio 中開啟此檔案（以每個角色定義），並尋找**DiagnosticsConfiguration**  >  **PublicConfig**  >  **diagnostics.wadcfg**  >  **DiagnosticMonitorConfiguration**  >  **PerformanceCounters**元素。 新增新的 **PerformanceCounterConfiguration** 元素作為子項目。 將 `counterSpecifier` 屬性設為您在程式碼中建立之效能計數器的分類和名稱。 
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -292,9 +285,12 @@ counterServiceUsed.Increment();
 </DiagnosticsConfiguration>
 ```
 
-## <a name="more-information"></a>詳細資訊
+## <a name="more-information"></a>更多資訊
 
-- [Azure 雲端服務的 Application Insights](../azure-monitor/app/cloudservices.md#performance-counters)
+- [適用于 Azure 雲端服務的 Application Insights](../azure-monitor/app/cloudservices.md#performance-counters)
 - [Application Insights 中的系統效能計數器](../azure-monitor/app/performance-counters.md)
 - [指定計數器路徑](https://msdn.microsoft.com/library/windows/desktop/aa373193(v=vs.85))
-- [Azure 診斷結構描述 - 效能計數器](../azure-monitor/platform/diagnostics-extension-schema-1dot3.md#performancecounters-element)
+- [Azure 診斷結構描述 - 效能計數器](../azure-monitor/platform/diagnostics-extension-schema-windows.md#performancecounters-element)
+
+
+

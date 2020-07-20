@@ -1,19 +1,17 @@
 ---
-title: 使用 REST API 將 Azure 資源的自訂計量傳送至 Azure 監視器計量的存放區
+title: 使用 REST API 將計量傳送至 Azure 監視器公制資料庫
 description: 使用 REST API 將 Azure 資源的自訂計量傳送至 Azure 監視器計量的存放區
-author: lingliw
+author: anirudhcavale
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 04/12/19
-ms.author: v-lingwu
+ms.date: 09/24/2018
+ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: aa842979bf86410e9dab97d6209f336eb6b02bd3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 84709c022631543101889f784231158ebb96b6f3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60253898"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77662259"
 ---
 # <a name="send-custom-metrics-for-an-azure-resource-to-the-azure-monitor-metric-store-by-using-a-rest-api"></a>使用 REST API 將 Azure 資源的自訂計量傳送至 Azure 監視器計量的存放區
 
@@ -39,7 +37,7 @@ ms.locfileid: "60253898"
 開啟命令提示字元並執行下列命令：
 
 ```shell
-curl -X POST https://login.partner.microsoftonline.cn/<yourtenantid>/oauth2/token -F "grant_type=client_credentials" -F "client_id=<insert clientId from earlier step> " -F "client_secret=<insert client secret from earlier step>" -F "resource=https://monitoring.azure.com/"
+curl -X POST https://login.microsoftonline.com/<yourtenantid>/oauth2/token -F "grant_type=client_credentials" -F "client_id=<insert clientId from earlier step>" -F "client_secret=<insert client secret from earlier step>" -F "resource=https://monitoring.azure.com/"
 ```
 儲存回應中的存取權杖。
 
@@ -77,7 +75,7 @@ curl -X POST https://login.partner.microsoftonline.cn/<yourtenantid>/oauth2/toke
     } 
     ``` 
 
-2. 在命令提示字元視窗中，發佈計量資料： 
+1. 在命令提示字元視窗中，發佈計量資料： 
    - **azureRegion**。 必須符合您要發出其計量的資源的部署資源。 
    - **resourceID**。  您要針對其追蹤計量的 Azure 資源的資源識別碼。  
    - **AccessToken**。 貼上您先前取得的權杖。
@@ -85,8 +83,8 @@ curl -X POST https://login.partner.microsoftonline.cn/<yourtenantid>/oauth2/toke
      ```Shell 
      curl -X POST https://<azureRegion>.monitoring.azure.com/<resourceId>/metrics -H "Content-Type: application/json" -H "Authorization: Bearer <AccessToken>" -d @custommetric.json 
      ```
-3. 變更 JSON 檔案中的時間戳記和值。 
-4. 重複前兩個步驟執行數次，讓您擁有數分鐘的資料。
+1. 變更 JSON 檔案中的時間戳記和值。 
+1. 重複前兩個步驟執行數次，讓您擁有數分鐘的資料。
 
 ## <a name="troubleshooting"></a>疑難排解 
 如果您在流程的某些部分收到錯誤訊息，請考慮下列疑難排解資訊：
@@ -102,20 +100,21 @@ curl -X POST https://login.partner.microsoftonline.cn/<yourtenantid>/oauth2/toke
 
 1. 登入 Azure 入口網站。 
 
-1. 在左側功能表中，選取 [監視]。 
+1. 在左側功能表中，選取 [監視]****。 
 
-1. 在 [監視] 頁面上，選取 [計量]。 
+1. 在 [**監視**] 頁面上，選取 [**計量**]。 
 
    ![選取計量](./media/metrics-store-custom-rest-api/metrics.png) 
 
 1. 將彙總期間變更為 [過去 30 分鐘]。  
 
-1. 在 [資源] 下拉式功能表中，選取您發出其計量的資源。  
+1. 在 [資源]**** 下拉式功能表中，選取您發出其計量的資源。  
 
-1. 在 [命名空間] 下拉式功能表中，選取 [QueueProcessing]。 
+1. 在 [命名空間]**** 下拉式功能表中，選取 [QueueProcessing]****。 
 
-1. 在 [計量] 下拉式功能表中，選取 [QueueDepth]。  
+1. 在 [計量]**** 下拉式功能表中，選取 [QueueDepth]****。  
 
  
 ## <a name="next-steps"></a>後續步驟
 - 深入了解[自訂計量](../../azure-monitor/platform/metrics-custom-overview.md)。
+

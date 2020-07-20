@@ -11,22 +11,22 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/12/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 90a624a6b3b4696899af0d8606f653df260cc201
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7275d115210100bdd4a3a2eb683c867a6a4a4f4a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60348275"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85358696"
 ---
 # <a name="select-which-installation-type-to-use-for-azure-ad-connect"></a>選取要用於 Azure AD Connect 的安裝類型
 Azure AD Connect 針對新安裝提供兩種安裝類型：快速和自訂。 本主題將協助您決定安裝時要使用的選項。
 
-## <a name="express"></a>Express
+## <a name="express"></a>快速
 [快速] 是最常見的選項，大約 90% 的全新安裝是使用此選項。 其設計目的是要提供適用於最常見客戶案例的組態。
 
 此選項假設：
@@ -47,7 +47,7 @@ Azure AD Connect 針對新安裝提供兩種安裝類型：快速和自訂。 �
 - 如果您不想要同步處理所有 OU，您仍然可以使用 [快速]，然後在最後一頁取消選取 [開始同步處理程序]。 接著，再次執行安裝精靈並變更[組態選項](how-to-connect-installation-wizard.md#customize-synchronization-options)中的 OU，然後啟用排定的同步處理。
 - 您想要啟用 Azure AD Premium 的其中一個功能，例如密碼回寫。 請先透過快速安裝來完成初始安裝。 接著，再次執行安裝精靈並變更[組態選項](how-to-connect-installation-wizard.md#customize-synchronization-options)。
 
-## <a name="custom"></a>“自定义”
+## <a name="custom"></a>自訂
 自訂路徑所允許的選項比快速安裝多更多。 在上一節所述的快速組態無法代表您組織情況的所有案例中，都應該使用自訂路徑。
 
 使用時機：

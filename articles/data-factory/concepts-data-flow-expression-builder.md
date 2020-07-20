@@ -1,79 +1,138 @@
 ---
-title: Azure Data Factory 對應資料流程運算式產生器
-description: 適用於 Azure Data Factory 應資料流程的運算式產生器
+title: 對應資料流程中的運算式產生器
+description: 在 Azure Data Factory 中，使用運算式產生器在對應資料流程中建立運算式
 author: kromerm
 ms.author: makromer
+ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 01/30/2019
-ms.openlocfilehash: df9cfb0c0e36f54c8b1fbee4def552c78e9d42c1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 06/20/2020
+ms.openlocfilehash: 7e2b655b344af90c4555beb0af85fa11cbc6d1c8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61269112"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85126156"
 ---
-# <a name="mapping-data-flow-expression-builder"></a>對應資料流程運算式產生器
+# <a name="build-expressions-in-mapping-data-flow"></a>對應資料流程中的組建運算式
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-在 Azure Data Factory 對應資料流程中，您將能找到可針對資料轉換輸入運算式的運算式方塊。 請在這些方塊中使用來自您資料流程的資料行、欄位、變數、參數、函數。 若要建置運算式，請使用運算式產生器，其可透過按一下轉換內的運算式文字方塊來啟動。 針對轉換選取資料行時，您有時候也會看見 [計算資料行] 選項。 如果您按一下它，便會啟動運算式產生器。
+在對應資料流程中，許多轉換屬性都是以運算式的形式輸入。 這些運算式是由資料行值、參數、函數、運算子，以及在執行時間評估為 Spark 資料類型的常值所組成。
 
-![運算式產生器](media/data-flow/expression.png "運算式產生器")
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4tkur]
 
-運算式產生器工具的預設選項是文字編輯器。 自動完成功能會從整個 Azure Data Factory 資料流程物件模型進行讀取，並搭配語法檢查和醒目提示功能。
+## <a name="open-expression-builder"></a>Open 運算式產生器
 
-![運算式產生器自動完成](media/data-flow/expb1.png "運算式產生器自動完成")
+Azure Data Factory 使用者體驗中的運算式編輯介面稱為「運算式產生器」。 當您輸入運算式邏輯時，Data Factory 會使用[IntelliSense](https://docs.microsoft.com/visualstudio/ide/using-intellisense?view=vs-2019)程式碼完成來進行反白顯示、語法檢查和自動完成。
 
-## <a name="currently-working-on-field"></a>[目前正在處理] 欄位
+![運算式產生器](media/data-flow/xpb1.png "運算式產生器")
 
-![運算式產生器](media/data-flow/exp3.png "目前正在處理")
+在 [衍生的資料行和篩選] 之類的轉換（其中運算式是強制的）中，選取 [藍色運算式] 方塊來開啟 [運算式產生器]。
 
-在運算式產生器 UI 的左上角，您將會看到一個稱為 [目前正在處理] 的欄位，其具有您目前正在處理的欄位名稱。 您在 UI 中建置的運算式只會被套用到目前正在處理的欄位上。 如果您想要轉換另一個欄位，請儲存目前的工作，並使用此下拉式清單來選取另一個欄位，然後針對其他欄位建置運算式。
+![藍色運算式方塊](media/data-flow/expressionbox.png "運算式產生器")
 
-## <a name="data-preview-in-debug-mode"></a>偵錯模式中的資料預覽
+當您參考相符或群組依據條件中的資料行時，運算式可以從資料行提取值。 若要建立運算式，請選取 [**計算資料行**]。
 
-![運算式產生器](media/data-flow/exp4b.png "運算式 [資料預覽]")
+![計算資料行選項](media/data-flow/computedcolumn.png "運算式產生器")
 
-當您在處理運算式時，您可以選擇性地從 Azure Data Factory 資料流程設計界面開啟偵錯模式，以取得來自您正在建置之運算式的資料結果即時進行中預覽。 已針對您的運算式啟用即時偵錯。
+在運算式或常值是有效輸入的情況下，選取 [**新增動態內容**] 以建立評估為常值的運算式。
 
-![偵錯模式](media/data-flow/debugbutton.png "[偵錯] 按鈕")
+![新增動態內容選項](media/data-flow/add-dynamic-content.png "運算式產生器")
 
+## <a name="expression-language-reference"></a>運算式語言參考
 
-![運算式產生器](media/data-flow/exp5.png "運算式 [資料預覽]")
+對應的資料流程具有內建函數和運算子，可用於運算式中。 如需可用函數的清單，請參閱[對應資料流程中的運算式函數](data-flow-expression-functions.md)。
 
-## <a name="comments"></a>註解
+## <a name="column-names-with-special-characters"></a>含特殊字元的資料行名稱
 
-使用單行或多行註解語法將註解新增到運算式中：
+當您有包含特殊字元或空格的資料行名稱時，請用大括弧括住名稱，以在運算式中參考它們。
 
-![註解](media/data-flow/comments.png "註解")
+```{[dbo].this_is my complex name$$$}```
+
+## <a name="preview-expression-results"></a>預覽運算式結果
+
+如果已開啟 [[偵錯工具] 模式](concepts-data-flow-debug-mode.md)，您可以使用即時 Spark 叢集查看運算式評估結果的進行中預覽。 當您建立邏輯時，您可以即時地對運算式進行偵錯工具。 
+
+![進行中預覽](media/data-flow/exp4b.png "運算式資料預覽")
+
+選取 **[** 重新整理]，以針對您的來源即時取樣來更新運算式的結果。
+
+![[重新整理] 按鈕](media/data-flow/exp5.png "運算式資料預覽")
+
+## <a name="string-interpolation"></a>字串插補
+
+使用引號將常值字串文字與運算式一起括住。 您可以包含運算式函數、資料行和參數。 字串插補有助於避免在查詢字串中包含參數時，大量使用字串串連。 若要使用運算式語法，請將它括在大括弧中，
+
+字串插補的一些範例：
+
+* ```"My favorite movie is {iif(instr(title,', The')>0,"The {split(title,', The')[1]}",title)}"```
+
+* ```"select * from {$tablename} where orderyear > {$year}"```
+
+* ```"Total cost with sales tax is {round(totalcost * 1.08,2)}"```
+
+## <a name="comment-expressions"></a>批註運算式
+
+使用單行和多行批註語法，將批註新增至您的運算式。
+
+下列範例是有效的批註：
+
+* ```/* This is my comment */```
+
+* ```/* This is a```
+*   ```multi-line comment */```
+
+如果您將批註放在運算式的頂端，它會出現在 [轉換] 文字方塊中，以記錄轉換運算式。
+
+![轉換文字方塊中的批註](media/data-flow/comments2.png "註解")
 
 ## <a name="regular-expressions"></a>規則運算式
 
-Azure Data Factory 資料流程運算式語言 ([完整參考文件在此](https://aka.ms/dataflowexpressions) \(英文\)) 可提供包含規則運算式語法的函數。 使用規則運算式函數時，運算式產生器會嘗試解譯反斜線 (\\) 為逸出字元序列。 當您的規則運算式中使用反斜線，其中一個括住整個 regex 刻度 (\`) 或使用雙反斜線。
+許多運算式語言函數使用正則運算式語法。 當您使用正則運算式函數時，運算式產生器會嘗試將反斜線（ \\ ）解讀為 escape 字元序列。 當您在正則運算式中使用反斜線時，請以倒引號（）括住整個 RegEx， \` 或使用雙反斜線。
 
-使用刻度的範例
+使用倒引號的範例：
 
 ```
 regex_replace('100 and 200', `(\d+)`, 'digits')
 ```
 
-或使用雙斜線
+使用雙斜線的範例：
 
 ```
 regex_replace('100 and 200', '(\\d+)', 'digits')
 ```
 
-## <a name="addressing-array-indexes"></a>定址陣列索引
+## <a name="address-array-indexes"></a>位址陣列索引
 
-針對會傳回陣列的運算式函數，請使用方括號 [] 來處理內部會傳回陣列物件的特定索引。 陣列是以一為基礎。
+如果運算式函式傳回陣列，請使用方括弧（[]）來定址傳回陣列物件內的特定索引。 陣列是以其為基礎。
 
-![運算式產生器陣列](media/data-flow/expb2.png "運算式 [資料預覽]")
+![運算式產生器陣列](media/data-flow/expb2.png "運算式資料預覽")
 
-## <a name="handling-names-with-special-characters"></a>處理特殊字元的名稱
+## <a name="keyboard-shortcuts"></a>鍵盤快速鍵
 
-當您有資料行名稱包含特殊字元或空格時，括住的大括號名稱。
-* ```{[dbo].this_is my complex name$$$}```
+* Ctrl + K Ctrl + C：批註整行。
+* Ctrl + K Ctrl + U：取消批註。
+* F1：提供編輯器說明命令。
+* Alt + 向下鍵：向下移動目前的行。
+* Alt + 向上鍵：向上移動目前的行。
+* Ctrl + 空格鍵：顯示內容說明。
+
+## <a name="convert-to-dates-or-timestamps"></a>轉換成日期或時間戳記
+
+若要在時間戳記輸出中包含字串常值，請將轉換包裝在中 ```toString()``` 。
+
+```toString(toTimestamp('12/31/2016T00:12:00', 'MM/dd/yyyy\'T\'HH:mm:ss'), 'MM/dd /yyyy\'T\'HH:mm:ss')```
+
+若要將毫秒從 epoch 轉換成日期或時間戳記，請使用 `toTimestamp(<number of milliseconds>)` 。 如果時間是以秒為單位，則乘以1000。
+
+```toTimestamp(1574127407*1000l)```
+
+前一個運算式結尾的尾端 "l" 表示轉換成 long 類型做為內嵌語法。
+
+## <a name="find-time-from-epoch-or-unix-time"></a>從 epoch 或 Unix 時間尋找時間
+
+toLong （currentTimestamp （）-toTimestamp （' 1970-01-01 00：00： 00.000 '，' yyyy-MM-dd HH： MM： ss。SSS '）） * 1000l
 
 ## <a name="next-steps"></a>後續步驟
 

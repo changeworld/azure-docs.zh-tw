@@ -1,45 +1,49 @@
 ---
-title: 將非 Microsoft 帳戶新增至 Microsoft Authenticator 應用程式 - Azure Active Directory | Microsoft Docs
-description: 如何將非 Microsoft 帳戶 (例如 Google、Facebook 或 GitHub 的帳戶) 新增至 Microsoft Authenticator 應用程式以進行雙因素驗證。
+title: 將非 Microsoft 帳戶新增至 Microsoft Authenticator 應用程式 - Azure AD
+description: 將非 Microsoft 帳戶 (例如 Google 或 Facebook 的帳戶) 新增至 Microsoft Authenticator 應用程式以進行雙因素驗證來驗證身分識別。
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
-ms.topic: conceptual
+ms.topic: end-user-help
 ms.date: 01/24/2019
-ms.author: lizross
+ms.author: curtand
 ms.reviewer: olhaun
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6f94ba30c06fc6975ab212c895cecefe5d383fa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: b6bda6d35391543e416c377557e34de317e293eb
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60473901"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83741577"
 ---
-# <a name="add-your-non-microsoft-accounts"></a>新增您的非 Microsoft 帳戶
+# <a name="add-non-microsoft-accounts-to-the-microsoft-authenticator-app"></a>將非 Microsoft 帳戶新增至 Microsoft Authenticator 應用程式
+
 將非 Microsoft 帳戶 (例如 Google、Facebook 或 GitHub 的帳戶) 新增至 Microsoft Authenticator 應用程式以進行雙因素驗證。 Microsoft Authenticator 應用程式適用於任何使用雙因素驗證的應用程式，以及任何支援限時單次密碼 (TOTP) 標準的帳戶。
 
 >[!Important]
 >您必須先下載並安裝 Microsoft Authenticator 應用程式，才可新增帳戶。 如果尚未這麼做，請依照[下載並安裝應用程式](user-help-auth-app-download-install.md)文章中的步驟。
 
 ## <a name="add-personal-accounts"></a>新增個人帳戶
+
 對於您所有的個人帳戶，您通常必須：
 
 1. 登入您的帳戶，然後使用您的裝置或電腦開啟雙因素驗證。
 
 2. 將帳戶新增至 Microsoft Authenticator 應用程式。 系統可能會要求您掃描 QR 代碼作為此程序的一部分。
 
+    >[!Note]
+    >如果這是您第一次設定 Microsoft Authenticator 應用程式，系統可能會顯示提示詢問您是否允許應用程式存取您的相機 (iOS)，或是否允許應用程式拍攝相片和錄製影片 (Android)。 您必須選取 [允許]，讓驗證器應用程式能夠存取您的相機，以在下一個步驟中拍攝 QR 代碼的相片。 如果您不允許存取相機，您仍可設定驗證器應用程式，但必須手動新增代碼資訊。 如需如何手動新增代碼的相關資訊，請參閱[手動新增帳戶至應用程式](user-help-auth-app-add-account-manual.md)。
+
 我們在此提供的是 Facebook、Google、GitHub 及 Amazon 帳戶的相關程序，但此程序也適用於任何其他應用程式，例如 Instagram、Netflix 或 Adobe。
 
 ## <a name="add-your-google-account"></a>新增您的 Google 帳戶
+
 藉由開啟雙因素驗證，然後將帳戶新增至應用程式，以新增您的 Google 帳戶。
 
 ### <a name="turn-on-two-factor-verification"></a>開啟雙因素驗證
 
-1. 在您的電腦上移至 https://myaccount.google.com/signinoptions/two-step-verification/enroll-welcome，並選取 [開始使用]，然後驗證您的身分識別。
+1. 在您的電腦上移至 https://myaccount.google.com/signinoptions/two-step-verification/enroll-welcome ，並選取 [開始使用]，然後驗證您的身分識別。
 
 2. 依照頁面上的步驟，為您的個人 Google 帳戶開啟雙步驟驗證。
 
@@ -70,6 +74,7 @@ ms.locfileid: "60473901"
     >如需更多雙因素驗證和 Google 帳戶的相關資訊，請參閱[開啟雙步驟驗證](https://support.google.com/accounts/answer/185839)和[深入了解雙步驟驗證](https://www.google.com/landing/2step/help.html)。
 
 ## <a name="add-your-facebook-account"></a>新增您的 Facebook 帳戶
+
 藉由開啟雙因素驗證，然後將帳戶新增至應用程式，以新增您的 Facebook 帳戶。
 
 ### <a name="turn-on-two-factor-verification"></a>開啟雙因素驗證
@@ -109,6 +114,7 @@ ms.locfileid: "60473901"
     >如需更多雙因素驗證和您 Facebook 帳戶的更多資訊，請參閱[什麼是雙重驗證，此機制如何運作？](https://www.facebook.com/help/148233965247823)。
 
 ## <a name="add-your-github-account"></a>新增 GitHub 帳戶
+
 藉由開啟雙因素驗證，然後將帳戶新增至應用程式，以新增您的 GitHub 帳戶。
 
 ### <a name="turn-on-two-factor-verification"></a>開啟雙因素驗證
@@ -137,7 +143,7 @@ ms.locfileid: "60473901"
 
 5. 輸入**帳戶名稱** (例如 GitHub)，並輸入步驟 4 中的**祕密金鑰**，然後選取 [完成]。
 
-4. 在電腦的 [雙因素 Authenticator] 頁面上，為您的 GitHub 帳戶輸入應用程式提供的六位數驗證碼，然後選取 [啟用]。
+6. 在電腦的 [雙因素 Authenticator] 頁面上，為您的 GitHub 帳戶輸入應用程式提供的六位數驗證碼，然後選取 [啟用]。
 
     應用程式的 [帳戶] 頁面會顯示您的帳戶名稱和六位數的驗證碼。 為了提高安全性，驗證碼每隔 30 秒就會變更，避免多次使用同一個驗證碼。
 
@@ -145,6 +151,7 @@ ms.locfileid: "60473901"
     >如需關於雙因素驗證和 GitHub 帳戶的相關資訊，請參閱[關於雙因素驗證](https://help.github.com/articles/about-two-factor-authentication/)。
 
 ## <a name="add-your-amazon-account"></a>新增您的 Amazon 帳戶
+
 藉由開啟雙因素驗證，然後將帳戶新增至應用程式，以新增您的 Amazon 帳戶。
 
 ### <a name="turn-on-two-factor-verification"></a>開啟雙因素驗證
@@ -168,23 +175,22 @@ ms.locfileid: "60473901"
     >[!Note]
     >如果相機無法正常運作，您可以手動輸入 QR 代碼和 URL。
 
-5. 在您的裝置上檢閱 Microsoft Authenticator 應用程式的 [帳戶] 頁面，以確定您的帳戶資訊正確無誤，並且有相關聯的六位數驗證碼。
+7. 在您的裝置上檢閱 Microsoft Authenticator 應用程式的 [帳戶] 頁面，以確定您的帳戶資訊正確無誤，並且有相關聯的六位數驗證碼。
 
     為了提高安全性，驗證碼每隔 30 秒就會變更，避免多次使用同一個驗證碼。
 
-6. 在電腦的 [選擇接收代碼的方式] 頁面上，為您的 Amazon 帳戶輸入應用程式提供的六位數驗證碼，然後選取 [驗證代碼並繼續]。
+8. 在電腦的 [選擇接收代碼的方式] 頁面上，為您的 Amazon 帳戶輸入應用程式提供的六位數驗證碼，然後選取 [驗證代碼並繼續]。
 
-7. 完成其餘註冊程序，包括新增備份驗證方法 (例如簡訊)，然後選取 [傳送代碼]。
+9. 完成其餘註冊程序，包括新增備份驗證方法 (例如簡訊)，然後選取 [傳送代碼]。
 
-8. 在您電腦的 [新增備份驗證方法] 頁面上，為您的 Amazon 帳戶輸入備份驗證方法所提供的六位數驗證碼，然後選取 [驗證代碼並繼續]。
+10. 在您電腦的 [新增備份驗證方法] 頁面上，為您的 Amazon 帳戶輸入備份驗證方法所提供的六位數驗證碼，然後選取 [驗證代碼並繼續]。
 
-9. 在 快要完成了 頁面上，決定是否要讓您的電腦成為信任的裝置，然後選取 我知道了。
+11. 在 [即將完成] 頁面上，決定是否要讓電腦成為信任的裝置，然後選取 [Got it. Turn on Two-Step Verification] \(我知道了。開啟雙步驟驗證\)。
 
     [進階安全性設定] 頁面隨即出現，顯示更新的雙因素驗證詳細資料。
 
     >[!NOTE]
     >如需更多雙因素驗證和 Amazon 帳戶的相關資訊，請參閱[關於雙步驟驗證](https://www.amazon.com/gp/help/customer/display.html?nodeId=201596330)和[使用雙步驟驗證登入](https://www.amazon.com/gp/help/customer/display.html?nodeId=201962440)。
-
 
 ## <a name="next-steps"></a>後續步驟
 

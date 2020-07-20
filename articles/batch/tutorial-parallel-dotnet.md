@@ -1,22 +1,16 @@
 ---
-title: 執行平行工作負載 - Azure Batch .NET
+title: 執行平行工作負載
 description: 教學課程 - 使用 Batch .NET 用戶端程式庫透過 Azure Batch 中的 ffmpeg 平行進行媒體檔案轉碼
-services: batch
-author: laurenhughes
-manager: jeconnoc
-ms.assetid: ''
-ms.service: batch
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/21/2018
-ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: c55839f7ec4e4c28086912c476a193e31561c3f4
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: d8a5db6c6c63d680514e21bef0e5a8bc6b3ea550
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65234122"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82733068"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>教學課程：使用 .NET API 透過 Azure Batch 執行平行工作負載
 
@@ -35,9 +29,9 @@ ms.locfileid: "65234122"
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-* 適用於 Linux、macOS 或 Windows 的 [Visual Studio 2017](https://www.visualstudio.com/vs) 或 [.NET Core 2.1](https://www.microsoft.com/net/download/dotnet-core/2.1)。
+* 適用於 Linux、macOS 或 Windows 的 [Visual Studio 2017 或更新版本](https://www.visualstudio.com/vs) \(英文\)，或 [.NET Core 2.1](https://www.microsoft.com/net/download/dotnet-core/2.1) \(英文\)。
 
 * Batch 帳戶和連結的 Azure 儲存體帳戶。 若要建立這些帳戶，請參閱使用 [Azure 入口網站](quick-create-portal.md)或 [Azure CLI](quick-create-cli.md) 的 Batch 快速入門。
 
@@ -45,15 +39,15 @@ ms.locfileid: "65234122"
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
 
-在 [https://portal.azure.com](https://portal.azure.com) 登入 Azure 入口網站。
+登入 Azure 入口網站：[https://portal.azure.com](https://portal.azure.com)。
 
 ## <a name="add-an-application-package"></a>新增應用程式套件
 
 使用 Azure 入口網站，將 ffmpeg 新增至 Batch 帳戶作為[應用程式套件](batch-application-packages.md)。 應用程式套件可協助您管理工作應用程式並將其部署到集區中的計算節點。 
 
-1. 在 Azure 入口網站中，按一下 [更多服務] > [Batch 帳戶]，然後按一下您的 Batch 帳戶名稱。
-3. 按一下 [應用程式] > [新增]。
-4. 針對 [應用程式識別碼]，輸入 ffmpeg，以及 3.4 套件版本。 選取您先前下載的 ffmpeg ZIP 檔案，然後按一下 [確定]。 ffmpeg 應用程式套件會新增至您的 Batch 帳戶。
+1. 在 Azure 入口網站中，按一下 [更多服務]   > [Batch 帳戶]  ，然後按一下您的 Batch 帳戶名稱。
+3. 按一下 [應用程式]   > [新增]  。
+4. 針對 [應用程式識別碼]  ，輸入 ffmpeg  ，以及 3.4  套件版本。 選取您先前下載的 ffmpeg ZIP 檔案，然後按一下 [確定]  。 ffmpeg 應用程式套件會新增至您的 Batch 帳戶。
 
 ![新增應用程式套件](./media/tutorial-parallel-dotnet/add-application.png)
 
@@ -71,7 +65,7 @@ git clone https://github.com/Azure-Samples/batch-dotnet-ffmpeg-tutorial.git
 
 瀏覽至包含 Visual Studio 方案檔 `BatchDotNetFfmpegTutorial.sln` 的目錄。
 
-在 Visual Studio 中開啟方案檔，然後使用您為帳戶取得的值來更新 `Program.cs` 中的認證字串。 例如︰
+在 Visual Studio 中開啟方案檔，然後使用您為帳戶取得的值來更新 `Program.cs` 中的認證字串。 例如：
 
 ```csharp
 // Batch account credentials
@@ -97,7 +91,7 @@ const string appPackageVersion = "3.4";
 
 在 Visual Studio 中建置及執行應用程式，或是在命令列使用 `dotnet build` 和 `dotnet run` 命令。 執行此應用程式之後，檢閱程式碼以了解應用程式的每部分用途。 例如，在 Visual Studio 中：
 
-* 在 [方案總管] 中以滑鼠右鍵按一下方案，然後按一下 [建置方案]。 
+* 在 [方案總管] 中以滑鼠右鍵按一下方案，然後按一下 [建置方案]  。 
 
 * 出現提示時，請確認任何 NuGet 封裝的還原。 如果您需要下載遺漏的套件，請確保已安裝 [NuGet 套件管理員](https://docs.nuget.org/consume/installing-nuget)。
 
@@ -124,7 +118,7 @@ Sample end: 11/19/2018 3:29:36 PM
 Elapsed time: 00:09:14.3418742
 ```
 
-移至 Azure 入口網站中您的 Batch 帳戶，以監視集區、計算節點、作業和工作。 例如，若要查看集區中計算節點的熱度圖，請按一下 [集區] > [WinFFmpegPool]。
+移至 Azure 入口網站中您的 Batch 帳戶，以監視集區、計算節點、作業和工作。 例如，若要查看集區中計算節點的熱度圖，請按一下 [集區]   > [WinFFmpegPool]  。
 
 當工作正在執行時，熱度圖會如下所示：
 
@@ -167,7 +161,7 @@ using (BatchClient batchClient = BatchClient.Open(sharedKeyCredentials))
 應用程式會將 `blobClient` 物件傳遞至 `CreateContainerIfNotExistAsync` 方法，以建立輸入檔案 (MP4 格式) 的儲存體容器和工作輸出的容器。
 
 ```csharp
-CreateContainerIfNotExistAsync(blobClient, inputContainerName;
+CreateContainerIfNotExistAsync(blobClient, inputContainerName);
 CreateContainerIfNotExistAsync(blobClient, outputContainerName);
 ```
 
@@ -175,8 +169,8 @@ CreateContainerIfNotExistAsync(blobClient, outputContainerName);
 
 上傳檔案時需要 `Program.cs` 中的兩個方法：
 
-* `UploadResourceFilesToContainerAsync`：傳回 ResourceFile 物件的集合，並在內部呼叫 `UploadResourceFileToContainerAsync` 以上傳在 `inputFilePaths` 參數中傳入的每個檔案。
-* `UploadResourceFileToContainerAsync`：將每個檔案當作 blob 上傳至輸入容器。 上傳檔案之後，它會取得此 blob 的共用存取簽章 (SAS) 並傳回代表它的 ResourceFile 物件。
+* `UploadFilesToContainerAsync`:傳回 ResourceFile 物件的集合，並在內部呼叫 `UploadResourceFileToContainerAsync` 以上傳在 `inputFilePaths` 參數中傳入的每個檔案。
+* `UploadResourceFileToContainerAsync`:將每個檔案當作 blob 上傳至輸入容器。 上傳檔案之後，它會取得此 blob 的共用存取簽章 (SAS) 並傳回代表它的 ResourceFile 物件。
 
 ```csharp
 string inputPath = Path.Combine(Environment.CurrentDirectory, "InputFiles");
@@ -184,7 +178,7 @@ string inputPath = Path.Combine(Environment.CurrentDirectory, "InputFiles");
 List<string> inputFilePaths = new List<string>(Directory.GetFileSystemEntries(inputPath, "*.mp4",
     SearchOption.TopDirectoryOnly));
 
-List<ResourceFile> inputFiles = await UploadResourceFilesToContainerAsync(
+List<ResourceFile> inputFiles = await UploadFilesToContainerAsync(
   blobClient,
   inputContainerName,
   inputFilePaths);
@@ -196,7 +190,10 @@ List<ResourceFile> inputFiles = await UploadResourceFilesToContainerAsync(
 
 接著，範例會呼叫 `CreatePoolIfNotExistAsync` 以在 Batch 帳戶中建立計算節點集區。 這個已定義的方法會使用 [BatchClient.PoolOperations.CreatePool](/dotnet/api/microsoft.azure.batch.pooloperations.createpool) 方法來設定節點數目、VM 大小和集區設定。 在此，[VirtualMachineConfiguration](/dotnet/api/microsoft.azure.batch.virtualmachineconfiguration) 物件會將 [ImageReference](/dotnet/api/microsoft.azure.batch.imagereference) 指定至 Azure Marketplace 中發佈的 Windows Server 映像。 Batch 支援 Azure Marketplace 中各式各樣的 VM 映像，以及自訂 VM 映像。
 
-使用已定義的常數可設定節點數目和 VM 大小。 Batch 支援專用節點和[低優先順序節點](batch-low-pri-vms.md)，而您可以在集區中使用其中一種或同時使用兩種。 專用節點會保留給您的集區使用。 低優先順序節點則會以較低的價格從 Azure 中的剩餘容量提供。 如果 Azure 沒有足夠的容量，便無法使用低優先順序節點。 此範例預設建立的集區只包含 5 個大小為 Standard_A1_v2 的低優先順序節點。
+使用已定義的常數可設定節點數目和 VM 大小。 Batch 支援專用節點和[低優先順序節點](batch-low-pri-vms.md)，而您可以在集區中使用其中一種或同時使用兩種。 專用節點會保留給您的集區使用。 低優先順序節點則會以較低的價格從 Azure 中的剩餘容量提供。 如果 Azure 沒有足夠的容量，便無法使用低優先順序節點。 此範例預設建立的集區只包含 5 個大小為 Standard_A1_v2  的低優先順序節點。
+
+>[!Note]
+>請務必檢查您的節點配額。 如需如何建立配額要求的指示，請參閱 [Batch 服務配額和限制](batch-quota-limit.md#increase-a-quota)。
 
 將 [ApplicationPackageReference](/dotnet/api/microsoft.azure.batch.applicationpackagereference) 新增到集區設定，ffmpeg 應用程式便會部署至計算節點。
 
@@ -230,7 +227,7 @@ pool.ApplicationPackageReferences = new List<ApplicationPackageReference>
 await pool.CommitAsync();  
 ```
 
-### <a name="create-a-job"></a>建立工作
+### <a name="create-a-job"></a>建立作業
 
 Batch 工作會指定要在其中執行工作的集區及選擇性設定，例如工作的優先順序和排程。 此範例會藉由呼叫 `CreateJobAsync` 來建立作業。 這個已定義的方法會使用 [BatchClient.JobOperations.CreateJob](/dotnet/api/microsoft.azure.batch.joboperations.createjob) 方法在您的集區上建立作業。
 
@@ -316,7 +313,7 @@ batchClient.JobOperations.TerminateJob(jobId);
 
 應用程式在執行工作之後，會自動刪除它所建立的輸入儲存體容器，並且為您提供用於刪除 Batch 集區和工作的選項。 BatchClient 的 [JobOperations](/dotnet/api/microsoft.azure.batch.batchclient.joboperations) 和 [PoolOperations](/dotnet/api/microsoft.azure.batch.batchclient.pooloperations) 類別都有對應的刪除方法 (在您確認刪除時呼叫)。 雖然您不需支付作業和工作本身的費用，但您需支付計算節點的費用。 因此，我們建議您只在必要時配置集區。 當您刪除集區時，節點上的所有工作輸出也會跟著刪除。 不過，輸出檔案會保留在儲存體帳戶中。
 
-若不再需要，可刪除資源群組、Batch 帳戶和儲存體帳戶。 若要在 Azure 入口網站中這麼做，請選取 Batch 帳戶的資源群組，然後按一下 [刪除資源群組]。
+若不再需要，可刪除資源群組、Batch 帳戶和儲存體帳戶。 若要在 Azure 入口網站中這麼做，請選取 Batch 帳戶的資源群組，然後按一下 [刪除資源群組]  。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -335,3 +332,6 @@ batchClient.JobOperations.TerminateJob(jobId);
 
 > [!div class="nextstepaction"]
 > [Batch C# 範例](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp)
+
+
+設定執行個體變數 LowPriorityNodeCount=0 和 DedicatedNodeCount=5 修正了此問題，並讓作業得以完成。

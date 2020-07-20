@@ -8,34 +8,37 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 03/27/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 40c9fac27f45699d4c56e57480dcfde1b0ffb64d
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: ed64ae799dab570b168a91b236b1c4be8be8bee1
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58629923"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84986639"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-c"></a>快速入門：使用 Face REST API 和 C# 偵測影像中的臉部
 
 在本快速入門中，您將使用 Azure Face REST API 搭配 C# 來偵測影像中的人臉。
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立 [免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。 
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="prerequisites"></a>必要條件
 
-- 臉部 API 訂用帳戶金鑰。 您可以從[試用認知服務](https://azure.microsoft.com/try/cognitive-services/?api=face-api)取得免費的試用訂用帳戶金鑰。 或是，依照[建立認知服務帳戶](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的指示訂閱臉部 API 服務並取得金鑰。
-- 任何 [Visual Studio 2015 或 2017](https://www.visualstudio.com/downloads/) 版本。
+* Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/cognitive-services/)
+* 擁有 Azure 訂用帳戶之後，在 Azure 入口網站中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title="建立 Face 資源"  target="_blank">建立 Face 資源<span class="docon docon-navigate-external x-hidden-focus"></span></a>，以取得您的金鑰和端點。 在其部署後，按一下 [前往資源]****。
+    * 您需要來自所建立資源的金鑰和端點，以將應用程式連線至 Face API。 您稍後會在快速入門中將金鑰和端點貼到下列程式碼中。
+    * 您可以使用免費定價層 (`F0`) 來試用服務，之後可升級至付費層以用於實際執行環境。
+- 任何版本的 [Visual Studio](https://www.visualstudio.com/downloads/)。
 
 ## <a name="create-the-visual-studio-project"></a>建立 Visual Studio 專案
 
-1. 在 Visual Studio 中建立新的**主控台應用程式 (.NET Framework)** 專案，並將其命名為 **FaceDetection**。 
+1. 在 Visual Studio 中建立新的**主控台應用程式 (.NET Framework)** 專案，並將其命名為 **FaceDetection**。
 1. 如果您的解決方案中有其他專案，請選取此專案作為單一啟始專案。
 
 ## <a name="add-face-detection-code"></a>新增臉部偵測程式碼
 
-開啟新專案的 Program.cs 檔案。 在這裡，您將新增載入影像及偵測臉部所需的程式碼。
+開啟新專案的 Program.cs** 檔案。 在這裡，您將新增載入影像及偵測臉部所需的程式碼。
 
 ### <a name="include-namespaces"></a>包含命名空間
 
@@ -44,6 +47,7 @@ ms.locfileid: "58629923"
 ```csharp
 using System;
 using System.IO;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -51,8 +55,9 @@ using System.Text;
 
 ### <a name="add-essential-fields"></a>新增必要欄位
 
-新增包含下列欄位的 **Program** 類別。 這項資料會指定連線到 Face 服務的方式，以及接收輸入資料的位置。 您將需要以訂用帳戶金鑰更新 `subscriptionKey` 欄位的值，而且可能需要變更 `uriBase` 字串，使其包含正確的區域識別碼 (請參閱[臉部 API 文件](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)以取得所有區域端點的清單)。
+新增包含下列欄位的 **Program** 類別。 這項資料會指定連線到 Face 服務的方式，以及接收輸入資料的位置。 您將需要以訂用帳戶金鑰值更新 `subscriptionKey` 欄位，並變更 `uriBase` 字串，使它包含您的資源端點字串。
 
+[!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ```csharp
 namespace DetectFace
@@ -63,26 +68,18 @@ namespace DetectFace
         // Replace <Subscription Key> with your valid subscription key.
         const string subscriptionKey = "<Subscription Key>";
 
-        // NOTE: You must use the same region in your REST call as you used to
-        // obtain your subscription keys. For example, if you obtained your
-        // subscription keys from westus, replace "westcentralus" in the URL
-        // below with "westus".
-        //
-        // Free trial subscription keys are generated in the "westus" region.
-        // If you use a free trial subscription key, you shouldn't need to change
-        // this region.
+        // replace <myresourcename> with the string found in your endpoint URL
         const string uriBase =
-            "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect";
+            "https://<myresourcename>.cognitive.microsoft.com/face/v1.0/detect";
 ```
 
 ### <a name="receive-image-input"></a>接收影像輸入
 
-對 **Program** 類別的 **Main** 方法新增下列程式碼。 這會將提示字元寫入主控台，並要求使用者輸入影像 URL。 然後呼叫另一種方法：**MakeAnalysisRequest**，以處理該位置上的影像。
+對 **Program** 類別的 **Main** 方法新增下列程式碼。 此程式碼會將提示字元寫入主控台，並要求使用者輸入影像 URL。 然後呼叫另一種方法：**MakeAnalysisRequest**，以處理該位置上的影像。
 
 ```csharp
         static void Main(string[] args)
         {
-
             // Get the path and filename to process from the user.
             Console.WriteLine("Detect faces:");
             Console.Write(
@@ -162,7 +159,7 @@ namespace DetectFace
 
 ### <a name="process-the-input-image-data"></a>處理輸入影像資料
 
-將下列方法新增至 **Program** 類別。 這會將位於指定 URL 的影像轉換成位元組陣列。
+將下列方法新增至 **Program** 類別。 此方法會將位於指定 URL 的影像轉換成位元組陣列。
 
 ```csharp
         // Returns the contents of the specified file as a byte array.
@@ -179,7 +176,7 @@ namespace DetectFace
 
 ### <a name="parse-the-json-response"></a>剖析 JSON 回應
 
-將下列方法新增至 **Program** 類別。 這會格式化 JSON 輸入，以便閱讀。 您的應用程式會將此字串資料寫入主控台。 然後您就可以關閉類別和命名空間。
+將下列方法新增至 **Program** 類別。 此方法會格式化 JSON 輸入，以便閱讀。 您的應用程式會將此字串資料寫入主控台。 然後您就可以關閉類別和命名空間。
 
 ```csharp
         // Formats the given JSON string by adding line breaks and indents.
@@ -250,7 +247,7 @@ namespace DetectFace
 
 ## <a name="run-the-app"></a>執行應用程式
 
-成功的回應會以可輕鬆閱讀的 JSON 格式顯示臉部資料。 例如︰
+成功的回應會以可輕鬆閱讀的 JSON 格式顯示臉部資料。 例如：
 
 ```json
 [
@@ -348,7 +345,7 @@ namespace DetectFace
 
 ## <a name="next-steps"></a>後續步驟
 
-在此快速入門中，您已建立簡單的 .NET 主控台應用程式來搭配使用 REST 呼叫和 Azure 臉部 API，進而偵測影像中的臉部並傳回其屬性。 接下來，請瀏覽臉部 API 參考文件，以深入了解支援的案例。
+在本快速入門中，您已建立簡單的 .NET 主控台應用程式來搭配使用 REST 呼叫和 Azure 臉部辨識服務，進而偵測影像中的臉部並傳回其屬性。 接下來，請瀏覽臉部 API 參考文件，以深入了解支援的案例。
 
 > [!div class="nextstepaction"]
 > [臉部 API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

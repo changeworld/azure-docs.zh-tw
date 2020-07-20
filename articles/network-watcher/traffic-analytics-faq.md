@@ -3,22 +3,20 @@ title: Azure 流量分析常見問題集 | Microsoft Docs
 description: 取得一些關於「流量分析」常見問題的解答。
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
-ms.author: kumud
-ms.openlocfilehash: 88acfebcc6dd8489703014d790f09313ab9302ec
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.author: damendo
+ms.openlocfilehash: 84e9dab149cfed265833336577d718e57bd9bc2d
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64939915"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165323"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>流量分析常見問題集
 
@@ -54,11 +52,11 @@ ms.locfileid: "64939915"
         
 檢查指派給訂用帳戶使用者的角色：
 
-1. 使用登入 Azure**登入 AzAccount**。 
+1. 使用**Disconnect-azaccount 登**入 Azure。 
 
-2. 藉由選取所需的訂用帳戶**選取 AzSubscription**。 
+2. 使用 [ **get-azsubscription**] 選取所需的訂用帳戶。 
 
-3. 若要列出指派給指定使用者的所有角色，請使用**Get AzRoleAssignment SignInName [使用者電子郵件]-IncludeClassicAdministrators**。 
+3. 若要列出指派給指定使用者的所有角色，請使用**new-azroleassignment-SignInName [使用者電子郵件]-IncludeClassicAdministrators**。 
 
 如果看不到任何輸出，請聯絡個別訂用帳戶管理員，取得執行命令的權限。 如需詳細資料，請參閱[使用 Azure PowerShell 管理角色型存取控制](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell)。
 
@@ -81,7 +79,7 @@ ms.locfileid: "64939915"
 - 巴西南部
 - 英國西部
 - 英國南部
-- 澳洲東部
+- 澳大利亞東部
 - 澳大利亞東南部 
 - 東亞
 - 東南亞
@@ -90,22 +88,33 @@ ms.locfileid: "64939915"
 - 印度南部
 - 日本東部
 - 日本西部
-- 美國政府維吉尼亞州
+- US Gov 維吉尼亞州
+- 中國東部 2
 
 Log Analytics 工作區必須存在於下列區域：
 - 加拿大中部
 - 美國中西部
-- 美國西部 2
 - 美國東部
+- 美國東部 2
+- 美國中北部
+- 美國中南部
+- 美國中部
+- 美國西部
+- 美國西部 2
 - 法國中部
 - 西歐
+- 北歐
+- 英國西部
 - 英國南部
+- 澳大利亞東部
 - 澳大利亞東南部
+- 東亞
 - 東南亞 
 - 南韓中部
 - 印度中部
 - 日本東部
-- 美國政府維吉尼亞州
+- US Gov 維吉尼亞州
+- 中國東部 2
 
 ## <a name="can-the-nsgs-i-enable-flow-logs-for-be-in-different-regions-than-my-workspace"></a>啟用了流量記錄的 NSG 是否可與我的工作區位於不同的區域中？
 
@@ -117,7 +126,7 @@ Log Analytics 工作區必須存在於下列區域：
 
 ## <a name="can-i-use-an-existing-workspace"></a>我可以使用現有的工作區嗎？
 
-是。 如果您選取現有的工作區，請確定該工作區已遷移至新的查詢語言。 如果您不想升級工作區，則需要建立新的工作區。 如需有關新的查詢語言的詳細資訊，請參閱 < [Azure 監視器記錄升級為新的記錄搜尋](../log-analytics/log-analytics-log-search-upgrade.md)。
+是。 如果您選取現有的工作區，請確定該工作區已遷移至新的查詢語言。 如果您不想升級工作區，則需要建立新的工作區。 如需新查詢語言的詳細資訊，請參閱[Azure 監視器記錄升級至新的記錄搜尋](../log-analytics/log-analytics-log-search-upgrade.md)。
 
 ## <a name="can-my-azure-storage-account-be-in-one-subscription-and-my-log-analytics-workspace-be-in-a-different-subscription"></a>是否可以讓我的 Azure 儲存體帳戶位於某個訂用帳戶，而讓我的 Log Analytics 工作區位於不同的訂用帳戶中？
 
@@ -125,7 +134,7 @@ Log Analytics 工作區必須存在於下列區域：
 
 ## <a name="can-i-store-raw-logs-in-a-different-subscription"></a>可以在不同的訂用帳戶中儲存原始記錄嗎？
 
-沒有。 您可以將原始記錄儲存在已針對流量記錄啟用 NSG 的任何儲存體帳戶中。 但是儲存體帳戶和原始記錄必須位於相同的訂用帳戶和區域中。
+是。 您可以將 NSG 流量記錄設定為要傳送至位於不同訂用帳戶中的儲存體帳戶，前提是您擁有適當的許可權，而且儲存體帳戶位於與 NSG 相同的區域中。 NSG 和目的地儲存體帳戶也必須共用相同的 Azure Active Directory 租使用者。
 
 ## <a name="what-if-i-cant-configure-an-nsg-for-traffic-analytics-due-to-a-not-found-error"></a>因為發生「找不到」錯誤而無法設定 NSG 進行流量分析，該怎麼辦？
 
@@ -136,15 +145,15 @@ Log Analytics 工作區必須存在於下列區域：
 為了讓流量記錄正常運作，您必須註冊 Microsoft.Insights 提供者。 如果您不確定自己是否已為訂用帳戶註冊 Microsoft.Insights 提供者，請取代下列命令中的 *xxxxx-xxxxx-xxxxxx-xxxx*，然後從 PowerShell 執行下列命令：
 
 ```powershell-interactive
-**Select-AzSubscription** -SubscriptionId xxxxx-xxxxx-xxxxxx-xxxx
-**Register-AzResourceProvider** -ProviderNamespace Microsoft.Insights
+**Select-AzSubscription** -SubscriptionId xxxxx-xxxxx-xxxxxx-xxxx
+**Register-AzResourceProvider** -ProviderNamespace Microsoft.Insights
 ```
 
 ## <a name="i-have-configured-the-solution-why-am-i-not-seeing-anything-on-the-dashboard"></a>我已設定解決方案。 為什麼在儀表板上看不到任何項目？
 
 第一次時，儀表板最久可能需要 30 分鐘才會出現。 解決方案必須先彙總足夠資料以衍生有意義的見解， 然後才能產生報告。 
 
-## <a name="what-if-i-get-this-message-we-could-not-find-any-data-in-this-workspace-for-selected-time-interval-try-changing-the-time-interval-or-select-a-different-workspace"></a>收到下列訊息時該怎麼辦：「在選取的時間間隔內，於此工作區中找不到任何資料。 請嘗試變更時間間隔，或選取不同的工作區。」？
+## <a name="what-if-i-get-this-message-we-could-not-find-any-data-in-this-workspace-for-selected-time-interval-try-changing-the-time-interval-or-select-a-different-workspace"></a>收到下列訊息時該怎麼辦：「在選取的時間間隔內，我們無法在此工作區中找到任何資料。 請嘗試變更時間間隔，或選取不同的工作區。」？
 
 請嘗試下列選項：
 - 在上方列中變更時間間隔。
@@ -167,7 +176,7 @@ Log Analytics 工作區必須存在於下列區域：
 
 ## <a name="can-i-configure-traffic-analytics-using-powershell-or-an-azure-resource-manager-template-or-client"></a>我可以使用 PowerShell 或 Azure Resource Manager 範本或用戶端來設定流量分析嗎？
 
-您可以使用 Windows PowerShell 6.2.1 以上版本設定流量分析。 若要使用的 Set 指令程式的特定 NSG 設定流量記錄和流量分析，請參閱[組 AzNetworkWatcherConfigFlowLog](https://docs.microsoft.com/powershell/module/az.network/set-aznetworkwatcherconfigflowlog)。 若要取得特定的 NSG 流程記錄與流量分析狀態，請參閱[Get AzNetworkWatcherFlowLogStatus](https://docs.microsoft.com/powershell/module/az.network/get-aznetworkwatcherflowlogstatus)。
+您可以使用 Windows PowerShell 6.2.1 以上版本設定流量分析。 若要使用 Set Cmdlet 來設定特定 NSG 的流量記錄和流量分析，請參閱[AzNetworkWatcherConfigFlowLog](https://docs.microsoft.com/powershell/module/az.network/set-aznetworkwatcherconfigflowlog)。 若要取得特定 NSG 的流量記錄和流量分析狀態，請參閱[AzNetworkWatcherFlowLogStatus](https://docs.microsoft.com/powershell/module/az.network/get-aznetworkwatcherflowlogstatus)。
 
 目前您無法使用 Azure Resource Manager 範本來設定流量分析。
 
@@ -239,28 +248,93 @@ armclient post "https://management.azure.com/subscriptions/<NSG subscription id>
 
 例如，根據[定價方案](https://azure.microsoft.com/pricing/details/network-watcher/)，以美國中西部區域為例，如果儲存在儲存體帳戶且由流量分析處理的流量記錄資料為 10 GB，而內嵌於 Log Analytics 工作區的加強型記錄為 1 GB，則適用費用為：10 x 2.3$ + 1 x 2.76$ = 25.76$
 
-## <a name="how-frequently-does-traffic-analytics-process-data"></a>頻率流量分析會處理資料？
+## <a name="how-frequently-does-traffic-analytics-process-data"></a>流量分析處理資料的頻率為何？
 
-請參閱[資料彙總區段](https://docs.microsoft.com/azure/network-watcher/traffic-analytics-schema#data-aggregation)流量分析的結構描述和資料彙總文件中
+請參閱流量分析架構和資料匯總檔中的[資料匯總一節](https://docs.microsoft.com/azure/network-watcher/traffic-analytics-schema#data-aggregation)
 
-## <a name="how-does-traffic-analytics-decide-that-an-ip-is-malicious"></a>流量分析如何決定惡意 IP 時的？ 
+## <a name="how-does-traffic-analytics-decide-that-an-ip-is-malicious"></a>流量分析如何判斷 IP 是惡意的？ 
 
-流量分析會依賴 Microsoft 內部威脅智慧系統，才能認定為惡意 IP。 這些系統運用等 Microsoft 產品和服務、 Microsoft 數位犯罪防治中心 (DCU)、 Microsoft Security Response Center (MSRC)，以及外部摘要的各種不同的遙測資料來源，並建置在其上的智慧很多。 有些資料是 Mircosoft 內部。 如果已知的 IP 取得標示為 malicios，請提出支援票證，以了解詳細資料。
+流量分析會依賴 Microsoft 內部威脅情報系統，將 IP 視為惡意。 這些系統會運用各種遙測來源，例如 Microsoft 產品和服務、Microsoft 數位犯罪單位 (DCU) 、Microsoft 安全性回應中心 (MSRC) 和外部摘要，並在其上建立許多智慧。 這其中一些資料是 Microsoft Internal。 如果已知的 IP 標示為惡意，請提出支援票證以瞭解詳細資料。
 
 ## <a name="how-can-i-set-alerts-on-traffic-analytics-data"></a>如何設定流量分析資料的警示？
 
-流量分析沒有內建的支援警示。 不過，因為流量分析資料會儲存在 Log Analytics 中，您可以撰寫自訂查詢，並在其上設定警示。 步驟：
-- 在 流量分析的 Log analytics，您可以使用簡短連結。 
-- 使用[結構描述，請參閱](traffic-analytics-schema.md)來撰寫查詢 
-- 按一下 [新增警示規則] 來建立警示
-- 請參閱[文件的記錄警示](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log)建立警示
+流量分析不具有警示的內建支援。 不過，因為流量分析資料儲存在 Log Analytics 中，所以您可以撰寫自訂查詢並對其設定警示。 步驟
+- 您可以在流量分析中將簡短連結用於 Log Analytics。 
+- 使用[這裡記載的架構](traffic-analytics-schema.md)來撰寫您的查詢 
+- 按一下 [新增警示規則] 以建立警示
+- 請參閱[記錄警示檔](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log)以建立警示
+
+## <a name="how-do-i-check-which-vms-are-receiving-most-on-premises-traffic"></a>如何? 檢查哪些 Vm 會接收大部分的內部部署流量？
+
+```
+AzureNetworkAnalytics_CL
+| where SubType_s == "FlowLog" and FlowType_s == "S2S" 
+| where <Scoping condition>
+| mvexpand vm = pack_array(VM1_s, VM2_s) to typeof(string)
+| where isnotempty(vm) 
+| extend traffic = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d // For bytes use: | extend traffic = InboundBytes_d + OutboundBytes_d 
+| make-series TotalTraffic = sum(traffic) default = 0 on FlowStartTime_t from datetime(<time>) to datetime(<time>) step 1m by vm
+| render timechart
+```
+
+  針對 Ip：
+
+```
+AzureNetworkAnalytics_CL
+| where SubType_s == "FlowLog" and FlowType_s == "S2S" 
+//| where <Scoping condition>
+| mvexpand IP = pack_array(SrcIP_s, DestIP_s) to typeof(string)
+| where isnotempty(IP) 
+| extend traffic = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d // For bytes use: | extend traffic = InboundBytes_d + OutboundBytes_d 
+| make-series TotalTraffic = sum(traffic) default = 0 on FlowStartTime_t from datetime(<time>) to datetime(<time>) step 1m by IP
+| render timechart
+```
+
+針對時間，請使用格式： yyyy-mm-dd 00:00:00
+
+## <a name="how-do-i-check-standard-deviation-in-traffic-received-by-my-vms-from-on-premises-machines"></a>如何? 檢查我的 Vm 從內部部署機器收到的流量標準差嗎？
+
+```
+AzureNetworkAnalytics_CL
+| where SubType_s == "FlowLog" and FlowType_s == "S2S" 
+//| where <Scoping condition>
+| mvexpand vm = pack_array(VM1_s, VM2_s) to typeof(string)
+| where isnotempty(vm) 
+| extend traffic = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d // For bytes use: | extend traffic = InboundBytes_d + utboundBytes_d
+| summarize deviation = stdev(traffic)  by vm
+```
+
+針對 Ip：
+
+```
+AzureNetworkAnalytics_CL
+| where SubType_s == "FlowLog" and FlowType_s == "S2S" 
+//| where <Scoping condition>
+| mvexpand IP = pack_array(SrcIP_s, DestIP_s) to typeof(string)
+| where isnotempty(IP) 
+| extend traffic = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d // For bytes use: | extend traffic = InboundBytes_d + OutboundBytes_d
+| summarize deviation = stdev(traffic)  by IP
+```
+
+## <a name="how-do-i-check-which-ports-are-reachable-or-blocked-between-ip-pairs-with-nsg-rules"></a>如何? 檢查哪些埠可在 IP 配對之間以 NSG 規則連線 (或封鎖) ？
+
+```
+AzureNetworkAnalytics_CL
+| where SubType_s == "FlowLog" and TimeGenerated between (startTime .. endTime)
+| extend sourceIPs = iif(isempty(SrcIP_s), split(SrcPublicIPs_s, " ") , pack_array(SrcIP_s)),
+destIPs = iif(isempty(DestIP_s), split(DestPublicIPs_s," ") , pack_array(DestIP_s))
+| mvexpand SourceIp = sourceIPs to typeof(string)
+| mvexpand DestIp = destIPs to typeof(string)
+| project SourceIp = tostring(split(SourceIp, "|")[0]), DestIp = tostring(split(DestIp, "|")[0]), NSGList_s, NSGRule_s, DestPort_d, L4Protocol_s, FlowStatus_s 
+| summarize DestPorts= makeset(DestPort_d) by SourceIp, DestIp, NSGList_s, NSGRule_s, L4Protocol_s, FlowStatus_s
+```
 
 ## <a name="how-can-i-navigate-by-using-the-keyboard-in-the-geo-map-view"></a>如何在地理地圖檢視中使用鍵盤來瀏覽？
 
 地理地圖頁面包含兩大區段：
     
-- **橫幅**在地理地圖頂端的橫幅會提供可選取流量分配篩選條件 （例如，部署、 國家/地區，從流量和惡意） 的按鈕。 當您選取按鈕時，個別篩選條件便會套用至地圖。 例如，如果您選取 [使用中] 按鈕，地圖就會將部署中的使用中資料中心醒目提示。
-- **地圖**以下的橫幅中，[對應] 區段會顯示 Azure 資料中心與國家/地區之間的流量分配。
+- **橫幅**：地理地圖頂端的橫幅會提供按鈕來選取流量發佈篩選器 (例如，部署、來自國家/地區的流量，以及惡意) 。 當您選取按鈕時，個別篩選條件便會套用至地圖。 例如，如果您選取 [使用中] 按鈕，地圖就會將部署中的使用中資料中心醒目提示。
+- **Map**：在橫幅底下，[地圖] 區段會顯示 Azure 資料中心與國家/地區之間的流量分配。
     
 ### <a name="keyboard-navigation-on-the-banner"></a>橫幅上的鍵盤瀏覽
     
@@ -274,23 +348,23 @@ armclient post "https://management.azure.com/subscriptions/<NSG subscription id>
 - 選取橫幅上的任何篩選條件並按下 `Ctrl+F6` 後，焦點就會移至地圖檢視中的其中一個醒目提示節點 (**Azure 資料中心**或**國家/區域**)。
 - 若要移至地圖上其他醒目提示節點，請使用 `Tab` 或 `Right arrow` 鍵順向移動。 若要反向移動，請使用 `Shift+Tab` 或 `Left arrow` 鍵。
 - 若要選取地圖中的任何醒目提示節點，請使用 `Enter` 或 `Down arrow` 鍵。
-- 一選取任何這類節點後，焦點就會移至節點的 [資訊工具方塊]。 根據預設，焦點會移至 [資訊工具方塊] 上已關閉的按鈕。 若要進一步地在 [方塊] 檢視內移動，請分別使用 `Right arrow` 和 `Left arrow` 鍵來順向和反向移動。 按 `Enter` 的效果等同於在 [資訊工具方塊] 內選取焦點按鈕的效果。
-- 若您在焦點於 [資訊工具方塊] 時按 `Tab`，焦點就會移至與所選節點位於相同大陸的端點。 使用 `Right arrow` 和 `Left arrow` 鍵可在這些端點之間移動。
+- 一選取任何這類節點後，焦點就會移至節點的 [資訊工具方塊]****。 根據預設，焦點會移至 [資訊工具方塊]**** 上已關閉的按鈕。 若要進一步地在 [方塊]**** 檢視內移動，請分別使用 `Right arrow` 和 `Left arrow` 鍵來順向和反向移動。 按 `Enter` 的效果等同於在 [資訊工具方塊]**** 內選取焦點按鈕的效果。
+- 若您在焦點於 [資訊工具方塊]**** 時按 `Tab`，焦點就會移至與所選節點位於相同大陸的端點。 使用 `Right arrow` 和 `Left arrow` 鍵可在這些端點之間移動。
 - 若要移動至其他流量端點或大陸叢集，請使用 `Tab` 進行順向移動，使用 `Shift+Tab` 進行反向移動。
-- 一旦焦點位於 [大陸叢集] 時，請使用 `Enter` 或 `Down` 方向鍵來醒目提示大陸叢集內的端點。 若要在端點和大陸叢集資訊方塊上的關閉按鈕之間移動，請分別使用 `Right arrow` 或 `Left arrow` 鍵來進行順向和反向移動。 在任何端點上，您都可以使用 `Shift+L` 來切換到從選取節點到端點的連接線。 您可以再按一次 `Shift+L`，即可移至所選的端點。
+- 一旦焦點位於 [大陸叢集]**** 時，請使用 `Enter` 或 `Down` 方向鍵來醒目提示大陸叢集內的端點。 若要在端點和大陸叢集資訊方塊上的關閉按鈕之間移動，請分別使用 `Right arrow` 或 `Left arrow` 鍵來進行順向和反向移動。 在任何端點上，您都可以使用 `Shift+L` 來切換到從選取節點到端點的連接線。 您可以再按一次 `Shift+L`，即可移至所選的端點。
         
 ### <a name="keyboard-navigation-at-any-stage"></a>各階段的鍵盤瀏覽
     
 - `Esc` 可將展開的選取範圍摺疊。
-- `Up arrow` 鍵可執行與 `Esc` 相同的動作。 `Down arrow` 鍵可執行與 `Enter` 相同的動作。
+- `Up-arrow` 鍵可執行與 `Esc` 相同的動作。 `Down arrow` 鍵可執行與 `Enter` 相同的動作。
 - 使用 `Shift+Plus` 可放大，使用 `Shift+Minus` 可縮小。
 
 ## <a name="how-can-i-navigate-by-using-the-keyboard-in-the-virtual-network-topology-view"></a>如何在虛擬網路拓撲檢視中使用鍵盤來瀏覽？
 
 虛擬網路拓樸頁面包含兩個主要區段：
     
-- **橫幅**虛擬網路拓撲上方的橫幅會提供各種按鈕，可選取流量發佈篩選器 (例如連線的虛擬網路、 中斷連線的虛擬網路及公用 IP)。 當您選取按鈕時，個別篩選條件便會套用至拓撲。 例如，如果您選取 [使用中] 按鈕，拓撲會將部署中的使用中虛擬網路醒目提示。
-- **拓撲**：橫幅下方的 [拓撲] 區段會顯示虛擬網路的流量分配。
+- **橫幅**：虛擬網路拓撲上方的橫幅會提供各種按鈕，可選取流量發佈篩選器 (例如連線的虛擬網路、 中斷連線的虛擬網路及公用 IP)。 當您選取按鈕時，個別篩選條件便會套用至拓撲。 例如，如果您選取 [使用中] 按鈕，拓撲會將部署中的使用中虛擬網路醒目提示。
+- **拓樸**：橫幅下方的 [拓撲] 區段會顯示虛擬網路的流量分配。
     
 ### <a name="keyboard-navigation-on-the-banner"></a>橫幅上的鍵盤瀏覽
     
@@ -303,16 +377,16 @@ armclient post "https://management.azure.com/subscriptions/<NSG subscription id>
     
 - 選取橫幅上的任何篩選條件並按下 `Ctrl+F6` 後，焦點就會移至拓撲檢視中的其中一個醒目提示節點 (**VNet**)。
 - 若要移至拓撲檢視上其他醒目提示節點，請使用 `Shift+Right arrow` 鍵順向移動。 
-- 在醒目提示的節點上，焦點就會移至節點的 [資訊工具方塊]。 根據預設，焦點會移至 [資訊工具方塊] 上的 [更多詳細資料] 按鈕。 若要進一步地在 [方塊] 檢視內移動，請分別使用 `Right arrow` 和 `Left arrow` 鍵來順向和反向移動。 按 `Enter` 的效果等同於在 [資訊工具方塊] 內選取焦點按鈕的效果。
-- 選取任何這類節點時，可以按 `Shift+Left arrow` 鍵逐一前往其所有連線。 焦點會移至該連線的 [資訊工具方塊]。 任何時候只要再按一次 `Shift+Right arrow`，都可以將焦點轉移回該節點。
+- 在醒目提示的節點上，焦點就會移至節點的 [資訊工具方塊]****。 根據預設，焦點會移至 [資訊工具方塊]**** 上的 [更多詳細資料]**** 按鈕。 若要進一步地在 [方塊]**** 檢視內移動，請分別使用 `Right arrow` 和 `Left arrow` 鍵來順向和反向移動。 按 `Enter` 的效果等同於在 [資訊工具方塊]**** 內選取焦點按鈕的效果。
+- 選取任何這類節點時，可以按 `Shift+Left arrow` 鍵逐一前往其所有連線。 焦點會移至該連線的 [資訊工具方塊]****。 任何時候只要再按一次 `Shift+Right arrow`，都可以將焦點轉移回該節點。
     
 
 ## <a name="how-can-i-navigate-by-using-the-keyboard-in-the-subnet-topology-view"></a>如何在子網路拓撲檢視中使用鍵盤來瀏覽？
 
 虛擬子網路拓樸頁面包含兩個主要區段：
     
-- **橫幅**虛擬子網路拓撲上方的橫幅會提供各種按鈕，可選取流量發佈篩選器 (例如使用中、媒體及閘道子網路)。 當您選取按鈕時，個別篩選條件便會套用至拓撲。 例如，如果您選取 [使用中] 按鈕，拓撲會醒目提示部署中的使用中虛擬子網路。
-- **拓撲**：橫幅下方的 [拓撲] 區段會顯示虛擬子網路的流量分配。
+- **橫幅**：虛擬子網路拓撲上方的橫幅會提供各種按鈕，可選取流量發佈篩選器 (例如使用中、媒體及閘道子網路)。 當您選取按鈕時，個別篩選條件便會套用至拓撲。 例如，如果您選取 [使用中] 按鈕，拓撲會醒目提示部署中的使用中虛擬子網路。
+- **拓樸**：橫幅下方的 [拓撲] 區段會顯示虛擬子網路的流量分配。
     
 ### <a name="keyboard-navigation-on-the-banner"></a>橫幅上的鍵盤瀏覽
     
@@ -325,6 +399,6 @@ armclient post "https://management.azure.com/subscriptions/<NSG subscription id>
     
 - 選取橫幅上的任何篩選條件並按下 `Ctrl+F6` 後，焦點就會移至拓撲檢視中的其中一個醒目提示節點 (**子網路**)。
 - 若要移至拓撲檢視上其他醒目提示節點，請使用 `Shift+Right arrow` 鍵順向移動。 
-- 在醒目提示的節點上，焦點就會移至節點的 [資訊工具方塊]。 根據預設，焦點會移至 [資訊工具方塊] 上的 [更多詳細資料] 按鈕。 若要進一步地在 [方塊] 檢視內移動，請分別使用 `Right arrow` 和 `Left arrow` 鍵來順向和反向移動。 按 `Enter` 的效果等同於在 [資訊工具方塊] 內選取焦點按鈕的效果。
-- 選取任何這類節點時，可以按 `Shift+Left arrow` 鍵逐一前往其所有連線。 焦點會移至該連線的 [資訊工具方塊]。 任何時候只要再按一次 `Shift+Right arrow`，都可以將焦點轉移回該節點。    
+- 在醒目提示的節點上，焦點就會移至節點的 [資訊工具方塊]****。 根據預設，焦點會移至 [資訊工具方塊]**** 上的 [更多詳細資料]**** 按鈕。 若要進一步地在 [方塊]**** 檢視內移動，請分別使用 `Right arrow` 和 `Left arrow` 鍵來順向和反向移動。 按 `Enter` 的效果等同於在 [資訊工具方塊]**** 內選取焦點按鈕的效果。
+- 選取任何這類節點時，可以按 `Shift+Left arrow` 鍵逐一前往其所有連線。 焦點會移至該連線的 [資訊工具方塊]****。 任何時候只要再按一次 `Shift+Right arrow`，都可以將焦點轉移回該節點。    
 

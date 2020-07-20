@@ -1,273 +1,234 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Hub
 title: 語音服務文件
+summary: 辨識語音、合成語音、取得即時翻譯、轉譯交談，或將語音整合到您的 Bot 體驗中。
+brand: azure
 metadata:
-  title: 語音服務文件 - 教學課程、快速入門和 API 參考
+  title: 語音服務文件 - 教學課程、API 參考 - Azure 認知服務 | Microsoft Docs
   titleSuffix: Azure Cognitive Services
-  description: 語音服務可讓開發人員輕鬆地為其應用程式新增強大的語音功能。 範例包含語音命令控制項及對話方塊、自然語音對話、語音轉譯和聽寫以及語音翻譯。
   services: cognitive-services
-  author: nitinme
-  manager: cgronlun
-  layout: LandingPage
-  ms.service: cognitive-services
-  ms.subservice: speech-service
-  ms.tgt_pltfrm: na
-  ms.devlang: na
-  ms.topic: landing-page
-  ms.date: 12/06/2018
-  ms.author: erhopf
-  ms.custom: seodec18
-abstract:
-  description: |
-    了解如何使用語音服務搭配 REST API，或使用我們的語音 SDK，將支援語音的功能新增到您的應用程式。 您可以使用語音 SDK，將下列 (或更多) 功能新增到您的應用程式&colon; 
-    <div class="row" style="font-size:16px"><div class="column"><ul>
-    <li><b><a href="speech-to-text.md">語音轉換文字</a></b> (語音-辨識/SR)</li>
-    <li><b><a href="speech-devices-sdk-create-kws.md">自訂喚醒文字</a></b> (關鍵字-尋找程式/KWS)</li>
-    <li><b><a href="how-to-recognize-intents-from-speech-csharp.md">意圖</a></b></li>
-    <li><b><a href="speech-translation.md">翻譯</a></b></li>
-    <li><b><a href="speech-container-howto.md">內部部署容器</a></b></li></ul></div><div class="column"><ul>
-    <li><b><a href="text-to-speech.md">文字轉換語音</a></b> (TTS)</li>
-    <li><b><a href="conversation-transcription-service.md">對話轉譯</a></b> (CTS)</li>
-    <li><b><a href="how-to-phrase-lists.md">片語清單個人化</a>/<a href="how-to-custom-speech.md">採用自訂語音</a></b></li>
-    <li><b><a href="voice-first-virtual-assistants.md">語音優先虛擬助理</a></b></li>
-    <li><b><a href="call-center-transcription.md">話務中心轉譯</a></b></li></ul></div></div>
-sections:
+  description: 辨識語音、合成語音、取得即時翻譯、轉譯交談，或將語音整合到您的 Bot 體驗中。
+  author: trevorbye
+  manager: nitinme
+  ms.service: speech-service
+  ms.topic: hub-page
+  ms.date: 03/24/2020
+  ms.author: trbye
+  ms.openlocfilehash: 455f71c7fd9defd7a1187f6b5df6b5b3b9c3131b
+  ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 06/30/2020
+  ms.locfileid: "85563757"
+highlightedContent:
+  items:
+  - title: 什麼是語音服務？
+    itemType: overview
+    url: overview.md
+  - title: 關於語音 SDK
+    itemType: overview
+    url: speech-sdk.md
+  - title: 語音 SDK 版本資訊
+    itemType: whats-new
+    url: releasenotes.md
+  - title: 語音服務中的語言支援
+    itemType: reference
+    url: language-support.md
+conceptualContent:
+  items:
+  - title: 語音轉文字
+    links:
+    - itemType: quickstart
+      text: 從麥克風辨識語音
+      url: quickstarts/speech-to-text-from-microphone.md
+    - itemType: quickstart
+      text: 辨識來自音訊檔案的語音
+      url: quickstarts/speech-to-text-from-file.md
+    - itemType: how-to-guide
+      text: 語音辨識基本概念
+      url: speech-to-text-basics.md
+    footerLink:
+      text: 更多資訊
+      url: index-speech-to-text.yml
+  - title: 文字轉換語音
+    links:
+    - itemType: quickstart
+      text: 將語音合成至喇叭
+      url: quickstarts/text-to-speech.md
+    - itemType: quickstart
+      text: 將語音合成至音訊檔案
+      url: quickstarts/text-to-speech-audio-file.md
+    - itemType: how-to-guide
+      text: 語音合成基本概念
+      url: text-to-speech-basics.md
+    footerLink:
+      text: 更多資訊
+      url: index-text-to-speech.yml
+  - title: 語音翻譯
+    links:
+    - itemType: quickstart
+      text: 翻譯語音轉換文字
+      url: quickstarts/translate-speech-to-text.md
+    - itemType: quickstart
+      text: 將語音翻譯成多種語言
+      url: quickstarts/translate-speech-to-text-multiple-languages.md
+    - itemType: how-to-guide
+      text: 語音翻譯基本概念
+      url: speech-translation-basics.md
+    footerLink:
+      text: 更多資訊
+      url: index-speech-translation.yml
+  - title: 意圖辨識
+    links:
+    - itemType: quickstart
+      text: 辨識語音、意圖和實體
+      url: quickstarts/intent-recognition.md
+    - itemType: how-to-guide
+      text: 以 LUIS 和 C# 辨識語音意圖
+      url: how-to-recognize-intents-from-speech-csharp.md
+    - itemType: reference
+      text: Language Understanding (LUIS) 入口網站
+      url: https://www.luis.ai
+    footerLink:
+      text: 更多資訊
+      url: index-intent-recognition.yml
+  - title: 對話情節
+    links:
+    - itemType: overview
+      text: 關於對話轉譯 (會議)
+      url: conversation-transcription.md
+    - itemType: overview
+      text: 關於多裝置對話 (會議)
+      url: multi-device-conversation.md
+    - itemType: how-to-guide
+      text: 話務中心轉譯
+      url: call-center-transcription.md
+    footerLink:
+      text: 更多資訊
+      url: index-conversation-scenarios.yml
+  - title: 語音助理
+    links:
+    - itemType: overview
+      text: 關於語音助理
+      url: voice-assistants.md
+    - itemType: quickstart
+      text: 使用自訂命令建立語音助理
+      url: custom-commands.md
+    - itemType: get-started
+      text: 使用 Bot 架構建立語音助理
+      url: direct-line-speech.md
+    footerLink:
+      text: 更多資訊
+      url: index-voice-assistants.yml
+  - title: 說話者辨識
+    links:
+    - itemType: how-to-guide
+      text: 關於說話者辨識
+      url: speaker-recognition-overview.md
+    - itemType: how-to-guide
+      text: 說話者辨識基本概念
+      url: speaker-recognition-basics.md
+    - itemType: how-to-guide
+      text: 說話者辨識 API 參考
+      url: https://docs.microsoft.com/rest/api/speakerrecognition/
+  - title: 工具
+    links:
+    - itemType: overview
+      text: 關於 Speech CLI (無程式碼命令列工具)
+      url: spx-overview.md
+    - itemType: how-to-guide
+      text: Speech CLI 基本概念 (安裝和範例)
+      url: spx-basics.md
+    - itemType: overview
+      text: 關於Speech Studio (自訂)
+      url: https://speech.microsoft.com
+  - title: Hosting
+    links:
+    - itemType: how-to-guide
+      text: 語音服務容器
+      url: speech-container-howto.md
+    - itemType: how-to-guide
+      text: 搭配 Kubernetes 的語音服務容器
+      url: speech-container-howto-on-premises.md
+    - itemType: how-to-guide
+      text: 在 Azure 容器執行個體中的語音服務容器
+      url: deploy-speech-on-container-instances.md
+    footerLink:
+      text: 更多資訊
+      url: index-hosting.yml
+  - title: 裝置
+    links:
+    - itemType: overview
+      text: 關於語音裝置 SDK
+      url: speech-devices-sdk.md
+    - itemType: how-to-guide
+      text: 取得語音裝置 SDK
+      url: get-speech-devices-sdk.md
+    - itemType: quickstart
+      text: 使用語音裝置 SDK
+      url: speech-devices-sdk-quickstart.md
+    footerLink:
+      text: 更多資訊
+      url: index-devices.yml
+  - title: 遷移
+    links:
+    - itemType: how-to-guide
+      text: 從 Bing 語音遷移
+      url: how-to-migrate-from-bing-speech.md
+    - itemType: how-to-guide
+      text: 從翻譯工具語音 API 遷移
+      url: how-to-migrate-from-translator-speech-api.md
+tools:
+  title: 軟體開發套件 (SDK)
+  summary: 以您慣用的程式設計語言開始使用語音 SDK。
+  items:
+  - title: C#
+    imageSrc: https://docs.microsoft.com/media/logos/logo_Csharp.svg
+    url: https://aka.ms/csspeech/csharpref
+  - title: C++
+    imageSrc: https://docs.microsoft.com/media/logos/logo_Cplusplus.svg
+    url: https://aka.ms/csspeech/cppref
+  - title: Java
+    imageSrc: https://docs.microsoft.com/media/logos/logo_java.svg
+    url: https://aka.ms/csspeech/javaref
+  - title: JavaScript
+    imageSrc: https://docs.microsoft.com/media/logos/logo_js.svg
+    url: https://aka.ms/csspeech/javascriptref
+  - title: Objective-C 和 Swift
+    imageSrc: https://docs.microsoft.com/media/logos/logo_ios.svg
+    url: https://aka.ms/csspeech/objectivecref
+  - title: Python
+    imageSrc: https://docs.microsoft.com/media/logos/logo_python.svg
+    url: https://aka.ms/csspeech/pythonref
+additionalContent:
+  sections:
   - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/cognitive-services/speech-service/overview
-            html: <p>了解 Azure 語音服務。</p>
-            image:
-              src: ../media/index/i_overview.svg
-            title: 什麼是語音服務？
-          - href: /azure/cognitive-services/speech-service/get-started
-            html: <p>免費註冊。</p>
-            image:
-              src: ../media/index/i_get-started.svg
-            title: 註冊語音服務
-          - href: /azure/cognitive-services/speech-service/speech-devices-sdk
-            html: <p>了解支援語音功能的硬體參考。</p>
-            image:
-              src: ../media/index/i_guidelines.svg
-            title: 語音裝置 SDK
-  - title: 5 分鐘快速入門
-    items:
-      - type: paragraph
-        text: 選取箭號連結，了解如何下載、安裝和使用 SDK <img src="media/index/link.jpg" height="15" width="15"></img>上也提供本文中使用的原始碼。<br/><br/>所有箭號連結 <img src="media/index/link.jpg" height="15" width="15"></img> 語音轉換文字的快速入門預設值。 您可在此選取 (<a href="scenario-availability.md">其他可用的</a>) 快速入門，例如文字轉換語音或語音優先虛擬助理。
-      - type: table
-        style: dataMatrix
-        columns:
-          - image:
-              src: media/index/uwp.jpg
-          - image:
-              src: media/index/logo_csharp.svg
-          - image:
-              src: media/index/logo_cplusplus.svg
-          - image:
-              src: media/index/logo_netcore.svg
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_unity.svg'
-          - image:
-              src: media/index/logo_java.jpg
-          - image:
-              src: media/index/logo_python.svg
-          - image:
-              src: media/index/logo_objc.jpg
-          - image:
-              src: media/index/logo_nodejs.svg
-          - image:
-              src: media/index/logo_js.svg
-          - image:
-              src: media/index/logo_rest.svg
-        rows:
-          - title: Windows 10 (x64)
-            values:
-              - href: quickstart-csharp-uwp
-              - href: quickstart-csharp-windows
-              - href: quickstart-cpp-windows
-              - href: quickstart-csharp-dotnetcore-windows
-              - href: quickstart-csharp-unity
-              - href: quickstart-java-jre
-              - href: quickstart-python
-              - href: null
-              - href: quickstart-js-node
-              - href: null
-          - title: Windows 10 (x86)
-            values:
-              - href: quickstart-csharp-uwp
-              - href: quickstart-csharp-windows
-              - href: quickstart-cpp-windows
-              - href: quickstart-csharp-dotnetcore-windows
-              - href: quickstart-csharp-unity
-              - href: null
-              - href: quickstart-python
-              - href: null
-              - href: quickstart-js-node
-              - href: null
-          - title: Windows UWP (ARM32/64)
-            values:
-              - href: quickstart-csharp-uwp
-              - href: null
-              - href: null
-              - href: null
-              - href: quickstart-csharp-unity
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-          - title: Linux (x64)
-            values:
-              - href: null
-              - href: null
-              - href: quickstart-cpp-linux
-              - href: quickstart-csharp-dotnetcore-windows
-              - href: null
-              - href: quickstart-java-jre
-              - href: quickstart-python
-              - href: null
-              - href: quickstart-js-node
-              - href: null
-          - title: Linux (x86)
-            values:
-              - href: null
-              - href: null
-              - href: quickstart-cpp-linux
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: quickstart-js-node
-              - href: null
-          - title: Android (ARM32/64)
-            values:
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: quickstart-csharp-unity
-              - href: quickstart-java-android
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-          - title: Android (x86/x64)
-            values:
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: quickstart-csharp-unity
-              - href: quickstart-java-android
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-          - title: iOS (ARM64)
-            values:
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: quickstart-objectivec-ios
-              - href: null
-              - href: null
-          - title: macOS (x64)
-            values:
-              - href: null
-              - href: null
-              - href: quickstart-cpp-macos
-              - href: quickstart-csharp-dotnetcore-windows
-              - href: null
-              - href: quickstart-java-jre
-              - href: quickstart-python
-              - href: quickstart-objective-c-macos
-              - href: quickstart-js-node
-              - href: null
-          - title: 裝置 SDK (ARM32)
-            values:
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: speech-devices-sdk
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-          - title: '[瀏覽器]'
-            values:
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: quickstart-js-browser
-          - title: REST
-            values:
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: rest-apis
-  - title: 逐步教學課程
-    items:
-      - type: paragraph
-        text: 了解如何使用語音服務開發應用程式：
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="speech-to-text-sample.md">語音轉換文字 (SR)</a><br/>
-          - html: <a href="intent.md">意圖辨識</a><br/>
-          - html: <a href="translation.md">翻譯</a>
-          - html: <a href="quickstart-text-to-speech-dotnet-windows.md">文字轉換語音</a><br/>
-  - title: 範例
-    items:
-      - type: paragraph
-        text: 在 GitHub 上尋找語音服務範例：
-      - type: list
-        style: unordered
-        items:
-          - html: '<a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk">語音 SDK 範例</a><br/>'
-          - html: '<a href="https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK">裝置 SDK 範例</a><br/>'
-  - title: 參考
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: SDK 參考
-            html: |
-              <p><a href="https://aka.ms/csspeech/csharpref">C# API (UWP、.NET 和 Unity)</a></p>
-              <p><a href="https://aka.ms/csspeech/cppref">C++ API</a></p>
-              <p><a href="https://aka.ms/csspeech/javaref">Java API</a></p>
-              <p><a href="https://aka.ms/csspeech/pythonref">Python API</a></p>
-              <p><a href="https://aka.ms/csspeech/objectivecref">Objective-C API</a></p>
-              <p><a href="https://aka.ms/csspeech/javascriptref">JavaScript API</a></p>
-          - title: REST API
-            html: |
-              <p><a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis">REST API</a></p>
-          - title: PowerShell
-            html: |
-              <p><a href=https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>
-          - title: CLI
-            html: |
-              <p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest">Azure CLI</a></p>
+    - title: REST API
+      links:
+      - text: 語音轉文字
+        url: rest-speech-to-text.md
+      - text: 批次轉譯
+        url: batch-transcription.md
+      - text: 文字轉換語音
+        url: rest-text-to-speech.md
+      - text: 對話轉譯
+        url: https://signature.centralus.cts.speech.microsoft.com/UI/index.html
+    - title: 資源
+      links:
+      - text: Docs 有哪些新功能？
+        url: whats-new.md
+      - text: 定價
+        url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/
+      - text: 區域
+        url: regions.md
+      - text: 學習
+        url: https://docs.microsoft.com/learn/browse/?products=azure-cognitive-services&term=Speech
+    - title: 支援
+      links:
+      - text: 支援和說明
+        url: support.md
+      - text: GitHub 問題
+        url: https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues
+      - text: Stack Overflow
+        url: https://aka.ms/SOspeechquestions
+      - text: UserVoice
+        url: https://cognitive.uservoice.com/forums/912208-speech-service

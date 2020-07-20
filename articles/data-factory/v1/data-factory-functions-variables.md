@@ -1,37 +1,33 @@
 ---
-title: Data Factory 函式與系統變數 | Microsoft Docs
+title: Data Factory 函式和系統變數
 description: 提供 Azure Data Factory 函式與系統變數清單
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-services: data-factory
-ms.assetid: b6b3c2ae-b0e8-4e28-90d8-daf20421660d
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: 1d1c9ef5ba355f1944a362bf0e6f5d7ba91a700a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 9acc369e24d1bac92dea3fb6ae391a410e5f6c3d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60486510"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "73667657"
 ---
 # <a name="azure-data-factory---functions-and-system-variables"></a>Azure Data Factory - 函式與系統變數
 > [!NOTE]
-> 本文適用於 Data Factory 的第 1 版。 如果您使用目前版本的 Data Factory 服務，請參閱 [Data Factory 中的系統變數](../control-flow-system-variables.md)。
+> 本文適用於 Data Factory 第 1 版。 如果您使用目前版本的 Data Factory 服務，請參閱 [Data Factory 中的系統變數](../control-flow-system-variables.md)。
 
 本文提供 Azure Data Factory 支援之函式和變數的相關資訊。
 
 ## <a name="data-factory-system-variables"></a>Data Factory 系統變數
 
-| 變數名稱 | 描述 | 物件範圍 | JSON 範圍和使用案例 |
+| 變數名稱 | Description | 物件範圍 | JSON 範圍和使用案例 |
 | --- | --- | --- | --- |
 | WindowStart |目前活動執行時段的時間間隔開始 |activity |<ol><li>指定資料選取範圍查詢。 請參閱[資料移動活動](data-factory-data-movement-activities.md)文章中參考的連接器文章。</li> |
-| WindowEnd |目前活動執行時段的時間間隔結束 |活動 |與 WindowStart 相同。 |
+| WindowEnd |目前活動執行時段的時間間隔結束 |activity |與 WindowStart 相同。 |
 | SliceStart |所產生之資料配量的時間間隔開始 |activity<br/>資料集 |<ol><li>指定使用 [Azure Blob](data-factory-azure-blob-connector.md) 和[檔案系統資料集](data-factory-onprem-file-system-connector.md)時的動態資料夾路徑與檔案名稱。</li><li>使用 Data Factory 函式在活動輸入集合中指定輸入相依性。</li></ol> |
 | SliceEnd |目前資料配量的時間間隔結束。 |activity<br/>資料集 |與 SliceStart 相同。 |
 
@@ -59,7 +55,7 @@ ms.locfileid: "60486510"
 
 1. 指定資料選取範圍查詢 (請參閱 [資料移動活動](data-factory-data-movement-activities.md) 文章中參考的連接器文章)。
    
-   叫用 data factory 函式的語法是：  **$$\<函式 >** 針對資料選取範圍查詢和活動與資料集中的其他屬性。  
+   叫用 data factory 函式的語法是： **$$\<function>** 適用于資料選取查詢和活動和資料集中的其他屬性。  
 2. 使用 Data Factory 函式在活動輸入集合中指定輸入相依性。
    
     指定輸入相依性運算式不需要 $$。     
@@ -75,32 +71,32 @@ ms.locfileid: "60486510"
 
 請參閱說明可使用的各種格式化選項 (例如：ay 與 yyyy) 的[自訂日期和時間格式字串](https://msdn.microsoft.com/library/8kb3ddd4.aspx)主題。 
 
-### <a name="functions"></a>Functions
+### <a name="functions"></a>函式
 下表列出 Azure Data Factory 中的所有函式：
 
 | 類別 | 函式 | 參數 | 描述 |
 | --- | --- | --- | --- |
-| 時間 |AddHours(X,Y) |X：Datetime <br/><br/>Y：int |將 Y 小時新增至指定時間 X。 <br/><br/>範例：`9/5/2013 12:00:00 PM + 2 hours = 9/5/2013 2:00:00 PM` |
-| 時間 |AddMinutes(X,Y) |X：Datetime <br/><br/>Y：int |將 Y 分鐘新增至 X。<br/><br/>範例： `9/15/2013 12: 00:00 PM + 15 minutes = 9/15/2013 12: 15:00 PM` |
-| 時間 |StartOfHour(X) |X：DateTime |取得 X 之小時元件代表的小時開始時間。 <br/><br/>範例： `StartOfHour of 9/15/2013 05: 10:23 PM is 9/15/2013 05: 00:00 PM` |
-| date |AddDays(X,Y) |X：Datetime<br/><br/>Y：int |將 Y 天數新增至 X。 <br/><br/>範例：9/15/2013 12:00:00 PM + 2 天 = 9/17/2013 12:00:00 PM。<br/><br/>您也可以藉由將 Y 指定為負數來減去天。<br/><br/>範例： `9/15/2013 12:00:00 PM - 2 days = 9/13/2013 12:00:00 PM`. |
-| date |AddMonths(X,Y) |X：Datetime<br/><br/>Y：int |將 Y 月數新增至 X。<br/><br/>`Example: 9/15/2013 12:00:00 PM + 1 month = 10/15/2013 12:00:00 PM` 。<br/><br/>您也可以藉由將 Y 指定為負數來減去月份。<br/><br/>範例：`9/15/2013 12:00:00 PM - 1 month = 8/15/2013 12:00:00 PM`.|
-| date |AddQuarters(X,Y) |X：Datetime <br/><br/>Y：int |將 Y * 3 個月新增至 X。<br/><br/>範例： `9/15/2013 12:00:00 PM + 1 quarter = 12/15/2013 12:00:00 PM` |
-| date |AddWeeks(X,Y) |X：Datetime<br/><br/>Y：int |將 Y * 7 天新增至 X<br/><br/>範例：9/15/2013 12:00:00 PM + 1 週 = 9/22/2013 12:00:00 PM<br/><br/>您也可以藉由將 Y 指定為負數來減去週。<br/><br/>範例： `9/15/2013 12:00:00 PM - 1 week = 9/7/2013 12:00:00 PM`. |
-| date |AddYears(X,Y) |X：Datetime<br/><br/>Y：int |將 Y 年新增至 X。<br/><br/>`Example: 9/15/2013 12:00:00 PM + 1 year = 9/15/2014 12:00:00 PM`<br/><br/>您也可以藉由將 Y 指定為負數來減去年。<br/><br/>範例： `9/15/2013 12:00:00 PM - 1 year = 9/15/2012 12:00:00 PM`. |
-| 日期 |Day(X) |X：Datetime |取得 X 的日元件。<br/><br/>範例： `Day of 9/15/2013 12:00:00 PM is 9`. |
-| date |DayOfWeek(X) |X：Datetime |取得 X 的週中日元件。<br/><br/>範例： `DayOfWeek of 9/15/2013 12:00:00 PM is Sunday`. |
-| date |DayOfYear(X) |X：Datetime |取得 X 之年元件代表的一年當中日期。<br/><br/>範例：<br/>`12/1/2015: day 335 of 2015`<br/>`12/31/2015: day 365 of 2015`<br/>`12/31/2016: day 366 of 2016 (Leap Year)` |
-| date |DaysInMonth(X) |X：Datetime |取得參數 X 之月元件代表的月份中日期。<br/><br/>範例： `DaysInMonth of 9/15/2013 are 30 since there are 30 days in the September month`. |
-| date |EndOfDay(X) |X：Datetime |取得 X 之結尾天數 (日元件) 代表的日期時間。<br/><br/>範例： `EndOfDay of 9/15/2013 05:10:23 PM is 9/15/2013 11:59:59 PM`. |
-| date |EndOfMonth(X) |X：Datetime |取得參數 X 之月元件代表的月底。 <br/><br/>範例：`EndOfMonth of 9/15/2013 05:10:23 PM is 9/30/2013 11:59:59 PM` (代表 9 月份月底的日期時間) |
-| date |StartOfDay(X) |X：Datetime |取得參數 X 之日元件代表的日期開始。<br/><br/>範例： `StartOfDay of 9/15/2013 05:10:23 PM is 9/15/2013 12:00:00 AM`. |
-| Datetime |From(X) |X：String |將字串 X 剖析為日期時間。 |
-| Datetime |Ticks(X) |X：Datetime |取得參數 X 的刻度屬性。一個刻度等於 100 奈秒。 這個屬性的值代表從 0001 年 1 月 1 日午夜 12:00:00 經過的刻度數。 |
+| Time |AddHours(X,Y) |X：DateTime  <br/><br/>Y：int |將 Y 小時新增至指定時間 X。 <br/><br/>範例：`9/5/2013 12:00:00 PM + 2 hours = 9/5/2013 2:00:00 PM` |
+| 時間 |AddMinutes(X,Y) |X：DateTime  <br/><br/>Y：int |將 Y 分鐘新增至 X。<br/><br/>範例：`9/15/2013 12: 00:00 PM + 15 minutes = 9/15/2013 12: 15:00 PM` |
+| 時間 |StartOfHour(X) |X：DateTime  |取得 X 之小時元件代表的小時開始時間。 <br/><br/>範例：`StartOfHour of 9/15/2013 05: 10:23 PM is 9/15/2013 05: 00:00 PM` |
+| 日期 |AddDays(X,Y) |X：DateTime <br/><br/>Y：int |將 Y 天數新增至 X。 <br/><br/>範例：9/15/2013 12:00:00 PM + 2 天 = 9/17/2013 12:00:00 PM。<br/><br/>您也可以藉由將 Y 指定為負數來減去天。<br/><br/>範例： `9/15/2013 12:00:00 PM - 2 days = 9/13/2013 12:00:00 PM`. |
+| 日期 |AddMonths(X,Y) |X：DateTime <br/><br/>Y：int |將 Y 月數新增至 X。<br/><br/>`Example: 9/15/2013 12:00:00 PM + 1 month = 10/15/2013 12:00:00 PM`.<br/><br/>您也可以藉由將 Y 指定為負數來減去月份。<br/><br/>範例： `9/15/2013 12:00:00 PM - 1 month = 8/15/2013 12:00:00 PM`.|
+| 日期 |AddQuarters(X,Y) |X：DateTime  <br/><br/>Y：int |將 Y * 3 個月新增至 X。<br/><br/>範例：`9/15/2013 12:00:00 PM + 1 quarter = 12/15/2013 12:00:00 PM` |
+| 日期 |AddWeeks(X,Y) |X：DateTime <br/><br/>Y：int |將 Y * 7 天新增至 X<br/><br/>範例：9/15/2013 12:00:00 PM + 1 週 = 9/22/2013 12:00:00 PM<br/><br/>您也可以藉由將 Y 指定為負數來減去週。<br/><br/>範例： `9/15/2013 12:00:00 PM - 1 week = 9/7/2013 12:00:00 PM`. |
+| 日期 |AddYears(X,Y) |X：DateTime <br/><br/>Y：int |將 Y 年新增至 X。<br/><br/>`Example: 9/15/2013 12:00:00 PM + 1 year = 9/15/2014 12:00:00 PM`<br/><br/>您也可以藉由將 Y 指定為負數來減去年。<br/><br/>範例： `9/15/2013 12:00:00 PM - 1 year = 9/15/2012 12:00:00 PM`. |
+| 日期 |Day(X) |X：DateTime  |取得 X 的日元件。<br/><br/>範例： `Day of 9/15/2013 12:00:00 PM is 9`. |
+| 日期 |DayOfWeek(X) |X：DateTime  |取得 X 的週中日元件。<br/><br/>範例： `DayOfWeek of 9/15/2013 12:00:00 PM is Sunday`. |
+| 日期 |DayOfYear(X) |X：DateTime  |取得 X 之年元件代表的一年當中日期。<br/><br/>範例：<br/>`12/1/2015: day 335 of 2015`<br/>`12/31/2015: day 365 of 2015`<br/>`12/31/2016: day 366 of 2016 (Leap Year)` |
+| 日期 |DaysInMonth(X) |X：DateTime  |取得參數 X 之月元件代表的月份中日期。<br/><br/>範例： `DaysInMonth of 9/15/2013 are 30 since there are 30 days in the September month`. |
+| 日期 |EndOfDay(X) |X：DateTime  |取得 X 之結尾天數 (日元件) 代表的日期時間。<br/><br/>範例： `EndOfDay of 9/15/2013 05:10:23 PM is 9/15/2013 11:59:59 PM`. |
+| 日期 |EndOfMonth(X) |X：DateTime  |取得參數 X 之月元件代表的月底。 <br/><br/>範例：`EndOfMonth of 9/15/2013 05:10:23 PM is 9/30/2013 11:59:59 PM` (代表 9 月份月底的日期時間) |
+| 日期 |StartOfDay(X) |X：DateTime  |取得參數 X 之日元件代表的日期開始。<br/><br/>範例： `StartOfDay of 9/15/2013 05:10:23 PM is 9/15/2013 12:00:00 AM`. |
+| Datetime |From(X) |X：字串 |將字串 X 剖析為日期時間。 |
+| Datetime |Ticks(X) |X：DateTime  |取得參數 X 的刻度屬性。一個刻度等於 100 奈秒。 這個屬性的值代表從 0001 年 1 月 1 日午夜 12:00:00 經過的刻度數。 |
 | Text |Format(X) |X：字串變數 |將文字格式化 (使用 `\\'` 組合來逸出 `'` 字元)。|
 
 > [!IMPORTANT]
-> 在另一個函式中使用函式時，您不需要針對內部函式使用 **$$** 前置詞。 例如：$$Text.Format('PartitionKey eq \\'my_pkey_filter_value\\' and RowKey ge \\'{0: yyyy-MM-dd HH:mm:ss}\\'', Time.AddHours(SliceStart, -6)). 在此範例中，請注意 **$$** 前置詞不能用於 **Time.AddHours** 函式。 
+> 在另一個函式中使用函式時，您不需要 **$$** 針對內部函式使用前置詞。 例如：$$Text.Format('PartitionKey eq \\'my_pkey_filter_value\\' and RowKey ge \\'{0: yyyy-MM-dd HH:mm:ss}\\'', Time.AddHours(SliceStart, -6)). 在此範例中，請注意 Time.addhours 函式 **$$** 不會**Time.AddHours**使用前置詞。 
 
 #### <a name="example"></a>範例
 在下列範例中，Hive 活動的輸入和輸出參數是經由使用 `Text.Format` 函式和 SliceStart 系統變數決定。 

@@ -1,5 +1,7 @@
-- name: Event Grid 文件
+- name: Azure Event Grid 文件
   href: index.yml
+- name: 在 IoT Edge 文件上切換至事件方格
+  href: edge/pub-sub-events-webhook-local.md
 - name: 概觀
   items:
     - name: 什麼是事件中樞？
@@ -11,20 +13,25 @@
   items:
     - name: 儲存體事件
       items:
-        - name: Azure CLI
-          href: ../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json
-        - name: PowerShell
-          href: ../storage/blobs/storage-blob-event-quickstart-powershell.md?toc=%2fazure%2fevent-grid%2ftoc.json
         - name: 入口網站
           href: blob-event-quickstart-portal.md
+        - name: Azure CLI
+          href: ../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json
+        - name: Azure PowerShell
+          href: ../storage/blobs/storage-blob-event-quickstart-powershell.md?toc=%2fazure%2fevent-grid%2ftoc.json
+        - name: ARM 範本
+          displayName: Resource Manager
+          href: blob-event-quickstart-template.md
     - name: 自訂事件
       items:
+        - name: 入口網站
+          href: custom-event-quickstart-portal.md
         - name: Azure CLI
           href: custom-event-quickstart.md
         - name: PowerShell
           href: custom-event-quickstart-powershell.md
-        - name: 入口網站
-          href: custom-event-quickstart-portal.md
+    - name: Azure Functions 作為事件處理常式
+      href: custom-event-to-function.md
     - name: 佇列儲存體作為事件處理常式
       href: custom-event-to-queue-storage.md
     - name: 事件中樞作為事件處理常式
@@ -84,35 +91,131 @@
     - name: Resource Manager 範本
       href: template-samples.md
     - name: 程式碼範例
-      href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=event-grid'
+      href: 'https://docs.microsoft.com/samples/browse/?term=Event%20Grid'
+    - name: Azure 原則內建
+      href: ./policy-samples.md
 - name: 概念
   items:
-    - name: Event Grid 概念
+    - name: 事件方格術語
       href: concepts.md
-    - name: 安全性和驗證
-      href: security-authentication.md
-    - name: 傳遞和重試
-      href: delivery-and-retry.md
-    - name: 事件篩選器
-      href: event-filtering.md
+    - name: 自訂主題
+      href: custom-topics.md
+    - name: 系統主題
+      items:
+        - name: 系統主題概觀
+          href: system-topics.md
+        - name: 事件來源
+          items:
+            - name: Azure 應用程式組態
+              href: event-schema-app-configuration.md
+            - name: Azure App Service
+              href: event-schema-app-service.md
+            - name: Azure Blob 儲存體
+              href: event-schema-blob-storage.md
+            - name: Azure Container Registry
+              href: event-schema-container-registry.md
+            - name: Azure 事件中心
+              href: event-schema-event-hubs.md
+            - name: Azure IoT 中樞
+              href: event-schema-iot-hub.md
+            - name: Azure 金鑰保存庫
+              href: event-schema-key-vault.md
+            - name: Azure Machine Learning
+              href: event-schema-machine-learning.md
+            - name: Azure 地圖服務
+              href: event-schema-azure-maps.md
+            - name: Azure 媒體服務
+              href: event-schema-media-services.md
+            - name: Azure 資源群組
+              href: event-schema-resource-groups.md
+            - name: Azure 服務匯流排
+              href: event-schema-service-bus.md
+            - name: Azure SignalR
+              href: event-schema-azure-signalr.md
+            - name: Azure 訂用帳戶
+              href: event-schema-subscriptions.md
+    - name: 合作夥伴主題
+      items:
+        - name: 合作夥伴主題概觀
+          href: partner-topics-overview.md
+        - name: Auth0
+          href: auth0-overview.md
+        - name: 變成事件方格合作夥伴
+          href: partner-onboarding-overview.md
     - name: 事件網域
       href: event-domains.md
-    - name: 事件來源
-      href: event-sources.md
+    - name: 事件結構描述格式
+      items:
+        - name: Event Grid 事件結構描述
+          href: event-schema.md
+        - name: 雲端事件結構描述
+          href: cloud-event-schema.md
     - name: 事件處理常式
       href: event-handlers.md
-- name: 使用說明指南
+      items:
+        - name: Webhook
+          displayName: 'Azure Automation, Webhooks, Logic Apps'
+          href: handler-webhooks.md
+        - name: Azure Functions
+          href: handler-functions.md
+        - name: 事件中樞
+          href: handler-event-hubs.md
+        - name: 服務匯流排
+          href: handler-service-bus.md
+        - name: 轉送混合式連線
+          href: handler-relay-hybrid-connections.md
+        - name: 儲存體佇列
+          href: handler-storage-queues.md
+    - name: 事件傳遞
+      items:
+        - name: 事件篩選器
+          href: event-filtering.md
+        - name: 傳遞和重試
+          href: delivery-and-retry.md
+        - name: WebHook 事件傳遞
+          href: webhook-event-delivery.md
+    - name: 災害復原
+      items:
+        - name: 地區災害復原
+          href: geo-disaster-recovery.md
+    - name: 安全性
+      items:
+        - name: 驗證對事件處理常式的事件傳遞
+          href: security-authentication.md
+        - name: 驗證發佈用戶端
+          href: security-authenticate-publishing-clients.md
+        - name: 授權對事件格線資源的存取權
+          href: security-authorization.md
+        - name: 網路安全性
+          href: network-security.md
+    - name: 監視及疑難排解
+      items:
+        - name: 診斷記錄
+          href: diagnostic-logs.md
+        - name: 計量
+          href: metrics.md
+- name: 操作指南
   items:
+    - name: 建立、檢視及管理系統主題
+      items:
+        - name: Azure 入口網站
+          href: create-view-manage-system-topics.md
+        - name: Azure CLI
+          href: create-view-manage-system-topics-cli.md
+        - name: Azure Resource Manager 範本
+          href: create-view-manage-system-topics-arm.md
+    - name: 取得主題或網域的存取金鑰
+      href: get-access-keys.md
     - name: 張貼到自訂主題
       href: post-to-custom-topic.md
+    - name: 訂閱 Auth0 事件
+      href: auth0-how-to.md
     - name: 接收 HTTP 端點的事件
       href: receive-events.md
     - name: 無法寄出信件並重試
       href: manage-event-delivery.md
     - name: 篩選事件
       href: how-to-filter-events.md
-    - name: 監視事件傳遞
-      href: monitor-event-delivery.md
     - name: 查詢事件訂用帳戶
       href: query-event-subscriptions.md
     - name: 透過入口網站訂閱
@@ -125,6 +228,32 @@
       href: how-to-event-domains.md
     - name: 實作用戶端容錯移轉
       href: custom-disaster-recovery.md
+    - name: 追蹤非同步 REST 作業
+      href: ../azure-resource-manager/management/async-operations.md?toc=%2fazure%2fevent-grid%2ftoc.json
+    - name: 安全
+      items:
+        - name: 設定私人端點
+          href: configure-private-endpoints.md
+        - name: 設定 IP 防火牆 (預覽)
+          href: configure-firewall.md
+        - name: 使用 AAD 保護 WebHook
+          href: secure-webhook-delivery.md
+        - name: 使用受控識別進行事件傳遞
+          href: managed-service-identity.md
+    - name: 疑難排解
+      items:
+        - name: 啟用診斷記錄
+          href: enable-diagnostic-logs-topic.md
+        - name: 針對錯誤進行疑難排解
+          href: troubleshoot-errors.md
+        - name: 針對網路連線問題進行疑難排解
+          href: troubleshoot-network-connectivity.md
+        - name: 針對訂用帳戶驗證進行疑難排解
+          href: troubleshoot-subscription-validation.md
+        - name: 檢視計量
+          href: monitor-event-delivery.md
+        - name: 建立警示
+          href: set-alerts.md
 - name: 參考
   items:
     - name: Azure CLI
@@ -141,29 +270,10 @@
       href: /python/api/overview/azure/event-grid
     - name: Node.js
       href: /javascript/api/overview/azure/eventgrid
+    - name: 配額和限制
+      href: quotas-limits.md
     - name: 訂用帳戶結構描述
       href: subscription-creation-schema.md
-    - name: 結構描述
-      href: event-schema.md
-      items:
-        - name: Azure 訂用帳戶
-          href: event-schema-subscriptions.md
-        - name: Blob 儲存體
-          href: event-schema-blob-storage.md
-        - name: Container Registry
-          href: event-schema-container-registry.md
-        - name: 事件中樞
-          href: event-schema-event-hubs.md
-        - name: IoT 中樞
-          href: event-schema-iot-hub.md
-        - name: 媒體服務
-          href: ../media-services/latest/media-services-event-schemas.md?toc=%2fazure%2fevent-grid%2ftoc.json
-        - name: 資源群組
-          href: event-schema-resource-groups.md
-        - name: 服務匯流排
-          href: event-schema-service-bus.md
-        - name: Azure 地圖服務
-          href: event-schema-azure-maps.md
     - name: 範本資源
       items:
         - name: 事件訂閱
@@ -178,9 +288,9 @@
       href: /learn/browse/?products=azure-event-grid
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/roadmap/'
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/event-grid/'
     - name: 定價計算機
       href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-eventgrid'

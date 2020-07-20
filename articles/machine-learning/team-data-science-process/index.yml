@@ -1,39 +1,41 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Team Data Science Process 文件
+summary: 了解如何使用 Team Data Science Process 這種敏捷式反覆資料科學方法，以用於預測分析解決方案和智慧型應用程式。
 metadata:
   title: Team Data Science Process 文件
-  description: 了解如何使用 Team Data Science Process 這種敏捷式反覆資料科學方法，有效產出預測分析解決方案和智慧型應用程式。 TDSP 有助於改善團隊共同作業和學習。 其中包含 Microsoft 及業界其他公司的最佳做法和結構，有助於順利實作資料科學計劃。 目標是協助公司完全了解其分析程式的優點。
-  services: machine-learning
-  author: cjgronlund
+  description: 了解如何使用 Team Data Science Process 這種敏捷式反覆資料科學方法，以用於預測分析解決方案和智慧型應用程式。
   ms.service: machine-learning
   ms.subservice: team-data-science-process
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
-  ms.date: 01/18/2018
-  ms.author: cgronlun
-abstract:
-  description: Team Data Science Process 是一種敏捷式反覆資料科學方法，可有效產出預測分析解決方案和智慧型應用程式。 TDSP 有助於改善團隊共同作業和學習。 其中包含 Microsoft 及業界其他公司的最佳做法和結構，有助於順利實作資料科學計劃。 目標是協助公司完全了解其分析程式的優點。
-sections:
-  - title: 5 分鐘快速入門
-    items:
-      - type: paragraph
-        text: 了解 Team Data Science Process：
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="overview">概觀</a>
-          - html: <a href="lifecycle">生命週期</a>
-  - title: 逐步教學課程
-    items:
-      - type: paragraph
-        text: 了解如何在各情況下使用 Team Data Science Process：
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="walkthroughs-spark">Spark 與 PySpark 和 Scala</a>
-          - html: <a href="walkthroughs-hdinsight-hadoop">Hive 與 HDInsight Hadoop</a>
-          - html: <a href="walkthroughs-azure-data-lake">U-SQL 與 Azure Data Lake</a>
-          - html: <a href="walkthroughs-sql-server">R、Python 和 T-SQL 與 SQL Server</a>
-          - html: <a href="walkthroughs-sql-data-warehouse">T-SQL 和 Python 與 SQL DW</a>
+  author: marktab
+  ms.author: marktab
+  ms.date: 03/10/2020
+  ms.openlocfilehash: 5090cbcf6c177b99f4932eb77647520c3602a832
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "79087383"
+landingContent:
+- title: 了解流程
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是 Team Data Science Process？
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: 流程生命週期
+      url: lifecycle.md
+    - text: 了解商務
+      url: lifecycle-business-understanding.md
+    - text: 資料擷取
+      url: lifecycle-data.md
+- title: 規劃與開發專案
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 專案規劃
+      url: team-data-science-process-project-templates.md
+    - text: 敏捷式開發
+      url: agile-development.md

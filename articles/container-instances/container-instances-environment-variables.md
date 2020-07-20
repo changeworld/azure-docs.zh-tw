@@ -1,30 +1,26 @@
 ---
-title: 在 Azure 容器執行個體中設定環境變數
+title: 在容器實例中設定環境變數
 description: 了解如何在執行於 Azure 容器執行個體中的容器內設定環境變數
-services: container-instances
-author: dlepow
-ms.service: container-instances
 ms.topic: article
 ms.date: 04/17/2019
-ms.author: danlep
-ms.openlocfilehash: 4a4b19338d96094f28b4f4bedd8042723f67f10a
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 92ae59f69b7cb43fee1d3ce8190a85fc20a11f60
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59994770"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169760"
 ---
-# <a name="set-environment-variables-in-container-instances"></a>在容器執行個體中設定環境變數
+# <a name="set-environment-variables-in-container-instances"></a>在容器實例中設定環境變數
 
 在您的容器執行個體中設定環境變數，可讓您提供由容器執行之應用程式或指令碼的動態設定。 這類似於 `--env` 命令列引數 `docker run`。 
 
-若要在容器中設定環境變數，請在建立容器執行個體時加以指定。 本文將說明當您開始使用容器中設定環境變數的範例[Azure CLI](#azure-cli-example)， [Azure PowerShell](#azure-powershell-example)，而[Azure 入口網站](#azure-portal-example)。 
+若要在容器中設定環境變數，請在建立容器執行個體時加以指定。 本文說明當您使用[Azure CLI](#azure-cli-example)、 [Azure PowerShell](#azure-powershell-example)和[Azure 入口網站](#azure-portal-example)啟動容器時，設定環境變數的範例。 
 
-例如，如果您執行 Microsoft [aci wordcount] [ aci-wordcount]容器映像，您可以藉由指定下列環境變數修改其行為：
+例如，如果您執行 Microsoft [aci-wordcount][aci-wordcount]容器映射，您可以藉由指定下列環境變數來修改其行為：
 
 *NumWords*：傳送至 STDOUT 的字詞數。
 
-*MinLength*：列入計算之字詞中的字元數下限。 較高的數目會略過常用字詞，例如 "of" 和 "the"。
+*MinLength*：列入計算之字詞中的字元數上限。 較高的數目會略過常用字詞，例如 "of" 和 "the"。
 
 如果您需要將祕密當成環境變數來傳遞，Azure 容器執行個體支援適用於 Windows 和 Linux 容器的[安全值](#secure-values)。
 
@@ -32,7 +28,7 @@ ms.locfileid: "59994770"
 
 ## <a name="azure-cli-example"></a>Azure CLI 的範例
 
-若要查看的預設輸出[aci wordcount] [ aci-wordcount]容器中，先執行與這個[az 容器建立][ az-container-create]命令 （否指定環境變數）：
+若要查看[aci wordcount][aci-wordcount]容器的預設輸出，請先使用此[az container create][az-container-create]命令執行它， (不) 指定任何環境變數：
 
 ```azurecli-interactive
 az container create \
@@ -42,7 +38,7 @@ az container create \
     --restart-policy OnFailure
 ```
 
-若要修改輸出，請啟動第二個容器，並新增 `--environment-variables` 引數，然後為 *NumWords* 和 *MinLength* 變數指定值。 (此範例假設您在 Bash 殼層或 Azure Cloud Shell 中執行 CLI。 如果您使用 Windows 命令提示字元，請以雙引號指定變數，例如 `--environment-variables "NumWords"="5" "MinLength"="8"`。)
+若要修改輸出，請啟動第二個容器，並 `--environment-variables` 新增引數，並指定*NumWords*和*MinLength*變數的值。 (此範例假設您在 Bash 殼層或 Azure Cloud Shell 中執行 CLI。 如果您使用 Windows 命令提示字元，請以雙引號指定變數，例如 `--environment-variables "NumWords"="5" "MinLength"="8"`。)
 
 ```azurecli-interactive
 az container create \
@@ -53,7 +49,7 @@ az container create \
     --environment-variables 'NumWords'='5' 'MinLength'='8'
 ```
 
-一旦這兩個容器的狀態顯示為「已終止」 (使用 [az container show][az-container-show] 檢查狀態)，即可使用 [az container logs][az-container-logs] 來顯示其記錄，以查看輸出。
+一旦這兩個容器的狀態顯示為「已終止」** (使用 [az container show][az-container-show] 檢查狀態)，即可使用 [az container logs][az-container-logs] 來顯示其記錄，以查看輸出。
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name mycontainer1
@@ -62,8 +58,8 @@ az container logs --resource-group myResourceGroup --name mycontainer2
 
 容器的輸出會顯示您如何藉由設定環境變數，來修改第二個容器的指令碼行為。
 
-```console
-azureuser@Azure:~$ az container logs --resource-group myResourceGroup --name mycontainer1
+**mycontainer1**
+```output
 [('the', 990),
  ('and', 702),
  ('of', 628),
@@ -74,8 +70,10 @@ azureuser@Azure:~$ az container logs --resource-group myResourceGroup --name myc
  ('my', 441),
  ('in', 399),
  ('HAMLET', 386)]
+```
 
-azureuser@Azure:~$ az container logs --resource-group myResourceGroup --name mycontainer2
+**mycontainer2**
+```output
 [('CLAUDIUS', 120),
  ('POLONIUS', 113),
  ('GERTRUDE', 82),
@@ -87,7 +85,7 @@ azureuser@Azure:~$ az container logs --resource-group myResourceGroup --name myc
 
 在 PowerShell 中設定環境變數類似於 CLI，但是使用 `-EnvironmentVariable` 命令列引數。
 
-首先，啟動[aci wordcount] [ aci-wordcount]以預設設定與這個容器[新增 AzContainerGroup] [ new-Azcontainergroup]命令：
+首先，使用下列[new-azcontainergroup][new-Azcontainergroup]命令，以預設設定啟動[aci wordcount][aci-wordcount]容器：
 
 ```azurepowershell-interactive
 New-AzContainerGroup `
@@ -96,7 +94,7 @@ New-AzContainerGroup `
     -Image mcr.microsoft.com/azuredocs/aci-wordcount:latest
 ```
 
-現在，執行下列[新增 AzContainerGroup] [ new-Azcontainergroup]命令。 此命令會在填入陣列變數 `envVars` 後，指定 NumWords 和 MinLength 環境變數：
+現在，請執行下列[new-azcontainergroup][new-Azcontainergroup]命令。 此命令會在填入陣列變數 `envVars` 後，指定 NumWords** 和 MinLength** 環境變數：
 
 ```azurepowershell-interactive
 $envVars = @{'NumWords'='5';'MinLength'='8'}
@@ -108,7 +106,7 @@ New-AzContainerGroup `
     -EnvironmentVariable $envVars
 ```
 
-這兩個容器的狀態後*Terminated* (使用[Get AzContainerInstanceLog] [ azure-instance-log]檢查狀態)，提取其記錄與[取得 AzContainerInstanceLog] [ azure-instance-log]命令。
+當兩個容器的狀態都*終止*之後 (使用[AzContainerInstanceLog][azure-instance-log]來檢查狀態) ，使用[AzContainerInstanceLog][azure-instance-log]命令提取其記錄。
 
 ```azurepowershell-interactive
 Get-AzContainerInstanceLog -ResourceGroupName myResourceGroup -ContainerGroupName mycontainer1
@@ -143,15 +141,15 @@ Azure:\
 
 ## <a name="azure-portal-example"></a>Azure 入口網站範例
 
-若要設定環境變數，當您在 Azure 入口網站中啟動容器時，指定在**進階**頁面上，當您建立容器。
+當您在 Azure 入口網站中啟動容器時，若要設定環境變數，請在建立容器時，于 [ **Advanced** ] 頁面中指定它們。
 
-1. 在 **進階**頁面上，將**重新啟動原則**到*失敗*
-2. 底下**環境變數**，輸入`NumWords`值是`5`之第一個變數，然後輸入`MinLength`值為`8`第二個變數。 
-1. 選取 **檢閱 + 建立**確認，然後再部署容器。
+1. 在 [ **Advanced** ] 頁面上，將 [**重新開機原則**] 設定為 [*失敗時*]
+2. 在 [**環境變數**] 底下， `NumWords` `5` 針對第一個變數輸入值為的，然後 `MinLength` `8` 針對第二個變數輸入值為的。 
+1. 選取 [**審查 + 建立**] 以驗證並部署容器。
 
 ![顯示環境變數啟用按鈕和文字方塊的入口網站頁面][portal-env-vars-01]
 
-若要檢視容器的記錄檔，在**設定**選取**容器**，然後**記錄**。 類似於前面 CLI 和 PowerShell 區段中所示的輸出，您可以看到環境變數如何修改指令碼行為。 僅顯示五個字組，每個字組都至少有八個字元長。
+若要查看容器的記錄，請在 [**設定**] 下選取 [**容器**]，然後按一下 [**記錄**] 類似於前面 CLI 和 PowerShell 區段中所示的輸出，您可以看到環境變數如何修改指令碼行為。 僅顯示五個字組，每個字組都至少有八個字元長。
 
 ![顯示容器記錄輸出的入口網站][portal-env-vars-02]
 
@@ -168,7 +166,7 @@ Azure:\
 使用下列程式碼片段來建立 `secure-env.yaml` 檔案。
 
 ```yaml
-apiVersion: 2018-10-01
+apiVersion: 2019-12-01
 location: eastus
 name: securetest
 properties:
@@ -240,7 +238,7 @@ my-secret-value
 
 ## <a name="next-steps"></a>後續步驟
 
-針對工作型案例，例如使用數個容器的大型資料集批次處理，可受益於執行階段上的自訂環境變數。 如需執行工作為基礎的容器的詳細資訊，請參閱[重新啟動原則執行容器化的工作](container-instances-restart-policy.md)。
+針對工作型案例，例如使用數個容器的大型資料集批次處理，可受益於執行階段上的自訂環境變數。 如需有關執行以工作為基礎之容器的詳細資訊，請參閱[使用重新開機原則執行容器](container-instances-restart-policy.md)化工作。
 
 <!-- IMAGES -->
 [portal-env-vars-01]: ./media/container-instances-environment-variables/portal-env-vars-01.png

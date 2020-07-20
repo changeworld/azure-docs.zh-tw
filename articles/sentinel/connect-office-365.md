@@ -1,56 +1,62 @@
 ---
-title: 將 Office 365 資料連接至 Azure 的 Sentinel Preview |Microsoft Docs
-description: 了解如何將 Office 365 資料連接至 Azure 的 Sentinel。
+title: 將 Office 365 記錄連接到 Azure Sentinel |Microsoft Docs
+description: 瞭解如何使用 Office 365 記錄連接器來帶入 Exchange 和 SharePoint （包括 OneDrive）中進行中的使用者和系統管理活動的相關資訊。
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
-ms.assetid: ff7c862e-2e23-4a28-bd18-f2924a30899d
-ms.service: sentinel
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/07/2019
-ms.author: rkarlin
-ms.openlocfilehash: 6b1e167d26b5848238dd51bf9792f8316c33a385
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.date: 05/21/2020
+ms.author: yelevin
+ms.openlocfilehash: 180b25f80bd27caea20b1c17cd84fda38c172e0f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205583"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85559342"
 ---
-# <a name="connect-data-from-office-365-logs"></a>連接 Office 365 記錄資料
+# <a name="connect-office-365-logs-to-azure-sentinel"></a>將 Office 365 記錄連接到 Azure Sentinel
 
-> [!IMPORTANT]
-> Azure Sentinel 目前為公開預覽狀態。
-> 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-
-您可以串流處理從稽核記錄[Office 365](https://docs.microsoft.com/office365/admin/admin-home?view=o365-worldwide)到 Azure Sentinel 只要按一下。 您可以串流來自多個租用戶中 Azure Sentinel 的單一工作區的稽核記錄檔。 Office 365 活動記錄連接器提供進行中的使用者活動的深入解析。 您會從 Office 365 各種使用者、 系統管理員、 系統和原則動作和事件的相關資訊。 藉由連接到 Azure Sentinel 的 Office 365 記錄檔中，您可以使用這項資料來檢視儀表板、 建立自訂警示，並改善您的調查程序。
-
+[Office 365](https://docs.microsoft.com/office/)記錄連接器會帶入**Exchange**和**SharePoint** （包括**OneDrive**）中進行中的使用者和系統管理活動的 Azure Sentinel 資訊。 這項資訊包含動作的詳細資料，例如檔案下載、傳送的存取要求、群組事件的變更，以及信箱作業，以及執行動作之使用者的詳細資料。 將 Office 365 記錄連接到 Azure Sentinel 可讓您在活頁簿中查看和分析此資料、查詢它以建立自訂警示，並將其納入以改善您的調查流程，讓您更深入瞭解 Office 365 的安全性。
 
 ## <a name="prerequisites"></a>必要條件
 
-- 您必須是全域管理員或安全性系統管理員在您的租用戶
-- 您在電腦上，您登入 Azure Sentinel 來建立連線，請確定已對 web 流量開啟連接埠 4433。
+- 您必須擁有 Azure Sentinel 工作區的 [讀取] 和 [寫入] 許可權。
 
-## <a name="connect-to-office-365"></a>連接至 Office 365
+- 您必須是租用戶的全域管理員或安全性系統管理員。
 
-1. 在 Azure Sentinel，選取**資料連接器**，然後按一下**Office 365**圖格。
+- 您的 Office 365 部署必須位於與 Azure Sentinel 工作區相同的租使用者上。
 
-2. 如果您沒有已啟用，底下**連接**使用**啟用**按鈕來啟用 Office 365 解決方案。 如果已啟用，也會在已啟用的 [連接] 畫面中識別它。
-1. Office 365 可讓您將資料串流處理來自 Azure Sentinel 的多重租用戶中。 針對您想要連接到每個租用戶，新增 租用戶**將租用戶連接到 Azure 的 Sentinel**。 
-1. Active Directory 畫面隨即開啟。 系統會提示您使用您想要連接到 Azure 的 Sentinel，並對 Azure Sentinel 閱讀其記錄檔提供權限的每個租用戶上全域系統管理員使用者進行驗證。 
-5. 在 Stream 的 Office 365 活動記錄檔中，按一下**選取**來選擇您想要串流處理至 Azure 的 Sentinel 哪一個記錄類型。 目前，Azure Sentinel 支援的 Exchange 和 SharePoint。
+> [!IMPORTANT]
+> - 為了讓連接器能夠透過 Office 365 管理活動 API 存取資料，您必須在 Office 365 部署上啟用**統一的審核記錄**。 視您擁有的 Office 365/Microsoft 365 授權類型而定，預設可能不會啟用。 請參閱[Office 365 安全性與合規性中心](https://docs.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/office-365-securitycompliance-center)，以根據您的授權類型來檢查整合的審核記錄狀態。
+> - 您也可以手動啟用、停用及檢查 Office 365 整合審核記錄的目前狀態。 如需相關指示，請參閱[開啟或關閉 Office 365 稽核記錄搜尋](https://docs.microsoft.com/office365/securitycompliance/turn-audit-log-search-on-or-off)。
+> - 如需詳細資訊，請參閱[Office 365 管理活動 API 參考](https://docs.microsoft.com/office/office-365-management-api/office-365-management-activity-api-reference)。
 
-4. 按一下 **套用變更**。
 
-3. 若要使用 Log Analytics 中的 Office 365 記錄相關的結構描述，搜尋**OfficeActivity**。
+   > [!NOTE]
+   > 如先前所述，您會在 [**資料類型**] 下的 [連接器] 頁面上看到 Azure Sentinel Office 365 連接器目前僅支援從 Microsoft Exchange 和 SharePoint （包括 OneDrive）內嵌 audit 記錄檔。 不過，如果您想要將來自小組或[其他 Office 資料](https://techcommunity.microsoft.com/t5/azure-sentinel/ingesting-office-365-alerts-with-graph-security-api/ba-p/984888)[的資料](https://techcommunity.microsoft.com/t5/azure-sentinel/protecting-your-teams-with-azure-sentinel/ba-p/1265761)帶入 Azure Sentinel，則有一些外部解決方案。 
 
+## <a name="enable-the-office-365-log-connector"></a>啟用 Office 365 記錄連接器
+
+1. 從 Azure Sentinel 導覽功能表中，選取 [**資料連線器**]。
+
+1. 從 [**資料連線器**] 清單中，依序按一下 [ **Office 365**] 和右下方的 [**開啟連接器頁面**] 按鈕。
+
+1. 在標示為 [設定] 的區段下，將您要連線的 Office 365 活動記錄的複選**框標示 Azure Sentinel**，然後按一下 [套用**變更**]。 
+
+   > [!NOTE]
+   > 如果您先前已將多個租使用者連線到 Azure Sentinel，使用支援此版本的舊版 Office 365 連接器，您將能夠查看和修改您從每個租使用者收集的記錄。 您無法新增其他租用戶，但可以移除先前新增的租用戶。
+
+1. 若要在 Log Analytics 中查詢 Office 365 記錄資料，請 `OfficeActivity` 在查詢視窗的第一行中輸入。
 
 ## <a name="next-steps"></a>後續步驟
-在本文件中，您已了解如何將 Office 365 連線至 Azure 的 Sentinel。 若要深入了解 Azure Sentinel，請參閱下列文章：
-- 了解如何[了解您的資料，與潛在的威脅](quickstart-get-visibility.md)。
-- 開始[偵測威脅與 Azure Sentinel](tutorial-detect-threats.md)。
+在本文件中，您已了解如何將 Office 365 連線至 Azure Sentinel。 若要深入了解 Azure Sentinel，請參閱下列文章：
+- 瞭解如何[查看您的資料和潛在威脅](quickstart-get-visibility.md)。
+- 使用[內建](tutorial-detect-threats-built-in.md)或[自訂](tutorial-detect-threats-custom.md)規則，開始偵測 Azure Sentinel 的威脅。
 

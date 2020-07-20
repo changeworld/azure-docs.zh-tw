@@ -1,0 +1,32 @@
+- name: 高效能運算文件
+  items:
+    - name: 概觀
+      items:
+        - name: H 系列虛擬機器適用的 HPC
+          href: overview.md
+    - name: 組態
+      items:
+        - name: 針對 Linux 進行最佳化
+          href: configure.md
+        - name: 啟用 InfiniBand
+          href: enable-infiniband.md
+    - name: 設定 MPI
+      href: setup-mpi.md
+    - name: 調整應用程式
+      href: compiling-scaling-applications.md
+    - name: 虛擬機器
+      items:
+        - name: HB 系列
+          items:
+            - name: 概觀
+              href: hb-series-overview.md
+            - name: 效能
+              href: hb-series-performance.md
+        - name: HC 系列
+          items:
+            - name: 概觀
+              href: hc-series-overview.md
+            - name: 效能
+              href: hc-series-performance.md
+        - name: HB-系列和 HC 系列 VM 的已知問題
+          href: hb-hc-known-issues.md

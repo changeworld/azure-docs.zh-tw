@@ -3,24 +3,24 @@ title: 如何將使用者指派至應用程式 | Microsoft Docs
 description: 了解如何將使用者指派至租用戶中的應用程式
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 07/11/2017
-ms.author: celested
+ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be36bfeb0991dc4a4b7fce723cadb6b508c0d6a3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 45124862fffa3a1ef6f601733407fbbea4eb5e74
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60291019"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84762950"
 ---
 # <a name="how-to-assign-users-to-applications"></a>將使用者指派至應用程式
 
@@ -44,9 +44,9 @@ ms.locfileid: "60291019"
 
     * [所有使用者](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-dedicated-groups)群組
 
-3.  系統管理員啟用[自助應用程式存取](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access)，以允許使用者利用[應用程式存取面板](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)的**新增應用程式**功能新增應用程式，而**不需要商務核准**
+3.  系統管理員啟用[自助應用程式存取](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access)，以允許使用者利用[應用程式存取面板的](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) **新增應用程式**功能新增應用程式，而**不需要商務核准**
 
-4.  系統管理員啟用[自助應用程式存取](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access)，以允許使用者利用[應用程式存取面板](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)的**新增應用程式**功能新增應用程式，但需要經過**一群選定商務核准者的事先核准**
+4.  系統管理員啟用[自助應用程式存取](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access)，以允許使用者利用[應用程式存取面板的](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) **新增應用程式**功能新增應用程式，但需要經過**一群選定商務核准者的事先核准**
 
 5.  系統管理員啟用[自助群組管理](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-self-service-group-management)，以允許使用者加入已指派應用程式的群組，而**不需要商務核准**
 
@@ -61,4 +61,4 @@ ms.locfileid: "60291019"
 10. 使用者本身登入應用程式以[同意應用程式](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview)
 
 ## <a name="next-steps"></a>後續步驟
-[使用 Azure Active Directory 管理應用程式](what-is-application-management.md)
+[使用 Azure Active Directory 來管理應用程式](what-is-application-management.md)

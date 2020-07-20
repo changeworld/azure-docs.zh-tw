@@ -5,18 +5,16 @@ services: virtual-machines
 author: msraiye
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 02/22/2019
+ms.date: 11/27/2019
 ms.author: raiye
 ms.custom: include file
-ms.openlocfilehash: 72d9ec52732a78e39f6481e2cb2d40f17f86f028
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 456d550659c04b2272c048fcd64fe73b1a11522a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60478124"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "74566225"
 ---
-# <a name="enable-write-accelerator"></a>啟用寫入加速器
-
 寫入加速器在具有 Azure 受控磁碟的進階儲存體上，是 M 系列虛擬機器 (VM) 專屬的磁碟功能。 如同名稱所示，這個功能的目的是針對 Azure 進階儲存體改善寫入的 I/O 延遲。 需要記錄檔更新，才能以高效能的方式保存到新式資料庫的磁碟時，寫入加速器是最理想的選擇。
 
 寫入加速器以全面推出，供公用雲端中的 M 系列 VM 使用。
@@ -48,13 +46,15 @@ ms.locfileid: "60478124"
 
 | VM SKU | 寫入加速器磁碟的數目 | 每個 VM 的寫入加速器磁碟 IOPS |
 | --- | --- | --- |
-| M128ms，128s | 16 | 20000 |
+| M416ms_v2，M416s_v2| 16 | 20000 |
+| M208ms_v2，M208s_v2| 8 | 10000 |
+| M128ms、M128s | 16 | 20000 |
 | M64ms，M64ls，M64s | 8 | 10000 |
 | M32ms，M32ls，M32ts，M32s | 4 | 5000 |
 | M16ms，M16s | 2 | 2500 |
 | M8ms，M8s | 1 | 1250 |
 
-IOPS 限制是針對每部虛擬機器而「不是」每個磁碟。 所有寫入加速器磁碟都會共用相同的每部虛擬機器 IOPS 限制。
+IOPS 限制是針對每部虛擬機器而「不是」** 每個磁碟。 所有寫入加速器磁碟都會共用相同的每部虛擬機器 IOPS 限制。
 
 ## <a name="enabling-write-accelerator-on-a-specific-disk"></a>在特定磁碟上啟用寫入加速器
 
@@ -74,14 +74,14 @@ IOPS 限制是針對每部虛擬機器而「不是」每個磁碟。 所有寫�
 
 下列 Cmdlet 中已加入了新的開關參數 **-WriteAccelerator**：
 
-- [Set-AzVMOsDisk](https://docs.microsoft.com/powershell/module/az.compute/set-azvmosdisk?view=azurermps-6.0.0)
+- [設定-Set-azvmosdisk](https://docs.microsoft.com/powershell/module/az.compute/set-azvmosdisk?view=azurermps-6.0.0)
 - [Add-AzVMDataDisk](https://docs.microsoft.com/powershell/module/az.compute/Add-AzVMDataDisk?view=azurermps-6.0.0)
 - [Set-AzVMDataDisk](https://docs.microsoft.com/powershell/module/az.compute/Set-AzVMDataDisk?view=azurermps-6.0.0)
 - [Add-AzVmssDataDisk](https://docs.microsoft.com/powershell/module/az.compute/Add-AzVmssDataDisk?view=azurermps-6.0.0)
 
 未提供參數等於將屬性設為 false，而且會部署沒有寫入加速器支援的磁碟。
 
-下列 Cmdlet 已加入了新的開關參數 **-OsDiskWriteAccelerator**：
+新的切換參數**OsDiskWriteAccelerator**已新增至下列 Cmdlet：
 
 - [Set-AzVmssStorageProfile](https://docs.microsoft.com/powershell/module/az.compute/Set-AzVmssStorageProfile?view=azurermps-6.0.0)
 
@@ -171,7 +171,7 @@ Update-AzVM -ResourceGroupName $rgname -VM $vm
 
 若要將磁碟與已啟用寫入加速器連結，請使用 [az vm disk attach](https://docs.microsoft.com/cli/azure/vm/disk?view=azure-cli-latest#az-vm-disk-attach)，如果您要取代為您自己的值，可以使用下列範例：`az vm disk attach -g group1 -vm-name vm1 -disk d1 --enable-write-accelerator`
 
-若要停用寫入加速器，請使用 [az vm update](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-update)，將屬性設定為 false：`az vm update -g group1 -n vm1 -write-accelerator 0=false 1=false`
+若要停用寫入加速器，請使用[az vm update](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-update)，將屬性設定為 false：`az vm update -g group1 -n vm1 -write-accelerator 0=false 1=false`
 
 ## <a name="enabling-write-accelerator-using-rest-apis"></a>使用 Rest API 啟用寫入加速器
 

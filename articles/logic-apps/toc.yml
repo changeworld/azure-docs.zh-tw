@@ -7,31 +7,49 @@
 - name: 快速入門
   expanded: true
   items:
-    - name: 建立邏輯應用程式 - Azure 入口網站
+    - name: 建立邏輯應用程式 - 入口網站
       href: quickstart-create-first-logic-app-workflow.md
     - name: 建立邏輯應用程式 - Visual Studio
       href: quickstart-create-logic-apps-with-visual-studio.md
     - name: 建立邏輯應用程式 - Visual Studio Code
       href: quickstart-create-logic-apps-visual-studio-code.md
+    - name: 建立邏輯應用程式 - ARM 範本
+      displayName: Resource Manager
+      href: quickstart-create-deploy-azure-resource-manager-template.md
 - name: 教學課程
   items:
-    - name: 定期檢查流量
+    - name: 建立以排程為基礎的工作流程
       href: tutorial-build-schedule-recurring-logic-app-workflow.md
-    - name: 管理郵寄清單要求
+    - name: 建立以核准為基礎的工作流程
       href: tutorial-process-mailing-list-subscriptions-workflow.md
-    - name: 處理電子郵件附件
+    - name: 建立 Azure 儲存體和 Azure Functions 工作流程
       href: tutorial-process-email-attachments-workflow.md
+- name: 範例
+  items:
+    - name: Azure 程式碼範例
+      href: 'https://docs.microsoft.com/samples/browse/?products=azure-logic-apps'
+    - name: Resource Manager 快速入門範本
+      href: 'https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Logic'
+    - name: Azure 原則內建
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: 概念
   items:
     - name: 適用於 Logic Apps 的連接器
       href: ../connectors/apis-list.md
+    - name: 排程週期性工作流程
+      href: concepts-schedule-automated-recurring-tasks-workflows.md
     - name: 透過 Azure 進行無伺服器運算
       href: logic-apps-serverless-overview.md
     - name: B2B 整合與 EDI 處理
       href: logic-apps-enterprise-integration-overview.md
     - name: 存取 Azure 虛擬網路
       href: connect-virtual-network-vnet-isolated-environment-overview.md
-- name: 使用說明指南
+    - name: 商務持續性和災害復原
+      href: business-continuity-disaster-recovery-guidance.md
+    - name: 安全性基準
+      href: security-baseline.md
+- name: 操作指南
   items:
     - name: 開發
       items:
@@ -39,6 +57,8 @@
           href: logic-apps-create-logic-apps-from-templates.md
         - name: 從 BizTalk 服務移轉
           href: logic-apps-move-from-mabs.md
+        - name: 從 Power Automate 匯出流程，並部署至 Azure Logic Apps
+          href: export-from-microsoft-flow-logic-app-template.md
         - name: 控制工作流程執行
           items:
             - name: 條件陳述式
@@ -67,32 +87,48 @@
           href: logic-apps-exceed-default-page-size-with-pagination.md
         - name: 批次程序訊息
           href: logic-apps-batch-process-send-receive-messages.md
+        - name: 依順序傳送訊息 - 循序群組
+          href: send-related-messages-sequential-convoy.md
         - name: 製作 JSON 定義
           href: logic-apps-author-definitions.md
         - name: 處理內容類型
           href: logic-apps-content-type.md
-        - name: 處理錯誤和例外狀況
+        - name: 處理例外狀況
           href: logic-apps-exception-handling.md
         - name: 處理大型訊息
           href: logic-apps-handle-large-messages.md
-        - name: 安全
-          items:
-            - name: 保護邏輯應用程式
-              href: logic-apps-securing-a-logic-app.md
-            - name: 使用受控識別進行驗證
-              href: create-managed-service-identity.md
+        - name: 處理節流問題或 429 錯誤
+          href: handle-throttling-problems-429-errors.md
         - name: 開發自訂連接器
           href: custom-connector-overview.md
         - name: 開發自訂 API
           items:
             - name: 建立適用於邏輯應用程式的自訂 API
               href: logic-apps-create-api-app.md
-            - name: 保護自訂 API 的呼叫
+            - name: 提升對自訂 API 呼叫的安全性
               href: logic-apps-custom-api-authentication.md
             - name: 部署和呼叫自訂 API
               href: logic-apps-custom-api-host-deploy-call.md
         - name: 針對錯誤進行疑難排解
           href: logic-apps-diagnosing-failures.md
+    - name: 存取 Azure 虛擬網路
+      items:
+        - name: 建立整合服務環境 - Azure 入口網站
+          href: connect-virtual-network-vnet-isolated-environment.md
+        - name: 建立整合服務環境 - REST API
+          href: create-integration-service-environment-rest-api.md
+        - name: 設定多個整合服務環境的存取權
+          href: connect-virtual-network-vnet-set-up-single-ip-address.md
+        - name: 將資源新增到整合服務環境
+          href: add-artifacts-integration-service-environment-ise.md
+        - name: 為整合服務環境設定客戶管理的加密金鑰
+          href: customer-managed-keys-integration-service-environment.md
+    - name: 存取內部部署資料
+      items:
+        - name: 安裝資料閘道
+          href: logic-apps-gateway-install.md
+        - name: 連線至內部部署資料
+          href: logic-apps-gateway-connection.md
     - name: 針對 B2B 案例進行開發
       items:
         - name: 建立整合帳戶
@@ -101,9 +137,15 @@
           href: logic-apps-enterprise-integration-partners.md
         - name: 合約
           href: logic-apps-enterprise-integration-agreements.md
+        - name: XML 驗證的結構描述
+          href: logic-apps-enterprise-integration-schemas.md
+        - name: XML 轉換的對應
+          href: logic-apps-enterprise-integration-maps.md
+        - name: 憑證
+          href: logic-apps-enterprise-integration-certificates.md
         - name: 構件中繼資料
           href: logic-apps-enterprise-integration-metadata.md
-        - name: 接收 B2B 訊息
+        - name: 接收和傳送 B2B 訊息
           href: logic-apps-enterprise-integration-b2b.md
         - name: 交換 AS2 訊息
           href: logic-apps-enterprise-integration-as2.md
@@ -118,6 +160,8 @@
               href: logic-apps-enterprise-integration-edifact-decode.md
             - name: 使用 UNH2.5 區段處理 EDIFACT 檔案
               href: logic-apps-enterprise-integration-edifact_inputfile_unh2.5.md
+        - name: 交換 RosettaNet 訊息
+          href: logic-apps-enterprise-integration-rosettanet.md
         - name: 交換 X12 訊息
           href: logic-apps-enterprise-integration-x12.md
           items:
@@ -129,38 +173,26 @@
           href: logic-apps-scenario-edi-send-batch-messages.md
         - name: 處理一般檔案
           href: logic-apps-enterprise-integration-flatfile.md
+        - name: 轉換 XML
+          href: logic-apps-enterprise-integration-transform.md
         - name: 處理 XML
           href: logic-apps-enterprise-integration-xml.md
         - name: 驗證 XML
           href: logic-apps-enterprise-integration-xml-validation.md
-        - name: 新增結構描述以進行 XML 驗證
-          href: logic-apps-enterprise-integration-schemas.md
-        - name: 轉換 XML
-          href: logic-apps-enterprise-integration-transform.md
-        - name: 新增對應以進行 XML 轉換
-          href: logic-apps-enterprise-integration-maps.md
         - name: 轉換 JSON
           href: logic-apps-enterprise-integration-liquid-transform.md
-        - name: 新增安全性憑證
-          href: logic-apps-enterprise-integration-certificates.md
         - name: 針對 B2B 錯誤進行疑難排解
           href: logic-apps-enterprise-integration-b2b-list-errors-solutions.md
         - name: 建置災害復原方案
           href: logic-apps-enterprise-integration-b2b-business-continuity.md
-    - name: 連線到具有隔離環境的虛擬網路
-      href: connect-virtual-network-vnet-isolated-environment.md
-    - name: 存取內部部署資料
-      items:
-        - name: 安裝資料閘道
-          href: logic-apps-gateway-install.md
-        - name: 連線至內部部署資料
-          href: logic-apps-gateway-connection.md
     - name: 連接器︰深入主題
       items:
         - name: AS2
           href: logic-apps-enterprise-integration-as2.md
         - name: Azure Blob 儲存體
           href: ../connectors/connectors-create-api-azureblobstorage.md
+        - name: Azure Container Instances
+          href: ../connectors/connectors-create-api-container-instances.md
         - name: Azure 事件中心
           href: ../connectors/connectors-create-api-azure-event-hubs.md
         - name: Azure Functions
@@ -175,13 +207,15 @@
           href: ../connectors/connectors-create-api-bingsearch.md
         - name: Box
           href: ../connectors/connectors-create-api-box.md
+        - name: Common Data Service
+          href: ../connectors/connect-common-data-service.md
         - name: 自訂 API 和 Web 應用程式
           href: logic-apps-create-api-app.md
-        - name: DB2
-          href: ../connectors/connectors-create-api-db2.md
+        - name: 延遲
+          href: ../connectors/connectors-native-delay.md
         - name: Dropbox
           href: ../connectors/connectors-create-api-dropbox.md
-        - name: Dynamics 365 CRM Online
+        - name: Dynamics 365
           href: ../connectors/connectors-create-api-crmonline.md
         - name: EDIFACT
           href: logic-apps-enterprise-integration-edifact.md
@@ -197,8 +231,8 @@
           href: ../connectors/connectors-create-api-ftp.md
         - name: GitHub
           href: ../connectors/connectors-create-api-github.md
-        - name: Google 雲端硬碟
-          href: ../connectors/connectors-create-api-googledrive.md
+        - name: Gmai l- Google 資料安全性與隱私權原則
+          href: ../connectors/connectors-google-data-security-privacy-policy.md
         - name: HTTP
           href: ../connectors/connectors-native-http.md
         - name: HTTP + Swagger
@@ -207,8 +241,12 @@
           href: ../connectors/connectors-native-webhook.md
         - name: IBM 3270
           href: ../connectors/connectors-run-3270-apps-ibm-mainframe-create-api-3270.md
-        - name: Informix
+        - name: IBM DB2
+          href: ../connectors/connectors-create-api-db2.md
+        - name: IBM Informix
           href: ../connectors/connectors-create-api-informix.md
+        - name: IBM MQ
+          href: ../connectors/connectors-create-api-mq.md
         - name: 整合帳戶
           href: logic-apps-enterprise-integration-metadata.md
         - name: MailChimp
@@ -217,11 +255,9 @@
           href: ../connectors/connectors-integrate-security-operations-create-api-microsoft-graph-security.md
         - name: Microsoft Translator
           href: ../connectors/connectors-create-api-microsofttranslator.md
-        - name: MQ
-          href: ../connectors/connectors-create-api-mq.md
         - name: Office 365 Outlook
           href: ../connectors/connectors-create-api-office365-outlook.md
-        - name: Office 365 使用者
+        - name: Office 365 Users
           href: ../connectors/connectors-create-api-office365-users.md
         - name: Office 365 影片
           href: ../connectors/connectors-create-api-office365-video.md
@@ -235,18 +271,18 @@
           href: ../connectors/connectors-create-api-outlook.md
         - name: Project Online
           href: ../connectors/connectors-create-api-projectonline.md
+        - name: 週期性
+          href: ../connectors/connectors-native-recurrence.md
         - name: 要求/回應
           href: ../connectors/connectors-native-reqres.md
+        - name: RosettaNet
+          href: logic-apps-enterprise-integration-rosettanet.md
         - name: RSS
           href: ../connectors/connectors-create-api-rss.md
         - name: Salesforce
           href: ../connectors/connectors-create-api-salesforce.md
         - name: SAP (新)
           href: logic-apps-using-sap-connector.md
-        - name: SAP
-          href: logic-apps-using-sap-connector-old.md
-        - name: 排程
-          href: ../connectors/connectors-native-recurrence.md
         - name: SendGrid
           href: ../connectors/connectors-create-api-sendgrid.md
         - name: SFTP
@@ -257,6 +293,8 @@
           href: ../connectors/connectors-create-api-sharepoint.md
         - name: Slack
           href: ../connectors/connectors-create-api-slack.md
+        - name: 滑動時間範圍
+          href: ../connectors/connectors-native-sliding-window.md
         - name: SMTP
           href: ../connectors/connectors-create-api-smtp.md
         - name: SQL Server
@@ -277,12 +315,26 @@
           href: logic-apps-enterprise-integration-xml-validation.md
         - name: Yammer
           href: ../connectors/connectors-create-api-yammer.md
+    - name: 安全
+      items:
+        - name: 保護邏輯應用程式
+          href: logic-apps-securing-a-logic-app.md
+        - name: 使用受控識別進行驗證
+          href: create-managed-service-identity.md
+        - name: 封鎖邏輯應用程式中的連線
+          href: block-connections-connectors.md
     - name: 管理
       items:
+        - name: 管理邏輯應用程式 - Azure 入口網站
+          href: manage-logic-apps-with-azure-portal.md
         - name: 管理邏輯應用程式 - Visual Studio
           href: manage-logic-apps-with-visual-studio.md
         - name: 管理整合帳戶
           href: logic-apps-enterprise-integration-accounts.md
+        - name: 管理整合服務環境
+          href: ise-manage-integration-service-environment.md
+        - name: 移動邏輯應用程式資源
+          href: move-logic-app-resources.md
         - name: 遷移至最新的結構描述
           href: ../connectors/connectors-schema-migration.md
     - name: 測試
@@ -291,23 +343,22 @@
           href: test-logic-apps-mock-data-static-results.md
     - name: 部署
       items:
+        - name: 概觀 - 自動部署邏輯應用程式
+          href: logic-apps-azure-resource-manager-templates-overview.md
         - name: 建立邏輯應用程式範本
-          href: logic-apps-create-deploy-template.md
+          href: logic-apps-create-azure-resource-manager-templates.md
         - name: 部署邏輯應用程式範本
-          href: logic-apps-create-deploy-azure-resource-manager-templates.md
+          href: logic-apps-deploy-azure-resource-manager-templates.md
     - name: 監視
       items:
         - name: 監視邏輯應用程式
-          href: logic-apps-monitor-your-logic-apps.md
+          href: monitor-logic-apps.md
         - name: 使用 Azure 監視器記錄監視邏輯應用程式
-          href: logic-apps-monitor-your-logic-apps-oms.md
+          href: monitor-logic-apps-log-analytics.md
         - name: 使用 Azure 監視器記錄監視 B2B 訊息
-          href: logic-apps-monitor-b2b-message.md
-          items:
-            - name: 使用 Azure 監視器記錄追蹤 B2B 訊息
-              href: logic-apps-track-b2b-messages-omsportal.md
-            - name: 使用 Azure 監視器記錄為 B2B 訊息建立查詢
-              href: logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md
+          href: monitor-b2b-messages-log-analytics.md
+        - name: 建立監視和追蹤查詢
+          href: create-monitoring-tracking-queries.md
     - name: 範例、案例和逐步解說
       href: logic-apps-examples-and-scenarios.md
       items:
@@ -331,15 +382,17 @@
           href: /azure/architecture/reference-architectures/enterprise-integration/queues-events
     - name: 連接器 - 完整詳細資料
       href: 'https://docs.microsoft.com/connectors/'
-    - name: 限制和設定
+    - name: 服務限制與設定
       href: logic-apps-limits-and-config.md
-    - name: 使用方式計量
+    - name: 定價模式和使用量計量
       href: logic-apps-pricing.md
+    - name: Azure CLI
+      href: /cli/azure/ext/logic/logic?view=azure-cli-latest
     - name: Azure PowerShell
       href: /powershell/module/az.logicapp
     - name: REST API
       href: /rest/api/logic/
-    - name: Resource Manager 範本
+    - name: Resource Manager 範本參考
       href: /azure/templates/microsoft.logic/allversions
     - name: 工作流程定義語言結構描述
       href: logic-apps-workflow-definition-language.md
@@ -360,23 +413,27 @@
           href: logic-apps-track-integration-account-custom-tracking-schema.md
 - name: 資源
   items:
+    - name: 透過 Microsoft Learn 增進您的技巧
+      href: 'https://docs.microsoft.com/learn/browse/?products=azure-logic-apps'
     - name: Azure Logic Apps 藍圖
       href: 'https://aka.ms/logicappsroadmap/'
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/roadmap/'
-    - name: MSDN 論壇
-      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azurelogicapps'
-    - name: 堆疊溢位
-      href: 'https://stackoverflow.com/questions/tagged/azure-logic-apps'
-    - name: Twitter
-      href: 'https://twitter.com/logicappsio'
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/logic-apps/'
     - name: 定價計算機
       href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: 服務更新
-      href: 'https://azure.microsoft.com/updates/?product=logic-apps'
     - name: 客戶案例
       href: 'https://customers.microsoft.com/en-us/search?sq=%22Azure%20Logic%20Apps%20%22&ff=story_product_categories%26%3EAzure&p=0&so=story_publish_date%20desc'
     - name: 影片
       href: 'https://azure.microsoft.com/resources/videos/index/?services=logic-apps&sort=newest'
+    - name: Microsoft 問與答頁面
+      href: 'https://docs.microsoft.com/answers/topics/azure-logic-apps.html'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-logic-apps'
+    - name: Twitter
+      href: 'https://twitter.com/logicappsio'
+    - name: 提供產品意見反應
+      href: 'https://feedback.azure.com/forums/287593-logic-apps'
+    - name: 服務更新
+      href: 'https://azure.microsoft.com/updates/?product=logic-apps'

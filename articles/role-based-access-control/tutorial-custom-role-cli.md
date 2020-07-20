@@ -1,6 +1,6 @@
 ---
-title: 教學課程 - 使用 Azure CLI 建立適用於 Azure 資源的自訂角色 | Microsoft Docs
-description: 使用 Azure CLI 開始為 Azure 資源建立自訂角色。
+title: 教學課程：使用 Azure CLI 建立 Azure 自訂角色 - Azure RBAC
+description: 在本教學課程中，您將使用 Azure CLI 和 Azure 角色型存取控制 (Azure RBAC) 來開始建立 Azure 自訂角色。
 services: active-directory
 documentationCenter: ''
 author: rolyon
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/20/2019
 ms.author: rolyon
-ms.openlocfilehash: de1805d91f48b5718ecf293c2b8672ba40fb81a9
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 3efe9670d03a754cc90689c4b66d0843de4e275f
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56588155"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735499"
 ---
-# <a name="tutorial-create-a-custom-role-for-azure-resources-using-azure-cli"></a>教學課程：使用 Azure CLI 為 Azure 資源建立自訂角色
+# <a name="tutorial-create-an-azure-custom-role-using-azure-cli"></a>教學課程：使用 Azure CLI 建立 Azure 自訂角色
 
-如果[適用於 Azure 資源的內建角色](built-in-roles.md)無法滿足您組織的特定需求，您可以建立自己的自訂角色。 在此教學課程中，您會使用 Azure CLI 建立名為讀者支援票證的自訂角色。 自訂角色可讓使用者檢視訂用帳戶的平面管理中的一切，也可開啟支援票證。
+如果 [Azure 內建的角色](built-in-roles.md)無法滿足您組織的特定需求，您可以建立自己的自訂角色。 在此教學課程中，您會使用 Azure CLI 建立名為讀者支援票證的自訂角色。 自訂角色可讓使用者檢視訂用帳戶的平面管理中的一切，也可開啟支援票證。
 
-在本教學課程中，您了解如何：
+在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
 > * 建立自訂角色
@@ -32,11 +32,11 @@ ms.locfileid: "56588155"
 > * 更新自訂角色
 > * 刪除自訂角色
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立 [免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-若要完成本教學課程，您需要：
+若要完成本教學課程，您將會需要：
 
 - 建立自訂角色的權限，例如[擁有者](built-in-roles.md#owner)或[使用者存取管理員](built-in-roles.md#user-access-administrator)
 - [Azure Cloud Shell](../cloud-shell/overview.md) 或 [Azure CLI](/cli/azure/install-azure-cli)
@@ -51,7 +51,7 @@ ms.locfileid: "56588155"
 
 1. 檢閱 [Microsoft.Support 資源提供者](resource-provider-operations.md#microsoftsupport)的作業清單。 最好先了解可用來建立權限的作業。
 
-    | 作業 | 說明 |
+    | 作業 | 描述 |
     | --- | --- |
     | Microsoft.Support/register/action | 支援資源提供者的暫存器 |
     | Microsoft.Support/supportTickets/read | 取得支援票證的詳細資料 (包括狀態、嚴重性、連絡人詳細資料和通訊)，或取得跨訂用帳戶之支援票證的清單。 |
@@ -61,7 +61,7 @@ ms.locfileid: "56588155"
 
 1. 在編輯器中開啟 ReaderSupportRole.json 並新增下列 JSON。
 
-    如需不同屬性的相關資訊，請參閱 [Azure 資源的自訂角色](custom-roles.md)。
+    如需不同屬性的相關資訊，請參閱 [Azure 自訂角色](custom-roles.md)。
 
     ```json
     {
@@ -269,4 +269,4 @@ ms.locfileid: "56588155"
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [使用 Azure CLI 建立適用於 Azure 資源的自訂角色](custom-roles-cli.md)
+> [使用 Azure CLI 建立或更新 Azure 自訂角色](custom-roles-cli.md)

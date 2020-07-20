@@ -6,21 +6,37 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: article
-ms.date: 02/22/2019
+ms.date: 09/04/2019
 ms.author: alkohli
-ms.openlocfilehash: 067bb6b806ddd9b83d4ea755876a980ca45d76e9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.localizationpriority: high
+ms.openlocfilehash: 6ac1fb1a69433be240e4250ea37835037f0b2ffa
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60387463"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873946"
 ---
+::: zone target="docs"
+
 # <a name="azure-data-box-disk-system-requirements"></a>Azure 資料箱磁碟系統需求
 
 本文會針對 Microsoft Azure 資料箱磁碟解決方案以及連線至資料箱磁碟的用戶端，說明其各自的重要系統需求。 建議您先仔細檢閱此資訊再部署資料箱磁碟，之後在部署和後續作業期間若有必要，也請回頭查閱。
 
 系統需求中包含可支援用戶端連線至磁碟的平台、支援的儲存體帳戶，以及儲存體類型。
 
+::: zone-end
+
+::: zone target="chromeless"
+
+## <a name="review-prerequisites"></a>檢閱必要條件
+
+1. 您必須已使用 [ 教學課程來排序您的資料箱磁碟：排序 Azure 資料箱磁碟](data-box-disk-deploy-ordered.md)。 您已收到磁碟，而且每個磁碟都附有一條連接纜線。
+2. 您有一部用戶端電腦可用來複製資料。 您的用戶端電腦必須：
+
+    - 執行支援的作業系統。
+    - 已安裝其他必要軟體。
+
+::: zone-end
 
 ## <a name="supported-operating-systems-for-clients"></a>支援用戶端的作業系統
 
@@ -29,8 +45,8 @@ ms.locfileid: "60387463"
 | **作業系統** | **測試的版本** |
 | --- | --- |
 | Windows Server |2008 R2 SP1 <br> 2012 <br> 2012 R2 <br> 2016 |
-|  Windows |7, 8, 10 |
-| Linux <br> <li> Ubuntu </li><li> Debian </li><li> Red Hat Enterprise Linux (RHEL) </li><li> CentOS| <br>14.04、16.04、18.04 <br> 8.11、9 <br> 7.0 <br> 6.5、6.9、7.0、7.5 |  
+| Windows (64 位元) |7, 8, 10 |
+|Linux <br> <li> Ubuntu </li><li> Debian </li><li> Red Hat Enterprise Linux (RHEL) </li><li> CentOS| <br>14.04、16.04、18.04 <br> 8.11、9 <br> 7.0 <br> 6.5、6.9、7.0、7.5 |  
 
 ## <a name="other-required-software-for-windows-clients"></a>Windows 用戶端的其他必要軟體
 
@@ -40,7 +56,7 @@ ms.locfileid: "60387463"
 | --- | --- |
 | Windows PowerShell |5.0 |
 | .NET Framework |4.5.1 |
-| Windows Management Framework |5.0|
+| Windows Management Framework |5.1|
 | BitLocker| - |
 
 ## <a name="other-required-software-for-linux-clients"></a>Linux 用戶端的其他必要軟體
@@ -62,15 +78,11 @@ ms.locfileid: "60387463"
 | --- | --- |
 | 傳統 | 標準 |
 | 一般用途  |標準；同時支援 V1 和 V2。 同時支援經常性儲存層和非經常性儲存層。 |
-| Blob 存储帐户 | |
+| Blob 儲存體帳戶 | |
 
->[!NOTE]
-> 不支援 Azure Data Lake Storage Gen 2 帳戶。
+## <a name="supported-storage-types-for-upload"></a>支援上傳的儲存體類型
 
-
-## <a name="supported-storage-types-for-upload"></a>支持的用于上传的存储类型
-
-下面是一个列表，其中的存储类型可以使用 Data Box Disk 上传到 Azure。
+以下是支援使用資料箱磁碟上傳至 Azure 的儲存體類型清單。
 
 | **檔案格式** | **注意事項** |
 | --- | --- |
@@ -79,8 +91,11 @@ ms.locfileid: "60387463"
 | Azure 檔案  | |
 | 受控磁碟 | |
 
+::: zone target="docs"
 
 ## <a name="next-step"></a>後續步驟
 
 * [部署 Azure 資料箱磁碟](data-box-disk-deploy-ordered.md)
+
+::: zone-end
 

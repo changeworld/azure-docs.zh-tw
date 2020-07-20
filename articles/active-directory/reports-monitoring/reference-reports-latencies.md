@@ -13,16 +13,15 @@ ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/13/2018
+ms.date: 05/13/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64bd2247a3437a2cc960da1820d9be417eedff8e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 6d031546bb4f1f05e9ea2abb5b74fe911b0b507f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60285170"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "74007710"
 ---
 # <a name="azure-active-directory-reporting-latencies"></a>Azure Active Directory 報告延遲
 
@@ -41,10 +40,10 @@ ms.locfileid: "60285170"
 > **延遲 (第 95 個百分位數)** 指的是報告 95% 記錄所花費的時間，**延遲 (第 99 個百分位數)** 指的則是報告 99% 記錄所花費的時間。 
 >
 
-| 報告 | 延遲 (第 95 個百分位數) |延遲 (第 99 個百分位數)|將報告記錄的時間範圍|
-| :-- | --- | --- | --- |
-| 稽核記錄 | 2 分鐘  | 5 分鐘  | 2-60 分鐘 |
-| 登入 | 2 分鐘  | 5 分鐘 | 2-120 分鐘 |
+| 報表 | 延遲 (第 95 個百分位數) |延遲 (第 99 個百分位數)|
+| :-- | --- | --- |
+| 稽核記錄 | 2 分鐘  | 5 分鐘  |
+| 登入 | 2 分鐘  | 5 分鐘 |
 
 ### <a name="how-soon-can-i-see-activities-data-after-getting-a-premium-license"></a>在取得進階授權之後，我能夠多快能看見活動資料？
 
@@ -59,18 +58,18 @@ ms.locfileid: "60285170"
 
 下表列出安全性報告的延遲資訊。
 
-| 報告 | 最小值 | 平均值 | 最大值 |
+| 報表 | 最低需求 | Average | 最大值 |
 | :-- | --- | --- | --- |
 | 有風險的使用者          | 5 分鐘   | 15 分鐘  | 2 小時  |
 | 有風險的登入         | 5 分鐘   | 15 分鐘  | 2 小時  |
 
-## <a name="risk-events"></a>風險事件
+## <a name="risk-detections"></a>風險偵測
 
-Azure AD 會使用調適性機器學習服務演算法和啟發學習法，來偵測與您使用者帳戶相關的可疑動作。 偵測到的每個可疑動作都會儲存在名為**風險事件**的記錄中。
+Azure AD 會使用調適性機器學習服務演算法和啟發學習法，來偵測與您使用者帳戶相關的可疑動作。 每個偵測到的可疑動作都會儲存在名為**風險偵測**的記錄中。
 
-下表列出風險事件的延遲資訊。
+下表列出風險偵測的延遲資訊。
 
-| 報告 | 最小值 | 平均值 | 最大值 |
+| 報表 | 最低需求 | Average | 最大值 |
 | :-- | --- | --- | --- |
 | 從匿名 IP 位址登入 |5 分鐘 |15 分鐘 |2 小時 |
 | 從不熟悉的位置登入 |5 分鐘 |15 分鐘 |2 小時 |
@@ -82,6 +81,6 @@ Azure AD 會使用調適性機器學習服務演算法和啟發學習法，來�
 
 ## <a name="next-steps"></a>後續步驟
 
-* [Azure AD 報告概觀](overview-reports.md)
+* [Azure AD 報表總覽](overview-reports.md)
 * [以程式設計方式存取 Azure AD 報告](concept-reporting-api.md)
-* [Azure Active Directory 風險事件](concept-risk-events.md)
+* [Azure Active Directory 風險偵測](concept-risk-events.md)

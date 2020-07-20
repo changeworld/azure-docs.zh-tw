@@ -1,4 +1,4 @@
-- name: Azure 應用程式組態預覽文件
+- name: Azure 應用程式組態文件
   href: index.yml
 - name: 概觀
   items:
@@ -17,28 +17,54 @@
           href: quickstart-dotnet-core-app.md
         - name: .NET Framework
           href: quickstart-dotnet-app.md
-        - name: .NET Core 中的 Azure 函式
-          href: quickstart-azure-function-csharp.md
+        - name: .NET Core 中的 Azure Functions
+          href: quickstart-azure-functions-csharp.md
         - name: Java Spring
           href: quickstart-java-spring-app.md
+        - name: ARM 範本
+          href: quickstart-resource-manager.md
+          displayName: 'ARM, azure resource manager template'
     - name: 功能管理
       items:
         - name: ASP.NET Core
           href: quickstart-feature-flag-aspnet-core.md
+        - name: .NET Framework
+          href: quickstart-feature-flag-dotnet.md
+        - name: Java Spring
+          href: quickstart-feature-flag-spring-boot.md
 - name: 教學課程
   items:
     - name: 啟用 ASP.NET Core 中的動態組態
       href: enable-dynamic-configuration-aspnet-core.md
+    - name: 啟用 .NET Core 應用程式中的動態組態
+      href: enable-dynamic-configuration-dotnet-core.md
+    - name: 啟用 .NET Framework 中的動態組態
+      href: enable-dynamic-configuration-dotnet.md
+    - name: 啟用 Azure Functions 中的動態組態
+      href: enable-dynamic-configuration-azure-functions-csharp.md
+    - name: 啟用 Spring Boot 中的動態組態
+      href: enable-dynamic-configuration-java-spring-app.md
     - name: 在 .NET Core 應用程式中使用功能旗標
       href: use-feature-flags-dotnet-core.md
+    - name: 在 Spring Boot 應用程式中使用功能旗標
+      href: use-feature-flags-spring-boot.md
     - name: 管理功能旗標
       href: manage-feature-flags.md
+    - name: 在 ASP.NET Core 中使用 Key Vault 參考
+      href: use-key-vault-references-dotnet-core.md
+    - name: 在 Spring Boot 中使用 Key Vault 參考
+      href: use-key-vault-references-spring-boot.md
     - name: 與 CI/CD 管線整合
       href: integrate-ci-cd-pipeline.md
+    - name: 使用 Helm 與 Kubernetes 部署整合
+      href: integrate-kubernetes-deployment-helm.md
 - name: 範例
   items:
     - name: Azure CLI
       href: cli-samples.md
+    - name: Azure 原則內建
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: 概念
   items:
     - name: 索引鍵-值存放區
@@ -47,39 +73,85 @@
       href: concept-point-time-snapshot.md
     - name: 功能管理
       href: concept-feature-management.md
-- name: 使用說明指南
+    - name: 使用 GitHub Actions 同步
+      href: concept-github-action.md
+    - name: 事件處理
+      href: concept-app-configuration-event.md
+    - name: 安全性
+      items:
+        - name: 使用客戶管理的金鑰加密
+          href: concept-customer-managed-keys.md
+        - name: 使用私人端點保護您的設定存放區
+          href: concept-private-endpoint.md
+        - name: 與 Azure 受控識別整合
+          href: howto-integrate-azure-managed-service-identity.md
+        - name: 使用 Azure Active Directory 啟用存取
+          href: concept-enable-rbac.md
+        - name: 指派 Azure 受控識別
+          href: overview-managed-identity.md
+    - name: 高可用性
+      items:
+        - name: 復原和災害復原
+          href: concept-disaster-recovery.md
+- name: 操作指南
   items:
-    - name: 與 Azure 受控服務識別整合
-      href: howto-integrate-azure-managed-service-identity.md
+    - name: 為子集使用者啟用功能
+      href: howto-feature-filters-aspnet-core.md
+    - name: 對個別環境組態使用標籤
+      href: howto-labels-aspnet-core.md
     - name: 匯入或匯出設定資料
       href: howto-import-export-data.md
+    - name: 將事件路由至自訂端點
+      href: howto-app-configuration-event.md
+    - name: 自動備份設定存放區
+      href: howto-backup-config-store.md
     - name: 最佳作法
       href: howto-best-practices.md
 - name: 參考
   items:
     - name: 組態
       items:
-        - name: .NET Core 組態提供者
+        - name: Azure CLI
+          href: 'https://docs.microsoft.com/cli/azure/appconfig?view=azure-cli-latest'
+        - name: .NET Core 提供者
           href: 'https://go.microsoft.com/fwlink/?linkid=2074664'
-        - name: .NET Framework 組態建立器
+        - name: .NET Framework 建立器
           href: 'https://go.microsoft.com/fwlink/?linkid=2074663'
-        - name: Java Spring 組態提供者
-          href: 'https://github.com/Microsoft/spring-cloud-azure/tree/azure-config/spring-cloud-azure-starters/spring-cloud-starter-azure-config'
-        - name: .NET Azure SDK
+        - name: 適用於 .NET 的 Azure SDK
           href: 'https://go.microsoft.com/fwlink/?linkid=2092056'
-        - name: REST
+        - name: Java Spring 提供者
+          href: 'https://go.microsoft.com/fwlink/?linkid=2074659'
+        - name: Azure SDK for Java
+          href: 'https://go.microsoft.com/fwlink/?linkid=2098196'
+        - name: 適用於 Python 的 Azure SDK
+          href: 'https://go.microsoft.com/fwlink/?linkid=2103727'
+        - name: 適用於 JavaScript 的 Azure SDK
+          href: 'https://go.microsoft.com/fwlink/?linkid=2103664'
+        - name: REST API
           href: 'https://go.microsoft.com/fwlink/?linkid=2078296'
     - name: 功能管理
       items:
         - name: .NET Core 程式庫
           href: 'https://go.microsoft.com/fwlink/?linkid=2091700'
-        - name: ASP.NET Core 程式庫
-          href: 'https://go.microsoft.com/fwlink/?linkid=2091700'
         - name: .NET Core 篩選程式庫
           href: 'https://go.microsoft.com/fwlink/?linkid=2091601'
+    - name: 設定存放區管理
+      items:
+        - name: REST API
+          href: 'https://docs.microsoft.com/rest/api/appconfiguration/'
 - name: 資源
   items:
-    - name: 使用者入門影片
-      href: 'https://channel9.msdn.com/Shows/Azure-Friday/Getting-started-with-Azure-App-Configuration'
+    - name: 定價
+      href: 'https://azure.microsoft.com/pricing/details/app-configuration/'
+    - name: 影片
+      items:
+        - name: 開始使用
+          href: 'https://channel9.msdn.com/Shows/Azure-Friday/Getting-started-with-Azure-App-Configuration'
+        - name: 功能管理
+          href: 'https://channel9.msdn.com/Shows/NET-Community-Standups/ASPNET-Community-Standup-May-21st-2019-Introducing-MicrosoftFeatureManagement'
+        - name: 簡化集中式組態
+          href: 'https://channel9.msdn.com/Events/dotnetConf/NET-Conf-2019/B210'
+        - name: 在雲端原生節目 (Cloud Native Show) 上的 Azure 應用程式組態
+          href: 'https://www.youtube.com/watch?v=DJqmA5PcfzE'
     - name: 提供產品意見反應
       href: 'https://github.com/Azure/AppConfiguration/issues'

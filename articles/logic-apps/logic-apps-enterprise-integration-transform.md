@@ -1,21 +1,18 @@
 ---
-title: 轉換 XML 格式 - Azure Logic Apps | Microsoft Docs
+title: 轉換格式之間的 XML
 description: 在採用 Enterprise Integration Pack 的 Azure Logic Apps 中建立轉換或對應，以轉換 XML 格式
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.assetid: add01429-21bc-4bab-8b23-bc76ba7d0bde
 ms.date: 07/08/2016
-ms.openlocfilehash: 4ebd96613378bbd907beb5109343a2427b1300b0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 500769a39ba7658b35c1abb80101f6234170c941
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60427213"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "74792388"
 ---
 # <a name="create-maps-that-transform-xml-between-formats-in-azure-logic-apps-with-enterprise-integration-pack"></a>在採用 Enterprise Integration Pack 的 Azure Logic Apps 中建立對應，以轉換 XML 格式
 
@@ -38,14 +35,14 @@ ms.locfileid: "60427213"
 
 既然您已完成必要元件，就可以建立邏輯應用程式：  
 
-1. 建立邏輯應用程式並[將它連結到包含對應的整合帳戶](../logic-apps/logic-apps-enterprise-integration-accounts.md "了解如何將整合帳戶連結到邏輯應用程式")。
+1. 建立邏輯應用程式，並將[它連結到](../logic-apps/logic-apps-enterprise-integration-accounts.md "瞭解如何將整合帳戶連結至邏輯應用程式")包含對應的整合帳戶。
 2. 將**要求**觸發程序新增至邏輯應用程式  
    ![](./media/logic-apps-enterprise-integration-transforms/transform-1.png)    
-3. 先選取 [新增動作] 來新增 [轉換 XML] 動作   
+3. 先選取 [新增動作]**** 來新增 [轉換 XML]**** 動作   
    ![](./media/logic-apps-enterprise-integration-transforms/transform-2.png)   
-4. 在搜尋方塊中輸入「轉換」，篩選所有動作以取得您想要使用的動作  
+4. 在搜尋方塊中輸入「轉換」**，篩選所有動作以取得您想要使用的動作  
    ![](./media/logic-apps-enterprise-integration-transforms/transform-3.png)  
-5. 選取 [轉換 XML] 動作   
+5. 選取 [轉換 XML]**** 動作   
 6. 新增您將轉換的 XML **內容**。 您可以使用在 HTTP 要求中收到的任何 XML 資料做為 **內容**。 在此範例中，選取觸發邏輯應用程式的 HTTP 要求本文。
 
    > [!NOTE]
@@ -136,6 +133,6 @@ ms.locfileid: "60427213"
 
 
 ## <a name="learn-more"></a>深入了解
-* [深入了解企業整合套件](../logic-apps/logic-apps-enterprise-integration-overview.md "了解企業整合套件")  
-* [深入了解對應](../logic-apps/logic-apps-enterprise-integration-maps.md "了解企業整合對應")  
+* [深入了解企業整合套件](../logic-apps/logic-apps-enterprise-integration-overview.md "瞭解企業整合套件")  
+* [深入了解對應](../logic-apps/logic-apps-enterprise-integration-maps.md "瞭解企業整合對應")  
 

@@ -1,21 +1,20 @@
 ---
-title: 使用 U-SQL 資料庫專案開發 Azure Data Lake 的 U-SQL 資料庫
+title: 開發一個 U-SQL 資料庫專案-Azure Data Lake
 description: 了解如何使用 Azure Data Lake Tools for Visual Studio 開發 U-SQL 資料庫。
-services: data-lake-analytics
 author: yanancai
 ms.author: yanacai
 ms.reviewer: jasonwhowell
 ms.assetid: 66dd58b1-0b28-46d1-aaae-43ee2739ae0a
 ms.service: data-lake-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: big-data
 ms.date: 07/03/2018
-ms.openlocfilehash: 47235fa5676acd8de8a7cc0d969b813837faf0af
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a81f623b3bca2877fce1a9aee7cd2dff6e44f37d
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60628710"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86117418"
 ---
 # <a name="use-a-u-sql-database-project-to-develop-a-u-sql-database-for-azure-data-lake"></a>使用 U-SQL 資料庫專案開發 Azure Data Lake 的 U-SQL 資料庫
 
@@ -27,13 +26,13 @@ U-SQL 資料庫專案是 Visual Studio 中的專案類型，能協助開發人�
 
 ## <a name="create-a-u-sql-database-project"></a>建立 U-SQL 資料庫專案
 
-Azure Data Lake Tools for Visual Studio 在 2.3.3000.0 之後的版本中，新增了稱為 U-SQL 資料庫專案的專案範本。 若要建立 U-SQL 專案，請選取 [檔案] > [新增] > [專案]。 您可以在 [Azure Data Lake] > [U-SQL 節點] 下找到 U-SQL 資料庫專案。
+Azure Data Lake Tools for Visual Studio 在 2.3.3000.0 之後的版本中，新增了稱為 U-SQL 資料庫專案的專案範本。 若要建立 U-SQL 專案，請選取 [檔案] > [新增] > [專案]****。 您可以在 [Azure Data Lake] > [U-SQL 節點]**** 下找到 U-SQL 資料庫專案。
 
 ![Data Lake Tools for Visual Studio--建立 U-SQL 資料庫專案](./media/data-lake-analytics-data-lake-tools-develop-usql-database/data-lake-tools-create-usql-database-project-creation.png) 
 
 ## <a name="develop-u-sql-database-objects-by-using-a-database-project"></a>使用資料庫專案開發 U-SQL 資料庫物件
 
-以滑鼠右鍵按一下 U-SQL 資料庫專案。 選取 [新增] > [新增項目]。 您可以在 [新增項目] 精靈中找到所有新的可支援物件類型。 
+以滑鼠右鍵按一下 U-SQL 資料庫專案。 選取 [新增] > [新增項目]****。 您可以在 [新增項目]**** 精靈中找到所有新的可支援物件類型。 
 
 至於非組件物件 (例如資料表值函式)，新的 U-SQL 指令碼會在新項目新增後建立。 您可以開始在編輯器中開發該物件的 DDL 陳述式。
 
@@ -45,11 +44,11 @@ Azure Data Lake Tools for Visual Studio 在 2.3.3000.0 之後的版本中，新�
 
     ![Data Lake Tools for Visual Studio--新增 U-SQL 資料庫專案參考](./media/data-lake-analytics-data-lake-tools-develop-usql-database/data-lake-tools-add-project-reference-wizard.png)
 
-2.  在組件設計檢視中，從 [從參考建立組件] 下拉式功能表中選擇參考組件。
+2.  在組件設計檢視中，從 [從參考建立組件]**** 下拉式功能表中選擇參考組件。
 
     ![Data Lake Tools for Visual Studio--從參考建立組件](./media/data-lake-analytics-data-lake-tools-develop-usql-database/data-lake-tools-create-assembly-from-reference.png)
 
-3.  新增 [受控相依性] 和 [其他檔案] (若有的話)。 在新增其他檔案時，工具會使用相對路徑來確保能在本機電腦和稍後的組建電腦上找到組件。 
+3.  新增**受管理**的相依性和**其他**檔案（如果有的話）。 在新增其他檔案時，工具會使用相對路徑來確保能在本機電腦和稍後的組建電腦上找到組件。 
 
 @_DeployTempDirectory 是預先定義的變數，能將工具指向建置輸出資料夾。 在建置輸出資料夾中，每個組件都具有以組件名稱命名的子資料夾。 所有 Dll 和其他檔案都在該子資料夾中。 
  
@@ -57,7 +56,7 @@ Azure Data Lake Tools for Visual Studio 在 2.3.3000.0 之後的版本中，新�
 
 U-SQL 資料庫專案的建置輸出，是一個名稱加上 `.usqldbpack` 尾碼的 U-SQL 資料庫部署套件。 `.usqldbpack` 套件是一個 ZIP 檔案，其中的 **DDL** 資料夾含有單一 U-SQL 指令碼中的所有 DDL 陳述式，而 **Temp** 資料夾則含有組件的所有 DLL 和額外檔案。
 
-深入了解[如何建置 U-SQL 資料庫專案使用 MSBuild 命令列] 和 [Azure DevOps 服務建置工作](data-lake-analytics-cicd-overview.md)。
+深入瞭解[如何使用 MSBuild 命令列和 Azure DevOps Services 組建工作來建立一個 U-SQL 資料庫專案](data-lake-analytics-cicd-overview.md)。
 
 ## <a name="deploy-a-u-sql-database"></a>部署 U-SQL 資料庫
 
@@ -69,11 +68,11 @@ U-SQL 資料庫專案的建置輸出，是一個名稱加上 `.usqldbpack` 尾�
 
 #### <a name="deploy-through-a-u-sql-database-project"></a>透過 U-SQL 資料庫專案部署
 
-1.  以滑鼠右鍵按一下 U-SQL 資料庫專案，然後選取 [部署]。
-2.  在 [部署 U-SQL 資料庫精靈] 中，選擇要部署資料庫的目的地 [ADLA 帳戶]。 本機帳戶和 ADLA 帳戶兩者均可支援。
-3.  [資料庫來源] 會自動填入，並指向專案建置輸出資料夾中的 .usqldbpack 套件。
-4.  在 [資料庫名稱] 中輸入名稱，以建立資料庫。 如果目標 Azure Data Lake Analytics 帳戶已有相同名稱的資料庫，在資料庫專案中定義的所有物件均會建立，但不會重新建立資料庫。
-5.  若要部署 U-SQL 資料庫，請按一下 [提交]。 所有資源 (組件和其他檔案) 隨即會上傳，而且包含所有 DDL 陳述式的 U-SQL 作業也會提交。
+1.  以滑鼠右鍵按一下 U-SQL 資料庫專案，然後選取 [部署]****。
+2.  在 [**部署 SQL Database]** 中，選取您要部署資料庫的**ADLA 帳戶**。 本機帳戶和 ADLA 帳戶兩者均可支援。
+3.  [資料庫來源]**** 會自動填入，並指向專案建置輸出資料夾中的 .usqldbpack 套件。
+4.  在 [資料庫名稱]**** 中輸入名稱，以建立資料庫。 如果目標 Azure Data Lake Analytics 帳戶已有相同名稱的資料庫，在資料庫專案中定義的所有物件均會建立，但不會重新建立資料庫。
+5.  若要部署 U-SQL 資料庫，請按一下 [提交]****。 所有資源 (組件和其他檔案) 隨即會上傳，而且包含所有 DDL 陳述式的 U-SQL 作業也會提交。
 
     ![Data Lake Tools for Visual Studio--部署 U-SQL 資料庫專案](./media/data-lake-analytics-data-lake-tools-develop-usql-database/data-lake-tools-deploy-usql-database-project.png)
 
@@ -81,9 +80,9 @@ U-SQL 資料庫專案的建置輸出，是一個名稱加上 `.usqldbpack` 尾�
 
 #### <a name="deploy-through-a-u-sql-database-deployment-package"></a>透過 U-SQL 資料庫部署套件部署
 
-1.  開啟 [伺服器總管]。 然後展開要部署資料庫的目的地 **Azure Data Lake Analytics 帳戶**。
-2.  以滑鼠右鍵按一下 **U-SQL 資料庫**，然後選擇 [部署資料庫]。
-3.  將 [資料庫來源] 設定為 U-SQL 資料庫部署套件 (.usqldbpack file) 路徑。
+1.  開啟**伺服器總管**。 然後展開要部署資料庫的目的地 **Azure Data Lake Analytics 帳戶**。
+2.  以滑鼠右鍵按一下 **U-SQL 資料庫**，然後選擇 [部署資料庫]****。
+3.  將 [資料庫來源]**** 設定為 U-SQL 資料庫部署套件 (.usqldbpack file) 路徑。
 4.  輸入**資料庫名稱**，以建立資料庫。 如果目標 Azure Data Lake Analytics 帳戶已有相同名稱的資料庫，在資料庫專案中定義的所有物件均會建立，但不會重新建立資料庫。
 
     ![Data Lake Tools for Visual Studio--部署 U-SQL 資料庫套件](./media/data-lake-analytics-data-lake-tools-develop-usql-database/data-lake-tools-deploy-usql-database-package.png)
@@ -100,12 +99,12 @@ U-SQL 資料庫專案的建置輸出，是一個名稱加上 `.usqldbpack` 尾�
 
 U-SQL 專案可以參考 U-SQL 資料庫專案。 參考會影響兩種工作負載：
 
-- *專案組建*:設定受參考的資料庫環境，然後再建立 U-SQL 指令碼。 
-- *針對 （本機專案） 執行的本機帳戶*:受參考的資料庫環境會部署至 （本機專案） U-SQL 指令碼執行之前的帳戶。 [在這裡可深入了解本機執行及 (Local-machine) 和 (Local-project) 帳戶之間的差異](data-lake-analytics-data-lake-tools-local-run.md)。
+- 專案建置**：在編譯 U-SQL 指令碼之前設定參考資料庫環境。 
+- 以 (Local-project) 帳戶進行本機執行**：參考資料庫環境會在 U-SQL 指令碼執行之前部署到 (Local-project) 帳戶。 [在這裡可深入了解本機執行及 (Local-machine) 和 (Local-project) 帳戶之間的差異](data-lake-analytics-data-lake-tools-local-run.md)。
 
 ### <a name="how-to-add-a-u-sql-database-reference"></a>如何新增 U-SQL 資料庫參考
 
-1. 在 [方案總管] 中以滑鼠右鍵按一下 U-SQL 專案，然後選擇 [新增 U-SQL 資料庫參考...]。
+1. 在 [方案總管]**** 中以滑鼠右鍵按一下 U-SQL 專案，然後選擇 [新增 U-SQL 資料庫參考...]****。
 
     ![Data Lake Tools for Visual Studio -- 新增資料庫專案參考](./media/data-lake-analytics-data-lake-tools-develop-usql-database/data-lake-tools-add-database-project-reference.png)
 
@@ -117,5 +116,5 @@ U-SQL 專案可以參考 U-SQL 資料庫專案。 參考會影響兩種工作負
 ## <a name="next-steps"></a>後續步驟
 
 - [如何設定 Azure Data Lake Analytics 的 CI/CD 管線](data-lake-analytics-cicd-overview.md)
-- [如何測試 Azure Data Lake Analytics 程式碼](data-lake-analytics-cicd-test.md)
+- [如何測試您的 Azure Data Lake Analytics 程式碼](data-lake-analytics-cicd-test.md)
 - [在本機電腦上執行 U-SQL 指令碼](data-lake-analytics-data-lake-tools-local-run.md)

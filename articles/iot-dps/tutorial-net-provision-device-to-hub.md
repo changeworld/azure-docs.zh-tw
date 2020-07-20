@@ -1,36 +1,35 @@
 ---
-title: 使用 Azure IoT 中樞裝置佈建服務 (.NET) 佈建裝置 | Microsoft Docs
-description: 使用 Azure IoT 中樞裝置佈建服務 (.NET) 將裝置佈建到單一 IoT 中樞
+title: 教學課程 - 使用 Azure IoT 中樞裝置佈建服務來佈建裝置 (.NET)
+description: 本教學課程說明如何透過 .NET 使用 Azure IoT 中樞裝置佈建服務 (DPS) 將裝置佈建到單一 IoT 中樞。
 author: wesmc7777
 ms.author: wesmc
-ms.date: 09/05/2017
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: 8602f020481249282756a952a46b32bd9e768372
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 9d5b1511ffb48f587d4ee5c5a7d2b0ee9216018f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241311"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "74976769"
 ---
-# <a name="enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>使用 Azure IoT 中樞佈建服務用戶端 (.NET) 將裝置註冊到 IoT 中樞
+# <a name="tutorial-enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>教學課程：使用 Azure IoT 中樞佈建服務用戶端 (.NET) 將裝置註冊到 IoT 中樞
 
-在上一個教學課程中，您已了解如何將裝置設定為連線到裝置佈建服務。 在本教學課程中，您將了解如何使用這項服務，透過**_個別註冊_** 和**_註冊群組_** 將裝置佈建到單一 IoT 中樞。 本教學課程說明如何：
+在上一個教學課程中，您已了解如何將裝置設定為連線到裝置佈建服務。 在本教學課程中，您將了解如何使用這項服務，透過 **_個別註冊_** 和 **_註冊群組_** 將裝置佈建到單一 IoT 中樞。 本教學課程說明如何：
 
 > [!div class="checklist"]
 > * 註冊裝置
 > * 啟動裝置
 > * 確認裝置已註冊
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 在繼續之前，請務必依照[將裝置設定為使用 Azure IoT 中樞裝置佈建服務來進行佈建](./tutorial-set-up-device.md)教學課程所討論的方法，來設定裝置和其*硬體安全模組*。
 
-* Visual Studio 2015 或 Visual Studio 2017
+* Visual Studio
 
 > [!NOTE]
 > 您不需要使用 Visual Studio。 安裝 [.NET](https://www.microsoft.com/net) 即已足夠，且開發人員可以在 Windows 或 Linux 上使用其偏好的編輯器。  
@@ -43,12 +42,12 @@ ms.locfileid: "50241311"
 此步驟涉及將裝置的唯一安全性構件新增至裝置佈建服務。 這些安全性構件如下所示：
 
 - 若為 TPM 架構的裝置：
-    - 簽署金鑰，每個 TPM 晶片或模擬都會有唯一的簽署金鑰。 如需詳細資訊，請參閱[了解 TPM 簽署金鑰](https://technet.microsoft.com/library/cc770443.aspx)。
-    - 註冊識別碼，用來唯一識別命名空間/範圍中的裝置。 註冊識別碼與裝置識別碼不一定相同。 每個裝置都必須有註冊識別碼。 若為 TPM 架構的裝置，註冊識別碼可能會衍生自該 TPM 自身，例如，TPM 簽署金鑰的 SHA-256 雜湊。
+    - 簽署金鑰  ，每個 TPM 晶片或模擬都會有唯一的簽署金鑰。 如需詳細資訊，請參閱[了解 TPM 簽署金鑰](https://technet.microsoft.com/library/cc770443.aspx)。
+    - 註冊識別碼  ，用來唯一識別命名空間/範圍中的裝置。 註冊識別碼與裝置識別碼不一定相同。 每個裝置都必須有註冊識別碼。 若為 TPM 架構的裝置，註冊識別碼可能會衍生自該 TPM 自身，例如，TPM 簽署金鑰的 SHA-256 雜湊。
 
 - 若為 X.509 架構的裝置：
-    - [核發給裝置的 X.509 憑證](https://msdn.microsoft.com/library/windows/desktop/bb540819.aspx)，其格式為 .pem 或 .cer 檔案。 若要進行個別註冊，您必須對 X.509 系統使用「分葉憑證」，若要進行群組註冊，則必須使用「根憑證」或等同的「簽署者憑證」。
-    - 註冊識別碼，用來唯一識別命名空間/範圍中的裝置。 註冊識別碼與裝置識別碼不一定相同。 每個裝置都必須有註冊識別碼。 對於以 X.509 為基礎的裝置，註冊識別碼會衍生自憑證的通用名稱 (CN)。 如需這些需求的詳細資訊，請參閱[裝置概念](https://docs.microsoft.com/azure/iot-dps/concepts-device)。
+    - [核發給裝置的 X.509 憑證](https://msdn.microsoft.com/library/windows/desktop/bb540819.aspx)，其格式為 .pem  或 .cer  檔案。 若要進行個別註冊，您必須對 X.509 系統使用「分葉憑證」  ，若要進行群組註冊，則必須使用「根憑證」  或等同的「簽署者憑證」  。
+    - 註冊識別碼  ，用來唯一識別命名空間/範圍中的裝置。 註冊識別碼與裝置識別碼不一定相同。 每個裝置都必須有註冊識別碼。 對於以 X.509 為基礎的裝置，註冊識別碼會衍生自憑證的通用名稱 (CN)。 如需這些需求的詳細資訊，請參閱[裝置概念](https://docs.microsoft.com/azure/iot-dps/concepts-device)。
 
 有兩種方式可向裝置佈建服務註冊裝置：
 
@@ -58,11 +57,11 @@ ms.locfileid: "50241311"
 
 ### <a name="enroll-the-device-using-individual-enrollments"></a>使用個別註冊為裝置註冊
 
-1. 在 Visual Studio 中，使用 [主控台應用程式] 專案範本建立 Visual C# 主控台應用程式專案。 將專案命名為 **DeviceProvisioning**。
+1. 在 Visual Studio 中，使用 [主控台應用程式]  專案範本建立 Visual C# 主控台應用程式專案。 將專案命名為 **DeviceProvisioning**。
     
-1. 在 [方案總管] 中，以滑鼠右鍵按一下 **DeviceProvisioning** 專案，然後按一下 [管理 NuGet 套件...]。
+1. 在 [方案總管] 中，以滑鼠右鍵按一下 **DeviceProvisioning** 專案，然後按一下 [管理 NuGet 套件...]  。
 
-1. 在 [NuGet 套件管理員] 視窗中選取 [瀏覽]，並搜尋 **microsoft.azure.devices.provisioning.service**。 選取項目並按一下 [安裝] 以安裝 **Microsoft.Azure.Devices.Provisioning.Service** 套件，並接受使用條款。 此程序會下載及安裝 [Azure IoT 裝置佈建服務 SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/) NuGet 套件及其相依項目，並新增對它的參考。
+1. 在 [NuGet 套件管理員]  視窗中選取 [瀏覽]  ，並搜尋 **microsoft.azure.devices.provisioning.service**。 選取項目並按一下 [安裝]  以安裝 **Microsoft.Azure.Devices.Provisioning.Service** 套件，並接受使用條款。 此程序會下載及安裝 [Azure IoT 裝置佈建服務 SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/) NuGet 套件及其相依項目，並新增對它的參考。
 
 1. 在 **Program.cs** 檔案開頭處新增下列 `using` 陳述式：
    
@@ -121,16 +120,16 @@ ms.locfileid: "50241311"
         SetRegistrationDataAsync().GetAwaiter().GetResult();
             
         Console.WriteLine("Done, hit enter to exit.");
-        Console.ReadLine();
     }
     catch (Exception ex)
     {
         Console.WriteLine();
         Console.WriteLine("Error in sample: {0}", ex.Message);
     }
+    Console.ReadLine();
     ```
         
-1. 在 Visual Studio 的 [方案總管] 中，以滑鼠右鍵按一下您的方案，然後按一下 [設定啟始專案...]選取 [單一啟始專案]，然後選取下拉式功能表中的 **DeviceProvisioning** 專案。  
+1. 在 Visual Studio 的 [方案總管] 中，以滑鼠右鍵按一下您的方案，然後按一下 [設定啟始專案...]  選取 [單一啟始專案]  ，然後選取下拉式功能表中的 **DeviceProvisioning** 專案。  
 
 1. 執行 .NET 裝置應用程式 **DeviceProvisiong**。 它應該會設定裝置的佈建： 
 

@@ -1,20 +1,17 @@
 ---
-title: Windows 中虛擬機器磁碟的延展性和效能目標 - Microsoft Azure | Microsoft Docs
+title: Windows 中虛擬機器磁碟的延展性和效能目標
 description: 針對連結至執行 Windows 之虛擬機器的虛擬機器磁碟，深入了解其延展性和效能目標。
-services: virtual-machines-windows,storage
 author: roygara
 ms.author: rogarana
 ms.date: 11/15/2017
-ms.topic: article
+ms.topic: conceptual
 ms.service: virtual-machines-windows
-ms.tgt_pltfrm: windows
 ms.subservice: disks
-ms.openlocfilehash: fed6b75833ea4283ef8f09ed4def3b083c388584
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: dee3da6b6aa38a60ed1109009ba5a292a131ce97
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60386291"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84694581"
 ---
 # <a name="scalability-and-performance-targets-for-vm-disks-on-windows"></a>Windows 中虛擬機器磁碟的延展性和效能目標
 
@@ -33,6 +30,6 @@ ms.locfileid: "60386291"
 
 [!INCLUDE [azure-storage-limits-vm-disks-premium](../../../includes/azure-storage-limits-vm-disks-premium.md)]
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
-[Azure 订阅和服务限制、配额和约束](https://docs.microsoft.com/azure/azure-subscription-service-limits)
+[Azure 訂用帳戶和服務限制、配額與限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)

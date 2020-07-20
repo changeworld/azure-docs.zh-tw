@@ -1,32 +1,31 @@
 ---
-title: NVIDIA GPU 驅動程式擴充功能 - Azure Windows VM |Microsoft Docs
+title: NVIDIA GPU 驅動程式擴充功能-Azure Windows Vm
 description: 在執行 Windows 的 N 系列計算 VM 上用來安裝 NVIDIA GPU 驅動程式的 Microsoft Azure 擴充功能。
 services: virtual-machines-windows
 documentationcenter: ''
 author: vermagit
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 01/09/2019
-ms.author: roiyz
-ms.openlocfilehash: 5adc86b161770f2502b6ef9cf5ec2189ec3d4f99
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.author: akjosh
+ms.openlocfilehash: a30a6b3daaf1f334c7e61f93aaab6fc717e18063
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60388670"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84676534"
 ---
 # <a name="nvidia-gpu-driver-extension-for-windows"></a>適用於 Windows 的 NVIDIA GPU 驅動程式擴充功能
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 此擴充功能可在 Windows N 系列虛擬機器上安裝 NVIDIA GPU 驅動程式。 視虛擬機器系列而定，擴充功能會安裝 CUDA 或 GRID 驅動程式。 若您使用此擴充功能安裝 NVIDIA 驅動程式，即表示您接受並同意 [NVIDIA End-User License Agreement](https://go.microsoft.com/fwlink/?linkid=874330) (NVIDIA 使用者授權合約) 的條款。 在安裝過程中，VM 可能會重新開機以便完成驅動程式設定。
 
+如需手動安裝驅動程式的指示和目前支援的版本，請參閱[這裡](https://docs.microsoft.com/azure/virtual-machines/windows/n-series-driver-setup)。
 在 [Linux N 系列 VM](hpccompute-gpu-linux.md) 上也有擴充功能可用來安裝 NVIDIA GPU 驅動程式。
 
 ## <a name="prerequisites"></a>必要條件
@@ -35,11 +34,11 @@ ms.locfileid: "60388670"
 
 此擴充功能支援下列作業系統：
 
-| 配送映像 | Version |
+| 散發 | 版本 |
 |---|---|
-| Windows 10 (最高 1803 版)| 核心 |
+| Windows 10 | 核心 |
 | Windows Server 2016 | 核心 |
-| Windows Server 2012R2 | 核心 |
+| Windows Server 2012 R2 | 核心 |
 
 ### <a name="internet-connectivity"></a>網際網路連線
 
@@ -61,7 +60,7 @@ ms.locfileid: "60388670"
   "properties": {
     "publisher": "Microsoft.HpcCompute",
     "type": "NvidiaGpuDriverWindows",
-    "typeHandlerVersion": "1.2",
+    "typeHandlerVersion": "1.3",
     "autoUpgradeMinorVersion": true,
     "settings": {
     }
@@ -69,14 +68,14 @@ ms.locfileid: "60388670"
 }
 ```
 
-### <a name="properties"></a>properties
+### <a name="properties"></a>屬性
 
-| Name | 值 / 範例 | 資料類型 |
+| 名稱 | 值 / 範例 | 資料類型 |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.HpcCompute | string |
-| type | NvidiaGpuDriverWindows | string |
-| typeHandlerVersion | 1.2 | int |
+| publisher | Microsoft.HpcCompute | 字串 |
+| type | NvidiaGpuDriverWindows | 字串 |
+| typeHandlerVersion | 1.3 | int |
 
 
 ## <a name="deployment"></a>部署
@@ -101,7 +100,7 @@ ms.locfileid: "60388670"
   "properties": {
     "publisher": "Microsoft.HpcCompute",
     "type": "NvidiaGpuDriverWindows",
-    "typeHandlerVersion": "1.2",
+    "typeHandlerVersion": "1.3",
     "autoUpgradeMinorVersion": true,
     "settings": {
     }
@@ -119,7 +118,7 @@ Set-AzVMExtension
     -Publisher "Microsoft.HpcCompute" `
     -ExtensionName "NvidiaGpuDriverWindows" `
     -ExtensionType "NvidiaGpuDriverWindows" `
-    -TypeHandlerVersion 1.2 `
+    -TypeHandlerVersion 1.3 `
     -SettingString '{ `
     }'
 ```
@@ -127,13 +126,13 @@ Set-AzVMExtension
 ### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli
-az vm extension set `
-  --resource-group myResourceGroup `
-  --vm-name myVM `
-  --name NvidiaGpuDriverWindows `
-  --publisher Microsoft.HpcCompute `
-  --version 1.2 `
-  --settings '{ `
+az vm extension set \
+  --resource-group myResourceGroup \
+  --vm-name myVM \
+  --name NvidiaGpuDriverWindows \
+  --publisher Microsoft.HpcCompute \
+  --version 1.3 \
+  --settings '{ \
   }'
 ```
 
@@ -163,7 +162,7 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.HpcCompute.NvidiaGpuDriverMicrosoft\
 | :---: | --- | --- |
 | 0 | 作業已順利完成 |
 | 1 | 作業成功。 需要重新開機。 |
-| 100 | 不支援或無法完成作業。 | 可能的原因：PowerShell 版本不受支援、VM 大小不是 N 系列 VM、資料下載失敗。 請檢查記錄檔，以判斷錯誤的成因。 |
+| 100 | 不支援或無法完成作業。 | 可能原因：PowerShell 版本不受支援、VM 大小不是 N 系列 VM、資料下載失敗。 請檢查記錄檔，以判斷錯誤的成因。 |
 | 240、840 | 作業逾時。 | 重試作業。 |
 | -1 | 發生例外狀況。 | 請檢查記錄檔，以判斷例外狀況的成因。 |
 | -5x | 作業因重新開機擱置而中斷。 | 重新啟動 VM。 重新開機後將會繼續安裝。 解除安裝應以手動方式叫用。 |

@@ -2,24 +2,16 @@
 title: 如何更新雲端服務 | Microsoft Docs
 description: 了解如何在 Azure 中更新雲端服務。 了解如何繼續進行雲端服務更新來確保可用性。
 services: cloud-services
-documentationcenter: ''
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: c6a8b5e6-5c99-454c-9911-5c7ae8d1af63
+author: tgore03
 ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.author: jeconnoc
-ms.openlocfilehash: ff4dd571911719e4f2ec27952785432960a56d42
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.author: tagore
+ms.openlocfilehash: 731f4e8cc8a93f33d6887f44fc8d09585e92a75a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60653867"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75360339"
 ---
 # <a name="how-to-update-a-cloud-service"></a>如何更新雲端服務
 
@@ -28,7 +20,7 @@ ms.locfileid: "60653867"
 ## <a name="update-an-azure-service"></a>更新 Azure 服務
 Azure 會將您的角色執行個體組織成名為升級網域 (UD) 的邏輯群組。 升級網域 (UD) 是角色執行個體的邏輯集合，會以群組方式進行更新。  Azure 會一次更新一個 UD 的一個雲端服務，讓其他 UD 中的執行個體能夠繼續處理流量。
 
-預設的升級網域數目為 5。 可以通过在服务定义文件 (.csdef) 中包含 upgradeDomainCount 属性，指定不同数量的升级域。 如需有關 upgradeDomainCount 屬性的詳細資訊，請參閱 [WebRole 結構描述](/previous-versions/azure/reference/gg557553(v=azure.100))或 [WorkerRole 結構描述](/previous-versions/azure/reference/gg557552(v=azure.100))。
+預設的升級網域數目為 5。 您可以在服務的定義檔 (.csdef) 中包含 upgradeDomainCount 屬性，以指定不同數目的升級網域。 如需 upgradeDomainCount 屬性的詳細資訊，請參閱[Azure 雲端服務定義架構（檔案）](https://docs.microsoft.com/azure/cloud-services/schema-csdef-file)。
 
 當您在服務中執行一或多個角色的就地更新時，Azure 會根據所屬的升級網域來更新角色執行個體集合。 Azure 會更新指定的升級網域中的所有執行個體 (予以停止、更新、重新上線)，然後移到下一個網域。 Azure 只會停止在目前升級網域中執行的執行個體，以確保更新儘可能對執行中的服務造成最小的影響。 如需詳細資訊，請參閱本文後面的 [如何繼續進行更新](#howanupgradeproceeds) 。
 
@@ -54,18 +46,18 @@ Azure 會將您的角色執行個體組織成名為升級網域 (UD) 的邏輯�
 
 | 允許對主機、服務和角色進行的變更 | 就地更新 | 預備 (VIP 交換) | 刪除並重新部署 |
 | --- | --- | --- | --- |
-| 操作系统版本 |是 |是 |是 |
-| .NET 信任等級 |是 |是 |是 |
-| 虛擬機器大小<sup>1</sup> |是<sup>2</sup> |是 |是 |
-| 本機儲存體設定 |只會增加<sup>2</sup> |是 |是 |
-| 在服務中新增或移除角色 |是 |是 |是 |
-| 特定角色的執行個體數目 |是 |是 |是 |
+| 作業系統版本 |是 |是 |Yes |
+| .NET 信任等級 |是 |是 |Yes |
+| 虛擬機器大小<sup>1</sup> |是<sup>2</sup> |是 |Yes |
+| 本機儲存體設定 |只會增加<sup>2</sup> |是 |Yes |
+| 在服務中新增或移除角色 |是 |是 |Yes |
+| 特定角色的執行個體數目 |是 |是 |Yes |
 | 服務端點的數目或類型 |是<sup>2</sup> |否 |是 |
-| 組態設定的名稱和值 |是 |是 |是 |
-| 組態設定的值 (而不是名稱) |是 |是 |是 |
-| 加入新憑證 |是 |是 |是 |
-| 變更現有的憑證 |是 |是 |是 |
-| 部署新程式碼 |是 |是 |是 |
+| 組態設定的名稱和值 |是 |是 |Yes |
+| 組態設定的值 (而不是名稱) |是 |是 |Yes |
+| 加入新憑證 |是 |是 |Yes |
+| 變更現有的憑證 |是 |是 |Yes |
+| 部署新程式碼 |是 |是 |Yes |
 
 <sup>1</sup> 大小變更已限制為可供雲端服務使用的大小子集。
 
@@ -93,7 +85,7 @@ Azure 會將您的角色執行個體組織成名為升級網域 (UD) 的邏輯�
 
 ![升級服務](media/cloud-services-update-azure-service/IC345879.png "升級服務")
 
-下图演示了在仅升级一个角色时如何进行更新：
+下圖說明如果您只要升級單一角色，如何繼續進行更新：
 
 ![升級角色](media/cloud-services-update-azure-service/IC345880.png "升級角色")  
 
@@ -106,25 +98,25 @@ Azure 會將您的角色執行個體組織成名為升級網域 (UD) 的邏輯�
 
 將服務從單一執行個體升級為多個執行個體時，由於 Azure 升級服務的方式，您的服務將會在執行升級時關閉。 保證服務可用性的服務等級協定僅適用於已部署多個執行個體的服務。 下列清單說明每個 Azure 服務升級案例如何影響每個磁碟機上的資料：
 
-|案例|C 磁碟機|D 磁碟機|E 磁碟機|
+|狀況|C 磁碟機|D 磁碟機|E 磁碟機|
 |--------|-------|-------|-------|
 |VM 重新啟動|保留|保留|保留|
-|入口網站重新啟動|已保留|保留|終結|
-|入口網站重新安裝映像|保留|終結|已破坏|
+|入口網站重新啟動|保留|保留|終結|
+|入口網站重新安裝映像|保留|終結|終結|
 |就地升級|保留|保留|終結|
 |節點移轉|終結|終結|終結|
 
-请注意，在上面的列表中，E: 驱动器表示角色的根驱动器，而不应进行硬编码。 請改用 **%RoleRoot%** 環境變數來代表此磁碟機。
+請注意，在上述清單中，E: 磁碟機代表角色的根磁碟機，不應使用硬式編碼。 請改用 **%RoleRoot%** 環境變數來代表此磁碟機。
 
 若要將升級單一執行個體服務時的停機時間最小化，請將新的多執行個體服務部署至預備伺服器並執行 VIP 交換。
 
 <a name="RollbackofanUpdate"></a>
 
-## <a name="rollback-of-an-update"></a>更新回滚
-Azure 讓您在 Azure 網狀架構控制器接受初始更新要求後，於服務上起始其他作業，以提供在更新期間管理服務的彈性。 只有當部署上的更新 (組態變更) 或升級處於 **進行中** 狀態時，才能執行復原。 只要服務有至少一個執行個體尚未更新為新版本，更新或升級就會被視為進行中。 若要測試是否允許復原，請檢查[取得部署](/previous-versions/azure/reference/ee460804(v=azure.100))和[取得雲端服務屬性](/previous-versions/azure/reference/ee460806(v=azure.100))作業所傳回的 RollbackAllowed 旗標值是否設定為 true。
+## <a name="rollback-of-an-update"></a>復原更新
+Azure 讓您在 Azure 網狀架構控制器接受初始更新要求後，於服務上起始其他作業，以提供在更新期間管理服務的彈性。 只有當更新 (組態變更) 或升級在部署中處於**進行中**狀態時，才可執行回復。 只要服務有至少一個執行個體尚未更新為新版本，更新或升級就會被視為進行中。 若要測試是否允許復原，請檢查[取得部署](/previous-versions/azure/reference/ee460804(v=azure.100))和[取得雲端服務屬性](/previous-versions/azure/reference/ee460806(v=azure.100))作業所傳回的 RollbackAllowed 旗標值是否設定為 true。
 
 > [!NOTE]
-> 只有對 **就地** 更新或升級呼叫 Rollback 才有意義，因為 VIP 交換升級牽涉到以另一個執行個體取代服務的一整個執行中執行個體。
+> 只有針對**就地**更新或升級呼叫 Rollback 才合理，因為 VIP 交換升級牽涉到以另一個執行個體取代您的服務的一整個執行中的執行個體。
 >
 >
 
@@ -141,7 +133,7 @@ Azure 讓您在 Azure 網狀架構控制器接受初始更新要求後，於服�
   1. Locked 元素可讓您偵測何時可對指定的部署叫用變更作業。
   2. RollbackAllowed 項目可讓您偵測何時可對指定的部署呼叫 [復原更新或升級](/previous-versions/azure/reference/hh403977(v=azure.100)) 作業。
 
-  若要執行復原，您不必同時檢查 Locked 和 RollbackAllowed 元素。 就足以確認 RollbackAllowed 已設定為 true。 使用要求標頭設定為叫用這些方法時，才會傳回這些元素 「 x ms 版本：2011-10-01"或更新版本。 如需標頭版本控制的詳細資訊，請參閱 [服務管理版本控制](/previous-versions/azure/gg592580(v=azure.100))。
+  若要執行復原，您不必同時檢查 Locked 和 RollbackAllowed 元素。 就足以確認 RollbackAllowed 已設定為 true。 只有在使用設定為 “x-ms-version: 2011-10-01” 或更新版本的要求標頭叫用這些方法時，才會傳回這些元素。 如需標頭版本控制的詳細資訊，請參閱 [服務管理版本控制](/previous-versions/azure/gg592580(v=azure.100))。
 
 有某些情況下，不支援復原更新或升級，如下所示：
 
@@ -156,17 +148,17 @@ Azure 讓您在 Azure 網狀架構控制器接受初始更新要求後，於服�
 <a name="multiplemutatingoperations"></a>
 
 ## <a name="initiating-multiple-mutating-operations-on-an-ongoing-deployment"></a>在進行中的部署上起始多項變更作業
-在某些情況下，您可能想要在進行中的部署上起始多項同時變更作業。 例如，您可能執行服務更新，而當該更新推展於您的服務時，您想要進行一些變更，例如復原更新、套用不同的更新，或甚至刪除部署。 如果服務升級包含會使已升級的角色執行個體反覆損毀的不良程式碼，則可能必須這麼做。 在此情況下，Azure 網狀架構控制器將無法繼續套用該升級，因為已升級網域中的執行個體數目不足屬於正常狀況。 此狀態稱為「停滯部署」 。 復原更新或在失敗的更新之上套用全新的更新，即可脫離停滯部署狀態。
+在某些情況下，您可能想要在進行中的部署上起始多項同時變更作業。 例如，您可能執行服務更新，而當該更新推展於您的服務時，您想要進行一些變更，例如復原更新、套用不同的更新，或甚至刪除部署。 如果服務升級包含會使已升級的角色執行個體反覆損毀的不良程式碼，則可能必須這麼做。 在此情況下，Azure 網狀架構控制器將無法繼續套用該升級，因為已升級網域中的執行個體數目不足屬於正常狀況。 這個狀態稱為「停滯部署」**。 復原更新或在失敗的更新之上套用全新的更新，即可脫離停滯部署狀態。
 
 一旦 Azure 網狀架構控制器收到更新或升級服務的初始要求，您就可以開始進行後續的變更作業。 也就是說，您不必等候初始作業完成，即可開始進行另一個變更作業。
 
 在第一個更新正在進行時起始第二個更新作業，將類似於執行復原作業。 如果第二個更新處於自動模式，則第一個升級網域將會立即升級，這可能會導致多個升級網域中的執行個體在同一時間離線。
 
-變更作業如下所示：[變更部署組態](/previous-versions/azure/reference/ee460809(v=azure.100))，[部署升級](/previous-versions/azure/reference/ee460793(v=azure.100))，[更新部署狀態](/previous-versions/azure/reference/ee460808(v=azure.100))，[刪除部署](/previous-versions/azure/reference/ee460815(v=azure.100))，以及[復原更新或升級](/previous-versions/azure/reference/hh403977(v=azure.100))。
+變更作業如下：[變更部署組態](/previous-versions/azure/reference/ee460809(v=azure.100))、[升級部署](/previous-versions/azure/reference/ee460793(v=azure.100))、[更新部署狀態](/previous-versions/azure/reference/ee460808(v=azure.100))、[刪除部署](/previous-versions/azure/reference/ee460815(v=azure.100))及[復原更新或升級](/previous-versions/azure/reference/hh403977(v=azure.100))。
 
 [取得部署](/previous-versions/azure/reference/ee460804(v=azure.100))和[取得雲端服務屬性](/previous-versions/azure/reference/ee460806(v=azure.100))這兩項作業會傳回 Locked 旗標，檢查該旗標可以判斷是否可以在指定的部署上叫用變更作業。
 
-若要呼叫這些方法會傳回 Locked 旗標的版本，您必須將要求標頭"x ms 版本：2011-10-01"或更新的版本。 如需標頭版本控制的詳細資訊，請參閱 [服務管理版本控制](/previous-versions/azure/gg592580(v=azure.100))。
+若要呼叫可傳回 Locked 旗標的這些方法的版本，您必須將要求標頭設定為 “x-ms-version: 2011-10-01” 或更新版本。 如需標頭版本控制的詳細資訊，請參閱 [服務管理版本控制](/previous-versions/azure/gg592580(v=azure.100))。
 
 <a name="distributiondfroles"></a>
 
@@ -177,12 +169,12 @@ Azure 會將角色的執行個體平均分散於一組升級網域，而升級�
 
 升級網域會使用以零為基底的索引進行識別：第一個升級網域的識別碼為 0，而第二個升級網域的識別碼為 1，依此類推。
 
-下圖說明當服務定義兩個升級網域時，如何散發包含兩個角色的服務。 该服务运行 8 个 Web 角色实例和 9 个辅助角色实例。
+下圖說明當服務定義兩個升級網域時，如何散發包含兩個角色的服務。 此服務正在執行 Web 角色的 8 個執行個體以及背景工作角色的 9 個執行個體。
 
-![升級網域的分配](media/cloud-services-update-azure-service/IC345533.png "升級網域的分配")
+![升級網域的散發](media/cloud-services-update-azure-service/IC345533.png "升級網域的散發")
 
 > [!NOTE]
-> 请注意 Azure 控制如何在升级域之间分配实例。 您無法指定哪些執行個體會配置給哪一個網域。
+> 請注意，Azure 會控制執行個體配置於升級網域的方式。 您無法指定哪些執行個體會配置給哪一個網域。
 >
 >
 
@@ -190,3 +182,6 @@ Azure 會將角色的執行個體平均分散於一組升級網域，而升級�
 [如何管理雲端服務](cloud-services-how-to-manage-portal.md)  
 [如何監視雲端服務](cloud-services-how-to-monitor.md)  
 [如何設定雲端服務](cloud-services-how-to-configure-portal.md)  
+
+
+

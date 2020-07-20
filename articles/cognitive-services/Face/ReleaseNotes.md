@@ -1,39 +1,43 @@
 ---
-title: 版本資訊 - 臉部 API 服務
+title: 版本資訊-臉部服務
 titleSuffix: Azure Cognitive Services
-description: 臉部 API 服務的版本資訊包括各種版本的發行變更歷程記錄。
+description: 臉部服務的版本資訊包括各種版本的發行變更歷程記錄。
 services: cognitive-services
 author: yluiu
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 04/28/2019
+ms.date: 06/06/2019
 ms.author: yluiu
-ms.openlocfilehash: 63f705061db7c89a80578e741d02ab8f8b1041c2
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 767c9dec373a2bda806d75d602b194edde98c6b5
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64917107"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "76165860"
 ---
-# <a name="face-api-release-notes"></a>臉部 API 版本資訊
+# <a name="face-release-notes"></a>臉部版本資訊
 
-本文適用於臉部 API 服務 1.0 版。
+本文適用于臉部服務版本1.0。
 
-### <a name="release-changes-in-april-2019"></a>在 2019 年 4 月發行的變更
+### <a name="release-changes-in-june-2019"></a>2019年6月的發行變更
 
-* 改善整體精確度`age`和`headPose`屬性。 `headPose`屬性也會更新與`pitch`現在已啟用的值。 藉由指定在使用這些屬性`returnFaceAttributes`的參數[面臨-偵測](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)`returnFaceAttributes`參數。 
+* 新增新的臉部偵測模型，並在小型、側視圖、pixels occluded 和模糊不清的臉部上改善精確度。 在參數中指定新的臉部偵測模型名稱`detection_02` ，以`detectionModel`透過[臉部-](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)偵測、 [FaceList-新增臉部](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395250)、 [LargeFaceList-新增臉部](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a158c10d2de3616c086f2d3)、 [PersonGroup 人員-新增](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b)臉部和[LargePersonGroup Person-新增臉部](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599adf2a3a7b9412a4d53f42)來使用。 [如何指定偵測模型](Face-API-How-to-Topics/specify-detection-model.md)的更多詳細資料。
 
-* 改善的速度[面臨-偵測](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)， [FaceList-新增臉部](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395250)， [LargeFaceList-新增臉部](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a158c10d2de3616c086f2d3)， [PersonGroup 個人新增臉部](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b)和[LargePersonGroup 個人新增臉部](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599adf2a3a7b9412a4d53f42)。
+### <a name="release-changes-in-april-2019"></a>2019年4月的發行變更
 
-### <a name="release-changes-in-march-2019"></a>在 2019 年 3 月發行的變更
+* 改善`age`和`headPose`屬性的整體精確度。 `headPose`屬性也會更新為現在已`pitch`啟用的值。 在[臉部-](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) `returnFaceAttributes`偵測參數的`returnFaceAttributes`參數中指定這些屬性，即可使用它們。 
 
-* 加入新的臉部辨識模型以改善精確度。 使用透過[面臨-偵測](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)， [FaceList-建立](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524b)， [LargeFaceList-建立](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a157b68d2de3616c086f2cc)， [PersonGroup-建立](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244)和[LargePersonGroup-建立](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599acdee6ac60f11b48b5a9d)藉由指定新的臉部辨識模型名稱`recognition_02`在`recognitionModel`參數。 在 更多詳細資料[如何指定辨識模型](Face-API-How-to-Topics/specify-recognition-model.md)。
+* 改良的[臉部](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)偵測速度、 [FaceList-新增臉部](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395250)、 [LargeFaceList-新增臉部](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a158c10d2de3616c086f2d3)、 [PersonGroup person-新增](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b)臉部和[LargePersonGroup 人員-新增臉部](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599adf2a3a7b9412a4d53f42)。
+
+### <a name="release-changes-in-march-2019"></a>2019年3月的發行變更
+
+* 新增具有改良精確度的新臉部辨識模型。 在參數中指定新的臉部辨識模型`recognition_02`名稱`recognitionModel` ，以透過[臉部-](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)偵測、 [FaceList 建立](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524b)、 [LargeFaceList 建立](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a157b68d2de3616c086f2cc)、 [PersonGroup 建立](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244)和[LargePersonGroup 建立](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599acdee6ac60f11b48b5a9d)來使用它。 [如何指定辨識模型](Face-API-How-to-Topics/specify-recognition-model.md)的更多詳細資料。
 
 ### <a name="release-changes-in-january-2019"></a>2019 年 1 月的發行變更
 
-* 已新增快照集功能，以支援訂用帳戶間的資料移轉：[快照集](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/snapshot-get)。 在 更多詳細資料[如何將臉部資料移轉至不同的臉部訂用帳戶](Face-API-How-to-Topics/how-to-migrate-face-data.md)。
+* 已新增快照集功能，以支援跨訂用帳戶的資料移轉：[快照](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/snapshot-get)集。 有關[如何將臉部資料移轉至不同臉部訂](Face-API-How-to-Topics/how-to-migrate-face-data.md)用帳戶的詳細資訊。
 
 ### <a name="release-changes-in-october-2018"></a>2018 年 10 月的發行變更
 
@@ -41,19 +45,19 @@ ms.locfileid: "64917107"
 
 ### <a name="release-changes-in-may-2018"></a>2018 年 5 月的發行變更
 
-* 已大幅改善 `gender` 屬性，並已改善 `age`、`glasses`、`facialHair`、`hair`、`makeup` 屬性。 您可以透過 [Face - Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) (臉部 - 偵測) 的 `returnFaceAttributes` 參數來使用這些屬性。 
+* 已大幅改善 `gender` 屬性，並已改善 `age`、`glasses`、`facialHair`、`hair`、`makeup` 屬性。 您可以透過 [Face - Detect (臉部 - 偵測) 的 ](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) `returnFaceAttributes` 參數來使用這些屬性。 
 
 * 在 [Face - Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) (臉部 - 偵測)、[FaceList - Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395250) (FaceList - 新增臉部)、[LargeFaceList - Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a158c10d2de3616c086f2d3) (LargeFaceList - 新增臉部)、[PersonGroup Person - Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) (PersonGroup Person - 新增臉部) 和 [LargePersonGroup Person - Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599adf2a3a7b9412a4d53f42) (LargePersonGroup Person - 新增臉部) 中，輸入影像檔大小限制從 4 MB 提高到 6 MB。
 
 ### <a name="release-changes-in-march-2018"></a>2018 年 3 月的發行變更
 
-* 新增的百萬規模容器：[LargeFaceList](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a157b68d2de3616c086f2cc) 和 [LargePersonGroup](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599acdee6ac60f11b48b5a9d)。 如需詳細資料，請參閱[如何使用大規模功能](Face-API-How-to-Topics/how-to-use-large-scale.md)。
+* 新增百萬規模容器：[LargeFaceList](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a157b68d2de3616c086f2cc) 和 [LargePersonGroup](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599acdee6ac60f11b48b5a9d)。 如需詳細資料，請參閱[如何使用大規模功能](Face-API-How-to-Topics/how-to-use-large-scale.md)。
 
-* 將 [Face - Identify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) (臉部 - 識別) 的 `maxNumOfCandidatesReturned` 參數從 [1, 5] 提高到 [1, 100]，預設為 10。
+* 將 [Face - Identify (臉部 - 識別) 的 ](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) `maxNumOfCandidatesReturned` 參數從 [1, 5] 提高到 [1, 100]，預設為 10。
 
 ### <a name="release-changes-in-may-2017"></a>2017 年 5 月的發行變更
 
-* 在 [Face - Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) (臉部 - 偵測) 的 `returnFaceAttributes` 參數中新增 `hair`、`makeup`、`accessory`、`occlusion`、`blur`、`exposure` 和 `noise` 屬性。
+* 在 [Face - Detect (臉部 - 偵測) 的 ](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) `returnFaceAttributes` 參數中新增 `hair`、`makeup`、`accessory`、`occlusion`、`blur`、`exposure` 和 `noise` 屬性。
 
 * 在 PersonGroup 和 [Face - Identify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) (臉部 - 識別) 中支援 一萬人。
 
@@ -62,7 +66,7 @@ ms.locfileid: "64917107"
 * 支援同時對不同的 FaceList 和 PersonGroup 中的不同人員新增/刪除臉部。
 
 ### <a name="release-changes-in-march-2017"></a>2017 年 3 月的發行變更
-* 在 [Face - Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) (臉部 - 偵測) 的 `returnFaceAttributes` 參數中新增 `emotion` 屬性。
+* 在 [Face - Detect (臉部 - 偵測) 的 ](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) `returnFaceAttributes` 參數中新增 `emotion` 屬性。
 
 * 修正無法使用從 [Face - Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) (臉部 - 偵測) 傳回的矩形，重新偵測臉部作為 [FaceList - Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395250) (FaceList - 新增臉部) 和 [PersonGroup Person - Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) (PersonGroup Person - 新增臉部) 中的 `targetFace`。
 

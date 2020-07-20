@@ -4,7 +4,7 @@ description: 在 Azure 中建立、重新啟動或調整傳統 VM 大小時，�
 services: azure-service-management
 documentationcenter: ''
 author: genlin
-manager: willchen
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue,azure-resource-manager,azure-service-management
 ms.assetid: bb939e23-77fc-4948-96f7-5037761c30e8
@@ -12,14 +12,15 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 7cd7897e3a0b940bbc636b2fbc3dbbc13b7cf540
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 20e64e5225987a8045e406a0e8fcae098c580c61
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60505527"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77913373"
 ---
 # <a name="troubleshooting-steps-specific-to-allocation-failure-scenarios-in-the-classic-deployment-model"></a>傳統部署模型中配置失敗案例的具體疑難排解步驟
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
 以下是造成釘選配置要求的常見配置案例。 我們將在本文稍後深入探討每一個案例。
 
@@ -61,11 +62,11 @@ GeneralError*
 
 **叢集釘選的原因**
 
-部分解除配置表示您已停止 (已取消配置) 雲端服務中的一或多部 VM，而不是所有 VM。 停止（解除分配）VM 时会释放相关联的资源。 因此，重启已停止（解除分配）的 VM 是一项新的分配请求。 在部分已取消配置的雲端服務中重新啟動 VM，相當於將 VM 加入現有的雲端服務。 必須在裝載現有雲端服務的原始叢集上嘗試提出配置要求。 另外建立一個雲端服務可讓 Azure 平台尋找另一個有可用資源，或支援您所要求之 VM 大小的叢集。
+部分解除配置表示您已停止 (已取消配置) 雲端服務中的一或多部 VM，而不是所有 VM。 停止 (取消配置) VM 時會釋放相關聯的資源。 因此，重新啟動已停止 (已取消配置) 的 VM 是一項新的配置要求。 在部分已取消配置的雲端服務中重新啟動 VM，相當於將 VM 加入現有的雲端服務。 必須在裝載現有雲端服務的原始叢集上嘗試提出配置要求。 另外建立一個雲端服務可讓 Azure 平台尋找另一個有可用資源，或支援您所要求之 VM 大小的叢集。
 
 **因應措施**
 
-如果可接受使用不同的 VIP，请删除已停止（解除分配）的 VM（但保留相关联的磁盘），并通过不同的云服务加回 VM。 使用區域虛擬網路連接您的雲端服務：
+如果可接受使用不同的 VIP，請刪除已停止 (已取消配置) 的 VM (但保留相關聯的磁碟)，並透過不同的雲端服務重新加回 VM。 使用區域虛擬網路連接您的雲端服務：
 
 * 如果現有的雲端服務使用區域虛擬網路，只要將新的雲端服務加入至相同的虛擬網路即可。
 * 如果現有的雲端服務不使用區域虛擬網路，請為新的雲端服務建立新的虛擬網路，然後將 [現有的虛擬網路連接到新的虛擬網路](https://azure.microsoft.com/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/)。 深入了解 [區域虛擬網路](https://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/)。
@@ -88,7 +89,7 @@ GeneralError*
 
 New_General* 或 New_VMSizeNotSupported*
 
-**群集固定的原因**
+**叢集釘選的原因**
 
 雲端服務的預備環境部署和生產環境部署裝載於相同的叢集。 新增第二個部署時，將會在裝載第一個部署的相同叢集中嘗試提出對應的配置要求。
 
@@ -103,7 +104,7 @@ New_General* 或 New_VMSizeNotSupported*
 
 **叢集釘選的原因**
 
-任何指派給同質群組的計算資源都繫結至一個叢集。 該同質群組中新的計算資源要求，將於裝載現有資源的相同叢集中嘗試提出。 无论是通过新的云服务还是现有的云服务创建新资源，都是如此。
+任何指派給同質群組的計算資源都繫結至一個叢集。 該同質群組中新的計算資源要求，將於裝載現有資源的相同叢集中嘗試提出。 無論新的資源是透過新的雲端服務，或是透過現有的雲端服務來建立，都是如此。
 
 **因應措施**
 
@@ -116,7 +117,7 @@ New_General* 或 New_VMSizeNotSupported*
 
 **叢集釘選的原因**
 
-在導入區域虛擬網路之前，您必須先將虛擬網路與同質群組產生關聯。 如此一來，放入同質群組的資源由繫結相同的條件約束中所述來計算 「 配置案例：同質群組 （VM/服務鄰近性） 」 一節。 計算資源會繫結至單一叢集。
+在導入區域虛擬網路之前，您必須先將虛擬網路與同質群組產生關聯。 如此一來，將會依上一節「配置案例：同質群組 (VM/服務鄰近性)」所述的相同條件約束，繫結放入同質群組中的計算資源。 計算資源會繫結至單一叢集。
 
 **因應措施**
 

@@ -11,27 +11,26 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 07/17/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d420c64c5834f7d3cb11d2f5f59e3ed85a54891
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: d6a61a4a26176ee353d1f182579e1f8d80a95aab
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60386919"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85355993"
 ---
 # <a name="azure-ad-connect-how-to-recover-from-localdb-10-gb-limit"></a>Azure AD Connect：如何從 LocalDB 10-GB 的限制復原
 Azure AD Connect 需要 SQL Server 資料庫來儲存身分識別資料。 您可以使用 Azure AD Connect 安裝的預設 SQL Server 2012 Express LocalDB 或使用您自己的完整 SQL。 SQL Server Express 會實行 10 GB 的大小限制。 使用 LocalDB 且達到這個限制時，Azure AD Connect 同步處理服務無法再啟動或正確同步處理。 本文提供復原步驟。
 
-## <a name="symptoms"></a>徵兆
+## <a name="symptoms"></a>徵狀
 有兩個常見的徵兆︰
 
-* Azure AD Connect 同步處理服務**執行**，但無法同步處理並出現 “stopped-database-disk-full” 錯誤。
+* Azure AD Connect 同步處理服務**執行**，但無法同步處理並出現 “stopped-database-disk-full” ** 錯誤。
 
-* Azure AD Connect 同步處理服務**無法啟動**。 當您嘗試啟動服務時，它會失敗並出現 6323 事件及「SQL Server 磁碟空間用完，因此伺服器發生錯誤」的錯誤訊息。
+* Azure AD Connect 同步處理服務**無法啟動**。 當您嘗試啟動服務時，它會失敗並出現 6323 事件及「SQL Server 磁碟空間用完，因此伺服器發生錯誤」的錯誤訊息。**
 
 ## <a name="short-term-recovery-steps"></a>短期復原步驟
 本節提供的步驟可收回 Azure AD Connect 同步處理服務所需的 DB 空間以繼續作業。 步驟包括：
@@ -45,7 +44,7 @@ Azure AD Connect 需要 SQL Server 資料庫來儲存身分識別資料。 您�
 
 1. 以系統管理員身分登入您的 Azure AD Connect 伺服器。
 
-2. 移至 [服務控制管理員]。
+2. 移至 [服務控制管理員]****。
 
 3. 檢查 **Microsoft Azure AD Sync** 的狀態。
 
@@ -83,11 +82,11 @@ Azure AD Connect 需要 SQL Server 資料庫來儲存身分識別資料。 您�
 
 1. 前往 [開始] → [同步處理服務] 來啟動**同步處理服務管理員**。
 
-2. 移至 [作業] 索引標籤。
+2. 移至 [作業]**** 索引標籤。
 
-3. 選取 [動作] 下方的 [清除執行]...
+3. 選取 [動作]**** 下方的 [清除執行]****...
 
-4. 可以选择“清除所有运行”或“清除 \<date> 之前的运行…”选项。 建議您一開始先清除執行超過兩天的歷程記錄資料。 如果您遇到 DB 大小的問題，則選擇 [清除所有執行] 選項。
+4. 您可以選擇 [清除所有執行]**** 或 [清除之前的執行...]**\<date>** 選項。 建議您一開始先清除執行超過兩天的歷程記錄資料。 如果您遇到 DB 大小的問題，則選擇 [清除所有執行]**** 選項。
 
 ### <a name="shorten-retention-period-for-run-history-data"></a>縮短執行歷程記錄資料的保留期間
 此步驟是要降低在多個同步處理循環之後遇到 10 GB 限制問題的可能性。
@@ -101,7 +100,7 @@ Azure AD Connect 需要 SQL Server 資料庫來儲存身分識別資料。 您�
 ## <a name="long-term-solution--migrate-to-full-sql"></a>長期解決方案 – 移轉至完整的 SQL
 一般情況下，問題顯示 10 GB 資料庫大小不足，Azure AD Connect 無法再同步處理您的內部部署 Active Directory 到 Azure AD。 建議您改為使用完整版的 SQL Server。 您無法直接將現有的 Azure AD Connect 部署取代為完整版的 SQL 資料庫 LocalDB。 相反地，您必須部署新的 Azure AD Connect 伺服器與 SQL 的完整版本。 建議您將部署新 Azure AD Connect 伺服器 (含 SQL DB) 做為預備伺服器的變換移轉，其位於現有 Azure AD Connect 伺服器 (含 LocalDB) 旁。 
 * 如需有關如何使用 Azure AD Connect 設定遠端 SQL 的指示，請參閱 [Azure AD Connect 的自訂安裝](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-get-started-custom)文章。
-* 如需有關 Azure AD Connect 升級的變換移轉指示，請參閱下列文章：[Azure AD Connect︰從舊版升級到最新版本](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-upgrade-previous-version#swing-migration)。
+* 如需 Azure AD Connect 升級的變換移轉指示，請參閱 [Azure AD Connect︰從舊版升級至最新版本](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-upgrade-previous-version#swing-migration)文章。
 
 ## <a name="next-steps"></a>後續步驟
 深入了解 [整合內部部署身分識別與 Azure Active Directory](whatis-hybrid-identity.md)。

@@ -1,25 +1,23 @@
 ---
 title: Azure Analysis Services 的診斷記錄 | Microsoft Docs
-description: 深入了解設定 Azure Analysis Services 的診斷記錄。
+description: 說明如何設定記錄來監視 Azure Analysis Services 伺服器。
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 02/14/2019
+ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 2303d385d3d688050a8d82c07e78a68588f41e88
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
-ms.translationtype: MT
+ms.openlocfilehash: 7e1eab20a8e315b977c21de46dd4f6ea2fec9f5d
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57010917"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701485"
 ---
 # <a name="setup-diagnostic-logging"></a>設定診斷記錄
 
-在任何 Analysis Services 解決方案中，監視您伺服器的執行方式皆是一大重點功能。 透過 [Azure 資源診斷記錄](../azure-monitor/platform/diagnostic-logs-overview.md)，您可以監視並傳送記錄至 [Azure 儲存體](https://azure.microsoft.com/services/storage/)，將記錄串流至 [Azure 事件中樞](https://azure.microsoft.com/services/event-hubs/)，並將記錄匯出至 [Azure 監視器記錄](../azure-monitor/azure-monitor-log-hub.md)。
+在任何 Analysis Services 解決方案中，監視您伺服器的執行方式皆是一大重點功能。 Azure Analysis Services 與 Azure 監視器整合。 透過 [Azure 監視器資源記錄](../azure-monitor/platform/platform-logs-overview.md)，您可以監視記錄並傳送至 [Azure 儲存體](https://azure.microsoft.com/services/storage/)、將記錄串流至 [Azure 事件中樞](https://azure.microsoft.com/services/event-hubs/)，以及將記錄匯出至 [Azure 監視器記錄](../azure-monitor/azure-monitor-log-hub.md)。
 
-![針對儲存體、事件中樞或 Azure 監視器記錄的診斷記錄](./media/analysis-services-logging/aas-logging-overview.png)
+![資源記錄至儲存體、事件中樞或 Azure 監視器記錄](./media/analysis-services-logging/aas-logging-overview.png)
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -29,7 +27,7 @@ ms.locfileid: "57010917"
 
 ### <a name="engine"></a>引擎
 
-選取 [引擎] 記錄所有 [xEvents](https://docs.microsoft.com/sql/analysis-services/instances/monitor-analysis-services-with-sql-server-extended-events)。 您無法選取個別事件。 
+選取 [引擎] 記錄所有 [xEvents](https://docs.microsoft.com/analysis-services/instances/monitor-analysis-services-with-sql-server-extended-events)。 您無法選取個別事件。 
 
 |XEvent 類別 |事件名稱  |
 |---------|---------|
@@ -43,7 +41,7 @@ ms.locfileid: "57010917"
 |查詢     |   查詢結束      |
 |命令     |  命令開始       |
 |命令     |  命令結束       |
-|錯誤與警告     |   Error      |
+|錯誤與警告     |   錯誤      |
 |探索     |   探索結束      |
 |通知     |    通知     |
 |工作階段     |  工作階段初始化       |
@@ -67,15 +65,15 @@ ms.locfileid: "57010917"
 
 ### <a name="all-metrics"></a>所有計量
 
-計量類別將「計量」中顯示的相同[伺服器計量](analysis-services-monitor.md#server-metrics)記錄起來。
+「計量」類別會將相同的[伺服器計量](analysis-services-monitor.md#server-metrics)記錄至 AzureMetrics 資料表。 如果您使用查詢[向外延展](analysis-services-scale-out.md)，而且需要區別每個讀取複本的計量，請改用 AzureDiagnostics 資料表，其中 **OperationName** 等於 **LogMetric**。
 
 ## <a name="setup-diagnostics-logging"></a>設定診斷記錄
 
 ### <a name="azure-portal"></a>Azure 入口網站
 
-1. 在 [Azure 入口網站](https://portal.azure.com) > 伺服器中，在左側瀏覽區中按一下 [診斷記錄]，然後按一下 [開啟診斷]。
+1. 在 [Azure 入口網站](https://portal.azure.com) > 伺服器中，在左側瀏覽中按一下 [診斷記錄]，然後按一下 [開啟診斷]。
 
-    ![在 Azure 入口網站中開啟 Azure Cosmos DB 的診斷記錄](./media/analysis-services-logging/aas-logging-turn-on-diagnostics.png)
+    ![在 Azure 入口網站中開啟 Azure Cosmos DB 的資源記錄](./media/analysis-services-logging/aas-logging-turn-on-diagnostics.png)
 
 2. 在 [診斷設定] 中，指定下列選項： 
 
@@ -83,25 +81,25 @@ ms.locfileid: "57010917"
 
     * **封存至儲存體帳戶**。 若要使用此選項，您需要可以連接的現有儲存體帳戶。 請參閱[建立儲存體帳戶](../storage/common/storage-create-storage-account.md)。 請依照指示建立資源管理員、一般用途的帳戶，然後在返回入口網站上的此頁面時，選取您的儲存體帳戶。 新建立的儲存體帳戶可能在數分鐘後才會出現在下拉式功能表中。
     * **串流處理至事件中樞**。 若要使用此選項，您需要可以連接的現有事件中樞命名空間和事件中樞。 若想深入了解，請參閱[使用 Azure 入口網站來建立事件中樞命名空間和事件中樞](../event-hubs/event-hubs-create.md)。 然後返回入口網站的此頁面選取事件中樞命名空間和原則名稱。
-    * **傳送至 Azure 監視器 (Log Analytics 工作區)**。 若要使用此選項，請使用現有的工作區，或是在入口網站中[建立新的工作區](../azure-monitor/learn/quick-create-workspace.md)資源。 如需有關如何檢視記錄的詳細資訊，請參閱本文中的[檢視 Log Analytics 工作區中的記錄](#view-logs-in-log-analytics-workspace)。
+    * **傳送至 Azure 監視器 (Log Analytics 工作區)** 。 若要使用此選項，請使用現有的工作區，或是在入口網站中[建立新的工作區](../azure-monitor/learn/quick-create-workspace.md)資源。 如需有關如何檢視記錄的詳細資訊，請參閱本文中的[檢視 Log Analytics 工作區中的記錄](#view-logs-in-log-analytics-workspace)。
 
-    * **引擎**。 選取此選項可記錄 xEvents。 如果您要封存至儲存體帳戶，您可以為診斷記錄選取保留期限。 保留期限過後，就會自動刪除記錄。
-    * **服務**。 選取此選項可記錄服務層級事件。 如果您要封存至儲存體帳戶，可以為診斷記錄選取保留期限。 保留期限過後，就會自動刪除記錄。
-    * **計量**。 選取此選項可儲存[計量](analysis-services-monitor.md#server-metrics)中的詳細資料。 如果您要封存至儲存體帳戶，可以為診斷記錄選取保留期限。 保留期限過後，就會自動刪除記錄。
+    * **引擎**。 選取此選項可記錄 xEvents。 如果您要封存至儲存體帳戶，您可以為資源記錄選取保留期間。 保留期限過後，就會自動刪除記錄。
+    * **服務**。 選取此選項可記錄服務層級事件。 如果您要封存至儲存體帳戶，您可以為資源記錄選取保留期間。 保留期限過後，就會自動刪除記錄。
+    * **計量**。 選取此選項可儲存[計量](analysis-services-monitor.md#server-metrics)中的詳細資料。 如果您要封存至儲存體帳戶，您可以為資源記錄選取保留期間。 保留期限過後，就會自動刪除記錄。
 
 3. 按一下 [檔案] 。
 
     如果您收到錯誤，指出「無法更新 \<工作區名稱> 的診斷。 訂用帳戶 \<訂用帳戶識別碼> 未註冊為使用 microsoft.insights」， 請遵循[針對 Azure 診斷進行疑難排解](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage)的指示註冊帳戶，然後重試此程序。
 
-    未來如果您想變更診斷記錄的儲存方式，可以返回此頁面修改設定。
+    未來無論何時，如果想要變更資源記錄的儲存方式，您可以返回此頁面來修改設定。
 
 ### <a name="powershell"></a>PowerShell
 
 以下基本命令將引導您進行後續作業。 如果您需要逐步說明，了解如何使用 PowerShell 將記錄設定到儲存體帳戶，請參閱本文後段中的教學課程。
 
-若要使用 Powershell 啟用計量和診斷記錄功能，請使用下列 Cmdlet：
+若要使用 PowerShell 啟用計量和資源記錄，請使用下列命令：
 
-- 若要啟用儲存體帳戶中診斷記錄的儲存體，請使用下列命令：
+- 若要將資源記錄儲存在儲存體帳戶中，請使用此命令︰
 
    ```powershell
    Set-AzDiagnosticSetting -ResourceId [your resource id] -StorageAccountId [your storage account id] -Enabled $true
@@ -109,7 +107,7 @@ ms.locfileid: "57010917"
 
    儲存體帳戶識別碼是您要傳送記錄之目標儲存體帳戶的資源識別碼。
 
-- 若要將診斷記錄串流至事件中樞，請使用下列命令：
+- 若要將資源記錄串流至事件中樞，請使用此命令︰
 
    ```powershell
    Set-AzDiagnosticSetting -ResourceId [your resource id] -ServiceBusRuleId [your service bus rule id] -Enabled $true
@@ -121,7 +119,7 @@ ms.locfileid: "57010917"
    {service bus resource ID}/authorizationrules/{key name}
    ``` 
 
-- 若要將診斷記錄傳送到 Log Analytics 工作區，請使用下列命令：
+- 若要將資源記錄傳送至 Log Analytics 工作區，請使用此命令：
 
    ```powershell
    Set-AzDiagnosticSetting -ResourceId [your resource id] -WorkspaceId [resource id of the log analytics workspace] -Enabled $true
@@ -141,7 +139,7 @@ ms.locfileid: "57010917"
 
 ### <a name="resource-manager-template"></a>Resource Manager 範本
 
-了解如何[使用 Resource Manager 範本在建立資源時啟用診斷設定](../azure-monitor/platform/diagnostic-logs-stream-template.md)。 
+了解如何[使用 Resource Manager 範本在建立資源時啟用診斷設定](../azure-monitor/platform/diagnostic-settings-template.md)。 
 
 ## <a name="manage-your-logs"></a>管理您的記錄
 
@@ -161,36 +159,62 @@ ms.locfileid: "57010917"
 
 在查詢產生器中，展開 [LogManagement] > [AzureDiagnostics]。 AzureDiagnostics 包括「引擎」和「服務」事件。 留意到查詢是即時建立的。 EventClass\_s 的欄位包含 xEvent 名稱，如果您曾經使用 xEvents 進行內部部署記錄，這些名稱就可能看起來似曾相似。 按一下 [EventClass\_s] 或其中一個事件名稱，Log Analytics 工作區將會繼續建構查詢。 請務必儲存您的查詢，以供日後重複使用。
 
-### <a name="example-query"></a>範例查詢
-此範例會計算並傳回模型資料庫和伺服器之每個查詢結束/重新整理結束活動的 CPU：
+### <a name="example-queries"></a>查詢範例
+
+#### <a name="example-1"></a>範例 1
+
+下列查詢針對模型資料庫和伺服器的每個查詢結束/重新整理結束事件，傳回事件的持續時間。 如果已向外延展，因為 ServerName_s 中包含複本編號，將會依複本來細分結果。 依 RootActivityId_g 將取自於 Azure 診斷 REST API 的資料列計數分組，並協助維持在 [Log Analytics 速率限制](https://dev.loganalytics.io/documentation/Using-the-API/Limits)所述的限制內。
 
 ```Kusto
-let window =  AzureDiagnostics
-   | where ResourceProvider == "MICROSOFT.ANALYSISSERVICES" and ServerName_s =~"MyServerName" and DatabaseName_s == "Adventure Works Localhost" ;
+let window = AzureDiagnostics
+   | where ResourceProvider == "MICROSOFT.ANALYSISSERVICES" and Resource =~ "MyServerName" and DatabaseName_s =~ "MyDatabaseName" ;
 window
 | where OperationName has "QueryEnd" or (OperationName has "CommandEnd" and EventSubclass_s == 38)
 | where extract(@"([^,]*)", 1,Duration_s, typeof(long)) > 0
 | extend DurationMs=extract(@"([^,]*)", 1,Duration_s, typeof(long))
-| extend Engine_CPUTime=extract(@"([^,]*)", 1,CPUTime_s, typeof(long))
-| project  StartTime_t,EndTime_t,ServerName_s,OperationName,RootActivityId_g ,TextData_s,DatabaseName_s,ApplicationName_s,Duration_s,EffectiveUsername_s,User_s,EventSubclass_s,DurationMs,Engine_CPUTime
-| join kind=leftouter (
-window
-    | where OperationName == "ProgressReportEnd" or (OperationName == "VertiPaqSEQueryEnd" and EventSubclass_s  != 10) or OperationName == "DiscoverEnd" or (OperationName has "CommandEnd" and EventSubclass_s != 38)
-    | summarize sum_Engine_CPUTime = sum(extract(@"([^,]*)", 1,CPUTime_s, typeof(long))) by RootActivityId_g
-    ) on RootActivityId_g
-| extend totalCPU = sum_Engine_CPUTime + Engine_CPUTime
-
+| project  StartTime_t,EndTime_t,ServerName_s,OperationName,RootActivityId_g,TextData_s,DatabaseName_s,ApplicationName_s,Duration_s,EffectiveUsername_s,User_s,EventSubclass_s,DurationMs
+| order by StartTime_t asc
 ```
 
+#### <a name="example-2"></a>範例 2
+
+下列查詢會傳回伺服器的記憶體和 QPU 耗用量。 如果已向外延展，因為 ServerName_s 中包含複本編號，將會依複本來細分結果。
+
+```Kusto
+let window = AzureDiagnostics
+   | where ResourceProvider == "MICROSOFT.ANALYSISSERVICES" and Resource =~ "MyServerName";
+window
+| where OperationName == "LogMetric" 
+| where name_s == "memory_metric" or name_s == "qpu_metric"
+| project ServerName_s, TimeGenerated, name_s, value_s
+| summarize avg(todecimal(value_s)) by ServerName_s, name_s, bin(TimeGenerated, 1m)
+| order by TimeGenerated asc 
+```
+
+#### <a name="example-3"></a>範例 3
+
+下列查詢會傳回伺服器的 Rows read/sec Analysis Services 引擎效能計數器。
+
+```Kusto
+let window =  AzureDiagnostics
+   | where ResourceProvider == "MICROSOFT.ANALYSISSERVICES" and Resource =~ "MyServerName";
+window
+| where OperationName == "LogMetric" 
+| where parse_json(tostring(parse_json(perfobject_s).counters))[0].name == "Rows read/sec" 
+| extend Value = tostring(parse_json(tostring(parse_json(perfobject_s).counters))[0].value) 
+| project ServerName_s, TimeGenerated, Value
+| summarize avg(todecimal(Value)) by ServerName_s, bin(TimeGenerated, 1m)
+| order by TimeGenerated asc 
+```
 
 有數百個查詢可供使用。 若要深入了解查詢，請參閱[開始使用 Azure 監視器記錄查詢](../azure-monitor/log-query/get-started-queries.md)。
 
 
 ## <a name="turn-on-logging-by-using-powershell"></a>使用 PowerShell 開啟記錄
 
-在本快速教學課程中，您可以在與 Analysis Service 伺服器相同的訂用帳戶和資源群組中，建立儲存體帳戶。 然後，您會使用組 AzDiagnosticSetting 開啟診斷記錄，將輸出傳送到新的儲存體帳戶。
+在本快速教學課程中，您可以在與 Analysis Service 伺服器相同的訂用帳戶和資源群組中，建立儲存體帳戶。 接著，您使用 Set-AzDiagnosticSetting 開啟診斷記錄，將輸出傳送至新的儲存體帳戶。
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>Prerequisites
 若要完成本教學課程，您必須具備下列資源：
 
 * 現有的 Azure Analysis Services 伺服器。 如需建立伺服器資源的指示，請參閱 [在 Azure 入口網站中建立伺服器](analysis-services-create-server.md)，或[使用 PowerShell 建立 Azure Analysis Services 伺服器](analysis-services-create-powershell.md)。
@@ -244,7 +268,7 @@ $account = Get-AzResource -ResourceGroupName awsales_resgroup `
 
 ### <a name="enable-logging"></a>啟用記錄
 
-若要啟用記錄，請使用組 AzDiagnosticSetting cmdlet 搭配變數的新的儲存體帳戶、 伺服器帳戶，和類別目錄。 執行下列命令，將 **-Enabled** 旗標設為 **$true**：
+若要啟用記錄，請使用 Set-AzDiagnosticSetting Cmdlet，並搭配新儲存體帳戶、伺服器帳戶和類別的變數一起使用。 執行下列命令，將 **-Enabled** 旗標設為 **$true**：
 
 ```powershell
 Set-AzDiagnosticSetting  -ResourceId $account.ResourceId -StorageAccountId $sa.Id -Enabled $true -Categories Engine
@@ -301,6 +325,6 @@ Set-AzDiagnosticSetting -ResourceId $account.ResourceId`
 
 ## <a name="next-steps"></a>後續步驟
 
-深入了解 [Azure 資源診斷記錄](../azure-monitor/platform/diagnostic-logs-overview.md)。
+深入了解 [Azure 監視器資源記錄](../azure-monitor/platform/platform-logs-overview.md)。
 
-請參閱[組 AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting) PowerShell 說明 中。
+請參閱 PowerShell 說明中的 [Set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting)。

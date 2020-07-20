@@ -1,19 +1,14 @@
 ---
-title: 快速入門 - 在 Azure Container Registry 中建置和執行容器映像
-description: 使用 Azure Container Registry 快速執行工作，在雲端中建置和部署隨選的容器映像。
-services: container-registry
-author: dlepow
-ms.service: container-registry
+title: 快速入門 - 建置和執行容器映像
+description: 使用 Azure Container Registry 快速執行工作，在雲端中建置和部署隨選的 Docker 容器映像。
 ms.topic: quickstart
-ms.date: 04/02/2019
-ms.author: danlep
-ms.custom: ''
-ms.openlocfilehash: be120ea8ae588da486c9a5acd4eb7bfdb4e45dee
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 01/31/2020
+ms.openlocfilehash: 610d82a0761f06338d04f0794d4141165d67d36c
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64701558"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84753696"
 ---
 # <a name="quickstart-build-and-run-a-container-image-using-azure-container-registry-tasks"></a>快速入門：使用 Azure Container Registry 工作建置和執行容器映像
 
@@ -21,7 +16,7 @@ ms.locfileid: "64701558"
 
 完成此快速入門後，請進一步探索 ACR 工作的進階功能。 ACR 工適用於多種案例，包括根據程式碼認可或基底映像更新將映像建置自動化，或是以平行方式測試多個容器。 
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立 [[免費帳戶]][azure-account]。
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶][azure-account]。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -42,23 +37,26 @@ az group create --name myResourceGroup --location eastus
 使用 [az acr create][az-acr-create] 命令建立容器登錄。 登錄名稱在 Azure 內必須是唯一的，且包含 5-50 個英數字元。 下列範例將使用 *myContainerRegistry008*。 請將此更新為唯一的值。
 
 ```azurecli-interactive
-az acr create --resource-group myResourceGroup --name myContainerRegistry008 --sku Basic
+az acr create --resource-group myResourceGroup \
+  --name myContainerRegistry008 --sku Basic
 ```
 
-此範例會建立「基本」登錄，這是正在學習 Azure Container Registry 的開發人員所適用的成本最佳化選項。 如需可用服務層級的詳細資訊，請參閱[容器登錄 SKU][container-registry-skus]。
+此範例會建立「基本」登錄，這是正在學習 Azure Container Registry 的開發人員所適用的成本最佳化選項。 如需可用服務層級的詳細資訊，請參閱[容器登錄服務層][container-registry-skus]。
 
-## <a name="build-an-image-from-a-dockerfile"></a>從 Dockerfile 建置映像
+## <a name="build-and-push-image-from-a-dockerfile"></a>從 Dockerfile 建置和推送映像
 
-現在，請使用 Azure Container Registry 建置映像。 首先請建立工作目錄，然後使用下列內容建立名為 *Dockerfile* 的 Dockerfile。 這是建置 Linux 容器映像的簡單範例，但您可以自行建立標準 Dockerfile，並建置適用於其他平台的映像。
+現在，請使用 Azure Container Registry 建置和推送映像。 首先建立工作目錄，然後使用以下單一行建立名為 *Dockerfile* 的 Dockerfile：`FROM hello-world`。 這是從 Docker Hub 中的 `hello-world` 映像建置 Linux 容器映像的簡單範例。 您可以建立自己的標準 Dockerfile，並建置適用於其他平台的映像。 如果您在 Bash Shell 作業，請使用下列命令建立 Dockerfile：
 
 ```bash
 echo FROM hello-world > Dockerfile
 ```
 
-執行 [az acr build][az-acr-build] 命令以建置映像。 成功建置後，映像會推送至您的登錄。 下列範例會推送 `sample/hello-world:v1` 映像。 命令結尾處的 `.` 會設定 Dockerfile 的位置，在此案例中為目前的目錄。
+執行 [az acr build][az-acr-build] 命令來建置映射，並在成功建置映像後，將其推送至您的登錄。 下列範例會建置和推送 `sample/hello-world:v1` 映像。 命令結尾處的 `.` 會設定 Dockerfile 的位置，在此案例中為目前的目錄。
 
 ```azurecli-interactive
-az acr build --image sample/hello-world:v1 --registry myContainerRegistry008 --file Dockerfile . 
+az acr build --image sample/hello-world:v1 \
+  --registry myContainerRegistry008 \
+  --file Dockerfile . 
 ```
 
 成功的建置會產生如下的輸出並推送：
@@ -115,22 +113,16 @@ Run ID: ca8 was successful after 10s
 
 ## <a name="run-the-image"></a>執行映像
 
-現在，請快速執行您已建置並推送至登錄的映像。 在容器開發工作流程中，這可能是您部署映像之前的驗證步驟。
+現在，請快速執行您已建置並推送至登錄的映像。 在此，您會使用 [az acr run][az-acr-run] 執行容器命令。 在容器開發工作流程中，這可以作為您部署映像之前的驗證步驟，或者，您可以將命令納入[多步驟 YAML 檔案][container-registry-tasks-multi-step]中。 
 
-在本機工作目錄中使用下列內容建立 *quickrun.yaml* 檔案，以進行單一步驟。 請將 *\<acrLoginServer\>* 取代為您登錄的登入伺服器名稱。 登入伺服器名稱的格式為 *\<registry-name\>.azurecr.io* (全部小寫)，例如 *mycontainerregistry008.azurecr.io*。 此範例假設您已在上一節中建置並推送 `sample/hello-world:v1` 映像：
-
-```yml
-steps:
-  - cmd: <acrLoginServer>/sample/hello-world:v1
-```
-
-在此範例中的 `cmd` 步驟會執行其預設組態中的容器，但 `cmd` 支援其他 `docker run` 參數甚或其他 `docker` 命令。
-
-使用下列命令執行容器：
+下列範例會使用 `$Registry` 來指定命令執行所在的登錄：
 
 ```azurecli-interactive
-az acr run --registry myContainerRegistry008 --file quickrun.yaml .
+az acr run --registry myContainerRegistry008 \
+  --cmd '$Registry/sample/hello-world:v1' /dev/null
 ```
+
+在此範例中的 `cmd` 參數會執行其預設組態中的容器，但 `cmd` 支援其他 `docker run` 參數甚或其他 `docker` 命令。
 
 輸出大致如下：
 
@@ -187,10 +179,10 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>後續步驟
 
-在此快速入門中，您已使用 ACR 工作的功能，以原生方式在 Azure 中快速建置、推送及執行 Docker 容器映像。 請繼續進行 Azure Container Registry 教學課程，以了解如何使用 ACR 工作將映像建置和更新自動化。
+在此快速入門中，您已使用 ACR 工作的功能，以原生方式在 Azure 中快速建置、推送及執行 Docker 容器映像，而未安裝本機 Docker。 請繼續進行 Azure Container Registry 工作教學課程，以了解如何使用 ACR 工作將映像建置和更新自動化。
 
 > [!div class="nextstepaction"]
-> [Azure Container Registry 教學課程][container-registry-tutorial-quick-task]
+> [Azure Container Registry 工作教學課程][container-registry-tutorial-quick-task]
 
 <!-- LINKS - external -->
 [docker-linux]: https://docs.docker.com/engine/installation/#supported-platforms
@@ -206,10 +198,12 @@ az group delete --name myResourceGroup
 <!-- LINKS - internal -->
 [az-acr-create]: /cli/azure/acr#az-acr-create
 [az-acr-build]: /cli/azure/acr#az-acr-build
+[az-acr-run]: /cli/azure/acr#az-acr-run
 [az-group-create]: /cli/azure/group#az-group-create
 [az-group-delete]: /cli/azure/group#az-group-delete
 [azure-cli]: /cli/azure/install-azure-cli
 [container-registry-tasks-overview]: container-registry-tasks-overview.md
+[container-registry-tasks-multi-step]: container-registry-tasks-multi-step.md
 [container-registry-tutorial-quick-task]: container-registry-tutorial-quick-task.md
 [container-registry-skus]: container-registry-skus.md
 [azure-cli-install]: /cli/azure/install-azure-cli

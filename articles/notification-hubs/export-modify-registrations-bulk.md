@@ -1,43 +1,45 @@
 ---
-title: 匯出和匯入大量的 Azure 通知中樞註冊 |Microsoft Docs
-description: 了解如何使用通知中心批量操作支持针对通知中心执行大量操作或导出所有注册。
+title: 匯出和匯入大量 Azure 通知中樞註冊 |Microsoft Docs
+description: 瞭解如何使用通知中樞大量支援在通知中樞上執行大量作業，或匯出所有註冊。
 services: notification-hubs
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
 ms.date: 03/18/2019
-ms.author: jowargo
-ms.openlocfilehash: d7e38e8eca58c06fc6896887522b320a797fc42e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 03/18/2019
+ms.openlocfilehash: 8eb03a42f38c0cc7fe82eda6a81d1c8c1213ec74
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64575310"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "71212394"
 ---
-# <a name="export-and-import-azure-notification-hubs-registrations-in-bulk"></a>批量导出和导入 Azure 通知中心注册
-在某些情况下，我们需要在通知中心创建或修改大量的注册。 其中的某些情况是先进行标记更新，再进行批量计算，或者迁移现有的推送实施方案以使用通知中心。
+# <a name="export-and-import-azure-notification-hubs-registrations-in-bulk"></a>匯出和匯入大量 Azure 通知中樞註冊
+在某些情況下，您必須在通知中心裡建立或修改大量的註冊。 例如，批次計算之後的標記更新，或是移轉現有推播實作以使用通知中心的作業，都屬於此情況。
 
-本文介绍如何针对通知中心执行大量操作，或者批量导出所有注册。
+本文說明如何在通知中樞上執行大量作業，或以大量方式匯出所有註冊。
 
-## <a name="high-level-flow"></a>概要工作流
-批处理支持旨在支持涉及到数百万个注册的长时间运行的作业。 为了实现这种规模，批处理支持使用 Azure 存储来存储作业详细信息和输出。 执行批量更新操作时，用户需要在 Blob 容器中创建一个文件，其内容是注册更新操作的列表。 启动该作业时，用户需提供输入 Blob 的 URL，以及输出目录（也在 Blob 容器中）的 URL。 启动该作业后，用户可以通过查询启动作业时提供的 URL 位置来检查状态。 特定的作业只能执行特定类型的操作（创建、更新或删除）。 导出操作以类似的方式执行。
+## <a name="high-level-flow"></a>高階流程
+批次支援的用途，是要支援牽涉到數百萬項註冊的長時間執行工作。 為了達到此規模，batch 支援會使用 Azure 儲存體來儲存作業詳細資料和輸出。 進行大量更新作業時，使用者必須在 Blob 容器中建立一個內容為註冊更新作業清單的檔案。 工作開始時，使用者會先提供輸入 Blob 的 URL，以及輸出目錄的 URL (也是在 Blob 容器中)。 作業啟動之後，使用者可以藉由查詢在作業開始時提供的 URL 位置來檢查狀態。 特定工作只能執行特定種類的作業（建立、更新或刪除）。 匯出作業會以類似的方式執行。
 
-## <a name="import"></a>Import
+## <a name="import"></a>匯入
 
 ### <a name="set-up"></a>設定
-本部分假设存在以下实体：
+本節假設您有下列實體：
 
-- 一个预配的通知中心。
-- 一个 Azure 存储 Blob 容器。
-- 若要參考[Azure 儲存體 NuGet 封裝](https://www.nuget.org/packages/windowsazure.storage/)並[通知中樞 NuGet 套件](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)。
+- 已佈建的通知中心。
+- Azure 儲存體 Blob 容器。
+- [Azure 儲存體 nuget 套件](https://www.nuget.org/packages/windowsazure.storage/)和[通知中樞 nuget 套件](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)的參考。
 
-### <a name="create-input-file-and-store-it-in-a-blob"></a>创建输入文件并将其存储在 Blob 中
-输入文件包含以 XML 格式序列化的注册列表，每行包含一个注册。 以下代码示例演示如何使用 Azure SDK 序列化注册并将其上传到 Blob 容器。
+### <a name="create-input-file-and-store-it-in-a-blob"></a>建立輸入檔案並將其儲存在 Blob 中
+輸入檔案包含以 XML 序列化的註冊清單，每列一個。 下列程式碼範例會使用 Azure SDK，說明如何序列化註冊並將其上傳至 Blob 容器。
 
 ```csharp
 private static void SerializeToBlob(CloudBlobContainer container, RegistrationDescription[] descriptions)
@@ -57,10 +59,10 @@ private static void SerializeToBlob(CloudBlobContainer container, RegistrationDe
 ```
 
 > [!IMPORTANT]
-> 上面的代码在内存中序列化注册，然后将整个流上传到 Blob。 如果上传的文件大小只有几个 MB，请参阅有关如何执行这些步骤的 Azure Blob 指导，例如 [块 Blob](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs)。
+> 前述程式碼會序列化記憶體中的註冊，並將整個資料流上傳至 Blob 中。 如果您上傳的檔案不只是幾 mb，請參閱 Azure blob 指引，以瞭解如何執行這些步驟;例如，[區塊 blob](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs)。
 
-### <a name="create-url-tokens"></a>创建 URL 标记
-上传输入文件后，生成要提供给通知中心的输入文件 URL 和输出目录 URL。 可为输入和输出使用两个不同的 Blob 容器。
+### <a name="create-url-tokens"></a>建立 URL 權杖
+一旦您的輸入檔案上傳，就會產生 Url，以提供給您的通知中樞，以供輸入檔案和輸出目錄。 您可以使用兩個不同的 blob 容器來輸入和輸出。
 
 ```csharp
 static Uri GetOutputDirectoryUrl(CloudBlobContainer container)
@@ -88,7 +90,7 @@ static Uri GetInputFileUrl(CloudBlobContainer container, string filePath)
 ```
 
 ### <a name="submit-the-job"></a>提交工作
-生成两个输入和输出 URL 后，接下来可以启动批处理作业。
+使用兩個輸入和輸出 Url，您現在可以啟動批次作業。
 
 ```csharp
 NotificationHubClient client = NotificationHubClient.CreateClientFromConnectionString(CONNECTION_STRING, HUB_NAME);
@@ -113,23 +115,23 @@ while (i > 0 && job.Status != NotificationHubJobStatus.Completed)
 }
 ```
 
-此示例除了创建输入和输出 URL 以外，还会创建一个 `NotificationHubJob` 对象，该对象包含以下类型之一的 `JobType` 对象：
+除了輸入和輸出 Url，此範例會建立 `NotificationHubJob` 物件，其中包含 `JobType` 物件，它可以是下列其中一種類型：
 
 - `ImportCreateRegistrations`
 - `ImportUpdateRegistrations`
 - `ImportDeleteRegistrations`
 
-完成调用后，通知中心会继续运行该作业，可以通过调用 [GetNotificationHubJobAsync](/dotnet/api/microsoft.azure.notificationhubs.notificationhubclient.getnotificationhubjobasync?view=azure-dotnet) 来检查作业状态。
+完成呼叫之後，通知中樞會繼續作業，而您可以使用[GetNotificationHubJobAsync](/dotnet/api/microsoft.azure.notificationhubs.notificationhubclient.getnotificationhubjobasync?view=azure-dotnet)的呼叫來檢查其狀態。
 
-完成该作业后，可以通过查看输出目录中的以下文件来检查结果：
+工作完成時，您可以檢視輸出目錄中的下列檔案，以檢查結果：
 
 - `/<hub>/<jobid>/Failed.txt`
 - `/<hub>/<jobid>/Output.txt`
 
-这些文件包含成功和失败的批处理操作列表。 文件的格式为 `.cvs`，其中，每行包含原始输入文件的行号，以及操作的输出（通常是创建或更新的注册说明）。
+這些檔案會列出批次作業中的成功和失敗作業。 檔案格式為 `.cvs` ，其中每個資料列都有原始輸入檔的行號，以及作業的輸出（通常是已建立或已更新的註冊描述）。
 
-### <a name="full-sample-code"></a>完整示例代码
-以下示例代码将注册导入到通知中心。
+### <a name="full-sample-code"></a>完整範例程式碼
+下列範例程式碼會將註冊匯入通知中樞。
 
 ```csharp
 using Microsoft.Azure.NotificationHubs;
@@ -260,13 +262,13 @@ namespace ConsoleApplication1
 ```
 
 ## <a name="export"></a>匯出
-导出注册的过程类似于导入，但存在以下差别：
+註冊的匯出與匯入類似，但有以下差異：
 
-- 只需提供输出 URL。
-- 创建 ExportRegistrations 类型的 NotificationHubJob。
+- 您只需要輸出 URL。
+- 您會建立 ExportRegistrations 類型的 NotificationHubJob。
 
-### <a name="sample-code-snippet"></a>示例代码片段
-下面是在 Java 中导出注册的示例代码片段：
+### <a name="sample-code-snippet"></a>範例程式碼片段
+以下是在 JAVA 中匯出註冊的範例程式碼片段：
 
 ```java
 // submit an export job
@@ -286,8 +288,8 @@ while(true){
 ```
 
 ## <a name="next-steps"></a>後續步驟
-若要详细了解注册，请参阅以下文章：
+若要深入瞭解註冊，請參閱下列文章：
 
-- [注册管理](notification-hubs-push-notification-registration-management.md)
-- [注册的标记](notification-hubs-tags-segment-push-message.md)
-- [模板注册](notification-hubs-templates-cross-platform-push-messages.md)
+- [註冊管理](notification-hubs-push-notification-registration-management.md)
+- [要進行註冊的標記](notification-hubs-tags-segment-push-message.md)
+- [範本註冊](notification-hubs-templates-cross-platform-push-messages.md)

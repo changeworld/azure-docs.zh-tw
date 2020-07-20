@@ -1,64 +1,66 @@
 ---
-title: 在 Azure 資訊安全中心處理安全性警示 | Microsoft Docs
-description: 本文件可協助您使用「Azure 資訊安全中心」功能來處理安全性事件。
+title: 管理 Azure 資訊安全中心中的安全性事件 |Microsoft Docs
+description: 本檔可協助您使用 Azure 資訊安全中心來管理安全性事件。
 services: security-center
-documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
-ms.assetid: e8feb669-8f30-49eb-ba38-046edf3f9656
+author: memildin
+manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
-ms.devlang: na
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 11/29/2018
-ms.author: rkarlin
-ms.openlocfilehash: 68bcd2b1916ccdf68eaa31ed251661a6b7e1bca0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 06/15/2020
+ms.author: memildin
+ms.openlocfilehash: 28a6ea4ed40df909b4d74ff52703babb8e8cd949
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60704060"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84791723"
 ---
-# <a name="handling-security-incidents-in-azure-security-center"></a>在 Azure 資訊安全中心處理安全性事件
-對安全性警示進行分級和調查是很耗時的工作，即使是最熟練的安全性分析師也是如此，而且對許多人來說，即使要知道從何著手都相當困難。 透過使用[分析](security-center-detection-capabilities.md)來連結不同[安全性警示](security-center-managing-and-responding-alerts.md)之間的資訊，資訊安全中心可以提供關於攻擊活動和所有相關警示的單一檢視，讓您快速了解攻擊者所採取的動作以及受到影響的資源。
+# <a name="manage-security-incidents-in-azure-security-center"></a>管理 Azure 資訊安全中心中的安全性事件
 
-本文件將討論如何使用資訊安全中心的安全性警示功能，協助您處理安全性事件。
+即使是最熟練的安全性分析師，對安全性警示進行分級和調查也可能相當耗時。 對於許多人而言，很難知道要從何處著手。 
+
+資訊安全中心使用[分析](security-center-detection-capabilities.md)來連接不同[安全性警示](security-center-managing-and-responding-alerts.md)之間的資訊。 資訊安全中心可以使用這些連線來提供攻擊活動的單一觀點和其相關警示，以協助您瞭解攻擊者的動作和受影響的資源。
+
+本頁提供資訊安全中心中事件的總覽。
 
 ## <a name="what-is-a-security-incident"></a>什麼是安全性事件？
-在資訊安全中心內，安全性事件是符合 [攻擊鏈](https://blogs.technet.microsoft.com/office365security/addressing-your-cxos-top-five-cloud-security-concerns/) 模式之資源的所有警示彙總。 事件會出現在 [ [安全性警示](security-center-managing-and-responding-alerts.md) ] 圖格和刀鋒視窗中。 事件會顯示相關警示的清單，以讓您取得所引發的每個警示的詳細資訊。
+
+在資訊安全中心內，安全性事件是符合[攻擊鏈](alerts-reference.md#intentions)模式之資源的所有警示彙總。 事件會出現在 [[安全性警示](security-center-managing-and-responding-alerts.md)] 頁面中。 選取事件以查看相關的警示，並取得詳細資訊。
 
 ## <a name="managing-security-incidents"></a>管理安全性事件
-您可以查看 [安全性警示] 圖格來檢閱目前的安全性事件。 存取 Azure 入口網站，然後依照下列步驟進行，以查看每個安全性事件的詳細資訊︰
 
-1. 您會在 [資訊安全中心] 儀表板看到 [安全性警示]  圖格。
+1. 在 [資訊安全中心總覽] 頁面上，選取 [**安全性警示**] 圖格。 事件和警示會列出。 請注意，安全性事件與安全性警示有不同的圖示。
 
-    ![資訊安全中心的 [安全性警示] 圖格](./media/security-center-incident/security-center-incident-fig1.png)
+    ![查看安全性事件](./media/security-center-managing-and-responding-alerts/security-center-manage-alerts.png)
 
-2. 按一下此圖格來加以展開，如果偵測到安全性事件，它便會出現在安全性警示圖形下方，如下所示：
+1. 若要查看詳細資料，請選取事件。 [**安全性事件**] 頁面會顯示更多詳細資料。 
 
-    ![安全性事件](./media/security-center-incident/security-center-incident-fig2.png)
+    [![回應 Azure 資訊安全中心中的安全性事件](media/security-center-incident/incident-details.png)](media/security-center-incident/incident-details.png#lightbox)
 
-3. 請注意，安全性事件描述具有不同於其他警示的圖示。 按一下圖示即可檢視此事件的詳細資訊。
+    [安全性事件] 頁面的左窗格會顯示有關安全性事件的高階資訊： [標題]、[嚴重性]、[狀態]、[啟用時間]、[描述] 和受影響的資源。 在受影響的資源旁，您可以看到相關的 Azure 標記。 調查警示時，請使用這些標記來推斷資源的組織內容。
 
-    ![安全性事件](./media/security-center-incident/security-center-incident-fig3.png)
+    右窗格包含 [**警示**] 索引標籤，其中包含與此事件相關的安全性警示。 
 
-4. 在 [事件] 刀鋒視窗中，您會看到此安全性事件的詳細資訊，其中包含事件的完整描述、嚴重性 (在本例中是 [高])、目前狀態 (在本例中仍為 [作用中]，這代表使用者尚未對其執行動作 - 在 [安全性警示] 刀鋒視窗中的事件上按一下右鍵即可執行)、受到攻擊的資源 (在本例中是 [VM1])、事件的修復步驟，而最下方的窗格則是此事件所包含的警示。 如果您想要取得每個警示的詳細資訊，只要按一下警示便會開啟另一個刀鋒視窗，如下所示：
+    >[!TIP]
+    > 如需有關特定警示的詳細資訊，請選取它。 
 
-    ![安全性事件](./media/security-center-incident/security-center-incident-fig4.png)
+    [![事件的 [採取動作] 索引標籤](media/security-center-incident/incident-take-action-tab.png)](media/security-center-incident/incident-take-action-tab.png#lightbox)
 
-此刀鋒視窗上的資訊視警示而異。 如需如何管理這些警示的詳細資訊，請閱讀 [管理及回應 Azure 資訊安全中心的安全性警示](security-center-managing-and-responding-alerts.md) 。 關於這項功能的一些重要考量︰
+    若要切換至 [**採取動作**] 索引標籤，請選取右窗格底部的索引標籤或按鈕。 使用此索引標籤來採取進一步的動作，例如：
+    - *緩和威脅*-提供此安全性事件的手動補救步驟
+    - *預防未來的攻擊*-提供安全性建議，以協助減少受攻擊面、增加安全性狀態，並防止未來的攻擊
+    - *觸發程式自動化回應*-提供選項來觸發邏輯應用程式，以回應此安全性事件
+    - *隱藏類似警示*-提供選項，以在警示與您的組織無關時，抑制具有類似特性的未來警示 
 
-* 有新的篩選器可讓您將檢視自訂為 [僅事件] 和/或 [僅警示]。
-* 相同的警示可以做為事件的一部分存在 (如果適用)，以及顯示為獨立警示。
+   > [!NOTE]
+   > 相同的警示可以做為事件的一部分存在，也能以獨立警示的形式顯示。
 
-## <a name="see-also"></a>請參閱
-在本文件中，您已了解如何使用資訊安全中心的安全性事件功能。 如要深入了解資訊安全中心，請參閱下列主題：
+1. 若要補救事件中的威脅，請遵循每個警示所提供的補救步驟。
 
-* [管理及回應 Azure 資訊安全中心的安全性警示](security-center-managing-and-responding-alerts.md)
-* [Azure 資訊安全中心的偵測功能](security-center-detection-capabilities.md)
-* [Azure 資訊安全中心規劃和操作指南](security-center-planning-and-operations-guide.md)
-* [管理及回應 Azure 資訊安全中心的安全性警示](security-center-managing-and-responding-alerts.md)
-* [Azure 資訊安全中心常見問題集](security-center-faq.md)-- 尋找有關使用服務的常見問題。
-* [Azure 安全性部落格](https://blogs.msdn.com/b/azuresecurity/)-- 尋找有關 Azure 安全性與相容性的部落格文章。
+
+## <a name="next-steps"></a>後續步驟
+
+本頁面說明資訊安全中心的安全性事件功能。 如需相關資訊，請參閱下列頁面：
+
+* [資訊安全中心中的威脅防護](threat-protection.md)
+* [資訊安全中心中的安全性警示](security-center-alerts-overview.md)
+* [管理和回應安全性警示](security-center-managing-and-responding-alerts.md)

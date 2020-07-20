@@ -1,7 +1,7 @@
 ---
-title: 使用 BAM 檔案輸入-Microsoft Genomics 提交工作流程
-titleSuffix: Azure
-description: 本文假設您已安裝 msgen 用戶端，並已成功執行透過服務的範例資料。
+title: 使用 BAM 檔案輸入提交工作流程
+titleSuffix: Microsoft Genomics
+description: 本文示範如何在您的輸入檔案是單一 BAM 檔案時，將工作流程提交至 Microsoft Genomics 服務。
 services: genomics
 author: grhuynh
 manager: cgronlun
@@ -9,19 +9,19 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: conceptual
 ms.date: 12/07/2017
-ms.openlocfilehash: 329ac374edbffa65a1b654a05a4934828f25d5de
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5145aa0ffdc4095f178a214f63433e5bcece83b6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60780837"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "72249156"
 ---
 # <a name="submit-a-workflow-using-a-bam-file-input"></a>使用 BAM 檔案輸入提交工作流程
 
-這篇文章會示範如何提交至 Microsoft Genomics 服務的工作流程，如果您輸入的檔案是單一的 BAM 檔案。 本主題假設您已安裝並執行 `msgen` 用戶端，且熟悉如何使用 Azure 儲存體。 如果您已成功提交工作流程使用提供的範例資料，您已準備好繼續進行這篇文章。 
+本文示範如何在您的輸入檔案是單一 BAM 檔案時，將工作流程提交至 Microsoft Genomics 服務。 本主題假設您已安裝並執行 `msgen` 用戶端，且熟悉如何使用 Azure 儲存體。 如果您已使用提供的範例資料成功地提交工作流程，則您已準備好繼續進行本文。 
 
-## <a name="set-up-upload-your-bam-file-to-azure-storage"></a>設定：您的 BAM 檔案上傳至 Azure 儲存體
-假設您有單一 BAM 檔案，reads.bam，且您已將它上傳至 Azure 中的儲存體帳戶 myaccount 作為 **https://<span></span>myaccount.blob.core<span></span>.windows<span></span>.net<span></span>/inputs/reads<span></span>.bam<span></span>**。 您具有 API URL 以及存取金鑰。 您需要 **https://<span></span>myaccount.blob.core<span></span>.windows<span></span>.net<span></span>/outputs<span></span>** 中的輸出。
+## <a name="set-up-upload-your-bam-file-to-azure-storage"></a>設定：將您的 BAM 檔案上傳至 Azure 儲存體
+假設您有單一 BAM 檔案，reads.bam**，且您已將它上傳至 Azure 中的儲存體帳戶 myaccount** 作為 **https://<span></span>myaccount.blob.core<span></span>.windows<span></span>.net<span></span>/inputs/reads<span></span>.bam<span></span>**。 您具有 API URL 以及存取金鑰。 您需要 **https://<span></span>myaccount.blob.core<span></span>.windows<span></span>.net<span></span>/outputs<span></span>** 中的輸出。
 
 
 

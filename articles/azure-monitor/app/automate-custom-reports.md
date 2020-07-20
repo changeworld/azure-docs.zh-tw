@@ -1,33 +1,25 @@
 ---
 title: 將含有 Azure Application Insights 資料的自訂報表自動化
 description: 將含有 Azure Application Insights 資料的自訂每天/每週/每月報表自動化
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 06/25/2018
+ms.date: 05/20/2019
 ms.reviewer: sdash
-ms.author: mbullwin
-ms.openlocfilehash: 37de2de18656f0f8ba85495b3fd72315e0bd885b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cf251d63645efc70ee93e84827db47ae3055ae33
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60903779"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82161431"
 ---
 # <a name="automate-custom-reports-with-azure-application-insights-data"></a>將含有 Azure Application Insights 資料的自訂報表自動化
 
 定期的報表有助於讓小組隨時了解商務關鍵服務的執行狀況。 開發人員、DevOps/SRE 小組及其主管可藉由能可靠地提供深入解析的自動化報表來提升生產力，而無須要求每個人都登入入口網站。 這類報表也有助於識別逐漸增加的延遲、負載或失敗率，這些項目可能不會觸發任何警示規則。
 
-每個企業都有其獨特的報表需求，例如： 
+每個企業都有其獨特的報表需求，例如：
 
 * 計量的特定百分位數彙總，或自訂報表中的計量。
 * 每天、每週和每月的資料彙總有不同報表，適用於不同對象。
-* 依自訂的屬性 (例如區域或環境) 分割。 
+* 依自訂的屬性 (例如區域或環境) 分割。
 * 要將某些 AI 資源一起分組在單一報表中，即使它們可能在不同的訂用帳戶或資源群組當中也一樣。
 * 將包含敏感性計量的報表分別傳送至特定對象。
 * 提供報表給可能沒有入口網站資源存取權限的專案關係人。
@@ -46,7 +38,7 @@ ms.locfileid: "60903779"
     ![Azure 函式範本](./media/automate-custom-reports/azure-function-template.png)
 
 ## <a name="sample-query-for-a-weekly-digest-email"></a>每週摘要電子郵件的範例查詢
-下列查詢顯示跨多個資料集聯結，來取得有如報表般的每週摘要電子郵件。 您可以視需要加以自訂，並搭配上面所列的任何選項使用以將每週報表自動化。   
+下列查詢顯示跨多個資料集聯結，來取得有如報表般的每週摘要電子郵件。 您可以視需要加以自訂，並搭配上面所列的任何選項使用以將每週報表自動化。
 
 ```AIQL
 let period=7d;
@@ -78,37 +70,36 @@ availabilityResults
 
 ## <a name="application-insights-scheduled-digest-report"></a>Application Insights 排程摘要報表
 
-1. 從 Azure 入口網站中，選取 [建立資源] > [計算] > [函數應用程式]。
+1. 建立 Azure 函數應用程式。只有當您想要使用 Application Insights 來監視新的函數應用程式時，才需要 Application Insights _On_
 
-   ![「建立 Azure 資源函式應用程式」螢幕擷取畫面](./media/automate-custom-reports/function-app-01.png)
+   請流覽 Azure Functions 檔，以瞭解如何[建立函數應用程式](https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function#create-a-function-app)
 
-2. 為您的應用程式輸入適當的資訊，然後選取 [建立]。 (只有當您想要以 Application Insights 監視新的「函數應用程式」時，才必須將 Application Insights 切換至 [開啟])
+2. 新「函數應用程式」完成部署之後，選取 [前往資源]****。
 
-   ![「建立 Azure 資源函式應用程式」的「設定」螢幕擷取畫面](./media/automate-custom-reports/function-app-02.png)
+3. 選取 [新增函式]****。
 
-3. 新「函數應用程式」完成部署之後，選取 [前往資源]。
+   ![「建立新函式」螢幕擷取畫面](./media/automate-custom-reports/new-function.png)
 
-4. 選取 [新增函式]。
+4. 選取 [Application Insights 排程摘要範本]**__**。
 
-   ![「建立新函式」螢幕擷取畫面](./media/automate-custom-reports/function-app-03.png)
-
-5. 選取 [Application Insights 排程摘要範本]。
+     > [!NOTE]
+     > 根據預設，函式應用程式會使用運行時3.x 版來建立。 您必須以[Azure Functions runtime 1.x 版為目標](https://docs.microsoft.com/azure/azure-functions/set-runtime-version) **，才能**使用 Application Insights 已排程的摘要範本。 移至 Configuration > 函式執行時間設定]，以變更執行階段版本。 ![執行時間螢幕擷取畫面](./media/automate-custom-reports/change-runtime-v.png)
 
    ![「新增函式 Application Insights 範本」螢幕擷取畫面](./media/automate-custom-reports/function-app-04.png)
 
-6. 為您的報表輸入適當的收件者電子郵件地址，然後選取 [建立]。
+5. 為您的報表輸入適當的收件者電子郵件地址，然後選取 [建立]****。
 
-   ![「函式設定」螢幕擷取畫面](./media/automate-custom-reports/function-app-05.png)
+   ![「函式設定」螢幕擷取畫面](./media/automate-custom-reports/scheduled-digest.png)
 
-7. 選取您的「函數應用程式」 > [平台功能] > [應用程式設定]。
+6. 選取您的**函數應用程式**  >  **平臺功能**設定  >  ** **。
 
-    ![「Azure 函數應用程式」設定螢幕擷取畫面](./media/automate-custom-reports/function-app-07.png)
+    ![「Azure 函數應用程式」設定螢幕擷取畫面](./media/automate-custom-reports/config.png)
 
-8. 建立三個具有適當對應值 ``AI_APP_ID``、``AI_APP_KEY`` 及 ``SendGridAPI`` 的新應用程式設定。 選取 [ **儲存**]。
+7. 建立三個具有適當對應值 ``AI_APP_ID``、``AI_APP_KEY`` 及 ``SendGridAPI`` 的新應用程式設定。 選取 [儲存]。
 
-     ![函式整合介面螢幕擷取畫面](./media/automate-custom-reports/function-app-08.png)
+     ![函式整合介面螢幕擷取畫面](./media/automate-custom-reports/app-settings.png)
     
-    (針對要提出報告的「Application Insights 資源」，可以在 [API 存取權] 底下找到 AI_ 值。 如果您沒有「Application Insights API 金鑰」，可以選擇 [建立 API 金鑰])。
+    (針對要提出報告的「Application Insights 資源」，可以在 [API 存取權] 底下找到 AI_ 值。 如果您沒有「Application Insights API 金鑰」，可以選擇 [建立 API 金鑰]****)。
     
    * AI_APP_ID = 應用程式識別碼
    * AI_APP_KEY = API 金鑰
@@ -117,19 +108,19 @@ availabilityResults
      > [!NOTE]
      > 如果您沒有 SendGrid 帳戶，便可以加以建立。 如需適用於 Azure Functions 的 SendGrid 文件，請參閱[這裡](https://docs.microsoft.com/azure/azure-functions/functions-bindings-sendgrid)。 如果您只需有關如何設定 SendGrid 及產生 API 金鑰的最基本說明，可在本文結尾找到該說明。 
 
-9. 選取 [整合]，然後在 [輸出] 底下，按一下 [SendGrid ($return)]。
+8. 選取 [整合]****，然後在 [輸出] 底下，按一下 [SendGrid ($return)]****。
 
-     ![「輸出」螢幕擷取畫面](./media/automate-custom-reports/function-app-09.png)
+     ![「輸出」螢幕擷取畫面](./media/automate-custom-reports/integrate.png)
 
-10. 在 [SendGridAPI 金鑰應用程式設定] 底下，針對 [SendGridAPI] 選取新建立的「應用程式設定」。
+9. 在 [SendGridAPI 金鑰應用程式設定]**** 底下，針對 [SendGridAPI]**** 選取新建立的「應用程式設定」。
 
-     ![「執行函數應用程式」螢幕擷取畫面](./media/automate-custom-reports/function-app-010.png)
+     ![「執行函數應用程式」螢幕擷取畫面](./media/automate-custom-reports/sendgrid-output.png)
 
-11. 執行並測試您的「函數應用程式」。
+10. 執行並測試您的「函數應用程式」。
 
      ![「測試」螢幕擷取畫面](./media/automate-custom-reports/function-app-11.png)
 
-12. 檢查您的電子郵件，以確認是否已成功傳送/接收訊息。
+11. 檢查您的電子郵件，以確認是否已成功傳送/接收訊息。
 
      ![電子郵件主旨列螢幕擷取畫面](./media/automate-custom-reports/function-app-12.png)
 
@@ -137,19 +128,19 @@ availabilityResults
 
 只有當您尚未設定 SendGrid 帳戶時，才適用這些步驟。
 
-1. 從 Azure 入口網站中選取 [建立資源]，搜尋 **SendGrid Email Delivery** > 按一下 [建立] > 填寫 SendGrid 特定的建立指示。 
+1. 從 [Azure 入口網站] 中，選取 [**建立資源**] > 搜尋**SendGrid 電子郵件傳遞**> 按一下 [**建立**]，> 填入 SendGrid 特定的建立指示。
 
-     ![建立 SendGrid 資源螢幕擷取畫面](./media/automate-custom-reports/function-app-13.png)
+     ![建立 SendGrid 資源螢幕擷取畫面](./media/automate-custom-reports/sendgrid.png)
 
-2. 在 [SendGrid 帳戶] 底下建立之後，選取 [管理]。
+2. 在 [SendGrid 帳戶] 底下建立之後，選取 [管理]****。
 
-     ![[Settings] \(設定\) 下的 [API Keys] \(API 金鑰\) 螢幕擷取畫面](./media/automate-custom-reports/function-app-14.png)
+     ![[Settings] \(設定\) 下的 [API Keys] \(API 金鑰\) 螢幕擷取畫面](./media/automate-custom-reports/sendgrid-manage.png)
 
-3. 這會啟動 SendGrid 的網站。 選取 [Settings] \(設定\) > [API Keys] \(API 金鑰\)。
+3. 這會啟動 SendGrid 的網站。 選取 [**設定**] [  >  **API 金鑰**]。
 
      ![建立並檢視 API 金鑰應用程式螢幕擷取畫面](./media/automate-custom-reports/function-app-15.png)
 
-4. 建立 API 金鑰 > 選擇 [Create & View] \(建立並檢視\) (請檢閱 SendGrid 有關受限制存取權的文件，以判斷適合您 API 金鑰的權限層級。 這裡選取 [Full Access] \(完整存取權\) 只是為了舉例)。
+4. 建立 API 金鑰 > 選擇 [**建立 & 視圖**]。 （請參閱限制存取的 SendGrid 檔，以判斷適合您 API 金鑰的許可權層級。 這裡選取 [Full Access] \(完整存取權\) 只是為了舉例)。
 
    ![完整存取權螢幕擷取畫面](./media/automate-custom-reports/function-app-16.png)
 
@@ -161,5 +152,5 @@ availabilityResults
 
 * 深入了解建立 [Analytics 查詢](../../azure-monitor/log-query/get-started-queries.md)。
 * 深入了解[以程式設計方式查詢 Application Insights 資料](https://dev.applicationinsights.io/)
-* 深入了解 [Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-what-are-logic-apps)。
+* 深入瞭解[Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-what-are-logic-apps)。
 * 深入了解 [Microsoft Flow](https://ms.flow.microsoft.com)。

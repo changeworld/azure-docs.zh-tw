@@ -3,24 +3,24 @@ title: 什麼是內容傳遞網路 (CDN)？ - Azure | Microsoft Docs
 description: 了解何謂 Azure 內容傳遞網路 (CDN)，以及如何使用它來傳遞高頻寬內容。
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: 866e0c30-1f33-43a5-91f0-d22f033b16c6
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.date: 05/09/2018
-ms.author: magattus
+ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 9692d495ada8a311fd5037a4f17f24ed6da9243a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 262e5b7bbcbf6c463ef97d5acc72248d37195124
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57843669"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260429"
 ---
 # <a name="what-is-a-content-delivery-network-on-azure"></a>什麼是 Azure 上的內容傳遞網路？
 內容傳遞網路 (CDN) 是可以有效率地將 Web 內容傳遞給使用者的分散式伺服器網路。 CDN 會將快取的內容儲存在使用者附近的邊緣伺服器上的存在點 (POP) 位置中，以將延遲降至最低。 
@@ -38,7 +38,7 @@ Azure 內容傳遞網路 (CDN) 為開發人員提供一套全域解決方案，�
 ## <a name="how-it-works"></a>運作方式
 ![CDN 概觀](./media/cdn-overview/cdn-overview.png)
 
-1. 使用者 (Alice) 使用具有特殊網域名稱的 URL (例如 _&lt;端點名稱&gt;_.azureedge.net) 要求檔案 (也稱為資產)。 此名稱可以是端點主機名稱或自訂網域。 DNS 會將要求路由至效能最佳的 POP 位置，這通常是地理位置最接近使用者的 POP。
+1. 使用者 (Alice) 使用具有特殊網域名稱的 URL (例如 _&lt;端點名稱&gt;_ .azureedge.net) 要求檔案 (也稱為資產)。 此名稱可以是端點主機名稱或自訂網域。 DNS 會將要求路由至效能最佳的 POP 位置，這通常是地理位置最接近使用者的 POP。
     
 2. 如果 POP 中的邊緣伺服器在其快取中都沒有該檔案，則 POP 會從原始伺服器要求檔案。 原始伺服器可以是 Azure Web 應用程式、Azure 雲端服務、Azure 儲存體帳戶，或任何可公開存取的 Web 伺服器。
    
@@ -59,7 +59,7 @@ Azure 內容傳遞網路 (CDN) 為開發人員提供一套全域解決方案，�
  - 可在 CDN 設定檔中建立的端點數目。 
  - 可對應至端點的自訂網域數目。
 
-如需關於 CDN 訂用帳戶限制的詳細資訊，請參閱 [CDN 限制](https://docs.microsoft.com/azure/azure-subscription-service-limits)。
+如需關於 CDN 訂用帳戶限制的詳細資訊，請參閱 [CDN 限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)。
     
 ## <a name="azure-cdn-features"></a>Azure CDN 功能
 Azure CDN 提供下列主要功能︰

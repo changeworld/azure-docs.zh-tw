@@ -9,11 +9,11 @@ ms.date: 08/17/2018
 ms.author: tomfitz
 ms.custom: include file
 ms.openlocfilehash: ace22a6896a121f5cd8af838c7b0e427bd0287dc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60427630"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "67173661"
 ---
 ## <a name="enable-event-grid-resource-provider"></a>啟用事件格線資源提供者
 

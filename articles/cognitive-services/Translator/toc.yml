@@ -1,114 +1,30 @@
-- name: 翻譯工具文字文件
+- name: 翻譯工具文件
   href: index.yml
-- name: Translator Text API
+- name: 轉譯程式
   items:
     - name: 概觀
       items:
-        - name: 什麼是 Translator Text API？
+        - name: 什麼是翻譯工具？
           href: translator-info-overview.md
     - name: 快速入門
       items:
         - name: 翻譯文字
-          items:
-            - name: 'C#, REST'
-              href: quickstart-csharp-translate.md
-            - name: 'Go, REST'
-              href: quickstart-go-translate.md
-            - name: 'Java, REST'
-              href: quickstart-java-translate.md
-            - name: 'Node.js, REST'
-              href: quickstart-nodejs-translate.md
-            - name: 'PHP, REST'
-              href: quickstart-php-translate.md
-            - name: 'Python, REST'
-              href: quickstart-python-translate.md
-            - name: 'Ruby, REST'
-              href: quickstart-ruby-translate.md
+          href: quickstart-translate.md
         - name: 音譯文字
-          items:
-            - name: 'C#, REST'
-              href: quickstart-csharp-transliterate.md
-            - name: 'Go, REST'
-              href: quickstart-go-transliterate.md
-            - name: 'Java, REST'
-              href: quickstart-java-transliterate.md
-            - name: 'Node.js, REST'
-              href: quickstart-nodejs-transliterate.md
-            - name: 'PHP, REST'
-              href: quickstart-php-transliterate.md
-            - name: 'Python, REST'
-              href: quickstart-python-transliterate.md
-            - name: 'Ruby, REST'
-              href: quickstart-ruby-transliterate.md
-        - name: 識別語言
-          items:
-            - name: 'C#, REST'
-              href: quickstart-csharp-detect.md
-            - name: 'Go, REST'
-              href: quickstart-go-detect.md
-            - name: 'Java, REST'
-              href: quickstart-java-detect.md
-            - name: 'Node.js, REST'
-              href: quickstart-nodejs-detect.md
-            - name: 'PHP, REST'
-              href: quickstart-php-detect.md
-            - name: 'Python, REST'
-              href: quickstart-python-detect.md
-            - name: 'Ruby, REST'
-              href: quickstart-ruby-detect.md
+          href: quickstart-transliterate.md
+        - name: 偵測語言種類
+          href: quickstart-detect.md
         - name: 查詢文字翻譯
-          items:
-            - name: 'C#, REST'
-              href: quickstart-csharp-dictionary.md
-            - name: 'Go, REST'
-              href: quickstart-go-dictionary.md
-            - name: 'Java, REST'
-              href: quickstart-java-dictionary.md
-            - name: 'Node.js, REST'
-              href: quickstart-nodejs-dictionary.md
-            - name: 'PHP, REST'
-              href: quickstart-php-dictionary.md
-            - name: 'Python, REST'
-              href: quickstart-python-dictionary.md
-            - name: 'Ruby, REST'
-              href: quickstart-ruby-dictionary.md
+          href: quickstart-dictionary.md
         - name: 取得支援的語言
-          items:
-            - name: 'C#, REST'
-              href: quickstart-csharp-languages.md
-            - name: 'Go, REST'
-              href: quickstart-go-languages.md
-            - name: 'Java, REST'
-              href: quickstart-java-languages.md
-            - name: 'Node.js, REST'
-              href: quickstart-nodejs-languages.md
-            - name: 'PHP, REST'
-              href: quickstart-php-languages.md
-            - name: 'Python, REST'
-              href: quickstart-python-languages.md
-            - name: 'Ruby, REST'
-              href: quickstart-ruby-languages.md
+          href: quickstart-languages.md
         - name: 判斷句子長度
-          items:
-            - name: 'C#, REST'
-              href: quickstart-csharp-sentences.md
-            - name: 'Go, REST'
-              href: quickstart-go-sentences.md
-            - name: 'Java, REST'
-              href: quickstart-java-sentences.md
-            - name: 'Node.js, REST'
-              href: quickstart-nodejs-sentences.md
-            - name: 'PHP, REST'
-              href: quickstart-php-sentences.md
-            - name: 'Python, REST'
-              href: quickstart-python-sentences.md
-            - name: 'Ruby, REST'
-              href: quickstart-ruby-sentences.md
+          href: quickstart-sentences.md
     - name: 教學課程
       items:
-        - name: 建立適用於翻譯工具文字的 WPF 應用程式
+        - name: '建立適用於翻譯工具的 WPF 應用程式 (C#)'
           href: tutorial-wpf-translation-csharp.md
-        - name: 建立 Flask 轉譯應用程式
+        - name: 建立 Flask 轉譯應用程式，Python
           href: tutorial-build-flask-app-translation-synthesis.md
     - name: 概念
       items:
@@ -116,9 +32,9 @@
           href: customization.md
         - name: API 如何計算字元
           href: character-counts.md
-    - name: 使用說明指南
+    - name: 操作指南
       items:
-        - name: 註冊 Translator Text API
+        - name: 註冊翻譯工具
           href: translator-text-how-to-signup.md
         - name: 移轉至 V3 文字 API
           href: migrate-to-v3.md
@@ -132,9 +48,25 @@
           href: dynamic-dictionary.md
         - name: 防火牆後翻譯
           href: firewalls.md
+    - name: 範例
+      items:
+        - name: 'C#'
+          href: 'https://github.com/MicrosoftTranslator/Text-Translation-API-V3-C-Sharp'
+        - name: Java
+          href: 'https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Java'
+        - name: Python
+          href: 'https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Python'
+        - name: Node.js
+          href: 'https://github.com/MicrosoftTranslator/Text-Translation-API-V3-NodeJS'
+        - name: Go
+          href: 'https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Go'
+        - name: PHP
+          href: 'https://github.com/MicrosoftTranslator/Text-Translation-API-V3-PHP'
+        - name: Ruby
+          href: 'https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Ruby'
     - name: 參考
       items:
-        - name: v3 Translator Text API 參考
+        - name: v3 翻譯工具參考
           href: reference/v3-0-reference.md
           items:
             - name: Languages
@@ -151,12 +83,12 @@
               href: reference/v3-0-dictionary-lookup.md
             - name: 字典範例
               href: reference/v3-0-dictionary-examples.md
-        - name: v2 Translator Text API 參考 (已過時)
+        - name: v2 翻譯工具參考 (已淘汰)
           href: reference/v2-0-reference.md
           items:
             - name: 轉換文字
               href: transform-text.md
-            - name: 如何使用共同作業翻譯架構 (CTF) 報告
+            - name: 如何使用 Collaborative Translation Framework (CTF) 報告
               href: ctf-reporting.md
             - name: 傳回 N 最佳翻譯
               href: return-n-best-translations.md
@@ -166,20 +98,18 @@
           href: 'https://aka.ms/TranslatorGitHub'
         - name: 常見問題集
           href: 'https://www.microsoft.com/translator/faq.aspx'
-        - name: 知識庫
-          href: 'https://cognitive.uservoice.com/knowledgebase/topics/132647-translator'
-        - name: 語言與區域支援
+        - name: 語言支援
           href: language-support.md
-        - name: 價格
+        - name: 定價
           href: 'https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/'
         - name: 區域可用性
           href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+        - name: 法規遵循
+          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
         - name: 要求限制
           href: request-limits.md
-        - name: 堆疊溢位
+        - name: Stack Overflow
           href: 'https://stackoverflow.com/questions/tagged/microsoft-translator'
-        - name: UserVoice
-          href: 'https://cognitive.uservoice.com/forums/558796-translator'
 - name: 自訂翻譯工具
   items:
     - name: 概觀
@@ -208,7 +138,7 @@
           href: custom-translator/training-and-model.md
         - name: BLEU 分數
           href: custom-translator/what-is-bleu-score.md
-    - name: 使用說明指南
+    - name: 操作指南
       items:
         - name: 建立專案
           href: custom-translator/how-to-create-project.md
@@ -238,9 +168,11 @@
           href: custom-translator/glossary.md
         - name: 常見問題集
           href: custom-translator/faq.md
-        - name: 價格
+        - name: 定價
           href: 'https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/'
-        - name: 堆疊溢位
+        - name: 法規遵循
+          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+        - name: 加密
+          href: translator-encryption-of-data-at-rest.md
+        - name: Stack Overflow
           href: 'https://stackoverflow.com/questions/tagged/microsoft-translator'
-        - name: UserVoice
-          href: 'https://cognitive.uservoice.com/knowledgebase/articles/1855897-custom-translator-preview-resource-guide'

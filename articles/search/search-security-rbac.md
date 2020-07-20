@@ -1,22 +1,20 @@
 ---
-title: 在入口網站中設定 Azure 管理存取權的 RBAC 角色 - Azure 搜尋服務
-description: Azure 入口網站中的角色型管理控制項 (RBAC) 可用於控制和委派 Azure 搜尋服務管理的管理工作。
+title: 設定 Azure 系統管理存取權的 RBAC 角色
+titleSuffix: Azure Cognitive Search
+description: Azure 入口網站中以角色為基礎的系統管理控制（RBAC），用於控制和委派 Azure 認知搜尋管理的系統管理工作。
+manager: nitinme
 author: HeidiSteen
-manager: cgronlun
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 04/05/2019
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 34def35eba1e5c1645e6e1f9a505704d153ac716
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 06/03/2020
+ms.openlocfilehash: 402fae5622219b14cfdab921ebe1a78ad5dd111e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61282348"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84462833"
 ---
-# <a name="set-rbac-roles-for-administrative-access"></a>設定系統管理存取權的 RBAC 角色
+# <a name="set-rbac-roles-for-administrative-access-to-azure-cognitive-search"></a>設定 Azure 認知搜尋的系統管理存取權的 RBAC 角色
 
 Azure 特別為透過入口網站或 Resource Manager API 管理的所有服務提供[全域角色型授權模型](../role-based-access-control/role-assignments-portal.md)。 「擁有者」、「參與者」和「讀取者」角色可針對指派給各角色的 Active Directory 使用者、群組和安全性主體，決定*服務管理*層級。 
 
@@ -25,7 +23,7 @@ Azure 特別為透過入口網站或 Resource Manager API 管理的所有服務�
 
 ## <a name="management-tasks-by-role"></a>依角色管理工作
 
-對於 Azure 搜尋服務，角色與支援以下管理工作的權限等級相關聯：
+針對 Azure 認知搜尋，角色會與支援下列管理工作的許可權層級相關聯：
 
 | 角色 | Task |
 | --- | --- |
@@ -36,8 +34,23 @@ Azure 特別為透過入口網站或 Resource Manager API 管理的所有服務�
 
 角色不會授與服務端點的存取權限。 搜尋服務作業 (例如索引管理、索引母體擴展，以及搜尋資料查詢) 可透過 api-key 而非角色來控制。 如需詳細資訊，請參閱[管理 API 金鑰](search-security-api-keys.md)。
 
-## <a name="see-also"></a>請參閱
+## <a name="permissions-table"></a>許可權資料表
+
+下表摘要說明 Azure 認知搜尋中允許的作業，以及哪些金鑰可解除鎖定特定操作。
+
+| 操作 | 權限 |
+|-----------|-------------------------|
+| 建立服務 | Azure 訂用帳戶持有者 |
+| 調整服務規模 | 資源上的系統管理金鑰、RBAC 擁有者或參與者  |
+| 刪除服務 | 資源上的系統管理金鑰、RBAC 擁有者或參與者 |
+| 在服務上建立、修改、刪除物件： <br>索引和元件部分（包括分析器定義、評分設定檔、CORS 選項）、索引子、資料來源、同義字、建議工具 | 資源上的系統管理金鑰、RBAC 擁有者或參與者 |
+| 查詢索引 | 管理或查詢金鑰 (RBAC 不適用) |
+| 查詢系統資訊，例如傳回統計資料、計數和物件清單 | 管理金鑰、資源的 RBAC (擁有者、參與者、讀者) |
+| 管理管理金鑰 | 管理金鑰、資源的 RBAC 擁有者或參與者 |
+| 管理查詢金鑰 |  管理金鑰、資源的 RBAC 擁有者或參與者  |
+
+## <a name="see-also"></a>另請參閱
 
 + [使用 Powershell 管理](search-manage-powershell.md) 
-+ [Azure 搜尋服務中的效能和最佳化](search-performance-optimization.md)
-+ [在 Azure 入口網站中開始使用角色型存取控制](../role-based-access-control/overview.md)。
++ [Azure 認知搜尋中的效能和優化](search-performance-optimization.md)
++ [在 Azure 入口網站中開始使用以角色為基礎的存取控制](../role-based-access-control/overview.md)。

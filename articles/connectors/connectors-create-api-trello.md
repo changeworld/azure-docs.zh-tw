@@ -1,22 +1,17 @@
 ---
-title: 從 Azure Logic Apps 連線到 Trello | Microsoft Docs
+title: 從 Azure Logic Apps 連線至 Trello
 description: 藉由使用 Azure Logic Apps，讓在 Trello 專案中監視及管理清單、面板、卡片的工作和工作流程自動化
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
-ms.assetid: fe7a4377-5c24-4f72-ab1a-6d9d23e8d895
+ms.reviewer: klam, logicappspm
 ms.topic: article
-tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: 31357fa313cfa31c0f8a90c0f7722f627e4394d1
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+tags: connectors
+ms.openlocfilehash: d1426bbe2064067b26f53a8f8e5d4aa842ede8c0
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62106162"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83829693"
 ---
 # <a name="monitor-and-manage-trello-with-azure-logic-apps"></a>使用 Azure Logic Apps 來監視及管理 Trello
 
@@ -30,9 +25,9 @@ ms.locfileid: "62106162"
 
 您可以使用觸發程序，從您的 Trello 帳戶收到回應，並且讓輸出可供其他動作使用。 您可以使用動作，該動作會使用您的 Trello 帳戶來執行工作。 您也可以讓其他動作使用 Trello 動作的輸出。 例如，當新卡片新增至面板或清單時，您可以使用 Slack 連接器來傳送訊息。 如果您不熟悉邏輯應用程式，請檢閱[什麼是 Azure Logic Apps？](../logic-apps/logic-apps-overview.md)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-* Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先<a href="https://azure.microsoft.com/free/" target="_blank">註冊免費的 Azure 帳戶</a>。 
+* Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。 
 
 * 您的 Trello 帳戶和使用者認證
 
@@ -54,10 +49,10 @@ ms.locfileid: "62106162"
 
    若是現有的邏輯應用程式，請在想要新增動作的最後一個步驟底下，選擇 [新增步驟]。 
    在搜尋方塊中，輸入 "trello" 作為篩選條件。 
-   請在動作清單底下，選取您想要的動作。
+   在動作清單底下，選取您想要的動作。
 
    若要在步驟之間新增動作，將指標移至步驟之間的箭號。 
-   選擇顯示的加號 (**+**)，然後選取 [新增動作]。
+   選擇顯示的加號 ( **+** )，然後選取 [新增動作]。
 
 1. 如果系統提示您登入 Trello，請授與邏輯應用程式的存取權並且登入。
 
@@ -69,7 +64,7 @@ ms.locfileid: "62106162"
 
 ## <a name="get-support"></a>取得支援
 
-* 如有問題，請瀏覽 [Azure Logic Apps 論壇](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
+* 如有任何問題，請造訪 [Microsoft 的 Azure Logic Apps 問與答頁面](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)。
 * 若要提交或票選功能構想，請造訪 [Logic Apps 使用者意見反應網站](https://aka.ms/logicapps-wish)。
 
 ## <a name="next-steps"></a>後續步驟

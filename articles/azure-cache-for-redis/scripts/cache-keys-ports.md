@@ -1,26 +1,19 @@
 ---
-title: Azure CLI 指令碼範例 - 取得 Azure Cache for Redis 的主機名稱、連接埠和金鑰 | Microsoft Docs
-description: Azure CLI 指令碼範例 - 取得 Azure Cache for Redis 執行個體的主機名稱、連接埠和金鑰
-services: cache
-documentationcenter: ''
+title: 取得主機名稱、連接埠、金鑰 - Azure Cache for Redis - Azure CLI
+description: 此 Azure CLI 程式碼範例示範如何取得 Azure Cache for Redis 執行個體的主機名稱、連接埠和金鑰。
 author: yegu-ms
-manager: jhubbard
-editor: ''
+ms.author: yegu
 tags: azure-service-management
-ms.assetid: 761eb24e-2ba7-418d-8fc3-431153e69a90
 ms.service: cache
 ms.devlang: azurecli
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: tbd
+ms.topic: sample
 ms.date: 08/30/2017
-ms.author: yegu
-ms.openlocfilehash: ff410db561879089c4c1f20acb7cb349f0484fda
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 199c5707e9ecd887af64e271184e151ce0966745
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60234296"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "75411293"
 ---
 # <a name="get-the-hostname-ports-and-keys-for-azure-cache-for-redis"></a>取得 Azure Cache for Redis 的主機名稱、連接埠和金鑰
 
@@ -37,7 +30,7 @@ ms.locfileid: "60234296"
 
 此指令碼會使用下列命令擷取 Azure Cache for Redis 執行個體的主機名稱、金鑰和連接埠。 下表中的每個命令都會連結至命令特定的文件。
 
-| 命令 | 注意 |
+| Command | 注意 |
 |---|---|
 | [az redis show](https://docs.microsoft.com/cli/azure/redis) | 取得 Azure Cache for Redis 執行個體的詳細資料。 |
 | [az redis list-keys](https://docs.microsoft.com/cli/azure/redis) | 取得 Azure Cache for Redis 執行個體的存取金鑰。 |

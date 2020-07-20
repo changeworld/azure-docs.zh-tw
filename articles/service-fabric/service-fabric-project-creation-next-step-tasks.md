@@ -1,25 +1,13 @@
 ---
-title: Service Fabric 專案建立後續步驟 |Microsoft Docs
+title: Service Fabric 專案建立後續步驟
 description: 了解您剛才在 Visual Studio 中建立的應用程式專案。  了解如何使用教學課程建置服務，並深入了解為 Service Fabric 開發服務。
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: 299d1f97-1ca9-440d-9f81-d1d0dd2bf4df
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 12/07/2017
-ms.author: atsenthi
-ms.openlocfilehash: e5371cd3ea9de1993f0f824325f6cbf1e25343d4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: e8fc105657bda6114851f4819be4658926ad621c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60773038"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75349404"
 ---
 # <a name="your-service-fabric-application-and-next-steps"></a>您的 Service Fabric 應用程式和後續步驟
 您的 Azure Service Fabric 應用程式已經建立。 本文說明一些可嘗試的教學課程、專案的組成、您感興趣的一些其他資訊，以及潛在後續步驟。
@@ -67,7 +55,7 @@ Service Fabric 應用程式是由不同的服務組成，每一個服務用來�
 應用程式可能包含機密資訊，例如儲存體連接字串、密碼或其他不會以純文字處理的值。 了解如何[管理您的應用程式中的祕密](service-fabric-application-secret-management.md)。
 
 ## <a name="learn-about-the-application-lifecycle"></a>了解應用程式生命週期
-如同其他平台，Service Fabric 應用程式通常會經歷下列階段：設計、開發、測試、部署、升級、維護和移除。 [本文章](service-fabric-application-lifecycle.md)提供 API 的概觀以及其使用方式，這些 API 是由不同的角色在 Service Fabric 應用程式生命週期的各個階段使用。
+如同其他平台，Service Fabric 應用程式通常會經歷下列階段：設計、開發、測試、部署、升級、維護和移除。 [本文提供 api](service-fabric-application-lifecycle.md)的總覽，以及在 Service Fabric 應用程式生命週期的各個階段中，不同的角色如何使用它們。
 
 ## <a name="next-steps"></a>後續步驟
 - [在 Azure 中建立 Windows 叢集](service-fabric-tutorial-create-vnet-and-windows-cluster.md)。

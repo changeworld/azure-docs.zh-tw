@@ -2,26 +2,26 @@
 title: ClaimsTransformations - Azure Active Directory B2C | Microsoft Docs
 description: Azure Active Directory B2C 的識別體驗架構結構描述中 ClaimsTransformations 元素的定義。
 services: active-directory-b2c
-author: davidmu1
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 65b64563bf00bb519a65b6d2e0418b4f755dea2d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 37d9bd78a80ac52d2a790537bf47e33807720349
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64710827"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85202954"
 ---
 # <a name="claimstransformations"></a>ClaimsTransformations
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-**ClaimsTransformations** 元素包含一份宣告轉換函式清單，可用於使用者旅程圖中以作為[自訂原則](active-directory-b2c-overview-custom.md)的一部分。 宣告轉換會將指定的宣告轉換成另一個。 在宣告轉換中，您會指定轉換方法，例如，將項目新增到字串集合，或變更字串的大小寫。
+**ClaimsTransformations** 元素包含一份宣告轉換函式清單，可用於使用者旅程圖中以作為[自訂原則](custom-policy-overview.md)的一部分。 宣告轉換會將指定的宣告轉換成另一個。 在宣告轉換中，您會指定轉換方法，例如，將項目新增到字串集合，或變更字串的大小寫。
 
 若要包含可在使用者旅程圖中使用的宣告轉換函式清單，必須在原則的 BuildingBlocks 區段下方宣告 ClaimsTransformations XML 元素。
 
@@ -33,12 +33,12 @@ ms.locfileid: "64710827"
 </ClaimsTransformations>
 ```
 
-ClaimsTransformation 元素包含以下属性：
+**ClaimsTransformation**元素包含下列屬性：
 
-| 屬性 |必要項 | 描述 |
+| 屬性 |必要 | 說明 |
 | --------- |-------- | ----------- |
-| id |是 | 用來唯一識別宣告轉換的識別碼。 此識別碼會從原則中的其他 XML 元素參考。 |
-| TransformationMethod | 是 | 要在宣告轉換中使用的轉換方法。 每個宣告轉換都有自己的值。 如需可用值的完整清單，請參閱[宣告轉換參考](#claims-transformations-reference)。 |
+| Id |Yes | 用來唯一識別宣告轉換的識別碼。 此識別碼會從原則中的其他 XML 元素參考。 |
+| TransformationMethod | Yes | 要在宣告轉換中使用的轉換方法。 每個宣告轉換都有自己的值。 如需可用值的完整清單，請參閱[宣告轉換參考](#claims-transformations-reference)。 |
 
 ## <a name="claimstransformation"></a>ClaimsTransformation
 
@@ -51,7 +51,7 @@ ClaimsTransformation 元素包含以下属性：
   </InputClaims>
   <InputParameters>
     ...
-  </InputParameters>                
+  </InputParameters>
   <OutputClaims>
     ...
   </OutputClaims>
@@ -59,17 +59,17 @@ ClaimsTransformation 元素包含以下属性：
 ```
 
 
-| 元素 | 發生次數 | 描述 |
+| 元素 | 發生次數 | Description |
 | ------- | -------- | ----------- |
 | InputClaims | 0:1 | **InputClaim** 元素的清單，會指定要取得以作為宣告轉換輸入的宣告類型。 這些元素中的每一個都會參考已經定義於原則 ClaimsSchema 區段中的 ClaimType。 |
-| InputParameters | 0:1 | **InputParameter** 元素的清單，可提供來作為宣告轉換的輸入。  
+| InputParameters | 0:1 | **InputParameter** 元素的清單，可提供來作為宣告轉換的輸入。
 | OutputClaims | 0:1 | **OutputClaim** 元素的清單，會指定要在叫用 ClaimsTransformation 之後產生的宣告類型。 這些元素中的每一個都會參考已經定義於 ClaimsSchema 區段中的 ClaimType。 |
 
 ### <a name="inputclaims"></a>InputClaims
 
 **InputClaims** 元素包含下列元素：
 
-| 元素 | 發生次數 | 描述 |
+| 元素 | 發生次數 | Description |
 | ------- | ----------- | ----------- |
 | InputClaim | 1:n | 預期的輸入宣告類型。 |
 
@@ -77,51 +77,51 @@ ClaimsTransformation 元素包含以下属性：
 
 **InputClaim** 元素包含下列屬性：
 
-| 屬性 |必要項 | 描述 |
+| 屬性 |必要 | 說明 |
 | --------- | ----------- | ----------- |
-| ClaimTypeReferenceId |是 | 對已經定義於原則 ClaimsSchema 區段中之 ClaimType 的參考。 |
-| TransformationClaimType |是 | 要參考轉換宣告類型的識別碼。 每個宣告轉換都有自己的值。 如需可用值的完整清單，請參閱[宣告轉換參考](#claims-transformations-reference)。 |
+| ClaimTypeReferenceId |Yes | 對已經定義於原則 ClaimsSchema 區段中之 ClaimType 的參考。 |
+| TransformationClaimType |Yes | 要參考轉換宣告類型的識別碼。 每個宣告轉換都有自己的值。 如需可用值的完整清單，請參閱[宣告轉換參考](#claims-transformations-reference)。 |
 
 ### <a name="inputparameters"></a>InputParameters
 
 **InputParameters** 元素包含下列元素：
 
-| 元素 | 發生次數 | 描述 |
+| 元素 | 發生次數 | Description |
 | ------- | ----------- | ----------- |
 | InputParameter | 1:n | 預期的輸入參數。 |
 
 #### <a name="inputparameter"></a>InputParameter
 
-| 屬性 | 必要項 |描述 |
+| 屬性 | 必要 |說明 |
 | --------- | ----------- |----------- |
-| id | 是 | 識別碼，其為對宣告轉換方法之參數的參考。 每個宣告轉換方法都有自己的值。 如需可用值的完整清單，請參閱宣告轉換表。 |
-| DataType | 是 | 參數的資料類型，例如字串、布林值、整數或日期時間，其會以自訂原則 XML 結構描述中的每個 DataType 列舉為依據。 此類型可用來正確地執行算術運算。 每個宣告轉換都有自己的值。 如需可用值的完整清單，請參閱[宣告轉換參考](#claims-transformations-reference)。 |
-| Value | 是 | 要逐字傳遞到轉換的值。 某些值是任意的，它們其中有一些是您從宣告轉換方法中選取的。 |
+| Id | Yes | 識別碼，其為對宣告轉換方法之參數的參考。 每個宣告轉換方法都有自己的值。 如需可用值的完整清單，請參閱宣告轉換表。 |
+| DataType | Yes | 參數的資料類型，例如字串、布林值、整數或日期時間，其會以自訂原則 XML 結構描述中的每個 DataType 列舉為依據。 此類型可用來正確地執行算術運算。 每個宣告轉換都有自己的值。 如需可用值的完整清單，請參閱[宣告轉換參考](#claims-transformations-reference)。 |
+| 值 | Yes | 要逐字傳遞到轉換的值。 某些值是任意的，它們其中有一些是您從宣告轉換方法中選取的。 |
 
 ### <a name="outputclaims"></a>OutputClaims
 
 **OutputClaims** 元素包含下列元素：
 
-| 元素 | 發生次數 | 描述 |
+| 元素 | 發生次數 | Description |
 | ------- | ----------- | ----------- |
 | OutputClaim | 0:n | 預期的輸出宣告類型。 |
 
-#### <a name="outputclaim"></a>OutputClaim 
+#### <a name="outputclaim"></a>OutputClaim
 
 **OutputClaim** 元素包含下列屬性：
 
-| 屬性 |必要項 | 描述 |
+| 屬性 |必要 | 說明 |
 | --------- | ----------- |----------- |
-| ClaimTypeReferenceId | 是 | 對已經定義於原則 ClaimsSchema 區段中之 ClaimType 的參考。
-| TransformationClaimType | 是 | 要參考轉換宣告類型的識別碼。 每個宣告轉換都有自己的值。 如需可用值的完整清單，請參閱[宣告轉換參考](#claims-transformations-reference)。 |
- 
+| ClaimTypeReferenceId | Yes | 對已經定義於原則 ClaimsSchema 區段中之 ClaimType 的參考。
+| TransformationClaimType | Yes | 要參考轉換宣告類型的識別碼。 每個宣告轉換都有自己的值。 如需可用值的完整清單，請參閱[宣告轉換參考](#claims-transformations-reference)。 |
+
 如果輸入宣告和輸出宣告的類型一樣 (字串或布林值)，則您可以使用相同的輸入宣告作為輸出宣告。 在此情況下，宣告轉換會使用輸出值來變更輸入宣告。
 
 ## <a name="example"></a>範例
 
 例如，您可能會儲存使用者所接受之服務條款的最後一個版本。 當您更新服務條款時，可以要求使用者接受新版本。 在下列範例中，**HasTOSVersionChanged** 宣告轉換會比較 **TOSVersion** 宣告值與 **LastTOSAcceptedVersion** 宣告值，然後傳回布林值的 **TOSVersionChanged** 宣告。
 
-```XML
+```xml
 <BuildingBlocks>
   <ClaimsSchema>
     <ClaimType Id="TOSVersionChanged">
@@ -159,10 +159,11 @@ ClaimsTransformation 元素包含以下属性：
 
 如需宣告轉換的範例，請參閱下列參考頁面：
 
-- [布林值](boolean-transformations.md)
-- [Date](date-transformations.md)
+- [True](boolean-transformations.md)
+- [日期](date-transformations.md)
 - [整數](integer-transformations.md)
 - [JSON](json-transformations.md)
+- [電話號碼](phone-number-claims-transformations.md)
 - [一般](general-transformations.md)
 - [社交帳戶](social-transformations.md)
 - [String](string-transformations.md)

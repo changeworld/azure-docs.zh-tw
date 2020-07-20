@@ -1,26 +1,15 @@
 ---
-title: 為集區選取 VM 大小 - Azure Batch | Microsoft Docs
+title: 選擇集區的 VM 大小
 description: 如何為 Azure Batch 集區中的計算節點選取可用的 VM 大小
-services: batch
-documentationcenter: ''
-author: laurenhughes
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
-ms.service: batch
-ms.workload: ''
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 01/25/2019
-ms.author: lahugh
+ms.topic: conceptual
+ms.date: 06/10/2020
 ms.custom: seodec18
-ms.openlocfilehash: 43094839c9da9b00c97d1dffd53f98a3acd119d5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e56632ce66cb25bf023813f2b98be6141f651465
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60775724"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86143528"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>為 Azure Batch 集區中的運算節點選擇 VM 大小
 
@@ -28,70 +17,72 @@ ms.locfileid: "60775724"
 
 選擇 VM 大小時有幾個例外狀況和限制：
 
-* Batch 中不支援某些 VM 系列或 VM 大小。 
+* Batch 不支援某些 VM 系列或 VM 大小。
 * 有些 VM 大小會有限制，而且必須特別啟用後才能配置。
 
-## <a name="supported-vm-families-and-sizes"></a>支援的 VM 系列和大小
+## <a name="supported-vm-series-and-sizes"></a>支援的 VM 系列和大小
 
 ### <a name="pools-in-virtual-machine-configuration"></a>虛擬機器組態中的集區
 
-虛擬機器組態中的 Batch 集區支援所有 VM 大小 ([Linux](../virtual-machines/linux/sizes.md)、[Windows](../virtual-machines/windows/sizes.md))，「除了」下列幾個：
+虛擬機器設定中的 Batch 集區支援幾乎所有 VM 大小 ([Linux](../virtual-machines/linux/sizes.md)、[Windows](../virtual-machines/windows/sizes.md))。 請參閱下表，以深入了解支援的大小和限制。
 
-| 系列  | 不支援的大小  |
-|---------|---------|
-| 基本 A 系列 | Basic_A0 (A0) |
-| A 系列 | Standard_A0 |
-| B 系列 | 全部 |
-| DC 系列 | 全部 |
-| 最高等級的記憶體最佳化 | 全部 |
-| Hb 系列<sup>1、2</sup> | 全部 |
-| Hc 系列<sup>1、2</sup> | 全部 |
-| Lsv2 系列 | 全部 |
-| NDv2 系列<sup>1、2</sup> | 全部 |
-| NVv2 系列 <sup>1</sup> | 全部 |
-| SAP HANA | 全部 |
+| VM 系列  | 支援的大小 |
+|------------|---------|
+| 基本 A | Basic_A0 (A0)「以外」的所有大小 |
+| A | Standard_A0「以外」的所有大小 |
+| Av2 | 所有大小 |
+| B | None |
+| DC | None |
+| Dv2、DSv2 | 所有大小 |
+| Dv3、Dsv3 | 所有大小 |
+| Dav4<sup>1</sup> | 無 - 尚未提供 |
+| Dasv4<sup>1</sup> | 除了 Standard_D48as_v4、Standard_D64as_v4、Standard_D96as_v4 以外的所有大小 |
+| Ddv4, Ddsv4 |  無 - 尚未提供 |
+| Ev3、Esv3 | E64is_v3 和 E64i_v3 以外的所有大小 |
+| Eav4<sup>1</sup> | 除了 Standard_E48a_v4、Standard_E64a_v4、Standard_E96a_v4 以外的所有大小 |
+| Easv4<sup>1</sup> | 除了 Standard_E48as_v4、Standard_E64as_v4、Standard_E96as_v4 以外的所有大小 |
+| Edv4, Edsv4 |  無 - 尚未提供 |
+| F、Fs | 所有大小 |
+| Fsv2 | 所有大小 |
+| G、Gs | 所有大小 |
+| H | 所有大小 |
+| HB<sup>1</sup> | 所有大小 |
+| HBv2<sup>1</sup> | 所有大小 |
+| HC<sup>1</sup> | 所有大小 |
+| Ls | 所有大小 |
+| Lsv2<sup>1</sup> | 所有大小 |
+| M<sup>1</sup> | 所有大小 |
+| Mv2 | 無 - 尚未提供 |
+| NC | 所有大小 |
+| NCv2<sup>1</sup> | 所有大小 |
+| NCv3<sup>1</sup> | 所有大小 |
+| ND<sup>1</sup> | 所有大小 |
+| NDv2<sup>1</sup> | 無 - 尚未提供 |
+| NV | 所有大小 |
+| NVv3<sup>1</sup> | 所有大小 |
+| NVv4 | 無 |
+| SAP HANA | None |
 
-
-<sup>1</sup> 已針對支援進行規劃。  
-<sup>2</sup> 可由處於使用者訂用帳戶模式的 Batch 帳戶使用；使用者訂用帳戶模式 Batch 帳戶需要設定核心配額。 如需更多資訊，請參閱[使用者訂用帳戶模式的組態](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode)。
-
-只有低優先順序節點才支援下列 VM 大小：
-
-| 系列  | 支援的大小  |
-|---------|---------|
-| M 系列 | Standard_M64ms |
-| M 系列 | Standard_M128s |
-
-目前不支援 M 系列家族中的其他 VM 大小。
+<sup>1</sup> 這些 VM 大小可在虛擬機器設定的 Batch 集區中配置，但必須建立新的 Batch 帳戶，並要求[增加特定配額](batch-quota-limit.md#increase-a-quota)。 一旦 Batch 帳戶完全支援每個 VM 系列的 vCPU 配額，就會移除這項限制。
 
 ### <a name="pools-in-cloud-service-configuration"></a>雲端服務組態中的集區
 
-雲端服務組態中的 Batch 集區支援所有[適用於雲端服務的 VM 大小](../cloud-services/cloud-services-sizes-specs.md)，「除了」下列幾個：
+雲端服務設定中的 Batch 集區支援[雲端服務的所有 VM 大小](../cloud-services/cloud-services-sizes-specs.md)，但「不包括」下列各項：
 
-| 系列  | 不支援的大小  |
-|---------|---------|
-| A 系列 | 特小型 |
+| VM 系列  | 不支援的大小 |
+|------------|-------------------|
+| A 系列   | 超小型       |
 | Av2 系列 | Standard_A1_v2、Standard_A2_v2、Standard_A2m_v2 |
-
-## <a name="restricted-vm-families"></a>受限制的 VM 系列
-
-下列 VM 系列可在 Batch 集區中配置，但您必須要求特定的配額增加 (請參閱[本文](batch-quota-limit.md#increase-a-quota))：
-
-* NCv2 系列
-* NCv3 系列
-* ND 系列
-
-這些大小只可在虛擬機器組態的集區中使用。
 
 ## <a name="size-considerations"></a>大小考量
 
-* **應用程式需求** - 請考量將於節點上執行之應用程式的特性和需求。 應用程式是否為多執行緒以及需要使用多少記憶體之類的層面，有助於決定最適合且具成本效益的節點大小。 針對多重執行個體的 [MPI 工作負載](batch-mpi.md)或 CUDA 應用程式，請考慮分別使用特殊 [HPC](../virtual-machines/linux/sizes-hpc.md) 或[已啟用 GPU](../virtual-machines/linux/sizes-gpu.md) 的 VM 大小。 (請參閱[在 Batch 集區中使用具備 RDMA 功能或已啟用 GPU 功能的執行個體](batch-pool-compute-intensive-sizes.md)。)
+* **應用程式需求** - 請考量將於節點上執行之應用程式的特性和需求。 應用程式是否為多執行緒以及需要使用多少記憶體之類的層面，有助於決定最適合且具成本效益的節點大小。 針對多重執行個體的 [MPI 工作負載](batch-mpi.md)或 CUDA 應用程式，請考慮分別使用特殊 [HPC](../virtual-machines/sizes-hpc.md) 或[已啟用 GPU](../virtual-machines/sizes-gpu.md) 的 VM 大小。 (請參閱[在 Batch 集區中使用具備 RDMA 功能或已啟用 GPU 功能的執行個體](batch-pool-compute-intensive-sizes.md)。)
 
 * **每個節點的工作** - 在選取節點大小時，通常會假設每次在節點上執行一項工作。 不過，在作業執行期間有多項工作 (因而有多個應用程式執行個體) 在計算節點上[以平行方式執行](batch-parallel-node-tasks.md)，也可能有好處。 在此情況下，通常會選擇多核心節點大小，以因應增加的平行工作執行需求。
 
-* **不同工作的負載層級** - 集區中的所有節點都是相同大小。 如果您打算執行具有不同系統需求和/或負載層級的應用程式，建議使用不同的集區。 
+* **不同工作的負載層級** - 集區中的所有節點都是相同大小。 如果您打算執行具有不同系統需求和/或負載層級的應用程式，建議使用不同的集區。
 
-* **區域可用性** - 在您用來建立 Batch 帳戶的區域中，可能不會提供某個 VM 系列或大小。 若要確認是否有提供某個大小，請參閱[依區域提供的產品](https://azure.microsoft.com/regions/services/)。
+* **區域可用性** - 在用來建立 Batch 帳戶的區域中，可能不會提供某個 VM 系列或大小。 若要確認是否有提供某個大小，請參閱[依區域提供的產品](https://azure.microsoft.com/regions/services/)。
 
 * **配額** - Batch 帳戶中的[核心配額](batch-quota-limit.md#resource-quotas)可能會限制您可以新增至 Batch 集區的指定大小節點數目。 若要要求增加配額，請參閱[本文](batch-quota-limit.md#increase-a-quota)。 
 
@@ -99,5 +90,5 @@ ms.locfileid: "60775724"
 
 ## <a name="next-steps"></a>後續步驟
 
-* 如需 Batch 的深入概觀，請參閱[使用 Batch 開發大規模的平行計算解決方案](batch-api-basics.md)。
+* 了解 [Batch 服務工作流程和主要資源](batch-service-workflow-features.md)，例如集區、節點、作業和工作。
 * 如需使用計算密集型 VM 大小的相關資訊，請參閱[在 Batch 集區中使用具備 RDMA 功能或已啟用 GPU 功能的執行個體](batch-pool-compute-intensive-sizes.md)。

@@ -1,24 +1,20 @@
 ---
-title: Azure Service Fabric Mesh 的狀態儲存體選項 | Microsoft Docs
+title: Azure Service Fabric 網格上的狀態儲存體選項
 description: 深入了解如何在 Azure Service Fabric Mesh 上執行的 Service Fabric Mesh 應用程式中可靠地儲存狀態。
-services: service-fabric-mesh
-keywords: ''
 author: dkkapur
 ms.author: dekapur
 ms.date: 11/27/2018
 ms.topic: conceptual
-ms.service: service-fabric-mesh
-manager: jeconnoc
-ms.openlocfilehash: ef51040d1bad74ee74d5901d1f5acbe875c02a07
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d56ce811155f7b7f60fa870dbdae2550afab2eac
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60810526"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246821"
 ---
 # <a name="state-management-with-service-fabric"></a>使用 Service Fabric 的狀態管理
 
-Service Fabric 支援許多不同的狀態儲存體選項。 如需狀態管理模式和 Service Fabric 的概念性概觀，請參閱 [Service Fabric 概念：狀態](/azure/service-fabric/service-fabric-concepts-state)。 不論您的服務在 Service Fabric Mesh 內部或外部執行，這些相同的概念都適用。 
+Service Fabric 支援許多不同的狀態儲存體選項。 如需狀態管理模式和 Service Fabric 的概念性概觀，請參閱 [Service Fabric 概念：狀態](../service-fabric/service-fabric-concepts-state.md)。 不論您的服務在 Service Fabric Mesh 內部或外部執行，這些相同的概念都適用。 
 
 使用 Service Fabric Mesh，您可以輕鬆地部署新應用程式，並將它連線到 Azure 中裝載的現有資料存放區。 除了使用任何遠端資料庫，有數個選項可供儲存資料，其取決於服務需要本機或遠端儲存體。 
 
@@ -30,7 +26,7 @@ Service Fabric 支援許多不同的狀態儲存體選項。 如需狀態管理�
 
 ### <a name="service-fabric-reliable-volume"></a>Service Fabric 可靠磁碟區
 
-Service Fabric 可靠磁碟區是用來將本機磁碟區掛接至容器的 Docker 磁碟區驅動程式。 讀取和寫入是本機作業且速度很快。 資料會複寫至外部的次要節點，以便具有高度可用性。 容錯移轉也很快速。 容器損毀時，便會容錯移轉至已有資料複本的節點。 如需範例，請參閱[如何使用 Service Fabric 可靠磁碟區來部署應用程式。](service-fabric-mesh-howto-deploy-app-sfreliable-disk-volume.md)
+Service Fabric 可靠磁碟區是用來將本機磁碟區掛接至容器的 Docker 磁碟區驅動程式。 讀取和寫入是本機作業且速度很快。 資料會複寫至外部的次要節點，以便具有高度可用性。 容錯移轉也很快速。 容器損毀時，便會容錯移轉至已有資料複本的節點。 如需範例，請參閱[如何使用 Service Fabric 可靠磁片區部署應用程式](service-fabric-mesh-howto-deploy-app-sfreliable-disk-volume.md)。
 
 ### <a name="azure-files-volume"></a>檔案儲存體磁碟區
 

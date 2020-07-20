@@ -1,5 +1,5 @@
 ---
-title: 建立、變更或刪除虛擬網路 TAP - Azure CLI | Microsoft Docs
+title: 建立、變更或刪除 VNet 點擊 Azure CLI
 description: 了解如何使用 Azure CLI 來建立、變更或刪除虛擬網路 TAP。
 services: virtual-network
 documentationcenter: na
@@ -10,25 +10,24 @@ tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/18/2018
 ms.author: kaanan
-ms.openlocfilehash: 3d95a9ea555cceda82530eb5c487eeb993c1a678
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 9460208d66e859f5fe1ce0e9ae4d62087ea3f4ff
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60743185"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84696013"
 ---
 # <a name="work-with-a-virtual-network-tap-using-the-azure-cli"></a>使用 Azure CLI 來處理虛擬網路 TAP
 
-Azure 虛擬網路 TAP (終端機存取點) 可讓您持續將您的虛擬機器網路流量串流到網路封包收集器或分析工具。 收集器或分析工具是由[網路虛擬設備](https://azure.microsoft.com/solutions/network-appliances/)合作夥伴所提供。 如需經驗證能與虛擬網路 TAP 相容的合作夥伴解決方案清單，請參閱[合作夥伴解決方案](virtual-network-tap-overview.md#virtual-network-tap-partner-solutions)。 
+Azure 虛擬網路 TAP (終端機存取點) 可讓您持續將虛擬機器網路流量串流到網路封包收集器或分析工具。 收集器或分析工具是由[網路虛擬裝置](https://azure.microsoft.com/solutions/network-appliances/)合作夥伴所提供。 如需經驗證能與虛擬網路 TAP 相容的合作夥伴解決方案清單，請參閱[合作夥伴解決方案](virtual-network-tap-overview.md#virtual-network-tap-partner-solutions)。 
 
 ## <a name="create-a-virtual-network-tap-resource"></a>建立虛擬網路 TAP 資源
 
-建立虛擬網路 TAP 資源之前，請先閱讀[必要條件](virtual-network-tap-overview.md#prerequisites)。 您可以執行 [Azure Cloud Shell](https://shell.azure.com/bash) 中採用的命令，或從您的電腦執行 Azure 命令列介面 (CLI)。 Azure Cloud Shell 是免費的互動式殼層，而且不會要求您必須在電腦上安裝 Azure CLI。 您必須使用具有適當[權限](virtual-network-tap-overview.md#permissions)的帳戶登入 Azure。 此文章需要 Azure CLI 2.0.46 版或更新版本。 執行 `az --version` 來了解安裝的版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI 2.0](/cli/azure/install-azure-cli)。 擴充功能目前可供虛擬網路 TAP。 若要安裝延伸模組，您需要執行`az extension add -n virtual-network-tap`。 如果您在本機執行 Azure CLI，則也需要執行 `az login` 以建立與 Azure 的連線。
+建立虛擬網路 TAP 資源之前，請先閱讀[必要條件](virtual-network-tap-overview.md#prerequisites)。 您可以執行 [Azure Cloud Shell](https://shell.azure.com/bash) 中採用的命令，或從您的電腦執行 Azure 命令列介面 (CLI)。 Azure Cloud Shell 是免費的互動式殼層，而且不會要求您必須在電腦上安裝 Azure CLI。 您必須使用具有適當[權限](virtual-network-tap-overview.md#permissions)的帳戶登入 Azure。 此文章需要 Azure CLI 2.0.46 版或更新版本。 執行 `az --version` 來了解安裝的版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI 2.0](/cli/azure/install-azure-cli)。 [虛擬網路] 點目前以擴充功能的形式提供。 若要安裝延伸模組，您需要執行 `az extension add -n virtual-network-tap` 。 如果您在本機執行 Azure CLI，則也需要執行 `az login` 以建立與 Azure 的連線。
 
 1. 將您訂用帳戶的識別碼擷取到在稍後步驟使用的變數中：
 
@@ -86,6 +85,7 @@ Azure 虛擬網路 TAP (終端機存取點) 可讓您持續將您的虛擬機器
       --query id \
       --out tsv)
       ```
+
    - 使用前端 IP 設定的識別碼做為目的地與選擇性的連接埠屬性，建立虛擬網路 TAP。 連接埠會指定將會接收 TAP 流量之前端 IP 設定上的目的地連接埠：  
 
       ```azurecli-interactive
@@ -140,7 +140,7 @@ Azure 虛擬網路 TAP (終端機存取點) 可讓您持續將您的虛擬機器
 
 ## <a name="delete-the-tap-configuration-on-a-network-interface"></a>刪除網路介面上的 TAP 設定
 
-   ```azure-cli-interactive
+   ```azurecli-interactive
    az network nic vtap-config delete \
    --resource-group myResourceGroup \
    --nic myNetworkInterface \

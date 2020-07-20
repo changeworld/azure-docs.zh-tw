@@ -1,21 +1,14 @@
 ---
-title: Azure Functions 的 ZIP 推送部署 | Microsoft Docs
+title: Azure Functions 的 ZIP 推送部署
 description: 使用 Kudu 部署服務的 .zip 檔案部署工具來發佈 Azure Functions。
-services: functions
-documentationcenter: na
-author: ggailey777
-manager: jeconnoc
-ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 08/12/2018
-ms.author: glenga
-ms.openlocfilehash: 2762e5c4f2b67415a0e42e80a34ae5b34c57adc9
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: e104661dcdf1f6c6fd6dd5eb1024748980e7931f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62111183"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833047"
 ---
 # <a name="zip-deployment-for-azure-functions"></a>Azure Functions 的 ZIP 部署
 
@@ -23,7 +16,7 @@ ms.locfileid: "62111183"
 
 Azure Functions 擁有 Azure App Service 所提供的全套持續部署與整合選項。 如需詳細資訊，請參閱 [Azure Functions 的持續部署](functions-continuous-deployment.md)。
 
-為了加快開發速度，您可能會發現直接從 .zip 檔案部署函式應用程式的專案檔會比較容易。 .zip 部署 API 會取得 .zip 檔案的內容，並將內容擷取至函式應用程式的 `wwwroot` 資料夾。 此 .zip 檔案部署所使用的是支援持續整合式部署的同一個 Kudu 服務，包括：
+若要加速開發，您可能會發現直接從 .zip 檔案部署函式應用程式專案檔會比較容易。 .zip 部署 API 會取得 .zip 檔案的內容，並將內容擷取至函式應用程式的 `wwwroot` 資料夾。 此 .zip 檔案部署所使用的是支援持續整合式部署的同一個 Kudu 服務，包括：
 
 + 刪除較舊部署所留下的檔案。
 + 部署自訂，包括執行中的部署指令碼。
@@ -49,34 +42,36 @@ Azure Functions 擁有 Azure App Service 所提供的全套持續部署與整合
 
 不過，您可能已在 Azure 入口網站中使用編輯器建立好您的函式。 您可以使用下列其中一個方式來下載現有函式應用程式專案：
 
-+ **從 Azure 入口網站：**
++ **從 [Azure 入口網站：**
 
   1. 登入 [Azure 入口網站](https://portal.azure.com)，然後移至您的函式應用程式。
 
-  2. 在 [概觀] 索引標籤上，選取 [下載應用程式內容]。 選取下載選項，然後選取 [下載]。
+  2. 在 [概觀]**** 索引標籤上，選取 [下載應用程式內容]****。 選取下載選項，然後選取 [下載]****。
 
       ![下載函式應用程式專案](./media/deployment-zip-push/download-project.png)
 
      所下載的 .zip 檔案會採用正確格式，以便您可以使用 .zip 推送部署加以重新發佈至函式應用程式。 入口網站下載也可新增直接在 Visual Studio 中開啟您函式應用程式所需的檔案。
 
-+ **使用 REST API：**
++ **使用 REST Api：**
 
     使用下列部署 GET API 從您的 `<function_app>` 專案下載檔案： 
 
-        https://<function_app>.scm.azurewebsites.net/api/zip/site/wwwroot/
+    ```http
+    https://<function_app>.scm.azurewebsites.net/api/zip/site/wwwroot/
+    ```
 
     包括 `/site/wwwroot/` 可確保您的 zip 檔案僅包含函式應用程式專案檔案，而不是整個站台。 如果您尚未登入 Azure，系統會要求您登入。  
 
 您也可以從 GitHub 存放庫下載 .zip 檔案。 當您將 GitHub 存放庫下載為 .zip 檔案時，GitHub 會為分支新增額外的資料夾層級。 這個額外的資料夾層級表示，由於您是從 GitHub 下載 .zip 檔案，所以無法直接部署該檔案。 如果您使用 GitHub 存放庫來維護函式應用程式，請使用[持續整合](functions-continuous-deployment.md)來部署應用程式。  
 
-## <a name="cli"></a>使用 Azure CLI 進行部署
+## <a name="deploy-by-using-azure-cli"></a><a name="cli"></a>使用 Azure CLI 進行部署
 
 您可以使用 Azure CLI 來觸發推送部署。 請使用 [az functionapp deployment source config-zip](/cli/azure/functionapp/deployment/source#az-functionapp-deployment-source-config-zip) 命令，將 .zip 檔案推送部署至函式應用程式。 若要使用此命令，您所使用的 Azure CLI 必須是 2.0.21 版或更新版本。 若要了解您所使用的 Azure CLI 版本，請使用 `az --version` 命令。
 
-在下列命令中，使用 .zip 檔案的位置路徑取代 `<zip_file_path>` 預留位置。 也請使用函式應用程式的唯一名稱取代 `<app_name>`。 
+在下列命令中，使用 .zip 檔案的位置路徑取代 `<zip_file_path>` 預留位置。 此外，請 `<app_name>` 以函式應用程式的唯一名稱取代，並 `<resource_group>` 以您的資源組名取代。
 
 ```azurecli-interactive
-az functionapp deployment source config-zip  -g myResourceGroup -n \
+az functionapp deployment source config-zip -g <resource_group> -n \
 <app_name> --src <zip_file_path>
 ```
 

@@ -4,7 +4,7 @@ description: 示範如何重設 Azure Windows VM 的網路介面
 services: virtual-machines-windows, azure-resource-manager
 documentationcenter: ''
 author: genlin
-manager: willchen
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue, azure-resource-manager
 ms.service: virtual-machines-windows
@@ -12,16 +12,14 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 11/16/2018
 ms.author: genli
-ms.openlocfilehash: 3a8e005f8678deef9fc4aebd2d620619fe6074bc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a8bd12d98b76d5848753987c4f7bcb76d4e2266d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60307287"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84706591"
 ---
 # <a name="how-to-reset-network-interface-for-azure-windows-vm"></a>如何重設 Azure Windows VM 的網路介面 
-
-[!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 本文說明如何重設 Azure Windows VM 的網路介面，以在下列事項之後，解決無法連線到 Microsoft Azure Windows 虛擬機器 (VM) 時的問題：
 
@@ -36,14 +34,14 @@ ms.locfileid: "60307287"
 
 1.  移至 [Azure 入口網站](https://ms.portal.azure.com)。
 2.  選取受影響的虛擬機器。
-3.  選取 [網絡]，然後選取 VM 的網路介面。
+3.  選取 [網絡]****，然後選取 VM 的網路介面。
 
     ![網路介面位置](./media/reset-network-interface/select-network-interface-vm.png)
     
-4.  選取 [IP 組態]。
+4.  選取 [IP 組態]****。
 5.  選取 IP。 
-6.  如果 [私人 IP 指派] 不是 [靜態]，請將它變更為 [靜態]。
-7.  将“IP 地址”更改为子网中可用的其他 IP 地址。
+6.  如果**私人 IP 指派**不是**靜態**的，請將它變更為**靜態**。
+7.  將 [IP 位址]**** 變更為子網路中可用的其他 IP 位址。
 8. 虛擬機器會重新啟動，以便對系統初始化新的 NIC。
 9.  嘗試使用 RDP 連線到您的電腦。 如果成功，您可以自行決定是否將私人 IP 位址變更回原始位址， 或是維持現有設定。 
 
@@ -68,29 +66,31 @@ ms.locfileid: "60307287"
     Test-AzureStaticVNetIP –VNetName $VNET –IPAddress  $IP
 
     #Add/Change static IP. This process will not change MAC address
-    Get-AzVM -ServiceName $ResourceGroup -Name $VM | Set-AzureStaticVNetIP -IPAddress $IP | Update-AzVM
+    Get-AzVM -ResourceGroupName $ResourceGroup -Name $VM | Set-AzureStaticVNetIP -IPAddress $IP | Update-AzVM
     ```
 3. 嘗試使用 RDP 連線到您的電腦。  如果成功，您可以自行決定是否將私人 IP 位址變更回原始位址， 或是維持現有設定。
 
 ### <a name="for-classic-vms"></a>適用於傳統 VM
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
 若要重設網路介面，請按照以下步驟操作：
 
 #### <a name="use-azure-portal"></a>使用 Azure 入口網站
 
 1.  移至 [Azure 入口網站]( https://ms.portal.azure.com)。
-2.  選取 [虛擬機器 (傳統)]。
-3.  选择受影响的虚拟机。
-4.  選取 [IP 位址]。
-5.  如果“专用 IP 分配”不是“静态”，则将其更改为“静态”。
-6.  將 [IP 位址] 變更為子網路中可用的其他 IP 位址。
-7.  選取 [ **儲存**]。
+2.  選取 [虛擬機器 (傳統)]****。
+3.  選取受影響的虛擬機器。
+4.  選取 [IP 位址]****。
+5.  如果**私人 IP 指派**不是**靜態**的，請將它變更為**靜態**。
+6.  將 [IP 位址]**** 變更為子網路中可用的其他 IP 位址。
+7.  選取 [儲存]。
 8.  虛擬機器會重新啟動，以便對系統初始化新的 NIC。
 9.  嘗試使用 RDP 連線到您的電腦。 如果成功，您可以選擇將私人 IP 位址還原回原始位址。  
 
 #### <a name="use-azure-powershell"></a>使用 Azure PowerShell
 
-1. 確定您已安裝[最新的 Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)。
+1. 請確定您已安裝[最新的 Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) 。
 2. 開啟已提高權限的 Azure PowerShell 工作階段 (以系統管理員的身分執行)。 執行下列命令：
 
     ```powershell
@@ -109,7 +109,7 @@ ms.locfileid: "60307287"
     Test-AzureStaticVNetIP –VNetName $VNET –IPAddress  $IP
     
     #Add/Change static IP. This process will not change MAC address
-    Get-AzureVM -ServiceName $CloudService -Name $VM | Set-AzureStaticVNetIP -IPAddress $IP |Update-AzureVM
+    Get-AzureVM -ResourceGroupName $CloudService -Name $VM | Set-AzureStaticVNetIP -IPAddress $IP |Update-AzureVM
     ```
 3. 嘗試使用 RDP 連線到您的電腦。 如果成功，您可以自行決定是否將私人 IP 位址變更回原始位址， 或是維持現有設定。 
 
@@ -117,10 +117,10 @@ ms.locfileid: "60307287"
 可以使用遠端桌面連線到機器之後，您必須刪除舊的 NIC 以避免潛在的問題：
 
 1.  開啟 [裝置管理員]。
-2.  選取 [檢視] > [顯示隱藏的裝置]。
-3.  選取 [網路介面卡]。 
+2.  選取 **[**  >  **顯示隱藏的裝置**]。
+3.  選取 [網路介面卡]****。 
 4.  檢查名稱為「Microsoft Hyper-V 網路介面卡」的介面卡。
-5.  無法使用的介面卡會以灰色來顯示。以滑鼠右鍵按一下介面卡，然後選取 [解除安裝]。
+5.  您可能會看到顯示為灰色的無法使用介面卡。在介面卡上按一下滑鼠右鍵，然後選取 [卸載]。
 
     ![NIC 的影像](media/reset-network-interface/nicpage.png)
 

@@ -2,21 +2,20 @@
 author: dlepow
 ms.service: container-instances
 ms.topic: include
-ms.date: 03/01/2019
+ms.date: 10/17/2019
 ms.author: danlep
-ms.openlocfilehash: d5491784dd27843ebbb13f692d8426c2b7edeec5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 7f5b6780fd330489a893354143dc866bf416c8e8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60537719"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75445830"
 ---
-### <a name="supported-regions"></a>支援區域
+### <a name="region-availability"></a>區域可用性
 
-* 美國東部 
-* 美國西部 2 
-* 美國中南部 
-* 西歐 
-* 北歐 
-* 東亞 
-* 印度中部 
+| 區域 | OS | 可用的 GPU Sku |
+| -------- | ---- | :-----------: |
+| 美國東部、西歐、美國西部2 | Linux | K80、P100、V100 |
+| 東南亞 | Linux | P100、V100|
+| 印度中部 | Linux | V100 |
+| 歐洲北部 | Linux | K80 |

@@ -1,19 +1,17 @@
 ---
-title: 線路的 NAT 需求 - ExpressRoute：Azure | Microsoft Docs
+title: Azure ExpressRoute：線路的 NAT 需求
 description: 此頁面提供為 ExpressRoute 線路設定和管理 NAT 的詳細需求。
 services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 01/30/2019
+ms.date: 09/18/2019
 ms.author: cherylmc
-ms.custom: seodec18
-ms.openlocfilehash: 508a20e826c2f7bf1260bde6858eb4472c16a5c0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 9f5c5cc3a943ad4a8882a91ffdcee89c2ad39743
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60883403"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "79272964"
 ---
 # <a name="expressroute-nat-requirements"></a>ExpressRoute NAT 需求
 若要使用 ExpressRoute 連線到 Microsoft 雲端服務，您必須設定和管理 NAT。 有些連線提供者會以受控服務來支援設定和管理路由。 請洽詢您的連線服務提供者，以查看他們是否提供這類服務。 如果沒有，您必須遵守以下所述的需求。 
@@ -21,7 +19,7 @@ ms.locfileid: "60883403"
 如需不同路由網域的概觀，請檢閱 [ExpressRoute 線路和路由網域](expressroute-circuit-peerings.md) 頁面。 為了符合 Azure 公用和 Microsoft 對等的公用 IP 位址需求，建議在您的網路與 Microsoft 之間設定 NAT。 本節提供您需要設定的 NAT 基礎結構的詳細描述。
 
 ## <a name="nat-requirements-for-microsoft-peering"></a>Microsoft 對等的 NAT 需求
-Microsoft 對等路徑可讓您連接到不支援透過 Azure 公用對等路徑存取的 Microsoft 雲端服務。 服務清單包括 Office 365 服務，例如 Exchange Online、SharePoint Online、商務用 Skype 和 Dynamics 365。 Microsoft 預計在 Microsoft 對等上支援雙向連線能力。 以 Microsoft 雲端服務為目的地的流量，必須由 SNAT 轉譯成有效的公用 IPv4 位址，才能進入 Microsoft 網路。 從 Microsoft 雲端服務送到您的網路的流量，必須在網際網路邊緣經過 SNAT 轉譯，才可防止[非對稱式路由](expressroute-asymmetric-routing.md)。 下圖提供如何為 Microsoft 對等設定 NAT 的高階圖片。
+Microsoft 對等路徑可讓您連接到不支援透過 Azure 公用對等路徑存取的 Microsoft 雲端服務。 服務清單包括 Office 365 服務，例如 Exchange Online、SharePoint Online 和商務用 Skype。 Microsoft 預計在 Microsoft 對等上支援雙向連線能力。 以 Microsoft 雲端服務為目的地的流量，必須由 SNAT 轉譯成有效的公用 IPv4 位址，才能進入 Microsoft 網路。 從 Microsoft 雲端服務送到您的網路的流量，必須在網際網路邊緣經過 SNAT 轉譯，才可防止[非對稱式路由](expressroute-asymmetric-routing.md)。 下圖提供如何為 Microsoft 對等設定 NAT 的高階圖片。
 
 ![](./media/expressroute-nat/expressroute-nat-microsoft.png) 
 
@@ -72,6 +70,6 @@ Azure 公用對等路徑可讓您連接到裝載於 Azure 中的所有服務的�
 * 設定 ExpressRoute 連線。
   
   * [建立 ExpressRoute 線路](expressroute-howto-circuit-portal-resource-manager.md)
-  * [配置路由](expressroute-howto-routing-portal-resource-manager.md)
+  * [設定路由](expressroute-howto-routing-portal-resource-manager.md)
   * [將 VNet 連結到 ExpressRoute 線路](expressroute-howto-linkvnet-portal-resource-manager.md)
 

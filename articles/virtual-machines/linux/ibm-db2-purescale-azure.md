@@ -1,36 +1,32 @@
 ---
 title: Azure 上的 IBM DB2 pureScale
 description: 在此文章中，我們會顯示用於在 Azure 上執行 IBM DB2 pureScale 環境的架構。
-services: virtual-machines-linux
-documentationcenter: ''
 author: njray
 manager: edprice
 editor: edprice
-tags: ''
-ms.assetid: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2018
-ms.author: njray
-ms.openlocfilehash: 1622de0cccdbc8fee0681e209e756b30da292d3c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.author: edprice
+ms.openlocfilehash: d8309a69c9c38610fa7bea3fee202a60d836980c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60543000"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "78945060"
 ---
 # <a name="ibm-db2-purescale-on-azure"></a>Azure 上的 IBM DB2 pureScale
 
 IBM DB2 pureScale 環境提供適用於 Azure 的資料庫叢集，可在 Linux 作業系統上提供高可用性與延展性。 本文顯示在 Azure 上執行 DB2 pureScale 的架構。
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
-企業長久以來都使用關聯式資料庫管理系統 (RDBMS) 平台來滿足其線上交易處理 (OLTP) 需求。 如今，有許多企業都已將其大型主機型資料庫環境移轉到 Azure 做為延伸處理能力、降低成本及維持穩定之作業成本結構的方式。
+企業有長時間使用傳統關係資料庫管理系統（RDBMS）平臺來滿足其線上交易處理（OLTP）需求。 如今，有許多企業都已將其大型主機型資料庫環境移轉到 Azure 做為延伸處理能力、降低成本及維持穩定之作業成本結構的方式。 移轉通常是將傳統平台現代化的第一個步驟。 
 
-移轉通常是將舊平台現代化的第一個步驟。 例如，一個企業客戶最近將其在 z/OS 上的 IBM DB2 環境改交由 Azure 上的 IBM DB2 pureScale 代管。 Linux 上的 IBM DB2 pureScale 雖然與原始環境不同，但針對在大型主機上之 Parallel Sysplex 設定中執行的 z/OS 提供與 IBM DB2 類似的高可用性與延展性。
+在近期，企業客戶會將其在 z/OS 上執行的 IBM DB2 環境重新裝載到 Azure 上的 IBM DB2 pureScale。 Db2 pureScale 資料庫叢集解決方案可在 Linux 作業系統上提供高可用性和擴充性。 客戶在安裝 Db2 pureScale 之前，已順利執行 Db2，做為在 Azure 上大規模系統中的單一虛擬機器（VM）上的獨立、相應增加實例。 
+
+Linux 上的 IBM DB2 pureScale 雖然與原始環境不同，但針對在大型主機上之 Parallel Sysplex 設定中執行的 z/OS 提供與 IBM DB2 類似的高可用性與延展性。 在此案例中，叢集會透過 iSCSI 連線到共用存放裝置叢集。 我們使用了 GlusterFS 檔案系統，這是一套免費、可擴充、開放原始碼的分散式檔案系統，專為雲端儲存體優化。 不過，IBM 已不再支援此解決方案。 若要維護 IBM 的支援，您必須使用支援的 iSCSI 相容檔案系統。 Microsoft 提供儲存空間直接存取（S2D）做為選項
 
 此文章說明用於此 Azure 移轉的架構。 客戶使用 Red Hat Linux 7.4 來測試設定。 您可以從 Azure Marketplace 取得此版本。 選擇 Linux 發行版本之前，請務必確認目前支援的版本。 如需詳細資訊，請參閱 [IBM DB2 pureScale](https://www.ibm.com/support/knowledgecenter/SSEPGG) 與 [GlusterFS](https://docs.gluster.org/en/latest/) 文件 (英文)。
 
@@ -47,20 +43,20 @@ IBM DB2 pureScale 環境提供適用於 Azure 的資料庫叢集，可在 Linux 
 
 為在 Azure 上支援高可用性與延展性，您可以為 DB2 pureScale 使用相應放大的共用資料結構。 客戶移轉使用下列範例架構。
 
-![Azure 虛擬機器上顯示儲存體和網路功能的 DB2 pureScale](media/db2-purescale-on-azure/pureScaleArchitecture.png "Azure 虛擬機器上顯示儲存體與網路功能的 DB2 pureScale")
+![在顯示儲存體和網路功能的 Azure 虛擬機器上的 DB2 pureScale](media/db2-purescale-on-azure/pureScaleArchitecture.png "在顯示儲存體和網路功能的 Azure 虛擬機器上的 DB2 pureScale")
 
 
 此圖說明 DB2 pureScale 叢集所需的邏輯層。 這些包括適用於用戶端、適用於管理、適用於快取、適用於資料庫引擎與適用於共用儲存體的虛擬機器。 
 
-除了資料庫引擎節點之外，此圖也包括兩個用於叢集快取工具 (CF) 的節點。 資料庫引擎本身使用最少兩個節點。 屬於 pureScale 叢集的 DB2 伺服器稱為成員。 
+除了資料庫引擎節點之外，此圖也包括兩個用於叢集快取工具 (CF) 的節點。 資料庫引擎本身至少會使用兩個節點。 屬於 pureScale 叢集的 DB2 伺服器稱為成員。 
 
-叢集透過 iSCSI 連線到三個節點的 GlusterFS 共用儲存體叢集以提供相應放大的儲存體與高可用性。 DB2 pureScale 是安裝在執行 Linux 的 Azure 虛擬機器上。
+叢集會透過 iSCSI 連線到三個節點的共用儲存體叢集，以提供向外延展儲存體和高可用性。 DB2 pureScale 是安裝在執行 Linux 的 Azure 虛擬機器上。
 
 此方法是一個範本，您可以針對您組織的大小與規模修改此範本。 此方法依據：
 
 -   兩個或多個資料庫成員會與至少兩個 CF 節點合併。 這兩個節點會管理全域緩衝區集區 (GBP)，以讓共用記憶體與全域鎖定管理員 (GLM) 服務控制共用存取並鎖定來自作用中成員的內容。 一個 CF 節點做為主要，而另一個節點做為次要容錯移轉 CF 節點。 為避免環境中有單一失敗點，DB2 pureScale 叢集至少需要四個節點。
 
--   高效能共用儲存體 (在圖中以 P30 大小顯示)。 每個 Gluster FS 節點都會使用此儲存體。
+-   高效能共用儲存體 (在圖中以 P30 大小顯示)。 每個節點都會使用此儲存體。
 
 -   適用於資料成員與共用儲存體的高效能網路功能。
 
@@ -76,13 +72,13 @@ IBM DB2 pureScale 環境提供適用於 Azure 的資料庫叢集，可在 Linux 
 
 -   DB2 CF 使用記憶體最佳化虛擬機器，例如 E 系列或 L 系列。
 
--   GlusterFS 儲存體使用執行 Linux 的標準 \_DS4\_v2 虛擬機器。
+-   共用存放裝置叢集，使用執行 \_ Linux 的標準 DS4 \_ v2 虛擬機器。
 
--   GlusterFS jumpbox 使用執行 Linux 的標準 \_DS2\_v2 虛擬機器。
+-   管理 jumpbox 是執行 Linux 的標準 \_ DS2 \_ v2 虛擬機器。  替代方案是 Azure 防禦，這是一項服務，可為您虛擬網路中的所有 Vm 提供安全的 RDP/SSH 體驗。
 
 -   用戶端是執行 v 的標準 \_DS3\_v2 虛擬機器 (用於測試)。
 
--   見證伺服器是執行 Linux 的標準 \_DS3\_v2 虛擬機器 (用於 DB2 pureScale)。
+-   *選擇項*。 見證伺服器。 只有特定的舊版 Db2 pureScale 才需要此項。 此範例使用執行 Linux 的標準 \_ DS3 \_ v2 虛擬機器（用於 DB2 pureScale）。
 
 > [!NOTE]
 > DB2 pureScale 叢集需要至少兩個 DB2 執行個體。 此外也需要快取執行個體與鎖定管理員執行個體。
@@ -91,11 +87,9 @@ IBM DB2 pureScale 環境提供適用於 Azure 的資料庫叢集，可在 Linux 
 
 就像 Oracle RAC 一樣，DB2 pureScale 是高效能區塊 I/O、相應放大資料庫。 我們建議您使用符合您需求的最大 [Azure 進階 SSD](disks-types.md) 選項。 較小的儲存體選項可能適用於開發及測試環境，而生產環境通常需要較大的儲存體容量。 範例架構因為 [P30](https://azure.microsoft.com/pricing/details/managed-disks/) 的 IOPS 速率與大小和價格的原因而使用它。 不論大小為何，使用進階儲存體都能獲得最佳效能。
 
-DB2 pureScale 使用共用所有項目架構，其中資料可供所有叢集節點存取。 進階儲存體必須在執行個體之間共用，不論是透過隨選方式或專屬執行個體方式。
+DB2 pureScale 使用共用所有項目架構，其中資料可供所有叢集節點存取。 Premium 儲存體必須在多個實例之間共用，不論是視需要或在專用實例上。
 
-大型的 DB2 pureScale 叢集會需要 200 TB 以上的進階共用儲存體 (具有 100,000 的 IOPS)。 DB2 pureScale 支援您可在 Azure 上使用的 iSCSI 區塊介面。 iSCSI 介面需要共用儲存體叢集，您可使用 GlusterFS、S2D 或另一個工具來實作該叢集。 此類型的解決方案會在 Azure 中建立虛擬儲存區域網路 (vSAN) 裝置。 DB2 pureScale 會使用 vSAN 來安裝用來在虛擬機器之間共用資料的叢集檔案系統。
-
-此範例架構使用 GlusterFS，這是一種免費、可調整規模、開放原始碼的分散式檔案系統，已針對雲端儲存體最佳化。
+大型的 DB2 pureScale 叢集會需要 200 TB 以上的進階共用儲存體 (具有 100,000 的 IOPS)。 DB2 pureScale 支援您可在 Azure 上使用的 iSCSI 區塊介面。 ISCSI 介面需要共用儲存體叢集，您可以使用 S2D 或其他工具來執行此叢集。 此類型的解決方案會在 Azure 中建立虛擬儲存區域網路 (vSAN) 裝置。 DB2 pureScale 會使用 vSAN 來安裝用來在虛擬機器之間共用資料的叢集檔案系統。
 
 ### <a name="networking-considerations"></a>網路考量
 

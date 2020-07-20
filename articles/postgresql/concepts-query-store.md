@@ -1,21 +1,21 @@
 ---
-title: 在 Azure Database for PostgreSQL-單一伺服器的查詢存放區
-description: 本文章說明查詢存放區功能，在 Azure Database for PostgreSQL-單一伺服器。
+title: 查詢存放區-適用於 PostgreSQL 的 Azure 資料庫-單一伺服器
+description: 本文說明適用於 PostgreSQL 的 Azure 資料庫-單一伺服器中的查詢存放區功能。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: b622de3e21d26676bb11d81a6facf8fea18cabc1
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.date: 07/01/2020
+ms.openlocfilehash: 49eea969f987a72872cda58ae6a7c41e50a14c10
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65067191"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85830276"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>使用查詢存放區監視效能
 
-**適用範圍：** Azure Database for PostgreSQL-9.6] 和 [10 的單一伺服器
+**適用物件：** 適用於 PostgreSQL 的 Azure 資料庫-單一伺服器9.6 版和更新版本
 
 適用於 PostgreSQL 的 Azure 資料庫查詢存放區功能提供的方法可追蹤一段時間的查詢效能。 查詢存放區可協助您快速找到執行時間最長又最耗資源的查詢，簡化效能疑難排解。 查詢存放區會自動擷取查詢的歷程記錄和執行階段統計資料，並予以保留以供您檢閱。 依時間範圍區分資料，以便查看資料庫使用模式。 所有使用者、資料庫及查詢的資料都會儲存在適用於 PostgreSQL 的 Azure 資料庫執行個體中名為 **azure_sys** 的資料庫。
 
@@ -29,14 +29,14 @@ ms.locfileid: "65067191"
 1. 登入 Azure 入口網站，然後選取適用於 PostgreSQL 的 Azure 資料庫伺服器。
 2. 在功能表的 [設定] 區段中，選取 [伺服器參數]。
 3. 搜尋 `pg_qs.query_capture_mode` 參數。
-4. 将值设置为 `TOP` 并**保存**。
+4. 將值設定為 `TOP` 並**儲存**。
 
-若要在查询存储中启用等待统计信息，请执行以下操作： 
+若要啟用查詢存放區中的等候統計資料： 
 1. 搜尋 `pgms_wait_sampling.query_capture_mode` 參數。
-1. 将值设置为 `ALL` 并**保存**。
+1. 將值設定為 `ALL` 並**儲存**。
 
 
-或者，可使用 Azure CLI 设置这些参数。
+或者，您可以使用 Azure CLI 來設定這些參數。
 ```azurecli-interactive
 az postgres server configuration set --name pg_qs.query_capture_mode --resource-group myresourcegroup --server mydemoserver --value TOP
 az postgres server configuration set --name pgms_wait_sampling.query_capture_mode --resource-group myresourcegroup --server mydemoserver --value ALL
@@ -58,6 +58,10 @@ az postgres server configuration set --name pgms_wait_sampling.query_capture_mod
 
 為了讓空間使用量降到最低，會經過一段固定且可設定的時間範圍，才彙總執行階段統計資料存放區的執行階段執行統計資料。 查詢這些查詢存放區檢視，即可看到這些存放區中的資訊。
 
+## <a name="access-query-store-information"></a>存取查詢存放區資訊
+
+查詢存放區的資料會儲存在 Postgres 伺服器上的 azure_sys 資料庫中。 
+
 下列查詢會傳回查詢存放區中的相關資訊：
 ```sql
 SELECT * FROM query_store.qs_view; 
@@ -73,20 +77,20 @@ SELECT * FROM query_store.pgms_wait_sampling_view;
 
 以下是如何查詢存放區中的等候統計資料，以更多深入了解工作負載的一些範例：
 
-| **觀測** | **Action** |
+| **觀測** | **動作** |
 |---|---|
 |高鎖定等候數 | 查看受影響查詢的查詢文字，並找出目標實體。 查看查詢存放區，針對經常執行和/或持續時間很長的實體，尋找修改同一實體的其他查詢。 找出這些查詢之後，請考慮變更應用程式邏輯，改善並行存取，或使用限制較少的隔離等級。|
 | 高緩衝區 IO 等候數 | 在查詢存放區中尋找實體讀取次數高的查詢。 如果與高 IO 等候數的查詢相符，請考慮對基礎實體引進索引，以執行搜尋，而不是掃描。 這可將查詢的 IO 額外負荷降到最低。 請在入口網站檢查伺服器的**效能建議**，以查看是否有此伺服器的索引建議，可供將查詢最佳化。|
 | 高記憶體等候數 | 找出查詢存放區中記憶體耗用量名列前茅的查詢。 這些查詢可能會進一步延遲受影響查詢的進度。 請在入口網站檢查伺服器的**效能建議**，以查看是否有索引建議，可供將這些查詢最佳化。|
 
-## <a name="configuration-options"></a>組態選項
+## <a name="configuration-options"></a>設定選項
 啟用查詢存放區時，會以每 15 分鐘的彙總時間範圍儲存資料一次，每個範圍內最多可有 500 個相異的查詢。 
 
 下列選項可用於設定查詢存放區參數。
 
 | **參數** | **說明** | **預設值** | **Range**|
 |---|---|---|---|
-| pg_qs.query_capture_mode | 設定追蹤哪些陳述式。 | None | none、top、all |
+| pg_qs.query_capture_mode | 設定追蹤哪些陳述式。 | 無 | none、top、all |
 | pg_qs.max_query_text_length | 設定可以儲存的最大查詢長度。 較長的查詢會遭截斷。 | 6000 | 100 - 10K |
 | pg_qs.retention_period_in_days | 設定保留期限。 | 7 | 1 - 30 |
 | pg_qs.track_utility | 設定是否要追蹤公用程式命令 | on | on、off |
@@ -95,7 +99,7 @@ SELECT * FROM query_store.pgms_wait_sampling_view;
 
 | **參數** | **說明** | **預設值** | **Range**|
 |---|---|---|---|
-| pgms_wait_sampling.query_capture_mode | 設定追蹤等候統計資料的哪些陳述式。 | None | none、all|
+| pgms_wait_sampling.query_capture_mode | 設定追蹤等候統計資料的哪些陳述式。 | 無 | none、all|
 | Pgms_wait_sampling.history_period | 設定以毫秒為單位的等候事件取樣頻率。 | 100 | 1-600000 |
 
 > [!NOTE] 
@@ -109,72 +113,144 @@ SELECT * FROM query_store.pgms_wait_sampling_view;
 
 移除常值和常數之後，查看查詢結構，其會呈現標準化。 如果兩個查詢完全相同 (但常值除外)，則兩者會有相同的雜湊碼。
 
-### <a name="querystoreqsview"></a>query_store.qs_view
+### <a name="query_storeqs_view"></a>query_store.qs_view
 此檢視會傳回查詢存放區中的所有資料。 不同的資料庫識別碼、使用者識別碼及查詢識別碼都會自成一資料列。 
 
-|**名稱**   |**類型** | **參考**  | **說明**|
+|**名稱**   |**型別** | **參考**  | **描述**|
 |---|---|---|---|
-|runtime_stats_entry_id |bigint | | 來自 runtime_stats_entries 資料表的識別碼|
+|runtime_stats_entry_id |BIGINT | | 來自 runtime_stats_entries 資料表的識別碼|
 |user_id    |oid    |pg_authid.oid  |執行陳述式的使用者物件識別 (OID)|
 |db_id  |oid    |pg_database.oid    |在其中執行陳述式的資料庫物件識別 (OID)|
-|query_id   |bigint  || 從陳述式的剖析樹狀結構計算的內部雜湊碼|
-|query_sql_text |Varchar(10000)  || 代表性陳述式的文字。 結構相同的不同查詢會群集在一起；此文字就式叢集中第一個查詢的文字。|
-|plan_id    |bigint |   |對應到此查詢的方案識別碼，尚無法使用|
+|query_id   |BIGINT  || 從陳述式的剖析樹狀結構計算的內部雜湊碼|
+|query_sql_text |Varchar(10000)  || 代表性陳述式的文字。 結構相同的不同查詢會群集在一起；此文字就式叢集中第一個查詢的文字。|
+|plan_id    |BIGINT |   |對應到此查詢的方案識別碼，尚無法使用|
 |start_time |timestamp  ||  依時間貯體彙總的查詢 - 根據預設，貯體的時間範圍為 15 分鐘。 這是和此查詢的時間貯體對應的開始時間。|
 |end_time   |timestamp  ||  和此查詢的時間貯體對應的結束時間。|
-|calls  |bigint  || 查詢執行的次數|
-|total_time |雙精度   ||  查詢總執行時間 (以毫秒為單位)|
+|calls  |BIGINT  || 查詢執行的次數|
+|total_time |雙精度   ||  查詢總執行時間 (以毫秒為單位)|
 |min_time   |雙精度   ||  查詢最短執行時間 (以毫秒為單位)|
 |max_time   |雙精度   ||  查詢最長執行時間 (以毫秒為單位)|
 |mean_time  |雙精度   ||  查詢平均執行時間 (以毫秒為單位)|
 |stddev_time|   雙精度    ||  查詢執行時間標準差 (以毫秒為單位) |
-|rows   |bigint ||  由陳述式擷取或受其影響的資料列總數|
-|shared_blks_hit|   bigint  ||  依據陳述式的共用區塊快取點擊總次數|
-|shared_blks_read|  bigint  ||  由陳述式讀取的共用區塊總數|
-|shared_blks_dirtied|   bigint   || 由陳述式變動的共用區塊總數 |
-|shared_blks_written|   bigint  ||  由陳述式寫入的共用區塊總數|
-|local_blks_hit|    bigint ||   依據陳述式的本機區塊快取點擊總次數|
-|local_blks_read|   bigint   || 由陳述式讀取的本機區塊總數|
-|local_blks_dirtied|    bigint  ||  由陳述式變動的本機區塊總數|
-|local_blks_written|    bigint  ||  由陳述式寫入的本機區塊總數|
-|temp_blks_read |bigint  || 由陳述式讀取的暫存區塊總數|
-|temp_blks_written| bigint   || 由陳述式寫入的暫存區塊總數|
-|blk_read_time  |雙精度    || 陳述式讀取區塊花費的總時間 (以毫秒為單位) (若已啟用 track_io_timing 的話，否則為零)|
-|blk_write_time |雙精度    || 陳述式寫入區塊花費的總時間 (以毫秒為單位) (若已啟用 track_io_timing，否則為零)|
+|rows   |BIGINT ||  由陳述式擷取或受其影響的資料列總數|
+|shared_blks_hit|   BIGINT  ||  依據陳述式的共用區塊快取點擊總次數|
+|shared_blks_read|  BIGINT  ||  由陳述式讀取的共用區塊總數|
+|shared_blks_dirtied|   BIGINT   || 由陳述式變動的共用區塊總數 |
+|shared_blks_written|   BIGINT  ||  由陳述式寫入的共用區塊總數|
+|local_blks_hit|    BIGINT ||   依據陳述式的本機區塊快取點擊總次數|
+|local_blks_read|   BIGINT   || 由陳述式讀取的本機區塊總數|
+|local_blks_dirtied|    BIGINT  ||  由陳述式變動的本機區塊總數|
+|local_blks_written|    BIGINT  ||  由陳述式寫入的本機區塊總數|
+|temp_blks_read |BIGINT  || 由陳述式讀取的暫存區塊總數|
+|temp_blks_written| BIGINT   || 由陳述式寫入的暫存區塊總數|
+|blk_read_time  |雙精度    || 陳述式讀取區塊花費的總時間 (以毫秒為單位) (若已啟用 track_io_timing 的話，否則為零)|
+|blk_write_time |雙精度    || 陳述式寫入區塊花費的總時間 (以毫秒為單位) (若已啟用 track_io_timing，否則為零)|
     
-### <a name="querystorequerytextsview"></a>query_store.query_texts_view
+### <a name="query_storequery_texts_view"></a>query_store.query_texts_view
 此檢視會傳回查詢存放區中的查詢文字資料。 不同的 query_text 都會自成一資料列。
 
-|**名稱**|  **類型**|   **說明**|
+|**名稱**|  **型別**|   **說明**|
 |---|---|---|
-|query_text_id  |bigint     |query_texts 資料表識別碼|
-|query_sql_text |Varchar(10000)     |代表性陳述式的文字。 結構相同的不同查詢會群集在一起；此文字就式叢集中第一個查詢的文字。|
+|query_text_id  |BIGINT     |query_texts 資料表識別碼|
+|query_sql_text |Varchar(10000)     |代表性陳述式的文字。 結構相同的不同查詢會群集在一起；此文字就式叢集中第一個查詢的文字。|
 
-### <a name="querystorepgmswaitsamplingview"></a>query_store.pgms_wait_sampling_view
+### <a name="query_storepgms_wait_sampling_view"></a>query_store.pgms_wait_sampling_view
 此檢視會傳回查詢存放區中的等候事件資料。 不同的資料庫識別碼、使用者識別碼、查詢識別碼及事件都會自成一資料列。
 
-|**名稱**|  **類型**|   **參考**| **說明**|
+|**名稱**|  **型別**|   **參考**| **描述**|
 |---|---|---|---|
 |user_id    |oid    |pg_authid.oid  |執行陳述式的使用者物件識別 (OID)|
 |db_id  |oid    |pg_database.oid    |在其中執行陳述式的資料庫物件識別 (OID)|
-|query_id   |bigint     ||從陳述式的剖析樹狀結構計算的內部雜湊碼|
-|event_type |text       ||後端等候中事件的類型|
-|事件  |text       ||如果後端目前正在等候，為該等候事件的名稱|
-|calls  |整數         ||擷取到相同事件的次數|
+|query_id   |BIGINT     ||從陳述式的剖析樹狀結構計算的內部雜湊碼|
+|event_type |text       ||後端等候中事件的類型|
+|event  |text       ||如果後端目前正在等候，為該等候事件的名稱|
+|calls  |整數        ||擷取到相同事件的次數|
 
 
-### <a name="functions"></a>Functions
+### <a name="functions"></a>函式
 Query_store.qs_reset() 傳回 void
 
-`qs_reset` 捨棄查詢存放區至今收集到的所有統計資料。 只有伺服器管理員角色可以執行此函式。
+`qs_reset` 捨棄查詢存放區至今收集到的所有統計資料。 只有伺服器管理員角色可以執行此函式。
 
 Query_store.staging_data_reset() 傳回 void
 
-`staging_data_reset` 捨棄查詢存放區在記憶體中收集的統計資料 (亦即，記憶體中的資料尚未排清至資料庫)。 只有伺服器管理員角色可以執行此函式。
+`staging_data_reset` 捨棄查詢存放區在記憶體中收集的統計資料 (亦即，記憶體中的資料尚未排清至資料庫)。 只有伺服器管理員角色可以執行此函式。
+
+
+## <a name="azure-monitor"></a>Azure 監視器
+適用於 PostgreSQL 的 Azure 資料庫已與[Azure 監視器診斷設定](../azure-monitor/platform/diagnostic-settings.md)整合。 診斷設定可讓您將 JSON 格式的 Postgres 記錄傳送至[Azure 監視器記錄](../azure-monitor/log-query/log-query-overview.md)，以進行分析和警示、事件中樞以進行串流處理，以及 Azure 儲存體進行封存。
+
+>[!IMPORTANT]
+> 這項診斷功能僅適用于一般用途和記憶體優化定價層。
+
+### <a name="configure-diagnostic-settings"></a>設定診斷設定
+您可以使用 [Azure 入口網站]、[CLI]、[REST API] 和 [PowerShell] 來啟用 Postgres 伺服器的診斷設定。 要設定的記錄類別為**QueryStoreRuntimeStatistics**和**QueryStoreWaitStatistics**。 
+
+若要使用 Azure 入口網站啟用資源記錄：
+
+1. 在入口網站中，移至 Postgres 伺服器導覽功能表中的 [診斷設定]。
+2. 選取 [新增診斷設定]。
+3. 將此設定命名為。
+4. 選取您慣用的端點（儲存體帳戶、事件中樞、log analytics）。
+5. 選取記錄類型**QueryStoreRuntimeStatistics**和**QueryStoreWaitStatistics**。
+6. 儲存您的設定。
+
+若要使用 PowerShell、CLI 或 REST API 啟用這項設定，請造訪[診斷設定一文](../azure-monitor/platform/diagnostic-settings.md)。
+
+### <a name="json-log-format"></a>JSON 記錄格式
+下表描述兩種記錄類型的欄位。 視您選擇的輸出端點而定，所含欄位及其出現順序可能會有所不同。
+
+#### <a name="querystoreruntimestatistics"></a>QueryStoreRuntimeStatistics
+|**欄位** | **描述** |
+|---|---|
+| TimeGenerated [UTC] | 以 UTC 記錄記錄時的時間戳記 |
+| ResourceId | Postgres 伺服器的 Azure 資源 URI |
+| 類別 | `QueryStoreRuntimeStatistics` |
+| OperationName | `QueryStoreRuntimeStatisticsEvent` |
+| LogicalServerName_s | Postgres 伺服器名稱 | 
+| runtime_stats_entry_id_s | 來自 runtime_stats_entries 資料表的識別碼 |
+| user_id_s | 執行陳述式的使用者物件識別 (OID) |
+| db_id_s | 在其中執行陳述式的資料庫物件識別 (OID) |
+| query_id_s | 從陳述式的剖析樹狀結構計算的內部雜湊碼 |
+| end_time_s | 此專案的時間值區對應的結束時間 |
+| calls_s | 查詢執行的次數 |
+| total_time_s | 查詢總執行時間 (以毫秒為單位) |
+| min_time_s | 查詢最短執行時間 (以毫秒為單位) |
+| max_time_s | 查詢最長執行時間 (以毫秒為單位) |
+| mean_time_s | 查詢平均執行時間 (以毫秒為單位) |
+| ResourceGroup | 資源群組 | 
+| SubscriptionId | 您的訂用帳戶識別碼 |
+| ResourceProvider | `Microsoft.DBForPostgreSQL` | 
+| 資源 | Postgres 伺服器名稱 |
+| ResourceType | `Servers` | 
+
+
+#### <a name="querystorewaitstatistics"></a>QueryStoreWaitStatistics
+|**欄位** | **描述** |
+|---|---|
+| TimeGenerated [UTC] | 以 UTC 記錄記錄時的時間戳記 |
+| ResourceId | Postgres 伺服器的 Azure 資源 URI |
+| 類別 | `QueryStoreWaitStatistics` |
+| OperationName | `QueryStoreWaitEvent` |
+| user_id_s | 執行陳述式的使用者物件識別 (OID) |
+| db_id_s | 在其中執行陳述式的資料庫物件識別 (OID) |
+| query_id_s | 查詢的內部雜湊碼 |
+| calls_s | 擷取到相同事件的次數 |
+| event_type_s | 後端等候中事件的類型 |
+| event_s | 當後端目前正在等候時的等候事件名稱 |
+| start_time_t | 事件開始時間 |
+| end_time_s | 事件結束時間 | 
+| LogicalServerName_s | Postgres 伺服器名稱 | 
+| ResourceGroup | 資源群組 | 
+| SubscriptionId | 您的訂用帳戶識別碼 |
+| ResourceProvider | `Microsoft.DBForPostgreSQL` | 
+| 資源 | Postgres 伺服器名稱 |
+| ResourceType | `Servers` | 
 
 ## <a name="limitations-and-known-issues"></a>限制與已知問題
 - 如果 PostgreSQL 伺服器開啟 default_transaction_read_only 參數，查詢存放區會無法擷取資料。
 - 如果遇到長時間的 Unicode 查詢 (> = 6000 個位元組)，查詢存放區功能可能會中斷。
+- [讀取複本](concepts-read-replicas.md)會從主伺服器複寫查詢存放區資料。 這表示讀取複本的查詢存放區不會提供有關讀取複本上執行之查詢的統計資料。
 
 
 ## <a name="next-steps"></a>後續步驟

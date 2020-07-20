@@ -1,72 +1,109 @@
 ---
-title: Azure Data Factory 對應資料流程樞紐轉換
-description: 使用 Azure Data Factory 對應資料流動樞紐轉換的資料行的 powerpivot 資料的資料列
+title: 對應資料流中的樞紐轉換
+description: 使用 Azure Data Factory 對應資料流樞紐轉換，將資料從資料列樞紐處理為資料行
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 01/30/2019
-ms.openlocfilehash: e16cac281b77f3ca93d9ef358ae806203bc8b663
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: a0084c3e8185f615e7ac2a2b8c212f1ebf022c08
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61348414"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683293"
 ---
-# <a name="azure-data-factory-pivot-transformation"></a>Azure 資料處理站樞紐轉換
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+# <a name="pivot-transformation-in-mapping-data-flow"></a>對應資料流中的樞紐轉換
 
-使用 ADF 資料流程中的樞紐做為彙總，其中一個或多個群組資料行都有個別的資料行值會轉換成相異資料列。 基本上，您可以將資料列值樞紐處理為新的資料行 (將資料轉換成中繼資料)。
 
-![樞紐選項](media/data-flow/pivot1.png "樞紐 1")
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-## <a name="group-by"></a>分組依據
+使用樞紐轉換，從單一資料行的唯一資料列值建立多個資料行。 樞紐是匯總轉換，您可以在其中選取群組依據資料行，並使用[彙總函式](data-flow-expression-functions.md#aggregate-functions)產生樞紐分析表。
 
-![樞紐選項](media/data-flow/pivot2.png "樞紐 2")
+## <a name="configuration"></a>組態
 
-首先，設定您想要對於樞紐彙總分組所依據的資料行。 您可以在這裡使用資料行清單旁邊的 + 號設定 1 個以上資料行。
+樞紐轉換需要三個不同的輸入：群組依據資料行、樞紐索引鍵，以及如何產生已樞紐處理的資料行
 
-## <a name="pivot-key"></a>樞紐索引鍵
+### <a name="group-by"></a>群組依據
 
-![樞紐選項](media/data-flow/pivot3.png "樞紐 3")
+![依據選項分組](media/data-flow/pivot2.png "依據選項分組")
 
-樞紐索引鍵是 ADF 從資料列樞紐處理為資料行的資料行。 根據預設，此欄位的資料集之內的每個唯一值都會樞紐處理為資料行。 不過，您可以選擇從資料集輸入您想要樞紐處理為資料行值的數值。 這是會決定將會建立新的資料行的資料行。
+選取要將已樞紐處理的資料行匯總的資料行。 輸出資料會將具有相同群組依據值的所有資料列分組為一個資料列。 在經過樞紐處理的資料行中完成的匯總將出現在每個群組上。
 
-## <a name="pivoted-columns"></a>樞紐資料行
+此為選擇性區段。 如果未選取群組依據資料行，則會匯總整個資料流，而且只會輸出一個資料列。
 
-![樞紐選項](media/data-flow/pivot4.png "樞紐 4")
+### <a name="pivot-key"></a>樞紐索引鍵
 
-最後，選擇您想要對已樞紐的值所使用的彙總，以及您要如何在轉換的新輸出投影中顯示資料行。
+![樞紐索引鍵](media/data-flow/pivot3.png "樞紐索引鍵")
 
-(選擇性) 您可以設定對於每個新資料行名稱從資料列新增前置詞、中置詞及後置詞的命名模式。
+樞紐索引鍵是資料列值樞紐處理為新資料行的資料行。 根據預設，樞紐轉換會針對每個唯一的資料列值建立新的資料行。
 
-例如，依「區域」樞紐處理「銷售」會從每個銷售值產生新的資料行值，也就是"25"、"50"、"1000" 等等。不過，如果您設定的 「 銷售-"前置詞值，每個資料行值會新增"Sales-"開頭的值。
+在標示為 [值] 的區段中，您可以輸入要樞紐處理的特定資料列值。 只有在此區段中輸入的資料列值才會予以樞紐處理。 啟用 **Null 值**會針對資料行中的 null 值建立樞紐處理的資料行。
 
-![樞紐選項](media/data-flow/pivot5.png "樞紐 5")
+### <a name="pivoted-columns"></a>已樞紐處理的資料行
 
-設定為「一般」資料行的排列方式，會使用彙總值將已樞紐的資料行分組在一起。 將資料行排列方式設定為「橫向」會在資料行和值之間交替。
+![已樞紐處理的資料行](media/data-flow/pivot4.png "已樞紐處理的資料行")
 
-### <a name="aggregation"></a>彙總
+針對每個成為資料行的唯一樞紐索引鍵值，為每個群組產生匯總的資料列值。 您可以為每個樞紐索引鍵建立多個資料行。 每個樞紐資料行都必須包含至少一個[彙總函式](data-flow-expression-functions.md#aggregate-functions)。
 
-若要對於樞紐值設定您想要使用的彙總，請按一下「已樞紐的資料行」窗格底部的欄位。 您會進入 ADF 資料流程運算式產生器，您可以在其中建立彙總運算式，並對於新的彙總值提供描述性的別名名稱。
+**資料行名稱模式：** 選取如何設定每個樞紐分析表資料行名稱的格式。 輸出的資料行名稱將會是樞紐索引鍵值、資料行前置詞和選擇性前置詞、足夠的中間字元組合。 
 
-使用 ADF 資料流程運算式語言在運算式產生器描述已樞紐的資料行轉換： https://aka.ms/dataflowexpressions。
+**資料行排列：** 如果您針對每個樞紐索引鍵產生一個以上的樞紐分析表，請選擇您想要如何排序資料行。 
 
-## <a name="pivot-metadata"></a>Pivot 中繼資料
+**資料行前置詞：** 如果您針對每個樞紐索引鍵產生一個以上的樞紐分析表，請輸入每個資料行的資料行前置詞。 如果您只有一個已樞紐處理的資料行，這項設定是選擇性的。
 
-「 樞紐 」 轉換會產生是動態的內送資料為基礎的新資料行名稱。 樞紐索引鍵會產生每個新的資料行名稱的值。 如果您未指定個別的值及想要建立您的樞紐索引鍵中的每個唯一值的動態資料行名稱，然後 UI 不會顯示在檢查的中繼資料，而且會有任何的資料行傳播到 「 接收 」 轉換。 如果您為樞紐索引鍵的值，然後 ADF 可以判斷新的資料行名稱，這些資料行名稱將會為您提供的檢查，並接收對應
+## <a name="help-graphic"></a>說明圖形
 
-### <a name="landing-new-columns-in-sink"></a>登陸在接收中的新資料行
+下圖說明不同的樞紐元件彼此互動的方式
 
-即使使用 Pivot 中的動態資料行名稱，您仍然可以到您的目的地存放區接收您的新資料行名稱和值。 只接收設定中設定為在 「 允許結構描述漂移 」。 您不會看到新的動態名稱資料行的中繼資料，但結構描述漂移選項可讓您讓資料登陸到。
+![樞紐說明圖形](media/data-flow/pivot5.png "樞紐說明圖形")
 
-### <a name="view-metadata-in-design-mode"></a>在設計模式中檢視中繼資料
+## <a name="pivot-metadata"></a>樞紐中繼資料
 
-如果您想要檢視新的資料行名稱做為在檢查的中繼資料，而您想要查看明確地傳播到 「 接收 」 轉換的資料行，然後在 [樞紐索引鍵] 索引標籤中設定明確的值。
+如果在樞紐索引鍵設定中未指定任何值，則會在執行階段動態產生經過樞紐處理的資料行。 已樞紐處理的資料行的數目會等於唯一的樞紐分析表索引鍵值數乘以樞紐資料行的數目。 由於這是可能變更的數位，UX 不會在 [檢查] 索引標籤中顯示資料行中繼資料，而且不會有任何資料行散佈。 若要轉換這些資料行，請使用對應資料流的[資料行模式](concepts-data-flow-column-pattern.md)功能。 
 
-### <a name="how-to-rejoin-original-fields"></a>如何重新加入原始欄位
-樞紐轉換只會投出使用在彙總、分組和中樞動作中的資料行。 如果您想要納入您的流程中的上一個步驟中的其他資料行，使用新的分支，從上一個步驟，並使用自我聯結模式來連接使用原始的中繼資料的流程。
+如果已設定特定的樞紐索引鍵值，則會在中繼資料中顯示已切換的資料行。 資料行名稱將可供您在「檢查」和「接收」對應中使用。
+
+### <a name="generate-metadata-from-drifted-columns"></a>從漂移資料行產生中繼資料
+
+樞紐會根據資料列值動態產生新的資料行名稱。 您可以將這些新的資料行加入中繼資料中，以便往後可在資料流程中參考。 若要這麼做，請使用[對應漂移](concepts-data-flow-schema-drift.md#map-drifted-columns-quick-action)資料預覽中的快速動作。 
+
+![樞紐資料行](media/data-flow/newpivot1.png "對應漂移樞紐資料行")
+
+### <a name="sinking-pivoted-columns"></a>接收經過樞紐處理的資料行
+
+雖然已樞紐處理的資料行為動態，但仍可寫入目的地資料存放區。 在接收設定中啟用 [允許結構描述漂移]。 這可讓您撰寫未包含在中繼資料中的資料行。 您不會在資料行中繼資料中看到新的動態名稱，但是 [結構描述漂移] 選項可讓您放入資料。
+
+### <a name="rejoin-original-fields"></a>重新加入原始欄位
+
+樞紐轉換只會投影群組依據和已樞紐處理的資料行。 如果您想要讓輸出資料包含其他輸入資料行，請使用[自我聯結](data-flow-join.md#self-join)模式。
+
+## <a name="data-flow-script"></a>資料流程指令碼
+
+### <a name="syntax"></a>語法
+
+```
+<incomingStreamName>
+    pivot(groupBy(Tm),
+        pivotBy(<pivotKeyColumn, [<specifiedColumnName1>,...,<specifiedColumnNameN>]),
+        <pivotColumnPrefix> = <pivotedColumnValue>,
+        columnNaming: '< prefix >< $N | $V ><middle >< $N | $V >< suffix >',
+        lateral: { 'true' | 'false'}
+    ) ~> <pivotTransformationName
+```
+### <a name="example"></a>範例
+
+[設定] 區段中所顯示的畫面具有下列資料流程指令碼：
+
+```
+BasketballPlayerStats pivot(groupBy(Tm),
+    pivotBy(Pos),
+    {} = count(),
+    columnNaming: '$V$N count',
+    lateral: true) ~> PivotExample
+
+```
 
 ## <a name="next-steps"></a>後續步驟
 
-請嘗試[取消樞紐轉換](data-flow-unpivot.md)來將資料行值轉換成資料列的值。 
+嘗試[取消樞紐轉換](data-flow-unpivot.md)，將資料行值轉換為資料列值。 

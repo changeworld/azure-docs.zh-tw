@@ -1,24 +1,42 @@
 - name: IoT 解決方案加速器文件
-  href: index.md
+  href: index.yml
 - name: 概觀
-  expanded: true
   items:
     - name: IoT 解決方案加速器是什麼
       href: about-iot-accelerators.md
-    - name: AzureIoTSolution.com
+    - name: AzureIoTSolutions.com
       href: iot-accelerators-permissions.md
-- name: 遠端監視
-  items:
-    - name: 概觀
+    - name: 遠端監視
       href: iot-accelerators-remote-monitoring-sample-walkthrough.md
+    - name: 企業 IoT
+      href: overview-iot-industrial.md
       items:
-        - name: 架構選擇
-          href: iot-accelerators-remote-monitoring-architectural-choices.md
-    - name: 快速入門
-      items:
-        - name: 試用遠端監視解決方案
-          href: quickstart-remote-monitoring-deploy.md
-    - name: 教學課程
+        - name: 什麼是 OPC 對應項
+          href: overview-opc-twin.md
+        - name: 什麼是 OPC 保存庫
+          href: overview-opc-vault.md
+        - name: 什麼是 OPC 發行者
+          href: overview-opc-publisher.md
+        - name: 什麼是連線的處理站
+          href: iot-accelerators-connected-factory-features.md
+    - name: 裝置模擬
+      href: iot-accelerators-device-simulation-overview.md
+    - name: 預測性維護
+      href: iot-accelerators-predictive-walkthrough.md
+- name: 快速入門
+  expanded: true
+  items:
+    - name: 試用遠端監視解決方案
+      href: quickstart-remote-monitoring-deploy.md
+    - name: 試用連線的處理站解決方案
+      href: quickstart-connected-factory-deploy.md
+    - name: 試用裝置模擬解決方案
+      href: quickstart-device-simulation-deploy.md
+    - name: 試用預測性維護解決方案
+      href: quickstart-predictive-maintenance-deploy.md
+- name: 教學課程
+  items:
+    - name: 遠端監視
       items:
         - name: 監視 IoT 裝置
           href: iot-accelerators-remote-monitoring-monitor.md
@@ -34,7 +52,31 @@
           href: iot-accelerators-remote-monitoring-bulk-configuration-update.md
         - name: 偵測 Edge 的異常行為
           href: iot-accelerators-remote-monitoring-edge.md
-    - name: 使用說明指南
+    - name: 裝置模擬
+      items:
+        - name: 建立及執行模擬
+          href: iot-accelerators-device-simulation-create-simulation.md
+        - name: 建立自訂模擬裝置
+          href: iot-accelerators-device-simulation-create-custom-device.md
+- name: 概念
+  items:
+    - name: 遠端監視
+      items:
+        - name: 架構
+          href: iot-accelerators-remote-monitoring-architectural-choices.md
+        - name: 裝置型號結構描述
+          href: iot-accelerators-remote-monitoring-device-schema.md
+        - name: 裝置模型行為
+          href: iot-accelerators-remote-monitoring-device-behavior.md
+    - name: 企業 IoT
+      items:
+        - name: OPC 對應項架構
+          href: overview-opc-twin-architecture.md
+        - name: OPC 保存庫架構
+          href: overview-opc-vault-architecture.md
+- name: 操作指南
+  items:
+    - name: 遠端監視
       items:
         - name: 部署解決方案
           items:
@@ -107,58 +149,12 @@
               href: iot-accelerators-remote-monitoring-rbac-tsi.md
         - name: 整合 SIM 卡資料
           href: iot-accelerators-remote-monitoring-telefonica-sim.md
-    - name: 參考
-      items:
-        - name: 裝置型號結構描述
-          href: iot-accelerators-remote-monitoring-device-schema.md
-        - name: 裝置模型行為
-          href: iot-accelerators-remote-monitoring-device-behavior.md
-    - name: 資源
-      items:
-        - name: 開發人員參考指南 (.NET)
-          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide'
-        - name: 開發人員參考指南 (Java)
-          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-java/wiki/Developer-Reference-Guide'
-        - name: 開發人員疑難排解指南
-          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide'
-        - name: GitHub 存放庫 (.NET)
-          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet'
-        - name: GitHub 存放庫 (Java)
-          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-java'
-        - name: 遠端監視常見問題集
-          href: iot-accelerators-faq-rm-v2.md
-- name: 企業 IoT
-  items:
-    - name: 概觀
-      items:
-        - name: 什麼是企業 IoT
-          href: overview-iot-industrial.md
-        - name: 什麼是 OPC 對應項
-          href: overview-opc-twin.md
-        - name: 什麼是 OPC 保存庫
-          href: overview-opc-vault.md
-        - name: 什麼是連線的處理站
-          href: iot-accelerators-connected-factory-features.md
-    - name: 快速入門
-      items:
-        - name: 試用連線的處理站解決方案
-          href: quickstart-connected-factory-deploy.md
-    - name: 概念
-      items:
-        - name: OPC 對應項架構
-          href: overview-opc-twin-architecture.md
-        - name: 連線的處理站架構
-          href: iot-accelerators-connected-factory-sample-walkthrough.md
-    - name: 使用說明指南
+    - name: 企業 IoT
       items:
         - name: 連線的處理站
           items:
             - name: 使用儀表板
               href: iot-accelerators-connected-factory-dashboard.md
-            - name: 部署閘道
-              href: iot-accelerators-connected-factory-gateway-deployment.md
-            - name: 使用 OPC 發行者
-              href: 'https://github.com/Azure/iot-edge-opc-publisher/blob/master/README.md'
             - name: 設定解決方案加速器
               href: iot-accelerators-connected-factory-configure.md
             - name: 自訂解決方案加速器
@@ -173,35 +169,21 @@
               href: howto-opc-twin-deploy-dependencies.md
         - name: OPC 保存庫
           items:
-            - name: 將 OPC 保存庫部署到現有專案
-              items:
-                - name: OPC 用戶端和 OPC PLC 間的安全通訊
-                  href: howto-opc-vault-deploy-existing-client-plc-communication.md
-                - name: 保護 OPC UA 用戶端和 OPC UA 伺服器應用程式
-                  href: howto-opc-vault-deploy-existing-client-server-communication.md
-            - name: 從頭開始部署 OPC 保存庫
-              href: howto-opc-vault-deploy-scratch.md
-    - name: 資源
-      items:
-        - name: GitHub 存放庫
-          href: 'https://github.com/Azure/azure-iot-connected-factory'
-        - name: 連線的處理站常見問題集
-          href: iot-accelerators-faq-cf.md
-- name: 裝置模擬
-  items:
-    - name: 概觀
-      href: iot-accelerators-device-simulation-overview.md
-    - name: 快速入門
-      items:
-        - name: 試用裝置模擬解決方案
-          href: quickstart-device-simulation-deploy.md
-    - name: 教學課程
-      items:
-        - name: 建立及執行模擬
-          href: iot-accelerators-device-simulation-create-simulation.md
-        - name: 建立自訂模擬裝置
-          href: iot-accelerators-device-simulation-create-custom-device.md
-    - name: 使用說明指南
+            - name: 部署 OPC 保存庫服務
+              href: howto-opc-vault-deploy.md
+            - name: 管理 OPC 保存庫服務
+              href: howto-opc-vault-manage.md
+            - name: 使用 OPC 保存庫保護 OPC UA 裝置通訊
+              href: howto-opc-vault-secure.md
+            - name: 安全地操作 OPC 保存庫服務
+              href: howto-opc-vault-secure-ca.md
+        - name: OPC 發行者
+          items:
+            - name: 設定 OPC 發行者
+              href: howto-opc-publisher-configure.md
+            - name: 執行 OPC 發行者
+              href: howto-opc-publisher-run.md
+    - name: 裝置模擬
       items:
         - name: 使用現有的 IoT 中樞
           href: iot-accelerators-device-simulation-choose-hub.md
@@ -209,78 +191,79 @@
           href: iot-accelerators-device-simulation-advanced-device.md
         - name: 使用時間序列深入解析將遙測視覺化
           href: iot-accelerators-device-simulation-time-series-insights.md
-        - name: 使用 Protbuf 進行序列化遙測
+        - name: 使用 Protobuf 進行序列化遙測
           href: iot-accelerators-device-simulation-protobuf.md
         - name: 部署自訂 Docker 映像
           href: iot-accelerators-device-simulation-deploy-image.md
-    - name: 資源
-      items:
-        - name: 開發人員參考指南
-          href: 'https://github.com/Azure/device-simulation-dotnet/wiki/Simulation-Service-Developer-Reference-Guide'
-        - name: GitHub 存放庫
-          href: 'https://github.com/Azure/device-simulation-dotnet'
-- name: 預測性維護
+- name: 資源
   items:
-    - name: 概觀
-      href: iot-accelerators-predictive-walkthrough.md
-    - name: 快速入門
-      items:
-        - name: 試用預測性維護解決方案
-          href: quickstart-predictive-maintenance-deploy.md
-    - name: 資源
-      items:
-        - name: GitHub 存放庫
-          href: 'https://github.com/Azure/azure-iot-predictive-maintenance'
-- name: 參考架構
-  items:
-    - name: 概觀
-      href: iot-accelerators-architecture-overview.md
-    - name: 下載
-      href: 'https://aka.ms/iotrefarchitecture'
-    - name: 合作夥伴實作
-      items:
-        - name: Intel Connected Logistics Platform
-          href: 'https://www.azureiotsolutions.com/Accelerators#description/intel-connected-logistics-platform'
-        - name: Edge Dynamometer Analysis
-          href: 'https://www.azureiotsolutions.com/Accelerators#description/edge-dynamometer-analysis'
-        - name: 數位招牌解決方案
-          href: 'https://www.azureiotsolutions.com/Accelerators#description/digital-signage-solution'
-- name: 相關參考
-  items:
-    - name: 解決方案
-      items:
-        - name: IoT 解決方案加速器
-          href: /azure/iot-accelerators
-        - name: IoT 中心
-          href: 'https://docs.microsoft.com/microsoft-iot-central/'
-    - name: 平台服務
+    - name: 支援和協助選項
+      href: /azure/iot-fundamentals/iot-support-help
+    - name: Azure IoT 服務
       items:
         - name: IoT 中樞
           href: /azure/iot-hub
         - name: IoT 中樞裝置佈建服務
           href: /azure/iot-dps
-        - name: IoT 服務 SDK
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
-        - name: 地圖
+        - name: IoT 中心
+          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+        - name: IoT Edge
+          href: /azure/iot-edge
+        - name: IoT 解決方案加速器
+          href: /azure/iot-accelerators
+        - name: IoT 隨插即用
+          href: /azure/iot-pnp
+        - name: Azure 地圖服務
           href: /azure/azure-maps
         - name: 時間序列深入解析
           href: /azure/time-series-insights
-    - name: Edge
+    - name: Azure IoT SDK
       items:
-        - name: IoT Edge
-          href: /azure/iot-edge
+        - name: IoT 服務 SDK
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
         - name: IoT 裝置 SDK
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
-    - name: 串流分析
-      href: /azure/stream-analytics/
-    - name: 事件中樞
-      href: /azure/event-hubs/
-    - name: Machine Learning
-      href: /azure/machine-learning/
-- name: 資源
-  items:
-    - name: Azure 藍圖
-      href: 'https://azure.microsoft.com/roadmap/'
+    - name: 遠端監視
+      items:
+        - name: 開發人員參考指南 (.NET)
+          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide'
+        - name: 開發人員參考指南 (Java)
+          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-java/wiki/Developer-Reference-Guide'
+        - name: 開發人員疑難排解指南
+          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide'
+        - name: GitHub 存放庫 (.NET)
+          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet'
+        - name: GitHub 存放庫 (Java)
+          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-java'
+        - name: 遠端監視常見問題集
+          href: iot-accelerators-faq-rm-v2.md
+    - name: 企業 IoT
+      items:
+        - name: GitHub 存放庫
+          href: 'https://github.com/Azure/azure-iot-connected-factory'
+        - name: 連線的處理站常見問題集
+          href: iot-accelerators-faq-cf.md
+    - name: 裝置模擬
+      items:
+        - name: 開發人員參考指南
+          href: 'https://github.com/Azure/device-simulation-dotnet/wiki/Simulation-Service-Developer-Reference-Guide'
+        - name: GitHub 存放庫
+          href: 'https://github.com/Azure/device-simulation-dotnet'
+    - name: 預測性維護 GitHub 存放庫
+      href: 'https://github.com/Azure/azure-iot-predictive-maintenance'
+    - name: 參考架構
+      href: iot-accelerators-architecture-overview.md
+      items:
+        - name: 下載
+          href: 'https://aka.ms/iotrefarchitecture'
+        - name: 合作夥伴實作
+          items:
+            - name: Intel Connected Logistics Platform
+              href: 'https://www.azureiotsolutions.com/Accelerators#description/intel-connected-logistics-platform'
+            - name: Edge Dynamometer Analysis
+              href: 'https://www.azureiotsolutions.com/Accelerators#description/edge-dynamometer-analysis'
+            - name: 數位招牌解決方案
+              href: 'https://www.azureiotsolutions.com/Accelerators#description/digital-signage-solution'
     - name: 常見問題集
       href: iot-accelerators-faq.md
     - name: 堆疊溢位

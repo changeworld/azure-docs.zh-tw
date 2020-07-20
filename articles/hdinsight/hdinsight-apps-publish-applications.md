@@ -5,20 +5,20 @@ author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: e64bf253a73df3a2f8170109dc1dfb9a59613733
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 2cee60a71f6f19e09194dc689f95999bb11faad3
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64685314"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086461"
 ---
 # <a name="publish-an-hdinsight-application-in-the-azure-marketplace"></a>將 HDInsight 應用程式發佈到 Azure Marketplace
 您可以在以 Linux 為基礎的 HDInsight 叢集上安裝 Azure HDInsight 應用程式。 在此文章中，您會學習如何將 HDInsight 應用程式發佈到 Azure Marketplace。 如需發佈到 Azure Marketplace 的一般資訊，請參閱[將供應項目發佈到 Azure Marketplace](../marketplace/marketplace-publishers-guide.md)。
 
-HDInsight 應用程式會使用「自備授權 (BYOL)」模型。 在 BYOL 案例中，應用程式提供者負責將應用程式授權給應用程式使用者。 應用程式使用者只需支付他們建立的 Azure 資源費用，例如在 HDInsight 叢集以及叢集的 VM 和節點。 目前，Azure 不經手應用程式本身的計費。
+HDInsight 應用程式會使用「自備授權 (BYOL)」** 模型。 在 BYOL 案例中，應用程式提供者負責將應用程式授權給應用程式使用者。 應用程式使用者只需支付他們建立的 Azure 資源費用，例如在 HDInsight 叢集以及叢集的 VM 和節點。 目前，Azure 不經手應用程式本身的計費。
 
 如需詳細資訊，請參閱這些 HDInsight 應用程式相關文章：
 
@@ -31,7 +31,7 @@ HDInsight 應用程式會使用「自備授權 (BYOL)」模型。 在 BYOL 案�
 您還必須註冊開發人員帳戶。 如需詳細資訊，請參閱[將供應項目發佈到 Azure Marketplace](../marketplace/marketplace-publishers-guide.md) 和[建立 Microsoft 開發人員帳戶](../marketplace/marketplace-publishers-guide.md)。
 
 ## <a name="define-the-application"></a>定義應用程式
-將應用程式發佈到 Marketplace 包括兩個步驟。 首先，定義 createUiDef.json 檔案。 CreateUiDef.json 檔案表示您的應用程式與哪些叢集相容。 接著，從 Azure 入口網站發佈範本。 以下是範例 createUiDef.json 檔案：
+將應用程式發佈到 Marketplace 包括兩個步驟。 首先，定義 createUiDef.json** 檔案。 CreateUiDef.json 檔案表示您的應用程式與哪些叢集相容。 接著，從 Azure 入口網站發佈範本。 以下是範例 createUiDef.json 檔案：
 
 ```json
 {
@@ -44,7 +44,7 @@ HDInsight 應用程式會使用「自備授權 (BYOL)」模型。 在 BYOL 案�
 }
 ```
 
-| 欄位 | 描述 | 可能的值 |
+| 欄位 | 描述 | 可能值 |
 | --- | --- | --- |
 | types |與應用程式相容的叢集類型。 |Hadoop、HBase、Storm、Spark (或這些類型的任意組合) |
 | versions |與應用程式相容的 HDInsight 叢集類型。 |3.4 |
@@ -87,14 +87,14 @@ HDInsight 應用程式會使用「自備授權 (BYOL)」模型。 在 BYOL 案�
 若要安裝 HDInsight 應用程式：
 
 1. 登入 [Azure 發佈](https://publish.windowsazure.com/)。
-2. 在左窗格中，選取 [解決方案範本]。
-3. 輸入標題，然後選取 [建立新的解決方案範本]。
-4. 如果您尚未註冊您的組織，請選取 [建立開發人員中心帳戶並加入 Azure 方案]。  如需詳細資訊，請參閱 [建立 Microsoft 開發人員帳戶](../marketplace/marketplace-publishers-guide.md)。
-5. 選取 [定義一些拓撲以便開始使用] 。 方案範本是所有其拓撲的「父項」。 您可以在一個供應項目或解決方案範本中定義多個拓撲。 當供應項目推送到預備環境時，它的所有拓撲也會一起推入。 
-6. 輸入拓撲名稱，然後選取 [+]。
-7. 輸入新的版本，然後選取 [+]。
+2. 在左窗格中，選取 [解決方案範本]****。
+3. 輸入標題，然後選取 [建立新的解決方案範本]****。
+4. 如果您尚未註冊您的組織，請選取 [建立開發人員中心帳戶並加入 Azure 方案]****。  如需詳細資訊，請參閱 [建立 Microsoft 開發人員帳戶](../marketplace/marketplace-publishers-guide.md)。
+5. 選取 [定義一些拓撲以便開始使用] ****。 方案範本是所有其拓撲的「父項」。 您可以在一個供應項目或解決方案範本中定義多個拓撲。 當供應項目推送到預備環境時，它的所有拓撲也會一起推入。 
+6. 輸入拓撲名稱，然後選取 **+** 。
+7. 輸入新的版本，然後選取 [] **+** 。
 8. 上傳您在封裝應用程式時建立的 .zip 檔案。  
-9. 選取 [要求認證]。 Microsoft 認證團隊會檢閱檔案並認證拓撲。
+9. 選取 [要求認證]****。 Microsoft 認證團隊會檢閱檔案並認證拓撲。
 
 ## <a name="next-steps"></a>後續步驟
 * 了解如何在您的叢集上[安裝 HDInsight 應用程式](hdinsight-apps-install-applications.md)。

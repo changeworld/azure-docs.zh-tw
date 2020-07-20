@@ -1,5 +1,5 @@
 ---
-title: 教學課程：使用 Azure AD 報告 API 配合憑證來取得資料 | Microsoft Docs
+title: AD 報告 API 搭配憑證的教學課程 | Microsoft Docs
 description: 本教學課程說明如何使用 Azure AD 報告 API 配合憑證認證來取得目錄中的資料，而不需使用者介入。
 services: active-directory
 documentationcenter: ''
@@ -10,18 +10,19 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: tutorial
 ms.subservice: report-monitor
 ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e006111cce7f53ff87f1c6d60b2a5147da02e1e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.custom: has-adal-ref
+ms.openlocfilehash: 4f27385cc33c6c289718c3143d03e24f0454a9f0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60284906"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608003"
 ---
 # <a name="tutorial-get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>教學課程：使用 Azure Active Directory 報告 API 搭配憑證來取得資料
 
@@ -39,14 +40,14 @@ ms.locfileid: "60284906"
 
 4. 下載並安裝 [Azure AD PowerShell V2](https://github.com/Azure/azure-docs-powershell-azuread/blob/master/docs-conceptual/azureadps-2.0/install-adv2.md)。
 
-5. 安装 [MSCloudIdUtils](https://www.powershellgallery.com/packages/MSCloudIdUtils/)。 此模組會提供數個公用程式 Cmdlet，包括︰
+5. 安裝 [MSCloudIdUtils](https://www.powershellgallery.com/packages/MSCloudIdUtils/)。 此模組會提供數個公用程式 Cmdlet，包括︰
     - 驗證所需的 ADAL 程式庫
     - 從使用者、應用程式金鑰和憑證存取權杖 (使用 ADAL)
     - 處理分頁結果的圖形 API
 
-6. 如果是首次使用此模块，请运行 **Install-MSCloudIdUtilsModule**，否则请使用 **Import-Module** Powershell 命令导入它。 您的工作階段看起來應該類似此畫面：![Windows PowerShell](./media/tutorial-access-api-with-certificates/module-install.png)
+6. 如果您第一次使用模組執行 **Install-MSCloudIdUtilsModule**，則改用 **Import-Module** PowerShell 命令將其匯入。 您的工作階段看起來應該類似此畫面：![Windows PowerShell](./media/tutorial-access-api-with-certificates/module-install.png)
   
-7. 使用 **New-SelfSignedCertificate** Powershell commandlet 建立測試憑證。
+7. 使用 **New-SelfSignedCertificate** PowerShell commandlet 建立測試憑證。
 
    ```
    $cert = New-SelfSignedCertificate -Subject "CN=MSGraph_ReportingAPI" -CertStoreLocation "Cert:\CurrentUser\My" -KeyExportPolicy Exportable -KeySpec Signature -KeyLength 2048 -KeyAlgorithm RSA -HashAlgorithm SHA256
@@ -63,13 +64,13 @@ ms.locfileid: "60284906"
 
 1. 導覽至 [Azure 入口網站](https://portal.azure.com)，選取 [Azure Active Directory]，接著選取 [應用程式註冊]，然後從清單中選擇您的應用程式。 
 
-2. 選取 [設定] > [金鑰]，然後選取 [上載公開金鑰]。
+2. 在 [應用程式註冊] 刀鋒視窗的**管理**區段下，選取 [憑證與祕密]，然後選取 [上傳憑證]。
 
-3. 选择上一步中的证书文件并选择“保存”。 
+3. 從上一個步驟中選取憑證檔案，然後選取 [新增]。 
 
-4. 請記下應用程式識別碼，以及您剛剛向應用程式註冊的憑證指紋。 若要尋找指紋，請從入口網站的應用程式頁面中前往 [設定]，然後按一下 [金鑰]。 指紋將會在 [公開金鑰] 清單下方。
+4. 請記下應用程式識別碼，以及您剛剛向應用程式註冊的憑證指紋。 若要尋找指紋，請從入口網站的應用程式頁面中移至**管理**下的**憑證和祕密**。 指紋會出現在**憑證**清單下方。
 
-5. 在内联清单编辑器中打开应用程序清单，并使用以下架构将 *keyCredentials* 属性替换为新的证书信息。 
+5. 在內嵌資訊清單編輯器中開啟應用程式資訊清單，然後驗證 *keyCredentials* 屬性是否已使用下列新的憑證資訊更新 - 
 
    ```
    "keyCredentials": [
@@ -81,23 +82,20 @@ ms.locfileid: "60284906"
             "value":  "$base64Value" //base64 encoding of the certificate raw data
         }
     ]
-   ```
-
-6. 儲存資訊清單。 
-  
-7. 現在，您可以使用此憑證來取得 MS 圖形 API 的存取權杖。 使用 MSCloudIdUtils PowerShell 模組中的 **Get-MSCloudIdMSGraphAccessTokenFromCert** Cmdlet，然後傳入您從上一個步驟中所取得的應用程式識別碼和指紋。 
+   ``` 
+6. 現在，您可以使用此憑證來取得 MS 圖形 API 的存取權杖。 使用 MSCloudIdUtils PowerShell 模組中的 **Get-MSCloudIdMSGraphAccessTokenFromCert** Cmdlet，然後傳入您從上一個步驟中所取得的應用程式識別碼和指紋。 
 
    ![Azure 入口網站](./media/tutorial-access-api-with-certificates/getaccesstoken.png)
 
-8. 使用 Powershell 指令碼中的存取權杖來查詢圖形 API。 使用 MSCloudIDUtils 中的 **Invoke-MSCloudIdMSGraphQuery** 指令程式來列舉 signins 和 directoryAudits 端點。 此指令程式可處理多個分頁結果，並將這些結果傳送至 PowerShell 管道。
+7. 使用 PowerShell 指令碼中的存取權杖來查詢圖形 API。 使用 MSCloudIDUtils 中的 **Invoke-MSCloudIdMSGraphQuery** 指令程式來列舉 signins 和 directoryAudits 端點。 此指令程式可處理多個分頁結果，並將這些結果傳送至 PowerShell 管道。
 
-9. 查询 directoryAudits 终结点以检索审核日志。 
-   ![Azure 门户](./media/tutorial-access-api-with-certificates/query-directoryAudits.png)
+8. 查詢 directoryAudits 端點以擷取稽核記錄。 
+   ![Azure 入口網站](./media/tutorial-access-api-with-certificates/query-directoryAudits.png)
 
-10. 查询 signins 终结点以检索登录日志。
-    ![Azure 门户](./media/tutorial-access-api-with-certificates/query-signins.png)
+9. 查詢 signins 端點以擷取登入記錄。
+    ![Azure 入口網站](./media/tutorial-access-api-with-certificates/query-signins.png)
 
-11. 您現在可以選擇將此資料匯出為 CSV，並儲存至 SIEM 系統。 您也可以在排定的工作中包裝您的指令碼，以便定期從租用戶取得 Azure AD 資料，而不必將應用程式金鑰儲存在原始程式碼中。 
+10. 您現在可以選擇將此資料匯出為 CSV，並儲存至 SIEM 系統。 您也可以在排定的工作中包裝您的指令碼，以便定期從租用戶取得 Azure AD 資料，而不必將應用程式金鑰儲存在原始程式碼中。 
 
 ## <a name="next-steps"></a>後續步驟
 

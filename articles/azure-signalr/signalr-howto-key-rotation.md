@@ -1,19 +1,19 @@
 ---
-title: 如何更換 Azure SignalR 服務的存取金鑰
+title: 如何輪替 Azure SignalR Service 的存取金鑰
 description: 有關於客戶為何需要定期輪替存取金鑰，以及如何透過 Azure 入口網站 GUI 和 Azure CLI 執行此作業的概觀。
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: zhshang
-ms.openlocfilehash: 15b0ff0bbb96e5fa96d81cfa265e83abf749cf85
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 133edc64ac2f858a397a4a184c24497dae8af333
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60688875"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "67565734"
 ---
-# <a name="how-to-rotate-access-key-for-azure-signalr-service"></a>如何更換 Azure SignalR 服務的存取金鑰
+# <a name="how-to-rotate-access-key-for-azure-signalr-service"></a>如何輪替 Azure SignalR Service 的存取金鑰
 
 每個 Azure SignalR Service 執行個體都有一對存取金鑰，我們稱之為主要和次要金鑰。 對服務提出要求時，就會使用這些金鑰來驗證 SignalR 用戶端。 金鑰會與執行個體端點 url 相關聯。 保護您的金鑰安全，並定期進行輪替。 您會取得兩個存取金鑰，因此可藉由使用一個金鑰並重新產生另一個金鑰來維持連線。
 
@@ -25,17 +25,17 @@ ms.locfileid: "60688875"
 
 1. 移至 [Azure 入口網站](https://portal.azure.com/)，並以您的認證登入。
 
-1. 在您要重新產生的金鑰所屬的 Azure SignalR Service 執行個體中，尋找 [金鑰] 區段。
+1. 在您要重新產生的金鑰所屬的 Azure SignalR Service 執行個體中，尋找 [金鑰]**** 區段。
 
-1. 選取導覽功能表上的 [金鑰]。
+1. 選取導覽功能表上的 [金鑰]****。
 
-1. 選取 [重新產生主要金鑰] 或 [重新產生次要金鑰]。
+1. 選取 [重新產生主要金鑰]**** 或 [重新產生次要金鑰]****。
 
    新的金鑰和對應的連接字串隨即建立並顯示。
 
    ![重新產生金鑰](media/signalr-howto-key-rotation/regenerate-keys.png)
 
-您也可以使用 [Azure CLI](/cli/azure/ext/signalr/signalr/key?view=azure-cli-latest#ext-signalr-az-signalr-key-renew) 來重新產生金鑰。
+您也可以使用 [Azure CLI](/cli/azure/signalr/key?view=azure-cli-latest#az-signalr-key-renew) 來重新產生金鑰。
 
 ## <a name="update-configurations-with-new-connection-strings"></a>使用新的連接字串更新組態
 

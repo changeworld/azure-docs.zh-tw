@@ -10,18 +10,17 @@ tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: overview
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 9/18/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: 657c23ad410d7aade17b3153f02ba0138edf4250
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: HT
+ms.openlocfilehash: 7cae4b579a933c03ec3a08a00ef032c57d15093f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58104092"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84710009"
 ---
 # <a name="deploy-the-azure-virtual-network-container-network-interface-plug-in"></a>部署 Azure 虛擬網路容器網路介面外掛程式
 
@@ -29,9 +28,9 @@ Azure 虛擬網路容器網路介面 (CNI) 外掛程式會安裝 Azure 虛擬機
 
 ## <a name="deploy-plug-in-for-acs-engine-kubernetes-cluster"></a>部署 ACS-Engine Kubernetes 叢集外掛程式
 
-ACS-Engine 使用 Azure Resource Manager 範本部署 Kubernetes 叢集。 叢集設定是在 JSON 檔案中設定，產生範本時會將該檔案傳遞到工具。 若要深入了解支援叢集設定及其說明的完整清單，請參閱 [Microsoft Azure Container Service 引擎 - 叢集定義](https://github.com/Azure/acs-engine/blob/master/docs/clusterdefinition.md)。 外掛程式是針對使用 ACS-Engine 建立的叢集的預設網路功能外掛程式。 設定外掛程式時，下列網路組態設定很重要：
+ACS-Engine 使用 Azure Resource Manager 範本部署 Kubernetes 叢集。 叢集設定是在 JSON 檔案中指定，產生範本時會將該檔案傳遞到工具。 若要深入了解支援叢集設定及其說明的完整清單，請參閱 [Microsoft Azure Container Service 引擎 - 叢集定義](https://github.com/Azure/acs-engine/blob/master/docs/clusterdefinition.md)。 外掛程式是針對使用 ACS-Engine 建立的叢集的預設網路功能外掛程式。 設定外掛程式時，下列網路組態設定很重要：
 
-  | 設定                              | 說明                                                                                                           |
+  | 設定                              | 描述                                                                                                           |
   |--------------------------------------|------------------------------------------------------------------------------------------------------                 |
   | firstConsecutiveStaticIP             | 配置給主要節點的 IP 位址。 這是必要的設定。                                     |
   | kubernetesConfig 下的 clusterSubnet | 部署叢集的虛擬網路子網路的 CIDR，以及配置給 Pods 的 IP 位址   |
@@ -39,7 +38,7 @@ ACS-Engine 使用 Azure Resource Manager 範本部署 Kubernetes 叢集。 叢�
   | vnetCidr                             | 要部署叢集所在的虛擬網路的 CIDR                                                             |
   | kubeletConfig 下的 max-Pods         | 每個代理程式虛擬機器上的 Pod 數目上限。 外掛程式的預設值是 30 個。 最多可以指定到 250 個  |
 
-### <a name="example-configuration"></a>設定範例
+### <a name="example-configuration"></a>範例設定
 
 接下來的 json 範例是含有下列屬性的叢集：
 -   1 個主要節點和 2 個代理程式節點 
@@ -159,17 +158,17 @@ CNI 網路組態檔是以 JSON 格式描述。 根據預設，它出現在 Linux
 
 - **cniVersion**：Azure 虛擬網路 CNI 外掛程式支援版本 0.3.0 和 0.3.1 的  [CNI 規格](https://github.com/containernetworking/cni/blob/master/SPEC.md)。
 - **名稱**：網路的名稱。 這個屬性可以設定為任何唯一值。
-- **類型**：網路外掛程式的名稱。 設定為  *azure vnet*。
+- **類型**：網路外掛程式的名稱。 設定為 *azure-vnet*。
 - **模式**：作業模式。 此為選擇性欄位。 唯一支援的模式是 "bridge"。 如需詳細資訊，請參閱 [作業模式](https://github.com/Azure/azure-container-networking/blob/master/docs/network.md)。
 - **橋接器**：橋接器名稱，用來將容器連線到虛擬網路。 此為選擇性欄位。 如果省略，外掛程式會根據主要介面索引自動挑選一個唯一名稱。
-- **ipam 類型**：IPAM 外掛程式的名稱。 一律設定為  *azure-vnet-ipam*。
+- **ipam 類型**：IPAM 外掛程式的名稱。 一律設定為 *azure-vnet-ipam*。
 
 ## <a name="download-and-install-the-plug-in"></a>下載並安裝外掛程式
 
 從 [GitHub](https://github.com/Azure/azure-container-networking/releases) 下載外掛程式。 下載適用於您使用平台的最新版本：
 
-- **Linux**：[azure-vnet-cni-linux-amd64-\<version no.\>.tgz](https://github.com/Azure/azure-container-networking/releases/download/v1.0.12-rc3/azure-vnet-cni-linux-amd64-v1.0.12-rc3.tgz)
-- **Windows**：[azure-vnet-cni-windows-amd64-\<version no.\>.zip](https://github.com/Azure/azure-container-networking/releases/download/v1.0.12-rc3/azure-vnet-cni-windows-amd64-v1.0.12-rc3.zip)
+- **Linux**： [azure-vnet-cni-linux-amd64- \<version no.\> . tgz](https://github.com/Azure/azure-container-networking/releases/download/v1.0.12-rc3/azure-vnet-cni-linux-amd64-v1.0.12-rc3.tgz)
+- **Windows**： [azure-vnet-cni-windows-amd64- \<version no.\> .zip](https://github.com/Azure/azure-container-networking/releases/download/v1.0.12-rc3/azure-vnet-cni-windows-amd64-v1.0.12-rc3.zip)
 
 將 [Linux](https://github.com/Azure/azure-container-networking/blob/master/scripts/install-cni-plugin.sh) 或 [Windows](https://github.com/Azure/azure-container-networking/blob/master/scripts/Install-CniPlugin.ps1) 的安裝指令碼複製到您的電腦。 將指令碼儲存到電腦上的 `scripts` 目錄，並將檔案命名為 `install-cni-plugin.sh` (Linux) 或 `install-cni-plugin.ps1` (Windows)。 若要安裝外掛程式，請針對平台執行適當的指令碼，指定所使用外掛程式的版本。 例如，您可以指定 *v1.0.12-rc3*：
 

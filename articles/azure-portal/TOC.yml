@@ -4,34 +4,81 @@
   items:
     - name: 關於 Azure 入口網站
       href: azure-portal-overview.md
+    - name: 開始使用 Azure Databricks Center
+      href: azure-portal-quickstart-center.md
     - name: 支援的瀏覽器和裝置
       href: azure-portal-supported-browsers-devices.md
+- name: 快速入門
+  items:
+    - name: 在入口網站中建立 VM
+      href: ../virtual-machines/windows/quick-create-portal.md?toc=/azure/azure-portal/toc.json&bc=/azure/azure-portal/breadcrumb/toc.json
+    - name: 建立儀表板 - ARM 範本
+      displayName: Resource Manager
+      href: quick-create-template.md
 - name: 概念
   items:
-    - name: 建立和共用 Azure 儀表板
-      href: azure-portal-dashboards.md
     - name: 使用角色型存取控制來共用儀表板
       href: azure-portal-dashboard-share-access.md
     - name: 以程式設計方式建立 Azure 儀表板
       href: azure-portal-dashboards-create-programmatically.md
-- name: 使用說明指南
+- name: 操作指南
   items:
+    - name: 設定您的 Azure 入口網站喜好設定
+      href: set-preferences.md
+    - name: 設定所有使用者的非使用中逾時設定
+      href: admin-timeout.md
     - name: 開啟高對比或變更佈景主題
       href: azure-portal-change-theme-high-contrast.md
     - name: 新增、移除及排序我的最愛
       href: azure-portal-add-remove-sort-favorites.md
+    - name: 建立和共用 Azure 儀表板
+      href: azure-portal-dashboards.md
     - name: 使用自訂的 Markdown 圖格
       href: azure-portal-markdown-tile.md
     - name: 匯出或刪除使用者設定
       href: azure-portal-export-delete-settings.md
     - name: Azure 入口網站操作說明影片系列
-      href: 'https://www.youtube.com/playlist?list=PLLasX02E8BPBKgXP4oflOL29TtqTzwhxR'
+      href: azure-portal-video-series.md
+    - name: 建立及管理支援要求
+      items:
+        - name: 建立 Azure 支援要求
+          href: supportability/how-to-create-azure-support-request.md
+        - name: 管理 Azure 支援要求
+          href: supportability/how-to-manage-azure-support-request.md
+        - name: 要求增加配額
+          items:
+            - name: 增加計算 vCPU 限制
+              items:
+                - name: 資源管理員部署模型。
+                  items:
+                    - name: 增加 VM 系列 vCPU 限制
+                      href: supportability/per-vm-quota-requests.md
+                    - name: 增加區域總 vCPU 限制
+                      href: supportability/regional-quota-requests.md
+                    - name: 增加位置配額限制
+                      href: supportability/low-priority-quota.md
+                - name: 傳統部署模型
+                  href: supportability/classic-deployment-model-quota-increase-requests.md
+            - name: 增加網路限制
+              href: supportability/networking-quota-requests.md
+    - name: Azure 入口網站問題疑難排解
+      items:
+        - name: 復原已刪除的儀表板
+          href: recover-shared-deleted-dashboard.md
+        - name: 區域或 SKU 訂用帳戶問題疑難排解
+          href: supportability/sku-series-unavailable.md
+        - name: 擷取瀏覽器追蹤以進行疑難排解
+          href: capture-browser-trace.md
 - name: 參考
   items:
     - name: 鍵盤快速鍵
       href: azure-portal-keyboard-shortcuts.md
+    - name: Azure 入口網站 URL 安全清單
+      href: azure-portal-safelist-urls.md
     - name: Azure 儀表板結構
       href: azure-portal-dashboards-structure.md
+    - name: Azure CLI
+      href: /cli/azure/ext/portal/portal
 - name: 資源
   items:
     - name: Azure 藍圖
@@ -42,7 +89,7 @@
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: 區域可用性
       href: 'https://azure.microsoft.com/regions/services/'
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-management-portal'
     - name: Azure 影片
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=azure-portal&sort=newest'

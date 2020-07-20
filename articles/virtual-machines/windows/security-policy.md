@@ -1,25 +1,19 @@
 ---
-title: 在 Azure 中的 Windows VM 上保護及使用原則 | Microsoft Docs
-description: 了解 Azure 中 Windows 和虛擬機器的安全性和原則。
-services: virtual-machines-windows
-documentationcenter: ''
+title: 在 Azure 中的 Vm 上保護及使用原則
+description: 瞭解 Azure 中虛擬機器的安全性和原則。
 author: cynthn
-manager: jeconnoc
-editor: tysonn
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.subservice: security
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
 ms.date: 11/26/2018
 ms.author: cynthn
 ms.topic: conceptual
-ms.openlocfilehash: ce8429934157bacde8e709165cf2f35c98d2bb15
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4910acd99abd6059de40e67a1b1629259c8215cc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60405406"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82099405"
 ---
 # <a name="secure-and-use-policies-on-virtual-machines-in-azure"></a>在 Azure 中的虛擬機器上保護及使用原則
 

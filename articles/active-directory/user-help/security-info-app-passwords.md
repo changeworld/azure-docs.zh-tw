@@ -1,25 +1,24 @@
 ---
-title: 於安全性資訊 (預覽) 頁面設定應用程式密碼 - Azure Active Directory | Microsoft Docs
-description: 在您的組織中設定自動產生密碼 (應用程式密碼)，以便搭配任何非瀏覽器應用程式或是不支援雙因素驗證的應用程式使用。 此應用程式密碼與一般密碼不同，可以在安全性資訊頁面上設定。
+title: 從安全性資訊 (預覽) 頁面建立應用程式密碼 - Azure AD
+description: 在您的組織中建立自動產生密碼 (應用程式密碼)，以便搭配任何非瀏覽器應用程式或是不支援雙因素驗證的應用程式使用。 此應用程式密碼與一般密碼不同，可以在安全性資訊頁面上設定。
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.reviewer: sahenry
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
-ms.topic: conceptual
+ms.topic: end-user-help
 ms.date: 02/13/2018
-ms.author: lizross
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55dfab0c60e77b86157a005db34c37917a5e08d2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.author: curtand
+ms.openlocfilehash: e5ad882f172007e2563f832ec8eb61145cd0b36a
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60475051"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744499"
 ---
-# <a name="manage-app-passwords-from-your-security-info-preview-page"></a>於安全性資訊 (預覽) 頁面管理應用程式密碼
+# <a name="create-app-passwords-from-the-security-info-preview-page"></a>從安全性資訊 (預覽) 頁面建立應用程式密碼
+
 某些應用程式 (例如 Outlook 2010) 不支援雙步驟驗證。 缺乏支援的意思就是，如果您在組織中使用雙步驟驗證，應用程式會無法運作。 若要解決此問題，您可以建立自動產生的密碼來與每個非瀏覽器應用程式搭配使用，此密碼與您的一般密碼不同。
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
@@ -29,23 +28,23 @@ ms.locfileid: "60475051"
 
 使用應用程式密碼時，請務必記住：
 
-- 應用程式密碼會自動產生，而且每個應用程式只能輸入一次。
+- 應用程式密碼會自動產生，而且每個應用程式都應該建立和輸入一次。
 
 - 每位使用者的密碼以 40 組為限。 如果您在到達該限制之後嘗試建立一個密碼，系統就會提示您先刪除現有的密碼，然後才能建立新密碼。
-
-- 為每個裝置 (而非每個應用程式) 使用一個應用程式密碼。 例如，針對膝上型電腦上的所有應用程式建立單一密碼，然後針對桌上型電腦上的所有應用程式建立另一個單一密碼。
 
     >[!Note]
     >Office 2013 用戶端 (包括 Outlook) 支援新式驗證通訊協定，而且可搭配雙步驟驗證。 此支援表示在開啟雙步驟驗證之後，您將不再需要適用於 Office 2013 用戶端的應用程式密碼。 如需詳細資訊，請參閱 [Office 2013 和 Office 2016 用戶端應用程式的新式驗證運作方式](https://support.office.com/article/how-modern-authentication-works-for-office-2013-and-office-2016-client-apps-e4c45989-4b1a-462e-a81b-2a13191cf517)一文。
 
 ## <a name="create-new-app-passwords"></a>建立新的應用程式密碼
+
 如果您搭配公司或學校帳戶使用雙步驟驗證，而且您的系統管理員已開啟安全性資訊體驗，您就可以使用 [安全性資訊] 頁面來建立和刪除應用程式密碼。
 
 >[!Note]
 >如果您的系統管理員尚未開啟安全性資訊體驗，您就必須遵循[管理應用程式密碼以進行雙步驟驗證](multi-factor-authentication-end-user-app-passwords.md)一節中的指示和資訊。
 
 ### <a name="to-create-a-new-app-password"></a>建立新的應用程式密碼
-1. 登入您的公司或學校帳戶，然後前往 https://myprofile.microsoft.com/ 頁面。
+
+1. 登入您的公司或學校帳戶，然後前往 https://myaccount.microsoft.com/ 頁面。
 
     ![[我的設定檔] 頁面，顯示醒目提示的 [安全性資訊] 連結](media/security-info/securityinfo-myprofile-page.png)
 
@@ -64,10 +63,11 @@ ms.locfileid: "60475051"
 5. 複製 [密碼] 欄位的文字，在應用程式的密碼區域貼上密碼 (本範例為 Outlook 2010)，然後選取 [完成]。
 
     ![上有應用程式名稱的 [應用程式密碼] 頁面](media/security-info/securityinfo-myprofile-password-copytext.png)
-    
+
     密碼已新增，您之後可以成功登入應用程式。
 
 ## <a name="delete-your-app-passwords"></a>刪除您的應用程式密碼
+
 如果不需再使用需要應用程式密碼的應用程式，可將相關聯的應用程式密碼刪除。 刪除應用程式密碼後，即會釋出其中一個可用的應用程式密碼空位，以供未來使用。
 
 >[!Important]
@@ -82,4 +82,5 @@ ms.locfileid: "60475051"
 2. 在確認方塊中選取 [是]，即會刪除 [應用程式密碼]。 刪除應用程式密碼之後，該應用程式密碼就會從您的安全性資訊中移除，並且從 [安全性資訊] 頁面上消失。
 
 ## <a name="for-more-information"></a>取得詳細資訊
+
 - 如需進一步瞭解 [安全性資訊] 頁面以及其設定方式，請參閱[安全性資訊概觀](user-help-security-info-overview.md)

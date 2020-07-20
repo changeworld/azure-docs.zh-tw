@@ -1,52 +1,53 @@
 ---
-title: 設定 TLS 相互驗證 - Azure App Service
-description: 了解如何設定應用程式在 TLS 上使用用戶端憑證驗證。
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: erikre
-editor: jimbe
+title: 設定 TLS 相互驗證
+description: 瞭解如何在 TLS 上驗證用戶端憑證。 Azure App Service 可以讓應用程式程式碼使用用戶端憑證進行驗證。
 ms.assetid: cd1d15d3-2d9e-4502-9f11-a306dac4453a
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2019
-ms.author: cephalin
+ms.date: 10/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5702362add6a50f2f4525afbd3649f083f34b6fc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 143317cd424428d7f480f4880d3aab750853890b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60852443"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82592361"
 ---
-# <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>为 Azure 应用服务配置 TLS 相互身份验证
+# <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>設定 Azure App Service 的 TLS 相互驗證
 
-為 Azure App Service 應用程式啟用不同類型的驗證，即可限制其存取。 若要实现此目的，一种方法是通过 TLS/SSL 发送客户端请求时请求客户端证书，然后验证该证书。 此机制称为 TLS 相互身份验证或客户端证书身份验证。 本文介绍如何将应用设置为使用客户端证书身份验证。
+為 Azure App Service 應用程式啟用不同類型的驗證，即可限制其存取。 其中一種方法是在用戶端要求透過 TLS/SSL 時要求用戶端憑證，並驗證憑證。 此機制稱為 TLS 相互驗證或用戶端憑證驗證。 本文說明如何將您的應用程式設定為使用用戶端憑證驗證。
 
 > [!NOTE]
-> 如果您透過 HTTP 存取您的網站，而非 HTTPS，將不會收到任何用戶端憑證。 因此，如果应用程序需要客户端证书，则你不应允许通过 HTTP 对应用程序发出请求。
+> 如果您透過 HTTP 存取您的網站，而非 HTTPS，將不會收到任何用戶端憑證。 因此，如果您的應用程式需要用戶端憑證，您就不應該允許透過 HTTP 對應用程式提出要求。
 >
 
-## <a name="enable-client-certificates"></a>启用客户端证书
+[!INCLUDE [Prepare your web app](../../includes/app-service-ssl-prepare-app.md)]
 
-若要将应用设置为要求提供客户端证书，需要将应用的 `clientCertEnabled` 设置指定为 `true`。 若要設定的設定，請執行下列命令[Cloud Shell](https://shell.azure.com)。
+## <a name="enable-client-certificates"></a>啟用用戶端憑證
+
+若要將您的應用程式設定為需要用戶端憑證，您可以從 Azure 入口網站**Configuration**選取 [設定] **On**  >  **[一般設定**]，或需要將應用程式的設定設為，以切換 [需要傳入憑證] `clientCertEnabled` `true` 。 若要設定設定，請在[Cloud Shell](https://shell.azure.com)中執行下列命令。
 
 ```azurecli-interactive
 az webapp update --set clientCertEnabled=true --name <app_name> --resource-group <group_name>
 ```
 
-## <a name="access-client-certificate"></a>访问客户端证书
+## <a name="exclude-paths-from-requiring-authentication"></a>排除需要驗證的路徑
 
-在应用服务中，请求的 SSL 终端是在前端负载均衡器上发生的。 在[已启用客户端证书](#enable-client-certificates)的情况下将请求转发到应用代码时，应用服务会注入包含客户端证书的 `X-ARR-ClientCert` 请求标头。 应用服务不会对此客户端证书执行任何操作，而只会将它转发到你的应用。 应用代码负责验证客户端证书。
+當您啟用應用程式的相互驗證時，應用程式根目錄下的所有路徑都需要用戶端憑證才能進行存取。 若要讓特定路徑保持開啟以供匿名存取，您可以在應用程式設定中定義排除路徑。
 
-对于 ASP.NET，可以通过 **HttpRequest.ClientCertificate** 属性提供客户端证书。
+您可以藉**由選取**  >  **[設定] [一般設定**]，並定義排除路徑來設定排除路徑。 在此範例中， `/public` 應用程式的 path 底下的任何專案都不會要求用戶端憑證。
 
-对于其他应用程序堆栈（Node.js、PHP 等），可以通过 `X-ARR-ClientCert` 请求标头中的 base64 编码值在应用中提供客户端证书。
+![憑證排除路徑][exclusion-paths]
 
-## <a name="aspnet-sample"></a>ASP.NET 示例
+
+## <a name="access-client-certificate"></a>存取用戶端憑證
+
+在 App Service 中，要求的 TLS 終止會發生在前端負載平衡器上。 在[啟用用戶端憑證](#enable-client-certificates)的情況下，將要求轉送至您的應用程式程式碼時，App Service 會 `X-ARR-ClientCert` 以用戶端憑證插入要求標頭。 App Service 不會使用此用戶端憑證來執行任何動作，而是將它轉送至您的應用程式。 您的應用程式程式碼會負責驗證用戶端憑證。
+
+針對 ASP.NET，用戶端憑證可透過**HttpRequest. ClientCertificate**屬性取得。
+
+若為其他應用程式堆疊（Node.js、PHP 等），則用戶端憑證會透過要求標頭中的 base64 編碼值，在您的應用程式中提供 `X-ARR-ClientCert` 。
+
+## <a name="aspnet-sample"></a>ASP.NET 範例
 
 ```csharp
     using System;
@@ -56,7 +57,7 @@ az webapp update --set clientCertEnabled=true --name <app_name> --resource-group
 
     namespace ClientCertificateUsageSample
     {
-        public partial class cert : System.Web.UI.Page
+        public partial class Cert : System.Web.UI.Page
         {
             public string certHeader = "";
             public string errorString = "";
@@ -170,9 +171,9 @@ az webapp update --set clientCertEnabled=true --name <app_name> --resource-group
     }
 ```
 
-## <a name="nodejs-sample"></a>Node.js 示例
+## <a name="nodejs-sample"></a>Node.js 範例
 
-以下 Node.js 示例代码获取 `X-ARR-ClientCert` 标头，并使用 [node-forge](https://github.com/digitalbazaar/forge) 将 base64 编码的 PEM 字符串转换为证书对象，然后验证该对象：
+下列 Node.js 範例程式碼會取得 `X-ARR-ClientCert` 標頭，並使用[node-偽造](https://github.com/digitalbazaar/forge)將 BASE64 編碼的 PEM 字串轉換成憑證物件並進行驗證：
 
 ```javascript
 import { NextFunction, Request, Response } from 'express';
@@ -190,7 +191,7 @@ export class AuthorizationHandler {
             const incomingCert: pki.Certificate = pki.certificateFromPem(pem);
 
             // Validate certificate thumbprint
-            const fingerPrint = md.sha1.create().update(asn1.toDer((pki as any).certificateToAsn1(incomingCert)).getBytes()).digest().toHex();
+            const fingerPrint = md.sha1.create().update(asn1.toDer(pki.certificateToAsn1(incomingCert)).getBytes()).digest().toHex();
             if (fingerPrint.toLowerCase() !== 'abcdef1234567890abcdef1234567890abcdef12') throw new Error('UNAUTHORIZED');
 
             // Validate time validity
@@ -214,3 +215,101 @@ export class AuthorizationHandler {
     }
 }
 ```
+
+## <a name="java-sample"></a>Java 範例
+
+下列 JAVA 類別會將憑證從編碼 `X-ARR-ClientCert` 成 `X509Certificate` 實例。 `certificateIsValid()`驗證憑證的指紋是否符合在此函式中指定的指紋，而且該憑證尚未過期。
+
+
+```java
+import java.io.ByteArrayInputStream;
+import java.security.NoSuchAlgorithmException;
+import java.security.cert.*;
+import java.security.MessageDigest;
+
+import sun.security.provider.X509Factory;
+
+import javax.xml.bind.DatatypeConverter;
+import java.util.Base64;
+import java.util.Date;
+
+public class ClientCertValidator { 
+
+    private String thumbprint;
+    private X509Certificate certificate;
+
+    /**
+     * Constructor.
+     * @param certificate The certificate from the "X-ARR-ClientCert" HTTP header
+     * @param thumbprint The thumbprint to check against
+     * @throws CertificateException If the certificate factory cannot be created.
+     */
+    public ClientCertValidator(String certificate, String thumbprint) throws CertificateException {
+        certificate = certificate
+                .replaceAll(X509Factory.BEGIN_CERT, "")
+                .replaceAll(X509Factory.END_CERT, "");
+        CertificateFactory cf = CertificateFactory.getInstance("X.509");
+        byte [] base64Bytes = Base64.getDecoder().decode(certificate);
+        X509Certificate X509cert =  (X509Certificate) cf.generateCertificate(new ByteArrayInputStream(base64Bytes));
+
+        this.setCertificate(X509cert);
+        this.setThumbprint(thumbprint);
+    }
+
+    /**
+     * Check that the certificate's thumbprint matches the one given in the constructor, and that the
+     * certificate has not expired.
+     * @return True if the certificate's thumbprint matches and has not expired. False otherwise.
+     */
+    public boolean certificateIsValid() throws NoSuchAlgorithmException, CertificateEncodingException {
+        return certificateHasNotExpired() && thumbprintIsValid();
+    }
+
+    /**
+     * Check certificate's timestamp.
+     * @return Returns true if the certificate has not expired. Returns false if it has expired.
+     */
+    private boolean certificateHasNotExpired() {
+        Date currentTime = new java.util.Date();
+        try {
+            this.getCertificate().checkValidity(currentTime);
+        } catch (CertificateExpiredException | CertificateNotYetValidException e) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * Check the certificate's thumbprint matches the given one.
+     * @return Returns true if the thumbprints match. False otherwise.
+     */
+    private boolean thumbprintIsValid() throws NoSuchAlgorithmException, CertificateEncodingException {
+        MessageDigest md = MessageDigest.getInstance("SHA-1");
+        byte[] der = this.getCertificate().getEncoded();
+        md.update(der);
+        byte[] digest = md.digest();
+        String digestHex = DatatypeConverter.printHexBinary(digest);
+        return digestHex.toLowerCase().equals(this.getThumbprint().toLowerCase());
+    }
+
+    // Getters and setters
+
+    public void setThumbprint(String thumbprint) {
+        this.thumbprint = thumbprint;
+    }
+
+    public String getThumbprint() {
+        return this.thumbprint;
+    }
+
+    public X509Certificate getCertificate() {
+        return certificate;
+    }
+
+    public void setCertificate(X509Certificate certificate) {
+        this.certificate = certificate;
+    }
+}
+```
+
+[exclusion-paths]: ./media/app-service-web-configure-tls-mutual-auth/exclusion-paths.png

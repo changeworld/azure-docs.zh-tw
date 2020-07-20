@@ -5,29 +5,29 @@ services: app-service
 author: cephalin
 ms.service: app-service
 ms.topic: include
-ms.date: 10/24/2018
+ms.date: 12/20/2019
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: 1eb35ec5b26c86e227152f14d4d91c0a2f087082
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 25003269fb6e00cadcc14d2356308cae54c70bf7
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50035482"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82085261"
 ---
 在 Cloud Shell 中，使用 [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) 命令在資源群組中建立 App Service 方案。
 
 <!-- [!INCLUDE [app-service-plan](app-service-plan-linux.md)] -->
 
-下列範例會在**基本**定價層 (`--sku B1`) 和 Linux 容器 (`--is-linux`) 中，建立名為 `myAppServicePlan` 的 App Service 方案。
+下列範例會在**免費**定價層 (`--sku F1`) 和 Linux 容器 (`--is-linux`) 中，建立名為 `myAppServicePlan` 的 App Service 方案。
 
 ```azurecli-interactive
-az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku B1 --is-linux
+az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku F1 --is-linux
 ```
 
 建立 App Service 方案後，Azure CLI 會顯示類似下列範例的資訊：
 
-```json
+<pre>
 { 
   "adminSiteName": null,
   "appServicePlanName": "myAppServicePlan",
@@ -38,9 +38,9 @@ az appservice plan create --name myAppServicePlan --resource-group myResourceGro
   "location": "West Europe",
   "maximumNumberOfWorkers": 1,
   "name": "myAppServicePlan",
-  < JSON data removed for brevity. >
+  &lt; JSON data removed for brevity. &gt;
   "targetWorkerSizeId": 0,
   "type": "Microsoft.Web/serverfarms",
   "workerTierName": null
 } 
-```
+</pre>

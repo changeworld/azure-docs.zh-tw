@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 9/25/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: a5c367402bd1e61485095fd1d565a8582acc3a9e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5a6da7e65a9a3e962a2df37b062792fbb990d04d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60824881"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "73159689"
 ---
 # <a name="azure-kubernetes-network-policies-overview"></a>Azure Kubernetes 網路原則概觀
 
@@ -32,7 +32,7 @@ ms.locfileid: "60824881"
 Azure 網路原則與 Azure CNI 搭配運作，而 Azure CNI 提供容器的 VNet 整合。 目前只有 Linux 節點上才支援。 實作會根據定義的原則來設定「Linux IP 資料表」規則，以強制執行流量篩選。
 
 ## <a name="planning-security-for-your-kubernetes-cluster"></a>規劃 Kubernetes 叢集的安全性
-實作叢集的安全性時，請使用網路安全性群組 (NSG) 來篩選北南流量 (即進出您叢集子網路的流量)，並針對東西流量使用 Kubernetes 網路原則 (即 叢集中 Pod 之間的流量)。
+在為您的叢集執行安全性時，請使用網路安全性群組（Nsg）來篩選北南部流量，也就是輸入和離開您的叢集子網的流量，並將 Kubernetes 網路原則用於美國西部流量，也就是叢集中的 pod 之間的流量。
 
 ## <a name="using-azure-kubernetes-network-policies"></a>使用 Azure Kubernetes 網路原則
 您可以透過下列方式使用 Azure 網路原則，以提供 Pod 的微型分割。
@@ -42,7 +42,7 @@ ACS-Engine 是一種工具，產生在 Azure 中部署 Kubernetes 叢集的 Azur
 
 若要在使用 acs-engine 所部署的叢集上啟用原則，請將叢集定義檔案中的 networkPolicy 設定值指定為 "azure"。
 
-#### <a name="example-configuration"></a>設定範例
+#### <a name="example-configuration"></a>範例設定
 
 以下 JSON 範例設定會建立新的虛擬網路和子網路，並使用 Azure CNI 在其中部署 Kubernetes 叢集。 建議您使用 [記事本] 編輯 JSON 檔案。 
 ```json
@@ -51,7 +51,7 @@ ACS-Engine 是一種工具，產生在 Azure 中部署 Kubernetes 叢集的 Azur
   "properties": {
     "orchestratorProfile": {
       "orchestratorType": "Kubernetes",
-      “kubernetesConfig”: {
+      "kubernetesConfig": {
          "networkPolicy": "azure"
        }
     },
@@ -102,4 +102,4 @@ ACS-Engine 是一種工具，產生在 Azure 中部署 Kubernetes 叢集的 Azur
 ## <a name="next-steps"></a>後續步驟
 - 了解 [Azure Kubernetes Service](../aks/intro-kubernetes.md)。
 -  了解[容器網路服務](container-networking-overview.md)。
-- [部署外掛程式](deploy-container-networking.md) (適用於 Kubernetes 叢集或 Docker 容器)。
+- 部署適用于 Kubernetes 叢集或 Docker 容器[的外掛程式](deploy-container-networking.md)。

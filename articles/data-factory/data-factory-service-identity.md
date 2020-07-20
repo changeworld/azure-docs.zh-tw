@@ -1,62 +1,62 @@
 ---
-title: Data factory 受控身分識別 |Microsoft Docs
-description: 針對 Azure Data Factory，以了解受管理的身分識別。
+title: 適用於 Data Factory 的受控身分識別
+description: 瞭解 Azure Data Factory 的受控識別。
 services: data-factory
 author: linda33wj
-manager: craigg
+manager: shwang
 editor: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 07/06/2020
 ms.author: jingwang
-ms.openlocfilehash: 3c1bb38eb12ce77d172257706cd458cebda4bd8c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: 7c1de2b6ef59efdaaed64fcf687fed0c834683c0
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59260743"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037591"
 ---
 # <a name="managed-identity-for-data-factory"></a>適用於 Data Factory 的受控身分識別
 
-這篇文章可協助您了解什麼是受管理的身分識別 （前身為受控服務身分識別/MSI） 的資料處理站和其運作方式。
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
+本文可協助您瞭解 Data Factory 的受控識別（先前稱為受控服務識別/MSI）及其運作方式。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
-在建立資料處理站時，就可以建立受控身分識別以及建立 factory。 受管理的身分識別是向 Azure Active Directory，在 managed 應用程式，並代表這個特定的 data factory。
+建立資料處理站時，可以建立受控身分識別和 factory 建立。 受控識別是向 Azure Active Directory 註冊的受控應用程式，代表此特定的 data factory。
 
-Data factory 受控身分識別有益於下列功能：
+Data Factory 的受控識別可享有下列功能：
 
-- [在 Azure Key Vault 中儲存認證](store-credentials-in-key-vault.md)，在此情況下 data factory 受控身分識別使用於 Azure 金鑰保存庫驗證。
+- [將認證儲存在 Azure Key Vault](store-credentials-in-key-vault.md)中，在此情況下，會使用 data factory 受控識別進行 Azure Key Vault 驗證。
 - 連接器，包括 [Azure Blob 儲存體](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、[Azure Data Lake Storage Gen2 ](connector-azure-data-lake-storage.md)、[Azure SQL Database](connector-azure-sql-database.md)，以及 [Azure SQL 資料倉儲](connector-azure-sql-data-warehouse.md)。
-- [網路活動](control-flow-web-activity.md)。
+- [Web 活動](control-flow-web-activity.md)。
 
-## <a name="generate-managed-identity"></a>產生受控身分識別
+## <a name="generate-managed-identity"></a>產生受控識別
 
-Data factory 受控身分識別的產生過程如下所示：
+Data Factory 的受控識別產生方式如下所示：
 
-- 建立資料處理站，透過時**Azure 入口網站或 PowerShell**、 受管理身分識別一律會自動建立。
-- 時建立資料處理站，透過**SDK**、 受管理會建立身分識別，只有當您指定"Identity = new factoryidentity （）"中建立的 factory 物件。 請參閱 [.NET 快速入門 - 建立資料處理站](quickstart-create-data-factory-dot-net.md#create-a-data-factory)中的範例。
-- 建立資料處理站，透過時**REST API**、 受管理將會建立身分識別，只有當您在要求主體中指定"identity"區段。 請參閱 [REST 快速入門 - 建立資料處理站](quickstart-create-data-factory-rest-api.md#create-a-data-factory)中的範例。
+- 透過**Azure 入口網站或 PowerShell**建立 data factory 時，一律會自動建立受控識別。
+- 透過**SDK**建立 data factory 時，只有當您在建立的 factory 物件中指定 "identity = new FactoryIdentity （）" 時，才會建立受控識別。 請參閱 [.NET 快速入門 - 建立資料處理站](quickstart-create-data-factory-dot-net.md#create-a-data-factory)中的範例。
+- 透過**REST API**建立 data factory 時，只有當您在要求主體中指定 "identity" 區段時，才會建立受控識別。 請參閱 [REST 快速入門 - 建立資料處理站](quickstart-create-data-factory-rest-api.md#create-a-data-factory)中的範例。
 
-如果您發現您的 data factory 沒有受控身分識別相關聯遵循[擷取受管理的身分識別](#retrieve-managed-identity)指令，您可以明確地產生一個，方法是以程式設計方式透過身分識別啟動器更新資料處理站：
+如果您發現您的資料處理站沒有與 [抓取[受控識別](#retrieve-managed-identity)] 指令相關聯的受控識別，您可以透過以程式設計方式更新 data factory 與身分識別啟動器，以明確地產生一個。
 
-- [產生使用 PowerShell 的受管理身分識別](#generate-managed-identity-using-powershell)
-- [產生受控身分識別，使用 REST API](#generate-managed-identity-using-rest-api)
-- [產生受控身分識別使用 Azure Resource Manager 範本](#generate-managed-identity-using-an-azure-resource-manager-template)
-- [產生使用 SDK 的受管理身分識別](#generate-managed-identity-using-sdk)
+- [使用 PowerShell 產生受控識別](#generate-managed-identity-using-powershell)
+- [使用 REST API 產生受控識別](#generate-managed-identity-using-rest-api)
+- [使用 Azure Resource Manager 範本產生受控識別](#generate-managed-identity-using-an-azure-resource-manager-template)
+- [使用 SDK 產生受控識別](#generate-managed-identity-using-sdk)
 
 >[!NOTE]
->- 無法修改受管理的身分識別。 更新已有受控身分識別的資料處理站不會有任何影響，受管理的身分識別會維持不變。
->- 如果您更新 data factory 已有受控身分識別，但未指定處理站物件中的"identity"參數，或未在 REST 要求本文中指定"identity"區段時，您會收到錯誤。
->- 當您刪除資料處理站時，相關聯的受管理身分識別會一併刪除。
+>- 無法修改受控識別。 更新已有受控識別的資料處理站不會有任何影響，受控識別會保持不變。
+>- 如果您更新已有受控識別的資料處理站，但未在 factory 物件中指定 "identity" 參數，或未在 REST 要求本文中指定 "identity" 區段，您將會收到錯誤。
+>- 當您刪除資料處理站時，將會一併刪除相關聯的受控識別。
 
-### <a name="generate-managed-identity-using-powershell"></a>產生使用 PowerShell 的受管理身分識別
+### <a name="generate-managed-identity-using-powershell"></a>使用 PowerShell 產生受控識別
 
-呼叫**組 AzDataFactoryV2**同樣地，命令就會看到新產生的"Identity"欄位：
+再次呼叫**set-azdatafactoryv2**命令，然後您會看到新產生的「身分識別」欄位：
 
 ```powershell
 PS C:\WINDOWS\system32> Set-AzDataFactoryV2 -ResourceGroupName <resourceGroupName> -Name <dataFactoryName> -Location <region>
@@ -70,7 +70,7 @@ Identity          : Microsoft.Azure.Management.DataFactory.Models.FactoryIdentit
 ProvisioningState : Succeeded
 ```
 
-### <a name="generate-managed-identity-using-rest-api"></a>產生受控身分識別，使用 REST API
+### <a name="generate-managed-identity-using-rest-api"></a>使用 REST API 產生受控識別
 
 在要求本文中以 "identity" 區段呼叫下面的 API：
 
@@ -78,7 +78,7 @@ ProvisioningState : Succeeded
 PATCH https://management.azure.com/subscriptions/<subsID>/resourceGroups/<resourceGroupName>/providers/Microsoft.DataFactory/factories/<data factory name>?api-version=2018-06-01
 ```
 
-**要求本文**：新增 "identity": { "type":"SystemAssigned" }。
+**要求本文**：新增 "identity": { "type": "SystemAssigned" }。
 
 ```json
 {
@@ -91,7 +91,7 @@ PATCH https://management.azure.com/subscriptions/<subsID>/resourceGroups/<resour
 }
 ```
 
-**回應**： 受管理的身分識別會自動建立，並據此填入"identity"區段。
+**回應**：系統會自動建立受控識別，並據此填入「身分識別」區段。
 
 ```json
 {
@@ -114,9 +114,9 @@ PATCH https://management.azure.com/subscriptions/<subsID>/resourceGroups/<resour
 }
 ```
 
-### <a name="generate-managed-identity-using-an-azure-resource-manager-template"></a>產生受控身分識別使用 Azure Resource Manager 範本
+### <a name="generate-managed-identity-using-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 範本產生受控識別
 
-**範本**：新增 "identity": { "type":"SystemAssigned" }。
+**Template**: add "identity": { "type": "SystemAssigned" }.
 
 ```json
 {
@@ -134,7 +134,7 @@ PATCH https://management.azure.com/subscriptions/<subsID>/resourceGroups/<resour
 }
 ```
 
-### <a name="generate-managed-identity-using-sdk"></a>產生使用 SDK 的受管理身分識別
+### <a name="generate-managed-identity-using-sdk"></a>使用 SDK 產生受控識別
 
 以 Identity=new FactoryIdentity() 呼叫資料處理站 create_or_update 函式。 使用 .NET 的範例程式碼：
 
@@ -147,26 +147,28 @@ Factory dataFactory = new Factory
 client.Factories.CreateOrUpdate(resourceGroup, dataFactoryName, dataFactory);
 ```
 
-## <a name="retrieve-managed-identity"></a>擷取受管理的身分識別
+## <a name="retrieve-managed-identity"></a>取出受控識別
 
-您可以擷取受管理的身分識別，從 Azure 入口網站或以程式設計的方式。 下列各節會顯示一些範例。
+您可以從 Azure 入口網站或以程式設計方式抓取受控識別。 下列各節會顯示一些範例。
 
 >[!TIP]
-> 如果您沒有看到受管理的身分識別[產生受控身分識別](#generate-managed-identity)藉由更新您的處理站。
+> 如果您沒有看到受控識別，請更新您的處理站來[產生受控識別](#generate-managed-identity)。
 
-### <a name="retrieve-managed-identity-using-azure-portal"></a>使用 Azure 入口網站的擷取受控身分識別
+### <a name="retrieve-managed-identity-using-azure-portal"></a>使用 Azure 入口網站取出受控識別
 
-您可以找到受管理的身分識別資訊，從 Azure 入口網站]-> [您的 data factory]-> [屬性：
+您可以從 Azure 入口網站 > 您的資料處理站 > 屬性來尋找受控識別資訊。
 
 - 受控識別物件識別碼
-- 受控識別租用戶
-- **受管理身分識別應用程式識別碼**> 複製此值
+- 受控識別租使用者
+- 受控識別應用程式識別碼
 
-![擷取受管理的身分識別](media/data-factory-service-identity/retrieve-service-identity-portal.png)
+當您建立連結服務時，也會顯示受控識別資訊，其支援受控識別驗證，例如 Azure Blob、Azure Data Lake Storage、Azure Key Vault 等。
 
-### <a name="retrieve-managed-identity-using-powershell"></a>使用 PowerShell 的擷取受控身分識別
+授與許可權時，請使用物件識別碼或 data factory 名稱（做為受控識別名稱）來尋找此身分識別。
 
-當您取得特定的 data factory，如下所示，將會傳回受管理的身分識別主體識別碼和租用戶識別碼：
+### <a name="retrieve-managed-identity-using-powershell"></a>使用 PowerShell 取出受控識別
+
+當您取得特定的資料處理站時，將會傳回受控識別主體識別碼和租使用者識別碼，如下所示。 使用**PrincipalId**授與存取權：
 
 ```powershell
 PS C:\WINDOWS\system32> (Get-AzDataFactoryV2 -ResourceGroupName <resourceGroupName> -Name <dataFactoryName>).Identity
@@ -176,7 +178,7 @@ PrincipalId                          TenantId
 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc 72f988bf-XXXX-XXXX-XXXX-2d7cd011db47
 ```
 
-複製主體識別碼，然後以主體識別碼作為參數來執行下面的 Azure Active Directory 命令，以取得您可用於授與存取權的 **ApplicationId**：
+您可以藉由複製上述主體識別碼來取得應用程式識別碼，然後以主體識別碼作為參數執行 Azure Active Directory 命令下方執行。
 
 ```powershell
 PS C:\WINDOWS\system32> Get-AzADServicePrincipal -ObjectId 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc
@@ -188,10 +190,65 @@ Id                    : 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc
 Type                  : ServicePrincipal
 ```
 
+### <a name="retrieve-managed-identity-using-rest-api"></a>使用 REST API 取出受控識別
+
+當您取得特定的資料處理站時，將會傳回受控識別主體識別碼和租使用者識別碼，如下所示。
+
+在要求中呼叫下列 API：
+
+```
+GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}?api-version=2018-06-01
+```
+
+**回應**：您會收到如下列範例所示的回應。 [身分識別] 區段會據此填入。
+
+```json
+{
+    "name":"<dataFactoryName>",
+    "identity":{
+        "type":"SystemAssigned",
+        "principalId":"554cff9e-XXXX-XXXX-XXXX-90c7d9ff2ead",
+        "tenantId":"72f988bf-XXXX-XXXX-XXXX-2d7cd011db47"
+    },
+    "id":"/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.DataFactory/factories/<dataFactoryName>",
+    "type":"Microsoft.DataFactory/factories",
+    "properties":{
+        "provisioningState":"Succeeded",
+        "createTime":"2020-02-12T02:22:50.2384387Z",
+        "version":"2018-06-01",
+        "factoryStatistics":{
+            "totalResourceCount":0,
+            "maxAllowedResourceCount":0,
+            "factorySizeInGbUnits":0,
+            "maxAllowedFactorySizeInGbUnits":0
+        }
+    },
+    "eTag":"\"03006b40-XXXX-XXXX-XXXX-5e43617a0000\"",
+    "location":"<region>",
+    "tags":{
+
+    }
+}
+```
+
+> [!TIP] 
+> 若要從 ARM 範本取出受控識別，請在 ARM JSON 中新增**輸出**區段：
+
+```json
+{
+    "outputs":{
+        "managedIdentityObjectId":{
+            "type":"string",
+            "value":"[reference(resourceId('Microsoft.DataFactory/factories', parameters('<dataFactoryName>')), '2018-06-01', 'Full').identity.principalId]"
+        }
+    }
+}
+```
+
 ## <a name="next-steps"></a>後續步驟
-請參閱下列主題介紹何時及如何使用 data factory 受控身分識別：
+請參閱下列主題，其仲介紹使用 data factory 受控識別的時機和方法：
 
 - [在 Azure Key Vault 中儲存認證](store-credentials-in-key-vault.md)
 - [使用 Azure 資源的受控識別驗證，從 Azure Data Lake Store 來回複製資料](connector-azure-data-lake-store.md)
 
-請參閱[管理 Azure 資源概觀的身分識別](/azure/active-directory/managed-identities-azure-resources/overview)的背景資訊管理的身分識別用於 data factory 管理身分識別的 Azure 資源為基礎。 
+請參閱適用于[Azure 資源的受控識別總覽](/azure/active-directory/managed-identities-azure-resources/overview)，以取得 azure 資源受控識別的更多背景資訊，而這是以 data factory 受控識別為基礎。 

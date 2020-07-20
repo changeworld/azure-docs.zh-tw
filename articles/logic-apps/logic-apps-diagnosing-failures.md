@@ -1,116 +1,86 @@
 ---
-title: 疑難排解和診斷失敗 - Azure Logic Apps | Microsoft Docs
-description: 了解如何針對 Azure Logic Apps 中的失敗進行疑難排解和診斷
+title: 針對工作流程失敗進行疑難排解和診斷
+description: 瞭解如何在 Azure Logic Apps 中，針對工作流程中的問題、錯誤和失敗進行疑難排解和診斷
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, jehollan, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: article
-ms.assetid: a6727ebd-39bd-4298-9e68-2ae98738576e
-ms.date: 10/15/2017
-ms.openlocfilehash: 62a74364939fffb6e06f51f1c0cabb6cce8c10e1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 01/31/2020
+ms.openlocfilehash: 1f83f13564a64a0d9d8a5e0144ca95af6a769d6c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60999717"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "76905064"
 ---
 # <a name="troubleshoot-and-diagnose-workflow-failures-in-azure-logic-apps"></a>針對 Azure Logic Apps 中的失敗進行疑難排解和診斷
 
-您的邏輯應用程式會產生可協助您診斷和偵錯應用程式邏輯中問題的資訊。 您可以藉由在 Azure 入口網站檢閱工作流程中的每個步驟來診斷邏輯應用程式。 或者您可以新增一些步驟至工作流程，以進行執行階段偵錯。
+您的邏輯應用程式會產生可協助您診斷和偵錯應用程式邏輯中問題的資訊。 您可以藉由在 Azure 入口網站檢閱工作流程中的每個步驟來診斷邏輯應用程式。 或者，您可以在工作流程中加入一些步驟來進行執行時間的偵錯工具。
 
-## <a name="review-trigger-history"></a>檢閱觸發程序歷程記錄
+<a name="check-trigger-history"></a>
 
-每個邏輯應用程式會從觸發程序開始。 如果沒有引發觸發程序，請先檢查觸發程序歷程記錄。 這個歷程記錄會列出您的邏輯應用程式進行的所有觸發程序嘗試，以及有關每個觸發程序嘗試的輸入和輸出詳細資料。
+## <a name="check-trigger-history"></a>檢查觸發程式歷程記錄
 
-1. 若要檢查是否引發觸發程序，請在邏輯應用程式功能表上選擇 [概觀]。 在 [觸發程序歷程記錄] 下，檢閱觸發程序的狀態。
+每個邏輯應用程式執行會從觸發程式嘗試開始，因此如果不引發觸發程式，請遵循下列步驟：
 
-   > [!TIP]
-   > 如果您沒有看到邏輯應用程式功能表，請嘗試返回 Azure 儀表板，然後重新開啟邏輯應用程式。
+1. 檢查觸發程式的歷程[記錄](../logic-apps/monitor-logic-apps.md#review-trigger-history)，以檢查觸發程式的狀態。 若要查看觸發程式嘗試的詳細資訊，請選取該觸發程式事件，例如：
 
-   ![檢閱觸發程序歷程記錄](./media/logic-apps-diagnosing-failures/logic-app-trigger-history-overview.png)
+   ![查看觸發程式狀態和歷程記錄](./media/logic-apps-diagnosing-failures/logic-app-trigger-history.png)
 
-   > [!TIP]
-   > * 如果找不到您預期的資料，請嘗試在工具列上選取 [重新整理]。
-   > * 如果此清單顯示許多觸發程序嘗試，而找不到您要的項目，請嘗試篩選清單。
+1. 請檢查觸發程式的輸入，以確認它們是否如您所預期般出現。 在 [**輸入連結**] 底下，選取顯示 [**輸入**] 窗格的連結。
 
-   以下是觸發程序嘗試的可能狀態：
+   觸發程式輸入包括觸發程式所預期的資料，以及啟動工作流程所需的資訊。 檢查這些輸入可協助您判斷觸發程式輸入是否正確，以及是否符合條件，讓工作流程可以繼續。
 
-   | 狀態 | 描述 | 
-   | ------ | ----------- | 
-   | **已成功** | 觸發程序檢查了端點，並找到可用的資料。 通常，「已引發」狀態也會隨著這個狀態一起出現。 如果沒有，則觸發程序定義可能有條件或 `SplitOn` 命令不符合要求。 <p>此狀態可以套用至手動觸發程序、循環觸發程序或輪詢觸發程序。 觸發程序可以順利執行，但執行本身在動作產生未處理的錯誤時可能會失敗。 | 
-   | **已略過** | 觸發程序檢查了端點，但不找到任何資料。 | 
-   | **已失敗** | 發生錯誤。 若要檢閱失敗的觸發程序所產生的任何錯誤訊息，請選取該觸發程序嘗試並選擇 [輸出]。 例如，您可能會發現無效的輸入。 | 
-   ||| 
+   例如，這裡的 `feedUrl` 屬性具有不正確的 RSS 摘要值：
 
-   可能有多個觸發程序項目具有相同的日期和時間，當應用程式邏輯找到多個項目時會發生此情況。 
-   每次引發觸發程序時，Logic Apps 引擎會建立邏輯應用程式執行個體，以執行您的工作流程。 根據預設，每個執行個體會並行執行，使得任何工作流程不需等待即可開始執行。
+   ![審查觸發程式輸入中的錯誤](./media/logic-apps-diagnosing-failures/review-trigger-inputs-for-errors.png)
+
+1. 檢查觸發程式輸出（如果有的話），以確認它們是否如您所預期般出現。 在 [**輸出連結**] 底下，選取顯示 [**輸出**] 窗格的連結。
+
+   觸發程式輸出包含觸發程式傳遞至工作流程下一個步驟的資料。 查看這些輸出可協助您判斷是否將正確或預期的值傳遞至工作流程中的下一個步驟，例如：
+
+   ![審查觸發程式輸出中的錯誤](./media/logic-apps-diagnosing-failures/review-trigger-outputs-for-errors.png)
 
    > [!TIP]
-   > 您可以重新檢查觸發程序，而不需等待下一個週期。 在概觀工具列上，選擇 [執行觸發程序]，然後選取觸發程序，這會強制進行檢查。 或者，在 Logic Apps 設計工具工具列上選取 [執行]。
+   > 如果您發現任何無法辨識的內容，請在 Azure Logic Apps 中深入瞭解[不同的內容類型](../logic-apps/logic-apps-content-type.md)。
 
-3. 若要檢查詳細資料的觸發程序嘗試，請在 [觸發程序歷程記錄] 下選取該觸發程序嘗試。 
+<a name="check-runs-history"></a>
 
-   ![選取觸發程序嘗試](./media/logic-apps-diagnosing-failures/logic-app-trigger-history.png)
+## <a name="check-runs-history"></a>檢查執行歷程記錄
 
-4. 檢閱觸發程序產生的任何輸入和輸出。 觸發程序輸出會顯示來自觸發程序的資料。 這些輸出可協助您判斷所有屬性是否如預期般傳回。
+每次引發專案或事件的觸發程式時，Logic Apps 引擎都會針對每個專案或事件建立並執行個別的工作流程實例。 如果執行失敗，請遵循下列步驟來檢查該執行期間發生的情況，包括工作流程中每個步驟的狀態，以及每個步驟的輸入和輸出。
 
-   > [!NOTE]
-   > 如果您看見任何不了解的內容，請了解 Azure Logic Apps 如何[處理不同的內容類型](../logic-apps/logic-apps-content-type.md)。
+1. [檢查執行歷程記錄](../logic-apps/monitor-logic-apps.md#review-runs-history)，以檢查工作流程的執行狀態。 若要查看失敗執行的詳細資訊，包括該執行狀態中的所有步驟，請選取失敗的執行。
 
-   ![觸發程序輸出](./media/logic-apps-diagnosing-failures/trigger-outputs.png)
+   ![查看執行歷程記錄並選取失敗的執行](./media/logic-apps-diagnosing-failures/logic-app-runs-history.png)
 
-## <a name="review-run-history"></a>檢閱執行歷程記錄
+1. 出現執行中的所有步驟之後，請展開第一個失敗的步驟。
 
-每個引發的觸發程序會開始一個工作流程執行。 您可以檢閱該執行期間發生什麼，包括工作流程中的每個步驟的狀態，加上每個步驟的輸入和輸出。
+   ![展開第一個失敗的步驟](./media/logic-apps-diagnosing-failures/logic-app-run-pane.png)
 
-1. 在邏輯應用程式功能表上，選擇 [概觀]。 在 [執行歷程記錄] 下，檢閱所引發的觸發程序執行。
+1. 檢查失敗的步驟的輸入，以確認是否如預期般出現。
 
-   > [!TIP]
-   > 如果您沒有看到邏輯應用程式功能表，請嘗試返回 Azure 儀表板，然後重新開啟邏輯應用程式。
+1. 檢閱特定執行中每個步驟的詳細資料。 在 [執行歷程記錄]**** 下，選取您想要檢查的執行。
 
-   ![檢閱執行歷程記錄](./media/logic-apps-diagnosing-failures/logic-app-runs-history-overview.png)
-
-   > [!TIP]
-   > * 如果找不到您預期的資料，請嘗試在工具列上選取 [重新整理]。
-   > * 如果此清單顯示許多執行，而找不到您要的項目，請嘗試篩選清單。
-
-   以下是執行的可能狀態：
-
-   | 狀態 | 描述 | 
-   | ------ | ----------- | 
-   | **已成功** | 所有動作都已成功。 <p>如果特定動作發生任何失敗，工作流程中的後續動作已處理該失敗。 | 
-   | **已失敗** | 至少一個動作失敗，並且工作流程中沒有設定後續動作來處理失敗。 | 
-   | **已取消** | 工作流程正執行中，但收到了取消要求。 | 
-   | **執行中** | 工作流程目前正在執行中。 <p>節流處理的流程可能會出現此狀態，或者因為目前的定價方案所致。 如需詳細資訊，請參閱[定價頁面上的動作限制](https://azure.microsoft.com/pricing/details/logic-apps/)。 如果您設定[診斷記錄](../logic-apps/logic-apps-monitor-your-logic-apps.md)，則也可以取得所發生任何節流事件的相關資訊。 | 
-   ||| 
-
-2. 檢閱特定執行中每個步驟的詳細資料。 在 [執行歷程記錄] 下，選取您想要檢查的執行。
-
-   ![檢閱執行歷程記錄](./media/logic-apps-diagnosing-failures/logic-app-run-history.png)
-
-   執行本身成功或失敗，[執行詳細資料] 檢視會顯示每個步驟以及它們是成功或失敗。
+   ![檢閱執行歷程記錄](./media/logic-apps-diagnosing-failures/logic-app-runs-history.png)
 
    ![檢視邏輯應用程式執行的詳細資料](./media/logic-apps-diagnosing-failures/logic-app-run-details.png)
 
-3. 若要檢查特定步驟的輸入、輸出和任何錯誤訊息，請選擇該步驟，以便圖形展開並顯示詳細資料。 例如︰
+1. 若要檢查特定步驟的輸入、輸出和任何錯誤訊息，請選擇該步驟，以便圖形展開並顯示詳細資料。 例如：
 
    ![檢視步驟詳細資料](./media/logic-apps-diagnosing-failures/logic-app-run-details-expanded.png)
 
 ## <a name="perform-runtime-debugging"></a>執行執行階段偵錯
 
-若要協助偵錯，您可以新增診斷步驟至工作流程，以及檢閱觸發程序和執行歷程記錄。 例如，您可以新增使用 [Webhook Tester](https://webhook.site/) 服務的步驟，使得您可以檢查 HTTP 要求，並判斷其確切的大小、圖形與格式。
+若要協助進行偵錯工具，您可以將診斷步驟新增至邏輯應用程式工作流程，以及檢查觸發程式和執行歷程記錄。 例如，您可以新增使用 [Webhook Tester](https://webhook.site/) 服務的步驟，使得您可以檢查 HTTP 要求，並判斷其確切的大小、圖形與格式。
 
-1. 瀏覽 [Webhook Tester](https://webhook.site/) 並複製所建立的唯一 URL
+1. 移至[Webhook 測試人員](https://webhook.site/)網站，並複製產生的唯一 URL。
 
-2. 在您的邏輯應用程式中，以您想要測試的任何內文內容新增 HTTP POST 動作 (例如，運算式或另一個步驟輸出)。
+1. 在您的邏輯應用程式中，新增 HTTP POST 動作加上您想要測試的本文內容，例如，運算式或另一個步驟輸出。
 
-3. 將 Webhook Tester 的 URL 貼上至 HTTP POST 動作。
+1. 將您的 URL 從 Webhook 測試人員貼入 HTTP POST 動作。
 
-4. 從 Logic Apps 引擎產生時，若要檢閱要求如何形成，請執行邏輯應用程式，並參閱 Webhook Tester 以取得詳細資料。
+1. 若要在從 Logic Apps 引擎產生時，檢查要求的形成方式，請執行邏輯應用程式，然後重新流覽 Webhook 測試者網站以取得詳細資料。
 
 ## <a name="next-steps"></a>後續步驟
 
-[監視邏輯應用程式](../logic-apps/logic-apps-monitor-your-logic-apps.md)
+* [監視邏輯應用程式](../logic-apps/monitor-logic-apps.md)

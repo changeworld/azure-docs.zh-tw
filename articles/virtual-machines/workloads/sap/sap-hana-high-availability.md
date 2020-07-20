@@ -1,24 +1,22 @@
 ---
-title: SUSE Linux Enterprise Server 上 Azure VM 的 SAP HANA 高可用性 | Microsoft Docs
+title: 在 SLES 上的 Azure Vm 上 SAP Hana 的高可用性 |Microsoft Docs
 description: SUSE Linux Enterprise Server 上 Azure VM 的 SAP HANA 高可用性
 services: virtual-machines-linux
 documentationcenter: ''
-author: MSSedusch
-manager: jeconnoc
+author: rdeltcheva
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 03/15/2019
-ms.author: sedusch
-ms.openlocfilehash: 3d59fc48f1f6f6931ca18e09a420fdbccc7d53dc
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
-ms.translationtype: MT
+ms.date: 05/11/2020
+ms.author: radeltch
+ms.openlocfilehash: 501d49feef877addd2f3e5364a06caf1d273ca83
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64922278"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "83196858"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server 上 Azure VM 的 SAP HANA 高可用性
 
@@ -55,14 +53,14 @@ ms.locfileid: "64922278"
 
 請先閱讀下列 SAP Note 和文件：
 
-* SAP 说明 [1928533]，其中包含：
+* SAP Note [1928533]，其中包含：
   * SAP 軟體部署支援的 Azure VM 大小清單。
   * Azure VM 大小的重要容量資訊。
   * 支援的 SAP 軟體，以及作業系統 (OS) 與資料庫組合。
   * Microsoft Azure 上 Windows 和 Linux 所需的 SAP 核心版本。
 * SAP Note [2015553] 列出 Azure 中 SAP 支援的 SAP 軟體部署先決條件。
-* SAP Note [2205917] 包含適用於 SUSE Linux Enterprise Server for SAP Applications 的建議 OS 設定。
-* SAP Note [1944799] 包含適用於 SUSE Linux Enterprise Server for SAP Applications 的 SAP HANA 指導方針。
+* SAP Note [2205917]針對 SAP 應用程式的 SUSE Linux Enterprise Server 有建議的 OS 設定。
+* SAP Note [1944799]具有適用于 Sap 應用程式 SUSE Linux Enterprise Server 的 SAP Hana 方針。
 * SAP Note [2178632] 包含在 Azure 中針對 SAP 回報的所有監視計量詳細資訊。
 * SAP Note [2191498] 包含 Azure 中 Linux 所需的 SAP Host Agent 版本。
 * SAP Note [2243692] 包含 Azure 中 Linux 上的 SAP 授權相關資訊。
@@ -72,7 +70,7 @@ ms.locfileid: "64922278"
 * [SAP Community WIKI](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) 包含 Linux 所需的所有 SAP Note。
 * [SAP Hana 認證 IaaS 平台](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)
 * [適用於 SAP on Linux 的 Azure 虛擬機器規劃和實作][planning-guide]指南。
-* [適用於 SAP on Linux 的 Azure 虛擬機器部署 (本文)][deployment-guide]。
+* [適用于 SAP On Linux 的 Azure 虛擬機器部署][deployment-guide]（本文）。
 * [適用於 SAP on Linux 的 Azure 虛擬機器 DBMS 部署][dbms-guide]指南。
 * [適用於 SAP Applications 12 SP3 的 SUSE Linux Enterprise Server 最佳做法指南][sles-for-sap-bp]
   * 設定 SAP HANA SR 效能最佳化基礎結構 (SLES for SAP Applications 12 SP1)。 此指南包含所有必要資訊，可供您設定 SAP HANA 系統複寫以供內部部署開發之用。 請使用此指南做為基礎。
@@ -106,14 +104,14 @@ Azure Marketplace 包含 SUSE Linux Enterprise Server for SAP Applications 12 �
 
 1. 輸入下列參數：
     - **SAP 系統識別碼**：輸入您想要安裝的 SAP 系統之 SAP 系統識別碼。 該識別碼會作為所部署之資源的前置詞。
-    - **堆疊類型**：(此參數只有在您使用交集範本時才適用)。選取 SAP NetWeaver 堆疊類型。
-    - **OS 類型**：選取一個 Linux 發行版本。 在此範例中，請選取 **SLES 12**。
+    - **堆疊類型**：（此參數只有在您使用交集範本時才適用）。選取 [SAP NetWeaver] 堆疊類型。
+    - **OS 類型**：選取一個 Linux 發行版本。 在此範例中，請選取**SLES 12**。
     - **DB 類型**：選取 **HANA**。
     - **SAP 系統大小**：輸入新系統要提供的 SAP 數量。 如果您不確定系統需要多少 SAP，請詢問您的 SAP 技術合作夥伴或系統整合者。
     - **系統可用性**：選取 **HA**。
-    - **管理員使用者名稱和管理員密碼**：會建立新的使用者，可以用來登入電腦。
-    - **新的或現有的子網路**：決定要建立新的虛擬網路和子網路，還是要使用現有子網路。 如果您已經有連線到內部部署網路的虛擬網路，請選取 [現有]。
-    - **子網路識別碼**：如果您想將 VM 部署至現有的 VNet (其中具有定義 VM 應指派的目的子網路)，請說明該特定子網路的 ID。 識別碼通常如下所示：**/subscriptions/\<訂用帳戶識別碼>/resourceGroups/\<資源群組名稱>/providers/Microsoft.Network/virtualNetworks/\<虛擬網路名稱>/subnets/\<子網路名稱>**。
+    - **管理員使用者名稱和管理員密碼**：建立的新使用者可以用來登入電腦。
+    - **新的或現有的子網路**︰決定應該建立新的虛擬網路和子網路，還是使用現有的子網路。 如果您已經有連線到內部部署網路的虛擬網路，請選取 [現有]****。
+    - **子網路識別碼**：如果您想將 VM 部署至現有的 VNet (其中具有定義 VM 應指派的目的子網路)，請說明該特定子網路的 ID。 此識別碼通常看起來像是 **/Subscriptions/ \<subscription ID> /resourceGroups/ \<resource group name> /providers/Microsoft.Network/virtualNetworks/ \<virtual network name> /subnets/ \<subnet name> **。
 
 ### <a name="manual-deployment"></a>手動部署
 
@@ -125,7 +123,7 @@ Azure Marketplace 包含 SUSE Linux Enterprise Server for SAP Applications 12 �
 1. 建立虛擬網路。
 1. 建立可用性設定組。
    - 設定更新網域上限。
-1. 建立負載平衡器 (內部)。
+1. 建立負載平衡器 (內部)。 建議[標準負載平衡器](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)。
    - 選取步驟 2 所建立的虛擬網路。
 1. 建立虛擬機器 1。
    - 您所選取的 VM 類型上使用 Azure 資源庫中 SAP HANA 支援的 SLES4SAP 映像。
@@ -134,68 +132,108 @@ Azure Marketplace 包含 SUSE Linux Enterprise Server for SAP Applications 12 �
    - 您所選取的 VM 類型上使用 Azure 資源庫中 SAP HANA 支援的 SLES4SAP 映像。
    - 選取步驟 3 所建立的可用性設定組。 
 1. 新增資料磁碟。
-1. 設定負載平衡器。 首先，建立前端 IP 集區：
+1. 如果使用標準負載平衡器，請遵循下列設定步驟：
+   1. 首先，建立前端 IP 集區：
+   
+      1. 開啟負載平衡器，選取 [前端 IP 集區]，然後選取 [新增]。
+      1. 輸入新前端 IP 集區的名稱 (例如 **hana-frontend**)。
+      1. 將 [指派] 設定為 [靜態]，然後輸入 IP 位址 (例如 **10.0.0.13**)。
+      1. 選取 [確定]。
+      1. 建立新的前端 IP 集區之後，請記下集區 IP 位址。
+   
+   1. 接下來，建立後端集區：
+   
+      1. 開啟負載平衡器，選取 [後端集區]，然後選取 [新增]。
+      1. 輸入新後端集區的名稱 (例如 **hana-backend**)。
+      1. 選取 [**虛擬網路**]。
+      1. 選取 [新增虛擬機器]。
+      1. 選取 [虛擬機器]。
+      1. 選取 SAP Hana 叢集的虛擬機器及其 IP 位址。
+      1. 選取 [新增]。
+   
+   1. 接下來，建立健康情況探查：
+   
+      1. 開啟負載平衡器，選取 [健康情況探查]，然後選取 [新增]。
+      1. 輸入新健康情況探查的名稱 (例如 **hana-hp**)。
+      1. 選取 [TCP] 通訊協定和連接埠 **62503**。 讓 [間隔] 值保持設定為 5，而讓 [狀況不良閾值] 值保持設定為 2。
+      1. 選取 [確定]。
+   
+   1. 接下來，建立負載平衡規則：
+   
+      1. 開啟負載平衡器，選取 [負載平衡規則]，然後選取 [新增]。
+      1. 輸入新負載平衡器規則的名稱 (例如 **hana-lb**)。
+      1. 選取您稍早建立的前端 IP 位址、後端集區及健康情況探查 (例如，**hana-frontend**、**hana-backend** 和 **hana-hp**)。
+      1. 選取 [HA 連接埠]。
+      1. 將 [閒置逾時] 增加為 30 分鐘。
+      1. 務必**啟用浮動 IP**。
+      1. 選取 [確定]。
 
-   1. 開啟負載平衡器，選取 [前端 IP 集區]，然後選取 [新增]。
-   1. 輸入新前端 IP 集區的名稱 (例如 **hana-frontend**)。
-   1. 將 [指派] 設定為 [靜態]，然後輸入 IP 位址 (例如 **10.0.0.13**)。
-   1. 選取 [確定] 。
-   1. 建立新的前端 IP 集區之後，請記下集區 IP 位址。
+   > [!Note]
+   > 當不具公用 IP 位址的 VM 放在內部 (沒有公用 IP 位址) 標準 Azure 負載平衡器的後端集區時，除非另外設定來允許路由傳送至公用端點，否則不會有輸出網際網路連線能力。 如需如何實現輸出連線能力的詳細資訊，請參閱[在 SAP 高可用性情節中使用 Azure Standard Load Balancer 實現虛擬機器的公用端點連線能力](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)。  
 
-1. 接下來，建立後端集區：
+1. 或者，如果您的情節要求使用基本負載平衡器，請遵循下列設定步驟：
+   1. 首先，建立前端 IP 集區：
+   
+      1. 開啟負載平衡器，選取 [前端 IP 集區]，然後選取 [新增]。
+      1. 輸入新前端 IP 集區的名稱 (例如 **hana-frontend**)。
+      1. 將 [指派] 設定為 [靜態]，然後輸入 IP 位址 (例如 **10.0.0.13**)。
+      1. 選取 [確定]。
+      1. 建立新的前端 IP 集區之後，請記下集區 IP 位址。
+   
+   1. 接下來，建立後端集區：
+   
+      1. 開啟負載平衡器，選取 [後端集區]，然後選取 [新增]。
+      1. 輸入新後端集區的名稱 (例如 **hana-backend**)。
+      1. 選取 [新增虛擬機器]。
+      1. 選取步驟 3 所建立的可用性設定組。
+      1. 選取 SAP HANA 叢集的虛擬機器。
+      1. 選取 [確定]。
+   
+   1. 接下來，建立健康情況探查：
+   
+      1. 開啟負載平衡器，選取 [健康情況探查]，然後選取 [新增]。
+      1. 輸入新健康情況探查的名稱 (例如 **hana-hp**)。
+      1. 選取 [TCP] 通訊協定和連接埠 **62503**。 讓 [間隔] 值保持設定為 5，而讓 [狀況不良閾值] 值保持設定為 2。
+      1. 選取 [確定]。
+   
+   1. 針對 SAP HANA 1.0，建立負載平衡規則：
+   
+      1. 開啟負載平衡器，選取 [負載平衡規則]，然後選取 [新增]。
+      1. 輸入新負載平衡器規則的名稱 (例如 hana-lb-3**03**15)。
+      1. 選取您稍早建立的前端 IP 位址、後端集區及健康情況探查 (例如 **hana-frontend**)。
+      1. 讓 [通訊協定] 保持設定為 [TCP]，然後輸入連接埠 3**03**15。
+      1. 將 [閒置逾時] 增加為 30 分鐘。
+      1. 務必**啟用浮動 IP**。
+      1. 選取 [確定]。
+      1. 對連接埠 3**03**17 重複執行這些步驟。
+   
+   1. 若為 SAP Hana 2.0，請針對系統資料庫建立負載平衡規則：
+   
+      1. 開啟負載平衡器，選取 [負載平衡規則]，然後選取 [新增]。
+      1. 輸入新負載平衡器規則的名稱 (例如 hana-lb-3**03**13)。
+      1. 選取您稍早建立的前端 IP 位址、後端集區及健康情況探查 (例如 **hana-frontend**)。
+      1. 讓 [通訊協定] 保持設定為 [TCP]，然後輸入連接埠 3**03**13。
+      1. 將 [閒置逾時] 增加為 30 分鐘。
+      1. 務必**啟用浮動 IP**。
+      1. 選取 [確定]。
+      1. 針對連接埠 3**03**14 重複這些步驟。
+   
+   1. 若為 SAP Hana 2.0，請先針對租用戶資料庫建立負載平衡規則：
+   
+      1. 開啟負載平衡器，選取 [負載平衡規則]，然後選取 [新增]。
+      1. 輸入新負載平衡器規則的名稱 (例如 hana-lb-3**03**40)。
+      1. 選取您稍早建立的前端 IP 位址、後端集區及健康情況探查 (例如 **hana-frontend**)。
+      1. 讓 [通訊協定] 保持設定為 [TCP]，然後輸入連接埠 3**03**40。
+      1. 將 [閒置逾時] 增加為 30 分鐘。
+      1. 務必**啟用浮動 IP**。
+      1. 選取 [確定]。
+      1. 針對連接埠 3**03**41 和 3**03**42 重複這些步驟。
 
-   1. 開啟負載平衡器，選取 [後端集區]，然後選取 [新增]。
-   1. 輸入新後端集區的名稱 (例如 **hana-backend**)。
-   1. 選取 [新增虛擬機器]。
-   1. 選取步驟 3 所建立的可用性設定組。
-   1. 選取 SAP HANA 叢集的虛擬機器。
-   1. 選取 [確定] 。
-
-1. 接下來，建立健康情況探查：
-
-   1. 開啟負載平衡器，選取 [健康情況探查]，然後選取 [新增]。
-   1. 輸入新健康情況探查的名稱 (例如 **hana-hp**)。
-   1. 選取 [TCP] 通訊協定和連接埠 **62503**。 讓 [間隔] 值保持設定為 5，而讓 [狀況不良閾值] 值保持設定為 2。
-   1. 選取 [確定] 。
-
-1. 針對 SAP HANA 1.0，建立負載平衡規則：
-
-   1. 開啟負載平衡器，選取 [負載平衡規則]，然後選取 [新增]。
-   1. 輸入新負載平衡器規則的名稱 (例如 hana-lb-3**03**15)。
-   1. 選取您稍早建立的前端 IP 位址、後端集區及健康情況探查 (例如 **hana-frontend**)。
-   1. 讓 [通訊協定] 保持設定為 [TCP]，然後輸入連接埠 3**03**15。
-   1. 將 [閒置逾時] 增加為 30 分鐘。
-   1. 務必**啟用浮動 IP**。
-   1. 選取 [確定] 。
-   1. 對連接埠 3**03**17 重複執行這些步驟。
-
-1. 若為 SAP Hana 2.0，請針對系統資料庫建立負載平衡規則：
-
-   1. 開啟負載平衡器，選取 [負載平衡規則]，然後選取 [新增]。
-   1. 輸入新負載平衡器規則的名稱 (例如 hana-lb-3**03**13)。
-   1. 選取您稍早建立的前端 IP 位址、後端集區及健康情況探查 (例如 **hana-frontend**)。
-   1. 讓 [通訊協定] 保持設定為 [TCP]，然後輸入連接埠 3**03**13。
-   1. 將 [閒置逾時] 增加為 30 分鐘。
-   1. 務必**啟用浮動 IP**。
-   1. 選取 [確定] 。
-   1. 針對連接埠 3**03**14 重複這些步驟。
-
-1. 若為 SAP Hana 2.0，請先針對租用戶資料庫建立負載平衡規則：
-
-   1. 開啟負載平衡器，選取 [負載平衡規則]，然後選取 [新增]。
-   1. 輸入新負載平衡器規則的名稱 (例如 hana-lb-3**03**40)。
-   1. 選取您稍早建立的前端 IP 位址、後端集區及健康情況探查 (例如 **hana-frontend**)。
-   1. 讓 [通訊協定] 保持設定為 [TCP]，然後輸入連接埠 3**03**40。
-   1. 將 [閒置逾時] 增加為 30 分鐘。
-   1. 務必**啟用浮動 IP**。
-   1. 選取 [確定] 。
-   1. 針對連接埠 3**03**41 和 3**03**42 重複這些步驟。
-
-如需 SAP Hana 必要連接埠的詳細資訊，請參閱 [SAP Hana 租用戶資料庫](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6)指南的[連線到租用戶資料庫](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6/latest/en-US/7a9343c9f2a2436faa3cfdb5ca00c052.html)章節或 [SAP Note 2388694][2388694]。
+   如需 SAP Hana 所需連接埠的詳細資訊，請參閱 [SAP Hana 租用戶資料庫](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6)指南的[連線到租用戶資料庫](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6/latest/en-US/7a9343c9f2a2436faa3cfdb5ca00c052.html)一章，或 [SAP Note 2388694][2388694]。
 
 > [!IMPORTANT]
-> 不會啟用 TCP 放置 Azure 負載平衡器後方的 Azure Vm 上的時間戳記。 啟用 TCP 加上時間戳記將會造成失敗的健康狀態探查。 設定參數**net.ipv4.tcp_timestamps**要**0**。 如需詳細資訊，請參閱[負載平衡器健康情況探查](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)。
-> 另請參閱 SAP 附註[2382421](https://launchpad.support.sap.com/#/notes/2382421)。 
+> 請勿在位於 Azure Load Balancer 後方的 Azure VM 上啟用 TCP 時間戳記。 啟用 TCP 時間戳記會導致健康狀態探查失敗。 將參數 **net.ipv4.tcp_timestamps** 設定為 **0**。 如需詳細資料，請參閱[負載平衡器健康情況探查](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)。
+> 另請參閱 SAP Note [2382421](https://launchpad.support.sap.com/#/notes/2382421)。 
 
 ## <a name="create-a-pacemaker-cluster"></a>建立 Pacemaker 叢集
 
@@ -204,11 +242,11 @@ Azure Marketplace 包含 SUSE Linux Enterprise Server for SAP Applications 12 �
 ## <a name="install-sap-hana"></a>安裝 SAP HANA
 
 本節中的步驟會使用下列首碼：
-- **[A]**：此步驟適用於所有節點。
-- **[1]**：此步驟僅適用於節點 1。
-- **[2]**：此步驟僅適用於 Pacemaker 叢集的節點 2。
+- **[A]** ：此步驟適用於所有節點。
+- **[1]** ：此步驟僅適用於節點 1。
+- **[2]** ：此步驟僅適用於 Pacemaker 叢集的節點 2。
 
-1. **[A]** 設定磁碟配置：**邏輯磁碟區管理 (LVM)**。
+1. **[A]** 設定磁碟配置：**邏輯磁碟區管理 (LVM)** 。
 
    建議您針對儲存資料和記錄檔的磁碟區使用 LVM。 下列範例假設虛擬機器已連接四個資料磁碟，這些資料磁碟會用來建立兩個磁碟區。
 
@@ -238,16 +276,20 @@ Azure Marketplace 包含 SUSE Linux Enterprise Server for SAP Applications 12 �
    sudo vgcreate vg_hana_shared_<b>HN1</b> /dev/disk/azure/scsi1/lun3
    </code></pre>
 
-   建立邏輯磁碟區。 當您使用 `lvcreate` 卻未搭配 `-i` 參數時，會建立線性磁碟區。 建議您建立等量磁碟區以獲得更好的 I/O 效能，其中，`-i` 引數應該為基礎實體磁碟區的數目。 本文件會使用 2 個實體磁碟區來作為資料磁碟區，因此 `-i` 參數引數會設定為 **2**。 1 個實體磁碟區會作為記錄磁碟區，因此不會明確使用 `-i` 參數。 當您要對每個資料、記錄或共用磁碟區使用多個實體磁碟區時，請使用 `-i` 參數，並將其值設定為基礎實體磁碟區的數目。
+   建立邏輯磁碟區。 當您使用 `lvcreate` 卻未搭配 `-i` 參數時，會建立線性磁碟區。 建議您建立等量磁碟區以提高 I/O 效能，並將等量大小調整為 [SAP Hana VM 儲存體設定](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)中記載的值。 `-i` 引數應該為基礎實體磁碟區的數目，`-I` 引數是等量大小。 本文件會使用 2 個實體磁碟區來作為資料磁碟區，因此 `-i` 參數引數會設定為 **2**。 資料磁碟區的等量大小是 **256KiB**。 有一個實體磁碟區作為記錄磁碟區，因此，記錄磁碟區命令中不需要明確使用 `-i` 或 `-I` 參數。  
 
-   <pre><code>sudo lvcreate <b>-i 2</b> -l 100%FREE -n hana_data vg_hana_data_<b>HN1</b>
+   > [!IMPORTANT]
+   > 當您要對每個資料、記錄或共用磁碟區使用多個實體磁碟區時，請使用 `-i` 參數，並將其值設定為基礎實體磁碟區的數目。 建立等量磁碟區時，請使用 `-I` 參數來指定等量大小。  
+   > 請參閱 [SAP Hana VM 儲存體設定](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)，以取得建議的儲存體設定，包括等量大小和磁碟數目。  
+
+   <pre><code>sudo lvcreate <b>-i 2</b> <b>-I 256</b> -l 100%FREE -n hana_data vg_hana_data_<b>HN1</b>
    sudo lvcreate -l 100%FREE -n hana_log vg_hana_log_<b>HN1</b>
    sudo lvcreate -l 100%FREE -n hana_shared vg_hana_shared_<b>HN1</b>
    sudo mkfs.xfs /dev/vg_hana_data_<b>HN1</b>/hana_data
    sudo mkfs.xfs /dev/vg_hana_log_<b>HN1</b>/hana_log
    sudo mkfs.xfs /dev/vg_hana_shared_<b>HN1</b>/hana_shared
    </code></pre>
-
+  
    建立掛接目錄，並複製所有邏輯磁碟區的 UUID：
 
    <pre><code>sudo mkdir -p /hana/data/<b>HN1</b>
@@ -347,7 +389,7 @@ Azure Marketplace 包含 SUSE Linux Enterprise Server for SAP Applications 12 �
 
 1. **[A]** 升級 SAP 主機代理程式。
 
-   從 [SAP 軟體中心 (英文)][sap-swcenter] 下載最新的 SAP 主機代理程式封存檔，然後執行下列命令來升級代理程式。 取代封存檔的路徑以指向您所下載的檔案：
+   從 [SAP 軟體中心][sap-swcenter]下載最新的 SAP 主機代理程式封存檔，然後執行下列命令來升級代理程式。 取代封存檔的路徑以指向您所下載的檔案：
 
    <pre><code>sudo /usr/sap/hostctrl/exe/saphostexec -upgrade -archive &lt;path to SAP Host Agent SAR&gt;
    </code></pre>
@@ -356,22 +398,22 @@ Azure Marketplace 包含 SUSE Linux Enterprise Server for SAP Applications 12 �
 
 本節中的步驟會使用下列首碼：
 
-* **[A]**：此步驟適用於所有節點。
-* **[1]**：此步驟僅適用於節點 1。
-* **[2]**：此步驟僅適用於 Pacemaker 叢集的節點 2。
+* **[A]** ：此步驟適用於所有節點。
+* **[1]** ：此步驟僅適用於節點 1。
+* **[2]** ：此步驟僅適用於 Pacemaker 叢集的節點 2。
 
 1. **[1]** 建立租用戶資料庫。
 
    如果您使用 SAP HANA 2.0 或 MDC，請為您的 SAP NetWeaver 系統建立租用戶資料庫。 請將 **NW1** 取代為您 SAP 系統的 SID。
 
-   執行下列命令，為 < hanasid\>adm:
+   以 <hanasid>adm 身分 adm 執行下列命令 \> ：
 
    <pre><code>hdbsql -u SYSTEM -p "<b>passwd</b>" -i <b>03</b> -d SYSTEMDB 'CREATE DATABASE <b>NW1</b> SYSTEM USER PASSWORD "<b>passwd</b>"'
    </code></pre>
 
 1. **[1]** 在第一個節點上設定系統複寫：
 
-   備份資料庫做為 < hanasid\>adm:
+   將資料庫備份為 <hanasid>adm 身分 \> adm：
 
    <pre><code>hdbsql -d SYSTEMDB -u SYSTEM -p "<b>passwd</b>" -i <b>03</b> "BACKUP DATA USING FILE ('<b>initialbackupSYS</b>')"
    hdbsql -d <b>HN1</b> -u SYSTEM -p "<b>passwd</b>" -i <b>03</b> "BACKUP DATA USING FILE ('<b>initialbackupHN1</b>')"
@@ -391,7 +433,7 @@ Azure Marketplace 包含 SUSE Linux Enterprise Server for SAP Applications 12 �
 
 1. **[2]** 在第二個節點上設定系統複寫：
     
-   註冊第二個節點，以啟動系統複寫。 執行下列命令，為 < hanasid\>adm:
+   註冊第二個節點，以啟動系統複寫。 以 <hanasid>adm 身分 adm 執行下列命令 \> ：
 
    <pre><code>sapcontrol -nr <b>03</b> -function StopWait 600 10
    hdbnsutil -sr_register --remoteHost=<b>hn1-db-0</b> --remoteInstance=<b>03</b> --replicationMode=sync --name=<b>SITE2</b> 
@@ -401,9 +443,9 @@ Azure Marketplace 包含 SUSE Linux Enterprise Server for SAP Applications 12 �
 
 本節中的步驟會使用下列首碼：
 
-* **[A]**：此步驟適用於所有節點。
-* **[1]**：此步驟僅適用於節點 1。
-* **[2]**：此步驟僅適用於 Pacemaker 叢集的節點 2。
+* **[A]** ：此步驟適用於所有節點。
+* **[1]** ：此步驟僅適用於節點 1。
+* **[2]** ：此步驟僅適用於 Pacemaker 叢集的節點 2。
 
 1. **[1]** 建立必要的使用者。
 
@@ -417,7 +459,7 @@ Azure Marketplace 包含 SUSE Linux Enterprise Server for SAP Applications 12 �
 
 1. **[A]** 建立金鑰儲存區項目。
 
-   以建立新的金鑰儲存區項目 root 的身分執行下列命令：
+   以 root 身分執行下列命令，建立新的金鑰儲存區項目：
 
    <pre><code>PATH="$PATH:/usr/sap/<b>HN1</b>/HDB<b>03</b>/exe"
    hdbuserstore SET <b>hdb</b>haloc localhost:3<b>03</b>15 <b>hdb</b>hasync <b>passwd</b>
@@ -425,7 +467,7 @@ Azure Marketplace 包含 SUSE Linux Enterprise Server for SAP Applications 12 �
 
 1. **[1]** 備份資料庫。
 
-   備份資料庫，以 root 身分執行：
+   以 root 身分備份資料庫：
 
    <pre><code>PATH="$PATH:/usr/sap/<b>HN1</b>/HDB<b>03</b>/exe"
    hdbsql -d SYSTEMDB -u system -i <b>03</b> "BACKUP DATA USING FILE ('<b>initialbackup</b>')"
@@ -438,7 +480,7 @@ Azure Marketplace 包含 SUSE Linux Enterprise Server for SAP Applications 12 �
 
 1. **[1]** 在第一個節點上設定系統複寫。
 
-   建立做為主要站台 < hanasid\>adm:
+   建立主要網站做為 <hanasid>adm 身分 \> adm：
 
    <pre><code>su - <b>hdb</b>adm
    hdbnsutil -sr_enable –-name=<b>SITE1</b>
@@ -446,7 +488,7 @@ Azure Marketplace 包含 SUSE Linux Enterprise Server for SAP Applications 12 �
 
 1. **[2]** 在次要節點上設定系統複寫。
 
-   註冊為次要站台 < hanasid\>adm:
+   以 <hanasid\>adm 身分註冊次要網站：
 
    <pre><code>sapcontrol -nr <b>03</b> -function StopWait 600 10
    hdbnsutil -sr_register --remoteHost=<b>hn1-db-0</b> --remoteInstance=<b>03</b> --replicationMode=sync --name=<b>SITE2</b> 
@@ -468,10 +510,19 @@ sudo crm configure primitive rsc_SAPHanaTopology_<b>HN1</b>_HDB<b>03</b> ocf:sus
   params SID="<b>HN1</b>" InstanceNumber="<b>03</b>"
 
 sudo crm configure clone cln_SAPHanaTopology_<b>HN1</b>_HDB<b>03</b> rsc_SAPHanaTopology_<b>HN1</b>_HDB<b>03</b> \
-  meta is-managed="true" clone-node-max="1" target-role="Started" interleave="true"
+  meta clone-node-max="1" target-role="Started" interleave="true"
 </code></pre>
 
 接下來，建立 HANA 資源：
+
+> [!IMPORTANT]
+> 最近測試顯示 netcat 會因待處理項目及其僅處理單一連線的限制，而停止回應要求的狀況。 Netcat 資源會停止接聽 Azure Load Balancer 要求，使浮動 IP 無法使用。  
+> 針對現有的 Pacemaker 叢集，我們在過去建議將 netcat 取代成 socat。 目前建議使用 azure-lb 資源代理程式，其為 resource-agents 套件的一部分，並包含下列套件版本需求：
+> - 針對 SLES 12 SP4/SP5，版本必須至少為 resource-agents-4.3.018.a7fb5035-3.30.1。  
+> - 針對 SLES 15/15 SP1，版本必須至少為 resource-agents-4.3.0184.6ee15eb2-4.13.1。  
+>
+> 請注意，變更將會需要短暫的停機。  
+> 針對現有的 Pacemaker 叢集，若設定已按照 [Azure Load Balancer 偵測強化](https://www.suse.com/support/kb/doc/?id=7024128)中的描述變更為使用 socat，則沒有立即切換至 azure-lb 資源代理程式的需求。
 
 <pre><code># Replace the bold string with your instance number, HANA system ID, and the front-end IP address of the Azure load balancer. 
 
@@ -486,18 +537,17 @@ sudo crm configure primitive rsc_SAPHana_<b>HN1</b>_HDB<b>03</b> ocf:suse:SAPHan
   DUPLICATE_PRIMARY_TIMEOUT="7200" AUTOMATED_REGISTER="false"
 
 sudo crm configure ms msl_SAPHana_<b>HN1</b>_HDB<b>03</b> rsc_SAPHana_<b>HN1</b>_HDB<b>03</b> \
-  meta is-managed="true" notify="true" clone-max="2" clone-node-max="1" \
+  meta notify="true" clone-max="2" clone-node-max="1" \
   target-role="Started" interleave="true"
 
 sudo crm configure primitive rsc_ip_<b>HN1</b>_HDB<b>03</b> ocf:heartbeat:IPaddr2 \
-  meta target-role="Started" is-managed="true" \
+  meta target-role="Started" \
   operations \$id="rsc_ip_<b>HN1</b>_HDB<b>03</b>-operations" \
   op monitor interval="10s" timeout="20s" \
   params ip="<b>10.0.0.13</b>"
 
-sudo crm configure primitive rsc_nc_<b>HN1</b>_HDB<b>03</b> anything \
-  params binfile="/usr/bin/nc" cmdline_options="-l -k 625<b>03</b>" \
-  op monitor timeout=20s interval=10 depth=0
+sudo crm configure primitive rsc_nc_<b>HN1</b>_HDB<b>03</b> azure-lb port=625<b>03</b> \
+  meta resource-stickiness=0
 
 sudo crm configure group g_ip_<b>HN1</b>_HDB<b>03</b> rsc_ip_<b>HN1</b>_HDB<b>03</b> rsc_nc_<b>HN1</b>_HDB<b>03</b>
 
@@ -532,7 +582,7 @@ sudo crm configure rsc_defaults migration-threshold=5000
 #     Slaves: [ hn1-db-1 ]
 # Resource Group: g_ip_HN1_HDB03
 #     rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-0
-#     rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
+#     rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
 </code></pre>
 
 ## <a name="test-the-cluster-setup"></a>測試叢集設定
@@ -576,7 +626,7 @@ stonith-sbd     (stonith:external/sbd): Started hn1-db-1
      Stopped: [ hn1-db-0 ]
  Resource Group: g_ip_HN1_HDB03
      rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-1
-     rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-1
+     rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-1
 
 Failed Actions:
 * rsc_SAPHana_HN1_HDB03_start_0 on hn1-db-0 'not running' (7): call=84, status=complete, exitreason='none',
@@ -618,7 +668,7 @@ stonith-sbd     (stonith:external/sbd): Started hn1-db-1
      Slaves: [ hn1-db-0 ]
  Resource Group: g_ip_HN1_HDB03
      rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-1
-     rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-1
+     rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-1
 </code></pre>
 
 ### <a name="test-the-azure-fencing-agent-not-sbd"></a>測試 Azure 隔離代理程式 (非 SBD)
@@ -706,10 +756,10 @@ crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
       Slaves: [ hn1-db-1 ]
    Resource Group: g_ip_HN1_HDB03
       rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-0
-      rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
+      rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
-   執行下列命令，為 < hanasid\>adm 節點 hn1-db-0 上：
+   \>在 node hn1-db-0 上，以 <hanasid>adm 身分 adm 執行下列命令：
 
    <pre><code>hn1adm@hn1-db-0:/usr/sap/HN1/HDB03> HDB stop
    </code></pre>
@@ -733,7 +783,7 @@ crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
       Slaves: [ hn1-db-0 ]
    Resource Group: g_ip_HN1_HDB03
       rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-1
-      rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-1
+      rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-1
    </code></pre>
 
 1. 測試 2：在節點 2 上停止主要資料庫
@@ -747,10 +797,10 @@ crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
       Slaves: [ hn1-db-0 ]
    Resource Group: g_ip_HN1_HDB03
       rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-1
-      rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-1
+      rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-1
    </code></pre>
 
-   執行下列命令，為 < hanasid\>adm 節點 hn1-db-1 上：
+   執行下列命令，如同 \> 在 node hn1 上 <hanasid>adm 身分 adm-db-1：
 
    <pre><code>hn1adm@hn1-db-1:/usr/sap/HN1/HDB03> HDB stop
    </code></pre>
@@ -774,7 +824,7 @@ crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
       Slaves: [ hn1-db-1 ]
    Resource Group: g_ip_HN1_HDB03
       rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-0
-      rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
+      rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
 1. 測試 3：在節點上損毀主要資料庫
@@ -788,10 +838,10 @@ crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
       Slaves: [ hn1-db-1 ]
    Resource Group: g_ip_HN1_HDB03
       rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-0
-      rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
+      rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
-   執行下列命令，為 < hanasid\>adm 節點 hn1-db-0 上：
+   \>在 node hn1-db-0 上，以 <hanasid>adm 身分 adm 執行下列命令：
 
    <pre><code>hn1adm@hn1-db-0:/usr/sap/HN1/HDB03> HDB kill-9
    </code></pre>
@@ -815,7 +865,7 @@ crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
       Slaves: [ hn1-db-0 ]
    Resource Group: g_ip_HN1_HDB03
       rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-1
-      rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-1
+      rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-1
    </code></pre>
 
 1. 測試 4：在節點 2 上損毀主要資料庫
@@ -829,10 +879,10 @@ crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
       Slaves: [ hn1-db-0 ]
    Resource Group: g_ip_HN1_HDB03
       rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-1
-      rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-1
+      rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-1
    </code></pre>
 
-   執行下列命令，為 < hanasid\>adm 節點 hn1-db-1 上：
+   執行下列命令，如同 \> 在 node hn1 上 <hanasid>adm 身分 adm-db-1：
 
    <pre><code>hn1adm@hn1-db-1:/usr/sap/HN1/HDB03> HDB kill-9
    </code></pre>
@@ -856,7 +906,7 @@ crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
       Slaves: [ hn1-db-1 ]
    Resource Group: g_ip_HN1_HDB03
       rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-0
-      rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
+      rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
 1. 測試 5：損毀主要網站節點 (節點 1)
@@ -870,7 +920,7 @@ crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
       Slaves: [ hn1-db-1 ]
    Resource Group: g_ip_HN1_HDB03
       rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-0
-      rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
+      rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
    以節點 hn1-db-0 上的 root 身分執行下列命令：
@@ -907,7 +957,7 @@ crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
       Slaves: [ hn1-db-0 ]
    Resource Group: g_ip_HN1_HDB03
       rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-1
-      rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-1
+      rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-1
    </code></pre>
 
 1. 測試 6：損毀次要網站節點 (節點 2)
@@ -921,7 +971,7 @@ crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
       Slaves: [ hn1-db-0 ]
    Resource Group: g_ip_HN1_HDB03
       rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-1
-      rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-1
+      rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-1
    </code></pre>
 
    以節點 hn1-db-1 上的 root 身分執行下列命令：
@@ -958,7 +1008,7 @@ crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
       Slaves: [ hn1-db-1 ]
    Resource Group: g_ip_HN1_HDB03
       rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-0
-      rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
+      rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
 1. 測試 7：在節點 2 上停止次要資料庫
@@ -972,10 +1022,10 @@ crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
       Slaves: [ hn1-db-1 ]
    Resource Group: g_ip_HN1_HDB03
       rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-0
-      rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
+      rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
-   執行下列命令，為 < hanasid\>adm 節點 hn1-db-1 上：
+   執行下列命令，如同 \> 在 node hn1 上 <hanasid>adm 身分 adm-db-1：
 
    <pre><code>hn1adm@hn1-db-1:/usr/sap/HN1/HDB03> HDB stop
    </code></pre>
@@ -995,7 +1045,7 @@ crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
       Slaves: [ hn1-db-1 ]
    Resource Group: g_ip_HN1_HDB03
       rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-0
-      rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
+      rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
 1. 測試 8：在節點 2 上損毀次要資料庫
@@ -1009,10 +1059,10 @@ crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
       Slaves: [ hn1-db-1 ]
    Resource Group: g_ip_HN1_HDB03
       rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-0
-      rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
+      rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
-   執行下列命令，為 < hanasid\>adm 節點 hn1-db-1 上：
+   執行下列命令，如同 \> 在 node hn1 上 <hanasid>adm 身分 adm-db-1：
 
    <pre><code>hn1adm@hn1-db-1:/usr/sap/HN1/HDB03> HDB kill-9
    </code></pre>
@@ -1032,7 +1082,7 @@ crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
       Slaves: [ hn1-db-1 ]
    Resource Group: g_ip_HN1_HDB03
       rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-0
-      rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
+      rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
 1. 測試 9：損毀執行次要 HANA 資料庫的次要網站節點 (節點 2)
@@ -1046,7 +1096,7 @@ crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
       Slaves: [ hn1-db-1 ]
    Resource Group: g_ip_HN1_HDB03
       rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-0
-      rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
+      rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
    以節點 hn1-db-1 上的 root 身分執行下列命令：
@@ -1079,7 +1129,7 @@ crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
       Slaves: [ hn1-db-1 ]
    Resource Group: g_ip_HN1_HDB03
       rsc_ip_HN1_HDB03   (ocf::heartbeat:IPaddr2):       Started hn1-db-0
-      rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
+      rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
 ## <a name="next-steps"></a>後續步驟
@@ -1087,4 +1137,4 @@ crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
 * [適用於 SAP 的 Azure 虛擬機器規劃和實作][planning-guide]
 * [適用於 SAP 的 Azure 虛擬機器部署][deployment-guide]
 * [適用於 SAP 的 Azure 虛擬機器 DBMS 部署][dbms-guide]
-* 若要了解如何建立高可用性並為 Azure 上的 SAP HANA 規劃災害復原，請參閱 [Azure 上的 SAP HANA (大型執行個體) 高可用性和災害復原](hana-overview-high-availability-disaster-recovery.md)。
+

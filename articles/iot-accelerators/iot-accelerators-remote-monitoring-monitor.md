@@ -1,5 +1,5 @@
 ---
-title: 從 Azure 解決方案監視 IoT 裝置的教學課程 - Azure | Microsoft Docs
+title: 在遠端監視解決方案中監視裝置 - Azure | Microsoft Docs
 description: 在本教學課程中，您會了解如何使用遠端監視解決方案加速器來監視 IoT 裝置。
 author: dominicbetts
 manager: timlt
@@ -9,14 +9,14 @@ services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: d6d850fa8f896809318be77529e10abddaf6ea9a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 400a71b11fde210b889d938041e88c5ebe73c1dc
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58173816"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "73890879"
 ---
-# <a name="tutorial-monitor-your-iot-devices"></a>教學課程：監視您的 IoT 裝置
+# <a name="tutorial-monitor-your-iot-devices"></a>教學課程：監視 IoT 裝置
 
 在本教學課程中，您會使用遠端監視解決方案加速器來監視已連線的 IoT 裝置。 您可使用解決方案儀表板來檢視遙測、裝置資訊、警示和 KPI。
 
@@ -31,13 +31,13 @@ ms.locfileid: "58173816"
 > * 從您的裝置檢視警示
 > * 檢視系統 KPI
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立 [免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [iot-accelerators-tutorial-prereqs](../../includes/iot-accelerators-tutorial-prereqs.md)]
 
 ## <a name="choose-the-devices-to-display"></a>選擇要顯示的裝置
 
-若要選取要在 [儀表板] 頁面上顯示哪些已連線的裝置，請使用篩選條件。 若只要顯示**卡車**裝置，請在篩選條件下拉式清單中選擇內建 [卡車] 篩選條件：
+若要選取要在 [儀表板]  頁面上顯示哪些已連線的裝置，請使用篩選條件。 若只要顯示**卡車**裝置，請在篩選條件下拉式清單中選擇內建 [卡車]  篩選條件：
 
 [![儀表板上的卡車篩選條件](./media/iot-accelerators-remote-monitoring-monitor/dashboardtruckfilter-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardtruckfilter-expanded.png#lightbox)
 
@@ -45,15 +45,15 @@ ms.locfileid: "58173816"
 
 [![只有卡車會顯示在地圖上](./media/iot-accelerators-remote-monitoring-monitor/dashboardtruckmap-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardtruckmap-expanded.png#lightbox)
 
-若要建立、編輯和刪除篩選條件，請按一下 [管理裝置群組]。
+若要建立、編輯和刪除篩選條件，請按一下 [管理裝置群組]  。
 
 ## <a name="view-real-time-telemetry"></a>檢視即時遙測
 
-解決方案加速器會在 [儀表板] 頁面的圖表中繪製即時遙測。 遙測圖表的頂端會依目前的篩選條件顯示所選裝置的可用遙測類型，包括 truck-02。 根據預設，圖表會顯示卡車的緯度，而 truck-02 似乎是靜止的：
+解決方案加速器會在 [儀表板]  頁面的圖表中繪製即時遙測。 遙測圖表的頂端會依目前的篩選條件顯示所選裝置的可用遙測類型，包括 truck-02。 根據預設，圖表會顯示卡車的緯度，而 truck-02 似乎是靜止的：
 
 [![卡車遙測類型](./media/iot-accelerators-remote-monitoring-monitor/dashboardtelemetryview-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardtelemetryview-expanded.png#lightbox)
 
-若要檢視卡車的溫度遙測資料，請按一下 [溫度]： 您可以看到 truck-02 的溫度在過去一小時有所變化：
+若要檢視卡車的溫度遙測資料，請按一下 [溫度]  ： 您可以看到 truck-02 的溫度在過去一小時有所變化：
 
 [![卡車溫度遙測繪圖](./media/iot-accelerators-remote-monitoring-monitor/dashboardselecttelemetry-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardselecttelemetry-expanded.png#lightbox)
 
@@ -61,7 +61,7 @@ ms.locfileid: "58173816"
 
 地圖會顯示目前篩選條件所選取之模擬卡車的相關資訊。 您可以縮放及移動瀏覽地圖，以顯示更多或更少詳細資料的位置。 地圖上的裝置圖示顏色會指出裝置是否有任何有效的**警示** (深藍色) 或**警告** (紅色)。 **警示**和**警告**的數目摘要會顯示在地圖左邊。
 
-若要檢視 truck-02 的詳細資料，請移動瀏覽及縮放地圖以找出卡車，然後在地圖上選取卡車。 接著按一下裝置標籤以開啟 [裝置詳細資料] 面板。 裝置詳細資料包括：
+若要檢視 truck-02 的詳細資料，請移動瀏覽及縮放地圖以找出卡車，然後在地圖上選取卡車。 接著按一下裝置標籤以開啟 [裝置詳細資料]  面板。 裝置詳細資料包括：
 
 * 最近的遙測值
 * 裝置支援的方法
@@ -71,7 +71,7 @@ ms.locfileid: "58173816"
 
 ## <a name="view-alerts"></a>檢視警示
 
-[警示] 面板會顯示與您裝置中的最新警示有關的詳細資訊。 來自 truck-02 的警示指出高於正常貨物溫度：
+[警示]  面板會顯示與您裝置中的最新警示有關的詳細資訊。 來自 truck-02 的警示指出高於正常貨物溫度：
 
 [![在儀表板上檢視裝置警示](./media/iot-accelerators-remote-monitoring-monitor/dashboardsystemalarms-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardsystemalarms-expanded.png#lightbox)
 
@@ -79,7 +79,7 @@ ms.locfileid: "58173816"
 
 ## <a name="view-the-system-kpis"></a>檢視系統 KPI
 
-[儀表板] 頁面會在 [Analytics] 面板中顯示解決方案加速器所計算的系統 KPI：
+[儀表板]  頁面會在 [Analytics]  面板中顯示解決方案加速器所計算的系統 KPI：
 
 [![儀表板 KPI](./media/iot-accelerators-remote-monitoring-monitor/dashboardkpis-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardkpis-expanded.png#lightbox)
 
@@ -97,7 +97,7 @@ ms.locfileid: "58173816"
 
 ## <a name="next-steps"></a>後續步驟
 
-本教學課程示範了如何使用遠端監視解決方案加速器中的 [儀表板] 頁面，來篩選和監視模擬的卡車。 若要了解如何使用解決方案加速器來偵測已連線裝置的問題，請繼續進行下一個教學課程。
+本教學課程示範了如何使用遠端監視解決方案加速器中的 [儀表板]  頁面，來篩選和監視模擬的卡車。 若要了解如何使用解決方案加速器來偵測已連線裝置的問題，請繼續進行下一個教學課程。
 
 > [!div class="nextstepaction"]
 > [偵測與監視解決方案連線的裝置問題](iot-accelerators-remote-monitoring-automate.md)

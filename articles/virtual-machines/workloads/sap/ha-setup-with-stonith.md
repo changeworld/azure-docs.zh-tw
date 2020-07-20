@@ -4,30 +4,28 @@ description: 使用 STONITH 在 SUSE 中為 Azure 上的 SAP HANA (大型執行�
 services: virtual-machines-linux
 documentationcenter: ''
 author: saghorpa
-manager: jeconnoc
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/21/2017
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3ef1656a7e8a66092de3050a8f14c5b38e0e2e6c
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+ms.openlocfilehash: 4060dbe936af8ff1f9dd8c958f64834cb06525de
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62123564"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77615093"
 ---
 # <a name="high-availability-set-up-in-suse-using-the-stonith"></a>使用 STONITH 在 SUSE 中進行高可用性設定
 本文件提供使用 STONITH 裝置在 SUSE 作業系統上進行高可用性設定的詳細逐步指示。
 
-**免責聲明：***本指南係在 Microsoft HANA 大型執行個體環境中測試設定 (可成功運作) 後所衍生。由於 HANA 大型執行個體的 Microsoft 服務管理小組不支援作業系統，您可能需要連絡 SUSE 以針對作業系統層進行進一步疑難排解或釐清。Microsoft 服務管理小組會設定 STONITH 裝置並傾力支援，而且會參與對於 STONITH 裝置問題的疑難排解。*
-## <a name="overview"></a>概觀
+**免責聲明：** *本指南的衍生方式是在 Microsoft HANA 大型實例環境中測試安裝程式，這項功能成功運作。由於適用于 HANA 大型實例的 Microsoft 服務管理小組不支援作業系統，因此您可能需要聯繫 SUSE，以在作業系統層進行進一步的疑難排解或澄清。Microsoft 服務管理小組會設定 STONITH 裝置並完全支援，並可用於針對 STONITH 裝置問題進行疑難排解。*
+## <a name="overview"></a>總覽
 若要使用 SUSE 叢集進行高可用性設定，必須符合下列先決條件。
-### <a name="pre-requisites"></a>先決條件
+### <a name="pre-requisites"></a>必要條件
 - 已佈建 HANA 大型執行個體
 - 作業系統已註冊
 - HANA 大型執行個體伺服器已連線到 SMT 伺服器以取得修補程式/套件
@@ -37,7 +35,7 @@ ms.locfileid: "62123564"
 
 ### <a name="setup-details"></a>設定詳細資料
 本指南使用下列設定：
-- 作業系統：SLES 12 SP1 for SAP
+- 作業系統：適用於 SAP 的 SLES 12 SP1
 - HANA 大型執行個體：2xS192 (4 個插槽，2 TB)
 - HANA 版本：HANA 2.0 SP1
 - 伺服器名稱：sapprdhdb95 (node1) 和 sapprdhdb96 (node2)
@@ -76,7 +74,7 @@ Microsoft 服務管理小組會提供此字串。 修改這**兩個**節點上�
 
 ![initiatorname.png](media/HowToHLI/HASetupWithStonith/initiatorname.png)
 
-1.2 修改 */etc/iscsi/iscsid.conf*：設定 *node.session.timeo.replacement_timeout=5* 和 *node.startup = automatic*。 修改這**兩個**節點上的檔案。
+1.2 修改 */etc/iscsi/iscsid.conf*：設定 *node.session.timeo.replacement_timeout=5* 與 *node.startup = automatic*。 修改這**兩個**節點上的檔案。
 
 1.3 執行探索命令，它會顯示四個工作階段。 請在這兩個節點上執行。
 
@@ -86,14 +84,14 @@ iscsiadm -m discovery -t st -p <IP address provided by Service Management>:3260
 
 ![iSCSIadmDiscovery.png](media/HowToHLI/HASetupWithStonith/iSCSIadmDiscovery.png)
 
-1.4 執行命令以登入 iSCSI 裝置，它會顯示四個工作階段。 在這**兩個**節點上執行。
+1.4 執行命令以登入 iSCSI 裝置，它會顯示四個工作階段。 在**這兩個**節點上執行。
 
 ```
 iscsiadm -m node -l
 ```
 ![iSCSIadmLogin.png](media/HowToHLI/HASetupWithStonith/iSCSIadmLogin.png)
 
-1.5 執行重新掃描指令碼：*rescan-scsi-bus.sh*。此指令碼會顯示為您建立的新磁碟。  請在這兩個節點上執行。 您應會看到大於零的 LUN (例如：1、2 等)。
+1.5 執行重新掃描腳本： *rescan-scsi-bus.sh*。 此腳本會顯示為您建立的新磁片。  請在這兩個節點上執行。 您應會看到大於零的 LUN (例如 1、2 等)。
 
 ```
 rescan-scsi-bus.sh
@@ -140,14 +138,14 @@ zypper in SAPHanaSR SAPHanaSR-doc
 依序選取 [yast2] > [High Availability] > [Cluster] \([yast2] > [ 高可用性] > [叢集]\) ![yast-control-center.png](media/HowToHLI/HASetupWithStonith/yast-control-center.png)
 ![yast-hawk-install.png](media/HowToHLI/HASetupWithStonith/yast-hawk-install.png)
 
-因為已經安裝 halk2 套件，請按一下 [取消]。
+因為已經安裝 halk2 套件，請按一下 [取消]****。
 
 ![yast-hawk-continue.png](media/HowToHLI/HASetupWithStonith/yast-hawk-continue.png)
 
-按一下 [繼續]
+按一下 [**繼續**]
 
-預期值=已部署的節點數 (在此案例中為 2) ![yast-Cluster-Security.png](media/HowToHLI/HASetupWithStonith/yast-Cluster-Security.png) 按一下 [下一步]
-![yast-cluster-configure-csync2.png](media/HowToHLI/HASetupWithStonith/yast-cluster-configure-csync2.png) 新增節點名稱，然後按一下 [Add suggested files] \(新增建議的檔案\)
+預期值 = 部署的節點數目（在此案例中為2） ![yast-Cluster-Security.png](media/HowToHLI/HASetupWithStonith/yast-Cluster-Security.png) 按 **[下一步]** 
+ ![yast-cluster-configure-csync2.png](media/HowToHLI/HASetupWithStonith/yast-cluster-configure-csync2.png) 新增節點名稱]，然後按一下 [新增建議的檔案]
 
 按一下 [Turn csync2 ON] \(開啟 csync2\)
 
@@ -161,16 +159,16 @@ zypper in SAPHanaSR SAPHanaSR-doc
 
 ![yast-cluster-conntrackd.png](media/HowToHLI/HASetupWithStonith/yast-cluster-conntrackd.png)
 
-按一下 [下一步]
-![yast-cluster-service.png](media/HowToHLI/HASetupWithStonith/yast-cluster-service.png)
+按 **[下一步]** 
+ ![yast-cluster-service.png](media/HowToHLI/HASetupWithStonith/yast-cluster-service.png)
 
 在預設選項中，[Booting] \(開機\) 處於關閉狀態，請將它變更為 [on] \(開啟\)，以在開機時啟動 Pacemaker。 您可以根據自己的設定需求來選擇。
-按一下 [下一步]，叢集設定就完成了。
+按一下 [下一步]****，叢集設定就完成了。
 
-## <a name="4---setting-up-the-softdog-watchdog"></a>4. 設定 Softdog 監視程式
+## <a name="4---setting-up-the-softdog-watchdog"></a>4. 設定 Softdog 看門狗
 本節說明監視程式 (softdog) 的設定。
 
-4.1 在這**兩個**節點上將下行加入至 /etc/init.d/boot.local。
+4.1 在這**兩個**節點上將下行加入至 /etc/init.d/boot.local**。
 ```
 modprobe softdog
 ```
@@ -232,7 +230,7 @@ systemctl start pacemaker
 ```
 ![start-pacemaker.png](media/HowToHLI/HASetupWithStonith/start-pacemaker.png)
 
-如果 Pacemaker 服務*失敗*，請參閱*案例 5：Pacemaker 服務失敗*
+如果 Pacemaker 服務*失敗*，請參閱「案例 5：Pacemaker 服務失敗」**
 
 ## <a name="5---joining-the-cluster"></a>5. 加入叢集
 本節說明如何將節點加入叢集。
@@ -242,7 +240,7 @@ systemctl start pacemaker
 ```
 ha-cluster-join
 ```
-如果您在加入叢集期間收到*錯誤*，請參閱*案例 6：節點 2 無法加入叢集*。
+如果您在加入叢集期間收到*錯誤*，請參閱「案例 6：節點 2 無法加入叢集」**。
 
 ## <a name="6---validating-the-cluster"></a>6. 驗證叢集
 
@@ -258,9 +256,9 @@ systemctl start pacemaker
 ```
 crm_mon
 ```
-![crm-mon.png](media/HowToHLI/HASetupWithStonith/crm-mon.png)您也可以登入 hawk 來檢查叢集狀態*https://\<節點 IP >: 7630*。 預設使用者為 hacluster，而密碼為 linux。 如有需要，您可以使用 *passwd* 命令來變更密碼。
+![crm-mon.png](media/HowToHLI/HASetupWithStonith/crm-mon.png) 您也可以登入hawk 來檢查叢集狀態 *https://\<node IP>:7630*。 預設使用者為 hacluster，而密碼為 linux。 如有需要，您可以使用 *passwd* 命令來變更密碼。
 
-## <a name="7-configure-cluster-properties-and-resources"></a>7.設定叢集屬性及資源 
+## <a name="7-configure-cluster-properties-and-resources"></a>7. 設定叢集屬性和資源 
 本節說明設定叢集資源的步驟。
 在此範例中，設定下列資源，其他部分可以 (視需要) 參考 SUSE HA 指南來設定。 只需要在**其中一個節點**執行此設定。 請在主要節點上執行。
 
@@ -323,25 +321,26 @@ crm configure load update crm-vip.txt
 當您執行命令 *crm_mon* 時，您可以看到有兩個資源。
 ![crm_mon_command.png](media/HowToHLI/HASetupWithStonith/crm_mon_command.png)
 
-此外，您可以看到在狀態*https://\<節點 IP 位址 >: 7630 cib/狀態*
+此外，您可以在 *https://\<node IP address>:7630/cib/live/state* 查看狀態
 
 ![hawlk-status-page.png](media/HowToHLI/HASetupWithStonith/hawlk-status-page.png)
 
-## <a name="8-testing-the-failover-process"></a>8.測試容錯移轉程序
+## <a name="8-testing-the-failover-process"></a>8. 測試容錯移轉程式
 若要測試容錯移轉程序，請停止 node1 上的 Pacemaker 服務，並將資源容錯移轉至 node2。
 ```
 Service pacemaker stop
 ```
 現在，停止 **node2** 上的 Pacemaker 服務，然後將資源容錯移轉至 **node1**
 
-**容錯移轉之前**
-![Before-failover.png](media/HowToHLI/HASetupWithStonith/Before-failover.png)
-**容錯移轉之後**
-![after-failover.png](media/HowToHLI/HASetupWithStonith/after-failover.png)
-![crm-mon-after-failover.png](media/HowToHLI/HASetupWithStonith/crm-mon-after-failover.png)
+**容錯移轉之前**  
+![Before-failover.png](media/HowToHLI/HASetupWithStonith/Before-failover.png)  
+
+**容錯移轉之後**  
+![after-failover.png](media/HowToHLI/HASetupWithStonith/after-failover.png)  
+![crm-mon-after-failover.png](media/HowToHLI/HASetupWithStonith/crm-mon-after-failover.png)  
 
 
-## <a name="9-troubleshooting"></a>9.疑難排解
+## <a name="9-troubleshooting"></a>9. 疑難排解
 本節說明可能會在設定期間遇到的一些失敗案例。 您不一定會遇到這些問題。
 
 ### <a name="scenario-1-cluster-node-not-online"></a>案例 1：叢集節點未連線
@@ -436,15 +435,15 @@ zypper -n install libyui-qt
 ![yast-pattern1.png](media/HowToHLI/HASetupWithStonith/yast-pattern1.png)
 ![yast-pattern2.png](media/HowToHLI/HASetupWithStonith/yast-pattern2.png)
 
-按一下 [接受]
+按一下 [**接受**]
 
 ![yast-changed-packages.png](media/HowToHLI/HASetupWithStonith/yast-changed-packages.png)
 
-按一下 [繼續]
+按一下 [**繼續**]
 
 ![yast2-performing-installation.png](media/HowToHLI/HASetupWithStonith/yast2-performing-installation.png)
 
-安裝完成時，按 [下一步]
+安裝完成時，按 [下一步]****
 
 ![yast2-installation-report.png](media/HowToHLI/HASetupWithStonith/yast2-installation-report.png)
 
@@ -533,7 +532,7 @@ cat /root/.ssh/id_rsa.pub >> /root/.ssh/authorized_keys
 
 ![ha-cluster-join-fix.png](media/HowToHLI/HASetupWithStonith/ha-cluster-join-fix.png)
 
-## <a name="10-general-documentation"></a>10.一般文件
+## <a name="10-general-documentation"></a>10. 一般檔
 您可以在下列文章中找到有關 SUSE HA 設定的詳細資訊： 
 
 - [SAP HANA SR 效能最佳化案例](https://www.suse.com/docrep/documents/ir8w88iwu7/suse_linux_enterprise_server_for_sap_applications_12_sp1.pdf ) \(英文\)

@@ -1,47 +1,69 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Azure Active Directory 基本概念文件
+summary: 了解基本的 Azure Active Directory (Azure AD) 概念和程序，包括如何建立基本環境、基本使用者和群組，以便開始使用。
 metadata:
-  document_id: null
   title: Azure Active Directory 基本概念文件
-  description: 使用 Azure Active Directory 時同時深入了解基本概念和程序。
-  services: active-directory
-  ms.subservice: fundamentals
-  author: eross-msft
+  description: 了解基本的 Azure Active Directory (Azure AD) 概念和程序，包括如何建立基本環境、基本使用者和群組，以便開始使用。
   manager: daveba
+  ms.author: ajburnle
+  ms.collection: na
+  ms.date: 08/27/2019
   ms.service: active-directory
+  ms.subservice: na
   ms.topic: landing-page
-  ms.date: 09/07/2018
-  ms.author: lizross
-abstract:
-  description: 了解基本的 Azure Active Directory (Azure AD) 概念和程序，包括如何建立基本的使用者群組，以及如何建立基本的環境以開始使用。
-sections:
-  - title: 5 分鐘快速入門
-    items:
-      - type: paragraph
-        text: 了解如何開始使用 Azure Active Directory 入口網站。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: ./media/index/i_portal.png
-            text: 存取 Azure AD 以建立租用戶
-            href: active-directory-access-create-new-tenant.md
-          - image:
-              src: ./media/index/i_tasks.png
-            text: 檢視群組和成員
-            href: active-directory-groups-view-azure-portal.md
-  - title: 逐步指南
-    items:
-      - type: paragraph
-        text: 了解如何執行基本工作，以在您的 Azure Active Directory 環境中設定
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/active-directory/fundamentals/active-directory-get-started-premium">註冊 Azure AD Premium</a>
-          - html: <a href="/azure/active-directory/fundamentals/add-custom-domain">如何新增自訂網域名稱</a>
-          - html: <a href="/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal">如何建立基本群組和新增成員</a>
-          - html: <a href="/azure/active-directory/fundamentals/active-directory-accessmanagement-managing-group-owners">如何新增群組擁有者</a>
-          - html: <a href="/azure/active-directory/fundamentals/add-users-azure-active-directory">如何新增使用者</a>
-          - html: <a href="/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal">如何將角色指派給使用者</a>
-          - html: <a href="/azure/active-directory/fundamentals/license-users-groups">如何將授權指派給使用者</a>
+  services: active-directory
+  ms.openlocfilehash: 7a6692b4ed0314acc8200e3e364e9a045d33e799
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "80049671"
+landingContent:
+- title: 關於 Azure AD
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是 Azure Active Directory？
+      url: active-directory-whatis.md
+    - text: Azure Active Directory 的新增功能
+      url: whats-new.md
+  - linkListType: concept
+    links:
+    - text: Azure AD 架構
+      url: active-directory-architecture.md
+- title: 開始使用
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 存取入口網站並建立租用戶
+      url: active-directory-access-create-new-tenant.md
+    - text: 檢視已指派成員的群組
+      url: active-directory-groups-view-azure-portal.md
+- title: 建立 Azure AD 帳戶
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 註冊 Azure Active Directory Premium 版本
+      url: active-directory-get-started-premium.md
+    - text: 以組織註冊 Azure AD
+      url: sign-up-organization.md
+    - text: 新增自訂網域名稱
+      url: add-custom-domain.md
+- title: 在 Azure AD 中建立群組
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 建立基本群組並新增成員
+      url: active-directory-groups-create-azure-portal.md
+    - text: 新增或移除群組擁有者
+      url: active-directory-accessmanagement-managing-group-owners.md
+- title: 新增使用者並指派其角色和授權
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 新增或刪除使用者
+      url: add-users-azure-active-directory.md
+    - text: 將角色指派給使用者
+      url: active-directory-users-assign-role-azure-portal.md
+    - text: 將授權指派給使用者
+      url: license-users-groups.md

@@ -1,6 +1,6 @@
 ---
-title: 使用 REST API 列出 Azure 資源的拒絕指派 - Azure | Microsoft Docs
-description: 了解如何使用適用於 Azure 資源的角色型存取控制 (RBAC) 和 REST API，來列出使用者、群組和應用程式的拒絕指派。
+title: 使用 REST API 列出 Azure 拒絕指派-Azure RBAC
+description: 瞭解如何使用 REST API 和 Azure 角色型存取控制（Azure RBAC），列出使用者、群組和應用程式的 Azure 拒絕指派。
 services: active-directory
 documentationcenter: na
 author: rolyon
@@ -11,29 +11,28 @@ ms.service: role-based-access-control
 ms.workload: multiple
 ms.tgt_pltfrm: rest-api
 ms.devlang: na
-ms.topic: conceptual
-ms.date: 03/13/2019
+ms.topic: how-to
+ms.date: 03/19/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 59bcf2b33d203ae216b4965b963a727a6b34ae72
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 2f835c270930734bf9963a7c7c3168b873eddaf6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60194662"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84791906"
 ---
-# <a name="list-deny-assignments-for-azure-resources-using-the-rest-api"></a>使用 REST API 列出 Azure 資源的拒絕指派
+# <a name="list-azure-deny-assignments-using-the-rest-api"></a>使用 REST API 列出 Azure 拒絕指派
 
-[拒絕指派](deny-assignments.md)會封鎖使用者執行特定的 Azure 資源動作，即使角色指派授予他們存取權也一樣。 這篇文章說明如何使用 REST API，以清單拒絕指派。
+[Azure 拒絕指派](deny-assignments.md)會封鎖使用者執行特定的 Azure 資源動作，即使角色指派授與他們存取權也一樣。 本文說明如何使用 REST API 列出拒絕指派。
 
 > [!NOTE]
-> 目前，您可以新增自己的拒絕指派的唯一方式是使用 Azure 藍圖。 如需詳細資訊，請參閱[使用 Azure 藍圖資源鎖定保護新資源](../governance/blueprints/tutorials/protect-new-resources.md)。
+> 您無法直接建立自己的拒絕指派。 如需如何建立拒絕指派的相關資訊，請參閱[Azure 拒絕指派](deny-assignments.md)。
 
 ## <a name="prerequisites"></a>必要條件
 
-若要取得拒絕指派的相關資訊，您必須具備：
+若要取得拒絕指派的相關資訊，您必須具有：
 
-- `Microsoft.Authorization/denyAssignments/read` 權限，隨附於多數[適用於 Azure 資源的內建角色](built-in-roles.md)。
+- `Microsoft.Authorization/denyAssignments/read`許可權，包含在大多數的[Azure 內建角色](built-in-roles.md)中。
 
 ## <a name="list-a-single-deny-assignment"></a>列出單一拒絕指派
 
@@ -45,11 +44,12 @@ ms.locfileid: "60194662"
 
 1. 在 URI 中，將 *{scope}* 取代為您想要列出拒絕指派的範圍。
 
-    | 影響範圍 | 類型 |
-    | --- | --- |
-    | `subscriptions/{subscriptionId}` | 訂用帳戶 |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | 資源群組 |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | 資源 |
+    > [!div class="mx-tableFixed"]
+    > | 影響範圍 | 類型 |
+    > | --- | --- |
+    > | `subscriptions/{subscriptionId}` | 訂用帳戶 |
+    > | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | 資源群組 |
+    > | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1` | 資源 |
 
 1. 將 *{deny-assignment-id}* 取代為您想要擷取的拒絕指派識別碼。
 
@@ -69,23 +69,28 @@ ms.locfileid: "60194662"
 
 1. 在 URI 中，將 *{scope}* 取代為您想要列出拒絕指派的範圍。
 
-    | 影響範圍 | 類型 |
-    | --- | --- |
-    | `subscriptions/{subscriptionId}` | 訂用帳戶 |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | 資源群組 |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | 資源 |
+    > [!div class="mx-tableFixed"]
+    > | 影響範圍 | 類型 |
+    > | --- | --- |
+    > | `subscriptions/{subscriptionId}` | 訂用帳戶 |
+    > | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | 資源群組 |
+    > | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1` | 資源 |
 
 1. 將 *{filter}* 取代為您想要套用來篩選拒絕指派清單的條件。
 
-    | Filter | 描述 |
-    | --- | --- |
-    | (無篩選條件) | 列出在指定範圍內、之上或之下的所有拒絕指派。 |
-    | `$filter=atScope()` | 僅列出在指定範圍內和之上的拒絕指派。 不包含子範圍內的拒絕指派。 |
-    | `$filter=denyAssignmentName%20eq%20'{deny-assignment-name}'` | 列出具有指定名稱的拒絕指派。 |
+    > [!div class="mx-tableFixed"]
+    > | Filter | Description |
+    > | --- | --- |
+    > | (無篩選條件) | 列出指定範圍的所有拒絕指派。 |
+    > | `$filter=atScope()` | 僅列出指定範圍和以上的拒絕指派。 不包含子範圍內的拒絕指派。 |
+    > | `$filter=assignedTo('{objectId}')` | 列出所指定使用者或服務主體的拒絕指派。<br/>如果使用者是具有拒絕指派之群組的成員，則也會列出該拒絕指派。 此篩選器可轉移群組，這表示如果使用者是群組的成員，而該群組是另一個具有拒絕指派之群組的成員，則也會列出該拒絕指派。<br/>此篩選器只接受使用者或服務主體的物件識別碼。 您無法傳遞群組的物件識別碼。 |
+    > | `$filter=atScope()+and+assignedTo('{objectId}')` | 列出指定之使用者或服務主體與指定範圍的拒絕指派。 |
+    > | `$filter=denyAssignmentName+eq+'{deny-assignment-name}'` | 列出具有指定名稱的拒絕指派。 |
+    > | `$filter=principalId+eq+'{objectId}'` | 列出指定之使用者、群組或服務主體的拒絕指派。 |
 
 ## <a name="list-deny-assignments-at-the-root-scope-"></a>列出根範圍 (/) 內的拒絕指派
 
-1. 以[提高 Azure Active Directory 中全域管理員的存取權](elevate-access-global-admin.md)中所述的方式來提高您的存取權。
+1. 依照提高存取權[以管理所有 Azure 訂用帳戶和管理群組](elevate-access-global-admin.md)中所述，提升您的存取權。
 
 1. 使用下列要求：
 
@@ -95,15 +100,16 @@ ms.locfileid: "60194662"
 
 1. 將 *{filter}* 取代為您想要套用來篩選拒絕指派清單的條件。 需要篩選條件。
 
-    | Filter | 描述 |
-    | --- | --- |
-    | `$filter=atScope()` | 僅列出根範圍的拒絕指派。 不包含子範圍內的拒絕指派。 |
-    | `$filter=denyAssignmentName%20eq%20'{deny-assignment-name}'` | 列出具有指定名稱的拒絕指派。 |
+    > [!div class="mx-tableFixed"]
+    > | Filter | Description |
+    > | --- | --- |
+    > | `$filter=atScope()` | 僅列出根範圍的拒絕指派。 不包含子範圍內的拒絕指派。 |
+    > | `$filter=denyAssignmentName+eq+'{deny-assignment-name}'` | 列出具有指定名稱的拒絕指派。 |
 
 1. 移除已提高的存取權。
 
 ## <a name="next-steps"></a>後續步驟
 
-- [了解 Azure 資源的拒絕指派](deny-assignments.md)
-- [提高 Azure Active Directory 中全域管理員的存取權](elevate-access-global-admin.md)
+- [瞭解 Azure 拒絕指派](deny-assignments.md)
+- [提高存取權以管理所有 Azure 訂用帳戶和管理群組](elevate-access-global-admin.md)
 - [Azure REST API 參考](/rest/api/azure/)

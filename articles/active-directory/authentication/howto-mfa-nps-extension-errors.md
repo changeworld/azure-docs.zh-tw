@@ -1,37 +1,38 @@
 ---
-title: 疑難排解錯誤碼以 Azure MFA NPS 擴充功能-Azure Active Directory
+title: 針對 Azure MFA NPS 擴充功能進行疑難排解-Azure Active Directory
 description: 協助您解決 Azure Multi-Factor Authentication NPS 擴充功能的問題
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
-ms.date: 11/13/2018
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.topic: troubleshooting
+ms.date: 11/21/2019
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f80ecf02a7e517300c41e84986659a66cfa11c90
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.custom: has-adal-ref
+ms.openlocfilehash: 6a292201796ccb08f684d2c44a3cee71442edbfe
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60414931"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85848666"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>解決 Azure Multi-Factor Authentication NPS 擴充功能的錯誤訊息
 
-如果您使用 Azure Multi-Factor Authentication NPS 擴充功能時發生錯誤，請使用本文以快速取得解決方案。 NPS 擴充功能記錄會存放於事件檢視器中，在 NPS 擴充功能安裝所在的伺服器上，位於**自訂檢視** > **伺服器角色** > **網路原則與存取服務**下。
+如果您使用 Azure Multi-Factor Authentication NPS 擴充功能時發生錯誤，請使用本文以快速取得解決方案。 在安裝 nps 擴充功能的伺服器上，您可以在 [**自訂視圖**] [  >  **伺服器角色**]  >  [**網路原則與存取服務**] 底下的事件檢視器中找到 nps 延伸模組記錄。
 
 ## <a name="troubleshooting-steps-for-common-errors"></a>為常見錯誤而設的疑難排解步驟
 
 | 錯誤碼 | 疑難排解步驟 |
 | ---------- | --------------------- |
-| **CONTACT_SUPPORT** | 請[連絡支援人員](#contact-microsoft-support)，並提供步驟清單以利收集記錄。 請儘可能多提供錯誤發生前的相關資訊，包括租用戶識別碼和使用者主體名稱 (UPN) 等。 |
+| **CONTACT_SUPPORT** | 請[連絡支援人員](#contact-microsoft-support)，並提供步驟清單以利收集記錄。 盡可能提供與錯誤前所發生的相關資訊，包括租使用者識別碼和使用者主要名稱（UPN）。 |
 | **CLIENT_CERT_INSTALL_ERROR** | 可能是用戶端憑證的安裝方式或與您租用戶建立關聯的方式出了問題。 請遵循[針對 Azure MFA NPS 擴充功能進行移難排解](howto-mfa-nps-extension.md#troubleshooting)中的指示來調查用戶端憑證問題。 |
 | **ESTS_TOKEN_ERROR** | 請遵循[針對 Azure MFA NPS 擴充功能進行移難排解](howto-mfa-nps-extension.md#troubleshooting)中的指示來調查用戶端憑證和 ADAL 權杖問題。 |
 | **HTTPS_COMMUNICATION_ERROR** | NPS 伺服器無法接收來自 Azure MFA 的的回應。 請確定您的防火牆已開放讓 https://adnotifications.windowsazure.com 可雙向傳輸流量 |
-| **HTTP_CONNECT_ERROR** | 在執行 NPS 延伸模組的伺服器上，確認您可以連線到 https://adnotifications.windowsazure.com 和 https://login.microsoftonline.com/。 如果無法載入這些站台，請針對該伺服器上的連線進行移難排解。 |
-| **Azure MFA 的 NPS 擴充功能：** <br> Azure MFA 的 NPS 擴充功能只會針對狀態為 AccessAccept 的 Radius 要求執行次要驗證。 收到要求使用者名稱且回應狀態為 AccessReject 的要求時，忽略要求。 | 此錯誤通常會反應 AD 中的驗證失敗，或 NPS 伺服器無法收到 Azure AD 的回應。 請確定您的防火牆已開放讓 https://adnotifications.windowsazure.com 和 https://login.microsoftonline.com 使用連接埠 80 和 443 雙向傳輸流量。 也請您務必要檢查 [網路存取權限] 的 [撥入] 索引標籤中，設定是否設為 [透過 NPS 網路原則控制存取]。 |
+| **HTTP_CONNECT_ERROR** | 在執行 NPS 延伸模組的伺服器上，確認您可以連線到 `https://adnotifications.windowsazure.com` 和 `https://login.microsoftonline.com/`。 如果無法載入這些站台，請針對該伺服器上的連線進行移難排解。 |
+| **Azure MFA 的 NPS 擴充功能：** <br> Azure MFA 的 NPS 擴充功能只會針對狀態為 AccessAccept 的 Radius 要求執行次要驗證。 收到要求使用者名稱且回應狀態為 AccessReject 的要求時，忽略要求。 | 此錯誤通常會反應 AD 中的驗證失敗，或 NPS 伺服器無法收到 Azure AD 的回應。 請確定您的防火牆已開放讓 `https://adnotifications.windowsazure.com` 和 `https://login.microsoftonline.com` 使用連接埠 80 和 443 雙向傳輸流量。 也請您務必要檢查 [網路存取權限] 的 [撥入] 索引標籤中，設定是否設為 [透過 NPS 網路原則控制存取]。 如果使用者未獲指派授權，此錯誤也會觸發。 |
 | **REGISTRY_CONFIG_ERROR** | 應用程式登錄中遺失機碼，可能是因為 [PowerShell 指令碼](howto-mfa-nps-extension.md#install-the-nps-extension)並未在安裝後執行。 錯誤訊息應包含遺失的機碼。 請確定您在 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa 下有該機碼。 |
 | **REQUEST_FORMAT_ERROR** <br> RADIUS 要求中遺失必要的 RADIUS 使用者名稱\識別碼。請確定 NPS 會收到 RADIUS 要求 | 此錯誤通常反映的是安裝問題。 NPS 擴充功能必須安裝在可接收 RADIUS 要求的 NPS 伺服器。 NPS 伺服器若是作為 RDG 和 RRAS 等服務的相依項目安裝，則不會收到 RADIUS 要求。 NPS 擴充功能若透過這類安裝方式進行安裝就會無法運作，並會因為無法讀取來自驗證要求的詳細資料而發生錯誤。 |
 | **REQUEST_MISSING_CODE** | 請確定 NPS 和 NAS 伺服器之間的密碼加密協定支援您使用的次要驗證方法。 **PAP** 支援雲端中 Azure MFA 的所有驗證方法：通話、單向簡訊、行動裝置應用程式通知，和行動裝置應用程式驗證碼。 **CHAPV2** 和 **EAP** 支援通話和行動裝置應用程式通知。 |
@@ -42,8 +43,8 @@ ms.locfileid: "60414931"
 | 錯誤碼 | 錯誤訊息 | 疑難排解步驟 |
 | ---------- | ------------- | --------------------- |
 | **ALTERNATE_LOGIN_ID_ERROR** | 錯誤：userObjectSid 查閱失敗 | 請確認使用者存在於內部部署 Active Directory 執行個體中。 如果您使用跨樹系信任，請[連絡支援人員](#contact-microsoft-support)以取得進一步協助。 |
-| **ALTERNATE_LOGIN_ID_ERROR** | Error:替代 LoginId 查閱失敗 | 請確認 LDAP_ALTERNATE_LOGINID_ATTRIBUTE 設定為[有效的 Active Directory 屬性](https://msdn.microsoft.com/library/ms675090(v=vs.85).aspx)。 <br><br> 如果 LDAP_FORCE_GLOBAL_CATALOG 設定為 True，或 LDAP_LOOKUP_FORESTS 設定具有非空白值，請確認您已設定通用類別目錄，且 AlternateLoginId 屬性已新增到其中。 <br><br> 如果 LDAP_LOOKUP_FORESTS 設定具有非空白值，請確認值是否正確。 如果有多個樹系名稱，名稱必須以分號分隔，而非空格。 <br><br> 如果上述步驟未能解決問題，請[連絡支援人員](#contact-microsoft-support)以取得更多協助。 |
-| **ALTERNATE_LOGIN_ID_ERROR** | Error:替代 LoginId 值是空的 | 請確認已為使用者設定 AlternateLoginId 屬性。 |
+| **ALTERNATE_LOGIN_ID_ERROR** | 錯誤：替代 LoginId 查閱失敗 | 請確認 LDAP_ALTERNATE_LOGINID_ATTRIBUTE 設定為[有效的 Active Directory 屬性](https://msdn.microsoft.com/library/ms675090(v=vs.85).aspx)。 <br><br> 如果 LDAP_FORCE_GLOBAL_CATALOG 設定為 True，或 LDAP_LOOKUP_FORESTS 設定具有非空白值，請確認您已設定通用類別目錄，且 AlternateLoginId 屬性已新增到其中。 <br><br> 如果 LDAP_LOOKUP_FORESTS 設定具有非空白值，請確認值是否正確。 如果有多個樹系名稱，名稱必須以分號分隔，而非空格。 <br><br> 如果上述步驟未能解決問題，請[連絡支援人員](#contact-microsoft-support)以取得更多協助。 |
+| **ALTERNATE_LOGIN_ID_ERROR** | 錯誤：替代 LoginId 值是空的 | 請確認已為使用者設定 AlternateLoginId 屬性。 |
 
 ## <a name="errors-your-users-may-encounter"></a>您的使用者可能會遇到下列錯誤
 
@@ -59,16 +60,16 @@ ms.locfileid: "60414931"
 | **OathCodePinIncorrect** | 輸入的代碼和 Pin 碼錯誤。 | 此錯誤不應出現在 NPS 擴充功能中。 如果您的使用者遇到此錯誤，請[連絡支援人員](#contact-microsoft-support)以取得疑難排解說明。 |
 | **ProofDataNotFound** | 指定的驗證方法未設定證明資料。 | 請讓使用者根據[管理您的雙步驟驗證設定](../user-help/multi-factor-authentication-end-user-manage-settings.md)中的指示，嘗試不同驗證方法或新增驗證法。 如果您確認使用者已正確設定他們的驗證方法，但使用者仍持續看見此錯誤，請[連絡支援人員](#contact-microsoft-support)。 |
 | **SMSAuthFailedWrongCodePinEntered** | 輸入的代碼和 Pin 碼錯誤。 (OneWaySMS) | 此錯誤不應出現在 NPS 擴充功能中。 如果您的使用者遇到此錯誤，請[連絡支援人員](#contact-microsoft-support)以取得疑難排解說明。 |
-| **TenantIsBlocked** | 租用戶已遭封鎖 | 請從 Azure 入口網站中的 Azure AD 屬性頁面中取得 Directory 識別碼並[連絡支援人員](#contact-microsoft-support)。 |
+| **TenantIsBlocked** | 租用戶已遭封鎖 | 從 Azure 入口網站的 [Azure AD 屬性] 頁面中，使用*租使用者識別碼*來[聯絡支援](#contact-microsoft-support)。 |
 | **UserNotFound** | 找不到指定的使用者 | 此租用戶在 Azure AD 中已不是顯示為作用中的租用戶。 請檢查您的訂用帳戶是否在作用中，以及您是否有必要的第一方應用程式。 也請確定憑證主體中的租用戶正確，且憑證仍然有效，並已註冊於服務主體下。 |
 
 ## <a name="messages-your-users-may-encounter-that-arent-errors"></a>使用者收到的訊息可能不是錯誤訊息
 
 有時候，由於您使用者的驗證要求失敗，他們可能會收到來自 Multi-Factor Authentication 的訊息。 這不是產品組態中發生錯誤，而是說明為何驗證要求遭拒的內部警告。
 
-| 錯誤碼 | 錯誤訊息 | 建議的步驟 | 
+| 錯誤碼 | 錯誤訊息 | 建議的步驟 |
 | ---------- | ------------- | ----------------- |
-| **OathCodeIncorrect** | 輸入的代碼錯誤\OATH 代碼錯誤 | 使用者輸入了錯誤的代碼。 請要求新代碼並讓他們再試一次，或請他們重新登入。 | 
+| **OathCodeIncorrect** | 輸入的代碼錯誤\OATH 代碼錯誤 | 使用者輸入了錯誤的代碼。 請要求新代碼並讓他們再試一次，或請他們重新登入。 |
 | **SMSAuthFailedMaxAllowedCodeRetryReached** | 已達重試代碼次數的上限 | 使用者的驗證嘗試失敗太多次。 視您的設定而定，使用者現在可能需要透過系統管理員來解除封鎖。  |
 | **SMSAuthFailedWrongCodeEntered** | 輸入的代碼錯誤/文字訊息 OTP 不正確 | 使用者輸入了錯誤的代碼。 請要求新代碼並讓他們再試一次，或請他們重新登入。 |
 
@@ -95,6 +96,10 @@ ms.locfileid: "60414931"
 ### <a name="troubleshoot-user-accounts"></a>針對使用者帳戶進行移難排解
 
 如果您的使用者[進行雙步驟驗證時發生問題](../user-help/multi-factor-authentication-end-user-troubleshoot.md)，請協助助他們自行診斷問題。
+
+### <a name="health-check-script"></a>健全狀況檢查腳本
+
+針對 NPS 擴充功能進行疑難排解時， [AZURE MFA NPS 擴充功能健全狀況檢查腳本](https://docs.microsoft.com/samples/azure-samples/azure-mfa-nps-extension-health-check/azure-mfa-nps-extension-health-check/)會執行基本的健全狀況檢查。 執行腳本，然後選擇 [選項 3]。
 
 ### <a name="contact-microsoft-support"></a>連絡 Microsoft 支援
 

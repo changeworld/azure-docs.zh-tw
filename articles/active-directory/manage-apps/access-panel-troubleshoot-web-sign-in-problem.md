@@ -3,25 +3,25 @@ title: 登入存取面板網站時遇到問題 | Microsoft Docs
 description: 針對您嘗試登入使用存取面板時可能遇到的問題進行疑難排解的指引
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 07/11/2017
-ms.author: celested
+ms.author: kenwith
 ms.reviwer: japere,asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f7418c16d5d5312d2a9a7913da49941ef0a7870
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4f2ad4db231c616b3022ecafc62b12d6d81b67fc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60293999"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84760808"
 ---
 # <a name="problem-signing-in-to-the-access-panel-website"></a>登入存取面板網站時遇到問題
 
@@ -39,7 +39,7 @@ ms.locfileid: "60293999"
 
 ## <a name="general-issues-to-check-first"></a>首先檢查的一般問題 
 
--   確定使用者登入**正確的 URL**：<https://myapps.microsoft.com>
+-   請確定使用者登入**正確的 URL**：<https://myapps.microsoft.com>
 
 -   確定使用者的瀏覽器已將此 URL 新增至**信任的網站**
 
@@ -82,7 +82,7 @@ ms.locfileid: "60293999"
 
 -   [重設使用者的密碼](#reset-a-users-password)
 
--   [啟用自助密碼重設](#enable-self-service-password-reset)
+-   [啟用自助式密碼重設](#enable-self-service-password-reset)
 
 -   [檢查使用者的多重要素驗證狀態](#check-a-users-multi-factor-authentication-status)
 
@@ -92,7 +92,7 @@ ms.locfileid: "60293999"
 
 -   [檢查使用者獲指派的授權](#check-a-users-assigned-licenses)
 
--   [指派授權至使用者](#assign-a-user-a-license)
+-   [指派授權給使用者](#assign-a-user-a-license)
 
 ### <a name="check-if-a-user-account-exists-in-azure-active-directory"></a>檢查 Azure Active Directory 中是否存在使用者帳戶
 
@@ -104,9 +104,9 @@ ms.locfileid: "60293999"
 
 3.  在篩選搜尋方塊中輸入 **“Azure Active Directory**”，然後選取 [Azure Active Directory] 項目。
 
-4.  按一下瀏覽功能表中的 [使用者和群組]。
+4.  按一下瀏覽功能表中的 [使用者和群組]****。
 
-5.  按一下 [所有使用者]。
+5.  按一下 [**所有使用者**]。
 
 6.  **搜尋**您感興趣的使用者，**按一下資料列**選取該使用者。
 
@@ -122,15 +122,15 @@ ms.locfileid: "60293999"
 
 3.  在篩選搜尋方塊中輸入 **“Azure Active Directory**”，然後選取 [Azure Active Directory] 項目。
 
-4.  按一下瀏覽功能表中的 [使用者和群組]。
+4.  按一下瀏覽功能表中的 [使用者和群組]****。
 
-5.  按一下 [所有使用者]。
+5.  按一下 [**所有使用者**]。
 
 6.  **搜尋**您感興趣的使用者，**按一下資料列**選取該使用者。
 
-7.  按一下 [設定檔]。
+7.  按一下 [**設定檔**]。
 
-8.  在 [設定] 下，確定 [封鎖登入] 設為 [否]。
+8.  在 [設定]**** 下，確定 [封鎖登入]**** 設為 [否]****。
 
 ### <a name="reset-a-users-password"></a>重設使用者的密碼
 
@@ -142,15 +142,15 @@ ms.locfileid: "60293999"
 
 3.  在篩選搜尋方塊中輸入 **“Azure Active Directory**”，然後選取 [Azure Active Directory] 項目。
 
-4.  按一下瀏覽功能表中的 [使用者和群組]。
+4.  按一下瀏覽功能表中的 [使用者和群組]****。
 
-5.  按一下 [所有使用者]。
+5.  按一下 [**所有使用者**]。
 
 6.  **搜尋**您感興趣的使用者，**按一下資料列**選取該使用者。
 
-7.  按一下使用者窗格頂端的 [重設密碼] 按鈕。
+7.  按一下使用者窗格頂端的 [重設密碼]**** 按鈕。
 
-8.  在出現的 [重設密碼] 窗格中，按一下 [重設密碼] 按鈕。
+8.  在出現的 [重設密碼]**** 窗格中，按一下 [重設密碼]**** 按鈕。
 
 9.  為使用者複製**暫時密碼**或**輸入新密碼**。
 
@@ -174,20 +174,20 @@ ms.locfileid: "60293999"
 
 3. 在篩選搜尋方塊中輸入 **“Azure Active Directory**”，然後選取 [Azure Active Directory] 項目。
 
-4. 按一下瀏覽功能表中的 [使用者和群組]。
+4. 按一下瀏覽功能表中的 [使用者和群組]****。
 
-5. 按一下 [所有使用者]。
+5. 按一下 [**所有使用者**]。
 
-6. 按一下窗格頂端的 [Multi-Factor Authentication] 按鈕。
+6. 按一下窗格頂端的 [Multi-Factor Authentication]**** 按鈕。
 
-7. 當 **Multi-Factor Authentication 管理網站**載入後，請確定您位於 [使用者] 索引標籤上。
+7. 當**多重要素驗證系統管理入口網站**載入後，請確定您位於 [**使用者**] 索引標籤上。
 
 8. 在使用者清單中搜尋、篩選或排序來尋找使用者。
 
-9. 從使用者清單中選取使用者，然後視需要 [啟用]、[停用] 或 [強制執行] 多重要素驗證。
+9. 從使用者清單中選取使用者，然後視需要 [啟用]****、[停用]**** 或 [強制執行]**** 多重要素驗證。
 
    >[!NOTE]
-   >如果使用者處於 [已強制] 狀態，您可以暫時將他們設為 [已停用]，讓他們回到各自的帳戶。 使用者退回之後，您可以再次將他們的狀態變更為 [已啟用]，以要求他們在下次登入時重新註冊連絡資訊。 或者，您可以依照[檢查使用者的驗證連絡資訊](#check-a-users-authentication-contact-info)中的步驟，為他們確認或設定此資料。
+   >如果使用者處於 [已強制]**** 狀態，您可以暫時將他們設為 [已停用]****，讓他們回到各自的帳戶。 使用者退回之後，您可以再次將他們的狀態變更為 [已啟用]****，以要求他們在下次登入時重新註冊連絡資訊。 或者，您可以依照[檢查使用者的驗證連絡資訊](#check-a-users-authentication-contact-info)中的步驟，為他們確認或設定此資料。
    >
    >
 
@@ -201,15 +201,15 @@ ms.locfileid: "60293999"
 
 3.  在篩選搜尋方塊中輸入 **“Azure Active Directory**”，然後選取 [Azure Active Directory] 項目。
 
-4.  按一下瀏覽功能表中的 [使用者和群組]。
+4.  按一下瀏覽功能表中的 [使用者和群組]****。
 
-5.  按一下 [所有使用者]。
+5.  按一下 [**所有使用者**]。
 
 6.  **搜尋**您感興趣的使用者，**按一下資料列**選取該使用者。
 
-7.  按一下 [設定檔]。
+7.  按一下 [**設定檔**]。
 
-8.  向下捲動至 [驗證連絡資訊]。
+8.  向下捲動至 [驗證連絡資訊]****。
 
 9.  **檢閱**使用者註冊的資料，並視需要予以更新。
 
@@ -223,13 +223,13 @@ ms.locfileid: "60293999"
 
 3.  在篩選搜尋方塊中輸入 **“Azure Active Directory**”，然後選取 [Azure Active Directory] 項目。
 
-4.  按一下瀏覽功能表中的 [使用者和群組]。
+4.  按一下瀏覽功能表中的 [使用者和群組]****。
 
-5.  按一下 [所有使用者]。
+5.  按一下 [**所有使用者**]。
 
 6.  **搜尋**您感興趣的使用者，**按一下資料列**選取該使用者。
 
-7.  按一下 [群組]，查看使用者是哪些群組的成員。
+7.  按一下 [群組]****，查看使用者是哪些群組的成員。
 
 ### <a name="check-a-users-assigned-licenses"></a>檢查使用者獲指派的授權
 
@@ -241,13 +241,13 @@ ms.locfileid: "60293999"
 
 3.  在篩選搜尋方塊中輸入 **“Azure Active Directory**”，然後選取 [Azure Active Directory] 項目。
 
-4.  按一下瀏覽功能表中的 [使用者和群組]。
+4.  按一下瀏覽功能表中的 [使用者和群組]****。
 
-5.  按一下 [所有使用者]。
+5.  按一下 [**所有使用者**]。
 
 6.  **搜尋**您感興趣的使用者，**按一下資料列**選取該使用者。
 
-7.  按一下 [授權]，查看使用者目前已指派的授權。
+7.  按一下 [授權]****，查看使用者目前已指派的授權。
 
 ### <a name="assign-a-user-a-license"></a>指派授權至使用者 
 
@@ -259,21 +259,21 @@ ms.locfileid: "60293999"
 
 3.  在篩選搜尋方塊中輸入 **“Azure Active Directory**”，然後選取 [Azure Active Directory] 項目。
 
-4.  按一下瀏覽功能表中的 [使用者和群組]。
+4.  按一下瀏覽功能表中的 [使用者和群組]****。
 
-5.  按一下 [所有使用者]。
+5.  按一下 [**所有使用者**]。
 
 6.  **搜尋**您感興趣的使用者，**按一下資料列**選取該使用者。
 
-7.  按一下 [授權]，查看使用者目前已指派的授權。
+7.  按一下 [授權]****，查看使用者目前已指派的授權。
 
-8.  按一下 [指派] 按鈕。
+8.  按一下 [**指派**] 按鈕。
 
 9.  從可用產品清單中選取**一或多個產品**。
 
-10. (**選擇性**) 按一下 [指派選項] 項目，更細微地指派產品。 完成時按一下 [確定]。
+10. (**選擇性**) 按一下 [指派選項]**** 項目，更細微地指派產品。 完成時按一下 [確定]****。
 
-11. 按一下 [指派] 按鈕，將這些授權指派給這位使用者。
+11. 按一下 [指派]**** 按鈕，將這些授權指派給這位使用者。
 
 ## <a name="if-these-troubleshooting-steps-do-not-resolve-the-issue"></a>如果這些疑難排解步驟無法解決問題
 

@@ -1,21 +1,21 @@
 ---
 title: 什麼是 OPC 對應項 - Azure | Microsoft Docs
-description: OPC 對應項概觀
+description: 此文章提供 OPC 對應項的概觀。 OPC 對應項可透過 REST API 提供對產業裝置的探索、註冊和遠端控制等功能。
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/26/2018
 ms.topic: overview
-ms.service: iot-industrialiot
+ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 9daf1a7e58af23cb78705691217bf9709359c4d5
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 91448f55f0ebb88ba6c685b960ece9d91cb98e25
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59496806"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "73826230"
 ---
-# <a name="what-is-azure-iot-open-platform-communications-opc-device-management"></a>什麼是 Azure IoT 開放平台通訊 (OPC) 裝置管理？
+# <a name="what-is-opc-twin"></a>什麼是 OPC 對應項？
 
 OPC 對應項是由使用 Azure IoT Edge 與 IoT 中樞連接雲端和工廠網路的微服務所組成。 OPC 對應項可透過 REST API 提供對產業裝置的探索、註冊和遠端控制等功能。 OPC 對應項不需要 OPC 統一架構 (OPC UA) SDK、其程式設計語言無從驗證，而且可以包含在無伺服器工作流程中。 本文說明數個 OPC 對應項的使用案例。
 
@@ -28,7 +28,7 @@ OPC 對應項可讓工廠操作員掃描工廠網路，以便探索和註冊 OPC
 ### <a name="simple-control"></a>簡單的控制
 OPC 對應項可讓工廠操作員自動或手動從雲端即時回應事件，並重新設定其廠房機器。 OPC 對應項提供的 REST API 可在 OPC UA 伺服器上叫用服務、瀏覽其位址空間，以及讀取/寫入變數和執行方法。 例如，鍋爐可使用溫度 KPI 來控制產品線。 溫度感應器會使用 OPC 發行者發佈資料的變更。 工廠操作員會收到溫度已達到閾值的警示。 生產線會透過 OPC 對應項自動減緩速度。 工廠操作員會收到生產線減速的通知。
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>驗證
 您可以使用 OPC 對應項進行簡單的驗證，以及使用簡單的開發人員體驗。
 
 ### <a name="simple-authentication"></a>簡單的驗證 
@@ -42,4 +42,4 @@ OPC 對應項可透過 REST API 用於以任何程式設計語言撰寫的應用
 現在您已了解 OPC 對應項及其使用方式，以下是建議執行的下一個步驟：
 
 > [!div class="nextstepaction"]
-> [什麼是 OPC 保存庫](overview-opc-twin-architecture.md)
+> [什麼是 OPC 保存庫](overview-opc-vault.md)

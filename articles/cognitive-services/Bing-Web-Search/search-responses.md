@@ -1,26 +1,26 @@
 ---
 title: Bing Web 搜尋 API 回應結構和回應類型
 titleSuffix: Azure Cognitive Services
-description: 深入了解 Bing Web 搜尋 API 所使用的回答類型和回應。
+description: 當您將搜尋要求傳送給 Bing Web 搜尋時，它會在回應本文中傳回 `SearchResponse` 物件。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: conceptual
-ms.date: 02/12/2019
+ms.date: 06/25/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 07fb655af25fe590effcb885e7b366346724b50a
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 284f8c8432d732fdfa7e16b43a47578437bcf0ba
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56232887"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202236"
 ---
 # <a name="bing-web-search-api-response-structure-and-answer-types"></a>Bing Web 搜尋 API 回應結構和回應類型  
 
-當您將搜尋要求傳送給 Bing Web 搜尋時，它會在回應本文中傳回 [`SearchResponse`](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#searchresponse) 物件。 物件中包含每項回答 (Bing 判斷與查詢有關) 的欄位。 此範例說明如果 Bing 傳回所有回答時的回應物件：
+當您傳送 Bing Web 搜尋搜尋要求時，它會 [`SearchResponse`](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#searchresponse) 在回應主體中傳回物件。 物件中包含每項回答 (Bing 判斷與查詢有關) 的欄位。 此範例說明如果 Bing 傳回所有回答時的回應物件：
 
 ```json
 {
@@ -38,11 +38,13 @@ ms.locfileid: "56232887"
 }, ...
 ```
 
-一般而言，Bing Web 搜尋會傳回回答的子集。 例如，如果查詢字詞是 sailing dinghies，則回應可能會包含 `webPages`、`images` 和 `rankingResponse`。 除非您已使用 [responseFilter](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#responsefilter) 來篩選網頁，否則回應永遠會包含 `webpages` 和 `rankingResponse` 回答。
+一般而言，Bing Web 搜尋會傳回回答的子集。 例如，如果查詢字詞是*sailing dinghies*，則回應可能包括 `webPages` 、 `images` 和 `rankingResponse` 。 除非您已使用 [responseFilter](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#responsefilter) 來篩選網頁，否則回應永遠會包含 `webpages` 和 `rankingResponse` 回答。
+
+[!INCLUDE [cognitive-services-bing-url-note](../../../includes/cognitive-services-bing-url-note.md)]
 
 ## <a name="webpages-answer"></a>網頁回答
 
-[網頁](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#webanswer) (英文) 回答包含網頁 (Bing Web 搜尋判斷與查詢有關) 的連結清單。 清單中的每個[網頁](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#webpage) \(英文\) 都將包含：頁面的名稱、URL、顯示 URL、內容的簡短描述，以及 Bing 找到內容的日期。
+[網頁](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#webanswer) (英文) 回答包含網頁 (Bing Web 搜尋判斷與查詢有關) 的連結清單。 清單中的每個[網頁](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#webpage) \(英文\) 都將包含：頁面的名稱、URL、顯示 URL、內容的簡短描述，以及 Bing 找到內容的日期。
 
 ```json
 {
@@ -65,7 +67,7 @@ The following shows an example of how you might display the webpage in a search 
 
 ## <a name="images-answer"></a>影像回應
 
-[影像](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#images) (英文) 回答包含 Bing 認為與查詢相關的影像清單。 清單中的每個[影像](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#image) (英文) 都包含影像的 URL、大小、維度及其編碼格式。 Image 物件也包含影像縮圖的 URL 和縮圖的維度。
+[影像](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) (英文) 回答包含 Bing 認為與查詢相關的影像清單。 清單中的每個[影像](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#image) (英文) 都包含影像的 URL、大小、維度及其編碼格式。 Image 物件也包含影像縮圖的 URL 和縮圖的維度。
 
 ```json
 {
@@ -109,7 +111,7 @@ The following shows an example of how you might display the webpage in a search 
 
 ## <a name="related-searches-answer"></a>相關搜尋回答
 
-[relatedSearches](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#searchresponse-relatedsearches) (英文) 回答中包含其他使用者進行的最熱門相關查詢清單。 清單中每個[查詢](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#query_obj) (英文) 都包含查詢字串 (`text`)、具有搜尋結果醒目提示字元的查詢字串 (`displayText`)，以及前往 Bing 針對該查詢搜尋結果的 URL (`webSearchUrl`)。
+[relatedSearches](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#searchresponse-relatedsearches) (英文) 回答中包含其他使用者進行的最熱門相關查詢清單。 清單中每個[查詢](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#query_obj) (英文) 都包含查詢字串 (`text`)、具有搜尋結果醒目提示字元的查詢字串 (`displayText`)，以及前往 Bing 針對該查詢搜尋結果的 URL (`webSearchUrl`)。
 
 ```json
 {
@@ -121,7 +123,7 @@ The following shows an example of how you might display the webpage in a search 
 
 使用 `displayText` 查詢字串和 `webSearchUrl` URL 建立超連結，將使用者帶到 Bing 針對相關查詢的搜尋結果頁面。 您也可以在您自己的 Web 搜尋 API 查詢中使用 `text` 查詢字串，並且顯示結果。
 
-如需如何在 `displayText` 中處理醒目提示標記的詳細資訊，請參閱[搜尋結果醒目提示](./hit-highlighting.md)。
+如需如何在 `displayText` 中處理醒目提示標記的詳細資訊，請參閱[搜尋結果醒目提示](../bing-web-search/hit-highlighting.md)。
 
 以下顯示在 Bing.com 中相關查詢使用方式的範例。
 
@@ -129,7 +131,7 @@ The following shows an example of how you might display the webpage in a search 
 
 ## <a name="videos-answer"></a>影片回答
 
-[影片](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videos) (英文) 回答中包含 Bing 認為與查詢相關的影片清單。 清單中的每段[影片](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#video) (英文) 都包含影片的 URL、持續時間、維度及編碼格式。 影片物件也包含了影片縮圖的 URL 和縮圖的維度。
+[影片](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) (英文) 回答中包含 Bing 認為與查詢相關的影片清單。 清單中的每段[影片](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video) (英文) 都包含影片的 URL、持續時間、維度及編碼格式。 影片物件也包含了影片縮圖的 URL 和縮圖的維度。
 
 ```json
 {
@@ -183,7 +185,7 @@ The following shows an example of how you might display the webpage in a search 
 
 ## <a name="news-answer"></a>新聞回答
 
-[新聞](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#news) (英文) 回答中包含 Bing 認為與查詢相關的新聞文章清單。 清單中每篇[新聞文章](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#newsarticle) (英文) 都包含文章的名稱、描述以及文章在主機網站上的 URL。 如果文章包含影像，物件就會包含影像的縮圖。
+[新聞](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#news) (英文) 回答中包含 Bing 認為與查詢相關的新聞文章清單。 清單中每篇[新聞文章](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle) (英文) 都包含文章的名稱、描述以及文章在主機網站上的 URL。 如果文章包含影像，物件就會包含影像的縮圖。
 
 ```json
 {
@@ -218,11 +220,11 @@ The following shows an example of how you might display articles in a search res
 
 ## <a name="computation-answer"></a>計算回答
 
-如果使用者輸入數學運算式或單位轉換查詢，回應可能會包含[計算](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#computation) (英文) 回答。 `computation` 回答包含標準化運算式及其結果。
+如果使用者輸入數學運算式或單位轉換查詢，回應可能會包含[計算](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#computation) (英文) 回答。 `computation` 回答包含標準化運算式及其結果。
 
-單位轉換查詢是將一個單位轉換為另一個單位。 例如，「10 公尺是多少英吋？」或「1/4 杯是多少茶匙？」
+單位轉換查詢是將一個單位轉換為另一個單位。 例如，「10 公尺是多少英吋？」** 或「1/4 杯是多少茶匙？」**
 
-以下顯示針對「10 公尺是多少英吋？」的 `computation` 回答
+以下顯示針對「10 公尺是多少英吋？」** 的 `computation` 回答
 
 ```json
 "computation": {
@@ -288,21 +290,21 @@ Encoded query: 8^2%2B11^2-2*8*11*cos%2837%29
 
 數學運算式可能包含下列符號：
 
-|符號|說明|
+|符號|描述|
 |------------|-----------------|
 |+|加法|
-|-|減法|
-|/|除法|
+|-|減|
+|/|部門|
 |*|乘法|
-|^|乘冪|
+|^|電源|
 |!|階乘|
-|上也提供本文中使用的原始碼。|Decimal|
+|.|Decimal|
 |()|優先順序群組|
 |[]|函式|
 
 數學運算式可能包含下列常數：
 
-|符號|說明|
+|符號|描述|
 |------------|-----------------|
 |Pi|3.14159...|
 |角度|角度|
@@ -312,9 +314,9 @@ Encoded query: 8^2%2B11^2-2*8*11*cos%2837%29
 
 數學運算式可能包含下列函式：
 
-|符號|說明|
+|符號|描述|
 |------------|-----------------|
-|排序|平方根|
+|Sort|平方根|
 |Sin[x]、Cos[x]、Tan[x]<br />Csc[x]、Sec[x]、Cot[x]|三角函數 (以弧度為單位的引數)|
 |ArcSin[x]、ArcCos[x]、ArcTan[x]<br />ArcCsc[x]、ArcSec[x]、ArcCot[x]|反三角函數 (以弧度為單位的給定結果)|
 |Exp[x]、E^x|指數函式|
@@ -326,11 +328,11 @@ Encoded query: 8^2%2B11^2-2*8*11*cos%2837%29
 
 ## <a name="timezone-answer"></a>時區回答
 
-如果使用者輸入時間或日期查詢，回應可能會包含[時區](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#timezone) (英文) 回答。 此回答支援隱含或明確查詢。 隱含查詢，例如「現在幾點？」，會根據使用者的位置傳回當地時間。 明確查詢，例如「西雅圖現在幾點？」，會傳回美國華盛頓州西雅圖的當地時間。
+如果使用者輸入時間或日期查詢，回應可能會包含[時區](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#timezone) (英文) 回答。 此回答支援隱含或明確查詢。 隱含查詢，例如「現在幾點？」**，會根據使用者的位置傳回當地時間。 明確查詢，例如「西雅圖現在幾點？」**，會傳回美國華盛頓州西雅圖的當地時間。
 
 `timeZone` 回答可提供位置的名稱、指定位置目前的 UTC 日期和時間，以及 UTC 時差。 如果位置的界限在多個時區內，則回答會包含目前的 UTC 日期和時間以及界限內的所有時區。 例如，因為佛羅里達州位於兩個時區內，回應會包含兩個時區的當地日期和時間。  
 
-如果查詢要求州或國家/地區的時間，Bing 會判斷位於位置地理界限內的主要城市，並且在 `primaryCityTime` 欄位中傳回。 如果界限包含多個時區，其餘時區會在 `otherCityTimes` 欄位中傳回。
+如果查詢要求的是州或國家/地區的時間，Bing 會判斷位置地理界限內的主要城市，並在欄位中傳回 `primaryCityTime` 。 如果界限包含多個時區，其餘時區會在 `otherCityTimes` 欄位中傳回。
 
 以下顯示查詢傳回 `timeZone` 回答的範例。
 
@@ -417,7 +419,7 @@ Query: What time is it in the U.S.
 
 ## <a name="spellsuggestion-answer"></a>SpellSuggestion 回答
 
-如果 Bing 判斷使用者可能想要搜尋不同的項目，則回應會包含 [SpellSuggestions](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#spellsuggestions) (英文) 物件。 例如，如果使用者搜尋 carlos pen，Bing 可能會判斷使用者其實是想要搜尋 Carlos Pena (根據過去其他人對於 carlos pen 的搜尋)。 以下顯示範例拼字回應。
+如果 Bing 判斷使用者可能想要搜尋不同的項目，則回應會包含 [SpellSuggestions](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#spellsuggestions) (英文) 物件。 例如，如果使用者搜尋 carlos pen**，Bing 可能會判斷使用者其實是想要搜尋 Carlos Pena (根據過去其他人對於 carlos pen** 的搜尋)。 以下顯示範例拼字回應。
 
 ```json
 "spellSuggestions": {
@@ -429,19 +431,15 @@ Query: What time is it in the U.S.
 }, ...
 ```
 
-以下顯示 Bing 如何使用拼字建議。
-
-![Bing 拼字建議範例](./media/cognitive-services-bing-web-api/bing-web-spellingsuggestion.GIF)  
-
 ## <a name="response-headers"></a>回應標頭
 
 來自 Bing Web 搜尋 API 的回應可能包含下列標頭：
 
-|||
+| 標頭 | 描述 |
 |-|-|
 |`X-MSEdge-ClientID`|Bing 已指派給使用者的唯一識別碼|
 |`BingAPIs-Market`|用來履行要求的市場|
-|`BingAPIs-TraceId`|此要求 (適用於支援) 的 Bing API 伺服器上的記錄項目|
+|`BingAPIs-TraceId`|這項要求 (適用於支援) 的 Bing API 伺服器上的記錄項目|
 
 保存用戶端識別碼，並將它與後續要求一起傳回尤其重要。 當您這麼做時，搜尋會在排名搜尋結果中使用過去的內容，也會提供一致的使用者體驗。
 
@@ -449,17 +447,20 @@ Query: What time is it in the U.S.
 
 若要取得標頭的存取權，您可以透過 CORS Proxy 提出 Bing Web 搜尋 API 要求。 來自這類 Proxy 的回應包含 `Access-Control-Expose-Headers` 標頭，可將回應標頭列入允許清單並提供給 JavaScript 使用。
 
-您可以輕鬆地安裝 CORS Proxy，讓我們的[教學課程應用程式](tutorial-bing-web-search-single-page-app.md)存取選擇性用戶端標頭。 首先，請[安裝 Node.js](https://nodejs.org/en/download/) (如果尚未安裝)。 在命令提示字元中，輸入下列命令。
+您可以輕鬆地安裝 CORS Proxy，讓我們的[教學課程應用程式](tutorial-bing-web-search-single-page-app.md)存取選擇性用戶端標頭。 首先，請[安裝 Node.js](https://nodejs.org/en/download/) (若尚未安裝)。 在命令提示字元中，輸入下列命令。
 
-    npm install -g cors-proxy-server
+```console
+npm install -g cors-proxy-server
+```
 
-接下來，將 HTML 檔案中的 Bing Web 搜尋 API 端點變更為：
-
-    http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search
+接下來，將 HTML 檔案中的 Bing Web 搜尋 API 端點變更為： \
+`http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search`
 
 最後，使用下列命令啟動 CORS Proxy：
 
-    cors-proxy-server
+```console
+cors-proxy-server
+```
 
 當您使用教學課程應用程式時，請保持開啟命令視窗；關閉視窗會停止 Proxy。 在可展開的 [HTTP 標頭] 區段搜尋結果下，您現在可以看到 `X-MSEdge-ClientID` 標頭 (及其他標頭)，並確認每個要求的此標頭都相同。
 
@@ -481,4 +482,4 @@ Query: What time is it in the U.S.
 
 ## <a name="see-also"></a>另請參閱  
 
-* [Bing Web 搜尋 API 參考](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference)
+* [Bing Web 搜尋 API 參考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference)

@@ -1,26 +1,20 @@
 ---
-title: 為虛擬網路對等互連設定 VPN 閘道傳輸：Azure Resource Manager | Microsoft Docs
+title: 為虛擬網路對等互連設定 VPN 閘道傳輸
 description: 為虛擬網路對等互連設定 VPN 閘道傳輸。
 services: vpn-gateway
-documentationcenter: na
+titleSuffix: Azure VPN Gateway
 author: yushwang
-manager: rossort
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 0683c664-9c03-40a4-b198-a6529bf1ce8b
 ms.service: vpn-gateway
-ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 03/25/2018
 ms.author: yushwang
-ms.openlocfilehash: d5e62bf1838c8f07068208019d28d7273c28bd63
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 05df14005bb52d67aed0f616854c7b6b55e6e35d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60457350"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84982887"
 ---
 # <a name="configure-vpn-gateway-transit-for-virtual-network-peering"></a>為虛擬網路對等互連設定 VPN 閘道傳輸
 
@@ -37,9 +31,14 @@ ms.locfileid: "60457350"
 1. 兩個虛擬網路都使用資源管理員部署模型
 2. 輪輻虛擬網路使用傳統部署，而具有閘道的中樞虛擬網路位於資源管理員中
 
+
+>[!NOTE]
+> 如果您對網路拓撲進行變更並擁有 Windows VPN 用戶端，則必須重新下載並安裝 Windows 用戶端的 VPN 用戶端套件，才能將變更套用至用戶端。
+>
+
 ## <a name="requirements"></a>需求
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 
 本文件中的範例需要建立下列資源：
 
@@ -54,13 +53,13 @@ ms.locfileid: "60457350"
 2. [以相同部署模型建立虛擬網路對等互連](../virtual-network/tutorial-connect-virtual-networks-portal.md)
 3. [以不同部署模型建立虛擬網路對等互連](../virtual-network/create-peering-different-deployment-models.md)
 
-## <a name="permissions"></a>權限
+## <a name="permissions"></a><a name="permissions"></a>Permissions
 
 您用於建立虛擬網路對等互連的帳戶必須具有必要角色或權限。 在以下範例中，如果您要將兩個虛擬網路 (分別名為 Hub-RM 和 Spoke-Classic) 對等互連，您的帳戶必須具有每個虛擬網路的下列角色或權限：
     
 |虛擬網路|部署模型|角色|權限|
 |---|---|---|---|
-|Hub-RM|Resource Manager|[网络参与者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)|Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write|
+|Hub-RM|Resource Manager|[網路參與者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)|Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write|
 | |傳統|[傳統網路參與者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#classic-network-contributor)|N/A|
 |Spoke-Classic|Resource Manager|[網路參與者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)|Microsoft.Network/virtualNetworks/peer|
 ||傳統|[傳統網路參與者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#classic-network-contributor)|Microsoft.ClassicNetwork/virtualNetworks/peer|
@@ -162,4 +161,4 @@ Add-AzVirtualNetworkPeering `
 ## <a name="next-steps"></a>後續步驟
 
 * 請先深入了解[虛擬網路對等互連的條件約束和行為](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)及[虛擬網路對等互連設定](../virtual-network/virtual-network-manage-peering.md#create-a-peering)，再建立虛擬網路對等互連以供生產環境使用。
-* 了解如何透過虛擬網路對等互連和閘道傳輸來[建立中樞和輪輻網路拓撲](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#vnet-peering)。
+* 了解如何透過虛擬網路對等互連和閘道傳輸來[建立中樞和輪輻網路拓撲](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke#virtual-network-peering)。

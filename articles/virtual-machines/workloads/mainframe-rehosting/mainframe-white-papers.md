@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 虛擬機器和 Azure 儲存體的大型主機主題相關的 azure 技術白皮書
-description: 取得有關大型電腦移轉，重新裝載，並移至 Microsoft Azure 的 IBM Z 為基礎的系統資源。
+title: 關於使用 Azure 虛擬機器和 Azure 儲存體的大型主機主題的 Azure 技術白皮書
+description: 取得有關大型主機遷移、重新裝載，以及將 IBM Z 為基礎的系統移至 Microsoft Azure 的資源。
 services: multiple
 documentationcenter: ''
 author: njray
@@ -8,45 +8,44 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: 29665639e90f729f5506a0a12241bb04fd88e69c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: dd91b4331a6093d1cf208893d5d88746707b473b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60859319"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "74224749"
 ---
-# <a name="azure-white-papers-about-mainframe-topics"></a>大型主機主題相關的 azure 技術白皮書
+# <a name="azure-white-papers-about-mainframe-topics"></a>關於大型主機主題的 Azure 技術白皮書
 
-取得有關大型電腦移轉，重新裝載，並移至 Microsoft Azure 的 IBM Z 為基礎的系統資源。
+取得有關大型主機遷移、重新裝載，以及將 IBM Z 為基礎的系統移至 Microsoft Azure 的資源。
 
-### <a name="demystifying-mainframe-to-azure-migrationhttpsazuremicrosoftcomresourcesdemystifying-mainframe-to-azure-migration"></a>[揭開大型主機移轉至 Azure 的神秘面紗](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/)
+### <a name="demystifying-mainframe-to-azure-migration"></a>[揭密大型主機到 Azure 的遷移](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/)
 
-Azure 提供大型主機的替代方法可提供對等的功能和功能。 由 Larry Mead AzureCAT 小組的這份白皮書涵蓋主要 IBM z/OS 主機的元件和 Azure 的對等項目。 它也會提供 路段圖地圖與訂閱過期的大型主機原理的 IT 決策者啟動交談。
+Azure 提供可提供對等功能和功能的大型主機替代方案。 本白皮書是 AzureCAT 團隊的 Larry Mead，其中涵蓋了主要的 IBM z/OS 大型主機元件和 Azure 對等專案。 它也提供藍圖，讓您開始與訂閱過時大型主機觀念的 IT 決策者交談。
 
-### <a name="move-mainframe-compute-and-storage-to-azurehttpsazuremicrosoftcomresourcesmove-mainframe-compute-and-storage-to-azure"></a>[將大型主機計算和儲存體移至 Azure](https://azure.microsoft.com/resources/move-mainframe-compute-and-storage-to-azure/)
+### <a name="move-mainframe-compute-and-storage-to-azure"></a>[將大型主機計算和儲存體移至 Azure](https://azure.microsoft.com/resources/move-mainframe-compute-and-storage-to-azure/)
 
-若要在 Microsoft Azure 上執行大型主機工作負載，您需要知道大型主機的功能相較於 Azure 的如何。 IBM z14 主機為基礎，由 Larry Mead AzureCAT 的本指南將探索如何在 Azure 上取得可比較的結果。 可大幅擴充的計算和儲存體資源，在 Azure 上提供立即的優點，執行大型主機工作負載的組織。
+若要在 Microsoft Azure 上執行大型主機工作負載，您需要知道您的主機功能與 Azure 的比較方式。 根據 IBM z14 大型主機，本指南 by Larry Mead of AzureCAT 會探索如何在 Azure 上取得可比較的結果。 Azure 上可大幅調整的計算和儲存體資源，可為執行大型主機工作負載的組織提供立即的優勢。
 
-### <a name="microsoft-azure-government-cloud-for-mainframe-applicationshttpsazuremicrosoftcomresourcesmicrosoft-azure-government-cloud-for-mainframe-applications"></a>[大型電腦應用程式的 Microsoft Azure Government 雲端](https://azure.microsoft.com/resources/microsoft-azure-government-cloud-for-mainframe-applications/)
+### <a name="microsoft-azure-government-cloud-for-mainframe-applications"></a>[適用于大型主機應用程式的 Microsoft Azure Government 雲端](https://azure.microsoft.com/resources/microsoft-azure-government-cloud-for-mainframe-applications/)
 
-規劃應用程式移轉是加入值，甚至建立良好的大型主機工作負載的靈活度的最佳時機。 在本快速指南，Larry Mead AzureCAT 的會顯示美國政府機關和合作夥伴可以如何使用 Azure Government 大型電腦應用程式，並移轉可能不如您想像的困難。 Azure 政府機構提供更符合成本效益且敏捷式軟體開發環境中的大型主機的優點。 此外，Azure Government 所獲得的操作 (P-ATO) 取得暫時性的授權單位 FedRAMP 高影響。
+規劃應用程式遷移是將價值和靈活性新增至甚至是良好建立的大型主機工作負載的理想時機。 在本快速指南中，Larry Mead of AzureCAT 會示範美國政府機關和其合作夥伴如何使用 Azure Government 的大型主機應用程式，而不像您想像的那麼容易遷移。 Azure Government 在更符合成本效益且更靈活的環境中，提供大型主機的優勢。 此外，Azure Government 獲得暫時的授權來操作（P-ATO），以 FedRAMP 高影響力。
 
-### <a name="deploy-ibm-db2-purescale-on-azurehttpsazuremicrosoftcomresourcesdeploy-ibm-db2-purescale-on-azure"></a>[在 Azure 上部署 IBM DB2 pureScale](https://azure.microsoft.com/resources/deploy-ibm-db2-purescale-on-azure/)
+### <a name="deploy-ibm-db2-purescale-on-azure"></a>[在 Azure 上部署 IBM DB2 pureScale](https://azure.microsoft.com/resources/deploy-ibm-db2-purescale-on-azure/)
 
-了解我們的經驗，與最近重新裝載其在 Azure 上的 IBM DB2 環境的企業。 本指南是有 AzureCAT 和 DMJ 小組成員所撰寫的：Larry Mead、 Benjamin Guinebertière、 Alessandro Vozza 和 Jonathon Frost。 它們說明它們在這個移轉期間所採取的步驟。 IBM Db2 pureScale 小組的成員來檢閱小組的發現。 安裝指令碼，可在 GitHub 上取得為基礎的架構，小組會使用一般的中型 OLTP 工作負載。
+從我們在 Azure 上最近重新裝載其 IBM DB2 環境的企業經驗中學習。 本指南是由 AzureCAT 和 DMJ 小組成員所撰寫： Larry Mead、Benjamin Guinebertière、Alessandro Vozza 和 Jonathon Frost。 它們會說明在此遷移期間所採取的步驟。 IBM Db2 pureScale 團隊的成員已審查其發現。 GitHub 上提供的安裝腳本是以小組用於一般中型 OLTP 工作負載的架構為基礎。
 
-### <a name="install-tmaxsoft-openframe-on-azurehttpsazuremicrosoftcomresourcesinstall-tmaxsoft-openframe-on-azure"></a>[在 Azure 上安裝 TmaxSoft OpenFrame](https://azure.microsoft.com/resources/install-tmaxsoft-openframe-on-azure/)
+### <a name="install-tmaxsoft-openframe-on-azure"></a>[在 Azure 上安裝 TmaxSoft OpenFrame](https://azure.microsoft.com/resources/install-tmaxsoft-openframe-on-azure/)
 
-現代化您的基礎結構在雲端規模。 TmaxSoft OpenFrame 可方便在您現有的大型主機資產原形移轉它們至 Azure。 本文中，Steve 讀取 (AzureCAT)] 和 [Manoj Aerroju (TmaxSoft) 說明如何設定 OpenFrame 環境適用於開發、 示範、 測試和生產環境工作負載。
+以雲端規模現代化您的基礎結構。 TmaxSoft OpenFrame 可讓您輕鬆地提升現有的大型主機資產，並將其轉移至 Azure。 在本文中，Steve Read （AzureCAT）和 Manoj Aerroju （TmaxSoft）說明如何設定適用于開發、示範、測試和生產工作負載的 OpenFrame 環境。
 
-### <a name="ibm-mainframe-to-microsoft-azure-reference-architecturehttpswwwastadiacomwhitepaperibm-mainframe-to-microsoft-azure"></a>[IBM 大型主機，以 Microsoft Azure 參考架構](https://www.astadia.com/whitepaper/ibm-mainframe-to-microsoft-azure)
+### <a name="ibm-mainframe-to-microsoft-azure-reference-architecture"></a>[IBM 大型主機來 Microsoft Azure 參考架構](https://www.astadia.com/whitepaper/ibm-mainframe-to-microsoft-azure)
 
-這份白皮書會反映 Astadia 的超過 25 年的大型主機平台現代化專業知識。 這些主題會說明的優點和挑戰的現代化的成果。 本指南提供 IBM 大型主機和 IBM 大型主機-Azure 參考架構的概觀。 它也提供了解 Astadia 成功方法。
+這份白皮書反映了 Astadia 超過25年的大型主機平臺現代化專長。 其中說明現代化工作的優點和挑戰。 本指南提供 IBM 大型主機和 IBM 大型主機對 Azure 參考架構的總覽。 它也會提供 Astadia 的成功方法。
 
-### <a name="deploying-mainframe-applications-to-microsoft-azurehttpswwwmicrofocuscommediawhite-paperdeployingmainframeapplicationstomicrosoftazurewppdf"></a>[部署至 Microsoft Azure 的大型主機應用程式](https://www.microfocus.com/media/white-paper/deploying_mainframe_applications_to_microsoft_azure_wp.pdf)
+### <a name="deploying-mainframe-applications-to-microsoft-azure"></a>[將大型主機應用程式部署到 Microsoft Azure](https://www.microfocus.com/media/white-paper/deploying_mainframe_applications_to_microsoft_azure_wp.pdf)
 
-Micro Focus 解決方案可讓您的專屬的大型主機硬體和軟體的條件約束。 本指南中，Micro Focus 會說明如何部署您的 COBOL 和 PL / 我改為執行 IBM 大型主機的雲端應用程式。
+從邊緣的解決方案，您可以自由地從專屬的大型主機硬體和軟體的限制來取得。 在本指南中，微焦點說明如何將在 IBM 大型主機上執行的 COBOL 和 PL/I 應用程式部署至雲端。
 
-### <a name="breathe-new-life-into-mainframeshttpswwwinfosyscommodernizationpagesbreathe-new-life-mainframesaspx"></a>[大型主機到石新生命](https://www.infosys.com/modernization/Pages/breathe-new-life-mainframes.aspx)
+### <a name="breathe-new-life-into-mainframes"></a>[將新生命呼吸到大型主機](https://www.infosys.com/services/modernization/breathe-new-life-mainframes.html)
 
- 大型主機會維護企業越來越困難。 由 Infosys 與 Microsoft 的這份白皮書會反白顯示成功的大型主機移轉好用的策略。 使用案例和範例將說明選項。
+ 大型主機日益難以維護企業。 這份由 Infosys 和 Microsoft 所提供的白皮書，著重于成功進行大型主機遷移的獲獎策略。 使用案例和範例說明選項。

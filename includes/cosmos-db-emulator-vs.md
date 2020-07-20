@@ -4,12 +4,11 @@ ms.service: cosmos-db
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: sngun
-ms.openlocfilehash: 044bb228aa8f5ca875143f42f26ef08eccf06692
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: e5d0d9ec2bf0c6b2ed8d6f2e2c8730e6ba52d606
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51571899"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "71326908"
 ---
-如果尚未安裝 Visual Studio 2017，您可以下載並使用**免費的** 
- [Visual Studio 2017 Community 版本](https://www.visualstudio.com/downloads/)。 務必在 Visual Studio 設定期間啟用 **Azure 開發**。
+下載並使用免費的 [Visual Studio 2019 Community 版本](https://www.visualstudio.com/downloads/)。 請確定您在 Visual Studio 設定期間啟用了 **Azure 開發**工作負載。

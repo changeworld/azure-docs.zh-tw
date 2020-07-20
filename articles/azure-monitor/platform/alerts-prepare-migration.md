@@ -1,87 +1,88 @@
 ---
-title: 藉由更新您的 logic apps 和 runbook 來準備 Azure 監視器傳統警示移轉
-description: 了解如何修改您的 webhook，logic apps 和自願性移轉準備工作的 runbook。
-author: snehithm
-ms.service: azure-monitor
+title: 更新邏輯應用程式 & runbook 以進行警示遷移
+description: 瞭解如何修改您的 webhook、邏輯應用程式和 runbook，以準備進行自發的遷移。
+author: yanivlavi
+ms.author: yalavi
 ms.topic: conceptual
 ms.date: 03/19/2018
-ms.author: snmuvva
 ms.subservice: alerts
-ms.openlocfilehash: 347c89991cbb4d28b46eafff0a783148793ad2f7
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
-ms.translationtype: MT
+ms.openlocfilehash: f31fcc07bed0287c2f86ca4fe52bf02a2a1d2a71
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64727495"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "81114414"
 ---
-# <a name="prepare-your-logic-apps-and-runbooks-for-migration-of-classic-alert-rules"></a>適用於傳統的警示規則的移轉準備您的 logic apps 和 runbook
+# <a name="prepare-your-logic-apps-and-runbooks-for-migration-of-classic-alert-rules"></a>準備邏輯應用程式和 Runbook 以便移轉傳統警示規則
 
-作為[先前所宣布](monitoring-classic-retirement.md)，在 Azure 監視器傳統警示會在 2019 年 7 月即將淘汰。 客戶使用傳統的警示規則的人員，而且想要自行觸發移轉至 Azure 入口網站中使用移轉工具。
+如[先前所宣佈](monitoring-classic-retirement.md)，Azure 監視器中的傳統警示將于2019年9月淘汰（原本是在2019年7月）。 Azure 入口網站提供遷移工具給使用傳統警示規則的客戶，以及想要自行觸發遷移的使用者。
 
-如果您選擇主動將傳統的警示規則移轉至新的警示規則，請注意，有兩個系統之間的一些差異。 這篇文章會說明這些差異，以及如何準備變更。
+> [!NOTE]
+> 由於遷移工具的推出延遲，傳統警示遷移的淘汰日期已從2019年6月30日最初宣佈的日期延長到2019年8月31日。
+
+如果您選擇主動將傳統警示規則遷移至新的警示規則，請注意這兩個系統之間有一些差異。 本文說明這些差異，以及您可以如何為變更做準備。
 
 ## <a name="api-changes"></a>API 變更
 
-建立及管理傳統的警示規則的 Api (`microsoft.insights/alertrules`) 不同的 Api，建立和管理新的計量警示 (`microsoft.insights/metricalerts`)。 如果您以程式設計方式建立，並立即管理傳統的警示規則，請更新您的部署指令碼，來使用新的 Api。
+建立和管理傳統警示規則（）的 Api 與 `microsoft.insights/alertrules` 建立和管理新計量警示（）的 api 不同 `microsoft.insights/metricalerts` 。 如果您目前以程式設計方式建立和管理傳統警示規則，請更新部署腳本以使用新的 Api。
 
-下表是針對傳統和新警示之程式設計介面的參考：
+下表是傳統和新警示的程式設計介面參考：
 
 |         |傳統警示  |新的計量警示 |
 |---------|---------|---------|
-|REST API     | [microsoft.insights/alertrules](https://docs.microsoft.com/rest/api/monitor/alertrules)         | [microsoft.insights/metricalerts](https://docs.microsoft.com/rest/api/monitor/metricalerts)       |
-|Azure CLI     | [az monitor alert](https://docs.microsoft.com/cli/azure/monitor/alert?view=azure-cli-latest)        | [az monitor metrics alert](https://docs.microsoft.com/cli/azure/monitor/metrics/alert?view=azure-cli-latest)        |
-|PowerShell      | [參考](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrule)       |      |
-| Azure Resource Manager 範本 | [傳統警示](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-enable-template)|[適用於新的計量警示](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates)|
+|REST API     | [microsoft insights/alertrules](https://docs.microsoft.com/rest/api/monitor/alertrules)         | [microsoft.insights/metricalerts](https://docs.microsoft.com/rest/api/monitor/metricalerts)       |
+|Azure CLI     | [az monitor alert](https://docs.microsoft.com/cli/azure/monitor/alert?view=azure-cli-latest)        | [az monitor 計量警示](https://docs.microsoft.com/cli/azure/monitor/metrics/alert?view=azure-cli-latest)        |
+|PowerShell      | [參考](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrule)       |  [參考](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrulev2)    |
+| Azure Resource Manager 範本 | [針對傳統警示](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-enable-template)|[針對新的計量警示](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates)|
 
 ## <a name="notification-payload-changes"></a>通知承載變更
 
-通知承載格式是之間稍有不同[傳統警示規則](alerts-webhooks.md)並[新的計量警示](alerts-metric-near-real-time.md#payload-schema)。 如果您有任何 webhook、 邏輯應用程式或由傳統的警示規則所觸發的 runbook 動作，您必須更新這些通知端點，以接受新的計量警示承載格式。
+在[傳統警示規則](alerts-webhooks.md)和新的計量[警示](alerts-metric-near-real-time.md#payload-schema)之間，通知承載格式稍有不同。 如果您有傳統警示規則所觸發的任何 webhook、邏輯應用程式或 runbook 動作，則必須更新這些通知端點，以接受新計量警示的承載格式。
 
-您可以使用下表，webhook 承載中的欄位對應的傳統的格式為新的格式：
+使用下表將 webhook 承載欄位從傳統格式對應到新的格式：
 
 |  |傳統警示  |新的計量警示 |
 |---------|---------|---------|
-|啟動或已解決的警示？    | **status**       | **data.status** |
-|警示的內容資訊     | **context**        | **data.context**        |
-|在警示已啟用，或已解決的時間戳記     | **context.timestamp**       | **data.context.timestamp**        |
-| 警示規則識別碼 | **context.id** | **data.context.id** |
-| 警示規則名稱 | **context.name** | **data.context.name** |
-| 警示規則的描述 | **context.description** | **data.context.description** |
-| 警示規則條件 | **context.condition** | **data.context.condition** |
-| 度量名稱 | **context.condition.metricName** | **data.context.condition.allOf[0].metricName** |
-| 時間彙總 （如何度量會彙總評估視窗）| **data.context.condition.timeAggregation** | **data.context.condition.timeAggregation** |
-| 評估期 | **context.condition.windowSize** | **data.context.condition.windowSize** |
-| 運算子 （如何彙總的度量值比較根據臨界值） | **context.condition.operator** | **data.context.condition.operator** |
-| 閾值 | **context.condition.threshold** | **data.context.condition.allOf[0].threshold** |
-| 度量值 | **context.condition.metricValue** | **data.context.condition.allOf[0].metricValue** |
-| 订阅 ID | **context.subscriptionId** | **data.context.subscriptionId** |
-| 受影響資源的資源群組 | **context.resourceGroup** | **data.context.resourceGroup** |
-| 受影響資源的名稱 | **context.resourceName** | **data.context.resourceName** |
-| 受影響的資源類型 | **context.resourceType** | **data.context.resourceType** |
-| 受影響資源的資源識別碼 | **context.resourceId** | **data.context.resourceId** |
-| 入口網站資源摘要頁面的直接連結 | **context.portalLink** | **data.context.portalLink** |
-| 要傳遞至 webhook 或邏輯應用程式的自訂承載欄位 | **properties** | **data.properties** |
+|警示是否已啟用或已解決？    | **status**       | **資料。狀態** |
+|警示的相關內容資訊     | **內容**        | **資料。內容**        |
+|啟用或解決警示的時間戳記     | **coNtext。時間戳記**       | **資料. 內容. 時間戳記**        |
+| 警示規則識別碼 | **coNtext.id** | **data.coNtext.id** |
+| 警示規則名稱 | **coNtext.name** | **data.coNtext.name** |
+| 警示規則的描述 | **coNtext。描述** | **資料. 內容。描述** |
+| 警示規則條件 | **coNtext。條件** | **data. coNtext。條件** |
+| 度量名稱 | **metricName** | **allOf [0]. metricName** |
+| 時間匯總（度量在評估視窗中的匯總方式）| **timeAggregation** | **timeAggregation** |
+| 評估期間 | **windowSize** | **資料。 windowSize** |
+| 運算子（匯總計量值如何與閾值比較） | **coNtext。條件. 運算子** | **data. condition. 運算子** |
+| 閾值 | **內容。條件. 閾值** | **allOf [0]. 閾值** |
+| 度量值 | **metricValue** | **allOf [0]. metricValue** |
+| 訂用帳戶識別碼 | **內容。 subscriptionId** | **data. subscriptionId** |
+| 受影響資源的資源群組 | **resourceGroup** | **資料. resourceGroup** |
+| 受影響資源的名稱 | **CoNtext.resourcename** | **data. CoNtext.resourcename** |
+| 受影響資源的類型 | **內容 resourceType** | **資料。 resourceType** |
+| 受影響資源的資源識別碼 | **內容。 resourceId** | **資料。 resourceId** |
+| 入口網站資源摘要頁面的直接連結 | **portalLink** | **portalLink** |
+| 要傳遞至 webhook 或邏輯應用程式的自訂裝載欄位 | **properties** | **資料。屬性** |
 
-如您所見，很類似，承載。 下一節提供：
+如您所見，裝載很類似。 下一節提供：
 
-- 修改邏輯應用程式，以使用新格式的詳細資料。
-- 剖析新警示的通知承載的 runbook 範例。
+- 有關修改邏輯應用程式以使用新格式的詳細資料。
+- 針對新警示剖析通知承載的 runbook 範例。
 
-## <a name="modify-a-logic-app-to-receive-a-metric-alert-notification"></a>修改邏輯應用程式收到計量的警示通知
+## <a name="modify-a-logic-app-to-receive-a-metric-alert-notification"></a>修改邏輯應用程式以接收計量警示通知
 
-如果您使用 logic apps 與傳統的警示，您必須修改您的邏輯應用程式程式碼剖析的新計量警示承載。 請遵循下列步驟：
+如果您使用具有傳統警示的邏輯應用程式，您必須修改邏輯應用程式代碼來剖析新的計量警示承載。 請遵循下列步驟：
 
 1. 建立新的邏輯應用程式。
 
-1. 使用 「 Azure 監視器-計量警示處理常式 」 的範本。 此範本有**HTTP 要求**具有適當的結構描述定義觸發程序。
+1. 使用「Azure 監視器計量警示處理常式」範本。 此範本具有已定義適當架構的**HTTP 要求**觸發程式。
 
-    ![邏輯應用程式範本](media/alerts-migration/logic-app-template.png "計量的警示範本")
+    ![邏輯-應用程式範本](media/alerts-migration/logic-app-template.png "度量警示範本")
 
-1. 新增動作，來裝載您的處理邏輯。
+1. 新增動作來裝載您的處理邏輯。
 
-## <a name="use-an-automation-runbook-that-receives-a-metric-alert-notification"></a>使用自動化 runbook 會接收計量的警示通知
+## <a name="use-an-automation-runbook-that-receives-a-metric-alert-notification"></a>使用可接收計量警示通知的自動化 runbook
 
-下列範例會提供在您的 runbook 中使用的 PowerShell 程式碼。 此程式碼可以剖析傳統計量警示規則和新的計量警示規則的裝載。
+下列範例會提供要在 runbook 中使用的 PowerShell 程式碼。 此程式碼可以剖析傳統計量警示規則和新計量警示規則的裝載。
 
 ```PowerShell
 ## Example PowerShell code to use in a runbook to handle parsing of both classic and new metric alerts.
@@ -148,17 +149,17 @@ else {
 
 ```
 
-停止虛擬機器時，會觸發警示的 runbook 的完整範例，請參閱 < [Azure 自動化文件](https://docs.microsoft.com/azure/automation/automation-create-alert-triggered-runbook)。
+如需在觸發警示時停止虛擬機器之 runbook 的完整範例，請參閱[Azure 自動化檔](https://docs.microsoft.com/azure/automation/automation-create-alert-triggered-runbook)。
 
-## <a name="partner-integration-via-webhooks"></a>夥伴整合，透過 webhook
+## <a name="partner-integration-via-webhooks"></a>透過 webhook 的合作夥伴整合
 
-大部分[合作夥伴與傳統警示整合](https://docs.microsoft.com/azure/azure-monitor/platform/partners)已經支援透過其整合的新版計量警示。 已經在新的計量警示使用的已知的整合如下：
+[我們與傳統警示整合的大部分合作夥伴，都](https://docs.microsoft.com/azure/azure-monitor/platform/partners)已經透過其整合來支援較新的計量警示。 已使用新計量警示的已知整合如下：
 
 - [PagerDuty](https://www.pagerduty.com/docs/guides/azure-integration-guide/)
 - [OpsGenie](https://docs.opsgenie.com/docs/microsoft-azure-integration)
 - [Signl4](https://www.signl4.com/blog/mobile-alert-notifications-azure-monitor/)
 
-如果您在此使用未列出的夥伴整合，確認與整合提供者可與新的計量警示的整合。
+如果您使用此處未列出的合作夥伴整合，請向整合提供者確認整合與新的計量警示搭配運作。
 
 ## <a name="next-steps"></a>後續步驟
 

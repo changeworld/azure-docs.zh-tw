@@ -15,11 +15,11 @@ ms.date: 08/26/2018
 ms.author: andret
 ms.custom: include file
 ms.openlocfilehash: 72c93412693ce06f681c40466b059560ac482fd8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60250785"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67174153"
 ---
 |   |
 |---|

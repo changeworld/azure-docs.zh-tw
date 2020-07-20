@@ -1,6 +1,6 @@
 ---
-title: 設計用於查詢的 Azure 儲存體資料表 | Microsoft Docs
-description: 設計 Azure 表格儲存體中用於查詢的資料表。
+title: 設計適用于查詢的 Azure 資料表儲存體 |Microsoft Docs
+description: 針對 Azure 資料表儲存體中的查詢設計資料表。
 services: storage
 author: MarkMcGeeAtAquent
 ms.service: storage
@@ -8,12 +8,11 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 97373f6f0138d3ed8028ed4327b7e6cf90ad76a7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 41a588ddc0c1be8014a84d8fe181013d8566f68d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60325862"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75457637"
 ---
 # <a name="design-for-querying"></a>查詢的設計
 資料表服務方案可以是讀取密集、寫入密集或兩者混合的方案。 本文主要說明您在設計表格服務以有效地支援讀取作業時應謹記在心的事項。 一般而言，支援有效讀取作業的設計，也可兼顧寫入作業的效率。 不過，設計支援寫入作業時還有其他考量必須牢記在心，這將在[資料修改的設計](table-storage-design-for-modification.md)一文中說明這些考量。
@@ -35,13 +34,13 @@ ms.locfileid: "60325862"
 ## <a name="how-your-choice-of-partitionkey-and-rowkey-impacts-query-performance"></a>您選擇的 PartitionKey 和 RowKey 對查詢效能有何影響
 下列範例假設表格服務會以下列結構儲存員工實體 (為求簡潔，大部分的範例皆省略 **Timestamp** 屬性)：  
 
-| *資料行名稱* | *資料類型* |
+| *資料行名稱* | *Data type* |
 | --- | --- |
 | **PartitionKey** (部門名稱) |String |
 | **RowKey** (員工識別碼) |String |
 | **名字** |String |
 | **姓氏** |String |
-| **年齡** |整數  |
+| **Age** |整數 |
 | **EmailAddress** |String |
 
 ＜[Azure 表格儲存體概觀](table-storage-overview.md) ＞一文將說明某些對查詢設計有直接影響的重要 Azure 表格服務功能。 這些功能產生了設計資料表服務查詢的一般指導方針。 請注意，下列範例中使用的篩選語法來自於表格服務 REST API，如需詳細資訊，請參閱 [查詢實體](https://docs.microsoft.com/rest/api/storageservices/Query-Entities)。  
@@ -52,7 +51,7 @@ ms.locfileid: "60325862"
 * ***資料表掃描***不包含 **PartitionKey**，且效率極差，因為它會依序在所有組成資料表的分割中搜尋是否有任何相符的實體。 無論您的篩選是否使用 **RowKey**，它都會執行資料表掃描。 例如：$filter=LastName eq 'Jones'  
 * 傳回多個實體的查詢，在傳回時會以 **PartitionKey** 和 **RowKey** 順序排序。 若要避免重新排序用戶端中的實體，請選擇定義最常見的排序次序的 **RowKey** 。  
 
-請注意，使用 "**or**" 指定以 **RowKey** 值為基礎的篩選條件，會產生資料分割掃描且不被當作範圍查詢。 因此，应避免使用筛选器 （如查询：$filter=PartitionKey eq 'Sales' and (RowKey eq '121' or RowKey eq '322')  
+請注意，使用 "**or**" 指定以 **RowKey** 值為基礎的篩選條件，會產生資料分割掃描且不被當作範圍查詢。 因此，您應該避免會使用下列篩選條件的搜尋：例如 $filter=PartitionKey eq 'Sales' and (RowKey eq '121' or RowKey eq '322')  
 
 如需使用儲存體用戶端程式庫執行有效率查詢的用戶端程式碼範例，請參閱：  
 
@@ -83,7 +82,7 @@ ms.locfileid: "60325862"
 
 許多設計必須符合需求，才能讓您根據多個準則查閱實體。 比方說，根據電子郵件、員工識別碼或姓氏找出員工實體。 [資料表設計模式](table-storage-design-patterns.md) 中所述的模式可因應這些類型的需求，並說明處理表格服務不提供次要索引的方式：  
 
-* [內部資料分割次要索引模式](table-storage-design-patterns.md#intra-partition-secondary-index-pattern) - 為每個實體儲存多個複本且使用不同 **RowKey** 值 (在相同的資料分割內)，透過使用不同的 **RowKey** 值，就能快速且有效率的查閱和替代排序次序。  
+* [內部資料分割次要索引模式](table-storage-design-patterns.md#intra-partition-secondary-index-pattern)-使用不同的**RowKey**值（在相同的資料分割中）儲存每個實體的多個複本，以使用不同的**RowKey**值來啟用快速且有效率的查閱和替代排序次序。  
 * [間資料分割次要索引模式](table-storage-design-patterns.md#inter-partition-secondary-index-pattern) - 在個別資料分割或個別資料表中為每個實體儲存多個複本且使用不同 **RowKey** 值，透過使用不同的 **RowKey** 值，就能快速有效率地查閱和替代排序次序。  
 * [索引實體模式](table-storage-design-patterns.md#index-entities-pattern) - 維護索引實體，啟用有效的搜尋以傳回實體清單。  
 

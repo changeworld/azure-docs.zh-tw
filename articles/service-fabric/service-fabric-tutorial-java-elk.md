@@ -1,26 +1,17 @@
 ---
-title: 在 Azure 中使用 ELK 監視 Service Fabric 中的應用程式 | Microsoft Docs
+title: 在 Azure 中使用 ELK 監視 Service Fabric 中的應用程式
 description: 在本教學課程，了解如何設定 ELK 和監視 Service Fabric 應用程式。
-services: service-fabric
-documentationcenter: java
 author: suhuruli
-manager: msfussell
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 689207339db0250d42fc64c33f43c42c18317d41
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: b283982e11449d234da966f15b86cc5b638a026c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58313000"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "75376648"
 ---
 # <a name="tutorial-monitor-your-service-fabric-applications-using-elk"></a>教學課程：使用 ELK 監視 Service Fabric 應用程式
 
@@ -40,7 +31,7 @@ ms.locfileid: "58313000"
 > * 設定應用程式的監視和診斷
 > * [設定 CI/CD](service-fabric-tutorial-java-jenkins.md)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 開始進行本教學課程之前：
 
@@ -59,11 +50,11 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart
 
 ## <a name="create-an-elk-server-in-azure"></a>在 Azure 中建立 ELK 伺服器
 
-您可以使用為此教學課程預先設定的 ELK 環境，而如果您已經有此環境，請跳至「設定 Logstash」一節。 不過，如果您沒有此環境，下列步驟會在 Azure 中建立此環境。
+您可以使用為此教學課程預先設定的 ELK 環境，而如果您已經有此環境，請跳至「設定 Logstash」  一節。 不過，如果您沒有此環境，下列步驟會在 Azure 中建立此環境。
 
 1. 在 Azure 中建立由 [Bitnami](https://ms.portal.azure.com/#create/bitnami.elk4-6) 認證的 ELK。 基於本教學課程的目的，建立此伺服器時，不需遵循任何特定的規格。
 
-2. 在 Azure 入口網站中移至您的資源，並進入 [支援 + 疑難排解] 區段下的 [開機診斷] 索引標籤。 接下來，按一下 [序列記錄] 索引標籤。
+2. 在 Azure 入口網站中移至您的資源，並進入 [支援 + 疑難排解] 區段下的 [開機診斷] 索引標籤。 接下來，按一下 [序列記錄]  索引標籤。
 
     ![開機診斷](./media/service-fabric-tutorial-java-elk/bootdiagnostics.png)
 3. 您必須在密碼的記錄上執行搜尋，才能存取 Kibana 執行個體。 這類似於下面程式碼片段：
@@ -149,7 +140,7 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart
     curl 'localhost:9200/_cat/indices?v'
     ```
 
-8. 存取 Kibana 儀表板 (位於 **http:\//SERVER-IP**) 並輸入 Kibana 的使用者名稱和密碼。 如果您在 Azure 中使用 ELK 映像，則預設使用者名稱為 'user'，而密碼則取自 [開機診斷]。
+8. 存取 Kibana 儀表板 (位於 **http:\//SERVER-IP**) 並輸入 Kibana 的使用者名稱和密碼。 如果您在 Azure 中使用 ELK 映像，則預設使用者名稱為 'user'，而密碼則取自 [開機診斷]  。
 
     ![Kibana](./media/service-fabric-tutorial-java-elk/kibana.png)
 

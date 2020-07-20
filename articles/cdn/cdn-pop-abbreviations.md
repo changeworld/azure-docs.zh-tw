@@ -3,23 +3,22 @@ title: 依縮寫排列的 Azure CDN POP 位置 | Microsoft Docs
 description: 本文會針對「來自 Verizon 的 Azure CDN」列出 Azure CDN POP 位置，並依 POP 縮寫排序。
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2018
-ms.author: magattus
-ms.openlocfilehash: 3de7f36228bba4cfc84e17dd056683a1a76df684
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
-ms.translationtype: MT
+ms.author: allensu
+ms.openlocfilehash: a5f3f8dbb83b23fc16fd1225e5a9cbeab16b9576
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64869621"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "81260236"
 ---
 # <a name="azure-cdn-pop-locations-by-abbreviation"></a>依縮寫排列的 Azure CDN POP 位置
 > [!div class="op_single_selector"]
@@ -41,7 +40,7 @@ AMS | 阿姆斯特丹，荷蘭 | 歐洲
 ARN | 瑞典斯德哥爾摩 | 歐洲
 ATL | 美國喬治亞州亞特蘭大 | 北美洲：美國東岸
 BAQ | 巴蘭幾亞，哥倫比亞 | 拉丁美洲
-BLR | Bengaluru （班加羅爾） 印度 | 亞洲
+BLR | 班加羅爾 (邦加羅爾)，印度 | 亞洲
 BNJ | 美國紐澤西州紐華克 | 北美洲：美國東岸
 BOS | 美國麻塞諸塞州波士頓 | 北美洲：美國東岸
 BTH | 巴淡島，印尼 | 亞洲

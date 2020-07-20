@@ -1,38 +1,37 @@
 ---
 title: 快速入門：使用 Bing 新聞搜尋 REST API 和 Go 來取得新聞
 titleSuffix: Azure Cognitive Services
-description: 了解如何從 Bing 新聞搜尋 API 取得新聞搜尋結果。
+description: 本快速入門使用 Go 語言來呼叫 Bing 新聞搜尋 API。 搜尋結果中會包含查詢字串所識別新聞來源的名稱和 URL。
 services: cognitive-services
-author: mikedodaro
-manager: rosh
+author: aahill
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 2/21/2019
-ms.author: rosh
-ms.openlocfilehash: 295c32c1e14dc6a69a37040f92d27a6862359228
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.date: 05/22/2020
+ms.author: aahi
+ms.openlocfilehash: e18605b75e4fcfcd8f2793e06801c309f9f23965
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57545025"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83869265"
 ---
 # <a name="quickstart-get-news-results-using-the-bing-news-search-rest-api-and-go"></a>快速入門：使用 Bing 新聞搜尋 REST API 和 Go 來取得新聞搜尋結果
 
 本快速入門使用 Go 語言來呼叫 Bing 新聞搜尋 API。 搜尋結果中會包含查詢字串所識別新聞來源的名稱和 URL。
 
-## <a name="prerequisites"></a>必要條件
-* 安裝 [Go 二進位檔](https://golang.org/dl/)
-* 安裝 go-spew 程式庫以便其優異的印表機可以顯示搜尋結果
-    * 安裝此程式庫：`$ go get -u https://github.com/davecgh/go-spew`
+## <a name="prerequisites"></a>Prerequisites
+* 安裝 [Go 二進位檔](https://golang.org/dl/)。
+* 安裝 go-spew 程式庫以使用深度美化印表機顯示結果。 使用此命令來安裝程式庫︰`$ go get -u https://github.com/davecgh/go-spew`。
 
-[!INCLUDE [bing-web-search-quickstart-signup](../../../includes/bing-web-search-quickstart-signup.md)]
+[!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
 ## <a name="create-a-project-and-import-libraries"></a>建立專案並匯入程式庫
 
-在 IDE 或編輯器中建立新的 Go 專案。 然後，匯入 `net/http` 以提出要求、`ioutil` 以讀取回應，以及 `encoding/json` 以處理結果的 JSON 文字。 需要有 go-spew 程式庫才能剖析 JSON。 
+在 IDE 或編輯器中建立新的 Go 專案。 然後，匯入 `net/http` 以提出要求、`ioutil` 以讀取回應，以及 `encoding/json` 以處理結果的 JSON 文字，還有 `go-spew` 程式庫以剖析 JSON 結果。 
 
-```
+```go
 package main
 
 import (
@@ -45,11 +44,11 @@ import (
 
 ```
 
-## <a name="create-a-struct-to-format-the-news-search-results"></a>建立結構以格式化新聞搜尋結果
+## <a name="create-a-struct-to-format-the-news-search-results"></a>建立結構以將新聞搜尋結果格式化
 
-`NewsAnswer` 結構會將回應中所提供的資料格式化。 回應 JSON 會有多個層級且相當複雜。  下列實作會涵蓋基本概念。
+`NewsAnswer` 結構會將回應 JSON 中提供的資料格式化，這牽涉到多層層且相當複雜。 下列實作會涵蓋基本概念：
 
-```
+```go
 // This struct formats the answer provided by the Bing News Search API.
 type NewsAnswer struct {
     ReadLink       string `json: "readLink"` 
@@ -73,13 +72,13 @@ type NewsAnswer struct {
                 Width   int  `json: "width"`
                 Height  int   `json: "height"`
             } `json: "thumbnail"` 
+            } `json: "image"` 
             Description  string  `json: "description"`
             Provider  []struct   {
                 Type   string    `json: "_type"`
                 Name  string     `json: "name"`
             } `json: "provider"` 
             DatePublished   string   `json: "datePublished"`
-        } `json: "image"` 
     } `json: "value"` 
 }
 
@@ -87,9 +86,9 @@ type NewsAnswer struct {
 
 ## <a name="declare-the-main-function-and-define-variables"></a>宣告 main 函式並定義變數  
 
-下列程式碼會宣告主要函式，並指派必要的變數。 請確認端點正確，並將 `token` 值換成您的 Azure 帳戶中有效的訂用帳戶金鑰。
+下列程式碼會宣告主要函式，並指派必要的變數。 請確認端點正確，並將 `token` 值換成您的 Azure 帳戶中有效的訂用帳戶金鑰。 您可以使用下列程式碼中的全域端點，或使用 Azure 入口網站中針對您的資源所顯示的[自訂子網域](../../cognitive-services/cognitive-services-custom-subdomains.md)端點。
 
-```
+```go
 func main() {
     // Verify the endpoint URI and replace the token string with a valid subscription key.  
     const endpoint = "https://api.cognitive.microsoft.com/bing/v7.0/news/search"
@@ -108,9 +107,9 @@ func main() {
 
 ## <a name="query-and-header"></a>查詢和標頭
 
-新增查詢字串和存取金鑰標頭
+新增查詢字串和存取金鑰標題。
 
-```
+```go
 // Add the query to the request.  
 param := req.URL.Query()
 param.Add("q", searchTerm)
@@ -121,11 +120,11 @@ req.Header.Add("Ocp-Apim-Subscription-Key", token)
 
 ```
 
-## <a name="get-request"></a>取得要求
+## <a name="get-request"></a>GET 要求
 
-建立用戶端並傳送 Get 要求。 
+建立用戶端並傳送 GET 要求。 
 
-```
+```go
 // Instantiate a client.  
 client := new(http.Client)
 
@@ -139,9 +138,9 @@ if err != nil {
 
 ## <a name="send-the-request"></a>傳送要求
 
-使用 `ioutil` 傳送要求和讀取結果。
+使用 `ioutil` 傳送要求並讀取回應。
 
-```
+```go
 resp, err := client.Do(req)
     if err != nil {
         panic(err)
@@ -151,7 +150,7 @@ resp, err := client.Do(req)
 defer resp.Body.Close()
 
 // Read the results
-resbody, err := ioutil.ReadAll(resp.Body)
+body, err := ioutil.ReadAll(resp.Body)
 if err != nil {
     panic(err)
 }
@@ -160,9 +159,9 @@ if err != nil {
 
 ## <a name="handle-the-response"></a>處理回應
 
-`Unmarshall` 函式會從新聞搜尋 API 所傳回的 JSON 文字中擷取資訊。  然後，您可以使用優異的 `go-spew` 印表機顯示結果中的節點。
+`Unmarshall` 函式會從 Bing 新聞搜尋 API 所傳回的 JSON 文字中擷取資訊。 然後，使用 `go-spew` 美化印表機顯示結果中的節點。
 
-```
+```go
 // Create a new answer object 
 ans := new(NewsAnswer)
 err = json.Unmarshal(body, &ans)
@@ -181,7 +180,7 @@ spew.Dump(result.Name, result.URL)
 
 ## <a name="results"></a>結果
 
-結果中會包含每個結果的名稱和 URL。
+下列輸出包含每個結果的名稱和 URL：
 
 ```
 (string) (len=91) "Cognitive Services Market: Global Industry Analysis and Opportunity Assessment, 2019 - 2025"

@@ -1,57 +1,65 @@
 ---
-title: 預覽 REST API for Azure 搜尋 2019年-05-06-Preview-Azure 搜尋服務
-description: Azure 搜尋服務 REST API 版本 2019年-05-06-Preview 包含客戶管理的加密金鑰等知識的存放區的實驗性功能。
-services: search
+title: 預覽功能清單
+titleSuffix: Azure Cognitive Search
+description: 已發行預覽功能，讓客戶可以在其設計和公用程式上提供意見反應。 本文是目前處於預覽狀態的所有功能的完整清單。
+manager: nitinme
 author: HeidiSteen
-manager: cgronlun
-ms.service: search
-ms.devlang: rest-api
+ms.author: heidist
+ms.service: cognitive-search
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: search
-ms.date: 05/02/2019
-ms.author: HeidiSteen
-ms.custom: seodec2018
-ms.openlocfilehash: 91c58507d8758a65772110afba71354deecd3b12
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.date: 06/30/2020
+ms.openlocfilehash: 0c0f40144fde49d467ca7fb126a19afa6c76660a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024275"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246951"
 ---
-# <a name="azure-search-service-rest-api-version-2019-05-06-preview"></a>Azure 搜尋服務 REST api 版本 2019年-05-06-Preview
-本文描述 Azure 搜尋服務 REST API 的 `api-version=2019-05-06-Preview` 版本，並提供下列尚未提供的實驗性功能。
+# <a name="preview-features-in-azure-cognitive-search"></a>Azure 認知搜尋中的預覽功能
 
-> [!NOTE]
-> 預覽功能適用於目標為收集意見反應的測試和實驗，而且可能會有所變更。 我們強烈建議您避免在實際執行的應用程式中使用預覽 API。
+本文是預覽中所有功能的完整清單。 預覽功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
+轉換為正式運作的預覽功能會從此清單中移除。 如果下列功能未列出，您可以假設它已正式推出。 如需有關正式運作的公告，請參閱[服務更新](https://azure.microsoft.com/updates/?product=search)或[新功能](whats-new.md)。
 
-## <a name="new-in-2019-05-06-preview"></a>2019-05-06-Preview 的新功能
+|特徵&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | 類別 | 描述 | 可用性  |
+|---------|------------------|-------------|---------------|
+| [**Azure Machine Learning (AML) 技能**](cognitive-search-aml-skill.md) | AI 擴充| 一種新的技能類型，可將推斷端點與 Azure Machine Learning 整合。 開始使用[本教學課程](cognitive-search-tutorial-aml-custom-skill.md)。 | 使用[搜尋 REST API 2020-06-30-preview](https://docs.microsoft.com/rest/api/searchservice/)或 2019-05-06-preview。 此外，入口網站中也提供技能集設計，假設認知搜尋和 Azure ML 服務部署在相同的訂用帳戶中。 |
+| [**featuresMode 參數**](https://docs.microsoft.com/rest/api/searchservice/search-documents#featuresmode) | 相關性 (計分)  | 相關性分數擴充以包含詳細資料：每個欄位的相似性分數、每個欄位的頻率，以及相符的唯一標記的每個欄位數目。 您可以使用[自訂評分解決方案](https://github.com/Azure-Samples/search-ranking-tutorial)中的這些資料點。 | 使用[ (REST) 的搜尋檔](https://docs.microsoft.com/rest/api/searchservice/search-documents)，搭配 api 版本 = 2020-06-30-preview 或 2019-05-06-preview 來新增此查詢參數。 |
+| [**受控服務識別**](search-howto-managed-identities-data-sources.md) | 索引子，安全性| 向 Azure Active Directory 註冊搜尋服務，使其成為受信任的服務，然後在 Azure 資料來源上使用 RBAC 許可權，以允許索引子進行唯讀存取。 | 使用入口網站或[建立資料來源 (REST) ](https://docs.microsoft.com/rest/api/searchservice/create-data-source)的 api 版本 = 2020-06-30-preview 或 api 版本 = 2019-05 06-01.5.1-preview 時，請存取這項功能。 |
+| [**Debug 會話**](cognitive-search-debug-session.md) | 入口網站、AI 擴充 (技能集)  | 會話內的技能集編輯器，用來調查和解決技能集的問題。 在 debug 會話期間套用的修正可以儲存至服務中的技能集。 | 僅適用于入口網站，使用 [總覽] 頁面上的 [中頁] 連結來開啟 [debug] 會話。 |
+| [**原生 blob 虛刪除**](search-howto-indexing-azure-blob-storage.md#incremental-indexing-and-deletion-detection) | 索引子，Azure blob| Azure 認知搜尋中的 Azure Blob 儲存體索引子可辨識處於虛刪除狀態的 blob，並在編制索引期間移除對應的搜尋檔。 | 使用 [[建立索引子] (REST) ](https://docs.microsoft.com/rest/api/searchservice/create-indexer)的 api 版本 = 2020-06-30-preview 或 api 版本 = 2019-05 06-01.5.1-preview 來新增此設定。 |
+| [**自訂實體查閱技能**](cognitive-search-skill-custom-entity-lookup.md ) | AI 擴充 (技能集)  | 一種認知技能，可從自訂、使用者定義的單字和片語清單中尋找文字。 使用這份清單，其會以任何相符的實體標記所有文件。 此技能也支援某種程度的模糊比對，可加以套用以尋找類似但不完全精確的相符項目。 | 使用入口網站中的 [技能集編輯器] 或[建立技能集 (REST) ](https://docs.microsoft.com/rest/api/searchservice/create-skillset)的 api 版本 = 2020-06-30-preview 或 api 版本 = 2019-05 06-01.5.1-preview 來參考這項預覽技能。 |
+| [**PII 偵測技能**](cognitive-search-skill-pii-detection.md) | AI 擴充 (技能集)  | 在編制索引期間使用的認知技能，可從輸入文字中解壓縮個人識別資訊，並可讓您選擇以各種方式從該文字遮罩它。 | 使用入口網站中的 [技能集編輯器] 或[建立技能集 (REST) ](https://docs.microsoft.com/rest/api/searchservice/create-skillset)的 api 版本 = 2020-06-30-preview 或 api 版本 = 2019-05 06-01.5.1-preview 來參考這項預覽技能。 |
+| [**累加擴充**](cognitive-search-incremental-indexing-conceptual.md) | 索引子設定| 將快取新增至擴充管線，讓您在目標修改（例如技能集或另一個物件的更新）不會變更內容時重複使用現有的輸出。 快取只適用于技能集所產生的擴充檔。| 使用 [[建立索引子] (REST) ](https://docs.microsoft.com/rest/api/searchservice/create-indexer)的 api 版本 = 2020-06-30-preview 或 api 版本 = 2019-05 06-01.5.1-preview 來新增此設定。 |
+| [**Cosmos DB 索引子： MongoDB API、Gremlin API、Cassandra API**](search-howto-index-cosmosdb.md) | 索引子資料來源 | 針對 Cosmos DB，SQL API 已正式推出，但 MongoDB、Gremlin 和 Cassandra Api 處於預覽狀態。 | 僅適用于 Gremlin 和 Cassandra，請[先註冊](https://aka.ms/azure-cognitive-search/indexer-preview)，才能在後端針對您的訂用帳戶啟用支援。 可以在入口網站中設定 MongoDB 資料來源。 否則，使用[建立資料來源 (REST) ](https://docs.microsoft.com/rest/api/searchservice/create-datasource)的 api 版本 = 2020-06-30-preview 或 api 版本 = 2019-05 06-01.5.1-preview，即可支援這三個 api 的資料來源設定。 |
+|  [**Azure Data Lake Storage Gen2 索引子**](search-howto-index-azure-data-lake-storage.md) | 索引子資料來源 | 從 Data Lake Storage Gen2 編制內容和中繼資料的索引。| 需要[註冊](https://aka.ms/azure-cognitive-search/indexer-preview)，才能在後端針對您的訂用帳戶啟用支援。 使用[建立資料來源 (REST) ](https://docs.microsoft.com/rest/api/searchservice/create-datasource)的 api 版本 = 2020-06-30-preview 或 api 版本 = 2019-05 06-01.5.1-preview 來存取此資料來源。 |
+| [**moreLikeThis**](search-more-like-this.md) | 查詢 | 尋找與特定檔相關的檔。 這個功能已存在舊版預覽中。 | 在搜尋檔中新增此查詢參數[ (REST) ](https://docs.microsoft.com/rest/api/searchservice/search-documents)呼叫與 api 版本 = 2020-06-30-preview、2019-05-06-preview、2016-09-01-preview 或 2017-11-11-preview。 |
 
-[**知識存放區**](knowledge-store-concept-intro.md)是以 AI 為基礎的擴充管線的新的目的地。 除了索引，您現在可以保存在 Azure 儲存體編製索引期間建立的擴展的資料結構。 您可以控制您的技能組合，包括資料的成形，資料是儲存在資料表儲存體或 Blob 儲存體，以及是否有多個檢視中的項目中資料的實體結構。
+## <a name="calling-preview-rest-apis"></a>呼叫預覽 REST Api
 
-[**客戶管理的加密金鑰**](search-security-manage-encryption-keys.md)服務端加密待用也是新的預覽功能。 除了內建-待用加密由 Microsoft 管理，您可以套用額外的所在索引鍵的唯一擁有者的加密。
+Azure 認知搜尋一律會先透過 REST API 預先發行實驗性功能，然後再透過 .NET SDK 的發行前版本進行。
 
-## <a name="other-preview-features"></a>其他預覽功能
+預覽功能適用於測試和實驗，目標為收集有關功能設計和實作的意見反應。 基於這個原因，預覽功能可能會隨時間變更，很可能以中斷回溯相容性的方式進行。 這與 GA 版本中的功能形成鮮明對比，除了小型的回溯相容性修正和增強功能外，這些功能很穩定，不太可能變更。 此外，預覽功能不一定最終都會納入 GA 版本。
 
-舊版預覽中宣布的功能仍處於公開預覽。 如果您使用舊版預覽 api-version 呼叫 API，則可以繼續使用該版本或切換到 `2019-05-06-Preview`，而不會更改預期的行為。
+雖然某些預覽功能可能會在入口網站和 .NET SDK 中提供，但 REST API 一律會有預覽功能。
 
-+ [moreLikeThis 查詢參數](search-more-like-this.md)，可尋找與特定文件相關的文件。 這個功能已存在舊版預覽中。 
++ 針對搜尋作業， [**`2020-06-30-Preview`**](https://docs.microsoft.com/rest/api/searchservice/index-preview) 是目前的預覽版本。
 
++ 針對管理作業， [**`2019-10-01-Preview`**](https://docs.microsoft.com/rest/api/searchmanagement/index-2019-10-01-preview) 是目前的預覽版本。
 
-## <a name="how-to-call-a-preview-api"></a>如何呼叫預覽 API
-
-較舊的預覽仍可運作，但是經過一段時間後會變成過時。 如果您的程式碼呼叫 `api-version=2016-09-01-Preview` 或 `api-version=2017-11-11-Preview`，那些呼叫都仍然有效。 但是，只有最新預覽版本會重新整理改進功能。 
+較舊的預覽仍可運作，但是經過一段時間後會變成過時。 如果您的程式碼呼叫 `api-version=2019-05-06-Preview` 或 `api-version=2016-09-01-Preview` 或 `api-version=2017-11-11-Preview` ，那些呼叫仍然有效。 但是，只有最新預覽版本會重新整理改進功能。 
 
 下列的範例語法說明對預覽 API 版本的呼叫。
 
-    GET https://[service name].search.windows.net/indexes/[index name]/docs?search=*&api-version=2019-05-06-Preview
+```HTTP
+GET https://[service name].search.windows.net/indexes/[index name]/docs?search=*&api-version=2020-06-30-Preview
+```
 
-Azure 搜尋服務可以在多個版本中使用。 如需詳細資訊，請參閱 [API 版本](search-api-versions.md)。
+Azure 認知搜尋服務提供多個版本。 如需詳細資訊，請參閱 [API 版本](search-api-versions.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
-檢閱 Azure 搜尋服務 REST API 參考文件。 如果您遇到問題，說明上尋求[StackOverflow](https://stackoverflow.com/)或是[連絡支援人員](https://azure.microsoft.com/support/community/?product=search)。
+請參閱搜尋 REST 預覽 API 參考檔。 如果您遇到問題，請向我們尋求[Stack Overflow](https://stackoverflow.com/)或[連絡人支援](https://azure.microsoft.com/support/community/?product=search)的協助。
 
 > [!div class="nextstepaction"]
-> [搜尋服務 REST API 參考](https://docs.microsoft.com/rest/api/searchservice/)
+> [搜尋服務 REST API 參考 (預覽) ](https://docs.microsoft.com/rest/api/searchservice/index-preview)

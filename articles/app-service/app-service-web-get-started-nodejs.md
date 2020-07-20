@@ -1,191 +1,173 @@
 ---
-title: 建立 Node.js Web 應用程式 - Azure App Service | Microsoft Docs
-description: 短短幾分鐘內在 Azure App Service Web Apps 中部署第一個 Node.js Hello World。
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: jeconnoc
-editor: ''
+title: 快速入門：建立 Node.js Web 應用程式
+description: 在短短幾分鐘內將您的第一個 Node.js Hello World 部署至 Azure App Service。 您可以使用 Visual Studio Code 進行部署，這是部署至 App Service 的眾多方式之一。
 ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
-ms.date: 02/15/2019
-ms.author: cephalin
-ms.custom: seodec18
-ms.openlocfilehash: 4dbd65a391bdc5726436ba461a34e1ca7cab87b0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 03/04/2020
+ms.custom: mvc, devcenter, seodec18
+ms.openlocfilehash: 4f08068e0920eb8a9e93fbbf91cb352bb8860fe3
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57855175"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84905913"
 ---
-# <a name="create-a-nodejs-web-app-in-azure"></a>在 Azure 中建立 Node.js Web 應用程式
+# <a name="create-a-nodejs-web-app-in-azure"></a>在 Azure 中建立 Node.js Web 應用程式 
 
-> [!NOTE]
-> 本文會將應用程式部署至 Windows 上的 App Service。 若要部署至 _Linux_ 上的 App Service，請參閱[在 Linux 上的 Azure App Service 中建立 Node.js Web 應用程式](./containers/quickstart-nodejs.md)。
->
-
-[Azure App Service](overview.md) 可提供可高度擴充、自我修復的 Web 主控服務。  本快速入門會顯示如何將 Node.js 應用程式部署至 Azure App Service。 您可使用 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)建立 Web 應用程式，並使用 ZipDeploy 將範例 Node.js 程式碼部署至 Web 應用程式。
-
-![在 Azure 中執行的範例應用程式](media/app-service-web-get-started-nodejs-poc/hello-world-in-browser.png)
-
-您可以使用 Mac、Windows 或 Linux 機器，依照此處的步驟操作。 安裝先決條件後，大約需要 5 分鐘才能完成這些步驟。   
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+使用 Visual Studio Code 在本機建立 Node.js/Express 應用程式，然後將應用程式部署至雲端，以開始使用 Azure App Service。 由於您是使用免費的 App Service 層，因此不需支付任何費用，就能完成本快速入門。
 
 ## <a name="prerequisites"></a>必要條件
 
-若要完成本快速入門：
+- 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?utm_source=campaign&utm_campaign=vscode-tutorial-app-service-extension&mktingSource=vscode-tutorial-app-service-extension)。
+- [Node.js 和 npm](https://nodejs.org)。 執行命令 `node --version`，確認已安裝 Node.js。
+- [Visual Studio Code](https://code.visualstudio.com/) \(英文\)。
+- [適用於 Visual Studio Code 的 Azure App Service 擴充功能](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureappservice)。
 
-* <a href="https://nodejs.org/" target="_blank">安裝 Node.js 和 NPM</a>
+## <a name="clone-and-run-a-local-nodejs-application"></a>複製並建立本機 Node.js 應用程式
 
-## <a name="download-the-sample"></a>下載範例
+1. 在您的本機電腦上，開啟終端機並複製範例存放庫：
 
-從 [https://github.com/Azure-Samples/nodejs-docs-hello-world/archive/master.zip](https://github.com/Azure-Samples/nodejs-docs-hello-world/archive/master.zip) 下載範例 Node.js 專案並將 ZIP 封存檔解壓縮。
+    ```bash
+    git clone https://github.com/Azure-Samples/nodejs-docs-hello-world
+    ```
 
-開啟 _index.js_ 並找到下列這一行：
+1. 瀏覽至新的應用程式資料夾：
 
-```javascript
-const port = process.env.PORT || 1337;
-```
+    ```bash
+    cd nodejs-docs-hello-world
+    ```
 
-App Service 會將 process.env.PORT 插入您的應用程式中，讓程式碼使用變數來知道要接聽哪個通訊埠。 
+1. 啟動應用程式以在本機進行測試：
 
-在終端機視窗中，瀏覽至 Node.js 專案範例的根目錄 (包含 _index.js_ 的目錄)。
+    ```bash
+    npm start
+    ```
+    
+1. 開啟瀏覽器並巡覽至 `http://localhost:1337`。 瀏覽器應該會顯示「Hello World!」。
 
-## <a name="run-the-app-locally"></a>在本機執行應用程式
+1. 在終端機中按 **Ctrl**+**C** 以停止伺服器。
 
-在本機執行應用程式，以便您查看它在部署至 Azure 時的樣貌。 開啟終端機視窗，並使用 `npm start` 指令碼啟動內建的 Node.js HTTP 伺服器。
+> [!div class="nextstepaction"]
+> [我遇到問題](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-azure-app-service&step=create-app)
+
+## <a name="deploy-the-app-to-azure"></a>將應用程式部署至 Azure
+
+在本節中，您會使用 VS Code 和 Azure App Service 擴充功能將 Node.js 應用程式部署至 Azure。
+
+1. 在終端機中，確定您位於 *nodejs-docs-hello-world* 資料夾中，然後使用下列命令啟動 Visual Studio Code：
+
+    ```bash
+    code .
+    ```
+
+1. 在 VS Code 活動列中，選取 Azure 標誌以顯示 [AZURE APP SERVICE] 總管。 選取 [登入 Azure...] 並遵循指示進行。 (如果遇到錯誤，請參閱 [Azure 登入疑難排解](#troubleshooting-azure-sign-in)。)登入之後，總管應會顯示您的 Azure 訂用帳戶名稱。
+
+    ![登入 Azure](containers/media/quickstart-nodejs/sign-in.png)
+
+1. 在 VS Code 的 [AZURE APP SERVICE] 總管中，選取藍色的向上箭頭圖示，即可將您的應用程式部署至 Azure。 (您也可以從 [命令選擇區] \(**Ctrl**+**Shift**+**P**\) 叫用相同命令，只要輸入「部署到 Web 應用程式」並選擇 [Azure App Service:部署到 Web 應用程式])。
+
+    ![部署到 Web 應用程式](containers/media/quickstart-nodejs/deploy.png)
+        
+1. 選擇 *nodejs-docs-hello-world* 資料夾。
+
+1. 根據您要部署的作業系統，選擇一個建立選項：
+
+    - Linux：選擇 [建立新的 Web 應用程式]
+    - Windows：選擇 [建立新的 Web 應用程式]...[進階]
+
+1. 輸入 Web 應用程式的全域唯一名稱，然後按 **Enter**。 該名稱在所有 Azure 中必須是唯一的，而且只能使用英數位元 ('A-z'、'a-z' 和 '0-9') 和連字號 ('-')。
+
+1. 如果以 Linux 為，請在出現提示時選取 Node.js 版本。 建議使用 **LTS** 版本。
+
+1. 如果以 Windows 為目標，請遵循其他提示：
+    1. 選取 [建立新的資源群組]，然後輸入資源群組的名稱，例如 `AppServiceQS-rg`。
+    1. 針對作業系統選取 [Windows]。
+    1. 選取 [建立新的 App Service 方案]，然後輸入方案的名稱 (例如 `AppServiceQS-plan`)，然後針對定價層選取 [F1 免費]。
+    1. 在出現 Application Insights 提示時，選擇 [暫時略過]。
+    1. 選擇您想要存取且接近您或接近資源的區域。
+
+1. 在您回應所有提示之後，VS Code 會顯示要為其通知快顯中應用程式建立的 Azure 資源。
+
+    在部署至 Linux 時，請於系統提示您要更新組態以在目標 Linux 伺服器上執行 `npm install` 時，選取 [是]。
+
+    ![提示您要在目標 Linux 伺服器上更新組態](containers/media/quickstart-nodejs/server-build.png)
+
+1. 請在出現 [一律將工作區 "nodejs-docs-hello-world" 部署至 \應用程式名稱\] 提示時，選取 [是]。 選取 [是] 會指示 VS Code 自動讓後續部署使用相同的 App Service Web 應用程式作為目標。
+
+1. 如果是部署至 Linux，請在部署完成時，選取提示中的 [瀏覽網站]，以檢視您剛才部署的 Web 應用程式。 瀏覽器應該會顯示「Hello World!」
+
+1. 如果是部署至 Windows，您必須先設定 Web 應用程式的 Node.js 版本號碼：
+
+    1. 在 VS Code 中展開新 App Service 的節點、以滑鼠右鍵按一下 [應用程式設定]，然後選取 [新增設定...]：
+
+        ![新增應用程式設定命令](containers/media/quickstart-nodejs/add-setting.png)
+
+    1. 輸入設定金鑰的 `WEBSITE_NODE_DEFAULT_VERSION`。
+    1. 輸入設定值的 `10.15.2`。
+    1. 以滑鼠右鍵按一 應用程式服務的節點，並選取 [重新啟動]
+
+        ![重新啟動應用程式服務命令](containers/media/quickstart-nodejs/restart.png)
+
+    1. 以滑鼠右鍵再按一下應用程式服務的節點，然後選取 [瀏覽網站]。
+
+> [!div class="nextstepaction"]
+> [我遇到問題](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-azure-app-service&step=deploy-app)
+
+### <a name="troubleshooting-azure-sign-in"></a>Azure 登入疑難排解
+
+如果您在登入 Azure 時看到 **「找不到名稱為 [訂用帳戶識別碼] 的訂用帳戶」** 錯誤，可能是因為您位於 Proxy 後方，所以無法連線到 Azure API。 請使用 `export`，並以您終端機中的Proxy 資訊來設定 `HTTP_PROXY` 和 `HTTPS_PROXY` 環境變數。
 
 ```bash
-npm start
+export HTTPS_PROXY=https://username:password@proxy:8080
+export HTTP_PROXY=http://username:password@proxy:8080
 ```
 
-開啟網頁瀏覽器，然後巡覽至位於 `http://localhost:1337` 的範例應用程式。
+如果設定環境變數無法更正問題，請選取上方的 [我遇到問題] 按鈕來聯繫我們。
 
-您會看到來自範例應用程式的 **Hello World** 訊息顯示在網頁中。
+### <a name="update-the-app"></a>更新應用程式
 
-![在本機執行的範例應用程式](media/app-service-web-get-started-nodejs-poc/localhost-hello-world-in-browser.png)
+若要在 VS Code 中編輯以部署此應用程式的變更，您可以使用與先前相同程序並選擇現有的應用程式，而不是建立新的應用程式。
 
-在終端機視窗中，按 **Ctrl+C** 結束 web 伺服器。
+## <a name="viewing-logs"></a>檢視記錄
 
-> [!NOTE]
-> 在 Azure App Service 中，應用程式會使用 [iisnode](https://github.com/Azure/iisnode) 執行於 IIS 中。 為了讓應用程式可使用 iisnode 執行，應用程式的根目錄會包含 web.config 檔案。 此檔案可供 IIS 讀取，且 iisnode 相關設定記錄在 [iisnode GitHub 存放庫](https://github.com/Azure/iisnode/blob/master/src/samples/configuration/web.config)中。
+您可以直接在 VS Code 輸出視窗中，從應用程式中檢視記錄輸出 (`console.log`的呼叫)。
 
-[!INCLUDE [Create ZIP file](../../includes/app-service-web-create-zip.md)]
+1. 在 **AZURE APP SERVICE** 總管中，以滑鼠右鍵按一下應用程式，然後選擇 [開始串流記錄]。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+    ![啟動串流記錄](containers/media/quickstart-nodejs/view-logs.png)
 
-[!INCLUDE [Create resource group](../../includes/app-service-web-create-resource-group-scus.md)] 
+1. 出現提示時，請選擇啟用記錄，然後重新啟動應用程式。 重新啟動應用程式之後，VS Code 的輸出視窗會隨即開啟，並且連線至記錄串流。 
 
-[!INCLUDE [Create app service plan](../../includes/app-service-web-create-app-service-plan-scus.md)] 
+    ![啟用記錄並重新啟動](containers/media/quickstart-nodejs/enable-restart.png)
 
-## <a name="create-a-web-app"></a>建立 Web 應用程式
+1. 幾秒鐘之後，輸出視窗中會顯示您已連線至記錄串流服務的訊息。 您可以在瀏覽器中重新整理頁面，以產生更多的輸出活動。
 
-在 Cloud Shell 中，使用 [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) 命令，在 `myAppServicePlan` App Service 方案中建立 Web 應用程式。 
+    <pre>
+    Connecting to log stream...
+    2020-03-04T19:29:44  Welcome, you are now connected to log-streaming service. The default timeout is 2 hours.
+    Change the timeout with the App Setting SCM_LOGSTREAM_TIMEOUT (in seconds).    
+    </pre>
 
-在下列範,了中，使用全域唯一的應用程式名稱 (有效的字元為 `a-z`、`0-9` 和 `-`) 取代 `<app_name>`。
-
-```azurecli-interactive
-# Bash and Powershell
-az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app_name>
-```
-
-建立 Web 應用程式後，Azure CLI 會顯示類似下列範例的輸出：
-
-```json
-{
-  "availabilityState": "Normal",
-  "clientAffinityEnabled": true,
-  "clientCertEnabled": false,
-  "cloningInfo": null,
-  "containerSize": 0,
-  "dailyMemoryTimeQuota": 0,
-  "defaultHostName": "<app_name>.azurewebsites.net",
-  "enabled": true,
-  < JSON data removed for brevity. >
-}
-```
-
-### <a name="set-nodejs-runtime"></a>設定 Node.js 執行階段
-
-將 Node 執行階段設定為 10.14.1。 若要查看所有支援的執行階段，請執行 [`az webapp list-runtimes`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes)。
-
-```azurecli-interactive
-# Bash and Powershell
-az webapp config appsettings set --resource-group myResourceGroup --name <app_name> --settings WEBSITE_NODE_DEFAULT_VERSION=10.14.1
-```
-
-瀏覽至您剛建立的 Web 應用程式。 以唯一的應用程式名稱取代 `<app_name>`。
-
-```bash
-http://<app_name>.azurewebsites.net
-```
-
-新的 Web 應用程式看起來應該像這樣：
-
-![空的 Web 應用程式頁面](media/app-service-web-get-started-nodejs-poc/app-service-web-service-created.png)
-
-[!INCLUDE [Deploy ZIP file](../../includes/app-service-web-deploy-zip.md)]
-
-## <a name="browse-to-the-app"></a>瀏覽至應用程式
-
-使用 web 瀏覽器瀏覽至已部署的應用程式。
-
-```
-http://<app_name>.azurewebsites.net
-```
-
-Node.js 範例程式碼正在 Azure App Service Web 應用程式中執行。
-
-![在 Azure 中執行的範例應用程式](media/app-service-web-get-started-nodejs-poc/hello-world-in-browser.png)
-
-**恭喜！** 您已將第一個 Node.js 應用程式部署至 App Service。
-
-## <a name="update-and-redeploy-the-code"></a>更新和重新部署程式碼
-
-使用文字編輯器，開啟 Node.js 應用程式中的 `index.js` 檔案，並且對 `response.end` 呼叫中的文字進行小幅變更：
-
-```javascript
-response.end("Hello Azure!");
-```
-
-在本機的終端機視窗中，瀏覽至應用程式的根目錄，然後為更新後的專案建立新的 ZIP 檔案。
-
-```azurecli-interactive
-# Bash
-zip -r myUpdatedAppFiles.zip .
-
-# PowerShell
-Compress-Archive -Path * -DestinationPath myUpdatedAppFiles.zip
-```
-
-使用[部署 ZIP 檔案](#deploy-zip-file)中的相同步驟，將這個新的 ZIP 檔案部署至 App Service。
-
-切換回在**瀏覽至應用程式**步驟中開啟的瀏覽器視窗，然後重新整理頁面。
-
-![在 Azure 中執行的已更新範例應用程式](media/app-service-web-get-started-nodejs-poc/hello-azure-in-browser.png)
-
-## <a name="manage-your-new-azure-app"></a>管理新的 Azure 應用程式
-
-請移至 <a href="https://portal.azure.com" target="_blank">Azure 入口網站</a>，以管理您所建立的 Web 應用程式。
-
-按一下左側功能表中的 [應用程式服務]，然後按一下 Azure 應用程式的名稱。
-
-![入口網站瀏覽至 Azure 應用程式](./media/app-service-web-get-started-nodejs-poc/nodejs-docs-hello-world-app-service-list.png)
-
-您會看到 Web 應用程式的 [概觀] 頁面。 您可以在這裡執行基本管理工作，像是瀏覽、停止、啟動、重新啟動及刪除。 
-
-![Azure 入口網站中的 App Service 頁面](media/app-service-web-get-started-nodejs-poc/nodejs-docs-hello-world-app-service-detail.png)
-
-左側功能表提供不同的頁面來設定您的應用程式。 
-
-[!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
+> [!div class="nextstepaction"]
+> [我遇到問題](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-azure-app-service&step=tailing-logs)
 
 ## <a name="next-steps"></a>後續步驟
 
+恭喜，您已成功完成本快速入門！
+
 > [!div class="nextstepaction"]
-> [Node.js with MongoDB](app-service-web-tutorial-nodejs-mongodb-app.md)
+> [教學課程：使用 MongoDB 的 Node.js 應用程式](app-service-web-tutorial-nodejs-mongodb-app.md)
+
+> [!div class="nextstepaction"]
+> [設定 Node.js 應用程式](configure-language-nodejs.md)
+
+查看其他 Azure 擴充功能。
+
+* [Cosmos DB](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb)
+* [Azure Functions](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)
+* [Docker 工具](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker)
+* [Azure CLI 工具](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azurecli)
+* [Azure Resource Manager](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools) \(英文\)
+
+或藉由安裝[適用於 Azure 的 Node Pack](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack) 擴充功能來取得這所有項目。
+

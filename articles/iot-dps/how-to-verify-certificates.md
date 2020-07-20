@@ -1,19 +1,17 @@
 ---
-title: 如何使用 Azure IoT 中樞的裝置佈建服務執行 X.509 CA 憑證擁有權證明 | Microsoft Docs
-description: 如何使用裝置佈建服務驗證 X.509 CA 憑證
+title: 驗證 Azure IoT 中樞裝置布建服務的 x.509 CA 憑證
+description: 如何使用 Azure IoT 中樞裝置布建服務（DPS）對 x.509 CA 憑證執行擁有權證明
 author: wesmc7777
 ms.author: wesmc
 ms.date: 02/26/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
-ms.openlocfilehash: afa4b3861e9fb7f91fd9f5d540353c5fad23efe0
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
-ms.translationtype: HT
+ms.openlocfilehash: b008c4ebc83200043d51fc8ef367f1983c549949
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54913609"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "74973436"
 ---
 # <a name="how-to-do-proof-of-possession-for-x509-ca-certificates-with-your-device-provisioning-service"></a>如何使用您的裝置佈建服務執行 X.509 CA 憑證擁有權證明
 
@@ -30,18 +28,18 @@ ms.locfileid: "54913609"
 
 若要向佈建服務註冊 CA 憑證並取得驗證碼，以在擁有權證明期間使用，請遵循下列步驟。 
 
-1. 在 Azure 入口網站中，瀏覽至您的佈建服務，並從左側功能表開啟 [憑證]。 
-2. 按一下 [新增] 以新增新的憑證。
+1. 在 Azure 入口網站中，瀏覽至您的佈建服務，並從左側功能表開啟 [憑證]****。 
+2. 按一下 [新增]**** 以新增新的憑證。
 3. 為您的憑證輸入易記的顯示名稱。 瀏覽至代表 X.509 憑證公開部分的 .cer 或 .pem 檔案。 按一下 [上傳] 。
-4. 一旦取得您的憑證已成功上傳的通知後，請按一下 [儲存]。
+4. 一旦取得您的憑證已成功上傳的通知後，請按一下 [儲存]****。
 
     ![Upload certificate](./media/how-to-verify-certificates/add-new-cert.png)  
 
-   [憑證總管] 清單中會顯示您的憑證。 請注意，這個憑證的 [狀態] 是 [未驗證]。
+   [憑證總管]**** 清單中會顯示您的憑證。 請注意，這個憑證的 [狀態]**** 是 [未驗證]**。
 
 5. 按一下您在上一個步驟中新增的憑證。
 
-6. 在 [憑證詳細資料] 中，按一下 [產生驗證碼]。
+6. 在 [憑證詳細資料]  中，按一下 [產生驗證碼]  。
 
 7. 佈建服務會建立**驗證碼**，您可以用它來驗證憑證擁有權。 將程式碼複製到剪貼簿。 
 
@@ -49,7 +47,7 @@ ms.locfileid: "54913609"
 
 ## <a name="digitally-sign-the-verification-code-to-create-a-verification-certificate"></a>以數位方式簽署驗證碼，以建立驗證憑證
 
-現在，您必須使用與 X.509 CA 憑證相關聯的私密金鑰來簽署這個驗證碼，如此就會產生簽章。 這稱為[擁有權證明](https://tools.ietf.org/html/rfc5280#section-3.1)，且會產生已簽署的驗證憑證。
+現在，您必須使用與 X.509 CA 憑證相關聯的私密金鑰來簽署這個驗證碼**，如此就會產生簽章。 這稱為[擁有權證明](https://tools.ietf.org/html/rfc5280#section-3.1)，且會產生已簽署的驗證憑證。
 
 Microsoft 提供了工具和範例，協助您建立已簽署的驗證憑證： 
 
@@ -64,9 +62,9 @@ Microsoft 提供了工具和範例，協助您建立已簽署的驗證憑證：
 
 ## <a name="upload-the-signed-verification-certificate"></a>上傳已簽署的驗證憑證
 
-1. 在入口網站中，將產生的簽章當作驗證憑證上傳至佈建服務。 在 Azure 入口網站的 [憑證詳細資料] 中，使用 [驗證憑證 .pem 或.cer 檔案] 欄位旁的 [檔案總管] 圖示，從您的系統上傳已簽署的驗證憑證。
+1. 在入口網站中，將產生的簽章當作驗證憑證上傳至佈建服務。 在 Azure 入口網站的 [憑證詳細資料]**** 中，使用 [驗證憑證 .pem 或.cer 檔案]**** 欄位旁的 [檔案總管]__ 圖示，從您的系統上傳已簽署的驗證憑證。
 
-2. 一旦憑證上傳成功後，按一下 [確認]。 憑證的 [狀態] 在 [憑證總管]清單中會變更為 _已驗證_。  如果無法自動更新，請按一下 [重新整理]。
+2. 一旦憑證上傳成功後，按一下 [確認]****。 憑證的 [狀態] 在 [憑證總管]清單中會變更為 _已驗證_。 ************ 如果無法自動更新，請按一下 [重新整理]****。
 
    ![上傳憑證驗證](./media/how-to-verify-certificates/upload-cert-verification.png)  
 

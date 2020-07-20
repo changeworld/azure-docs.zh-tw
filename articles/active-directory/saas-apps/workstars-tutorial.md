@@ -4,256 +4,225 @@ description: 了解如何設定 Azure Active Directory 與 Workstars 之間的�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: joflore
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 51a4a4e4-ff60-4971-b3f8-a0367b70d220
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 07/25/2017
+ms.topic: tutorial
+ms.date: 03/28/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a9c1d13c1d51eeadae3ef9dad71e64618d1a5fe
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 43fbc158c9ed0bbe87a75cd845433c7a7be2e6d1
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60523027"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "81867902"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workstars"></a>教學課程：Azure Active Directory 與 Workstars 整合
 
 在本教學課程中，您將了解如何整合 Workstars 與 Azure Active Directory (Azure AD)。
-
 Workstars 與 Azure AD 整合有下列好處：
 
-- 您可以在 Azure AD 中控制可存取 Workstars 的人員。
-- 您可以讓使用者使用他們的 Azure AD 帳戶自動登入 Workstars (單一登入)。
-- 您可以在 Azure 入口網站中集中管理您的帳戶。
+* 您可以在 Azure AD 中控制可存取 Workstars 的人員。
+* 您可以讓使用者使用其 Azure AD 帳戶自動登入 Workstars (單一登入)。
+* 您可以在 Azure 入口網站中集中管理您的帳戶。
 
-如果您想要了解有關 SaaS 應用程式與 Azure AD 之整合的更多詳細資料，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
+若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>必要條件
 
 若要設定 Azure AD 與 Workstars 整合，您需要下列項目：
 
-- Azure AD 訂用帳戶
-- 已啟用 Workstars 單一登入的訂用帳戶
-
-> [!NOTE]
-> 若要測試本教學課程中的步驟，我們不建議使用生產環境。
-
-若要測試本教學課程中的步驟，您應該遵循這些建議：
-
-- 除非必要，否則請勿使用生產環境。
-- 如果您沒有 Azure AD 試用環境，您可以[取得一個月試用](https://azure.microsoft.com/pricing/free-trial/)。
+* Azure AD 訂用帳戶。 如果您沒有 Azure AD 環境，您可以申請[免費帳戶](https://azure.microsoft.com/free/)。
+* 已啟用 Workstars 單一登入的訂用帳戶
 
 ## <a name="scenario-description"></a>案例描述
-在本教學課程中，您會在測試環境中測試 Azure AD 單一登入。 本教學課程中說明的案例由二項主要的基本工作組成：
 
-1. 從資源庫新增 Workstars
-1. 設定並測試 Azure AD 單一登入
+在本教學課程中，您會在測試環境中設定和測試 Azure AD 單一登入。
+
+* Workstars 支援由 **IDP** 起始的 SSO
 
 ## <a name="adding-workstars-from-the-gallery"></a>從資源庫新增 Workstars
+
 若要設定將 Workstars 整合到 Azure AD 中，您需要從資源庫將 Workstars 新增到受控 SaaS 應用程式清單。
 
 **若要從資源庫新增 Workstars，請執行下列步驟：**
 
-1. 在 **[Azure 入口網站](https://portal.azure.com)** 的左方瀏覽窗格中，按一下 [Azure Active Directory] 圖示。 
+1. 在 **[Azure 入口網站](https://portal.azure.com)** 的左方瀏覽窗格中，按一下 [Azure Active Directory] 圖示。
 
-    ![Azure Active Directory 按鈕][1]
+    ![Azure Active Directory 按鈕](common/select-azuread.png)
 
-1. 瀏覽至 [企業應用程式]。 然後移至 [所有應用程式]。
+2. 瀏覽至 [企業應用程式]，然後選取 [所有應用程式] 選項。
 
-    ![企業應用程式刀鋒視窗][2]
-    
-1. 若要新增新的應用程式，請按一下對話方塊頂端的 [新增應用程式] 按鈕。
+    ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
-    ![新增應用程式按鈕][3]
+3. 若要新增新的應用程式，請按一下對話方塊頂端的 [新增應用程式] 按鈕。
 
-1. 在搜尋方塊中，輸入 **Workstars**，從結果面板中選取 [Workstars]，然後按一下 [新增] 按鈕以新增應用程式。
+    ![新增應用程式按鈕](common/add-new-app.png)
 
-    ![結果清單中的 Workstars](./media/workstars-tutorial/tutorial_workstars_addfromgallery.png)
+4. 在搜尋方塊中，輸入 **Workstars**，從結果面板中選取 [Workstars]，然後按一下 [新增] 按鈕以新增應用程式。
+
+     ![結果清單中的 Workstars](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>設定和測試 Azure AD 單一登入
 
-在本節中，您會以名為 "Britta Simon" 的測試使用者身分，設定及測試與 Workstars 搭配運作的 Azure AD 單一登入。
-
-若要讓單一登入能夠運作，Azure AD 必須知道 Workstars 與 Azure AD 中互相對應的使用者。 換句話說，必須在 Azure AD 使用者和 Workstars 中的相關使用者之間建立連結關聯性。
-
-在 Workstars 中，將 Azure AD 中 [使用者名稱] 的值指派為 [使用者名稱] 的值，以建立連結關聯性。
+在本節中，您會以名為 **Britta Simon** 的測試使用者身分，設定及測試與 Workstars 搭配運作的 Azure AD 單一登入。
+若要讓單一登入能夠運作，必須建立 Azure AD 使用者與 Workstars 中相關使用者之間的連結關聯性。
 
 若要設定及測試與 Workstars 搭配運作的 Azure AD 單一登入，您需要完成下列構成要素：
 
 1. **[設定 Azure AD 單一登入](#configure-azure-ad-single-sign-on)** - 讓您的使用者能夠使用此功能。
-1. **[建立 Azure AD 測試使用者](#create-an-azure-ad-test-user)** - 使用 Britta Simon 測試 Azure AD 單一登入。
-1. **[建立 Workstars 測試使用者](#create-a-workstars-test-user)** - 在 Workstars 中建立 Britta Simon 的對應項目，且該項目須與 Azure AD 中代表使用者的項目連結。
-1. **[指派 Azure AD 測試使用者](#assign-the-azure-ad-test-user)** - 讓 Britta Simon 能夠使用 Azure AD 單一登入。
-1. **[測試單一登入](#test-single-sign-on)**，驗證組態是否能運作。
+2. **[設定 Workstars 單一登入](#configure-workstars-single-sign-on)** - 在應用程式端設定單一登入設定。
+3. **[建立 Azure AD 測試使用者](#create-an-azure-ad-test-user)** - 使用 Britta Simon 測試 Azure AD 單一登入。
+4. **[指派 Azure AD 測試使用者](#assign-the-azure-ad-test-user)** - 讓 Britta Simon 能夠使用 Azure AD 單一登入。
+5. **[建立 Workstars 測試使用者](#create-workstars-test-user)** - 在 Workstars 中建立 Britta Simon 的對應項目，且該項目須與 Azure AD 中代表使用者的項目連結。
+6. **[測試單一登入](#test-single-sign-on)** ，驗證組態是否能運作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>設定 Azure AD 單一登入
 
-在本節中，您會在 Azure 入口網站中啟用 Azure AD 單一登入，然後在您的 Workstars 應用程式中設定單一登入。
+在本節中，您會在 Azure 入口網站中啟用 Azure AD 單一登入。
 
-**若要設定與 Workstars 搭配運作的 Azure AD 單一登入，請執行下列步驟：**
+若要設定與 Workstars 搭配運作的 Azure AD 單一登入，請執行下列步驟：
 
-1. 在 Azure 入口網站的 [Workstars] 應用程式整合頁面上，按一下 [單一登入]。
+1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Workstars] 應用程式整合頁面上，選取 [單一登入]。
 
-    ![設定單一登入連結][4]
+    ![設定單一登入連結](common/select-sso.png)
 
-1. 在 [單一登入] 對話方塊上，於 [模式] 選取 [SAML 登入]，以啟用單一登入。
- 
-    ![單一登入對話方塊](./media/workstars-tutorial/tutorial_workstars_samlbase.png)
+2. 在 [選取單一登入方法] 對話方塊中，選取 [SAML/WS-Fed] 模式以啟用單一登入。
 
-1. 在 [Workstars 網域與 URL] 區段上，執行下列步驟：
+    ![單一登入選取模式](common/select-saml-option.png)
 
-    ![Workstars 網域與 URL 單一登入資訊](./media/workstars-tutorial/tutorial_workstars_url.png)
+3. 在 [以 SAML 設定單一登入] 頁面上，按一下 [編輯] 圖示以開啟 [基本 SAML 設定] 對話方塊。   
 
-    a. 在 [識別碼] 文字方塊中，輸入 URL：`https://workstars.com`
+    ![編輯基本 SAML 組態](common/edit-urls.png)
 
-    b. 在 **[回覆 URL]** 文字方塊中，以下列模式輸入 URL：`https://<subdomain>.workstars.com/saml/login_check`
+4. 在 [以 SAML 設定單一登入] 頁面上，執行下列步驟：
 
-    > [!NOTE] 
-    > 這不是真正的值。 請使用實際的「回覆 URL」來更新此值。 請連絡 [Workstars 支援小組](https://support.workstars.com)以取得此值。
- 
-1. 在 [SAML 簽署憑證] 區段上，按一下 [憑證 (Base64)]，然後將憑證檔案儲存在您的電腦上。
+    ![Workstars 網域與 URL 單一登入資訊](common/idp-intiated.png)
 
-    ![憑證下載連結](./media/workstars-tutorial/tutorial_workstars_certificate.png) 
+    a. 在 [識別碼] 文字方塊中，鍵入 URL：`https://workstars.com`
 
-1. 按一下 [儲存]  按鈕。
+    b. 在 [回覆 URL] 文字方塊中，使用下列模式來輸入 URL：`https://<subdomain>.workstars.com/saml/login_check`
 
-    ![設定單一登入儲存按鈕](./media/workstars-tutorial/tutorial_general_400.png)
+    > [!NOTE]
+    > 這不是真正的值。 請使用實際的「回覆 URL」來更新此值。 請連絡 [Workstars 用戶端支援小組](http://support.workstars.com/)以取得此值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
 
-1. 在 [Workstars 組態] 區段上，按一下 [設定 Workstars] 以開啟 [設定登入] 視窗。 從 [快速參考] 區段中複製 [登出 URL、SAML 實體識別碼和 SAML 單一登入服務 URL]。
+5. 在 [以 SAML 設定單一登入] 頁面的 [SAML 簽署憑證] 區段中，按一下 [下載]，以依據您的需求從指定選項下載 [憑證 (Base64)]，並儲存在您的電腦上。
 
-    ![Workstars 組態](./media/workstars-tutorial/tutorial_workstars_configure.png) 
+    ![憑證下載連結](common/certificatebase64.png)
+
+6. 在 [設定 Workstars] 區段上，依據您的需求複製適當的 URL。
+
+    ![複製組態 URL](common/copy-configuration-urls.png)
+
+    a. 登入 URL
+
+    b. Azure AD 識別碼
+
+    c. 登出 URL
+
+### <a name="configure-workstars-single-sign-on"></a>設定 Workstars 單一登入
 
 1. 在另一個瀏覽器視窗中，以系統管理員身分登入您的 Workstars 公司網站。
 
-1. 在主要工具列中，按一下 [設定]。
+2. 在主要工具列中，按一下 [設定]。
 
     ![Workstars 設定](./media/workstars-tutorial/tutorial_workstars_sett.png)
 
-1. 移至 [登入] > [設定]。
+3. 移至 [登入] > [設定]。
 
     ![Workstars 登入](./media/workstars-tutorial/tutorial_workstars_signon.png)
 
     ![Workstars 設定](./media/workstars-tutorial/tutorial_workstars_settings.png)
 
-1. 在 [單一登入 (SAML) - 設定] 頁面，執行下列步驟：
+4. 在 [單一登入 (SAML) - 設定] 頁面，執行下列步驟：
     
     ![Workstars SAML](./media/workstars-tutorial/tutorial_workstars_saml.png)
 
     a. 在 [識別提供者名稱] 文字方塊中，輸入 **Office 365**。
 
-    b. 在 [識別提供者實體識別碼] 文字方塊中，貼上您從 Azure 入口網站複製的 [SAML 實體識別碼] 值。
+    b. 在 [識別提供者實體識別碼] 文字方塊中，貼上您從 Azure 入口網站複製的 [Azure AD 識別碼] 值。
 
     c. 在記事本中複製下載的憑證檔案內容，然後將其貼到 [x509 憑證] 文字方塊。 
 
-    d. 在 [SAML SSO URL] 文字方塊中，貼上您從 Azure 入口網站複製的 [SAML 單一登入服務 URL] 值。
+    d. 在 [SAML SSO URL] 文字方塊中，貼上您從 Azure 入口網站複製的 [登入 URL] 值。
     
     e. 在 [遠端登出 URL] 文字方塊中，貼上您從 Azure 入口網站複製的 [登出 URL] 值。 
 
     f. 選取 [名稱識別碼] 作為 [電子郵件 (預設)]。
 
     g. 按一下 [確認]。
-    
-> [!TIP]
-> 現在，當您設定此應用程式時，在 [Azure 入口網站](https://portal.azure.com)內即可閱讀這些指示的簡要版本！  從 [Active Directory] > [企業應用程式] 區段新增此應用程式之後，只要按一下 [單一登入] 索引標籤，即可透過底部的 [組態] 區段存取內嵌的文件。 您可以從以下連結閱讀更多有關內嵌文件功能的資訊：[Azure AD 內嵌文件]( https://go.microsoft.com/fwlink/?linkid=845985)
 
-### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者
+### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者 
 
 本節的目標是要在 Azure 入口網站中建立一個名為 Britta Simon 的測試使用者。
 
-   ![建立 Azure AD 測試使用者][100]
+1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]、[使用者] 和 [所有使用者]。
 
-**若要在 Azure AD 中建立測試使用者，請執行下列步驟：**
+    ![[使用者和群組] 與 [所有使用者] 連結](common/users.png)
 
-1. 在 Azure 入口網站的左窗格中，按一下 [Azure Active Directory] 按鈕。
+2. 在畫面頂端選取 [新增使用者]。
 
-    ![Azure Active Directory 按鈕](./media/workstars-tutorial/create_aaduser_01.png)
+    ![[新增使用者] 按鈕](common/new-user.png)
 
-1. 若要顯示使用者清單，請移至 [使用者和群組]，然後按一下 [所有使用者]。
+3. 在 [使用者] 屬性中，執行下列步驟。
 
-    ![[使用者和群組] 與 [所有使用者] 連結](./media/workstars-tutorial/create_aaduser_02.png)
+    ![[使用者] 對話方塊](common/user-properties.png)
 
-1. 若要開啟 [使用者] 對話方塊，按一下 [所有使用者] 對話方塊頂端的 [新增]。
-
-    ![[新增] 按鈕](./media/workstars-tutorial/create_aaduser_03.png)
-
-1. 在 [使用者] 對話方塊中，執行下列步驟：
-
-    ![[使用者] 對話方塊](./media/workstars-tutorial/create_aaduser_04.png)
-
-    a. 在 [名稱] 方塊中，輸入 **BrittaSimon**。
-
-    b. 在 [使用者名稱] 方塊中，輸入使用者 Britta Simon 的電子郵件地址。
+    a. 在 [名稱] 欄位中，輸入 **BrittaSimon**。
+  
+    b. 在 [使用者名稱] 欄位中，輸入 brittasimon@yourcompanydomain.extension。 例如， BrittaSimon@contoso.com
 
     c. 選取 [顯示密碼] 核取方塊，然後記下 [密碼] 方塊中顯示的值。
 
-    d. 按一下頁面底部的 [新增] 。
-  
-### <a name="create-a-workstars-test-user"></a>建立 Workstars 測試使用者
-
-在本節中，您會在 Workstars 中建立名為 Britta Simon 的使用者。 請與 [Workstars 支援小組](https://support.workstars.com)合作，在 Workstars 平台中新增使用者。
+    d. 按一下 [建立]。
 
 ### <a name="assign-the-azure-ad-test-user"></a>指派 Azure AD 測試使用者
 
 在本節中，您會將 Workstars 的存取權授與 Britta Simon，讓她能夠使用 Azure 單一登入。
 
-![指派使用者角色][200] 
+1. 在 Azure 入口網站中，依序選取 [企業應用程式]、[所有應用程式] 及 [Workstars]。
 
-**若要將 Britta Simon 指派給 Workstars，請執行下列步驟：**
+    ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
-1. 在 Azure 入口網站中，開啟應用程式檢視，接著瀏覽至目錄檢視並移至 [企業應用程式]，然後按一下 [所有應用程式]。
+2. 在應用程式清單中，選取 [Workstars]。
 
-    ![指派使用者][201] 
+    ![應用程式清單中的 Workstars 連結](common/all-applications.png)
 
-1. 在應用程式清單中，選取 [Workstars]。
+3. 在左側功能表中，選取 [使用者和群組]。
 
-    ![應用程式清單中的 Workstars 連結](./media/workstars-tutorial/tutorial_workstars_app.png)  
+    ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-1. 在左側功能表中，按一下 [使用者和群組]。
+4. 按一下 [新增使用者] 按鈕，然後在 [新增指派] 對話方塊中，選取 [使用者和群組]。
 
-    ![[使用者和群組] 連結][202]
+    ![[新增指派] 窗格](common/add-assign-user.png)
 
-1. 按一下 [新增] 按鈕。 然後選取 [新增指派] 對話方塊上的 [使用者和群組]。
+5. 在 [使用者和群組] 對話方塊的 [使用者] 清單中，選取 [Britta Simon]，然後按一下畫面底部的 [選取] 按鈕。
 
-    ![[新增指派] 窗格][203]
+6. 如果您預期使用 SAML 判斷提示中的任何角色值，請在 [選取角色] 對話方塊的清單中選取適當使用者角色，然後按一下畫面底部的 [選取] 按鈕。
 
-1. 在 [使用者和群組] 對話方塊上，選取 [使用者] 清單中的 [Britta Simon]。
+7. 在 [新增指派] 對話方塊中，按一下 [指派] 按鈕。
 
-1. 按一下 [使用者和群組] 對話方塊上的 [選取] 按鈕。
+### <a name="create-workstars-test-user"></a>建立 Workstars 測試使用者
 
-1. 按一下 [新增指派] 對話方塊上的 [指派] 按鈕。
-    
-### <a name="test-single-sign-on"></a>測試單一登入
+在本節中，您會在 Workstars 中建立名為 Britta Simon 的使用者。 請與 [Workstars 支援小組](http://support.workstars.com)合作，在 Workstars 平台中新增使用者。
+
+### <a name="test-single-sign-on"></a>測試單一登入 
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 [Workstars] 圖格時，應將自動登入您的 Workstars 應用程式。
-如需存取面板的詳細資訊，請參閱[存取面板簡介](../user-help/active-directory-saas-access-panel-introduction.md)。 
+當您在存取面板中按一下 [Workstars] 圖格時，應該會自動登入您已設定 SSO 的 Workstars。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
 
 ## <a name="additional-resources"></a>其他資源
 
-* [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](tutorial-list.md)
-* [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-
-<!--Image references-->
-
-[1]: ./media/workstars-tutorial/tutorial_general_01.png
-[2]: ./media/workstars-tutorial/tutorial_general_02.png
-[3]: ./media/workstars-tutorial/tutorial_general_03.png
-[4]: ./media/workstars-tutorial/tutorial_general_04.png
-
-[100]: ./media/workstars-tutorial/tutorial_general_100.png
-
-[200]: ./media/workstars-tutorial/tutorial_general_200.png
-[201]: ./media/workstars-tutorial/tutorial_general_201.png
-[202]: ./media/workstars-tutorial/tutorial_general_202.png
-[203]: ./media/workstars-tutorial/tutorial_general_203.png
+- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

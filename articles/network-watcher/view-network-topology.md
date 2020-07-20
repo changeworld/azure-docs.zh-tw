@@ -3,23 +3,20 @@ title: 檢視 Azure 虛擬網路拓撲 | Microsoft Docs
 description: 了解如何檢視虛擬網路中的資源，以及資源之間的關聯性。
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
-ms.assetid: ''
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2018
-ms.author: kumud
-ms.openlocfilehash: a67f1cca54c89ead9ae7fc46ef0c9fc8c5217c74
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.author: damendo
+ms.openlocfilehash: c04da65af27ebd5ac654bc059ae004c157a20f33
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64682044"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84737524"
 ---
 # <a name="view-the-topology-of-an-azure-virtual-network"></a>檢視 Azure 虛擬網路的拓撲
 
@@ -29,12 +26,12 @@ ms.locfileid: "64682044"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name = "azure-portal"></a>檢視拓撲 - Azure 入口網站
+## <a name="view-topology---azure-portal"></a><a name = "azure-portal"></a>檢視拓撲 - Azure 入口網站
 
 1. 使用具有必要[權限](required-rbac-permissions.md)的帳戶登入 [Azure 入口網站](https://portal.azure.com)。
-2. 在入口網站的左上角，選取 [所有服務]。
-3. 在 [所有服務] 篩選方塊中，輸入 [網路監看員]。 當結果中出現**網路監看員**時，請加以選取。
-4. 選取 [拓撲]。 若要產生拓撲，在您要產生拓撲的虛擬網路所在的相同區域中必須要有網路監看員。 如果您未在要產生拓撲的虛擬網路所在的相同區域中啟用網路監看員，系統將在所有區域中自動為您建立網路監看員。 網路監看員會建立在名為 NetworkWatcherRG 的資源群組中。
+2. 在入口網站的左上角，選取 [所有服務]****。
+3. 在 [所有服務]**** 篩選方塊中，輸入 [網路監看員]**。 當結果中出現**網路監看員**時，請加以選取。
+4. 選取 [拓撲]****。 若要產生拓撲，在您要產生拓撲的虛擬網路所在的相同區域中必須要有網路監看員。 如果您未在要產生拓撲的虛擬網路所在的相同區域中啟用網路監看員，系統將在所有區域中自動為您建立網路監看員。 網路監看員會建立在名為 NetworkWatcherRG**** 的資源群組中。
 5. 依序選取訂用帳戶、您想要檢視拓撲之虛擬網路的資源群組，以及虛擬網路。 下圖會在名為 *MyResourceGroup* 的資源群組中，針對名為 *MyVnet* 的虛擬網路顯示一個拓撲：
 
     ![檢視拓撲](./media/view-network-topology/view-topology.png)
@@ -46,11 +43,11 @@ ms.locfileid: "64682044"
 
    圖中顯示的拓撲屬於部署**透過網路虛擬設備路由流量的指令碼範例**後所建立的虛擬網路；您可以使用 [Azure CLI](../virtual-network/scripts/virtual-network-cli-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) 或 [PowerShell](../virtual-network/scripts/virtual-network-powershell-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) 部署該指令碼範例。
 
-6. 選取 [下載拓撲]，以下載 svg 格式的影像作為可編輯的檔案。
+6. 選取 [下載拓撲]****，以下載 svg 格式的影像作為可編輯的檔案。
 
 途中顯示的資源是虛擬網路中的網路元件子集。 例如，當網路安全性群組顯示時，其中的安全性規則並不會顯示於圖表中。 雖然在此圖中並未區分，但直線代表兩個關聯性的其中之一：*內含項目*或*相關聯*。 若要查看虛擬網路中的完整資源清單以及資源之間的關聯性類型，請使用 [PowerShell](#powershell) 或 [Azure CLI](#azure-cli) 產生拓撲。
 
-## <a name = "azure-cli"></a>檢視拓撲 - Azure CLI
+## <a name="view-topology---azure-cli"></a><a name = "azure-cli"></a>檢視拓撲 - Azure CLI
 
 您可以在下列步驟中執行命令：
 - 在 Azure Cloud Shell 中，選取位於任何命令右上方的**試試看**。 Azure Cloud Shell 是一個免費的互動式殼層，具有預先安裝和設定的通用 Azure 工具，可與您的帳戶搭配使用。
@@ -83,21 +80,21 @@ ms.locfileid: "64682044"
 
    深入了解傳回的輸出中的關聯性和[屬性](#properties)。 如果您沒有可檢視拓撲的現有虛擬網路，您可以使用[透過網路虛擬設備來路由傳送流量](../virtual-network/scripts/virtual-network-cli-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)指令碼範例建立一個。 若要檢視拓撲的圖表，並以可編輯檔案的形式加以下載，請使用[入口網站](#azure-portal)。
 
-## <a name = "powershell"></a>檢視拓撲 - PowerShell
+## <a name="view-topology---powershell"></a><a name = "powershell"></a>檢視拓撲 - PowerShell
 
 您可以在下列步驟中執行命令：
 - 在 Azure Cloud Shell 中，選取位於任何命令右上方的**試試看**。 Azure Cloud Shell 是一個免費的互動式殼層，具有預先安裝和設定的通用 Azure 工具，可與您的帳戶搭配使用。
-- 從您的電腦執行 PowerShell。 如果您是從您的電腦執行 PowerShell，本文需要 Azure PowerShell`Az`模組。 執行 `Get-Module -ListAvailable Az` 來了解安裝的版本。 如果您需要升級，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-Az-ps)。 如果您在本機執行 PowerShell，則也需要執行 `Connect-AzAccount` 以建立與 Azure 的連線。
+- 從您的電腦執行 PowerShell。 如果您從電腦執行 PowerShell，本文需要 Azure PowerShell `Az` 模組。 執行 `Get-Module -ListAvailable Az` 來了解安裝的版本。 如果您需要升級，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-Az-ps)。 如果您在本機執行 PowerShell，則也需要執行 `Connect-AzAccount` 以建立與 Azure 的連線。
 
 您所使用的帳戶必須具有必要的[權限](required-rbac-permissions.md)。
 
-1. 如果您在要建立拓撲的虛擬網路所在的相同區域中已有網路監看員，請跳至步驟 3。 建立資源群組以包含使用網路監看員[新增 AzResourceGroup](/powershell/module/az.Resources/New-azResourceGroup)。 下列範例會在 *eastus* 區域中建立資源群組：
+1. 如果您在要建立拓撲的虛擬網路所在的相同區域中已有網路監看員，請跳至步驟 3。 建立資源群組，以包含具有[remove-azresourcegroup](/powershell/module/az.Resources/New-azResourceGroup)的網路監看員。 下列範例會在 *eastus* 區域中建立資源群組：
 
     ```azurepowershell-interactive
     New-AzResourceGroup -Name NetworkWatcherRG -Location EastUS
     ```
 
-2. 建立使用網路監看員[新增 AzNetworkWatcher](/powershell/module/az.network/new-aznetworkwatcher)。 下列範例會在 eastus 區域中建立網路監看員：
+2. 使用[new-aznetworkwatcher](/powershell/module/az.network/new-aznetworkwatcher)建立網路監看員。 下列範例會在 eastus 區域中建立網路監看員：
 
     ```azurepowershell-interactive
     New-AzNetworkWatcher `
@@ -105,7 +102,7 @@ ms.locfileid: "64682044"
       -ResourceGroupName NetworkWatcherRG
     ```
 
-3. 擷取網路監看員執行個體[Get AzNetworkWatcher](/powershell/module/az.network/get-aznetworkwatcher)。 下列範例會擷取美國東部區域中的網路監看員：
+3. 使用[new-aznetworkwatcher](/powershell/module/az.network/get-aznetworkwatcher)取得網路監看員實例。 下列範例會擷取美國東部區域中的網路監看員：
 
     ```azurepowershell-interactive
     $nw = Get-AzResource `
@@ -115,7 +112,7 @@ ms.locfileid: "64682044"
       -ResourceGroupName $nw.ResourceGroupName
     ```
 
-4. 擷取含有拓樸[Get AzNetworkWatcherTopology](/powershell/module/az.network/get-aznetworkwatchertopology)。 下列範例會擷取資源群組 *MyResourceGroup* 中的虛擬網路的拓撲：
+4. 使用[AzNetworkWatcherTopology](/powershell/module/az.network/get-aznetworkwatchertopology)取得拓撲。 下列範例會擷取資源群組 *MyResourceGroup* 中的虛擬網路的拓撲：
 
     ```azurepowershell-interactive
     Get-AzNetworkWatcherTopology `
@@ -133,18 +130,18 @@ ms.locfileid: "64682044"
 
 | 關聯性類型 | 範例                                                                                                |
 | ---               | ---                                                                                                    |
-| 內含項目       | 虛擬網路包含子網路。 子網路包含網路介面。                            |
+| Containment       | 虛擬網路包含子網路。 子網路包含網路介面。                            |
 | 相關聯        | 網路介面與 VM 相關聯。 與網路介面相關聯的公用 IP 位址。 |
 
-## <a name="properties"></a>properties
+## <a name="properties"></a>屬性
 
 在拓撲中傳回的所有資源都具有下列屬性：
 
 - **名稱**：資源的名稱
-- **Id**：資源的 URI。
+- **識別碼**：資源的 URI。
 - **位置**：資源所在的 Azure 區域。
 - **關聯性**：與所參考物件之關聯性的清單。 每個關聯性都具有下列屬性：
-    - **AssociationType**：參考子物件與父系之間的關聯性。 有效值為 [包含] 或 [相關聯]。
+    - **AssociationType**：參考子物件與父系之間的關聯性。 有效值為 [包含]** 或 [相關聯]**。
     - **名稱**：所參考資源的名稱。
     - **ResourceId**：關聯性中參考之資源的 URI。
 

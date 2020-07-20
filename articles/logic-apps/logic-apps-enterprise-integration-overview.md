@@ -1,74 +1,61 @@
 ---
-title: B2B 企業整合概觀 - Azure Logic Apps | Microsoft Docs
-description: 使用 Azure Logic Apps 與 Enterprise Integration Pack 來建置適用於企業整合解決方案的自動化 B2B 工作流程
+title: B2B 企業整合
+description: 了解如何使用 Azure Logic Apps 與企業整合套件來建置適用於企業整合的自動化 B2B 工作流程
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
-ms.topic: article
-ms.assetid: dd517c4d-1701-4247-b83c-183c4d8d8aae
-ms.date: 09/08/2016
-ms.openlocfilehash: 8c0e47f5bed0799b8536cecb38a85ed76185d0cd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.reviewer: jonfan, logicappspm
+ms.topic: overview
+ms.date: 08/01/2019
+ms.openlocfilehash: 9356cecb22672ae15505d14b5ac73d5baeef09e0
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60845815"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "77191364"
 ---
-# <a name="overview-b2b-enterprise-integration-scenarios-in-azure-logic-apps-with-enterprise-integration-pack"></a>概觀：搭配 Enterprise Integration Pack 之 Azure Logic Apps 中的 B2B 企業整合案例
+# <a name="b2b-enterprise-integration-solutions-with-azure-logic-apps-and-enterprise-integration-pack"></a>搭配 Azure Logic Apps 與企業整合套件的 B2B 企業整合解決方案
 
-對於企業對企業 (B2B) 工作流程以及使用 Azure Logic Apps 進行無接縫通訊，您可以搭配 Microsoft 的雲端解決方案「企業整合套件」啟用企業整合案例。 組織能以電子方式來交換訊息，即使他們使用不同的通訊協定與格式。 該套件會將不同的格式轉換為組織系統的可以解譯並處理的格式。 組織可以透過業界標準通訊協定 (包括 [AS2](../logic-apps/logic-apps-enterprise-integration-as2.md)、[X12](logic-apps-enterprise-integration-x12.md) 與 [EDIFACT](../logic-apps/logic-apps-enterprise-integration-edifact.md)) 來交換訊息。 您也可以使用加密與數位簽章來保護訊息的安全。
+如需企業對企業 (B2B) 解決方案，以及在組織間進行無接縫通訊，您可以使用企業整合套件 (EIP) 搭配 [Azure Logic Apps](../logic-apps/logic-apps-overview.md)來建置可調整的自動化企業整合工作流程。 雖然組織使用不同的通訊協定與格式，但他們能以電子方式來交換訊息。 EIP 會將不同格式轉換成您組織系統可以處理，並且可支援業界標準通訊協定的格式，包括 [AS2](../logic-apps/logic-apps-enterprise-integration-as2.md)、[X12](logic-apps-enterprise-integration-x12.md) 和 [EDIFACT](../logic-apps/logic-apps-enterprise-integration-edifact.md)。 您也可以使用加密和數位簽章來改善訊息的安全性。 EIP 支援這些[企業整合連接器](../connectors/apis-list.md#integration-account-connectors)及下列產業標準：
 
-若您熟悉 BizTalk Server 或 Microsoft Azure BizTalk 服務，您會發現企業整合功能很容易使用，因為大部分的概念是類似的。 有一個主要差異是企業整合會使用整合帳戶，來簡化對於 B2B 通訊中所使用構件的儲存與管理。 
+* 電子資料交換 (EDI)
+* 企業應用程式整合 (EAI)
 
-就架構而言，企業整合套件是以「整合帳戶」為基礎。 這些帳戶是雲端型容器，其中儲存您的所有構件，例如結構描述、合作夥伴、憑證、對應與合約。 您可以使用這些構件來設計、部署及維護您的 B2B 應用程式，以及針對邏輯應用程式建置 B2B 工作流程。 但是，在您可以使用這些構件之前，您必須先將您的整合帳戶連結到您的邏輯應用程式。 之後，您的邏輯應用程式就可以存取您整合帳戶的構件。
+如果您熟悉 Microsoft BizTalk Server 或 Azure BizTalk 服務，EIP 遵循的概念與之類似，為的是讓功能更容易使用。 但是，有一個主要差異是 EIP 以「整合帳戶」為基礎，目的是簡化 B2B 通訊中所使用構件的儲存與管理。 這些帳戶是雲端型容器，其中儲存您的所有構件，例如合作夥伴、合約、結構描述、對應與憑證。 
 
-## <a name="why-should-you-use-enterprise-integration"></a>為什麼應該使用企業整合？
+## <a name="why-use-the-enterprise-integration-pack"></a>為什麼使用企業整合套件？
 
-* 透過企業整合，您可以在一個位置 (亦即您的整合帳戶) 儲存您的所有構件。
-* 您可以使用 Azure Logic Apps 與其所有連接器來建置 B2B 工作流程，並整合協力廠商軟體即服務 (SaaS) 應用程式、內部部署應用程式與自訂應用程式。
+* 透過 EIP，您可以在一個位置 (亦即您的整合帳戶) 儲存您的所有構件。
+
+* 您可以使用 Azure Logic Apps 與連接器來建置 B2B 工作流程，並整合第三方軟體即服務 (SaaS) 應用程式、內部部署應用程式與自訂應用程式。
+
 * 您可以使用 Azure 函式為您的邏輯應用程式建立自訂程式碼。
 
-## <a name="how-to-get-started-with-enterprise-integration"></a>如何開始使用企業整合？
+## <a name="how-do-i-get-started"></a>如何開始使用？
 
-您可以透過 **Azure 入口網站**中的邏輯應用程式設計工具，使用企業整合套件來建置及管理 B2B 應用程式。 您也可以使用 [PowerShell](https://docs.microsoft.com/powershell/module/az.logicapp) 來管理邏輯應用程式。
+在您開始使用 EIP 建立 B2B 邏輯應用程式工作流程之前，您需要下列項目：
 
-以下是在 Azure 入口網站中建立應用程式之前必須執行的高階步驟︰
+* Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
-![概觀影像](media/logic-apps-enterprise-integration-overview/overview-0.png)  
+* [整合帳戶](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)，其中包含您要使用的構件
 
-## <a name="what-are-some-common-scenarios"></a>有哪些常見的案例？
+* 若要建立對應和結構描述，您可以使用[適用於 Visual Studio 2015 2.0 和 Visual Studio 2015 的 Microsoft Azure Logic Apps 企業整合工具](https://aka.ms/vsmapsandschemas)。
 
-企業整合支援下列產業標準：
+建立整合帳戶並新增構件之後，您就可以在 Azure 入口網站中建立邏輯應用程式，以開始使用這些構件來建立 B2B 工作流程。 如果您不熟悉邏輯應用程式，請嘗試[建立基本邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 若要使用這些構件，您必須先將您的整合帳戶連結到您的邏輯應用程式。 之後，您的邏輯應用程式就可以存取您的整合帳戶。 您也可以使用 Visual Studio 或 [PowerShell](https://docs.microsoft.com/powershell/module/az.logicapp) 來建立、管理及部署邏輯應用程式。
 
-* EDI - 電子資料交換
-* EAI - 企業應用程式整合
+以下是開始建立 B2B 邏輯應用程式的概括步驟：
 
-## <a name="heres-what-you-need-to-get-started"></a>若要開始，您需要：
+![建立 B2B 邏輯應用程式的必要條件](./media/logic-apps-enterprise-integration-overview/overview.png)  
 
-* 具有整合帳戶的 Azure 訂用帳戶
-* 可建立對應和結構描述的 Visual Studio 2015
-* [Visual Studio 2015 2.0 適用的 Microsoft Azure Logic Apps 企業整合工具](https://aka.ms/vsmapsandschemas)  
+## <a name="try-now"></a>立即試用
 
-## <a name="try-it-now"></a>立刻嘗試
+[部署可完整運作的範例邏輯應用程式來傳送和接收 AS2 訊息](https://github.com/Azure/azure-quickstart-templates/tree/master/201-logic-app-as2-send-receive)
 
-[部署可運作的 AS2 傳送與接收邏輯應用程式](https://github.com/Azure/azure-quickstart-templates/tree/master/201-logic-app-as2-send-receive)，這些應用程式使用 Azure Logic Apps 的 B2B 功能。
+## <a name="next-steps"></a>後續步驟
 
-## <a name="learn-more"></a>深入了解
-* [合約](../logic-apps/logic-apps-enterprise-integration-agreements.md "了解企業整合合約")
-* [企業對企業 (B2B) 案例](../logic-apps/logic-apps-enterprise-integration-b2b.md "了解如何建立具有 B2B 功能的 Logic Apps")  
-* [憑證](logic-apps-enterprise-integration-certificates.md "了解企業整合憑證")
-* [一般檔案編碼/解碼](logic-apps-enterprise-integration-flatfile.md "了解如何將一般檔案內容編碼和解碼")  
-* [整合帳戶](../logic-apps/logic-apps-enterprise-integration-accounts.md "了解整合帳戶")
-* [對應](../logic-apps/logic-apps-enterprise-integration-maps.md "了解企業整合對應")
-* [合作夥伴](logic-apps-enterprise-integration-partners.md "了解企業整合夥伴")
-* [結構描述](logic-apps-enterprise-integration-schemas.md "了解企業整合結構描述")
-* [XML 訊息驗證](logic-apps-enterprise-integration-xml.md "了解如何使用 Logic Apps 驗證 XML 訊息")
-* [XML 轉換](logic-apps-enterprise-integration-transform.md "了解企業整合對應")
-* [企業整合連接器](../connectors/apis-list.md "了解企業整合套件連接器")
-* [整合帳戶中繼資料](../logic-apps/logic-apps-enterprise-integration-metadata.md "深入了解整合帳戶中繼資料")
-* [監視 B2B 訊息](logic-apps-monitor-b2b-message.md "深入了解監視 B2B 訊息")
-* [追蹤 Azure 監視器記錄檔中的 B2B 訊息](logic-apps-track-b2b-messages-omsportal.md "深入了解如何追蹤 Azure 監視器記錄檔中的 B2B 訊息")
-
+* [建立交易夥伴](logic-apps-enterprise-integration-partners.md)
+* [建立合約](../logic-apps/logic-apps-enterprise-integration-agreements.md)
+* [新增結構描述](logic-apps-enterprise-integration-schemas.md)
+* [新增對應](../logic-apps/logic-apps-enterprise-integration-maps.md)
+* [從 BizTalk 服務移轉](../logic-apps/logic-apps-move-from-mabs.md)

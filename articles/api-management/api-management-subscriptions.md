@@ -9,16 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: apimpm
-ms.openlocfilehash: 6f577530c42952c6340a15110bcd37383a5fca57
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 137cbec270b40042503fc7687c9deb39b0df1aa4
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60693533"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243285"
 ---
 # <a name="subscriptions-in-azure-api-management"></a>Azure API 管理中的訂用帳戶
 
@@ -34,7 +33,7 @@ ms.locfileid: "60693533"
 > APIM 也支援其他保護 API 存取權的機制，包括下列範例：
 > - [OAuth2.0](api-management-howto-protect-backend-with-aad.md)
 > - [用戶端憑證](api-management-howto-mutual-certificates-for-clients.md)
-> - [IP 允許清單](https://docs.microsoft.com/azure/api-management/api-management-access-restriction-policies#RestrictCallerIPs)
+> - [IP 允許清單](./api-management-access-restriction-policies.md#RestrictCallerIPs)
 
 ## <a name="scope-of-subscriptions"></a>訂用帳戶的範圍
 
@@ -42,12 +41,12 @@ ms.locfileid: "60693533"
 
 ### <a name="subscriptions-for-a-product"></a>產品的訂用帳戶
 
-傳統上，APIM 中的訂用帳戶始終與單一 [API 產品](api-management-terminology.md)範圍相關聯。 開發人員可在開發人員入口網站上找到產品清單。 然後他們會針對想要使用的產品提交訂用帳戶要求。 訂用帳戶要求核准之後 (自動或由 API 發行者)，開發人員可以使用其中的金鑰存取產品中的所有 API。
+傳統上，APIM 中的訂用帳戶始終與單一 [API 產品](api-management-terminology.md)範圍相關聯。 開發人員可在開發人員入口網站上找到產品清單。 然後他們會針對想要使用的產品提交訂用帳戶要求。 在核准訂用帳戶要求之後（自動或由 API 發行者），開發人員可以使用其中的金鑰來存取產品中的所有 Api。目前，開發人員入口網站只會在 [使用者設定檔] 區段下顯示產品範圍的訂閱。 
 
 ![產品訂用帳戶](./media/api-management-subscriptions/product-subscription.png)
 
 > [!TIP]
-> 在某些情況下，API 發行者可能會想要公開發佈 API 產品，而不需要訂用帳戶。 他們可以取消選取 Azure 入口網站中產品 [設定] 頁面中的 [需要訂用帳戶] 選項。 因此，無需 API 金鑰即可存取產品下的所有 API。
+> 在某些情況下，API 發行者可能會想要公開發佈 API 產品，而不需要訂用帳戶。 他們可以取消選取 Azure 入口網站中產品 [設定]**** 頁面中的 [需要訂用帳戶]**** 選項。 因此，無需 API 金鑰即可存取產品下的所有 API。
 
 ### <a name="subscriptions-for-all-apis-or-an-individual-api"></a>適用於所有 API 或個別 API 的訂用帳戶
 

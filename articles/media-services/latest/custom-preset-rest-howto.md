@@ -1,5 +1,5 @@
 ---
-title: 編碼自訂的轉換使用媒體服務 v3 REST-Azure |Microsoft Docs
+title: 使用媒體服務 v3 REST 編碼自訂轉換-Azure |Microsoft Docs
 description: 本主題說明如何使用 Azure 媒體服務 v3 來編碼使用 REST 的自訂轉換。
 services: media-services
 documentationcenter: ''
@@ -10,36 +10,36 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: article
 ms.custom: ''
-ms.date: 03/12/2019
+ms.date: 05/14/2019
 ms.author: juliako
-ms.openlocfilehash: a9de15530981e14e664df605cb3274c9e754ef0d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 30e22cb786e5dc2a667fe41ca8edf398cf0b7613
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60733023"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "65761802"
 ---
-# <a name="how-to-encode-with-a-custom-transform---rest"></a>如何使用自訂的轉換為 REST 進行編碼
+# <a name="how-to-encode-with-a-custom-transform---rest"></a>如何使用自訂轉換進行編碼-REST
 
-當使用 Azure 媒體服務編碼，您可以快速開始使用其中一個建議的內建預設值，根據業界最佳作法，如所示[串流檔案](stream-files-tutorial-with-rest.md#create-a-transform)教學課程。 您也可以建置自訂預設值為目標的特定案例或裝置需求。
+使用 Azure 媒體服務進行編碼時，您可以根據業界最佳作法，快速開始使用其中一個建議的內建預設值，如[串流](stream-files-tutorial-with-rest.md#create-a-transform)檔案教學課程中所示。 您也可以建立自訂預設值，以特定案例或裝置需求為目標。
 
 ## <a name="considerations"></a>考量
 
-在建立自訂的預設設定時，適用下列考量：
+建立自訂預設時，適用下列考慮事項：
 
-* 高度和寬度 AVC 內容上的所有值必須都是 4 的倍數。
-* Azure 媒體服務 v3 中所有的編碼位元速率是每秒位元。 這是我們使用千位元/秒為單位的 v2 Api 與預設值不同。 比方說，如果 （kb/秒） 指定在 v2 中的位元速率為 128，v3 中它會設 128000 （位元/秒）。
+* AVC 內容的所有高度和寬度值都必須是4的倍數。
+* 在 Azure 媒體服務 v3 中，所有編碼位元速率都是以每秒位數為單位。 這不同于預設值和我們的 v2 Api，其使用千位/秒作為單位。 例如，如果 v2 中的位元速率指定為128（千位/秒），則在 v3 中，它會設定為128000（位/秒）。
 
-## <a name="prerequisites"></a>必要條件 
+## <a name="prerequisites"></a>Prerequisites 
 
 - [建立媒體服務帳戶](create-account-cli-how-to.md)。 <br/>請務必記住資源群組名稱和「媒體服務」帳戶名稱。 
 - [設定 Postman 以進行 Azure 媒體服務 REST API 呼叫](media-rest-apis-with-postman.md)。<br/>請務必遵循本[取得 Azure AD 權杖](media-rest-apis-with-postman.md#get-azure-ad-token)主題的最後一個步驟。 
 
-## <a name="define-a-custom-preset"></a>定義自訂的預設值
+## <a name="define-a-custom-preset"></a>定義自訂預設值
 
-下列範例會定義新的轉換的要求主體。 我們會定義一組我們想要使用這項轉換時產生的輸出。 
+下列範例會定義新轉換的要求主體。 我們會定義一組我們想要在使用此轉換時產生的輸出。 
 
-在此範例中，我們先新增 AacAudio 層的音訊的編碼方式和兩個 H264Video 層進行視訊編碼。 在視訊層中，我們會指派標籤，以便它們可以用於輸出檔案名稱。 接下來，我們想要輸出也包含 縮圖。 在下列範例中，我們會指定產生在 50%的輸入視訊的解析度和三個時間戳記-{25%、 50%、 75} 長度的輸入視訊的 PNG 格式中的映像。 最後，我們會指定輸出檔案-一個用於視訊 + 音訊格式，另一個用於縮圖。 由於我們有多個 H264Layers，我們必須使用巨集，產生唯一的名稱，每一層級。 我們可以使用`{Label}`或`{Bitrate}`巨集，此範例示範先前的功能。
+在此範例中，我們會先新增音訊編碼的 Aacaudio 屬性圖層，以及用於影片編碼的兩個 H264Video 圖層。 在影片圖層中，我們會指派標籤，以便在輸出檔案名中使用。 接下來，我們希望輸出也包含縮圖。 在下列範例中，我們會以 PNG 格式來指定影像，在輸入影片的解析度50% 產生，並以三個時間戳記（{25%，50%，75}）輸入影片的長度。 最後，我們會指定輸出檔案的格式：一個用於 video + 音訊，另一個用於縮圖。 因為我們有多個 H264Layers，所以我們必須使用每個圖層產生唯一名稱的宏。 我們可以使用 `{Label}` 或 `{Bitrate}` 宏，此範例會顯示前者。
 
 ```json
 {
@@ -115,7 +115,7 @@ ms.locfileid: "60733023"
                     "formats": [
                         {
                             "@odata.type": "#Microsoft.Media.Mp4Format",
-                            "filenamePattern": "Video-{Basename}-{Label}{Extension}",
+                            "filenamePattern": "Video-{Basename}-{Label}-{Bitrate}{Extension}",
                             "outputFiles": []
                         },
                         {
@@ -133,9 +133,9 @@ ms.locfileid: "60733023"
 
 ## <a name="create-a-new-transform"></a>建立新的轉換  
 
-在此範例中，我們會建立**轉換**我們稍早定義的自訂預設值為基礎。 建立時轉換，您應該先使用[取得](https://docs.microsoft.com/rest/api/media/transforms/get)来檢查其中一個已存在。 如果轉換已存在，則重複使用它。 
+在此範例中，我們建立的**轉換**是以先前定義的自訂預設值為基礎。 建立轉換時，您應該先使用[Get](https://docs.microsoft.com/rest/api/media/transforms/get)來檢查其中一個是否已存在。 如果轉換存在，請重複使用它。 
 
-在您下載的 Postman 集合中，選取**轉換，並在作業**->**Create 或 Update 轉換**。
+在您下載的 Postman 集合中，選取 [**轉換和作業**] [ -> **建立或更新轉換**]。
 
 **PUT** HTTP 要求方法類似：
 
@@ -143,12 +143,12 @@ ms.locfileid: "60733023"
 PUT https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/transforms/:transformName?api-version={{api-version}}
 ```
 
-選取 **主體**索引標籤，並取代主體使用 json 程式碼[稍早定義](#define-a-custom-preset)。 若要將轉換套用至指定的視訊或音訊的媒體服務，您需要提交作業，以在該轉換。
+選取 [**主體**] 索引標籤，並以您稍[早定義](#define-a-custom-preset)的 json 程式碼取代本文。 若要媒體服務將轉換套用到指定的影片或音訊，您必須在該轉換下提交作業。
 
 選取 [傳送]。 
 
-若要將轉換套用至指定的視訊或音訊的媒體服務，您需要提交作業，以在該轉換。 如需示範如何提交下轉型作業的完整範例，請參閱[教學課程：Stream 視訊檔案-REST](stream-files-tutorial-with-rest.md)。
+若要媒體服務將轉換套用到指定的影片或音訊，您必須在該轉換下提交作業。 如需示範如何在轉換下提交作業的完整範例，請參閱[教學課程：串流影片檔案-REST](stream-files-tutorial-with-rest.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
-請參閱[其他 REST 作業](https://docs.microsoft.com/rest/api/media/)
+查看[其他 REST 作業](https://docs.microsoft.com/rest/api/media/)

@@ -1,19 +1,19 @@
 ---
 title: 如何在 Azure Cosmos DB 中查詢圖形資料？
-description: 了解如何在 Azure Cosmos DB 中查詢圖形資料
+description: 了解如何使用 Gremlin 查詢從 Azure Cosmos DB 中查詢圖表資料
 author: luisbosquez
 ms.author: lbosq
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: tutorial
-ms.date: 01/02/2018
+ms.date: 12/03/2018
 ms.reviewer: sngun
-ms.openlocfilehash: 2bc79801864481562967702a7c52a7670950199b
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 1dde7bfc74c6a7b0c03d8f192f4e6eaf72e2de6b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043969"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "74870168"
 ---
 # <a name="tutorial-query-azure-cosmos-db-gremlin-api-by-using-gremlin"></a>教學課程：使用 Gremlin 查詢 Azure Cosmos DB Gremlin API
 
@@ -24,7 +24,7 @@ Azure Cosmos DB [Gremlin API](graph-introduction.md) 支援 [Gremlin](https://gi
 > [!div class="checklist"]
 > * 使用 Gremlin 來查詢資料
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要讓這些查詢能夠運作，您必須具備 Azure Cosmos DB 帳戶，並且在容器中有圖形資料。 不符合上述其中任何一項條件嗎？ 請完成 [5 分鐘快速入門](create-graph-dotnet.md)或[開發人員教學課程](tutorial-query-graph.md)，以建立帳戶並在資料庫中填入資料。 您可以使用 [Gremlin 主控台](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console)或慣用的 Gremlin 驅動程式，執行下列查詢。
 

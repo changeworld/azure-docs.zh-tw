@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/08/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64e3e7928d9f39b9ed2a681eb8ec9a63f73ea54a
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 043c30af6d28e61a532c8030dabdc17b73303e7a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65507954"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85360124"
 ---
 # <a name="azure-ad-connect-enabling-device-writeback"></a>Azure AD Connect：啟用裝置回寫
 > [!NOTE]
@@ -31,33 +31,33 @@ ms.locfileid: "65507954"
 
 以下文件提供有關在 Azure AD Connect 中啟用裝置回寫功能的資訊。 裝置回寫用於下列案例：
 
-* 啟用[Windows hello 企業版使用混合式憑證信任部署](https://docs.microsoft.com/en-us/windows/security/identity-protection/hello-for-business/hello-hybrid-cert-trust-prereqs#device-registration)
-* 對 ADFS (2012 R2 或更高版本) 保護的應用程式 (信賴憑證者信任)，根據裝置啟用條件式存取。
+* [使用混合式憑證信任部署啟用 Windows Hello 企業版](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-hybrid-cert-trust-prereqs#device-registration)
+* 啟用以裝置至 ADFS （2012 R2 或更高版本）保護的應用程式（信賴憑證者信任）為基礎的條件式存取。
 
-這提供額外的安全性，確保只授權信任的裝置才能存取應用程式。 如需條件式存取的詳細資訊，請參閱[使用條件式存取管理風險](../active-directory-conditional-access-azure-portal.md)和[使用 Azure Active Directory 裝置註冊設定內部部署條件式存取](../../active-directory/active-directory-device-registration-on-premises-setup.md)。
+這提供額外的安全性，確保只授權信任的裝置才能存取應用程式。 如需條件式存取的詳細資訊，請參閱透過[條件式存取管理風險](../active-directory-conditional-access-azure-portal.md)和[使用 Azure Active Directory 裝置註冊設定內部部署條件式存取](../../active-directory/active-directory-device-registration-on-premises-setup.md)。
 
 > [!IMPORTANT]
 > <li>裝置必須位於使用者所在的樹系中。 由於裝置必須回寫到單一樹系中，因此這項功能目前並不支援利用多重使用者樹系的部署。</li>
 > <li>只有一個裝置註冊設定物件可以新增至內部部署 Active Directory 樹系。 這項功能與會將內部部署 Active Directory 同步至多個 Azure AD 目錄的拓撲不相容。</li>
 
-## <a name="part-1-install-azure-ad-connect"></a>第 1 部分：安裝 Azure AD Connect。
+## <a name="part-1-install-azure-ad-connect"></a>第 1 部分：安裝 Azure AD Connect
 使用自訂或快速設定安裝 Azure AD Connect。 Microsoft 建議您在啟用裝置回寫之前，首先讓所有使用者和群組成功完成同步處理。
 
 ## <a name="part-2-enable-device-writeback-in-azure-ad-connect"></a>第 2 部分：在 Azure AD Connect 中啟用裝置回寫功能
-1. 再次執行安裝精靈。 選取 [其他工作] 頁面中的 [設定裝置選項]，然後按 [下一步]。 
+1. 再次執行安裝精靈。 選取 [其他工作] 頁面中的 [設定裝置選項]****，然後按 [下一步]****。 
 
     ![設定裝置選項](./media/how-to-connect-device-writeback/deviceoptions.png)
 
     >[!NOTE]
     > 新的設定裝置選項僅適用於 1.1.819.0 版和更新版本。
 
-2. 在裝置選項頁面上，選取 [設定裝置回寫]。 直到啟用裝置回寫以後，才可使用 [停用裝置回寫] 選項。 按 [下一步] 移至精靈的下一頁。
+2. 在裝置選項頁面上，選取 [設定裝置回寫]****。 直到啟用裝置回寫以後，才可使用 [停用裝置回寫]**** 選項。 按 [下一步]**** 移至精靈的下一頁。
     ![選擇裝置作業](./media/how-to-connect-device-writeback/configuredevicewriteback1.png)
 
 3. 在 [回寫] 頁面中，您會看到提供的網域已成為預設的裝置回寫樹系。
    ![自訂安全裝置回寫樹系](./media/how-to-connect-device-writeback/writebackforest.png)
 
-4. [裝置容器] 頁面使用下列其中一個可用選項來提供準備 Active Directory 的選項：
+4. [裝置容器]**** 頁面使用下列其中一個可用選項來提供準備 Active Directory 的選項：
 
     a. **提供企業系統管理員認證**：如果針對裝置需要回寫的樹系提供企業系統管理員認證，則 Azure AD Connect 會在裝置回寫的設定期間自動準備樹系。
 
@@ -94,11 +94,11 @@ ms.locfileid: "65507954"
 * 存有裝置的樹系必須將樹系結構描述升級到 Windows 2012 R2 層級，以便讓裝置物件和相關聯的屬性存在。
 * 如果安裝精靈已經在執行中，則將不會偵測到任何變更。 在此情況下，請先完成安裝精靈，然後再執行一次。
 * 確定您在初始化指令碼中提供的帳戶是 Active Directory 連接器實際使用的正確使用者。 若要確認，請依照下列步驟執行：
-  * 從 [開始] 功能表開啟 [同步處理服務] 。
-  * 開啟 [連接器]  索引標籤。
+  * 從 [開始] 功能表開啟 [同步處理服務] ****。
+  * 開啟 [連接器] **** 索引標籤。
   * 尋找類型為 Active Directory 網域服務的連接器並加以選取。
-  * 選取 [動作] 下方的 [屬性]。
-  * 前往 [連線至 Active Directory 樹系] 。 請確認此畫面上所指定的網域和使用者名稱，與提供給指令碼的帳戶相符。
+  * 在 [**動作**] 底下，選取 [**屬性**]。
+  * 前往 [連線至 Active Directory 樹系] ****。 請確認此畫面上所指定的網域和使用者名稱，與提供給指令碼的帳戶相符。
     ![Sync Service Manager 中的連接器帳戶](./media/how-to-connect-device-writeback/connectoraccount.png)
 
 確認 Active Directory 中的組態：

@@ -1,36 +1,98 @@
 ---
-title: Azure Data Factory 中的設定變數活動 | Microsoft Docs
+title: Azure Data Factory 中的設定變數活動
 description: 了解如何使用「設定變數」活動來設定在 Data Factory 管線中定義的現有變數值
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 10/10/2018
-author: sharonlo101
-ms.author: shlo
-manager: craigg
-ms.openlocfilehash: 71abfdff629f36b278488851b546c7371353a4d9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 04/07/2020
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
+ms.openlocfilehash: a0b5fa16658d3e354bcb4f90ad998997fc844a84
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60767960"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83832775"
 ---
 # <a name="set-variable-activity-in-azure-data-factory"></a>Azure Data Factory 中的設定變數活動
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 使用「設定變數」活動，為定義於 Data Factory 管線中的「字串」、「布林」或「陣列」類型設定現有變數值。
 
 ## <a name="type-properties"></a>類型屬性
 
-屬性 | 描述 | 必要項
+屬性 | 描述 | 必要
 -------- | ----------- | --------
-name | 管線中的活動名稱 | 是
-description | 說明活動用途的文字 | no
-type | 活動類型是 SetVariable | 是
-value | 用來設定指定變數的字串常值或運算式物件值 | 是
-variableName | 此活動所將設定的變數名稱 | 是
+NAME | 管線中的活動名稱 | 是
+description | 說明活動用途的文字 | 否
+type | 必須設為 [SetVariable] | 是
+value | 變數所指派至的字串常值或運算式物件值 | 是
+variableName | 此活動所設定的變數名稱 | 是
+
+## <a name="incrementing-a-variable"></a>遞增變數
+
+牽涉到 Azure Data Factory 中變數的常見案例是在 until 或 foreach 活動內使用變數作為迭代器。 在設定變數活動中，您無法參考要在 `value` 欄位中設定的變數。 若要解決這項限制，請設定暫存變數，然後建立第二個設定變數活動。 第二個設定變數活動會將迭代器的值設定為暫存變數。 
+
+此模式的範例如下：
+
+![遞增變數](media/control-flow-set-variable-activity/increment-variable.png "遞增變數")
+
+``` json
+{
+    "name": "pipeline3",
+    "properties": {
+        "activities": [
+            {
+                "name": "Set I",
+                "type": "SetVariable",
+                "dependsOn": [
+                    {
+                        "activity": "Increment J",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "userProperties": [],
+                "typeProperties": {
+                    "variableName": "i",
+                    "value": {
+                        "value": "@variables('j')",
+                        "type": "Expression"
+                    }
+                }
+            },
+            {
+                "name": "Increment J",
+                "type": "SetVariable",
+                "dependsOn": [],
+                "userProperties": [],
+                "typeProperties": {
+                    "variableName": "j",
+                    "value": {
+                        "value": "@string(add(int(variables('i')), 1))",
+                        "type": "Expression"
+                    }
+                }
+            }
+        ],
+        "variables": {
+            "i": {
+                "type": "String",
+                "defaultValue": "0"
+            },
+            "j": {
+                "type": "String",
+                "defaultValue": "0"
+            }
+        },
+        "annotations": []
+    }
+}
+```
 
 
 ## <a name="next-steps"></a>後續步驟

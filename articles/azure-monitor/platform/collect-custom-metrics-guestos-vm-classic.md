@@ -1,27 +1,26 @@
 ---
-title: 將客體 OS 計量傳送到 Windows 虛擬機器的 Azure 監視器資料存放區 (傳統)
+title: 將傳統 Windows VM 計量傳送至 Azure 監視器計量資料庫
 description: 將客體 OS 計量傳送到 Windows 虛擬機器的 Azure 監視器資料存放區 (傳統)
 author: anirudhcavale
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 09/24/2018
+ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: ''
-ms.openlocfilehash: 57212da1a8da7ee6c57faf2413b88a413df04817
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 7656b60c31e7da7841f9afb723167eb061fe3401
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57315124"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85124464"
 ---
-# <a name="send-guest-os-metrics-to-the-azure-monitor-data-store-for-a-windows-virtual-machine-classic"></a>將客體 OS 計量傳送到 Windows 虛擬機器的 Azure 監視器資料存放區 (傳統)
+# <a name="send-guest-os-metrics-to-the-azure-monitor-metrics-database-for-a-windows-virtual-machine-classic"></a>將客體作業系統計量傳送至 Windows 虛擬機器的 Azure 監視器計量資料庫（傳統）
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 Azure 監視器[診斷擴充功能](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) (也稱為 "WAD" 或「診斷」) 可讓您從當作虛擬機器、雲端服務或 Service Fabric 叢集一部分執行的客體作業系統 (客體 OS) 收集計量與記錄。 擴充功能可以將遙測資料傳送到[許多不同位置](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json)。
 
-本文說明將 Windows 虛擬機器 (傳統) 的客體 OS 效能計量傳送至 Azure 監視器計量存放區的流程。 從診斷 1.11 版開始，您可以直接將計量寫入到已收集標準平台計量的 Azure 監視器計量存放區。 
+本文說明將 Windows 虛擬機器（傳統）的來賓 OS 效能計量傳送至 Azure 監視器公制資料庫的程式。 從診斷 1.11 版開始，您可以直接將計量寫入到已收集標準平台計量的 Azure 監視器計量存放區。 
 
 將計量儲存在此位置，可讓您存取與您對平台計量執行的相同動作。 動作包括近乎即時的警示、圖表、路由、從 REST API 存取以及更多功能。 在過去，診斷擴充功能會寫入到 Azure 儲存體，而不是 Azure 監視器資料存放區。 
 
@@ -29,11 +28,13 @@ Azure 監視器[診斷擴充功能](https://docs.microsoft.com/azure/monitoring-
 
 ## <a name="prerequisites"></a>必要條件
 
-- 您必須是 Azure 訂用帳戶的[服務管理員或共同管理員](../../billing/billing-add-change-azure-subscription-administrator.md)。 
+- 您必須是 Azure 訂用帳戶的[服務管理員或共同管理員](../../cost-management-billing/manage/add-change-subscription-administrator.md)。 
 
 - 您必須先向 [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services) 註冊您的訂用帳戶。 
 
 - 您需要安裝 [Azure PowerShell](/powershell/azure) 或 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)。
+
+- 您的 VM 資源必須位於[支援自訂計量的區域](metrics-custom-overview.md#supported-regions)中。
 
 ## <a name="create-a-classic-virtual-machine-and-storage-account"></a>建立傳統虛擬機器和儲存體帳戶
 
@@ -42,12 +43,12 @@ Azure 監視器[診斷擴充功能](https://docs.microsoft.com/azure/monitoring-
 
 1. 建立此 VM 時，請選擇建立新傳統儲存體帳戶的選項。 我們會在稍後步驟中使用此儲存體帳戶。
 
-1. 在 Azure 入口網站中，移至 [儲存體帳戶] 資源刀鋒視窗。 選取 [金鑰]，並記下儲存體帳戶名稱和儲存體帳戶金鑰。 稍後的步驟將會需要這項資訊。
+1. 在 Azure 入口網站中，移至 [儲存體帳戶]**** 資源刀鋒視窗。 選取 [金鑰]****，並記下儲存體帳戶名稱和儲存體帳戶金鑰。 稍後的步驟將會需要這項資訊。
    ![儲存體存取金鑰](./media/collect-custom-metrics-guestos-vm-classic/storage-access-keys.png)
 
 ## <a name="create-a-service-principal"></a>建立服務主體
 
-使用[建立服務主體](../../active-directory/develop/howto-create-service-principal-portal.md)中的指示，在您的 Azure Active Directory 租用戶中建立服務主體。 進行此流程時，請注意下列事項： 
+使用[建立服務主體](../../active-directory/develop/howto-create-service-principal-portal.md)中的指示，在您的 Azure Active Directory 租使用者中建立服務主體。 進行此流程時，請注意下列事項： 
 - 為此應用程式建立新用戶端密碼。
 - 儲存金鑰與用戶端識別碼，以便在稍後的步驟中使用。
 
@@ -187,17 +188,17 @@ Azure 監視器[診斷擴充功能](https://docs.microsoft.com/azure/monitoring-
 
 1.  移至 Azure 入口網站。 
 
-1.  在左側功能表上，選取 [監視]。
+1.  在左側功能表上，選取 [**監視]。**
 
-1.  在 [監視] 刀鋒視窗上，選取 [計量]。
+1.  在 [監視]**** 刀鋒視窗上，選取 [計量]****。
 
     ![瀏覽計量](./media/collect-custom-metrics-guestos-vm-classic/navigate-metrics.png)
 
 1. 在 [資源] 下拉式功能表中，選取您的傳統 VM。
 
-1. 在 [命名空間] 下拉式功能表中，選取 **azure.vm.windows.guest**。
+1. 在 [命名空間] 下拉式功能表中，選取 [ **azure**]。
 
-1. 在 [計量] 下拉式功能表中，選取 [記憶體\認可的位元組 (使用中)]。
+1. 在 [計量] 下拉式功能表中，選取 [ **Memory\committed bytes 使用中的位元組**]。
    ![計量繪圖](./media/collect-custom-metrics-guestos-vm-classic/plot-metrics.png)
 
 

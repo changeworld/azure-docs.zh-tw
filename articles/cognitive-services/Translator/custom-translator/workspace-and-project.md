@@ -1,21 +1,21 @@
 ---
 title: 什麼是工作區和專案？ - 自訂翻譯工具
 titleSuffix: Azure Cognitive Services
-description: 工作區是用來撰寫和建置自訂翻譯系統的工作區域。 工作區可包含多個專案、模型和文件。 專案是模型、文件和測試的包裝函式。 每個專案都會自動包含上傳到該工作區且具有正確語言組的所有文件。
+description: 本文將說明工作區和專案之間的差異，以及自訂翻譯服務的專案類別和標籤。
 services: cognitive-services
-author: rajdeep-in
-manager: christw
+author: swmachan
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 02/21/2019
-ms.author: v-rada
+ms.date: 05/26/2020
+ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: dc45847f3dc2e11af9b7cf566fdd6780ec2b9dac
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 659ecbc7f6c2a5627824ff09af5f30ef503c9e16
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57762155"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954531"
 ---
 # <a name="what-is-a-custom-translator-workspace"></a>什麼是自訂翻譯工具工作區？
 
@@ -39,7 +39,7 @@ ms.locfileid: "57762155"
 
 自訂翻譯工具可讓您將專案標籤指派給專案。 專案標籤可區分多個具有相同語言組和類別的專案。 最佳做法是，在非必要時避免使用專案標籤。
 
-專案標籤會作為 CategoryID 的一部分。 如果專案標籤保留為未設定，或是多個專案間做了相同的設定，則具有相同類別和*不同*語言組的專案將會共用相同的 CategoryID。 此方法有其效用，因為它可讓您或客戶在使用文字翻譯工具 API 時順利地切換語言，而無須顧慮每個專案具有唯一 CategoryID 的問題。
+專案標籤會作為 CategoryID 的一部分。 如果專案標籤保留為未設定，或是多個專案間做了相同的設定，則具有相同類別和*不同*語言組的專案將會共用相同的 CategoryID。 這種方法很有利，因為它可讓您或您的客戶在使用 Translator 時切換語言，而不需要擔心每個專案獨有的類別。
 
 例如，如果我想要在技術領域中啟用英文翻譯成法文和法文翻譯成英文的翻譯，我會建立兩個專案：一個用於英文 -\> 法文，另一個用於法文 -\> 英文。 我會為兩者指定相同的類別 (技術)，並將專案標籤保留為空白。 這兩個專案的 CategoryID 會相符，因此我無須修改 CategoryID，即可直接對 API 查詢英文和法文翻譯。
 

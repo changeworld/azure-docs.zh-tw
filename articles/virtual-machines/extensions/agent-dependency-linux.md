@@ -1,6 +1,6 @@
 ---
-title: 適用於 Linux 的 azure 監視相依性的虛擬機器擴充功能 |Microsoft Docs
-description: 部署使用虛擬機器擴充功能的 Linux 虛擬機器上的 Azure 監視相依性代理程式。
+title: 適用於 Linux 的 Azure 監視器相依性虛擬機器擴充功能
+description: 使用虛擬機器擴充功能在 Linux 虛擬機器上部署 Azure 監視器相依性代理程式。
 services: virtual-machines-linux
 documentationcenter: ''
 author: mgoedtel
@@ -9,32 +9,30 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/29/2019
 ms.author: magoedte
-ms.openlocfilehash: 16491ccc8a9cdc24b82c4c4e27705fa30da61088
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: cf4653ea7e49404af9e6d46796a7b00d9373c6da
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60800225"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996545"
 ---
-# <a name="azure-monitor-dependency-virtual-machine-extension-for-linux"></a>適用於 Linux 的 azure 監視相依性的虛擬機器擴充功能
+# <a name="azure-monitor-dependency-virtual-machine-extension-for-linux"></a>適用於 Linux 的 Azure 監視器相依性虛擬機器擴充功能
 
-適用於 VM 的 Azure 監視器對應功能會從 Microsoft Dependency Agent 取得其資料。 適用於 Linux 的 Azure VM 的相依性代理程式虛擬機器擴充功能是發行，並由 Microsoft 支援。 Azure 虛擬機器上安裝相依性代理程式擴充功能。 本文件詳述支援的平台、 組態和適用於 Linux 的 Azure VM 的相依性代理程式虛擬機器擴充功能的部署選項。
+適用於 VM 的 Azure 監視器對應功能會從 Microsoft Dependency Agent 取得其資料。 Microsoft 已發佈並支援適用於 Linux 的 Azure VM 相依性代理程式虛擬機器擴充功能。 此擴充功能會在 Azure 虛擬機器上安裝相依性代理程式。 此文件詳細說明適用於 Linux 的 Azure VM 相依性代理程式虛擬機器擴充功能所支援的平台、組態和部署選項。
 
 ## <a name="prerequisites"></a>必要條件
 
 ### <a name="operating-system"></a>作業系統
 
-適用於 Linux 的 Azure VM 的相依性代理程式擴充功能可以執行支援的作業系統中所列[Supported operating systems](../../azure-monitor/insights/vminsights-onboard.md#supported-operating-systems) Azure 監視的 Vm 部署文件的區段。
+適用於 Linux 的 Azure VM 相依性代理程式擴充功能可以針對「適用於 VM 的 Azure 監視器」部署文章的[支援的作業系統](../../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems)一節中所列的支援的作業系統來執行。
 
 ## <a name="extension-schema"></a>擴充功能結構描述
 
-下列 JSON 顯示 Azure Linux VM 上的 Azure VM 的相依性代理程式擴充功能的結構描述。 
+下列 JSON 顯示 Azure Linux VM 上 Azure VM 相依性代理程式擴充功能的結構描述。 
 
 ```json
 {
@@ -74,7 +72,7 @@ ms.locfileid: "60800225"
 
 ### <a name="property-values"></a>屬性值
 
-| 名稱 | 值 / 範例 |
+| 名稱 | 值/範例 |
 | ---- | ---- |
 | apiVersion | 2015-01-01 |
 | publisher | Microsoft.Azure.Monitoring.DependencyAgent |
@@ -83,11 +81,11 @@ ms.locfileid: "60800225"
 
 ## <a name="template-deployment"></a>範本部署
 
-也可以使用 Azure Resource Manager 範本部署 Azure VM 擴充功能。 上一節中詳述的 JSON 結構描述可以用於 Azure Resource Manager 範本，在 Azure Resource Manager 範本部署期間執行 Azure VM 的相依性代理程式擴充功能。 
+您可以使用 Azure Resource Manager 範本部署 Azure VM 擴充功能。 在部署 Azure Resource Manager 範本時，您可以在 Azure Resource Manager 範本中使用上一節詳述的 JSON 結構描述來執行 Azure VM 相依性代理程式擴充功能。
 
-虛擬機器擴充功能的 JSON 可以巢狀方式置於虛擬機器資源內部，或放在 Resource Manager JSON 範本的根目錄或最上層。 JSON 的放置會影響資源名稱和類型的值。 如需詳細資訊，請參閱[設定子資源的名稱和類型](../../azure-resource-manager/resource-group-authoring-templates.md#child-resources)。 
+虛擬機器擴充功能的 JSON 能以巢狀方式置於虛擬機器資源內部。 或者，您可以將其放在 Resource Manager JSON 範本的根目錄層或最上層。 JSON 的放置會影響資源名稱和類型的值。 如需詳細資訊，請參閱[設定子資源的名稱和類型](../../azure-resource-manager/templates/child-resource-name-type.md)。
 
-下列範例假設虛擬機器資源內部巢狀相依性代理程式擴充功能。 在巢狀處理擴充資源時，JSON 會放在虛擬機器的 `"resources": []` 物件中。
+下列範例假設相依性代理程式擴充功能以巢狀方式置於虛擬機器資源內部。 當您以巢狀方式安置擴充功能資源時，JSON 會放在虛擬機器的 `"resources": []` 物件中。
 
 
 ```json
@@ -108,7 +106,7 @@ ms.locfileid: "60800225"
 }
 ```
 
-將擴充 JSON 置於範本的根目錄時，資源名稱包含父系虛擬機器的參考，而類型可反映巢狀的組態。 
+當您將擴充功能 JSON 放在範本的根目錄時，資源名稱會包含對父代虛擬機器的參考。 型別會反映以巢狀方式安置的設定。 
 
 ```json
 {
@@ -130,7 +128,7 @@ ms.locfileid: "60800225"
 
 ## <a name="azure-cli-deployment"></a>Azure CLI 部署
 
-Azure CLI 可用來將相依性代理程式 VM 擴充功能部署到現有的虛擬機器。  
+您可以使用 Azure CLI，將相依性代理程式 VM 擴充功能部署到現有的虛擬機器。  
 
 ```azurecli
 
@@ -146,7 +144,7 @@ az vm extension set \
 
 ### <a name="troubleshoot"></a>疑難排解
 
-使用 Azure CLI，就可以從 Azure 入口網站擷取有關擴充功能部署狀態的資料。 若要查看指定 VM 的擴充功能部署狀態，請使用 Azure CLI 執行下列命令。
+您可以使用 Azure CLI 從 Azure 入口網站擷取有關擴充功能部署狀態的資料。 若要查看指定 VM 的擴充功能部署狀態，請使用 Azure CLI 執行下列命令：
 
 ```azurecli
 az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
@@ -155,9 +153,9 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 擴充功能執行輸出會記錄至下列檔案︰
 
 ```
-/opt/microsoft/dependcency-agent/log/install.log 
+/opt/microsoft/dependency-agent/log/install.log 
 ```
 
 ### <a name="support"></a>支援
 
-如果您在本文中有任何需要協助的地方，您可以連絡 [MSDN Azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/forums/)上的 Azure 專家。 或者，您可以提出 Azure 支援事件。 請移至 [Azure 支援網站](https://azure.microsoft.com/support/options/)，然後選取 [取得支援]。 如需使用 Azure 支援的資訊，請參閱 [Microsoft Azure 支援常見問題集](https://azure.microsoft.com/support/faq/)。
+如果您在此文章中有任何需要協助的地方，請連絡 [MSDN Azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/forums/)上的 Azure 專家。 或者，您也可以提出 Azure 支援事件。 請移至 [Azure 支援網站](https://azure.microsoft.com/support/options/)，然後選取 [取得支援]。 如需如何使用 Azure 支援的相關資訊，請參閱 [Microsoft Azure 支援常見問題集](https://azure.microsoft.com/support/faq/)。

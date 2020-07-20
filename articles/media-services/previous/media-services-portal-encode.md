@@ -14,21 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 90190f426419e65bd580b9004ae76a2c6b0c12e2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 7c147d99eaabee70316521d1f2bdc41933162ab1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61463138"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "69542602"
 ---
 # <a name="encode-an-asset-by-using-media-encoder-standard-in-the-azure-portal"></a>在 Azure 入口網站中使用媒體編碼器標準為資產編碼
 
 > [!NOTE]
-> 若要完成此教學課程，您需要 Azure 帳戶。 如需詳細資訊，請參閱 [Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。 
+> 若要完成此教學課程，您需要 Azure 帳戶。 如需詳細資訊，請參閱[Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。 
 > 
 > 
 
-使用 Azure 媒體服務時，其中一個最常見案例是提供自適性串流給您的用戶端。 媒體服務支援下列自適性串流技術：Apple HTTP 即時串流 (HLS)、Microsoft Smooth Streaming 和 Dynamic Adaptive Streaming over HTTP (DASH，也稱為 MPEG-DASH)。 若要針對自適性串流準備您的視訊，請先將來源視訊編碼為多位元速率檔案。 您可以使用 Azure 媒體編碼器標準來編碼視訊。  
+使用 Azure 媒體服務時，其中一個最常見案例是提供自適性串流給您的用戶端。 媒體服務支援下列自適性串流技術：Apple HTTP Live Streaming (HLS)、Microsoft Smooth Streaming 和 Dynamic Adaptive Streaming over HTTP (DASH，也稱為 MPEG-DASH)。 若要針對自適性串流準備您的視訊，請先將來源視訊編碼為多位元速率檔案。 您可以使用媒體編碼器標準來編碼您的影片。  
 
 媒體服務為您提供動態封裝。 透過動態封裝，您可以利用 HLS、Smooth Streaming 和 MPEG-DASH 傳遞多位元速率 MP4，而不必以這些串流格式重新封裝。 當您使用動態封裝時，您可以儲存及播放單一儲存格式的檔案。 媒體服務會根據用戶單的要求建置及傳遞適當的回應。
 
@@ -41,14 +40,14 @@ ms.locfileid: "61463138"
 若要使用媒體編碼器標準為內容編碼：
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)中，選取您的 Azure 媒體服務帳戶。
-2. 選取 **設定** > **資產**。 選取您要編碼的資產。
-3. 選取 [編碼] 按鈕。
-4. 在 [為資產編碼] 窗格中，選取 [媒體編碼器標準] 處理器和預設值。 如需預設值的相關資訊，請參閱[自動產生位元速率排行榜](media-services-autogen-bitrate-ladder-with-mes.md)和[媒體編碼器標準的工作預設值](media-services-mes-presets-overview.md)。 請務必選擇最適合輸入影片的預設值。 例如，如果您知道您的輸入視訊的解析度為 1920 &#215; 1080 像素，您可選擇 [H264 多位元速率 1080p] 預設值。 如果您有低解析度 (640 &#215; 360) 影片，您不應該使用 [H264 多重位元速率 1080p] 預設值。
+2. 選取 [**設定**] [  >  **資產**]。 選取您要編碼的資產。
+3. 選取 [編碼]**** 按鈕。
+4. 在 [為資產編碼]**** 窗格中，選取 [媒體編碼器標準]**** 處理器和預設值。 如需預設值的相關資訊，請參閱[自動產生位元速率排行榜](media-services-autogen-bitrate-ladder-with-mes.md)和[媒體編碼器標準的工作預設值](media-services-mes-presets-overview.md)。 請務必選擇最適合輸入影片的預設值。 例如，如果您知道您的輸入視訊的解析度為 1920 &#215; 1080 像素，您可選擇 [H264 多位元速率 1080p]**** 預設值。 如果您有低解析度 (640 &#215; 360) 影片，您不應該使用 [H264 多重位元速率 1080p]**** 預設值。
    
    為了協助您管理資源，您可以編輯輸出資產的名稱和作業的名稱。
    
    ![為資產編碼](./media/media-services-portal-vod-get-started/media-services-encode1.png)
-5. 選取 [建立] 。
+5. 選取 [建立]。
 
 ## <a name="media-services-learning-paths"></a>媒體服務學習路徑
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

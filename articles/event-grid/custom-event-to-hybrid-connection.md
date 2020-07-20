@@ -1,26 +1,20 @@
 ---
-title: 將自訂事件傳送至混合式連線 - 事件方格、Azure CLI
-description: 使用 Azure 事件格線和 Azure CLI 來發佈主題，以及訂閱該事件。 混合式連線用於端點。
-services: event-grid
-keywords: ''
-author: spelluru
-ms.author: spelluru
-ms.date: 02/02/2019
+title: 教學課程：將自訂事件傳送至混合式連線 - 事件方格
+description: 教學課程：使用 Azure 事件格線和 Azure CLI 來發佈主題，以及訂閱該事件。 混合式連線用於端點。
+ms.date: 07/07/2020
 ms.topic: tutorial
-ms.service: event-grid
-ms.custom: seodec18
-ms.openlocfilehash: 2a050f8bc5d2437c7cdbadcf3296c2ef6d4659dc
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 208d8584736a0d7ff591c3a8ed7a08bcbf6dcba4
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55728634"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86114868"
 ---
 # <a name="tutorial-route-custom-events-to-azure-relay-hybrid-connections-with-azure-cli-and-event-grid"></a>教學課程：使用 Azure CLI 和事件方格將自訂事件路由至 Azure 轉送混合式連線
 
 Azure Event Grid 是一項雲端事件服務。 Azure 轉送混合式連線是支援的事件處理常式之一。 當您需要從沒有公用端點的應用程式處理事件時，您可以使用混式連線作為事件處理常式。 這些應用程式可能位在您公司的企業網路中。 在本文中，您可使用 Azure CLI 建立自訂主題、訂閱自訂主題，以及觸發事件來檢視結果。 您將事件傳送到混合式連線。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 本文假設您已經有混合式連線和接聽項應用程式。 若要開始使用混合式連線，請參閱[開始使用轉送混合式連線 - .NET](../service-bus-relay/relay-hybrid-connections-dotnet-get-started.md) (英文)，或[開始使用轉送混合式連線 - 節點](../service-bus-relay/relay-hybrid-connections-node-get-started.md) (英文)。
 
@@ -35,7 +29,7 @@ Event Grid 為 Azure 資源，必須放入 Azure 資源群組中。 資源群組
 
 使用 [az group create](/cli/azure/group#az-group-create) 命令來建立資源群組。 
 
-下列範例會在 westus2 位置建立名為 gridResourceGroup 的資源群組。
+下列範例會在 westus2  位置建立名為 gridResourceGroup  的資源群組。
 
 ```azurecli-interactive
 az group create --name gridResourceGroup --location westus2
@@ -80,7 +74,7 @@ az eventgrid event-subscription create \
 
 您需要可以從混合式連線擷取事件的應用程式。 [適用於 C# 的 Microsoft Azure Event Grid 混合式連線取用者範例](https://github.com/Azure-Samples/event-grid-dotnet-hybridconnection-destination)會執行該作業。 您已經完成必要的步驟。
 
-1. 確定您有 Visual Studio 2017 Version 15.5 或更新版本。
+1. 請確定您有 Visual Studio 2019 或更新版本。
 
 1. 將存放庫複製到本機電腦。
 

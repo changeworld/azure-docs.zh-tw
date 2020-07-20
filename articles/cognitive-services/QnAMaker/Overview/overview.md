@@ -1,77 +1,94 @@
 ---
-title: 什麼是 QnA Maker？
-titleSuffix: Azure Cognitive Services
-description: QnA Maker 是雲端式 API 服務，會對使用者的自然語言問題套用自訂的機器學習智慧以提供最佳解答。
-services: cognitive-services
-author: tulasim88
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
+title: 什麼是 QnA Maker 服務？
+description: QnA Maker 是一項雲端式 NLP 服務，可對您的資料輕鬆地建立自然對話層。 其可從資訊的自訂知識庫 (KB) 為指定的自然語言輸入尋找最適當的答案。
 ms.topic: overview
-ms.date: 04/05/2019
-ms.author: tulasim
-ms.openlocfilehash: bafc39e7d9237fc7dd8469e5f9e97adb30355c8f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 05/26/2020
+ms.openlocfilehash: d2ff2d789f2ea1ae6018d95ef1d880da87b4ff74
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59257224"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83994862"
 ---
-# <a name="what-is-qna-maker"></a>什麼是 QnA Maker？
+# <a name="what-is-the-qna-maker-service"></a>什麼是 QnA Maker 服務？
 
-QnA Maker 是一項雲端式 API 服務，可對您的資料建立交談式的問答層。 
+[!INCLUDE [TLS 1.2 enforcement](../../../../includes/cognitive-services-tls-announcement.md)]
 
-QnA Maker 可讓您從半結構化內容建立知識庫 (KB)，例如常見問題集 (FAQ) URL、產品手冊、支援文件，和自訂問題與答案。 QnA Maker 服務會將使用者的自然語言問題與知識庫中各個 QnA 可能包含的最佳解答比對，以回答這些問題。
+QnA Maker 是一項雲端式自然語言處理 (NLP) 服務，可對您的資料輕鬆地建立自然對話層。 其可從資訊的自訂知識庫 (KB) 為指定的自然語言輸入尋找最適當的答案。
 
-易於使用的 [Web 入口網站](https://qnamaker.ai)可讓您在沒有任何開發人員經驗的情況下，建立、管理和訓練和發佈服務。 服務發佈至端點後，聊天機器人等用戶端應用程式即可管理與使用者所進行的交談，以取得問題並回覆答案。 
+QnA Maker 的用戶端應用程式是任何可透過自然語言與使用者溝通以回答問題的對話應用程式。 用戶端應用程式的例子包括社群媒體應用程式、聊天機器人，以及具備語音功能的桌面應用程式。
 
-![概觀](../media/qnamaker-overview-learnabout/overview.png)
+## <a name="when-to-use-qna-maker"></a>QnA Maker 的使用時機
 
-## <a name="key-qna-maker-processes"></a>主要的 QnA Maker 處理程序
+* **當您有靜態資訊時** - 當回答知識庫中有靜態資訊時，請使用 QnA Maker。 此知識庫是依據需求所自訂的，且您已使用 [PDF 和 URL](../concepts/content-types.md) 等文件建置好。
+* **當您想要為要求、問題或命令提供相同的答案時** - 當不同使用者提交相同問題時，系統會傳回相同的答案。
+* **當您想要根據中繼資訊來篩選靜態資訊時** - 新增[中繼資料](../how-to/metadata-generateanswer-usage.md)標籤，以提供與用戶端應用程式使用者和資訊相關的其他篩選選項。 常見的中繼資料資訊包括[閒聊](../how-to/chit-chat-knowledge-base.md)、內容類型或格式、內容用途和內容有效期限。
+* **當您想要管理包含靜態資訊的聊天機器人對話時** - 您的知識庫會取得使用者的交談文字或命令，並做出回答。 如果答案是預先決定對話流程的一部分 (在您的知識庫中會以[多回合內容](../how-to/multiturn-conversation.md)來表示)，則聊天機器人可以輕鬆地提供此流程。
 
-QnA Maker 可為您的資料提供兩項主要服務：
+## <a name="use-qna-maker-knowledge-base-in-a-chat-bot"></a>在聊天機器人中使用 QnA Maker 知識庫
 
-* **擷取**：結構化的問題-解答資料會擷取自結構化和半結構化[資料來源](../Concepts/data-sources-supported.md)，例如常見問題集和產品手冊。 此擷取會在[建立](https://aka.ms/qnamaker-docs-createkb) KB 時完成，或是在之後的編輯程序中完成。
+在發佈 QnA Maker 知識庫後，用戶端應用程式會將問題傳送至知識庫端點，並以 JSON 回應的形式接收結果。 聊天機器人是 QnA Maker 的常見用戶端應用程式。
 
-* **比對**：一旦您的知識庫經過[訓練和測試](https://aka.ms/qnamaker-docs-trainkb)後，您就可以[發行](https://aka.ms/qnamaker-docs-publishkb)它。 這可對 QnA Maker 知識庫啟用端點，然後讓您在聊天機器人或用戶端應用程式中使用。 此端點接受使用者問題，而且會以知識庫中最佳的答案作為回應，其中會包含該組合的信賴分數。
+![向聊天機器人詢問問題並從知識庫內容取得答案](../media/qnamaker-overview-learnabout/bot-chat-with-qnamaker.png)
 
-```JSON
-{
-    "answers": [
-        {
-            "questions": [
-                "How do I share a knowledge base with other?"
-            ],
-            "answer": "Sharing works at the level of a QnA Maker service, i.e. all knowledge bases in the services will be shared. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/how-to/collaborate-knowledge-base)how to collaborate on a knowledge base.",
-            "score": 70.95,
-            "id": 4,
-            "source": "https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs",
-            "metadata": []
-        }
-    ]
-}
+|步驟|動作|
+|:--|:--|
+|1|用戶端應用程式傳送使用者的問題 (以自己的話語表達的文字)「如何以程式設計方式更新知識庫？」 到知識庫端點。|
+|2|QnA Maker 使用訓練好的知識庫來提供正確解答，以及任何可用來精簡搜尋以獲得最佳解答的後續提示。 QnA Maker 會傳回 JSON 格式的回應。|
+|3|用戶端應用程式使用 JSON 回應來決定如何繼續對話。 這些決定可能包括顯示最佳解答和呈現更多選擇來精簡搜尋以獲得最佳解答。 |
+|||
 
-```
+## <a name="what-is-a-knowledge-base"></a>什麼是知識庫？
 
-## <a name="qna-maker-architecture"></a>QnA Maker 架構
+QnA Maker 會在問答組的知識庫中[匯入您的內容](../concepts/knowledge-base.md)。 匯入程序會擷取結構化和半結構化內容各部分之間關聯性的相關資訊，來表示問答組之間的關聯性。 您可以編輯這些問答組或新增問答組。
 
-QnA Maker 架構由下列兩個元件組成：
+問答組的內容包括：
+* 問題的所有替代形式
+* 在搜尋期間用來篩選答案選擇的中繼資料標籤
+* 後續提示，以繼續精簡搜尋
 
-1. **QnA Maker 管理服務**：QnA Maker 知識庫的管理體驗，其中包含初始建立、更新、訓練及發佈。 這些活動可以透過[入口網站](https://qnamaker.ai)或[管理 API](https://aka.ms/qnamaker-v4-apis) 來完成。 
+![問題和答案與中繼資料的範例](../media/qnamaker-overview-learnabout/example-question-and-answer-with-metadata.png)
 
-2. **QnA Maker 資料和執行階段**：這會部署在指定區域中的 Azure 訂用帳戶。 您的 KB 內容儲存在 [Azure 搜尋服務](https://azure.microsoft.com/services/search/)中，而且端點會部署為[應用程式服務](https://azure.microsoft.com/services/app-service/)。 您也可以選擇部署 [Application Insights](https://azure.microsoft.com/services/application-insights/) 資源來進行分析。
+在發佈知識庫之後，用戶端應用程式會將使用者的問題傳送至您的端點。 QnA Maker 服務會處理問題，並以最佳答案回應。
 
-![架構](../media/qnamaker-overview-learnabout/architecture.png)
+## <a name="create-manage-and-publish-to-a-bot-without-code"></a>不使用程式碼而在聊天機器人中進行建立、管理和發佈動作
+
+QnA Maker 入口網站可提供完整的知識庫撰寫體驗。 您可以將文件 (以其目前的格式) 匯入到知識庫。 這些文件 (例如常見問題集、產品手冊、試算表或網頁) 會轉換成問答組。 系統會分析每個問答組來提供後續提示，且這些問答組各自都會與其他問答組連結。 最終的 Markdown 格式支援豐富的呈現方式，包括影像和連結。
+
+知識庫編輯完成後，請將知識庫發佈至運作中的 [Azure Web 應用程式聊天機器人](https://azure.microsoft.com/services/bot-service/) (不必撰寫任何程式碼)。 在 [Azure 入口網站](https://portal.azure.com)中測試聊天機器人，或下載並繼續開發。
+
+## <a name="search-quality-and-ranking-provides-the-best-possible-answer"></a>搜尋品質和排名可提供最佳答案
+
+QnA Maker 的系統是分層排名方法。 資料會儲存在 Azure 搜尋服務中，這也會作為第一個排名層。 接著，會透過 QnA Maker 的 NLP 重新排名模型傳遞 Azure 搜尋服務的前幾個結果，以產生最終結果和信賴分數。
+
+## <a name="qna-maker-improves-the-conversation-process"></a>QnA Maker 可改善對話流程
+
+QnA Maker 提供多回合提示和主動式學習，可協助您改善基本的問答組。
+
+**多回合提示**讓您有機會連結問題和答案配對。 此連結可讓用戶端應用程式提供最佳答案，並提供更多問題來精簡搜尋以獲得最終答案。
+
+知識庫從已發佈端點的使用者收到問題後，QnA Maker 會將**主動式學習**套用到這些真實世界的問題，以建議您變更知識庫來改善品質。
+
+## <a name="development-lifecycle"></a>開發生命週期
+
+QnA Maker 提供撰寫、定型及發佈功能以及共同作業權限來整合到完整的開發生命週期。
+
+> [!div class="mx-imgBorder"]
+> ![開發週期的概念影像](../media/qnamaker-overview-learnabout/development-cycle.png)
 
 
-## <a name="service-highlights"></a>服務要點
+## <a name="how-do-i-start"></a>如何開始使用？
 
-- 從知識庫透過完全**無程式碼**的體驗來[建立聊天機器人](../Quickstarts/create-publish-knowledge-base.md#create-a-bot)。
-- **預測時不會有網路節流**。 針對裝載的服務支付費用，而非針對交易數目。 請參閱[定價頁面](https://aka.ms/qnamaker-docs-pricing)，以取得詳細資料。
-- **視需要調整**。 為符合您案例的個別元件選擇適當的 SKU。 了解如何為您的 QnA Maker 服務[選擇容量](https://aka.ms/qnamaker-docs-capacity)。
+**步驟 1**：在 [Azure 入口網站](https://portal.azure.com)中建立 QnA Maker 資源。
 
+**步驟 2**：在 [QnA Maker](https://www.qnamaker.ai) 入口網站中建立知識庫。 新增[檔案和 URL](../concepts/content-types.md) 以建立知識庫。
+
+**步驟 3**：使用 [cURL 或 Postman](../Quickstarts/get-answer-from-knowledge-base-using-url-tool.md) 從自訂端點發佈知識庫並進行測試。
+
+**步驟 4**：從您的用戶端應用程式，以程式設計方式呼叫您知識庫的端點。 用戶端應用程式會處理 JSON 回應，以向使用者顯示最佳答案。
 
 ## <a name="next-steps"></a>後續步驟
+QnA Maker 可提供建置、管理和部署自訂知識庫所需的所有項目。
 
 > [!div class="nextstepaction"]
-> [建立 QnA Maker 服務](../how-to/set-up-qnamaker-service-azure.md)
+> [檢閱最新的變更](../whats-new.md)

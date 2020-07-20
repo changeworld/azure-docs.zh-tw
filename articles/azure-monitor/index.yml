@@ -1,138 +1,105 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Azure 監視器文件
+summary: 監視 Azure 和內部部署服務。 彙總和分析計量、記錄和追蹤。 引發警示，並傳送通知或呼叫自動化解決方案。
 metadata:
-  title: Azure 監視器文件 | Microsoft Docs
+  title: Azure 監視器文件
   description: Azure 監視器現在包括 Log Analytics 與 Application Insights，它提供複雜的工具讓您用來收集並分析遙測，讓您可以將您雲端與內部部署資源與應用程式的效能與可用性最佳化。
-  services: azure-monitor
-  author: bwren
-  manager: carmonm
-  ms.service: azure-monitor
-  ms.tgt_pltfrm: na
   ms.topic: landing-page
-  ms.date: 01/25/2019
-  ms.author: bwren
-abstract:
-  description: Azure 監視器現在包括 Log Analytics 與 Application Insights，它提供複雜的工具讓您用來收集並分析遙測，讓您可以將您雲端與內部部署資源與應用程式的效能與可用性最佳化。 它可協助您了解您的應用程式表現如何，並主動識別影響它們的問題以及它們所依賴的資源。
-sections:
-  - title: 建議的內容
-    items:
-      - type: paragraph
-        text: 使用下列連結以查看 Log Analytics 和 Application Insights 的內容建議清單。
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/azure-monitor/azure-monitor-log-hub">Log Analytics</a>
-          - html: <a href="/azure/azure-monitor/azure-monitor-app-hub">Application Insights</a>
-  - title: 5 分鐘快速入門
-    items:
-      - type: paragraph
-        text: 了解如何收集並分析從 Azure 資源收集的計量與記錄。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/media/common/Chart.svg'
-            text: 監視計量
-            href: /azure/monitoring-and-diagnostics/monitor-quick-resource-metric-alert-portal
-          - image:
-              src: /azure/azure-monitor/media/index/log-analytics.svg
-            text: 分析記錄
-            href: /azure/log-analytics/query-language/get-started-analytics-portal
-          - image:
-              src: 'https://docs.microsoft.com/azure/media/index/virtualmachine.svg'
-            text: Azure VM
-            href: /azure/log-analytics/log-analytics-quick-collect-azurevm
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_linux.svg'
-            text: Linux 電腦
-            href: /azure/log-analytics/log-analytics-quick-collect-linux-computer
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_Windows.svg'
-            text: Windows 電腦
-            href: /azure/log-analytics/log-analytics-quick-collect-windows-computer
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_alert.svg'
-            text: 訂用帳戶稽核和警示
-            href: /azure/monitoring-and-diagnostics/monitor-quick-audit-notify-action-in-subscription
-      - type: paragraph
-        text: 了解如何使用 Azure 監視器 Application Insights 開始監視您的應用程式。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/media/common/dotnet.svg'
-            text: .NET
-            href: /azure/application-insights/quick-monitor-portal
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_NETcore.svg'
-            text: .NET Core
-            href: /azure/application-insights/app-insights-dotnetcore-quick-start
-          - image:
-              src: 'https://docs.microsoft.com/media/common/nodejs.svg'
-            text: Node.js
-            href: /azure/application-insights/app-insights-nodejs-quick-start
-          - image:
-              src: 'https://docs.microsoft.com/media/common/java.svg'
-            text: Java
-            href: /azure/application-insights/app-insights-java-quick-start
-          - image:
-              src: /azure/application-insights/media/index/mobile-center.png
-            text: 行動
-            href: /azure/application-insights/app-insights-mobile-center-quickstart
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_web-color.svg'
-            text: 網站
-            href: /azure/application-insights/app-insights-website-monitoring
-  - title: 逐步教學課程
-    items:
-      - type: paragraph
-        text: 了解如何分析、視覺化，以及操作所收集的資料。
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/log-analytics/log-analytics-tutorial-viewdata">檢視或分析所收集的資料</a>
-          - html: <a href="/azure/log-analytics/log-analytics-tutorial-dashboards">建立和共用儀表板</a>
-          - html: <a href="/azure/monitoring-and-diagnostics/monitor-tutorial-autoscale-performance-schedule">根據排程或應用程式效能自動調整規模</a>
-          - html: <a href="/azure/monitoring-and-diagnostics/monitor-tutorial-archive-monitoring-data">封存監視資料</a>
-      - type: paragraph
-        text: 了解如何持續改善 Web 應用程式的效能和使用狀況。
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/application-insights/app-insights-tutorial-runtime-exceptions">尋找並診斷執行階段例外狀況</a>
-          - html: <a href="/azure/application-insights/app-insights-tutorial-performance">尋找並診斷效能問題</a>
-          - html: <a href="/azure/application-insights/app-insights-tutorial-alert">應用程式健康情況的監視和警示</a>
-          - html: <a href="/azure/application-insights/app-insights-tutorial-users">分析客戶使用量和資訊</a>
-          - html: <a href="/azure/application-insights/app-insights-tutorial-dashboards">建立自訂 KPI 儀表板</a>
-  - title: 免費 Pluralsight 影片訓練
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Azure 系統管理員
-            href: 'https://go.microsoft.com/fwlink/?linkid=2012827'
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
-              href: 'https://go.microsoft.com/fwlink/?linkid=2012827'
-  - title: 範例
-    items:
-      - type: paragraph
-        text: 使用下列範例來設定和管理 Log Analytics。
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/log-analytics/powershell-samples">Azure PowerShell</a>
-  - title: 參考
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: 命令列
-            html: <p><a href="/powershell/module/az.operationalinsights">Azure PowerShell</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/loganalytics">REST API 參考</a></p>
+  author: rboucher
+  ms.author: robb
+  ms.date: 10/08/2019
+  ms.openlocfilehash: 16b17dcebf305059b9a0710798e1ea0a9b6f51a6
+  ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 07/11/2020
+  ms.locfileid: "86249150"
+landingContent:
+- title: 關於 Azure 監視器
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure 監視器是什麼？
+      url: overview.md
+    - text: 什麼是 Azure 監視器記錄/Log Analytics？
+      url: platform/data-platform-logs.md
+    - text: 什麼是 Application Insights？
+      url: app/app-insights-overview.md
+    - text: Application Insights 內容中樞頁面
+      url: azure-monitor-app-hub.yml
+- title: 關於監視資料
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 資料來源概觀
+      url: platform/data-sources.md
+    - text: 資料平台概觀
+      url: platform/data-platform.md
+- title: 10 分鐘快速入門
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 計量的監視和警示
+      url: platform/alerts-metric.md
+    - text: 分析記錄
+      url: log-query/get-started-portal.md
+    - text: Log Analytics 中的 Azure VM
+      url: learn/quick-collect-azurevm.md
+    - text: Log Analytics 中的 Linux VM
+      url: learn/quick-collect-linux-computer.md
+    - text: Log Analytics 中的 Windows VM
+      url: learn/quick-collect-windows-computer.md
+    - text: 訂用帳戶事件的警示
+      url: platform/alerts-activity-log.md
+- title: 監視應用程式
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: .NET
+      url: learn/quick-monitor-portal.md
+    - text: .NET Core
+      url: learn/dotnetcore-quick-start.md
+    - text: Node.js
+      url: learn/nodejs-quick-start.md
+    - text: 行動
+      url: learn/mobile-center-quickstart.md
+    - text: 網站
+      url: app/website-monitoring.md
+- title: 訓練
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: 免費 Pluralsight 訓練 - Azure 系統管理員
+      url: https://go.microsoft.com/fwlink/?linkid=2012827
+- title: 參考 - CLI
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 動作群組, 活動記錄, 自動調整, 診斷設定, 計量, Private Link 範圍
+      url: /cli/azure/azure-cli-reference-for-monitor
+    - text: Log Analytics
+      url: /cli/azure/ext/log-analytics/monitor
+    - text: Application Insights
+      url: /cli/azure/ext/application-insights/monitor/app-insights
+- title: 參考 - PowerShell
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 計量、自動調整、診斷設定、警示
+      url: /powershell/module/az.monitor/?view=azps-2.6.0
+    - text: Log Analytics
+      url: /powershell/module/az.operationalinsights
+    - text: Application Insights
+      url: /powershell/module/az.applicationinsights/new-azapplicationinsights?view=azps-2.7.0&viewFallbackFrom=azps-2.5.0
+- title: 參考 - REST API
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 計量、自動調整、診斷設定、警示
+      url: /rest/api/monitor
+    - text: Log Analytics
+      url: /rest/api/loganalytics
+    - text: Application Insights
+      url: /rest/api/application-insights/
+    - text: Application Insights REST API 沙箱
+      url: https://dev.applicationinsights.io

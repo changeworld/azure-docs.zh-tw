@@ -1,25 +1,13 @@
 ---
 title: Azure 服務匯流排 SQLFilter 語法參考 | Microsoft Docs
-description: SQLFilter 文法的詳細資料。
-services: service-bus-messaging
-documentationcenter: na
-author: spelluru
-manager: timlt
-editor: ''
-ms.assetid: ''
-ms.service: service-bus-messaging
-ms.devlang: na
+description: 本文提供有關 SQLFilter 文法的詳細資料。 SqlFilter 支援 SQL-92 標準的子集。
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 09/05/2018
-ms.author: spelluru
-ms.openlocfilehash: e490c7c24ed38e2988c1f097b09b508746f08178
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 06/23/2020
+ms.openlocfilehash: 8412dea583ae119b30976e53d4751411b45339a4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60591796"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85341591"
 ---
 # <a name="sqlfilter-syntax"></a>SQLFilter 語法
 
@@ -58,15 +46,15 @@ ms.locfileid: "60591796"
   
 ```  
   
-## <a name="arguments"></a>参数  
+## <a name="arguments"></a>引數  
   
--   `<scope>` 是表示 `<property_name>` 範圍的選擇性字串。 有效值為 `sys` 或 `user`。 `sys` 值表示系統範圍，當中 `<property_name>` 為 [BrokeredMessage 類別](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)的公用屬性名稱。 `user` 表示使用者範圍，當中 `<property_name>` 為 [BrokeredMessage 類別](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)字典的索引鍵。 如果 `<scope>` 未指定，則 `user` 範圍是預設範圍。  
+-   `<scope>` 是表示 `<property_name>` 範圍的選擇性字串。 有效值為 `sys` 或 `user`。 `sys`值表示系統範圍，其中 `<property_name>` 是[BrokeredMessage 類別](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)的公用屬性名稱。 `user`表示使用者範圍，其中 `<property_name>` 是[BrokeredMessage 類別](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)字典的索引鍵。 如果 `<scope>` 未指定，則 `user` 範圍是預設範圍。  
   
 ## <a name="remarks"></a>備註
 
 嘗試存取不存在的系統屬性時會發生錯誤，而嘗試存取不存在的使用者屬性時不會發生錯誤。 反之，不存在的使用者屬性會內部評估為未知的值。 未知的值在運算子評估期間會特別處理。  
   
-## <a name="propertyname"></a>property_name  
+## <a name="property_name"></a>property_name  
   
 ```  
 <property_name> ::=  
@@ -119,11 +107,11 @@ ms.locfileid: "60591796"
   
 `<pattern>` 必須是評估為字串的運算式。 它會用來做為 LIKE 運算子的模式。      它可以包含下列萬用字元︰  
   
--   `%`:任何零或多個字元的字串。  
+-   `%`︰任何零或多個字元的字串。  
   
--   `_`:任何單一字元。  
+-   `_`︰任何單一字元。  
   
-## <a name="escapechar"></a>escape_char  
+## <a name="escape_char"></a>escape_char  
   
 ```  
 <escape_char> ::=  
@@ -154,7 +142,7 @@ ms.locfileid: "60591796"
     2  
     ```  
   
--   `<decimal_constant>` 是數字的字串，不會以引號括住，且包含小數點。 这些值作为 `System.Double` 在内部存储，并具有相同的作用域/精度。  
+-   `<decimal_constant>` 是數字的字串，不會以引號括住，且包含小數點。 值會在內部儲存為 `System.Double`，並遵循相同的範圍/精確度。  
   
      在未來版本中，這個數字可能會以不同的資料類型儲存，以支援實際數字的語意，因此您不應依賴 `<decimal_constant>` 的基本資料型別是 `System.Double`。  
   
@@ -172,7 +160,7 @@ ms.locfileid: "60591796"
     0.5E-2  
     ```  
   
-## <a name="booleanconstant"></a>boolean_constant  
+## <a name="boolean_constant"></a>boolean_constant  
   
 ```  
 <boolean_constant> :=  
@@ -183,7 +171,7 @@ ms.locfileid: "60591796"
 
 布林值常數由關鍵字 **TRUE** 或 **FALSE** 代表。 值會儲存為 `System.Boolean`。  
   
-## <a name="stringconstant"></a>string_constant  
+## <a name="string_constant"></a>string_constant  
   
 ```  
 <string_constant>  
@@ -193,7 +181,7 @@ ms.locfileid: "60591796"
 
 字串常數會以單引號括住，且包含任何有效的 Unicode 字元。 內嵌在字串常數中的單引號會以兩個單引號表示。  
   
-## <a name="function"></a>函式  
+## <a name="function"></a>函數  
   
 ```  
 <function> :=  
@@ -239,11 +227,11 @@ ms.locfileid: "60591796"
   
   `[NOT] LIKE` 中的未知評估：  
   
-- 如果任何運算元評估為**未知**，則結果為**未知**。  
+- 如果任何運算元評估為**未知**，則結果為**unknown**。  
   
   `[NOT] IN` 中的未知評估：  
   
-- 如果左運算元評估為**未知**，則結果為**未知**。  
+- 如果左運算元評估為**未知**，則結果為**unknown**。  
   
   **AND** 運算子的未知評估︰  
   

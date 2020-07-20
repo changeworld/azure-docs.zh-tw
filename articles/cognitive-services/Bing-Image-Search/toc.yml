@@ -1,5 +1,5 @@
 - name: Bing 圖片搜尋 API 文件
-  href: index.yml
+  href: ../bing-web-search/index.yml
 - name: 概觀
   expanded: true
   items:
@@ -26,14 +26,8 @@
           href: quickstarts/ruby.md
     - name: SDK
       items:
-        - name: '使用 C#'
-          href: image-search-sdk-quickstart.md
-        - name: 使用 Node.js
-          href: image-search-sdk-node-quickstart.md
-        - name: 使用 Python
-          href: image-sdk-python-quickstart.md
-        - name: 使用 Java
-          href: image-sdk-java-quickstart.md
+        - name: Bing 影像搜尋用戶端程式庫
+          href: ./quickstarts/client-libraries.md
 - name: 教學課程
   items:
     - name: 建置映像搜尋 Web 應用程式
@@ -44,18 +38,20 @@
   items:
     - name: 程式碼範例
       href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Image+Search'
-- name: 使用說明指南
+- name: 操作指南
   items:
     - name: 取得影像深入解析
       href: image-insights.md
     - name: 取得 .gif 影像
       href: gif-images.md
-    - name: 取得趨勢影像
+    - name: 取得發燒影像
       href: trending-images.md
-    - name: 逐頁檢視影像
-      href: paging-images.md
+    - name: 逐頁檢視搜尋結果
+      maintainContext: true
+      href: ../bing-web-search/paging-search-results.md
     - name: 調整大小和裁剪縮圖
-      href: resize-and-crop-thumbnails.md
+      maintainContext: true
+      href: ../bing-web-search/resize-and-crop-thumbnails.md
     - name: 從 v5 升級到 v7
       href: bing-image-upgrade-guide-v5-to-v7.md
 - name: 概念
@@ -67,9 +63,9 @@
 - name: 參考
   items:
     - name: Bing 影像搜尋 API v7
-      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference'
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference'
     - name: Bing 影像搜尋 API v5
-      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v5-reference'
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v5-reference'
     - name: Azure PowerShell 參考
       href: 'https://aka.ms/azure-powershell-cognitiveservices'
     - name: Azure CLI 參考
@@ -79,11 +75,11 @@
         - name: .NET
           href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingimagesearch?view=azure-dotnet'
         - name: Java
-          href: 'https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/imagesearch?view=azure-java-stable'
+          href: 'https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingimagesearch?view=azure-java-stable'
         - name: Python
           href: 'https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/imagesearch?view=azure-python'
         - name: Node.js
-          href: 'https://docs.microsoft.com/javascript/api/overview/azure/cognitiveservices/imagesearch?view=azure-node-latest'
+          href: 'https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-imagesearch/?view=azure-node-latest'
         - name: Go
           href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/imagesearch'
     - name: Bing 使用和顯示需求
@@ -93,7 +89,7 @@
   items:
     - name: 常見問題集
       href: bing-image-search-resource-faq.md
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/search-api/image/'
     - name: UserVoice
       href: 'https://cognitive.uservoice.com/forums/555907-bing-search'
@@ -111,7 +107,10 @@
       href: 'https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/'
     - name: Bing 影像搜尋端點
       href: image-search-endpoint.md
-    - name: 語言與區域支援
+    - name: 語言支援
       href: language-support.md
     - name: Bing 影像搜尋 API 的分析
-      href: bing-image-stats.md
+      maintainContext: true
+      href: ../bing-web-search/bing-web-stats.md
+    - name: 法規遵循
+      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'

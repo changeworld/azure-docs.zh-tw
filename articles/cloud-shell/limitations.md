@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2018
 ms.author: damaerte
-ms.openlocfilehash: 8fd88221818d28c227c33719c03e522e815a408b
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+ms.openlocfilehash: 092dccab82326bb9983f11ff64fe50aee7b1084d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62097017"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "74951474"
 ---
 # <a name="limitations-of-azure-cloud-shell"></a>Azure Cloud Shell 限制
 
@@ -45,7 +44,7 @@ Cloud Shell 支援最新版的 Microsoft Edge、Microsoft Internet Explorer、Go
 
 ### <a name="for-a-given-user-only-one-shell-can-be-active"></a>針對指定的使用者，只能有一個殼層作用中
 
-使用者一次只能啟動一種類型的 Shell：**Bash** 或 **PowerShell**。 不過，您可能一次會執行多個 Bash 或 PowerShell 執行個體。 Bash 或 PowerShell 之間交換所使用的功能表會導致 Cloud Shell 重新啟動，會終止現有的工作階段。 或者，輸入可以執行 PowerShell 內的 bash `bash`，您可以輸入並執行 PowerShell 內 bash `pwsh`。
+使用者一次只能啟動一種類型的 Shell：**Bash** 或 **PowerShell**。 不過，您可能一次會執行多個 Bash 或 PowerShell 執行個體。 使用功能表在 Bash 或 PowerShell 之間交換，會導致 Cloud Shell 重新開機，這會終止現有的會話。 或者，您可以輸入，在 PowerShell 內執行 bash， `bash` 而且可以輸入，在 bash 內執行 powershell `pwsh` 。
 
 ### <a name="usage-limits"></a>使用限制
 
@@ -57,9 +56,9 @@ Cloud Shell 主要用於互動式的使用案例。 因此，任何長時間執�
 
 權限設定為沒有 sudo 存取權的一般使用者。 不會保存 `$Home` 目錄之外的任何安裝。
 
-### <a name="editing-bashrc-or-profile"></a>編輯.bashrc 或 $PROFILE
+### <a name="editing-bashrc-or-profile"></a>編輯. .bashrc 或 $PROFILE
 
-編輯.bashrc 或 PowerShell 的 $PROFILE 檔案，這種方式可以在 Cloud Shell 中造成未預期的錯誤時，需要注意。
+編輯 .bashrc 或 PowerShell 的 $PROFILE 檔案時，請務必注意，這樣做可能會導致 Cloud Shell 發生未預期的錯誤。
 
 ## <a name="powershell-limitations"></a>PowerShell 限制
 
@@ -73,15 +72,15 @@ Cloud Shell 主要用於互動式的使用案例。 因此，任何長時間執�
 
 ### <a name="default-file-location-when-created-from-azure-drive"></a>從 Azure 磁碟機建立時的預設檔案位置：
 
-使用 PowerShell cmdlet，使用者可以建立在 azure 的檔案： 磁碟機。 當使用者使用其他工具 (例如 vim 或 nano) 來建立新檔案時，檔案預設會儲存至 `$HOME` 資料夾。 
+使用 PowerShell Cmdlet 時，使用者不能在 Azure：磁片磁碟機底下建立檔案。 當使用者使用其他工具 (例如 vim 或 nano) 來建立新檔案時，檔案預設會儲存至 `$HOME` 資料夾。 
 
 ### <a name="gui-applications-are-not-supported"></a>不支援 GUI 應用程式
 
-如果使用者執行命令會建立 Windows 對話方塊中，會看到錯誤訊息這類： `Unable to load DLL 'IEFRAME.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)`。
+如果使用者執行的命令會建立 Windows 對話方塊，則會看到一則錯誤訊息，例如： `Unable to load DLL 'IEFRAME.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)` 。
 
 ### <a name="large-gap-after-displaying-progress-bar"></a>顯示進度列之後出現過大間距
 
-當使用者在 `Azure:` 磁碟機中執行顯示進度列的動作 (如 Tab 鍵自動完成) 時，可能會因為資料指標設定錯誤，導致先前進度列的所在位置出現間隔。
+如果使用者執行的動作會顯示進度列（例如，在磁片磁碟機中完成的索引標籤），則 `Azure:` 游標可能未正確設定，且出現在進度列之前的間距。
 
 ## <a name="next-steps"></a>後續步驟
 

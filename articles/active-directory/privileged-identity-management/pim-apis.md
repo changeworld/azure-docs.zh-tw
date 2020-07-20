@@ -1,36 +1,38 @@
 ---
-title: 適用於 PIM 的 Microsoft Graph API (預覽) - Azure Active Directory | Microsoft Docs
+title: 適用於 PIM 的 Microsoft Graph API (預覽) - Azure AD | Microsoft Docs
 description: 針對如何使用適用於 Azure AD Privileged Identity Management (PIM) 的 Microsoft Graph API (預覽) 提供相關資訊。
 services: active-directory
 documentationcenter: ''
-author: rolyon
-manager: mtillman
+author: curtand
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: pim
-ms.topic: overview
-ms.date: 11/13/2018
-ms.author: rolyon
+ms.topic: how-to
+ms.date: 01/02/2020
+ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e54ec4049b2b0cd67c148d881a64a40efff438a2
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
-ms.translationtype: HT
+ms.openlocfilehash: ea3e307df95fe4cb18986ed8e68a7f3381c5fbe7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58578963"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84742890"
 ---
-# <a name="microsoft-graph-apis-for-pim-preview"></a>適用於 PIM 的 Microsoft Graph API (預覽)
+# <a name="microsoft-graph-apis-for-privileged-identity-management-preview"></a>適用於 Privileged Identity Management 的 Microsoft Graph API (預覽)
 
-對於大部分可使用 Azure 入口網站在 Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 中執行的工作，您也可以使用 [Microsoft Graph API](https://developer.microsoft.com/graph/docs/concepts/overview) 來執行。 本文將說明使用適用於 PIM 的 Microsoft Graph AP 時，應了解的一些重要概念。 如需有關 Microsoft Graph API 的詳細資訊，請參閱 [Azure AD Privileged Identity Management API 參考](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/privilegedidentitymanagement_root)。
+您可以使用適用於 Azure Active Directory 的 [Microsoft Graph API](https://developer.microsoft.com/graph/docs/concepts/overview) 來執行 Privileged Identity Management 工作。 本文將說明使用適用於 Privileged Identity Management 的 Microsoft Graph AP 時，應了解的重要概念。
+
+如需有關 Microsoft Graph API 的詳細資訊，請參閱 [Azure AD Privileged Identity Management API 參考](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/privilegedidentitymanagement_root)。
 
 > [!IMPORTANT]
 > Microsoft Graph 中 /beta 版本底下的 API 皆處於預覽階段，可能會有所變更。 不支援在生產應用程式中使用這些 API。
 
 ## <a name="required-permissions"></a>所需的權限
 
-若要呼叫適用於 PIM 的 Microsoft Graph API，您必須擁有下列**一個或多個**權限：
+若要呼叫適用於 Privileged Identity Management 的 Microsoft Graph API，您必須擁有下列**一個或多個**權限：
 
 - `Directory.AccessAsUser.All`
 - `Directory.Read.All`
@@ -39,7 +41,7 @@ ms.locfileid: "58578963"
 
 ### <a name="set-permissions"></a>設定權限
 
-應用程式若要呼叫適用於 PIM 的 Microsoft Graph API，則一定要有必要權限。 指定必要權限的最簡單方式是使用 [Azure AD 同意架構](../develop/consent-framework.md)。
+應用程式若要呼叫適用於 Privileged Identity Management 的 Microsoft Graph API，則一定要有必要權限。 指定必要權限的最簡單方式是使用 [Azure AD 同意架構](../develop/consent-framework.md)。
 
 ### <a name="set-permissions-in-graph-explorer"></a>在 Graph 總管中的設定權限
 
@@ -51,7 +53,7 @@ ms.locfileid: "58578963"
 
     ![Graph 總管 - 修改權限](./media/pim-apis/graph-explorer.png)
 
-1. 在您想要包含的權限旁新增核取記號。 Graph 總管中尚無法使用 `PrivilegedAccess.ReadWrite.AzureAD`。
+1. 在您想要包含的權限旁選取核取方塊。 Graph 總管中尚無法使用 `PrivilegedAccess.ReadWrite.AzureAD`。
 
     ![Graph 總管 - 修改權限](./media/pim-apis/graph-explorer-modify-permissions.png)
 

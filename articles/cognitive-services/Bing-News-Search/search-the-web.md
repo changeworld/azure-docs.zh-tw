@@ -1,22 +1,22 @@
 ---
 title: 什麼是 Bing 新聞搜尋 API？
-titlesuffix: Azure Cognitive Services
-description: 了解如何使用「Bing 新聞搜尋 API」來搜尋 Web，以尋找多個類別 (包括頭條和趨勢主題) 中目前的頭條。
+titleSuffix: Azure Cognitive Services
+description: 了解如何使用「Bing 新聞搜尋 API」來搜尋 Web，以尋找類別 (包括頭條和趨勢主題) 之間目前的頭條。
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: overview
-ms.date: 01/10/2019
+ms.date: 12/18/2019
 ms.author: scottwhi
 ms.custom: seodec2018
-ms.openlocfilehash: a28445199c47c666fb2323a70317f81f3302c765
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: d44fe58eb17e7f11dc64ee1426df7f356cb91aef
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55877094"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85602749"
 ---
 # <a name="what-is-the-bing-news-search-api"></a>什麼是 Bing 新聞搜尋 API？
 
@@ -28,7 +28,7 @@ Bing 新聞搜尋 API 可讓您輕鬆地將 Bing 的認知新聞搜尋功能整�
 
 Bing 新聞搜尋 API 主要用於尋找及傳回相關的新聞文章，同時也提供多個在 Web 上智慧擷取重點新聞的功能。
 
-|功能  |說明  |
+|功能  |描述  |
 |---------|---------|
 |[建議和使用搜尋字詞](concepts/search-for-news.md#suggest-and-use-search-terms)     | 使用 [Bing 自動建議 API](../bing-autosuggest/get-suggested-search-terms.md) 隨著使用者的輸入顯示建議的搜尋字詞，以改善您的搜尋體驗。         |
 |[取得一般新聞](concepts/search-for-news.md#get-general-news)     | 藉由將搜尋查詢傳送至 Bing 新聞搜尋 API 來尋找新聞，並取得相關新聞文章的清單。           |
@@ -40,10 +40,8 @@ Bing 新聞搜尋 API 主要用於尋找及傳回相關的新聞文章，同時�
 
 Bing 新聞搜尋 API 是一種 RESTful Web 服務，因此可輕易地從任何可發出 HTTP 要求及剖析 JSON 的程式設計語言呼叫。 您可以透過 REST API 或 SDK 來使用此服務。
 
-1. 建立具備 Bing 搜尋 API 存取權的認知服務 API 帳戶。 如果您沒有 Azure 訂用帳戶，可以[建立免費帳戶](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-news-api)。
-
+1. 建立具備 Bing 搜尋 API 存取權的[認知服務 API 帳戶](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 如果您沒有 Azure 訂用帳戶，可以[建立免費帳戶](https://azure.microsoft.com/free/cognitive-services/)。
 2. 使用有效的搜尋查詢，將要求傳送至 API。
-
 3. 剖析傳回的 JSON 訊息以處理 API 回應。
 
 ## <a name="next-steps"></a>後續步驟
@@ -54,6 +52,6 @@ Bing 新聞搜尋 API 是一種 RESTful Web 服務，因此可輕易地從任何
 
 ## <a name="see-also"></a>另請參閱
 
-* [Bing 新聞搜尋 API v7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference) 參考章節包含您在要求以影像為基礎的搜尋結果時所能使用的端點、標頭、API 回應和查詢參數的定義和資訊。
-
+* [Bing 新聞搜尋 API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference) 參考章節包含您在要求以影像為基礎的搜尋結果時所能使用的端點、標頭、API 回應和查詢參數的定義和資訊。
 * [Bing 使用和顯示需求](./useanddisplayrequirements.md)指定了透過 Bing 搜尋 API 取得的內容和資訊可行的用法。
+* 請瀏覽 [Bing 搜尋 API 中樞頁面](../bing-web-search/search-the-web.md)以探索其他可用的 API。

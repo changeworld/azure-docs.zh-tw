@@ -1,36 +1,33 @@
 ---
-title: 针对 Azure 资源中的数组属性创作策略
-description: 了解如何使用 Azure Policy 定义规则来创建数组参数、创建数组语言表达式的规则、评估 [*] 别名，以及将元素追加到现有数组。
-author: DCtheGeek
-ms.author: dacoulte
-ms.date: 03/06/2019
-ms.topic: conceptual
-ms.service: azure-policy
-manager: carmonm
-ms.openlocfilehash: 38cf6decb8e61768faa9680058f6366e1550ba40
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+title: 資源陣列屬性編寫原則
+description: 瞭解如何使用陣列參數和陣列語言運算式、評估 [*] 別名，以及附加具有 Azure 原則定義規則的元素。
+ms.date: 05/20/2020
+ms.topic: how-to
+ms.openlocfilehash: f3d30f76d555386e5ab8041a0b8cc82b5b60e28e
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60498758"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684250"
 ---
-# <a name="author-policies-for-array-properties-on-azure-resources"></a>针对 Azure 资源中的数组属性创作策略
+# <a name="author-policies-for-array-properties-on-azure-resources"></a>對於 Azure 資源編寫陣列屬性的原則
 
-Azure 资源管理器属性往往定义为字符串和布尔值。 存在一个对多的关系时，复杂属性将定义为数组。 在 Azure Policy 中，可通过多种不同的方式使用数组：
+Azure Resource Manager 屬性通常會定義為字串和布林值。 存在一對多關聯性時，複雜屬性會改為定義為陣列。 在 Azure 原則中，能夠以多種不同的方式使用陣列：
 
-- 可提供多个选项的[定义参数](../concepts/definition-structure.md#parameters)类型
-- 使用条件 **in** 或 **notIn** 的[策略规则](../concepts/definition-structure.md#policy-rule)部分
-- 可评估 [\[\*\] 别名](../concepts/definition-structure.md#understanding-the--alias)，以评估 **None**、**Any** 或 **All** 等特定方案的策略规则部分
-- 使用可以替换或者可以添加到现有数组的 [append 效果](../concepts/effects.md#append)
+- [定義參數](../concepts/definition-structure.md#parameters)的類型，可提供多個選項
+- 使用條件 **in** 或 **notIn** 的[原則規則](../concepts/definition-structure.md#policy-rule)一部分
+- 評估 [\[\*\] 別名](../concepts/definition-structure.md#understanding-the--alias)的原則規則，將會評估：
+  - **無**、**任何**或**全部**的案例
+  - **計數**的複雜案例
+- 在[附加效果](../concepts/effects.md#append)中取代或加入至現有的陣列
 
-本文将会介绍 Azure Policy 的每种用法，并提供几个示例定义。
+本文涵蓋 Azure 原則的每個使用方式，並提供數個範例定義。
 
-## <a name="parameter-arrays"></a>参数数组
+## <a name="parameter-arrays"></a>參數陣列
 
-### <a name="define-a-parameter-array"></a>定义参数数组
+### <a name="define-a-parameter-array"></a>定義參數陣列
 
-如果需要多个值，将参数定义为数组可以提高策略的灵活性。
-此原則定義可讓任何單一位置參數**allowedLocations**預設值為  _eastus2_:
+將參數定義為陣列，可在需要一個以上的值時，允許原則彈性。
+此原則定義允許 **allowedLocations** 參數的任何單一位置，並預設為 _eastus2_：
 
 ```json
 "parameters": {
@@ -46,9 +43,9 @@ Azure 资源管理器属性往往定义为字符串和布尔值。 存在一个�
 }
 ```
 
-由于**类型**是_字符串_，因此在分配该策略时，只能设置一个值。 如果分配此策略，只允许单个 Azure 区域中的处于范围内的资源。 大部分的原則定義需要的核准選項，例如允許清單允許_eastus2_， _eastus_，並_westus2_。
+由於**類型**為_字串_，因此指派原則時只能設定一個值。 如果指派此原則，則範圍內的資源只能在單一 Azure 區域中使用。 大部分的原則定義都必須允許已核准的選項清單，例如允許 _eastus2_、_eastus_ 和 _westus2_。
 
-若要创建允许多个选项的策略定义，请使用“数组”**类型**。 可按如下所示重新编写同一策略：
+若要建立原則定義以允許多個選項，請使用「陣列」**類型**。 相同的原則可以改寫如下：
 
 ```json
 "parameters": {
@@ -71,17 +68,17 @@ Azure 资源管理器属性往往定义为字符串和布尔值。 存在一个�
 ```
 
 > [!NOTE]
-> 保存策略定义后，无法更改参数中的 **type** 属性。
+> 一旦儲存原則定義之後，就無法變更參數上的**類型**屬性。
 
-在分配策略期间，此新参数定义将采用多个值。 如果定义了数组属性 **allowedValues**，则在分配期间，可用值将进一步限制为预定义的选项列表。 **allowedValues** 是可选的。
+這個新的參數定義會在原則指派期間接受一個以上的值。 陣列屬性 **allowedValues** 定義完畢後，指派期間可用的值會進一步限制為預先定義的選項清單。 使用 **allowedValues** 為選擇性。
 
-### <a name="pass-values-to-a-parameter-array-during-assignment"></a>在分配期间将值传递给参数数组
+### <a name="pass-values-to-a-parameter-array-during-assignment"></a>於指派期間將值傳遞給參數陣列
 
-通过 Azure 门户分配策略时，“数组”**类型**的参数将显示为单个文本框。 提示中会指出“请使用 ; 来分隔值。 (例如 London;New York)”。 要傳遞的允許的位置值_eastus2_， _eastus_，並_westus2_給參數，使用下列字串：
+透過 Azure 入口網站指派原則時，**類型**「陣列」的參數會顯示為單一文字方塊。 提示顯示「請使用 ; 來分隔值。 (例如倫敦;紐約)」。 若要將 _eastus2_、_eastus_ 和 _westus2_ 允許的位置值傳遞給參數，請使用下列字串：
 
 `eastus2;eastus;westus2`
 
-使用 Azure CLI、Azure PowerShell 或 REST API 时，参数值的格式是不同的。 值将会通过也包含参数名称的 JSON 字符串进行传递。
+使用 Azure CLI、Azure PowerShell 或 REST API 時，參數值的格式會不同。 這些值會透過同時包含參數名稱的 JSON 字串傳遞。
 
 ```json
 {
@@ -95,18 +92,18 @@ Azure 资源管理器属性往往定义为字符串和布尔值。 存在一个�
 }
 ```
 
-若要在每个 SDK 中使用此字符串，请使用以下命令：
+若要將此字串與每個 SDK 搭配使用，請使用下列命令：
 
-- Azure CLI：命令 [az policy assignment create](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create)，结合参数 **params**
-- Azure PowerShell：cmdlet [New-AzPolicyAssignment](/powershell/module/az.resources/New-Azpolicyassignment)，结合参数 **PolicyParameter**
-- REST API：在请求正文中使用 _PUT_ [create](/rest/api/resources/policyassignments/create) 操作作为 **properties.parameters** 属性的值
+- Azure CLI：命令 [az policy assignment create](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create) 搭配參數 **params**
+- Azure PowerShell：Cmdlet [New-AzPolicyAssignment](/powershell/module/az.resources/New-Azpolicyassignment) 搭配參數 **PolicyParameter**
+- REST API：_PUT_ 中屬於要求本文的 **properties.parameters** 屬性值 [create](/rest/api/resources/policyassignments/create)作業
 
-## <a name="policy-rules-and-arrays"></a>策略规则和数组
+## <a name="policy-rules-and-arrays"></a>原則規則和陣列
 
-### <a name="array-conditions"></a>数组条件
+### <a name="array-conditions"></a>陣列條件
 
-可以结合“数组”
-**类型**的参数使用的策略规则[条件](../concepts/definition-structure.md#conditions)限制为 `in` 和 `notIn`。 以包含条件 `equals` 的以下策略定义为例：
+參數的「陣列」
+**類型**可使用的原則規則[條件](../concepts/definition-structure.md#conditions)僅限於 `in` 和 `notIn`。 採用下列原則定義，並以條件 `equals` 做為範例：
 
 ```json
 {
@@ -134,20 +131,20 @@ Azure 资源管理器属性往往定义为字符串和布尔值。 存在一个�
 }
 ```
 
-尝试通过 Azure 门户创建此策略定义会导致出现如下所示的错误消息：
+嘗試透過 Azure 入口網站建立此原則定義會導致錯誤，例如此錯誤訊息：
 
-- “由于出现验证错误，无法参数化策略 '{GUID}'。 请检查是否正确定义了策略参数。 出现内部异常‘语言表达式 '[parameters('allowedLocations')]' 评估结果的类型为‘数组’，而预期类型为‘字符串’。’”
+- 「因為發生驗證錯誤，所以無法將原則 '{GUID}' 參數化。 請檢查是否已正確定義原則參數。 內部例外狀況 '語言運算式 '[parameters('allowedLocations')] 的評估結果為 'Array' 類型，而預期類型為 'String'。'」。
 
-条件 `equals` 的预期**类型**为“字符串”。 由于 **allowedLocations** 定义为“数组”**类型**，因此策略引擎会评估该语言表达式并引发错误。 使用 `in` 和 `notIn` 条件时，策略引擎预期语言表达式中的**类型**为“数组”。 若要解决此错误消息，请将 `equals` 更改为 `in` 或 `notIn`。
+條件 `equals` 的預期**類型**是_字串_。 由於 **allowedLocations** 定義為**類型**_陣列_，原則引擎會評估語言運算式，並擲回錯誤。 有了 `in` 和 `notIn` 條件，原則引擎就會預期語言運算式中的**類型**_陣列_。 若要解決此錯誤訊息，請將 `equals` 變更為 `in` 或 `notIn`。
 
-### <a name="evaluating-the--alias"></a>评估 [*] 别名
+### <a name="evaluating-the--alias"></a>評估 [*] 別名
 
-名称中附加有 **[\*]** 的别名表示**类型**为“数组”。 指定 **[\*]** 可以评估数组的每个元素，而不会评估整个数组的值。 这种按项评估的功能在三种场合下非常有用：None、Any 和 All。
+具有 **\[\*\]** 附加至其名稱的別名，表示**類型**是_陣列_。 **\[\*\]** 可讓您個別評估陣列的每個元素，並以邏輯方式 AND 評估，而不是評估整個陣列的值。 有三個標準案例，每個項目評估在中都很有用：_無_、_任何_或_全部_元素相符。 針對複雜的案例，請使用[計數](../concepts/definition-structure.md#count)。
 
-仅当 **if** 规则评估为 true 时，策略引擎才会在 **then** 中触发**效果**。
-若要根据上下文了解 **[\*]** 如何评估数组的每个元素，必须知道这一事实。
+只有在 **if** 規則評估為 true 時，原則引擎會在 **then** 中觸發**效果**。
+必須瞭解 **\[\*\]** 評估陣列的每個個別元素所用的方式。
 
-场景表的示例策略规则如下：
+下列案例資料表的範例原則規則：
 
 ```json
 "policyRule": {
@@ -166,7 +163,7 @@ Azure 资源管理器属性往往定义为字符串和布尔值。 存在一个�
 }
 ```
 
-以下场景表的 **ipRules** 数组如下所示：
+下列情節資料表的 **ipRules** 陣列如下所示：
 
 ```json
 "ipRules": [
@@ -181,35 +178,35 @@ Azure 资源管理器属性往往定义为字符串和布尔值。 存在一个�
 ]
 ```
 
-对于下面的每个条件示例，请将 `<field>` 替换为 `"field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].value"`。
+針對下列每個條件範例，將 `<field>` 取代為 `"field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].value"`。
 
-以下结果是将上面所示现有值的条件、示例策略规则和数组合并后的结果：
+下列結果是條件和範例原則規則和上述現有值陣列的組合結果：
 
-|條件 |结果 |說明 |
-|-|-|-|
-|`{<field>,"notEquals":"127.0.0.1"}` |无 |一个数组元素评估为 false (127.0.0.1 != 127.0.0.1)，一个数组元素评估为 true (127.0.0.1 != 192.168.1.1)，因此，**notEquals** 条件为 _false_，且不会触发效果。 |
-|`{<field>,"notEquals":"10.0.4.1"}` |策略效果 |两个数组元素均评估为 true（10.0.4.1 != 127.0.0.1，10.0.4.1 != 192.168.1.1），因此，**notEquals** 条件为 _true_，并且会触发效果。 |
-|`"not":{<field>,"Equals":"127.0.0.1"}` |策略效果 |一个数组元素评估为 true (127.0.0.1 == 127.0.0.1)，一个数组元素评估为 false (127.0.0.1 == 192.168.1.1)，因此，**Equals** 条件为 _false_。 逻辑运算符评估为 true (**not** _false_)，因此会触发效果。 |
-|`"not":{<field>,"Equals":"10.0.4.1"}` |策略效果 |两个数组元素均评估为 false（10.0.4.1 == 127.0.0.1，10.0.4.1 == 192.168.1.1），因此，**Equals** 条件为 _false_。 逻辑运算符评估为 true (**not** _false_)，因此会触发效果。 |
-|`"not":{<field>,"notEquals":"127.0.0.1" }` |策略效果 |一个数组元素评估为 false (127.0.0.1 != 127.0.0.1)，一个数组元素评估为 true (127.0.0.1 != 192.168.1.1)，因此，**notEquals** 条件为 _false_。 逻辑运算符评估为 true (**not** _false_)，因此会触发效果。 |
-|`"not":{<field>,"notEquals":"10.0.4.1"}` |无 |两个数组元素均评估为 true（10.0.4.1 != 127.0.0.1，10.0.4.1 != 192.168.1.1），因此，**notEquals** 条件为 _true_。 逻辑运算符评估为 false (**not** _true_)，因此不会触发效果。 |
-|`{<field>,"Equals":"127.0.0.1"}` |无 |一个数组元素评估为 true (127.0.0.1 == 127.0.0.1)，一个数组元素评估为 false (127.0.0.1 == 192.168.1.1)，因此，**Equals** 条件为 _false_，且不会触发效果。 |
-|`{<field>,"Equals":"10.0.4.1"}` |无 |两个数组元素均评估为 false（10.0.4.1 == 127.0.0.1，10.0.4.1 == 192.168.1.1），因此，**Equals** 条件为 _false_，且不会触发效果。 |
+|條件 |成果 | 狀況 |說明 |
+|-|-|-|-|
+|`{<field>,"notEquals":"127.0.0.1"}` |不執行任何動作 |無相符 |一個陣列元素會評估為 false (127.0.0.1 != 127.0.0.1)，另一個為 true (127.0.0.1 != 192.168.1.1)，因此 **notEquals** 條件是 _false_ 且不會觸發效果。 |
+|`{<field>,"notEquals":"10.0.4.1"}` |原則效果 |無相符 |這兩個陣列元素會評估為 true (10.0.4.1 != 127.0.0.1 and 10.0.4.1 != 192.168.1.1)，因此 **notEquals** 條件是 _true_ 並觸發效果。 |
+|`"not":{<field>,"notEquals":"127.0.0.1" }` |原則效果 |一或多個作業 |一個陣列元素會評估為 false (127.0.0.1 != 127.0.0.1)，另一個為 true (127.0.0.1 != 192.168.1.1)，因此 **notEquals** 條件是 _false_。 邏輯運算子會評估為 true (**not** _false_)，因此會觸發效果。 |
+|`"not":{<field>,"notEquals":"10.0.4.1"}` |不執行任何動作 |一或多個作業 |這兩個陣列元素會評估為 true (10.0.4.1 != 127.0.0.1 and 10.0.4.1 != 192.168.1.1)，因此 **notEquals** 條件是 _true_。 邏輯運算子會評估為 false (**not** _true)_ ，因此不會觸發效果。 |
+|`"not":{<field>,"Equals":"127.0.0.1"}` |原則效果 |不是全部相符 |一個陣列元素會評估為 true (127.0.0.1 == 127.0.0.1)，另一個為 false (127.0.0.1 == 192.168.1.1)，因此 **Equals** 條件是 _false_。 邏輯運算子會評估為 true (**not** _false_)，因此會觸發效果。 |
+|`"not":{<field>,"Equals":"10.0.4.1"}` |原則效果 |不是全部相符 |這兩個陣列元素都評估為 false (10.0.4.1 == 127.0.0.1 和 10.0.4.1 == 192.168.1.1)，因此 **Equals** 條件為 _false_。 邏輯運算子會評估為 true (**not** _false_)，因此會觸發效果。 |
+|`{<field>,"Equals":"127.0.0.1"}` |不執行任何動作 |全部相符 |一個陣列元素會評估為 true (127.0.0.1 == 127.0.0.1)，另一個為 false (127.0.0.1 == 192.168.1.1)，因此 **Equals** 條件是 _false_ 且不會觸發效果。 |
+|`{<field>,"Equals":"10.0.4.1"}` |不執行任何動作 |全部相符 |這兩個陣列元素都評估為 false (10.0.4.1 == 127.0.0.1 和 10.0.4.1 == 192.168.1.1)，因此 **Equals** 條件是 _false_ 且不會觸發效果。 |
 
-## <a name="the-append-effect-and-arrays"></a>append 效果和数组
+## <a name="the-append-effect-and-arrays"></a>附加效果和陣列
 
-[append 效果](../concepts/effects.md#append)的行为根据 **details.field** 是否为 **[\*]** 别名而有所不同。
+[附加效果](../concepts/effects.md#append)的行為會根據 **details.field** 是否為 **\[\*\]** 別名而有所不同。
 
-- 如果不是 **[\*]** 别名，则 append 会将整个数组替换为 **value** 属性
-- 如果是 **[\*]** 别名，则 append 会将 **value** 属性添加到现有数组，或创建新数组
+- 不是 **\[\*\]** 別名時，append 會將整個陣列取代為**值**屬性
+- 是 **\[\*\]** 別名時，append 會將**值**屬性加入現有的陣列中，或建立新的陣列
 
-有关详细信息，请参阅 [append 示例](../concepts/effects.md#append-examples)。
+如需詳細資訊，請參閱[附加範例](../concepts/effects.md#append-examples)。
 
 ## <a name="next-steps"></a>後續步驟
 
-- 在 [Azure 原則範例](../samples/index.md)檢閱範例
-- 檢閱[原則定義結構](../concepts/definition-structure.md)
-- 檢閱[了解原則效果](../concepts/effects.md)
-- 了解如何[以程式設計方式建立原則](programmatically-create.md)
-- 了解如何[補救不符合規範的資源](remediate-resources.md)
-- 檢閱[使用 Azure 管理群組來組織資源](../../management-groups/overview.md)，以了解何謂管理群組
+- 在 [Azure 原則範例](../samples/index.md)檢閱範例。
+- 檢閱 [Azure 原則定義結構](../concepts/definition-structure.md)。
+- 檢閱[了解原則效果](../concepts/effects.md)。
+- 了解如何[以程式設計方式建立原則](programmatically-create.md)。
+- 瞭解如何[補救不符合規範的資源](remediate-resources.md)。
+- 透過[使用 Azure 管理群組來組織資源](../../management-groups/overview.md)來檢閱何謂管理群組。

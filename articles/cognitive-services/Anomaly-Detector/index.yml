@@ -1,73 +1,118 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: 異常偵測器 API 文件
+summary: 了解如何使用異常偵測器 API 來監視一段時間的資料，並透過機器學習偵測異常情況。 取得資料摸深入解析，包括磁碟區、產業或案例等資訊。
 metadata:
-  title: 異常偵測器 API - 教學課程、快速入門和 API 參考 - Azure 認知服務 | Microsoft Docs
+  title: 異常偵測器 API - 教學課程、快速入門、API 參考
+  titleSuffix: Azure Cognitive Services
   description: 使用異常偵測器 API 來監視一段時間的資料，並透過機器學習偵測異常情況。 取得資料摸深入解析，包括磁碟區、產業或案例等資訊。
   services: cognitive-services
   author: aahill
-  manager: cgronlun
-  layout: LandingPage
+  manager: nitinme
   ms.service: cognitive-services
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: anomaly-detector
   ms.topic: landing-page
-  ms.date: 03/26/2019
+  ms.date: 09/10/2019
   ms.author: aahi
-abstract:
-  description: 異常偵測器 API 可協助您輕鬆在應用程式中內嵌異常偵測功能，讓您的使用者可以快速找出問題，盡可能減少損失及對客戶的影響。 不具機器學習背景亦可使用。 您可以透過單一 API 呼叫來啟動此預先定型的 AI 模型，此模型內嵌所有類型和磁碟區的時間序列資料。選取最適合您資料的異常偵測器模型以確保高準確性，並在事件發生時能自動偵測。 您可以自訂服務，以偵測各種規模的異常情況。  使用異常偵測器來識別商務事件、監視 IoT 裝置流量、管理詐騙行為，並因應不斷變遷的市場做出適當的判斷。
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/cognitive-services/anomaly-detector/overview
-            html: <p>深入了解異常偵測器 API</p>
-            image:
-              src: ../media/index/i_overview.svg
-            title: 什麼是異常偵測器 API？
-          - href: /azure/cognitive-services/anomaly-detector/concepts/anomaly-detection-best-practices
-            html: <p>使用最佳做法搭配 API，將您的異常偵測結果最佳化</p>
-            image:
-              src: ../media/index/i_guidelines.svg
-            title: 使用異常偵測器 API 的最佳做法
-          - href: /azure/cognitive-services/anomaly-detector/how-to/identify-anomalies
-            html: <p>調整異常偵測的敏感度、使用不同的偵測模式等等。</p>
-            image:
-              src: ../media/index/i_guidelines.svg
-            title: 使用異常偵測 API
-  - title: 5 分鐘快速入門
-    items:
-      - type: paragraph
-        text: 使用以下程式語言，在您的時間序列資料偵測異常情況：
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: media/logo_Csharp.svg
-            href: quickstarts/detect-data-anomalies-csharp
-            text: 'C#'
-          - image:
-              src: media/logo_Java.svg
-            href: quickstarts/detect-data-anomalies-java
-            text: Java
-          - image:
-              src: media/logo_python.svg
-            href: quickstarts/detect-data-anomalies-python
-            text: Python
-  - title: 參考
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: REST API
-            html: '<p><a href="https://aka.ms/anomaly-detector-rest-api-ref">異常偵測器 API</a></p>'
-          - title: SDK
-            html: '<p><a href="https://aka.ms/anomaly-detector-dotnet-ref">.NET</a></p> <p><a href="https://go.microsoft.com/fwlink/?linkid=2089915">Go</a></p> <p><a href="https://go.microsoft.com/fwlink/?linkid=2090370">Python</a></p> <p><a href="https://go.microsoft.com/fwlink/?linkid=2090788">Node.js</a></p>'
-          - title: PowerShell
-            html: '<p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
-          - title: CLI
-            html: '<p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest">Azure CLI</a></p>'
+  ms.openlocfilehash: 26632aebbd6cddd1463064b397a2f42071a5d518
+  ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 04/22/2020
+  ms.locfileid: "81757294"
+landingContent:
+- title: 關於異常偵測器 API
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是異常偵測器 API？
+      url: overview.md
+  - linkListType: get-started
+    links:
+    - text: 異常偵測器示範
+      url: https://aka.ms/adDemo
+  - linkListType: video
+    links:
+    - text: 異常偵測器 API 簡介
+      url: https://channel9.msdn.com/Shows/AI-Show/Introducing-Azure-Anomaly-Detector?WT.mc_id=ai-c9-niner
+    - text: 異常偵測 API 使用的演算法
+      url: https://www.youtube.com/embed/ERTaAnwCarM
+  - linkListType: reference
+    links:
+    - text: 介紹 Azure Anomaly Detector API
+      url: https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Introducing-Azure-Anomaly-Detector-API/ba-p/490162
+    - text: SR-CNN 演算法概觀
+      url: https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Overview-of-SR-CNN-algorithm-in-Azure-Anomaly-Detector/ba-p/982798
+    - text: 異常偵測使用的演算法 (KDD 白皮書)
+      url: https://arxiv.org/abs/1906.03821
+- title: 偵測資料中的異常情況
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 使用 C#
+      url: ../anomaly-detector/quickstarts/client-libraries.md?pivots=programming-language-csharp
+    - text: 使用 JavaScript
+      url: ../anomaly-detector/quickstarts/client-libraries.md?pivots=programming-language-javascript
+    - text: 使用 Python
+      url: ../anomaly-detector/quickstarts/client-libraries.md?pivots=programming-language-python
+  - linkListType: tutorial
+    links:
+    - text: 使用批次偵測與 Power BI 將異常狀況視覺化
+      url: tutorials/batch-anomaly-detection-powerbi.md
+    - text: 使用 Azure Databricks 偵測串流資料的異常情況
+      url: tutorials/anomaly-detection-streaming-databricks.md
+  - linkListType: video
+    links:
+    - text: 使用 Azure Databricks 對串流資料進行異常情況偵測
+      url: https://channel9.msdn.com/Shows/AI-Show/Anomaly-detection-on-streaming-data-using-Azure-Databricks
+- title: 將偵測結果最佳化
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 調整資料的異常偵測模式和參數。
+      url: how-to/identify-anomalies.md
+    - text: 使用最佳做法將您的異常偵測結果最佳化。
+      url: concepts/anomaly-detection-best-practices.md
+  - linkListType: video
+    links:
+    - text: 異常偵測器最佳做法
+      url: https://channel9.msdn.com/Shows/AI-Show/Anomaly-Detector-v10-Best-Practices
+- title: 使用 Docker 容器
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 安裝和執行異常偵測器容器
+      url: anomaly-detector-container-howto.md
+    - text: 設定異常偵測器容器
+      url: anomaly-detector-container-configuration.md
+    - text: 在 Azure 中部署容器執行個體
+      url: how-to/deploy-anomaly-detection-on-container-instances.md
+  - linkListType: video
+    links:
+    - text: 使用容器對異常偵測器進行內部部署的支援
+      url: https://channel9.msdn.com/Shows/AI-Show/Bring-Anomaly-Detector-on-premise-with-containers-support
+- title: 加入異常偵測器社群
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: 加入 Microsoft Teams 中 Anomaly Detector Advisor 群組
+      url: https://aka.ms/adadvisorsjoin
+    - text: 使用者產生的內容精選
+      url: user-generated-content.md
+- title: 參考
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: REST API
+      url: https://aka.ms/anomaly-detector-rest-api-ref
+    - text: .NET SDK
+      url: https://aka.ms/anomaly-detector-dotnet-ref
+    - text: .Python SDK
+      url: https://go.microsoft.com/fwlink/?linkid=2090370
+    - text: Go SDK
+      url: https://go.microsoft.com/fwlink/?linkid=2089915
+    - text: Node.js SDK
+      url: https://go.microsoft.com/fwlink/?linkid=2090788
+    - text: Azure PowerShell
+      url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services
+    - text: Azure CLI
+      url: /cli/azure/cognitiveservices#az-cognitiveservices-list

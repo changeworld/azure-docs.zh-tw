@@ -1,23 +1,18 @@
 ---
-title: 根據群組狀態新增執行動作的範圍 - Azure Logic Apps | Microsoft Docs
-description: 如何在 Azure Logic Apps 中根據群組動作狀態，建立執行工作流程動作的範圍
+title: 依範圍將動作分組並執行
+description: 在 Azure Logic Apps 中，建立根據群組狀態執行的範圍動作
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-manager: jeconnoc
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.date: 10/03/2018
 ms.topic: article
-ms.openlocfilehash: 48fb2d14cd4cf99510fff88b25b9ae45814a92a8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 08c7fa6abac7ed369347f1f496c70174b06edf02
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60685310"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83831568"
 ---
-# <a name="run-actions-based-on-group-status-with-scopes-in-azure-logic-apps"></a>在 Azure Logic Apps 中根據群組狀態和範圍執行動作
+# <a name="run-actions-based-on-group-status-by-using-scopes-in-azure-logic-apps"></a>在 Azure Logic Apps 中，根據群組狀態使用範圍執行動作
 
 若要在另一個群組成功或失敗之後才執行步驟，請將那些步驟群組在「範圍」中。 如果您想要將動作組織為邏輯群組、評估該群組的狀態，以及執行以範圍狀態為基礎的動作，此結構將會十分實用。 當範圍中的所有動作都執行完成之後，範圍也會取得自己的狀態。 例如，您可以在想要實作[例外狀況和錯誤處理](../logic-apps/logic-apps-exception-handling.md#scopes)時使用範圍。 
 
@@ -27,7 +22,7 @@ ms.locfileid: "60685310"
 
 ![設定「排程 - 週期」觸發程序](./media/logic-apps-control-flow-run-steps-group-scopes/scope-high-level.png)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要遵循本文中的範例，您需要以下項目：
 
@@ -54,7 +49,7 @@ ms.locfileid: "60685310"
 
 1. 請先登入 <a href="https://portal.azure.com" target="_blank">Azure 入口網站</a> (如果您尚未登入)。 建立空白邏輯應用程式。
 
-1. 使用以下设置添加**计划 - 定期**触发器：**时间间隔** =“1”并且**频率** =“Minute”
+1. 使用下列設定，新增**排程 - 週期**觸發程序：**間隔** =「1」，**頻率** =「分鐘」
 
    ![設定「排程 - 週期」觸發程序](./media/logic-apps-control-flow-run-steps-group-scopes/recurrence.png)
 
@@ -67,7 +62,7 @@ ms.locfileid: "60685310"
 
       | 設定 | 值 | 描述 |
       | ------- | ----- | ----------- |
-      | 連線名稱 | BingMapsConnection | 為您的連線提供一個名稱。 | 
+      | **連接名稱** | BingMapsConnection | 為您的連線提供一個名稱。 | 
       | **API 金鑰** | <*your-Bing-Maps-key*> | 輸入您先前收到的 Bing 地圖服務金鑰。 | 
       ||||  
 
@@ -83,7 +78,7 @@ ms.locfileid: "60685310"
       | **導航點 2** | <終點> | 輸入您路線的目的地。 | 
       | **避開** | None | 輸入路線所要避開的項目，例如高速公路、收費站等等。 如需可能使用的值，請參閱[計算路線](https://msdn.microsoft.com/library/ff701717.aspx)。 | 
       | **最佳化** | timeWithTraffic | 選取可將路線最佳化的參數，例如距離、和使用目前交通資訊的時間等等。 此範例會使用此值："timeWithTraffic" | 
-      | **距離單位** | <*your-preference*> | 輸入要計算您路線的距離單位。 此示例使用以下值：“Mile” | 
+      | **距離單位** | <*your-preference*> | 輸入要計算您路線的距離單位。 此範例會使用此值：「英哩」 | 
       | **行進模式** | 開車 | 輸入路線的旅行模式。 此範例會使用此值：「開車」 | 
       | **運輸日期時間** | None | 僅適用於運輸模式。 | 
       | **運輸日期類型** | None | 僅適用於運輸模式。 | 
@@ -92,7 +87,7 @@ ms.locfileid: "60685310"
 1. [新增條件](../logic-apps/logic-apps-control-flow-conditional-statement.md)以檢查目前交通下的旅行時間是否超過指定時間。 
    針對此範例，請遵循下列步驟：
 
-   1. 使用此说明重命名条件：**如果交通时间超过指定时间**
+   1. 以下列描述為條件重新命名：**如果流量時間超過指定的時間**
 
    1. 在最左邊的資料行中，按一下 [選擇值] 方塊，即可顯示動態內容清單。 從清單中，選取 [旅行期間交通] 欄位 (以秒為單位)。 
 
@@ -100,7 +95,7 @@ ms.locfileid: "60685310"
 
    1. 在中間的方塊中，選取此運算子：**大於**
 
-   1. 在右側的資料行中，輸入此比較值，也就是對等項目為 10 分鐘與秒：**600**
+   1. 在最右邊的資料行中輸入此比較值，也就是相當於 10 分鐘的秒數：**600**
 
       當您完成時，您的條件看起來就像下面這個範例︰
 
@@ -147,11 +142,11 @@ ms.locfileid: "60685310"
    1. 完成時，選擇 [確定]。
 
    <!-- markdownlint-disable MD038 -->
-   1. 解析運算式之後，加入下列文字空格： ``` minutes```
+   1. 解析運算式之後，加入下列文字，並加上前置空格：``` minutes```
   
        您的 [內文] 欄位現在看起來就像下面這個範例︰
 
-       ![完成 [內文] 欄位](./media/logic-apps-control-flow-run-steps-group-scopes/send-email-4.png)
+       ![完成的 [內文] 欄位](./media/logic-apps-control-flow-run-steps-group-scopes/send-email-4.png)
    <!-- markdownlint-enable MD038 -->
 
 1. 儲存您的邏輯應用程式。
@@ -165,7 +160,7 @@ ms.locfileid: "60685310"
 1. 在要使用的工作流程位置上新增範圍。 例如，若要在邏輯應用程式工作流程中的現有步驟之間新增範圍，請遵循下列步驟： 
 
    1. 將指標停留在要新增範圍的箭號上方。 
-   選擇**加號** (**+**) > [新增動作]。
+   選擇**加號** ( **+** ) > [新增動作]。
 
       ![新增範圍](./media/logic-apps-control-flow-run-steps-group-scopes/add-scope.png)
 
@@ -183,7 +178,7 @@ ms.locfileid: "60685310"
 
    ![新增的範圍](./media/logic-apps-control-flow-run-steps-group-scopes/scope-added.png)
 
-1. 在範圍下，新增會檢查範圍狀態的條件。 使用此说明重命名条件：**如果范围已失败**
+1. 在範圍下，新增會檢查範圍狀態的條件。 以下列描述為條件重新命名：**如果範圍失敗**
 
    ![新增條件來檢查範圍狀態](./media/logic-apps-control-flow-run-steps-group-scopes/add-condition-check-scope-status.png)
   
@@ -392,7 +387,7 @@ ms.locfileid: "60685310"
 
 ## <a name="get-support"></a>取得支援
 
-* 如有問題，請瀏覽 [Azure Logic Apps 論壇](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
+* 如有任何問題，請瀏覽 [Microsoft 問與答的 Azure Logic Apps 問題頁面](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)。
 * 若要提交或票選功能與建議，請造訪 [Azure Logic Apps 使用者意見反應網站](https://aka.ms/logicapps-wish)。
 
 ## <a name="next-steps"></a>後續步驟

@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure Active Directory 連接 Active Directory。 | Microsoft Docs
-description: Azure AD Connect 會整合您的內部部署目錄與 Azure Active Directory。 這可讓您為與 Azure AD 整合的 Office 365、Azure 和 SaaS 應用程式提供通用身分識別。
+title: 什麼是 Azure Active Directory 的混合式身分識別？
+description: 混合式身分識別在內部部署和雲端中，對驗證和授權擁有共同的使用者身分識別。
 keywords: Azure AD Connect 簡介, Azure AD Connect 概觀, 何謂 Azure AD Connect, 安裝 active directory
 services: active-directory
 author: billmath
@@ -9,24 +9,26 @@ ms.assetid: 59bd209e-30d7-4a89-ae7a-e415969825ea
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 11/28/2018
+ms.date: 05/17/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 536edcf74bff6f89dade4a713c40c9bef12e18af
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: c3d681dd06f07f6174e31b59cccf42df5dc16a1e
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56881799"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "68779840"
 ---
-# <a name="what-is-hybrid-identity"></a>什麼是混合式身分識別？
+# <a name="what-is-hybrid-identity-with-azure-active-directory"></a>什麼是 Azure Active Directory 的混合式身分識別？
 
-現今的企業和公司混合使用內部部署和雲端應用程式的情形越來越多。  使用者需要在內部部署環境和雲端存取這些應用程式。 這項需求已成為具有挑戰性的案例。 
+現今的企業和公司混合使用內部部署和雲端應用程式的情形越來越多。  使用者需要在內部部署環境和雲端存取這些應用程式。 同時管理內部部署和雲端的使用者帶來極大的挑戰。 
 
 Microsoft 的身分識別解決方案可跨越內部部署和雲端架構功能。  這些解決方案會建立通用使用者身分識別，以便進行所有資源的驗證和授權 (不論位於何處)。 我們稱之為**混合式身分識別**。
 
-若要達到混合式身分識別，可以視您的案例而定，使用下列其中一種驗證方法。   方法有三種： 
+透過 Azure AD 的混合式身分識別和混合式身分識別管理可以達到這個目的。
+
+若要使用 Azure AD 達到混合式身分識別，可以視您的案例而定，使用下列其中一種驗證方法。   方法有三種： 
 
 - **[密碼雜湊同步處理 (PHS)](whatis-phs.md)**  
 - **[傳遞驗證 (PTA)](how-to-connect-pta.md)**  
@@ -34,7 +36,7 @@ Microsoft 的身分識別解決方案可跨越內部部署和雲端架構功能�
 
 這些驗證方法也會提供[單一登入](how-to-connect-sso.md)功能。  使用者位於連線到貴公司網路的公司裝置時，單一登入功能會自動將他們登入。
 
-如需其他資訊，請參閱[針對 Azure Active Directory 混合式身分識別解決方案選擇正確的驗證方法](https://docs.microsoft.com/azure/security/azure-ad-choose-authn)。 
+如需其他資訊，請參閱[針對 Azure Active Directory 混合式身分識別解決方案選擇正確的驗證方法](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn)。 
 
 ## <a name="common-scenarios-and-recommendations"></a>常見案例和建議 
 
@@ -61,11 +63,15 @@ Microsoft 的身分識別解決方案可跨越內部部署和雲端架構功能�
 > <sup>4</sup> AD FS 可與您的企業 PKI 整合，以允許使用憑證登入。 這些憑證可以是透過信任的佈建管道 (例如 MDM、GPO、智慧卡憑證 (包括 PIV/CAC 卡) 或 Hello for Business (cert-trust)) 部署的軟性憑證。 如需智慧卡驗證支援的詳細資訊，請參閱[這個部落格](https://blogs.msdn.microsoft.com/samueld/2016/07/19/adfs-certauth-aad-o365/)。 
 > 
 
+## <a name="license-requirements-for-using-azure-ad-connect"></a>使用 Azure AD Connect 的授權需求
+
+[!INCLUDE [active-directory-free-license.md](../../../includes/active-directory-free-license.md)]
+
 ## <a name="next-steps"></a>後續步驟 
 
 - [什麼是 Azure AD Connect 和 Connect Health？](whatis-azure-ad-connect.md) 
 - [什麼是密碼雜湊同步處理 (PHS)？](whatis-phs.md) 
 - [什麼是傳遞驗證 (PTA)？](how-to-connect-pta.md) 
 - [什麼是同盟？](whatis-fed.md) 
-- [何謂單一登入？](how-to-connect-sso.md) 
+- [什麼是單一登入？](how-to-connect-sso.md) 
 

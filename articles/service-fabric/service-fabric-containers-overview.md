@@ -1,25 +1,14 @@
 ---
-title: Service Fabric 和容器的概觀 | Microsoft Docs
+title: Service Fabric 和容器的概觀
 description: Service Fabric 及使用容器來部署微服務應用程式的概觀。 本文提供如何使用容器及 Service Fabric 所提供之功能的概觀。
-services: service-fabric
-documentationcenter: .net
-author: aljo-microsoft
-manager: chackdan
-editor: ''
-ms.assetid: c98b3fcb-c992-4dd9-b67d-2598a9bf8aab
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 8/8/2018
-ms.author: aljo
-ms.openlocfilehash: 5a45f14e5ac1da5152f320bd92b1ebb42be1d214
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7c92910a92c8fa3061a1a0d53611734cf681484f
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60881400"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259222"
 ---
 # <a name="service-fabric-and-containers"></a>Service Fabric 和容器
 
@@ -35,8 +24,8 @@ Service Fabric 是將微服務部署至整個機器叢集的 Microsoft [容器�
 
 若要直接進入正題並試用 Service Fabric 上的容器，請嘗試快速入門、教學課程或範例：  
 
-[快速入门：将 Linux 容器应用程序部署到 Service Fabric](service-fabric-quickstart-containers-linux.md)  
-[快速入门：将 Windows 容器应用程序部署到 Service Fabric](service-fabric-quickstart-containers.md)  
+[快速入門：將 Linux 容器應用程式部署到 Service Fabric](service-fabric-quickstart-containers-linux.md)  
+[快速入門：將 Windows 容器應用程式部署到 Service Fabric](service-fabric-quickstart-containers.md)  
 [將現有的 .NET 應用程式容器化](service-fabric-host-app-in-a-container.md)  
 [Service Fabric 容器範例](https://azure.microsoft.com/resources/samples/service-fabric-containers/)  
 
@@ -48,10 +37,10 @@ Service Fabric 是將微服務部署至整個機器叢集的 Microsoft [容器�
 
 相較於虛擬機器，容器的優點如下︰
 
-* **小型**：容器使用单个存储空间和层的版本与更新提高了效率。
-* **快**：容器不需要啟動整個作業系統，讓他們可以開始速度，通常以秒為單位。
-* **可移植性**：容器化的应用程序映像可以移植到云中或本地运行、移植到虚拟机中运行，或者直接在物理机上运行。
-* **资源调控**：容器可限制在其主机上消耗的物理资源。
+* **小**︰容器使用單一儲存空間和層級版本與更新，以增加效率。
+* **快**︰容器不需要啟動整個作業系統，因此可以更快啟動，通常差個幾秒。
+* **可攜性**︰容器化應用程式映像可以移植到雲端或內部部署中，而在虛擬機器內或直接在實體機器上執行。
+* **資源管理**：容器可以限制在其主機上可取用的實體資源。
 
 ### <a name="container-types-and-supported-environments"></a>容器類型和支援的環境
 
@@ -76,11 +65,11 @@ Windows Server 2016 提供兩種不同的容器，其隔離程度有所不同。
 
 以下是典型範例，容器是很好的選擇︰
 
-* **IIS 直接迁移**：可将现有 [ASP.NET MVC](https://www.asp.net/mvc) 应用放在容器中，而无需将其迁移到 ASP.NET Core。 這些 ASP.NET MVC 應用程式相依於網際網路資訊服務 (IIS)。 您可以從預先建立的 IIS 映像將這些應用程式封裝成容器映像，然後與 Service Fabric 一起部署。 請參閱 [Windows Server 上的容器映像](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server) (英文)，以取得 Windows 容器的相關資訊。
+* **IIS 提起然後平移**︰您可以將現有的 [ASP.NET MVC](https://www.asp.net/mvc) 應用程式放在一個容器中，而不是將它遷移到 ASP.NET Core。 這些 ASP.NET MVC 應用程式相依於網際網路資訊服務 (IIS)。 您可以從預先建立的 IIS 映像將這些應用程式封裝成容器映像，然後與 Service Fabric 一起部署。 請參閱 [Windows Server 上的容器映像](/virtualization/windowscontainers/quick-start/quick-start-windows-server) (英文)，以取得 Windows 容器的相關資訊。
 
-* **将容器与 Service Fabric 微服务混合使用**：将现有容器映像用于应用程序的一部分。 例如，對於應用程式的 Web 前端系統，您可以使用 [NGINX 容器](https://hub.docker.com/_/nginx/)，而對於更密集的後端運算，則可以使用具狀態服務。
+* **混合容器和 Service Fabric 微服務**︰針對您的應用程式的一部分使用現有的容器映像。 例如，對於應用程式的 Web 前端系統，您可以使用 [NGINX 容器](https://hub.docker.com/_/nginx/)，而對於更密集的後端運算，則可以使用具狀態服務。
 
-* **减少“噪声邻居”服务的影响**：可以使用容器的资源监管功能来限制服务在主机上使用的资源。 如果服務可能會耗用大量資源，因而影響其他服務的效能 (例如，像作業一樣長時間執行的查詢)，請考慮將這些服務放到可控管資源的容器中。
+* **減少「壟斷」服務的影響**︰您可以使用容器的資源控管能力來限制服務在主機上使用的資源。 如果服務可能會耗用大量資源，因而影響其他服務的效能 (例如，像作業一樣長時間執行的查詢)，請考慮將這些服務放到可控管資源的容器中。
 
 ## <a name="service-fabric-support-for-containers"></a>Service Fabric 的容器支援
 
@@ -101,7 +90,7 @@ Service Fabric 提供數個容器功能，協助您建置由容器化微服務�
 * 能夠在容器上設定安全性認證。
 * 為容器選擇不同的網路模式。
 
-如需在 Azure 上支援容器的完整概觀，例如如何利用 Azure Kubernetes 服務建立 Kubernetes 叢集、如何在 Azure Container Registry 中建立私人 Docker 登錄等等，請參閱 [Azure 容器](https://docs.microsoft.com/azure/containers/)。
+如需在 Azure 上支援容器的完整概觀，例如如何利用 Azure Kubernetes 服務建立 Kubernetes 叢集、如何在 Azure Container Registry 中建立私人 Docker 登錄等等，請參閱 [Azure 容器](../containers/index.yml)。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -109,6 +98,6 @@ Service Fabric 提供數個容器功能，協助您建置由容器化微服務�
 
 [在 Linux 建立第一個 Service Fabric 容器應用程式](service-fabric-get-started-containers-linux.md)  
 [在 Windows 建立第一個 Service Fabric 容器應用程式](service-fabric-get-started-containers.md)  
-[深入了解 Windows 容器](https://docs.microsoft.com/virtualization/windowscontainers/about/)
+[深入了解 Windows 容器](/virtualization/windowscontainers/about/)
 
 [Image1]: media/service-fabric-containers/Service-Fabric-Types-of-Isolation.png

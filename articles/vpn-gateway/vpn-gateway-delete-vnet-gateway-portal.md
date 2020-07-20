@@ -1,26 +1,25 @@
 ---
-title: 刪除虛擬網路閘道：Azure 入口網站：Resource Manager | Microsoft Docs
+title: Azure VPN 閘道：刪除閘道：入口網站
 description: 在 Resource Manager 部署模型中使用 Azure 入口網站刪除虛擬網路閘道。
 services: vpn-gateway
-documentationcenter: na
-author: WenJason
+author: cherylmc
 ms.service: vpn-gateway
-origin.date: 10/23/2018
-ms.date: 03/04/2019
-ms.author: v-jay
-ms.openlocfilehash: 387b4e982772f22453876e1ea8b9e7c4039601c4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 10/23/2018
+ms.author: cherylmc
+ms.topic: how-to
+ms.openlocfilehash: 68856a4c5218232943ac657bbd67759d5ab4b804
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60845679"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84983150"
 ---
 # <a name="delete-a-virtual-network-gateway-using-the-portal"></a>使用入口網站刪除虛擬網路閘道
 
 > [!div class="op_single_selector"]
-> * [Azure 门户](vpn-gateway-delete-vnet-gateway-portal.md)
+> * [Azure 入口網站](vpn-gateway-delete-vnet-gateway-portal.md)
 > * [PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
-> * [PowerShell (傳統)](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
+> * [PowerShell （傳統）](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
 
 本文會提供您方法來刪除使用 Resource Manager 部署模型部署的 Azure VPN 閘道。 如果您想要刪除 VPN 閘道組態的虛擬網路閘道，您可以採取幾種不同的方法。
 
@@ -42,26 +41,24 @@ ms.locfileid: "60845679"
 
 ### <a name="to-delete-the-local-network-gateway"></a>刪除區域網路閘道
 
-1. 在 [所有資源] 中，找出與每個連線相關聯的區域網路閘道。
-2. 在本地网关的“概述”边栏选项卡上，单击“删除”。
+1. 在 [所有資源]**** 中，找出與每個連線相關聯的區域網路閘道。
+2. 在區域網路閘道的 [概觀]**** 刀鋒視窗中，按一下 [刪除]****。
 
 ### <a name="to-delete-the-public-ip-address-resource-for-the-gateway"></a>刪除閘道的公用 IP 位址資源
 
-1. 在 [所有資源] 中，找出與閘道相關聯的公用 IP 位址資源。 如果虛擬網路閘道為主動-主動，您會看到兩個公用 IP 位址。 
-2. 在公用 IP 位址的 [概觀] 頁面上，按一下 [刪除]，然後按一下 [是] 以確認。
+1. 在 [所有資源]**** 中，找出與閘道相關聯的公用 IP 位址資源。 如果虛擬網路閘道為主動-主動，您會看到兩個公用 IP 位址。 
+2. 在公用 IP 位址的 [概觀]**** 頁面上，按一下 [刪除]****，然後按一下 [是]**** 以確認。
 
 ### <a name="to-delete-the-gateway-subnet"></a>刪除閘道子網路
 
-1. 在 [所有資源] 中，找出虛擬網路。 
-2. 在 [子網路] 刀鋒視窗中，按一下 [GatewaySubnet]，然後按一下 [刪除]。 
-3. 按一下 [是] 確認要刪除閘道子網路。
+1. 在 [所有資源]**** 中，找出虛擬網路。 
+2. 在 [子網路]**** 刀鋒視窗中，按一下 [GatewaySubnet]****，然後按一下 [刪除]****。 
+3. 按一下 [是]**** 確認要刪除閘道子網路。
 
-## <a name="deleterg"></a>藉由刪除資源群組來刪除 VPN 閘道
+## <a name="delete-a-vpn-gateway-by-deleting-the-resource-group"></a><a name="deleterg"></a>藉由刪除資源群組來刪除 VPN 閘道
 
-如果您不在乎保留資源群組中任何資源，而只想要從頭開始，您可以刪除整個資源群組。 這是移除所有項目的快速方法。 以下步骤仅适用于 Resource Manager 部署模型。
+如果您不在乎保留資源群組中任何資源，而只想要從頭開始，您可以刪除整個資源群組。 這是移除所有項目的快速方法。 下列步驟僅適用於 Resource Manager 部署模型。
 
-1. 在 [所有資源] 中，找出資源群組，然後按一下以開啟刀鋒視窗。
-2. 按一下 [刪除] 。 在 [刪除] 刀鋒視窗中，檢視受影響的資源。 請確定您想要刪除所有資源。 如果不是，請使用這篇文章上方之刪除 VPN 閘道中的步驟。
-3. 若要繼續，請輸入您想要刪除之資源群組的名稱，然後按一下 [刪除]。
-
-<!--Update_Description: wording update-->
+1. 在 [所有資源]**** 中，找出資源群組，然後按一下以開啟刀鋒視窗。
+2. 按一下 **[刪除]** 。 在 [刪除] 刀鋒視窗中，檢視受影響的資源。 請確定您想要刪除所有資源。 如果不是，請使用這篇文章上方之刪除 VPN 閘道中的步驟。
+3. 若要繼續，請輸入您想要刪除之資源群組的名稱，然後按一下 [刪除]****。

@@ -1,39 +1,42 @@
 ---
-title: 在 Azure 上的 IBM 工作負載 |Microsoft Docs
-description: 用於重新裝載您使用 Microsoft Azure 的 z/OS 工作負載 IBM 大型主機模擬器和 Microsoft 合作夥伴提供的其他服務。
+title: Azure 上的 IBM 工作負載 |Microsoft Docs
+description: 使用來自 Microsoft 合作夥伴的大型主機模擬器和其他服務，使用 Microsoft Azure 重新裝載您的 IBM z/OS 工作負載。
 services: virtual-machines-linux
+ms.service: virtual-machines-linux
 documentationcenter: ''
 author: njray
+ms.author: edprice
 manager: edprice
 editor: edprice
+ms.topic: conceptual
+ms.date: 02/22/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: ccecfd6abe0e9418e217ad7f200ce980d73c7b45
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 13c83c53cdad719d6a4bed4cc1852b85d62082e8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61468324"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "68834594"
 ---
-# <a name="ibm-workloads-on-azure"></a>在 Azure 上的 IBM 工作負載
+# <a name="ibm-workloads-on-azure"></a>Azure 上的 IBM 工作負載
 
-許多根據 z/OS 的 IBM 大型主機工作負載可以在 Azure 中複寫，甚至察覺其基礎的系統中的 變更使用者的功能而不會遺失。 重新裝載在 Azure 上的應用程式可讓您再加上了彈性、 可用性，您需要的類似大型主機的功能和潛在的成本節省的雲端。
+許多以 z/OS 為基礎的 IBM 大型主機工作負載都可以在 Azure 中進行複寫，而不會遺失任何功能，而且使用者甚至不會注意到其基礎系統中的變更。 Azure 上的重新裝載應用程式可提供您所需的大型主機功能，以及雲端的彈性、可用性和潛在的成本節約。
 
-Azure 支援整合現有的 IBM 大型主機環境，讓您將有意義，applicates 執行混合式解決方案所需，且經過一段時間的移轉。 雖然您可以完全重新撰寫現有的大型主機程式適用於 Azure 很多常見重新裝載它們。 重寫將成本、 複雜度和時間加入至移轉專案。 使用重新裝載，您可以：
+Azure 支援與現有的 IBM 大型主機環境整合，讓您能夠遷移合理的 applicates、視需要執行混合式解決方案，以及在一段時間後遷移。 雖然您可以完全重寫 Azure 的現有大型主機型程式，但更常見的方法是重新裝載它們。 重寫會增加成本、複雜度和遷移專案的時間。 透過重新裝載，您可以：
 
-- 移至雲端架構的模擬器的應用程式。
+- 將應用程式移至雲端型模擬器。
 
-- 將資料庫移轉至雲端式資料庫。
+- 將資料庫移轉至以雲端為基礎的資料庫。
 
-- 將模組和程式碼使用程式碼轉換引擎。
+- 使用程式碼轉換引擎取代模組和程式碼。
 
-此外，IBM 軟體，包括 WebSphere 及 MQ 現在是 Azure Marketplace。 有了 IBM 軟體的授權，您可利用 Azure 所提供的隨選基礎結構調整方式，快速啟動虛擬機器。
+此外，IBM 軟體（包括 WebSphere 和 MQ）現在已在 Azure Marketplace 中。 透過 IBM 軟體的授權，您可以利用 Azure 所提供的隨選基礎結構調整來快速啟動虛擬機器。
 
-廣泛的合作夥伴生態系統可協助您將 IBM 大型主機系統移轉至 Azure。 大部分遵循重複使用的實用方法可能的情況下再開始分階段部署的重寫或取代應用程式。 取得詳細指引，並從合作夥伴，幫助[Azure 大型主機移轉中心](https://azure.microsoft.com/migration/mainframe/)。
+有廣泛的合作夥伴生態系統可協助您將 IBM 大型主機系統移轉至 Azure。 在登機重寫或取代應用程式的階段式部署之前，最常遵循實際的重複使用方法。 在[Azure 大型主機遷移中心](https://azure.microsoft.com/migration/mainframe/)取得更多有關合作夥伴的指引和協助。
 
 **後續步驟**
 
-- [大型主機移轉： 迷思與事實](https://docs.microsoft.com/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/myths-and-facts)
-- [在 Azure 上安裝 IBM zD & T 開發/測試環境](./install-ibm-z-environment.md)
-- [設定註冊應用程式開發人員控制發佈 (ADCD) 在 IBM zD & T v1](./demo.md)
-- [在 Azure 上的 IBM DB2 pureScale](https://docs.microsoft.com/azure/virtual-machines/linux/ibm-db2-purescale-azure)
+- [大型主機遷移：誤解和事實](https://docs.microsoft.com/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/myths-and-facts)
+- [在 Azure 上安裝 IBM zD&T 開發/測試環境](./install-ibm-z-environment.md)
+- [在 IBM zD&T v1 中設定由應用程式開發人員控制的散發（ADCD）](./demo.md)
+- [Azure 上的 IBM DB2 pureScale](https://docs.microsoft.com/azure/virtual-machines/linux/ibm-db2-purescale-azure)

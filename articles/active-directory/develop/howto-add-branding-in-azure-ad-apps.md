@@ -1,29 +1,24 @@
 ---
-title: 應用程式的商標指導方針 | Microsoft Docs
+title: 應用程式商標指導方針 | Azure
+titleSuffix: Microsoft identity platform
 description: Azure Active Directory 開發人員導向資源的完整指南
 services: active-directory
-documentationcenter: dev-center-name
-author: CelesteDG
-manager: mtillman
-editor: ''
-ms.assetid: 72f4e464-1352-4a49-a18f-c37f58e7d5c4
+author: rwike77
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
-ms.topic: conceptual
-ms.tgt_pltfrm: na
+ms.topic: how-to
 ms.workload: identity
 ms.date: 09/24/2018
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: arielgo
 ms.custom: aaddev, signin_art
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a2e62d24ea56e00b49c32c00136db858ecd0f778
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: c11bbe4aab064c8c1f32cf273cd3e0b6c2a3ae8f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56173771"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85478190"
 ---
 # <a name="branding-guidelines-for-applications"></a>應用程式的商標指導方針
 
@@ -60,7 +55,7 @@ Microsoft 不會在 Azure 或 Active Directory 品牌名稱上公開使用者，
 
 您的應用程式可能將註冊和登入劃分成不同的路徑，下列各節提供這兩個案例的視覺化導引。
 
-**如果您的應用程式支援使用者註冊 (例如免費試用版或免費增值模式)**：您可以顯示 [登入] 按鈕，讓使用者利用其工作帳戶或個人帳戶來存取您的應用程式。 他們第一次存取您的應用程式時，Azure AD 會顯示同意提示。
+**如果您的應用程式支援使用者註冊 (例如免費試用版或免費增值模式)**：您可以顯示 [登入]**** 按鈕，讓使用者利用其工作帳戶或個人帳戶來存取您的應用程式。 他們第一次存取您的應用程式時，Azure AD 會顯示同意提示。
 
 **如果您的應用程式需要唯有系統管理員才能同意的權限，或應用程式需要組織授權**：請將系統管理員擷取與使用者登入分開。 **[取得此應用程式] 按鈕**會將系統管理員重新導向到登入，然後要求他們代表組織中的使用者來表示同意，這樣做的附加優點是可隱藏使用者同意您應用程式的提示。
 
@@ -68,19 +63,19 @@ Microsoft 不會在 Azure 或 Active Directory 品牌名稱上公開使用者，
 
 [取得應用程式] 連結必須將使用者重新導向到 Azure AD 授與存取權 (授權) 頁面，讓組織的系統管理員可授權您的應用程式來存取由 Microsoft 代管的組織資料。 [整合應用程式與 Azure Active Directory](quickstart-v1-integrate-apps-with-azure-ad.md) 一文中詳細討論存取權的要求方式。
 
-系統管理員同意您的應用程式之後，他們可以選擇將其新增至使用者的 Office 365 應用程式啟動器體驗 (可從非正式管道和 [https://portal.office.com/myapps](https://portal.office.com/myapps) 存取)。 如果您想要宣傳此功能，可以使用「將此應用程式加入至您的組織」之類的詞彙，並顯示類似下列範例的按鈕：
+在系統管理員同意您的應用程式之後，他們可以選擇將其新增至使用者的 Office 365 應用程式啟動器體驗（可從松餅和存取 [https://portal.office.com/myapps](https://portal.office.com/myapps) ）。 如果您想要宣傳此功能，可以使用「將此應用程式加入至您的組織」之類的詞彙，並顯示類似下列範例的按鈕：
 
-![應用程式類型和案例](./media/howto-add-branding-in-azure-ad-apps/add-to-my-org.png)
+![顯示 Microsoft 標誌和「新增至我的組織」文字的按鈕](./media/howto-add-branding-in-azure-ad-apps/add-to-my-org.png)
 
-不過，我們建議您撰寫說明文字，而不要依賴按鈕。 例如︰
+不過，我們建議您撰寫說明文字，而不要依賴按鈕。 例如：
 
-> *如果您已經使用 Office 365 或 Microsoft 的其他商務服務，您可以為 <your_app_name> 授與對您組織資料的存取權。* 這可讓使用者利用其現有的工作帳戶存取 <your_app_name>。
+> *如果您已經使用 Microsoft 的 Office 365 或其他商務服務，您可以授與 <your_app_name> 存取貴組織的資料。這可讓您的使用者使用其現有的工作帳戶來存取 <your_app_name>。*
 
 若要下載官方 Microsoft 標誌並在您的應用程式中使用，請以滑鼠右鍵按一下您要使用的標誌，然後將其儲存到您的電腦。
 
 | 資產                                | PNG 格式 | SVG 格式 |
 | ------------------------------------ | ---------- | ---------- |
-| Microsoft 標誌  | ![Microsoft 標誌 PNG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_mssymbol_19.png) | ![Microsoft 標誌 SVG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_mssymbol_19.svg) |
+| Microsoft 標誌  | ![可用 PNG 格式下載的 Microsoft 標誌](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_mssymbol_19.png) | ![可用 SVG 格式下載的 Microsoft 標誌](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_mssymbol_19.svg) |
 
 ## <a name="visual-guidance-for-sign-in"></a>登入的視覺化導引
 
@@ -92,22 +87,22 @@ Microsoft 不會在 Azure 或 Active Directory 品牌名稱上公開使用者，
 
 下圖顯示當您將資產與應用程式搭配使用時 Microsoft 建議使用的紅線。 紅線適用於「使用 Microsoft 登入」或較簡短的「登入」版本。
 
-![「使用 Microsoft 登入」紅線](./media/howto-add-branding-in-azure-ad-apps/sign-in-with-microsoft-redlines.png)
+![顯示「使用 Microsoft 登入」紅線](./media/howto-add-branding-in-azure-ad-apps/sign-in-with-microsoft-redlines.png)
 
 若要下載官方影像並在您的應用程式中使用，請以滑鼠右鍵按一下您要使用的影像，然後將其儲存到您的電腦。
 
 | 資產                                | PNG 格式 | SVG 格式 |
 | ------------------------------------ | ---------- | ---------- |
-| 使用 Microsoft 登入 (深色佈景主題)  | ![[登入] 按鈕深色佈景主題 PNG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark.png) | ![[使用 Microsoft 登入] 按鈕深色佈景主題 SVG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark.svg) |
-| 使用 Microsoft 登入 (淺色佈景主題) | ![[登入] 按鈕淺色佈景主題 PNG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light.png) | ![[使用 Microsoft 登入] 按鈕淺色佈景主題 SVG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light.svg) |
-| 登入 (深色佈景主題)                 | ![[登入] 簡短按鈕深色佈景主題 PNG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark_short.png) | ![[登入] 簡短按鈕深色佈景主題 SVG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark_short.svg) |
-| 登入 (淺色佈景主題)                | ![[登入] 簡短按鈕淺色佈景主題 PNG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light_short.png) | ![[登入] 簡短按鈕淺色佈景主題 SVG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light_short.svg) |
+| 使用 Microsoft 登入 (深色佈景主題)  | ![可下載的 [使用 Microsoft 登入] 按鈕深色佈景主題 PNG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark.png) | ![可下載的 [使用 Microsoft 登入] 按鈕深色佈景主題 SVG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark.svg) |
+| 使用 Microsoft 登入 (淺色佈景主題) | ![可下載的 [使用 Microsoft 登入] 按鈕淺色佈景主題 PNG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light.png) | ![可下載的 [使用 Microsoft 登入] 按鈕淺色佈景主題 SVG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light.svg) |
+| 登入 (深色佈景主題)                 | ![可下載的 [登入] 簡短按鈕深色佈景主題 PNG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark_short.png) | ![可下載的 [登入] 簡短按鈕深色佈景主題 SVG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark_short.svg) |
+| 登入 (淺色佈景主題)                | ![可下載的 [登入] 簡短按鈕淺色佈景主題 PNG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light_short.png) | ![可下載的 [登入] 簡短按鈕淺色佈景主題 SVG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light_short.svg) |
 
 ## <a name="branding-dos-and-donts"></a>商標的建議與禁忌
 
 **建議**將「工作或學校帳戶」與「使用 Microsoft 登入」按鈕結合使用，以提供更多說明協助使用者了解是否可使用它。 **禁止** 使用「企業帳戶」、「商務帳戶」或「公司帳戶」之類的其他詞彙。
 
-**禁止**使用 "Office 365 ID" 或 "Azure ID"。 Office 365 也是 Microsoft 提供的消費型供應項目名稱，不會使用 Azure AD 進行驗證。
+**請勿**使用 "OFFICE 365 id" 或 "Azure id"。 Office 365 也是 Microsoft 提供的消費型供應項目名稱，不會使用 Azure AD 進行驗證。
 
 **禁止** 改變 Microsoft 標誌。
 
@@ -115,4 +110,4 @@ Microsoft 不會在 Azure 或 Active Directory 品牌名稱上公開使用者，
 
 ## <a name="navigation-dos-and-donts"></a>導覽的建議與禁忌
 
-**建議** 提供方法讓使用者登出並切換至另一個使用者帳戶。 雖然大部分的人只有一個 Microsoft/Facebook/Google/Twitter 個人帳戶，但往往與多個組織相關聯。 我們即將支援多重登入使用者。
+「應該」**** 設法讓使用登出並切換到其他使用者帳戶。 雖然大部分的人只有一個 Microsoft/Facebook/Google/Twitter 個人帳戶，但往往與多個組織相關聯。 我們即將支援多重登入使用者。

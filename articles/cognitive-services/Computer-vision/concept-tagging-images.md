@@ -1,5 +1,5 @@
 ---
-title: 將內容標記套用到影像 - 電腦視覺
+title: 內容標記-電腦視覺
 titleSuffix: Azure Cognitive Services
 description: 了解電腦視覺 API 的影像標記功能相關概念。
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: aeb03566a650fe46286d77913e0d36dcbb19f436
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
-ms.translationtype: HT
+ms.openlocfilehash: 887f6d9163f800ecbe8a5ab9a0715fd171f1d3d9
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56311064"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "80244506"
 ---
 # <a name="applying-content-tags-to-images"></a>將內容標記套用到影像
 
@@ -28,7 +28,7 @@ ms.locfileid: "56311064"
 
 下列 JSON 回應說明了在範例影像中偵測到標記視覺功能時，電腦視覺傳回的內容。
 
-![藍色房屋和前院](./Images/house_yard.png)上也提供本文中使用的原始碼。
+![藍色房屋和前院](./Images/house_yard.png).
 
 ```json
 {
@@ -83,6 +83,13 @@ ms.locfileid: "56311064"
 }
 ```
 
+## <a name="use-the-api"></a>使用 API
+
+標記功能是[分析影像](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)API 的一部分。 您可以透過原生 SDK 或 REST 呼叫來呼叫此 API。 包含`Tags`在**visualFeatures**查詢參數中。 然後，當您取得完整的 JSON 回應時，只要剖析`"tags"`區段內容的字串即可。
+
+* [快速入門：電腦視覺 .NET SDK](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
+* [快速入門：分析影像（REST API）](./quickstarts/csharp-analyze.md)
+
 ## <a name="next-steps"></a>後續步驟
 
-了解[分類影像](concept-categorizing-images.md)和[描述影像](concept-describing-images.md)的相關概念。
+瞭解[分類影像](concept-categorizing-images.md)和[描述影像](concept-describing-images.md)的相關概念。

@@ -1,21 +1,21 @@
 ---
 title: 使用 .NET 來建立影片審核項目 - Content Moderator
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 本文提供資訊和範例程式碼，可協助您快速開始將 C# 搭配 Content Moderator SDK 使用，以建立影片審核項目。
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: article
-ms.date: 03/19/2019
-ms.author: sajagtap
-ms.openlocfilehash: e4dd7299907168bb50ac8ebdf90b381c0bac01f2
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.topic: conceptual
+ms.date: 10/24/2019
+ms.author: pafarley
+ms.openlocfilehash: 7130ed43183d64b00f8f5ef1697b9a3b456ad396
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59527365"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "72931667"
 ---
 # <a name="create-video-reviews-using-net"></a>使用 .NET 來建立影片審核項目
 
@@ -27,9 +27,9 @@ ms.locfileid: "59527365"
 - 取得審核項目的狀態和詳細資料
 - 發佈審核項目
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
-- 登入或建立帳戶，在內容仲裁[審核工具](https://contentmoderator.cognitive.microsoft.com/)站台。
+- 在內容仲裁[審查工具](https://contentmoderator.cognitive.microsoft.com/)網站上登入或建立帳戶。
 - 本文假設您已[仲裁影片 (請參閱快速入門)](video-moderation-api.md)，而且具有回應資料。 您需要使用它來為人工仲裁者建立以畫面為基礎的審核項目。
 
 ## <a name="ensure-your-api-key-can-call-the-review-api-for-review-creation"></a>請確定您的 API 金鑰可呼叫審核 API 以建立審核項目
@@ -61,7 +61,7 @@ ms.locfileid: "59527365"
 
 ## <a name="create-your-visual-studio-project"></a>建立 Visual Studio 專案
 
-1. 將一個新的 [主控台應用程式 (.NET Framework)] 專案新增到您的解決方案。
+1. 將一個新的 [主控台應用程式 (.NET Framework)]**** 專案新增到您的解決方案。
 
 1. 將專案命名為 **VideoReviews**。
 
@@ -86,30 +86,27 @@ using System.Collections.Generic;
 using System.IO;
 using System.Threading;
 using Microsoft.Azure.CognitiveServices.ContentModerator;
-using Microsoft.CognitiveServices.ContentModerator;
-using Microsoft.CognitiveServices.ContentModerator.Models;
+using Microsoft.Azure.CognitiveServices.ContentModerator.Models;
 using Newtonsoft.Json;
 ```
 
 ### <a name="add-private-properties"></a>新增私有屬性
 
-將下列私有屬性新增至 VideoReviews 命名空間、Program 類別。
+將下列私用屬性新增至命名空間**videoreviews、program**，類別**程式**。 使用您`AzureEndpoint`的`CMSubscriptionKey`端點 URL 和訂用帳戶金鑰值，更新和欄位。 您可以在 Azure 入口網站資源的 [**快速入門**] 索引標籤中找到這些選項。
 
-依指示取代這些屬性的範例值。
 
 ```csharp
 namespace VideoReviews
 {
     class Program
     {
-        // NOTE: Replace this example location with the location for your Content Moderator account.
+        // NOTE: Enter a valid endpoint URL
         /// <summary>
-        /// The region/location for your Content Moderator account, 
-        /// for example, westus.
+        /// The endpoint URL of your subscription
         /// </summary>
-        private static readonly string AzureRegion = "YOUR CONTENT MODERATOR REGION";
+        private static readonly string AzureEndpoint = "YOUR ENDPOINT URL";
 
-        // NOTE: Replace this example key with a valid subscription key.
+        // NOTE: Enter a valid subscription key.
         /// <summary>
         /// Your Content Moderator subscription key.
         /// </summary>
@@ -126,12 +123,6 @@ namespace VideoReviews
         private const string TeamName = "YOUR CONTENT MODERATOR TEAM ID";
 
         /// <summary>
-        /// The base URL fragment for Content Moderator calls.
-        /// </summary>
-        private static readonly string AzureBaseURL =
-            $"{AzureRegion}.api.cognitive.microsoft.com";
-
-        /// <summary>
         /// The minimum amount of time, in milliseconds, to wait between calls
         /// to the Content Moderator APIs.
         /// </summary>
@@ -140,7 +131,7 @@ namespace VideoReviews
 
 ### <a name="create-content-moderator-client-object"></a>建立 Content Moderator 用戶端物件
 
-將下列方法定義新增至 VideoReviews 命名空間、Program 類別。
+將下列方法定義新增至命名空間**videoreviews、program**，類別**程式**。
 
 ```csharp
 /// <summary>
@@ -154,7 +145,7 @@ public static ContentModeratorClient NewClient()
 {
     return new ContentModeratorClient(new ApiKeyServiceClientCredentials(CMSubscriptionKey))
     {
-        Endpoint = AzureBaseURL
+        Endpoint = AzureEndpoint
     };
 }
 ```
@@ -166,15 +157,15 @@ public static ContentModeratorClient NewClient()
 **CreateVideoReviews** 具有下列必要參數：
 1. 一個包含 MIME 類型的字串，這應該是 "application/json"。 
 1. 您的 Content Moderator 小組名稱。
-1. **IList\<CreateVideoReviewsBodyItem >** 物件。 每個 **CreateVideoReviewsBodyItem** 物件皆代表一個影片審核項目。 這個快速入門會一次建立一個審核項目。
+1. ** \<IList CreateVideoReviewsBodyItem>** 物件。 每個 **CreateVideoReviewsBodyItem** 物件皆代表一個影片審核項目。 這個快速入門會一次建立一個審核項目。
 
 **CreateVideoReviewsBodyItem** 具有數個屬性。 您必須至少設定下列屬性：
-- **Content**。 要審核的影片 URL。
+- **內容**。 要審核的影片 URL。
 - **ContentId**。 要指派給影片審核項目的識別碼。
-- **Status**。 請將值設定為 "Unpublished"。 如果您未設定此屬性，則會預設為 "Pending"，意謂著已發佈影片審核項目而正等待人工審核。 發佈影片審核項目之後，您就無法再將影片畫面、文字記錄或文字記錄仲裁結果新增至該審核項目。
+- **狀態**。 請將值設定為 "Unpublished"。 如果您未設定此屬性，則會預設為 "Pending"，意謂著已發佈影片審核項目而正等待人工審核。 發佈影片審核項目之後，您就無法再將影片畫面、文字記錄或文字記錄仲裁結果新增至該審核項目。
 
 > [!NOTE]
-> **CreateVideoReviews** 會傳回 IList<string>。 這些字串中每個都包含影片審核項目的識別碼。 這些識別碼是 GUID 且與 **ContentId** 屬性的值不同。 
+> **Createvideoreviews 專案識別碼**會傳回>\<的 IList 字串。 這些字串中每個都包含影片審核項目的識別碼。 這些識別碼是 GUID 且與 **ContentId** 屬性的值不同。 
 
 將下列方法定義新增至 VideoReviews 命名空間、Program 類別。
 
@@ -224,18 +215,18 @@ private static string CreateReview(ContentModeratorClient client, string id, str
 1. 一個包含 MIME 類型的字串，這應該是 "application/json"。
 1. 您的 Content Moderator 小組名稱。
 1. **CreateVideoReviews** 所傳回的影片審核項目識別碼。
-1. **IList\<VideoFrameBodyItem >** 物件。 每個 **VideoFrameBodyItem** 物件皆代表一個影片審核項目。
+1. ** \<IList VideoFrameBodyItem>** 物件。 每個 **VideoFrameBodyItem** 物件皆代表一個影片審核項目。
 
 **VideoFrameBodyItem** 具有下列屬性：
-- **Timestamp**。 一個包含從影片中擷取影片畫面之時間 (以秒為單位) 的字串。
+- **時間戳記**。 一個包含從影片中擷取影片畫面之時間 (以秒為單位) 的字串。
 - **FrameImage**。 影片畫面的 URL。
-- **中繼資料**： IList\<VideoFrameBodyItemMetadataItem >。 **VideoFrameBodyItemMetadataItem** 就是一個索引鍵/值組。 有效的索引鍵包括：
+- **中繼資料**。 IList\<VideoFrameBodyItemMetadataItem>。 **VideoFrameBodyItemMetadataItem** 就是一個索引鍵/值組。 有效的索引鍵包括：
 - **reviewRecommended**。 如果建議對影片畫面進行人工審核，則為 True。
 - **adultScore**。 一個對影片畫面中成人內容的嚴重性進行評等的值 (0 到 1)。
-- **a**。 如果影片包含成人內容，則為 True。
+- **答**： 如果影片包含成人內容，則為 True。
 - **racyScore**。 一個對影片畫面中猥褻內容的嚴重性進行評等的值 (0 到 1)。
 - **r**。 如果影片畫面包含猥褻內容，則為 True。
-- **ReviewerResultTags**。 IList\<VideoFrameBodyItemReviewerResultTagsItem >。 **VideoFrameBodyItemReviewerResultTagsItem** 就是一個索引鍵/值組。 應用程式可以使用這些標籤來組織影片畫面。
+- **ReviewerResultTags**。 IList\<VideoFrameBodyItemReviewerResultTagsItem>。 **VideoFrameBodyItemReviewerResultTagsItem** 就是一個索引鍵/值組。 應用程式可以使用這些標籤來組織影片畫面。
 
 > [!NOTE]
 > 本快速入門會為 **adultScore** 和 **racyScore** 屬性產生隨機值。 在生產環境應用程式中，您會從部署成「Azure 媒體服務」的[影片仲裁服務](video-moderation-api.md)取得這些值。
@@ -550,7 +541,7 @@ Press any key to close the application.
 
 ## <a name="check-out-your-video-review"></a>查看您的影片審核項目
 
-最後，您會在 Content Moderator 審核工具帳戶中的 [審核]>[影片] 畫面上看到影片審核項目。
+最後，您會在 [**審核**>**影片**] 畫面上看到您的內容仲裁審查工具帳戶中的影片評論。
 
 ![給人工仲裁者的影片審核項目](images/ams-video-review.PNG)
 

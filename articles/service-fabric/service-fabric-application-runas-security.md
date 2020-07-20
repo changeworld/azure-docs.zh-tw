@@ -1,25 +1,13 @@
 ---
-title: 在系統和本機安全性帳戶下執行 Azure Service Fabric 服務 | Microsoft Docs
+title: 在系統和本機安全性帳戶下執行服務
 description: 了解如何在系統和本機安全性帳戶下執行 Service Fabric 應用程式。  建立安全性主體並套用「執行身分」原則以安全地執行您的服務。
-services: service-fabric
-documentationcenter: .net
-author: aljo-microsoft
-manager: chackdan
-editor: ''
-ms.assetid: 4242a1eb-a237-459b-afbf-1e06cfa72732
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/29/2018
-ms.author: aljo
-ms.openlocfilehash: 28cd1162d7cae2b3a16062bdf18a2971e1f05aad
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 53212f8636602705899834b6db1d3f0d80b5fe4f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60621168"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75610111"
 ---
 # <a name="run-a-service-as-a-local-user-account-or-local-system-account"></a>以本機使用者帳戶或本機系統帳戶身分執行服務
 藉由使用 Azure Service Fabric，您便可以保護在叢集中以不同使用者帳戶執行的應用程式。 根據預設，Service Fabric 應用程式會在用以執行 Fabric.exe 程序的帳戶之下執行。 Service Fabric 也會提供在本機使用者或系統帳戶底下執行應用程式的功能。 支援的本機系統帳戶類型為 **LocalUser**、**NetworkService**、**LocalService** 和 **LocalSystem**。  如果您在 Windows 獨立叢集上執行 Service Fabric，便可以在 [Active Directory 網域帳戶](service-fabric-run-service-as-ad-user-or-group.md)或[群組受控服務帳戶](service-fabric-run-service-as-gmsa.md)底下執行服務。
@@ -33,7 +21,7 @@ ms.locfileid: "60621168"
 >
 
 ## <a name="run-a-service-as-a-local-user"></a>以本機使用者身分執行服務
-您可以建立一個本機使用者，以便用來協助保護應用程式內的服務。 在應用程式資訊清單的主體區段中指定 **LocalUser** 帳戶類型時，Service Fabric 會在部署應用程式所在的電腦上建立本機使用者帳戶。 根據預設，這些帳戶的名稱不會與應用程式資訊清單中所指定的名稱相同 (例如，以下應用程式資訊清單範例中的 Customer3)。 相反地，它們會動態產生並具有隨機密碼。
+您可以建立一個本機使用者，以便用來協助保護應用程式內的服務。 在應用程式資訊清單的主體區段中指定 **LocalUser** 帳戶類型時，Service Fabric 會在部署應用程式所在的電腦上建立本機使用者帳戶。 根據預設，這些帳戶的名稱不會與應用程式資訊清單中所指定的名稱相同 (例如，以下應用程式資訊清單範例中的 Customer3**)。 相反地，它們會動態產生並具有隨機密碼。
 
 在 **ServiceManifestImport** 的 **RunAsPolicy** 區段中，指定**主體**區段中的使用者帳戶來執行服務程式碼套件。  下列範例會示範如何建立本機使用者，以及將 RunAs 原則套用至主要進入點：
 
@@ -66,7 +54,7 @@ ms.locfileid: "60621168"
 ```
 
 ## <a name="create-a-local-user-group"></a>建立本機使用者群組
-您可以建立使用者群組，並將一或多個使用者新增至群組。 當不同的服務進入點有多個使用者，而他們需要具備可在群組層級取得的某些通用權限時，這會很有用。 下列應用程式資訊清單範例會顯示名為 LocalAdminGroup 且具有系統管理員權限的本機群組。 Customer1 和 Customer2 這兩個使用者會成為此本機群組的成員。 在 **ServiceManifestImport** 區段中，會套用 RunAs 原則以 Customer2 的身分執行 Stateful1Pkg 程式碼套件。  另一個 RunAs 原則會套用來以 Customer1 的身分執行 Web1Pkg 程式碼套件。
+您可以建立使用者群組，並將一或多個使用者新增至群組。 當不同的服務進入點有多個使用者，而他們需要具備可在群組層級取得的某些通用權限時，這會很有用。 下列應用程式資訊清單範例會顯示名為 LocalAdminGroup** 且具有系統管理員權限的本機群組。 Customer1** 和 Customer2** 這兩個使用者會成為此本機群組的成員。 在 **ServiceManifestImport** 區段中，會套用 RunAs 原則以 Customer2** 的身分執行 Stateful1Pkg** 程式碼套件。  另一個 RunAs 原則會套用來以 Customer1** 的身分執行 Web1Pkg** 程式碼套件。
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -163,7 +151,7 @@ ms.locfileid: "60621168"
 基於偵錯的目的，查看執行服務後的主控台輸出偶爾會有幫助。 您可以在服務資訊清單中的進入點上設定主控台重新導向原則，其會將輸出寫入至檔案。 檔案輸出會寫入至部署並執行應用程式所在的叢集節點上，稱為 **log** 的應用程式資料夾中。 
 
 > [!WARNING]
-> 切勿在實際部署的應用程式中使用主控台重新導向原則，因為這可能會影響應用程式容錯移轉。 僅將此原則用於本機開發及偵錯。  
+> 切勿在實際部署的應用程式中使用主控台重新導向原則，因為這可能會影響應用程式容錯移轉。 僅** 將此原則用於本機開發及偵錯。  
 > 
 > 
 

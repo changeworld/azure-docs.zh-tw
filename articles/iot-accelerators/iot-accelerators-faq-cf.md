@@ -1,6 +1,6 @@
 ---
 title: 連線處理站解決方案的常見問題集 - Azure | Microsoft Docs
-description: 連線處理站解決方案加速器的常見問題集
+description: 本文會回答連線處理站解決方案加速器的常見問題。 它包含 GitHub 存放庫的連結。
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -8,12 +8,11 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: ed429d923cad2c715621990c146d4cf3a23e7bca
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 0c8739dff39490f14b613af483f769ac031c1bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61447925"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82792372"
 ---
 # <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>連線處理站解決方案加速器的常見問題集
 
@@ -31,8 +30,8 @@ ms.locfileid: "61447925"
 
 * 基礎結構
 * 規格
-* Technology
-* 處理序
+* 技術
+* 處理程序
 
 ### <a name="why-did-microsoft-choose-opc-ua-for-the-connected-factory-solution-accelerator"></a>Microsoft 為什麼選擇 OPC UA 作為連線的處理站解決方案加速器？
 
@@ -76,13 +75,13 @@ Microsoft 選擇 OPC UA 的原因是它是一種開放式、非專屬、與平�
 1. 若要檢查哪些容器正在作用中，請執行：`docker ps`。
 1. 若要停止所有模擬容器，請執行：`./stopsimulation`。
 1. 若要啟動所有模擬容器：
-    * 匯出具有名稱 **IOTHUB_CONNECTIONSTRING** 的殼層變數。 使用 `<name of your deployment>.config.user` 檔案中的 **IotHubOwnerConnectionString** 設定值。 例如︰
+    * 匯出具有名稱 **IOTHUB_CONNECTIONSTRING** 的殼層變數。 使用 `<name of your deployment>.config.user` 檔案中的 **IotHubOwnerConnectionString** 設定值。 例如：
 
         ```sh
         export IOTHUB_CONNECTIONSTRING="HostName={yourdeployment}.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey={your key}"
         ```
 
-    * 运行 `./startsimulation`。
+    * 執行 `./startsimulation`。
 
 ### <a name="how-do-i-update-the-simulation-in-the-vm"></a>如何更新虛擬機器中的模擬？
 
@@ -111,7 +110,7 @@ Microsoft 選擇 OPC UA 的原因是它是一種開放式、非專屬、與平�
 * publisher.rio.corp.contoso
 * publisher.seattle.corp.contoso
 
-您可以使用 [DeviceExplorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) 或 [Azure CLI 的 IoT 擴充功能](https://github.com/Azure/azure-iot-cli-extension)工具，檢查哪些裝置已向解決方案正在使用的 IoT 中樞註冊。 若要使用裝置總管，將需要您部署中 IoT 中樞的連接字串。 若要使用 Azure CLI 的 IoT 擴充功能，您需要 IoT 中樞名稱。
+您可以使用 [DeviceExplorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/) 或 [Azure CLI 的 IoT 擴充功能](https://github.com/Azure/azure-iot-cli-extension)工具，檢查哪些裝置已向解決方案正在使用的 IoT 中樞註冊。 若要使用裝置總管，將需要您部署中 IoT 中樞的連接字串。 若要使用 Azure CLI 的 IoT 擴充功能，您需要 IoT 中樞名稱。
 
 ### <a name="how-can-i-get-log-data-from-the-simulation-components"></a>如何從模擬元件取得記錄資料？
 
@@ -125,7 +124,7 @@ Microsoft 選擇 OPC UA 的原因是它是一種開放式、非專屬、與平�
 
 ### <a name="how-can-i-check-if-the-simulation-is-sending-data-to-the-cloud"></a>如何檢查模擬是否傳送資料至雲端？
 
-使用 [DeviceExplorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) \(英文\) 或 [Azure IoT CLI Extension monitor-events](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-monitor-events) \(英文\) 命令，您可以檢查從特定裝置傳送至 IoT 中樞的資料。 若要使用這些工具，您需要了解部署中 IoT 中樞的連接字串。 請參閱[如何找出我的解決方案所使用之 IoT 中樞的連接字串？](#how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution)
+使用[Azure Iot Explorer](https://github.com/Azure/azure-iot-explorer)或[Azure iot CLI 擴充功能監視事件](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-monitor-events)命令，您可以檢查從特定裝置傳送至 IoT 中樞的資料。 若要使用這些工具，您需要了解部署中 IoT 中樞的連接字串。 請參閱[如何找出我的解決方案所使用之 IoT 中樞的連接字串？](#how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution)
 
 檢查由其中一個發行工具裝置傳送的資料：
 
@@ -146,9 +145,9 @@ Microsoft 選擇 OPC UA 的原因是它是一種開放式、非專屬、與平�
 
 當您使用連線處理站 GitHub 存放庫中的 `build.ps1` 指令碼進行部署時，請將建置視窗中的 `$env:MapApiQueryKey` 環境變數設定為 [Azure 地圖服務帳戶的金鑰](../azure-maps/how-to-manage-account-keys.md)。 系統隨後會自動啟用互動式地圖。
 
-您也可以在部署之後將 Azure 地圖服務帳戶金鑰新增至解決方案加速器。 瀏覽至 Azure 入口網站，並存取連線處理站部署中的 App Service 資源。 瀏覽至 [應用程式設定]，您可以在此找到 [應用程式設定] 區段。 將 **MapApiQueryKey** 設定為 [Azure 地圖服務帳戶的金鑰](../azure-maps/how-to-manage-account-keys.md)。 儲存設定，然後瀏覽至 [概觀]，並重新啟動 App Service。
+您也可以在部署之後將 Azure 地圖服務帳戶金鑰新增至解決方案加速器。 瀏覽至 Azure 入口網站，並存取連線處理站部署中的 App Service 資源。 瀏覽至 [應用程式設定]****，您可以在此找到 [應用程式設定]**** 區段。 將 **MapApiQueryKey** 設定為 [Azure 地圖服務帳戶的金鑰](../azure-maps/how-to-manage-account-keys.md)。 儲存設定，然後瀏覽至 [概觀]****，並重新啟動 App Service。
 
-### <a name="how-do-i-create-an-azure-maps-account"></a>如何建立 Azure 地圖服務帳戶？
+### <a name="how-do-i-create-an-azure-maps-account"></a>如何? 建立 Azure 地圖服務帳戶？
 
 請參閱[如何管理 Azure 地圖服務帳戶和金鑰](../azure-maps/how-to-manage-account-keys.md)。
 

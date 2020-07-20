@@ -1,26 +1,24 @@
 ---
-title: 使用 Azure Site Recovery 設定內部部署網站間的 Hyper-V VM 災害復原 | Microsoft Docs
+title: 使用 Azure Site Recovery 設定以次要網站為目標的 Hyper-V 災害復原
 description: 了解如何使用 Azure Site Recovery 設定內部部署網站間的 Hyper-V VM 災害復原。
-services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.topic: tutorial
-ms.date: 12/27/2018
+ms.topic: how-to
+ms.date: 11/14/2019
 ms.author: raynew
-ms.custom: MVC
-ms.openlocfilehash: cccfc3d028cb2da9346e629a5aca080bedd7fee9
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
-ms.translationtype: HT
+ms.openlocfilehash: 482a3808065bb2ec565bad7e760b9337b3db7007
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53794510"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134000"
 ---
 # <a name="set-up-disaster-recovery-for-hyper-v-vms-to-a-secondary-on-premises-site"></a>設定從 Hyper-V VM 到次要內部部署網站的災害復原
 
 [Azure Site Recovery](site-recovery-overview.md) 服務可藉由管理及協調內部部署電腦與 Azure 虛擬機器 (VM) 的複寫、容錯移轉及容錯回復，為您的災害復原策略做出貢獻。
 
-本文說明如何設定從 System Center Virtual Machine Manager (VMM) 雲端中管理的內部部署 Hyper-V VM 到次要網站的災害復原。 在本文中，您將了解：
+本文說明如何設定從 System Center Virtual Machine Manager (VMM) 雲端中管理的內部部署 Hyper-V VM 到次要網站的災害復原。 在本文中，您將學會如何：
 
 > [!div class="checklist"]
 > * 準備內部部署 VMM 伺服器和 Hyper-V 主機
@@ -29,6 +27,7 @@ ms.locfileid: "53794510"
 > * 設定網路對應 
 > * 建立複寫原則
 > * 啟用 VM 複寫
+
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -49,10 +48,10 @@ ms.locfileid: "53794510"
 
 準備 VMM，如下所示：
 
-1. 確定您在來源和目標 VMM 伺服器上有 [VMM 邏輯網路](https://docs.microsoft.com/system-center/vmm/network-logical)。
+1. 確定您在來源和目標 VMM 伺服器上有 [VMM 邏輯網路](/system-center/vmm/network-logical)。
     - 來源伺服器上的邏輯網路應該與 Hyper-V 主機所在的來源雲端相關聯。
     - 目標伺服器上的邏輯網路應該與目標雲端相關聯。
-1. 確定您在來源和目標 VMM 伺服器上有 [VMM 網路](https://docs.microsoft.com/system-center/vmm/network-virtual)。 VM 網路應連結至每個位置的邏輯網路。
+1. 確定您在來源和目標 VMM 伺服器上有 [VMM 網路](/system-center/vmm/network-virtual)。 VM 網路應連結至每個位置的邏輯網路。
 2. 將來源 Hyper-V 主機上的 VM 連線至來源 VM 網路。 
 
 
@@ -75,7 +74,7 @@ ms.locfileid: "53794510"
 
 在 VMM 伺服器上安裝 Azure Site Recovery Provider，並在保存庫中探索和註冊伺服器。
 
-1. 按一下 [準備基礎結構]  >  [來源]。
+1. 按一下 [準備基礎結構] >  [來源]。
 2. 在 [準備來源] 中，按一下 [+ VMM] 以新增 VMM 伺服器。
 3. 在 [新增伺服器] 中，檢查 [System Center VMM 伺服器] 是否出現在 [伺服器類型] 中。
 4. 下載 Azure Site Recovery Provider 安裝檔案。
@@ -105,7 +104,7 @@ ms.locfileid: "53794510"
 9. 加密設定不適用於此案例。 
 10. 在 [伺服器名稱] 中，指定保存庫中 VMM 伺服器的易記識別名稱。 在叢集中，指定 VMM 叢集角色名稱。
 11. 在 [同步處理雲端中繼資料] 中，選取您是否要同步處理 VMM 伺服器上所有雲端的中繼資料。 這個動作只需要在每個伺服器上進行一次。 如果您不要同步處理所有雲端，請勿勾選此設定。 您可以在 VMM 主控台的雲端屬性中，個別同步處理每個雲端。
-12. 按 [下一步]  ，完成此程序。 註冊後，Site Recovery 即可從 VMM 伺服器擷取中繼資料。 伺服器將顯示於保存庫中的 [伺服器]  >  [VMM伺服器] 中。
+12. 按 [下一步]  ，完成此程序。 註冊後，Site Recovery 即可從 VMM 伺服器擷取中繼資料。 伺服器將顯示於保存庫中的 [伺服器] >  [VMM伺服器] 中。
 13. 當伺服器出現在保存庫之後，於 [來源] > [準備來源] 中選取 VMM 伺服器，然後選取 Hyper-V 主機所在的雲端。 然後按一下 [確定] 。
 
 
@@ -134,7 +133,7 @@ ms.locfileid: "53794510"
 2. 在 [復原點保留] 中，針對每個復原點指定保留期的長度 (以小時為單位)。 複寫的機器可以復原到週期內的任意點。
 3. 在 [應用程式一致快照頻率] 中，指定建立包含應用程式一致快照之復原點的頻率 (1-12 小時)。 Hyper-V 使用兩種快照集：
     - **標準快照集**：提供整個虛擬機器的累加快照集。
-    - **應用程式一致快照集**：建立 VM 內應用程式資料的時間點快照集。 磁碟區陰影複製服務(VSS) 可確保在建立快照集時，應用程式處於一致狀態。 啟用應用程式一致快照集，會影響來源 VM 上的應用程式效能。 設定一個值，此值小於您設定的其他復原點數目。
+    - **應用程式一致快照集**：建立 VM 內應用程式資料的時間點快照集。 磁碟區陰影複製服務(VSS) 可確保在建立快照集時，應用程式處於一致狀態。 啟用應用程式一致快照集，會影響來源 VM 上的應用程式效能。 設定的值應該小於您設定的其他復原點數目。
 4. 在 [資料傳輸壓縮] 中，指定是否應該壓縮已傳輸的複寫資料。
 5. 選取 [刪除複本 VM]，以指定如果您停用對來源 VM 的保護，則應刪除複本虛擬機器。 如果啟用此設定，當您停用對來源 VM 的保護時，便會從 Site Recovery 主控台中加以移除、在 VMM 主控台中移除 VMM 的 Site Recovery 設定，並刪除複本。
 6. 在 [初始複寫方法] 中，如果您要透過網路進行複寫，請指定是否要啟動初始複寫，或將它排程。 若要節省網路頻寬，您可能要將它排程在離峰時間執行。 然後按一下 [確定] 。

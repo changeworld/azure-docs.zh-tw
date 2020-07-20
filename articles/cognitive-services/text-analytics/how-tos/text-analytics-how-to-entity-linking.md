@@ -1,293 +1,249 @@
 ---
 title: 搭配文字分析 API 使用實體辨識
 titleSuffix: Azure Cognitive Services
-description: 了解如何使用文字分析 REST API 辨識實體。
+description: 瞭解如何使用文字分析 REST API 識別並區分文字中找到的實體識別。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 04/16/2019
+ms.date: 05/13/2020
 ms.author: aahi
-ms.openlocfilehash: c8319dbcb8cebe51dae2a4d7e8d9749c3ab7674f
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 457be5ac014fda6b4984ed7af3dcc89780b16379
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65231434"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84141612"
 ---
-# <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>如何在文本分析中使用命名实体识别
+# <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>如何在文字分析中使用已命名的實體識別
 
-[具名實體辨識 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)會採用非結構化的文字，並針對每個 JSON 文件中，會傳回一份變得更為明確連結的實體的詳細資訊 （維基百科和 Bing） 網站上。 
-
-## <a name="entity-linking-and-named-entity-recognition"></a>實體連結和具名實體辨識
-
-文本分析的 `entities` 终结点支持命名实体识别 (NER) 和实体链接。
+文字分析 API 可讓您採用非結構化文字，並傳回可區分的實體清單，並提供網路上詳細資訊的連結。 API 同時支援命名實體識別（NER）和實體連結。
 
 ### <a name="entity-linking"></a>實體連結
-連結實體可識別及區分文字中找到的實體身分識別 (例如，判斷 "Mars" 是用來指星體或指羅馬的戰神)。 此程序需具備可讓辨識項目與之連結的知識庫 - `entities` 端點文字分析即是使用維基百科作為知識庫。
+
+實體連結能夠識別並區分在文字中找到之實體的身分識別（例如，判斷 "Mars" 一詞是指的是地球的出現，還是上帝的 war）。 此程式需要以適當的語言呈現知識庫，以連結已辨識的實體文字。 實體連結會使用[維琪百科](https://www.wikipedia.org/)做為此知識庫。
+
 
 ### <a name="named-entity-recognition-ner"></a>具名實體辨識 (NER)
-具名實體辨識 (NER) 是識別文字中各種不同的實體，並將它們分類至預先定義類別的能力。 下面列出所支援的實體類別。
 
-在 文字分析[2.1 版](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)，實體連結和具名的實體辨識 (NER) 可供使用。
+命名實體辨識（NER）能夠識別文字中的不同實體，並將其分類為預先定義的類別或類型，例如： person、location、event、product 和組織。  
 
-### <a name="language-support"></a>語言支援
+## <a name="named-entity-recognition-versions-and-features"></a>命名實體辨識版本和功能
 
-若以多種語言使用連結實體，則需使用每一種語言的對應知識庫。 對於文字分析中的實體連結，這表示 `entities` 端點支援的每一種語言會連結至該語言的對應維基百科語料庫。 由於語料庫的大小會因語言不同而有所差異，因此我們預期實體連結功能的召回也會有所不同。
+[!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
 
-## <a name="supported-types-for-named-entity-recognition"></a>針對具名實體辨識所支援的類型
+| 功能                                                         | NER v3。0 | NER 3.1-preview. 1 |
+|-----------------------------------------------------------------|--------|----------|
+| 單一和批次要求的方法                          | X      | X        |
+| 跨數個類別的擴充實體識別           | X      | X        |
+| 用於傳送實體連結和 NER 要求的個別端點。 | X      | X        |
+| 個人（ `PII` ）和健全狀況（ `PHI` ）資訊實體的辨識        |        | X        |
 
-| Type  | SubType | 範例 |
-|:-----------   |:------------- |:---------|
-| Person        | N/A\*         | "Jeff"、"Bill Gates"     |
-| 位置      | N/A\*         | "Redmond, Washington"、"Paris"  |
-| 組織  | N/A\*         | "Microsoft"   |
-| 數量      | 數目        | "6"、"six"     | 
-| 數量      | 百分比    | "50%"、"fifty percent"| 
-| 數量      | 序數       | "2nd"、"second"     | 
-| 數量      | 數字範圍   | "4 to 8"     | 
-| 數量      | 天數           | "90 day old"、"30 years old"    | 
-| 數量      | 貨幣      | "$10.99"     | 
-| 數量      | 維度     | "10 miles"、"40 cm"     | 
-| 數量      | 溫度   | "32 degrees"    |
-| DateTime      | N/A\*         | "6:30PM February 4, 2012"      | 
-| DateTime      | date          | "May 2nd, 2017"、"05/02/2017"   | 
-| DateTime      | Time          | "8am"、"8:00"  | 
-| DateTime      | 日期範圍     | "May 2nd to May 5th"    | 
-| DateTime      | 時間範圍     | "6pm to 7pm"     | 
-| DateTime      | 持續時間      | "1 minute and 45 seconds"   | 
-| DateTime      | 設定           | "every Tuesday"     | 
-| DateTime      | 時區      |    | 
-| URL           | N/A\*         | "https:\//www.bing.com"    |
-| 電子郵件         | N/A\*         | "support@contoso.com" |
+如需相關資訊，請參閱[語言支援](../language-support.md)。
 
-\* 依輸入和擷取的實體而定，某些實體可能會省略 `SubType`。  僅適用於英文、 簡體中文、 法文、 德文和西班牙文語言時，所列的所有支援的實體類型。
+### <a name="entity-types"></a>實體類型
+
+命名實體辨識 v3 提供跨多個類型的展開偵測。 目前，NER v3.0 可以辨識[一般實體類別](../named-entity-types.md)中的實體。
+
+名為 Entity 辨識 3.1-preview。1包含 v3.0 的偵測功能，以及使用端點偵測個人資訊（）的功能。 `PII` `v3.1-preview.1/entities/recognition/pii` 您可以使用選擇性 `domain=phi` 參數來偵測機密的健全狀況資訊（ `PHI` ）。 如需詳細資訊，請參閱[實體分類](../named-entity-types.md)一文和[要求端點](#request-endpoints)一節。
 
 
+## <a name="sending-a-rest-api-request"></a>傳送 REST API 要求
 
-## <a name="preparation"></a>準備工作
+### <a name="preparation"></a>準備
 
-您必須具有此格式的 JSON 文件：識別碼、文字、語言
+您必須具有此格式的 JSON 檔：識別碼、文字、語言。
 
-如需目前支援的語言，請參閱[這份清單](../text-analytics-supported-languages.md)。
+每份檔都必須是5120個字元，而且每個集合最多可以有1000個專案（Id）。 集合會在要求本文中提交。
 
-文件大小必須少於 5,120 個字元，而且您最多可以針對每個集合擁有 1,000 個項目 (識別碼)。 集合會在要求本文中提交。 下列範例是您可能會提交至實體連結末端的內容說明。
+### <a name="structure-the-request"></a>建立要求結構
 
-```
-{"documents": [{"id": "1",
-                "language": "en",
-                "text": "Jeff bought three dozen eggs because there was a 50% discount."
-                },
-               {"id": "2",
-                "language": "en",
-                "text": "The Great Depression began in 1929. By 1933, the GDP in America fell by 25%."
-                }
-               ]
-}
-```    
-    
-## <a name="step-1-structure-the-request"></a>步驟 1：建立要求結構
+建立 POST 要求。 您可以[使用](text-analytics-how-to-call-api.md)下列連結中的 Postman 或**API 測試主控台**，快速地結構並傳送一個。 
 
-關於要求定義的詳細資料可以在[如何呼叫文字分析 API](text-analytics-how-to-call-api.md) 中找到。 為了方便起見，我們將重申下列各點：
+> [!NOTE]
+> 您可以在 Azure 入口網站上找到適用於文字分析資源的金鑰和端點。 您可以在 [資源管理]  下的資源 [快速啟動]  頁面中找到。 
 
-+ 建立一個 **POST** 要求。 檢閱適用於此要求的 API 文件：[實體連結 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
 
-+ 設定適用於實體擷取的 HTTP 端點。 它必須包括 `/entities` 資源：`https://[your-region].api.cognitive.microsoft.com/text/analytics/v2.1/entities`
+### <a name="request-endpoints"></a>要求端點
 
-+ 設定要求標頭以包含適用於文字分析作業的存取金鑰。 如需詳細資訊，請參閱[如何尋找端點和存取金鑰](text-analytics-how-to-access-key.md)。
+#### <a name="version-30"></a>[3.0 版](#tab/version-3)
 
-+ 在要求本文中，提供您準備用於此分析的 JSON 文件集合
+命名實體辨識 v3 會針對 NER 和實體連結要求使用不同的端點。 根據您的要求使用下列 URL 格式：
 
-> [!Tip]
-> 使用 [Postman](text-analytics-how-to-call-api.md) 或開啟[文件](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634) \(英文\) 中的 **API 測試主控台**來建立要求結構，並將它 POST 到服務。
+實體連結
+* `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/entities/linking`
 
-## <a name="step-2-post-the-request"></a>步驟 2：張貼要求
+NER
+* `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/entities/recognition/general`
 
-分析會在接收要求時執行。 该服务每秒最多接受 100 个请求，每分钟最多接受 1000 个请求。 每個要求最多可以是 1 MB。
+#### <a name="version-31-preview1"></a>[版本 3.1-preview 1](#tab/version-3-preview)
 
-請記得，服務是無狀態的。 您的帳戶中並不會儲存任何資料。 結果會在回應中立即傳回。
+命名實體識別會 `v3.1-preview.1` 針對 NER 和實體連結要求使用不同的端點。 根據您的要求使用下列 URL 格式：
 
-## <a name="step-3-view-results"></a>步驟 3：檢視結果
+實體連結
+* `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.1/entities/linking`
 
-所有的 POST 要求都會傳回 JSON 格式的回應，具有識別碼和偵測到的屬性。
+NER
+* 一般實體-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.1/entities/recognition/general`
 
-輸出會立即傳回。 您可以將結果串流處理到可接受 JSON 的應用程式，或將輸出儲存到本機系統上的檔案，然後將它匯入能讓您排序、搜尋和操作資料的應用程式。
+* Personal （ `PII` ）資訊-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.1/entities/recognition/pii`
 
-實體連結輸出的範例會隨即顯示：
+您也可以使用選擇性 `domain=phi` 參數來偵測文字中的健全狀況（ `PHI` ）資訊。 
+
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.1/entities/recognition/pii?domain=phi`
+
+---
+
+設定要求標頭以包含您的文字分析 API 金鑰。 在 [要求本文] 中，提供您準備的 JSON 檔。
+
+### <a name="example-ner-request"></a>範例 NER 要求 
+
+以下是您可能會傳送至 API 的內容範例。 這兩個 API 版本的要求格式是相同的。
 
 ```json
 {
-    "Documents": [
+  "documents": [
+    {
+        "id": "1",
+        "language": "en",
+        "text": "Our tour guide took us up the Space Needle during our trip to Seattle last week."
+    }
+  ]
+}
+
+```
+
+## <a name="post-the-request"></a>張貼要求
+
+分析會在接收要求時執行。 請參閱概觀中的[資料限制](../overview.md#data-limits)一節，以取得您每分鐘和每秒鐘可以傳送的要求大小和數量資訊。
+
+文字分析 API 是無狀態的。 您的帳戶中不會儲存任何資料，且結果會在回應中立即傳回。
+
+## <a name="view-results"></a>檢視結果
+
+所有 POST 要求都會傳回 JSON 格式的回應，其中包含識別碼和偵測到的實體屬性。
+
+輸出會立即傳回。 您可以將結果串流處理到可接受 JSON 的應用程式，或將輸出儲存到本機系統上的檔案，然後將它匯入能讓您排序、搜尋和操作資料的應用程式。 由於多語系和表情符號的支援，回應可能會包含文字位移。 如需詳細資訊，請參閱[如何處理文字位移](../concepts/text-offsets.md)。
+
+### <a name="example-v3-responses"></a>範例 v3 回應
+
+第3版為 NER 和實體連結提供個別的端點。 這兩項作業的回應如下所示。 
+
+#### <a name="example-ner-response"></a>範例 NER 回應
+
+```json
+{
+  "documents": [
+    {
+      "id": "1",
+      "entities": [
         {
-            "Id": "1",
-            "Entities": [
-                {
-                    "Name": "Jeff",
-                    "Matches": [
-                        {
-                            "Text": "Jeff",
-                            "Offset": 0,
-                            "Length": 4
-                        }
-                    ],
-                    "Type": "Person"
-                },
-                {
-                    "Name": "three dozen",
-                    "Matches": [
-                        {
-                            "Text": "three dozen",
-                            "Offset": 12,
-                            "Length": 11
-                        }
-                    ],
-                    "Type": "Quantity",
-                    "SubType": "Number"
-                },
-                {
-                    "Name": "50",
-                    "Matches": [
-                        {
-                            "Text": "50",
-                            "Offset": 49,
-                            "Length": 2
-                        }
-                    ],
-                    "Type": "Quantity",
-                    "SubType": "Number"
-                },
-                {
-                    "Name": "50%",
-                    "Matches": [
-                        {
-                            "Text": "50%",
-                            "Offset": 49,
-                            "Length": 3
-                        }
-                    ],
-                    "Type": "Quantity",
-                    "SubType": "Percentage"
-                }
-            ]
+          "text": "tour guide",
+          "category": "PersonType",
+          "offset": 4,
+          "length": 10,
+          "confidenceScore": 0.45
         },
         {
-            "Id": "2",
-            "Entities": [
-                {
-                    "Name": "Great Depression",
-                    "Matches": [
-                        {
-                            "Text": "The Great Depression",
-                            "Offset": 0,
-                            "Length": 20
-                        }
-                    ],
-                    "WikipediaLanguage": "en",
-                    "WikipediaId": "Great Depression",
-                    "WikipediaUrl": "https://en.wikipedia.org/wiki/Great_Depression",
-                    "BingId": "d9364681-98ad-1a66-f869-a3f1c8ae8ef8"
-                },
-                {
-                    "Name": "1929",
-                    "Matches": [
-                        {
-                            "Text": "1929",
-                            "Offset": 30,
-                            "Length": 4
-                        }
-                    ],
-                    "Type": "DateTime",
-                    "SubType": "DateRange"
-                },
-                {
-                    "Name": "By 1933",
-                    "Matches": [
-                        {
-                            "Text": "By 1933",
-                            "Offset": 36,
-                            "Length": 7
-                        }
-                    ],
-                    "Type": "DateTime",
-                    "SubType": "DateRange"
-                },
-                {
-                    "Name": "Gross domestic product",
-                    "Matches": [
-                        {
-                            "Text": "GDP",
-                            "Offset": 49,
-                            "Length": 3
-                        }
-                    ],
-                    "WikipediaLanguage": "en",
-                    "WikipediaId": "Gross domestic product",
-                    "WikipediaUrl": "https://en.wikipedia.org/wiki/Gross_domestic_product",
-                    "BingId": "c859ed84-c0dd-e18f-394a-530cae5468a2"
-                },
-                {
-                    "Name": "United States",
-                    "Matches": [
-                        {
-                            "Text": "America",
-                            "Offset": 56,
-                            "Length": 7
-                        }
-                    ],
-                    "WikipediaLanguage": "en",
-                    "WikipediaId": "United States",
-                    "WikipediaUrl": "https://en.wikipedia.org/wiki/United_States",
-                    "BingId": "5232ed96-85b1-2edb-12c6-63e6c597a1de",
-                    "Type": "Location"
-                },
-                {
-                    "Name": "25",
-                    "Matches": [
-                        {
-                            "Text": "25",
-                            "Offset": 72,
-                            "Length": 2
-                        }
-                    ],
-                    "Type": "Quantity",
-                    "SubType": "Number"
-                },
-                {
-                    "Name": "25%",
-                    "Matches": [
-                        {
-                            "Text": "25%",
-                            "Offset": 72,
-                            "Length": 3
-                        }
-                    ],
-                    "Type": "Quantity",
-                    "SubType": "Percentage"
-                }
-            ]
+          "text": "Space Needle",
+          "category": "Location",
+          "offset": 30,
+          "length": 12,
+          "confidenceScore": 0.38
+        },
+        {
+          "text": "trip",
+          "category": "Event",
+          "offset": 54,
+          "length": 4,
+          "confidenceScore": 0.78
+        },
+        {
+          "text": "Seattle",
+          "category": "Location",
+          "subcategory": "GPE",
+          "offset": 62,
+          "length": 7,
+          "confidenceScore": 0.78
+        },
+        {
+          "text": "last week",
+          "category": "DateTime",
+          "subcategory": "DateRange",
+          "offset": 70,
+          "length": 9,
+          "confidenceScore": 0.8
         }
-    ],
-    "Errors": []
+      ],
+      "warnings": []
+    }
+  ],
+  "errors": [],
+  "modelVersion": "2020-04-01"
 }
 ```
 
 
-## <a name="summary"></a>總結
+#### <a name="example-entity-linking-response"></a>範例實體連結回應
+
+```json
+{
+  "documents": [
+    {
+      "id": "1",
+      "entities": [
+        {
+          "name": "Space Needle",
+          "matches": [
+            {
+              "text": "Space Needle",
+              "offset": 30,
+              "length": 12,
+              "confidenceScore": 0.4
+            }
+          ],
+          "language": "en",
+          "id": "Space Needle",
+          "url": "https://en.wikipedia.org/wiki/Space_Needle",
+          "dataSource": "Wikipedia"
+        },
+        {
+          "name": "Seattle",
+          "matches": [
+            {
+              "text": "Seattle",
+              "offset": 62,
+              "length": 7,
+              "confidenceScore": 0.25
+            }
+          ],
+          "language": "en",
+          "id": "Seattle",
+          "url": "https://en.wikipedia.org/wiki/Seattle",
+          "dataSource": "Wikipedia"
+        }
+      ],
+      "warnings": []
+    }
+  ],
+  "errors": [],
+  "modelVersion": "2020-02-01"
+}
+```
+
+
+## <a name="summary"></a>摘要
 
 在本文中，您已了解在認知服務中使用文字分析的實體連結概念和工作流程。 摘要說明：
 
-+ [實體 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634) \(英文\) 僅針對特定語言提供。
-+ 要求本文中的 JSON 文件包含識別碼、文字和語言代碼。
-+ 使用對您訂用帳戶有效的個人化[存取金鑰和端點](text-analytics-how-to-access-key.md)，將要求 POST 到 `/entities` 端點。
-+ 由連結實體 (包含每個文件識別碼的信賴分數、位移和網頁連結) 組成的回應輸出可用於任何應用程式
+* 要求本文中的 JSON 文件包含識別碼、文字和語言代碼。
+* POST 要求會傳送至一或多個端點，並使用個人化[存取金鑰和](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource)適用于您訂用帳戶的端點。
+* 由連結實體 (包含每個文件識別碼的信賴分數、位移和網頁連結) 組成的回應輸出可用於任何應用程式
 
 ## <a name="next-steps"></a>後續步驟
 
-> [!div class="nextstepaction"]
-> [文字分析 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
-
-* [文字分析概觀](../overview.md)  
-* [常見問題集 (FAQ)](../text-analytics-resource-faq.md)</br>
-* [文字分析產品頁面](//go.microsoft.com/fwlink/?LinkID=759712) 
+* [文字分析概觀](../overview.md)
+* [使用文字分析用戶端程式庫](../quickstarts/text-analytics-sdk.md)
+* [新功能](../whats-new.md)

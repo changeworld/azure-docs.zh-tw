@@ -1,28 +1,27 @@
 ---
-title: 在不同的 Azure 儲存體位置進行資料取樣 - Team Data Science Process
+title: 不同 Azure 儲存體位置中的範例資料-小組資料科學流程
 description: 在 Azure Blob 容器、SQL Server 和 Hive 資料表上進行資料取樣，使其成為更小但具代表性且更容易管理的大小。
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: fc91aec80f74488125649cfe807757ba5ae49c9b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 22e91d50227fcb44c7b90478d76379c14161ae05
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60253106"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "76718598"
 ---
-# <a name="heading"></a>在 Azure Blob 容器、SQL Server 和 Hive 資料表中進行資料取樣
+# <a name="sample-data-in-azure-blob-containers-sql-server-and-hive-tables"></a><a name="heading"></a>Azure Blob 容器、SQL Server 和 Hive 資料表中的範例資料
 
 下列文章說明如何對三個不同 Azure 位置中任一個位置所儲存的資料進行取樣：
 
-* [**Azure Blob 容器資料**](sample-data-blob.md)會以程式設計方式進行下載，然後使用 Python 程式碼進行取樣。
+* 藉由以程式設計方式下載[**Azure blob 容器資料**](sample-data-blob.md)，然後使用範例 Python 程式碼進行取樣，即可進行取樣。
 * [**SQL Server 資料**](sample-data-sql-server.md)會使用 SQL 和 Python 程式設計語言進行取樣。 
 * [**Hive 資料表**](sample-data-hive.md)會使用 Hive 查詢進行取樣。
 
@@ -30,5 +29,5 @@ ms.locfileid: "60253106"
 
 **為何要對資料進行取樣？**
 
-如果您規劃分析的資料集很龐大，通常最好是對資料進行向下取樣，將資料縮減為更小但具代表性且更容易管理的大小。 這有助於資料了解、探索和功能工程。 它在 Cortana 分析程序中扮演的角色是能夠快速建立資料處理函式與機器學習服務模型的原型。
+如果您規劃分析的資料集很龐大，通常最好是對資料進行向下取樣，將資料縮減為更小但具代表性且更容易管理的大小。 縮減可能有助於資料的瞭解、探索和特徵工程設計。 Cortana 分析程式中的這個取樣角色，是為了能夠快速建立資料處理函式和機器學習模型的原型。
 

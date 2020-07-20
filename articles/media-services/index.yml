@@ -1,50 +1,135 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Hub
 title: Azure 媒體服務文件
+summary: Azure 媒體服務是雲端式媒體工作流程平台，可讓您建置需要編碼、封裝、進行內容保護和即時事件廣播的各項解決方案。
+brand: azure
 metadata:
-  document_id: null
-  title: Azure 媒體服務文件 | Microsoft Docs
-  meta.description: 'Azure Media Services is a cloud-based platform that enables you to build solutions that achieve broadcast-quality video streaming, enhance accessibility and distribution, analyze content, and much more.'
+  title: Azure 媒體服務文件
+  description: Azure 媒體服務是雲端式媒體工作流程平台，可讓您建置需要編碼、封裝、進行內容保護和即時事件廣播的各項解決方案。
   services: media-services
-  author: juliako
-  manager: femila
   ms.service: media-services
-  ms.tgt_pltfrm: na
-  ms.devlang: na
-  ms.topic: landing-page
-  ms.date: 03/11/2019
+  ms.subservice: 
+  ms.topic: hub-page
+  ms.collection: collection
+  author: Juliako
   ms.author: juliako
-abstract:
-  description: Azure 媒體服務是雲端式媒體工作流程平台，可讓您建置需要編碼、封裝、進行內容保護和即時事件廣播的各項解決方案。 Azure 媒體服務與 Azure CDN 整合，調整從 Akamai 和 Verison 中透過 CDN 服務傳遞的方式，讓客戶得以選擇最符合其需求的解決方案，例如內容傳遞網路間的負載平衡。 Azure 媒體服務影片可讓您透過內建影片和音訊分析器預設，使用 AI 擷取中繼資料和深入解析。 您可以透過影片索引器 API，使用您的內容將提供的 AI 模型定型，輕鬆改善精確度。
-sections:
+  ms.date: 07//2020
+  ms.openlocfilehash: 5d49173a9c06e35c5af3831e504fc6f55a8dfc50
+  ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 06/01/2020
+  ms.locfileid: "84259536"
+highlightedContent:
+  items:
+  - title: 關於 Azure 媒體服務 v3
+    itemType: overview
+    url: ./latest/media-services-overview.md
+  - title: Azure 媒體服務 v3 概念
+    itemType: concept
+    url: ./latest/concepts-overview.md
+  - title: 關於 Azure 媒體服務影片索引器
+    itemType: overview
+    url: ./video-indexer/video-indexer-overview.md
+  - title: 比較媒體服務 v3 預設值與影片索引器
+    itemType: concept
+    url: ./video-indexer/compare-video-indexer-with-media-services-presets.md
+  - title: IoT Edge 上的 Live Video Analytics (預覽)
+    itemType: overview
+    url: ./live-video-analytics-edge/overview.md
+  - title: Azure 媒體播放器
+    itemType: overview
+    url: https://docs.microsoft.com/azure/media-services/azure-media-player/azure-media-player-overview
+  - title: 關於 Azure 媒體服務 v2 (舊版)
+    itemType: overview
+    url: ./previous/media-services-overview.md
+  - title: 將媒體服務 v2 遷移至 v3
+    itemType: concept
+    url: ./latest/migrate-from-v2-to-v3.md
+conceptualContent:
+  items:
+  - title: 使用媒體服務 v3 API 進行開發
+    links:
+    - url: ./latest/media-services-apis-overview.md
+      itemType: concept
+      text: 使用媒體服務 v3 進行開發
+    - url: https://docs.microsoft.com/samples/browse/?products=azure-media-services
+      itemType: sample
+      text: 程式碼範例
+    - url: ./latest/release-notes.md
+      itemType: concept
+      text: 了解媒體服務 v3 的新功能
+  - title: 即時串流
+    links:
+    - url: ./latest/live-streaming-overview.md
+      itemType: concept
+      text: 即時串流
+    - url: ./latest/recommended-on-premises-live-encoders.md
+      itemType: concept
+      text: 建議使用即時串流編碼器
+    - url: ./latest/stream-live-tutorial-with-api.md
+      itemType: tutorial
+      text: 即時串流
+  - title: 依需求進行串流
+    links:
+    - url: ./latest/assets-concept.md
+      itemType: concept
+      text: 上傳
+    - url: ./latest/encoding-concept.md
+      itemType: concept
+      text: 編碼
+    - url: ./latest/stream-files-tutorial-with-rest.md
+      itemType: tutorial
+      text: 編碼遠端檔案和串流
+    - url: ./latest/stream-files-tutorial-with-api.md
+      itemType: tutorial
+      text: 將已上傳檔案編碼和串流
+  - title: 加密內容
+    links:
+    - url: ./latest/content-protection-overview.md
+      itemType: concept
+      text: 保護
+    - url: ./latest/protect-with-aes128.md
+      itemType: tutorial
+      text: 透過 AES-128 進行動態加密
+    - url: ./latest/protect-with-drm.md
+      itemType: tutorial
+      text: 透過 DRM 進行動態加密
+  - title: 分析內容
+    links:
+    - url: ./latest/analyzing-video-audio-files-concept.md
+      itemType: concept
+      text: 媒體分析
+    - url: ./latest/analyze-videos-tutorial-with-api.md
+      itemType: tutorial
+      text: 分析影片
+  - title: 了解媒體服務規格
+    links:
+    - url: media-services-specifications-live-timed-metadata.md
+      itemType: concept
+      text: 即時串流中的計時中繼資料 (RTMP & Smooth Streaming)
+    - url: media-services-specifications-ms-sstr-amendment-hevc.md
+      itemType: concept
+      text: HEVC 的 Smooth Streaming 通訊協定 (MS-SSTR) 增修條款
+    - url: media-services-fmp4-live-ingest-overview.md
+      itemType: concept
+      text: Smooth Streaming 內嵌通訊協定
+  - title: IoT Edge 上的 Live Video Analytics (預覽)
+    links:
+    - url: ./live-video-analytics-edge/overview.md
+      itemType: overview
+      text: 概觀
+    - url: ./live-video-analytics-edge/use-your-model-quickstart.md
+      itemType: quickstart
+      text: 使用自己的模型執行 Live Video Analytics
+additionalContent:
+  sections:
   - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 2
-        items:
-          - href: /azure/media-services/latest/
-            html: <p>使用媒體服務 v3 來編碼、封裝和保護內容、串流隨選影片、即時廣播及分析您的影片。</p>
-            image:
-              src: /azure/media-services/latest/media/index/AMSIcons-encoding.svg
-            title: Azure 媒體服務 v3
-          - href: /azure/media-services/previous/
-            html: <p>編碼、封裝、保護和更多功能。 這是舊版服務，目前維護中。 客戶可以遷移到媒體服務 v3，使用各項新功能及增強功能。</p>
-            image:
-              src: null
-            title: Azure 媒體服務 v2 (舊版)
-          - href: /azure/cdn/
-            html: <p>使用 Azure CDN 的強大功能，透過 Akamai 和 Verizon 的各項服務或跨多個內容傳遞網路的負載平衡，大量串流內容。</p>
-            image:
-              src: /azure/cdn/media/index/cdn.svg
-            title: CDN
-          - href: 'https://amp.azure.net/libs/amp/latest/docs/index.html'
-            html: <p>在各種瀏覽器和裝置上播放 Microsoft Azure 媒體服務的媒體內容。</p>
-            image:
-              src: /azure/media-services/latest/media/index/AMSIcons-Player.svg
-            title: Azure 媒體播放器
-          - href: /azure/media-services/video-indexer/
-            html: <p>使用影片索引器從影片和音訊檔案中擷取深入解析。</p>
-            image:
-              src: media/index/AMSIcons-media_analytics.svg
-            title: Azure 媒體服務影片索引器
+    - title: Azure 儲存體
+      summary: 了解區塊 Blob 和容器
+      url: https://docs.microsoft.com/azure/storage/
+    - title: CDN
+      summary: 使用 Azure CDN 的強大功能，透過 Akamai 和 Verizon 的各項服務來大規模串流內容，或跨多個內容傳遞網路進行負載平衡
+      url: https://docs.microsoft.com/azure/cdn
+    - title: 事件方格
+      summary: 了解如何使用 Azure 事件方格來回應相關事件
+      url: https://docs.microsoft.com/azure/event-grid/

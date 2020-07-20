@@ -3,24 +3,24 @@ title: 如何移除使用者的應用程式存取 | Microsoft Docs
 description: 了解如何移除使用者的應用程式存取
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/17/2018
-ms.author: celested
+ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db9ac671b616e2b5af59c033d08768c9e572876f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6f9626c256755e2fce81b593d95b8680f4bb55ee
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60442143"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763154"
 ---
 # <a name="how-to-remove-a-users-access-to-an-application"></a>如何移除使用者的應用程式存取
 
@@ -38,21 +38,21 @@ ms.locfileid: "60442143"
 
 若要**刪除應用程式**，請遵循下列指示：
 
-1. 開啟 [Azure 入口網站](https://portal.azure.com/)，然後以**全域管理員**或**共同管理員**身分登入。
+1. 開啟[**Azure 入口網站**](https://portal.azure.com/)，並以**全域管理員**或共同管理員身分登入 **。**
 
 2. 按一下左側主導覽功能表底部的 [所有服務]，以開啟 [Azure Active Directory 延伸模組]。
 
 3. 在篩選搜尋方塊中輸入 **“Azure Active Directory**”，然後選取 [Azure Active Directory] 項目。
 
-4. 在 Azure Active Directory 左側導覽功能表中，按一下 [企業應用程式]。
+4. 按一下 Azure Active Directory 左側導覽功能表中的 [**企業應用程式**]。
 
-5. 按一下 [所有應用程式] 以檢視所有應用程式的清單。
+5. 按一下 [**所有應用程式**] 以查看所有應用程式的清單。
 
    * 若在這裡沒看到您要顯示的應用程式，請使用 [所有應用程式清單] 頂端的 [篩選] 控制項，並將 [顯示] 選項設定為 [所有應用程式]。
 
 6. 選取您要刪除的應用程式。
 
-7. 應用程式載入後，在頂端應用程式的 [概觀] 窗格按一下 [刪除] 圖示。
+7. 應用程式載入後，在頂端應用程式的 [概觀]**** 窗格按一下 [刪除]**** 圖示。
 
 ## <a name="i-want-to-disable-all-future-user-consent-operations-to-any-application"></a>我想要停用任何應用程式的所有未來使用者同意作業
 
@@ -62,13 +62,13 @@ ms.locfileid: "60442143"
 
 1.  開啟 [Azure 入口網站](https://portal.azure.com/)，以**全域管理員**身分登入。
 
-2.  開啟 [Azure Active Directory 擴充功能] 
+2.  開啟 [Azure Active Directory 擴充功能]**** 
 
-3.  按一下瀏覽功能表中的 [企業應用程式]。
+3.  按一下瀏覽功能表中的 [企業應用程式]****。
 
-5.  按一下 [使用者設定]。
+5.  按一下 [**使用者設定**]。
 
-6.  將 [使用者可以允許應用程式代替他們存取資料] 切換開關設為 [否]，並按一下 [儲存] 按鈕。
+6.  將 [使用者可以允許應用程式代替他們存取資料]**** 切換開關設為 [否]****，並按一下 [儲存] 按鈕。
 
 
 ## <a name="next-steps"></a>後續步驟

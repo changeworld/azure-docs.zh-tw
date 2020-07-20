@@ -1,31 +1,30 @@
 ---
-title: 使用 Azure IoT 中樞裝置佈建服務來佈建裝置 | Microsoft Docs
-description: 使用 Azure IoT 中樞裝置佈建服務將裝置佈建到單一 IoT 中樞
+title: 教學課程 - 使用 Azure IoT 中樞裝置佈建服務來佈建裝置
+description: 本教學課程說明如何使用 Azure IoT 中樞裝置佈建服務 (DPS) 將裝置佈建到單一 IoT 中樞
 author: wesmc7777
 ms.author: wesmc
-ms.date: 04/12/2018
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 9ff134b0747e78773c95fac7ceab4cddd61c601d
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 3fe2fa8b094830e2d15c1cebce782381b4ca7bc7
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58227009"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "74975035"
 ---
-# <a name="provision-the-device-to-an-iot-hub-using-the-azure-iot-hub-device-provisioning-service"></a>使用 Azure IoT 中樞裝置佈建服務將裝置佈建到 IoT 中樞
+# <a name="tutorial-provision-the-device-to-an-iot-hub-using-the-azure-iot-hub-device-provisioning-service"></a>教學課程：使用 Azure IoT 中樞裝置佈建服務將裝置佈建到 IoT 中樞
 
-在上一個教學課程中，您已了解如何將裝置設定為連線到裝置佈建服務。 在本教學課程中，您會了解如何使用這項服務，以透過自動佈建和**_註冊清單_** 將裝置佈建到單一 IoT 中樞。 本教學課程說明如何：
+在上一個教學課程中，您已了解如何將裝置設定為連線到裝置佈建服務。 在本教學課程中，您會了解如何使用這項服務，以透過自動佈建和 **_註冊清單_** 將裝置佈建到單一 IoT 中樞。 本教學課程說明如何：
 
 > [!div class="checklist"]
 > * 註冊裝置
 > * 啟動裝置
 > * 確認裝置已註冊
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 在繼續之前，請務必依照[將裝置設定為使用 Azure IoT 中樞裝置佈建服務來進行佈建](./tutorial-set-up-device.md)教學課程所討論的方法來設定裝置。
 
@@ -37,13 +36,13 @@ ms.locfileid: "58227009"
 此步驟涉及將裝置的唯一安全性構件新增至裝置佈建服務。 這些安全性成品是以裝置的[證明機制](concepts-device.md#attestation-mechanism)為基礎，如下所示：
 
 - 對於以 TPM 為基礎的裝置，您需要：
-    - 「簽署金鑰」是每個 TPM 晶片或模擬從 TMP 晶片製造商取得唯一的簽署金鑰。  如需詳細資訊，請參閱[了解 TPM 簽署金鑰](https://technet.microsoft.com/library/cc770443.aspx)。
-    - 註冊識別碼，用來唯一識別命名空間/範圍中的裝置。 此識別碼與裝置識別碼不一定相同。 每個裝置都必須有註冊識別碼。 若為 TPM 架構的裝置，註冊識別碼可能會衍生自該 TPM 自身，例如，TPM 簽署金鑰的 SHA-256 雜湊。
+    - 「簽署金鑰」  是每個 TPM 晶片或模擬從 TMP 晶片製造商取得唯一的簽署金鑰。  如需詳細資訊，請參閱[了解 TPM 簽署金鑰](https://technet.microsoft.com/library/cc770443.aspx)。
+    - 註冊識別碼  ，用來唯一識別命名空間/範圍中的裝置。 此識別碼與裝置識別碼不一定相同。 每個裝置都必須有註冊識別碼。 若為 TPM 架構的裝置，註冊識別碼可能會衍生自該 TPM 自身，例如，TPM 簽署金鑰的 SHA-256 雜湊。
 
       [![入口網站中的 TPM 註冊資訊](./media/tutorial-provision-device-to-hub/tpm-device-enrollment.png)](./media/tutorial-provision-device-to-hub/tpm-device-enrollment.png#lightbox)  
 
 - 對於以 X.509 為基礎的裝置，您需要：
-    - [核發給 X.509 晶片或模擬的憑證](https://msdn.microsoft.com/library/windows/desktop/bb540819.aspx)，格式為 .pem 或 .cer 檔案。 若要進行個別註冊，您必須對 X.509 系統使用每一裝置的「簽署憑證」，若要進行群組註冊，則必須使用「根憑證」。 
+    - [核發給 X.509 晶片或模擬的憑證](https://msdn.microsoft.com/library/windows/desktop/bb540819.aspx)，格式為 .pem  或 .cer  檔案。 若要進行個別註冊，您必須對 X.509 系統使用每一裝置的「簽署憑證」  ，若要進行群組註冊，則必須使用「根憑證」  。 
 
       [![在入口網站中新增 X.509 證明的個別註冊](./media/tutorial-provision-device-to-hub/individual-enrollment.png)](./media/tutorial-provision-device-to-hub/individual-enrollment.png#lightbox)
 
@@ -57,9 +56,9 @@ ms.locfileid: "58227009"
 
 現在使用以裝置的證明機制為基礎的必要安全性成品，向您的裝置佈建服務執行個體註冊裝置： 
 
-1. 登入 Azure 入口網站，按一下左側功能表上的 [所有資源] 按鈕，然後開啟您的裝置佈建服務。
+1. 登入 Azure 入口網站，按一下左側功能表上的 [所有資源]  按鈕，然後開啟您的裝置佈建服務。
 
-2. 在裝置佈建服務摘要刀鋒視窗上，選取 [管理註冊]。 根據您的裝置設定選取 [個別註冊] 索引標籤或 [註冊群組] 索引標籤。 按一下位於頂端的 [新增] 按鈕。 選取 [TPM] 或 [X.509] 來作為識別證明「機制」，然後如先前所討論的輸入適當的安全性構件。 您可以輸入新的 [IoT 中樞裝置識別碼]。 完成後，按一下 [儲存] 按鈕。 
+2. 在裝置佈建服務摘要刀鋒視窗上，選取 [管理註冊]  。 根據您的裝置設定選取 [個別註冊]  索引標籤或 [註冊群組]  索引標籤。 按一下位於頂端的 [新增]  按鈕。 選取 [TPM]  或 [X.509]  來作為識別證明「機制」  ，然後如先前所討論的輸入適當的安全性構件。 您可以輸入新的 [IoT 中樞裝置識別碼]  。 完成後，按一下 [儲存]  按鈕。 
 
 3. 在成功註冊裝置後，您應該會看到它顯示在入口網站中，如下所示：
 

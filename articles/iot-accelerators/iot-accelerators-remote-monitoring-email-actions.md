@@ -1,19 +1,18 @@
 ---
 title: 遠端監視內的電子郵件動作 - Azure | Microsoft Docs
 description: 本操作指南示範如何將電子郵件動作新增至新的或現有規則。
-author: asdonald
+author: dominicbetts
 manager: hegate
-ms.author: asdonald
+ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 11/12/2018
 ms.topic: conceptual
-ms.openlocfilehash: fbb5f92258ff31dd7077bb1ade7fa7e5644c8bac
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
-ms.translationtype: MT
+ms.openlocfilehash: c192ba73da0cfaf1832b6a1e572bd71b250a976b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65466908"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "74168358"
 ---
 # <a name="add-an-email-action"></a>新增電子郵件動作
 
@@ -29,13 +28,13 @@ ms.locfileid: "65466908"
 
 1. 瀏覽至您的遠端監視解決方案。
 
-1. 從 [儀表板]，瀏覽至 [規則] 頁面：
+1. 從 [儀表板]****，瀏覽至 [規則]**** 頁面：
 
     ![規則頁面](./media/iot-accelerators-remote-monitoring-email-actions/rules-email.png)
 
-1. 按一下要修改的現有規則旁的核取方塊，然後按一下頂端的 [編輯]。 可編輯的 [規則] 面板隨即出現。
+1. 按一下要修改的現有規則旁的核取方塊，然後按一下頂端的 [編輯]****。 可編輯的 [規則]**** 面板隨即出現。
 
-1. 在 [動作] 區段中，將 [已啟用電子郵件] 切換為 [開啟]。
+1. 在 [動作]**** 區段中，將 [已啟用電子郵件]**** 切換為 [開啟]****。
 
 1. 第一次在解決方案加速器中啟用電子郵件動作時，您必須[登入 Outlook](#outlook)。
 
@@ -47,9 +46,9 @@ ms.locfileid: "65466908"
 
 1. 以純文字形式輸入給電子郵件收件者的任何其他備註。 如果您[編輯電子郵件範本](#htmledit)，則可使用 HTML 格式。
 
-1. 確定 [規則狀態] 已設為 [已啟用]。
+1. 確定 [規則狀態]**** 已設為 [已啟用]****。
 
-1. 按一下 **[套用]**。
+1. 按一下 [套用] 。
 
 ## <a name="create-a-new-rule"></a>建立新的規則
 
@@ -57,13 +56,13 @@ ms.locfileid: "65466908"
 
 1. 瀏覽至您的遠端監視解決方案。
 
-1. 從 [儀表板]，瀏覽至 [規則] 頁面：
+1. 從 [儀表板]****，瀏覽至 [規則]**** 頁面：
 
     ![規則頁面](./media/iot-accelerators-remote-monitoring-email-actions/rules-email.png)
 
-1. 請遵循[建立規則](iot-accelerators-remote-monitoring-automate.md#create-a-rule)一節中的步驟。 請遵循[建立進階規則](iot-accelerators-remote-monitoring-automate.md#create-an-advanced-rule)一節中的步驟，直到您設定**嚴重性層級**的那一點。 還不要按 [套用]。
+1. 請遵循[建立規則](iot-accelerators-remote-monitoring-automate.md#create-a-rule)一節中的步驟。 請遵循[建立進階規則](iot-accelerators-remote-monitoring-automate.md#create-an-advanced-rule)一節中的步驟，直到您設定**嚴重性層級**的那一點。 還不要按 [套用]****。
 
-1. 在 [動作] 區段中，將 [已啟用電子郵件] 切換為 [開啟]。
+1. 在 [動作]**** 區段中，將 [已啟用電子郵件]**** 切換為 [開啟]****。
 
 1. 第一次在解決方案加速器中啟用電子郵件動作時，您必須[登入 Outlook](#outlook)。
 
@@ -75,13 +74,13 @@ ms.locfileid: "65466908"
 
 1. 以純文字形式輸入給電子郵件收件者的任何其他備註。 如果您[編輯電子郵件範本](#htmledit)，則可使用 HTML 格式。
 
-1. 確定 [規則狀態] 已設為 [已啟用]。
+1. 確定 [規則狀態]**** 已設為 [已啟用]****。
 
-1. 按一下 **[套用]**。
+1. 按一下 [套用] 。
 
 現在已啟用您具有電子郵件動作的規則。 每次觸發此動作時，就會將新的電子郵件傳送給收件者。
 
-## 登入 Outlook <a name="outlook"></a>
+## <a name="sign-in-to-outlook"></a>登入 Outlook <a name="outlook"></a>
 
 第一次在解決方案加速器中啟用電子郵件動作時，您必須登入 Outlook。 此動作會設定送出電子郵件通知的電子郵件帳戶。
 
@@ -100,7 +99,7 @@ ms.locfileid: "65466908"
 
 1. 瀏覽至您解決方案加速器的資源群組。
 
-1. 按一下 [office365-connector]：
+1. 按一下 [office365-connector]****：
 
     ![API 連線](./media/iot-accelerators-remote-monitoring-email-actions/apiconnector1.png)
 
@@ -108,13 +107,13 @@ ms.locfileid: "65466908"
 
     ![授權](./media/iot-accelerators-remote-monitoring-email-actions/connector1.png)
 
-1. 按一下 [授權]。 系統會提示您登入。 您用來登入的帳戶應該是應用程式用來傳送電子郵件通知的電子郵件地址：
+1. 按一下 [授權]****。 系統會提示您登入。 您用來登入的帳戶應該是應用程式用來傳送電子郵件通知的電子郵件地址：
 
     ![授權按鈕](./media/iot-accelerators-remote-monitoring-email-actions/authorize.png)
 
-1. 按一下底部的 [儲存]。 如果橫幅消失，您的授權將會成功。
+1. 按一下底部的 [儲存]****。 如果橫幅消失，您的授權將會成功。
 
-1. 若要變更傳來通知的來源電子郵件地址，請按一下 [編輯 API 連線]。
+1. 若要變更傳來通知的來源電子郵件地址，請按一下 [編輯 API 連線]****。
 
     ![變更電子郵件](./media/iot-accelerators-remote-monitoring-email-actions/editemail1.png)
 
@@ -130,7 +129,7 @@ ms.locfileid: "65466908"
 
    ![登入 Outlook](./media/iot-accelerators-remote-monitoring-email-actions/owneroutlook-email.png)
 
-1. 按一下 [授權]。 系統會提示您登入。 您用來登入的帳戶應該是應用程式用來傳送電子郵件通知的電子郵件地址：
+1. 按一下 [授權]****。 系統會提示您登入。 您用來登入的帳戶應該是應用程式用來傳送電子郵件通知的電子郵件地址：
 
 1. 按一下 [檔案] 。 移至您的解決方案加速器並重新整理頁面。
 
@@ -138,7 +137,7 @@ ms.locfileid: "65466908"
 
    ![成功的 Outlook 登入](./media/iot-accelerators-remote-monitoring-email-actions/success-email.png)
 
-## 自訂電子郵件 HTML <a name="htmledit"></a>
+## <a name="customize-the-email-html"></a>自訂電子郵件 HTML <a name="htmledit"></a>
 
 現成的遠端監視解決方案加速器會提供動作電子郵件的基本 HTML 範本。 電子郵件範本會使用來自電子郵件動作設定的值。 以下是範例電子郵件：
 

@@ -7,17 +7,17 @@ author: ika-microsoft
 manager: femila
 editor: ''
 ms.service: media-services
+ms.subservice: video-indexer
 ms.workload: ''
 ms.topic: article
 ms.custom: ''
-ms.date: 02/10/2019
+ms.date: 05/15/2019
 ms.author: ikbarmen
-ms.openlocfilehash: e98cf44db01de1f99836e247066ba01006eac97b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 18f2cf3daa281400151ba223e1735e7138d97e8e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60553627"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "76990499"
 ---
 # <a name="manage-multiple-tenants"></a>管理多個租用戶
 
@@ -44,7 +44,7 @@ ms.locfileid: "60553627"
 * 由於每個租用戶擁有多個影片索引器 (及相關的媒體服務) 帳戶，因此難以管理。
 
 > [!TIP]
-> 在[影片索引器開發人員入口網站](https://api-portal.videoindexer.ai/)中為您的系統建立系統管理員使用者，並使用授權 API 為您的租用戶提供相關的[帳戶存取權杖](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token)。
+> 在[影片索引器開發人員入口網站](https://api-portal.videoindexer.ai/)中為您的系統建立系統管理員使用者，並使用授權 API 為您的租用戶提供相關的[帳戶存取權杖](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Account-Access-Token)。
 
 ## <a name="single-video-indexer-account-for-all-users"></a>所有使用者的單一影片索引器帳戶
 
@@ -67,7 +67,7 @@ ms.locfileid: "60553627"
 
 ## <a name="azure-subscription-per-tenant"></a>每個租用戶的 Azure 訂用帳戶 
 
-使用這個架構時，每個租用戶都會有自己的 Azure 訂用帳戶。 針對每個使用者，您將在租用戶訂用帳戶中建立新的影片索引器帳戶。
+使用此架構時，每個租使用者都會有自己的 Azure 訂用帳戶。 針對每個使用者，您將在租用戶訂用帳戶中建立新的影片索引器帳戶。
 
 ![每個租用戶的 Azure 訂用帳戶](./media/manage-multiple-tenants/azure-subscription-per-tenant.png)
 

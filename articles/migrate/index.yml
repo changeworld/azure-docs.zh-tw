@@ -1,26 +1,101 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Azure Migrate 文件
+summary: 尋找可協助您使用 Azure Migrate 中樞中的工具來探索、評估及遷移內部部署環境的文章。
 metadata:
-  title: Azure Migrate 文件 - 教學課程和 API 參考 | Microsoft Docs
-  description: 了解如何評定內部部署機器以移轉至 Azure
-  services: migration-planner
-  author: rayne-wiselman
-  manager: carmonm
-  ms.service: migration
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  title: Azure Migrate 文件
+  description: 了解如何使用 Azure Migrate 中樞中的工具來探索、評估及遷移內部部署環境，並將其遷移至 Azure。
+  ms.service: azure-migrate
   ms.topic: landing-page
-  ms.date: 11/22/2017
+  ms.collection: collection
+  author: rayne-wiselman
   ms.author: raynew
-abstract:
-  description: Azure Migrate 可協助您探索及評定內部部署機器是否適合移轉至 Azure，並提供可執行 Azure VM 的尺寸及成本預估。
-sections:
-  - title: 逐步教學課程
-    items:
-      - type: paragraph
-        text: 了解如何評定 VMware VM 以移轉至 Azure
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="tutorial-assessment-vmware">探索及評定內部部署 VMware VM</a>
+  ms.date: 07/08/2020
+  ms.openlocfilehash: a3c9be5e123892d5d1b8d8e4a0677eb520e34dc6
+  ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 07/08/2020
+  ms.locfileid: "86112658"
+landingContent:
+- title: 關於 Azure Migrate
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是 Azure Migrate？
+      url: ./migrate-services-overview.md
+    - text: Azure Migrate 中的新功能有哪些？
+      url: ./whats-new.md
+    - text: 常見問題
+      url: ./resources-faq.md
+- title: 開始使用
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 透過伺服器評量評估 VMware
+      url: ./tutorial-prepare-vmware.md
+    - text: 透過伺服器評量評估 Hyper-V
+      url: ./tutorial-prepare-hyper-v.md
+    - text: 使用伺服器評量來評估實體伺服器
+      url: ./tutorial-prepare-physical.md
+    - text: 使用匯入的資料評估伺服器
+      url: tutorial-assess-import.md
+    - text: 使用伺服器移轉來遷移 VMware VM
+      url: ./server-migrate-overview.md
+    - text: 使用伺服器移轉來遷移 Hyper-V VM
+      url: ./tutorial-migrate-hyper-v.md
+    - text: 使用伺服器移轉來遷移實體伺服器/VM
+      url: ./tutorial-migrate-physical-virtual-machines.md
+- title: 開始部署
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: 檢閱伺服器評量的最佳做法
+      url: ./best-practices-assessment.md
+    - text: 了解 Azure Migrate 設備部署
+      url: ./migrate-replication-appliance.md
+    - text: 檢閱 Azure Migrate 支援矩陣
+      url: migrate-support-matrix.md
+    - text: 檢閱 VMware 支援矩陣
+      url: ./migrate-support-matrix-vmware.md
+    - text: 檢閱 Hyper-V 支援矩陣
+      url: ./migrate-support-matrix-hyper-v.md
+    - text: 檢閱實體伺服器支援矩陣
+      url: ./migrate-support-matrix-physical.md
+- title: 管理
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 新增評量工具
+      url: ./how-to-assess.md
+    - text: 探索應用程式清查
+      url: ./how-to-discover-applications.md
+    - text: 新增移轉工具
+      url: ./how-to-migrate.md
+    - text: 調整 VMware 評量
+      url: ./scale-vmware-assessment.md
+    - text: 自動化和調整移轉
+      url: ./how-to-migrate-at-scale.md
+    - text: 評量和移轉疑難排解
+      url: ./troubleshoot-general.md
+- title: 深入了解
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: 了解 VMware/實體代理程式型的移轉
+      url: ./agent-based-migration-architecture.md
+    - text: 了解 Hyper-V 移轉
+      url: ./hyper-v-migration-architecture.md
+    - text: 了解評量
+      url: ./concepts-assessment-calculation.md
+    - text: 了解相依性視覺效果
+      url: ./concepts-dependency-visualization.md
+- title: 積極參與
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: 要求服務功能
+      url: https://feedback.azure.com/forums/907195-azure-migrate
+    - text: 在論壇中提出問題
+      url: /answers/topics/azure-migrate.html
+    - text: Azure Tech Community
+      url: https://techcommunity.microsoft.com/t5/Azure-Migration/bd-p/AzureMigration

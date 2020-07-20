@@ -1,36 +1,27 @@
 ---
-title: 設定 Azure Service Fabric 獨立叢集 | Microsoft Docs
+title: 設定 Azure Service Fabric 獨立叢集
 description: 了解如何設定獨立或內部部署 Service Fabric 叢集。
-services: service-fabric
-documentationcenter: .net
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: 0c5ec720-8f70-40bd-9f86-cd07b84a219d
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 11/12/2018
 ms.author: dekapur
-ms.openlocfilehash: ae7fbef864634e47866de13384871a98b8ce4675
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: e8a1fdfb23b6e0aee9b9bdd04f70c554824f4c35
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65209712"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246566"
 ---
 # <a name="configuration-settings-for-a-standalone-windows-cluster"></a>獨立 Windows 叢集的組態設定
-本文說明如何在 ClusterConfig.json 檔案中設定獨立 Azure Service Fabric 叢集的組態設定。 您將會使用此檔案來指定叢集節點、安全性設定，以及容錯和升級網域方面之網路拓撲的相關資訊。  變更或新增組態設定之後，您可以[建立獨立叢集](service-fabric-cluster-creation-for-windows-server.md)或[升級獨立叢集的組態](service-fabric-cluster-config-upgrade-windows-server.md)。
+本文說明如何在 ClusterConfig.json** 檔案中設定獨立 Azure Service Fabric 叢集的組態設定。 您將會使用此檔案來指定叢集節點、安全性設定，以及容錯和升級網域方面之網路拓撲的相關資訊。  變更或新增組態設定之後，您可以[建立獨立叢集](service-fabric-cluster-creation-for-windows-server.md)或[升級獨立叢集的組態](service-fabric-cluster-config-upgrade-windows-server.md)。
 
 當您[下載獨立的 Service Fabric 套件](service-fabric-cluster-creation-for-windows-server.md#downloadpackage)時，ClusterConfig.json 範例也會包含在內。 名稱中包含 "DevCluster" 的範例，會使用邏輯節點，建立三個節點皆位於相同電腦上的叢集。 在這三個節點中，至少必須將一個節點標示為主要節點。 此類型的叢集可用於開發或測試環境。 但不支援做為生產叢集。 名稱中包含 "MultiMachine" 的範例，能協助建立生產等級的叢集，其中每個節點都會位於不同的電腦上。 這些叢集的主要節點數目會以叢集的[可靠性層級](#reliability)為基礎。 在 5.7 版，API 版本 05-2017 中，我們移除了可靠性層級屬性。 但是，我們的程式碼會計算叢集的最佳化可靠性層級。 請不要嘗試在 5.7 版及更新版本中設定這個屬性的值。
 
 * ClusterConfig.Unsecure.DevCluster.json 和 ClusterConfig.Unsecure.MultiMachine.json 分別示範如何建立不安全的測試或生產叢集。
 
-* ClusterConfig.Windows.DevCluster.json 和 ClusterConfig.Windows.MultiMachine.json 示範如何建立使用 [Windows 安全性](service-fabric-windows-cluster-windows-security.md)提供保護的測試或生產叢集。
+* ClusterConfig.Windows.DevCluster.js開啟和 ClusterConfig.Windows.MultiMachine.js，說明如何使用[Windows 安全性](service-fabric-windows-cluster-windows-security.md)來建立受保護的測試或生產叢集。
 
-* ClusterConfig.X509.DevCluster.json 和 ClusterConfig.X509.MultiMachine.json 示範如何建立使用 [X509 憑證型安全性](service-fabric-windows-cluster-x509-security.md)提供保護的測試或生產叢集。
+* ClusterConfig.X509.DevCluster.js開啟和 ClusterConfig.X509.MultiMachine.js，說明如何使用[X509 憑證安全性](service-fabric-windows-cluster-x509-security.md)來建立受保護的測試或生產叢集。
 
 現在，讓我們檢視 ClusterConfig.json 檔案的各個區段。
 
@@ -71,7 +62,7 @@ ms.locfileid: "65209712"
 
 Service Fabric 叢集至少必須包含 3 個節點。 您可以根據您的設定，在此區段中新增更多節點。 下表說明每個節點的組態設定：
 
-| **節點組態** | **說明** |
+| **節點設定** | **描述** |
 | --- | --- |
 | nodeName |您可以為節點提供易記名稱。 |
 | iPAddress |開啟命令視窗並輸入 `ipconfig`，以找出節點的 IP 位址。 記下 IPV4 位址，並將它指派給 iPAddress 變數。 |
@@ -98,7 +89,7 @@ reliabilityLevel 的概念會定義可以在叢集主要節點上執行之 Servi
 }
 ```
 
-metadata 是叢集診斷的說明，而且可根據您的設定來進行設定。 這些變數有助於收集 ETW 追蹤記錄、損毀傾印，以及效能計數器。 如需 ETW 追蹤記錄的詳細資訊，請參閱 [Tracelog](https://msdn.microsoft.com/library/windows/hardware/ff552994.aspx) 和 [ETW 追蹤](https://msdn.microsoft.com/library/ms751538.aspx)。 包含[損毀傾印](https://blogs.technet.microsoft.com/askperf/2008/01/08/understanding-crash-dump-files/)和[效能計數器](https://msdn.microsoft.com/library/windows/desktop/aa373083.aspx)的所有記錄可導向至電腦上的 connectionString 資料夾。 您也可以使用 AzureStorage 來儲存診斷。 請參閱下列程式碼片段範例：
+metadata 是叢集診斷的說明，而且可根據您的設定來進行設定。 這些變數有助於收集 ETW 追蹤記錄、損毀傾印，以及效能計數器。 如需 ETW 追蹤記錄的詳細資訊，請參閱 [Tracelog](/windows-hardware/drivers/devtest/tracelog) 和 [ETW 追蹤](/dotnet/framework/wcf/samples/etw-tracing)。 包含[損毀傾印](https://techcommunity.microsoft.com/t5/ask-the-performance-team/bg-p/AskPerf)和[效能計數器](/windows/win32/perfctrs/performance-counters-portal)的所有記錄可導向至電腦上的 connectionString 資料夾。 您也可以使用 AzureStorage 來儲存診斷。 請參閱下列程式碼片段範例：
 
 ```json
 "diagnosticsStore": {
@@ -122,7 +113,7 @@ security 區段對於安全獨立的 Service Fabric 叢集是必要的項目。 
 }
 ```
 
-metadata 是安全叢集的說明，而且可根據您的設定來進行設定。 ClusterCredentialType 和 ServerCredentialType 決定叢集和節點會實作的安全性類型。 它們可以設定為*X509*憑證為基礎的安全性或*Windows* Active Directory 為基礎的安全性。 其餘的 security 區段則是根據安全性類型。 如需如何填滿其餘 security 區段的相關資訊，請參閱[獨立叢集中的憑證式安全性](service-fabric-windows-cluster-x509-security.md)或[獨立叢集中的 Windows 安全性](service-fabric-windows-cluster-windows-security.md)。
+metadata 是安全叢集的說明，而且可根據您的設定來進行設定。 ClusterCredentialType 和 ServerCredentialType 決定叢集和節點會實作的安全性類型。 針對以憑證為基礎的安全性或*Windows* ，可以將它們設定為*X509* ，以 Active Directory 為基礎的安全性。 其餘的 security 區段則是根據安全性類型。 如需如何填滿其餘 security 區段的相關資訊，請參閱[獨立叢集中的憑證式安全性](service-fabric-windows-cluster-x509-security.md)或[獨立叢集中的 Windows 安全性](service-fabric-windows-cluster-windows-security.md)。
 
 ### <a name="node-types"></a>節點類型
 nodeTypes 區段說明叢集所擁有的節點類型。 至少必須針對叢集指定一個節點類型，如下列程式碼片段所示： 
@@ -148,7 +139,7 @@ nodeTypes 區段說明叢集所擁有的節點類型。 至少必須針對叢集
 }]
 ```
 
-name 是此特定節點類型的易記名稱。 若要建立此節點類型的節點，請將其易記名稱指派給該節點的 nodeTypeRef 變數，如[先前所述](#nodes-on-the-cluster)。 為每個節點類型定義將會使用的連接端點。 您可以為這些連接端點選擇任意的連接埠號碼，只要它們不會與此叢集中的任何其他端點發生衝突即可。 視 [reliabilityLevel](#reliability) 而定，多節點叢集中會有一或多個主要節點 (也就是 isPrimary 設為 true)。 如需 nodeTypes 和 reliabilityLevel 的詳細資訊，以及為了了解主要和非主要節點類型，請參閱 [Service Fabric 叢集容量規劃考量](service-fabric-cluster-capacity.md)。 
+name 是此特定節點類型的易記名稱。 若要建立此節點類型的節點，請將其易記名稱指派給該節點的 nodeTypeRef 變數，如[先前所述](#nodes-on-the-cluster)。 為每個節點類型定義將會使用的連接端點。 您可以為這些連接端點選擇任意的連接埠號碼，只要它們不會與此叢集中的任何其他端點發生衝突即可。 視 [reliabilityLevel](#reliability) 而定，多節點叢集中會有一或多個主要節點 (也就是 isPrimary 設為 true**)。 如需 nodeTypes 和 reliabilityLevel 的詳細資訊，以及為了了解主要和非主要節點類型，請參閱 [Service Fabric 叢集容量規劃考量](service-fabric-cluster-capacity.md)。 
 
 #### <a name="endpoints-used-to-configure-the-node-types"></a>用來設定節點類型的端點
 * clientConnectionEndpointPort 是在使用用戶端 API 時，用戶端用來連線到叢集的連接埠。 
@@ -202,14 +193,14 @@ name 是此特定節點類型的易記名稱。 若要建立此節點類型的�
     ]
 }
 ```
+所有可用的附加元件功能都可以在[Service Fabric REST API 參考](/rest/api/servicefabric/sfrp-model-addonfeatures)中看到。
 
 ### <a name="container-support"></a>容器支援
 若要啟用獨立叢集的 Windows Server 容器和 Hyper-V 容器的容器支援，必須啟用 DnsService 附加功能。
 
 ## <a name="next-steps"></a>後續步驟
-在您根據獨立叢集設定，設定好完整的 ClusterConfig.json 檔案後，您就可以部署叢集。 請遵循[建立獨立 Service Fabric 叢集](service-fabric-cluster-creation-for-windows-server.md)中的步驟來進行。 
+當您已根據獨立叢集安裝程式設定完整*的檔案ClusterConfig.js*之後，就可以部署叢集。 請遵循[建立獨立 Service Fabric 叢集](service-fabric-cluster-creation-for-windows-server.md)中的步驟來進行。 
 
 如果您已部署獨立叢集，您也可以[升級獨立叢集的組態](service-fabric-cluster-config-upgrade-windows-server.md)。 
 
 了解如何[使用 Service Fabric 總管視覺化叢集](service-fabric-visualizing-your-cluster.md)。
-

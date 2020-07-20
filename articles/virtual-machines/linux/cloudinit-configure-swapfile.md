@@ -1,35 +1,27 @@
 ---
-title: 使用 cloud-init 在 Linux 虛擬機器上設定分頁檔 | Microsoft Docs
-description: 如何透過 Azure CLI，在建立期間使用 cloud-init 在 Linux 虛擬機器中設定分頁檔
-services: virtual-machines-linux
-documentationcenter: ''
+title: 使用雲端 init 在 Linux VM 上設定交換資料分割
+description: 如何在使用 Azure CLI 建立期間，使用雲端 init 在 Linux VM 中設定交換磁碟分割
 author: rickstercdn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
+manager: gwallace
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: 626fd4739daf2506854c42f16ac986a361ebab38
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 1247652e536042ee249054d86aed3c3f8e7aa7bf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60729812"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "78969194"
 ---
-# <a name="use-cloud-init-to-configure-a-swapfile-on-a-linux-vm"></a>使用 cloud-init 在 Linux 虛擬機器上設定分頁檔
-本文會示範如何使用 [cloud-init](https://cloudinit.readthedocs.io) 在各種 Linux 發行套件上設定分頁檔。 傳統上是由 Linux 代理程式 (WALA) 根據發行套件的需求來設定分頁檔。  本文將概述在佈建期間，使用 cloud-init 依需求建置分頁檔的流程。  如需深入了解 cloud-init 如何以原生方式在 Azure 和支援的 Linux 散發版本中運作，請參閱 [cloud-init 概觀](using-cloud-init.md)
+# <a name="use-cloud-init-to-configure-a-swap-partition-on-a-linux-vm"></a>使用雲端 init 在 Linux VM 上設定交換資料分割
+本文說明如何使用[雲端 init](https://cloudinit.readthedocs.io)來設定各種 Linux 散發套件上的交換資料分割。 交換磁碟分割傳統上是由 Linux 代理程式（WALA）根據所需的散發套件進行設定。  本檔將概述使用雲端 init，在布建期間視需要建立交換資料分割的程式。  如需深入了解 cloud-init 如何以原生方式在 Azure 和支援的 Linux 散發版本中運作，請參閱 [cloud-init 概觀](using-cloud-init.md)
 
-## <a name="create-swapfile-for-ubuntu-based-images"></a>建立 Ubuntu 型映像的分頁檔
-依預設，Azure 上的 Ubuntu 資源庫映像不會建立分頁檔。 若要使用 cloud-init 在虛擬機器佈建期間啟用分頁檔設定 - 請參閱 Ubuntu wiki 上的 [AzureSwapPartitions 文件](https://wiki.ubuntu.com/AzureSwapPartitions)。
+## <a name="create-swap-partition-for-ubuntu-based-images"></a>建立以 Ubuntu 為基礎之映射的交換磁碟分割
+根據預設，在 Azure 上，Ubuntu 圖庫映射不會建立交換磁碟分割。 若要使用雲端 init 在 VM 布建期間啟用交換資料分割設定，請參閱 Ubuntu wiki 上的[AzureSwapPartitions 檔](https://wiki.ubuntu.com/AzureSwapPartitions)。
 
-## <a name="create-swapfile-for-red-hat-and-centos-based-images"></a>建立 Red Hat 和 CentOS 型映像的分頁檔
+## <a name="create-swap-partition-for-red-hat-and-centos-based-images"></a>為 Red Hat 和以 CentOS 為基礎的映射建立交換磁碟分割
 
-在您目前的殼層中，建立名為 cloud_init_swapfile.txt的檔案，並貼上下列設定。 針對此案例，在 Cloud Shell 中 (而不是本機電腦上) 建立該檔案。 您可以使用任何您想要的編輯器。 輸入 `sensible-editor cloud_init_swapfile.txt` 可建立檔案，並查看可用的編輯器清單。 建議首先選擇使用 **nano** 編輯器。 請確定已正確複製整個 cloud-init 檔案，特別是第一行。  
+在您目前的 shell 中建立名為*cloud_init_swappart.txt*的檔案，並貼上下列設定。 針對此案例，在 Cloud Shell 中 (而不是本機電腦上) 建立該檔案。 您可以使用任何您想要的編輯器。 輸入 `sensible-editor cloud_init_swappart.txt` 可建立檔案，並查看可用的編輯器清單。 建議首先選擇使用 **nano** 編輯器。 請確定已正確複製整個 cloud-init 檔案，特別是第一行。  
 
 ```yaml
 #cloud-config
@@ -48,31 +40,31 @@ mounts:
   - ["ephemeral0.2", "none", "swap", "sw", "0", "0"]
 ```
 
-部署此映像前，您必須使用 [az group create](/cli/azure/group) 命令建立資源群組。 Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 下列範例會在 eastus 位置建立名為 myResourceGroup 的資源群組。
+部署此映像前，您必須使用 [az group create](/cli/azure/group) 命令建立資源群組。 Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 下列範例會在 eastus** 位置建立名為 myResourceGroup** 的資源群組。
 
 ```azurecli-interactive 
 az group create --name myResourceGroup --location eastus
 ```
 
-現在，請使用 [az vm create](/cli/azure/vm) 建立 VM 並以 `--custom-data cloud_init_swapfile.txt` 指定 cloud-init 檔案，如下所示：
+現在，請使用 [az vm create](/cli/azure/vm) 建立 VM 並以 `--custom-data cloud_init_swappart.txt` 指定 cloud-init 檔案，如下所示：
 
 ```azurecli-interactive 
 az vm create \
   --resource-group myResourceGroup \
   --name centos74 \
   --image OpenLogic:CentOS:7-CI:latest \
-  --custom-data cloud_init_swapfile.txt \
+  --custom-data cloud_init_swappart.txt \
   --generate-ssh-keys 
 ```
 
-## <a name="verify-swapfile-was-created"></a>確認已建立分頁檔
+## <a name="verify-swap-partition-was-created"></a>確認已建立交換資料分割
 以 SSH 連線到顯示於由上述命令所產生之輸出中的 VM 公用 IP 位址。 輸入您自己的 **publicIpAddress**，如下所示︰
 
 ```bash
 ssh <publicIpAddress>
 ```
 
-一旦您使用 SSH 連線至虛擬機器，就必須檢查是否已建立分頁檔
+一旦您 SSH'ed 到 vm 之後，請檢查是否已建立交換資料分割
 
 ```bash
 swapon -s
@@ -86,7 +78,7 @@ Filename                Type        Size    Used    Priority
 ```
 
 > [!NOTE] 
-> 如果您現有的 Azure 映像已設定分頁檔，但您想要變更新映像的分頁檔設定，那麼您應該要移除現有的分頁檔。 如需詳細資訊，請參閱＜透過 cloud-init 自訂映像來進行佈建＞的文件。
+> 如果您現有的 Azure 映射已設定交換磁碟分割，而您想要變更新映射的交換分區設定，您應該移除現有的交換磁碟分割。 如需詳細資訊，請參閱＜透過 cloud-init 自訂映像來進行佈建＞的文件。
 
 ## <a name="next-steps"></a>後續步驟
 如需其他設定變更的 cloud-init 範例，請參閱下列文件：

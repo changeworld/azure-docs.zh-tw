@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: quickstart
-ms.date: 03/18/2019
+ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 32511b638d4674198ce919b8b3a90e67b1c3cfc7
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 934422b128fe591d16b9a1dbf73af2bc5264123e
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58793249"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582808"
 ---
 # <a name="restore-a-deleted-office-365-group-in-azure-active-directory"></a>在 Azure Active Directory 中還原已刪除的 Office 365 群組
 
@@ -31,28 +31,28 @@ ms.locfileid: "58793249"
 
 角色 | 權限
 --------- | ---------
-全域管理員、合作夥伴第 2 層支援，以及 Intune 管理員 | 可以還原任何已刪除的 Office 365 群組
+全域管理員、群組管理員、合作夥伴第 2 層支援，以及 Intune 管理員 | 可以還原任何已刪除的 Office 365 群組
 使用者管理員和合作夥伴第 1 層支援 | 可以還原任何已刪除的 Office 365 群組，但指派給公司系統管理員角色的群組除外
-使用者 | 可以還原他們擁有的任何已刪除的 Office 365 群組
+User | 可以還原他們擁有的任何已刪除的 Office 365 群組
 
 ## <a name="view-and-manage-the-deleted-office-365-groups-that-are-available-to-restore"></a>檢視及管理可供還原的已刪除 Office 365 群組
 
 1. 使用使用者管理員帳戶登入 [Azure AD 系統管理中心](https://aad.portal.azure.com)。
 
-2. 選取 [群組]，然後選取 [已刪除的群組] 以檢視可供還原的已刪除群組。
+2. 選取 [群組]  ，然後選取 [已刪除的群組]  以檢視可供還原的已刪除群組。
 
     ![檢視可供還原的群組](media/groups-lifecycle/deleted-groups3.png)
 
-3. 在 [已刪除的群組] 刀鋒視窗上，您可以：
+3. 在 [已刪除的群組]  刀鋒視窗上，您可以：
 
-   - 選取 [還原群組]，以還原已刪除的群組及其內容。
-   - 選取 [永久刪除] 可永久移除已刪除的群組。 若要永久移除群組，您必須是系統管理員。
+   - 選取 [還原群組]  ，以還原已刪除的群組及其內容。
+   - 選取 [永久刪除]  可永久移除已刪除的群組。 若要永久移除群組，您必須是系統管理員。
 
 ## <a name="view-the-deleted-office-365-groups-that-are-available-to-restore-using-powershell"></a>使用 Powershell 檢視可供還原的已刪除 Office 365 群組
 
 您可以使用下列 Cmdlet 來檢視已刪除的群組，以確認您感興趣的一或多個群組尚未被永久清除。 這些 Cmdlet 屬於 [Azure AD PowerShell 模組](https://www.powershellgallery.com/packages/AzureAD/)。 如需此模組的詳細資訊，請參閱 [Azure Active Directory PowerShell 第 2 版](/powershell/azure/install-adv2?view=azureadps-2.0)一文。
 
-1.  執行下列 Cmdlet，以顯示租用戶中所有已刪除但仍可供還原的 Office 365 群組。
+1.  執行下列 Cmdlet，以顯示 Azure AD 組織中所有已刪除但仍可供還原的 Office 365 群組。
    
 
     ```powershell

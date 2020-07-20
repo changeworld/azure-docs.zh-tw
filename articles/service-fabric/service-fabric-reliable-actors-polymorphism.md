@@ -1,35 +1,25 @@
 ---
-title: Reliable Actors 架構中的多型 | Microsoft Docs
+title: Reliable Actors 架構中的多型
 description: 在 Reliable Actors 架構中建置 .NET 介面和類型的階層，以重複使用功能和 API 定義。
-services: service-fabric
-documentationcenter: .net
 author: vturecek
-manager: chackdan
-editor: vturecek
-ms.assetid: ef0eeff6-32b7-410d-ac69-87cba8b8fd46
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: c14b3006184f7bd6dcd1eb67be11bd0214957d72
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 4e485463f41cdfbadeb166ecbb3a86d4a32c1589
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60725480"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75348931"
 ---
 # <a name="polymorphism-in-the-reliable-actors-framework"></a>Reliable Actors 架構中的多型
 Reliable Actors 架構可讓您使用許多您會在物件導向設計中使用的相同技巧來建置動作項目。 這些技巧的其中之一就是多型，此技巧允許從更一般化的父系繼承類型和介面。 Reliable Actors 架構中的繼承通常會遵循 .NET 模型，但有幾個額外的條件約束。 針對 Java/Linux，它會遵循 Java 模型。
 
-## <a name="interfaces"></a>接口
-Reliable Actors 架構會要求您至少定義一個要由動作項目類型實作的介面。 此介面會用來產生可供用戶端用來與您的動作項目進行通訊的 Proxy 類別。 只要動作項目類型及其所有父系所實作的每個介面最終都是衍生自 IActor(C#) 或 Actor(Java)，這些介面便可以從其他介面繼承。 IActor(C#) 和 Actor(Java) 分別是針對 .NET 和 Java 架構中動作項目的平台定義基底介面。 因此，使用形状的经典多态性示例可能如下所示：
+## <a name="interfaces"></a>介面
+Reliable Actors 架構會要求您至少定義一個要由動作項目類型實作的介面。 此介面會用來產生可供用戶端用來與您的動作項目進行通訊的 Proxy 類別。 只要動作項目類型及其所有父系所實作的每個介面最終都是衍生自 IActor(C#) 或 Actor(Java)，這些介面便可以從其他介面繼承。 IActor(C#) 和 Actor(Java) 分別是針對 .NET 和 Java 架構中動作項目的平台定義基底介面。 因此，使用圖形的傳統多型範例可能會看起來像這樣：
 
 ![圖形動作項目的介面階層][shapes-interface-hierarchy]
 
-## <a name="types"></a>类型
+## <a name="types"></a>類型
 您也可以建立衍生自平台所提供之基底「動作項目」類別的動作項目類型階層。 如果是圖形，您可能會有一個基底 `Shape`(C#) 或 `ShapeImpl`(Java) 類型：
 
 ```csharp

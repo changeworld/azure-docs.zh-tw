@@ -1,19 +1,13 @@
 ---
-title: 在 Azure Batch 集區中設定節點端點 | Microsoft Docs
+title: 在 Azure Batch 集區中設定節點端點
 description: 如何設定或停用 Azure Batch 集區內之計算節點上的 SSH 或 RDP 連接埠存取權。
-services: batch
-author: laurenhughes
-manager: jeconnoc
-ms.service: batch
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/13/2018
-ms.author: lahugh
-ms.openlocfilehash: a6c2c343b13b77048c772cb1e5c2ba06cf8add50
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 1713637a9aba937525e64e1c4146589fca443461
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60616852"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780299"
 ---
 # <a name="configure-or-disable-remote-access-to-compute-nodes-in-an-azure-batch-pool"></a>設定或停用 Azure Batch 集區內計算節點的遠端存取權
 
@@ -27,7 +21,7 @@ ms.locfileid: "60616852"
 每個 NAT 集區設定都包含一或多個[網路安全性群組 (NSG) 規則](/rest/api/batchservice/pool/add#networksecuritygrouprule)。 每個 NSG 規則皆會允許或拒絕通往端點的特定網路流量。 您可選擇要允許或拒絕所有流量、以[服務標籤](../virtual-network/security-overview.md#service-tags) (例如「網際網路」) 識別的網路流量，或來自特定 IP 位址或子網路的流量。
 
 ### <a name="considerations"></a>考量
-* 集區端點設定是屬於集區[網路設定](/rest/api/batchservice/pool/add#NetworkConfiguration)的一部分。 網路設定可選擇性地包含將集區加入 [Azure 虛擬網路](batch-virtual-network.md)的設定。 如果您在虛擬網路中設定集區，您可以建立使用虛擬網路中位址設定的 NSG 規則。
+* 集區端點設定是屬於集區[網路設定](/rest/api/batchservice/pool/add#networkconfiguration)的一部分。 網路設定可選擇性地包含將集區加入 [Azure 虛擬網路](batch-virtual-network.md)的設定。 如果您在虛擬網路中設定集區，您可以建立使用虛擬網路中位址設定的 NSG 規則。
 * 當您設定 NAT 集區時，可以設定多個 NSG 規則。 系統會依照規則優先順序檢查規則。 一旦套用規則，就不會再測試規則是否符合。
 
 
@@ -53,7 +47,7 @@ pool.NetworkConfiguration = new NetworkConfiguration
 下列 Python 程式碼片段示範如何設定 Linux 集區中計算節點上的 SSH 端點，以拒絕所有網際網路流量。 此端點使用範圍 *4000 - 4100* 的連接埠前端集區。 
 
 ```python
-pool.network_configuration=batchmodels.NetworkConfiguration(
+pool.network_configuration = batchmodels.NetworkConfiguration(
     endpoint_configuration=batchmodels.PoolEndpointConfiguration(
         inbound_nat_pools=[batchmodels.InboundNATPool(
             name='SSH',
@@ -63,14 +57,14 @@ pool.network_configuration=batchmodels.NetworkConfiguration(
             frontend_port_range_end=4100,
             network_security_group_rules=[
                 batchmodels.NetworkSecurityGroupRule(
-                priority=170,
-                access=batchmodels.NetworkSecurityGroupRuleAccess.deny,
-                source_address_prefix='Internet'
+                    priority=170,
+                    access=batchmodels.NetworkSecurityGroupRuleAccess.deny,
+                    source_address_prefix='Internet'
                 )
             ]
         )
         ]
-    ) 
+    )
 )
 ```
 
@@ -97,7 +91,7 @@ pool.NetworkConfiguration = new NetworkConfiguration
 下列 Python 程式碼片段示範如何設定 Linux 集區中計算節點上的 SSH 端點，以只允許來自子網路 *192.168.1.0/24* 的存取。 第二個 NSG 規則會拒絕不相符之子網路的流量。
 
 ```python
-pool.network_configuration=batchmodels.NetworkConfiguration(
+pool.network_configuration = batchmodels.NetworkConfiguration(
     endpoint_configuration=batchmodels.PoolEndpointConfiguration(
         inbound_nat_pools=[batchmodels.InboundNATPool(
             name='SSH',
@@ -107,14 +101,14 @@ pool.network_configuration=batchmodels.NetworkConfiguration(
             frontend_port_range_end=4100,
             network_security_group_rules=[
                 batchmodels.NetworkSecurityGroupRule(
-                priority=170,
-                access='allow',
-                source_address_prefix='192.168.1.0/24'
+                    priority=170,
+                    access='allow',
+                    source_address_prefix='192.168.1.0/24'
                 ),
                 batchmodels.NetworkSecurityGroupRule(
-                priority=175,
-                access='deny',
-                source_address_prefix='*'
+                    priority=175,
+                    access='deny',
+                    source_address_prefix='*'
                 )
             ]
         )
@@ -125,7 +119,5 @@ pool.network_configuration=batchmodels.NetworkConfiguration(
 
 ## <a name="next-steps"></a>後續步驟
 
+- 了解 [Batch 服務工作流程和主要資源](batch-service-workflow-features.md)，例如集區、節點、作業和工作。
 - 如需 Azure 中 NSG 規則的相關詳細資訊，請參閱[使用網路安全性群組來篩選網路流量](../virtual-network/security-overview.md)。
-
-- 如需 Batch 的深入概觀，請參閱[使用 Batch 開發大規模的平行計算解決方案](batch-api-basics.md)。
-

@@ -1,27 +1,17 @@
 ---
-title: 在 Azure 中的 Service Fabric 上容錯移轉及調整容器應用程式 | Microsoft Docs
+title: 容器應用程式的容錯移轉和調整
 description: 在本教學課程中，您會了解如何在 Azure Service Fabric 容器應用程式中處理容錯移轉。  亦了解如何調整在叢集中執行的容器與服務。
-services: service-fabric
-documentationcenter: ''
 author: suhuruli
-manager: chackdan
-editor: suhuruli
-tags: servicefabric
-keywords: Docker、容器、微服務、Service Fabric、Azure
-ms.assetid: ''
-ms.service: service-fabric
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 09/12/2017
+ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 0a3edac7638d8b63086482cdecf8d74bde426c35
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: bef1c42712c881296c5ab7b8096deb50fe94ee55
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58665620"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "75614089"
 ---
 # <a name="tutorial-demonstrate-fail-over-and-scaling-of-container-services-with-service-fabric"></a>教學課程：示範透過 Service Fabric 容錯移轉與調整容器服務
 
@@ -31,7 +21,7 @@ ms.locfileid: "58665620"
 > * 了解 Service Fabric 叢集中的容器容錯移轉
 > * 在應用程式中調整 Web 前端容器
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 [第 2 部分](service-fabric-tutorial-package-containers.md)的應用程式正在使用中的 Service Fabric 叢集中執行。
 
@@ -43,8 +33,8 @@ Service Fabric 可確保如果發生失敗，容器執行個體會自動移至�
 
 1. 在您的叢集中開啟 Service Fabric Explorer，例如 `http://lin4hjim3l4.westus.cloudapp.azure.com:19080`。
 2. 按一下樹狀檢視中的 **fabric:/TestContainer/azurevotefront** 節點，並展開分割區節點 (以 GUID 表示)。 請注意樹狀檢視中的節點名稱，會顯示哪些節點上的容器目前正在執行 - 例如 `_nodetype_1`
-3. 展開樹狀檢視中的 [節點] 節點。 按一下正在執行容器之節點旁的省略符號 (三個點)。
-4. 選擇 [重新啟動] 以重新啟動節點並確認重新啟動動作。 重新啟動會造成容器容錯移轉至叢集中的其他節點。
+3. 展開樹狀檢視中的 [節點]  節點。 按一下正在執行容器之節點旁的省略符號 (三個點)。
+4. 選擇 [重新啟動]  以重新啟動節點並確認重新啟動動作。 重新啟動會造成容器容錯移轉至叢集中的其他節點。
 
 ![noderestart][noderestart]
 
@@ -57,13 +47,13 @@ Service Fabric 容器可調整擴充到整個叢集，以容納服務上的負�
 若要調整 Web 前端，請執行下列步驟：
 
 1. 在您的叢集中開啟 Service Fabric Explorer，例如 `http://lin4hjim3l4.westus.cloudapp.azure.com:19080`。
-2. 按一下樹狀檢視中 **fabric:/TestContainer/azurevotefront** 節點旁的省略符號 (三個點)，然後選擇 [調整服務]。
+2. 按一下樹狀檢視中 **fabric:/TestContainer/azurevotefront** 節點旁的省略符號 (三個點)，然後選擇 [調整服務]  。
 
 ![sfxscale][sfxscale]
 
 您現在可以選擇調整 Web 前端的執行個體數目。
 
-1. 將數字變更為 **2**，然後按一下 [調整服務]。
+1. 將數字變更為 **2**，然後按一下 [調整服務]  。
 1. 按一下樹狀檢視中的 **fabric:/TestContainer/azurevotefront** 節點，並展開分割區節點 (以 GUID 表示)。
 
 ![sfxscaledone][sfxscaledone]

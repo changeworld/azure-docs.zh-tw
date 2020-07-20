@@ -1,6 +1,6 @@
 ---
-title: 教學課程 - 使用 RBAC 與 Azure PowerShell 為使用者授與 Azure 資源的存取權 |Microsoft Docs
-description: 了解如何使用角色型存取控制 (RBAC) 和 Azure PowerShell 為使用者授與 Azure 資源的存取權。
+title: 教學課程：使用 Azure PowerShell 為使用者授與 Azure 資源的存取權 - Azure RBAC
+description: 在本教學課程中，您將了解如何使用 Azure PowerShell 和 Azure 角色型存取控制 (Azure RBAC) 為使用者授與 Azure 資源的存取權。
 services: active-directory
 documentationCenter: ''
 author: rolyon
@@ -13,43 +13,43 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/02/2019
 ms.author: rolyon
-ms.openlocfilehash: b9aefc8eae733d9f43d1f5399c1464b40367f09e
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 9c35c08889892e877ecfac20910607ddf85b2282
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343471"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735482"
 ---
-# <a name="tutorial-grant-a-user-access-to-azure-resources-using-rbac-and-azure-powershell"></a>教學課程：使用 RBAC 與 Azure PowerShell 為使用者授與 Azure 資源的存取權
+# <a name="tutorial-grant-a-user-access-to-azure-resources-using-azure-powershell"></a>教學課程：使用 Azure PowerShell 為使用者授與 Azure 資源的存取權
 
-[角色型存取控制 (RBAC)](overview.md) 是您對 Azure 資源存取進行管理的機制。 在本教學課程中，您會使用 Azure PowerShell 為使用者授與在訂用帳戶中檢視任何項目以及管理資源群組中所有項目的存取權。
+[Azure 角色型存取控制 (Azure RBAC)](overview.md) 是您管理對 Azure 資源存取的機制。 在本教學課程中，您會使用 Azure PowerShell 為使用者授與在訂用帳戶中檢視任何項目以及管理資源群組中所有項目的存取權。
 
-在本教學課程中，您了解如何：
+在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
 > * 在不同範圍授與使用者存取權
 > * 列出存取權
 > * 移除存取
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立 [免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-若要完成本教學課程，您需要：
+若要完成本教學課程，您將會需要：
 
 - 在 Azure Active Directory 中建立使用者的權限 (或使用現有的使用者)
 - [Azure Cloud Shell](/azure/cloud-shell/quickstart-powershell)
 
 ## <a name="role-assignments"></a>角色指派
 
-在 RBAC 中，若要授與存取權，您可以建立角色指派。 角色指派由三項元素所組成：安全性主體、角色定義和範圍。 以下是您將在本教學課程中執行的兩個角色指派：
+在 Azure RBAC 中，若要授與存取權，您可以建立角色指派。 角色指派由三項元素所組成：安全性主體、角色定義和範圍。 以下是您將在本教學課程中執行的兩個角色指派：
 
 | 安全性主體 | 角色定義 | 影響範圍 |
 | --- | --- | --- |
-| 使用者<br>(RBAC 教學課程使用者) | [讀取者](built-in-roles.md#reader) | 訂用帳戶 |
-| 使用者<br>(RBAC 教學課程使用者)| [參與者](built-in-roles.md#contributor) | 資源群組<br>(rbac-tutorial-resource-group) |
+| User<br>(RBAC 教學課程使用者) | [讀取者](built-in-roles.md#reader) | 訂用帳戶 |
+| User<br>(RBAC 教學課程使用者)| [參與者](built-in-roles.md#contributor) | 資源群組<br>(rbac-tutorial-resource-group) |
 
    ![使用者的角色指派](./media/tutorial-role-assignments-user-powershell/rbac-role-assignments-user.png)
 
@@ -224,11 +224,11 @@ ms.locfileid: "56343471"
 
 ## <a name="optional-list-access-using-the-azure-portal"></a>(選擇性) 使用 Azure 入口網站列出存取權
 
-1. 若要查看角色指派在 Azure 入口網站中的顯示情形，請檢視訂用帳戶的 [存取控制 (IAM)] 刀鋒視窗。
+1. 若要查看角色指派在 Azure 入口網站中的顯示情形，請檢視訂用帳戶的 [存取控制 (IAM)]  刀鋒視窗。
 
     ![訂用帳戶範圍的使用者角色指派](./media/tutorial-role-assignments-user-powershell/role-assignments-subscription-user.png)
 
-1. 檢視資源群組的 [存取控制 (IAM)] 刀鋒視窗。
+1. 檢視資源群組的 [存取控制 (IAM)]  刀鋒視窗。
 
     ![資源群組範圍的使用者角色指派](./media/tutorial-role-assignments-user-powershell/role-assignments-resource-group-user.png)
 
@@ -279,4 +279,4 @@ ms.locfileid: "56343471"
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [使用 RBAC 與 Azure PowerShell 管理 Azure 資源的存取權](role-assignments-powershell.md)
+> [使用 Azure PowerShell 新增或移除 Azure 角色指派](role-assignments-powershell.md)

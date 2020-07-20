@@ -1,29 +1,19 @@
 ---
-title: 在 Azure 中建立及上傳 Linux VHD
+title: 建立和上傳 Linux VHD
 description: 了解如何建立及上傳包含 Linux 作業系統的 Azure 虛擬硬碟 (VHD)。
-services: virtual-machines-linux
-documentationcenter: ''
-author: szarkos
-manager: jeconnoc
-editor: tysonn
-tags: azure-resource-manager,azure-service-management
-ms.assetid: d351396c-95a0-4092-b7bf-c6aae0bbd112
+author: gbowerman
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2018
-ms.author: szark
-ms.openlocfilehash: e032f9a9772232d3a57a9672dc6c601354ecad43
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: guybo
+ms.openlocfilehash: f700dec6486bad9e7024d7c908a70dd0ff2b342c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60327961"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80066768"
 ---
 # <a name="information-for-non-endorsed-distributions"></a>非背書的發行版本相關資訊
-[!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 只有使用其中一個[背書散發套件](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)時，Azure 平台 SLA 才適用於執行 Linux OS 的虛擬機器。 對於這些背書的發行版本，預先設定的 Linux 映像均可在 Azure Marketplace 中取得。
 
@@ -44,8 +34,8 @@ ms.locfileid: "60327961"
 本文將著重於在 Azure 上執行 Linux 發行版本時的一般指導。
 
 ## <a name="general-linux-installation-notes"></a>一般 Linux 安裝注意事項
-* Azure 中不支援 Hyper-V 虛擬硬碟 (VHDX) 格式，只支援「固定 VHD」。  您可以使用 Hyper-V 管理員或 [Convert-VHD](https://docs.microsoft.com/powershell/module/hyper-v/convert-vhd) \(英文\) Cmdlet，將磁碟轉換為 VHD 格式。 如果您使用的是 VirtualBox，即會在建立磁碟時選取 [固定大小] 而不是預設值 (動態配置的)。
-* Azure 僅支援第 1 代虛擬機器。 您可以將第 1 代虛擬機器從 VHDX 轉換為 VHD 檔案格式，並從動態擴充轉換為固定大小的磁碟。 您無法變更虛擬機器的世代。 如需詳細資訊，請參閱[應該在 Hyper-V 中建立第 1 代還是第 2 代的虛擬機器？](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)
+* Azure 中不支援 Hyper-V 虛擬硬碟 (VHDX) 格式，只支援「固定 VHD」**。  您可以使用 Hyper-v 管理員或[轉換-vhd](https://docs.microsoft.com/powershell/module/hyper-v/convert-vhd) Cmdlet，將磁片轉換成 VHD 格式。 如果您使用的是 VirtualBox，即會在建立磁碟時選取 [固定大小]**** 而不是預設值 (動態配置的)。
+* Azure 支援 Gen1 （BIOS 開機） & Gen2 （UEFI 開機）虛擬機器。
 * 允許的 VHD 大小上限為 1023 GB。
 * 安裝 Linux 系統時，建議您使用標準磁碟分割而不是邏輯磁碟區管理員 (LVM)，此為許多安裝的預設值。 使用標準磁碟分割將可避免 LVM 名稱與複製的 VM 發生衝突，特別是為了疑難排解而一律要將 OS 磁碟連接至另一個相同的 VM 時。 如果願意，您可以在資料磁碟上使用 [LVM](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 或 [RAID](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 * 需要裝載 UDF 檔案系統的核心支援。 在 Azure 上第一次開機時，會使用連接客體的 UDF 格式媒體，將佈建設定傳遞至 Linux VM。 Azure Linux 代理程式必須裝載 UDF 檔案系統，才能讀取其設定並佈建 VM。
@@ -54,7 +44,7 @@ ms.locfileid: "60327961"
 * Azure 上的所有 VHD 必須具有與 1 MB 對應的虛擬大小。 從原始磁碟轉換為 VHD 時，您必須在轉換前先確定原始磁碟大小是 1 MB 的倍數，如下列步驟中所述。
 
 ### <a name="installing-kernel-modules-without-hyper-v"></a>安裝不含 Hyper-V 的核心模組
-Azure 會在 Hyper-V Hypervisor 上執行，因此 Linux 要求在 Azure 中執行某些核心模組。 如果您的 VM 是在 Hyper-V 外部建立的，除非 VM 偵測到其執行環境為 Hyper-V 環境，否則 Linux 安裝程式在初始的 ramdisk (initrd 或 initramfs) 中可能不會包含 Hyper-V 的驅動程式。 使用不同的虛擬化系統 (例如 Virtualbox、KVM 等等) 來準備您的 Linux 映像時，可能需要重新建置 initrd，因此，在初始的 ramdisk 上至少有 hv_vmbus 和 hv_storvsc 核心模組可供使用。  這個已知問題適用於以上游 Red Hat 發行版本為基礎的系統，而且可能還有其他系統。
+Azure 會在 Hyper-V Hypervisor 上執行，因此 Linux 要求在 Azure 中執行某些核心模組。 如果您的 VM 是在 Hyper-V 外部建立的，除非 VM 偵測到其執行環境為 Hyper-V 環境，否則 Linux 安裝程式在初始的 ramdisk (initrd 或 initramfs) 中可能不會包含 Hyper-V 的驅動程式。 使用不同的虛擬化系統（例如 VirtualBox、KVM 等等）來準備您的 Linux 映射時，您可能需要重建 initrd，讓初始 ramdisk 上至少有 hv_vmbus 和 hv_storvsc 核心模組可供使用。  這個已知問題適用於以上游 Red Hat 發行版本為基礎的系統，而且可能還有其他系統。
 
 重新建置 initrd 或 initramfs 映像的機制會根據散發套件而有所不同。 請參閱散發套件的文件或洽支援人員，以了解適當程序。  以下是使用 `mkinitrd` 公用程式重新建置 initrd 的範例之一：
 
@@ -74,7 +64,7 @@ Azure 會在 Hyper-V Hypervisor 上執行，因此 Linux 要求在 Azure 中執�
 ### <a name="resizing-vhds"></a>調整 VHD 的大小
 Azure 上的 VHD 映像必須具有與 1 MB 對齊的虛擬大小。  一般而言，使用 Hyper-V 建立的 VHD 均會正確地對應儲存。  如果 VHD 並未正確地對應儲存，則當您嘗試從 VHD 建立映像時，可能會收到類似下面的錯誤訊息。
 
-* VHD http://<mystorageaccount>.blob.core.windows.net/vhds/MyLinuxVM.vhd 具有不支援的虛擬大小 21475270656 個位元組。 大小必須是整數 (以 MB 為單位)。
+* VHD HTTP： \/ / \<mystorageaccount> . blob.core.windows.net/vhds/MyLinuxVM.vhd 具有不支援的虛擬大小21475270656個位元組。 大小必須是整數 (以 MB 為單位)。
 
 在此案例中，您可以使用 Hyper-V 管理員主控台或 [Resize-VHD](https://technet.microsoft.com/library/hh848535.aspx) \(英文\) PowerShell Cmdlet 來調整 VM 的大小。  如果您不是在 Windows 環境中執行，建議使用 `qemu-img` 來轉換 VHD (如果需要) 並調整其大小。
 
@@ -98,7 +88,7 @@ Azure 上的 VHD 映像必須具有與 1 MB 對齊的虛擬大小。  一般而�
     size=$(qemu-img info -f raw --output json "$rawdisk" | \
     gawk 'match($0, /"virtual-size": ([0-9]+),/, val) {print val[1]}')
 
-    rounded_size=$((($size/$MB + 1)*$MB))
+    rounded_size=$(((($size+$MB-1)/$MB)*$MB))
     
     echo "Rounded Size = $rounded_size"
     ```
@@ -144,20 +134,20 @@ Azure 上的 VHD 映像必須具有與 1 MB 對齊的虛擬大小。  一般而�
 下列修補程式必須隨附於核心中。 對於所有發行版本而言，此清單並不完整。
 
 * [ata_piix：依預設將磁碟委託給 Hyper-V 驅動程式](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/drivers/ata/ata_piix.c?id=cd006086fa5d91414d8ff9ff2b78fbb593878e3c)
-* [storvsc：考虑 RESET 路径中正在传输的数据包](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/drivers/scsi/storvsc_drv.c?id=5c1b10ab7f93d24f29b5630286e323d1c5802d5c)
+* [storvsc：負責 RESET 路徑中的在途封包](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/drivers/scsi/storvsc_drv.c?id=5c1b10ab7f93d24f29b5630286e323d1c5802d5c)
 * [storvsc：避免使用 WRITE_SAME](https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/drivers/scsi/storvsc_drv.c?id=3e8f4f4065901c8dfc51407e1984495e1748c090)
-* [storvsc：对 RAID 和虚拟主机适配器驱动程序禁用 WRITE SAME](https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/drivers/scsi/storvsc_drv.c?id=54b2b50c20a61b51199bedb6e5d2f8ec2568fb43)
-* [storvsc：NULL 指针取消引用修补程序](https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/drivers/scsi/storvsc_drv.c?id=b12bb60d6c350b348a4e1460cd68f97ccae9822e)
+* [storvsc：針對 RAID 和虛擬主機介面卡驅動程式停用 WRITE SAME](https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/drivers/scsi/storvsc_drv.c?id=54b2b50c20a61b51199bedb6e5d2f8ec2568fb43)
+* [storvsc：NULL 指標取值修正](https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/drivers/scsi/storvsc_drv.c?id=b12bb60d6c350b348a4e1460cd68f97ccae9822e)
 * [storvsc：信號緩衝區失敗可能導致 I/O 凍結](https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/drivers/scsi/storvsc_drv.c?id=e86fb5e8ab95f10ec5f2e9430119d5d35020c951)
 * [scsi_sysfs︰防範 __scsi_remove_device 雙重執行](https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/drivers/scsi/scsi_sysfs.c?id=be821fd8e62765de43cc4f0e2db363d0e30a7e9b)
 
 ## <a name="the-azure-linux-agent"></a>Azure Linux 代理程式
 [Azure Linux 代理程式](../extensions/agent-linux.md) `waagent` 會在 Azure 中佈建 Linux 虛擬機器。 您可以在 [Linux 代理程式 GitHub 存放庫](https://github.com/Azure/WALinuxAgent) \(英文\) 中取得最新版本、檔案問題或提交提取要求。
 
-* Linux 代理程式已在 Apache 2.0 授權下發行。 許多發行版本都已經提供代理程式的 RPM 或 Deb 套件，而這些套件均可輕易地安裝及更新。
+* Linux 代理程式已在 Apache 2.0 授權下發行。 許多發行版本已提供代理程式的 RPM 或 deb 套件，而且可以輕鬆地安裝和更新這些套件。
 * Azure Linux 代理程式需要 Python v2.6+。
 * 代理程式還需要 python-pyasn1 模組。 大多數的發行版本都會以可個別安裝的套件形式提供此模組。
-* 在某些情況下，Azure Linux 代理程式可能與 NetworkManager 不相容。 發行版本所提供的許多 RPM/Deb 套件都會將 NetworkManager 設定為與 waagent 套件的衝突。 在這些情況下，當您安裝 Linux 代理程式套件時，將會解除安裝 NetworkManager。
+* 在某些情況下，Azure Linux 代理程式可能與 NetworkManager 不相容。 發佈所提供的許多 RPM/deb 套件會將 NetworkManager 設定為與 waagent 套件的衝突。 在這些情況下，當您安裝 Linux 代理程式套件時，將會解除安裝 NetworkManager。
 * Azure Linux 代理程式必須等於或高於[最小支援版本](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)。
 
 ## <a name="general-linux-system-requirements"></a>一般的 Linux 系統需求
@@ -166,7 +156,7 @@ Azure 上的 VHD 映像必須具有與 1 MB 對齊的虛擬大小。  一般而�
     ```  
     console=ttyS0,115200n8 earlyprintk=ttyS0,115200 rootdelay=300
     ```
-    我們也建議「移除」下列參數 (如果有的話)。
+    我們也建議「移除」** 下列參數 (如果有的話)。
     ```  
     rhgb quiet crashkernel=auto
     ```
@@ -174,13 +164,13 @@ Azure 上的 VHD 映像必須具有與 1 MB 對齊的虛擬大小。  一般而�
 
 1. 安裝 Azure Linux 代理程式。
   
-    如需在 Azure 上佈建 Linux 映像，您需要 Azure Linux 代理程式。  許多發行版本都會以 RPM 或 Deb 套件 (此套件通常稱為 WALinuxAgent 或 walinuxagent) 的形式提供代理程式。  您也可以遵循 [Linux 代理程式指南](../extensions/agent-linux.md)中的步驟來手動安裝代理程式。
+    如需在 Azure 上佈建 Linux 映像，您需要 Azure Linux 代理程式。  許多散發會提供代理程式做為 RPM 或 deb 套件（此套件通常稱為 WALinuxAgent 或 WALinuxAgent）。  您也可以遵循 [Linux 代理程式指南](../extensions/agent-linux.md)中的步驟來手動安裝代理程式。
 
 1. 確定 SSH 伺服器已安裝並設定為在開機時啟動。  此設定通常是預設值。
 
 1. 請不要在 OS 磁碟上建立交換空間。
   
-    Azure Linux 代理程式可在 VM 佈建於 Azure 後，使用附加至 VM 的本機資源磁碟自動設定交換空間。 本機資源磁碟是「暫存」磁碟，可能會在 VM 取消佈建時清空。 安裝 Azure Linux 代理程式 (上述步驟 2) 之後，視需要在 /etc/waagent.conf 中修改下列參數。
+    Azure Linux 代理程式可在 VM 佈建於 Azure 後，使用附加至 VM 的本機資源磁碟自動設定交換空間。 本機資源磁碟是「暫存」** 磁碟，可能會在 VM 取消佈建時清空。 安裝 Azure Linux 代理程式 (上述步驟 2) 之後，視需要在 /etc/waagent.conf 中修改下列參數。
     ```  
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4

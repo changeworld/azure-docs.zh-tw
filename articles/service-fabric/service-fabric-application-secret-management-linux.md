@@ -1,25 +1,15 @@
 ---
-title: 在 Azure Service Fabric Linux 叢集上設定加密憑證並將秘密加密 | Microsoft Docs
+title: 在 Linux 叢集上設定加密憑證
 description: 了解如何設定加密憑證，並在 Linux 叢集上將祕密加密。
-services: service-fabric
-documentationcenter: .net
 author: shsha
-manager: ''
-editor: ''
-ms.assetid: 94a67e45-7094-4fbd-9c88-51f4fc3c523a
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/04/2019
 ms.author: shsha
-ms.openlocfilehash: 9589d6ea69a2293d592a9e63f2b726f1a620bb9e
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+ms.openlocfilehash: b8e0a19e3f654fc561e7c7e26c6a2da463e24d5f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62126982"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "78969024"
 ---
 # <a name="set-up-an-encryption-certificate-and-encrypt-secrets-on-linux-clusters"></a>設定加密憑證，並在 Linux 叢集上將祕密加密
 本文書名如何設定加密憑證，並在 Linux 叢集上將祕密加密。 針對 Windows 叢集，請參閱[設定加密憑證，並在 Windows 叢集上將祕密加密][secret-management-windows-specific-link]。
@@ -45,7 +35,7 @@ ms.locfileid: "62126982"
 
 ```console
 user@linux:$ echo "Hello World!" > plaintext.txt
-user@linux:$ iconv -f ASCII -t UTF-16LE plaintext.txt -o plaintext_UTF-16.txt
+user@linux:$ iconv -f ASCII -t UTF-16LE plaintext.txt | tr -d '\n' > plaintext_UTF-16.txt
 user@linux:$ openssl smime -encrypt -in plaintext_UTF-16.txt -binary -outform der TestCert.pem | base64 > encrypted.txt
 ```
 產生的 Base-64 編碼字串輸入至 encrypted.txt 同時包含密碼的加密文字，以及用來對其加密的憑證相關資訊。 您可以使用 OpenSSL 解密來驗證其有效性。

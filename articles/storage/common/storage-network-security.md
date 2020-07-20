@@ -4,38 +4,42 @@ description: 為儲存體帳戶設定多層式的網路安全性。
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
-ms.date: 03/21/2019
+ms.topic: how-to
+ms.date: 07/01/2020
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 0fa252fa2cdab7bb3790153f2d118fea13739852
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: e8857da1410ca68a695a9d7995aeb375fb154cd2
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65153505"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86080018"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>設定 Azure 儲存體防火牆和虛擬網路
 
-Azure 儲存體提供分層的安全性模型。 此模型可讓您設定一組特定的支援網路來保護儲存體帳戶。 設定網路規則時，只有透過一組特定網路發出要求資料的應用程式可以存取儲存體帳戶。
+Azure 儲存體提供分層的安全性模型。 此模型可讓您根據所使用的網路類型和子集，保護及控制您應用程式和企業環境所需儲存體帳戶的存取層級。 設定網路規則時，只有透過一組指定網路要求資料的應用程式才能存取儲存體帳戶。 您可以限制只有源自所指定 IP 位址、IP 範圍或來自 Azure 虛擬網路 (VNet) 中子網路清單的要求，才能存取您的儲存體帳戶。
 
-應用程式若在網路規則生效時存取儲存體帳戶，則要求上必須有適當的授權。 支持通过 Azure Active Directory (Azure AD) 凭据（适用于 Blob 和队列）、有效的帐户访问密钥或 SAS 令牌进行授权。
+儲存體帳戶具有可透過網際網路存取的公用端點。 您也可以為儲存體帳戶建立 [私人端點](storage-private-endpoints.md)，這會將私人 IP 位址從您的 VNet 指派給儲存體帳戶，並透過私人連結保護 VNet 與儲存體帳戶之間的所有流量。 Azure 儲存體防火牆會為您儲存體帳戶的公用端點提供存取控制存取。 使用私人端點時，您也可以使用防火牆來封鎖所有透過公用端點的存取。 您的儲存體防火牆組態也可讓您選取信任的 Azure 平台服務，以安全地存取儲存體帳戶。
+
+應用程式若在網路規則生效時存取儲存體帳戶，則對於要求仍須有適當的授權。 支援使用 Azure Active Directory (Azure AD) 認證 (適用於 Blob 和佇列)、有效的帳戶存取金鑰或 SAS 權杖來進行授權。
 
 > [!IMPORTANT]
-> 開啟儲存體帳戶的防火牆規則會預設封鎖傳入的資料要求，除非要求來自 Azure 虛擬網路 (VNet) 內運作的服務。 封鎖的要求包括來自其他 Azure 服務、Azure 入口網站及記錄與計量服務等等的要求。
+> 開啟儲存體帳戶的防火牆規則會預設封鎖傳入的資料要求，除非要求源自 Azure 虛擬網路 (VNet) 內運作的服務或源自允許的公用 IP位址。 封鎖的要求包括來自其他 Azure 服務、Azure 入口網站及記錄與計量服務等等的要求。
 >
-> 您可以透過允許服務執行個體的子網路，將存取權授與從 VNet 內執行的 Azure 服務。 讓有限的案例可以透過下面章節所述的[例外](#exceptions)機制來啟用。 若要存取 Azure 入口網站，您所用的機器必須位於已設定的信任界限 (IP 或 VNet) 內。
+> 您可以透過允許流量來自裝載服務執行個體的子網路，將存取權授與從 VNet 內執行的 Azure 服務。 也可以透過下面所述的[例外狀況](#exceptions)機制來啟用數目有限的案例。 若要透過 Azure 入口網站從儲存體帳戶存取資料，您所用的機器必須位於已設定的信任界限 (IP 或 VNet) 內。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="scenarios"></a>案例
 
-根據預設，您可設定儲存體帳戶來拒絕存取所有網路流量 (包括網際網路流量)。 然後對來自特定 VNet 的流量授與存取權。 此設定可讓您為應用程式設定安全的網路界限。 您也可以授與存取公用網際網路 IP 位址範圍的權限，啟用來自特定網際網路或內部部署用戶端的連線。
+若要保護您的儲存體帳戶，您應該先設定規則，以根據預設，拒絕存取公用端點上來自所有網路的流量 (包括網際網路流量)。 然後，您應該設定規則，以授與特定 Vnet 中流量的存取權。 您也可以設定規則，授與存取所選取公用網際網路 IP 位址範圍中流量的權限，這會啟用來自特定網際網路或內部部署用戶端的連線。 此設定可讓您為應用程式設定安全的網路界限。
 
-所有的 Azure 儲存體網路通訊協定都會執行網路規則，包括 REST 和 SMB。 若要使用 Azure 入口網站、儲存體總管和 AZCopy 等工具來存取資料，則需要明確的網路規則。
+您可以合併防火牆規則，允許從特定的虛擬網路進行存取，以及從相同儲存體帳戶上的公用 IP 位址範圍進行存取。 儲存體防火牆規則可以套用到現有的儲存體帳戶，或者可以在建立新的儲存體帳戶時套用。
 
-您可以將網路規則套用到現有的儲存體帳戶，或在您建立新的儲存體帳戶時套用。
+儲存體防火牆規則適用於儲存體帳戶的公用端點。 您不需要任何防火牆存取規則來允許儲存體帳戶的私人端點流量。 核准建立私用端點的程序會授與隱含的權限，存取來自子網路 (私人端點裝載所在) 的流量。
+
+所有的 Azure 儲存體網路通訊協定都會執行網路規則，包括 REST 和 SMB。 若要使用 Azure 入口網站、儲存體總管和 AZCopy 這類工具來存取資料，必須設定明確的網路規則。
 
 一旦套用網路規則，就會對所有要求執行。 授與特定 IP 位址存取權的 SAS 權杖，是用來限制權杖持有者的存取權，但不會授與所設定網路規則以外的新存取權。
 
@@ -50,7 +54,7 @@ Azure 儲存體提供分層的安全性模型。 此模型可讓您設定一組�
 儲存體帳戶預設接受來自任何網路用戶端的連線。 若要限制對所選網路的存取，您必須先變更預設動作。
 
 > [!WARNING]
-> 變更網路規則會影響應用程式連接到 Azure 儲存體的能力。 將預設的網路規則設定為**拒絕**以封鎖所有的資料存取，除非也套用了特定網路規則來**授與**存取權。 請務必先將存取權授與任何使用網路規則的允許網路，再變更預設規則以拒絕存取。
+> 變更網路規則會影響應用程式連接到 Azure 儲存體的能力。 將預設的網路規則設定為**拒絕**以封鎖所有的資料存取，除非也套用了**授與**存取權的特定網路規則。 請務必先將存取權授與任何使用網路規則的允許網路，再變更預設規則以拒絕存取。
 
 ### <a name="managing-default-network-access-rules"></a>管理預設的網路存取規則
 
@@ -112,9 +116,9 @@ Azure 儲存體提供分層的安全性模型。 此模型可讓您設定一組�
 
 ## <a name="grant-access-from-a-virtual-network"></a>授與虛擬網路存取權
 
-您可以將儲存體帳戶設定為只允許從特定 Vnet 進行存取。
+您可以將儲存體帳戶設定為只允許從特定子網路進行存取。 允許的子網路可能屬於相同訂用帳戶中的 VNet，或位於不同訂用帳戶中的 VNet，包括屬於不同 Azure Active Directory 租用戶的訂用帳戶。
 
-為 VNet 內的 Azure 儲存體啟用[服務端點](/azure/virtual-network/virtual-network-service-endpoints-overview)。 此端點為流量提供一個到 Azure 儲存體服務的最佳路由。 虛擬網路和子網路的身分識別也會隨著每項要求傳輸。 系統管理員接著可以設定儲存體帳戶的網路規則，允許接收來自 VNet 中特定子網路的要求。 透過這些網路規則授與存取的用戶端，必須仍要繼續符合儲存體帳戶的授權需求，才能存取資料。
+為 VNet 內的 Azure 儲存體啟用[服務端點](/azure/virtual-network/virtual-network-service-endpoints-overview)。 服務端點會透過最佳路徑，將來自 VNet 的流量路由至 Azure 儲存體服務。 子網路和虛擬網路的身分識別也會隨著每個要求傳輸。 管理員接著可以設定儲存體帳戶的網路規則，允許接收來自 VNet 中特定子網路的要求。 透過這些網路規則授與存取的用戶端，必須仍要繼續符合儲存體帳戶的授權需求，才能存取資料。
 
 每個儲存體帳戶最多可支援 100 個虛擬網路規則，它們也可以結合 [IP 網路規則](#grant-access-from-an-internet-ip-range)。
 
@@ -131,7 +135,10 @@ Azure 儲存體提供分層的安全性模型。 此模型可讓您設定一組�
 
 為將虛擬網路規則套用至儲存體帳戶，使用者必須在要新增的子網路上具有適當權限。 所需的權限為「將服務加入子網路」，以及加入「儲存體帳戶參與者」內建角色。 這也可以新增至自訂角色定義。
 
-儲存體帳戶和虛擬網路授與的存取權可能在不同的訂用帳戶，但這些訂用帳戶必須屬於相同的 Azure AD 租用戶。
+儲存體帳戶和虛擬網路授與的存取權可能在不同的訂用帳戶中，包括屬於不同 Azure AD 租用戶的訂用帳戶。
+
+> [!NOTE]
+> 目前只透過 Powershell、CLI 和 REST API 支援設定規則，以授與權限存取虛擬網路中的子網路，而這些虛擬網路屬於不同的 Azure Active Directory 租用戶。 這類規則無法透過 Azure 入口網站進行設定，但可以在入口網站中看到。
 
 ### <a name="managing-virtual-network-rules"></a>管理虛擬網路規則
 
@@ -149,6 +156,8 @@ Azure 儲存體提供分層的安全性模型。 此模型可讓您設定一組�
 
     > [!NOTE]
     > 如果 Azure 儲存體的服務端點未針對所選虛擬網路和子網路事先設定，可以將其設定為這項作業的一部分。
+    >
+    > 目前，只有屬於相同 Azure Active Directory 租用戶的虛擬網路，才會在建立規則時顯示以供選取。 當虛擬網路屬於另一個租用戶時，若要授與權限存取其中的子網路，請使用 Powershell、CLI 或 REST Api。
 
 1. 若要移除虛擬網路或子網路規則，請按一下 […] 開啟虛擬網路或子網路的快顯功能表，然後按一下 [移除]。
 
@@ -176,6 +185,9 @@ Azure 儲存體提供分層的安全性模型。 此模型可讓您設定一組�
     $subnet = Get-AzVirtualNetwork -ResourceGroupName "myresourcegroup" -Name "myvnet" | Get-AzVirtualNetworkSubnetConfig -Name "mysubnet"
     Add-AzStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -VirtualNetworkResourceId $subnet.Id
     ```
+
+    > [!TIP]
+    > 當 VNet 屬於另一個另一個 Azure AD 租用戶時，若要為其中子網路新增網路規則，請使用完整的 **VirtualNetworkResourceId** 參數，格式為 "/subscriptions/subscription-ID/resourceGroups/resourceGroup-Name/providers/Microsoft.Network/virtualNetworks/vNet-name/subnets/subnet-name"。
 
 1. 移除虛擬網路和子網路的網路規則。
 
@@ -210,6 +222,11 @@ Azure 儲存體提供分層的安全性模型。 此模型可讓您設定一組�
     az storage account network-rule add --resource-group "myresourcegroup" --account-name "mystorageaccount" --subnet $subnetid
     ```
 
+    > [!TIP]
+    > 若要在屬於另一個 Azure AD 租使用者的 VNet 中新增子網的規則，請使用 "/subscriptions/ \<subscription-ID\> /ResourceGroups/ \<resourceGroup-Name\> /providers/Microsoft.Network/virtualNetworks/ \<vNet-name\> /subnets/" 格式的完整子網識別碼 \<subnet-name\> 。
+    >
+    > 您可以使用 **subscription** 參數，為屬於另一個 Azure AD 租用戶的 VNet 擷取子網路識別碼。
+
 1. 移除虛擬網路和子網路的網路規則。
 
     ```azurecli
@@ -229,14 +246,17 @@ Azure 儲存體提供分層的安全性模型。 此模型可讓您設定一組�
    > [!NOTE]
    > 不支援使用 "/31" 或 "/32" 前置詞大小的小型位址範圍。 這些範圍應該使用個別的 IP 位址規則設定。
 
-只有**公用網際網路** IP 位址允許使用 IP 網路規則。 IP 規則中不允許保留私人網路的 IP 位址範圍 (如 [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3) 中所定義)。 私人網路包括以 _10.*_、_172.16.*_ - _172.31.*_ 和 _192.168.*_ 開頭的位址。
+只有**公用網際網路** IP 位址允許使用 IP 網路規則。 IP 規則中不允許保留私人網路的 IP 位址範圍 (如 [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3) 中所定義)。 私人網路包括以 _10.*_ 、_172.16.*_  - _172.31.*_ 和 _192.168.*_ 開頭的位址。
 
    > [!NOTE]
    > IP 網路規則不會影響源自儲存體帳戶所在 Azure 區域的要求。 使用[虛擬網路規則](#grant-access-from-a-virtual-network)來允許同一個區域的要求。
 
-目前僅支援 IPV4 位址。
+  > [!NOTE]
+  > 與儲存體帳戶部署在相同區域中的服務會使用私人 Azure IP 位址進行通訊。 因此，您無法根據其公用輸出 IP 位址範圍來限制對特定 Azure 服務的存取。
 
-每個儲存體帳戶最多可支援 100 個 IP 網路規則，它們也可以結合[虛擬網路規則](#grant-access-from-a-virtual-network)。
+設定儲存體防火牆規則時僅支援 IPV4 位址。
+
+每個儲存體帳戶最多支援 100 個 IP 網路規則。
 
 ### <a name="configuring-access-from-on-premises-networks"></a>設定內部部署網路存取權
 
@@ -338,32 +358,52 @@ Azure 儲存體提供分層的安全性模型。 此模型可讓您設定一組�
 
 ## <a name="exceptions"></a>例外狀況
 
-網路規則可以為大部分情況啟用安全的網路設定。 不過，在某些情況下，必須授與例外狀況才能啟用完整的功能。 您可以對儲存體帳戶設定例外狀況，以允許受信任的 Microsoft 服務進行存取，以及存取儲存體分析資料。
+對於大部分案例，網路規則可協助在您的應用程式與資料之間建立安全的連線環境。 不過，某些應用程式依賴無法透過虛擬網路或 IP 位址規則來唯一隔離的 Azure 服務。 但是，您必須將這類服務授與儲存體，才能啟用完整的應用程式功能。 在這類情況下，您可以使用 [允許受信任的 Microsoft 服務 ...] 設定，讓這類服務可以存取您的資料、記錄或分析。
 
 ### <a name="trusted-microsoft-services"></a>受信任的 Microsoft 服務
 
-有些與儲存體帳戶互動的 Microsoft 服務是從無法透過網路規則授與存取權的網路運作。
+某些 Microsoft 服務是從無法包含在網路規則中的網路進行操作。 您可以將這類受信任的 Microsoft 服務子集存取權授與儲存體帳戶，同時維護其他應用程式的網路規則。 這些受信任的服務接著會使用增強式驗證來安全地連線到您的儲存體帳戶。 我們已為 Microsoft 服務啟用兩種受信任的存取模式。
 
-若要讓這類服務如預期方式運作，請允許受信任的 Microsoft 服務集合略過網路規則。 這些服務會使用增強式驗證存取儲存體帳戶。
+- 某些服務的資源**在訂用帳戶**中註冊時，可以在**相同的訂用帳戶**中存取您的儲存體帳戶，以進行選取作業，例如寫入記錄或備份。
+- 某些服務的資源可以藉由**將 RBAC 角色**指派給其系統指派的受控識別，來授與對您儲存體帳戶的明確存取權。
 
-如果啟用 **「允許信任的 Microsoft 服務...」** 例外狀況，下列服務 (在您的訂用帳戶中註冊時) 會獲得存取儲存體帳戶的權限：
 
-|服務|資源提供者名稱|目的|
-|:------|:---------------------|:------|
-|Azure 備份|Microsoft.Backup|在 IAAS 虛擬機器中執行未受控磁碟備份與還原。 (若為受控磁碟則非必要)。 [深入了解](/azure/backup/backup-introduction-to-azure-backup)。|
-|Azure 資料箱|Microsoft.DataBox|啟用匯入至 Azure，使用 [資料] 方塊中的資料。 [深入了解](/azure/databox/data-box-overview)。|
-|Azure DevTest Labs|Microsoft.DevTestLab|自訂映像建立和成品安裝。 [深入了解](/azure/devtest-lab/devtest-lab-overview)。|
-|Azure Event Grid|Microsoft.EventGrid|啟用 Blob 儲存體事件發佈，並允許事件方格發佈到儲存體佇列。 深入了解 [Blob 儲存體事件](/azure/event-grid/event-sources)及[發佈至佇列](/azure/event-grid/event-handlers)。|
-|Azure 事件中心|Microsoft.EventHub|使用事件中樞擷取封存資料。 [深入了解](/azure/event-hubs/event-hubs-capture-overview)。|
-|Azure HDInsight|Microsoft.HDInsight|佈建為新的 HDInsight 叢集的預設檔案系統的初始內容。 [深入了解](https://azure.microsoft.com/blog/enhance-hdinsight-security-with-service-endpoints/)。|
-|Azure 監視器|Microsoft.Insights|允許將監視資料寫入受保護的儲存體帳戶 [深入了解](/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security)。|
-|Azure 網路|Microsoft.Networking|儲存及分析網路流量記錄。 [深入了解](/azure/network-watcher/network-watcher-packet-capture-overview)。|
-|Azure Site Recovery|Microsoft.SiteRecovery |藉由啟用 Azure IaaS 虛擬機器的複寫來設定災害復原。 如果您使用已啟用防火牆的快取儲存體帳戶、來源儲存體帳戶或目標儲存體帳戶，則這會是必要項目。  [深入了解](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication)。|
-|Azure SQL 資料倉儲|Microsoft.Sql|允許匯入和匯出案例，從特定使用 PolyBase 的 SQL Database 執行個體。 [深入了解](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview)。|
+當您啟用 [允許受信任的 Microsoft 服務...] 設定時，與您儲存體帳戶註冊在相同訂用帳戶中的下列服務資源，其存取權會授與一組有限的作業，如下所述：
+
+| 服務                  | 資源提供者名稱     | 允許的作業                 |
+|:------------------------ |:-------------------------- |:---------------------------------- |
+| Azure 備份             | Microsoft.RecoveryServices | 在 IAAS 虛擬機器中執行未受控磁碟備份與還原。 (若為受控磁碟則非必要)。 [深入了解](/azure/backup/backup-introduction-to-azure-backup)。 |
+| Azure 資料箱           | Microsoft.DataBox          | 可讓您使用資料箱將資料匯入至 Azure。 [深入了解](/azure/databox/data-box-overview)。 |
+| Azure DevTest Labs       | Microsoft.DevTestLab       | 自訂映像建立和成品安裝。 [深入了解](../../devtest-labs/devtest-lab-overview.md)。 |
+| Azure Event Grid         | Microsoft.EventGrid        | 啟用 Blob 儲存體事件發佈，並允許事件方格發佈到儲存體佇列。 深入了解 [Blob 儲存體事件](/azure/event-grid/event-sources)及[發佈至佇列](/azure/event-grid/event-handlers)。 |
+| Azure 事件中心         | Microsoft.EventHub         | 使用事件中樞擷取封存資料。 [深入了解](/azure/event-hubs/event-hubs-capture-overview)。 |
+| Azure 檔案同步          | Microsoft.StorageSync      | 可讓您將內部部署檔案伺服器轉換為 Azure 檔案共用的快取。 允許多網站同步處理、快速災害復原，以及雲端備份。 [深入了解](../files/storage-sync-files-planning.md) |
+| Azure HDInsight          | Microsoft.HDInsight        | 為新的 HDInsight 叢集佈建預設檔案系統的初始內容。 [深入了解](/azure/hdinsight/hdinsight-hadoop-use-blob-storage)。 |
+| Azure 匯入匯出      | Microsoft.ImportExport     | 可讓您使用匯入/匯出服務將資料匯入至 Azure，以及從 Azure 匯出資料。 [深入了解](/azure/storage/common/storage-import-export-service)。  |
+| Azure 監視器            | Microsoft.Insights         | 允許將監視資料寫入至受保護的儲存體帳戶，包括資源記錄、Azure Active Directory 登入和稽核記錄，以及 Microsoft Intune 記錄。 [深入了解](/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security)。 |
+| Azure 網路         | Microsoft.Network          | 儲存和分析網路流量記錄，包括透過網路監看員和流量分析服務。 [深入了解](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview)。 |
+| Azure Site Recovery      | Microsoft.SiteRecovery     | 當使用已啟用防火牆的快取、來源或目標儲存體帳戶時，啟用複寫以進行 Azure IaaS 虛擬機器的災害復原。  [深入了解](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication)。 |
+
+如果您為該資源執行個體明確地[指派 RBAC 角色](storage-auth-aad.md#assign-rbac-roles-for-access-rights)給[系統指派的受控識別](../../active-directory/managed-identities-azure-resources/overview.md)，則 [允許受信任的 Microsoft 服務] 設定也會允許下列服務的特定執行個體存取儲存體帳戶。 在此情況下，執行個體的存取範圍會對應至指派給受控識別的 RBAC 角色。
+
+| 服務                        | 資源提供者名稱                 | 目的            |
+| :----------------------------- | :------------------------------------- | :----------------- |
+| Azue 認知搜尋         | Microsoft.Search/searchServices        | 可讓認知搜尋服務存取儲存體帳戶以進行編製索引、處理和查詢。 |
+| Azure Container Registry 工作 | Microsoft.ContainerRegistry/registries | 建立容器映像時，ACR 工作可以存取儲存體帳戶。 |
+| Azure Data Factory             | Microsoft.DataFactory/factories        | 允許透過 ADF 執行階段存取儲存體帳戶。 |
+| Azure Data Share               | Microsoft.DataShare/accounts           | 允許透過 Data Share 存取儲存體帳戶。 |
+| Azure IoT 中樞                  | Microsoft.Devices/IotHubs              | 允許將來自 IoT 中樞的資料寫入至 Blob 儲存體。 [深入了解](../../iot-hub/virtual-network-support.md#egress-connectivity-to-storage-account-endpoints-for-routing) |
+| Azure Logic Apps               | Microsoft.Logic/workflows              | 讓邏輯應用程式能夠存取儲存體帳戶。 [深入了解](/azure/logic-apps/create-managed-service-identity#authenticate-access-with-managed-identity)。 |
+| Azure Machine Learning 服務 | Microsoft.MachineLearningServices      | 已授權的 Azure Machine Learning 工作區會將實驗輸出、模型和記錄寫入至 Blob 儲存體，並讀取資料。 [深入了解](/azure/machine-learning/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace)。 | 
+| Azure SQL 資料倉儲       | Microsoft.Sql                          | 允許使用 PolyBase 從特定的 SQL 資料庫執行個體匯入和匯出資料。 [深入了解](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview)。 |
+| Azure SQL Database       | Microsoft.Sql                          | 允許從儲存體帳戶匯[入](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql?view=sql-server-ver15#f-importing-data-from-a-file-in-azure-blob-storage)資料，並將審核資料[寫入](https://docs.microsoft.com/azure/azure-sql/database/audit-write-storage-account-behind-vnet-firewall)防火牆後方的儲存體帳戶。 |
+| Azure 串流分析         | Microsoft.StreamAnalytics             | 允許將串流作業中的資料寫入至 Blob 儲存體。 此功能目前為預覽狀態。 [深入了解](/azure/stream-analytics/blob-output-managed-identity)。 |
+| Azure Synapse Analytics        | Microsoft.Synapse/workspaces          | 可讓您從 Synapse Analytics 存取 Azure 儲存體中的資料。 |
+
 
 ### <a name="storage-analytics-data-access"></a>儲存體分析資料存取
 
-在某些情況下，需要來自網路界限外的存取權才能讀取診斷記錄和計量。 您可以授與網路規則的例外狀況，允許讀取存取儲存體帳戶記錄檔、計量資料表，或兩者都存取。 [深入了解儲存體分析的使用方式。](/azure/storage/storage-analytics)
+在某些情況下，需要來自網路界限外的存取權才能讀取資源記錄和計量。 設定受信任的服務可存取儲存體帳戶時，您可以允許讀取記錄檔、計量資料表或兩者的存取權。 [深入了解儲存體分析的使用方式。](/azure/storage/storage-analytics)
 
 ### <a name="managing-exceptions"></a>管理例外狀況
 
@@ -435,4 +475,4 @@ Azure 儲存體提供分層的安全性模型。 此模型可讓您設定一組�
 
 深入了解[服務端點](/azure/virtual-network/virtual-network-service-endpoints-overview) 中的 Azure 網路服務端點。
 
-在 [Azure 儲存體安全性指南](storage-security-guide.md)中深入了解 Azure 儲存體安全性。
+在 [Azure 儲存體安全性指南](../blobs/security-recommendations.md)中深入了解 Azure 儲存體安全性。

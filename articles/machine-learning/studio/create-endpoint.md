@@ -1,26 +1,25 @@
 ---
 title: 建立 Web 服務端點
-titleSuffix: Azure Machine Learning Studio
-description: 在 Azure Machine Learning Studio 中建立 Web 服務端點。 Web 服務的每個端點都是個別定址、節流以及管理。
+titleSuffix: ML Studio (classic) - Azure
+description: 在 Azure Machine Learning Studio （傳統）中建立 web 服務端點。 Web 服務的每個端點都是個別定址、節流以及管理。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
-author: xiaoharper
-ms.author: amlstudiodocs
+ms.topic: how-to
+author: likebupt
+ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/15/2019
-ms.openlocfilehash: ac434a696f6e77e5ce61b430232166e7727eda38
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: e465d739c485009f68d6d5c5ecbb0850d73a6e60
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60751173"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84696417"
 ---
-# <a name="create-endpoints-for-deployed-azure-machine-learning-studio-web-services"></a>針對已部署的 Azure Machine Learning Studio Web 服務建立端點
+# <a name="create-endpoints-for-deployed-azure-machine-learning-studio-classic-web-services"></a>為已部署的 Azure Machine Learning Studio （傳統） web 服務建立端點
 
 > [!NOTE]
-> 本主題說明適用於 **Classic** Machine Learning Web 服務的技巧。
+> 本主題描述適用于**傳統**Machine Learning web 服務的技術。
 
 部署 Web 服務之後，我們會建立該服務的預設端點。 該預設端點可使用其 API 金鑰進行呼叫。 您可以使用來自 Web 服務入口網站的其自有金鑰來新增更多端點。
 Web 服務的每個端點都是個別定址、節流以及管理。 每個端點都是具有授權金鑰的唯一 URL，您可以將其散發給您的客戶。
@@ -32,18 +31,18 @@ Web 服務的每個端點都是個別定址、節流以及管理。 每個端點
 > [!NOTE]
 > 如果您已在 Web 服務中新增額外的端點，就無法刪除預設端點。
 
-1. 在 Machine Learning Studio 中，按一下左側的 [Web 服務]。
-2. 在 Web 服務儀表板底部，按一下 [管理端點]。 Azure Machine Learning Web 服務 入口網站會開啟 Web 服務的端點頁面。
-3. 按一下 [新增] 。
-4. 輸入新端點的名稱和描述。 端點名稱長度不可超過 24 個字元，而且必須由小寫字母或數字組成。 選取記錄層級，以及是否啟用範例資料。 如需有關記錄的詳細資訊，請參閱 [為 Machine Learning Web 服務啟用記錄](web-services-logging.md)。
+1. 在 [Machine Learning Studio （傳統）] 中，按一下左側導覽列上的 [Web 服務]。
+2. 在 web 服務儀表板底部，按一下 [**管理端點**]。 Azure Machine Learning Web 服務 入口網站會開啟 Web 服務的端點頁面。
+3. 按一下 **[新增]** 。
+4. 輸入新端點的名稱和描述。 端點名稱長度不可超過 24 個字元，而且必須由小寫字母或數字組成。 選取記錄層級，以及是否啟用範例資料。 如需記錄的詳細資訊，請參閱[啟用 Machine Learning web 服務的記錄](web-services-logging.md)。
 
-## <a id="scaling"></a> 透過新增額外端點來調整 Web 服務規模
+## <a name="scale-a-web-service-by-adding-additional-endpoints"></a><a id="scaling"></a> 透過新增額外端點來調整 Web 服務規模
 
-根據預設，系統將每個發佈的 Web 服務設定為支援 20 個並行要求，而且最多可達 200 個並行要求。 Azure Machine Learning Studio 會自動最佳化此設定，為您的 Web 服務提供最佳的效能，並忽略入口網站的值。
+根據預設，系統將每個發佈的 Web 服務設定為支援 20 個並行要求，而且最多可達 200 個並行要求。 Azure Machine Learning Studio （傳統）會自動優化此設定，為您的 web 服務提供最佳效能，並忽略入口網站的值。
 
 如果您打算以超過「並行呼叫數上限」值 200 可支援的負載來呼叫 API，則應該在相同的 Web 服務上建立多個端點。 然後，您就可以將負載隨機分配給所有端點。
 
-調整 Web 服務規模一件常見的工作。 一些調整理由包括為了支援超過 200 個並行要求、透過多個端點提高可用性，或為 Web 服務提供個別的端點。 您可以透過 [Azure Machine Learning Web 服務](https://services.azureml.net/)入口網站新增更多端點來擴大同一個 Web 服務的規模。
+調整 Web 服務規模一件常見的工作。 一些調整理由包括為了支援超過 200 個並行要求、透過多個端點提高可用性，或為 Web 服務提供個別的端點。 您可以透過[Azure Machine Learning Web 服務](https://services.azureml.net/)入口網站，為相同的 web 服務新增額外的端點，以增加規模。
 
 請記住，如果您未以對應的高比例來呼叫 API，則使用較大的並行處理計數可能有害。 如果您將相對低的負載放在為高負載設定的 API，可能會看見延遲有零星的逾時及 (或) 突增情況。
 
@@ -51,4 +50,4 @@ Web 服務的每個端點都是個別定址、節流以及管理。 每個端點
 
 ## <a name="next-steps"></a>後續步驟
 
-[如何使用 Azure Machine Learning Web 服務](consume-web-services.md)。
+[如何使用 Azure Machine Learning web 服務](consume-web-services.md)。

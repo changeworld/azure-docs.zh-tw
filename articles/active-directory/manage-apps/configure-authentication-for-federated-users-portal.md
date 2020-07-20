@@ -1,30 +1,29 @@
 ---
-title: 使用主領域探索原則為應用程式設定登入自動加速 | Microsoft Docs
-description: 了解如何設定 Azure Active Directory 驗證適用於同盟使用者，包括自動加速 」 和 「 網域提示的主領域探索原則。
+title: 使用主領域探索來設定登入自動加速
+description: 瞭解如何為同盟使用者的 Azure Active Directory 驗證設定主領域探索原則，包括自動加速和網域提示。
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/08/2019
-ms.author: celested
+ms.author: kenwith
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d82ccf7c2983051597ff634117be81311c4c78a9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 16af484e77787ee1d729ce97eec8c666bf925837
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60443091"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763579"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>使用主領域探索原則為應用程式設定 Azure Active Directory 登入行為
 
-本文將介紹如何設定 Azure Active Directory 的同盟使用者的驗證行為。 其中涵蓋自動加速組態，以及同盟網域中的使用者驗證限制。
+本文提供為同盟使用者設定 Azure Active Directory 驗證行為的簡介。 其中涵蓋自動加速組態，以及同盟網域中的使用者驗證限制。
 
 ## <a name="home-realm-discovery"></a>主領域探索
 主領域探索 (HRD) 是讓 Azure Active Directory (Azure AD) 判斷使用者登入時應在何處驗證的程序。  使用者在登入 Azure AD 租用戶以存取資源或 Azure AD 一般登入頁面時，會輸入使用者名稱 (UPN)。 Azure AD 會使用該值來探索使用者需在何處登入。 
@@ -81,8 +80,8 @@ ms.locfileid: "60443091"
 ### <a name="home-realm-discovery-policy-for-auto-acceleration"></a>用於自動加速的主領域探索原則
 某些應用程式未沒有相關機制可設定它們所發出的驗證要求。 在這種情況下，就無法使用網域提示來控制自動加速。 您可以透過原則設定自動加速來達成相同的行為。  
 
-## <a name="enable-direct-authentication-for-legacy-applications"></a>為繼承應用程式啟用直接驗證
-應用程式驗證使用者的最佳做法是使用 Azure Active Directory 程式庫和互動式登入。 程式庫會負責同盟使用者流程。  有時寫入繼承應用程式並非為了要了解同盟。 應用程式不會執行主領域探索，也不會與正確的同盟端點互動以驗證使用者。 您也可選擇使用 HRD 原則啟用會提交使用者名稱/密碼認證的特定繼承應用程式，以直接透過 Azure Active Directory 進行驗證。 您必須啟用密碼雜湊同步。 
+## <a name="enable-direct-ropc-authentication-of-federated-users-for-legacy-applications"></a>針對繼承應用程式啟用同盟使用者的直接 ROPC 驗證
+應用程式驗證使用者的最佳做法是使用 Azure Active Directory 程式庫和互動式登入。 程式庫會負責同盟使用者流程。  有時候是繼承應用程式，特別是使用 ROPC 授與、將使用者名稱和密碼直接提交給 Azure AD，而不是為了瞭解同盟而撰寫的。 應用程式不會執行主領域探索，也不會與正確的同盟端點互動以驗證使用者。 如果您選擇，您可以使用 HRD 原則來啟用特定的繼承應用程式，以使用 ROPC 授與來提交使用者名稱/密碼認證，以直接使用 Azure Active Directory 進行驗證。 您必須啟用密碼雜湊同步。 
 
 > [!IMPORTANT]
 > 只要在您已啟用密碼雜湊同步，且您知道即使有內部部署 IdP 實作的任何原則，也可驗證該應用程式時，才能啟用直接驗證。 如果您基於任何原因而關閉密碼雜湊同步，或關閉 AD Connect 的目錄同步作業，則您應移除此原則，以避免使用者透過過時的密碼雜湊進行直接驗證。
@@ -100,9 +99,7 @@ ms.locfileid: "60443091"
 
 任何時候服務主體都只能有一個作用中的 HRD 原則。  
 
-您可直接使用 Microsoft Azure Active Directory 圖形 API 或 Azure Active Directory PowerShell cmdlets 建立及管理 HRD 原則。
-
-管理原則的 Graph API 說明於 MSDN 上的[原則相關作業](https://msdn.microsoft.com/library/azure/ad/graph/api/policy-operations)一文。
+您可以使用 Azure Active Directory PowerShell Cmdlet 來建立和管理 HRD 原則。
 
 以下是範例 HRD 原則定義：
     
@@ -112,7 +109,7 @@ ms.locfileid: "60443091"
     {  
     "AccelerateToFederatedDomain":true,
     "PreferredDomain":"federated.example.edu",
-    "AllowCloudPasswordValidation":true
+    "AllowCloudPasswordValidation":false
     }
    }
 ```
@@ -170,7 +167,7 @@ ms.locfileid: "60443091"
 
 如果沒有傳回任何內容，表示您的租用戶中未建立任何原則。
 
-### <a name="example-set-hrd-policy-for-an-application"></a>範例：為應用程式設定 HRD 原則 
+### <a name="example-set-an-hrd-policy-for-an-application"></a>範例：設定應用程式的 HRD 原則 
 
 在此範例中，您建立的原則若指派給應用程式可執行以下功能： 
 - 如果您的租用戶中有單一網域，則使用者在登入應用程式時能自動加速前往 AD FS 登入畫面。 
@@ -197,7 +194,7 @@ New-AzureADPolicy -Definition @("{`"HomeRealmDiscoveryPolicy`":{`"AllowCloudPass
 ```
 
 
-若要查看您的新原則並取得其 **ObjectID**，請執行下列命令：
+若要查看您的新原則並取得其**ObjectID**，請執行下列命令：
 
 ``` powershell
 Get-AzureADPolicy
@@ -209,7 +206,13 @@ Get-AzureADPolicy
 #### <a name="step-2-locate-the-service-principal-to-which-to-assign-the-policy"></a>步驟 2：尋找服務主體以對其指派原則  
 您需要原則要指派到之服務主體的 **ObjectID**。 有幾種方式可尋找服務主體的 **ObjectID**。    
 
-您可以使用入口網站，或者您可以查詢 [Microsoft Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity)。 您可以移至 [Graph Explorer 工具](https://developer.microsoft.com/graph/graph-explorer)並登入您的 Azure AD 帳戶，以查看您所有組織的服務主體。 由於您使用 PowerShell，您可以使用 get-AzureADServicePrincipal Cmdlet 列出服務主體及其識別碼。
+您可以使用入口網站，或者您可以查詢 [Microsoft Graph](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta)。 您可以移至 [Graph Explorer 工具](https://developer.microsoft.com/graph/graph-explorer)並登入您的 Azure AD 帳戶，以查看您所有組織的服務主體。 
+
+因為您使用的是 PowerShell，您可以使用下列 Cmdlet 來列出服務主體及其識別碼。
+
+``` powershell
+Get-AzureADServicePrincipal
+```
 
 #### <a name="step-3-assign-the-policy-to-your-service-principal"></a>步驟 3：將原則指派給服務主體  
 在您取得要設定自動加速之應用程式的服務主體 **ObjectID** 後，請執行下列命令。 此命令會將您在步驟 1 中建立的 HRD 原則與步驟 2 中找到的服務主體產生關聯。
@@ -226,7 +229,7 @@ Add-AzureADServicePrincipalPolicy -Id <ObjectID of the Service Principal> -RefOb
 若要檢查哪些應用程式已設定 HRD 原則，請使用 **Get-AzureADPolicyAppliedObject** cmdlet。 將您想檢查之原則的 **ObjectID** 傳遞給它。
 
 ``` powershell
-Get-AzureADPolicyAppliedObject -ObjectId <ObjectId of the Policy>
+Get-AzureADPolicyAppliedObject -id <ObjectId of the Policy>
 ```
 #### <a name="step-5-youre-done"></a>步驟 5：大功告成！
 要檢查新原則是否正常運作，請嘗試應用程式。
@@ -241,28 +244,28 @@ Get-AzureADPolicy
 
 請記下要列出指派之原則的 **ObjectID**。
 
-#### <a name="step-2-list-the-service-principals-to-which-the-policy-is-assigned"></a>步驟 2：列出已被指派原則的服務主體  
+#### <a name="step-2-list-the-service-principals-to-which-the-policy-is-assigned"></a>步驟 2：列出已被指派原則的服務主體。  
 
 ``` powershell
-Get-AzureADPolicyAppliedObject -ObjectId <ObjectId of the Policy>
+Get-AzureADPolicyAppliedObject -id <ObjectId of the Policy>
 ```
 
-### <a name="example-remove-an-hrd-policy-for-an-application"></a>範例：移除應用程式的 HRD 原則
+### <a name="example-remove-an-hrd-policy-from-an-application"></a>範例：從應用程式中移除 HRD 原則
 #### <a name="step-1-get-the-objectid"></a>步驟 1：取得 ObjectID
 使用前一個範例來取得原則的 ObjectId，以及要移除該原則之應用程式服務主體的 **ObjectID**。 
 
 #### <a name="step-2-remove-the-policy-assignment-from-the-application-service-principal"></a>步驟 2：從應用程式服務主體移除原則指派  
 
 ``` powershell
-Remove-AzureADApplicationPolicy -ObjectId <ObjectId of the Service Principal>  -PolicyId <ObjectId of the policy>
+Remove-AzureADServicePrincipalPolicy -id <ObjectId of the Service Principal>  -PolicyId <ObjectId of the policy>
 ```
 
 #### <a name="step-3-check-removal-by-listing-the-service-principals-to-which-the-policy-is-assigned"></a>步驟 3：列出已被指派原則的服務主體，檢查移除是否成功 
 
 ``` powershell
-Get-AzureADPolicyAppliedObject -ObjectId <ObjectId of the Policy>
+Get-AzureADPolicyAppliedObject -id <ObjectId of the Policy>
 ```
 ## <a name="next-steps"></a>後續步驟
 - 如需如何在 Azure AD 中進行驗證的詳細資訊，請參閱 [Azure AD 的驗證案例](../develop/authentication-scenarios.md)。
-- 如需使用者單一登入的詳細資訊，請參閱[搭配 Azure Active Directory 的應用程式存取和單一登入](configure-single-sign-on-portal.md)。
-- 如需所有開發人員相關內容的概觀，請瀏覽 [Active Directory 開發人員指南](../develop/v1-overview.md)。
+- 如需使用者單一登入的詳細資訊，請參閱[Azure Active Directory 中的應用程式的單一登入](what-is-single-sign-on.md)。
+- 如需所有開發人員相關內容的總覽，請造訪[Microsoft 身分識別平臺](../develop/v2-overview.md)。

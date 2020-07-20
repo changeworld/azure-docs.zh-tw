@@ -3,24 +3,24 @@ title: 新增不在資源庫內的應用程式時遇到問題 | Microsoft Docs
 description: 了解新增不在資源庫內的自訂應用程式時的常見問題
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 09/11/2018
-ms.author: celested
+ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c53675c27276fdcf403ca5a6add5d86fc38e410a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ce103ca6c958b0524d753da25c2a79aadfb7c8b3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60442500"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84760281"
 ---
 # <a name="problem-adding-a-non-gallery-application"></a>新增不在資源庫內的應用程式時遇到問題
 
@@ -28,15 +28,15 @@ ms.locfileid: "60442500"
 
 ## <a name="i-clicked-the-add-button-and-my-application-took-a-long-time-to-appear"></a>按一下 [新增] 按鈕，但應用程式經過佷久才出現
 
-在某些情況下，將應用程式新增至目錄後，可能需要 1-2 分鐘 (有時更久)，應用程式才會出現。 雖然這不是正常預期的表現，您還是可以按一下 [Azure 入口網站](https://portal.azure.com/)右上角的 **通知**圖示 (鐘)，然後尋找標示為**建立應用程式**的**進行中**或**已完成**通知，來查看應用程式新增作業正在進行中。
+在某些情況下，將應用程式新增至目錄後，可能需要 1-2 分鐘 (有時更久)，應用程式才會出現。 雖然這不是正常預期的效能，但您可以按一下[Azure 入口網站](https://portal.azure.com/)右上方的 [**通知**] 圖示（鐘），尋找標示為 [**建立應用程式**] 的 [**進行中**] 或 [**已完成**] 通知，查看應用程式新增作業正在進行中。
 
 如果一直都沒有新增的應用程式，或您按一下 **[新增]** 按鈕時發生錯誤，您會看到**錯誤**狀態的**通知**。 如果您想要取得更多關於此錯誤的詳細資料以進一步了解，或分享給支援工程師，則可以依照[如何查看入口網站通知的詳細資訊](#how-to-see-the-details-of-a-portal-notification)一節中的步驟，來查看此錯誤的詳細資訊。
 
 ## <a name="i-clicked-the-add-button-and-my-application-didnt-appear"></a>我按一下 [新增] 按鈕，但應用程式沒有出現
 
-有時由於暫時性問題、網路問題或錯誤，新增應用程式會失敗。 當您按一下 Azure 入口網站右上方的**通知**圖示 (鐘)，然後在 [建立應用程式] 通知旁看到紅色 (!) 圖示時，就表示發生這種情況。 這表示建立應用程式時發生錯誤。
+有時由於暫時性問題、網路問題或錯誤，新增應用程式會失敗。 當您按一下 Azure 入口網站右上方的**通知**圖示 (鐘)，然後在 [建立應用程式]**** 通知旁看到紅色 (!) 圖示時，就表示發生這種情況。 這表示建立應用程式時發生錯誤。
 
-如果您按一下 [新增] 按鈕時發生錯誤，您會看到**錯誤**狀態的**通知**。 如果您想要取得更多關於此錯誤的詳細資料以進一步了解，或分享給支援工程師，則可以依照[如何查看入口網站通知的詳細資訊](#how-to-see-the-details-of-a-portal-notification)一節中的步驟，來查看此錯誤的詳細資訊。
+如果您按一下 [新增]**** 按鈕時發生錯誤，您會看到**錯誤**狀態的**通知**。 如果您想要取得更多關於此錯誤的詳細資料以進一步了解，或分享給支援工程師，則可以依照[如何查看入口網站通知的詳細資訊](#how-to-see-the-details-of-a-portal-notification)一節中的步驟，來查看此錯誤的詳細資訊。
 
 ## <a name="i-dont-know-how-to-set-up-my-application-once-ive-added-it"></a>我在新增應用程式之後不知道如何設定
 
@@ -46,7 +46,7 @@ ms.locfileid: "60442500"
 
 您可以依照下列步驟來查看任何入口網站通知的詳細資料：
 
-1. 按一下 Azure 入口網站右上方的 [通知] 圖示 (鐘)。
+1. 按一下 Azure 入口網站右上方的 [通知]**** 圖示 (鐘)。
 
 2. 選取處於**錯誤**狀態的任何通知 (旁邊有紅色 (!))。
 
@@ -55,15 +55,15 @@ ms.locfileid: "60442500"
    >
    >
 
-4. 使用 [通知詳細資料] 中的資訊，來了解更多關於此問題的詳細資料。
+4. 使用 [通知詳細資料]**** 中的資訊，來了解更多關於此問題的詳細資料。
 
 5. 如果您仍然需要協助，您也可以將這項資訊分享給支援工程師或產品群組，以取得協助來解決您的問題。
 
-6. 按一下 [複製錯誤] 文字方塊右邊的**複製圖示**，以複製所有通知詳細資料來分享給支援工程師或產品群組工程師。
+6. 按一下 [複製錯誤]**** 文字方塊右邊的**複製圖示**，以複製所有通知詳細資料來分享給支援工程師或產品群組工程師。
 
 ## <a name="how-to-get-help-by-sending-notification-details-to-a-support-engineer"></a>如何將通知詳細資料傳送給支援工程師以取得協助
 
-如果您需要協助，一定要與支援工程師分享**下列所有詳細資料**，好讓他們儘快幫助您。 只要**擷取螢幕畫面**，或按一下 [複製錯誤] 文字方塊右邊的**複製錯誤圖示**，輕鬆就能這樣做。
+如果您需要協助，一定要與支援工程師分享**下列所有詳細資料**，好讓他們儘快幫助您。 只要**擷取螢幕畫面**，或按一下 [複製錯誤]**** 文字方塊右邊的**複製錯誤圖示**，輕鬆就能這樣做。
 
 ## <a name="notification-details-explained"></a>說明通知詳細資料
 
@@ -96,7 +96,7 @@ ms.locfileid: "60442500"
 
 - **UPN** - 執行作業的使用者
 
-  *  範例 – **tperkins\@f128.info**
+  *  範例- **tperkins \@ f128.info**
 
 - **租用戶識別碼** – 作業執行使用者所屬之租用戶的唯一識別碼
 
@@ -108,13 +108,13 @@ ms.locfileid: "60442500"
 
 ### <a name="detailed-notification-items"></a>詳細通知項目
 
-- **顯示名稱** – **(可以是空白)** 錯誤的詳細顯示名稱
+- **顯示名稱** - **(可以是空白)** 錯誤的更詳細顯示名稱
 
   *  範例 - **應用程式 Proxy 設定**
 
-- **狀態** – 通知的特定狀態
+- **狀態** - 通知的特定狀態
 
-  *  範例 – **失敗**
+  *  範例-**失敗**
 
 - **物件識別碼** – **(可以是空白)** 據以執行作業的物件識別碼
 
@@ -122,9 +122,9 @@ ms.locfileid: "60442500"
 
 - **詳細資料** - 作業所產生之結果的詳細描述
 
-  *  範例 –**內部 url`https://bing.com/`無效，因為它已在使用**
+  *  範例–**內部 url `https://bing.com/` 無效，因為它已在使用中**
 
-- **複製錯誤** – 按一下 [複製錯誤] 文字方塊右邊的**複製圖示**，以複製所有通知詳細資料來分享給支援工程師或產品群組 
+- **複製錯誤** – 按一下 [複製錯誤]**** 文字方塊右邊的**複製圖示**，以複製所有通知詳細資料來分享給支援工程師或產品群組 
 - 工程師
 
   *  範例 ```{"errorCode":"InternalUrl\_Duplicate","localizedErrorDetails":{"errorDetail":"Internal url 'https://google.com/' is invalid since it is already in use"},"operationResults":\[{"objectId":null,"displayName":null,"status":0,"details":"Internal url 'https://bing.com/' is invalid since it is already in use"}\],"timeStampUtc":"2017-03-23T19:50:26.465743Z","clientRequestId":"302fd775-3329-4670-a9f3-bea37004f0bb","internalTransactionId":"ea5b5475-03b9-4f08-8e95-bbb11289ab65","upn":"tperkins@f128.info","tenantId":"7918d4b5-0442-4a97-be2d-36f9f9962ece","userObjectId":"17f84be4-51f8-483a-b533-383791227a99"}```

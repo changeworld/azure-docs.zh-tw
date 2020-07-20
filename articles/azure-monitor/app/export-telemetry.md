@@ -1,73 +1,76 @@
 ---
 title: 從 Application Insights 連續匯出遙測 | Microsoft Docs
 description: 匯出診斷和使用量資料至 Microsoft Azure 中的儲存體，並從那裡下載。
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 5b859200-b484-4c98-9d9f-929713f1030c
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 02/26/2019
-ms.author: mbullwin
-ms.openlocfilehash: 71e70962a8c55d397b6261571cfef4a126d3e8b4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/26/2020
+ms.openlocfilehash: 8ca2dc30b6e0681b5ee10fa3c77fab15ffb18b1d
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60899337"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86110210"
 ---
 # <a name="export-telemetry-from-application-insights"></a>從 Application Insights 匯出遙測
 想要讓遙測保留比標準保留期限還久的時間？ 或以某些特殊方式處理它？ 連續匯出很適合此用途。 在 Application Insights 入口網站中看見的事件，可以使用 JSON 格式匯出到 Microsoft Azure 中的儲存體。 從那裡，您可以下載資料並編寫處理所需的任何程式碼。  
 
+> [!NOTE]
+> 只有傳統 Application Insights 資源支援連續匯出。 [以工作區為基礎的 Application Insights 資源](https://docs.microsoft.com/azure/azure-monitor/app/create-workspace-resource)必須使用[診斷設定](https://docs.microsoft.com/azure/azure-monitor/app/create-workspace-resource#export-telemetry)。
+>
+
 在設定連續匯出之前，您可能要考慮某些替代作法︰
 
-* 計量或搜尋刀鋒視窗頂端的 [匯出] 按鈕，可讓您傳送資料表和圖表到 Excel 試算表。
+* 計量或搜尋索引標籤頂端的 [匯出] 按鈕，可讓您傳送資料表和圖表到 Excel 試算表。
 
 * [分析](../../azure-monitor/app/analytics.md) 可提供功能強大的遙測查詢語言。 它也可以匯出結果。
 * 如果您想要 [在 Power BI 中探索資料](../../azure-monitor/app/export-power-bi.md )，不需要用到「連續匯出」也可以這麼做。
 * [資料存取 REST API](https://dev.applicationinsights.io/) 可讓您以程式設計方式存取您的遙測。
-* 您也可以[透過 Powershell 存取連續匯出設定](https://docs.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsightscontinuousexport)。
+* 您也可以透過 PowerShell 存取設定[連續匯出](https://docs.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsightscontinuousexport)。
 
 在「連續匯出」將您的資料複製到儲存體 (資料可在此依您喜好的時間長短存放) 之後，資料仍然會在 Application Insights 中依一般的[保留期間](../../azure-monitor/app/data-retention-privacy.md)可供使用。
 
-## <a name="continuous-export-advanced-storage-configuration"></a>連續匯出進階儲存體組態
+## <a name="continuous-export-advanced-storage-configuration"></a>連續匯出進階儲存體設定
 
-連續匯出**不支援**下列 Azure 儲存體的功能/組態：
+連續匯出**不支援**下列 Azure 儲存體功能/設定：
 
-* 利用[VNET/Azure 儲存體防火牆](https://docs.microsoft.com/azure/storage/common/storage-network-security)搭配 Azure Blob 儲存體。
+* 使用 [VNET/Azure 儲存體防火牆](https://docs.microsoft.com/azure/storage/common/storage-network-security)搭配 Azure Blob 儲存體。
 
-* [不可變的儲存體](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage)Azure Blob 儲存體。
+* [Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction)。
 
-* [Azure Data Lake 儲存體 Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction)。
+## <a name="create-a-continuous-export"></a><a name="setup"></a> 建立連續匯出
 
-## <a name="setup"></a> 建立連續匯出
-1. 在您應用程式的 Application Insights 資源中，開啟 [連續匯出]，然後選擇 [新增]：
+1. 在您應用程式的 Application Insights 資源中，於左側 [設定] 下開啟 [連續匯出]，然後選擇 [新增]：
 
 2. 選擇您想要匯出的遙測資料類型。
 
 3. 建立或選取要用來儲存資料的 [Azure 儲存體帳戶](../../storage/common/storage-introduction.md)。 如需有關儲存體價格選項的詳細資訊，請瀏覽[官方定價頁面](https://azure.microsoft.com/pricing/details/storage/)。
 
+     按一下 [新增]、[匯出目的地]、[儲存體帳戶]，然後建立新儲存區或選擇現有儲存區。
+
     > [!Warning]
     > 根據預設，儲存體位置將設為與您 Application Insights 資源相同的地理區域。 如果您儲存在不同的區域中，可能會產生傳輸費用。
 
-    ![按一下 [加入]、[匯出目的地]、[儲存體帳戶]，然後建立新儲存區或選擇現有儲存區](./media/export-telemetry/02-add.png)
+4. 建立或選取儲存體中的容器。
 
-4. 建立或選取儲存體中的容器︰
-
-    ![按一下 [選擇事件類型]](./media/export-telemetry/create-container.png)
-
-建立匯出之後，就會開始進行。 您只會取得建立匯出之後送抵的資料。
+> [!NOTE]
+> 建立匯出之後，新內嵌的資料會開始流向 Azure Blob 儲存體。 連續匯出只會傳輸啟用連續匯出之後所建立/內嵌的新遙測。 在啟用連續匯出之前已存在的所有資料都不會匯出，也不支援使用連續匯出來追溯匯出先前建立的資料。
 
 資料出現在儲存體中之前可能有大約一小時的延遲。
 
+第一次匯出完成後，您會在 Azure Blob 儲存體容器中找到類似下列的結構：(這會根據您所收集的資料而有所不同。)
+
+|名稱 | 描述 |
+|:----|:------|
+| [可用性](export-data-model.md#availability) | 回報 [可用性 Web 測試](../../azure-monitor/app/monitor-web-app-availability.md)。  |
+| [事件](export-data-model.md#events) | [TrackEvent()](../../azure-monitor/app/api-custom-events-metrics.md#trackevent)產生的自訂事件。 
+| [例外狀況](export-data-model.md#exceptions) |回報在伺服器和瀏覽器中的 [例外狀況](../../azure-monitor/app/asp-net-exceptions.md) 。
+| [訊息](export-data-model.md#trace-messages) | 由 [TrackTrace](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace) 及[記錄配接器](../../azure-monitor/app/asp-net-trace-logs.md)傳送。
+| [計量](export-data-model.md#metrics) | 由計量 API 呼叫所產生。
+| [PerformanceCounters](export-data-model.md) | Application Insights 所收集的效能計數器。
+| [要求](export-data-model.md#requests)| 由 [TrackRequest](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest)傳送。 標準模組使用它回報在伺服器上測量的伺服器回應時間。| 
+
 ### <a name="to-edit-continuous-export"></a>若要編輯連續匯出
 
-如果稍後想要變更事件類型，只需要編輯匯出：
-
-![按一下 [選擇事件類型]](./media/export-telemetry/05-edit.png)
+按一下 [連續匯出]，然後選取要編輯的儲存體帳戶。
 
 ### <a name="to-stop-continuous-export"></a>若要停止連續匯出
 
@@ -76,10 +79,10 @@ ms.locfileid: "60899337"
 若要永久停止匯出，請刪除它。 這麼做不會將您的資料從儲存體刪除。
 
 ### <a name="cant-add-or-change-an-export"></a>無法加入或變更匯出？
-* 若要加入或變更匯出，您需要擁有者、參與者或 Application Insights 參與者存取權。 [了解角色][roles]。
+* 若要新增或變更匯出，您需要擁有者、參與者或 Application Insights 參與者存取權。 [了解角色][roles]。
 
-## <a name="analyze"></a> 您取得什麼事件？
-匯出的資料是我們從您的應用程式接收的原始遙測，只不過我們加入了從用戶端 IP 位址計算的位置資料。
+## <a name="what-events-do-you-get"></a><a name="analyze"></a> 您取得什麼事件？
+匯出的資料是我們從您的應用程式接收的原始遙測，只不過我們新增了從用戶端 IP 位址計算的位置資料。
 
 [取樣](../../azure-monitor/app/sampling.md) 已捨棄的資料不會包含在匯出的資料中。
 
@@ -92,8 +95,8 @@ ms.locfileid: "60899337"
 >
 >
 
-## <a name="get"></a> 檢查資料
-您可以直接在入口網站中檢查儲存體。 按一下 [瀏覽]、選取您的儲存體帳戶，然後開啟 [容器]。
+## <a name="inspect-the-data"></a><a name="get"></a> 檢查資料
+您可以直接在入口網站中檢查儲存體。 按一下最左側功能表中的主資料夾，在頂端顯示的 [Azure 服務]，選取 [儲存體帳戶]，選取儲存體帳戶名稱，在概觀頁面上選取服務底下的 [Blob]，最後選取容器名稱。
 
 若要在 Visual Studio 中檢查 Azure 儲存體，請依序開啟 [檢視]、[Cloud Explorer]。 (如果您沒有該功能表命令，您需要安裝 Azure SDK：開啟 [新增專案] 對話方塊，展開 Visual C# / Cloud 並選擇 [取得 Microsoft Azure SDK for .NET]。)
 
@@ -105,59 +108,63 @@ ms.locfileid: "60899337"
 
 以下是路徑的格式︰
 
-    $"{applicationName}_{instrumentationKey}/{type}/{blobDeliveryTimeUtc:yyyy-MM-dd}/{ blobDeliveryTimeUtc:HH}/{blobId}_{blobCreationTimeUtc:yyyyMMdd_HHmmss}.blob"
+```console
+$"{applicationName}_{instrumentationKey}/{type}/{blobDeliveryTimeUtc:yyyy-MM-dd}/{ blobDeliveryTimeUtc:HH}/{blobId}_{blobCreationTimeUtc:yyyyMMdd_HHmmss}.blob"
+```
 
 Where
 
 * `blobCreationTimeUtc` 是在內部暫存儲存體中建立 Blob 的時間
 * `blobDeliveryTimeUtc` 是將 Blob 複製到匯出目的地儲存體的時間
 
-## <a name="format"></a> 資料格式
+## <a name="data-format"></a><a name="format"></a> 資料格式
 * 每個 Blob 是包含多個以 '\n' 分隔的列的文字檔案。 它包含大約半分鐘的時間內所處理的遙測。
 * 每個資料列都代表遙測資料點，例如要求或頁面檢視。
-* 每列是未格式化的 JSON 文件。 如果您想要靜靜地仔細觀看，請在 Visual Studio 中開啟，並依序選擇 [編輯]、[進階]、[格式檔案]：
+* 每列是未格式化的 JSON 文件。 如果您想要查看資料列，請在 Visual Studio 中開啟 blob，然後選擇 [**編輯**] [高級] [  >  **Advanced**  >  **格式**檔案]：
 
-![使用合適的工具檢視遙測](./media/export-telemetry/06-json.png)
+   ![使用合適的工具檢視遙測](./media/export-telemetry/06-json.png)
 
 時間期間依刻度為單位，10000 刻度 = 1 毫秒。 例如，這些值顯示從瀏覽器傳送要求用了 1 毫秒的時間，接收它用了 3 毫秒，以及在瀏覽器中處理頁面用了 1.8 秒：
 
-    "sendRequest": {"value": 10000.0},
-    "receiveRequest": {"value": 30000.0},
-    "clientProcess": {"value": 17970000.0}
+```json
+"sendRequest": {"value": 10000.0},
+"receiveRequest": {"value": 30000.0},
+"clientProcess": {"value": 17970000.0}
+```
 
 [屬性類型和值的詳細資料模型參考。](export-data-model.md)
 
 ## <a name="processing-the-data"></a>處理資料
-就小型規模而言，您可以編寫一些程式碼來取出您的資料，將它讀取為試算表等等。 例如︰
+就小型規模而言，您可以編寫一些程式碼來取出您的資料，將它讀取為試算表等等。 例如：
 
-    private IEnumerable<T> DeserializeMany<T>(string folderName)
-    {
-      var files = Directory.EnumerateFiles(folderName, "*.blob", SearchOption.AllDirectories);
-      foreach (var file in files)
+```csharp
+private IEnumerable<T> DeserializeMany<T>(string folderName)
+{
+   var files = Directory.EnumerateFiles(folderName, "*.blob", SearchOption.AllDirectories);
+   foreach (var file in files)
+   {
+      using (var fileReader = File.OpenText(file))
       {
-         using (var fileReader = File.OpenText(file))
+         string fileContent = fileReader.ReadToEnd();
+         IEnumerable<string> entities = fileContent.Split('\n').Where(s => !string.IsNullOrWhiteSpace(s));
+         foreach (var entity in entities)
          {
-            string fileContent = fileReader.ReadToEnd();
-            IEnumerable<string> entities = fileContent.Split('\n').Where(s => !string.IsNullOrWhiteSpace(s));
-            foreach (var entity in entities)
-            {
-                yield return JsonConvert.DeserializeObject<T>(entity);
-            }
+            yield return JsonConvert.DeserializeObject<T>(entity);
          }
       }
-    }
+   }
+}
+```
 
 如需較大型的程式碼範例，請參閱[使用背景工作角色][exportasa]。
 
-## <a name="delete"></a>刪除舊資料
-您負責管理您的儲存體容量，以及刪除舊的資料，如有必要。
+## <a name="delete-your-old-data"></a><a name="delete"></a>刪除舊資料
+您負責管理儲存容量，以及在必要時刪除舊資料。
 
 ## <a name="if-you-regenerate-your-storage-key"></a>如果您重新產生儲存體金鑰...
 如果您變更儲存體的金鑰，連續匯出將停止運作。 您將在 Azure 帳戶中看到通知。
 
-開啟 [連續匯出] 分頁，並編輯您的匯出。 編輯 [匯出目的地]，但只保留選取相同的儲存體。 按一下 [確定] 以確認。
-
-![編輯連續匯出，開啟並關閉匯出目的地。](./media/export-telemetry/07-resetstore.png)
+開啟 [連續匯出] 索引標籤，然後編輯您的匯出。 編輯 [匯出目的地]，但只保留選取相同的儲存體。 按一下 [確定] 以確認。
 
 連續匯出將重新開始。
 
@@ -171,7 +178,7 @@ Where
 ## <a name="q--a"></a>問答集
 * *但我想要的只是一次性下載圖表。*  
 
-    是的，您可以這麼做。 在刀鋒視窗頂端，按一下 [ **匯出資料**]。
+    是的，您可以這麼做。 在索引標籤頂端，按一下 [匯出資料]。
 * *我設定匯出，但我的儲存區中沒有資料。*
 
     自從設定匯出之後，Application Insights 是否從您的應用程式收到任何遙測？ 您將只會收到新資料。
@@ -183,14 +190,14 @@ Where
     否，抱歉。 我們的匯出引擎目前僅適用於 Azure 儲存體。  
 * *放置在我的儲存區中的資料量有任何限制？*
 
-    沒有。 我們將持續送入資料，直到刪除匯出為止。 如果我們到達 Blob 儲存體的外部限制，將會停止，但那個限制很大。 您可以自行控制使用的儲存體數量。  
+    否。 我們將持續送入資料，直到刪除匯出為止。 如果我們到達 Blob 儲存體的外部限制，將會停止，但那個限制很大。 您可以自行控制使用的儲存體數量。  
 * *應該在儲存體中看到多少 Blob？*
 
   * 針對您選取要匯出的每個資料類型，會每分鐘建立一個新的 Blob (如果有可用的資料)。
-  * 此外，針對具有高流量的應用程式，則會配置額外的分割單位。 在此情況下，每個單位建立 blob 每隔一分鐘。
+  * 此外，針對具有高流量的應用程式，則會配置額外的分割單位。 在此情況下，每個單位會每分鐘建立一個 Blob。
 * *我對我的儲存體重新產生了金鑰，或變更了容器的名稱，現在匯出沒有作用。*
 
-    編輯匯出並開啟匯出目的地分頁。 照舊保留選取相關的儲存體，並按一下 [確定] 來確認。 匯出將重新開始。 如果變更是在最近幾天內，您不會遺失資料。
+    編輯匯出並開啟匯出目的地索引標籤。照舊保留選取相關的儲存體，並按一下 [確定] 來確認。 匯出將重新開始。 如果變更是在最近幾天內，您不會遺失資料。
 * *我可以暫停匯出嗎？*
 
     是。 按一下 [停用]。

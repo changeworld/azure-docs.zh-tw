@@ -1,47 +1,39 @@
 ---
-title: 開放原始碼技術常見問題集 - Azure App Service |Microsoft Docs
-description: 獲得有關 Azure App Service 之 Web Apps 功能的開放原始碼技術常見問題解答。
-services: app-service\web
-documentationcenter: ''
+title: 開放原始碼技術常見問題
+description: 取得 Azure App Service 中開放原始碼技術常見問題的解答。
 author: genlin
-manager: cshepard
-editor: ''
+manager: dcscontentpm
 tags: top-support-issue
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.custom: seodec18
-ms.openlocfilehash: 7831e5e989835b2c9432dbd61a242584a7b6244d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.custom: seodec18, tracking-python
+ms.openlocfilehash: 82bdf4cd25d486d48f4f2adda222197a600434d8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61270189"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84559581"
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Azure 中的 Web Apps 相關開放原始碼技術常見問題集
 
-本文对 [Azure App Service Web 应用功能](https://azure.microsoft.com/services/app-service/web/)开源技术常见问题 (FAQ) 进行了解答。
+針對 [Azure App Service 的 Web Apps 功能](https://azure.microsoft.com/services/app-service/web/)之中的開放原始碼技術相關問題，本文提供常見問題集的解答。
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-## <a name="how-do-i-turn-on-php-logging-to-troubleshoot-php-issues"></a>如何启用 PHP 日志记录以便对 PHP 问题进行故障排除？
+## <a name="how-do-i-turn-on-php-logging-to-troubleshoot-php-issues"></a>如何開啟 PHP 記錄進行 PHP 問題的疑難排解？
 
 若要開啟 PHP 記錄：
 
-1. 登入 [Kudu 網站](https://*yourwebsitename*.scm.azurewebsites.net)。
-2. 在頂端功能表中，選取 [偵錯主控台] >  > [CMD]。
-3. 選取 [網站] 資料夾。
-4. 選取 [wwwroot] 資料夾。
-5. 選取 **+** 圖示，然後選取 [新增檔案]。
+1. 登入您的**Kudu 網站**（ `https://*yourwebsitename*.scm.azurewebsites.net` ）。
+2. 在頂端功能表中，選取 [**偵錯主控台**  >  **CMD**]。
+3. 選取 [網站]**** 資料夾。
+4. 選取 [wwwroot]**** 資料夾。
+5. 選取 **+** 圖示，然後選取 [**新增**檔案]。
 6. 將檔案名稱設定為 **.user.ini**。
 7. 選取 **.user.ini** 旁邊的鉛筆圖示。
 8. 在檔案中，新增下列程式碼：`log_errors=on`
-9. 選取 [ **儲存**]。
+9. 選取 [儲存]。
 10. 選取 **wp-config.php** 旁邊的鉛筆圖示。
 11. 將文字變更為下列程式碼：
     ```php
@@ -59,11 +51,11 @@ ms.locfileid: "61270189"
 
 若要變更 Node.js 應用程式版本，可以使用下列其中一個選項：
 
-* 在 Azure 入口網站中，使用 [應用程式設定]。
+* 在 Azure 入口網站中，使用 [應用程式設定]****。
   1. 在 Azure 入口網站中，移至您的 Web 應用程式。
-  2. 在 [設定] 刀鋒視窗上，選取 [應用程式設定]。
-  3. 在 [應用程式設定] 中，您可以包含 WEBSITE_NODE_DEFAULT_VERSION 做為索引鍵，並包含所需的 Node.js 版本做為值。
-  4. 移至 [Kudu 主控台](https://*yourwebsitename*.scm.azurewebsites.net)。
+  2. 在 [設定]**** 刀鋒視窗上，選取 [應用程式設定]****。
+  3. 在 [應用程式設定]**** 中，您可以包含 WEBSITE_NODE_DEFAULT_VERSION 做為索引鍵，並包含所需的 Node.js 版本做為值。
+  4. 移至您的**Kudu 主控台**（ `https://*yourwebsitename*.scm.azurewebsites.net` ）。
   5. 若要檢查 Node.js 版本，請輸入下列命令：  
      ```
      node -v
@@ -98,7 +90,7 @@ ms.locfileid: "61270189"
 
 ## <a name="how-do-i-debug-a-nodejs-app-thats-hosted-in-app-service"></a>如何對於 App Service 中裝載的 Node.js 應用程式進行偵錯？
 
-1.  移至 [Kudu 主控台](https://*yourwebsitename*.scm.azurewebsites.net/DebugConsole)。
+1.  移至您的**Kudu 主控台**（ `https://*yourwebsitename*.scm.azurewebsites.net/DebugConsole` ）。
 2.  移至應用程式記錄資料夾 (D:\home\LogFiles\Application)。
 3.  在 Logging_errors.txt 檔案中檢查內容。
 
@@ -145,7 +137,7 @@ The web application[ROOT] registered the JDBC driver [com.mysql.jdbc.Driver] but
 
 1. 從 app/lib 資料夾移除 sqljdbc*.jar 檔案。
 2. 如果您使用自訂的 Tomcat 或 Azure Marketplace Tomcat Web 伺服器，請將此 .jar 檔案複製到 Tomcat lib 資料夾。
-3. 如果您從 Azure 入口網站啟用 Java (選取 **Java 1.8** > **Tomcat 伺服器**)，請將 sqljdbc.* jar 檔案複製到與應用程式並列的資料夾中。 然後，將下列 classpath 設定新增到 web.config 檔案：
+3. 如果您要從 Azure 入口網站啟用 java （選取 [ **JAVA 1.8**  >  **Tomcat 伺服器**]），請複製與您的應用程式平行的資料夾中的 sqljdbc.jar. * jar 檔案。 然後，將下列 classpath 設定新增到 web.config 檔案：
 
     ```xml
     <httpPlatform>
@@ -178,7 +170,7 @@ The process cannot access the file because it is being used by another process.
 
 對於 Marketplace 和自訂部署，記錄位於 D:\home\site\wwwroot\bin\jetty-distribution-9.1.2.v20140210\logs 資料夾。 請注意，資料夾位置取決於您使用的 Jetty 版本。 例如，此處提供的路徑是 Jetty 9.1.2 的路徑。 尋找 jetty_*YYYY_MM_DD*.stderrout.log。
 
-對於入口網站應用程式設定部署，記錄檔位於 D:\home\LogFiles。 尋找 jetty_*YYYY_MM_DD*.stderrout.log
+對於入口網站應用程式設定部署，記錄檔位於 D:\home\LogFiles。 尋找 jetty_ 的*YYYY_MM_DD*. .stderrout.log .log
 
 ## <a name="can-i-send-email-from-my-azure-web-app"></a>我能否從 Azure Web 應用程式傳送電子郵件？
 
@@ -188,24 +180,24 @@ App Service 沒有內建的電子郵件功能。 如需從應用程式傳送電�
 
 如果您最近移轉至 Azure，WordPress 可能會重新導向至舊網域 URL。 這是 MySQL 資料庫中的設定所致。
 
-WordPress Buddy+ 是 Azure 網站擴充功能，可讓您直接在資料庫中更新重新導向 URL。 如需使用 WordPress Buddy+ 的詳細資訊，請參閱 [WordPress 工具以及使用 WordPress Buddy+ 進行 MySQL 移轉](https://blogs.msdn.microsoft.com/azureossds/2016/12/21/wordpress-tools-and-mysql-migration-with-wordpress-buddy/) (英文)。
+WordPress Buddy+ 是 Azure 網站擴充功能，可讓您直接在資料庫中更新重新導向 URL。 如需使用 WordPress Buddy+ 的詳細資訊，請參閱 [WordPress 工具以及使用 WordPress Buddy+ 進行 MySQL 移轉](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/) (英文)。
 
 或者，如果您想要使用 SQL 查詢或 PHPMyAdmin 手動更新重新導向 URL，請參閱 [WordPress：重新導向至錯誤的 URL](https://blogs.msdn.microsoft.com/azureossds/2016/07/12/wordpress-redirecting-to-wrong-url/) (英文)。
 
 ## <a name="how-do-i-change-my-wordpress-sign-in-password"></a>如何變更我的 WordPress 登入密碼？
 
-如果您忘記您的 WordPress 登入密碼，可以使用 WordPress Buddy+ 更新該密碼。 若要重設密碼，請安裝 WordPress Buddy+ Azure 網站擴充功能，然後完成 [WordPress 工具以及使用 WordPress Buddy+ 進行 MySQL 移轉](https://blogs.msdn.microsoft.com/azureossds/2016/12/21/wordpress-tools-and-mysql-migration-with-wordpress-buddy/) (英文) 中所述的步驟。
+如果您忘記您的 WordPress 登入密碼，可以使用 WordPress Buddy+ 更新該密碼。 若要重設密碼，請安裝 WordPress Buddy+ Azure 網站擴充功能，然後完成 [WordPress 工具以及使用 WordPress Buddy+ 進行 MySQL 移轉](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/) (英文) 中所述的步驟。
 
 ## <a name="i-cant-sign-in-to-wordpress-how-do-i-resolve-this"></a>我無法登入 WordPress。 如何解決這個問題？
 
-最近安裝外掛程式之後，如果您發現遭鎖定而無法進入 WordPress，則表示外掛程式可能有問題。 WordPress Buddy+ 是 Azure 網站擴充功能，可協助您停用 WordPress 中的外掛程式。 如需詳細資訊，請參閱 [WordPress 工具以及使用 WordPress Buddy+ 進行 MySQL 移轉](https://blogs.msdn.microsoft.com/azureossds/2016/12/21/wordpress-tools-and-mysql-migration-with-wordpress-buddy/) (英文)。
+最近安裝外掛程式之後，如果您發現遭鎖定而無法進入 WordPress，則表示外掛程式可能有問題。 WordPress Buddy+ 是 Azure 網站擴充功能，可協助您停用 WordPress 中的外掛程式。 如需詳細資訊，請參閱 [WordPress 工具以及使用 WordPress Buddy+ 進行 MySQL 移轉](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/) (英文)。
 
 ## <a name="how-do-i-migrate-my-wordpress-database"></a>我要如何移轉我的 WordPress 資料庫？
 
 對於移轉連線到 WordPress 網站的 MySQL 資料庫，您有多個選項：
 
 * 開發人員：使用[命令提示字元或 PHPMyAdmin](https://blogs.msdn.microsoft.com/azureossds/2016/03/02/migrating-data-between-mysql-databases-using-kudu-console-azure-app-service/)
-* 非開發人員：使用 [WordPress Buddy +](https://blogs.msdn.microsoft.com/azureossds/2016/12/21/wordpress-tools-and-mysql-migration-with-wordpress-buddy/)
+* 非開發人員：使用 [WordPress Buddy+](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/)
 
 ## <a name="how-do-i-help-make-wordpress-more-secure"></a>如何使 WordPress 更安全？
 

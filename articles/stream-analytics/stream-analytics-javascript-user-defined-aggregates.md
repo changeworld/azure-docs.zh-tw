@@ -1,28 +1,25 @@
 ---
 title: Azure 串流分析中 JavaScript 使用者定義的彙總
 description: 本文說明如何使用 Azure 串流分析中 JavaScript 使用者定義的彙總來執行進階的查詢機制。
-services: stream-analytics
-author: rodrigoamicrosoft
+author: rodrigoaatmicrosoft
 ms.author: rodrigoa
-manager: kfile
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2017
-ms.openlocfilehash: 6663e3fc48408de83e92f39e8c8070005818852d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: d33cc14612b5c00c8102bd035e7331bef670a4dd
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61479553"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836442"
 ---
-# <a name="azure-stream-analytics-javascript-user-defined-aggregates-preview"></a>Azure 串流分析 JavaScript 使用者定義彙總 (預覽)
+# <a name="azure-stream-analytics-javascript-user-defined-aggregates"></a>Azure 串流分析 JavaScript 使用者定義彙總
  
 「Azure 串流分析」支援以 JavaScript 撰寫的使用者定義彙總 (UDA)，可讓您實作複雜的具狀態商務邏輯。 在 UDA 內，您可以完全控制狀態資料結構、狀態累積、狀態取消累積，以及彙總結果計算。 本文將介紹兩種不同的 JavaScript UDA 介面、建立 UDA 的步驟，以及如何在「串流分析」中搭配 Windows 型作業使用 UDA。
 
 ## <a name="javascript-user-defined-aggregates"></a>JavaScript 使用者定義彙總
 
-使用者定義彙總是在指定的時間範圍上用來彙總該範圍中的事件，然後產生單一的結果值。 目前「串流分析」支援兩種類型的 UDA 介面：AccumulateOnly 和 AccumulateDeaccumulate。 這兩種類型的 UDA 都可供「輪轉時間範圍」、「跳動時間範圍」及「滑動時間範圍」使用。 與「跳動時間範圍」及「滑動時間範圍」搭配使用時，AccumulateDeaccumulate UDA 的執行效能會比 AccumulateOnly UDA 好。 您需根據所使用的演算法來選擇這兩種類型其中之一。
+使用者定義彙總是在指定的時間範圍上用來彙總該範圍中的事件，然後產生單一的結果值。 目前「串流分析」支援兩種類型的 UDA 介面：AccumulateOnly 和 AccumulateDeaccumulate。 這兩種類型的 UDA 都可供「輪轉時間範圍」、「跳動時間範圍」、「滑動時間範圍」及「工作階段時間範圍」使用。 與「跳動時間範圍」、「滑動時間範圍」及「工作階段時間範圍」搭配使用時，AccumulateDeaccumulate UDA 的執行效能會比 AccumulateOnly UDA 好。 您需根據所使用的演算法來選擇這兩種類型其中之一。
 
 ### <a name="accumulateonly-aggregates"></a>AccumulateOnly 彙總
 
@@ -80,7 +77,7 @@ function main() {
 
 ### <a name="function-alias"></a>函式別名
 
-函式別名是 UDA 識別碼。 在「串流分析」查詢中呼叫時，請一律將 UDA 別名與 "uda" 搭配使用。 。
+函式別名是 UDA 識別碼。 在「串流分析」查詢中呼叫時，請一律將 UDA 別名與 "uda" 搭配使用。 前置詞。
 
 ### <a name="function-type"></a>函式類型
 
@@ -92,7 +89,7 @@ function main() {
 
 ### <a name="function-name"></a>函式名稱
 
-此「函式」物件的名稱。 函式名稱應該在字面上與 UDA 別名相符 (這是預覽版行為，我們考慮在正式運作版時支援匿名函式)。
+此「函式」物件的名稱。 函式名稱應符合 UDA 別名。
 
 ### <a name="method---init"></a>方法 - init()
 
@@ -100,11 +97,11 @@ init() 方法會將彙總狀態初始化。 呼叫此方法的時機是在時間
 
 ### <a name="method--accumulate"></a>方法 – accumulate()
 
-accumulate() 方法會根據先前的狀態和目前的事件值來計算 UDA 狀態。 呼叫此方法的時機是在事件進入某個時間範圍 (TUMBLINGWINDOW、HOPPINGWINDOW 或 SLIDINGWINDOW) 時。
+accumulate() 方法會根據先前的狀態和目前的事件值來計算 UDA 狀態。 呼叫此方法的時機是在事件進入某個時間範圍 (TUMBLINGWINDOW、HOPPINGWINDOW、SLIDINGWINDOW 或 SESSIONWINDOW) 時。
 
 ### <a name="method--deaccumulate"></a>方法 – deaccumulate()
 
-deaccumulate() 方法會根據先前的狀態和目前的事件值來重新計算狀態。 呼叫此方法的時機是在事件離開 SLIDINGWINDOW 時。
+deaccumulate() 方法會根據先前的狀態和目前的事件值來重新計算狀態。 呼叫此方法的時機是在事件離開 SLIDINGWINDOW 或 SESSIONWINDOW 時。
 
 ### <a name="method--deaccumulatestate"></a>方法 – deaccumulateState()
 
@@ -112,7 +109,7 @@ deaccumulateState() 方法會根據先前的狀態和躍點的狀態來重新計
 
 ### <a name="method--computeresult"></a>方法 – computeResult()
 
-computeResult() 方法會根據目前的狀態傳回彙總結果。 呼叫此方法的時機是在時間範圍 (TUMBLINGWINDOW、HOPPINGWINDOW 及 SLIDINGWINDOW) 結束時。
+computeResult() 方法會根據目前的狀態傳回彙總結果。 呼叫此方法的時機是在時間範圍 (TUMBLINGWINDOW、HOPPINGWINDOW、SLIDINGWINDOW 或 SESSIONWINDOW) 結束時。
 
 ## <a name="javascript-uda-supported-input-and-output-data-types"></a>JavaScript UDA 支援的輸入和輸出資料類型
 針對 JavaScript UDA 資料類型，請參閱[整合 JavaScript UDF](stream-analytics-javascript-user-defined-functions.md) 的**串流分析與 JavaScript 類型轉換**一節。
@@ -175,7 +172,7 @@ computeResult() 方法會根據目前的狀態傳回彙總結果。 呼叫此方
 
 ## <a name="calling-javascript-uda-in-asa-query"></a>在 ASA 查詢中呼叫 JavaScript UDA
 
-在 Azure 入口網站中，開啟您的作業、編輯查詢，然後使用授權前置詞 "uda" 來呼叫 TWA() 函式。 例如︰
+在 Azure 入口網站中，開啟您的作業、編輯查詢，然後使用授權前置詞 "uda" 來呼叫 TWA() 函式。 例如：
 
 ```SQL
 WITH value AS
@@ -227,12 +224,12 @@ GROUP BY TumblingWindow(minute, 5)
 
 ## <a name="get-help"></a>取得說明
 
-如需其他協助，請參閱我們的 [Azure 串流分析論壇](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)。
+如需其他協助，請嘗試 [Azure 串流分析的 Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)。
 
 ## <a name="next-steps"></a>後續步驟
 
 * [Azure Stream Analytics 介紹](stream-analytics-introduction.md)
 * [開始使用 Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [調整 Azure Stream Analytics 工作](stream-analytics-scale-jobs.md)
-* [Azure 串流分析查詢語言參考](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Azure 串流分析查詢語言參考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure 串流分析管理 REST API 參考](https://msdn.microsoft.com/library/azure/dn835031.aspx)

@@ -5,46 +5,45 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 63f3572dcb5affb9fcf89d86a665bef9414cb011
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 25f74fb78979313acc068320d842d09a982d8d16
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60755304"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84339139"
 ---
 # <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-data-box-gateway"></a>使用 Azure 入口網站來管理 Azure 資料箱閘道上的頻寬排程  
 
-本文說明如何管理 Azure 資料箱閘道上的使用者。 頻寬排程可讓您設定多個日期時間排程的網路頻寬使用量。 這些排程可以套用至從您的裝置上傳和下載作業到雲端。 
+本文說明如何管理 Azure 資料箱閘道上的使用者。 頻寬排程可讓您設定多個日期時間排程的網路頻寬使用量。 這些排程可以套用至從您的裝置上傳和下載作業到雲端。
 
 您可以透過 Azure 入口網站，新增、修改或刪除資料箱閘道的頻寬排程。
 
-在本文中，您將了解：
+在本文中，您將學會如何：
 
 > [!div class="checklist"]
+>
 > * 新增排程
 > * 修改排程
-> * 刪除排程 
-
+> * 刪除排程
 
 ## <a name="add-a-schedule"></a>新增排程
 
 在 Azure 入口網站中執行下列步驟，以新增使用者。
 
-1. 在 Azure 入口網站中，針對您的資料箱閘道資源，移至 [頻寬]。
-2. 在右窗格中，按一下 [+ 新增排程]。
+1. 在 Azure 入口網站中，針對您的資料箱閘道資源，移至 [頻寬]****。
+2. 在右窗格中，按一下 [+ 新增排程]****。
 
     ![按一下 [新增使用者]](media/data-box-gateway-manage-bandwidth-schedules/add-schedule-1.png)
 
-3. 在 [新增排程] 中： 
+3. 在 [新增排程]**** 中： 
 
-   1. 提供排程的 [開始日期]、[結束日期]、[開始時間]及[結束時間]。 
-   2. 如果此排程全天執行，則您可以勾選 [全天] 選項。 
-   3. [頻寬速率] 是以 MB / 秒 (Mbps) 為單位的頻寬，由您的裝置使用於涉及雲端的作業 (上傳與下載)。 提供一個介於 1 到 1000 之間的數目給此欄位。 
-   4. 如果您不想節流處理上傳和下載日期，請勾選 [無限制] 頻寬。 
-   5. 按一下 [新增] 。
+   1. 提供排程的 [開始日期]****、[結束日期]****、[開始時間]**** 及[結束時間]****。 
+   2. 如果此排程全天執行，則您可以勾選 [全天]**** 選項。 
+   3. [頻寬速率]**** 是以 MB / 秒 (Mbps) 為單位的頻寬，由您的裝置使用於涉及雲端的作業 (上傳與下載)。 提供一個介於 1 到 1000 之間的數目給此欄位。 
+   4. 如果您不想節流處理上傳和下載日期，請勾選 [無限制]**** 頻寬。 
+   5. 按一下 **[新增]** 。
 
       ![按一下 [新增使用者]](media/data-box-gateway-manage-bandwidth-schedules/add-schedule-2.png)
 
@@ -72,9 +71,9 @@ ms.locfileid: "60755304"
 
 執行下列步驟來刪除與資料箱閘道裝置相關聯的頻寬排程。
 
-1. 在 Azure 入口網站中，移至您的資料箱閘道資源，然後移至 [頻寬]。  
+1. 在 Azure 入口網站中，移至您的資料箱閘道資源，然後移至 [**頻寬**]。  
 
-2. 從頻寬排程清單中，選取您想要刪除的排程。 以滑鼠右鍵按一下以顯示操作功能表，然後按一下 [刪除]。 
+2. 從頻寬排程清單中，選取您想要刪除的排程。 以滑鼠右鍵按一下以顯示操作功能表，然後按一下 [刪除]****。 
 
    ![刪除使用者](media/data-box-gateway-manage-bandwidth-schedules/delete-schedule-1.png)
 
@@ -84,4 +83,4 @@ ms.locfileid: "60755304"
 
 ## <a name="next-steps"></a>後續步驟
 
-- 了解如何[管理頻寬](data-box-gateway-manage-bandwidth-schedules.md)。
+- 了解如何[管理頻寬](data-box-gateway-manage-bandwidth-schedules.md)。 

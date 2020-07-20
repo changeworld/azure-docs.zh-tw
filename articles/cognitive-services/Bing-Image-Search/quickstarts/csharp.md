@@ -1,5 +1,5 @@
 ---
-title: 快速入門：搜尋影像 - Bing 影像搜尋 REST API 和 C#
+title: 快速入門：使用 Bing 影像搜尋 REST API 和 C# 來搜尋影像
 titleSuffix: Azure Cognitive Services
 description: 使用此快速入門以運用 C# 來傳送影像搜尋要求給「Bing 影像搜尋 REST API」，並接收 JSON 回應。
 services: cognitive-services
@@ -8,23 +8,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 02/06/2019
+ms.date: 05/08/2020
 ms.author: aahi
-ms.openlocfilehash: b48d9a9d8c28173de90ed3d27bc67a383563550d
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: f35b69a3ca44308a7d314f448bf35b81d7119228
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57551177"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85603514"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-c"></a>快速入門：使用 Bing 影像搜尋 REST API 和 C# 來搜尋影像
 
-使用本快速入門，開始將搜尋要求傳送至 Bing 影像搜尋 API。 這個 C# 應用程式會將搜尋查詢傳送至 API，並顯示結果中第一個影像的 URL。 雖然此應用程式是以 C# 撰寫的，但 API 是一種與大多數程式設計語言都相容的 RESTful Web 服務。
+使用本快速入門，了解如何將搜尋要求傳送至 Bing 影像搜尋 API。 這個 C# 應用程式會將搜尋查詢傳送至 API，並顯示結果中第一個影像的 URL。 雖然此應用程式是以 C# 撰寫的，但 API 是一種與大多數程式設計語言都相容的 RESTful Web 服務。
 
 此範例的原始程式碼可從 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingImageSearchv7Quickstart.cs) 取得，其中含有其他錯誤處理和註釋。
 
 ## <a name="prerequisites"></a>必要條件
-* 任何一版的 [Visual Studio 2017](https://www.visualstudio.com/downloads/)。
+* [Visual Studio 2017 或更新版本](https://www.visualstudio.com/downloads/)的任何版本。
 * [Json.NET](https://www.newtonsoft.com/json) 架構 (以 NuGet 套件形式提供)。
 * 如果您使用 Linux/MacOS，則可以使用 [Mono](https://www.mono-project.com/) 來執行此應用程式。
 
@@ -32,7 +32,7 @@ ms.locfileid: "57551177"
 
 ## <a name="create-and-initialize-a-project"></a>建立專案並將其初始化
 
-1. 在 Visual Studio 中建立一個名為 `BingSearchApisQuickStart` 的新主控台解決方案。 然後將下列命名空間新增至主要程式碼檔案。
+1. 在 Visual Studio 中建立一個名為 `BingSearchApisQuickStart` 的新主控台解決方案。 接著，將下列命名空間新增至主要程式碼檔案：
 
     ```csharp
     using System;
@@ -42,7 +42,7 @@ ms.locfileid: "57551177"
     using Newtonsoft.Json.Linq;
     ```
 
-2. 建立適用於 API 端點、您訂用帳戶金鑰及搜尋字詞的變數。
+2. 建立適用於 API 端點、您訂用帳戶金鑰及搜尋字詞的變數。 針對 `uriBase`，您可以使用下列程式碼中的全域端點，或使用 Azure 入口網站中針對您的資源顯示的[自訂子網域](../../../cognitive-services/cognitive-services-custom-subdomains.md)端點。
 
     ```csharp
     //...
@@ -77,7 +77,7 @@ ms.locfileid: "57551177"
 
 ## <a name="create-a-method-to-send-search-requests"></a>建立方法來傳送搜尋要求
 
-建立一個名為 `BingImageSearch` 的方法來執行對 API 的呼叫，並將傳回類型設定為稍早建立的 `SearchResult` 結構。
+建立一個名為 `BingImageSearch` 的方法來執行對 API 的呼叫，並將傳回類型設定為之前建立的 `SearchResult` 結構。
 
 ```csharp
 //...
@@ -95,9 +95,9 @@ namespace BingSearchApisQuickstart
 
 ## <a name="create-and-handle-an-image-search-request"></a>建立及處理影像搜尋要求
 
-在 `BingImageSearch` 方法中，執行下列步驟。
+在 `BingImageSearch` 方法中，執行下列步驟：
 
-1. 建構搜尋要求的 URI。 搜尋字詞 `SearchTerm` 必須先格式化，才能附加到字串。
+1. 建構搜尋要求的 URI。 將搜尋字詞 `SearchTerm` 格式化，然後再附加至字串。
 
     ```csharp
     static SearchResult BingImageSearch(string SearchTerm){
@@ -136,7 +136,7 @@ namespace BingSearchApisQuickstart
 
 ## <a name="process-and-view-the-response"></a>處理及檢視回應
 
-1. 在主要方法中，呼叫 `BingImageSearch()` 並儲存傳回的回應。 然後將 JSON 還原序列化成物件。
+1. 在主要方法中，呼叫 `BingImageSearch()` 並儲存傳回的回應。 接著，將 JSON 還原序列化為物件。
 
     ```csharp
     SearchResult result = BingImageSearch(searchTerm);
@@ -208,9 +208,8 @@ namespace BingSearchApisQuickstart
 
 ## <a name="see-also"></a>另請參閱
 
-* [什麼是 Bing 影像搜尋？](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
-* [試用線上互動式示範](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/) 
-* Bing 搜尋 API 的[定價詳細資料](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。 
-* [取得免費認知服務存取金鑰](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
+* [什麼是 Bing 影像搜尋 API？](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
+* [試用線上互動式示範](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)
+* [Bing 搜尋 API 的定價詳細資料](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)
 * [Azure 認知服務文件](https://docs.microsoft.com/azure/cognitive-services)
-* [Bing 影像搜尋 API 參考](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)
+* [Bing 影像搜尋 API 參考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

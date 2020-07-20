@@ -1,31 +1,26 @@
 ---
-title: 為 Azure Logic Apps 建立 Web API 和 REST API | Microsoft Docs
+title: 為 Azure Logic Apps 建立 Web API 和 REST API
 description: 建立 Web API 和 REST API 來呼叫您的 API、服務或系統以在 Azure Logic Apps 中進行系統整合
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, jehollan, LADocs
-ms.topic: article
-ms.assetid: bd229179-7199-4aab-bae0-1baf072c7659
+ms.reviewer: jonfan, logicappspm
+ms.topic: conceptual
 ms.date: 05/26/2017
-ms.openlocfilehash: 620ede672d71338abeff5198fd5f94e92dc193d0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 45b53b0e692a1272ba59719655c8d60c90fd6c96
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60681804"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834487"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>建立您可以從 Azure Logic Apps 呼叫的自訂 API
 
-雖然 Azure Logic Apps 提供了 [100 多個內建連接器](../connectors/apis-list.md)，可供您在邏輯應用程式工作流程中使用，但建議您呼叫無法用來作為連接器的 API、系統與服務。 您可以建立自己的 API 來提供要在邏輯應用程式中使用的動作和觸發程序。 以下是您可能會想要建立自己的且可從邏輯應用程式工作流程呼叫之 API 的其他原因：
+雖然 Azure Logic Apps 提供了[數百個內建連接器](../connectors/apis-list.md)，可供您在邏輯應用程式工作流程中使用，但您可能想要呼叫無法用作連接器的 API、系統與服務。 您可以建立自己的 API 來提供要在邏輯應用程式中使用的動作和觸發程序。 以下是您可能會想要建立自己的且可從邏輯應用程式工作流程呼叫之 API 的其他原因：
 
 * 延伸您目前的系統整合及資料整合工作流程。
 * 協助客戶使用您的服務來管理專業或個人工作。
 * 展開您服務的觸達、搜尋功能以及用途。
 
-基本上，連接器是使用 REST 作為隨插即用介面、[Swagger 中繼資料格式](https://swagger.io/specification/)作為文件，以及 JSON 作為其資料交換格式的 web API。 因為連接器是透過 HTTP 端點進行通訊的 REST API，您可以使用諸如 .NET、Java 或 Node.js 等任何語言來建置連接器。 您也可以在 [Azure App Service](../app-service/overview.md) 上裝載您的 API，Azure App Service 是平台即服務 (PaaS) 供應項目，能為 API 裝載提供最佳、最簡單且擴充性最高的方法。 
+基本上，連接器是使用 REST 作為隨插即用介面、[Swagger 中繼資料格式](https://swagger.io/specification/)作為文件，以及 JSON 作為其資料交換格式的 web API。 因為連接器是透過 HTTP 端點進行通訊的 REST API，您可以使用諸如 .NET、Python、Java 或 Node.js 等任何語言來建置連接器。 您也可以在 [Azure App Service](../app-service/overview.md) 上裝載您的 API，Azure App Service 是平台即服務 (PaaS) 供應項目，能為 API 裝載提供最佳、最簡單且擴充性最高的方法。 
 
 若要讓自訂 API 與 Logic Apps 搭配使用，您的 API 可以提供[*動作*](./logic-apps-overview.md#logic-app-concepts)，能在邏輯應用程式工作流程中執行特定的工作。 您的 API 也可作為[*觸發程序*](./logic-apps-overview.md#logic-app-concepts)，當新資料或事件符合指定的條件時，能啟動邏輯應用程式工作流程。 本主題描述常見的模式，以您想要 API 提供的行為作為基礎，加以遵循即可在您的 API 中建置動作和觸發程序。
 
@@ -45,7 +40,7 @@ ms.locfileid: "60681804"
 
 ## <a name="how-do-custom-apis-differ-from-custom-connectors"></a>自訂 API 與自訂連接器有何不同？
 
-自訂 API 和[自訂連接器](../logic-apps/custom-connector-overview.md)是針對可插式介面使用 REST、針對文件使用 [Swagger 中繼資料格式](https://swagger.io/specification/)以及使用 JSON 作為其資料交換格式的 Web API。 而由於這些 API 和連接器是透過 HTTP 端點進行通訊的 REST API，因此您可以使用任何語言 (例如 .NET、Java 或 Node.js) 來建置自訂 API 和連接器。
+自訂 API 和[自訂連接器](../logic-apps/custom-connector-overview.md)是針對可插式介面使用 REST、針對文件使用 [Swagger 中繼資料格式](https://swagger.io/specification/)以及使用 JSON 作為其資料交換格式的 Web API。 而由於這些 API 和連接器是透過 HTTP 端點進行通訊的 REST API，因此您可以使用任何語言 (例如 .NET、Java、Python 或 Node.js) 來建置自訂 API 和連接器。
 
 自訂 API 可讓您呼叫不是連接器的 API，並提供您可以使用 HTTP + Swagger、「Azure API 管理」或「應用程式服務」來呼叫的端點。 自訂連接器的運作方式與自訂 API 類似，但還具有下列屬性：
 
@@ -53,7 +48,7 @@ ms.locfileid: "60681804"
 * 在「Logic Apps 設計工具」中會顯示在 Microsoft 受控連接器旁邊且帶有圖示。
 * 只有連接器的作者，以及在部署邏輯應用程式的區域中具有相同 Azure Active Directory 租用戶和 Azure 訂用帳戶的使用者，才能使用。
 
-您也可以提名已註冊的連接器來進行 Microsoft 認證。 此程序會確認已註冊的連接器符合公開使用準則，然後將這些連接器提供給 Microsoft Flow 和 Microsoft PowerApps 中的使用者使用。
+您也可以提名已註冊的連接器來進行 Microsoft 認證。 此程序會確認已註冊的連接器符合公開使用準則，然後將這些連接器提供給 Power Automate 和 Microsoft PowerApps 中的使用者使用。
 
 如需有關自訂連接器的詳細資訊，請參閱 
 
@@ -106,7 +101,7 @@ ms.locfileid: "60681804"
    
    * 必要：`location` 標頭所指定的 URL 絕對路徑，可讓 Logic Apps 引擎在其中檢查您的 API 作業狀態
 
-   * *可选*：`retry-after` 標頭所指定的秒數，是引擎在檢查 `location` URL 以了解作業狀態時所需等候的時間。 
+   * *選擇性*：`retry-after` 標頭所指定的秒數，是引擎在檢查 `location` URL 以了解作業狀態時所需等候的時間。 
 
      根據預設，引擎每隔 20 秒會進行檢查。 若要指定不同的間隔，請包括 `retry-after` 標頭，以及下一次輪詢之前的秒數。
 
@@ -140,17 +135,19 @@ ms.locfileid: "60681804"
 
 ![Webhook 動作模式](./media/logic-apps-create-api-app/custom-api-webhook-action-pattern.png)
 
-> [!NOTE]
-> 目前，Logic App Designer 並不支援透過 Swagger 探索 webhook 端點。 因此對於此模式，您必須新增 [**Webhook** 動作](../connectors/connectors-native-webhook.md)並指定 URL、標頭，以及您的要求主體。 另請參閱[工作流程動作與觸發程序](logic-apps-workflow-actions-triggers.md#apiconnection-webhook-action)。 若要傳入回呼 URL，您可以視需要在任何一個先前的欄位中使用 `@listCallbackUrl()` 工作流程函式。
+目前，Logic App Designer 並不支援透過 Swagger 探索 webhook 端點。 因此對於此模式，您必須新增 [**Webhook** 動作](../connectors/connectors-native-webhook.md)並指定 URL、標頭，以及您的要求主體。 另請參閱[工作流程動作與觸發程序](logic-apps-workflow-actions-triggers.md#apiconnection-webhook-action)。 如需範例 webhook 模式，請檢閱此 [GitHub 中的 webhook 觸發程序範例](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs)。
 
-> [!TIP]
-> 如需範例 webhook 模式，請檢閱此 [GitHub 中的 webhook 觸發程序範例](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs)。
+以下是一些其他秘訣和注意事項：
+
+* 若要傳入回呼 URL，您可以視需要在任何一個先前的欄位中使用 `@listCallbackUrl()` 工作流程函式。
+
+* 如果您同時擁有邏輯應用程式和已訂閱的服務，則在呼叫回呼 URL 之後，就不必呼叫 `unsubscribe` 端點。 否則，Logic Apps 執行階段必須呼叫 `unsubscribe` 端點，以表示不需要更多呼叫，並允許清除伺服器端上的資源。
 
 <a name="triggers"></a>
 
 ## <a name="trigger-patterns"></a>觸發程序模式
 
-您的自訂 API 可作為[*觸發程序*](./logic-apps-overview.md#logic-app-concepts)，當新資料或事件符合指定的條件時，能啟動邏輯應用程式。 這個觸發程序可以定期檢查，或是等候並接聽您服務端點上的新資料或事件。 如果新的資料或事件符合指定的條件，觸發程序就會引發，並啟動邏輯應用程式，用來接聽該觸發程序。 若要用這種方式啟動 Logic Apps，您的 API 可以遵循[*輪詢觸發程序*](#polling-triggers)或 [ *webhook 觸發程序*](#webhook-triggers)模式。 這些模式會與其[輪詢動作](#async-pattern)和 [webhook 動作](#webhook-actions)的對應類似。 此外，深入了解[觸發程序的使用量計量](logic-apps-pricing.md)。
+您的自訂 API 可作為[*觸發程序*](./logic-apps-overview.md#logic-app-concepts)，當新資料或事件符合指定的條件時，能啟動邏輯應用程式。 這個觸發程序可以定期檢查，或是等候並接聽您服務端點上的新資料或事件。 如果新的資料或事件符合指定的條件，觸發程序就會引發，並啟動邏輯應用程式，用來接聽該觸發程序。 若要用這種方式啟動 Logic Apps，您的 API 可以遵循[*輪詢觸發程序*](#polling-triggers)或 [*webhook 觸發程序*](#webhook-triggers)模式。 這些模式會與其[輪詢動作](#async-pattern)和 [webhook 動作](#webhook-actions)的對應類似。 此外，深入了解[觸發程序的使用量計量](logic-apps-pricing.md)。
 
 <a name="polling-triggers"></a>
 
@@ -202,17 +199,19 @@ Webhook 觸發程序作用很像本主題之前所述的 [webhook 動作](#webho
 
 ![Webhook 觸發程序](./media/logic-apps-create-api-app/custom-api-webhook-trigger-pattern.png)
 
-> [!NOTE]
-> 目前，Logic App Designer 並不支援透過 Swagger 探索 webhook 端點。 因此對於此模式，您必須新增 [**Webhook** 觸發程序](../connectors/connectors-native-webhook.md)並指定 URL、標頭，以及您的要求主體。 另請參閱 [HTTPWebhook 觸發程序](logic-apps-workflow-actions-triggers.md#httpwebhook-trigger)。 若要傳入回呼 URL，您可以視需要在任何一個先前的欄位中使用 `@listCallbackUrl()` 工作流程函式。
->
-> 若要避免多次處理相同的資料，您的觸發程序應該將已讀取並傳遞至邏輯應用程式的資料清除。
+目前，Logic App Designer 並不支援透過 Swagger 探索 webhook 端點。 因此對於此模式，您必須新增 [**Webhook** 觸發程序](../connectors/connectors-native-webhook.md)並指定 URL、標頭，以及您的要求主體。 另請參閱 [HTTPWebhook 觸發程序](logic-apps-workflow-actions-triggers.md#httpwebhook-trigger)。 如需範例 webhook 模式，請檢閱此 [GitHub 中的 webhook 觸發程序控制器範例](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs)。
 
-> [!TIP]
-> 如需範例 webhook 模式，請檢閱此 [GitHub 中的 webhook 觸發程序控制器範例](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs)。
+以下是一些其他秘訣和注意事項：
 
-## <a name="secure-calls-to-your-apis-from-logic-apps"></a>保護從邏輯應用程式對 API 發出的呼叫
+* 若要傳入回呼 URL，您可以視需要在任何一個先前的欄位中使用 `@listCallbackUrl()` 工作流程函式。
 
-建立您的自訂 API 之後，請為 API 設定驗證，以便可以從邏輯應用程式安全地呼叫它們。 了解[如何保護從邏輯應用程式對自訂 API 發出的呼叫](../logic-apps/logic-apps-custom-api-authentication.md)。
+* 若要避免多次處理相同的資料，您的觸發程序應該將已讀取並傳遞至邏輯應用程式的資料清除。
+
+* 如果您同時擁有邏輯應用程式和已訂閱的服務，則在呼叫回呼 URL 之後，就不必呼叫 `unsubscribe` 端點。 否則，Logic Apps 執行階段必須呼叫 `unsubscribe` 端點，以表示不需要更多呼叫，並允許清除伺服器端上的資源。
+
+## <a name="improve-security-for-calls-to-your-apis-from-logic-apps"></a>改善從邏輯應用程式呼叫 API 的安全性
+
+建立您的自訂 API 之後，請為 API 設定驗證，以便可以從邏輯應用程式安全地呼叫它們。 了解[如何改善從邏輯應用程式呼叫自訂 API 的安全性](../logic-apps/logic-apps-custom-api-authentication.md)。
 
 ## <a name="deploy-and-call-your-apis"></a>部署和呼叫您的 API
 
@@ -222,13 +221,13 @@ Webhook 觸發程序作用很像本主題之前所述的 [webhook 動作](#webho
 
 若要將您的自訂 API 提供給 Azure 中的其他 Logic Apps 使用者使用，您必須新增安全性並將它們註冊為 Logic Apps 連接器。 如需詳細資訊，請參閱[自訂連接器概觀](../logic-apps/custom-connector-overview.md)。 
 
-若要將您的自訂 API 提供給 Logic Apps、Microsoft Flow 及 Microsoft PowerApps 中的所有使用者使用，您必須新增安全性、將 API 註冊為 Logic Apps 連接器，並提名您的連接器來進行 [Microsoft Azure 認證計劃](https://azure.microsoft.com/marketplace/programs/certified/logic-apps/)。 
+若要將您的自訂 API 提供給 Logic Apps、Power Automate 及 Microsoft PowerApps 中的所有使用者使用，您必須新增安全性、將 API 註冊為 Logic Apps 連接器，並提名您的連接器來進行 [Microsoft Azure 認證計劃](https://azure.microsoft.com/marketplace/programs/certified/logic-apps/)。 
 
 ## <a name="get-support"></a>取得支援
 
 * 如需自訂 API 的特定說明，請連絡 [customapishelp@microsoft.com](mailto:customapishelp@microsoft.com)。
 
-* 如有問題，請瀏覽 [Azure Logic Apps 論壇](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
+* 如有任何問題，請造訪 [Azure Logic Apps 的 Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)。
 
 * 若要協助改善 Logic Apps，請在 [Logic Apps 使用者意見反應網站](https://aka.ms/logicapps-wish)上票選或提交想法。 
 

@@ -1,26 +1,17 @@
 ---
-title: 教學課程 - 調整 Azure Service Fabric Mesh 中所執行應用程式的大小 | Microsoft Docs
+title: 教學課程 - 調整 Azure Service Fabric Mesh 中所執行的應用程式
 description: 在本教學課程中，了解如何調整 Service Fabric Mesh 中所執行應用程式內服務的大小。
-services: service-fabric-mesh
-documentationcenter: .net
 author: dkkapur
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/11/2019
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 31b1e7a777c65a270b7b08673fcd73a5ab63f11f
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 1b9070e826c30bbeafdee4185ea45cfb53d9efd2
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58337760"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "75351812"
 ---
 # <a name="tutorial-scale-an-application-running-in-service-fabric-mesh"></a>教學課程：調整 Service Fabric Mesh 中所執行應用程式的大小
 
@@ -41,7 +32,7 @@ ms.locfileid: "58337760"
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 開始進行本教學課程之前：
 
@@ -84,7 +75,7 @@ az mesh service show --resource-group myResourceGroup --name ToDoService --app-n
       }
 ```
 
-將您的變更儲存到參數檔案。  *frontEndReplicaCount* 及 *ReplicaCount* 參數的宣告位置位於 [mesh_rp.windows.json 部署範本](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.json)的「參數」區段：
+將您的變更儲存到參數檔案。  *frontEndReplicaCount* 及 *ReplicaCount* 參數的宣告位置位於 [mesh_rp.windows.json 部署範本](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.json)的「參數」  區段：
 
 ```json
 "frontEndReplicaCount":{

@@ -1,26 +1,21 @@
 ---
-title: 適用於 Azure 備份的 Azure Resource Manager 範本
-description: Azure 備份 PowerShell 範例
-services: backup
-author: rayne-wiselman
-manager: carmonm
-ms.service: backup
+title: Azure 資源管理員範本
+description: 要與復原服務保存庫和 Azure 備份功能搭配使用的 Azure Resource Manager 範本
 ms.topic: sample
 ms.date: 01/31/2019
-ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: c0b023b6bdd01bc64eb5a6deb5fafa8e3c34c616
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 09962a37f36621950189e9446099c349de9430bb
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56819015"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170984"
 ---
 # <a name="azure-resource-manager-templates-for-azure-backup"></a>適用於 Azure 備份的 Azure Resource Manager 範本
 
 下表包含 Azure Resource Manager 範本的連結，這些範本適用於復原服務保存庫和 Azure 備份功能。 若要深入了解 JSON 語法和屬性，請參閱 [Microsoft.RecoveryServices 資源類型](/azure/templates/microsoft.recoveryservices/allversions)。
 
-|   |   |
+| [範本] | 描述 |
 |---|---|
 |**復原服務保存庫** | |
 | [建立復原服務保存庫](https://github.com/Azure/azure-quickstart-templates/tree/master/101-recovery-services-vault-create)| 建立復原服務保存庫。 保存庫可以使用於 Azure 備份和 Azure Site Recovery。 |
@@ -32,5 +27,6 @@ ms.locfileid: "56819015"
 | [部署已啟用備份的 Windows Server VM](https://github.com/Azure/azure-quickstart-templates/tree/master/101-recovery-services-create-vm-and-configure-backup) | 範本可建立已啟用預設備份原則的 Windows Server VM 和復原服務保存庫。|
 |**監視備份作業** |  |
 | [使用 Azure 監視器記錄搭配 Azure 備份](https://github.com/Azure/azure-quickstart-templates/tree/master/101-backup-oms-monitoring) | 範本可部署適用於 Azure 備份的 Azure 監視器記錄，讓您監視備份和還原作業、備份警示，以及您復原服務保存庫中使用的雲端儲存體。|  
+|**Azure VM 中的備份 SQL Server** |  |
+| [Azure VM 中的備份 SQL Server](https://github.com/Azure/azure-quickstart-templates/tree/master/101-recovery-services-vm-workload-backup) | 範本會建立復原服務保存庫和工作負載特定的備份原則。 其會向 Azure 備份服務註冊 VM，並在該 VM 上設定保護。 目前，範本只適用於 SQL 資源庫映像。 |
 |   |   |
-

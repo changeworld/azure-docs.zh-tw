@@ -1,35 +1,28 @@
 ---
-title: 搭配 Azure 虛擬機器擴展集使用應用程式健康狀態延伸模組 | Microsoft Docs
+title: 搭配 Azure 虛擬機器擴展集使用應用程式健康狀態延伸模組
 description: 了解如何使用應用程式健康狀態延伸模組，以監視虛擬機器擴展集上所部署應用程式的健康狀態。
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: mayanknayar
-manager: drewm
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
+author: ju-shim
+ms.author: jushiman
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 01/30/2019
-ms.author: manayar
-ms.openlocfilehash: d1cff1011e190e5fbb2874657cbdfbdc68bde0c0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.subservice: extensions
+ms.date: 05/06/2020
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: a38a715b45ab4d0810862ef4d016e4187ea507ab
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60619819"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84783039"
 ---
 # <a name="using-application-health-extension-with-virtual-machine-scale-sets"></a>搭配虛擬機器擴展集使用應用程式健康狀態延伸模組
-監視應用程式健康狀態是用於管理及升級部署的重要訊號。 Azure 虛擬機器擴展集支援包括[自動 OS 映像升級](virtual-machine-scale-sets-automatic-upgrade.md)的[輪流升級](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)，這些升級仰賴個別執行個體的健康狀態監視來升級您的部署。
+監視應用程式健康狀態是用於管理及升級部署的重要訊號。 Azure 虛擬機器擴展集支援包括[自動 OS 映像升級](virtual-machine-scale-sets-automatic-upgrade.md)的[輪流升級](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)，這些升級仰賴個別執行個體的健康狀態監視來升級您的部署。 您也可以使用健康情況延伸模組來監視擴展集中每個實例的應用程式健全狀況，並使用[自動實例修復](virtual-machine-scale-sets-automatic-instance-repairs.md)來執行實例修復。
 
 本文描述如何使用應用程式健康狀態延伸模組，以監視虛擬機器擴展集上所部署應用程式的健康狀態。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 本文假設您已熟悉以下各項：
--   Azure 虛擬機器[延伸模組](../virtual-machines/extensions/overview.md)
+-   Azure 虛擬機器[擴充](../virtual-machines/extensions/overview.md)功能
 -   [修改](virtual-machine-scale-sets-upgrade-scale-set.md)虛擬機器擴展集
 
 ## <a name="when-to-use-the-application-health-extension"></a>使用應用程式健康狀態延伸模組的時機
@@ -39,7 +32,7 @@ ms.locfileid: "60619819"
 
 ## <a name="extension-schema"></a>擴充功能結構描述
 
-下列 JSON 會顯示應用程式健康狀態延伸模組的結構描述。 此延伸模組最少需要分別具有相關聯連接埠和要求路徑的 "tcp" 或 "http" 要求。
+下列 JSON 會顯示應用程式健康狀態延伸模組的結構描述。 延伸模組需要至少有一個相關聯埠或要求路徑的 "tcp"、"HTTP" 或 "HTTPs" 要求。
 
 ```json
 {
@@ -66,17 +59,17 @@ ms.locfileid: "60619819"
 | 名稱 | 值 / 範例 | 資料類型
 | ---- | ---- | ---- 
 | apiVersion | `2018-10-01` | date |
-| publisher | `Microsoft.ManagedServices` | string |
-| type | `ApplicationHealthLinux` (Linux)，`ApplicationHealthWindows` (Windows) | string |
+| publisher | `Microsoft.ManagedServices` | 字串 |
+| type | `ApplicationHealthLinux` (Linux)，`ApplicationHealthWindows` (Windows) | 字串 |
 | typeHandlerVersion | `1.0` | int |
 
 ### <a name="settings"></a>設定
 
-| 名稱 | 值 / 範例 | 数据类型
+| 名稱 | 值 / 範例 | 資料類型
 | ---- | ---- | ----
-| protocol | `http` 或 `tcp` | string |
-| 連接埠 | 通訊協定是 `http` 時為選擇性項目；通訊協定是 `tcp` 時則為必要項目 | int |
-| requestPath | 通訊協定是 `http` 時為必要項目；通訊協定是 `tcp` 時則不允許使用 | string |
+| protocol | `http`、`https` 或 `tcp` | 字串 |
+| 連接埠 | 當通訊協定為 `http` 或時 `https` 為選擇性，當通訊協定為時為必要`tcp` | int |
+| requestPath | 當通訊協定是 `http` 或 `https` 時，不允許使用`tcp` | 字串 |
 
 ## <a name="deploy-the-application-health-extension"></a>部署應用程式健康狀態延伸模組
 有多種方法可以將應用程式健康狀態延伸模組部署至您的擴展集，如下面的範例所詳述。
@@ -149,16 +142,25 @@ Update-AzVmss -ResourceGroupName $vmScaleSetResourceGroup `
 
 使用 [az vmss extension set](/cli/azure/vmss/extension#az-vmss-extension-set)，可將應用程式健康狀態延伸模組新增至擴展集模型定義。
 
-下列範例會將應用程式健康狀態延伸模組新增至 Windows 型擴展集的擴展集模型中。
+下列範例會將應用程式健康情況擴充功能新增至以 Linux 為基礎的擴展集的擴展集模型。
 
 ```azurecli-interactive
 az vmss extension set \
-  --name ApplicationHealthWindows \
+  --name ApplicationHealthLinux \
   --publisher Microsoft.ManagedServices \
   --version 1.0 \
   --resource-group <myVMScaleSetResourceGroup> \
   --vmss-name <myVMScaleSet> \
   --settings ./extension.json
+```
+檔案內容上的 extension.js。
+
+```json
+{
+  "protocol": "<protocol>",
+  "port": "<port>",
+  "requestPath": "</requestPath>"
+}
 ```
 
 
@@ -170,7 +172,8 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.ManagedServices.ApplicationHealthWindows\
 ```
 
 ```Linux
-/var/lib/waagent/apphealth
+/var/lib/waagent/Microsoft.ManagedServices.ApplicationHealthLinux-<extension_version>/status
+/var/log/azure/applicationhealth-extension
 ```
 
 記錄也會定期擷取應用程式健康狀態狀態。

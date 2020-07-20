@@ -1,56 +1,69 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure AD Identity Governance 文件
+### YamlMime:Landing
+title: Azure Active Directory Identity Governance 文件
+summary: Azure Active Directory AD (Azure AD) Identity Governance 可讓您保護、監視及稽核重要資產的存取權，同時確保員工的生產力。
 metadata:
-  document_id: null
-  title: Azure Active Directory Identity Governance 文件 | Microsoft Docs
-  description: 了解身分識別週期治理、存取週期治理，以及保障跨員工與合作夥伴的安全管理。
-  services: active-directory
-  author: rolyon
-  manager: mtillman
+  author: msaburnley
+  description: 了解如何保護、監視及稽核重要資產的存取權，同時確保員工的生產力。
+  manager: daveba
+  ms.author: ajburnle
+  ms.collection: na
+  ms.date: 09/14/2019
   ms.service: active-directory
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: na
   ms.topic: landing-page
-  ms.date: 04/18/2019
-  ms.author: rolyon
-abstract:
-  description: Azure Active Directory (Azure AD) Identity Governance 可讓組織有能力管理身分識別週期、管理存取週期，以及保障跨員工與合作夥伴的安全管理。
-  aside:
-    image:
-      alt: null
-      height: 112
-      src: media/index/video-thumb-identity-governance.png
-      width: 200
-    title: '治理資源存取 (1:17:24)'
-    href: 'https://www.youtube.com/embed/aY7A0Br8u5M'
-    width: 200
-sections:
-  - title: Identity Governance
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/active-directory/governance/identity-governance-overview">什麼是 Identity Governance？</a>
-  - title: 權利管理 (預覽)
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/active-directory/governance/entitlement-management-overview">什麼是 Azure AD 權利管理？</a>
-          - html: <a href="/azure/active-directory/governance/entitlement-management-access-package-first">教學課程 - 建立您的第一個存取套件</a>
-          - html: <a href="/azure/active-directory/governance/entitlement-management-access-package-edit">編輯和管理現有的存取套件</a>
-  - title: 存取權檢閱
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/active-directory/governance/access-reviews-overview">什麼是 Azure AD 存取權檢閱？</a>
-          - html: <a href="/azure/active-directory/governance/create-access-review">建立群組或應用程式的存取權檢閱</a>
-          - html: <a href="/azure/active-directory/governance/perform-access-review">檢閱群組或應用程式的存取權</a>
-  - title: 使用規定
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/active-directory/conditional-access/terms-of-use">需要使用規定？</a>
+  services: active-directory
+  ms.openlocfilehash: 98b634b7aba20fc79e2bae15a5786aae4d1a0bd1
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "73173051"
+landingContent:
+- title: 有關 Identity Governance
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是 Azure AD Identity Governance？
+      url: identity-governance-overview.md
+  - linkListType: video
+    links:
+    - text: 治理資源存取
+      url: https://www.youtube.com/watch?v=bFfowdpApu4&list=PLQXpv_NQsPIBg3op2xONM9KgwlayFDue6
+- title: 治理存取群組、應用程式和網站的生命週期
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是 Azure AD 權利管理？
+      url: entitlement-management-overview.md
+  - linkListType: tutorial
+    links:
+    - text: 建立您的第一個存取套件，以協助使用者要求其所需的存取權
+      url: entitlement-management-access-package-first.md
+  - linkListType: concept
+    links:
+    - text: 委派與角色
+      url: entitlement-management-delegate.md
+- title: 重新認證對群組、應用程式和特殊許可權角色的存取權
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是 Azure AD 存取權檢閱？
+      url: access-reviews-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: 建立存取權檢閱，以確保使用者不會保留過多的存取權
+      url: create-access-review.md
+    - text: 檢閱群組或應用程式的存取權
+      url: perform-access-review.md
+- title: 讓使用者符合特殊權限角色
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是 Azure AD Privileged Identity Management？
+      url: ../privileged-identity-management/pim-configure.md
+- title: 確保使用者能看到免責聲明
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 要求使用者在使用應用程式時，同意使用規定
+      url: ../conditional-access/terms-of-use.md

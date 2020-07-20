@@ -1,78 +1,130 @@
 ---
-title: 調查 Azure Sentinel 預覽版的案例 |Microsoft Docs
-description: 您可以使用本教學課程，了解如何調查 Azure Sentinel 的案例。
+title: 使用 Azure Sentinel 調查事件 |Microsoft Docs
+description: 在本教學課程中，您將瞭解如何使用 Azure Sentinel 來建立可產生事件的高階警示規則，以供您指派和調查。
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
-ms.assetid: a493cd67-dc70-4163-81b8-04a9bc0232ac
-ms.service: sentinel
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/6/2019
-ms.author: rkarlin
-ms.openlocfilehash: d1da180d3b30b57ca2b69985bf3d0261b8d70c39
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.date: 09/23/2019
+ms.author: yelevin
+ms.openlocfilehash: 564041da0be6874acae1bec69e4ab2d744d89323
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205511"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565232"
 ---
-# <a name="tutorial-investigate-cases-with-azure-sentinel-preview"></a>教學課程：調查 Azure Sentinel 預覽版的案例
+# <a name="tutorial-investigate-incidents-with-azure-sentinel"></a>教學課程：使用 Azure Sentinel 調查事件
 
 > [!IMPORTANT]
-> Azure Sentinel 目前為公開預覽狀態。
-> 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> 調查圖表目前為公開預覽狀態。
+> 這項功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。
+> 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-本教學課程可協助您偵測與 Azure Sentinel 的威脅。
 
-之後您[連接的資料來源](quickstart-onboard.md)Sentinel Azure，您要在發生可疑發生時收到通知。 為了讓您執行這項操作，Azure Sentinel 可讓您建立進階產生情況下，您可以將指定的警示規則和用以深入調查異常和您的環境中的威脅。 
+本教學課程可協助您調查 Azure Sentinel 的事件。 在您將資料來源連接到 Azure Sentinel 之後，您會想要在發生可疑的情況時收到通知。 為了讓您這麼做，Azure Sentinel 可讓您建立「高階」警示規則，以產生您可以指派和調查的事件。
 
+本文將說明：
 > [!div class="checklist"]
-> * 建立案例
-> * 調查案例
+> * 調查事件
+> * 使用調查圖表
 > * 回應威脅
 
-## <a name="investigate-cases"></a>調查案例
+事件可以包含多個警示。 它是特定調查的所有相關辨識項的匯總。 系統會根據您在 [**分析**] 頁面中建立的分析規則來建立事件。 與警示相關的屬性（例如嚴重性和狀態）會在事件層級設定。 當您讓 Azure Sentinel 知道您要尋找的威脅種類，以及如何尋找它們之後，您可以藉由調查事件來監視偵測到的威脅。
 
-案例可以包含多個警示。 它是針對特定調查所有相關的辨識項的彙總。 根據您在中定義的警示建立案例**Analytics**頁面。 案例層級會設定警示，例如嚴重性與狀態相關的屬性。 您可以讓 Azure Sentinel 知道何種您想要尋求的威脅，以及如何找到它們之後，您可以監視所調查的情況下偵測到的威脅。 
+## <a name="prerequisites"></a>必要條件
+只有當您在設定分析規則時使用實體對應欄位，才能夠調查事件。 調查圖表需要您的原始事件包含實體。
 
-1. 選取 **情況下**。 **案例** 頁面可讓您知道您有多少個案例，多少有開啟幾個您已設定為**正在**，並關閉多少。 針對每個案例中，您可以看到它的發生的時間和案例的狀態。 看看決定所要處理第一個嚴重性。 在 [**案例**頁面上，按一下**警示**來查看與案例相關的所有警示] 索引標籤。 您在先前案例的一部分可以檢視中所對應的實體**實體** 索引標籤。您可以篩選的情況下，如有需要例如依狀態或嚴重性。 當您查看**案例**索引標籤上，您會看到開啟包含您定義中的偵測規則所觸發的警示的情況下**Analytics**。 在頂端，您會看到您的使用中的情況下，新的情況下，在進行的情況下。 您也可以依嚴重性，查看您所有的案例的概觀。
+## <a name="how-to-investigate-incidents"></a>如何調查事件
 
-   ![警示儀表板](./media/tutorial-investigate-cases/cases.png)
+1. 選取 [**事件**]。 [**事件**] 頁面可讓您知道有多少事件、已開啟的數目、已設定為**進行中**的數目，以及已關閉的事件數目。 針對每個事件，您可以查看發生的時間，以及事件的狀態。 查看嚴重性，以決定要優先處理的事件。
 
-2. 若要開始調查，請按一下特定的案例。 在右側，您可以看到詳細的資訊，包括其嚴重性，涉及的實體數目的摘要 （根據您的對應） 的案例。 每個案例都有唯一的識別碼。 案例的嚴重性是根據最嚴重的警示，包含在案例中決定的。  
+    ![查看事件嚴重性](media/tutorial-investigate-cases/incident-severity.png)
 
-1. 若要檢視更多詳細的警示和實體，在案例中，按一下**檢視的完整詳細資料**萬一頁面，並檢閱相關索引標籤可彙總案例的資訊。  完整案例檢視會彙總警示的相關聯的警示和實體中的所有識別項。
+1. 您可以視需要篩選事件，例如 [狀態] 或 [嚴重性]。
 
-1. 在 **警示**索引標籤上，檢閱警示本身-它觸發時，並由它超過您所設定的臨界值的量。 您可以看到所有的相關資訊，關於警示 – 觸發警示，每個查詢，而且能夠執行腳本警示上傳回的結果數目的查詢。 若要向下鑽研相應減少更進一步成案例中，按一下 叫用次數。 這會開啟查詢產生的結果以及觸發的警示，Log Analytics 中的結果。
+1. 若要開始調查，請選取特定的事件。 在右側，您可以看到事件的詳細資訊，包括其嚴重性、涉及的實體數目摘要、觸發此事件的原始事件，以及事件的唯一識別碼。
 
-3. 在 **實體**索引標籤上，您可以看到您所對應的所有實體的警示規則定義的一部分。 
+1. 若要在事件中查看警示和實體的更多詳細資料，請選取 [事件] 頁面中的 [**查看完整詳細資料**]，並查看摘要事件資訊的相關索引標籤。 在 [**警示**] 索引標籤中，檢查警示本身。 您可以查看警示的所有相關資訊–觸發警示的查詢、每個查詢所傳回的結果數目，以及對警示執行腳本的能力。 若要更進一步向下切入事件，請選取**事件**的數目。 這會開啟產生結果的查詢，以及在 Log Analytics 中觸發警示的事件。 在 [**實體**] 索引標籤中，您可以看到您對應為警示規則定義之一部分的所有實體。
 
-4. 如果您正在主動調查的情況下，它是個不錯的主意，寫狀態設為**正在**直到您關閉它為止。 您也可以關閉的情況下，其中**關閉已解決**狀態的情況下，表示事件已處理，而**關閉 已解除**是不需要處理的情況下的狀態。 需要說明您的理由關閉案例的說明。
+    ![檢視警示詳細資料](media/tutorial-investigate-cases/alert-details.png)
 
-5. 案例可以指派給特定使用者。 每個案例可以指派為擁有者，藉由設定案例**擁有者**欄位。 為 未指派的所有情況下啟動。 您可以進入的情況下，並篩選您的名稱，以查看您所擁有的所有案例。 
+1. 如果您要主動調查事件，建議您將事件的狀態設定為 [**進行中**]，直到您關閉它為止。
 
-5. 按一下 **調查**檢視調查地圖，以及含有補救步驟缺口的範圍。 
+1. 事件可以指派給特定的使用者。 針對每個事件，您可以藉由設定 [**事件擁有**者] 欄位來指派擁有者。 所有事件都以未指派的形式啟動。 您也可以新增批註，讓其他分析師能夠瞭解您調查的內容，以及您對於事件的顧慮。
 
+    ![將事件指派給使用者](media/tutorial-investigate-cases/assign-incident-to-user.png)
 
+1. 選取 [**調查**] 以查看調查地圖。
 
-## <a name="respond-to-threats"></a>回應威脅
+## <a name="use-the-investigation-graph-to-deep-dive"></a>使用調查圖表深入探討
 
-Azure 的 Sentinel，可讓您使用劇本的威脅回應的兩個主要選項。 您可以設定觸發警示時，或您可以手動執行以回應警示的腳本時自動執行的劇本。
+調查圖形可讓分析師針對每項調查提出適當的問題。 調查圖表會將相關的資料與任何涉及的實體相互關聯，以協助您瞭解潛在安全性威脅的範圍，並找出根本原因。 您可以藉由選取並選擇不同的展開選項，深入探索圖形中所呈現的任何實體並加以調查。  
+  
+調查圖形提供：
 
-- 您可以設定當您設定劇本時，會觸發警示時自動執行的劇本。 
+- **原始資料的視覺內容**：即時的視覺效果圖表會顯示從原始資料自動解壓縮的實體關聯性。 這可讓您輕鬆地查看不同資料來源之間的連接。
 
-- 您可以手動執行從腳本內的警示中，依序按一下**檢視劇本**，然後選取要執行的劇本。
+- **完整調查範圍探索**：使用內建的探索查詢來擴展您的調查範圍，以呈現缺口的完整範圍。
 
+- **內建的調查步驟**：使用預先定義的探索選項，以確保您在面臨威脅時詢問正確的問題。
 
+若要使用調查圖形：
 
+1. 選取事件，然後選取 [**調查**]。 這會帶您前往調查圖表。 圖形會提供直接連接到警示，且每個資源彼此連線的對應實體。
+
+   > [!IMPORTANT] 
+   > 只有當您在設定分析規則時使用實體對應欄位，才能夠調查事件。 調查圖表需要您的原始事件包含實體。
+
+   ![檢視地圖](media/tutorial-investigate-cases/map1.png)
+
+1. 選取實體以開啟 [**實體**] 窗格，讓您可以查看該實體的資訊。
+
+    ![在地圖中觀看實體](media/tutorial-investigate-cases/map-entities.png)
+  
+1. 將滑鼠停留在每個實體上以展開您的調查，以顯示由我們的安全性專家和分析師針對每個實體類型所設計的問題清單，以加深您的調查。 我們會呼叫這些選項**探索查詢**。
+
+    ![探索更多詳細資料](media/tutorial-investigate-cases/exploration-cases.png)
+
+   例如，您可以在電腦上要求相關的警示。 如果您選取探索查詢，所產生的結果會加回圖表中。 在此範例中，選取 [**相關警示**] 會將下列警示傳回圖形：
+
+    ![查看相關警示](media/tutorial-investigate-cases/related-alerts.png)
+
+1. 針對每個探索查詢，您可以選取 [**事件 \> **] 來開啟用於記錄分析中的原始事件結果和查詢的選項。
+
+1. 為了瞭解事件，圖形提供平行的時間軸。
+
+    ![在地圖中查看時程表](media/tutorial-investigate-cases/map-timeline.png)
+
+1. 將滑鼠停留在時程表上，以查看圖形上有哪些專案發生在哪個時間點。
+
+    ![在地圖中使用時間表來調查警示](media/tutorial-investigate-cases/use-timeline.png)
+
+## <a name="closing-an-incident"></a>關閉事件
+
+一旦您解決了特定事件（例如，當您的調查已達到其結論時），您應該將事件的狀態設定為 [**已關閉**]。 當您這麼做時，系統會要求您將事件分類，方法是指定您要關閉的原因。 此為必要步驟。 按一下 [**選取分類**]，然後從下拉式清單中選擇下列其中一項：
+
+- 真肯定-可疑活動
+- 良性肯定-可疑但預期
+- 錯誤正面-不正確的警示邏輯
+- 錯誤的正面-不正確的資料
+- 確定
+
+:::image type="content" source="media/tutorial-investigate-cases/closing-reasons-dropdown.png" alt-text="{alt-text}":::
+
+選擇適當的分類之後，請在 [**批註**] 欄位中新增一些描述性文字。 當您需要回頭參考此事件時，這會很有用。 當**您**完成時，按一下 [套用]，事件將會關閉。
+
+:::image type="content" source="media/tutorial-investigate-cases/closing-reasons-comment-apply.png" alt-text="{alt-text}":::
 
 ## <a name="next-steps"></a>後續步驟
-在本教學課程中，您已了解如何開始調查情況下，使用 Azure 的 Sentinel。 繼續進行教學課程[如何回應潛在威脅，使用自動化的腳本](tutorial-respond-threats-playbook.md)。
+在本教學課程中，您已瞭解如何使用 Azure Sentinel 開始調查事件。 繼續進行教學課程，以瞭解[如何使用自動化的操作手冊來回應威脅](tutorial-respond-threats-playbook.md)。
 > [!div class="nextstepaction"]
-> [因應威脅](tutorial-respond-threats-playbook.md)自動化威脅的回應。
+> [回應威脅](tutorial-respond-threats-playbook.md)，將您對威脅的回應自動化。
 

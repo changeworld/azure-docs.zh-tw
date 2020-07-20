@@ -1,69 +1,65 @@
 ---
-title: 了解 Azure 資訊安全中心的 IoT 安全性代理程式架構預覽 |Microsoft Docs
-description: 了解使用 Azure 資訊安全中心的 IoT 服務的代理程式安全性代理程式架構。
+title: 安全性代理程式架構
+description: 瞭解 IoT 服務的 Azure 資訊安全中心中使用之代理程式的安全性代理程式架構。
 services: asc-for-iot
-ms.service: ascforiot
+ms.service: asc-for-iot
 documentationcenter: na
 author: mlottner
 manager: rkarlin
 editor: ''
 ms.assetid: e78523ae-d70a-456a-818d-f8b1b025d7cb
+ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/25/2019
+ms.date: 07/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 3c05b7e9b1c6d1b9214da168f7abfcbb322f8f6d
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
-ms.translationtype: MT
+ms.openlocfilehash: 9029ece923b7cda09c7a57d07736791e241c9e70
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65192526"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "81310676"
 ---
 # <a name="security-agent-reference-architecture"></a>安全性代理程式參考架構
 
-> [!IMPORTANT]
-> 適用於 IoT 的 Azure 資訊安全中心目前為公開預覽狀態。
-> 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+適用于 IoT 的 Azure 資訊安全中心會提供安全性代理程式的參考架構，以透過 IoT 中樞記錄、處理、匯總和傳送安全性資料。
 
-
-IoT 的 azure 資訊安全中心 (ASC) 提供參考架構的安全性記錄、 處理、 彙總，以及傳送到 IoT 中樞的安全性資料的代理程式。
-
-安全性代理程式設計來在受條件約束的 IoT 環境中，運作，並可高度自訂方面提供相較於它們所取用的資源的值。
+安全性代理程式是設計用來在受條件約束的 IoT 環境中工作，而且在與取用的資源相較之下，可高度自訂其所提供的值。
 
 安全性代理程式支援下列功能：
 
-- 從基礎作業系統 （Linux、 Windows） 收集未經處理的安全性事件。 若要深入了解可用的安全性資料收集器，請參閱[IoT 代理程式設定的 ASC](how-to-agent-configuration.md)。
+- 從基礎作業系統（Linux、Windows）收集原始安全性事件。 若要深入瞭解可用的安全性資料收集器，請參閱[適用于 IoT 代理程式設定的 Azure 資訊安全中心](how-to-agent-configuration.md)。
 
-- 將透過 IoT 中樞傳送的訊息的彙總的原始安全性事件。
+- 將原始安全性事件匯總到透過 IoT 中樞傳送的訊息。
 
-- 使用現有的裝置身分識別或專用的模組身分識別進行驗證。 請參閱[安全性代理程式驗證方法](concept-security-agent-authentication-methods.md)若要深入了。
+- 使用現有的裝置身分識別或專用模組身分識別進行驗證。 若要深入瞭解，請參閱[安全性代理程式驗證方法](concept-security-agent-authentication-methods.md)。
 
-- 設定從遠端透過善用**azureiotsecurity**模組對應項。 若要進一步了解，請參閱[設定 IoT 代理程式 ASC](how-to-agent-configuration.md)。
+- 透過使用**azureiotsecurity**模組對應項來遠端設定。 若要深入瞭解，請參閱[設定 IoT 代理程式的 Azure 資訊安全中心](how-to-agent-configuration.md)。
 
-ASC 建立 IoT 安全性代理程式會開發做為開放原始碼專案，而且可從 GitHub: 
+IoT 安全性代理程式的 Azure 資訊安全中心是以開放原始碼專案的方式開發，並可從 GitHub 取得：
 
-- [ASC IoT C 為基礎的代理程式](https://github.com/Azure/Azure-IoT-Security-Agent-C) 
-- [ASC iot C#-代理程式](https://github.com/Azure/Azure-IoT-Security-Agent-CS)
+- [以 IoT C 為基礎的代理程式 Azure 資訊安全中心](https://github.com/Azure/Azure-IoT-Security-Agent-C)
+- [適用于 IoT c # 型代理程式的 Azure 資訊安全中心](https://github.com/Azure/Azure-IoT-Security-Agent-CS)
 
-## <a name="agent-supported-platforms"></a>支援的代理程式的平台
+## <a name="agent-supported-platforms"></a>代理程式支援的平臺
 
-Iot 的 ASC 提供 32 位元和 64 位元 Windows，不同的安裝程式代理程式和適用於 32 位元和 64 位元 Linux。 請確定您有正確的代理程式安裝程式，您的裝置，根據下表的每個項目：
+適用于 IoT 的 Azure 資訊安全中心提供32位和64位 Windows 的不同安裝程式代理程式，而32位和64位 Linux 則相同。 請根據下表，確定您的每個裝置都有正確的代理程式安裝程式：
 
-| 32 或 64 位元 |  Linux |  Windows |    詳細資料|
+| 架構 | Linux | Windows |    詳細資料|
 |----------|----------------------------------------------|-------------|-------------------------------------------|
 | 32 位元  | C  | C#  ||
-| 64 位元  | C#或 C           | C#      | 使用 C 代理程式具有最少資源的裝置|
+| 64 位元  | C # 或 C           | C#      | 針對具有更多限制或最少裝置資源的裝置，我們建議使用 C 代理程式。|
+|
 
 ## <a name="next-steps"></a>後續步驟
 
-在本文中，您已了解 ASC IoT 安全性代理程式架構，和可用的安裝程式。
+在本文中，您已瞭解 IoT 安全性代理程式架構的 Azure 資訊安全中心，以及可用的安裝程式。
 
-若要繼續開始使用 ASC 針對 IoT 部署，請使用下列文章：
+若要繼續開始使用 Azure 資訊安全中心進行 IoT 部署，請使用下列文章：
 
-- 了解[安全性代理程式驗證方法](concept-security-agent-authentication-methods.md)
-- 選取和部署[安全性代理程式](how-to-deploy-agent.md)
-- 檢閱 ASC iot[服務必要條件](service-prerequisites.md)
-- 了解如何[啟用 ASC 中您的 IoT 中樞的 IoT 服務](quickstart-onboard-iot-hub.md)
-- 深入了解從服務[ASC IoT 常見問題集](resources-frequently-asked-questions.md)
+- 瞭解[安全性代理程式驗證方法](concept-security-agent-authentication-methods.md)
+- 選取並部署[安全性代理程式](how-to-deploy-agent.md)
+- 審查 IoT[服務必要條件](service-prerequisites.md)的 Azure 資訊安全中心
+- 瞭解如何[在您的 IoT 中樞中啟用 IoT 服務的 Azure 資訊安全中心](quickstart-onboard-iot-hub.md)
+- 深入瞭解[適用于 IoT 的 Azure 資訊安全中心](resources-frequently-asked-questions.md)的服務常見問題

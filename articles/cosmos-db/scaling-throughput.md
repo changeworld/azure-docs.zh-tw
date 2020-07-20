@@ -1,44 +1,44 @@
 ---
 title: 調整 Azure Cosmos DB 的輸送量
-description: 此文章說明 Azure Cosmos DB 如何彈性調整輸送量
-author: dharmas-cosmos
+description: 本文說明 Azure Cosmos DB 如何在布建 Azure Cosmos 帳戶的不同區域之間調整輸送量。
+author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/24/2019
-ms.author: dharmas
+ms.date: 12/02/2019
+ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: b645fe210e7eeb073380dcadefead3e1b4d7ccc0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4cc8f2c90e74b5b3ab6df3169df0524f1134b66e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60926376"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85113597"
 ---
 # <a name="globally-scale-provisioned-throughput"></a>全域調整佈建的輸送量 
 
-在 Azure Cosmos DB 中，佈建的輸送量以要求單位/秒 （RU/秒或複數形式 Ru）。 RU 會根據您的 Cosmos 容器來衡量讀取與寫入作業的成本，如下圖所示：
+在 Azure Cosmos DB 中，布建的輸送量會以每秒要求單位數（RU/秒或複數形式 RUs）來表示。 RU 會根據您的 Cosmos 容器來衡量讀取與寫入作業的成本，如下圖所示：
 
-![要求單位](./media/scaling-throughput/request-unit-charge-of-read-and-write-operations.png)
+:::image type="content" source="./media/scaling-throughput/request-unit-charge-of-read-and-write-operations.png" alt-text="要求單位" border="false":::
 
-您可以在 Cosmos 容器或 Cosmos 資料庫上佈建 RU。 在容器上佈建的 Ru 是僅適用於該容器上執行的作業。 佈建於資料庫上的 RU 會在該資料庫內的所有容器之間共用 (但任何具有以獨佔方式指派之 RU 的容器除外)。
+您可以在 Cosmos 容器或 Cosmos 資料庫上佈建 RU。 在容器上布建的 ru 僅適用于在該容器上執行的作業。 佈建於資料庫上的 RU 會在該資料庫內的所有容器之間共用 (但任何具有以獨佔方式指派之 RU 的容器除外)。
 
-彈性地調整佈建的輸送量，您可以增加或減少在任何時間的佈建的 RU/秒。 如需詳細資訊，請參閱 <<c0> [ 如何佈建輸送量](set-throughput.md)以及彈性地調整 Cosmos 容器和資料庫。 全域調整輸送量，您可以新增或移除您的 Cosmos 帳戶中的區域，在任何時間。 如需詳細資訊，請參閱[在資料庫帳戶中新增/移除區域](how-to-manage-database-account.md#addremove-regions-from-your-database-account)。 將多個區域與 Cosmos 帳戶產生關聯，請務必在許多情況下-來達成低延遲及[高可用性](high-availability.md)世界各地。
+針對彈性調整布建的輸送量，您可以隨時增加或減少布建的 RU/秒。 如需詳細資訊，請參閱[如何布建輸送量](set-throughput.md)和彈性 scale Cosmos 容器和資料庫。 針對全域調整輸送量，您可以隨時在 Cosmos 帳戶中新增或移除區域。 如需詳細資訊，請參閱[在資料庫帳戶中新增/移除區域](how-to-manage-database-account.md#addremove-regions-from-your-database-account)。 在許多情況下，將多個區域與 Cosmos 帳戶建立關聯非常重要，以達成世界各地的低延遲和[高可用性](high-availability.md)。
 
 ## <a name="how-provisioned-throughput-is-distributed-across-regions"></a>如何在區域中散發佈建輸送量
 
-如果您佈建 *'R'* Ru Cosmos 容器 （或資料庫），在 Cosmos DB 可確保 *'R'* Ru 位於*每個*Cosmos 帳戶相關聯的區域。 每當您將新的區域新增至您的帳戶，Cosmos DB 會自動會佈建 *'R'* 新加入的區域中的 Ru。 針對您的 Cosmos 容器執行的作業保證會取得 *'R'* 每個區域中的 Ru。 您無法選擇性地將 RU 指派給特定區域。 您的 Cosmos 帳戶相關聯的所有區域中佈建 Cosmos 容器 （或資料庫） 上佈建的 Ru。
+如果您在 Cosmos 容器（或資料庫）上布建 *' r '* 個 ru，Cosmos DB 確保與您的 Cosmos 帳戶相關聯的*每個*區域中都有 *' r '* 個 ru 可供使用。 每次您將新區域新增至您的帳戶時，Cosmos DB 會在新增的區域中自動布建 *' R '* 個 ru。 針對您的 Cosmos 容器執行的作業保證會在每個區域中取得 *' R '* 個 ru。 您無法選擇性地將 RU 指派給特定區域。 在 Cosmos 容器（或資料庫）上布建的 ru 會布建在與您 Cosmos 帳戶相關聯的所有區域中。
 
-假設 Cosmos 容器設有 *'R'* Ru 還有 *'n'* 區域關聯至 Cosmos 帳戶，然後：
+假設 Cosmos 容器是使用 *' R '* 個 ru 設定的，而且有 *' N '* 個區域與 Cosmos 帳戶相關聯，則：
 
-- 如果 Cosmos 帳戶設定為使用單一的寫入區域，在容器上的全域可用的總 Ru = *R* x *N*。
+- 如果 Cosmos 帳戶是使用單一寫入區域設定的，容器上全域可用的 ru 總數 = *R* x *N*。
 
-- 如果 Cosmos 帳戶設有多個的寫入區域，在容器上的全域可用的總 Ru = *R* x (*N*+ 1)。 額外*R* Ru 會自動佈建程序更新衝突和反 entropy 流量跨區域。
+- 如果 Cosmos 帳戶是使用多個寫入區域設定的，容器上全域可用的 ru 總數 = *R* x （*N*+ 1）。 系統會自動布建額外的*R* ru，以處理跨區域的更新衝突和防熵流量。
 
-您選擇的[一致性模型](consistency-levels.md)也會影響輸送量。 您可以取得大約 2 倍的讀取輸送量更寬鬆的一致性層級 (例如*工作階段*，*一致前置詞*並*最終*一致性) 相較於更強的一致性層級 (例如*限定過期*或是*強式*一致性)。
+您選擇的[一致性模型](consistency-levels.md)也會影響輸送量。 相較于更強的一致性層級（例如，*限定過期*或*強*式一致性），您可以針對更寬鬆的一致性層級（例如，*會話*、*一致前置*詞和*最終*一致性）取得大約2倍的讀取輸送量。
 
 ## <a name="next-steps"></a>後續步驟
 
-接下來您可以了解如何在容器或資料庫上設定的輸送量：
+接下來，您可以瞭解如何在容器或資料庫上設定輸送量：
 
 * [取得並設定適用於容器和資料庫的輸送量](set-throughput.md) 
 

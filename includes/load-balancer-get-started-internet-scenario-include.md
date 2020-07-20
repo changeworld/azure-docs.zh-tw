@@ -1,16 +1,15 @@
 ---
-author: WenJason
+author: kumudD
 ms.service: load-balancer
 ms.topic: include
-origin.date: 11/09/2018
-ms.date: 12/31/2018
-ms.author: v-jay
+ms.date: 11/09/2018
+ms.author: kumud
 ms.openlocfilehash: bf3aee30460e052db23cf9090f13e2af3b22628b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60516957"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67174402"
 ---
 下列工作將會在此案例中完成：
 

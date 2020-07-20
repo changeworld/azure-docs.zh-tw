@@ -1,18 +1,14 @@
 ---
-title: Azure 監視器停用計量與自動調整的傳統部署模型 API
+title: 淘汰 Azure 監視器計量和自動調整的部署 Api
 description: 計量與自動調整傳統 API 即將停用，此 API 亦稱為「Azure 服務管理」(ASM) 或 RDFE 部署模型
-author: rboucher
-services: azure-monitor
-ms.service: azure-monitor
+ms.subservice: ''
 ms.topic: conceptual
 ms.date: 11/19/2018
-ms.author: robb
-ms.openlocfilehash: ce54b63aa7831ed40a8592d536c43fc83fdc5567
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: d9b6118bc165a9b0a78ae9c4da895719249b22b7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60709978"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "81114220"
 ---
 # <a name="azure-monitor-retirement-of-classic-deployment-model-apis-for-metrics-and-autoscale"></a>Azure 監視器停用計量與自動調整的傳統部署模型 API
 
@@ -38,7 +34,7 @@ Azure 監視器 (首次發行時名為 Azure Insights) 目前的工可建立與�
 
 如果您不確定您的程式碼或自訂工具是否會呼叫傳統 API，請參閱下方：
 
-- 檢視您程式碼或工具中所參考的 URI。 傳統 API 會使用 URI https://management.core.windows.net。 請從 https://management.azure.com/ 開始，在以 Resource Manager 為基礎的 API 上使用新 URI。
+- 檢視您程式碼或工具中所參考的 URI。 傳統 API 會使用 URI https://management.core.windows.net。 請從 `https://management.azure.com/` 開始，在以 Resource Manager 為基礎的 API 上使用新 URI。
 
 - 比較您電腦上的組件名稱。 舊的傳統組件位於 https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/。
 
@@ -61,7 +57,7 @@ Azure 監視器 (首次發行時名為 Azure Insights) 目前的工可建立與�
 - 支援維度
 - 所有服務之間有一致的 1 分鐘計量細微性 
 - 更好的查詢功能
-- 更長的資料保留期 (計量 93 天 vs.30 天) 
+- 較高的資料保留期（93天的計量與30天） 
 
 整體而言，Resource Manager 型的 Azure 監視器 API 與 Azure 中所有其他的服務一樣，效能、延展性及可靠性都更好。 
 
@@ -75,9 +71,9 @@ Azure 監視器 (首次發行時名為 Azure Insights) 目前的工可建立與�
 
 任何對先前所列傳統 API 的呼叫將會失敗，並傳回如下的錯誤訊息：
 
-對於自動調整：*這個 API 已被取代。請使用 Azure 入口網站、Azure 監視器 SDK、PowerShell、CLI 或 Resource Manager 範本管理自動調整設定*。  
+針對自動調整：*此 API 已被取代。使用 [Azure 入口網站]、[Azure 監視器 SDK]、[PowerShell]、[CLI] 或 Resource Manager 範本來管理自動調整設定*。  
 
-對於計量：*這個 API 已被取代。請使用 Azure 入口網站，Azure 監視器 SDK、PowerShell、CLI 查詢計量*。
+針對計量：*這個 API 已被取代。使用 Azure 入口網站、Azure 監視器 SDK、PowerShell、CLI 來查詢計量*。
 
 ## <a name="email-notifications"></a>電子郵件通知
 
@@ -88,7 +84,7 @@ Azure 監視器 (首次發行時名為 Azure Insights) 目前的工可建立與�
 
 如有任何疑問，請與我們連絡：MonitorClassicAPIhelp@microsoft.com。  
 
-## <a name="references"></a>參考
+## <a name="references"></a>參考資料
 
 - [Azure 監視器的新 REST API](https://docs.microsoft.com/rest/api/monitor/) (英文) 
 - [新 Azure 監視器 SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/) (英文)

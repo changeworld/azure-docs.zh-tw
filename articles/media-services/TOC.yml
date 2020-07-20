@@ -7,6 +7,20 @@
   href: video-indexer/
 - name: Azure 媒體播放器
   href: 'https://amp.azure.net/libs/amp/latest/docs/index.html'
+- name: 規格
+  items:
+    - name: 計時中繼資料
+      items:
+        - name: RTMP 和 Smooth Streaming
+          href: media-services-specifications-live-timed-metadata.md
+    - name: 通訊協定
+      items:
+        - name: Smooth Streaming (MS-SSTR)
+          items:
+            - name: HEVC 支援
+              href: media-services-specifications-ms-sstr-amendment-hevc.md
+            - name: Smooth Streaming 內嵌
+              href: media-services-fmp4-live-ingest-overview.md
 - name: 資源
   items:
     - name: Azure 藍圖

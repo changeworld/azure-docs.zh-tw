@@ -1,32 +1,29 @@
 ---
-title: Azure Data Factory 對應資料流程新增分支轉換
-description: Azure Data Factory 對應資料流程新增分支轉換
+title: 對應資料流程中的多個分支
+description: 使用多個分支複寫對應資料流程中的資料流程
 author: kromerm
 ms.author: makromer
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 02/12/2019
-ms.openlocfilehash: 9fac78f21f2f128ccb040e176891c33d39bf2820
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.custom: seo-lt-2019; seo-dt-2019
+ms.date: 01/08/2020
+ms.openlocfilehash: daebd6a4a00d82706ceda68f94736f21b8fe5a84
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61348928"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "81606400"
 ---
-# <a name="azure-data-factory-mapping-data-flow-new-branch-transformation"></a>Azure Data Factory 對應資料流程新增分支轉換
+# <a name="creating-a-new-branch-in-mapping-data-flow"></a>在對應資料流程中建立新的分支
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-![分支選項](media/data-flow/menu.png "功能表")
+加入新的分支，針對相同的資料流程執行多組作業和轉換。 當您想要將相同的來源用於多個接收或自我聯結資料時，加入新的分支會很有用。
 
-分支會取用資料流程中的目前資料流，並將它複寫至另一個資料流。 使用「新增分支」針對同一個資料流執行多組作業和轉換。
+可以從與其他轉換類似的轉換清單中加入新的分支。 只有在您嘗試分支的轉換後面有現有轉換時，**新分支**才會當做動作使用。
 
-範例：在資料流程中有來源轉換，包含一組選取的資料行和資料類型轉換。 接下來在該來源後放置衍生的資料行。 在「衍生的資料行」中，您已建立新的欄位，一個結合名字和姓氏而成的新「全名」欄位。
+![加入新的分支](media/data-flow/new-branch2.png "加入新的分支")
 
-您可以使用一組轉換和一個資料列的接收處理新的資料流，並使用「新增分支」建立一份相同的資料流，以便使用不同組的轉換來轉換該資料。 在另外的分支轉換複製的資料，後續即可將該資料接收到不同的位置。
+在下列範例中，資料流程會讀取出租車路線資料。 每日和廠商所匯總的輸出都是必要的。 可以新增分支，而不是建立兩個不同的資料流程，從相同的來源讀取。 如此一來，這兩個匯總就可以當做相同資料流程的一部分來執行。 
 
-> [!NOTE]
-> 在嘗試設定分支的目前位置有後續的轉換時，「新增分支」只會顯示「+ 轉換」功能表上的動作。 換句話說，直到在「選取」之後新增另一個轉換時，您才會看到此處結尾出現「新增分支」選項
-
-![分支](media/data-flow/branch2.png "分支 2")
+![加入新的分支](media/data-flow/new-branch.png "加入新的分支")

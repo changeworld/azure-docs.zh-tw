@@ -1,23 +1,15 @@
 ---
-title: 如何使用參數在 Azure Service Fabric 中指定服務的連接埠號碼 | Microsoft Docs
+title: 使用參數指定服務的埠號碼
 description: 示範如何使用參數在 Service Fabric 中指定應用程式的連接埠
-documentationcenter: .net
 author: mikkelhegn
-manager: markfuss
-editor: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 12/06/2017
 ms.author: mikhegn
-ms.openlocfilehash: d69e02126564388bf045693b9960e6e574307641
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: a53626b8fd362397ba89df30b099fa3c9ff7b0a2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60720241"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75609854"
 ---
 # <a name="how-to-specify-the-port-number-of-a-service-using-parameters-in-service-fabric"></a>如何在 Service Fabric 中使用參數指定服務的連接埠號碼
 
@@ -61,7 +53,7 @@ ms.locfileid: "60720241"
       </ServiceManifestImport>
     ```
 
-1. 然後仍舊在 ApplicationManifest.xml 中，指定 `Parameters` 元素中的參數
+1. 仍舊在 ApplicationManifest.xml 檔案中，然後指定 `Parameters` 元素中的參數
 
     ```xml
       <Parameters>
@@ -86,7 +78,7 @@ ms.locfileid: "60720241"
       </Parameters>
     ```
 
-當使用 Cloud.xml 發行設定檔從 Visual Studio 發行您的應用程式時，您的服務會設定為使用連接埠 80。 如果部署應用程式未指定 MyWebAPI_PortNumber 參數，則服務會使用連接埠 8080。
+使用 Cloud.xml 發行設定檔從 Visual Studio 發行您的應用程式時，您的服務會設定為使用連接埠 80。 如果部署應用程式未指定 MyWebAPI_PortNumber 參數，則服務會使用連接埠 8080。
 
 ## <a name="next-steps"></a>後續步驟
 若要深入了解這篇文章所討論的某些核心概念，請參閱[管理多個環境發行項的應用程式](service-fabric-manage-multiple-environment-app-configuration.md)。

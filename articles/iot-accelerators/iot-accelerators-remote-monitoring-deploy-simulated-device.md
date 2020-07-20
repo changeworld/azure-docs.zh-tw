@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 08/15/2018
 ms.topic: conceptual
-ms.openlocfilehash: cdd2b24e6f833ee0acb229a37c7cd3b8b6f36339
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 7cbab38db859935c9f4490d79a131d6c9a7e302b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59682044"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "66427576"
 ---
 # <a name="deploy-a-new-simulated-device"></a>部署新的模擬裝置
 
@@ -88,13 +88,14 @@ ms.locfileid: "59682044"
 1. 將容器中的現有裝置模型檔案複製到新位置。 首先，找出裝置模擬容器的容器識別碼：
 
     ```sh
-    docker ps
+    sudo docker ps
     ```
 
     然後將裝置模型檔案複製到虛擬機器中的 **tmp** 資料夾。 下列命令假設容器識別碼為 c378d6878407 -- 以您的裝置模擬容器識別碼取代此值：
 
     ```sh
-    docker cp c378d6878407:/app/webservice/data/devicemodels /tmp
+    sudo docker cp c378d6878407:/app/webservice/data/devicemodels /tmp
+    sudo chown -R azureuser /tmp/devicemodels/
     ```
 
     讓 **bash** 視窗中的 SSH 工作階段保持開啟狀態。
@@ -116,13 +117,13 @@ ms.locfileid: "59682044"
     如果您要查看執行中 Docker 容器的狀態及其容器識別碼，請使用下列命令：
 
     ```sh
-    docker ps
+    sudo docker ps
     ```
 
     如果您要查看來自裝置模擬容器的記錄，請執行下列命令。 以您裝置模擬容器的識別碼取代此容器識別碼：
 
     ```sh
-    docker logs -f 5d3f3e78822e
+    sudo docker logs -f 5d3f3e78822e
     ```
 
 ## <a name="run-simulation"></a>執行模擬
@@ -131,7 +132,7 @@ ms.locfileid: "59682044"
 
 1. 從 [Microsoft Azure IoT 解決方案加速器](https://www.azureiotsolutions.com/Accelerators#dashboard)啟動您的遠端監視儀表板。
 
-1. 使用 [裝置] 頁面來新增模擬裝置。 當您新增模擬裝置時，您的新裝置模型可以供您選擇。
+1. 使用 [裝置]**** 頁面來新增模擬裝置。 當您新增模擬裝置時，您的新裝置模型可以供您選擇。
 
 1. 您可以使用儀表板來檢視裝置遙測資料並呼叫裝置方法。
 
@@ -139,7 +140,7 @@ ms.locfileid: "59682044"
 
 如果您打算進一步探索，請讓遠端監視解決方案加速器維持部署。
 
-如果您不再需要解決方案加速器，可加以選取，然後按一下 [刪除解決方案]，從[已佈建的解決方案](https://www.azureiotsolutions.com/Accelerators#dashboard)頁面中加以刪除。
+如果您不再需要解決方案加速器，請在 [已布[建的解決方案](https://www.azureiotsolutions.com/Accelerators#dashboard)] 頁面中選取它，然後按一下 [**刪除解決方案**]，將它刪除。
 
 ## <a name="next-steps"></a>後續步驟
 

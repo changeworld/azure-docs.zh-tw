@@ -1,24 +1,15 @@
 ---
-title: 使用 Azure Cosmos DB 和 Functions 儲存非結構化資料 | Microsoft Docs
+title: 使用 Azure Cosmos DB 和 Functions 儲存非結構化資料
 description: 使用 Azure Functions 和 Cosmos DB 儲存非結構化資料
-services: functions
-documentationcenter: functions
-author: ggailey777
-manager: jeconnoc
-keywords: azure functions, 函式, 事件處理, Cosmos DB, 動態計算, 無伺服器架構
-ms.assetid: ''
-ms.service: azure-functions
-ms.devlang: csharp
 ms.topic: quickstart
-ms.date: 10/01/2018
-ms.author: glenga
+ms.date: 04/14/2020
 ms.custom: mvc
-ms.openlocfilehash: cdae0a04d09b7985935bee0ae636d7f88fbff541
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 09d9bbca7119539f31a4cea056f338cf28dfcd23
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54903650"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121846"
 ---
 # <a name="store-unstructured-data-using-azure-functions-and-azure-cosmos-db"></a>使用 Azure Functions 和 Azure Cosmos DB 儲存非結構化資料
 
@@ -29,9 +20,7 @@ ms.locfileid: "54903650"
 
 在 Azure Functions 中，輸入和輸出繫結會提供宣告式方法，以便從函式連線到外部服務資料。 在本文中，了解如何更新現有的函式，以新增可在 Azure Cosmos DB 文件中儲存非結構化資料的輸出繫結。
 
-![Cosmos DB](./media/functions-integrate-store-unstructured-data-cosmosdb/functions-cosmosdb.png)
-
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本教學課程：
 
@@ -45,36 +34,36 @@ ms.locfileid: "54903650"
 
 ## <a name="add-an-output-binding"></a>新增輸出繫結
 
-1. 在入口網站中，瀏覽至您先前建立的函式應用程式，然後展開函式應用程式和函式。
+1. 在 Azure 入口網站中，瀏覽至您先前建立的函式應用程式，並加以選取。
 
-1. 選取 [整合] 和 [+ 新增輸出]，其位於頁面的右上方。 選擇 [Azure Cosmos DB]，然後按一下 [選取]。
+1. 選取 [函式]，然後選取 HttpTrigger 函式。
 
-    ![新增 Azure Cosmos DB 輸出繫結](./media/functions-integrate-store-unstructured-data-cosmosdb/functions-integrate-tab-add-new-output-binding.png)
+    :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-select-http-function.png" alt-text="在 Azure 入口網站中選取您的 HTTP 函式。" border="true":::
 
-1. 如果您收到**延伸模組未安裝**訊息，請選擇 [安裝] 以在函式應用程式中安裝 Azure Cosmos DB 繫結延伸模組。 安裝作業可能需要數分鐘的時間。
+1. 選取 [整合] 和 [+ 新增輸出]。
 
-    ![安裝 Azure Cosmos DB 繫結延伸模組](./media/functions-integrate-store-unstructured-data-cosmosdb/functions-integrate-install-binding-extension.png)
+     :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-add-output-binding.png" alt-text="新增 Azure Cosmos DB 輸出繫結。" border="true":::
 
-1. 使用表格中所指定的 [Azure Cosmos DB 輸出] 設定：
+1. 使用表格中指定的 [建立輸出] 設定：
 
-    ![設定 Cosmos DB 輸出繫結](./media/functions-integrate-store-unstructured-data-cosmosdb/functions-integrate-tab-configure-cosmosdb-binding.png)
+     :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-configure-cosmosdb-binding.png" alt-text="設定 Azure Cosmos DB 輸出繫結。" border="true":::
 
-    | 設定      | 建議的值  | 說明                                |
+    | 設定      | 建議的值  | 描述                                |
     | ------------ | ---------------- | ------------------------------------------ |
+    | **繫結類型** | Azure Cosmos DB | 要選取用來建立 Azure Cosmos DB 之輸出繫結的繫結類型名稱。 |
     | **文件參數名稱** | taskDocument | 該名稱參考程式碼中的 Cosmos DB 物件。 |
     | **資料庫名稱** | taskDatabase | 用於儲存文件的資料庫名稱。 |
-    | **集合名稱** | TaskCollection | 資料庫集合的名稱。 |
-    | **如果為 true，就會建立 Cosmos DB 資料庫和集合** | 已檢查 | 集合尚未存在，因此加以建立。 |
-    | **Azure Cosmos DB 帳戶連線** | 新增設定 | 選取 [新增]，然後選擇 [訂用帳戶]、稍早建立的 [資料庫帳戶] 以及 [選取]。 建立適用於帳戶連線的應用程式設定。 繫結會使用此設定來連線至資料庫。 |
-    | **集合輸送量** |400 RU| 如果您想要降低延遲，稍後可以相應增加輸送量。 |
+    | **集合名稱** | taskCollection | 資料庫集合的名稱。 |
+    | **如果為 true，就會建立 Cosmos DB 資料庫和集合** | 是 | 集合尚未存在，因此加以建立。 |
+    | **Cosmos DB 帳戶連線** | 新增設定 | 選取 [新增]，並選擇 [Azure Cosmos DB 帳戶] 和您先前建立的 [資料庫帳戶]，然後選取 [確定]。 建立適用於帳戶連線的應用程式設定。 繫結會使用此設定來連線至資料庫。 |
 
-1. 選取 [儲存] 以建立繫結。
+1. 選取 [確定] 以建立繫結。
 
 ## <a name="update-the-function-code"></a>更新函式程式碼
 
 將現有函式程式碼取代為下列採用您所選語言的程式碼：
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 使用下列程式碼來取代現有的 C# 函式：
 
@@ -111,7 +100,7 @@ public static IActionResult Run(HttpRequest req, out object taskDocument, ILogge
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 使用下列程式碼來取代現有的 JavaScript 函式：
 
@@ -143,25 +132,29 @@ module.exports = async function (context, req) {
 
 ## <a name="test-the-function-and-database"></a>測試函式和資料庫
 
-1. 展開右側視窗，然後選取 [測試]。 在 [查詢] 之下，按一下 [+ 新增參數] 並將下列參數新增至查詢字串：
+1. 選取 [測試]。 在 [查詢] 底下選取 [+ 新增參數]，並將下列參數新增至查詢字串：
 
     + `name`
     + `task`
     + `duedate`
 
-1. 按一下 [執行] 並確認會傳回 200 狀態。
+    :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-test-function.png" alt-text="測試函式。" border="true":::
 
-    ![設定 Cosmos DB 輸出繫結](./media/functions-integrate-store-unstructured-data-cosmosdb/functions-test-function.png)
 
-1. 在 Azure 入口網站的左側，展開圖示列，在搜尋欄位中輸入 `cosmos`，然後選取 [Azure Cosmos DB]。
+1. 選取 [執行] 並確認會傳回 200 狀態。
 
-    ![搜尋 Cosmos DB 服務](./media/functions-integrate-store-unstructured-data-cosmosdb/functions-search-cosmos-db.png)
+    :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-test-function-output.png" alt-text="測試函式。" border="true":::
+
+
+1. 在 Azure 入口網站中，搜尋並選取 **Azure Cosmos DB**。
+
+    :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-search-cosmos-db.png" alt-text="搜尋 Cosmos DB 服務。" border="true":::
 
 1. 選擇您的 Azure Cosmos DB 帳戶，然後選取 [資料總管]。
 
-1. 展開 [集合] 節點，選取新文件，並確認文件包含您的查詢字串值，以及一些額外的中繼資料。
+1. 展開 **TaskCollection** 節點，選取新文件，並確認文件包含您的查詢字串值，以及一些額外的中繼資料。
 
-    ![確認 Cosmos DB 項目](./media/functions-integrate-store-unstructured-data-cosmosdb/functions-verify-cosmosdb-output.png)
+    :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-data-explorer-check-document.png" alt-text="驗證您文件中的字串值。" border="true":::
 
 您已將繫結成功新增至可在 Azure Cosmos DB 中儲存非結構化資料的 HTTP 觸發程序。
 

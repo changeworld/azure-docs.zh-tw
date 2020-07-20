@@ -1,85 +1,170 @@
 ---
-title: 發佈知識庫，REST (Node.js)
-titleSuffix: QnA Maker - Azure Cognitive Services
-description: 這個 Node.js 快速入門會逐步引導您以程式設計方式發佈知識庫 (KB)。 發佈作業會將最新版的知識庫推送到專用 Azure 搜尋服務索引，並建立端點以供應用程式或聊天機器人呼叫。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: qna-maker
-ms.topic: quickstart
-ms.date: 02/28/2019
-ms.author: diberry
-ms.openlocfilehash: 5538253459643400faf01b5999cfaf8780c05d29
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
-ms.translationtype: HT
+title: 快速入門：使用適用于 node.js 的 REST Api QnA Maker
+description: 本快速入門示範如何開始使用適用於 Node.js 的 QnA Maker REST API。 請遵循下列步驟來安裝套件，並試用基本工作的程式碼範例。  QnA Maker 可讓您加強常見問題集文件或 URL 及產品手冊等半結構化內容中的問題與解答服務。
+ms.date: 02/08/2020
+ROBOTS: NOINDEX,NOFOLLOW
+ms.custom: RESTCURL2020FEB27
+ms.topic: how-to
+ms.openlocfilehash: b42bc3be0d425a84da8bb545ebb29e261a6b0780
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57217949"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342726"
 ---
-# <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-nodejs"></a>快速入門：使用 Node.js 在 QnA Maker 中發佈知識庫
+# <a name="quickstart-qna-maker-rest-apis-for-nodejs"></a>快速入門： QnA Maker 適用于 node.js 的 REST Api
 
-本快速入門以 REST 為基礎，會逐步引導您以程式設計方式發佈知識庫 (KB)。 發佈作業會將最新版的知識庫推送到專用 Azure 搜尋服務索引，並建立端點以供應用程式或聊天機器人呼叫。
+開始使用適用於 Node.js 的 QnA Maker REST API。 請依照下列步驟試用基本工作的範例程式碼。  QnA Maker 可讓您加強常見問題集文件或 URL 及產品手冊等半結構化內容中的問題與解答服務。
 
-本快速入門會呼叫 QnA Maker API：
-* [發佈](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe) - 此 API 不需要在要求主體中有任何資訊。
+使用適用於 Node.js 的 QnA Maker REST API 來：
 
-## <a name="prerequisites"></a>必要條件
+* 建立知識庫
+* 取代知識庫
+* 發佈知識庫
+* 刪除知識庫
+* 下載知識庫
+* 取得作業的狀態
 
-* [Node.js 6+](https://nodejs.org/en/download/)
-* 您必須有 [QnA Maker 服務](../How-To/set-up-qnamaker-service-azure.md)。 若要擷取您的金鑰，請選取儀表板中 [資源管理] 下方的 [金鑰]。 
-* QnA Maker 知識庫 (KB) 識別碼可以在 kbid 查詢字串參數中的 URL 找到，如下所示。
+[參考檔](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase)  | [Node.js 範例](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/tree/master/documentation-samples/quickstarts/rest-api)
 
-    ![QnA Maker 知識庫識別碼](../media/qnamaker-quickstart-kb/qna-maker-id.png)
+[!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
-    如果您還沒有知識庫，可以建立要用於本快速入門的範例知識庫：[建立新的知識庫](create-new-kb-nodejs.md)。
+## <a name="prerequisites"></a>Prerequisites
 
+* Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)
+* 最新版的 [Node.js](https://nodejs.org)。
+* 您必須有 [QnA Maker 服務](../How-To/set-up-qnamaker-service-azure.md)。 若要擷取您的金鑰和端點 (其中包含資源名稱)，請在 Azure 入口網站中選取資源的 [快速入門]****。
 
-> [!NOTE] 
-> 從 [**Azure-Samples/cognitive-services-qnamaker-nodejs** GitHub 存放庫](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/tree/master/documentation-samples/quickstarts/publish-knowledge-base-short)可取得完整的解決方案檔。
+## <a name="setting-up"></a>設定
 
-## <a name="create-a-knowledge-base-nodejs-file"></a>建立知識庫 Node.js 檔案
+### <a name="create-a-qna-maker-azure-resource"></a>建立 QnA Maker Azure 資源
 
-建立名為 `publish-knowledge-base.js` 的檔案。
+Azure 認知服務會由您訂閱的 Azure 資源呈現。 請使用 [Azure 入口網站](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)或 [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) 在本機電腦上建立 QnA Maker 的資源。
 
-## <a name="add-required-dependencies"></a>新增必要的相依性
+從資源取得金鑰後，請為資源[建立環境變數](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) (名為 `QNAMAKER_RESOURCE_KEY` 和 `QNAMAKER_AUTHORING_ENDPOINT`)。 使用在 Azure 入口網站中位於資源的 [快速入門]**** 頁面中的金鑰和端點值。
 
-在 `publish-knowledge-base.js` 的頂端，新增下列幾行以將必要的相依性新增至專案：
+### <a name="create-a-new-nodejs-application"></a>建立新的 Node.js 應用程式
 
-[!code-nodejs[Add the dependencies](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/publish-knowledge-base-short/publish-knowledge-base.js?range=1-3 "Add the dependencies")]
+在主控台視窗 (例如 cmd、PowerShell 或 Bash) 中，為您的應用程式建立新的目錄，並瀏覽至該目錄。
 
-## <a name="add-required-constants"></a>新增必要的常數
-
-在上述必要的相依性後面，新增必要的常數以存取 QnA Maker。 使用您自己的值加以取代。
-
-[!code-nodejs[Add required constants](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/publish-knowledge-base-short/publish-knowledge-base.js?range=11-14 "Add required constants")]
-
-## <a name="add-post-request-to-publish-knowledge-base"></a>新增 POST 要求來發佈知識庫
-
-在必要常數之後，新增下列程式碼來對 QnA Maker API 提出 HTTPS 要求，以便發佈知識庫並接收回應：
-
-[!code-nodejs[Add a POST request to publish knowledge base](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/publish-knowledge-base-short/publish-knowledge-base.js?range=16-47 "Add a POST request to publish knowledge base")]
-
-發佈成功時，API 呼叫會傳回 204 狀態，且回應主體中沒有任何內容。 程式碼會針對 204 回應新增內容。
-
-對於任何其他回應，該回應則會原封不動地傳回。
-
-## <a name="run-the-program"></a>執行程式
-
-建置並執行程式。 程式會自動將要求傳送至 QnA Maker API 以發佈知識庫，然後在主控台視窗中輸出回應。
-
-發佈知識庫之後，您就可以從具有用戶端應用程式或聊天機器人的端點來加以查詢。 
-
-```bash
-node publish-knowledge-base.js
+```console
+mkdir myapp && cd myapp
 ```
 
-[!INCLUDE [Clean up files and knowledge base](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)] 
+執行 `npm init -y` 命令以建立節點 `package.json` 檔案。
+
+```console
+npm init -y
+```
+
+新增 `reqeuestretry` 和 `request` NPM 套件：
+
+```console
+npm install requestretry request --save
+```
+
+## <a name="code-examples"></a>程式碼範例
+
+這些程式碼片段會說明如何使用適用於 Node.js 的 QnA Maker REST API 來執行下列動作：
+
+* [建立知識庫](#create-a-knowledge-base)
+* [取代知識庫](#replace-a-knowledge-base)
+* [發佈知識庫](#publish-a-knowledge-base)
+* [刪除知識庫](#delete-a-knowledge-base)
+* [下載知識庫](#download-the-knowledge-base)
+* [取得作業的狀態](#get-status-of-an-operation)
+
+## <a name="add-the-dependencies"></a>新增相依性
+
+建立名為 `rest-apis.js` 的檔案，並新增下列 _requires_ 陳述式以提出 HTTP 要求。
+
+```javascript
+const request = require("requestretry");
+```
+
+## <a name="add-azure-resource-information"></a>新增 Azure 資源資訊
+
+為資源的 Azure 端點和金鑰建立變數。 如果您在啟動應用程式後才建立環境變數，則必須先關閉執行該應用程式的編輯器、IDE 或殼層，再重新加以開啟，才能存取該變數。
+
+設定下列環境值：
+
+* `QNAMAKER_RESOURCE_KEY`-**金鑰**是32字元字串，而且可以在 Azure 入口網站的 [**快速入門**] 頁面上的 [QnA Maker 資源] 上取得。 這與預測端點金鑰不同。
+* `QNAMAKER_AUTHORING_ENDPOINT` - 您的撰寫端點 (格式為 `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com`) 包含您的**資源名稱**。 這與用於查詢預測端點的 URL 不同。
+
+[!code-javascript[Add Azure resources from environment variables](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/rest-api/rest-api.js?name=authorization)]
+
+## <a name="create-a-knowledge-base"></a>建立知識庫
+
+知識庫會儲存從下列項目的 JSON 物件建立的問題和答案組：
+
+* **編輯內容**。
+* **檔案** - 不需要任何權限的本機檔案。
+* **URL** - 公用的 URL。
+
+使用 [REST API 建立知識庫](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)。
+
+[!code-javascript[Add Azure resources from environment variables](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/rest-api/rest-api.js?name=createKb)]
+
+## <a name="replace-a-knowledge-base"></a>取代知識庫
+
+使用 [REST API 取代知識庫](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/replace)。
+
+[!code-javascript[Add Azure resources from environment variables](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/rest-api/rest-api.js?name=replaceKb)]
+
+## <a name="publish-a-knowledge-base"></a>發佈知識庫
+
+發佈知識庫。 此程序可讓使用者從 HTTP 查詢預測端點存取知識庫。
+
+使用 [REST API 發佈知識庫](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish)。
+
+
+[!code-javascript[Add Azure resources from environment variables](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/rest-api/rest-api.js?name=publish)]
+
+## <a name="download-the-knowledge-base"></a>下載知識庫
+
+使用 [REST API 下載知識庫](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/download)。
+
+[!code-javascript[Add Azure resources from environment variables](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/rest-api/rest-api.js?name=download)]
+
+## <a name="delete-a-knowledge-base"></a>刪除知識庫
+
+知識庫使用完畢後，請加以刪除。
+
+使用 [REST API 刪除知識庫](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/delete)。
+
+[!code-javascript[Add Azure resources from environment variables](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/rest-api/rest-api.js?name=deleteKb)]
+
+## <a name="get-status-of-an-operation"></a>取得作業的狀態
+
+長時間執行的程序 (例如建立程序) 會傳回作業識別碼，此識別碼必須以個別的 REST API 呼叫來查看。 此函式會取得建立回應的本文。 重點在於 `operationState`，它可確認您是否需要繼續輪詢。
+
+使用 [REST API 監視知識庫的作業](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/operations/getdetails)。
+
+
+[!code-javascript[Add Azure resources from environment variables](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/rest-api/rest-api.js?name=operationDetails)]
+
+
+## <a name="run-the-application"></a>執行應用程式
+
+使用 `node rest-apis.js` 命令從您的應用程式目錄執行應用程式。
+
+```console
+node rest-apis.js
+```
+
+## <a name="clean-up-resources"></a>清除資源
+
+如果您想要清除和移除認知服務訂用帳戶，則可以刪除資源或資源群組。 刪除資源群組也會刪除其關聯的任何其他資源。
+
+* [入口網站](../../cognitive-services-apis-create-account.md#clean-up-resources)
+* [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 ## <a name="next-steps"></a>後續步驟
 
-在發佈知識庫之後，您需要有[用來產生答案的端點 URL](../Tutorials/create-publish-answer.md#generating-an-answer)。 
-
 > [!div class="nextstepaction"]
-> [QnA Maker (V4) REST API 參考](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
+>[教學課程：建立及回答知識庫](../tutorials/create-publish-query-in-portal.md)
+
+* [QnA Maker API 是什麼？](../Overview/overview.md)
+* [編輯知識庫](../how-to/edit-knowledge-base.md)
+* [取得使用情況分析](../how-to/get-analytics-knowledge-base.md)
+* 此範例的原始程式碼可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/blob/master/documentation-samples/quickstarts/rest-api/rest-api.js) 上找到。

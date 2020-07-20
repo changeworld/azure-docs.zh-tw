@@ -1,45 +1,43 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure 建議程式文件
+### YamlMime:Landing
+title: Azure Advisor 文件
+summary: Azure Advisor 會掃描您的 Azure 組態，並建議適當的變更以最佳化部署、提高安全性及節省成本。
 metadata:
-  title: Azure Advisor 文件 | Microsoft Docs
-  description: null
-  services: advisor
-  author: rboucher
-  layout: LandingPage
-  ms.service: advisor
-  ms.tgt_pltfrm: na
-  ms.topic: landing-page
-  ms.date: 02/01/2019
-  ms.author: robb
-abstract:
+  title: Azure Advisor 文件
   description: Azure 建議程式是個人化的雲端顧問，可協助您依最佳做法來最佳化您的 Azure 部署。 它會分析您的資源及用量遙測， 並建議解決方案，協助改善效能、安全性及資料的高可用性，同時尋找降低整體 Azure 費用的機會。
-sections:
-  - title: null
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: 了解 Azure 建議程式
-            href: /azure/advisor/advisor-overview
-            image:
-              src: media/index/advisor.svg
-              href: /azure/advisor/advisor-overview
-          - title: 開始使用 Azure 建議程式
-            href: /azure/advisor/advisor-get-started
-            image:
-              src: media/index/get-started.svg
-              href: /azure/advisor/advisor-get-started
-  - title: 參考
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: REST
-            html: '<p><a href="https://docs.microsoft.com/rest/api/advisor/">REST API 參考</a></p>'
-          - title: 命令列
-            html: '<p><a href="https://docs.microsoft.com/cli/azure/advisor?view=azure-cli-latest">通用語言介面 (CLI)</a></p>'
-          - title: PowerShell
-            html: '<p><a href="https://docs.microsoft.com/powershell/module/az.advisor/?view=azps-1.2.0">Azure PowerShell</a></p>'
+  ms.topic: landing-page
+  author: rboucher
+  ms.author: robb
+  ms.date: 10/16/2019
+  ms.openlocfilehash: e7cf35654bec7302423a62e66a39651ad1745651
+  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 03/24/2020
+  ms.locfileid: "75768651"
+landingContent:
+- title: 關於 Azure Advisor
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 了解 Azure 建議程式
+      url: advisor-overview.md
+  - linkListType: video
+    links:
+    - text: Azure Advisor 影片
+      url: https://azure.microsoft.com/resources/videos/index/?services=advisor
+- title: 開始使用
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: 開始使用 Advisor
+      url: advisor-get-started.md
+- title: 參考
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 通用語言介面 (CLI)
+      url: /cli/azure/advisor?view=azure-cli-latest
+    - text: PowerShell
+      url: /powershell/module/az.advisor/?view=azps-1.2.0
+    - text: REST API
+      url: /rest/api/advisor/

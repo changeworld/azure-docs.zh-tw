@@ -1,71 +1,77 @@
 ---
-title: 多級羅吉斯迴歸：模組參考
-titleSuffix: Azure Machine Learning service
-description: 了解如何在 Azure Machine Learning 服務中使用多級羅吉斯迴歸模組，來建立羅吉斯迴歸模型，可用來預測多個值。
+title: 多元羅吉斯回歸：模組參考
+titleSuffix: Azure Machine Learning
+description: 瞭解如何使用 Azure Machine Learning 中的多元羅吉斯回歸模組來建立羅吉斯回歸模型，以用來預測多個值。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: ac4310e851808d6e6d89d1a2b506975eea3b1d69
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+author: likebupt
+ms.author: keli19
+ms.date: 04/22/2020
+ms.openlocfilehash: 2c62dd2591ca9ccfc4266862578279573598d0c7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65029321"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82137768"
 ---
-# <a name="multiclass-logistic-regression-module"></a>多級羅吉斯迴歸模組
+# <a name="multiclass-logistic-regression-module"></a>多元羅吉斯回歸模組
 
-本文說明 Azure Machine Learning 服務的視覺化介面 （預覽） 的模組。
+本文說明 Azure Machine Learning 設計工具 (預覽) 中的模組。
 
-使用此模組建立羅吉斯迴歸模型，可用來預測多個值。
+您可以使用此模組來建立羅吉斯回歸模型，以用來預測多個值。
 
-使用羅吉斯迴歸分類是一種監督式的學習方法，並因此需要加上標籤的資料集。 例如做為模組的輸入提供的模型和加上標籤的資料集定型模型[訓練模型](./train-model.md)。 定型的模型可用來預測新輸入範例的值。
+使用羅吉斯回歸的分類是一種受監督的學習方法，因此需要加上標籤的資料集。 您可以藉由提供模型和標示的資料集做為模組的輸入（例如[訓練模型](./train-model.md)）來定型模型。 定型的模型接著可用來預測新輸入範例的值。
 
-Azure Machine Learning 也提供[二級羅吉斯迴歸](./two-class-logistic-regression.md)模組，適合用於二元或二分變數的分類。
+Azure Machine Learning 也會提供[兩個類別的羅吉斯回歸](./two-class-logistic-regression.md)模組，其適用于二元或二分變數的分類。
 
-## <a name="about-multiclass-logistic-regression"></a>關於多級羅吉斯迴歸
+## <a name="about-multiclass-logistic-regression"></a>關於多元羅吉斯回歸
 
-羅吉斯迴歸是知名的方法，可用來預測結果的機率也普遍用於分類工作的統計資料。 演算法會預測有事件發生的機率，羅吉斯函數的資料。 
+羅吉斯回歸是統計資料中已知的方法，用來預測結果的機率，而且常用於分類工作。 此演算法會藉由將資料與羅吉斯函式進行調整，來預測事件發生的機率。 
 
-在 多級羅吉斯迴歸，分類器可用來預測多個結果。
+在多元羅吉斯回歸中，分類器可以用來預測多個結果。
 
-## <a name="configure-a-multiclass-logistic-regression"></a>設定多級羅吉斯迴歸
+## <a name="configure-a-multiclass-logistic-regression"></a>設定多元羅吉斯回歸
 
-1. 新增**多級羅吉斯迴歸**實驗的模組。
+1. 將**多元羅吉斯回歸**模組新增至管線。
 
-2. 指定您要模型定型，藉由設定的方式**建立定型模式**選項。
+2. 藉由設定 [**建立定型模式]** 選項，指定您要如何訓練模型。
 
-    + **單一參數**:如果您知道您要設定模型，並提供一組特定的值做為引數的方式，請使用此選項。
+    + **單一參數**：如果您知道要如何設定模型，請使用此選項，並提供一組特定值做為引數。
 
-    + **參數範圍**:如果您不確定最佳參數，而且想要使用參數掃掠，請使用此選項。
+    + **參數範圍**：如果您不確定最佳參數，而且想要執行參數清理，請選取此選項。 選取要逐一查看的值範圍，[微調模型超參數](tune-model-hyperparameters.md)會逐一查看所提供設定的所有可能組合，以判斷產生最佳結果的超參數。  
 
-3. **最佳化允差**，指定最佳化工具收斂的臨界值。 如果反覆項目之間的改進少於臨界值，此演算法就會停止，並傳回目前的模型。
+3. **優化容錯**，指定優化工具聚合的臨界值。 換句話說，如果反覆運算之間的改進少於臨界值，此演算法會停止，並傳回目前的模型。
 
-4. **L1 正則化權數**， **L2 正則化權數**:輸入要用於 L1 與 L2 正則化參數值。 為非零值建議用於兩者。
+4. **L1 正規化權數**， **L2 正規化權數**：輸入用於正規化參數 L1 和 L2 的值。 非零值建議用於兩者。
 
-    Regularization 是防止過度膨脹 penalizing 模型與極端的係數值的方法。 正則化的運作方式是加入的錯誤假設的係數值相關聯的負面影響。 會被扣精確的模型與極端的係數值，但較不精確的模型，使用更保守的值會受到較低的懲罰而。
+    正規化是一種防止過度學習的方法，penalizing 具有極端係數值的模型。 正規化的運作方式是將與係數值相關聯的負面影響加入假設的錯誤中。 具有極端係數值的精確模型會懲罰更多，但具有較保守值的較不精確模型會懲罰較少。
 
-     L1 與 L2 regularization 有不同的效果，並使用。 L1 可以套用到疏鬆的模型，這在使用高維度的資料時很有用。 相較之下，L2 regularization 是不是疏鬆的資料。  此演算法支援 L1 與 L2 正則化值的線性組合： 也就是說，如果`x = L1`並`y = L2`，`ax + by = c`定義的正則化詞彙的線性範圍。
+     L1 與 L2 regularization 有不同的效果，並使用。 L1 可以套用到疏鬆的模型，使用高維度資料時，這是很有用。 相較之下，L2 regularization 是不是疏鬆的資料。  這個演算法支援 L1 和 L2 正規化值的線性組合：也就是說，如果 `x = L1` 和，則 `y = L2` 會 `ax + by = c` 定義正規化詞彙的線性範圍。
 
-     不同的 L1 與 L2 詞彙的線性組合已設計出針對羅吉斯迴歸模型，這類[彈性 net 的正則化](https://wikipedia.org/wiki/Elastic_net_regularization)。
+     L1 和 L2 詞彙的不同線性組合已設計成羅吉斯回歸模型，例如[彈性網路正規化](https://wikipedia.org/wiki/Elastic_net_regularization)。
 
-6. **隨機號碼種子**:輸入的整數值，如果您想要的結果是可重複執行，做為種子使用的演算法。 否則，會使用系統時鐘的值，做為種子，可能會產生相同實驗執行中的稍有不同結果。
+6. **亂數字種子**：如果您希望結果可在執行時重複使用，請輸入整數值做為演算法的種子。 否則，系統時鐘值會當做種子使用，這在相同管線的執行中可能會產生稍微不同的結果。
 
-8. 加上標籤的資料集，以及其中一個定型模組連線：
+8. 連接已加上標籤的資料集，並將模型定型：
 
-    + 如果您設定**建立定型模式**要**單一參數**，使用[定型模型](./train-model.md)模組。
+    + 如果您將 [**建立定型模式**] 設定為 [**單一參數**]，請連接已標記的資料集和 [[訓練模型](train-model.md)] 模組。  
+  
+    + 如果您將 [**建立定型模式**] 設定為 [**參數範圍**]，請連接已加上標籤的資料集，並使用[微調模型超參數](tune-model-hyperparameters.md)來定型模型。  
+  
+    > [!NOTE]
+    > 
+    > 如果您將參數範圍傳遞至[定型模型](train-model.md)，它只會使用單一參數清單中的預設值。  
+    > 
+    > 如果您將一組參數值傳遞至[微調模型超參數](tune-model-hyperparameters.md)模組，當它預期每個參數的設定範圍時，就會忽略這些值，並使用學習模組的預設值。  
+    > 
+    > 如果您選取 [**參數範圍**] 選項，並輸入任何參數的單一值，則會在整個清除中使用您指定的單一值，即使其他參數在某個範圍的值之間變更也是如此。
 
-9. 執行實驗。
+9. 提交管線。
 
-## <a name="results"></a>結果
-
-訓練完成之後，您可以看到模型的參數，以及從訓練課程中學到的特徵權數的摘要，以滑鼠右鍵按一下的輸出[定型模型](./train-model.md)模組，然後選取**視覺化**.
 
 
 ## <a name="next-steps"></a>後續步驟
 
-請參閱[可用的模組集](module-reference.md)Azure Machine Learning 服務。 
+請參閱 Azure Machine Learning 的[可用模組集](module-reference.md)。 

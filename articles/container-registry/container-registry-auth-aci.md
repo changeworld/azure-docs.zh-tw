@@ -1,25 +1,19 @@
 ---
-title: 使用來自 Azure 容器執行個體的 Azure Container Registry 進行驗證
+title: 從容器實例存取
 description: 了解如何使用 Azure Active Directory 服務主體，從 Azure 容器執行個體提供私人容器登錄中映像的存取權。
-services: container-registry
-author: rockboyfor
-ms.service: container-registry
 ms.topic: article
-origin.date: 04/23/2018
-ms.date: 03/25/2019
-ms.author: v-yeche
-ms.openlocfilehash: 8a2d19a09233e510055e147fa1cf95dd4471768b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 04/23/2018
+ms.openlocfilehash: b1bc8119c495dea99c6bdc4923db198d041a1e9e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61333563"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "74456513"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-container-instances"></a>使用來自 Azure 容器執行個體的 Azure Container Registry 進行驗證
 
 您可以使用 Azure Active Directory (Azure AD) 服務主體，來提供 Azure Container Registry 中私人容器登錄的存取權。
 
-在本文中，您將了解如何建立及設定 Azure AD 服務主體，並使其具備您登錄的「提取」權限。 然後，您會使用服務主體進行驗證，來啟動 Azure 容器執行個體 (ACI) 中的容器，以從您的私人登錄中提取其映像。
+在本文中，您將了解如何建立及設定 Azure AD 服務主體，並使其具備您登錄的「提取」** 權限。 然後，您會使用服務主體進行驗證，來啟動 Azure 容器執行個體 (ACI) 中的容器，以從您的私人登錄中提取其映像。
 
 ## <a name="when-to-use-a-service-principal"></a>何時使用服務主體
 
@@ -35,12 +29,12 @@ ms.locfileid: "61333563"
 
 若要在 Azure 容器執行個體中使用服務主體來啟動容器，請針對 `--registry-username` 指定它的識別碼，並針對 `--registry-password` 指定它的密碼。
 
-```azurecli
+```azurecli-interactive
 az container create \
     --resource-group myResourceGroup \
     --name mycontainer \
-    --image mycontainerregistry.azurecr.cn/myimage:v1 \
-    --registry-login-server mycontainerregistry.azurecr.cn \
+    --image mycontainerregistry.azurecr.io/myimage:v1 \
+    --registry-login-server mycontainerregistry.azurecr.io \
     --registry-username <service-principal-ID> \
     --registry-password <service-principal-password>
 ```
@@ -57,7 +51,7 @@ az container create \
 下列文章包含運用服務主體與 ACR 的其他詳細資料：
 
 * [使用服務主體進行 Azure Container Registry 驗證](container-registry-auth-service-principal.md)
-* [從 Azure Kubernetes Service 對 Azure Container Registry 進行驗證 (AKS)](container-registry-auth-aks.md)
+* [從 Azure Kubernetes Service 對 Azure Container Registry 進行驗證 (AKS)](../aks/cluster-container-registry-integration.md)
 
 <!-- IMAGES -->
 

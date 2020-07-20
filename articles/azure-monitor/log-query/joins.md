@@ -1,29 +1,21 @@
 ---
 title: Azure 監視器記錄查詢中的聯結 | Microsoft Docs
 description: 此文章包括在 Azure 監視器查詢語言中使用聯結的課程。
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 08/16/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 2ea5b4e3af6591e6e25a863998baa7cecb3e29e8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 08/16/2018
+ms.openlocfilehash: 2dace6968fbbe69f806c27fb7a46e60c63f78b4f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60520098"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77670197"
 ---
 # <a name="joins-in-azure-monitor-log-queries"></a>Azure 監視器記錄查詢中的聯結
 
 > [!NOTE]
-> 您應該先完成[開始使用 Azure 監視器 Log Analytics](get-started-portal.md)並[Azure 監視器的記錄檔查詢](get-started-queries.md)之前完成這一課。
+> 您應該先完成[開始使用 Azure 監視器 Log Analytics](get-started-portal.md)並[Azure 監視器記錄查詢](get-started-queries.md)，再完成此課程。
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
@@ -86,7 +78,7 @@ SecurityEvent
 ## <a name="join-kinds"></a>聯結類型
 使用 _kind_ 引數指定聯結類型。 每種類型都會在給定資料表的記錄之間執行不同的比對，如下表所示。
 
-| 聯結類型 | 描述 |
+| 聯結類型 | Description |
 |:---|:---|
 | innerunique | 這是預設聯結模式。 首先，系統會找到左側資料表上的相符資料行，然後移除重複值。  接著，會和右側資料表比對唯一值集合。 |
 | inner | 只有兩個資料表中都有的相符記錄才會包含在結果中。 |

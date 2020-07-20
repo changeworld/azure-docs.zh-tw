@@ -1,16 +1,15 @@
 ---
-author: WenJason
+author: vhorne
 ms.service: dns
 ms.topic: include
-origin.date: 11/25/2018
-ms.date: 12/24/2018
-ms.author: v-jay
+ms.date: 11/25/2018
+ms.author: victorh
 ms.openlocfilehash: 9cc650cea17acb8d89933c819c4ca60e2c459d1c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60563327"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "67174610"
 ---
 寄件者原則架構 (SPF) 記錄用來指定可以代表網域名稱傳送電子郵件的電子郵件伺服器。 請務必正確設定 SPF 記錄，以防止收件者將您的電子郵件標示為垃圾郵件。
 

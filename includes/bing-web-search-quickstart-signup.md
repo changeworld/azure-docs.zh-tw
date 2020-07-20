@@ -1,14 +1,24 @@
 ---
-author: erhopf
-ms.author: erhopf
+author: aahill
+ms.author: aahi
 ms.service: cognitiveservices
 ms.topic: include
-ms.date: 08/16/2018
-ms.openlocfilehash: d0c46c6a315166df0c72642675f01c4726fc0e8c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/20/2020
+ms.openlocfilehash: f04ddf2515f218d254b5704d75cdcc84481e8dce
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60344103"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85602173"
 ---
-本快速入門需要 [Azure 認知服務帳戶](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)及 Bing 搜尋 API。 如果您還沒有帳戶，可以使用[免費試用](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)來取得訂用帳戶金鑰。
+## <a name="create-an-azure-resource"></a>建立 Azure 資源
+
+藉由建立下列其中一項 Azure 資源，開始使用 Bing Web 搜尋 API：
+
+[Bing 搜尋 v7 資源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7)
+   * 您可以透過 Azure 入口網站取得該資源，直到將其刪除為止。
+   * 使用免費定價層來試用服務，之後可升級至付費層以用於實際執行環境。
+
+[多服務資源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne)
+   * 您可以透過 Azure 入口網站取得該資源，直到將其刪除為止。  
+   * 針對您的應用程式，跨多個認知服務使用相同的金鑰和端點。

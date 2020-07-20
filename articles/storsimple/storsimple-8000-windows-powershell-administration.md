@@ -1,25 +1,17 @@
 ---
-title: PowerShell for StorSimple 裝置管理 | Microsoft Docs
+title: PowerShell for StorSimple 裝置管理
 description: 了解如何使用 Windows PowerShell for StorSimple 管理 StorSimple 裝置。
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: how-to
 ms.date: 01/09/2018
-ms.author: alkohli@microsoft.com
-ms.openlocfilehash: 564c121aa90746498a94022fd0fb8d8529142c91
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.author: alkohli
+ms.openlocfilehash: c1976adba0159b54bd64b2c8830c3aaad9959912
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64698407"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85513706"
 ---
 # <a name="use-windows-powershell-for-storsimple-to-administer-your-device"></a>使用 Windows PowerShell for StorSimple 管理您的裝置
 
@@ -102,7 +94,7 @@ Windows PowerShell for StorSimple 提供命令列介面，可讓您用來管理 
 2. **登入對等控制器並具備完整存取權** 此選項和選項 1 相同，不過是讓您連線 (使用適當的認證) 至對等控制器上的 **SSAdminConsole** Runspace。 因為 StorSimple 裝置是高可用性的裝置，具有兩個主動-被動組態的控制器；對等指的是您透過序列主控台存取的裝置中的其他控制器。
    和選項 1 類似，此選項也可用於讓「Microsoft 支援」存取對等控制器上不受限制的 Runspace。
 
-3. **連線並具備有限存取權** 此選項用於在有限制的模式下存取 Windows PowerShell 介面。 系統不會提示您輸入存取認證。 相較於選項 1 和 2，此選項會連線至更多限制的 Runspace。  可透過選項 1 執行但在此 Runspace 中「無法」 執行的一些工作包括：
+3. **連線並具備有限存取權** 此選項用於在有限制的模式下存取 Windows PowerShell 介面。 系統不會提示您輸入存取認證。 相較於選項 1 和 2，此選項會連線至更多限制的 Runspace。  可透過選項 1 執行但在此 Runspace 中\*「無法」 執行的一些工作包括：
    
    * 重設為原廠設定
    * 變更密碼
@@ -113,11 +105,11 @@ Windows PowerShell for StorSimple 提供命令列介面，可讓您用來管理 
      > [!NOTE]
      > 如果您忘記裝置管理員密碼並透過選項 1 或 2無法連線，這是慣用的選項。
 
-4. **變更語言** 此選項可讓您變更 Windows PowerShell 介面上的顯示語言。 支援的語言有英文、日文、俄文、法文、南韓文、西班牙文、義大利文、德文、中文和巴西葡萄牙文。
+4. **變更語言** 此選項可讓您變更 Windows PowerShell 介面上的顯示語言。 支援的語言包括英文、日文、俄文、法文、南韓文、西班牙文、義大利文、德文、中文和葡萄牙文。
 
 ## <a name="connect-remotely-to-storsimple-using-windows-powershell-for-storsimple"></a>使用 Windows PowerShell 遠端連線至 StorSimple
 
-使用 Windows PowerShell 遠端連線到 StorSimple 裝置。 當您以這種方式連線時，將不會看到功能表。 (只有在您使用裝置上的序列主控台來連線時，才會看到功能表。 遠端連線會直接帶您前往與序列主控台上「選項 1：完整存取」對等的地方。)使用 Windows PowerShell 遠端連線到特定的 Runspace。 您也可以指定顯示語言。
+使用 Windows PowerShell 遠端連線到 StorSimple 裝置。 當您以這種方式連線時，將不會看到功能表。 (只有在您使用裝置上的序列主控台來連線時，才會看到功能表。 遠端連線會直接帶您前往序列主控台上「選項 1：完整存取」的對等項。)使用 Windows PowerShell 遠端連線到特定的 Runspace。 您也可以指定顯示語言。
 
 您使用序列主控台功能表中的 [變更語言]  選項設定的語言，和顯示語言無關。 若未指定您的連線裝置的地區設定，遠端 PowerShell 將會自動為其挑選。
 
@@ -149,17 +141,17 @@ Windows PowerShell for StorSimple 提供命令列介面，可讓您用來管理 
 | 登記裝置 |[使用 Windows PowerShell for StorSimple 設定和註冊裝置](storsimple-8000-deployment-walkthrough-u2.md#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple) |
 | 設定 Web Proxy</br>檢視 Web Proxy 設定 |[為 StorSimple 裝置設定 Web Proxy](storsimple-8000-configure-web-proxy.md) |
 | 修改裝置上的 DATA 0 網路介面設定 |[修改 StorSimple 裝置上的 DATA 0 網路介面](storsimple-8000-modify-data-0.md) |
-| 停止控制器  </br> 重新啟動或關閉控制器 </br> 關閉裝置</br>將裝置重設為出廠預設設定。 |[管理裝置控制器](storsimple-8000-manage-device-controller.md) |
+| 停止控制器 </br> 重新啟動或關閉控制器 </br> 關閉裝置</br>將裝置重設為出廠預設設定。 |[管理裝置控制器](storsimple-8000-manage-device-controller.md) |
 | 安裝維護模式更新和 Hotfixe |[更新您的裝置](storsimple-update-device.md) |
-| 進入維護模式  </br> 結束維護模式 |[StorSimple 裝置模式](storsimple-8000-device-modes.md) |
-| 建立支援封裝 </br> 解密並編輯支援封裝 |[建立及管理支援封裝](storsimple-8000-create-manage-support-package.md) |
+| 進入維護模式 </br>結束維護模式 |[StorSimple 裝置模式](storsimple-8000-device-modes.md) |
+| 建立支援封裝</br>解密並編輯支援封裝 |[建立及管理支援封裝](storsimple-8000-create-manage-support-package.md) |
 | 啟動支援工作階段</br> |[在 Windows PowerShell for StorSimple 中啟動支援工作階段](storsimple-8000-create-manage-support-package.md#create-a-support-package) |
 
 ## <a name="get-help-in-windows-powershell-for-storsimple"></a>在 Windows PowerShell for StorSimple 中取得說明
 
 在 Windows PowerShell for StorSimple 中也有 Cmdlet 的說明。 此說明的最新版本也會線上提供，供您更新您系統上的說明。
 
-在此介面中取得說明和在 Windows PowerShell 中類似，而且大部分與說明相關的 Cmdlet 都能用。 您可以在線上找到協助適用於 Windows PowerShell:[Microsoft.PowerShell.Core](/powershell/module/Microsoft.PowerShell.Core/).
+在此介面中取得說明和在 Windows PowerShell 中類似，而且大部分與說明相關的 Cmdlet 都能用。 您可以在線上找到 Windows PowerShell 的說明：[Microsoft.PowerShell.Core](/powershell/module/Microsoft.PowerShell.Core/)。
 
 以下是此 Windows PowerShell 介面中各種說明類型的簡短描述，包括如何更新說明。
 

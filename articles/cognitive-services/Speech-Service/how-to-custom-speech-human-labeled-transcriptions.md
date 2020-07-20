@@ -1,171 +1,171 @@
 ---
-title: 人類看得標示為轉譯指導方針-語音服務
-titlesuffix: Azure Cognitive Services
-description: 如果您想要增進辨識準確度，特別是當刪除或不正確地用來替代字，因為所導致的問題您會想使用人類看得標示的轉譯，以及音訊資料。 人類看得標示為轉譯有哪些？ 很簡單，它們是依據英文單字，逐字則轉譯的音訊檔案。
+title: 人類加上標籤的轉譯指導方針-語音服務
+titleSuffix: Azure Cognitive Services
+description: 若要改善語音辨識精確度（例如刪除單字或不正確地替代字詞時），您可以使用人類加上標籤的轉譯以及您的音訊資料。 人類加上標籤的轉譯是音訊檔案逐字的單字轉譯。
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 7f0b467284872f3d936984741c6d092705008a5a
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 81b4ffc8f77673e52bb78f891e3de618b67e0d1b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65026728"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "74806057"
 ---
-# <a name="how-to-create-human-labeled-transcriptions"></a>如何建立可標示為轉譯
+# <a name="how-to-create-human-labeled-transcriptions"></a>如何建立人為標記的轉譯
 
-如果您想要增進辨識準確度，特別是當刪除或不正確地用來替代字，因為所導致的問題您會想使用人類看得標示的轉譯，以及音訊資料。 人類看得標示為轉譯有哪些？ 很簡單，它們是依據英文單字，逐字則轉譯的音訊檔案。
+如果您想要改善辨識精確度，特別是當單字被刪除或不正確地替代時所造成的問題，您會想要使用人類加上標籤的轉譯以及您的音訊資料。 什麼是人為標記的轉譯？ 這很簡單，它們都是一字單字、逐字的音訊檔案轉譯。
 
-大型轉譯資料的範例，才可改善其辨識，建議您提供的轉譯資料的 10 到 1,000 小時之間。 在此頁面上，我們將檢閱指導方針旨在協助您建立高品質的轉譯。 本指南是依據地區設定，美式英文，普通話中文和德文的區段。
+需要大量的轉譯資料樣本，以改善辨識，建議您提供10到1000小時的轉譯資料。 在此頁面上，我們將探討專為協助您建立高品質轉譯所設計的指導方針。 本指南是依地區設定來細分，其中包含 US 英文、普通話中文和德文的章節。
 
 ## <a name="us-english-en-us"></a>美式英文 (en-US)
 
-必須提供英文音訊的人類看得標示為轉譯為純文字，只使用 ASCII 字元。 請避免使用拉丁文 1] 或 [Unicode 標點符號字元。 從文字處理應用程式或抓取資料，從網頁複製文字時，通常不小心會加入這些字元。 如果這些字元存在，請務必使用適當的 ASCII 替代來更新這些項目。
+個人標記的英文音訊轉譯必須以純文字提供，而且只能使用 ASCII 字元。 避免使用拉丁-1 或 Unicode 標點符號字元。 從文字處理應用程式複製文字或從網頁抓取資料時，通常會不小心加入這些字元。 如果這些字元存在，請務必使用適當的 ASCII 替代來更新它們。
 
 以下是一些範例：
 
-| 要避免的字元 | 替代字元 | 注意 |
-|---------------------|--------------|-------|
-| "Hello world" | "Hello world" | 已有適當的 ASCII 字元取代開頭和結尾的引號。 |
-| John 所作出的一天 | John 所作出的一天 | 單引號已取代為適當的 ASCII 字元。 |
-| it was good—no, it was great! | it was good--no, it was great! | Em dash 已取代兩個連字號。 |
+| 要避免的字元 | Substitution | 備忘錄 |
+| ------------------- | ------------ | ----- |
+| "Hello world" | "Hello world" | 開頭和結尾的引號已取代成適當的 ASCII 字元。 |
+| John 的日 | John 的日 | 這個撇號已用適當的 ASCII 字元來取代。 |
+| it was good—no, it was great! | it was good--no, it was great! | Em 破折號會以兩個連字號取代。 |
 
-### <a name="text-normalization-for-us-english"></a>適用於美國英文文字正規化
+### <a name="text-normalization-for-us-english"></a>美式英文的文字正規化
 
-文字正規化是文字轉換成一致的格式，定型模型時使用。 某些正規化規則會自動套用至文字，不過，我們建議使用這些指導方針，因為準備人類看得標示的文字記錄資料：
+文字正規化是將單字轉換成在定型模型時所使用的一致格式。 某些正規化規則會自動套用至文字，不過，建議您在準備人為標記的轉譯資料時，使用這些指導方針：
 
-* 寫出文字中的縮寫。
-* 寫出在字詞 （例如會計條款） 中的非標準數值字串。
-* 非字母字元或混合的英數字元應該謄寫，明顯。
-* （例如"雷達圖"、"雷射"、"RAM"或"北大西洋公約組織 」），不應該編輯為單字都發音的縮寫。
-* 寫出發音為個別的字母，以空格分隔每個字母的縮寫。
+- 以單字寫出縮寫。
+- 以單字寫出非標準數值字串（例如，會計條款）。
+- 非字母字元或混合的英數位元應轉譯成發音。
+- 不應編輯單字的縮寫（例如「雷達圖」、「鐳射」、「RAM」或「NATO」）。
+- 寫出縮寫為個別字母，並以空格分隔每個字母。
 
-以下是正規化的一些您應該執行轉譯的範例：
+以下是您應該在轉譯上執行的一些正規化範例：
 
-| 原始文字 | 正規化後的文字 |
-|---------------|--------------------------|
-| Dr.Bruce Banner | Doctor Bruce Banner |
-| James Bond, 007 | James Bond, double oh seven |
-| Ke$ha | Kesha |
-| How long is the 2x4 | How long is the two by four |
+| 原始文字               | 正規化後的文字              |
+| --------------------------- | ------------------------------------- |
+| Bruce 橫幅            | Doctor Bruce Banner                   |
+| James Bond, 007             | James Bond, double oh seven           |
+| Ke$ha                       | Kesha                                 |
+| How long is the 2x4         | How long is the two by four           |
 | The meeting goes from 1-3pm | The meeting goes from one to three pm |
-| 我的血液類型是 O + | My blood type is O positive |
-| water 是 amp;h20 | water 是 H 2 O |
-| 播放 Van Halen 的 OU812 | 播放 O U Van Halen 8 1 2 |
-| UTF-8 with BOM | U T F 8 with BOM |
+| 我的血類型是 O +         | My blood type is O positive           |
+| 水是 H20                | 水是 H 2 O                        |
+| Play OU812 by Van Halen     | 播放 O U 8 1 2 by Van Halen           |
+| UTF-8 with BOM              | U T F 8 with BOM                      |
 
-下列的正規化規則會自動套用至轉譯：
+下列正規化規則會自動套用至轉譯：
 
-* 使用小寫字母。
-* 移除所有的標點符號，除了在單字內的單引號。
-* 您可以展開 數字讀出單字/的格式，例如金額。
+- 使用小寫字母。
+- 移除單字內的撇號以外的所有標點符號。
+- 將數位展開成單字/讀出形式，例如金額。
 
-以下是正規化的幾個範例轉譯上自動執行：
+以下是一些針對轉譯自動執行的正規化範例：
 
-| 原始文字 | 正規化後的文字 |
-|---------------|--------------------------|
-| "Holy cow!" said Batman. | holy cow said batman |
+| 原始文字                          | 正規化後的文字          |
+| -------------------------------------- | --------------------------------- |
+| "Holy cow!" said Batman.               | holy cow said batman              |
 | "What?" said Batman's sidekick, Robin. | what said batman's sidekick robin |
-| Go get -em! | go get em |
-| I'm double-jointed | I'm double jointed |
-| 104 Elm Street | one oh four Elm street |
-| Tune to 102.7 | tune to one oh two seven |
-| Pi is about 3.14 | pi is about three point one four |
-It costs $3.14| it costs three fourteen |
+| Go get -em!                            | go get em                         |
+| I'm double-jointed                     | I'm double jointed                |
+| 104 Elm Street                         | one oh four Elm street            |
+| Tune to 102.7                          | tune to one oh two point seven    |
+| Pi is about 3.14                       | pi is about three point one four  |
+| It 成本\$3.14                        | it costs three fourteen           |
 
-## <a name="mandarin-chinese-zh-cn"></a>國語中文 (zh-cn)
+## <a name="mandarin-chinese-zh-cn"></a>普通話中文（zh-CN）
 
-人類看得標示為轉譯普通話中文音訊必須是 utf-8 編碼的位元組順序標記。 請避免使用半形標點符號字元。 這些字元可以包含不小心準備文書處理程式中的資料，或擷取來自網頁的資料時。 如果這些字元存在，請務必使用適當的全形替代來更新這些項目。
+人類加上標籤的轉譯 for 普通話中文音訊必須是以位元組順序標記編碼的 UTF-8。 請避免使用半形標點符號字元。 當您在文字處理程式中準備資料，或是從網頁抓取資料時，可能會不小心包含這些字元。 如果這些字元存在，請務必使用適當的全形替代來更新它們。
 
 以下是一些範例：
 
-| 要避免的字元 | 替代字元 | 注意 |
-|---------------------|--------------|-------|
-| "你好" | "你好" | 已使用適當的字元取代開頭和結尾的引號。 |
-| 需要什么帮助? | 需要什么帮助？ | 問號已取代為適當的字元。 |
+| 要避免的字元 | Substitution   | 備忘錄 |
+| ------------------- | -------------- | ----- |
+| 你好 | 你好 | 開頭和結尾的引號已用適當的字元來取代。 |
+| 需要什么帮助? | 需要什么帮助？| 問號已用適當的字元來取代。 |
 
-### <a name="text-normalization-for-mandarin-chinese"></a>用於中文中文文字正規化
+### <a name="text-normalization-for-mandarin-chinese"></a>普通話中文的文字正規化
 
-文字正規化是文字轉換成一致的格式，定型模型時使用。 某些正規化規則會自動套用至文字，不過，我們建議使用這些指導方針，因為準備人類看得標示的文字記錄資料：
+文字正規化是將單字轉換成在定型模型時所使用的一致格式。 某些正規化規則會自動套用至文字，不過，建議您在準備人為標記的轉譯資料時，使用這些指導方針：
 
-* 寫出文字中的縮寫。
-* 將數值字串以口語形式寫出。
+- 以單字寫出縮寫。
+- 將數值字串以口語形式寫出。
 
-以下是正規化的一些您應該執行轉譯的範例：
+以下是您應該在轉譯上執行的一些正規化範例：
 
 | 原始文字 | 正規化後的文字 |
-|---------------|--------------------------|
+| ------------- | ------------------------ |
 | 我今年21 | 我今年二十一 |
-| 3号楼504 | 三号 楼 五 零 四 |
+| 3號樓504 | 三号 楼 五 零 四 |
 
-下列的正規化規則會自動套用至轉譯：
+下列正規化規則會自動套用至轉譯：
 
-* 移除所有標點符號
-* 展開以口語形式的數字
-* 將全形字母轉換成半形字母
-* 對於所有的英文字組使用大寫字母
+- 移除所有標點符號
+- 將數位展開為說話形式
+- 將全形字母轉換成半形字母
+- 對於所有的英文字組使用大寫字母
 
-以下是正規化的幾個範例轉譯上自動執行：
+以下是一些針對轉譯自動執行的正規化範例：
 
 | 原始文字 | 正規化後的文字 |
-|---------------|--------------------------|
+| ------------- | ------------------------ |
 | 3.1415 | 三 点 一 四 一 五 |
-| ￥3.5 | 三 元 五 角 |
-| w f y z |W F Y Z |
+| ¥3.5 | 三 元 五 角 |
+| w f y z | W F Y Z |
 | 1992年8月8日 | 一 九 九 二 年 八 月 八 日 |
 | 你吃饭了吗? | 你 吃饭 了 吗 |
-| 下午5:00的航班 | 下午 五点 的 航班 |
-| 我今年21岁 | 我 今年 二十 一 岁 |
+| 下午5:00 的航班 | 下午 五点 的 航班 |
+| 我今年21歲 | 我 今年 二十 一 岁 |
 
-## <a name="german-de-de-and-other-languages"></a>德文 (DE-DE) 和其他語言
+## <a name="german-de-de-and-other-languages"></a>德文（de）和其他語言
 
-人類看得標示的轉譯，德文的音訊 （和其他非英文或中文中文語言） 必須是 utf-8 編碼的位元組順序標記。 每個音訊檔案應該提供一個人類看得標示的文字記錄。
+針對德文音訊（和其他非英文或普通話中文語言）以人為標記的轉譯，必須是以位元組順序標記編碼的 UTF-8。 每個音訊檔案都應該提供一個人為標記的文字記錄。
 
-### <a name="text-normalization-for-german"></a>德文文字正規化
+### <a name="text-normalization-for-german"></a>德文的文字正規化
 
-文字正規化是文字轉換成一致的格式，定型模型時使用。 某些正規化規則會自動套用至文字，不過，我們建議使用這些指導方針，因為準備人類看得標示的文字記錄資料：
+文字正規化是將單字轉換成在定型模型時所使用的一致格式。 某些正規化規則會自動套用至文字，不過，建議您在準備人為標記的轉譯資料時，使用這些指導方針：
 
-*   撰寫小數位數為"，"而非"。"。
-*   寫入做為時間分隔符號":"而非"。"(例如：12:00 Uhr)。
-*   "ca." 之類的縮寫 不會被取代。 我們建議您使用完整的口語的形式。
-*   已移除四個主要的數學運算子 (+、-、\* 和 /)。 我們建議取代的書寫形式為:"此外，""減，""惡意程式 」 和 「 geteilt。 」
-*   會移除比較運算子 (=、 <、 和 >)。 建議並取代成 "gleich"、"kleiner als" 和 "grösser als"。
-*   撰寫分數，3/4，例如以書面格式 (例如:"drei viertel"，而不是 3/4)。
-*   "€"符號取代其書寫形式 「 歐洲 」。
+- 將小數點寫入 "，" 而非 "."。
+- 將時間分隔符號寫成 "：" 而非 "."（例如： 12:00 Uhr）。
+- "ca." 之類的縮寫 不會被取代。 建議您使用完整的說話形式。
+- 已移除四個主要的數學運算子 (+、-、\* 和 /)。 我們建議以撰寫的表單來取代它們： "plus"、"減號"、"「不正確」和「geteilt」。
+- 比較運算子會被移除（=、< 和 >）。 建議並取代成 "gleich"、"kleiner als" 和 "grösser als"。
+- 以書面形式寫入分數（例如3/4）（例如： "drei viertel"，而不是3/4）。
+- 以其書寫形式 "Euro" 取代 "€" 符號。
 
-以下是正規化的一些您應該執行轉譯的範例：
+以下是您應該在轉譯上執行的一些正規化範例：
 
-| 原始文字 | 使用者正規化之後的文字 | 之後系統正規化的文字 |
-|---------------|-------------------------------|---------------------------------|
-| Es ist 12.23 Uhr | Es ist 12:23 Uhr | es ist zwölf uhr drei und zwanzig uhr |
-| {12.45} | {12,45} | zwölf komma vier fünf |
-| 2 + 3 - 4 | 2 plus 3 minus 4 | zwei plus drei minus vier |
+| 原始文字    | 使用者正規化之後的文字 | 系統正規化後的文字       |
+| ---------------- | ----------------------------- | ------------------------------------- |
+| Es ist 12.23 Uhr | Es ist 12:23 Uhr              | es ist zwölf uhr drei und zwanzig uhr |
+| {12.45}          | {12,45}                       | zwölf komma vier fünf                 |
+| 2 + 3 - 4        | 2 plus 3 minus 4              | zwei plus drei minus vier             |
 
-下列的正規化規則會自動套用至轉譯：
+下列正規化規則會自動套用至轉譯：
 
-* 您可以使用小寫字母的所有文字。
-* 移除所有標點符號，包括各種類型的引號 （"test"、 'test'、"test"和 «測試» 是 [確定]）。
-* 捨棄資料列集中的任何特殊字元： 狀況 ¤ 是正確 」。 § © ª 您® ° 常见 ² µ × y Ø¬¬。
-* 展開口語形式，包括美元或歐元數量的數字。
-* 接受變音符號只會針對，o，而且您。 其他"th"會取代或捨棄。
+- 所有文字使用小寫字母。
+- 移除所有標點符號，包括各種類型的引號（"test"、' test '、"test" 和«測試»都是正常的）。
+- 捨棄此集合中包含任何特殊字元的資料列： [¦]、[©] [®] [²μ×ÿØ]。
+- 將數位展開為說話形式，包括美元或歐元金額。
+- 只接受 a、o 和您的母音。 其他則會以 "th" 取代或捨棄。
 
-以下是正規化的幾個範例轉譯上自動執行：
+以下是一些針對轉譯自動執行的正規化範例：
 
-| 原始文字 | 正規化後的文字 |
-|---------------|--------------------------|
-| Frankfurter Ring | frankfurter ring |
-| ¡Eine Frage! | eine frage |
-| wir, haben | wir haben |
+| 原始文字    | 正規化後的文字 |
+| ---------------- | ------------------------ |
+| Frankfurter Ring | frankfurter ring         |
+| ¡Eine Frage!     | eine frage               |
+| wir, haben       | wir haben                |
 
 ## <a name="next-steps"></a>後續步驟
 
-* [準備和測試您的資料](how-to-custom-speech-test-data.md)
-* [檢查您的資料](how-to-custom-speech-inspect-data.md)
-* [評估您的資料](how-to-custom-speech-evaluate-data.md)
-* [訓練您的模型](how-to-custom-speech-train-model.md)
-* [將模型部署](how-to-custom-speech-deploy-model.md)
+- [準備和測試您的資料](how-to-custom-speech-test-data.md)
+- [檢查您的資料](how-to-custom-speech-inspect-data.md)
+- [評估您的資料](how-to-custom-speech-evaluate-data.md)
+- [定型模型](how-to-custom-speech-train-model.md)
+- [部署模型](how-to-custom-speech-deploy-model.md)

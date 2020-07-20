@@ -1,10 +1,10 @@
 ---
-title: 如何為不在資源庫內的應用程式設定同盟單一登入 | Microsoft Docs
+title: 如何為非資源庫應用程式設定同盟單一登入
 description: 如何為您想要與 Azure AD 整合且不在資源庫內的自訂應用程式設定同盟單一登入
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2017
-ms.author: celested
+ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2fcb77fe257a1b99525d009a1756a473e7e61a5d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 28af2a51119cd8328f9fa29000ead1622ae5f5e4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60291886"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763545"
 ---
 # <a name="how-to-configure-federated-single-sign-on-for-a-non-gallery-application"></a>如何為不在資源庫內的應用程式設定同盟單一登入
 
-若要在沒有撰寫程式碼的情況下，為非資源庫應用程式設定單一登入，您需要具有一個訂用帳戶或 Azure AD Premium，而且應用程式必須支援 SAML 2.0。 如需有關 Azure AD 版本的詳細資訊，請參閱 [Azure AD 定價](https://azure.microsoft.com/pricing/details/active-directory/)。
+若要在沒有撰寫程式碼的情況下**，為非資源庫應用程式設定單一登入，您需要具有一個訂用帳戶或 Azure AD Premium，而且應用程式必須支援 SAML 2.0。 如需有關 Azure AD 版本的詳細資訊，請參閱 [Azure AD 定價](https://azure.microsoft.com/pricing/details/active-directory/)。
 
 ## <a name="overview-of-steps-required"></a>所需步驟的概觀
 以下是為非資源庫 (例如，自訂) 應用程式設定搭配 SAML 2.0 的同盟單一登入所需步驟的概觀。
@@ -43,7 +43,7 @@ ms.locfileid: "60291886"
 
 若要為不在 Azure AD 資源庫中的應用程式設定單一登入，請依照下列步驟執行：
 
-1. 開啟 [Azure 入口網站](https://portal.azure.com/)，然後以**全域管理員**或**共同管理員**身分登入。
+1. 開啟[**Azure 入口網站**](https://portal.azure.com/)，並以**全域管理員**或共同管理員身分登入 **。**
 
 2. 按一下左側主導覽功能表底部的 [所有服務]，以開啟 [Azure Active Directory 延伸模組]。
 
@@ -51,43 +51,43 @@ ms.locfileid: "60291886"
 
 4. 在 Azure Active Directory 左側導覽功能表中，按一下 [企業應用程式]。
 
-5. 按一下 [企業應用程式] 窗格右上角的 [新增] 按鈕。
+5. 按一下 [企業應用程式]**** 窗格右上角的 [新增]**** 按鈕。
 
-6. 按一下 [Add your own app (新增您的應用程式)] 區段中的 [Non-gallery application (非資源庫應用程式)]
+6. 按一下 [Add your own app (新增您的應用程式)] 區段中的 [Non-gallery application (非資源庫應用程式)]********
 
-7. 在 [名稱] 文字方塊中輸入應用程式的名稱。
+7. 在 [名稱]**** 文字方塊中輸入應用程式的名稱。
 
-8. 按一下 [新增] 按鈕新增應用程式。
+8. 按一下 [新增]**** 按鈕新增應用程式。
 
-9. 應用程式載入後，按一下應用程式的左側導覽功能表中的 [單一登入]。
+9. 應用程式載入後，按一下應用程式的左側導覽功能表中的 [單一登入]****。
 
-10. 在 [模式] 下拉式清單中選取 [SAML 登入]。
+10. 在 [**模式**] 下拉式清單中選取 [ **SAML 型**登入]。
 
-11. 在 [網域及 URL] 中輸入必要值 這些值應從應用程式廠商處取得。
+11. 在 [網域及 URL]**** 中輸入必要值。 這些值應從應用程式廠商處取得。
 
     1. 若要將應用程式設定為 IdP 啟始的 SSO，請輸入回覆 URL 與識別碼。
 
     2. **選擇性：** 若要將應用程式設定為 SP 啟始的 SSO，則登入 URL 為必要值。
 
-12. 在 [使用者屬性] 中，從 [使用者識別碼] 下拉式清單選取使用者的唯一識別碼。
+12. 在 [使用者屬性]**** 中，從 [使用者識別碼]**** 下拉式清單選取使用者的唯一識別碼。
 
-13. **選擇性：** 按一下 [檢視和編輯所有其他使用者屬性]，以編輯當使用者登入時要以 SAML 權杖傳送至應用程式的屬性。
+13. **選擇性：** 按一下 [檢視和編輯所有其他使用者屬性]****，以編輯當使用者登入時要以 SAML 權杖傳送至應用程式的屬性。
 
     若要新增屬性︰
 
-    1. 按一下 [新增屬性]。 輸入 [名稱]，然後從下拉式清單中選取 [值]。
+    1. 按一下 [新增屬性]****。 輸入 [名稱]****，然後從下拉式清單中選取 [值]****。
 
     2. 按一下 [儲存]。 您會在資料表中看到新屬性。
 
-14. 按一下 [設定 &lt;應用程式名稱&gt;]，以存取如何在應用程式中設定單一登入的文件。 此外，您有應用程式所需的 Azure AD URL 與憑證。
+14. 按一下 [設定 &lt;應用程式名稱&gt;]****，以存取如何在應用程式中設定單一登入的文件。 此外，您有應用程式所需的 Azure AD URL 與憑證。
 
-15. [將使用者指派給應用程式](#assign-users-to-the-application)。
+15. [將使用者指派給應用程式。](#assign-users-to-the-application)
 
 ## <a name="select-user-identifier-and-add-user-attributes-to-be-sent-to-the-application"></a>選取使用者識別碼並新增要傳送到應用程式的使用者屬性
 
 若要選取使用者識別碼或新增使用者屬性，請依照下列步驟執行：
 
-1. 開啟 [Azure 入口網站](https://portal.azure.com/)，然後以**全域管理員**或**共同管理員**身分登入。
+1. 開啟[**Azure 入口網站**](https://portal.azure.com/)，並以**全域管理員**或共同管理員身分登入 **。**
 
 2. 按一下左側主導覽功能表底部的 [所有服務]，以開啟 [Azure Active Directory 延伸模組]。
 
@@ -101,20 +101,20 @@ ms.locfileid: "60291886"
 
 6. 選取您已設定單一登入的應用程式。
 
-7. 應用程式載入後，按一下應用程式的左側導覽功能表中的 [單一登入]。
+7. 應用程式載入後，按一下應用程式的左側導覽功能表中的 [單一登入]****。
 
-8. 在 [使用者屬性] 區段下，從 [使用者識別碼] 下拉式清單選取使用者的唯一識別碼。 所選的選項必須符合應用程式中預期的值，才能驗證使用者。
+8. 在 [使用者屬性]**** 區段下，從 [使用者識別碼]**** 下拉式清單選取使用者的唯一識別碼。 所選的選項必須符合應用程式中預期的值，才能驗證使用者。
 
    >[!NOTE]
-   >Azure AD 會根據應用程式在 SAML AuthRequest 中選取的值或要求的格式，來選取 NameID 屬性 (使用者識別碼) 的格式。 如需詳細資訊，請參閱[單一登入 SAML 通訊協定](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference#authnrequest)文章中的＜NameIDPolicy＞一節。
+   >Azure AD 會根據應用程式在 SAML AuthRequest 中選取的值或要求的格式，來選取 NameID 屬性 (使用者識別碼) 的格式。 如需詳細資訊，請造訪 NameIDPolicy 一節中的[單一登入 SAML 通訊協定](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference#authnrequest)一文。
    >
    >
 
-9. 若要新增使用者屬性，按一下 [檢視和編輯所有其他使用者屬性]，以編輯當使用者登入時要以 SAML 權杖傳送至應用程式的屬性。
+9. 若要新增使用者屬性，按一下 [檢視和編輯所有其他使用者屬性]****，以編輯當使用者登入時要以 SAML 權杖傳送至應用程式的屬性。
 
    若要新增屬性︰
 
-   1. 按一下 [新增屬性]。 輸入 [名稱]，然後從下拉式清單中選取 [值]。
+   1. 按一下 [新增屬性]****。 輸入 [名稱]****，然後從下拉式清單中選取 [值]****。
 
    2. 按一下 [儲存]。 您會在資料表中看到新屬性。
 
@@ -122,7 +122,7 @@ ms.locfileid: "60291886"
 
 若要從 Azure AD 下載應用程式中繼資料或憑證，請依照下列步驟執行：
 
-1. 開啟 [Azure 入口網站](https://portal.azure.com/)，然後以**全域管理員**或**共同管理員**身分登入。
+1. 開啟[**Azure 入口網站**](https://portal.azure.com/)，並以**全域管理員**或共同管理員身分登入 **。**
 
 2. 按一下左側主導覽功能表底部的 [所有服務]，以開啟 [Azure Active Directory 延伸模組]。
 
@@ -136,9 +136,9 @@ ms.locfileid: "60291886"
 
 6. 選取您已設定單一登入的應用程式。
 
-7. 應用程式載入後，按一下應用程式的左側導覽功能表中的 [單一登入]。
+7. 應用程式載入後，按一下應用程式的左側導覽功能表中的 [單一登入]****。
 
-8. 移至 [SAML 簽署憑證] 區段，然後按一下 [下載] 資料行值。 根據應用程式設定單一登入時所需的項目，您會看到下載中繼資料 XML 或憑證的選項。
+8. 移至 [SAML 簽署憑證]**** 區段，然後按一下 [下載]**** 資料行值。 根據應用程式設定單一登入時所需的項目，您會看到下載中繼資料 XML 或憑證的選項。
 
 Azure AD 也會提供用來取得中繼資料的 URL。 遵循此模式來取得應用程式特定的中繼資料 URL：`https://login.microsoftonline.com/<Directory ID>/federationmetadata/2007-06/federationmetadata.xml?appid=<Application ID>`。
 
@@ -162,7 +162,7 @@ Azure AD 也會提供用來取得中繼資料的 URL。 遵循此模式來取得
 
 7. 應用程式載入之後，按一下應用程式左側導覽功能表中的 [使用者和群組]。
 
-8. 按一下 [使用者和群組] 清單頂端的 [新增] 按鈕，以開啟 [新增指派] 窗格。
+8. 按一下 [使用者和群組]**** 清單頂端的 [新增]**** 按鈕，以開啟 [新增指派]**** 窗格。
 
 9. 按一下 [新增指派] 窗格中的 [使用者和群組] 選取器。
 

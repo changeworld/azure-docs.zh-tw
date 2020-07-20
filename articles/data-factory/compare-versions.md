@@ -1,24 +1,26 @@
 ---
-title: 比較 Azure Data Factory 與 Data Factory 第 1 版 | Microsoft Docs
+title: 比較 Azure Data Factory 與 Data Factory 第 1 版
 description: 本文將比較 Azure Data Factory 與 Azure Data Factory 第 1 版。
 services: data-factory
 documentationcenter: ''
 author: kromerm
-manager: craigg
+manager: anandsub
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: overview
 ms.date: 04/09/2018
 ms.author: makromer
-ms.openlocfilehash: 976724a40b604bcdc3c83ef1b3d2e95268f75304
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 6c43906468ee0124187dc5ce6d6f1405e3b96b2e
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57432697"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231228"
 ---
 # <a name="compare-azure-data-factory-with-data-factory-version-1"></a>比較 Azure Data Factory 與 Data Factory 第 1 版
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
 本文將比較 Data Factory 與 Data Factory 第 1 版。 如需 Data Factory 的指示，請參閱 [Data Factory 簡介](introduction.md)。如需 Data Factory 第 1 版的指示，請參閱 [Azure Data Factory 簡介](v1/data-factory-introduction.md)。 
 
 ## <a name="feature-comparison"></a>功能比較
@@ -26,10 +28,10 @@ ms.locfileid: "57432697"
 
 | 功能 | 第 1 版 | 目前版本 | 
 | ------- | --------- | --------- | 
-| 資料集 | 一個具名的資料檢視，參考您想要在活動中用來作為輸入或輸出的資料。 資料集可識別資料表、檔案、資料夾和文件等各種資料存放區中的資料。 例如，Blob 資料集會指定活動應從中讀取資料之 Blob 儲存體中的 Blob 容器和資料夾。<br/><br/>**可用性**定義資料集的處理時段切割模型 (例如每小時或每天等)。 | 目前版本中的資料集是相同的。 不過，您不需要定義資料集的**可用性**排程。 您可以定義觸發程序資源，以排程時鐘排程器範例中的管線。 如需詳細資訊，請參閱[觸發程序](concepts-pipeline-execution-triggers.md#triggers)和[資料集](concepts-datasets-linked-services.md)。 | 
+| 資料集 | 一個具名的資料檢視，參考您想要在活動中用來作為輸入或輸出的資料。 資料集可識別資料表、檔案、資料夾和文件等各種資料存放區中的資料。 例如，Blob 資料集會指定活動應從中讀取資料之 Blob 儲存體中的 Blob 容器和資料夾。<br/><br/>**可用性**定義資料集的處理時段切割模型 (例如每小時或每天等)。 | 目前版本中的資料集是相同的。 不過，您不需要定義資料集的**可用性**排程。 您可以定義觸發程序資源，以排程時鐘排程器範例中的管線。 如需詳細資訊，請參閱[觸發程序](concepts-pipeline-execution-triggers.md#trigger-execution)和[資料集](concepts-datasets-linked-services.md)。 | 
 | 連結的服務 | 連結的服務非常類似連接字串，可定義 Data Factory 連線到外部資源所需的連線資訊。 | 連結服務與 Data Factory V1 中的相同，但具有新的 **connectVia** 屬性，可使用現行 Data Factory 版本的 Integration Runtime 計算環境。 如需詳細資訊，請參閱 [Azure Data Factory 中的整合執行階段](concepts-integration-runtime.md)和 [Azure Blob 儲存體連結的服務屬性](connector-azure-blob-storage.md#linked-service-properties)。 |
 | 管線 | 資料處理站可以有一或多個管線。 管線是一起執行某個工作的活動所組成的邏輯群組。 您可以使用 startTime、endTime 和 isPaused 來排程及執行管線。 | 管線是要對資料執行的活動群組。 不過，管線中活動的排程已分隔成新的觸發程序資源。 您可以將現行 Data Factory 版本 中的管線視為您透過觸發程序個別排程的「工作流程單位」。 <br/><br/>在現行 Data Factory 版本中的管線沒有時間執行「視窗」。 startTime、endTime 及 isPaused 的 Data Factory V1 概念已不存在於目前的 Data Factory 版本中。 如需詳細資訊，請參閱[管道執行和觸發程序](concepts-pipeline-execution-triggers.md)和[管線和活動](concepts-pipelines-activities.md)。 |
-| 活動 | 活動會定義要在管線中資料上執行的動作。 支援資料移動 (複製活動) 和資料轉換活動 (例如 Hive、Pig 和 MapReduce)。 | 在目前的 Data Factory 版本中，活動仍是管線中已定義的動作。目前的 Data Factory 版本導入了新的[控制流程活動](concepts-pipelines-activities.md#control-activities)。 您可以在控制流程 (迴圈和分支) 中使用這些活動。 目前的版本可支援 V1 中支援的資料移動和資料轉換活動。 您可以定義轉換活動，而不需使用目前版本中的資料集。 |
+| 活動 | 活動會定義要在管線中資料上執行的動作。 支援資料移動 (複製活動) 和資料轉換活動 (例如 Hive、Pig 和 MapReduce)。 | 在目前的 Data Factory 版本中，活動仍是管線內定義的動作。 目前的 Data Factory 版本引進了新的[控制流程活動](concepts-pipelines-activities.md#control-flow-activities)。 您可以在控制流程 (迴圈和分支) 中使用這些活動。 目前的版本可支援 V1 中支援的資料移動和資料轉換活動。 您可以定義轉換活動，而不需使用目前版本中的資料集。 |
 | 混合式資料移動和活動分派 | [資料管理閘道](v1/data-factory-data-management-gateway.md)現在稱為整合執行階段，可支援在內部部署與雲端之間移動資料。| 資料管理閘道現在稱為「自我裝載整合執行階段」。 它提供的功能與在 V1 中相同。 <br/><br/> 現行 Data Factory 版本中的 Azure-SSIS Integration Runtime 也支援在雲端部署和執行 SQL Server Integration Services (SSIS) 套件。 如需詳細資訊，請參閱 [Azure Data Factory 中的整合執行階段](concepts-integration-runtime.md)。|
 | 參數 | NA | 參數是管線中定義之唯讀組態設定的鍵值組。 當您手動執行管線時，您可以傳遞參數的引數。 如果您使用排程器觸發程序，此觸發程序也可以傳遞參數值。 管線內的活動會取用參數值。  |
 | 運算式 | Data Factory V1 可讓您在資料選取項目查詢與活動/資料集屬性中使用函式和系統變數。 | 在目前的 Data Factory 版本中，您可以在 JSON 字串值中的任意處使用運算式。 如需詳細資訊，請參閱[現行 Data Factory 版本中的運算式和函式](control-flow-expression-language-functions.md)。|
@@ -72,7 +74,7 @@ ETL 模式中的重要使用案例是「差異載入」，其只會載入從管�
 ### <a name="other-control-flow-activities"></a>其他控制流程活動
 以下是目前的 Data Factory 版本所支援的其他控制流程活動。 
 
-控制活動 | 說明
+控制活動 | 描述
 ---------------- | -----------
 [ForEach 活動](control-flow-for-each-activity.md) | 定義管線中重複的控制流程。 此活動用來逐一查看整個集合，然後以迴圈執行指定的活動。 此活動的迴圈實作與程式設計語言中的 Foreach 迴圈結構相似。
 [Web 活動](control-flow-web-activity.md) | 從 Data Factory 管線呼叫自訂 REST 端點。 您可以傳遞資料集和連結服務，以供活動取用和存取。 
@@ -128,14 +130,14 @@ Azure-SSIS 整合執行階段是一個完全受管理的 Azure VM (節點) 叢�
 
 ## <a name="authoring-experience"></a>撰寫體驗
 
-| &nbsp; | V2 | V1 |
+| | 第 2 版 | 第 1 版 |
 | ------ | -- | -- | 
-| Azure 入口網站 | [是](quickstart-create-data-factory-portal.md) | [是](data-factory-build-your-first-pipeline-using-editor.md) |
-| Azure PowerShell | [是](quickstart-create-data-factory-powershell.md) | [是](data-factory-build-your-first-pipeline-using-powershell.md) |
-| .NET SDK | [是](quickstart-create-data-factory-dot-net.md) | [是](data-factory-build-your-first-pipeline-using-vs.md) |
-| REST API | [是](quickstart-create-data-factory-rest-api.md) | [是](data-factory-build-your-first-pipeline-using-rest-api.md) |
-| Python SDK | [是](quickstart-create-data-factory-python.md) | 否 |
-| Resource Manager 範本 | [是](quickstart-create-data-factory-resource-manager-template.md) | [是](data-factory-build-your-first-pipeline-using-arm.md) | 
+| **Azure 入口網站** | [是](quickstart-create-data-factory-portal.md) | 否 |
+| **Azure PowerShell** | [是](quickstart-create-data-factory-powershell.md) | [是](data-factory-build-your-first-pipeline-using-powershell.md) |
+| **.NET SDK** | [是](quickstart-create-data-factory-dot-net.md) | [是](data-factory-build-your-first-pipeline-using-vs.md) |
+| **REST API** | [是](quickstart-create-data-factory-rest-api.md) | [是](data-factory-build-your-first-pipeline-using-rest-api.md) |
+| **Python SDK** | [是](quickstart-create-data-factory-python.md) | 否 |
+| **Resource Manager 範本** | [是](quickstart-create-data-factory-resource-manager-template.md) | [是](data-factory-build-your-first-pipeline-using-arm.md) | 
 
 ## <a name="roles-and-permissions"></a>角色和權限
 

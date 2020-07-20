@@ -1,20 +1,18 @@
 ---
 title: 在 Azure 串流分析中進行資料導向的偵錯
 description: 本文說明如何使用 Azure 入口網站中的作業圖表和計量，針對 Azure 串流分析作業進行疑難排解。
-services: stream-analytics
 author: jseb225
 ms.author: jeanb
-manager: kfile
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/01/2017
-ms.openlocfilehash: 4a6d359b27b9a2e52d71ed5f8547041645147605
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fdb3c5c12af8e9022f5babc84126badda890dce5
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61479877"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044476"
 ---
 # <a name="data-driven-debugging-by-using-the-job-diagram"></a>使用作業圖表進行資料導向偵錯
 
@@ -55,7 +53,7 @@ ms.locfileid: "61479877"
 ### <a name="how-much-data-is-being-read"></a>已讀取多少資料？
 
 *   **InputEventsSourcesTotal** 是讀取的資料單位數目。 例如，Blob 的數目。
-*   **InputEventsTotal** 是讀取的事件數目。 此指标按分区提供。
+*   **InputEventsTotal** 是讀取的事件數目。 此度量適用於每個資料分割。
 *   **InputEventsTotal** 是讀取的位元組數目。
 *   **InputEventsLastArrivalTime** 會更新每個收到事件的加入佇列時間。
  
@@ -81,11 +79,11 @@ ms.locfileid: "61479877"
 
 
 ## <a name="get-help"></a>取得說明
-如需其他協助，請參閱我們的 [Azure 串流分析論壇](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)。 
+如需其他協助，請嘗試 [Azure 串流分析的 Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)。 
 
 ## <a name="next-steps"></a>後續步驟
 * [串流分析介紹](stream-analytics-introduction.md)
 * [開始使用串流分析](stream-analytics-real-time-fraud-detection.md)
 * [調整串流分析作業](stream-analytics-scale-jobs.md)
-* [串流分析查詢語言參考](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [串流分析查詢語言參考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [串流分析管理 REST API 參考](https://msdn.microsoft.com/library/azure/dn835031.aspx)

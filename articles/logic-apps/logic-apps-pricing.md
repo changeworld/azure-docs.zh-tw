@@ -1,141 +1,173 @@
 ---
-title: 定價 & 計費 - Azure Logic Apps | Microsoft Docs
-description: 了解 Azure Logic Apps 的定價和計費方式
+title: 定價 & 計費模型
+description: 有關定價和計費模型如何適用于 Azure Logic Apps 的總覽
 services: logic-apps
-ms.service: logic-apps
-ms.suite: logic-apps
-author: kevinlam1
-ms.author: klam
-ms.reviewer: estfan, LADocs
-ms.assetid: f8f528f5-51c5-4006-b571-54ef74532f32
-ms.topic: article
-ms.date: 03/25/2019
-ms.openlocfilehash: 7e1868dd5ce62c28c9a8aac724862c58a5e0e1da
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.suite: integration
+author: jonfancey
+ms.author: jonfan
+ms.reviewer: estfan, logicappspm
+ms.topic: conceptual
+ms.date: 06/25/2020
+ms.openlocfilehash: 9ce807238e1e373701305f8b6bb03451e0202633
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60598477"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964629"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Azure Logic Apps 的定價模式
 
-借助 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)可以创建和运行可在云中缩放的自动化集成工作流。 本文介绍 Azure 逻辑应用的计费和定价方式。 有关具体的定价信息，请参阅 [Azure 逻辑应用定价](https://azure.microsoft.com/pricing/details/logic-apps)。
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md)可協助您建立和執行可在雲端中調整的自動化整合工作流程。 本文說明 Azure Logic Apps 的計費和定價。 如需定價費率，請參閱[Logic Apps 定價](https://azure.microsoft.com/pricing/details/logic-apps)。
 
 <a name="consumption-pricing"></a>
 
 ## <a name="consumption-pricing-model"></a>取用量定價模式
 
-对于在公共或“全球”Azure 逻辑应用服务中运行的新逻辑应用，只需根据实际使用的资源付费。 這些邏輯應用程式會使用以取用量為基礎的方案和定價模型。 在邏輯應用程式定義中，每一個步驟都是一個動作。 例如，操作包括： 
+對於在公用、「全域」、多租使用者 Azure Logic Apps 服務中執行的新邏輯應用程式，您只需為使用的部分付費。 這些邏輯應用程式會使用以取用量為基礎的方案和定價模型。 在您的邏輯應用程式中，每個步驟都是一個動作，並 Azure Logic Apps 計量邏輯應用程式中執行的所有動作。
 
-* 触发器（特殊的操作）。 所有逻辑应用需将一个触发器用作第一个步骤。
-* “内置”或本机操作，例如 HTTP、对 Azure Functions 和 API 管理的调用，等等
-* 对 Outlook 365、Dropbox 等连接器的调用
-* 控制流步骤，例如循环、条件语句，等等
+例如，動作包括：
 
-Azure 逻辑应用对逻辑应用中运行的所有操作进行计量。 详细了解[触发器](#triggers)和[操作](#actions)的计费方式。
+* [觸發](#triggers)程式，這是特殊動作。 所有邏輯應用程式都需要觸發程式做為第一個步驟。
+
+* 「[內建」或原生動作](../connectors/apis-list.md#built-in)（例如 HTTP）、AZURE FUNCTIONS 和 API 管理的呼叫等等
+
+* 呼叫[受管理的連接器](../connectors/apis-list.md#managed-connectors)，例如 Outlook 365、Dropbox 等
+
+* [控制工作流程動作](../connectors/apis-list.md#control-workflow)，例如迴圈、條件陳述式等等
+
+[標準](../connectors/apis-list.md#managed-connectors)連接器會以[標準連接器價格](https://azure.microsoft.com/pricing/details/logic-apps)收費。 正式運作的[企業連接器](../connectors/apis-list.md#managed-connectors)會以[Enterprise connector 價格](https://azure.microsoft.com/pricing/details/logic-apps)計費，而公開預覽企業連接器則會以[標準連接器價格](https://azure.microsoft.com/pricing/details/logic-apps)收費。
+
+深入瞭解在[觸發](#triggers)程式和[動作](#actions)層級的計費方式。 或者，如需限制的相關資訊，請參閱[Azure Logic Apps 的限制和](logic-apps-limits-and-config.md)設定。
 
 <a name="fixed-pricing"></a>
 
 ## <a name="fixed-pricing-model"></a>固定定價模式
 
-[ *Integration service 環境*(ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)提供私用、 隔離和專用的方法，讓您建立和執行可存取 Azure 虛擬網路中的資源的邏輯應用程式。 針對新的邏輯應用程式在 ISE 中執行，您需支付每月費用固定內建動作和標準的連接器。 您的 ISE 也包括一個免費的企業連接器，其中包含您想要的連線數目上限。 其他企業連接器的使用方式是依據 Enterprise 耗用量價格來收費的。 
+[*整合服務環境*（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)提供隔離的方式，讓您建立和執行可存取 Azure 虛擬網路中資源的邏輯應用程式。 在 ISE 中執行的邏輯應用程式不會產生資料保留成本。 當您建立 ISE，而且只有在建立期間，您可以選擇[ISE 層級或「SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)」，這有不同的[定價費率](https://azure.microsoft.com/pricing/details/logic-apps)：
 
-ISE 基底單元有固定的容量，因此如果您需要更多的輸送量，您可以[新增更多縮放單位](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#add-capacity)，請在建立期間或之後。
+* **Premium**ISE：此 SKU 的基礎單位有固定的容量，但如果您需要更多的輸送量，您可以在 ISE 建立期間或之後[新增更多縮放單位](../logic-apps/ise-manage-integration-service-environment.md#add-capacity)。 如需 ISE 限制，請參閱[Azure Logic Apps 的限制和](logic-apps-limits-and-config.md#integration-service-environment-ise)設定。
 
-> [!NOTE]
-> ISE 處於[*公開預覽*](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 有关具体的定价信息，请参阅 [Azure 逻辑应用定价](https://azure.microsoft.com/pricing/details/logic-apps)。
+* **開發人員**ISE：此 SKU 沒有相應增加、沒有服務等級協定（SLA）和已發佈限制的功能。 此 SKU 僅供實驗、開發和測試之用，而不是供生產環境或效能測試之用。
+
+對於您在 ISE 中建立及執行的邏輯應用程式，您需支付這些功能的[固定價格](https://azure.microsoft.com/pricing/details/logic-apps)（相對於每次使用付費）：
+
+* [內建觸發程式](../connectors/apis-list.md#built-in)和動作
+
+  在 ISE 中，內建的觸發程式和動作會顯示**核心**標籤，並在與您的邏輯應用程式相同的 ISE 中執行。
+
+* [標準](../connectors/apis-list.md#managed-connectors)連接器和[企業](../connectors/apis-list.md#enterprise-connectors)連接器，可讓您擁有所需數量的企業連線
+
+   顯示**ise**標籤的標準和企業連接器，會在與邏輯應用程式相同的 ise 中執行。 未顯示 ISE 標籤的連接器會在公用、「全域」、多租使用者 Logic Apps 服務中執行。 已修正的定價也適用于在多租使用者服務中執行的連接器，當您搭配在 ISE 中執行的邏輯應用程式使用它們時。
+
+* [整合帳戶](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)的使用量不需額外費用，視您的[ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)而定：
+
+  * **Premium**ISE SKU：單一[標準層](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits)整合帳戶
+
+  * **開發人員**ISE SKU：單一[免費層](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits)整合帳戶
+
+  每個 ISE SKU 的總整合帳戶限制為5個。 如需額外費用，您可以根據 ISE SKU 擁有更多整合帳戶：
+
+  * **Premium**ISE SKU：最多四個標準帳戶。 沒有免費或基本帳戶。
+
+  * **開發人員**ISE SKU：最多可以有4個標準帳戶，或最多5個標準帳戶。 沒有基本帳戶。
+
+  如需整合帳戶限制的詳細資訊，請參閱[Azure Logic Apps 的限制和](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)設定。 您可以在本主題稍後深入瞭解[整合帳戶層及其計價模式](#integration-accounts)。
 
 <a name="connectors"></a>
 
 ## <a name="connectors"></a>連接器
 
-Azure 逻辑应用连接器通过提供[触发器](#triggers)和/或[操作](#actions)，帮助逻辑应用访问云中或本地的应用、服务和系统。 连接器分类为“标准”或“企业”连接器。 有关这些连接器的概述，请参阅[适用于 Azure 逻辑应用的连接器](../connectors/apis-list.md)。 以下部分提供有关触发器和操作的计费方式的详细信息。
+Azure Logic Apps 連接器藉由提供[觸發](#triggers)程式、[動作](#actions)或兩者，協助邏輯應用程式存取雲端或內部部署中的應用程式、服務和系統。 連接器會分類為 [標準] 或 [企業]。 如需這些連接器的總覽，請參閱[Azure Logic Apps 的連接器](../connectors/apis-list.md)。 如果您想要在邏輯應用程式中使用的 REST Api 沒有預先建立的連接器可用，您可以建立[自訂連接器](https://docs.microsoft.com/connectors/custom-connectors)，這只是那些 rest api 的包裝函式。 自訂連接器會以標準連接器計費。 下列各節提供有關觸發程式和動作如何計費的詳細資訊。
 
 <a name="triggers"></a>
 
 ## <a name="triggers"></a>觸發程序
 
-觸發程序是在特定事件發生時建立邏輯應用程式執行個體的特殊動作。 觸發程序會以不同動作影響邏輯應用程式計量方式。 下面是 Azure 逻辑应用中存在的各种触发器：
+觸發程序是在特定事件發生時建立邏輯應用程式執行個體的特殊動作。 觸發程序會以不同動作影響邏輯應用程式計量方式。 以下是 Azure Logic Apps 中存在的各種觸發程式：
 
-* **轮询触发器**：此触发器持续检查终结点是否收到满足创建逻辑应用实例和启动工作流的条件的消息。 即使未建立任何邏輯應用程式執行個體，Logic Apps 也會將每個輪詢要求當作一個執行來計量。 您可以透過邏輯應用程式設計工具來設定觸發程序，以指定輪詢間隔。
+* **輪詢觸發**程式：此觸發程式會持續檢查端點，尋找符合建立邏輯應用程式實例和啟動工作流程之準則的訊息。 即使未建立任何邏輯應用程式執行個體，Logic Apps 也會將每個輪詢要求當作一個執行來計量。 您可以透過邏輯應用程式設計工具來設定觸發程序，以指定輪詢間隔。
 
   [!INCLUDE [logic-apps-polling-trigger-non-standard-metering](../../includes/logic-apps-polling-trigger-non-standard-metering.md)]
 
-* **Webhook 触发器**：此触发器等待客户端向特定的终结点发送请求。 每個傳送至 Webhook 端點的要求都會計算為一個動作執行。 例如，要求和 HTTP Webhook 觸發程序都是 Webhook 觸發程序。
+* **Webhook 觸發**程式：此觸發程式會等候用戶端將要求傳送至特定端點。 每個傳送至 Webhook 端點的要求都會計算為一個動作執行。 例如，要求和 HTTP Webhook 觸發程序都是 Webhook 觸發程序。
 
-* 重复周期触发器：此触发器基于在触发器中设置的重复间隔创建逻辑应用实例。 例如，可以设置每隔三天运行的，或者根据更复杂的计划运行的定期触发器。
+* **週期觸發**程式：此觸發程式會根據您在觸發程式中設定的週期間隔，建立邏輯應用程式實例。 例如，您可以設定每隔三天執行一次的週期觸發程式，或按較複雜的排程。
 
 <a name="actions"></a>
 
 ## <a name="actions"></a>動作
 
-Azure 逻辑应用将 HTTP 等“内置”操作作为本机操作进行计量。 例如，内置操作包括 HTTP 调用、来自 Azure Functions 或 API 管理的调用，以及条件、循环和开关语句等控制流步骤。 每个操作具有自身的操作类型。 例如，调用[连接器](https://docs.microsoft.com/connectors)的操作为“ApiConnection”类型。 这些连接器分类为“标准”或“企业”连接器，根据各自的[定价](https://azure.microsoft.com/pricing/details/logic-apps)进行计量。 预览版的企业连接器按标准连接器计费。
+Azure Logic Apps 計量「內建」動作（例如 HTTP）做為原生動作。 例如，內建動作包括 HTTP 呼叫、來自 Azure Functions 或 API 管理的呼叫，以及控制流程步驟（例如條件、迴圈和 switch 語句）。 每個動作都有自己的動作類型。 例如，呼叫[連接器](https://docs.microsoft.com/connectors)的動作會有 "ApiConnection" 類型。 這些連接器會分類為標準或企業連接器，並根據其各自的[定價](https://azure.microsoft.com/pricing/details/logic-apps)計量。 *預覽*中的企業連接器是以標準連接器收費。
 
-Azure 逻辑应用将所有成功和不成功的操作作为执行进行计量。 但是，逻辑应用不会计量以下操作：
+Azure Logic Apps 將所有成功和失敗的動作當做執行計量。 不過，Logic Apps 不會計量這些動作：
 
 * 因為條件不符而略過的動作
 * 因為邏輯應用程式在完成前停止而不會執行的動作
 
-对于在循环内部运行的操作，Azure 逻辑应用会对循环中每个周期的每个操作进行计数。 例如，假設您有可處理清單的 "for each" 迴圈。 Logic Apps 會將清單項目數目乘以迴圈中的動作數目，以計量該迴圈中的動作，並新增可啟動迴圈的動作。 因此，包含 10 个项的列表的计算公式为 (10 * 1) + 1，即 11 个操作执行。
+對於在迴圈內執行的動作，Azure Logic Apps 會計算迴圈中每個迴圈的每個動作。 例如，假設您有可處理清單的 "for each" 迴圈。 Logic Apps 會將清單項目數目乘以迴圈中的動作數目，以計量該迴圈中的動作，並新增可啟動迴圈的動作。 因此，10個專案清單的計算是（10 * 1） + 1，這會產生11個動作執行。
 
-## <a name="disabled-logic-apps"></a>禁用的逻辑应用
+## <a name="disabled-logic-apps"></a>已停用的邏輯應用程式
 
-禁用的逻辑应用在禁用期间不会产生费用，因为它们无法创建新实例。
-停用邏輯應用程式之後，其目前正在執行的執行個體可能需要一些時間才能完全停止。
+停用的邏輯應用程式不會產生費用，因為它們在停用時不會建立新的實例。 停用邏輯應用程式之後，其目前正在執行的執行個體可能需要一些時間才能完全停止。
+
+<a name="integration-accounts"></a>
 
 ## <a name="integration-accounts"></a>整合帳戶
 
-取用定價適用於[整合帳戶](logic-apps-enterprise-integration-create-integration-account.md)您可以在其中瀏覽、 開發和測試[B2B 和 EDI](logic-apps-enterprise-integration-b2b.md)並[XML 處理](logic-apps-enterprise-integration-xml.md)不會有任何 Azure Logic Apps 中的功能額外的成本。
-您可以在每個 Azure 區域中有一個整合帳戶。 每個整合帳戶可儲存一定[成品數量](../logic-apps/logic-apps-limits-and-config.md)，其中包含交易夥伴、協議、地圖、結構描述、組件、憑證、批次組態等等。
+[固定定價模式](https://azure.microsoft.com/pricing/details/logic-apps)適用于[整合帳戶](logic-apps-enterprise-integration-create-integration-account.md)，您可以在其中探索、開發及測試 Azure Logic Apps 中的[B2B 和 EDI](logic-apps-enterprise-integration-b2b.md)和[XML 處理](logic-apps-enterprise-integration-xml.md)功能，而不需額外費用。 每個 Azure 訂用帳戶最多可以有個[特定的整合帳戶限制](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)。 每個整合帳戶最多可以儲存特定[的成品限制](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits)，包括交易夥伴、合約、地圖、架構、元件、憑證、批次設定等。
 
-Azure Logic Apps 也提供基本和標準整合帳戶，具有受支援的 Logic Apps SLA。 以下是您可以選擇是否要使用基本或標準整合帳戶的方式：
+Azure Logic Apps 提供免費、基本和標準整合帳戶。 「基本」和「標準」層是由 Logic Apps 服務等級協定（SLA）所支援，而免費層不受 SLA 支援，而且具有區域可用性、輸送量和使用量方面的限制。 除了免費層整合帳戶以外，您可以在每個 Azure 區域中有一個以上的整合帳戶。 如需定價費率，請參閱 [Logic Apps 定價](https://azure.microsoft.com/pricing/details/logic-apps/)。
 
-* 當您只想處理訊息，或做為具有較大商務實體與交易夥伴關係的小型企業夥伴時，請使用基本整合帳戶。
+如果您有[Premium 或 Developer](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)的[*整合服務環境*（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)，您的 ISE 可以有5個整合帳戶總數。 若要瞭解適用于 ISE 的固定定價模式，請參閱本主題中的先前的[固定定價模式](#fixed-pricing)一節。 如需定價費率，請參閱 [Logic Apps 定價](https://azure.microsoft.com/pricing/details/logic-apps)。
 
-* 當您有更複雜的 B2B 關係，並想要增加您可以管理的實體數目，請使用標準整合帳戶。
+若要在免費、基本或標準整合帳戶之間進行選擇，請參閱下列使用案例描述：
 
-如需特定的定價資訊，請參閱 < [Azure Logic Apps 定價](https://azure.microsoft.com/pricing/details/logic-apps)。
+* **免費**：當您想要嘗試探索案例，而不是生產案例時。 這一層僅適用于 Azure 中的公用區域（例如美國西部或東南亞），但不適用於[Azure 中國的世紀](https://docs.microsoft.com/azure/china/overview-operations)或[Azure Government](../azure-government/documentation-government-welcome.md)。
+
+* **基本**：當您只想要處理訊息，或做為與較大商務實體有交易夥伴關係的小型企業夥伴時
+
+* **標準**：當您有更複雜的 B2B 關聯性，而且必須管理的實體數目增加時
 
 <a name="data-retention"></a>
 
 ## <a name="data-retention"></a>資料保留
 
-所有的輸入和輸出而儲存邏輯應用程式的執行歷程記錄中取得計費依據為邏輯應用程式的[執行保留期間](logic-apps-limits-and-config.md#run-duration-retention-limits)。 如需特定的定價資訊，請參閱 < [Azure Logic Apps 定價](https://azure.microsoft.com/pricing/details/logic-apps)。
+除了在整合服務環境（ISE）中執行的邏輯應用程式以外，儲存在邏輯應用程式執行歷程記錄中的所有輸入和輸出都會根據邏輯應用程式的[執行保留期限](logic-apps-limits-and-config.md#run-duration-retention-limits)來計費。 在 ISE 中執行的邏輯應用程式不會產生資料保留成本。 如需定價費率，請參閱 [Logic Apps 定價](https://azure.microsoft.com/pricing/details/logic-apps)。
 
 為了協助您監視邏輯應用程式的儲存體耗用量，您可以：
 
-* 檢視儲存體單位數以 gb 為單位，您的邏輯應用程式使用每個月。
-* 檢視邏輯應用程式的執行歷程記錄中的特定動作的輸入和輸出的大小。
+* 查看邏輯應用程式每月使用的儲存單位數（GB）。
+* 在邏輯應用程式的執行歷程記錄中，查看特定動作的輸入和輸出大小。
 
 <a name="storage-consumption"></a>
 
-### <a name="view-logic-app-storage-consumption"></a>檢視邏輯應用程式儲存體耗用量
+### <a name="view-logic-app-storage-consumption"></a>查看邏輯應用程式儲存體耗用量
 
 1. 在 Azure 入口網站中，尋找並開啟邏輯應用程式。
 
-1. 從邏輯應用程式的功能表底下**監視**，選取**計量**。
+1. 從邏輯應用程式的功能表中，選取 [**監視**] 底下的 [**計量**]。
 
-1. 在右窗格中，在**圖表標題**，從**計量**清單中，選取**計費使用量的儲存體耗用量執行**。
+1. 在右**窗格的 [** **圖表標題**] 底下，從 [計量] 清單中選取 [**儲存體耗用量執行] 的 [計費使用量**]。
 
-   此計量可讓您的儲存體耗用量單位數以 gb 為單位每月會開始計費。
+   此計量會提供您每月的儲存耗用量單位數（GB）。
 
 <a name="input-output-sizes"></a>
 
-### <a name="view-action-input-and-output-sizes"></a>檢視動作的輸入和輸出大小
+### <a name="view-action-input-and-output-sizes"></a>視圖動作輸入和輸出大小
 
 1. 在 Azure 入口網站中，尋找並開啟邏輯應用程式。
 
-1. 在您的邏輯應用程式 功能表中，選取**概觀**。
+1. 在邏輯應用程式的功能表上，選取 **[總覽**]。
 
-1. 在右窗格中，在**執行歷程記錄**，選取執行，輸入，而且您想要檢查的輸出。
+1. 在右窗格的 [**執行歷程記錄**] 底下，選取具有您想要檢查之輸入和輸出的執行。
 
-1. 底下**邏輯應用程式回合**，選擇**回合詳細資料**。
+1. 在 [**邏輯應用程式執行**] 下，選擇 [**執行詳細資料**]。
 
-1. 在 [**邏輯應用程式執行詳細資料**] 窗格中，在動作資料表中，它會列出每個動作的狀態和持續時間，選取您想要檢視的動作。
+1. 在**邏輯應用程式的 [執行詳細資料**] 窗格中，于 [動作] 資料表中列出每個動作的 [狀態] 和 [持續時間]，選取您想要查看的動作。
 
-1. 在**邏輯應用程式動作**窗格中，尋找該動作的輸入和輸出的大小會分別底下出現**輸入連結**並**輸出連結**。
+1. 在**邏輯應用程式**的 [動作] 窗格中，尋找該動作之輸入和輸出的大小，分別出現在 [**輸入連結**] 和 [**輸出] 連結**之下。
 
 ## <a name="next-steps"></a>後續步驟
 
-* [深入了解 Azure Logic Apps](logic-apps-overview.md)
+* [深入瞭解 Azure Logic Apps](logic-apps-overview.md)
 * [建立第一個邏輯應用程式](quickstart-create-first-logic-app-workflow.md)

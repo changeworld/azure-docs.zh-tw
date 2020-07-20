@@ -1,26 +1,14 @@
 ---
 title: 配額和限制 - Azure 事件中樞 | Microsoft Docs
-description: 本文提供 Azure 事件中樞的限制和配額
-services: event-hubs
-documentationcenter: na
-author: ShubhaVijayasarathy
-manager: timlt
-editor: ''
-ms.assetid: b9855dd5-f007-4dd2-89d1-aa6f9b241dc0
-ms.service: event-hubs
-ms.custom: seodec18
-ms.devlang: na
+description: 本文提供 Azure 事件中樞的限制和配額。 例如，每個訂用帳戶的命名空間數目，每個命名空間的事件中樞數目。
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 12/06/2018
-ms.author: shvija
-ms.openlocfilehash: 3cbcf36bdfb6bad3821216605ba86c8cd8332d18
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 06/23/2020
+ms.openlocfilehash: 2ea366d94c17869b46ded795e396624b6c60b454
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60201446"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85314451"
 ---
 # <a name="azure-event-hubs-quotas-and-limits"></a>Azure 事件中樞配額和限制
 

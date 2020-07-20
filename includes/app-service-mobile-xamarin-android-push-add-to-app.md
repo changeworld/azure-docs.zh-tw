@@ -4,12 +4,12 @@ ms.author: crdun
 ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
-ms.openlocfilehash: 3ced8c9fdadf547ec234c6d1bd5f3ddb8af7bc05
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
-ms.translationtype: HT
+ms.openlocfilehash: baf0f07002a21a8e4e60bc17186107b471243202
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42816257"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "67174486"
 ---
 1. 在名為 `ToDoBroadcastReceiver`的專案中建立新類別。
 2. 在 **ToDoBroadcastReceiver** 類別中新增下列 using 陳述式：
@@ -49,7 +49,7 @@ ms.locfileid: "42816257"
     }
     ```
 
-    在上述程式碼中，您必須使用在 Google 開發人員入口網站佈建您的應用程式時由 Google 指派給您的專案編號來取代 *`<PROJECT_NUMBER>`*。 
+    在上述代碼中，當您在*`<PROJECT_NUMBER>`* Google 開發人員門戶中預配應用時，您必須替換為 Google 分配的專案編號。 
 
 5. 在 ToDoBroadcastReceiver.cs 專案檔案中，加入下列可定義 **PushHandlerService** 類別的程式碼：
 

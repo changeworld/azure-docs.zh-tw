@@ -1,0 +1,11 @@
+- name: Azure
+  tocHref: /sql/
+  topicHref: /azure/index
+  items:
+    - name: SQL 受控執行個體
+      tocHref: /sql/
+      topicHref: /azure/azure-sql/managed-instance
+      items:
+        - name: Machine Learning
+          tocHref: /sql/machine-learning/
+          topicHref: /azure/azure-sql/managed-instance/machine-learning-services-overview

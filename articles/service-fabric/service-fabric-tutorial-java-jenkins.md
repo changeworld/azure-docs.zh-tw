@@ -1,26 +1,17 @@
 ---
-title: 在 Azure 中的 Service Fabric 上為 Java 應用程式設定 Jenkins | Microsoft Docs
+title: 在 Azure 中的 Service Fabric 上為 Java 應用程式設定 Jenkins
 description: 在本教學課程中，了解如何使用 Jenkins 設定持續整合以部署 Java Service Fabric 應用程式。
-services: service-fabric
-documentationcenter: java
 author: suhuruli
-manager: msfussell
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/27/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 0a0f7cc8e3810a28fdbec914a9f37808c33ab878
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 74c412ad4c62a5821890aa5602b521f3f63da925
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57880581"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594758"
 ---
 # <a name="tutorial-configure-a-jenkins-environment-to-enable-cicd-for-a-java-application-on-service-fabric"></a>教學課程：設定 Jenkins 環境以便在 Service Fabric 上啟用 Java 應用程式的 CI/CD
 
@@ -94,9 +85,9 @@ ms.locfileid: "57880581"
 
    a. 在 [一般] 區段中，選取 [GitHub 專案] 的核取方塊，然後指定您的 GitHub 專案 URL。 此 URL 會裝載您想要與 Jenkins 連續整合、連續部署 (CI/CD) 流程整合的 Service Fabric Java 應用程式 (例如，``https://github.com/testaccount/dev_test``)。
 
-   b. 在 [原始程式碼管理] 區段底下，選取 [Git]。 指定存放庫 URL，它會裝載您想要與 Jenkins CI/CD 流程整合的 Service Fabric Java 應用程式 (例如，*https://github.com/testaccount/dev_test.git*)。 您也可以在這裡指定要建置哪些分支 (例如，**/master**)。
+   b. 在 [原始程式碼管理] 區段底下，選取 [Git]。 指定存放庫 URL，它會裝載您想要與 Jenkins CI/CD 流程整合的 Service Fabric Java 應用程式 (例如， *`https://github.com/testaccount/dev_test.git`* )。 您也可以在這裡指定要建置哪些分支 (例如， **/master**)。
 
-1. 設定您的 *GitHub* (裝載存放庫者)，讓它能夠與 Jenkins 溝通。 請使用下列步驟：
+1. 設定您的 *GitHub* (裝載存放庫者)，讓它能夠與 Jenkins 溝通。 使用下列步驟：
 
    a. 移至您的 GitHub 儲存機制頁面。 移至 [設定] > [整合和服務]。
 

@@ -3,35 +3,37 @@ title: Azure 通知中樞 SDK
 description: 可用 Azure 通知中樞 SDK 的清單
 services: notification-hubs
 documentationcenter: ''
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: 91188310-307a-11e9-b210-d663bd873d93
 ms.service: notification-hubs
 ms.workload: mobile
 ms.topic: article
-ms.author: jowargo
 ms.date: 02/14/2019
-ms.openlocfilehash: 9ed69ac3526098cd5426c966952de97c948322b5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 02/14/2019
+ms.openlocfilehash: 8a4b05c0ee76aca07fd740a16a76a634727504e9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60559937"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "71213019"
 ---
 # <a name="azure-notification-hubs-sdks"></a>Azure 通知中樞 SDK
 
-Microsoft 和協力廠商發行適用於 Azure 通知中樞的 SDK。 适用于 Android、iOS 和 .NET 的 Microsoft 存储库也包含每个目标平台的示例应用。
+Microsoft 和協力廠商發行適用於 Azure 通知中樞的 SDK。 適用于 Android、iOS 和 .NET 的 Microsoft 存放庫也包含適用于每個目標平臺的範例應用程式。
 
-| SDK            | 發行者      |
+| SDK            | Publisher      |
 | -------------- | -------------- |
 | [.NET 伺服器](https://github.com/Azure/azure-notificationhubs-dotnet) \(英文\) | Microsoft |
 | [Android](https://github.com/Azure/azure-notificationhubs-android)  |Microsoft |
 | [Apache Cordova](https://github.com/derek82511/cordova-azure-notification-hubs) | 協力廠商 |
 | [iOS](https://github.com/Azure/azure-notificationhubs-ios) |Microsoft |
 | [Java 伺服器](https://github.com/Azure/azure-notificationhubs-java-backend) \(英文\) |Microsoft |
-| [Nodejs](https://github.com/Azure/azure-sdk-for-node) \(英文\) | Microsoft |
-| [React Native](https://github.com/CatalystCode/react-native-azurenotificationhub) \(英文\) | 協力廠商 |
+| [Nodejs](https://github.com/Azure/azure-sdk-for-node) | Microsoft |
+| [React Native](https://github.com/CatalystCode/react-native-azurenotificationhub) | 協力廠商 |
 
 > [!Note]
 > Microsoft 並不會對任何協力廠商解決方案的品質、實用性或支援能力負責。

@@ -5,18 +5,17 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-origin.date: 10/19/2018
-ms.date: 04/09/2019
+ms.date: 05/31/2019
 ms.subservice: hybrid
-ms.author: v-junlch
+ms.author: billmath
 ms.topic: reference
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40b4be9aca5243b80151afac0ae221f0d44509c5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d6b90ff82601acca1249c7d8c353944e39e89f95
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60454637"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "66473797"
 ---
 # <a name="azure-ad-connect--adconnectivitytools-powershell-reference"></a>Azure AD Connect：ADConnectivityTools PowerShell 參考
 
@@ -28,16 +27,16 @@ ms.locfileid: "60454637"
 
 偵測本機 DNS 問題。
 
-### <a name="syntax"></a>語法
+### <a name="syntax"></a>SYNTAX
 
 ```
 Confirm-DnsConnectivity [-Forest] <String> [-DCs] <Array> [-ReturnResultAsPSObject] [<CommonParameters>]
 ```
 
-### <a name="description"></a>描述
+### <a name="description"></a>DESCRIPTION
 
 執行本機 DNS 連線能力測試。
-若要設定 Active Directory 連接器，使用者必須要有嘗試連接的樹系名稱解析，以及和此樹系相關聯的網域控制站。
+若要設定 Active Directory 連接器，使用者必須為他們嘗試連線的樹系，以及與此樹系相關聯的網域控制站，都有名稱 resolutionthe。
 
 ### <a name="examples"></a>範例
 
@@ -53,7 +52,7 @@ Confirm-DnsConnectivity -Forest "TEST.CONTOSO.COM" -DCs "MYDC1.CONTOSO.COM","MYD
 Confirm-DnsConnectivity -Forest "TEST.CONTOSO.COM"
 ```
 
-### <a name="parameters"></a>參數
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-forest"></a>-Forest
 
@@ -115,13 +114,13 @@ Accept wildcard characters: False
 
 判斷指定的樹系是否存在。
 
-### <a name="syntax"></a>語法
+### <a name="syntax"></a>SYNTAX
 
 ```
 Confirm-ForestExists [-Forest] <String> [<CommonParameters>]
 ```
 
-### <a name="description"></a>描述
+### <a name="description"></a>DESCRIPTION
 
 查詢與樹系相關聯 IP 位址的 DNS 伺服器。
 
@@ -133,7 +132,7 @@ Confirm-ForestExists [-Forest] <String> [<CommonParameters>]
 Confirm-TargetsAreReachable -Forest "TEST.CONTOSO.COM"
 ```
 
-### <a name="parameters"></a>參數
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-forest"></a>-Forest
 
@@ -162,7 +161,7 @@ Accept wildcard characters: False
 
 驗證 AD 樹系功能等級。
 
-### <a name="syntax"></a>語法
+### <a name="syntax"></a>SYNTAX
 
 #### <a name="samaccount"></a>SamAccount
 
@@ -176,7 +175,7 @@ Confirm-FunctionalLevel -Forest <String> [-RunWithCurrentlyLoggedInUserCredentia
 Confirm-FunctionalLevel -ForestFQDN <Forest> [-RunWithCurrentlyLoggedInUserCredentials] [<CommonParameters>]
 ```
 
-### <a name="description"></a>描述
+### <a name="description"></a>DESCRIPTION
 
 驗證 AD 樹系功能等級大於或等於指定的 MinAdForestVersion (WindowsServer2003)。
 系統可能會要求帳戶 (網域\使用者名稱) 和密碼。
@@ -201,7 +200,7 @@ Confirm-FunctionalLevel -Forest "test.contoso.com" -RunWithCurrentlyLoggedInUser
 Confirm-FunctionalLevel -ForestFQDN $ForestFQDN -RunWithCurrentlyLoggedInUserCredentials -Verbose
 ```
 
-### <a name="parameters"></a>參數
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-forest"></a>-Forest
 
@@ -263,13 +262,13 @@ Accept wildcard characters: False
 
 偵測本機網路連線問題。
 
-### <a name="syntax"></a>語法
+### <a name="syntax"></a>SYNTAX
 
 ```
 Confirm-NetworkConnectivity [-DCs] <Array> [-SkipDnsPort] [-ReturnResultAsPSObject] [<CommonParameters>]
 ```
 
-### <a name="description"></a>描述
+### <a name="description"></a>DESCRIPTION
 
 執行本機網路連線能力測試。
 
@@ -290,7 +289,7 @@ Confirm-NetworkConnectivity -SkipDnsPort -DCs "MYDC1.CONTOSO.COM","MYDC2.CONTOSO
 Confirm-NetworkConnectivity -DCs "MYDC1.CONTOSO.COM","MYDC2.CONTOSO.COM" -Verbose
 ```
 
-### <a name="parameters"></a>參數
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-dcs"></a>-DCs
 
@@ -310,8 +309,9 @@ Accept wildcard characters: False
 
 #### <a name="-skipdnsport"></a>-SkipDnsPort
 
-如果使用者未使用 AD 站台 / 登入網域控制站所提供的 DNS 服務，則可以略過檢查連接埠 53。
-使用者必須仍能夠解析 _.ldap._tcp.\<forestfqdn\>，Active Directory Connector 設定才會成功。
+如果使用者未使用 AD 網站/登入 DC 所提供的 DNS 服務，他們可能會想要略過檢查埠53。
+使用者仍然必須能夠解析. ldap. _tcp。\<forestfqdn\>
+Active Directory 連接器設定才會成功。
 
 ```yml
 Type: SwitchParameter
@@ -353,13 +353,13 @@ Accept wildcard characters: False
 
 判斷是否可與指定的樹系和其相關聯的網域控制站連線。
 
-### <a name="syntax"></a>語法
+### <a name="syntax"></a>SYNTAX
 
 ```
 Confirm-TargetsAreReachable [-Forest] <String> [-DCs] <Array> [<CommonParameters>]
 ```
 
-### <a name="description"></a>描述
+### <a name="description"></a>DESCRIPTION
 
 執行 "ping" 測試 (不論電腦是否可透過網路和/或網際網路觸達目的電腦)
 
@@ -377,7 +377,7 @@ Confirm-TargetsAreReachable -Forest "TEST.CONTOSO.COM" -DCs "MYDC1.CONTOSO.COM",
 Confirm-TargetsAreReachable -Forest "TEST.CONTOSO.COM"
 ```
 
-### <a name="parameters"></a>參數
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-forest"></a>-Forest
 
@@ -422,7 +422,7 @@ Accept wildcard characters: False
 
 驗證可觸達所取得樹系 FQDN 中的網域
 
-### <a name="syntax"></a>語法
+### <a name="syntax"></a>SYNTAX
 
 #### <a name="samaccount"></a>SamAccount
 
@@ -436,7 +436,7 @@ Confirm-ValidDomains [-Forest <String>] [-RunWithCurrentlyLoggedInUserCredential
 Confirm-ValidDomains -ForestFQDN <Forest> [-RunWithCurrentlyLoggedInUserCredentials] [<CommonParameters>]
 ```
 
-### <a name="description"></a>描述
+### <a name="description"></a>DESCRIPTION
 
 嘗試擷取 DomainGuid 與 DomainDN，來驗證可觸達所取得樹系 FQDN 中的所有網域。
 系統可能會要求帳戶 (網域\使用者名稱) 和密碼。
@@ -461,7 +461,7 @@ Confirm-ValidDomains -Forest "test.contoso.com" -RunWithCurrentlyLoggedInUserCre
 Confirm-ValidDomains -ForestFQDN $ForestFQDN -RunWithCurrentlyLoggedInUserCredentials -Verbose
 ```
 
-### <a name="parameters"></a>參數
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-forest"></a>-Forest
 
@@ -522,13 +522,13 @@ Accept wildcard characters: False
 
 驗證使用者是否有企業系統管理員認證。
 
-### <a name="syntax"></a>語法
+### <a name="syntax"></a>SYNTAX
 
 ```
 Confirm-ValidEnterpriseAdminCredentials [-RunWithCurrentlyLoggedInUserCredentials] [<CommonParameters>]
 ```
 
-### <a name="description"></a>描述
+### <a name="description"></a>DESCRIPTION
 
 搜尋提供的使用者是否有企業系統管理員認證。
 系統可能會要求帳戶 (網域\使用者名稱) 和密碼。
@@ -547,7 +547,7 @@ Confirm-ValidEnterpriseAdminCredentials -DomainName test.contoso.com -Verbose
 Confirm-ValidEnterpriseAdminCredentials -RunWithCurrentlyLoggedInUserCredentials -Verbose
 ```
 
-### <a name="parameters"></a>參數
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-runwithcurrentlyloggedinusercredentials"></a>-RunWithCurrentlyLoggedInUserCredentials
 
@@ -576,14 +576,14 @@ Accept wildcard characters: False
 
 從帳戶和密碼的組合之中擷取 DomainFQDN。
 
-### <a name="syntax"></a>語法
+### <a name="syntax"></a>SYNTAX
 
 ```
 Get-DomainFQDNData [[-DomainFQDNDataType] <String>] [-RunWithCurrentlyLoggedInUserCredentials]
  [-ReturnExceptionOnError] [<CommonParameters>]
 ```
 
-### <a name="description"></a>描述
+### <a name="description"></a>DESCRIPTION
 
 嘗試從提供的認證之中取得 domainFQDN 物件。
 如果 domainFQDN 有效，就會傳回 DomainFQDNName 或 RootDomainName，取決於使用者的選擇。
@@ -603,7 +603,7 @@ Get-DomainFQDNData -DomainFQDNDataType DomainFQDNName -Verbose
 Get-DomainFQDNData -DomainFQDNDataType RootDomainName -RunWithCurrentlyLoggedInUserCredentials
 ```
 
-### <a name="parameters"></a>參數
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-domainfqdndatatype"></a>-DomainFQDNDataType
 
@@ -665,13 +665,13 @@ Accept wildcard characters: False
 
 從帳戶和密碼的組合之中擷取 ForestFQDN。
 
-### <a name="syntax"></a>語法
+### <a name="syntax"></a>SYNTAX
 
 ```
 Get-ForestFQDN [-Forest] <String> [-RunWithCurrentlyLoggedInUserCredentials] [<CommonParameters>]
 ```
 
-### <a name="description"></a>描述
+### <a name="description"></a>DESCRIPTION
 
 嘗試從提供的認證之中取得 ForestFQDN。
 系統可能會要求帳戶 (網域\使用者名稱) 和密碼。
@@ -690,7 +690,7 @@ Get-ForestFQDN -Forest CONTOSO.MICROSOFT.COM -Verbose
 Get-ForestFQDN -Forest CONTOSO.MICROSOFT.COM -RunWithCurrentlyLoggedInUserCredentials -Verbose
 ```
 
-### <a name="parameters"></a>參數
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-forest"></a>-Forest
 
@@ -735,14 +735,14 @@ Accept wildcard characters: False
 
 主要函式。
 
-### <a name="syntax"></a>語法
+### <a name="syntax"></a>SYNTAX
 
 ```
 Start-ConnectivityValidation [-Forest] <String> [-AutoCreateConnectorAccount] <Boolean> [[-UserName] <String>]
  [<CommonParameters>]
 ```
 
-### <a name="description"></a>描述
+### <a name="description"></a>DESCRIPTION
 
 執行所有可用的機制，驗證 AD 認證是否有效。
 
@@ -754,7 +754,7 @@ Start-ConnectivityValidation [-Forest] <String> [-AutoCreateConnectorAccount] <B
 Start-ConnectivityValidation -Forest "test.contoso.com" -AutoCreateConnectorAccount $True -Verbose
 ```
 
-### <a name="parameters"></a>參數
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-forest"></a>-Forest
 
@@ -774,9 +774,9 @@ Accept wildcard characters: False
 
 #### <a name="-autocreateconnectoraccount"></a>-AutoCreateConnectorAccount
 
-針對自訂安裝：如果使用者在 AADConnect 精靈的 [AD 樹系帳戶] 視窗上，選擇 [建立新的 AD 帳戶]，旗標會設定為 $True。
+對於自訂安裝：如果使用者在 AADConnect 精靈的 [AD 樹系帳戶] 視窗上，選擇 [建立新的 AD 帳戶]，旗標會設定為 $True。
 如果使用者選擇 [使用現有 AD 帳戶]，則為 $False。
-針對快速安裝：快速安裝的此變數值必須為 $True。
+對於快速安裝：快速安裝的此變數值必須為 $True。
 
 ```yml
 Type: Boolean
@@ -817,7 +817,7 @@ Accept wildcard characters: False
 
 網路連線能力測試的主要函式。
 
-### <a name="syntax"></a>語法
+### <a name="syntax"></a>SYNTAX
 
 ```
 Start-NetworkConnectivityDiagnosisTools [[-Forest] <String>] [-Credentials] <PSCredential>
@@ -825,7 +825,7 @@ Start-NetworkConnectivityDiagnosisTools [[-Forest] <String>] [-Credentials] <PSC
  [-ValidCredentials] [<CommonParameters>]
 ```
 
-### <a name="description"></a>描述
+### <a name="description"></a>DESCRIPTION
 
 執行本機網路連線能力測試。
 
@@ -843,7 +843,7 @@ Start-NetworkConnectivityDiagnosisTools -Forest "TEST.CONTOSO.COM"
 Start-NetworkConnectivityDiagnosisTools -Forest "TEST.CONTOSO.COM" -DCs "DC1.TEST.CONTOSO.COM", "DC2.TEST.CONTOSO.COM"
 ```
 
-### <a name="parameters"></a>參數
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-forest"></a>-Forest
 
@@ -964,5 +964,3 @@ Accept wildcard characters: False
 
 這個 Cmdlet 支援一般參數：-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction 和 -WarningVariable。
 如需詳細資訊，請參閱 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)。
-
-<!-- Update_Description: wording update -->

@@ -1,5 +1,5 @@
 ---
-title: 向远程监视解决方案 UI 添加页 - Azure | Microsoft Docs
+title: 在遠端監視解決方案 UI 中新增頁面 - Azure | Microsoft Docs
 description: 本文說明如何在遠端監視解決方案加速器 Web UI 中新增頁面。
 author: dominicbetts
 manager: timlt
@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: 95830cdffb232e16f9fbae51cfa11fbd18172c3c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c90f4166bf88a8df18a93e84903c93461b904d2c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61447075"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82187257"
 ---
 # <a name="add-a-custom-page-to-the-remote-monitoring-solution-accelerator-web-ui"></a>在遠端監視解決方案加速器 Web UI 中新增自訂頁面
 
@@ -142,7 +142,7 @@ npm install
 npm start
 ```
 
-前一個命令會在本機於 [http://localhost:3000/dashboard](http://localhost:3000/dashboard) 執行 UI。
+上一個命令會在本機於 `http://localhost:3000/dashboard` 執行 UI。
 
 不需將 Web UI 的本機執行個體連線到已部署的解決方案加速器執行個體，您即可在儀表板上看見錯誤。 這些錯誤不會影響您測試新頁面的能力。
 
@@ -154,17 +154,17 @@ npm start
 
 1. 使用 **pcs** CLI 來部署解決方案加速器的**基本**執行個體。 記下部署的名稱以及您為虛擬機器提供的認證。 如需詳細資訊，請參閱[使用 CLI 進行部署](iot-accelerators-remote-monitoring-deploy-cli.md)。
 
-1. 使用 Azure 入口網站或 [az CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)，針對裝載解決方案中微服務的虛擬機器啟用 SSH 存取。 例如︰
+1. 使用 Azure 入口網站或[AZ CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) ，以對裝載解決方案中微服務的虛擬機器啟用 SSH 存取。 例如：
 
-    ```sh
+    ```azurecli
     az network nsg rule update --name SSH --nsg-name {your solution name}-nsg --resource-group {your solution name} --access Allow
     ```
 
-    您只應該在測試和開發期間啟用 SSH 存取。 如果您啟用 SSH，[您應儘速再次加以停用](../security/azure-security-network-security-best-practices.md)。
+    您只應該在測試和開發期間啟用 SSH 存取。 如果您啟用 SSH，[您應該儘快將它停用](../security/fundamentals/network-best-practices.md)。
 
-1. 使用 Azure 入口網站或 [az CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 來尋找虛擬機器的名稱和公用 IP 位址。 例如︰
+1. 使用 Azure 入口網站或 [az CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 來尋找虛擬機器的名稱和公用 IP 位址。 例如：
 
-    ```sh
+    ```azurecli
     az resource list --resource-group {your solution name} -o table
     az vm list-ip-addresses --name {your vm name from previous command} --resource-group {your solution name} -o table
     ```
@@ -193,4 +193,4 @@ npm start
 
 您現在已定義了一個頁面，下一個步驟是[將自訂服務新增至遠端監視解決方案加速器 Web UI](iot-accelerators-remote-monitoring-customize-service.md)，以擷取要顯示在 UI 中的資料。
 
-如需關於遠端監視解決方案加速器的詳細概念資訊，請參閱[遠端監視架構](iot-accelerators-remote-monitoring-sample-walkthrough.md)。
+如需遠端監視解決方案加速器的詳細概念資訊，請參閱[遠端監視架構](iot-accelerators-remote-monitoring-sample-walkthrough.md)。

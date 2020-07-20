@@ -1,24 +1,13 @@
 ---
 title: Azure 服務匯流排端對端追蹤與診斷 | Microsoft Docs
-description: 服務匯流排用戶端診斷與端對端追蹤的概觀
-services: service-bus-messaging
-documentationcenter: ''
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+description: 概述服務匯流排用戶端診斷和端對端追蹤（用戶端透過所有與處理相關的服務）。
 ms.topic: article
-ms.date: 01/23/2019
-ms.author: aschhab
-ms.openlocfilehash: 6e5895392db1d75a985674bf2f878a84bc8dd926
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 06/23/2020
+ms.openlocfilehash: 6138d3d6424364f28f55f81044768acb894bc651
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60310997"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85340725"
 ---
 # <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>透過服務匯流排傳訊進行分散式追蹤與相互關聯
 
@@ -28,14 +17,14 @@ ms.locfileid: "60310997"
 當產生者透過佇列傳送訊息時，它通常會發生於其他邏輯作業的範圍中，並由其他用戶端或服務起始。 當取用者接收到訊息時，也會繼續相同的作業。 產生者與取用者 (以及其他處理該作業的服務) 應該都會發出遙測事件，以追蹤作業流程和結果。 若要將此類事件相互關聯並以端對端的方式追蹤作業，每個回報遙測的服務都必須為每個事件提供追蹤內容的戳記。
 
 Microsoft Azure 服務匯流排傳訊已定義產生者與取用者應用來傳遞此類追蹤內容的裝載屬性。
-該通訊協定是以 [HTTP 關聯性通訊協定](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md) \(英文\) 為基礎。
+該通訊協定是以 [HTTP 關聯性通訊協定](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md) \(英文\) 為基礎。
 
 | 屬性名稱        | 描述                                                 |
 |----------------------|-------------------------------------------------------------|
-|  Diagnostic-Id       | 產生者針對佇列之外部呼叫的唯一識別碼。 請參閱 [HTTP 通訊協定中的 Request-Id](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#request-id) \(英文\) 以了解邏輯依據、考量及格式 |
-|  Correlation-Context | 作業內容，系統會將它傳播至涉及作業處理的所有服務。 如需詳細資訊，請參閱 [HTTP 通訊協定中的 Correlation-Context](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#correlation-context) \(英文\) |
+|  Diagnostic-Id       | 產生者針對佇列之外部呼叫的唯一識別碼。 請參閱 [HTTP 通訊協定中的 Request-Id](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#request-id) \(英文\) 以了解邏輯依據、考量及格式 |
+|  Correlation-Context | 作業內容，系統會將它傳播至涉及作業處理的所有服務。 如需詳細資訊，請參閱 [HTTP 通訊協定中的 Correlation-Context](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#correlation-context) \(英文\) |
 
-## <a name="service-bus-net-client-auto-tracing"></a>服務匯流排 .NET 用戶端自動追蹤
+## <a name="service-bus-net-client-autotracing"></a>服務匯流排 .NET 用戶端 autotracing
 
 從 3.0.0 版開始，[適用於 .NET 的 Microsoft Azure 服務匯流排用戶端](/dotnet/api/microsoft.azure.servicebus.queueclient)會提供追蹤檢測點，可由追蹤系統或用戶端程式碼片段連結。
 該檢測允許從用戶端追蹤針對服務匯流排傳訊服務的所有呼叫。 若訊息處理是透過[訊息處理常式模式](/dotnet/api/microsoft.azure.servicebus.queueclient.registermessagehandler)完成，則訊息處理也會進行檢測處理
@@ -84,6 +73,12 @@ async Task ProcessAsync(Message message)
 於訊息處理期間回報的巢狀追蹤和例外狀況，也會具有相互關聯屬性的戳記，以代表它們是 `RequestTelemetry` 的「子系」。
 
 如果您在訊息處理期間對支援的外部元件進行呼叫，系統也會自動對它們進行追蹤及相互關聯。 請參閱[使用 Application Insights .NET SDK 追蹤自訂作業](../azure-monitor/app/custom-operations-tracking.md)以了解手動追蹤及相互關聯。
+
+如果除了 Application Insights SDK 以外，您還在執行任何外部程式碼，則在觀看 Application Insights 記錄檔時，預期會看到較長的**持續時間**。 
+
+![Application Insights 記錄檔中的持續時間較長](./media/service-bus-end-to-end-tracing/longer-duration.png)
+
+這並不表示接收訊息時發生延遲。 在此案例中，已收到訊息，因為訊息會當做參數傳入 SDK 程式碼。 而且，App Insights 記錄（**進程**）中的**name**標記表示訊息現在正由您的外部事件處理常式代碼處理。 此問題與 Azure 無關。 相反地，這些計量會參考您的外部程式碼效率，假設已從服務匯流排收到該訊息。 請參閱[GitHub 上的這個](https://github.com/Azure/azure-sdk-for-net/blob/4bab05144ce647cc9e704d46d3763de5f9681ee0/sdk/servicebus/Microsoft.Azure.ServiceBus/src/ServiceBusDiagnosticsSource.cs)檔案，以查看從服務匯流排收到訊息之後，產生和指派**進程**標記的位置。 
 
 ### <a name="tracking-without-tracing-system"></a>在沒有追蹤系統下進行追蹤
 如果您的追蹤系統不支援自動「服務匯流排」呼叫追蹤，您可以研究如何將該支援新增至追蹤系統或應用程式中。 本節說明由服務匯流排 .NET 用戶端所傳送的診斷事件。  
@@ -139,9 +134,9 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerF
 
 在此範例中，接聽程式會記錄每個服務匯流排作業的持續期間、結果、唯一識別碼，以及開始時間。
 
-#### <a name="events"></a>活動
+#### <a name="events"></a>事件
 
-針對每個作業，系統會傳送兩個事件：'Start' 和 'Stop'。 您應該只會對 'Stop' 事件感到興趣。 它們會提供作業的結果，並以 Activity 屬性的形式提供開始時間和持續期間。
+針對每個作業，系統會傳送兩個事件：'Start' 和 'Stop'。 您應該只會對 'Stop' 事件感到興趣。 它們會提供作業的結果，以及開始時間和持續時間作為活動屬性。
 
 每個裝載都會為接聽程式提供作業的內容，它會複寫 API 傳入參數和傳回值。 'Stop' 事件裝載具有 'Start' 事件裝載的所有屬性，因此您可以完全忽略 'Start' 事件。
 

@@ -1,33 +1,23 @@
 ---
-title: 使用 Azure CLI 建立分區 Linux VM | Microsoft Docs
+title: 使用 Azure CLI 建立分區 Linux VM
 description: 使用 Azure CLI 在可用性區域中建立 Linux VM
-services: virtual-machines-linux
-documentationcenter: virtual-machines
-author: dlepow
-manager: jeconnoc
-editor: ''
-tags: ''
-ms.assetid: ''
+author: cynthn
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
 ms.date: 04/05/2018
-ms.author: danlep
-ms.custom: ''
-ms.openlocfilehash: cdd9910bfef96f56cfa8c8e81363ff9bdb40f444
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: cynthn
+ms.openlocfilehash: 568bac3c6c80173e38d7b15de17e90cb4fbdab80
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60328726"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82208953"
 ---
 # <a name="create-a-linux-virtual-machine-in-an-availability-zone-with-the-azure-cli"></a>使用 Azure CLI 在可用性區域中建立 Linux 虛擬機器
 
-本文逐步引導您使用 Azure CLI 在可用性區域中建立 Linux VM。 [可用性區域](../../availability-zones/az-overview.md)是指 Azure 區域內實際上分隔的區域。 萬一整個資料中心失敗或遺失，使用可用性區域可保護您的應用程式和資料免於受害。
+本文逐步引導您使用 Azure CLI 在可用性區域中建立 Linux VM。 [可用性區域](../../availability-zones/az-overview.md)是 Azure 區域中的實體獨立區域。 萬一整個資料中心失敗或遺失，使用可用性區域可保護您的應用程式和資料免於受害。
 
-若要使用可用性區域，請在[支援的 Azure 區域](../../availability-zones/az-overview.md#services-support-by-region)中建立虛擬機器。
+若要使用可用性區域，請在[支援的 Azure 區域](../../availability-zones/az-region.md)中建立虛擬機器。
 
 請確定您已安裝最新的 [Azure CLI](/cli/azure/install-az-cli2) 並使用 [az login](/cli/azure/reference-index) 登入 Azure 帳戶。
 
@@ -35,7 +25,7 @@ ms.locfileid: "60328726"
 ## <a name="check-vm-sku-availability"></a>檢查 VM SKU 可用性
 VM 大小或 SKU 的可用性可能因地區和區域而有所不同。 為了協助您規劃如何利用可用性區域，您可以依照 Azure 地區和區域列出可用的 VM SKU。 這項功能可確保您選擇適當的 VM 大小，並取得所需的跨區域復原功能。 如需有關不同 VM 類型和大小的詳細資訊，請參閱 [VM 大小概觀](sizes.md)。
 
-您可以使用 [az vm list-skus](/cli/azure/vm) 命令檢視可用的 VM SKU。 下列範例會列出 eastus2 地區中可用的 VM SKU：
+您可以使用 [az vm list-skus](/cli/azure/vm) 命令檢視可用的 VM SKU。 下列範例會列出 eastus2** 地區中可用的 VM SKU：
 
 ```azurecli
 az vm list-skus --location eastus2 --output table
@@ -43,7 +33,7 @@ az vm list-skus --location eastus2 --output table
 
 其輸出類似下列扼要的範例，會顯示每個 VM 大小適用的可用性區域：
 
-```azurecli
+```output
 ResourceType      Locations  Name               [...]    Tier       Size     Zones
 ----------------  ---------  -----------------           ---------  -------  -------
 virtualMachines   eastus2    Standard_DS1_v2             Standard   DS1_v2   1,2,3
@@ -76,15 +66,15 @@ az group create --name myResourceGroupVM --location eastus2
 
 使用 [az vm create](/cli/azure/vm) 命令建立虛擬機器。 
 
-建立虛擬機器時，有數個可用的選項，例如作業系統映像、磁碟大小及系統管理認證。 在此範例中，是使用 myVM 名稱來建立執行 Ubuntu Server 的虛擬機器。 VM 是在可用性區域 *1* 中所建立。 依預設，會以 *Standard_DS1_v2* 大小建立 VM。
+建立虛擬機器時，有數個可用的選項，例如作業系統映像、磁碟大小及系統管理認證。 在此範例中，是使用 myVM** 名稱來建立執行 Ubuntu Server 的虛擬機器。 VM 是在可用性區域 *1* 中所建立。 依預設，會以 *Standard_DS1_v2* 大小建立 VM。
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm create --resource-group myResourceGroupVM --name myVM --location eastus2 --image UbuntuLTS --generate-ssh-keys --zone 1
 ```
 
 系統可能需要幾分鐘的時間來建立 VM。 建立 VM 之後，Azure CLI 就會輸出 VM 的相關資訊。 請記下 `zones` 值，該值代表 VM 正在其中執行的可用性區域。 
 
-```azurecli 
+```output
 {
   "fqdns": "",
   "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroupVM/providers/Microsoft.Compute/virtualMachines/myVM",
@@ -102,7 +92,7 @@ az vm create --resource-group myResourceGroupVM --name myVM --location eastus2 -
 
 在可用性區域中部署 VM 時，會在相同的可用性區域中部署 VM 的受控磁碟。 根據預設，也會在該區域中建立公用 IP 位址。 在下列範例中會取得這些資源的相關資訊。
 
-若要確認 VM 的受控的磁碟的可用性區域中，使用[az vm show](/cli/azure/vm)命令傳回磁碟識別碼。 在此範例中，磁碟識別碼會儲存在變數中，可在稍後的步驟。 
+若要確認 VM 的受控磁片位於可用性區域中，請使用[az VM show](/cli/azure/vm)命令傳回磁片識別碼。 在此範例中，磁片識別碼會儲存在稍後步驟中使用的變數中。 
 
 ```azurecli-interactive
 osdiskname=$(az vm show -g myResourceGroupVM -n myVM --query "storageProfile.osDisk.name" -o tsv)
@@ -115,7 +105,7 @@ az disk show --resource-group myResourceGroupVM --name $osdiskname
 
 輸出會顯示與 VM 相同的可用性區域中的受控磁碟：
 
-```azurecli
+```output
 {
   "creationData": {
     "createOption": "FromImage",
@@ -163,7 +153,7 @@ az network public-ip show --resource-group myResourceGroupVM --name $ipaddressna
 
 輸出會顯示與 VM 相同的可用性區域中的 IP 位址：
 
-```azurecli
+```output
 {
   "dnsSettings": null,
   "etag": "W/\"b7ad25eb-3191-4c8f-9cec-c5e4a3a37d35\"",
@@ -198,7 +188,7 @@ az network public-ip show --resource-group myResourceGroupVM --name $ipaddressna
 
 ## <a name="next-steps"></a>後續步驟
 
-在本文中，您已學到如何在可用性區域中建立 VM。 深入了解 Azure VM 的[區域和可用性](regions-and-availability.md)。
+在本文中，您已學到如何在可用性區域中建立 VM。 深入瞭解 Azure Vm 的[可用性](availability.md)。
 
 
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: kumud
-ms.openlocfilehash: 30b1b08e27eca826a9f882475723913810b3feb4
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 1d30b35264707c59c899cc3a224e4affa2a4696e
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64721859"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84707458"
 ---
 # <a name="quickstart-create-a-virtual-network-using-powershell"></a>快速入門：使用 PowerShell 建立虛擬網路
 
@@ -27,7 +27,7 @@ ms.locfileid: "64721859"
 
 如果您沒有 Azure 訂用帳戶，請立即建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-powershell.md)]
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 如果您決定在本機安裝和使用 PowerShell，則在進行此快速入門時，您必須使用 Azure PowerShell 模組 1.0.0 版或更新版本。 若要尋找已安裝的版本，請執行 `Get-Module -ListAvailable Az`。 如需安裝和升級的資訊，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-az-ps)。
 
@@ -140,25 +140,22 @@ Get-AzPublicIpAddress `
 ```cmd
 mstsc /v:<publicIpAddress>
 ```
-
-將會建立一個「遠端桌面通訊協定」(*.rdp*) 檔案下載至您的電腦，並開啟遠端桌面。
-
-1. 如果出現提示，請選取 [連接]。
+1. 如果出現提示，請選取 [連接]  。
 
 1. 輸入您在建立 VM 時指定的使用者名稱和密碼。
 
     > [!NOTE]
-    > 您可能需要選取 [其他選擇] > [使用不同的帳戶]，以指定您在建立 VM 時輸入的認證。
+    > 您可能需要選取 [其他選擇]   > [使用不同的帳戶]  ，以指定您在建立 VM 時輸入的認證。
 
-1. 選取 [確定] 。
+1. 選取 [確定]  。
 
-1. 您可能會收到憑證警告。 如果如此，請選取 [是] 或 [繼續]。
+1. 您可能會收到憑證警告。 如果如此，請選取 [是]  或 [繼續]  。
 
 ## <a name="communicate-between-vms"></a>虛擬機器之間的通訊
 
 1. 在 *myVm1* 的遠端桌面中，開啟 PowerShell。
 
-1. 輸入 `ping myVm2` 。
+1. 輸入 `ping myVm2`。
 
     您會得到類似此內容：
 
@@ -180,7 +177,7 @@ mstsc /v:<publicIpAddress>
 1. 為了讓 *myVm2* 在稍後的步驟中可以 Ping *myVm1*，輸入此命令：
 
     ```powershell
-    New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4
+    New-NetFirewallRule –DisplayName "Allow ICMPv4-In" –Protocol ICMPv4
     ```
 
     該命令可讓 ICMP 輸入通過 Windows 防火牆。

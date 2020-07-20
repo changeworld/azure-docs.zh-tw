@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 82a8eecb4fb211117000c94c51644ce1fd27916d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 5c038f0be31acea52c2ef07d43f0dbaf3434a371
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61463884"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "64709519"
 ---
 # <a name="encoding-error-codes"></a>編碼錯誤碼
 
@@ -27,10 +27,10 @@ ms.locfileid: "61463884"
 
 | ErrorDetail.Code | 導致發生錯誤的可能原因 |
 | --- | --- |
-| 不明 |執行工作時發生不明錯誤 |
+| Unknown |執行工作時發生不明錯誤 |
 | ErrorDownloadingInputAssetMalformedContent |涵蓋下載輸入資產中之錯誤 (例如無效的檔案名稱、長度為零檔案、錯誤格式等等) 的錯誤類別。 |
 | ErrorDownloadingInputAssetServiceFailure |涵蓋服務端問題 (例如下載時發生網路或儲存體錯誤) 的錯誤類別。 |
-| ErrorParsingConfiguration |工作 <see cref="MediaTask.PrivateData"/> (設定) 無效時的錯誤類別，例如設定不是有效的系統預設或包含無效的 XML。 |
+| ErrorParsingConfiguration |工作 \<see cref="MediaTask.PrivateData"/> (設定) 無效時的錯誤類別，例如設定不是有效的系統預設或包含無效的 XML。 |
 | ErrorExecutingTaskMalformedContent |在工作執行期間因輸入媒體檔案內部問題導致失敗的錯誤類別。 |
 | ErrorExecutingTaskUnsupportedFormat |媒體處理器無法處理提供之檔案 (不支援的媒體格式或與組態不符) 的錯誤類別。 例如，嘗試從只有影片的資產產生只含音訊的輸出 |
 | ErrorProcessingTask |媒體處理器在處理和內容不相關的工作時發生的其他錯誤類別。 |

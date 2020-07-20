@@ -1,88 +1,76 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Azure 資訊安全中心文件
+summary: Azure 資訊安全中心為混合式雲端工作負載提供統一的安全性管理和進階威脅防護。
 metadata:
-  title: Azure 資訊安全中心文件 - 教學課程和 API 參考 | Microsoft Doc
-  meta.description: 'Azure Security Center provides unified security management and advanced threat protection across hybrid cloud workloads. Learn how to get started with Security Center, apply security policies across your workloads, limit your exposure to threats, and detect and respond to attacks with our quickstarts and tutorials..'
+  title: Azure 資訊安全中心文件
+  description: 透過我們的快速入門和教學課程，了解如何開始使用資訊安全中心保護工作負載、限制風險以及偵測和回應攻擊。
   services: security-center
-  author: cmcclister
-  manager: carolz
   ms.service: security-center
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
-  ms.date: 07/26/18
-  ms.author: cmcclister
-abstract:
-  description: Azure 資訊安全中心為混合式雲端工作負載提供統一的安全性管理和進階威脅防護。 透過我們的快速入門教學課程，了解如何開始使用資訊安全中心、在工作負載中套用安全性原則、限制暴露於威脅的可能性，以及偵測和回應攻擊。
-sections:
-  - title: 5 分鐘快速入門
-    items:
-      - type: paragraph
-        text: 深入了解如何在資訊安全中心中加入虛擬機器和電腦，並與安全性解決方案連線。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: /media/common/i_subscription.svg
-            text: 加入 Azure 訂用帳戶
-            href: /azure/security-center/security-center-get-started
-          - image:
-              src: /media/logos/logo_Windows.svg
-            text: 加入 Windows 電腦
-            href: /azure/security-center/quick-onboard-windows-computer
-          - image:
-              src: /media/logos/logo_linux.svg
-            text: 加入 Linux 電腦
-            href: /azure/security-center/quick-onboard-linux-computer
-          - image:
-              src: /media/common/i_multi-connect.svg
-            text: 連線安全性解決方案
-            href: /azure/security-center/quick-security-solutions
-  - title: 逐步教學課程
-    items:
-      - type: paragraph
-        text: 了解如何定義安全性原則，保護您的資源免受惡意活動攻擊，並回應安全性警示和事件。
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/security-center/tutorial-security-policy">定義和評估安全性原則</a>
-          - html: <a href="/azure/security-center/tutorial-protect-resources">保護您的資源</a>
-          - html: <a href="/azure/security-center/tutorial-security-incident">回應安全性事件</a>
-  - title: 透過 Microsoft Learn 增進您的技巧
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: "\_\_Azure 中的安全性簡介"
-            href: /learn/modules/intro-to-security-in-azure/
-            image:
-              src: /learn/achievements/intro-to-security-in-azure.svg
-              href: /learn/modules/intro-to-security-in-azure/
-      - type: paragraph
-        text: <a href="/learn/browse/?term=security">更多互動式學習...</a>
-  - title: 免費影片訓練
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: 使用 Azure 資訊安全中心簡化雲端資源保護 - Ignite 2018
-            href: 'https://youtu.be/0txX1Y0GXDc'
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_azure.svg'
-              href: 'https://youtu.be/0txX1Y0GXDc'
-          - title: 使用 Azure 資訊安全中心保護伺服器工作負載 - Ignite 2018
-            href: 'https://youtu.be/Kb_xeIJVROo'
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_azure.svg'
-              href: 'https://youtu.be/Kb_xeIJVROo'
-  - title: 參考
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - html: '<a href="https://docs.microsoft.com/rest/api/securitycenter/">REST API 參考資料</a>'
-          - html: '<a href="https://azure.microsoft.com/updates/?product=security-center">服務更新</a>'
+  ms.collection: collection
+  author: memildin
+  ms.author: memildin
+  ms.date: 11/04/2019
+  ms.openlocfilehash: 13a7ca317630a5a1b0606fa0d2e2022f065fbd4d
+  ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 06/24/2020
+  ms.locfileid: "85317179"
+landingContent:
+- title: 關於資訊安全中心
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 資訊安全中心的主要功能有哪些？
+      url: security-center-intro.md
+    - text: 支援哪些版本的 Windows 伺服器和 Linux？
+      url: security-center-os-coverage.md
+- title: 保持最新狀態
+  linkLists:
+  - linkListType: whats-new
+    links:
+    - text: 資訊安全中心版本資訊
+      url: release-notes.md
+    - text: 適用於 SQL 機器的進階資料安全性
+      url: security-center-iaas-advanced-data.md
+    - text: 重複警示歸併規則
+      url: alerts-suppression-rules.md
+    - text: 新安全性控制的完整描述
+      url: secure-score-security-controls.md#security-controls-and-their-recommendations
+    - text: 新安全分數 API
+      url: secure-score-security-controls.md#getting-your-secure-score-from-the-rest-api
+- title: 開始使用
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: 設定安全性原則
+      url: tutorial-security-policy.md
+    - text: 評估安全性狀態
+      url: secure-score-security-controls.md
+    - text: 升級為進階安全性
+      url: security-center-onboarding.md
+- title: 改善您的安全分數
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 了解安全分數
+      url: secure-score-security-controls.md
+    - text: 修正安全性建議
+      url: security-center-remediate-recommendations.md
+    - text: 自訂安全性建議
+      url: tutorial-security-policy.md
+    - text: 使用增強安全性的建議
+      url: security-center-using-recommendations.md
+    - text: 使用安全分數 API 進行追蹤
+      url: secure-score-security-controls.md#getting-your-secure-score-from-the-rest-api
+- title: 降低威脅的風險
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 管理 Just-In-Time 存取
+      url: security-center-just-in-time.md
+    - text: 設定自適性應用程式控制
+      url: security-center-adaptive-application.md
+    - text: 實行自適性網路強化
+      url: security-center-adaptive-network-hardening.md

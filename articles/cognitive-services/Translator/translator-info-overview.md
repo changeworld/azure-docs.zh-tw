@@ -1,34 +1,34 @@
 ---
-title: 什麼是 Translator Text API？ - 翻譯工具文字 API
+title: 什麼是翻譯工具？ - 翻譯工具
 titlesuffix: Azure Cognitive Services
-description: 將翻譯工具文字 API 整合到您的應用程式、網站、工具與其他解決方案，以提供多語言使用者體驗。
+description: 將翻譯工具整合到您的應用程式、網站、工具與其他解決方案中，以提供多語言使用者體驗。
 services: cognitive-services
-author: erhopf
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: overview
-ms.date: 02/21/2019
-ms.author: erhopf
+ms.date: 05/26/2020
+ms.author: swmachan
 ms.custom: seodec18
-ms.openlocfilehash: 79f0474950cf1f48f3552b1ae843a29b5d8dbb24
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7044954d2ba67e61172c08c0a77acaaaec3822c6
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57883367"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83992669"
 ---
-# <a name="what-is-translator-text-api"></a>什麼是翻譯工具文字 API？
+# <a name="what-is-the-translator"></a>什麼是翻譯工具？
 
-您可以輕鬆地在應用程式、網站、工具和解決方案中整合翻譯工具文字 API。 它可讓您以 [60 種以上的語言](languages.md)新增多語言使用者體驗，並且可在使用任何作業系統的任何硬體平台上用於文字轉換文字的語言翻譯。
+您可以輕鬆地在應用程式、網站、工具和解決方案中整合翻譯工具。 它可讓您以 [60 種以上的語言](languages.md)新增多語言使用者體驗，並且可在使用任何作業系統的任何硬體平台上用於文字轉換文字的語言翻譯。
 
-翻譯工具文字 API 是由雲端中機器學習與 AI 演算法所組成的 [Azure 認知服務 API](https://docs.microsoft.com/azure/#pivot=products&panel=ai) 集合的一部分，且隨時可供您在開發專案中取用。
+翻譯工具是由雲端中的機器學習與 AI 演算法所組成的 [Azure 認知服務](https://docs.microsoft.com/azure/?pivot=products&panel=ai)集合的一部分，可隨時供您在開發專案中取用。
 
 ## <a name="about-microsoft-translator"></a>關於 Microsoft Translator
 
-Microsoft Translator 是一個雲端式機器翻譯服務。 核心服務是翻譯工具文字 API，此 API 可為多種 Microsoft 產品和服務提供技術支援，並由全球數千個企業運用在其應用程式和工作流程中，使其內容得以觸及全球各地的用戶。
+翻譯工具是一項雲端式機器翻譯服務。 核心服務是翻譯工具，可為多種 Microsoft 產品和服務提供技術支援，並由全球數千個企業運用在其應用程式和工作流程中，使其內容得以觸及全球各地的用戶。
 
-語音翻譯由翻譯工具文字 API 提供技術支援，也可透過 [Microsoft 語音服務](https://docs.microsoft.com/azure/cognitive-services/speech-service/)來使用。 此服務將翻譯工具語音 API 和自訂語音服務的功能結合為統合且可完整自訂的服務。 翻譯工具語音 API 將取代為語音服務，且將於 2019 年 10 月 15 日除役。
+語音翻譯由翻譯工具提供技術支援，也可透過 [Microsoft 語音服務](https://docs.microsoft.com/azure/cognitive-services/speech-service/)來使用。 此服務將翻譯工具語音 API 和自訂語音服務的功能結合為統合且可完整自訂的服務。 翻譯工具語音 API 將取代為語音服務，且將於 2019 年 10 月 15 日除役。
 
 ## <a name="language-support"></a>語言支援
 
@@ -46,9 +46,9 @@ NMT 模型位於 API 核心，使用者並不會看到這些模型。 唯一可�
 
 ## <a name="language-customization"></a>自訂語言
 
-自訂翻譯工具是核心 Microsoft Translator 服務的擴充功能，與 Translator Text API 搭配使用時，可協助您自訂類神經翻譯系統以及改善特定術語和風格的翻譯。
+自訂翻譯工具是核心 Microsoft Translator 服務的擴充功能，與翻譯工具搭配使用時，可協助您自訂類神經翻譯系統以及改善特定術語和風格的翻譯。
 
-透過自訂翻譯工具，您將可建置翻譯系統，以處理您自己的企業或產業中使用的術語。 其後，您自訂的翻譯系統將可透過一般 Microsoft Translator Text API，使用類別參數跨多種類型的裝置輕易整合到您現有的應用程式、工作流程和網站中。
+透過自訂翻譯工具，您將可建置翻譯系統，以處理您自己的企業或產業中使用的術語。 其後，您自訂的翻譯系統將可透過一般翻譯工具，使用類別參數跨多種類型的裝置輕易整合到您現有的應用程式、工作流程和網站中。
 
 深入了解[語言自訂](customization.md)
 

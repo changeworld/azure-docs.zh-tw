@@ -1,27 +1,18 @@
 ---
-title: 在 Linux 上建立 ASP.NET Core 應用程式 - Azure App Service | Microsoft Docs
-description: 將您的第一個 .NET Core Hello World 應用程式部署到 Linux 上的 App Service，只要幾分鐘。
+title: 快速入門：執行 Linux ASP.NET Core 應用程式
+description: 藉由將您的第一個 ASP.NET Core 應用程式部署至 App Service 中的 Linux 容器，在 Azure App Service 上開始使用 Linux 應用程式。
 keywords: azure app service, Web 應用程式, dotnet, core, linux, oss
-services: app-service
-documentationCenter: ''
-author: cephalin
-manager: jeconnoc
-editor: ''
 ms.assetid: c02959e6-7220-496a-a417-9b2147638e2e
-ms.service: app-service
-ms.workload: web
 ms.tgt_pltfrm: linux
-ms.devlang: na
 ms.topic: quickstart
-ms.date: 03/27/2019
-ms.author: cephalin
-ms.custom: seodec18
-ms.openlocfilehash: da4d246e098751f650eb6315de3794ad957884d6
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.date: 04/22/2020
+ms.custom: mvc, cli-validate, seodec18
+ms.openlocfilehash: 1eeb5bbd4b10ef660a50f40d6c1300b0ca214561
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59543888"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82206660"
 ---
 # <a name="create-an-aspnet-core-app-in-app-service-on-linux"></a>在 Linux 上的 App Service 中建立 ASP.NET Core 應用程式
 
@@ -37,12 +28,12 @@ ms.locfileid: "59543888"
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本快速入門：
 
 * <a href="https://git-scm.com/" target="_blank">安裝 Git</a>
-* <a href="https://www.microsoft.com/net/core/" target="_blank">安裝 .NET Core</a>
+* <a href="https://dotnet.microsoft.com/download/dotnet-core/3.1" target="_blank">安裝最新的 .NET Core 3.1 SDK</a>
 
 ## <a name="create-the-app-locally"></a>在本機建立應用程式
 
@@ -95,10 +86,10 @@ git commit -m "first commit"
 
 [!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-dotnetcore-linux-no-h.md)]
 
-瀏覽至您剛建立的應用程式。 以您的應用程式名稱取代 _&lt;app name>_。
+瀏覽至您剛建立的應用程式。 以您的應用程式名稱取代 _&lt;app-name>_ 。
 
 ```bash
-http://<app name>.azurewebsites.net
+https://<app-name>.azurewebsites.net
 ```
 
 新的應用程式看起來應該像這樣：
@@ -107,34 +98,32 @@ http://<app name>.azurewebsites.net
 
 [!INCLUDE [Push to Azure](../../../includes/app-service-web-git-push-to-azure.md)] 
 
-```bash
-Counting objects: 22, done.
-Delta compression using up to 8 threads.
-Compressing objects: 100% (18/18), done.
-Writing objects: 100% (22/22), 51.21 KiB | 3.94 MiB/s, done.
-Total 22 (delta 1), reused 0 (delta 0)
+<pre>
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 285 bytes | 95.00 KiB/s, done.
+Total 3 (delta 2), reused 0 (delta 0), pack-reused 0
+remote: Deploy Async
 remote: Updating branch 'master'.
 remote: Updating submodules.
-remote: Preparing deployment for commit id '741f16d1db'.
-remote: Generating deployment script.
-remote: Project file path: ./hellodotnetcore.csproj
-remote: Generated deployment script files
-remote: Running deployment command...
-remote: Handling ASP.NET Core Web Application deployment.
-remote: ...............................................................................................
-remote:   Restoring packages for /home/site/repository/hellodotnetcore.csproj...
-remote: ....................................
-remote:   Installing System.Xml.XPath 4.0.1.
-remote:   Installing System.Diagnostics.Tracing 4.1.0.
-remote:   Installing System.Threading.Tasks.Extensions 4.0.0.
-remote:   Installing System.Reflection.Emit.ILGeneration 4.0.1.
-remote:   ...
-remote: Finished successfully.
-remote: Running post deployment command(s)...
+remote: Preparing deployment for commit id 'd6b54472f7'.
+remote: Repository path is /home/site/repository
+remote: Running oryx build...
+remote: Build orchestrated by Microsoft Oryx, https://github.com/Microsoft/Oryx
+remote: You can report issues at https://github.com/Microsoft/Oryx/issues
+remote:
+remote: Oryx Version      : 0.2.20200114.13, Commit: 204922f30f8e8d41f5241b8c218425ef89106d1d, ReleaseTagName: 20200114.13
+remote: Build Operation ID: |imoMY2y77/s=.40ca2a87_
+remote: Repository Commit : d6b54472f7e8e9fd885ffafaa64522e74cf370e1
+.
+.
+.
 remote: Deployment successful.
-To https://cephalin-dotnetcore.scm.azurewebsites.net/cephalin-dotnetcore.git
- * [new branch]      master -> master
-```
+remote: Deployment Logs : 'https://&lt;app-name&gt;.scm.azurewebsites.net/newui/jsonviewer?view_url=/api/deployments/d6b54472f7e8e9fd885ffafaa64522e74cf370e1/log'
+To https://&lt;app-name&gt;.scm.azurewebsites.net:443/&lt;app-name&gt;.git
+   d87e6ca..d6b5447  master -> master
+</pre>
 
 ## <a name="browse-to-the-app"></a>瀏覽至應用程式
 
@@ -165,7 +154,7 @@ git commit -am "updated output"
 git push azure master
 ```
 
-部署完成後，切換回在「瀏覽至應用程式」步驟中開啟的瀏覽器視窗，然後按 [重新整理]。
+部署完成後，切換回在「瀏覽至應用程式」  步驟中開啟的瀏覽器視窗，然後按 [重新整理]。
 
 ![在 Azure 中執行的已更新範例應用程式](media/quickstart-dotnetcore/dotnet-browse-azure-updated.png)
 
@@ -173,7 +162,7 @@ git push azure master
 
 移至 <a href="https://portal.azure.com" target="_blank">Azure 入口網站</a>，以管理您所建立的應用程式。
 
-按一下左側功能表中的 [應用程式服務]，然後按一下 Azure 應用程式的名稱。
+按一下左側功能表中的 [應用程式服務]  ，然後按一下 Azure 應用程式的名稱。
 
 ![入口網站瀏覽至 Azure 應用程式](./media/quickstart-dotnetcore/portal-app-service-list.png)
 

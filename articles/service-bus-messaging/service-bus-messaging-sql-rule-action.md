@@ -1,27 +1,15 @@
 ---
-title: Azure 中的 SQLRuleAction 語法參考 | Microsoft Docs
-description: SQLRuleAction 文法的詳細資料。
-services: service-bus-messaging
-documentationcenter: na
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: ''
-ms.service: service-bus-messaging
-ms.devlang: na
+title: Azure 服務匯流排中的 SQLRuleAction 語法參考
+description: 本文提供 SQLRuleAction 語法的參考。 這些動作是以以 SQL 語言為基礎的語法所撰寫，會針對代理訊息來執行。
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 09/05/2018
-ms.author: aschhab
-ms.openlocfilehash: 0f9365b72da1cec81eed82756097d32b1d72ca71
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 06/23/2020
+ms.openlocfilehash: 61fa6e046b4d4a0ba91bf8608c846755026d07ec
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60307473"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85341585"
 ---
-# <a name="sqlruleaction-syntax"></a>SQLRuleAction 語法
+# <a name="sqlruleaction-syntax-reference-for-azure-service-bus"></a>Azure 服務匯流排的 SQLRuleAction 語法參考
 
 *SqlRuleAction* 是 [SqlRuleAction](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction) 類別的執行個體，代表對 [BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)執行的以 SQL 語言為基礎之語法所撰寫的動作集。   
   
@@ -71,7 +59,7 @@ ms.locfileid: "60307473"
 
 嘗試存取不存在的系統屬性時會發生錯誤，而嘗試存取不存在的使用者屬性時不會發生錯誤。 反之，不存在的使用者屬性會內部評估為未知的值。 未知的值在運算子評估期間會特別處理。  
   
-## <a name="propertyname"></a>property_name  
+## <a name="property_name"></a>property_name  
   
 ```  
 <property_name> ::=  
@@ -92,7 +80,7 @@ ms.locfileid: "60307473"
   
  這表示任何以字母為開頭且後面跟著一或多個底線/字母/數字的字串。  
   
- `[:IsLetter:]` 是指分类为 Unicode 字母的任何 Unicode 字符。 如果 `c` 為 Unicode 字母，`System.Char.IsLetter(c)` 會傳回 `true`。  
+ `[:IsLetter:]` 表示分類為 Unicode 字母的任何 Unicode 字元。 如果 `c` 為 Unicode 字母，`System.Char.IsLetter(c)` 會傳回 `true`。  
   
  `[:IsDigit:]` 表示分類為十進位數字的任何 Unicode 字元。 如果 `c` 為 Unicode 數字，`System.Char.IsDigit(c)` 會傳回 `true`。  
   
@@ -123,11 +111,11 @@ ms.locfileid: "60307473"
   
  `<pattern>` 必須是評估為字串的運算式。 它會用來做為 LIKE 運算子的模式。      它可以包含下列萬用字元︰  
   
--   `%`:任何零或多個字元的字串。  
+-   `%`︰任何零或多個字元的字串。  
   
--   `_`:任何單一字元。  
+-   `_`︰任何單一字元。  
   
-## <a name="escapechar"></a>escape_char  
+## <a name="escape_char"></a>escape_char  
   
 ```  
 <escape_char> ::=  
@@ -158,7 +146,7 @@ ms.locfileid: "60307473"
     2  
     ```  
   
--   `<decimal_constant>` 是數字的字串，不會以引號括住，且包含小數點。 这些值作为 `System.Double` 在内部存储，并具有相同的作用域/精度。  
+-   `<decimal_constant>` 是數字的字串，不會以引號括住，且包含小數點。 值會在內部儲存為 `System.Double`，並遵循相同的範圍/精確度。  
   
      在未來版本中，這個數字可能會以不同的資料類型儲存，以支援實際數字的語意，因此您不應依賴 `<decimal_constant>` 的基本資料型別是 `System.Double`。  
   
@@ -176,7 +164,7 @@ ms.locfileid: "60307473"
     0.5E-2  
     ```  
   
-## <a name="booleanconstant"></a>boolean_constant  
+## <a name="boolean_constant"></a>boolean_constant  
   
 ```  
 <boolean_constant> :=  
@@ -187,7 +175,7 @@ ms.locfileid: "60307473"
   
 布林值常數由關鍵字 `TRUE` 或 `FALSE` 代表。 值會儲存為 `System.Boolean`。  
   
-## <a name="stringconstant"></a>string_constant  
+## <a name="string_constant"></a>string_constant  
   
 ```  
 <string_constant>  
@@ -197,7 +185,7 @@ ms.locfileid: "60307473"
   
 字串常數會以單引號括住，且包含任何有效的 Unicode 字元。 內嵌在字串常數中的單引號會以兩個單引號表示。  
   
-## <a name="function"></a>函式  
+## <a name="function"></a>函數  
   
 ```  
 <function> :=  

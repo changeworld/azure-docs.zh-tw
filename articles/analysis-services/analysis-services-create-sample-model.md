@@ -1,19 +1,18 @@
 ---
-title: 教學課程 - 將範例模型新增至 Azure Analysis Services 伺服器 | Microsoft Docs
+title: 教學課程 - 新增範例模型 - Azure Analysis Services | Microsoft Docs
 description: 在本教學課程中，了解如何在 Azure Analysis Services 中新增範例模型。
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: tutorial
-ms.date: 03/13/2019
+ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 32c46f0a488d775275b3a367aa2913f034569041
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 88ed58ea1eea80b4b890c31260fc65153377eaaa
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57903924"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697513"
 ---
 # <a name="tutorial-add-a-sample-model-from-the-portal"></a>教學課程：從入口網站新增範例模型
 
@@ -31,7 +30,7 @@ ms.locfileid: "57903924"
 
 - Azure Analysis Services 伺服器。 若要深入了解，請參閱[建立伺服器 - 入口網站](analysis-services-create-server.md)。
 - 伺服器管理員權限
-- [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)
+- [Transact-SQL](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)
 
 
 ## <a name="sign-in-to-the-azure-portal"></a>登入 Azure 入口網站
@@ -40,15 +39,15 @@ ms.locfileid: "57903924"
 
 ## <a name="add-a-sample-model"></a>新增範例模型
 
-1. 在伺服器的 [概觀] 中，按一下 [新增模型]。
+1. 在伺服器的 [概觀]  中，按一下 [新增模型]  。
 
     ![建立範例模型](./media/analysis-services-create-sample-model/aas-create-sample-new-model.png)
 
-2. 在 [新增模型] > [選擇資料來源] 中，確認已選取 [範例資料]，然後按一下 [新增]。
+2. 在 [新增模型]   > [選擇資料來源]  中，確認已選取 [範例資料]  ，然後按一下 [新增]  。
 
     ![選取範例資料](./media/analysis-services-create-sample-model/aas-create-sample-data.png)
 
-3. 在 [概觀] 中，確認已新增 `adventureworks` 範例模型。
+3. 在 [概觀]  中，確認已新增 `adventureworks` 範例模型。
 
     ![選取範例資料](./media/analysis-services-create-sample-model/aas-create-sample-verify.png)
 
@@ -59,13 +58,13 @@ ms.locfileid: "57903924"
 
 下列步驟說明如何使用 SSMS 從伺服器中刪除模型。
 
-1. 在 SSMS > [物件總管] 中，按一下 [連線]  > [分析服務] 。
+1. 在 SSMS > [物件總管]  中，按一下 [連線]   > [分析服務]  。
 
-2. 在 [連線到伺服器] 中貼上伺服器名稱，然後在 [驗證] 中選擇 [具 MFA 支援的 Active Directory - 通用]，並輸入您的使用者名稱，然後按一下 [連線]。
+2. 在 [連線到伺服器]  中貼上伺服器名稱，然後在 [驗證]  中選擇 [具 MFA 支援的 Active Directory - 通用]  ，並輸入您的使用者名稱，然後按一下 [連線]  。
 
     ![登入](./media/analysis-services-create-sample-model/aas-create-sample-cleanup-signin.png)
 
-3. 在 [物件總管] 中，以滑鼠右鍵按一下 `adventureworks`，然後按一下 [刪除]。
+3. 在 [物件總管]  中，以滑鼠右鍵按一下 `adventureworks`，然後按一下 [刪除]  。
 
     ![刪除範例資料庫](./media/analysis-services-create-sample-model/aas-create-sample-cleanup-delete.png)
 
@@ -74,6 +73,6 @@ ms.locfileid: "57903924"
 在本教學課程中，您已撩解如何將基本範例模型新增至您的伺服器。 您現在有一個模型資料庫，您可以從 SQL Server Management Studio 連線到該資料庫，並新增使用者角色。 若要深入了解，請繼續下一個教學課程。
 
 > [!div class="nextstepaction"]
-> [教學課程：設定伺服器管理員和使用者角色](analysis-services-database-users.md)
+> [教學課程：設定伺服器管理員和使用者角色](tutorials/analysis-services-tutorial-roles.md)
 
 

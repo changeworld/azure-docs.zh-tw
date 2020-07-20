@@ -1,5 +1,5 @@
 - name: 媒體服務文件
-  href: index.md
+  href: index.yml
 - name: 概觀
   href: media-services-overview.md
   items:
@@ -49,8 +49,23 @@
           href: media-services-dotnet-live-encode-with-onpremises-encoders.md
 - name: 作法
   items:
+    - name: 舊版元件
+      displayName: 'deprecated, deprecation, retired, retirement, legacy'
+      href: legacy-components.md
+      items:
+        - name: 從 Azure 媒體編碼器遷移
+          href: migrate-azure-media-encoder.md
+          displayName: AME
+        - name: 從 Windows Azure 媒體編碼器遷移
+          href: migrate-windows-azure-media-encoder.md
+          displayName: WAME
+        - name: 從索引器 v1 和 v2 遷移
+          href: migrate-indexer-v1-v2.md
     - name: 管理
       items:
+        - name: 帳戶
+          displayName: subscription
+          href: media-services-account-concept.md
         - name: 實體
           items:
             - name: .NET
@@ -69,7 +84,7 @@
             - name: 更換儲存體存取金鑰之後更新媒體服務
               href: media-services-roll-storage-access-keys.md
             - name: 管理跨多個儲存體帳戶的資產
-              href: meda-services-managing-multiple-storage-accounts.md
+              href: media-services-managing-multiple-storage-accounts.md
         - name: 配額和限制
           href: media-services-quotas-and-limitations.md
     - name: 設定 Postman
@@ -89,10 +104,10 @@
               href: media-services-portal-upload-files.md
             - name: .NET
               href: media-services-dotnet-upload-files.md
+              displayName: invalid character
             - name: REST
               href: media-services-rest-upload-files.md
-        - name: 透過 Aspera 上傳大型檔案
-          href: media-services-upload-files-with-aspera.md
+              displayName: invalid character
         - name: 透過 StorSimple 上傳檔案
           href: media-services-upload-files-from-storsimple.md
         - name: 複製現有的 blob
@@ -214,7 +229,7 @@
               href: media-services-rest-get-media-processor.md
         - name: 錯誤碼
           href: media-services-encoding-error-codes.md
-        - name: 取代
+        - name: 已被取代
           items:
             - name: 靜態封裝和加密
               href: media-services-static-packaging.md
@@ -240,30 +255,14 @@
         - name: 設定內部部署編碼器與雲端編碼器搭配運作
           href: media-services-live-encoders-overview.md
           items:
-            - name: FMLE 編碼器
-              href: media-services-configure-fmle-live-encoder.md
             - name: Haivision KB 編碼器
               href: media-services-configure-kb-live-encoder.md
-            - name: NewTek TriCaster 編碼器
-              href: media-services-configure-tricaster-live-encoder.md
             - name: Wirecast 編碼器
               href: media-services-configure-wirecast-live-encoder.md
         - name: 處理長時間執行的作業
           href: media-services-dotnet-long-operations.md
         - name: 分散式 MP4 即時內嵌規格
-          href: media-services-fmp4-live-ingest-overview.md
-        - name: 開始使用
-          href: media-services-azure-media-clipper-getting-started.md
-        - name: 載入影片
-          href: media-services-azure-media-clipper-load-assets.md
-        - name: 設定鍵盤快速鍵
-          href: media-services-azure-media-clipper-keyboard-shortcuts.md
-        - name: 設定當地語系化
-          href: media-services-azure-media-clipper-localization.md
-        - name: 提交裁剪作業
-          href: media-services-azure-media-clipper-submit-job.md
-        - name: Azure 入口網站
-          href: media-services-azure-media-clipper-portal.md
+          href: ../media-services-fmp4-live-ingest-overview.md
     - name: 保護內容
       href: media-services-content-protection-overview.md
       items:
@@ -392,12 +391,11 @@
           href: media-services-deliver-asset-download.md
         - name: 容錯移轉串流案例
           href: media-services-implement-failover.md
+          displayName: 'HA, high availability'
     - name: 取用
       items:
         - name: 使用現有播放器來播放媒體
           href: media-services-playback-content-with-existing-players.md
-        - name: 使用媒體播放器來播放媒體
-          href: media-services-develop-video-players.md
         - name: 其他播放選項
           items:
             - name: Smooth Streaming Windows Store 應用程式
@@ -455,18 +453,21 @@
     - name: 規格
       items:
         - name: 即時內嵌 - 分散式 MP4 即時內嵌規格
-          href: media-services-fmp4-live-ingest-overview.md
+          href: ../media-services-fmp4-live-ingest-overview.md
         - name: 即時內嵌 - 即時資料流中的已逾時中繼資料訊號
-          href: media-services-specifications-live-timed-metadata.md
+          href: ../media-services-specifications-live-timed-metadata.md
         - name: Smooth Streaming HEVC
-          href: media-services-specifications-ms-sstr-amendment-hevc.md
+          href: ../media-services-specifications-ms-sstr-amendment-hevc.md
+    - name: 舊版元件
+      displayName: 'deprecated, deprecation, retired, retirement, legacy'
+      href: legacy-components.md
 - name: 資源
   items:
     - name: Azure 媒體服務社群
       href: media-services-community.md
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/roadmap/?category=web-mobile'
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/media-services/'
     - name: 定價計算機
       href: 'https://azure.microsoft.com/pricing/calculator/'

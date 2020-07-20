@@ -1,5 +1,6 @@
 ---
-title: 將 Azure API 管理服務部署到多個 Azure 區域 | Microsoft Docs
+title: 將 Azure API 管理服務部署到多個 Azure 區域
+titleSuffix: Azure API Management
 description: 瞭解如何將 Azure API 管理服務執行個體部署到多個 Azure 區域。
 services: api-management
 documentationcenter: ''
@@ -9,68 +10,54 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2019
+ms.date: 04/20/2020
 ms.author: apimpm
-ms.openlocfilehash: d22da92355616c208c7616b4b0e8c26b7f9e7006
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 17c92558ebef2eee0a4daead45d16a295cedd1bb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60658130"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82790474"
 ---
 # <a name="how-to-deploy-an-azure-api-management-service-instance-to-multiple-azure-regions"></a>如何將 Azure API 管理服務執行個體部署到多個 Azure 區域
 
-Azure API 管理支援多區域部署，可讓 API 發行者跨所需的任意數量 Azure 區域發佈單一 Azure API 管理服務。 這有助於降低地理上分散的 API 取用者感受到的要求延遲，並且可以改善某個區域離線時服務的可用性。
+Azure API 管理支援多區域部署，可讓 API 發行者跨任意數目的支援 Azure 區域散發單一 Azure API 管理服務。 多重區域功能有助於減少地理位置分散的 API 取用者所觀察到的要求延遲，並在某個區域離線時改善服務可用性。
 
-新的 Azure API 管理服務一開始只會在單一 Azure 區域 (主要區域) 中包含一個[單位][unit]。 您可以透過 Azure 入口網站輕鬆新增其他區域。 API 管理网关服务器部署到每个区域，调用流量将路由到最近的网关，以减小延迟。 如果區域離線，流量會自動重新導向到下一個最近的閘道。
+新的 Azure API 管理服務一開始只會在單一 Azure 區域（主要區域）中包含一個[單位][unit]。 可以將額外的單位新增至主要或次要區域。 API 管理閘道元件會部署到每個選取的主要和次要區域。 傳入的 API 要求會自動導向至最接近的區域。 如果區域離線，API 要求將會自動路由至失敗的區域，直到下一個最接近的閘道。
 
 > [!NOTE]
-> Azure API 管理只可跨區域複寫 API 閘道元件。 服務管理元件只裝載在主要區域中。 如果主要區域發生中斷狀況，則不可能將組態變更套用至 Azure API 管理服務執行個體 (包括設定或原則更新)。
+> 只有 API 管理的閘道元件會部署到所有區域。 服務管理元件和開發人員入口網站僅裝載于主要區域。 因此，在主要區域中斷的情況下，存取開發人員入口網站和變更設定的能力（例如新增 Api、套用原則）將會受到影響，直到主要區域恢復上線為止。 當主要區域離線時，次要區域將會繼續使用最新的可用設定來提供 API 流量。
 
 [!INCLUDE [premium.md](../../includes/api-management-availability-premium.md)]
 
-## <a name="add-region"> </a>部署 API 管理服務執行個體到新區域
+## <a name="deploy-api-management-service-to-a-new-region"></a><a name="add-region"> </a>將 API 管理服務部署到新的區域
 
 > [!NOTE]
-> 如果您尚未建立 API 管理服務執行個體，請參閱[建立 API 管理服務執行個體][Create an API Management service instance]。
+> 如果您尚未建立 API 管理服務執行個體，請參閱[建立 API 管理服務執行個體][create an api management service instance]。
 
-在 Azure 入口網站中，瀏覽至「API 管理」服務執行個體的 [級別與價格] 頁面。 
+1. 在 [Azure 入口網站中，流覽至您的 API 管理服務，然後按一下功能表中的 [**位置**] 專案。
+2. 按一下頂端列中的 [ **+ 新增**]。
+3. 從下拉式清單中選取 [位置]，並使用滑杆設定單位數。
+4. 按一下 [**新增**] 按鈕以確認。
+5. 重複此程式，直到您設定所有位置為止。
+6. 按一下頂端列中的 [**儲存**] 以啟動部署程式。
 
-![調整索引標籤][api-management-scale-service]
+## <a name="delete-an-api-management-service-location"></a><a name="remove-region"> </a>刪除 API 管理服務位置
 
-若要部署新區域，請從工具列中按一下 [+加入區域]。
+1. 在 [Azure 入口網站中，流覽至您的 API 管理服務，然後按一下功能表中的 [**位置**] 專案。
+2. 針對您想要移除的位置，使用表格最右邊的 [...]**** 按鈕來開啟操作功能表。 選取 [刪除]**** 選項。
+3. 確認刪除，然後按一下 [儲存]**** 來套用變更。
 
-![添加区域][api-management-add-region]
-
-從下拉式清單中選取位置，然後使用滑桿設定單位數量。
-
-![指定單位][api-management-select-location-units]
-
-按一下 [加入] 以將您的選項放入 [位置] 表格中。 
-
-重複此程序，直到設定好所有位置為止，然後從工具列中按一下 [儲存] 來開始部署程序。
-
-## <a name="remove-region"> </a>從區域中刪除 API 管理服務執行個體
-
-在 Azure 入口網站中，瀏覽至「API 管理」服務執行個體的 [級別與價格] 頁面。 
-
-![調整索引標籤][api-management-scale-service]
-
-針對您想要移除的位置，使用表格最右邊的 [...] 按鈕來開啟操作功能表。 選取 [刪除] 選項。
-
-確認刪除，然後按一下 [儲存] 來套用變更。
-
-## <a name="route-backend"> </a>將 API 呼叫路由至區域後端服務
+## <a name="route-api-calls-to-regional-backend-services"></a><a name="route-backend"> </a>將 API 呼叫路由至區域後端服務
 
 Azure API 管理只有一個後端服務 URL。 即使不同區域中有多個 Azure API 管理執行個體，API 閘道仍會將要求轉送到只部署在單一區域中的相同後端服務。 在此案例中，效能的提升只在於將回應快取到要求專屬區域中的 Azure API 管理內，但在連絡全球各地的後端時，可能仍會造成高延遲。
 
 若要完全利用您系統的地理分佈，您應該將後端服務部署在 Azure API 管理執行個體所在的區域中。 然後，藉由使用原則和 `@(context.Deployment.Region)` 屬性，您可以將流量路由至您後端的本機執行個體。
 
-1. 瀏覽至您的 Azure API 管理執行個體，然後按一下左側功能表中的 [API]。
+1. 瀏覽至您的 Azure API 管理執行個體，然後按一下左側功能表中的 [API]****。
 2. 選取想要的 API。
-3. 從 [輸入處理] 中的箭號下拉式清單中，按一下 [程式碼編輯器]。
+3. 從 [輸入處理]**** 中的箭號下拉式清單中，按一下 [程式碼編輯器]****。
 
     ![API 程式碼編輯器](./media/api-management-howto-deploy-multi-region/api-management-api-code-editor.png)
 
@@ -107,31 +94,21 @@ Azure API 管理只有一個後端服務 URL。 即使不同區域中有多個 A
     ```
 
 > [!TIP]
-> 还可以使用 [Azure 流量管理器](https://azure.microsoft.com/services/traffic-manager/)来配置后端服务的前端，将 API 调用定向到流量管理器中，然后让流量管理器自动解析路由。
+> 您也可以使用[Azure 流量管理員](https://azure.microsoft.com/services/traffic-manager/)來處理後端服務，將 API 呼叫導向至流量管理員，並讓它自動解析路由。
 
-## <a name="custom-routing"> </a>使用 API 管理区域网关的自定义路由
+## <a name="use-custom-routing-to-api-management-regional-gateways"></a><a name="custom-routing"> </a>使用 API 管理區域閘道的自訂路由
 
-API 管理根据[最低延迟](../traffic-manager/traffic-manager-routing-methods.md#performance)将请求路由到区域网关。 尽管无法在 API 管理中替代此设置，但可以结合自定义路由规则使用自己的流量管理器。
+API 管理會根據[最低延遲](../traffic-manager/traffic-manager-routing-methods.md#performance)，將要求路由傳送至區域_閘道_。 雖然無法在 API 管理中覆寫這項設定，但您可以使用自己的流量管理員搭配自訂路由規則。
 
-1. 创建自己的 [Azure 流量管理器](https://azure.microsoft.com/services/traffic-manager/)。
-1. 如果使用自定义域，请[将它与流量管理器配合使用](../traffic-manager/traffic-manager-point-internet-domain.md)，而不要与 API 管理服务配合使用。
-1. [在流量管理器中配置 API 管理区域终结点](../traffic-manager/traffic-manager-manage-endpoints.md)。 区域终结点遵循 `https://<service-name>-<region>-01.regional.azure-api.net` URL 模式，例如 `https://contoso-westus2-01.regional.azure-api.net`。
-1. [在流量管理器中配置 API 管理区域状态终结点](../traffic-manager/traffic-manager-monitoring.md)。 区域状态终结点遵循 `https://<service-name>-<region>-01.regional.azure-api.net/status-0123456789abcdef` URL 模式，例如 `https://contoso-westus2-01.regional.azure-api.net/status-0123456789abcdef`。
-1. 指定流量管理器的[路由方法](../traffic-manager/traffic-manager-routing-methods.md)。
+1. 建立您自己的[Azure 流量管理員](https://azure.microsoft.com/services/traffic-manager/)。
+1. 如果您使用的是自訂網域，請[將其用於流量管理員](../traffic-manager/traffic-manager-point-internet-domain.md)，而不是 API 管理服務。
+1. [在流量管理員中設定 API 管理區域端點](../traffic-manager/traffic-manager-manage-endpoints.md)。 例如，區域端點會遵循的 URL 模式 `https://<service-name>-<region>-01.regional.azure-api.net` `https://contoso-westus2-01.regional.azure-api.net` 。
+1. [在流量管理員中設定 API 管理區域狀態端點](../traffic-manager/traffic-manager-monitoring.md)。 例如，地區狀態端點會遵循的 URL 模式 `https://<service-name>-<region>-01.regional.azure-api.net/status-0123456789abcdef` `https://contoso-westus2-01.regional.azure-api.net/status-0123456789abcdef` 。
+1. 指定流量管理員的[路由方法](../traffic-manager/traffic-manager-routing-methods.md)。
 
-
-[api-management-management-console]: ./media/api-management-howto-deploy-multi-region/api-management-management-console.png
-
-[api-management-scale-service]: ./media/api-management-howto-deploy-multi-region/api-management-scale-service.png
-[api-management-add-region]: ./media/api-management-howto-deploy-multi-region/api-management-add-region.png
-[api-management-select-location-units]: ./media/api-management-howto-deploy-multi-region/api-management-select-location-units.png
-[api-management-remove-region]: ./media/api-management-howto-deploy-multi-region/api-management-remove-region.png
-
-[Create an API Management service instance]: get-started-create-service-instance.md
-[Get started with Azure API Management]: get-started-create-service-instance.md
-
-[Deploy an API Management service instance to a new region]: #add-region
-[Delete an API Management service instance from a region]: #remove-region
-
+[create an api management service instance]: get-started-create-service-instance.md
+[get started with azure api management]: get-started-create-service-instance.md
+[deploy an api management service instance to a new region]: #add-region
+[delete an api management service instance from a region]: #remove-region
 [unit]: https://azure.microsoft.com/pricing/details/api-management/
-[Premium]: https://azure.microsoft.com/pricing/details/api-management/
+[premium]: https://azure.microsoft.com/pricing/details/api-management/

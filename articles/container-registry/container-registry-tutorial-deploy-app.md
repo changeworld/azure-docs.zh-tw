@@ -1,19 +1,15 @@
 ---
-title: 教學課程 - 從 Azure 中的異地複寫 Docker 登錄部署應用程式
+title: 教學課程 - 從異地複寫的登錄部署
 description: 使用異地複寫 Azure Container Registry 中的容器映像，將以 Linux 為基礎的 Web 應用程式部署至兩個不同的 Azure 區域。 這是三段式教學課程的第二段。
-services: container-registry
-author: dlepow
-ms.service: container-registry
 ms.topic: tutorial
 ms.date: 08/20/2018
-ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: e5a38e2b6550d763f30c2462944b154f76bbe92c
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 5b075e1065ef8c30837000f490cc93525b4b61cc
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53253828"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "74456097"
 ---
 # <a name="tutorial-deploy-a-web-app-from-a-geo-replicated-azure-container-registry"></a>教學課程：從異地複寫的 Azure Container Registry 部署 Web 應用程式
 
@@ -37,26 +33,30 @@ Azure Container Registry 支援將容器化的應用程式直接部署至[用於
 
 ## <a name="deploy-a-web-app-for-containers-instance"></a>部署用於容器的 Web 應用程式執行個體
 
-在此步驟中，您要在「美國西部」區域中建立用於容器的 Web 應用程式執行個體。
+在此步驟中，您要在「美國西部」  區域中建立用於容器的 Web 應用程式執行個體。
 
 登入 [Azure 入口網站](https://portal.azure.com)並瀏覽至您在上一個教學課程中建立的登錄。
 
-選取 [存放庫] > [acr-helloworld]，然後在 [標記] 下的 [v1] 標記上按一下滑鼠右鍵，接著選取 [部署至 Web 應用程式]：
+選取 [存放庫]   > [acr-helloworld]  ，然後在 [標記]  下的 [v1]  標記上按一下滑鼠右鍵，接著選取 [部署至 Web 應用程式]  ：
 
 ![部署至 Azure 入口網站中的 App Service][deploy-app-portal-01]
 
-如果 [部署至 Web 應用程式] 停用，表示您可能未依照第一個教學課程的[建立容器登錄](container-registry-tutorial-prepare-registry.md#create-a-container-registry)中的指示來啟用登錄管理員使用者。 您可以在 Azure 入口網站的 [設定] > [存取金鑰] 中啟用管理員使用者。
+如果 [部署至 Web 應用程式] 停用，表示您可能未依照第一個教學課程的[建立容器登錄](container-registry-tutorial-prepare-registry.md#create-a-container-registry)中的指示來啟用登錄管理員使用者。 您可以在 Azure 入口網站的 [設定]   > [存取金鑰]  中啟用管理員使用者。
 
-在您選取 [部署至 Web 應用程式] 之後所顯示的 [適用於容器的 Web 應用程式] 下方，為每個設定指定下列值：
+在您選取 [部署至 Web 應用程式] 之後所顯示的 [適用於容器的 Web 應用程式]  下方，為每個設定指定下列值：
 
 | 設定 | 值 |
 |---|---|
 | **網站名稱** | Web 應用程式的全域唯一名稱。 在此範例中，我們使用格式 `<acrName>-westus` 以便更容易找出登錄，以及部署 Web 應用程式的區域。 |
 | **資源群組** | **使用現有的** > `myResourceGroup` |
 | **App Service 方案/位置** | 在**美國西部**區域中，建立名為 `plan-westus` 的新方案。 |
-| **映像** | `acr-helloworld:v1`
+| **映像** | `acr-helloworld:v1` |
+| **作業系統** | Linux |
 
-選取 [建立] 以將 Web 應用程式佈建至「美國西部」區域。
+> [!NOTE]
+> 當您建立新的 App Service 方案來部署您的容器化應用程式時，系統會自動選取預設方案來託管您的應用程式。 預設的方案取決於作業系統設定。
+
+選取 [建立]  以將 Web 應用程式佈建至「美國西部」  區域。
 
 ![Azure 入口網站中 Linux 上的 Web 應用程式設定][deploy-app-portal-02]
 
@@ -64,7 +64,7 @@ Azure Container Registry 支援將容器化的應用程式直接部署至[用於
 
 部署完成時，您可以在瀏覽器中瀏覽至其 URL 檢視執行的應用程式。
 
-在入口網站中，選取 [應用程式服務]，然後選取您在上一個步驟中佈建的 Web 應用程式。 在此範例中，Web 應用程式名為 *uniqueregistryname-westus*。
+在入口網站中，選取 [應用程式服務]  ，然後選取您在上一個步驟中佈建的 Web 應用程式。 在此範例中，Web 應用程式名為 *uniqueregistryname-westus*。
 
 選取 **App Service** 概觀右上方 Web 應用程式的超連結 URL，以在您的瀏覽器中檢視執行中的應用程式。
 
@@ -76,16 +76,17 @@ Azure Container Registry 支援將容器化的應用程式直接部署至[用於
 
 ## <a name="deploy-second-web-app-for-containers-instance"></a>部署第二個用於容器的 Web 應用程式執行個體
 
-使用上一節所述的程序，將第二個 Web 應用程式部署到「美國東部」區域。 在 [用於容器的 Web App] 下，指定下列值：
+使用上一節所述的程序，將第二個 Web 應用程式部署到「美國東部」  區域。 在 [用於容器的 Web App]  下，指定下列值：
 
 | 設定 | 值 |
 |---|---|
 | **網站名稱** | Web 應用程式的全域唯一名稱。 在此範例中，我們使用格式 `<acrName>-eastus` 以便更容易找出登錄，以及部署 Web 應用程式的區域。 |
 | **資源群組** | **使用現有的** > `myResourceGroup` |
 | **App Service 方案/位置** | 在**美國東部**區域中，建立名為 `plan-eastus` 的新方案。 |
-| **映像** | `acr-helloworld:v1`
+| **映像** | `acr-helloworld:v1` |
+| **作業系統** | Linux |
 
-選取 [建立] 以將 Web 應用程式佈建至「美國東部」區域。
+選取 [建立]  以將 Web 應用程式佈建至「美國東部」  區域。
 
 ![Azure 入口網站中 Linux 上的 Web 應用程式設定][deploy-app-portal-06]
 
@@ -93,9 +94,9 @@ Azure Container Registry 支援將容器化的應用程式直接部署至[用於
 
 像之前一樣，您可以在瀏覽器中瀏覽至其 URL 檢視執行的應用程式。
 
-在入口網站中，選取 [應用程式服務]，然後選取您在上一個步驟中佈建的 Web 應用程式。 在此範例中，Web 應用程式名為 *uniqueregistryname-eastus*。
+在入口網站中，選取 [應用程式服務]  ，然後選取您在上一個步驟中佈建的 Web 應用程式。 在此範例中，Web 應用程式名為 *uniqueregistryname-eastus*。
 
-選取 [App Service 概觀] 右上方 Web 應用程式的超連結 URL，在您的瀏覽器中檢視執行的應用程式。
+選取 [App Service 概觀]  右上方 Web 應用程式的超連結 URL，在您的瀏覽器中檢視執行的應用程式。
 
 ![Azure 入口網站中 Linux 上的 Web 應用程式設定][deploy-app-portal-07]
 

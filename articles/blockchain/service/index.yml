@@ -1,57 +1,111 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Azure 區塊鏈服務文件
+summary: 了解如何建立區塊鏈應用程式。 教學課程、API 參考和其他文件將示範如何使用 Azure 區塊鏈服務來建立、開發和管理 Azure 上的區塊鏈應用程式。
 metadata:
-  title: Azure 區塊鏈服務文件 - 教學課程和 API 參考
+  title: Azure 區塊鏈服務文件
   description: 了解如何建立區塊鏈應用程式。 教學課程、API 參考和其他文件將示範如何使用 Azure 區塊鏈服務來建立、開發和管理 Azure 上的區塊鏈應用程式。
   services: azure-blockchain
-  author: patricka
-  manager: femila
   ms.service: azure-blockchain
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
-  ms.date: 03/13/2019
+  author: PatAltimore
   ms.author: patricka
-abstract:
-  description: 了解如何建立區塊鏈應用程式。 教學課程、API 參考和其他文件將示範如何使用 Azure 區塊鏈服務來建立、開發和使用 Azure 上的區塊鏈應用程式。
-sections:
-  - title: 5 分鐘快速入門
-    items:
-      - type: paragraph
-        text: 了解如何建立並連線到 Azure 上的聯盟成員。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: ./media/index/deploy.svg
-            text: 建立聯盟成員
-            href: /azure/blockchain/service/create-member
-          - image:
-              src: ./media/index/multi-connect.svg
-            text: 使用 MetaMask 連線
-            href: /azure/blockchain/service/connect-metamask
-          - image:
-              src: ./media/index/cligeneric.svg
-            text: 使用 geth 連線
-            href: /azure/blockchain/service/connect-geth
-          - image:
-              src: ./media/index/code-blocks.svg
-            text: 使用 Truffle 連線
-            href: /azure/blockchain/service/connect-truffle
-  - title: 逐步教學課程
-    items:
-      - type: paragraph
-        text: 了解如何建立、設定及開發 Azure 上的區塊鏈應用程式。
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/blockchain/service/send-transaction">建立 Azure 區塊鏈服務成員並傳送交易</a>
-  - title: 參考
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: REST
-            html: '<p><a href="https://docs.microsoft.com/rest/api/blockchain">REST API</a></p>'
+  ms.date: 11/04/2019
+  ms.openlocfilehash: 216dbd52531807d471066b01151fba841df308b6
+  ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 04/23/2020
+  ms.locfileid: "82084969"
+landingContent:
+- title: 關於 Azure 區塊鏈服務
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是 Azure 區塊鏈服務？
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: 私人協會區塊鏈網路
+      url: consortium.md
+    - text: 資料存取和安全性
+      url: data-security.md
+    - text: 開發工具
+      url: develop.md
+- title: 開始使用
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: 建立區塊鏈成員 - 入口網站
+      url: create-member.md
+    - text: 建立區塊鏈成員 - CLI
+      url: create-member-cli.md
+    - text: 使用 ARM 範本建立
+      url: create-member-template.md
+  - linkListType: quickstart
+    links:
+    - text: 使用 Visual Studio Code 連線至聯盟網路
+      url: connect-vscode.md
+    - text: 使用 MetaMask 連線並使用 Remix 部署智慧型合約
+      url: connect-metamask.md
+    - text: 使用 Geth 連線至交易節點
+      url: connect-geth.md
+  - linkListType: tutorial
+    links:
+    - text: 使用  Visual Studio Code 建立、建製 和 部署 智慧型 合約
+      url: send-transaction.md
+  - linkListType: video
+    links:
+    - text: 部署和設定您的網路
+      url: https://channel9.msdn.com/Shows/Blocktalk/Getting-started-with-Azure-Blockchain-Service-Part-I-Deploy-and-configure-your-network
+    - text: 使用 VS Code 撰寫並測試智慧合約
+      url: https://channel9.msdn.com/Shows/Blocktalk/Getting-started-with-Azure-Blockchain-Service-Part-II-Write-and-test-smart-contracts-with-VS-Code
+    - text: 將資料傳送到總帳
+      url: https://channel9.msdn.com/Shows/Blocktalk/Getting-started-with-Azure-Blockchain-Service-Part-III-Send-data-to-the-ledger
+    - text: 發佈事件和總帳資料
+      url: https://channel9.msdn.com/Shows/Blocktalk/Getting-started-with-Azure-Blockchain-Service-Part-IV-Publish-events-and-ledger-data
+- title: 整合
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 使用區塊鏈資料管理員將區塊鏈資料傳送給其他 Azure 服務
+      url: data-manager.md
+  - linkListType: how-to-guide
+    links:
+    - text: 使用 Azure 入口網站設定區塊鏈資料管理員
+      url: data-manager-portal.md
+    - text: 使用 Azure CLI 設定區塊鏈資料管理員
+      url: data-manager-cli.md
+    - text: 使用 Azure Logic Apps 整合區塊鏈
+      url: ethereum-logic-app.md
+  - linkListType: tutorial
+    links:
+    - text: 使用區塊鏈資料管理員將資料傳送至 Azure Cosmos DB
+      url: data-manager-cosmosdb.md
+  - linkListType: video
+    links:
+    - text: 區塊鏈資料管理員的簡介
+      url: https://aka.ms/BTDataManager
+    - text: 使用 Ethereum 區塊鏈連接器搭配 Azure Logic Apps
+      url: https://channel9.msdn.com/Shows/Blocktalk/Logic-Apps-Connector-to-Ethereum-Blockchain-Networks?term=logic%20apps%20blockchain&lang-en=true
+    - text: 使用 Azure Logic Apps 與區塊鏈連線的常見案例
+      url: https://channel9.msdn.com/Shows/Blocktalk/Doing-more-with-Logic-Apps?term=logic%20apps%20blockchain&lang-en=true
+    - text: 從智慧型合約產生 Web 服務
+      url: https://channel9.msdn.com/Shows/Blocktalk/Generating-Web-Services-from-Smart-Contracts-Based-on-Logic-Apps-Flows-and-Azure-Functions?term=logic%20apps%20blockchain&lang-en=true
+    - text: 將智慧合約事件發佈到 Azure 事件方格或 Azure 服務匯流排
+      url: https://channel9.msdn.com/Shows/Blocktalk/Generate-Logic-Apps-and-Flows-to-Publish-Smart-Contract-Events-to-Event-Grid-and-Service-Bus?term=logic%20apps%20blockchain&lang-en=true
+- title: 管理
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 管理區塊鏈成員 - CLI
+      url: manage-cli.md
+    - text: 管理協會成員 - PowerShell
+      url: manage-consortium-powershell.md
+    - text: 設定交易節點
+      url: configure-transaction-nodes.md
+    - text: 設定 Active Directory 存取
+      url: configure-aad.md
+  - linkListType: reference
+    links:
+    - text: REST API
+      url: https://docs.microsoft.com/rest/api/blockchain

@@ -1,0 +1,106 @@
+- name: Windows 虛擬桌面 2019 年秋季版本
+  href: ../index.yml
+- name: 概觀
+  items:
+    - name: 什麼是 Windows 虛擬桌面？
+      href: ../overview.md
+    - name: 2020 年春季版本文件
+      href: ../create-host-pools-azure-marketplace.md
+- name: 教學課程
+  items:
+    - name: 1. 建立租用戶
+      href: tenant-setup-azure-active-directory.md
+    - name: 2. 使用 PowerShell 建立服務主體和角色指派
+      href: create-service-principal-role-powershell.md
+    - name: 3. 透過 Azure Marketplace 建立主機集區
+      href: create-host-pools-azure-marketplace-2019.md
+    - name: 4. 管理應用程式群組
+      href: manage-app-groups-2019.md
+    - name: 5. 建立主機集區以驗證服務更新
+      href: create-validation-host-pool-2019.md
+    - name: 6. 設定服務警示
+      href: set-up-service-alerts-2019.md
+- name: 操作方式
+  items:
+    - name: 連線至 Windows 虛擬桌面資源
+      items:
+        - name: 與 Windows 桌面用戶端連線
+          href: connect-windows-7-10-2019.md
+        - name: 與 Web 用戶端連線
+          href: connect-web-2019.md
+        - name: 與 Android 用戶端連線
+          href: connect-android-2019.md
+        - name: 與 macOS 用戶端連線
+          href: connect-macos-2019.md
+        - name: 與 iOS 用戶端連線
+          href: connect-ios-2019.md
+    - name: 建立主機集區和工作階段主機
+      items:
+        - name: Azure Resource Manager 範本
+          href: create-host-pools-arm-template.md
+        - name: PowerShell
+          href: create-host-pools-powershell-2019.md
+        - name: 部署 Windows 7 虛擬機器
+          href: deploy-windows-7-virtual-machine.md
+        - name: 部署 GPU 型工作階段主機
+          href: configure-vm-gpu-2019.md
+        - name: 擴充現有的主機集區
+          href: expand-existing-host-pool-2019.md
+    - name: 設定主機集區設定
+      items:
+        - name: RDP 屬性
+          href: customize-rdp-properties-2019.md
+        - name: 個人桌面指派類型
+          href: configure-host-pool-personal-desktop-assignment-type-2019.md
+    - name: 自動調整工作階段主機
+      href: set-up-scaling-script.md
+    - name: 自訂摘要
+      href: customize-feed-virtual-desktop-users-2019.md
+    - name: 部署管理工具
+      items:
+        - name: Azure Resource Manager 範本
+          href: manage-resources-using-ui.md
+        - name: PowerShell
+          href: manage-resources-using-ui-powershell.md
+    - name: 使用服務診斷
+      items:
+        - name: 部署診斷工具
+          href: deploy-diagnostics.md
+        - name: 使用診斷搭配 Log Analytics
+          href: diagnostics-log-analytics-2019.md
+    - name: 發佈內建應用程式
+      href: publish-apps-2019.md
+- name: 概念
+  items:
+    - name: Windows 虛擬桌面環境
+      href: environment-setup-2019.md
+    - name: Windows 虛擬桌面中委派的存取權
+      href: delegated-access-virtual-desktop-2019.md
+    - name: 主機集區負載平衡方法
+      href: host-pool-load-balancing-2019.md
+    - name: 資料地點
+      href: data-locations-2019.md
+- name: 疑難排解
+  items:
+    - name: 疑難排解概觀、意見反應和支援
+      href: troubleshoot-set-up-overview-2019.md
+    - name: 識別並診斷問題
+      href: diagnostics-role-service-2019.md
+    - name: 建立租用戶和主機集區
+      href: troubleshoot-set-up-issues-2019.md
+    - name: 設定工作階段主機虛擬機器
+      href: troubleshoot-vm-configuration-2019.md
+    - name: 針對 Windows 7 虛擬機器進行疑難排解
+      href: troubleshoot-windows-7-vm.md
+    - name: 針對管理工具進行疑難排解
+      href: troubleshoot-management-tool.md
+    - name: 遠端桌面服務連線
+      href: troubleshoot-service-connection-2019.md
+    - name: Windows 虛擬桌面 PowerShell
+      href: troubleshoot-powershell-2019.md
+- name: 參考
+  items:
+    - name: PowerShell
+      href: /powershell/windows-virtual-desktop/overview
+    - name: REST API
+      href: /rest/api/virtual-desktop/

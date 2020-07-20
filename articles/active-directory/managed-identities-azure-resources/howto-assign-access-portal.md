@@ -1,5 +1,5 @@
 ---
-title: 如何使用 Azure 入口網站為受控識別指派對 Azure 資源的存取權
+title: 使用 Azure 入口網站 Azure AD，為受控識別指派對資源的存取權
 description: 以下逐步指示說明如何使用 Azure 入口網站為一項資源的受控識別指派對另一項資源的存取權。
 services: active-directory
 documentationcenter: ''
@@ -9,18 +9,17 @@ editor: ''
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 958b3d72a3a8df4a3b67f62e7db788d7142ca667
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
-ms.translationtype: MT
+ms.openlocfilehash: e2af718c3555176167eb154b0a718218c42e93dc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58445477"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608291"
 ---
 # <a name="assign-a-managed-identity-access-to-a-resource-by-using-the-azure-portal"></a>使用 Azure 入口網站為受控識別指派對資源的存取權
 
@@ -30,18 +29,18 @@ ms.locfileid: "58445477"
 
 ## <a name="prerequisites"></a>必要條件
 
-- 如果您不熟悉 Azure 資源的受控識別，請參閱[概觀一節](overview.md)。 **請務必檢閱[系統指派和使用者指派受控識別之間的差異](overview.md#how-does-it-work)**。
+- 如果您不熟悉 Azure 資源的受控識別，請參閱[概觀一節](overview.md)。 **請務必檢閱[系統指派和使用者指派受控識別之間的差異](overview.md#managed-identity-types)**。
 - 如果您還沒有 Azure 帳戶，請先[註冊免費帳戶](https://azure.microsoft.com/free/)，再繼續進行。
 
 ## <a name="use-rbac-to-assign-a-managed-identity-access-to-another-resource"></a>使用 RBAC 為受控識別指派對其他資源的存取權
 
-您在 Azure 資源 ([例如 Azure VM](qs-configure-portal-windows-vm.md) 或 [Azure VMSS](qs-configure-portal-windows-vmss.md)) 上啟用受控識別之後：
+在 Azure 資源（例如[AZURE VM](qs-configure-portal-windows-vm.md)或[azure 虛擬機器擴展集](qs-configure-portal-windows-vmss.md)）上啟用受控識別之後：
 
 1. 使用與已設定受控識別的 Azure 訂用帳戶相關聯的帳戶，登入 [Azure 入口網站](https://portal.azure.com)。
 
 2. 瀏覽至您要修改其存取控制的資源。 在此範例中，我們會為 Azure 虛擬機器提供對儲存體帳戶的存取權，因此我們瀏覽至儲存體帳戶。
 
-3. 選取資源的 [存取控制 (IAM)] 頁面，然後選取 [+ 新增角色指派]。 接著，指定 [角色]、[存取權指派對象]，並指定對應的 [訂用帳戶]。 在搜尋條件區域中，您應該會看到資源。 選取資源，然後選取 [儲存]。 
+3. 選取資源的 [存取控制 (IAM)]**** 頁面，然後選取 [+ 新增角色指派]****。 接著，指定 [角色]****、[存取權指派對象]****，並指定對應的 [訂用帳戶]****。 在搜尋條件區域中，您應該會看到資源。 選取資源，然後選取 [儲存]****。 
 
    ![存取控制 (IAM) 螢幕擷取畫面](./media/msi-howto-assign-access-portal/assign-access-control-iam-blade-before.png)  
      

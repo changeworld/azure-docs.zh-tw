@@ -1,112 +1,161 @@
 ---
 title: 如何在使用 Azure 開發人員空間時管理祕密
-titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-author: zr-msft
-ms.author: zarhoads
-ms.date: 05/11/2018
+ms.date: 12/03/2019
 ms.topic: conceptual
-description: 在 Azure 上使用容器和微服務快速進行 Kubernetes 開發
+description: 瞭解如何在使用 Azure Dev Spaces 開發應用程式時，于執行或建立時間使用 Kubernetes 秘密
 keywords: Docker、Kubernetes、Azure、AKS、Azure Container Service、容器
-ms.openlocfilehash: 9fe29e8717c76c353f3e95d4693011f3925c4e1b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: d9dd0de348612bbb3baf5fb351c1c9af1c228c1f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60686435"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75438471"
 ---
 # <a name="how-to-manage-secrets-when-working-with-an-azure-dev-space"></a>如何在使用 Azure 開發人員空間時管理祕密
 
-您的服務可能需要特定密碼、連接字串和其他祕密，例如資料庫或其他安全的 Azure 服務。 藉由在組態檔中設定這些祕密的值，您可以使用這些值作為程式碼中的環境變數。  請務必小心處理，以避免洩漏祕密的安全性。
+您的服務可能需要特定密碼、連接字串和其他祕密，例如資料庫或其他安全的 Azure 服務。 藉由在組態檔中設定這些祕密的值，您可以使用這些值作為程式碼中的環境變數。  這些設定檔案必須小心處理，以避免危害秘密的安全性。
 
-Azure 開發人員空間提供兩個儲存秘密的建議選項：儲存在 values.dev.yaml 檔案中和直接內嵌在 azds.yaml 中。 不建議將祕密儲存在 values.yaml 中。
- 
-## <a name="method-1-valuesdevyaml"></a>方法 1：values.dev.yaml
-1. 透過可使用 Azure 開發人員空間的專案來開啟 VS Code。
-2. 在現有 _values.yaml_ 的所在位置中，新增名為 _values.dev.yaml_ 的檔案，並定義您的祕密金鑰和值，如下列範例所示：
+## <a name="storing-and-using-runtime-secrets"></a>儲存和使用執行時間秘密
 
-    ```yaml
-    secrets:
-      redis:
-        port: "6380"
-        host: "contosodevredis.redis.cache.windows.net"
-        key: "secretkeyhere"
-    ```
-     
-3. 更新 _azds.yaml_ 以告知 Azure 開發人員空間使用新的 _values.dev.yaml_ 檔案。 若要這樣做，請在 configurations.develop.container 區段下新增此組態：
+Azure Dev Spaces 提供兩個建議、簡化的選項，將秘密儲存在由 Azure Dev Spaces 用戶端工具所產生的 Helm 圖表中：在檔案中 `values.dev.yaml` ，並直接內嵌在中 `azds.yaml` 。 不建議您在中儲存秘密 `values.yaml` 。
 
-    ```yaml
-           container:
-             values:
-             - "charts/webfrontend/values.dev.yaml"
-    ```
- 
-4. 修改您的服務程式碼，以便將這些祕密當作環境變數來參考，如下列範例所示：
+> [!NOTE]
+> 下列方法示範如何儲存和使用用戶端工具所產生之 Helm 圖表的秘密。 如果您建立自己的 Helm 圖，則可以直接使用 Helm 圖表來管理和儲存秘密。
 
-    ```
-    var redisPort = process.env.REDIS_PORT
-    var host = process.env.REDIS_HOST
-    var theKey = process.env.REDIS_KEY
-    ```
+### <a name="using-valuesdevyaml"></a>使用 yaml
+
+在您已使用 Azure Dev Spaces 準備的專案中，在與 `values.dev.yaml` 相同的資料夾中建立檔案， `azds.yaml` 以定義您的秘密金鑰和值。 例如：
+
+```yaml
+secrets:
+  redis:
+    port: "6380"
+    host: "contosodevredis.redis.cache.windows.net"
+    key: "secretkeyhere"
+```
+
+使用，確認檔案 `azds.yaml` 參考是否 `values.dev.yaml` 為選擇性 `?` 。 例如：
+
+```yaml
+install:
+  values:
+  - values.dev.yaml?
+  - secrets.dev.yaml?
+```
+
+如果您有其他的秘密檔案，也可以在這裡新增它們。
+
+更新或驗證您的服務會以環境變數的形式來參考您的秘密。 例如：
+
+```javascript
+var redisPort = process.env.REDIS_PORT
+var host = process.env.REDIS_HOST
+var theKey = process.env.REDIS_KEY
+```
     
-5. 以這些變更來更新叢集中執行的服務。 在命令列上執行命令：
+使用執行已更新的服務 `azds up` 。
 
-    ```
-    azds up
-    ```
+```console
+azds up
+```
  
-6. (選擇性) 從命令列中，確認這些祕密已建立：
+使用 `kubectl` 來驗證您的密碼是否已建立。
 
-      ```
-      kubectl get secret --namespace default -o yaml 
-      ```
+```console
+kubectl get secret --namespace default -o yaml 
+```
 
-7. 請確認您已將 _values.dev.yaml_ 新增至 _.gitignore_ 檔案，以防止從原始檔控制中認可祕密。
- 
- 
-## <a name="method-2-inline-directly-in-azdsyaml"></a>方法 2：直接內嵌在 azds.yaml 中
-1.  在 _azds.yaml_ 中，從 yaml 的 configurations/develop/install 區段下設定祕密。 雖然您可以直接在該處輸入祕密值，但不建議您這樣做，因為 _azds.yaml_ 會簽入原始檔控制。 相反地，請使用 "$PLACEHOLDER" 語法來新增預留位置。
+> [!IMPORTANT]
+> 不建議將秘密儲存在原始檔控制中。 如果使用 Git，請將新增至檔案， `values.dev.yaml` `.gitignore` 以避免在原始檔控制中認可秘密。
 
-    ```yaml
-    configurations:
-      develop:
-        ...
-        install:
-          set:
-            secrets:
-              redis:
-                port: "$REDIS_PORT_DEV"
-                host: "$REDIS_HOST_DEV"
-                key: "$REDIS_KEY_DEV"
-    ```
+### <a name="using-azdsyaml"></a>使用 azds. yaml
+
+在您已使用 Azure Dev Spaces 備妥的專案中，使用 [設定] 下的 *$PLACEHOLDER*語法來新增秘密金鑰和值。在中，于 [*安裝*]。 `azds.yaml` 例如：
+
+```yaml
+configurations:
+  develop:
+    ...
+    install:
+      set:
+        secrets:
+          redis:
+            port: "$REDIS_PORT"
+            host: "$REDIS_HOST"
+            key: "$REDIS_KEY"
+```
+
+> [!NOTE]
+> 您可以直接輸入秘密值，而不使用中的 *$PLACEHOLDER*語法 `azds.yaml` 。 不過，不建議使用這個方法，因為 `azds.yaml` 會儲存在原始檔控制中。
      
-2.  在 _azds.yaml_ 所在的資料夾中建立 _.env_ 檔案。 使標準的「索引鍵=值」標記法來輸入祕密。 請不要將 _.env_ 檔案認可至原始檔控制。 (若要從 git 版控制系統的原始檔控制中移除，請將該檔案新增至 _.gitignore_ 檔案。)_.env_ 檔案如下列範例所示：
+在與 `.env` 相同的資料夾中建立檔案 `azds.yaml` ，以定義您的 *$PLACEHOLDER*值。 例如：
 
-    ```
-    REDIS_PORT_DEV=3333
-    REDIS_HOST_DEV=myredishost
-    REDIS_KEY_DEV=myrediskey
-    ```
-2.  修改您服務的原始程式碼，以在程式碼中參考這些祕密，如下列範例所示：
+```
+REDIS_PORT=3333
+REDIS_HOST=myredishost
+REDIS_KEY=myrediskey
+```
 
-    ```
-    var redisPort = process.env.REDIS_PORT
-    var host = process.env.REDIS_HOST
-    var theKey = process.env.REDIS_KEY
-    ```
+> [!IMPORTANT]
+> 不建議將秘密儲存在原始檔控制中。 如果使用 Git，請將新增至檔案， `.env` `.gitignore` 以避免在原始檔控制中認可秘密。
+
+更新或驗證您的服務會以環境變數的形式來參考您的秘密。 例如：
+
+```javascript
+var redisPort = process.env.REDIS_PORT
+var host = process.env.REDIS_HOST
+var theKey = process.env.REDIS_KEY
+```
+    
+使用執行已更新的服務 `azds up` 。
+
+```console
+azds up
+```
  
-3.  以這些變更來更新叢集中執行的服務。 在命令列上執行命令：
+使用 `kubectl` 來驗證您的密碼是否已建立。
 
-    ```
-    azds up
-    ```
+```console
+kubectl get secret --namespace default -o yaml 
+```
 
-4.  (選擇性) 從 kubectl 檢視祕密：
+## <a name="using-secrets-as-build-arguments"></a>使用秘密做為組建引數
 
-    ```
-    kubectl get secret --namespace default -o yaml
-    ```
+上一節說明了如何儲存和使用秘密，以在容器執行時間使用。 您也可以使用，在容器組建階段使用任何秘密，例如私人 NuGet 的密碼 `azds.yaml` 。
+
+在中 `azds.yaml` ，使用語法設定 build 中*configurations.develop.build.args*的「組建時間」密碼。 `<variable name>: ${secret.<secret name>.<secret key>}` 例如：
+
+```yaml
+configurations:
+  develop:
+    build:
+      dockerfile: Dockerfile.develop
+      useGitIgnore: true
+      args:
+        BUILD_CONFIGURATION: ${BUILD_CONFIGURATION:-Debug}
+        MYTOKEN: ${secret.mynugetsecret.pattoken}
+```
+
+在上述範例中， *mynugetsecret*是現有的秘密，而*pattoken*是現有的金鑰。
+
+>[!NOTE]
+> 密碼名稱和金鑰可能包含 `.` 字元。 將 `\` `.` 秘密傳遞為組建引數時，請使用來進行 escape。 例如，若要傳遞名為*foo*的秘密與*token*的金鑰： `MYTOKEN: ${secret.foo\.bar.token}` 。 此外，也可以使用前置詞和後置文字來評估秘密。 例如： `MYURL: eus-${secret.foo\.bar.token}-version1` 。 此外，父系和祖系空間中可用的秘密可以做為組建引數傳遞。
+
+在您的 Dockerfile 中，使用*ARG*指示詞來取用密碼，然後在 Dockerfile 中稍後使用該相同的變數。 例如：
+
+```dockerfile
+...
+ARG MYTOKEN
+...
+ARG NUGET_EXTERNAL_FEED_ENDPOINTS="{'endpointCredentials': [{'endpoint':'PRIVATE_NUGET_ENDPOINT', 'password':'${MYTOKEN}'}]}"
+...
+```
+
+以這些變更來更新叢集中執行的服務。 在命令列上執行命令：
+
+```
+azds up
+```
 
 ## <a name="next-steps"></a>後續步驟
 

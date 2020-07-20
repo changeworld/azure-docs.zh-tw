@@ -2,20 +2,19 @@
 title: Azure 流量管理員端點監視 | Microsoft Docs
 description: 本文有助於您了解流量管理員如何使用端點監視和自動端點容錯移轉，以協助 Azure 客戶部署高可用性應用程式
 services: traffic-manager
-author: KumudD
+author: rohinkoul
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
-ms.author: kumud
-ms.openlocfilehash: 083bdf9c5aec640fbbd7757b307ac47178e0b14b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.author: rohink
+ms.openlocfilehash: 61aafbe8cb12e93d72f5efd01155f06fb3ec0c28
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60329888"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80757268"
 ---
 # <a name="traffic-manager-endpoint-monitoring"></a>流量管理員端點監視
 
@@ -25,10 +24,10 @@ Azure 流量管理員包含內建的端點監視和自動端點容錯移轉。 �
 
 若要設定端點監視，您必須在流量管理員設定檔中指定下列設定︰
 
-* **协议**。 選擇 HTTP、HTTPS 或 TCP 作為通訊協定，流量管理員會在探查端點以檢查其健康情況時使用。 HTTPS 監視不會驗證您的 SSL 憑證是否有效，它只會檢查該憑證是否存在。
-* **端口**。 选择用于请求的端口。
-* **路径**。 組態設定僅適用於 HTTP 和 HTTPS 通訊協定，這些通訊協定需要指定路徑設定。 為 TCP 監視通訊協定提供這項設定會導致錯誤。 對於 HTTP 和 HTTPS 通訊協定，提供監視存取之網頁或檔案的相對路徑和名稱。 正斜線 (/) 是相對路徑的有效項目。 這個值表示檔案位於根目錄 (預設值)。
-* **自訂標頭設定**此組態設定可協助您將特定 HTTP 標頭新增至健康情況檢查，讓流量管理員將其傳送至設定檔下的端點。 您可以在設定檔層級上指定自訂標頭，以套用到該設定檔中的所有端點，以及/或在端點層級上指定，讓標頭僅套用到該端點。 您可以使用自訂標頭來指定主機標頭，讓多租用戶環境中的端點健康情況檢查可正確地路由到其目的地。 您也可以使用此設定來新增唯一標頭，以用來識別流量管理員產生的 HTTP(S) 要求，並以不同方式處理這些要求。 您可以指定最多八個標頭： 值配對 seprated 以逗號分隔。 例如，"header1:value1，header2:value2"。 
+* **通訊協定**。 選擇 HTTP、HTTPS 或 TCP 作為通訊協定，流量管理員會在探查端點以檢查其健康情況時使用。 HTTPS 監視不會驗證您的 TLS/SSL 憑證是否有效，它只會檢查憑證是否存在。
+* **連接埠**。 選擇要求所使用的連接埠。
+* **路徑**。 組態設定僅適用於 HTTP 和 HTTPS 通訊協定，這些通訊協定需要指定路徑設定。 為 TCP 監視通訊協定提供這項設定會導致錯誤。 對於 HTTP 和 HTTPS 通訊協定，提供監視存取之網頁或檔案的相對路徑和名稱。 正斜線 (/) 是相對路徑的有效項目。 這個值表示檔案位於根目錄 (預設值)。
+* **自訂標頭設定**此組態設定可協助您將特定 HTTP 標頭新增至健康情況檢查，讓流量管理員將其傳送至設定檔下的端點。 您可以在設定檔層級上指定自訂標頭，以套用到該設定檔中的所有端點，以及/或在端點層級上指定，讓標頭僅套用到該端點。 您可以使用自訂標頭來指定主機標頭，讓多租用戶環境中的端點健康情況檢查可正確地路由到其目的地。 您也可以使用此設定來新增唯一標頭，以用來識別流量管理員產生的 HTTP(S) 要求，並以不同方式處理這些要求。 您最多可以指定八個標頭：值組，並以逗號 seprated。 例如，"header1.xml： value1，h 2： value2"。 
 * **預期狀態碼範圍**此設定可讓您以下列格式指定多個成功碼範圍：200-299、301-301。 如果這些狀態碼是健康情況檢查啟動時從端點接收的回應，流量管理員會將這些端點標示為狀況良好。 您可以指定最多 8 個狀態碼範圍。 此設定僅適用於 HTTP 和 HTTPS 通訊協定和所有端點。 此設定位於流量管理員設定檔層級，而且根據預設，值 200 會定義為成功狀態碼。
 * **探查間隔**。 這個值會指定流量管理員探查代理程式檢查端點健康情況的頻率。 您可以指定以下兩個值：30 秒 (一般探查) 和 10 秒 (快速探查)。 如果沒有提供任何值，設定檔會設定為預設值 30 秒。 請瀏覽[流量管理員定價](https://azure.microsoft.com/pricing/details/traffic-manager)分頁以深入了解快速探查定價的詳細資訊。
 * **容許的失敗次數**。 這個值會指定在將該端點標示為狀況不良之前，流量管理員探查代理程式可以容許多少次失敗。 此值必須介於 0 到 9 的範圍內。 值為 0 表示單一監視失敗就會導致將該端點標示為狀況不良。 如果未指定任何值，它會使用預設值 3。
@@ -40,7 +39,7 @@ Azure 流量管理員包含內建的端點監視和自動端點容錯移轉。 �
 
 ## <a name="how-endpoint-monitoring-works"></a>端點監視的運作方式
 
-如果監視通訊協定設定為 HTTP 或 HTTPS，流量管理員探查代理程式會使用通訊協定、連接埠以及指定的相對路徑，向端點提出 GET 要求。 如果它獲得 200 OK 回應，或任何回應中設定**預期狀態碼\*範圍**，則該端點視為狀況良好。 如果回應是不同的值，或者，如果在指定的逾時期間內未收到回應，則流量管理員探查代理程式會根據「容許的失敗次數」設定重新嘗試 (如果此設定為 0 則不會重新嘗試）。 如果連續失敗次數大於「容許的失敗次數」設定，則該端點會標示為狀況不良。 
+如果監視通訊協定設定為 HTTP 或 HTTPS，流量管理員探查代理程式會使用通訊協定、連接埠以及指定的相對路徑，向端點提出 GET 要求。 如果傳回 200-OK 回應，或在**預期狀態碼 \* 範圍**中設定的任何回應，則該端點會被視為狀況良好。 如果回應是不同的值，或者，如果在指定的逾時期間內未收到回應，則流量管理員探查代理程式會根據「容許的失敗次數」設定重新嘗試 (如果此設定為 0 則不會重新嘗試）。 如果連續失敗次數大於「容許的失敗次數」設定，則該端點會標示為狀況不良。 
 
 如果監視通訊協定是 TCP，流量管理員探查代理程式會使用指定的連接埠初始化 TCP 連線要求。 如果端點以建立連線的回應來回覆要求，該健康情況檢查會標示為成功，且流量管理員探查代理程式會重設 TCP 連線。 如果回應是不同的值，或者，如果在指定的逾時期間內未收到回應，流量管理員探查代理程式會根據「容許的失敗次數」設定重新嘗試 (如果此設定為 0 則不會重新嘗試）。 如果連續失敗次數大於「容許的失敗次數」設定，則該端點會標示為狀況不良。
 
@@ -53,7 +52,7 @@ Azure 流量管理員包含內建的端點監視和自動端點容錯移轉。 �
 
 ## <a name="endpoint-and-profile-status"></a>端點和設定檔狀態
 
-您可以啟用和停用流量管理員設定檔和端點。 不过，也可以通过流量管理器的自动设置和过程来更改终结点状态。
+您可以啟用和停用流量管理員設定檔和端點。 不過，端點狀態中的變更也可能是因為流量管理員自動設定和程序的結果所導致。
 
 ### <a name="endpoint-status"></a>端點狀態
 
@@ -67,14 +66,14 @@ Azure 流量管理員包含內建的端點監視和自動端點容錯移轉。 �
 
 端點監視狀態是流量管理員所產生的值，會顯示端點的狀態。 您無法手動變更此設定。 端點監視狀態是端點監視的結果以及設定端點狀態的組合。 下表顯示端點監視狀態的可能值：
 
-| 設定檔狀態 | 终结点状态 | 端點監視狀態 | 注意 |
+| 設定檔狀態 | 端點狀態 | 端點監視狀態 | 備註 |
 | --- | --- | --- | --- |
-| 已停用 |Enabled |非活动 |已停用設定檔。 儘管端點狀態為「已啟用」，但會優先採用設定檔狀態 (「已停用」)。 不會監視「已停用」設定檔中的端點。 會針對 DNS 查詢傳回 NXDOMAIN 回應碼。 |
-| &lt;any&gt; |已停用 |已停用 |已停用端點。 不會監視「已停用」的端點。 端點未包含於 DNS 回應中，因此不會接收流量。 |
-| Enabled |Enabled |联机 |终结点受到监视，处于正常状态。 端點包含於 DNS 回應中，因此可接收流量。 |
-| Enabled |Enabled |已降級 |端點監視健全狀況檢查失敗。 端點未包含於 DNS 回應中，因此不會接收流量。 <br>例外狀況是如果所有端點都降級，如果發生這種情況，則所有端點會被視為要在查詢回應中傳回。</br>|
-| Enabled |Enabled |正在檢查端點 |端點受到監視，但尚未收到第一次探查的結果。 CheckingEndpoint 是暫時性狀態，其通常會在新增或啟用設定檔中的端點之後立即發生。 處於此狀態的端點會包含於 DNS 回應中，因此可接收流量。 |
-| Enabled |Enabled |已停止 |端點指向的雲端服務或 Web 應用程式並未執行。 請檢查雲端服務或 Web 應用程式設定。 如果端點是巢狀端點類型，且子系設定檔已停用或非使用中，也會發生這種情況。 <br>不会监视“已停止”状态的终结点。 它未包含於 DNS 回應中，因此不會接收流量。 例外狀況是如果所有端點都降級，如果發生這種情況，則所有端點會被視為要在查詢回應中傳回。</br>|
+| 已停用 |啟用 |非使用中 |已停用設定檔。 儘管端點狀態為「已啟用」，但會優先採用設定檔狀態 (「已停用」)。 不會監視「已停用」設定檔中的端點。 會針對 DNS 查詢傳回 NXDOMAIN 回應碼。 |
+| &lt;any&gt; |停用 |已停用 |端點已停用。 不會監視「已停用」的端點。 端點未包含於 DNS 回應中，因此不會接收流量。 |
+| 啟用 |已啟用 |線上 |端點受到監視且狀況良好。 端點包含於 DNS 回應中，因此可接收流量。 |
+| 啟用 |啟用 |已降級 |端點監視健全狀況檢查失敗。 端點未包含於 DNS 回應中，因此不會接收流量。 <br>例外狀況是如果所有端點都降級，如果發生這種情況，則所有端點會被視為要在查詢回應中傳回。</br>|
+| 啟用 |啟用 |正在檢查端點 |端點受到監視，但尚未收到第一次探查的結果。 CheckingEndpoint 是暫時性狀態，其通常會在新增或啟用設定檔中的端點之後立即發生。 處於此狀態的端點會包含於 DNS 回應中，因此可接收流量。 |
+| 啟用 |啟用 |已停止 |端點指向的 web 應用程式不在執行中。 檢查 web 應用程式設定。 如果端點是巢狀端點類型，且子系設定檔已停用或非使用中，也會發生這種情況。 <br>「已停止」狀態的端點不會受到監視。 它未包含於 DNS 回應中，因此不會接收流量。 例外狀況是如果所有端點都降級，如果發生這種情況，則所有端點會被視為要在查詢回應中傳回。</br>|
 
 如需如何計算巢狀端點的端點監視狀態詳細資訊，請參閱[巢狀流量管理員設定檔](traffic-manager-nested-profiles.md)。
 
@@ -83,25 +82,26 @@ Azure 流量管理員包含內建的端點監視和自動端點容錯移轉。 �
 
 ### <a name="profile-monitor-status"></a>設定檔監視狀態
 
-設定檔監視狀態是所有端點的端點監視狀態值，以及設定之設定檔狀態所形成的組合。 下表說明可能的值︰
+設定檔監視狀態是所有端點的端點監視狀態值，以及設定之設定檔狀態所形成的組合。 下表說明可用的值：
 
-| 配置文件状态（根据配置） | 端點監視狀態 | 配置文件监视器状态 | 注意 |
+| 設定檔狀態 (依設定) | 端點監視狀態 | 設定檔監視狀態 | 備註 |
 | --- | --- | --- | --- |
-| 已停用 |&lt;任何&gt;或未定義端點的設定檔。 |已停用 |已停用設定檔。 |
-| Enabled |至少有一個端點的狀態為「已降級」。 |已降级 |檢閱個別端點狀態值，以判斷哪些端點需要進一步注意。 |
-| Enabled |至少有一個端點的狀態為「線上」。 沒有狀態為「已降級」的端點。 |線上 |服務正在接收流量。 不需要採取任何動作。 |
-| Enabled |至少有一個端點的狀態為「正在檢查端點」。 沒有狀態為「線上」或「已降級」的端點。 |正在檢查端點 |建立或啟用設定檔時，就會發生此轉換狀態。 正在初次檢查端點健康情況。 |
-| Enabled |設定檔中的所有端點狀態為「已停用」或「已停止」，或者設定檔並未定義任何端點。 |非使用中 |没有任何终结点处于活动状态，但是配置文件的状态仍旧是“已启用”。 |
+| 停用 |&lt;任何&gt;或未定義端點的設定檔。 |停用 |已停用設定檔。 |
+| 已啟用 |至少有一個端點的狀態為「已降級」。 |已降級 |檢閱個別端點狀態值，以判斷哪些端點需要進一步注意。 |
+| 已啟用 |至少有一個端點的狀態為「線上」。 沒有狀態為「已降級」的端點。 |線上 |服務正在接收流量。 不需要進行其他動作。 |
+| 已啟用 |至少有一個端點的狀態為「正在檢查端點」。 沒有狀態為「線上」或「已降級」的端點。 |正在檢查端點 |建立或啟用設定檔時，就會發生此轉換狀態。 正在初次檢查端點健康情況。 |
+| 已啟用 |設定檔中的所有端點狀態為「已停用」或「已停止」，或者設定檔並未定義任何端點。 |非使用中 |沒有作用中的端點，但設定檔仍為「已啟用」。 |
 
 ## <a name="endpoint-failover-and-recovery"></a>端點容錯移轉和復原
 
 流量管理員會定期檢查每個端點的健康狀態，包括狀況不良的端點健康情況。 當端點變成狀況良好時，流量管理員會偵測到此狀況，並且將它恢復至輪替。
 
 發生下列任何一種狀況時，端點為狀況不良：
+
 - 如果監視通訊協定是 HTTP 或 HTTPS：
     - 您會收到不是 200 的回應，或不包含**預期狀態碼範圍**設定中指定狀態範圍的回應 (包括不同的 2xx 碼或 301/302 重新導向)。
 - 如果監視通訊協定是 TCP： 
-    - 在流量管理員傳送給 SYNC 要求以嘗試連線建立的回應中，收到 ACK 或 SYN-ACK 以外的回應。
+    - 收到 ACK 或 SYN-ACK 以外的回應，以回應流量管理員傳送的 SYN 要求，以嘗試建立連接。
 - 逾時。 
 - 導致無法連線到端點的任何其他連線問題。
 
@@ -113,7 +113,7 @@ Azure 流量管理員包含內建的端點監視和自動端點容錯移轉。 �
 
 **圖：流量管理員端點容錯移轉和復原順序**
 
-1. **GET**。 對於每個端點而言，流量管理員監視系統會對監視設定中指定的路徑執行 GET 要求。
+1. **取得**。 對於每個端點而言，流量管理員監視系統會對監視設定中指定的路徑執行 GET 要求。
 2. **已指定 200 OK 或自訂程式碼範圍的流量管理員設定檔監視設定**。 監視系統預期 10 秒內會傳回已指定 HTTP 200 OK 或自訂程式碼範圍的流量管理員設定檔監視設定訊息。 收到此回應時，就能確認服務可供使用。
 3. **每次檢查之間間隔 30 秒**。 每隔 30 秒重複進行端點健康狀態檢查。
 4. **服務無法使用**。 服務變為無法使用。 流量管理員要直到下次健全狀況檢查時才會知道。
@@ -125,7 +125,7 @@ Azure 流量管理員包含內建的端點監視和自動端點容錯移轉。 �
 10. **服務的流量恢復**。 流量管理員傳送 GET 要求，並收到 200 OK 狀態回應。 此服務已恢復狀況良好的狀態。 流量管理員名稱伺服器會更新，並會開始在 DNS 回應中送出服務的 DNS 名稱。 當傳回其他端點的快取 DNS 回應過期時，以及當其他端點的現有連接終止時，流量將再次回到端點。
 
     > [!NOTE]
-    > 由於流量管理員是在 DNS 層級運作，所以無法影響任何端點的現有連接。 在引導端點之間的流量時 (透過變更設定檔設定，或是在容錯移轉或容錯回復期間)，流量管理員會將新的連接導向至可用的端點。 不過，其他端點可透過現有的連接繼續接收流量，直到這些工作階段終止為止。 若要耗尽现有连接的流量，应通过应用程序来限制适用于每个终结点的会话持续时间。
+    > 由於流量管理員是在 DNS 層級運作，所以無法影響任何端點的現有連接。 在引導端點之間的流量時 (透過變更設定檔設定，或是在容錯移轉或容錯回復期間)，流量管理員會將新的連接導向至可用的端點。 不過，其他端點可透過現有的連接繼續接收流量，直到這些工作階段終止為止。 若要將現有連接的流量排出，應用程式應該限制每個端點使用的工作階段持續時間。
 
 ## <a name="traffic-routing-methods"></a>流量路由方法
 
@@ -141,18 +141,56 @@ Azure 流量管理員包含內建的端點監視和自動端點容錯移轉。 �
 如需詳細資訊，請參閱 [流量管理員流量路由方法](traffic-manager-routing-methods.md)。
 
 > [!NOTE]
-> 當所有合格的端點狀態為「已降級」時，正常的流量路由行為會發生例外狀況。 流量管理員會「竭盡所能」進行嘗試，且「彷彿所有已降級狀態的端點實際上是處於線上狀態一樣地回應」 。 此行為比在 DNS 回應中不傳回任何端點的另一種做法更好。 「已停用」或「已停止」端點不會受到監視，因此，不會將它們視為符合流量資格。
+> 當所有合格的端點狀態為「已降級」時，正常的流量路由行為會發生例外狀況。 流量管理員會「竭盡所能」進行嘗試，且「彷彿所有已降級狀態的端點實際上是處於線上狀態一樣地回應」 **。 此行為比在 DNS 回應中不傳回任何端點的另一種做法更好。 「已停用」或「已停止」端點不會受到監視，因此，不會將它們視為符合流量資格。
 >
 > 這種情況通常是因為服務組態不正確所造成的，例如：
 >
 > * 存取控制清單 [ACL] 封鎖流量管理員健康情況檢查。
 > * 流量管理員設定檔中監視連接埠或通訊協定的設定不正確。
 >
-> 此行为的一个结果是，即使流量管理器运行状况检查没有正确进行配置，但从流量路由的角度来看，流量管理器似乎也运行正常。 不過，在此情況下，不會發生影響整體應用程式可用性的端點容錯移轉。 請務必檢查設定檔會顯示為「線上」狀態，而不是「已降級」狀態。 「線上」狀態表示流量管理員的健康狀態檢查如預期般地運作。
+> 此行為的結果是當流量管理員健康狀態檢查未正確設定時，從流量路由傳送看起來，流量管理員似乎運作正常**。 不過，在此情況下，不會發生影響整體應用程式可用性的端點容錯移轉。 請務必檢查設定檔會顯示為「線上」狀態，而不是「已降級」狀態。 「線上」狀態表示流量管理員的健康狀態檢查如預期般地運作。
 
-有关针对失败的运行状况检查进行故障排除的详细信息，请参阅 [Azure 流量管理器上的降级状态故障排除](traffic-manager-troubleshooting-degraded.md)。
+如需疑難排解無法進行健康狀態檢查的詳細資訊，請參閱[疑難排解 Azure 流量管理員上的已降級狀態](traffic-manager-troubleshooting-degraded.md)。
 
+## <a name="faqs"></a>常見問題集
 
+* [流量管理員有能力從 Azure 區域失敗中恢復嗎？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#is-traffic-manager-resilient-to-azure-region-failures)
+
+* [資源群組位置的選擇如何影響流量管理員？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-the-choice-of-resource-group-location-affect-traffic-manager)
+
+* [如何判斷每個端點目前的健全狀況？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-do-i-determine-the-current-health-of-each-endpoint)
+
+* [我可以監視 HTTPS 端點嗎？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-monitor-https-endpoints)
+
+* [新增端點時，使用 IP 位址還是 DNS 名稱？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#do-i-use-an-ip-address-or-a-dns-name-when-adding-an-endpoint)
+
+* [新增端點時，可以使用哪些類型的 IP 位址？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-types-of-ip-addresses-can-i-use-when-adding-an-endpoint)
+
+* [我可以在單一設定檔內使用不同的端點定址類型嗎？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-different-endpoint-addressing-types-within-a-single-profile)
+
+* [傳入查詢的記錄類型和與端點定址類型建立關聯的記錄類型不同時，會發生什麼事？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-happens-when-an-incoming-querys-record-type-is-different-from-the-record-type-associated-with-the-addressing-type-of-the-endpoints)
+
+* [我可以在巢狀設定檔中使用具有 IPv4/IPv6 定址端點的設定檔嗎？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-a-profile-with-ipv4--ipv6-addressed-endpoints-in-a-nested-profile)
+
+* [我在流量管理員設定檔中停止了 web 應用程式端點，但我在重新開機後仍未收到任何流量。如何修正這種情況？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#i-stopped-an-web-application-endpoint-in-my-traffic-manager-profile-but-i-am-not-receiving-any-traffic-even-after-i-restarted-it-how-can-i-fix-this)
+
+* [即使我的應用程式不支援 HTTP 或 HTTPS 也可以使用流量管理員嗎？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-traffic-manager-even-if-my-application-does-not-have-support-for-http-or-https)
+
+* [使用 TCP 監視時需要端點的哪些特定回應？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-specific-responses-are-required-from-the-endpoint-when-using-tcp-monitoring)
+
+* [流量管理員將我的使用者從狀況不良的端點移開時間有多快？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-fast-does-traffic-manager-move-my-users-away-from-an-unhealthy-endpoint)
+
+* [如何為設定檔中不同的端點指定不同監視設定？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-specify-different-monitoring-settings-for-different-endpoints-in-a-profile)
+
+* [如何將 HTTP 標頭指派給我端點的流量管理員健康狀態檢查？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-assign-http-headers-to-the-traffic-manager-health-checks-to-my-endpoints)
+
+* [端點健全狀況檢查使用哪一個主機標頭？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-host-header-do-endpoint-health-checks-use)
+
+* [健康情況檢查是從哪些 IP 位址產生？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-are-the-ip-addresses-from-which-the-health-checks-originate)
+
+* [流量管理員會對端點進行多少健康情況檢查？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-many-health-checks-to-my-endpoint-can-i-expect-from-traffic-manager)
+
+* [如果我的其中一個端點關閉，我如何取得通知？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-get-notified-if-one-of-my-endpoints-goes-down)
 
 ## <a name="next-steps"></a>後續步驟
 

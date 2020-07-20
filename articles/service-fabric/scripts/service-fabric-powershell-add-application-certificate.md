@@ -1,46 +1,112 @@
 ---
-title: Azure PowerShell 指令碼範例 - 將應用程式憑證新增到叢集 | Microsoft Docs
+title: 在 PowerShell 中將應用程式憑證新增至叢集
 description: Azure PowerShell 指令碼範例 - 將應用程式憑證新增到 Service Fabric 叢集。
 services: service-fabric
 documentationcenter: ''
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 tags: azure-service-management
 ms.assetid: ''
 ms.service: service-fabric
 ms.workload: multiple
-ms.devlang: na
 ms.topic: sample
 ms.date: 01/18/2018
-ms.author: aljo
+ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 3d2ab7339a641164a628854c00e22f437b21c3df
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: d657ef8d28b36d93bc923036254e446c7be4c2c8
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670450"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81769510"
 ---
 # <a name="add-an-application-certificate-to-a-service-fabric-cluster"></a>將應用程式憑證新增到 Service Fabric 叢集
 
-這個範例指令碼在指定的 Azure Key Vault 中建立自我簽署的憑證，並將它安裝到 Service Fabric 叢集的所有節點。 憑證也會下載至本機資料夾。 下載的憑證名稱會與金鑰保存庫中的憑證名稱相同。 視需要自訂參數。
+此範例指令碼會逐步解說如何在 Key Vault 中建立憑證，然後將其部署至叢集執行所在的其中一個虛擬機器擴展集。 此案例不會直接使用 Service Fabric，而是會依賴 Key Vault 和虛擬機器擴展集。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 您可以視需要使用 [Azure PowerShell 指南 (英文)](/powershell/azure/overview) 中的指示來安裝 Azure PowerShell，然後執行 `Connect-AzAccount` 來建立與 Azure 的連線。 
 
-## <a name="sample-script"></a>範例指令碼
+## <a name="create-a-certificate-in-key-vault"></a>在 Key Vault 中建立憑證
 
-[!code-powershell[main](../../../powershell_scripts/service-fabric/add-application-certificate/add-new-application-certificate.ps1 "Add an application certificate to a cluster")]
+```powershell
+$VaultName = ""
+$CertName = ""
+$SubjectName = "CN="
+
+$policy = New-AzKeyVaultCertificatePolicy -SubjectName $SubjectName -IssuerName Self -ValidityInMonths 12
+Add-AzKeyVaultCertificate -VaultName $VaultName -Name $CertName -CertificatePolicy $policy
+```
+
+## <a name="or-upload-an-existing-certificate-into-key-vault"></a>或將現有憑證上傳至 Key Vault
+
+```powershell
+$VaultName= ""
+$CertName= ""
+$CertPassword= ""
+$PathToPFX= ""
+
+$bytes = [System.IO.File]::ReadAllBytes($PathToPFX)
+$base64 = [System.Convert]::ToBase64String($bytes)
+$jsonBlob = @{
+   data = $base64
+   dataType = 'pfx'
+   password = $CertPassword
+   } | ConvertTo-Json
+$contentbytes = [System.Text.Encoding]::UTF8.GetBytes($jsonBlob)
+$content = [System.Convert]::ToBase64String($contentbytes)
+
+$SecretValue = ConvertTo-SecureString -String $content -AsPlainText -Force
+
+# Upload the certificate to the key vault as a secret
+$Secret = Set-AzKeyVaultSecret -VaultName $VaultName -Name $CertName -SecretValue $SecretValue
+
+```
+
+## <a name="update-virtual-machine-scale-sets-profile-with-certificate"></a>使用憑證更新虛擬機器擴展集設定檔
+
+```powershell
+$ResourceGroupName = ""
+$VMSSName = ""
+$CertStore = "My" # Update this with the store you want your certificate placed in, this is LocalMachine\My
+
+# If you have added your certificate to the keyvault certificates, use
+$CertConfig = New-AzVmssVaultCertificateConfig -CertificateUrl (Get-AzKeyVaultCertificate -VaultName $VaultName -Name $CertName).SecretId -CertificateStore $CertStore
+
+# Otherwise, if you have added your certificate to the keyvault secrets, use
+$CertConfig = New-AzVmssVaultCertificateConfig -CertificateUrl (Get-AzKeyVaultSecret -VaultName $VaultName -Name $CertName).Id -CertificateStore $CertStore
+
+$VMSS = Get-AzVmss -ResourceGroupName $ResourceGroupName -VMScaleSetName $VMSSName
+
+# If this KeyVault is already known by the virtual machine scale set, for example if the cluster certificate is deployed from this keyvault, use
+$VMSS.virtualmachineprofile.osProfile.secrets[0].vaultCertificates.Add($certConfig)
+
+# Otherwise use
+$VMSS = Add-AzVmssSecret -VirtualMachineScaleSet $VMSS -SourceVaultId (Get-AzKeyVault -VaultName $VaultName).ResourceId  -VaultCertificate $CertConfig
+```
+
+## <a name="update-the-virtual-machine-scale-set"></a>更新虛擬機器擴展集
+```powershell
+Update-AzVmss -ResourceGroupName $ResourceGroupName -VirtualMachineScaleSet $VMSS -VMScaleSetName $VMSSName
+```
+
+> 如果您想要將憑證放在叢集中的多個節點類型上，則應對每個應有憑證的節點類型重複執行此指令碼的第二個和第三個部分。
 
 ## <a name="script-explanation"></a>指令碼說明
 
 此指令碼會使用下列命令：下表中的每個命令都會連結至命令特定的文件。
 
-| 命令 | 注意 |
+| Command | 注意 |
 |---|---|
-| [Add-AzServiceFabricApplicationCertificate](/powershell/module/az.servicefabric/Add-azServiceFabricApplicationCertificate) | 將新的應用程式憑證新增到組成叢集的虛擬機器擴展集。  |
+| [New-AzKeyVaultCertificatePolicy](/powershell/module/az.keyvault/New-AzKeyVaultCertificatePolicy) | 建立代表憑證的記憶體內部原則 |
+| [Add-AzKeyVaultCertificate](/powershell/module/az.keyvault/Add-AzKeyVaultCertificate)| 將原則部署至 Key Vault 憑證 |
+| [Set-AzKeyVaultSecret](/powershell/module/az.keyvault/Set-AzKeyVaultSecret)| 將原則部署至 Key Vault 祕密 |
+| [New-AzVmssVaultCertificateConfig](/powershell/module/az.compute/New-AzVmssVaultCertificateConfig) | 建立代表 VM 中的憑證的記憶體內部設定 |
+| [Get-AzVmss](/powershell/module/az.compute/Get-AzVmss) |  |
+| [Add-AzVmssSecret](/powershell/module/az.compute/Add-AzVmssSecret) | 將憑證新增至虛擬機器擴展集的記憶體內部定義 |
+| [Update-AzVmss](/powershell/module/az.compute/Update-AzVmss) | 部署虛擬機器擴展集的新定義 |
 
 ## <a name="next-steps"></a>後續步驟
 

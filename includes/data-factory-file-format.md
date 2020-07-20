@@ -4,12 +4,12 @@ ms.service: data-factory
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
-ms.openlocfilehash: 89d5483347f93cd3b57a02ced19b1e8b099a5ab0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 29be95a53004070753ca742cd8d76ca9d8384ea0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60486825"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "70166682"
 ---
 ## <a name="specifying-formats"></a>指定格式
 Azure Data Factory 支援下列格式類型：
@@ -21,19 +21,19 @@ Azure Data Factory 支援下列格式類型：
 * [Parquet 格式](#specifying-parquetformat)
 
 ### <a name="specifying-textformat"></a>指定 TextFormat
-如果您想要剖析文字檔，或以文字格式寫入資料，請將 `format``type` 屬性設定為 **TextFormat**。 您也可以在 `format` 區段中指定下列**選擇性**屬性。 關於如何設定，請參閱 [TextFormat 範例](#textformat-example)一節。
+如果您想要剖析文字檔，或以文字格式寫入資料，請將 `format` `type` 屬性設定為 **TextFormat**。 您也可以在 `format` 區段中指定下列**選擇性**屬性。 關於如何設定，請參閱 [TextFormat 範例](#textformat-example)一節。
 
-| 屬性 | 描述 | 允許的值 | 必要項 |
+| 屬性 | 描述 | 允許的值 | 必要 |
 | --- | --- | --- | --- |
-| columnDelimiter |用來分隔檔案中的資料行的字元。 您可以考慮使用資料中不太可能存在的罕見不可列印字元：例如，指定 "\u0001" 代表標題開頭 (SOH)。 |只允許一個字元。 **預設值**是**逗號 (',')**。 <br/><br/>若要使用 Unicode 字元，請參閱 [Unicode 字元](https://en.wikipedia.org/wiki/List_of_Unicode_characters)以為它取得對應的程式碼。 |否 |
-| rowDelimiter |用來分隔檔案中的資料列的字元。 |只允許一個字元。 **預設值**是下列任一個值：**["\r\n", "\r", "\n"]** (讀取時) 與 **"\r\n"** (寫入時)。 |否 |
-| escapeChar |用來逸出輸入檔內容中的資料行分隔符號的特殊字元。 <br/><br/>您無法同時為資料表指定 escapeChar 和 quoteChar。 |只允許一個字元。 沒有預設值。 <br/><br/>範例：如果以逗號 (「,」) 做為資料行分隔符號，但想要在文字中使用逗號字元 (例如：「Hello, world」)，您可以將「$」定義為逸出字元，並在來源中使用字串「Hello$, world」。 |否 |
-| quoteChar |用來引用字串值的字元。 引號字元內的資料行和資料列分隔符號會被視為字串值的一部分。 這個屬性同時適用於輸入和輸出資料集。<br/><br/>您無法同時為資料表指定 escapeChar 和 quoteChar。 |只允許一個字元。 沒有預設值。 <br/><br/>例如，如果您以逗號 (',') 做為資料行分隔符號，但您想要在文字中使用逗號字元 (例如：<Hello, world>)，您可以定義 " (雙引號) 做為引用字元，並在來源中使用字串 "Hello, world"。 |否 |
-| nullValue |用來代表 null 值的一個或多個字元。 |一或多個字元。 **預設值**為 **"\N" 和 "NULL"** (讀取時) 及 **"\N"** (寫入時)。 |否 |
-| encodingName |指定編碼名稱。 |有效的編碼名稱。 請參閱 [Encoding.EncodingName 屬性](/dotnet/api/system.text.encoding)。 例如：windows-1250 或 shift_jis。 **預設值**為 **UTF-8**。 |否 |
-| firstRowAsHeader |指定是否將第一個資料列視為標頭。 對於輸入資料集，Data Factory 會讀取第一個資料列做為標頭。 對於輸出資料集，Data Factory 會寫入第一個資料列做為標頭。 <br/><br/>相關範例案例請參閱[使用 `firstRowAsHeader` 和 `skipLineCount` 的案例](#scenarios-for-using-firstrowasheader-and-skiplinecount)。 |True<br/>**False (預設值)** |否 |
-| skipLineCount |表示從輸入檔讀取資料時要略過的資料列數目。 如果指定 skipLineCount 和 firstRowAsHeader，則會先略過程式碼行，再從輸入檔讀取標頭資訊。 <br/><br/>相關範例案例請參閱[使用 `firstRowAsHeader` 和 `skipLineCount` 的案例](#scenarios-for-using-firstrowasheader-and-skiplinecount)。 |整數  |否 |
-| treatEmptyAsNull |指定從輸入檔讀取資料時，是否將 null 或空字串視為 null 值。 |**True (預設值)**<br/>False |否 |
+| columnDelimiter |用來分隔檔案中的資料行的字元。 您可以考慮使用資料中不太可能存在的罕見不可列印字元：例如，指定 "\u0001" 代表標題開頭 (SOH)。 |只允許一個字元。 **預設**值為**逗號（'，'）**。 <br/><br/>若要使用 Unicode 字元，請參閱 [Unicode 字元](https://en.wikipedia.org/wiki/List_of_Unicode_characters)以為它取得對應的程式碼。 |No |
+| rowDelimiter |用來分隔檔案中資料列的字元。 |只允許一個字元。 **預設**值是讀取時的下列任何值： **["\r\n"，"\r"，"\n"]** 和 **"\r\n** " （寫入時）。 |No |
+| escapeChar |用來逸出輸入檔內容中資料行分隔符號的特殊字元。 <br/><br/>您無法為資料表同時指定 escapeChar 和 quoteChar。 |只允許一個字元。 無預設值。 <br/><br/>例如，如果您以逗號 (',') 做為資料行分隔符號，但您想要在文字中使用逗號字元 (例如："Hello, world")，您可以定義 ‘$’ 做為逸出字元，並在來源中使用字串 "Hello$, world"。 |No |
+| quoteChar |用來為字串值加上引號的字元。 系統會將引號字元內資料行和資料列分隔符號視為字串值的一部分。 這個屬性同時適用於輸入和輸出資料集。<br/><br/>您無法為資料表同時指定 escapeChar 和 quoteChar。 |只允許一個字元。 無預設值。 <br/><br/>例如，如果您以逗號 (',') 做為資料行分隔符號，但您想要在文字中使用逗號字元 (例如：<Hello, world>)，您可以定義 " (雙引號) 做為引用字元，並在來源中使用字串 "Hello, world"。 |No |
+| nullValue |用來代表 Null 值的一或多個字元。 |一或多個字元。 **預設**值為 **"\n" 和 "Null"** （讀取時）及 **"\n"** （寫入時）。 |No |
+| encodingName |指定編碼名稱。 |有效的編碼名稱。 請參閱[Encoding.encodingname 屬性](/dotnet/api/system.text.encoding)。 例如：windows-1250 或 shift_jis。 **預設**值為**utf-8**。 |No |
+| firstRowAsHeader |指定是否將第一個資料列視為標頭。 對於輸入資料集，Data Factory 會讀取第一個資料列做為標頭。 對於輸出資料集，Data Factory 會寫入第一個資料列做為標頭。 <br/><br/>相關範例案例請參閱[使用 `firstRowAsHeader` 和 `skipLineCount` 的案例](#scenarios-for-using-firstrowasheader-and-skiplinecount)。 |True<br/>**FALSE (預設值)** |No |
+| skipLineCount |表示從輸入檔讀取資料時要略過的資料列數目。 如果同時指定 skipLineCount 和 firstRowAsHeader，則會先略過行，然後從輸入檔讀取標頭資訊。 <br/><br/>相關範例案例請參閱[使用 `firstRowAsHeader` 和 `skipLineCount` 的案例](#scenarios-for-using-firstrowasheader-and-skiplinecount)。 |整數 |否 |
+| treatEmptyAsNull |指定從輸入檔讀取資料時是否將 Null 或空字串視為 Null 值。 |**True （預設值）**<br/>False |No |
 
 #### <a name="textformat-example"></a>TextFormat 範例
 下列範例顯示 TextFormat 的一些格式屬性。
@@ -64,22 +64,22 @@ Azure Data Factory 支援下列格式類型：
 ```
 
 #### <a name="scenarios-for-using-firstrowasheader-and-skiplinecount"></a>使用 firstRowAsHeader 和 skipLineCount 的案例
-* 您正從非檔案來源複製到文字檔，並想要新增標頭行，其中包含結構描述中繼資料 (例如︰SQL 結構描述)。 在此案例的輸出資料集，將 `firstRowAsHeader` 指定為 true。
+* 您正從非檔案來源複製到文字檔，並想要加入標頭行，其中包含結構描述中繼資料 (例如︰SQL 結構描述)。 在此案例的輸出資料集，將 `firstRowAsHeader` 指定為 true。
 * 您正從包含標頭行的文字檔複製到非檔案接收器，並想要刪除那一行。 在輸入資料集，將 `firstRowAsHeader` 指定為 true。
 * 您正從文字檔複製，並想略過不包含資料或標頭資訊的開頭幾行。 指定 `skipLineCount` 以表示要略過的行數。 如果檔案其餘部分包含標頭行，您也可以指定 `firstRowAsHeader`。 如果 `skipLineCount` 和 `firstRowAsHeader` 都指定，則會先略過那幾行，再從輸入檔讀取標頭資訊
 
 ### <a name="specifying-jsonformat"></a>指定 JsonFormat
 若要**將 JSON 檔案以現況匯入到/匯出自 Cosmos DB**，請參閱 Azure Cosmos DB 連接器中的[匯入/匯出 JSON 文件](../articles/data-factory/v1/data-factory-azure-documentdb-connector.md#importexport-json-documents)一節，以取得詳細資訊。
 
-如果您想要剖析 JSON 檔案，或以 JSON 格式寫入資料，請將 `format``type` 屬性設定為 **JsonFormat**。 您也可以在 `format` 區段中指定下列**選擇性**屬性。 關於如何設定，請參閱 [JsonFormat 範例](#jsonformat-example)一節。
+如果您想要剖析 JSON 檔案，或以 JSON 格式寫入資料，請將 `format` `type` 屬性設定為 **JsonFormat**。 您也可以在 `format` 區段中指定下列**選擇性**屬性。 關於如何設定，請參閱 [JsonFormat 範例](#jsonformat-example)一節。
 
-| 屬性 | 描述 | 必要項 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
-| filePattern |表示每個 JSON 檔案中儲存的資料模式。 允許的值為︰**setOfObjects** 和 **arrayOfObjects**。 **預設值**為 **setOfObjects**。 關於這些模式的詳細資訊，請參閱 [JSON 檔案模式](#json-file-patterns)一節。 |否 |
-| jsonNodeReference | 如果您想要逐一查看陣列欄位內相同模式的物件並擷取資料，請指定該陣列的 JSON 路徑。 從 JSON 檔案複製資料時，才支援這個屬性。 | 否 |
-| jsonPathDefinition | 指定 JSON 路徑運算式，以自訂資料行名稱來對應每個資料行 (開頭為小寫)。 從 JSON 檔案複製資料時，才支援這個屬性，您可以從物件或陣列中擷取資料。 <br/><br/> 如果是根物件下的欄位，請從根 $ 開始，如果是 `jsonNodeReference` 屬性所選陣列內的欄位，請從陣列元素開始。 關於如何設定，請參閱 [JsonFormat 範例](#jsonformat-example)一節。 | 否 |
-| encodingName |指定編碼名稱。 如需有效編碼名稱的清單，請參閱：[Encoding.EncodingName](/dotnet/api/system.text.encoding) 屬性。 例如：windows-1250 或 shift_jis。 **預設**值為：**UTF-8**。 |否 |
-| nestingSeparator |用來分隔巢狀層級的字元。 預設值為 '.' (點)。 |否 |
+| filePattern |表示每個 JSON 檔案中儲存的資料模式。 允許的值為︰**setOfObjects** 和 **arrayOfObjects**。 **預設**值為**setOfObjects**。 關於這些模式的詳細資訊，請參閱 [JSON 檔案模式](#json-file-patterns)一節。 |No |
+| jsonNodeReference | 如果您想要逐一查看陣列欄位內相同模式的物件並擷取資料，請指定該陣列的 JSON 路徑。 從 JSON 檔案複製資料時，才支援這個屬性。 | No |
+| jsonPathDefinition | 指定 JSON 路徑運算式，以自訂資料行名稱來對應每個資料行 (開頭為小寫)。 從 JSON 檔案複製資料時，才支援這個屬性，您可以從物件或陣列中擷取資料。 <br/><br/> 如果是根物件下的欄位，請從根 $ 開始，如果是 `jsonNodeReference` 屬性所選陣列內的欄位，請從陣列元素開始。 關於如何設定，請參閱 [JsonFormat 範例](#jsonformat-example)一節。 | No |
+| encodingName |指定編碼名稱。 如需有效編碼名稱的清單，請參閱： [Encoding.EncodingName](/dotnet/api/system.text.encoding) 屬性。 例如：windows-1250 或 shift_jis。 **預設**值為**utf-8**。 |No |
+| nestingSeparator |用來分隔巢狀層級的字元。 預設值為 '.' (點)。 |No |
 
 #### <a name="json-file-patterns"></a>JSON 檔案模式
 
@@ -174,7 +174,7 @@ Azure Data Factory 支援下列格式類型：
 
 #### <a name="jsonformat-example"></a>JsonFormat 範例
 
-**案例 1：從 JSON 檔案複製資料**
+**案例 1︰從 JSON 檔案複製資料**
 
 從 JSON 檔案複製資料時，請參閱以下兩個範例類型，並注意一般要點︰
 
@@ -211,10 +211,10 @@ Azure Data Factory 支援下列格式類型：
 | --- | --- | --- | --- | --- |
 | ed0e4960-d9c5-11e6-85dc-d7996816aad3 | PC | Microsoft.Compute/virtualMachines | 827f8aaa-ab72-437c-ba48-d8917a7336a3 | 1/13/2017 11:24:37 AM |
 
-**JsonFormat** 類型的輸入資料集定義如下：(僅含相關元素的局部定義)。 具體而言：
+具有**JsonFormat**類型的輸入資料集定義如下：（僅含相關部分的部分定義）。 具體而言：
 
 - `structure` 區段定義自訂資料行名稱，以及轉換成表格式資料時對應的資料類型。 除非您需要對應資料行，否則這個區段是**選擇性**。 如需詳細資訊，請參閱＜指定矩形資料集的結構定義＞一節。
-- `jsonPathDefinition` 指定每個資料行的 JSON 路徑，以指出從哪裡擷取資料。 若要從陣列複製資料，您可以使用 **array[x].property** 從第 x 個物件擷取指定屬性的值，也可以使用 **array[*].property** 從任何包含這類屬性的物件中尋找此值。
+- `jsonPathDefinition` 指定每個資料行的 JSON 路徑，以指出從哪裡擷取資料。 若要從陣列複製資料，您可以使用**array [x]. 屬性**，從 xth 物件中解壓縮指定屬性的值，或者您可以使用**array [*]. 屬性**，從包含這類屬性的任何物件中尋找值。
 
 ```json
 "properties": {
@@ -284,7 +284,7 @@ Azure Data Factory 支援下列格式類型：
 | 01 | 20170122 | P2 | 13 | [{"sanmateo":"No 1"}] |
 | 01 | 20170122 | P3 | 231 | [{"sanmateo":"No 1"}] |
 
-**JsonFormat** 類型的輸入資料集定義如下：(僅含相關元素的局部定義)。 具體而言：
+具有**JsonFormat**類型的輸入資料集定義如下：（僅含相關部分的部分定義）。 具體而言：
 
 - `structure` 區段定義自訂資料行名稱，以及轉換成表格式資料時對應的資料類型。 除非您需要對應資料行，否則這個區段是**選擇性**。 如需詳細資訊，請參閱＜指定矩形資料集的結構定義＞一節。
 - `jsonNodeReference` 表示逐一查看**陣列** orderlines 下相同模式的物件並擷取資料。
@@ -326,14 +326,14 @@ Azure Data Factory 支援下列格式類型：
 }
 ```
 
-**請注意下列幾點**：
+**請注意下列幾點：**
 
 * 如果 Data Factory 資料集中未定義 `structure`和 `jsonPathDefinition`，複製活動會偵測第一個物件的結構描述，並簡維整個物件。
 * 如果 JSON 輸入具有陣列，依預設，複製活動會將整個陣列值轉換為字串。 您可以選擇使用 `jsonNodeReference` 及/或 `jsonPathDefinition` 從其中擷取資料，或不要在 `jsonPathDefinition` 中指定以略過它。
 * 如果相同層級中有重複的名稱，複製活動會挑選最後一個。
 * 屬性名稱會區分大小寫。 名稱相同但大小寫不同的兩個屬性會被視為兩個不同的屬性。
 
-**案例 2：將資料寫入 JSON 檔案**
+**案例 2︰將資料寫入 JSON 檔案**
 
 如果您在 SQL Database 中有下列資料表︰
 
@@ -387,7 +387,7 @@ Azure Data Factory 支援下列格式類型：
 ```
 
 ### <a name="specifying-avroformat"></a>指定 AvroFormat
-如果您想要剖析 Avro 檔案，或以 Avro 格式寫入資料，請將 `format``type` 屬性設定為 **AvroFormat**。 您不需要在 typeProperties 區段內的 Format 區段中指定任何屬性。 範例：
+如果您想要剖析 Avro 檔案，或以 Avro 格式寫入資料，請將 `format` `type` 屬性設定為 **AvroFormat**。 您不需要在 typeProperties 區段內的 Format 區段中指定任何屬性。 範例：
 
 ```json
 "format":
@@ -400,10 +400,10 @@ Azure Data Factory 支援下列格式類型：
 
 請注意下列幾點：  
 
-* 不支援[複雜資料類型](http://avro.apache.org/docs/current/spec.html#schema_complex) (記錄、列舉、陣列、對應、等位和固定)。
+* 不支援[複雜資料類型](https://avro.apache.org/docs/current/spec.html#schema_complex)（記錄、列舉、陣列、對應、等位和固定）。
 
 ### <a name="specifying-orcformat"></a>指定 OrcFormat
-如果您想要剖析 ORC 檔案，或以 ORC 格式寫入資料，請將 `format``type` 屬性設定為 **OrcFormat**。 您不需要在 typeProperties 區段內的 Format 區段中指定任何屬性。 範例：
+如果您想要剖析 ORC 檔案，或以 ORC 格式寫入資料，請將 `format` `type` 屬性設定為 **OrcFormat**。 您不需要在 typeProperties 區段內的 Format 區段中指定任何屬性。 範例：
 
 ```json
 "format":
@@ -420,10 +420,10 @@ Azure Data Factory 支援下列格式類型：
 請注意下列幾點：
 
 * 不支援複雜資料類型 (STRUCT、MAP、LIST、UNION)
-* ORC 檔案有三種 [壓縮相關選項](http://hortonworks.com/blog/orcfile-in-hdp-2-better-compression-better-performance/)︰NONE、ZLIB、SNAPPY。 Data Factory 支援以這些壓縮格式的任一項從 ORC 檔案讀取資料。 它會使用中繼資料裡的壓縮轉碼器來讀取資料。 不過，寫入 ORC 檔案時，Data Factory 會選擇 ZLIB，這是 ORC 的預設值。 目前沒有任何選項可覆寫這個行為。
+* ORC 檔案有 3 種 [壓縮相關選項](https://hortonworks.com/blog/orcfile-in-hdp-2-better-compression-better-performance/)︰NONE、ZLIB、SNAPPY。 Data Factory 支援以這些壓縮格式的任一項從 ORC 檔案讀取資料。 它會使用中繼資料裡的壓縮轉碼器來讀取資料。 不過，寫入 ORC 檔案時，Data Factory 會選擇 ZLIB，這是 ORC 的預設值。 目前沒有任何選項可覆寫這個行為。
 
 ### <a name="specifying-parquetformat"></a>指定 ParquetFormat
-如果您想要剖析 Parquet 檔案，或以 Parquet 格式寫入資料，請將 `format``type` 屬性設定為 **ParquetFormat**。 您不需要在 typeProperties 區段內的 Format 區段中指定任何屬性。 範例：
+如果您想要剖析 Parquet 檔案，或以 Parquet 格式寫入資料，請將 `format` `type` 屬性設定為 **ParquetFormat**。 您不需要在 typeProperties 區段內的 Format 區段中指定任何屬性。 範例：
 
 ```json
 "format":
@@ -439,4 +439,4 @@ Azure Data Factory 支援下列格式類型：
 請注意下列幾點：
 
 * 不支援複雜資料類型 (MAP、LIST)
-* Parquet 檔案有下列壓縮相關選項︰NONE、SNAPPY、GZIP 和 LZO。 Data Factory 支援以這些壓縮格式的任一項從 ORC 檔案讀取資料。 它會使用中繼資料裡的壓縮轉碼器來讀取資料。 不過，寫入 Parquet 檔案時，Data Factory 會選擇 SNAPPY，這是 Parquet 格式的預設值。 目前沒有任何選項可覆寫這個行為。
+* Parquet 檔案已有下列壓縮相關選項：NONE、SNAPPY、GZIP 和 LZO。 Data Factory 支援以這些壓縮格式的任一項從 ORC 檔案讀取資料。 它會使用中繼資料裡的壓縮轉碼器來讀取資料。 不過，寫入 Parquet 檔案時，Data Factory 會選擇 SNAPPY，這是 Parquet 格式的預設值。 目前沒有任何選項可覆寫這個行為。

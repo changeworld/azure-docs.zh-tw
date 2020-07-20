@@ -2,9 +2,9 @@
 title: 使用 Azure 通知中樞將通知傳送給特定使用者 | Microsoft Docs
 description: 了解如何使用通用 Windows 平台 (UWP) 應用程式將通知傳送給特定使用者。
 documentationcenter: windows
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 services: notification-hubs
 ms.assetid: 012529f2-fdbc-43c4-8634-2698164b5880
 ms.service: notification-hubs
@@ -14,13 +14,15 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/22/2019
-ms.author: jowargo
-ms.openlocfilehash: 32714b3e5a5ed859716faef2ca660f8b2c90b089
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 03/22/2019
+ms.openlocfilehash: a8a939f0d0c3575adec147c1942ddbbef334cb65
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58402503"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220145"
 ---
 # <a name="tutorial-send-notifications-to-specific-users-by-using-azure-notification-hubs"></a>教學課程：使用 Azure 通知中樞將通知傳送給特定使用者
 
@@ -31,7 +33,7 @@ ms.locfileid: "58402503"
 本教學課程將示範如何使用 Azure 通知中心，來將推播通知傳送到特定裝置上的特定應用程式使用者。 ASP.NET WebAPI 後端是用來驗證用戶端。 後端在驗證用戶端應用程式使用者時，會自動將標記新增至通知登錄。 後端會使用此標記將通知傳送給特定使用者。
 
 > [!NOTE]
-> 您可以在 [GitHub](https://github.com/Azure/azure-notificationhubs-samples/tree/master/dotnet/NotifyUsers) 上找到本教學課程的完整程式碼。
+> 您可以在 [GitHub](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/NotifyUsers) 上找到本教學課程的完整程式碼。
 
 在本教學課程中，您會執行下列步驟：
 
@@ -126,7 +128,7 @@ ms.locfileid: "58402503"
     using Windows.UI.Popups;
     using System.Threading.Tasks;
     ```
-10. 在 **WindowsApp`MainPage` 專案的 `MainPage.xaml.cs` 中，將下列成員新增至**  類別。 請務必將 `<Enter Your Backend Endpoint>` 取代為您先前取得的實際後端端點。 例如： `http://mybackend.azurewebsites.net`。
+10. 在 **WindowsApp`MainPage` 專案的 `MainPage.xaml.cs` 中，將下列成員新增至**  類別。 請務必將 `<Enter Your Backend Endpoint>` 取代為您先前取得的實際後端端點。 例如： `http://mybackend.azurewebsites.net` 。
 
     ```csharp
     private static string BACKEND_ENDPOINT = "<Enter Your Backend Endpoint>";
@@ -329,11 +331,11 @@ ms.locfileid: "58402503"
 2. 輸入 [使用者名稱]和 [密碼]，如下列畫面所示。 它應該與您在 Windows Phone 上輸入的使用者名稱和密碼不同。
 3. 按一下 [登入並註冊]  ，並確認顯示您已登入的對話方塊。 此程式碼也會啟用 [傳送推播] 按鈕。
 
-    ![][14]
+    ![顯示已填入使用者名稱和密碼的通知中樞應用程式螢幕擷取畫面。][14]
 5. 然後，在 [收件者使用者名稱標記] 欄位中，輸入已註冊的使用者名稱。 輸入通知訊息，然後按一下 [傳送推播] 。
 6. 只有已經使用相符使用者名稱標記所註冊的裝置才會收到通知訊息。
 
-    ![][15]
+    ![顯示已推送訊息的通知中樞應用程式螢幕擷取畫面。][15]
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -1,69 +1,152 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure 備份文件
+### YamlMime:Landing
+title: Azure 備份服務文件
+summary: Azure 備份服務提供簡單、安全且符合成本效益的解決方案來備份您的資料，並從 Microsoft Azure 雲端進行復原。
 metadata:
-  title: Azure 備份文件 - 教學課程和 API 參考 | Microsoft Docs
-  description: Azure Backup 可讓您備份內部部署伺服器、虛擬機器、虛擬化工作負載、SQL Server、SharePoint 伺服器等的資料。 了解如何利用我們的快速入門、教學課程和範例來備份及還原資料。
-  services: backup
-  author: rayne-wiselman
-  manager: carmonm
+  title: Azure 備份文件
+  description: Azure 備份服務提供簡單、安全且符合成本效益的解決方案來備份您的資料，並從 Microsoft Azure 雲端進行復原。
   ms.service: backup
-  ms.tgt_pltfrm: na
   ms.topic: landing-page
-  ms.date: 05/22/2018
-  ms.author: raynew
-abstract:
-  description: 使用 Azure 備份來保護內部部署伺服器、虛擬機器、虛擬化工作負載、SQL Server、SharePoint 伺服器等資料。 了解如何利用我們的快速入門、教學課程和範例來備份及還原資料。
-sections:
-  - title: 5 分鐘快速入門
-    items:
-      - type: paragraph
-        text: 了解如何在 Azure 中備份 Azure 虛擬機器。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/azure/sql-database/media/index/portal.svg'
-            text: Azure 入口網站
-            href: quick-backup-vm-portal
-          - image:
-              src: 'https://docs.microsoft.com/azure/sql-database/media/index/logo_powershell.svg'
-            text: Azure PowerShell
-            href: quick-backup-vm-powershell
-          - image:
-              src: 'https://docs.microsoft.com/media/common/cli.svg'
-            text: Azure CLI
-            href: quick-backup-vm-cli
-  - title: 逐步教學課程
-    items:
-      - type: paragraph
-        text: 了解如何在 Azure 中或從 Windows Server 備份和復原虛擬機器。
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="tutorial-backup-vm-at-scale">備份多部 Azure VM</a>
-          - html: <a href="tutorial-restore-disk">還原磁碟並建立已復原的 VM</a>
-          - html: <a href="tutorial-restore-files">在 Azure 中將檔案還原到虛擬機器</a>
-          - html: <a href="tutorial-backup-windows-server-to-azure">將 Windows Server 備份到 Azure</a>
-          - html: <a href="tutorial-backup-restore-files-windows-server">將檔案從 Azure 復原至 Windows Server</a>
-  - title: 範例
-    items:
-      - type: paragraph
-        text: 使用下列範例在 Azure 中保護您的資料。
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/backup/powershell-backup-samples">Azure PowerShell</a>
-  - title: 參考
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: 命令列
-            html: <p><a href="/powershell/module/az.recoveryservices">Azure PowerShell</a></p><p><a href="/cli/azure/backup?view=azure-cli-latest">Azure CLI</a></p>
-          - title: Languages
-            html: <p><a href="/dotnet/api/microsoft.azure.management.backupservices">.NET</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/backup/">Azure 備份 API 參考</a></p>
+  author: dcurwin
+  ms.author: dacurwin
+  ms.date: 12/01/2019
+  ms.openlocfilehash: 719fb5891fff560ba621b7af88f27387a4f7fce2
+  ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 06/17/2020
+  ms.locfileid: "84906950"
+landingContent:
+- title: 了解 Azure 備份
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 何謂 Azure 備份？
+      url: backup-overview.md
+  - linkListType: concept
+    links:
+    - text: Azure 備份支援矩陣
+      url: backup-support-matrix.md
+    - text: Azure 備份架構
+      url: backup-architecture.md
+- title: 開始使用 Azure 備份
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 使用 Azure 入口網站備份 VM
+      url: quick-backup-vm-portal.md
+    - text: 使用 PowerShell 備份 VM
+      url: quick-backup-vm-powershell.md
+    - text: 使用 Azure CLI 備份 VM
+      url: quick-backup-vm-cli.md
+    - text: 使用 Resource Manager 範本備份 VM
+      url: quick-backup-vm-template.md
+- title: 逐步嘗試教學課程
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 備份 Azure VM
+      url: tutorial-backup-vm-at-scale.md
+    - text: Azure VM 中的備份 SQL Server
+      url: tutorial-sql-backup.md
+    - text: 備份 Windows Server 檔案和資料夾
+      url: tutorial-backup-windows-server-to-azure.md
+    - text: 將 SAP HANA 資料庫備份至 Azure VM
+      url: tutorial-backup-sap-hana-db.md
+- title: 了解 Azure 備份中的最新功能
+  linkLists:
+  - linkListType: whats-new
+    links:
+    - text: Azure 備份的虛刪除
+      url: backup-azure-security-feature-cloud.md
+    - text: Azure VM 上還原為檔案的 SQL Server
+      url: restore-sql-database-azure-vm.md#restore-as-files
+    - text: Azure VM 備份上的 SAP Hana 資料庫
+      url: backup-azure-sap-hana-database.md
+- title: 備份 Azure VM
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 關於 Azure VM 備份
+      url: backup-azure-vms-introduction.md
+    - text: Azure VM 備份的支援矩陣
+      url: backup-support-matrix-iaas.md
+    - text: 常見問題集 - Azure VM 備份
+      url: backup-azure-vm-backup-faq.md
+    - text: 管理 Azure VM 備份
+      url: backup-azure-manage-vms.md
+- title: 在 Azure VM 上備份 SQL Server
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 關於 Azure VM 備份中的 SQL Server
+      url: backup-azure-sql-database.md
+    - text: 常見問題集 - Azure VM 備份中的 SQL Server
+      url: faq-backup-sql-server.md
+    - text: 備份 Azure VM 中的 SQL Server 資料庫
+      url: backup-sql-server-database-azure-vms.md
+    - text: 管理和監視備份的 SQL Server 資料庫
+      url: manage-monitor-sql-database-backup.md
+- title: 在 Azure虛擬機器上備份 SAP Hana
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 將 SAP Hana 資料庫備份到 Azure VM
+      url: backup-azure-sap-hana-database.md
+    - text: 管理和監視已備份的 SAP Hana 資料庫
+      url: sap-hana-db-manage.md
+    - text: 常見問題集 - 備份 Azure VM 上的 SAP Hana 資料庫
+      url: sap-hana-faq-backup-azure-vm.md
+    - text: Azure VM 上 SAP Hana 資料庫 備份的支援矩陣
+      url: sap-hana-backup-support-matrix.md
+- title: 備份 Azure 檔案儲存體共用
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 備份和還原 Azure 檔案共用
+      url: backup-afs.md
+    - text: 常見問題集 - 備份 Azure 檔案儲存體
+      url: backup-azure-files-faq.md
+- title: 使用 Microsoft Azure 復原服務 (MARS) 代理程式備份
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 使用 Azure 備份 MARS 代理程式備份 Windows 機器
+      url: backup-windows-with-mars-agent.md
+    - text: 使用 Azure 備份服務管理 MARS代理程式備份
+      url: backup-azure-manage-mars.md
+    - text: MARS 代理程式支援矩陣
+      url: backup-support-matrix-mars-agent.md
+    - text: 常見問題集 - MARS 代理程式
+      url: backup-azure-file-folder-backup-faq.md
+- title: 使用 Microsoft Azure 備份伺服器 (MABS) 和 DPM 備份
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: MABS 保護矩陣
+      url: backup-mabs-protection-matrix.md
+    - text: MABS/DPM 支援矩陣
+      url: backup-support-matrix-mabs-dpm.md
+    - text: 常見問題集 - MABS 和 DPM
+      url: backup-azure-dpm-azure-server-faq.md
+    - text: 安裝和升級 MABS
+      url: backup-azure-microsoft-azure-backup.md
+- title: 大規模管理
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 利用 Azure 原則進行大規模控管
+      url: backup-azure-auto-enable-backup.md
+    - text: 使用備份總管進行大規模監視和操作
+      url: monitor-azure-backup-with-backup-explorer.md
+    - text: 使用備份報告進行大規模分析
+      url: configure-reports.md
+- title: 探索 Azure 備份的資源
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Azure 備份定價
+      url: azure-backup-pricing.md
+    - text: Azure 備份服務更新
+      url: https://azure.microsoft.com/updates/?product=backup
+    - text: Azure 備份 Microsoft 問與答頁面
+      url: https://docs.microsoft.com/answers/topics/azure-backup.html

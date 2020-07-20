@@ -1,25 +1,15 @@
 ---
-title: Resource Manager 架構 | Microsoft Docs
-description: Service Fabric 叢集資源管理員的架構概觀。
-services: service-fabric
-documentationcenter: .net
+title: Resource Manager 架構
+description: 有關 Azure Service Fabric 叢集 Resource Manager 服務的總覽和架構資訊。
 author: masnider
-manager: chackdan
-editor: ''
-ms.assetid: 6c4421f9-834b-450c-939f-1cb4ff456b9b
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: bfbdb05e8d2764d2b878e22d236cae30519da176
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+ms.openlocfilehash: 94ed906533d108081d620e9b183ecfee249d85ca
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62113966"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75551687"
 ---
 # <a name="cluster-resource-manager-architecture-overview"></a>叢集資源管理員架構概觀
 Service Fabric 叢集資源管理員是在叢集中執行的中央服務。 它會管理叢集中服務的所需狀態，特別是關於資源耗用和任何放置規則。 
@@ -52,20 +42,20 @@ Service Fabric 叢集資源管理員是在叢集中執行的中央服務。 它�
 
 <center>
 
-![资源均衡器体系结构][Image1]
+![資源平衡器架構][Image1]
 </center>
 
 執行階段可能發生許多變化。 例如，假設某些服務耗用的資源數量改變、某些服務失敗，以及某些節點加入和離開叢集。 節點上的所有變更會彙總，並定期傳送到叢集資源管理員服務 (1，2)，它們會在其中再次彙總、分析及儲存。 每隔幾秒鐘，服務就會查看變更，並判斷是否需要採取任何動作 (3)。 例如，它可能會注意到某些空的節點已新增至叢集。 如此一來，它會決定要將某些服務移至這些節點。 叢集資源管理員可能也會注意到特定節點是超載的，或者某些服務已失敗或刪除，而在別處釋放資源。
 
-讓我們看看以下圖表，並看看接下來會發生什麼情況。 假设群集 Resource Manager 确定需要更改。 它与其他系统服务（尤其是故障转移管理器）进行协调，进行必要的更改。 接著將必要的命令傳送至適當的節點 (4)。 例如，假設資源管理員注意到節點 5 已超載，因此決定要將服務 B 從節點 5 移至節點 4。 重新設定 (5) 結束時，叢集看起來像這樣︰
+讓我們看看以下圖表，並看看接下來會發生什麼情況。 假設叢集資源管理員判斷需要變更。 它會與其他系統服務 (尤其是容錯移轉管理員) 進行協調，以進行必要的變更。 接著將必要的命令傳送至適當的節點 (4)。 例如，假設資源管理員注意到節點 5 已超載，因此決定要將服務 B 從節點 5 移至節點 4。 重新設定 (5) 結束時，叢集看起來像這樣︰
 
 <center>
 
-![资源均衡器体系结构][Image2]
+![資源平衡器架構][Image2]
 </center>
 
 ## <a name="next-steps"></a>後續步驟
-- 叢集資源管理員有許多描述叢集的選項。 若要深入了解這些選項，請參閱關於[描述 Service Fabric 叢集](./service-fabric-cluster-resource-manager-cluster-description.md)一文
+- 叢集資源管理員有許多描述叢集的選項。 若要深入瞭解它們，請參閱本文，以瞭解如何[描述 Service Fabric](./service-fabric-cluster-resource-manager-cluster-description.md)叢集
 - 叢集資源管理員的主要責任是重新平衡叢集，以及強制執行放置規則。 如需有關設定這些行為的詳細資訊，請參閱[平衡 Service Fabric 叢集](./service-fabric-cluster-resource-manager-balancing.md)
 
 [Image1]:./media/service-fabric-cluster-resource-manager-architecture/Service-Fabric-Resource-Manager-Architecture-Activity-1.png

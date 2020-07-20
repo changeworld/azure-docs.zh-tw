@@ -1,143 +1,384 @@
 ---
-title: 使用 Azure Container Registry 中的 Helm 存放庫
-description: 了解如何搭配 Azure Container Registry 使用 Helm 來儲存您應用程式的圖表
-services: container-registry
-author: iainfoulds
-ms.service: container-registry
+title: 儲存 Helm 圖表
+description: 瞭解如何在 Azure Container Registry 中使用存放庫來儲存 Kubernetes 應用程式的 Helm 圖表
 ms.topic: article
-ms.date: 09/24/2018
-ms.author: iainfou
-ms.openlocfilehash: ba0e1386d67e920f1805d244f9042044bb462ec9
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+ms.date: 03/20/2020
+ms.openlocfilehash: 04ba3aaf312188ab77c04a97ab960cf9b9af078f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62109846"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82857602"
 ---
-# <a name="use-azure-container-registry-as-a-helm-repository-for-your-application-charts"></a>使用 Azure Container Registry 作為應用程式圖表的 Helm 存放庫
+# <a name="push-and-pull-helm-charts-to-an-azure-container-registry"></a>將 Helm 圖表推送並提取到 Azure container registry
 
-若要快速管理及部署 Kubernetes 的應用程式，您可以使用[開放原始碼 Helm 套件管理員][helm]。 使用 Helm 時，應用程式會定義成儲存在 Helm 圖表存放庫中的「圖表」。 這些圖表會定義設定和相依性，且在整個應用程式生命週期可進行版本設定。 Azure Container Registry 可用來作為 Helm 圖表存放庫的主機。
+若要快速管理及部署 Kubernetes 的應用程式，您可以使用[開放原始碼 Helm 套件管理員][helm]。 使用 Helm 時，應用程式套件會定義為[圖表](https://helm.sh/docs/topics/charts/)，並會收集並儲存在[Helm 圖表存放庫](https://helm.sh/docs/topics/chart_repository/)中。
 
-使用 Azure Container Registry 時，您會擁有一個私人、安全的 Helm 圖表存放庫，此存放庫可與組建管線或其他 Azure 服務整合。 Azure Container Registry 中的 Helm 圖表存放庫包含異地複寫功能，可讓您的圖表靠近部署並提供備援。 您只需支付圖表所使用儲存體的費用，且所有 Azure Container Registry 價格層都有提供。
-
-此文章說明如何使用儲存在 Azure Container Registry 中的 Helm 圖表存放庫。
+本文說明如何使用 Helm 3 或 Helm 2 安裝來裝載 Azure container registry 中的 Helm 圖表存放庫。 在許多情況下，您會針對您所開發的應用程式建立並上傳您自己的圖表。 如需如何建立您自己的 Helm 圖表的詳細資訊，請參閱[圖表範本開發人員指南][develop-helm-charts]。 您也可以從另一個 Helm 存放庫儲存現有的 Helm 圖表。
 
 > [!IMPORTANT]
-> 此功能目前為預覽狀態。 若您同意[補充的使用規定][terms-of-use]，即可取得預覽。 在公開上市 (GA) 之前，此功能的某些領域可能會變更。
+> Azure Container Registry 中的 Helm 圖表支援目前為預覽狀態。 您必須同意補充[使用][terms-of-use]規定，才能使用預覽。 在公開上市 (GA) 之前，此功能的某些領域可能會變更。
 
-## <a name="before-you-begin"></a>開始之前
+## <a name="helm-3-or-helm-2"></a>Helm 3 或 Helm 2？
 
-若要完成此文章中的步驟，必須符合下列先決條件︰
+若要儲存、管理和安裝 Helm 圖，您可以使用 Helm 用戶端和 Helm CLI。 Helm 用戶端的主要版本包括 Helm 3 和 Helm 2。 Helm 3 支援新的圖表格式，而且不再安裝 Tiller 伺服器端元件。 如需版本差異的詳細資訊，請參閱[版本常見問題](https://helm.sh/docs/faq/)。 如果您先前已部署 Helm 2 圖表，請參閱[將 Helm V2 遷移至 v3](https://helm.sh/docs/topics/v2_v3_migration/)。
 
-- **Azure Container Registry** - 在您的 Azure 訂用帳戶中建立容器登錄。 例如，使用 [Azure 入口網站](container-registry-get-started-portal.md)或 [Azure CLI](container-registry-get-started-azure-cli.md)。
-- **Helm 用戶端 2.11.0 版 (不是 RC 版本) 或更新版本** - 執行 `helm version` 以找出您目前的版本。 此外，您還需要一部在 Kubernetes 叢集內初始化的 Helm 伺服器 (Tiller)。 如有需要，您可以[建立 Azure Kubernetes Service 叢集][aks-quickstart]。 如需有關如何安裝及升級 Helm 的詳細資訊，請參閱[安裝 Helm][helm-install]。
+您可以使用 Helm 3 或 Helm 2 來裝載 Azure Container Registry 中的 Helm 圖表，其中包含每個版本特定的工作流程：
+
+* [Helm 3 客戶](#use-the-helm-3-client)端-在 `helm chart` Helm CLI 中使用命令，以[OCI 構件](container-registry-image-formats.md#oci-artifacts)的形式管理您登錄中的圖表
+* [Helm 2 客戶](#use-the-helm-2-client)端-使用 Azure CLI 中的[az acr Helm][az-acr-helm]命令，以 Helm 圖表存放庫來新增及管理您的容器登錄
+
+### <a name="additional-information"></a>其他資訊
+
+* 在大部分情況下，建議使用 Helm 3 工作流程搭配原生 `helm chart` 命令，將圖表當做 OCI 成品來管理。
+* 從 Helm 3，支援[az acr Helm][az-acr-helm]命令與 Helm 2 用戶端和圖表格式相容。 目前尚未規劃這些命令的未來開發。 請參閱[產品藍圖](https://github.com/Azure/acr/blob/master/docs/acr-roadmap.md#acr-helm-ga)。
+* Helm 2 圖表無法使用 Azure 入口網站來查看或管理。
+
+## <a name="use-the-helm-3-client"></a>使用 Helm 3 用戶端
+
+### <a name="prerequisites"></a>必要條件
+
+- Azure 訂用帳戶中**的 azure container registry** 。 如有需要，請使用[Azure 入口網站](container-registry-get-started-portal.md)或[Azure CLI](container-registry-get-started-azure-cli.md)來建立登錄。
+- **Helm 用戶端版本3.1.0 或更新**版本-執行 `helm version` 以尋找您目前的版本。 如需有關如何安裝及升級 Helm 的詳細資訊，請參閱[安裝 Helm][helm-install]。
+- **Kubernetes**叢集，您將在其中安裝 Helm 圖表。 如有需要，請建立[Azure Kubernetes Service][aks-quickstart]叢集。 
+- **Azure CLI 版2.0.71 或更新**版本-執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI][azure-cli-install]。
+
+### <a name="high-level-workflow"></a>高階工作流程
+
+有了**Helm 3** ，您可以：
+
+* 可以在 Azure container registry 中建立一或多個 Helm 存放庫
+* 在登錄中將 Helm 3 圖表儲存為[OCI](container-registry-image-formats.md#oci-artifacts)成品。 目前，Helm 3 對 OCI 的支援是*實驗*性。
+* 使用命令驗證您的登錄 `helm registry login` 。
+* 在 `helm chart` HELM CLI 中使用命令來推送、提取和管理登錄中的 Helm 圖表
+* 用 `helm install` 來從本機存放庫快取將圖表安裝到 Kubernetes 叢集。
+
+如需範例，請參閱下列各節。
+
+### <a name="enable-oci-support"></a>啟用 OCI 支援
+
+設定下列環境變數，以在 Helm 3 用戶端中啟用 OCI 支援。 目前，這種支援是實驗性。 
+
+```console
+export HELM_EXPERIMENTAL_OCI=1
+```
+
+### <a name="create-a-sample-chart"></a>建立範例圖表
+
+使用下列命令建立測試圖表：
+
+```console
+mkdir helmtest
+
+cd helmtest
+helm create hello-world
+```
+
+作為基本範例，請將目錄變更為 `templates` 資料夾，並先刪除其中的內容：
+
+```console
+cd hello-world/templates
+rm -rf *
+```
+
+在 `templates` 資料夾中，使用下列內容建立名為的檔案 `configmap.yaml` ：
+
+```console
+cat <<EOF > configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: hello-world-configmap
+data:
+  myvalue: "Hello World"
+EOF
+```
+
+如需建立和執行此範例的詳細資訊，請參閱 Helm 檔中的[消費者入門](https://helm.sh/docs/chart_template_guide/getting_started/)。
+
+### <a name="save-chart-to-local-registry-cache"></a>將圖表儲存到本機登錄快取
+
+將目錄變更為 `hello-world` 子目錄。 然後，執行 `helm chart save` 以將圖表的複本儲存在本機，同時使用登錄的完整名稱（全部小寫）和目標存放庫和標籤來建立別名。 
+
+在下列範例中，登錄名稱為*mycontainerregistry*，目標存放庫為*hello-world*，而靶心圖表表標記為*v1*，但要替代您的環境值：
+
+```console
+cd ..
+helm chart save . hello-world:v1
+helm chart save . mycontainerregistry.azurecr.io/helm/hello-world:v1
+```
+
+執行 `helm chart list` 以確認您已將圖表儲存在本機登錄快取中。 輸出會類似：
+
+```console
+REF                                                      NAME            VERSION DIGEST  SIZE            CREATED
+hello-world:v1                                           hello-world       0.1.0   5899db0 3.2 KiB        2 minutes 
+mycontainerregistry.azurecr.io/helm/hello-world:v1       hello-world       0.1.0   5899db0 3.2 KiB        2 minutes
+```
+
+### <a name="authenticate-with-the-registry"></a>使用登錄進行驗證
+
+`helm registry login`在 Helm 3 CLI 中執行命令，以使用適用于您案例的認證來向登錄[進行驗證](container-registry-authentication.md)。
+
+例如，使用「提取」和「推播」許可權（AcrPush 角色）來建立具有登錄的 Azure Active Directory[服務主體](container-registry-auth-service-principal.md#create-a-service-principal)。 然後將服務主體認證提供給 `helm registry login` 。 下列範例會使用環境變數來提供密碼：
+
+```console
+echo $spPassword | helm registry login mycontainerregistry.azurecr.io \
+  --username <service-principal-id> \
+  --password-stdin
+```
+
+### <a name="push-chart-to-azure-container-registry"></a>將圖表推送至 Azure Container Registry
+
+`helm chart push`在 Helm 3 CLI 中執行命令，以將圖表推送至完整的目標存放庫：
+
+```console
+helm chart push mycontainerregistry.azurecr.io/helm/hello-world:v1
+```
+
+成功推送之後，輸出類似于：
+
+```output
+The push refers to repository [mycontainerregistry.azurecr.io/helm/hello-world]
+ref:     mycontainerregistry.azurecr.io/helm/hello-world:v1
+digest:  5899db028dcf96aeaabdadfa5899db025899db025899db025899db025899db02
+size:    3.2 KiB
+name:    hello-world
+version: 0.1.0
+```
+
+### <a name="list-charts-in-the-repository"></a>列出存放庫中的圖表
+
+如同儲存在 Azure container registry 中的映射，您可以使用[az acr repository][az-acr-repository]命令來顯示裝載圖表的存放庫，以及圖表標記和資訊清單。 
+
+例如，執行[az acr repository show][az-acr-repository-show]以查看您在上一個步驟中建立的存放庫屬性：
+
+```azurecli
+az acr repository show \
+  --name mycontainerregistry \
+  --repository helm/hello-world
+```
+
+輸出會類似：
+
+```output
+{
+  "changeableAttributes": {
+    "deleteEnabled": true,
+    "listEnabled": true,
+    "readEnabled": true,
+    "writeEnabled": true
+  },
+  "createdTime": "2020-03-20T18:11:37.6701689Z",
+  "imageName": "helm/hello-world",
+  "lastUpdateTime": "2020-03-20T18:11:37.7637082Z",
+  "manifestCount": 1,
+  "registry": "mycontainerregistry.azurecr.io",
+  "tagCount": 1
+}
+```
+
+執行[az acr repository show-資訊清單][az-acr-repository-show-manifests]命令，以查看儲存在存放庫中的圖表詳細資料。 例如：
+
+```azurecli
+az acr repository show-manifests \
+  --name mycontainerregistry \
+  --repository helm/hello-world --detail
+```
+
+輸出（在此範例中為縮寫）會顯示 `configMediaType` 的 `application/vnd.cncf.helm.config.v1+json` ：
+
+```output
+[
+  {
+    [...]
+    "configMediaType": "application/vnd.cncf.helm.config.v1+json",
+    "createdTime": "2020-03-20T18:11:37.7167893Z",
+    "digest": "sha256:0c03b71c225c3ddff53660258ea16ca7412b53b1f6811bf769d8c85a1f0663ee",
+    "imageSize": 3301,
+    "lastUpdateTime": "2020-03-20T18:11:37.7167893Z",
+    "mediaType": "application/vnd.oci.image.manifest.v1+json",
+    "tags": [
+      "v1"
+    ]
+```
+
+### <a name="pull-chart-to-local-cache"></a>將圖表提取至本機快取
+
+若要將 Helm 圖表安裝到 Kubernetes，此圖表必須位於本機快取中。 在此範例中，先執行 `helm chart remove` 以移除名為的現有本機圖表 `mycontainerregistry.azurecr.io/helm/hello-world:v1` ：
+
+```console
+helm chart remove mycontainerregistry.azurecr.io/helm/hello-world:v1
+```
+
+執行 `helm chart pull` ，以從 Azure container registry 將圖表下載到本機快取：
+
+```console
+helm chart pull mycontainerregistry.azurecr.io/helm/hello-world:v1
+```
+
+### <a name="export-helm-chart"></a>匯出 Helm 圖表
+
+若要使用圖表進一步工作，請使用將其匯出至本機目錄 `helm chart export` 。 例如，將您提取的圖表匯出至 `install` 目錄：
+
+```console
+helm chart export mycontainerregistry.azurecr.io/helm/hello-world:v1 \
+  --destination ./install
+```
+
+若要在存放庫中查看匯出之圖表的資訊，請 `helm show chart` 在您匯出圖表的目錄中執行命令。
+
+```console
+cd install
+helm show chart hello-world
+```
+
+Helm 會傳回最新版本圖表的詳細資訊，如下列範例輸出所示：
+
+```output
+apiVersion: v2
+appVersion: 1.16.0
+description: A Helm chart for Kubernetes
+name: hello-world
+type: application
+version: 0.1.0    
+```
+
+### <a name="install-helm-chart"></a>安裝 Helm 圖表
+
+執行， `helm install` 以安裝您提取至本機快取並匯出的 Helm 圖表。 指定發行名稱，例如*myhelmtest*，或傳遞 `--generate-name` 參數。 例如：
+
+```console
+helm install myhelmtest ./hello-world
+```
+
+成功安裝圖表之後的輸出類似于：
+
+```console
+NAME: myhelmtest
+LAST DEPLOYED: Fri Mar 20 14:14:42 2020
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+```
+
+若要驗證安裝，請執行 `helm get manifest` 命令。 命令會傳回範本檔案中的 YAML 資料 `configmap.yaml` 。
+
+執行 `helm uninstall` 以卸載叢集上的圖表版本：
+
+```console
+helm uninstall myhelmtest
+```
+
+### <a name="delete-a-helm-chart-from-the-repository"></a>從存放庫中刪除 Helm 圖表
+
+若要從存放庫中刪除圖表，請使用[az acr repository delete][az-acr-repository-delete]命令。 執行下列命令，並在出現提示時確認操作：
+
+```azurecli
+az acr repository delete --name mycontainerregistry --image helm/hello-world:v1
+```
+
+## <a name="use-the-helm-2-client"></a>使用 Helm 2 用戶端
+
+### <a name="prerequisites"></a>必要條件
+
+- Azure 訂用帳戶中**的 azure container registry** 。 如有需要，請使用[Azure 入口網站](container-registry-get-started-portal.md)或[Azure CLI](container-registry-get-started-azure-cli.md)來建立登錄。
+- **Helm 用戶端 2.11.0 版 (不是 RC 版本) 或更新版本** - 執行 `helm version` 以找出您目前的版本。 此外，您還需要一部在 Kubernetes 叢集內初始化的 Helm 伺服器 (Tiller)。 如有需要，請建立[Azure Kubernetes Service][aks-quickstart]叢集。 如需有關如何安裝及升級 Helm 的詳細資訊，請參閱[安裝 Helm][helm-install-v2]。
 - **Azure CLI 2.0.46 版或更新版本** - 請執行 `az --version` 來找出版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI][azure-cli-install]。
 
-## <a name="add-a-repository-to-helm-client"></a>將存放庫新增至 Helm 用戶端
+### <a name="high-level-workflow"></a>高階工作流程
 
-Helm 存放庫是一個可以儲存 Helm 圖表的 HTTP 伺服器。 Azure Container Registry 可為 Helm 圖表提供此儲存體，並在您於存放庫中新增和移除圖表時管理索引定義。
+使用**Helm 2** ，您可以：
 
-若要新增 Azure Container Registry 作為 Helm 圖表存放庫，您可以使用 Azure CLI。 使用此方法時，會以 Azure Container Registry 所支持存放庫的 URI 和認證更新您的 Helm 用戶端。 您無須手動指定此存放庫資訊，因此舉例來說，認證並不會暴露在命令歷程記錄中。
+* 將您的 Azure container registry 設定為*單一*Helm 圖存放庫。 當您在存放庫中新增和移除圖表時，Azure Container Registry 管理索引定義。
+* 透過 Azure CLI 向您的 Azure container registry 進行驗證，然後使用登錄 URI 和認證自動更新您的 Helm 用戶端。 您不需要手動指定此登錄資訊，因此不會在命令歷程記錄中公開認證。
+* 使用 Azure CLI 中的[az acr helm][az-acr-helm]命令，將您的 Azure container registry 新增為 helm 圖表存放庫，以及推送和管理圖表。 這些 Azure CLI 命令會包裝 Helm 2 用戶端命令。
+* 將 Azure container registry 中的圖表儲存機制新增至您的本機 Helm 存放庫索引，以支援圖表搜尋。
+* 用 `helm install` 來從本機存放庫快取將圖表安裝到 Kubernetes 叢集。
 
-如有需要，請登入 Azure CLI 並依照提示進行操作：
+如需範例，請參閱下列各節。
 
-```azurecli
-az login
-```
+### <a name="add-repository-to-helm-client"></a>將存放庫新增至 Helm 用戶端
 
-使用 [az configure][az-configure] 命令，以您 Azure Container Registry 的名稱設定 Azure CLI 預設值。 在下列範例中，以您的登錄名稱取代 `<acrName>`：
-
-```azurecli
-az configure --defaults acr=<acrName>
-```
-
-現在，使用 [az acr helm repo add][az-acr-helm-repo-add] 命令，將您的 Azure Container Registry Helm 圖表存放庫新增至 Helm 用戶端。 此命令會取得 Helm 用戶端所使用 Azure Container Registry 的驗證權杖。 驗證權杖的有效期為 1 小時。 與 `docker login` 類似，您可以在未來的 CLI 工作階段中執行此命令，以向 Azure Container Registry Helm 圖表存放庫驗證 Helm 用戶端：
+使用[az acr Helm repository add][az-acr-helm-repo-add]命令，將您的 Azure Container Registry Helm 圖表存放庫新增至 Helm 用戶端。 此命令會取得 Helm 用戶端所使用 Azure Container Registry 的驗證權杖。 驗證權杖的有效時間為3小時。 與 `docker login` 類似，您可以在未來的 CLI 工作階段中執行此命令，以向 Azure Container Registry Helm 圖表存放庫驗證 Helm 用戶端：
 
 ```azurecli
-az acr helm repo add
+az acr helm repo add --name mycontainerregistry
 ```
 
-## <a name="add-a-chart-to-the-repository"></a>將圖表新增至存放庫
+### <a name="add-a-sample-chart-to-the-repository"></a>將範例圖表新增至存放庫
 
-針對此文章，我們將從公用 Helm *stable* 存放庫取得現有的 Helm 圖表。 *stable* 存放庫是一個經過策劃的公用存放庫，當中包含常見的應用程式圖表。 套件維護人員可以將其圖表提交給 *stable* 存放庫，方式就像 Docker Hub 為常見的容器映像提供公用登錄一樣。 接著，便可將從公用 *stable* 存放庫下載的圖表推送到您的私人 Azure Container Registry 存放庫。 在大多數情況下，您會為您開發的應用程式建置並上傳自己的圖表。 如需有關如何建置您自己 Helm 圖表的詳細資訊，請參閱[開發 Helm 圖表][develop-helm-charts]。
-
-首先，在 *~/acr-helm* 建立一個目錄，然後下載現有的 *stable/wordpress* 圖表：
+首先，在 *~/acr-helm*建立本機目錄，然後下載現有的*穩定/wordpress*圖表：
 
 ```console
 mkdir ~/acr-helm && cd ~/acr-helm
+helm repo update
 helm fetch stable/wordpress
 ```
 
-列出已下載的圖表，並記下檔案名稱中所包含的 Wordpress 版本。 `helm fetch stable/wordpress` 命令並未指定特定的版本，因此擷取的是「最新」版本。 所有 Helm 圖表都會在檔案名稱中包含依循 [SemVer 2][semver2] 標準的版本號碼。 在下列範例輸出中，Wordpress 圖表的版本為 *2.1.10*：
+輸入 `ls` 以列出已下載的圖表，並記下檔案名中包含的 Wordpress 版本。 `helm fetch stable/wordpress` 命令並未指定特定的版本，因此擷取的是「最新」** 版本。 在下列範例輸出中，Wordpress 圖表是版本*8.1.0*：
 
-```
-$ ls
-
-wordpress-2.1.10.tgz
+```output
+wordpress-8.1.0.tgz
 ```
 
-現在，使用 Azure CLI [az acr helm push][az-acr-helm-push] 命令，將圖表推送至 Azure Container Registry 中的 Helm 圖表存放庫。 指定在上一個步驟中所下載 Helm 圖表的名稱，例如 *wordpress-2.1.10.tgz*：
+使用 Azure CLI 中的[az acr Helm push][az-acr-helm-push]命令，將圖表推送至 Azure Container Registry 中的 Helm 圖表存放庫。 指定您在上一個步驟中下載的 Helm 圖表名稱，例如*wordpress-8.1.0. tgz*：
 
 ```azurecli
-az acr helm push wordpress-2.1.10.tgz
+az acr helm push --name mycontainerregistry wordpress-8.1.0.tgz
 ```
 
-片刻之後，Azure CLI 就會回報已儲存您的圖表，如以下範例輸出所示：
+幾分鐘後，Azure CLI 會報告您的圖表已儲存，如下列範例輸出所示：
 
-```
-$ az acr helm push wordpress-2.1.10.tgz
-
+```output
 {
   "saved": true
 }
 ```
 
-## <a name="list-charts-in-the-repository"></a>列出存放庫中的圖表
+### <a name="list-charts-in-the-repository"></a>列出存放庫中的圖表
 
-Helm 用戶端會維護一份遠端存放庫內容的本機快取複本。 對遠端存放庫進行變更時，並不會自動更新 Helm 用戶端在本機已知的可用圖表清單。 當您跨存放庫搜尋圖表時，Helm 會使用其本機快取索引。 若要使用在上一個步驟中上傳的圖表，必須更新本機 Helm 存放庫索引。 您可以為 Helm 用戶端中的存放庫重新編製索引，或使用 Azure CLI 來更新存放庫索引。 每次您將圖表新增至存放庫時，都必須完成此步驟：
+若要使用在上一個步驟中上傳的圖表，必須更新本機 Helm 存放庫索引。 您可以為 Helm 用戶端中的存放庫重新編製索引，或使用 Azure CLI 來更新存放庫索引。 每次您將圖表新增至存放庫時，都必須完成此步驟：
 
 ```azurecli
-az acr helm repo add
+az acr helm repo add --name mycontainerregistry
 ```
 
-透過將圖表儲存在您的存放庫中，並在本機提供已更新的索引，您便可以使用一般 Helm 用戶端命令來進行搜尋或安裝。 若要查看您存放庫中的所有圖表，請使用 `helm search <acrName>`。 提供您自己的 Azure Container Registry 名稱：
+透過將圖表儲存在您的存放庫中，並在本機提供已更新的索引，您便可以使用一般 Helm 用戶端命令來進行搜尋或安裝。 若要查看存放庫中的所有圖表，請使用 `helm search` 命令，並提供您自己的 Azure Container Registry 名稱：
 
 ```console
-helm search <acrName>
+helm search mycontainerregistry
 ```
 
 這會列出在上一個步驟中推送的 Wordpress 圖表，如以下範例輸出所示：
 
-```
-$ helm search myacrhelm
-
-NAME                CHART VERSION   APP VERSION DESCRIPTION
-helmdocs/wordpress  2.1.10          4.9.8       Web publishing platform for building blogs and websites.
+```output
+NAME                  CHART VERSION    APP VERSION    DESCRIPTION
+helmdocs/wordpress    8.1.0           5.3.2          Web publishing platform for building blogs and websites.
 ```
 
 您也可以搭配 Azure CLI 使用 [az acr helm list][az-acr-helm-list]來列出圖表：
 
 ```azurecli
-az acr helm list
+az acr helm list --name mycontainerregistry
 ```
 
-## <a name="show-information-for-a-helm-chart"></a>顯示 Helm 圖表的資訊
+### <a name="show-information-for-a-helm-chart"></a>顯示 Helm 圖表的資訊
 
-若要檢視存放庫中特定圖表的資訊，您可以再次使用一般 Helm 用戶端。 若要查看名為 *wordpress*之圖表的資訊，請使用 `helm inspect`。
+若要在存放庫中查看特定圖表的資訊，您可以使用 `helm inspect` 命令。
 
 ```console
-helm inspect <acrName>/wordpress
+helm inspect mycontainerregistry/wordpress
 ```
 
-未提供任何版本號碼時，會使用「最新」版本。 Helm 會傳回您圖表的相關詳細資訊，如以下扼要的範例輸出所示：
+未提供任何版本號碼時，會使用「最新」** 版本。 Helm 會傳回您圖表的相關詳細資訊，如以下扼要的範例輸出所示：
 
-```
-$ helm inspect myacrhelm/wordpress
-
-appVersion: 4.9.8
+```output
+apiVersion: v1
+appVersion: 5.3.2
 description: Web publishing platform for building blogs and websites.
 engine: gotpl
-home: https://www.wordpress.com/
+home: http://www.wordpress.com/
 icon: https://bitnami.com/assets/stacks/wordpress/img/wordpress-stack-220x234.png
 keywords:
 - wordpress
@@ -149,26 +390,26 @@ keywords:
 - php
 maintainers:
 - email: containers@bitnami.com
-  name: bitnami-bot
+  name: Bitnami
 name: wordpress
 sources:
 - https://github.com/bitnami/bitnami-docker-wordpress
-version: 2.1.10
+version: 8.1.0
 [...]
 ```
 
-您也可以使用 Azure CLI [az acr helm show][az-acr-helm-show] 命令來顯示圖表的資訊。 同樣地，預設會傳回圖表的「最新」版本。 您可以附加 `--version` 來列出圖表的特定版本，例如 *2.1.10*：
+您也可以使用 Azure CLI [az acr helm show][az-acr-helm-show] 命令來顯示圖表的資訊。 同樣地，預設會傳回圖表的「最新」** 版本。 您可以附加 `--version` 以列出特定版本的圖表，例如*8.1.0*：
 
 ```azurecli
-az acr helm show wordpress
+az acr helm show --name mycontainerregistry wordpress
 ```
 
-## <a name="install-a-helm-chart-from-the-repository"></a>從存放庫安裝 Helm 圖表
+### <a name="install-a-helm-chart-from-the-repository"></a>從存放庫安裝 Helm 圖表
 
-安裝您存放庫中的 Helm 圖表時，會以先指定存放庫名稱再指定圖表名稱的方式安裝。 使用 Helm 用戶端來安裝 Wordpress 圖表：
+您存放庫中的 Helm 圖表會藉由指定存放庫名稱和圖表名稱來安裝。 使用 Helm 用戶端來安裝 Wordpress 圖表：
 
 ```console
-helm install <acrName>/wordpress
+helm install mycontainerregistry/wordpress
 ```
 
 > [!TIP]
@@ -180,52 +421,42 @@ helm install <acrName>/wordpress
 - 對應的圖表會下載自 Azure Container Registry 存放庫。
 - 此圖表是使用您 Kubernetes 叢集中的 Tiller 來部署的。
 
-下列扼要的範例輸出顯示透過 Helm 圖表部署的 Kubernetes 資源：
+當安裝繼續進行時，請遵循命令輸出中的指示，以查看 WorPress 的 Url 和認證。 您也可以執行 `kubectl get pods` 命令，以查看透過 Helm 圖表部署的 Kubernetes 資源：
 
-```
-$ helm install myacrhelm/wordpress
-
-NAME:   irreverent-jaguar
-LAST DEPLOYED: Thu Sep 13 21:44:20 2018
-NAMESPACE: default
-STATUS: DEPLOYED
-
-RESOURCES:
-==> v1/Pod(related)
-NAME                                          READY  STATUS   RESTARTS  AGE
-irreverent-jaguar-wordpress-7ff46d9b8c-b7v6m  0/1    Pending  0         1s
-irreverent-jaguar-mariadb-0                   0/1    Pending  0         1s
+```output
+NAME                                    READY   STATUS    RESTARTS   AGE
+wordpress-1598530621-67c77b6d86-7ldv4   1/1     Running   0          2m48s
+wordpress-1598530621-mariadb-0          1/1     Running   0          2m48s
 [...]
 ```
 
-## <a name="delete-a-helm-chart-from-the-repository"></a>從存放庫中刪除 Helm 圖表
+### <a name="delete-a-helm-chart-from-the-repository"></a>從存放庫中刪除 Helm 圖表
 
-若要從存放庫中刪除圖表，請使用 [az acr helm delete][az-acr-helm-delete] 命令。 指定圖表的名稱 (例如 *wordpress*)，以及要刪除的版本 (例如 *2.1.10*)。
+若要從存放庫中刪除圖表，請使用 [az acr helm delete][az-acr-helm-delete] 命令。 指定圖表的名稱，例如*wordpress*，以及要刪除的版本，例如*8.1.0*。
 
 ```azurecli
-az acr helm delete wordpress --version 2.1.10
+az acr helm delete --name mycontainerregistry wordpress --version 8.1.0
 ```
 
 如果您想要刪除所指定圖表的所有版本，請省略 `--version` 參數。
 
-將會繼續在 `helm search <acrName>` 中傳回圖表。 同樣地，Helm 用戶端並不會自動更新存放庫中的可用圖表清單。 若要更新 Helm 用戶端存放庫索引，請再次使用 [az acr helm repo add][az-acr-helm-repo-add] 命令：
+當您執行時，會繼續傳回圖表 `helm search` 。 同樣地，Helm 用戶端並不會自動更新存放庫中的可用圖表清單。 若要更新 Helm 用戶端存放庫索引，請再次使用 [az acr helm repo add][az-acr-helm-repo-add] 命令：
 
 ```azurecli
-az acr helm repo add
+az acr helm repo add --name mycontainerregistry
 ```
 
 ## <a name="next-steps"></a>後續步驟
 
-此文章使用了來自公用 *stable* 存放庫的現有 Helm 圖表。 如需有關如何建立及部署 Helm 圖表的詳細資訊，請參閱[開發 Helm 圖表][develop-helm-charts]。
-
-Helm 圖表可以用來作為容器建置程序的一部分。 如需詳細資訊，請參閱[使用 Azure Container Registry 工作][acr-tasks]。
-
-如需有關如何使用及管理 Azure Container Registry 的詳細資訊，請參閱[最佳做法][acr-bestpractices]。
+* 如需有關如何建立及部署 Helm 圖表的詳細資訊，請參閱[開發 Helm 圖表][develop-helm-charts]。
+* 深入瞭解如何在[Azure Kubernetes Service （AKS）](../aks/kubernetes-helm.md)中使用 Helm 安裝應用程式。
+* Helm 圖表可以用來作為容器建置程序的一部分。 如需詳細資訊，請參閱[使用 Azure Container Registry 工作][acr-tasks]。
 
 <!-- LINKS - external -->
 [helm]: https://helm.sh/
-[helm-install]: https://docs.helm.sh/using_helm/#installing-helm
-[develop-helm-charts]: https://docs.helm.sh/developing_charts/
+[helm-install]: https://helm.sh/docs/intro/install/
+[helm-install-v2]: https://v2.helm.sh/docs/using_helm/#installing-helm
+[develop-helm-charts]: https://helm.sh/docs/chart_template_guide/
 [semver2]: https://semver.org/
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
 
@@ -235,6 +466,12 @@ Helm 圖表可以用來作為容器建置程序的一部分。 如需詳細資�
 [acr-bestpractices]: container-registry-best-practices.md
 [az-configure]: /cli/azure/reference-index#az-configure
 [az-acr-login]: /cli/azure/acr#az-acr-login
+[az-acr-helm]: /cli/azure/acr/helm
+[az-acr-repository]: /cli/azure/acr/repository
+[az-acr-repository-show]: /cli/azure/acr/repository#az-acr-repository-show
+[az-acr-repository-delete]: /cli/azure/acr/repository#az-acr-repository-delete
+[az-acr-repository-show-tags]: /cli/azure/acr/repository#az-acr-repository-show-tags
+[az-acr-repository-show-manifests]: /cli/azure/acr/repository#az-acr-repository-show-manifests
 [az-acr-helm-repo-add]: /cli/azure/acr/helm/repo#az-acr-helm-repo-add
 [az-acr-helm-push]: /cli/azure/acr/helm#az-acr-helm-push
 [az-acr-helm-list]: /cli/azure/acr/helm#az-acr-helm-list

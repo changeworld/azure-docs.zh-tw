@@ -9,38 +9,102 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 05/08/2019
+ms.date: 03/04/2020
 ms.author: juliako
-ms.openlocfilehash: 24ee700e326ef61aa6a93aae725e85e7b4780edf
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 41b2d0ad1e072fb2bf5860ae80f8f25f886b37f7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65465046"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80582682"
 ---
 # <a name="streaming-locators"></a>串流定位器
 
-若要讓輸出資產中的影片可供用戶端播放，您必須建立[串流定位器](https://docs.microsoft.com/rest/api/media/streaminglocators)，然後建置串流 URL。 如需 .NET 範例，請參閱[取得串流定位器](stream-files-tutorial-with-api.md#get-a-streaming-locator)。
+若要讓輸出資產中的影片可供用戶端播放，您必須建立[串流定位器](https://docs.microsoft.com/rest/api/media/streaminglocators)，然後建置串流 URL。 若要建置 URL，您需要串連串流端點主機名稱和串流定位器路徑。 如需 .NET 範例，請參閱[取得串流定位器](stream-files-tutorial-with-api.md#get-a-streaming-locator)。
 
-建立 [串流定位器] 的程序稱為發佈。 根據預設，[串流定位器] 會在進行 API 呼叫後立即生效，而且會持續運作到遭到刪除為止 (除非您有設定選擇性的開始和結束時間)。 
+建立 [串流定位器]  的程序稱為發佈。 根據預設，在您進行 API 呼叫之後，**串流定位器**會立即生效，除非您設定選擇性的開始和結束時間，否則會一直持續到刪除為止。 
 
-建立**串流定位器**時，您必須指定[資產](https://docs.microsoft.com/rest/api/media/assets)名稱和[串流原則](https://docs.microsoft.com/rest/api/media/streamingpolicies)名稱。 您可以使用其中一個預先定義的串流原則，或建立自訂原則。 目前可用的預先定義原則如下：'Predefined_DownloadOnly'、'Predefined_ClearStreamingOnly'、'Predefined_DownloadAndClearStreaming'、'Predefined_ClearKey'、'Predefined_MultiDrmCencStreaming' 和 'Predefined_MultiDrmStreaming'。 使用自訂的串流原則時，您應該為媒體服務帳戶設計一組受限的這類原則，並且在需要相同的選項和通訊協定時，對串流定位器重新使用這些原則。 
+建立**串流定位器**時，您必須指定**資產**名稱和**串流原則**名稱。 如需詳細資訊，請參閱下列主題：
 
-如果您要在串流上指定加密選項，請建立[內容金鑰原則](https://docs.microsoft.com/rest/api/media/contentkeypolicies)，該原則會設定如何透過媒體服務金鑰傳遞元件，將內容金鑰傳送給終端用戶端。 將您的串流定位器與**內容金鑰原則**和內容金鑰建立關聯。 您可以讓媒體服務自動產生金鑰。 下列 .NET 範例會示範如何在媒體服務 v3 中使用權杖限制來設定 AES 加密：[EncodeHTTPAndPublishAESEncrypted](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/tree/master/NETCore/EncodeHTTPAndPublishAESEncrypted)。 **內容金鑰原則**是可更新的，您可能會在必須替換金鑰時，更新原則。 金鑰傳遞快取可能需要 15 分鐘的時間才能更新並挑選更新後的原則。 不建議您針對每個串流定位器建立新的內容金鑰原則。 您應嘗試在每次需要相同選項時，重複使用現有原則。
+* [Assets](assets-concept.md)
+* [串流原則](streaming-policy-concept.md)
+* [內容金鑰原則](content-key-policy-concept.md)
 
-> [!IMPORTANT]
-> * 屬於日期時間類型的**串流定位器**屬性一律為 UTC 格式。
-> * 您應該為媒體服務帳戶設計一組受限的原則，並且在需要相同的選項時，對串流定位器重新使用這些原則。 
+您也可以指定串流定位器的開始和結束時間，這只會讓您的使用者在這些時間之間播放內容（例如，介於5/1/2019 到5/5/2019 之間）。  
 
-## <a name="associate-filters-with-streaming-locators"></a>串流定位器相關聯的篩選器
+## <a name="considerations"></a>考量
 
-您可以指定一份[資產或帳戶篩選器](filters-concept.md)，而這會套用至您[串流定位器](https://docs.microsoft.com/rest/api/media/streaminglocators/create#request-body)。 [動態封裝程式](dynamic-packaging-overview.md)適用於這份清單，以及那些用戶端在 URL 中所指定的篩選條件。 這個組合會產生[動態資訊清單](filters-dynamic-manifest-overview.md)，根據在 URL 中的篩選器 + 串流定位器指定的篩選條件。 我們建議您使用這項功能，如果您想要套用篩選，但不是想要公開 （expose） 在 URL 中的篩選條件名稱。
+* **串流定位器**不是可更新的。 
+* 屬於日期時間類型的**串流定位器**屬性一律為 UTC 格式。
+* 您應該為媒體服務帳戶設計一組受限的原則，並且在需要相同的選項時，對串流定位器重新使用這些原則。 如需詳細資訊，請參閱[配額和限制](limits-quotas-constraints.md)。
 
-## <a name="filter-order-page-streaming-locator-entities"></a>篩選、 訂單、 頁面串流定位器實體
+## <a name="create-streaming-locators"></a>建立串流定位器  
+
+### <a name="not-encrypted"></a>未加密
+
+如果您想要以純文字（未加密）串流處理您的檔案，請將預先定義的清除串流原則設定為 ' Predefined_ClearStreamingOnly ' （在 .NET 中，您可以使用 Predefinedstreamingpolicy.clearstreamingonly. Predefinedstreamingpolicy.clearstreamingonly 列舉）。
+
+```csharp
+StreamingLocator locator = await client.StreamingLocators.CreateAsync(
+    resourceGroup,
+    accountName,
+    locatorName,
+    new StreamingLocator
+    {
+        AssetName = assetName,
+        StreamingPolicyName = PredefinedStreamingPolicy.ClearStreamingOnly
+    });
+```
+
+### <a name="encrypted"></a>已加密 
+
+如果您需要使用 CENC 加密來加密您的內容，請將您的原則設定為 ' Predefined_MultiDrmCencStreaming '。 Widevine 加密會套用至破折號串流，PlayReady 則會順暢地進行。 金鑰會根據所設定的 DRM 授權傳遞至播放用戶端。
+
+```csharp
+StreamingLocator locator = await client.StreamingLocators.CreateAsync(
+    resourceGroup,
+    accountName,
+    locatorName,
+    new StreamingLocator
+    {
+        AssetName = assetName,
+        StreamingPolicyName = "Predefined_MultiDrmCencStreaming",
+        DefaultContentKeyPolicyName = contentPolicyName
+    });
+```
+
+如果您也想要使用 CBCS （FairPlay）來加密 HLS 串流，請使用 ' Predefined_MultiDrmStreaming '。
+
+> [!NOTE]
+> Widevine 是 Google Inc. 所提供的服務，並受到 Google Inc. 的服務條款和隱私權原則所約束。
+
+## <a name="associate-filters-with-streaming-locators"></a>將篩選器與串流定位器建立關聯
+
+請參閱[篩選：與串流定位器產生關聯](filters-concept.md#associating-filters-with-streaming-locator)。
+
+## <a name="filter-order-page-streaming-locator-entities"></a>篩選、排序、分頁串流定位器實體
 
 請參閱[媒體服務實體的篩選、排序、分頁](entities-overview.md)。
 
+## <a name="list-streaming-locators-by-asset-name"></a>依資產名稱列出串流定位器
+
+若要根據相關聯的資產名稱取得串流定位器，請使用下列作業：
+
+|Language|API|
+|---|---|
+|REST|[liststreaminglocators](https://docs.microsoft.com/rest/api/media/assets/liststreaminglocators)|
+|CLI|[az ams 資產清單-串流-定位器](https://docs.microsoft.com/cli/azure/ams/asset?view=azure-cli-latest#az-ams-asset-list-streaming-locators)|
+|.NET|[ListStreamingLocators](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.assetsoperationsextensions.liststreaminglocators?view=azure-dotnet#Microsoft_Azure_Management_Media_AssetsOperationsExtensions_ListStreamingLocators_Microsoft_Azure_Management_Media_IAssetsOperations_System_String_System_String_System_String_)|
+|Java|[AssetStreamingLocator](https://docs.microsoft.com/rest/api/media/assets/liststreaminglocators#assetstreaminglocator)|
+|Node.js|[listStreamingLocators](https://docs.microsoft.com/javascript/api/@azure/arm-mediaservices/assets#liststreaminglocators-string--string--string--msrest-requestoptionsbase-)|
+
+## <a name="see-also"></a>另請參閱
+
+* [Assets](assets-concept.md)
+* [串流原則](streaming-policy-concept.md)
+* [內容金鑰原則](content-key-policy-concept.md)
+* [教學課程：使用 .NET 上傳、編碼和串流影片](stream-files-tutorial-with-api.md)
+
 ## <a name="next-steps"></a>後續步驟
 
-* [教學課程：使用 .NET 上傳、編碼和串流影片](stream-files-tutorial-with-api.md)
-* [使用 DRM 動態加密與授權傳遞服務](protect-with-drm.md)
+[如何建立串流定位器和組建 Url](create-streaming-locator-build-url.md)

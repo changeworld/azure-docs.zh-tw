@@ -1,25 +1,15 @@
 ---
-title: 針對本機 Azure Service Fabric 叢集設定進行疑難排解 | Microsoft Azure
+title: 針對本機 Azure Service Fabric 叢集設定進行疑難排解
 description: 本文涵蓋了一組疑難排解本機開發叢集的建議
-services: service-fabric
-documentationcenter: .net
 author: mikkelhegn
-manager: chackdan
-editor: ''
-ms.assetid: 97f4feaa-bba0-47af-8fdd-07f811fe2202
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/23/2018
 ms.author: mikhegn
-ms.openlocfilehash: 8bb32b2bded061bd19bcd7cfda4ef259a75b0626
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: ea313adb43f8d91ec9e57dd1d0b8d3447a8075f2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60864434"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75465496"
 ---
 # <a name="troubleshoot-your-local-development-cluster-setup"></a>疑難排解本機開發叢集設定
 如果您在與本機 Azure Service Fabric 開發叢集互動時遇到問題，請檢閱下列建議，以尋求可能的解決方法。
@@ -36,7 +26,7 @@ ms.locfileid: "60864434"
     + FullyQualifiedErrorId : Microsoft.PowerShell.Commands.WriteErrorException,DevClusterSetup.ps1
 
 
-#### <a name="solution"></a>解決方法
+#### <a name="solution"></a>解決方案
 關閉目前的 Powershell 視窗，並以系統管理員身分開啟新的 Powershell 視窗。 您現在可以成功地執行指令碼。
 
 ## <a name="cluster-connection-failures"></a>叢集連接失敗
@@ -45,7 +35,7 @@ ms.locfileid: "60864434"
 #### <a name="problem"></a>問題
 在 PowerShell 中連線到叢集時，看到 System.Fabric.Common.AppTrace 的 TypeInitializationException 錯誤。
 
-#### <a name="solution"></a>解決方法
+#### <a name="solution"></a>解決方案
 在安裝期間未正確設定路徑變數。 登出 Windows，再重新登入。 這會重新整理您的路徑。
 
 ### <a name="cluster-connection-fails-with-object-is-closed"></a>叢集連接失敗，且出現「物件已關閉」
@@ -59,14 +49,14 @@ ms.locfileid: "60864434"
     + CategoryInfo : InvalidOperation: (:) [Connect-ServiceFabricCluster], FabricObjectClosedException
     + FullyQualifiedErrorId : CreateClusterConnectionErrorId,Microsoft.ServiceFabric.Powershell.ConnectCluster
 
-#### <a name="solution"></a>解決方法
+#### <a name="solution"></a>解決方案
 關閉目前的 Powershell 視窗，並以系統管理員身分開啟新的 Powershell 視窗。
 
 ### <a name="fabric-connection-denied-exception"></a>拒絕網狀架構連線例外狀況
 #### <a name="problem"></a>問題
 從 Visual Studio 進行偵錯時，看見 FabricConnectionDeniedException 錯誤。
 
-#### <a name="solution"></a>解決方法
+#### <a name="solution"></a>解決方案
 當您嘗試手動啟動服務主機處理序時，通常會發生這個錯誤。
 
 請確定您的解決方法中沒有任何設定為啟始專案的服務專案。 只有 Service Fabric 應用程式專案才可設為啟始專案。

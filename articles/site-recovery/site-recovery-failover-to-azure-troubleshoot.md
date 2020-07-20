@@ -7,14 +7,14 @@ ms.service: site-recovery
 services: site-recovery
 ms.topic: article
 ms.workload: storage-backup-recovery
-ms.date: 03/04/2019
+ms.date: 01/08/2020
 ms.author: mayg
-ms.openlocfilehash: 2156ee6cf27ecfa32b19ad5bbef7549e99c3f7ef
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 09a4700ce794458ee4dcad2291a93e0b13ca5feb
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61280597"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133768"
 ---
 # <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>針對將 VMware VM 或實體機器容錯移轉至 Azure 時的錯誤進行疑難排解
 
@@ -74,6 +74,10 @@ Site Recovery 無法在 Azure 中建立已容錯移轉的虛擬機器。 這可�
 
 ## <a name="unable-to-connectrdpssh-to-the-failed-over-virtual-machine-due-to-grayed-out-connect-button-on-the-virtual-machine"></a>因虛擬機器上的 [連線] 按鈕變成灰色，而無法對容錯移轉的虛擬機器進行連線/RDP/SSH
 
+如需 RDP 問題的詳細疑難排解指示，請參閱[這裡](../virtual-machines/troubleshooting/troubleshoot-rdp-connection.md)的檔。
+
+如需 SSH 問題的詳細疑難排解指示，請參閱[這裡](../virtual-machines/troubleshooting/troubleshoot-ssh-connection.md)的檔。
+
 如果 Azure 中容錯移轉虛擬機器上的 [連線] 按鈕呈現灰色，而您未透過 Express Route 或網站間 VPN 連線來連線到 Azure，則請：
 
 1. 移至 [虛擬機器] > [網路]，按一下所需網路介面的名稱。  ![network-interface](media/site-recovery-failover-to-azure-troubleshoot/network-interface.PNG)
@@ -86,7 +90,7 @@ Site Recovery 無法在 Azure 中建立已容錯移轉的虛擬機器。 這可�
 
 ## <a name="unable-to-connectrdpssh---vm-connect-button-available"></a>無法連線/RDP/SSH - [VM 連線] 按鈕可供使用
 
-如果 Azure 中容錯移轉虛擬機器上的 [連線] 按鈕可供使用 (未呈現灰色)，請檢查虛擬機器上的 [開機診斷]，並檢查[本文](../virtual-machines/windows/boot-diagnostics.md)中列出的錯誤。
+如果 Azure 中容錯移轉虛擬機器上的 [連線] 按鈕可供使用 (未呈現灰色)，請檢查虛擬機器上的 [開機診斷]，並檢查[本文](../virtual-machines/troubleshooting/boot-diagnostics.md)中列出的錯誤。
 
 1. 如果虛擬機器尚未啟動，請嘗試容錯移轉至較舊的復原點。
 2. 如果虛擬機器內的應用程式未啟動，請嘗試容錯移轉至與應用程式一致的復原點。
@@ -106,31 +110,43 @@ Site Recovery 無法在 Azure 中建立已容錯移轉的虛擬機器。 這可�
 >[!Note]
 >若要啟用「開機診斷」以外的任何設定，將必須於容錯移轉之前，在虛擬機器中安裝「Azure VM 代理程式」
 
+## <a name="unable-to-open-serial-console-after-failover-of-a-uefi-based-machine-into-azure"></a>將 UEFI 型機器容錯移轉到 Azure 之後，即無法開啟序列主控台
+
+如果可使用 RDP 連線到機器，但無法開啟序列主控台，請遵循下列步驟：
+
+* 如果機器 OS 是 Red Hat 或 Oracle Linux 7.*/8.0，請以根權限在容錯移轉 Azure VM 上執行下列命令。 在命令之後重新啟動 VM。
+
+        grub2-mkconfig -o /boot/efi/EFI/redhat/grub.cfg
+
+* 如果機器 OS 是 CentOS 7.*，請以根權限在容錯移轉 Azure VM 上執行下列命令。 在命令之後重新啟動 VM。
+
+        grub2-mkconfig -o /boot/efi/EFI/centos/grub.cfg
+
 ## <a name="unexpected-shutdown-message-event-id-6008"></a>非預期性關閉訊息 (事件識別碼 6008)
 
 啟動 Windows VM 容錯移轉後，如果在復原的 VM 上收到非預期性關閉訊息，表示未在用於容錯移轉的復原點中擷取 VM 關閉狀態。 當您復原至 VM 未完全關閉的時間點時，就會發生這種情況。
 
-一般而言，無須擔心此問題，對於非計劃性容錯移轉，通常可忽略此問題。 如果已規劃的容錯移轉，請確定 ，適當地關閉 VM 在容錯移轉之前，並提供充足時間以暫止的複寫在內部資料傳送至 Azure。 然後使用 [容錯移轉](site-recovery-failover.md#run-a-failover) 畫面控制項 上的 [最新] 選項，以便將 Azure 上的任何擱置資料處理到復原點，然後將其用於 VM 容錯移轉。
+一般而言，無須擔心此問題，對於非計劃性容錯移轉，通常可忽略此問題。 如果規劃容錯移轉，請確保在容錯移轉之前正確關閉 VM，並提供足夠時間來將擱置的內部部署複寫資料傳送至 Azure。 然後使用 [容錯移轉](site-recovery-failover.md#run-a-failover) 畫面控制項 上的 [最新] 選項，以便將 Azure 上的任何擱置資料處理到復原點，然後將其用於 VM 容錯移轉。
 
-## <a name="unable-to-select-the-datastore"></a>無法選取的資料存放區
+## <a name="unable-to-select-the-datastore"></a>無法選取資料存放區
 
-當您看到的資料存放區，在 Azure 入口網站，嘗試重新保護已發生容錯移轉虛擬機器時，會指出此問題。 這是因為主要目標無法辨識為 Vcenter 新增至 Azure Site Recovery 在虛擬機器。
+此問題是指當嘗試重新保護發生容錯移轉的虛擬機器時，無法在 Azure 入口網站中看到資料存放區。 這是因為主要目標無法辨識為新增至 Azure Site Recovery 的 vCenters 下虛擬機器。
 
-如需有關如何重新保護虛擬機器的詳細資訊，請參閱 <<c0> [ 重新保護和機器容錯回復到內部部署網站容錯移轉至 Azure 之後](vmware-azure-reprotect.md)。
+如需重新保護虛擬機器的詳細資訊，請參閱[在容錯移轉至 Azure 之後將機器重新保護和容錯回復至內部部署網站](vmware-azure-reprotect.md)。
 
 若要解決此問題：
 
-手動建立主要目標在 vCenter 中管理您的來源機器。 資料存放區將會提供作業後下, 一步 vCenter 探索並重新整理網狀架構。
+請在管理來源機器的 vCenter 中手動建立主要目標。 資料存放區將會在下一次 vCenter 探索和重新整理網狀架構作業之後提供使用。
 
 > [!Note]
 > 
-> 「 探索 」 和 「 重新整理的網狀架構作業可能需要 30 分鐘的時間才能完成。 
+> 探索和重新整理網狀架構作業最多可能需要 30 分鐘的時間才能完成。 
 
-## <a name="linux-master-target-registration-with-cs-fails-with-an-ssl-error-35"></a>Linux 主要目標註冊 CS 失敗並發生 SSL 錯誤 35 
+## <a name="linux-master-target-registration-with-cs-fails-with-a-tls-error-35"></a>將 Linux 主要目標註冊到 CS 失敗，發生 TLS 錯誤 35 
 
-與組態伺服器的 Azure Site Recovery 主要目標註冊失敗，因為主要目標上啟用驗證的 Proxy。 
+因為主要目標上將啟用驗證 Proxy，所以將 Azure Site Recovery 主要目標註冊到設定伺服器失敗。 
  
-此錯誤會以安裝記錄檔中的下列字串： 
+此錯誤會以安裝記錄中的下列字串表示： 
 
 ```
 RegisterHostStaticInfo encountered exception config/talwrapper.cpp(107)[post] CurlWrapper Post failed : server : 10.38.229.221, port : 443, phpUrl : request_handler.php, secure : true, ignoreCurlPartialError : false with error: [at curlwrapperlib/curlwrapper.cpp:processCurlResponse:231]   failed to post request: (35) - SSL connect error. 
@@ -138,27 +154,27 @@ RegisterHostStaticInfo encountered exception config/talwrapper.cpp(107)[post] Cu
 
 若要解決此問題：
  
-1. 在組態伺服器 VM 上，開啟命令提示字元，並確認 proxy 設定，使用下列命令：
+1. 在設定伺服器 VM 上，開啟命令提示字元，並使用下列命令來確認 Proxy 設定：
 
-    cat /etc/environment echo $http_proxy 回應 $https_proxy 
+    cat /etc/environment  echo $http_proxy  echo $https_proxy 
 
-2. 如果上一個命令的輸出顯示 http_proxy] 或 [https_proxy 設定所定義，請使用其中一種下列方法來解除封鎖與組態伺服器的主要目標通訊：
+2. 如果先前命令的輸出顯示已定義 http_proxy 或 https_proxy 設定，請使用下列其中一種方法來解除封鎖與設定伺服器的主要目標通訊：
    
-   - 下載[PsExec 工具](https://aka.ms/PsExec)。
-   - 使用工具來存取系統的使用者內容，並判斷是否已設定的 proxy 位址。 
-   - 如果 proxy 設定，開啟 IE 使用 PsExec 工具系統使用者內容中。
+   - 下載 [PsExec 工具](https://aka.ms/PsExec)。
+   - 使用此工具來存取系統使用者內容，並判斷是否已設定 Proxy 位址。 
+   - 如果已設定 Proxy，請使用 PsExec 工具在系統使用者內容中開啟 IE。
   
      **psexec -s -i "%programfiles%\Internet Explorer\iexplore.exe"**
 
-   - 若要確定主要目標伺服器可以與組態伺服器通訊：
+   - 若要確保主要目標伺服器可與設定伺服器通訊：
   
-     - 修改 Internet Explorer 略過主要目標伺服器的 IP 位址透過 proxy 中的 proxy 設定。   
-     或
-     - 停用主要目標伺服器上的 proxy。 
+     - 修改 Internet Explorer 中的 Proxy 設定，以略過透過 Proxy 的主要目標伺服器 IP 位址。   
+     Or
+     - 停用主要目標伺服器上的 Proxy。 
 
 
 ## <a name="next-steps"></a>後續步驟
-- 對 [Windows VM 的 RDP 連線](../virtual-machines/windows/troubleshoot-rdp-connection.md)進行移難排解
-- 對 [Linux VM 的 SSH 連線](../virtual-machines/linux/detailed-troubleshoot-ssh-connection.md)進行疑難排解
+- 對 [Windows VM 的 RDP 連線](../virtual-machines/troubleshooting/troubleshoot-rdp-connection.md)進行移難排解
+- 對 [Linux VM 的 SSH 連線](../virtual-machines/troubleshooting/detailed-troubleshoot-ssh-connection.md)進行疑難排解
 
-如果您需要更多說明，則將您的查詢張貼在 [Site Recovery 論壇](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr)上或在本文件的結尾留言。 我們有一個能夠協助您的使用中社群。
+如果需要更多說明，請將查詢張貼在 [Microsoft 問與答的 Site Recovery 問題頁面](/answers/topics/azure-site-recovery.html)上或在本文件結尾留言。 我們有一個能夠協助您的使用中社群。

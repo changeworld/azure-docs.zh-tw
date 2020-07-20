@@ -1,26 +1,19 @@
 ---
-title: 教學課程 - 在 Azure 中建立執行 SQL、IIS、.NET 堆疊的 VM | Microsoft Docs
+title: 教學課程 - 在 Azure 中建立執行 SQL、IIS、.NET 堆疊的 VM
 description: 在本教學課程中，您將學習如何在 Azure 中的 Windows 虛擬機器上安裝 Azure SQL、IIS、.NET 堆疊。
-services: virtual-machines-windows
-documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
-editor: tysonn
-tags: azure-resource-manager
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 770fa89bc08b448482b4a74d21ee307df8a9f836
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3e44236f74a5448c540c58ba730d65b412d48bd0
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58167910"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82101700"
 ---
 # <a name="tutorial-install-the-sql-iis-net-stack-in-a-windows-vm-with-azure-powershell"></a>教學課程：使用 Azure PowerShell 在 Windows VM 中安裝 SQL、IIS、.NET 堆疊
 
@@ -36,7 +29,7 @@ ms.locfileid: "58167910"
 
 Azure Cloud Shell 是免費的互動式 Shell，可讓您用來執行本文中的步驟。 它具有預先安裝和設定的共用 Azure 工具，可與您的帳戶搭配使用。 
 
-若要開啟 Cloud Shell，只要選取程式碼區塊右上角的 [試試看] 即可。 您也可以移至 [https://shell.azure.com/powershell](https://shell.azure.com/powershell)，從另一個瀏覽器索引標籤啟動 Cloud Shell。 選取 [複製] 即可複製程式碼區塊，將它貼到 Cloud Shell 中，然後按 enter 鍵加以執行。
+若要開啟 Cloud Shell，只要選取程式碼區塊右上角的 [試試看]  即可。 您也可以移至 [https://shell.azure.com/powershell](https://shell.azure.com/powershell)，從另一個瀏覽器索引標籤啟動 Cloud Shell。 選取 [複製]  即可複製程式碼區塊，將它貼到 Cloud Shell 中，然後按 enter 鍵加以執行。
 
 ## <a name="create-an-iis-vm"></a>建立 IIS VM 
 
@@ -138,8 +131,8 @@ Set-AzVMSqlServerExtension `
 > * 建立執行 SQL Server 的 VM
 > * 安裝 SQL Server 擴充功能
 
-前進到下一個教學課程，以了解如何使用 SSL 憑證保護 IIS Web 伺服器。
+前進到下一個教學課程，以了解如何使用 TLS/SSL 憑證保護 IIS Web 伺服器。
 
 > [!div class="nextstepaction"]
-> [使用 SSL 憑證保護 IIS Web 伺服器](tutorial-secure-web-server.md)
+> [使用 TLS/SSL 憑證保護 IIS Web 伺服器](tutorial-secure-web-server.md)
 

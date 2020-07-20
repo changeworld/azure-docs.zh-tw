@@ -1,40 +1,39 @@
 ---
 title: 片語清單-語音服務
-titlesuffix: Azure Cognitive Services
-description: 了解如何提供語音服務，片語清單，使用`PhraseListGrammar`以改善語音轉換文字辨識結果的物件。
+titleSuffix: Azure Cognitive Services
+description: 瞭解如何透過使用物件的片語清單來提供語音服務， `PhraseListGrammar` 以改善語音轉換文字辨識結果。
 services: cognitive-services
-author: rhurey
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 5/02/2019
-ms.author: rhurey
-ms.openlocfilehash: 576d3c4a70c8870a31bc352b9f7723d2c2e69854
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.date: 02/04/2020
+ms.author: trbye
+zone_pivot_groups: programming-languages-speech-services-one-nomore-no-go
+ms.openlocfilehash: 7347fee0cd8bdaae73467a84806819c913599a51
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65026710"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85834007"
 ---
 # <a name="phrase-lists-for-speech-to-text"></a>語音轉換文字的片語清單
 
-藉由提供語音服務，片語清單，您可以改善語音辨識的精確度。 片語清單用來識別已知的片語，音訊資料，例如連絡人的名稱或特定位置中。
+藉由提供語音服務與片語清單，您可以改善語音辨識的精確度。 片語清單可用來識別音訊資料中的已知片語，例如人員的姓名或特定位置。
 
-例如，如果您有一個命令 「 移至 」 和可能的目的地的 「 Ward 」 可能會說出，您可以新增 「 移動 Ward"的項目。 將片語會增加機率，當 「 移動 Ward 」 也會辨識而不是"進展到 「 辨識音訊。
+例如，如果您有一個命令「移至」，而且可能會讀出「Ward」的目的地，您可以新增「移至 Ward」的專案。 新增片語會增加可辨識「移至 Ward」的音訊，而不是「移至」的可能性。
 
-單字或完整片語可以新增至片語清單。 辨識期間如果完全符合包含音訊，會使用片語清單中的項目。 如果此片語清單包含"移動至 Ward 」，以及片語擷取，在上述範例中，建置 」 移到緩慢 」，則辨識結果會是 「 緩時變移至 Ward 」。
+您可以將單字或完整片語新增至片語清單中。 在辨識期間，如果與整個片語完全相符，則會使用片語清單中的專案，以個別的片語形式包含在音訊中。 如果找不到與片語完全相符的項目，就不會協助辨識。
+
+>[!Note]
+> 目前，片語清單僅支援英文的語音轉換文字。
 
 ## <a name="how-to-use-phrase-lists"></a>如何使用片語清單
 
-下列範例說明如何建置片語清單，使用`PhraseListGrammar`物件。
+下列範例說明如何使用物件來建立片語清單 `PhraseListGrammar` 。
 
-```C++
-auto phraselist = PhraseListGrammar::FromRecognizer(recognizer);
-phraselist->AddPhrase("Move to Ward");
-phraselist->AddPhrase("Move to Bill");
-phraselist->AddPhrase("Move to Ted");
-```
+::: zone pivot="programming-language-csharp"
 
 ```cs
 PhraseListGrammar phraseList = PhraseListGrammar.FromRecognizer(recognizer);
@@ -43,19 +42,20 @@ phraseList.AddPhrase("Move to Bill");
 phraseList.AddPhrase("Move to Ted");
 ```
 
-```Python
-phrase_list_grammar = speechsdk.PhraseListGrammar.from_recognizer(reco)
-phrase_list_grammar.addPhrase("Move to Ward")
-phrase_list_grammar.addPhrase("Move to Bill")
-phrase_list_grammar.addPhrase("Move to Ted")
+::: zone-end
+
+::: zone pivot="programming-language-cpp"
+
+```C++
+auto phraselist = PhraseListGrammar::FromRecognizer(recognizer);
+phraselist->AddPhrase("Move to Ward");
+phraselist->AddPhrase("Move to Bill");
+phraselist->AddPhrase("Move to Ted");
 ```
 
-```JavaScript
-var phraseListGrammar = SpeechSDK.PhraseListGrammar.fromRecognizer(reco);
-phraseListGrammar.addPhrase("Move to Ward");
-phraseListGrammar.addPhrase("Move to Bill");
-phraseListGrammar.addPhrase("Move to Ted");
-```
+::: zone-end
+
+::: zone pivot="programming-language-java"
 
 ```Java
 PhraseListGrammar phraseListGrammar = PhraseListGrammar.fromRecognizer(recognizer);
@@ -64,34 +64,78 @@ phraseListGrammar.addPhrase("Move to Bill");
 phraseListGrammar.addPhrase("Move to Ted");
 ```
 
->[!Note]
-> 語音服務會使用來比對語音片語清單的最大數目為 1024年。
+::: zone-end
 
-您也可以清除相關聯的片語`PhraseListGrammar`藉由呼叫 clear （）。
+::: zone pivot="programming-language-python"
 
-```C++
-phraselist->Clear();
+```Python
+phrase_list_grammar = speechsdk.PhraseListGrammar.from_recognizer(reco)
+phrase_list_grammar.addPhrase("Move to Ward")
+phrase_list_grammar.addPhrase("Move to Bill")
+phrase_list_grammar.addPhrase("Move to Ted")
 ```
+
+::: zone-end
+
+::: zone pivot="programming-language-javascript"
+
+```JavaScript
+var phraseListGrammar = SpeechSDK.PhraseListGrammar.fromRecognizer(reco);
+phraseListGrammar.addPhrase("Move to Ward");
+phraseListGrammar.addPhrase("Move to Bill");
+phraseListGrammar.addPhrase("Move to Ted");
+```
+
+::: zone-end
+
+>[!Note]
+> 語音服務將用來比對語音的片語清單數目上限為1024個片語。
+
+您也可以藉 `PhraseListGrammar` 由呼叫 clear （），清除與相關聯的片語。
+
+::: zone pivot="programming-language-csharp"
 
 ```cs
 phraseList.Clear();
 ```
 
-```Python
-phrase_list_grammar.clear()
+::: zone-end
+
+::: zone pivot="programming-language-cpp"
+
+```C++
+phraselist->Clear();
 ```
 
-```JavaScript
-phraseListGrammar.clear();
-```
+::: zone-end
+
+::: zone pivot="programming-language-java"
 
 ```Java
 phraseListGrammar.clear();
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-python"
+
+```Python
+phrase_list_grammar.clear()
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-javascript"
+
+```JavaScript
+phraseListGrammar.clear();
+```
+
+::: zone-end
+
 > [!NOTE]
-> 若要變更`PhraseListGrammar`物件的下一步 辨識，或重新連線至語音服務之後生效。
+> 對物件所做 `PhraseListGrammar` 的變更會在下一次辨識或重新連線到語音服務之後生效。
 
 ## <a name="next-steps"></a>後續步驟
 
-* [語音 SDK 參考文件](speech-sdk.md)
+* [語音 SDK 參考檔](speech-sdk.md)

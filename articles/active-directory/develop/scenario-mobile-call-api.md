@@ -1,50 +1,48 @@
 ---
-title: 呼叫 web Api-呼叫 web API 的行動裝置應用程式 |Microsoft 身分識別平台
-description: 了解如何建置行動應用程式呼叫 Web Api （呼叫 Web API）
+title: 從行動應用程式呼叫 Web API | Azure
+titleSuffix: Microsoft identity platform
+description: 了解如何建置會呼叫 Web API 的行動應用程式。 (呼叫 Web API)。
 services: active-directory
-documentationcenter: dev-center-name
-author: danieldobalian
+author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
-ms.author: dadobali
+ms.date: 05/18/2020
+ms.author: jmprieur
+ms.reviewer: brandwe
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2fd65b9f97c373c55a3486e06e83fca7cf824cad
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
-ms.translationtype: MT
+ms.openlocfilehash: 781406a1bfd253f0ab3eb333f23917be4aeb3ba9
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65075111"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83771735"
 ---
-# <a name="mobile-app-that-calls-web-apis---call-a-web-api"></a>呼叫 web Api-的行動裝置應用程式呼叫 web API
+# <a name="call-a-web-api-from-a-mobile-app"></a>從行動應用程式呼叫 Web API
 
-一旦您的應用程式已登入使用者，並接收權杖，MSAL 會公開幾個部分的使用者、 他們的環境，以及簽發之權杖的相關資訊。 您的應用程式可以使用這些值來呼叫 web API，或顯示歡迎訊息給使用者。
+當您的應用程式登入使用者並接收權杖之後，Microsoft 驗證程式庫 (MSAL) 會公開使用者、使用者環境以及所發行權杖的相關資訊。 您的應用程式可以使用這些值來呼叫 Web API 或向使用者顯示歡迎訊息。
 
-首先，我們將探討 MSAL 結果，然後如何使用來自的存取權杖`AuthenticationResult`或`result`呼叫受保護的 web API。
+在本文中，我們會先探討 MSAL 結果。 然後，我們會探討如何使用 `AuthenticationResult` 或 `result` 中的存取權杖來呼叫受保護的 Web API。
 
 ## <a name="msal-result"></a>MSAL 結果
+MSAL 會提供下列值： 
 
-- `AccessToken`:用來呼叫 HTTP 持有人要求中的受保護的 web Api。
-- `IdToken`:包含登入的使用者，例如其名稱、 主租用戶，以及唯一識別項的相關實用宣告儲存體。
-- `ExpiresOn`： 權杖的到期時間。 MSAL 會處理應用程式的自動重新整理。
-- `TenantId`:用來登入的使用者的租用戶識別碼。 來賓使用者 (Azure AD B2B)，這會是使用者登入不是其的家用租用戶的租用戶。  
-- `Scopes`： 使用您的權杖所授與的範圍。 這可能是您所要求的子集。
+- `AccessToken` 會在 HTTP 持有人要求中呼叫受保護的 Web API。
+- `IdToken` 包含有關已登入使用者的實用資訊。 此資訊包括使用者的名稱、主租用戶，以及儲存體的唯一識別碼。
+- `ExpiresOn` 是權杖的到期時間。 MSAL 會處理應用程式的自動重新整理。
+- `TenantId` 是使用者登入所在租用戶的識別碼。 對於 Azure Active Directory (Azure AD) B2B 中的來賓使用者，此值可識別使用者登入所在的租用戶。 此值無法識別使用者的主租用戶。  
+- `Scopes` 會指出已授與權杖的範圍。 授與的範圍可能是您所要求範圍的子集。
 
-此外，MSAL 也會提供的抽象概念`Account`。 帳戶代表目前的使用者登入帳戶。
+MSAL 也會提供 `Account` 值的摘要。 `Account` 值代表目前使用者的已登入帳戶：
 
-- `HomeAccountIdentifier`:使用者的主租用戶識別碼。
-- `UserName`:使用者的慣用的使用者名稱。 這可能是空的 Azure AD B2C 使用者。
-- `AccountIdentifier`:登入的使用者識別碼。 這會是相同`HomeAccountIdentifier`在大部分情況下除非使用者是另一個租用戶中的來賓。
+- `HomeAccountIdentifier` 可識別使用者的主租用戶。
+- `UserName` 是使用者慣用的使用者名稱。 Azure AD B2C 使用者的這個值可能是空的。
+- `AccountIdentifier` 可識別已登入的使用者。 在大部分情況下，此值與 `HomeAccountIdentifier` 值相同，除非使用者是另一個租用戶中的來賓。
 
-## <a name="calling-an-api"></a>呼叫 API
+## <a name="call-an-api"></a>呼叫 API
 
-準備好的存取權杖之後，很容易即可呼叫 web API。 您的應用程式會將此語彙基元、 建構 HTTP 要求，並加以執行。
+取得存取權杖之後，您可以呼叫 Web API。 您的應用程式會使用權杖來建置 HTTP 要求，然後執行要求。
 
 ### <a name="android"></a>Android
 
@@ -55,25 +53,25 @@ ms.locfileid: "65075111"
         try {
             parameters.put("key", "value");
         } catch (Exception e) {
-            // Error when constructing
+            // Error when constructing.
         }
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, MSGRAPH_URL,
                 parameters,new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                // Successfully called graph, process data and send to UI 
+                // Successfully called Graph. Process data and send to UI.
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                // Error
+                // Error.
             }
         }) {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String> headers = new HashMap<>();
                 
-                // Put Access Token in HTTP request 
+                // Put access token in HTTP request.
                 headers.put("Authorization", "Bearer " + authResult.getAccessToken());
                 return headers;
             }
@@ -86,50 +84,77 @@ ms.locfileid: "65075111"
         queue.add(request);
 ```
 
-### <a name="ios"></a>iOS
+### <a name="msal-for-ios-and-macos"></a>適用於 iOS 和 macOS 的 MSAL
+
+用來取得權杖的方法會傳回 `MSALResult` 物件。 `MSALResult` 會公開 `accessToken` 屬性。 您可以使用 `accessToken` 來呼叫 Web API。 請先將此屬性新增至 HTTP 授權標頭，然後才進行呼叫以存取受保護的 Web API。
+
+```objc
+NSMutableURLRequest *urlRequest = [NSMutableURLRequest new];
+urlRequest.URL = [NSURL URLWithString:"https://contoso.api.com"];
+urlRequest.HTTPMethod = @"GET";
+urlRequest.allHTTPHeaderFields = @{ @"Authorization" : [NSString stringWithFormat:@"Bearer %@", accessToken] };
+        
+NSURLSessionDataTask *task =
+[[NSURLSession sharedSession] dataTaskWithRequest:urlRequest
+     completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {}];
+[task resume];
+```
 
 ```swift
-        let url = URL(string: kGraphURI)
-        var request = URLRequest(url: url!)
-
-        // Put Access token in HTTP Request
-        request.setValue("Bearer \(self.accessToken)", forHTTPHeaderField: "Authorization")
-
-        URLSession.shared.dataTask(with: request) { data, response, error in
-            if let error = error {
-                self.updateLogging(text: "Couldn't get graph result: \(error)")
-                return
-            }
-            guard let result = try? JSONSerialization.jsonObject(with: data!, options: []) else {
-                self.updateLogging(text: "Couldn't deserialize result JSON")
-                return
-            }
-
-            // Successfully got data from Graph
-            self.updateLogging(text: "Result from Graph: \(result))")
-        }.resume()
+let urlRequest = NSMutableURLRequest()
+urlRequest.url = URL(string: "https://contoso.api.com")!
+urlRequest.httpMethod = "GET"
+urlRequest.allHTTPHeaderFields = [ "Authorization" : "Bearer \(accessToken)" ]
+     
+let task = URLSession.shared.dataTask(with: urlRequest as URLRequest) { (data: Data?, response: URLResponse?, error: Error?) in }
+task.resume()
 ```
 
 ### <a name="xamarin"></a>Xamarin
 
-```CSharp
-httpClient = new HttpClient();
+[!INCLUDE [Call web API in .NET](../../../includes/active-directory-develop-scenarios-call-apis-dotnet.md)]
 
-// Put Access token in HTTP request 
-httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", result.AccessToken);
+## <a name="make-several-api-requests"></a>提出數個 API 要求
 
-// Call Graph
-HttpResponseMessage response = await _httpClient.GetAsync(apiUri);
-...
-}
+如果您需要呼叫相同 API 數次，或如果您需要呼叫多個 API，請在建置應用程式時思考下列主題：
+
+- **增量同意**：Microsoft 身分識別平台可讓應用程式在需要權限時才取得使用者同意，而非全都在一開始就取得。 每次應用程式準備呼叫 API 時，就只應要求所需的範圍。
+
+- **條件式存取**：當您提出數個 API 要求時，在某些情況下，您可能必須符合其他條件式存取需求。 如果第一個要求沒有條件式存取原則，而您的應用程式嘗試以無訊息模式存取需要條件存取的新 API，則需求可能會以這種方式增加。 若要處理此問題，請務必擷取無訊息要求中的錯誤，並準備好進行互動式要求。  如需詳細資訊，請參閱[條件式存取的指導方針](../azuread-dev/conditional-access-dev-guide.md)。
+
+## <a name="call-several-apis-by-using-incremental-consent-and-conditional-access"></a>使用增量同意和條件式存取來呼叫數個 API
+
+如果您需要為相同的使用者呼叫數個 API，在您取得使用者的權杖之後，您可以藉由後續呼叫 `AcquireTokenSilent` 來取得權杖，以避免重複要求使用者提供認證：
+
+```csharp
+var result = await app.AcquireTokenXX("scopeApi1")
+                      .ExecuteAsync();
+
+result = await app.AcquireTokenSilent("scopeApi2")
+                  .ExecuteAsync();
 ```
 
-## <a name="making-several-api-requests"></a>提出幾個 API 要求
+下列情況時需要互動：
 
-如果您需要多次呼叫相同的 API，或多個 Api，還是有其他考量，建置您的應用程式時：
+- 使用者已同意第一個 API，但現在需要同意更多範圍。 在此情況下，您可以使用增量同意。
+- 第一個 API 不需要[多重要素驗證](../authentication/concept-mfa-howitworks.md)，但下一個 API 需要。
 
-- ***增量同意***:Microsoft 身分識別平台可讓應用程式來取得使用者同意，如權限是必要項，而非所有預付。 每當您的應用程式已準備好呼叫的 API，它應該要求只想要使用的範圍。
-- ***條件式存取***:在某些情況下，您可能會提出幾個 API 要求時收到額外的條件式存取需求。 若要處理這種情況下，務必要攔截的無訊息的要求錯誤，並準備好進行互動式要求。 如果第一個要求已套用任何條件式存取原則，和您的應用程式嘗試以無訊息方式存取需要條件式存取的新 API，會發生這項目。 若要進一步了解，請參閱[條件式存取的指引](conditional-access-dev-guide.md)。
+```csharp
+var result = await app.AcquireTokenXX("scopeApi1")
+                      .ExecuteAsync();
+
+try
+{
+ result = await app.AcquireTokenSilent("scopeApi2")
+                  .ExecuteAsync();
+}
+catch(MsalUiRequiredException ex)
+{
+ result = await app.AcquireTokenInteractive("scopeApi2")
+                  .WithClaims(ex.Claims)
+                  .ExecuteAsync();
+}
+```
 
 ## <a name="next-steps"></a>後續步驟
 

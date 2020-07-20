@@ -1,20 +1,18 @@
 ---
 title: 在 Visual Studio 中檢視 Azure 串流分析工作
-description: 本文說明如何在 Visual Studio 中檢視串流分析工作。
-services: stream-analytics
+description: 瞭解如何使用 Visual Studio 來觀看、啟動和停止、測試連線、檢查結果，以及匯出您的 Azure 串流分析作業。
 author: su-jie
 ms.author: sujie
-manager: kfile
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/10/2018
-ms.openlocfilehash: 1c7133801eb0d95616cacf501162e6cee3da7c80
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 95abf403dfd4abd4c0533b6e8b4a2f83b33fa18b
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61477828"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045547"
 ---
 # <a name="use-visual-studio-to-view-azure-stream-analytics-jobs"></a>使用 Visual Studio 檢視 Azure 串流分析工作
 
@@ -34,13 +32,11 @@ ms.locfileid: "61477828"
 
 ### <a name="open-the-job-view"></a>開啟作業檢視
 
-1. 在 [伺服器總管] 中，選取 [串流分析工作]，然後選取 [重新整理]。 您的工作應該會顯示在 [串流分析工作] 下。
+1. 在 [伺服器總管]**** 中，選取 [串流分析工作]****，然後選取 [重新整理]****。 您的工作應該會顯示在 [串流分析工作]**** 下。
 
     ![串流分析伺服器總管清單](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-list-jobs-01.png)
 
-
-
-2. 展開作業節點並按兩下 [作業檢視] 節點來開啟作業檢視。
+2. 展開作業節點並按兩下 [作業檢視]**** 節點來開啟作業檢視。
     
    ![展開的作業節點](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-job-view-01.png)
 
@@ -50,43 +46,41 @@ ms.locfileid: "61477828"
     
    ![串流分析工作控制項](./media/stream-analytics-vs-tools/azure-stream-analytics-job-view-controls.png)
 
-
 ## <a name="check-job-results"></a>檢查工作結果
 
-適用於 Visual Studio 的串流分析工具目前支援 Azure Data Lake Storage 和 Blob 儲存體的輸出預覽。 若要檢視結果，只要按兩下 [作業檢視] 中工作圖表的輸出節點，然後輸入適當的認證。
+適用於 Visual Studio 的串流分析工具目前支援 Azure Data Lake Storage 和 Blob 儲存體的輸出預覽。 若要檢視結果，只要按兩下 [作業檢視]**** 中工作圖表的輸出節點，然後輸入適當的認證。
 
    ![串流分析工作輸出](./media/stream-analytics-vs-tools/stream-analytics-blob-preview.png)
-
 
 ## <a name="export-jobs-to-a-project"></a>將工作匯出到專案
 
 有兩種方式可以將現有的作業匯出到專案。
 
-1. 在 [伺服器總管] 的 [資料流分析工作] 節點下，以滑鼠右鍵按一下作業節點。 選取 [匯出至新的串流分析專案]。
+1. 在 [伺服器總管]**** 的 [資料流分析工作] 節點下，以滑鼠右鍵按一下作業節點。 選取 [匯出至新的串流分析專案]****。
     
    ![將工作匯出到專案](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-export-job-01.png)
     
-    產生的專案會在 [方案總管] 中顯示。
+    產生的專案會在 [方案總管]**** 中顯示。
     
    ![方案總管](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-export-job-02.png)
 
-2. 在作業檢視中，選取 [產生專案]。
+2. 在作業檢視中，選取 [產生專案]****。
     
    ![從作業檢視產生專案](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-export-job-03.png)
 
 ## <a name="test-connections"></a>測試連接
 
-在 [作業檢視] 中，從 [測試連接] 下拉式清單選取選項即可測試輸入和輸出連線。
+在 [作業檢視]**** 中，從 [測試連接]**** 下拉式清單選取選項即可測試輸入和輸出連線。
 
    ![[測試連接] 下拉式清單](./media/stream-analytics-vs-tools/stream-analytics-test-connection-dropdown.png)
 
-[測試連接] 結果會顯示在 [輸出] 視窗。
+[測試連接]**** 結果會顯示在 [輸出]**** 視窗。
 
    ![測試連接結果](./media/stream-analytics-vs-tools/stream-analytics-test-connection-results.png)
 
 ## <a name="next-steps"></a>後續步驟
 
 * [使用 Visual Studio 監視和管理 Azure 串流分析工作](stream-analytics-monitor-jobs-use-vs.md)
-* [快速入門：使用 Visual Studio 创建流分析作业](stream-analytics-quick-create-vs.md)
-* [教學課程：部署 Azure Stream Analytics 作業搭配使用 Azure 管線的 CI/CD](stream-analytics-tools-visual-studio-cicd-vsts.md)
+* [快速入門：使用 Visual Studio 建立串流分析工作](stream-analytics-quick-create-vs.md)
+* [教學課程：使用 Azure Pipelines 部署具有 CI/CD 的 Azure 串流分析作業](stream-analytics-tools-visual-studio-cicd-vsts.md)
 * [使用串流分析工具持續進行整合及開發](stream-analytics-tools-for-visual-studio-cicd.md)

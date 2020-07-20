@@ -7,24 +7,24 @@ author: zhangmanling
 manager: erikre
 editor: ''
 ms.assetid: c7989340-1172-4315-acbb-186ba34dd52a
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: eb20630533735fb46ea7743be75448329281938a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3af2e849aa6658e539b0b5bdbda4428cc28e5ce5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60334558"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84887232"
 ---
 # <a name="real-time-stats-in-microsoft-azure-cdn"></a>Microsoft Azure CDN 中的即時統計資料
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 本文件說明 Microsoft Azure CDN 中的即時統計資料。  在將內容傳遞給您的用戶端時，這項功能會提供即時資料 (例如頻寬、快取狀態和並行連線) 給您的 CDN 設定檔。 這可讓您隨時連續監視服務的健全狀況，包括上線事件。
 
 可用圖表如下︰
@@ -35,21 +35,21 @@ ms.locfileid: "60334558"
 * [連線](#connections)
 
 ## <a name="accessing-real-time-stats"></a>存取即時統計資料
-1. 在 [Azure 入口網站](https://portal.azure.com)中，瀏覽到您的 CDN 設定檔。
+1. 在[Azure 入口網站](https://portal.azure.com)中，流覽至您的 CDN 設定檔。
    
     ![CDN 設定檔刀鋒視窗](./media/cdn-real-time-stats/cdn-profile-blade.png)
-2. 在 [CDN 設定檔] 刀鋒視窗中，按一下 [管理]  按鈕。
+2. 在 [CDN 設定檔] 刀鋒視窗中，按一下 [管理] **** 按鈕。
    
     ![[CDN 設定檔] 刀鋒視窗的 [管理] 按鈕](./media/cdn-real-time-stats/cdn-manage-btn.png)
    
     隨即開啟 CDN 管理入口網站。
-3. 將滑鼠移至 [分析] 索引標籤上，然後將滑鼠移至 [即時統計資料] 飛出視窗上。  按一下 [HTTP 大型物件] 。
+3. 將滑鼠移至 [分析]**** 索引標籤上，然後將滑鼠移至 [即時統計資料]**** 飛出視窗上。  按一下 [HTTP 大型物件] ****。
    
     ![CDN 管理入口網站](./media/cdn-real-time-stats/cdn-premium-portal.png)
    
     隨即會顯示即時統計資料圖表。
 
-每個圖表都會顯示所選時間範圍內的即時統計資料，並在頁面載入時啟動。  圖表每隔幾秒鐘就會自動更新。  [重新整理圖表]  按鈕 (如果有) 將會清除圖表，然後只顯示選取的資料。
+每個圖表都會顯示所選時間範圍內的即時統計資料，並在頁面載入時啟動。  圖表每隔幾秒鐘就會自動更新。  [重新整理圖表] **** 按鈕 (如果有) 將會清除圖表，然後只顯示選取的資料。
 
 ## <a name="bandwidth"></a>頻寬
 ![頻寬圖表](./media/cdn-real-time-stats/cdn-bandwidth.png)
@@ -66,7 +66,7 @@ ms.locfileid: "60334558"
 > 
 > 
 
-HTTP 狀態碼的清單會顯示於圖表正上方。 此清單表示每個可包含於線條圖中的狀態碼，以及該狀態碼目前每秒的發生次數。 根據預設，圖表中會針對這些狀態碼的每一個顯示一條線。 不過，您可以選擇只監視對您的 CDN 組態具有特殊意義的狀態碼。 若要這樣做，請檢查所需的狀態碼，並清除所有其他選項，然後按一下 [重新整理圖表] 。 
+HTTP 狀態碼的清單會顯示於圖表正上方。 此清單表示每個可包含於線條圖中的狀態碼，以及該狀態碼目前每秒的發生次數。 根據預設，圖表中會針對這些狀態碼的每一個顯示一條線。 不過，您可以選擇只監視對您的 CDN 組態具有特殊意義的狀態碼。 若要這樣做，請檢查所需的狀態碼，並清除所有其他選項，然後按一下 [重新整理圖表] ****。 
 
 您可以暫時隱藏特定狀態碼的記錄資料。  從圖表正下方的圖例中，按一下您想要隱藏的狀態碼。 狀態碼將會立即從圖表中隱藏。 再次按一下該狀態碼將導致該選項再次顯示。
 
@@ -80,11 +80,11 @@ HTTP 狀態碼的清單會顯示於圖表正上方。 此清單表示每個可�
 > 
 > 
 
-快取狀態碼的清單會顯示於圖表正上方。 此清單表示每個可包含於線條圖中的狀態碼，以及該狀態碼目前每秒的發生次數。 根據預設，圖表中會針對這些狀態碼的每一個顯示一條線。 不過，您可以選擇只監視對您的 CDN 組態具有特殊意義的狀態碼。 若要這樣做，請檢查所需的狀態碼，並清除所有其他選項，然後按一下 [重新整理圖表] 。 
+快取狀態碼的清單會顯示於圖表正上方。 此清單表示每個可包含於線條圖中的狀態碼，以及該狀態碼目前每秒的發生次數。 根據預設，圖表中會針對這些狀態碼的每一個顯示一條線。 不過，您可以選擇只監視對您的 CDN 組態具有特殊意義的狀態碼。 若要這樣做，請檢查所需的狀態碼，並清除所有其他選項，然後按一下 [重新整理圖表] ****。 
 
 您可以暫時隱藏特定狀態碼的記錄資料。  從圖表正下方的圖例中，按一下您想要隱藏的狀態碼。 狀態碼將會立即從圖表中隱藏。 再次按一下該狀態碼將導致該選項再次顯示。
 
-## <a name="connections"></a>連線
+## <a name="connections"></a>連接
 ![連線圖表](./media/cdn-real-time-stats/cdn-connections.png)
 
 此圖表會指出已為 Edge Server 建立的連線數。 通過 CDN 的每個資產要求都會導致建立一個連線。
@@ -92,5 +92,5 @@ HTTP 狀態碼的清單會顯示於圖表正上方。 此清單表示每個可�
 ## <a name="next-steps"></a>後續步驟
 * 透過 [Azure CDN 中的即時警示](cdn-real-time-alerts.md)
 * 進一步了解 [進階 HTTP 報告](cdn-advanced-http-reports.md)
-* 分析 [使用模式](cdn-analyze-usage-patterns.md)
+* 分析[使用模式](cdn-analyze-usage-patterns.md)
 

@@ -1,45 +1,45 @@
 ---
-title: 檢閱工作流程和工作概念-Content Moderator
-titlesuffix: Azure Cognitive Services
-description: 深入了解評論、 工作流程和工作
+title: 評論、工作流程和作業概念-內容仲裁
+titleSuffix: Azure Cognitive Services
+description: 在本文中，您將瞭解審查工具的核心概念;評論、工作流程和工作。
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.author: sajagtap
-ms.openlocfilehash: c1d4ef640e2ae072dacba7a665b6689e3224c55c
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.author: pafarley
+ms.openlocfilehash: 1aba86efb9ea76fbf060e80b47f9f2f6cdf8ee71
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58756300"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "79221539"
 ---
-# <a name="content-moderation-reviews-workflows-and-jobs"></a>內容仲裁審查、 工作流程和工作
+# <a name="content-moderation-reviews-workflows-and-jobs"></a>內容仲裁審查、工作流程和工作
 
-Content Moderator 結合機器輔助仲裁，在迴圈人類的功能，來建立最佳的仲裁的處理序的真實世界案例。 它會透過以雲端為基礎[審核工具](https://contentmoderator.cognitive.microsoft.com)。 本指南中，您將了解審核工具的核心概念： 檢閱、 工作流程和工作。
+內容仲裁結合了機器輔助審核與人為迴圈的功能，為真實世界的案例建立最佳審核程式。 它會透過以雲端為基礎的[審查工具](https://contentmoderator.cognitive.microsoft.com)來執行此工作。 在本指南中，您將瞭解審查工具的核心概念：評論、工作流程和作業。
 
 ## <a name="reviews"></a>評論
 
-檢閱中，在內容上傳至審核工具和之下**檢閱** 索引標籤。從這裡開始，使用者可以更改套用的標籤，並套用自己自訂的標籤，適當地。 當使用者提交檢閱時，結果會傳送至指定的回呼端點，以及內容會從站台移除。
+在審查中，內容會上傳至審核工具，並出現在 [**審查**] 索引標籤底下。從這裡開始，使用者可以變更套用的標記，並視需要套用自己的自訂標記。 當使用者提交評論時，會將結果傳送至指定的回呼端點，並將內容從網站中移除。
 
-![在瀏覽器中，在 [檢閱] 索引標籤上，開啟檢閱工具網站](./Review-Tool-user-Guide/images/image-workflow-review.png)
+![在瀏覽器的 [審核] 索引標籤中開啟審查工具網站](./Review-Tool-user-Guide/images/image-workflow-review.png)
 
-請參閱[檢閱工具指南](./review-tool-user-guide/review-moderated-images.md)來開始建立評論，或查看[REST API 指南](./try-review-api-review.md)若要了解如何以程式設計方式操作。
+若要瞭解如何以程式設計方式執行，請參閱[審查工具指南](./review-tool-user-guide/review-moderated-images.md)以開始建立評論，或參閱[REST API 指南](./try-review-api-review.md)。
 
 ## <a name="workflows"></a>工作流程
 
-工作流程是雲端架構自訂篩選器內容。 工作流程可以連接到各種不同的方式篩選內容，並採取適當的動作的服務。 使用 Content Moderator 連接器，工作流程可以自動套用仲裁標記，並建立已提交的內容檢閱。
+工作流程是以雲端為基礎的自訂篩選器內容。 工作流程可以連接到各種服務，以不同的方式篩選內容，然後採取適當的動作。 透過內容仲裁連接器，工作流程可以自動套用審核標記，並使用已提交的內容建立評論。
 
-### <a name="view-workflows"></a>檢視工作流程
+### <a name="view-workflows"></a>查看工作流程
 
-若要檢視您現有的工作流程，請前往[審核工具](https://contentmoderator.cognitive.microsoft.com/)，然後選取**設定** > **工作流程**。
+若要查看現有的工作流程，請移至[審核工具](https://contentmoderator.cognitive.microsoft.com/)，然後選取 [**設定** > ] [**工作流程**]。
 
 ![預設工作流程](images/default-workflow-listed.PNG)
 
-工作流程可以完全稱為 JSON 字串，使其可存取以程式設計的方式。 如果您選取**編輯**工作流程選項，然後選取**JSON**索引標籤上，您會看到 JSON 運算式如下所示：
+工作流程可以完整描述為 JSON 字串，讓它們可透過程式設計方式存取。 如果您選取工作流程的 [**編輯**] 選項，然後選取 [ **json** ] 索引標籤，您會看到如下所示的 json 運算式：
 
 ```json
 {
@@ -64,16 +64,16 @@ Content Moderator 結合機器輔助仲裁，在迴圈人類的功能，來建�
 }
 ```
 
-請參閱[檢閱工具指南](./review-tool-user-guide/workflows.md)若要開始建立及使用工作流程，請參閱[REST API 指南](./try-review-api-workflow.md)若要了解如何以程式設計方式操作。
+請參閱[審查工具指南](./review-tool-user-guide/workflows.md)，以開始建立和使用工作流程，或參閱[REST API 指南](./try-review-api-workflow.md)，以瞭解如何以程式設計方式執行此操作。
 
 ## <a name="jobs"></a>工作
 
-仲裁作業可做為一種包裝函式的內容仲裁、 工作流程及檢閱功能。 工作會掃描您的內容使用 Content Moderator 影像審核 API 或文字審核 API，然後檢查它與指定的工作流程。 根據工作流程的結果，可能或可能不會建立內容的評論[審核工具](./review-tool-user-guide/human-in-the-loop.md)。 雖然可以建立並設定其各自的 Api 檢閱和工作流程，作業 API 可讓您取得在整個程序 （可以傳送至指定的回呼端點） 的詳細的報告。
+審核作業可做為內容仲裁、工作流程和評論功能的一種包裝函式。 作業會使用內容仲裁影像審核 API 或文字仲裁 API 來掃描您的內容，然後針對指定的工作流程進行檢查。 根據工作流程結果，它不一定會在[審核工具](./review-tool-user-guide/human-in-the-loop.md)中建立內容的審查。 雖然評論和工作流程都可以使用其各自的 Api 來建立和設定，但作業 API 可讓您取得整個程式的詳細報告（可以傳送至指定的回呼端點）。
 
-請參閱[REST API 指南](./try-review-api-job.md)若要開始使用作業。
+請參閱[REST API 指南](./try-review-api-job.md)，以開始使用作業。
 
 ## <a name="next-steps"></a>後續步驟
 
 * 試用[作業 API 主控台](try-review-api-job.md)，並使用 REST API 程式碼範例。 如果您已熟悉 Visual Studio 和 C#，也請參閱[作業 .NET 快速入門](moderation-jobs-quickstart-dotnet.md)。 
-* 若為檢閱者，請開始使用[檢閱 API 主控台](try-review-api-review.md)，並使用 REST API 程式碼範例。 然後請參閱[檢閱 .NET 快速入門](moderation-reviews-quickstart-dotnet.md)。
+* 若為檢閱者，請開始使用[檢閱 API 主控台](try-review-api-review.md)，並使用 REST API 程式碼範例。 然後參閱[.net 快速入門](dotnet-sdk-quickstart.md)的 [評論] 區段。
 * 若為影片檢閱者，請使用[影片檢閱快速入門](video-reviews-quickstart-dotnet.md)，並了解如何[在影片檢閱中新增文字記錄](video-transcript-reviews-quickstart-dotnet.md)。

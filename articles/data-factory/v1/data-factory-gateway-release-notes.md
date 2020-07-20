@@ -1,27 +1,25 @@
 ---
-title: 資料管理閘道的版本資訊 | Microsoft Docs
+title: 資料管理閘道的版本資訊
 description: 資料管理閘道 tory 版本資訊
 services: data-factory
 author: nabhishek
-manager: craigg
+manager: anandsub
 ms.assetid: 14762e82-76d9-41c4-ba9f-14a54da29c36
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 865bfdae199bca7ebee888be527db239d34511d1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 405beb5cb8c2e74951aa54ba371be04d290ad3a2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60486459"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84194478"
 ---
 # <a name="release-notes-for-data-management-gateway"></a>資料管理閘道的版本資訊
 > [!NOTE]
-> 本文適用於 Data Factory 的第 1 版。 如果您使用目前版本的 Data Factory 服務，請參閱 [第 2 版中的自我裝載整合執行階段](../create-self-hosted-integration-runtime.md)。
+> 本文適用於 Data Factory 第 1 版。 如果您使用目前版本的 Data Factory 服務，請參閱 [第 2 版中的自我裝載整合執行階段](../create-self-hosted-integration-runtime.md)。
 
 現代資料整合的挑戰之一就是在內部部署和雲端之間來回移動資料。 Data Factory 會透過「資料管理閘道」進行此整合；「資料管理閘道」是一個您可以在內部部署環境安裝來啟用混合式資料移動功能的代理程式。
 
@@ -40,18 +38,18 @@ ms.locfileid: "60486459"
 ## <a name="earlier-versions"></a>較早的版本
 ## <a name="21063477"></a>2.10.6347.7
 ### <a name="enhancements-"></a>增強功能
-- 您可以新增 DNS 項目來將「服務匯流排」加入白名單，而不是將所有 Azure IP 位址都加入防火牆的白名單 (如有需要)。 您可以在 Azure 入口網站上找到各自的 DNS 項目 (Data Factory-> [製作和部署] -> [閘道] -> [serviceUrls] \(在 JSON 中)
-- HDFS 連接器現在支援自我簽署的公開憑證，方法是讓您略過 SSL 驗證。
-- 已修正：更新期間的閘道離線問題 (因為時鐘誤差)
+- 您可以新增 DNS 項目來將「服務匯流排」加入允許清單，而不是將所有 Azure IP 位址都加入防火牆的允許清單 (如有需要)。 您可以在 Azure 入口網站上找到各自的 DNS 項目 (Data Factory-> [製作和部署] -> [閘道] -> [serviceUrls] \(在 JSON 中)
+- HDFS 連接器現在可讓您略過 TLS 驗證，以支援自我簽署的公開憑證。
+- 已修正︰更新期間的閘道離線問題 (因為時鐘誤差)
 
 
 ## <a name="2963132"></a>2.9.6313.2
 ### <a name="enhancements-"></a>增強功能
--   您可以新增 DNS 項目來將「服務匯流排」加入白名單，而不是將所有 Azure IP 位址都加入防火牆的白名單 (如有需要)。 以下提供更多詳細資料。
+-   您可以新增 DNS 項目來將「服務匯流排」加入允許清單，而不是將所有 Azure IP 位址都加入防火牆的允許清單 (如有需要)。 以下提供更多詳細資料。
 -   您現在可以將資料複製到單一區塊 Blob 或從該 Blob 複製資料，Blob 最大可達 4.75 TB，這是區塊 Blob 的最大支援大小。 (之前的上限為 195 GB)。
 -   已修正：在進行複製活動期間將數個較小檔案解壓縮時發生的憶體不足問題。
--   已修正：使用等冪功能從 Document DB 複製到內部部署 SQL Server 時發生的索引超出範圍問題。
--   已修正：來自「複製精靈」的 SQL Server 清除指令碼無法在內部部署 SQL 上運作。
+-   已修正：使用等冪性功能從 Document DB 複製到 SQL Server 時，索引超出範圍的問題。
+-   已修正： SQL 清除腳本無法與複製 Wizard SQL Server 搭配使用。
 -   已修正：結尾含有空格的資料行名稱在複製活動中無法運作。
 
 ## <a name="28662833"></a>2.8.66283.3
@@ -75,7 +73,7 @@ ms.locfileid: "60486459"
 
 
 ## <a name="2561641"></a>2.5.6164.1
-### <a name="enhancements"></a>增強功能
+### <a name="enhancements"></a>功能增強
 - 改進而且更穩固的閘道註冊體驗 - 現在您可以在閘道註冊程序期間追蹤進度狀態，讓註冊體驗回應更加靈敏。
 - 改善閘道還原程序 - 您仍然可以復原閘道，即使您沒有具備這項更新的閘道備份檔案。 需要您重設入口網站中的連結服務認證。
 - 錯誤修正。
@@ -103,7 +101,7 @@ ms.locfileid: "60486459"
 *  支援使用「閘道組態管理員」來設定閘道的 HTTP Proxy。 如果有設定，就會透過 HTTP Proxy 來存取 Azure Blob、「Azure 資料表」、Azure Data Lake 及 DocumentDB。
 *  從 Azure Blob、Azure Data Lake Store、內部部署「檔案系統」及內部部署 HDFS 複製資料，或將資料複製到這些位置時，支援處理 TextFormat 的標頭。
 *  除了已支援的「區塊 Blob」之外，也支援從「附加 Blob」和「分頁 Blob」複製資料。
-*  導入新的閘道狀態「線上 (受限)」 ，此狀態代表除了對「複製精靈」的互動式操作支援之外，閘道的主要功能都可運作。
+*  導入新的閘道狀態「線上 (受限)」 ****，此狀態代表除了對「複製精靈」的互動式操作支援之外，閘道的主要功能都可運作。
 *  使用註冊金鑰增強閘道註冊的健全度。
 
 ## <a name="216040"></a>2.1.6040.
@@ -112,7 +110,7 @@ ms.locfileid: "60486459"
 *  DB2 驅動程式現可支援適用於 i (AS/400) 的 z/OS 和 DB2 以及早已支援的平台 (Linux、Unix 和 Windows)。
 *  支援使用 Azure Cosmos DB 作為內部部署資料存放區的來源或目的地
 *  支援在冷/熱 Blob 儲存體以及早已支援的一般用途儲存體帳戶來回複製資料。
-*  可讓您透過閘道以遠端登入權限連線到內部部署 SQL Server。  
+*  可讓您透過具有遠端登入權利的閘道連接到 SQL Server。  
 
 ## <a name="2060131"></a>2.0.6013.1
 
@@ -127,7 +125,7 @@ ms.locfileid: "60486459"
     *  重新組織並簡化控制項。
 
     *  您可以使用[無程式碼複製工具](data-factory-copy-data-wizard-tutorial.md)儲存體中的資料。 如需此功能的一般詳細資料，請參閱 [分段複製](data-factory-copy-activity-performance.md#staged-copy) 。
-*  您可以使用「資料管理閘道」，將資料從內部部署 SQL Server 資料庫直接輸入到 Azure Machine Learning 中。
+*  您可以使用資料管理閘道，直接從 SQL Server 資料庫將資料輸入 Azure Machine Learning。
 
 *  效能改進
 
@@ -135,7 +133,7 @@ ms.locfileid: "60486459"
 
 ## <a name="11259531"></a>1.12.5953.1
 
-*  錯誤修正
+*  Bug 修正
 
 ## <a name="11159181"></a>1.11.5918.1
 
@@ -149,13 +147,13 @@ ms.locfileid: "60486459"
 
     * 改善無程式碼複製案例中從內部部署伺服器載入大型資料表的效能。
 
-*  錯誤修正
+*  Bug 修正
 
 ## <a name="11058921"></a>1.10.5892.1
 
 *  效能改進
 
-*  錯誤修正
+*  Bug 修正
 
 ## <a name="1958652"></a>1.9.5865.2
 
@@ -166,34 +164,34 @@ ms.locfileid: "60486459"
 *  用來開啟/關閉自動更新的 PowerShell 指令碼
 *  JSON 格式支援  
 *  效能改進
-*  錯誤修正
+*  Bug 修正
 
 ## <a name="1858221"></a>1.8.5822.1
 
 *  改善疑難排解體驗
 *  效能改進
-*  錯誤修正
+*  Bug 修正
 
 ### <a name="1757951"></a>1.7.5795.1
 
 *  效能改進
-*  錯誤修正
+*  Bug 修正
 
 ### <a name="1757641"></a>1.7.5764.1
 
 *  效能改進
-*  錯誤修正
+*  Bug 修正
 
 ### <a name="1657351"></a>1.6.5735.1
 
 *  支援內部部署 HDFS 來源/接收器
 *  效能改進
-*  錯誤修正
+*  Bug 修正
 
 ### <a name="1656961"></a>1.6.5696.1
 
 *  效能改進
-*  錯誤修正
+*  Bug 修正
 
 ### <a name="1656761"></a>1.6.5676.1
 
@@ -204,40 +202,40 @@ ms.locfileid: "60486459"
 *  針對 Azure Data Factory 支援 BlobSink 和 FileSink 中與「二進位複製」相關的 CopyBehavior - MergeFiles、PreserveHierarchy 及 FlattenHierarchy
 *  針對 Azure Data Factory 支援複製活動報告進度
 *  針對 Azure Data Factory 支援資料來源連線驗證
-*  錯誤修正
+*  Bug 修正
 
 ### <a name="1656721"></a>1.6.5672.1
 
 *  針對 Azure Data Factory 支援 ODBC 資料來源的資料表名稱
 *  效能改進
-*  錯誤修正
+*  Bug 修正
 
 ### <a name="1656581"></a>1.6.5658.1
 
 *  針對 Azure Data Factory 支援檔案接收
 *  針對 Azure Data Factory 在二進位複製中支援保留階層
 *  針對 Azure Data Factory 支援複製活動等冪性
-*  錯誤修正
+*  Bug 修正
 
 ### <a name="1656401"></a>1.6.5640.1
 
 *  針對 Azure Data Factory 另外支援 3 種資料來源 (ODBC、OData、HDFS)
 *  針對 Azure Data Factory 在 csv 剖析器中支援引號字元
 *  壓縮支援 (BZip2)
-*  錯誤修正
+*  Bug 修正
 
 ### <a name="1556121"></a>1.5.5612.1
 
 *  針對 Azure Data Factory 支援 5 種關聯式資料庫 (MySQL、PostgreSQL、DB2、Teradata 和 Sybase)
 *  壓縮支援 (Gzip 和 Deflate)
 *  效能改進
-*  錯誤修正
+*  Bug 修正
 
 ### <a name="1455491"></a>1.4.5549.1
 
 *  針對 Azure Data Factory 新增 Oracle 資料來源支援
 *  效能改進
-*  錯誤修正
+*  Bug 修正
 
 ### <a name="1454921"></a>1.4.5492.1
 

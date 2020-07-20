@@ -3,118 +3,198 @@
 - name: 概觀
   items:
     - name: 關於 Azure Digital Twins
-      href: about-digital-twins.md
-- name: 快速入門
-  items:
-    - name: 尋找閒置空間
-      href: quickstart-view-occupancy-dotnet.md
+      href: overview.md
+    - name: 與先前版本之間的差異
+      href: overview-differences.md
 - name: 教學課程
   items:
-    - name: 使用 Digital Twins 監控建築物
-      items:
-        - name: 部署及設定
-          href: tutorial-facilities-setup.md
-        - name: 佈建與監控情況
-          href: tutorial-facilities-udf.md
-        - name: 使用 Logic Apps 發出通知
-          href: tutorial-facilities-events.md
-        - name: 使用 TSI 將活動視覺化
-          href: tutorial-facilities-analyze.md
+    - name: 撰寫用戶端應用程式程式碼
+      href: tutorial-code.md
+    - name: 探索範例用戶端應用程式的基本概念
+      href: tutorial-command-line-app.md
+    - name: 連線端對端解決方案
+      href: tutorial-end-to-end.md
 - name: 概念
   items:
-    - name: Digital Twins 物件模型與空間智慧圖表
-      href: concepts-objectmodel-spatialgraph.md
-    - name: 裝置連線能力與遙測輸入
-      href: concepts-device-ingress.md
-    - name: 資料處理與各項使用者定義功能
-      href: concepts-user-defined-functions.md
-    - name: 活動及訊息路線規劃
-      href: concepts-events-routing.md
-    - name: 公開預覽服務限制
-      href: concepts-service-limits.md
-    - name: 安全性
-      items:
-        - name: 安全性最佳作法
-          href: security-best-practices.md
-        - name: 角色型存取控制
-          href: security-role-based-access-control.md
-        - name: 建立和管理角色指派
-          href: security-create-manage-role-assignments.md
-        - name: 管理 API 驗證
-          href: security-authenticating-apis.md
-- name: 使用說明指南
+    - name: 自訂模型
+      href: concepts-models.md
+    - name: 數位分身和對應項圖形
+      href: concepts-twins-graph.md
+    - name: 查詢語言
+      href: concepts-query-language.md
+    - name: 與其他服務整合
+      href: concepts-integration.md
+    - name: 事件路由
+      href: concepts-route-events.md
+    - name: Azure Digital Twins 解決方案的安全性
+      href: concepts-security.md
+- name: 操作指南
   items:
-    - name: 啟用多租用戶應用程式
-      href: how-to-multitenant-applications.md
-    - name: 建立使用者定義函式
-      href: how-to-user-defined-functions.md
-    - name: 透過端點規劃活動及訊息路線
-      href: how-to-egress-endpoints.md
-    - name: 將 Blob 新增至物件
-      href: how-to-add-blobs.md
-    - name: 使用 Digital Twins Swagger
-      href: how-to-use-swagger.md
-    - name: 偵錯使用者定義函數
-      href: how-to-diagnose-user-defined-functions.md
-    - name: 設定監視
-      href: how-to-configure-monitoring.md
-    - name: 查詢 Digital Twins API
+    - name: 開發
       items:
-        - name: 設定 Postman
-          href: how-to-configure-postman.md
-        - name: 使用 Digital Twins API
-          href: how-to-navigate-apis.md
-        - name: 常見查詢模式
-          href: how-to-query-common-apis.md
+        - name: 使用 API 和 SDK
+          href: how-to-use-apis-sdks.md
+        - name: 使用 AutoRest 建立自訂 SDK
+          href: how-to-create-custom-sdks.md
+    - name: 部署
+      items:
+        - name: 使用 Azure Digital Twins CLI
+          href: how-to-use-cli.md
+        - name: 建立 Azure Digital Twins 執行個體
+          href: how-to-set-up-instance.md
+        - name: 驗證用戶端應用程式
+          href: how-to-authenticate-client.md
+    - name: 設計模型
+      items:
+        - name: 管理自訂模型
+          href: how-to-manage-model.md
+        - name: 剖析和驗證模型
+          href: how-to-use-parser.md
+    - name: 使用即時執行環境
+      items:
+        - name: 管理 Digital Twins
+          href: how-to-manage-twin.md
+        - name: 管理具有關聯性的對應項圖形
+          href: how-to-manage-graph.md
+        - name: 解譯事件資料
+          href: how-to-interpret-event-data.md
+        - name: 設定用來處理資料的 Azure 函式
+          href: how-to-create-azure-function.md
+        - name: 查詢對應項圖形
+          href: how-to-query-graph.md
+    - name: 連線輸入
+      items:
+        - name: 從 IoT 中樞內嵌遙測
+          href: how-to-ingest-iot-hub-data.md
+    - name: 連線輸出
+      items:
+        - name: 管理端點和路由
+          href: how-to-manage-routes.md
+        - name: 與 Azure 地圖服務整合
+          href: how-to-integrate-maps.md
 - name: 參考
   items:
-    - name: 使用者定義函式用戶端程式庫
-      href: reference-user-defined-functions-client-library.md
+    - name: Digital Twins 服務限制
+      href: reference-service-limits.md
+    - name: API 和 SDK
+      items:
+        - name: REST API 參考資料
+          href: 'https://docs.microsoft.com/rest/api/azure-digitaltwins/'
+        - name: 控制平面
+          items:
+            - name: Swagger
+              href: 'https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins'
+            - name: .NET (C#) SDK - NuGet
+              href: 'https://www.nuget.org/packages/Microsoft.Azure.Management.DigitalTwins/1.0.0-preview.1'
+            - name: .NET (C#) SDK - 參考
+              href: 'https://docs.microsoft.com/dotnet/api/overview/azure/digitaltwins/management?view=azure-dotnet-preview'
+            - name: .NET (C#) SDK - 來源
+              href: 'https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Microsoft.Azure.Management.DigitalTwins'
+            - name: Java SDK
+              href: 'https://search.maven.org/artifact/com.microsoft.azure.digitaltwins.v2020_03_01_preview/azure-mgmt-digitaltwins'
+            - name: Java SDK - 參考
+              href: 'https://docs.microsoft.com/java/api/overview/azure/digitaltwins/management?view=azure-java-preview'
+            - name: Java SDK - 來源
+              href: 'https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins'
+            - name: JavaScript SDK
+              href: 'https://www.npmjs.com/package/@azure/arm-digitaltwins'
+            - name: JavaScript SDK - 來源
+              href: 'https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/arm-digitaltwins'
+            - name: Python SDK
+              href: 'https://pypi.org/project/azure-mgmt-digitaltwins/'
+            - name: Python SDK - 來源
+              href: 'https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/digitaltwins/azure-mgmt-digitaltwins'
+            - name: Go SDK - 來源
+              href: 'https://github.com/Azure/azure-sdk-for-go/tree/master/services/preview/digitaltwins/mgmt/2020-03-01-preview/digitaltwins'
+        - name: 資料平面
+          items:
+            - name: Swagger
+              href: 'https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins'
+            - name: .NET (C#) SDK - NuGet
+              href: 'https://www.nuget.org/packages/Azure.DigitalTwins.Core'
+            - name: .NET (C#) SDK - 參考
+              href: 'https://docs.microsoft.com/dotnet/api/overview/azure/digitaltwins?view=azure-dotnet-preview'
+            - name: .NET (C#) SDK - 來源
+              href: 'https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core'
+    - name: Digital Twins CLI
+      items:
+        - name: Digital Twins CLI 參考
+          href: /cli/azure/ext/azure-iot/dt?view=azure-cli-latest
+        - name: CLI 套件
+          href: 'https://github.com/Azure/azure-iot-cli-extension/releases'
+    - name: DTDL
+      items:
+        - name: DTDL v2 規格
+          href: 'https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md'
+        - name: 適用於 VS Code 的 DTDL 擴充功能
+          href: 'https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-dtdl'
+        - name: DTDL 剖析器程式庫 - NuGet
+          href: 'https://www.nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/'
+        - name: DTDL 驗證程式 (範例)
+          href: 'https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator/'
+        - name: DTMI 規格
+          href: 'https://github.com/Azure/digital-twin-model-identifier'
+    - name: 工具和範例專案
+      items:
+        - name: 裝置模擬器服務
+          href: 'https://github.com/Azure/device-simulation-dotnet/tree/master'
+        - name: Azure Digital Twins 範例
+          href: 'https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples/'
+        - name: Azure Digital Twins 總管 (範例)
+          href: 'https://github.com/Azure-Samples/digital-twins-explorer'
+        - name: DTDL 驗證程式 (範例)
+          href: 'https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator/'
+    - name: Azure 工具
+      items:
+        - name: Azure Cloud Shell
+          href: 'https://shell.azure.com'
+        - name: Azure PowerShell
+          href: /powershell/module/az.iothub#iot
+        - name: Azure 入口網站
+          href: 'https://portal.azure.com'
+    - name: Azure RBAC 文件
+      href: /azure/role-based-access-control/overview
+- name: 資源
+  items:
+    - name: 支援和協助選項
+      href: /azure/iot-fundamentals/iot-support-help
+    - name: 客戶案例
+      href: 'https://customers.microsoft.com/en-us/search?sq=%22Azure%20Digital%20Twins%22&ff=&p=0&so=story_publish_date%20desc'
+    - name: Channel 9 影片
+      href: 'https://channel9.msdn.com/Search?term=%22Azure%20Digital%20Twins%22'
+    - name: 客戶資料要求
+      href: resources-customer-data-requests.md
+    - name: 價格與可用性
+      items:
+        - name: 定價
+          href: 'https://azure.microsoft.com/pricing/details/digital-twins'
+        - name: 區域和可用性
+          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins'
 - name: 相關參考
   items:
-    - name: 解決方案
+    - name: 方案
       items:
         - name: IoT 解決方案加速器
-          href: /azure/iot-accelerators
+          href: /azure/iot-suite
         - name: IoT 中心
-          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+          href: /azure/iot-central/core/overview-iot-central
     - name: 平台服務
       items:
         - name: IoT 中樞
           href: /azure/iot-hub
+        - name: IoT 隨插即用
+          href: /azure/iot-pnp
         - name: IoT 中樞裝置佈建服務
           href: /azure/iot-dps
-        - name: IoT 服務 SDK
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
         - name: 地圖
           href: /azure/azure-maps
+        - name: 服務 SDK
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
         - name: 時間序列深入解析
           href: /azure/time-series-insights
-    - name: Edge
+    - name: Edge 解決方案
       items:
         - name: IoT Edge
           href: /azure/iot-edge
         - name: IoT 裝置 SDK
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
-- name: 資源
-  items:
-    - name: 'Azure Digital Twins C# 範例 (.NET)'
-      href: 'https://github.com/Azure-Samples/digital-twins-samples-csharp'
-    - name: Azure Digital Twins REST API
-      href: 'https://docs.westcentralus.azuresmartspaces.net/management/swagger'
-    - name: 價格
-      href: 'https://azure.microsoft.com/pricing/details/digital-twins/'
-    - name: 定價計算機
-      href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: Azure Digital Twins Graph Viewer
-      href: 'https://github.com/Azure/azure-digital-twins-graph-viewer'
-    - name: 堆疊溢位
-      href: 'https://stackoverflow.com/questions/tagged/azure-digital-twins'
-    - name: 客戶案例
-      href: 'https://blogs.microsoft.com/iot/2018/09/24/announcing-azure-digital-twins-create-digital-replicas-of-spaces-and-infrastructure-using-cloud-ai-and-iot/'
-    - name: Azure IoT 開發人員中心
-      href: 'https://azure.microsoft.com/develop/iot/'
-    - name: Azure 藍圖
-      href: 'https://azure.microsoft.com/roadmap/?category=iot'
-    - name: 影片
-      href: 'https://channel9.msdn.com/Search?term=%22Azure%20Digital%20Twins%22&lang-en=true'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks

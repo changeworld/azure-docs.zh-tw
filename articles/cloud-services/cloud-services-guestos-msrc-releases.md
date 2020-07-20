@@ -3,42 +3,665 @@ title: 適用於 Azure 客體 OS 的更新清單 | Microsoft Docs
 description: 適用於 Azure 客體作業系統版次的更新清單
 services: cloud-services
 documentationcenter: na
-author: raiye
+author: yohaddad
 editor: ''
 ms.assetid: d0a272a9-ed01-4f4c-a0b3-bd5e841bdd77
 ms.service: cloud-services
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 5/8/2019
-ms.author: raiye
-ms.openlocfilehash: f63b707f72b6966615d09ef0b86ce3d056a39249
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.date: 6/12/2020
+ms.author: yohaddad
+ms.openlocfilehash: 6cde6470a8e533879de72307b8f00c70f9f165a1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65465560"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84737456"
 ---
 # <a name="azure-guest-os"></a>Azure 客體作業系統
 下表為適用於 Azure 客體作業系統的 Microsoft Security Response Center (MSRC) 更新。 請搜尋本文章以判斷特定更新是否適用於您使用的客體作業系統。 已引進更新的特定[系列][family-explain]會持續推出更新。
 
+## <a name="june-2020-guest-os"></a>2020年6月來賓 OS
+「>[!NOTE]
+>目前正在向已設定為自動更新的雲端服務 Vm 推出6月份的客體作業系統。 推展完成時，我們會透過 Azure 入口網站和組態檔來提供此版本，以便您可以手動更新。 下列修補程式會包含在 4 月客體 OS 中。 此清單會隨時變動。”
+
+
+| 產品類別 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
+| --- | --- | --- | --- | --- |
+|  Rel 20-06  |  [4561603]  |  Internet Explorer  |  2.99、3.86、4.79  |  2020年6月9日  |
+|  Rel 20-06  |  [4561616]  |  最新累計更新 (LCU)  |  5.44  |  2020年6月9日  |
+|  Rel 20-06  |  [4561608]  |  最新累計更新 (LCU)  |  6.20  |  2020年6月9日  |
+|  Rel 20-06  |  [4562030]  |  服務堆疊更新  |  2.99  |  2020年6月9日  |
+|  Rel 20-06  |  [4561643]  |  每月彙總  |  2.99  |  2020年6月9日  |
+|  Rel 20-06  |  [4562252]  |  服務堆疊更新  |  3.86  |  2020年6月9日  |
+|  Rel 20-06  |  [4561612]  |  每月彙總  |  3.86  |  2020年6月9日  |
+|  Rel 20-06  |  [4561600]  |  閃爍  |  3.86、4.79、5.44、6.20  |  2020年6月9日  |
+|  Rel 20-06  |  [4562253]  |  服務堆疊更新  |  4.79  |  2020年6月9日  |
+|  Rel 20-06  |  [4561666]  |  每月彙總  |  4.79  |  2020年6月9日  |
+|  Rel 20-06  |  [4562561]  |  服務堆疊更新  |  5.44  |  2020年6月9日  |
+|  Rel 20-06  |  [4562562]  |  服務堆疊更新  |  6.20  |  2020年6月9日  |
+
+
+
+[4561603]: https://support.microsoft.com/kb/4561603
+[4561616]: https://support.microsoft.com/kb/4561616
+[4561608]: https://support.microsoft.com/kb/4561608
+[4562030]: https://support.microsoft.com/kb/4562030
+[4561643]: https://support.microsoft.com/kb/4561643
+[4562252]: https://support.microsoft.com/kb/4562252
+[4561612]: https://support.microsoft.com/kb/4561612
+[4561600]: https://support.microsoft.com/kb/4561600
+[4562253]: https://support.microsoft.com/kb/4562253
+[4561666]: https://support.microsoft.com/kb/4561666
+[4562561]: https://support.microsoft.com/kb/4562561
+[4562562]: https://support.microsoft.com/kb/4562562
+
+
+## <a name="may-2020-guest-os"></a>2020 年 5 月客體 OS
+
+
+| 產品類別 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
+| --- | --- | --- | --- | --- |
+|  Rel 20-05  |  [4556798]  |  Internet Explorer   |  [2.98]、 [3.85]、 [4.78]  |  2020 年 5 月 12 日  |
+|  Rel 20-05  |  [4556813]  |  最新累計更新 (LCU)   |  [5.43]  |  2020 年 5 月 12 日  |
+|  Rel 20-05  |  [4551853]  |  最新累計更新 (LCU)   |  [6.19]  |  2020 年 5 月 12 日  |
+|  Rel 20-05  |  [4552940]  |  每月彙總   |  [2.98]  |  2020 年 5 月 12 日  |
+|  Rel 20-05  |  [4556836]  |  每月彙總   |  [2.98]  |  2020 年 5 月 12 日  |
+|  Rel 20-05  |  [4555449]  |  服務堆疊更新   |  [2.98]  |  2020 年 5 月 12 日  |
+|  Rel 20-05  |  [4552920]  |  每月彙總   |  [2.98]  |  2020 年 5 月 12 日  |
+|  Rel 20-05  |  [4552979]  |  每月彙總   |  [3.85]  |  2020 年 5 月 12 日  |
+|  Rel 20-05  |  [4556840]  |  每月彙總   |  [3.85]  |  2020 年 5 月 12 日  |
+|  Rel 20-05  |  [4552947]  |  每月彙總   |  [3.85]  |  2020 年 5 月 12 日  |
+|  Rel 20-05  |  [4552982]  |  每月彙總   |  [3.85]  |  2020 年 5 月 12 日  |
+|  Rel 20-05  |  [4552946]  |  每月彙總   |  [4.78]  |  2020 年 5 月 12 日  |
+|  Rel 20-05  |  [4556846]  |  每月彙總   |  [4.78]  |  2020 年 5 月 12 日  |
+|  Rel 20-05  |  [4550994]  |  服務堆疊更新   |  [5.43]  |  2020 年 4 月 14 日  |
+|  Rel 20-05  |  [4552924]  |  每月彙總   |  [6.19]  |  2020 年 5 月 12 日  |
+|  Rel 20-05  |  [4549947]  |  服務堆疊更新   |  [6.19]  |  2020 年 4 月 14 日  |
+
+
+[4556798]: https://support.microsoft.com/kb/4556798
+[4556813]: https://support.microsoft.com/kb/4556813
+[4551853]: https://support.microsoft.com/kb/4551853
+[4552940]: https://support.microsoft.com/kb/4552940
+[4556836]: https://support.microsoft.com/kb/4556836
+[4555449]: https://support.microsoft.com/kb/4555449
+[4552920]: https://support.microsoft.com/kb/4552920
+[4552979]: https://support.microsoft.com/kb/4552979
+[4556840]: https://support.microsoft.com/kb/4556840
+[4552947]: https://support.microsoft.com/kb/4552947
+[4552982]: https://support.microsoft.com/kb/4552982
+[4552946]: https://support.microsoft.com/kb/4552946
+[4556846]: https://support.microsoft.com/kb/4556846
+[4550994]: https://support.microsoft.com/kb/4550994
+[4552924]: https://support.microsoft.com/kb/4552924
+[4549947]: https://support.microsoft.com/kb/4549947
+[2.98]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+[3.85]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
+[4.78]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
+[5.43]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
+[6.19]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
+
+
+## <a name="april-2020-guest-os"></a>2020 年 4 月客體 OS
+
+
+| 產品類別 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
+| --- | --- | --- | --- | --- |
+|  Rel 20-04   |  [4550965]  |  Windows 安全性   |  [2.97]  |  2020 年 4 月 14 日  |
+|  Rel 20-04   |  [4550905]  |  Internet Explorer   |  [2.97]、[3.84]、[4.77]  |  2020 年 4 月 14 日  |
+|  Rel 20-04   |  [4550971]  |  Windows 安全性   |  [3.84]  |  2020 年 4 月 14 日  |
+|  Rel 20-04   |  [4550970]  |  Windows 安全性   |  [4.77]  |  2020 年 4 月 14 日  |
+|  Rel 20-04   |  [4550929]  |  最新累計更新 (LCU)   |  [5.42]  |  2020 年 4 月 14 日  |
+|  Rel 20-04   |  [4549949]  |  最新累計更新 (LCU)   |  [6.18]  |  2020 年 4 月 14 日  |
+|  Rel 20-04   |  [4540688]  |  每月彙總   |  [2.97]  |  2020 年 3 月 10 日  |
+|  Rel 20-04   |  [4550735]  |  服務堆疊更新   |  [2.97]  |  2020 年 3 月 10 日  |
+|  Rel 20-04   |  [4540726]  |  服務堆疊更新   |  [3.84]  |  2020 年 3 月 10 日  |
+|  Rel 20-04   |  [4541510]  |  每月彙總   |  [3.84]  |  2020 年 3 月 10 日  |
+|  Rel 20-04   |  [4541509]  |  每月彙總   |  [4.77]  |  2020 年 3 月 10 日  |
+|  Rel 20-04   |  [4540725]  |  服務堆疊更新   |  [4.77]  |  2020 年 3 月 10 日  |
+|  Rel 20-04   |  [4540723]  |  服務堆疊更新   |  [5.42]  |  2020 年 3 月 10 日  |
+|  Rel 20-04   |  [4539571]  |  服務堆疊更新   |  [6.18]  |  2020 年 3 月 10 日  |
+
+
+[4550965]: https://support.microsoft.com/kb/4550965
+[4550905]: https://support.microsoft.com/kb/4550905
+[4550971]: https://support.microsoft.com/kb/4550971
+[4550970]: https://support.microsoft.com/kb/4550970
+[4550929]: https://support.microsoft.com/kb/4550929
+[4549949]: https://support.microsoft.com/kb/4549949
+[4540688]: https://support.microsoft.com/kb/4540688
+[4550735]: https://support.microsoft.com/kb/4550735
+[4540726]: https://support.microsoft.com/kb/4540726
+[4541510]: https://support.microsoft.com/kb/4541510
+[4541509]: https://support.microsoft.com/kb/4541509
+[4540725]: https://support.microsoft.com/kb/4540725
+[4540723]: https://support.microsoft.com/kb/4540723
+[4539571]: https://support.microsoft.com/kb/4539571
+[2.97]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+[3.84]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
+[4.77]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
+[5.42]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
+[6.18]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
+
+
+## <a name="march-2020-guest-os"></a>2020 年 3 月客體 OS
+
+| 產品類別 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
+| --- | --- | --- | --- | --- |
+|  Rel 20-03  |  [4541500]  |  Windows 安全性  | [2.96] | 2020 年 3 月 10 日 |
+|  Rel 20-03  |  [4540671]  |  Internet Explorer  | [2.96]、[3.83]、[4.76] | 2020 年 3 月 10 日 |
+|  Rel 20-03  |  [4540694]  |  Windows 安全性  | [3.83] | 2020 年 3 月 10 日 |
+|  Rel 20-03  |  [4541505]  |  Windows 安全性  | [4.76] | 2020 年 3 月 10 日 |
+|  Rel 20-03  |  [4540670]  |  最新累計更新 (LCU)  | [5.41] | 2020 年 3 月 10 日 |
+|  Rel 20-03  |  [4538461]  |  最新累計更新 (LCU)  | [6.17] | 2020 年 3 月 10 日 |
+|  Rel 20-03  |  [4537820]  |  每月彙總  | [2.96] | 2020 年 2 月 11 日 |
+|  Rel 20-03  |  [4537814]  |  每月彙總  | [3.83] | 2020 年 2 月 11 日 |
+|  Rel 20-03  |  [4537821]  |  每月彙總  | [4.76] | 2020 年 2 月 11 日 |
+
+[4541500]: https://support.microsoft.com/kb/4541500 
+[4540671]: https://support.microsoft.com/kb/4540671 
+[4540694]: https://support.microsoft.com/kb/4540694 
+[4541505]: https://support.microsoft.com/kb/4541505 
+[4540670]: https://support.microsoft.com/kb/4540670 
+[4538461]: https://support.microsoft.com/kb/4538461 
+[4537820]: https://support.microsoft.com/kb/4537820  
+[4537814]: https://support.microsoft.com/kb/4537814 
+[4537821]: https://support.microsoft.com/kb/4537821 
+
+[6.17]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
+[5.41]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
+[4.76]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
+[3.83]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
+[2.96]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+
+
+## <a name="february-2020-guest-os"></a>2020 年 2 月客體 OS
+
+| 產品類別 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
+| --- | --- | --- | --- | --- |
+|  Rel 20-02  |  [4537767]  |  Internet Explorer  |  [2.95]、[3.82]、[4.75]  |  2020 年 2 月 11 日  |
+|  Rel 20-02  |  [4537813]  |  Windows 安全性  |  [2.95]  |  2020 年 2 月 11 日  |
+|  Rel 20-02  |  [4537794]  |  Windows 安全性  |  [3.82]  |  2020 年 2 月 11 日  |
+|  Rel 20-02  |  [4537803]  |  Windows 安全性  |  [4.75]  |  2020 年 2 月 11 日  |
+|  Rel 20-02  |  [4537764]  |  最新累計更新 (LCU)  |  [5.40]  |  2020 年 2 月 11 日  |
+|  Rel 20-02  |  [4532691]  |  最新累計更新 (LCU)  |  [6.16]  |  2020 年 2 月 11 日  |
+|  Rel 20-02  |  [4534310]  |  每月彙總  |  [2.95]  |  2020 年 1 月 14 日  |
+|  Rel 20-02  |  [4536952]  |  服務堆疊更新 (SSU)  |  [2.95]  |  2020 年 1 月 14 日  |
+|  Rel 20-02  |  [4537829]  |  服務堆疊更新 (SSU)  |  [2.95]  |  2020 年 2 月 11 日  |
+|  Rel 20-02  |  [4538483]  |  延伸安全性更新 (ESU)  |  [2.95]  |  2020 年 2 月 11 日  |
+|  Rel 20-02  |  [4537820]  |  每月彙總  |  [2.95]  |  2020 年 2 月 11 日  |
+|  Rel 20-02  |  [4537759]  |  安全性更新 (Flash)  |  [3.82]、[4.75]  |  2020 年 2 月 11 日  |
+|  Rel 20-02  |  [4534283]  |  每月彙總  |  [3.82]  |  2020 年 1 月 14 日  |
+|  Rel 20-02  |  [4532920]  |  服務堆疊更新 (SSU)  |  [3.82]  |  2020 年 12 月 10 日  |
+|  Rel 20-02  |  [4534297]  |  非安全性  |  [4.75]  |  2020 年 1 月 14 日  |
+
+[4537767]: https://support.microsoft.com/kb/4537767
+[4537813]: https://support.microsoft.com/kb/4537813
+[4537794]: https://support.microsoft.com/kb/4537794
+[4537803]: https://support.microsoft.com/kb/4537803
+[4537764]: https://support.microsoft.com/kb/4537764
+[4532691]: https://support.microsoft.com/kb/4532691
+[4534310]: https://support.microsoft.com/kb/4534310
+[4536952]: https://support.microsoft.com/kb/4536952
+[4537829]: https://support.microsoft.com/kb/4537829
+[4538483]: https://support.microsoft.com/kb/4538483
+[4537820]: https://support.microsoft.com/kb/4537820
+[4537759]: https://support.microsoft.com/kb/4537759
+[4534283]: https://support.microsoft.com/kb/4534283
+[4532920]: https://support.microsoft.com/kb/4532920
+[4534297]: https://support.microsoft.com/kb/4534297
+
+[6.16]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
+[5.40]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
+[4.75]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
+[3.82]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
+[2.95]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+
+
+## <a name="january-2020-guest-os"></a>2020 年 1 月客體 OS
+
+| 產品類別 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
+| --- | --- | --- | --- | --- |
+|  Rel 20-01  |  [4532960]  |  Windows 安全性  | [2.94] | 2020 年 1 月 14 日 |
+|  Rel 20-01  |  [4534251]  |  Internet Explorer  | [2.94] | 2020 年 1 月 14 日 |
+|  Rel 20-01  |  [4534314]  |  Windows 安全性  | [2.94] | 2020 年 1 月 14 日 |
+|  Rel 20-01  |  [4532958]  |  Windows 安全性  | [3.81] | 2020 年 1 月 14 日 |
+|  Rel 20-01  |  [4532963]  |  Windows 安全性  | [3.81] | 2020 年 1 月 14 日 |
+|  Rel 20-01  |  [4534251]  |  Internet Explorer  | [3.81] | 2020 年 1 月 14 日 |
+|  Rel 20-01  |  [4534288]  |  Windows 安全性  | [3.81] | 2020 年 1 月 14 日 |
+|  Rel 20-01  |  [4532961]  |  Windows 安全性  | [4.74] | 2020 年 1 月 14 日 |
+|  Rel 20-01  |  [4532962]  |  Windows 安全性  | [4.74] | 2020 年 1 月 14 日 |
+|  Rel 20-01  |  [4534251]  |  Internet Explorer  | [4.74] | 2020 年 1 月 14 日 |
+|  Rel 20-01  |  [4534309]  |  Windows 安全性  | [4.74] | 2020 年 1 月 14 日 |
+|  Rel 20-01  |  [4494175]  |  Microcode v3  | [5.39] | 2019 年 8 月 29 日 |
+|  Rel 20-01  |  [4534271]  |  LCU  | [5.39] | 2020 年 1 月 14 日 |
+|  Rel 20-01  |  [4494174]  |  Microcode v4  | [6.15] | 2019 年 8 月 29 日 |
+|  Rel 20-01  |  [4532947]  |  Windows 安全性  | [6.15] | 2020 年 1 月 14 日 |
+|  Rel 20-01  |  [4534273]  |  LCU  | [6.15] | 2020 年 1 月 14 日 |
+|  Rel 20-01  |  [4530734]  |  每月彙總  | [2.94] | 2019 年 12 月 10 日 |
+|  Rel 20-01  |  [4530691]  |  每月彙總   | [3.81] | 2019 年 12 月 10 日 |
+|  Rel 20-01  |  [4530702]  |  每月彙總  | [4.74] | 2019 年 12 月 10 日 |
+
+[4532960]: https://support.microsoft.com/kb/4532960
+[4534251]: https://support.microsoft.com/kb/4534251
+[4534314]: https://support.microsoft.com/kb/4534314
+[4532958]: https://support.microsoft.com/kb/4532958
+[4532963]: https://support.microsoft.com/kb/4532963
+[4534251]: https://support.microsoft.com/kb/4534251
+[4534288]: https://support.microsoft.com/kb/4534288
+[4532961]: https://support.microsoft.com/kb/4532961
+[4532962]: https://support.microsoft.com/kb/4532962
+[4534251]: https://support.microsoft.com/kb/4534251
+[4534309]: https://support.microsoft.com/kb/4534309
+[4494175]: https://support.microsoft.com/kb/4494175
+[4534271]: https://support.microsoft.com/kb/4534271
+[4494174]: https://support.microsoft.com/kb/4494174
+[4532947]: https://support.microsoft.com/kb/4532947
+[4534273]: https://support.microsoft.com/kb/4534273
+[4530734]: https://support.microsoft.com/kb/4530734
+[4530691]: https://support.microsoft.com/kb/4530691
+[4530702]: https://support.microsoft.com/kb/4530702
+[6.15]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
+[5.39]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
+[4.74]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
+[3.81]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
+[2.94]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+
+
+## <a name="december-2019-guest-os"></a>2019 年 12 月客體 OS
+
+| 產品類別 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
+| --- | --- | --- | --- | --- |
+|  Rel 19-12  |  [4530692]  |  Windows 安全性  | [2.93] | 2019 年 12 月 10 日 |
+|  Rel 19-12  |  [4530677]  |  Internet Explorer  | [2.93] | 2019 年 12 月 10 日 |
+|  Rel 19-12  |  [4530677]  |  Internet Explorer  | [3.80] | 2019 年 12 月 10 日 |
+|  Rel 19-12  |  [4530698]  |  Windows 安全性  | [3.80] | 2019 年 12 月 10 日 |
+|  Rel 19-12  |  [4530730]  |  Windows 安全性  | [4.73] | 2019 年 12 月 10 日 |
+|  Rel 19-12  |  [4530677]  |  Internet Explorer  | [4.73] | 2019 年 12 月 10 日 |
+|  Rel 19-12  |  [4530689]  |  最新累計更新  | [5.38] | 2019 年 12 月 10 日 |
+|  Rel 19-12  |  [4530715]  |  最新累計更新  | [6.14] | 2019 年 12 月 10 日 |
+|  Rel 19-12  |  [4525235]  |  非安全性  | [2.93] | 2019 年 11 月 12 日 |
+|  Rel 19-12  |  [4531786]  |  服務堆疊更新  | [2.93] | 2019 年 12 月 10 日 |
+|  Rel 19-12  |  [4525246]  |  非安全性  | [3.80] | 2019 年 11 月 12 日 |
+|  Rel 19-12  |  [4523208]  |  服務堆疊更新  | [3.80] | 2019 年 11 月 12 日 |
+|  Rel 19-12  |  [4525243]  |  非安全性  | [4.73] | 2019 年 11 月 12 日 |
+|  Rel 19-12  |  [4524445]  |  服務堆疊更新  | [4.73] | 2019 年 11 月 12 日 |
+|  Rel 19-12  |  [4520724]  |  服務堆疊更新  | [5.38] | 2019 年 11 月 12 日 |
+|  Rel 19-12  |  [4523204]  |  ServicingStackUpdate  | [6.14] | 2019 年 11 月 12 日 |
+
+[4530692]: https://support.microsoft.com/kb/4530692
+[4530677]: https://support.microsoft.com/kb/4530677
+[4530677]: https://support.microsoft.com/kb/4530677
+[4530698]: https://support.microsoft.com/kb/4530698
+[4530730]: https://support.microsoft.com/kb/4530730
+[4530677]: https://support.microsoft.com/kb/4530677
+[4530689]: https://support.microsoft.com/kb/4530689
+[4530715]: https://support.microsoft.com/kb/4530715
+[4525235]: https://support.microsoft.com/kb/4525235
+[4531786]: https://support.microsoft.com/kb/4531786
+[4525246]: https://support.microsoft.com/kb/4525246
+[4523208]: https://support.microsoft.com/kb/4523208
+[4525243]: https://support.microsoft.com/kb/4525243
+[4524445]: https://support.microsoft.com/kb/4524445
+[4520724]: https://support.microsoft.com/kb/4520724
+[4523204]: https://support.microsoft.com/kb/4523204
+[6.14]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
+[5.38]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
+[4.73]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
+[3.80]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
+[2.93]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+
+
+
+## <a name="november-2019-guest-os"></a>2019 年 11 月客體 OS
+
+| 產品類別 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
+| --- | --- | --- | --- | --- |
+|  Rel 19-11   |  [4525106]  |  Internet Explorer   |  [2.92]  |  2019 年 11 月 12 日  |
+|  Rel 19-11   |  [4525233]  |  Windows 安全性   |  [2.92]  |  2019 年 11 月 12 日  |
+|  Rel 19-11   |  [4525106]  |  Internet Explorer   |  [3.79]  |  2019 年 11 月 12 日  |
+|  Rel 19-11   |  [4525253]  |  Windows 安全性   |  [3.79]  |  2019 年 11 月 12 日  |
+|  Rel 19-11   |  [4525106]  |  Internet Explorer   |  [4.72]  |  2019 年 11 月 12 日  |
+|  Rel 19-11   |  [4525250]  |  Windows 安全性   |  [4.72]  |  2019 年 11 月 12 日  |
+|  Rel 19-11   |  [4525236]  |  最新累計更新   |  [5.37]  |  2019 年 11 月 12 日  |
+|  Rel 19-11   |  [4523205]  |  最新累計更新   |  [6.13]  |  2019 年 11 月 12 日  |
+|  Rel 19-11   |  [4519976]  |  非安全性   |  [2.92]  |  2019 年 10 月 8 日  |
+|  Rel 19-11   |  [4520007]  |  非安全性   |  [3.79]  |  2019 年 10 月 8 日  |
+|  Rel 19-11   |  [4521857]  |  ServicingStackUpdate   |  [3.79]  |  2019 年 10 月 8 日  |
+|  Rel 19-11   |  [4520005]  |  非安全性   |  [4.72]  |  2019 年 10 月 8 日  |
+|  Rel 19-11   |  [4521864]  |  ServicingStackUpdate   |  [4.72]  |  2019 年 10 月 8 日  |
+|  Rel 19-11   |  [4521858]  |  ServicingStackUpdate   |  [5.37]  |  2019 年 10 月 8 日  |
+|  Rel 19-11   |  [4521862]  |  ServicingStackUpdate   |  [6.13]  |  2019 年 10 月 8 日  |
+
+[4525106]: https://support.microsoft.com/kb/4525106
+[4525233]: https://support.microsoft.com/kb/4525233
+[4525106]: https://support.microsoft.com/kb/4525106
+[4525253]: https://support.microsoft.com/kb/4525253
+[4525106]: https://support.microsoft.com/kb/4525106
+[4525250]: https://support.microsoft.com/kb/4525250
+[4525236]: https://support.microsoft.com/kb/4525236
+[4523205]: https://support.microsoft.com/kb/4523205
+[4519976]: https://support.microsoft.com/kb/4519976
+[4520007]: https://support.microsoft.com/kb/4520007
+[4521857]: https://support.microsoft.com/kb/4521857
+[4520005]: https://support.microsoft.com/kb/4520005
+[4521864]: https://support.microsoft.com/kb/4521864
+[4521858]: https://support.microsoft.com/kb/4521858
+[4521862]: https://support.microsoft.com/kb/4521862
+[6.13]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
+[5.37]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
+[4.72]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
+[3.79]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
+[2.92]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+
+
+## <a name="october-2019-guest-os"></a>2019 年 10 月客體 OS
+
+| 產品類別 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
+| --- | --- | --- | --- | --- |
+|  Rel 19-10   |  [4520003]  |  Windows 安全性   |  [2.91]  |  2019 年 10 月 8 日  |
+|  Rel 19-10   |  [4519985]  |  Windows 安全性   |  [3.78]  |  2019 年 10 月 8 日  |
+|  Rel 19-10   |  [4519990]  |  Windows 安全性   |  [4.71]  |  2019 年 10 月 8 日  |
+|  Rel 19-10   |  [4519998]  |  最新累計更新   |  [5.36]  |  2019 年 10 月 8 日  |
+|  Rel 19-10   |  [4519338]  |  最新累計更新   |  [6.12]  |  2019 年 10 月 8 日  |
+|  Rel 19-10   |  [4519974]  |  Internet Explorer   |  [2.91]、[3.78]、[4.71]  |  2019 年 10 月 8 日  |
+|  Rel 19-10   |  [4516065]  |  非安全性   |  [2.91]  |  2019 年 9 月 10 日  |
+|  Rel 19-10   |  [4516655]  |  SSU   |  [2.91]  |  2019 年 9 月 10 日  |
+|  Rel 19-10   |  [4516055]  |  非安全性   |  [3.78]  |  2019 年 9 月 10 日  |
+|  Rel 19-10   |  [4512939]  |  SSU   |  [3.78]  |  2019 年 9 月 10 日  |
+|  Rel 19-10   |  [4514370]  |  .Net Framework 3.5   |  [3.78]  |  2019 年 9 月 10 日  |
+|  Rel 19-10   |  [4514368]  |  .Net Framework 4.5.2   |  [3.78]  |  2019 年 9 月 10 日  |
+|  Rel 19-10   |  [4516067]  |  非安全性   |  [4.71]  |  2019 年 9 月 10 日  |
+|  Rel 19-10   |  [4512938]  |  SSU   |  [4.71]  |  2019 年 9 月 10 日  |
+|  Rel 19-10   |  [4514371]  |  .Net Framework 3.5   |  [4.71]  |  2019 年 9 月 10 日  |
+|  Rel 19-10   |  [4514367]  |  .Net Framework 4.5.2   |  [4.71]  |  2019 年 9 月 10 日  |
+|  Rel 19-10   |  [4512574]  |  SSU   |  [5.36]  |  2019 年 9 月 10 日  |
+|  Rel 19-10   |  [4512577]  |  SSU   |  [6.12]  |  2019 年 9 月 10 日  |
+
+[4520003]: https://support.microsoft.com/kb/4520003
+[4519985]: https://support.microsoft.com/kb/4519985
+[4519990]: https://support.microsoft.com/kb/4519990
+[4519998]: https://support.microsoft.com/kb/4519998
+[4519338]: https://support.microsoft.com/kb/4519338
+[4519974]: https://support.microsoft.com/kb/4519974
+[4516065]: https://support.microsoft.com/kb/4516065
+[4516655]: https://support.microsoft.com/kb/4516655
+[4516055]: https://support.microsoft.com/kb/4516055
+[4512939]: https://support.microsoft.com/kb/4512939
+[4514370]: https://support.microsoft.com/kb/4514370
+[4514368]: https://support.microsoft.com/kb/4514368
+[4516067]: https://support.microsoft.com/kb/4516067
+[4512938]: https://support.microsoft.com/kb/4512938
+[4514371]: https://support.microsoft.com/kb/4514371
+[4514367]: https://support.microsoft.com/kb/4514367
+[4512574]: https://support.microsoft.com/kb/4512574
+[4512577]: https://support.microsoft.com/kb/4512577
+
+[6.12]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
+[5.36]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
+[4.71]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
+[3.78]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
+[2.91]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+
+
+## <a name="september-2019-guest-os"></a>2019 年 9 月客體 OS
+
+| 產品類別 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
+| --- | --- | --- | --- | --- |
+|  Rel 19-09   |  [4516046]  |  Internet Explorer   |  [2.90]、[3.77]、[4.70]  |  2019 年 9 月 10 日  |
+|  Rel 19-09   |  [4516115]  |  閃爍   |  [2.90]、[3.77]、[4.70]、[5.35]、[6.11]  |  2019 年 9 月 10 日  |
+|  Rel 19-09   |  [4512578]  |  最新累計更新   |  [6.11]  |  2019 年 9 月 10 日  |
+|  Rel 19-09   |  [4514366]  |  .NET Framework 3.5 和 4.7.2   |  [6.11]  |  2019 年 9 月 10 日  |
+|  Rel 19-09   |  [4516044]  |  最新累計更新   |  [5.35]  |  2019 年 9 月 10 日  |
+|  Rel 19-09   |  [4516064]  |  Windows 安全性   |  [4.70]  |  2019 年 9 月 10 日  |
+|  Rel 19-09   |  [4514350]  |  .NET Framework 3.5   |  [4.70]  |  2019 年 9 月 10 日  |
+|  Rel 19-09   |  [4514341]  |  .NET Framework 4.5.2   |  [4.70]  |  2019 年 9 月 10 日  |
+|  Rel 19-09   |  [4516062]  |  Windows 安全性   |  [3.77]  |  2019 年 9 月 10 日  |
+|  Rel 19-09   |  [4514349]  |  .NET Framework 3.5   |  [3.77]  |  2019 年 9 月 10 日  |
+|  Rel 19-09   |  [4514342]  |  .NET Framework 4.5.2   |  [3.77]  |  2019 年 9 月 10 日  |
+|  Rel 19-09   |  [4516033]  |  Windows 安全性   |  [2.90]  |  2019 年 9 月 12 日  |
+|  Rel 19-09   |  [4512488]  |  非安全性   |  [4.70]  |  2019 年 8 月 13 日  |
+|  Rel 19-09   |  [4512518]  |  非安全性   |  [3.77]  |  2019 年 8 月 13 日  |
+|  Rel 19-09   |  [4512506]  |  非安全性   |  [2.90]  |  2019 年 8 月 13 日  |
+
+[4516046]: https://support.microsoft.com/kb/4516046
+[4516115]: https://support.microsoft.com/kb/4516115
+[4512578]: https://support.microsoft.com/kb/4512578
+[4514366]: https://support.microsoft.com/kb/4514366
+[4516044]: https://support.microsoft.com/kb/4516044
+[4516064]: https://support.microsoft.com/kb/4516064
+[4514350]: https://support.microsoft.com/kb/4514350
+[4514341]: https://support.microsoft.com/kb/4514341
+[4516062]: https://support.microsoft.com/kb/4516062
+[4514349]: https://support.microsoft.com/kb/4514349
+[4514342]: https://support.microsoft.com/kb/4514342
+[4516033]: https://support.microsoft.com/kb/4516033
+[4512488]: https://support.microsoft.com/kb/4512488
+[4512518]: https://support.microsoft.com/kb/4512518
+[4512506]: https://support.microsoft.com/kb/4512506
+[6.11]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
+[5.35]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
+[4.70]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
+[3.77]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
+[2.90]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+
+
+## <a name="august-2019-guest-os"></a>2019 年 8 月客體 OS
+
+| 產品類別 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
+| --- | --- | --- | --- | --- |
+|  Rel 19-08   |  [4512482]  |  Windows 安全性   |  [3.76]  |  2019 年 8 月 13 日  |
+|  Rel 19-08   |  [4494175]  |  Microcode 更新   |  [5.34]  |  2019 年 6 月 18 日  |
+|  Rel 19-08   |  [4512517]  |  最新累計更新   |  [5.34]  |  2019 年 8 月 13 日  |
+|  Rel 19-08   |  [4494174]  |  Microcode 更新   |  [6.1]  |  2019 年 6 月 18 日  |
+|  Rel 19-08   |  [4511553]  |  最新累計更新   |  [6.1]  |  2019 年 8 月 13 日  |
+|  Rel 19-08   |  [4512486]  |  Windows 安全性   |  [2.89]  |  2019 年 8 月 13 日  |
+|  Rel 19-08   |  [4512489]  |  Windows 安全性   |  [4.69]  |  2019 年 8 月 13 日  |
+|  Rel 19-08   |  [4511872]  |  Internet Explorer    |  [2.89]、[3.76]、[4.69]  |  2019 年 8 月 15 日  |
+|  Rel 19-08   |  [4507449]  |  非安全性   |  [2.89]  |  2019 年 7 月 9 日  |
+|  Rel 19-08   |  [4507000]  |  .NET 4.5.2 非安全性   |  [3.76]  |  2019 年 8 月 12 日  |
+|  Rel 19-08   |  [4507002]  |  .NET 3.5 非安全性   |  [3.76]  |  2019 年 8 月 12 日  |
+|  Rel 19-08   |  [4507462]  |  非安全性   |  [3.76]  |  2019 年 7 月 9 日  |
+|  Rel 19-08   |  [4506999]  |  .NET 4.5.2 非安全性    |  [4.69]  |  2019 年 8 月 12 日  |
+|  Rel 19-08   |  [4507005]  |  .NET 3.5 非安全性    |  [4.69]  |  2019 年 8 月 12 日  |
+|  Rel 19-08   |  [4507448]  |  非安全性   |  [4.69]  |  2019 年 7 月 9 日  |
+|  Rel 19-08   |  [4509091]  |  服務堆疊更新   |  [5.34]  |  2019 年 7 月 9 日  |
+|  Rel 19-08   |  [4509095]  |  服務堆疊更新   |  [6.1]  |  2019 年 7 月 9 日  |
+|  Rel 19-08   |  [4512937]  |  服務堆疊更新   |  [6.1]  |  2019 年 7 月 29 日  |
+|  Rel 19-08   |  [4507004]  |  .NET 3.5.1 非安全性    |  [2.89]  |  2019 年 8 月 12 日  |
+|  Rel 19-08   |  [4504418]  |  服務堆疊更新   |  [3.76]、[4.69]  |  2019 年 7 月 11 日  |
+|  Rel 19-08   |  [4507001]  |  .NET 4.5.2 非安全性   |  [2.89]  |  2019 年 8 月 12 日  |
+|  Rel 19-08   |  [4507704]  |  適用於巴西和摩洛哥的 Windows DST 設定   |  [2.89]、[3.76]、[4.69]、[5.34]  |  2019 年 8 月 13 日  |
+
+[4512482]: https://support.microsoft.com/kb/4512482
+[4494175]: https://support.microsoft.com/kb/4494175
+[4512517]: https://support.microsoft.com/kb/4512517
+[4494174]: https://support.microsoft.com/kb/4494174
+[4511553]: https://support.microsoft.com/kb/4511553
+[4512486]: https://support.microsoft.com/kb/4512486
+[4512489]: https://support.microsoft.com/kb/4512489
+[4511872]: https://support.microsoft.com/kb/4511872
+[4507449]: https://support.microsoft.com/kb/4507449
+[4507000]: https://support.microsoft.com/kb/4507000
+[4507002]: https://support.microsoft.com/kb/4507002
+[4507462]: https://support.microsoft.com/kb/4507462
+[4506999]: https://support.microsoft.com/kb/4506999
+[4507005]: https://support.microsoft.com/kb/4507005
+[4507448]: https://support.microsoft.com/kb/4507448
+[4509091]: https://support.microsoft.com/kb/4509091
+[4509095]: https://support.microsoft.com/kb/4509095
+[4512937]: https://support.microsoft.com/kb/4512937
+[4507004]: https://support.microsoft.com/kb/4507004
+[4504418]: https://support.microsoft.com/kb/4504418
+[4507001]: https://support.microsoft.com/kb/4507001
+[4507704]: https://support.microsoft.com/kb/4507704
+
+[6.1]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
+[5.34]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
+[4.69]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
+[3.76]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
+[2.89]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+
+
+## <a name="july-2019-guest-os"></a>2019 年 7 月客體 OS
+
+| 產品類別 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
+| --- | --- | --- | --- | --- |
+|  Rel 19-07   |  [4507434]  |  Internet Explorer   |  2.88、3.75、4.68  |  2019 年 7 月 9 日  |
+|  Rel 19-07   |  [4506966]  |  .NET 4.5.2 安全性   |  2.88  |  2019 年 7 月 9 日  |
+|  Rel 19-07   |  [4506976]  |  .NET 3.5.1 安全性   |  2.88  |  2019 年 7 月 9 日  |
+|  Rel 19-07   |  [4507456]  |  Windows 安全性   |  2.88  |  2019 年 7 月 9 日  |
+|  Rel 19-07   |  [4506965]  |  .NET 4.5.2 安全性   |  3.75  |  2019 年 7 月 9 日  |
+|  Rel 19-07   |  [4506974]  |  .NET 3.5 安全性   |  3.75  |  2019 年 7 月 9 日  |
+|  Rel 19-07   |  [4507464]  |  Windows 安全性   |  3.75  |  2019 年 7 月 9 日  |
+|  Rel 19-07   |  [4506964]  |  .NET 4.5.2 安全性   |  4.68  |  2019 年 7 月 9 日  |
+|  Rel 19-07   |  [4506977]  |  .NET 3.5 安全性   |  4.68  |  2019 年 7 月 9 日  |
+|  Rel 19-07   |  [4507457]  |  Windows 安全性   |  4.68  |  2019 年 7 月 9 日  |
+|  Rel 19-07   |  [4507460]  |  Windows 安全性   |  5.33  |  2019 年 7 月 9 日  |
+|  Rel 19-07   |  [4506998]  |  .NET 3.5 & 4.7.2 安全性   |  6.9  |  2019 年 7 月 9 日  |
+|  Rel 19-07   |  [4507469]  |  Windows 安全性   |  6.9  |  2019 年 7 月 9 日  |
+|  N/A  |  [4503537]  |  2019 年 6 月的服務堆疊更新 (伺服器 2016)   |  5.33  |  2019 年 5 月 14 日  |
+|  N/A  |  [4504369]  |  2019 年 6 月的服務堆疊更新 (伺服器 2019)   |  6.9  |  2019 年 5 月 14 日  |
+|  N/A  |  [4503292]  |  2019 年 6 月非安全性 (伺服器 2008 R2)   |  2.88  |  2019 年 5 月 20 日  |
+|  N/A  |  [4503285]  |  2019 年 6 月非安全性 (伺服器 2012)   |  3.75  |  2019 年 5 月 14 日  |
+|  N/A  |  [4503276]  |  2019 年 6 月非安全性 (伺服器 2012 R2)   |  4.68  |  2019 年 5 月 14 日  |
+
+[4507434]: https://support.microsoft.com/kb/4507434
+[4506621]: https://support.microsoft.com/kb/4506621
+[4506966]: https://support.microsoft.com/kb/4506966
+[4506976]: https://support.microsoft.com/kb/4506976
+[4507456]: https://support.microsoft.com/kb/4507456
+[4506965]: https://support.microsoft.com/kb/4506965
+[4506974]: https://support.microsoft.com/kb/4506974
+[4507464]: https://support.microsoft.com/kb/4507464
+[4506964]: https://support.microsoft.com/kb/4506964
+[4506977]: https://support.microsoft.com/kb/4506977
+[4507457]: https://support.microsoft.com/kb/4507457
+[4507460]: https://support.microsoft.com/kb/4507460
+[4506998]: https://support.microsoft.com/kb/4506998
+[4507469]: https://support.microsoft.com/kb/4507469
+[4503537]: https://support.microsoft.com/kb/4503537
+[4504369]: https://support.microsoft.com/kb/4504369
+[4503292]: https://support.microsoft.com/kb/4503292
+[4503285]: https://support.microsoft.com/kb/4503285
+[4503276]: https://support.microsoft.com/kb/4503276
+
+
+## <a name="june-2019-guest-os"></a>2019 年 6 月客體 OS
+
+| 產品類別 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
+| --- | --- | --- | --- | --- |
+|  Rel 19-06   |  [4503327]  |  Windows 10 安全性   |  6.8  |  2019 年 6 月 11 日  |
+|  Rel 19-06   |  [4503267]  |  Windows 10 安全性   |  5.32  |  2019 年 6 月 11 日  |
+|  Rel 19-06   |  [4503290]  |  Windows 安全性   |  4.67  |  2019 年 6 月 11 日  |
+|  Rel 19-06   |  [4503263]  |  Windows 安全性   |  3.74  |  2019 年 6 月 11 日  |
+|  Rel 19-06   |  [4503269]  |  Windows 安全性   |  2.87  |  2019 年 6 月 11 日  |
+|  Rel 19-06   |  [4494174]  |  Microcode 更新   |  6.8  |  2019 年 6 月 11 日  |
+|  Rel 19-06   |  [4494175]  |  Microcode 更新   |  5.32  |  2019 年 6 月 3 日  |
+|  Rel 19-06   |  [4503308]  |  閃爍   |  3.74、4.67、5.32、6.8  |  2019 年 6 月 11 日  |
+|  Rel 19-06   |  [4503259]  |  Internet Explorer   |  2.87、3.74、4.67  |  2019 年 6 月 13 日  |
+|  N/A  |  [4499164]  |  2019 年 5 月非安全性  |  2.87  |  2019 年 5 月 14 日  |
+|  N/A  |  [4495606]  |  2019 年 5 月 .NET 3.5 非安全性  |  2.87  |  2019 年 5 月 14 日  |
+|  N/A  |  [4495596]  |  2019 年 5 月 .NET 4.5 非安全性  |  2.87  |  2019 年 5 月 20 日  |
+|  N/A  |  [4499171]  |  2019 年 5 月非安全性  |  3.74  |  2019 年 5 月 14 日  |
+|  N/A  |  [4495602]  |  2019 年 5 月 .NET 3.5 非安全性  |  3.74  |  2019 年 5 月 14 日  |
+|  N/A  |  [4495594]  |  2019 年 5 月 .NET 4.x 非安全性  |  4.67  |  2019 年 5 月 14 日  |
+|  N/A  |  [4499151]  |  2019 年 5 月非安全性  |  4.67  |  2019 年 5 月 14 日  |
+|  N/A  |  [4495608]  |  2019 年 5 月 .NET 3.5 非安全性  |  4.67  |  2019 年 5 月 14 日  |
+|  N/A  |  [4495592]  |  2019 年 5 月 .NET 4.5.2 非安全性  |  4.67  |  2019 年 5 月 14 日  |
+|  N/A  |  [4495610]  |  2019 年 5 月 .NET 4.8 累計  |  6.8  |  2019 年 5 月 14 日  |
+|  N/A  |  [4495618]  |  2019 年 5 月 .NET 4.8 累計  |  6.8  |  2019 年 5 月 14 日  |
+|  N/A  |  [4501226]  |  摩洛哥和巴勒斯坦政府的 DST 時區更新  |  2.87、3.74、4.67  |  2019 年 5 月 23 日  |
+|  N/A  |  [4490128]  |  聖多美、普林西比和克孜勒奧爾達的 DST 時區更新  |  2.87、3.74、4.67  |  2019 年 4 月 17 日  |
+
+[4503327]: https://support.microsoft.com/kb/4503327
+[4503267]: https://support.microsoft.com/kb/4503267
+[4503290]: https://support.microsoft.com/kb/4503290
+[4503263]: https://support.microsoft.com/kb/4503263
+[4503269]: https://support.microsoft.com/kb/4503269
+[4494174]: https://support.microsoft.com/kb/4494174
+[4494175]: https://support.microsoft.com/kb/4494175
+[4503308]: https://support.microsoft.com/kb/4503308
+[4503259]: https://support.microsoft.com/kb/4503259
+[4499164]: https://support.microsoft.com/kb/KB4499164
+[4495606]: https://support.microsoft.com/kb/KB4495606
+[4495596]: https://support.microsoft.com/kb/KB4495596
+[4499171]: https://support.microsoft.com/kb/KB4499171
+[4495602]: https://support.microsoft.com/kb/KB4495602
+[4495594]: https://support.microsoft.com/kb/KB4495594
+[4499151]: https://support.microsoft.com/kb/KB4499151
+[4495608]: https://support.microsoft.com/kb/KB4495608
+[4495592]: https://support.microsoft.com/kb/KB4495592
+[4495610]: https://support.microsoft.com/kb/KB4495610
+[4495618]: https://support.microsoft.com/kb/KB4495618
+[4501226]: https://support.microsoft.com/kb/KB4501226
+[4490128]: https://support.microsoft.com/kb/KB4490128
+
+## <a name="may-2019-guest-os"></a>2019 年 5 月客體 OS
+
+| 產品類別 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
+| --- | --- | --- | --- | --- |
+|  Rel 19-05   |  [4498206]  |  五月份 IE 彙總   |  2.86、3.73、4.66  |  2019 年 5 月 14 日  |
+|  Rel 19-05   |  [4505050]  |  五月份 IE 彙總   |  2.86、3.73、4.66  |  2019 年 5 月 18 日  |
+|  Rel 19-05   |  [4497932]  |  五月份 Flash 更新   |  3.73、4.66、5.31  |  2019 年 5 月 14 日  |
+|  Rel 19-05   |  [4499175]  |  五月份安全性彙總套件   |  2.86  |  2019 年 5 月 14 日  |
+|  Rel 19-05   |  [4495612]  |  五月份安全性彙總套件 .NET 3.5   |  2.86  |  2019 年 5 月 14 日  |
+|  Rel 19-05   |  [4495593]  |  五月份安全性彙總套件 .NET 4.5.2   |  2.86  |  2019 年 5 月 14 日  |
+|  Rel 19-05   |  [4499158]  |  五月份安全性彙總套件   |  3.73  |  2019 年 5 月 14 日  |
+|  Rel 19-05   |  [4495607]  |  五月份安全性彙總套件 .NET 3.5   |  3.73  |  2019 年 5 月 14 日  |
+|  Rel 19-05   |  [4495591]  |  五月份安全性彙總套件 .NET 4.5.2   |  3.73  |  2019 年 5 月 14 日  |
+|  Rel 19-05   |  [4492872]  |  IE 彙總   |  3.73  |  2019 年 4 月 16 日  |
+|  Rel 19-05   |  [4499165]  |  三月份安全性彙總套件   |  4.66  |  2019 年 5 月 14 日  |
+|  Rel 19-05   |  [4495615]  |  五月份安全性彙總套件 .NET 3.5   |  4.66  |  2019 年 5 月 14 日  |
+|  Rel 19-05   |  [4495589]  |  五月份安全性彙總套件 .NET 4.5.2   |  4.66  |  2019 年 5 月 14 日  |
+|  Rel 19-05   |  [4498947]  |  五月份 SSU   |  5.31  |  2019 年 5 月 14 日  |
+|  Rel 19-05   |  [4494175]  |  五月份 Microcode 更新   |  5.31  |  2019 年 5 月 14 日  |
+|  Rel 19-05   |  [4505052]  |  五月份安全性彙總套件   |  5.31  |  2019 年 5 月 19 日  |
+|  Rel 19-05   |  [4499728]  |  五月份 SSU   |  6.7  |  2019 年 5 月 19 日  |
+|  Rel 19-05   |  [4505056]  |  五月份安全性彙總套件   |  6.7  |  2019 年 5 月 19 日  |
+|  Rel 19-05   |  [4494174]  |  五月份 Microcode 更新   |  6.7  |  2019 年 5 月 14 日  |
+|  Rel 19-05   |  [4495590]  |  五月份安全性彙總套件 .NET   |  6.7  |  2019 年 5 月 14 日  |
+
+[4498206]: https://support.microsoft.com/kb/4498206
+[4505050]: https://support.microsoft.com/kb/4505050
+[4497932]: https://support.microsoft.com/kb/4497932
+[4499175]: https://support.microsoft.com/kb/4499175
+[4495612]: https://support.microsoft.com/kb/4495612
+[4495593]: https://support.microsoft.com/kb/4495593
+[4499158]: https://support.microsoft.com/kb/4499158
+[4495607]: https://support.microsoft.com/kb/4495607
+[4495591]: https://support.microsoft.com/kb/4495591
+[4492872]: https://support.microsoft.com/kb/4492872
+[4499165]: https://support.microsoft.com/kb/4499165
+[4495615]: https://support.microsoft.com/kb/4495615
+[4495589]: https://support.microsoft.com/kb/4495589
+[4498947]: https://support.microsoft.com/kb/4498947
+[4494175]: https://support.microsoft.com/kb/4494175
+[4505052]: https://support.microsoft.com/kb/4505052
+[4499728]: https://support.microsoft.com/kb/4499728
+[4505056]: https://support.microsoft.com/kb/4505056
+[4494174]: https://support.microsoft.com/kb/4494174
+[4495590]: https://support.microsoft.com/kb/4495590
+
+
 ## <a name="april-2019-guest-os"></a>2019 年 4 月客體 OS
 
-| 產品類別 | 上層知識庫文章 | 弱點說明 | 来宾 OS | 首次引進日期 |
+| 產品類別 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
 | --- | --- | --- | --- | --- |
 | Rel 19-04 | [4493509] | Windows 10 安全性 | 6.6 | 2019 年 4 月 9 日 |
 | Rel 19-04 | [4493470] | Windows 10 安全性 | 5.30 | 2019 年 4 月 9 日 |
 | Rel 19-04 | [4493467] | Windows 安全性 | 4.65 | 2019 年 4 月 9 日 |
 | Rel 19-04 | [4493450] | Windows 安全性 | 3.72 | 2019 年 4 月 9 日 |
 | Rel 19-04 | [4493448] | Windows 安全性 | 2.85 | 2019 年 4 月 9 日 |
-| Rel 19-04 | [4493478] | 閃爍 | 3.72, 4.65, 5.30, 6.6 | 2019 年 4 月 9 日 |
-| Rel 19-04 | [4493435] | Internet Explorer | 2.85, 3.72, 4.65 | 2019 年 4 月 9 日 |
-| Rel 19-04 | [KB4490628] | 服務堆疊更新 | 2.85 | 2019 年 3 月 12日 |
-| Rel 19-04 | [KB4474419] | SHA2 支援 | 2.85 | 2019 年 3 月 12日 |
-| Rel 19-04 | [KB4489878] | 年 3 月非安全性彙總套件 | 2.85 | 2019 年 3 月 12日 |
-| Rel 19-04 | [KB4489891] | 年 3 月非安全性彙總套件 | 3.72 | 2019 年 3 月 12日 |
-| Rel 19-04 | [KB4489881] | 年 3 月非安全性彙總套件 | 4.65 | 2019 年 3 月 12日 |
+| Rel 19-04 | [4493478] | 閃爍 | 3.72、4.65、5.30、6.6 | 2019 年 4 月 9 日 |
+| Rel 19-04 | [4493435] | Internet Explorer | 2.85、3.72、4.65 | 2019 年 4 月 9 日 |
+| Rel 19-04 | [4490628] | 服務堆疊更新 | 2.85 | 2019 年 3 月 12日 |
+| Rel 19-04 | [4474419] | SHA2 支援 | 2.85 | 2019 年 3 月 12日 |
+| Rel 19-04 | [4489878] | 三月份非安全性彙總套件 | 2.85 | 2019 年 3 月 12日 |
+| Rel 19-04 | [4489891] | 三月份非安全性彙總套件 | 3.72 | 2019 年 3 月 12日 |
+| Rel 19-04 | [4489881] | 三月份非安全性彙總套件 | 4.65 | 2019 年 3 月 12日 |
 
 [4493509]: https://support.microsoft.com/kb/4493509
 [4493470]: https://support.microsoft.com/kb/4493470
@@ -47,15 +670,15 @@ ms.locfileid: "65465560"
 [4493448]: https://support.microsoft.com/kb/4493448
 [4493478]: https://support.microsoft.com/kb/4493478
 [4493435]: https://support.microsoft.com/kb/4493435
-[KB4490628]: https://support.microsoft.com/kb/KB4490628
-[KB4474419]: https://support.microsoft.com/kb/KB4474419
-[KB4489878]: https://support.microsoft.com/kb/KB4489878
-[KB4489891]: https://support.microsoft.com/kb/KB4489891
-[KB4489881]: https://support.microsoft.com/kb/KB4489881
+[4490628]: https://support.microsoft.com/kb/KB4490628
+[4474419]: https://support.microsoft.com/kb/KB4474419
+[4489878]: https://support.microsoft.com/kb/KB4489878
+[4489891]: https://support.microsoft.com/kb/KB4489891
+[4489881]: https://support.microsoft.com/kb/KB4489881
 
-## <a name="march-2019-guest-os"></a>2019 年 3 月来宾 OS
+## <a name="march-2019-guest-os"></a>2019 年 3 月客體 OS
 
-| 產品類別 | 上層知識庫文章 | 弱點說明 | 来宾 OS | 首次引進日期 |
+| 產品類別 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
 | --- | --- | --- | --- | --- |
 | Rel 19-03 | [4489873] | Internet Explorer | 2.84、3.71、4.64 | 2019 年 3 月 12日 |
 | Rel 19-03 | [4489907] | 閃爍 | 3.71、4.64、5.29、6.5 | 2019 年 3 月 12日 |
@@ -64,16 +687,16 @@ ms.locfileid: "65465560"
 | Rel 19-03 | [4489883] | Windows 安全性 | 4.64 | 2019 年 3 月 12日 |
 | Rel 19-03 | [4489882] | Windows 10 安全性 | 5.29 | 2019 年 3 月 12日 |
 | Rel 19-03 | [4489899] | Windows 10 安全性 | 6.5 | 2019 年 3 月 12日 |
-| Rel 19-03 | [4486563] | 2 月非安全性汇总 | 2.84 | 2019 年 2 月 12 日 |
-| Rel 19-03 | [4483458] | 2 月非安全性汇总 .NET 3.x | 2.84 | 2019 年 2 月 12 日 |
-| Rel 19-03 | [4483455] | 2 月非安全性汇总 .NET 4.x | 2.84 | 2019 年 2 月 12 日 |
-| Rel 19-03 | [4487025] | 2 月非安全性汇总 | 3.71 | 2019 年 2 月 12 日 |
-| Rel 19-03 | [4483456] | 2 月非安全性汇总 .NET 3.x | 3.71 | 2019 年 2 月 12 日 |
-| Rel 19-03 | [4483454] | 2 月非安全性汇总 .NET 4.x | 3.71 | 2019 年 2 月 12 日 |
-| Rel 19-03 | [4487000] | 2 月非安全性汇总 | 4.64 | 2019 年 2 月 12 日 |
-| Rel 19-03 | [4483459] | 2 月非安全性汇总 .NET 3.x | 4.64 | 2019 年 2 月 12 日 |
-| Rel 19-03 | [4483453] | 2 月非安全性汇总 .NET 4.x | 4.64 | 2019 年 2 月 12 日 |
-| Rel 19-03 | [4485447] | 2 月服务堆栈更新 | 5.29 | 2019 年 2 月 12 日 |
+| Rel 19-03 | [4486563] | 二月份非安全性彙總套件 | 2.84 | 2019 年 2 月 12 日 |
+| Rel 19-03 | [4483458] | 二月份非安全性彙總套件 .NET 3.x | 2.84 | 2019 年 2 月 12 日 |
+| Rel 19-03 | [4483455] | 二月份非安全性彙總套件 .NET 4.x | 2.84 | 2019 年 2 月 12 日 |
+| Rel 19-03 | [4487025] | 二月份非安全性彙總套件 | 3.71 | 2019 年 2 月 12 日 |
+| Rel 19-03 | [4483456] | 二月份非安全性彙總套件 .NET 3.x | 3.71 | 2019 年 2 月 12 日 |
+| Rel 19-03 | [4483454] | 二月份非安全性彙總套件 .NET 4.x | 3.71 | 2019 年 2 月 12 日 |
+| Rel 19-03 | [4487000] | 二月份非安全性彙總套件 | 4.64 | 2019 年 2 月 12 日 |
+| Rel 19-03 | [4483459] | 二月份非安全性彙總套件 .NET 3.x | 4.64 | 2019 年 2 月 12 日 |
+| Rel 19-03 | [4483453] | 二月份非安全性彙總套件 .NET 4.x | 4.64 | 2019 年 2 月 12 日 |
+| Rel 19-03 | [4485447] | 二月份服務堆疊更新 | 5.29 | 2019 年 2 月 12 日 |
 | Rel 19-03 | [4486459] | 時區更新 | 2.84、3.71、4.64 | 2019 年 2 月 12 日 |
 
 [4489873]: https://support.microsoft.com/kb/4489873
@@ -95,12 +718,12 @@ ms.locfileid: "65465560"
 [4485447]: https://support.microsoft.com/kb/4485447
 [4486459]: https://support.microsoft.com/kb/4486459
 
-## <a name="february-2019-guest-os"></a>2019 年 2 月来宾 OS
+## <a name="february-2019-guest-os"></a>2019 年 2 月客體 OS
 
-| 產品類別 | 上層知識庫文章 | 弱點說明 | 来宾 OS | 首次引進日期 |
+| 產品類別 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
 | --- | --- | --- | --- | --- |
-| Rel 19-02 | [4486474] | Internet Explorer | 2.83, 3.70, 4.63 | 2019 年 2 月 12 日 |
-| Rel 19-02 | [4487038] | 閃爍 | 3.70, 4.63, 5.28, 6.4 | 2019 年 2 月 12 日 |
+| Rel 19-02 | [4486474] | Internet Explorer | 2.83、3.70、4.63 | 2019 年 2 月 12 日 |
+| Rel 19-02 | [4487038] | 閃爍 | 3.70、4.63、5.28、6.4 | 2019 年 2 月 12 日 |
 | Rel 19-02 | [4486564] | Windows 安全性 | 2.83 | 2019 年 2 月 12 日 |
 | Rel 19-02 | [4483483] | .NET 3.5.1 安全性 | 2.83 | 2019 年 2 月 12 日 |
 | Rel 19-02 | [4483474] | .NET 4.5.2 安全性 | 2.83 | 2019 年 2 月 12 日 |
@@ -112,16 +735,16 @@ ms.locfileid: "65465560"
 | Rel 19-02 | [4483472] | .NET 4.5.2 安全性 | 4.63 | 2019 年 2 月 12 日 |
 | Rel 19-02 | [4487026] | Windows 安全性 | 5.28 | 2019 年 2 月 12 日 |
 | Rel 19-02 | [4487044] | Windows 安全性 | 6.4 | 2019 年 2 月 12 日 |
-| Rel 19-02 | [4483452] | .NET 3.5、4.7.2 安全性 | 6.4 | 2019 年 2 月 12 日 |
-| N/A | [4480970] | 1 月非安全性汇总 | 2.83 | 2019 年 1 月 8 日 |
-| N/A | [4483483] | 1 月非安全性汇总 .NET 3.5.1  | 2.83 | 2019 年 1 月 8 日 |
-| N/A | [4480059] | 1 月非安全性汇总 .NET 4.5.2  | 2.83 | 2019 年 1 月 8 日 |
-| N/A | [4480975] | 1 月非安全性汇总 | 3.70 | 2019 年 1 月 8 日 |
-| N/A | [4480061] | 1 月非安全性汇总 .NET 3.5 | 3.70 | 2019 年 1 月 8 日 |
-| N/A | [4480058] | 1 月非安全性汇总 .NET 4.5.2 | 3.70 | 2019 年 1 月 8 日 |
-| N/A | [4480963] | 1 月非安全性汇总 | 4.63 | 2019 年 1 月 8 日 |
-| N/A | [4480064] | 1 月非安全性汇总 .NET 3.5 | 4.63 | 2019 年 1 月 8 日 |
-| N/A | [4480057] | 1 月非安全性汇总 .NET 4.5.2 | 4.63 | 2019 年 1 月 8 日 |
+| Rel 19-02 | [4483452] | .NET 3.5, 4.7.2 安全性 | 6.4 | 2019 年 2 月 12 日 |
+| N/A | [4480970] | 一月份非安全性彙總套件 | 2.83 | 2019 年 1 月 8 日 |
+| N/A | [4483483] | 一月份非安全性彙總套件 .NET 3.5.1  | 2.83 | 2019 年 1 月 8 日 |
+| N/A | [4480059] | 一月份非安全性彙總套件 .NET 4.5.2  | 2.83 | 2019 年 1 月 8 日 |
+| N/A | [4480975] | 一月份非安全性彙總套件 | 3.70 | 2019 年 1 月 8 日 |
+| N/A | [4480061] | 一月份非安全性彙總套件 .NET 3.5 | 3.70 | 2019 年 1 月 8 日 |
+| N/A | [4480058] | 一月份非安全性彙總套件 .NET 4.5.2 | 3.70 | 2019 年 1 月 8 日 |
+| N/A | [4480963] | 一月份非安全性彙總套件 | 4.63 | 2019 年 1 月 8 日 |
+| N/A | [4480064] | 一月份非安全性彙總套件 .NET 3.5 | 4.63 | 2019 年 1 月 8 日 |
+| N/A | [4480057] | 一月份非安全性彙總套件 .NET 4.5.2 | 4.63 | 2019 年 1 月 8 日 |
 
 [4486474]: https://support.microsoft.com/kb/4486474
 [4487038]: https://support.microsoft.com/kb/4487038
@@ -149,7 +772,7 @@ ms.locfileid: "65465560"
 
 ## <a name="january-2019-guest-os"></a>2019 年 1 月客體 OS
 
-| 產品類別 | 上層知識庫文章 | 弱點說明 | 来宾 OS | 首次引進日期 |
+| 產品類別 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
 | --- | --- | --- | --- | --- |
 | Rel 19-01 | [4480116] | Windows 10 安全性 | 6.3 | 2019 年 1 月 8 日 |
 | Rel 19-01 | [4480961] | Windows 10 安全性 | 5.27 | 2019 年 1 月 8 日 |
@@ -201,7 +824,7 @@ ms.locfileid: "65465560"
 
 ## <a name="december-2018-guest-os"></a>2018 年 12 月客體 OS
 
-| 產品類別 | 上層知識庫文章 | 弱點說明 | 来宾 OS | 首次引進日期 |
+| 產品類別 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
 | --- | --- | --- | --- | --- |
 | Rel 18-12 | [4471321] | Windows 10 安全性 | 5.26 | 2018 年 12 月 11 日 |
 | Rel 18-12 | [4471328] | Windows 安全性   | 2.81 | 2018 年 12 月 11 日 |
@@ -239,7 +862,7 @@ ms.locfileid: "65465560"
 
 ## <a name="november-2018-guest-os"></a>2018 年 11 月客體 OS
 
-| 產品類別 | 上層知識庫文章 | 弱點說明 | 来宾 OS | 首次引進日期 |
+| 產品類別 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
 | --- | --- | --- | --- | --- |
 | Rel 18-11 | [4466536] | Internet Explorer | 2.80、3.67、4.60 | 2018 年 11 月 13 日 |
 | Rel 18-11 | [4467694] | 閃爍 | 3.67、4.60、5.25 | 2018 年 11 月 13 日 |
@@ -271,7 +894,7 @@ ms.locfileid: "65465560"
 
 ## <a name="october-2018-guest-os"></a>2018 年 10 月客體 OS
 
-| 產品類別 | 上層知識庫文章 | 弱點說明 | 来宾 OS | 首次引進日期 |
+| 產品類別 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
 | --- | --- | --- | --- | --- |
 | Rel 18-10 | [4462917] | Windows 10 安全性 | 5.24 | 2018 年 10 月 9 日 |
 | Rel 18-10 | [4462915] | Windows 安全性 | 2.79 | 2018 年 10 月 9 日 |
@@ -308,7 +931,7 @@ ms.locfileid: "65465560"
 [4457036]: https://support.microsoft.com/kb/4457036
 
 ## <a name="september-2018-guest-os"></a>2018 年 9 月客體 OS
-| 產品類別 | 上層知識庫文章 | 弱點說明 | 来宾 OS | 首次引進日期 |
+| 產品類別 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
 | --- | --- | --- | --- | --- |
 | Rel 18-09 | [4457131] | Windows 10 安全性 | 5.23 | 2018 年 9 月 11 日 |
 | Rel 18-09 | [4457145] | 只有 Windows 安全性 | 2.78 | 2018 年 9 月 11 日 |
@@ -330,7 +953,7 @@ ms.locfileid: "65465560"
 | N/A | [4344147] | 八月份非安全性 .NET 4x 彙總套件 | 4.58 | 2018 年 8 月 14 日 |
 
 ## <a name="august-2018-guest-os"></a>2018 年 8 月客體 OS
-| 產品類別 | 上層知識庫文章 | 弱點說明 | 来宾 OS | 首次引進日期 |
+| 產品類別 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
 | --- | --- | --- | --- | --- |
 | Rel 18-08 | [4343887] | Windows 10 安全性 | 5.22 | 2018 年 8 月 14 日 |
 | Rel 18-08 | [4343899] | 只有 Windows 安全性 | 2.77 | 2018 年 8 月 14 日 |
@@ -353,7 +976,7 @@ ms.locfileid: "65465560"
 | N/A | [4338415] |七月份非安全性 .NET 4x 彙總套件 |3.64 | 2018 年 7 月 10 日 |
 
 ## <a name="july-2018-guest-os"></a>2018 年 7 月客體 OS
-| 產品類別 | 上層知識庫文章 | 弱點說明 | 来宾 OS | 首次引進日期 |
+| 產品類別 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
 | --- | --- | --- | --- | --- |
 | Rel 18-07 | [4338814] |Windows 10 安全性 |5.21 |2018 年 7 月 10 日 |
 | Rel 18-07 | [4338823] |只有 Windows 安全性 |2.76 |2018 年 7 月 10 日 |
@@ -373,7 +996,7 @@ ms.locfileid: "65465560"
 | N/A | [4284815] |六月份非安全性彙總套件 |4.56 |2018 年 6 月 12 日 |
 
 ## <a name="june-2018-guest-os"></a>2018 年 6 月客體 OS
-| 產品類別 | 上層知識庫文章 | 弱點說明 | 来宾 OS | 首次引進日期 |
+| 產品類別 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
 | --- | --- | --- | --- | --- |
 | Rel 18-06 | [4284880] |Windows 10 安全性 |5.20 |2018 年 6 月 12 日 |
 | Rel 18-06 | [4284867] |只有 Windows 安全性 |2.75 |2018 年 6 月 12 日 |
@@ -398,7 +1021,7 @@ ms.locfileid: "65465560"
 | N/A | [4132216] |五月份 SSU |5.20 |2018 年 5 月 8 日 |
 
 ## <a name="may-2018-guest-os"></a>2018 年 5 月客體 OS
-| 產品類別 | 上層知識庫文章 | 弱點說明 | 来宾 OS | 首次引進日期 |
+| 產品類別 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
 | --- | --- | --- | --- | --- |
 | Rel 18-05 | [4103721], [4103727], [4103723] |Windows 10 安全性 |5.19 |2018 年 5 月 8 日 |
 | Rel 18-05 | [4103712] |只有 Windows 安全性 |2.74 |2018 年 5 月 8 日 |
@@ -418,7 +1041,7 @@ ms.locfileid: "65465560"
 
 
 ## <a name="april-2018-guest-os"></a>2018 年 4 月客體 OS
-| 產品類別 | 上層知識庫文章 | 弱點說明 | 来宾 OS | 首次引進日期 |
+| 產品類別 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
 | --- | --- | --- | --- | --- |
 | Rel 18-04 | [4093119] |Windows 10 安全性 |5.18 |2018 年 4 月 10 日 |
 | Rel 18-04 | [4093108] |只有 Windows 安全性 |2.73 |2018 年 4 月 10 日 |
@@ -432,7 +1055,7 @@ ms.locfileid: "65465560"
 | N/A | [4088876] |三月份非安全性彙總套件 |4.53 |2018 年 3 月 13 日 |
 
 ## <a name="march-2018-guest-os"></a>2018 年 3 月客體 OS
-| 產品類別 | 上層知識庫文章 | 弱點說明 | 来宾 OS | 首次引進日期 |
+| 產品類別 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
 | --- | --- | --- | --- | --- |
 | Rel 18-03 | [4088787]、[4088776] |Windows 10 安全性 |5.17 |2018 年 3 月 13 日 |
 | Rel 18-03 | [4088878]、[4088880]、[4088879] |只有 Windows 安全性 |2.72、3.59、4.52 |2018 年 3 月 13 日 |
@@ -445,7 +1068,7 @@ ms.locfileid: "65465560"
 
 
 ## <a name="february-2018-guest-os"></a>2018 年 2 月客體 OS
-| 產品類別 | 上層知識庫文章 | 弱點說明 | 来宾 OS | 首次引進日期 |
+| 產品類別 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
 | --- | --- | --- | --- | --- |
 | Rel 18-02 | [4074590], [4074588] |Windows 10 安全性 |5.16 |2018 年 2 月 13 日 |
 | Rel 18-02 | [4074587], [4074589], [4074597] |只有 Windows 安全性 |2.71, 3.58, 4.51 |2018 年 2 月 13 日 |
@@ -459,7 +1082,7 @@ ms.locfileid: "65465560"
 | N/A | [4054177], [4054170] |一月份 .NET 彙總套件 |4.51 |2018 年 1 月 4 日 |
 
 ## <a name="january-2018-guest-os"></a>2018 年 1 月客體 OS
-| 產品類別 | 上層知識庫文章 | 弱點說明 | 来宾 OS | 首次引進日期 |
+| 產品類別 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
 | --- | --- | --- | --- | --- |
 | Rel 18-01 | [4056898], [4056897], [4056899] |只有 Windows 安全性 |2.70, 3.57, 4.50 |2018 年 1 月 3 日 |
 | Rel 18-01 | [4056890], [4056892] |只有 Windows 安全性 |5.15 |2018 年 1 月 3 日 |
@@ -471,7 +1094,7 @@ ms.locfileid: "65465560"
 
 
 ## <a name="december-2017-guest-os"></a>2017 年 12 月客體 OS
-| 產品類別 | 上層知識庫文章 | 弱點說明 | 来宾 OS | 首次引進日期 |
+| 產品類別 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
 | --- | --- | --- | --- | --- |
 | Rel 17-12 | [4053579], [4054517] |Windows 10 安全性更新 |4.49, 5.14 |2017 年 12 月 12 日 |
 | Rel 17-12 | [4054521], [4054522], [4054523] |只有 Windows 安全性 |2.69, 3.56, 4.49 |2017 年 12 月 12 日 |
@@ -483,7 +1106,7 @@ ms.locfileid: "65465560"
 | N/A | [4049068] |十二月時區更新 |2.69, 3.56, 4.49 |2017 年 12 月 12 日 |
 
 ## <a name="november-2017-guest-os"></a>2017 年 11 月客體 OS
-| 產品類別 | 上層知識庫文章 | 弱點說明 | 来宾 OS | 首次引進日期 |
+| 產品類別 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
 | --- | --- | --- | --- | --- |
 | Rel 17-11 | [4048953] |Windows 10 更新 |5.13 |2017 年 11 月 14 日 |
 | Rel 17-11 | [4048960], [4048962], [4048961] |只有 Windows 安全性 |2.68, 3.55, 4.48 |2017 年 11 月 14 日 |
@@ -497,7 +1120,7 @@ ms.locfileid: "65465560"
 | N/A | [3191564] |Windows Management Framework 5.1 的更新  |4.48 |2017 年 11 月 14 日 |
 
 ## <a name="october-2017-guest-os"></a>2017 年 10 月客體 OS
-| 產品類別 | 上層知識庫文章 | 弱點說明 | 来宾 OS | 首次引進日期 |
+| 產品類別 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
 | --- | --- | --- | --- | --- |
 | Rel 17-10 | [4041691] |Windows 10 更新 |5.12 |2017 年 10 月 10 日 |
 | Rel 17-10 | [4041678], [4041679], [4041687] |只有 Windows 安全性 |2.67, 3.54, 4.47 |2017 年 10 月 10 日 |
@@ -511,7 +1134,7 @@ ms.locfileid: "65465560"
 | N/A | [4040981] |九月份 .NET 非安全性彙總套件 |4.47 |2017 年 9 月 12 日 |
 
 ## <a name="september-2017-guest-os"></a>2017 年 9 月客體 OS
-| 產品類別 | 上層知識庫文章 | 弱點說明 | 来宾 OS | 首次引進日期 |
+| 產品類別 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
 | --- | --- | --- | --- | --- |
 | Rel 17-09 | [4038782] |Windows 10 更新 |5.11 |2017 年 9 月 12 日 |
 | Rel 17-09 | [4038779], [4038786], [4038793] |只有 Windows 安全性 |2.66, 3.53, 4.46 |2017 年 9 月 12 日 |
@@ -523,7 +1146,7 @@ ms.locfileid: "65465560"
 | N/A | [4034681] |八月份非安全性彙總套件 |4.46 |2017 年 8 月 8 日 |
 
 ## <a name="august-2017-guest-os"></a>2017 年 8 月客體 OS
-| 產品類別 | 上層知識庫文章 | 弱點說明 | 来宾 OS | 首次引進日期 |
+| 產品類別 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
 | --- | --- | --- | --- | --- |
 | Rel 17-07 | [4034658] |Windows 10 更新 |5.10 |2017 年 8 月 8 日 |
 | Rel 17-07 | [4034679] |只有 Windows 安全性 |2.65 |2017 年 8 月 8 日 |
@@ -537,13 +1160,13 @@ ms.locfileid: "65465560"
 | Rel 17-07 | [4025336] |七月份非安全性彙總套件 |4.45 |2017 年 7 月 11 日 |
 
 ## <a name="july-2017-guest-os"></a>2017 年 7 月客體 OS
-| 產品類別 | 上層知識庫文章 | 弱點說明 | 来宾 OS | 首次引進日期 |
+| 產品類別 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
 | --- | --- | --- | --- | --- |
 | Rel 17-07 | [4025339] |Windows 10 更新 |5.9 |2017 年 7 月 11 日 |
 | Rel 17-07 | [4025337] |只有 Windows 安全性 |2.64 |2017 年 7 月 11 日 |
 | Rel 17-07 | [4025333] |只有 Windows 安全性 |4.44 |2017 年 7 月 11 日 |
 | Rel 17-07 | [4025343] |只有 Windows 安全性 |3.51 |2017 年 7 月 11 日 |
-| Rel 17-07 | [4025376] |闪烁 |3.51, 4.44, 5.9 |2017 年 7 月 11 日 |
+| Rel 17-07 | [4025376] |閃爍 |3.51, 4.44, 5.9 |2017 年 7 月 11 日 |
 | Rel 17-07 | [4025252] |Internet Explorer |2.64, 3.51, 4.44 |2017 年 7 月 11 日 |
 | N/A | [4020322] |時區更新 |2.64, 3.51, 4.44 |2017 年 7 月 11 日 |
 | N/A | [4022719] |六月份非安全性彙總套件 |2.64 |2017 年 6 月 13 日 |
@@ -551,9 +1174,9 @@ ms.locfileid: "65465560"
 | N/A | [4022726] |六月份非安全性彙總套件 |4.44 |2017 年 6 月 13 日 |
 
 ## <a name="june-2017-guest-os"></a>2017 年 6 月客體 OS
-| 產品類別 | 上層知識庫文章 | 弱點說明 | 来宾 OS | 首次引進日期 |
+| 產品類別 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
 | --- | --- | --- | --- | --- |
-| Rel 17-06 | [4019472] |WS 2016 OS 质量改进 |5.8 |2017 年 5 月 9 日 |
+| Rel 17-06 | [4019472] |WS 2016 OS 品質改進 |5.8 |2017 年 5 月 9 日 |
 | Rel 17-06 | [4022722] |只有 Windows 安全性 |2.63 |2017 年 6 月 13 日 |
 | Rel 17-06 | [4022717] |只有 Windows 安全性 |4.43 |2017 年 6 月 13 日 |
 | Rel 17-06 | [4022718] |只有 Windows 安全性 |3.50 |2017 年 6 月 13 日 |
@@ -562,10 +1185,10 @@ ms.locfileid: "65465560"
 | Rel 17-06 | [4022730] |Adobe Flash Player 的安全性更新 |3.50、4.43、5.8 |2017 年 6 月 13 日 |
 | Rel 17-06 | [4015217], [4015221], [4015583], [4015550], [4015219] |CVE-2017-0167 的重新發行 |4.43, 5.8 |2017 年 4 月 11 日 |
 | N/A | [4023136] |時區更新  |2.63, 3.50, 4.43 |2017 年 6 月 13 日 |
-| N/A | [4019264] |5 月非安全性汇总 |2.63 |2017 年 6 月 13 日 |
+| N/A | [4019264] |五月份非安全性彙總套件 |2.63 |2017 年 6 月 13 日 |
 | N/A | [4014545] |五月份 .NET 非安全性彙總套件 |2.63 |2017 年 4 月 11 日 |
 | N/A | [4014508] |五月份 .NET 非安全性彙總套件 |2.63 |2017 年 5 月 9 日 |
-| N/A | [4014511] |5 月 .NET 非安全性汇总 |2.63 |2017 年 5 月 9 日 |
+| N/A | [4014511] |五月份 .NET 非安全性彙總套件 |2.63 |2017 年 5 月 9 日 |
 | N/A | [4014514] |五月份 .NET 非安全性彙總套件 |2.63 |2017 年 5 月 9 日 |
 | N/A | [4019216] |五月份非安全性彙總套件 |3.50 |2017 年 5 月 9 日 |
 | N/A | [4014503] |五月份 .NET 非安全性彙總套件 |3.50 |2017 年 5 月 9 日 |
@@ -579,10 +1202,10 @@ ms.locfileid: "65465560"
 | N/A | [4014512] |五月份 .NET 非安全性彙總套件 |4.43 |2017 年 5 月 9 日 |
 
 ## <a name="may-2017-guest-os"></a>2017 年 5 月客體 OS
-| 產品類別 | 上層知識庫文章 | 弱點說明 | 来宾 OS | 首次引進日期 |
+| 產品類別 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
 | --- | --- | --- | --- | --- |
 | Rel 17-05 | [4019472] |WS 2016 OS 品質改進 |5.7 | 2017 年 5 月 9 日 |
-| Rel 17-05 | [4019263] |仅 Windows 安全性 |2.62 | 2017 年 5 月 9 日 |
+| Rel 17-05 | [4019263] |只有 Windows 安全性 |2.62 | 2017 年 5 月 9 日 |
 | Rel 17-05 | [4019213] |只有 Windows 安全性 |4.42 | 2017 年 5 月 9 日 |
 | Rel 17-05 | [4019214] |只有 Windows 安全性 |3.49 | 2017 年 5 月 9 日 |
 | Rel 17-05 | [4018271] |Internet Explorer 的累積安全性更新 |3.49 | 2017 年 5 月 9 日 |
@@ -592,7 +1215,7 @@ ms.locfileid: "65465560"
 | Rel 17-05 | [4021279] |.NET /ASP.NET Core Advisory |2.62, 3.49, 4.42, 5.7 | 2017 年 5 月 9 日 |
 | N/A | [4012864] |時區更新 |2.62, 3.49, 4.42 | 2017 年 5 月 9 日 |
 | N/A | [4014565] |四月份 .NET 非安全性彙總套件 |2.62 | 2017 年 4 月 11 日 |
-| N/A | [4014559] |4 月 .NET 非安全性汇总 |2.62 | 2017 年 4 月 11 日 |
+| N/A | [4014559] |四月份 .NET 非安全性彙總套件 |2.62 | 2017 年 4 月 11 日 |
 | N/A | [4015549] |四月份非安全性彙總套件 |2.62 | 2017 年 4 月 11 日 |
 | N/A | [4019990] |D3DCompiler 更新 - .NET 4.7 的需求 |3.49 | 2017 年 5 月 9 日 |
 | N/A | [4014563] |四月份 .NET 非安全性彙總套件 |3.49 | 2017 年 4 月 11 日 |
@@ -600,14 +1223,14 @@ ms.locfileid: "65465560"
 | N/A | [4014545] |四月份 .NET 非安全性彙總套件 |3.49 | 2017 年 4 月 11 日 |
 | N/A | [4014548] |四月份 .NET 非安全性彙總套件 |3.49 | 2017 年 4 月 11 日 |
 | N/A | [4015551] |四月份非安全性彙總套件 |3.49 | 2017 年 4 月 11 日 |
-| N/A | [3173424] |服务堆栈更新  |4.42 | 2016 年 7 月 12 日 |
+| N/A | [3173424] |服務堆疊更新  |4.42 | 2016 年 7 月 12 日 |
 | N/A | [4014555] |四月份 .NET 非安全性彙總套件  |4.42 | 2017 年 4 月 11 日 |
 | N/A | [4014567] |四月份 .NET 非安全性彙總套件 |4.42 | 2017 年 4 月 11 日 |
 | N/A | [4015550] |四月份非安全性彙總套件 |4.42 | 2017 年 4 月 11 日 |
 | N/A | [4013418] |服務堆疊更新 |5.7 | 2017 年 3 月 14 日 |
 
 ## <a name="april-2017-guest-os"></a>2017 年 4 月客體 OS
-| 產品類別 | 上層知識庫文章 | 弱點說明 | 来宾 OS | 首次引進日期 |
+| 產品類別 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
 | --- | --- | --- | --- | --- |
 | Rel 17-04 |  [4015217]  |WS 2016 OS 品質改進 | 5.6 | 2017 年 4 月 11 日 |
 | Rel 17-04 |  [4015546]  |只有 Windows 安全性 |2.61 | 2017 年 4 月 11 日 |
@@ -627,7 +1250,7 @@ ms.locfileid: "65465560"
 | Rel 17-04 |  [4012216]  |適用於 Windows 8.1 和 Windows Server 2012 R2 的 2017 年 3 月安全性每月品質彙總套件 |4.41 | 2017 年 4 月 11 日 |
 
 ## <a name="march-2017-guest-os"></a>2017 年 3 月客體 OS
-| 產品類別 | 上層知識庫文章 | 弱點說明 | 来宾 OS | 首次引進日期 |
+| 產品類別 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
 | --- | --- | --- | --- | --- |
 | Rel 17-03 |  [4013429] |改良功能與修正 | 5.5 | 2017 年 3 月 14 日 |
 | Rel 17-03 |  [4012212] |適用於 Windows 7 SP1 和 Windows Server 2008 R2 SP1 的 2017 年 3 月僅安全性品質更新 |2.60 |2017 年 3 月 14 日 |
@@ -641,18 +1264,18 @@ ms.locfileid: "65465560"
 | N/A |  [3211320] |適用於 Windows 10 版本 1607 和 Windows Server 2016 的維護堆疊更新：2017 年 1 月 24 日 |5.5 |2017 年 3 月 14 日 |
 
 ## <a name="january-2017-guest-os"></a>2017 年 1 月客體 OS
-| 公告識別碼 | 上层知识库文章 | 弱點說明 | 来宾 OS | 首次引進日期 |
+| 公告識別碼 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
 | --- | --- | --- | --- | --- |
 | MS17-004 | [3216771] |本機安全性授權子系統的安全性更新 |2.59 |2017 年 1 月 10 日 |
 
 ## <a name="december-2016-guest-os"></a>2016 年 12 月客體 OS
-| 公告識別碼 | 上层知识库文章 | 弱點說明 | 来宾 OS | 首次引進日期 |
+| 公告識別碼 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
 | --- | --- | --- | --- | --- |
 | MS16-144 |[3204059] |Internet Explorer 的累積安全性更新 |2.58、3.46、4.39 |2016 年 12 月 13 日 |
-| MS16-145 |[3204062] |Microsoft Edge 的累积安全更新 |5.4 |2016 年 12 月 13 日 |
+| MS16-145 |[3204062] |Microsoft Edge 的累積安全性更新 |5.4 |2016 年 12 月 13 日 |
 | MS16-146 |[3204066]   |Microsoft 圖形元件的安全性更新|2.58、3.46、4.39、5.4 |2016 年 12 月 13 日 |
 | MS16-147 |[3204063]   |Microsoft Uniscribe 的安全性更新|2.58、3.46、4.39、5.4 |2016 年 12 月 13 日 |
-| MS16-149 |[3205655]   |Microsoft Windows 的安全更新|2.58、3.46、4.39、5.4 |2016 年 12 月 13 日 |
+| MS16-149 |[3205655]   |Microsoft Windows 的安全性更新|2.58、3.46、4.39、5.4 |2016 年 12 月 13 日 |
 | MS16-150 |[3205642]   |安全核心模式的安全性更新 |5.4 |2016 年 12 月 13 日 |
 | MS16-151 |[3205651]   |核心模式驅動程式的安全性更新|2.58、3.46、4.39、5.4 |2016 年 12 月 13 日 |
 | MS16-152 |[3199709]   |Windows Kernel 的安全性更新 |5.4 |2016 年 12 月 13 日 |
@@ -663,20 +1286,20 @@ ms.locfileid: "65465560"
 | N/A |[3197874] |適用於 Windows 8.1 和 Windows Server 2012 R2 的 2016 年 11 月安全性每月品質彙總套件 |4.39 |2016 年 12 月 13 日 |
 
 ## <a name="november-2016-guest-os"></a>2016 年 11 月客體 OS
-| 公告識別碼 | 上层知识库文章 | 弱點說明 | 来宾 OS | 首次引進日期 |
+| 公告識別碼 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
 | --- | --- | --- | --- | --- |
 | MS16-129 |[3199057] |Microsoft Edge 的累積安全性更新 |5.3 |2016 年 11 月 8 日 |
 | MS16-130 |[3199172] |Microsoft Windows 的安全性更新 |5.3, 4.38, 3.45, 2.57 |2016 年 11 月 8 日 |
 | MS16-131 |[3199151]   |Microsoft Video Control 的安全性更新 |5.3, 4.38, 3.45, 2.57 |2016 年 11 月 8 日 |
 | MS16-132 |[3199120] |Microsoft Component 的安全性更新 |5.3, 4.38, 3.45, 2.57 |2016 年 11 月 8 日 |
-| MS16-134 |[3193706] |公用日志文件系统驱动程序的安全更新 |5.3, 4.38, 3.45, 2.57 |2016 年 11 月 8 日 |
+| MS16-134 |[3193706] |一般記錄檔系統驅動程式的安全性更新 |5.3, 4.38, 3.45, 2.57 |2016 年 11 月 8 日 |
 | MS16-135 |[3199135] |核心模式驅動程式的安全性更新 |5.3, 4.38, 3.45, 2.57 |2016 年 11 月 8 日 |
 | MS16-137 |[3199173]   |Windows 驗證方法的安全性更新 |5.3, 4.38, 3.45, 2.57 |2016 年 11 月 8 日 |
-| MS16-138 |[3199647] |Microsoft 虛擬硬碟的安全性更新 |5.3、4.38、3.45 |2016 年 11 月 8 日 |
+| MS16-138 |[3199647] |Microsoft 虛擬硬碟的安全性更新 |5.3, 4.38, 3.45 |2016 年 11 月 8 日 |
 | MS16-139 |[3199720] |Windows Kernel 的安全性更新 |2.57 |2016 年 11 月 8 日 |
 | MS16-140 |[3193479] |開機管理程式的安全性更新 |5.3, 4.38, 3.45 |2016 年 11 月 8 日 |
 | MS16-142 |[3198467] |Internet Explorer 的累積安全性更新 |2.57, 4.38, 5.3 |2016 年 11 月 8 日 |
-| N/A |[3192321] |土耳其結束遵守 DST |5.3、4.38、3.45、2.57 |2016 年 11 月 8 日 |
+| N/A |[3192321] |土耳其結束遵守 DST |5.3, 4.38, 3.45, 2.57 |2016 年 11 月 8 日 |
 | N/A |[3185330] |適用於 Windows 7 SP1 和 Windows Server 2008 R2 SP1 的 2016 年 10 月安全性每月品質彙總套件 |2.57 |2016 年 11 月 8 日 |
 | N/A |[3192403] |適用於 Windows 7 SP1 和 Windows Server 2008 R2 SP1 的 2016 年 10 月每月品質彙總套件預覽 |2.57 |2016 年 11 月 8 日 |
 | N/A |[3177467] |適用於 Windows 7 SP1 和 Windows Server 2008 R2 SP1 的服務堆疊更新：2016 年 9 月 20 日 |2.57 |2016 年 11 月 8 日 |
@@ -688,14 +1311,14 @@ ms.locfileid: "65465560"
 | N/A |[3197954] |Windows 10 版本 1607 和 Windows Server 2016 的累積更新：2016 年 10 月 27 日 |5.3 |2016 年 11 月 8 日 |
 
 ## <a name="october-2016-guest-os"></a>2016 年 10 月客體 OS
-| 公告識別碼 | 上层知识库文章 | 弱點說明 | 来宾 OS | 首次引進日期 |
+| 公告識別碼 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
 | --- | --- | --- | --- | --- |
 | MS16-118 |[3192887] |Internet Explorer 的累積安全性更新 |4.37, 3.44, 2.56 |2016 年 10 月 11 日 |
 | MS16-120 |[3192884] |Microsoft 圖形元件的安全性更新 |4.37, 3.44, 2.56 |2016 年 10 月 11 日 |
 | MS16-123 |[3192892] |核心模式驅動程式的安全性更新 |4.37, 3.44, 2.56 |2016 年 10 月 11 日 |
-| MS16-124 |[3193227] |Windows 登錄的安全性更新 |4.37、3.44、2.56 |2016 年 10 月 11 日 |
+| MS16-124 |[3193227] |Windows 登錄的安全性更新 |4.37, 3.44, 2.56 |2016 年 10 月 11 日 |
 | MS16-126 |[3196067] |Microsoft 網際網路郵件 API 的安全性更新 |2.56 |2016 年 10 月 11 日 |
-| MS16-101 |[3178465] |Windows 身份验证方法的安全更新程序 |4.37, 3.44, 2.56 |2016 年 10 月 11 日 |
+| MS16-101 |[3178465] |Windows 驗證方法的安全性更新 |4.37, 3.44, 2.56 |2016 年 10 月 11 日 |
 | N/A |[3182203] |2016 年 9 月新西伯利亞的時區變更 |4.37, 3.44, 2.56 |2016 年 10 月 11 日 |
 | N/A |[3185278] |適用於 Windows 7 SP1 和 Windows Server 2008 R2 SP1 的 2016 年 9 月更新彙總套件 |2.56 |2016 年 10 月 11 日 |
 | N/A |[3185280] |適用於 Windows Server 2012 的 2016 年 9 月更新彙總套件 |3.44 |2016 年 10 月 11 日 |
@@ -703,24 +1326,24 @@ ms.locfileid: "65465560"
 | N/A |[3194798] |Windows 10 版本 1607 和 Windows Server 2016 的累積更新 |5.2 |2016 年 10 月 11 日 |
 
 ## <a name="september-2016-guest-os"></a>2016 年 9 月客體 OS
-| 公告識別碼 | 上层知识库文章 | 弱點說明 | 来宾 OS | 首次引進日期 |
+| 公告識別碼 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
 | --- | --- | --- | --- | --- |
 | MS16-104 |[3183038] |Internet Explorer 的累積安全性更新 |4.36, 3.43, 2.55 |2016 年 9 月 13 日 |
 | MS16-106 |[3185848] |Microsoft 圖形元件的安全性更新 |4.36, 3.43, 2.55 |2016 年 9 月 13 日 |
-| MS16-110 |[3178467] |Windows 的安全性更新 |4.36、3.43、2.55 |2016 年 9 月 13 日 |
+| MS16-110 |[3178467] |Windows 的安全性更新 |4.36, 3.43, 2.55 |2016 年 9 月 13 日 |
 | MS16-111 |[3186973] |Windows Kernel 的安全性更新 |4.36, 3.43, 2.55 |2016 年 9 月 13 日 |
 | MS16-112 |[3178469] |Windows 鎖定畫面的安全性更新 |4.36 |2016 年 9 月 13 日 |
 | MS16-114 |[3185879] |Windows SMB Server 的安全性更新 |4.36, 3.43, 2.55 |2016 年 9 月 13 日 |
 | MS16-115 |[3188733] |PDF 的安全性更新 |4.35, 3.43 |2016 年 9 月 13 日 |
-| MS16-116 |[3188724] |VBScript 脚本引擎的 OLE 自动化中的安全更新程序 |4.36, 3.43, 2.55 |2016 年 9 月 13 日 |
+| MS16-116 |[3188724] |VBScript 指令碼引擎的 OLE 自動化中的安全性更新 |4.36, 3.43, 2.55 |2016 年 9 月 13 日 |
 | N/A |[3174644] |更新 Diffie-hellman 金鑰交換的支援 |4.36, 3.43, 2.55 |2016 年 9 月 13 日 |
 | N/A |[3177723] |時區更新 - 埃及取消 DST |4.36, 3.43, 2.55 |2016 年 9 月 13 日 |
 | N/A |[3179573] |適用於 Windows 7 SP1 和 Windows Server 2008 R2 SP1 的 2016 年 8 月更新彙總套件 |2.55 |2016 年 9 月 13 日 |
 | N/A |[3179575] |適用於 Windows Server 2012 的 2016 年 8 月更新彙總套件 |3.43 |2016 年 9 月 13 日 |
-| N/A |[3179574] |适用于 Windows RT 8.1、Windows 8.1 和 Windows Server 2012 R2 的 2016 年 8 月更新汇总 |4.36 |2016 年 9 月 13 日 |
+| N/A |[3179574] |適用於 Windows RT 8.1、Windows 8.1 和 Windows Server 2012 R2 的 2016 年 8 月更新彙總套件 |4.36 |2016 年 9 月 13 日 |
 
 ## <a name="august-2016-guest-os"></a>2016 年 8 月客體 OS
-| 公告識別碼 | 上层知识库文章 | 弱點說明 | 来宾 OS | 首次引進日期 |
+| 公告識別碼 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
 | --- | --- | --- | --- | --- |
 | MS16-095 |[3177356] |Internet Explorer 的累積安全性更新 |4.35、3.42、2.54 |2016 年 8 月 9 日 |
 | MS16-097 |[3177393] |Microsoft 圖形元件的安全性更新 |4.35、3.42、2.54 |2016 年 8 月 9 日 |
@@ -728,29 +1351,29 @@ ms.locfileid: "65465560"
 | MS16-100 |[3179577] |安全開機的安全性更新 |4.35、3.42 |2016 年 8 月 9 日 |
 | MS16-101 |[3178465] |Windows 驗證方法的安全性更新 |4.35、3.42、2.54 |2016 年 8 月 9 日 |
 | MS16-102 |[3182248] |Microsoft Windows PDF 程式庫的安全性更新 |4.35、3.42 |2016 年 8 月 9 日 |
-| 重新發行 - MS16-077 |[3165191] |Web 代理自动发现 (WPAD) 的安全更新程序 |4.35、3.42、2.54 |2016 年 8 月 9 日 |
+| 重新發行 - MS16-077 |[3165191] |Web Proxy Autodiscovery (WPAD) 的安全性更新 |4.35、3.42、2.54 |2016 年 8 月 9 日 |
 | N/A |[3172605] |適用於 Windows 7 SP1 和 Windows Server 2008 R2 SP1 的 2016 年 7 月更新彙總套件 |2.54 |2016 年 8 月 9 日 |
-| N/A |[3172615] |适用于 Windows Server 2012 的 2016 年 7 月更新汇总 |3.42 |2016 年 8 月 9 日 |
-| N/A |[3172614] |适用于 Windows RT 8.1、Windows 8.1 和 Windows Server 2012 R2 的 2016 年 7 月更新汇总 |4.35 |2016 年 8 月 9 日 |
+| N/A |[3172615] |適用於 Windows Server 2012 的 2016 年 7 月更新彙總套件 |3.42 |2016 年 8 月 9 日 |
+| N/A |[3172614] |適用於 Windows RT 8.1、Windows 8.1 和 Windows Server 2012 R2 的 2016 年 7 月更新彙總套件 |4.35 |2016 年 8 月 9 日 |
 
 ## <a name="july-2016-guest-os"></a>2016 年 7 月客體 OS
-| 公告識別碼 | 上层知识库文章 | 弱點說明 | 来宾 OS | 首次引進日期 |
+| 公告識別碼 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
 | --- | --- | --- | --- | --- |
 | MS16-084 |[3169991] |Internet Explorer 的累積安全性更新 |4.34, 3.41, 2.53 |2016 年 7 月 12 日 |
 | MS16-087 |[3170005] |Microsoft 列印多工緩衝處理器的安全性更新 |4.34, 3.41, 2.53 |2016 年 7 月 12 日 |
-| MS16-090 |[3171481] |内核模式驱动程序的安全更新 |4.34、3.41、2.53 |2016 年 7 月 12 日 |
+| MS16-090 |[3171481] |核心模式驅動程式的安全性更新 |4.34, 3.41, 2.53 |2016 年 7 月 12 日 |
 | MS16-091 |[3170048] |.NET Framework 的安全性更新 |4.34, 3.41, 2.53 |2016 年 7 月 12 日 |
 | MS16-092 |[3171910] |Windows Kernel 的安全性更新 |4.34, 3.41 |2016 年 7 月 12 日 |
 | MS16-094 |[3177404] |安全開機的安全性更新 |4.34, 3.41 |2016 年 7 月 12 日 |
 | N/A |[3162835] |2016 年 6 月 Windows 的 DST 和時區更新 |4.34, 3.41, 2.53 |2016 年 7 月 12 日 |
 | N/A |[3156417] |適用於 Windows 7 SP1 和 Windows Server 2008 R2 SP1 的 2016 年 5 月更新彙總套件 |2.53 |2016 年 7 月 12 日 |
-| N/A |[3161608] |适用于 Windows 7 SP1 和 Windows Server 2008 R2 SP1 的 2016 年 6 月更新汇总 |2.53 |2016 年 7 月 12 日 |
+| N/A |[3161608] |適用於 Windows 7 SP1 和 Windows Server 2008 R2 SP1 的 2016 年 6 月更新彙總套件 |2.53 |2016 年 7 月 12 日 |
 | N/A |[3161609] |適用於 Windows Server 2012 的 2016 年 6 月更新彙總套件 |3.41 |2016 年 7 月 12 日 |
 | N/A |[3161606] |適用於 Windows RT 8.1、Windows 8.1 和 Windows Server 2012 R2 的 2016 年 6 月更新彙總套件 |4.34 |2016 年 7 月 12 日 |
-| N/A |[3139923] |在 Windows 中的 HTTP 共享上安装 MSI 包时，Windows Installer (MSI) 修复不起作用 |4.34 |2016 年 7 月 12 日 |
+| N/A |[3139923] |Windows installer (MSI) 修復不適用於 MSI 套件安裝在 Windows 的 HTTP 共用上時 |4.34 |2016 年 7 月 12 日 |
 
 ## <a name="june-2016-guest-os"></a>2016 年 6 月客體 OS
-| 公告識別碼 | 上层知识库文章 | 弱點說明 | 来宾 OS | 首次引進日期 |
+| 公告識別碼 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
 | --- | --- | --- | --- | --- |
 | MS16-035 |[3141780] |.NET Framework 的安全性更新，可解決略過安全性功能 |4.33、3.40、2.52 |2016 年 6 月 14 日 |
 | 諮詢 |[3155527] |更新 FalseStart 的加密套件 |4.33、3.40 |2016 年 6 月 14 日 |
@@ -764,26 +1387,26 @@ ms.locfileid: "65465560"
 | MS16-076 |[3167691] |Netlogon 的安全性更新 |4.33 |2016 年 6 月 14 日 |
 | MS16-077 |[3165191] |WPAD 的安全性更新 |4.33、3.40、2.52 |2016 年 6 月 14 日 |
 | MS16-080 |[3164302] |Microsoft Windows PDF 的安全性更新 |4.33、3.40 |2016 年 6 月 14 日 |
-| MS16-081 |[3160352] |Active Directory 的安全更新 |4.33、3.40、2.52 |2016 年 6 月 14 日 |
+| MS16-081 |[3160352] |Active Directory 的安全性更新 |4.33、3.40、2.52 |2016 年 6 月 14 日 |
 | N/A |[2922223] |如果在 Windows 中啟用 RealTimeIsUniversal 登錄項目，您無法變更系統時間 |2.52 |2016 年 6 月 14 日 |
 | N/A |[3121255] |"0x00000024" FsRtlNotifyFilterReportChange 中的停止錯誤且在 Windows 中複製檔案可能失敗 |2.52 |2016 年 6 月 14 日 |
 | N/A |[3125424] |LSASS 死結導致 Windows Server 2012 R2 或 Windows Server 2012 沒有回應 |4.33、3.40 |2016 年 6 月 14 日 |
 | N/A |[3125574] |適用於 Windows 7 SP1 和 Windows Server 2008 R2 SP1 的方便彙總套件更新 |2.52 |2016 年 6 月 14 日 |
 | N/A |[3140245] |此更新可啟用 TLS 1.1 和 TLS 1.2 作為 Windows 的 WinHTTP 中的預設安全通訊協定 |3.40、2.52 |2016 年 6 月 14 日 |
-| N/A |[3146604] |WMI 服务在 Windows Server 2012 R2 或 Windows Server 2012 中随机崩溃 |4.33、3.40 |2016 年 6 月 14 日 |
-| N/A |[3149157] |Windows 8.1 和 Windows Server 2012 R2 的 TCP/IP 在可靠性和伸缩性方面的改进 |4.33 |2016 年 6 月 14 日 |
+| N/A |[3146604] |WMI 服務在 Windows Server 2012 R2 或 Windows Server 2012 中隨機損毀 |4.33、3.40 |2016 年 6 月 14 日 |
+| N/A |[3149157] |Windows 8.1 和 Windows Server 2012 R2 的 TCP/IP 可靠性和延展性改善 |4.33 |2016 年 6 月 14 日 |
 | N/A |[3156416] |適用於 Windows Server 2012 的 2016 年 5 月更新彙總套件 |3.40 |2016 年 6 月 14 日 |
 | N/A |[3156418] |適用於 Windows RT 8.1、Windows 8.1 和 Windows Server 2012 R2 的 2016 年 5 月更新彙總套件 |4.33 |2016 年 6 月 14 日 |
 | N/A |[3153731] |適用於 Windows 在亞塞拜然、智利、海地和摩洛哥的 2016 年 5 月更新彙總套件 |4.33、3.40、2.52 |2016 年 6 月 14 日 |
 
 ## <a name="may-2016-guest-os"></a>2016 年 5 月客體 OS
-| 公告識別碼 | 上层知识库文章 | 弱點說明 | 来宾 OS | 首次引進日期 |
+| 公告識別碼 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
 | --- | --- | --- | --- | --- |
 | MS16-051 |[3155533] |Internet Explorer 的累積安全性更新 |4.32, 3.39, 2.51 |2016 年 5 月 10 日 |
 | MS16-053 |[3156764] |JScript 與 VBScript 的累積安全性更新 |2.51 |2016 年 5 月 10 日 |
 | MS16-055 |[3156754] |Microsoft 圖形元件的安全性更新 |4.32, 3.39, 2.51 |2016 年 5 月 10 日 |
 | MS16-057 |[3156987] |Windows Shell 的安全性更新 |4.32 |2016 年 5 月 10 日 |
-| MS16-060 |[3154846] |Windows 内核的安全更新 |4.32、3.39、2.51 |2016 年 5 月 10 日 |
+| MS16-060 |[3154846] |Windows Kernel 的安全性更新 |4.32, 3.39, 2.51 |2016 年 5 月 10 日 |
 | MS16-061 |[3155520] |RPC 的安全性更新 |4.32, 3.39, 2.51 |2016 年 5 月 10 日 |
 | MS16-062 |[3158222] |核心模式驅動程式的安全性更新 |4.32, 3.39, 2.51 |2016 年 5 月 10 日 |
 | MS16-065 |[3156757] |.NET Framework 的安全性更新 |4.32, 3.39, 2.51 |2016 年 5 月 10 日 |
@@ -795,94 +1418,94 @@ ms.locfileid: "65465560"
 | N/A |[停用 RC4] | Microsoft Security Advisory：可供停用 RC4 的更新  |4.32, 3.39, 2.51 |2016 年 5 月 10 日 |
 
 ## <a name="april-2016-guest-os"></a>2016 年 4 月客體 OS
-| 公告識別碼 | 上层知识库文章 | 弱點說明 | 来宾 OS | 首次引進日期 |
+| 公告識別碼 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
 | --- | --- | --- | --- | --- |
 | MS16-037 |[3148531] |Internet Explorer 的累積安全性更新 |4.31, 3.38, 2.50 |2016 年 4 月 12 日 |
 | MS16-039 |[3148522] |Microsoft 圖形元件的安全性更新 |4.31, 3.38, 2.50 |2016 年 4 月 12 日 |
 | MS16-040 |[3148541] |Microsoft XML 核心服務的安全性更新 |4.31, 3.38, 2.50 |2016 年 4 月 12 日 |
 | MS16-044 |[3146706] |Windows OLE 的安全性更新 |4.31, 3.38, 2.50 |2016 年 4 月 12 日 |
-| MS16-045 |[3143118] |Windows Hyper-V 的安全性更新 |4.31、3.38 |2016 年 4 月 12 日 |
-| MS16-047 |[3148527] |安全性帳戶管理員遠端通訊協定的安全性更新 |4.31、3.38、2.50 |2016 年 4 月 12 日 |
+| MS16-045 |[3143118] |Windows Hyper-V 的安全性更新 |4.31, 3.38 |2016 年 4 月 12 日 |
+| MS16-047 |[3148527] |安全性帳戶管理員遠端通訊協定的安全性更新 |4.31, 3.38, 2.50 |2016 年 4 月 12 日 |
 | MS16-048 |[3148528] |CSRSS 的安全性更新 |4.31, 3.38 |2016 年 4 月 12 日 |
 
 ## <a name="march-2016-guest-os"></a>2016 年 3 月客體 OS
-| 公告識別碼 | 上层知识库文章 | 弱點說明 | 来宾 OS | 首次引進日期 |
+| 公告識別碼 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
 | --- | --- | --- | --- | --- |
 | MS16-023 |[3142015] |Internet Explorer 的累積安全性更新 |4.30、3.37、2.49 |2016 年 3 月 8 日 |
 | MS16-026 |[3143148] |圖形字型的安全性更新，可解決遠端程式碼執行問題 |4.30、3.37、2.49 |2016 年 3 月 8 日 |
 | MS16-027 |[3143146] |Windows Media Player 的安全性更新，可解決遠端程式碼執行問題 |4.30、3.37、2.49 |2016 年 3 月 8 日 |
-| MS16-028 |[3143081] |Microsoft Windows PDF 库安全更新，解决远程代码执行过程中的问题 |4.30、3.37 |2016 年 3 月 8 日 |
+| MS16-028 |[3143081] |Microsoft Windows PDF 程式庫的安全性更新，可解決遠端程式碼執行問題 |4.30、3.37 |2016 年 3 月 8 日 |
 | MS16-030 |[3143136] |Windows OLE 的安全性更新，可解決遠端程式碼執行問題 |4.30、3.37、2.49 |2016 年 3 月 8 日 |
 | MS16-031 |[3140410] |Microsoft Windows 的安全性更新，可解決提高權限問題 |2.49 |2016 年 3 月 8 日 |
-| MS16-032 |[3143141] |对辅助登录安全更新，解决权限提升过程中的问题 |4.30、3.37、2.49 |2016 年 3 月 8 日 |
-| MS16-033 |[3143142] |对 USB 海量存储类驱动程序安全更新，解决权限提升过程中的问题 |4.30、3.37、2.49 |2016 年 3 月 8 日 |
+| MS16-032 |[3143141] |Secondary Logon 的安全性更新，可解決提高權限問題 |4.30、3.37、2.49 |2016 年 3 月 8 日 |
+| MS16-033 |[3143142] |USB 大型存放裝置類別驅動程式的安全性更新，可解決提高權限問題 |4.30、3.37、2.49 |2016 年 3 月 8 日 |
 | MS16-034 |[3143145] |核心模式驅動程式的安全性更新，可解決提高權限問題 |4.30、3.37、2.49 |2016 年 3 月 8 日 |
 
 ## <a name="february-2016-guest-os"></a>2016 年 2 月客體 OS
-| 公告識別碼 | 上层知识库文章 | 弱點說明 | 来宾 OS | 首次引進日期 |
+| 公告識別碼 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
 | --- | --- | --- | --- | --- |
 | MS16-009 |[3134220] |Internet Explorer 的累積安全性更新 |4.29、3.36、2.48 |2016 年 2 月 9 日 |
-| MS16-013 |[3134811] |Windows 日记安全更新，解决远程代码执行过程中的问题 |4.29、3.36、2.48 |2016 年 2 月 9 日 |
+| MS16-013 |[3134811] |Windows 筆記本的安全性更新，可解決遠端程式碼執行問題 |4.29、3.36、2.48 |2016 年 2 月 9 日 |
 | MS16-014 |[3134228] |Microsoft Windows 的安全性更新，可解決遠端程式碼執行問題 |4.29、3.36、2.48 |2016 年 2 月 9 日 |
 | MS16-016 |[3136041] |WebDAV 的安全性更新，可解決提高權限問題 |4.29、3.36、2.48 |2016 年 2 月 9 日 |
 | MS16-018 |[3136082] |Windows 核心模式驅動程式的安全性更新，可解決提高權限問題 |4.29、3.36、2.48 |2016 年 2 月 9 日 |
 | MS16-019 |[3137893] |.NET Framework 的安全性更新，可解決遠端程式碼執行問題 |4.29、3.36、2.48 |2016 年 2 月 9 日 |
 | MS16-021 |[3133043] |可解決拒絕服務問題的 NPS RADIUS Server 安全性更新 |4.29、3.36、2.48 |2016 年 2 月 9 日 |
 | Microsoft Security Advisory |[3109853] |改善 TLS 互通性的更新 |4.29、3.36 |2016 年 2 月 9 日 |
-| 重新發行 - MS15-101 |[3089662] |.NET Framework 中的漏洞可能导致提升权限 |4.29、3.36、2.48 |2016 年 2 月 9 日 |
+| 重新發行 - MS15-101 |[3089662] |.NET Framework 中的弱點可能會允許權限提高 |4.29、3.36、2.48 |2016 年 2 月 9 日 |
 | 重新發行 - MS15-118 |[3104507] |.NET Framework 的安全性更新，可解決提高權限問題 |4.29、3.36、2.48 |2016 年 2 月 9 日 |
 | 重新發行 - MS15-128 |[3104503] |Microsoft 圖形元件的安全性更新，可解決遠端程式碼執行問題 |4.29、3.36、2.48 |2016 年 2 月 9 日 |
 
 ## <a name="january-2016-guest-os"></a>2016 年 1 月客體 OS
-| 公告識別碼 | 上层知识库文章 | 弱點說明 | 来宾 OS | 首次引進日期 |
+| 公告識別碼 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
 | --- | --- | --- | --- | --- |
-| MS16-001 |[3124903] |Internet Explorer 的累積安全性更新 |4.28、3.35、2.47 |2016 年 1 月 12 日 |
-| MS16-003 |[3125540] |JScript 和 VBScript 的累积安全更新 |2.47 |2016 年 1 月 12 日 |
+| MS16-001 |[3124903] |Internet Explorer 的累積安全性更新 |4.28, 3.35, 2.47 |2016 年 1 月 12 日 |
+| MS16-003 |[3125540] |JScript 與 VBScript 的累積安全性更新 |2.47 |2016 年 1 月 12 日 |
 | MS16-005 |[3124584] |Windows 核心模式驅動程式的安全性更新，可解決遠端程式碼執行問題 |4.28, 3.35, 2.47 |2016 年 1 月 12 日 |
 | MS16-007 |[3124901] |Microsoft Windows 的安全性更新，可解決遠端程式碼執行問題 |4.28, 3.35, 2.47 |2016 年 1 月 12 日 |
 | MS16-008 |[3124605] |核心的安全性更新，可解決提高權限問題 |4.28, 3.35, 2.47 |2016 年 1 月 12 日 |
 | Microsoft Security Advisory 修訂 |[2755801] |Internet Explorer 中 Adobe Flash Player 的弱點更新 (封裝 KB：TBD) - 諮詢預留位置 |4.28, 3.35 |2016 年 1 月 12 日 |
-| Microsoft Security Advisory |[3109853] |更新后改进了 TLS 互操作性 |4.28、3.35 |2016 年 1 月 12 日 |
+| Microsoft Security Advisory |[3109853] |改善 TLS 互通性的更新 |4.28, 3.35 |2016 年 1 月 12 日 |
 | Microsoft Security Advisory |[3123479] |取代 Microsoft 根憑證計劃適用的 SHA-1 雜湊演算法 |4.28, 3.35, 2.47 |2016 年 1 月 12 日 |
 | Microsoft Security Advisory |[2736233] |ActiveX Kill Bits 的更新 |4.28, 3.35, 2.47 |2016 年 1 月 12 日 |
 
 ## <a name="december-2015-guest-os"></a>2015 年 12 月客體 OS
-| 公告識別碼 | 上层知识库文章 | 弱點說明 | 来宾 OS | 首次引進日期 |
+| 公告識別碼 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
 | --- | --- | --- | --- | --- |
 | MS15-124 |[3116180] |Internet Explorer 的累積安全性更新 |4.27、3.34、2.46 |2015 年 12 月 8 日 |
 | MS15-126 |[3116178] |Microsoft VBScript 與 JScript 的安全更新，可解決遠端程式碼執行問題 |2.46 |2015 年 12 月 8 日 |
 | MS15-127 |[3100465] |Microsoft Windows DNS 的安全性更新，可解決遠端程式碼執行問題 |4.27、3.34、2.46 |2015 年 12 月 8 日 |
 | MS15-128 |[3104503] |Microsoft 圖形元件的安全性更新，可解決遠端程式碼執行問題 |4.27、3.34、2.46 |2015 年 12 月 8 日 |
-| MS15-132 |[3116162] |Windows 的安全更新，解决远程代码执行过程中的问题 |4.27、3.34、2.46 |2015 年 12 月 8 日 |
+| MS15-132 |[3116162] |Windows 的安全性更新，可解決遠端程式碼執行問題 |4.27、3.34、2.46 |2015 年 12 月 8 日 |
 | MS15-133 |[3116130] |Windows PGM 的安全性更新，可解決提高權限問題 |4.27、3.34、2.46 |2015 年 12 月 8 日 |
-| MS15-134 |[3108669] |Windows 媒体中心的安全更新，解决远程代码执行过程中的问题 |4.27、3.34、2.46 |2015 年 12 月 8 日 |
+| MS15-134 |[3108669] |Windows 媒體中心的安全性更新，可解決遠端程式碼執行問題 |4.27、3.34、2.46 |2015 年 12 月 8 日 |
 | MS15-135 |[3119075] |Windows 核心模式驅動程式的安全性更新，可解決提高權限問題 |4.27、3.34、2.46 |2015 年 12 月 8 日 |
 
 ## <a name="november-2015-guest-os"></a>2015 年 11 月客體 OS
-| 公告識別碼 | 上层知识库文章 | 弱點說明 | 来宾 OS | 首次引進日期 |
+| 公告識別碼 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
 | --- | --- | --- | --- | --- |
-| MS15 112 |[3104517] |Internet Explorer 的累積安全性更新 |4.26、3.33、2.45 |2015 年 11 月 10 日 |
+| MS15 112 |[3104517] |Internet Explorer 的累積安全性更新 |4.26, 3.33, 2.45 |2015 年 11 月 10 日 |
 | MS15 114 |[3100213] |Windows Journal 的安全性更新，可解決遠端程式碼執行問題 |2.45 |2015 年 11 月 10 日 |
-| MS15-115 |[3105864] |Microsoft Windows 安全更新，解决远程代码执行过程中的问题 |4.26, 3.33, 2.45 |2015 年 11 月 10 日 |
-| MS15 117 |[3101722] |NDIS 安全更新，解决权限提升过程中的问题 |2.45 |2015 年 11 月 10 日 |
+| MS15-115 |[3105864] |Microsoft Windows 的安全性更新，可解決遠端程式碼執行問題 |4.26, 3.33, 2.45 |2015 年 11 月 10 日 |
+| MS15 117 |[3101722] |NDIS 的安全性更新，可解決提高權限問題 |2.45 |2015 年 11 月 10 日 |
 | MS15 118 |[3104507] |.NET Framework 的安全性更新，可解決提高權限問題 |4.26, 3.33, 2.45 |2015 年 11 月 10 日 |
 | MS15-119 |[3104521] |可解決提高權限的 Winsock 安全性更新 |4.26, 3.33, 2.45 |2015 年 11 月 10 日 |
 | MS15-120 |[3102939] |可解決阻斷服務問題的 IPSec 安全性更新 |4.26、3.33 |2015 年 11 月 10 日 |
-| MS15 121 |[3081320] |Schannel 安全更新，解决欺骗问题 |4.26, 3.33, 2.45 |2015 年 11 月 10 日 |
+| MS15 121 |[3081320] |解決詐騙的 Schannel 安全性更新， |4.26, 3.33, 2.45 |2015 年 11 月 10 日 |
 | MS15 122 |[3105256] |解決詐騙的 Kerberos 安全性更新 |4.26, 3.33, 2.45 |2015 年 11 月 10 日 |
 | Microsoft Security Advisory |[3097966] |不慎公開數位憑證可能會允許詐騙 |4.26, 3.33, 2.45 |2015 年 11 月 10 日 |
 
 ## <a name="october-2015-guest-os"></a>2015 年 10 月客體 OS
-| 公告識別碼 | 上层知识库文章 | 弱點說明 | 来宾 OS | 首次引入日期 |
+| 公告識別碼 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
 | --- | --- | --- | --- | --- |
-| MS15-106 |[3096441] |Internet Explorer 的累積安全性更新 |4.25、3.32、2.44 |2015 年 10 月 13 日 |
+| MS15-106 |[3096441] |Internet Explorer 的累積安全性更新 |4.25, 3.32, 2.44 |2015 年 10 月 13 日 |
 | MS15-108 |[3089659] |JScript 與 VBScript 的安全更新，可解決潛在遠端程式碼執行問題 |2.44 |2015 年 10 月 13 日 |
 | MS15-109 |[3096443] |Windows Shell 的安全性更新，可解決遠端程式碼執行問題 |4.25, 3.32, 2.44 |2015 年 10 月 13 日 |
 | MS15-111 |[3096447] |Windows 核心的安全性更新，可解決提高權限問題 |4.25, 3.32, 2.44 |2015 年 10 月 13 日 |
-| Microsoft 安全公告 |[3092627] |2015 年 9 月的更新，可修正安裝安全性更新 3076895 之後 Windows 或應用程式凍結的問題 |4.25, 3.32, 2.44 |2015 年 10 月 13 日 |
+| Microsoft Security Advisory |[3092627] |2015 年 9 月的更新，可修正安裝安全性更新 3076895 之後 Windows 或應用程式凍結的問題 |4.25, 3.32, 2.44 |2015 年 10 月 13 日 |
 
 ## <a name="september-2015-guest-os"></a>2015 年 9 月客體 OS
-| 公告識別碼 | 上层知识库文章 | 弱點說明 | 来宾 OS | 首次引進日期 |
+| 公告識別碼 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
 | --- | --- | --- | --- | --- |
 | MS15-093 |[3088903] |Internet Explorer 的安全性更新 |4.24, 3.31, 2.43 |2015 年 9 月 8 日 |
 | MS15-094 |[3089548] |Internet Explorer 的累積安全性更新 |4.24, 3.31, 2.43 |2015 年 9 月 8 日 |
@@ -890,88 +1513,88 @@ ms.locfileid: "65465560"
 | MS15-097 |[3089656] |Microsoft 圖形元件中的弱點可能會允許提高權限 |4.24, 3.31, 2.43 |2015 年 9 月 8 日 |
 | MS15-098 |[3089669] |Windows 筆記本中的弱點可能會允許遠端程式碼執行 |4.24, 3.31, 2.43 |2015 年 9 月 8 日 |
 | MS15-101 |[3089662] |.NET Framework 中的弱點可能會允許權限提高 |4.24, 3.31, 2.43 |2015 年 9 月 8 日 |
-| MS15-102 |[3089657] |Windows 任务管理中的漏洞可能导致提升权限 |4.24、3.31、2.43 |2015 年 9 月 8 日 |
+| MS15-102 |[3089657] |Windows Task Management 中的資訊安全性弱點可能會允許提高權限 |4.24, 3.31, 2.43 |2015 年 9 月 8 日 |
 | MS15-105 |[3091287] |Windows Hyper-V 中的弱點可能會允許略過安全性功能 |4.24 |2015 年 9 月 8 日 |
 
 ## <a name="august-2015-guest-os"></a>2015 年 8 月客體 OS
-| 公告識別碼 | 上层知识库文章 | 弱點說明 | 来宾 OS | 首次引進日期 |
+| 公告識別碼 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
 | --- | --- | --- | --- | --- |
 | MS15-079 |[3082442] |Internet Explorer 的累積安全性更新 |4.23, 3.30, 2.42 |2015 年 8 月 11 日 |
-| MS15-080 |[3078662] |Microsoft 圖形元件中的弱點可能會允許遠端程式碼執行 |4.23、3.30、2.42 |2015 年 8 月 11 日 |
+| MS15-080 |[3078662] |Microsoft 圖形元件中的弱點可能會允許遠端程式碼執行 |4.23, 3.30, 2.42 |2015 年 8 月 11 日 |
 | MS15-082 |[3080348] |RDP 中的弱點可能會允許遠端程式碼執行 |4.23, 3.30, 2.42 |2015 年 8 月 11 日 |
 | MS15-084 |[3080129] |XML 核心服務中的弱點可能會允許資訊洩漏 |4.23, 3.30, 2.42 |2015 年 8 月 11 日 |
 | MS15-085 |[3082487] |Mount Manager 中的弱點可能會允許提高權限 |4.23, 3.30, 2.42 |2015 年 8 月 11 日 |
 | MS15-088 |[3082458] |不安全的命令列參數傳遞可能會允許資訊洩漏 |4.23, 3.30, 2.42 |2015 年 8 月 11 日 |
 | MS15-089 |[3060716] |Microsoft Windows 中的弱點可能會允許提高權限 |4.23, 3.30, 2.42 |2015 年 8 月 11 日 |
-| MS15-090 |[3076949] |WebDAV 中的漏洞可能导致信息泄露 |4.23, 3.30, 2.42 |2015 年 8 月 11 日 |
+| MS15-090 |[3076949] |WebDAV 中的弱點可能會允許資訊洩漏 |4.23, 3.30, 2.42 |2015 年 8 月 11 日 |
 
 ## <a name="july-2015-guest-os"></a>2015 年 7 月客體 OS
-| 公告識別碼 | 上层知识库文章 | 弱點說明 | 来宾 OS | 首次引進日期 |
+| 公告識別碼 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
 | --- | --- | --- | --- | --- |
 | MS15-065 |[3076321] |Internet Explorer 的累積安全性更新 |4.22, 3.29, 2.41 |2015 年 7 月 14 日 |
 | MS15-066 |[3072604] |VBScript 中的弱點可能會允許遠端程式碼執行 |2.41 |2015 年 7 月 14 日 |
-| MS15-067 |[3073094] |RDP 中的漏洞可能导致远程执行代码 |4.22, 3.29, 2.41 |2015 年 7 月 14 日 |
+| MS15-067 |[3073094] |RDP 中的弱點可能會允許遠端程式碼執行 |4.22, 3.29, 2.41 |2015 年 7 月 14 日 |
 | MS15-068 |[3072000] |Windows Hyper-V 中的弱點可能會允許遠端程式碼執行 |4.22, 3.29, 2.41 |2015 年 7 月 14 日 |
 | MS15-069 |[3072631] |Windows 中的弱點可能會允許遠端程式碼執行 |4.22, 3.29, 2.41 |2015 年 7 月 14 日 |
 | MS15-071 |[3068457] |NETLOGON 中的資訊安全風險可能允許詐騙 |4.22, 3.29, 2.41 |2015 年 7 月 14 日 |
 | MS15-072 |[3069392] |圖形驅動程式中的弱點可能會允許權限提高 |4.22, 3.29, 2.41 |2015 年 7 月 14 日 |
-| MS15-073 |[3070102] |内核模式驱动程序中的漏洞可能导致提升权限 |4.22, 3.29, 2.41 |2015 年 7 月 14 日 |
+| MS15-073 |[3070102] |核心模式驅動程式中的弱點可能會允許權限提高 |4.22, 3.29, 2.41 |2015 年 7 月 14 日 |
 | MS15-074 |[3072630] |Windows Installer Service 中的弱點可能會允許權限提高 |4.22, 3.29, 2.41 |2015 年 7 月 14 日 |
 | MS15-075 |[3072633] |OLE 中的弱點可能會允許權限提高 |4.22, 3.29, 2.41 |2015 年 7 月 14 日 |
-| MS15-076 |[3067505] |Windows 远程过程调用中的漏洞可能导致提升权限 |4.22, 3.29, 2.41 |2015 年 7 月 14 日 |
+| MS15-076 |[3067505] |Windows 遠端程序呼叫中的弱點可能會允許權限提高 |4.22, 3.29, 2.41 |2015 年 7 月 14 日 |
 | MS15-077 |[3077657] |ATM 字型驅動程式中的弱點可能會允許權限提高 |4.22, 3.29, 2.41 |2015 年 7 月 14 日 |
-| NA |[3057154] |更新為限制使用 DES 加密 |4.22、3.29、2.41 |2015 年 7 月 14 日 |
+| NA |[3057154] |更新為限制使用 DES 加密 |4.22, 3.29, 2.41 |2015 年 7 月 14 日 |
 
 ## <a name="june-2015-guest-os"></a>2015 年 6 月客體 OS
-| 公告識別碼 | 上层知识库文章 | 弱點說明 | 来宾 OS | 首次引進日期 |
+| 公告識別碼 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
 | --- | --- | --- | --- | --- |
 | MS15-056 |[3058515] |Internet Explorer 的累積安全性更新 |4.21、3.28、2.40 |2015 年 6 月 9 日 |
-| MS15-057 |[3033890] |Windows Media Player 中的漏洞可能导致远程执行代码 |4.21、3.28、2.40 |2015 年 6 月 9 日 |
+| MS15-057 |[3033890] |Windows Media Player 中的弱點可能會允許遠端程式碼執行 |4.21、3.28、2.40 |2015 年 6 月 9 日 |
 | MS15-060 |[3059317] |Microsoft 通用控制項中的弱點可能會允許遠端程式碼執行 |4.21、3.28、2.40 |2015 年 6 月 9 日 |
 | MS15-061 |[3057839] |Windows 核心模式驅動程式中的弱點可能會允許權限提高 |4.21、3.28、2.40 |2015 年 6 月 9 日 |
 | MS15-062 |[3062577] |Active Directory Federation Services 中的弱點可能會允許權限提高 |4.21、3.28、2.40 |2015 年 6 月 9 日 |
 | MS15-063 |[3063858] |Windows 核心中的弱點可能會允許提高權限 |4.21、3.28、2.40 |2015 年 6 月 9 日 |
 
 ## <a name="may-2015-guest-os"></a>2015 年 5 月客體 OS
-| 公告識別碼 | 上层知识库文章 | 弱點說明 | 来宾 OS | 首次引進日期 |
+| 公告識別碼 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
 | --- | --- | --- | --- | --- |
 | MS15-043 |[3049563] |Internet Explorer 的累積安全性更新 |4.20、3.27、2.39 |2015 年 5 月 12 日 |
 | MS15-044 |[3057110] |Adobe 字型驅動程式中的弱點可能會允許遠端程式碼執行 |4.20、3.27、2.39 |2015 年 5 月 12 日 |
 | MS15-045 |[3046002] |Windows 筆記本中的弱點可能會允許遠端程式碼執行 |4.20、3.27、2.39 |2015 年 5 月 12 日 |
 | MS15-048 |[3057134] |.NET Framework 中的弱點可能會允許權限提高 |4.20、3.27、2.39 |2015 年 5 月 12 日 |
 | MS15-050 |[3055642] |服務控制管理員中的弱點可能會允許權限提高 |4.20、3.27、2.39 |2015 年 5 月 12 日 |
-| MS15-051 |[3057191] |Windows 内核模式驱动程序中的漏洞可能导致提升权限 |4.20、3.27、2.39 |2015 年 5 月 12 日 |
+| MS15-051 |[3057191] |Windows 核心模式驅動程式中的弱點可能會允許權限提高 |4.20、3.27、2.39 |2015 年 5 月 12 日 |
 | MS15-052 |[3050514] |Windows 核心中的弱點可能會允許略過安全性功能 |4.20、3.27、2.39 |2015 年 5 月 12 日 |
 | MS15-053 |[3057263] |JScript 與 VBScript 指令碼引擎中的弱點可能會允許略過安全性功能 |4.20、3.27、2.39 |2015 年 5 月 12 日 |
 | MS15-054 |[3051768] |Microsoft 管理主控台檔案格式中的弱點可能會允許拒絕服務 |4.20、3.27、2.39 |2015 年 5 月 12 日 |
-| MS15-055 |[3061518] |Schannel 中的漏洞可能导致绕过安全功能和严重的信息泄露 |4.20、3.27、2.39 |2015 年 5 月 12 日 |
+| MS15-055 |[3061518] |安全通道中的弱點可能會允許略過安全性功能而導致重要資訊洩漏 |4.20、3.27、2.39 |2015 年 5 月 12 日 |
 | MS15-032 |[3038314] |Internet Explorer 的累積安全性更新 |4.20、3.27、2.39 |2015 年 4 月 17 日 |
 | MS15-035 |[3046306] |Microsoft 圖形元件中的弱點可能會允許遠端程式碼執行 |4.20、3.27、2.39 |2015 年 4 月 17 日 |
 | MS15-037 |[3046269] |Windows 工作排程器中的弱點可能會允許權限提高 |4.20、3.27、2.39 |2015 年 4 月 17 日 |
 | MS15-038 |[3049576] |Microsoft Windows 中的弱點可能會允許重要權限提高 |4.20、3.27、2.39 |2015 年 4 月 17 日 |
 | MS15-039 |[3046482] |XML 核心服務中的弱點可能會允許略過安全性功能 |4.20、3.27、2.39 |2015 年 4 月 17 日 |
 | MS15-040 |[3045711] |ADFS 中的弱點可能會允許資訊洩漏 |4.20、3.27、2.39 |2015 年 4 月 17 日 |
-| MS15-041 |[3048010] |.NET Framework 中的漏洞可能导致信息泄露 |4.20、3.27、2.39 |2015 年 4 月 17 日 |
+| MS15-041 |[3048010] |.NET Framework 中的弱點可能會允許資訊洩漏 |4.20、3.27、2.39 |2015 年 4 月 17 日 |
 | MS15-042 |[3047234] |Windows Hyper-V 中的弱點可能會允許拒絕服務 |4.20、3.27、2.39 |2015 年 4 月 17 日 |
 | NA |[3045755] |改善 PKU2U 驗證的更新 |4.20、3.27、2.39 |2015 年 4 月 17 日 |
 
 ## <a name="april-2015-guest-os"></a>2015 年 4 月客體 OS
-| 公告識別碼 | 上层知识库文章 | 弱點說明 | 来宾 OS | 首次引進日期 |
+| 公告識別碼 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
 | --- | --- | --- | --- | --- |
 | [MS15-034] |[3042553] |HTTP.sys 中的弱點可能會允許遠端程式碼執行 |4.19、3.26、2.38 |2015 年 4 月 17 日 |
 
 ## <a name="march-2015-guest-os"></a>2015 年 3 月客體 OS
-| 公告識別碼 | 上层知识库文章 | 弱點說明 | 来宾 OS | 首次引進日期 |
+| 公告識別碼 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
 | --- | --- | --- | --- | --- |
 | MS15-018 |[3032359] |Internet Explorer 的累積安全性更新 |4.18、3.25、2.37 |N/A |
 | MS15-019 |[3040297] |VBScript 指令碼引擎中的資訊安全風險可允許遠端程式碼執行 |4.18、3.25、2.37 |N/A |
-| MS15-020 |[3041836] |Windows 中的漏洞可能导致远程执行代码 |4.18、3.25、2.37 |N/A |
+| MS15-020 |[3041836] |Windows 中的弱點可能會允許遠端程式碼執行 |4.18、3.25、2.37 |N/A |
 | MS15-021 |[3032323] |Adobe 字型驅動程式中的資訊安全風險可允許遠端程式碼執行 |4.18、3.25、2.37 |N/A |
 | MS15-023 |[3034344] |核心模式驅動程式中的資訊安全風險可允許提高權限 |4.18、3.25、2.37 |N/A |
 | MS15-024 |[3035132] |PNG 處理程序中的資訊安全風險可允許資訊洩漏 |4.18、3.25、2.37 |N/A |
-| MS15-025 |[3038680] |Windows 内核中的漏洞可能导致提升权限 |4.18、3.25、2.37 |N/A |
+| MS15-025 |[3038680] |Windows 核心中的資訊安全風險可允許提高權限 |4.18、3.25、2.37 |N/A |
 | MS15-027 |[3002657] |NETLOGON 中的資訊安全風險可能允許詐騙 |4.18、3.25、2.37 |N/A |
-| MS15-028 |[3030377] |Windows 任务计划程序中的漏洞可能导致绕过安全功能 |4.18、3.25、2.37 |N/A |
+| MS15-028 |[3030377] |Windows 工作排程器中的弱點可能會允許略過安全性功能 |4.18、3.25、2.37 |N/A |
 | MS15-029 |[3035126] |Windows Photo 解碼器元件中的資訊安全風險可允許資訊洩漏 |4.18、3.25、2.37 |N/A |
 | MS15-030 |[3039976] |遠端桌面通訊協定中的弱點可能會允許拒絕服務 |4.18、3.25、2.37 |N/A |
 
@@ -981,24 +1604,24 @@ ms.locfileid: "65465560"
 >
 
 ## <a name="february-2015-guest-os"></a>2015 年 2 月客體 OS
-| 公告識別碼 | 上层知识库文章 | 弱點說明 | 来宾 OS | 首次引進日期 |
+| 公告識別碼 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
 | --- | --- | --- | --- | --- |
 | MS15-009 |[3034682] |Internet Explorer 的安全性更新 |4.17、3.24、2.36 |N/A |
-| MS15-010 |[3036220] |Windows 内核模式驱动程序中的漏洞可能导致远程执行代码 |4.17、3.24、2.36 |N/A |
-| MS15-011 |[3000483] |组策略中的漏洞可能导致远程执行代码 |4.17、3.24、2.36 |N/A |
+| MS15-010 |[3036220] |Windows 核心模式驅動程式中的弱點可能會允許遠端程式碼執行 |4.17、3.24、2.36 |N/A |
+| MS15-011 |[3000483] |群組原則中的弱點可能會允許遠端程式碼執行 |4.17、3.24、2.36 |N/A |
 | MS15-014 |[3004361] |SMB 中的弱點可能會允許略過安全性功能 |4.17、3.24、2.36 |N/A |
 | MS15-015 |[3031432] |Microsoft Windows 中的弱點可能會允許權限提高 |4.17、3.24、2.36 |N/A |
 | MS15-016 |[3029944] |Microsoft 圖形元件中的弱點可能會允許資訊洩漏 |4.17、3.24、2.36 |N/A |
 | N/A |[3004375] |可改善 Windows 命令列稽核的更新<p/>**注意**：更新已安裝，但啟用所需的登錄機碼為關閉狀態 |4.17、3.24、2.36 |N/A |
 
 ## <a name="january-2015-guest-os"></a>2015 年 1 月客體 OS
-| 公告識別碼 | 上层知识库文章 | 弱點說明 | 来宾 OS | 首次引進日期 |
+| 公告識別碼 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
 | --- | --- | --- | --- | --- |
 | MS15-001 |[3023266] |Windows AppCompatCache 中的弱點可能會允許權限提高 |4.16、3.23、2.35 |2015 年 1 月 19 日 |
 | MS15-002 |[3020393] |Windows Telnet 服務中的弱點可能會導致遠端程式碼執行 |4.16、3.23、2.35 |2015 年 1 月 19 日 |
 | MS15-003 |[3021674] |Windows User Profile Service 中的弱點可能會允許權限提高 |4.16、3.23、2.35 |2015 年 1 月 19 日 |
 | MS15-004 |[3019978] |Windows 元件中的弱點可能會允許權限提高 |4.16、3.23、2.35 |2015 年 1 月 19 日 |
-| MS15-005 |[3022777] |NLA 中的漏洞可能导致绕过安全功能 |4.16、3.23、2.35 |2015 年 1 月 19 日 |
+| MS15-005 |[3022777] |NLA 中的弱點可能會允許略過安全性功能 |4.16、3.23、2.35 |2015 年 1 月 19 日 |
 | MS15-006 |[3004365] |Windows 錯誤報告中的弱點可能會允許略過安全性功能 |4.16、3.23、2.35 |2015 年 1 月 19 日 |
 | MS15-007 |[3014029] |網路原則伺服器 RADIUS 可能會導致拒絕服務 |4.16、3.23、2.35 |2015 年 1 月 19 日 |
 | MS15-008 |[3019215] |Windows 核心模式驅動程式中的弱點可能會允許權限提高 |4.16、3.23、2.35 |2015 年 1 月 19 日 |
@@ -1008,14 +1631,14 @@ ms.locfileid: "65465560"
 
 
 ## <a name="december-2014-guest-os"></a>2014 年 12 月客體 OS
-| 公告識別碼 | 上层知识库文章 | 弱點說明 | 来宾 OS | 首次引進日期 |
+| 公告識別碼 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
 | --- | --- | --- | --- | --- |
 | N/A |[3013776] |使用網域帳戶啟動應用程式時系統凍結 |4.15、3.22,、2.34 |2015 年 1 月 13 日 |
 | N/A |[3013043] |具有多個 NUMA 節點的 Windows 電腦中的檔案系統資料損毀 |4.15、3.22,、2.34 |2015 年 1 月 13 日 |
 | N/A |[3012712] |展開差異 VHD 時，新的資料區塊初始化發生錯誤 |4.15、3.22,、2.34 |2015 年 1 月 13 日 |
-| N/A |[3004905] |适用于文件系统大于 2 TB 的 Linux 虚拟机的 Windows Hyper-V 功能改进 |4.15、3.22,、2.34 |2015 年 1 月 13 日 |
-| N/A |[3004394] |适用于 Windows 中 Windows 根证书程序的 2014 年 12 月更新 |4.15、3.22、2.34 |2015 年 1 月 13 日 |
-| N/A |[2999323] |事件 ID 17 的文本已更改 |4.15、3.22,、2.34 |2015 年 1 月 13 日 |
+| N/A |[3004905] |適用於Linux 虛擬機器 (檔案系統容量大於 2 TB) 的 Windows Hyper-V 功能改進 |4.15、3.22,、2.34 |2015 年 1 月 13 日 |
+| N/A |[3004394] |適用於 Windows 中 Windows 根憑證計劃的 2014 年 12 月更新 |4.15、3.22,、2.34 |2015 年 1 月 13 日 |
+| N/A |[2999323] |事件識別碼 17 的文字內容已變更 |4.15、3.22,、2.34 |2015 年 1 月 13 日 |
 | N/A |[3013488] |在 Windows Server 2 R2012 或 Windows Server 2012 中匯入 CSA 檔案時，需等候很長的時間才能重設 WSUS 伺服器 |4.15、3.22,、2.34 |2015 年 1 月 13 日 |
 | N/A |[3012325] |適用於 DIGI、Vodafone 及 Telekom 行動電信業者的 Windows 1.8 和 Windows 8 Windows APN 資料庫項目更新 |4.15、3.22,、2.34 |2015 年 1 月 13 日 |
 | N/A |[3007054] |在 Windows 的 Windows 市集應用程式中列印文件時，一律會顯示受 PIN 保護的列印選項 |4.15、3.22,、2.34 |2015 年 1 月 13 日 |

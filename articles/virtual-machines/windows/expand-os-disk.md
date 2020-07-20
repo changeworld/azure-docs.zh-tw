@@ -1,27 +1,19 @@
 ---
-title: 在 Azure 中擴充 Windows VM 的 OS 磁碟機 | Microsoft Docs
+title: 在 Azure 中擴充 Windows VM 的 OS 磁碟機
 description: 使用 Resource Manager 部署模型中的 Azure PowerShell，擴充虛擬機器的 OS 磁碟機大小。
-services: virtual-machines-windows
-documentationcenter: ''
-author: kirpasingh
-manager: roshar
-editor: ''
-tags: azure-resource-manager
-ms.assetid: d9edfd9f-482f-4c0b-956c-0d2c2c30026c
+author: mimckitt
+manager: vashan
 ms.service: virtual-machines-windows
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 07/05/2018
-ms.author: kirpas
+ms.author: mimckitt
 ms.subservice: disks
-ms.openlocfilehash: bd863a8ddd9e2277b628673d2146efd8c458c319
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
-ms.translationtype: HT
+ms.openlocfilehash: 5044993e04dabc363a7a4ee49abb66285bcd7521
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55979491"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85338253"
 ---
 # <a name="how-to-expand-the-os-drive-of-a-virtual-machine"></a>如何擴充虛擬機器的 OS 磁碟機
 
@@ -32,13 +24,13 @@ ms.locfileid: "55979491"
 
 
 > [!IMPORTANT]
-> 調整 Azure 虛擬機器的作業系統磁碟大小將致使它重新啟動。
+> 必須將虛擬機器解除配置，才能調整 Azure 虛擬機器的 OS 磁碟大小。
 >
 > 在擴充磁碟之後，您必須[擴充 OS 內的磁碟區](#expand-the-volume-within-the-os)以使用較大的磁碟。
 > 
 
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+ 
 
 
 ## <a name="resize-a-managed-disk"></a>調整受控磁碟大小
@@ -167,7 +159,7 @@ Start-AzVM -ResourceGroupName $rgName -Name $vmName
 
 ## <a name="resizing-data-disks"></a>調整資料磁碟大小
 
-本文主要著重於擴充 VM 的 OS 磁碟，但指令碼也可用於擴充連結到 VM 的資料磁碟。 例如，若要擴充連接至 VM 的第一個資料磁碟，請將 `StorageProfile` 的 `OSDisk` 物件取代成 `DataDisks` 陣列，並使用數值索引取得第一個連接的資料磁碟的參考，如下所示︰
+本文主要著重於擴充 VM 的 OS 磁碟，但指令碼也可用於擴充連結到 VM 的資料磁碟。 如果只展開資料磁片，則**不**需要解除配置 VM。 例如，若要擴充連接至 VM 的第一個資料磁碟，請將 `StorageProfile` 的 `OSDisk` 物件取代成 `DataDisks` 陣列，並使用數值索引取得第一個連接的資料磁碟的參考，如下所示︰
 
 **受控磁碟**
 
@@ -208,9 +200,9 @@ $vm.StorageProfile.DataDisks[0].DiskSizeGB = 1023
 
 2.  開啟命令提示字元，然後鍵入 **diskpart**。
 
-2.  在 **DISKPART** 提示處，鍵入 `list volume`。 記下您想要擴充的磁碟區。
+2.  在 **DISKPART** 提示中鍵入 `list volume`。 記下您想要擴充的磁碟區。
 
-3.  在 **DISKPART** 提示處，鍵入 `select volume <volumenumber>`。 如此會選取您想在相同磁碟上擴充成連續空間的磁碟區 *volumenumber*。
+3.  在 **DISKPART** 提示中鍵入 `select volume <volumenumber>`。 如此會選取您想在相同磁碟上擴充成連續空間的磁碟區 *volumenumber*。
 
 4.  在 **DISKPART** 提示處，鍵入 `extend [size=<size>]`。 如此會以 *size* (MB) 為單位，擴充選取的磁碟區。
 

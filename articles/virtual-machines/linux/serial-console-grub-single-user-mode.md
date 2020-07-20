@@ -1,25 +1,18 @@
 ---
-title: 適用於 GRUB 與單一使用者模式的 Azure 序列主控台 | Microsoft Docs
+title: 適用于 GRUB 和單一使用者模式的 Azure 序列主控台
 description: 針對 Azure 虛擬機器中的 grub 使用序列主控台。
 services: virtual-machines-linux
-documentationcenter: ''
 author: asinn826
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: a249cf96981957de2c445079c0172b9c0c2ce543
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 2aa7110ab4e52fdc5c3804bd27be5f41081fb435
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60799468"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "81758502"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>使用序列主控台來存取 GRUB 與單一使用者模式
 GRUB 的全名是 GRand Unified Bootloader。 從 GRUB，您可以修改開機設定，以開機到單一使用者模式。
@@ -55,7 +48,7 @@ RHEL 會在無法正常開機時讓您進入單一使用者模式。 不過，�
 ### <a name="grub-access-in-rhel"></a>RHEL 中的 GRUB 存取
 RHEL 預設會啟用 GRUB。 若要進入 GRUB，請使用 `sudo reboot` 將您的 VM 重新開機並按任意鍵。 您將會看到 GRUB 畫面。
 
-> 注意：Red Hat 也提供開機到「救援模式」、「緊急模式」、「偵錯模式」以及重設根密碼的文件。 [按一下這裡以存取該文件](https://aka.ms/rhel7grubterminal)。
+> 注意：Red Hat 也提供開機到「救援模式」、「緊急模式」、「偵錯模式」以及重設 root 密碼的文件。 [按一下這裡以存取該文件](https://aka.ms/rhel7grubterminal)。
 
 ### <a name="set-up-root-access-for-single-user-mode-in-rhel"></a>在 RHEL 中針對單一使用者模式設定 root 存取
 RHEL 中的單一使用者模式要求啟用 root 使用者 (預設為停用)。 如果您需要啟用單一使用者模式，請依下列指示進行操作：
@@ -89,7 +82,7 @@ RHEL 中的單一使用者模式要求啟用 root 使用者 (預設為停用)。
 ### <a name="enter-single-user-mode-without-root-account-enabled-in-rhel"></a>在 RHEL 中於未啟用 root 帳戶的情況下進入單一使用者模式
 若未依照上述步驟啟用 root 使用者，您仍然可以重設您的 root 密碼。 使用下列指示：
 
-> 注意：若您使用 SELinux，當您重設根密碼之前，請確定您已執行[這裡](https://aka.ms/rhel7grubterminal)的 Red Hat 文件中所述的額外步驟。
+> 注意：若您使用 SELinux，當您重設 root 密碼之前，請確定您已執行[這裡](https://aka.ms/rhel7grubterminal)的 Red Hat 文件中所述的額外步驟。
 
 1. 在重新啟動 VM 之後按 'Esc' 以進入 GRUB
 1. 在 GRUB 中，按 'e' 以編輯您要開機進入其中的特定 OS (通常是第一行)
@@ -126,7 +119,7 @@ Ubuntu 映像不需要 root 密碼。 如果系統開機進入單一使用者模
 1. 將 `GRUB_TIMEOUT` 值變更為非零值
 1. 在您慣用的文字編輯器中開啟 `/etc/default/grub`
 1. 將 `GRUB_HIDDEN_TIMEOUT=1` 行變成註解
-1. 執行 `sudo update-grub`
+1. `sudo update-grub`執行
 
 ### <a name="single-user-mode-in-ubuntu"></a>Ubuntu 中的單一使用者模式
 Ubuntu 會在無法正常開機時讓您進入單一使用者模式。 若要手動進入單一使用者模式，請依下列指示執行：
@@ -156,7 +149,7 @@ SLES 12 SP3 以上版本的新版映像允許在系統開機進入緊急模式�
 SLES 中的 GRUB 存取要求必須透過 YaST 設定開機載入程式。 若要這樣做，請依照下列指示執行：
 
 1. ssh 到您的 SLES VM 並執行 `sudo yast bootloader`。 使用 `tab` 鍵、`enter` 鍵與方向鍵來瀏覽功能表。 
-1. 瀏覽到 `Kernel Parameters` `Use serial console`。 
+1. 瀏覽到 `Kernel Parameters``Use serial console`。 
 1. 將 `serial --unit=0 --speed=9600 --parity=no` 加到 Console 引數中
 
 1. 按 F10 以儲存您的設定並結束
@@ -184,7 +177,7 @@ Oracle Linux 預設會啟用 GRUB。 若要進入 GRUB，請使用 `sudo reboot`
 依照上述適用於 RHEL 的指示來在 Oracle Linux 中啟用單一使用者模式。
 
 ## <a name="next-steps"></a>後續步驟
-* 主要序列主控台 Linux 文件頁面在[這裡](serial-console.md)。
-* 適用於 [NMI 與 SysRq 呼叫](serial-console-nmi-sysrq.md)的序列主控台
+* 主要序列主控台 Linux 檔頁面位於[這裡](serial-console.md)。
+* 使用「序列主控台」來進行[NMI 和 SysRq 呼叫](serial-console-nmi-sysrq.md)
 * 「序列主控台」也適用於 [Windows](../windows/serial-console.md) VM
-* 深入了解[開機診斷](boot-diagnostics.md)
+* 深入瞭解[開機診斷](boot-diagnostics.md)

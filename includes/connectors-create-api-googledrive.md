@@ -1,17 +1,18 @@
 ---
-author: ecfan
 ms.service: logic-apps
 ms.topic: include
-ms.date: 11/03/2016
+author: ecfan
 ms.author: estfan
-ms.openlocfilehash: fe726986b3f93ab3bb447b8973727a658ac1c706
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
-ms.translationtype: HT
+ms.date: 11/03/2016
+ms.openlocfilehash: 96943405f3fce02b8a07158f797dd204eb4bb8e2
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50133047"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789699"
 ---
-### <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>必要條件
+
 * [GoogleDrive](https://www.google.com/drive/) 帳戶  
 
 您必須先授權邏輯應用程式連接到您的 GoogleDrive 帳戶，才可以在邏輯應用程式中使用您的 GoogleDrive 帳戶。幸運的是，您可以輕鬆地在 Azure 入口網站上從邏輯應用程式內完成。  

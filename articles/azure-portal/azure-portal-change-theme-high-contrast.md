@@ -1,54 +1,53 @@
 ---
 title: 在 Azure 入口網站中開啟高對比 | Microsoft Docs
-description: 了解如何開啟高對比，或變更 Azure 入口網站佈景主題。
+description: 變更 Azure 入口網站主題，以選擇所顯示的背景和字型色彩。 開啟 [高對比]，讓 Azure 入口網站更快速且更容易閱讀。
 services: azure-portal
 keywords: ''
-author: kfollis
-ms.author: kfollis
-ms.date: 04/08/2019
-ms.topic: conceptual
+author: mgblythe
+ms.author: mblythe
+ms.date: 12/20/2019
+ms.topic: how-to
 ms.service: azure-portal
 ms.custom: accessibility
 manager: mtillman
-ms.openlocfilehash: 59824c4a10c50265ea0a15be69755748b87d4a3f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 7d17a956faf4080f419bc859c8259018b98626a5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60690366"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84764055"
 ---
 # <a name="turn-on-high-contrast-or-change-the-theme-in-the-azure-portal"></a>在 Azure 入口網站中開啟高對比或變更佈景主題
 
-高對比設定可讓 Azure 入口網站中更方便閱讀。 您也可以選擇變更入口網站的背景色彩佈景主題。
+高對比設定可讓 Azure 入口網站更容易閱讀。 您也可以選擇變更入口網站背景色彩的主題。
 
 如果您在 Azure 入口網站中需要更多對比，或者您想要變更色彩配置，請移至入口網站設定以進行變更。
 
 ## <a name="turn-on-high-contrast"></a>開啟高對比
 
-1. 中的標頭[Azure 入口網站](https://portal.azure.com)，選取**設定**。
+1. 在[Azure 入口網站](https://portal.azure.com)的標頭中，選取 [**設定**]。
 
     ![螢幕擷取畫面，它顯示 Azure 入口網站的入口網站設定齒輪圖示](./media/azure-portal-change-theme-high-contrast/azure-portal-settings-icon.png)
-1. 選擇 [白色] 或 [黑色]。
+1. 選擇 [白色]**** 或 [黑色]****。
 
     ![螢幕擷取畫面，它顯示 Azure 入口網站設定的高對比選項](./media/azure-portal-change-theme-high-contrast/azure-portal-highcontrast-options.png)
-1. 選取 [套用] 。
+1. 選取 [套用]。
 
 > [!NOTE]
-> 如果您選取高對比佈景主題時，它會覆寫所有其他佈景主題選取範圍。
+> 如果您選取高對比主題，它會覆寫所有其他主題選取專案。
 >
 >
 
 ## <a name="change-theme"></a>變更佈景主題
 
-1. 中的標頭[Azure 入口網站](https://portal.azure.com)，選取**設定**。
+1. 在[Azure 入口網站](https://portal.azure.com)的標頭中，選取 [**設定**]。
 
     ![螢幕擷取畫面，它顯示 Azure 入口網站的入口網站設定齒輪圖示](./media/azure-portal-change-theme-high-contrast/azure-portal-settings-icon.png)
 
-1. 選擇佈景主題。
+1. 選擇一個主題。
 
     ![螢幕擷取畫面，它顯示 Azure 入口網站設定的佈景主題選項](./media/azure-portal-change-theme-high-contrast/azure-portal-theme-options.png)
 
-1. 選取 [套用] 。
+1. 選取 [套用]。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -1,27 +1,18 @@
 ---
-title: 範例 Azure 基礎結構逐步解說 | Microsoft Docs
+title: 範例 Azure 基礎結構逐步解說
 description: 了解適合用來在 Azure 中部署範例基礎結構的關鍵設計和實作指導方針。
-documentationcenter: ''
-services: virtual-machines-windows
 author: cynthn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 7032b586-e4e5-4954-952f-fdfc03fc1980
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.devlang: na
-ms.topic: article
+ms.topic: example-scenario
 ms.date: 12/15/2017
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ddbaed6704fd32f7fd4fe5a790424cbf829d2f1c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 43e96b891e60dfcf8bc3c29b202bb60213905372
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60540370"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "81869475"
 ---
 # <a name="example-azure-infrastructure-walkthrough-for-windows-vms"></a>適用於 Windows VM 的範例 Azure 基礎結構逐步解說
 本文將逐步解說建置範例應用程式基礎結構的方法。 我們會詳述設計簡單線上商店基礎結構的方式，此線上商店能將所有命名慣例、可用性設定組、虛擬網路及負載平衡器的指導方針和決定集合在一起，並實際部署您的虛擬機器 (VM)。
@@ -34,7 +25,7 @@ Adventure Works Cycles 想要在 Azure 中建置一個線上商店，該商店�
 * 含有 AlwaysOn 可用性群組的兩個 Microsoft SQL Server 執行個體 (有兩部 SQL Server 和一個多數節點見證)，負責在資料庫層級中儲存產品資料和訂單
 * 兩個在驗證層級中針對客戶帳戶及供應商的 Active Directory 網域控制站
 * 所有伺服器皆位於兩個子網路中：
-  * Web 服务器位于前端子网中 
+  * 一個適用於網頁伺服器的前端子網路 
   * 一個適用於應用程式伺服器、SQL 叢集及網域控制站的後端子網路
 
 ![不同應用程式基礎結構層級的圖表](./media/infrastructure-example/example-tiers.png)
@@ -53,13 +44,13 @@ Adventure Works Cycles 想要在 Azure 中建置一個線上商店，該商店�
 以上各項會遵循下列命名慣例：
 
 * Adventure Works Cycles 使用 **[IT workload]-[location]-[Azure resource]** 做為首碼
-  * 針對此範例，"**azos**" (Azure 線上商店) 是 IT 工作負載名稱，而 "**use**" (美國東部 2) 是位置
+  * 針對此範例，"**azos**" （Azure 線上商店）是 IT 工作負載名稱，而 "**USE**" （美國東部2）是位置
 * 虛擬網路會使用 AZOS-USE-VN **[number]**
 * 可用性設定組會使用 azos-use-as-**[role]**
 * 虛擬機器名稱會使用 azos-use-vm-**[vmname]**
 
 ## <a name="azure-subscriptions-and-accounts"></a>Azure 訂用帳戶與帳戶
-Adventure Works Cycles 使用名为 Adventure Works 企业订阅的企业订阅为此 IT 工作负荷提供计费。
+Adventure Works Cycles 正在使用名稱為 Adventure Works Enterprise Subscription 的企業訂用帳戶，來提供這個 IT 工作負載的計費。
 
 ## <a name="storage"></a>儲存體
 Adventure Works Cycles 決定他們應該使用 Azure 受控磁碟。 建立 VM 時，會同時使用這兩個可用的儲存層：
@@ -73,7 +64,7 @@ Adventure Works Cycles 決定他們應該使用 Azure 受控磁碟。 建立 VM 
 他們透過 Azure 入口網站，使用下列設定來建立僅限雲端的虛擬網路：
 
 * 名稱：AZOS-USE-VN01
-* 位置：美國東部 2
+* 位置：East US 2
 * 虛擬網路位址空間：10.0.0.0/8
 * 第一個子網路：
   * 名稱：FrontEnd

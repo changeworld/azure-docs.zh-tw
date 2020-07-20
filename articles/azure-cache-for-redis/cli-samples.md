@@ -1,25 +1,17 @@
 ---
-title: Azure CLI Azure Redis 快取範例 | Microsoft Docs
-description: 「Azure Redis 快取」的 Azure CLI 範例。
-services: cache
-documentationcenter: ''
+title: Azure CLI Azure Cache for Redis 範例
+description: 適用于 Azure Cache for Redis 的 Azure CLI 範例：建立快取、刪除快取、取得快取記憶體詳細資料、主機名稱、埠和金鑰，以及連線 web 應用程式。
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: 8d2de145-50c0-4f76-bf8f-fdf679f03698
-ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
-ms.devlang: azurecli
-ms.topic: article
-ms.date: 04/14/2017
 ms.author: yegu
-ms.openlocfilehash: eea74e8f1291901fea3c77b70ba3c636f40bd132
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.service: cache
+ms.devlang: azurecli
+ms.topic: conceptual
+ms.date: 04/14/2017
+ms.openlocfilehash: c43e23b4bf46258cc91b06a0912d03e85a5c7a14
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60829747"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75411350"
 ---
 # <a name="azure-cli-samples-for-azure-cache-for-redis"></a>Azure Redis 快取的 Azure CLI 範例
 

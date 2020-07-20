@@ -1,19 +1,20 @@
 ---
-title: 教學課程：透過資料複製服務將資料複製到 Microsoft Azure 資料箱裝置 | Microsoft Docs
+title: 教學課程：使用資料複製服務來複製到您的裝置
+titleSuffix: Azure Data Box
 description: 在本教學課程，您會了解如何透過資料複製服務將資料複製到 Azure 資料箱裝置
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 01/24/2019
+ms.date: 06/18/2019
 ms.author: alkohli
-ms.openlocfilehash: 3f76721129906b57a05e597aade9f2febb609968
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 5b3db919056f24ad8b46c9925c044453e671d99f
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343522"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219152"
 ---
 # <a name="tutorial-use-the-data-copy-service-to-copy-data-into-azure-data-box-preview"></a>教學課程：使用資料複製服務將資料複製到 Azure 資料箱 (預覽)
 
@@ -24,9 +25,10 @@ ms.locfileid: "56343522"
 - 在可能無法使用中繼主機的 NAS 環境中使用。
 - 搭配需要數週時間來擷取和上傳資料的小型檔案。 資料複製服務可大幅改善小型檔案的擷取和上傳時間。
 
-在本教學課程中，您了解如何：
+在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
+>
 > * 將資料複製到資料箱
 
 ## <a name="prerequisites"></a>必要條件
@@ -42,9 +44,14 @@ ms.locfileid: "56343522"
 
 在連線至 NAS 裝置後，下一個步驟是複製資料。 開始複製資料之前，請檢閱下列注意事項：
 
-- 複製資料時，請確定資料大小符合 [Azure 儲存體和資料箱限制](data-box-limits.md)一文中所述的大小限制。
-- 如果由資料箱上傳的資料同時由資料箱外部的其他應用程式上傳，則可能導致上傳作業失敗和資料損毀。
-- 如果資料因為由資料複製服務讀取而有所修改，您可能會看到資料失敗或損毀。
+* 複製資料時，請確定資料大小符合 [Azure 儲存體和資料箱限制](data-box-limits.md)一文中所述的大小限制。
+
+* 如果由資料箱上傳的資料同時由資料箱外部的其他應用程式上傳，則可能導致上傳作業失敗和資料損毀。
+
+* 如果資料因為由資料複製服務讀取而有所修改，您可能會看到資料失敗或損毀。
+
+> [!IMPORTANT]
+> 在確認資料箱已將您的資料移轉至 Azure 儲存體之前，請務必先保留一份來源資料複本。
 
 若要使用資料複製服務來複製資料，您需要建立一項作業：
 
@@ -57,9 +64,9 @@ ms.locfileid: "56343522"
     
     |欄位                          |值    |
     |-------------------------------|---------|
-    |**作業名稱**                       |作業的唯一名稱超過 230 個字元。 作業名稱中不允許以下字元：\<、\>、\|、\?、\*、\\、\:、\/ 及 \\\.         |
+    |**作業名稱**                       |作業的唯一名稱超過 230 個字元。 作業名稱中不允許以下字元：\<, \>、\|、\?、\*、\\、\:、\/ 和 \\\.         |
     |**來源位置**                |以下列格式提供資料來源的 SMB 路徑：`\\<ServerIPAddress>\<ShareName>` 或 `\\<ServerName>\<ShareName>`。        |
-    |**使用者名稱**                       |用以存取資料來源的使用者名稱 (採用 `\\<DomainName><UserName>` 格式)。        |
+    |**使用者名稱**                       |用以存取資料來源的使用者名稱 (採用 `\\<DomainName><UserName>` 格式)。 如果本機系統管理員正在連線，他們需要明確的安全性權限。 以滑鼠右鍵按一下資料夾，選取 [屬性]，然後選取 [安全性]。 這樣應該會在 [安全性] 索引標籤中新增本機系統管理員。       |
     |**密碼**                       |用以存取資料來源的密碼。           |
     |**目的地儲存體帳戶**    |從清單中選取要作為資料上傳目的地的儲存體帳戶。         |
     |**目的地類型**       |從清單中選取目標儲存體類型：**區塊 Blob**、**分頁 Blob** 或 **Azure 檔案儲存體**。        |
@@ -102,7 +109,7 @@ ms.locfileid: "56343522"
 
         ![重新啟動失敗的作業](media/data-box-deploy-copy-data-via-copy-service/restart-failed-job.png)
 
-        如果您遇到失敗且無法重新啟動作業，請下載錯誤記錄並在記錄中查看該項失敗。 在更正問題後，請建立新的作業來複製檔案。 您也可以[透過 SMB 複製檔案](data-box-deploy-copy-data.md)。
+        如果您遇到失敗且無法重新啟動作業，請下載錯誤記錄並在記錄檔中查看該項失敗。 在更正問題後，請建立新的作業來複製檔案。 您也可以[透過 SMB 複製檔案](data-box-deploy-copy-data.md)。
     
     - 在這個版本中，您無法刪除作業。
     
@@ -111,7 +118,7 @@ ms.locfileid: "56343522"
 
 6. 當作業正在進行時，在 [複製資料] 頁面上：
 
-    - 在 [狀態] 資料行中，您可以檢視複製作業的狀態。 狀態可以是：
+    - 在 [狀態] 資料行中，您可以檢視複製作業的狀態。 狀態可能是：
         - **執行中**
         - **已失敗**
         - **已成功**
@@ -144,4 +151,3 @@ ms.locfileid: "56343522"
 
 > [!div class="nextstepaction"]
 > [將 Azure 資料箱裝置寄給 Microsoft](./data-box-deploy-picked-up.md)
-

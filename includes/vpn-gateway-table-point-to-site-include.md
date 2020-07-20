@@ -9,11 +9,11 @@ ms.date: 04/26/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 59ba66fb013a4ea6aebd40164ca252447876053d
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
-ms.translationtype: HT
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64929353"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "67173856"
 ---
 **Azure 原生憑證驗證**
 

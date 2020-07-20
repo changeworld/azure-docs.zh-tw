@@ -1,10 +1,10 @@
 ---
 title: 教學課程：跨可用性區域進行 VM 負載平衡 - Azure 入口網站
-titlesuffix: Azure Load Balancer
+titleSuffix: Azure Load Balancer
 description: 此教學課程示範如何使用 Azure 入口網站以區域備援前端建立標準負載平衡器，來平衡多可用性區域間的 VM 負載。
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 manager: twooley
 Customer intent: As an IT administrator, I want to create a load balancer that load balances incoming internet traffic to virtual machines across availability zones in a region, so that the customers can still access the web service if a datacenter is unavailable.
 ms.service: load-balancer
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/27/2019
-ms.author: kumud
+ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 912307e6509ea66be887838e875076b7a895ca94
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d9f16b612b508a6237c748bd135ff32618015b0b
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57888142"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057002"
 ---
 # <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站透過標準 Load Balancer 將 VM 的負載平均分配至多個可用性區域
 
@@ -39,11 +39,11 @@ ms.locfileid: "57888142"
 
 如果您想要，您可以使用 [Azure CLI](load-balancer-standard-public-zone-redundant-cli.md) 完成本教學課程。
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立 [免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。 
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
 
-在 [https://portal.azure.com](https://portal.azure.com) 登入 Azure 入口網站。
+登入 Azure 入口網站：[https://portal.azure.com](https://portal.azure.com)。
 
 ## <a name="create-a-standard-load-balancer"></a>建立標準負載平衡器
 
@@ -56,7 +56,7 @@ ms.locfileid: "57888142"
     | ---                     | ---                                                |
     | 訂用帳戶               | 選取您的訂用帳戶。    |    
     | 資源群組         | 選取 [新建]，並在文字方塊中輸入 *MyResourceGroupLBAZ*。|
-    | Name                   | *myLoadBalancer*                                   |
+    | 名稱                   | *myLoadBalancer*                                   |
     | 區域         | 選取 [西歐]。                                        |
     | 類型          | 選取 [公用]。                                        |
     | SKU           | 選取 [標準]。                          |
@@ -69,16 +69,20 @@ ms.locfileid: "57888142"
 
 本節中，您會建立一個虛擬網路、在地區的不同區域中建立虛擬機器，然後在虛擬機器上安裝 IIS，協助測試區域備援的負載平衡器。 因此，如果某個區域失敗，相同區域中的 VM 健康情況探查也失敗，其他區域中的 VM 將繼續為流量提供服務。
 
-### <a name="create-a-virtual-network"></a>建立虛擬網路
-建立虛擬網路以便部署您的後端伺服器。
+## <a name="virtual-network-and-parameters"></a>虛擬網路和參數
 
-1. 在畫面左上方按一下 [建立資源] > [網路] > [虛擬網路]，然後輸入虛擬網路的下列值：
-    - myVnet - 作為虛擬網路的名稱。
-    - myResourceGroupLBAZ - 作為現有資源群組的名稱
-    - myBackendSubnet - 作為子網路名稱。
-2. 按一下 [建立] 以建立虛擬網路。
+在本節中，您需要使用下列資訊來取代步驟中的下列參數：
 
-    ![建立虛擬網路](./media/load-balancer-standard-public-availability-zones-portal/2-load-balancer-virtual-network.png)
+| 參數                   | 值                |
+|-----------------------------|----------------------|
+| **\<resource-group-name>**  | myResourceGroupLBAZ (選取現有的資源群組) |
+| **\<virtual-network-name>** | myVNet          |
+| **\<region-name>**          | 西歐      |
+| **\<IPv4-address-space>**   | 10.0.0.0/16          |
+| **\<subnet-name>**          | myBackendSubnet        |
+| **\<subnet-address-range>** | 10.0.0.0/24          |
+
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ## <a name="create-a-network-security-group"></a>建立網路安全性群組
 
@@ -136,9 +140,6 @@ ms.locfileid: "57888142"
     - myNetworkSecurityGroup - 作為網路安全性群組 (防火牆) 的名稱。
 5. 按一下 [停用] 來停用開機診斷。
 6. 按一下 [確定]，檢閱 [摘要] 頁面上的設定，然後按一下 [建立]。
-  
-   ![建立虛擬機器](./media/load-balancer-standard-public-availability-zones-portal/create-vm-standard-ip.png)
-
 7. 使用步驟 1-6，在區域 2 中建立名為 VM2 的第二個 VM，並在區域 3 中建立第三個 VM，且其虛擬網路為 myVnet、子網路為 myBackendSubnet，而網路安全性群組為 *myNetworkSecurityGroup。
 
 ### <a name="install-iis-on-vms"></a>在 VM 上安裝 IIS
@@ -215,6 +216,7 @@ ms.locfileid: "57888142"
     - myBackendPool - 作為後端集區的名稱。
     - myHealthProbe - 作為健康狀態探查的名稱。
 4. 按一下 [確定]。
+    
     
     ![新增負載平衡規則](./media/load-balancer-standard-public-availability-zones-portal/load-balancing-rule.png)
 

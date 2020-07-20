@@ -1,10 +1,15 @@
 ---
+author: wesmc7777
+ms.author: wesmc
+ms.service: iot-hub
+ms.topic: include
+ms.date: 10/26/2018
 ms.openlocfilehash: 01279ea83b9f2c2c02629949abeec0afc3110678
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60399073"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "67174084"
 ---
 > [!div class="op_single_selector"]
 > * [.NET](../articles/iot-hub/iot-hub-csharp-csharp-file-upload.md)

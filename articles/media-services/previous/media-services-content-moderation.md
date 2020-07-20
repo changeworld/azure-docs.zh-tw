@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 媒體內容仲裁來偵測潛在的成人和猥褻內容 | Microsoft Docs
-description: 影片仲裁可協助您偵測影片中潛在的成人和猥褻內容。
+description: Azure 媒體內容仲裁媒體處理器可協助偵測影片中潛在的成人和猥褻內容。
 services: media-services
 documentationcenter: ''
 author: sanjeev3
@@ -14,24 +14,27 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: sajagtap
-ms.openlocfilehash: eb16f5e1e72e5a9379ad530ab9677adba2ccbbcd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 70d824522e1ae71bd49050779ff37e821d560783
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61465672"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954698"
 ---
 # <a name="use-azure-media-content-moderator-to-detect-possible-adult-and-racy-content"></a>使用 Azure 媒體內容仲裁來偵測潛在的成人和猥褻內容 
 
-## <a name="overview"></a>概觀
-**Azure 媒體內容仲裁**媒體處理器 (MP) 可讓您針對影片使用機器輔助仲裁。 例如，您可能會想要偵測影片中潛在的成人和猥褻內容，並由您的人力仲裁小組檢閱這些被標記的內容。
+> [!NOTE]
+> **Azure 媒體內容仲裁**媒體處理器將會淘汰。 如需淘汰日期，請參閱[舊版元件](legacy-components.md)主題。
+
+## <a name="overview"></a>總覽
+**Azure 媒體內容仲裁**媒體處理器（MP）可讓您針對影片使用機器輔助仲裁。 例如，您可能會想要偵測影片中潛在的成人和猥褻內容，並由您的人力仲裁小組檢閱這些被標記的內容。
 
 **Azure 媒體內容仲裁** MP 目前為預覽功能。
 
 本文提供有關 **Azure 媒體內容仲裁**的詳細資料，並示範如何搭配適用於 .NET 的媒體服務 SDK 來使用它。
 
 ## <a name="content-moderator-input-files"></a>內容仲裁輸入檔案
-影片檔案。 目前支援下列格式：MP4、MOV 與 WMV。
+影片檔案。 目前支援下列格式：MP4、MOV 及 WMV。
 
 ## <a name="content-moderator-output-files"></a>內容仲裁輸出檔案
 JSON 格式的仲裁輸出包含自動偵測的擷取畫面和主要畫面格。 系統會傳回包含是否有潛在成人或猥褻內容之信賴分數的主要畫面格。 它們也會包含一個布林值旗標，指示是否建議檢閱。 系統會依據成人和猥褻分數的內部閾值，指派值給檢閱建議旗標。
@@ -47,13 +50,13 @@ JSON 格式的仲裁輸出包含自動偵測的擷取畫面和主要畫面格。
 | 元素 | 描述 |
 | --- | --- |
 | version |內容仲裁的版本。 |
-| timescale |视频每秒的“刻度”数。 |
+| timescale |影片每秒的「刻度」數目。 |
 | Offset |時間戳記的時間位移。 在 1.0 版的影片 API 中，此值永遠是 0。 此值未來可能會變更。 |
 | framerate |影片的每秒畫面格數。 |
 | width |輸出影片畫面格的寬度 (以像素為單位)。|
 | height |輸出影片畫面格的高度 (以像素為單位)。|
 | totalDuration |輸入影片的持續時間 (以刻度為單位)。 |
-| [fragments](#fragments-json-elements) |中繼資料會被分成稱為「片段」的不同區段。 每個片段都是一個自動偵測的擷取畫面，包含開始、持續時間、間隔數字及事件。 |
+| [分段](#fragments-json-elements) |中繼資料會被分成稱為「片段」的不同區段。 每個片段都是一個自動偵測的擷取畫面，包含開始、持續時間、間隔數字及事件。 |
 
 ### <a name="fragments-json-elements"></a>Fragments JSON 元素
 
@@ -71,7 +74,7 @@ JSON 格式的仲裁輸出包含自動偵測的擷取畫面和主要畫面格。
 | reviewRecommended | `true` 或 `false` 需視 **adultScore** 或 **racyScore** 是否超出內部閾值而定。 |
 | adultScore | 是否有潛在成人內容的信賴分數，範圍為 0.00 到 0.99。 |
 | racyScore | 是否有潛在猥褻內容的信賴分數，範圍為 0.00 到 0.99。 |
-| index | 從第一個畫面格索引到最後一個畫面格索引的範圍畫格索引。 |
+| 索引 | 從第一個畫面格索引到最後一個畫面格索引的範圍畫格索引。 |
 | timestamp | 畫面格位置 (以刻度為單位)。 |
 | shotIndex | 父系擷取畫面的索引。 |
 
@@ -81,9 +84,11 @@ JSON 格式的仲裁輸出包含自動偵測的擷取畫面和主要畫面格。
 ### <a name="task-configuration-preset"></a>工作組態 (預設)
 以 **Azure 媒體內容仲裁**建立工作時，您必須指定設定預設值。 下列設定預設值僅適用於內容仲裁。
 
-    {
-      "version":"2.0"
-    }
+```json
+{
+    "version":"2.0"
+}
+```
 
 ### <a name="net-code-sample"></a>.NET 程式碼範例
 
@@ -92,81 +97,83 @@ JSON 格式的仲裁輸出包含自動偵測的擷取畫面和主要畫面格。
 
 
 ```csharp
-    /// <summary>
-    /// Run the Content Moderator job on the designated Asset from local file or blob storage
-    /// </summary>
-    /// <param name="asset"></param>
-    static void RunContentModeratorJob(IAsset asset)
+/// <summary>
+/// Run the Content Moderator job on the designated Asset from local file or blob storage
+/// </summary>
+/// <param name="asset"></param>
+static void RunContentModeratorJob(IAsset asset)
+{
+    // Grab the presets
+    string configuration = File.ReadAllText(CONTENT_MODERATOR_PRESET_FILE);
+
+    // grab instance of Azure Media Content Moderator MP
+    IMediaProcessor mp = _context.MediaProcessors.GetLatestMediaProcessorByName(MEDIA_PROCESSOR);
+
+    // create Job with Content Moderator task
+    IJob job = _context.Jobs.Create(String.Format("Content Moderator {0}",
+               asset.AssetFiles.First() + "_" + Guid.NewGuid()));
+
+    ITask contentModeratorTask = job.Tasks.AddNew("Adult and racy classifier task",
+                                                  mp, configuration,
+                                                  TaskOptions.None);
+    contentModeratorTask.InputAssets.Add(asset);
+    contentModeratorTask.OutputAssets.AddNew("Adult and racy classifier output",
+                                             AssetCreationOptions.None);
+
+    job.Submit();
+
+
+    // Create progress printing and querying tasks
+    Task progressPrintTask = new Task(() =>
     {
-        // Grab the presets
-        string configuration = File.ReadAllText(CONTENT_MODERATOR_PRESET_FILE);
-
-        // grab instance of Azure Media Content Moderator MP
-        IMediaProcessor mp = _context.MediaProcessors.GetLatestMediaProcessorByName(MEDIA_PROCESSOR);
-
-        // create Job with Content Moderator task
-        IJob job = _context.Jobs.Create(String.Format("Content Moderator {0}",
-                asset.AssetFiles.First() + "_" + Guid.NewGuid()));
-
-        ITask contentModeratorTask = job.Tasks.AddNew("Adult and racy classifier task",
-                mp, configuration,
-                TaskOptions.None);
-        contentModeratorTask.InputAssets.Add(asset);
-        contentModeratorTask.OutputAssets.AddNew("Adult and racy classifier output",
-            AssetCreationOptions.None);
-
-        job.Submit();
-
-
-        // Create progress printing and querying tasks
-        Task progressPrintTask = new Task(() =>
+        IJob jobQuery = null;
+        do
         {
-            IJob jobQuery = null;
-            do
-            {
-                var progressContext = _context;
-                jobQuery = progressContext.Jobs
+            var progressContext = _context;
+            jobQuery = progressContext.Jobs
                 .Where(j => j.Id == job.Id)
-                    .First();
-                    Console.WriteLine(string.Format("{0}\t{1}",
-                    DateTime.Now,
-                    jobQuery.State));
-                    Thread.Sleep(10000);
-             }
-             while (jobQuery.State != JobState.Finished &&
-             jobQuery.State != JobState.Error &&
-             jobQuery.State != JobState.Canceled);
-        });
-        progressPrintTask.Start();
-
-        Task progressJobTask = job.GetExecutionProgressTask(
-        CancellationToken.None);
-        progressJobTask.Wait();
-
-        // If job state is Error, the event handling 
-        // method for job progress should log errors.  Here we check 
-        // for error state and exit if needed.
-        if (job.State == JobState.Error)
-        {
-            ErrorDetail error = job.Tasks.First().ErrorDetails.First();
-            Console.WriteLine(string.Format("Error: {0}. {1}",
-            error.Code,
-            error.Message));
+                .First();
+            Console.WriteLine(string.Format("{0}\t{1}",
+                                            DateTime.Now,
+                                            jobQuery.State));
+            Thread.Sleep(10000);
         }
+        while (jobQuery.State != JobState.Finished &&
+               jobQuery.State != JobState.Error &&
+               jobQuery.State != JobState.Canceled);
+    });
+    progressPrintTask.Start();
 
-        DownloadAsset(job.OutputMediaAssets.First(), OUTPUT_FOLDER);
+    Task progressJobTask = job.GetExecutionProgressTask(
+                           CancellationToken.None);
+    progressJobTask.Wait();
+
+    // If job state is Error, the event handling 
+    // method for job progress should log errors.  Here we check 
+    // for error state and exit if needed.
+    if (job.State == JobState.Error)
+    {
+        ErrorDetail error = job.Tasks.First().ErrorDetails.First();
+        Console.WriteLine(string.Format("Error: {0}. {1}",
+                          error.Code,
+                          error.Message));
     }
 
-For the full source code and the Visual Studio project, check out the [Content Moderator video quickstart](../../cognitive-services/Content-Moderator/video-moderation-api.md).
+    DownloadAsset(job.OutputMediaAssets.First(), OUTPUT_FOLDER);
+}
+```
 
-### JSON output
+如需完整的原始程式碼和 Visual Studio 專案，請參閱[內容仲裁影片快速入門](../../cognitive-services/Content-Moderator/video-moderation-api.md)。
 
-The following example of a Content Moderator JSON output was truncated.
+### <a name="json-output"></a>JSON 輸出
+
+下列的內容仲裁 JSON 輸出範例已被截斷。
 
 > [!NOTE]
-> Location of a keyframe in seconds = timestamp/timescale
+> 主要畫面格位置 (以秒為單位) = 時間戳記/時幅
 
-    {
+```json
+{
     "version": 2,
     "timescale": 90000,
     "offset": 0,
@@ -175,46 +182,46 @@ The following example of a Content Moderator JSON output was truncated.
     "height": 720,
     "totalDuration": 18696321,
     "fragments": [
-    {
-      "start": 0,
-      "duration": 18000
-    },
-    {
-      "start": 18000,
-      "duration": 3600,
-      "interval": 3600,
-      "events": [
-        [
-          {
-            "reviewRecommended": false,
-            "adultScore": 0.00001,
-            "racyScore": 0.03077,
-            "index": 5,
-            "timestamp": 18000,
-            "shotIndex": 0
-          }
-        ]
-      ]
-    },
-    {
-      "start": 18386372,
-      "duration": 119149,
-      "interval": 119149,
-      "events": [
-        [
-          {
-            "reviewRecommended": true,
-            "adultScore": 0.00000,
-            "racyScore": 0.91902,
-            "index": 5085,
-            "timestamp": 18386372,
-            "shotIndex": 62
-          }
-        ]
-      ]
-    }
+        {
+            "start": 0,
+            "duration": 18000
+        },
+        {
+            "start": 18000,
+            "duration": 3600,
+            "interval": 3600,
+            "events": [
+                [
+                    {
+                        "reviewRecommended": false,
+                        "adultScore": 0.00001,
+                        "racyScore": 0.03077,
+                        "index": 5,
+                        "timestamp": 18000,
+                        "shotIndex": 0
+                    }
+                ]
+            ]
+        },
+        {
+            "start": 18386372,
+            "duration": 119149,
+            "interval": 119149,
+            "events": [
+                [
+                    {
+                        "reviewRecommended": true,
+                        "adultScore": 0.00000,
+                        "racyScore": 0.91902,
+                        "index": 5085,
+                        "timestamp": 18386372,
+                        "shotIndex": 62
+                    }
+                ]
+            ]
+        }
     ]
-    }
+}
 ```
 
 ## <a name="media-services-learning-paths"></a>媒體服務學習路徑
@@ -224,7 +231,7 @@ The following example of a Content Moderator JSON output was truncated.
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>相關連結
-[Azure 媒体服务分析概述](media-services-analytics-overview.md)
+[Azure 媒體服務分析概觀](media-services-analytics-overview.md)
 
 [Azure 媒體分析示範](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 

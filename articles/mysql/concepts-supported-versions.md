@@ -1,17 +1,16 @@
 ---
-title: 適用於 MySQL 的 Azure 資料庫中支援的版本
-description: 描述適用於 MySQL 的 Azure 資料庫中支援的版本。
+title: 支援的版本-適用於 MySQL 的 Azure 資料庫
+description: 瞭解適用於 MySQL 的 Azure 資料庫服務中支援的 MySQL 伺服器版本。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 3/13/2019
-ms.openlocfilehash: e7e81632b2be135fb74d375ab8a11f1b4b3ef39d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 6/3/2020
+ms.openlocfilehash: 4d5b858e2384ffc7dd531444aaff17ca3739b408
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60525925"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84337694"
 ---
 # <a name="supported-azure-database-for-mysql-server-versions"></a>支援的適用於 MySQL 的 Azure 資料庫伺服器版本
 
@@ -19,22 +18,28 @@ ms.locfileid: "60525925"
 
 MySQL 會使用 X.Y.Z 命名配置。 X 是主要版本，Y 是次要版本，而 Z 是 Bug 修正版本。 如需此配置的詳細資訊，請參閱 [MySQL 文件](https://dev.mysql.com/doc/refman/5.7/en/which-version.html)。
 
+> [!NOTE]
+> 在服務中，會使用閘道將連線重新導向到伺服器執行個體。 建立連線之後，MySQL 用戶端會顯示閘道中設定的 MySQL 的版本，而非 MySQL 伺服器執行個體上執行的實際版本。 若要判斷您的 MySQL 伺服器執行個體的版本，請在 MySQL 提示字元命令下使用 `SELECT VERSION();` 命令。
+
 適用於 MySQL 的 Azure 資料庫目前支援下列版本：
 
 ## <a name="mysql-version-56"></a>MySQL 5.6 版
 
-Bug 修正版本：5.6.42
+Bug 修正版本：5.6.47
 
-要详细了解 MySQL 5.6.42 中的改进和修复，请参阅 MySQL [发行说明](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-42.html)。
+請參閱 MySQL[版本](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-47.html)資訊，以深入瞭解此版本中的改進功能和修正。
 
 ## <a name="mysql-version-57"></a>MySQL 5.7 版
 
-Bug 修正版本：5.7.24
+Bug 修正版本：5.7.29
 
-要了解 MySQL 5.7.24 中的改进和修复，请参阅 MySQL [发行说明](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-24.html)。
+請參閱 MySQL[版本](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-29.html)資訊，以深入瞭解此版本中的改進功能和修正。
 
-> [!NOTE]
-> 在服務中，會使用閘道將連線重新導向到伺服器執行個體。 建立連線之後，MySQL 用戶端會顯示閘道中設定的 MySQL 的版本，而非 MySQL 伺服器執行個體上執行的實際版本。 若要判斷您的 MySQL 伺服器執行個體的版本，請在 MySQL 提示字元命令下使用 `SELECT VERSION();` 命令。
+## <a name="mysql-version-80"></a>MySQL 版本8。0
+
+Bug 修正版本：8.0.15
+
+請參閱 MySQL[版本](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-15.html)資訊，以深入瞭解此版本中的改進功能和修正。
 
 ## <a name="managing-updates-and-upgrades"></a>管理更新和升級
 服務會自動管理對於錯誤 (bug) 修正版本更新的修補。 例如 5.7.20 至 5.7.21。  

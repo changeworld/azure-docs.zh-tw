@@ -1,25 +1,17 @@
 ---
-title: 從備份還原 - Azure App Service 應用程式
-description: 了解如何從快照集還原應用程式。
-services: app-service
-documentationcenter: ''
-author: ahmedelnably
-manager: cfowler
-editor: ''
+title: 從快照集還原應用程式
+description: 了解如何從快照集還原應用程式。 使用自動陰影複製，從進階層中非預期的資料遺失中復原。
 ms.assetid: 4164f9b5-f735-41c6-a2bb-71f15cdda417
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: multiple
 ms.topic: article
 ms.date: 04/04/2018
-ms.author: aelnably;nicking
+ms.reviewer: nicking
 ms.custom: seodec18
-ms.openlocfilehash: 8d4290f1411749e2d8d3d27fbd792ceeeea47ef7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f7edb632559dc8da2de32c58d994a7c51b1b09e8
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60851297"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169965"
 ---
 # <a name="restore-an-app-in-azure-from-a-snapshot"></a>在 Azure 中透過快照集還原應用程式
 本文說明如何在 [Azure App Service](../app-service/overview.md) 中透過快照集還原應用程式。 您可以根據您的其中一個應用程式快照集，將應用程式還原為先前的狀態。 您不需要啟用快照集備份，平台會自動儲存所有應用程式的快照集以供進行資料復原。
@@ -29,7 +21,7 @@ ms.locfileid: "60851297"
 - 沒有儲存體大小限制。
 - 不需要設定。
 
-從快照集還原是提供給在**進階**層或更高層級中執行的應用程式使用。 如需有關相應增加應用程式的詳細資訊，請參閱 [在 Azure 中調整應用程式規模](web-sites-scale.md)。
+從快照集還原是提供給在**進階**層或更高層級中執行的應用程式使用。 如需有關相應增加應用程式的詳細資訊，請參閱 [在 Azure 中調整應用程式規模](manage-scale-up.md)。
 
 ## <a name="limitations"></a>限制
 
@@ -43,20 +35,20 @@ ms.locfileid: "60851297"
 
 ## <a name="restore-an-app-from-a-snapshot"></a>從快照集還原應用程式
 
-1. 在應用程式位於 [Azure 入口網站](https://portal.azure.com)的 [設定] 頁面上，按一下 [備份] 以顯示 [備份] 頁面。 然後按一下 [快照集] \(預覽\) 區段底下的 [還原]。
+1. 在[Azure 入口網站](https://portal.azure.com)中應用程式的 [**設定**] 頁面上，按一下 [**備份**] 以顯示 [**備份**] 頁面。 然後按一下 [快照集] \(預覽\)**** 區段底下的 [還原]****。
    
-    ![](./media/app-service-web-restore-snapshots/1.png)
+    ![顯示如何從快照集備份還原應用程式的螢幕擷取畫面。](./media/app-service-web-restore-snapshots/1.png)
 
-2. 在 [還原] 頁面中，選取要還原的快照集。
+2. 在 [還原]**** 頁面中，選取要還原的快照集。
    
-    ![](./media/app-service-web-restore-snapshots/2.png)
+    ![顯示如何選取要還原之快照集的螢幕擷取畫面。 ](./media/app-service-web-restore-snapshots/2.png)
    
-3. 在 [還原目的地] 中指定應用程式還原目的地。
+3. 在 [還原目的地]**** 中指定應用程式還原目的地。
    
-    ![](./media/app-service-web-restore-snapshots/3.png)
+    ![顯示如何指定還原目的地的螢幕擷取畫面。](./media/app-service-web-restore-snapshots/3.png)
    
    > [!WARNING]
-   > 如果您選擇 [覆寫]，則系統會將應用程式目前檔案系統中的所有現有資料予以清除和覆寫。 按一下 [確定] 之前，請確定這是您想要執行的動作。
+   > 如果您選擇 [覆寫]****，則系統會將應用程式目前檔案系統中的所有現有資料予以清除和覆寫。 按一下 [確定]**** 之前，請確定這是您想要執行的動作。
    > 
    > 
       
@@ -65,10 +57,10 @@ ms.locfileid: "60851297"
    > 
    > 
    
-    您可以選取將 [現有應用程式] 還原至位置。 使用此選項之前，您應該要已在應用程式中建立位置。
+    您可以選取將 [現有應用程式]**** 還原至位置。 使用此選項之前，您應該要已在應用程式中建立位置。
 
 4. 您可以選擇還原站台設定。
    
-    ![](./media/app-service-web-restore-snapshots/4.png)
+    ![顯示如何還原網站設定的螢幕擷取畫面。](./media/app-service-web-restore-snapshots/4.png)
 
-5. 按一下 [確定]。
+5. 按一下 [確定] 。

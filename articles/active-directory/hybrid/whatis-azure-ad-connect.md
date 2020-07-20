@@ -6,27 +6,27 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 02/26/2019
+ms.topic: overview
+ms.date: 01/08/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a29a00c34d4c60e6ba2b4fd6b0b413873301af5c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 1e60c35a32152d4adec72fb507becc0db535036f
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60459529"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "80631731"
 ---
 # <a name="what-is-azure-ad-connect"></a>何謂 Azure AD Connect？
 
 Azure AD Connect 是一種 Microsoft 工具，其設計目的是要符合並完成混合式身分識別的目標。  它可提供下列功能：
-    
+     
 - [密碼雜湊同步處理](whatis-phs.md) - 一種將使用者內部部署 AD 密碼的雜湊與 Azure AD 同步的登入方法。
 - [傳遞驗證](how-to-connect-pta.md) - 一種登入方法，可讓使用者在內部部署環境與雲端中使用相同的密碼，但不需要額外的同盟環境基礎結構。
 - [同盟整合](how-to-connect-fed-whatis.md) - 同盟是 Azure AD Connect 的選用組件，可用來以內部部署 AD FS 基礎結構設定混合式環境。 它也提供 AD FS 管理功能，例如憑證更新及額外的 AD FS 伺服器部署。
 - [同步處理](how-to-connect-sync-whatis.md) - 負責建立使用者、群組及其他物件。  此外，也確保您內部部署使用者和群組的身分識別資訊與雲端相符。  此同步處理也包括密碼雜湊。
--   [狀況監控](whatis-hybrid-identity-health.md) - Azure AD Connect Health 可以提供健全監控，並在 Azure 入口網站中提供檢視此活動的中央位置。 
+- [狀況監控](whatis-hybrid-identity-health.md) - Azure AD Connect Health 可以提供健全監控，並在 Azure 入口網站中提供檢視此活動的中央位置。 
 
 
 ![何謂 Azure AD Connect](./media/whatis-hybrid-identity/arch.png)
@@ -64,7 +64,12 @@ Azure Active Directory (Azure AD) Connect Health 可為您的內部部署身分�
 |良好的使用者體驗|來自 Azure 入口網站的儀表板方式</br>[透過電子郵件警示](how-to-connect-health-adfs.md#alerts-for-ad-fs)|
 
 
+## <a name="license-requirements-for-using-azure-ad-connect"></a>使用 Azure AD Connect 的授權需求
 
+[!INCLUDE [active-directory-free-license.md](../../../includes/active-directory-free-license.md)]
+
+## <a name="license-requirements-for-using-azure-ad-connect-health"></a>使用 Azure AD Connect Health 的授權需求
+[!INCLUDE [active-directory-free-license.md](../../../includes/active-directory-p1-license.md)]
 
 ## <a name="next-steps"></a>後續步驟
 

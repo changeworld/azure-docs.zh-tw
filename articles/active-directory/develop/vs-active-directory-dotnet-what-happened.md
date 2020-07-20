@@ -1,40 +1,37 @@
 ---
 title: 連線至 Azure AD 時對 MVC 專案所做的變更
 description: 說明您使用 Visual Studio 已連線服務連線至 Azure AD 時，MVC 專案會有何狀況
-services: active-directory
 author: ghogen
-manager: douge
-ms.assetid: 8b24adde-547e-4ffe-824a-2029ba210216
-ms.prod: visual-studio-dev15
+manager: jillfra
+ms.prod: visual-studio-windows
 ms.technology: vs-azure
 ms.workload: azure-vs
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e40a1fd72adf353d5c4d856544482cb7bd68f43
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: b6a364cbd29c3273466bee15b9a54e097497a8e5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65413994"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85479108"
 ---
 # <a name="what-happened-to-my-mvc-project-visual-studio-azure-active-directory-connected-service"></a>我的 MVC 專案 (Visual Studio Azure Active Directory 已連線服務) 發生什麼事？
 
 > [!div class="op_single_selector"]
-> - [開始使用](vs-active-directory-dotnet-getting-started.md)
+> - [快速入門](vs-active-directory-dotnet-getting-started.md)
 > - [發生什麼情形](vs-active-directory-dotnet-what-happened.md)
 
-本文說明在[使用 Visual Studio 新增 Azure Active Directory 連線服務](vs-active-directory-add-connected-service.md)時，對 ASP.NET MVC 專案會進行哪些明確的變更。
+本文識別在[使用 Visual Studio 新增 Azure Active Directory 連線服務](vs-active-directory-add-connected-service.md)時，對 ASP.NET MVC 專案會進行哪些明確的變更。
 
 如需使用連線服務的相關資訊，請參閱[開始使用](vs-active-directory-dotnet-getting-started.md)。
 
 ## <a name="added-references"></a>新增的參考
 
-會影響專案檔 *.NET 參考和 `packages.config` (NuGet 參考)。
+影響專案檔 (*.NET 參考) 和 `packages.config` (NuGet 參考)。
 
-| Type | 參考 |
+| 類型 | 參考 |
 | --- | --- |
 | .NET; NuGet | Microsoft.IdentityModel.Protocol.Extensions |
 | .NET; NuGet | Microsoft.Owin |
@@ -49,7 +46,7 @@ ms.locfileid: "65413994"
 
 您選取了 [讀取目錄資料] 選項時的其他參考：
 
-| Type | 參考 |
+| 類型 | 參考 |
 | --- | --- |
 | .NET; NuGet | EntityFramework |
 | .NET        | EntityFramework.SqlServer (僅限 Visual Studio 2015) |
@@ -63,7 +60,7 @@ ms.locfileid: "65413994"
 
 下列參考已移除 (僅限 ASP.NET 4 專案，如同在 Visual Studio 2015 中)：
 
-| Type | 參考 |
+| 類型 | 參考 |
 | --- | --- |
 | .NET; NuGet | Microsoft.AspNet.Identity.Core |
 | .NET; NuGet | Microsoft.AspNet.Identity.EntityFramework |
@@ -145,7 +142,7 @@ ms.locfileid: "65413994"
 
 ### <a name="file-backup-visual-studio-2015"></a>檔案備份 (Visual Studio 2015)
 
-在新增連線服務時，Visual Studio 2015 會備份已變更和移除的檔案。 所有受影響的檔案都會儲存在資料夾 `Backup/AzureAD` 中。 Visual Studio 2017 和更新版本不會建立備份。
+在新增連線服務時，Visual Studio 2015 會備份已變更和移除的檔案。 所有受影響的檔案都會儲存在資料夾 `Backup/AzureAD` 中。 Visual Studio 2017 及更新版本不會建立備份。
 
 - `Startup.cs`
 - `App_Start\IdentityConfig.cs`
@@ -166,4 +163,4 @@ ms.locfileid: "65413994"
 ## <a name="next-steps"></a>後續步驟
 
 - [Azure Active Directory 的驗證案例](authentication-scenarios.md)
-- [將「使用 Microsoft 登入」新增至 ASP.NET Web 應用程式](quickstart-v1-aspnet-webapp.md)
+- [將「使用 Microsoft 登入」新增至 ASP.NET Web 應用程式](quickstart-v2-aspnet-webapp.md)

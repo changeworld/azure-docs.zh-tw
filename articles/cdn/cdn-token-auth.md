@@ -7,19 +7,19 @@ author: zhangmanling
 manager: zhangmanling
 editor: ''
 ms.assetid: 837018e3-03e6-4f9c-a23e-4b63d5707a64
-ms.service: cdn
+ms.service: azure-cdn
 ms.devlang: multiple
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 11/17/2017
-ms.author: mezha
-ms.openlocfilehash: 640c65b1f6995a6c5fb7a3a1fcfeb580aecf5c43
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.author: mazha
+ms.openlocfilehash: bded48b59d10e47a9bbf476583fed78b5b97431d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64869415"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84887441"
 ---
 # <a name="securing-azure-cdn-assets-with-token-authentication"></a>使用權杖驗證保護 Azure CDN 資產
 
@@ -33,13 +33,13 @@ ms.locfileid: "64869415"
 
 權杖驗證會藉由提出要求需包含權杖值 (其中包含關於要求者的編碼資訊) 的要求，來確認要求是由受信任的網站所產生。 只有在編碼資訊符合需求時，才會將內容提供給要求者，否則會拒絕要求。 您可以使用下列一或多個參數來設定需求：
 
-- 國家/地區:允許或拒絕來自指定國家/地區要求他們[國家/地區代碼](/previous-versions/azure/mt761717(v=azure.100))。
-- URL：允許符合指定的資產或路徑的要求。
-- 主機：允許或拒絕在要求標頭中使用指定的主機的要求。
-- 訪客來源︰允許或拒絕來自指定訪客來源的要求。
-- IP 位址：允許來自特定 IP 位址或 IP 子網路的要求。
-- 通訊協定：允許或拒絕要求的通訊協定，用來要求內容為基礎。
-- 到期時間：將指定的日期和時間週期，以確保連結只會針對在有限的時間週期內維持有效。
+- 國家/地區：允許或拒絕來自以其[國碼/地區碼](/previous-versions/azure/mt761717(v=azure.100))指定的國家/地區的要求。
+- URL：只允許與指定資產或路徑相符的要求。
+- 主機：允許或拒絕在要求標頭中使用指定主機的要求。
+- 訪客來源：允許或拒絕來自指定訪客來源的要求。
+- IP 位址：只允許來自特定 IP 位址或 IP 子網路的要求。
+- 通訊協定：根據用來要求內容的通訊協定來允許或拒絕要求。
+- 到期時間：指派日期和時段，以確保連結只能在有限的時段內維持有效。
 
 如需詳細資訊，請參閱[設定權杖驗證](#setting-up-token-authentication)中每個參數的詳細設定範例。
 
@@ -72,7 +72,7 @@ ms.locfileid: "64869415"
 
       ```rand -hex <key length>```
 
-      例如︰
+      例如：
 
       ```OpenSSL> rand -hex 32``` 
 
@@ -81,12 +81,12 @@ ms.locfileid: "64869415"
    2. 在 [Primary Key] \(主要金鑰\) 方塊中輸入唯一加密金鑰，並視需要在 [Backup Key] \(備份金鑰\) 方塊中輸入備份金鑰。
 
    3. 從每個金鑰的 [最低加密版本] 清單中選取其最低加密版本，然後選取 [更新]：
-      - **V2**:指出金鑰可用來產生 2.0 和 3.0 版權杖。 只有當您會將舊的 2.0 版加密金鑰轉換成 3.0 版金鑰，才使用此選項。
-      - **V3**:（建議選項）表示金鑰只能用來產生 3.0 版權杖。
+      - **V2**：指出金鑰可用來產生 2.0 和 3.0 版權杖。 只有當您會將舊的 2.0 版加密金鑰轉換成 3.0 版金鑰，才使用此選項。
+      - **V3**：(建議選項) 指出金鑰僅可用來產生 3.0 版權杖。
 
       ![CDN 權杖驗證安裝識別碼](./media/cdn-token-auth/cdn-token-auth-setupkey.png)
     
-   4. 使用加密工具設定加密參數，並產生權杖。 使用加密工具時，您可以允許或拒絕要求根據到期時間、 國家/地區、 訪客來源、 通訊協定和用戶端 IP (任意組合）。 雖然組成權杖的參數沒有任何數目和組合上的限制，但是權杖的總長度限制為 512 個字元。 
+   4. 使用加密工具設定加密參數，並產生權杖。 使用加密工具時，您可以根據到期時間、國家/地區、訪客來源、通訊協定及用戶端 IP (任意組合) 來允許或拒絕要求。 雖然組成權杖的參數沒有任何數目和組合上的限制，但是權杖的總長度限制為 512 個字元。 
 
       ![CDN 加密工具](./media/cdn-token-auth/cdn-token-auth-encrypttool.png)
 
@@ -108,23 +108,23 @@ ms.locfileid: "64869415"
       >    <td>可讓您為特定資產或路徑量身打造權杖。 若要求的 URL 是以特定的相對路徑開頭，它會限制對該要求的存取。 URL 會區分大小寫。 請利用以逗號分隔每個路徑的方式來輸入多個路徑；請勿加上空格。 您可以視需求而定，設定不同的值來提供不同層級的存取。> 
       >    例如，就 URL `http://www.mydomain.com/pictures/city/strasbourg.png` 而言，會針對下列輸入值允許下列要求： 
       >    <ul>
-      >       <li>輸入值`/`:允許所有要求。</li>
+      >       <li>輸入值`/`：允許所有要求。</li>
       >       <li>輸入值 `/pictures`：允許下列要求： <ul>
       >          <li>`http://www.mydomain.com/pictures.png`</li>
       >          <li>`http://www.mydomain.com/pictures/city/strasbourg.png`</li>
       >          <li>`http://www.mydomain.com/picturesnew/city/strasbourgh.png`</li>
       >       </ul></li>
-      >       <li>輸入值`/pictures/`:只會要求包含`/pictures/`允許的路徑。 例如： `http://www.mydomain.com/pictures/city/strasbourg.png`。</li>
-      >       <li>輸入值`/pictures/city/strasbourg.png`:允許只有這個特定的路徑和資產的要求。</li>
+      >       <li>輸入值`/pictures/`：只允許包含 `/pictures/` 路徑的要求。 例如： `http://www.mydomain.com/pictures/city/strasbourg.png` 。</li>
+      >       <li>輸入值`/pictures/city/strasbourg.png`：只允許此特定路徑和資產的要求。</li>
       >    </ul>
       > </tr>
       > <tr>
       >    <td><b>ec_country_allow</b></td> 
-      >    <td>只允許來自一或多個指定國家/地區的要求。 來自所有其他國家/地區的要求會遭到拒絕。 對每個國家/地區使用兩個字母 [ISO 3166 國家/地區碼](/previous-versions/azure/mt761717(v=azure.100))，並將每個國家/地區以逗號分隔；請勿加上空格。 例如，如果您只想允許來自美國和法國的存取，請輸入 `US,FR`。</td>
+      >    <td>只允許來自一或多個指定國家/地區的要求。 來自其他所有國家/地區的要求將會遭到拒絕。 對每個國家/地區使用兩個字母 [ISO 3166 國家/地區碼](/previous-versions/azure/mt761717(v=azure.100))，並將每個國家/地區以逗號分隔；請勿加上空格。 例如，如果您只想允許來自美國和法國的存取，請輸入 `US,FR`。</td>
       > </tr>
       > <tr>
       >    <td><b>ec_country_deny</b></td> 
-      >    <td>拒絕來自一或多個指定國家/地區的要求。 允許來自所有其他國家/地區的要求。 實作與 <b>ec_country_allow</b> 參數相同。 如果 <b>ec_country_allow</b> 和 <b>ec_country_deny</b> 參數中同時出現國家/地區碼，<b>ec_country_allow</b> 參數具有高優先順序。</td>
+      >    <td>拒絕來自一或多個指定國家/地區的要求。 將會允許來自其他所有國家/地區的要求。 實作與 <b>ec_country_allow</b> 參數相同。 如果 <b>ec_country_allow</b> 和 <b>ec_country_deny</b> 參數中同時出現國家/地區碼，<b>ec_country_allow</b> 參數具有高優先順序。</td>
       > </tr>
       > <tr>
       >    <td><b>ec_ref_allow</b></td>
@@ -158,11 +158,11 @@ ms.locfileid: "64869415"
 
    5. 輸入完加密參數值之後，請從 [要加密的金鑰] 清單中選取要加密的金鑰 (如果您已建立主要金鑰和備份金鑰)。
     
-   6. 選取加密版本，從**加密版本**清單：**V2**針對第 2 版或**V3**版本 3 （建議選項）。 
+   6. 從 [加密版本] 清單中選取加密版本：代表第 2 版的 **V2** 或代表第 3 版的 **V3** (建議)。 
 
    7. 選取 [加密] 來產生權杖。
 
-      權杖產生之後，會顯示在 [產生的權杖] 方塊中。 若要使用此權杖，將它以查詢字串的形式，附加在 URL 路徑中檔案的結尾。 例如： `http://www.domain.com/content.mov?a4fbc3710fd3449a7c99986b`。
+      權杖產生之後，會顯示在 [產生的權杖] 方塊中。 若要使用此權杖，將它以查詢字串的形式，附加在 URL 路徑中檔案的結尾。 例如： `http://www.domain.com/content.mov?a4fbc3710fd3449a7c99986b` 。
         
    8. 視需要使用解密工具來測試您的權杖，使您能夠檢視權杖的參數。 將權杖值貼到 [Token to Decrypt] \(要解密的權杖\) 方塊中。 從 [要解密的金鑰] 清單中選取要使用的加密金鑰，然後選取 [解密]。
 
@@ -173,17 +173,17 @@ ms.locfileid: "64869415"
 3. 在 [HTTP 大型] 底下，選取 [規則引擎]。 您需使用此規則引擎來定義路徑，以套用功能、啟用權杖驗證功能，以及啟用其他與權杖驗證相關的功能。 如需詳細資訊，請參閱[規則引擎參考](cdn-rules-engine-reference.md)。
 
    1. 選取現有規則或建立新規則，以定義您想要套用權杖驗證的資產或路徑。 
-   2. 若要在規則啟用權杖驗證，請從 **功能** 清單中選取 **[Token Auth](cdn-rules-engine-reference-features.md#token-auth)** 權杖驗證，然後選取 **已啟用**。 如果您要更新規則，請選取 [更新]，或如果您要建立規則，請選取 [新增]。
+   2. 若要在規則啟用權杖驗證，請從 **功能** 清單中選取 **[Token Auth](https://docs.vdms.com/cdn/Content/HRE/F/Token-Auth.htm)** 權杖驗證，然後選取 **已啟用**。 如果您要更新規則，請選取 [更新]，或如果您要建立規則，請選取 [新增]。
         
       ![CDN 規則引擎權杖驗證啟用範例](./media/cdn-token-auth/cdn-rules-engine-enable2.png)
 
 4. 在規則引擎中，您還可以啟用其他權杖驗證相關功能。 若要啟用下列任何功能，請從 [功能] 清單中選取該功能，然後選取 [已啟用]。
     
-   - **[權杖驗證拒絕代碼](cdn-rules-engine-reference-features.md#token-auth-denial-code)**:決定當要求遭到拒絕時傳回給使用者的回應類型。 這裡設定的規則會覆寫權杖型驗證頁面之 [Custom Denial Handling] \(自訂拒絕處理\) 區段中設定的回應碼。
+   - **[權杖驗證拒絕代碼](https://docs.vdms.com/cdn/Content/HRE/F/Token-Auth-Denial-Code.htm)** ：決定當要求遭拒時傳回給使用者的回應類型。 這裡設定的規則會覆寫權杖型驗證頁面之 [Custom Denial Handling] \(自訂拒絕處理\) 區段中設定的回應碼。
 
-   - **[權杖驗證忽略 URL 大小寫](cdn-rules-engine-reference-features.md#token-auth-ignore-url-case)**:判斷用來驗證權杖的 URL 是否區分大小寫。
+   - **[權杖驗證會忽略 URL 的大小寫](https://docs.vdms.com/cdn/Content/HRE/F/Token-Auth-Ignore-URL-Case.htm)** ：決定用來驗證權杖的 URL 是否區分大小寫。
 
-   - **[權杖驗證參數](cdn-rules-engine-reference-features.md#token-auth-parameter)**:重新命名所要求 URL 中出現的權杖驗證查詢字串參數。 
+   - **[權杖驗證參數](https://docs.vdms.com/cdn/Content/HRE/F/Token-Auth-Parameter.htm)** ：會將出現在所要求 URL 中的權杖驗證查詢字串參數重新命名。 
         
      ![CDN 規則引擎權杖驗證設定範例](./media/cdn-token-auth/cdn-rules-engine2.png)
 
@@ -195,7 +195,7 @@ ms.locfileid: "64869415"
    - PHP
    - Perl
    - Java
-   - Python 
+   - Python    
 
 ## <a name="azure-cdn-features-and-provider-pricing"></a>Azure CDN 功能和提供者定價
 

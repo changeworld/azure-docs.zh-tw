@@ -1,38 +1,37 @@
 ---
 title: 在 SQL Server 虛擬機器中瀏覽資料 - Team Data Science Process
-description: 在 Azure 上的 SQL Server 虛擬機器中瀏覽資料和產生功能
+description: 使用 Azure 上 SQL Server 虛擬機器中的 Python 或 SQL，探索 + 處理資料並產生功能。
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 7b3b4e0886f561cc66e2c02e4ea354c86b34453c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: e387d5f7ee0b1926457717b30b03bbfeb8d70a1c
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61044466"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027421"
 ---
-# <a name="heading"></a>在 Azure 上處理 SQL Server 虛擬機器中的資料
-本文件涵蓋如何探索資料及如何針對儲存於 Azure 上之 SQL Server VM 中的資料產生功能。 使用 SQL整理資料或使用 Python 這類程式設計語言，即可完成此動作。
+# <a name="process-data-in-sql-server-virtual-machine-on-azure"></a><a name="heading"></a>處理 Azure 上 SQL Server 虛擬機器中的資料
+本文件涵蓋如何探索資料及如何針對儲存於 Azure 上之 SQL Server VM 中的資料產生功能。 此目標可透過使用 SQL 的資料整頓，或使用像是 Python 的程式設計語言來完成。
 
 > [!NOTE]
 > 本文件中的 SQL 陳述式範例假設資料位於 SQL Server 中。 如果不是，請參閱雲端資料科學程序圖，以了解如何將資料移至 SQL Server。
 > 
 > 
 
-## <a name="SQL"></a>使用 SQL
+## <a name="using-sql"></a><a name="SQL"></a>使用 SQL
 我們將在本節中使用 SQL，來說明下列資料有爭議的工作：
 
 1. [資料探索](#sql-dataexploration)
 2. [功能產生](#sql-featuregen)
 
-### <a name="sql-dataexploration"></a>資料探索
+### <a name="data-exploration"></a><a name="sql-dataexploration"></a>資料探索
 以下是數個 SQL 指令碼範例，可用來探索儲存於 SQL Server 中的資料。
 
 > [!NOTE]
@@ -43,7 +42,7 @@ ms.locfileid: "61044466"
 1. 取得每天的觀察計數
    
     `SELECT CONVERT(date, <date_columnname>) as date, count(*) as c from <tablename> group by CONVERT(date, <date_columnname>)` 
-2. 取得類別資料行中的層級
+2. 取得類別資料行中的層級 
    
     `select  distinct <column_name> from <databasename>`
 3. 取得兩個類別資料行組合中的層級數目 
@@ -53,10 +52,10 @@ ms.locfileid: "61044466"
    
     `select <column_name>, count(*) from <tablename> group by <column_name>`
 
-### <a name="sql-featuregen"></a>功能產生
+### <a name="feature-generation"></a><a name="sql-featuregen"></a>功能產生
 在本節中，我們將說明使用 SQL 產生功能的方式：  
 
-1. [以計數為基礎的功能產生](#sql-countfeature)
+1. [以計數為基礎的特徵產生](#sql-countfeature)
 2. [分類收納功能產生](#sql-binningfeature)
 3. [從單一資料行衍生功能](#sql-featurerollout)
 
@@ -65,29 +64,32 @@ ms.locfileid: "61044466"
 > 
 > 
 
-### <a name="sql-countfeature"></a>以計數為基礎的功能產生
-下列範例示範兩種產生計數功能的方法。 第一種方法會使用條件式加總，而第二種方法會使用 'where' 子句。 這些接著可與原始資料表聯結 (使用主索引鍵資料行)，以具備計數功能及原始資料。
+### <a name="count-based-feature-generation"></a><a name="sql-countfeature"></a>以計數為基礎的特徵產生
+下列範例示範兩種產生計數功能的方法。 第一種方法會使用條件式加總，而第二種方法會使用 'where' 子句。 然後，這些結果可能會與原始資料表聯結（使用主鍵資料行），使計數功能與原始資料並存。
 
-    select <column_name1>,<column_name2>,<column_name3>, COUNT(*) as Count_Features from <tablename> group by <column_name1>,<column_name2>,<column_name3> 
+```sql
+select <column_name1>,<column_name2>,<column_name3>, COUNT(*) as Count_Features from <tablename> group by <column_name1>,<column_name2>,<column_name3> 
 
-    select <column_name1>,<column_name2> , sum(1) as Count_Features from <tablename> 
-    where <column_name3> = '<some_value>' group by <column_name1>,<column_name2> 
+select <column_name1>,<column_name2> , sum(1) as Count_Features from <tablename> 
+where <column_name3> = '<some_value>' group by <column_name1>,<column_name2> 
+```
 
-### <a name="sql-binningfeature"></a>分類收納功能產生
+### <a name="binning-feature-generation"></a><a name="sql-binningfeature"></a>分類收納功能產生
 下列範例將示範如何藉由分類收納 (使用五個分類收納組) 可改用來做為功能的數值資料行，來產生分類收納功能：
 
-    `SELECT <column_name>, NTILE(5) OVER (ORDER BY <column_name>) AS BinNumber from <tablename>`
+```sql
+SELECT <column_name>, NTILE(5) OVER (ORDER BY <column_name>) AS BinNumber from <tablename>
+```
 
-
-### <a name="sql-featurerollout"></a>從單一資料行衍生功能
+### <a name="rolling-out-the-features-from-a-single-column"></a><a name="sql-featurerollout"></a>從單一資料行衍生功能
 本節示範如何在資料表中衍生單一資料行來產生額外功能。 此範例假設您正嘗試從中產生功能的資料表中具有緯度或經度資料行。
 
-以下是有關經緯度位置資料的簡短入門指南 (源自 stackoverflow [如何測量經度和緯度的準確性？](https://gis.stackexchange.com/questions/8650/how-to-measure-the-accuracy-of-latitude-and-longitude))。 這有助於您在將功能化位置欄位之前先行了解：
+以下是有關經緯度位置資料的簡短入門指南 (源自 stackoverflow [如何測量經度和緯度的準確性？](https://gis.stackexchange.com/questions/8650/how-to-measure-the-accuracy-of-latitude-and-longitude))。 在將位置納入為一或多項功能之前，此指導方針非常有用：
 
 * 正負號告訴我們是否位於地球的北方或南方、東方或西方。
 * 非零的數百個位數告訴我們使用的是經度，而不是緯度！
 * 數十個位數可提供大約 1,000 公里的位置。 它會為我們提供身處哪個大陸或海洋的實用資訊。
-* 單位數 (一個十進位度數) 提供一個最多可達 111 公里 (60 海浬，大約 69 英哩) 的位置。 它會告知我們大致上位於哪一個大的州或國家/地區中。
+* 單位數 (一個十進位度數) 提供一個最多可達 111 公里 (60 海浬，大約 69 英哩) 的位置。 它可以告訴您您目前的州、國家或地區。
 * 第一個小數點最多可達 11.1 km：它能夠分辨某一個大型縣 (市) 的位置與鄰近的大型縣 (市)。
 * 第二個小數位數最多可達 1.1 km：它可以將某一個村莊與下一個村莊分隔開來。
 * 第三個小數位數最多可達 110 m：它可以識別大型農場或學術機構校區。
@@ -95,18 +97,20 @@ ms.locfileid: "61044466"
 * 第五個小數位數最多可達 1.1 m：它會分辨彼此的樹狀結構。 您只能使用微分校正來達到此層級利用商業 GPS 單位所達到的精確度。
 * 第六個小數位數最多可達 0.11 m：您可以使用此項目來詳細配置結構，其適用於設計環境和建置道路。 比起足以追蹤冰河和河流的移動，這應該是更好的方式。 您可以採用含有 GPS 的精心度量 (例如，微分校正的 GPS) 來達成此項目。
 
-您可以使用下列方式來將位置資訊功能化，以分隔出區域、位置及縣 (市) 資訊。 請注意，您也可以呼叫 REST 端點，例如，可在 [依點尋找位置](https://msdn.microsoft.com/library/ff701710.aspx) 上取得的 Bing Maps API，以取得區域或地區資訊。
+您可以使用下列方式來將位置資訊功能化，以分隔出區域、位置及縣 (市) 資訊。 您也可以呼叫 REST 端點，例如在 [[依點尋找位置](https://msdn.microsoft.com/library/ff701710.aspx)] 中提供的 BING Maps API，以取得區域/區域資訊。
 
-    select 
-        <location_columnname>
-        ,round(<location_columnname>,0) as l1        
-        ,l2=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 1 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),1,1) else '0' end     
-        ,l3=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 2 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),2,1) else '0' end     
-        ,l4=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 3 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),3,1) else '0' end     
-        ,l5=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 4 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),4,1) else '0' end     
-        ,l6=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 5 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),5,1) else '0' end     
-        ,l7=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 6 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),6,1) else '0' end     
-    from <tablename>
+```sql
+select 
+    <location_columnname>
+    ,round(<location_columnname>,0) as l1        
+    ,l2=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 1 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),1,1) else '0' end     
+    ,l3=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 2 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),2,1) else '0' end     
+    ,l4=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 3 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),3,1) else '0' end     
+    ,l5=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 4 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),4,1) else '0' end     
+    ,l6=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 5 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),5,1) else '0' end     
+    ,l7=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 6 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),6,1) else '0' end     
+from <tablename>
+```
 
 這些以位置為基礎的功能可進一步用來產生其他計數功能，如先前所述。 
 
@@ -115,24 +119,28 @@ ms.locfileid: "61044466"
 > 
 > 
 
-### <a name="sql-aml"></a>連接到 Azure Machine Learning
+### <a name="connecting-to-azure-machine-learning"></a><a name="sql-aml"></a>連接到 Azure Machine Learning
 新產生的功能可當成資料行新增至現有資料表或儲存於新的資料表中，並與原始資料表加以聯結以進行機器學習服務。 您可以使用 Azure Machine Learning 中的[匯入資料][import-data]模組來產生或存取特徵 (若已建立)，如下所示：
 
 ![azureml 讀取器][1] 
 
-## <a name="python"></a>使用類似 Python 的程式設計語言
-當資料位於 SQL Server 時，使用 Python 來瀏覽資料與產生特徵，類似於使用 Python 來處理 Azure Blob 中的資料，如[在資料科學環境中處理 Azure Blob 資料](data-blob.md)中所述。 資料必須從資料庫載入 Pandas 資料框架，然後就能進一步處理。 我們將在本節中說明連接到資料庫以及將資料載入資料框架的程序。
+## <a name="using-a-programming-language-like-python"></a><a name="python"></a>使用類似 Python 的程式設計語言
+當資料位於 SQL Server 時，使用 Python 來瀏覽資料與產生特徵，類似於使用 Python 來處理 Azure Blob 中的資料，如[在資料科學環境中處理 Azure Blob 資料](data-blob.md)中所述。 將資料從資料庫載入 pandas 資料框架，以進行更多的處理。 我們將在本節中說明連接到資料庫以及將資料載入資料框架的程序。
 
 下列連接字串格式可用來使用 pyodbc (使用您的特定值來取代 servername、dbname、username 和 password)，從 Python 連接到 SQL Server 資料庫：
 
-    #Set up the SQL Azure connection
-    import pyodbc    
-    conn = pyodbc.connect('DRIVER={SQL Server};SERVER=<servername>;DATABASE=<dbname>;UID=<username>;PWD=<password>')
+```python
+#Set up the SQL Azure connection
+import pyodbc    
+conn = pyodbc.connect('DRIVER={SQL Server};SERVER=<servername>;DATABASE=<dbname>;UID=<username>;PWD=<password>')
+```
 
-Python 中的 [Pandas 程式庫](https://pandas.pydata.org/) 提供一組豐富的資料結構和資料分析工具，可用來對 Python 程式設計進行資料操作。 下列程式碼會將從 SQL Server 資料庫傳回的結果讀取至 Pandas 資料框架：
+Python 中的[Pandas 程式庫](https://pandas.pydata.org/)提供一組豐富的資料結構和資料分析工具，可用於 python 程式設計的資料操作。 下列程式碼會將從 SQL Server 資料庫傳回的結果讀取至 Pandas 資料框架：
 
-    # Query database and load the returned results in pandas data frame
-    data_frame = pd.read_sql('''select <columnname1>, <columnname2>... from <tablename>''', conn)
+```python
+# Query database and load the returned results in pandas data frame
+data_frame = pd.read_sql('''select <columnname1>, <columnname2>... from <tablename>''', conn)
+```
 
 現在您可以利用[在資料科學環境中處理 Azure Blob 資料](data-blob.md)一文中說明的方式來使用 Pandas 資料框架。
 

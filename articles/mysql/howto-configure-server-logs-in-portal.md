@@ -1,25 +1,24 @@
 ---
-title: 在 Azure 入口網站中設定和存取適用於 MySQL 的 Azure 資料庫的伺服器記錄
-description: 本文描述如何從 Azure 入口網站設定和存取適用於 MySQL 的 Azure 資料庫的伺服器記錄。
-author: rachel-msft
-ms.author: raagyema
+title: 存取緩慢查詢記錄-Azure 入口網站適用於 MySQL 的 Azure 資料庫
+description: 本文說明如何從 Azure 入口網站設定和存取適用於 MySQL 的 Azure 資料庫中的緩慢記錄。
+author: ajlam
+ms.author: andrela
 ms.service: mysql
-ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: e0701d2e10b366a6bf849512484fb216c42823bc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.topic: how-to
+ms.date: 4/13/2020
+ms.openlocfilehash: 51b05ea016880d04fd6a2123962afefbdb229be1
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60525914"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86101778"
 ---
-# <a name="configure-and-access-server-logs-in-the-azure-portal"></a>在 Azure 入口網站中設定和存取伺服器記錄
+# <a name="configure-and-access-slow-query-logs-from-the-azure-portal"></a>從 Azure 入口網站設定和存取緩慢查詢記錄
 
-您可以從 Azure 入口網站設定、列示和下載[適用於 MySQL 的 Azure 資料庫](concepts-server-logs.md)。
+您可以從 Azure 入口網站設定、列出和下載[適用於 MySQL 的 Azure 資料庫慢速查詢記錄](concepts-server-logs.md)。
 
 ## <a name="prerequisites"></a>必要條件
-若要逐步執行本作法指南，您需要︰
-- [適用於 MySQL 的 Azure 資料庫伺服器](quickstart-create-mysql-server-database-using-azure-portal.md)
+本文中的步驟需要您擁有[適用於 MySQL 的 Azure 資料庫 server](quickstart-create-mysql-server-database-using-azure-portal.md)。
 
 ## <a name="configure-logging"></a>設定記錄
 設定 MySQL 慢速查詢記錄的存取。 
@@ -28,42 +27,62 @@ ms.locfileid: "60525914"
 
 2. 選取適用於 MySQL 的 Azure 資料庫伺服器。
 
-3. 在提要欄位的 [監視] 區段中，選取 [伺服器記錄]。 
-   ![選取伺服器記錄，按一下以設定](./media/howto-configure-server-logs-in-portal/1-select-server-logs-configure.png)
+3. 在提要欄位的 [**監視**] 區段下，選取 [**伺服器記錄**]。 
+   ![伺服器記錄選項的螢幕擷取畫面](./media/howto-configure-server-logs-in-portal/1-select-server-logs-configure.png)
 
-4. 選取 [按一下這裡可啟用記錄，並設定記錄參數] 標題，來查看伺服器參數。
+4. 若要查看伺服器參數，請選取 [**按一下這裡以啟用記錄] 和 [設定記錄參數**]。
 
-5. 變更您需要調整的參數。 您在此工作階段中所做的所有變更都會以紫色顯示。 
+5. 將**slow_query_log**開啟至 [**開啟**]。
 
-   變更參數之後，您可以按一下 [儲存]。 或者，也可以**捨棄**您的變更。
+6. 選取要將記錄輸出到何處，使用**log_output**。 若要將記錄傳送到本機儲存體和 Azure 監視器診斷記錄，**請選取 [** 檔案]。 
 
-   ![按一下 [儲存] 或 [捨棄]](./media/howto-configure-server-logs-in-portal/3-save-discard.png)
+7. 變更所需的任何其他參數。 
 
-6. 按一下 [伺服器參數] 頁面上的**關閉按鈕** (X 圖示)。
+8. 選取 [儲存]。 
+
+   :::image type="content" source="./media/howto-configure-server-logs-in-portal/3-save-discard.png" alt-text="慢速查詢記錄參數和儲存的螢幕擷取畫面。":::
+
+在 [**伺服器參數**] 頁面上，您可以藉由關閉頁面來返回記錄清單。
 
 ## <a name="view-list-and-download-logs"></a>檢視清單並下載記錄
-一旦開始記錄，您就可以檢視可用記錄的清單，並在 [伺服器記錄] 窗格上下載個別記錄。 
+記錄開始之後，您可以查看可用的緩慢查詢記錄清單，並下載個別的記錄檔。
 
 1. 開啟 Azure 入口網站。
 
 2. 選取適用於 MySQL 的 Azure 資料庫伺服器。
 
-3. 在提要欄位的 [監視] 區段中，選取 [伺服器記錄]。 頁面會顯示記錄檔的清單，如下所示：
+3. 在提要欄位的 [**監視**] 區段下，選取 [**伺服器記錄**]。 此頁面會顯示您的記錄檔清單。
 
-   ![記錄清單](./media/howto-configure-server-logs-in-portal/4-server-logs-list.png)
+   ![[伺服器記錄] 頁面的螢幕擷取畫面，其中顯示已醒目提示的記錄清單](./media/howto-configure-server-logs-in-portal/4-server-logs-list.png)
 
    > [!TIP]
-   > 記錄的命名慣例為 **mysql-slow-< your server name>-yyyymmddhh.log**。 檔案名稱中使用的日期和時間是發出記錄的時間。 記錄會每隔 24 小時或 7.5 GB 旋轉一次，先到者先用。
+   > 記錄的命名慣例為 **mysql-slow-< your server name>-yyyymmddhh.log**。 檔案名中使用的日期和時間是發出記錄的時間。 記錄檔會每24小時或 7.5 GB 旋轉一次，以先發生者為准。 
 
-4. 如有需要，請使用**搜尋方塊**，根據日期/時間快速縮小至特定記錄。 搜尋是根據記錄的名稱進行。
+4. 如有需要，請使用 [搜尋] 方塊，根據日期和時間快速縮小為特定的記錄檔。 搜尋是根據記錄的名稱進行。
 
-5. 使用資料表資料列中每個記錄檔旁邊的**下載**按鈕 (向下箭號圖示) 下載個別記錄檔，如下所示：
+5. 若要下載個別記錄檔，請選取資料表資料列中每個記錄檔旁邊的向下箭號圖示。
 
-   ![按一下下載圖示](./media/howto-configure-server-logs-in-portal/5-download.png)
+   ![[伺服器記錄] 頁面的螢幕擷取畫面，並反白顯示向下箭號的圖示](./media/howto-configure-server-logs-in-portal/5-download.png)
 
+## <a name="set-up-diagnostic-logs"></a>設定診斷記錄
+
+1. 在提要欄位的 [**監視**] 區段下，選取 [**診斷設定**] [  >  **新增診斷設定**]。
+
+   ![診斷設定選項的螢幕擷取畫面](./media/howto-configure-server-logs-in-portal/add-diagnostic-setting.png)
+
+1. 提供診斷設定名稱。
+
+1. 指定要傳送慢速查詢記錄（儲存體帳戶、事件中樞或 Log Analytics 工作區）的資料接收。
+
+1. 選取 [ **MySqlSlowLogs** ] 做為記錄類型。
+![診斷設定設定選項的螢幕擷取畫面](./media/howto-configure-server-logs-in-portal/configure-diagnostic-setting.png)
+
+1. 設定資料接收以管道傳送緩慢查詢記錄檔之後，請選取 [**儲存**]。
+![診斷設定選項的螢幕擷取畫面，反白顯示 [儲存]](./media/howto-configure-server-logs-in-portal/save-diagnostic-setting.png)
+
+1. 藉由在您設定的資料接收器中探索緩慢查詢記錄來加以存取。 最多可能需要10分鐘的時間，記錄才會出現。
 
 ## <a name="next-steps"></a>後續步驟
-- 請參閱[存取 CLI 中的伺服器記錄](howto-configure-server-logs-in-cli.md)，以了解如何透過程式下載記錄。
-- 深入了解[適用於 MySQL 的 Azure 資料庫](concepts-server-logs.md)中的伺服器記錄。 
-- 如需參數定義和 MySQL 記錄的詳細資訊，請參閱 MySQL 文件上的[記錄](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html)。
-
+- 若要瞭解如何以程式設計方式下載緩慢查詢記錄，請參閱[在 CLI 中存取緩慢查詢記錄](howto-configure-server-logs-in-cli.md)。
+- 深入瞭解適用於 MySQL 的 Azure 資料庫中的[緩慢查詢記錄](concepts-server-logs.md)。
+- 如需參數定義和 MySQL 記錄的詳細資訊，請參閱 MySQL 檔上的[記錄](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html)。

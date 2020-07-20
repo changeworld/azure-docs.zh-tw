@@ -1,45 +1,87 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Azure 入口網站文件
+summary: Azure 入口網站是統一的 Web 式主控台，提供有別於命令列工具的替代方案。 您可以透過 Azure 入口網站管理 Azure 訂用帳戶。 建置、管理和監視各種事件，包含簡單 Web 應用程式到複雜的雲端部署等。 建立自訂儀表板以提供一目瞭然的資源檢視，同時設定協助工具選項以提供最佳的使用體驗。
 metadata:
-  description: 了解如何使用 Azure 入口網站，並建立自訂儀表板。
-  services: azure portal
-  documentationcenter: ''
-  author: kfollis
-  manager: mtillman
-  editor: ''
-  ms.assetid: 3e12c488-9c8c-4d0d-9b07-e018dec42fc6
+  title: Azure 入口網站文件
+  description: 了解如何使用 Azure 入口網站 Web 式主控台管理 Azure 訂用帳戶和資源。 Azure 入口網站是使用命令列工具的替代方法。
+  services: Azure portal
   ms.service: azure-portal
-  ms.devlang: na
+  ms.subservice: 
   ms.topic: landing-page
-  ms.tgt_pltfrm: na
-  ms.workload: na
-  ms.date: 10/08/2018
-  ms.author: kfollis
-abstract:
-  description: Azure 入口網站是網頁型的統一主控台，可讓您建置、管理及監控所有項目，從簡單 Web 應用程式到複雜的雲端應用程式皆包含在內。 它也包含了自訂的儀表板各種協助工具選項。
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/azure-preview-portal-supported-browsers-devices
-            html: <p>在所有新式的桌上型電腦、平板電腦裝置和瀏覽器上執行 Azure 入口網站。</p>
-            title: 支援的瀏覽器和裝置
-          - href: /azure/azure-portal/azure-portal-change-theme-high-contrast
-            html: <p>在 Azure 入口網站中變更高對比或色彩配置。</p>
-            title: 開啟高對比
-          - href: /azure/azure-portal/azure-portal-keyboard-shortcuts
-            html: <p>深入了解在 Azure 入口網站中運作的鍵盤快速鍵。</p>
-            title: 鍵盤快速鍵
-          - href: /azure/azure-portal/azure-portal-dashboards
-            html: <p>建立多個儀表板，並與可存取您 Azure 訂用帳戶的其他人共用。</p>
-            title: 建立和共用 Azure 儀表板
-          - href: /azure/azure-portal/azure-portal-dashboard-share-access
-            html: <p>發佈儀表板並與組織中其他使用者共用。</p>
-            title: 透過 RBAC 共用儀表板
-          - href: /azure/azure-portal/azure-portal-dashboards-create-programmatically
-            html: <p>以程式設計方式為組織建立和發佈儀表板</p>
-            title: 以程式設計方式建立 Azure 儀表板
+  ms.collection: collection
+  author: mblythe
+  ms.author: mblythe
+  ms.date: 12/19/2019
+  ms.openlocfilehash: 277326eb6b120c4cc1b456a17c6f58791c66dd16
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "75890780"
+landingContent:
+- title: 關於 Azure 入口網站
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是 Azure入口網站？
+      url: azure-portal-overview.md
+    - text: 支援的瀏覽器和裝置
+      url: azure-portal-supported-browsers-devices.md
+- title: 自訂 Azure 入口網站
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 設定您的入口網站喜好設定
+      url: set-preferences.md
+    - text: 建立和共用自訂儀表板
+      url: azure-portal-dashboards.md
+    - text: 管理我的最愛項目
+      url: azure-portal-add-remove-sort-favorites.md
+- title: 管理 Azure 入口網站存取
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure 入口網站 URL 安全清單
+      url: azure-portal-safelist-urls.md
+    - text: 適用於儀表板的角色型存取控制
+      url: azure-portal-dashboard-share-access.md
+  - linkListType: learn
+    links:
+    - text: 管理 Azure 中的資源
+      url: /learn/paths/manage-resources-in-azure/
+    - text: 使用角色型存取控制 (RBAC) 保護 Azure 資源
+      url: /learn//modules/secure-azure-resources-with-rbac/
+- title: 開始使用
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 透過 Azure Databricks Center 上線
+      url: azure-portal-quickstart-center.md
+  - linkListType: how-to-guide
+    links:
+    - text: Azure 入口網站操作說明影片系列
+      url: azure-portal-video-series.md
+  - linkListType: learn
+    links:
+    - text: Azure 基礎
+      url: /learn/paths/azure-fundamentals/
+    - text: 雲端概念 - 雲端運算原則
+      url: /learn/modules/principles-cloud-computing/
+- title: 使用協助工具選項
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 鍵盤快速鍵
+      url: azure-portal-keyboard-shortcuts.md
+  - linkListType: how-to-guide
+    links:
+    - text: 開啟高對比
+      url: azure-portal-change-theme-high-contrast.md
+- title: 建立及管理支援要求
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 建立 Azure 支援要求
+      url: ../azure-portal/supportability/how-to-create-azure-support-request.md
+    - text: 區域或 SKU 訂用帳戶問題疑難排解
+      url: ../azure-portal/supportability/sku-series-unavailable.md

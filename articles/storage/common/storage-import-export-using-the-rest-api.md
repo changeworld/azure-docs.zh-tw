@@ -1,19 +1,19 @@
 ---
 title: 使用 Azure 匯入/匯出服務 REST API | Microsoft Docs
 description: 了解可以使用 Azure 匯入/匯出服務 REST API 在何處尋找資源，包括使用說明及參考資料。
-author: muralikk
+author: twooley
 services: storage
 ms.service: storage
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/15/2017
-ms.author: muralikk
+ms.author: twooley
 ms.subservice: common
-ms.openlocfilehash: 1e8b60f37cefb81fbbbbb7823be7752dd1188dc3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ae80c00fd81d0966167d2adf00764a0b1089c163
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60320273"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514114"
 ---
 # <a name="using-the-azure-importexport-service-rest-api"></a>了解如何使用 Azure 匯入/匯出服務 REST API
 
@@ -45,7 +45,7 @@ https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<res
 
 [取消和刪除作業](storage-import-export-cancelling-and-deleting-jobs.md)
 
-[備份磁碟機資訊清單](../storage-import-export-backing-up-drive-manifests.md)
+[備份磁片磁碟機資訊清單](../storage-import-export-backing-up-drive-manifests.md)
 
 [匯入/匯出作業的診斷和錯誤復原](../storage-import-export-diagnostics-and-error-recovery.md)
 

@@ -1,0 +1,82 @@
+### YamlMime:Landing
+title: Azure Kinect DK 文件
+summary: Azure Kinect DK 是具有進階 AI 感應器的開發人員套件，可提供精密的電腦視覺和語音模型。 Kinect 包含深度感應器、具有攝影機的空間麥克風陣列，以及具有多個模式、選項和軟體開發套件 (SDK) 的全方位小型裝置的方向感應器。
+metadata:
+  title: Azure Kinect DK 文件
+  description: Azure Kinect DK 是具有進階 AI 感應器的開發人員套件，可提供精密的電腦視覺和語音模型。 Kinect 包含深度感應器、具有攝影機的空間麥克風陣列，以及具有多個模式、選項和 SDK 的全方位小型裝置的方向感應器。
+  ms.prod: kinect-dk
+  ms.topic: landing-page
+  author: tesych
+  ms.author: tesych
+  ms.date: 03/11/2020
+  ms.openlocfilehash: f1691507d75d6de630f3c5a48cd59c8cc22b5999
+  ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 03/31/2020
+  ms.locfileid: "85277874"
+landingContent:
+- title: 關 於 Azure Kinect DK
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是 Azure Kinect DK？
+      url: about-azure-kinect-dk.md
+  - linkListType: reference
+    links:
+    - text: 硬體規格
+      url: hardware-specification.md
+    - text: 系統需求
+      url: system-requirements.md
+- title: 開始使用
+  linkLists:
+  - linkListType: download
+    links:
+    - text: Azure Kinect 感應器 SDK
+      url: sensor-sdk-download.md
+    - text: Azure Kinect 全身追蹤 SDK
+      url: body-sdk-download.md
+  - linkListType: quickstart
+    links:
+    - text: 設定 Azure Kinect DK
+      url: set-up-azure-kinect-dk.md
+    - text: 將感應器串流記錄至檔案
+      url: record-sensor-streams-file.md
+    - text: 建置第一個 Azure Kinect 應用程式
+      url: build-first-app.md
+    - text: 設定全身追蹤 SDK
+      url: body-sdk-setup.md
+    - text: 建立第一個全身追蹤應用程式
+      url: build-first-body-app.md
+- title: 使用感應器 SDK
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 尋找然後開啟裝置
+      url: find-then-open-device.md
+    - text: 取出映像資料
+      url: about-sensor-sdk.md
+    - text: 存取麥克風
+      url: access-mics.md
+    - text: 錄製和播放
+      url: record-playback-api.md
+- title: 使用全身追蹤 SDK
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 取得全身追蹤結果
+      url: get-body-tracking-results.md
+    - text: 存取全身框架中的資料
+      url: access-data-body-frame.md
+- title: 參考
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 感應器 SDK API
+      url: https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/index.html
+    - text: 全身追蹤 SDK API
+      url: https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/1.x.x/index.html
+    - text: 視覺服務
+      url: https://azure.microsoft.com/services/cognitive-services/directory/vision/
+    - text: 語音服務
+      url: https://docs.microsoft.com/azure/cognitive-services/speech-service/

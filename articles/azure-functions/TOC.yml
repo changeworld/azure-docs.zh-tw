@@ -8,74 +8,93 @@
       href: durable/durable-functions-overview.md
     - name: 無伺服器比較
       href: functions-compare-logic-apps-ms-flow-webjobs.md
+    - name: 主控方案選項
+      href: functions-scale.md
 - name: 快速入門
   expanded: true
   items:
-    - name: 建立函式 - Visual Studio
-      href: functions-create-your-first-function-visual-studio.md
-    - name: 建立函式 - Visual Studio Code
-      href: functions-create-first-function-vs-code.md
-    - name: 建立函式 - Java/Maven
-      href: functions-create-first-java-maven.md
-    - name: 建立函式 - Python
-      href: functions-create-first-function-python.md
-    - name: 建立函式 - PowerShell
-      href: functions-create-first-function-powershell.md
-    - name: 建立函式 - Azure CLI
-      href: functions-create-first-azure-function-azure-cli.md
-    - name: 建立函式 - 入口網站
-      href: functions-create-first-azure-function.md
-    - name: 建立函式 - Linux
-      href: functions-create-first-azure-function-azure-cli-linux.md
-    - name: 觸發程序
+    - name: 建立函式
+      expanded: true
       items:
-        - name: Azure Cosmos DB
-          href: functions-create-cosmos-db-triggered-function.md
-        - name: Blob 儲存體
-          href: functions-create-storage-blob-triggered-function.md
-        - name: 佇列儲存體
-          href: functions-create-storage-queue-triggered-function.md
-        - name: 計時器
-          href: functions-create-scheduled-function.md
-    - name: 整合
+        - name: Visual Studio Code
+          href: /azure/azure-functions/functions-create-first-function-vs-code
+        - name: Visual Studio
+          href: functions-create-your-first-function-visual-studio.md
+        - name: 命令列
+          href: functions-create-first-azure-function-azure-cli.md
+        - name: ARM 範本
+          displayName: Resource Manager
+          href: functions-create-first-function-resource-manager.md
+    - name: 連線至儲存體
       items:
-        - name: Azure Cosmos DB
-          href: functions-integrate-store-unstructured-data-cosmosdb.md
-        - name: 儲存體 - Python
-          href: functions-add-output-binding-storage-queue-python.md
-        - name: 儲存體 - 入口網站
-          href: functions-integrate-storage-queue-output-binding.md
+        - name: Visual Studio Code
+          href: functions-add-output-binding-storage-queue-vs-code.md
+        - name: Visual Studio
+          href: functions-add-output-binding-storage-queue-vs.md
+        - name: 命令列
+          href: functions-add-output-binding-storage-queue-cli.md
 - name: 教學課程
   items:
     - name: 搭配使用 Functions 與 Logic Apps
       href: functions-twitter-email.md
-    - name: 建立無伺服器 API
-      href: functions-create-serverless-api.md
-    - name: 建立 OpenAPI 定義
+    - name: 使用 VS Code 部署 Python functions
+      href: /azure/python/tutorial-vs-code-serverless-python-01
+    - name: 無伺服器 API 的 OpenAPI 定義
       href: functions-openapi-definition.md
+    - name: 連線至虛擬網路
+      href: functions-create-vnet.md
+    - name: 建立私人網站存取
+      href: functions-create-private-site-access.md
     - name: 使用 Event Grid 進行映像大小調整
       href: ../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2fazure%2fazure-functions%2ftoc.json
     - name: 建立無伺服器 Web 應用程式
-      href: 'https://docs.microsoft.com/azure/functions/tutorial-static-website-serverless-api-with-database'
+      href: /learn/modules/automatic-update-of-a-webapp-using-azure-functions-and-signalr
+    - name: 使用 TensorFlow 進行機器學習
+      href: functions-machine-learning-tensorflow.md
+    - name: 透過 PyTorch 進行影像分類
+      href: machine-learning-pytorch.md
     - name: 建立自訂 Linux 映像
       href: functions-create-function-linux-custom-image.md
+      displayName: 'container, docker'
     - name: IoT Edge 裝置上的 Azure Functions
       href: ../iot-edge/tutorial-deploy-function.md?toc=%2fazure%2fazure-functions%2ftoc.json
+    - name: Java 搭配 Azure Cosmos DB 和事件中樞
+      href: functions-event-hub-cosmos-db.md
 - name: 範例
   items:
-    - name: 程式碼範例
-      href: 'https://azure.microsoft.com/resources/samples/?service=functions'
+    - name: Azure Serverless Community Library
+      href: 'https://www.serverlesslibrary.net/'
+    - name: Azure 範例
+      items:
+        - name: C#
+          href: /samples/browse/?products=azure-functions&languages=csharp
+        - name: Java
+          href: /samples/browse/?products=azure-functions&languages=java
+        - name: JavaScript
+          href: /samples/browse/?products=azure-functions&languages=javascript
+        - name: PowerShell
+          href: /samples/browse/?products=azure-functions&languages=azurepowershell
+        - name: Python
+          href: /samples/browse/?products=azure-functions&languages=python
+        - name: TypeScript
+          href: /samples/browse/?products=azure-functions&languages=typescript
     - name: Azure CLI
       href: functions-cli-samples.md
 - name: 概念
   items:
-    - name: 比較版本 1.x 和 2.x
+    - name: 比較執行階段版本
       href: functions-versions.md
-      displayName: 'migrate, migration'
+      displayName: 'migrate, migration, v3'
     - name: 進階方案
       href: functions-premium-plan.md
-    - name: 調整和託管
-      href: functions-scale.md
+    - name: 部署
+      href: functions-deployment-technologies.md
+    - name: 事件和傳訊
+      items:
+        - name: 可靠事件處理
+          href: functions-reliable-event-processing.md
+        - name: 設計訴求為進行相同輸入
+          href: functions-idempotent.md
     - name: 觸發和繫結
       items:
         - name: 關於觸發程序和繫結
@@ -94,11 +113,11 @@
       items:
         - name: 支援的語言
           href: supported-languages.md
-        - name: 'C# (類別庫)'
+        - name: C# (類別庫)
           href: functions-dotnet-class-library.md
-        - name: 'C# 指令碼 (.csx)'
+        - name: C# 指令碼 (.csx)
           href: functions-reference-csharp.md
-        - name: 'F#'
+        - name: F#
           href: functions-reference-fsharp.md
         - name: JavaScript
           href: functions-reference-node.md
@@ -108,60 +127,133 @@
           href: functions-reference-powershell.md
         - name: Python
           href: functions-reference-python.md
+        - name: TypeScript
+          href: functions-reference-node.md#typescript
+    - name: 安全性
+      items:
+        - name: 安全性概觀
+          href: security-concepts.md
+          displayName: 'secure, ssl'
+        - name: 安全性基準
+          href: security-baseline.md
     - name: 診斷
-      href: ../app-service/overview-diagnostics.md
+      href: functions-diagnostics.md
+    - name: 使用量方案成本
+      href: functions-consumption-costs.md
     - name: 效能考量
       href: functions-best-practices.md
+      displayName: best practice
+    - name: 儲存體考量
+      href: storage-considerations.md
+      displayName: 'encryption, keys, mount, files'
     - name: 函式 Proxy
       href: functions-proxies.md
     - name: 網路功能選項
       href: functions-networking-options.md
     - name: IP 位址
       href: ip-addresses.md
-    - name: 內部部署函式
-      href: functions-runtime-overview.md
-- name: 使用說明指南
+    - name: 自訂處理常式
+      href: functions-custom-handlers.md
+- name: 操作指南
   items:
     - name: 開發
       items:
         - name: 開發人員指南
           href: functions-reference.md
-        - name: 測試函式
-          href: functions-test-a-function.md
-        - name: 在本機開發及偵錯
-          href: functions-develop-local.md
-        - name: Visual Studio 開發
-          href: functions-develop-vs.md
-        - name: 核心工具開發
-          href: functions-run-local.md
-        - name: IntelliJ IDEA 開發
-          href: functions-create-maven-intellij.md
-        - name: Eclipse 開發
-          href: functions-create-maven-eclipse.md
-        - name: 建立 Linux 函數應用程式
-          href: create-function-app-linux-app-service-plan.md
-        - name: 偵錯本機 PowerShell 函式
-          href: functions-debug-powershell-local.md
-        - name: 管理連線
+        - name: 本機開發
+          items:
+            - name: 在本機開發及偵錯
+              href: functions-develop-local.md
+            - name: Visual Studio Code 開發
+              href: functions-develop-vs-code.md
+            - name: Visual Studio 開發
+              href: functions-develop-vs.md
+            - name: 核心工具開發
+              href: functions-run-local.md
+        - name: 建立函式
+          items:
+            - name: HTTP 觸發程序
+              items:
+                - name: Azure 入口網站
+                  href: functions-create-first-azure-function.md
+                - name: 命令列
+                  href: create-cli.md
+                - name: Visual Studio
+                  href: create-visual-studio.md
+                - name: Visual Studio Code
+                  href: create-visual-studio-code.md
+                - name: 使用 Gradle 的 Java
+                  href: functions-create-first-java-gradle.md
+                - name: 使用 Eclipse 的 Java
+                  href: functions-create-maven-eclipse.md
+                - name: 使用 IntelliJ IDEA 的 Java
+                  href: functions-create-maven-intellij.md
+                - name: 使用 Maven 的 Kotlin
+                  href: functions-create-first-kotlin-maven.md
+                - name: 使用 IntelliJ 的 Kotlin
+                  href: functions-create-maven-kotlin-intellij.md
+                - name: Linux App Service 方案
+                  href: create-function-app-linux-app-service-plan.md
+                - name: Linux 使用量方案
+                  href: functions-create-first-azure-function-azure-cli-linux.md
+                - name: Azure 學生入門版
+                  href: functions-create-student-starter.md
+            - name: Azure Cosmos DB 觸發程序
+              href: functions-create-cosmos-db-triggered-function.md
+            - name: Blob 儲存體觸發程序
+              href: functions-create-storage-blob-triggered-function.md
+            - name: 佇列儲存體觸發程序
+              href: functions-create-storage-queue-triggered-function.md
+            - name: 計時器觸發程序
+              href: functions-create-scheduled-function.md
+        - name: 新增繫結
+          items:
+            - name: Azure Cosmos DB - 入口網站
+              href: functions-integrate-store-unstructured-data-cosmosdb.md
+            - name: 儲存體 - Python
+              href: add-output-binding-storage-queue-python.md
+            - name: 儲存體 - 入口網站
+              href: functions-integrate-storage-queue-output-binding.md
+            - name: 儲存體 - Visual Studio Code
+              href: add-output-binding-storage-queue-vs-code.md
+            - name: 儲存體 - Visual Studio
+              href: add-output-binding-storage-queue-vs.md
+            - name: 儲存體 - Java
+              href: functions-add-output-binding-storage-queue-java.md
+        - name: 偵錯和測試
+          items:
+            - name: 測試函式
+              href: functions-test-a-function.md
+            - name: 偵錯本機 PowerShell 函式
+              href: functions-debug-powershell-local.md
+            - name: 在本機偵錯事件格線觸發程序
+              href: functions-debug-event-grid-trigger-local.md
+        - name: 相依性插入
+          href: functions-dotnet-dependency-injection.md
+        - name: 管理連接
           href: manage-connections.md
+          displayName: best practice
         - name: 錯誤處理
           href: functions-bindings-error-pages.md
         - name: 手動執行非 HTTP 觸發的函式
           href: functions-manually-run-non-http.md
-        - name: 在本機偵錯事件格線觸發程序
-          href: functions-debug-event-grid-trigger-local.md
-        - name: Azure 學生入門版
-          href: functions-create-student-starter.md
     - name: 部署
       items:
         - name: 連續部署
           href: functions-continuous-deployment.md
+        - name: 部署位置
+          href: functions-deployment-slots.md
         - name: 使用 Azure Pipelines 建置和部署
           href: functions-how-to-azure-devops.md
+        - name: 使用 GitHub Actions 建置和部署
+          href: functions-how-to-github-actions.md
         - name: ZIP 部署
           href: deployment-zip-push.md
         - name: 從套件執行
           href: run-functions-from-deployment-package.md
+        - name: Kubernetes 中的函式
+          href: functions-kubernetes-keda.md
+          displayName: 'keda, container, docker'
         - name: 自動資源部署
           href: functions-infrastructure-as-code.md
         - name: 內部部署函式
@@ -173,18 +265,26 @@
       items:
         - name: 管理函式應用程式
           href: functions-how-to-use-azure-function-app-settings.md
+          displayName: 'app setting, application setting'
         - name: 設定執行階段版本
           href: set-runtime-version.md
         - name: 手動登錄擴充功能
           href: install-update-binding-extensions-manual.md
         - name: 停用函式
           href: disable-function.md
+        - name: 異地災害復原
+          href: functions-geo-disaster-recovery.md
     - name: 監視
-      href: functions-monitoring.md
+      items:
+        - name: 監視函式
+          href: functions-monitoring.md
+          displayName: 'App Insights, Application Insights, logs, logging'
+        - name: 分析記錄
+          href: functions-monitor-log-analytics.md
     - name: 安全
       items:
-        - name: 購買 SSL 憑證
-          href: ../app-service/web-sites-purchase-ssl-web-site.md?toc=%2fazure%2fazure-functions%2ftoc.json
+        - name: 新增 SSL 憑證
+          href: ../app-service/configure-ssl-certificate.md?toc=%2fazure%2fazure-functions%2ftoc.json
         - name: 驗證使用者
           items:
             - name: 使用 Azure AD 進行驗證
@@ -197,6 +297,8 @@
               href: ../app-service/configure-authentication-provider-microsoft.md?toc=%2fazure%2fazure-functions%2ftoc.json
             - name: 使用 Twitter 進行驗證
               href: ../app-service/configure-authentication-provider-twitter.md?toc=%2fazure%2fazure-functions%2ftoc.json
+            - name: 使用 OpenID Connect 提供者進行驗證 (預覽)
+              href: ../app-service/configure-authentication-provider-openid-connect.md?toc=%2fazure%2fazure-functions%2ftoc.json
         - name: 進階驗證
           href: ../app-service/app-service-authentication-how-to.md?toc=%2fazure%2fazure-functions%2ftoc.json
         - name: 限制 IP
@@ -205,54 +307,138 @@
           href: ../app-service/overview-managed-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json
         - name: 從 Key Vault 參考祕密
           href: ../app-service/app-service-key-vault-references.md?toc=%2fazure%2fazure-functions%2ftoc.json
+        - name: 加密網站資料
+          href: configure-encrypt-at-rest-using-cmk.md
     - name: 整合
       items:
+        - name: 新增繫結
+          items:
+            - name: Azure Cosmos DB - 入口網站
+              href: functions-integrate-store-unstructured-data-cosmosdb.md
+            - name: 儲存體 - Python
+              href: functions-add-output-binding-storage-queue-python.md
+            - name: 儲存體 - 入口網站
+              href: functions-integrate-storage-queue-output-binding.md
+            - name: 儲存體 - Visual Studio Code
+              href: functions-add-output-binding-storage-queue-vs-code.md
+            - name: 儲存體 - Visual Studio
+              href: functions-add-output-binding-storage-queue-vs.md
         - name: 連線到 SQL Database
           href: functions-scenario-database-table-cleanup.md
         - name: 連線至虛擬網路
-          href: functions-create-vnet.md
+          href: functions-create-vnet-old.md
         - name: 建立 OpenAPI 2.0 定義
           href: functions-api-definition-getting-started.md
         - name: 匯出至 PowerApps 和 Microsoft Flow
           href: app-service-export-api-to-powerapps-and-flow.md
-        - name: 從 PowerApps 呼叫函式
-          href: functions-powerapps-scenario.md
-        - name: 從 Microsoft Flow 呼叫函式
-          href: functions-flow-scenario.md
         - name: 建立受控識別
           href: ../app-service/overview-managed-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json
+        - name: 自訂 HTTP 函式端點
+          href: functions-create-serverless-api.md
+        - name: 管理內部部署資源
+          href: functions-hybrid-powershell.md
     - name: 疑難排解
       items:
         - name: 針對儲存體進行疑難排解
           href: functions-recover-storage-account.md
+        - name: 針對 Python 相依性進行疑難排解
+          href: recover-module-not-found.md
 - name: 參考
   items:
     - name: API 參考
       items:
+        - name: ARM 範本
+          href: /azure/templates/microsoft.web/2018-11-01/sites/functions
+        - name: Azure CLI
+          href: /cli/azure/functionapp
+        - name: Azure PowerShell
+          href: /powershell/module/az.functions
         - name: Java
           href: 'https://docs.microsoft.com/java/api/overview/azure/functions/runtime?view=azure-java-stable'
         - name: Python
           href: 'https://docs.microsoft.com/python/api/azure-functions/azure.functions?view=azure-python'
     - name: 應用程式設定參考
       href: functions-app-settings.md
-    - name: 繫結
+    - name: 觸發和繫結
       items:
         - name: Blob 儲存體
-          href: functions-bindings-storage-blob.md
+          items:
+            - name: 概觀
+              displayName: Blob storage
+              href: functions-bindings-storage-blob.md
+            - name: 觸發程序
+              displayName: Blob storage
+              href: functions-bindings-storage-blob-trigger.md
+            - name: 輸入
+              displayName: Blob storage
+              href: functions-bindings-storage-blob-input.md
+            - name: 輸出
+              displayName: Blob storage
+              href: functions-bindings-storage-blob-output.md
         - name: Azure Cosmos DB
           items:
             - name: Functions 1.x
               href: functions-bindings-cosmosdb.md
-            - name: Functions 2.x
-              href: functions-bindings-cosmosdb-v2.md
-        - name: Event Grid
-          href: functions-bindings-event-grid.md
+              displayName: Azure Cosmos DB
+            - name: Functions 2.x 和更新版本
+              displayName: Azure Cosmos DB
+              items:
+                - name: 概觀
+                  href: functions-bindings-cosmosdb-v2.md
+                  displayName: Azure Cosmos DB
+                - name: 觸發程序
+                  href: functions-bindings-cosmosdb-v2-trigger.md
+                  displayName: Azure Cosmos DB
+                - name: 輸入
+                  href: functions-bindings-cosmosdb-v2-input.md
+                  displayName: Azure Cosmos DB
+                - name: 輸出
+                  href: functions-bindings-cosmosdb-v2-output.md
+                  displayName: Azure Cosmos DB
+        - name: 事件方格
+          items:
+            - name: 概觀
+              href: functions-bindings-event-grid.md
+              displayName: Event Grid
+            - name: 觸發程序
+              href: functions-bindings-event-grid-trigger.md
+              displayName: Event Grid
+            - name: 輸出
+              href: functions-bindings-event-grid-output.md
+              displayName: Event Grid
         - name: 事件中樞
-          href: functions-bindings-event-hubs.md
+          items:
+            - name: 概觀
+              href: functions-bindings-event-hubs.md
+              displayName: Azure Event Hubs
+            - name: 觸發程序
+              href: functions-bindings-event-hubs-trigger.md
+              displayName: Azure Event Hubs
+            - name: 輸出
+              href: functions-bindings-event-hubs-output.md
+              displayName: Azure Event Hubs
         - name: IoT 中樞
-          href: functions-bindings-event-iot.md
+          items:
+            - name: 概觀
+              href: functions-bindings-event-iot.md
+              displayName: Azure IoT Hubs
+            - name: 觸發程序
+              href: functions-bindings-event-iot-trigger.md
+              displayName: Azure IoT Hubs
+            - name: 輸出
+              href: functions-bindings-event-iot-output.md
+              displayName: Azure IoT Hubs
         - name: HTTP 和 Webhook
-          href: functions-bindings-http-webhook.md
+          items:
+            - name: 概觀
+              href: functions-bindings-http-webhook.md
+              displayName: HTTP
+            - name: 觸發程序
+              href: functions-bindings-http-webhook-trigger.md
+              displayName: HTTP
+            - name: 輸出
+              href: functions-bindings-http-webhook-output.md
+              displayName: HTTP
         - name: Microsoft Graph
           href: functions-bindings-microsoft-graph.md
         - name: Mobile Apps
@@ -260,26 +446,55 @@
         - name: 通知中樞
           href: functions-bindings-notification-hubs.md
         - name: 佇列儲存體
-          href: functions-bindings-storage-queue.md
+          items:
+            - name: 概觀
+              href: functions-bindings-storage-queue.md
+              displayName: Queue storage
+            - name: 觸發程序
+              href: functions-bindings-storage-queue-trigger.md
+              displayName: Queue storage
+            - name: 輸出
+              href: functions-bindings-storage-queue-output.md
+              displayName: Queue storage
         - name: SendGrid
           href: functions-bindings-sendgrid.md
         - name: 服務匯流排
-          href: functions-bindings-service-bus.md
+          items:
+            - name: 概觀
+              href: functions-bindings-service-bus.md
+              displayName: Service Bus
+            - name: 觸發程序
+              href: functions-bindings-service-bus-trigger.md
+              displayName: Service Bus
+            - name: 輸出
+              href: functions-bindings-service-bus-output.md
+              displayName: Service Bus
         - name: SignalR Service
-          href: functions-bindings-signalr-service.md
+          items:
+            - name: 概觀
+              href: functions-bindings-signalr-service.md
+              displayName: SignalR Service
+            - name: 觸發程序
+              href: functions-bindings-signalr-service-trigger.md
+              displayName: SignalR Service
+            - name: 輸入
+              href: functions-bindings-signalr-service-input.md
+              displayName: SignalR Service
+            - name: 輸出
+              href: functions-bindings-signalr-service-output.md
+              displayName: SignalR Service
         - name: 表格儲存體
           href: functions-bindings-storage-table.md
         - name: 計時器
           href: functions-bindings-timer.md
         - name: Twilio
           href: functions-bindings-twilio.md
-    - name: host.json 參考
+        - name: Warmup
+          href: functions-bindings-warmup.md
+    - name: host.json 2.x 參考
       href: functions-host-json.md
-      items:
-        - name: Functions 2.x
-          href: functions-host-json.md
-        - name: Functions 1.x
-          href: functions-host-json-v1.md
+    - name: host.json 1.x 參考
+      href: functions-host-json-v1.md
     - name: 網路常見問題集
       href: functions-networking-faq.md
     - name: OpenAPI 參考
@@ -288,19 +503,23 @@
   items:
     - name: 透過 Microsoft Learn 增進您的技巧
       href: /learn/browse/?products=azure-functions
+    - name: 架構指導
+      href: 'https://docs.microsoft.com/azure/architecture/serverless-quest/serverless-overview'
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/roadmap/?category=compute'
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/functions/'
     - name: 定價計算機
       href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: 配額資訊
+      href: functions-scale.md#service-limits
     - name: 區域可用性
       href: 'https://azure.microsoft.com/regions/services/'
     - name: 影片
       href: 'https://www.youtube.com/c/AzureFunctions'
-    - name: MSDN 論壇
-      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureFunctions'
-    - name: 堆疊溢位
+    - name: Microsoft 問與答頁面
+      href: 'https://docs.microsoft.com/answers/topics/azure-functions.html'
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-functions'
     - name: Twitter
       href: 'https://twitter.com/azurefunctions'
@@ -308,5 +527,5 @@
       href: 'https://feedback.azure.com/forums/355860-azure-functions'
     - name: Azure Functions GitHub 存放庫
       href: 'https://github.com/Azure/Azure-Functions/'
-    - name: 服務更新
+    - name: Azure 更新
       href: 'https://azure.microsoft.com/updates/?product=functions&updatetype=&platform='

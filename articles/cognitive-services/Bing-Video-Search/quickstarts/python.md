@@ -1,6 +1,6 @@
 ---
-title: 快速入門：使用 Bing 影片搜尋 REST API 和 Python 來搜尋影片
-titlesuffix: Azure Cognitive Services
+title: 快速入門：使用 REST API 和 Python 來搜尋影片 - Bing 影片搜尋
+titleSuffix: Azure Cognitive Services
 description: 使用本快速入門，以使用 Python 將要求傳送至 Bing 影片搜尋 REST API。
 services: cognitive-services
 author: aahill
@@ -8,25 +8,28 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
-ms.date: 01/31/2019
+ms.date: 05/22/2020
 ms.author: aahi
-ms.openlocfilehash: 1ac4a2ce5027606706367b43eea759fb953994c6
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.custom: tracking-python
+ms.openlocfilehash: 33a4e31be04e5a205322bb3040d3694525c4515c
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55876843"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84605981"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-python"></a>快速入門：使用 Bing 影片搜尋 REST API 和 Python 來搜尋影片
 
-使用本快速入門來進行您對 Bing 影片搜尋 API 的第一次呼叫，並從 JSON 回應檢視搜尋結果。 這個簡單的 Python 應用程式會將 HTTP 影片搜尋查詢傳送給 API，並顯示回應。 雖然此應用程式是以 Python 撰寫的，但 API 是一種與大多數程式設計語言都相容的 RESTful Web 服務。 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingVideoSearchv7.py) 上有此範例的原始程式碼，其中還有其他錯誤處理和註釋。
+使用本快速入門，第一次呼叫 Bing 影片搜尋 API。 這個簡單的 Python 應用程式會將 HTTP 影片搜尋查詢傳送給 API，並顯示 JSON 回應。 雖然此應用程式是以 Python 撰寫的，但 API 是一種與大多數程式設計語言都相容的 RESTful Web 服務。 
 
-您可以按一下 [launch Binder] \(啟動 Binder\) 徽章，在 [MyBinder](https://mybinder.org) \(英文\) 上以 Jupyter Notebook 執行此範例： 
+[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingVideoSearchv7.py) 上有此範例的原始程式碼，其中還有其他錯誤處理和註釋。
+
+您可以選取 [啟動文件夾] 徽章，在 [MyBinder](https://mybinder.org) 上以 Jupyter Notebook 執行此範例： 
 
 [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=BingVideoSearchAPI.ipynb)
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * Python [2.x 或 3.x](https://python.org)
 
@@ -34,13 +37,13 @@ ms.locfileid: "55876843"
 
 ## <a name="initialize-the-application"></a>初始化應用程式
 
-1. 在您最愛的 IDE 或編輯器中建立新的 Python 檔案，並匯入下列程式庫。
+1. 在您最愛的 IDE 或編輯器中建立新的 Python 檔案，並匯入下列程式庫：
 
     ```python
     import requests
     from IPython.display import HTML
     ```
-2.  建立訂用帳戶金鑰、搜尋端點和搜尋字詞的變數。
+2.  建立訂用帳戶金鑰、搜尋端點和搜尋字詞的變數。 對於 `search_url` 值，您可以使用下列程式碼中的全域端點，或使用 Azure 入口網站中針對您的資源所顯示的[自訂子網域](../../../cognitive-services/cognitive-services-custom-subdomains.md)端點。
     
     ```python
     subscription_key = None
@@ -57,7 +60,7 @@ ms.locfileid: "55876843"
 
 ## <a name="send-your-request"></a>傳送您的要求
 
-1. 建立名為 `params` 的字典，以將參數新增至您的要求。 請將您的搜尋字詞新增至 `q` 參數，影片的計數為 5、傳回影片的定價為 `free`、影片長度為 `short`。
+1. 建立名為 `params` 的字典，以將參數新增至您的要求。 請將您的搜尋字詞新增至 `q` 參數：影片的計數為 5、傳回影片的定價為 `free`、影片長度為 `short`。
 
     ```python
     params  = {"q": search_term, "count":5, "pricing": "free", "videoLength":"short"}

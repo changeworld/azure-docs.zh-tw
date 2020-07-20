@@ -1,20 +1,19 @@
 ---
 title: 對 Azure 中的雲端儲存體應用程式進行疑難排解及監視 | Microsoft Docs
 description: 使用診斷工具、計量和警示，針對雲端應用程式進行疑難排解及監視。
-services: storage
 author: normesta
 ms.service: storage
+ms.subservice: blobs
 ms.topic: tutorial
 ms.date: 07/20/2018
 ms.author: normesta
 ms.reviewer: fryu
-ms.custom: mvc
-ms.openlocfilehash: 1383ccd570e23d80343ccdfd586d08ee25ebbc8d
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 8554a78112d197ef8174ac9d18147d301745165e
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148230"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652170"
 ---
 # <a name="monitor-and-troubleshoot-a-cloud-storage-application"></a>對雲端儲存體應用程式進行疑難排解及監視
 
@@ -30,7 +29,7 @@ ms.locfileid: "65148230"
 
 [Azure 儲存體分析](../common/storage-analytics.md)可提供儲存體帳戶的記錄和計量資料。 這些資料可讓您深入了解儲存體帳戶的健康狀態。 若要從 Azure 儲存體分析收集資料，您可以設定記錄、計量和警示。 此程序包含開啟記錄、設定計量，以及啟用警示。
 
-您可透過 Azure 入口網站中的 [診斷] 索引標籤，啟用儲存體帳戶的記錄和計量。 儲存體記錄可讓您記錄儲存體帳戶中的成功和失敗要求詳細資料。 這些記錄可讓您查看 Azure 資料表、佇列和 Blob 的讀取、寫入和刪除作業詳細資料， 以及要求失敗的原因，例如逾時、節流和授權錯誤。
+您可透過 Azure 入口網站中的 [診斷]  索引標籤，啟用儲存體帳戶的記錄和計量。 儲存體記錄可讓您記錄儲存體帳戶中的成功和失敗要求詳細資料。 這些記錄可讓您查看 Azure 資料表、佇列和 Blob 的讀取、寫入和刪除作業詳細資料， 以及要求失敗的原因，例如逾時、節流和授權錯誤。
 
 ## <a name="log-in-to-the-azure-portal"></a>登入 Azure 入口網站
 
@@ -38,11 +37,11 @@ ms.locfileid: "65148230"
 
 ## <a name="turn-on-logging-and-metrics"></a>開啟記錄與計量
 
-從左側功能表中，依序選取 [資源群組] 和 [myResourceGroup]，然後選取資源清單中的儲存體帳戶。
+從左側功能表中，依序選取 [資源群組]  和 [myResourceGroup]  ，然後選取資源清單中的儲存體帳戶。
 
-將 [診斷設定 (傳統)] 下方的 [狀態] 設定為 [開啟]。 請確定 **Blob 屬性** 下方的所有選項皆已啟用。
+將 [診斷設定 (傳統)]  下方的 [狀態]  設定為 [開啟]  。 請確定 **Blob 屬性** 下方的所有選項皆已啟用。
 
-完成時，按一下 [儲存]。
+完成時，按一下 [儲存]  。
 
 ![[診斷] 窗格](media/storage-monitor-troubleshoot-storage-application/enable-diagnostics.png)
 
@@ -52,9 +51,9 @@ ms.locfileid: "65148230"
 
 ### <a name="navigate-to-the-storage-account-in-the-azure-portal"></a>在 Azure 入口網站中巡覽至儲存體帳戶
 
-在 [監視] 區段下方，選取 [警示 (傳統)]。
+在 [監視]  區段下方，選取 [警示 (傳統)]  。
 
-選取 [新增計量警示 (傳統)]，並填入必要的資訊以完成 [新增規則] 表單。 從 [計量] 下拉式清單中，選取 `SASClientOtherError`。 若要讓警示在第一次出現錯誤時觸發，請從 [條件] 下拉式清單中選取 [大於或等於]。
+選取 [新增計量警示 (傳統)]  ，並填入必要的資訊以完成 [新增規則]  表單。 從 [計量]  下拉式清單中，選取 `SASClientOtherError`。 若要讓警示在第一次出現錯誤時觸發，請從 [條件]  下拉式清單中選取 [大於或等於]  。
 
 ![[診斷] 窗格](media/storage-monitor-troubleshoot-storage-application/add-alert-rule.png)
 
@@ -88,19 +87,19 @@ curl https://<STORAGE_ACCOUNT_NAME>.blob.core.windows.net/<CONTAINER_NAME>/<INCO
 
 ### <a name="download-microsoft-message-analyzer"></a>下載 Microsoft Message Analyzer
 
-下載 [Microsoft Message Analyzer](https://www.microsoft.com/download/details.aspx?id=44226) 並安裝應用程式。
+下載 [Microsoft Message Analyzer](https://docs.microsoft.com/message-analyzer/installing-and-upgrading-message-analyzer) 並安裝應用程式。
 
-啟動應用程式，然後選擇 [檔案] > [開啟] > [From Other File Sources] \(從其他檔案來源)。
+啟動應用程式，然後選擇 [檔案]   > [開啟]   > [From Other File Sources] \(從其他檔案來源)  。
 
-在 [檔案選取器] 對話方塊中，選取 [+ Add Azure Connection] \(+ 新增 Azure 連線)。 輸入**儲存體帳戶的名稱**和**帳戶金鑰**，然後按一下 [確定]。
+在 [檔案選取器]  對話方塊中，選取 [+ Add Azure Connection] \(+ 新增 Azure 連線)  。 輸入**儲存體帳戶的名稱**和**帳戶金鑰**，然後按一下 [確定]  。
 
 ![Microsoft Message Analyzer - [新增 Azure 儲存體連線] 對話方塊](media/storage-monitor-troubleshoot-storage-application/figure3.png)
 
-一旦連線後，即可展開儲存體樹狀檢視中的容器來檢視記錄檔 Blob。 選取最新的記錄檔，然後按一下 [確定]。
+一旦連線後，即可展開儲存體樹狀檢視中的容器來檢視記錄檔 Blob。 選取最新的記錄檔，然後按一下 [確定]  。
 
 ![Microsoft Message Analyzer - [新增 Azure 儲存體連線] 對話方塊](media/storage-monitor-troubleshoot-storage-application/figure4.png)
 
-在 [新增工作階段] 對話方塊中，按一下 [啟動] 以檢視您的記錄檔。
+在 [新增工作階段]  對話方塊中，按一下 [啟動]  以檢視您的記錄檔。
 
 記錄檔開啟之後，您即可檢視儲存體事件。 在下圖中，您可以看到儲存體帳戶觸發了一項 `SASClientOtherError`。 如需儲存體記錄的其他資訊，請瀏覽[儲存體分析](../common/storage-analytics.md)。
 

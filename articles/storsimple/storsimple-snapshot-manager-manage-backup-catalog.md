@@ -3,28 +3,27 @@ title: StorSimple Snapshot Manager 備份目錄 | Microsoft Docs
 description: 說明如何使用 StorSimple Snapshot Manager MMC 嵌入式管理單元來檢視和管理備份磁碟區。
 services: storsimple
 documentationcenter: NA
-author: SharS
+author: twooley
 manager: timlt
 editor: ''
 ms.assetid: 6abdbfd2-22ce-45a5-aa15-38fae4c8f4ec
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
-ms.author: v-sharos
-ms.openlocfilehash: dc24ebd59fd977ef35766c304aec5824e2c7bb4c
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+ms.author: twooley
+ms.openlocfilehash: 94dccdabfa4cf83077bca3629dee8a796d27182a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62127171"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85515481"
 ---
 # <a name="use-storsimple-snapshot-manager-to-manage-the-backup-catalog"></a>使用 StorSimple Snapshot Manager 來管理備份目錄
 
-## <a name="overview"></a>概觀
-StorSimple Snapshot Manager 的主要功能是可讓您以快照集的形式建立應用程式一致的 StorSimple 磁碟區備份複本。 快照集會列在稱為 *備份目錄*的 XML 檔案中。 備份目錄會根據磁碟區群組、然後根據本機快照集或雲端快照集組織快照集。
+## <a name="overview"></a>總覽
+StorSimple Snapshot Manager 的主要功能是可讓您以快照集的形式建立應用程式一致的 StorSimple 磁碟區備份複本。 然後，系統會以 XML 檔列出快照，名為 *「備份目錄」*。 備份目錄會根據磁碟區群組、然後根據本機快照集或雲端快照集組織快照集。
 
 本教學課程描述如何使用 **備份目錄** 節點來完成下列工作：
 
@@ -34,24 +33,24 @@ StorSimple Snapshot Manager 的主要功能是可讓您以快照集的形式建�
 * 復原檔案
 * 還原 Storsimple Snapshot Manager 資料庫
 
-您可以藉由展開 [範圍] 窗格中的**備份目錄**節點來檢視備份目錄，然後再展開磁碟區群組。
+您可以在 [領域] 窗格中展開 [備份目錄] 節點來檢視備份目錄，然後展開磁碟區群組。********
 
-* 如果您按一下磁碟區群組名稱，[ **結果** ] 窗格會顯示磁碟區群組可用之本機快照集和雲端快照集的數目。 
-* 如果您按一下 [本機快照集] 或 [雲端快照集]，[結果] 窗格會顯示下列每個備份快照集的資訊 (取決於您的**檢視**設定)：
+* 如果您按一下磁碟區群組名稱，[結果] 窗格會顯示磁碟區群組的可用本機快照及雲端快照數目。**** 
+* 如果您按一下 [本機快照] 或 [雲端快照]，[結果] 窗格會顯示每個備份快照的下列相關資訊 (視您的 [檢視] 設定而定)：****************
   
-  * **名稱** – 擷取快照集的時間。
-  * **類型** – 這是本機快照集或雲端快照集。
-  * **擁有者** – 內容擁有者。 
-  * **可用** – 目前是否為可用的快照集。 **True** 表示快照集可供使用，且可還原；**False** 表示快照集已經無法使用。 
-  * **匯入** – 是否已匯入備份。 **True** 表示裝置在 StorSimple Snapshot Manager 中設定時已從 StorSimple 裝置管理員服務匯入備份；**False** 表示備份尚未匯入，但已由 StorSimple Snapshot Manager 建立。 (您可以輕鬆地識別已匯入的磁碟區群組，因為已匯入磁碟區群組的裝置會新增尾碼以供識別。)
+  * [名稱]**** – 擷取快照的時間。
+  * [類型]**** – 此為本機快照或雲端快照。
+  * [擁有者]**** – 內容擁有者。 
+  * [可用]**** – 快照目前是否可用。 ****[True] 表示快照可以使用且可加以還原；****[False] 表示快照不再可用。 
+  * [已匯入]**** – 是否已匯入備份。 **True** 表示裝置在 StorSimple Snapshot Manager 中設定時已從 StorSimple 裝置管理員服務匯入備份；**False** 表示備份尚未匯入，但已由 StorSimple Snapshot Manager 建立。 (您可以輕鬆地識別已匯入的磁碟區群組，因為已匯入磁碟區群組的裝置會新增尾碼以供識別。)
     
     ![備份類別目錄](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_Backup_catalog.png)
-* 如果您展開**本機快照集**或**雲端快照集**，然後按一下個別快照集名稱，[結果] 窗格會顯示您所選取之快照集的下列相關資訊：
+* 如果您展開 [本機快照] 或 [雲端快照]，然後按一下個別快照名稱，[結果] 窗格會顯示所選快照的下列相關資訊：************
   
-  * **名稱** – 根據磁碟機代號識別的磁碟區。 
-  * **本機名稱** – 磁碟機的本機名稱 (如果有的話)。 
+  * [名稱]**** – 以磁碟機代號識別的磁碟區。 
+  * [本機名稱]**** – 磁碟機的本機名稱 (若有的話)。 
   * **裝置** – 磁碟區所在的裝置名稱。 
-  * **可用** – 目前是否為可用的快照集。 **True** 表示快照集可供使用，且可還原；**False** 表示快照集已經無法使用。 
+  * [可用]**** – 快照目前是否可用。 ****[True] 表示快照可以使用且可加以還原；****[False] 表示快照不再可用。 
 
 ## <a name="restore-a-volume"></a>還原磁碟區
 使用下列程序從備份還原磁碟區。
@@ -70,31 +69,31 @@ StorSimple Snapshot Manager 在建立預防措施備份時，會顯示下列訊�
 
 #### <a name="to-restore-a-volume"></a>還原磁碟區
 1. 按一下桌面圖示，以啟動 StorSimple Snapshot Manager。 
-2. 在 [範圍] 窗格中，展開**備份目錄**節點，展開磁碟區群組，然後按一下 [本機快照集] 或 [雲端快照集]。 備份快照集清單會出現在 [ **結果** ] 窗格中。
-3. 尋找您想要還原的備份，以滑鼠右鍵按一下，然後再按一下 [ **還原**]。
+2. 在 [領域]**** 窗格中，依序展開 [備份類別目錄]**** 節點、磁碟區群組，然後按一下 [本機快照]**** 或 [雲端快照]****。 備份快照清單會出現在 [結果]**** 窗格中。
+3. 尋找您要還原的備份、按一下滑鼠右鍵，然後按一下 [還原]****。
    
     ![還原備份目錄](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_Restore_BU_catalog.png) 
-4. 在確認頁面上，檢閱詳細資料，輸入**確認**，然後按一下 [確定]。 StorSimple Snapshot Manager 會使用備份來還原磁碟區。
+4. 在確認頁面上，檢閱詳細資料，輸入**確認**，然後按一下 [確定]****。 StorSimple Snapshot Manager 會使用備份來還原磁碟區。
    
     ![還原確認訊息](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_Restore_volume_msg.png) 
-5. 您可以在執行還原動作時加以監視。 在 [範圍] 窗格中，展開**作業**節點，然後按一下 [執行]。 工作詳細資料會出現在 [ **結果** ] 窗格中。 還原工作完成時，工作詳細資料會傳送到 **過去 24 小時** 清單。
+5. 您可以在執行還原動作時加以監視。 在 [領域]**** 窗格中，展開 [工作]**** 節點，然後按一下 [執行中]****。 工作詳細資料會出現在 [結果]**** 窗格中。 還原工作完成時，工作詳細資料會傳送到 **過去 24 小時** 清單。
 
 ## <a name="clone-a-volume-or-volume-group"></a>複製磁碟區或磁碟區群組
 使用下列程序來建立磁碟區或磁碟區群組的重複 (複製)。
 
 #### <a name="to-clone-a-volume-or-volume-group"></a>複製磁碟區或磁碟區群組
 1. 按一下桌面圖示，以啟動 StorSimple Snapshot Manager。
-2. 在 [範圍] 窗格中，展開**備份目錄**節點，展開磁碟區群組，然後按一下 [雲端快照集]。 備份清單會出現在 [ **結果** ] 窗格中。
-3. 尋找您想要複製的磁碟區或磁碟區群組，以滑鼠右鍵按一下磁碟區或磁碟區群組名稱，然後按一下 [ **複製**]。 [ **複製雲端快照集** ] 對話方塊隨即出現。
+2. 在 [領域]**** 窗格中，依序展開 [備份類別目錄]**** 節點、磁碟區群組，然後按一下 [雲端快照]****。 備份清單會出現在 [結果]**** 窗格中。
+3. 尋找您要複製的磁碟區或磁碟區群組、在磁碟區或磁碟區群組名稱上按一下滑鼠右鍵，然後按一下 [複製]****。 [複製雲端快照]**** 對話方塊隨即出現。
    
     ![複製雲端快照集](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_Clone.png) 
-4. 完成 [ **複製雲端快照集** ] 對話方塊，如下所示： 
+4. 以下列方式完成 [複製雲端快照]**** 對話方塊： 
    
-   1. 在 [ **名稱** ] 文字方塊中，輸入複製之磁碟區的名稱。 這個名稱會出現在 **磁碟區** 節點中。 
+   1. 在 [名稱]**** 文字方塊中，輸入已複製之磁碟區的名稱。 這個名稱將出現在 [磁碟區]**** 節點中。 
    2. (選擇性) 選取 [ **磁碟機**]，然後從下拉式清單中選取磁碟機代號。
-   3. (選擇性) 選取 [ **資料夾 (NTFS)**]，然後輸入資料夾路徑或按一下 [瀏覽] 並選取資料夾的位置。 
-   4. 按一下頁面底部的 [新增] 。
-5. 複製程序完成時，您必須初始化已複製的磁碟區。 啟動伺服器管理員，然後啟動磁碟管理。 如需詳細指示，請參閱 [掛接磁碟區](storsimple-snapshot-manager-manage-volumes.md#mount-volumes)。 初始化之後，磁碟區會列於 [範圍] 窗格中的**磁碟區**節點下。 如果您看不到列出的磁碟區，請重新整理磁碟區清單 (以滑鼠右鍵按一下**磁碟區**節點，然後再按一下 [重新整理])。
+   3. （選擇性）選取 [**資料夾（NTFS）**]，然後輸入資料夾路徑，或按一下 [流覽] 並選取資料夾的位置。 
+   4. 按一下 [建立]。
+5. 複製程序完成時，您必須初始化已複製的磁碟區。 啟動伺服器管理員，然後啟動磁碟管理。 如需詳細指示，請參閱 [掛接磁碟區](storsimple-snapshot-manager-manage-volumes.md#mount-volumes)。 在初始化之後，磁碟區將列示在 [領域]**** 窗格的 [磁碟區]**** 節點下方。 如果您看不到列出的磁碟區，請重新整理磁碟區清單 (以滑鼠右鍵按一下**磁碟區**節點，然後再按一下 [重新整理]****)。
 
 ## <a name="delete-a-backup"></a>刪除備份
 使用下列程序從備份目錄刪除快照集。 
@@ -105,9 +104,9 @@ StorSimple Snapshot Manager 在建立預防措施備份時，會顯示下列訊�
 
 #### <a name="to-delete-a-backup"></a>刪除備份
 1. 按一下桌面圖示，以啟動 StorSimple Snapshot Manager。
-2. 在 [範圍] 窗格中，展開**備份目錄**節點，展開磁碟區群組，然後按一下 [本機快照集] 或 [雲端快照集]。 快照集清單會出現在 [ **結果** ] 窗格中。
-3. 以滑鼠右鍵按一下您想要刪除的快照集，然後按一下 [ **刪除**]。
-4. 確認訊息出現時，按一下 [ **確定**]。
+2. 在 [領域]**** 窗格中，依序展開 [備份類別目錄]**** 節點、磁碟區群組，然後按一下 [本機快照]**** 或 [雲端快照]****。 快照清單會出現在 [結果]**** 窗格中。
+3. 在您要刪除的快照上按一下滑鼠右鍵，然後按一下 [刪除]****。
+4. 當確認訊息出現時，請按一下 [確定]****。
 
 ## <a name="recover-a-file"></a>復原檔案
 如果不小心從磁碟區刪除檔案，您可以擷取刪除日以前的快照集、使用快照集建立磁碟區的複製，並從複製的磁碟區將檔案複製到原始磁碟區，即可復原檔案。
@@ -117,20 +116,20 @@ StorSimple Snapshot Manager 在建立預防措施備份時，會顯示下列訊�
 
 #### <a name="to-recover-a-deleted-file"></a>復原已刪除的檔案
 1. 按一下桌面上的 StorSimple Snapshot Manager 圖示。 StorSimple Snapshot Manager 主控台視窗隨即出現。 
-2. 在 [範圍] 窗格中，展開**備份目錄**節點，然後瀏覽至包含已刪除檔案的快照集。 一般而言，您應該選取剛好在刪除之前建立的快照集。
-3. 尋找您想要複製的磁碟區，以滑鼠右鍵按一下，然後按一下 [ **複製**]。 [ **複製雲端快照集** ] 對話方塊隨即出現。
+2. 在 [範圍]**** 窗格中，展開**備份目錄**節點，然後瀏覽至包含已刪除檔案的快照集。 一般而言，您應該選取剛好在刪除之前建立的快照集。
+3. 尋找您要複製的磁碟區、按一下滑鼠右鍵，然後按一下 [複製]****。 [複製雲端快照]**** 對話方塊隨即出現。
    
     ![複製雲端快照集](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_Clone.png) 
-4. 完成 [ **複製雲端快照集** ] 對話方塊，如下所示： 
+4. 以下列方式完成 [複製雲端快照]**** 對話方塊： 
    
-   1. 在 [ **名稱** ] 文字方塊中，輸入複製之磁碟區的名稱。 這個名稱會出現在 **磁碟區** 節點中。 
-   2. (選擇性) 選取 [ **磁碟機**]，然後從下拉式清單中選取磁碟機代號。 
-   3. (選擇性) 選取 [資料夾 (NTFS)]，然後輸入資料夾路徑或按一下 [瀏覽] 並選取資料夾的位置。 
-   4. 按一下頁面底部的 [新增] 。 
-5. 複製程序完成時，您必須初始化已複製的磁碟區。 啟動伺服器管理員，然後啟動磁碟管理。 如需詳細指示，請參閱 [掛接磁碟區](storsimple-snapshot-manager-manage-volumes.md#mount-volumes)。 初始化之後，磁碟區會列於 [範圍] 窗格中的**磁碟區**節點下。 
+   1. 在 [名稱]**** 文字方塊中，輸入已複製之磁碟區的名稱。 這個名稱將出現在 [磁碟區]**** 節點中。 
+   2. 選擇性選取 [**磁片磁碟機**]，然後從下拉式清單中選取磁碟機號。 
+   3. (選擇性) 選取 [資料夾 (NTFS)]****，然後輸入資料夾路徑或按一下 [瀏覽]**** 並選取資料夾的位置。 
+   4. 按一下 [建立]。 
+5. 複製程序完成時，您必須初始化已複製的磁碟區。 啟動伺服器管理員，然後啟動磁碟管理。 如需詳細指示，請參閱 [掛接磁碟區](storsimple-snapshot-manager-manage-volumes.md#mount-volumes)。 在初始化之後，磁碟區將列示在 [領域]**** 窗格的 [磁碟區]**** 節點下方。 
    
-    如果您看不到列出的磁碟區，請重新整理磁碟區清單 (以滑鼠右鍵按一下**磁碟區**節點，然後再按一下 [重新整理])。
-6. 開啟包含已複製之磁碟區的 NTFS 資料夾，展開 **磁碟區** 節點，然後再開啟複製的磁碟區。 尋找您想要復原的檔案，並將它複製到主要磁碟區。
+    如果您看不到列出的磁碟區，請重新整理磁碟區清單 (以滑鼠右鍵按一下**磁碟區**節點，然後再按一下 [重新整理]****)。
+6. 開啟包含已複製之磁碟區的 NTFS 資料夾、展開 [磁碟區]**** 節點，然後開啟已複製之磁碟區。 尋找您想要復原的檔案，並將它複製到主要磁碟區。
 7. 還原檔案之後，您可以刪除包含已複製磁碟區的 NTFS 資料夾。
 
 ## <a name="restore-the-storsimple-snapshot-manager-database"></a>還原 Storsimple Snapshot Manager 資料庫
@@ -140,9 +139,9 @@ StorSimple Snapshot Manager 在建立預防措施備份時，會顯示下列訊�
 1. 停止 Microsoft StorSimple 管理服務：
    
    1. 啟動伺服器管理員。
-   2. 在伺服器管理員儀表板的 [工具] 功能表上，選取 [服務]。
-   3. 在 [服務] 視窗中，選取 [Microsoft StorSimple 管理服務]。
-   4. 在右窗格的 [Microsoft StorSimple 管理服務] 之下，按一下 [停止服務]。
+   2. 在 [伺服器管理員] 儀表板的 [**工具**] 功能表上，選取 [**服務**]。
+   3. 在 [服務]**** 視窗中，選取 [Microsoft StorSimple 管理服務]****。
+   4. 在右窗格的 [Microsoft StorSimple 管理服務]**** 下方，按一下 [停止服務]****。
 2. 在主機電腦上，瀏覽至 C:\ProgramData\Microsoft\StorSimple\BACatalog。 
    
    > [!NOTE]
@@ -154,9 +153,9 @@ StorSimple Snapshot Manager 在建立預防措施備份時，會顯示下列訊�
     ![Azure StorSimple 備份目錄檔案](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_bacatalog.png)
 4. 重新啟動 Microsoft StorSimple 管理服務： 
    
-   1. 在伺服器管理員儀表板的 [工具] 功能表上，選取 [服務]。
-   2. 在 [服務] 視窗中，選取 [Microsoft StorSimple 管理服務]。
-   3. 在右窗格的 [Microsoft StorSimple 管理服務] 之下，按一下 [重新啟動服務]。
+   1. 在 [伺服器管理員] 儀表板的 [**工具**] 功能表上，選取 [**服務**]。
+   2. 在 [服務]**** 視窗中，選取 [Microsoft StorSimple 管理服務]****。
+   3. 在右窗格的 [Microsoft StorSimple 管理服務]**** 下方，按一下 [重新啟動服務]****。
 5. 在主機電腦上，瀏覽至 C:\ProgramData\Microsoft\StorSimple\BACatalog。 
 6. 刪除目錄 XML 檔案，並以您所建立的備份版本取代它。 
 7. 按一下桌面的 StorSimple Snapshot Manager 圖示以啟動 StorSimple Snapshot Manager。 

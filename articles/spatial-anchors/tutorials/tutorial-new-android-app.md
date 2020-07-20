@@ -1,19 +1,19 @@
 ---
-title: 教學課程 - 使用 Azure Spatial Anchors 新建 Android 應用程式的逐步指示 | Microsoft Docs
+title: 教學課程：建立新的 Android 應用程式
 description: 在本教學課程中，您將了解如何使用 Azure Spatial Anchors 建立新的 Android 應用程式。
 author: ramonarguelles
-manager: vicenterivera
+manager: vriveras
 services: azure-spatial-anchors
 ms.author: rgarcia
-ms.date: 04/03/2019
+ms.date: 06/22/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 9838add4f83434848d61f3ae86db71765efdc59a
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 3ef24e29e5dde90aa829c46d789256e6e5f3233b
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59995722"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85296197"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-android-app-using-azure-spatial-anchors"></a>教學課程：使用 Azure Spatial Anchors 新建 Android 應用程式的逐步指示
 
@@ -23,7 +23,7 @@ ms.locfileid: "59995722"
 
 若要完成本教學課程，請確定您具有下列項目︰
 
-- 具有 <a href="https://developer.android.com/studio/" target="_blank">Android Studio 3.3+</a> 的 Windows 或 macOS 機器。
+- 具有 <a href="https://developer.android.com/studio/" target="_blank">Android Studio 3.4+</a> 的 Windows 或 macOS 機器。
 - <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">由開發人員啟用</a>且<a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">具備 ARCore 功能</a>的 Android 裝置。
 
 ## <a name="getting-started"></a>開始使用
@@ -36,7 +36,7 @@ ms.locfileid: "59995722"
 
 若要測試新的應用程式，請使用 USB 纜線，將已啟用開發人員功能的裝置連線至開發電腦。 按一下 [執行]->[執行「應用程式」]。 在 [選取部署目標] 視窗中選取您的裝置，然後按一下 [確定]。 Android Studio 會在您連線的裝置上安裝應用程式，並加以啟動。 此時您應該會看到 "Hello World!" 顯示於您的裝置所執行的應用程式中。 按一下 [執行]->[停止「應用程式」]。
 
-## <a name="integrating-arcore"></a>整合 _ARCore_
+## <a name="integrating-_arcore_"></a>整合 _ARCore_
 
 <a href="https://developers.google.com/ar/discover/" target="_blank">_ARCore_</a> 是 Google 的平台，用以建置擴增實境體驗，讓您的裝置能夠在移動時追蹤本身的位置，並產生它對於實際環境的了解。
 
@@ -57,21 +57,21 @@ ms.locfileid: "59995722"
 </application>
 ```
 
-請修改 `Gradle Scripts\build.gradle (Module: app)` 以包含下列項目。 此程式碼會確保您的應用程式將以 ARCore 1.7 版作為目標。 進行此變更後，您可能會收到 Gradle 詢問是否要同步的通知：按一下 [立即同步]。
+請修改 `Gradle Scripts\build.gradle (Module: app)` 以包含下列項目。 此程式碼會確保您的應用程式將以 ARCore 1.8 版作為目標。 進行此變更後，您可能會收到 Gradle 詢問是否要同步的通知：按一下 [立即同步]。
 
 ```
 dependencies {
     ...
-    implementation 'com.google.ar:core:1.7.0'
+    implementation 'com.google.ar:core:1.11.0'
     ...
 }
 ```
 
-## <a name="integrating-sceneform"></a>整合 _Sceneform_
+## <a name="integrating-_sceneform_"></a>整合 _Sceneform_
 
-<a href="https://developers.google.com/ar/develop/java/sceneform/" target="_blank">_Sceneform_</a> 可讓您輕鬆地在擴增實境應用程式中呈現逼真的 3D 場景，而不需要學習 OpenGL。
+[_Sceneform_](https://developers.google.com/sceneform/develop/) 可讓您輕鬆地在擴增實境應用程式中呈現逼真的 3D 場景，而不需要學習 OpenGL。
 
-請修改 `Gradle Scripts\build.gradle (Module: app)` 以包含下列項目。 此程式碼可讓您的應用程式使用 Java 8 的語言建構，這是 `Sceneform` 不可或缺的。 它也會確保您的應用程式將以 `Sceneform` 1.7 版為目標，因為其版本必須符合您的應用程式所使用的 ARCore 版本。 進行此變更後，您可能會收到 Gradle 詢問是否要同步的通知：按一下 [立即同步]。
+請修改 `Gradle Scripts\build.gradle (Module: app)` 以包含下列項目。 此程式碼可讓您的應用程式使用 Java 8 的語言建構，這是 `Sceneform` 不可或缺的。 它也會確保您的應用程式將以 `Sceneform` 1.8 版為目標，因為其版本必須符合您的應用程式所使用的 ARCore 版本。 進行此變更後，您可能會收到 Gradle 詢問是否要同步的通知：按一下 [立即同步]。
 
 ```
 android {
@@ -85,7 +85,7 @@ android {
 
 dependencies {
     ...
-    implementation 'com.google.ar.sceneform.ux:sceneform-ux:1.7.0'
+    implementation 'com.google.ar.sceneform.ux:sceneform-ux:1.11.0'
     ...
 }
 ```
@@ -117,24 +117,24 @@ dependencies {
 
 最後，新增將會結合所有項目的下列 `handleTap()` 方法。 它會建立圓球，並將其置於點選的位置上。 此圓球一開始會是黑色的，因為 `this.recommendedSessionProgress` 目前設為零。 此值將於稍後調整。
 
-[!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=150-158,170-171,174-182,198-199)]
+[!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=151-159,171-172,175-183,199-200)]
 
 將您的應用程式[重新部署](#trying-it-out)至裝置，以再次加以驗證。 這次，您可以移動裝置，使 ARCore 開始辨識您的環境。 然後，點選螢幕以建立您的黑色圓球，並將其置於您選擇的介面上。
 
 ## <a name="attach-a-local-azure-spatial-anchor"></a>連結本機 Azure Spatial Anchor
 
-請修改 `Gradle Scripts\build.gradle (Module: app)` 以包含下列項目。 此程式碼會確保您的應用程式將以 Azure Spatial Anchors 1.0.2 版目標。 雖然如此，參考任何最新版的 Azure Spatial Anchors 應該也是可行的。
+請修改 `Gradle Scripts\build.gradle (Module: app)` 以包含下列項目。 此程式碼會確保您的應用程式將以 Azure Spatial Anchors 2.2.0 版為目標。 雖然如此，參考任何最新版的 Azure Spatial Anchors 應該也是可行的。 您可以在[這裡](https://github.com/Azure/azure-spatial-anchors-samples/releases)找到版本資訊。
 
 ```
 dependencies {
     ...
-    implementation "com.microsoft.azure.spatialanchors:spatialanchors_jni:[1.0.2]"
-    implementation "com.microsoft.azure.spatialanchors:spatialanchors_java:[1.0.2]"
+    implementation "com.microsoft.azure.spatialanchors:spatialanchors_jni:[2.2.0]"
+    implementation "com.microsoft.azure.spatialanchors:spatialanchors_java:[2.2.0]"
     ...
 }
 ```
 
-以滑鼠右鍵按一下 [新增]`app\java\<PackageName>`->**[Java 類別]**->。 將 [名稱] 設為 MyFirstApp，並將 [Superclass] 設為 android.app.Application。 請將其他選項保留為原狀。 按一下 [確定]。 此時會建立名為 `MyFirstApp.java` 的檔案。 請為其新增下列匯入項目：
+以滑鼠右鍵按一下 [新增]`app\java\<PackageName>`-> **[Java 類別]** ->。 將 [名稱] 設為 MyFirstApp，並將 [Superclass] 設為 android.app.Application。 請將其他選項保留為原狀。 按一下 [確定]。 此時會建立名為 `MyFirstApp.java` 的檔案。 請為其新增下列匯入項目：
 
 ```java
 import com.microsoft.CloudServices;
@@ -169,7 +169,7 @@ import com.microsoft.CloudServices;
 
 接著，我們將在 `mainActivity` 類別內新增下列 `initializeSession()` 方法。 經呼叫後，它將確保在您的應用程式啟動期間會建立 Azure Spatial Anchors 工作階段，並正確地初始化。
 
-[!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=89-97,146)]
+[!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=89-97,147)]
 
 現在，我們要將您的 `initializeSession()` 方法連接到 `onCreate()` 方法中。 此外，我們也將確保景觀窗饋送的畫面格會傳送至 Azure Spatial Anchors SDK 進行處理。
 
@@ -177,17 +177,17 @@ import com.microsoft.CloudServices;
 
 最後，在 `handleTap()` 方法中新增下列程式碼。 它會將本機 Azure Spatial Anchor 連結至我們放在實際環境中的黑色圓球。
 
-[!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=150-158,170-182,198-199&highlight=12-13)]
+[!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=151-159,171-183,199-200&highlight=12-13)]
 
 再次[重新部署](#trying-it-out)您的應用程式。 移動您的裝置、點選螢幕，並放置黑色圓球。 但這次程式碼會建立本機 Azure Spatial Anchor，並將其連結至您的圓球。
 
-在進一步操作之前，您必須先建立 Azure Spatial Anchors 帳戶識別碼和金鑰 (如果您還沒有的話)。 請依照下一節的指示加以取得。
+在進一步操作之前，您必須先建立 Azure Spatial Anchors 帳戶以取得帳戶識別碼、金鑰和網域 (如果您還沒有這些項目的話)。 請依照下一節的指示加以取得。
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
 
 ## <a name="upload-your-local-anchor-into-the-cloud"></a>將本機錨點上傳至雲端
 
-取得 Azure Spatial Anchors 帳戶識別碼和金鑰之後，我們可以回到 `app\java\<PackageName>\MainActivity`，並在其中新增下列匯入項目：
+取得 Azure Spatial Anchors 帳戶識別碼、金鑰和網域之後，我們可以回到 `app\java\<PackageName>\MainActivity`，並在其中新增下列匯入項目：
 
 [!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=40-45&highlight=3-6)]
 
@@ -195,9 +195,9 @@ import com.microsoft.CloudServices;
 
 [!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=60-65&highlight=3-6)]
 
-接著，在 `initializeSession()` 方法中新增下列程式碼。 首先，此程式碼可讓您的應用程式監視 Azure Spatial Anchors SDK 從景觀窗饋送收集畫面格時的進度。 進行收集時，圓球的色彩會開始從原本的黑色變成灰色。 然後，在收集到足夠的畫面格可將錨點提交至雲端時，圓球將變成白色。 其次，此程式碼會提供與雲端後端進行通訊所需的認證。 您將在此處設定應用程式，以使用您的帳戶識別碼和金鑰。 [設定空間錨點資源](#create-a-spatial-anchors-resource)時，將它們複製到文字編輯器中。
+接著，在 `initializeSession()` 方法中新增下列程式碼。 首先，此程式碼可讓您的應用程式監視 Azure Spatial Anchors SDK 從景觀窗饋送收集畫面格時的進度。 進行收集時，圓球的色彩會開始從原本的黑色變成灰色。 然後，在收集到足夠的畫面格可將錨點提交至雲端時，圓球將變成白色。 其次，此程式碼會提供與雲端後端進行通訊所需的認證。 您將在此處設定應用程式，以使用您的帳戶識別碼、金鑰和網域。 [設定空間錨點資源](#create-a-spatial-anchors-resource)時，將它們複製到文字編輯器中。
 
-[!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=89-120,142-146&highlight=11-36)]
+[!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=89-120,142-148&highlight=11-37)]
 
 接著，在 `mainActivity` 類別內新增下列 `uploadCloudAnchorAsync()` 方法。 經呼叫後，此方法將以非同步方式等待，直到從您的裝置收集到足夠的畫面格。 一旦達到此條件，它就會將圓球的色彩切換為黃色，然後開始將您的本機 Azure Spatial Anchor 上傳至雲端。 上傳完成後，此程式碼會傳回錨點識別碼。
 
@@ -205,7 +205,7 @@ import com.microsoft.CloudServices;
 
 最後，我們要將所有項目連結在一起。 在您的 `handleTap()` 方法中新增下列程式碼。 它會在您的圓球建立時隨即叫用 `uploadCloudAnchorAsync()` 方法。 此方法傳回後，下列程式碼會對您的圓球執行最後的更新，將其色彩變更為藍色。
 
-[!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=150-158,170-199&highlight=24-37)]
+[!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?range=151-159,171-200&highlight=24-37)]
 
 再次[重新部署](#trying-it-out)您的應用程式。 移動您的裝置、點選螢幕，並放置圓球。 但這次，隨著相機畫面格的收集，圓球的色彩將從黑色變成白色。 一旦有足夠的畫面格時，圓球就會變成黃色，並開始進行雲端上傳。 上傳完成後，圓球就會變成藍色。 (選擇性) 您也可以使用 Android Studio 內的 `Logcat` 視窗來監視應用程式傳送的記錄訊息。 例如，畫面格擷取期間的工作階段進度，和雲端在上傳完成時傳回的錨點識別碼。
 

@@ -1,19 +1,19 @@
 ---
-author: diberry
-ms.author: diberry
+author: IEvangelist
+ms.author: dapine
+ms.date: 06/25/2019
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 03/22/2019
-ms.openlocfilehash: 2de88c7f490dd2d949274f165013b1a9aa72249b
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 5b464ed4eaf576bc77c2c1eda17ae68b598dc2a4
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60118443"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "67704314"
 ---
-**主機**是執行 docker 容器的 x64 型電腦。 這可以您內部部署的電腦，或是在 Azure 中裝載服務的 Docker，這些服務包括：
+主機是可執行 Docker 容器的 x64 型電腦。 它可以是您內部部署的電腦，或是在 Azure 中裝載服務的 Docker，例如：
 
-* [Azure Kubernetes Service](../articles/aks/index.yml)
-* [Azure 容器執行個體](../articles/container-instances/index.yml)
-* 部署至 [Azure Stack](/azure-stack/operator) 的 [Kubernetes](https://kubernetes.io/) 叢集。 如需詳細資訊，請參閱[將 Kubernetes 部署至 Azure Stack](/azure-stack/user/azure-stack-solution-template-kubernetes-deploy)。
+* [Azure Kubernetes Service](../articles/aks/index.yml)。
+* [Azure 容器實例](../articles/container-instances/index.yml)。
+* 部署至 [Azure Stack](/azure-stack/operator) 的 [Kubernetes](https://kubernetes.io/) \(英文\) 叢集。 如需詳細資訊，請參閱[將 Kubernetes 部署至 Azure Stack](/azure-stack/user/azure-stack-solution-template-kubernetes-deploy)。
 

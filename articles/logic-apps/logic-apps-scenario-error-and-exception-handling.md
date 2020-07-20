@@ -1,25 +1,21 @@
 ---
-title: 例外狀況處理與錯誤記錄案例 - Azure Logic Apps | Microsoft Docs
-description: 以下是有關 Azure Logic Apps 中進階例外狀況處理與錯誤記錄的實際使用案例
+title: 例外狀況處理 & 錯誤記錄案例
+description: 在 Azure Logic Apps 中，先進的例外狀況處理和錯誤記錄的實際使用案例和情節
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: hedidin
-ms.author: b-hoedid
-ms.reviewer: estfan, LADocs
-ms.assetid: 63b0b843-f6b0-4d9a-98d0-17500be17385
+ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 07/29/2016
-ms.openlocfilehash: 58e59e4faa135e24124f494d90437b49caa30129
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 1bb6e28c9dcae01f3233178706d2a24156fa509a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60599565"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "76902696"
 ---
-# <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>案例：適用於邏輯應用程式的例外狀況處理與記錄錯誤
+# <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>案例︰適用於邏輯應用程式的例外狀況處理與記錄錯誤
 
-本案例說明如何擴充邏輯應用程式，以提升對於例外狀況處理的支援。 我們已使用真實使用案例來回答問題：「Azure Logic Apps 是否支援例外狀況和錯誤處理？」
+本案例說明如何擴充邏輯應用程式，以提升對於例外狀況處理的支援。 我們使用了現實生活的使用案例來回答下列案例：「Azure Logic Apps 是否支援例外狀況與錯誤處理？」
 
 > [!NOTE]
 > 目前的 Azure Logic Apps 結構描述會提供標準的動作回應範本。 這個範本包括內部驗證和 API 應用程式所傳回的錯誤回應。
@@ -28,7 +24,7 @@ ms.locfileid: "60599565"
 
 以下為適用於此案例的使用案例： 
 
-知名的醫療保健組織找到了我們，他們想要開發 Azure 解決方案，以使用 Microsoft Dynamics CRM Online 建立病患入口網站。 他們需要在 Dynamics CRM Online 病患入口網站和 Salesforce 之間傳送預約記錄。 因此要求我們對所有病患記錄使用 [HL7 FHIR](http://www.hl7.org/implement/standards/fhir/) 標準。
+知名的醫療保健組織找到了我們，他們想要開發 Azure 解決方案，以使用 Microsoft Dynamics CRM Online 建立病患入口網站。 他們需要在 Dynamics CRM Online 病患入口網站和 Salesforce 之間傳送預約記錄。 因此要求我們對所有病患記錄使用 [HL7 FHIR](https://www.hl7.org/implement/standards/fhir/) 標準。
 
 此專案有兩大需求︰  
 
@@ -36,13 +32,13 @@ ms.locfileid: "60599565"
 * 用來檢視工作流程中所發生之任何錯誤的方法
 
 > [!TIP]
-> 如需關於此專案的高階影片，請參閱[整合使用者群組](http://www.integrationusergroup.com/logic-apps-support-error-handling/ "整合使用者群組")。
+> 如需關於此專案的高階影片，請參閱[整合使用者群組 (英文)](http://www.integrationusergroup.com/logic-apps-support-error-handling/ "Integration User Group")。
 
 ## <a name="how-we-solved-the-problem"></a>問題解決方式
 
-我們選擇以 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/ "Azure Cosmos DB") 做為記錄檔和錯誤記錄的存放庫 (Cosmos DB 會將記錄當做文件)。 由於 Azure Logic Apps 具有適用於所有回應的標準範本，因此我們不需要建立自訂結構描述。 我們可以建立 API 應用程式來**插入**及**查詢**錯誤和記錄檔記錄。 我們也可以為 API 應用程式中的每個項目定義結構描述。  
+我們選擇[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/ "Azure Cosmos DB")做為記錄檔和錯誤記錄的儲存機制（Cosmos DB 將記錄當做檔）。 由於 Azure Logic Apps 具有適用於所有回應的標準範本，因此我們不需要建立自訂結構描述。 我們可以建立 API 應用程式來**插入**及**查詢**錯誤和記錄檔記錄。 我們也可以為 API 應用程式中的每個項目定義結構描述。  
 
-另一個需求是要在特定日期之後清除記錄。 Cosmos DB 具有稱為[存留時間 (英文)](https://azure.microsoft.com/blog/documentdb-now-supports-time-to-live-ttl/ "存留時間") (TTL) 的屬性，這可讓我們設定每一筆記錄或每一個集合的「存留時間」值。 此功能讓我們不需手動在 Cosmos DB 中刪除記錄。
+另一個需求是要在特定日期之後清除記錄。 Cosmos DB 具有稱為[存留時間](https://azure.microsoft.com/blog/documentdb-now-supports-time-to-live-ttl/ "存留時間")（TTL）的屬性，可讓我們設定每一筆記錄或每一個集合的生存**時間**值。 此功能讓我們不需手動在 Cosmos DB 中刪除記錄。
 
 > [!IMPORTANT]
 > 為了完成本教學課程，您必須建立一個 Cosmos DB 資料庫和兩個集合 (記錄和錯誤)。
@@ -100,7 +96,7 @@ ms.locfileid: "60599565"
 1. 我們必須從 Dynamics CRM Online 取得新的預約記錄。
 
    來自 CRM 的觸發程序會提供我們 **CRM PatentId**、**記錄類型**、**新的或更新的記錄** (新增或更新布林值) 和 **SalesforceId**。 **SalesforceId** 可以是 null，因為它只會用於更新。
-   我們使用 CRM **PatientID** 和 [記錄類型] 來取得 CRM 記錄。
+   我們使用 CRM **PatientID** 和 [記錄類型]**** 來取得 CRM 記錄。
 
 2. 接下來，必須新增 Azure Cosmos DB SQL API 應用程式 **InsertLogEntry** 作業，如以下「邏輯應用程式設計工具」所示。
 
@@ -125,7 +121,7 @@ ms.locfileid: "60599565"
 
 下列邏輯應用程式的程式碼範例示範如何處理記錄。
 
-#### <a name="log-entry"></a>記錄檔項目
+#### <a name="log-entry"></a>記錄項目
 
 以下是用來插入記錄項目的邏輯應用程式原始程式碼。
 
@@ -402,7 +398,7 @@ ms.locfileid: "60599565"
 若要檢視錯誤，您可以建立 MVC Web 應用程式，以顯示來自 Cosmos DB 的錯誤記錄。 目前的版本中包含**清單**、**詳細資料**、**編輯**和**刪除**作業。
 
 > [!NOTE]
-> 編輯作業：Cosmos DB 會取代整份文件。 **清單**和**詳細資料**檢視中所顯示的記錄只是範例。 而非實際的病患預約記錄。
+> 編輯作業︰Cosmos DB 會取代整份文件。 **清單**和**詳細資料**檢視中所顯示的記錄只是範例。 而非實際的病患預約記錄。
 
 以下是使用先前所述方法建立之 MVC 應用程式詳細資料的範例。
 
@@ -434,7 +430,7 @@ ms.locfileid: "60599565"
 
 Azure Cosmos DB 中的每個文件都必須具有唯一識別碼。 我們將會使用 `PatientId` ，並加入轉換為 Unix 時間戳記值 (雙精確度) 的時間戳記。 我們會將值截斷以移除小數值。
 
-可以到 [GitHub](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi/blob/master/LogicAppsExceptionManagementApi/Controllers/LogController.cs) 檢視我們的錯誤控制器 API 的原始程式碼。
+您可以從[GitHub](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi/blob/master/LogicAppsExceptionManagementApi/Controllers/LogController.cs)查看我們的錯誤控制器 API 的原始程式碼。
 
 我們使用下列語法，從邏輯應用程式呼叫 API：
 
@@ -469,9 +465,9 @@ Azure Cosmos DB 中的每個文件都必須具有唯一識別碼。 我們將會
  }
 ```
 
-上述程式碼範例的運算式會檢查 Create_NewPatientRecord 狀態是否為 **Failed**。
+上述程式碼範例的運算式會檢查 Create_NewPatientRecord** 狀態是否為 **Failed**。
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>摘要
 
 * 您可以在邏輯應用程式中輕鬆地實作記錄和錯誤處理。
 * 您可以使用 Azure Cosmos DB 作為記錄檔和錯誤記錄 (文件) 的存放庫。
@@ -479,10 +475,10 @@ Azure Cosmos DB 中的每個文件都必須具有唯一識別碼。 我們將會
 
 ### <a name="source-code"></a>原始程式碼
 
-Logic Apps 例外狀況管理 API 應用程式的原始程式碼可在此 [GitHub 儲存機制](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi "邏輯應用程式例外狀況管理 API")觀賞此專案的高階影片。
+Logic Apps 例外狀況管理 API 應用程式的原始程式碼可在此 GitHub 存放[庫](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi "邏輯應用程式例外狀況管理 API")中取得。
 
 ## <a name="next-steps"></a>後續步驟
 
 * [檢視更多邏輯應用程式的範例和案例](../logic-apps/logic-apps-examples-and-scenarios.md)
-* [了解如何監視邏輯應用程式](../logic-apps/logic-apps-monitor-your-logic-apps.md)
-* [建立邏輯應用程式的自動化部署範本](../logic-apps/logic-apps-create-deploy-template.md)
+* [監視 Logic Apps](../logic-apps/monitor-logic-apps.md)
+* [自動部署邏輯應用程式](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)

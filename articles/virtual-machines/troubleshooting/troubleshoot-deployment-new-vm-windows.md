@@ -3,25 +3,23 @@ title: 針對 Azure 中 Windows VM 部署進行疑難排解 | Microsoft Docs
 description: 針對在 Azure 中建立新 Windows 虛擬機器的 Resource Manager 部署問題進行疑難排解
 services: virtual-machines-windows, azure-resource-manager
 documentationcenter: ''
-author: JiangChen79
-manager: jeconnoc
+author: DavidCBerry13
+manager: gwallace
 editor: ''
 tags: top-support-issue, azure-resource-manager
 ms.assetid: afc6c1a4-2769-41f6-bbf9-76f9f23bcdf4
 ms.service: virtual-machines-windows
 ms.workload: na
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 06/15/2018
-ms.author: cjiang
+ms.author: daberry
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8f18fbabe52c9170cde70900933ce96a3a6400c7
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+ms.openlocfilehash: 78db1ba0eaff0dce83ed13e9f20c3c5a5b96bf9c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62123827"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "83120958"
 ---
 # <a name="troubleshoot-deployment-issues-when-creating-a-new-windows-vm-in-azure"></a>針對在 Azure 中建立新 Windows VM 時的部署問題進行疑難排解
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
@@ -34,9 +32,9 @@ ms.locfileid: "62123827"
 如需了解其他 VM 部署問題，請參閱[針對 Azure 中的 Windows 虛擬機器部署問題進行疑難排解](troubleshoot-deploy-vm-windows.md)。
 
 ## <a name="collect-activity-logs"></a>收集活動記錄
-若要開始進行排解疑難，請收集活動記錄，以識別與問題相關的錯誤。 以下链接包含有关要遵循的过程的详细信息。
+若要開始進行排解疑難，請收集活動記錄，以識別與問題相關的錯誤。 下列連結提供此程序該遵循的更多詳細資訊。
 
-[檢視部署作業](../../azure-resource-manager/resource-manager-deployment-operations.md)
+[檢視部署作業](../../azure-resource-manager/templates/deployment-history.md)
 
 [檢視活動記錄以管理 Azure 資源](../../resource-group-audit.md)
 
@@ -44,13 +42,13 @@ ms.locfileid: "62123827"
 
 [!INCLUDE [virtual-machines-windows-troubleshoot-deployment-new-vm-table](../../../includes/virtual-machines-windows-troubleshoot-deployment-new-vm-table.md)]
 
-**Y：** 如果 OS 是一般化的 Windows，且上傳和 (或) 擷取它時使用的是一般化設定，則不會產生任何錯誤。 同樣地，如果 OS 是特殊化的 Windows，且上傳和 (或) 擷取它時使用的是特殊化設定，就不會有任何錯誤。
+**Y：** 如果 OS 是一般化的 Windows，且上傳和 (或) 擷取它時使用的是一般化設定，就不會有任何錯誤。 同樣地，如果 OS 是特殊化的 Windows，且上傳和 (或) 擷取它時使用的是特殊化設定，就不會有任何錯誤。
 
 **上傳錯誤：**
 
-**N<sup>1</sup>：** 如果 OS 是一般化的 Windows，但是以特殊化形式所上傳，則您將會發生佈建逾時錯誤，且 VM 會卡在 OOBE 畫面。
+**N<sup>1</sup>：** 如果作業系統是一般化的 Windows，但是以特殊化被上傳，就會發生佈建逾時錯誤，VM 會卡在 OOBE 畫面。
 
-**N<sup>2</sup>：** 如果 OS 是特殊化的 Windows，但是以一般化形式所上傳，則您將會發生佈建失敗錯誤，且 VM 會卡在 OOBE 畫面，因為新 VM 會以原始的電腦名稱、使用者名稱和密碼來執行。
+**N<sup>2</sup>：** 如果作業系統是特殊化的 Windows，但是以一般化被上傳，就會發生佈建失敗錯誤，VM 會卡在 OOBE 畫面，因為新 VM 是以原始的電腦名稱、使用者名稱和密碼執行。
 
 **解決方案**
 
@@ -58,31 +56,31 @@ ms.locfileid: "62123827"
 
 **擷取錯誤：**
 
-**N<sup>3</sup>：** 如果 OS 是一般化的 Windows，但是以特殊化形式所擷取，則您將會發生佈建逾時錯誤，因為系統會將原始 VM 標示為一般化而無法加以使用。
+**N<sup>3</sup>：** 如果作業系統是一般化的 Windows，但是以特殊化被擷取，就會發生佈建逾時錯誤，因為 VM 被標示為一般化而無法加以使用。
 
-**N<sup>4</sup>：** 如果 OS 是特殊化的 Windows，但是以一般化形式所擷取，則您將會發生佈建失敗錯誤，因為新 VM 會以原始的電腦名稱、使用者名稱和密碼來執行。 此外，原始 VM 會因被標示為特殊化而無法供使用。
+**N<sup>4</sup>：** 如果作業系統是特殊化的 Windows，但是以一般化被擷取，就會發生佈建失敗錯誤，因為新 VM 是以原始的電腦名稱、使用者名稱和密碼執行。 此外，原始 VM 會因被標示為特殊化而無法供使用。
 
 **解決方案**
 
 若要解決這兩個錯誤，請從入口網站中刪除目前的映像，然後使用與作業系統相同的設定 (一般化/特殊化) [從目前的 VHD 重新擷取映像](../windows/create-vm-specialized.md)。
 
-## <a name="issue-customgallerymarketplace-image-allocation-failure"></a>問題：自訂/資源庫/Marketplace 映像；配置失敗
+## <a name="issue-customgallerymarketplace-image-allocation-failure"></a>問題︰自訂/資源庫/Marketplace 映像；配置失敗
 當新的 VM 要求被釘選到不支援所要求的 VM 大小、或沒有可用空間可處理要求的叢集，便會發生此錯誤。
 
 **原因 1：** 叢集無法支援要求的 VM 大小。
 
-**解決方式 1：**
+**解決方式1：**
 
 * 以較小的 VM 大小重試要求。
 * 如果無法變更要求的 VM 的大小︰
   * 停止可用性設定組中的所有 VM。
-    单击“资源组” >  *你的资源组*  > “资源” >  *你的可用性集*  > “虚拟机” >  *你的虚拟机*  > “停止”。
+    按一下 [**資源**群組] 資源  >  *群組*  >  **Resources**  >  *your availability set*  >  **虛擬機器**  >  *虛擬機器*  >  **停止**的可用性設定組資源。
   * 所有 VM 都停止後，建立所需大小的新 VM。
-  * 先啟動新 VM，然後選取每個已停止的 VM 並按一下 [啟動] 。
+  * 先啟動新的 VM，然後選取每個已停止的 Vm，然後按一下 [**啟動**]。
 
 **原因 2：** 叢集沒有可用的資源。
 
-**解決方式 2：**
+**解決方式2：**
 
 * 稍後再重試要求。
 * 如果新的 VM 可以屬於不同的可用性設定組

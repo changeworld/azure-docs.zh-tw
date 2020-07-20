@@ -1,40 +1,28 @@
 ---
-title: Azure PowerShell 範例 - Service Fabric | Microsoft Docs
-description: Azure PowerShell 範例 - Service Fabric
-services: service-fabric
-documentationcenter: service-fabric
-author: athinanthny
-manager: chackdan
-editor: ''
-tags: ''
-ms.assetid: b48d1137-8c04-46e0-b430-101e07d7e470
-ms.service: service-fabric
-ms.devlang: na
+title: Azure PowerShell 範例 - Service Fabric
+description: 了解如何使用 Powershell 建立和管理 Azure Service Fabric 叢集、應用程式和服務。
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: service-fabric
 ms.date: 11/29/2018
-ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 8a3a80fb6ae20eddc3237d986ecda1d4cb5b65a5
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 4b85fd604eb27f0963af882b41e823d800005dda
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58666030"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187093"
 ---
-# <a name="azure-powershell-samples"></a>Azure PowerShell 範例
+# <a name="azure-service-fabric-powershell-samples"></a>Azure Service Fabric PowerShell 範例
 
 下表包含 PowerShell 指令碼範例的連結，這個範例建立和管理 Service Fabric 叢集、應用程式和服務。
 
-[!INCLUDE [links to azure cli and service fabric cli](../../includes/service-fabric-powershell.md)]
+[!INCLUDE [links to azure CLI and service fabric CLI](../../includes/service-fabric-powershell.md)]
 
-| | |
+| 指令碼 | 描述 |
 |-|-|
 | **建立叢集** ||
 | [建立叢集 (Azure)](./scripts/service-fabric-powershell-create-secure-cluster-cert.md)| 建立 Azure Service Fabric 叢集。 |
 | **管理叢集、節點和基礎結構** ||
-| [新增應用程式憑證](./scripts/service-fabric-powershell-add-application-certificate.md)| 將應用程式的 X.509 憑證加入到叢集中的所有節點。 |
+| [新增應用程式憑證](./scripts/service-fabric-powershell-add-application-certificate.md)| 建立 Key Vault 的 X509 憑證，並將其部署至叢集中的虛擬機器擴展集。 |
 | [更新叢集 VM 上的 RDP 連接埠範圍](./scripts/service-fabric-powershell-change-rdp-port-range.md)|對已部署之叢集中的叢集節點 VM 變更 RDP 連接埠範圍。|
 | [更新叢集節點 VM 的管理員使用者和密碼](./scripts/service-fabric-powershell-change-rdp-user-and-pw.md) | 更新叢集節點 VM 的管理員使用者名稱和密碼。 |
 | [在負載平衡器中開啟連接埠](./scripts/service-fabric-powershell-open-port-in-load-balancer.md) | 在 Azure 負載平衡器中開啟應用程式連接埠，以在特定連接埠上允許輸入流量。 |

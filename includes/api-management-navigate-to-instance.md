@@ -4,29 +4,20 @@ ms.service: api-management
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: vlvinogr
-ms.openlocfilehash: 3a46462f761e7608ae7554604577a1e9d7f88b15
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 52c2768605fa50f82029511b50bfd313fe325026
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60558012"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "73471957"
 ---
 ## <a name="go-to-your-api-management-instance"></a>移至您的 API 管理執行個體
 
-![瀏覽至 API 管理執行個體](./media/api-management-navigate-to-instance/00-FindResource-01.png)
+1. 在 Azure 入口網站中，搜尋並選取 [API 管理服務]  。
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。 
+   ![選取 [API 管理服務]](media/api-management-navigate-to-instance/view-apim1.png)
 
-2. 選取 [所有服務]。  
+1. 在 [API 管理]  畫面中，選取您的 API 管理執行個體。
 
-3. 在搜尋方塊中，輸入 `api management`。
-
-4. 在搜尋結果中，選取 [API 管理服務]。
-
-5. 選取 API 管理服務執行個體。
-
-> [!TIP]
-> 若要將 API 管理新增至 Azure 入口網站中的「我的最愛」，請選取星號。
->
-> [API 管理圖示] (![API 管理圖示](./media/api-management-navigate-to-instance/apim-icon.png)此時會出現在入口網站的左側功能表中。
+   ![選取您的 API 管理執行個體](media/api-management-navigate-to-instance/view-apim2.png)
 

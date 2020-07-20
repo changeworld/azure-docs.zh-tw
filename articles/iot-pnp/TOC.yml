@@ -1,0 +1,117 @@
+- name: IoT 隨插即用文件
+  href: index.yml
+- name: 概觀
+  items:
+    - name: 什麼是 IoT 隨插即用？
+      href: overview-iot-plug-and-play.md
+- name: 快速入門
+  expanded: true
+  items:
+    - name: 建立裝置
+      items:
+        - name: C Linux
+          href: quickstart-create-pnp-device-linux.md
+        - name: C Windows
+          href: quickstart-create-pnp-device-windows.md
+    - name: 將裝置連線到 IoT 中樞
+      items:
+        - name: C Linux
+          href: quickstart-connect-pnp-device-c-linux.md
+        - name: C Windows
+          href: quickstart-connect-pnp-device-c-windows.md
+        - name: C#
+          href: quickstart-connect-pnp-device-csharp.md
+        - name: Java
+          href: quickstart-connect-pnp-device-java.md
+        - name: Node.js
+          href: quickstart-connect-pnp-device-node.md
+    - name: 將裝置連線到 IoT Central
+      href: ../iot-central/core/tutorial-connect-pnp-device.md
+    - name: 連線到解決方案中的裝置
+      items:
+        - name: C#
+          href: quickstart-connect-pnp-device-solution-csharp.md
+        - name: Java
+          href: quickstart-connect-pnp-device-solution-java.md
+        - name: Node.js
+          href: quickstart-connect-pnp-device-solution-node.md
+- name: 教學課程
+  items:
+    - name: 使用 VS Code 建立裝置
+      href: tutorial-pnp-visual-studio-code.md
+    - name: 建立可供認證的裝置
+      href: tutorial-build-device-certification.md
+    - name: 認證您的裝置
+      href: tutorial-certification-test.md
+- name: 概念
+  items:
+    - name: 詞彙
+      href: iot-plug-and-play-glossary.md
+    - name: 開發人員指南
+      href: concepts-developer-guide.md
+    - name: 通用介面
+      href: concepts-common-interfaces.md
+    - name: 模型探索
+      href: concepts-model-discovery.md
+    - name: 限制和配額
+      href: concepts-limits-quotas.md
+- name: 操作指南
+  items:
+    - name: 使用 Visual Studio 和 Visual Studio Code 開發
+      href: howto-develop-with-vs-vscode.md
+    - name: 安裝 IoT 檔案總管
+      href: howto-install-iot-explorer.md
+    - name: 安裝 Azure CLI 擴充功能
+      href: howto-install-pnp-cli.md
+    - name: 上線到 IoT 入口網站
+      href: howto-onboard-portal.md
+    - name: 管理模型
+      href: howto-manage-models.md
+    - name: 連線到裝置並與其互動
+      href: howto-develop-solution.md
+- name: 參考
+  items:
+    - name: 程式庫和 SDK
+      href: libraries-sdks.md
+    - name: REST API
+      items:
+        - name: 數位分身
+          href: 'https://docs.microsoft.com/rest/api/iothub/digitaltwinmodel/digitaltwin'
+        - name: 數位分身服務
+          href: 'https://docs.microsoft.com/rest/api/iothub/digitaltwinmodel/service'
+        - name: 數位分身模型存放庫
+          href: 'https://docs.microsoft.com/rest/api/iothub/digitaltwinmodelrepositoryservice/createorupdatemodel'
+        - name: 產生 REST 安全性權杖
+          href: howto-generate-sas-token.md
+- name: 參考
+  items:
+    - name: Azure CLI
+      href: /cli/azure/azure-cli-reference-for-IoT
+- name: 資源
+  items:
+    - name: 支援和協助選項
+      href: /azure/iot-fundamentals/iot-support-help
+    - name: Azure IoT 服務
+      items:
+        - name: IoT 中樞
+          href: /azure/iot-hub
+        - name: IoT 中樞裝置佈建服務
+          href: /azure/iot-dps
+        - name: IoT 中心
+          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+        - name: IoT Edge
+          href: /azure/iot-edge
+        - name: IoT 解決方案加速器
+          href: /azure/iot-accelerators
+        - name: IoT 隨插即用
+          href: /azure/iot-pnp
+        - name: Azure 地圖服務
+          href: /azure/azure-maps
+        - name: 時間序列深入解析
+          href: /azure/time-series-insights
+    - name: Azure IoT SDK
+      items:
+        - name: IoT 服務 SDK
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
+        - name: IoT 裝置 SDK
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks

@@ -1,20 +1,20 @@
 ---
-title: 開始在 Azure Data Lake Analytics 中使用 U-SQL 目錄
-description: 了解如何使用 U-SQL 目錄來共用程式碼和資料。
+title: 在 Azure Data Lake Analytics 中使用 U-SQL 目錄
+description: 了解如何使用 U-SQL 目錄來共用程式碼和資料。 建立資料表值函式、建立視圖、建立資料表，以及查詢這些函數。
 services: data-lake-analytics
 ms.service: data-lake-analytics
 author: saveenr
 ms.author: saveenr
 ms.reviewer: jasonwhowell
 ms.assetid: 57143396-ab86-47dd-b6f8-613ba28c28d2
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/09/2017
-ms.openlocfilehash: a6faa7037ccbacc0547401dd52bb3b19abd1c474
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 78bd7f446b7716031e3eef02639acc8bb729719e
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60813359"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119560"
 ---
 # <a name="get-started-with-the-u-sql-catalog-in-azure-data-lake-analytics"></a>開始在 Azure Data Lake Analytics 中使用 U-SQL 目錄
 
@@ -24,7 +24,7 @@ ms.locfileid: "60813359"
 
 下列指令碼會在預設的資料庫和結構描述中建立名為 `Searchlog()` 的 TVF：
 
-```
+```usql
 DROP FUNCTION IF EXISTS Searchlog;
 
 CREATE FUNCTION Searchlog()
@@ -55,7 +55,7 @@ END;
 
 下列指令碼會示範如何使用先前的指令碼中定義的 TVF：
 
-```
+```usql
 @res =
     SELECT
         Region,
@@ -76,7 +76,7 @@ OUTPUT @res
 
 下列指令碼會在預設的資料庫和結構描述中建立名為 `SearchlogView` 的 視：
 
-```
+```usql
 DROP VIEW IF EXISTS SearchlogView;
 
 CREATE VIEW SearchlogView AS  
@@ -93,7 +93,7 @@ USING Extractors.Tsv();
 
 下列指令碼示範如何使用定義的檢視：
 
-```
+```usql
 @res =
     SELECT
         Region,
@@ -113,7 +113,7 @@ OUTPUT @res
 
 使用下列指令碼建立一個資料庫和兩個資料表：
 
-```
+```usql
 DROP DATABASE IF EXISTS SearchLogDb;
 CREATE DATABASE SearchLogDb;
 USE DATABASE SearchLogDb;
@@ -147,7 +147,7 @@ CREATE TABLE SearchLog2(
 
 若要從資料表進行讀取，請修改您先前使用的轉換指令碼：
 
-```
+```usql
 @rs1 =
     SELECT
         Region,
@@ -173,4 +173,4 @@ OUTPUT @res
 ## <a name="next-steps"></a>後續步驟
 * [Microsoft Azure Data Lake Analytics 概觀](data-lake-analytics-overview.md)
 * [使用 Data Lake Tools for Visual Studio 開發 U-SQL 指令碼](data-lake-analytics-data-lake-tools-get-started.md)
-* [使用 Azure 入口網站監視和疑難排解 Azure Data Lake Analytics 作業](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
+* [使用 Azure 入口網站監視 Azure Data Lake Analytics 作業並進行疑難排解](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)

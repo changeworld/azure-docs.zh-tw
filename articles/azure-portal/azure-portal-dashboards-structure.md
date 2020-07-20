@@ -1,24 +1,23 @@
 ---
 title: Azure 儀表板結構 | Microsoft Docs
-description: 本文說明 Azure 儀表板的 JSON 結構
+description: 使用範例儀表板逐步解說 Azure 儀表板的 JSON 結構。 包含資源屬性的參考。
 services: azure-portal
 documentationcenter: ''
 author: adamabmsft
-manager: dougeby
-editor: tysonn
+manager: mtillman
 ms.service: azure-portal
 ms.devlang: NA
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 09/01/2017
-ms.author: kfollis
-ms.openlocfilehash: a7e9acbe78ffdca2e615873cc4c33f86b250a429
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 12/20/2019
+ms.author: mblythe
+ms.openlocfilehash: ad0d3a1bf2c293039df3bba3aa18da7d6e7dd0a5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60551482"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "81459214"
 ---
 # <a name="the-structure-of-azure-dashboards"></a>Azure 儀表板結構
 此文件將使用下列儀表板做為範例，逐步說明 Azure 儀表板的結構：
@@ -293,9 +292,9 @@ ms.locfileid: "60551482"
 
 接下來要將 JSON 的相關區段加以細分。  最上層屬性、__識別碼__、__名稱__、__類型__、__位置__和__標籤__是所有 Azure 資源類型共同的屬性。 也就是說，這些與儀表板的內容無關。
 
-### <a name="the-id-property"></a>識別碼屬性
+### <a name="the-id-property"></a>ID 屬性
 
-Azure 資源識別碼，受限於 [Azure 資源的命名慣例](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)。 入口網站建立儀表板時，通常會選擇 guid 形式的識別碼，但是以程式設計方式建立儀表板時，可以隨意使用任何有效的名稱。 
+Azure 資源識別碼，受限於[azure 資源的命名慣例](/azure/architecture/best-practices/resource-naming)。 當入口網站建立儀表板時，它通常會選擇 guid 形式的識別碼，但是您可以在以程式設計方式建立它們時，隨意使用任何有效的名稱。 
 
 ### <a name="the-name-property"></a>名稱屬性
 名稱是資源識別碼的區段，不包含訂用帳戶、資源類型或資源群組資訊。 基本上，它是資源識別碼的最後一個區段。
@@ -312,13 +311,13 @@ Azure 資源識別碼，受限於 [Azure 資源的命名慣例](https://docs.mic
 `"tags": { "hidden-title": "Created via API" }`
 
 ### <a name="the-properties-object"></a>屬性物件
-屬性物件包含兩個屬性：__功能濾鏡__和__中繼資料__。 __功能濾鏡__屬性包含有關儀表板圖格 (也稱為 組件) 的資訊。  __中繼資料__屬性將供未來可能的功能使用。
+屬性物件包含兩個屬性：__功能濾鏡__和__中繼資料__。 __鏡頭__屬性包含儀表板上磚的相關資訊。  __中繼資料__屬性將供未來可能的功能使用。
 
 ### <a name="the-lenses-property"></a>功能濾鏡屬性
 __功能濾鏡__屬性包含儀表板。 請注意，此範例中的功能濾鏡物件包含名為 "0" 的單一屬性。 功能濾鏡是儀表板中目前未實作的群組概念。 目前，所有儀表板都有在功能濾鏡物件上稱為 "0" 的這個單一屬性。
 
 ### <a name="the-lens-object"></a>功能濾鏡物件
-"0" 下方的物件包含兩個屬性：__順序__和__組件__。  在目前版本的儀表板中，__順序__永遠為 0。 __組件__屬性包含定義儀表板上個別組件 (也稱為 圖格) 的資訊。
+"0" 下方的物件包含兩個屬性：__順序__和__組件__。  在目前版本的儀表板中，__順序__永遠為 0。 [__元件__] 屬性包含一個物件，可定義儀表板上的個別元件（也稱為磚）。
 
 __組件__物件包含每個組件的屬性，其中的屬性名稱是數字。 這個數字並不重要。 
 
@@ -344,7 +343,7 @@ __位置__屬性包含組件的大小和位置資訊，分別以 __x__、__y__�
 每個類型的組件都有本身的設定。 可能的組態屬性稱為__輸入__、__設定__和__資產__。 
 
 ### <a name="the-inputs-object"></a>輸入物件
-輸入物件通常包含將圖格繫結至資源執行個體的資訊。  我們範例儀表板中的虛擬機器組件包含使用 Azure 資源識別碼表示繫結的單一輸入。  此資源識別碼格式在所有的 Azure 資源完全一致。
+輸入物件通常包含將圖格繫結至資源執行個體的資訊。  範例儀表板中的虛擬機器部分包含單一輸入，其使用 Azure 資源識別碼來表示系結。  此資源識別碼格式在所有 Azure 資源中都是一致的。
 
 ```json
 "inputs":
@@ -429,6 +428,6 @@ __位置__屬性包含組件的大小和位置資訊，分別以 __x__、__y__�
 ```
 
 ### <a name="the-asset-object"></a>資產物件
-繫結至第一個可管理入口網站物件 (稱為資產) 的圖格透過資產物件表示此關聯性。  在我們的範例儀表板中，虛擬機器圖格包含此資產描述。  __IdInputName__ 屬性告知入口網站識別碼輸入包含資產的唯一識別碼，在此案例中是資源識別碼。大部分的 Azure 資源類型都有在入口網站中定義的資產。
+繫結至第一個可管理入口網站物件 (稱為資產) 的圖格透過資產物件表示此關聯性。  在我們的範例儀表板中，虛擬機器圖格包含此資產描述。  __IdInputName__屬性會告知入口網站，識別碼輸入包含資產的唯一識別碼，在此案例中為資源 id。 大部分的 Azure 資源類型都有在入口網站中定義的資產。
 
 `"asset": {    "idInputName": "id",    "type": "VirtualMachine"    }`

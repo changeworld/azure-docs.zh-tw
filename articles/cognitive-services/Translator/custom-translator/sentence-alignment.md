@@ -1,20 +1,20 @@
 ---
 title: 句子配對與對齊 - 自訂翻譯工具
 titleSuffix: Azure Cognitive Services
-description: 在執行訓練時，出現在平行文件中的句子皆已配對或已對齊。 自訂翻譯工具會藉由讀取句子和此句子的翻譯，一次一個句子地學習翻譯。 然後將這兩個句子中的字組和片語彼此對齊。
-author: rajdeep-in
-manager: christw
+description: 在執行訓練時，出現在平行文件中的句子皆已配對或已對齊。 自訂翻譯工具會藉由讀取句子和此句子的翻譯，一次一個句子地學習翻譯。 接著將這兩個句子中的字組和片語彼此對齊。
+author: swmachan
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 02/21/2019
-ms.author: v-rada
+ms.date: 05/26/2020
+ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 8d2933f6a3bbab792acb708f2a59cad4eb2cabf7
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: c8c4bbcfdd8f06d4c2b4759b84a72c5b3cff5a5d
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57777153"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996341"
 ---
 # <a name="sentence-pairing-and-alignment-in-parallel-documents"></a>平行文件中的句子配對與對齊
 
@@ -28,18 +28,23 @@ ms.locfileid: "57777153"
 
 如果您知道您有平行文件，您可能會提供預先對齊的文字檔案來覆寫句子對齊。 您可以將這兩份文件中的所有句子擷取到文字檔，並組織成每一行一個句子，然後以 `.align` 副檔名來上傳檔案。 `.align` 副檔名會告知自訂翻譯工具應該略過句子對齊。
 
-為了獲得最佳結果，請嘗試確定您的檔案內容是每行一個句子。 一個句子中不能有換行字元，因為這會導致不好的對齊效果。
+為了獲得最佳結果，請嘗試確定您的檔案內容是每行一個句子。一個句子中不能有換行字元，因為這會導致不好的對齊效果。
 
-## <a name="suggested-minimum-number-of-extracted-and-aligned-sentences"></a>擷取與對齊句子的最小數目建議
+## <a name="suggested-minimum-number-of-sentences"></a>建議的最小句子數目
 
-為了讓訓練能成功，下表將說明每個資料集裡最少需要多少個擷取句子和對齊句子。 擷取句子的最小數目建議會遠多於對齊句子的最小數目建議，這是考慮到句子對齊功能可能無法成功對齊所有擷取的句子。
+為了讓定型成功，下表顯示每種檔案類型中所需的最小句子數目。這項限制是安全的網路，可確保您的平行句子包含足夠的唯一詞彙，以成功訓練翻譯模型。 一般的指導方針是擁有更多的人力轉譯品質的跨領域平行句子，應該會產生高品質的模型。
 
-| 資料集   | 擷取句子的最小數量建議 | 對齊句子的最小數量建議 | 對齊句子的最大數量 |
-|------------|--------------------------------------------|------------------------------------------|--------------------------------|
-| 訓練   | 10,000                                     | 2,000                                    | 沒有上限                 |
-| 調整     | 2,000                                      | 500                                      | 2,500                          |
-| 測試    | 2,000                                      | 500                                      | 2,500                          |
-| 字典 | 0                                          | 0                                        | 沒有上限                 |
+| 文件型別   | 建議的最小句子計數 | 最大句子計數 |
+|------------|--------------------------------------------|--------------------------------|
+| 訓練   | 10,000                                     | 沒有上限                 |
+| 調整     | 500                                      | 2,500       |
+| 測試    | 500                                      | 2,500  |
+| 字典 | 0                                          | 沒有上限                 |
+
+> [!NOTE]
+> - 如果不符合定型的10000最小句子計數，訓練將不會啟動，且將會失敗。 
+> - 微調和測試是選擇性的。 如果您未提供這些值，系統將會移除定型的適當百分比，以用於驗證和測試。 
+> - 您可以只使用字典資料來定型模型。 請參閱[什麼是字典](https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/what-is-dictionary)。
 
 ## <a name="next-steps"></a>後續步驟
 

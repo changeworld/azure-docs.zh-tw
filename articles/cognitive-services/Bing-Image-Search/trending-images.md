@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: scottwhi
 ms.custom: seodec2018
-ms.openlocfilehash: 024e007a34f71256d5cd148720412a0c57bb74ed
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 2936b94d7ba791b1a4e5a9b95aca3ca3ecdb5904
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57342219"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "66383424"
 ---
 # <a name="get-trending-images-from-the-web"></a>從 Web 取得發燒影像
 
@@ -39,7 +39,7 @@ Host: api.cognitive.microsoft.com
 - en-AU (英文，澳洲)  
 - zh-CN (中文，中國)
 
-回應包含 [TrendingImages](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#trendingimages) 物件，該物件會依照類別列出影像。 使用類別的 `title` 在您的使用者體驗中將影像分組。 這些類別可能每天變更。  
+回應包含 [TrendingImages](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#trendingimages) 物件，該物件會依照類別列出影像。 使用類別的 `title` 在您的使用者體驗中將影像分組。 這些類別可能每天變更。  
 
 ```json
 {
@@ -90,7 +90,7 @@ Host: api.cognitive.microsoft.com
 
 每個圖格都包含一個影像，以及用於取得相關影響的選項。 若要取得相關影像，您可以使用查詢 `text`，自行呼叫[影像搜尋 API](./search-the-web.md) 並顯示相關影像。 或者，您可以使用 `webSearchUrl` 中的 URL，將使用者導向 Bing 的影像搜尋結果頁面，其中包含相關的影像。
 
-如果您呼叫影像搜尋 API 以取得相關影像，請將 [id](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#id) 查詢參數設定為 `id` 欄位中的識別碼。 指定識別碼可確保回應包含影像 (這是回應中的第一個影像) 及其相關的影像。 此外，將 [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference) 查詢參數設定為 `query` 物件的`text` 欄位中的文字。
+如果您呼叫影像搜尋 API 以取得相關影像，請將 [id](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#id) 查詢參數設定為 `id` 欄位中的識別碼。 指定識別碼可確保回應包含影像 (這是回應中的第一個影像) 及其相關的影像。 此外，將 [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference) 查詢參數設定為 `query` 物件的`text` 欄位中的文字。
 
 下列範例示範如何使用影像識別碼來取得上述發燒影像 API 回應中的 Mr. Smith 相關影像。
 

@@ -1,26 +1,28 @@
 ---
-title: Azure Data Factory 中的 Wait 活動 | Microsoft Docs
+title: Azure Data Factory 中的 Wait 活動
 description: Wait (等待) 活動會讓管線執行暫停一段指定的時間。
 services: data-factory
 documentationcenter: ''
-author: shlo
-manager: craigg
+author: djpmsft
+ms.author: daperlov
+manager: jroth
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/12/2018
-ms.author: shlo
-ms.openlocfilehash: 66d79bc1597cd8f3c7e01eb8227eb7c91ba04d1d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e6158938d01b6e5da74ed046d2a74e0dfd827f47
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60764746"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "81417907"
 ---
-# <a name="execute-wait-activity-in-azure-data-factory"></a>Azure Data Factory 中執行 wait 活動
+# <a name="execute-wait-activity-in-azure-data-factory"></a>執行 Azure Data Factory 中的 wait 活動
 在管線中使用 Wait (等待) 活動時，管線便會等待一段指定的時間，然後再繼續執行後續的活動。 
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 
 ## <a name="syntax"></a>語法
 
@@ -37,11 +39,11 @@ ms.locfileid: "60764746"
 
 ## <a name="type-properties"></a>類型屬性
 
-屬性 | 描述 | 允許的值 | 必要項
+屬性 | 描述 | 允許的值 | 必要
 -------- | ----------- | -------------- | --------
-name | `Wait` 活動的名稱。 | 字串 | 是
-type | 必須設為 **Wait**。 | 字串 | 是
-waitTimeInSeconds | 管線繼續進行處理之前所等待的秒數。 | 整數  | 是
+NAME | `Wait` 活動的名稱。 | String | 是
+type | 必須設為 **Wait**。 | String | 是
+waitTimeInSeconds | 管線繼續進行處理之前所等待的秒數。 | 整數 | 是
 
 ## <a name="example"></a>範例
 
@@ -49,7 +51,7 @@ waitTimeInSeconds | 管線繼續進行處理之前所等待的秒數。 | 整數
 > 本節提供 JSON 定義和 PowerShell 命令範例，以供執行管線。 針對使用 Azure PowerShell 和 JSON 定義來建立 Data Factory 管線，如需包含逐步指示的逐步解說，請參閱[教學課程：使用 Azure PowerShell 來建立資料處理站](quickstart-create-data-factory-powershell.md)。
 
 ### <a name="pipeline-with-wait-activity"></a>具有 Wait 活動的管線
-在此範例中，管理有兩個活動：**Until** 和 **Wait**。 Wait (等待) 活動設定為等待一秒鐘。 管線是在迴圈中執行 Wait (等待) 活動，每次執行之間會等待一秒鐘。 
+在此範例中，管線有兩個活動：**Until** 與 **Wait**。 Wait (等待) 活動設定為等待一秒鐘。 管線是在迴圈中執行 Wait (等待) 活動，每次執行之間會等待一秒鐘。 
 
 ```json
 {
@@ -102,8 +104,8 @@ waitTimeInSeconds | 管線繼續進行處理之前所等待的秒數。 | 整數
 ## <a name="next-steps"></a>後續步驟
 請參閱 Data Factory 支援的其他控制流程活動： 
 
-- [If Condition 活動](control-flow-if-condition-activity.md)
-- [執行管道活動](control-flow-execute-pipeline-activity.md)
+- [If 條件活動](control-flow-if-condition-activity.md)
+- [執行管線活動](control-flow-execute-pipeline-activity.md)
 - [For Each 活動](control-flow-for-each-activity.md)
 - [取得中繼資料活動](control-flow-get-metadata-activity.md)
 - [查閱活動](control-flow-lookup-activity.md)

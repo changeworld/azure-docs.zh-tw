@@ -1,26 +1,25 @@
 ---
-title: 在 Azure 中的 Red Hat Enterprise Linux 上設定 Pacemaker | Microsoft Docs
+title: 在 Azure 中的 RHEL 上設定 Pacemaker | Microsoft Docs
 description: 在 Azure 中的 Red Hat Enterprise Linux 上設定 Pacemaker
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
-author: mssedusch
-manager: timlt
+author: rdeltcheva
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-windows
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/17/2018
-ms.author: sedusch
-ms.openlocfilehash: b844c93a1f3e83d682b51db6f9854f11b24d82e7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 06/24/2020
+ms.author: radeltch
+ms.openlocfilehash: 999ab77538a145189e0576c920216fa55d8508f6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61127107"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85366812"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>在 Azure 中的 Red Hat Enterprise Linux 上設定 Pacemaker
 
@@ -37,14 +36,12 @@ ms.locfileid: "61127107"
 [2243692]:https://launchpad.support.sap.com/#/notes/2243692
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
 
-[virtual-machines-linux-maintenance]:../../linux/maintenance-and-updates.md#maintenance-not-requiring-a-reboot
+[virtual-machines-linux-maintenance]:../../maintenance-and-updates.md#maintenance-that-doesnt-require-a-reboot
 
-> [!NOTE]
-> Red Hat Enterprise Linux 上的 Pacemaker 會使用 Azure Fence 代理程式隔離叢集節點 (如有必要)。 如果資源停止容錯或叢集節點無法再彼此進行通訊，則容錯移轉需要 15 分鐘。 如需詳細資訊，請閱讀[以 RHEL 高可用性叢集成員身分執行的 Azure VM 需要相當長時間完成隔離，或者 VM 關機前隔離失敗/逾時](https://access.redhat.com/solutions/3408711)
 
 請先閱讀下列 SAP Note 和文件：
 
-* SAP 说明 [1928533]，其中包含：
+* SAP Note [1928533]，其中包含：
   * SAP 軟體部署支援的 Azure VM 大小清單。
   * Azure VM 大小的重要容量資訊。
   * 支援的 SAP 軟體，以及作業系統 (OS) 與資料庫組合。
@@ -52,7 +49,7 @@ ms.locfileid: "61127107"
 * SAP Note [2015553] 列出 Azure 中 SAP 支援的 SAP 軟體部署先決條件。
 * SAP Note [2002167] 建議適用於 Red Hat Enterprise Linux 的作業系統設定
 * SAP Note [2009879] 提供適用於 Red Hat Enterprise Linux 的 SAP HANA 方針
-* SAP 说明 [2178632] 包含为 Azure 中的 SAP 报告的所有监控指标的详细信息。
+* SAP Note [2178632] 包含在 Azure 中針對 SAP 回報的所有監視計量詳細資訊。
 * SAP Note [2191498] 包含 Azure 中 Linux 所需的 SAP Host Agent 版本。
 * SAP Note [2243692] 包含 Azure 中 Linux 上的 SAP 授權相關資訊。
 * SAP Note [1999351] 包含 Azure Enhanced Monitoring Extension for SAP 的其他疑難排解資訊。
@@ -65,15 +62,21 @@ ms.locfileid: "61127107"
   * [高可用性附加元件概觀](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)
   * [高可用性附加元件管理](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)
   * [高可用性附加元件參考](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
+  * [RHEL 高可用性叢集的支援原則 - sbd 和 fence_sbd](https://access.redhat.com/articles/2800691)
 * Azure 專用 RHEL 文件：
   * [RHEL 高可用性叢集的支援原則：以 Microsoft Azure 虛擬機器作為叢集成員](https://access.redhat.com/articles/3131341)
   * [在 Microsoft Azure 上安裝和設定 Red Hat Enterprise Linux 7.4 (和更新版本) 高可用性叢集](https://access.redhat.com/articles/3252491)
+  * [在 RHEL 7.6 上的 Pacemaker 中使用 Standalone Enqueue Server 2 (ENSA2) 設定 SAP S/4HANA ASCS/ERS](https://access.redhat.com/articles/3974941)
 
 ## <a name="cluster-installation"></a>叢集安裝
 
 ![RHEL 的 Pacemaker 概觀](./media/high-availability-guide-rhel-pacemaker/pacemaker-rhel.png)
 
-下列項目會加上下列其中一個前置詞：**[A]** - 適用於所有節點、**[1]** - 僅適用於節點 1 或 **[2]** - 僅適用於節點 2。
+> [!NOTE]
+> Red Hat 不支援軟體模擬的看門狗。 Red Hat 不支援雲端平台上的 SBD。 如需詳細資訊，請參閱 [RHEL 高可用性叢集的支援原則 - sbd 和 fence_sbd](https://access.redhat.com/articles/2800691)。
+> 在 Azure 上針對 Pacemaker Red Hat Enterprise Linux 叢集唯一支援的隔離機制是 Azure 柵欄代理程式。  
+
+下列項目會加上下列其中一個前置詞： **[A]** - 適用於所有節點、 **[1]** - 僅適用於節點 1 或 **[2]** - 僅適用於節點 2。
 
 1. **[A]** 註冊
 
@@ -85,7 +88,7 @@ ms.locfileid: "61127107"
    sudo subscription-manager attach --pool=&lt;pool id&gt;
    </code></pre>
 
-   請注意，藉由附加至 Azure Marketplace PAYG RHEL 映像的集區，您將會是有效的雙精度浮點數計費 RHEL 使用量： 一次 PAYG 映像，一次您將連接集區中的 RHEL 權限。 若要緩解這個情況，Azure 現在提供 BYOS RHEL 映像。 如需詳細資訊[此處](https://aka.ms/rhel-byos)。
+   請注意，藉由將集區附加至 Azure Marketplace PAYG RHEL 映像，您將能有效地以 RHEL 使用量重複計費：一次針對 PAYG 映像，另一次針對您所附加集區中的 RHEL 權利。 為了減輕此問題，Azure 現在提供 BYOS RHEL 映像。 更多資訊可以在[這裡](../redhat/byos.md)取得。
 
 1. **[A]** 啟用 RHEL for SAP 存放庫
 
@@ -94,13 +97,30 @@ ms.locfileid: "61127107"
    <pre><code>sudo subscription-manager repos --disable "*"
    sudo subscription-manager repos --enable=rhel-7-server-rpms
    sudo subscription-manager repos --enable=rhel-ha-for-rhel-7-server-rpms
-   sudo subscription-manager repos --enable="rhel-sap-for-rhel-7-server-rpms"
+   sudo subscription-manager repos --enable=rhel-sap-for-rhel-7-server-rpms
+   sudo subscription-manager repos --enable=rhel-ha-for-rhel-7-server-eus-rpms
    </code></pre>
 
 1. **[A]** 安裝 RHEL 高可用性附加元件
 
    <pre><code>sudo yum install -y pcs pacemaker fence-agents-azure-arm nmap-ncat
    </code></pre>
+
+   > [!IMPORTANT]
+   > 我們建議使用下列 Azure 柵欄代理程式版本 (或更新版本)，在資源停止失敗或叢集節點無法再彼此通訊時，讓客戶從更快速的容錯移轉時間受益：  
+   > RHEL 7.6.：fence-agents-4.2.1-11.el7_6.8  
+   > RHEL 7.5：fence-agents-4.0.11-86.el7_5.8  
+   > RHEL 7.4：fence-agents-4.0.11-66.el7_4.12  
+   > 如需詳細資訊，請參閱[以 RHEL 高可用性叢集成員身分執行的 Azure VM 需要相當長時間完成隔離，或者 VM 關機前隔離失敗/逾時](https://access.redhat.com/solutions/3408711)。
+
+   檢查 Azure 柵欄代理程式的版本。 如有必要，請將其更新為等於或晚於上述的版本。
+
+   <pre><code># Check the version of the Azure Fence Agent
+    sudo yum info fence-agents-azure-arm
+   </code></pre>
+
+   > [!IMPORTANT]
+   > 如果您需要更新 Azure 柵欄代理程式，而且如果使用自訂角色，請務必更新自訂角色，以包含**關閉**動作。 如需詳細資訊，請參閱[為柵欄代理程式建立自訂角色](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker#1-create-a-custom-role-for-the-fence-agent)。  
 
 1. **[A]** 設定主機名稱解析
 
@@ -176,44 +196,56 @@ ms.locfileid: "61127107"
    <pre><code>sudo pcs quorum expected-votes 2
    </code></pre>
 
+1. **[1]** 允許並行的防護動作
+
+   <pre><code>sudo pcs property set concurrent-fencing=true
+   </code></pre>
+
 ## <a name="create-stonith-device"></a>建立 STONITH 裝置
 
 STONITH 裝置會使用服務主體來對 Microsoft Azure 授權。 請遵循下列步驟來建立服務主體。
 
 1. 移至 <https://portal.azure.com>。
-1. 開啟 [Azure Active Directory] 刀鋒視窗移至內容並記下目錄識別碼。 這是「租用戶識別碼」。
+1. 開啟 [Azure Active Directory] 刀鋒視窗  
+   移至 [屬性]，並記下目錄識別碼。 這是「租用戶識別碼」。
 1. 按一下 [應用程式註冊]
-1. 按一下 [新增]
-1. 輸入名稱、 選取應用程式類型 [Web 應用程式/API]、 輸入登入 URL (例如 http:\//localhost)，然後按一下建立
-1. 登入 URL 並未使用，而且可以是任何有效的 URL
-1. 選取新的應用程式，然後按一下 [設定] 索引標籤中的金鑰
-1. 輸入新金鑰的說明、選取 [永不過期]，然後按一下 [儲存]
+1. 按一下新增註冊
+1. 輸入名稱，選取 [僅限此組織目錄中的帳戶] 
+2. 選取應用程式類型 [Web]，輸入登入 URL (例如，http:\//localhost)，然後按一下 [新增]  
+   登入 URL 並未使用，而且可以是任何有效的 URL
+1. 選取 [憑證和祕密]，然後按一下 [新增用戶端秘密]
+1. 輸入新金鑰的說明、選取 [永不過期]，然後按一下 [新增]
 1. 記下值。 此值會用來做為服務主體的**密碼**
-1. 記下應用程式識別碼。 此識別碼會用來做為服務主體的使用者名稱 (以下步驟中的「登入識別碼」)
+1. 選取 [概觀]。 記下應用程式識別碼。 此識別碼會用來做為服務主體的使用者名稱 (以下步驟中的「登入識別碼」)
 
 ### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]** 為柵欄代理程式建立自訂角色
 
-服務主體預設沒有存取您 Azure 資源的權限。 您需要為服務主體提供權限來啟動和停止 (解除配置) 叢集的所有虛擬機器。 如果您尚未建立自訂角色，您可以使用 [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell) 或 [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) 來建立
+服務主體預設沒有存取您 Azure 資源的權限。 您需要為服務主體提供權限來啟動和停止 (關閉) 叢集的所有虛擬機器。 如果您尚未建立自訂角色，您可以使用 [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell) 或 [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) 來建立
 
 針對輸入檔使用下列內容。 您必須調整訂用帳戶的內容，也就是使用您訂用帳戶的識別碼取代 c276fc76-9cd4-44c9-99a7-4fd71546436e 和 e91d47c4-76f3-4271-a796-21b4ecfe3624。 如果您只有一個訂用帳戶，請在 AssignableScopes 中移除第二個項目。
 
 ```json
 {
-  "Name": "Linux Fence Agent Role",
-  "Id": null,
-  "IsCustom": true,
-  "Description": "Allows to deallocate and start virtual machines",
-  "Actions": [
-    "Microsoft.Compute/*/read",
-    "Microsoft.Compute/virtualMachines/deallocate/action",
-    "Microsoft.Compute/virtualMachines/start/action"
-  ],
-  "NotActions": [
-  ],
-  "AssignableScopes": [
-    "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e",
-    "/subscriptions/e91d47c4-76f3-4271-a796-21b4ecfe3624"
-  ]
+    "properties": {
+        "roleName": "Linux Fence Agent Role",
+        "description": "Allows to power-off and start virtual machines",
+        "assignableScopes": [
+            "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e",
+            "/subscriptions/e91d47c4-76f3-4271-a796-21b4ecfe3624"
+        ],
+        "permissions": [
+            {
+                "actions": [
+                    "Microsoft.Compute/*/read",
+                    "Microsoft.Compute/virtualMachines/powerOff/action",
+                    "Microsoft.Compute/virtualMachines/start/action"
+                ],
+                "notActions": [],
+                "dataActions": [],
+                "notDataActions": []
+            }
+        ]
+    }
 }
 ```
 
@@ -221,7 +253,7 @@ STONITH 裝置會使用服務主體來對 Microsoft Azure 授權。 請遵循下
 
 將在上一章中建立的自訂角色「Linux 柵欄代理程式角色」指派給服務主體。 不要再使用「擁有者」角色！
 
-1. 移至 https://portal.azure.com。
+1. 移至 https://portal.azure.com 。
 1. 開啟 [所有資源] 刀鋒視窗
 1. 選取第一個叢集節點的虛擬機器
 1. 選取 [存取控制 (IAM)]
@@ -245,16 +277,25 @@ sudo pcs property set stonith-timeout=900
 > [!NOTE]
 > 如果 RHEL 主機名稱和 Azure 節點名稱不相同，則命令中只需要選項「pcmk_host_map」。 請參閱命令中的粗體區段。
 
-<pre><code>sudo pcs stonith create rsc_st_azure fence_azure_arm login="<b>login ID</b>" passwd="<b>password</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" subscriptionId="<b>subscription id</b>" <b>pcmk_host_map="prod-cl1-0:10.0.0.6;prod-cl1-1:10.0.0.7"</b> power_timeout=240 pcmk_reboot_timeout=900</code></pre>
+<pre><code>sudo pcs stonith create rsc_st_azure fence_azure_arm login="<b>login ID</b>" passwd="<b>password</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" subscriptionId="<b>subscription id</b>" <b>pcmk_host_map="prod-cl1-0:10.0.0.6;prod-cl1-1:10.0.0.7"</b> \
+power_timeout=240 pcmk_reboot_timeout=900 pcmk_monitor_timeout=120 pcmk_monitor_retries=4 pcmk_action_limit=3 \
+op monitor interval=3600
+</code></pre>
+
+> [!IMPORTANT]
+> 監視和隔離作業會解除序列化。 因此，如果有較長的執行中監視作業和同時隔離的事件，叢集容錯移轉就不會延遲，因為已經在執行監視作業。  
 
 ### <a name="1-enable-the-use-of-a-stonith-device"></a>**[1]** 啟用 STONITH 裝置的使用
 
 <pre><code>sudo pcs property set stonith-enabled=true
 </code></pre>
 
+> [!TIP]
+>Azure 柵欄代理程式需要[使用標準 ILB 的 VM 公用端點連線](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)中記載的公用端點輸出連線能力，以及可能的解決方案。  
+
 ## <a name="next-steps"></a>後續步驟
 
 * [適用於 SAP 的 Azure 虛擬機器規劃和實作][planning-guide]
 * [適用於 SAP 的 Azure 虛擬機器部署][deployment-guide]
 * [適用於 SAP 的 Azure 虛擬機器 DBMS 部署][dbms-guide]
-* 若要了解如何建立高可用性並為 Azure VM 上的 SAP HANA 規劃災害復原，請參閱 [Azure 虛擬機器 (VM) 上 SAP HANA 的高可用性][sap-hana-ha]
+* 若要了解如何建立高可用性，並為 Azure VM 上的 SAP HANA 規劃災害復原，請參閱 [Azure 虛擬機器 (VM) 上 SAP HANA 的高可用性][sap-hana-ha]

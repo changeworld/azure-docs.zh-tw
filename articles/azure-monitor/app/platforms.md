@@ -1,88 +1,52 @@
 ---
-title: Application Insights：程式語言、平台和整合 | Microsoft Docs
-description: 適用於 Application Insights 的程式語言、平台和整合
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 974db106-54ff-4318-9f8b-f7b3a869e536
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: Application Insights：語言、平臺和整合 |Microsoft Docs
+description: 適用于 Application Insights 的語言、平臺和整合
 ms.topic: conceptual
-ms.date: 09/01/2016
+ms.date: 07/18/2019
 ms.reviewer: olegan
-ms.author: mbullwin
-ms.openlocfilehash: 5a7fbeafe74926c7d89ac76dc2964756b3582d61
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 153d4ad3d95c182dcc4f2aa3bad857d7e1984cc2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60254505"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82891119"
 ---
-# <a name="developer-analytics-languages-platforms-and-integrations"></a>開發人員分析：程式語言、平台和整合
-這些項目是我們曾聽過的 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 實作，包括一些協力廠商提供的實作。
+# <a name="supported-languages"></a>支援的語言
 
-## <a name="languages---officially-supported-by-application-insights-team"></a>程式語言 - Application Insights 團隊正式支援
 * [C#|VB (.NET)](../../azure-monitor/app/asp-net.md)
 * [Java](../../azure-monitor/app/java-get-started.md)
-* [JavaScript web pages](../../azure-monitor/app/javascript.md)
+* [JavaScript](../../azure-monitor/app/javascript.md)
 * [Node.JS](../../azure-monitor/app/nodejs.md)
+* [Python](../../azure-monitor/app/opencensus-python.md)
 
-## <a name="languages---community-supported"></a>程式語言 - 社群支援
-* [F#](https://safe-stack.github.io/docs/template-azure-ai/)
-* [PHP](https://github.com/Microsoft/ApplicationInsights-PHP)
-* [Python](https://pypi.python.org/pypi/applicationinsights/0.1.0)
-* [Ruby](https://rubygems.org/gems/application_insights)
-* [任何其他項目](#projects)
+## <a name="supported-platforms-and-frameworks"></a>支援的平台和架構
 
-## <a name="platforms-and-frameworks"></a>平台和架構
-* [ASP.NET](../../azure-monitor/app/asp-net.md)
+### <a name="instrumentation-for-already-deployed-applications-codeless-agent-based"></a>已部署之應用程式的檢測（無程式碼，以代理程式為基礎）
+* [Azure VM 和 Azure 虛擬機器擴展集](../../azure-monitor/app/azure-vm-vmss-apps.md)
+* [Azure App Service](../../azure-monitor/app/azure-web-apps.md)
 * [ASP.NET - 適用於即時應用程式](../../azure-monitor/app/monitor-performance-live-website-now.md)
+* [Azure 雲端服務](../../azure-monitor/app/cloudservices.md)，包括 web 和背景工作角色
+* [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-monitoring)
+### <a name="instrumentation-through-code-sdks"></a>透過程式碼進行檢測（Sdk）
+* [ASP.NET](../../azure-monitor/app/asp-net.md)
 * [ASP.NET Core](../../azure-monitor/app/asp-net-core.md)
 * [Android](../../azure-monitor/learn/mobile-center-quickstart.md) (App Center)
-* [Android](https://github.com/Microsoft/ApplicationInsights-Android) (App Center)
-* [Angular](https://github.com/MarkPieszak/angular-application-insights)
-* [Azure App Service](../../azure-monitor/app/azure-web-apps.md)
-* [Azure 雲端服務](../../azure-monitor/app/cloudservices.md)&#151;同時包含 Web 與背景工作角色
-* [Azure Functions](https://github.com/christopheranderson/azure-functions-app-insights-sample)
-* [Docker](../../azure-monitor/app/docker.md)
-* [Glimpse](https://azure.microsoft.com/blog/glimpse-application-insights/)
 * [iOS](../../azure-monitor/learn/mobile-center-quickstart.md) (App Center)
-* [Ionic](https://github.com/SoftwarePioniere/ionic-application-insights)
-* [iOS](https://github.com/Microsoft/ApplicationInsights-iOS) (App Center)
 * [Java EE](../../azure-monitor/app/java-get-started.md)
 * [Node.JS](https://www.npmjs.com/package/applicationinsights)
-* [OSX](https://github.com/Microsoft/ApplicationInsights-OSX)
-* [SAFE 堆疊](https://safe-stack.github.io/docs/template-azure-ai/)
-* [Spring](https://joe.blog.freemansoft.com/2015/12/enabling-microsoft-application-insight.html)
+* [Python](../../azure-monitor/app/opencensus-python.md)
 * [通用 Windows app](../../azure-monitor/learn/mobile-center-quickstart.md) (App Center)
-* [WCF](https://github.com/Microsoft/ApplicationInsights-SDK-Labs/blob/master/WCF/readme.md)
 * [Windows 桌面應用程式、服務和背景工作角色](../../azure-monitor/app/windows-desktop.md)
-* [任何其他項目](#projects)
 
 ## <a name="logging-frameworks"></a>記錄架構
+* [ILogger](https://docs.microsoft.com/azure/azure-monitor/app/ilogger)
 * [Log4Net、NLog 或 System.Diagnostics.Trace](../../azure-monitor/app/asp-net-trace-logs.md)
 * [Java、Log4J 或 Logback](../../azure-monitor/app/java-trace-logs.md)
-* [語意記錄 (SLAB)](https://github.com/fidmor89/SLAB_AppInsights) - 與[語意記錄應用程式區塊](https://msdn.microsoft.com/library/dn440729.aspx)整合
-* [雲端式負載測試](https://blogs.msdn.com/b/visualstudioalm/archive/2015/07/30/getting-application-insights-counters-with-cloud-based-load-testing.aspx)
 * [LogStash 外掛程式](https://github.com/Azure/azure-diagnostics-tools/tree/master/Logstash/logstash-output-applicationinsights)
-* [Logary](https://www.nuget.org/packages/Logary.Targets.AppInsights/)
-* [Logrus](https://github.com/jjcollinge/logrus-appinsights)
 * [Azure 監視器](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/)
 
-## <a name="content-management-systems"></a>內容管理系統
-* [Concrete](https://github.com/fidmor89/appInsights-Concrete)
-* [Drupal](https://github.com/fidmor89/AppInsights-Drupal)
-* [Joomla](https://github.com/fidmor89/AppInsights-Joomla)
-* [Orchard](https://azure.microsoft.com/blog/integrating-application-insights-into-a-modular-cms-and-a-multi-tenant-public-saas/preview/)
-* [SharePoint](../../azure-monitor/app/sharepoint.md)
-* [WordPress](https://wordpress.org/plugins/application-insights/)
-
 ## <a name="export-and-data-analysis"></a>匯出和資料分析
-* [Alooma](https://www.alooma.com/blog/application-insights-amazon-redshift)
-* [Power BI](https://blogs.msdn.com/b/powerbi/archive/2015/11/04/explore-your-application-insights-data-with-power-bi.aspx)
-* [串流分析](../../azure-monitor/app/export-power-bi.md )
+* [Power BI](https://powerbi.microsoft.com/blog/explore-your-application-insights-data-with-power-bi/)
+* [串流分析](../../azure-monitor/app/export-power-bi.md)
 
-## <a name="projects"></a> 建置您自己的 SDK
-如果還沒有適合您程式語言或平台使用的 SDK，您會想要建置一個嗎？ 查看 [GitHub 上之 Application Insights SDK 專案](https://github.com/Microsoft/AppInsights-Home)中列出的現有 SDK 程式碼。
+## <a name="unsupported-sdks"></a>不支援的 SDK
+我們知道有數個其他支援社區的 Sdk 存在。 不過，Azure 監視器只會在使用此頁面上所列的支援 Sdk 時提供支援。 我們會持續評估機會以擴充我們對其他語言的支援，因此請遵循我們的[GitHub 公告](https://github.com/microsoft/ApplicationInsights-Announcements/issues)頁面來接收最新的 SDK 新聞。 

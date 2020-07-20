@@ -1,24 +1,22 @@
 ---
-title: 針對在 Azure 虛擬機器上使用 SLES 12 SP3 設定 SAP HANA 2.0 scale-out HSR-Pacemaker 進行疑難排解 | Microsoft Docs
+title: SAP Hana 向外延展 HSR-Pacemaker 與 Azure Vm 上的 SLES 疑難排解 |Microsoft Docs
 description: 在 Azure 虛擬機器執行的 SLES 12 SP3 上，針對根據 SAP HANA System Replication (HSR) 和 Pacemaker 的複雜 SAP HANA scale-out 高可用性設定進行檢查和疑難排解的指南
 services: virtual-machines-linux
 documentationcenter: ''
-author: hermannd
-manager: jeconnoc
+author: hermanndms
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/24/2018
 ms.author: hermannd
-ms.openlocfilehash: 4483a7f53e084be5f245840829f4c9c95648b1af
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: e93b3412785817050ac53030be9ff2172a678c06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60477047"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77617130"
 ---
 # <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>在 SLES 12 SP3 上驗證 SAP HANA scale-out 高可用性設定並為其進行疑難排解 
 
@@ -120,7 +118,7 @@ inet addr:10.0.2.42  Bcast:10.0.2.255  Mask:255.255.255.0
 select * from "SYS"."M_SYSTEM_OVERVIEW"
 </code></pre>
 
-例如，若要尋找正確的連接埠號碼，您可以查看 HANA Studio 的 [設定] 或透過 SQL 陳述式：
+若要尋找正確的埠號碼，您可以在 HANA Studio 中的 [設定]**或透過**SQL 語句來尋找：
 
 <pre><code>
 select * from M_INIFILE_CONTENTS WHERE KEY LIKE 'listen%'
@@ -203,7 +201,7 @@ totem {
 }
 </code></pre>
 
-第二個區段 **logging** 未變更指定的預設值：
+第二個區段（**記錄**）未從指定的預設值變更：
 
 <pre><code>
 logging {
@@ -256,7 +254,7 @@ nodelist {
 }
 </code></pre>
 
-在最後一個區段 **quorum** 中，務必正確設定 **expected_votes** 的值。 它必須是節點數目 (包含多數製作者節點)。 而且 **two_node** 的值必須是 **0**。 請不要整個移除項目。 只需要將值設定為 **0**。
+在最後一節**仲裁**中，請務必正確地設定**expected_votes**的值。 它必須是節點數目 (包含多數製作者節點)。 而且 **two_node** 的值必須是 **0**。 請不要整個移除項目。 只需要將值設定為 **0**。
 
 <pre><code>
 quorum {
@@ -452,15 +450,15 @@ node.startup = automatic
 在重新啟動 VM 後的測試和驗證期間，某些情況下將無法再看到 SBD 裝置。 啟動設定與 yast2 所顯示的內容有所差異。 若要檢查設定，請採取下列步驟：
 
 1. 啟動 YaST2。
-2. 選取左側的 [網路服務]。
-3. 在右側，向下捲動至 [iSCSI 啟動器] 並將其選取。
-4. 在下一個畫面的 [服務] 索引標籤下方，您會看到節點的唯一啟動器名稱。
-5. 在啟動器名稱上方，確定 [啟動服務] 值設定為 [開機時]。
-6. 如果尚未設定，則請將其設定為 [開機時]，而不是 [手動]。
-7. 接下來，將最上層索引標籤切換至 [連線的目標]。
-8. 在 [連線的目標] 畫面上，您應該會看到 SBD 裝置的項目，例如此範例：**10.0.0.19:3260 iqn.2006-04.dbhso.local:dbhso**。
-9. 檢查 [啟動] 值是否設定為 **on boot**。
-10. 若不是，請選擇 [編輯] 予以變更。
+2. 選取左側的 [網路服務]****。
+3. 在右側，向下捲動至 [iSCSI 啟動器]**** 並將其選取。
+4. 在下一個畫面的 [服務]**** 索引標籤下方，您會看到節點的唯一啟動器名稱。
+5. 在啟動器名稱上方，確定 [啟動服務]**** 值設定為 [開機時]****。
+6. 如果尚未設定，則請將其設定為 [開機時]****，而不是 [手動]****。
+7. 接下來，將最上層索引標籤切換至 [連線的目標]****。
+8. 在 [**連接的目標**] 畫面上，您應該會看到 SBD 裝置的專案，如下列範例所示： **10.0.0.19： 3260 iqn. 2006-04. dbhso. local： dbhso**。
+9. 檢查 [啟動]**** 值是否設定為 **on boot**。
+10. 若不是，請選擇 [編輯]**** 予以變更。
 11. 儲存變更並結束 YaST2。
 
 
@@ -473,7 +471,7 @@ node.startup = automatic
 systemctl status pacemaker
 </code></pre>
 
-輸出的頂端看起來應如下列範例所示。 [使用中] 後的狀態必須顯示為 [loaded] \(已載入\) 和 [active (running)] \(使用中 (執行)\)。 [已載入] 後的狀態必須顯示為 [已啟用]。
+輸出的頂端看起來應如下列範例所示。 [使用中]**** 後的狀態必須顯示為 [loaded] \(已載入\)**** 和 [active (running)] \(使用中 (執行)\)****。 [已載入]**** 後的狀態必須顯示為 [已啟用]****。
 
 <pre><code>
   pacemaker.service - Pacemaker High Availability Cluster Manager
@@ -493,7 +491,7 @@ systemctl status pacemaker
            └─4504 /usr/lib/pacemaker/crmd
 </code></pre>
 
-如果設定仍然為 [已停用]，則請執行下列命令：
+如果設定仍然為 [已停用]****，則請執行下列命令：
 
 <pre><code>
 systemctl enable pacemaker
@@ -505,7 +503,7 @@ systemctl enable pacemaker
 crm status
 </code></pre>
 
-輸出看起來應如下列範例所示。 多數製作者 VM (**hso-hana-dm**) 上的 **cln** 和 **msl** 資源顯示為已停止是正常的。 多數製作者節點上並未安裝 SAP HANA。 因此，**cln** 和 **msl** 資源會顯示為已停止。 其必須顯示正確的 VM 總數 (**7**)。 所有屬於叢集一部分的 VM，都必須以 [連線] 狀態列出。 目前主要的主要節點必須正確辨識。 在此範例中為 **hso-hana-vm-s1-0**：
+輸出看起來應如下列範例所示。 多數製作者 VM (**hso-hana-dm**) 上的 **cln** 和 **msl** 資源顯示為已停止是正常的。 多數製作者節點上並未安裝 SAP HANA。 因此，**cln** 和 **msl** 資源會顯示為已停止。 請務必顯示正確的 Vm 總數（ **7**）。 所有屬於叢集一部分的 VM，都必須以 [連線]**** 狀態列出。 目前主要的主要節點必須正確辨識。 在此範例中為 **hso-hana-vm-s1-0**：
 
 <pre><code>
 Stack: corosync
@@ -539,7 +537,7 @@ Pacemaker 的重要功能是維護模式。 在此模式中，您可以在不誘
 crm configure property maintenance-mode=true
 </code></pre>
 
-檢查 **crm status** 時，您會在輸出中注意到所有資源都標示為 [非受控]。 在此狀態中，叢集不會反應任何變更，例如啟動或停止 SAP HANA。
+檢查 **crm status** 時，您會在輸出中注意到所有資源都標示為 [非受控]****。 在此狀態中，叢集不會反應任何變更，例如啟動或停止 SAP HANA。
 下列範例顯示叢集處於維護模式時的 **crm status** 命令輸出：
 
 <pre><code>
@@ -601,7 +599,7 @@ crm configure show
 
 
 
-叢集資源失敗之後，**crm status** 命令會顯示 [失敗的動作] 清單。 請參閱下列輸入範例：
+叢集資源失敗之後，**crm status** 命令會顯示 [失敗的動作]**** 清單。 請參閱下列輸入範例：
 
 
 <pre><code>
@@ -657,7 +655,7 @@ Waiting for 7 replies from the CRMd....... OK
 
 ## <a name="failover-or-takeover"></a>容錯移轉或接管
 
-如[重要事項](#important-notes)中所述，您不應該使用標準正常關機來測試叢集容錯移轉或 SAP HANA HSR 接管。 反之，建議您觸發核心異常、強制資源移轉或關閉 VM 之 OS 層級上的所有網路。 另一種方法為 **crm \<node\> standby** 命令。 請參閱 [SUSE 文件][sles-12-ha-paper]。 
+如[重要事項](#important-notes)中所述，您不應該使用標準正常關機來測試叢集容錯移轉或 SAP HANA HSR 接管。 反之，建議您觸發核心異常、強制資源移轉或關閉 VM 之 OS 層級上的所有網路。 另一個方法是**crm \<node\> 待命**命令。 請參閱 [SUSE 文件][sles-12-ha-paper]。 
 
 下列三個範例命令可強制叢集容錯移轉：
 
@@ -681,15 +679,15 @@ watch SAPHanaSR-showAttr
 
 此外，查看來自 SAP Python 指令碼的 SAP HANA 橫向狀態也有幫助。 叢集設定會尋找此狀態值。 考慮背景工作節點失敗，就會十分清楚。 如果背景工作節點關閉，則 SAP HANA 不會立即傳回整個向外延展系統的健康狀態錯誤。 
 
-需要重試數次，避免不必要的容錯移轉。 只有在狀態從 [正常] (傳回值 **4**) 變更為 [錯誤] (傳回值 **1**) 時，叢集才會做出反應。 因此，如果 **SAPHanaSR-showAttr** 的輸出顯示狀態為**離線**的 VM，即為正確。 但目前並沒有活動可切換主要和次要。 只要 SAP HANA 未傳回錯誤，就不會觸發任何叢集活動。
+需要重試數次，避免不必要的容錯移轉。 只有在狀態從 [正常]**** (傳回值 **4**) 變更為 [錯誤]**** (傳回值 **1**) 時，叢集才會做出反應。 因此，如果 **SAPHanaSR-showAttr** 的輸出顯示狀態為**離線**的 VM，即為正確。 但目前並沒有活動可切換主要和次要。 只要 SAP HANA 未傳回錯誤，就不會觸發任何叢集活動。
 
-您可以呼叫如下 SAP Python 指令碼，以使用者 **\<HANA SID\>adm** 身分監視 SAP HANA 橫向健康狀態。 您可能必須調整路徑：
+您可以藉由呼叫 SAP Python 腳本，以監視 SAP Hana 橫向健全狀況狀態作為使用者** \<HANA SID\> adm** ，如下所示。 您可能必須調整路徑：
 
 <pre><code>
 watch python /hana/shared/HSO/exe/linuxx86_64/HDB_2.00.032.00.1533114046_eeaf4723ec52ed3935ae0dc9769c9411ed73fec5/python_support/landscapeHostConfiguration.py
 </code></pre>
 
-此命令的輸出應該與下列範例類似。 [主機狀態] 資料行，以及 [整體主機狀態] 兩者都很重要。 實際的輸出會具有額外資料行，因此會較寬。
+此命令的輸出應該與下列範例類似。 [主機狀態]**** 資料行，以及 [整體主機狀態]**** 兩者都很重要。 實際的輸出會具有額外資料行，因此會較寬。
 為了更容易閱讀本文件內的輸出資料表，已移除右側的大部分資料行：
 
 <pre><code>
@@ -705,7 +703,7 @@ overall host status: ok
 </code></pre>
 
 
-還有另一個命令可檢查目前的叢集活動。 在終止主要站台的主要節點之後，請參閱下列命令和輸出結尾。 您可以看到轉換動作清單，例如將先前的次要主要節點 **hso-hana-vm-s2-0**，**升階**為新主要的主要節點。 如果一切正常，且所有活動都已完成，則此 [轉換摘要] 清單必須為空白。
+還有另一個命令可檢查目前的叢集活動。 在終止主要站台的主要節點之後，請參閱下列命令和輸出結尾。 您可以看到轉換動作清單，例如將先前的次要主要節點 **hso-hana-vm-s2-0**，**升階**為新主要的主要節點。 如果一切正常，且所有活動都已完成，則此 [轉換摘要]**** 清單必須為空白。
 
 <pre><code>
  crm_simulate -Ls
@@ -732,7 +730,7 @@ Transition Summary:
 
 在這部分有兩種不同的情況：
 
-- **目前次要站台上的計劃性維護**。 在此情況下，您只能讓叢集進入維護模式，以及在次要上執行工作，而不影響叢集。
+- **目前次要資料庫上預定進行的維護**。 在此情況下，您只能讓叢集進入維護模式，以及在次要上執行工作，而不影響叢集。
 
 - **目前主要站台上的計劃性維護**。 若要讓使用者可以在維護期間繼續工作，您需要強制容錯移轉。 使用此方式，您必須由 Pacemaker 觸發叢集容錯移轉，而不只是在 SAP HANA HSR 層級上。 Pacemaker 設定會自動觸發 SAP HANA 接管。 您也需要在讓叢集進入維護模式前，先完成容錯移轉。
 
@@ -769,7 +767,7 @@ INFO: Move constraint created for msl_SAPHanaCon_HSO_HDB00
 watch SAPHanaSR-showAttr
 </code></pre>
 
-輸出應該會顯示手動容錯移轉。 先前的此要主要節點會**升階**，在此範例中為 **hso-hana vm-s2-0**。 先前的主要站台已停止，先前主要的主要節點 **hso-hana vm-s1-0** **lss** 值 **1**： 
+輸出應該會顯示手動容錯移轉。 先前的此要主要節點會**升階**，在此範例中為 **hso-hana vm-s2-0**。 先前的主要站台已停止，先前主要的主要節點 **hso-hana vm-s1-0****lss** 值 **1**： 
 
 <pre><code>
 Global cib-time                 prim  sec srHook sync_state
@@ -821,7 +819,7 @@ INFO: Removed migration constraints for msl_SAPHanaCon_HSO_HDB00
 
 
 
-## <a name="hbreport-to-collect-log-files"></a>hb_report 以收集記錄檔
+## <a name="hb_report-to-collect-log-files"></a>hb_report 以收集記錄檔
 
 為了分析 Pacemaker 叢集問題，這十分有用，並且受 SUSE 支援人員要求以執行 **hb_report** 公用程式。 會收集所需的所有重要記錄檔，讓您用於分析發生的情況。 此範例呼叫會使用特定事件發生時的開始和結束時間。 另請參閱[重要事項](#important-notes)：
 
@@ -946,7 +944,7 @@ listeninterface = .internal
 ## <a name="hawk"></a>Hawk
 
 叢集解決方案可提供瀏覽器介面，為偏好功能表和圖形 (相較於殼層層級上的所有命令) 的人員提供 GUI。
-若要使用瀏覽器介面，以下列 URL 中實際的 SAP HANA 節點取代 \<節點\>。 然後輸入叢集的認證 (使用者**叢集**)：
+若要使用瀏覽器介面，請 **\<node\>** 將取代為下列 URL 中的實際 SAP Hana 節點。 然後輸入叢集的認證 (使用者**叢集**)：
 
 <pre><code>
 https://&ltnode&gt:7630
@@ -964,7 +962,7 @@ https://&ltnode&gt:7630
 ![Hawk 清單條件約束](media/hana-vm-scale-out-HA-troubleshooting/hawk-2.png)
 
 
-您也可以在 Hawk 的**歷程記錄**下方，上傳 **hb_report** 輸出，如下所示。 Hb_report 以收集記錄檔，請參閱： 
+您也可以在 Hawk 的**歷程記錄**下方，上傳 **hb_report** 輸出，如下所示。 請參閱 hb_report 以收集記錄檔： 
 
 ![Hawk 上傳 hb_report 輸出](media/hana-vm-scale-out-HA-troubleshooting/hawk-3.png)
 
@@ -972,7 +970,7 @@ https://&ltnode&gt:7630
 
 ![hb_report 輸出中的 Hawk 轉換](media/hana-vm-scale-out-HA-troubleshooting/hawk-4.png)
 
-此最後一個螢幕擷取畫面顯示單一轉換的 [詳細資料] 區段。 叢集在主要的主要節點當機時作出回應，節點 **hso-hana vm-s1-0**。 會將該次要節點升階為新的主要節點，**hso-hana vm-s2-0**：
+此最後一個螢幕擷取畫面顯示單一轉換的 [詳細資料]**** 區段。 叢集在主要的主要節點當機時作出回應，節點 **hso-hana vm-s1-0**。 會將該次要節點升階為新的主要節點，**hso-hana vm-s2-0**：
 
 ![Hawk 單一轉換](media/hana-vm-scale-out-HA-troubleshooting/hawk-5.png)
 

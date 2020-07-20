@@ -1,20 +1,19 @@
 ---
 title: 使用 Python 開發 Azure 檔案服務 | Microsoft Docs
 description: 了解如何開發使用 Azure 檔案服務的 Python 應用程式和服務來儲存檔案資料。
-services: storage
 author: roygara
 ms.service: storage
-ms.devlang: python
-ms.topic: article
+ms.topic: how-to
 ms.date: 12/14/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: ecb3ef82196c3b6febd44850b47f467ba37facc2
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.custom: tracking-python
+ms.openlocfilehash: c612ddc324144a818dd738b440660d473ec3a1bd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64701590"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85509637"
 ---
 # <a name="develop-for-azure-files-with-python"></a>使用 Python 開發 Azure 檔案服務
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
@@ -49,7 +48,7 @@ pip install azure-storage-file
 如需替代安裝方法，請瀏覽 [GitHub 上的 Azure Storage SDK for Python](https://github.com/Azure/azure-storage-python/) \(英文\)。
 
 ## <a name="view-the-sample-application"></a>檢視範例應用程式
-若要檢視和執行示範如何使用 Python 與檔案儲存體的範例應用程式，請參閱[Azure 儲存體：在 Python 中開始使用檔案儲存體](https://github.com/Azure-Samples/storage-file-python-getting-started)。 
+若要查看並執行範例應用程式，以瞭解如何搭配 Azure 檔案儲存體使用 Python，請參閱[Azure 儲存體：在 python 中使用 Azure 檔案儲存體的消費者入門](https://github.com/Azure-Samples/storage-file-python-getting-started)。 
 
 若要執行範例應用程式，請確定您已安裝 `azure-storage-file` 和 `azure-storage-common` 封裝。
 
@@ -82,7 +81,7 @@ file_service.create_directory('myshare', 'sampledir')
 ```
 
 ## <a name="enumerate-files-and-directories-in-an-azure-file-share"></a>列舉 Azure 檔案共用的檔案和目錄
-若要列出共用中的檔案和目錄，請使用 **list\_directories\_and\_files** 方法。 這個方法會傳回產生器。 以下代码将共享中每个文件和目录的**名称**输出到控制台。
+若要列出共用中的檔案和目錄，請使用 **list\_directories\_and\_files** 方法。 這個方法會傳回產生器。 下列程式碼會將共用中每個檔案和目錄的 **name** 輸出到主控台。
 
 ```python
 generator = file_service.list_directories_and_files('myshare')
@@ -103,7 +102,7 @@ Azure 檔案共用至少包含可放置檔案的根目錄。 在本節中，您�
 from azure.storage.file import ContentSettings
 file_service.create_file_from_path(
     'myshare',
-    None, # We want to create this blob in the root directory, so we specify None for the directory_name
+    None,  # We want to create this blob in the root directory, so we specify None for the directory_name
     'myfile',
     'sunset.png',
     content_settings=ContentSettings(content_type='image/png'))
@@ -151,7 +150,8 @@ shares = list(file_service.list_shares(include_snapshots=True))
 您可以瀏覽每個共用快照集的內容，以擷取該時間點的檔案和目錄。
 
 ```python
-directories_and_files = list(file_service.list_directories_and_files(share_name, snapshot=snapshot_id))
+directories_and_files = list(
+    file_service.list_directories_and_files(share_name, snapshot=snapshot_id))
 ```
 
 ## <a name="get-file-from-share-snapshot"></a>從共用快照集取得檔案
@@ -159,7 +159,8 @@ directories_and_files = list(file_service.list_directories_and_files(share_name,
 
 ```python
 with open(FILE_PATH, 'wb') as stream:
-    file = file_service.get_file_to_stream(share_name, directory_name, file_name, stream, snapshot=snapshot_id)
+    file = file_service.get_file_to_stream(
+        share_name, directory_name, file_name, stream, snapshot=snapshot_id)
 ```
 
 ## <a name="delete-a-single-share-snapshot"></a>刪除單一共用快照集  

@@ -1,26 +1,18 @@
 ---
-title: 在 Azure 上的 Jupyter Notebook 中安裝套件
-description: 如何從 Azure 上執行的 Jupyter Notebook 內安裝 Python、R 和 F# 套件。
-services: app-service
-documentationcenter: ''
-author: kraigb
-manager: douge
-ms.assetid: 6f089c12-128b-4dbd-96e3-1320d37eeba4
-ms.service: azure-notebooks
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+title: 在 Jupyter 筆記本中安裝套件-Azure Notebooks 預覽
+description: '瞭解如何從在 Azure 上執行的 Jupyter 筆記本中安裝 Python、R 和 F # 套件。'
+ms.topic: how-to
 ms.date: 12/04/2018
-ms.author: kraigb
-ms.openlocfilehash: 504158f248cde3a399475cdec99de3e6a4ebfcc5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 43d38c9f3a4b0095967ab3e103ea729ec86ea2bd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60598016"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85831211"
 ---
-# <a name="install-packages-from-within-a-notebook"></a>從 Notebook 內安裝套件
+# <a name="install-packages-from-within-azure-notebooks-preview"></a>從 Azure Notebooks Preview 中安裝套件
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 雖然您可以設定[適用於專案層級上 Notebook 的環境](configure-manage-azure-notebooks-projects.md#configure-the-project-environment)，還是建議您直接在個別 Notebook 內安裝套件。
 
@@ -66,12 +58,22 @@ F# 中的套件可以藉由從程式碼資料格內呼叫 Paket 相依性管理�
 
 ```fsharp
 Paket.Package
-[ "MathNet.Numerics"
-"MathNet.Numerics.FSharp"
-]
+  [ "MathNet.Numerics"
+    "MathNet.Numerics.FSharp"
+  ]
+```
+
+然後載入 Paket 產生器：
+```fsharp
+#load "Paket.Generated.Refs.fsx"
+```
+
+開啟媒體櫃：
+```fsharp
+open MathNet.Numerics
 ```
 
 ## <a name="next-steps"></a>後續步驟
 
-- [操作說明：設定和管理專案](configure-manage-azure-notebooks-projects.md)
-- [操作說明：放映投影片](present-jupyter-notebooks-slideshow.md)
+- [如何：設定和管理專案](configure-manage-azure-notebooks-projects.md)
+- [如何：顯示投影片放映](present-jupyter-notebooks-slideshow.md)

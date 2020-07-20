@@ -1,40 +1,51 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure AD Identity Protection
+### YamlMime:Landing
+title: Azure AD Identity Protection 文件
+summary: 了解如何使用 Identity Protection 來識別及解決組織中的身分識別風險
 metadata:
-  document_id: null
-  title: Azure Active Directory Identity Protection 文件 - 快速入門、概念和參考 | Microsoft Docs
-  description: 了解如何設定和測試 Azure Active Directory Identity Protection。
+  title: Azure AD Identity Protection 文件
+  description: 了解如何使用 Identity Protection 來識別及解決組織中的身分識別風險
   services: active-directory
-  ms.subservice: identity-protection
-  author: MicrosoftGuyJFlo
-  manager: daveba
   ms.service: active-directory
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: identity-protection
   ms.topic: landing-page
-  ms.date: 09/14/2018
+  author: MicrosoftGuyJFlo
   ms.author: joflore
-abstract:
-  description: 了解如何偵測可能遭盜用的身分識別，以及如何實作自動化的回應以解決問題。 Azure Active Directory Identity Protection 是 Azure AD Premium P2 版本的一向功能，可讓您：<ul><li>偵測會影響組織的身分識別的潛在弱點</li><li>設定條件式存取原則，以自動回應與組織身分識別相關的可疑動作</li><li>調查可疑事件並採取適當動作以解決它們</li></ul><br> 下列資源可協助您快速開始使用。
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: ./media/index/video.png
-      width: 246
-    title: Azure AD Identity Protection 簡介
-    href: 'https://www.youtube.com/watch?v=zI3jn_G0_Ns'
-    width: 246
-sections:
-  - title: 5 分鐘快速入門
-    items:
-      - type: paragraph
-        text: 了解如何針對常見的存取案例，設定登入風險條件式存取原則。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: ./media/index/i_security-management.png
-            text: 偵測到工作階段風險時封鎖存取
-            href: quickstart-sign-in-risk-policy.md
+  ms.date: 08/20/2019
+  ms.collection: M365-identity-device-management
+  ms.openlocfilehash: e2d7fc7a7ef4f823a55fb81de615abec81441e98
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "74454230"
+landingContent:
+- title: 關於 Identity Protection
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是 Identity Protection？
+      url: overview-identity-protection.md
+    - text: 安全性概觀簡介
+      url: concept-identity-protection-security-overview.md
+- title: 調查風險偵測
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 設定風險原則
+      url: howto-identity-protection-configure-risk-policies.md
+    - text: 調查風險
+      url: howto-identity-protection-investigate-risk.md
+  - linkListType: reference
+    links:
+    - text: 事件類型
+      url: concept-identity-protection-risks.md
+- title: Identity Protection 體驗
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 登入體驗
+      url: concept-identity-protection-user-experience.md
+  - linkListType: how-to-guide
+    links:
+    - text: 模擬風險偵測
+      url: howto-identity-protection-simulate-risk.md

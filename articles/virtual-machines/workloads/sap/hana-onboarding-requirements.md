@@ -3,23 +3,21 @@ title: SAP HANA on Azure (大型執行個體) 的上線需求 | Microsoft Docs
 description: SAP HANA on Azure (大型執行個體) 的上線需求。
 services: virtual-machines-linux
 documentationcenter: ''
-author: RicksterCDN
-manager: jeconnoc
+author: msjuergent
+manager: bburns
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 01/31/2019
-ms.author: saghorpa
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 252c84bce2b70f6931593fe9410abe6cc146b5bb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 141a75a75a214ff4a6f136df7570d6e81f7f4e82
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60679046"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77617011"
 ---
 # <a name="onboarding-requirements"></a>上線需求
 
@@ -33,7 +31,7 @@ ms.locfileid: "60679046"
 
 **網路連線**
 
-- 內部部署與 Azure 之間的 ExpressRoute：若要將您的內部部署資料中心連線到 Azure，請務必向您的 ISP 訂購一個至少 1 Gbps 的連線。 HANA 大型執行個體單位與 Azure 之間的連線也會使用 ExpressRoute 技術。 HANA 大型執行個體單位的價格中，包含了 HANA 大型執行個體單位與 Azure 之間的這個 ExpressRoute 連線，並包括此特定 ExpressRoute 路線的所有資料輸入和輸出費用。 因此，您身為客戶，不會遇到的額外成本超出您在內部部署環境與 Azure 之間的 ExpressRoute 連結。
+- 內部部署與 Azure 之間的 ExpressRoute：若要將您的內部部署資料中心連線到 Azure，請務必向您的 ISP 訂購一個至少 1 Gbps 的連線。 HANA 大型執行個體單位與 Azure 之間的連線也會使用 ExpressRoute 技術。 HANA 大型執行個體單位的價格中，包含了 HANA 大型執行個體單位與 Azure 之間的這個 ExpressRoute 連線，並包括此特定 ExpressRoute 路線的所有資料輸入和輸出費用。 因此，身為客戶，您不會遇到內部部署與 Azure 之間的 ExpressRoute 連結以外的額外成本。
 
 **作業系統**
 
@@ -50,7 +48,7 @@ ms.locfileid: "60679046"
 
 - 在 Azure 中部署於 VM 上的 Red Hat Subscription Manager。 Red Hat Subscription Manager 提供可讓 Red Hat 註冊 SAP HANA on Azure (大型執行個體) 並對其分別進行更新的功能。 (在 Azure 大型執行個體戳記上部署的租用戶內無法進行直接的網際網路存取)。
 - SAP 會要求您與 Linux 提供者之間有一份支援合約。 這項需求並不會因「HANA 大型執行個體」解決方案或您在 Azure 中執行 Linux 的事實而消除。 與使用一些 Linux Azure 資源庫映像時不同，服務費用*並未*包含在「HANA 大型執行個體」的解決方案內容中。 您必須負責達到 SAP 對 Linux 散發者之支援合約的相關需求。 
-   - 針對 SUSE Linux，查詢 [SAP 附註 #1984787 - SUSE Linux Enterprise Server 12：安裝注意事項](https://launchpad.support.sap.com/#/notes/1984787)和 [SAP 附註 #1056161 - SAP 應用程式的 SUSE 優先支援](https://launchpad.support.sap.com/#/notes/1056161)。
+   - 針對 SUSE Linux，請查閱 [SAP 附註 #1984787 - SUSE Linux Enterprise Server 12：安裝注意事項](https://launchpad.support.sap.com/#/notes/1984787)和 [SAP 附註 #1056161 - SAP 應用程式的 SUSE 優先支援](https://launchpad.support.sap.com/#/notes/1056161)中的支援合約需求。
    - 針對 Red Hat Linux，您必須擁有包含支援和服務 (HANA 大型執行個體的作業系統更新) 的正確訂用帳戶層級。 Red Hat 建議使用 SAP 解決方案適用的 Red Hat Enterprise Linux 訂用帳戶。 請參閱 https://access.redhat.com/solutions/3082481。 
 
 如需具有不同 Linux 版本之 SAP HANA 版本的支援矩陣，請參閱 [SAP 附註 #2235581](https://launchpad.support.sap.com/#/notes/2235581)。
@@ -62,7 +60,7 @@ ms.locfileid: "60679046"
 > 針對類型 II 單元，此時只支援 SLES 12 SP2 作業系統版本。 
 
 
-**資料庫**
+**Database**
 
 - SAP HANA (平台或企業版) 的授權和軟體安裝元件。
 
@@ -71,7 +69,7 @@ ms.locfileid: "60679046"
 - 任何連線至 SAP HANA 及相關 SAP 支援合約之 SAP 應用程式的授權和軟體安裝元件。
 - 與 SAP HANA on Azure (大型執行個體) 環境及相關支援合約搭配使用的任何非 SAP 應用程式所具有的授權和軟體安裝元件。
 
-**技能**
+**技術**
 
 - Azure IaaS 及其元件的相關經驗與知識。
 - 在 Azure 中部署 SAP 工作負載的相關經驗與知識。

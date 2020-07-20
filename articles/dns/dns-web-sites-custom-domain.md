@@ -2,17 +2,17 @@
 title: 教學課程 - 建立 Web 應用程式的自訂 Azure DNS 記錄
 description: 在本教學課程中，您會使用 Azure DNS 來建立 Web 應用程式的自訂網域 DNS 記錄。
 services: dns
-author: vhorne
+author: rohinkoul
 ms.service: dns
 ms.topic: tutorial
 ms.date: 3/11/2019
-ms.author: victorh
-ms.openlocfilehash: d2cb0ef904935d1736c23aeaf23030da99e41a71
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.author: rohink
+ms.openlocfilehash: 8722a52a097f7f830287d125a4e56e9bbcb9f932
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58665945"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "76939106"
 ---
 # <a name="tutorial-create-dns-records-in-a-custom-domain-for-a-web-app"></a>教學課程：在自訂網域中建立 Web 應用程式的 DNS 記錄 
 
@@ -29,7 +29,7 @@ ms.locfileid: "58665945"
 
 請記住，如果您在 Azure 中建立 Web 應用程式的 A 記錄，如果 Web 應用程式的基礎 IP 位址變更，則您必須手動更新 A 記錄。
 
-在本教學課程中，您了解如何：
+在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
 > * 建立自訂網域的 A 記錄和 TXT 記錄
@@ -41,9 +41,9 @@ ms.locfileid: "58665945"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
 
-[!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -63,11 +63,11 @@ A 記錄可用來將名稱對應到其 IP 位址。 在下列範例中，我們�
 
 ### <a name="get-the-ipv4-address"></a>取得 IPV4 位址
 
-在 Azure 入口網站的應用程式服務頁面左側導覽中，選取 [自訂網域]。 
+在 Azure 入口網站的應用程式服務頁面左側導覽中，選取 [自訂網域]  。 
 
 ![[自訂網域] 功能表](../app-service/./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
-在 [自訂網域] 頁面中，複製應用程式的 IPv4 位址：
+在 [自訂網域]  頁面中，複製應用程式的 IPv4 位址：
 
 ![入口網站瀏覽至 Azure 應用程式](../app-service/./media/app-service-web-tutorial-custom-domain/mapping-information.png)
 
@@ -175,7 +175,7 @@ set-AzWebApp `
 > [!NOTE]
 > 請確定您納入了 `http://` 前置詞，否則瀏覽器可能會嘗試為您預測 URL！
 
-這兩個 URL 應該會導向相同的頁面。 例如︰
+這兩個 URL 應該會導向相同的頁面。 例如：
 
 ![Contoso 應用程式服務](media/dns-web-sites-custom-domain/contoso-app-svc.png)
 

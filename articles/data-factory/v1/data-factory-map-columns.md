@@ -1,27 +1,26 @@
 ---
-title: 在 Azure Data Factory 中對應資料集資料行 | Microsoft Docs
+title: 對應 Azure Data Factory 中的資料集資料行
 description: 了解如何將來源資料行對應至目的地資料行。
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 1b009ac2ca42e9804b88989b55b2e73524732550
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: af7a1e40f21b6c9af490abe6f58edcaf798818b4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60238119"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85318870"
 ---
 # <a name="map-source-dataset-columns-to-destination-dataset-columns"></a>將來源資料集資料行對應至目的地資料集資料行
 > [!NOTE]
-> 本文適用於 Data Factory 的第 1 版。 
+> 本文適用於 Data Factory 第 1 版。 
 
 資料行對應可用於指定將來源資料表「 結構 」中指定資料行對應至接收器資料表 「 結構 」 中指定資料行的方式。 複製活動的 **typeProperties** 區段中可使用 **columnMapping** 屬性。
 
@@ -40,7 +39,7 @@ ms.locfileid: "60238119"
 > 下列範例是針對 Azure SQL 和 Azure Blob，但是也適用於任何支援矩形資料集的資料存放區。 請調整範例中的資料集和已連結服務定義，以指向相關資料來源中的資料。
 
 ## <a name="sample-1--column-mapping-from-azure-sql-to-azure-blob"></a>範例 1 – 從 Azure SQL 到 Azure Blob 的資料行對應
-在此範例中，輸入資料表有一個結構，且指向 Azure SQL 資料庫中的 SQL 資料表。
+在此範例中，輸入資料表具有結構，且指向 Azure SQL Database 中的 SQL 資料表。
 
 ```json
 {

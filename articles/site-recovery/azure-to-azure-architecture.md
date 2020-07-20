@@ -1,19 +1,19 @@
 ---
-title: Azure Site Recovery 中的 Azure 至 Azure 複寫架構 | Microsoft Docs
-description: 本文概述當您使用 Azure Site Recovery 服務在 Azure VM 的 Azure 區域之間設定災害復原時，所用的元件和架構。
+title: Azure Site Recovery 中的 azure 至 Azure 嚴重損壞修復架構
+description: 當您使用 Azure Site Recovery 服務，在 azure Vm 的 Azure 區域之間設定嚴重損壞修復時，所使用的架構總覽。
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 03/18/2019
+ms.date: 3/13/2020
 ms.author: raynew
-ms.openlocfilehash: 96873b5fdefc74893929f8150230118a162f195b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5d0808b93d0c9c7b49d1fd394d2b776c008bc594
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60791132"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135866"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Azure 至 Azure 災害復原架構
 
@@ -31,10 +31,10 @@ ms.locfileid: "60791132"
 **來源區域中的 VM** | [支援的來源區域](azure-to-azure-support-matrix.md#region-support)中的一或多個 Azure VM。<br/><br/> VM 可執行任何[支援的作業系統](azure-to-azure-support-matrix.md#replicated-machine-operating-systems)。
 **來源 VM 儲存體** | Azure VM 可以是受控的，或具有分散於不同儲存體帳戶間的非受控磁碟。<br/><br/>[深入了解](azure-to-azure-support-matrix.md#replicated-machines---storage)支援的 Azure 儲存體。
 **來源 VM 網路** | VM 可在來源區域中位於虛擬網路 (VNet) 內的一或多個子網路上。 [深入了解](azure-to-azure-support-matrix.md#replicated-machines---networking)網路需求。
-**快取儲存體帳戶** | 您必須要有位於來源網路中的快取儲存體帳戶。 在複寫期間，VM 變更會先儲存在快取中，再傳送至目標儲存體。<br/><br/> 使用快取可確保在 VM 上執行的生產應用程式所受到的影響會降到最低。<br/><br/> [深入了解](azure-to-azure-support-matrix.md#cache-storage)快取儲存體需求。 
+**快取儲存體帳戶** | 您必須要有位於來源網路中的快取儲存體帳戶。 在複寫期間，VM 變更會先儲存在快取中，再傳送至目標儲存體。  快取儲存體帳戶必須是標準。<br/><br/> 使用快取可確保在 VM 上執行的生產應用程式所受到的影響會降到最低。<br/><br/> [深入了解](azure-to-azure-support-matrix.md#cache-storage)快取儲存體需求。 
 **目標資源** | 在複寫期間和執行容錯移轉時，都會使用目標資源。 Site Recovery 可依預設進行目標資源設定，您也可自行加以建立/自訂。<br/><br/> 在目標區域中，請確認您能夠建立 VM，且您的訂用帳戶有足夠的資源可支援目標區域中所需的 VM 大小。 
 
-![來源和目標複寫](./media/concepts-azure-to-azure-architecture/enable-replication-step-1.png)
+![來源和目標複寫](./media/concepts-azure-to-azure-architecture/enable-replication-step-1-v2.png)
 
 ## <a name="target-resources"></a>目標資源
 
@@ -55,8 +55,7 @@ ms.locfileid: "60791132"
 您可以依照下列方式管理目標資源：
 
 - 您可以在啟用複寫時修改目標設定。
-- 您可以在複寫已正常運作後修改目標設定。 例外狀況是可用性類型 (單一執行個體、設定組或區域)。 若要變更此設定，您必須停用複寫、修改設定，然後再重新啟用。
-
+- 您可以在複寫已正常運作後修改目標設定。 請注意，目的地區域 VM 的預設 SKU 與來源 VM （或與來源 VM SKU 相比的下一個最佳可用 SKU）的 SKU 相同。 類似于其他資源，例如目標資源群組、目標名稱等等，在複寫進行後也可以更新目的地區域 VM SKU。 無法更新的資源是可用性類型（單一實例、設定或區域）。 若要變更此設定，您必須停用複寫、修改設定，然後再重新啟用。 
 
 
 ## <a name="replication-policy"></a>複寫原則 
@@ -66,7 +65,7 @@ ms.locfileid: "60791132"
 **原則設定** | **詳細資料** | **預設值**
 --- | --- | ---
 **復原點保留期** | 指定 Site Recovery 會保留復原點多久 | 24 小時
-**應用程式一致的快照頻率** | Site Recovery 建立應用程式一致快照集的頻率。 | 每 60 分鐘。
+**應用程式一致的快照頻率** | Site Recovery 建立應用程式一致快照集的頻率。 | 每四個小時
 
 ### <a name="managing-replication-policies"></a>管理複寫原則
 
@@ -97,13 +96,13 @@ Site Recovery 會依照下列方式建立快照集：
 
 ### <a name="crash-consistent"></a>絕對一致
 
-**說明** | **詳細資料** | **建議**
+**描述** | **詳細資料** | **建議**
 --- | --- | ---
 絕對一致的快照集會擷取在快照建立時位於磁碟上的資料。 其中不含記憶體中的任何資料。<br/><br/> 其中所含的資料，相當於設若在建立快照集時發生 VM 當機的狀況，或從伺服器上拔開電源線，所將存在於磁碟上的資料。<br/><br/> 「絕對一致」並不保證資料在作業系統上或 VM 的應用程式間可保有一致性。 | Site Recovery 依預設會每五分鐘建立一次絕對一致復原點。 此設定無法修改。<br/><br/>  | 現在，大部分的應用程式都可以從絕對一致復原點妥善復原。<br/><br/> 對作業系統的複寫，以及 DHCP 伺服器和列印伺服器之類的應用程式而言，使用絕對一致復原點通常就已足夠。
 
 ### <a name="app-consistent"></a>應用程式一致
 
-**說明** | **詳細資料** | **建議**
+**描述** | **詳細資料** | **建議**
 --- | --- | ---
 應用程式一致復原點可從應用程式一致快照集建立。<br/><br/> 應用程式一致的快照集包含絕對一致快照集中的所有資訊，以及記憶體和進行中的交易所包含的所有資料。 | 應用程式一致快照集會使用磁碟區陰影複製服務 (VSS)：<br/><br/>   1) 在起始快照集時，VSS 會在磁碟區上執行「寫入時複製」(COW) 作業。<br/><br/>   2) 在執行 COW 之前，VSS 會通知機器上的每個應用程式它需要將其記憶體常駐資料排清到磁碟。<br/><br/>   3) 接著，VSS 會允許備份/災害復原應用程式 (在此案例中為 Site Recovery) 讀取快照集資料並繼續執行。 | 應用程式一致快照集會依據您指定的頻率建立。 此頻率一律應小於您的保留復原點設定。 例如，如果您使用預設設定 24 小時來保留復原點，您所設定的頻率就應該小於 24 小時。<br/><br/>此類快照集比絕對一致快照集更複雜，且需要較長的時間才能完成。<br/><br/> 在 VM 上執行且已啟用複寫的應用程式，效能將會受其影響。 
 
@@ -117,7 +116,7 @@ Site Recovery 會依照下列方式建立快照集：
 4. Site Recovery 會處理快取中的資料，並將資料傳送到目標儲存體帳戶或複本受控磁碟。
 5. 資料處理完成後，會每五分鐘產生一次絕對一致復原點。 此外匯根據複寫原則中指定的設定產生應用程式一致復原點。
 
-![啟用複寫程序，步驟 2](./media/concepts-azure-to-azure-architecture/enable-replication-step-2.png)
+![啟用複寫程序，步驟 2](./media/concepts-azure-to-azure-architecture/enable-replication-step-2-v2.png)
 
 **複寫程序**
 
@@ -135,39 +134,48 @@ Site Recovery 會依照下列方式建立快照集：
 | login.microsoftonline.com | 提供 Site Recovery 服務 URL 的授權和驗證。 |
 | *.hypervrecoverymanager.windowsazure.com | 允許 VM 與 Site Recovery 服務進行通訊。 |
 | *.servicebus.windows.net | 允許 VM 寫入 Site Recovery 監視和診斷資料。 |
+| *.vault.azure.net | 允許存取透過入口網站啟用已啟用 ADE 之虛擬機器的複寫
+| *. automation.ext.azure.com | 允許透過入口網站為複寫的專案啟用自動升級行動代理程式
 
 ### <a name="outbound-connectivity-for-ip-address-ranges"></a>IP 位址範圍的輸出連線能力
 
 若要使用 IP 位址控制 VM 的輸出連線能力，請允許這些位址。
+請注意，網路連接需求的詳細資料可在[網路技術白皮書](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags)中找到 
 
 #### <a name="source-region-rules"></a>來源區域規則
 
 **規則** |  **詳細資料** | **服務標記**
 --- | --- | --- 
-允許 HTTPS 輸出：連接埠 443 | 允許對應至來源區域儲存體帳戶的範圍 | 儲存體。\<區域名稱 >。
-允許 HTTPS 輸出：連接埠 443 | 允許對應至 Azure Active Directory (Azure AD) 的範圍。<br/><br/> 如果日後新增 Azure AD 位址，您將必須建立新的網路安全性群組 (NSG) 規則。  | AzureActiveDirectory
-允許 HTTPS 輸出：連接埠 443 | 允許存取對應至目標位置的 [Site Recovery 端點](https://aka.ms/site-recovery-public-ips)。 
+允許 HTTPS 輸出：連接埠 443 | 允許對應至來源區域儲存體帳戶的範圍 | 容量.\<region-name>
+允許 HTTPS 輸出：連接埠 443 | 允許對應至 Azure Active Directory 的範圍（Azure AD）  | AzureActiveDirectory
+允許 HTTPS 輸出：連接埠 443 | 允許對應至目的地區域中事件中樞的範圍。 | EventsHub.\<region-name>
+允許 HTTPS 輸出：連接埠 443 | 允許對應至 Azure Site Recovery 的範圍  | AzureSiteRecovery
+允許 HTTPS 輸出：連接埠 443 | 允許對應至 Azure Key Vault 的範圍（這只有在啟用啟用 ADE 的虛擬機器透過入口網站複寫時才需要） | AzureKeyVault
+允許 HTTPS 輸出：連接埠 443 | 允許對應至 Azure 自動化控制器的範圍（只有針對透過入口網站啟用複寫專案的行動代理程式自動升級時才需要） | GuestAndHybridManagement
 
 #### <a name="target-region-rules"></a>目標區域規則
 
 **規則** |  **詳細資料** | **服務標記**
 --- | --- | --- 
-允許 HTTPS 輸出：連接埠 443 | 允許對應至目標區域儲存體帳戶的範圍。 | 儲存體。\<區域名稱 >。
-允許 HTTPS 輸出：連接埠 443 | 允許對應至 Azure AD 的範圍。<br/><br/> 如果日後新增 Azure AD 位址，您將必須建立新的 NSG 規則。  | AzureActiveDirectory
-允許 HTTPS 輸出：連接埠 443 | 允許存取對應至來源位置的 [Site Recovery 端點](https://aka.ms/site-recovery-public-ips)。 
+允許 HTTPS 輸出：連接埠 443 | 允許與目的地區域中的儲存體帳戶對應的範圍 | 容量.\<region-name>
+允許 HTTPS 輸出：連接埠 443 | 允許對應至 Azure AD 的範圍  | AzureActiveDirectory
+允許 HTTPS 輸出：連接埠 443 | 允許對應至來源區域中事件中樞的範圍。 | EventsHub.\<region-name>
+允許 HTTPS 輸出：連接埠 443 | 允許對應至 Azure Site Recovery 的範圍  | AzureSiteRecovery
+允許 HTTPS 輸出：連接埠 443 | 允許對應至 Azure Key Vault 的範圍（這只有在啟用啟用 ADE 的虛擬機器透過入口網站複寫時才需要） | AzureKeyVault
+允許 HTTPS 輸出：連接埠 443 | 允許對應至 Azure 自動化控制器的範圍（只有針對透過入口網站啟用複寫專案的行動代理程式自動升級時才需要） | GuestAndHybridManagement
 
 
 #### <a name="control-access-with-nsg-rules"></a>使用 NSG 規則控制存取
 
-如果您使用 [NSG 規則](https://docs.microsoft.com/azure/virtual-network/security-overview)來篩選進出於 Azure 網路/子網路的網路流量，藉以控制 VM 連線，請注意下列需求：
+如果您使用 [NSG 規則](../virtual-network/security-overview.md)來篩選進出於 Azure 網路/子網路的網路流量，藉以控制 VM 連線，請注意下列需求：
 
 - 來源 Azure 區域的 NSG 規則應允許複寫流量的輸出存取。
 - 建議您先在測試環境中建立規則，再將其設置於生產環境。
-- 使用[服務標記](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)，而不要允許個別 IP 位址。
+- 使用[服務標記](../virtual-network/security-overview.md#service-tags)，而不要允許個別 IP 位址。
     - 服務標記代表一組聚集在一起的 IP 位址前置詞，用以盡可能降低建立安全性規則時的複雜性。
     - Microsoft 會不定期自動更新服務標記。 
  
-請深入了解 Site Recovery 的[輸出連線能力](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges)，以及如何[使用 NSG 控制連線能力](concepts-network-security-group-with-site-recovery.md)。
+請深入了解 Site Recovery 的[輸出連線能力](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags)，以及如何[使用 NSG 控制連線能力](concepts-network-security-group-with-site-recovery.md)。
 
 
 ### <a name="connectivity-for-multi-vm-consistency"></a>多 VM 一致性的連線能力
@@ -183,7 +191,7 @@ Site Recovery 會依照下列方式建立快照集：
 
 您起始容錯移轉時，系統會在目標資源群組、目標虛擬網路，目標子網路和目標可用性設定組中建立 VM。 在容錯移轉時，您可以使用任何復原點。
 
-![容錯移轉程序](./media/concepts-azure-to-azure-architecture/failover.png)
+![容錯移轉程序](./media/concepts-azure-to-azure-architecture/failover-v2.png)
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -2,39 +2,31 @@
 title: 將雲端服務連接到自訂網域控制站 | Microsoft Docs
 description: 了解如何使用 PowerShell 和 AD 網域延伸將 Web/背景工作角色連接到自訂 AD 網域
 services: cloud-services
-documentationcenter: ''
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: 1e2d7c87-d254-4e7a-a832-67f84411ec95
+author: tgore03
 ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
-ms.author: jeconnoc
-ms.openlocfilehash: 8bee2e2038ee39c777e1ca09994ad21872d2029a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.author: tagore
+ms.openlocfilehash: d40e392984d2675c748bda00c61cdaeb1c0932da
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60337335"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75387015"
 ---
 # <a name="connecting-azure-cloud-services-roles-to-a-custom-ad-domain-controller-hosted-in-azure"></a>將 Azure 雲端服務角色連接到裝載於 Azure 中的自訂 AD 網域控制站
-我們會先在 Azure 中設定虛擬網路 (VNet)。 然后将 Active Directory 域控制器（托管在 Azure 虚拟机上）添加到该 VNet。 下一步是將現有雲端服務角色加入預先建立的 VNet，然後將它們連接到網域控制站。
+我們會先在 Azure 中設定虛擬網路 (VNet)。 接著再將 Active Directory 網域控制站 (裝載於 Azure 虛擬機器上) 加入 VNet。 下一步是將現有雲端服務角色加入預先建立的 VNet，然後將它們連接到網域控制站。
 
 在開始之前，請將以下幾件事牢記在心：
 
 1. 本教學課程使用 PowerShell，因此請確認您已安裝 Azure PowerShell 且已準備就緒。 如需設定 Azure PowerShell 的說明，請參閱 [如何安裝及設定 Azure PowerShell](/powershell/azure/overview)。
 2. AD 網域控制站和 Web/背景工作角色執行個體必須位在 VNet 中。
 
-請依本逐步指南作業，如果遇到任何問題，請在本文結尾處留言。 我们将回复你（没错，我们真的会阅读留言）。
+請依本逐步指南作業，如果遇到任何問題，請在本文結尾處留言。 我們將會回覆您 (沒錯，我們真的會閱讀留言)。
 
 雲端服務所參考的網路必須是**傳統虛擬網路**。
 
 ## <a name="create-a-virtual-network"></a>建立虛擬網路
-您可以使用 Azure 入口網站或 PowerShell 在 Azure 中建立虛擬網路。 本教學課程會使用 PowerShell。 若要使用 Azure 入口網站建立虛擬網路，請參閱[建立虛擬網路](../virtual-network/quick-create-portal.md)。 本文涵蓋建立虛擬網路 (Resource Manager)，但是您必須建立適用於雲端服務的虛擬網路 (傳統)。 若要這樣做，在入口網站中，選取 [建立資源]、在 [搜尋] 方塊中輸入「虛擬網路」，然後按 **Enter**。 在搜尋結果的 [所有項目] 下方，選取 [虛擬網路]。 在 [選取部署模型] 下方，選取 [傳統]，然後選取 [建立]。 您接著可以依照文中的步驟進行。
+您可以使用 Azure 入口網站或 PowerShell 在 Azure 中建立虛擬網路。 本教學課程會使用 PowerShell。 若要使用 Azure 入口網站建立虛擬網路，請參閱[建立虛擬網路](../virtual-network/quick-create-portal.md)。 本文涵蓋建立虛擬網路 (Resource Manager)，但是您必須建立適用於雲端服務的虛擬網路 (傳統)。 若要這樣做，在入口網站中，選取 [建立資源]****、在 [搜尋]**** 方塊中輸入「虛擬網路」**，然後按 **Enter**。 在搜尋結果的 [所有項目]**** 下方，選取 [虛擬網路]****。 在 [選取部署模型]**** 下方，選取 [傳統]****，然後選取 [建立]****。 您接著可以依照文中的步驟進行。
 
 ```powershell
 #Create Virtual Network
@@ -129,7 +121,7 @@ Get-AzureRemoteDesktopFile -ServiceName $vmsvc1 -Name $vm1 -LocalPath <rdp-file-
 </ServiceConfiguration>
 ```
 
-接下來，請建置雲端服務專案並將它部署到 Azure。 有关将云服务包部署到 Azure 的帮助，请参阅[如何创建和部署云服务](cloud-services-how-to-create-deploy-portal.md)
+接下來，請建置雲端服務專案並將它部署到 Azure。 如需將雲端服務封裝部署到 Azure 的說明，請參閱「 [如何建立和部署雲端服務](cloud-services-how-to-create-deploy-portal.md)
 
 ## <a name="connect-your-webworker-roles-to-the-domain"></a>將 Web/背景工作角色連接到網域
 在 Azure 上部署雲端服務專案後，請使用 AD 網域延伸將角色執行個體連接到自訂 AD　網域。 若要將 AD 網域延伸加入現有雲端服務部署及加入自訂網域，請在 PowerShell 中執行下列命令：
@@ -156,3 +148,6 @@ Set-AzureServiceADDomainExtension -Service <your-cloud-service-hosted-service-na
 help Set-AzureServiceADDomainExtension
 help New-AzureServiceADDomainExtensionConfig
 ```
+
+
+

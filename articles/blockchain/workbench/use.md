@@ -1,21 +1,15 @@
 ---
 title: 在 Azure Blockchain Workbench 中使用應用程式
-description: 關於如何在 Azure Blockchain Workbench 中使用應用程式合約的教學課程。
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
-ms.date: 04/15/2019
+description: 關於如何在 Azure Blockchain Workbench 預覽版中使用應用程式合約的教學課程。
+ms.date: 10/14/2019
 ms.topic: tutorial
-ms.service: azure-blockchain
 ms.reviewer: brendal
-manager: femila
-ms.openlocfilehash: 89c83ed6d02a60978bd54fb97d37063e34f6c0c7
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: 5761bf1294691c2d50e0e389fe69ec286df4a06c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59578845"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "74324049"
 ---
 # <a name="tutorial-using-applications-in-azure-blockchain-workbench"></a>教學課程：在 Azure Blockchain Workbench 中使用應用程式
 
@@ -29,7 +23,7 @@ ms.locfileid: "59578845"
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * Blockchain Workbench 部署。 如需詳細資訊，請參閱 [Azure Blockchain Workbench 部署](deploy.md)，以取得部署的詳細資訊
 * 已在 Blockchain Workbench 中部署的區塊鏈應用程式。 請參閱[在 Azure Blockchain Workbench 中建立區塊鏈應用程式](create-app.md)
@@ -46,11 +40,11 @@ ms.locfileid: "59578845"
 
 1. 在 Blockchain Workbench 應用程式區段中，選取您想要建立的合約所在的應用程式圖格。 作用中合約的清單會隨即顯示。
 
-2. 若要建立新的合約，請選取 [新增合約]。
+2. 若要建立新的合約，請選取 [新增合約]  。
 
     ![[新增合約] 按鈕](./media/use/contract-list.png)
 
-3. [新增合約] 窗格隨即顯示。 指定初始參數值。 選取 [建立] 。
+3. [新增合約]  窗格隨即顯示。 指定初始參數值。 選取 [建立]  。
 
     ![[新增合約] 窗格](./media/use/new-contract.png)
 
@@ -67,25 +61,25 @@ ms.locfileid: "59578845"
 
     ![合約詳細資料](./media/use/contract-details.png)
 
-    | 區段  | 說明  |
+    | 區段  | 描述  |
     |---------|---------|
     | 狀態 | 列出合約階段內的目前進度 |
     | 詳細資料 | 合約目前的值 |
     | 動作 | 最後一個動作的詳細資料 |
     | 活動 | 合約的交易歷程記錄 |
     
-3. 在 [動作] 區段中，選取 [採取動作]。
+3. 在 [動作]  區段中，選取 [採取動作]  。
 
 4. 合約目前狀態的詳細資料會顯示在窗格中。 在下拉式清單中選擇您想要採取的動作。 
 
     ![選擇動作](./media/use/choose-action.png)
 
-5. 選取 [採取動作] 以起始動作。
+5. 選取 [採取動作]  以起始動作。
 6. 若動作需要參數，請指定動作的值。
 
     ![採取動作](./media/use/take-action.png)
 
-7. 選取 [採取動作] 以執行動作。
+7. 選取 [採取動作]  以執行動作。
 
 ## <a name="next-steps"></a>後續步驟
 

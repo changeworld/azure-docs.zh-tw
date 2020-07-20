@@ -1,8 +1,9 @@
 ---
-title: 快速入門 - 使用 Azure PowerShell 建立流量管理員設定檔以讓應用程式具有高可用性
+title: 快速入門：建立設定檔以讓應用程式具有高可用性 - Azure PowerShell - Azure 流量管理員
 description: 本快速入門文章會說明如何建立流量管理員設定檔，以建置高可用性的 Web 應用程式。
 services: traffic-manager
-author: KumudD
+author: rohinkoul
+mnager: twooley
 Customer intent: As an IT admin, I want to direct user traffic to ensure high availability of web applications.
 ms.service: traffic-manager
 ms.devlang: na
@@ -10,23 +11,23 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/04/2019
-ms.author: kumud
-ms.openlocfilehash: 6ffecf973632911113608b7478d2af2aef036257
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.author: rohink
+ms.openlocfilehash: 0ab7392b4fa6e248d51392706fedaed156344a99
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57343982"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "76934809"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-for-a-highly-available-web-application-using-azure-powershell"></a>快速入門：使用 Azure PowerShell 建立流量管理員設定檔以獲得高可用性的 Web 應用程式
 
 本快速入門會說明如何建立流量管理員設定檔，以便為 Web 應用程式提供高可用性。
 
-在本快速入門中，您會建立 Web 應用程式的兩個執行個體。 每個執行個體會在不同的 Azure 區域中執行。 您會建立以[端點優先順序](traffic-manager-routing-methods.md#priority)為基礎的流量管理員設定檔。 此設定檔會將使用者流量導向執行 Web 應用程式的主要網站。 流量管理員會持續監視 Web 應用程式。 如果主要網站無法使用，它會提供自動容錯移轉至備份網站。
+在本快速入門中，您會建立 Web 應用程式的兩個執行個體。 每個執行個體會在不同的 Azure 區域中執行。 您會建立以[端點優先順序](traffic-manager-routing-methods.md#priority-traffic-routing-method)為基礎的流量管理員設定檔。 此設定檔會將使用者流量導向執行 Web 應用程式的主要網站。 流量管理員會持續監視 Web 應用程式。 如果主要網站無法使用，它會提供自動容錯移轉至備份網站。
 
 如果您沒有 Azure 訂用帳戶，請立即建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-[!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 如果您選擇在本機安裝和使用 PowerShell，本文會要求使用 Azure PowerShell 模組版本 5.4.1 或更新版本。 執行 `Get-Module -ListAvailable Az` 來了解安裝的版本。 如果您需要升級，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-Az-ps)。 如果您在本機執行 PowerShell，則也需要執行 `Connect-AzAccount` 以建立與 Azure 的連線。
 
@@ -66,7 +67,7 @@ New-AzTrafficManagerProfile `
 
 ## <a name="create-web-apps"></a>建立 Web Apps
 
-在本快速入門中，您必須在兩個不同的 Azure 區域 (美國東部和西歐) 中部署 Web 應用程式的兩個執行個體。 每個執行個體都會作為流量管理員的主要和容錯移轉端點。
+在本快速入門中，您必須在兩個不同的 Azure 區域 (*美國西部*和*美國東部*) 中部署 Web 應用程式的兩個執行個體。 每個執行個體都會作為流量管理員的主要和容錯移轉端點。
 
 ### <a name="create-web-app-service-plans"></a>建立 Web App Service 方案
 針對您將在兩個不同 Azure 區域中部署的兩個 Web 應用程式執行個體，請使用 [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) 建立 Web App Service 方案。
@@ -85,7 +86,7 @@ New-AzAppservicePlan -Name "$App2Name-Plan" -ResourceGroupName MyResourceGroup -
 
 ```
 ### <a name="create-a-web-app-in-the-app-service-plan"></a>在 App Service 方案中建立 Web 應用程式
-使用 [New-AzWebApp](/powershell/module/az.websites/new-azwebapp)，在「美國西部」和「美國東部」Azure 區域的 App Service 方案中建立 Web 應用程式的兩個執行個體。
+使用 [New-AzWebApp](/powershell/module/az.websites/new-azwebapp)，在「美國西部」  和「美國東部」  Azure 區域的 App Service 方案中建立 Web 應用程式的兩個執行個體。
 
 ```azurepowershell-interactive
 $App1ResourceId=(New-AzWebApp -Name $App1Name -ResourceGroupName MyResourceGroup -Location $Location1 -AppServicePlan "$App1Name-Plan").Id
@@ -95,8 +96,8 @@ $App2ResourceId=(New-AzWebApp -Name $App2Name -ResourceGroupName MyResourceGroup
 
 ## <a name="add-traffic-manager-endpoints"></a>新增流量管理員端點
 使用 [New-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/new-aztrafficmanagerendpoint)，將兩個 Web 應用程式當作流量管理員端點新增到流量管理員設定檔，如下所示：
-- 將位於「美國西部」Azure 區域中的 Web 應用程式新增為主要端點，以便路由傳送所有的使用者流量。 
-- 將位於「美國東部」Azure 區域中的 Web 應用程式新增為容錯移轉端點。 當主要端點無法使用時，流量就會自動路由傳送到容錯移轉端點。
+- 將位於「美國西部」  Azure 區域中的 Web 應用程式新增為主要端點，以便路由傳送所有的使用者流量。 
+- 將位於「美國東部」  Azure 區域中的 Web 應用程式新增為容錯移轉端點。 當主要端點無法使用時，流量就會自動路由傳送到容錯移轉端點。
 
 ```azurepowershell-interactive
 New-AzTrafficManagerEndpoint -Name "$App1Name-$Location1" `
@@ -133,7 +134,7 @@ Get-AzTrafficManagerProfile -Name $mytrafficmanagerprofile `
 1. 在網頁瀏覽器中，輸入流量管理員設定檔的 DNS 名稱 (*http://<* relativednsname *>.trafficmanager.net*)，以檢視 Web 應用程式的預設網站。
 
     > [!NOTE]
-    > 在此快速入門案例中，所有要求都會路由傳送至主要端點。 它會設定為 [優先順序 1]。
+    > 在此快速入門案例中，所有要求都會路由傳送至主要端點。 它會設定為 [優先順序 1]  。
 2. 若要檢視進行中的流量管理員容錯移轉，請使用 [Disable-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/disable-aztrafficmanagerendpoint) 來停用主要網站。
 
    ```azurepowershell-interactive

@@ -1,35 +1,27 @@
 ---
-title: 使用 Azure CLI 來複製 Linux VM | Microsoft Docs
+title: 使用 Azure CLI 複製 Linux VM
 description: 了解如何使用 Azure CLI 和受控磁碟來建立 Azure Linux VM 的複本。
-services: virtual-machines-linux
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-tags: azure-resource-manager
-ms.assetid: 770569d2-23c1-4a5b-801e-cddcd1375164
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/17/2018
 ms.author: cynthn
-ms.openlocfilehash: abc8c09a51104c81b827afb7055531df98691714
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.custom: legacy
+ms.openlocfilehash: 406eda6902ae451c7fdf79e1bd1215c035a66750
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60328743"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82792219"
 ---
 # <a name="create-a-copy-of-a-linux-vm-by-using-azure-cli-and-managed-disks"></a>使用 Azure CLI 和受控磁碟來建立 Azure Linux VM 的複本
 
-此文章說明如何使用 Azure CLI 與 Azure Resource Manager 部署模型，建立執行 Linux 之 Azure 虛擬機器 (VM) 的複本。 
+本文說明如何使用 Azure CLI 來建立執行 Linux 的 Azure 虛擬機器（VM）複本。 若要大規模複製、建立、儲存及共用 VM 映射，請參閱[共用映射資源庫](shared-images.md)。
 
 您也可以[上傳 VHD 並從中建立 VM](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
 ## <a name="prerequisites"></a>必要條件
 
--   安裝 [Azure CLI](/cli/azure/install-az-cli2)。
+-   安裝[Azure CLI](/cli/azure/install-az-cli2)。
 
 -   使用 [az login](/cli/azure/reference-index#az-login) 登入 Azure 帳戶。
 
@@ -75,7 +67,7 @@ az vm deallocate \
          --name myCopiedDisk --source myDisk
     ``` 
 
-1.  现在请使用 [az disk list](/cli/azure/disk#az-disk-list) 验证资源组中的托管磁盘。 下列範例會列出名為 *myResourceGroup* 的資源群組中的受控磁碟：
+1.  使用 [az disk list](/cli/azure/disk#az-disk-list) 來確認此受控磁碟現在位於您的資源群組中。 下列範例會列出名為 *myResourceGroup* 的資源群組中的受控磁碟：
 
     ```azurecli
     az disk list --resource-group myResourceGroup --output table
@@ -133,4 +125,4 @@ az vm create --resource-group myResourceGroup \
 
 ## <a name="next-steps"></a>後續步驟
 
-若要了解如何使用 Azure CLI 來管理新的 VM，請參閱 [Azure Resource Manager 的 Azure CLI 命令](../azure-cli-arm-commands.md)。
+以瞭解如何使用[共用映射資源庫](shared-images.md)來管理 VM 映射。

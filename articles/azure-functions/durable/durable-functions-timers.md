@@ -1,46 +1,39 @@
 ---
 title: Durable Functions 中的計時器 - Azure
 description: 了解如何在 Azure Functions 的 Durable Functions 擴充中實作永久性計時器。
-services: functions
-author: ggailey777
-manager: jeconnoc
-keywords: ''
-ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 12/08/2018
+ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: a05f75a7e38ee7cd4dc056629d9acaacad875e08
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 0565cc149a36baf31d8516fffcf48b194c465760
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60730220"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "76261478"
 ---
 # <a name="timers-in-durable-functions-azure-functions"></a>Durable Functions (Azure Functions) 中的計時器
 
-[Durable Functions](durable-functions-overview.md) 提供「永久性計時器」，用於協調器函式中實作延遲，或在非同步動作上設定逾時。 永久性計時器應該用於協調器函式中，以代替 `Thread.Sleep` 和 `Task.Delay` (C#)，或 `setTimeout()` 和 `setInterval()` (JavaScript)。
+[Durable Functions](durable-functions-overview.md) 提供「永久性計時器」**，用於協調器函式中實作延遲，或在非同步動作上設定逾時。 永久性計時器應該用於協調器函式中，以代替 `Thread.Sleep` 和 `Task.Delay` (C#)，或 `setTimeout()` 和 `setInterval()` (JavaScript)。
 
-在 .NET 中呼叫 [DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html) 的 [CreateTimer](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CreateTimer_) 方法，或在 JavaScript 中呼叫 `DurableOrchestrationContext` 的 `createTimer` 方法，即可建立永久性計時器。 此方法會傳回一個在指定日期和時間繼續執行的工作。
+您可以藉由呼叫協調流程觸發程式系結的 `CreateTimer` （.net）方法或 `createTimer` （JavaScript） [orchestration trigger binding](durable-functions-bindings.md#orchestration-trigger)方法來建立持久計時器。 方法會傳回在指定的日期和時間完成的工作。
 
 ## <a name="timer-limitations"></a>計時器限制
 
-當您建立一個在下午 4:30 過期的計時器時，基礎「永久性工作架構」會將訊息加入佇列，而此訊息只在下午 4:30 出現。 在 Azure Functions 取用量方案中執行時，新出現的計時器訊息可確保函式應用程式會在適當的虛擬機器上啟動。
+當您建立在下午4:30 到期的計時器時，基礎的長期工作架構會將只有在下午4:30 才會顯示的訊息。 在 Azure Functions 耗用量方案中執行時，新顯示的計時器訊息會確保函式應用程式會在適當的 VM 上啟用。
 
 > [!NOTE]
-> * 由於 Azure 儲存體中的限制，永久性計時器無法持續超過 7 天。 我們正努力解決[將計時器延長到 7 天以上的功能要求](https://github.com/Azure/azure-functions-durable-extension/issues/14)。
-> * 在計算永久性計時器的相對期限時，請一律在 .NET 中使用 [CurrentUtcDateTime](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CurrentUtcDateTime) 代替 `DateTime.UtcNow`，並在 JavaScript 中使用 `currentUtcDateTime` 代替 `Date.now` 或 `Date.UTC`，如下列範例所示。
+> * 持久性計時器目前限制為7天。 如果需要較長的延遲，可以使用迴圈中的計時器 Api 來模擬它們 `while` 。
+> * 在 `CurrentUtcDateTime` `DateTime.UtcNow` `currentUtcDateTime` `Date.now` `Date.UTC` 計算持久性計時器的觸發時間時，請一律使用 .net 中的，而不是或 JavaScript 中的或。 如需詳細資訊，請參閱協調器函式程式[代碼條件約束](durable-functions-code-constraints.md)一文。
 
 ## <a name="usage-for-delay"></a>延遲的使用方式
 
-下列範例說明如何使用永久性計時器來延遲執行。 此範例會在十天內每天發出帳單通知。
+下列範例說明如何使用永久性計時器來延遲執行。 此範例會每天發出帳單通知10天。
 
-### <a name="c"></a>C#
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("BillingIssuer")]
 public static async Task Run(
-    [OrchestrationTrigger] DurableOrchestrationContext context)
+    [OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     for (int i = 0; i < 10; i++)
     {
@@ -51,7 +44,10 @@ public static async Task Run(
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (僅限 Functions 2.x)
+> [!NOTE]
+> 先前的 c # 範例是以 Durable Functions 2.x 為目標。 針對 Durable Functions 1.x，您必須使用， `DurableOrchestrationContext` 而不是 `IDurableOrchestrationContext` 。 如需版本之間差異的詳細資訊，請參閱[Durable Functions 版本](durable-functions-versions.md)一文。
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```js
 const df = require("durable-functions");
@@ -59,13 +55,14 @@ const moment = require("moment");
 
 module.exports = df.orchestrator(function*(context) {
     for (let i = 0; i < 10; i++) {
-        const dayOfMonth = context.df.currentUtcDateTime.getDate();
         const deadline = moment.utc(context.df.currentUtcDateTime).add(1, 'd');
         yield context.df.createTimer(deadline.toDate());
         yield context.df.callActivity("SendBillingEvent");
     }
 });
 ```
+
+---
 
 > [!WARNING]
 > 在協調器函式中避免無限迴圈。 如需有關如何安全而有效率地實作無限迴圈案例的資訊，請參閱[永久性協調流程](durable-functions-eternal-orchestrations.md)。
@@ -74,12 +71,12 @@ module.exports = df.orchestrator(function*(context) {
 
 此範例說明如何使用永久性計時器來實作逾時。
 
-### <a name="c"></a>C#
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("TryGetQuote")]
 public static async Task<bool> Run(
-    [OrchestrationTrigger] DurableOrchestrationContext context)
+    [OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     TimeSpan timeout = TimeSpan.FromSeconds(30);
     DateTime deadline = context.CurrentUtcDateTime.Add(timeout);
@@ -105,7 +102,10 @@ public static async Task<bool> Run(
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (僅限 Functions 2.x)
+> [!NOTE]
+> 先前的 c # 範例是以 Durable Functions 2.x 為目標。 針對 Durable Functions 1.x，您必須使用， `DurableOrchestrationContext` 而不是 `IDurableOrchestrationContext` 。 如需版本之間差異的詳細資訊，請參閱[Durable Functions 版本](durable-functions-versions.md)一文。
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```js
 const df = require("durable-functions");
@@ -131,12 +131,14 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+---
+
 > [!WARNING]
-> 如果程式碼不會等候永久性計時器完成，請使用 `CancellationTokenSource` 來取消它 (C#) 或在傳回的 `TimerTask` 上呼叫 `cancel()` (JavaScript)。 長期工作架構不會變更為 「 已完成 「 直到所有未完成的工作都完成或取消的協調流程的狀態。
+> `CancellationTokenSource` `cancel()` `TimerTask` 如果您的程式碼不會等待它完成，請使用（.net）或在傳回的（JavaScript）上呼叫來取消永久性計時器。 長期工作架構在完成或取消所有未完成的工作之前，不會將協調流程的狀態變更為「已完成」。
 
-這項機制並不會實際終止進行中的活動函式執行。 只是讓協調器函式略過結果並繼續執行。 如果函式應用程式使用取用量方案，您仍然要為已放棄的活動函式所耗用的任何時間和記憶體付費。 根據預設，在取用量方案中執行的函式會在五分鐘後逾時。 如果超過此限制，Azure Functions 主機會重新開機來停止所有執行，以避免計費失控狀況發生。 [函式逾時可設定](../functions-host-json.md#functiontimeout)。
+此取消機制不會終止進行中的活動函數或子協調流程執行。 只是讓協調器函式略過結果並繼續執行。 如果您的函式應用程式使用取用方案，您仍需支付已放棄的活動功能所耗用的任何時間和記憶體。 根據預設，在取用量方案中執行的函式會在五分鐘後逾時。 如果超過此限制，Azure Functions 主機會重新開機來停止所有執行，以避免計費失控狀況發生。 [函式逾時可設定](../functions-host-json.md#functiontimeout)。
 
-如需如何在協調器函式中實作逾時的更深入範例，請參閱[人為互動和逾時 - 電話驗證](durable-functions-phone-verification.md)逐步解說。
+如需如何在協調器函式中執行超時的更深入範例，請參閱[人類互動 & 超時電話驗證一](durable-functions-phone-verification.md)文。
 
 ## <a name="next-steps"></a>後續步驟
 

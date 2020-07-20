@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/11/2017
 ms.author: damaerte
 ms.openlocfilehash: bbf6c1f3049265961559ea34c8b748b2b4d263b6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60614318"
 ---
 # <a name="embed-azure-cloud-shell"></a>內嵌 Azure Cloud Shell
@@ -27,13 +27,13 @@ ms.locfileid: "60614318"
 
 標準大小的按鈕
 
-[![標準啟動](https://shell.azure.com/images/launchcloudshell.png "啟動 Azure Cloud Shell")](https://shell.azure.com)
+[![一般啟動](https://shell.azure.com/images/launchcloudshell.png "啟動 Azure Cloud Shell")](https://shell.azure.com)
 
 大型按鈕
 
-[![大型啟動](https://shell.azure.com/images/launchcloudshell@2x.png "啟動 Azure Cloud Shell")](https://shell.azure.com)
+[![大型發行](https://shell.azure.com/images/launchcloudshell@2x.png "啟動 Azure Cloud Shell")](https://shell.azure.com)
 
-## <a name="how-to"></a>作法
+## <a name="how-to"></a>操作方式
 
 複製下列內容，將 Cloud Shell 的啟動按鈕整合到 Markdown 檔案中：
 

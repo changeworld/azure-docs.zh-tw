@@ -1,28 +1,27 @@
 ---
-title: Service Fabric CLI 指令碼範例 - 更新叢集上的應用程式
+title: 更新 sfctl 中叢集上的應用程式
 description: Service Fabric CLI 指令碼範例 - 以新版本來更新應用程式。 此範例也會以新版本來升級部署的應用程式。
 services: service-fabric
 documentationcenter: ''
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 tags: ''
 ms.assetid: ''
 ms.service: service-fabric
 ms.workload: multiple
-ms.devlang: na
 ms.topic: sample
 ms.date: 12/06/2017
-ms.author: aljo
+ms.author: atsenthi
 ms.custom: ''
-ms.openlocfilehash: ffc60279ae414055c893c024d0ffd98267e6655f
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 34f2ae6f3a2ff3adc35794d6e7dfd682640c646b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662936"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "75614718"
 ---
-# <a name="add-an-application-certificate-to-a-service-fabric-cluster"></a>將應用程式憑證新增到 Service Fabric 叢集
+# <a name="update-an-application-using-the-service-fabric-cli"></a>使用 Service Fabric CLI 更新應用程式
 
 此範例指令碼會上傳現有應用程式的新版本，然後以新版本來升級部署的應用程式。
 

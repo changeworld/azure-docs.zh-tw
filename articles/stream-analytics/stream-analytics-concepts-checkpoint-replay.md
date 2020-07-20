@@ -1,26 +1,24 @@
 ---
-title: Azure 串流分析中的檢查點和重新執行作業復原概念
+title: Azure 串流分析中的檢查點和重新執行的概念
 description: 本文說明「Azure 串流分析」中的檢查點和重新執行作業復原概念。
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 9dcfbd4b5fcc8462c88b16f585424166ecd3d499
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 10d9053e082a995085fa255cc0d9f63a2b4e2b17
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61361875"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84020603"
 ---
 # <a name="checkpoint-and-replay-concepts-in-azure-stream-analytics-jobs"></a>Azure 串流分析作業中的檢查點和重新執行概念
 本文說明「Azure 串流分析」中的內部檢查點和重新執行概念，以及這些概念對作業復原的影響。 每次「串流分析」作業執行時，都會在內部維護狀態資訊。 該狀態資訊會定期儲存在檢查點中。 在某些情況下，當發生作業失敗或升級時，會使用檢查點資訊來進行作業復原。 在其他情況下，則無法使用檢查點來進行復原，而是必須使用重新執行。
 
 ## <a name="stateful-query-logicin-temporal-elements"></a>時態性元素中的具狀態查詢邏輯
-Azure 串流分析作業的其中一個獨特功能是執行具狀態的處理工作，如視窗型彙總、時態性聯結及時態性分析函式。 這當中的每個運算子都會保留作業執行時的狀態資訊。 這些查詢元素的時間範圍上限是七天。 
+Azure 串流分析作業的其中一個獨特功能是執行具狀態的處理工作，如視窗型彙總、時態性聯結及時態性分析函式。 這當中的每個運算子都會保留作業執行時的狀態資訊。這些查詢元素的時間範圍上限是七天。 
 
 時間範圍概念出現在數個「串流分析」查詢元素中：
 1. 視窗型彙總 (輪轉視窗、跳動視窗和滑動視窗的 GROUP BY)
@@ -55,11 +53,11 @@ Microsoft 偶爾會升級在 Azure 服務中執行「串流分析」作業的二
 
 1. 以預期的事件速率在輸入「事件中樞」載入足夠的資料，以涵蓋您查詢中的最大時間範圍。 事件的時間戳記應該在該整個期間都接近時鐘時間，就像是即時輸入摘要一樣。 例如，如果您查詢中的時間範圍是 3 天，請傳送事件給「事件中樞」長達三天，然後繼續傳送事件。 
 
-2. 使用 [立即] 作為開始時間來啟動作業。 
+2. 使用 [立即]**** 作為開始時間來啟動作業。 
 
 3. 測量從開始時間到產生第一個輸出之間的時間。 此時間大約就是服務升級期間作業會產生的延遲時間。
 
-4. 如果延遲時間太長，請嘗試分割作業，然後增加 SU 數目，以便將負載分散到更多節點。 或者，您也可以考慮縮短查詢中的時間範圍，然後對「串流分析」作業在下游接收器 (例如 Azure SQL 資料庫) 中產生的輸出執行進一步的彙總或其他具狀態處理。
+4. 如果延遲時間太長，請嘗試分割作業，然後增加 SU 數目，以便將負載分散到更多節點。 或者，請考慮減少查詢中的視窗大小，並針對下游接收中串流分析作業所產生的輸出執行進一步匯總或其他具狀態處理（例如，使用 Azure SQL Database）。
 
 若是對升級任務關鍵性作業期間的一般服務穩定性有疑慮，請考慮在配對的 Azure 區域中執行重複的作業。 如需詳細資訊，請參閱[在服務更新期間確保串流分析工作可靠性](stream-analytics-job-reliability.md)。
 

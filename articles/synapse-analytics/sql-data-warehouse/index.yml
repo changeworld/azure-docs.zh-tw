@@ -1,0 +1,113 @@
+### YamlMime:Landing
+title: Azure Synapse Analytics
+summary: Azure Synapse 是一種無限制的分析服務，可將企業資料倉儲和巨量資料分析整合在一起。 可讓您自由使用無伺服器隨選或佈建資源，隨意且大規模地查詢您的資料。
+metadata:
+  title: Azure Synapse Analytics
+  description: Azure Synapse 是一種無限制的分析服務，可將企業資料倉儲和巨量資料分析整合在一起。 可讓您自由使用無伺服器隨選或佈建資源，隨意且大規模地查詢您的資料。
+  services: synapse-analytics
+  ms.service: synapse-analytics
+  ms.subservice: sql-dw
+  ms.topic: landing-page
+  ms.collection: collection
+  author: julieMSFT
+  ms.author: jrasnick
+  ms.date: 04/15/2020
+  ms.openlocfilehash: 178ae3234eb5ed41d008aa438e628937c0c53dcb
+  ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 06/23/2020
+  ms.locfileid: "85209499"
+landingContent:
+- title: 關於 Azure Synapse Analytics (先前稱為 Azure SQL 資料倉儲)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是 Azure Synapse？ (先前稱為 Azure SQL 資料倉儲)
+      url: sql-data-warehouse-overview-what-is.md
+    - text: 祕訣和最佳作法
+      url: cheat-sheet.md
+  - linkListType: architecture
+    links:
+    - text: Azure Synapse 架構
+      url: massively-parallel-processing-mpp-architecture.md
+    - text: 參考架構
+      url: https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/data/enterprise-bi-synapse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
+- title: 關於 Azure Synapse Analytics (工作區預覽)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是 Azure Synapse (工作區預覽)
+      url: ../overview-what-is.md
+    - text: 祕訣和最佳作法
+      url: ../overview-cheat-sheet.md
+    - text: 常見問題集
+      url: ../overview-faq.md
+    - text: 版本資訊
+      url: ../release-notes.md
+- title: 開始使用
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: 建立 SQL 集區 (資料倉儲)
+      url: create-data-warehouse-portal.md
+- title: 載入資料
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 使用 COPY 陳述式快速擷取資料
+      url: quickstart-bulk-load-copy-tsql.md
+    - text: COPY 陳述式範例
+      url: quickstart-bulk-load-copy-tsql-examples.md
+  - linkListType: concept
+    links:
+    - text: 設計資料載入策略
+      url: design-elt-data-loading.md
+    - text: 最佳作法
+      url: guidance-for-loading-data.md
+  - linkListType: how-to-guide
+    links:
+    - text: 從 Azure Data Lake Storage 載入資料
+      url: sql-data-warehouse-load-from-azure-data-lake-store.md
+  - linkListType: tutorial
+    links:
+    - text: 從 Azure Blob 儲存體載入資料
+      url: load-data-from-azure-blob-storage-using-polybase.md
+- title: 效能微調
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 已排序的叢集資料行存放區索引調整
+      url: performance-tuning-ordered-cci.md
+  - linkListType: how-to-guide
+    links:
+    - text: 分析工作負載
+      url: analyze-your-workload.md
+- title: 管理和監視
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 了解如何管理及監視您的資料倉儲
+      url: sql-data-warehouse-overview-manageability-monitoring.md
+  - linkListType: how-to-guide
+    links:
+    - text: 使用 DMV 監視工作負載
+      url: sql-data-warehouse-manage-monitor.md
+    - text: 管理及監視工作負載的重要性
+      url: sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md
+- title: 保護資料倉儲
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 了解有關保護您資料倉儲的基本概念
+      url: sql-data-warehouse-overview-manage-security.md
+  - linkListType: how-to-guide
+    links:
+    - text: 設定 Azure Active Directory 驗證
+      url: /azure/sql-database/sql-database-aad-authentication-configure?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
+- title: 資源
+  linkLists:
+  - linkListType: video
+    links:
+    - text: 觀看最新的 Synapse SQL 影片
+      url: sql-data-warehouse-videos.md

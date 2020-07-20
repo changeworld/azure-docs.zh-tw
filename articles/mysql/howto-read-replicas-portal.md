@@ -1,26 +1,23 @@
 ---
-title: 在適用於 MySQL 的 Azure 資料庫中建立與管理讀取複本
-description: 本文說明如何使用入口網站在適用於 MySQL 的 Azure 資料庫中設定與管理讀取複本。
+title: 管理讀取複本 - Azure 入口網站 - 適用於 MySQL 的 Azure 資料庫
+description: 瞭解如何使用 Azure 入口網站，在適用於 MySQL 的 Azure 資料庫中設定與管理讀取複本。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
-ms.topic: conceptual
-ms.date: 04/29/2019
-ms.openlocfilehash: b422718a1eaec483acdc2c8ab37442b9aea78aaa
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.topic: how-to
+ms.date: 6/10/2020
+ms.openlocfilehash: a3342a626a104dc5eb77ef4b01146a8943dae2d2
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510796"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86108068"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-portal"></a>如何使用 Azure 入口網站在適用於 MySQL 的 Azure 資料庫中建立與管理讀取複本
 
-在本文中，您將學習如何建立和管理 Azure Database for MySQL 服務在 Azure 入口網站中的唯讀的複本。
+在本文中，您將了解如何使用 Azure 入口網站在「適用於 MySQL 的 Azure 資料庫」服務中建立與管理讀取複本。
 
-> [!IMPORTANT]
-> 在與您的主要伺服器相同的區域，或您選擇的任何其他 Azure 區域中，您可以建立一個讀取的複本。 跨區域複寫目前為公開預覽狀態。
-
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - [適用於 MySQL 的 Azure 資料庫伺服器](quickstart-create-mysql-server-database-using-azure-portal.md)，將作為主要伺服器。
 
@@ -28,6 +25,9 @@ ms.locfileid: "65510796"
 > 讀取複本功能僅供「適用於 MySQL 的 Azure 資料庫」伺服器用於一般用途或記憶體最佳化定價層。 請確定主要伺服器處於這些定價層中。
 
 ## <a name="create-a-read-replica"></a>建立讀取複本
+
+> [!IMPORTANT]
+> 當您為沒有任何現有複本的主要伺服器建立複本時，主要伺服器首先將會重新啟動，以準備本身進行複寫。 請考慮這一點，並在離峰期間執行這些作業。
 
 您可以使用下列步驟建立讀取複本伺服器︰
 
@@ -43,16 +43,19 @@ ms.locfileid: "65510796"
 
 5. 輸入複本伺服器的名稱。
 
-    ![Azure Database for MySQL-複本名稱](./media/howto-read-replica-portal/replica-name.png)
+    ![適用於 MySQL 的 Azure 資料庫 - 複本名稱](./media/howto-read-replica-portal/replica-name.png)
 
-6. 選取複本伺服器的位置。 您可以在任何 Azure 區域中建立複本。 預設位置是主要伺服器相同
+6. 選取複本伺服器的位置。 預設位置與主要伺服器的位置相同。
 
-    ![Azure Database for MySQL-複本位置](./media/howto-read-replica-portal/replica-location.png)
+    ![適用於 MySQL 的 Azure 資料庫 - 複本位置](./media/howto-read-replica-portal/replica-location.png)
 
-7. 選取 **確定**確認建立複本。
+   > [!NOTE]
+   > 若要深入瞭解您可以在哪些區域中建立複本，請造訪[參閱複本概念文章](concepts-read-replicas.md)。 
+
+7. 選取 [確定] 來確認建立複本。
 
 > [!NOTE]
-> 系統會以與主要伺服器相同的伺服器設定建立讀取複本。 複本伺服器設定在建立後可以變更。 建議複本伺服器設定的值應保持等於或大於主要伺服器，以確保複本伺服器能保持與主要伺服器一致。
+> 系統會以與主要伺服器相同的伺服器設定建立讀取複本。 複本伺服器設定在建立後可以變更。 複本伺服器一律會在與主要伺服器相同的資源群組和訂閱中建立。 如果您想要將複本伺服器建立到不同的資源群組或不同的訂閱，您可以在建立後[移動複本伺服器](https://docs.microsoft.com/azure/azure-resource-manager/management/move-resource-group-and-subscription)。 建議複本伺服器設定的值應保持等於或大於主要伺服器，以確保複本伺服器能保持與主要伺服器一致。
 
 建立複本伺服器後，可從 [複寫] 刀鋒視窗檢視該伺服器。
 

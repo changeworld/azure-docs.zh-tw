@@ -1,112 +1,274 @@
 ---
-title: 設定 Azure-SSIS Integration Runtime 以進行 SQL Database 容錯移轉 | Microsoft Docs
-description: 本文說明如何為 SSISDB 資料庫設定具有 Azure SQL Database 異地複寫和容錯移轉的 Azure-SSIS Integration Runtime
+title: 設定 SQL Database 容錯移轉的 Azure SSIS 整合執行時間
+description: 本文說明如何為 SSISDB 資料庫設定具有 Azure SQL Database 異地複寫和容錯移轉的 Azure SSIS 整合執行時間
 services: data-factory
-documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: ''
 ms.devlang: powershell
-ms.topic: conceptual
-ms.date: 08/14/2018
 author: swinarko
 ms.author: sawinark
+manager: mflasko
 ms.reviewer: douglasl
-manager: craigg
-ms.openlocfilehash: dea0153b9ca6d8e751fd94cc558abd44b2591907
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
-ms.translationtype: MT
+ms.topic: conceptual
+ms.custom: seo-lt-2019
+ms.date: 04/09/2020
+ms.openlocfilehash: e1b70e0e3eb54253972afded1bd37363d1a868e7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57453026"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84195720"
 ---
-# <a name="configure-the-azure-ssis-integration-runtime-with-azure-sql-database-geo-replication-and-failover"></a>設定具有 Azure SQL Database 異地複寫和容錯移轉的 Azure-SSIS Integration Runtime
+# <a name="configure-the-azure-ssis-integration-runtime-with-sql-database-geo-replication-and-failover"></a>使用 SQL Database 異地複寫和容錯移轉設定 Azure SSIS 整合執行時間
 
-本文說明如何為 SSISDB 資料庫設定具有 Azure SQL Database 異地複寫的 Azure-SSIS Integration Runtime。 發生容錯移轉時，您可以確保 Azure-SSIS IR 仍會使用次要資料庫來運作。
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-xxx-md.md)]
 
-如需異地複寫和容錯移轉，SQL database 的詳細資訊，請參閱[概觀：作用中異地複寫和自動容錯移轉群組](../sql-database/sql-database-geo-replication-overview.md)。
+本文說明如何為 SSISDB 資料庫設定具有 Azure SQL Database 異地複寫的 Azure SSIS 整合執行時間（IR）。 發生容錯移轉時，您可以確保 Azure-SSIS IR 仍會使用次要資料庫來運作。
+
+如需 SQL Database 異地複寫和容錯移轉的詳細資訊，請參閱[概觀：主動式異地複寫和自動容錯移轉群組](../sql-database/sql-database-geo-replication-overview.md)。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="scenario-1---azure-ssis-ir-is-pointing-to-read-write-listener-endpoint"></a>案例 1 - Azure-SSIS IR 指向讀寫接聽程式端點
-
-### <a name="conditions"></a>條件
-
-下列條件成立時，本節便適用：
-
-- Azure-SSIS IR 指向容錯移轉群組的讀寫接聽程式端點。
-
-  AND
-
-- SQL Database 伺服器不是使用虛擬網路服務端點規則來設定的。
-
-### <a name="solution"></a>解決方法
-
-發生容錯移轉時，Azure-SSIS IR 不會察覺。 Azure-SSIS IR 會自動連線到容錯移轉群組的新主要伺服器。
-
-## <a name="scenario-2---azure-ssis-ir-is-pointing-to-primary-server-endpoint"></a>案例 2 - Azure-SSIS IR 指向主要伺服器端點
-
-### <a name="conditions"></a>條件
-
-下列其中一個條件成立時，本節便適用：
-
-- Azure-SSIS IR 指向容錯移轉群組的主要伺服器端點。 發生容錯移轉時，此端點會變更。
-
-  或
-
-- Azure SQL Database 伺服器是使用虛擬網路服務端點規則來設定的。
-
-  或
-
-- 資料庫伺服器是使用虛擬網路所設定的 SQL Database 受控執行個體。
-
-### <a name="solution"></a>解決方法
-
-發生容錯移轉時，您必須執行下列動作：
-
-1. 停止 Azure-SSIS IR。
-
-2. 重新設定 IR，使其指向新的主要端點和新區域中的虛擬網路。
-
-3. 重新啟動 IR。
-
-下列各節會更詳細地說明這些步驟。
+## <a name="azure-ssis-ir-failover-with-a-sql-managed-instance"></a>使用 SQL 受控執行個體的 Azure SSIS IR 容錯移轉
 
 ### <a name="prerequisites"></a>必要條件
 
-- 請確定您已針對 Azure SQL Database 伺服器啟用災害復原，以免服器在同一時間發生中斷。 如需詳細資訊，請參閱[使用 Azure SQL Database 的商務持續性概觀](../sql-database/sql-database-business-continuity.md)。
+Azure SQL 受控執行個體會使用*資料庫主要金鑰（DMK）* 來協助保護儲存在資料庫中的資料、認證和連接資訊。 若要啟用 DMK 的自動解密，則會透過*伺服器主要金鑰（SMK）* 加密金鑰的複本。 
 
-- 如果您在目前的區域中使用虛擬網路，那麼您需要在新區域中使用另一個虛擬網路來與 Azure SSIS 整合執行階段連線。 如需詳細資訊，請參閱[將 Azure-SSIS 整合執行階段加入虛擬網路](join-azure-ssis-integration-runtime-virtual-network.md)。
+SMK 不會在容錯移轉群組中複寫。 在容錯移轉之後，您必須在主要和次要實例上新增密碼，以進行 DMK 解密。
 
-- 如果您使用自訂安裝，可能需要為儲存自訂安裝指令碼和相關檔案的 blob 容器準備另一個 SAS URI，如此一來，發生中斷時仍可繼續存取此 blob 容器。 如需詳細資訊，請參閱[在 Azure-SSIS 整合執行階段上設定自訂安裝](how-to-configure-azure-ssis-ir-custom-setup.md)。
+1. 針對主要實例上的 SSISDB 執行下列命令。 此步驟會加入新的加密密碼。
 
-### <a name="steps"></a>步驟
+    ```sql
+    ALTER MASTER KEY ADD ENCRYPTION BY PASSWORD = 'password'
+    ```
 
-請遵循下列步驟來停止 Azure SSIS 整合執行階段，並將整合執行階段切換到新區域，然後重新啟動該整合執行階段。
+2. 在 SQL 受控執行個體上建立容錯移轉群組。
 
-1. 停止原始區域中的整合執行階段。
+3. 使用新的加密密碼，在次要實例上執行**sp_control_dbmasterkey_password** 。
 
-2. 在 PowerShell 中呼叫下列命令來使用新的設定更新整合執行階段。
+    ```sql
+    EXEC sp_control_dbmasterkey_password @db_name = N'SSISDB',   
+        @password = N'<password>', @action = N'add';  
+    GO
+    ```
+
+### <a name="scenario-1-azure-ssis-ir-is-pointing-to-a-readwrite-listener-endpoint"></a>案例1： Azure SSIS IR 指向讀取/寫入接聽程式端點
+
+如果您想要讓 Azure SSIS IR 指向讀取/寫入接聽程式端點，您必須先指向主伺服器端點。 將 SSISDB 放在容錯移轉群組之後，您可以變更為讀取/寫入接聽程式端點，並重新啟動 Azure SSIS IR。
+
+#### <a name="solution"></a>解決方案
+
+發生容錯移轉時，請採取下列步驟：
+
+1. 停止主要區域中的 Azure SSIS IR。
+
+2. 針對次要實例上的自訂設定，編輯具有新區域、虛擬網路及共用存取簽章（SAS） URI 資訊的 Azure SSIS IR。 因為 Azure SSIS IR 指向讀取/寫入接聽程式，而端點對 Azure SSIS IR 而言是透明的，所以您不需要編輯端點。
 
     ```powershell
     Set-AzDataFactoryV2IntegrationRuntime -Location "new region" `
-                    -CatalogServerEndpoint "Azure SQL Database server endpoint" `
-                    -CatalogAdminCredential "Azure SQL Database server admin credentials" `
+                -VNetId "new VNet" `
+                -Subnet "new subnet" `
+                -SetupScriptContainerSasUri "new custom setup SAS URI"
+    ```
+
+3. 重新開機 Azure SSIS IR。
+
+### <a name="scenario-2-azure-ssis-ir-is-pointing-to-a-primary-server-endpoint"></a>案例2： Azure SSIS IR 指向主伺服器端點
+
+如果 Azure SSIS IR 指向主伺服器端點，則適用此案例。
+
+#### <a name="solution"></a>解決方案
+
+發生容錯移轉時，請採取下列步驟：
+
+1. 停止主要區域中的 Azure SSIS IR。
+
+2. 使用次要實例的新區域、端點和虛擬網路資訊來編輯 Azure SSIS IR。
+
+    ```powershell
+      Set-AzDataFactoryV2IntegrationRuntime -Location "new region" `
+                    -CatalogServerEndpoint "Azure SQL Database endpoint" `
+                    -CatalogAdminCredential "Azure SQL Database admin credentials" `
                     -VNetId "new VNet" `
                     -Subnet "new subnet" `
                     -SetupScriptContainerSasUri "new custom setup SAS URI"
+        ```
+
+3. Restart the Azure-SSIS IR.
+
+### Scenario 3: Azure-SSIS IR is pointing to a public endpoint of a SQL Managed Instance
+
+This scenario is suitable if the Azure-SSIS IR is pointing to a public endpoint of a Azure SQL Managed Instance and it doesn't join to a virtual network. The only difference from scenario 2 is that you don't need to edit virtual network information for the Azure-SSIS IR after failover.
+
+#### Solution
+
+When failover occurs, take the following steps:
+
+1. Stop the Azure-SSIS IR in the primary region.
+
+2. Edit the Azure-SSIS IR with the new region and endpoint information for the secondary instance.
+
+    ```powershell
+    Set-AzDataFactoryV2IntegrationRuntime -Location "new region" `
+                -CatalogServerEndpoint "Azure SQL Database server endpoint" `
+                -CatalogAdminCredential "Azure SQL Database server admin credentials" `
+                -SetupScriptContainerSasUri "new custom setup SAS URI"
     ```
 
-    如需此 PowerShell 命令的詳細資訊，請參閱[在 Azure Data Factory 中建立 Azure-SSIS 整合執行階段](create-azure-ssis-integration-runtime.md)
+3. 重新開機 Azure SSIS IR。
 
-3. 重新啟動整合執行階段。
+### <a name="scenario-4-attach-an-existing-ssisdb-instance-ssis-catalog-to-a-new-azure-ssis-ir"></a>案例4：將現有的 SSISDB 實例（SSIS 目錄）附加至新的 Azure SSIS IR
+
+如果您想要 SSISDB 在新區域中使用新的 Azure SSIS IR，當目前的區域發生 Azure Data Factory 或 Azure SSIS IR 嚴重損壞時，適用此案例。
+
+#### <a name="solution"></a>解決方案
+
+發生容錯移轉時，請採取下列步驟。
+
+> [!NOTE]
+> 在步驟4中使用 PowerShell （建立 IR）。 如果您沒有這麼做，Azure 入口網站將會報告指出 SSISDB 已經存在的錯誤。
+
+1. 停止主要區域中的 Azure SSIS IR。
+
+2. 執行預存程式以更新 SSISDB 中的中繼資料，以接受來自和的連接 **\<new_data_factory_name\>** **\<new_integration_runtime_name\>** 。
+   
+    ```sql
+    EXEC [catalog].[failover_integration_runtime] @data_factory_name='<new_data_factory_name>', @integration_runtime_name='<new_integration_runtime_name>'
+    ```
+
+3. 在新的區域中建立名為的新 data factory **\<new_data_factory_name\>** 。
+
+    ```powershell
+    Set-AzDataFactoryV2 -ResourceGroupName "new resource group name" `
+                      -Location "new region"`
+                      -Name "<new_data_factory_name>"
+    ```
+    
+    如需此 PowerShell 命令的詳細資訊，請參閱[使用 PowerShell 建立 Azure data factory](quickstart-create-data-factory-powershell.md)。
+
+4. **\<new_integration_runtime_name\>** 使用 Azure PowerShell，在新的區域中建立名為的新 AZURE SSIS IR。
+
+    ```powershell
+    Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName "new resource group name" `
+                                           -DataFactoryName "new data factory name" `
+                                           -Name "<new_integration_runtime_name>" `
+                                           -Description $AzureSSISDescription `
+                                           -Type Managed `
+                                           -Location $AzureSSISLocation `
+                                           -NodeSize $AzureSSISNodeSize `
+                                           -NodeCount $AzureSSISNodeNumber `
+                                           -Edition $AzureSSISEdition `
+                                           -LicenseType $AzureSSISLicenseType `
+                                           -MaxParallelExecutionsPerNode $AzureSSISMaxParallelExecutionsPerNode `
+                                           -VnetId "new vnet" `
+                                           -Subnet "new subnet" `
+                                           -CatalogServerEndpoint $SSISDBServerEndpoint `
+                                           -CatalogPricingTier $SSISDBPricingTier
+    ```
+
+    如需此 PowerShell 命令的詳細資訊，請參閱[在 Azure Data Factory 中建立 AZURE SSIS 整合運行](create-azure-ssis-integration-runtime.md)時間。
+
+
+
+## <a name="azure-ssis-ir-failover-with-sql-database"></a>使用 SQL Database 的 Azure SSIS IR 容錯移轉
+
+### <a name="scenario-1-azure-ssis-ir-is-pointing-to-a-readwrite-listener-endpoint"></a>案例1： Azure SSIS IR 指向讀取/寫入接聽程式端點
+
+此案例適用于下列情況：
+
+- Azure SSIS IR 指向容錯移轉群組的讀取/寫入接聽程式端點。
+- SQL Database 伺服器*未*設定虛擬網路服務端點的規則。
+
+如果您想要讓 Azure SSIS IR 指向讀取/寫入接聽程式端點，您必須先指向主伺服器端點。 將 SSISDB 放在容錯移轉群組之後，您可以變更為讀取/寫入接聽程式端點，並重新啟動 Azure SSIS IR。
+
+#### <a name="solution"></a>解決方案
+
+發生容錯移轉時，對 Azure SSIS IR 而言是透明的。 Azure-SSIS IR 會自動連線到容錯移轉群組的新主要伺服器。 
+
+如果您想要更新 Azure SSIS IR 中的區域或其他資訊，您可以將其停止、編輯和重新開機。
+
+
+### <a name="scenario-2-azure-ssis-ir-is-pointing-to-a-primary-server-endpoint"></a>案例2： Azure SSIS IR 指向主伺服器端點
+
+如果 Azure SSIS IR 指向主伺服器端點，則適用此案例。
+
+#### <a name="solution"></a>解決方案
+
+發生容錯移轉時，請採取下列步驟：
+
+1. 停止主要區域中的 Azure SSIS IR。
+
+2. 使用次要實例的新區域、端點和虛擬網路資訊來編輯 Azure SSIS IR。
+
+    ```powershell
+      Set-AzDataFactoryV2IntegrationRuntime -Location "new region" `
+                        -CatalogServerEndpoint "Azure SQL Database endpoint" `
+                        -CatalogAdminCredential "Azure SQL Database admin credentials" `
+                        -VNetId "new VNet" `
+                        -Subnet "new subnet" `
+                        -SetupScriptContainerSasUri "new custom setup SAS URI"
+    ```
+
+3. 重新開機 Azure SSIS IR。
+
+### <a name="scenario-3-attach-an-existing-ssisdb-ssis-catalog-to-a-new-azure-ssis-ir"></a>案例3：將現有的 SSISDB （SSIS 目錄）附加至新的 Azure SSIS IR
+
+如果您想要在次要區域中布建新的 Azure SSIS IR，則適合使用此案例。 如果您想要 SSISDB 在目前的區域發生 Azure Data Factory 或 Azure SSIS IR 嚴重損壞時，在新的區域中繼續使用新的 Azure SSIS IR，這也適用。
+
+#### <a name="solution"></a>解決方案
+
+發生容錯移轉時，請採取下列步驟。
+
+> [!NOTE]
+> 在步驟4中使用 PowerShell （建立 IR）。 如果您沒有這麼做，Azure 入口網站將會報告指出 SSISDB 已經存在的錯誤。
+
+1. 停止主要區域中的 Azure SSIS IR。
+
+2. 執行預存程式以更新 SSISDB 中的中繼資料，以接受來自和的連接 **\<new_data_factory_name\>** **\<new_integration_runtime_name\>** 。
+   
+    ```sql
+    EXEC [catalog].[failover_integration_runtime] @data_factory_name='<new_data_factory_name>', @integration_runtime_name='<new_integration_runtime_name>'
+    ```
+
+3. 在新的區域中建立名為的新 data factory **\<new_data_factory_name\>** 。
+
+    ```powershell
+    Set-AzDataFactoryV2 -ResourceGroupName "new resource group name" `
+                         -Location "new region"`
+                         -Name "<new_data_factory_name>"
+    ```
+    
+    如需此 PowerShell 命令的詳細資訊，請參閱[使用 PowerShell 建立 Azure data factory](quickstart-create-data-factory-powershell.md)。
+
+4. **\<new_integration_runtime_name\>** 使用 Azure PowerShell，在新的區域中建立名為的新 AZURE SSIS IR。
+
+    ```powershell
+    Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName "new resource group name" `
+                                           -DataFactoryName "new data factory name" `
+                                           -Name "<new_integration_runtime_name>" `
+                                           -Description $AzureSSISDescription `
+                                           -Type Managed `
+                                           -Location $AzureSSISLocation `
+                                           -NodeSize $AzureSSISNodeSize `
+                                           -NodeCount $AzureSSISNodeNumber `
+                                           -Edition $AzureSSISEdition `
+                                           -LicenseType $AzureSSISLicenseType `
+                                           -MaxParallelExecutionsPerNode $AzureSSISMaxParallelExecutionsPerNode `
+                                           -VnetId "new vnet" `
+                                           -Subnet "new subnet" `
+                                           -CatalogServerEndpoint $SSISDBServerEndpoint `
+                                           -CatalogPricingTier $SSISDBPricingTier
+    ```
+
+    如需此 PowerShell 命令的詳細資訊，請參閱[在 Azure Data Factory 中建立 AZURE SSIS 整合運行](create-azure-ssis-integration-runtime.md)時間。
+
 
 ## <a name="next-steps"></a>後續步驟
 
 請考量 Azure-SSIS 整合執行階段的下列其他組態選項：
 
-- [設定 Azure-SSIS Integration Runtime 以獲得高效能](configure-azure-ssis-integration-runtime-performance.md)
+- [設定 Azure SSIS integration runtime 以獲得高效能](configure-azure-ssis-integration-runtime-performance.md)
 
 - [自訂 Azure-SSIS 整合執行階段的安裝](how-to-configure-azure-ssis-ir-custom-setup.md)
 
-- [佈建 Azure-SSIS 整合執行階段的企業版](how-to-configure-azure-ssis-ir-enterprise-edition.md)
+- [布建 Azure SSIS 整合執行時間的 Enterprise Edition](how-to-configure-azure-ssis-ir-enterprise-edition.md)

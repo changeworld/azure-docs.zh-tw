@@ -1,65 +1,72 @@
 ---
-title: 決策樹系迴歸分析：模組參考
-titleSuffix: Azure Machine Learning service
-description: 了解如何使用二級平均感知器模組在 Azure Machine Learning 服務來建立機器學習，根據平均的認知演算法的模型。
+title: 決策樹系回歸：模組參考
+titleSuffix: Azure Machine Learning
+description: 瞭解如何在 Azure Machine Learning 中使用雙類別的平均認知模組，根據平均認知演算法建立機器學習模型。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: f0fec525ed87f91cf102053383b2934aac4b71c0
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+author: likebupt
+ms.author: keli19
+ms.date: 04/22/2020
+ms.openlocfilehash: 53e40726a5745263ee2b3cb4ada8671bf65da963
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65029231"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82137666"
 ---
-# <a name="two-class-averaged-perceptron-module"></a>二級平均感知器模組
+# <a name="two-class-averaged-perceptron-module"></a>雙類別平均認知模組
 
-本文說明 Azure Machine Learning 服務的視覺化介面 （預覽） 的模組。
+本文說明 Azure Machine Learning 設計工具 (預覽) 中的模組。
 
-使用此模組來建立機器學習，根據平均的認知演算法的模型。  
+使用此模組來建立以平均認知演算法為基礎的機器學習模型。  
   
-此分類演算法是一種監督式的學習方法，而且需要*標記的資料集*，其中包括標籤資料行。 您可以藉由提供做為輸入的模型和標記的資料集來定型模型[訓練模型](./train-model.md)。 定型的模型可用來預測新輸入範例中的值。  
+此分類演算法是一種受監督的學習方法，而且需要包含標籤資料行的已*標記資料集*。 您可以藉由提供模型和加上標籤的資料集做為[定型模型](./train-model.md)的輸入，來定型模型。 定型的模型接著可用來預測新輸入範例的值。  
 
-### <a name="about-averaged-perceptron-models"></a>關於平均的認知模型
+### <a name="about-averaged-perceptron-models"></a>關於平均認知模型
 
-*平均認知方法*是早期和簡單的類神經網路版本。 這種方法，將輸入分類成幾個可能的輸出根據線性函式，並結合一組衍生自特徵向量的權數，因此才稱為 「 認知。 」
+*平均認知方法*是早期和簡單的類神經網路版本。 在此方法中，輸入會根據線性函式分類成幾個可能的輸出，然後結合一組衍生自特徵向量的加權，因此名稱為 "認知"。
 
-更簡單的認知模型適合 learning 線性的可分隔模式，而類神經網路 (尤其是深度類神經網路) 可以模型更複雜的級別界限。 不過，感知器較快速，而且 「 認知器 」 因為它們會循序處理案例，可以用於連續定型。
+較簡單的認知模型適合以線性方式學習可區分的模式，而類神經網路 (尤其是深度神經網路) 可以模型化更複雜的級別界限。 不過，感知器較快速，因為它們會循序處理案例，適用於連續定型。
 
-## <a name="how-to-configure-two-class-averaged-perceptron"></a>如何設定二級平均感知器
+## <a name="how-to-configure-two-class-averaged-perceptron"></a>如何設定雙類別的平均認知
 
-1.  新增**二級平均感知器**模組至您的實驗。  
+1.  將**兩個類別的平均認知**模組新增至您的管線。  
 
-2.  指定您要模型定型，藉由設定的方式**建立定型模式**選項。  
+2.  藉由設定 [**建立定型模式]** 選項，指定您要如何訓練模型。  
   
-    -   **單一參數**:如果您知道您要設定模型的方式，提供一組特定的值做為引數。
-  
-3.  針對**學習速率**，為指定值*學習速率*。 學習速率值控制項的大小，用於隨機梯度下降每次測試及更正模型的步驟。
-  
-     藉由進行較小的速率，您測試模型通常與風險，您可能會卡在高原。 藉由進行較大的步驟，您可以更快收斂，風險階梯，則為 true 的最小值。
-  
-4.  針對**反覆項目數目上限**，輸入數字的次數中，您想要檢查的訓練資料的演算法。  
-  
-     早期停止常可帶來較佳的一般化。 反覆項目數目增加時，可以改善配適性，過度配適的風險。
-  
-5.  針對**隨機號碼種子**，並選擇性地輸入整數值來當做種子使用。 如果您想要確保執行的跨實驗重現性，被建議使用的種子。  
-  
-1.  連接定型資料集，以及其中一個定型模組：
-  
-    -   如果您設定**建立定型模式**要**單一參數**，使用[定型模型](train-model.md)模組。
+    -   **單一參數**：如果您知道要如何設定模型，請提供一組特定值做為引數。
 
-## <a name="results"></a>結果
+    -   **參數範圍**：如果您不確定最佳參數，而且想要執行參數清理，請選取此選項。 選取要逐一查看的值範圍，[微調模型超參數](tune-model-hyperparameters.md)會逐一查看所提供設定的所有可能組合，以判斷產生最佳結果的超參數。  
+  
+3.  針對 [**學習速率**]，指定*學習速率*的值。 學習速率值可控制每次測試和更正模型時，用於隨機梯度下降的步驟大小。
+  
+     藉由讓速率變小，您可以更頻繁地測試模型，但有可能會卡在本機高原中的風險。 如果階梯較大，聚合速度會較快，但會有超過實際最小值的風險。
+  
+4.  在 [**反覆運算數目上限**] 中，輸入您想要演算法檢查定型資料的次數。  
+  
+     早期停止常可帶來較佳的一般化。 增加反覆運算次數目可以改善配適性，但有可能過度配適。
+  
+5.  針對 [**亂數字種子**]，選擇性地輸入整數值做為種子。 如果您想要確保跨回合的管線重現性，建議使用種子。  
+  
+1.  連接訓練資料集，並將模型定型：
 
-訓練完成之後：
+    + 如果您將 [**建立定型模式**] 設定為 [**單一參數**]，請連接已標記的資料集和 [[訓練模型](train-model.md)] 模組。  
+  
+    + 如果您將 [**建立定型模式**] 設定為 [**參數範圍**]，請連接已加上標籤的資料集，並使用[微調模型超參數](tune-model-hyperparameters.md)來定型模型。  
+  
+    > [!NOTE]
+    > 
+    > 如果您將參數範圍傳遞至[定型模型](train-model.md)，它只會使用單一參數清單中的預設值。  
+    > 
+    > 如果您將一組參數值傳遞至[微調模型超參數](tune-model-hyperparameters.md)模組，當它預期每個參數的設定範圍時，就會忽略這些值，並使用學習模組的預設值。  
+    > 
+    > 如果您選取 [**參數範圍**] 選項，並輸入任何參數的單一值，則會在整個清除中使用您指定的單一值，即使其他參數在某個範圍的值之間變更也是如此。
 
-+ 若要查看模型的參數，以及從訓練，學習而得的特徵權數的摘要中以滑鼠右鍵按一下的輸出[定型模型](./train-model.md)。
+
 
 
 ## <a name="next-steps"></a>後續步驟
 
-請參閱[可用的模組集](module-reference.md)Azure Machine Learning 服務。 
+請參閱 Azure Machine Learning 的[可用模組集](module-reference.md)。 

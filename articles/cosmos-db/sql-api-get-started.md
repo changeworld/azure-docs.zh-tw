@@ -1,540 +1,503 @@
 ---
-title: 建置 .NET 主控台應用程式來管理 Azure Cosmos DB SQL API 帳戶中的資料
-description: 此教學課程將使用 SQL API 來建立線上資料庫，以及 C# 主控台應用程式。
-author: SnehaGunda
+title: 教學課程：建置 .NET 主控台應用程式來管理 Azure Cosmos DB SQL API 帳戶中的資料
+description: 教學課程：了解如何使用 C# 主控台應用程式建立 Azure Cosmos DB SQL API 資源。
+author: kirankumarkolli
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 04/15/2019
-ms.author: sngun
-ms.openlocfilehash: 64aef17663fdc28a467172bbe8954fc06fdb7ff0
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.date: 11/05/2019
+ms.author: kirankk
+ms.openlocfilehash: 10a630aa04f51dc96b948b01e5fc01cfad4356fd
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59680375"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118809"
 ---
-# <a name="build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>建置 .NET 主控台應用程式來管理 Azure Cosmos DB SQL API 帳戶中的資料
+# <a name="tutorial-build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>教學課程：建置 .NET 主控台應用程式來管理 Azure Cosmos DB SQL API 帳戶中的資料
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
-> * [.NET (預覽)](sql-api-dotnet-get-started-preview.md)
-> * [.NET Core](sql-api-dotnetcore-get-started.md)
-> * [.NET Core (預覽)](sql-api-dotnet-core-get-started-preview.md)
 > * [Java](sql-api-java-get-started.md)
 > * [非同步 Java](sql-api-async-java-get-started.md)
 > * [Node.js](sql-api-nodejs-get-started.md)
-> 
+>
 
-歡迎使用 Azure Cosmos DB SQL API 入門教學課程。 完成此教學課程之後，您將會有一個主控台應用程式，可用來建立和查詢 Azure Cosmos DB 資源。
+歡迎使用 Azure Cosmos DB SQL API 入門教學課程。 完成本教學課程之後，您將會有一個主控台應用程式，可用來建立和查詢 Azure Cosmos DB 資源。
 
-本教學課程說明如何：
+本教學課程使用 3.0 版或更新版本的 [Azure Cosmos DB .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Cosmos)。 您可以使用 [.NET Framework 或 .NET Core](https://dotnet.microsoft.com/download)。
+
+本教學課程涵蓋下列項目：
 
 > [!div class="checklist"]
 >
-> - 建立並連線至 Azure Cosmos DB 帳戶
-> - 建立 Visual Studio 解決方案
-> - 建立資料庫
-> - 建立集合
-> - 建立 JSON 文件
-> - 查詢集合
-> - 更新 JSON 文件
-> - 刪除文件
-> - 刪除資料庫
+> * 建立及連線至 Azure Cosmos 帳戶
+> * 在 Visual Studio 中設定專案
+> * 建立資料庫和容器
+> * 將項目新增至容器
+> * 查詢容器
+> * 在項目上執行建立、讀取、更新和刪除 (CRUD) 作業
+> * 刪除資料庫
+
+沒有時間嗎？ 別擔心！ 您可以在 [GitHub](https://github.com/Azure-Samples/cosmos-dotnet-getting-started)上找到完整的方案。 請跳至[取得完整的教學課程解決方案](#GetSolution)一節，以取得簡要指示。
+
+讓我們開始吧！
 
 ## <a name="prerequisites"></a>必要條件
 
-安裝具有 Azure 開發工作流程的 Visual Studio 2017：
-- 您可以下載並使用**免費**的 [Visual Studio 2017 Community 版本](https://www.visualstudio.com/downloads/)。 務必在 Visual Studio 設定期間啟用 **Azure 開發**。 
+* 使用中的 Azure 帳戶。 如果您沒有帳戶，您可以註冊 [免費帳戶](https://azure.microsoft.com/free/)。
 
-Azure 訂用帳戶或免費的 Cosmos DB 試用帳戶：
-- [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
-  
-- [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]  
-  
-- 如果您是使用「Azure Cosmos DB 模擬器」，請依照 [Azure Cosmos DB 模擬器](local-emulator.md)的步驟來設定模擬器。 然後開始[設定 Visual Studio 解決方案](#SetupVS)的教學課程。
-  
-## <a name="get-the-completed-solution"></a>取得完整的解決方案
+  [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
-如果您沒有時間完成此教學課程，或只想要程式碼範例，您可以從 [GitHub](https://github.com/Azure-Samples/documentdb-dotnet-getting-started) 下載完整的解決方案。 
+* [!INCLUDE [cosmos-db-emulator-vs](../../includes/cosmos-db-emulator-vs.md)]
 
-若要執行已下載的完整解決方案： 
+## <a name="step-1-create-an-azure-cosmos-db-account"></a>步驟 1:建立 Azure Cosmos DB 帳戶
 
-1. 確認您已安裝這些[必要條件](#prerequisites)。 
-1. 在 Visual Studio 中開啟下載的 *GetStarted.sln* 解決方案檔案。
-1. 在 [方案總管] 中，以滑鼠右鍵按一下 [GetStarted] 專案，然後選取 [管理 NuGet 套件]。
-1. 在 [NuGet] 索引標籤上，選取 [還原] 來還原 Azure Cosmos DB.NET SDK 的參考。
-1. 接下來，在 *App.config* 檔案中更新 `EndpointUrl` 和 `PrimaryKey` 值，如[連線至 Azure Cosmos DB 帳戶](#Connect)中所述。
-1. 選取 [偵錯] > [啟動但不偵錯]或按 **Ctrl**+**F5** 建置並執行應用程式。
+讓我們來建立 Azure Cosmos DB 帳戶。 如果您已經有想要使用的帳戶，請略過本節。 若要使用 Azure Cosmos DB 模擬器，請依照 [Azure Cosmos DB 模擬器](local-emulator.md)的步驟來設定模擬器。 然後向前跳到[步驟 2：設定 Visual Studio 專案](#SetupVS)。
 
-## <a name="create-an-azure-cosmos-db-account"></a>建立 Azure Cosmos DB 帳戶
+[!INCLUDE [create-dbaccount-preview](../../includes/cosmos-db-create-dbaccount.md)]
 
-在 Azure 入口網站中建立 Azure Cosmos DB 帳戶。 如果您已使用 Azure Cosmos DB 帳戶，請跳至[設定 Visual Studio 解決方案](#SetupVS)。 
+## <a name="step-2-set-up-your-visual-studio-project"></a><a id="SetupVS"></a>步驟 2：設定 Visual Studio 專案
 
-[!INCLUDE [create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
+1. 開啟 Visual Studio，然後選取 [建立新專案]。
+1. 在 [建立新專案] 中，針對 C# 選擇 [主控台應用程式 (.NET Framework)]，然後選取 [下一步]。
+1. 將您的專案命名為 *CosmosGettingStartedTutorial*，然後選取 [建立]。
 
-## <a id="SetupVS"></a>設定 Visual Studio 解決方案
+    :::image type="content" source="./media/sql-api-get-started/configure-cosmos-getting-started-2019.png" alt-text="設定您的專案":::
 
-1. 在 Visual Studio 2017 中，選取 [檔案] > [新增] > [專案]。
-   
-1. 在 [新增專案] 對話方塊中，選取 [Visual C#] > [主控台應用程式 (.NET Framework)]、將專案命名為 *AzureCosmosDBApp*，然後按一下 [確定]。
-   
-   ![[新增專案] 視窗的螢幕擷取畫面](./media/sql-api-get-started/nosql-tutorial-new-project-2.png)
-   
-1. 在 [方案總管] 中，以滑鼠右鍵按一下 **AzureCosmosDBApp** 專案，然後選取 [管理 NuGet 套件]。
-   
-   ![專案操作功能表](./media/sql-api-get-started/nosql-tutorial-manage-nuget-pacakges.png)
-   
-1. 在 [NuGet] 索引標籤中，選取 [瀏覽]，然後在搜尋方塊中輸入 *azure documentdb*。
-   
-1. 尋找並選取 [Microsoft.Azure.DocumentDB]，如果尚未安裝，請選取 [安裝]。
-   
-   「Azure Cosmos DB SQL API 用戶端程式庫」的套件識別碼是 [Microsoft Azure Cosmos DB 用戶端程式庫](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) \(英文\)。
+1. 在 [方案總管] 中，以滑鼠右鍵按一下 Visual Studio 解決方案底下的新主控台應用程式，然後選取 [管理 NuGet 套件]。
+1. 在 [NuGet 套件管理員] 中，選取 [瀏覽]並搜尋 *Microsoft.Azure.Cosmos*。 選擇 [Microsoft.Azure.Cosmos]，然後選取 [安裝]。
+
+   :::image type="content" source="./media/sql-api-get-started/cosmos-getting-started-manage-nuget-2019.png" alt-text="安裝適用於 Azure Cosmos DB 用戶端 SDK 的 NuGet":::
+
+   「Azure Cosmos DB SQL API 用戶端程式庫」的套件識別碼是 [Microsoft Azure Cosmos DB 用戶端程式庫](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) \(英文\)。
+
+太棒了！ 現在已完成安裝程式，讓我們開始撰寫一些程式碼。 如需本教學課程的已完成專案，請參閱[使用 Azure Cosmos DB 開發 .NET 主控台應用程式](https://github.com/Azure-Samples/cosmos-dotnet-getting-started)。
+
+## <a name="step-3-connect-to-an-azure-cosmos-db-account"></a><a id="Connect"></a>步驟 3：連線至 Azure Cosmos DB 帳戶
+
+1. 在 *Program.cs* 檔案中，將 C# 應用程式開頭的參考，替換為下列參考：
+
+   ```csharp
+   using System;
+   using System.Threading.Tasks;
+   using System.Configuration;
+   using System.Collections.Generic;
+   using System.Net;
+   using Microsoft.Azure.Cosmos;
+   ```
+
+1. 將下列常數和變數新增至 `Program` 類別。
+
+    ```csharp
+    public class Program
+    {
+        // ADD THIS PART TO YOUR CODE
+
+        // The Azure Cosmos DB endpoint for running this sample.
+        private static readonly string EndpointUri = "<your endpoint here>";
+        // The primary key for the Azure Cosmos account.
+        private static readonly string PrimaryKey = "<your primary key>";
+
+        // The Cosmos client instance
+        private CosmosClient cosmosClient;
+
+        // The database we will create
+        private Database database;
+
+        // The container we will create.
+        private Container container;
+
+        // The name of the database and container we will create
+        private string databaseId = "FamilyDatabase";
+        private string containerId = "FamilyContainer";
+    }
+    ```
 
    > [!NOTE]
-   > 如果您使用 .NET Core，請參閱 [.NET Core 文件](./sql-api-dotnetcore-get-started.md)。
+   > 如果您熟悉舊版 .NET SDK，則可能已熟悉「集合」和「文件」等詞彙。 Azure Cosmos DB 支援多個 API 模型，因此 3.0+ 版的 .NET SDK 會使用「容器」和「項目」這些泛用詞彙。 「容器」可以是集合、圖形或資料表。 「項目」可以是文件、邊緣/頂點或資料列，並且是容器內的內容。 如需詳細資訊，請參閱[使用 Azure Cosmos DB 中的資料庫、容器和項目](databases-containers-items.md)。
 
-   ![用於尋找 Azure Cosmos DB 用戶端 SDK 的 NuGet 功能表螢幕擷取畫面](./media/sql-api-get-started/nosql-tutorial-manage-nuget-pacakges-2.png)
-   
-   如果您收到關於檢閱方案變更的訊息，請選取 [確定]。 如果您收到關於接受授權的訊息，請選取 [我接受]。
+1. 開啟 [Azure 入口網站](https://portal.azure.com)。 尋找 Azure Cosmos DB 帳戶，然後選取 [金鑰]。
 
-## <a id="Connect"></a>連線至 Azure Cosmos DB 帳戶
+   :::image type="content" source="./media/sql-api-get-started/cosmos-getting-started-portal-keys.png" alt-text="從 Azure 入口網站取得 Azure Cosmos DB 金鑰":::
 
-現在，開始撰寫一些程式碼。 此教學課程的完整 *Project.cs* 檔案位於 [GitHub](https://github.com/Azure-Samples/documentdb-dotnet-getting-started/blob/master/src/Program.cs) 中。
+1. 在 *Program.cs* 中，以 [URI] 的值取代 `<your endpoint URL>`。 以 [主要金鑰] 的值取代 `<your primary key>`。
 
-1. 在 [方案總管] 中，選取 [Program.cs]，然後在程式碼編輯器中，將下列參考加入至檔案的開頭：
-   
-   ```csharp
-   using System.Net;
-   using Microsoft.Azure.Documents;
-   using Microsoft.Azure.Documents.Client;
-   using Newtonsoft.Json;
-   ```
-   
-1. 接下來，將下列兩個常數和 `client` 變數新增至 `public class Program`。
-   
-   ```csharp
-   
-   public class Program
-   {
-      private const string EndpointUrl = "<your endpoint URL>";
-      private const string PrimaryKey = "<your primary key>";
-      private DocumentClient client;
-   ```
-   
-1. 端點 URL 和主要金鑰可讓您的應用程式連線到您的 Azure Cosmos DB 帳戶，Azure Cosmos DB 帳戶才會信任該連線。 從 [Azure 入口網站](https://portal.azure.com)複製金鑰，並將其貼到您的程式碼中。 
+1. 在 **Main** 方法底下，新增名為 **GetStartedDemoAsync** 的新非同步工作，以將新的 `CosmosClient` 具現化。
 
-   
-   1. 在 Azure Cosmos DB 帳戶的左側導覽中，選取 [金鑰]。
-      
-      ![在 Azure 入口網站的 [金鑰] 頁面中，檢視並複製存取金鑰](./media/sql-api-get-started/nosql-tutorial-keys.png)
-      
-   1. 在 [讀寫金鑰] 底下，使用右側的 [複製] 按鈕複製 **URI** 值，然後將其貼到 *Program.cs* 中的 `<your endpoint URL>`。 例如︰ 
-      
-      `private const string EndpointUrl = "https://mysqlapicosmosdb.documents.azure.com:443/";`
-      
-   1. 複製**主要金鑰**值，然後將其貼到 *Program.cs* 中的 `<your primary key>`。 例如︰ 
-      
-      `private const string PrimaryKey = "19ZDNJAiYL26tmnRvoez6hmtIfBGwjun50PWRjNYMC2ig8Ob9hYk7Fq1RYSv8FcIYnh1TdBISvCh7s6yyb0000==";`
-   
-1. 在 `Main` 方法之後，新增一個名為 `GetStartedDemo` 的新非同步工作，該工作具現化一個名為 `client` 的新 `DocumentClient`。
-   
-   ```csharp
-      private async Task GetStartedDemo()
-      {
-        client = new DocumentClient(new Uri(EndpointUrl), PrimaryKey);
-      }
-   ```
-   
-1. 將下列程式碼新增至 `Main` 方法以執行 `GetStartedDemo` 工作。 `Main` 方法會攔截例外狀況並將它們寫入主控台。
-   
-   ```csharp
-      static void Main(string[] args)
-      {
-        try
+    ```csharp
+    public static async Task Main(string[] args)
+    {
+    }
+
+    // ADD THIS PART TO YOUR CODE
+    /*
+        Entry point to call methods that operate on Azure Cosmos DB resources in this sample
+    */
+    public async Task GetStartedDemoAsync()
+    {
+        // Create a new instance of the Cosmos Client
+        this.cosmosClient = new CosmosClient(EndpointUri, PrimaryKey);
+    }
+    ```
+
+    我們會使用 **GetStartedDemoAsync** 作為進入點，來呼叫方法以操作 Azure Cosmos DB 資源。
+
+1. 新增下列程式碼，以從 **Main** 方法執行 **GetStartedDemoAsync** 非同步工作。 **Main** 方法會攔截例外狀況並將它們寫入主控台。
+
+    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=Main)]
+
+1. 選取 F5 鍵執行您的應用程式。
+
+    主控台會顯示訊息：**示範結束，按任意鍵以結束。** 此訊息會確認您的應用程式已建立 Azure Cosmos DB 的連線。 您可以接著關閉主控台視窗。
+
+恭喜！ 您已成功連線至 Azure Cosmos DB 帳戶。
+
+## <a name="step-4-create-a-database"></a>步驟 4：建立資料庫
+
+資料庫是分割於多個容器之項目的邏輯容器。 [CosmosClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclient) 類別的 `CreateDatabaseIfNotExistsAsync` 或 `CreateDatabaseAsync` 方法可以建立資料庫。
+
+1. 將 `CreateDatabaseAsync` 方法複製並貼到 `GetStartedDemoAsync` 方法下方。
+
+    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=CreateDatabaseAsync&highlight=7)]
+
+    `CreateDatabaseAsync` 會以識別碼 `FamilyDatabase` 建立新資料庫 (如果該資料庫不存在)，此識別碼會指定於 `databaseId` 欄位中。
+
+1. 將程式碼複製並貼到 CosmosClient 具現化時的所在處底下，以呼叫您剛才新增的 **CreateDatabaseAsync** 方法。
+
+    ```csharp
+    public async Task GetStartedDemoAsync()
+    {
+        // Create a new instance of the Cosmos Client
+        this.cosmosClient = new CosmosClient(EndpointUri, PrimaryKey);
+
+        //ADD THIS PART TO YOUR CODE
+        await this.CreateDatabaseAsync();
+    }
+    ```
+
+    您的 *Program.cs* 應該會有如下樣貌，且其中已填入您的端點和主要金鑰。
+
+    ```csharp
+    using System;
+    using System.Threading.Tasks;
+    using System.Configuration;
+    using System.Collections.Generic;
+    using System.Net;
+    using Microsoft.Azure.Cosmos;
+
+    namespace CosmosGettingStartedTutorial
+    {
+        class Program
         {
-           Program p = new Program();
-           p.GetStartedDemo().Wait();
-        }
-        catch (DocumentClientException de)
-        {
-           Exception baseException = de.GetBaseException();
-           Console.WriteLine($"{de.StatusCode} error occurred: {de.Message}, Message: {baseException.Message}");
-        }
-        catch (Exception e)
-        {
-           Exception baseException = e.GetBaseException();
-           Console.WriteLine($"Error: {e.Message}, Message: {baseException.Message}");
-        }
-        finally
-        {
-           Console.WriteLine("End of demo, press any key to exit.");
-           Console.ReadKey();
-        }
-      }
-   ```
-   
-1. 按 **F5** 鍵執行您的應用程式。 
-   
-1. 當您在主控台視窗中看到訊息 [示範結束，按任意鍵退出]，表示連線成功。 按任意鍵關閉主控台視窗。 
+            // The Azure Cosmos DB endpoint for running this sample.
+            private static readonly string EndpointUri = "<your endpoint here>";
+            // The primary key for the Azure Cosmos account.
+            private static readonly string PrimaryKey = "<your primary key>";
 
-您已成功連線至您的 Azure Cosmos DB 帳戶。 現在，使用一些 Azure Cosmos DB 資源。  
+            // The Cosmos client instance
+            private CosmosClient cosmosClient;
 
-## <a name="create-a-database"></a>建立資料庫
+            // The database we will create
+            private Database database;
 
-Azure Cosmos DB [資料庫](databases-containers-items.md#azure-cosmos-databases)是分割給多個集合之 JSON 文件儲存體的邏輯容器。 您可以使用 `DocumentClient` 類別的 [CreateDatabaseIfNotExistsAsync](/dotnet/api/microsoft.azure.documents.client.documentclient.createdatabaseifnotexistsasync) 方法建立資料庫。 
+            // The container we will create.
+            private Container container;
 
-1. 在您新增用於建立資料庫的程式碼之前，請新增用於寫入主控台的協助程式方法。 在程式碼中的 `GetStartedDemo` 方法之後複製並貼上下列 `WriteToConsoleAndPromptToContinue` 方法。
-   
+            // The name of the database and container we will create
+            private string databaseId = "FamilyDatabase";
+            private string containerId = "FamilyContainer";
+
+            public static async Task Main(string[] args)
+            {
+                try
+                {
+                    Console.WriteLine("Beginning operations...");
+                    Program p = new Program();
+                    await p.GetStartedDemoAsync();
+                }
+                catch (CosmosException de)
+                {
+                    Exception baseException = de.GetBaseException();
+                    Console.WriteLine("{0} error occurred: {1}\n", de.StatusCode, de);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Error: {0}\n", e);
+                }
+                finally
+                {
+                    Console.WriteLine("End of demo, press any key to exit.");
+                    Console.ReadKey();
+                }
+            }
+
+            /// <summary>
+            /// Entry point to call methods that operate on Azure Cosmos DB resources in this sample
+            /// </summary>
+            public async Task GetStartedDemoAsync()
+            {
+                // Create a new instance of the Cosmos Client
+                this.cosmosClient = new CosmosClient(EndpointUri, PrimaryKey);
+                await this.CreateDatabaseAsync();
+            }
+
+            /// <summary>
+            /// Create the database if it does not exist
+            /// </summary>
+            private async Task CreateDatabaseAsync()
+            {
+                // Create a new database
+                this.database = await this.cosmosClient.CreateDatabaseIfNotExistsAsync(databaseId);
+                Console.WriteLine("Created Database: {0}\n", this.database.Id);
+            }
+        }
+    }
+    ```
+
+1. 選取 F5 鍵執行您的應用程式。
+
+   > [!NOTE]
+   > 如果您收到「503 服務無法使用例外狀況」錯誤，可能是因為直接連線模式所需的[連接埠](performance-tips.md#networking)遭到防火牆封鎖。 若要修正此問題，請開啟所需的連接埠，或使用閘道模式連線，如下列程式碼所示：
    ```csharp
-   private void WriteToConsoleAndPromptToContinue(string format, params object[] args)
-   {
-      Console.WriteLine(format, args);
-      Console.WriteLine("Press any key to continue...");
-      Console.ReadKey();
-   }
+     // Create a new instance of the Cosmos Client in Gateway mode
+     this.cosmosClient = new CosmosClient(EndpointUri, PrimaryKey, new CosmosClientOptions()
+            {
+                ConnectionMode = ConnectionMode.Gateway
+            });
    ```
-   
-1. 將下列這一行複製並貼上到 `client = new DocumentClient(new Uri(EndpointUrl), PrimaryKey);` 行之後的 `GetStartedDemo` 方法中。 此程式碼會建立名為 `FamilyDB` 的資料庫。
-   
-   ```csharp
-      await client.CreateDatabaseIfNotExistsAsync(new Database { Id = "FamilyDB" });
-   ```
-   
-1. 按 **F5** 鍵執行您的應用程式。
 
-您已成功建立 Azure Cosmos DB 資料庫。 透過在 Azure Cosmos DB 帳戶左側導覽中選取 [資料總管]，可以在 [Azure 入口網站](https://portal.azure.com)中查看資料庫。 
+恭喜！ 您已成功建立 Azure Cosmos 資料庫。  
 
-## <a id="CreateColl"></a>建立集合
+## <a name="step-5-create-a-container"></a><a id="CreateColl"></a>步驟 5：建立容器
 
-集合是 JSON 文件和相關聯 JavaScript 應用程式邏輯的容器。 您可以使用 `DocumentClient` 類別的 [CreateDocumentCollectionIfNotExistsAsync](/dotnet/api/microsoft.azure.documents.client.documentclient.createdocumentcollectionifnotexistsasync#overloads) 方法建立集合。 
-
-> [!IMPORTANT]
-> **CreateDocumentCollectionIfNotExistsAsync** 會建立含有保留輸送量且具有價格含意的新集合。 如需詳細資訊，請造訪[定價頁面](https://azure.microsoft.com/pricing/details/cosmos-db/)。
-> 
-
-1. 將下列程式碼複製並貼上到 `await client.CreateDatabaseIfNotExistsAsync(new Database { Id = "FamilyDB" });` 行之後的 `GetStartedDemo` 方法中。 此程式碼會建立名為 `FamilyCollection` 的文件集合。
-   
-   ```csharp
-      await client.CreateDocumentCollectionIfNotExistsAsync(UriFactory.CreateDatabaseUri("FamilyDB"), new DocumentCollection { Id = "FamilyCollection" });
-   ```
-   
-1. 按 **F5** 鍵執行您的應用程式。
-
-您已成功建立 Azure Cosmos DB 文件集合。 您可以在 Azure 入口網站中，於 [資料總管] 中的 **FamilyDB** 資料庫下查看該集合。  
-
-## <a id="CreateDoc"></a>建立 JSON 文件
-
-文件會是使用者定義的任意 JSON 內容。 文件必須將 ID 屬性序列化為 JSON 中的 `id`。 您可以使用 `DocumentClient` 類別的 [CreateDocumentAsync](/dotnet/api/microsoft.azure.documents.client.documentclient.createdocumentasync#overloads) 方法建立文件。 
-
-> [!TIP]
-> 如果您已經有想要儲存於資料庫中的資料，就可以使用 Azure Cosmos DB 的[資料移轉工具](import-data.md)匯入資料。
+> [!WARNING]
+> `CreateContainerIfNotExistsAsync` 方法會建立具有定價含意的新容器。 如需詳細資訊，請造訪 [定價頁面](https://azure.microsoft.com/pricing/details/cosmos-db/)。
+>
 >
 
-下列程式碼會建立兩個文件，並插入至您的資料庫集合中。 首先，建立一個 `Family` 類別，以及 `Parent`、`Child`、`Pet` 和 `Address` 子類別，以便在 `Family` 中使用。 然後，建立一個 `CreateFamilyDocumentIfNotExists` 方法，然後建立並插入兩個文件。 
+使用 `CosmosDatabase` 類別中的 [**CreateContainerIfNotExistsAsync**](/dotnet/api/microsoft.azure.cosmos.database.createcontainerifnotexistsasync?view=azure-dotnet#Microsoft_Azure_Cosmos_Database_CreateContainerIfNotExistsAsync_Microsoft_Azure_Cosmos_ContainerProperties_System_Nullable_System_Int32__Microsoft_Azure_Cosmos_RequestOptions_System_Threading_CancellationToken_) 或 [**CreateContainerAsync**](/dotnet/api/microsoft.azure.cosmos.database.createcontainerasync?view=azure-dotnet#Microsoft_Azure_Cosmos_Database_CreateContainerAsync_Microsoft_Azure_Cosmos_ContainerProperties_System_Nullable_System_Int32__Microsoft_Azure_Cosmos_RequestOptions_System_Threading_CancellationToken_) 函式可以建立容器。 容器中包含項目 (在 SQL API 中為 JSON 文件) 和 JavaScript 中相關聯的伺服器端應用程式邏輯，例如預存程序、使用者定義的函式和觸發程序。
 
-1. 在程式碼中的 `WriteToConsoleAndPromptToContinue` 方法之後複製並貼上下列 `Family`、`Parent`、`Child`、`Pet` 和 `Address` 類別。
-   
-   ```csharp
-    public class Family
+1. 將 `CreateContainerAsync` 方法複製並貼到 `CreateDatabaseAsync` 方法下方。 `CreateContainerAsync` 會以識別碼 `FamilyContainer` 建立新容器 (如果該容器不存在)，其做法是使用由 `LastName` 屬性分割的 `containerId` 欄位中指定的識別碼。
+
+    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=CreateContainerAsync&highlight=9)]
+
+1. 將程式碼複製並貼到 CosmosClient 具現化時的所在處底下，以呼叫您剛才新增的 **CreateContainer** 方法。
+
+    ```csharp
+    public async Task GetStartedDemoAsync()
     {
-        [JsonProperty(PropertyName = "id")]
-        public string Id { get; set; }
-        public string LastName { get; set; }
-        public Parent[] Parents { get; set; }
-        public Child[] Children { get; set; }
-        public Address Address { get; set; }
-        public bool IsRegistered { get; set; }
-        public override string ToString()
-        {
-            return JsonConvert.SerializeObject(this);
-        }
+        // Create a new instance of the Cosmos Client
+        this.cosmosClient = new CosmosClient(EndpointUri, PrimaryKey);
+        await this.CreateDatabaseAsync();
+
+        //ADD THIS PART TO YOUR CODE
+        await this.CreateContainerAsync();
     }
+    ```
 
-    public class Parent
+1. 選取 F5 鍵執行您的應用程式。
+
+恭喜！ 您已成功建立 Azure Cosmos 容器。  
+
+## <a name="step-6-add-items-to-the-container"></a><a id="CreateDoc"></a>步驟 6：將項目新增至容器
+
+`CosmosContainer`類別的 [**CreateItemAsync**](/dotnet/api/microsoft.azure.cosmos.container.createitemasync?view=azure-dotnet#Microsoft_Azure_Cosmos_Container_CreateItemAsync__1___0_System_Nullable_Microsoft_Azure_Cosmos_PartitionKey__Microsoft_Azure_Cosmos_ItemRequestOptions_System_Threading_CancellationToken_)方法可以建立項目。 使用 SQL API 時，預期的項目會是文件，這是使用者定義的任意 JSON 內容。 您現在可以將項目插入 Azure Cosmos 容器中。
+
+首先，我們來建立 `Family` 類別，以代表此範例中儲存在 Azure Cosmos DB 內的物件。 我們也會建立 `Family` 內使用的 `Parent`、`Child`、`Pet`、`Address` 子類別。 項目必須將 `Id` 屬性序列化為 JSON 中的 `id`。
+
+1. 選取 Ctrl+Shift+A 以開啟 [新增項目]。 將新的類別 `Family.cs` 新增至您的專案。
+
+    :::image type="content" source="./media/sql-api-get-started/cosmos-getting-started-add-family-class-2019.png" alt-text="將新的 Family.cs 類別新增至專案的螢幕擷取畫面":::
+
+1. 將 `Family`、`Parent`、`Child`、`Pet` 和 `Address` 類別複製並貼到 `Family.cs` 中。
+
+    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Family.cs)]
+
+
+1. 回到 *Program.cs*中，在 `CreateContainerAsync` 方法後面新增 `AddItemsToContainerAsync` 方法。
+
+    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=AddItemsToContainerAsync)]
+
+
+    程式碼會先檢查，確認沒有使用相同識別碼的項目存在。 我們會插入兩個項目，一個給「Andersen 家族」，另一個給「Wakefield 家族」。
+
+1. 在 `GetStartedDemoAsync` 方法中新增對 `AddItemsToContainerAsync` 的呼叫。
+
+    ```csharp
+    public async Task GetStartedDemoAsync()
     {
-        public string FamilyName { get; set; }
-        public string FirstName { get; set; }
+        // Create a new instance of the Cosmos Client
+        this.cosmosClient = new CosmosClient(EndpointUri, PrimaryKey);
+        await this.CreateDatabaseAsync();
+        await this.CreateContainerAsync();
+
+        //ADD THIS PART TO YOUR CODE
+        await this.AddItemsToContainerAsync();
     }
+    ```
 
-    public class Child
+1. 選取 F5 鍵執行您的應用程式。
+
+恭喜！ 您已成功建立兩個 Azure Cosmos 項目。  
+
+## <a name="step-7-query-azure-cosmos-db-resources"></a><a id="Query"></a>步驟 7：查詢 Azure Cosmos DB 資源
+
+Azure Cosmos DB 支援對儲存於每個容器中的 JSON 文件進行豐富查詢。 如需詳細資訊，請參閱[開始使用 SQL 查詢](sql-api-sql-query.md)。 下列範例程式碼示範如何對上一個步驟中插入的項目執行查詢。
+
+1. 在 `AddItemsToContainerAsync` 方法之後複製並貼上 `QueryItemsAsync` 方法。
+
+    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=QueryItemsAsync&highlight=10-11,17-18)]
+
+1. 在 ``GetStartedDemoAsync`` 方法中新增對 ``QueryItemsAsync`` 的呼叫。
+
+    ```csharp
+    public async Task GetStartedDemoAsync()
     {
-        public string FamilyName { get; set; }
-        public string FirstName { get; set; }
-        public string Gender { get; set; }
-        public int Grade { get; set; }
-        public Pet[] Pets { get; set; }
+        // Create a new instance of the Cosmos Client
+        this.cosmosClient = new CosmosClient(EndpointUri, PrimaryKey);
+        await this.CreateDatabaseAsync();
+        await this.CreateContainerAsync();
+        await this.AddItemsToContainerAsync();
+
+        //ADD THIS PART TO YOUR CODE
+        await this.QueryItemsAsync();
     }
+    ```
 
-    public class Pet
+1. 選取 F5 鍵執行您的應用程式。
+
+恭喜！ 您已成功查詢 Azure Cosmos 容器。
+
+## <a name="step-8-replace-a-json-item"></a><a id="ReplaceItem"></a>步驟 8：取代 JSON 項目
+
+現在，我們會更新 Azure Cosmos DB 中的項目。 我們會變更 `Family` 的 `IsRegistered` 屬性，以及其中一個子系的 `Grade`。
+
+1. 在 `QueryItemsAsync` 方法之後複製並貼上 `ReplaceFamilyItemAsync` 方法。
+
+    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=ReplaceFamilyItemAsync&highlight=15)]
+
+1. 在 `GetStartedDemoAsync` 方法中新增對 `ReplaceFamilyItemAsync` 的呼叫。
+
+    ```csharp
+    public async Task GetStartedDemoAsync()
     {
-        public string GivenName { get; set; }
+        // Create a new instance of the Cosmos Client
+        this.cosmosClient = new CosmosClient(EndpointUri, PrimaryKey);
+        await this.CreateDatabaseAsync();
+        await this.CreateContainerAsync();
+        await this.AddItemsToContainerAsync();
+        await this.QueryItemsAsync();
+
+        //ADD THIS PART TO YOUR CODE
+        await this.ReplaceFamilyItemAsync();
     }
+    ```
 
-    public class Address
+1. 選取 F5 鍵執行您的應用程式。
+
+恭喜！ 您已成功取代 Azure Cosmos 項目。
+
+## <a name="step-9-delete-item"></a><a id="DeleteDocument"></a>步驟 9：刪除項目
+
+現在，我們將刪除 Azure Cosmos DB 中的項目。
+
+1. 在 `ReplaceFamilyItemAsync` 方法之後複製並貼上 `DeleteFamilyItemAsync` 方法。
+
+    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=DeleteFamilyItemAsync&highlight=10)]
+
+1. 在 `GetStartedDemoAsync` 方法中新增對 `DeleteFamilyItemAsync` 的呼叫。
+
+    ```csharp
+    public async Task GetStartedDemoAsync()
     {
-        public string State { get; set; }
-        public string County { get; set; }
-        public string City { get; set; }
+        // Create a new instance of the Cosmos Client
+        this.cosmosClient = new CosmosClient(EndpointUri, PrimaryKey);
+        await this.CreateDatabaseAsync();
+        await this.CreateContainerAsync();
+        await this.AddItemsToContainerAsync();
+        await this.QueryItemsAsync();
+        await this.ReplaceFamilyItemAsync();
+
+        //ADD THIS PART TO YOUR CODE
+        await this.DeleteFamilyItemAsync();
     }
-   ```
-   
-1. 在您剛剛新增的 `Address` 類別之後複製並貼上下列 `CreateFamilyDocumentIfNotExists` 方法。
-   
-   ```csharp
-    private async Task CreateFamilyDocumentIfNotExists(string databaseName, string collectionName, Family family)
-    {
-        try
-        {
-            await client.ReadDocumentAsync(UriFactory.CreateDocumentUri(databaseName, collectionName, family.Id));
-            WriteToConsoleAndPromptToContinue($"Found {family.Id}");
-        }
-        catch (DocumentClientException de)
-        {
-            if (de.StatusCode == HttpStatusCode.NotFound)
-            {
-                await client.CreateDocumentAsync(UriFactory.CreateDocumentCollectionUri(databaseName, collectionName), family);
-                WriteToConsoleAndPromptToContinue($"Created Family {family.Id}");
-            }
-            else
-            {
-                throw;
-            }
-        }
-    }
-   ```
-   
-1. 在 `GetStartedDemo` 方法結尾處的 `await client.CreateDocumentCollectionIfNotExistsAsync` 這一行之後，複製並貼上下列程式碼。 此程式碼會建立並插入兩個文件，分別用於 Andersen 和 Wakefield 系列。
-   
-   ```csharp
-    Family andersenFamily = new Family
-    {
-        Id = "AndersenFamily",
-        LastName = "Andersen",
-        Parents = new Parent[]
-        {
-            new Parent { FirstName = "Thomas" },
-            new Parent { FirstName = "Mary Kay" }
-        },
-        Children = new Child[]
-        {
-            new Child
-            {
-                FirstName = "Henriette Thaulow",
-                Gender = "female",
-                Grade = 5,
-                Pets = new Pet[]
-                {
-                    new Pet { GivenName = "Fluffy" }
-                }
-            }
-        },
-        Address = new Address { State = "WA", County = "King", City = "Seattle" },
-        IsRegistered = true
-    };
+    ```
 
-    await CreateFamilyDocumentIfNotExists("FamilyDB", "FamilyCollection", andersenFamily);
+1. 選取 F5 鍵執行您的應用程式。
 
-    Family wakefieldFamily = new Family
-    {
-        Id = "WakefieldFamily",
-        LastName = "Wakefield",
-        Parents = new Parent[]
-        {
-            new Parent { FamilyName = "Wakefield", FirstName = "Robin" },
-            new Parent { FamilyName = "Miller", FirstName = "Ben" }
-        },
-        Children = new Child[]
-        {
-            new Child
-            {
-                FamilyName = "Merriam",
-                FirstName = "Jesse",
-                Gender = "female",
-                Grade = 8,
-                Pets = new Pet[]
-                {
-                    new Pet { GivenName = "Goofy" },
-                    new Pet { GivenName = "Shadow" }
-                }
-            },
-            new Child
-            {
-                FamilyName = "Miller",
-                FirstName = "Lisa",
-                Gender = "female",
-                Grade = 1
-            }
-        },
-        Address = new Address { State = "NY", County = "Manhattan", City = "NY" },
-        IsRegistered = false
-    };
+恭喜！ 您已成功刪除 Azure Cosmos 項目。
 
-    await CreateFamilyDocumentIfNotExists("FamilyDB", "FamilyCollection", wakefieldFamily);
-   ```
-   
-1. 按 **F5** 鍵執行您的應用程式。
+## <a name="step-10-delete-the-database"></a><a id="DeleteDatabase"></a>步驟 10：刪除資料庫
 
-您已成功建立兩個 Azure Cosmos DB 文件。 您可以在 Azure 入口網站中，於 [資料總管] 中的 **FamilyDB** 資料庫和 **FamilyCollection** 集合下查看該這些文件。   
+我們現在會刪除我們的資料庫。 刪除已建立的資料庫會移除資料庫和所有子系資源。 這些資源包括容器、項目，以及任何預存程式、使用者定義的函式和觸發程序。 我們也會處置 `CosmosClient` 執行個體。
 
-![說明帳戶、線上資料庫、集合和文件之間階層式關聯性的圖表](./media/sql-api-get-started/nosql-tutorial-account-database.png)
+1. 在 `DeleteFamilyItemAsync` 方法之後複製並貼上 `DeleteDatabaseAndCleanupAsync` 方法。
 
-## <a id="Query"></a>查詢 Azure Cosmos DB 資源
+    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=DeleteDatabaseAndCleanupAsync)]
 
-Azure Cosmos DB 支援針對儲存於集合中的 JSON 文件進行豐富[查詢](how-to-sql-query.md)。 下列範例程式碼會使用 LINQ 和 Azure Cosmos DB SQL 語法對範例文件執行查詢。
+1. 在 ``GetStartedDemoAsync`` 方法中新增對 ``DeleteDatabaseAndCleanupAsync`` 的呼叫。
 
-1. 在程式碼中的 `CreateFamilyDocumentIfNotExists` 方法之後複製並貼上下列 `ExecuteSimpleQuery` 方法。
-   
-   ```csharp
-    private void ExecuteSimpleQuery(string databaseName, string collectionName)
-    {
-        // Set some common query options.
-        FeedOptions queryOptions = new FeedOptions { MaxItemCount = -1 };
+    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=GetStartedDemoAsync&highlight=14)]
 
-        // Find the Andersen family by its LastName.
-        IQueryable<Family> familyQuery = client.CreateDocumentQuery<Family>(
-            UriFactory.CreateDocumentCollectionUri(databaseName, collectionName), queryOptions)
-            .Where(f => f.LastName == "Andersen");
+1. 選取 F5 鍵執行您的應用程式。
 
-        // Execute the query synchronously. 
-        // You could also execute it asynchronously using the IDocumentQuery<T> interface.
-        Console.WriteLine("Running LINQ query...");
-        foreach (Family family in familyQuery)
-        {
-            Console.WriteLine($"\tRead {family}");
-        }
+恭喜！ 您已成功刪除 Azure Cosmos 資料庫。
 
-        // Now execute the same query using direct SQL.
-        IQueryable<Family> familyQueryInSql = client.CreateDocumentQuery<Family>(
-            UriFactory.CreateDocumentCollectionUri(databaseName, collectionName),
-            "SELECT * FROM Family WHERE Family.LastName = 'Andersen'",
-            queryOptions);
+## <a name="step-11-run-your-c-console-application-all-together"></a><a id="Run"></a>步驟 11：一起執行您的 C# 主控台應用程式！
 
-        Console.WriteLine("Running direct SQL query...");
-        foreach (Family family in familyQueryInSql)
-        {
-            Console.WriteLine($"\tRead {family}");
-        }
+在 Visual Studio 中選取 F5，即可在偵錯模式下建置和執行應用程式。
 
-        Console.WriteLine("Press any key to continue ...");
-        Console.ReadKey();
-    }
-   ```
-   
-1. 在 `GetStartedDemo` 方法結尾處的 `await CreateFamilyDocumentIfNotExists("FamilyDB", "FamilyCollection", wakefieldFamily);` 這一行之後，複製並貼上下列程式碼。
-   
-   ```csharp
-      ExecuteSimpleQuery("FamilyDB", "FamilyCollection");
-   ```
-   
-1. 按 **F5** 鍵執行您的應用程式。
+您應該會在主控台視窗中看到整個應用程式的輸出。 輸出會顯示我們所新增查詢的結果。 其應該會與下列範例文字相符。
 
-上述查詢傳回 Andersen 系列的完整項目。 您已成功查詢 Azure Cosmos DB 集合。
+```cmd
+Beginning operations...
 
-下圖說明 Azure Cosmos DB SQL 查詢語法如何針對集合呼叫。 相同邏輯也適用於 LINQ 查詢。
+Created Database: FamilyDatabase
 
-![說明 NoSQL 教學課程用來建立 C# 主控台應用程式之查詢的範圍和意義的圖表](./media/sql-api-get-started/nosql-tutorial-collection-documents.png)
+Created Container: FamilyContainer
 
-因為 Azure Cosmos DB 查詢已侷限於單一集合，所以 SQL 查詢中的 [FROM](how-to-sql-query.md#FromClause) 關鍵字是選擇性的。 您可以將 `FROM Families f` 與 `FROM root r` 或您選擇的任何其他變數名稱交換。 依預設，Azure Cosmos DB 會推斷該 `Families`、`root` 或您選擇的變數名稱來參考目前的集合。
+Created item in database with id: Andersen.1 Operation consumed 11.43 RUs.
 
-## <a id="ReplaceDocument"></a>更新 JSON 文件
+Created item in database with id: Wakefield.7 Operation consumed 14.29 RUs.
 
-Azure Cosmos DB SQL API 支援更新和更換 JSON 文件。  
+Running query: SELECT * FROM c WHERE c.LastName = 'Andersen'
 
-1. 在程式碼中的 `ExecuteSimpleQuery` 方法之後複製並貼上下列 `ReplaceFamilyDocument` 方法。
-   
-   ```csharp
-    private async Task ReplaceFamilyDocument(string databaseName, string collectionName, string familyName, Family updatedFamily)
-    {
-       await client.ReplaceDocumentAsync(UriFactory.CreateDocumentUri(databaseName, collectionName, familyName), updatedFamily);
-       WriteToConsoleAndPromptToContinue($"Replaced Family {familyName}");
-    }
-   ```
-   
-1. 在 `GetStartedDemo` 方法結尾處的 `ExecuteSimpleQuery("FamilyDB", "FamilyCollection");` 這一行之後，複製並貼上下列程式碼。 程式碼會更新其中一個文件中的資料，然後再次執行查詢以顯示已變更的文件。
-   
-   ```csharp
-   // Update the Grade of the Andersen Family child
-   andersenFamily.Children[0].Grade = 6;
-   await ReplaceFamilyDocument("FamilyDB", "FamilyCollection", "AndersenFamily", andersenFamily);
-   ExecuteSimpleQuery("FamilyDB", "FamilyCollection");
-   ```
-   
-1. 按 **F5** 鍵執行您的應用程式。
+        Read {"id":"Andersen.1","LastName":"Andersen","Parents":[{"FamilyName":null,"FirstName":"Thomas"},{"FamilyName":null,"FirstName":"Mary Kay"}],"Children":[{"FamilyName":null,"FirstName":"Henriette Thaulow","Gender":"female","Grade":5,"Pets":[{"GivenName":"Fluffy"}]}],"Address":{"State":"WA","County":"King","City":"Seattle"},"IsRegistered":false}
 
-查詢輸出顯示 Andersen 系列的子系 `Grade` 從 `5` 更新為 `6`。 您已成功更新並取代 Azure Cosmos DB 文件。 
+Updated Family [Wakefield,Wakefield.7].
+        Body is now: {"id":"Wakefield.7","LastName":"Wakefield","Parents":[{"FamilyName":"Wakefield","FirstName":"Robin"},{"FamilyName":"Miller","FirstName":"Ben"}],"Children":[{"FamilyName":"Merriam","FirstName":"Jesse","Gender":"female","Grade":6,"Pets":[{"GivenName":"Goofy"},{"GivenName":"Shadow"}]},{"FamilyName":"Miller","FirstName":"Lisa","Gender":"female","Grade":1,"Pets":null}],"Address":{"State":"NY","County":"Manhattan","City":"NY"},"IsRegistered":true}
 
-## <a id="DeleteDocument"></a>刪除 JSON 文件
+Deleted Family [Wakefield,Wakefield.7]
 
-Azure Cosmos DB SQL API 支援刪除 JSON 文件。  
+Deleted Database: FamilyDatabase
 
-1. 在 `ReplaceFamilyDocument` 方法之後複製並貼上下列 `DeleteFamilyDocument` 方法。
-   
-   ```csharp
-    private async Task DeleteFamilyDocument(string databaseName, string collectionName, string documentName)
-    {
-        await client.DeleteDocumentAsync(UriFactory.CreateDocumentUri(databaseName, collectionName, documentName));
-        Console.WriteLine($"Deleted Family {documentName}");
-    }
-   ```
-   
-1. 在 `GetStartedDemo` 方法結尾處的第二個 `ExecuteSimpleQuery("FamilyDB", "FamilyCollection");` 行之後，複製並貼上下列程式碼。
-   
-   ```csharp
-   await DeleteFamilyDocument("FamilyDB", "FamilyCollection", "AndersenFamily");
-   ```
-   
-1. 按 **F5** 鍵執行您的應用程式。
-
-您已成功刪除 Azure Cosmos DB 文件。 
-
-## <a id="DeleteDatabase"></a>刪除資料庫
-
-刪除您所建立的資料庫以移除它及其所有子資源，包括集合和文件。 
-
-1. 在 `GetStartedDemo` 方法結尾處的 `await DeleteFamilyDocument("FamilyDB", "FamilyCollection", "AndersenFamily");` 這一行之後，複製並貼上下列程式碼。 
-   
-   ```csharp
-   // Clean up - delete the database
-   await client.DeleteDatabaseAsync(UriFactory.CreateDatabaseUri("FamilyDB"));
-   ```
-   
-1. 按 **F5** 鍵執行您的應用程式。
-
-您已成功刪除 Azure Cosmos DB 資料庫。 您可以在 [資料總管] 中看到 Azure Cosmos DB 帳戶中已刪除 FamilyDB 資料庫。 
-
-## <a id="Run"></a>執行整個 C# 主控台應用程式
-
-在 Visual Studio 中，按 **F5** 鍵即可在偵錯模式下建置和執行完整的 C# 主控台應用程式。 您應該會在主控台視窗中看到下列輸出：
-
-```bash
-Created Family AndersenFamily
-Press any key to continue ...
- Created Family WakefieldFamily
-Press any key to continue ...
- Running LINQ query...
-        Read {"id":"AndersenFamily","LastName":"Andersen","Parents":[{"FamilyName":null,"FirstName":"Thomas"},{"FamilyName":null,"FirstName":"Mary Kay"}],"Children":[{"FamilyName":null,"FirstName":"Henriette Thaulow","Gender":"female","Grade":5,"Pets":[{"GivenName":"Fluffy"}]}],"Address":{"State":"WA","County":"King","City":"Seattle"},"IsRegistered":true}
-Running direct SQL query...
-        Read {"id":"AndersenFamily","LastName":"Andersen","Parents":[{"FamilyName":null,"FirstName":"Thomas"},{"FamilyName":null,"FirstName":"Mary Kay"}],"Children":[{"FamilyName":null,"FirstName":"Henriette Thaulow","Gender":"female","Grade":5,"Pets":[{"GivenName":"Fluffy"}]}],"Address":{"State":"WA","County":"King","City":"Seattle"},"IsRegistered":true}
-Press any key to continue ...
- Replaced Family AndersenFamily
-Press any key to continue ...
- Running LINQ query...
-        Read {"id":"AndersenFamily","LastName":"Andersen","Parents":[{"FamilyName":null,"FirstName":"Thomas"},{"FamilyName":null,"FirstName":"Mary Kay"}],"Children":[{"FamilyName":null,"FirstName":"Henriette Thaulow","Gender":"female","Grade":6,"Pets":[{"GivenName":"Fluffy"}]}],"Address":{"State":"WA","County":"King","City":"Seattle"},"IsRegistered":true}
-Running direct SQL query...
-        Read {"id":"AndersenFamily","LastName":"Andersen","Parents":[{"FamilyName":null,"FirstName":"Thomas"},{"FamilyName":null,"FirstName":"Mary Kay"}],"Children":[{"FamilyName":null,"FirstName":"Henriette Thaulow","Gender":"female","Grade":6,"Pets":[{"GivenName":"Fluffy"}]}],"Address":{"State":"WA","County":"King","City":"Seattle"},"IsRegistered":true}
-Press any key to continue ...
- Deleted Family AndersenFamily
 End of demo, press any key to exit.
 ```
 
-恭喜！ 您已完成此教學課程，並擁有一個運作中的 C# 主控台應用程式，用於建立、查詢、更新和刪除 Azure Cosmos DB 資源。  
+恭喜！ 您已經完成本教學課程，並擁有運作中的 C# 主控台應用程式！
+
+## <a name="get-the-complete-tutorial-solution"></a><a id="GetSolution"></a>取得完整的教學課程解決方案
+
+如果您沒有時間完成本教學課程中的步驟，或只想要下載程式碼範例，您可加以下載。
+
+若要建置 `GetStarted` 解決方案，您需要滿足下列必要條件：
+
+* 使用中的 Azure 帳戶。 如果您沒有帳戶，您可以註冊 [免費帳戶](https://azure.microsoft.com/free/)。
+* [Azure Cosmos DB 帳戶][cosmos-db-create-account]。
+* 您可以在 GitHub 上找到 [GetStarted](https://github.com/Azure-Samples/cosmos-dotnet-getting-started) 方案。
+
+若要在 Visual Studio 中還原 Azure Cosmos DB .NET SDK 的參考，請在 [方案總管] 中的解決方案上按一下滑鼠右鍵，然後選取 [還原 NuGet 套件]。 接下來，在 *App.config* 檔案中，更新 `EndPointUri` 和 `PrimaryKey` 值，如[步驟 3：連線至 Azure Cosmos DB 帳戶](#Connect)所述。
+
+建置就這麼容易，繼續努力！
 
 ## <a name="next-steps"></a>後續步驟
-* 若要深入了解 Azure Cosmos DB，請參閱[歡迎使用 Azure Cosmos DB](introduction.md)。
-* 如需更複雜的 ASP.NET MVC 教學課程，請參閱 [ASP.NET MVC 教學課程：使用 Azure Cosmos DB 進行 Web 應用程式開發](sql-api-dotnet-application.md)。
-* 若要執行 Azure Cosmos DB 的相關規模和效能測試，請參閱 [Azure Cosmos DB 的相關效能和規模測試](performance-testing.md)。
-* 若要了解如何監視 Azure Cosmos DB 要求、使用量及儲存體，請參閱[監視帳戶](monitor-accounts.md)。
-* 在 [Query Playground](https://www.documentdb.com/sql/demo) \(英文\) 中，針對範例資料集執行查詢。
 
+* 需要更複雜的 ASP.NET MVC 教學課程嗎？ 請參閱[教學課程：使用 .NET SDK，透過 Azure Cosmos DB 開發 ASP NET Core MVC Web 應用程式](sql-api-dotnet-application.md)。
+* 想要使用 Azure Cosmos DB 進行規模和效能測試嗎？ 請參閱 [Azure Cosmos DB 的效能和級別測試](performance-testing.md)。
+* 若要了解如何監視 Azure Cosmos DB 要求、使用量及儲存體，請參閱[監視 Azure Cosmos DB 中的效能和儲存體計量](monitor-accounts.md)。
+* 若要對我們的範例資料集執行查詢，請參閱 [Query Playground](https://www.documentdb.com/sql/demo)。
+* 若要深入了解 Azure Cosmos DB，請參閱[歡迎使用 Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/introduction)。
+
+[cosmos-db-create-account]: create-sql-api-java.md#create-a-database-account

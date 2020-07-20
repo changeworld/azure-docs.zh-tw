@@ -1,25 +1,18 @@
 ---
-title: 憑證和 App Service 環境 - Azure
-description: 說明與 ASE 憑證相關的許多主題
-services: app-service
-documentationcenter: na
+title: 憑證系結
+description: 說明與 App Service 環境上憑證相關的許多主題。 瞭解如何在 ASE 中的單一租使用者應用程式上使用憑證系結。
 author: ccompy
-manager: stefsch
 ms.assetid: 9e21a7e4-2436-4e81-bb05-4a6ba70eeaf7
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/29/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: bcb0c806d916b9dff4461cad829a1d75e8df7cf6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 73ee2165b8750b79bc33c76604ffed295fd1ea48
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60766262"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85831874"
 ---
 # <a name="certificates-and-the-app-service-environment"></a>憑證和 App Service Environment 
 
@@ -29,12 +22,12 @@ ASE 是單一租用戶系統。 因為它是單一租用戶，所以有一些功
 
 ## <a name="ilb-ase-certificates"></a>ILB ASE 憑證 
 
-如果您使用外部 ASE，則在 [appname].[asename].p.azurewebsites.net 可存取您的應用程式。 根據預設會使用遵循該格式的憑證來建立所有 ASE，甚至是 ILB ASE。 當您有 ILB ASE 時，可根據建立 ILB ASE 時您指定的網域名稱來存取應用程式。 為了讓應用程式支援 SSL，您需要上傳憑證。 使用內部憑證授權單位、向外部簽發者購買憑證、或使用自我簽署的憑證，取得有效的 SSL 憑證。 
+如果您使用外部 ASE，則在 [appname].[asename].p.azurewebsites.net 可存取您的應用程式。 根據預設會使用遵循該格式的憑證來建立所有 ASE，甚至是 ILB ASE。 當您有 ILB ASE 時，可根據建立 ILB ASE 時您指定的網域名稱來存取應用程式。 為了讓應用程式支援 TLS，您需要上傳憑證。 使用內部憑證授權單位單位、向外部簽發者購買憑證，或使用自我簽署憑證，取得有效的 TLS/SSL 憑證。 
 
 有兩個選項可設定您的 ILB ASE 的憑證。  您可以設定 ILB ASE 的萬用字元預設憑證，或在 ASE 中的個別 Web 應用程式上設定憑證。  無論您的選擇為何，都需要正確設定下列憑證屬性︰
 
-- **主體：** 針對萬用字元 ILB ASE 憑證，此屬性必須設定為 *.[your-root-domain-here]。 如果在建立應用程式的憑證，它應該是 [appname].[your-root-domain-here]
-- **主體別名：** 針對萬用字元 ILB ASE 憑證，此屬性必須同時包含 *.[your-root-domain-here] 和 *.scm.[your-root-domain-here]。 如果在建立應用程式的憑證，它應該是 [appname].[your-root-domain-here] 和 [appname].scm.[your-root-domain-here]。
+- **Subject**︰針對萬用字元 ILB ASE 憑證，這個屬性必須設為 *.[your-root-domain-here]。 如果在建立應用程式的憑證，它應該是 [appname].[your-root-domain-here]
+- **Subject Alternative Name**：針對萬用字元 ILB ASE 憑證，這個屬性必須包含 *.[your-root-domain-here] 和 *.scm.[your-root-domain-here]。 如果在建立應用程式的憑證，它應該是 [appname].[your-root-domain-here] 和 [appname].scm.[your-root-domain-here]。
 
 第三種變化，您可以建立 ILB ASE 憑證，其中包含憑證 SAN 中的所有個別應用程式名稱，而不是使用萬用字元參考。 這個方法的問題在於，您必須事先知道您要放在 ASE 中的應用程式名稱，或者您需要持續更新 ILB ASE 憑證。
 
@@ -48,14 +41,17 @@ ASE 是單一租用戶系統。 因為它是單一租用戶，所以有一些功
 
 如果您想要快速建立自我簽署的憑證以進行測試，可以使用 PowerShell 的下列位元：
 
-    $certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "*.internal-contoso.com","*.scm.internal-contoso.com"
+```azurepowershell-interactive
+$certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "*.internal-contoso.com","*.scm.internal-contoso.com"
 
-    $certThumbprint = "cert:\localMachine\my\" + $certificate.Thumbprint
-    $password = ConvertTo-SecureString -String "CHANGETHISPASSWORD" -Force -AsPlainText
+$certThumbprint = "cert:\localMachine\my\" + $certificate.Thumbprint
+$password = ConvertTo-SecureString -String "CHANGETHISPASSWORD" -Force -AsPlainText
 
-    $fileName = "exportedcert.pfx"
-    Export-PfxCertificate -cert $certThumbprint -FilePath $fileName -Password $password     
+$fileName = "exportedcert.pfx"
+Export-PfxCertificate -cert $certThumbprint -FilePath $fileName -Password $password
+```
 
+建立自我簽署憑證時，您必須確定主體名稱的格式為 CN = {ASE_NAME_HERE} _InternalLoadBalancingASE。
 
 ## <a name="application-certificates"></a>應用程式憑證 
 
@@ -65,7 +61,7 @@ ASE 是單一租用戶系統。 因為它是單一租用戶，所以有一些功
 - 以 IP 為主的 SSL，這僅適用於外部 ASE。  ILB ASE 不支援以 IP 為主的 SSL。
 - KeyVault 裝載的憑證 
 
-在 App Service SSL 教學課程 https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-ssl 中，提供了上傳和管理這些憑證的指示。  如果您只要設定憑證，以符合您已指派給 Web 應用程式的自訂網域名稱，這些指示便已足夠。 如果您要上傳具有預設網域名稱的 ILB ASE Web 應用程式憑證，則請指定憑證 SAN 中的 scm 網站，如先前所述。 
+在[Azure App Service 中新增 TLS/SSL 憑證](../configure-ssl-certificate.md)中提供上傳和管理這些憑證的指示。  如果您只要設定憑證，以符合您已指派給 Web 應用程式的自訂網域名稱，這些指示便已足夠。 如果您要上傳具有預設網域名稱的 ILB ASE Web 應用程式憑證，則請指定憑證 SAN 中的 scm 網站，如先前所述。 
 
 ## <a name="tls-settings"></a>TLS 設定 
 
@@ -85,15 +81,20 @@ ASE 是單一租用戶系統。 因為它是單一租用戶，所以有一些功
 
     84EC242A4EC7957817B8E48913E50953552DAFA6,6A5C65DC9247F762FE17BF8D4906E04FE6B31819
 
-憑證將可由所有應用程式使用，而這些應用程式與設定該設定的應用程式具有相同 App Service 方案。 如果您需要它可用於不同 App Service 方案中的應用程式，必須在該 App Service 方案的應用程式中，重複應用程式設定作業。 若要確定已設定憑證，請移至 Kudu 主控台，並在 PowerShell 偵錯主控台發出此命令 dir cert:\localmachine\root。 
+憑證將可由所有應用程式使用，而這些應用程式與設定該設定的應用程式具有相同 App Service 方案。 如果您需要它可用於不同 App Service 方案中的應用程式，必須在該 App Service 方案的應用程式中，重複應用程式設定作業。 若要檢查是否已設定憑證，請移至 Kudu 主控台，並在 PowerShell debug 主控台中發出下列命令：
+
+```azurepowershell-interactive
+dir cert:\localmachine\root
+```
 
 若要執行測試，您可以建立自我簽署的憑證，並使用下列 PowerShell 產生 *.cer* 檔案： 
 
-    $certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "*.internal-contoso.com","*.scm.internal-contoso.com
+```azurepowershell-interactive
+$certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "*.internal-contoso.com","*.scm.internal-contoso.com"
 
-    $certThumbprint = "cert:\localMachine\my\" + $certificate.Thumbprint
-    $password = ConvertTo-SecureString -String "CHANGETHISPASSWORD" -Force -AsPlainText
+$certThumbprint = "cert:\localMachine\my\" + $certificate.Thumbprint
+$password = ConvertTo-SecureString -String "CHANGETHISPASSWORD" -Force -AsPlainText
 
-    $fileName = "exportedcert.cer"
-    export-certificate -Cert $certThumbprint -FilePath $fileName -Type CERT
-
+$fileName = "exportedcert.cer"
+export-certificate -Cert $certThumbprint -FilePath $fileName -Type CERT
+```

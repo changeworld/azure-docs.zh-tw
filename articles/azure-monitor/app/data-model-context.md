@@ -1,23 +1,14 @@
 ---
 title: Azure Application Insights 遙測資料模型 - 遙測內容 | Microsoft Docs
 description: Application Insights 遙測內容資料模型
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: TBD
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.reviewer: sergkanz
-ms.author: mbullwin
-ms.openlocfilehash: 7c1f47c9b88bd68b326b3c8923ba5b81d425c3e4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 8a2e3296643b13a54c4fceb11f044a2808cf2877
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60900705"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77671858"
 ---
 # <a name="telemetry-context-application-insights-data-model"></a>遙測內容：Application Insights 資料模型
 
@@ -93,14 +84,14 @@ ms.locfileid: "60900705"
 
 ## <a name="authenticated-user-id"></a>已驗證的使用者識別碼
 
-已驗證的使用者識別碼。與匿名使用者識別碼相反，此欄位代表具有易記名稱的使用者。 由於其 PII 資訊，根據預設，大部分的 SDK 都不會收集該資訊。
+已驗證的使用者識別碼。相對於匿名使用者識別碼，此欄位代表具有易記名稱的使用者。 由於其 PII 資訊，根據預設，大部分的 SDK 都不會收集該資訊。
 
 最大長度：1024
 
 
 ## <a name="account-id"></a>帳戶識別碼
 
-在多租用戶應用程式中，此為使用者使用的帳戶識別碼或名稱。 範例包括 Azure 入口網站的訂用帳戶識別碼或部落格平台的部落格名稱。
+在多租用戶應用程式中，此為使用者使用的帳戶識別碼或名稱。 範例可能是 Azure 入口網站的訂用帳戶識別碼，或用於建立日誌平臺的 blog 名稱。
 
 最大長度：1024
 
@@ -121,7 +112,7 @@ ms.locfileid: "60900705"
 
 ## <a name="internal-sdk-version"></a>內部：SDK 版本
 
-SDK 版本。 如需相關資訊，請參閱 https://github.com/Microsoft/ApplicationInsights-Home/blob/master/SDK-AUTHORING.md#sdk-version-specification。
+SDK 版本。 如需相關資訊，請參閱[這篇文章](https://github.com/microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/SDK-VERSIONS.md)。
 
 最大長度：64
 

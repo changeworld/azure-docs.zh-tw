@@ -1,0 +1,147 @@
+- name: 基本概念文件
+  href: index.yml
+- name: 概觀
+  items:
+    - name: Azure 安全性簡介
+      href: overview.md
+    - name: 雲端中共同承擔的責任
+      href: shared-responsibility.md
+- name: 保護 Azure 中的工作負載
+  items:
+    - name: 安全性技術功能
+      href: technical-capabilities.md
+    - name: 內建安全性控制
+      href: security-controls.md
+- name: Azure 平台與基礎結構
+  items:
+    - name: 基礎結構安全性
+      href: infrastructure.md
+      items:
+        - name: 實體安全性
+          href: physical-security.md
+        - name: 可用性
+          href: infrastructure-availability.md
+        - name: 元件和界線
+          href: infrastructure-components.md
+        - name: 網路架構
+          displayName: 'ssl, https'
+          href: infrastructure-network.md
+        - name: 生產網路
+          href: production-network.md
+        - name: SQL Database
+          href: infrastructure-sql.md
+        - name: 作業
+          href: infrastructure-operations.md
+        - name: 監視
+          href: infrastructure-monitoring.md
+        - name: 完整性
+          href: infrastructure-integrity.md
+        - name: 資料保護
+          href: protection-customer-data.md
+    - name: Azure 雲端中的隔離
+      href: isolation-choices.md
+- name: 身分識別管理
+  items:
+    - name: 安全性概觀
+      href: identity-management-overview.md
+    - name: 最佳作法
+      href: identity-management-best-practices.md
+    - name: 安全性檢查清單
+      href: steps-secure-identity.md
+    - name: 選擇無密碼
+      href: ad-passwordless.md
+- name: 網路安全性
+  items:
+    - name: 安全性概觀
+      href: network-overview.md
+    - name: 最佳作法
+      href: network-best-practices.md
+    - name: DDoS保護
+      href: ddos-best-practices.md
+    - name: 懸空 DNS 和子網域接管
+      href: subdomain-takeover.md
+    - name: 安全混合式網路架構
+      href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
+- name: IaaS 安全性
+  items:
+    - name: Microsoft Antimalware
+      href: antimalware.md
+    - name: 虛擬機器安全性概觀
+      href: virtual-machines-overview.md
+    - name: 最佳做法 - IaaS 工作負載
+      href: iaas.md
+    - name: Azure 市集映像
+      href: azure-marketplace-images.md
+- name: 資料安全性、加密和儲存體
+  items:
+    - name: 資料安全性與加密
+      href: encryption-overview.md
+    - name: 磁碟加密
+      items:
+        - name: 最佳作法
+          href: data-encryption-best-practices.md
+        - name: 資料靜態加密
+          href: encryption-atrest.md
+        - name: 適用於虛擬機器的 Azure 磁碟加密
+          href: azure-disk-encryption-vms-vmss.md
+    - name: 資料庫安全性
+      items:
+        - name: 概觀
+          href: ../../sql-database/sql-database-security-overview.md
+        - name: 最佳作法
+          href: ../../sql-database/sql-database-security-best-practice.md
+        - name: 安全性檢查清單
+          href: database-security-checklist.md
+    - name: 儲存體安全性指南
+      href: 'https://docs.microsoft.com/azure/storage/common/storage-security-guide?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
+    - name: 客戶加密箱
+      href: customer-lockbox-overview.md
+    - name: 客戶加密箱的安全性基準
+      href: customer-lockbox-security-baseline.md
+- name: Application
+  items:
+    - name: PaaS
+      href: paas-deployments.md
+      items:
+        - name: 適用於 PaaS 的 Azure App Service
+          href: paas-applications-using-app-services.md
+        - name: 適用於 PaaS 的 Azure 儲存體
+          href: paas-applications-using-storage.md
+        - name: 適用於 PaaS 的資料庫最佳做法
+          href: paas-applications-using-sql.md
+    - name: Azure Service Fabric 安全性
+      href: service-fabric-best-practices.md
+- name: 監視、稽核與作業
+  items:
+    - name: 進階威脅防護
+      href: threat-detection.md
+    - name: Azure 記錄與稽核
+      href: log-audit.md
+    - name: 安全性管理和監視
+      href: management-monitoring-overview.md
+    - name: 增強遠端管理
+      href: management.md
+    - name: 作業安全性
+      items:
+        - name: 概觀
+          href: operational-overview.md
+        - name: 最佳作法
+          href: operational-best-practices.md
+        - name: 安全性檢查清單
+          href: operational-checklist.md
+- name: 資源
+  items:
+    - name: Azure 安全性服務
+      href: services-technologies.md
+    - name: 安全性白皮書
+      href: 'https://azure.microsoft.com/resources/whitepapers/search/?term=security&type=WhitePaperResource'
+    - name: 最佳作法
+      href: best-practices-and-patterns.md
+    - name: 網路安全性諮詢
+      href: cyber-services.md
+    - name: 記錄安全性事件支援票證
+      href: event-support-ticket.md
+    - name: 滲透測試
+      href: pen-testing.md
+    - name: Azure 網域
+      href: azure-domains.md

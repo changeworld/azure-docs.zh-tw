@@ -1,27 +1,27 @@
 ---
-title: 關於 Azure 中使用 Azure Site Recovery 進行 Azure 災害復原的網路功能 | Microsoft Docs
+title: 關於使用 Azure Site Recovery 的 Azure VM 嚴重損壞修復中的網路功能
 description: 提供使用 Azure Site Recovery 複寫 Azure VM 的網路功能概觀。
 services: site-recovery
 author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 3/29/2019
-ms.author: sujayt
-ms.openlocfilehash: a6c9c690efe8b75cd1a939de1c68cf4e5bd40d70
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 3/13/2020
+ms.author: sutalasi
+ms.openlocfilehash: f9e2d82130ae188d269847d0e0236ea0e33d00dc
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60789731"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131386"
 ---
-# <a name="about-networking-in-azure-to-azure-replication"></a>關於 Azure 中進行 Azure 複寫的網路功能
+# <a name="about-networking-in-azure-vm-disaster-recovery"></a>關於 Azure VM 嚴重損壞修復中的網路功能
 
 
 
 本文提供您使用 [Azure Site Recovery](site-recovery-overview.md)，將 Azure VM 從一個區域複寫和復原到另一個區域時的網路功能指引。
 
-## <a name="before-you-start"></a>開始之前
+## <a name="before-you-start"></a>在您開始使用 Intune 之前
 
 了解 Site Recovery 如何針對[這種情況](azure-to-azure-architecture.md)提供災害復原。
 
@@ -46,69 +46,29 @@ ms.locfileid: "60789731"
 如果您使用以 URL 為基礎的防火牆 Proxy 來控制輸出連線能力，請允許這些 Site Recovery URL：
 
 
-**URL** | **詳細資料**  
+**URL** | **詳細資料**
 --- | ---
-*.blob.core.windows.net | 需要此項目方可從 VM 將資料寫入來源地區的快取儲存體帳戶中。 如果您知道所有快取儲存體帳戶為您的 Vm，您可以加入白名單的特定儲存體帳戶 Url (例如： cache1.blob.core.windows.net 和 cache2.blob.core.windows.net) 而不是 *.blob.core.windows.net
+*.blob.core.windows.net | 需要此項目方可從 VM 將資料寫入來源地區的快取儲存體帳戶中。 如果您知道 Vm 的所有快取儲存體帳戶，您可以允許存取特定的儲存體帳戶 Url （例如： cache1.blob.core.windows.net 和 cache2.blob.core.windows.net），而不是 *. blob.core.windows.net
 login.microsoftonline.com | 需要此項目方可進行 Site Recovery 服務 URL 的授權和驗證。
-*.hypervrecoverymanager.windowsazure.com | 需要此項目方可從 VM 進行 Site Recovery 服務通訊。 如果您的防火牆 proxy 支援 Ip，您可以使用對應 ' 站台復原 IP'。
-*.servicebus.windows.net | 需要此項目方可從 VM 寫入 Site Recovery 監視和診斷資料。 如果您的防火牆 proxy 支援 Ip，您可以使用對應 ' Site Recovery 監視 IP'。
+*.hypervrecoverymanager.windowsazure.com | 需要此項目方可從 VM 進行 Site Recovery 服務通訊。
+*.servicebus.windows.net | 需要此項目方可從 VM 寫入 Site Recovery 監視和診斷資料。
+*.vault.azure.net | 允許存取透過入口網站啟用已啟用 ADE 之虛擬機器的複寫
+*. automation.ext.azure.com | 允許透過入口網站為複寫的專案啟用自動升級行動代理程式
 
-## <a name="outbound-connectivity-for-ip-address-ranges"></a>IP 位址範圍的輸出連線能力
+## <a name="outbound-connectivity-using-service-tags"></a>使用服務標記的輸出連線能力
 
-如果您使用以 IP 為基礎的防火牆 Proxy 或 NSG 規則來控制輸出連線能力，就必須允許這些 IP 範圍。
+如果您使用 NSG 來控制輸出連線能力，則必須允許這些服務標記。
 
-- 對應至來源區域儲存體帳戶的所有 IP 位址範圍
+- 針對來源區域中的儲存體帳戶：
     - 為這個來源地區建立[儲存體服務標記](../virtual-network/security-overview.md#service-tags)型 NSG 規則。
     - 允許這些位址，方可從 VM 將該資料寫入到快取儲存體帳戶。
 - 建立 [Azure Active Directory (AAD) 服務標籤](../virtual-network/security-overview.md#service-tags)型 NSG 規則，以允許存取對應至 AAD 的所有 IP 位址
-    - 如果未來將新的位址新增至 Azure Active Directory (AAD)，您必須建立新的 NSG 規則。
-- Site Recovery 服務端點 IP 位址 - 在 [XML 檔案](https://aka.ms/site-recovery-public-ips)中提供，並依據您的目標位置。
+- 針對目的地區域建立以 EventsHub 服務標記為基礎的 NSG 規則，以允許存取 Site Recovery 監視。
+- 建立以 AzureSiteRecovery 服務標記為基礎的 NSG 規則，以允許存取任何區域中的 Site Recovery 服務。
+- 建立以 AzureKeyVault 服務標記為基礎的 NSG 規則。 只有在透過入口網站啟用啟用 ADE 的虛擬機器複寫時，才需要這項功能。
+- 建立以 GuestAndHybridManagement 服務標記為基礎的 NSG 規則。 只有在透過入口網站啟用複寫專案的行動代理程式自動升級時，才需要進行這項工作。
 - 建議您在測試 NSG 上建立必要的 NSG 規則，並確認沒有問題後，再於生產 NSG 上建立規則。
 
-
-站台復原 IP 位址範圍如下：
-
-   **目標** | **Site Recovery IP** |  **Site Recovery 監視 IP**
-   --- | --- | ---
-   東亞 | 52.175.17.132 | 13.94.47.61
-   東南亞 | 52.187.58.193 | 13.76.179.223
-   印度中部 | 52.172.187.37 | 104.211.98.185
-   印度南部 | 52.172.46.220 | 104.211.224.190
-   美國中北部 | 23.96.195.247 | 168.62.249.226
-   北歐 | 40.69.212.238 | 52.169.18.8
-   西歐 | 52.166.13.64 | 40.68.93.145
-   美國東部 | 13.82.88.226 | 104.45.147.24
-   美國西部 | 40.83.179.48 | 104.40.26.199
-   美國中南部 | 13.84.148.14 | 104.210.146.250
-   美國中部 | 40.69.144.231 | 52.165.34.144
-   美國東部 2 | 52.184.158.163 | 40.79.44.59
-   日本東部 | 52.185.150.140 | 138.91.1.105
-   日本西部 | 52.175.146.69 | 138.91.17.38
-   巴西南部 | 191.234.185.172 | 23.97.97.36
-   澳洲東部 | 104.210.113.114 | 191.239.64.144
-   澳大利亞東南部 | 13.70.159.158 | 191.239.160.45
-   加拿大中部 | 52.228.36.192 | 40.85.226.62
-   加拿大東部 | 52.229.125.98 | 40.86.225.142
-   美國中西部 | 52.161.20.168 | 13.78.149.209
-   美國西部 2 | 52.183.45.166 | 13.66.228.204
-   英國西部 | 51.141.3.203 | 51.141.14.113
-   英國南部 | 51.140.43.158 | 51.140.189.52
-   英國南部 2 | 13.87.37.4| 13.87.34.139
-   英國北部 | 51.142.209.167 | 13.87.102.68
-   南韓中部 | 52.231.28.253 | 52.231.32.85
-   南韓南部 | 52.231.198.185 | 52.231.200.144
-   法國中部 | 52.143.138.106 | 52.143.136.55
-   法國南部 | 52.136.139.227 |52.136.136.62
-   澳大利亞中部| 20.36.34.70 | 20.36.46.142
-   澳大利亞中部 2| 20.36.69.62 | 20.36.74.130
-   南非西部 | 102.133.72.51 | 102.133.26.128
-   南非北部 | 102.133.160.44 | 102.133.154.128
-   美國政府維吉尼亞州 | 52.227.178.114 | 23.97.0.197
-   US Gov 愛荷華州 | 13.72.184.23 | 23.97.16.186
-   美國政府亞利桑那州 | 52.244.205.45 | 52.244.48.85
-   美國政府德克薩斯州 | 52.238.119.218 | 52.238.116.60
-   美國 DoD 東部 | 52.181.164.103 | 52.181.162.129
-   美國國防部中央 | 52.182.95.237 | 52.182.90.133
 ## <a name="example-nsg-configuration"></a>範例 NSG 設定
 
 這個範例示範如何針對要複寫的 VM 設定 NSG 規則。
@@ -126,11 +86,9 @@ login.microsoftonline.com | 需要此項目方可進行 Site Recovery 服務 URL
 
       ![aad-tag](./media/azure-to-azure-about-networking/aad-tag.png)
 
-3. 針對那些對應至目標位置的站台復原 IP，建立輸出 HTTPS (443) 規則：
+3. 類似于上述安全性規則，請在對應至目標位置的 NSG 上，建立 "CentralUS" 的輸出 HTTPS （443）安全性規則。 這可讓您存取 Site Recovery 監視。
 
-   **位置** | **Site Recovery 位址** |  **Site Recovery 監視 IP 位址**
-    --- | --- | ---
-   美國中部 | 40.69.144.231 | 52.165.34.144
+4. 為 NSG 上的 "AzureSiteRecovery" 建立輸出 HTTPS （443）安全性規則。 這可讓您存取任何區域中的 Site Recovery 服務。
 
 ### <a name="nsg-rules---central-us"></a>NSG 規則：美國中部
 
@@ -140,11 +98,9 @@ login.microsoftonline.com | 需要此項目方可進行 Site Recovery 服務 URL
 
 2. 在 NSG 上針對 "AzureActiveDirectory" 建立輸出 HTTPS (443) 安全性規則。
 
-3. 針對那些對應至來源位置的站台復原 IP 建立輸出 HTTPS (443) 規則：
+3. 類似于上述安全性規則，請在對應至來源位置的 NSG 上，建立 "EastUS" 的輸出 HTTPS （443）安全性規則。 這可讓您存取 Site Recovery 監視。
 
-   **位置** | **Site Recovery 位址** |  **Site Recovery 監視 IP 位址**
-    --- | --- | ---
-   美國中部 | 13.82.88.226 | 104.45.147.24
+4. 為 NSG 上的 "AzureSiteRecovery" 建立輸出 HTTPS （443）安全性規則。 這可讓您存取任何區域中的 Site Recovery 服務。
 
 ## <a name="network-virtual-appliance-configuration"></a>網路虛擬設備設定
 
@@ -168,6 +124,6 @@ login.microsoftonline.com | 需要此項目方可進行 Site Recovery 服務 URL
 您可以使用[自訂路由](../virtual-network/virtual-networks-udr-overview.md#custom-routes)覆寫 0.0.0.0/0 位址前置詞的 Azure 預設系統路由，並將 VM 流量導向內部部署網路虛擬設備 (NVA)，但不建議將此設定用於 Site Recovery 複寫。 如果您使用自訂路由，則應該在虛擬網路中為「儲存體」[建立虛擬網路服務端點](azure-to-azure-about-networking.md#create-network-service-endpoint-for-storage)，這樣一來，複寫流量就不會離開 Azure 界限。
 
 ## <a name="next-steps"></a>後續步驟
-- [複寫 Azure 虛擬機器](site-recovery-azure-to-azure.md)來開始保護您的工作負載。
+- [複寫 Azure 虛擬機器](./azure-to-azure-quickstart.md)來開始保護您的工作負載。
 - 深入了解如何針對 Azure 虛擬機器容錯移轉[保留 IP 位址](site-recovery-retain-ip-azure-vm-failover.md)。
-- 深入了解災害復原[透過 ExpressRoute 的 Azure 虛擬機器](azure-vm-disaster-recovery-with-expressroute.md)。
+- 深入瞭解[使用 ExpressRoute 進行 Azure 虛擬機器](azure-vm-disaster-recovery-with-expressroute.md)的嚴重損壞修復。

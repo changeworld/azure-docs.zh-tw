@@ -2,24 +2,23 @@
 title: 手動新增帳戶至應用程式 - Azure Active Directory | Microsoft Docs
 description: 如何將您的帳戶手動新增至 Microsoft Authenticator 應用程式，以進行雙因素驗證。
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
-ms.topic: conceptual
+ms.topic: end-user-help
 ms.date: 01/24/2019
-ms.author: lizross
+ms.author: curtand
 ms.reviewer: olhaun
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 696b6b14b2a369e8b80ac615fc77fa7f48f51c57
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 3838234f9f65fcf91f8de33e3d7196aa13f2b903
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60474250"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83741724"
 ---
 # <a name="manually-add-an-account-to-the-app"></a>手動新增帳戶至應用程式
+
 如果您的相機無法擷取 QR 代碼，您可以將您的帳戶資訊手動新增至 Microsoft Authenticator 應用程式，以進行雙因素驗證。 此適用於公司或學校帳戶和非 Microsoft 帳戶。
 
 為您帳戶提供的代碼不區分大小寫，而且在新增至 Microsoft Authenticator 應用程式時，不需要空格。
@@ -30,7 +29,7 @@ ms.locfileid: "60474250"
 ## <a name="add-your-work-or-school-account"></a>新增公司或學校帳戶
 
 1. 在您的電腦上，請記下 [設定行動應用程式] 頁面上的**代碼**和 **Url** 資訊。 讓此頁面保持開啟狀態，以便查看代碼和 URL。
-    
+
     ![提供 QR 代碼的畫面](./media/user-help-auth-app-add-account-manual/auth-app-barcode.png)
 
 2. 開啟 Microsoft Authenticator 應用程式、從右上角的 [自訂和控制] 圖示中選取 [新增帳戶]，然後選取 [公司或學校帳戶]。
@@ -38,7 +37,7 @@ ms.locfileid: "60474250"
 3. 選取 [或手動輸入代碼]。
 
     ![掃描 QR 代碼的畫面](./media/user-help-auth-app-add-account-manual/auth-app-manual-code.png)
-   
+
 4. 輸入步驟 1 中的**代碼**和 **URL**，然後選取 [完成]。
 
     ![輸入代碼和 URL 的畫面](./media/user-help-auth-app-add-account-manual/auth-app-code-url.png)
@@ -78,6 +77,7 @@ ms.locfileid: "60474250"
     >如需更多雙因素驗證和您 Facebook 帳戶的更多資訊，請參閱[什麼是雙重驗證，此機制如何運作？](https://www.facebook.com/help/148233965247823)。
 
 ## <a name="add-your-amazon-account"></a>新增您的 Amazon 帳戶
+
 您可以藉由開啟雙因素驗證，然後將帳戶新增至應用程式，以新增您的 Amazon 帳戶。
 
 1. 在您的電腦上，從 [選擇接收代碼的方式] 頁面 (包含 QR 代碼) 中，選取 [無法掃描條碼]。
@@ -103,6 +103,6 @@ ms.locfileid: "60474250"
 
 - 將您的帳戶新增至應用程式之後，即可在您的裝置上使用 Microsoft Authenticator 應用程式登入。 如需詳細資訊，請參閱[使用應用程式登入](user-help-auth-app-sign-in.md)。
 
-- 如果您遇到您個人的 Microsoft 帳戶取得您的驗證碼的問題，請參閱**驗證程式碼問題疑難排解**一節[Microsoft 帳戶安全性資訊和驗證程式碼](https://support.microsoft.com/en-us/help/12428/microsoft-account-security-info-verification-codes)文章。
+- 如果您在取得個人 Microsoft 帳戶的驗證碼時遇到問題，請參閱 [Microsoft 帳戶安全性資訊及驗證碼](https://support.microsoft.com/help/12428/microsoft-account-security-info-verification-codes)一文中的＜疑難排解驗證碼問題＞一節。
 
 - 對於執行 iOS 的裝置，您也可以將您的帳戶認證和相關應用程式設定 (例如您的帳戶順序) 備份到雲端。 如需更多資訊，請參閱[使用 Microsoft Authenticator 應用程式備份和復原](user-help-auth-app-backup-recovery.md)。

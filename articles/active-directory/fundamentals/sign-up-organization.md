@@ -1,24 +1,24 @@
 ---
-title: 注册组织 - Azure Active Directory | Microsoft Docs
+title: 註冊您的組織-Azure Active Directory |Microsoft Docs
 description: 如何註冊您的組織以使用 Azure 和 Azure Active Directory 的相關指示。
 services: active-directory
-author: eross-msft
+author: msaburnley
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.author: lizross
+ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bec4385b77ce44e87ed1f947a5a7a3e3d0d52fc6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: eb306e1ecbbdf2142d88b837b9750bbd2166cfda
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60246908"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "68561620"
 ---
 # <a name="sign-up-your-organization-to-use-azure-active-directory"></a>註冊您的組織以使用 Azure Active Directory
 請使用下列其中一種選擇，註冊 Azure Active Directory (Azure AD) 或新的 Microsoft Azure 訂用帳戶：
@@ -34,7 +34,7 @@ ms.locfileid: "60246908"
 
 - [如何購買 Azure](https://azure.microsoft.com/pricing/purchase-options/)
 
-- [如何註冊 Azure Active Directory Premium Edition](active-directory-get-started-premium.md)
+- [註冊 Azure Active Directory Premium 版本](active-directory-get-started-premium.md)
 
 - [什麼是 Azure Active Directory？](active-directory-whatis.md)
 

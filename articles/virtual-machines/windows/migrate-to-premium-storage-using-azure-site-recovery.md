@@ -1,21 +1,17 @@
 ---
-title: 使用 Azure Site Recovery 將 Windows VM 移轉到 Azure 進階儲存體 | Microsoft Docs
+title: 使用 Azure Site Recovery 將 Windows VM 移轉到 Azure 進階儲存體
 description: 使用 Site Recovery 將您現有的虛擬機器移轉到 Azure 進階儲存體。 「進階儲存體」可針對在「Azure 虛擬機器」上執行且需要大量 I/O 的工作負載，提供高效能、低延遲的磁碟支援。
-services: virtual-machines-windows,storage
-cloud: Azure
 author: luywang
 ms.service: virtual-machines-windows
-ms.tgt_pltfrm: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/15/2017
 ms.author: luywang
 ms.subservice: disks
-ms.openlocfilehash: 5744ee76d36b1cea256cd2594bcbc07c954f38f7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: ee6800d2d0f589c43c96b240a74a86db488e0b46
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60849693"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83827789"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>使用 Azure Site Recovery 移轉到進階儲存體
 
@@ -43,7 +39,7 @@ Site Recovery 支援數種類型的容錯移轉，且停機時間最短或甚至
   2. 運用快取、壓縮和加密將該資料最佳化。
   3. 將資料傳送至儲存體帳戶。 
 
-  它還會處理對來源 VM 進行的行動服務推送安裝作業，並執行來源 VM 的自動探索。 默认的进程服务器安装在配置服务器上。 您可以部署額外的獨立處理序伺服器來調整您的部署。 請參閱[處理序伺服器部署的最佳作法](https://azure.microsoft.com/blog/best-practices-for-process-server-deployment-when-protecting-vmware-and-physical-workloads-with-azure-site-recovery/)和[部署額外的處理序伺服器](../../site-recovery/site-recovery-plan-capacity-vmware.md#deploy-additional-process-servers)。 您只需設定處理序伺服器一次，即可用於所有移轉到相同區域的作業。
+  它還會處理對來源 VM 進行的行動服務推送安裝作業，並執行來源 VM 的自動探索。 組態伺服器上會安裝預設的處理序伺服器。 您可以部署額外的獨立處理序伺服器來調整您的部署。 請參閱[處理序伺服器部署的最佳作法](https://azure.microsoft.com/blog/best-practices-for-process-server-deployment-when-protecting-vmware-and-physical-workloads-with-azure-site-recovery/)和[部署額外的處理序伺服器](../../site-recovery/site-recovery-plan-capacity-vmware.md#deploy-additional-process-servers)。 您只需設定處理序伺服器一次，即可用於所有移轉到相同區域的作業。
 
 * **行動服務**是部署在每個您想要複寫之標準 VM 上的元件。 它會擷取在標準 VM 上寫入的資料，並將它們轉送到處理序伺服器。 請參閱[複寫之機器的必要條件](../../site-recovery/vmware-walkthrough-overview.md)。
 
@@ -74,15 +70,15 @@ Site Recovery 支援數種類型的容錯移轉，且停機時間最短或甚至
 
 您可以使用 Site Recovery 在區域間或相同區域內移轉 Azure IaaS VM。 下列指示專用於[將 VMware VM 或實體伺服器複寫至 Azure](../../site-recovery/vmware-walkthrough-overview.md) 一文中的移轉案例。 除了這篇文章中的指示外，請遵循連結以取得詳細步驟。
 
-### <a name="step-1-create-a-recovery-services-vault"></a>步驟 1：建立復原服務保存庫
+### <a name="step-1-create-a-recovery-services-vault"></a>步驟 1:建立復原服務保存庫
 
 1. 開啟 [Azure 入口網站](https://portal.azure.com)。
 2. 選取 [建立資源] > [管理] > [備份與 Site Recovery] \(OMS\)。 或者，您也可以選取 [瀏覽] > [復原服務保存庫] > [加入]。
    >[!NOTE]
-   >備份和 Site Recovery 先前是 ![OMS 套件](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/azure-monitor-rebrand.md#retirement-of-operations-management-suite-brand)的一部分。
+   >備份和 Site Recovery 先前是 [OMS 套件](/azure/azure-monitor/terminology#april-2018---retirement-of-operations-management-suite-brand)的一部分。
 1. 指定 VM 將複寫到的地區。 若要在相同區域中移轉，請選取來源 VM 和來源儲存體帳戶所在的區域。 
 
-### <a name="step-2-choose-your-protection-goals"></a>步驟 2：選擇您的保護目標 
+### <a name="step-2-choose-your-protection-goals"></a>步驟 2:選擇您的保護目標 
 
 1. 在您要安裝組態伺服器的 VM 上，開啟 [Azure 入口網站](https://portal.azure.com)。
 2. 移至 [復原服務保存庫] > [設定] > [Site Recovery] > [步驟 1：準備基礎結構] > [保護目標]。
@@ -121,7 +117,7 @@ Site Recovery 支援數種類型的容錯移轉，且停機時間最短或甚至
 
 4. 安裝完成後，請在 [Microsoft Azure Site Recovery 組態伺服器] 視窗中執行下列動作：
  
-   1. 使用 [管理帳戶] 索引標籤來建立可供 Site Recovery 用於自動探索的帳戶  (在有關保護實體機器的案例中，設定帳戶並非我們的討論範圍，但您至少需要一個帳戶才能啟用下列其中一個步驟。 在此情况下，可以指定任意帐户和密码。） 
+   1. 使用 [管理帳戶] 索引標籤來建立可供 Site Recovery 用於自動探索的帳戶 (在有關保護實體機器的案例中，設定帳戶並非我們的討論範圍，但您至少需要一個帳戶才能啟用下列其中一個步驟。 在此案例中，您可以任意命名帳戶和密碼)。 
    2. 使用 [保存庫註冊] 索引標籤上傳保存庫認證檔。
 
       ![[保存庫註冊] 索引標籤][9]
@@ -163,7 +159,7 @@ Site Recovery 會檢查您是否有一或多個相容的 Azure 儲存體帳戶�
    4. 在步驟 3 中，依 IP 位址新增受保護的 VM。 (您可能需要內部 IP 位址才能找到這些 VM。)
    5. 在步驟 4 中，選取您先前在處理序伺服器上設定的帳戶來設定屬性。
    6. 在步驟 5 中，選擇您先前在「步驟 5：設定複寫設定」中建立的複寫原則。
-   7. 選取 [確定] 。
+   7. 選取 [確定]。
 
    > [!NOTE]
    > Azure VM 在取消配置後再重新啟動時，不一定會取得相同的 IP 位址。 如果組態伺服器/處理序伺服器或受保護 Azure VM 的 IP 位址變更，此案例中的複寫作業可能不會正確運作。
@@ -208,7 +204,7 @@ Site Recovery 會建立類型與可支援進階儲存體之 VM 相同或類似�
 ## <a name="troubleshooting"></a>疑難排解
 
 * [監視和疑難排解虛擬機器與實體伺服器的保護](../../site-recovery/site-recovery-monitoring-and-troubleshooting.md)
-* [Microsoft Azure Site Recovery 論壇](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr)
+* [Microsoft 的 Microsoft Azure Site Recovery 問題頁面](https://docs.microsoft.com/answers/topics/azure-site-recovery.html)
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -220,7 +216,7 @@ Site Recovery 會建立類型與可支援進階儲存體之 VM 相同或類似�
 
 若要深入了解 Azure 儲存體和 Azure 虛擬機器，也請參閱下列資源：
 
-* [Azure 存储](https://azure.microsoft.com/documentation/services/storage/)
+* [Azure 儲存體](https://azure.microsoft.com/documentation/services/storage/)
 * [Azure 虛擬機器](https://azure.microsoft.com/documentation/services/virtual-machines/)
 
 [1]:./media/migrate-to-premium-storage-using-azure-site-recovery/migrate-to-premium-storage-using-azure-site-recovery-1.png

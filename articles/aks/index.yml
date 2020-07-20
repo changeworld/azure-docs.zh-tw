@@ -1,104 +1,86 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Azure Kubernetes Service (AKS)
+summary: AKS 可讓您在 Azure 中快速部署可進行生產的 Kubernetes 叢集。 了解如何透過這些快速入門、教學課程和範例使用 AKS。
 metadata:
-  document_id: null
-  title: Azure Kubernetes Service (AKS) 文件 - 教學課程和 API 參考 | Microsoft Docs
-  meta.description: 'AKS allows you to quickly deploy a production ready Kubernetes cluster in Azure. Learn how to use AKS with these quickstarts, tutorials, and samples.'
-  services: container-service
-  author: carolz
-  manager: carolz
+  title: Azure Kubernetes Service (AKS) 文件
+  description: AKS 可讓您在 Azure 中快速部署可進行生產的 Kubernetes 叢集。 了解如何透過這些快速入門、教學課程和範例使用 AKS。
   ms.service: container-service
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
-  ms.date: 07-21-2017
-  ms.author: carolz
-abstract:
-  description: Azure Kubernetes Service (AKS) 可以管理裝載 Kubernetes 的環境；因此，您不需具備容器協調流程專業知識，就能快速、輕鬆地部署及管理容器化應用程式。 也可透過佈建、升級與依需求調整資源，以無需讓應用程式離線的方式來消除進行中作業及維護之間的界線。
-sections:
-  - title: 5 分鐘快速入門
-    items:
-      - type: paragraph
-        text: 了解如何部署 AKS 叢集：
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_cligeneric.svg'
-            text: Azure CLI
-            href: /azure/aks/kubernetes-walkthrough
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_portal.svg'
-            text: Azure 入口網站
-            href: /azure/aks/kubernetes-walkthrough-portal
-      - type: paragraph
-        text: 了解如何使用 AKS 部署偵錯應用程式：
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_java.svg'
-            text: Java
-            href: ../dev-spaces/quickstart-java.md
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_NETcore.svg'
-            text: .NET 和 VS Code
-            href: ../dev-spaces/quickstart-netcore.md
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_visual-studio.svg'
-            text: .NET 和 Visual Studio
-            href: ../dev-spaces/quickstart-netcore-visualstudio.md
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_nodejs.svg'
-            text: Node.js
-            href: ../dev-spaces/quickstart-nodejs.md
-  - title: 逐步教學課程
-    items:
-      - type: paragraph
-        text: 了解如何在 AKS 叢集中部署、管理和更新應用程式。
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/aks/tutorial-kubernetes-prepare-app">從應用程式建立容器映像</a>
-          - html: <a href="/azure/aks/tutorial-kubernetes-prepare-acr">將容器映像上傳至 Azure Container Registry</a>
-          - html: <a href="/azure/aks/tutorial-kubernetes-deploy-cluster">部署 AKS 叢集</a>
-          - html: <a href="/azure/aks/tutorial-kubernetes-deploy-application">在 Kubernetes 中執行容器映像</a>
-          - html: <a href="/azure/aks/tutorial-kubernetes-scale">調整應用程式和 Kubernetes 基礎結構</a>
-          - html: <a href="/azure/aks/tutorial-kubernetes-app-update">更新在 Kubernetes 中執行的應用程式</a>
-          - html: <a href="/azure/aks/tutorial-kubernetes-upgrade-cluster">升級 AKS 叢集</a>
-  - title: 透過 Microsoft Learn 增進您的技巧
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Azure 的容器簡介
-            href: /learn/modules/intro-to-containers/
-            image:
-              src: /learn/achievements/intro-to-containers.svg
-              href: /learn/modules/intro-to-containers/
-          - title: 使用 Azure 容器執行個體執行 Docker 容器
-            href: /learn/modules/run-docker-with-azure-container-instances/
-            image:
-              src: /learn/achievements/run-docker-with-azure-container-instances.svg
-              href: /learn/modules/run-docker-with-azure-container-instances/
-          - title: 使用 Azure Container Registry 建置及存放容器映像
-            href: /learn/modules/build-and-store-container-images/
-            image:
-              src: /learn/achievements/build-and-store-container-images.svg
-              href: /learn/modules/build-and-store-container-images/
-      - type: paragraph
-        text: <a href="/learn/browse/?products=azure-container-registry%2Cazure-container-instances">更多互動式學習...</a>
-  - title: 參考
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: 命令列
-            html: <p><a href="/cli/azure/aks">Azure CLI</a></p>
-          - title: Languages
-            html: <p><a href="/dotnet/api/overview/azure/containerservice">.NET</a></p><p><a href="/python/api/overview/azure/containerservice">Python</a></p><p><a href="/java/api/overview/azure/containerservice">Java</a></p><p><a href="/javascript/api/overview/azure/container-service">Node.js</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/aks">REST API</a></p>
+  author: laurenhughes
+  ms.author: lahugh
+  ms.date: 03/25/2020
+  ms.openlocfilehash: c3a5651df8ad1f07f3b9800abfe4b48e829ff27b
+  ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 07/11/2020
+  ms.locfileid: "86251649"
+landingContent:
+- title: 關於 Azure Kubernetes Service (AKS)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是 AKS？
+      url: intro-kubernetes.md
+  - linkListType: concept
+    links:
+    - text: AKS 的 Kubernetes 核心概念
+      url: concepts-clusters-workloads.md
+    - text: 叢集與工作負載
+      url: concepts-clusters-workloads.md
+    - text: 存取與身分識別
+      url: concepts-identity.md
+    - text: 安全性
+      url: concepts-security.md
+    - text: 網路功能
+      url: concepts-network.md
+    - text: 儲存體
+      url: concepts-storage.md
+    - text: 調整
+      url: concepts-scale.md
+- title: 在 5 分鐘內部署 AKS 叢集
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Azure CLI
+      url: kubernetes-walkthrough.md
+    - text: Azure 入口網站
+      url: kubernetes-walkthrough-portal.md
+    - text: Resource Manager 範本
+      url: kubernetes-walkthrough-rm-template.md
+- title: 使用具有 Kubernetes 的本機處理序開發和偵錯應用程式
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 將 Visual Studio Code 和 Kubernetes 與本機處理序搭配使用 (預覽)
+      url: ../dev-spaces/how-to/local-process-kubernetes-vs-code.md
+    - text: 將 Visual Studio 和 Kubernetes 與本機處理序搭配使用 (預覽)
+      url: ../dev-spaces/how-to/local-process-kubernetes-visual-studio.md
+- title: 部署、管理及更新應用程式
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 1. 為 AKS 準備應用程式
+      url: tutorial-kubernetes-prepare-app.md
+    - text: 2. 部署和使用 Azure Container Registry
+      url: tutorial-kubernetes-prepare-acr.md
+    - text: 3. 部署 AKS 叢集
+      url: tutorial-kubernetes-deploy-cluster.md
+    - text: 4. 執行您的應用程式
+      url: tutorial-kubernetes-deploy-application.md
+    - text: 5. 調整應用程式
+      url: tutorial-kubernetes-scale.md
+    - text: 6. 更新應用程式
+      url: tutorial-kubernetes-app-update.md
+    - text: 7. 將 AKS 中的 Kubernetes 進行升級
+      url: tutorial-kubernetes-upgrade-cluster.md
+- title: 透過 Microsoft Learn 增進您的技巧
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: 介紹 Azure Kubernetes Service
+      url: /learn/modules/intro-to-azure-kubernetes-service/
+    - text: Azure 的容器簡介
+      url: /learn/modules/intro-to-containers/
+    - text: 使用 Azure Container Registry 建置及存放容器映像
+      url: /learn/modules/build-and-store-container-images/

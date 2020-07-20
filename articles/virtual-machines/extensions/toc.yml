@@ -16,56 +16,78 @@
       maintainContext: true
 - name: 概念
   items:
-    - name: ' Linux'
+    - name: Linux
       href: features-linux.md
-    - name: ' Windows'
+    - name: Windows
       href: features-windows.md
-- name: 使用說明指南
+- name: 操作指南
   items:
     - name: Azure 磁碟加密
       items:
-        - name: ' Linux'
+        - name: Linux
           href: azure-disk-enc-linux.md
-        - name: ' Windows'
+        - name: Windows
           href: azure-disk-enc-windows.md
+    - name: Azure 金鑰保存庫
+      items:
+        - name: Linux
+          href: key-vault-linux.md
+        - name: Windows
+          href: key-vault-windows.md
+    - name: 適用於 SQL Server 的 Azure 備份
+      items:
+        - name: 適用於 SQL Server 的 Azure 備份
+          href: backup-azure-sql-server-running-azure-vm.md
     - name: Custom Script
       items:
         - name: Linux - 第 2 版
           href: custom-script-linux.md
-        - name: ' Windows'
+        - name: Windows
           href: custom-script-windows.md
     - name: 適用於 Windows 的 IaaS 反惡意程式碼軟體
       href: iaas-antimalware-windows.md
     - name: VM 快照集
       items:
-        - name: ' Linux'
+        - name: Linux
           href: vmsnapshot-linux.md
-        - name: ' Windows'
+        - name: Windows
           href: vmsnapshot-windows.md
     - name: 網路監看員代理程式
       items:
-        - name: ' Linux'
+        - name: Linux
           href: network-watcher-linux.md
-        - name: ' Windows'
+        - name: Windows
           href: network-watcher-windows.md
     - name: NVIDIA GPU 驅動程式
       items:
-        - name: ' Linux'
+        - name: Linux
           href: hpccompute-gpu-linux.md
-        - name: ' Windows'
+        - name: Windows
           href: hpccompute-gpu-windows.md
-    - name: Log Analytics
+    - name: AMD GPU 驅動程式
       items:
-        - name: ' Linux'
-          href: oms-linux.md
-        - name: ' Windows'
-          href: oms-windows.md
-    - name: 適用於 VM 的 Azure 監視器
+        - name: Windows
+          href: hpccompute-amd-gpu-windows.md
+    - name: Azure 監視器
       items:
-        - name: Linux 相依性代理程式
-          href: agent-dependency-linux.md
-        - name: Windows 相依性代理程式
-          href: agent-dependency-windows.md
+        - name: 診斷擴充功能
+          items:
+            - name: Linux
+              href: diagnostics-linux.md
+            - name: Windows
+              href: ../../azure-monitor/platform/diagnostics-extension-overview.md?toc=/azure/virtual-machines/extensions/toc.json
+        - name: Log Analytics
+          items:
+            - name: Linux
+              href: oms-linux.md
+            - name: Windows
+              href: oms-windows.md
+        - name: 適用於 VM 的 Azure 監視器
+          items:
+            - name: Linux 相依性代理程式
+              href: agent-dependency-linux.md
+            - name: Windows 相依性代理程式
+              href: agent-dependency-windows.md
     - name: PowerShell DSC
       href: dsc-overview.md
       items:
@@ -79,14 +101,6 @@
           href: dsc-template.md
     - name: 虛擬機器存取
       href: vmaccess.md
-    - name: 虛擬機器診斷
-      items:
-        - name: ' Linux'
-          href: diagnostics-linux.md
-        - name: ' Windows'
-          href: diagnostics-windows.md
-        - name: 使用範本
-          href: diagnostics-template.md
     - name: 第三方擴充功能
       items:
         - name: Chef
@@ -105,9 +119,9 @@
           href: custom-script-linuxOstc.md
     - name: 限制延伸模組安裝
       items:
-        - name: ' Linux'
+        - name: Linux
           href: extensions-rmpolicy-howto-cli.md
-        - name: ' Windows'
+        - name: Windows
           href: extensions-rmpolicy-howto-ps.md
     - name: 更新 Linux 代理程式
       href: update-linux-agent.md
@@ -115,3 +129,5 @@
       href: export-templates.md
     - name: 疑難排解
       href: troubleshoot.md
+    - name: 已啟用 Python 3 Linux 系統的問題
+      href: issues-using-vm-extensions-python-3.md

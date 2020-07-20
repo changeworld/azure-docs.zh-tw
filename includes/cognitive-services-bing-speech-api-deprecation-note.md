@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/13/2018
 ms.author: nitinme
-ms.openlocfilehash: eedfd4e3b46a104fdfeed84034536e98b4c6ddaa
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
-ms.translationtype: HT
+ms.openlocfilehash: d6f71a7afbda7851b53b3ef64c7375f049db3328
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50973716"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72391571"
 ---
 > [!NOTE] 
-> Bing 語音已由新的語音服務與 SDK 取代，前者將於 2019 年 10 月 15 日之後停止服務。 如需轉換為語音服務的相關資訊，請參閱[從 Bing 語音遷移至語音服務](../articles/cognitive-services/Speech-Service/how-to-migrate-from-bing-speech.md) (英文)。
+> 新的語音服務與 SDK 會取代 Bing 語音，從2020年1月14日起將不再有效。 如需轉換為語音服務的相關資訊，請參閱[從 Bing 語音遷移至語音服務](../articles/cognitive-services/Speech-Service/how-to-migrate-from-bing-speech.md) (英文)。

@@ -1,24 +1,16 @@
 ---
 title: Azure 監視器中的 IIS 記錄 | Microsoft Docs
 description: Internet Information Services (IIS) 會將使用者活動儲存在記錄檔中，並可由 Azure 監視器進行收集。  本文描述如何設定收集 IIS 記錄，以及它們在 Azure 監視器中所建立記錄的詳細資料。
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: tysonn
-ms.assetid: cec5ff0a-01f5-4262-b2e8-e3db7b7467d2
-ms.service: log-analytics
+ms.subservice: logs
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 11/28/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 402cd4723791c0bc33db22c8857d1b785862f596
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 11/28/2018
+ms.openlocfilehash: 1b3ae6295a639c3d59643b106b920cb606572e0a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60614490"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77670571"
 ---
 # <a name="collect-iis-logs-in-azure-monitor"></a>在 Azure 監視器中收集 IIS 記錄
 Internet Information Services (IIS) 會將使用者活動儲存在記錄檔中，並可由 Azure 監視器進行收集並儲存為[記錄資料](data-platform.md)。
@@ -30,17 +22,17 @@ Azure 監視器會從 IIS 建立的記錄檔收集項目，因此您必須[設�
 
 Azure 監視器只支援以 W3C 格式儲存的 IIS 記錄檔，不支援自訂欄位或 IIS 進階記錄。 它不會收集 NCSA 或 IIS 原生格式的記錄。
 
-從 [[進階設定] 功能表](agent-data-sources.md#configuring-data-sources)在 Azure 監視器中設定 IIS 記錄。  您只需選取 [Collect W3C format IIS log files]\(收集 W3C 格式的 IIS 記錄檔) 即可完成設定。
+從 [[進階設定] 功能表](agent-data-sources.md#configuring-data-sources)在 Azure 監視器中設定 IIS 記錄。  您只需選取 [Collect W3C format IIS log files]\(收集 W3C 格式的 IIS 記錄檔) **** 即可完成設定。
 
 
 ## <a name="data-collection"></a>資料收集
-Azure 監視器會在每次記錄關閉並建立新記錄時，從每個代理程式收集 IIS 記錄項目。 此頻率會受到 IIS 網站的 [記錄檔案換用排程] 設定控制，預設為一天一次。 例如，如果設定為 [每小時]，則 Azure 監視器會每小時收集記錄一次。  如果設定為 [每日]，則 Azure 監視器會每隔 24 小時收集記錄一次。
+Azure 監視器會在每次記錄時間戳記變更時，從每個代理程式收集 IIS 記錄專案。 記錄會每隔**5 分鐘**讀取一次。 如果基於任何原因，IIS 不會在建立新檔案的變換時間之前更新時間戳記，則會在建立新檔案後收集項目。 新檔案建立的頻率是由 IIS 網站的 [**記錄檔變換排程**] 設定所控制，預設為一天一次。 如果設定為 [**每小時**]，Azure 監視器會每小時收集記錄一次。 如果設定為 [**每日**]，Azure 監視器每24小時會收集記錄一次。
 
 
 ## <a name="iis-log-record-properties"></a>IIS 記錄檔記錄屬性
 IIS 記錄檔記錄都具有 **W3CIISLog** 類型以及下表中的屬性：
 
-| 屬性 | 描述 |
+| 屬性 | 說明 |
 |:--- |:--- |
 | 電腦 |收集事件的來源電腦名稱。 |
 | cIP |用戶端的 IP 位址。 |
@@ -50,7 +42,7 @@ IIS 記錄檔記錄都具有 **W3CIISLog** 類型以及下表中的屬性：
 | csUserName |存取伺服器之已驗證的使用者名稱。 匿名使用者會以連字號表示。 |
 | csUriStem |要求的目標，例如網頁。 |
 | csUriQuery |用戶端正在嘗試執行的查詢 (如果有的話)。 |
-| ManagementGroupName |Operations Manager 代理程式的管理群組名稱。  若為其他代理程式，此為 AOI-\<工作區 ID\> |
+| ManagementGroupName |Operations Manager 代理程式的管理群組名稱。  若為其他代理程式，此為 AOI-\<workspace ID\> |
 | RemoteIPCountry |用戶端 IP 位址的國家/地區。 |
 | RemoteIPLatitude |用戶端 IP 位址的緯度。 |
 | RemoteIPLongitude |用戶端 IP 位址的經度。 |
@@ -72,7 +64,7 @@ IIS 記錄檔記錄都具有 **W3CIISLog** 類型以及下表中的屬性：
 | W3CIISLog |所有 IIS 記錄檔記錄。 |
 | W3CIISLog &#124; where scStatus==500 |具有傳回狀態 500 的所有 IIS 記錄。 |
 | W3CIISLog &#124; summarize count() by cIP |依據用戶端 IP 位址的 IIS 記錄項目計數。 |
-| W3CIISLog &#124; where csHost=="www\.contoso.com" &#124; summarize count() by csUriStem |計數的 IIS 記錄項目 URL 為主機 www\.contoso.com。 |
+| W3CIISLog &#124; where csHost = = "www \. contoso.com" &#124; 摘要 count （） By csUriStem |主機 www contoso.com 的 IIS 記錄專案計數（依 URL） \. 。 |
 | W3CIISLog &#124; summarize sum(csBytes) by Computer &#124; take 500000 |每部 IIS 電腦所接收的位元組總數。 |
 
 ## <a name="next-steps"></a>後續步驟

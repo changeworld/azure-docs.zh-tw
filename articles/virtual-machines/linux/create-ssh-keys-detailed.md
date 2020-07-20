@@ -1,33 +1,24 @@
 ---
-title: 詳細步驟 - Azure Linux VM 的 SSH 金鑰組 | Microsoft Docs
+title: 建立 SSH 金鑰組的詳細步驟
 description: 了解在 Azure 中建立和管理 Linux VM 的 SSH 公開和私密金鑰組的詳細步驟。
-services: virtual-machines-linux
-documentationcenter: ''
-author: dlepow
-manager: jeconnoc
-editor: ''
-tags: ''
-ms.assetid: ''
+author: cynthn
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
-ms.author: danlep
-ms.openlocfilehash: 3784dd701b3ac44971e134f1b160fcfe2de2d9b3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 12/06/2019
+ms.author: cynthn
+ms.openlocfilehash: 8c826f5e0e36d693dd3ba98640bceae228ba34e8
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60328664"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119203"
 ---
 # <a name="detailed-steps-create-and-manage-ssh-keys-for-authentication-to-a-linux-vm-in-azure"></a>詳細步驟：在 Azure 中建立和管理對 Linux VM 進行驗證所需的 SSH 金鑰 
 您可以利用安全殼層 (SSH) 金鑰組，在 Azure 上建立依預設使用 SSH 金鑰進行驗證的 Linux 虛擬機器，而免除登入密碼的需求。 使用 Azure 入口網站、Azure CLI、Resource Manager 範本或其他工具建立的 VM，可以將 SSH 公開金鑰納入部署中，以設定 SSH 連線的 SSH 金鑰驗證。 
 
 本文將詳細說明為 SSH 用戶端連線建立及管理 SSH RSA 公開/私密金鑰檔案組的背景和步驟。 如果您需要快速命令，請參閱[如何在 Azure 中建立 Linux VM 的 SSH 公開/私密金鑰組](mac-create-ssh-keys.md)。
 
-如需在 Windows 電腦上產生及使用 SSH 金鑰的其他方式，請參閱[如何在 Azure 上搭配 Windows 使用 SSH 金鑰](ssh-from-windows.md)。
+若要產生 SSH 金鑰，並使用它們從**windows**電腦連接到，請參閱[如何在 Azure 上搭配 windows 使用 ssh 金鑰](ssh-from-windows.md)。
 
 [!INCLUDE [virtual-machines-common-ssh-overview](../../../includes/virtual-machines-common-ssh-overview.md)]
 
@@ -44,16 +35,16 @@ SSH 私密金鑰應有非常安全的複雜密碼來保護金鑰。 此複雜密
 
 ## <a name="generate-keys-with-ssh-keygen"></a>利用 ssh-keygen 產生金鑰
 
-若要建立金鑰，一般常會使用 `ssh-keygen` 命令；您可以在 Azure Cloud Shell、macOS 或 Linux 主機、[Windows Subsystem for Linux](https://docs.microsoft.com/windows/wsl/about) 和其他工具中，透過 OpenSSH 公用程式來使用此命令。 `ssh-keygen` 在詢問一系列問題後，便會撰寫私密金鑰和對應的公開金鑰。 
+若要建立金鑰，一般常會使用的命令是 `ssh-keygen`，您可以在 Azure Cloud Shell、macOS 或 Linux 主機和 Windows 10 中透過 OpenSSH 公用程式來使用此命令。 `ssh-keygen` 在詢問一系列問題後，便會撰寫私密金鑰和對應的公開金鑰。 
 
 依預設，SSH 金鑰會保留在 `~/.ssh` 目錄中。  如果您沒有 `~/.ssh` 目錄，`ssh-keygen` 命令會使用正確的權限為您建立。
 
 ### <a name="basic-example"></a>基本範例
 
-下列 `ssh-keygen` 命令依預設會在 `~/.ssh` 目錄中產生 2048 位元的 SSH RSA 公開和私密金鑰檔案。 如果有 SSH 金鑰組存在於目前的位置，系統將會覆寫這些檔案。
+下列 `ssh-keygen` 命令預設會在目錄中產生4096位 SSH RSA 公開和私密金鑰檔案 `~/.ssh` 。 如果有 SSH 金鑰組存在於目前的位置，系統將會覆寫這些檔案。
 
 ```bash
-ssh-keygen -t rsa -b 2048
+ssh-keygen -m PEM -t rsa -b 4096
 ```
 
 ### <a name="detailed-example"></a>詳細範例
@@ -61,6 +52,7 @@ ssh-keygen -t rsa -b 2048
 
 ```bash
 ssh-keygen \
+    -m PEM \
     -t rsa \
     -b 4096 \
     -C "azureuser@myserver" \
@@ -71,6 +63,8 @@ ssh-keygen \
 **命令的說明**
 
 `ssh-keygen` = 用來建立金鑰的程式
+
+`-m PEM` = 將金鑰格式設定為 PEM
 
 `-t rsa` = 要建立的金鑰類型，在此案例中採用 RSA 格式
 
@@ -85,7 +79,7 @@ ssh-keygen \
 ### <a name="example-of-ssh-keygen"></a>ssh-keygen 的範例
 
 ```bash
-ssh-keygen -t rsa -b 2048 -C "azureuser@myserver"
+ssh-keygen -t -m PEM rsa -b 4096 -C "azureuser@myserver"
 Generating public/private rsa key pair.
 Enter file in which to save the key (/home/azureuser/.ssh/id_rsa):
 Enter passphrase (empty for no passphrase):
@@ -93,19 +87,19 @@ Enter same passphrase again:
 Your identification has been saved in /home/azureuser/.ssh/id_rsa.
 Your public key has been saved in /home/azureuser/.ssh/id_rsa.pub.
 The key fingerprint is:
-14:a3:cb:3e:78:ad:25:cc:55:e9:0c:08:e5:d1:a9:08 azureuser@myserver
-The keys randomart image is:
-+--[ RSA 2048]----+
-|        o o. .   |
-|      E. = .o    |
-|      ..o...     |
-|     . o....     |
-|      o S =      |
-|     . + O       |
-|      + = =      |
-|       o +       |
-|        .        |
-+-----------------+
+SHA256:vFfHHrpSGQBd/oNdvNiX0sG9Vh+wROlZBktNZw9AUjA azureuser@myserver
+The key's randomart image is:
++---[RSA 4096]----+
+|        .oE=*B*+ |
+|          o+o.*++|
+|           .oo++*|
+|       .    .B+.O|
+|        S   o=BO.|
+|         . .o++o |
+|        . ... .  |
+|         ..  .   |
+|           ..    |
++----[SHA256]-----+
 ```
 
 #### <a name="saved-key-files"></a>已儲存的金鑰檔案
@@ -168,7 +162,7 @@ ssh-keygen \
 ssh azureuser@myvm.westus.cloudapp.azure.com
 ```
 
-如果您在建立金鑰組時提供了複雜密碼，請在登入程序期間出現提示時輸入複雜密碼  (伺服器會新增至 `~/.ssh/known_hosts` 資料夾，而且系統不會要求您重新連線，除非 Azure VM 上的公開金鑰有變更或伺服器名稱已從 `~/.ssh/known_hosts` 中移除)。
+如果您在建立金鑰組時提供了複雜密碼，請在登入程序期間出現提示時輸入複雜密碼 (伺服器會新增至 `~/.ssh/known_hosts` 資料夾，而且系統不會要求您重新連線，除非 Azure VM 上的公開金鑰有變更或伺服器名稱已從 `~/.ssh/known_hosts` 中移除)。
 
 如果 VM 使用 Just-In-Time 存取原則，您必須先要求權限，才能連線到 VM。 如需 Just-In-Time 原則的詳細資訊，請參閱[使用 Just-In-Time 原則管理虛擬機器存取](../../security-center/security-center-just-in-time.md)。
 
@@ -215,7 +209,7 @@ touch ~/.ssh/config
 vim ~/.ssh/config
 ```
 
-### <a name="example-configuration"></a>設定範例
+### <a name="example-configuration"></a>範例設定
 
 為您的主機 VM 新增適當的組態設定。
 

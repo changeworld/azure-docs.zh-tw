@@ -1,100 +1,108 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: 翻譯工具文字文件
+### YamlMime:Landing
+title: 翻譯工具文件
+summary: 翻譯工具是雲端式機器翻譯服務，可讓您透過 REST API 呼叫，近乎即時地翻譯文字。 此服務採用先進的類神經機器翻譯技術，同時提供統計機器翻譯技術。 「自訂翻譯」是翻譯工具的擴充功能，可讓您建置類神經翻譯系統。 自訂的翻譯系統可透過翻譯工具或 Microsoft 語音服務來翻譯文字。
 metadata:
-  title: Translator Text 文件 - 快速入門、教學課程和 API 參考 - Azure 認知服務 | Microsoft Docs
-  description: 了解如何使用翻譯工具文字翻譯多種語言的文字。
+  title: 翻譯工具文件 - 快速入門、教學課程和 API 參考
+  titleSuffix: Azure Cognitive Services
+  description: 翻譯工具是雲端式機器翻譯服務，可讓您透過 REST API 呼叫，近乎即時地翻譯文字。 此服務採用先進的類神經機器翻譯技術，同時提供統計機器翻譯技術。 「自訂翻譯」是翻譯工具的擴充功能，可讓您建置類神經翻譯系統。 自訂的翻譯系統可透過翻譯工具或 Microsoft 語音服務來翻譯文字。
   services: cognitive-services
-  author: v-pawal
-  manager: Chris.Wendt
+  author: erhopf
+  manager: nitinme
   ms.service: cognitive-services
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: translator-text
   ms.topic: landing-page
-  ms.date: 02/21/2019
-  ms.author: v-jansko
-abstract:
-  description: '翻譯工具文字是雲端式機器翻譯服務，可讓您透過 REST API 呼叫，近乎即時地翻譯文字。 此 API 採用先進的類神經機器翻譯技術，同時提供統計機器翻譯技術。 「自訂翻譯工具」是翻譯工具文字 API 的擴充功能，可讓您建置類神經翻譯系統。 自訂的翻譯系統可透過翻譯工具文字 API 或 <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/">Microsoft 語音服務</a>來翻譯文字。 如需了解包括類神經機器翻譯和統計機器翻譯的支援語言清單，請參閱<a href="languages.md">支援的語言</a>。'
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/cognitive-services/translator/translator-info-overview
-            html: <p>了解翻譯工具文字 API</p>
-            image:
-              src: ../media/index/i_overview.svg
-            title: 什麼是翻譯工具文字 API？
-          - href: /azure/cognitive-services/translator/custom-translator/overview
-            html: <p>了解自訂翻譯工具</p>
-            image:
-              src: ../media/index/i_overview.svg
-            title: 什麼是自訂翻譯工具？
-          - href: /azure/cognitive-services/translator/custom-translator/quickstart-build-deploy-custom-model
-            html: <p>了解如何開始使用自訂翻譯工具</p>
-            image:
-              src: ../media/index/i_get-started.svg
-            title: 自訂翻譯工具快速入門
-  - title: 5 分鐘快速入門
-    items:
-      - type: paragraph
-        text: 開始使用 Translator Text API：
-      - type: table
-        style: dataMatrix
-        columns:
-          - image:
-              src: media/index/logo_csharp.svg
-            title: 'C#'
-          - image:
-              src: media/index/logo_java.svg
-            title: Java
-          - image:
-              src: media/index/logo_nodejs.svg
-            title: Node.js
-          - image:
-              src: media/index/logo_python.svg
-            title: Python
-          - image:
-              src: media/index/logo_go.svg
-            title: Go
-        rows:
-          - title: 將文字從一種語言翻譯成另一種語言
-            values:
-              - href: quickstart-csharp-translate
-              - href: quickstart-java-translate
-              - href: quickstart-nodejs-translate
-              - href: quickstart-python-translate
-              - href: quickstart-go-translate
-          - title: 將文字從一種指令碼轉換成另一種指令碼
-            values:
-              - href: quickstart-csharp-transliterate
-              - href: quickstart-java-transliterate
-              - href: quickstart-nodejs-transliterate
-              - href: quickstart-python-transliterate
-              - href: quickstart-go-transliterate
-          - title: 識別文字的語言
-            values:
-              - href: quickstart-csharp-detect
-              - href: quickstart-java-detect
-              - href: quickstart-nodejs-detect
-              - href: quickstart-python-detect
-              - href: quickstart-go-detect
-          - title: 取得替代的翻譯和使用方式
-            values:
-              - href: quickstart-csharp-dictionary
-              - href: quickstart-java-dictionary
-              - href: quickstart-nodejs-dictionary
-              - href: quickstart-python-dictionary
-              - href: quickstart-go-dictionary
-  - title: 逐步教學課程
-    items:
-      - type: paragraph
-        text: 了解如何使用翻譯工具文字 API 開發應用程式：
-      - type: paragraph
-        text: '<li><a href="tutorial-wpf-translation-csharp.md">建立適用於翻譯工具文字的 WPF 應用程式，C#</a></li><li><a href="tutorial-build-flask-app-translation-synthesis.md">建立 Flask 轉譯應用程式，Python</a></li>'
-  - title: 參考
-    items:
-      - type: paragraph
-        text: <p><a href="reference/v3-0-reference.md">API 參考</a></p>
+  ms.date: 10/14/2019
+  ms.author: erhopf
+  ms.openlocfilehash: 26fc174ef0993339487a2edcc32cbb4fd864f96e
+  ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 05/19/2020
+  ms.locfileid: "83592741"
+landingContent:
+- title: 轉譯程式
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 轉譯程式
+      url: translator-info-overview.md
+    - text: 自訂翻譯工具
+      url: translator-info-overview.md
+    - text: 定價
+      url: https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/
+    - text: 法規遵循
+      url: https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/
+    - text: 建立訂用帳戶
+      url: translator-text-how-to-signup.md
+    - text: 常見問題集
+      url: https://www.microsoft.com/translator/faq.aspx
+- title: 開始使用
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 翻譯文字
+      url: quickstart-translate.md
+    - text: 音譯文字
+      url: quickstart-transliterate.md
+    - text: 語言偵測
+      url: quickstart-detect.md
+    - text: 字典查閱
+      url: quickstart-dictionary.md
+    - text: 判斷句子長度
+      url: quickstart-sentences.md
+    - text: 列出支援的語言
+      url: quickstart-languages.md
+  - linkListType: tutorial
+    links:
+    - text: 建立 WPF 翻譯應用程式，C#
+      url: tutorial-wpf-translation-csharp.md
+    - text: 建立 Flask 翻譯應用程式，REST
+      url: tutorial-build-flask-app-translation-synthesis.md
+  - linkListType: reference
+    links:
+    - text: 翻譯工具參考 (v3)
+      url: reference/v3-0-reference.md
+    - text: 要求限制
+      url: request-limits.md
+    - text: 語言支援
+      url: language-support.md
+- title: 自訂翻譯工具
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 建置和部署自訂模型
+      url: custom-translator/quickstart-build-deploy-custom-model.md
+  - linkListType: get-started
+    links:
+    - text: 建立專案
+      url: custom-translator/how-to-create-project.md
+    - text: 管理專案
+      url: custom-translator/how-to-search-edit-delete-projects.md
+    - text: 上傳文件
+      url: custom-translator/how-to-upload-document.md
+    - text: 定型模型
+      url: custom-translator/how-to-train-model.md
+  - linkListType: learn
+    links:
+    - text: 工作區和專案
+      url: custom-translator/workspace-and-project.md
+    - text: 平行處理的文件
+      url: custom-translator/what-are-parallel-documents.md
+    - text: 字典
+      url: custom-translator/what-is-dictionary.md
+    - text: 支援的文件格式
+      url: custom-translator/document-formats-naming-convention.md
+  - linkListType: reference
+    links:
+    - text: 語言支援
+      url: language-support.md
+    - text: 詞彙
+      url: custom-translator/glossary.md
+- title: 資源
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: GitHub 範例
+      url: https://aka.ms/TranslatorGitHub
+    - text: Stack Overflow
+      url: https://stackoverflow.com/questions/tagged/microsoft-translator

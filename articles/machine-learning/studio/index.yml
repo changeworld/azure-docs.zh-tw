@@ -1,57 +1,53 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Machine Learning Studio 文件
+### YamlMime:Landing
+title: Azure Machine Learning Studio (傳統) 文件
+summary: Machine Learning Studio (傳統) 是一種拖放工具，可以用來建置、測試及部署預測分析解決方案。
 metadata:
-  title: Azure Machine Learning Studio 文件 - 教學課程和參考 | Microsoft Docs
-  description: Machine Learning Studio 是共同作業式的拖放工具，您可以用來依據您的資料建置、測試及部署預測分析解決方案。 教學課程、影片和模型範例會示範如何使用 Studio 來建置和部署機器學習模型。
+  title: Machine Learning Studio (傳統) 文件 - Azure
+  description: Machine Learning Studio (傳統) 是一種拖放工具，可以用來建置、測試及部署預測分析解決方案。
   services: machine-learning
   ms.service: machine-learning
   ms.subservice: studio
   ms.topic: landing-page
+  ms.collection: collection
   author: j-martens
   ms.author: jmartens
-  ms.tgt_pltfrm: na
-  ms.devlang: na
-  ms.date: 02/24/2019
-abstract:
-  description: Machine Learning Studio 是共同作業式的拖放工具，可以用來依據您的資料建置、測試及部署預測分析解決方案。 教學課程、影片和模型範例會示範如何使用 Studio 來建置和部署機器學習模型。
-sections:
-  - title: 逐步教學課程
-    items:
-      - type: paragraph
-        text: 下列各個擴充的教學課程會逐步引導您建立和部署模型：
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="create-experiment">建立您的第一個 Studio 實驗</a>
-          - html: <a href="tutorial-part1-credit-risk">為信用風險建立和部署預測解決方案</a>
-  - title: 參考
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: 命令列
-            html: <p><a href="powershell-module">PowerShell 模組</a></p>
-          - title: 模組
-            html: '<p><a href="https://msdn.microsoft.com/library/azure/dn905974.aspx">演算法和模組參考</a></p>'
-          - title: REST
-            html: '<p><a href="https://docs.microsoft.com/rest/api/machinelearning/">REST 管理 API</a></p><p><a href="web-service-error-codes">Web 服務錯誤碼</a></p>'
-  - title: 更多 Azure Machine Learning 技術
-    items:
-      - type: paragraph
-        text: Azure Machine Learning 中其他可用的技術：
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Azure Machine Learning 服務
-            href: /azure/machine-learning/service/
-            image:
-              src: media/index/i_machine-learning.svg
-              href: /azure/machine-learning/service/
-          - title: 資料科學虛擬機器
-            href: /azure/machine-learning/data-science-virtual-machine/
-            image:
-              src: media/index/virtual-machines.svg
-              href: /azure/machine-learning/data-science-virtual-machine/
+  ms.date: 03/05/2020
+  ms.openlocfilehash: 02d90dc6781fe39e92d97d64697cc2ee32b04b31
+  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 03/24/2020
+  ms.locfileid: "78331487"
+landingContent:
+- title: 開始使用 Studio (傳統)
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: 什麼是 Studio (傳統)？
+      url: what-is-ml-studio.md
+    - text: 建立第一個 ML 實驗
+      url: create-experiment.md
+    - text: 建立預測解決方案
+      url: tutorial-part1-credit-risk.md
+- title: 探索參考內容
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: PowerShell 模組
+      url: powershell-module.md
+    - text: 演算法和模組
+      url: https://docs.microsoft.com/azure/machine-learning/studio-module-reference/index
+    - text: REST 管理 API
+      url: https://docs.microsoft.com/rest/api/machinelearning/
+    - text: Web 服務錯誤碼
+      url: web-service-error-codes.md
+- title: 更多 Azure ML 技術
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure Machine Learning
+      url: /azure/machine-learning/
+    - text: 資料科學虛擬機器
+      url: /azure/machine-learning/data-science-virtual-machine
+    - text: 比較 ML 產品
+      url: https://docs.microsoft.com/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/studio/context/ml-context

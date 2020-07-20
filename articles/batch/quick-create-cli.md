@@ -1,21 +1,15 @@
 ---
 title: Azure 快速入門 - 執行 Batch 作業 - CLI
-description: 快速了解如何使用 Azure CLI 執行 Batch 作業。
-services: batch
-author: laurenhughes
-manager: jeconnoc
-ms.service: batch
-ms.devlang: azurecli
+description: 快速了解如何使用 Azure CLI 執行 Batch 作業。 從命令列或在指令碼中建立和管理 Azure 資源。
 ms.topic: quickstart
 ms.date: 07/03/2018
-ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: df56fd00d5a5ff2f9e9000b39939d0f33b3737d5
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 3ec3ab6cc988ba1d11231a1bda1eec15d6e811c8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55752342"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82116327"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-azure-cli"></a>快速入門：使用 Azure CLI 執行您的第一個 Batch 作業
 
@@ -76,7 +70,7 @@ az batch account login \
 
 ## <a name="create-a-pool-of-compute-nodes"></a>建立計算節點的集區
 
-您現在已有一個 Batch 帳戶，請使用 [az batch pool create](/cli/azure/batch/pool#az-batch-pool-create) 命令建立 Linux 計算節點的範例集區。 下列範例會建立名為 mypool 的集區，其中包含 2 個大小為 Standard_A1_v2 並執行 Ubuntu 16.04 LTS 的節點。 建議的節點大小可為此快速範例提供良好的效能與成本平衡。
+您現在已有一個 Batch 帳戶，請使用 [az batch pool create](/cli/azure/batch/pool#az-batch-pool-create) 命令建立 Linux 計算節點的範例集區。 下列範例會建立名為 mypool  的集區，其中包含 2 個大小為 Standard_A1_v2  並執行 Ubuntu 16.04 LTS 的節點。 建議的節點大小可為此快速範例提供良好的效能與成本平衡。
  
 ```azurecli-interactive
 az batch pool create \
@@ -95,7 +89,7 @@ az batch pool show --pool-id mypool \
 
 繼續執行下列步驟以建立一個作業和數項工作，然而集區狀態一直在改變。 當配置狀態為 `steady` 且所有節點正在執行時，集區已準備好執行工作。 
 
-## <a name="create-a-job"></a>建立工作
+## <a name="create-a-job"></a>建立作業
 
 既然您有集區，請建立要在其中執行的作業。  Batch 作業是一或多項工作的邏輯群組。 作業包含工作通用的設定，例如優先順序以及要執行工作的集區。 使用 [az batch job create](/cli/azure/batch/job#az-batch-job-create) 命令建立 Batch 作業。 下列範例會在 mypool 集區上建立 myjob 作業。 一開始作業沒有任何工作。
 
@@ -109,7 +103,7 @@ az batch job create \
 
 現在使用 [az batch task create](/cli/azure/batch/task#az-batch-task-create) 命令來建立要在作業中執行的一些工作。 在此範例中，您可建立四個完全相同的工作。 每個工作都會執行 `command-line`，以顯示計算節點上的 Batch 環境變數，然後等候 90 秒。 當您使用 Batch 時，您會在此命令列中指定您的應用程式或指令碼。 Batch 提供數種方法來將應用程式和指令碼部署至計算節點。
 
-下列 Bash 指令碼會建立 4 個平行工作 (mytask1 至 mytask4)。
+下列 Bash 指令碼會建立 4 個平行工作 (mytask1  至 mytask4  )。
 
 ```azurecli-interactive 
 for i in {1..4}
@@ -127,7 +121,7 @@ done
 
 建立工作之後，Batch 會將它排入佇列以在集區上執行。 一旦節點可用來執行工作，此工作就會執行。
 
-使用 [az batch task show](/cli/azure/batch/task#az-batch-task-show) 命令來檢視 Batch 工作的狀態。 下列範例顯示其中一個集區節點上執行的 mytask1 詳細資料。
+使用 [az batch task show](/cli/azure/batch/task#az-batch-task-show) 命令來檢視 Batch 工作的狀態。 下列範例顯示其中一個集區節點上執行的 mytask1  詳細資料。
 
 ```azurecli-interactive 
 az batch task show \
@@ -139,7 +133,7 @@ az batch task show \
 
 ## <a name="view-task-output"></a>檢視工作輸出
 
-若要列出計算節點上某個工作所建立的檔案，請使用 [az batch task file list](/cli/azure/batch/task) 命令。 下列命令會列出 mytask1 所建立的檔案： 
+若要列出計算節點上某個工作所建立的檔案，請使用 [az batch task file list](/cli/azure/batch/task) 命令。 下列命令會列出 mytask1  所建立的檔案： 
 
 ```azurecli-interactive 
 az batch task file list \
@@ -170,7 +164,7 @@ az batch task file download \
     --destination ./stdout.txt
 ```
 
-您可以在文字編輯器中檢視 `stdout.txt` 的內容。 內容會顯示在節點上設定的 Azure Batch 環境變數。 當您建立自己的 Batch 作業時，您可以在工作命令列中，以及由命令列執行的應用程式和指令碼中，參照這些環境變數。 例如︰
+您可以在文字編輯器中檢視 `stdout.txt` 的內容。 內容會顯示在節點上設定的 Azure Batch 環境變數。 當您建立自己的 Batch 作業時，您可以在工作命令列中，以及由命令列執行的應用程式和指令碼中，參照這些環境變數。 例如：
 
 ```
 AZ_BATCH_TASK_DIR=/mnt/batch/tasks/workitems/myjob/job-1/mytask1
