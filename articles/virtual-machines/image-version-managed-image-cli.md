@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 7b671bb63934eec129e992c369ba8516c191c589
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 2ef54da76750617a77c4b2e117b694cb170ff752
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223562"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502889"
 ---
 # <a name="migrate-from-a-managed-image-to-an-image-version-using-the-azure-cli"></a>使用 Azure CLI，從受控映射遷移至映射版本
 如果您有想要遷移到共用映射資源庫的現有受控映射，您可以直接從受控映射建立共用映射庫映射。 測試新的映射之後，您就可以刪除來源受控映射。 您也可以使用[PowerShell](image-version-managed-image-powershell.md)，從受控映射遷移至共用映射資源庫。
@@ -40,7 +40,7 @@ ms.locfileid: "86223562"
 
 映像定義名稱可以由大寫或小寫字母、數字、點、虛線和句點組成。 
 
-若要深入了解您可以為映像定義指定哪些值，請參閱[映像定義](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#image-definitions)。
+若要深入了解您可以為映像定義指定哪些值，請參閱[映像定義](./linux/shared-image-galleries.md#image-definitions)。
 
 使用 [az sig image-definition create](/cli/azure/sig/image-definition#az-sig-image-definition-create)，在資源庫中建立映像定義。
 
@@ -92,7 +92,7 @@ az sig image-version create \
 > [!NOTE]
 > 您必須等候映像版本完全完成建立和複寫後，才能使用相同的受控映像來建立另一個映像版本。
 >
-> 您也可以在建立映射版本時新增，以將所有映射版本複本儲存在[區域冗余儲存體](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs)中 `--storage-account-type standard_zrs` 。
+> 您也可以在建立映射版本時新增，以將所有映射版本複本儲存在[區域冗余儲存體](../storage/common/storage-redundancy.md)中 `--storage-account-type standard_zrs` 。
 >
 
 ## <a name="next-steps"></a>後續步驟

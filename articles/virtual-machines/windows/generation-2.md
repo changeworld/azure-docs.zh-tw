@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: fef582048d1e1093a4a4d69229185e8a3d8dc229
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 1ebba13de14935d931d5d21ab786889d9a3755da
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86144856"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86500305"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Azure 上第 2 代 VM 的支援
 
@@ -21,30 +21,30 @@ ms.locfileid: "86144856"
 
 第 2 代 VM 可支援第 1 代 VM 所不支援的重要功能。 這些功能包括記憶體增加、Intel Software Guard Extensions (Intel SGX) 和虛擬化的持續性記憶體 (vPMEM)。 在內部部署環境執行的第 2 代 VM 擁有一些 Azure 尚未支援的功能。 如需詳細資訊，請參閱[功能](#features-and-capabilities)一節。
 
-第 2 代 VM 捨棄第 1 代 VM 所使用的 BIOS 架構，改用新式的 UEFI 開機架構。 相較於第 1 代 VM，第 2 代 VM 可能已改善開機與安裝時間。 如需第 2 代 VM 的概觀及第 1 代與第 2 代的差異，請參閱[應該在 Hyper-V 中建立第 1 代還是第 2 代虛擬機器？](https://docs.microsoft.com/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v) \(部分機器翻譯\)。
+第 2 代 VM 捨棄第 1 代 VM 所使用的 BIOS 架構，改用新式的 UEFI 開機架構。 相較於第 1 代 VM，第 2 代 VM 可能已改善開機與安裝時間。 如需第 2 代 VM 的概觀及第 1 代與第 2 代的差異，請參閱[應該在 Hyper-V 中建立第 1 代還是第 2 代虛擬機器？](/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v) \(部分機器翻譯\)。
 
 ## <a name="generation-2-vm-sizes"></a>第 2 代 VM 大小
 
 Azure 中所有的 VM 大小都支援第 1 代 VM (Mv2 系列 VM 除外)。 Azure 現在為下列選取的 VM 系列提供第 2 代支援：
 
-* [B 系列](https://docs.microsoft.com/azure/virtual-machines/windows/b-series-burstable)
+* [B 系列](../sizes-b-series-burstable.md)
 * [DCsv2 系列](../dcv2-series.md)
 * [DSv2 系列](../dv2-dsv2-series.md)和 [Dsv3 系列](../dv3-dsv3-series.md)
-* [Dasv4 系列](https://docs.microsoft.com/azure/virtual-machines/dav4-dasv4-series)
+* [Dasv4 系列](../dav4-dasv4-series.md)
 * [Esv3 系列](../ev3-esv3-series.md)
-* [Easv4 系列](https://docs.microsoft.com/azure/virtual-machines/eav4-easv4-series)
+* [Easv4 系列](../eav4-easv4-series.md)
 * [Fsv2 系列](../fsv2-series.md)
-* [GS 系列](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-previous-gen#gs-series)
+* [GS 系列](../sizes-previous-gen.md#gs-series)
 * [HB 系列](../hb-series.md)
 * [HC 系列](../hc-series.md)
-* [Ls 系列](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-previous-gen#ls-series)和 [Lsv2 系列](../lsv2-series.md)
+* [Ls 系列](../sizes-previous-gen.md#ls-series)和 [Lsv2 系列](../lsv2-series.md)
 * [M 系列](../m-series.md)
 * [Mv2 系列](../mv2-series.md)<sup>1</sup>
 * [NCv2 系列](../ncv2-series.md)和 [NCv3 系列](../ncv3-series.md)
 * [ND 系列](../nd-series.md)
 * [NVv3 系列](../nvv3-series.md)
 
-<sup>1</sup> Mv2 系列不支援第 1 代 VM 映像，且僅支援第 2 代映像的子集。 如需詳細資訊，請參閱 [Mv2 系列文件](https://docs.microsoft.com/azure/virtual-machines/mv2-series) \(部分機器翻譯\)。
+<sup>1</sup> Mv2 系列不支援第 1 代 VM 映像，且僅支援第 2 代映像的子集。 如需詳細資訊，請參閱 [Mv2 系列文件](../mv2-series.md) \(部分機器翻譯\)。
 
 ## <a name="generation-2-vm-images-in-azure-marketplace"></a>Azure Marketplace 中的第 2 代 VM 映像
 
@@ -213,6 +213,6 @@ az vm image list --publisher Canonical --sku gen2 --output table --all
 
 ## <a name="next-steps"></a>後續步驟
 
-* 了解 [Hyper-V 中的第 2 代虛擬機器](https://docs.microsoft.com/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v) \(部分機器翻譯\)。
+* 了解 [Hyper-V 中的第 2 代虛擬機器](/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v) \(部分機器翻譯\)。
 
 * 了解如何[準備 VHD](prepare-for-upload-vhd-image.md) 以從內部部署系統上傳到 Azure。

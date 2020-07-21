@@ -9,11 +9,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: d05902f47dff3dd2f8a63ae240c0b8825a5c441f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 443751ee974dae3c426f36cbc262bc1a3af65bd0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77658025"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86504932"
 ---
 # <a name="azure-monitor-workbook-visualizations"></a>Azure 監視器活頁簿視覺效果
 
@@ -50,7 +51,7 @@ Azure 監視器活頁簿支援多種不同的視覺效果樣式，以符合您�
 1. 按一下 [**編輯**] 工具列專案，將活頁簿切換至編輯模式。
 2. 使用 [**加入查詢**] 連結，將記錄查詢控制項加入至活頁簿。
 3. 選取 [**記錄**]、[資源類型] （例如 Application Insights）和 [目標資源] 做為 [查詢類型]。
-4. 使用 [查詢編輯器] 輸入分析的[KQL](https://docs.microsoft.com/azure/kusto/query/) （例如，要求的趨勢）。
+4. 使用 [查詢編輯器] 輸入分析的[KQL](/azure/kusto/query/) （例如，要求的趨勢）。
 5. 將視覺效果設定為 [**區域**]、[**條形**圖]、 **[橫條圖（類別）**]、[**折線圖**]、[**圓形圖**]、[**散佈圖** **] 或**
 6. 如有需要，請設定其他參數，例如時間範圍、視覺效果、大小、色彩調色板和圖例。
 
@@ -113,7 +114,7 @@ Azure 監視器活頁簿支援多種不同的視覺效果樣式，以符合您�
 
 ![以記錄為基礎之方格查詢的螢幕擷取畫面](./media/workbooks-visualizations/grid-query.png)
 
-## <a name="tiles"></a>Tiles
+## <a name="tiles"></a>圖格
 
 磚是在活頁簿中呈現摘要資料非常有用的方式。 下圖顯示磚的常見使用案例-應用層級摘要位於詳細方格的頂端。
 

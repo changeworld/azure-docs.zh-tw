@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/13/2019
-ms.openlocfilehash: 92b6737f48d8d8704f461c9adac92284b323b05f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 62d16bc9ca6c4238ff7c6304c5e1964c2956c898
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85847398"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505290"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>將 Operations Manager 連接到 Azure 監視器
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-若要維持[System Center Operations Manager](https://docs.microsoft.com/system-center/scom/key-concepts?view=sc-om-1807)的現有投資，並使用 Azure 監視器的擴充功能，您可以將 Operations Manager 整合到您的 Log Analytics 工作區。 這可讓您在 Azure 監視器中利用記錄的機會，同時繼續使用 Operations Manager 來執行下列動作：
+若要維持[System Center Operations Manager](/system-center/scom/key-concepts?view=sc-om-1807)的現有投資，並使用 Azure 監視器的擴充功能，您可以將 Operations Manager 整合到您的 Log Analytics 工作區。 這可讓您在 Azure 監視器中利用記錄的機會，同時繼續使用 Operations Manager 來執行下列動作：
 
 * 使用 Operations Manager 監視 IT 服務的健全狀況
 * 維護與支援事件和問題管理之 ITSM 解決方案的整合
@@ -33,7 +33,7 @@ ms.locfileid: "85847398"
 
 如果 IT 安全性原則不允許您網路上的電腦連線到網際網路，則可以將管理伺服器設定為連線到 Log Analytics 閘道，以根據已啟用的解決方案來接收組態資訊和傳送收集到的資料。 如需有關如何設定 Operations Manager 管理群組以透過 Log Analytics 閘道與 Azure 監視器通訊的詳細資訊和步驟，請參閱[使用 Log analytics 閘道將電腦連線至 Azure 監視器](../../azure-monitor/platform/gateway.md)。  
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 開始之前，請檢閱下列需求。
 
@@ -154,7 +154,7 @@ ms.locfileid: "85847398"
 1. 開啟 Operations Manager 主控台，然後選取 [管理]**** 工作區。
 1. 在 [RunAs 設定]**** 下，選取 [設定檔]****。
 1. 開啟 [ **System Center Advisor 執行身份設定檔 Proxy** ] 設定檔。
-1. 在 [執行身分設定檔精靈] 中，按一下 [加入] 使用執行身分帳戶。 您可以建立[執行身分帳戶](https://technet.microsoft.com/library/hh321655.aspx)，或使用現有的帳戶。 此帳戶必須有足夠的權限，才能通過 Proxy 伺服器。
+1. 在 [執行身分設定檔精靈] 中，按一下 [加入] 使用執行身分帳戶。 您可以建立[執行身分帳戶](/previous-versions/system-center/system-center-2012-R2/hh321655(v=sc.12))，或使用現有的帳戶。 此帳戶必須有足夠的權限，才能通過 Proxy 伺服器。
 1. 若要設定帳戶來管理，請選擇 [選取的類別、群組或物件]****，按一下 [選取…]**** 然後按一下 [群組…]**** 開啟 [群組搜尋]**** 方塊。
 1. 搜尋，然後選取 [Microsoft System Center Advisor 監控伺服器群組] ****。 選取群組之後，按一下 [確定]**** 關閉 [群組搜尋]**** 方塊。
 1. 按一下 [確定]**** 以關閉 [新增執行身分帳戶]**** 方塊。
@@ -173,7 +173,7 @@ ms.locfileid: "85847398"
 * **Microsoft.SysTemCenter MPUpdate** -更新基底 Azure 監視器管理元件。 預設會每 12 小時執行一次。
 * **Microsoft.SystemCenter.Advisor.Core.GetIntelligencePacksRule** - 更新工作區中所啟用的解決方案管理組件。 預設會每五 (5) 分鐘執行一次。
 
-您可以覆寫這兩個規則以防止自動下載，方法是停用它們，或修改管理伺服器與 Azure 監視器進行同步處理的頻率，以判斷是否有新的管理元件可用且應該下載。 遵循[如何覆寫規則或監視器](https://technet.microsoft.com/library/hh212869.aspx)步驟，使用值 (秒) 修改 [頻率]**** 參數來變更同步處理排程，或修改 [已啟用]**** 參數來停用規則。 將目標設為覆寫 [Operations Manager 管理群組] 類別的所有物件。
+您可以覆寫這兩個規則以防止自動下載，方法是停用它們，或修改管理伺服器與 Azure 監視器進行同步處理的頻率，以判斷是否有新的管理元件可用且應該下載。 遵循[如何覆寫規則或監視器](/previous-versions/system-center/system-center-2012-R2/hh212869(v=sc.12))步驟，使用值 (秒) 修改 [頻率]**** 參數來變更同步處理排程，或修改 [已啟用]**** 參數來停用規則。 將目標設為覆寫 [Operations Manager 管理群組] 類別的所有物件。
 
 若要繼續遵循現有的變更控制程序來控制生產管理群組中的管理組件發行版本，則可以停用規則，並在允許更新時於特定期間啟用它們。 如果您的環境中有開發或 QA 管理群組，而且該管理群組連接到網際網路，則可以設定該管理群組與 Log Analytics 工作區，以支援此案例。 這可讓您先檢查並評估 Azure 監視器管理元件的反復發行，再將它們發行到生產管理群組。
 

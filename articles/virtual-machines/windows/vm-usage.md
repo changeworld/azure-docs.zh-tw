@@ -8,11 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 12/04/2017
 ms.author: memccror
-ms.openlocfilehash: 62880542e2cc4a93585011837b4cc962c8e79c0e
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: d480b9309c9028d8f55ab50c72a86889f320810b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773778"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86500110"
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>了解 Azure 虛擬機器使用情況
 分析您的 Azure 使用情況資料，可以深入了解使用量，以在整個組織內實現更妥善的成本管理與配置。 本文件會針對您的 Azure 計算使用量詳細資料，提供深入探討。 如需有關一般 Azure 使用情況的詳細資訊，請瀏覽至[了解您的帳單](../../cost-management-billing/understand/review-individual-bill.md)。
@@ -137,10 +138,9 @@ Microsoft.ClassicCompute 代表透過 Azure Service Manager 部署的傳統資�
 
 API 中有 3 個可能位置會傳回 VM 上執行的作業系統：
 
-1) 包含客體代理程式的執行中 VM (所有 Linux VM 和大部分的 Windows VM) 會在 VM 執行個體檢視中顯示作業系統名稱和作業系統版本。 這在任何時候都是正確的，但因為資訊來自客體代理程式，所以不適用於所有 VM。 [這裡](https://docs.microsoft.com/rest/api/compute/virtualmachines/instanceview#virtualmachineagentinstanceview)提供 API 文件。
-2) 從平台映像部署的 VM 將會包含映像詳細資料，這可能會在發行者為供應項目或 SKU 選取的名稱中指出作業系統版本。 不過，這些是發行者選取的，因此不保證將可在命名中探索到作業系統。 [這裡](https://docs.microsoft.com/rest/api/compute/images/get#operatingsystemtypes)提供 API 文件。
-3) 每個作業系統磁碟都會有指定的 Windows 或 Linux 值。 從映像建立作業系統磁碟時，此值會繼承自映像。 當作業系統磁碟直接上傳到平台時，若建立作業系統磁碟，就會設定作業系統值。 此值一律存在，但 Azure 平台不確保其正確無誤。 [這裡](https://docs.microsoft.com/rest/api/compute/virtualmachineimages/get#operatingsystemtypes)提供 API 文件。
+1) 包含客體代理程式的執行中 VM (所有 Linux VM 和大部分的 Windows VM) 會在 VM 執行個體檢視中顯示作業系統名稱和作業系統版本。 這在任何時候都是正確的，但因為資訊來自客體代理程式，所以不適用於所有 VM。 [這裡](/rest/api/compute/virtualmachines/instanceview#virtualmachineagentinstanceview)提供 API 文件。
+2) 從平台映像部署的 VM 將會包含映像詳細資料，這可能會在發行者為供應項目或 SKU 選取的名稱中指出作業系統版本。 不過，這些是發行者選取的，因此不保證將可在命名中探索到作業系統。 [這裡](/rest/api/compute/images/get#operatingsystemtypes)提供 API 文件。
+3) 每個作業系統磁碟都會有指定的 Windows 或 Linux 值。 從映像建立作業系統磁碟時，此值會繼承自映像。 當作業系統磁碟直接上傳到平台時，若建立作業系統磁碟，就會設定作業系統值。 此值一律存在，但 Azure 平台不確保其正確無誤。 [這裡](/rest/api/compute/virtualmachineimages/get#operatingsystemtypes)提供 API 文件。
 
 ## <a name="next-steps"></a>後續步驟
 若要深入了解使用情況詳細資料，請參閱[了解 Microsoft Azure 的計費](../../cost-management-billing/understand/review-individual-bill.md)。
-

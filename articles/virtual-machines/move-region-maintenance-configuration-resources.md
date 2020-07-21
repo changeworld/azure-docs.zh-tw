@@ -6,23 +6,24 @@ ms.service: virtual-machines
 ms.topic: how-to
 ms.date: 03/04/2020
 ms.author: shants
-ms.openlocfilehash: baf7201176fc3d6c70881817ff21b44c2615241a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 38532fba2be1fedd275ed2e7f9dfc1bf5752499d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84676886"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86501648"
 ---
 # <a name="move-resources-in-a-maintenance-control-configuration-to-another-region"></a>將維護控制設定中的資源移至另一個區域
 
 請遵循這篇文章，將與維護控制設定相關聯的資源移到不同的 Azure 區域。 基於許多原因，您可能會想要移動設定。 例如，若要利用新的區域，可在特定區域中部署可用的功能或服務，以符合內部原則和治理需求，或為了回應容量規劃。
 
-維護控制（使用自訂維護設定）可讓您控制如何將平臺更新套用至[Windows](https://docs.microsoft.com/azure/virtual-machines/maintenance-control-cli?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json)和[Linux](https://docs.microsoft.com/azure/virtual-machines/maintenance-control-cli?toc=%2Fazure%2Fvirtual-machines%2Flinux%2Ftoc.json&bc=%2Fazure%2Fvirtual-machines%2Flinux%2Fbreadcrumb%2Ftoc.json&view=azure-java-stable) Vm，以及 Azure 專用主機。 跨區域移動維護控制的案例有好幾種：
+維護控制（使用自訂維護設定）可讓您控制如何將平臺更新套用至[Windows](./maintenance-control-cli.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json)和[Linux](./maintenance-control-cli.md?toc=%2Fazure%2Fvirtual-machines%2Flinux%2Ftoc.json&bc=%2Fazure%2Fvirtual-machines%2Flinux%2Fbreadcrumb%2Ftoc.json&view=azure-java-stable) Vm，以及 Azure 專用主機。 跨區域移動維護控制的案例有好幾種：
 
 - 若要移動與維護設定相關聯的資源，而不是設定本身，請遵循這篇文章。
 - 若要移動維護控制設定，而不是與設定相關聯的資源，請遵循[這些指示](move-region-maintenance-configuration.md)。
 - 若要移動維護設定和其相關聯的資源，請先遵循[這些指示](move-region-maintenance-configuration.md)。 然後，依照這篇文章中的指示進行。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 開始移動與維護控制設定相關聯的資源之前：
 
@@ -39,7 +40,7 @@ ms.locfileid: "84676886"
 
 1. 開始之前，請先定義這些變數。 我們已提供每個的範例。
 
-    **變** | **詳細資料** | **範例**
+    **變數** | **詳細資料** | **範例**
     --- | ---
     $subId | 包含維護設定之訂用帳戶的識別碼 | 「我們的訂用帳戶識別碼」
     $rsrcGroupName | 資源組名（Azure VM） | VMResourceGroup
@@ -48,7 +49,7 @@ ms.locfileid: "84676886"
     $adh | 專用主機名稱 | Myhost 代表
     $adhParentName | 父資源名稱 | HostGroup
     
-2. 若要使用 PowerShell [AZConfigurationAssignment](https://docs.microsoft.com/powershell/module/az.maintenance/Get-AzConfigurationAssignment?view=azps-3.5.0)命令來取得維護設定：
+2. 若要使用 PowerShell [AZConfigurationAssignment](/powershell/module/az.maintenance/get-azconfigurationassignment?view=azps-3.5.0)命令來取得維護設定：
 
     - 若為 Azure 專用主機，請執行：
         ```
@@ -60,7 +61,7 @@ ms.locfileid: "84676886"
         ```
         Get-AzConfigurationAssignment -ResourceGroupName $rgName -ResourceName $vmName -ProviderName Microsoft.Compute -ResourceType virtualMachines | Format-Table Name
         ```
-3. 若要使用 CLI [az 維護指派](https://docs.microsoft.com/cli/azure/ext/maintenance/maintenance/assignment?view=azure-cli-latest)命令來取出維護設定：
+3. 若要使用 CLI [az 維護指派](/cli/azure/ext/maintenance/maintenance/assignment?view=azure-cli-latest)命令來取出維護設定：
 
     - 適用于 Azure 專用主機：
 
@@ -77,7 +78,7 @@ ms.locfileid: "84676886"
 
 ## <a name="move"></a>移動 
 
-1. [遵循這些指示](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-migrate?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json)，將 Azure vm 移至新的區域。
+1. [遵循這些指示](../site-recovery/azure-to-azure-tutorial-migrate.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json)，將 Azure vm 移至新的區域。
 2. 資源移動之後，視您是否移動維護設定而定，將維護設定重新套用至新區域中的資源。 您可以使用[PowerShell](../virtual-machines/maintenance-control-powershell.md)或[CLI](../virtual-machines/maintenance-control-cli.md)將維護設定套用至資源。
 
 

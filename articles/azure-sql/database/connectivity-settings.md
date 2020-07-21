@@ -9,12 +9,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 07/06/2020
-ms.openlocfilehash: 04c5d9c8eceb14ab68ca0d96f994bf6a64bbc431
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 5f7e3f763fc7107ba1b4be1dc8b19e55aa88b5a8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045362"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86504680"
 ---
 # <a name="azure-sql-connectivity-settings"></a>Azure SQL 連線能力設定
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -37,7 +37,7 @@ ms.locfileid: "86045362"
 
  ![[拒絕公用網路存取] 連線的螢幕擷取畫面][2]
 
-嘗試將**拒絕公用網路存取**設定設為 **[是]** ，而在邏輯伺服器上沒有現有的私用端點時，將會失敗，並出現類似以下的錯誤訊息：  
+嘗試將**拒絕公用網路存取**設定設為 **[是]** 時，如果邏輯伺服器沒有任何現有的私用端點，則會失敗並出現類似以下的錯誤訊息：  
 
 ```output
 Error 42102

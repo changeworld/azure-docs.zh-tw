@@ -9,11 +9,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: mbullwin
-ms.openlocfilehash: 76ecc3ee17353ebd0bbead1bba959f85d521d0df
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e2463c2ea4044af0b20a1dee91b30870639dc7ce
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82982134"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86504915"
 ---
 # <a name="programmatically-manage-workbooks"></a>以程式設計方式管理活頁簿
 
@@ -77,7 +78,7 @@ ms.locfileid: "82982134"
     }
     ```
 1. 在 `galleries` 物件中填入和索引 `name` 鍵，並 `category` 加上您的值。 深入瞭解下一節中的[參數](#parameters)。
-2. 使用[Azure 入口網站](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-portal#deploy-resources-from-custom-template)、[命令列介面](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-cli)、 [PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-powershell)等部署此 Azure Resource Manager 範本。
+2. 使用[Azure 入口網站](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)、[命令列介面](../../azure-resource-manager/templates/deploy-cli.md)、 [PowerShell](../../azure-resource-manager/templates/deploy-powershell.md)等部署此 Azure Resource Manager 範本。
 3. 開啟 Azure 入口網站，然後流覽至 [Azure Resource Manager] 範本中所選擇的活頁簿圖庫。 在範例範本中，流覽至 Azure 監視器活頁簿圖庫：
     1. 開啟 Azure 入口網站，然後流覽至 Azure 監視器
     2. `Workbooks`從目錄中開啟
@@ -200,7 +201,7 @@ ms.locfileid: "82982134"
 | `serializedData` | 包含要在活頁簿中使用的內容或承載。 使用活頁簿 UI 中的 Resource Manager 範本來取得值 |
 
 ### <a name="workbook-types"></a>活頁簿類型
-活頁簿類型指定要顯示新活頁簿實例的活頁簿圖庫類型。 這些選項包括：
+活頁簿類型指定要顯示新活頁簿實例的活頁簿圖庫類型。 選項包括：
 
 | 類型 | 圖庫位置 |
 | :------------- |:-------------|

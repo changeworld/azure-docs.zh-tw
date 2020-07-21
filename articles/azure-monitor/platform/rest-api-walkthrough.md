@@ -5,28 +5,28 @@ ms.subservice: metrics
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.custom: has-adal-ref
-ms.openlocfilehash: 602d11b20e50ec5ba56d0d9c1762292c07d0b67b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e25e85f811d1c5d854b471bf0417e75ab1686d72
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84945336"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505120"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Azure 監視 REST API 逐步解說
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-本文將說明如何執行驗證，讓您的程式碼可以使用 [Microsoft Azure 監視器 REST API 參考](https://docs.microsoft.com/rest/api/monitor/)。
+本文將說明如何執行驗證，讓您的程式碼可以使用 [Microsoft Azure 監視器 REST API 參考](/rest/api/monitor/)。
 
 Azure 監視器 API 可讓您以程式設計方式取出可用的預設計量定義、細微性和計量值。 資料可以儲存在另一個資料存放區，例如 Azure SQL Database、Azure Cosmos DB 或 Azure Data Lake。 其他分析可視需要從該處執行。
 
-除了使用各種計量資料點，監視器 API 還可讓您列出警示規則、檢視活動記錄等等。 如需可用作業的完整清單，請參閱 [Microsoft Azure 監視器 REST API 參考](https://docs.microsoft.com/rest/api/monitor/)。
+除了使用各種計量資料點，監視器 API 還可讓您列出警示規則、檢視活動記錄等等。 如需可用作業的完整清單，請參閱 [Microsoft Azure 監視器 REST API 參考](/rest/api/monitor/)。
 
 ## <a name="authenticating-azure-monitor-requests"></a>驗證 Azure 監視器要求
 
 第一步是驗證要求。
 
-針對 Azure 監視器 API 執行的所有工作都會使用 Azure Resource Manager 驗證模型。 因此，所有要求都必須使用 Azure Active Directory (Azure AD) 進行驗證。 驗證用戶端應用程式的其中一個方法是建立 Azure AD 服務主體，並擷取驗證 (JWT) 權杖。 下列範例指令碼會示範透過 PowerShell 建立 Azure AD 服務主體的方法。 如需更詳細的逐步解說中，請參閱 [使用 Azure PowerShell 建立用來存取資源的服務主體](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps)上的文件。 它也可以[透過 Azure 入口網站建立服務原則](../../active-directory/develop/howto-create-service-principal-portal.md)。
+針對 Azure 監視器 API 執行的所有工作都會使用 Azure Resource Manager 驗證模型。 因此，所有要求都必須使用 Azure Active Directory (Azure AD) 進行驗證。 驗證用戶端應用程式的其中一個方法是建立 Azure AD 服務主體，並擷取驗證 (JWT) 權杖。 下列範例指令碼會示範透過 PowerShell 建立 Azure AD 服務主體的方法。 如需更詳細的逐步解說中，請參閱 [使用 Azure PowerShell 建立用來存取資源的服務主體](/powershell/azure/create-azure-service-principal-azureps)上的文件。 它也可以[透過 Azure 入口網站建立服務原則](../../active-directory/develop/howto-create-service-principal-portal.md)。
 
 ```powershell
 $subscriptionId = "{azure-subscription-id}"
@@ -85,13 +85,13 @@ $authHeader = @{
 2. 擷取度量值
 
 > [!NOTE]
-> 如需使用 Azure REST API 進行驗證的詳細資訊，請參閱[azure REST API 參考](https://docs.microsoft.com/rest/api/azure/)。
+> 如需使用 Azure REST API 進行驗證的詳細資訊，請參閱[azure REST API 參考](/rest/api/azure/)。
 >
 >
 
 ## <a name="retrieve-metric-definitions-multi-dimensional-api"></a>取出計量定義 (多維度 API)
 
-使用 [Azure 監視器度量定義 REST API](https://docs.microsoft.com/rest/api/monitor/metricdefinitions) 來存取可供服務使用的度量清單。
+使用 [Azure 監視器度量定義 REST API](/rest/api/monitor/metricdefinitions) 來存取可供服務使用的度量清單。
 
 **方法**：GET
 
@@ -228,7 +228,7 @@ Invoke-RestMethod -Uri $request `
 
 ## <a name="retrieve-dimension-values-multi-dimensional-api"></a>取出維度值 (多維度 API)
 
-知道可用的計量定義後，有一些計量可能是有維度的。 查詢計量之前，建議您先探索維度的值範圍。 在查詢計量時，您就可以選擇根據這些維度值來篩選或分類計量。  使用 [Azure 監視器度量 REST API](https://docs.microsoft.com/rest/api/monitor/metrics) 來完成此作業。
+知道可用的計量定義後，有一些計量可能是有維度的。 查詢計量之前，建議您先探索維度的值範圍。 在查詢計量時，您就可以選擇根據這些維度值來篩選或分類計量。  使用 [Azure 監視器度量 REST API](/rest/api/monitor/metrics) 來完成此作業。
 
 在任何篩選要求中，請使用計量的名稱 ‘value’ (不是 ‘localizedValue’)。 如果未指定篩選器，則會傳回預設度量。 此 API 的使用方式只允許一個維度有萬用字元篩選條件。
 
@@ -301,7 +301,7 @@ Invoke-RestMethod -Uri $request `
 
 ## <a name="retrieve-metric-values-multi-dimensional-api"></a>取出計量值 (多維度 API)
 
-知道可用的計量定義和可能的維度值之後，就可以取出相關的計量值。  使用 [Azure 監視器度量 REST API](https://docs.microsoft.com/rest/api/monitor/metrics) 來完成此作業。
+知道可用的計量定義和可能的維度值之後，就可以取出相關的計量值。  使用 [Azure 監視器度量 REST API](/rest/api/monitor/metrics) 來完成此作業。
 
 在任何篩選要求中，請使用計量的名稱 ‘value’ (不是 ‘localizedValue’)。 如果未指定維度篩選條件，則會傳回積存的彙總計量。 如果計量查詢傳回多個時間序列，您可以使用 'Top' 和 'OrderBy' 查詢參數傳回時間序列的有限排序清單。
 
@@ -387,7 +387,7 @@ Invoke-RestMethod -Uri $request `
 
 ## <a name="retrieve-metric-definitions"></a>取出計量定義
 
-使用 [Azure 監視器度量定義 REST API](https://msdn.microsoft.com/library/mt743621.aspx) 來存取可供服務使用的度量清單。
+使用 [Azure 監視器度量定義 REST API](/rest/api/monitor/metricdefinitions) 來存取可供服務使用的度量清單。
 
 **方法**：GET
 
@@ -451,7 +451,7 @@ Invoke-RestMethod -Uri $request `
 }
 ```
 
-如需詳細資訊，請參閱 [列出 Azure 監視器 REST API 中的資源度量定義](https://msdn.microsoft.com/library/azure/mt743621.aspx) 文件。
+如需詳細資訊，請參閱 [列出 Azure 監視器 REST API 中的資源度量定義](/rest/api/monitor/metricdefinitions) 文件。
 
 ## <a name="retrieve-metric-values"></a>取出計量值
 
@@ -594,7 +594,7 @@ armclient GET /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups
 
 ## <a name="retrieve-the-resource-id"></a>取出資源識別碼
 
-使用 REST API 可實際協助了解可用的度量定義、細微度以及相關值。 使用 [Azure Management Library](https://msdn.microsoft.com/library/azure/mt417623.aspx)時，該資訊會很實用。
+使用 REST API 可實際協助了解可用的度量定義、細微度以及相關值。 使用 [Azure Management Library](/previous-versions/azure/reference/mt417623(v=azure.100))時，該資訊會很實用。
 
 上述程式碼中，要使用的資源識別碼是所需 Azure 資源的完整路徑。 例如，若要查詢 Azure Web 應用程式，資源識別碼為︰
 
@@ -705,7 +705,7 @@ az storage account show -g azmon-rest-api-walkthrough -n contosotweets2017
 
 ## <a name="retrieve-activity-log-data"></a>取出活動記錄資料
 
-除了計量定義及相關值，也可以使用 Azure Monitor REST API 取出關於 Azure 資源的其他有用的深入解析。 例如，可以查詢 [活動記錄檔](https://msdn.microsoft.com/library/azure/dn931934.aspx) 資料。 下列範例要求會使用 Azure 監視器 REST API 來查詢活動記錄。
+除了計量定義及相關值，也可以使用 Azure Monitor REST API 取出關於 Azure 資源的其他有用的深入解析。 例如，可以查詢 [活動記錄檔](/rest/api/monitor/activitylogs) 資料。 下列範例要求會使用 Azure 監視器 REST API 來查詢活動記錄。
 
 利用 filter 取得活動記錄：
 
@@ -735,5 +735,5 @@ GET https://management.azure.com/subscriptions/089bd33f-d4ec-47fe-8ba5-0753aa5c5
 
 * 檢閱 [監視的概觀](../../azure-monitor/overview.md)。
 * 檢視 [支援 Azure 監視器的度量](metrics-supported.md)。
-* 檢閱 [Microsoft Azure 監視器 REST API 參考](https://msdn.microsoft.com/library/azure/dn931943.aspx)。
-* 檢閱 [Azure Management Library](https://msdn.microsoft.com/library/azure/mt417623.aspx)。
+* 檢閱 [Microsoft Azure 監視器 REST API 參考](/rest/api/monitor/)。
+* 檢閱 [Azure Management Library](/previous-versions/azure/reference/mt417623(v=azure.100))。

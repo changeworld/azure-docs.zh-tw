@@ -7,11 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 05/22/2020
 ms.author: shants
-ms.openlocfilehash: 3caf8b63cbd86338bbef653e9be9916907578627
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5dcf4ad7acb3becd2ca04407bc8e5b3ac45701f1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84675874"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86501699"
 ---
 # <a name="maintenance-for-virtual-machines-in-azure"></a>Azure 中虛擬機器進行的維修
 
@@ -76,7 +77,7 @@ Azure 平台會在下列案例中開始進行即時移轉：
 
 #### <a name="paired-regions"></a>配對的區域
 
-每個 Azure 區域都會與相同鄰近地理位置內的另一個區域配對。 兩者一起形成區域配對。 在排程維護階段，Azure 只會更新區域配對中單一區域的 VM。 舉例來說，在更新美國中北部的 VM 時，Azure 並不會同時更新任何美國中南部的 VM。 不過，像是北歐等其他區域可以和美國東部一同進行維護。 了解區域配對的運作方式可協助您將 VM 更妥善地分散於各區域。 如需詳細資訊，請參閱 [Azure 區域配對](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)。
+每個 Azure 區域都會與相同鄰近地理位置內的另一個區域配對。 兩者一起形成區域配對。 在排程維護階段，Azure 只會更新區域配對中單一區域的 VM。 舉例來說，在更新美國中北部的 VM 時，Azure 並不會同時更新任何美國中南部的 VM。 不過，像是北歐等其他區域可以和美國東部一同進行維護。 了解區域配對的運作方式可協助您將 VM 更妥善地分散於各區域。 如需詳細資訊，請參閱 [Azure 區域配對](../best-practices-availability-paired-regions.md)。
 
 #### <a name="availability-sets-and-scale-sets"></a>可用性設定組和擴展集
 

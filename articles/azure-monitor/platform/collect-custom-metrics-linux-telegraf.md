@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 06c344130156ae5f72f6e65baa519c11adff2bae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 57eb005109b97a423f9218ee6a47ce5bb06c3853
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82186436"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505341"
 ---
 # <a name="collect-custom-metrics-for-a-linux-vm-with-the-influxdata-telegraf-agent"></a>使用 InfluxData Telegraf 代理程式收集 Linux VM 的自訂計量
 
@@ -25,7 +25,7 @@ ms.locfileid: "82186436"
  ![Telegraf 代理程式概觀](./media/collect-custom-metrics-linux-telegraf/telegraf-agent-overview.png)
 
 > [!NOTE]  
-> 並非所有區域都支援自訂計量。 [這裡](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview#supported-regions)列出支援的區域
+> 並非所有區域都支援自訂計量。 [這裡](./metrics-custom-overview.md#supported-regions)列出支援的區域
 
 ## <a name="send-custom-metrics"></a>傳送自訂計量 
 
@@ -137,6 +137,3 @@ sudo systemctl start telegraf
 
 ## <a name="next-steps"></a>後續步驟
 - 深入了解[自訂計量](metrics-custom-overview.md)。
-
-
-

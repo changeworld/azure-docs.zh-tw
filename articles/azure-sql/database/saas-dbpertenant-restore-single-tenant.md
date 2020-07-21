@@ -11,11 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
-ms.openlocfilehash: 65331136b5b137c44577fd09f3914e8869cc2dcb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1567d38f8e582c062aa024b40cf0ede1d8b691f6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84027899"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86504320"
 ---
 # <a name="restore-a-single-tenant-with-a-database-per-tenant-saas-application"></a>使用每一租用戶一個資料庫的 SaaS 應用程式還原單一租用戶
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -28,7 +29,7 @@ ms.locfileid: "84027899"
 > * 將資料庫還原到平行資料庫 (並存)。
 > * 就地還原資料庫，取代現有的資料庫。
 
-|||
+| 模式 | 描述 |
 |:--|:--|
 | 還原至平行資料庫 | 此模式適用於諸如檢閱、稽核及合規性等工作，可允許租用戶從較早時間點檢查他們的資料。 租用戶目前的資料庫仍保持連線而不變。 |
 | 就地還原 | 此模式通常是在租用戶不小心刪除或損毀資料後，用來將租用戶復原到較早的時間點。 原始資料庫將會離線，然後被還原的資料庫取代。 |
@@ -53,7 +54,7 @@ ms.locfileid: "84027899"
 
 可在 [WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) GitHub 存放庫中使用 Wingtip Tickets SaaS 多租用戶資料庫指令碼和應用程式來源程式碼。 如需下載和解除封鎖 Wingtip Tickets SaaS 指令碼的步驟，請參閱[一般指引](saas-tenancy-wingtip-app-guidance-tips.md)。
 
-## <a name="before-you-start"></a>在您開始使用 Intune 之前
+## <a name="before-you-start"></a>開始之前
 
 資料庫建立完成後，可能需要 10 到 15 分鐘來建立還原要用的第一次完整備份。 如果您才剛安裝好應用程式，可能需要等待數分鐘，才能嘗試此案例。
 

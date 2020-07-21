@@ -1,5 +1,5 @@
 ---
-title: 建立診斷設定以將平臺記錄和計量傳送至不同的目的地
+title: 建立診斷設定以將平台記錄和計量傳送至不同目的地
 description: 使用診斷設定，將 Azure 監視器平臺計量和記錄傳送至 Azure 監視器記錄、Azure 儲存體或 Azure 事件中樞。
 author: bwren
 ms.author: bwren
@@ -7,14 +7,14 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.subservice: logs
-ms.openlocfilehash: a037eddb13645036fcbe501ecba33923733b6d03
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0a9eaeb9b77c7b4dd7e0b2347c66de3a325a66ee
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84944367"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505171"
 ---
-# <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>建立診斷設定以將平臺記錄和計量傳送至不同的目的地
+# <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>建立診斷設定以將平台記錄和計量傳送至不同目的地
 Azure 中的[平臺記錄](platform-logs-overview.md)，包括 azure 活動記錄檔和資源記錄，可針對 Azure 資源和其相依的 azure 平臺提供詳細的診斷和審核資訊。 預設會收集[平臺計量](data-platform-metrics.md)，而且通常會儲存在 Azure 監視器計量資料庫中。 本文提供有關建立及設定診斷設定的詳細資料，以將平臺計量和平臺記錄檔傳送至不同的目的地。
 
 > [!IMPORTANT]
@@ -27,6 +27,9 @@ Azure 中的[平臺記錄](platform-logs-overview.md)，包括 azure 活動記�
 
 單一診斷設定只能定義其中一個目的地。 如果您想要將資料傳送至超過一個的特定目的地類型 (例如，兩個不同的 Log Analytics 工作區)，請建立多個設定。 每個資源可以有最多 5 個診斷設定。
 
+下列影片會逐步引導您使用診斷設定來路由平臺記錄。
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4AvVO]
+
 > [!NOTE]
 > [平臺計量](metrics-supported.md)會自動傳送至[Azure 監視器計量](data-platform-metrics.md)。 診斷設定可以用來將特定 Azure 服務的計量傳送至 Azure 監視器記錄，以使用具有特定限制的[記錄查詢](../log-query/log-query-overview.md)來分析其他監視資料。 
 >  
@@ -34,10 +37,10 @@ Azure 中的[平臺記錄](platform-logs-overview.md)，包括 azure 活動記�
 > 目前不支援透過診斷設定傳送多維度計量。 跨維度值所彙總的維度計量會匯出為扁平化單一維度計量。 *例如*：您可以在每個節點層級上探索區塊鏈上的 ' IOReadBytes ' 計量並繪製成圖表。 不過，透過診斷設定匯出時，匯出的計量會代表所有節點的所有讀取位元組。 此外，由於內部限制，並非所有計量都可匯出以 Azure 監視器記錄/Log Analytics。 如需詳細資訊，請參閱可[匯出的計量清單](metrics-supported-export-diagnostic-settings.md)。 
 >  
 >  
-> 若要解決特定計量的這些限制，建議您使用 [[計量 REST API](https://docs.microsoft.com/rest/api/monitor/metrics/list)手動將其解壓縮，並使用[Azure 監視器資料收集器 API](data-collector-api.md)將它們匯入 Azure 監視器記錄。  
+> 若要解決特定計量的這些限制，建議您使用 [[計量 REST API](/rest/api/monitor/metrics/list)手動將其解壓縮，並使用[Azure 監視器資料收集器 API](data-collector-api.md)將它們匯入 Azure 監視器記錄。  
 
 
-## <a name="destinations"></a>Destinations
+## <a name="destinations"></a>目的地
 
 平臺記錄和計量可以傳送至下表中的目的地。 請遵循下表中的每個連結，以取得將資料傳送至該目的地的詳細資訊。
 
@@ -48,7 +51,7 @@ Azure 中的[平臺記錄](platform-logs-overview.md)，包括 azure 活動記�
 | [Azure 儲存體帳戶](#azure-storage) | 將記錄和計量封存到 Azure 儲存體帳戶適用于 audit、靜態分析或備份。 相較于 Azure 監視器記錄和 Log Analytics 工作區，Azure 儲存體的成本較低，而且記錄可以無限期保存。 |
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 您必須使用必要的許可權來建立診斷設定的任何目的地。 請參閱下列各節，以瞭解每個目的地的必要條件需求。
 
 ### <a name="log-analytics-workspace"></a>Log Analytics 工作區
@@ -86,7 +89,7 @@ Azure 中的[平臺記錄](platform-logs-overview.md)，包括 azure 活動記�
 
       ![診斷設定](media/diagnostic-settings/menu-monitor.png)
 
-   - 在 [活動記錄] 中，按一下 [ **Azure 監視器**] 功能表中的 [**活動記錄**]，然後按一下 [**診斷設定**]。 請務必停用活動記錄的任何舊版設定。 如需詳細資訊，請參閱[停用現有的設定](/azure/azure-monitor/platform/activity-log-collect#collecting-activity-log)。
+   - 在 [活動記錄] 中，按一下 [ **Azure 監視器**] 功能表中的 [**活動記錄**]，然後按一下 [**診斷設定**]。 請務必停用活動記錄的任何舊版設定。 如需詳細資訊，請參閱[停用現有的設定](./activity-log.md#legacy-collection-methods)。
 
         ![診斷設定](media/diagnostic-settings/menu-activity-log.png)
 
@@ -141,7 +144,7 @@ Azure 中的[平臺記錄](platform-logs-overview.md)，包括 azure 活動記�
 
 ## <a name="create-using-powershell"></a>使用 PowerShell 建立
 
-使用[set-azdiagnosticsetting 指令程式](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting)建立具有[Azure PowerShell](powershell-quickstart-samples.md)的診斷設定。 如需其參數的描述，請參閱此 Cmdlet 的檔。
+使用[set-azdiagnosticsetting 指令程式](/powershell/module/az.monitor/set-azdiagnosticsetting)建立具有[Azure PowerShell](../samples/powershell-samples.md)的診斷設定。 如需其參數的描述，請參閱此 Cmdlet 的檔。
 
 > [!IMPORTANT]
 > 您不能將此方法用於 Azure 活動記錄。 相反地，請使用[Azure 監視器中的 [建立診斷設定]，使用 Resource Manager 範本](diagnostic-settings-template.md)建立 Resource Manager 範本，並使用 PowerShell 進行部署。
@@ -154,7 +157,7 @@ Set-AzDiagnosticSetting -Name KeyVault-Diagnostics -ResourceId /subscriptions/xx
 
 ## <a name="create-using-azure-cli"></a>使用 Azure CLI 建立
 
-使用[az monitor [診斷-設定](https://docs.microsoft.com/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest#az-monitor-diagnostic-settings-create)] [建立] 命令，以[Azure CLI](https://docs.microsoft.com/cli/azure/monitor?view=azure-cli-latest)建立診斷設定。 如需其參數的描述，請參閱此命令的檔。
+使用[az monitor [診斷-設定](/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest#az-monitor-diagnostic-settings-create)] [建立] 命令，以[Azure CLI](/cli/azure/monitor?view=azure-cli-latest)建立診斷設定。 如需其參數的描述，請參閱此命令的檔。
 
 > [!IMPORTANT]
 > 您不能將此方法用於 Azure 活動記錄。 相反地，請使用[Azure 監視器中的 [建立診斷設定]，使用 Resource Manager 範本](diagnostic-settings-template.md)建立 Resource Manager 範本，並使用 CLI 進行部署。
@@ -176,7 +179,7 @@ az monitor diagnostic-settings create  \
 [如需 Azure 監視器中的診斷設定 Resource Manager 範本範例](../samples/resource-manager-diagnostic-settings.md)，請參閱使用 Resource Manager 範本建立或更新診斷設定。
 
 ## <a name="create-using-rest-api"></a>使用 REST API 建立
-請參閱[診斷設定](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings)，以使用[Azure 監視器 REST API](https://docs.microsoft.com/rest/api/monitor/)來建立或更新診斷設定。
+請參閱[診斷設定](/rest/api/monitor/diagnosticsettings)，以使用[Azure 監視器 REST API](/rest/api/monitor/)來建立或更新診斷設定。
 
 ## <a name="create-using-azure-policy"></a>使用 Azure 原則建立
 因為需要為每個 Azure 資源建立診斷設定，所以 Azure 原則可以用來在每個資源建立時自動建立診斷設定。 如需詳細資訊，請參閱[使用 Azure 原則大規模部署 Azure 監視器](deploy-scale.md)。

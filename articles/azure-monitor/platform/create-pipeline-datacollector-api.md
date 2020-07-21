@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/09/2018
-ms.openlocfilehash: 96c64f6a0167b678f14bf0199069ecd6b4c8d57a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ac2b79046718fe45ad0dad0396b6f7653efbb779
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80055102"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505324"
 ---
 # <a name="create-a-data-pipeline-with-the-data-collector-api"></a>使用資料收集器 API 建立資料管線
 
@@ -43,7 +43,7 @@ ms.locfileid: "80055102"
 
 雖然本文未敘述 Blob 儲存體、邏輯應用程式或 Azure Function 的詳細安裝方式，但您可以在特定產品的網頁上找到詳細指示。
 
-為了監視此管線，我們使用 Application Insights 來監視 Azure Function，[詳細資訊請參閱這裡](../../azure-functions/functions-monitoring.md)，並使用 Azure 監視器來監視邏輯應用程式，[詳細資訊請參閱這裡](../../logic-apps/logic-apps-monitor-your-logic-apps-oms.md)。 
+為了監視此管線，我們使用 Application Insights 來監視 Azure Function，[詳細資訊請參閱這裡](../../azure-functions/functions-monitoring.md)，並使用 Azure 監視器來監視邏輯應用程式，[詳細資訊請參閱這裡](../../logic-apps/monitor-logic-apps-log-analytics.md)。 
 
 ## <a name="setting-up-the-pipeline"></a>設定管線
 若要設定管線，請先確定您已建立並設定 Blob 容器。 同樣地，請確定您已建立要將資料傳送到其中的 Log Analytics 工作區。

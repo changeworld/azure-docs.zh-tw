@@ -8,11 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 01/08/2020
 ms.author: cynthn
-ms.openlocfilehash: 3fce527c1a9feb3dbf9add36577cfa5ba8349882
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 02192850dd9103b6c1783baf42c184ee16fe299f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84659323"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86500679"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-windows-virtual-machine"></a>如何從 Windows 虛擬機器卸離資料磁碟
 
@@ -29,7 +30,7 @@ ms.locfileid: "84659323"
 
 您可以使用 PowerShell 來「熱」移除資料磁碟，但是在從 VM 卸離磁碟之前，請確定沒有任何項目正在使用該磁碟。
 
-在此範例中，我們會從 **myResourceGroup** 資源群組中的 **myVM** 移除名為 **myDisk** 的磁碟。 首先使用 [Remove-AzVMDataDisk](https://docs.microsoft.com/powershell/module/az.compute/remove-azvmdatadisk) Cmdlet 來移除磁碟。 接著，您會使用 [Update-AzVM](https://docs.microsoft.com/powershell/module/az.compute/update-azvm) Cmdlet 來更新虛擬機器的狀態，以完成移除資料磁碟的程序。
+在此範例中，我們會從 **myResourceGroup** 資源群組中的 **myVM** 移除名為 **myDisk** 的磁碟。 首先使用 [Remove-AzVMDataDisk](/powershell/module/az.compute/remove-azvmdatadisk) Cmdlet 來移除磁碟。 接著，您會使用 [Update-AzVM](/powershell/module/az.compute/update-azvm) Cmdlet 來更新虛擬機器的狀態，以完成移除資料磁碟的程序。
 
 ```azurepowershell-interactive
 $VirtualMachine = Get-AzVM `

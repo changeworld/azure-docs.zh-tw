@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 08/02/2017
 ms.author: mimckitt
-ms.openlocfilehash: ab846eeb09c4f3d2db71abf58ef5d55dc74962a9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0b13dca7f4a33a7fb9ea55a1505c26a97160d0d8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82112043"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502940"
 ---
 # <a name="how-to-update-the-azure-linux-agent-on-a-vm"></a>如何更新虛擬機器上的 Azure Linux 代理程式
 
@@ -31,7 +31,7 @@ ms.locfileid: "82112043"
 需一律先檢查 Linux 散發版本儲存機制中的封裝。 可用的封裝有可能不是最新的版本，啟用自動更新可確保 Linux 代理程式一律更新為最新版本。 如果使用封裝管理員安裝時碰到問題，請向散發版本廠商尋求支援。
 
 > [!NOTE]
-> 如需詳細資訊，請參閱[Azure 上背書的 Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)散發套件
+> 如需詳細資訊，請參閱[Azure 上背書的 Linux](../linux/endorsed-distros.md)散發套件
 
 ## <a name="minimum-virtual-machine-agent-support-in-azure"></a>在 Azure 中支援的最小虛擬機器代理程式
 在繼續之前，確認[在 Azure 中針對虛擬機器代理程式的最小版本支援](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)。

@@ -8,12 +8,12 @@ ms.date: 07/10/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 705f9f3055d40d23c9ec5e24cfccfc0c96e114a5
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: e0773515809ffdc50167a3cba1f767ac8635bcee
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86235874"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502566"
 ---
 # <a name="enable-end-to-end-encryption-using-encryption-at-host---azure-cli"></a>在主機上使用加密來啟用端對端加密-Azure CLI
 
@@ -23,7 +23,7 @@ ms.locfileid: "86235874"
 
 [!INCLUDE [virtual-machines-disks-encryption-at-host-restrictions](../../../includes/virtual-machines-disks-encryption-at-host-restrictions.md)]
 
-### <a name="supported-regions"></a>支援的區域
+### <a name="supported-regions"></a>支援區域
 
 [!INCLUDE [virtual-machines-disks-encryption-at-host-regions](../../../includes/virtual-machines-disks-encryption-at-host-regions.md)]
 
@@ -35,7 +35,7 @@ ms.locfileid: "86235874"
 
 ## <a name="prerequisites"></a>先決條件
 
-為了能夠針對您的 Vm 或虛擬機器擴展集使用主機上的加密，您必須在訂用帳戶上啟用此功能。 使用您的訂用帳戶識別碼，將電子郵件傳送至 encryptionAtHost@microsoft .com，以取得您訂閱的功能。
+為了能夠針對您的 Vm 或虛擬機器擴展集使用主機上的加密，您必須在訂用帳戶上啟用此功能。 使用您的訂用帳戶識別碼傳送電子郵件給， encryptionAtHost@microsoft.com 以取得您的訂閱已啟用的功能。
 
 ### <a name="create-an-azure-key-vault-and-diskencryptionset"></a>建立 Azure Key Vault 和 DiskEncryptionSet
 
@@ -77,7 +77,7 @@ az group deployment create -g <yourResourceGroupName> \
 
 不支援舊版 VM 大小。 您可以透過下列其中一種方式來尋找支援的 VM 大小清單：
 
-呼叫[資源 SKU API](https://docs.microsoft.com/rest/api/compute/resourceskus/list) ，並檢查 `EncryptionAtHostSupported` 功能是否設定為**True**。
+呼叫[資源 SKU API](/rest/api/compute/resourceskus/list) ，並檢查 `EncryptionAtHostSupported` 功能是否設定為**True**。
 
 ```json
     {
@@ -98,7 +98,7 @@ az group deployment create -g <yourResourceGroupName> \
     }
 ```
 
-或者，呼叫[Get-azcomputeresourcesku](https://docs.microsoft.com/powershell/module/az.compute/get-azcomputeresourcesku?view=azps-3.8.0) PowerShell Cmdlet。
+或者，呼叫[Get-azcomputeresourcesku](/powershell/module/az.compute/get-azcomputeresourcesku?view=azps-3.8.0) PowerShell Cmdlet。
 
 ```powershell
 $vmSizes=Get-AzComputeResourceSku | where{$_.ResourceType -eq 'virtualMachines' -and $_.Locations.Contains('CentralUSEUAP')} 

@@ -12,11 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/15/2018
 ms.author: genli
-ms.openlocfilehash: 3fd0a8bf6bacfec5e2be6dfa52ca51e46c7025f7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4c336fe9a65d7bcc44790a4bfb02bed44f028733
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75443590"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86500917"
 ---
 # <a name="windows-reboot-loop-on-an-azure-vm"></a>Azure VM 的 Windows 重新開機迴圈
 本文說明您在 Microsoft Azure 中的 Windows 虛擬機器 (VM) 上可能會遇到的重新開機迴圈。
@@ -49,7 +50,7 @@ ms.locfileid: "75443590"
 
 ## <a name="solution"></a>解決方案
 
-若要解決此問題，請[備份 OS 磁碟](../windows/snapshot-copy-managed-disk.md)，並[將 OS 磁碟連結至救援 VM](../windows/troubleshoot-recovery-disks-portal.md)，然後據以執行解決方案選項，或逐一嘗試每個解決方案。
+若要解決此問題，請[備份 OS 磁碟](../windows/snapshot-copy-managed-disk.md)，並[將 OS 磁碟連結至救援 VM](./troubleshoot-recovery-disks-portal-windows.md)，然後據以執行解決方案選項，或逐一嘗試每個解決方案。
 
 ### <a name="solution-for-cause-1"></a>原因 1 的解決方案
 
@@ -93,7 +94,7 @@ ms.locfileid: "75443590"
 
 16. [從 OS 磁碟建立新的 VM](../windows/create-vm-specialized.md)。
 
-17. 如果問題獲得修正，您可能需要重新安裝 [RDAgent](https://blogs.msdn.microsoft.com/mast/2014/04/07/install-the-vm-agent-on-an-existing-azure-vm/) (WaAppAgent.exe)。
+17. 如果問題獲得修正，您可能需要重新安裝 [RDAgent](/archive/blogs/mast/install-the-vm-agent-on-an-existing-azure-vm) (WaAppAgent.exe)。
 
 ### <a name="solution-for-cause-2"></a>原因 2 的解決方案
 
@@ -112,5 +113,3 @@ ms.locfileid: "75443590"
 4. 從疑難排解中的 VM 移除磁碟，並等待大約 2 分鐘，讓 Azure 釋放此磁碟。
 
 5. [從 OS 磁碟建立新的 VM](../windows/create-vm-specialized.md)。
-
-

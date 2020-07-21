@@ -7,19 +7,20 @@ ms.topic: article
 ms.date: 10/17/2018
 ms.author: cynthn
 ms.custom: legacy
-ms.openlocfilehash: 406eda6902ae451c7fdf79e1bd1215c035a66750
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8532c0da7d9977b12a4d1099e430584de1e17fe0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82792219"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502736"
 ---
 # <a name="create-a-copy-of-a-linux-vm-by-using-azure-cli-and-managed-disks"></a>使用 Azure CLI 和受控磁碟來建立 Azure Linux VM 的複本
 
-本文說明如何使用 Azure CLI 來建立執行 Linux 的 Azure 虛擬機器（VM）複本。 若要大規模複製、建立、儲存及共用 VM 映射，請參閱[共用映射資源庫](shared-images.md)。
+本文說明如何使用 Azure CLI 來建立執行 Linux 的 Azure 虛擬機器（VM）複本。 若要大規模複製、建立、儲存及共用 VM 映射，請參閱[共用映射資源庫](../shared-images-cli.md)。
 
 您也可以[上傳 VHD 並從中建立 VM](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 -   安裝[Azure CLI](/cli/azure/install-az-cli2)。
 
@@ -125,4 +126,4 @@ az vm create --resource-group myResourceGroup \
 
 ## <a name="next-steps"></a>後續步驟
 
-以瞭解如何使用[共用映射資源庫](shared-images.md)來管理 VM 映射。
+以瞭解如何使用[共用映射資源庫](../shared-images-cli.md)來管理 VM 映射。

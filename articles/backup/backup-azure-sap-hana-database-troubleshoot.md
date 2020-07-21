@@ -3,11 +3,12 @@ title: 針對 SAP Hana 資料庫備份錯誤進行疑難排解
 description: 說明使用 Azure 備份來備份 SAP Hana 資料庫時，如何針對可能發生的常見錯誤進行疑難排解。
 ms.topic: troubleshooting
 ms.date: 11/7/2019
-ms.openlocfilehash: 5c1ad55a86e80808b9055fd1b34a2d72209464a2
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 88d8f5e500c39f51e5bc1afbc2ec7804b9bc79db
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697076"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503603"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>針對 Azure 上的 SAP Hana 資料庫備份進行疑難排解
 
@@ -45,14 +46,14 @@ ms.locfileid: "83697076"
 | 錯誤訊息      | <span style="font-weight:normal">不支援指定的 SAP HANA 作業</span>              |
 | ------------------ | ------------------------------------------------------------ |
 | **可能的原因**    | 適用於 SAP Hana 的 Azure 備份不支援在 SAP Hana 原生用戶端 (Studio/ Cockpit/ DBA Cockpit) 上執行增量備份和動作 |
-| **建議的動作** | 如需詳細資訊，請參閱[此處](https://docs.microsoft.com/azure/backup/sap-hana-backup-support-matrix#scenario-support)。 |
+| **建議的動作** | 如需詳細資訊，請參閱[此處](./sap-hana-backup-support-matrix.md#scenario-support)。 |
 
 ### <a name="usererrorhanapodoesnotsupportbackuptype"></a>UserErrorHANAPODoesNotSupportBackupType
 
 | 錯誤訊息      | <span style="font-weight:normal">此 SAP Hana 資料庫不支援要求的備份類型</span>  |
 | ------------------ | ------------------------------------------------------------ |
 | **可能的原因**    | Azure 備份不支援增量備份和使用快照集進行備份 |
-| **建議的動作** | 如需詳細資訊，請參閱[此處](https://docs.microsoft.com/azure/backup/sap-hana-backup-support-matrix#scenario-support)。 |
+| **建議的動作** | 如需詳細資訊，請參閱[此處](./sap-hana-backup-support-matrix.md#scenario-support)。 |
 
 ### <a name="usererrorhanalsnvalidationfailure"></a>UserErrorHANALSNValidationFailure
 
@@ -66,14 +67,14 @@ ms.locfileid: "83697076"
 | 錯誤訊息      | <span style="font-weight:normal">偵測到 SDC 至 MDC 的升級</span>                                   |
 | ------------------ | ------------------------------------------------------------ |
 | **可能的原因**    | SAP Hana 執行個體已從 SDC 升級至 MDC。 更新之後，備份將會失敗。 |
-| **建議的動作** | 依照 [SDC 至 MDC 的升級](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database-troubleshoot#sdc-to-mdc-upgrade-with-a-change-in-sid)中所述步驟來解決問題 |
+| **建議的動作** | 依照 [SDC 至 MDC 的升級](#sdc-to-mdc-upgrade-with-a-change-in-sid)中所述步驟來解決問題 |
 
 ### <a name="usererrorinvalidbackintconfiguration"></a>UserErrorInvalidBackintConfiguration
 
 | 錯誤訊息      | <span style="font-weight:normal">偵測到無效的 backint 設定</span>                       |
 | ------------------ | ------------------------------------------------------------ |
 | **可能的原因**    | 對 Azure 備份指定了錯誤的支援參數 |
-| **建議的動作** | 檢查是否已設定下列 (backint) 參數：<br/>\* [catalog_backup_using_backint:true]<br/>\* [enable_accumulated_catalog_backup:false]<br/>\* [parallel_data_backup_backint_channels:1]<br/>\* [log_backup_timeout_s:900)]<br/>\* [backint_response_timeout:7200]<br/>如果主機中有以 backint 為基礎的參數，請將這些參數移除。 如果參數不存在於主機層級，但已在資料庫層級上手動修改，請將這些參數還原為適當的值 (如先前所述)。 或者，從 Azure 入口網站執行[停止保護並保留備份資料](https://docs.microsoft.com/azure/backup/sap-hana-db-manage#stop-protection-for-an-sap-hana-database)，然後選取 [繼續備份]。 |
+| **建議的動作** | 檢查是否已設定下列 (backint) 參數：<br/>\* [catalog_backup_using_backint:true]<br/>\* [enable_accumulated_catalog_backup:false]<br/>\* [parallel_data_backup_backint_channels:1]<br/>\* [log_backup_timeout_s:900)]<br/>\* [backint_response_timeout:7200]<br/>如果主機中有以 backint 為基礎的參數，請將這些參數移除。 如果參數不存在於主機層級，但已在資料庫層級上手動修改，請將這些參數還原為適當的值 (如先前所述)。 或者，從 Azure 入口網站執行[停止保護並保留備份資料](./sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database)，然後選取 [繼續備份]。 |
 
 ### <a name="usererrorincompatiblesrctargetsystemsforrestore"></a>UserErrorIncompatibleSrcTargetSystemsForRestore
 
@@ -203,4 +204,4 @@ ms.locfileid: "83697076"
 
 ## <a name="next-steps"></a>後續步驟
 
-- 如需在 Azure VM 上備份 SAP Hana 資料庫的相關資訊，請參閱[常見問題](https://docs.microsoft.com/azure/backup/sap-hana-faq-backup-azure-vm) 。
+- 如需在 Azure VM 上備份 SAP Hana 資料庫的相關資訊，請參閱[常見問題](./sap-hana-faq-backup-azure-vm.md) 。

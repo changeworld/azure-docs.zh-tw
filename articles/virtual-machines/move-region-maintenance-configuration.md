@@ -7,23 +7,24 @@ ms.topic: how-to
 ms.tgt_pltfrm: vm
 ms.date: 03/04/2020
 ms.author: shants
-ms.openlocfilehash: 86343e10f10b51f65764e16bbc1e485136bca162
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4cff7eb4a69005f2e74747b6e58447f100c69b60
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84676807"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86501597"
 ---
 # <a name="move-a-maintenance-control-configuration-to-another-region"></a>將維護控制設定移至另一個區域
 
 請遵循這篇文章，將維護控制設定移至不同的 Azure 區域。 基於許多原因，您可能會想要移動設定。 例如，若要利用新的區域，可在特定區域中部署可用的功能或服務，以符合內部原則和治理需求，或為了回應容量規劃。
 
-維護控制（使用自訂維護設定）可讓您控制如何將平臺更新套用至[Windows](https://docs.microsoft.com/azure/virtual-machines/maintenance-control-cli?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json)和[Linux](https://docs.microsoft.com/azure/virtual-machines/maintenance-control-cli?toc=%2Fazure%2Fvirtual-machines%2Flinux%2Ftoc.json&bc=%2Fazure%2Fvirtual-machines%2Flinux%2Fbreadcrumb%2Ftoc.json&view=azure-java-stable) Vm，以及 Azure 專用主機。 跨區域移動維護控制的案例有好幾種：
+維護控制（使用自訂維護設定）可讓您控制如何將平臺更新套用至[Windows](./maintenance-control-cli.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json)和[Linux](./maintenance-control-cli.md?toc=%2Fazure%2Fvirtual-machines%2Flinux%2Ftoc.json&bc=%2Fazure%2Fvirtual-machines%2Flinux%2Fbreadcrumb%2Ftoc.json&view=azure-java-stable) Vm，以及 Azure 專用主機。 跨區域移動維護控制的案例有好幾種：
 
 - 若要移動維護控制設定，而不是與設定相關聯的資源，請遵循這篇文章中的指示。
 - 若要移動與維護設定相關聯的資源，而不是設定本身，請遵循[這些指示](move-region-maintenance-configuration-resources.md)。
 - 若要移動維護設定和其相關聯的資源，請先依照這篇文章中的指示進行。 然後，遵循[這些指示](move-region-maintenance-configuration-resources.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 開始移動維護控制設定之前：
 
@@ -37,12 +38,12 @@ ms.locfileid: "84676807"
 
 ## <a name="prepare-and-move"></a>準備及移動 
 
-1. 取得每個訂用帳戶中的所有維護設定。 執行 CLI [az 維護 configuration list](https://docs.microsoft.com/cli/azure/ext/maintenance/maintenance/configuration?view=azure-cli-latest#ext-maintenance-az-maintenance-configuration-list)命令以進行這種動作，將 $subId 取代為您的訂用帳戶識別碼。
+1. 取得每個訂用帳戶中的所有維護設定。 執行 CLI [az 維護 configuration list](/cli/azure/ext/maintenance/maintenance/configuration?view=azure-cli-latest#ext-maintenance-az-maintenance-configuration-list)命令以進行這種動作，將 $subId 取代為您的訂用帳戶識別碼。
 
     ```
     az maintenance configuration list --subscription $subId --query "[*].{Name:name, Location:location, ResGroup:resourceGroup}" --output table
     ```
-2. 檢查訂用帳戶內的設定記錄傳回的資料表清單。 以下是範例。 您的清單會包含您的特定環境值。
+2. 檢查訂用帳戶內的設定記錄傳回的資料表清單。 以下為範例。 您的清單會包含您的特定環境值。
 
     **名稱** | **位置** | **資源群組**
     --- | --- | ---

@@ -3,20 +3,20 @@ title: 私人端點
 description: 瞭解為 Azure 備份建立私用端點的程式，以及使用私用端點來協助維護資源安全性的案例。
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: 8ce767073e9acfe271e6e57f9e6d1237910b33e0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e9c8f142e9781946f572f6f3a744d8bc2736a3de
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85124250"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503756"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Azure 備份的私用端點
 
-Azure 備份可讓您使用[私人端點](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)，安全地備份和還原復原服務保存庫中的資料。 私人端點會使用您 VNet 中的一或多個私人 IP 位址，有效地將服務帶入您的 VNet。
+Azure 備份可讓您使用[私人端點](../private-link/private-endpoint-overview.md)，安全地備份和還原復原服務保存庫中的資料。 私人端點會使用您 VNet 中的一或多個私人 IP 位址，有效地將服務帶入您的 VNet。
 
 本文將協助您瞭解為 Azure 備份建立私用端點的程式，以及使用私用端點來協助維護資源安全性的案例。
 
-## <a name="before-you-start"></a>在您開始使用 Intune 之前
+## <a name="before-you-start"></a>開始之前
 
 - 只能為新的復原服務保存庫建立私人端點（不會有任何專案註冊到保存庫）。 因此，在您嘗試保護保存庫的任何專案之前，必須先建立私人端點。
 - 一個虛擬網路可以包含多個復原服務保存庫的私人端點。 此外，一個復原服務保存庫在多個虛擬網路中可以有私人端點。 不過，可以為保存庫建立的私人端點數目上限為12。
@@ -45,7 +45,7 @@ Azure 備份可讓您使用[私人端點](https://docs.microsoft.com/azure/priva
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
-請[參閱本節，](#create-a-recovery-services-vault-using-the-azure-resource-manager-client)以瞭解如何使用 Azure Resource Manager 用戶端建立保存庫。 這會建立已啟用其受控識別的保存庫。 [在這裡](https://docs.microsoft.com/azure/backup/backup-azure-recovery-services-vault-overview)深入瞭解復原服務保存庫。
+請[參閱本節，](#create-a-recovery-services-vault-using-the-azure-resource-manager-client)以瞭解如何使用 Azure Resource Manager 用戶端建立保存庫。 這會建立已啟用其受控識別的保存庫。 [在這裡](./backup-azure-recovery-services-vault-overview.md)深入瞭解復原服務保存庫。
 
 ## <a name="enable-managed-identity-for-your-vault"></a>為您的保存庫啟用受控識別
 
@@ -105,15 +105,15 @@ Azure 備份可讓您使用[私人端點](https://docs.microsoft.com/azure/priva
 
 | **區域**                                                     | **服務** | **訂用帳戶和資源群組詳細資料**                  |
 | ------------------------------------------------------------ | ----------- | ------------------------------------------------------------ |
-| `privatelink.<geo>.backup.windowsazure.com`  <br><br>   **注意**：這裡的*地理*位置是指地區代碼。 例如， *wcus*和*ne*分別適用于美國中西部和北歐。 | 備份      | **訂**用**帳戶：與需要建立私人**端點的位置相同：訂用帳戶內的任何 rg |
+| `privatelink.<geo>.backup.windowsazure.com`  <br><br>   **注意**：這裡的*地理*位置是指地區代碼。 例如， *wcus*和*ne*分別適用于美國中西部和北歐。 | Backup      | **訂**用**帳戶：與需要建立私人**端點的位置相同：訂用帳戶內的任何 rg |
 
 請參閱[這份清單](https://download.microsoft.com/download/1/2/6/126a410b-0e06-45ed-b2df-84f353034fa1/AzureRegionCodesList.docx)中的區功能變數代碼。
 
 針對國家地區的 URL 命名慣例：
 
-- [中國](https://docs.microsoft.com/azure/china/resources-developer-guide#check-endpoints-in-azure)
-- [德國](https://docs.microsoft.com/azure/germany/germany-developer-guide#endpoint-mapping)
-- [US Gov](https://docs.microsoft.com/azure/azure-government/documentation-government-developer-guide)
+- [中國](/azure/china/resources-developer-guide#check-endpoints-in-azure)
+- [德國](../germany/germany-developer-guide.md#endpoint-mapping)
+- [US Gov](../azure-government/documentation-government-developer-guide.md)
 
 ### <a name="linking-private-dns-zones-with-your-virtual-network"></a>連結私人 DNS 區域與您的虛擬網路
 
@@ -497,7 +497,7 @@ $privateEndpoint = New-AzPrivateEndpoint `
 
 | **區域**                                                     | **服務** |
 | ------------------------------------------------------------ | ----------- |
-| `privatelink.<geo>.backup.windowsazure.com`      | 備份      |
+| `privatelink.<geo>.backup.windowsazure.com`      | Backup      |
 | `privatelink.blob.core.windows.net`                            | Blob        |
 | `privatelink.queue.core.windows.net`                           | 佇列       |
 

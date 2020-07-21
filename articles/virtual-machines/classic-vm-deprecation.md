@@ -8,17 +8,18 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 02/10/2020
 ms.author: tagore
-ms.openlocfilehash: 7488ef45d665d95a28f69b7af887b98dd5a76376
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c3e55d13c0b5fbf5b813f1669587836bf8b5e2d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84678370"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503008"
 ---
 # <a name="migrate-your-iaas-resources-to-azure-resource-manager-by-march-1-2023"></a>將您的 IaaS 資源遷移到2023年3月1日 Azure Resource Manager 
 
 在2014中，我們已在 Azure Resource Manager 上啟動 IaaS，並已在之後增強功能。 因為[Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/)現在具有完整的 IaaS 功能和其他改進，所以我們已淘汰在2020年2月28日透過 Azure Service Manager 管理 IaaS vm，而這項功能將于2023年3月1日完全淘汰。 
 
-今天，大約有90% 的 IaaS Vm 正在使用 Azure Resource Manager。 如果您透過 Azure Service Manager （ASM）使用 IaaS 資源，請立即開始規劃您的遷移，並于2023年3月1日前完成，以利用[Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/management/)。
+今天，大約有90% 的 IaaS Vm 正在使用 Azure Resource Manager。 如果您透過 Azure Service Manager （ASM）使用 IaaS 資源，請立即開始規劃您的遷移，並于2023年3月1日前完成，以利用[Azure Resource Manager](../azure-resource-manager/management/index.yml)。
 
 傳統 Vm 將會遵循[新式生命週期原則](https://support.microsoft.com/help/30881/modern-lifecycle-policy)來淘汰。
 
@@ -38,10 +39,10 @@ ms.locfileid: "84678370"
 
 - 立即開始規劃您的遷移至 Azure Resource Manager。 
 
-- [深入瞭解](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-overview)如何將您的傳統[Linux](./linux/migration-classic-resource-manager-plan.md)和[Windows](./windows/migration-classic-resource-manager-plan.md) vm 遷移至 Azure Resource Manager。
+- [深入瞭解](./windows/migration-classic-resource-manager-overview.md)如何將您的傳統[Linux](./linux/migration-classic-resource-manager-plan.md)和[Windows](./windows/migration-classic-resource-manager-plan.md) vm 遷移至 Azure Resource Manager。
 
-- 如需詳細資訊，請參閱[關於傳統的常見問題以 Azure Resource Manager 遷移](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-faq)
+- 如需詳細資訊，請參閱[關於傳統的常見問題以 Azure Resource Manager 遷移](./windows/migration-classic-resource-manager-faq.md)
 
-- 如需技術問題、問題和訂用帳戶允許清單[聯絡支援](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
+- 如需技術問題、問題，以及將訂閱新增至允許清單，請[聯絡支援](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)人員。
 
 - 針對其他不屬於常見問題和意見反應的問題，請在下方留言。

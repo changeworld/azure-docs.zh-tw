@@ -3,12 +3,13 @@ title: 虛擬機器的虛刪除
 description: 瞭解虛刪除虛擬機器如何讓備份更加安全。
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: ba00b235ea70bcc2dabbd5a91a3f7003f9bbed49
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: references_regions
+ms.openlocfilehash: e447db2c3f862d2f577a9e7d8767946375abf4e0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82765769"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503535"
 ---
 # <a name="soft-delete-for-virtual-machines"></a>虛擬機器的虛刪除
 
@@ -67,7 +68,7 @@ Vm 的虛刪除可保護 Vm 的備份不會遭到意外刪除。 即使在刪除
 
 ### <a name="delete-the-backup-item-using-azure-powershell"></a>使用 Azure PowerShell 刪除備份專案
 
-使用[Enable-azrecoveryservicesbackupprotection](https://docs.microsoft.com/powershell/module/az.recoveryservices/Disable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) PS Cmdlet 刪除備份專案。
+使用[Enable-azrecoveryservicesbackupprotection](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection) PS Cmdlet 刪除備份專案。
 
 ```powershell
 Disable-AzRecoveryServicesBackupProtection -Item $myBkpItem -RemoveRecoveryPoints -VaultId $myVaultID -Force
@@ -94,7 +95,7 @@ VM;iaasvmcontainerv2;selfhostrg;AppVM1    AzureVM             iaasvmcontainerv2;
 $myBkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $myVaultID -Name AppVM1
 ```
 
-然後，使用[復原-AzRecoveryServicesBackupItemDeletion](https://docs.microsoft.com/powershell/module/az.recoveryservices/undo-azrecoveryservicesbackupitemdeletion?view=azps-3.1.0) PS Cmdlet 執行復原刪除作業。
+然後，使用[復原-AzRecoveryServicesBackupItemDeletion](/powershell/module/az.recoveryservices/undo-azrecoveryservicesbackupitemdeletion) PS Cmdlet 執行復原刪除作業。
 
 ```powershell
 Undo-AzRecoveryServicesBackupItemDeletion -Item $myBKpItem -VaultId $myVaultID -Force
@@ -104,7 +105,7 @@ WorkloadName     Operation            Status               StartTime            
 AppVM1           Undelete             Completed            12/5/2019 12:47:28 PM     12/5/2019 12:47:40 PM     65311982-3755-46b5-8e53-c82ea4f0d2a2
 ```
 
-備份專案的 ' DeleteState ' 將會還原為 ' NotDeleted '。 但仍會停止保護。 [繼續備份](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#change-policy-for-backup-items)以重新啟用保護。
+備份專案的 ' DeleteState ' 將會還原為 ' NotDeleted '。 但仍會停止保護。 [繼續備份](./backup-azure-vms-automation.md#change-policy-for-backup-items)以重新啟用保護。
 
 ## <a name="soft-delete-for-vms-using-rest-api"></a>使用 REST API 的 Vm 虛刪除
 

@@ -9,11 +9,12 @@ ms.subservice: visual-studio
 ms.date: 09/09/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 826dc1858984508e54e160675dd10f6dfad88af8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2db281f1b3278e37deca8486971a7f7a83f85ccf
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83124358"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503076"
 ---
 # <a name="how-to-create-a-virtual-machine-scale-set-with-visual-studio"></a>如何使用 Visual Studio 建立虛擬機器擴展集
 
@@ -21,9 +22,9 @@ ms.locfileid: "83124358"
 
 [Azure 虛擬機器擴展集](https://azure.microsoft.com/blog/azure-vm-scale-sets-public-preview/)是一項 azure 計算資源，可透過自動調整和負載平衡來部署和管理類似虛擬機器的集合。 您可以使用 [Azure Resource Manager 範本 (英文)](https://github.com/Azure/azure-quickstart-templates) 來佈建和部署虛擬機器擴展集。 Azure Resource Manager 範本可以使用 Azure CLI、PowerShell、REST 進行部署，也可直接從 Visual Studio 進行部署。 Visual Studio 提供一組範例範本，您可以將其部署為 Azure 資源群組部署專案的一部分。
 
-Azure 資源群組部署是一種方式，可在單一部署作業中將一組相關的 Azure 資源群組在一起並加以發佈。 如需詳細資訊，請參閱[透過 Visual Studio 建立和部署 Azure 資源群組](../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)。
+Azure 資源群組部署是一種方式，可在單一部署作業中將一組相關的 Azure 資源群組在一起並加以發佈。 如需詳細資訊，請參閱[透過 Visual Studio 建立和部署 Azure 資源群組](../azure-resource-manager/templates/create-visual-studio-deployment-project.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 若要開始在 Visual Studio 中部署虛擬機器擴展集，您需要下列必要條件：
 
@@ -65,7 +66,7 @@ Azure 資源群組部署是一種方式，可在單一部署作業中將一組�
 
 1. 在**方案總管**中，以滑鼠右鍵按一下專案，然後選擇 [**部署**  >  **新**的]。
 
-    ![部署專案](media/virtual-machine-scale-sets-vs-create/deploy-new-project.png)
+    ![部署您的專案](media/virtual-machine-scale-sets-vs-create/deploy-new-project.png)
 
 1. 在 [**部署至資源群組**] 中，選擇要使用的訂用帳戶，然後選取資源群組。 如有必要，您可以建立資源群組。
 

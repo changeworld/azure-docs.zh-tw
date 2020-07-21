@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/10/2019
-ms.openlocfilehash: 9a7521f61dc59bd954629a05638c159ab0e70556
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6e351abeede6d1057a9b37ab1f1cfb9021ccd06e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77658484"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505085"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-azure-monitor"></a>在 Azure 監視器中使用 View Designer 建立自訂視圖
 藉由在 Azure 監視器中使用 View Designer，您可以在 Azure 入口網站中建立各種自訂視圖，以協助您將 Log Analytics 工作區中的資料視覺化。 本文提供檢視設計工具的概觀以及建立和編輯自訂檢視的程序。
@@ -33,7 +34,7 @@ Views 會顯示在 Azure 入口網站的 [Azure 監視器**總覽**] 頁面中�
 
 | 部分 | 描述 |
 |:--- |:--- |
-| Tiles | 會顯示在您的 Azure 監視器 **[總覽**] 頁面上。 每個圖格會顯示它所呈現自訂檢視的視覺化摘要。 每個圖格類型提供記錄的不同的視覺效果。 您可以選取圖格來顯示自訂檢視。 |
+| 圖格 | 會顯示在您的 Azure 監視器 **[總覽**] 頁面上。 每個圖格會顯示它所呈現自訂檢視的視覺化摘要。 每個圖格類型提供記錄的不同的視覺效果。 您可以選取圖格來顯示自訂檢視。 |
 | 自訂檢視 | 當您選取圖格時顯示。 每個檢視包含一或多個視覺效果組件。 |
 | 視覺效果組件 | 根據一或多個[記錄查詢](../log-query/log-query-overview.md)，呈現 Log Analytics 工作區中的資料視覺效果。 大部分組件包含標頭 (提供高階的視覺效果)，以及清單 (顯示前幾名搜尋結果)。 每個組件類型提供 Log Analytics 工作區中不同記錄的視覺效果。 您可以選取元件中的專案來執行記錄查詢，以提供詳細的記錄。 |
 
@@ -51,7 +52,7 @@ Views 會顯示在 Azure 入口網站的 [Azure 監視器**總覽**] 頁面中�
 | 選項 | 說明 |
 |:--|:--|
 | 重新整理   | 使用最新資料重新整理檢視。 | 
-| 記錄      | 開啟[Log Analytics](../log-query/portals.md)以記錄查詢來分析資料。 |
+| 記錄      | 開啟[Log Analytics](../log-query/log-query-overview.md)以記錄查詢來分析資料。 |
 | 編輯       | 在檢視表設計工具中開啟檢視以編輯其內容和設定。  |
 | 複製      | 建立新的檢視並且在檢視表設計工具中開啟。 新檢視的名稱與原始檢視的名稱相同，只是再附加*複製*字樣。 |
 | 日期範圍 | 為檢視中包含的資料設定日期和時間範圍篩選條件。 在檢視中設定查詢的任何日期範圍之前，會套用此日期範圍。  |

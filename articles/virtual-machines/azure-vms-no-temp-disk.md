@@ -7,11 +7,12 @@ ms.topic: article
 ms.author: brbell
 ms.reviewer: mimckitt
 ms.date: 06/15/2020
-ms.openlocfilehash: 413f53feedc4fee0877694e3f3a3a509c4d38001
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7ce816aba6bee36cd20eed6d31b0642dc8931e0b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84783537"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503025"
 ---
 # <a name="azure-vm-sizes-with-no-local-temporary-disk"></a>沒有本機暫存磁片的 Azure VM 大小 
 本文提供有關 Azure VM 大小（不含本機暫存磁片）（也就是沒有本機的桌面）的常見問題（FAQ）的解答。 如需這些 VM 大小的詳細資訊，請參閱[Dv4 和 Dsv4 系列（一般用途工作負載）的規格](dv4-dsv4-series.md)，或[Ev4 和 Esv4 系列（記憶體優化工作負載）的規格](ev4-esv4-series.md)。
@@ -22,7 +23,7 @@ ms.locfileid: "84783537"
 ## <a name="what-does-no-local-temp-disk-mean"></a>本機暫存磁片不是什麼意思？ 
 傳統上，我們的 VM 大小（例如 Standard_D2s_v3、Standard_E48_v3）包含小型的本機磁片（也就是 D：磁片磁碟機）。 現在有了這些新的 VM 大小，該小型本機磁片就不再存在;不過，您仍然可以附加標準 HDD、進階 SSD 或 Ultra SSD。
 
-## <a name="what-if-i-still-want-local-temp-disk"></a>如果我仍想要本機暫存磁片，該怎麼做？
+## <a name="what-if-i-still-want-a-local-temp-disk"></a>如果我仍然想要本機暫存磁片，該怎麼做？
 如果您的工作負載需要本機暫存磁片，我們也會提供新的[Ddv4 和 Ddsv4](ddv4-ddsv4-series.md)或[Edv4 和 Edsv4](edv4-edsv4-series.md) VM 大小。 相較于先前的 v3 大小，這些大小提供50% 更大的暫存磁片。
 
 > [!NOTE]

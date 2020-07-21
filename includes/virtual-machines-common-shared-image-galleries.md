@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 07/08/2020
 ms.author: akjosh
 ms.custom: include file
-ms.openlocfilehash: 2d0030549acdb55ce2be94534ec59bb07b11869d
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: c2dffe576bfb52981b331c02b3f24ec2507ec349
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86221626"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86501948"
 ---
 共用映射資源庫是一種服務，可協助您建立影像周圍的結構和組織。 共用映像資源庫提供：
 
@@ -83,7 +83,7 @@ ms.locfileid: "86221626"
 
 ## <a name="regional-support"></a>區域支援
 
-所有公用區域都可以是目標區域，但是若要複寫至澳大利亞中部和澳大利亞中部 2，您需要將您的訂用帳戶列入允許清單。 若欲要求加入允許清單，請移至： https://azure.microsoft.com/global-infrastructure/australia/contact/
+所有公用區域都可以是目的地區域，但若要複寫至澳大利亞中部並澳大利亞中部2您必須將訂用帳戶新增至允許清單。 若要要求將訂用帳戶新增至允許清單，請移至：https://azure.microsoft.com/global-infrastructure/australia/contact/
 
 ## <a name="limits"></a>限制 
 

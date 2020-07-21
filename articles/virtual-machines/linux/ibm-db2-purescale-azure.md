@@ -10,17 +10,18 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 11/09/2018
 ms.author: edprice
-ms.openlocfilehash: d8309a69c9c38610fa7bea3fee202a60d836980c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8aa2b936f97b037bdc62a01f607945ad270faa13
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78945060"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502328"
 ---
 # <a name="ibm-db2-purescale-on-azure"></a>Azure 上的 IBM DB2 pureScale
 
 IBM DB2 pureScale 環境提供適用於 Azure 的資料庫叢集，可在 Linux 作業系統上提供高可用性與延展性。 本文顯示在 Azure 上執行 DB2 pureScale 的架構。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 企業有長時間使用傳統關係資料庫管理系統（RDBMS）平臺來滿足其線上交易處理（OLTP）需求。 如今，有許多企業都已將其大型主機型資料庫環境移轉到 Azure 做為延伸處理能力、降低成本及維持穩定之作業成本結構的方式。 移轉通常是將傳統平台現代化的第一個步驟。 
 
@@ -66,7 +67,7 @@ Linux 上的 IBM DB2 pureScale 雖然與原始環境不同，但針對在大型�
 
 -   DB2 pureScale 叢集。 您在 Azure 上需要的計算資源類型取決於您的安裝程式。 一般而言，您可以使用下列兩種方式：
 
-    -   使用多節點、高效能計算 (HPC) 樣式的網路，在這裡小型到中型執行個體會存取共用儲存體。 針對設定的此 HPC 類型，Azure 記憶體最佳化 E 系列或儲存體最佳化 L 系列[虛擬機器](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)提供所需的計算資源。
+    -   使用多節點、高效能計算 (HPC) 樣式的網路，在這裡小型到中型執行個體會存取共用儲存體。 針對設定的此 HPC 類型，Azure 記憶體最佳化 E 系列或儲存體最佳化 L 系列[虛擬機器](../windows/sizes.md)提供所需的計算資源。
 
     -   為資料引擎使用較少的大型虛擬機器執行個體。 對於大型執行個體，最大記憶體最佳化的 [M 系列](https://azure.microsoft.com/pricing/details/virtual-machines/series/)虛擬機器適用於大量的記憶體內工作負載。 視用於執行 DB2 的邏輯分割 (LPAR) 大小而定，您可能會需要專用的執行個體。
 
@@ -95,11 +96,11 @@ DB2 pureScale 使用共用所有項目架構，其中資料可供所有叢集節
 
 IBM 會針對 DB2 pureScale 叢集中的所有成員建議 InfiniBand 網路功能。 DB2 pureScale 也會為 CF 使用遠端直接記憶體存取 (RDMA) (若可用)。
 
-在設定期間，您會建立 Azure [資源群組](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)以包含所有虛擬機器。 一般來說，您會根據資源的存留期以及將管理資源的人員來群組資源。 此架構中的虛擬機器需要[加速網路功能](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) \(英文\)。 這個 Azure 功能可透過單一根目錄 I/O 虛擬化 (SR-IOV) 提供一致的超低網路延遲給虛擬機器。
+在設定期間，您會建立 Azure [資源群組](../../azure-resource-manager/management/overview.md)以包含所有虛擬機器。 一般來說，您會根據資源的存留期以及將管理資源的人員來群組資源。 此架構中的虛擬機器需要[加速網路功能](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) \(英文\)。 這個 Azure 功能可透過單一根目錄 I/O 虛擬化 (SR-IOV) 提供一致的超低網路延遲給虛擬機器。
 
-每部 Azure 虛擬機器都是部署到有子網路的虛擬網路中：主要、Gluster FS 前端 (gfsfe)、Gluster FS 後端 (bfsbe)、DB2 pureScale (db2be) 與 DB2 pureScale 前端 (db2fe)。 安裝指令碼也會在主要子網路中的虛擬機器上建立主要 [NIC](https://docs.microsoft.com/azure/virtual-machines/linux/multiple-nics)。
+每部 Azure 虛擬機器都是部署到有子網路的虛擬網路中：主要、Gluster FS 前端 (gfsfe)、Gluster FS 後端 (bfsbe)、DB2 pureScale (db2be) 與 DB2 pureScale 前端 (db2fe)。 安裝指令碼也會在主要子網路中的虛擬機器上建立主要 [NIC](./multiple-nics.md)。
 
-使用[網路安全性群組](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)限制虛擬網路內的網路流量並隔離不同的子網路。
+使用[網路安全性群組](../../virtual-network/virtual-network-vnet-plan-design-arm.md)限制虛擬網路內的網路流量並隔離不同的子網路。
 
 在 Azure，DB2 pureScale 必須使用 TCP/IP 做為儲存體的網路連線。
 

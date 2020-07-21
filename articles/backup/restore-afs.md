@@ -3,15 +3,16 @@ title: 還原 Azure 檔案共用
 description: 瞭解如何使用 Azure 入口網站，從 Azure 備份建立的還原點還原整個檔案共用或特定檔案。
 ms.topic: conceptual
 ms.date: 01/12/2020
-ms.openlocfilehash: 5668328637ae9b5a5dd3db02085a7f15de2a2456
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f0e232fcde12a0c035afa139e3043bfa52fbe714
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82980590"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503637"
 ---
 # <a name="restore-azure-file-shares"></a>還原 Azure 檔案共用
 
-本文說明如何使用 Azure 入口網站，從[Azure 備份](https://docs.microsoft.com/azure/backup/backup-overview)建立的還原點還原整個檔案共用或特定檔案。
+本文說明如何使用 Azure 入口網站，從[Azure 備份](./backup-overview.md)建立的還原點還原整個檔案共用或特定檔案。
 
 在本文中，您將學會如何：
 

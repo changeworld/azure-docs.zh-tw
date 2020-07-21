@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 08/01/2019
 ms.author: cynthn
 ms.reviewer: zivr
-ms.openlocfilehash: b90189c6ba5e51a24d0c248b5aa08e9a5e4bbd9b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d8ac13c612840b930eb374971f3419af64cb48a6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82082844"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86500713"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>使用 Azure PowerShell 將 Vm 部署到專用主機
 
@@ -171,7 +171,7 @@ Tags                   : {}
 
 - VM 大小必須與專用主機位於相同大小的系列。 例如，如果您的專用主機已 DSv3，則 VM 大小可能會 Standard_D4s_v3，但不能是 Standard_A4_v2。 
 - VM 必須位於與專用主機相同的區域中。
-- VM 不能是鄰近放置群組的一部分。 將 VM 移至專用主機之前，請先從鄰近放置群組中移除它。 如需詳細資訊，請參閱[將 VM 移出鄰近位置群組](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups#move-an-existing-vm-out-of-a-proximity-placement-group)
+- VM 不能是鄰近放置群組的一部分。 將 VM 移至專用主機之前，請先從鄰近放置群組中移除它。 如需詳細資訊，請參閱[將 VM 移出鄰近位置群組](./proximity-placement-groups.md#move-an-existing-vm-out-of-a-proximity-placement-group)
 - VM 不能位於可用性設定組中。
 - 如果 VM 位於可用性區域中，它必須與主機群組位於相同的可用性區域。 VM 和主機群組的可用性區域設定必須相符。
 

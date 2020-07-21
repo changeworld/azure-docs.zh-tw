@@ -8,16 +8,16 @@ author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9160ab530037da1f24a2f07903b949b42ecbb34b
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: ec0862a0d4de644630c972387f01feaa1a327e67
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207073"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86500747"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption"></a>建立及設定適用於 Azure 磁碟加密的金鑰保存庫
 
-Azure 磁碟加密會使用 Azure Key Vault，來控制及管理磁碟加密金鑰與祕密。  如需金鑰保存庫的詳細資訊，請參閱[開始使用 Azure Key Vault](../../key-vault/key-vault-get-started.md) 和[保護金鑰保存庫](../../key-vault/general/secure-your-key-vault.md)。 
+Azure 磁碟加密會使用 Azure Key Vault，來控制及管理磁碟加密金鑰與祕密。  如需金鑰保存庫的詳細資訊，請參閱[開始使用 Azure Key Vault](../../key-vault/general/overview.md) 和[保護金鑰保存庫](../../key-vault/general/secure-your-key-vault.md)。 
 
 > [!WARNING]
 > - 如果您先前曾使用 Azure 磁碟加密搭配 Azure AD 來加密 VM，則必須繼續使用此選項來加密您的 VM。 如需詳細資料，請參閱[使用 Azure AD (舊版) 建立和設定 Azure 磁碟加密的金鑰保存庫](disk-encryption-key-vault-aad.md)。

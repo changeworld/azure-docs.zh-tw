@@ -9,14 +9,15 @@ ms.subservice: template
 ms.date: 04/26/2019
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: af2f000b9f9a7bf64898c46b3126cf180802b445
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f47e07dcffd977121b4142924a77bdb93de3fc3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83198130"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503042"
 ---
 # <a name="learn-about-virtual-machine-scale-set-templates"></a>了解虛擬機器擴展集範本
-[Azure Resource Manager 範本](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview#template-deployment-process)是部署相關資源群組的絕佳方式。 本教學課程系列說明如何建立基本的擴展集範本，以及如何修改此範本以符合各種案例。 所有範例皆來自這個 [GitHub 存放庫](https://github.com/gatneil/mvss)。
+[Azure Resource Manager 範本](../azure-resource-manager/templates/overview.md#template-deployment-process)是部署相關資源群組的絕佳方式。 本教學課程系列說明如何建立基本的擴展集範本，以及如何修改此範本以符合各種案例。 所有範例皆來自這個 [GitHub 存放庫](https://github.com/gatneil/mvss)。
 
 此範本已刻意簡化。 如需較完整的擴展集範本範例，請參閱 [Azure 快速入門範本 GitHub 存放庫](https://github.com/Azure/azure-quickstart-templates)，然後搜尋包含 `vmss` 字串的資料夾。
 
@@ -114,7 +115,7 @@ Resource Manager 範本也可讓您定義以後要在範本中使用的變數。
 ## <a name="specify-scale-set-properties"></a>指定擴展集屬性
 擴展集有許多屬性，可以在擴展集中自訂 VM。 如需這些屬性的完整清單，請參閱[範本參考](/azure/templates/microsoft.compute/virtualmachinescalesets)。 本教學課程只會設定一些常用的屬性。
 ### <a name="supply-vm-size-and-capacity"></a>提供 VM 大小和容量
-擴展集需要知道要建立的 VM 大小 (即「SKU 名稱」)，以及要建立多少個這類 VM (即「SKU 容量」)。 若要查看有哪些可用的 VM 大小，請參閱 [VM 大小文件](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-sizes)。
+擴展集需要知道要建立的 VM 大小 (即「SKU 名稱」)，以及要建立多少個這類 VM (即「SKU 容量」)。 若要查看有哪些可用的 VM 大小，請參閱 [VM 大小文件](../virtual-machines/windows/sizes.md)。
 
 ```json
        "sku": {

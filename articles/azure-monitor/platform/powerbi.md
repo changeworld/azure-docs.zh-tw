@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/01/2019
-ms.openlocfilehash: 8ff24d508eb35c4f2a04c7d024254fa6f1875da8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8b9624313716081a039b12c73e54b9f7afc2a323
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77659278"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505307"
 ---
 # <a name="import-azure-monitor-log-data-into-power-bi"></a>將 Azure 監視器記錄資料匯入 Power BI
 
@@ -19,13 +20,13 @@ ms.locfileid: "77659278"
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="overview"></a>總覽
-若要從 Azure 監視器中的[Log Analytics 工作區](manage-access.md)將資料匯入 Power BI，您可以根據 Azure 監視器中的[記錄查詢](../log-query/log-query-overview.md)，在 Power BI 中建立資料集。  每次資料集重新整理時，就會執行查詢。  然後，您即可使用資料集中的資料建立 Power BI 報表。  若要在 Power BI 中建立資料集，您必須從 Log Analytics 將您的查詢匯出到 [Power Query (M) 語言](https://docs.microsoft.com/powerquery-m/power-query-m-language-specification)。  接著可以用它在 Power BI Desktop 中建立查詢，然後將它發佈至 Power BI 做為資料集。  以下將詳細說明此流程。
+## <a name="overview"></a>概觀
+若要從 Azure 監視器中的[Log Analytics 工作區](manage-access.md)將資料匯入 Power BI，您可以根據 Azure 監視器中的[記錄查詢](../log-query/log-query-overview.md)，在 Power BI 中建立資料集。  每次資料集重新整理時，就會執行查詢。  然後，您即可使用資料集中的資料建立 Power BI 報表。  若要在 Power BI 中建立資料集，您必須從 Log Analytics 將您的查詢匯出到 [Power Query (M) 語言](/powerquery-m/power-query-m-language-specification)。  接著可以用它在 Power BI Desktop 中建立查詢，然後將它發佈至 Power BI 做為資料集。  以下將詳細說明此流程。
 
 ![Log Analytics 到 Power BI](media/powerbi/overview.png)
 
 ## <a name="export-query"></a>匯出查詢
-首先建立[記錄查詢](../log-query/log-query-overview.md)，以傳回您要填入 Power BI 資料集的資料。  您接著可以將該查詢匯出到可以由 Power BI Desktop 使用的 [Power Query (M) 語言](https://docs.microsoft.com/powerquery-m/power-query-m-language-specification)。
+首先建立[記錄查詢](../log-query/log-query-overview.md)，以傳回您要填入 Power BI 資料集的資料。  您接著可以將該查詢匯出到可以由 Power BI Desktop 使用的 [Power Query (M) 語言](/powerquery-m/power-query-m-language-specification)。
 
 1. [在 Log Analytics 中建立記錄查詢](../log-query/get-started-portal.md)，以解壓縮資料集的資料。
 2. 選取**Export**  >  **[匯出 Power BI 查詢（M）**]。  這會將查詢匯出至名為**PowerBIQuery.txt**的文字檔。 
@@ -52,7 +53,7 @@ Power BI Desktop 是桌面應用程式，可讓您建立可發行至 Power BI �
 ## <a name="publish-to-power-bi"></a>發行至 Power BI
 您發行至 Power BI 時，會建立資料集和報表。  如果您在 Power BI Desktop 中建立報表，將連同您的資料一起發佈。  如果未建立，則將建立空白報表。  您可以在 Power BI 中修改該報表，也建立依照資料集建立新的報表。
 
-1. 依照資料建立報表。  如果您不熟悉如何進行，請參閱 [Power BI Desktop 文件](https://docs.microsoft.com/power-bi/desktop-report-view)。  
+1. 依照資料建立報表。  如果您不熟悉如何進行，請參閱 [Power BI Desktop 文件](/power-bi/desktop-report-view)。  
 1. 您準備將它傳送至 Power BI 時時，請按一下**發行**。  
 1. 出現提示時，請在 Power BI 帳戶中選取目的地。  除非您有特定的目的地，否則請使用**我的工作區**。
 

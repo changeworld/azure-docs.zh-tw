@@ -5,19 +5,23 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 04/08/2020
+ms.date: 07/14/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 0df74b82c847c9738d97d2001573666714c17672
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 29a90b94db5e6e5791361bad004efcf649e1950b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81008320"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86500583"
 ---
 ## <a name="limitations"></a>限制
 
 [!INCLUDE [virtual-machines-disks-shared-limitations](virtual-machines-disks-shared-limitations.md)]
+
+## <a name="supported-operating-systems"></a>支援的作業系統
+
+共用磁片支援數個作業系統。 請參閱概念性文章的[Windows](../articles/virtual-machines/windows/disks-shared.md#windows)和[Linux](../articles/virtual-machines/linux/disks-shared.md#linux)小節，以瞭解支援的作業系統。
 
 ## <a name="disk-sizes"></a>磁碟大小
 
@@ -32,6 +36,23 @@ ms.locfileid: "81008320"
 > [!IMPORTANT]
 > `maxShares`只有當磁片從所有 vm 卸載時，才可以設定或變更的值。 如需的允許值，請參閱[磁片大小](#disk-sizes) `maxShares` 。
 
+#### <a name="cli"></a>CLI
+```azurecli
+
+az disk create -g myResourceGroup -n mySharedDisk --size-gb 1024 -l westcentralus --sku PremiumSSD_LRS --max-shares 2
+
+```
+
+#### <a name="powershell"></a>PowerShell
+```azurepowershell-interactive
+
+$datadiskconfig = New-AzDiskConfig -Location 'WestCentralUS' -DiskSizeGB 1024 -AccountType PremiumSSD_LRS -CreateOption Empty
+
+New-AzDisk -ResourceGroupName 'myResourceGroup' -DiskName 'mySharedDisk' -Disk $datadiskconfig
+
+```
+
+#### <a name="azure-resource-manager"></a>Azure Resource Manager
 使用下列範本之前，請 `[parameters('dataDiskName')]` 將、 `[resourceGroup().location]` 、 `[parameters('dataDiskSizeGB')]` 和取代 `[parameters('maxShares')]` 為您自己的值。
 
 ```json
@@ -75,13 +96,12 @@ ms.locfileid: "81008320"
 
 ### <a name="deploy-an-ultra-disk-as-a-shared-disk"></a>將 ultra 磁片部署為共用磁片
 
-#### <a name="cli"></a>CLI
-
 若要部署已啟用共用磁片功能的受控磁片，請將 `maxShares` 參數變更為大於1的值。 這可讓您跨多個 Vm 共用該磁片。
 
 > [!IMPORTANT]
 > `maxShares`只有當磁片從所有 vm 卸載時，才可以設定或變更的值。 如需的允許值，請參閱[磁片大小](#disk-sizes) `maxShares` 。
 
+#### <a name="cli"></a>CLI
 ```azurecli
 #Creating an Ultra shared Disk 
 az disk create -g rg1 -n clidisk --size-gb 1024 -l westus --sku UltraSSD_LRS --max-shares 5 --disk-iops-read-write 2000 --disk-mbps-read-write 200 --disk-iops-read-only 100 --disk-mbps-read-only 1
@@ -91,6 +111,15 @@ az disk update -g rg1 -n clidisk --disk-iops-read-write 3000 --disk-mbps-read-wr
 
 #Show shared disk properties:
 az disk show -g rg1 -n clidisk
+```
+
+#### <a name="powershell"></a>PowerShell
+```azurepowershell-interactive
+
+$datadiskconfig = New-AzDiskConfig -Location 'WestCentralUS' -DiskSizeGB 1024 -AccountType UltraSSD_LRS -CreateOption Empty -DiskIOPSReadWrite 2000 -DiskMBpsReadWrite 200 -DiskIOPSReadOnly 100 -DiskMBpsReadOnly 1
+
+New-AzDisk -ResourceGroupName 'myResourceGroup' -DiskName 'mySharedDisk' -Disk $datadiskconfig
+
 ```
 
 #### <a name="azure-resource-manager"></a>Azure Resource Manager
@@ -172,21 +201,12 @@ az disk show -g rg1 -n clidisk
 
 當您使用部署共用磁片之後 `maxShares>1` ，就可以將該磁片掛接到一或多個 vm。
 
-> [!IMPORTANT]
-> 所有共用磁片的 Vm 都必須部署在相同的[鄰近放置群組](../articles/virtual-machines/windows/proximity-placement-groups.md)中。
-
 ```azurepowershell-interactive
 
 $resourceGroup = "myResourceGroup"
 $location = "WestCentralUS"
-$ppgName = "myPPG"
-$ppg = New-AzProximityPlacementGroup `
-   -Location $location `
-   -Name $ppgName `
-   -ResourceGroupName $resourceGroup `
-   -ProximityPlacementGroupType Standard
 
-$vm = New-AzVm -ResourceGroupName $resourceGroup -Name "myVM" -Location $location -VirtualNetworkName "myVnet" -SubnetName "mySubnet" -SecurityGroupName "myNetworkSecurityGroup" -PublicIpAddressName "myPublicIpAddress" -ProximityPlacementGroup $ppg.Id
+$vm = New-AzVm -ResourceGroupName $resourceGroup -Name "myVM" -Location $location -VirtualNetworkName "myVnet" -SubnetName "mySubnet" -SecurityGroupName "myNetworkSecurityGroup" -PublicIpAddressName "myPublicIpAddress"
 
 $dataDisk = Get-AzDisk -ResourceGroupName $resourceGroup -DiskName "mySharedDisk"
 
@@ -238,6 +258,4 @@ PR_EXCLUSIVE_ACCESS_ALL_REGISTRANTS
 使用 PR_RESERVE、PR_REGISTER_AND_IGNORE、PR_REGISTER_KEY、PR_PREEMPT_RESER加值稅ION、PR_CLEAR_RESER加值稅ION 或 PR_RELEASE 保留時，您也需要提供持續保留金鑰。
 
 
-## <a name="next-steps"></a>下一步
-
-如果您想要試用共用磁片，請[註冊我們的預覽版](https://aka.ms/AzureSharedDiskPreviewSignUp)。
+## <a name="next-steps"></a>後續步驟

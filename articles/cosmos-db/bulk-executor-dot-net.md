@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 03/23/2020
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: 4bcd2349913c1823e80d46565dfa869d9efe955f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0ab95223d084436d1bf39ba557ec3b01c0b534d8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85260656"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503382"
 ---
 # <a name="use-the-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>使用大量執行程式 .NET 程式庫在 Azure Cosmos DB 中執行大量作業
 
@@ -27,7 +27,7 @@ ms.locfileid: "85260656"
 
 目前，Azure Cosmos DB SQL API 和 Gremlin API 帳戶僅支援大量執行程式程式庫。 本文說明如何搭配 SQL API 帳戶使用大量執行程式 .NET 程式庫。 若要瞭解如何搭配 Gremlin API 帳戶使用大量執行程式 .NET 程式庫，請參閱在[Azure Cosmos DB GREMLIN api 中執行大量作業](bulk-executor-graph-dotnet.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 * 如果您尚未安裝 Visual Studio 2019，您可以下載並使用[Visual Studio 2019 的社區版](https://www.visualstudio.com/downloads/)。 請確定您在 Visual Studio 設定期間啟用「Azure 開發」。
 
@@ -41,7 +41,7 @@ ms.locfileid: "85260656"
 
 現在，我們將從 GitHub 下載範例 .NET 應用程式，以切換為使用程式碼。 此應用程式會對 Azure Cosmos 帳戶中儲存的資料執行大量作業。 若要複製應用程式，請開啟命令提示字元，流覽至您想要將它複製到其中的目錄，然後執行下列命令：
 
-```
+```bash
 git clone https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started.git
 ```
 
@@ -203,4 +203,4 @@ git clone https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-st
 
 ## <a name="next-steps"></a>後續步驟
 
-* 若要深入瞭解 Nuget 套件詳細資料和版本資訊，請參閱[大量執行程式 SDK 詳細資料](sql-api-sdk-bulk-executor-dot-net.md)。
+* 若要深入瞭解 NuGet 套件詳細資料和版本資訊，請參閱[大量執行程式 SDK 詳細資料](sql-api-sdk-bulk-executor-dot-net.md)。

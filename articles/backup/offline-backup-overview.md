@@ -3,11 +3,13 @@ title: 離線備份概觀
 description: 了解離線備份的元件。 其中包括以 Azure 資料箱為基礎的離線備份，和以 Microsoft Azure 匯入/匯出服務為基礎的離線備份。
 ms.topic: conceptual
 ms.date: 1/28/2020
-ms.openlocfilehash: 84f79efe10f867b37d1e3bb21363be4b12156615
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: references_regions
+ms.openlocfilehash: c5e0f4e722e2dd15b7277a484af2a101844344e6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84628339"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503620"
 ---
 # <a name="overview-of-offline-backup"></a>離線備份概觀
 
@@ -43,7 +45,7 @@ Azure 備份支援離線備份，這會離線傳輸初始備份資料，而不�
 
 ## <a name="offline-backup-based-on-the-azure-importexport-service"></a>以 Azure 匯入/匯出服務為基礎的離線備份
 
-Microsoft Azure 備份伺服器 (MABS)、System Center Data Protection Manager (DPM) DPM-A 和 MARS 代理程式都支援此選項。 使用 [Azure 匯入/匯出服務](https://docs.microsoft.com/azure/storage/common/storage-import-export-service)。 您可以使用自己的 Azure 相容磁碟和連接器，將初始備份資料傳輸到 Azure。 這種方法需要您佈建暫存儲存體，稱為「暫存位置」，並使用預先建置的公用程式來格式化備份資料，並將其複製到客戶擁有的磁碟上。
+Microsoft Azure 備份伺服器 (MABS)、System Center Data Protection Manager (DPM) DPM-A 和 MARS 代理程式都支援此選項。 使用 [Azure 匯入/匯出服務](../storage/common/storage-import-export-service.md)。 您可以使用自己的 Azure 相容磁碟和連接器，將初始備份資料傳輸到 Azure。 這種方法需要您佈建暫存儲存體，稱為「暫存位置」，並使用預先建置的公用程式來格式化備份資料，並將其複製到客戶擁有的磁碟上。
 
 這裡會說明使用此選項來移動備份資料的架構。
 
@@ -57,9 +59,9 @@ Microsoft Azure 備份伺服器 (MABS)、System Center Data Protection Manager (
 4. 在 Azure 資料中心，磁碟上的資料會複製到 Azure 儲存體帳戶。
 5. Azure 備份會將儲存體帳戶中的資料複製到復原服務保存庫。 已排程增量備份。
 
-若要透過 MARS 代理程式使用以 Azure 匯入/匯出服務為基礎的離線備份，請參閱 [Azure 備份中的離線備份工作流程](https://docs.microsoft.com/azure/backup/backup-azure-backup-import-export)。
+若要透過 MARS 代理程式使用以 Azure 匯入/匯出服務為基礎的離線備份，請參閱 [Azure 備份中的離線備份工作流程](./backup-azure-backup-import-export.md)。
 
-若要使用 MABS 或 DPM-A 執行相同的作業，請參閱 [DPM 和 Azure 備份伺服器的離線備份工作流程](https://docs.microsoft.com/azure/backup/backup-azure-backup-server-import-export)。
+若要使用 MABS 或 DPM-A 執行相同的作業，請參閱 [DPM 和 Azure 備份伺服器的離線備份工作流程](./backup-azure-backup-server-import-export.md)。
 
 ## <a name="offline-backup-support-summary"></a>離線備份支援摘要
 
@@ -68,10 +70,10 @@ Microsoft Azure 備份伺服器 (MABS)、System Center Data Protection Manager (
 | **考量**                                            | **以 Azure 資料箱為基礎的離線備份**                     | **以 Azure 匯入/匯出服務為基礎的離線備份**                |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Azure 備份部署模型                              | MARS 代理程式 (預覽)                                              | MARS 代理程式、MABS、DPM-A                                           |
-| 每一伺服器 (MARS) 或每個保護群組 (MABS、DPM-A) 的備份資料上限 | [Azure 資料箱磁碟](https://docs.microsoft.com/azure/databox/data-box-disk-overview) - 7.2 TB <br> [Azure 資料箱](https://docs.microsoft.com/azure/databox/data-box-overview) - 80 TB       | 80 TB (最多 10 個磁碟，每個磁碟 8 TB)                          |
-| 安全性 (資料、裝置和服務)                           | [資料](https://docs.microsoft.com/azure/databox/data-box-security#data-box-data-protection) - AES 256 位元加密 <br> [裝置](https://docs.microsoft.com/azure/databox/data-box-security#data-box-device-protection) - 用來複製資料的堅固外盒、專屬、以認證為基礎的介面 <br> [服務](https://docs.microsoft.com/azure/databox/data-box-security#data-box-service-protection) - 受到 Azure 安全功能的保護 | 資料 - BitLocker 加密                                 |
+| 每一伺服器 (MARS) 或每個保護群組 (MABS、DPM-A) 的備份資料上限 | [Azure 資料箱磁碟](../databox/data-box-disk-overview.md) - 7.2 TB <br> [Azure 資料箱](../databox/data-box-overview.md) - 80 TB       | 80 TB (最多 10 個磁碟，每個磁碟 8 TB)                          |
+| 安全性 (資料、裝置和服務)                           | [資料](../databox/data-box-security.md#data-box-data-protection) - AES 256 位元加密 <br> [裝置](../databox/data-box-security.md#data-box-device-protection) - 用來複製資料的堅固外盒、專屬、以認證為基礎的介面 <br> [服務](../databox/data-box-security.md#data-box-service-protection) - 受到 Azure 安全功能的保護 | 資料 - BitLocker 加密                                 |
 | 暫時暫存位置佈建                     | 不需要                                                | 大於或等於估計的備份資料大小        |
-| 支援區域                                           | [Azure 資料箱磁碟區域](https://docs.microsoft.com/azure/databox/data-box-disk-overview#region-availability) <br> [Azure 資料箱區域](https://docs.microsoft.com/azure/databox/data-box-disk-overview#region-availability) | [Azure 匯入/匯出服務區域](https://docs.microsoft.com/azure/storage/common/storage-import-export-service#region-availability) |
+| 支援區域                                           | [Azure 資料箱磁碟區域](../databox/data-box-disk-overview.md#region-availability) <br> [Azure 資料箱區域](../databox/data-box-disk-overview.md#region-availability) | [Azure 匯入/匯出服務區域](../storage/common/storage-import-export-service.md#region-availability) |
 | 跨國家/地區運送                                     | 不支援  <br>    來源地址和目的地 Azure 資料中心必須位於相同的國家/地區* | 支援                                                    |
 | 傳輸物流 (傳遞、傳輸、取貨)           | 完整 Microsoft 受控                                     | 由客戶管理                                            |
 | 定價                                                      | [Azure 資料箱定價](https://azure.microsoft.com/pricing/details/databox/) <br> [Azure 資料箱磁碟定價](https://azure.microsoft.com/pricing/details/databox/disk/) | [Azure 匯入/匯出服務定價](https://azure.microsoft.com/pricing/details/storage-import-export/) |

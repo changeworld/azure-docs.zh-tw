@@ -4,11 +4,12 @@ description: 使用 Azure 原則大規模部署 Azure 監視器功能。
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 4be403f8efc8e328548b6ef38b36be78a8fb96d7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fbfc0cafe83f53bd7cab2b93899e9c2cb02d52e3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84678693"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505205"
 ---
 # <a name="deploy-azure-monitor-at-scale-using-azure-policy"></a>使用 Azure 原則大規模部署 Azure 監視器
 雖然部分 Azure 監視器功能只會設定一次或有限的次數，但有些則必須針對您想要監視的每個資源重複。 本文說明使用 Azure 原則來大規模執行 Azure 監視器的方法，以確保一致且正確地設定所有 Azure 資源的監視。
@@ -23,14 +24,14 @@ ms.locfileid: "84678693"
 
 Azure 原則包含下表中的物件。 如需各項的詳細說明，請參閱[Azure 原則物件](../../governance/policy/overview.md#azure-policy-objects)。
 
-| 項目 | 說明 |
+| 項目 | 描述 |
 |:---|:---|
 | 原則定義 | 描述資源合規性條件，以及符合條件時所要採取的效果。 這可能是特定類型的所有資源，或僅符合特定屬性的資源。 其效果可能只是將資源標示為符合規範，或部署相關資源。 原則定義是使用 JSON 來撰寫，如[Azure 原則定義結構](../../governance/policy/concepts/definition-structure.md)中所述。 [瞭解 Azure 原則效果](../../governance/policy/concepts/effects.md)中會描述效果。
 | 原則計畫 | 應該一起套用的原則定義群組。 例如，您可能會有一個原則定義，可將資源記錄傳送到 Log Analytics 工作區，另一個則會將資源記錄傳送至事件中樞。 建立一個包含原則定義的方案，並將該計畫套用至資源，而不是個別的原則定義。 計畫是使用 JSON 來撰寫，如[Azure 原則計畫結構](../../governance/policy/concepts/initiative-definition-structure.md)中所述。 |
 | 指派 | 原則定義或計畫在指派給範圍之前不會生效。 例如，將原則指派給資源群組，將它套用至在該資源中建立的所有資源，或將它套用至訂用帳戶，以將它套用至該訂用帳戶中的所有資源。  如需詳細資訊，請參閱[Azure 原則指派結構](../../governance/policy/concepts/assignment-structure.md)。 |
 
 ## <a name="built-in-policy-definitions-for-azure-monitor"></a>適用於 Azure 監視器的內建原則定義
-Azure 原則包含數個與 Azure 監視器相關的預先建立定義。 您可以將這些原則定義指派給現有的訂用帳戶，或使用它們作為基礎，以建立您自己的自訂定義。 如需 [**監視**] 類別中內建政治的完整清單，請參閱[Azure 監視器的 Azure 原則內建原則定義](../policy-samples.md)。
+Azure 原則包含數個與 Azure 監視器相關的預先建立定義。 您可以將這些原則定義指派給現有的訂用帳戶，或使用它們作為基礎，以建立您自己的自訂定義。 如需 [**監視**] 類別中內建政治的完整清單，請參閱[Azure 監視器的 Azure 原則內建原則定義](../samples/policy-samples.md)。
 
 若要查看與監視相關的內建原則定義，請執行下列動作：
 
@@ -59,7 +60,7 @@ Azure 原則包含數個與 Azure 監視器相關的預先建立定義。 您可
 [AzDiagPolicy](https://www.powershellgallery.com/packages/Create-AzDiagPolicy)的腳本會建立特定資源類型的原則檔，您可以使用 POWERSHELL 或 CLI 來進行安裝。 使用下列程式來建立診斷設定的自訂原則定義。
 
 
-1. 請確定您已安裝[Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps) 。
+1. 請確定您已安裝[Azure PowerShell](/powershell/azure/install-az-ps) 。
 2. 使用下列命令安裝腳本：
   
     ```azurepowershell
@@ -106,13 +107,13 @@ Azure 原則包含數個與 Azure 監視器相關的預先建立定義。 您可
 ### <a name="assignment"></a>指派 
 視您要監視的資源範圍而定，將方案指派給 Azure 管理群組、訂用帳戶或資源群組。 如果您的組織有多個訂用帳戶，[管理群組](../../governance/management-groups/overview.md)特別適合用於範圍設定原則。
 
-![計畫指派](media/deploy-scale/initiative-assignment.png)
+![方案指派](media/deploy-scale/initiative-assignment.png)
 
 藉由使用計畫參數，您可以針對計畫中的所有原則定義，指定工作區或任何其他詳細資料。 
 
 ![計畫參數](media/deploy-scale/initiative-parameters.png)
 
-### <a name="remediation"></a>修復
+### <a name="remediation"></a>補救
 此計畫會在每個虛擬機器建立時套用至該應用程式。 [補救](../../governance/policy/how-to/remediate-resources.md)工作會將計畫中的原則定義部署至現有的資源，因此您可以為已建立的任何資源建立診斷設定。 當您使用 Azure 入口網站建立指派時，可以選擇同時建立補救工作。 如需補救的詳細資料，請參閱[使用 Azure 原則補救不符合規範的資源](../../governance/policy/how-to/remediate-resources.md)。
 
 ![計畫補救](media/deploy-scale/initiative-remediation.png)

@@ -4,11 +4,12 @@ description: 瞭解如何在 Azure 監視器中使用自動調整動作來呼叫
 ms.topic: conceptual
 ms.date: 04/03/2017
 ms.subservice: autoscale
-ms.openlocfilehash: c82b170bb3801bdc701ed84230db57f5691523ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3b1f13fd1ce8bedcbe58385d4cee321f1d1405df
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77120699"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505514"
 ---
 # <a name="use-autoscale-actions-to-send-email-and-webhook-alert-notifications-in-azure-monitor"></a>使用自動調整動作在 Azure 監視器中傳送電子郵件和 Webhook 警示通知
 本文將告訴您如何設定觸發程序，讓您可以根據 Azure 中的自動調整動作呼叫特定的 Web URl 或傳送電子郵件。  
@@ -28,7 +29,7 @@ Webhook 可讓您將 Azure 警示通知路由到其他系統進行後處理或�
 
 ## <a name="virtual-machine-scale-sets"></a>虛擬機器擴展集
 對於使用 Resource Manager 建立的較新虛擬機器 (虛擬機器擴展集)，您可以使用 REST API、Resource Manager 範本、PowerShell 和 CLI 設定此項目。 目前尚無入口網站介面。
-使用 REST API 或 Resource Manager 範本時，請使用下列選項在[autoscalesettings](https://docs.microsoft.com/azure/templates/microsoft.insights/2015-04-01/autoscalesettings)中包含通知元素。
+使用 REST API 或 Resource Manager 範本時，請使用下列選項在[autoscalesettings](/azure/templates/microsoft.insights/2015-04-01/autoscalesettings)中包含通知元素。
 
 ```
 "notifications": [
@@ -55,7 +56,7 @@ Webhook 可讓您將 Azure 警示通知路由到其他系統進行後處理或�
     ]
 ```
 
-| 欄位 | 是否為強制？ | Description |
+| 欄位 | 是否為強制？ | 描述 |
 | --- | --- | --- |
 | operation (作業) |是 |值必須是 [調整] |
 | sendToSubscriptionAdministrator |是 |值必須是 "true" 或 "false" |
@@ -98,22 +99,21 @@ Webhook 可以使用權杖型驗證來驗證，您會在其中儲存 Webhook URI
 ```
 
 
-| 欄位 | 是否為強制？ | Description |
+| 欄位 | 是否為強制？ | 描述 |
 | --- | --- | --- |
 | status |是 |此狀態表示產生了自動調整動作 |
 | operation (作業) |是 |若執行個體增加，它會「相應放大」，若執行個體減少，它會「相應縮小」。 |
 | 內容 |是 |自動調整動作內容 |
 | timestamp |是 |自動調整動作觸發時的時間戳記 |
-| id |Yes |自動調整設定的 Resource Manager 識別碼 |
-| NAME |Yes |自動調整設定的名稱 |
-| 詳細資料 |Yes |說明自動調整服務所採取的動作和執行個體計數的變更 |
-| subscriptionId |Yes |正在調整的目標資源的訂用帳戶識別碼 |
-| resourceGroupName |Yes |正在調整的目標資源的資源群組 |
-| resourceName |Yes |正在調整的目標資源的名稱 |
+| id |是 |自動調整設定的 Resource Manager 識別碼 |
+| NAME |是 |自動調整設定的名稱 |
+| 詳細資料 |是 |說明自動調整服務所採取的動作和執行個體計數的變更 |
+| subscriptionId |是 |正在調整的目標資源的訂用帳戶識別碼 |
+| resourceGroupName |是 |正在調整的目標資源的資源群組 |
+| resourceName |是 |正在調整的目標資源的名稱 |
 | resourceType |是 |支援三個值：microsoft.classiccompute/domainnames/slots/roles" (雲端服務角色)、"microsoft.compute/virtualmachinescalesets" (虛擬機器擴展集) 以及 "Microsoft.Web/serverfarms" - (Web 應用程式) |
-| resourceId |Yes |正在調整的目標資源的 Resource Manager 識別碼 |
-| portalLink |Yes |連到目標資源摘要頁面的 Azure 入口網站連結 |
-| oldCapacity |Yes |自動調整進行調整動作時的當前 (舊) 執行個體計數 |
-| newCapacity |Yes |自動調整要將資源調整為此數目的新執行個體計數 |
-| properties |No |選擇性。 <索引鍵, 值> 組 (例如，字典 <字串, 字串>)。 properties 欄位是選擇性的。 在自訂 UI 或邏輯應用程式的工作流程中，您可以輸入可使用承載傳遞的索引鍵和值。 另一個將自訂屬性傳回給連出 Webhook 呼叫的替代做法，是使用 Webhook URI 本身 (做為查詢參數) |
-
+| resourceId |是 |正在調整的目標資源的 Resource Manager 識別碼 |
+| portalLink |是 |連到目標資源摘要頁面的 Azure 入口網站連結 |
+| oldCapacity |是 |自動調整進行調整動作時的當前 (舊) 執行個體計數 |
+| newCapacity |是 |自動調整要將資源調整為此數目的新執行個體計數 |
+| properties |否 |選擇性。 <索引鍵, 值> 組 (例如，字典 <字串, 字串>)。 properties 欄位是選擇性的。 在自訂 UI 或邏輯應用程式的工作流程中，您可以輸入可使用承載傳遞的索引鍵和值。 另一個將自訂屬性傳回給連出 Webhook 呼叫的替代做法，是使用 Webhook URI 本身 (做為查詢參數) |

@@ -8,12 +8,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 81dfac2a1623253a110833a96fddd1b41bd11b26
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4fc411d3833fcd47477e7e0fe11c6da9e2114143
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85390222"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502022"
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>如何在 Azure 上搭配 Windows 使用 SSH 金鑰
 
@@ -26,7 +26,7 @@ ms.locfileid: "85390222"
 ## <a name="windows-packages-and-ssh-clients"></a>Windows 套件和 SSH 用戶端
 您可使用 *SSH 用戶端*來連線及管理 Azure 中的 Linux VM。 執行 Linux 或 macOS 的電腦通常有一組 SSH 命令，可用來產生和管理 SSH 金鑰以及建立 SSH 連線。 
 
-Windows 電腦不一定會安裝類似的 SSH 命令。 最新版本的 Windows 10 提供[OpenSSH 用戶端命令](https://blogs.msdn.microsoft.com/commandline/2018/03/07/windows10v1803/)，以建立和管理 ssh 金鑰，並從命令提示字元進行 ssh 連線。 最的 Windows 10 新版本也包含 [Windows Subsystem for Linux](https://docs.microsoft.com/windows/wsl/about)，可在 Bash 殼層內以原生方式執行和存取公用程式 (例如 SSH 用戶端)。 
+Windows 電腦不一定會安裝類似的 SSH 命令。 最新版本的 Windows 10 提供[OpenSSH 用戶端命令](https://devblogs.microsoft.com/commandline/windows10v1803/)，以建立和管理 ssh 金鑰，並從命令提示字元進行 ssh 連線。 最的 Windows 10 新版本也包含 [Windows Subsystem for Linux](/windows/wsl/about)，可在 Bash 殼層內以原生方式執行和存取公用程式 (例如 SSH 用戶端)。 
 
 您可以在本機安裝的其他常見 Windows SSH 用戶端包含在下列套件中：
 
@@ -123,4 +123,4 @@ ssh azureuser@myvm.westus.cloudapp.azure.com
 
 * 您也可以在 Azure Cloud Shell 使用 PowerShell 來產生 SSH 金鑰，並建立 Linux VM 的 SSH 連線。 請參閱 [PowerShell 快速入門](../../cloud-shell/quickstart-powershell.md#ssh)。
 
-* 如果您無法使用 SSH 連線到 Linux VM，請參閱[針對 Azure Linux VM 的 SSH 連線進行疑難排解](troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+* 如果您無法使用 SSH 連線到 Linux VM，請參閱[針對 Azure Linux VM 的 SSH 連線進行疑難排解](../troubleshooting/troubleshoot-ssh-connection.md?toc=/azure/virtual-machines/linux/toc.json)。

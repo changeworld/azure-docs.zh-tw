@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 43a5360965c13df3227ecbc0c716327346244ebd
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 93b63450d65f55e96897f91a5c0c9fae1b0b47f8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653632"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503280"
 ---
 # <a name="azure-advanced-threat-detection"></a>Azure 進階威脅偵測
 
@@ -339,14 +340,13 @@ SQL Database 威脅偵測器會使用下列其中一種偵測方法：
 
 利用有助於揭露影子 IT、評估風險、強制執行原則、調查活動及停止威脅的工具，您的組織可以更安全的移至雲端，同時仍能控制重要資料。
 
-| | |
-|---|---|
+| 類別 | 描述 |
+| -------- | ----------- |
 | 探索 | 利用 Cloud App Security 來揭露影子 IT。 藉由探索雲端環境中的應用程式、活動、使用者、資料和檔案，來取得可見度。 探索連接到您雲端的協力廠商應用程式。|
 |調查 | 使用雲端鑑識工具深入探討有風險的應用程式、特定的使用者及您網路中的檔案，藉以調查您的雲端應用程式。 在收集自您雲端的資料中尋找模式。 產生報告來監視您的雲端。 |
 | 控制 | 藉由設定原則和警示以便能充分控制網路雲端流量來降低風險。 使用 Cloud App Security，將您的使用者移轉至安全且獲批准的雲端應用程式替代項目。 |
 | Protect | 使用 Cloud App Security 來批准或禁止應用程式、強制執行資料損失防範措施、控制權限和共用，並產生自訂報告和警示。 |
 | 控制 | 藉由設定原則和警示以便能充分控制網路雲端流量來降低風險。 使用 Cloud App Security，將您的使用者移轉至安全且獲批准的雲端應用程式替代項目。 |
-| | |
 
 
 ![Cloud App Security 圖表](./media/threat-detection/azure-threat-detection-fig14.png)

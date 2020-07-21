@@ -9,11 +9,12 @@ ms.date: 05/11/2020
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 74d43f8c200fad5caf152d24df6c8544074916ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 49a9cfca1c1f3a76c85dfac98cafea00df1d5ff0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83120023"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86504881"
 ---
 # <a name="azure-portal-how-to-video-series"></a>Azure 入口網站操作說明影片系列
 
@@ -29,10 +30,9 @@ Azure 入口網站的 how-to 影片系列展示如何在 Azure 入口網站中�
 
 趕上您可能錯過的這些最新影片：
 
-|   |   |   |
+| [新的 Azure Functions 體驗](https://www.youtube.com/watch?v=0bdT_9uOqkg)  | [使用 GitHub 動作部署您的 web 應用程式](https://www.youtube.com/watch?v=b2oyxbSbLPA)  | [使用服務資訊卡](https://www.youtube.com/watch?v=u00TU531qsQ)  |
 | ------| ------ | ------ |
 | [![關於新 Azure Functions 體驗的 YouTube 影片影像](https://i.ytimg.com/vi/0bdT_9uOqkg/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLAf2gcTSuNBP-DczGeEB7rQLKc4UQ)](http://www.youtube.com/watch?v=0bdT_9uOqkg) | [![YouTube 影片的影像使用 GitHub 動作部署您的 web 應用程式](https://i.ytimg.com/vi/b2oyxbSbLPA/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLBUZwS_xaZIkYNakpHFvFIiD8i-Tw)](http://www.youtube.com/watch?v=b2oyxbSbLPA) | [![有關使用服務資訊卡的 YouTube 影片影像](https://i.ytimg.com/vi/u00TU531qsQ/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLAiBhmM0tZo_eV_u_JClkx3SXaWFw)](http://www.youtube.com/watch?v=u00TU531qsQ) |
-| [新的 Azure Functions 體驗](https://www.youtube.com/watch?v=0bdT_9uOqkg) | [使用 GitHub 動作部署您的 web 應用程式](https://www.youtube.com/watch?v=b2oyxbSbLPA) | [使用服務資訊卡](https://www.youtube.com/watch?v=u00TU531qsQ) |
 
 ## <a name="video-playlist"></a>影片播放清單
 

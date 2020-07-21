@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/30/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 585d3729a886f3a01dff6dcd9afdab63669c05b5
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: b5dcadd2381596509a3d2f512d0f4ebbbfbba893
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86225066"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502872"
 ---
 # <a name="create-an-image-from-a-vhd-or-snapshot-in-a-shared-image-gallery-using-the-azure-cli"></a>使用 Azure CLI，從共用映射庫中的 VHD 或快照集建立映射
 
@@ -67,9 +67,9 @@ az sig list -o table
 
 映像定義會建立映像的邏輯群組。 它們可用來管理影像的相關資訊。 映像定義名稱可以由大寫或小寫字母、數字、點、虛線和句點組成。 
 
-建立映射定義時，請確定具有所有正確的資訊。 在此範例中，我們假設快照集或 VHD 來自于使用中的 VM，而且尚未一般化。 如果 VHD 或快照集是在執行適用于 Windows 或[waagent](https://github.com/Azure/WALinuxAgent)的 Sysprep 或 Linux) 之後， (建立的， `-deprovision` `-deprovision+user` 請將 `-OsState` 變更為 `generalized` 。 
+建立映射定義時，請確定具有所有正確的資訊。 在此範例中，我們假設快照集或 VHD 來自于使用中的 VM，而且尚未一般化。 如果 VHD 或快照集是由一般化 OS 所建立（執行 Windows 或[waagent](https://github.com/Azure/WALinuxAgent)的 Sysprep 或 `-deprovision` Linux 之後）， `-deprovision+user` 請將變更 `-OsState` 為 `generalized` 。 
 
-若要深入了解您可以為映像定義指定哪些值，請參閱[映像定義](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#image-definitions)。
+若要深入了解您可以為映像定義指定哪些值，請參閱[映像定義](./linux/shared-image-galleries.md#image-definitions)。
 
 使用 [az sig image-definition create](/cli/azure/sig/image-definition#az-sig-image-definition-create)，在資源庫中建立映像定義。
 
@@ -120,7 +120,7 @@ az sig image-version create \
 > [!NOTE]
 > 您必須等候映像版本完全完成建立和複寫後，才能使用相同的受控映像來建立另一個映像版本。
 >
-> 您也可以在建立映射版本時新增，以將所有映射版本複本儲存在[區域冗余儲存體](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs)中 `--storage-account-type standard_zrs` 。
+> 您也可以在建立映射版本時新增，以將所有映射版本複本儲存在[區域冗余儲存體](../storage/common/storage-redundancy.md)中 `--storage-account-type standard_zrs` 。
 >
 
 ## <a name="next-steps"></a>後續步驟

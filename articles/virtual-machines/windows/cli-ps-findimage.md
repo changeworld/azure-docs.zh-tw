@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure
 ms.date: 01/25/2019
 ms.author: cynthn
-ms.openlocfilehash: e1ddc354e95185b6b2ba8bcb821fcabd5721c442
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: d2d37e20ada2d1128f04d2df822da996338e0e6e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224242"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86500866"
 ---
 # <a name="find-and-use-vm-images-in-the-azure-marketplace-with-azure-powershell"></a>使用 Azure PowerShell 在 Azure Marketplace 中尋找和使用 VM 映射
 
@@ -44,13 +44,13 @@ ms.locfileid: "86224242"
 
 ## <a name="navigate-the-images"></a>瀏覽映像
 
-在位置中尋找映像的其中一個方法是依序執行 [Get-AzVMImagePublisher](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagepublisher) \(英文\)、[Get-AzVMImageOffer](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimageoffer) \(英文\) 及 [Get-AzVMImageSku](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagesku) \(英文\) Cmdlet：
+在位置中尋找映像的其中一個方法是依序執行 [Get-AzVMImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) \(英文\)、[Get-AzVMImageOffer](/powershell/module/az.compute/get-azvmimageoffer) \(英文\) 及 [Get-AzVMImageSku](/powershell/module/az.compute/get-azvmimagesku) \(英文\) Cmdlet：
 
 1. 列出映像發行者。
 2. 針對指定的發行者，列出其供應項目。
 3. 針對指定的供應項目，列出其 SKU。
 
-然後，針對選取的 SKU，執行 [Get-AzVMImage](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimage) \(英文\) 以列出要部署的版本。
+然後，針對選取的 SKU，執行 [Get-AzVMImage](/powershell/module/az.compute/get-azvmimage) \(英文\) 以列出要部署的版本。
 
 1. 列出發行者：
 
@@ -168,7 +168,7 @@ $skuName="2019-Datacenter"
 Get-AzVMImage -Location $locName -PublisherName $pubName -Offer $offerName -Sku $skuName | Select Version
 ```
 
-現在您可以將選取的發行者、供應項目、SKU 和版本結合為 URN (以 : 分隔的值)。 當您使用 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) \(英文\) Cmdlet 建立 VM 時，請傳遞此 URN 與 `--image` 參數。 您可以視需要以 "latest" 取代 URN 中的版本號碼，以取得最新版的映像。
+現在您可以將選取的發行者、供應項目、SKU 和版本結合為 URN (以 : 分隔的值)。 當您使用 [New-AzVM](/powershell/module/az.compute/new-azvm) \(英文\) Cmdlet 建立 VM 時，請傳遞此 URN 與 `--image` 參數。 您可以視需要以 "latest" 取代 URN 中的版本號碼，以取得最新版的映像。
 
 如果您使用 Resource Manager 範本來部署 VM，則需在 `imageReference` 屬性中個別設定映像參數。 請參閱[範本參考](/azure/templates/microsoft.compute/virtualmachines)。
 
@@ -235,7 +235,7 @@ DataDiskImages   : []
 
 ### <a name="accept-the-terms"></a>接受條款
 
-若要檢視授權條款，請使用 [Get-AzMarketplaceterms](https://docs.microsoft.com/powershell/module/az.marketplaceordering/get-azmarketplaceterms) \(英文\) Cmdlet，並傳入購買方案參數。 輸出會提供 Marketplace 映像的條款連結，並顯示您先前是否已接受條款。 在參數值中務必使用全小寫字母。
+若要檢視授權條款，請使用 [Get-AzMarketplaceterms](/powershell/module/az.marketplaceordering/get-azmarketplaceterms) \(英文\) Cmdlet，並傳入購買方案參數。 輸出會提供 Marketplace 映像的條款連結，並顯示您先前是否已接受條款。 在參數值中務必使用全小寫字母。
 
 ```powershell
 Get-AzMarketplaceterms -Publisher "microsoft-ads" -Product "windows-data-science-vm" -Name "windows2016"
@@ -254,7 +254,7 @@ Accepted          : False
 Signdate          : 1/25/2019 7:43:00 PM
 ```
 
-使用 [Set-AzMarketplaceterms](https://docs.microsoft.com/powershell/module/az.marketplaceordering/set-azmarketplaceterms) \(英文\) Cmdlet 來接受或拒絕條款。 您只需針對映像的每個訂用帳戶接受一次條款。 在參數值中務必使用全小寫字母。 
+使用 [Set-AzMarketplaceterms](/powershell/module/az.marketplaceordering/set-azmarketplaceterms) \(英文\) Cmdlet 來接受或拒絕條款。 您只需針對映像的每個訂用帳戶接受一次條款。 在參數值中務必使用全小寫字母。 
 
 ```powershell
 $agreementTerms=Get-AzMarketplaceterms -Publisher "microsoft-ads" -Product "windows-data-science-vm" -Name "windows2016"
@@ -278,7 +278,7 @@ Signdate          : 2/23/2018 7:49:31 PM
 
 ### <a name="deploy-using-purchase-plan-parameters"></a>使用購買方案的參數進行部署
 
-接受映像的條款之後，您便可以在該訂用帳戶中部署 VM。 如下列程式碼片段所示，使用 [Set-AzVMPlan](https://docs.microsoft.com/powershell/module/az.compute/set-azvmplan) \(英文\) Cmdlet 來設定 VM 物件的 Marketplace 方案資訊。 如需建立 VM 網路設定及完成部署的完整指令碼，請參閱 [PowerShell 指令碼範例](powershell-samples.md)。
+接受映像的條款之後，您便可以在該訂用帳戶中部署 VM。 如下列程式碼片段所示，使用 [Set-AzVMPlan](/powershell/module/az.compute/set-azvmplan) \(英文\) Cmdlet 來設定 VM 物件的 Marketplace 方案資訊。 如需建立 VM 網路設定及完成部署的完整指令碼，請參閱 [PowerShell 指令碼範例](powershell-samples.md)。
 
 ```powershell
 ...
@@ -317,5 +317,3 @@ $vmConfig = Set-AzVMSourceImage -VM $vmConfig -PublisherName $publisherName -Off
 若要使用基本映像資訊透過 `New-AzVM` Cmdlet 快速建立虛擬機器，請參閱[使用 PowerShell 來建立 Windows 虛擬機器](quick-create-powershell.md)。
 
 如需有關使用 Azure Marketplace 映射在共用映射資源庫中建立自訂映射的詳細資訊，請參閱[在建立映射時提供 Azure Marketplace 購買方案資訊](../marketplace-images.md)。
-
-

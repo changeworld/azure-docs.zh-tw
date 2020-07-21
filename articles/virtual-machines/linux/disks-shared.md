@@ -1,19 +1,21 @@
 ---
-title: 跨 Vm 共用 Azure 受控磁片（預覽）
+title: 跨 Vm 共用 Azure 受控磁片
 description: 瞭解如何跨多個 Vm 共用 Azure 受控磁片。
 author: roygara
 ms.service: virtual-machines
 ms.topic: conceptual
-ms.date: 04/09/2020
+ms.date: 07/16/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 3792a98c4ddcab36496f7e83482f2a1382c93d0d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: references_regions
+ms.openlocfilehash: 3ca8a93357b51ed1817bed63ee624abd9b2daa6c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81008503"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502500"
 ---
-# <a name="azure-shared-disks"></a>Azure 共用磁碟
+# <a name="share-an-azure-managed-disk"></a>共用 Azure 受控磁片
 
 [!INCLUDE [virtual-machines-disks-shared](../../../includes/virtual-machines-disks-shared.md)]
 

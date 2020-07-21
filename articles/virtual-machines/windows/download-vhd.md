@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 01/13/2019
 ms.author: cynthn
-ms.openlocfilehash: e87f2436f69abed4c0d0ee415226f99b52f2e804
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 20236ccf1ec8e1f8d8113f0597d37c20e2788987
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82085360"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86500424"
 ---
 # <a name="download-a-windows-vhd-from-azure"></a>從 Azure 下載 Windows VHD
 
@@ -22,7 +22,7 @@ ms.locfileid: "82085360"
 
 ## <a name="optional-generalize-the-vm"></a>選擇性：將 VM 一般化
 
-如果您想要使用 VHD 作為[映射](tutorial-custom-images.md)來建立其他 vm，您應該使用[Sysprep](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation)將作業系統一般化。 
+如果您想要使用 VHD 作為[映射](tutorial-custom-images.md)來建立其他 vm，您應該使用[Sysprep](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation)將作業系統一般化。 
 
 若要使用 VHD 作為映射來建立其他 Vm，請將 VM 一般化。
 
@@ -45,7 +45,7 @@ ms.locfileid: "82085360"
 
 ## <a name="generate-download-url"></a>產生下載 URL
 
-若要下載 VHD 檔案，您需要產生[共用存取簽章（SAS）](../../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) URL。 產生 URL 時，會將到期時間指派給 URL。
+若要下載 VHD 檔案，您需要產生[共用存取簽章（SAS）](../../storage/common/storage-sas-overview.md?toc=/azure/virtual-machines/windows/toc.json) URL。 產生 URL 時，會將到期時間指派給 URL。
 
 1. 在 VM 的頁面上，按一下左側功能表中的 [**磁片**]。
 1. 選取 VM 的作業系統磁片。
@@ -68,4 +68,3 @@ ms.locfileid: "82085360"
 - 了解如何[將 VHD 檔案上傳至 Azure](upload-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 
 - [從儲存體帳戶中的非受控磁片建立受控磁片](attach-disk-ps.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 - [使用 PowerShell 管理 Azure 磁碟](tutorial-manage-data-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
-

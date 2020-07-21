@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 04/20/2020
-ms.openlocfilehash: 00f456d87bd5791b7d49644cb801dca20431b0b5
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: ee481067a3904c208061607b7109fcba0f3faaa7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086393"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86504062"
 ---
 # <a name="transactional-replication-with-azure-sql-managed-instance"></a>使用 Azure SQL 受控執行個體進行異動複寫
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -75,7 +75,7 @@ Azure SQL 受控執行個體可以支援來自下列版本 SQL Server 的訂閱�
 | [**標準交易式**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | 是 (僅作為訂閱者) | 是 |
 | [**快照式**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | 是 (僅作為訂閱者) | 是|
 | [**合併式複寫**](https://docs.microsoft.com/sql/relational-databases/replication/merge/merge-replication) | 否 | 否|
-| [**對等**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | 否 | 否|
+| [**點對點**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | 否 | 否|
 | [**雙向**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | 否 | 是|
 | [**可更新的訂閱**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication) | 否 | 否|
 | &nbsp; | &nbsp; | &nbsp; |
@@ -104,11 +104,10 @@ Azure SQL 受控執行個體可以支援來自下列版本 SQL Server 的訂閱�
 
 ### <a name="compare-data-sync-with-transactional-replication"></a>比較資料同步與異動複寫
 
-| | 資料同步 | 異動複寫 |
+| 類別 | 資料同步 | 異動複寫 |
 |---|---|---|
 | 優點 | - 主動-主動支援<br/>- 在內部部署與 Azure SQL Database 之間雙向進行 | - 更低的延遲性<br/>- 交易一致性<br/>- 移轉後重複使用現有的拓撲 |
 | 缺點 | - 5 分鐘或更多的延遲<br/>- 無交易一致性<br/>- 更高的效能影響 | -無法從 Azure SQL Database 發佈 <br/>- 高維護成本 |
-| | | |
 
 ## <a name="common-configurations"></a>一般設定
 
@@ -137,7 +136,7 @@ Azure SQL 受控執行個體可以支援來自下列版本 SQL Server 的訂閱�
 
 在此設定中，Azure SQL Database 或 Azure SQL 受控執行個體中的資料庫是「訂閱者」。 此設定支援從內部部署移轉至 Azure。 如果訂閱者是 Azure SQL Database 中的資料庫，它必須處於推送模式。  
 
-## <a name="requirements"></a>規格需求
+## <a name="requirements"></a>需求
 
 - 在複寫參與者之間使用 SQL 驗證進行連接。
 - 針對複寫所使用的工作目錄使用 Azure 儲存體帳戶共用。

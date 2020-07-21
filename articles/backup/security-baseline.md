@@ -7,24 +7,24 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 68453341defd2d359e69e0ecf8a821464fead0d3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3a7d12a2be7f2e3d3556d6c8c3303b2ddb8b8738
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82744036"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503484"
 ---
 # <a name="azure-security-baseline-for-backup"></a>適用于備份的 Azure 安全性基準
 
 適用于備份的 Azure 安全性基準包含可協助您改善部署安全性狀態的建議。
 
-此服務的基準取自 [Azure 安全性效能評定 1.0 版](https://docs.microsoft.com/azure/security/benchmarks/overview)，其會提供如何在 Azure 上使用最佳做法指引來保護雲端解決方案的建議。
+此服務的基準取自 [Azure 安全性效能評定 1.0 版](../security/benchmarks/overview.md)，其會提供如何在 Azure 上使用最佳做法指引來保護雲端解決方案的建議。
 
-如需詳細資訊，請參閱 [Azure 安全性基準概觀](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview) (機器翻譯)。
+如需詳細資訊，請參閱 [Azure 安全性基準概觀](../security/benchmarks/security-baselines-overview.md) (機器翻譯)。
 
 ## <a name="network-security"></a>網路安全性
 
-如需詳細資訊，請參閱[安全性控制：網路安全性](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security) (機器翻譯)。
+如需詳細資訊，請參閱[安全性控制：網路安全性](../security/benchmarks/security-control-network-security.md) (機器翻譯)。
 
 ### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1.1：在虛擬網路上使用網路安全性群組或 Azure 防火牆來保護資源
 
@@ -54,7 +54,7 @@ ms.locfileid: "82744036"
 
 **指引**： Azure 備份（包括 Microsoft Azure 復原服務代理程式）所使用的端點都是由 Microsoft 管理。 您必須負責任何想要部署到內部部署系統的其他控制項。
 
-- [瞭解 MARS 代理程式的網路和存取支援](https://docs.microsoft.com/azure/backup/backup-support-matrix-mars-agent#networking-and-access-support)
+- [瞭解 MARS 代理程式的網路和存取支援](./backup-support-matrix-mars-agent.md#networking-and-access-support)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -72,7 +72,7 @@ ms.locfileid: "82744036"
 
 **指引**： Azure 備份（包括 Microsoft Azure 復原服務代理程式）所使用的端點都是由 Microsoft 管理。 您必須負責任何想要部署到內部部署系統的其他控制項。
 
-- [瞭解 MARS 代理程式的網路和存取支援](https://docs.microsoft.com/azure/backup/backup-support-matrix-mars-agent#networking-and-access-support)
+- [瞭解 MARS 代理程式的網路和存取支援](./backup-support-matrix-mars-agent.md#networking-and-access-support)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -90,7 +90,7 @@ ms.locfileid: "82744036"
 
 **指導**方針：如果您在 Azure 虛擬機器上使用 MARS 代理程式，請在 NSG 或 Azure 防火牆上使用 AzureBackup 服務標籤，以允許 Azure 備份的輸出存取。
 
-- [備份 Azure Vm 中的 SQL Server 資料庫](https://docs.microsoft.com/azure/backup/backup-sql-server-database-azure-vms)
+- [備份 Azure Vm 中的 SQL Server 資料庫](./backup-sql-server-database-azure-vms.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -116,9 +116,9 @@ ms.locfileid: "82744036"
 
 **指導**方針：如果您在受 NSG 或 azure 防火牆保護的 Azure 虛擬機器上使用 MARS 代理程式，請使用 Azure 活動記錄來監視 NSG 或防火牆的設定。 您可以在 Azure 監視器內建立警示，以在這些資源變更發生時觸發。
 
-- [查看和取出 Azure 活動記錄事件](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)
+- [查看和取出 Azure 活動記錄事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
-- [使用 Azure 監視器中建立、檢視及管理活動記錄警示](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+- [使用 Azure 監視器中建立、檢視及管理活動記錄警示](../azure-monitor/platform/alerts-activity-log.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -126,7 +126,7 @@ ms.locfileid: "82744036"
 
 ## <a name="logging-and-monitoring"></a>記錄和監視
 
-如需詳細資訊，請參閱[安全性控制：記錄和監視](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring) (機器翻譯)。
+如需詳細資訊，請參閱[安全性控制：記錄和監視](../security/benchmarks/security-control-logging-monitoring.md) (機器翻譯)。
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2.1：使用已核准的時間同步處理來源
 
@@ -142,11 +142,11 @@ ms.locfileid: "82744036"
 
 此外，透過 Azure 監視器內嵌記錄，以匯總 Azure 備份所產生的安全性資料。 在 Azure 監視器中，使用 Log Analytics 工作區來查詢和執行分析，並使用儲存體帳戶進行長期/封存儲存體。 或者，您可以啟用 Azure Sentinel 或第三方安全性事件和事件管理 (SIEM)，然後使資料上線。
 
-- [如何啟用 Azure 活動記錄的診斷設定](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy)
+- [如何啟用 Azure 活動記錄的診斷設定](../azure-monitor/platform/activity-log.md)
 
-- [針對復原服務保存庫使用診斷設定](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events)
+- [針對復原服務保存庫使用診斷設定](./backup-azure-diagnostic-events.md)
 
-- [如何使 Azure Sentinel 上線](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+- [如何使 Azure Sentinel 上線](../sentinel/quickstart-onboard.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -158,9 +158,9 @@ ms.locfileid: "82744036"
 
 此外，Azure 備份會傳送可收集的診斷事件，並用於分析、警示和報告。 您可以透過 Azure 入口網站來設定復原服務保存庫的診斷設定。 您可以將一或多個診斷事件傳送至儲存體帳戶、事件中樞或 Log Analytics 工作區。
 
-- [如何啟用 Azure 活動記錄的診斷設定](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy)
+- [如何啟用 Azure 活動記錄的診斷設定](../azure-monitor/platform/activity-log.md)
 
-- [針對復原服務保存庫使用診斷設定](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events)
+- [針對復原服務保存庫使用診斷設定](./backup-azure-diagnostic-events.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -178,7 +178,7 @@ ms.locfileid: "82744036"
 
 **指引**：在 Azure 監視器中，根據貴組織的合規性規定，設定與 Azure 復原服務保存庫相關聯之 log Analytics 工作區的記錄保留週期。
 
-- [如何設定記錄檔保留參數](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [如何設定記錄檔保留參數](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -190,11 +190,11 @@ ms.locfileid: "82744036"
 
 啟用 Azure 活動記錄診斷設定，並將記錄傳送到 Log Analytics 工作區。 在 Log Analytics 中執行查詢，以搜尋詞彙、識別趨勢、分析模式，並根據復原服務保存庫可能收集到的活動記錄資料，提供許多其他深入解析。
 
-- [監視 Azure 備份工作負載](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-built-in-monitor)
+- [監視 Azure 備份工作負載](./backup-azure-monitoring-built-in-monitor.md)
 
-- [如何啟用 Azure 活動記錄的診斷設定](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy)
+- [如何啟用 Azure 活動記錄的診斷設定](../azure-monitor/platform/activity-log.md)
 
-- [如何在 Azure 監視器中收集和分析 Log Analytics 工作區中的 Azure 活動記錄](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-collect)
+- [如何在 Azure 監視器中收集和分析 Log Analytics 工作區中的 Azure 活動記錄](../azure-monitor/platform/activity-log.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -208,11 +208,11 @@ ms.locfileid: "82744036"
 
 您也可以將 Log Analytics 工作區上架到 Azure Sentinel，因為它提供安全性協調流程自動化回應（攀升情況）解決方案。 如此可建立劇本 (自動化解決方案)，並用於修復安全性問題。 此外，您可以使用 Azure 監視器，在 Log Analytics 工作區中建立自訂記錄警示。
 
-- [監視 Azure 備份工作負載](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-built-in-monitor)
+- [監視 Azure 備份工作負載](./backup-azure-monitoring-built-in-monitor.md)
 
-- [如何使 Azure Sentinel 上線](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+- [如何使 Azure Sentinel 上線](../sentinel/quickstart-onboard.md)
 
-- [使用 Azure 監視器來建立、檢視及管理記錄警示](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log)
+- [使用 Azure 監視器來建立、檢視及管理記錄警示](../azure-monitor/platform/alerts-log.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -244,7 +244,7 @@ ms.locfileid: "82744036"
 
 ## <a name="identity-and-access-control"></a>身分識別與存取控制
 
-如需詳細資訊，請參閱[安全性控制：身分識別與存取控制](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control) (機器翻譯)。
+如需詳細資訊，請參閱[安全性控制：身分識別與存取控制](../security/benchmarks/security-control-identity-access-control.md) (機器翻譯)。
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1：維護系統管理帳戶的清查
 
@@ -252,9 +252,9 @@ ms.locfileid: "82744036"
 
 支援檔：
 
-- [如何使用 PowerShell 取得 Azure AD 中的目錄角色](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+- [如何使用 PowerShell 取得 Azure AD 中的目錄角色](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
-- [如何使用 PowerShell 在 Azure AD 中取得目錄角色的成員](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+- [如何使用 PowerShell 在 Azure AD 中取得目錄角色的成員](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
 **Azure 資訊安全中心監視**：是
 
@@ -274,9 +274,9 @@ ms.locfileid: "82744036"
 
 此外，為了協助您追蹤專用的系統管理帳戶，您可以使用來自 Azure 資訊安全中心或內建 Azure 原則的建議，例如：應該從您的訂用帳戶移除具有擁有者許可權之已淘汰帳戶的多個擁有者
 
-- [如何使用 Azure 資訊安全中心來監視身分識別和存取 (預覽)](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+- [如何使用 Azure 資訊安全中心來監視身分識別和存取 (預覽)](../security-center/security-center-identity-access.md)
 
-- [如何使用 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [如何使用 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -286,11 +286,11 @@ ms.locfileid: "82744036"
 
 **指引**：使用 Azure 應用程式註冊（服務主體）來抓取權杖，其可透過 API 呼叫來與您的復原服務保存庫進行互動。
 
-- [如何呼叫 Azure REST Api](https://docs.microsoft.com/rest/api/azure/#how-to-call-azure-rest-apis-with-postman)
+- [如何呼叫 Azure REST Api](/rest/api/azure/#how-to-call-azure-rest-apis-with-postman)
 
-- [如何向 Azure AD 註冊您的用戶端應用程式（服務主體）](https://docs.microsoft.com/rest/api/azure/#register-your-client-application-with-azure-ad)
+- [如何向 Azure AD 註冊您的用戶端應用程式（服務主體）](/rest/api/azure/#register-your-client-application-with-azure-ad)
 
-- [Azure 復原服務 API 資訊](https://docs.microsoft.com/rest/api/recoveryservices/)
+- [Azure 復原服務 API 資訊](/rest/api/recoveryservices/)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -300,9 +300,9 @@ ms.locfileid: "82744036"
 
 **指導**方針：當您在 Azure 備份中執行重要作業時，您必須輸入 Azure 入口網站上可用的安全性 PIN 碼。 啟用 Multi-Factor Authentication 可多一道安全性。 只有具備有效 Azure 認證且從第二個裝置驗證的授權使用者，才能存取 Azure 入口網站。
 
-- [Azure 備份中的多重要素驗證](https://docs.microsoft.com/azure/backup/backup-azure-security-feature)
+- [Azure 備份中的多重要素驗證](./backup-azure-security-feature.md)
 
-- [規劃雲端式 Azure Multi-Factor Authentication 部署](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted) \(部分機器翻譯\)
+- [規劃雲端式 Azure Multi-Factor Authentication 部署](../active-directory/authentication/howto-mfa-getstarted.md) \(部分機器翻譯\)
 
 **Azure 資訊安全中心監視**：是
 
@@ -312,9 +312,9 @@ ms.locfileid: "82744036"
 
 **指引**：搭配使用特殊許可權存取工作站（PAW）與 Azure 多重要素驗證（MFA），並將其設定為登入並設定您的 Azure 備份啟用資源。
 
-- [特殊權限存取工作站](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+- [特殊權限存取工作站](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
 
-- [規劃雲端式 Azure Multi-Factor Authentication 部署](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted) \(部分機器翻譯\)
+- [規劃雲端式 Azure Multi-Factor Authentication 部署](../active-directory/authentication/howto-mfa-getstarted.md) \(部分機器翻譯\)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -326,9 +326,9 @@ ms.locfileid: "82744036"
 
 此外，使用 Azure AD 風險偵測來檢視有風險的使用者行為相關警示和報告。
 
-- [如何部署 Privileged Identity Management (PIM)](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan)
+- [如何部署 Privileged Identity Management (PIM)](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-- [了解 Azure AD 風險偵測](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events)
+- [了解 Azure AD 風險偵測](../active-directory/identity-protection/overview-identity-protection.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -338,7 +338,7 @@ ms.locfileid: "82744036"
 
 **指引**：使用條件式存取具名位置，只允許從 IP 位址範圍或國家/區域的特定邏輯群組存取 Azure 入口網站。
 
-- [如何在 Azure 中設定具名位置](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
+- [如何在 Azure 中設定具名位置](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -348,9 +348,9 @@ ms.locfileid: "82744036"
 
 **指引**：使用 AZURE ACTIVE DIRECTORY （AD）做為 Azure 備份實例的中央驗證和授權系統。 Azure AD 會對待用資料和傳輸中資料使用增強式加密，以保護資料安全。 Azure AD 也會對使用者認證進行 Salt 處理、雜湊處理並安全儲存資料。
 
-- [如何設定 Azure 備份以使用 Azure AD 登入](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-aad)
+- [如何設定 Azure 備份以使用 Azure AD 登入](../app-service/configure-authentication-provider-aad.md)
 
-- [如何建立和設定 AAD 執行個體](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
+- [如何建立和設定 AAD 執行個體](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -360,9 +360,9 @@ ms.locfileid: "82744036"
 
 **指引**： AZURE ACTIVE DIRECTORY （AD）提供可協助您探索過時帳戶的記錄檔。 此外，您可以使用 Azure 身分識別存取審查來有效率地管理群組成員資格、企業應用程式的存取權，以及角色指派。 您可以定期檢閱使用者的存取權，以確定只有適當的使用者具有持續存取權。
 
-- [瞭解 Azure AD 報告](https://docs.microsoft.com/azure/active-directory/reports-monitoring/)
+- [瞭解 Azure AD 報告](../active-directory/reports-monitoring/index.yml)
 
-- [如何使用 Azure 身分識別存取權檢閱](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
+- [如何使用 Azure 身分識別存取權檢閱](../active-directory/governance/access-reviews-overview.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -376,9 +376,9 @@ ms.locfileid: "82744036"
 
 若要簡化此程式，您可以建立 Azure AD 使用者帳戶的診斷設定，並將 audit 記錄和登入記錄傳送到 Log Analytics 工作區。 您可以在 Log Analytics 中設定所需的記錄警示。
 
-- [如何將 Azure 活動記錄整合到 Azure 監視器中](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [如何將 Azure 活動記錄整合到 Azure 監視器中](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-- [如何讓 Azure Sentinel 上線](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+- [如何讓 Azure Sentinel 上線](../sentinel/quickstart-onboard.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -388,13 +388,13 @@ ms.locfileid: "82744036"
 
 **指導**方針：使用 AZURE ACTIVE DIRECTORY （AD）作為復原服務保存庫的中央驗證和授權系統。 如需控制平面（Azure 入口網站）上的帳戶登入行為偏差，請使用 Azure AD Identity Protection 和風險偵測功能來設定對偵測到與使用者身分識別相關之可疑動作的自動回應。 您也可將資料內嵌到 Azure Sentinel 中，以便進一步調查。
 
-- [如何設定 Azure 備份以使用 Azure AD 登入](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-aad)
+- [如何設定 Azure 備份以使用 Azure AD 登入](../app-service/configure-authentication-provider-aad.md)
 
-- [如何觀看 Azure AD 有風險的登入](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [如何觀看 Azure AD 有風險的登入](../active-directory/identity-protection/overview-identity-protection.md)
 
-- [如何設定和啟用身分識別保護風險原則](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies)
+- [如何設定和啟用身分識別保護風險原則](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
-- [如何使 Azure Sentinel 上線](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+- [如何使 Azure Sentinel 上線](../sentinel/quickstart-onboard.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -404,7 +404,7 @@ ms.locfileid: "82744036"
 
 **指導**方針：目前無法使用;Azure 備份尚不支援客戶加密箱。
 
-- [客戶加密箱支援的服務清單](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
+- [客戶加密箱支援的服務清單](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -412,13 +412,13 @@ ms.locfileid: "82744036"
 
 ## <a name="data-protection"></a>資料保護
 
-如需詳細資訊，請參閱[安全性控制：資料保護](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection) (機器翻譯)。
+如需詳細資訊，請參閱[安全性控制：資料保護](../security/benchmarks/security-control-data-protection.md) (機器翻譯)。
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1：維護敏感性資訊的詳細目錄
 
 **指引**：使用標籤協助追蹤可儲存或處理敏感性資訊的 Azure 資源。
 
-- [如何建立和使用標籤](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -432,13 +432,13 @@ ms.locfileid: "82744036"
 
 支援檔：
 
-- [Azure 備份概觀](https://docs.microsoft.com/azure/backup/backup-overview)
+- [Azure 備份概觀](./backup-overview.md)
 
-- [如何建立額外的 Azure 訂閱](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+- [如何建立額外的 Azure 訂閱](../cost-management-billing/manage/create-subscription.md)
 
-- [如何建立管理群組](https://docs.microsoft.com/azure/governance/management-groups/create)
+- [如何建立管理群組](../governance/management-groups/create.md)
 
-- [如何建立和使用標籤](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -450,7 +450,7 @@ ms.locfileid: "82744036"
 
 Microsoft 會管理 Azure 備份的基礎結構，並已實行嚴格的控制，以避免遺失或公開客戶資料。
 
-- [瞭解 Azure 中的客戶資料保護](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+- [瞭解 Azure 中的客戶資料保護](../security/fundamentals/protection-customer-data.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -460,7 +460,7 @@ Microsoft 會管理 Azure 備份的基礎結構，並已實行嚴格的控制，
 
 **指引**：從伺服器到復原服務保存庫的備份流量會透過安全的 HTTPS 連結傳輸，並在儲存于保存庫時使用進階加密標準（AES）256加密。
 
-- [瞭解 Azure 備份中的待用加密](https://docs.microsoft.com/azure/backup/backup-encryption)
+- [瞭解 Azure 備份中的待用加密](./backup-encryption.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -472,7 +472,7 @@ Microsoft 會管理 Azure 備份的基礎結構，並已實行嚴格的控制，
 
 Microsoft 會管理 Azure 備份的基礎結構，並已實行嚴格的控制，以避免遺失或公開客戶資料。
 
-- [瞭解 Azure 中的客戶資料保護](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+- [瞭解 Azure 中的客戶資料保護](../security/fundamentals/protection-customer-data.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -484,9 +484,9 @@ Microsoft 會管理 Azure 備份的基礎結構，並已實行嚴格的控制，
 
 Azure 備份提供三個內建角色來控制備份管理作業：「備份參與者」、「備份操作員」和「備份讀取器」。 您可以將備份內建角色對應到各種備份管理動作。
 
-- [如何在 Azure 中設定 RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+- [如何在 Azure 中設定 RBAC](../role-based-access-control/role-assignments-portal.md)
 
-- [使用角色型存取控制來管理 Azure 備份復原點](https://docs.microsoft.com/azure/backup/backup-rbac-rs-vault)
+- [使用角色型存取控制來管理 Azure 備份復原點](./backup-rbac-rs-vault.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -496,7 +496,7 @@ Azure 備份提供三個內建角色來控制備份管理作業：「備份參�
 
 **指引**：不適用，這項建議主要用於計算資源。 Microsoft 會管理 Azure 備份的基礎結構，並已實行嚴格的控制，以避免遺失或公開客戶資料。
 
-- [Azure 客戶資料保護](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+- [Azure 客戶資料保護](../security/fundamentals/protection-customer-data.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -508,7 +508,7 @@ Azure 備份提供三個內建角色來控制備份管理作業：「備份參�
 
 當使用 MARS 代理程式進行備份，或使用以客戶管理的金鑰加密的復原服務保存庫時，只有您可以存取加密金鑰。 Microsoft 絕不會持有金鑰複本，也沒有存取金鑰的權限。 如果金鑰遺失，Microsoft 將無法復原備份資料。
 
-- [瞭解 Azure 備份的待用加密](https://docs.microsoft.com/azure/backup/backup-encryption)
+- [瞭解 Azure 備份的待用加密](./backup-encryption.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -518,7 +518,7 @@ Azure 備份提供三個內建角色來控制備份管理作業：「備份參�
 
 **指導**方針：使用 Azure 監視器搭配 Azure 活動記錄，以針對生產 Azure 復原服務保存庫和其他重要或相關資源進行變更時，建立警示。
 
-- [如何建立 Azure 活動記錄事件的警示](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+- [如何建立 Azure 活動記錄事件的警示](../azure-monitor/platform/alerts-activity-log.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -526,7 +526,7 @@ Azure 備份提供三個內建角色來控制備份管理作業：「備份參�
 
 ## <a name="vulnerability-management"></a>弱點管理
 
-如需詳細資訊，請參閱[安全性控制：弱點管理](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management) (機器翻譯)。
+如需詳細資訊，請參閱[安全性控制：弱點管理](../security/benchmarks/security-control-vulnerability-management.md) (機器翻譯)。
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1：執行自動化弱點掃描工具
 
@@ -534,7 +534,7 @@ Azure 備份提供三個內建角色來控制備份管理作業：「備份參�
 
 Microsoft 所掃描和修補的基礎平台。 查看可供 Azure 備份的安全性控制，以減少與服務設定相關的弱點。
 
-- [瞭解適用于 Azure 備份的安全性控制項](https://docs.microsoft.com/azure/backup/backup-security-controls)
+- [瞭解適用于 Azure 備份的安全性控制項](./backup-security-controls.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -568,7 +568,7 @@ Microsoft 所掃描和修補的基礎平台。 查看可供 Azure 備份的安�
 
 **指導**方針：目前無法使用;Azure 資訊安全中心尚未支援 Azure 備份的安全性設定。
 
-- [支援的 PaaS 服務 Azure 資訊安全中心清單](https://docs.microsoft.com/azure/security-center/features-paas)
+- [支援的 PaaS 服務 Azure 資訊安全中心清單](../security-center/features-paas.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -576,7 +576,7 @@ Microsoft 所掃描和修補的基礎平台。 查看可供 Azure 備份的安�
 
 ## <a name="inventory-and-asset-management"></a>清查和資產管理
 
-如需詳細資訊，請參閱[安全性控制：清查和資產管理](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management) (機器翻譯)。
+如需詳細資訊，請參閱[安全性控制：清查和資產管理](../security/benchmarks/security-control-inventory-asset-management.md) (機器翻譯)。
 
 ### <a name="61-use-azure-asset-discovery"></a>6.1：使用 Azure 資產探索
 
@@ -584,11 +584,11 @@ Microsoft 所掃描和修補的基礎平台。 查看可供 Azure 備份的安�
 
 雖然可透過 Resource Graph 探索傳統 Azure 資源，但強烈建議您從現在開始建立並使用 Azure Resource Manager 資源。
 
-- [如何使用 Azure Resource Graph 建立查詢](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+- [如何使用 Azure Resource Graph 建立查詢](../governance/resource-graph/first-query-portal.md)
 
-- [如何檢視您的 Azure 訂用帳戶](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+- [如何檢視您的 Azure 訂用帳戶](/powershell/module/az.accounts/get-azsubscription)
 
-- [了解 Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
+- [了解 Azure RBAC](../role-based-access-control/overview.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -598,7 +598,7 @@ Microsoft 所掃描和修補的基礎平台。 查看可供 Azure 備份的安�
 
 **指引**：將標籤套用至提供中繼資料的 Azure 資源，以邏輯方式依分類組織這些資源。
 
-- [如何建立和使用標籤](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -610,11 +610,11 @@ Microsoft 所掃描和修補的基礎平台。 查看可供 Azure 備份的安�
 
 此外，使用 Azure 原則來對可使用下列內建原則定義在客戶訂用帳戶中建立的資源類型施加限制：不允許的資源類型允許的資源類型
 
-- [如何建立額外的 Azure 訂閱](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+- [如何建立額外的 Azure 訂閱](../cost-management-billing/manage/create-subscription.md)
 
-- [如何建立管理群組](https://docs.microsoft.com/azure/governance/management-groups/create)
+- [如何建立管理群組](../governance/management-groups/create.md)
 
-- [如何建立和使用標籤](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -634,9 +634,9 @@ Microsoft 所掃描和修補的基礎平台。 查看可供 Azure 備份的安�
 
 使用 Azure Resource Graph 來查詢/探索其訂閱內的資源。  確保已核准環境中的所有 Azure 資源。
 
-- [如何設定和管理 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
-- [如何使用 Azure Graph 建立查詢](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+- [如何使用 Azure Graph 建立查詢](../governance/resource-graph/first-query-portal.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -670,9 +670,9 @@ Microsoft 所掃描和修補的基礎平台。 查看可供 Azure 備份的安�
 
 **指引**：使用 Azure 原則來對可使用下列內建原則定義在客戶訂用帳戶中建立的資源類型施加限制：不允許的資源類型允許的資源類型
 
-- [如何設定和管理 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
-- [如何使用 Azure 原則拒絕特定的資源類型](https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types)
+- [如何使用 Azure 原則拒絕特定的資源類型](/azure/governance/policy/samples/not-allowed-resource-types)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -690,7 +690,7 @@ Microsoft 所掃描和修補的基礎平台。 查看可供 Azure 備份的安�
 
 **指引**：設定 Azure 條件式存取，以藉由對「Microsoft Azure 管理」應用程式設定「封鎖存取」，限制使用者與 Azure Resource Manager 互動的能力。
 
-- [如何設定條件式存取以封鎖 Azure Resource Manager 的存取](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
+- [如何設定條件式存取以封鎖 Azure Resource Manager 的存取](../role-based-access-control/conditional-access-azure-management.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -714,15 +714,15 @@ Microsoft 所掃描和修補的基礎平台。 查看可供 Azure 備份的安�
 
 ## <a name="secure-configuration"></a>安全設定
 
-如需詳細資訊，請參閱[安全性控制：安全設定](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration) (機器翻譯)。
+如需詳細資訊，請參閱[安全性控制：安全設定](../security/benchmarks/security-control-secure-configuration.md) (機器翻譯)。
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1：為所有 Azure 資源建立安全設定
 
 **指引**：使用 Azure 原則定義和執行復原服務保存庫的標準安全性設定。 使用 "Azurerm.recoveryservices" 命名空間中 Azure 原則別名來建立自訂原則，以審核或強制執行復原服務保存庫的設定。
 
-- [如何檢視可用的 Azure 原則別名](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+- [如何檢視可用的 Azure 原則別名](/powershell/module/az.resources/get-azpolicyalias)
 
-- [如何設定和管理 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -740,9 +740,9 @@ Microsoft 所掃描和修補的基礎平台。 查看可供 Azure 備份的安�
 
 **指引**：使用 Azure 原則 [拒絕] 和 [在不存在時部署]，以對 Azure 資源強制使用安全設定。
 
-- [如何設定和管理 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
-- [瞭解 Azure 原則效果](https://docs.microsoft.com/azure/governance/policy/concepts/effects)
+- [瞭解 Azure 原則效果](../governance/policy/concepts/effects.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -760,9 +760,9 @@ Microsoft 所掃描和修補的基礎平台。 查看可供 Azure 備份的安�
 
 **指導**方針：如果使用自訂 Azure 原則定義，請使用 Azure DevOps 或 Azure Repos 安全地儲存和管理您的程式碼。
 
-- [如何在 Azure DevOps 中儲存程式碼](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+- [如何在 Azure DevOps 中儲存程式碼](/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
-- [Azure Repos 文件](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)
+- [Azure Repos 文件](/azure/devops/repos/index?view=azure-devops)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -780,7 +780,7 @@ Microsoft 所掃描和修補的基礎平台。 查看可供 Azure 備份的安�
 
 **指引**：在 "azurerm.recoveryservices" 命名空間中使用內建的 Azure 原則定義和 Azure 原則別名，以建立自訂原則來警示、審查和強制執行系統組態。 此外，開發流程和管線以管理原則例外狀況。
 
-- [如何設定和管理 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -798,7 +798,7 @@ Microsoft 所掃描和修補的基礎平台。 查看可供 Azure 備份的安�
 
 **指引**：在 "azurerm.recoveryservices" 命名空間中使用內建的 Azure 原則定義和 Azure 原則別名，以建立自訂原則來警示、審查和強制執行系統組態。 使用 Azure 原則 [audit]、[deny] 和 [deploy if not 存在] 自動強制執行 Azure 資源的設定。
 
-- [如何設定和管理 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -816,9 +816,9 @@ Microsoft 所掃描和修補的基礎平台。 查看可供 Azure 備份的安�
 
 **指導**方針：設定 MARS 代理程式時，請將加密複雜密碼儲存在 Azure Key Vault 中。
 
-- [如何建立 Key Vault](https://docs.microsoft.com/azure/key-vault/quick-create-portal)
+- [如何建立 Key Vault](../key-vault/secrets/quick-create-portal.md)
 
-- [如何使用受控識別提供 Key Vault 驗證](https://docs.microsoft.com/azure/key-vault/managed-identity)
+- [如何使用受控識別提供 Key Vault 驗證](../key-vault/general/managed-identity.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -828,7 +828,7 @@ Microsoft 所掃描和修補的基礎平台。 查看可供 Azure 備份的安�
 
 **指導**方針：不適用;Azure 備份不支援受控識別。
 
-- [支援適用於 Azure 資源的受控識別服務](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities)
+- [支援適用於 Azure 資源的受控識別服務](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -846,7 +846,7 @@ Microsoft 所掃描和修補的基礎平台。 查看可供 Azure 備份的安�
 
 ## <a name="malware-defense"></a>惡意程式碼防禦
 
-如需詳細資訊，請參閱[安全性控制：惡意程式碼防禦](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense) (機器翻譯)。
+如需詳細資訊，請參閱[安全性控制：惡意程式碼防禦](../security/benchmarks/security-control-malware-defense.md) (機器翻譯)。
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8.1：使用集中管理的反惡意程式碼軟體
 
@@ -864,9 +864,9 @@ Microsoft 所掃描和修補的基礎平台。 查看可供 Azure 備份的安�
 
 使用適用于資料服務的 Azure 資訊安全中心威脅偵測來偵測已上傳至儲存體帳戶的惡意程式碼。
 
-- [瞭解 Azure 雲端服務和虛擬機器的 Microsoft Antimalware](https://docs.microsoft.com/azure/security/fundamentals/antimalware)
+- [瞭解 Azure 雲端服務和虛擬機器的 Microsoft Antimalware](../security/fundamentals/antimalware.md)
 
-- [瞭解 Azure 資訊安全中心的資料服務威脅偵測](https://docs.microsoft.com/azure/security-center/security-center-alerts-data-services)
+- [瞭解 Azure 資訊安全中心的資料服務威脅偵測](../security-center/threat-protection.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -882,7 +882,7 @@ Microsoft 所掃描和修補的基礎平台。 查看可供 Azure 備份的安�
 
 ## <a name="data-recovery"></a>資料復原
 
-如需詳細資訊，請參閱[安全性控制：資料復原](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery) (機器翻譯)。
+如需詳細資訊，請參閱[安全性控制：資料復原](../security/benchmarks/security-control-data-recovery.md) (機器翻譯)。
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9.1：確保會定期自動備份
 
@@ -898,11 +898,11 @@ Microsoft 所掃描和修補的基礎平台。 查看可供 Azure 備份的安�
 
 在 Azure Key Vault 內備份客戶管理的金鑰。
 
-- [Azure 備份概觀](https://docs.microsoft.com/azure/backup/backup-overview)
+- [Azure 備份概觀](./backup-overview.md)
 
-- [如何在 Azure 中備份金鑰保存庫金鑰](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
+- [如何在 Azure 中備份金鑰保存庫金鑰](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 
-- [瞭解 Azure 備份中的加密](https://docs.microsoft.com/azure/backup/backup-encryption#encryption-of-backup-data-using-customer-managed-keys)
+- [瞭解 Azure 備份中的加密](./backup-encryption.md#encryption-of-backup-data-using-customer-managed-keys)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -912,7 +912,7 @@ Microsoft 所掃描和修補的基礎平台。 查看可供 Azure 備份的安�
 
 **指引**：測試已備份的客戶管理金鑰的還原。
 
-- [如何在 Azure 中還原金鑰保存庫金鑰](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+- [如何在 Azure 中還原金鑰保存庫金鑰](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -922,7 +922,7 @@ Microsoft 所掃描和修補的基礎平台。 查看可供 Azure 備份的安�
 
 **指引**：針對內部部署備份，待用加密是使用您在備份至 Azure 時所提供的複雜密碼來提供。 針對 Azure VM，會使用「儲存體服務加密」(SSE) 對資料進行靜態加密。 您可以在 Key Vault 中啟用虛刪除，以防止金鑰遭到意外或惡意刪除。
 
-- [如何在 Key Vault 中啟用虛刪除](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [如何在 Key Vault 中啟用虛刪除](../storage/blobs/soft-delete-overview.md?tabs=azure-portal)
 
 **Azure 資訊安全中心監視**：是
 
@@ -930,13 +930,13 @@ Microsoft 所掃描和修補的基礎平台。 查看可供 Azure 備份的安�
 
 ## <a name="incident-response"></a>事件回應
 
-如需詳細資訊，請參閱[安全性控制：事件回應](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response) (機器翻譯)。
+如需詳細資訊，請參閱[安全性控制：事件回應](../security/benchmarks/security-control-incident-response.md) (機器翻譯)。
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1：建立事件回應指南
 
 **指引**：為組織製作事件回應指南。 請確定有書面的事件回應計畫，其中定義人員的所有角色，以及從偵測到事件後檢討的事件處理/管理階段。
 
-- [如何設定 Azure 資訊安全中心內的工作流程自動化](https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide)
+- [如何設定 Azure 資訊安全中心內的工作流程自動化](../security-center/security-center-planning-and-operations-guide.md)
 
 - [建立自有安全性事件回應程序的指引](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/)
 
@@ -972,7 +972,7 @@ Microsoft 所掃描和修補的基礎平台。 查看可供 Azure 備份的安�
 
 **指引**：如果 Microsoft 安全性回應中心 (MSRC) 發現客戶的資料遭到非法或未經授權的對象存取，Microsoft 將使用安全性事件連絡人資訊來連絡您。  事後檢討事件，確保問題已解決。
 
-- [如何設定 Azure 資訊安全中心的安全性連絡人](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)
+- [如何設定 Azure 資訊安全中心的安全性連絡人](../security-center/security-center-provide-security-contact-details.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -982,9 +982,9 @@ Microsoft 所掃描和修補的基礎平台。 查看可供 Azure 備份的安�
 
 **指引**：使用「連續匯出」功能來匯出 Azure 資訊安全中心的警示和建議。 「連續匯出」可供以手動或持續不斷的方式來匯出警示和建議。 您可使用 Azure 資訊安全中心的資料連接器，將警示串流至 Sentinel。
 
-- [如何設定連續匯出](https://docs.microsoft.com/azure/security-center/continuous-export)
+- [如何設定連續匯出](../security-center/continuous-export.md)
 
-- [如何將警示串流至 Azure Sentinel](https://docs.microsoft.com/azure/sentinel/connect-azure-security-center)
+- [如何將警示串流至 Azure Sentinel](../sentinel/connect-azure-security-center.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -994,7 +994,7 @@ Microsoft 所掃描和修補的基礎平台。 查看可供 Azure 備份的安�
 
 **指引**：利用 Azure 資訊安全中心的工作流程自動化功能，透過「Logic Apps」自動觸發對安全性警示和建議的回應。
 
-- [如何設定工作流程自動化和 Logic Apps](https://docs.microsoft.com/azure/security-center/workflow-automation)
+- [如何設定工作流程自動化和 Logic Apps](../security-center/workflow-automation.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -1002,7 +1002,7 @@ Microsoft 所掃描和修補的基礎平台。 查看可供 Azure 備份的安�
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>滲透測試和 Red Team 練習
 
-如需詳細資訊，請參閱[安全性控制：滲透測試和 Red Team 練習](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises) (機器翻譯)。
+如需詳細資訊，請參閱[安全性控制：滲透測試和 Red Team 練習](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md) (機器翻譯)。
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings-within-60-days"></a>11.1：進行 Azure 資源的定期滲透測試，並確保在 60 天內補救所有重大安全性發現
 
@@ -1016,5 +1016,5 @@ Microsoft 所掃描和修補的基礎平台。 查看可供 Azure 備份的安�
 
 ## <a name="next-steps"></a>後續步驟
 
-- 請參閱 [Azure 安全性效能評定](https://docs.microsoft.com/azure/security/benchmarks/overview) (機器翻譯)
-- 深入了解 [Azure 安全性基準](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview) (機器翻譯)
+- 請參閱 [Azure 安全性效能評定](../security/benchmarks/overview.md) (機器翻譯)
+- 深入了解 [Azure 安全性基準](../security/benchmarks/security-baselines-overview.md) (機器翻譯)

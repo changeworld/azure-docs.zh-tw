@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 06/06/2020
 ms.author: danis
-ms.openlocfilehash: c70a6049596aa38e9ae6118517fc471becbc1676
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 7a0d4d0a1c36f901ea38c5c73d3aa7a2cf49e02f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134632"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502685"
 ---
 # <a name="prepare-an-ubuntu-virtual-machine-for-azure"></a>準備適用於 Azure 的 Ubuntu 虛擬機器
 
@@ -21,8 +21,8 @@ Ubuntu 現在會在發佈正式的 Azure Vhd 以供下載 [https://cloud-images.
 * Ubuntu 16.04/Xenial： [ubuntu-16.04-server-cloudimg-amd64-disk1 .vmdk](https://cloud-images.ubuntu.com/releases/xenial/release/ubuntu-16.04-server-cloudimg-amd64-disk1.vmdk)
 * Ubuntu 18.04/Bionic： [Bionic-server-cloudimg-amd64](https://cloud-images.ubuntu.com/bionic/current/bionic-server-cloudimg-amd64.vmdk)
 
-## <a name="prerequisites"></a>必要條件
-本文假設您已將 Ubuntu Linux 作業系統安裝到虛擬硬碟。 有多個工具可用來建立 .vhd 檔案，例如，像是 Hyper-V 的虛擬化解決方案。 如需指示，請參閱 [安裝 Hyper-V 角色及設定虛擬機器](https://technet.microsoft.com/library/hh846766.aspx)。
+## <a name="prerequisites"></a>先決條件
+本文假設您已將 Ubuntu Linux 作業系統安裝到虛擬硬碟。 有多個工具可用來建立 .vhd 檔案，例如，像是 Hyper-V 的虛擬化解決方案。 如需指示，請參閱 [安裝 Hyper-V 角色及設定虛擬機器](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh846766(v=ws.11))。
 
 **Ubuntu 安裝注意事項**
 
@@ -176,9 +176,8 @@ Ubuntu 現在會在發佈正式的 Azure Vhd 以供下載 [https://cloud-images.
 
 13. 在 Hyper-V 管理員中，依序按一下 [動作] -> [關閉]。
 
-14. Azure 只接受固定大小的 Vhd。 如果 VM 的 OS 磁片不是固定大小的 VHD，請使用 `Convert-VHD` PowerShell Cmdlet 並指定 `-VHDType Fixed` 選項。 請參閱這裡的檔 `Convert-VHD` ：[轉換-VHD](https://docs.microsoft.com/powershell/module/hyper-v/convert-vhd?view=win10-ps)。
+14. Azure 只接受固定大小的 Vhd。 如果 VM 的 OS 磁片不是固定大小的 VHD，請使用 `Convert-VHD` PowerShell Cmdlet 並指定 `-VHDType Fixed` 選項。 請參閱這裡的檔 `Convert-VHD` ：[轉換-VHD](/powershell/module/hyper-v/convert-vhd?view=win10-ps)。
 
 
 ## <a name="next-steps"></a>後續步驟
 您現在可以開始使用您的 Ubuntu Linux 虛擬硬碟在 Azure 建立新的虛擬機器。 如果您是第一次將 .vhd 檔案上傳至 Azure，請參閱[從自訂磁碟建立 Linux VM](upload-vhd.md#option-1-upload-a-vhd)。
-

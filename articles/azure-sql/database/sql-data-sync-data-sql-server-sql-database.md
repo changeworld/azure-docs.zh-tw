@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 08/20/2019
-ms.openlocfilehash: 80bc254aafa9c221fcaf724331928b7f30360eac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 02207f8b5cf8628c3b2bbb72ab8d38ca9a4a5731
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610841"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86504215"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>什麼是適用于 Azure 的 SQL 資料同步？
 
@@ -26,7 +26,7 @@ SQL 資料同步是以 Azure SQL Database 為基礎的服務，可讓您跨內�
 > Azure SQL 資料同步目前不支援 Azure SQL 受控執行個體。
 
 
-## <a name="overview"></a>總覽 
+## <a name="overview"></a>概觀 
 
 資料同步是以同步處理群組的概念為基礎。 同步群組是一組您想要同步處理的資料庫。
 
@@ -58,7 +58,7 @@ SQL 資料同步是以 Azure SQL Database 為基礎的服務，可讓您跨內�
 
 在下列案例中，資料同步不是慣用的解決方案：
 
-| 狀況 | 某些建議的解決方案 |
+| 情節 | 某些建議的解決方案 |
 |----------|----------------------------|
 | 災害復原 | [Azure 異地備援備份](automated-backups-overview.md) |
 | 讀取級別 | [使用唯讀複本對唯讀查詢工作負載進行負載平衡 (預覽)](read-scale-out.md) |
@@ -78,7 +78,7 @@ SQL 資料同步是以 Azure SQL Database 為基礎的服務，可讓您跨內�
 
 ## <a name="compare-with-transactional-replication"></a>與異動複寫比較
 
-| | 資料同步 | 異動複寫 |
+| 資料同步 | 異動複寫 |
 |---|---|---|
 | 優點 | - 主動-主動支援<br/>- 在內部部署與 Azure SQL Database 之間雙向進行 | - 更低的延遲性<br/>- 交易一致性<br/>- 移轉後重複使用現有的拓撲 <br/>-Azure SQL 受控執行個體支援 |
 | 缺點 | - 5 分鐘或更多的延遲<br/>- 無交易一致性<br/>- 更高的效能影響 | -無法從 Azure SQL Database 發佈 <br/>- 高維護成本 |
@@ -105,7 +105,7 @@ SQL 資料同步是以 Azure SQL Database 為基礎的服務，可讓您跨內�
 
 ## <a name="consistency-and-performance"></a>一致性與效能
 
-### <a name="eventual-consistency"></a>最終一致性
+### <a name="eventual-consistency"></a>「最終」一致性
 
 由於資料同步是以觸發程式為基礎，因此不保證交易一致性。 Microsoft 保證最終會進行所有變更，而且資料同步不會造成資料遺失。
 

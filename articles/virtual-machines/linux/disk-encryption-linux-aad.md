@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: c1349052488cb520f5866b5b0d238a223f2ceb68
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 274dda338fca1dae1940dd4a0fe66df617195544
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135099"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502617"
 ---
 # <a name="enable-azure-disk-encryption-with-azure-ad-on-linux-vms-previous-release"></a>在 Linux Vm 上使用 Azure AD 啟用 Azure 磁碟加密（舊版）
 
@@ -209,7 +209,7 @@ EncryptFormatAll 參數會減少加密 Linux 資料磁碟的時間。 符合特�
 - 新增將構成 VM 的資料磁碟。
 - 格式化、掛接這些磁碟，並將其新增至 fstab 檔案。
 
-    1. 格式化剛新增的磁碟。 我們會 Azure 在此產生的符號連結。 使用符號連結，可避免裝置名稱變更的相關問題。 如需詳細資訊，請參閱針對[裝置名稱問題進行疑難排解](troubleshoot-device-names-problems.md)。
+    1. 格式化剛新增的磁碟。 我們會 Azure 在此產生的符號連結。 使用符號連結，可避免裝置名稱變更的相關問題。 如需詳細資訊，請參閱針對[裝置名稱問題進行疑難排解](../troubleshooting/troubleshoot-device-names-problems.md)。
     
         ```console
         mkfs -t ext4 /dev/disk/azure/scsi1/lun0
@@ -265,7 +265,7 @@ New-AzVM -VM $VirtualMachine -ResourceGroupName "MyVirtualMachineResourceGroup"
 您可以使用[az vm disk attach](add-disk.md)或[透過 Azure 入口網站](attach-disk-portal.md)來新增資料磁片。 您必須先掛接新連結的資料磁碟，才可以加密。 您必須要求加密資料磁片磁碟機，因為在加密進行時，磁片磁碟機將無法使用。 
 
 ### <a name="enable-encryption-on-a-newly-added-disk-with-the-azure-cli"></a>使用 Azure CLI 在新增的磁片上啟用加密
- 如果 VM 先前是以「全部」加密，則--磁片區類型參數應該保持全部。 全部包含作業系統與資料磁碟。 如果 VM 先前是以「OS」磁片區類型加密，則--磁片區類型參數應變更為 [全部]，以便同時包含 OS 和新的資料磁片。 如果 VM 只以「資料」磁片區類型加密，則它可以保留資料，如下所示。 將新的資料磁片新增至 VM 並不是足夠的加密準備。 在啟用加密之前，必須先將新連接的磁片格式化並正確掛接到 VM 中。 在 Linux 上，磁片必須以[持續性區塊裝置名稱](troubleshoot-device-names-problems.md)掛接在/etc/fstab 中。 
+ 如果 VM 先前是以「全部」加密，則--磁片區類型參數應該保持全部。 全部包含作業系統與資料磁碟。 如果 VM 先前是以「OS」磁片區類型加密，則--磁片區類型參數應變更為 [全部]，以便同時包含 OS 和新的資料磁片。 如果 VM 只以「資料」磁片區類型加密，則它可以保留資料，如下所示。 將新的資料磁片新增至 VM 並不是足夠的加密準備。 在啟用加密之前，必須先將新連接的磁片格式化並正確掛接到 VM 中。 在 Linux 上，磁片必須以[持續性區塊裝置名稱](../troubleshooting/troubleshoot-device-names-problems.md)掛接在/etc/fstab 中。 
 
 與 PowerShell 語法不同的是，當您啟用加密時，CLI 不會要求您提供唯一的序列版本。 CLI 為自動產生並使用其唯一序列版本的值。
 

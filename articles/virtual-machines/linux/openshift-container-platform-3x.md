@@ -9,11 +9,12 @@ ms.topic: article
 ms.workload: infrastructure
 ms.date: 04/05/2020
 ms.author: haroldw
-ms.openlocfilehash: 7d6cd4c6ce7991ae83f6f4a1dd6d8b86fe7eedbc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bc30275b2ee24af7bb526b3b43618c706bc027ca
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81757893"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502090"
 ---
 # <a name="deploy-openshift-container-platform-311-in-azure"></a>在 Azure 中部署 OpenShift 容器平臺3.11
 
@@ -242,7 +243,7 @@ ms.locfileid: "81757893"
 
 ### <a name="azuredeployparametersjson-file-explained"></a>檔案上的 azuredeploy.Parameters.js說明
 
-| 屬性 | 說明 | 有效選項 | 預設值 |
+| 屬性 | 描述 | 有效選項 | 預設值 |
 |----------|-------------|---------------|---------------|
 | `_artifactsLocation`  | 成品的 URL （json、腳本等） |  |  HTTPs： \/ /raw.githubusercontent.com/Microsoft/openshift-container-platform/master  |
 | `location` | 要部署資源的 Azure 區域 |  |  |
@@ -276,7 +277,7 @@ ms.locfileid: "81757893"
 | `enableAzure` | 啟用 Azure 雲端提供者 | true <br> false | true |
 | `aadClientId` | Azure Active Directory 用戶端識別碼，也稱為服務主體的應用程式識別碼 |  |  |
 | `domainName` | 要使用的自訂功能變數名稱名稱（如果適用的話）。 如果未部署完整的私用叢集，則設定為 "none" |  | 無 |
-| `masterClusterDnsType` | OpenShift web 主控台的網欄位型別。 「預設」會使用主要基礎公用 IP 的 DNS 標籤。 「自訂」可讓您定義自己的名稱 | default <br> 自訂 | default |
+| `masterClusterDnsType` | OpenShift web 主控台的網欄位型別。 「預設」會使用主要基礎公用 IP 的 DNS 標籤。 「自訂」可讓您定義自己的名稱 | 預設 <br> 自訂 | 預設 |
 | `masterClusterDns` | 要用來存取 OpenShift web 主控台的自訂 DNS 名稱（如果您已選取 [自訂]）`masterClusterDnsType` |  | console.contoso.com |
 | `routingSubDomainType` | 如果設定為 ' nipio '， `routingSubDomain` 將會使用 nip.io。  如果您有想要用於路由的自己網域，請使用 [自訂] | nipio <br> 自訂 | nipio |
 | `routingSubDomain` | 您想要用於路由的萬用字元 DNS 名稱（如果您已選取 [自訂]）`routingSubDomainType` |  | apps.contoso.com |
@@ -306,7 +307,7 @@ ms.locfileid: "81757893"
 ### <a name="deploy-using-azure-cli"></a>使用 Azure CLI 部署
 
 > [!NOTE] 
-> 下列命令需要 Azure CLI 2.0.8 或更新版本。 您可以使用 `az --version` 命令來確認 CLI 版本。 若要更新 CLI 版本，請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latesti)。
+> 下列命令需要 Azure CLI 2.0.8 或更新版本。 您可以使用 `az --version` 命令來確認 CLI 版本。 若要更新 CLI 版本，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latesti)。
 
 下列範例會使用 myOpenShiftCluster 的部署名稱，將 OpenShift 叢集和所有相關的資源部署到名為 openshiftrg 的資源群組。 範本直接參考自 GitHub 儲存機制，而且會使用名為 azuredeploy.parameters.json 檔案的本機參數檔案。
 

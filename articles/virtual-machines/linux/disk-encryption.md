@@ -8,18 +8,18 @@ ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 2d4fc47247c9fe2ed1af0eee59500db7e894fdd0
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 0847f2360a3562f96454992470e3cc2000f66b11
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260143"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502719"
 ---
 # <a name="server-side-encryption-of-azure-disk-storage"></a>Azure 磁碟儲存體的伺服器端加密
 
-伺服器端加密 (SSE) 可保護您的資料安全，並協助您符合組織安全性和合規性承諾。 SSE 會自動將儲存在 Azure 受控磁片上的資料加密 (OS 和資料磁片，在將它保存到雲端時，預設) 待用。 
+伺服器端加密 (SSE) 可保護您的資料安全，並協助您符合組織安全性和合規性承諾。 根據預設，SSE 會自動將您儲存在 Azure 受控磁片（OS 和資料磁片）上的資料加密，並將它保存到雲端。 
 
-Azure 受控磁碟中的資料會使用 256 位元的 [AES 加密](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) (可用的最強區塊編碼器之一)，以透明的方式進行加密，而且符合 FIPS 140-2 規範。 如需有關基礎 Azure 受控磁碟的加密模組詳細資訊，請參閱[密碼編譯 API：新一代](https://docs.microsoft.com/windows/desktop/seccng/cng-portal)
+Azure 受控磁碟中的資料會使用 256 位元的 [AES 加密](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) (可用的最強區塊編碼器之一)，以透明的方式進行加密，而且符合 FIPS 140-2 規範。 如需有關基礎 Azure 受控磁碟的加密模組詳細資訊，請參閱[密碼編譯 API：新一代](/windows/desktop/seccng/cng-portal)
 
 伺服器端加密不會影響受控磁片的效能，也不會產生額外的費用。 
 
@@ -58,7 +58,7 @@ Azure 受控磁碟中的資料會使用 256 位元的 [AES 加密](https://en.wi
 
 [!INCLUDE [virtual-machines-disks-encryption-at-host-restrictions](../../../includes/virtual-machines-disks-encryption-at-host-restrictions.md)]
 
-#### <a name="supported-regions"></a>支援的區域
+#### <a name="supported-regions"></a>支援區域
 
 [!INCLUDE [virtual-machines-disks-encryption-at-host-regions](../../../includes/virtual-machines-disks-encryption-at-host-regions.md)]
 
@@ -70,7 +70,7 @@ Azure 受控磁碟中的資料會使用 256 位元的 [AES 加密](https://en.wi
 
 擔心與任何特定加密演算法、執行或金鑰相關聯之風險的高安全性敏感性客戶，現在可以選擇使用平臺管理的加密金鑰，在基礎結構層使用不同的加密演算法/模式來進行額外的加密層級。 這個新的層級可以套用到磁片、快照集和映射，這些都是使用雙重加密進行待用加密。
 
-### <a name="supported-regions"></a>支援的區域
+### <a name="supported-regions"></a>支援區域
 
 [!INCLUDE [virtual-machines-disks-double-encryption-at-rest-regions](../../../includes/virtual-machines-disks-double-encryption-at-rest-regions.md)]
 
@@ -84,4 +84,4 @@ Azure 受控磁碟中的資料會使用 256 位元的 [AES 加密](https://en.wi
 - [針對受控磁片啟用雙重加密待用-CLI](disks-enable-double-encryption-at-rest-cli.md)
 - [啟用受控磁片的客戶管理金鑰-CLI](disks-enable-customer-managed-keys-cli.md)
 - [啟用受控磁片的客戶管理金鑰-入口網站](disks-enable-customer-managed-keys-portal.md)
-- [什麼是 Azure Key Vault？](../../key-vault/general/overview.md)
+- [什麼是 Azure 金鑰保存庫？](../../key-vault/general/overview.md)

@@ -8,11 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 15118c9c3d2d1a528c62b539ab7bdd8f174c19de
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 49918335dc6855726e7d8de15c01a5f15280af08
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85080112"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503212"
 ---
 # <a name="sentiment-cognitive-skill"></a>情感認知技能
 
@@ -35,20 +36,20 @@ Microsoft.Skills.Text.SentimentSkill
 
 這些參數會區分大小寫。
 
-| 參數名稱 |                      |
+| 參數名稱 | 描述 |
 |----------------|----------------------|
 | `defaultLanguageCode` | (選用) 要套用至未明確指定語言之文件的語言代碼。 <br/> 請參閱[支援語言的完整清單](../cognitive-services/text-analytics/text-analytics-supported-languages.md) |
 
 ## <a name="skill-inputs"></a>技能輸入 
 
-| 輸入名稱 | Description |
+| 輸入名稱 | 描述 |
 |--------------------|-------------|
 | `text` | 要分析的文字。|
 | `languageCode`    |  (選用) 此字串表示記錄的語言。 如果未指定此屬性，則預設值為 "en"。 <br/>請參閱[支援語言的完整清單](../cognitive-services/text-analytics/text-analytics-supported-languages.md)。|
 
 ## <a name="skill-outputs"></a>技能輸出
 
-| 輸出名稱 | Description |
+| 輸出名稱 | 描述 |
 |--------------------|-------------|
 | `score` | 介於 0 與 1 之間的值代表所分析文字的情感。 接近 0 的值具有負面情感、接近 0.5 的值具有中性情感，而接近 1 的值具有正面情感。|
 
@@ -109,7 +110,7 @@ Microsoft.Skills.Text.SentimentSkill
 }
 ```
 
-## <a name="notes"></a>備註
+## <a name="notes"></a>備忘稿
 如果是空的，這些記錄不會傳回情感分數。
 
 ## <a name="error-cases"></a>錯誤案例

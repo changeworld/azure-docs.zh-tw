@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/26/2020
-ms.openlocfilehash: c93ba19cc70aa6b5df054dcc2e7e06885b02d661
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e6ecd40d34233ba6f0b886f4b55aedf4339bf6de
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85367949"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505188"
 ---
 # <a name="delete-and-recover-azure-log-analytics-workspace"></a>刪除和復原 Azure Log Analytics 工作區
 
@@ -41,7 +41,7 @@ ms.locfileid: "85367949"
 > [!NOTE] 
 > 在刪除時，已安裝的解決方案和連結的服務 (例如 Azure 自動化帳戶) 會從工作區中永久移除，且無法復原。 在進行復原作業後應重新設定這些項目，才能讓工作區進入其先前設定的狀態。
 
-您可以使用 [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/remove-azurermoperationalinsightsworkspace?view=azurermps-6.13.0)、[REST API](https://docs.microsoft.com/rest/api/loganalytics/workspaces/delete) 或 [Azure 入口網站](https://portal.azure.com)來刪除工作區。
+您可以使用 [PowerShell](/powershell/module/azurerm.operationalinsights/remove-azurermoperationalinsightsworkspace?view=azurermps-6.13.0)、[REST API](/rest/api/loganalytics/workspaces/delete) 或 [Azure 入口網站](https://portal.azure.com)來刪除工作區。
 
 ### <a name="azure-portal"></a>Azure 入口網站
 
@@ -64,10 +64,10 @@ PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-
 > [!IMPORTANT]
 > 請小心使用永久刪除工作區作業，此作業無法復原，而且您將無法復原工作區和其資料。
 
-新增 '-force ' 標記以永久刪除您的工作區：
+新增 '-forceDelete ' 標記來永久刪除您的工作區：
 
 ```powershell
-PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-name" -Name "workspace-name" -Force
+PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-name" -Name "workspace-name" -ForceDelete
 ```
 
 ## <a name="recover-workspace"></a>復原工作區
@@ -112,6 +112,6 @@ PS C:\>New-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-nam
 * 如果您在建立工作區時收到錯誤訊息「此工作區名稱已在使用中」或「衝突」，可能是因為：
   * 工作區名稱無法使用，組織中的某人或其他客戶正在使用中。
   * 工作區已在最近 14 天內刪除，而其名稱已針對虛刪除期間保留起來。 若要覆寫虛刪除並永久刪除工作區以使用相同名稱建立新的工作區，請遵循下列步驟先復原工作區，然後執行永久刪除：<br>
-     1. [復原](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#recover-workspace)您的工作區。
-     2. [永久刪除](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#permanent-workspace-delete)您的工作區。
+     1. [復原](#recover-workspace)您的工作區。
+     2. [永久刪除](#permanent-workspace-delete)您的工作區。
      3. 使用相同工作區名稱建立新的工作區。

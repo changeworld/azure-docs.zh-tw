@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 46716cf5bd810225cbfc3b54d246917c9559f78f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0ff76ea3bd39f31880d0140e182ad99f293689e6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85124454"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505358"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-classic-cloud-services"></a>將客體作業系統計量傳送至 Azure 監視器計量存放區的傳統雲端服務 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-您可以使用 Azure 監視器[診斷擴充功能](diagnostics-extension-overview.md)，從當作虛擬機器、雲端服務或 Service Fabric 叢集一部分執行的客體作業系統 (客體 OS) 收集計量與記錄。 擴充功能可以將遙測資料傳送到[許多不同位置](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json)。
+您可以使用 Azure 監視器[診斷擴充功能](diagnostics-extension-overview.md)，從當作虛擬機器、雲端服務或 Service Fabric 叢集一部分執行的客體作業系統 (客體 OS) 收集計量與記錄。 擴充功能可以將遙測資料傳送到[許多不同位置](./data-platform.md?toc=/azure/azure-monitor/toc.json)。
 
 本文說明將 Azure 傳統雲端服務的客體 OS 效能計量傳送至 Azure 監視器計量存放區的程序。 從診斷 1.11 版開始，您可以直接將計量寫入到已收集標準平台計量的 Azure 監視器計量存放區。 
 
@@ -26,13 +26,13 @@ ms.locfileid: "85124454"
 
 本文中所述的程序僅適用於 Azure 雲端服務中的效能計數器。 不適合用於其他自訂計量。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 - 您必須是 Azure 訂用帳戶的[服務管理員或共同管理員](../../cost-management-billing/manage/add-change-subscription-administrator.md)。 
 
-- 您必須先向 [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services) 註冊您的訂用帳戶。 
+- 您必須先向 [Microsoft.Insights](../../azure-resource-manager/management/resource-providers-and-types.md) 註冊您的訂用帳戶。 
 
-- 您需要安裝 [Azure PowerShell](/powershell/azure) 或 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)。
+- 您需要安裝 [Azure PowerShell](/powershell/azure) 或 [Azure Cloud Shell](../../cloud-shell/overview.md)。
 
 - 您的雲端服務必須位於[支援自訂計量的區域](metrics-custom-overview.md#supported-regions)中。
 
@@ -46,7 +46,7 @@ ms.locfileid: "85124454"
 
 ## <a name="create-a-service-principal"></a>建立服務主體 
 
-使用[使用入口網站建立可存取資源的 Azure Active Directory 應用程式和服務主體](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)中的指示，在您的 Azure Active Directory 租使用者中建立服務主體。 進行此流程時，請注意下列事項： 
+使用[使用入口網站建立可存取資源的 Azure Active Directory 應用程式和服務主體](../../active-directory/develop/howto-create-service-principal-portal.md)中的指示，在您的 Azure Active Directory 租使用者中建立服務主體。 進行此流程時，請注意下列事項： 
 
 - 您可以將任何 URL 填入為登入 URL。  
 - 為此應用程式建立新用戶端密碼。  
@@ -171,7 +171,7 @@ Set-AzureServiceDiagnosticsExtension -ServiceName <classicCloudServiceName> -Sto
 
 ## <a name="plot-metrics-in-the-azure-portal"></a>在 Azure 入口網站中繪製計量 
 
-1. 移至 Azure 入口網站。 
+1. 前往 Azure 入口網站。 
 
    ![計量 Azure 入口網站](./media/collect-custom-metrics-guestos-vm-cloud-service-classic/navigate-metrics.png)
 
@@ -192,4 +192,3 @@ Set-AzureServiceDiagnosticsExtension -ServiceName <classicCloudServiceName> -Sto
 ## <a name="next-steps"></a>後續步驟
 
 - 深入了解[自訂計量](metrics-custom-overview.md)。
-

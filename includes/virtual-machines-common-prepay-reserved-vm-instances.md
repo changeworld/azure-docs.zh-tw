@@ -3,13 +3,13 @@ author: yashesvi
 ms.author: banders
 ms.service: virtual-machines-windows
 ms.topic: include
-ms.date: 03/27/2020
-ms.openlocfilehash: d41affc55134ad34c325c12ab4a14f4013c58f9e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/15/2020
+ms.openlocfilehash: 2fda9c41efd4c6765681d98011d8fb890b09d19f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80371656"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502041"
 ---
 當您認可至 Azure 保留的 VM 實例時，可以節省成本。 保留項目折扣會自動套用到符合保留項目範圍和屬性之執行中虛擬機器的數目。 您不需要將保留指派給虛擬機器來取得折扣。 保留實例購買僅涵蓋 VM 使用量的計算部分。 對於 Windows Vm，使用量計量會分割成兩個不同的計量。 有一個計算計量器，它與 Linux 計量和 Windows IP 計量器相同。 當您進行購買時，您所看到的費用僅限於計算成本。 費用並不包含 Windows 軟體成本。 如需軟體成本的詳細資訊，請參閱[不包含在 Azure 保留的 VM 執行個體中的軟體成本](../articles/cost-management-billing/reservations/reserved-instance-windows-software-costs.md)。
 
@@ -84,7 +84,7 @@ ms.locfileid: "80371656"
 - 針對 EA 訂用帳戶，必須在[EA 入口網站](https://ea.azure.com/)中啟用 [**新增保留實例**] 選項。 或者，如果該設定已停用，則您必須是訂用帳戶的 EA 管理員。
 - 針對雲端解決方案提供者 (CSP) 程式，只有系統管理員代表或銷售代表可以購買保留項目。
 
-若要購買執行個體：
+購買執行個體：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 1. 選取 [所有服務] > [保留]。
@@ -101,7 +101,7 @@ ms.locfileid: "80371656"
 |區域    |保留所涵蓋的 Azure 區域。|    
 |VM 大小     |VM 執行個體的大小。|
 |已針對下列項目最佳化     |預設會選取 VM 實例大小彈性。 按一下 [**高級設定**] 來變更 [實例大小彈性] 值，以將保留折扣套用至相同[VM 大小群組](../articles/virtual-machines/windows/reserved-vm-instance-size-flexibility.md)中的其他 vm。 容量優先順序會讓資料中心容量供您的部署優先使用。 它讓您在需要時能夠更安心地啟動 VM 實例。 保留項目範圍是單一訂用帳戶時，才可使用容量優先順序。 |
-|詞彙        |一年或三年。|
+|詞彙        |一年或三年。 此外，也有5年的期限僅適用于 HBv2 Vm。|
 |數量    |保留項目內所購買的執行個體數目。 數量是可以取得帳單折扣之執行中 VM 執行個體的數目。 例如，如果您在美國東部執行10個 Standard_D2 的 Vm，則您會將數量指定為10，以最大化所有執行中 Vm 的權益。 |
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2PjmT]

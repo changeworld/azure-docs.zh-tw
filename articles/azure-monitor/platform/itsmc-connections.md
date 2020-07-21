@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/12/2020
-ms.openlocfilehash: c09d8d9fd2ef22aeaf791ae44d877a87033318cc
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 7baabe455128bf420a3c3e11ea83bb5357ed35c8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655905"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505154"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>將 ITSM 產品/服務與 IT Service Management Connector 連線
 本文提供如何設定 ITSM 產品/服務與 Log Analytics 中 IT Service Management Connector (ITSMC) 之間的連線，以集中管理工作項目的相關資訊。 如需 ITSMC 的詳細資訊，請參閱[概觀](../../azure-monitor/platform/itsmc-overview.md)。
@@ -38,7 +39,7 @@ ms.locfileid: "83655905"
 - 已部署及設定 Service Manager Web 應用程式 (Web 應用程式)。 Web 應用程式的相關在[這裡](#create-and-deploy-service-manager-web-app-service)。
 - 已建立及設定的混合式連線。 詳細資訊：[設定混合式連線](#configure-the-hybrid-connection)。
 - Service Manager 的支援版本：2012 R2 或 2016。
-- 使用者角色：[進階操作員](https://technet.microsoft.com/library/ff461054.aspx)。
+- 使用者角色：[進階操作員](/previous-versions/system-center/service-manager-2010-sp1/ff461054(v=technet.10))。
 
 ### <a name="connection-procedure"></a>連線程序
 
@@ -200,7 +201,7 @@ ms.locfileid: "83655905"
 > 結束時，按一下 [更新]。
 > 2) **我們建議您建立內部程序，以確保連線保持運作：** 根據重新整理權杖有效期重新整理權杖。 請務必在重新整理權杖預期的到期時間之前執行下列作業 (我們建議在重新整理權杖有效期到期的前幾天這樣做)：
 >
-> 1. [完成 ITSM 連接器組態的手動同步程序](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-resync-servicenow)
+> 1. [完成 ITSM 連接器組態的手動同步程序](./itsmc-resync-servicenow.md)
 > 2. 撤銷舊的重新整理權杖，因為基於安全考慮，不建議保留舊的金鑰。 在 ServiceNow 刀鋒視窗中搜尋系統 OAuth，而非選取 [管理權杖]。 根據 OAuth 名稱和到期日，從清單中挑選舊的權杖。
 > ![SNOW 系統 OAuth 定義](media/itsmc-connections/snow-system-oauth.png)
 > 3. 按一下 [撤銷存取權]，而非按一下 [撤銷]。
@@ -247,6 +248,10 @@ ms.locfileid: "83655905"
 - 您可以在這個 ServiceNow 執行個體中建立來自 Log Analytics 警示、記錄檔記錄或 Azure 警示的事件。
 
 深入了解：[從 Azure 警示建立 ITSM 工作項目](../../azure-monitor/platform/itsmc-overview.md#create-itsm-work-items-from-azure-alerts)。
+
+
+> [!NOTE]
+> 在 ServiceNow 中，每小時要求會有速率限制。 若要設定此限制，請在 ServiceNow 實例中定義「輸入 REST API 速率限制」來使用。
 
 ### <a name="create-integration-user-role-in-servicenow-app"></a>在 ServiceNow 應用程式中建立整合使用者角色
 
