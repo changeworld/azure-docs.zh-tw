@@ -3,12 +3,12 @@ title: 常見問題集 - Azure 事件中樞 | Microsoft Docs
 description: 本文提供 Azure 事件中樞的常見問題集 (FAQ) 清單及其答案。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 0094be0eef4595662477ef1c7914ae9f118b8e25
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bec50da97bc826eb1bd26452e8f69f5c11f2d65d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85320578"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537175"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>事件中樞常見問題集
 
@@ -261,7 +261,7 @@ bootstrap.servers=dummynamespace.servicebus.windows.net:9093 request.timeout.ms=
 
 ### <a name="support-and-sla"></a>支援與 SLA
 
-事件中樞的技術支援可透過 [Azure 服務匯流排的 Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-service-bus.html)取得。 計費及訂用帳戶管理支援均為免費提供。
+事件中樞的技術支援可透過 [Azure 服務匯流排的 Microsoft 問與答頁面](/answers/topics/azure-service-bus.html)取得。 計費及訂用帳戶管理支援均為免費提供。
 
 若要深入了解 SLA，請參閱[服務等級協定](https://azure.microsoft.com/support/legal/sla/)頁面。
 
@@ -269,6 +269,6 @@ bootstrap.servers=dummynamespace.servicebus.windows.net:9093 request.timeout.ms=
 
 您可以造訪下列連結以深入了解事件中樞︰
 
-* [事件中心概觀](event-hubs-what-is-event-hubs.md)
+* [事件中心概觀](./event-hubs-about.md)
 * [建立事件中樞](event-hubs-create.md)
 * [事件中樞自動擴大](event-hubs-auto-inflate.md)

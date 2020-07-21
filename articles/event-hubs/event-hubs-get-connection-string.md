@@ -3,12 +3,12 @@ title: 取得連接字串 - Azure 事件中樞 | Microsoft Docs
 description: 本文提供指示，說明如何取得可供用戶端連線至「Azure 事件中樞」的連接字串。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 271d4dcc1f2fab08dc7f625ce36e021eda225b87
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5ae6c66ddbbf4b9946e7037e1a7723043bf60507
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85320488"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537168"
 ---
 # <a name="get-an-event-hubs-connection-string"></a>取得事件中樞連接字串
 
@@ -73,5 +73,5 @@ az eventhubs eventhub authorization-rule keys list --resource-group dummyresourc
 
 您可以造訪下列連結以深入了解事件中樞︰
 
-* [事件中心概觀](event-hubs-what-is-event-hubs.md)
+* [事件中心概觀](./event-hubs-about.md)
 * [建立事件中樞](event-hubs-create.md)

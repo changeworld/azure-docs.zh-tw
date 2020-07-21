@@ -3,12 +3,12 @@ title: 使用 Azure Active Directory 驗證受控識別
 description: 本文提供的資訊說明如何使用 Azure Active Directory 來驗證受控識別，以存取 Azure 事件中樞資源
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 4e9bfb9c4649732ac5afc80dfb0a522ff9f333be
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e3460fa4fc3807cda23d6e3835a9f0b843eb36d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85318091"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537270"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-event-hubs-resources"></a>使用 Azure Active Directory 來驗證受控識別，以存取事件中樞資源
 Azure 事件中樞支援使用[Azure 資源的受控識別進行](../active-directory/managed-identities-azure-resources/overview.md)Azure Active Directory （Azure AD）驗證。 適用于 Azure 資源的受控識別可以使用在 Azure 虛擬機器（Vm）、函式應用程式、虛擬機器擴展集及其他服務中執行的應用程式 Azure AD 認證，來授權事件中樞資源的存取權。 藉由使用適用于 Azure 資源的受控識別搭配 Azure AD authentication，您可以避免將認證儲存在雲端中執行的應用程式。
@@ -18,7 +18,7 @@ Azure 事件中樞支援使用[Azure 資源的受控識別進行](../active-dire
 ## <a name="enable-managed-identities-on-a-vm"></a>在 VM 上啟用受控識別
 您必須先在 VM 上啟用 Azure 資源的受控識別，才可以使用 Azure 資源的受控識別來授權 VM 的事件中樞資源。 若要了解如何啟用 Azure 資源的受控識別，請參閱下列其中一篇文章：
 
-- [Azure 入口網站](../active-directory/managed-service-identity/qs-configure-portal-windows-vm.md)
+- [Azure 入口網站](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
 - [Azure PowerShell](../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
 - [Azure CLI](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
 - [Azure Resource Manager 範本](../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
@@ -54,7 +54,7 @@ Azure 事件中樞支援使用[Azure 資源的受控識別進行](../active-dire
 
 1. 在 [Azure 入口網站中，流覽至您的事件中樞命名空間，並顯示命名空間的**總覽**。 
 1. 選取左側功能表上的 **[存取控制（IAM）** ]，以顯示事件中樞的存取控制設定。
-1.  選取 [角色指派]  索引標籤，以查看角色指派的清單。
+1.  選取 [角色指派] 索引標籤，以查看角色指派的清單。
 3.  選取 **[新增]** 以新增角色。
 4.  在 [**新增角色指派**] 頁面上，選取您要指派的事件中樞角色。 然後搜尋以找出您已註冊來指派角色的服務身分識別。
     

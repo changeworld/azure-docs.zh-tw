@@ -1,16 +1,16 @@
 ---
-title: 在 Azure DevTest Labs 虛擬機器上啟用瀏覽器連接 |Microsoft Docs
+title: 在 Azure DevTest Labs 虛擬機器上啟用瀏覽器連接
 description: DevTest Labs 現在與 Azure 防禦整合，身為實驗室的擁有者，您可以啟用透過瀏覽器存取所有實驗室虛擬機器的程式。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 23fb43fa7295006d8d3784d1dbb5d80c48411431
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2ff55aa033ee9a024c8bc89cc9d39bc8d3ad25da
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85484123"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537519"
 ---
-# <a name="enable-browser-connection-on-lab-virtual-machines"></a>在實驗室虛擬機器上啟用瀏覽器連接 
+# <a name="enable-browser-connection-on-azure-devtest-labs-virtual-machines"></a>在 Azure DevTest Labs 虛擬機器上啟用瀏覽器連接 
 DevTest Labs 與[Azure](https://docs.microsoft.com/azure/bastion/)防禦整合，可讓您透過瀏覽器連接到您的虛擬機器。 您必須先在實驗室虛擬機器上啟用瀏覽器連線。
 
 身為實驗室的擁有者，您可以啟用透過瀏覽器存取所有實驗室虛擬機器的程式。 不需要額外用戶端、代理程式或軟體。 Azure 防禦可透過 TLS 直接在 Azure 入口網站中，為您的虛擬機器提供安全且順暢的 RDP/SSH 連線能力。 當您透過 Azure 防禦進行連接時，您的虛擬機器不需要公用 IP 位址。 如需詳細資訊，請參閱[什麼是 Azure 防禦？](../bastion/bastion-overview.md)
@@ -18,7 +18,7 @@ DevTest Labs 與[Azure](https://docs.microsoft.com/azure/bastion/)防禦整合�
 
 本文說明如何在實驗室虛擬機器上啟用瀏覽器連線。
 
-## <a name="prerequisites"></a>必要條件 
+## <a name="prerequisites"></a>先決條件 
 在現有實驗室的虛擬網路中部署防禦主機 **（或）** 將您的實驗室與防禦設定的虛擬網路連線。 
 
 若要瞭解如何在虛擬網路中部署防禦主機，請參閱[建立 Azure 防禦主機](../bastion/bastion-create-host-portal.md)。 建立防禦主機時，請選取實驗室的虛擬網路。 

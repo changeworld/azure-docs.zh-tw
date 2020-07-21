@@ -3,11 +3,12 @@ title: MARS 代理程式的支援矩陣
 description: 本文摘要說明當您備份執行 Microsoft Azure 復原服務（MARS）代理程式的電腦時的 Azure 備份支援。
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: 6085bc647c06b5907282460a2d8706b8549e1bc2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5ff9510dfa31bb947d50b1a91fb7f73c2d767471
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84709873"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538644"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>使用 Microsoft Azure 復原服務 (MARS) 代理程式進行備份的支援矩陣
 
@@ -29,7 +30,7 @@ Azure 備份使用 MARS 代理程式，將資料從內部部署機器和 Azure V
 **安裝** | **詳細資料**
 --- | ---
 下載最新的 MARS 代理程式 | 您可以從保存庫或[從這裡直接下載](https://aka.ms/azurebackup_agent)最新版本的代理程式。
-直接在機器上安裝 | 您可以直接在內部部署 Windows 伺服器或執行任何[支援作業系統](https://docs.microsoft.com/azure/backup/backup-support-matrix-mabs-dpm#supported-mabs-and-dpm-operating-systems)的 windows VM 上安裝 MARS 代理程式。
+直接在機器上安裝 | 您可以直接在內部部署 Windows 伺服器或執行任何[支援作業系統](./backup-support-matrix-mabs-dpm.md#supported-mabs-and-dpm-operating-systems)的 windows VM 上安裝 MARS 代理程式。
 在備份伺服器上安裝 | 當您將 DPM 或 MABS 設定為備份至 Azure 時，您可以在伺服器上下載並安裝 MARS 代理程式。 您可以在備份伺服器支援矩陣中，將代理程式安裝在[支援的作業系統](backup-support-matrix-mabs-dpm.md#supported-mabs-and-dpm-operating-systems)上。
 
 > [!NOTE]
@@ -40,10 +41,10 @@ Azure 備份使用 MARS 代理程式，將資料從內部部署機器和 Azure V
 
 當您使用 MARS 代理程式來備份資料時，代理程式會取得資料的快照集，並將它儲存在本機快取資料夾中，然後再將資料傳送至 Azure。 快取（臨時）資料夾有數個需求：
 
-**Cache** | **詳細資料**
+**快取** | **詳細資料**
 --- | ---
 大小 |  快取資料夾中的可用空間至少應為備份資料整體大小的5% 到10%。
-位置 | 快取資料夾必須存放在要備份的電腦上，而且必須在線上。 快取資料夾不可以在網路共用、卸載式媒體或離線磁片區上。
+Location | 快取資料夾必須存放在要備份的電腦上，而且必須在線上。 快取資料夾不可以在網路共用、卸載式媒體或離線磁片區上。
 資料夾 | 快取資料夾不應在已重復資料刪除的磁片區上，或在已壓縮、稀疏或具有重新分析點的資料夾中進行加密。
 位置變更 | 您可以藉由停止備份引擎（）並將快取 `net stop bengine` 資料夾複製到新的磁片磁碟機，來變更快取位置。 （請確認新的磁片磁碟機具有足夠的空間。）然後將**HKLM\SOFTWARE\Microsoft\Windows Azure 備份**（**config/ScratchLocation**和**config/CloudBackupProvider/ScratchLocation**）下的兩個登錄專案更新為新位置，然後重新開機引擎。
 
@@ -84,7 +85,7 @@ MARS 伺服器需要存取這些 URL：
 - Microsoft Azure 區域（根據復原服務保存庫的位置）
 - Azure 儲存體（根據您的復原服務保存庫的位置）
 
-如需詳細資訊，請參閱[ExpressRoute 路由需求](https://docs.microsoft.com/azure/expressroute/expressroute-routing)。
+如需詳細資訊，請參閱[ExpressRoute 路由需求](../expressroute/expressroute-routing.md)。
 
 >[!NOTE]
 >新線路的公用對等互連已被取代。
@@ -113,11 +114,11 @@ MARS 伺服器需要存取這些 URL：
 Windows 10 (企業版、專業版、家用版) | 是 | 否 |  檢查對應的伺服器版本是否有軟體/模組需求
 Windows 8.1 (企業版、專業版)| 是 |否 | 檢查對應的伺服器版本是否有軟體/模組需求
 Windows 8 (企業版、專業版) | 是 | 否 | 檢查對應的伺服器版本是否有軟體/模組需求
-Windows Server 2016 (Standard、Datacenter、Essentials) | Yes | 是 | -.NET 4。5 <br> -Windows PowerShell <br> -最新相容的 Microsoft VC + + 可轉散發套件 <br> -Microsoft Management Console （MMC）3。0
-Windows Server 2012 R2(Standard、Datacenter、Essentials) | Yes | 是 | -.NET 4。5 <br> -Windows PowerShell <br> -最新相容的 Microsoft VC + + 可轉散發套件 <br> -Microsoft Management Console （MMC）3。0
-Windows Server 2012 (Standard、Datacenter、Essentials) | Yes | 是 |-.NET 4。5 <br> -Windows PowerShell <br> -最新相容的 Microsoft VC + + 可轉散發套件 <br> -Microsoft Management Console （MMC）3。0 <br> -部署映射服務與管理（DISM.exe）
+Windows Server 2016 (Standard、Datacenter、Essentials) | 是 | 是 | -.NET 4。5 <br> -Windows PowerShell <br> -最新相容的 Microsoft VC + + 可轉散發套件 <br> -Microsoft Management Console （MMC）3。0
+Windows Server 2012 R2(Standard、Datacenter、Essentials) | 是 | 是 | -.NET 4。5 <br> -Windows PowerShell <br> -最新相容的 Microsoft VC + + 可轉散發套件 <br> -Microsoft Management Console （MMC）3。0
+Windows Server 2012 (Standard、Datacenter、Essentials) | 是 | 是 |-.NET 4。5 <br> -Windows PowerShell <br> -最新相容的 Microsoft VC + + 可轉散發套件 <br> -Microsoft Management Console （MMC）3。0 <br> -部署映射服務與管理（DISM.exe）
 Windows Storage Server 2016/2012 R2/2012 （Standard、Workgroup） | 是 | 否 | -.NET 4。5 <br> -Windows PowerShell <br> -最新相容的 Microsoft VC + + 可轉散發套件 <br> -Microsoft Management Console （MMC）3。0
-Windows Server 2019 (Standard、Datacenter、Essentials) | Yes | 是 | -.NET 4。5 <br> -Windows PowerShell <br> -最新相容的 Microsoft VC + + 可轉散發套件 <br> -Microsoft Management Console （MMC）3。0
+Windows Server 2019 (Standard、Datacenter、Essentials) | 是 | 是 | -.NET 4。5 <br> -Windows PowerShell <br> -最新相容的 Microsoft VC + + 可轉散發套件 <br> -Microsoft Management Console （MMC）3。0
 
 如需詳細資訊，請參閱[支援的 MABS 和 DPM 作業系統](backup-support-matrix-mabs-dpm.md#supported-mabs-and-dpm-operating-systems)。
 
@@ -127,12 +128,12 @@ Windows Server 2019 (Standard、Datacenter、Essentials) | Yes | 是 | -.NET 4�
 
 如果現有的承諾無法升級作業系統，請考慮將 Windows 伺服器遷移至 Azure Vm，並利用 Azure VM 備份繼續保持受保護狀態。 如需有關遷移 Windows server 的詳細資訊，請流覽這裡的「[遷移」頁面](https://azure.microsoft.com/migration/windows-server/)。
 
-針對您無法升級作業系統或遷移至 Azure 的內部部署或託管環境，請為機器啟動擴充安全性更新，以繼續保持受保護並受支援。 請注意，只有特定版本才符合擴充安全性更新的資格。 若要深入瞭解，請流覽[常見問題頁面](https://www.microsoft.com/cloud-platform/extended-security-updates)。
+針對您無法升級作業系統或遷移至 Azure 的內部部署或託管環境，請為機器啟動擴充安全性更新，以繼續保持受保護並受支援。 請注意，只有特定版本才符合擴充安全性更新的資格。 若要深入瞭解，請流覽[常見問題頁面](https://www.microsoft.com/windows-server/extended-security-updates)。
 
 | **作業系統**                                       | **檔案/資料夾** | **系統狀態** | **軟體/模組需求**                           |
 | ------------------------------------------------------------ | ----------------- | ------------------ | ------------------------------------------------------------ |
 | Windows 7 （旗艦版、企業版、專業版、家用 Premium/Basic、Starter） | 是               | 否                 | 檢查對應的伺服器版本是否有軟體/模組需求 |
-| Windows Server 2008 R2 （Standard、Enterprise、Datacenter、Foundation） | Yes               | 是                | -.NET 3.5、.NET 4。5 <br>  -Windows PowerShell <br>  -相容的 Microsoft VC + + 可轉散發套件 <br>  -Microsoft Management Console （MMC）3。0 <br>  -部署映射服務與管理（DISM.exe） |
+| Windows Server 2008 R2 （Standard、Enterprise、Datacenter、Foundation） | 是               | 是                | -.NET 3.5、.NET 4。5 <br>  -Windows PowerShell <br>  -相容的 Microsoft VC + + 可轉散發套件 <br>  -Microsoft Management Console （MMC）3。0 <br>  -部署映射服務與管理（DISM.exe） |
 | Windows Server 2008 SP2 （Standard、Datacenter、Foundation）  | 是               | 否                 | -.NET 3.5、.NET 4。5 <br>  -Windows PowerShell <br>  -相容的 Microsoft VC + + 可轉散發套件 <br>  -Microsoft Management Console （MMC）3。0 <br>  -部署映射服務與管理（DISM.exe） <br>  -Virtual Server 2005 基底 + KB KB948515 |
 
 ## <a name="backup-limits"></a>備份限制
@@ -155,13 +156,13 @@ Windows 7| 1,700 GB
 
 ## <a name="supported-file-types-for-backup"></a>支援的備份檔案類型
 
-**型別** | **支援**
+**類型** | **支援**
 --- | ---
 加密<sup>*</sup>| 支援。
 Compressed | 支援。
 疏鬆 | 支援。
 已壓縮和疏鬆 |支援。
-永久連結| 不支援。 略.
+硬式連結| 不支援。 略.
 重新分析點| 不支援。 略.
 加密和疏鬆 |不支援。 略.
 壓縮資料流| 不支援。 略.

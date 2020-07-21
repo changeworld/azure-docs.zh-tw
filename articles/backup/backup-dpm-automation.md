@@ -3,11 +3,12 @@ title: 使用 PowerShell 備份 DPM 工作負載
 description: 了解如何使用 PowerShell 部署和管理 Data Protection Manager (DPM) 的 Azure 備份
 ms.topic: conceptual
 ms.date: 01/23/2017
-ms.openlocfilehash: bbd03c17f9f46494d6fadb64e1d059d1b81cd9ac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4d8b8f6ca233c997bc2a94f88903d14009481d37
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84234631"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538848"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-data-protection-manager-dpm-servers-using-powershell"></a>使用 PowerShell 部署和管理 Data Protection Manager (DPM) 伺服器的 Azure 備份
 
@@ -68,7 +69,7 @@ PowerShell 可以自動化下列設定和註冊工作：
     New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName " test-rg" -Location "West US"
     ```
 
-4. 指定要使用的儲存體多餘類型;您可以使用[本機多餘的儲存體（LRS）](../storage/common/storage-redundancy-lrs.md)或[異地多餘儲存體（GRS）](../storage/common/storage-redundancy-grs.md)。 以下範例示範 testVault 設定為 GeoRedundant 的 BackupStorageRedundancy 選項。
+4. 指定要使用的儲存體多餘類型;您可以使用[本機多餘的儲存體（LRS）](../storage/common/storage-redundancy.md)或[異地多餘儲存體（GRS）](../storage/common/storage-redundancy.md)。 以下範例示範 testVault 設定為 GeoRedundant 的 BackupStorageRedundancy 選項。
 
    > [!TIP]
    > 許多 Azure 備份 Cmdlet 都需要將復原服務保存庫物件當做輸入。 基於這個理由，將備份復原服務保存庫物件儲存在變數中會是方便的做法。
@@ -153,7 +154,7 @@ $credsfilename
 C:\downloads\testvault\_Sun Apr 10 2016.VaultCredentials
 ```
 
-在 DPM 伺服器上，執行 [Start-OBRegistration](https://docs.microsoft.com/powershell/module/msonlinebackup/start-obregistration) Cmdlet 以向保存庫註冊電腦。
+在 DPM 伺服器上，執行 [Start-OBRegistration](/powershell/module/msonlinebackup/start-obregistration) Cmdlet 以向保存庫註冊電腦。
 
 ```powershell
 $cred = $credspath + $credsfilename
@@ -170,13 +171,13 @@ Machine registration succeeded.
 
 ### <a name="initial-configuration-settings"></a>初始組態設定
 
-一旦向復原服務保存庫註冊 DPM 伺服器，就會使用預設的訂用帳戶設定開始。 這些訂用帳戶設定包括網路、加密和臨時區域。 若要變更訂用帳戶設定，您需要先使用 [Get-DPMCloudSubscriptionSetting](https://docs.microsoft.com/powershell/module/dataprotectionmanager/get-dpmcloudsubscriptionsetting?view=systemcenter-ps-2019) Cmdlet 取得現有 (預設) 設定上的控制代碼：
+一旦向復原服務保存庫註冊 DPM 伺服器，就會使用預設的訂用帳戶設定開始。 這些訂用帳戶設定包括網路、加密和臨時區域。 若要變更訂用帳戶設定，您需要先使用 [Get-DPMCloudSubscriptionSetting](/powershell/module/dataprotectionmanager/get-dpmcloudsubscriptionsetting?view=systemcenter-ps-2019) Cmdlet 取得現有 (預設) 設定上的控制代碼：
 
 ```powershell
 $setting = Get-DPMCloudSubscriptionSetting -DPMServerName "TestingServer"
 ```
 
-所有修改都會對此本機 PowerShell 物件 ```$setting``` 進行，然後使用 [Set-DPMCloudSubscriptionSetting](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmcloudsubscriptionsetting?view=systemcenter-ps-2019) Cmdlet 將完整物件認可到 DPM 和 Azure 備份以加以儲存。 您必須使用 ```–Commit``` 旗標，以確保會保存所做的變更。 除非已認可，否則 Azure 備份將不會套用並使用設定。
+所有修改都會對此本機 PowerShell 物件 ```$setting``` 進行，然後使用 [Set-DPMCloudSubscriptionSetting](/powershell/module/dataprotectionmanager/set-dpmcloudsubscriptionsetting?view=systemcenter-ps-2019) Cmdlet 將完整物件認可到 DPM 和 Azure 備份以加以儲存。 您必須使用 ```–Commit``` 旗標，以確保會保存所做的變更。 除非已認可，否則 Azure 備份將不會套用並使用設定。
 
 ```powershell
 Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSetting $setting -Commit
@@ -184,7 +185,7 @@ Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSett
 
 ## <a name="networking"></a>網路功能
 
-如果 DPM 機器對在網際網路上的 Azure 備份服務的連線是透過 Proxy 伺服器，則應該提供 Proxy 伺服器設定，備份才能成功。 這是使用 ```-ProxyServer```、```-ProxyPort```、```-ProxyUsername``` 及 ```ProxyPassword``` 參數搭配 [Set-DPMCloudSubscriptionSetting](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmcloudsubscriptionsetting?view=systemcenter-ps-2019) Cmdlet 來完成。 本範例未使用 Proxy 伺服器，因此會明確地清除任何 Proxy 相關資訊。
+如果 DPM 機器對在網際網路上的 Azure 備份服務的連線是透過 Proxy 伺服器，則應該提供 Proxy 伺服器設定，備份才能成功。 這是使用 ```-ProxyServer```、```-ProxyPort```、```-ProxyUsername``` 及 ```ProxyPassword``` 參數搭配 [Set-DPMCloudSubscriptionSetting](/powershell/module/dataprotectionmanager/set-dpmcloudsubscriptionsetting?view=systemcenter-ps-2019) Cmdlet 來完成。 本範例未使用 Proxy 伺服器，因此會明確地清除任何 Proxy 相關資訊。
 
 ```powershell
 Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSetting $setting -NoProxy
@@ -198,7 +199,7 @@ Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSett
 
 ## <a name="configuring-the-staging-area"></a>設定臨時區域
 
-在 DPM 伺服器上執行的 Azure 備份代理程式需要暫存儲存體，以供存放從雲端還原的資料 (本機臨時區域)。 使用 [Set-DPMCloudSubscriptionSetting](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmcloudsubscriptionsetting?view=systemcenter-ps-2019) Cmdlet 和 ```-StagingAreaPath``` 參數來設定臨時區域。
+在 DPM 伺服器上執行的 Azure 備份代理程式需要暫存儲存體，以供存放從雲端還原的資料 (本機臨時區域)。 使用 [Set-DPMCloudSubscriptionSetting](/powershell/module/dataprotectionmanager/set-dpmcloudsubscriptionsetting?view=systemcenter-ps-2019) Cmdlet 和 ```-StagingAreaPath``` 參數來設定臨時區域。
 
 ```powershell
 Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSetting $setting -StagingAreaPath "C:\StagingArea"
@@ -233,20 +234,20 @@ Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSett
 
 在本節中，您會將實際執行伺服器加入至 DPM，然後保護資料到本機 DPM 存放區，然後到 Azure 備份。 在範例中，我們將示範如何備份檔案和資料夾。 您可以輕鬆地運用同樣的觀念，來備份任何 DPM 支援的資料來源。 所有 DPM 備份皆受到保護群組 (PG) 所控管，並且由四個部分構成：
 
-1. **群組成員** 是您要在相同的保護群組中保護的所有可保護物件的清單 (在 DPM 中也稱為 *資料來源* )。 比方說，您可能想要保護一個保護群組的實際執行 VM 與另一個保護群組中的 SQL Server 資料庫，因為它們可能會有不同的備份需求。 在可以備份實際執行伺服器上的資料來源之前，您必須先確定 DPM 代理程式已安裝在伺服器上並受到 DPM 管理。 請遵循 [安裝 DPM 代理程式](https://docs.microsoft.com/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019) 的步驟，並將其連結至適當的 DPM 伺服器。
+1. **群組成員** 是您要在相同的保護群組中保護的所有可保護物件的清單 (在 DPM 中也稱為 *資料來源* )。 比方說，您可能想要保護一個保護群組的實際執行 VM 與另一個保護群組中的 SQL Server 資料庫，因為它們可能會有不同的備份需求。 在可以備份實際執行伺服器上的資料來源之前，您必須先確定 DPM 代理程式已安裝在伺服器上並受到 DPM 管理。 請遵循 [安裝 DPM 代理程式](/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019) 的步驟，並將其連結至適當的 DPM 伺服器。
 2. **資料保護方法** 指定目標備份位置 - 磁帶、磁碟和雲端。 在我們的範例中，我們將保護資料至本機磁碟以及雲端。
 3. **備份排程** 可指定何時需要進行備份，以及應該在 DPM 伺服器和實際執行伺服器之間同步處理資料的頻率。
 4. **保留排程** 可指定要在 Azure 中保留復原點多久時間。
 
 ### <a name="creating-a-protection-group"></a>建立保護群組
 
-從使用 [Add-DPMProtectionGroup](https://docs.microsoft.com/powershell/module/dataprotectionmanager/new-dpmprotectiongroup?view=systemcenter-ps-2019) Cmdlet 來建立新的保護群組開始。
+從使用 [Add-DPMProtectionGroup](/powershell/module/dataprotectionmanager/new-dpmprotectiongroup?view=systemcenter-ps-2019) Cmdlet 來建立新的保護群組開始。
 
 ```powershell
 $PG = New-DPMProtectionGroup -DPMServerName " TestingServer " -Name "ProtectGroup01"
 ```
 
-以上 Cmdlet 會建立名為 *ProtectGroup01*的保護群組。 也可以修改稍後現有的保護群組，以加入備份至 Azure 雲端。 不過，若要對保護群組 - 新的或現有的- 進行任何變更，我們需要使用 *Get-DPMModifiableProtectionGroup* Cmdlet 來取得 [modifiable](https://docs.microsoft.com/powershell/module/dataprotectionmanager/get-dpmmodifiableprotectiongroup?view=systemcenter-ps-2019) 物件上的控制代碼。
+以上 Cmdlet 會建立名為 *ProtectGroup01*的保護群組。 也可以修改稍後現有的保護群組，以加入備份至 Azure 雲端。 不過，若要對保護群組 - 新的或現有的- 進行任何變更，我們需要使用 *Get-DPMModifiableProtectionGroup* Cmdlet 來取得 [modifiable](/powershell/module/dataprotectionmanager/get-dpmmodifiableprotectiongroup?view=systemcenter-ps-2019) 物件上的控制代碼。
 
 ```powershell
 $MPG = Get-ModifiableProtectionGroup $PG
@@ -261,13 +262,13 @@ $MPG = Get-ModifiableProtectionGroup $PG
 3. 擷取伺服器上所有資料來源的清單。
 4. 選擇一或多個資料來源，並將它們加入至保護群組
 
-安裝 DPM 代理程式且受 DPM 伺服器管理所在的伺服器清單是使用 [Get-DPMProductionServer](https://docs.microsoft.com/powershell/module/dataprotectionmanager/get-dpmproductionserver?view=systemcenter-ps-2019) Cmdlet 取得。 在此範例中，我們將篩選並只設定名稱為 *productionserver01* 的 PS 來進行備份。
+安裝 DPM 代理程式且受 DPM 伺服器管理所在的伺服器清單是使用 [Get-DPMProductionServer](/powershell/module/dataprotectionmanager/get-dpmproductionserver?view=systemcenter-ps-2019) Cmdlet 取得。 在此範例中，我們將篩選並只設定名稱為 *productionserver01* 的 PS 來進行備份。
 
 ```powershell
 $server = Get-ProductionServer -DPMServerName "TestingServer" | Where-Object {($_.servername) –contains "productionserver01"}
 ```
 
-現在使用 [Get-DPMDatasource](https://docs.microsoft.com/powershell/module/dataprotectionmanager/get-dpmdatasource?view=systemcenter-ps-2019) Cmdlet 擷取 ```$server``` 上的資料來源清單。 在此範例中，我們會篩選要設定備份的磁碟區 `D:\`。 然後此資料來源會使用 [Add-DPMChildDatasource](https://docs.microsoft.com/powershell/module/dataprotectionmanager/add-dpmchilddatasource?view=systemcenter-ps-2019) Cmdlet 新增至保護群組。 記得使用 *「可修改的」* 保護群組物件 ```$MPG``` 來進行新增。
+現在使用 [Get-DPMDatasource](/powershell/module/dataprotectionmanager/get-dpmdatasource?view=systemcenter-ps-2019) Cmdlet 擷取 ```$server``` 上的資料來源清單。 在此範例中，我們會篩選要設定備份的磁碟區 `D:\`。 然後此資料來源會使用 [Add-DPMChildDatasource](/powershell/module/dataprotectionmanager/add-dpmchilddatasource?view=systemcenter-ps-2019) Cmdlet 新增至保護群組。 記得使用 *「可修改的」* 保護群組物件 ```$MPG``` 來進行新增。
 
 ```powershell
 $DS = Get-Datasource -ProductionServer $server -Inquire | Where-Object { $_.Name -contains "D:\" }
@@ -279,7 +280,7 @@ Add-DPMChildDatasource -ProtectionGroup $MPG -ChildDatasource $DS
 
 ### <a name="selecting-the-data-protection-method"></a>選取資料保護方式
 
-資料來源加入至保護群組之後，下一步是使用 [Set-DPMProtectionType](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmprotectiontype?view=systemcenter-ps-2019) Cmdlet 指定保護方法。 此範例中，將為本機磁碟和雲端備份設定保護群組。 您也必須使用 [Add-DPMChildDatasource](https://docs.microsoft.com/powershell/module/dataprotectionmanager/add-dpmchilddatasource?view=systemcenter-ps-2019) Cmdlet 搭配 -Online 旗標，指定您想要在雲端中保護的資料來源。
+資料來源加入至保護群組之後，下一步是使用 [Set-DPMProtectionType](/powershell/module/dataprotectionmanager/set-dpmprotectiontype?view=systemcenter-ps-2019) Cmdlet 指定保護方法。 此範例中，將為本機磁碟和雲端備份設定保護群組。 您也必須使用 [Add-DPMChildDatasource](/powershell/module/dataprotectionmanager/add-dpmchilddatasource?view=systemcenter-ps-2019) Cmdlet 搭配 -Online 旗標，指定您想要在雲端中保護的資料來源。
 
 ```powershell
 Set-DPMProtectionType -ProtectionGroup $MPG -ShortTerm Disk –LongTerm Online
@@ -288,7 +289,7 @@ Add-DPMChildDatasource -ProtectionGroup $MPG -ChildDatasource $DS –Online
 
 ### <a name="setting-the-retention-range"></a>設定保留範圍
 
-使用 [Set-DPMPolicyObjective](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmpolicyobjective?view=systemcenter-ps-2019) Cmdlet 設定備份點的保留。 雖然在定義備份排程之前設定保留點看起來有點奇怪，使用 ```Set-DPMPolicyObjective``` Cmdlet 會自動設定預設的備份排程，之後便可加以修改。 您總是可以先設定備份排程，之後再設定保留原則。
+使用 [Set-DPMPolicyObjective](/powershell/module/dataprotectionmanager/set-dpmpolicyobjective?view=systemcenter-ps-2019) Cmdlet 設定備份點的保留。 雖然在定義備份排程之前設定保留點看起來有點奇怪，使用 ```Set-DPMPolicyObjective``` Cmdlet 會自動設定預設的備份排程，之後便可加以修改。 您總是可以先設定備份排程，之後再設定保留原則。
 
 在下面的範例中，此 Cmdlet 會設定磁碟備份的保留參數。 這將會保留 10 天備份，並每隔 6 小時同步處理實際執行伺服器和 DPM 伺服器之間的資料。 ```SynchronizationFrequencyMinutes``` 不會定義建立備份點的頻率，只會定有資料複製到 DPM 伺服器的頻率。  此設定可防止備份變得太大。
 
@@ -296,7 +297,7 @@ Add-DPMChildDatasource -ProtectionGroup $MPG -ChildDatasource $DS –Online
 Set-DPMPolicyObjective –ProtectionGroup $MPG -RetentionRangeInDays 10 -SynchronizationFrequencyMinutes 360
 ```
 
-針對移至 Azure 的備份 (DPM 將這些稱為線上備份)，保留範圍可設定為 [使用 Grandfather-Father-Son 配置 (GFS) 的長期保留](backup-azure-backup-cloud-as-tape.md)。 也就是說，您可以定義結合的保留原則，包含每日、每週、每月和每年保留原則。 在此範例中，我們會建立陣列，表示我們需要的複雜保留配置，然後使用 [Set-DPMPolicyObjective](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmpolicyobjective?view=systemcenter-ps-2019) Cmdlet 設定保留範圍。
+針對移至 Azure 的備份 (DPM 將這些稱為線上備份)，保留範圍可設定為 [使用 Grandfather-Father-Son 配置 (GFS) 的長期保留](backup-azure-backup-cloud-as-tape.md)。 也就是說，您可以定義結合的保留原則，包含每日、每週、每月和每年保留原則。 在此範例中，我們會建立陣列，表示我們需要的複雜保留配置，然後使用 [Set-DPMPolicyObjective](/powershell/module/dataprotectionmanager/set-dpmpolicyobjective?view=systemcenter-ps-2019) Cmdlet 設定保留範圍。
 
 ```powershell
 $RRlist = @()
@@ -309,7 +310,7 @@ Set-DPMPolicyObjective –ProtectionGroup $MPG -OnlineRetentionRangeList $RRlist
 
 ### <a name="set-the-backup-schedule"></a>設定備份排程
 
-如果您使用 ```Set-DPMPolicyObjective``` Cmdlet 指定保護目標，DPM 會自動設定預設的備份排程。 若要變更預設排程，請依序使用 [Get-DPMPolicySchedule](https://docs.microsoft.com/powershell/module/dataprotectionmanager/get-dpmpolicyschedule?view=systemcenter-ps-2019) Cmdlet 和 [Set-DPMPolicySchedule](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmpolicyschedule?view=systemcenter-ps-2019) Cmdlet。
+如果您使用 ```Set-DPMPolicyObjective``` Cmdlet 指定保護目標，DPM 會自動設定預設的備份排程。 若要變更預設排程，請依序使用 [Get-DPMPolicySchedule](/powershell/module/dataprotectionmanager/get-dpmpolicyschedule?view=systemcenter-ps-2019) Cmdlet 和 [Set-DPMPolicySchedule](/powershell/module/dataprotectionmanager/set-dpmpolicyschedule?view=systemcenter-ps-2019) Cmdlet。
 
 ```powershell
 $onlineSch = Get-DPMPolicySchedule -ProtectionGroup $mpg -LongTerm Online
@@ -331,7 +332,7 @@ Set-DPMProtectionGroup -ProtectionGroup $MPG
 
 ### <a name="initial-backup"></a>初始備份
 
-第一次備份資料來源時，DPM 需要建立初始複本，以建立要在 DPM 複本磁碟區上保護的資料來源完整複本。 此活動可以排定在特定的時間，或可以使用 [Set-DPMReplicaCreationMethod](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmreplicacreationmethod?view=systemcenter-ps-2019) Cmdlet 搭配參數 ```-NOW``` 手動觸發。
+第一次備份資料來源時，DPM 需要建立初始複本，以建立要在 DPM 複本磁碟區上保護的資料來源完整複本。 此活動可以排定在特定的時間，或可以使用 [Set-DPMReplicaCreationMethod](/powershell/module/dataprotectionmanager/set-dpmreplicacreationmethod?view=systemcenter-ps-2019) Cmdlet 搭配參數 ```-NOW``` 手動觸發。
 
 ```powershell
 Set-DPMReplicaCreationMethod -ProtectionGroup $MPG -NOW
@@ -339,11 +340,11 @@ Set-DPMReplicaCreationMethod -ProtectionGroup $MPG -NOW
 
 ### <a name="changing-the-size-of-dpm-replica--recovery-point-volume"></a>變更 DPM 複本和復原點磁碟區的大小
 
-您也可以使用 [Set-DPMDatasourceDiskAllocation](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmdatasourcediskallocation?view=systemcenter-ps-2019) Cmdlet，變更 DPM 複本磁碟區和陰影複製磁碟區的大小，如下列範例所示：Get-DatasourceDiskAllocation -Datasource $DS Set-DatasourceDiskAllocation -Datasource $DS -ProtectionGroup $MPG -manual -ReplicaArea (2gb) -ShadowCopyArea (2gb)
+您也可以使用 [Set-DPMDatasourceDiskAllocation](/powershell/module/dataprotectionmanager/set-dpmdatasourcediskallocation?view=systemcenter-ps-2019) Cmdlet，變更 DPM 複本磁碟區和陰影複製磁碟區的大小，如下列範例所示：Get-DatasourceDiskAllocation -Datasource $DS Set-DatasourceDiskAllocation -Datasource $DS -ProtectionGroup $MPG -manual -ReplicaArea (2gb) -ShadowCopyArea (2gb)
 
 ### <a name="committing-the-changes-to-the-protection-group"></a>將變更認可到保護群組
 
-最後，需要先認可變更，DPM 才可以根據每個新保護群組組態進行備份。 這可以使用 [Set-DPMProtectionGroup](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmprotectiongroup?view=systemcenter-ps-2019) Cmdlet 來達成。
+最後，需要先認可變更，DPM 才可以根據每個新保護群組組態進行備份。 這可以使用 [Set-DPMProtectionGroup](/powershell/module/dataprotectionmanager/set-dpmprotectiongroup?view=systemcenter-ps-2019) Cmdlet 來達成。
 
 ```powershell
 Set-DPMProtectionGroup -ProtectionGroup $MPG
@@ -351,7 +352,7 @@ Set-DPMProtectionGroup -ProtectionGroup $MPG
 
 ## <a name="view-the-backup-points"></a>檢視備份點
 
-您可以使用 [Get-DPMRecoveryPoint](https://docs.microsoft.com/powershell/module/dataprotectionmanager/get-dpmrecoverypoint?view=systemcenter-ps-2019) Cmdlet 來取得資料來源所有復原點的清單。 在此範例中，我們將會：
+您可以使用 [Get-DPMRecoveryPoint](/powershell/module/dataprotectionmanager/get-dpmrecoverypoint?view=systemcenter-ps-2019) Cmdlet 來取得資料來源所有復原點的清單。 在此範例中，我們將會：
 
 * 擷取 DPM 伺服器上以及儲存在 ```$PG```
 * 取得與 ```$PG[0]```
@@ -369,7 +370,7 @@ $RecoveryPoints = Get-DPMRecoverypoint -Datasource $DS[0] -Online
 
 在下列範例中，我們將示範如何透過結合備份點與復原目標從 Azure 備份還原 Hyper-V 虛擬機器。 這個範例包含︰
 
-* 使用 [New-DPMRecoveryOption](https://docs.microsoft.com/powershell/module/dataprotectionmanager/new-dpmrecoveryoption?view=systemcenter-ps-2019) Cmdlet 建立復原選項。
+* 使用 [New-DPMRecoveryOption](/powershell/module/dataprotectionmanager/new-dpmrecoveryoption?view=systemcenter-ps-2019) Cmdlet 建立復原選項。
 * 使用 ```Get-DPMRecoveryPoint``` Cmdlet 擷取備份點的陣列。
 * 選擇要從中還原的備份點。
 

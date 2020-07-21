@@ -11,11 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
-ms.openlocfilehash: 80c789f955b279e7771fe39c20087baa465b3293
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 88f1e40101b807e82eaf69be6c167cd4aa2e2831
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84027649"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539188"
 ---
 # <a name="provision-and-catalog-new-tenants-in-a-saas-application-using-a-sharded-multi-tenant-azure-sql-database"></a>使用分區化多租使用者 Azure SQL Database 在 SaaS 應用程式中布建及編目新的租使用者
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,7 +30,7 @@ ms.locfileid: "84027649"
 - 強調說明完成佈建和編目之 PowerShell 指令碼的[教學課程](#goto_1_tutorial)。
   - 本教學課程使用 Wingtip Tickets SaaS 應用程式，並針對多租用戶分區化資料庫模式進行調整。
 
-<a name="goto_2_conceptual"/>
+<a name="goto_2_conceptual"></a>
 
 ## <a name="database-pattern"></a>資料庫模式
 
@@ -110,7 +111,7 @@ ms.locfileid: "84027649"
 
 然後會將租用戶資料初始化，並在目錄分區對應中加以註冊。 在範例應用程式中，包含多個租用戶的資料庫會被指定通用名稱，例如 *tenants1* 或 *tenants2*。 包含單一租用戶的資料庫會被賦予該租用戶的名稱。 範例中使用的特定命名慣例並非模式中的重要部分，因為使用目錄可允許將任何名稱指派給資料庫。
 
-<a name="goto_1_tutorial"/>
+<a name="goto_1_tutorial"></a>
 
 ## <a name="tutorial-begins"></a>教學課程開始
 
@@ -122,7 +123,7 @@ ms.locfileid: "84027649"
 > * 將一批租用戶佈建到多租用戶和單一租用戶資料庫
 > * 在目錄中註冊資料庫和租用戶對應
 
-#### <a name="prerequisites"></a>必要條件
+#### <a name="prerequisites"></a>先決條件
 
 若要完成本教學課程，請確定已完成下列必要條件：
 

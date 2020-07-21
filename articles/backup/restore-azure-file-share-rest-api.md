@@ -3,16 +3,16 @@ title: 使用 REST API 還原 Azure 檔案共用
 description: 瞭解如何使用 REST API 從建立的還原點還原 Azure 檔案共用或特定檔案 Azure 備份
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 1c3160491ef92c62745af1468556e7d5c30437fc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3a1f2999fa1b50507fd3d1b6f21f508ec9f82841
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710570"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538151"
 ---
 # <a name="restore-azure-file-shares-using-rest-api"></a>使用 REST API 還原 Azure 檔案共用
 
-本文說明如何使用 REST API，從[Azure 備份](https://docs.microsoft.com/azure/backup/backup-overview)所建立的還原點還原整個檔案共用或特定檔案。
+本文說明如何使用 REST API，從[Azure 備份](./backup-overview.md)所建立的還原點還原整個檔案共用或特定檔案。
 
 在本文結尾，您將瞭解如何使用 REST API 執行下列作業：
 
@@ -20,7 +20,7 @@ ms.locfileid: "84710570"
 * 還原完整的 Azure 檔案共用。
 * 還原個別的檔案或資料夾。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 我們假設您已經有想要還原的已備份檔案共用。 如果您沒有這麼做，請[使用 REST API 來檢查備份 Azure 檔案共用](backup-azure-file-share-rest-api.md)，以瞭解如何建立一個。
 
@@ -33,7 +33,7 @@ ms.locfileid: "84710570"
 
 ## <a name="fetch-containername-and-protecteditemname"></a>Fetch 容器和 ProtectedItemName
 
-對於大部分的還原相關 API 呼叫，您需要傳遞 {容器} 和 {protectedItemName} URI 參數的值。 在[GET backupprotectableitems](https://docs.microsoft.com/rest/api/backup/protecteditems/get)作業的回應主體中使用 ID 屬性，以取得這些參數的值。 在我們的範例中，我們想要保護的檔案共用識別碼是：
+對於大部分的還原相關 API 呼叫，您需要傳遞 {容器} 和 {protectedItemName} URI 參數的值。 在[GET backupprotectableitems](/rest/api/backup/protecteditems/get)作業的回應主體中使用 ID 屬性，以取得這些參數的值。 在我們的範例中，我們想要保護的檔案共用識別碼是：
 
 `"/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/protectionContainers/storagecontainer;storage;azurefiles;afsaccount/protectableItems/azurefileshare;azurefiles`
 
@@ -44,7 +44,7 @@ ms.locfileid: "84710570"
 
 ## <a name="fetch-recovery-points-for-backed-up-azure-file-share"></a>提取備份 Azure 檔案共用的復原點
 
-若要還原任何已備份的檔案共用或檔案，請先選取要執行還原作業的復原點。 您可以使用[復原點清單](https://docs.microsoft.com/rest/api/site-recovery/recoverypoints/listbyreplicationprotecteditems)REST API 呼叫來列出已備份專案的可用復原點。 它是包含所有相關值的「取得」作業。
+若要還原任何已備份的檔案共用或檔案，請先選取要執行還原作業的復原點。 您可以使用[復原點清單](/rest/api/site-recovery/recoverypoints/listbyreplicationprotecteditems)REST API 呼叫來列出已備份專案的可用復原點。 它是包含所有相關值的「取得」作業。
 
 ```http
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints?api-version=2019-05-13&$filter={$filter}
@@ -144,7 +144,7 @@ HTTP/1.1" 200 None
 ## <a name="full-share-recovery-using-rest-api"></a>使用 REST API 的完整共用復原
 
 使用此還原選項，在原始或替代位置還原完整的檔案共用。
-觸發還原是 POST 要求，您可以使用[觸發程式還原](https://docs.microsoft.com/rest/api/backup/restores/trigger)REST API 來執行此作業。
+觸發還原是 POST 要求，您可以使用[觸發程式還原](/rest/api/backup/restores/trigger)REST API 來執行此作業。
 
 ```http
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/restore?api-version=2019-05-13
@@ -160,11 +160,11 @@ POST https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48a
 
 若要觸發 Azure 檔案共用的還原，下列為要求主體的元件：
 
-名稱 |  類型   |   Description
+名稱 |  類型   |   描述
 --- | ---- | ----
 屬性 | AzureFileShareRestoreRequest | RestoreRequestResource 屬性
 
-如需要求本文的完整定義清單及其他詳細資料，請參閱觸發程式[還原 REST API 檔](https://docs.microsoft.com/rest/api/backup/restores/trigger#request-body)。
+如需要求本文的完整定義清單及其他詳細資料，請參閱觸發程式[還原 REST API 檔](/rest/api/backup/restores/trigger#request-body)。
 
 ### <a name="restore-to-original-location"></a>還原至原始位置
 
@@ -219,7 +219,7 @@ POST https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48a
 
 ### <a name="response"></a>回應
 
-觸發還原作業是[非同步作業](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)。 此作業會建立另一個需要個別追蹤的作業。
+觸發還原作業是[非同步作業](../azure-resource-manager/management/async-operations.md)。 此作業會建立另一個需要個別追蹤的作業。
 它會傳回兩個回應：當另一個作業已建立時，202（已接受），而當該作業完成時，則傳回200（確定）。
 
 #### <a name="response-example"></a>回應範例
@@ -350,7 +350,7 @@ HTTP/1.1" 200
 }
 ```
 
-由於備份作業是長時間執行的作業，所以應該如[使用 REST API 監視作業文件](https://docs.microsoft.com/azure/backup/backup-azure-arm-userestapi-managejobs#tracking-the-job)所述進行追蹤。
+由於備份作業是長時間執行的作業，所以應該如[使用 REST API 監視作業文件](./backup-azure-arm-userestapi-managejobs.md#tracking-the-job)所述進行追蹤。
 
 ## <a name="item-level-recovery-using-rest-api"></a>使用 REST API 的專案層級復原
 
@@ -370,11 +370,11 @@ POST https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48a
 
 若要觸發 Azure 檔案共用的還原，下列為要求主體的元件：
 
-名稱 |  類型   |   Description
+名稱 |  類型   |   描述
 --- | ---- | ----
 屬性 | AzureFileShareRestoreRequest | RestoreRequestResource 屬性
 
-如需要求本文的完整定義清單及其他詳細資料，請參閱觸發程式[還原 REST API 檔](https://docs.microsoft.com/rest/api/backup/restores/trigger#request-body)。
+如需要求本文的完整定義清單及其他詳細資料，請參閱觸發程式[還原 REST API 檔](/rest/api/backup/restores/trigger#request-body)。
 
 ### <a name="restore-to-original-location"></a>還原至原始位置
 

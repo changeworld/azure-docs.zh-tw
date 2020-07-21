@@ -4,11 +4,12 @@ description: Azure 中的警示概觀。 警示、傳統警示和警示介面。
 ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 01/28/2018
-ms.openlocfilehash: e02c23623062f5cb3e4c597b0bb257b30aa9f44a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3c4432300319c02cd7b1e31dec566f6e65ea9580
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81769776"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539562"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Microsoft Azure 中的警示概觀 
 
@@ -19,7 +20,7 @@ ms.locfileid: "81769776"
 
 本文討論 Azure 監視器中的整合警示體驗，其中包括先前由 Log Analytics 和 Application Insights 所管理的警示。 [先前的警示體驗](alerts-classic.overview.md)和警示類型稱為*傳統警示*。 您可以選取 [警示] 頁面頂端的 [**查看傳統警示**]，以查看這個較舊的體驗和較舊的警示類型。 
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 下圖代表警示流程。 
 
@@ -60,14 +61,14 @@ ms.locfileid: "81769776"
 - 計量值
 - 記錄搜尋查詢
 - 活動記錄事件
-- 基礎 Azure 平台健康情況
+- 底層 Azure 平台健康情況
 - 網站可用性測試
 
 之前，「Azure 監視器」計量、Application Insights、Log Analytics 及「服務健康狀態」具有個別的警示功能。 隨著時間進展，Azure 已改善並結合使用者介面與不同的警示方法。 這樣的整併仍在持續進行中。 因此，新的警示系統中仍可能沒有某些警示功能。  
 
-| **監視來源** | **信號類型**  | **描述** |
+| **監視來源** | **信號類型**  | **說明** |
 |-------------|----------------|-------------|
-| 服務健康情況 | 活動記錄檔  | 不支援。 請參閱[建立服務通知的活動記錄警示](../../azure-monitor/platform/alerts-activity-log-service-notifications.md)。  |
+| 服務健康情況 | 活動記錄檔  | 不支援。 請參閱[建立服務通知的活動記錄警示](../../service-health/alerts-activity-log-service-notifications-portal.md)。  |
 | Application Insights | Web 可用性測試 | 不支援。 請參閱 [Web 測試警示](../../azure-monitor/app/monitor-web-app-availability.md)。 可供任何經檢測可傳送資料給 Application Insights 的網站使用。 當網站的可用性或回應能力低於預期時收到通知。 |
 
 ## <a name="manage-alerts"></a>管理警示
@@ -79,7 +80,7 @@ ms.locfileid: "81769776"
 |:---|:---|
 | 新增 | 已偵測到此問題，而且尚未進行審核。 |
 | 已認可 | 系統管理員已檢閱警示，且已開始處理。 |
-| 關閉 | 已解決問題。 關閉警示之後，您可以將警示變更為另一個狀態以重新開啟它。 |
+| 已關閉 | 已解決問題。 關閉警示之後，您可以將警示變更為另一個狀態以重新開啟它。 |
 
 *警示狀態*與*監視條件*不同且無關。 警示狀態是由使用者所設定的。 監視條檢是由系統所設定的。 當警示引發時，警示的監視條件會設定為 [已*引發*]。 當引發警示的基礎條件清除時，監視條件會設定為 [*已解決*]。 警示狀態需等到使用者變更它之後才會變更。 了解[如何變更警示與智慧群組的狀態](https://aka.ms/managing-alert-smart-group-states)。
 
@@ -177,7 +178,7 @@ ms.locfileid: "81769776"
 
 ## <a name="role-based-access-control-rbac-for-your-alert-instances"></a>警示實例的角色型存取控制（RBAC）
 
-警示實例的耗用量和管理需要使用者具備[監視參與者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor)或[監視讀取](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader)者的內建 RBAC 角色。 在任何 Azure Resource Manager 範圍（從訂用帳戶層級到資源層級的細微指派）都支援這些角色。 例如，如果使用者僅有虛擬機器的「監視參與者」存取權 `ContosoVM1` ，該使用者就只能取用和管理在上產生的警示 `ContosoVM1` 。
+警示實例的耗用量和管理需要使用者具備[監視參與者](../../role-based-access-control/built-in-roles.md#monitoring-contributor)或[監視讀取](../../role-based-access-control/built-in-roles.md#monitoring-reader)者的內建 RBAC 角色。 在任何 Azure Resource Manager 範圍（從訂用帳戶層級到資源層級的細微指派）都支援這些角色。 例如，如果使用者僅有虛擬機器的「監視參與者」存取權 `ContosoVM1` ，該使用者就只能取用和管理在上產生的警示 `ContosoVM1` 。
 
 ## <a name="manage-your-alert-instances-programmatically"></a>以程式設計方式管理您的警示實例
 
@@ -211,9 +212,3 @@ ms.locfileid: "81769776"
 - [在 Azure 中管理警示](https://aka.ms/managing-alert-instances)
 - [管理智慧群組](https://aka.ms/managing-smart-groups)
 - [深入瞭解 Azure 警示定價](https://azure.microsoft.com/pricing/details/monitor/)
-
-
-
-
-
-

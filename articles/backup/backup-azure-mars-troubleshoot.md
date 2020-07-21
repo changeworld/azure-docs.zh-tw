@@ -4,12 +4,12 @@ description: 在本文中，您將瞭解如何針對 Azure 備份代理程式的
 ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/15/2019
-ms.openlocfilehash: cb9e5cf48f960a70c6a699df1163089eb4e8bc31
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: ddff3ca8a89d8d5674be00fdebc70b0232cdbd13
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86056583"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539052"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>針對 Microsoft Azure 復原服務（MARS）代理程式進行疑難排解
 
@@ -20,12 +20,12 @@ ms.locfileid: "86056583"
 我們建議您在開始針對 Microsoft Azure 復原服務（MARS）代理程式進行疑難排解之前，先檢查下列事項：
 
 - [確定 MARS 代理程式是最新的](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)。
-- [請確定 MARS 代理程式和 Azure 之間具有網路連線能力](https://docs.microsoft.com/azure/backup/backup-azure-mars-troubleshoot#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)。
+- [請確定 MARS 代理程式和 Azure 之間具有網路連線能力](#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)。
 - 確定 MARS 正在執行（在服務主控台中）。 如有需要，請重新開機，然後再次嘗試操作。
-- [請確定暫存檔案夾位置中有5% 到10% 的可用磁片區空間](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#whats-the-minimum-size-requirement-for-the-cache-folder)。
-- [檢查另一個進程或防毒軟體是否干擾 Azure 備份](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-slow-backup-performance-issue#cause-another-process-or-antivirus-software-interfering-with-azure-backup)。
+- [請確定暫存檔案夾位置中有5% 到10% 的可用磁片區空間](./backup-azure-file-folder-backup-faq.md#whats-the-minimum-size-requirement-for-the-cache-folder)。
+- [檢查另一個進程或防毒軟體是否干擾 Azure 備份](./backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-another-process-or-antivirus-software-interfering-with-azure-backup)。
 - 如果備份作業已完成但出現警告，請參閱[備份作業已完成，但出現警告](#backup-jobs-completed-with-warning)
-- 如果排定的備份失敗，但手動備份可運作，請參閱[備份不會根據排程執行](https://docs.microsoft.com/azure/backup/backup-azure-mars-troubleshoot#backups-dont-run-according-to-schedule)。
+- 如果排定的備份失敗，但手動備份可運作，請參閱[備份不會根據排程執行](#backups-dont-run-according-to-schedule)。
 - 請確定您的 OS 有最新的更新。
 - [請確定不支援的磁片磁碟機和具有不受支援屬性的檔案已從備份中排除](backup-support-matrix-mars-agent.md#supported-drives-or-volumes-for-backup)。
 - 確保受保護系統上的時鐘已設定為正確的時區。
@@ -34,7 +34,7 @@ ms.locfileid: "86056583"
   - 請確認代理程式已在伺服器上卸載，而且已從入口網站刪除。
   - 使用一開始用來註冊伺服器的相同複雜密碼。
 - 針對離線備份，請確定在開始備份之前，已在來源和複本電腦上安裝 Azure PowerShell 3.7.0。
-- 如果備份代理程式是在 Azure 虛擬機器上執行，請參閱[這篇文章](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-slow-backup-performance-issue#cause-backup-agent-running-on-an-azure-virtual-machine)。
+- 如果備份代理程式是在 Azure 虛擬機器上執行，請參閱[這篇文章](./backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-backup-agent-running-on-an-azure-virtual-machine)。
 
 ## <a name="invalid-vault-credentials-provided"></a>提供的保存庫認證無效
 
@@ -42,7 +42,7 @@ ms.locfileid: "86056583"
 
 | 原因 | 建議動作 |
 | ---     | ---    |
-| **保存庫認證無效** <br/> <br/> 保存庫認證檔案可能已損毀或可能已過期。 （例如，在註冊時間之前，可能已下載超過48小時）。| 從 Azure 入口網站上的復原服務保存庫下載新的認證。 （請參閱[下載 MARS 代理程式](https://docs.microsoft.com/azure/backup/install-mars-agent#download-the-mars-agent)一節中的步驟6）。然後適當地採取下列步驟： <ul><li> 如果您已經安裝並註冊 MARS，請開啟 Microsoft Azure 備份代理程式 MMC 主控台，然後選取 [**動作**] 窗格中的 [**註冊伺服器**]，以新的認證完成註冊。 <br/> <li> 如果新安裝失敗，請嘗試使用新的認證重新安裝。</ul> **注意**：如果已下載多個保存庫認證檔案，則在接下來的48小時內只有最新的檔案有效。 我們建議您下載新的保存庫認證檔。
+| **保存庫認證無效** <br/> <br/> 保存庫認證檔案可能已損毀或可能已過期。 （例如，在註冊時間之前，可能已下載超過48小時）。| 從 Azure 入口網站上的復原服務保存庫下載新的認證。 （請參閱[下載 MARS 代理程式](./install-mars-agent.md#download-the-mars-agent)一節中的步驟6）。然後適當地採取下列步驟： <ul><li> 如果您已經安裝並註冊 MARS，請開啟 Microsoft Azure 備份代理程式 MMC 主控台，然後選取 [**動作**] 窗格中的 [**註冊伺服器**]，以新的認證完成註冊。 <br/> <li> 如果新安裝失敗，請嘗試使用新的認證重新安裝。</ul> **注意**：如果已下載多個保存庫認證檔案，則在接下來的48小時內只有最新的檔案有效。 我們建議您下載新的保存庫認證檔。
 | **Proxy 伺服器/防火牆封鎖註冊** <br/>或 <br/>**沒有網際網路連線能力** <br/><br/> 如果您的電腦或 proxy 伺服器具有有限的網際網路連線能力，而且您不確定存取所需的 Url 時，註冊將會失敗。| 請執行下列步驟：<br/> <ul><li> 與您的 IT 小組合作，以確保系統具有網際網路連線能力。<li> 如果您沒有 proxy 伺服器，請確定您在註冊代理程式時未選取 [proxy] 選項。 [檢查您的 proxy 設定](#verifying-proxy-settings-for-windows)。<li> 如果您有防火牆/proxy 伺服器，請與您的網路小組合作，以確保這些 Url 和 IP 位址有存取權：<br/> <br> **URL**<br> `www.msftncsi.com` <br> .Microsoft.com <br> .WindowsAzure.com <br> .microsoftonline.com <br> .windows.net <br>**IP 位址**<br>  20.190.128.0/18 <br>  40.126.0.0/18 <br/></ul></ul>完成上述的疑難排解步驟之後，請嘗試再次註冊。<br></br> 如果您透過 Azure ExpressRoute 連線，請確定設定已依照[Azure expressroute 支援](backup-support-matrix-mars-agent.md#azure-expressroute-support)中的說明進行設定。
 | **防毒軟體正在封鎖註冊** | 如果您已在伺服器上安裝防毒軟體，請在下列檔案和資料夾的防毒程式掃描中新增必要的排除規則： <br/><ul> <li> CBengine.exe <li> CSC.exe<li> 暫存檔案夾。 其預設位置為 C:\Program Files\Microsoft Azure Recovery Services Agent\scratch。 <li> C:\Program Files\Microsoft Azure Recovery Services Agent\Bin. 的 bin 資料夾
 
@@ -54,7 +54,7 @@ ms.locfileid: "86056583"
 
 ### <a name="verifying-proxy-settings-for-windows"></a>正在驗證 Windows 的 proxy 設定
 
-1. 從 [ [Sysinternals](https://docs.microsoft.com/sysinternals/downloads/psexec) ] 頁面下載 PsExec。
+1. 從 [ [Sysinternals](/sysinternals/downloads/psexec) ] 頁面下載 PsExec。
 1. `psexec -i -s "c:\Program Files\Internet Explorer\iexplore.exe"`從提高許可權的命令提示字元執行。
 
    此命令將會開啟 Internet Explorer。
@@ -83,7 +83,7 @@ ms.locfileid: "86056583"
   ![備份作業已完成，但出現警告](./media/backup-azure-mars-troubleshoot/backup-completed-with-warning.png)
 
 - 可能導致備份略過檔案的狀況包括：
-  - 不支援的檔案屬性（例如：在 OneDrive 資料夾中，壓縮的串流、重新分析點）。 如需完整清單，請參閱[支援矩陣](https://docs.microsoft.com/azure/backup/backup-support-matrix-mars-agent#supported-file-types-for-backup)。
+  - 不支援的檔案屬性（例如：在 OneDrive 資料夾中，壓縮的串流、重新分析點）。 如需完整清單，請參閱[支援矩陣](./backup-support-matrix-mars-agent.md#supported-file-types-for-backup)。
   - 檔案系統問題
   - 另一個發生干擾的進程（例如：保存檔案控制碼的防毒軟體可能會阻止 MARS 代理程式存取檔案）
   - 應用程式鎖定的檔案  
@@ -94,11 +94,11 @@ ms.locfileid: "86056583"
   | 錯誤碼             | 描述                                             | 建議                                              |
   | ---------------------- | --------------------------------------------------- | ------------------------------------------------------------ |
   | 0x80070570             | 檔案或目錄已損毀且無法讀取。 | 在來源磁片區上執行**chkdsk** 。                             |
-  | 0x80070002、0x80070003 | 系統找不到指定的檔案。         | [確定暫存檔案夾未滿](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#manage-the-backup-cache-folder)  <br><br>  檢查已設定臨時空間的磁片區是否存在（未刪除）  <br><br>   [確認 MARS 代理程式已從電腦上安裝的防毒軟體排除](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-slow-backup-performance-issue#cause-another-process-or-antivirus-software-interfering-with-azure-backup)  |
-  | 0x80070005             | 拒絕存取                                    | [檢查防毒程式或其他協力廠商軟體是否封鎖存取](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-slow-backup-performance-issue#cause-another-process-or-antivirus-software-interfering-with-azure-backup)     |
+  | 0x80070002、0x80070003 | 系統找不到指定的檔案。         | [確定暫存檔案夾未滿](./backup-azure-file-folder-backup-faq.md#manage-the-backup-cache-folder)  <br><br>  檢查已設定臨時空間的磁片區是否存在（未刪除）  <br><br>   [確認 MARS 代理程式已從電腦上安裝的防毒軟體排除](./backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-another-process-or-antivirus-software-interfering-with-azure-backup)  |
+  | 0x80070005             | 拒絕存取                                    | [檢查防毒程式或其他協力廠商軟體是否封鎖存取](./backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-another-process-or-antivirus-software-interfering-with-azure-backup)     |
   | 0x8007018b             | 拒絕存取雲端檔案。                | OneDrive 檔案、Git 檔案，或電腦上可處於離線狀態的任何其他檔案 |
 
-- 您可以使用 [[將排除規則新增至現有的原則](https://docs.microsoft.com/azure/backup/backup-azure-manage-mars#add-exclusion-rules-to-existing-policy)]，從備份原則中排除不支援、遺失或刪除的檔案，以確保備份成功。
+- 您可以使用 [[將排除規則新增至現有的原則](./backup-azure-manage-mars.md#add-exclusion-rules-to-existing-policy)]，從備份原則中排除不支援、遺失或刪除的檔案，以確保備份成功。
 
 - 避免刪除和重新建立最上層資料夾中具有相同名稱的受保護資料夾。 這麼做可能會導致備份完成，但出現警告，錯誤*是偵測到重大的不一致，因此無法複寫變更。*  如果您需要刪除並重新建立資料夾，請考慮在受保護最上層資料夾下的子資料夾中執行此動作。
 
@@ -112,13 +112,13 @@ ms.locfileid: "86056583"
 
 | 錯誤  | 可能的原因 | 建議動作 |
 |---------|---------|---------|
-|<br />啟動沒有成功完成。 由於發生內部服務錯誤 [0x1FC07]，導致目前的操作失敗。 請在一段時間之後重試此作業。 如果問題持續發生， 請連絡 Microsoft 支援服務。     | <li> 暫存檔案夾所在的磁片區沒有足夠的空間。 <li> 暫存資料夾的移動不正確。 <li> 遺失 OnlineBackup.KEK 檔案。         | <li>升級至[最新版本](https://aka.ms/azurebackup_agent)的 MARS 代理程式。<li>將暫存檔案夾或快取位置移至磁片區，其可用空間介於備份資料大小總計的5% 和10% 之間。 若要正確地移動快取位置，請參閱[有關備份檔案和資料夾的常見問題](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#manage-the-backup-cache-folder)中的步驟。<li> 確定 OnlineBackup.KEK 檔案存在。 <br>*暫存檔案夾或快取路徑的預設位置是 C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*。        |
+|<br />啟動沒有成功完成。 由於發生內部服務錯誤 [0x1FC07]，導致目前的操作失敗。 請在一段時間之後重試此作業。 如果問題持續發生， 請連絡 Microsoft 支援服務。     | <li> 暫存檔案夾所在的磁片區沒有足夠的空間。 <li> 暫存資料夾的移動不正確。 <li> 遺失 OnlineBackup.KEK 檔案。         | <li>升級至[最新版本](https://aka.ms/azurebackup_agent)的 MARS 代理程式。<li>將暫存檔案夾或快取位置移至磁片區，其可用空間介於備份資料大小總計的5% 和10% 之間。 若要正確地移動快取位置，請參閱[有關備份檔案和資料夾的常見問題](./backup-azure-file-folder-backup-faq.md#manage-the-backup-cache-folder)中的步驟。<li> 確定 OnlineBackup.KEK 檔案存在。 <br>*暫存檔案夾或快取路徑的預設位置是 C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*。        |
 
 ## <a name="encryption-passphrase-not-correctly-configured"></a>未正確設定加密複雜密碼
 
 | 錯誤  | 可能的原因 | 建議動作 |
 |---------|---------|---------|
-| <br />錯誤 34506。 未正確設定儲存於此電腦上的加密複雜密碼。    | <li> 暫存檔案夾所在的磁片區沒有足夠的空間。 <li> 暫存資料夾的移動不正確。 <li> 遺失 OnlineBackup.KEK 檔案。        | <li>升級至[最新版本](https://aka.ms/azurebackup_agent)的 MARS 代理程式。<li>將暫存檔案夾或快取位置移至磁片區，其可用空間介於備份資料大小總計的5% 和10% 之間。 若要正確地移動快取位置，請參閱[有關備份檔案和資料夾的常見問題](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#manage-the-backup-cache-folder)中的步驟。<li> 確定 OnlineBackup.KEK 檔案存在。 <br>*暫存檔案夾或快取路徑的預設位置是 C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*。         |
+| <br />錯誤 34506。 未正確設定儲存於此電腦上的加密複雜密碼。    | <li> 暫存檔案夾所在的磁片區沒有足夠的空間。 <li> 暫存資料夾的移動不正確。 <li> 遺失 OnlineBackup.KEK 檔案。        | <li>升級至[最新版本](https://aka.ms/azurebackup_agent)的 MARS 代理程式。<li>將暫存檔案夾或快取位置移至磁片區，其可用空間介於備份資料大小總計的5% 和10% 之間。 若要正確地移動快取位置，請參閱[有關備份檔案和資料夾的常見問題](./backup-azure-file-folder-backup-faq.md#manage-the-backup-cache-folder)中的步驟。<li> 確定 OnlineBackup.KEK 檔案存在。 <br>*暫存檔案夾或快取路徑的預設位置是 C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*。         |
 
 ## <a name="backups-dont-run-according-to-schedule"></a>備份不會根據排程執行
 
@@ -217,7 +217,7 @@ Azure 備份可能未成功掛接復原磁碟區，即使數分鐘後仍未成�
 
 如果快取資料夾（也稱為「暫存檔案夾」）的設定不正確、缺少必要條件或限制存取，則備份作業可能會失敗。
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>先決條件
 
 若要讓 MARS 代理程式作業成功，快取資料夾必須符合下列需求：
 

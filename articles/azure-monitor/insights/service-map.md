@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
-ms.openlocfilehash: 637db3a0749b5a0738b0ccc5136d26e435a03c7b
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: bfd25c2572e91c2984f2845e08941614fff65570
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203126"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539766"
 ---
 # <a name="using-service-map-solution-in-azure"></a>在 Azure 中使用服務對應解決方案
 
@@ -241,7 +241,7 @@ ms.locfileid: "86203126"
 
 ## <a name="service-desk-integration"></a>服務台整合
 
-當「服務對應」和「IT 服務管理連接器」這兩個解決方案皆已在 Log Analytics 工作區中啟用並設定，便會自動進行整合。 服務對應中的整合會標示為「服務台」。 如需詳細資訊，請參閱[使用 IT 服務管理連接器將 ITSM 工作項目集中管理](https://docs.microsoft.com/azure/log-analytics/log-analytics-itsmc-overview)。
+當「服務對應」和「IT 服務管理連接器」這兩個解決方案皆已在 Log Analytics 工作區中啟用並設定，便會自動進行整合。 服務對應中的整合會標示為「服務台」。 如需詳細資訊，請參閱[使用 IT 服務管理連接器將 ITSM 工作項目集中管理](../platform/itsmc-overview.md)。
 
 [機器服務台]**** 窗格會列出所選時間範圍內所選伺服器的所有 IT 服務管理事件。 如果有最新項目，伺服器會顯示圖示，且 [機器服務台] 窗格會列出這些項目。
 
@@ -270,7 +270,7 @@ ms.locfileid: "86203126"
 
 ![[機器效能] 窗格](media/service-map/machine-performance.png)
 
-若要查看效能資料，您可能需要[啟用適當的 Log Analytics 效能計數器](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-sources-performance-counters)。  您將要啟用的計數器：
+若要查看效能資料，您可能需要[啟用適當的 Log Analytics 效能計數器](../platform/data-sources-performance-counters.md)。  您將要啟用的計數器：
 
 Windows：
 - Processor(*)\\% Processor Time
@@ -540,7 +540,7 @@ let remoteMachines = remote | summarize by RemoteMachine;
 
 ## <a name="rest-api"></a>REST API
 
-服務對應中所有的伺服器、處理序及相依性資料，都可透過[服務對應 REST API](https://docs.microsoft.com/rest/api/servicemap/) 取得。
+服務對應中所有的伺服器、處理序及相依性資料，都可透過[服務對應 REST API](/rest/api/servicemap/) 取得。
 
 ## <a name="diagnostic-and-usage-data"></a>診斷和使用量資料
 
@@ -565,7 +565,7 @@ let remoteMachines = remote | summarize by RemoteMachine;
 
 Microsoft Dependency Agent 建置於 Microsoft Visual Studio 執行階段程式庫之上。 如果程式庫安裝期間發生問題，就會出現訊息。 
 
-執行階段程式庫安裝程式會在 %LOCALAPPDATA%\temp 資料夾中建立記錄。 檔案是 `dd_vcredist_arch_yyyymmddhhmmss.log` ，其中的*架構*是 `x86` 或， `amd64` 而*yyyymmddhhmmss.ffffff*是記錄建立時 (24 小時制的日期和時間) 。 記錄會提供導致無法安裝之問題的詳細資料。
+執行階段程式庫安裝程式會在 %LOCALAPPDATA%\temp 資料夾中建立記錄。 檔案是 `dd_vcredist_arch_yyyymmddhhmmss.log` ，其中的*架構*是 `x86` 或， `amd64` 而*yyyymmddhhmmss.ffffff*是建立記錄時的日期和時間（24小時制）。 記錄會提供導致無法安裝之問題的詳細資料。
 
 如果可以先行安裝[最新的執行階段程式庫](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)，將會十分有用。
 
@@ -598,7 +598,7 @@ Microsoft Dependency Agent 建置於 Microsoft Visual Studio 執行階段程式�
 
 如果您在服務對應中看到電腦，但它沒有進程或連接資料，表示相依性代理程式已安裝且正在執行，但未載入核心驅動程式。 
 
-檢查 `C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log file` (Windows) 或 `/var/opt/microsoft/dependency-agent/log/service.log file` (Linux) 。 檔案的最後幾行應該會指出未載入核心的原因。 例如，若您更新過核心，在 Linux 上可能會不受支援。
+檢查 `C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log file` （Windows）或 `/var/opt/microsoft/dependency-agent/log/service.log file` （Linux）。 檔案的最後幾行應該會指出未載入核心的原因。 例如，若您更新過核心，在 Linux 上可能會不受支援。
 
 ## <a name="suggestions"></a>建議
 

@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 07/10/2020
+ms.date: 07/17/2020
 ms.author: victorh
-ms.openlocfilehash: 3174576201f0068191c2918b47fbd99eaa1ec182
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: b984bb581df54cba79a551dc870786ed228eaa43
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232078"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536964"
 ---
 # <a name="azure-firewall-faq"></a>Azure 防火牆常見問題集
 
@@ -22,15 +22,7 @@ Azure 防火牆是受控、雲端式網路安全性服務，可以保護您的 A
 
 ## <a name="what-capabilities-are-supported-in-azure-firewall"></a>Azure 防火牆中支援哪些功能？
 
-* 具狀態防火牆即服務
-* 內建高可用性且不受限制的雲端延展性
-* FQDN 篩選
-* FQDN 標記
-* 網路流量篩選規則
-* 輸出 SNAT 支援
-* 輸入 DNAT 支援
-* 跨 Azure 訂用帳戶和 VNET，集中建立、強制執行以及記錄應用程式和網路連線原則
-* 與 Azure 監視器完全整合以進行記錄和分析
+若要了解 Azure 防火牆功能，請參閱 [Azure 防火牆功能](features.md)。
 
 ## <a name="what-is-the-typical-deployment-model-for-azure-firewall"></a>Azure 防火牆的一般部署模型是什麼？
 

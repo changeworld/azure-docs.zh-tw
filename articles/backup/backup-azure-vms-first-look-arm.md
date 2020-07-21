@@ -3,11 +3,12 @@ title: 從 VM 設定備份 Azure VM
 description: 在本文中，您將瞭解如何使用 Azure 備份服務來備份單一 Azure VM 或多個 Azure Vm。
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: 72d6e5657add3e815bb0d77fadbdbc716712bee5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 580cb1ad5f611991212bc8cdb48c66339f14d8e8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76705440"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538882"
 ---
 # <a name="back-up-an-azure-vm-from-the-vm-settings"></a>從 VM 設定備份 Azure VM
 
@@ -16,7 +17,7 @@ ms.locfileid: "76705440"
 - 單一 Azure VM：本文中的指示會說明如何直接從 VM 設定來備份 Azure VM。
 - 多個 Azure Vm：您可以設定復原服務保存庫，並為多個 Azure Vm 設定備份。 針對此案例，請依照[本文](backup-azure-arm-vms-prepare.md)中的指示。
 
-## <a name="before-you-start"></a>在您開始使用 Intune 之前
+## <a name="before-you-start"></a>開始之前
 
 1. [了解](backup-architecture.md#how-does-azure-backup-work)備份的運作方式，以及[確認](backup-support-matrix.md#azure-vm-backup-support)支援需求。
 2. [取得 Azure VM 備份的概觀](backup-azure-vms-introduction.md)。
@@ -25,7 +26,7 @@ ms.locfileid: "76705440"
 
 為備份 Azure VM，Azure 備份會在執行於機器上的 VM 代理程式上安裝擴充功能。 如果您是從 Azure 市集映像建立 VM，則代理程式會執行。 在某些情況下，例如，您建立自訂的 VM，或是從內部部署遷移機器。 您可能需要手動安裝代理程式。
 
-- 如果您需要以手動方式安裝 VM 代理程式，請依照適用於 [Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) 或 [Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) VM 的指示。
+- 如果您需要以手動方式安裝 VM 代理程式，請依照適用於 [Windows](../virtual-machines/extensions/agent-windows.md) 或 [Linux](../virtual-machines/extensions/agent-linux.md) VM 的指示。
 - 安裝代理程式之後，當您啟用備份時，Azure 備份就會將備份擴充功能安裝到代理程式。 Azure 備份會更新及修補擴充功能，無須使用者介入。
 
 ## <a name="back-up-from-azure-vm-settings"></a>從 Azure VM 設定進行備份

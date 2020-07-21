@@ -3,18 +3,18 @@ title: 功能概觀 - Azure 事件中樞 | Microsoft Docs
 description: 本文將詳細說明 Azure 事件中樞的相關功能與術語。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 5b646c1a0730b046dd3e66a5d5324b659999f83a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 034983074ddc6faf324d70a18a9a49b8df659649
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85320701"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537304"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Azure 事件中樞的功能與術語
 
-事件中樞是可調整的事件處理服務，它會擷取和處理大量的事件和資料，具有低延遲和高可靠性。 如需高階概觀，請參閱[何謂事件中樞？](event-hubs-what-is-event-hubs.md)
+事件中樞是可調整的事件處理服務，它會擷取和處理大量的事件和資料，具有低延遲和高可靠性。 如需高階概觀，請參閱[何謂事件中樞？](./event-hubs-about.md)
 
-這篇文章是根據[概觀](event-hubs-what-is-event-hubs.md)中的資訊建置，並且提供有關事件中樞元件和功能的技術和實作詳細資料。
+這篇文章是根據[概觀](./event-hubs-about.md)中的資訊建置，並且提供有關事件中樞元件和功能的技術和實作詳細資料。
 
 ## <a name="namespace"></a>命名空間
 事件中樞命名空間提供唯一的範圍容器 (依其[完整網域名稱](https://en.wikipedia.org/wiki/Fully_qualified_domain_name)來參考)，您可以在其中建立一或多個事件中樞或 Kafka 主題。 
@@ -33,7 +33,7 @@ ms.locfileid: "85320701"
 
 ### <a name="publishing-an-event"></a>發佈事件
 
-您可以透過 AMQP 1.0、Kafka 1.0 (和更新版本) 或 HTTPS 來發佈事件。 事件中樞提供[用戶端程式庫和類別](event-hubs-dotnet-framework-api-overview.md)，以供您從 .NET 用戶端將事件發佈到事件中樞。 對於其他執行階段和平台，您可以使用任何 AMQP 1.0 用戶端 (如 [Apache Qpid](https://qpid.apache.org/))。 您可以單獨發佈事件，或以批次方式進行。 不論是單一事件或批次，單次發佈 (事件資料執行個體) 的上限為 1 MB。 發佈大於此臨界值的事件會導致錯誤。 發行者最好不要察覺事件中樞內的資料分割，而且只會指定分割區索引*鍵*（下一節會介紹），或透過其 SAS 權杖的身分識別。
+您可以透過 AMQP 1.0、Kafka 1.0 (和更新版本) 或 HTTPS 來發佈事件。 事件中樞提供[用戶端程式庫和類別](./event-hubs-dotnet-framework-getstarted-send.md)，以供您從 .NET 用戶端將事件發佈到事件中樞。 對於其他執行階段和平台，您可以使用任何 AMQP 1.0 用戶端 (如 [Apache Qpid](https://qpid.apache.org/))。 您可以單獨發佈事件，或以批次方式進行。 不論是單一事件或批次，單次發佈 (事件資料執行個體) 的上限為 1 MB。 發佈大於此臨界值的事件會導致錯誤。 發行者最好不要察覺事件中樞內的資料分割，而且只會指定分割區索引*鍵*（下一節會介紹），或透過其 SAS 權杖的身分識別。
 
 使用 AMQP 或 HTTPS 的選擇因使用案例而異。 除了傳輸層級安全性 (TLS) 或 SSL/TLS 之外，AMQP 還需要建立持續性的雙向通訊端。 在初始化會話時，AMQP 會有較高的網路成本，不過，HTTPS 在每個要求中都需要額外的 TLS 負荷。 對於頻繁的發行者，AMQP 的效能較高。
 
@@ -67,7 +67,7 @@ ms.locfileid: "85320701"
 
 從事件中樞讀取事件資料的任何實體都是*事件取用者*。 所有事件中樞取用者都透過 AMQP 1.0 工作階段連接，而可供取用的事件都透過工作階段傳遞。 用戶端不需要輪詢資料可用性。
 
-### <a name="consumer-groups"></a>用戶群組
+### <a name="consumer-groups"></a>取用者群組
 
 事件中心的發佈/訂閱機制是透過「取用者群組」** 啟用。 取用者群組是檢視整個事件中樞 (狀態、位置或位移) 的窗口。 取用者群組能讓多個取用應用程式擁有自己的事件串流檢視，以及按照自己的步調及運用自己的位移自行讀取串流。
 
@@ -94,14 +94,14 @@ Azure Sdk 所提供的某些用戶端是智慧型取用者代理程式，可自�
 
 ![事件中樞](./media/event-hubs-features/partition_offset.png)
 
-### <a name="checkpointing"></a>檢查點
+### <a name="checkpointing"></a>檢查點檢查
 
 *設立檢查點* 是讀取器在資料分割事件序列中標記或認可其位置的程序。 設立檢查點是取用者的責任，這項作業會在取用者群組內依照資料分割來進行。 此責任表示在每個取用者群組內，每個資料分割讀取器必須追蹤自己目前在事件串流中的位置，而當它們認為資料串流完成時，可以通知服務。
 
 如果讀取器與資料分割中斷連線，當它重新連線時，會從該取用者群組中該資料分割最後一個讀取器先前提交的檢查點開始讀取。 當讀取器連線時，它會將此位移傳遞給事件中樞，以指定要開始讀取的位置。 如此一來，檢查點能成為下游應用程式標記事件「完成」的方法，也能針對在不同機器上執行的讀取器提供容錯移轉發生時的恢復功能。 從這個檢查點處理程序中指定較低的位移，即可回到較舊的資料。 透過這項機制，檢查點可提供容錯移轉彈性，並支援事件串流重播。
 
 > [!NOTE]
-> 如果您在支援儲存體 Blob SDK 不同版本的環境中使用 Azure Blob 儲存體做為檢查點存放區，而不是在 Azure 上提供，您必須使用程式碼，將儲存體服務 API 版本變更為該環境所支援的特定版本。 例如，如果您在[Azure Stack Hub 2002 版上執行事件中樞](https://docs.microsoft.com/azure-stack/user/event-hubs-overview)，儲存體服務的最高可用版本是2017-11-09 版。 在此情況下，您必須使用程式碼，將儲存體服務 API 版本的目標設為2017-11-09。 如需如何以特定儲存體 API 版本為目標的範例，請參閱 GitHub 上的下列範例： 
+> 如果您在支援儲存體 Blob SDK 不同版本的環境中使用 Azure Blob 儲存體做為檢查點存放區，而不是在 Azure 上提供，您必須使用程式碼，將儲存體服務 API 版本變更為該環境所支援的特定版本。 例如，如果您在[Azure Stack Hub 2002 版上執行事件中樞](/azure-stack/user/event-hubs-overview)，儲存體服務的最高可用版本是2017-11-09 版。 在此情況下，您必須使用程式碼，將儲存體服務 API 版本的目標設為2017-11-09。 如需如何以特定儲存體 API 版本為目標的範例，請參閱 GitHub 上的下列範例： 
 > - [.Net](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs)。 
 > - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/)
 > - [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript)或[TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/typescript)
@@ -113,7 +113,7 @@ Azure Sdk 所提供的某些用戶端是智慧型取用者代理程式，可自�
 
 #### <a name="connect-to-a-partition"></a>連接資料分割
 
-連接到資料分割時，常見的做法是使用租用機制來協調讀取器連接到特定的分割區。 如此一來，取用者群組中的每個資料分割都有可能只有一個作用中的讀取器。 藉由使用事件中樞 Sdk 內的用戶端來簡化檢查點檢查、租用和管理讀取器的工作，其作用是智慧型取用者代理程式。 它們是：
+連接到資料分割時，常見的做法是使用租用機制來協調讀取器連接到特定的分割區。 如此一來，取用者群組中的每個資料分割都有可能只有一個作用中的讀取器。 藉由使用事件中樞 Sdk 內的用戶端來簡化檢查點檢查、租用和管理讀取器的工作，其作用是智慧型取用者代理程式。 這些節點為：
 
 - 適用于 .NET 的[EventProcessorClient](/dotnet/api/azure.messaging.eventhubs.eventprocessorclient)
 - 適用于 JAVA 的[EventProcessorClient](/java/api/com.azure.messaging.eventhubs.eventprocessorclient)

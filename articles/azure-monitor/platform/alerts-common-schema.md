@@ -4,12 +4,12 @@ description: 瞭解常見的警示架構、您應該使用它的原因，以及�
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 03/14/2019
-ms.openlocfilehash: 1445e8cf38b2694146fc8749ba5e77f2297de969
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: faf9975e2795623305583d061d1af7f5eb0cfbe0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710927"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539477"
 ---
 # <a name="common-alert-schema"></a>一般警示結構描述
 
@@ -52,8 +52,8 @@ ms.locfileid: "84710927"
 > 1. 下列警示類型預設支援一般架構（不需要選擇性）：
 >     * 智慧型偵測警示
 > 1. 下列警示類型目前不支援一般架構：
->     * [適用於 VM 的 Azure 監視器](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-overview)所產生的警示
->     * [Azure 成本管理](https://docs.microsoft.com/azure/billing/billing-cost-management-budget-scenario)所產生的警示
+>     * [適用於 VM 的 Azure 監視器](../insights/vminsights-overview.md)所產生的警示
+>     * [Azure 成本管理](../../cost-management-billing/manage/cost-management-budget-scenario.md)所產生的警示
 
 ### <a name="through-the-azure-portal"></a>透過 Azure 入口網站
 
@@ -64,9 +64,9 @@ ms.locfileid: "84710927"
 
 ### <a name="through-the-action-groups-rest-api"></a>透過動作群組 REST API
 
-您也可以使用「[動作群組 API](https://docs.microsoft.com/rest/api/monitor/actiongroups) 」來選擇一般警示架構。 建立[或更新](https://docs.microsoft.com/rest/api/monitor/actiongroups/createorupdate)REST API 呼叫時，您可以將旗標 "useCommonAlertSchema" 設為 ' true ' （以加入宣告）或 ' false ' （以退出宣告）下列任何動作-電子郵件/webhook/邏輯應用程式/Azure 函式/自動化 runbook。
+您也可以使用「[動作群組 API](/rest/api/monitor/actiongroups) 」來選擇一般警示架構。 建立[或更新](/rest/api/monitor/actiongroups/createorupdate)REST API 呼叫時，您可以將旗標 "useCommonAlertSchema" 設為 ' true ' （以加入宣告）或 ' false ' （以退出宣告）下列任何動作-電子郵件/webhook/邏輯應用程式/Azure 函式/自動化 runbook。
 
-例如，建立[或更新](https://docs.microsoft.com/rest/api/monitor/actiongroups/createorupdate)REST API 的下列要求主體將會執行下列動作：
+例如，建立[或更新](/rest/api/monitor/actiongroups/createorupdate)REST API 的下列要求主體將會執行下列動作：
 
 * 啟用電子郵件動作「John Doe 的電子郵件」的一般警示架構
 * 停用電子郵件動作「Jane Smith 的電子郵件」的一般警示架構
@@ -121,7 +121,4 @@ ms.locfileid: "84710927"
 ## <a name="next-steps"></a>後續步驟
 
 - [適用于 Webhook/Logic Apps/Azure Functions/自動化 Runbook 的一般警示架構定義。](https://aka.ms/commonAlertSchemaDefinitions)
-- [瞭解如何建立邏輯應用程式，利用通用的警示架構來處理您的所有警示。](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-integrations) 
-
-
-
+- [瞭解如何建立邏輯應用程式，利用通用的警示架構來處理您的所有警示。](./alerts-common-schema-integrations.md) 

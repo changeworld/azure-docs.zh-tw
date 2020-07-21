@@ -6,15 +6,15 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/04/2019
-ms.openlocfilehash: 63d8d8d3701a9adca4bd01e6e061877f5d0bd245
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 540e824f301c402e1f65f6186b26ad1672e21d37
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80333349"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539341"
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics 資料安全性
-本文件旨在提供 Log Analytics (Azure 監視器的功能) 的特定資訊，以補充 [Azure 信任中心](../../security/fundamentals/trust-center.md)上的資訊。  
+本文件旨在提供 Log Analytics (Azure 監視器的功能) 的特定資訊，以補充 [Azure 信任中心](https://www.microsoft.com/en-us/trust-center?rtc=1)上的資訊。  
 
 本文說明 Log Analytics 資料收集、處理和保全的方式。 您可以使用代理程式連接到 Web 服務、使用 System Center Operations Manager 來收集操作資料，或從 Azure 診斷擷取資料供 Log Analytics 使用。 
 
@@ -24,7 +24,7 @@ Log Analytics 服務會使用下列方法安全地管理您以雲端為基礎的
 * 資料保留
 * 實體安全性
 * 事件管理
-* 合規性
+* 法規遵循
 * 安全性標準認證
 
 如有任何問題、建議或關於下列任一項資訊的問題 (包括我們的安全性原則)，請與我們連絡：[Azure 支援選項](https://azure.microsoft.com/support/options/)。
@@ -42,9 +42,9 @@ Log Analytics 服務會使用下列方法安全地管理您以雲端為基礎的
 |平台/語言 | 支援 | 相關資訊 |
 | --- | --- | --- |
 |Linux | Linux 發行版本通常會依賴 [OpenSSL](https://www.openssl.org) 來取得 TLS 1.2 支援。  | 請檢查 [OpenSSL 變更記錄](https://www.openssl.org/news/changelog.html)來確認支援的 OpenSSL 版本。|
-| Windows 8.0 - 10 | 支援，而且已預設為啟用。 | 請確認您仍在使用[預設設定](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)。  |
-| Windows Server 2012 - 2016 | 支援，而且已預設為啟用。 | 確認您仍在使用[預設設定](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) |
-| Windows 7 SP1 和 Windows Server 2008 R2 SP1 | 支援，但預設為不啟用。 | 請參閱[傳輸層安全性 (TLS) 登錄設定](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)頁面，了解詳細的啟用方式。  |
+| Windows 8.0 - 10 | 支援，而且已預設為啟用。 | 請確認您仍在使用[預設設定](/windows-server/security/tls/tls-registry-settings)。  |
+| Windows Server 2012 - 2016 | 支援，而且已預設為啟用。 | 確認您仍在使用[預設設定](/windows-server/security/tls/tls-registry-settings) |
+| Windows 7 SP1 和 Windows Server 2008 R2 SP1 | 支援，但預設為不啟用。 | 請參閱[傳輸層安全性 (TLS) 登錄設定](/windows-server/security/tls/tls-registry-settings)頁面，了解詳細的啟用方式。  |
 
 ## <a name="data-segregation"></a>資料隔離
 在 Log Analytics 服務內嵌您的資料之後，資料會以邏輯方式在整個服務的每個元件上分開。 每個工作區加上標記的所有資料。 這項標記作業在整個資料生命週期持續發生，它會強制執行服務的每個層級。 在您選取的區域中，您的資料會儲存在儲存體叢集中的專用資料庫。
@@ -102,7 +102,7 @@ Log Analytics 具備所有 Microsoft 服務都會遵守的事件管理程序。 
 
 如需 Microsoft 如何回應安全性事件的詳細資訊，請參閱[雲端中的 Microsoft Azure 安全性回應](https://gallery.technet.microsoft.com/Azure-Security-Response-in-dd18c678/file/150826/4/Microsoft%20Azure%20Security%20Response%20in%20the%20cloud.pdf)。
 
-## <a name="compliance"></a>合規性
+## <a name="compliance"></a>法規遵循
 Log Analytics 軟體開發和服務小組的資訊安全性及治理程式可支援其商務需求，並且會遵守 [Microsoft Azure 信任中心](https://azure.microsoft.com/support/trust-center/)和 [Microsoft 信任中心合規性所述的法律與法規](https://www.microsoft.com/en-us/trustcenter/compliance/default.aspx)。 上述位置也會描述 Log Analytics 建立安全性需求、識別安全性控制，以及管理和監視風險的方式。 每年我們都會檢閱原則、標準、程序和指導方針。
 
 每個開發小組成員都會獲得正式的應用程式安全性訓練。 在內部，我們使用版本控制系統來開發軟體。 每個軟體專案都受到版本控制系統的保護。
@@ -175,4 +175,3 @@ Log Analytics 服務會確保內送資料是來自信任的來源，方法是驗
 * 請遵循 [Azure VM 快速入門](../../azure-monitor/learn/quick-collect-azurevm.md)，了解如何針對您的 Azure VM 使用 Log Analytics 收集資料。  
 
 *  如果您需要在您的環境中，從實體或虛擬 Windows 或 Linux 電腦收集資料，請參閱 [Linux 電腦的快速入門](../../azure-monitor/learn/quick-collect-linux-computer.md)或 [Windows 電腦的快速入門](../../azure-monitor/learn/quick-collect-windows-computer.md)
-

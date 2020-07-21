@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: 430b1c044ac5fc22dbf3a4f4df33ff9017e21d6d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 727653314104ee1b2a27a1342de9824d8f303e23
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361950"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539732"
 ---
 # <a name="monitoring-azure-resources-with-azure-monitor"></a>使用 Azure 監視器監視 Azure 資源
 當您有依賴 Azure 資源的重要應用程式和商務程序時，您會想要監視這些資源的可用性、效能和操作。 本文說明 Azure 資源所產生的監視資料，以如何使用 Azure 監視器的功能來分析此資料並發出警示。
@@ -79,9 +79,9 @@ Azure 中的資源會產生下圖所示的[記錄](../platform/data-platform-log
 ## <a name="diagnostic-settings"></a>診斷設定
 診斷設定會定義應將特定資源的資源記錄和計量傳送到何處。 可能的目的地包括：
 
-- [Log Analytics 工作區](../platform/resource-logs-collect-workspace.md)，可讓您使用功能強大的記錄查詢透過 Azure 監視器所收集的其他監視資料來分析資料，也可以利用記錄警示和視覺效果等其他 Azure 監視器功能。 
-- [事件中樞](../platform/resource-logs-stream-event-hubs.md)，可將資料串流至外部系統 (例如第三方 SIEM 和其他記錄分析解決方案)。 
-- [Azure 儲存體帳戶](../platform/resource-logs-collect-storage.md)，適合用於稽核、靜態分析或備份。
+- [Log Analytics 工作區](../platform/resource-logs.md#send-to-log-analytics-workspace)，可讓您使用功能強大的記錄查詢透過 Azure 監視器所收集的其他監視資料來分析資料，也可以利用記錄警示和視覺效果等其他 Azure 監視器功能。 
+- [事件中樞](../platform/resource-logs.md#send-to-azure-event-hubs)，可將資料串流至外部系統 (例如第三方 SIEM 和其他記錄分析解決方案)。 
+- [Azure 儲存體帳戶](../platform/resource-logs.md#send-to-azure-storage)，適合用於稽核、靜態分析或備份。
 
 請遵循[建立診斷設定以在 Azure中收集平台記錄和計量](../platform/diagnostic-settings.md)，以透過 Azure 入口網站建立和管理診斷設定。 請參閱[使用 Resource Manager 範本在 Azure 中建立診斷設定](../platform/diagnostic-settings-template.md)以在範本中定義診斷設定，並針對已建立的資源啟用完整的監視功能。
 
@@ -114,7 +114,7 @@ Azure 中的資源會產生下圖所示的[記錄](../platform/data-platform-log
 ### <a name="activity-log"></a>活動記錄檔 
 在 Azure 入口網站中，能以初始篩選設定為目前資源的方式來檢視活動記錄中的項目。 將活動記錄複製到 Log Analytics 工作區來存取活動記錄，以便將其用於記錄查詢和活頁簿。 
 
-- 如需如何使用各種方法來檢視活動記錄並擷取項目的詳細資訊，請參閱[檢視及擷取 Azure 活動記錄事件](../platform/activity-log-view.md)。
+- 如需如何使用各種方法來檢視活動記錄並擷取項目的詳細資訊，請參閱[檢視及擷取 Azure 活動記錄事件](../platform/activity-log.md#view-the-activity-log)。
 - 請參閱 Azure 服務的文件，以了解所記錄的特定事件。
 
 ![活動記錄檔](media/monitor-azure-resource/activity-log.png)
@@ -125,8 +125,8 @@ Azure 監視器記錄會合併來自多個服務和其他資料來源的記錄�
 [Log Analytics](../log-query/get-started-portal.md) 可讓您使用[記錄查詢](../log-query/log-query-overview.md)，這是 Azure 監視器的強大功能，可讓您使用功能完整的查詢語言來為記錄資料執行進階分析。 請從 Azure 資源 [監視] 功能表中的 [記錄] 開啟 Log Analytics，以使用資源作為[查詢範圍](../log-query/scope.md#query-scope)來處理記錄查詢。 這可讓您只針對該資源分析多個資料表的資料。 使用 [Azure 監視器] 功能表中的 [記錄] 來存取所有資源的記錄。 
 
 - 如需「如何使用用來撰寫記錄查詢的查詢語言」的教學課程，請參閱[開始使用 Azure 監視器中的記錄查詢](../log-query/get-started-queries.md)。
-- 如需 Azure 監視器記錄如何收集資源記錄的相關資訊，以及如何在查詢中存取資源記錄的詳細資訊，請參閱[在 Azure 監視器中於 Log Analytics 工作區內收集 Azure 資源記錄](../platform/resource-logs-collect-workspace.md)。
-- 如需 Azure 監視器記錄如何定資源記錄資料結構的說明，請參閱[收集模式](../platform/resource-logs-collect-workspace.md#resource-log-collection-mode)。
+- 如需 Azure 監視器記錄如何收集資源記錄的相關資訊，以及如何在查詢中存取資源記錄的詳細資訊，請參閱[在 Azure 監視器中於 Log Analytics 工作區內收集 Azure 資源記錄](../platform/resource-logs.md#send-to-log-analytics-workspace)。
+- 如需 Azure 監視器記錄如何定資源記錄資料結構的說明，請參閱[收集模式](../platform/resource-logs.md#send-to-log-analytics-workspace)。
 - 請參閱每個 Azure 服務的文件，以深入了解其在 Azure 監視器記錄中的資料表。
 
 ![記錄](media/monitor-azure-resource/logs.png)
@@ -163,4 +163,4 @@ Azure 監視器記錄會合併來自多個服務和其他資料來源的記錄�
 
 ## <a name="next-steps"></a>後續步驟
 
-* 如需不同 Azure 服務的資源記錄詳細資訊，請參閱[Azure 資源記錄的支援服務、結構描述和類別](../platform/diagnostic-logs-schema.md)。  
+* 如需不同 Azure 服務的資源記錄詳細資訊，請參閱[Azure 資源記錄的支援服務、結構描述和類別](../platform/resource-logs-schema.md)。  

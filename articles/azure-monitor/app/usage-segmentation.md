@@ -6,11 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/24/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 10ea3c68695e7e4fb4950fbcc4a190e9f1d83f49
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 0d605286df70988852d1650be58cfb2c395de814
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83797708"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539800"
 ---
 # <a name="users-sessions-and-events-analysis-in-application-insights"></a>Application Insights 中的使用者、工作階段和事件分析
 
@@ -56,7 +57,7 @@ ms.locfileid: "83797708"
 
 ## <a name="next-steps"></a>後續步驟
 
-- 若要啟用使用體驗，請開始傳送[「自訂事件」](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) 或 [「頁面檢視」](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views)。
+- 若要啟用使用體驗，請開始傳送[「自訂事件」](./api-custom-events-metrics.md#trackevent) 或 [「頁面檢視」](./api-custom-events-metrics.md#page-views)。
 - 如果您已傳送自訂事件或頁面檢視，請探索「使用量工具」，以了解使用者如何使用您的服務。
     - [漏斗圖](usage-funnels.md)
     - [保留](usage-retention.md)

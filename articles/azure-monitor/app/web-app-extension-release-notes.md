@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: MS-jgol
 ms.author: jgol
 ms.date: 06/26/2020
-ms.openlocfilehash: 978cb7ece1f8b3e16815c1dc49e4983dc393cbfc
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: b9da3b0647d5abe60dd8f6cb21163ff21f07205b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85937506"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539715"
 ---
 # <a name="release-notes-for-azure-web-app-extension-for-application-insights"></a>適用于 Application Insights 的 Azure Web 應用程式擴充功能版本資訊
 
@@ -21,7 +21,7 @@ ms.locfileid: "85937506"
 ## <a name="frequently-asked-questions"></a>常見問題集
 
 - 如何找出我目前所在的延伸模組版本？
-    - 移至 `https://<yoursitename>.scm.azurewebsites.net/ApplicationInsights`。 如需詳細資訊，請流覽以[延伸模組/代理程式為基礎的監視的逐步疑難排解指南](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps?tabs=net#troubleshooting)。
+    - 前往 `https://<yoursitename>.scm.azurewebsites.net/ApplicationInsights`。 如需詳細資訊，請流覽以[延伸模組/代理程式為基礎的監視的逐步疑難排解指南](./azure-web-apps.md?tabs=net#troubleshooting)。
 
 - 如果我使用私用延伸模組，該怎麼做？
     - 卸載私人網站延伸模組，因為它已不再受到支援。

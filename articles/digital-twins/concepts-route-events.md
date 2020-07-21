@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 7c1f0c18fc8b867e16ce539a24839637e1d14379
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b7d62777f73a92768b1ede3fb9b7e0cb97951823
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85390783"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537490"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>在 Azure 數位 Twins 內外路由事件
 
@@ -46,7 +46,7 @@ Azure 數位 twins 會使用**事件路由**，將資料傳送給服務以外的
 
 計算資源也需要獨立建立安全性和存取權限。
 
-若要逐步完成設定 Azure 函式以處理數位對應項事件的程式，請參閱[如何：設定用來處理資料的 azure 函數](how-to-create-azure-function.md)。
+若要逐步完成設定 Azure 函式以處理數位對應項事件的程式，請參閱[*如何：設定用來處理資料的 azure 函數*](how-to-create-azure-function.md)。
 
 ## <a name="create-an-endpoint"></a>建立端點
 
@@ -90,7 +90,7 @@ IoT 中樞和 Azure 數位 Twins 中不同類型的事件會產生不同類型�
 ## <a name="next-steps"></a>後續步驟
 
 請參閱如何設定和管理事件路由：
-* [如何：管理端點和路由](how-to-manage-routes.md)
+* [*如何：管理端點和路由*](how-to-manage-routes.md)
 
 或者，請參閱如何使用 Azure Functions 來路由傳送 Azure 數位 Twins 內的事件：
-* [如何：設定用來處理資料的 Azure 函數](how-to-create-azure-function.md)
+* [*如何：設定用來處理資料的 Azure 函數*](how-to-create-azure-function.md)

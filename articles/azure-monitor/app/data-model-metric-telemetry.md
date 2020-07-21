@@ -4,11 +4,12 @@ description: 計量遙測的 Application Insights 資料模型
 ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: 3e4a1fc3de58b8e65ab9c7a288bdf3eb37e7bae0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 44f0b070a7c0da416002d9bf7e509d643a96dc7a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77671965"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540004"
 ---
 # <a name="metric-telemetry-application-insights-data-model"></a>計量遙測：Application Insights 資料模型
 
@@ -20,10 +21,10 @@ Application Insights 支援數個已知的計量名稱。 這些計量會置入 
 
 代表系統和程序計數器的計量︰
 
-| **.NET 名稱**             | **平台無從驗證的名稱** | **REST API 名稱** | **描述**
+| **.NET 名稱**             | **平台無從驗證的名稱** | **REST API 名稱** | **說明**
 | ------------------------- | -------------------------- | ----------------- | ---------------- 
 | `\Processor(_Total)\% Processor Time` | 進行中... | [processorCpuPercentage](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessorCpuPercentage) | 電腦 CPU 總數
-| `\Memory\Available Bytes`                 | 進行中... | [memoryAvailableBytes](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FmemoryAvailableBytes) | 顯示在電腦上執行的程序可用的實體記憶體數量 (以位元組為單位)。 其計算方式為加總填零、可用和待命記憶體清單上的空間數量。 可用記憶體可供立即使用；填零記憶體由填滿零的記憶體分頁所組成，以免後續程序看見前一個程序所用的資料；待命記憶體是已從程序的工作集 (其實體記憶體) 移除並傳送到磁碟，但仍可供使用回收的記憶體。 請參閱[記憶體物件](https://msdn.microsoft.com/library/ms804008.aspx)
+| `\Memory\Available Bytes`                 | 進行中... | [memoryAvailableBytes](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FmemoryAvailableBytes) | 顯示在電腦上執行的程序可用的實體記憶體數量 (以位元組為單位)。 其計算方式為加總填零、可用和待命記憶體清單上的空間數量。 可用記憶體可供立即使用；填零記憶體由填滿零的記憶體分頁所組成，以免後續程序看見前一個程序所用的資料；待命記憶體是已從程序的工作集 (其實體記憶體) 移除並傳送到磁碟，但仍可供使用回收的記憶體。 請參閱[記憶體物件](/previous-versions/ms804008(v=msdn.10))
 | `\Process(??APP_WIN32_PROC??)\% Processor Time` | 進行中... | [processCpuPercentage](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessCpuPercentage) | 裝載應用程式之處理序的 CPU
 | `\Process(??APP_WIN32_PROC??)\Private Bytes`      | 進行中... | [processPrivateBytes](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessPrivateBytes) | 裝載應用程式之處理序所使用的記憶體
 | `\Process(??APP_WIN32_PROC??)\IO Data Bytes/sec` | 進行中... | [processIOBytesPerSecond](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessIOBytesPerSecond) | 裝載應用程式之處理序執行的 I/O 作業速率
@@ -32,7 +33,7 @@ Application Insights 支援數個已知的計量名稱。 這些計量會置入 
 | `\ASP.NET Applications(??APP_W3SVC_PROC??)\Request Execution Time`   | 進行中... | [requestExecutionTime](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FrequestExecutionTime) | 平均要求執行時間
 | `\ASP.NET Applications(??APP_W3SVC_PROC??)\Requests In Application Queue` | 進行中... | [requestsInQueue](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FrequestsInQueue) | 佇列中等候處理的要求數目
 
-## <a name="name"></a>Name
+## <a name="name"></a>名稱
 
 您想要在 Application Insights 入口網站和 UI 中看到的計量名稱。 
 
@@ -40,7 +41,7 @@ Application Insights 支援數個已知的計量名稱。 這些計量會置入 
 
 度量的單一值。 個別彙總度量的總和。
 
-## <a name="count"></a>Count
+## <a name="count"></a>計數
 
 彙總計量的計量權數。 不應該為度量設定。
 

@@ -2,19 +2,19 @@
 title: 安裝混合式雲端擴充功能 (HCX)
 description: 為您的 Azure VMware 解決方案 (AVS) 私人雲端設定 VMware 混合式雲端擴充功能 (HCX) 解決方案
 ms.topic: how-to
-ms.date: 05/19/2020
-ms.openlocfilehash: 3037d12ebbb036098cfc00a42521513bc2df6170
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/15/2020
+ms.openlocfilehash: b897a44fb6811c4e3564c59a8ab2c064506f0a4f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85367541"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539154"
 ---
 # <a name="install-hcx-for-azure-vmware-solution"></a>安裝適用於 Azure VMware 解決方案的 HCX
 
 在本文中，我們將逐步解說為您的 Azure VMWare 解決方案（AVS）私人雲端設定 VMWare 混合式雲端擴充功能（HCX）解決方案的程式。 HCX 可讓您透過各種內建 HCX 支援的遷移類型，將您的 VMware 工作負載遷移至雲端，以及其他已連線的網站。
 
-HCX Advanced （預設安裝）支援最多三個外部網站。 如果需要三個以上的網站，客戶可以選擇透過支援啟用 HCX Enterprise 附加元件。 HCX Enterprise 安裝會在公開上市（GA）之後，對客戶收取額外費用，但會提供[額外的功能](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/)。
+HCX Advanced （預設安裝）支援最多三個 vCenters。 如果需要超過三個，客戶可以選擇透過支援啟用 HCX Enterprise 附加元件。 HCX Enterprise 安裝會在公開上市（GA）之後，對客戶收取額外費用，但會提供[額外的功能](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/)。
 
 
 [在開始之前](#before-you-begin)，請先仔細檢閱[軟體版本需求](#software-version-requirements)和[先決條件](#prerequisites)。 
@@ -190,7 +190,7 @@ HCX Advanced （預設安裝）支援最多三個外部網站。 如果需要三
     
    ![選取 vSphere 複寫網路設定檔](./media/hybrid-cloud-extension-installation/vsphere-replication-network-profile.png)
 
-1. 從 [**選取網路擴充功能的分散式交換器**] 中，選取您的網路上將會整合並聯機的 vm 所在的 DVS。  選取 [繼續]。  
+1. 從 [**選取網路擴充功能的分散式交換器**] 中，選取您的網路上將會整合並聯機的 vm 所在的 DVS。  選取 \[繼續\]。  
       
     ![選取分散式虛擬交換器](./media/hybrid-cloud-extension-installation/distributed-switches.png)
 

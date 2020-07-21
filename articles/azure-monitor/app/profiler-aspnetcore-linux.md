@@ -6,16 +6,16 @@ author: cweining
 ms.author: cweining
 ms.date: 02/23/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: b91abe282c25b161db72616d7123d7a2bf5dbc9f
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 6ef67addba2bcc96cfb51f9f217d7d43e729bdf4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86111060"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539902"
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>使用 Application Insights Profiler 來分析 ASP.NET Core Azure Linux Web 應用程式
 
-這項功能目前為預覽狀態。
+此功能目前為預覽狀態。
 
 了解在使用 [Application Insights ](../../azure-monitor/app/app-insights-overview.md) 時，即時 Web 應用程式的每個方法各使用了多少時間。 Application Insights Profiler 現在可在 Azure App Service 上供裝載於 Linux 中的 ASP.NET Core Web 應用程式使用。 本指南提供逐步指示，說明如何針對 ASP.NET Core Linux Web 應用程式收集分析工具追蹤。
 
@@ -23,7 +23,7 @@ ms.locfileid: "86111060"
 
 ![分析工具追蹤](./media/profiler-aspnetcore-linux/profiler-traces.png)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 下列指示適用於所有 Windows、Linux 和 Mac 開發環境：
 
 * 安裝 [.NET Core SDK 2.1.2 或更新版本](https://dotnet.microsoft.com/download/archives)。
@@ -106,9 +106,9 @@ ms.locfileid: "86111060"
 
     ![設定 Git 存放庫](./media/profiler-aspnetcore-linux/setup-git-repo.png)
 
-如需更多部署選項，請參閱[本文](https://docs.microsoft.com/azure/app-service/containers/choose-deployment-type)。
+如需更多部署選項，請參閱[本文](../../app-service/containers/choose-deployment-type.md)。
 
-## <a name="deploy-your-project"></a>部署專案
+## <a name="deploy-your-project"></a>部署您的專案
 
 1. 在命令提示字元視窗中，瀏覽至專案的根資料夾。 新增 Git 遠端存放庫以指向 App Service 上的存放庫：
 

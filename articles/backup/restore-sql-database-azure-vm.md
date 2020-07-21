@@ -3,11 +3,12 @@ title: 在 Azure VM 上還原 SQL Server 資料庫
 description: 本文說明如何還原在 Azure VM 上執行，並使用 Azure 備份備份的 SQL Server 資料庫。
 ms.topic: conceptual
 ms.date: 05/22/2019
-ms.openlocfilehash: 642476c98ca223da01bda5c6eb79ee9b53732468
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5d7fc52aaaca0bf99955919c954cc22ab0d9d3d8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84687424"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538406"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>在 Azure VM 上還原 SQL Server 資料庫
 
@@ -22,19 +23,19 @@ Azure 備份可以還原在 Azure Vm 上執行 SQL Server 資料庫，如下所�
 - 使用交易記錄備份還原到特定的日期或時間（到第二個）。 Azure 備份會自動決定適當的完整差異備份，以及根據所選時間還原所需的記錄備份鏈。
 - 還原特定的完整或差異備份，以還原到特定的復原點。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 在還原資料庫之前，請注意下列事項：
 
 - 您可以將資料庫還原至相同 Azure 區域中的 SQL Server 執行個體。
 - 目的地伺服器必須註冊到和來源相同的保存庫。
-- 若要將 TDE 加密的資料庫還原到另一個 SQL Server，您必須先將[憑證還原至目的地伺服器](https://docs.microsoft.com/sql/relational-databases/security/encryption/move-a-tde-protected-database-to-another-sql-server?view=sql-server-2017)。
+- 若要將 TDE 加密的資料庫還原到另一個 SQL Server，您必須先將[憑證還原至目的地伺服器](/sql/relational-databases/security/encryption/move-a-tde-protected-database-to-another-sql-server)。
 - 在還原 "master" 資料庫之前，請使用啟動選項 **-m AzureWorkloadBackup**，在單一使用者模式中啟動 SQL Server 實例。
   - **-M**的值是用戶端的名稱。
   - 只有指定的用戶端名稱可以開啟連接。
 - 針對所有系統資料庫（model、master、msdb），請在觸發還原之前，先停止 SQL Server Agent 服務。
 - 關閉可能會嘗試連接到這些資料庫的任何應用程式。
-- 如果您在伺服器上執行多個實例，則所有實例都應該啟動並執行，否則伺服器不會出現在目的地伺服器清單中，以便您將資料庫還原到其中。
+- 如果您在伺服器上執行多個實例，則所有實例都應該啟動並執行，否則伺服器不會出現在目的地伺服器清單中，以供您用來將資料庫還原到其中。
 
 ## <a name="restore-a-database"></a>還原資料庫
 
@@ -71,23 +72,32 @@ Azure 備份可以還原在 Azure Vm 上執行 SQL Server 資料庫，如下所�
    - **替代位置**：將資料庫還原至替代位置，並保留原始源資料庫。
    - **覆寫 DB**：將資料還原至與原始來源相同的 SQL Server 執行個體。 此選項會覆寫原始資料庫。
 
-    > [!IMPORTANT]
-    > 如果選取的資料庫屬於 AlwaysOn 可用性群組，SQL Server 不允許覆寫資料庫。 只有 [替代位置]**** 可用。
-    >
+        > [!IMPORTANT]
+        > 如果選取的資料庫屬於 AlwaysOn 可用性群組，SQL Server 不允許覆寫資料庫。 只有 [替代位置]**** 可用。
+        >
    - **還原成**檔案：不是還原為資料庫，而是在稍後使用 SQL Server Management Studio，將可以復原的備份檔案還原為資料庫中存在的任何電腦。
      ![[還原設定] 功能表](./media/backup-azure-sql-database/restore-configuration.png)
 
 ### <a name="restore-to-an-alternate-location"></a>還原至替代位置
 
 1. 在 [**還原**設定] 功能表的 [**要還原的位置**] 底下，選取 [**替代位置**]。
-2. 選取您要在其中還原資料庫的目的地 SQL Server 名稱和執行個體。
-3. 在 [還原的 DB 名稱]**** 方塊中，輸入目標資料庫的名稱。
-4. 如果適用的話，請選取 [Overwrite if the DB with the same name already exists on selected SQL instance] \(若選取的 SQL 執行個體上已存在相同名稱的 DB 則覆寫\)****。
-5. 選取 [確定]。
+1. 選取您要在其中還原資料庫的目的地 SQL Server 名稱和執行個體。
+1. 在 [還原的 DB 名稱]**** 方塊中，輸入目標資料庫的名稱。
+1. 如果適用的話，請選取 [Overwrite if the DB with the same name already exists on selected SQL instance] \(若選取的 SQL 執行個體上已存在相同名稱的 DB 則覆寫\)****。
+1. 選取 [**還原點**]，然後選取要[還原到特定的時間點](#restore-to-a-specific-point-in-time)，還是要[還原到特定的復原點](#restore-to-a-specific-restore-point)。
 
-    ![提供 [還原設定] 功能表的值](./media/backup-azure-sql-database/restore-configuration.png)
+    ![選取還原點](./media/backup-azure-sql-database/select-restore-point.png)
 
-6. 在 [**選取還原點**] 中，選取要[還原到特定的時間點](#restore-to-a-specific-point-in-time)，還是要[還原到特定的復原點](#restore-to-a-specific-restore-point)。
+    ![還原至時間點](./media/backup-azure-sql-database/restore-to-point-in-time.png)
+
+1. 在 [進階設定]**** 功能表上：
+
+    - 如果您想要在還原後保留資料庫 nonoperational，請啟用 [**使用 NORECOVERY 還原**]。
+    - 如果您想要變更目的地伺服器上的還原位置，請輸入新的目標路徑。
+
+        ![輸入目標路徑](./media/backup-azure-sql-database/target-paths.png)
+
+1. 按一下 **[確定]** 以觸發還原。 在 [**通知**] 區域中追蹤還原進度，或在保存庫的 [**備份作業**] 視圖底下加以追蹤。
 
     > [!NOTE]
     > 還原時間點僅適用于處於完整和大量記錄復原模式之資料庫的記錄備份。
@@ -105,11 +115,11 @@ Azure 備份可以還原在 Azure Vm 上執行 SQL Server 資料庫，如下所�
 
 ### <a name="restore-as-files"></a>還原為檔案
 
-若要將備份資料還原為 .bak 檔案，而不是資料庫，請選擇 [**還原為**檔案]。 一旦檔案傾印到指定的路徑，您就可以將這些檔案放到您想要將它們還原為資料庫的任何電腦上。 由於能夠將這些檔案移到任何電腦上，因此您現在可以在訂用帳戶和區域之間還原資料。
+若要將備份資料還原為 .bak 檔案，而不是資料庫，請選擇 [**還原為**檔案]。 一旦檔案傾印到指定的路徑，您就可以將這些檔案放到您想要將它們還原為資料庫的任何電腦上。 由於您可以將這些檔案移到任何電腦上，因此您現在可以在訂用帳戶和區域之間還原資料。
 
-1. 在 [**還原**設定] 功能表的 [**要還原的位置**] 底下，選取 [**還原為**檔案]。
-2. 選取您要還原備份檔案的 SQL Server 名稱。
-3. 在**伺服器的目的地路徑**中，輸入在步驟2中選取之伺服器上的資料夾路徑。 這是服務將會傾印所有必要備份檔案的位置。 一般而言，當指定為目的地路徑時，已掛接之 Azure 檔案共用的網路共用路徑或路徑，可讓相同網路中的其他電腦或掛接在其上的相同 Azure 檔案共用，更輕鬆地存取這些檔案。<BR>
+1. 在 [在**何處和如何還原**] 底下，選取 [**還原為**檔案]。
+1. 選取您要還原備份檔案的 SQL Server 名稱。
+1. 在**伺服器的目的地路徑**中，輸入在步驟2中選取之伺服器上的資料夾路徑。 這是服務將會傾印所有必要備份檔案的位置。 一般而言，網路共用路徑 (或是指定為目的地路徑的掛接 Azure 檔案路徑) 可讓相同網路中或掛接相同 Azure 檔案共用的其他機器，更輕鬆地存取這些檔案。<BR>
 
     >若要在裝載于目標的已註冊 VM 上的 Azure 檔案共用上還原資料庫備份檔案，請確定 NT AUTHORITY\SYSTEM 具有檔案共用的存取權。 您可以執行下列步驟，將讀取/寫入權限授與在 VM 上裝載的 AFS：
     >
@@ -119,15 +129,13 @@ Azure 備份可以還原在 Azure Vm 上執行 SQL Server 資料庫，如下所�
     >- 開始將備份保存庫中的檔案還原為 `\\<storageacct>.file.core.windows.net\<filesharename>` 路徑<BR>
     您可以透過下載 Psexec<https://docs.microsoft.com/sysinternals/downloads/psexec>
 
-4. 選取 [確定]。
+1. 選取 [確定]。
 
     ![選取還原為檔案](./media/backup-azure-sql-database/restore-as-files.png)
 
-5. 選取對應至將還原所有可用 .bak 檔案的**還原點**。
+1. 選取 [**還原點**]，然後選取要[還原到特定的時間點](#restore-to-a-specific-point-in-time)，還是要[還原到特定的復原點](#restore-to-a-specific-restore-point)。
 
-    ![選取還原點](./media/backup-azure-sql-database/restore-point.png)
-
-6. 與選取的復原點相關聯的所有備份檔案都會傾印到目的地路徑。 您可以使用 SQL Server Management Studio，將檔案還原為其所在電腦上的資料庫。
+1. 與選取的復原點相關聯的所有備份檔案都會傾印到目的地路徑。 您可以使用 SQL Server Management Studio，將檔案還原為其所在電腦上的資料庫。
 
     ![已還原目的地路徑中的備份檔案](./media/backup-azure-sql-database/sql-backup-files.png)
 
@@ -143,40 +151,16 @@ Azure 備份可以還原在 Azure Vm 上執行 SQL Server 資料庫，如下所�
 1. 選取日期之後，時間軸圖表會顯示連續範圍中可用的復原點。
 1. 在時間軸圖形上指定復原的時間，或選取時間。 然後選取 [確定]。
 
-    ![選取還原時間](./media/backup-azure-sql-database/recovery-point-logs-graph.png)
-
-1. 在 [ **Advanced Configuration** ] 功能表上，如果您想要在還原後保留資料庫 nonoperational，請啟用 [**使用 NORECOVERY 還原**]。
-1. 如果您要變更目的地伺服器上的還原位置，請輸入新的目標路徑。
-1. 選取 [確定]。
-
-    ![進階設定功能表](./media/backup-azure-sql-database/restore-point-advanced-configuration.png)
-
-1. 在 [還原]**** 功能表上，選取 [還原]**** 以啟動還原作業。
-1. 在 [**通知**] 區域中追蹤還原進度，或選取 [資料庫] 功能表上的 [**還原作業**] 加以追蹤。
-
-    ![還原作業進度](./media/backup-azure-sql-database/restore-job-notification.png)
-
 ### <a name="restore-to-a-specific-restore-point"></a>還原至特定還原點
 
 如果您已選取 [完整和差異]**** 作為還原類型，請執行下列動作：
 
 1. 從清單中選取復原點，然後選取 [確定]**** 以完成還原點程序。
 
-    ![選擇完整復原點](./media/backup-azure-sql-database/choose-fd-recovery-point.png)
+    ![選擇完整復原點](./media/backup-azure-sql-database/choose-full-recovery-point.png)
 
     >[!NOTE]
     > 根據預設，會顯示過去30天內的復原點。 您可以按一下 [**篩選**]，然後選取自訂範圍，以顯示30天之前的復原點。
-
-1. 在 [ **Advanced Configuration** ] 功能表上，如果您想要在還原後保留資料庫 nonoperational，請啟用 [**使用 NORECOVERY 還原**]。
-1. 如果您要變更目的地伺服器上的還原位置，請輸入新的目標路徑。
-1. 選取 [確定]。
-
-    ![進階設定功能表](./media/backup-azure-sql-database/restore-point-advanced-configuration.png)
-
-1. 在 [還原]**** 功能表上，選取 [還原]**** 以啟動還原作業。
-1. 在 [**通知**] 區域中追蹤還原進度，或選取 [資料庫] 功能表上的 [**還原作業**] 加以追蹤。
-
-    ![還原作業進度](./media/backup-azure-sql-database/restore-job-notification.png)
 
 ### <a name="restore-databases-with-large-number-of-files"></a>還原具有大量檔案的資料庫
 

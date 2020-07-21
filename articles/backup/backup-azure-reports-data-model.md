@@ -3,11 +3,12 @@ title: Azure 備份診斷事件的資料模型
 description: 此資料模型會參考將診斷事件傳送至 Log Analytics （LA）的資源特定模式。
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: af1e4159ff2794f8d4dd11480eb7f1789e034c06
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 46d40694da4eb025afc11da0f14b28691bf13bb8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84484508"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538865"
 ---
 # <a name="data-model-for-azure-backup-diagnostics-events"></a>Azure 備份診斷事件的資料模型
 
@@ -15,7 +16,7 @@ ms.locfileid: "84484508"
 
 下表提供核心備份實體的相關資訊，例如保存庫和備份專案。
 
-| **欄位**                         | **資料類型** | **描述**                                              |
+| **欄位**                         | **資料類型** | **說明**                                              |
 | --------------------------------- | ------------- | ------------------------------------------------------------ |
 | ResourceId                        | Text          | 正在收集資料的資源識別碼。 例如，復原服務保存庫資源識別碼。 |
 | OperationName                     | Text          | 此欄位代表目前作業的名稱-BackupItem、BackupItemAssociation 或 ProtectedContainer。 |
@@ -66,7 +67,7 @@ ms.locfileid: "84484508"
 
 下表提供警示相關欄位的詳細資料。
 
-| **欄位**                      | **資料類型** | **描述**                                              |
+| **欄位**                      | **資料類型** | **說明**                                              |
 | :----------------------------- | ------------- | ------------------------------------------------------------ |
 | ResourceId                     | Text          | 要收集其相關資料的資源所具備的唯一識別碼。 例如，復原服務保存庫資源識別碼 |
 | OperationName                  | Text          | 目前作業的名稱。 例如，Alert            |
@@ -96,7 +97,7 @@ ms.locfileid: "84484508"
 
 此表格提供基本的受保護執行個體相關欄位。
 
-| **欄位**                      | **資料類型** | **描述**                                              |
+| **欄位**                      | **資料類型** | **說明**                                              |
 | ------------------------------ | ------------- | ------------------------------------------------------------ |
 | ResourceId                     | Text          | 要收集資料之資源的唯一識別碼。 例如，復原服務保存庫資源識別碼 |
 | OperationName                  | Text          | 作業的名稱，例如 ProtectedInstance         |
@@ -115,7 +116,7 @@ ms.locfileid: "84484508"
 
 下表提供作業相關欄位的詳細資料。
 
-| **欄位**                      | **資料類型** | **描述**                                              |
+| **欄位**                      | **資料類型** | **說明**                                              |
 | ------------------------------ | ------------- | ------------------------------------------------------------ |
 | ResourceId                     | Text          | 正在收集資料的資源識別碼。 例如，復原服務保存庫資源識別碼 |
 | OperationName                  | Text          | 此欄位代表目前作業的名稱 - Job    |
@@ -146,7 +147,7 @@ ms.locfileid: "84484508"
 
 下表提供原則相關欄位的詳細資料。
 
-| **欄位**                       | **資料類型**  | **描述**                                              |
+| **欄位**                       | **資料類型**  | **說明**                                              |
 | ------------------------------- | -------------- | ------------------------------------------------------------ |
 | ResourceId                      | Text           | 要收集資料之資源的唯一識別碼。 例如，復原服務保存庫資源識別碼 |
 | OperationName                   | Text           | 作業的名稱，例如 [原則] 或 [PolicyAssociation] |
@@ -161,7 +162,7 @@ ms.locfileid: "84484508"
 | DiffBackupDaysOfTheWeek         | Text           | Azure VM 備份中 SQL 的差異備份周中的天數 |
 | DiffBackupFormat                | Text           | Azure VM 備份中用於 SQL 差異備份的格式   |
 | DiffBackupRetentionDuration     | 十進位數字 | Azure VM 備份中 SQL 的差異備份保留期間 |
-| DiffBackupTime                  | 時間           | Azure VM 備份中用於 SQL 差異備份的時間     |
+| DiffBackupTime                  | Time           | Azure VM 備份中用於 SQL 差異備份的時間     |
 | LogBackupFrequency              | 十進位數字 | SQL 記錄備份的頻率                            |
 | LogBackupRetentionDuration      | 十進位數字 | Azure VM 備份中 SQL 記錄備份的保留期間 |
 | MonthlyRetentionDaysOfTheMonth  | Text           | 設定每月保留期的月份周數。  例如，First、Last 等等。 |
@@ -195,7 +196,7 @@ ms.locfileid: "84484508"
 
 下表提供儲存體相關欄位的詳細資料。
 
-| **欄位**                      | **資料類型** | **描述**                                              |
+| **欄位**                      | **資料類型** | **說明**                                              |
 | ------------------------------ | ------------- | ------------------------------------------------------------ |
 | ResourceId                     | Text          | 正在收集資料的資源識別碼。 例如，復原服務保存庫資源識別碼 |
 | OperationName                  | Text          | 此欄位代表目前作業的名稱-儲存體或 StorageAssociation |
@@ -219,5 +220,5 @@ ms.locfileid: "84484508"
 
 ## <a name="next-steps"></a>後續步驟
 
-- [瞭解如何將診斷資料傳送至 Log Analytics](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events)
-- [瞭解如何在資源特定資料表上撰寫查詢](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-use-azuremonitor#sample-kusto-queries)
+- [瞭解如何將診斷資料傳送至 Log Analytics](./backup-azure-diagnostic-events.md)
+- [瞭解如何在資源特定資料表上撰寫查詢](./backup-azure-monitoring-use-azuremonitor.md#sample-kusto-queries)

@@ -3,12 +3,12 @@ title: Azure VM 中的 SQL server 虛刪除和 Azure VM 工作負載中的 SAP H
 description: 瞭解 Azure VM 中的 SQL server 虛刪除和 Azure VM 工作負載中的 SAP Hana 如何讓備份更加安全。
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: f1e3ecae5d643b8e32f8f4f07808d56cdc421163
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c0eaedea2d5428376befaade42f87348cf84e7bc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82791369"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538185"
 ---
 # <a name="soft-delete-for-sql-server-in-azure-vm-and-sap-hana-in-azure-vm-workloads"></a>Azure VM 中的 SQL server 虛刪除和 Azure VM 工作負載中的 SAP Hana
 
@@ -99,7 +99,7 @@ Azure 備份現在會針對 Azure VM 中的 SQL server 和 Azure VM 工作負載
 
 ### <a name="delete-the-backup-item-using-azure-powershell"></a>使用 Azure PowerShell 刪除備份專案
 
-使用[Enable-azrecoveryservicesbackupprotection](https://docs.microsoft.com/powershell/module/az.recoveryservices/Disable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) PS Cmdlet 刪除備份專案。
+使用[Enable-azrecoveryservicesbackupprotection](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection) PS Cmdlet 刪除備份專案。
 
 ```powershell
 Disable-AzRecoveryServicesBackupProtection -Item $myBkpItem -RemoveRecoveryPoints -VaultId $myVaultID -Force
@@ -117,7 +117,7 @@ Get-AzRecoveryServicesBackupItem -BackupManagementType AzureWorkload -WorkloadTy
 $myBkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureWorkload -WorkloadType SQLDataBase -VaultId $myVaultID -Name AppVM1
 ```
 
-然後，使用[復原-AzRecoveryServicesBackupItemDeletion](https://docs.microsoft.com/powershell/module/az.recoveryservices/undo-azrecoveryservicesbackupitemdeletion?view=azps-3.8.0) PS Cmdlet 執行復原刪除作業。
+然後，使用[復原-AzRecoveryServicesBackupItemDeletion](/powershell/module/az.recoveryservices/undo-azrecoveryservicesbackupitemdeletion) PS Cmdlet 執行復原刪除作業。
 
 ```powershell
 Undo-AzRecoveryServicesBackupItemDeletion -Item $myBKpItem -VaultId $myVaultID -Force

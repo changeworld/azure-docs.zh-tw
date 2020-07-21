@@ -3,12 +3,12 @@ title: 從 Azure Application Insights 匯出至 SQL | Microsoft Docs
 description: 使用 Stream Analytics 持續將 Application Insights 資料匯出至 SQL。
 ms.topic: conceptual
 ms.date: 09/11/2017
-ms.openlocfilehash: 3c8586e8a6950e827d1078ca7d9cc3792fa58ae0
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 4975d91cc20b81de302a1dd0cb7b3326878a96a1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087212"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540089"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>逐步解說：使用串流分析從 Application Insights 匯出至 SQL
 本文說明如何使用[連續匯出][export]和[Azure 串流分析](https://azure.microsoft.com/services/stream-analytics/)，將您的遙測資料從[Azure 應用程式深入][start]解析移至 Azure SQL Database。 
@@ -82,7 +82,7 @@ ms.locfileid: "86087212"
 ![[瀏覽]、[伺服器]、您的伺服器、[設定]、[防火牆]、[允許存取 Azure]](./media/code-sample-export-sql-stream-analytics/100-sqlaccess.png)
 
 ## <a name="create-a-table-in-azure-sql-database"></a>在 Azure SQL Database 中建立資料表
-使用您慣用的管理工具，連接到上一節所建立的資料庫。 在本逐步解說中，我們將使用 [SQL Server 管理工具](https://msdn.microsoft.com/ms174173.aspx) (SSMS)。
+使用您慣用的管理工具，連接到上一節所建立的資料庫。 在本逐步解說中，我們將使用 [SQL Server 管理工具](/sql/ssms/sql-server-management-studio-ssms?view=sql-server-ver15) (SSMS)。
 
 ![連線到 Azure SQL Database](./media/code-sample-export-sql-stream-analytics/31-sql-table.png)
 
@@ -255,4 +255,3 @@ FROM [dbo].[PageViewsTable]
 [metrics]: ../../azure-monitor/platform/metrics-charts.md
 [portal]: https://portal.azure.com/
 [start]: ../../azure-monitor/app/app-insights-overview.md
-

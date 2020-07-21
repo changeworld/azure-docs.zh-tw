@@ -1,5 +1,5 @@
 ---
-title: 使用 Resource Manager 範本建立度量警示
+title: 使用 Azure Resource Manager 範本建立較新的計量警示
 description: 了解如何使用 Resource Manager 範本建立計量警示。
 author: harelbr
 ms.author: harelbr
@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 7/9/2020
 ms.subservice: alerts
-ms.openlocfilehash: 4d8ec0c76259a8567906e9ac415864e2cd37a9cd
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 043ecc07c521f9c1c79835bcd67ff1d81cacfa34
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187569"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539460"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>使用 Resource Manager 範本建立度量警示
 
@@ -27,7 +27,7 @@ ms.locfileid: "86187569"
 
 1. 使用下列範本之一，作為描述如何建立警示的 JSON 檔案。
 2. 編輯並使用對應的參數檔案作為 JSON，以自訂警示。
-3. 如需 `metricName` 參數，請參閱[Azure 監視器支援的計量](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported)中的可用計量。
+3. 如需 `metricName` 參數，請參閱[Azure 監視器支援的計量](./metrics-supported.md)中的可用計量。
 4. 使用[任何部署方法](../../azure-resource-manager/templates/deploy-powershell.md)部署範本。
 
 ## <a name="template-for-a-simple-static-threshold-metric-alert"></a>簡單靜態閾值的計量警示範本
@@ -204,7 +204,7 @@ ms.locfileid: "86187569"
 }
 ```
 
-警示規則的結構描述和屬性說明 [請見這裡](https://docs.microsoft.com/rest/api/monitor/metricalerts/createorupdate)。
+警示規則的結構描述和屬性說明 [請見這裡](/rest/api/monitor/metricalerts/createorupdate)。
 
 您可以在命令列上或透過參數檔案，設定參數的值。 範例參數檔案如下所示。
 
@@ -477,7 +477,7 @@ az group deployment create \
 }
 ```
 
-警示規則的結構描述和屬性說明 [請見這裡](https://docs.microsoft.com/rest/api/monitor/metricalerts/createorupdate)。
+警示規則的結構描述和屬性說明 [請見這裡](/rest/api/monitor/metricalerts/createorupdate)。
 
 您可以在命令列上或透過參數檔案，設定參數的值。 範例參數檔案如下所示。 
 
@@ -563,12 +563,12 @@ az group deployment create \
 
 ## <a name="template-for-a-static-threshold-metric-alert-that-monitors-multiple-criteria"></a>可監視多個準則的靜態臨界值計量警示範本
 
-較新的計量警示支援多維度度量的警示，以及支援定義多個準則， (每個警示規則) 最多5使用準則來。 您可以使用下列範本，針對維度計量建立更先進的度量警示規則，並指定多個準則。
+較新的計量警示支援多維度度量的警示，以及定義多個條件的支援（每個警示規則最多5使用準則來）。 您可以使用下列範本，針對維度計量建立更先進的度量警示規則，並指定多個準則。
 
 在包含多個準則的警示規則中使用維度時，請注意下列條件約束：
 - 在每個準則中，您只能為每個維度選取一個值。
 - 您不能使用 "\*" 作為維度值。
-- 當不同使用準則來中設定的計量支援相同的維度時，您必須以相同的方式，針對相關使用準則來) 中的所有這些計量 (明確設定已設定的維度值。
+- 當不同使用準則來中設定的計量支援相同的維度時，您必須以相同的方式，針對所有這些計量（在相關的使用準則來中）明確設定已設定的維度值。
     - 在下列範例中，因為 **Transactions** 和 **SuccessE2ELatency** 計量都有 **ApiName** 維度，而且 *criterion1* 為 **ApiName** 維度指定了 *"GetBlob"* 值，所以 *criterion2* 也必須要為 **ApiName**維度設定 *"GetBlob"* 值。
 
 
@@ -1024,7 +1024,7 @@ az group deployment create \
 
 您可以使用下列範本，針對維度計量建立更先進的動態閾值計量警示規則。
 
-單一動態閾值警示規則可針對數百個計量時間序列建立量身打造的閾值 (即使是一次) 不同的類型，這會導致較少的警示規則進行管理。
+單一動態閾值警示規則可同時為數百個計量時間序列（甚至不同類型）建立量身打造的臨界值，這會導致較少的警示規則進行管理。
 
 在下列範例中，警示規則會監視**交易**度量的**ResponseType**和**ApiName**維度的維度值組合：
 1. **ResponsType** - 針對 **ResponseType** 維度的每個值 (包括未來的值)，都會分別監視不同的時間序列。
@@ -1248,7 +1248,7 @@ az group deployment create \
 
 您可以使用下列範本，針對自訂計量建立更進階的靜態閾值計量警示規則。
 
-若要深入了解 Azure 監視器中的自訂計量，請參閱 [Azure 監視器中的自訂計量](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview)。
+若要深入了解 Azure 監視器中的自訂計量，請參閱 [Azure 監視器中的自訂計量](./metrics-custom-overview.md)。
 
 在為自訂計量建立警示規則時，您必須指定計量名稱和計量命名空間。 應確定自訂計量已回報，因為若自訂計量不存在，您就無法建立警示規則。
 
@@ -1504,12 +1504,12 @@ az group deployment create \
 
 >[!NOTE]
 >
-> 您可以[透過 Azure 入口網站瀏覽自訂計量](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview#browse-your-custom-metrics-via-the-azure-portal)，來找到特定自訂計量的計量命名空間
+> 您可以[透過 Azure 入口網站瀏覽自訂計量](./metrics-custom-overview.md#browse-your-custom-metrics-via-the-azure-portal)，來找到特定自訂計量的計量命名空間
 
 
 ## <a name="template-for-a-metric-alert-that-monitors-multiple-resources"></a>監視多個資源的計量警示範本
 
-前幾節已說明用來建立計量警示以監視單一資源的 Azure Resource Manager 範本範例。 Azure 監視器現在支援以單一計量警示規則，針對存在於相同 Azure 區域中的資源，監視相同類型的多個資源 () 。 這項功能目前僅在 Azure 公用雲端中受到支援，而且僅適用于虛擬機器、SQL server 資料庫、SQL server 彈性集區和 Databox 邊緣裝置。 此外，這項功能僅適用於平台計量，且不支援自訂計量。
+前幾節已說明用來建立計量警示以監視單一資源的 Azure Resource Manager 範本範例。 Azure 監視器現在支援針對存在於相同 Azure 區域中的資源，使用單一計量警示規則監視多個資源（屬於相同類型）。 這項功能目前僅在 Azure 公用雲端中受到支援，而且僅適用于虛擬機器、SQL server 資料庫、SQL server 彈性集區和 Databox 邊緣裝置。 此外，這項功能僅適用於平台計量，且不支援自訂計量。
 
 動態閾值警示規則也可一次為數百個計量序列 (甚至不同類型) 建立合適的閾值，讓需要管理的警示規則變少。
 

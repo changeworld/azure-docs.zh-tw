@@ -7,16 +7,16 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 9f44cbd9b735839640702970a65de239b36b3f30
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: a8f5aaa7b2a054aa31198779414387cebf0f0fbd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86209363"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537032"
 ---
 # <a name="about-upgrading-expressroute-circuit-bandwidth"></a>關於升級 ExpressRoute 線路頻寬
 
-ExpressRoute 可讓您對 Microsoft 的全球網路提供專用和私人連線能力。 連線能力是由 ExpressRoute 合作夥伴的網路所促成，或與 Microsoft Enterprise Edge (MSEE) 裝置的直接連接。 設定並測試實體連線之後，您可以藉由建立 ExpressRoute 線路及設定對等互連來啟用第2層和第3層連線能力。
+ExpressRoute 可讓您對 Microsoft 的全球網路提供專用和私人連線能力。 連線能力是由 ExpressRoute 合作夥伴的網路，或與 Microsoft Enterprise Edge （MSEE）裝置的直接連線所促成。 設定並測試實體連線之後，您可以藉由建立 ExpressRoute 線路及設定對等互連來啟用第2層和第3層連線能力。
 
 ## <a name="upgrade-circuit-bandwidth"></a><a name="upgrade"></a>升級線路頻寬
 
@@ -32,9 +32,9 @@ ExpressRoute 可讓您對 Microsoft 的全球網路提供專用和私人連線�
 
 ### <a name="insufficient-expressroute-partner-bandwidth"></a><a name="bandwidth"></a>ExpressRoute 合作夥伴頻寬不足
 
-如果 ExpressRoute 合作夥伴沒有足夠的容量，您必須建立新的線路，並將其設定為所需的頻寬。 為了維持連線能力，除非已布建 ExpressRoute 虛擬網路閘道的連線物件，否則請勿刪除舊的線路，直到新建立的線路布建完成、已設定對等互連，以及 (關於私用對等互連) 。
+如果 ExpressRoute 合作夥伴沒有足夠的容量，您必須建立新的線路，並將其設定為所需的頻寬。 為了維持連線，請不要刪除舊的迴圈，直到布建新建立的線路、已設定對等互連，以及（關於私用對等互連）已布建 ExpressRoute 虛擬網路閘道的連線物件為止。
 
-如果您的 ExpressRoute 合作夥伴沒有足夠的可用容量，您必須在想要的對等互連位置要求額外的容量。 布建新容量之後，您可以使用 [[升級線路頻寬](#upgrade)] 區段中的文章所包含的步驟來建立新的線路、設定連線能力，以及刪除舊的線路：
+如果您的 ExpressRoute 合作夥伴沒有足夠的可用容量，您必須在想要的對等互連位置要求額外的容量。 布建新容量之後，您可以使用 [[升級線路頻寬](#upgrade)] 區段中的文章所包含的步驟來建立新的線路、設定連線能力，以及刪除舊的線路。
 
 
 ### <a name="insufficient-expressroute-direct-bandwidth"></a><a name="bandwidth"></a>ExpressRoute Direct 頻寬不足

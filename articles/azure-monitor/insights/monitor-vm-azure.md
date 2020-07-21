@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/05/2020
-ms.openlocfilehash: e38ae07aa032e4a828c9188fd78b112f4ff0d397
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9a96db0e9a834dcddbb5f247953fa1bbf0dc39ce
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84945387"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539698"
 ---
 # <a name="monitoring-azure-virtual-machines-with-azure-monitor"></a>使用 Azure 監視器監視 Azure 虛擬機器
 本文說明如何使用 Azure 監視器來收集和分析來自 Azure 虛擬機器的監視資料，以維持資料健康。 您可以使用 Azure 監視器來監視虛擬機器的可用性和效能，如同監視任何[其他 Azure 資源](monitor-azure-resource.md)一樣，但虛擬機器與其他資源不同，因為您也需要監視客體作業和系統，及其在其中執行的工作負載。 
@@ -29,7 +29,7 @@ ms.locfileid: "84945387"
 - 您可以建立[診斷設定](../platform/diagnostic-settings.md)，讓虛擬機器將平台計量傳送至其他目的地 (例如儲存體和事件中樞)，但無法在 Azure 入口網站中設定這些診斷設定。 
 
 ## <a name="monitoring-data"></a>監視資料
-Azure 中的虛擬機器會產生下圖所示的[記錄](../platform/data-platform-logs.md)和[計量](../platform/data-platform-metrics.md)。
+Azure 中的虛擬機器會產生[記錄](../platform/data-platform-logs.md)和[計量](../platform/data-platform-metrics.md)，如下圖所示。
 
 ![概觀](media/monitor-vm-azure/logs-metrics.png)
 
@@ -133,12 +133,12 @@ az monitor diagnostic-settings create \
 | 功能表選項 | 描述 |
 |:---|:---|
 | 概觀 | 顯示虛擬機器主機的[平台計量](../platform/data-platform-metrics.md)。 按一下圖表，即可在[計量瀏覽器](../platform/metrics-getting-started.md)中使用此資料。 |
-| 活動記錄檔 | 已針對目前虛擬機器篩選的[活動記錄](../platform/activity-log-view.md)項目。 |
+| 活動記錄檔 | 已針對目前虛擬機器篩選的[活動記錄](../platform/activity-log.md#view-the-activity-log)項目。 |
 | 深入解析 | 使用目前選擇的虛擬機器對應，開啟[適用於 VM 的 Azure 監視器](../insights/vminsights-overview.md)。 |
 | 警示 | 檢視目前虛擬機器的[警示](../platform/alerts-overview.md)。  |
 | 計量 | 開啟[計量瀏覽器](../platform/metrics-getting-started.md)，並將範圍設定為目前的虛擬機器。 |
 | 診斷設定 | 啟用和設定目前虛擬機器的[診斷擴充功能](../platform/diagnostics-extension-overview.md)。 |
-| Advisor 建議 | [Azure Advisor](/azure/advisor/) 中目前虛擬機器的建議。 |
+| Advisor 建議 | [Azure Advisor](../../advisor/index.yml) 中目前虛擬機器的建議。 |
 | 記錄 | 開啟 [Log Analytics](../log-query/log-query-overview.md#what-is-log-analytics)，並將[範圍](../log-query/scope.md)設定為目前的虛擬機器。 |
 | 連線監視 | 開啟[網路監看員連線監視器](../../network-watcher/connection-monitor-preview.md)，以監視目前虛擬機器與其他虛擬機器之間的連線。 |
 
@@ -226,7 +226,7 @@ Event
 
 
 ## <a name="system-center-operations-manager"></a>System Center Operations Manager
-System Center Operations Manager (SCOM) 提供虛擬機器上工作負載的細微監視。 如需監視平台和不同實作策略的比較，請參閱[雲端監視指南](https://docs.microsoft.com/azure/cloud-adoption-framework/manage/monitor/)。
+System Center Operations Manager (SCOM) 提供虛擬機器上工作負載的細微監視。 如需監視平台和不同實作策略的比較，請參閱[雲端監視指南](/azure/cloud-adoption-framework/manage/monitor/)。
 
 如果您要繼續使用的現有 SCOM 環境，可以將其與 Azure 監視器整合，以提供額外的功能。 Azure 監視器所使用的 Log Analytics 代理程式與 SCOM 所使用的相同，因此受監視的虛擬機器會將資料傳送至兩者。 您仍然需要將代理程式新增至適用於 VM 的 Azure 監視器，並設定工作區收集其他資料 (如上所述)，但是虛擬機器可以繼續在 SCOM 環境中執行其現有的管理組件，而不需進行修改。
 
@@ -242,4 +242,3 @@ System Center Operations Manager (SCOM) 提供虛擬機器上工作負載的細�
 
 * [了解如何使用記錄查詢來分析 Azure 監視器記錄中的資料。](../log-query/get-started-queries.md)
 * [了解在 Azure 監視器中使用計量和記錄的警示。](../platform/alerts-overview.md)
-

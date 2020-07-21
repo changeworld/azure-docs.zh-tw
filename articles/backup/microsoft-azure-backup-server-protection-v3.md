@@ -3,11 +3,12 @@ title: Azure 備份伺服器 V3 RTM 可以備份的內容
 description: 本文提供保護矩陣，其中列出 Azure 備份提供 V3 RTM 保護的所有工作負載、資料類型和安裝。
 ms.date: 11/13/2018
 ms.topic: conceptual
-ms.openlocfilehash: 742b43d748fbd4c1235d0555ac3bd4419880db5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aebd1d1f90a2c0b84d7a6e1cb77d0e50915b091e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84631674"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538561"
 ---
 # <a name="azure-backup-server-v3-rtm-protection-matrix"></a>Azure 備份伺服器 V3 RTM 保護矩陣
 
@@ -18,7 +19,7 @@ ms.locfileid: "84631674"
 |工作負載|版本|Azure 備份伺服器</br> installation|支援的 Azure 備份伺服器|保護和復原|
 |------------|-----------|---------------|--------------|--------------|
 |用戶端電腦 (64 位元和 32 位元)|Windows 10|實體伺服器<br /><br />Hyper-V 虛擬機器<br /><br />VMware 虛擬機器|V3、V2|磁碟區、共用、資料夾、檔案、已啟用重複資料刪除功能的磁碟區<br /><br />受保護的磁碟區必須是 NTFS。 不支援 FAT 和 FAT32。<br /><br />磁碟區至少必須是 1 GB。 Azure 備份伺服器使用磁碟區陰影複製服務（VSS）來製作資料快照集，而且只有在磁片區至少為 1 GB 時，快照集才會運作。|
-|用戶端電腦 (64 位元和 32 位元)|Windows 8.1|實體伺服器<br /><br />Hyper-V 虛擬機器|V3、V2|檔案儲存體<br /><br />受保護的磁碟區必須是 NTFS。 不支援 FAT 和 FAT32。<br /><br />磁碟區至少必須是 1 GB。 Azure 備份伺服器使用磁碟區陰影複製服務（VSS）來製作資料快照集，而且只有在磁片區至少為 1 GB 時，快照集才會運作。|
+|用戶端電腦 (64 位元和 32 位元)|Windows 8.1|實體伺服器<br /><br />Hyper-V 虛擬機器|V3、V2|檔案<br /><br />受保護的磁碟區必須是 NTFS。 不支援 FAT 和 FAT32。<br /><br />磁碟區至少必須是 1 GB。 Azure 備份伺服器使用磁碟區陰影複製服務（VSS）來製作資料快照集，而且只有在磁片區至少為 1 GB 時，快照集才會運作。|
 |用戶端電腦 (64 位元和 32 位元)|Windows 8.1|VMWare 中的 Windows 虛擬機器 (保護在 VMWare 的 Windows 虛擬機器中執行的工作負載)|V3、V2|磁碟區、共用、資料夾、檔案、已啟用重複資料刪除功能的磁碟區<br /><br />受保護的磁碟區必須是 NTFS。 不支援 FAT 和 FAT32。<br /><br />磁碟區至少必須是 1 GB。 Azure 備份伺服器使用磁碟區陰影複製服務（VSS）來製作資料快照集，而且只有在磁片區至少為 1 GB 時，快照集才會運作。|
 |用戶端電腦 (64 位元和 32 位元)|Windows 8|實體伺服器<br /><br />內部部署 Hyper-V 虛擬機器|V3、V2|磁碟區、共用、資料夾、檔案、已啟用重複資料刪除功能的磁碟區<br /><br />受保護的磁碟區必須是 NTFS。 不支援 FAT 和 FAT32。<br /><br />磁碟區至少必須是 1 GB。 Azure 備份伺服器使用磁碟區陰影複製服務（VSS）來製作資料快照集，而且只有在磁片區至少為 1 GB 時，快照集才會運作。|
 |用戶端電腦 (64 位元和 32 位元)|Windows 8|VMWare 中的 Windows 虛擬機器 (保護在 VMWare 的 Windows 虛擬機器中執行的工作負載)|V3、V2|磁碟區、共用、資料夾、檔案、已啟用重複資料刪除功能的磁碟區<br /><br />受保護的磁碟區必須是 NTFS。 不支援 FAT 和 FAT32。<br /><br />磁碟區至少必須是 1 GB。 Azure 備份伺服器使用磁碟區陰影複製服務（VSS）來製作資料快照集，而且只有在磁片區至少為 1 GB 時，快照集才會運作。|
@@ -97,7 +98,7 @@ ms.locfileid: "84631674"
 * Microsoft Azure 區域（根據復原服務保存庫的位置）
 * Azure 儲存體（根據您的復原服務保存庫的位置）
 
-如需詳細資訊，請參閱[ExpressRoute 路由需求](https://docs.microsoft.com/azure/expressroute/expressroute-routing)。
+如需詳細資訊，請參閱[ExpressRoute 路由需求](../expressroute/expressroute-routing.md)。
 
 >[!NOTE]
 >新線路的公用對等互連已被取代。

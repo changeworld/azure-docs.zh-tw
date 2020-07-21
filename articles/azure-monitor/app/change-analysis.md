@@ -5,22 +5,23 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/04/2020
-ms.openlocfilehash: c287a2315f2b2319a6873ce84ee0e4e48bec8444
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d53097c7884b9908cd3a2c7f21dc059ed9d00c39
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82836729"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540157"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>在 Azure 監視器中使用應用程式變更分析（預覽）
 
 當發生即時網站問題或中斷時，快速判斷根本原因是很重要的。 標準監視解決方案可能會警告您發生問題。 他們甚至可能會指出哪個元件失敗。 但此警示不一定會立即說明失敗的原因。 您知道您的網站在五分鐘前就已正常運作，現在已中斷。 過去五分鐘內有哪些變更？ 這是應用程式變更分析設計來在 Azure 監視器中回答的問題。
 
-藉由[Azure Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/overview)的威力，變更分析可讓您深入瞭解 Azure 應用程式變更，以增加可檢視性並減少 MTTR （平均修復時間）。
+藉由[Azure Resource Graph](../../governance/resource-graph/overview.md)的威力，變更分析可讓您深入瞭解 Azure 應用程式變更，以增加可檢視性並減少 MTTR （平均修復時間）。
 
 > [!IMPORTANT]
 > 變更分析目前為預覽狀態。 此預覽版本是在沒有服務等級協定的情況下提供。 不建議將此版本用於生產工作負載。 某些功能可能不受支援，或可能有限制的功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 變更分析會偵測各種類型的變更，從基礎結構層到應用程式部署都是如此。 這是訂用帳戶層級的 Azure 資源提供者，可檢查訂用帳戶中的資源變更。 變更分析會針對各種診斷工具提供資料，以協助使用者瞭解哪些變更可能會造成問題。
 
@@ -34,7 +35,7 @@ ms.locfileid: "82836729"
 
 ### <a name="azure-resource-manager-tracked-properties-changes"></a>Azure Resource Manager 追蹤的屬性變更
 
-變更分析會使用[Azure Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/overview)，提供裝載應用程式的 Azure 資源在一段時間內變更的歷程記錄。 可以偵測受追蹤的設定，例如受控識別、平臺作業系統升級和主機名稱。
+變更分析會使用[Azure Resource Graph](../../governance/resource-graph/overview.md)，提供裝載應用程式的 Azure 資源在一段時間內變更的歷程記錄。 可以偵測受追蹤的設定，例如受控識別、平臺作業系統升級和主機名稱。
 
 ### <a name="azure-resource-manager-proxied-setting-changes"></a>Azure Resource Manager proxy 設定變更
 
@@ -58,7 +59,7 @@ Azure Resource Graph 中尚無法使用 IP 設定規則、TLS 設定和延伸模
 
 應用程式變更分析服務會計算並匯總前述資料來源中的變更資料。 它提供一組分析，讓使用者輕鬆流覽所有資源變更，並識別哪些變更與疑難排解或監視內容有關。
 "ChangeAnalysis" 資源提供者必須向訂用帳戶註冊，才能使用 Azure Resource Manager 追蹤的屬性，而 proxy 設定會將資料變更為可供使用。 當您輸入 Web 應用程式 [診斷並解決問題] 工具或顯示 [變更分析] [獨立] 索引標籤時，此資源提供者會自動註冊。 您的訂用帳戶沒有任何效能或成本的實現。 當您啟用 web 應用程式的變更分析（或啟用 [診斷並解決問題] 工具）時，對 web 應用程式的效能影響會不明顯，而且不會產生任何費用。
-若是 web 應用程式的來賓變更，在 web 應用程式中掃描程式碼檔案時，需要個別的啟用。 如需詳細資訊，請參閱本文稍後[的診斷和解決問題工具](https://docs.microsoft.com/azure/azure-monitor/app/change-analysis#application-change-analysis-in-the-diagnose-and-solve-problems-tool)一節中的變更分析。
+若是 web 應用程式的來賓變更，在 web 應用程式中掃描程式碼檔案時，需要個別的啟用。 如需詳細資訊，請參閱本文稍後[的診斷和解決問題工具](#application-change-analysis-in-the-diagnose-and-solve-problems-tool)一節中的變更分析。
 
 ## <a name="visualizations-for-application-change-analysis"></a>應用程式變更分析的視覺效果
 
@@ -118,7 +119,7 @@ Azure Resource Graph 中尚無法使用 IP 設定規則、TLS 設定和延伸模
 
 先決條件：
 
-- PowerShell Az 模組。 請遵循[安裝 Azure PowerShell 模組中的](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-2.6.0)指示
+- PowerShell Az 模組。 請遵循[安裝 Azure PowerShell 模組中的](/powershell/azure/install-az-ps?view=azps-2.6.0)指示
 
 執行下列指令碼：
 
@@ -158,4 +159,4 @@ foreach ($webapp in $webapp_list)
 
 - 啟用[Azure App Services 應用程式](azure-web-apps.md)的 Application Insights。
 - 啟用[AZURE VM 和 azure 虛擬機器擴展集 IIS 託管應用程式](azure-vm-vmss-apps.md)的 Application Insights。
-- 深入瞭解[Azure Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/overview)，其可協助您進行電源變更分析。
+- 深入瞭解[Azure Resource Graph](../../governance/resource-graph/overview.md)，其可協助您進行電源變更分析。

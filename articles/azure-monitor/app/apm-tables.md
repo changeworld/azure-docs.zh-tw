@@ -5,16 +5,16 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/09/2020
-ms.openlocfilehash: 21f387a87224615ea6afbdce620c56e3ad2cc6ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3175e43a841334719de80f44a226b1c7b87690d9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83210537"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540106"
 ---
 # <a name="workspace-based-resource-changes-preview"></a>以工作區為基礎的資源變更（預覽）
 
-在引進以[工作區為基礎的 Application Insights 資源](create-workspace-resource.md)之前，Application Insights 資料會與 Azure 監視器中的其他記錄資料分開儲存。 兩者都是以 Azure 資料總管為基礎，並使用相同的 Kusto 查詢語言（KQL）。 這會在[Azure 監視器的記錄中](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-logs)說明。
+在引進以[工作區為基礎的 Application Insights 資源](create-workspace-resource.md)之前，Application Insights 資料會與 Azure 監視器中的其他記錄資料分開儲存。 兩者都是以 Azure 資料總管為基礎，並使用相同的 Kusto 查詢語言（KQL）。 這會在[Azure 監視器的記錄中](../platform/data-platform-logs.md)說明。
 
 使用以工作區為基礎的 Application Insights 資源資料會儲存在 Log Analytics 工作區中，並包含其他監視資料和應用程式資料。 這可讓您更輕鬆地分析多個解決方案的資料，並利用工作區的功能，來簡化您的設定。
 
@@ -65,7 +65,7 @@ ms.locfileid: "83210537"
 |iKey|字串|IKey|字串|
 |itemCount|int|ItemCount|int|
 |itemId|字串|\_ItemId|字串|
-|itemType|字串|類型|String|
+|itemType|字串|類型|字串|
 |location|字串|Location|字串|
 |message|字串|訊息|字串|
 |NAME|字串|名稱|字串|
@@ -154,7 +154,7 @@ ms.locfileid: "83210537"
 |iKey|字串|IKey|字串|
 |itemCount|int|ItemCount|int|
 |itemId|字串|\_ItemId|字串|
-|itemType|字串|類型|String|
+|itemType|字串|類型|字串|
 |NAME|字串|名稱|字串|
 |operation_Id|字串|OperationId|字串|
 |operation_Name|字串|OperationName|字串|
@@ -276,7 +276,7 @@ ms.locfileid: "83210537"
 |iKey|字串|IKey|字串|
 |itemCount|int|ItemCount|int|
 |itemId|字串|\_ItemId|字串|
-|itemType|字串|類型|String|
+|itemType|字串|類型|字串|
 |NAME|字串|名稱|字串|
 |operation_Id|字串|OperationId|字串|
 |operation_Name|字串|OperationName|字串|
@@ -352,24 +352,24 @@ ms.locfileid: "83210537"
 |customDimensions|動態|屬性|動態|
 |customMeasurements|動態|量測|動態|
 |duration|real|DurationMs|Real|
-|`id`|字串|`Id`|String|
+|`id`|字串|`Id`|字串|
 |iKey|字串|IKey|字串|
 |itemCount|int|ItemCount|int|
 |itemId|字串|\_ItemId|字串|
-|itemType|字串|類型|String|
-|NAME|字串|名稱|String|
+|itemType|字串|類型|字串|
+|NAME|字串|名稱|字串|
 |operation_Id|字串|OperationId|字串|
 |operation_Name|字串|OperationName|字串|
 |operation_ParentId|字串|OperationParentId|字串|
 |operation_SyntheticSource|字串|OperationSyntheticSource|字串|
-|performanceBucket|字串|PerformanceBucket|String|
-|ResultCode|字串|ResultCode|String|
+|performanceBucket|字串|PerformanceBucket|字串|
+|ResultCode|字串|ResultCode|字串|
 |sdkVersion|字串|SdkVersion|字串|
 |session_Id|字串|SessionId|字串|
-|source|字串|來源|String|
+|source|字串|來源|字串|
 |成功|字串|Success|Bool|
 |timestamp|Datetime|TimeGenerated|Datetime|
-|url|字串|Url|String|
+|url|字串|Url|字串|
 |user_AccountId|字串|UserAccountId|字串|
 |user_AuthenticatedId|字串|UserAuthenticatedId|字串|
 |user_Id|字串|UserId|字串|
@@ -467,4 +467,4 @@ ms.locfileid: "83210537"
 ## <a name="next-steps"></a>後續步驟
 
 * [探索度量](../../azure-monitor/platform/metrics-charts.md)
-* [撰寫分析查詢](../../azure-monitor/app/analytics.md)
+* [撰寫分析查詢](../log-query/log-query-overview.md)

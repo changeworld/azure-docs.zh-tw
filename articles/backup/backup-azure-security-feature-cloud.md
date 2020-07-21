@@ -3,11 +3,12 @@ title: Azure 備份的虛刪除
 description: 瞭解如何使用 Azure 備份中的安全性功能，讓備份更加安全。
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 2b0d7a00bce8dfa427958f6db6d7174b9d5f7a79
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 79df345858d89d032b826a0fa8b677195a785df2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84116408"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538831"
 ---
 # <a name="soft-delete-for-azure-backup"></a>Azure 備份的虛刪除
 
@@ -28,7 +29,7 @@ ms.locfileid: "84116408"
 
 預設會在新建立的保存庫上啟用虛刪除，以防止意外或惡意刪除的備份資料。  不建議停用這項功能。 如果您打算將受保護的專案移至新的保存庫，且在刪除和重新保護之前，不能等待14天（例如在測試環境中），您應該考慮停用虛刪除的唯一情況。只有保存庫擁有者可以停用這項功能。 如果您停用此功能，所有未來的受保護專案刪除都會導致立即移除，而不會有還原功能。 在停用此功能之前，在已虛刪除狀態中的備份資料將會在14天的期間內保持為虛刪除狀態。 如果您想要立即永久刪除這些專案，則必須重新刪除並刪除它們，才能永久刪除。
 
- 請務必記住，一旦停用虛刪除，就會針對所有類型的工作負載（包括 SQL server 和 SAP Hana 工作負載）停用此功能。 例如，一旦為訂用帳戶啟用[SQL Server/SAP Hana 預覽](https://docs.microsoft.com/azure/backup/soft-delete-sql-saphana-in-azure-vm#steps-to-enroll-in-preview)，就無法只針對 SQL Server 或 SAP Hana db 停用虛刪除，同時讓相同保存庫中的虛擬機器可以使用此功能。 您可以建立個別的保存庫，以進行細微的控制。
+ 請務必記住，一旦停用虛刪除，就會針對所有類型的工作負載（包括 SQL server 和 SAP Hana 工作負載）停用此功能。 例如，一旦為訂用帳戶啟用[SQL Server/SAP Hana 預覽](./soft-delete-sql-saphana-in-azure-vm.md#steps-to-enroll-in-preview)，就無法只針對 SQL Server 或 SAP Hana db 停用虛刪除，同時讓相同保存庫中的虛擬機器可以使用此功能。 您可以建立個別的保存庫，以進行細微的控制。
 
 ### <a name="disabling-soft-delete-using-azure-portal"></a>使用 Azure 入口網站停用虛刪除
 
@@ -45,7 +46,7 @@ ms.locfileid: "84116408"
 > [!IMPORTANT]
 > 使用 Azure PS 進行虛刪除所需的 Az. Azurerm.recoveryservices 版本是 min 2.2.0。 使用 ```Install-Module -Name Az.RecoveryServices -Force``` 來取得最新版本。
 
-若要停用，請使用[AzRecoveryServicesVaultBackupProperty](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty?view=azps-3.1.0) PS Cmdlet。
+若要停用，請使用[AzRecoveryServicesVaultBackupProperty](/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty) PS Cmdlet。
 
 ```powershell
 Set-AzRecoveryServicesVaultProperty -VaultId $myVaultID -SoftDeleteFeatureState Disable
@@ -86,11 +87,11 @@ SoftDeleteFeatureState : Disabled
 
 5. 選擇 [**刪除備份資料**]，以永久刪除備份資料。
 
-   ![選擇 [刪除備份資料]](https://docs.microsoft.com/azure/backup/media/backup-azure-manage-vms/delete-backup-buttom.png)
+   ![選擇 [刪除備份資料]](/azure/backup/media/backup-azure-manage-vms/delete-backup-buttom.png)
 
 6. 輸入備份專案的名稱，以確認您想要刪除復原點。
 
-   ![輸入備份專案的名稱](https://docs.microsoft.com/azure/backup/media/backup-azure-manage-vms/delete-backup-data1.png)
+   ![輸入備份專案的名稱](/azure/backup/media/backup-azure-manage-vms/delete-backup-data1.png)
 
 7. 若要刪除專案的備份資料，請選取 [**刪除**]。 通知訊息可讓您知道備份資料已被刪除。
 

@@ -12,13 +12,14 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 robots: noindex
-ms.openlocfilehash: 2cea9cd1439bce0c55d701539471c463acb8f7e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1f0d60d1f76523beca6567517ef44d50b910b221
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84020127"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537610"
 ---
-# <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>在 Azure 資料處理站管線中使用自訂活動
+# <a name="use-custom-activities-in-an-azure-data-factory-version-1-pipeline"></a>在 Azure Data Factory 版本1管線中使用自訂活動
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
 > * [第 1 版](data-factory-use-custom-activities.md)
 > * [第 2 版 (目前的版本)](../transform-data-using-dotnet-custom-activity.md)
@@ -41,7 +42,7 @@ ms.locfileid: "84020127"
 > - 您不能使用自訂活動中的資料管理閘道來存取內部部署資料來源。 目前在 Data Factory 中，[資料管理閘道](data-factory-data-management-gateway.md)只支援複製活動和預存程序活動。
 
 ## <a name="walkthrough-create-a-custom-activity"></a>逐步解說：建立自訂活動
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>先決條件
 * Visual Studio 2012/2013/2015/2017
 * 下載並安裝 [Azure .NET SDK](https://azure.microsoft.com/downloads/)
 

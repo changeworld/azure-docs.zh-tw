@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 05/26/2020
-ms.openlocfilehash: 4bf0acdc774bc41d0bc80c944560f41789584c03
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/15/2020
+ms.openlocfilehash: 5810f9b08d914522f1304e238567c06e87872715
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513911"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537726"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-formerly-azure-sql-data-warehouse-by-using-azure-data-factory"></a>使用 Azure Data Factory 在 Azure Synapse Analytics (先前稱為 Azure SQL 資料倉儲) 中複製和轉換資料
 
@@ -61,10 +61,10 @@ ms.locfileid: "85513911"
 
 以下是 Azure Synapse Analytics 連結服務支援的屬性：
 
-| 屬性            | 說明                                                  | 必要                                                     |
+| 屬性            | 描述                                                  | 必要                                                     |
 | :------------------ | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | type                | 類型屬性必須設為 **AzureSqlDW**。             | 是                                                          |
-| connectionString    | 針對 **connectionString** 屬性指定連線到 Azure Synapse Analytics 執行個體所需的資訊。 <br/>將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中。 您也可以將密碼/服務主體金鑰放在 Azure Key Vault 中，而且，如果這是 SQL 驗證，則會從連接字串中提取 `password` 組態。 請參閱表格下方的 JSON 範例和[在 Azure Key Vault 中儲存認證](store-credentials-in-key-vault.md)一文深入了解詳細資料。 | Yes                                                          |
+| connectionString    | 針對 **connectionString** 屬性指定連線到 Azure Synapse Analytics 執行個體所需的資訊。 <br/>將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中。 您也可以將密碼/服務主體金鑰放在 Azure Key Vault 中，而且，如果這是 SQL 驗證，則會從連接字串中提取 `password` 組態。 請參閱表格下方的 JSON 範例和[在 Azure Key Vault 中儲存認證](store-credentials-in-key-vault.md)一文深入了解詳細資料。 | 是                                                          |
 | servicePrincipalId  | 指定應用程式的用戶端識別碼。                         | 當您搭配服務主體使用 Azure AD 驗證時為是。 |
 | servicePrincipalKey | 指定應用程式的金鑰。 將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 | 當您搭配服務主體使用 Azure AD 驗證時為是。 |
 | tenant              | 指定您的應用程式所在租用戶的資訊 (網域名稱或租用戶識別碼)。 將滑鼠游標暫留在 Azure 入口網站右上角，即可擷取它。 | 當您搭配服務主體使用 Azure AD 驗證時為是。 |
@@ -221,7 +221,7 @@ ms.locfileid: "85513911"
 
 以下是 Azure Synapse Analytics 資料集支援的屬性：
 
-| 屬性  | 說明                                                  | 必要                    |
+| 屬性  | 描述                                                  | 必要                    |
 | :-------- | :----------------------------------------------------------- | :-------------------------- |
 | type      | 資料集的**類型**屬性必須設定為 **AzureSqlDWTable**。 | 是                         |
 | 結構描述 | 結構描述的名稱。 |否 (來源)；是 (接收)  |
@@ -257,13 +257,13 @@ ms.locfileid: "85513911"
 
 若要從 Azure Synapse Analytics 複製資料，請將複製活動來源中的**類型**屬性設定為 **SqlDWSource**。 複製活動的 [來源] 區段支援下列屬性：
 
-| 屬性                     | 說明                                                  | 必要 |
+| 屬性                     | 描述                                                  | 必要 |
 | :--------------------------- | :----------------------------------------------------------- | :------- |
-| type                         | 複製活動來源的**類型**屬性必須設定為 **SqlDWSource**。 | Yes      |
-| sqlReaderQuery               | 使用自訂 SQL 查詢來讀取資料。 範例： `select * from MyTable`. | No       |
-| sqlReaderStoredProcedureName | 從來源資料表讀取資料的預存程序名稱。 最後一個 SQL 陳述式必須是預存程序中的 SELECT 陳述式。 | No       |
-| storedProcedureParameters    | 預存程序的參數。<br/>允許的值為名稱或值組。 參數的名稱和大小寫必須符合預存程序參數的名稱和大小寫。 | No       |
-| isolationLevel | 指定 SQL 來源的異動鎖定行為。 允許的值有：**ReadCommitted** (預設值)、**ReadUncommitted**、**RepeatableRead**、**Serializable**、**Snapshot**。 如需詳細資訊，請參閱[這篇文件](https://docs.microsoft.com/dotnet/api/system.data.isolationlevel)。 | No |
+| type                         | 複製活動來源的**類型**屬性必須設定為 **SqlDWSource**。 | 是      |
+| sqlReaderQuery               | 使用自訂 SQL 查詢來讀取資料。 範例： `select * from MyTable`. | 否       |
+| sqlReaderStoredProcedureName | 從來源資料表讀取資料的預存程序名稱。 最後一個 SQL 陳述式必須是預存程序中的 SELECT 陳述式。 | 否       |
+| storedProcedureParameters    | 預存程序的參數。<br/>允許的值為名稱或值組。 參數的名稱和大小寫必須符合預存程序參數的名稱和大小寫。 | 否       |
+| isolationLevel | 指定 SQL 來源的異動鎖定行為。 允許的值有：**ReadCommitted** (預設值)、**ReadUncommitted**、**RepeatableRead**、**Serializable**、**Snapshot**。 如需詳細資訊，請參閱[這篇文件](https://docs.microsoft.com/dotnet/api/system.data.isolationlevel)。 | 否 |
 
 **範例：使用 SQL 查詢**
 
@@ -366,7 +366,7 @@ Azure Data Factory 支援將資料載入 SQL 資料倉儲的三種方式。
 
 若要將資料複製到「Azure SQL 資料倉儲」，請將複製活動中的接收類型設定為 **SqlDWSink**。 複製活動的 [接收] 區段支援下列屬性：
 
-| 屬性          | 說明                                                  | 必要                                      |
+| 屬性          | 描述                                                  | 必要                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
 | type              | 複製活動接收端的**類型**屬性必須設定為 **SqlDWSink**。 | 是                                           |
 | allowPolyBase     | 指出是否使用 PolyBase 將資料載入 SQL 資料倉儲。 `allowCopyCommand` 和 `allowPolyBase` 不可同時為 true。 <br/><br/>請參閱 [使用 PolyBase 將資料載入 Azure SQL 資料倉儲](#use-polybase-to-load-data-into-azure-sql-data-warehouse) 一節中的條件約束和詳細資料。<br/><br/>允許的值為 **True** 和 **False** (預設值)。 | 否。<br/>使用 PolyBase 時套用。     |
@@ -375,8 +375,8 @@ Azure Data Factory 支援將資料載入 SQL 資料倉儲的三種方式。
 | copyCommandSettings | 可以在 `allowCopyCommand` 屬性設定為 TRUE 時指定的一組屬性。 | 否。<br/>使用 COPY 時套用。 |
 | writeBatchSize    | 對於**每個批次**要插入 SQL 資料表中的資料列數。<br/><br/>允許的值為**整數** (資料列數目)。 根據預設，Data Factory 會依據資料列大小動態決定適當的批次大小。 | 否。<br/>使用 bulk insert 時套用。     |
 | writeBatchTimeout | 在逾時前等待批次插入作業完成的時間。<br/><br/>允許的值為**時間範圍**。 範例：「00:30:00」(30 分鐘)。 | 否。<br/>使用 bulk insert 時套用。        |
-| preCopyScript     | 指定一個供「複製活動」在每次執行時將資料寫入到「Azure SQL 資料倉儲」前執行的 SQL 查詢。 使用此屬性來清除預先載入的資料。 | No                                            |
-| tableOption | 指定是否要根據來源架構，自動建立接收資料表 (如果不存在)。 在複製活動中設定分段複製時，不支援自動建立資料表。 允許的值包為：`none` (預設) 或 `autoCreate`。 |否 |
+| preCopyScript     | 指定一個供「複製活動」在每次執行時將資料寫入到「Azure SQL 資料倉儲」前執行的 SQL 查詢。 使用此屬性來清除預先載入的資料。 | 否                                            |
+| tableOption | 指定是否要根據來源架構，[自動建立接收資料表](copy-activity-overview.md#auto-create-sink-tables)（如果不存在）。 在複製活動中設定分段複製時，不支援自動建立資料表。 允許的值包為：`none` (預設) 或 `autoCreate`。 |否 |
 | disableMetricsCollection | Data Factory 會收集計量，例如複製效能優化和建議的 SQL 資料倉儲 DWU。 如果您擔心此行為，請指定 `true` 將其關閉。 | 否 (預設值為 `false`) |
 
 #### <a name="sql-data-warehouse-sink-example"></a>SQL 資料倉儲接收範例
@@ -400,17 +400,17 @@ Azure Data Factory 支援將資料載入 SQL 資料倉儲的三種方式。
 使用 [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) 是以高輸送量將大量資料載入 Azure Synapse Analytics 的有效方法。 使用 PolyBase 而不是預設的 BULKINSERT 機制，將可看到輸送量大幅提升。 如需使用案例的逐步解說，請參閱[將 1 TB 載入至 Azure Synapse Analytics](v1/data-factory-load-sql-data-warehouse.md)。
 
 - 如果您的來源資料位於 **Azure Blob、Azure Data Lake Storage Gen1 或 Azure Data Lake Storage Gen2** 中，而且**格式與 PolyBase 相容**，您可以使用複製活動直接叫用 PolyBase，讓 Azure SQL 資料倉儲從來源提取資料。 如需詳細資料，請參閱 **[使用 PolyBase 直接複製](#direct-copy-by-using-polybase)** 。
-- 如果您的來源資料存放區與格式不受 PolyBase 支援，您可以改用 **[使用 PolyBase 分段複製](#staged-copy-by-using-polybase)** 功能。 分段複製功能也能提供更好的輸送量。 它會自動將資料轉換成與 PolyBase 相容的格式，並將資料儲存在 Azure Blob 儲存體中，然後呼叫 PolyBase 將資料載入 SQL 資料倉儲。
+- 如果您的來源資料存放區與格式不受 PolyBase 支援，您可以改用 **[使用 PolyBase 分段複製](#staged-copy-by-using-polybase)** 功能。 分段複製功能也能提供更好的輸送量。 它會自動將資料轉換成與 PolyBase 相容的格式，將資料儲存在 Azure Blob 儲存體中，然後呼叫 PolyBase 將資料載入 SQL 資料倉儲。
 
 > [!TIP]
 > 深入瞭解[使用 PolyBase 的最佳做法](#best-practices-for-using-polybase)。
 
 在複製活動的 `polyBaseSettings` 下支援下列 PolyBase 設定：
 
-| 屬性          | 說明                                                  | 必要                                      |
+| 屬性          | 描述                                                  | 必要                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
-| rejectValue       | 指定在查詢失敗前可以拒絕的資料列數目或百分比。<br/><br/>在 [CREATE EXTERNAL TABLE (Transact-SQL)](https://msdn.microsoft.com/library/dn935021.aspx)的＜引數＞一節中，深入瞭解 PolyBase 的拒絕選項。 <br/><br/>允許的值為 0 (預設值)、1、2 等其他值。 | No                                            |
-| rejectType        | 指定 **rejectValue** 選項為常值或百分比。<br/><br/>允許的值為**值** (預設值) 和**百分比**。 | No                                            |
+| rejectValue       | 指定在查詢失敗前可以拒絕的資料列數目或百分比。<br/><br/>在 [CREATE EXTERNAL TABLE (Transact-SQL)](https://msdn.microsoft.com/library/dn935021.aspx)的＜引數＞一節中，深入瞭解 PolyBase 的拒絕選項。 <br/><br/>允許的值為 0 (預設值)、1、2 等其他值。 | 否                                            |
+| rejectType        | 指定 **rejectValue** 選項為常值或百分比。<br/><br/>允許的值為**值** (預設值) 和**百分比**。 | 否                                            |
 | rejectSampleValue | 決定在 PolyBase 重新計算已拒絕的資料列百分比之前，所要擷取的資料列數目。<br/><br/>允許的值為 1、2 等其他值。 | 是，如果 **rejectType** 是**百分比**。 |
 | useTypeDefault    | 指定當 PolyBase 從文字檔擷取資料時，如何處理分隔符號文字檔中遺漏的值。<br/><br/>從 [CREATE EXTERNAL FILE FORMAT (Transact-SQL)](https://msdn.microsoft.com/library/dn935026.aspx) 的＜引數＞一節深入了解這個屬性。<br/><br/>允許的值為 **True** 和 **False** (預設值)。<br><br> | 否                                            |
 
@@ -690,7 +690,9 @@ SQL 資料倉儲 [COPY 陳述式](https://docs.microsoft.com/sql/t-sql/statement
 
 您可以在來源轉換的 [來源選項] 索引標籤中找到 Azure Synapse 分析的特定設定。
 
-**Input：** 選取您是要將來源指向資料表 (相當於 ```Select * from <table-name>```) 還是要輸入自訂的 SQL 查詢。
+**輸入**選取您是否要將來源指向資料表（相當於 ```Select * from <table-name>``` ），或輸入自訂的 SQL 查詢。
+
+**啟用預備**環境強烈建議您在具有 Synapse DW 來源的生產工作負載中使用此選項。 當您從管線執行具有 Synapase 來源的資料流程活動時，ADF 會提示您輸入預備位置儲存體帳戶，並將其用於暫存資料載入。 這是從 Synapse DW 載入資料的最快速機制。
 
 **查詢**：如果您在 [輸入] 欄位中選取 [查詢]，請對於您的來源輸入 SQL 查詢。 此設定會覆寫您在資料集中選擇的任何資料表。 這裡不支援 **Order By** 子句，但您可以設定完整的 SELECT FROM 陳述式。 您也可使用使用者定義的資料表函數。 **select * from udfGetData()** 是 SQL 中傳回資料表的 UDF。 此查詢會產生您可以在資料流程中使用的來源資料表。 使用查詢也是縮減資料列以進行測試或查閱的絕佳方式。
 

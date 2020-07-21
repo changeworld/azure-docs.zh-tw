@@ -2,13 +2,13 @@
 title: Azure DevTest Labs 常見問題集 | Microsoft Docs
 description: 本文提供一些 Azure DevTest Labs 相關常見問題集 (FAQ) 的解答。
 ms.topic: article
-ms.date: 06/26/2020
-ms.openlocfilehash: b687ae5c7b64239387dad7a51e124fa2f507f2b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/17/2020
+ms.openlocfilehash: 707b66fadab482a31ac02f10460d581997931a0b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85481658"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537476"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs 常見問題集
 獲得一些關於 Azure DevTest Labs 最常見問題的解答。
@@ -200,7 +200,7 @@ $policyRoleDef = New-AzRoleDefinition -Role $policyRoleDef
 是，您可以將多個磁碟連結至 VM。
 
 ### <a name="are-gen-2-images-supported-by-devtest-labs"></a>DevTest Labs 是否支援 Gen 2 映像？
-否。 DevTest Labs 服務不支援 [Gen 2 映像](../virtual-machines/windows/generation-2.md)。 如果 Gen 1 和 Gen 2 版本均適用於某個映像，在建立 VM 時，DevTest Labs 只會顯示該映像的 Gen 1 版本。 如果只有 Gen 2 版本可供使用，您就不會看到映像。 
+是。 DevTest Labs 服務支援[Gen 2 映射](../virtual-machines/windows/generation-2.md)。 不過，如果第1代和 Gen 2 版本適用于映射，則在建立 VM 時，DevTest Labs 只會顯示映射的 Gen 1 版本。 如果只有 Gen 2 版本可用，您會看到映射。 
 
 ### <a name="if-i-want-to-use-a-windows-os-image-for-my-testing-do-i-have-to-purchase-an-msdn-subscription"></a>如果我想要使用 Windows 作業系統映像進行測試，是否應購買 MSDN 訂用帳戶？
 若要對 Azure 中的開發或測試使用 Windows 用戶端 OS 映像 (Windows 7 或更新版本)，請執行下列其中一個步驟：
@@ -212,7 +212,7 @@ $policyRoleDef = New-AzRoleDefinition -Role $policyRoleDef
 
 
 ### <a name="how-do-i-automate-the-process-of-deleting-all-the-vms-in-my-lab"></a>如何自動進行刪除實驗室中所有 VM 的程序？
-身為實驗室擁有者，您可以在 Azure 入口網站中從實驗室刪除 VM。 您也可以使用 PowerShell 指令碼刪除實驗室中的所有 VM。 在下列範例中，修改 **Values to change** 註解底下的參數值。 您可以從 Azure 入口網站中的 [實驗室] 窗格擷取 subscriptionId、labResourceGroup 和 labName 值。
+身為實驗室擁有者，您可以在 Azure 入口網站中從實驗室刪除 VM。 您也可以使用 PowerShell 指令碼刪除實驗室中的所有 VM。 在下列範例中，修改 **Values to change** 註解底下的參數值。 您可以從 Azure 入口網站中的 [實驗室] 窗格擷取 `subscriptionId`、`labResourceGroup` 及 `labName` 值。
 
 ```powershell
 # Delete all the VMs in a lab.
@@ -340,9 +340,9 @@ foreach($labVM in $labVMs)
 ## <a name="networking"></a>網路功能
 
 ### <a name="when-should-i-create-a-new-virtual-network-for-my-devtest-labs-environment-vs-using-an-existing-virtual-network"></a>何時應該針對 DevTest Labs 環境建立新的虛擬網路，而何時該使用現有的虛擬網路？
-如果您的 VM 需要與現有的基礎結構互動，請考慮在 DevTest Labs 環境內使用現有的虛擬網路。 如果您使用 ExpressRoute，您可能想要將 VNet/子網路的數量降到最低，如此就不需分割指派來在訂用帳戶中使用的 IP 位址空間。
+如果您的 VM 需要與現有的基礎結構互動，請考慮在 DevTest Labs 環境內使用現有的虛擬網路。 如果您使用 ExpressRoute，您可能會想要將虛擬網路/子網的數目減到最少，如此您就不會分割指派給訂用帳戶中所使用的 IP 位址空間。
 
-請同時考慮在此處使用 VNet 對等互連模式 ([中樞輪輻模型](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke))。 這種方法可讓訂用帳戶之間進行 VNet/子網路通訊。 否則，每個 DevTest Labs 環境都可能有它自己的虛擬網路。
+請考慮在這裡使用虛擬網路對等互連模式（[中樞輪輻模型](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)）。 這種方法可讓訂用帳戶之間進行 VNet/子網路通訊。 否則，每個 DevTest Labs 環境都可能有它自己的虛擬網路。
 
 每個訂用帳戶都有虛擬網路數目[限制](../azure-resource-manager/management/azure-subscription-service-limits.md)。 雖然可將此限制提升到 100，但預設數目是 50。
 

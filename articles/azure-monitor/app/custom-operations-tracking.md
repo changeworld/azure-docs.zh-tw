@@ -4,12 +4,12 @@ description: 使用 Azure Application Insights .NET SDK 追蹤自訂作業
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: 316c1b7ea32f661b009bfee7a89cb7e5ed082f3b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 49c2ad44dab5e4f57db2f11c17c269289e56d2d5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82690852"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540038"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>使用 Application Insights .NET SDK 追蹤自訂作業
 
@@ -169,7 +169,7 @@ public async Task Enqueue(string payload)
 }
 ```
 
-#### <a name="process"></a>程序
+#### <a name="process"></a>Process
 ```csharp
 public async Task Process(BrokeredMessage message)
 {
@@ -300,7 +300,7 @@ public async Task<MessagePayload> Dequeue(CloudQueue queue)
 }
 ```
 
-#### <a name="process"></a>程序
+#### <a name="process"></a>Process
 
 在下列範例中，追蹤連入訊息的方式類似於追蹤連入 HTTP 要求的方式：
 
@@ -346,7 +346,7 @@ public async Task Process(MessagePayload message)
 
 ### <a name="dependency-types"></a>相依性類型
 
-Application Insights 使用相依性類型來自訂 UI 體驗。 對於佇列，它會識別下列 `DependencyTelemetry` 可改善[交易診斷體驗](/azure/azure-monitor/app/transaction-diagnostics)的類型：
+Application Insights 使用相依性類型來自訂 UI 體驗。 對於佇列，它會識別下列 `DependencyTelemetry` 可改善[交易診斷體驗](./transaction-diagnostics.md)的類型：
 - `Azure queue`針對 Azure 儲存體佇列
 - `Azure Event Hubs`針對 Azure 事件中樞
 - `Azure Service Bus`針對 Azure 服務匯流排
@@ -425,7 +425,7 @@ public async Task RunMyTaskAsync()
 
 處置作業會導致作業停止，因此您可以執行而不是呼叫 `StopOperation`。
 
-*警告*：在某些情況下，未處理的例外狀況可能導致[無法呼叫 ](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/try-finally) `finally`，因此可能無法追蹤作業。
+*警告*：在某些情況下，未處理的例外狀況可能導致[無法呼叫 ](/dotnet/csharp/language-reference/keywords/try-finally) `finally`，因此可能無法追蹤作業。
 
 ### <a name="parallel-operations-processing-and-tracking"></a>平行的作業處理和追蹤
 

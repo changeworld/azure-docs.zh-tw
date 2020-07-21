@@ -3,24 +3,24 @@ title: 使用 Azure CLI 管理 Azure 檔案共用備份
 description: 瞭解如何使用 Azure CLI 來管理和監視由 Azure 備份備份的 Azure 檔案共用。
 ms.topic: conceptual
 ms.date: 01/15/2020
-ms.openlocfilehash: 06e1f29874085c3943a5207f36eff313dc670e88
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6b2a0b81793bcd7b5ca9fa2c4e4748d63daceadd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82184107"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538610"
 ---
 # <a name="manage-azure-file-share-backups-with-the-azure-cli"></a>使用 Azure CLI 管理 Azure 檔案共用備份
 
-Azure CLI 提供管理 Azure 資源的命令列體驗。 這是建立自訂自動化以使用 Azure 資源的絕佳工具。 本文說明如何執行工作來管理和監視[Azure 備份](https://docs.microsoft.com/azure/backup/backup-overview)所備份的 Azure 檔案共用。 您也可以使用[Azure 入口網站](https://portal.azure.com/)來執行這些步驟。
+Azure CLI 提供管理 Azure 資源的命令列體驗。 這是建立自訂自動化以使用 Azure 資源的絕佳工具。 本文說明如何執行工作來管理和監視[Azure 備份](./backup-overview.md)所備份的 Azure 檔案共用。 您也可以使用[Azure 入口網站](https://portal.azure.com/)來執行這些步驟。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-若要在本機安裝和使用 CLI，您必須執行 Azure CLI 版2.0.18 版或更新版本。 若要知道 CLI 版本，執行 `az --version`。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+若要在本機安裝和使用 CLI，您必須執行 Azure CLI 版2.0.18 版或更新版本。 若要知道 CLI 版本，執行 `az --version`。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
 ## <a name="prerequisites"></a>必要條件
 
-本文假設您已透過[Azure 備份](https://docs.microsoft.com/azure/backup/backup-overview)來備份 Azure 檔案共用。 如果您沒有帳戶，請參閱[使用 CLI 來備份 Azure 檔案共用](backup-afs-cli.md)，以設定檔案共用的備份。 在本文中，您會使用下列資源：
+本文假設您已透過[Azure 備份](./backup-overview.md)來備份 Azure 檔案共用。 如果您沒有帳戶，請參閱[使用 CLI 來備份 Azure 檔案共用](backup-afs-cli.md)，以設定檔案共用的備份。 在本文中，您會使用下列資源：
 
 * **資源群組**： *azurefiles*
 * **RecoveryServicesVault**： *azurefilesvault*
@@ -29,7 +29,7 @@ Azure CLI 提供管理 Azure 資源的命令列體驗。 這是建立自訂自�
 
 ## <a name="monitor-jobs"></a>監視工作
 
-當您觸發備份或還原作業時，備份服務會建立追蹤的工作。 若要監視已完成或目前正在執行的作業，請使用[az backup job list](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-list) Cmdlet。 使用 CLI 時，您也可以[暫停目前執行中的工作](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-stop)，或[等待作業完成](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-wait)。
+當您觸發備份或還原作業時，備份服務會建立追蹤的工作。 若要監視已完成或目前正在執行的作業，請使用[az backup job list](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-list) Cmdlet。 使用 CLI 時，您也可以[暫停目前執行中的工作](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-stop)，或[等待作業完成](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-wait)。
 
 下列範例會顯示*azurefilesvault*復原服務保存庫的備份作業狀態：
 
@@ -94,13 +94,13 @@ az backup job list --resource-group azurefiles --vault-name azurefilesvault
 
 ## <a name="modify-policy"></a>修改原則
 
-您可以使用[az backup item set-policy](https://docs.microsoft.com/cli/azure/backup/item?view=azure-cli-latest#az-backup-item-set-policy)修改備份原則，以變更備份頻率或保留範圍。
+您可以使用[az backup item set-policy](/cli/azure/backup/item?view=azure-cli-latest#az-backup-item-set-policy)修改備份原則，以變更備份頻率或保留範圍。
 
 若要變更原則，請定義下列參數：
 
-* **--container-name**：主控檔案共用的儲存體帳戶名稱。 若要取得容器的**名稱**或**易記名稱**，請使用[az backup container list](https://docs.microsoft.com/cli/azure/backup/container?view=azure-cli-latest#az-backup-container-list)命令。
-* **--name**：您要變更原則的檔案共用名稱。 若要取出已備份專案的**名稱**或**易記名稱**，請使用[az backup item list](https://docs.microsoft.com/cli/azure/backup/item?view=azure-cli-latest#az-backup-item-list)命令。
-* **--policy-name**：您要為檔案共用設定的備份原則名稱。 您可以使用[az backup policy list](https://docs.microsoft.com/cli/azure/backup/policy?view=azure-cli-latest#az-backup-policy-list)來查看您保存庫的所有原則。
+* **--container-name**：主控檔案共用的儲存體帳戶名稱。 若要取得容器的**名稱**或**易記名稱**，請使用[az backup container list](/cli/azure/backup/container?view=azure-cli-latest#az-backup-container-list)命令。
+* **--name**：您要變更原則的檔案共用名稱。 若要取出已備份專案的**名稱**或**易記名稱**，請使用[az backup item list](/cli/azure/backup/item?view=azure-cli-latest#az-backup-item-list)命令。
+* **--policy-name**：您要為檔案共用設定的備份原則名稱。 您可以使用[az backup policy list](/cli/azure/backup/policy?view=azure-cli-latest#az-backup-policy-list)來查看您保存庫的所有原則。
 
 下列範例會針對*afsaccount*儲存體帳戶中存在的*azurefiles*檔案共用設定*schedule2*備份原則。
 
@@ -123,7 +123,7 @@ Name                                  ResourceGroup
 fec6f004-0e35-407f-9928-10a163f123e5  azurefiles
 ```
 
-輸出中的**name**屬性會對應到備份服務針對您的變更原則作業所建立的工作名稱。 若要追蹤作業的狀態，請使用[az backup job show](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) Cmdlet。
+輸出中的**name**屬性會對應到備份服務針對您的變更原則作業所建立的工作名稱。 若要追蹤作業的狀態，請使用[az backup job show](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) Cmdlet。
 
 ## <a name="stop-protection-on-a-file-share"></a>停止保護檔案共用
 
@@ -136,12 +136,12 @@ fec6f004-0e35-407f-9928-10a163f123e5  azurefiles
 
 若要停止保護檔案共用，請定義下列參數：
 
-* **--container-name**：主控檔案共用的儲存體帳戶名稱。 若要取得容器的**名稱**或**易記名稱**，請使用[az backup container list](https://docs.microsoft.com/cli/azure/backup/container?view=azure-cli-latest#az-backup-container-list)命令。
-* **--專案名稱**：您要停止保護的檔案共用名稱。 若要取出已備份專案的**名稱**或**易記名稱**，請使用[az backup item list](https://docs.microsoft.com/cli/azure/backup/item?view=azure-cli-latest#az-backup-item-list)命令。
+* **--container-name**：主控檔案共用的儲存體帳戶名稱。 若要取得容器的**名稱**或**易記名稱**，請使用[az backup container list](/cli/azure/backup/container?view=azure-cli-latest#az-backup-container-list)命令。
+* **--專案名稱**：您要停止保護的檔案共用名稱。 若要取出已備份專案的**名稱**或**易記名稱**，請使用[az backup item list](/cli/azure/backup/item?view=azure-cli-latest#az-backup-item-list)命令。
 
 ### <a name="stop-protection-and-retain-recovery-points"></a>停止保護並保留復原點
 
-若要在保留資料時停止保護，請使用[az backup protection disable](https://docs.microsoft.com/cli/azure/backup/protection?view=azure-cli-latest#az-backup-protection-disable) Cmdlet。
+若要在保留資料時停止保護，請使用[az backup protection disable](/cli/azure/backup/protection?view=azure-cli-latest#az-backup-protection-disable) Cmdlet。
 
 下列範例會停止*azurefiles*檔案共用的保護，但會保留所有復原點。
 
@@ -164,11 +164,11 @@ Name                                  ResourceGroup
 fec6f004-0e35-407f-9928-10a163f123e5  azurefiles
 ```
 
-輸出中的**name**屬性會對應至備份服務針對您的停止保護作業所建立的工作名稱。 若要追蹤作業的狀態，請使用[az backup job show](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) Cmdlet。
+輸出中的**name**屬性會對應至備份服務針對您的停止保護作業所建立的工作名稱。 若要追蹤作業的狀態，請使用[az backup job show](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) Cmdlet。
 
 ### <a name="stop-protection-without-retaining-recovery-points"></a>停止保護，而不保留復原點
 
-若要停止保護而不保留復原點，請使用[az backup protection disable](https://docs.microsoft.com/cli/azure/backup/protection?view=azure-cli-latest#az-backup-protection-disable) Cmdlet，並將 [**刪除-備份-資料**] 選項設定為 [ **true**]。
+若要停止保護而不保留復原點，請使用[az backup protection disable](/cli/azure/backup/protection?view=azure-cli-latest#az-backup-protection-disable) Cmdlet，並將 [**刪除-備份-資料**] 選項設定為 [ **true**]。
 
 下列範例會停止保護*azurefiles*檔案共用，而不會保留復原點。
 
@@ -191,11 +191,11 @@ az backup protection disable --vault-name azurefilesvault --resource-group azure
 
 若要繼續保護檔案共用，請定義下列參數：
 
-* **--container-name**：主控檔案共用的儲存體帳戶名稱。 若要取得容器的**名稱**或**易記名稱**，請使用[az backup container list](https://docs.microsoft.com/cli/azure/backup/container?view=azure-cli-latest#az-backup-container-list)命令。
-* **--專案名稱**：您要繼續保護的檔案共用名稱。 若要取出已備份專案的**名稱**或**易記名稱**，請使用[az backup item list](https://docs.microsoft.com/cli/azure/backup/item?view=azure-cli-latest#az-backup-item-list)命令。
+* **--container-name**：主控檔案共用的儲存體帳戶名稱。 若要取得容器的**名稱**或**易記名稱**，請使用[az backup container list](/cli/azure/backup/container?view=azure-cli-latest#az-backup-container-list)命令。
+* **--專案名稱**：您要繼續保護的檔案共用名稱。 若要取出已備份專案的**名稱**或**易記名稱**，請使用[az backup item list](/cli/azure/backup/item?view=azure-cli-latest#az-backup-item-list)命令。
 * **--policy-name**：您要為其繼續保護檔案共用的備份原則名稱。
 
-下列範例會使用[az backup protection resume](https://docs.microsoft.com/cli/azure/backup/protection?view=azure-cli-latest#az-backup-protection-resume) Cmdlet，以使用*schedule1*備份原則來繼續保護*azurefiles*檔案共用。
+下列範例會使用[az backup protection resume](/cli/azure/backup/protection?view=azure-cli-latest#az-backup-protection-resume) Cmdlet，以使用*schedule1*備份原則來繼續保護*azurefiles*檔案共用。
 
 ```azurecli-interactive
 az backup protection resume --vault-name azurefilesvault --resource-group azurefiles --container-name "StorageContainer;Storage;AzureFiles;afsaccount” --item-name “AzureFileShare;azurefiles” --policy-name schedule2 --out table
@@ -216,15 +216,15 @@ Name                                  ResourceGroup
 75115ab0-43b0-4065-8698-55022a234b7f  azurefiles
 ```
 
-輸出中的**名稱**屬性會對應到備份服務針對您的繼續保護作業所建立的工作名稱。 若要追蹤作業的狀態，請使用[az backup job show](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) Cmdlet。
+輸出中的**名稱**屬性會對應到備份服務針對您的繼續保護作業所建立的工作名稱。 若要追蹤作業的狀態，請使用[az backup job show](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) Cmdlet。
 
 ## <a name="unregister-a-storage-account"></a>取消註冊儲存體帳戶
 
 如果您想要使用不同的復原服務保存庫來保護特定儲存體帳戶中的檔案共用，請先[停止保護](#stop-protection-on-a-file-share)該儲存體帳戶中的所有檔案共用。 然後從目前用於保護的復原服務保存庫中取消註冊帳戶。
 
-您必須提供容器名稱，才能取消註冊儲存體帳戶。 若要取得容器的**名稱**或**易記名稱**，請使用[az backup container list](https://docs.microsoft.com/cli/azure/backup/container?view=azure-cli-latest#az-backup-container-list)命令。
+您必須提供容器名稱，才能取消註冊儲存體帳戶。 若要取得容器的**名稱**或**易記名稱**，請使用[az backup container list](/cli/azure/backup/container?view=azure-cli-latest#az-backup-container-list)命令。
 
-下列範例會使用[az backup container 取消註冊](https://docs.microsoft.com/cli/azure/backup/container?view=azure-cli-latest#az-backup-container-unregister)Cmdlet，從*azurefilesvault*取消註冊*afsaccount*儲存體帳戶。
+下列範例會使用[az backup container 取消註冊](/cli/azure/backup/container?view=azure-cli-latest#az-backup-container-unregister)Cmdlet，從*azurefilesvault*取消註冊*afsaccount*儲存體帳戶。
 
 ```azurecli-interactive
 az backup container unregister --vault-name azurefilesvault --resource-group azurefiles --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --out table

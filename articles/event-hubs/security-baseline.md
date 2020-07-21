@@ -7,24 +7,24 @@ ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: c60c1d33954b5e12038fd66787225f4d0aeba62d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e49a6b8000def0fe175930629b33203adec1b0f5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82184702"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537049"
 ---
 # <a name="azure-security-baseline-for-event-hubs"></a>適用于事件中樞的 Azure 安全性基準
 
 適用于事件中樞的 Azure 安全性基準包含可協助您改善部署之安全性狀態的建議。
 
-此服務的基準取自 [Azure 安全性效能評定 1.0 版](https://docs.microsoft.com/azure/security/benchmarks/overview)，其會提供如何在 Azure 上使用最佳做法指引來保護雲端解決方案的建議。
+此服務的基準取自 [Azure 安全性效能評定 1.0 版](../security/benchmarks/overview.md)，其會提供如何在 Azure 上使用最佳做法指引來保護雲端解決方案的建議。
 
-如需詳細資訊，請參閱 [Azure 安全性基準概觀](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview) (機器翻譯)。
+如需詳細資訊，請參閱 [Azure 安全性基準概觀](../security/benchmarks/security-baselines-overview.md) (機器翻譯)。
 
 ## <a name="network-security"></a>網路安全性
 
-如需詳細資訊，請參閱[安全性控制：網路安全性](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security) (機器翻譯)。
+如需詳細資訊，請參閱[安全性控制：網路安全性](../security/benchmarks/security-control-network-security.md) (機器翻譯)。
 
 ### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1.1：在虛擬網路上使用網路安全性群組或 Azure 防火牆來保護資源
 
@@ -72,7 +72,7 @@ ms.locfileid: "82184702"
 
 **指導**方針：在與事件中樞相關聯的虛擬網路上啟用 DDoS 保護標準，以防範分散式阻斷服務（DDoS）攻擊。 使用 Azure 資訊安全中心的整合式威脅情報，以拒絕與已知為惡意或未使用的網際網路 IP 位址通訊。
 
-如何設定 DDoS 保護：[https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection](/azure/virtual-network/manage-ddos-protection)
+如何設定 DDoS 保護：[https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection](../virtual-network/manage-ddos-protection.md)
 
 如需 Azure 資訊安全中心整合式威脅情報的詳細資訊：https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer
 
@@ -174,7 +174,7 @@ https://azuremarketplace.microsoft.com/marketplace/?term=Firewall
 
 ## <a name="logging-and-monitoring"></a>記錄和監視
 
-如需詳細資訊，請參閱[安全性控制：記錄和監視](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring) (機器翻譯)。
+如需詳細資訊，請參閱[安全性控制：記錄和監視](../security/benchmarks/security-control-logging-monitoring.md) (機器翻譯)。
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2.1：使用已核准的時間同步處理來源
 
@@ -287,7 +287,7 @@ https://azuremarketplace.microsoft.com/marketplace/?term=Firewall
 
 ## <a name="identity-and-access-control"></a>身分識別與存取控制
 
-如需詳細資訊，請參閱[安全性控制：身分識別與存取控制](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control) (機器翻譯)。
+如需詳細資訊，請參閱[安全性控制：身分識別與存取控制](../security/benchmarks/security-control-identity-access-control.md) (機器翻譯)。
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1：維護系統管理帳戶的清查
 
@@ -463,7 +463,7 @@ https://azuremarketplace.microsoft.com/marketplace/?term=Firewall
 
 ## <a name="data-protection"></a>資料保護
 
-如需詳細資訊，請參閱[安全性控制：資料保護](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection) (機器翻譯)。
+如需詳細資訊，請參閱[安全性控制：資料保護](../security/benchmarks/security-control-data-protection.md) (機器翻譯)。
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1：維護敏感性資訊的清查
 
@@ -581,7 +581,7 @@ Microsoft 會管理事件中樞的基礎結構，並已實行嚴格的控制，�
 
 ## <a name="vulnerability-management"></a>弱點管理
 
-如需詳細資訊，請參閱[安全性控制：弱點管理](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management) (機器翻譯)。
+如需詳細資訊，請參閱[安全性控制：弱點管理](../security/benchmarks/security-control-vulnerability-management.md) (機器翻譯)。
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1：執行自動化弱點掃描工具
 
@@ -625,7 +625,7 @@ Microsoft 會管理事件中樞的基礎結構，並已實行嚴格的控制，�
 
 ## <a name="inventory-and-asset-management"></a>清查和資產管理
 
-如需詳細資訊，請參閱[安全性控制：清查和資產管理](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management) (機器翻譯)。
+如需詳細資訊，請參閱[安全性控制：清查和資產管理](../security/benchmarks/security-control-inventory-asset-management.md) (機器翻譯)。
 
 ### <a name="61-use-azure-asset-discovery"></a>6.1：使用 Azure 資產探索
 
@@ -767,7 +767,7 @@ Microsoft 會管理事件中樞的基礎結構，並已實行嚴格的控制，�
 
 ## <a name="secure-configuration"></a>安全設定
 
-如需詳細資訊，請參閱[安全性控制：安全設定](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration) (機器翻譯)。
+如需詳細資訊，請參閱[安全性控制：安全設定](../security/benchmarks/security-control-secure-configuration.md) (機器翻譯)。
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1：為所有 Azure 資源建立安全設定
 
@@ -920,7 +920,7 @@ Azure Repos 文件： https://docs.microsoft.com/azure/devops/repos/index?view=a
 
 ## <a name="malware-defense"></a>惡意程式碼防禦
 
-如需詳細資訊，請參閱[安全性控制：惡意程式碼防禦](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense) (機器翻譯)。
+如需詳細資訊，請參閱[安全性控制：惡意程式碼防禦](../security/benchmarks/security-control-malware-defense.md) (機器翻譯)。
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8.1：使用集中管理的反惡意程式碼軟體
 
@@ -952,7 +952,7 @@ Azure Repos 文件： https://docs.microsoft.com/azure/devops/repos/index?view=a
 
 ## <a name="data-recovery"></a>資料復原
 
-如需詳細資訊，請參閱[安全性控制：資料復原](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery) (機器翻譯)。
+如需詳細資訊，請參閱[安全性控制：資料復原](../security/benchmarks/security-control-data-recovery.md) (機器翻譯)。
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9.1：確保會定期自動備份
 
@@ -1008,7 +1008,7 @@ Azure 儲存體 blob 的虛刪除：https://docs.microsoft.com//azure/storage/bl
 
 ## <a name="incident-response"></a>事件回應
 
-如需詳細資訊，請參閱[安全性控制：事件回應](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response) (機器翻譯)。
+如需詳細資訊，請參閱[安全性控制：事件回應](../security/benchmarks/security-control-incident-response.md) (機器翻譯)。
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1：建立事件回應指南
 
@@ -1074,7 +1074,7 @@ Azure 儲存體 blob 的虛刪除：https://docs.microsoft.com//azure/storage/bl
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>滲透測試和 Red Team 練習
 
-如需詳細資訊，請參閱[安全性控制：滲透測試和 Red Team 練習](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises) (機器翻譯)。
+如需詳細資訊，請參閱[安全性控制：滲透測試和 Red Team 練習](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md) (機器翻譯)。
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings-within-60-days"></a>11.1：進行 Azure 資源的定期滲透測試，並確保在 60 天內補救所有重大安全性發現
 
@@ -1087,5 +1087,5 @@ Azure 儲存體 blob 的虛刪除：https://docs.microsoft.com//azure/storage/bl
 
 ## <a name="next-steps"></a>後續步驟
 
-- 請參閱 [Azure 安全性效能評定](https://docs.microsoft.com/azure/security/benchmarks/overview) (機器翻譯)
-- 深入了解 [Azure 安全性基準](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview) (機器翻譯)
+- 請參閱 [Azure 安全性效能評定](../security/benchmarks/overview.md) (機器翻譯)
+- 深入了解 [Azure 安全性基準](../security/benchmarks/security-baselines-overview.md) (機器翻譯)

@@ -3,17 +3,17 @@ title: 設定您自己的金鑰來加密待用 Azure 事件中樞資料
 description: 本文提供有關如何設定您自己的金鑰來加密 Azure 事件中樞資料其餘部分的資訊。
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 2d82fc8c962496246196331c7d191c0fc057694f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 18a59b74897b074fea9ee56947c78635f2a3509d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85479822"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537253"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>使用 Azure 入口網站，設定客戶管理的金鑰來加密待用 Azure 事件中樞資料
 Azure 事件中樞使用 Azure 儲存體服務加密（Azure SSE）提供待用資料的加密。 事件中樞依賴 Azure 儲存體來儲存資料，而且根據預設，與 Azure 儲存體一起儲存的所有資料都會使用 Microsoft 管理的金鑰進行加密。 
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 Azure 事件中樞現在支援使用 Microsoft 管理的金鑰或客戶管理的金鑰（攜帶您自己的金鑰– BYOK）來加密待用資料的選項。 這項功能可讓您建立、輪替、停用及撤銷用來加密待用資料 Azure 事件中樞的客戶管理金鑰的存取權。
 
 啟用 BYOK 功能是在命名空間上進行的一次性設定程式。
@@ -41,7 +41,7 @@ Azure 事件中樞現在支援使用 Microsoft 管理的金鑰或客戶管理的
 ## <a name="set-up-a-key-vault-with-keys"></a>使用金鑰設定金鑰保存庫
 啟用客戶管理的金鑰之後，您必須將客戶管理的金鑰與您的 Azure 事件中樞命名空間產生關聯。 事件中樞只支援 Azure Key Vault。 如果您在上一節中啟用 [**使用客戶管理的金鑰進行加密**] 選項，則必須將金鑰匯入 Azure Key Vault。 此外，索引鍵必須具有虛**刪除**，而且**不會**針對金鑰進行清除設定。 這些設定可以使用[PowerShell](../key-vault/general/soft-delete-powershell.md)或[CLI](../key-vault/general/soft-delete-cli.md#enabling-purge-protection)來設定。
 
-1. 若要建立新的金鑰保存庫，請遵循 Azure Key Vault[快速入門](../key-vault/general/overview.md)。 如需匯入現有金鑰的詳細資訊，請參閱[關於金鑰、秘密和憑證](../key-vault/about-keys-secrets-and-certificates.md)。
+1. 若要建立新的金鑰保存庫，請遵循 Azure Key Vault[快速入門](../key-vault/general/overview.md)。 如需匯入現有金鑰的詳細資訊，請參閱[關於金鑰、秘密和憑證](../key-vault/general/about-keys-secrets-certificates.md)。
 1. 若要在建立保存庫時開啟虛刪除和清除保護，請使用[az keyvault create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create)命令。
 
     ```azurecli-interactive
@@ -94,7 +94,7 @@ Azure 事件中樞現在支援使用 Microsoft 管理的金鑰或客戶管理的
 ## <a name="log-schema"></a>記錄檔結構描述 
 所有記錄都會以「JavaScript 物件標記法」(JSON) 格式儲存。 每個專案都有使用下表所述格式的字串欄位。 
 
-| Name | 描述 |
+| 名稱 | 描述 |
 | ---- | ----------- | 
 | TaskName | 失敗工作的描述。 |
 | ActivityId | 用於追蹤的內部識別碼。 |
@@ -419,7 +419,3 @@ Azure 事件中樞現在支援使用 Microsoft 管理的金鑰或客戶管理的
 查看下列文章：
 - [事件中心概觀](event-hubs-about.md)
 - [Key Vault 總覽](../key-vault/general/overview.md)
-
-
-
-

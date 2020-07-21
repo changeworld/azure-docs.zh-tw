@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/12/2018
-ms.openlocfilehash: 6df27dde997bd34e86b1bb340817648bfe68f2c4
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: fb216f164e02dfa4dbc4ad11774569b2e8ea970f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83797608"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539681"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>使用 Azure 監視器持續監視
 
@@ -37,7 +38,7 @@ ms.locfileid: "83797608"
 - 您可以從大多數 Azure 資源中自動取得[平台計量、活動記錄和診斷記錄](platform/data-sources.md)，而無需進行任何設定。
 - 使用[適用於 VM 的 Azure 監視器](insights/vminsights-overview.md)，針對 VM 啟用更深入的監視。
 -  使用[適用於容器的 Azure 監視器](insights/container-insights-overview.md)，針對 AKS 叢集啟用更深入的監視。
-- 新增環境中不同應用程式與服務的[監視解決方案](insights/solutions-inventory.md)。
+- 新增環境中不同應用程式與服務的[監視解決方案](./monitor-reference.md)。
 
 
 [基礎結構即程式碼](/azure/devops/learn/what-is-infrastructure-as-code)是描述性模型中基礎結構的管理，使用與 DevOps 小組針對原始程式碼所使用的相同版本設定。 它為您的環境增加了可靠性和延展性，並允許您利用針對管理應用程式所使用的類似程序。

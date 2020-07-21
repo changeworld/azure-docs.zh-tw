@@ -3,16 +3,16 @@ title: 對應資料流程 Unpivot 轉換
 description: Azure Data Factory 對應的資料流程 Unpivot 轉換
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 01/30/2019
-ms.openlocfilehash: c3e769334beb6a5739eebb8d7e8dc370533c2dc6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/14/2020
+ms.openlocfilehash: b7a05f33c199ab46508fa2b9bc0ef576f888ef27
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81606252"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537709"
 ---
 # <a name="azure-data-factory-unpivot-transformation"></a>Azure Data Factory Unpivot 轉換
 
@@ -21,6 +21,8 @@ ms.locfileid: "81606252"
 使用 ADF 對應資料流程中的 Unpivot 做為將未正規化的資料集轉換成更正規化版本的方法，方法是將單一記錄中多個資料行的值擴充為單一資料行中具有相同值的多筆記錄。
 
 ![取消樞紐轉換](media/data-flow/unpivot1.png "Unpivot 選項1")
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4B1RR]
 
 ## <a name="ungroup-by"></a>取消分組依據
 

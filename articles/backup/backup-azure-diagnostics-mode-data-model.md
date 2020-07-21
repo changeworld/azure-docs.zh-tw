@@ -3,12 +3,12 @@ title: Azure 監視器記錄資料模型
 description: 在本文中，您將詳盡了解 Azure 備份資料的 Azure 監視器 Log Analytics 資料模型。
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: e776649ff22e3249e2472adbe298c869ff5c946a
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 73247dac1ca829a7893192101da0981c3edcf8d8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85854752"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539069"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>適用於 Azure 備份資料的 Log Analytics 資料模型
 
@@ -18,7 +18,7 @@ ms.locfileid: "85854752"
 
 > [!NOTE]
 >
-> 此資料模型會參考將診斷事件傳送至 Log Analytics (LA) 的 Azure 診斷模式。 若要了解新的資源特定模式適用的資料模型，可以參考下列文章：[Azure 備份診斷事件的資料模型](https://docs.microsoft.com/azure/backup/backup-azure-reports-data-model)
+> 此資料模型會參考將診斷事件傳送至 Log Analytics (LA) 的 Azure 診斷模式。 若要了解新的資源特定模式適用的資料模型，可以參考下列文章：[Azure 備份診斷事件的資料模型](./backup-azure-reports-data-model.md)
 
 ## <a name="using-azure-backup-data-model"></a>使用 Azure 備份資料模型
 
@@ -465,7 +465,7 @@ ms.locfileid: "85854752"
 
 基於回溯相容性，Azure 備份代理程式和 Azure VM 備份的診斷資料現在會同時傳送至 V1 和 V2 結構描述中的 Azure 診斷資料表 (V1 結構描述現在位於淘汰的路徑上)。 您可以在記錄查詢中篩選 SchemaVersion_s=="V1" 的記錄，以識別 Log Analytics 中的哪些記錄屬於 V1 結構描述。 
 
-請參閱前述[資料模型](https://docs.microsoft.com/azure/backup/backup-azure-diagnostics-mode-data-model#using-azure-backup-data-model)中的第三個資料行「描述」，以識別哪些資料行僅屬於 V1 結構描述。
+請參閱前述[資料模型](#using-azure-backup-data-model)中的第三個資料行「描述」，以識別哪些資料行僅屬於 V1 結構描述。
 
 ### <a name="modifying-your-queries-to-use-the-v2-schema"></a>修改您的查詢以使用 V2 架構
 當 V1 架構位於取代路徑上時，建議您在 Azure 備份診斷資料的所有自訂查詢中只使用 V2 架構。 以下範例說明如何更新您的查詢，以移除 V1 架構的相依性：

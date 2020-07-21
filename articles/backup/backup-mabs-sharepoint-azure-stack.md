@@ -3,11 +3,12 @@ title: 備份 Azure Stack 上的 SharePoint 伺服器陣列
 description: 使用 Azure 備份伺服器來備份和還原 Azure Stack 上的 SharePoint 資料。 本文提供設定 SharePoint 伺服器陣列，讓所需的資料可以儲存在 Azure 中的相關資訊。 您可以從磁碟或 Azure 還原受保護的 SharePoint 資料。
 ms.topic: conceptual
 ms.date: 06/07/2020
-ms.openlocfilehash: 8b9257c1d175c350df06f9421b31a9e7b8e2bb80
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bd94b24479631f9fbbe4070529d76fe6442faae2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84657938"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538780"
 ---
 # <a name="back-up-a-sharepoint-farm-on-azure-stack"></a>備份 Azure Stack 上的 SharePoint 伺服器陣列
 
@@ -101,7 +102,7 @@ MABS 的 Azure 備份支援下列案例：
 
 1. 在 [指定線上保留原則] 中，您可以指定如何在 Azure 中保留根據每日/每週/每月/每年備份建立的復原點。
 
-1. 在 [選擇線上複寫] 中，指定如何首次完整複寫資料。 您可以透過網路進行複寫，也可以執行離線備份 (離線植入)。 離線備份會使用 Azure 匯入功能。 [閱讀更多](https://azure.microsoft.com/documentation/articles/backup-azure-backup-import-export/)。
+1. 在 [選擇線上複寫] 中，指定如何首次完整複寫資料。 您可以透過網路進行複寫，也可以執行離線備份 (離線植入)。 離線備份會使用 Azure 匯入功能。 [閱讀更多](./backup-azure-backup-import-export.md)。
 
 1. 在 [摘要] 頁面上檢閱您的設定。 按一下 [建立群組] 後，就會首次複寫資料。 完成時，在 [狀態] 頁面上，保護群組狀態會顯示為 [正常]。 之後，就按照保護群組設定進行備份。
 

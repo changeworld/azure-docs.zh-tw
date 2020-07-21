@@ -6,11 +6,12 @@ author: nikmd23
 ms.author: nimolnar
 ms.date: 09/17/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 83575aa7f9b63615f453e00bd06b00a5540b9a9e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9eb753981821a6b53d81b1d03e65abf68e0064dc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80892252"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539987"
 ---
 # <a name="what-is-distributed-tracing"></a>什麼是分散式追蹤？
 
@@ -20,9 +21,9 @@ ms.locfileid: "80892252"
 
 這就是分散式追蹤的來源。  
 
-分散式追蹤相當於新式雲端和微服務架構的呼叫堆疊，但增添了非常簡單的效能分析工具。 在 Azure 監視器中，我們提供兩種取用分散式追蹤資料的體驗。 第一種是[交易診斷](https://docs.microsoft.com/azure/application-insights/app-insights-transaction-diagnostics)檢視，就像是新增了時間維度的呼叫堆疊。 交易診斷檢視可顯示單一交易/要求，並可協助您找出可靠性問題的根本原因及每個要求的效能瓶頸。
+分散式追蹤相當於新式雲端和微服務架構的呼叫堆疊，但增添了非常簡單的效能分析工具。 在 Azure 監視器中，我們提供兩種取用分散式追蹤資料的體驗。 第一種是[交易診斷](./transaction-diagnostics.md)檢視，就像是新增了時間維度的呼叫堆疊。 交易診斷檢視可顯示單一交易/要求，並可協助您找出可靠性問題的根本原因及每個要求的效能瓶頸。
 
-Azure 監視器也提供可彙總許多交易的[應用程式對應](https://docs.microsoft.com/azure/application-insights/app-insights-app-map)檢視，以顯示系統互動方式的拓撲檢視，以及平均效能和錯誤率。 
+Azure 監視器也提供可彙總許多交易的[應用程式對應](./app-map.md)檢視，以顯示系統互動方式的拓撲檢視，以及平均效能和錯誤率。 
 
 ## <a name="how-to-enable-distributed-tracing"></a>如何啟用分散式追蹤
 
@@ -32,16 +33,16 @@ Azure 監視器也提供可彙總許多交易的[應用程式對應](https://doc
 
 適用于 .NET、.NET Core、JAVA、Node.js 和 JavaScript 的 Application Insights 代理程式和（或） Sdk 全都以原生方式支援分散式追蹤。 以下可取得安裝和設定每個 Application Insights SDK 的指示：
 
-* [.NET](https://docs.microsoft.com/azure/application-insights/quick-monitor-portal)
-* [.NET Core](https://docs.microsoft.com/azure/application-insights/app-insights-dotnetcore-quick-start)
-* [Java](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)
-* [Node.js](https://docs.microsoft.com/azure/application-insights/app-insights-nodejs-quick-start)
-* [JavaScript](https://docs.microsoft.com/azure/application-insights/app-insights-javascript)
+* [.NET](../learn/quick-monitor-portal.md)
+* [.NET Core](../learn/dotnetcore-quick-start.md)
+* [Java](./java-in-process-agent.md)
+* [Node.js](../learn/nodejs-quick-start.md)
+* [JavaScript](./javascript.md)
 * [Python](opencensus-python.md)
 
-安裝和設定適當的 Application Insights SDK 後，SDK 相依性自動收集器就會針對熱門的架構、程式庫和技術自動收集追蹤資訊。 完整的支援技術清單位於[相依性自動收集文件](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies)中。
+安裝和設定適當的 Application Insights SDK 後，SDK 相依性自動收集器就會針對熱門的架構、程式庫和技術自動收集追蹤資訊。 完整的支援技術清單位於[相依性自動收集文件](./auto-collect-dependencies.md)中。
 
- 此外，只要在 [TeleletryClient](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics) 上呼叫 [TrackDependency](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics)，即可手動追蹤任何技術。
+ 此外，只要在 [TeleletryClient](./api-custom-events-metrics.md) 上呼叫 [TrackDependency](./api-custom-events-metrics.md)，即可手動追蹤任何技術。
 
 ## <a name="enable-via-opencensus"></a>透過 OpenCensus 啟用
 

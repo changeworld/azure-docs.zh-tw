@@ -3,12 +3,12 @@ title: 備份 Azure VM 中的 SQL Server 資料庫
 description: 在本文中，您將瞭解如何使用 Azure 備份來備份 Azure 虛擬機器上的 SQL Server 資料庫。
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 16e24ed94d8017d9fb922193bb16a33ec7a9cdfd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4cfd8233b9a696b5b4b1981eefa81aa9723f6431
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84817539"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538929"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>備份 Azure VM 中的 SQL Server 資料庫
 
@@ -59,17 +59,17 @@ SQL Server 資料庫是需要低復原點目標 (RPO) 和長期保留的重要�
 
 #### <a name="private-endpoints"></a>私人端點
 
-私人端點可讓您從虛擬網路內的伺服器安全地連線到您的復原服務保存庫。 私人端點會針對您的保存庫使用 VNET 位址空間中的 IP。 您在虛擬網路內的資源與保存庫之間的網路流量，會透過您的虛擬網路和 Microsoft 骨幹網路上的私人連結來傳輸。 這可避免資料在公用網際網路暴露。 請在[這裡](https://docs.microsoft.com/azure/backup/private-endpoints)詳讀 Azure 備份的私人端點詳細資料。
+私人端點可讓您從虛擬網路內的伺服器安全地連線到您的復原服務保存庫。 私人端點會針對您的保存庫使用 VNET 位址空間中的 IP。 您在虛擬網路內的資源與保存庫之間的網路流量，會透過您的虛擬網路和 Microsoft 骨幹網路上的私人連結來傳輸。 這可避免資料在公用網際網路暴露。 請在[這裡](./private-endpoints.md)詳讀 Azure 備份的私人端點詳細資料。
 
 #### <a name="nsg-tags"></a>NSG 標籤
 
-如果您使用網路安全性群組 (NSG)，請使用 AzureBackup 服務標籤，以允許對 Azure 備份進行輸出存取。 除了 Azure 備份標籤之外，您還需要為 Azure AD 和 Azure 儲存體建立類似的 [NSG](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) 規則，以允許用於驗證和資料傳輸的連線。  下列步驟說明建立 Azure 備份標籤規則的程序：
+如果您使用網路安全性群組 (NSG)，請使用 AzureBackup 服務標籤，以允許對 Azure 備份進行輸出存取。 除了 Azure 備份標籤之外，您還需要為 Azure AD 和 Azure 儲存體建立類似的 [NSG](../virtual-network/security-overview.md#service-tags) 規則，以允許用於驗證和資料傳輸的連線。  下列步驟說明建立 Azure 備份標籤規則的程序：
 
 1. 在 [所有服務] 中，移至 [網路安全性群組]，然後選取網路安全性群組。
 
 1. 選取 [設定]**** 底下的 [輸出安全性規則]****。
 
-1. 選取 [新增]。 輸入可供用於建立新規則的所有必要詳細資料，如[安全性規則設定](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings)中所述。 請確定 [目的地] 選項已設定為 [服務標籤]，且 [目的地服務標籤] 已設定為 [AzureBackup]。
+1. 選取 [新增]。 輸入可供用於建立新規則的所有必要詳細資料，如[安全性規則設定](../virtual-network/manage-network-security-group.md#security-rule-settings)中所述。 請確定 [目的地] 選項已設定為 [服務標籤]，且 [目的地服務標籤] 已設定為 [AzureBackup]。
 
 1. 按一下 [新增] 以儲存新建立的輸出安全性規則。
 
@@ -77,7 +77,7 @@ SQL Server 資料庫是需要低復原點目標 (RPO) 和長期保留的重要�
 
 #### <a name="azure-firewall-tags"></a>Azure 防火牆標籤
 
-如果您使用的是 Azure 防火牆，請使用 [AzureBackup] 的 [Azure 防火牆標籤](https://docs.microsoft.com/azure/firewall/fqdn-tags)來建立應用程式規則。 這會允許對 Azure 備份進行的所有輸出存取。
+如果您使用的是 Azure 防火牆，請使用 [AzureBackup] 的 [Azure 防火牆標籤](../firewall/fqdn-tags.md)來建立應用程式規則。 這會允許對 Azure 備份進行的所有輸出存取。
 
 #### <a name="allow-access-to-service-ip-ranges"></a>允許存取服務 IP 範圍
 
@@ -91,7 +91,7 @@ SQL Server 資料庫是需要低復原點目標 (RPO) 和長期保留的重要�
 | -------------- | ------------------------------------------------------------ |
 | Azure 備份  | `*.backup.windowsazure.com`                             |
 | Azure 儲存體 | `*.blob.core.windows.net` <br><br> `*.queue.core.windows.net` |
-| Azure AD      | 請遵循[本文](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges#microsoft-365-common-and-office-online)中第 56 和第 59 節來允許存取 FQDN |
+| Azure AD      | 請遵循[本文](/office365/enterprise/urls-and-ip-address-ranges#microsoft-365-common-and-office-online)中第 56 和第 59 節來允許存取 FQDN |
 
 #### <a name="use-an-http-proxy-server-to-route-traffic"></a>使用 HTTP Proxy 伺服器以路由流量
 
@@ -107,7 +107,7 @@ SQL Server 資料庫是需要低復原點目標 (RPO) 和長期保留的重要�
 * 分號 (;)
 * 斜線 (/)
 
-對於不支援的字元，可以使用別名，但建議避免採用此做法。 如需詳細資訊，請參閱 [了解表格服務資料模型](https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model)。
+對於不支援的字元，可以使用別名，但建議避免採用此做法。 如需詳細資訊，請參閱 [了解表格服務資料模型](/rest/api/storageservices/understanding-the-table-service-data-model)。
 
 >[!NOTE]
 >不支援在其名稱中使用特殊字元 (例如「+」或「&」) 資料庫的**設定保護**作業。 您可以變更資料庫名稱，或啟用**自動保護**以成功保護這些資料庫。
@@ -161,11 +161,15 @@ SQL Server 資料庫是需要低復原點目標 (RPO) 和長期保留的重要�
 
    ![選取 [設定備份]](./media/backup-azure-sql-database/backup-goal-configure-backup.png)
 
-2. 在 [選取要備份的項目]中，您會看到所有已登錄的可用性群組和獨立 SQ LServer 執行個體。 選取資料列左邊的箭號，以展開該執行個體或 Always On 可用性群組中所有未受保護的資料庫清單。  
+1. 按一下 [**新增資源**]，以查看所有已註冊的可用性群組和獨立 SQL Server 實例。
 
-    ![顯示所有具備獨立資料庫的 SQL Server 執行個體](./media/backup-azure-sql-database/list-of-sql-databases.png)
+    ![選取 [新增資源]](./media/backup-azure-sql-database/add-resources.png)
 
-3. 選擇您要保護的資料庫，然後選取 [確定]。
+1. 在 [**選取要備份的專案**] 畫面中，選取資料列左邊的箭號，以展開該實例或 Always On 可用性群組中所有未受保護的資料庫清單。
+
+    ![選取要備份的專案](./media/backup-azure-sql-database/select-items-to-backup.png)
+
+1. 選擇您要保護的資料庫，然後選取 [確定]。
 
    ![保護資料庫](./media/backup-azure-sql-database/select-database-to-protect.png)
 
@@ -174,28 +178,20 @@ SQL Server 資料庫是需要低復原點目標 (RPO) 和長期保留的重要�
      * 若要保護 50 個以上的資料庫，請設定多個備份。
      * 若要[啟用](#enable-auto-protection)整個執行個體或 Always On 可用性群組，請在 [自動保護] 下拉式清單中，選取 [開啟]，然後選取 [確定]。
 
-    > [!NOTE]
-    > [自動保護](#enable-auto-protection)功能不僅可一次性地在所有現有的資料庫上啟用保護，也會自動保護新增至該執行個體或可用性群組的任何新資料庫。  
+         > [!NOTE]
+         > [自動保護](#enable-auto-protection)功能不僅可一次性地在所有現有的資料庫上啟用保護，也會自動保護新增至該執行個體或可用性群組的任何新資料庫。  
 
-4. 選取 [確定] 開啟 [備份原則]。
+1. 定義**備份原則**。 您可以執行下列其中一項：
 
-    ![在 Always On 可用性群組上啟用自動保護](./media/backup-azure-sql-database/enable-auto-protection.png)
-
-5. 在 [備份原則] 中，選擇原則，然後選取 [確定]。
-
-   * 選取 HourlyLogBackup 的預設原則。
+   * 選取預設原則為 [ *HourlyLogBackup*]。
    * 選擇之前為 SQL 建立的現有備份原則。
    * 根據 RPO 和保留範圍來定義新的原則。
 
      ![選取備份原則](./media/backup-azure-sql-database/select-backup-policy.png)
 
-6. 在 [備份] 中，選取 [啟用備份]。
+1. 按一下 [**啟用備份**] 以提交**設定保護**作業，並在入口網站的 [**通知**] 區域中追蹤設定進度。
 
-    ![啟用所選備份原則](./media/backup-azure-sql-database/enable-backup-button.png)
-
-7. 在入口網站的 [通知] 區域中，追蹤設定進度。
-
-    ![[通知] 區域](./media/backup-azure-sql-database/notifications-area.png)
+   ![追蹤設定進度](./media/backup-azure-sql-database/track-configuration-progress.png)
 
 ### <a name="create-a-backup-policy"></a>建立備份原則
 
@@ -210,22 +206,22 @@ SQL Server 資料庫是需要低復原點目標 (RPO) 和長期保留的重要�
 若要建立備份原則：
 
 1. 在保存庫中，選取 [備份原則] > [新增]。
-2. 在 [新增] 中，選取 [Azure VM 中的 SQL Server] 來定義原則類型。
+1. 在 [新增] 中，選取 [Azure VM 中的 SQL Server] 來定義原則類型。
 
    ![針對新備份原則選擇原則類型](./media/backup-azure-sql-database/policy-type-details.png)
 
-3. 在 [原則名稱] 中，為新原則輸入名稱。
-4. 在 [完整備份原則] 中，選取 [備份頻率]。 選擇 [每日] 或 [每週]。
+1. 在 [原則名稱] 中，為新原則輸入名稱。
 
-   * 若選擇 [每日]，請選取備份作業的開始時間和時區。
-   * 若選擇 [每週]，請選取備份作業的開始日期 (星期幾)、時間和時區。
-   * 執行完整備份，因為無法關閉 [完整備份] 選項。
-   * 選取 [完整備份] 以檢視原則。
-   * 您無法為每日完整備份建立差異備份。
+    ![輸入原則名稱](./media/backup-azure-sql-database/policy-name.png)
+
+1. 按一下對應至 [**完整備份**] 的 [**編輯**] 連結，以修改預設設定。
+
+   * 選取**備份頻率**。 選擇 [每日] 或 [每週]。
+   * 若選擇 [每日]，請選取備份作業的開始時間和時區。 您無法為每日完整備份建立差異備份。
 
      ![新的備份原則欄位](./media/backup-azure-sql-database/full-backup-policy.png)  
 
-5. 在 [保留範圍] 中，依預設會選取所有選項。 請清除任何保留範圍限制，然後設定要使用的間隔。
+1. 在 [保留範圍] 中，依預設會選取所有選項。 請清除任何保留範圍限制，然後設定要使用的間隔。
 
     * 所有備份類型 (完整、差異和記錄) 的最小保留期間為七天。
     * 復原點會根據其保留範圍標記為保留。 例如，如果您選取每日完整備份，每天只會觸發一次完整備份。
@@ -234,28 +230,28 @@ SQL Server 資料庫是需要低復原點目標 (RPO) 和長期保留的重要�
 
        ![保留範圍間隔設定](./media/backup-azure-sql-database/retention-range-interval.png)
 
-6. 在 [完整備份原則] 功能表中，選取 [確定] 接受設定。
-7. 若要新增差異備份原則，請選取 [差異備份]。
+1. 選取 **[確定]** 以接受完整備份的設定。
+1. 按一下對應至 [**差異備份**] 的 [**編輯**] 連結，以修改預設設定。
 
-   ![保留範圍間隔設定](./media/backup-azure-sql-database/retention-range-interval.png)
-   ![開啟差異備份原則功能表](./media/backup-azure-sql-database/backup-policy-menu-choices.png)
+    * 在 [差異備份原則] 中，選取 [啟用] 以開啟頻率和保留控制項。
+    * 您每天僅可以觸發一次差異備份。 差異備份無法在與完整備份相同的日期上觸發。
+    * 差異備份最多可以保留 180 天。
+    * Master 資料庫不支援差異備份。
 
-8. 在 [差異備份原則] 中，選取 [啟用] 以開啟頻率和保留控制項。
+      ![差異備份原則](./media/backup-azure-sql-database/differential-backup-policy.png)
 
-    * 您每天僅可以觸發一次差異備份。
-    * 差異備份最多可以保留 180 天。 如需較長的保留期，請使用完整備份。
+1. 按一下對應至**記錄備份**的 [**編輯**] 連結，以修改預設設定
 
-9. 選取 [確定] 以儲存原則，然後返回主要 [備份原則] 功能表。
+    * 在 [記錄備份] 中選取 [啟用]，然後設定頻率和保留控制項。
+    * 記錄備份可以每隔 15 分鐘頻繁地出現，而且最多可以保留 35 天。
+    * 如果資料庫是在[簡單復原模式](/sql/relational-databases/backup-restore/recovery-models-sql-server?view=sql-server-ver15)中，該資料庫的記錄備份排程將會暫停，因此不會觸發任何記錄備份。
+    * 如果資料庫的復原模式從 [**完整**] 變更為 [**簡單**]，則會在復原模式變更的24小時內暫停記錄備份。 同樣地，如果復原模式從**Simple**變更，表示現在可以支援資料庫的記錄備份，記錄備份排程將會在復原模式變更的24小時內啟用。
 
-10. 若要新增交易記錄備份原則，請選取 [記錄備份]。
-11. 在 [記錄備份] 中選取 [啟用]，然後設定頻率和保留控制項。 記錄備份可以每隔 15 分鐘頻繁地出現，而且最多可以保留 35 天。
-12. 選取 [確定] 以儲存原則，然後返回主要 [備份原則] 功能表。
+      ![記錄備份原則](./media/backup-azure-sql-database/log-backup-policy.png)
 
-    ![編輯記錄備份原則](./media/backup-azure-sql-database/log-backup-policy-editor.png)
+1. 在 [備份原則] 功能表上，選擇是否要啟用 [SQL 備份壓縮]。 此選項預設為停用。 若已啟用，SQL Server 會將壓縮的備份串流處理至 VDI。 Azure 備份會根據這個控制項的值，使用壓縮/NO_COMPRESSION 子句來覆寫實例層級預設值。
 
-13. 在 [備份原則] 功能表上，選擇是否要啟用 [SQL 備份壓縮]。 此選項預設為停用。 若已啟用，SQL Server 會將壓縮的備份串流處理至 VDI。  請注意，Azure 備份會根據此控制項的值，以 COMPRESSION / NO_COMPRESSION 子句覆寫執行個體層級預設值。
-
-14. 完成備份原則的編輯之後，請選取 [確定]。
+1. 完成備份原則的編輯之後，請選取 [確定]。
 
 > [!NOTE]
 > 每個記錄備份都會連結到先前的完整備份，以形成復原鏈結。 系統會保留此完整備份，直到最後一個記錄備份的保留期到期為止。 這可能表示完整備份會保留一段額外的時間，以確保可以復原所有記錄。 假設使用者已設定每週進行完整備份、每日進行差異備份和每 2 小時進行記錄備份。 所有這些項目都會保留 30 天。 但是，只有在下一次的完整備份可以使用之後 (也就是 30 + 7 天之後)，才能真正清除/刪除每週的完整備份。 比方說，每週的完整備份會在 11 月 16 日執行。 根據保留原則，它應該保留到12月16日為止。 此完整備份的最後一個記錄備份會在下一次排定的完整備份 (也就是 11 月 22 日) 之前進行。 直到 12 月 22 日，也就是此記錄備份到期之前，您都無法刪除 11 月 16 日的完整備份。 因此，11 月 16 日的完整備份會保留到 12 月 22 日。

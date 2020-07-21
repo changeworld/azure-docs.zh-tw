@@ -6,11 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 664d6eb377185613a1a5670daf6747b482c79d9d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d63d932756495584b2870c597d3332077f8e86c9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77671608"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539834"
 ---
 # <a name="profile-live-azure-service-fabric-applications-with-application-insights"></a>使用 Application Insights 來分析即時 Azure Service Fabric 應用程式
 
@@ -25,9 +26,9 @@ Application Insights Profiler 會隨附於 Azure 診斷。 您可以使用 Azure
 
 若要設定環境，請採取下列動作：
 
-1. Profiler 支援 .NET Framework 和 .Net Core。 如果您使用 .NET Framework，請確定您使用的是[.NET Framework 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed)或更新版本。 確認部署的作業系統是 `Windows Server 2012 R2` 或更新版本就足夠了。 Profiler 支援 .NET Core 2.1 和更新版本的應用程式。
+1. Profiler 支援 .NET Framework 和 .Net Core。 如果您使用 .NET Framework，請確定您使用的是[.NET Framework 4.6.1](/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed)或更新版本。 確認部署的作業系統是 `Windows Server 2012 R2` 或更新版本就足夠了。 Profiler 支援 .NET Core 2.1 和更新版本的應用程式。
 
-1. 在部署範本檔案中搜尋 [Azure 診斷](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics)擴充功能。
+1. 在部署範本檔案中搜尋 [Azure 診斷](../platform/diagnostics-extension-overview.md)擴充功能。
 
 1. 新增下列 `SinksConfig` 區段作為 `WadCfg` 的子元素。 將 `ApplicationInsightsProfiler` 屬性值取代為您自己的 Application Insights 檢測金鑰：  
 
@@ -42,7 +43,7 @@ Application Insights Profiler 會隨附於 Azure 診斷。 您可以使用 Azure
       }
       ```
 
-      如需將診斷擴充功能新增至部署範本的詳細資訊，請參閱[使用 Windows VM 和 Azure Resource Manager 範本的監視和診斷](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-diagnostics-template?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+      如需將診斷擴充功能新增至部署範本的詳細資訊，請參閱[使用 Windows VM 和 Azure Resource Manager 範本的監視和診斷](../../virtual-machines/extensions/diagnostics-template.md?toc=/azure/virtual-machines/windows/toc.json)。
 
 1. 使用 Azure Resource Manager 範本部署 Service Fabric 叢集。  
   如果設定全都正確，就會在安裝 Azure 診斷擴充功能時，安裝並啟用 Application Insights Profiler。 

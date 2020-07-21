@@ -7,11 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: jaredro
-ms.openlocfilehash: c9b109fe12b709649adaa05d62b3d1255605986e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8309c98e9ae45650f65fcd54676cc7655934039d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987297"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537117"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute 常見問題集
 
@@ -110,7 +111,7 @@ Microsoft 會驗證指定的「已公告公用首碼」和「對等互連 ASN」
 
 如果您看到「需要驗證」訊息，請收集其中顯示實體已將公用首碼指派給您組織的文件，而此實體列示為路由登錄中的首碼擁有者，然後開啟支援票證，提交這些文件進行手動驗證，如下所示。
 
-![](./media/expressroute-faqs/ticket-portal-msftpeering-prefix-validation.png)
+![顯示「公用首碼的擁有權證明」的新支援要求（支援票證）的螢幕擷取畫面。](./media/expressroute-faqs/ticket-portal-msftpeering-prefix-validation.png)
 
 ### <a name="is-dynamics-365-supported-on-expressroute"></a>ExpressRoute 支援 Dynamics 365 嗎？
 
@@ -175,7 +176,7 @@ Dynamics 365 和 Common Data Service (CD) 環境裝載於 Azure 上，因此客�
 
 如果您的服務提供者可以透過實體連線建立兩個乙太網路的虛擬線路，您就只需要一個實體連線。 實體連線 (例如光纖) 的終點在實體層 1 (L1) 裝置 (請見下圖)。 兩個乙太網路虛擬電路都會標記不同的 VLAN ID，一個供主要線路使用，一個供次要線路使用。 這些 VLAN ID 位於外部 802.1Q 乙太網路標頭中。 內部 802.1Q 乙太網路標頭 (不顯示) 會對應至特定的 [ExpressRoute 路由網域](expressroute-circuit-peerings.md)。
 
-![](./media/expressroute-faqs/expressroute-p2p-ref-arch.png)
+![反白顯示第1層（L1）主要和次要虛擬電路的圖表，這些線路會在客戶網站和 ExpressRoute 位置的交換器之間組成實體連接。](./media/expressroute-faqs/expressroute-p2p-ref-arch.png)
 
 ### <a name="can-i-extend-one-of-my-vlans-to-azure-using-expressroute"></a>我可以使用 ExpressRoute 來擴充其中一個至 Azure 的 VLAN 嗎？
 

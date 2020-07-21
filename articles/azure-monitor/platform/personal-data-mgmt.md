@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2018
-ms.openlocfilehash: 569731faffd97e816567af3f6ed1cf8cdf49f240
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 7d8998b450613e097230d7692a8ad1990830993b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83740445"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539324"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>儲存在 Log Analytics 和 Application Insights 中的個人資料指引
 
@@ -66,8 +67,8 @@ Log Analytics 是彈性的存放區，在指定資料結構描述的同時，允
     | where timestamp > ago(1d)
     | project $table, timestamp, name, customDimensions 
     ```
-* *記憶體中和傳輸中的資料*：Application Insights 會追蹤例外狀況、要求、相依性呼叫及追蹤。 私人資料通常會在程式碼和 HTTP 呼叫層級收集。 檢閱例外狀況、要求、相依性及追蹤資料表來識別任何這類資料。 使用[遙測初始設定式](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling)，盡可能模糊處理這項資料。
-* *快照偵錯工具擷取*：Application Insights 中的[快照偵錯工具](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger)功能可讓您在應用程式的生產執行個體上攔截到例外狀況時收集偵錯快照集。 快照集會公開導致例外狀況的完整堆疊追蹤，以及在堆疊中每個步驟的本機變數的值。 遺憾的是，這項功能不允許選擇性刪除快照點，或以程式設計的方式來存取快照集內的資料。 因此，如果預設快照集的保留率無法滿足您的合規性需求，則建議關閉此功能。
+* *記憶體中和傳輸中的資料*：Application Insights 會追蹤例外狀況、要求、相依性呼叫及追蹤。 私人資料通常會在程式碼和 HTTP 呼叫層級收集。 檢閱例外狀況、要求、相依性及追蹤資料表來識別任何這類資料。 使用[遙測初始設定式](../app/api-filtering-sampling.md)，盡可能模糊處理這項資料。
+* *快照偵錯工具擷取*：Application Insights 中的[快照偵錯工具](../app/snapshot-debugger.md)功能可讓您在應用程式的生產執行個體上攔截到例外狀況時收集偵錯快照集。 快照集會公開導致例外狀況的完整堆疊追蹤，以及在堆疊中每個步驟的本機變數的值。 遺憾的是，這項功能不允許選擇性刪除快照點，或以程式設計的方式來存取快照集內的資料。 因此，如果預設快照集的保留率無法滿足您的合規性需求，則建議關閉此功能。
 
 ## <a name="how-to-export-and-delete-private-data"></a>如何匯出及刪除私人資料
 
@@ -100,7 +101,7 @@ Log Analytics 是彈性的存放區，在指定資料結構描述的同時，允
 
 #### <a name="log-data"></a>記錄資料
 
-* [POST 清除](https://docs.microsoft.com/rest/api/loganalytics/workspacepurge/purge) - 採用物件來指定要刪除的資料參數，並傳回參考 GUID 
+* [POST 清除](/rest/api/loganalytics/workspacepurge/purge) - 採用物件來指定要刪除的資料參數，並傳回參考 GUID 
 * GET 清除狀態 - POST 清除呼叫會傳回 'x-ms-status-location' 標頭，其中包含可供您呼叫的 URL，以便判斷清除 API 的狀態。 例如：
 
     ```
@@ -112,7 +113,7 @@ Log Analytics 是彈性的存放區，在指定資料結構描述的同時，允
 
 #### <a name="application-data"></a>應用程式資料
 
-* [POST 清除](https://docs.microsoft.com/rest/api/application-insights/components/purge) - 採用物件來指定要刪除的資料參數，並傳回參考 GUID
+* [POST 清除](/rest/api/application-insights/components/purge) - 採用物件來指定要刪除的資料參數，並傳回參考 GUID
 * GET 清除狀態 - POST 清除呼叫會傳回 'x-ms-status-location' 標頭，其中包含可供您呼叫的 URL，以便判斷清除 API 的狀態。 例如：
 
    ```

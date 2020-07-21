@@ -7,23 +7,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 06/24/2020
+ms.date: 07/14/2020
 ms.author: aahi
-ms.openlocfilehash: a014628a9664e33aa855cc4fbf40979236d765f9
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 6190653934dede1fa042beca8dbd2d7c06f43cfc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85355602"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538015"
 ---
 # <a name="install-and-run-form-recognizer-containers-preview"></a>安裝和執行表單辨識器容器（預覽）
+
+[!INCLUDE [Form Recognizer containers limit](includes/container-limit.md)]
 
 Azure 表單辨識器會套用機器學習技術，以識別並從表單中解壓縮索引鍵/值組和資料表。 它會將值和資料表專案與索引鍵/值配對產生關聯，然後輸出包含原始檔案中之關聯性的結構化資料。 
 
 若要降低複雜性並輕鬆地將自訂表單辨識器模型整合到您的工作流程自動化程式或其他應用程式中，您可以使用簡單的 REST API 來呼叫模型。 只需要五個表單檔（或一個空白表單和兩個填滿表單），因此您可以快速、精確地取得結果，並針對您的特定內容量身打造。 不需要大量的手動介入或廣泛的資料科學專業知識。 而且它不需要資料標記或資料批註。
-
-> [!IMPORTANT]
-> 表單辨識器容器目前使用1.0 版的表單辨識器 API。 您可以改為使用受控服務來存取 API 的最新版本。
 
 | 函式 | 特性 |
 |----------|----------|
@@ -64,14 +63,6 @@ Azure 表單辨識器會套用機器學習技術，以識別並從表單中解�
 
 > [!IMPORTANT]
 > 這些訂用帳戶金鑰可用來存取您的認知服務 API。 請勿共用您的金鑰。 以安全的方式儲存它們，例如使用 Azure Key Vault。 我們也建議您定期重新產生這些金鑰。 進行 API 呼叫時，只需要一個金鑰。 重新產生第一個金鑰時，您可以使用第二個金鑰繼續存取服務。
-
-## <a name="request-access-to-the-container-registry"></a>要求存取容器登錄
-
-填寫並提交[要求表單](https://aka.ms/cognitivegate)，以要求容器的存取權。
-
-[!INCLUDE [Request access to the container registry](../../../includes/cognitive-services-containers-request-access-only.md)]
-
-[!INCLUDE [Authenticate to the container registry](../../../includes/cognitive-services-containers-access-registry.md)]
 
 ## <a name="the-host-computer"></a>主機電腦
 
@@ -328,7 +319,7 @@ formrecognizer_config =
 
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="summary"></a>[摘要]
+## <a name="summary"></a>摘要
 
 在本文中，您已了解下載、安裝及執行表單辨識器容器的概念和工作流程。 摘要說明：
 

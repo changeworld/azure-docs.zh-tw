@@ -3,12 +3,12 @@ title: 系統狀態和裸機復原保護
 description: 使用 Azure 備份伺服器來備份系統狀態，並提供裸機復原（BMR）保護。
 ms.topic: conceptual
 ms.date: 05/15/2017
-ms.openlocfilehash: bab55ca607e0641ea0cc597de686f3abbb387598
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c5096158ca0e76ca03577347d8dd3e1419a33ca0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82192360"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538695"
 ---
 # <a name="back-up-system-state-and-restore-to-bare-metal-by-using-azure-backup-server"></a>使用 Azure 備份伺服器來備份系統狀態及還原為裸機
 
@@ -23,7 +23,7 @@ Azure 備份伺服器可備份系統狀態及提供裸機復原 (BMR) 保護。
 
 下表摘要說明您可以備份及復原的項目。 如需系統狀態和 BMR 可以保護之應用程式版本的相關資訊，請參閱[Azure 備份伺服器備份的內容](backup-mabs-protection-matrix.md)。
 
-|備份|問題|從 Azure 備份伺服器的備份進行復原|從系統狀態的備份進行復原|BMR|
+|Backup|問題|從 Azure 備份伺服器的備份進行復原|從系統狀態的備份進行復原|BMR|
 |----------|---------|---------------------------|------------------------------------|-------|
 |**檔案資料**<br /><br />一般資料備份<br /><br />BMR/系統狀態備份|遺失檔案資料|Y|N|N|
 |**檔案資料**<br /><br />Azure 備份伺服器的檔案資料備份<br /><br />BMR/系統狀態備份|作業系統遺失或損毀|N|Y|Y|
@@ -98,12 +98,12 @@ Azure 備份伺服器可備份系統狀態及提供裸機復原 (BMR) 保護。
 ## <a name="before-you-begin"></a>開始之前
 
 1. **部署 Azure 備份伺服器**。 請確認您是否已正確地部署備份伺服器。 如需詳細資訊，請參閱：
-    * [Azure 備份伺服器的系統需求](https://docs.microsoft.com/system-center/dpm/install-dpm#setup-prerequisites)
+    * [Azure 備份伺服器的系統需求](/system-center/dpm/install-dpm#setup-prerequisites)
     * [備份伺服器保護對照表](backup-mabs-protection-matrix.md)
 
-1. **設定存放裝置**。 您可以將備份資料儲存在磁碟上、磁帶上以及 Azure 雲端中。 如需詳細資訊，請參閱[準備資料儲存體](https://docs.microsoft.com/system-center/dpm/plan-long-and-short-term-data-storage)。
+1. **設定存放裝置**。 您可以將備份資料儲存在磁碟上、磁帶上以及 Azure 雲端中。 如需詳細資訊，請參閱[準備資料儲存體](/system-center/dpm/plan-long-and-short-term-data-storage)。
 
-1. **設定保護代理程式**。 在您要備份的電腦上安裝保護代理程式。 如需詳細資訊，請參閱[部署 DPM 保護代理程式](https://docs.microsoft.com/system-center/dpm/deploy-dpm-protection-agent)。
+1. **設定保護代理程式**。 在您要備份的電腦上安裝保護代理程式。 如需詳細資訊，請參閱[部署 DPM 保護代理程式](/system-center/dpm/deploy-dpm-protection-agent)。
 
 ## <a name="back-up-system-state-and-bare-metal"></a>備份系統狀態和裸機
 
@@ -115,7 +115,7 @@ Azure 備份伺服器可備份系統狀態及提供裸機復原 (BMR) 保護。
 
 1. 在 [選取群組成員]**** 頁面上展開電腦，然後選取 [BMR]**** 或 [系統狀態]****。
 
-    請記住，您無法針對位於不同群組的同一部電腦同時保護 BMR 和系統狀態。 此外，當您選取 BMR 時，系統會自動啟用系統狀態。 如需詳細資訊，請參閱[部署保護群組](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups)。
+    請記住，您無法針對位於不同群組的同一部電腦同時保護 BMR 和系統狀態。 此外，當您選取 BMR 時，系統會自動啟用系統狀態。 如需詳細資訊，請參閱[部署保護群組](/system-center/dpm/create-dpm-protection-groups)。
 
 1. 在 [**選擇資料保護方式**] 頁面上，選擇處理短期備份與長期備份的方式。
 

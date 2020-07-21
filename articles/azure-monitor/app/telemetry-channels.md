@@ -4,11 +4,12 @@ description: 如何在適用于 .NET 和 .NET Core 的 Azure 應用程式 Insigh
 ms.topic: conceptual
 ms.date: 05/14/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 9c292246f947e4d3a364f79b31fe7a1deebd33d9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f9e93d477efeee7e1d8a0b0d8704f9c83d2a4f7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84691946"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539783"
 ---
 # <a name="telemetry-channels-in-application-insights"></a>Application Insights 中的遙測通道
 
@@ -16,7 +17,7 @@ ms.locfileid: "84691946"
 
 ## <a name="what-are-telemetry-channels"></a>什麼是遙測通道？
 
-遙測通道會負責緩衝處理遙測專案，並將它們傳送至 Application Insights 服務，並在其中儲存以供查詢和分析。 遙測通道是任何可執行介面的類別 [`Microsoft.ApplicationInsights.ITelemetryChannel`](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.channel.itelemetrychannel?view=azure-dotnet) 。
+遙測通道會負責緩衝處理遙測專案，並將它們傳送至 Application Insights 服務，並在其中儲存以供查詢和分析。 遙測通道是任何可執行介面的類別 [`Microsoft.ApplicationInsights.ITelemetryChannel`](/dotnet/api/microsoft.applicationinsights.channel.itelemetrychannel?view=azure-dotnet) 。
 
 `Send(ITelemetry item)`呼叫所有遙測初始化運算式和遙測處理器之後，會呼叫遙測通道的方法。 因此，遙測處理器捨棄的任何專案都不會到達通道。 `Send()`通常不會立即將專案傳送到後端。 一般來說，它會在記憶體中將它們緩衝，並以批次方式傳送它們，以有效率地傳輸。
 
@@ -30,7 +31,7 @@ Application Insights .NET 和 .NET Core Sdk 隨附兩個內建的通道：
 
     此通道是較大 ApplicationInsights NuGet 套件的一部分，而且是 SDK 在未設定任何其他內容時所使用的預設通道。
 
-* `ServerTelemetryChannel`：具有重試原則的更先進通道，以及將資料儲存在本機磁片上的功能。 若發生暫時性錯誤，此通道會重試傳送遙測。 此通道也會使用本機磁片儲存體，在網路中斷或高遙測磁片區期間，將專案保留在磁片上。 由於這些重試機制和本機磁片儲存體，此通道會被視為較可靠，而且建議用於所有生產案例。 此頻道是根據官方檔設定之[ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net)和[ASP.NET Core](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)應用程式的預設值。 此通道已針對具有長時間執行之進程的伺服器案例進行優化。 [`Flush()`](#which-channel-should-i-use)此通道所執行的方法不是同步的。
+* `ServerTelemetryChannel`：具有重試原則的更先進通道，以及將資料儲存在本機磁片上的功能。 若發生暫時性錯誤，此通道會重試傳送遙測。 此通道也會使用本機磁片儲存體，在網路中斷或高遙測磁片區期間，將專案保留在磁片上。 由於這些重試機制和本機磁片儲存體，此通道會被視為較可靠，而且建議用於所有生產案例。 此頻道是根據官方檔設定之[ASP.NET](./asp-net.md)和[ASP.NET Core](./asp-net-core.md)應用程式的預設值。 此通道已針對具有長時間執行之進程的伺服器案例進行優化。 [`Flush()`](#which-channel-should-i-use)此通道所執行的方法不是同步的。
 
     此頻道隨附于 ApplicationInsights. WindowsServer. TelemetryChannel NuGet 套件，並會在您使用 ApplicationInsights 或 ApplicationInsights NuGet 套件時自動取得。
 

@@ -6,17 +6,17 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/19/2019
-ms.openlocfilehash: 6cd2a28ddbe970385ff44deec2158c257937982e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e8e2015e7d0798542ff0c80d8eb39461918ad67
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82591647"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539596"
 ---
 # <a name="overview-of-log-queries-in-azure-monitor"></a>Azure 監視器中的記錄查詢總覽
 記錄查詢可協助您充分利用[Azure 監視器記錄](../platform/data-platform-logs.md)中收集的資料值。 功能強大的查詢語言可讓您聯結多個資料表的資料、匯總大型資料集，以及使用最少的程式碼來執行複雜的作業。 只要收集到支援的資料，就可以解決任何問題並執行分析，而且您會瞭解如何建立正確的查詢。
 
-Azure 監視器中的某些功能（例如[深入](../insights/insights-overview.md)解析和[解決方案](../insights/solutions-inventory.md)）會處理記錄資料，而不會向您公開基礎查詢。 若要充分利用 Azure 監視器的其他功能，您應該瞭解查詢的建立方式，以及如何使用它們以互動方式分析 Azure 監視器記錄中的資料。
+Azure 監視器中的某些功能（例如[深入](../insights/insights-overview.md)解析和[解決方案](../monitor-reference.md)）會處理記錄資料，而不會向您公開基礎查詢。 若要充分利用 Azure 監視器的其他功能，您應該瞭解查詢的建立方式，以及如何使用它們以互動方式分析 Azure 監視器記錄中的資料。
 
 使用這篇文章做為瞭解 Azure 監視器中記錄查詢的起點。 它會回答常見的問題，並提供其他檔的連結，提供進一步的詳細資料和課程。
 

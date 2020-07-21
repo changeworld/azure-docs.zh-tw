@@ -7,11 +7,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/02/2020
-ms.openlocfilehash: ce58aae3b1db1f0f338d353025d4f277aeb6944f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b9f41a99f6cf21574c3c26950d5c9f048d85a468
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77137488"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539511"
 ---
 # <a name="unify-multiple-azure-monitor-application-insights-resources"></a>整合多個 Azure 監視器 Application Insights 資源 
 本文說明如何在同一個位置查詢和查看所有 Application Insights 記錄資料，即使它們位於不同的 Azure 訂用帳戶中，也可以取代 Application Insights Connector。 您可以包含在單一查詢中的 Application Insights 資源數目限制為100。
@@ -56,7 +57,7 @@ applicationsScoping
 ![跨查詢結果範例](media/unify-app-resource-data/app-insights-query-results.png)
 
 >[!NOTE]
->新的 [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) 支援記錄警示中的[跨資源查詢](../log-query/cross-workspace-query.md)。 根據預設，Azure 監視器會使用[舊版 Log Analytics 警示 API](../platform/api-alerts.md) 從 Azure 入口網站建立新的記錄警示規則，除非您從[舊版記錄警示 API](../platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api) 切換。 切換之後，新的 API 將成為 Azure 入口網站中新警示規則的預設值，並允許您建立跨資源查詢記錄警示規則。 您可以使用[適用於 scheduledQueryRules API 的 ARM 範本](../platform/alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template)建立[跨資源查詢](../log-query/cross-workspace-query.md)記錄警示規則而無需進行切換 – 但此警示規則可透過 [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) 進行管理，而不是 Azure 入口網站。
+>新的 [scheduledQueryRules API](/rest/api/monitor/scheduledqueryrules) 支援記錄警示中的[跨資源查詢](../log-query/cross-workspace-query.md)。 根據預設，Azure 監視器會使用[舊版 Log Analytics 警示 API](../platform/api-alerts.md) 從 Azure 入口網站建立新的記錄警示規則，除非您從[舊版記錄警示 API](../platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api) 切換。 切換之後，新的 API 將成為 Azure 入口網站中新警示規則的預設值，並允許您建立跨資源查詢記錄警示規則。 您可以使用[適用於 scheduledQueryRules API 的 ARM 範本](../platform/alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template)建立[跨資源查詢](../log-query/cross-workspace-query.md)記錄警示規則而無需進行切換 – 但此警示規則可透過 [scheduledQueryRules API](/rest/api/monitor/scheduledqueryrules) 進行管理，而不是 Azure 入口網站。
 
 ## <a name="application-insights-and-log-analytics-workspace-schema-differences"></a>Application Insights 和 Log Analytics 工作區結構描述差異
 下表顯示 Log Analytics 和 Application Insights 之間的結構描述差異。  
@@ -75,10 +76,10 @@ applicationsScoping
 | AvailabilityTestName | NAME |
 | AvailabilityTimestamp | timestamp |
 | 瀏覽器 | client_browser |
-| City | client_city |
+| 城市 | client_city |
 | ClientIP | client_IP |
 | 電腦 | cloud_RoleInstance | 
-| 國家/地區 | client_CountryOrRegion | 
+| Country | client_CountryOrRegion | 
 | CustomEventCount | itemCount | 
 | CustomEventDimensions | customDimensions |
 | CustomEventName | NAME | 
@@ -87,7 +88,7 @@ applicationsScoping
 | ExceptionCount | itemCount | 
 | ExceptionHandledAt | handledAt |
 | ExceptionMessage | message | 
-| ExceptionType | 類型 |
+| ExceptionType | type |
 | OperationID | operation_id |
 | OperationName | operation_Name | 
 | OS | client_OS | 
@@ -105,7 +106,7 @@ applicationsScoping
 | RoleInstance | cloud_RoleInstance |
 | SessionId | session_Id | 
 | SourceSystem | operation_SyntheticSource |
-| TelemetryTYpe | 類型 |
+| TelemetryTYpe | type |
 | URL | url |
 | UserAccountId | user_AccountId |
 

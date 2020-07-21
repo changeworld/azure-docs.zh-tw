@@ -6,21 +6,22 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/28/2019
-ms.openlocfilehash: 3140c0de6fbe090e3d040202cd581c455f03b6d6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5984cbf8cf618a938ee85638d981f7867c6ec8b5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77655251"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539358"
 ---
 # <a name="connect-configuration-manager-to-azure-monitor"></a>將 Configuration Manager 連接到 Azure 監視器
 您可以將您的 Microsoft 端點 Configuration Manager 環境連接到 Azure 監視器，以同步處理裝置集合資料，並在 Azure 監視器和 Azure 自動化中參考這些集合。  
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 Azure 監視器支援 Configuration Manager 最新分支1606版和更高版本。
 
 >[!NOTE]
->與 Log Analytics 工作區連線 Configuration Manager 的功能是選擇性的，而且預設不會啟用。 您必須先先啟用這項功能才能使用它。 如需詳細資訊，請參閱[從更新啟用選擇性功能](https://docs.microsoft.com/configmgr/core/servers/manage/install-in-console-updates#bkmk_options)。
+>與 Log Analytics 工作區連線 Configuration Manager 的功能是選擇性的，而且預設不會啟用。 您必須先先啟用這項功能才能使用它。 如需詳細資訊，請參閱[從更新啟用選擇性功能](/configmgr/core/servers/manage/install-in-console-updates#bkmk_options)。
 
 ## <a name="configuration-overview"></a>組態概觀
 
@@ -65,7 +66,7 @@ Azure 監視器支援 Configuration Manager 最新分支1606版和更高版本�
 ## <a name="connect-configuration-manager-to-log-analytics-workspace"></a>將 Configuration Manager 連線到 Log Analytics 工作區
 
 >[!NOTE]
-> 若要新增 Log Analytics 連線，您的 Configuration Manager 環境必須已針對線上模式設定[服務連接點](https://docs.microsoft.com/configmgr/core/servers/deploy/configure/about-the-service-connection-point)。
+> 若要新增 Log Analytics 連線，您的 Configuration Manager 環境必須已針對線上模式設定[服務連接點](/configmgr/core/servers/deploy/configure/about-the-service-connection-point)。
 
 > [!NOTE]
 > 您必須將階層中的頂層網站連線到 Azure 監視器。 如果您將獨立主要網站連線到 Azure 監視器，然後將管理中心網站新增至您的環境，則必須在新階層內刪除並重新建立連線。

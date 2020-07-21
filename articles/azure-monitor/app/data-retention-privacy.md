@@ -3,12 +3,12 @@ title: Azure Application Insights 中的資料保留和儲存 | Microsoft Docs
 description: 保留和隱私權原則聲明
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 848285accd7e05607bac418b6b4ae39055a5772f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16483c9417c08ea60853d7e70b7121cd0af9db71
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85601355"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540055"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Application Insights 中的資料收集、保留和儲存
 
@@ -62,7 +62,7 @@ Application Insights SDK 可用於多種應用程式類型：裝載於您自己�
 ## <a name="how-can-i-verify-whats-being-collected"></a>如何確認收集到什麼？
 如果您使用 Visual Studio 開發應用程式，請在偵錯模式 (F5) 中執行應用程式。 遙測會出現在 [輸出] 視窗中。 在這裡，您可以將其複製並格式化為 JSON，以便進行檢查。 
 
-![](./media/data-retention-privacy/06-vs.png)
+![顯示 Visual Studio 中以「偵測模式」執行應用程式的螢幕擷取畫面。](./media/data-retention-privacy/06-vs.png)
 
 在 [診斷] 視窗中還有更容易閱讀的檢視。
 
@@ -74,7 +74,7 @@ Application Insights SDK 可用於多種應用程式類型：裝載於您自己�
 這可以藉由撰寫 [遙測處理器外掛程式](../../azure-monitor/app/api-filtering-sampling.md)來達成。
 
 ## <a name="how-long-is-the-data-kept"></a>資料保留多久？
-原始資料點（也就是您可以在 Analytics 中查詢並在搜尋中檢查的專案）會保留最多730天。 您可以選取30、60、90、120、180、270、365、550或730天的[保留期間](https://docs.microsoft.com/azure/azure-monitor/app/pricing#change-the-data-retention-period)。 如果您需要保留超過730天的資料，您可以使用[連續匯出](../../azure-monitor/app/export-telemetry.md)，在資料內嵌期間將它複製到儲存體帳戶。 
+原始資料點（也就是您可以在 Analytics 中查詢並在搜尋中檢查的專案）會保留最多730天。 您可以選取30、60、90、120、180、270、365、550或730天的[保留期間](./pricing.md#change-the-data-retention-period)。 如果您需要保留超過730天的資料，您可以使用[連續匯出](../../azure-monitor/app/export-telemetry.md)，在資料內嵌期間將它複製到儲存體帳戶。 
 
 保留時間超過90天的資料會產生額外費用。 若要深入瞭解 Application Insights 定價，請到[Azure 監視器定價頁面](https://azure.microsoft.com/pricing/details/monitor/)。
 
@@ -122,7 +122,7 @@ Microsoft 人員對您的資料存取會受到限制。 我們只有在獲得您
 
 使用本機儲存體的遙測通道會在 TEMP 或 APPDATA 目錄中建立暫存檔案，這些檔案僅限於執行您應用程式的特定帳戶。 當端點暫時無法使用或已達到節流限制時，就可能發生此狀況。 此問題解決後，遙測通道就會繼續傳送所有新的和保存的資料。
 
-此保存的資料不會在本機加密。 如果這是問題，請檢查資料並限制私用資料的收集。 （如需詳細資訊，請參閱[如何匯出及刪除私人資料](https://docs.microsoft.com/azure/application-insights/app-insights-customer-data#how-to-export-and-delete-private-data)）。
+此保存的資料不會在本機加密。 如果這是問題，請檢查資料並限制私用資料的收集。 （如需詳細資訊，請參閱[如何匯出及刪除私人資料](../platform/personal-data-mgmt.md#how-to-export-and-delete-private-data)）。
 
 如果客戶需要設定具有特定安全性需求的此目錄，可以針對每個架構進行設定。 請確定執行應用程式的程序具有此目錄的寫入權限，但也請確定此目錄會受到保護，以避免非預期的使用者讀取遙測資料。
 
@@ -203,15 +203,15 @@ AzureLogHandler(
 |平台/語言 | 支援 | 相關資訊 |
 | --- | --- | --- |
 | Azure App Service  | 支援，可能需要設定。 | 已在 2018 年 4 月宣告支援。 請參閱公告以了解[設定的詳細資訊](https://azure.github.io/AppService/2018/04/17/App-Service-and-Functions-hosted-apps-can-now-update-TLS-versions!)。  |
-| Azure 函式應用程式 | 支援，可能需要設定。 | 已在 2018 年 4 月宣告支援。 請參閱公告以了解[設定的詳細資訊](https://azure.github.io/AppService/2018/04/17/App-Service-and-Functions-hosted-apps-can-now-update-TLS-versions!)。 |
-|.NET | 支援，設定會因版本不同而有所差異。 | 如需 .NET 4.7 和舊版的詳細設定資訊，請參閱[這些指示](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12)。  |
-|狀態監視器 | 支援，需要設定 | 狀態監視器依賴[OS](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)設定  +  [.net](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12)設定來支援 TLS 1.2。
+| Azure 函數應用程式 | 支援，可能需要設定。 | 已在 2018 年 4 月宣告支援。 請參閱公告以了解[設定的詳細資訊](https://azure.github.io/AppService/2018/04/17/App-Service-and-Functions-hosted-apps-can-now-update-TLS-versions!)。 |
+|.NET | 支援，設定會因版本不同而有所差異。 | 如需 .NET 4.7 和舊版的詳細設定資訊，請參閱[這些指示](/dotnet/framework/network-programming/tls#support-for-tls-12)。  |
+|狀態監視器 | 支援，需要設定 | 狀態監視器依賴[OS](/windows-server/security/tls/tls-registry-settings)設定  +  [.net](/dotnet/framework/network-programming/tls#support-for-tls-12)設定來支援 TLS 1.2。
 |Node.js |  支援，可能需要對 v10.5.0 進行設定。 | 針對任何應用程式特定的設定，使用[官方 Node.js TLS/SSL 檔](https://nodejs.org/api/tls.html)。 |
 |Java | 支援，[JDK 6 更新 121](https://www.oracle.com/technetwork/java/javase/overview-156328.html#R160_121) 和 [JDK 7](https://www.oracle.com/technetwork/java/javase/7u131-relnotes-3338543.html) 中已新增 TLS 1.2 的 JDK 支援。 | JDK 8 會使用[預設的 TLS 1.2](https://blogs.oracle.com/java-platform-group/jdk-8-will-use-tls-12-as-default)。  |
 |Linux | Linux 發行版本通常會依賴 [OpenSSL](https://www.openssl.org) 來取得 TLS 1.2 支援。  | 請檢查 [OpenSSL 變更記錄](https://www.openssl.org/news/changelog.html)來確認支援的 OpenSSL 版本。|
-| Windows 8.0 - 10 | 支援，而且已預設為啟用。 | 請確認您仍在使用[預設設定](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)。  |
-| Windows Server 2012 - 2016 | 支援，而且已預設為啟用。 | 確認您仍在使用[預設設定](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) |
-| Windows 7 SP1 和 Windows Server 2008 R2 SP1 | 支援，但預設為不啟用。 | 請參閱[傳輸層安全性 (TLS) 登錄設定](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)頁面，了解詳細的啟用方式。  |
+| Windows 8.0 - 10 | 支援，而且已預設為啟用。 | 請確認您仍在使用[預設設定](/windows-server/security/tls/tls-registry-settings)。  |
+| Windows Server 2012 - 2016 | 支援，而且已預設為啟用。 | 確認您仍在使用[預設設定](/windows-server/security/tls/tls-registry-settings) |
+| Windows 7 SP1 和 Windows Server 2008 R2 SP1 | 支援，但預設為不啟用。 | 請參閱[傳輸層安全性 (TLS) 登錄設定](/windows-server/security/tls/tls-registry-settings)頁面，了解詳細的啟用方式。  |
 | Windows Server 2008 SP2 | TLS 1.2 支援需要更新。 | 請在 Windows Server 2008 SP2 中參閱[新增 TLS 1.2 支援的更新](https://support.microsoft.com/help/4019276/update-to-add-support-for-tls-1-1-and-tls-1-2-in-windows-server-2008-s)。 |
 |Windows Vista | 不支援。 | N/A
 
@@ -286,7 +286,7 @@ openssl s_client -connect bing.com:443 -tls1_2
 您可以[編輯 ApplicationInsights.config 來關閉某些資料][config]
 
 > [!NOTE]
-> 用戶端 IP 會用來推斷地理位置，但預設不會再儲存 IP 資料，而且所有的零會寫入相關聯的欄位。 若要深入了解個人資料的處理，建議您閱讀這篇[文章](../../azure-monitor/platform/personal-data-mgmt.md#application-data)。 如果您需要儲存 IP 位址資料，我們的[ip 位址集合文章](https://docs.microsoft.com/azure/azure-monitor/app/ip-collection)會引導您完成選項。
+> 用戶端 IP 會用來推斷地理位置，但預設不會再儲存 IP 資料，而且所有的零會寫入相關聯的欄位。 若要深入了解個人資料的處理，建議您閱讀這篇[文章](../../azure-monitor/platform/personal-data-mgmt.md#application-data)。 如果您需要儲存 IP 位址資料，我們的[ip 位址集合文章](./ip-collection.md)會引導您完成選項。
 
 ## <a name="credits"></a>學分
 本產品包含 MaxMind 所建立的 GeoLite2 資料（可從取得） [https://www.maxmind.com](https://www.maxmind.com) 。

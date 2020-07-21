@@ -3,11 +3,12 @@ title: 關於 Azure 檔案共用備份
 description: 瞭解如何在復原服務保存庫中備份 Azure 檔案共用
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: 0a03871b61ab00f2dae18ba11a5a9127680a646b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 40cb9ca0bd34fd65ab1983af6384d617db26e996
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84299225"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539086"
 ---
 # <a name="about-azure-file-share-backup"></a>關於 Azure 檔案共用備份
 
@@ -20,7 +21,7 @@ Azure 檔案共用備份是以雲端為基礎的原生備份解決方案，可�
 * **內建管理功能**：您可以排程備份並指定所需的保留期限，而不需要額外的資料剪除負擔。
 * **立即還原**： Azure 檔案共用備份會使用檔案共用快照集，因此您可以只選取您想要立即還原的檔案。
 * **警示和報告**：您可以設定備份和還原失敗的警示，並使用 Azure 備份提供的報告解決方案，取得跨檔案共用之備份的深入解析。
-* **防止意外刪除檔案共用**： Azure 備份會在保留期間為14天的儲存體帳戶層級上啟用虛[刪除功能](https://docs.microsoft.com/azure/storage/files/storage-files-prevent-file-share-deletion)。 即使惡意執行者刪除了檔案共用，檔案共用的內容和復原點（快照集）仍會保留一段可設定的保留期間，讓來源內容和快照的成功和完整復原不會遺失資料。
+* **防止意外刪除檔案共用**： Azure 備份會在保留期間為14天的儲存體帳戶層級上啟用虛[刪除功能](../storage/files/storage-files-prevent-file-share-deletion.md)。 即使惡意執行者刪除了檔案共用，檔案共用的內容和復原點（快照集）仍會保留一段可設定的保留期間，讓來源內容和快照的成功和完整復原不會遺失資料。
 
 ## <a name="architecture"></a>架構
 

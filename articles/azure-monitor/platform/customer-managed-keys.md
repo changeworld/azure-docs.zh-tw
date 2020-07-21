@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 07/05/2020
-ms.openlocfilehash: 4fb593f303eea0f4866dc248412af2f261993e92
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: ad2e6a05fa8459d8e5a53d9bb8b8e08790a7d8ec
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170338"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539409"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure 監視器客戶管理的金鑰 
 
@@ -21,17 +21,17 @@ ms.locfileid: "86170338"
 
 ## <a name="customer-managed-key-cmk-overview"></a>客戶管理的金鑰 (CMK) 概觀
 
-[待用資料加密](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)是組織中常見的隱私權和安全性需求。 您可讓 Azure 完全管理待用資料加密，同時有各種選項可密切管理加密或加密金鑰。
+[待用資料加密](../../security/fundamentals/encryption-atrest.md)是組織中常見的隱私權和安全性需求。 您可讓 Azure 完全管理待用資料加密，同時有各種選項可密切管理加密或加密金鑰。
 
-Azure 監視器使用 Microsoft 管理的金鑰 (MMK) ，確保所有資料和已儲存的查詢都在待用時加密。 Azure 監視器也會提供使用您自己的金鑰進行加密的選項，其儲存在您的[Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)中，並使用系統指派的[受控識別](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)驗證來存取儲存體。 此金鑰 (CMK) 可能是[軟體或硬體 HSM 保護](https://docs.microsoft.com/azure/key-vault/key-vault-overview)的。
+Azure 監視器可確保所有資料和已儲存的查詢都會使用 Microsoft 管理的金鑰（MMK）在待用時加密。 Azure 監視器也會提供使用您自己的金鑰進行加密的選項，其儲存在您的[Azure Key Vault](../../key-vault/general/overview.md)中，並使用系統指派的[受控識別](../../active-directory/managed-identities-azure-resources/overview.md)驗證來存取儲存體。 此金鑰（CMK）可能是[軟體或硬體 HSM 保護](../../key-vault/general/overview.md)的。
 
-Azure 監視器使用加密的方式與  [Azure 儲存體加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption#about-azure-storage-encryption)其運作方式相同。 
+Azure 監視器使用加密的方式與  [Azure 儲存體加密](../../storage/common/storage-service-encryption.md#about-azure-storage-encryption)其運作方式相同。 
 
 CMK 可供控制資料的存取權，並可隨時予以撤銷。 Azure 監視器儲存體的金鑰權限變更一律會在一小時內生效。 過去 14 天內擷取的資料也會保留在經常性快取 (支援 SSD) 中，以進行有效率的查詢引擎作業。 不論 CMK 設定為何，此資料都會持續以 Microsoft 金鑰加密，但您對 SSD 資料的控制則會遵守 [金鑰撤銷](#cmk-kek-revocation)。 我們正致力於在 2020 年下半年以 CMK 加密 SSD 資料。
 
 CMK 功能會在專用的 Log Analytics 叢集上提供。 若要確認您的區域中有所需的容量，我們需要事先允許您的訂用帳戶。 開始設定 CMK 之前，請先使用您的 Microsoft 連絡人來取得您的訂用帳戶。
 
- [Log Analytics 叢集定價模式](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#log-analytics-dedicated-clusters)使用從「1000 GB/天」層級起的容量保留。 
+ [Log Analytics 叢集定價模式](./manage-cost-storage.md#log-analytics-dedicated-clusters)使用從「1000 GB/天」層級起的容量保留。 
 
 ## <a name="how-cmk-works-in-azure-monitor"></a>CMK 在 Azure 監視器中的運作方式
 
@@ -91,7 +91,7 @@ Authorization: Bearer eyJ0eXAiO....
 
 您可使用下列其中一種方法來取得權杖：
 
-1. 使用[應用程式註冊](https://docs.microsoft.com/graph/auth/auth-concepts#access-tokens)方法。
+1. 使用[應用程式註冊](/graph/auth/auth-concepts#access-tokens)方法。
 2. 在 Azure 入口網站
     1. 在「開發人員工具」(F12) 中巡覽至 Azure 入口網站
     1. 在其中一個 "batch?api-version" 執行個體中，尋找「要求標頭」底下的授權字串。 其看起來像："authorization:Bearer eyJ0eXAiO...."。 
@@ -100,7 +100,7 @@ Authorization: Bearer eyJ0eXAiO....
 
 ### <a name="asynchronous-operations-and-status-check"></a>非同步作業和狀態檢查
 
-此設定程序中的某些作業因為無法快速完成而以非同步方式執行。 在設定中使用 REST 要求時，回應一開始會傳回 HTTP 狀態碼 200 (OK) 和標頭，並在接受時使用*Azure AsyncOperation*屬性：
+此設定程序中的某些作業因為無法快速完成而以非同步方式執行。 在設定中使用 REST 要求時，回應一開始會傳回 HTTP 狀態碼200（OK）和標頭，並在接受時使用*Azure AsyncOperation*屬性：
 ```json
 "Azure-AsyncOperation": "https://management.azure.com/subscriptions/subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2020-03-01-preview"
 ```
@@ -185,18 +185,19 @@ CMK 功能會在專用的 Log Analytics 叢集上提供。若要確認您的區�
 
 ![[虛刪除] 和 [清除保護] 設定](media/customer-managed-keys/soft-purge-protection.png)
 
-這些設定可透過 CLI 和 PowerShell 存取：
-- [虛刪除](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)
-- [清除保護](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete#purge-protection)可防止強制刪除祕密/保存庫，即使在虛刪除之後也一樣
+這些設定可以透過 CLI 和 PowerShell 更新：
+
+- [虛刪除](../../key-vault/general/overview-soft-delete.md)
+- [清除保護](../../key-vault/general/overview-soft-delete.md#purge-protection)可防止強制刪除祕密/保存庫，即使在虛刪除之後也一樣
 
 ### <a name="create-cluster-resource"></a>建立「叢集」資源
 
 此資源可作為 Key Vault 與 Log Analytics 工作區之間的中繼身分識別連線。 在您收到允許的訂用帳戶確認之後，請在您的工作區所在的區域建立*Log Analytics 叢集*資源。
 
-建立「叢集」資源時，您必須指定「容量保留」層級 (SKU)。 「容量保留」層級的範圍可介於每天 1,000 到 2,000 GB 之間，且可在稍後將其更新為 100 的間隔。 如果需要高於每天 2,000 GB 的容量保留層級，請透過 LAIngestionRate@microsoft.com 與我們連絡。 [深入了解](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#log-analytics-clusters)
+建立「叢集」資源時，您必須指定「容量保留」層級 (SKU)。 「容量保留」層級的範圍可介於每天 1,000 到 2,000 GB 之間，且可在稍後將其更新為 100 的間隔。 如果需要高於每天 2,000 GB 的容量保留層級，請透過 LAIngestionRate@microsoft.com 與我們連絡。 [深入了解](./manage-cost-storage.md#log-analytics-dedicated-clusters)
 
 *billingType* 屬性可判斷「叢集」資源及其資料的計費屬性：
-- 叢集* (預設*) --叢集的容量保留成本是以*叢集資源為*屬性。
+- 叢集（預設值）--*叢集的容量*保留成本會針對叢集資源*進行分類。*
 - *工作區*--叢集的容量保留成本會根據叢集中的工作區按比例進行屬性化，而如果當天的總內嵌資料低於容量保留 *，則會使用叢集資源來*計費。 若要深入瞭解叢集定價模式，請參閱[Log Analytics 專用](manage-cost-storage.md#log-analytics-dedicated-clusters)叢集。 
 
 > [!NOTE]
@@ -210,7 +211,7 @@ CMK 功能會在專用的 Log Analytics 叢集上提供。若要確認您的區�
 > 
 
 ```powershell
-New-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name" -Location "region-name" -SkuCapacity "daily-ingestion-gigabyte" 
+New-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name" -Location "region-name" -SkuCapacity daily-ingestion-gigabyte 
 ```
 
 ```rst
@@ -408,7 +409,7 @@ Content-type: application/json
 擷取的資料會在關聯作業之後以受控金鑰加密儲存，最多可能需要 90 分鐘的時間才能完成。 您可透過兩種方式來檢查工作區關聯狀態：
 
 1. 從回應複製 Azure-AsyncOperation URL 值，並遵循[非同步作業狀態檢查](#asynchronous-operations-and-status-check)。
-2. 傳送[工作區 - 取得](https://docs.microsoft.com/rest/api/loganalytics/workspaces/get)要求並觀察回應，相關聯的工作區在 "features" 下會有 clusterResourceId。
+2. 傳送[工作區 - 取得](/rest/api/loganalytics/workspaces/get)要求並觀察回應，相關聯的工作區在 "features" 下會有 clusterResourceId。
 
 ```rest
 GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalInsights/workspaces/<workspace-name>?api-version=2020-03-01-preview
@@ -468,13 +469,13 @@ Log Analytics 中使用的查詢語言是可表達的，而且可以包含您新
 > [!NOTE]
 > 尚不支援用於活頁簿和 Azure 儀表板中的查詢 CMK。 這些查詢會使用 Microsoft 金鑰保持加密。  
 
-當您將[自己的儲存體](https://docs.microsoft.com/azure/azure-monitor/platform/private-storage) (BYOS) ，並將它與您的工作區產生關聯時，服務會將*已儲存的搜尋*和*記錄警示*查詢上傳至您的儲存體帳戶。 這表示您可以使用您用來加密 Log Analytics 叢集中資料的相同金鑰或不同的金鑰，來控制儲存體帳戶和待用[加密原則](https://docs.microsoft.com/azure/storage/common/encryption-customer-managed-keys)。 不過，您會負責與該儲存體帳戶相關聯的成本。 
+當您[攜帶自己的儲存體](./private-storage.md)（BYOS）並將它與您的工作區產生關聯時，服務會將*已儲存的搜尋*和*記錄警示*查詢上傳至您的儲存體帳戶。 這表示您可以使用您用來加密 Log Analytics 叢集中資料的相同金鑰或不同的金鑰，來控制儲存體帳戶和待用[加密原則](../../storage/common/encryption-customer-managed-keys.md)。 不過，您會負責與該儲存體帳戶相關聯的成本。 
 
 **設定查詢的 CMK 之前的考慮**
 * 您必須對您的工作區和儲存體帳戶具有「寫入」許可權
 * 請務必在您的 Log Analytics 工作區所在的相同區域中建立您的儲存體帳戶
 * 儲存體中的儲存*搜尋*會視為服務成品，其格式可能會變更
-* 現有的儲存*搜尋*會從您的工作區中移除。 複製和設定之前所需的任何儲存*搜尋*。 您可以使用[PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights/Get-AzOperationalInsightsSavedSearch)來查看*已儲存的搜尋*
+* 現有的儲存*搜尋*會從您的工作區中移除。 複製和設定之前所需的任何儲存*搜尋*。 您可以使用[PowerShell](/powershell/module/az.operationalinsights/get-azoperationalinsightssavedsearch)來查看*已儲存的搜尋*
 * 不支援查詢歷程記錄，而且您將無法看到您執行的查詢
 * 您可以針對儲存查詢的目的，將單一儲存體帳戶與工作區產生關聯，但可用於儲存*的搜尋*和*記錄警示*查詢
 * 不支援釘選到儀表板
@@ -484,7 +485,7 @@ Log Analytics 中使用的查詢語言是可表達的，而且可以包含您新
 將*查詢*的儲存體帳戶關聯至您的工作區--*已儲存-搜尋*查詢會儲存在您的儲存體帳戶中。 
 
 ```powershell
-$storageAccount.Id = Get-AzStorageAccount -ResourceGroupName "resource-group-name" -Name "resource-group-name"storage-account-name"resource-group-name"
+$storageAccount.Id = Get-AzStorageAccount -ResourceGroupName "resource-group-name" -Name "storage-account-name"
 New-AzOperationalInsightsLinkedStorageAccount -ResourceGroupName "resource-group-name" -WorkspaceName "workspace-name" -DataSourceType Query -StorageAccountIds $storageAccount.Id
 ```
 
@@ -511,7 +512,7 @@ Content-type: application/json
 將*警示*的儲存體帳戶與您的工作區產生關聯--*記錄警示*查詢會儲存在您的儲存體帳戶中。 
 
 ```powershell
-$storageAccount.Id = Get-AzStorageAccount -ResourceGroupName "resource-group-name" -Name "resource-group-name"storage-account-name"resource-group-name"
+$storageAccount.Id = Get-AzStorageAccount -ResourceGroupName "resource-group-name" -Name "storage-account-name"
 New-AzOperationalInsightsLinkedStorageAccount -ResourceGroupName "resource-group-name" -WorkspaceName "workspace-name" -DataSourceType Alerts -StorageAccountIds $storageAccount.Id
 ```
 
@@ -659,7 +660,7 @@ Content-type: application/json
   解除關聯作業之後擷取的資料會儲存在 Log Analytics 儲存體中，這可能需要 90 分鐘的時間才能完成。 您可透過兩種方式來檢查工作區解除關聯狀態：
 
   1. 從回應複製 Azure-AsyncOperation URL 值，並遵循[非同步作業狀態檢查](#asynchronous-operations-and-status-check)。
-  2. 傳送[工作區 - 取得](https://docs.microsoft.com/rest/api/loganalytics/workspaces/get)要求並觀察回應，解除關聯的工作區在 *features* 下不會有 *clusterResourceId*。
+  2. 傳送[工作區 - 取得](/rest/api/loganalytics/workspaces/get)要求並觀察回應，解除關聯的工作區在 *features* 下不會有 *clusterResourceId*。
 
 - **檢查工作區關聯狀態**
   
@@ -694,26 +695,25 @@ Content-type: application/json
 
 ## <a name="limitationsandconstraints"></a>限制和條件約束
 
-\- CMK 支援專用 Log Analytics 叢集，並適用於每天傳送 1TB 或以上的客戶。
+- 專用 Log Analytics 叢集支援 CMK，且適用于每天傳送1TB 或以上的客戶。
 
-\- 每個區域和訂用帳戶的「叢集」資源數目上限為 2 **  
+- 每個區域與訂用*帳戶的叢集資源數目*上限為2
 
-\- 您可建立工作區與「叢集」資源的關聯，然後在工作區不需要 CMK 時將其解除關聯。 **   - 在 30 天期間內，特定工作區上的工作區關聯數目限制為 2
+- 如果工作區不需要 CMK，您可以將工作區關聯至*您的叢集資源，* 然後將其取消關聯。  - 在 30 天期間內，特定工作區上的工作區關聯數目限制為 2
 
-\- 只有在確認已完成 Log Analytics 叢集佈建之後，才能建立工作區與「叢集」資源的關聯。 **   在完成之前傳送至工作區的資料將會遭到捨棄且無法復原。
+- 只有在確認已完成 Log Analytics 叢集布建之後，才應該執行與*叢集資源的*工作區關聯。  在完成之前傳送至工作區的資料將會遭到捨棄且無法復原。
 
-\- CMK 加密會套用至 CMK 設定之後新擷取的    資料。 在 CMK 設定之前擷取的    資料會持續以 Microsoft 金鑰加密。 您可順暢地    查詢在 CMK 設定前後擷取的資料。
+- CMK 加密適用于 CMK 設定後的新內嵌資料。  在 CMK 設定之前擷取的資料會持續以 Microsoft 金鑰加密。  您可順暢地查詢在 CMK 設定前後擷取的資料。
 
-\- 必須將 Azure Key Vault 設定為可復原。這些屬性預設不會啟用，而且應該使用 CLI 或 PowerShell 來設定：
+- Azure Key Vault 必須設定為可復原。 這些屬性預設不會啟用，而且應該使用 CLI 或 PowerShell 來設定：<br>
+  - [虛刪除](../../key-vault/general/overview-soft-delete.md)
+  - 應開啟[清除保護](../../key-vault/general/overview-soft-delete.md#purge-protection)，以防止強制刪除秘密/保存庫，即使在虛刪除之後也一樣。
 
-  -虛 [刪除](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete) 
-     必須開啟 [    -  [清除保護](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete#purge-protection)]   ，以防止強制刪除秘密/保存庫，即使在虛刪除之後也一樣。
+- 目前不支援將*叢集資源移*到另一個資源群組或訂用帳戶。
 
--目前不支援將「叢集」資源移至另一個資源群組或訂用帳戶。 **      
+- 您的 Azure Key Vault *、叢集*資源和相關聯的工作區必須位於相同的區域和相同的 Azure Active Directory （Azure AD）租使用者中，但它們可以位於不同的訂用帳戶中。
 
-\- Azure Key Vault、「叢集」資源和相關聯的工作區必須位於相同區域和相同 Azure Active Directory (Azure AD) 中，但可位於不同的訂用帳戶中。 **  
-
-\- 如果工作區已與另一個「叢集」資源相關聯，則    其與此「叢集」資源建立關聯將會失敗 **   **  
+- 如果叢集資源與*另一個*叢集資源相關*聯，則*其工作區關聯將會失敗
 
 ## <a name="troubleshooting"></a>疑難排解
 
@@ -743,3 +743,41 @@ Content-type: application/json
   2. 將 GET 要求傳送至*叢集或工作*區，並觀察回應。 例如，解除關聯的工作區在 [*功能*] 底下不會有*clusterResourceId* 。
 
 - 如需客戶管理的金鑰相關支援和說明，請連絡 Microsoft 連絡人。
+
+- 錯誤訊息
+  
+  叢集*資源建立*：
+  -  400--叢集名稱無效。 叢集名稱可以包含字元 a-z、a-z、0-9 和長度3-63。
+  -  400--要求的主體為 null 或格式不正確。
+  -  400--SKU 名稱無效。 將 [SKU 名稱] 設定為 capacityReservation。
+  -  400--已提供容量，但未 capacityReservation SKU。 將 [SKU 名稱] 設定為 capacityReservation。
+  -  400--SKU 缺少容量。 將 [容量] 值設定為1000或更高的步驟（以100（GB）為單位）。
+  -  400--SKU 中的容量不在範圍內。 最小值應為1000，最多可達您工作區中 [使用量和估計成本] 底下的 [允許的最大容量]。
+  -  400--容量已鎖定30天。 更新後30天內允許降低容量。
+  -  400--未設定 SKU。 將 [SKU 名稱] 設為 capacityReservation，並將 [容量] 值設定為1000或更高的步驟（以100為單位）。
+  -  400--Identity 為 null 或空白。 使用 systemAssigned 類型來設定身分識別。
+  -  400--KeyVaultProperties 是在建立時設定的。 在叢集建立之後更新 KeyVaultProperties。
+  -  400--無法立即執行作業。 非同步作業處於 [成功] 以外的狀態。 在執行任何更新作業之前，叢集必須完成其作業。
+
+  叢集*資源更新*
+  -  400--叢集處於刪除狀態。 非同步作業進行中。 在執行任何更新作業之前，叢集必須完成其作業。
+  -  400--KeyVaultProperties 不是空的，但格式不正確。 請參閱[金鑰識別碼更新](#update-cluster-resource-with-key-identifier-details)。
+  -  400--無法驗證 Key Vault 中的金鑰。 可能是因為許可權不足或索引鍵不存在。 確認您已在 Key Vault 中[設定金鑰和存取原則](#grant-key-vault-permissions)。
+  -  400--金鑰無法復原。 Key Vault 必須設定為虛刪除和清除保護。 請參閱[Key Vault 檔](../../key-vault/general/overview-soft-delete.md)
+  -  400--無法立即執行作業。 請等候非同步作業完成，然後再試一次。
+  -  400--叢集處於刪除狀態。 請等候非同步作業完成，然後再試一次。
+
+    叢集*資源取得*：
+    -  404--找不到叢集，可能已刪除叢集。 如果您嘗試使用該名稱建立叢集並取得衝突，叢集會在14天內進行虛刪除。 您可以聯絡支援人員來加以復原，或使用其他名稱來建立新的叢集。 
+
+  叢集*資源刪除*
+    -  409--在布建狀態下無法刪除叢集。 請等候非同步作業完成，然後再試一次。
+
+  工作區關聯：
+  -  404--找不到工作區。 您指定的工作區不存在或已刪除。
+  -  409--工作區關聯或進程中的解除關聯作業。
+  -  400--找不到叢集，您指定的叢集不存在或已刪除。 如果您嘗試使用該名稱建立叢集並取得衝突，叢集會在14天內進行虛刪除。 您可以聯絡支援人員來復原它。
+
+  工作區解除與：
+  -  404--找不到工作區。 您指定的工作區不存在或已刪除。
+  -  409--工作區關聯或進程中的解除關聯作業。

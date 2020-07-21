@@ -3,12 +3,12 @@ title: 使用 Azure Application Insights 中的串流分析匯出 | Microsoft Do
 description: 串流分析可以持續轉換、篩選和路由傳送您從 Application Insights 匯出的資料。
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: 71b19f0b49dec8f7176a53eeb656519c65f9c1d0
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 70f952dcd6f8d942ac272afed58a7fe0f47d8a6e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224514"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539953"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>使用串流分析來處理從 Application Insights 匯出的資料
 [Azure 串流分析](https://azure.microsoft.com/services/stream-analytics/)是處理[從 Application Insights 匯出](export-telemetry.md)之資料的理想工具。 串流分析可以從各種來源提取資料。 它可以轉換和篩選資料，然後將它路由傳送至各種接收。
@@ -138,7 +138,7 @@ GROUP BY TumblingWindow(minute, 1), flat.ArrayValue.name
 
 * export-input 是我們提供給串流輸入的別名
 * pbi-output 是我們所定義的輸出別名
-* 我們會使用 [OUTER APPLY GetElements](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) \(英文\)，因為事件名稱是在巢狀 JSON 陣列中。 然後 Select 會取用事件名稱，以及時間週期內具有該名稱之執行個體數目的計數。 [Group By](https://docs.microsoft.com/stream-analytics-query/group-by-azure-stream-analytics) 子句會依照一分鐘的時間間隔來將元素分組。
+* 我們會使用 [OUTER APPLY GetElements](/stream-analytics-query/apply-azure-stream-analytics) \(英文\)，因為事件名稱是在巢狀 JSON 陣列中。 然後 Select 會取用事件名稱，以及時間週期內具有該名稱之執行個體數目的計數。 [Group By](/stream-analytics-query/group-by-azure-stream-analytics) 子句會依照一分鐘的時間間隔來將元素分組。
 
 ### <a name="query-to-display-metric-values"></a>顯示度量值的查詢
 
@@ -212,4 +212,3 @@ Noam Ben Zeev 示範如何使用串流分析來處理匯出的資料。
 * [連續匯出](export-telemetry.md)
 * [屬性類型和值的詳細資料模型參考。](export-data-model.md)
 * [Application Insights](../../azure-monitor/app/app-insights-overview.md)
-

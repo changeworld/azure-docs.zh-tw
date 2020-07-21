@@ -4,12 +4,12 @@ description: 將含有 Azure Application Insights 資料的自訂每天/每週/�
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.reviewer: sdash
-ms.openlocfilehash: cf251d63645efc70ee93e84827db47ae3055ae33
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4eb580b90c0bf9acafc4e8f805c2eef7eaae06d3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82161431"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540072"
 ---
 # <a name="automate-custom-reports-with-azure-application-insights-data"></a>將含有 Azure Application Insights 資料的自訂報表自動化
 
@@ -31,9 +31,9 @@ ms.locfileid: "82161431"
 
 您可以[以程式設計方式查詢 Application Insights](https://dev.applicationinsights.io/) 資料，來依排程產生自訂報表。 下列選項可協助您快速入門：
 
-* [透過 Microsoft Flow 進行報表自動化](automate-with-flow.md)
+* [透過 Microsoft Flow 進行報表自動化](../platform/logicapp-flow-connector.md)
 * [透過 Logic Apps 進行報表自動化](automate-with-logic-apps.md)
-* 在監視案例中使用 "Application Insights 排程摘要" [Azure 函式](https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function)範本。 此函式會使用 SendGrid 來傳送電子郵件。 
+* 在監視案例中使用 "Application Insights 排程摘要" [Azure 函式](../../azure-functions/functions-create-first-azure-function.md)範本。 此函式會使用 SendGrid 來傳送電子郵件。 
 
     ![Azure 函式範本](./media/automate-custom-reports/azure-function-template.png)
 
@@ -72,7 +72,7 @@ availabilityResults
 
 1. 建立 Azure 函數應用程式。只有當您想要使用 Application Insights 來監視新的函數應用程式時，才需要 Application Insights _On_
 
-   請流覽 Azure Functions 檔，以瞭解如何[建立函數應用程式](https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function#create-a-function-app)
+   請流覽 Azure Functions 檔，以瞭解如何[建立函數應用程式](../../azure-functions/functions-create-first-azure-function.md#create-a-function-app)
 
 2. 新「函數應用程式」完成部署之後，選取 [前往資源]****。
 
@@ -83,7 +83,7 @@ availabilityResults
 4. 選取 [Application Insights 排程摘要範本]**__**。
 
      > [!NOTE]
-     > 根據預設，函式應用程式會使用運行時3.x 版來建立。 您必須以[Azure Functions runtime 1.x 版為目標](https://docs.microsoft.com/azure/azure-functions/set-runtime-version) **，才能**使用 Application Insights 已排程的摘要範本。 移至 Configuration > 函式執行時間設定]，以變更執行階段版本。 ![執行時間螢幕擷取畫面](./media/automate-custom-reports/change-runtime-v.png)
+     > 根據預設，函式應用程式會使用運行時3.x 版來建立。 您必須以[Azure Functions runtime 1.x 版為目標](../../azure-functions/set-runtime-version.md) **，才能**使用 Application Insights 已排程的摘要範本。 移至 Configuration > 函式執行時間設定]，以變更執行階段版本。 ![執行時間螢幕擷取畫面](./media/automate-custom-reports/change-runtime-v.png)
 
    ![「新增函式 Application Insights 範本」螢幕擷取畫面](./media/automate-custom-reports/function-app-04.png)
 
@@ -106,7 +106,7 @@ availabilityResults
    * SendGridAPI = SendGrid API 金鑰
 
      > [!NOTE]
-     > 如果您沒有 SendGrid 帳戶，便可以加以建立。 如需適用於 Azure Functions 的 SendGrid 文件，請參閱[這裡](https://docs.microsoft.com/azure/azure-functions/functions-bindings-sendgrid)。 如果您只需有關如何設定 SendGrid 及產生 API 金鑰的最基本說明，可在本文結尾找到該說明。 
+     > 如果您沒有 SendGrid 帳戶，便可以加以建立。 如需適用於 Azure Functions 的 SendGrid 文件，請參閱[這裡](../../azure-functions/functions-bindings-sendgrid.md)。 如果您只需有關如何設定 SendGrid 及產生 API 金鑰的最基本說明，可在本文結尾找到該說明。 
 
 8. 選取 [整合]****，然後在 [輸出] 底下，按一下 [SendGrid ($return)]****。
 
@@ -152,5 +152,5 @@ availabilityResults
 
 * 深入了解建立 [Analytics 查詢](../../azure-monitor/log-query/get-started-queries.md)。
 * 深入了解[以程式設計方式查詢 Application Insights 資料](https://dev.applicationinsights.io/)
-* 深入瞭解[Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-what-are-logic-apps)。
+* 深入瞭解[Logic Apps](../../logic-apps/logic-apps-overview.md)。
 * 深入了解 [Microsoft Flow](https://ms.flow.microsoft.com)。

@@ -2,20 +2,23 @@
 title: 將資源移到新的訂用帳戶或資源群組
 description: 使用 Azure Resource Manager 將資源移到新的資源群組或訂用帳戶。
 ms.topic: conceptual
-ms.date: 03/02/2020
-ms.openlocfilehash: 036def01ef8ae5732d372dd995ad8f425c36cad9
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.date: 07/15/2020
+ms.openlocfilehash: 2fe4fc956f52ab5229469e1f230aec056295f19a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057835"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539273"
 ---
-# <a name="move-resources-to-a-new-resource-group-or-subscription"></a>將資源移至新的資源群組或訂用帳戶
+# <a name="move-resources-to-a-new-resource-group-or-subscription"></a>將資源移至新的資源群組或訂閱
 
 本文示範如何將 Azure 資源移至其他 Azure 訂用帳戶或相同訂用帳戶內的其他資源群組。 您可以使用 Azure 入口網站、Azure PowerShell、Azure CLI 或 REST API 來移動資源。
 
 移動作業期間會同時鎖定來源群組和目標群組。 資源群組上的寫入和刪除作業將會封鎖，直到移動完成。 此鎖定表示您無法新增、更新或刪除資源群組中的資源。 這並不表示資源已凍結。 例如，如果您將 SQL Server 和其資料庫移至新的資源群組，使用該資料庫的應用程式不會發生停機時間。 它仍可對資料庫讀取和寫入。 鎖定最多可以有四個小時，但大部分的移動會在較少的時間內完成。
 
 移動資源只會將它移到新的資源群組或訂閱。 不會變更資源的位置。
+
+如果您使用 Azure Stack 中樞，就無法在群組之間移動資源。
 
 ## <a name="checklist-before-moving-resources"></a>移動資源前的檢查清單
 

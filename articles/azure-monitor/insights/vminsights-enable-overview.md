@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2020
-ms.openlocfilehash: 261e5f17e787fd96697b06a9b338e74ea0409454
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 072f8fd44fa45648afd15cb40cba26bb427c7b56
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85507070"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539613"
 ---
 # <a name="enable-azure-monitor-for-vms-overview"></a>啟用適用於 VM 的 Azure 監視器總覽
 
@@ -30,7 +30,7 @@ ms.locfileid: "85507070"
 * 使用 PowerShell，在指定的訂用帳戶或資源群組上啟用多個 Azure Vm、Azure Arc Vm、Azure VMSS 或 Azure Arc 機器。
 * 啟用適用於 VM 的 Azure 監視器來監視在公司網路或其他雲端環境中裝載的 Vm 或實體電腦。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 開始之前，請確定您了解下列各節中的資訊。 
 
@@ -68,7 +68,7 @@ ms.locfileid: "85507070"
 
 如果您沒有 Log Analytics 工作區，您可以使用下列其中一個資源來建立一個：
 * [Azure CLI](../../azure-monitor/learn/quick-create-workspace-cli.md)
-* [PowerShell](../../azure-monitor/learn/quick-create-workspace-posh.md)
+* [PowerShell](../platform/powershell-workspace-configuration.md)
 * [Azure 入口網站](../../azure-monitor/learn/quick-create-workspace.md)
 * [Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md)
 
@@ -86,7 +86,7 @@ ms.locfileid: "85507070"
 
 下表列出適用於 VM 的 Azure 監視器支援的 Windows 和 Linux 作業系統。 在本節稍後，您會看到完整的清單，詳述主要和次要 Linux OS 版本，以及支援的核心版本。
 
-|OS 版本 |效能 |地圖 |
+|OS 版本 |效能 |地圖服務 |
 |-----------|------------|-----|
 |Windows Server 2019 | X | X |
 |Windows Server 2016 1803 | X | X |
@@ -173,9 +173,9 @@ ms.locfileid: "85507070"
 
 | 連線的來源 | 支援 | 描述 |
 |:--|:--|:--|
-| Windows 代理程式 | Yes | 除了[適用于 windows 的 Log Analytics 代理程式](../../azure-monitor/platform/log-analytics-agent.md)，windows 代理程式還需要 Dependency agent。 如需詳細資訊，請參閱[支援的作業系統](#supported-operating-systems)。 |
+| Windows 代理程式 | 是 | 除了[適用于 windows 的 Log Analytics 代理程式](../../azure-monitor/platform/log-analytics-agent.md)，windows 代理程式還需要 Dependency agent。 如需詳細資訊，請參閱[支援的作業系統](#supported-operating-systems)。 |
 | Linux 代理程式 | 是 | 除了適用于[linux 的 Log Analytics 代理程式](../../azure-monitor/platform/log-analytics-agent.md)，linux 代理程式還需要 Dependency agent。 如需詳細資訊，請參閱[支援的作業系統](#supported-operating-systems)。 |
-| System Center Operations Manager 管理群組 | No | |
+| System Center Operations Manager 管理群組 | 否 | |
 
 您可以從下列位置下載 Dependency agent：
 

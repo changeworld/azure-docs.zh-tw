@@ -9,11 +9,12 @@ ms.subservice: translator-text
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 02e6d776dbb47ee8e30409f6b8adc5a61fc5fe52
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 5334168081ea18650bd6afd2411e076952e08749
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85958917"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537981"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>將中樞工作區和專案移轉至自訂翻譯工具
 
@@ -129,14 +130,14 @@ ms.locfileid: "85958917"
 
 下表比較 Microsoft Translator Hub 與自訂翻譯工具之間的功能。
 
-|   | 中樞 | 自訂翻譯工具 |
-|:-----|:----:|:----:|
-|自訂功能狀態    | 正式運作    | 正式運作 |
+| 功能 | 集線器 | 自訂翻譯工具 |
+| ------- | :-: | :---------------: |
+| 自訂功能狀態    | 正式運作    | 正式運作 |
 | 文字 API 版本    | V2     | V3  |
 | SMT 自訂    | 是    | 否 |
 | NMT 自訂    | 否    | 是 |
 | 新的統一語音服務自訂    | 否    | 是 |
-| 不追蹤 | Yes | Yes |
+| 不追蹤 | 是 | 是 |
 
 ## <a name="new-languages"></a>新語言
 

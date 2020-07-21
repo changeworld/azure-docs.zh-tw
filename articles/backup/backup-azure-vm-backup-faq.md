@@ -4,17 +4,18 @@ description: 在本文中，您會找到有關使用 Azure 備份服務來備份
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 5705b70dd210c336fc2baa4da07f96f2ad249f64
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 68f85b3d5da811f78ba398093db5a65ee5c49ab1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82800646"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538763"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>常見問題-備份 Azure Vm
 
-本文會回答有關使用[Azure 備份](backup-introduction-to-azure-backup.md)服務來備份 Azure vm 的常見問題。
+本文會回答有關使用[Azure 備份](./backup-overview.md)服務來備份 Azure vm 的常見問題。
 
-## <a name="backup"></a>備份
+## <a name="backup"></a>Backup
 
 ### <a name="which-vm-images-can-be-enabled-for-backup-when-i-create-them"></a>建立虛擬機器映射時，可以針對備份啟用哪些 VM 映射？
 
@@ -82,7 +83,7 @@ ms.locfileid: "82800646"
 
 Azure 備份無法備份已啟用 WA 的磁碟，但可從備份中排除該磁碟。 不過，備份將不會提供資料庫一致性，因為系統不會備份已啟用 WA 之磁碟的相關資訊。 如果您想要作業系統磁碟備份以及未啟用 WA 的磁碟備份，您可以使用此設定來備份磁碟。
 
-Azure 備份為具有15分鐘 RPO 的 SAP Hana 資料庫提供串流備份解決方案。 它是由 SAP 認證，以提供利用 SAP Hana 的原生 Api 的原生備份支援。 深入瞭解[如何在 Azure vm 中備份 SAP Hana 資料庫](https://docs.microsoft.com/azure/backup/sap-hana-db-about)。
+Azure 備份為具有15分鐘 RPO 的 SAP Hana 資料庫提供串流備份解決方案。 它是由 SAP 認證，以提供利用 SAP Hana 的原生 Api 的原生備份支援。 深入瞭解[如何在 Azure vm 中備份 SAP Hana 資料庫](./sap-hana-db-about.md)。
 
 ### <a name="what-is-the-maximum-delay-i-can-expect-in-backup-start-time-from-the-scheduled-backup-time-i-have-set-in-my-vm-backup-policy"></a>我在 VM 備份原則中所設定的排程備份時間，我可以預期的最大延遲為何？
 
@@ -128,7 +129,11 @@ Azure 備份現在支援使用 Azure 虛擬機器備份解決方案進行選擇�
 
 [深入了解](backup-azure-vms-automation.md#restore-an-azure-vm)如何在 PowerShell 中執行此動作。
 
-### <a name="can-i-restore-the-vm-thats-been-deleted"></a>我可以還原已刪除的 VM 嗎？
+### <a name="if-the-restore-fails-to-create-the-vm-what-happens-to-the-disks-included-in-the-restore"></a>如果還原無法建立 VM，還原中包含的磁片會發生什麼事？
+
+在受控 VM 還原的事件中，即使 VM 建立失敗，仍然會復原磁碟。
+
+### <a name="can-i-restore-a-vm-thats-been-deleted"></a>我可以還原已刪除的 VM 嗎？
 
 是。 即使您刪除 VM，您也可以移至保存庫中對應的備份專案，並從復原點還原。
 
@@ -142,13 +147,13 @@ Azure 備份現在支援使用 Azure 虛擬機器備份解決方案進行選擇�
 
 ### <a name="what-happens-when-we-change-the-key-vault-settings-for-the-encrypted-vm"></a>當我們變更已加密 VM 的金鑰保存庫設定時，會發生什麼事？
 
-在您變更已加密 VM 的金鑰保存庫設定後，備份將會繼續使用一組新的詳細資料。 不過，在變更之前從復原點還原之後，您必須先還原金鑰保存庫中的秘密，才能建立 VM。 如需詳細資訊，請參閱這篇[文章](https://docs.microsoft.com/azure/backup/backup-azure-restore-key-secret)。
+在您變更已加密 VM 的金鑰保存庫設定後，備份將會繼續使用一組新的詳細資料。 不過，在變更之前從復原點還原之後，您必須先還原金鑰保存庫中的秘密，才能建立 VM。 如需詳細資訊，請參閱這篇[文章](./backup-azure-restore-key-secret.md)。
 
-秘密/金鑰變換之類的作業不需要此步驟，而且可以在還原之後使用相同的 KeyVault。
+秘密/金鑰變換之類的作業不需要此步驟，而且可以在還原之後使用相同的金鑰保存庫。
 
 ### <a name="can-i-access-the-vm-once-restored-due-to-a-vm-having-broken-relationship-with-domain-controller"></a>因為 VM 與網域控制站的關聯性中斷，我可以在還原後存取 VM 嗎？
 
-是，因為 VM 與網域控制站的關聯性中斷，所以您會在還原後存取 VM。 如需詳細資訊，請參閱這篇[文章](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#post-restore-steps)
+是，因為 VM 與網域控制站的關聯性中斷，所以您會在還原後存取 VM。 如需詳細資訊，請參閱這篇[文章](./backup-azure-arm-restore-vms.md#post-restore-steps)
 
 ## <a name="manage-vm-backups"></a>管理 VM 備份
 

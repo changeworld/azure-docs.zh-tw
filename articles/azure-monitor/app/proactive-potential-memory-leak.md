@@ -3,17 +3,18 @@ title: 偵測記憶體流失-Azure 應用程式 Insights 智慧型偵測
 description: 使用 Azure Application Insights 監視應用程式的潛在記憶體流失。
 ms.topic: conceptual
 ms.date: 12/12/2017
-ms.openlocfilehash: 85d138518dfb1313a810657016e9fe3143887b6d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3fe58cd7d61246c5565cd89fa782c8a977f09499
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77671693"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539885"
 ---
 # <a name="memory-leak-detection-preview"></a>記憶體流失偵測 (預覽)
 
 Application Insights 會自動分析應用程式中每個處理序的記憶體耗用量，並警告您潛在的記憶體流失或增加的記憶體耗用量。
 
-這項功能不需要任何特殊的設定，除了為您的應用程式[設定效能計數器](https://docs.microsoft.com/azure/application-insights/app-insights-performance-counters)以外。 當您的應用程式產生足夠的記憶體效能計數器遙測資料 (例如，私用位元組) 時，它就會作用。
+這項功能不需要任何特殊的設定，除了為您的應用程式[設定效能計數器](./performance-counters.md)以外。 當您的應用程式產生足夠的記憶體效能計數器遙測資料 (例如，私用位元組) 時，它就會作用。
 
 ## <a name="when-would-i-get-this-type-of-smart-detection-notification"></a>何時會取得這個類型的智慧偵測通知？
 在一或多個處理序和/或一或多部機器 (這些是您應用程式的一部分) 中，長時間內記憶體耗用量持續增加會產生典型通知。 我們使用機器學習演算法來偵測符合記憶體流失模式的記憶體耗用量增加情況。

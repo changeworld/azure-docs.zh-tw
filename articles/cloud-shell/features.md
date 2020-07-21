@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2019
 ms.author: damaerte
-ms.openlocfilehash: 409e8667f03843ae1b1bad56f189ff17b29d549a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e7324bfec32368e952af8f24afabe893011454df
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85506560"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538168"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Azure Cloud Shell 的功能和工具
 
@@ -49,19 +49,19 @@ Azure 磁碟機可讓您輕鬆探索和導覽與檔案系統導覽類似的 Azur
 無論您使用哪個磁碟機，都可以繼續使用熟悉的 [Azure PowerShell Cmdlet](https://docs.microsoft.com/powershell/azure) 來管理這些資源。
 對 Azure 資源進行的任何變更 (在 Azure 入口網站中直接進行，或透過 Azure PowerShell Cmdlet) 都會反映在 Azure 磁碟機中。  您可以執行 `dir -Force` 以重新整理您的資源。
 
-![](media/features-powershell/azure-drive.png)
+![要初始化的 Azure Cloud Shell 的螢幕擷取畫面，以及目錄資源的清單。](media/features-powershell/azure-drive.png)
 
 ### <a name="manage-exchange-online"></a>管理 Exchange Online
 
 Cloud Shell 中的 PowerShell 包含 Exchange Online 模組的私用組建。  執行 `Connect-EXOPSSession` 以取得您的 Exchange Cmdlet。
 
-![](media/features-powershell/exchangeonline.png)
+![執行命令 EXOPSSession 和 Get-User 之 Azure Cloud Shell 的螢幕擷取畫面。](media/features-powershell/exchangeonline.png)
 
  `Get-Command -Module tmp_*`執行
 > [!NOTE]
 > 模組名稱的開頭應該是 `tmp_` ，如果您已安裝具有相同前置詞的模組，則也會顯示其 Cmdlet。 
 
-![](media/features-powershell/exchangeonlinecmdlets.png)
+![執行命令的 Azure Cloud Shell 螢幕擷取畫面 tmp_ *。](media/features-powershell/exchangeonlinecmdlets.png)
 
 ### <a name="deep-integration-with-open-source-tooling"></a>與開放原始碼工具深度整合
 
@@ -69,7 +69,7 @@ Cloud Shell 包含預先設定的驗證，可用於開放原始碼工具，例�
 
 ## <a name="tools"></a>工具
 
-|類別   |Name   |
+|類別   |名稱   |
 |---|---|
 |Linux 工具            |Bash<br> zsh<br> sh<br> tmux<br> dig<br>               |
 |Azure 工具            |[Azure CLI](https://github.com/Azure/azure-cli) 和 [Azure 傳統 CLI](https://github.com/Azure/azure-xplat-cli)<br> [AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10)<br> [Azure Functions CLI](https://github.com/Azure/azure-functions-core-tools)<br> [Service Fabric CLI](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli)<br> [Batch Shipyard](https://github.com/Azure/batch-shipyard)<br> [blobxfer](https://github.com/Azure/blobxfer)|
@@ -82,13 +82,13 @@ Cloud Shell 包含預先設定的驗證，可用於開放原始碼工具，例�
 
 ## <a name="language-support"></a>語言支援
 
-|語言   |版本   |
+|Language   |版本   |
 |---|---|
 |.NET Core  |2.2.402       |
 |Go         |1.9        |
 |Java       |1.8        |
 |Node.js    |8.16.0      |
-|PowerShell |[7.0.0](https://github.com/PowerShell/powershell/releases)       |
+|PowerShell |[版](https://github.com/PowerShell/powershell/releases)       |
 |Python     |2.7 和 3.5 (預設)|
 
 ## <a name="next-steps"></a>後續步驟

@@ -3,11 +3,12 @@ title: 針對 SQL Server 資料庫備份進行疑難排解
 description: 適用於在 Azure VM 上執行並使用 Azure 備份進行備份之 SQL Server 資料庫的疑難排解資訊。
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: a4397f0bfa50990a7ad8080579261ed4587c4958
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 879a7edab77bad9671bea51e0e496f3eca96ee81
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84247949"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538712"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>使用 Azure 備份對 SQL Server 資料庫備份進行疑難排解
 
@@ -29,11 +30,11 @@ ms.locfileid: "84247949"
 
 ### <a name="step-1-discovery-dbs-in-vms"></a>步驟1： Vm 中的探索 Db
 
-- 如果 VM 未列在 [探索到的 VM] 清單中，而且也未針對另一個保存庫中的 [SQL 備份] 註冊，則請遵循[探索 SQL Server 備份](https://docs.microsoft.com/azure/backup/backup-sql-server-database-azure-vms#discover-sql-server-databases)步驟。
+- 如果 VM 未列在 [探索到的 VM] 清單中，而且也未針對另一個保存庫中的 [SQL 備份] 註冊，則請遵循[探索 SQL Server 備份](./backup-sql-server-database-azure-vms.md#discover-sql-server-databases)步驟。
 
 ### <a name="step-2-configure-backup"></a>步驟2：設定備份
 
-- 如果在用來保護資料庫的相同保存庫中註冊 SQL VM 的保存庫，請遵循[設定備份](https://docs.microsoft.com/azure/backup/backup-sql-server-database-azure-vms#configure-backup)步驟。
+- 如果在用來保護資料庫的相同保存庫中註冊 SQL VM 的保存庫，請遵循[設定備份](./backup-sql-server-database-azure-vms.md#configure-backup)步驟。
 
 如果需要在新的保存庫中註冊 SQL VM，則必須從舊的保存庫取消註冊。  從保存庫取消註冊 SQL VM 需要停止保護所有受保護的資料來源，然後您就可以刪除已備份的資料。 刪除備份的資料是破壞性作業。  在您檢查並採取取消註冊 SQL VM 的所有預防措施之後，請使用新的保存庫註冊此相同的 VM，然後重試備份作業。
 
@@ -59,7 +60,7 @@ ms.locfileid: "84247949"
 
 ### <a name="backup-type-unsupported"></a>不支援的備份類型
 
-| Severity | Description | 可能的原因 | 建議的動作 |
+| 嚴重性 | 描述 | 可能的原因 | 建議的動作 |
 |---|---|---|---|
 | 警告 | 此資料庫的目前設定不支援相關聯原則中存在的特定備份類型。 | <li>只有完整資料庫備份作業可以在 master 資料庫上執行。 差異備份或交易記錄備份都不可行。 </li> <li>簡單復原模式中的任何資料庫都不允許備份交易記錄。</li> | 修改資料庫設定，使其支援原則中的所有備份類型。 或者，將目前的原則變更為僅包含支援的備份類型。 否則，在排程備份期間將會略過不支援的備份類型，否則備份作業將會因為隨選備份而失敗。
 
@@ -67,7 +68,7 @@ ms.locfileid: "84247949"
 
 | 錯誤訊息 | 可能的原因 | 建議的動作 |
 |---|---|---|
-| 此 SQL 資料庫不支援所要求的備份類型。 | 當資料庫復原模式不允許所要求的備份類型時便會發生。 此錯誤會於下列情況時發生： <br/><ul><li>使用簡單復原模式的資料庫不允許記錄備份。</li><li>Master 資料庫不允許差異和記錄備份。</li></ul>如需詳細資訊，請參閱[SQL Server 復原模式](https://docs.microsoft.com/sql/relational-databases/backup-restore/recovery-models-sql-server)檔。 | 如果簡單復原模式中的資料庫記錄備份失敗，請嘗試下列其中一個選項：<ul><li>如果資料庫處於簡單復原模式，請停用記錄備份。</li><li>使用[SQL Server 檔](https://docs.microsoft.com/sql/relational-databases/backup-restore/view-or-change-the-recovery-model-of-a-database-sql-server)，將資料庫復原模式變更為完整或大量記錄。 </li><li> 如果您不想變更復原模式，而且所用來備份多個資料庫的標準原則無法變更，則請忽略此錯誤。 完整和差異備份會依排程運作。 記錄備份則會略過，這符合此案例的預期。</li></ul>如果它是 master 資料庫，而且您已設定差異或記錄備份，請使用下列其中一個步驟：<ul><li>使用入口網站將 master 資料庫的備份原則排程變更為 [完整]。</li><li>如果所用來備份多個資料庫的標準原則無法變更，則請忽略此錯誤。 完整備份會依排程運作。 差異或記錄備份則不會進行，這符合此案例的預期。</li></ul> |
+| 此 SQL 資料庫不支援所要求的備份類型。 | 當資料庫復原模式不允許所要求的備份類型時便會發生。 此錯誤會於下列情況時發生： <br/><ul><li>使用簡單復原模式的資料庫不允許記錄備份。</li><li>Master 資料庫不允許差異和記錄備份。</li></ul>如需詳細資訊，請參閱[SQL Server 復原模式](/sql/relational-databases/backup-restore/recovery-models-sql-server)檔。 | 如果簡單復原模式中的資料庫記錄備份失敗，請嘗試下列其中一個選項：<ul><li>如果資料庫處於簡單復原模式，請停用記錄備份。</li><li>使用[SQL Server 檔](/sql/relational-databases/backup-restore/view-or-change-the-recovery-model-of-a-database-sql-server)，將資料庫復原模式變更為完整或大量記錄。 </li><li> 如果您不想變更復原模式，而且所用來備份多個資料庫的標準原則無法變更，則請忽略此錯誤。 完整和差異備份會依排程運作。 記錄備份則會略過，這符合此案例的預期。</li></ul>如果它是 master 資料庫，而且您已設定差異或記錄備份，請使用下列其中一個步驟：<ul><li>使用入口網站將 master 資料庫的備份原則排程變更為 [完整]。</li><li>如果所用來備份多個資料庫的標準原則無法變更，則請忽略此錯誤。 完整備份會依排程運作。 差異或記錄備份則不會進行，這符合此案例的預期。</li></ul> |
 | 作業遭到取消，原因是同一個資料庫上已在執行衝突的作業。 | 請參閱[有關同時執行之備份和還原限制的 blog 專案](https://deep.data.blog/2008/12/30/concurrency-of-full-differential-and-log-backups-on-the-same-database/)。| [使用 SQL Server Management Studio （SSMS）來監視備份作業](manage-monitor-sql-database-backup.md)。 衝突的作業失敗之後，請重新開機作業。|
 
 ### <a name="usererrorsqlpodoesnotexist"></a>UserErrorSQLPODoesNotExist
@@ -86,7 +87,7 @@ ms.locfileid: "84247949"
 
 | 錯誤訊息 | 可能的原因 | 建議的動作 |
 |---|---|---|
-| Azure 備份無法連線至 SQL 執行個體。 | Azure 備份無法連接到 SQL Server 實例。 | 使用 [Azure 入口網站錯誤] 功能表上的 [其他詳細資料] 來縮小根本原因。 請參閱 [SQL 備份疑難排解](https://docs.microsoft.com/sql/database-engine/configure-windows/troubleshoot-connecting-to-the-sql-server-database-engine)以修正錯誤。<br/><ul><li>如果預設的 SQL 設定不允許遠端連線，請變更設定。 如需變更設定的詳細資訊，請參閱下列文章：<ul><li>[MSSQLSERVER_-1](https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-1-database-engine-error?view=sql-server-ver15)</li><li>[MSSQLSERVER_2](/sql/relational-databases/errors-events/mssqlserver-2-database-engine-error)</li><li>[MSSQLSERVER_53](/sql/relational-databases/errors-events/mssqlserver-53-database-engine-error)</li></ul></li></ul><ul><li>如果有登入問題，請使用下列連結來加以修正：<ul><li>[MSSQLSERVER_18456](/sql/relational-databases/errors-events/mssqlserver-18456-database-engine-error)</li><li>[MSSQLSERVER_18452](/sql/relational-databases/errors-events/mssqlserver-18452-database-engine-error)</li></ul></li></ul> |
+| Azure 備份無法連線至 SQL 執行個體。 | Azure 備份無法連接到 SQL Server 實例。 | 使用 [Azure 入口網站錯誤] 功能表上的 [其他詳細資料] 來縮小根本原因。 請參閱 [SQL 備份疑難排解](/sql/database-engine/configure-windows/troubleshoot-connecting-to-the-sql-server-database-engine)以修正錯誤。<br/><ul><li>如果預設的 SQL 設定不允許遠端連線，請變更設定。 如需變更設定的詳細資訊，請參閱下列文章：<ul><li>[MSSQLSERVER_-1](/sql/relational-databases/errors-events/mssqlserver-1-database-engine-error)</li><li>[MSSQLSERVER_2](/sql/relational-databases/errors-events/mssqlserver-2-database-engine-error)</li><li>[MSSQLSERVER_53](/sql/relational-databases/errors-events/mssqlserver-53-database-engine-error)</li></ul></li></ul><ul><li>如果有登入問題，請使用下列連結來加以修正：<ul><li>[MSSQLSERVER_18456](/sql/relational-databases/errors-events/mssqlserver-18456-database-engine-error)</li><li>[MSSQLSERVER_18452](/sql/relational-databases/errors-events/mssqlserver-18452-database-engine-error)</li></ul></li></ul> |
 
 ### <a name="usererrorparentfullbackupmissing"></a>UserErrorParentFullBackupMissing
 
@@ -98,7 +99,7 @@ ms.locfileid: "84247949"
 
 | 錯誤訊息 | 可能的原因 | 建議的動作 |
 |---|---|---|
-| 資料來源的交易記錄已滿，所以無法擷取備份。 | 資料庫的交易記錄空間已滿。 | 若要修正此問題，請參閱[SQL Server 檔](https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-9002-database-engine-error)。 |
+| 資料來源的交易記錄已滿，所以無法擷取備份。 | 資料庫的交易記錄空間已滿。 | 若要修正此問題，請參閱[SQL Server 檔](/sql/relational-databases/errors-events/mssqlserver-9002-database-engine-error)。 |
 
 ### <a name="usererrorcannotrestoreexistingdbwithoutforceoverwrite"></a>UserErrorCannotRestoreExistingDBWithoutForceOverwrite
 
@@ -110,7 +111,7 @@ ms.locfileid: "84247949"
 
 | 錯誤訊息 | 可能的原因 | 建議的動作 |
 |---|---|---|
-| 還原失敗，原因是無法讓資料庫離線。 | 當您執行還原時，目標資料庫必須離線。 Azure 備份無法使此資料離線。 | 使用 [Azure 入口網站錯誤] 功能表上的 [其他詳細資料] 來縮小根本原因。 如需詳細資訊，請參閱 [SQL Server 文件](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms)。 |
+| 還原失敗，原因是無法讓資料庫離線。 | 當您執行還原時，目標資料庫必須離線。 Azure 備份無法使此資料離線。 | 使用 [Azure 入口網站錯誤] 功能表上的 [其他詳細資料] 來縮小根本原因。 如需詳細資訊，請參閱 [SQL Server 文件](/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms)。 |
 
 ### <a name="usererrorcannotfindservercertificatewiththumbprint"></a>UserErrorCannotFindServerCertificateWithThumbprint
 
@@ -122,7 +123,7 @@ ms.locfileid: "84247949"
 
 | 錯誤訊息 | 可能的原因 | 建議的動作 |
 |---|---|---|
-| 用於復原的記錄備份包含大量記錄的變更。 它不能用來根據 SQL 方針，在任意時間點停止。 | 當資料庫處於大量記錄復原模式時，無法復原大量記錄交易和下一個記錄交易之間的資料。 | 請選擇不同的恢復時間點。 [深入了解](https://docs.microsoft.com/sql/relational-databases/backup-restore/recovery-models-sql-server?view=sql-server-ver15)。
+| 用於復原的記錄備份包含大量記錄的變更。 它不能用來根據 SQL 方針，在任意時間點停止。 | 當資料庫處於大量記錄復原模式時，無法復原大量記錄交易和下一個記錄交易之間的資料。 | 請選擇不同的恢復時間點。 [深入了解](/sql/relational-databases/backup-restore/recovery-models-sql-server?view=sql-server-ver15)。
 
 ### <a name="fabricsvcbackuppreferencecheckfailedusererror"></a>FabricSvcBackupPreferenceCheckFailedUserError
 
@@ -164,7 +165,7 @@ ms.locfileid: "84247949"
 
 | 錯誤訊息 | 可能的原因 | 建議的動作 |
 |---|---|---|
-因為網際網路連線問題，VM 無法與 Azure 備份服務聯繫。 | VM 需要 Azure 備份服務、Azure 儲存體或 Azure Active Directory 服務的輸出連線能力。| -如果您使用 NSG 來限制連線，則您應該使用 AzureBackup 服務標籤，以允許 Azure 備份 Azure 備份服務、Azure 儲存體或 Azure Active Directory 服務的輸出存取。 請遵循下列[步驟](https://docs.microsoft.com/azure/backup/backup-sql-server-database-azure-vms#allow-access-using-nsg-tags)來授與存取權。<br>-確認 DNS 正在解析 Azure 端點。<br>-檢查 VM 是否位於封鎖網際網路存取的負載平衡器後方。 藉由將公用 IP 指派給 Vm，探索將會正常執行。<br>-確認沒有防火牆/防毒程式正在封鎖對上述三個目標服務的呼叫。
+因為網際網路連線問題，VM 無法與 Azure 備份服務聯繫。 | VM 需要 Azure 備份服務、Azure 儲存體或 Azure Active Directory 服務的輸出連線能力。| -如果您使用 NSG 來限制連線，則您應該使用 AzureBackup 服務標籤，以允許 Azure 備份 Azure 備份服務、Azure 儲存體或 Azure Active Directory 服務的輸出存取。 請遵循下列[步驟](./backup-sql-server-database-azure-vms.md#nsg-tags)來授與存取權。<br>-確認 DNS 正在解析 Azure 端點。<br>-檢查 VM 是否位於封鎖網際網路存取的負載平衡器後方。 藉由將公用 IP 指派給 Vm，探索將會正常執行。<br>-確認沒有防火牆/防毒程式正在封鎖對上述三個目標服務的呼叫。
 
 ## <a name="re-registration-failures"></a>重新註冊失敗
 
@@ -190,7 +191,7 @@ ms.locfileid: "84247949"
 - VM 已刪除，已建立另一個相同名稱的 VM，並且與已刪除的 VM 位於相同資源群組中。
 - 其中一個可用性群組節點未收到完整的備份設定。 當可用性群組註冊至保存庫，或加入新的節點時，就會發生這種情況。
 
-針對上述情況，我們建議您在 VM 上觸發重新註冊作業。 如需如何在 PowerShell 中執行這項工作的指示，請參閱[這裡](https://docs.microsoft.com/azure/backup/backup-azure-sql-automation#enable-backup)。
+針對上述情況，我們建議您在 VM 上觸發重新註冊作業。 如需如何在 PowerShell 中執行這項工作的指示，請參閱[這裡](./backup-azure-sql-automation.md#enable-backup)。
 
 ## <a name="size-limit-for-files"></a>檔案的大小限制
 
@@ -208,7 +209,7 @@ SELECT mf.name AS LogicalName, Physical_Name AS Location FROM sys.master_files m
 [{"path":"<Location>","logicalName":"<LogicalName>","isDir":false},{"path":"<Location>","logicalName":"<LogicalName>","isDir":false}]}
 ```
 
-以下是範例：
+以下為範例：
 
 ```json
 [{"path":"F:\\Data\\TestDB12.mdf","logicalName":"TestDB12","isDir":false},{"path":"F:\\Log\\TestDB12_log.ldf","logicalName":"TestDB12_log","isDir":false}]}
@@ -237,7 +238,7 @@ SELECT mf.name AS LogicalName, Physical_Name AS Location FROM sys.master_files m
 ]
 ```
 
-以下是範例：
+以下為範例：
 
 ```json
 [

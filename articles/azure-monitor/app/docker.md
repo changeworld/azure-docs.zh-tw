@@ -3,16 +3,17 @@ title: 在 Azure Application Insights 中監視 Docker 應用程式 | Microsoft 
 description: Docker 效能計數器、事件和例外狀況可以與來自容器化應用程式的遙測一起顯示在 Application Insights 上。
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 5ff3d6a2b31425a3fb6857c8c6aed45f7ef18d64
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6af39db68c2020e578fe6fbd39870b2e00a16e07
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77669602"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539919"
 ---
 # <a name="monitor-docker-applications-in-application-insights-deprecated"></a>監視 Application Insights 中的 Docker 應用程式（已淘汰）
 
 > [!NOTE]
-> 此解決方案已被取代。 若要深入了解我們目前對於容器監視所做的投資，建議查看[適用於容器的 Azure 監視器](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-overview)。
+> 此解決方案已被取代。 若要深入了解我們目前對於容器監視所做的投資，建議查看[適用於容器的 Azure 監視器](../insights/container-insights-overview.md)。
 
 [Docker](https://www.docker.com/) 容器的週期事件和效能計數器可以在 Application Insights 上繪製成圖表。 在您的主機的容器中安裝 [Application Insights](https://hub.docker.com/r/microsoft/applicationinsights/) 映像，它會顯示主機及其他映像的效能計數器。
 

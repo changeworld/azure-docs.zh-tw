@@ -6,11 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.subservice: alerts
-ms.openlocfilehash: f31fcc07bed0287c2f86ca4fe52bf02a2a1d2a71
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 09db7684c84bbde038c67f9ccfb3f27f6b61bee6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81114414"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539544"
 ---
 # <a name="prepare-your-logic-apps-and-runbooks-for-migration-of-classic-alert-rules"></a>準備邏輯應用程式和 Runbook 以便移轉傳統警示規則
 
@@ -27,12 +28,12 @@ ms.locfileid: "81114414"
 
 下表是傳統和新警示的程式設計介面參考：
 
-|         |傳統警示  |新的計量警示 |
-|---------|---------|---------|
-|REST API     | [microsoft insights/alertrules](https://docs.microsoft.com/rest/api/monitor/alertrules)         | [microsoft.insights/metricalerts](https://docs.microsoft.com/rest/api/monitor/metricalerts)       |
-|Azure CLI     | [az monitor alert](https://docs.microsoft.com/cli/azure/monitor/alert?view=azure-cli-latest)        | [az monitor 計量警示](https://docs.microsoft.com/cli/azure/monitor/metrics/alert?view=azure-cli-latest)        |
-|PowerShell      | [參考](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrule)       |  [參考](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrulev2)    |
-| Azure Resource Manager 範本 | [針對傳統警示](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-enable-template)|[針對新的計量警示](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates)|
+| 部署腳本類型 | 傳統警示 | 新的計量警示 |
+| ---------------------- | -------------- | ----------------- |
+|REST API     | [microsoft insights/alertrules](/rest/api/monitor/alertrules)         | [microsoft.insights/metricalerts](/rest/api/monitor/metricalerts)       |
+|Azure CLI     | [az monitor alert](/cli/azure/monitor/alert?view=azure-cli-latest)        | [az monitor 計量警示](/cli/azure/monitor/metrics/alert?view=azure-cli-latest)        |
+|PowerShell      | [參考](/powershell/module/az.monitor/add-azmetricalertrule)       |  [參考](/powershell/module/az.monitor/add-azmetricalertrulev2)    |
+| Azure Resource Manager 範本 | [針對傳統警示](./alerts-enable-template.md)|[針對新的計量警示](./alerts-metric-create-templates.md)|
 
 ## <a name="notification-payload-changes"></a>通知承載變更
 
@@ -40,8 +41,8 @@ ms.locfileid: "81114414"
 
 使用下表將 webhook 承載欄位從傳統格式對應到新的格式：
 
-|  |傳統警示  |新的計量警示 |
-|---------|---------|---------|
+| 通知端點類型 | 傳統警示 | 新的計量警示 |
+| -------------------------- | -------------- | ----------------- |
 |警示是否已啟用或已解決？    | **status**       | **資料。狀態** |
 |警示的相關內容資訊     | **內容**        | **資料。內容**        |
 |啟用或解決警示的時間戳記     | **coNtext。時間戳記**       | **資料. 內容. 時間戳記**        |
@@ -149,11 +150,11 @@ else {
 
 ```
 
-如需在觸發警示時停止虛擬機器之 runbook 的完整範例，請參閱[Azure 自動化檔](https://docs.microsoft.com/azure/automation/automation-create-alert-triggered-runbook)。
+如需在觸發警示時停止虛擬機器之 runbook 的完整範例，請參閱[Azure 自動化檔](../../automation/automation-create-alert-triggered-runbook.md)。
 
 ## <a name="partner-integration-via-webhooks"></a>透過 webhook 的合作夥伴整合
 
-[我們與傳統警示整合的大部分合作夥伴，都](https://docs.microsoft.com/azure/azure-monitor/platform/partners)已經透過其整合來支援較新的計量警示。 已使用新計量警示的已知整合如下：
+[我們與傳統警示整合的大部分合作夥伴，都](./partners.md)已經透過其整合來支援較新的計量警示。 已使用新計量警示的已知整合如下：
 
 - [PagerDuty](https://www.pagerduty.com/docs/guides/azure-integration-guide/)
 - [OpsGenie](https://docs.opsgenie.com/docs/microsoft-azure-integration)

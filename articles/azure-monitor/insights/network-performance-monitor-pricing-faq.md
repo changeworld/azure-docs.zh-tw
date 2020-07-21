@@ -6,20 +6,21 @@ ms.topic: conceptual
 author: agummadi
 ms.author: agummadi
 ms.date: 04/02/2018
-ms.openlocfilehash: c5a80c7ff6d08ce601a6c2bbb0db0ef866d3b425
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f44afd84c58c94c6a8d3e6145e8a4f66e0e2e782
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77654387"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539647"
 ---
 # <a name="pricing-changes-for-azure-network-performance-monitor"></a>Azure 網路效能監控的定價變更
 
-我們持續聆聽您的意見，並針對整個 Azure 的各種監控服務，於近期推出[新的定價體驗](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/)。 本文章以容易閱讀的問題與解答形式，收錄有關 Azure [網路效能監控](https://docs.microsoft.com/azure/networking/network-monitoring-overview) (NPM) 的定價變更。
+我們持續聆聽您的意見，並針對整個 Azure 的各種監控服務，於近期推出[新的定價體驗](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/)。 本文章以容易閱讀的問題與解答形式，收錄有關 Azure [網路效能監控](../../networking/network-monitoring-overview.md) (NPM) 的定價變更。
 
 網路效能監控是由三個元件所組成：
-* [效能監視器](https://docs.microsoft.com/azure/networking/network-monitoring-overview#performance-monitor)
-* [服務端點監視](https://docs.microsoft.com/azure/networking/network-monitoring-overview)
-* [ExpressRoute 監視](https://docs.microsoft.com/azure/networking/network-monitoring-overview#expressroute-monitor)
+* [效能監視器](../../networking/network-monitoring-overview.md#performance-monitor)
+* [服務端點監視](../../networking/network-monitoring-overview.md)
+* [ExpressRoute 監視](../../networking/network-monitoring-overview.md#expressroute-monitor)
 
 下列各節說明 NPM 元件的定價變更。
 
@@ -111,4 +112,3 @@ ExpressRoute 監控私人對等互連連線時，每個月產生的資料量如�
 ## <a name="references"></a>參考資料
 
 [Log Analytics 定價常見問題集](https://azure.microsoft.com/pricing/details/log-analytics/)：常見問題集區段包含關於免費層、每個節點定價和其他定價詳細資料。
-

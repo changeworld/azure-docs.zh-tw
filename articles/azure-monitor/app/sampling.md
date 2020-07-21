@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 664e61697c1fb0c339a4c2caf8d0125a73e608c3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 28bbf9749375a4523237e840c217977853cd4ddd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85319629"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539817"
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights 中的取樣
 
@@ -21,7 +21,7 @@ ms.locfileid: "85319629"
 ## <a name="brief-summary"></a>簡短摘要
 
 * 有三種不同類型的取樣：彈性取樣、固定速率取樣和內嵌取樣。
-* 預設會在所有最新版本的 Application Insights ASP.NET 和 ASP.NET Core 軟體發展工具組（Sdk）中啟用調適型取樣。 [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview)也會使用它。
+* 預設會在所有最新版本的 Application Insights ASP.NET 和 ASP.NET Core 軟體發展工具組（Sdk）中啟用調適型取樣。 [Azure Functions](../../azure-functions/functions-overview.md)也會使用它。
 * 在最新版本的 Application Insights Sdk for ASP.NET、ASP.NET Core、JAVA （代理程式和 SDK）和 Python 中，會提供固定速率取樣。
 * 內嵌取樣適用于 Application Insights 服務端點。 只有在沒有其他取樣生效時才適用。 如果 SDK 會取樣您的遙測，則會停用內嵌取樣。
 * 若是 web 應用程式，如果您記錄自訂事件，而且需要確保一組事件會一起保留或捨棄，則事件必須具有相同的 `OperationId` 值。
@@ -34,10 +34,11 @@ ms.locfileid: "85319629"
 |-|-|-|-|
 | ASP.NET | [是（預設為開啟）](#configuring-adaptive-sampling-for-aspnet-applications) | [是](#configuring-fixed-rate-sampling-for-aspnet-applications) | 只有在沒有其他取樣生效時 |
 | ASP.NET Core | [是（預設為開啟）](#configuring-adaptive-sampling-for-aspnet-core-applications) | [是](#configuring-fixed-rate-sampling-for-aspnet-core-applications) | 只有在沒有其他取樣生效時 |
-| Azure Functions | [是（預設為開啟）](#configuring-adaptive-sampling-for-azure-functions) | No | 只有在沒有其他取樣生效時 |
+| Azure Functions | [是（預設為開啟）](#configuring-adaptive-sampling-for-azure-functions) | 否 | 只有在沒有其他取樣生效時 |
 | Java | 否 | [是](#configuring-fixed-rate-sampling-for-java-applications) | 只有在沒有其他取樣生效時 |
+| Node.JS | 否 | [是](./nodejs.md#sampling) | 只有在沒有其他取樣生效時
 | Python | 否 | [是](#configuring-fixed-rate-sampling-for-opencensus-python-applications) | 只有在沒有其他取樣生效時 |
-| All others | No | 否 | [是](#ingestion-sampling) |
+| All others | 否 | 否 | [是](#ingestion-sampling) |
 
 > [!NOTE]
 > 本頁面大部分的資訊適用于目前版本的 Application Insights Sdk。 如需舊版 Sdk 的詳細資訊，[請參閱下面的一節](#older-sdk-versions)。
@@ -209,7 +210,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, Telemetr
 
 ### <a name="configuring-adaptive-sampling-for-azure-functions"></a>設定 Azure Functions 的調適型取樣
 
-遵循[此頁面](https://docs.microsoft.com/azure/azure-functions/functions-monitoring#configure-sampling)中的指示，為在 Azure Functions 中執行的應用程式設定調適型取樣。
+遵循[此頁面](../../azure-functions/functions-monitoring.md#configure-sampling)中的指示，為在 Azure Functions 中執行的應用程式設定調適型取樣。
 
 ## <a name="fixed-rate-sampling"></a>固定速率取樣
 
@@ -481,7 +482,7 @@ handler = AzureLogHandler(
 
 ## <a name="knowing-whether-sampling-is-in-operation"></a>瞭解取樣是否正在運作
 
-若要找出實際的取樣率 (不論是否已套用)，請使用如下所示的 [分析查詢](../../azure-monitor/app/analytics.md) ︰
+若要找出實際的取樣率 (不論是否已套用)，請使用如下所示的 [分析查詢](../log-query/log-query-overview.md) ︰
 
 ```kusto
 union requests,dependencies,pageViews,browserTimings,exceptions,traces
@@ -586,4 +587,4 @@ union requests,dependencies,pageViews,browserTimings,exceptions,traces
 ## <a name="next-steps"></a>後續步驟
 
 * [篩選](../../azure-monitor/app/api-filtering-sampling.md) 可以對您的 SDK 所傳送的內容，提供更嚴格的控制。
-* 閱讀開發人員網路文章[使用 Application Insights 優化遙測](https://msdn.microsoft.com/magazine/mt808502.aspx)。
+* 閱讀開發人員網路文章[使用 Application Insights 優化遙測](/archive/msdn-magazine/2017/may/devops-optimize-telemetry-with-application-insights)。

@@ -2,13 +2,13 @@
 title: 依資源類型區分的移動作業支援
 description: 列出可移至新資源群組或訂用帳戶的 Azure 資源類型。
 ms.topic: conceptual
-ms.date: 06/15/2020
-ms.openlocfilehash: 785243676040fc86d42e3125684239ebe6da2061
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.date: 07/13/2020
+ms.openlocfilehash: 7b7f6f05c9cae80cffb64245a3fc8a6b0890d577
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134661"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539222"
 ---
 # <a name="move-operation-support-for-resources"></a>資源的移動作業支援
 
@@ -670,9 +670,9 @@ ms.locfileid: "86134661"
 > | reservationorders / return | 否 | 否 |
 > | reservationorders / split | 否 | 否 |
 > | reservationorders / swap | 否 | 否 |
-> | reservations | 否 | No |
-> | resources | 否 | No |
-> | validatereservationorder | 否 | No |
+> | reservations | 否 | 否 |
+> | resources | 否 | 否 |
+> | validatereservationorder | 否 | 否 |
 
 ## <a name="microsoftcdn"></a>Microsoft.Cdn
 
@@ -681,22 +681,22 @@ ms.locfileid: "86134661"
 > | ------------- | ----------- | ---------- |
 > | cdnwebapplicationfirewallmanagedrulesets | 否 | 否 |
 > | cdnwebapplicationfirewallpolicies | 是 | 是 |
-> | checknameavailability | 否 | No |
-> | checkresourceusage | 否 | No |
-> | edgenodes | 否 | No |
-> | operationresults | 否 | No |
-> | operationresults / profileresults | 否 | No |
-> | operationresults / profileresults / endpointresults | 否 | No |
-> | operationresults / profileresults / endpointresults / customdomainresults | 否 | No |
-> | operationresults / profileresults / endpointresults / origingroupresults | 否 | No |
-> | operationresults / profileresults / endpointresults / originresults | 否 | No |
-> | 作業 | 否 | No |
+> | checknameavailability | 否 | 否 |
+> | checkresourceusage | 否 | 否 |
+> | edgenodes | 否 | 否 |
+> | operationresults | 否 | 否 |
+> | operationresults / profileresults | 否 | 否 |
+> | operationresults / profileresults / endpointresults | 否 | 否 |
+> | operationresults / profileresults / endpointresults / customdomainresults | 否 | 否 |
+> | operationresults / profileresults / endpointresults / origingroupresults | 否 | 否 |
+> | operationresults / profileresults / endpointresults / originresults | 否 | 否 |
+> | 作業 | 否 | 否 |
 > | 設定檔 | 是 | 是 |
 > | profiles / endpoints | 是 | 是 |
-> | profiles / endpoints / customdomains | 否 | No |
-> | profiles / endpoints / origingroups | 否 | No |
-> | profiles / endpoints / origins | 否 | No |
-> | validateprobe | 否 | No |
+> | profiles / endpoints / customdomains | 否 | 否 |
+> | profiles / endpoints / origingroups | 否 | 否 |
+> | profiles / endpoints / origins | 否 | 否 |
+> | validateprobe | 否 | 否 |
 
 ## <a name="microsoftcertificateregistration"></a>Microsoft.CertificateRegistration
 
@@ -704,9 +704,9 @@ ms.locfileid: "86134661"
 > | 資源類型 | 資源群組 | 訂用帳戶 |
 > | ------------- | ----------- | ---------- |
 > | certificateorders | 是 | 是 |
-> | certificateorders / certificates | 否 | No |
-> | 作業 | 否 | No |
-> | validatecertificateregistrationinformation | 否 | No |
+> | certificateorders / certificates | 否 | 否 |
+> | 作業 | 否 | 否 |
+> | validatecertificateregistrationinformation | 否 | 否 |
 
 > [!IMPORTANT]
 > 請參閱 [App Service 移動指引](./move-limitations/app-service-move-limitations.md)。
@@ -724,27 +724,27 @@ ms.locfileid: "86134661"
 > | 資源類型 | 資源群組 | 訂用帳戶 |
 > | ------------- | ----------- | ---------- |
 > | capabilities | 否 | 否 |
-> | checkdomainnameavailability | 否 | No |
+> | checkdomainnameavailability | 否 | 否 |
 > | domainnames | 是 | 否 |
-> | domainnames / capabilities | 否 | No |
-> | domainnames / internalloadbalancers | 否 | No |
-> | domainnames / servicecertificates | 否 | No |
-> | domainnames / slots | 否 | No |
-> | domainnames / slots / roles | 否 | No |
+> | domainnames / capabilities | 否 | 否 |
+> | domainnames / internalloadbalancers | 否 | 否 |
+> | domainnames / servicecertificates | 否 | 否 |
+> | domainnames / slots | 否 | 否 |
+> | domainnames / slots / roles | 否 | 否 |
 > | domainnames / slots / roles / metricdefinitions | 否 | 否 |
-> | domainnames / slots / roles / metrics | 否 | No |
-> | movesubscriptionresources | 否 | No |
-> | operatingsystemfamilies | 否 | No |
-> | operatingsystems | 否 | No |
-> | 作業 | 否 | No |
-> | operationstatuses | 否 | No |
-> | quotas | 否 | No |
-> | resourcetypes | 否 | No |
-> | validatesubscriptionmoveavailability | 否 | No |
+> | domainnames / slots / roles / metrics | 否 | 否 |
+> | movesubscriptionresources | 否 | 否 |
+> | operatingsystemfamilies | 否 | 否 |
+> | operatingsystems | 否 | 否 |
+> | 作業 | 否 | 否 |
+> | operationstatuses | 否 | 否 |
+> | quotas | 否 | 否 |
+> | resourcetypes | 否 | 否 |
+> | validatesubscriptionmoveavailability | 否 | 否 |
 > | virtualmachines | 是 | 否 |
-> | virtualmachines / diagnosticsettings | 否 | No |
-> | virtualmachines / metricdefinitions | 否 | No |
-> | virtualmachines / metrics | 否 | No |
+> | virtualmachines / diagnosticsettings | 否 | 否 |
+> | virtualmachines / metricdefinitions | 否 | 否 |
+> | virtualmachines / metrics | 否 | 否 |
 
 > [!IMPORTANT]
 > 請參閱[傳統部署移動指引](./move-limitations/classic-model-move-limitations.md)。 傳統部署資源可以透過該案例專屬的作業，跨訂用帳戶移動。
@@ -754,7 +754,7 @@ ms.locfileid: "86134661"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 資源群組 | 訂用帳戶 |
 > | ------------- | ----------- | ---------- |
-> | classicinfrastructureresources | 否 | No |
+> | classicinfrastructureresources | 否 | 否 |
 
 > [!IMPORTANT]
 > 請參閱[傳統部署移動指引](./move-limitations/classic-model-move-limitations.md)。 傳統部署資源可以透過該案例專屬的作業，跨訂用帳戶移動。
@@ -764,17 +764,17 @@ ms.locfileid: "86134661"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 資源群組 | 訂用帳戶 |
 > | ------------- | ----------- | ---------- |
-> | capabilities | 否 | No |
-> | expressroutecrossconnections | 否 | No |
-> | expressroutecrossconnections / peerings | 否 | No |
-> | gatewaysupporteddevices | 否 | No |
-> | networksecuritygroups | 否 | No |
-> | 作業 | 否 | No |
-> | quotas | 否 | No |
-> | reservedips | 否 | No |
-> | virtualnetworks | 否 | No |
-> | virtualnetworks / remotevirtualnetworkpeeringproxies | 否 | No |
-> | virtualnetworks / virtualnetworkpeerings | 否 | No |
+> | capabilities | 否 | 否 |
+> | expressroutecrossconnections | 否 | 否 |
+> | expressroutecrossconnections / peerings | 否 | 否 |
+> | gatewaysupporteddevices | 否 | 否 |
+> | networksecuritygroups | 否 | 否 |
+> | 作業 | 否 | 否 |
+> | quotas | 否 | 否 |
+> | reservedips | 否 | 否 |
+> | virtualnetworks | 否 | 否 |
+> | virtualnetworks / remotevirtualnetworkpeeringproxies | 否 | 否 |
+> | virtualnetworks / virtualnetworkpeerings | 否 | 否 |
 
 > [!IMPORTANT]
 > 請參閱[傳統部署移動指引](./move-limitations/classic-model-move-limitations.md)。 傳統部署資源可以透過該案例專屬的作業，跨訂用帳戶移動。
@@ -784,18 +784,18 @@ ms.locfileid: "86134661"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 資源群組 | 訂用帳戶 |
 > | ------------- | ----------- | ---------- |
-> | capabilities | 否 | No |
-> | checkstorageaccountavailability | 否 | No |
-> | disks | 否 | No |
-> | images | 否 | No |
-> | 作業 | 否 | No |
-> | osimages | 否 | No |
-> | osplatformimages | 否 | No |
-> | publicimages | 否 | No |
-> | quotas | 否 | No |
+> | capabilities | 否 | 否 |
+> | checkstorageaccountavailability | 否 | 否 |
+> | disks | 否 | 否 |
+> | images | 否 | 否 |
+> | 作業 | 否 | 否 |
+> | osimages | 否 | 否 |
+> | osplatformimages | 否 | 否 |
+> | publicimages | 否 | 否 |
+> | quotas | 否 | 否 |
 > | storageaccounts | 是 | 否 |
-> | storageaccounts / blobservices | 否 | No |
-> | storageaccounts / fileservices | 否 | No |
+> | storageaccounts / blobservices | 否 | 否 |
+> | storageaccounts / fileservices | 否 | 否 |
 > | storageaccounts / metricdefinitions | 否 | 否 |
 > | storageaccounts / metrics | 否 | 否 |
 > | storageaccounts / queueservices | 否 | 否 |
@@ -1405,12 +1405,12 @@ ms.locfileid: "86134661"
 > | elasticpools | 否 | 否 |
 > | elasticpools / iothubtenants | 否 | 否 |
 > | iothubs | 是 | 是 |
-> | iothubs / eventgridfilters | 否 | No |
+> | iothubs / eventgridfilters | 否 | 否 |
 > | iothubs/securitysettings | 否 | 否 |
 > | operationresults | 否 | 否 |
 > | 作業 | 否 | 否 |
 > | provisioningservices | 是 | 是 |
-> | usages | 否 | No |
+> | usages | 否 | 否 |
 
 ## <a name="microsoftdevops"></a>Microsoft.DevOps
 
@@ -1425,11 +1425,11 @@ ms.locfileid: "86134661"
 > | 資源類型 | 資源群組 | 訂用帳戶 |
 > | ------------- | ----------- | ---------- |
 > | controllers | 是 | 是 |
-> | controllers / listconnectiondetails | 否 | No |
-> | 位置 | 否 | No |
-> | locations / checkcontainerhostmapping | 否 | No |
-> | locations / operationresults | 否 | No |
-> | 作業 | 否 | No |
+> | controllers / listconnectiondetails | 否 | 否 |
+> | 位置 | 否 | 否 |
+> | locations / checkcontainerhostmapping | 否 | 否 |
+> | locations / operationresults | 否 | 否 |
+> | 作業 | 否 | 否 |
 
 ## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
 
@@ -1442,8 +1442,8 @@ ms.locfileid: "86134661"
 > | labs / servicerunners | 是 | 是 |
 > | labs / virtualmachines | 是 | 否 |
 > | 位置 | 否 | 否 |
-> | locations / operations | 否 | No |
-> | 作業 | 否 | No |
+> | locations / operations | 否 | 否 |
+> | 作業 | 否 | 否 |
 > | schedules | 是 | 是 |
 
 ## <a name="microsoftdigitaltwins"></a>Microsoft.DigitalTwins
@@ -1464,9 +1464,9 @@ ms.locfileid: "86134661"
 > | databaseaccountnames | 否 | 否 |
 > | databaseaccounts | 是 | 是 |
 > | 位置 | 否 | 否 |
-> | locations / deletevirtualnetworkorsubnets | 否 | No |
+> | locations / deletevirtualnetworkorsubnets | 否 | 否 |
 > | locations / operationresults | 否 | 否 |
-> | locations / operationsstatus | 否 | No |
+> | locations / operationsstatus | 否 | 否 |
 > | operationresults | 否 | 否 |
 > | 作業 | 否 | 否 |
 
@@ -1826,23 +1826,23 @@ ms.locfileid: "86134661"
 > | clusters / attacheddatabaseconfigurations | 否 | 否 |
 > | clusters / databases | 否 | 否 |
 > | clusters / databases / dataconnections | 否 | 否 |
-> | clusters / databases / eventhubconnections | 否 | No |
+> | clusters / databases / eventhubconnections | 否 | 否 |
 > | clusters / databases / principalassignments | 否 | 否 |
 > | clusters / principalassignments | 否 | 否 |
 > | 位置 | 否 | 否 |
 > | locations / checknameavailability | 否 | 否 |
 > | locations / operationresults | 否 | 否 |
-> | 作業 | 否 | No |
+> | 作業 | 否 | 否 |
 
 ## <a name="microsoftlabservices"></a>Microsoft.LabServices
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 資源群組 | 訂用帳戶 |
 > | ------------- | ----------- | ---------- |
-> | labaccounts | 否 | No |
-> | 位置 | 否 | No |
-> | locations / operations | 否 | No |
-> | 作業 | 否 | No |
+> | labaccounts | 否 | 否 |
+> | 位置 | 否 | 否 |
+> | locations / operations | 否 | 否 |
+> | 作業 | 否 | 否 |
 > | users | 否 | 否 |
 
 ## <a name="microsoftlocationbasedservices"></a>Microsoft.LocationBasedServices
@@ -1850,7 +1850,7 @@ ms.locfileid: "86134661"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 資源群組 | 訂用帳戶 |
 > | ------------- | ----------- | ---------- |
-> | accounts | 否 | No |
+> | accounts | 否 | 否 |
 
 ## <a name="microsoftlocationservices"></a>Microsoft.LocationServices
 
@@ -1879,10 +1879,10 @@ ms.locfileid: "86134661"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 資源群組 | 訂用帳戶 |
 > | ------------- | ----------- | ---------- |
-> | commitmentplans | 否 | No |
+> | commitmentplans | 否 | 否 |
 > | 位置 | 否 | 否 |
-> | locations / operations | 否 | No |
-> | locations / operationsstatus | 否 | No |
+> | locations / operations | 否 | 否 |
+> | locations / operationsstatus | 否 | 否 |
 > | 作業 | 否 | 否 |
 > | webservices | 是 | 否 |
 > | workspaces | 是 | 是 |
@@ -2188,8 +2188,8 @@ ms.locfileid: "86134661"
 > | locations / usages | 否 | 否 |
 > | locations / validateresourceownership | 否 | 否 |
 > | locations / virtualnetworkavailableendpointservices | 否 | 否 |
-> | natgateways | 是 | 是 |
-> | networkexperimentprofiles | 否 | No |
+> | natgateways | 否 | 否 |
+> | networkexperimentprofiles | 否 | 否 |
 > | networkintentpolicies | 是 | 是 |
 > | networkinterfaces | 是 | 是 |
 > | networkprofiles | 否 | 否 |
@@ -2205,16 +2205,16 @@ ms.locfileid: "86134661"
 > | privatednszones | 是 | 是 |
 > | privatednszones / a | 否 | 否 |
 > | privatednszones / aaaa | 否 | 否 |
-> | privatednszones / all | 否 | No |
+> | privatednszones / all | 否 | 否 |
 > | privatednszones / cname | 否 | 否 |
 > | privatednszones / mx | 否 | 否 |
-> | privatednszones / ptr | 否 | No |
+> | privatednszones / ptr | 否 | 否 |
 > | privatednszones / soa | 否 | 否 |
-> | privatednszones / srv | 否 | No |
-> | privatednszones / txt | 否 | No |
+> | privatednszones / srv | 否 | 否 |
+> | privatednszones / txt | 否 | 否 |
 > | privatednszones / virtualnetworklinks | 是 | 是 |
 > | privatednszonesinternal | 否 | 否 |
-> | privateendpointredirectmaps | 否 | No |
+> | privateendpointredirectmaps | 否 | 否 |
 > | privateendpoints | 是 | 是 |
 > | privatelinkservices | 否 | 否 |
 > | publicipaddresses | 是 - 基本 SKU<br>否 - 標準 SKU | 是 - 基本 SKU<br>否 - 標準 SKU |
@@ -2524,7 +2524,7 @@ ms.locfileid: "86134661"
 > | 資源類型 | 資源群組 | 訂用帳戶 |
 > | ------------- | ----------- | ---------- |
 > | 應用程式所需 | 是 | 否 |
-> | checkmoderneligibility | 否 | No |
+> | checkmoderneligibility | 否 | 否 |
 > | checknameavailability | 否 | 否 |
 > | operationresults | 否 | 否 |
 > | 作業 | 否 | 否 |
@@ -2535,10 +2535,10 @@ ms.locfileid: "86134661"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 資源群組 | 訂用帳戶 |
 > | ------------- | ----------- | ---------- |
-> | checknameavailability | 否 | No |
-> | checkservicenameavailability | 否 | No |
-> | 作業 | 否 | No |
-> | resourcehealthmetadata | 否 | No |
+> | checknameavailability | 否 | 否 |
+> | checkservicenameavailability | 否 | 否 |
+> | 作業 | 否 | 否 |
+> | resourcehealthmetadata | 否 | 否 |
 > | searchservices | 是 | 是 |
 
 > [!IMPORTANT]
@@ -2549,39 +2549,39 @@ ms.locfileid: "86134661"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 資源群組 | 訂用帳戶 |
 > | ------------- | ----------- | ---------- |
-> | adaptivenetworkhardenings | 否 | No |
-> | advancedthreatprotectionsettings | 否 | No |
-> | alerts | 否 | No |
-> | allowedconnections | 否 | No |
-> | applicationwhitelistings | 否 | No |
-> | assessmentmetadata | 否 | No |
-> | assessments | 否 | No |
-> | autodismissalertsrules | 否 | No |
+> | adaptivenetworkhardenings | 否 | 否 |
+> | advancedthreatprotectionsettings | 否 | 否 |
+> | alerts | 否 | 否 |
+> | allowedconnections | 否 | 否 |
+> | applicationwhitelistings | 否 | 否 |
+> | assessmentmetadata | 否 | 否 |
+> | assessments | 否 | 否 |
+> | autodismissalertsrules | 否 | 否 |
 > | automations | 是 | 是 |
-> | autoprovisioningsettings | 否 | No |
-> | complianceresults | 否 | No |
-> | compliances | 否 | No |
-> | datacollectionagents | 否 | No |
-> | devicesecuritygroups | 否 | No |
-> | discoveredsecuritysolutions | 否 | No |
-> | externalsecuritysolutions | 否 | No |
-> | informationprotectionpolicies | 否 | No |
+> | autoprovisioningsettings | 否 | 否 |
+> | complianceresults | 否 | 否 |
+> | compliances | 否 | 否 |
+> | datacollectionagents | 否 | 否 |
+> | devicesecuritygroups | 否 | 否 |
+> | discoveredsecuritysolutions | 否 | 否 |
+> | externalsecuritysolutions | 否 | 否 |
+> | informationprotectionpolicies | 否 | 否 |
 > | iotsecuritysolutions | 是 | 是 |
-> | iotsecuritysolutions / analyticsmodels | 否 | No |
-> | iotsecuritysolutions / analyticsmodels / aggregatedalerts | 否 | No |
-> | iotsecuritysolutions / analyticsmodels / aggregatedrecommendations | 否 | No |
-> | jitnetworkaccesspolicies | 否 | No |
-> | 位置 | 否 | No |
-> | locations / alerts | 否 | No |
-> | locations / allowedconnections | 否 | No |
-> | locations / applicationwhitelistings | 否 | No |
-> | locations / discoveredsecuritysolutions | 否 | No |
-> | locations / externalsecuritysolutions | 否 | No |
-> | locations / jitnetworkaccesspolicies | 否 | No |
-> | locations / securitysolutions | 否 | No |
-> | locations / securitysolutionsreferencedata | 否 | No |
+> | iotsecuritysolutions / analyticsmodels | 否 | 否 |
+> | iotsecuritysolutions / analyticsmodels / aggregatedalerts | 否 | 否 |
+> | iotsecuritysolutions / analyticsmodels / aggregatedrecommendations | 否 | 否 |
+> | jitnetworkaccesspolicies | 否 | 否 |
+> | 位置 | 否 | 否 |
+> | locations / alerts | 否 | 否 |
+> | locations / allowedconnections | 否 | 否 |
+> | locations / applicationwhitelistings | 否 | 否 |
+> | locations / discoveredsecuritysolutions | 否 | 否 |
+> | locations / externalsecuritysolutions | 否 | 否 |
+> | locations / jitnetworkaccesspolicies | 否 | 否 |
+> | locations / securitysolutions | 否 | 否 |
+> | locations / securitysolutionsreferencedata | 否 | 否 |
 > | locations / tasks | 否 | 否 |
-> | locations / topologies | 否 | No |
+> | locations / topologies | 否 | 否 |
 > | 作業 | 否 | 否 |
 > | 原則 | 否 | 否 |
 > | pricings | 否 | 否 |
@@ -3183,7 +3183,7 @@ ms.locfileid: "86134661"
 > | ------------- | ----------- | ---------- |
 > | availablestacks | 否 | 否 |
 > | billingmeters | 否 | 否 |
-> | certificates | No | 是 |
+> | certificates | 否 | 是 |
 > | checknameavailability | 否 | 否 |
 > | connectiongateways | 是 | 是 |
 > | connections | 是 | 是 |

@@ -8,11 +8,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 05/20/2020
 ms.author: anfeldma
-ms.openlocfilehash: aa5e741d8578253b8b3e8e5c692873c39cec8f79
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ccc872b24c78fbdf6e55673f9d1f78efc0647895
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85412629"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537879"
 ---
 # <a name="azure-cosmos-db-java-sdk-v4-for-core-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK v4 for Core (SQL) API：版本資訊與資源
 > [!div class="op_single_selector"]
@@ -60,6 +61,17 @@ Azure Cosmos DB Java SDK v4 for Core (SQL) 會將非同步 API 與同步 API 結
 | **Azure Cosmos DB 研討會與實驗室** |[Cosmos DB 研討會首頁](https://aka.ms/cosmosworkshop)
 
 ## <a name="release-history"></a>版本歷程記錄
+
+### <a name="420-2020-07-14"></a>4.2.0 （2020-07-14）
+* 已將腳本記錄啟用的 API 新增至 `CosmosStoredProcedureRequestOptions` 。
+* 已 `DirectConnectionConfig` 將預設值更新 `idleEndpointTimeout` 為1h，並預設 `connectTimeout` 為5秒。
+#### <a name="key-bug-fixes"></a>金鑰錯誤修正
+* 已修正覆寫的問題 `GatewayConnectionConfig` `idleConnectionTimeout` `DirectConnectionConfig` `idleConnectionTimeout` 。
+* 已修正 `responseContinuationTokenLimitInKb` 中的 get 和 Set api `CosmosQueryRequestOptions` 。
+* 已修正重新建立具有相同名稱的集合時，查詢和變更摘要中的問題。
+* 已修正 top 查詢擲回發生 classcastexception 的問題。
+* 已修正 order by 查詢擲回發生 nullpointerexception 的問題。
+* 已修正在直接模式中處理已取消要求而造成呼叫 reactor 的問題 `onErrorDropped` 。 
 
 ### <a name="410-2020-06-25"></a>4.1.0 （2020-06-25）
 #### <a name="new-features"></a>新功能

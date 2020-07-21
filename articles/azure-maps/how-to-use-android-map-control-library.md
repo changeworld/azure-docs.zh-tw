@@ -9,11 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: accd0df2913abc4d82b6f14aaafd03f0f042ca91
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 241f107f0bb2163951104067cb82d6e6a967ad3e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648213"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540123"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>開始使用 Azure 地圖服務 Android SDK
 
@@ -23,7 +24,7 @@ Azure 地圖服務 Android SDK 是適用於 Android 的向量地圖庫。 本文
 
 ### <a name="create-an-azure-maps-account"></a>建立 Azure 地圖服務帳戶
 
-若要完成本文中的程序，您必須先在 S1 定價層中[建立 Azure 地圖服務帳戶](quick-demo-map-app.md#create-an-account-with-azure-maps)，並為您的帳戶[取得主要金鑰](quick-demo-map-app.md#get-the-primary-key-for-your-account)。
+若要完成本文中的程序，您必須先在 S1 定價層中[建立 Azure 地圖服務帳戶](quick-demo-map-app.md#create-an-azure-maps-account)，並為您的帳戶[取得主要金鑰](quick-demo-map-app.md#get-the-primary-key-for-your-account)。
 
 如需 Azure 地圖服務中驗證的詳細資訊，請參閱[管理 Azure 地圖服務中的驗證](./how-to-manage-authentication.md)。
 

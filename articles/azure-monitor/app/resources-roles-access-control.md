@@ -3,12 +3,12 @@ title: Azure Application Insights 中的資源、角色及存取控制 | Microso
 description: 您的組織詳細資料的擁有者、參與者及讀者。
 ms.topic: conceptual
 ms.date: 02/14/2019
-ms.openlocfilehash: ee14fee66e3aa6f4e8d999f6f98debe361387515
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 92f40961cd824925fe6ed1b67745667121a66d2f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82628224"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539970"
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Application Insights 中的資源、角色及存取控制
 
@@ -59,7 +59,7 @@ ms.locfileid: "82628224"
 
 下方的 [新增權限]**** 檢視主要是 Application Insights 資源的特定資料，如果您從較高的層級 (例如資源群組) 檢視存取控制權限，您將會看到其他並非以 Application Insights 為主的角色。
 
-若要檢視所有 Azure 角色型存取控制內建角色的資訊，請使用[官方參考內容](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)。
+若要檢視所有 Azure 角色型存取控制內建角色的資訊，請使用[官方參考內容](../../role-based-access-control/built-in-roles.md)。
 
 ![存取控制使用者角色清單的螢幕擷取畫面](./media/resources-roles-access-control/0003-user-roles.png)
 
@@ -69,23 +69,23 @@ ms.locfileid: "82628224"
 
 | 角色 | 在資源群組中 |
 | --- | --- |
-| [擁有者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) |可以變更任何項目，包括使用者存取。 |
-| [參與者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) |可以編輯任何項目，包括所有資源。 |
-| [Application Insights 元件參與者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#application-insights-component-contributor) |可以編輯 Application Insights 資源。 |
-| [讀取者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader) |可以檢視 (但無法變更) 任何項目。 |
-| [Application Insights 快照集偵錯工具](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#application-insights-snapshot-debugger) | 賦予使用者使用「Application Insights 快照集偵錯工具」功能的權限。 請注意，擁有者或參與者角色均不包含這個角色。 |
+| [擁有者](../../role-based-access-control/built-in-roles.md#owner) |可以變更任何項目，包括使用者存取。 |
+| [參與者](../../role-based-access-control/built-in-roles.md#contributor) |可以編輯任何項目，包括所有資源。 |
+| [Application Insights 元件參與者](../../role-based-access-control/built-in-roles.md#application-insights-component-contributor) |可以編輯 Application Insights 資源。 |
+| [讀取者](../../role-based-access-control/built-in-roles.md#reader) |可以檢視 (但無法變更) 任何項目。 |
+| [Application Insights 快照集偵錯工具](../../role-based-access-control/built-in-roles.md#application-insights-snapshot-debugger) | 賦予使用者使用「Application Insights 快照集偵錯工具」功能的權限。 請注意，擁有者或參與者角色均不包含這個角色。 |
 | Azure 服務部署發行管理參與者 | 透過「Azure 服務部署」進行部署的服務參與者角色。 |
-| [資料清除者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#data-purger) | 可清除個人資料的特殊角色。 如需詳細資訊，請參閱我們的[個人資料指引](https://docs.microsoft.com/azure/application-insights/app-insights-customer-data)。   |
+| [資料清除者](../../role-based-access-control/built-in-roles.md#data-purger) | 可清除個人資料的特殊角色。 如需詳細資訊，請參閱我們的[個人資料指引](../platform/personal-data-mgmt.md)。   |
 | ExpressRoute 管理員 | 可建立、刪除及管理 Express Route。|
-| [Log Analytics 參與者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-contributor) | 「Log Analytics 參與者」角色可以讀取所有監視資料和編輯監視設定。 編輯監視設定包括將 VM 延伸模組新增至 VM、讀取儲存體帳戶金鑰以便能夠設定從「Azure 儲存體」收集記錄、建立及設定「自動化」帳戶、新增解決方案，以及設定所有 Azure 資源上的 Azure 診斷。  |
-| [Log Analytics 讀者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-reader) | 「Log Analytics 讀者」可以檢視和搜尋所有監視資料，以及檢視監視設定，包括檢視所有 Azure 資源上的 Azure 診斷設定。 |
+| [Log Analytics 參與者](../../role-based-access-control/built-in-roles.md#log-analytics-contributor) | 「Log Analytics 參與者」角色可以讀取所有監視資料和編輯監視設定。 編輯監視設定包括將 VM 延伸模組新增至 VM、讀取儲存體帳戶金鑰以便能夠設定從「Azure 儲存體」收集記錄、建立及設定「自動化」帳戶、新增解決方案，以及設定所有 Azure 資源上的 Azure 診斷。  |
+| [Log Analytics 讀者](../../role-based-access-control/built-in-roles.md#log-analytics-reader) | 「Log Analytics 讀者」可以檢視和搜尋所有監視資料，以及檢視監視設定，包括檢視所有 Azure 資源上的 Azure 診斷設定。 |
 | masterreader | 可讓使用者檢視所有項目，但是無法進行變更。 |
-| [監視參與者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) | 可讀取所有監視資料及更新監視設定。|
-| [監視計量發行者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-metrics-publisher) | 針對 Azure 資源啟用發佈計量。 |
-| [監視讀取器](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) | 可讀取所有監視資料。 |
+| [監視參與者](../../role-based-access-control/built-in-roles.md#monitoring-contributor) | 可讀取所有監視資料及更新監視設定。|
+| [監視計量發行者](../../role-based-access-control/built-in-roles.md#monitoring-metrics-publisher) | 針對 Azure 資源啟用發佈計量。 |
+| [監視讀取器](../../role-based-access-control/built-in-roles.md#monitoring-reader) | 可讀取所有監視資料。 |
 | 資源原則參與者 (預覽) | 從 EA 回填的使用者，有權建立/修改資源原則、建立支援票證及讀取資源/階層。  |
-| [使用者存取系統管理員](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator) | 可讓使用者管理其他使用者對 Azure 資源的存取。|
-| [網站參與者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#website-contributor) | 可讓您管理網站 (非 Web 方案)，但無法存取它們。|
+| [使用者存取系統管理員](../../role-based-access-control/built-in-roles.md#user-access-administrator) | 可讓使用者管理其他使用者對 Azure 資源的存取。|
+| [網站參與者](../../role-based-access-control/built-in-roles.md#website-contributor) | 可讓您管理網站 (非 Web 方案)，但無法存取它們。|
 
 「編輯」包括建立、刪除及更新：
 

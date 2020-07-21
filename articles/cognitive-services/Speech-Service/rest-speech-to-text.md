@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: yinhew
-ms.openlocfilehash: c4eb1419859d4a87e53371a266dcef52e632b6c8
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: e7bbedf253d6a64609179a8710fc9accd1f03818
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84636082"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537964"
 ---
 # <a name="speech-to-text-rest-api"></a>語音轉換文字 REST API
 
@@ -60,7 +60,7 @@ REST 要求的查詢字串中可能包括這些參數。
 
 下表列出了語音轉文字要求的必要標頭和選用標頭。
 
-|Header| 描述 | 必要/選用 |
+|頁首| 描述 | 必要/選用 |
 |------|-------------|---------------------|
 | `Ocp-Apim-Subscription-Key` | 您的語音服務訂用帳戶金鑰。 | 必須有此標頭或 `Authorization`。 |
 | `Authorization` | 前面加入 `Bearer` 這個字的授權權杖。 如需詳細資訊，請參閱[驗證](#authentication)。 | 必須有此標頭或 `Ocp-Apim-Subscription-Key`。 |
@@ -223,10 +223,10 @@ using (var fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 | `ITN` | 已辨識文字的反向文字正規化 (「標準」) 形式，包含電話號碼、數字、縮寫 ("doctor smith" 縮短為 "dr smith")，以及其他已套件的轉換。 |
 | `MaskedITN` | 如果要求，已套用不雅內容遮罩的 ITN 形式。 |
 | `Display` | 已辨識文字的顯示形式，已新增標點符號和大寫。 此參數與當格式設定為 `simple` 時，所提供的 `DisplayText` 相同。 |
-| `AccuracyScore` | 表示指定語音之發音精確度的分數。 |
-| `FluencyScore` | 表示指定之語音順暢的分數。 |
-| `CompletenessScore` | 表示指定語音之完整性的分數，其方式是計算發音與整個輸入的比例。 |
-| `PronScore` | 表示指定語音之發音品質的整體分數。 這是從 `AccuracyScore` 、 `FluencyScore` 和加權計算而來 `CompletenessScore` 。 |
+| `AccuracyScore` | 語音的發音精確度。 [精確度] 表示音素與原生說話者的發音相符的程度。 Word 和全文檢索層級精確度分數是從音素層級精確度分數匯總而來。 |
+| `FluencyScore` | 指定語音的順暢。 順暢指出語音與原生說話者在單字之間使用無訊息中斷的程度。 |
+| `CompletenessScore` | 語音的完整性，是藉由計算發音為參考文字輸入的比例來判斷。 |
+| `PronScore` | 表示指定語音之發音品質的整體分數。 這會從 `AccuracyScore` `FluencyScore` 和加權匯總 `CompletenessScore` 。 |
 | `ErrorType` | 這個值會指出相較于，是否省略、插入或發音不正確的字 `ReferenceText` 。 可能的值為 `None` （表示此單字上沒有錯誤） `Omission` 、 `Insertion` 和 `Mispronunciation` 。 |
 
 ## <a name="sample-responses"></a>回應範例

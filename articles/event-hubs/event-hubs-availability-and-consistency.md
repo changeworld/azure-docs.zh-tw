@@ -3,16 +3,16 @@ title: 可用性和一致性 - Azure 事件中樞 | Microsoft Docs
 description: 如何使用分割區，以便透過 Azure 事件中樞提供最大數量的可用性和一致性。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 497a6e7430c4e6f8e29f903294ca94a4cb23012b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 45ca5cc5790824d6c67a47a23691c6b0cae0b9f8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85315772"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537202"
 ---
 # <a name="availability-and-consistency-in-event-hubs"></a>事件中樞的可用性和一致性
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 「Azure 事件中樞」會使用[資料分割模型](event-hubs-scalability.md#partitions)，來提升單一事件中樞內的可用性與平行處理。 例如，如果事件中樞有四個分割區，而其中一個分割區在負載平衡作業中從一部伺服器移到另一部伺服器，則您仍可從其他三個分割區進行傳送及接收。 此外，擁有更多分割區可讓您使用更多並行讀取器來處理資料，進而改善您的彙總輸送量。 了解分散式系統中分割和排序的含意是解決方案設計的重要層面。
 
 若要協助說明訂購和可用性之間的取捨，請參閱[CAP 定理](https://en.wikipedia.org/wiki/CAP_theorem)，也稱為 Brewer 的定理。 這個理論討論一致性、可用性及分割區容錯之間的選擇。 它指出對於由網路分割的系統，一定會在一致性和可用性之間有所取捨。
@@ -141,5 +141,5 @@ await producer.SendAsync(data);
 ## <a name="next-steps"></a>後續步驟
 您可以造訪下列連結以深入了解事件中樞︰
 
-* [事件中樞服務概觀](event-hubs-what-is-event-hubs.md)
+* [事件中樞服務概觀](./event-hubs-about.md)
 * [建立事件中樞](event-hubs-create.md)

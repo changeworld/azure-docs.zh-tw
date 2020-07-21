@@ -4,12 +4,12 @@ description: Azure Blockchain Workbench Preview 中的智慧合約整合模式�
 ms.date: 11/20/2019
 ms.topic: conceptual
 ms.reviewer: mmercuri
-ms.openlocfilehash: 716255f5e71ec19b5b9c5a0a32740abc39f1a40b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dae63e16356e825d3be31380df1648749e59d8bd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85254628"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538309"
 ---
 # <a name="smart-contract-integration-patterns"></a>智慧合約整合模式
 
@@ -134,7 +134,7 @@ Azure Blockchain Workbench REST API 會傳送已驗證的要求，以查詢對�
 -   狀態的變更以事件的形式對下游取用者呈現。
 -   下游取用者接收事件，並觸發外部程式碼執行。
 
-![將控制權轉換至外部程序](./media/integration-patterns/transition-external-process.png)
+![此圖顯示合約內的狀態變更，而導致事件進入分散式總帳。 Blockchain Workbench 接著會挑選事件併發布它。](./media/integration-patterns/transition-external-process.png)
 
 #### <a name="return-of-control-from-the-smart-contract"></a>從智慧合約交回控制權
 
@@ -142,7 +142,7 @@ Azure Blockchain Workbench REST API 會傳送已驗證的要求，以查詢對�
 
 ##### <a name="direct-delivery-of-an-azure-blockchain-workbench-in-the-expected-format"></a>Azure Blockchain Workbench 以預期的格式進行直接傳遞
 
-![](./media/integration-patterns/direct-delivery.png)
+![此圖顯示透過服務匯流排 Blockchain Workbench 所挑選之外部系統的 P I 訊息。 Blockchain Workbench 接著代表代理程式，將訊息當做交易傳送至分散式總帳。 它會傳遞給合約，而這會導致狀態變更。](./media/integration-patterns/direct-delivery.png)
 
 在此模型中，與合約的通訊和後續的狀態變更將會在先前程序之後發生，其間：
 

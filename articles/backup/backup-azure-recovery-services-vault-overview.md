@@ -3,11 +3,12 @@ title: 復原服務保存庫概觀
 description: 復原服務保存庫和 Azure 備份保存庫之間的概觀與比較。
 ms.topic: conceptual
 ms.date: 08/10/2018
-ms.openlocfilehash: 798f49629ad1012e8cc9ac3ed43f5beddd6eefeb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 11a218badfab141c41430c3f48a5e930bfa1af8b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84248901"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539035"
 ---
 # <a name="recovery-services-vaults-overview"></a>復原服務保存庫概觀
 
@@ -35,9 +36,9 @@ ms.locfileid: "84248901"
 
 復原服務保存庫是一個實體，可儲存一段時間以來建立的備份和復原點。 復原服務保存庫也包含與受保護虛擬機器相關聯的備份原則。
 
-Azure 備份會自動處理保存庫的儲存體。 瞭解如何[變更存放裝置設定](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-storage-redundancy)。
+Azure 備份會自動處理保存庫的儲存體。 瞭解如何[變更存放裝置設定](./backup-create-rs-vault.md#set-storage-redundancy)。
 
-若要深入瞭解儲存體冗余，請參閱關於[異地](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs)和[本機](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs)冗余的文章。
+若要深入瞭解儲存體冗余，請參閱關於[異地](../storage/common/storage-redundancy.md)和[本機](../storage/common/storage-redundancy.md)冗余的文章。
 
 ## <a name="managing-your-recovery-services-vaults-in-the-portal"></a>在入口網站中管理復原服務保存庫
 
@@ -61,7 +62,7 @@ Azure 備份會自動處理保存庫的儲存體。 瞭解如何[變更存放裝
 ### <a name="back-up-data"></a>備份資料
 
 - [備份 Azure VM](backup-azure-vms-first-look-arm.md)
-- [備份 Windows Server 或 Windows 工作站](backup-try-azure-backup-in-10-mins.md)
+- [備份 Windows Server 或 Windows 工作站](./backup-windows-with-mars-agent.md)
 - [將 DPM 工作負載備份到 Azure](backup-azure-dpm-introduction.md)
 - [準備使用 Azure 備份伺服器來備份工作負載](backup-azure-microsoft-azure-backup.md)
 
@@ -81,9 +82,9 @@ Azure 備份會自動處理保存庫的儲存體。 瞭解如何[變更存放裝
 
 ## <a name="azure-advisor"></a>Azure Advisor
 
-[Azure Advisor](https://docs.microsoft.com/azure/advisor/)是個人化的雲端顧問，可協助優化 Azure 的使用。 它會分析您的 Azure 使用量並提供及時建議，以協助優化和保護您的部署。 它提供四種類別的建議：高可用性、安全性、效能和成本。
+[Azure Advisor](../advisor/index.yml)是個人化的雲端顧問，可協助優化 Azure 的使用。 它會分析您的 Azure 使用量並提供及時建議，以協助優化和保護您的部署。 它提供四種類別的建議：高可用性、安全性、效能和成本。
 
-Azure Advisor 針對未備份的 Vm 提供每小時的[建議](https://docs.microsoft.com/azure/advisor/advisor-high-availability-recommendations#protect-your-virtual-machine-data-from-accidental-deletion)，因此您永遠不會錯過備份重要的 vm。 您也可以藉由 snoozing 來控制建議。  您可以按一下 [建議]，並藉由指定保存庫（儲存備份的位置）和備份原則（備份複本的排程）來啟用線上 Vm 上的備份。
+Azure Advisor 針對未備份的 Vm 提供每小時的[建議](../advisor/advisor-high-availability-recommendations.md#protect-your-virtual-machine-data-from-accidental-deletion)，因此您永遠不會錯過備份重要的 vm。 您也可以藉由 snoozing 來控制建議。  您可以按一下 [建議]，並藉由指定保存庫（儲存備份的位置）和備份原則（備份複本的排程）來啟用線上 Vm 上的備份。
 
 ![Azure Advisor](./media/backup-azure-recovery-services-vault-overview/azure-advisor.png)
 

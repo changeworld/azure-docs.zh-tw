@@ -5,11 +5,12 @@ ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 3ee84c0c868f47dca1aee0401865563a326df3db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 55af4bddb5a963a831c1438400a7a243cca20573
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82864397"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538814"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>針對 Azure 備份失敗進行疑難排解：與代理程式或延伸模組相關的問題
 
@@ -27,7 +28,7 @@ Azure VM 代理程式可能已停止、過期、處於不一致的狀態，或�
 - **開啟 Azure 入口網站 > vm > 設定 > [內容] 窗格**，> 確定 VM**狀態**為 [執行中] **，且****代理程式狀態**為 [**就緒**]。 如果 VM 代理程式已停止或處於不一致的狀態，請重新開機代理程式<br>
   - 針對 Windows Vm，請遵循下列[步驟](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)來重新開機來賓代理程式。<br>
   - 針對 Linux Vm，請遵循下列[步驟](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)來重新開機來賓代理程式。
-- **開啟 Azure 入口網站 > VM > 設定 > 延伸**模組 > 確保所有延伸模組都處於布建**成功**狀態。 如果沒有，請遵循下列[步驟](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#usererrorvmprovisioningstatefailed---the-vm-is-in-failed-provisioning-state)來解決問題。
+- **開啟 Azure 入口網站 > VM > 設定 > 延伸**模組 > 確保所有延伸模組都處於布建**成功**狀態。 如果沒有，請遵循下列[步驟](#usererrorvmprovisioningstatefailed---the-vm-is-in-failed-provisioning-state)來解決問題。
 
 ## <a name="guestagentsnapshottaskstatuserror---could-not-communicate-with-the-vm-agent-for-snapshot-status"></a>GuestAgentSnapshotTaskStatusError - 無法與 VM 代理程式通訊來取得快照集狀態
 
@@ -51,7 +52,7 @@ Azure VM 代理程式可能已停止、過期、處於不一致的狀態，或�
 **錯誤碼**： UserErrorVmProvisioningStateFailed<br>
 **錯誤訊息**： VM 處於失敗的布建狀態<br>
 
-當其中一個延伸模組失敗使 VM 進入「布建失敗」狀態時，就會發生此錯誤。<br>**開啟 Azure 入口網站 > VM > 設定 > >** 延伸模組的狀態，並檢查所有延伸模組是否處於布建**成功**狀態。 若要深入瞭解，請參閱布建[狀態](https://docs.microsoft.com/azure/virtual-machines/windows/states-lifecycle#provisioning-states)。
+當其中一個延伸模組失敗使 VM 進入「布建失敗」狀態時，就會發生此錯誤。<br>**開啟 Azure 入口網站 > VM > 設定 > >** 延伸模組的狀態，並檢查所有延伸模組是否處於布建**成功**狀態。 若要深入瞭解，請參閱布建[狀態](../virtual-machines/windows/states-lifecycle.md#provisioning-states)。
 
 - 如果 VMSnapshot 延伸模組處於失敗狀態，請以滑鼠右鍵按一下失敗的延伸模組，並將它移除。 觸發隨選備份。 此動作會重新安裝延伸模組，並執行備份作業。  <br>
 - 如果任何其他延伸模組處於失敗狀態，則可能會干擾備份。 請確定已解決這些延伸模組問題，然後重試備份操作。
@@ -79,7 +80,7 @@ Azure VM 代理程式可能已停止、過期、處於不一致的狀態，或�
 **錯誤碼**：UserErrorKeyvaultPermissionsNotConfigured <br>
 **錯誤訊息**：備份沒有足夠的金鑰保存庫權限可以進行加密 VM 的備份。 <br>
 
-若要在加密的 Vm 上成功執行備份作業，它必須具有存取金鑰保存庫的許可權。 您可以透過[Azure 入口網站](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption)或透過[PowerShell](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#enable-protection)來設定許可權。
+若要在加密的 Vm 上成功執行備份作業，它必須具有存取金鑰保存庫的許可權。 您可以透過[Azure 入口網站](./backup-azure-vms-encryption.md)或透過[PowerShell](./backup-azure-vms-automation.md#enable-protection)來設定許可權。
 
 ## <a name="extensionsnapshotfailednonetwork---snapshot-operation-failed-due-to-no-network-connectivity-on-the-virtual-machine"></a><a name="ExtensionSnapshotFailedNoNetwork-snapshot-operation-failed-due-to-no-network-connectivity-on-the-virtual-machine"></a>ExtensionSnapshotFailedNoNetwork - 快照集作業因虛擬機器沒有網路連線而失敗
 
@@ -129,9 +130,9 @@ Azure VM 代理程式可能已停止、過期、處於不一致的狀態，或�
 2. 在復原服務保存庫清單中，選取其中已設定備份的保存庫。
 3. 在 [保存庫儀表板] 功能表中，按一下 [備份作業]**** 以顯示所有備份作業。
    - 如果有正在進行中的備份作業，請等到該作業完成或取消備份作業。
-     - 若要取消備份作業，請以滑鼠右鍵按一下備份作業，然後按一下 [**取消**] 或使用[PowerShell](https://docs.microsoft.com/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob?view=azps-1.4.0)。
+     - 若要取消備份作業，請以滑鼠右鍵按一下備份作業，然後按一下 [**取消**] 或使用[PowerShell](/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob)。
    - 如果您已在不同的保存庫中重新設定備份，請確定舊的保存庫中沒有正在執行的備份作業。 如果存在，則取消備份作業。
-     - 若要取消備份作業，請以滑鼠右鍵按一下備份作業，然後按一下 [**取消**] 或使用[PowerShell](https://docs.microsoft.com/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob?view=azps-1.4.0)
+     - 若要取消備份作業，請以滑鼠右鍵按一下備份作業，然後按一下 [**取消**] 或使用[PowerShell](/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob)
 4. 請重試備份作業。
 
 如果排定的備份作業花費較長的時間，與下一個備份設定發生衝突，則請參閱[最佳作法](backup-azure-vms-introduction.md#best-practices)、[備份效能](backup-azure-vms-introduction.md#backup-performance)和[還原考慮](backup-azure-vms-introduction.md#backup-and-restore-considerations)。
@@ -166,7 +167,7 @@ VM 代理程式可能已損毀，或服務可能已停止。 重新安裝 VM 代
 6. 執行隨選備份：
    - 在入口網站中，選取 [立即備份]****。
 
-此外，確認 VM 中[已安裝 Microsoft .NET 4.5](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed)。 VM 代理程式需有 .NET 4.5 才能與服務通訊。
+此外，確認 VM 中[已安裝 Microsoft .NET 4.5](/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed)。 VM 代理程式需有 .NET 4.5 才能與服務通訊。
 
 ### <a name="the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms"></a>VM 中安裝的代理程式已過時 (適用於 Linux VM)
 
@@ -174,7 +175,7 @@ VM 代理程式可能已損毀，或服務可能已停止。 重新安裝 VM 代
 
 針對 Linux VM，與代理程式或擴充功能相關的多數失敗是由於會影響過時 VM 代理程式的問題所造成。 若要對此問題進行疑難排解，請遵循下列一般方針：
 
-1. 請遵循[更新 Linux VM 代理程式](../virtual-machines/linux/update-agent.md)的指示。
+1. 請遵循[更新 Linux VM 代理程式](../virtual-machines/extensions/update-linux-agent.md)的指示。
 
    > [!NOTE]
    > 我們強烈建議** 您只透過散發套件存放庫更新代理程式。 我們不建議直接從 GitHub 下載代理程式程式碼，並加以更新。 如果最新的代理程式不適用於您的散發套件，請連絡散發套件支援以取得如何進行安裝的指示。 若要檢查最新的代理程式，請移至 GitHub 儲存機制中的 [Microsoft Azure Linux 代理程式 (英文)](https://github.com/Azure/WALinuxAgent/releases) 頁面。
@@ -206,7 +207,7 @@ VM 代理程式可能已損毀，或服務可能已停止。 重新安裝 VM 代
 
 ### <a name="application-control-solution-is-blocking-iaasbcdrextensionexe"></a>應用程式控制解決方案正在封鎖 IaaSBcdrExtension.exe
 
-如果您執行的是[AppLocker](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-application-control/applocker/what-is-applocker) （或另一個應用程式控制方案），而規則是發行者或路徑型，則可能會封鎖**IaaSBcdrExtension.exe**可執行檔。
+如果您執行的是[AppLocker](/windows/security/threat-protection/windows-defender-application-control/applocker/what-is-applocker) （或另一個應用程式控制方案），而規則是發行者或路徑型，則可能會封鎖**IaaSBcdrExtension.exe**可執行檔。
 
 #### <a name="solution"></a>解決方案
 
