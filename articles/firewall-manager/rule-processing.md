@@ -1,5 +1,5 @@
 ---
-title: Azure 防火牆規則處理邏輯
+title: Azure 防火牆管理員規則處理邏輯
 description: 了解 Azure 防火牆規則處理邏輯
 services: firewall-manager
 author: vhorne
@@ -7,12 +7,12 @@ ms.service: firewall-manager
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 70026173d1cb932d30a59ea2b876ef22217a81bc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9184bf7baa85420e067edb4c0aafccb7e6711225
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85563668"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512175"
 ---
 # <a name="azure-firewall-rule-processing-logic"></a>Azure 防火牆規則處理邏輯
 
@@ -28,9 +28,9 @@ Azure 防火牆具有 NAT 規則、網路規則和應用程式規則。 規則�
 
 ## <a name="inherited-rules"></a>繼承的規則
 
-繼承自父原則的網路規則集合，一律優先于定義為新原則之一部分的網路規則集合。 相同的邏輯也適用于應用程式規則集合。 不過，不論繼承為何，網路規則集合一律會在應用程式規則集合之前處理。
+繼承自父原則的網路規則集合，一律優先于定義為新原則之一部分的網路規則集合。 相同的邏輯也適用於應用程式規則集合。 然而，不管繼承，網路規則集合一律比應用程式規則集合優先處理。
 
-根據預設，您的原則會繼承其父原則威脅情報模式。 您可以在 [原則設定] 頁面中，將您的威脅情報模式設定為不同的值來覆寫此項。 您只能使用更嚴格的值來覆寫。 例如，如果您將 [父系原則] 設定為 [*僅警示*]，您可以將此本機原則設定為 [*警示] 和 [拒絕*]，但無法將它關閉。
+根據預設，您的原則會繼承其父原則威脅情報模式。 您可以在 [原則設定] 頁面中，將您的威脅情報模式設定為不同的值來覆寫此項。 您只能使用更嚴格的值覆寫。 例如，如果您將 [父系原則] 設定為 [*僅警示*]，您可以將此本機原則設定為 [*警示] 和 [拒絕*]，但無法將它關閉。
 
 ## <a name="next-steps"></a>後續步驟
 

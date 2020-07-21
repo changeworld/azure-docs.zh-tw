@@ -3,11 +3,13 @@ title: 在 Azure Vm 中 SQL Server 備份的 Azure 備份支援矩陣
 description: 提供使用 Azure 備份服務備份 Azure Vm 中的 SQL Server 時的支援設定和限制摘要。
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: f9594b9157f84a0536ffd4b62f792fd86fb1c243
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: references_regions
+ms.openlocfilehash: 4d197f8b3c1ed74ef45c1f7942ead52ccef0c14a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84234255"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513178"
 ---
 # <a name="support-matrix-for-sql-server-backup-in-azure-vms"></a>Azure Vm 中 SQL Server 備份的支援矩陣
 
@@ -26,7 +28,7 @@ ms.locfileid: "84234255"
 ## <a name="feature-consideration-and-limitations"></a>功能考量和限制
 
 * 您可以透過 Azure 入口網站或 **PowerShell** 來設定 SQL Server 備份。 我們不支援 CLI。
-* 有兩種[部署](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model)支援此解決方案 - Azure Resource Manager VM 和傳統 VM。
+* 有兩種[部署](../azure-resource-manager/management/deployment-models.md)支援此解決方案 - Azure Resource Manager VM 和傳統 VM。
 * 執行 SQL Server 的 VM 需要有網際網路連線能力，才能存取 Azure 公用 IP 位址。
 * 不支援 SQL Server**容錯移轉叢集實例（FCI）** 。
 * 不支援鏡像資料庫和資料庫快照集的備份和還原作業。
@@ -57,7 +59,7 @@ ms.locfileid: "84234255"
 --- | ---
 完整 | 主要
 差異 | 主要
-記錄檔 |  主要
+Log |  主要
 只複製完整 |  主要
 
 #### <a name="backup-preference-secondary-only"></a>備份喜好設定：僅次要
@@ -66,7 +68,7 @@ ms.locfileid: "84234255"
 --- | ---
 完整 | 主要
 差異 | 主要
-記錄檔 |  次要
+Log |  次要
 只複製完整 |  次要
 
 #### <a name="backup-preference-secondary"></a>備份喜好設定：次要
@@ -75,7 +77,7 @@ ms.locfileid: "84234255"
 --- | ---
 完整 | 主要
 差異 | 主要
-記錄檔 |  次要
+Log |  次要
 只複製完整 |  次要
 
 #### <a name="no-backup-preference"></a>沒有備份喜好設定
@@ -84,7 +86,7 @@ ms.locfileid: "84234255"
 --- | ---
 完整 | 主要
 差異 | 主要
-記錄檔 |  次要
+Log |  次要
 只複製完整 |  次要
 
 ## <a name="next-steps"></a>後續步驟

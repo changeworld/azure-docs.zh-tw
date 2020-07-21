@@ -3,14 +3,13 @@ title: Azure 訂用帳戶限制與配額
 description: 提供通用的 Azure 訂用帳戶和服務限制、配額和條件約束的清單。 本文包含如何增加限制和最大值的資訊。
 ms.topic: conceptual
 author: davidsmatlak
-ms.author: v-dasmat
 ms.date: 06/04/2020
-ms.openlocfilehash: 594e34a07cf2c370546e59ebe59df1de88eb2aa4
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: ffe0703fbbea75b221dfc6fd16f334dcf58e8ab3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86080970"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515841"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 訂用帳戶和服務限制、配額與限制
 
@@ -377,6 +376,10 @@ ms.locfileid: "86080970"
 [!INCLUDE [azure-storage-limits-vm-disks](../../../includes/azure-storage-limits-vm-disks.md)]
 
 如需詳細資訊，請參閱[虛擬機器大小](../../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+
+#### <a name="disk-encryption-sets"></a>磁片加密集
+
+每個訂用帳戶的每個區域都有50個磁片加密集的限制。 如需詳細資訊，請參閱[Linux](/azure/virtual-machines/linux/disk-encryption#restrictions)或[Windows](/azure/virtual-machines/windows/disk-encryption#restrictions)虛擬機器的加密檔。 如果您需要增加配額，請聯絡 Azure 支援。
 
 ### <a name="managed-virtual-machine-disks"></a>受控虛擬機器磁碟
 

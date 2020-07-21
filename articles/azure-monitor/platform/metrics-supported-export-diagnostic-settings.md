@@ -5,19 +5,20 @@ services: azure-monitor
 ms.topic: reference
 ms.date: 03/30/2020
 ms.subservice: metrics
-ms.openlocfilehash: 91fc2c4525ee622064520b0098087d54158bbe9e
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: f0a8fd186862cf95ebdbb2d5bd92d8ff860b3ba1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680683"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515473"
 ---
 # <a name="azure-monitor-platform-metrics-exportable-via-diagnostic-settings"></a>可透過診斷設定匯出的 Azure 監視器平台計量
 
-Azure 監視器依預設會提供未設定的[平台計量](data-platform-metrics.md)。 其中提供數種與平台計量進行互動的方式，包括在入口網站中製作計量圖表、透過 REST API 存取計量，或使用 PowerShell 或 CLI 查詢計量。 請參閱[支援的計量](metrics-supported.md)，以了解目前可供 Azure 監視器的合併計量管線使用的所有平台計量。 若要查詢及存取這些計量，請使用 [2018-01-01 api-version](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)。 其他計量可在入口網站中或使用舊版 API 提供。
+Azure 監視器依預設會提供未設定的[平台計量](data-platform-metrics.md)。 其中提供數種與平台計量進行互動的方式，包括在入口網站中製作計量圖表、透過 REST API 存取計量，或使用 PowerShell 或 CLI 查詢計量。 請參閱[支援的計量](metrics-supported.md)，以了解目前可供 Azure 監視器的合併計量管線使用的所有平台計量。 若要查詢及存取這些計量，請使用 [2018-01-01 api-version](/rest/api/monitor/metricdefinitions)。 其他計量可在入口網站中或使用舊版 API 提供。
 
 您可以透過兩種方式之一，將平台計量從 Azure 監視器管線匯出至其他位置。
 1. 使用[診斷設定](diagnostic-settings.md)傳送至 Log Analytics、事件中樞或 Azure 儲存體。
-2. 使用[計量 REST API](https://docs.microsoft.com/rest/api/monitor/metrics/list)
+2. 使用[計量 REST API](/rest/api/monitor/metrics/list)
 
 由於 Azure 監視器後端的複雜性，並非所有計量都可以使用診斷設定匯出。 下表列出哪些計量可使用診斷設定匯出，哪些無法以此方式匯出。
 

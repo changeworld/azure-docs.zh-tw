@@ -3,12 +3,12 @@ title: Azure 事件中樞-例外狀況
 description: 本文提供 Azure 事件中樞傳訊例外狀況和建議的動作清單。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: ce9e1bcd1f9e4d196d03d55374af8b1c86651851
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a93daa88c468a22838a6f9012f0c4622447f5555
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85314618"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512362"
 ---
 # <a name="event-hubs-messaging-exceptions---net"></a>事件中樞訊息例外狀況-.NET
 本節列出 .NET Framework Api 所產生的 .NET 例外狀況。 
@@ -19,10 +19,10 @@ ms.locfileid: "85314618"
 
  - 使用者程式碼撰寫錯誤： 
  
-   - [ArgumentException](https://msdn.microsoft.com/library/system.argumentexception.aspx)
-   - [InvalidOperationException](https://msdn.microsoft.com/library/system.invalidoperationexception.aspx)
-   - [System.OperationCanceledException](https://msdn.microsoft.com/library/system.operationcanceledexception.aspx)
-   - [SerializationException。](https://msdn.microsoft.com/library/system.runtime.serialization.serializationexception.aspx)
+   - [ArgumentException](/dotnet/api/system.argumentexception?view=netcore-3.1)
+   - [InvalidOperationException](/dotnet/api/system.invalidoperationexception?view=netcore-3.1)
+   - [System.OperationCanceledException](/dotnet/api/system.operationcanceledexception?view=netcore-3.1)
+   - [SerializationException。](/dotnet/api/system.runtime.serialization.serializationexception?view=netcore-3.1)
    
    一般動作：請先嘗試修正程式碼，再繼續進行。
  
@@ -30,7 +30,7 @@ ms.locfileid: "85314618"
  
    - [Microsoft.ServiceBus.Messaging.MessagingEntityNotFoundException](/dotnet/api/microsoft.servicebus.messaging.messagingentitynotfoundexception)
    - [Microsoft.Azure.EventHubs.MessagingEntityNotFoundException](/dotnet/api/microsoft.azure.eventhubs.messagingentitynotfoundexception)
-   - [System.UnauthorizedAccessException](https://msdn.microsoft.com/library/system.unauthorizedaccessexception.aspx)
+   - [System.UnauthorizedAccessException](/dotnet/api/system.unauthorizedaccessexception?view=netcore-3.1)
    
    一般動作：請檢查您的設定，並視需要進行變更。
    
@@ -45,7 +45,7 @@ ms.locfileid: "85314618"
  
  - 其他例外狀況： 
  
-   - [System.transactions.transactionexception](https://msdn.microsoft.com/library/system.transactions.transactionexception.aspx)
+   - [System.transactions.transactionexception](/dotnet/api/system.transactions.transactionexception?view=netcore-3.1)
    - [System.TimeoutException](#timeoutexception)
    - [Microsoft.servicebus.messaging.messagelocklostexception。](/dotnet/api/microsoft.servicebus.messaging.messagelocklostexception)
    - [、Microsoft.servicebus.messaging.sessionlocklostexception。](/dotnet/api/microsoft.servicebus.messaging.sessionlocklostexception)
@@ -57,11 +57,11 @@ ms.locfileid: "85314618"
 
 | 例外狀況類型 | 描述/原因/範例 | 建議的動作 | 自動/立即重試的注意事項 |
 | -------------- | -------------------------- | ---------------- | --------------------------------- |
-| [TimeoutException](https://msdn.microsoft.com/library/system.timeoutexception.aspx) |伺服器不會在指定的時間內回應要求的作業，這是由[OperationTimeout](/dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings)所控制。 伺服器可能已完成要求的作業。 發生此例外狀況的原因可能是網路或其他基礎結構延遲。 |檢查系統狀態的一致性，並視需要重試。<br /> 請參閱 [TimeoutException](#timeoutexception)。 | 在某些情況下，重試也許有幫助；將重試邏輯新增至程式碼。 |
-| [InvalidOperationException](https://msdn.microsoft.com/library/system.invalidoperationexception.aspx) |伺服器或服務內不允許要求的使用者作業。 如需詳細資訊，請參閱例外狀況訊息。 例如，如果是在 [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) 模式收到訊息， [Complete](/dotnet/api/microsoft.servicebus.messaging.receivemode) 將會產生這個例外狀況。 | 檢查程式碼和文件。 確定要求的作業無效。 | [重試] 將無法提供協助。 |
-| [OperationCanceledException](https://msdn.microsoft.com/library/system.operationcanceledexception.aspx) | 嘗試在已關閉、中止或處置的物件上叫用作業。 極少數的情況下，環境交易是已處置狀態。 | 檢查程式碼，並確定它不會在已處置的物件上叫用作業。 | [重試] 將無法提供協助。 |
-| [UnauthorizedAccessException](https://msdn.microsoft.com/library/system.unauthorizedaccessexception.aspx) | [TokenProvider](/dotnet/api/microsoft.servicebus.tokenprovider)物件無法取得權杖、權杖無效，或權杖未包含執行作業所需的宣告。 | 確定權杖提供者是以正確的值建立。 檢查存取控制服務的設定。 | 在某些情況下，重試也許有幫助；將重試邏輯新增至程式碼。 |
-| [ArgumentException](https://msdn.microsoft.com/library/system.argumentexception.aspx)<br /> [ArgumentNullException](https://msdn.microsoft.com/library/system.argumentnullexception.aspx)<br />[ArgumentOutOfRangeException](https://msdn.microsoft.com/library/system.argumentoutofrangeexception.aspx) | 提供給方法的一個或多個引數無效。 提供給 [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) 或 [Create](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) 的 URI 包含路徑區段。 提供給 [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) 或 [Create](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) 的 URI 配置無效。 屬性值大於 32 KB。 | 檢查呼叫程式碼，並確定引數正確無誤。 | 重試將無助益。 |
+| [TimeoutException](/dotnet/api/system.timeoutexception?view=netcore-3.1) |伺服器不會在指定的時間內回應要求的作業，這是由[OperationTimeout](/dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings)所控制。 伺服器可能已完成要求的作業。 發生此例外狀況的原因可能是網路或其他基礎結構延遲。 |檢查系統狀態的一致性，並視需要重試。<br /> 請參閱 [TimeoutException](#timeoutexception)。 | 在某些情況下，重試也許有幫助；將重試邏輯新增至程式碼。 |
+| [InvalidOperationException](/dotnet/api/system.invalidoperationexception?view=netcore-3.1) |伺服器或服務內不允許要求的使用者作業。 如需詳細資訊，請參閱例外狀況訊息。 例如，如果是在 [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) 模式收到訊息， [Complete](/dotnet/api/microsoft.servicebus.messaging.receivemode) 將會產生這個例外狀況。 | 檢查程式碼和文件。 確定要求的作業無效。 | [重試] 將無法提供協助。 |
+| [OperationCanceledException](/dotnet/api/system.operationcanceledexception?view=netcore-3.1) | 嘗試在已關閉、中止或處置的物件上叫用作業。 極少數的情況下，環境交易是已處置狀態。 | 檢查程式碼，並確定它不會在已處置的物件上叫用作業。 | [重試] 將無法提供協助。 |
+| [UnauthorizedAccessException](/dotnet/api/system.unauthorizedaccessexception?view=netcore-3.1) | [TokenProvider](/dotnet/api/microsoft.servicebus.tokenprovider)物件無法取得權杖、權杖無效，或權杖未包含執行作業所需的宣告。 | 確定權杖提供者是以正確的值建立。 檢查存取控制服務的設定。 | 在某些情況下，重試也許有幫助；將重試邏輯新增至程式碼。 |
+| [ArgumentException](/dotnet/api/system.argumentexception?view=netcore-3.1)<br /> [ArgumentNullException](/dotnet/api/system.argumentnullexception?view=netcore-3.1)<br />[ArgumentOutOfRangeException](/dotnet/api/system.argumentoutofrangeexception?view=netcore-3.1) | 提供給方法的一個或多個引數無效。 提供給 [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) 或 [Create](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) 的 URI 包含路徑區段。 提供給 [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) 或 [Create](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) 的 URI 配置無效。 屬性值大於 32 KB。 | 檢查呼叫程式碼，並確定引數正確無誤。 | 重試將無助益。 |
 | [Microsoft.ServiceBus.Messaging MessagingEntityNotFoundException](/dotnet/api/microsoft.servicebus.messaging.messagingentitynotfoundexception) <br /><br/> [Microsoft.Azure.EventHubs MessagingEntityNotFoundException](/dotnet/api/microsoft.azure.eventhubs.messagingentitynotfoundexception) | 與作業相關聯的實體不存在或已被刪除。 | 確定實體已存在。 | 重試將無助益。 |
 | [MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception) | 用戶端無法建立事件中樞連線。 |確定提供的主機名稱正確，且主機可以連線。 | 如果有間歇性的連線問題，重試也許有幫助。 |
 | [。訊息 ServerBusyException](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception) <br /> <br/>[Microsoft.Azure.EventHubs ServerBusyException](/dotnet/api/microsoft.azure.eventhubs.serverbusyexception) | 服務目前無法處理要求。 | 用戶端可以等待一段時間，然後再重試作業。 <br /> 請參閱 [ServerBusyException](#serverbusyexception)。 | 用戶端可以在特定間隔後重試。 如果重試產生不同的例外狀況，請檢查該例外狀況的重試行為。 |
@@ -80,7 +80,7 @@ ms.locfileid: "85314618"
 每一個事件中樞都有 20 個用戶群組的限制。 當您嘗試建立更多時，您會收到 [QuotaExceededException](/dotnet/api/microsoft.servicebus.messaging.quotaexceededexception)。 
 
 ## <a name="timeoutexception"></a>TimeoutException
-[TimeoutException](https://msdn.microsoft.com/library/system.timeoutexception.aspx) 表示使用者啟始作業所用的時間長過作業逾時。 
+[TimeoutException](/dotnet/api/system.timeoutexception?view=netcore-3.1) 表示使用者啟始作業所用的時間長過作業逾時。 
 
 事件中樞的逾時是指定為連接字串的一部分，或透過 [ServiceBusConnectionStringBuilder](/dotnet/api/microsoft.servicebus.servicebusconnectionstringbuilder)指定。 錯誤訊息本身可能不盡相同，但它一定會包含目前作業的指定逾時值。 
 
@@ -120,6 +120,6 @@ ExceptionId: 00000000000-00000-0000-a48a-9c908fbe84f6-ServerBusyException: The r
 
 您可以造訪下列連結以深入了解事件中樞︰
 
-* [事件中心概觀](event-hubs-what-is-event-hubs.md)
+* [事件中心概觀](./event-hubs-about.md)
 * [建立事件中樞](event-hubs-create.md)
 * [事件中樞常見問題集](event-hubs-faq.md)

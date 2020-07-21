@@ -3,12 +3,13 @@ title: Azure 服務匯流排訊息延遲
 description: 本文說明如何延遲傳遞 Azure 服務匯流排訊息。 訊息會保留於佇列或訂用帳戶中，但會將它擱置於一旁。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: f4fe231c56a1bcdea4f15de90cb0e9406f0284a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 7c9ec55de24c97df3530d80deef55ed87be84077
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341224"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511274"
 ---
 # <a name="message-deferral"></a>訊息延遲
 
@@ -19,6 +20,9 @@ ms.locfileid: "85341224"
 訂單處理順序就是一個簡單的說明範例，其中來自外部付款提供者的付款通知會在系統將相符採購單從店面傳播到履行系統之前，便出現在系統中。 在此情況下，履行系統可能會延遲處理付款通知，直到沒有與它相關聯的訂單為止。 在集結的案例 (來自不同來源的訊息會衍生工作流程轉送) 中，即時執行順序可能確實是正確的，但反映結果的訊息可能不會依序送達。
 
 總而言之，延遲有助於將訊息從送達順序重新排序為可處理它們的順序，同時又能將那些需要延後處理的訊息安全地保留在訊息存放區中。
+
+> [!NOTE]
+> 延後的訊息在[過期之後](./service-bus-dead-letter-queues.md#exceeding-timetolive)，將不會自動移至寄不出的信件佇列。 這是設計的行為。
 
 ## <a name="message-deferral-apis"></a>訊息延遲 API
 

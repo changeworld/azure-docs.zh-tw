@@ -4,11 +4,12 @@ description: 在本文中，您將瞭解如何使用 REST API 來更新保存庫
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.assetid: 9aafa5a0-1e57-4644-bf79-97124db27aa2
-ms.openlocfilehash: eadcebdaf4db3dbe6c0a62b8631ff7d76fa50fad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1f0fee505443b15ba2ea97710efc220ef05df738
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84248221"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513110"
 ---
 # <a name="update-azure-recovery-services-vault-configurations-using-rest-api"></a>使用 REST API 更新 Azure 復原服務保存庫設定
 
@@ -24,7 +25,7 @@ ms.locfileid: "84248221"
 
 ### <a name="fetch-soft-delete-state-using-rest-api"></a>使用 REST API 提取虛刪除狀態
 
-根據預設，會針對任何新建立的復原服務保存庫啟用虛刪除狀態。 若要提取/更新保存庫的虛刪除狀態，請使用備份保存庫的設定相關[REST API 檔](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs)
+根據預設，會針對任何新建立的復原服務保存庫啟用虛刪除狀態。 若要提取/更新保存庫的虛刪除狀態，請使用備份保存庫的設定相關[REST API 檔](/rest/api/backup/backupresourcevaultconfigs)
 
 若要提取保存庫之虛刪除的目前狀態，請使用下列*GET*作業
 
@@ -42,9 +43,9 @@ GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 「取得」作業的成功回應如下所示：
 
-|Name  |類型  |Description  |
+|名稱  |類型  |描述  |
 |---------|---------|---------|
-|200 確定     |   [BackupResourceVaultConfig](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | 確定        |
+|200 確定     |   [BackupResourceVaultConfig](/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | 確定        |
 
 ##### <a name="example-response"></a>範例回應
 
@@ -80,13 +81,13 @@ PATCH https://management.azure.com/Subscriptions/00000000-0000-0000-0000-0000000
 
 下列一般定義是用來建立要求本文
 
-如需詳細資訊，請參閱[REST API 檔](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/update#request-body)
+如需詳細資訊，請參閱[REST API 檔](/rest/api/backup/backupresourcevaultconfigs/update#request-body)
 
-|名稱  |必要  |類型  |Description  |
+|名稱  |必要  |類型  |描述  |
 |---------|---------|---------|---------|
-|etag     |         |   String      |  選擇性 eTag       |
-|location     |  true       |String         |   資源位置      |
-|properties     |         | [VaultProperties](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  保存庫的屬性       |
+|etag     |         |   字串      |  選擇性 eTag       |
+|location     |  true       |字串         |   資源位置      |
+|properties     |         | [VaultProperties](/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  保存庫的屬性       |
 |tags     |         | Object        |     資源標籤    |
 
 #### <a name="example-request-body"></a>要求本文範例
@@ -106,9 +107,9 @@ PATCH https://management.azure.com/Subscriptions/00000000-0000-0000-0000-0000000
 
 「修補程式」作業的成功回應如下所示：
 
-|Name  |類型  |Description  |
+|名稱  |類型  |描述  |
 |---------|---------|---------|
-|200 確定     |   [BackupResourceVaultConfig](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | 確定        |
+|200 確定     |   [BackupResourceVaultConfig](/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | 確定        |
 
 ##### <a name="example-response"></a>範例回應
 

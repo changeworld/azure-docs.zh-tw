@@ -1,18 +1,18 @@
 ---
-title: 備份檔案和資料夾-常見的問題
+title: Microsoft Azure 復原服務（MARS）代理程式–常見問題
 description: 解決有關使用 Azure 備份來備份檔案和資料夾的常見問題。
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: 0ecff00fdfaf9b0ca494cd1c78d0a5e16b198995
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: fb6290124aa9ee0335083c5a505c005a387c0cd7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86056169"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514062"
 ---
-# <a name="common-questions-about-backing-up-files-and-folders"></a>有關備份檔案和資料夾的常見問題
+# <a name="frequently-asked-questions---microsoft-azure-recovery-services-mars-agent"></a>常見問題-Microsoft Azure 復原服務（MARS）代理程式
 
-本文會回答在[Azure 備份](backup-overview.md)服務中使用 MICROSOFT AZURE 復原服務（MARS）代理程式來備份檔案和資料夾的常見問題為數眾多。
+本文會回答有關使用[Azure 備份](backup-overview.md)服務中的 MICROSOFT AZURE 復原服務（MARS）代理程式來備份資料的常見問題。
 
 ## <a name="configure-backups"></a>設定備份
 
@@ -74,11 +74,11 @@ ms.locfileid: "86056169"
 
 ### <a name="what-is-the-maximum-file-path-length-for-backup"></a>備份的檔案路徑長度上限為何？
 
-MARS 代理程式依賴 NTFS，並使用[WINDOWS API](/windows/desktop/FileIO/naming-a-file#fully-qualified-vs-relative-paths)所限制的 filepath 長度規格。 如果您想要保護的檔案超過允許的值，請備份上層資料夾或磁片磁碟機。  
+MARS 代理程式依賴 NTFS，並使用[WINDOWS API](/windows/win32/FileIO/naming-a-file#fully-qualified-vs-relative-paths)所限制的 filepath 長度規格。 如果您想要保護的檔案超過允許的值，請備份上層資料夾或磁片磁碟機。  
 
 ### <a name="what-characters-are-allowed-in-file-paths"></a>檔案路徑中允許哪些字元？
 
-MARS 代理程式依賴 NTFS，並允許檔案名/路徑中[支援的字元](/windows/desktop/FileIO/naming-a-file#naming-conventions)。
+MARS 代理程式依賴 NTFS，並允許檔案名/路徑中[支援的字元](/windows/win32/FileIO/naming-a-file#naming-conventions)。
 
 ### <a name="the-warning-azure-backups-have-not-been-configured-for-this-server-appears"></a>出現警告「未設定這部伺服器的 Azure 備份」
 
@@ -91,7 +91,7 @@ MARS 代理程式依賴 NTFS，並允許檔案名/路徑中[支援的字元](/wi
 
 ### <a name="whats-the-minimum-size-requirement-for-the-cache-folder"></a>什麼是快取資料夾的最低大小需求？
 
-快取資料夾的大小可決定您正在備份的資料量。
+快取資料夾的大小會決定您要備份的資料量。
 
 * 快取資料夾磁片區的可用空間應等於備份資料大小總計的5-10%。
 * 如果磁片區的可用空間少於5%，請增加磁片區大小，或依照下列[步驟](#how-do-i-change-the-cache-location-for-the-mars-agent)將快取資料夾移至具有足夠空間的磁片區。
@@ -141,7 +141,7 @@ MARS 代理程式依賴 NTFS，並允許檔案名/路徑中[支援的字元](/wi
 
 ### <a name="are-there-any-attributes-of-the-cache-folder-that-arent-supported"></a>是否有任何不支援的快取資料夾屬性？
 
-快取資料夾不支援下列屬性或其組合︰
+下列屬性或其組合不支援快取資料夾：
 
 * 已加密
 * 已刪除重複資料
@@ -165,17 +165,17 @@ Azure 備份代理程式需要複雜密碼（在註冊期間提供）來解密�
 
 | 原始電腦 <br> *（執行備份的來源機器）* | 複雜密碼 | 可用的選項 |
 | --- | --- | --- |
-| 可用 |未能拿下 |如果您的原始電腦（已建立備份的位置）可供使用，而且仍使用相同的復原服務保存庫註冊，則您可以遵循下列[步驟](https://docs.microsoft.com/azure/backup/backup-azure-manage-mars#re-generate-passphrase)來重新產生複雜密碼。  |
+| 可用 |未能拿下 |如果您的原始電腦（已建立備份的位置）可供使用，而且仍使用相同的復原服務保存庫註冊，則您可以遵循下列[步驟](./backup-azure-manage-mars.md#re-generate-passphrase)來重新產生複雜密碼。  |
 | 未能拿下 |未能拿下 |無法復原資料或資料無法使用 |
 
 請考慮下列情況：
 
-* 如果您在相同的原始電腦上卸載並重新註冊代理程式
-  * *相同*的複雜密碼之後，您就能夠還原已備份的資料。
-  * *不同*的複雜密碼，那麼您將無法還原已備份的資料。
-* 如果您使用將代理程式安裝在*不同的電腦*上
-  * *相同*的複雜密碼（用於原始機器），您將能夠還原已備份的資料。
-  * *不同*的複雜密碼，您將無法還原已備份的資料。
+* 如果您使用三個在相同的原始電腦上卸載並重新註冊代理程式
+  * *相同*的複雜密碼，然後您就可以還原已備份的資料。
+  * *不同*的複雜密碼，那麼您就無法還原已備份的資料。
+* 如果您將代理程式安裝在*不同的電腦*上，請使用
+  * *相同*的複雜密碼（用於原始電腦中），然後您就可以還原已備份的資料。
+  * *不同*的複雜密碼，您無法還原已備份的資料。
 * 如果您的原始電腦已損毀（導致無法透過 MARS 主控台重新產生複雜密碼），但您可以還原或存取 MARS 代理程式所使用的原始暫存檔案夾，則您可能可以還原（如果忘記密碼）。 如需更多協助，請聯絡客戶支援。
 
 #### <a name="how-do-i-recover-if-i-lost-my-original-machine-where-backups-were-taken"></a>如果我遺失原始電腦（備份的位置），如何? 復原？
@@ -184,7 +184,7 @@ Azure 備份代理程式需要複雜密碼（在註冊期間提供）來解密�
 
 | 原始電腦 | 複雜密碼 | 可用的選項 |
 | --- | --- | --- |
-| 未能拿下 |可用 |您可以在另一部電腦上安裝並註冊 MARS 代理程式，其具有在您註冊原始電腦時所提供的相同複雜密碼。 選擇 [復原**選項**] [  >  **另一個位置**] 執行還原。 如需詳細資訊，請參閱這篇[文章](https://docs.microsoft.com/azure/backup/backup-azure-restore-windows-server#use-instant-restore-to-restore-data-to-an-alternate-machine)。
+| 未能拿下 |可用 |您可以在另一部電腦上安裝並註冊 MARS 代理程式，其具有在您註冊原始電腦時所提供的相同複雜密碼。 選擇 [復原**選項**] [  >  **另一個位置**] 執行還原。 如需詳細資訊，請參閱這篇[文章](./backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine)。
 | 未能拿下 |未能拿下 |無法復原資料或資料無法使用 |
 
 ### <a name="my-backup-jobs-have-been-failing-or-not-running-for-a-long-time-im-past-the-retention-period-can-i-still-restore"></a>我的備份作業已失敗或長時間未執行。 我已超過保留期限。 我可以繼續進行還原嗎？

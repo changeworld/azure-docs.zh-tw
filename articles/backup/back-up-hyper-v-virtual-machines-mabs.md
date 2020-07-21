@@ -3,12 +3,12 @@ title: 使用 MABS 備份 Hyper-v 虛擬機器
 description: 本文包含使用 Microsoft Azure 備份 Server （MABS）來備份和復原虛擬機器的程式。
 ms.topic: conceptual
 ms.date: 07/18/2019
-ms.openlocfilehash: 71cf446472ef0cf4f50bf64e47d359ea08ccc087
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bf267285e47f6695f2c6104cbc1817f5e733fa29
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80420409"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514541"
 ---
 # <a name="back-up-hyper-v-virtual-machines-with-azure-backup-server"></a>使用 Azure 備份伺服器備份 Hyper-v 虛擬機器
 
@@ -54,7 +54,7 @@ MABS 會以 VSS 執行備份，如下所示。 為了清楚呈現，這項描述
 
 >[!NOTE]
 >
->從 Windows Server 2016 開始，Hyper-v 虛擬硬碟具有內建的變更追蹤，稱為復原變更追蹤（.RCT）。 MABS 會使用 .RCT （Hyper-v 中的原生變更追蹤），減少在 VM 損毀的情況下需要耗費時間的一致性檢查。 比起 VSS 快照集式備份提供的變更追蹤，RCT 提供更好的復原力。 在任何一致性檢查期間，MABS V3 只會傳送變更的資料，藉此進一步最佳化網路和儲存體耗用量。
+>從 Windows Server 2016 開始，Hyper-v 虛擬硬碟具有內建的變更追蹤，稱為復原變更追蹤（.RCT）。 MABS 會使用 .RCT （Hyper-v 中的原生變更追蹤），減少在 VM 損毀的情況下需要耗費時間的一致性檢查。 RCT 提供的復原優於 VSS 快照集備份提供的變更追蹤。 在任何一致性檢查期間，MABS V3 只會傳送變更的資料，藉此進一步最佳化網路和儲存體耗用量。
 
 ## <a name="backup-prerequisites"></a>備份的必要條件
 
@@ -132,7 +132,7 @@ MABS 會以 VSS 執行備份，如下所示。 為了清楚呈現，這項描述
 
 3. 從 [動作]**** 功能表按一下 [復原]**** 以開啟 [復原精靈]。
 
-    您所選取的 VM 和復原點會出現在 [檢閱復原選項]**** 畫面。 按一下 [下一步] 。
+    您所選取的 VM 和復原點會出現在 [檢閱復原選項]**** 畫面。 按 [下一步] 。
 
 4. 在 [選取復原類型]**** 畫面中，選取用於還原資料的位置，然後按一下 [下一步]****。
 
@@ -155,4 +155,4 @@ MABS 會以 VSS 執行備份，如下所示。 為了清楚呈現，這項描述
 
 ## <a name="next-steps"></a>後續步驟
 
-[從 Azure 備份伺服器復原資料](https://docs.microsoft.com/azure/backup/backup-azure-alternate-dpm-server)
+[從 Azure 備份伺服器復原資料](./backup-azure-alternate-dpm-server.md)

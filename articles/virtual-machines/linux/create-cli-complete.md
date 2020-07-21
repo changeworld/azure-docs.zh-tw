@@ -6,11 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 12/14/2017
 ms.author: cynthn
-ms.openlocfilehash: 7ee4674f5e7c04709256459c3417a1379a65aedc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5cc7a739b27d96eac01733b4f340d6d6d4dac265
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78969552"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511121"
 ---
 # <a name="create-a-complete-linux-virtual-machine-with-the-azure-cli"></a>使用 Azure CLI 來建立完整的 Linux 虛擬機器
 若要在 Azure 中快速建立虛擬機器 (VM)，您可以使用單一的 Azure CLI 命令，此命令會使用預設值來建立任何必要的支援資源。 系統會自動建立虛擬網路、公用 IP 位址及網路安全性群組規則等資源。 若要在生產環境使用案例中對您的環境進行更多控制，您可以預先建立這些資源，然後再將 VM 新增到這些資源中。 本文將引導您了解如何建立 VM 及逐一建立每個支援資源。
@@ -549,13 +550,13 @@ sudo apt-get install -y nginx
 ![您 VM 上的預設 NGINX 站台](media/create-cli-complete/nginx.png)
 
 ## <a name="export-as-a-template"></a>以範本形式匯出
-如果您現在想要使用相同的參數來建立其他開發環境，或想要建立與其相符的生產環境，該怎麼辦？ Resource Manager 可使用定義了所有環境參數的 JSON 範本。 您可以藉由參考此 JSON 範本來建置整個環境。 您可以[手動建立 json 範本](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)，或匯出現有的環境來為您建立 json 範本。 使用 [az group export](/cli/azure/group) 來匯出您的資源群組，如下所示︰
+如果您現在想要使用相同的參數來建立其他開發環境，或想要建立與其相符的生產環境，該怎麼辦？ Resource Manager 可使用定義了所有環境參數的 JSON 範本。 您可以藉由參考此 JSON 範本來建置整個環境。 您可以[手動建立 json 範本](../../azure-resource-manager/templates/template-syntax.md?toc=/azure/virtual-machines/linux/toc.json)，或匯出現有的環境來為您建立 json 範本。 使用 [az group export](/cli/azure/group) 來匯出您的資源群組，如下所示︰
 
 ```azurecli
 az group export --name myResourceGroup > myResourceGroup.json
 ```
 
-此命令會在您目前的工作目錄中建立 `myResourceGroup.json` 檔案。 當您從這個範本建立環境時，系統會提示您輸入所有資源名稱。 您可以藉由將 `--include-parameter-default-value` 參數新增到 `az group export` 命令中，在您的範本檔案中填入這些名稱。 編輯您的 JSON 範本以指定資源名稱，或在指定資源名稱的檔案[上建立 parameters.js](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 。
+此命令會在您目前的工作目錄中建立 `myResourceGroup.json` 檔案。 當您從這個範本建立環境時，系統會提示您輸入所有資源名稱。 您可以藉由將 `--include-parameter-default-value` 參數新增到 `az group export` 命令中，在您的範本檔案中填入這些名稱。 編輯您的 JSON 範本以指定資源名稱，或在指定資源名稱的檔案[上建立 parameters.js](../../azure-resource-manager/templates/template-syntax.md?toc=/azure/virtual-machines/linux/toc.json) 。
 
 若要從您的範本建立環境，請使用 [az group deployment create](/cli/azure/group/deployment)，如下所示︰
 
@@ -565,7 +566,7 @@ az group deployment create \
     --template-file myResourceGroup.json
 ```
 
-您可以 [深入了解如何從範本進行部署](../../resource-group-template-deploy-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 請了解如何以累加方式更新環境、使用參數檔案，以及從單一儲存體位置存取範本。
+您可以 [深入了解如何從範本進行部署](../../azure-resource-manager/templates/deploy-cli.md?toc=/azure/virtual-machines/linux/toc.json)。 請了解如何以累加方式更新環境、使用參數檔案，以及從單一儲存體位置存取範本。
 
 ## <a name="next-steps"></a>後續步驟
 現在您已準備好開始使用多個網路元件和 VM。 您可以利用這裡介紹的核心元件，使用這個範例環境來建置您的應用程式。

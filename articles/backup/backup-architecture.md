@@ -3,12 +3,12 @@ title: 架構概觀
 description: 概略說明 Azure 備份服務所使用的架構、元件和程序。
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: 26f10f96cac412854f4bb0f732a0aec7f595c8ae
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: eab820c2a045c8602bfdbf77b5e2dba4cb2318af
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86055251"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514300"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure 備份架構和元件
 
@@ -42,10 +42,10 @@ Azure 備份會將已備份的資料儲存在復原服務保存庫中。 保存�
 - 保存庫可輕鬆地組織您的備份資料，同時可減輕管理負擔。
 - 在一個 Azure 訂用帳戶中，您最多可以建立 500 個保存庫。
 - 您可以在保存庫中監視已備份的專案，包括 Azure Vm 和內部部署機器。
-- 您可以使用 Azure [角色型存取控制 (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) 來管理保存庫存取。
+- 您可以使用 Azure [角色型存取控制 (RBAC)](../role-based-access-control/role-assignments-portal.md) 來管理保存庫存取。
 - 您可以指定如何複寫保存庫中的資料以提供備援性：
-  - **本機多餘儲存體（LRS）**：若要防止資料中心發生失敗，您可以使用 LRS。 LRS 會將資料複寫至儲存體縮放單位。 [深入了解](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs)。
-  - **異地多餘儲存體（GRS）**：若要防止全區域中斷，您可以使用 GRS。 GRS 會將您的資料複寫至次要區域。 [深入了解](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs)。
+  - **本機多餘儲存體（LRS）**：若要防止資料中心發生失敗，您可以使用 LRS。 LRS 會將資料複寫至儲存體縮放單位。 [深入了解](../storage/common/storage-redundancy.md)。
+  - **異地多餘儲存體（GRS）**：若要防止全區域中斷，您可以使用 GRS。 GRS 會將您的資料複寫至次要區域。 [深入了解](../storage/common/storage-redundancy.md)。
   - 根據預設，復原服務保存庫會使用 GRS。
 
 ## <a name="backup-agents"></a>備份代理程式
@@ -65,7 +65,7 @@ Azure 備份提供不同的備份代理程式，視要備份的機器類型而�
 --- | --- | ---
 **完整** | 完整備份包含整個資料來源。 所需的網路頻寬比差異或增量備份更多。 | 用於初始備份。
 **差異** |  差異備份會儲存自從初始完整備份之後所變更的區塊。 會使用較少的網路和儲存空間，而且不會保留未變更資料的重複複本。<br/><br/> 效率不佳，因為會傳送並儲存在之後的備份之間未變更的資料區塊。 | Azure 備份並未使用。
-**增量** | 增量備份只會儲存自從上次備份之後變更的資料區塊。 儲存體和網路效率較高。 <br/><br/> 使用增量備份時，不需要以完整備份來補充。 | 供 DPM/MABS 用於磁碟備份，並且用於所有備份至 Azure 的作業。 不用於 SQL Server 備份。
+**增強** | 增量備份只會儲存自從上次備份之後變更的資料區塊。 儲存體和網路效率較高。 <br/><br/> 使用增量備份時，不需要以完整備份來補充。 | 供 DPM/MABS 用於磁碟備份，並且用於所有備份至 Azure 的作業。 不用於 SQL Server 備份。
 
 ## <a name="sql-server-backup-types"></a>SQL Server 備份類型
 
@@ -95,8 +95,8 @@ Azure 備份提供不同的備份代理程式，視要備份的機器類型而�
 **功能** | **直接備份檔案和資料夾（使用 MARS 代理程式）** | **Azure VM 備份** | **具有 DPM/MABS 的機器或應用程式**
 --- | --- | --- | ---
 備份至保存庫 | ![是][green] | ![是][green] | ![是][green]
-備份至 DPM/MABS 磁片，到 Azure | | | ![Yes][green]
-壓縮要備份的傳輸資料 | ![Yes][green] | 傳輸資料時不使用壓縮。 儲存體會略為膨脹，但還原速度較快。  | ![Yes][green]
+備份至 DPM/MABS 磁片，到 Azure | | | ![是][green]
+壓縮要備份的傳輸資料 | ![是][green] | 傳輸資料時不使用壓縮。 儲存體會略為膨脹，但還原速度較快。  | ![是][green]
 執行增量備份 |![是][green] |![是][green] |![是][green]
 備份已刪除重複資料的磁碟 | | | ![部分][yellow]<br/><br/> 僅用於內部部署的 DPM/MABS 伺服器。
 
@@ -120,6 +120,17 @@ Azure 備份提供不同的備份代理程式，視要備份的機器類型而�
 - 建立保存庫時，也會建立 "DefaultPolicy"，並可用來備份資源。
 - 對備份原則的保留期間所做的任何變更，將會追溯到除了新的復原點之外。
 
+### <a name="additional-reference"></a>其他參考資料 
+
+-   Azure VM 電腦：如何[建立](./backup-azure-vms-first-look-arm.md#back-up-from-azure-vm-settings)和[修改](./backup-azure-manage-vms.md#manage-backup-policy-for-a-vm)原則？ 
+-   在 Azure VM 電腦中 SQL Server 資料庫：如何[建立](./backup-sql-server-database-azure-vms.md#create-a-backup-policy)和[修改](./manage-monitor-sql-database-backup.md#modify-policy)原則？ 
+-   Azure 檔案共用：如何[建立](./backup-afs.md#discover-file-shares-and-configure-backup)和[修改](./manage-afs-backup.md#modify-policy)原則？ 
+-   SAP Hana：如何[建立](./backup-azure-sap-hana-database.md#create-a-backup-policy)和[修改](./sap-hana-db-manage.md#change-policy)原則？ 
+-   MARS：如何[建立](./backup-windows-with-mars-agent.md#create-a-backup-policy)和[修改](./backup-azure-manage-mars.md#modify-a-backup-policy)原則？ 
+-   [根據工作負載類型排程備份是否有任何限制？](./backup-azure-backup-faq.md#are-there-limits-on-backup-scheduling)
+- [如果我變更保留原則，現有的復原點會發生什麼事？](./backup-azure-backup-faq.md#what-happens-when-i-change-my-backup-policy)
+
+
 ## <a name="architecture-built-in-azure-vm-backup"></a>架構：內建的 Azure VM 備份
 
 1. 當您啟用 Azure VM 的備份時，備份會根據您指定的排程執行。
@@ -134,7 +145,7 @@ Azure 備份提供不同的備份代理程式，視要備份的機器類型而�
     - 只會複製自上次備份之後變更的資料區塊。
     - 資料不會加密。 Azure 備份可以使用 Azure 磁碟加密來備份已加密的 Azure Vm。
     - 快照集資料可能不會立即複製到保存庫。 在尖峰時間，備份可能需要一些時間。 針對每日備份原則，VM 的總備份時間會小於24小時。
-1. 將資料傳送至保存庫之後，就會建立復原點。 根據預設，快照集會在刪除前兩天保留。 這項功能可讓您從這些快照集進行還原作業，進而減少還原時間。 它可減少從保存庫轉換和複製資料所需的時間。 請參閱[Azure 備份立即還原功能](https://docs.microsoft.com/azure/backup/backup-instant-restore-capability)。
+1. 將資料傳送至保存庫之後，就會建立復原點。 根據預設，快照集會在刪除前兩天保留。 這項功能可讓您從這些快照集進行還原作業，進而減少還原時間。 它可減少從保存庫轉換和複製資料所需的時間。 請參閱[Azure 備份立即還原功能](./backup-instant-restore-capability.md)。
 
 您不需要明確地允許網際網路連線來備份您的 Azure Vm。
 

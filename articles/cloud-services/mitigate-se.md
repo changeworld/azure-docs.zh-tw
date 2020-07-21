@@ -14,13 +14,14 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 11/12/2019
 ms.author: cynthn
-ms.openlocfilehash: 67f85bd7b492e9fce6b132c832e83d64e3175716
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8328dbf0085930940cf7a7b4740f7e15fc457e5f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75385504"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512991"
 ---
-# <a name="guidance-for-mitigating-speculative-execution-side-channel-vulnerabilities-in-azure"></a>減少推測性執行旁路攻擊漏洞在 Azure 中造成的風險指引
+# <a name="guidance-to-mitigate-speculative-execution-side-channel-vulnerabilities-in-azure"></a>在 Azure 中緩和理論式執行端通道弱點的指引
 
 [!INCLUDE [virtual-machines-common-mitigate-se](../../includes/virtual-machines-common-mitigate-se.md)]
 

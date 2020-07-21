@@ -3,16 +3,16 @@ title: 使用 Azure 資料箱的離線備份
 description: 瞭解如何使用 Azure 資料箱，從 MARS 代理程式離線將大型初始備份資料植入復原服務保存庫。
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: e45b8e26d332019b03ac41c3993e311480494040
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a60d749f270c9efab0649b49b5c0c41945faddf5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82160950"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513688"
 ---
 # <a name="azure-backup-offline-backup-by-using-azure-data-box"></a>使用 Azure 資料箱進行 Azure 備份離線備份
 
-您可以使用[Azure 資料箱](https://docs.microsoft.com/azure/databox/data-box-overview)，將您的大型初始 MICROSOFT AZURE 復原服務（MARS）備份從離線（不使用網路）植入復原服務保存庫。 此程式會節省時間和網路頻寬，而這種情況會在透過高延遲的網路上線移動大量備份資料時使用。 這項增強功能目前為預覽狀態。 以 Azure 資料箱為基礎的離線備份可提供兩個不同的優點，而不[是根據 Azure 匯入/匯出服務進行離線備份](https://docs.microsoft.com/azure/backup/backup-azure-backup-import-export)：
+您可以使用[Azure 資料箱](../databox/data-box-overview.md)，將您的大型初始 MICROSOFT AZURE 復原服務（MARS）備份從離線（不使用網路）植入復原服務保存庫。 此程式會節省時間和網路頻寬，而這種情況會在透過高延遲的網路上線移動大量備份資料時使用。 這項增強功能目前為預覽狀態。 以 Azure 資料箱為基礎的離線備份可提供兩個不同的優點，而不[是根據 Azure 匯入/匯出服務進行離線備份](./backup-azure-backup-import-export.md)：
 
 - 不需要購買您自己的 Azure 相容磁片和連接器。 Azure 資料箱會運送與所選[資料箱 SKU](https://azure.microsoft.com/services/databox/data/)相關聯的磁片。
 - Azure 備份（MARS 代理程式）可以直接將備份資料寫入支援的 Azure 資料箱 Sku 上。 這項功能可讓您不需要為初始備份資料布建預備位置。 您也不需要公用程式來格式化，並將該資料複製到磁片上。
@@ -25,7 +25,7 @@ ms.locfileid: "82160950"
 
 下列 Windows Sku 支援使用 Azure 資料箱從 MARS 代理程式植入資料的處理常式。
 
-| **作業系統**                                 | **SKU**                                                      |
+| **OS**                                 | **SKU**                                                      |
 | -------------------------------------- | ------------------------------------------------------------ |
 | **工作站**                        |                                                              |
 | Windows 10 64 位元                     | 企業版、專業版、家用版                                       |
@@ -47,8 +47,8 @@ ms.locfileid: "82160950"
 
 | 每一伺服器的備份資料大小（依 MARS 的壓縮後） * | 支援的 Azure 資料箱 SKU                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| <= 7.2 TB                                                    | [Azure 資料箱磁片](https://docs.microsoft.com/azure/databox/data-box-disk-overview) |
-| >7.2 TB 和 <= 80 TB * *                                      | [Azure 資料箱（100 TB）](https://docs.microsoft.com/azure/databox/data-box-overview) |
+| <= 7.2 TB                                                    | [Azure 資料箱磁片](../databox/data-box-disk-overview.md) |
+| >7.2 TB 和 <= 80 TB * *                                      | [Azure 資料箱（100 TB）](../databox/data-box-overview.md) |
 
 * 典型的壓縮速率會因10% 到20% 而有所不同。 <br>
 * * 如果您預期單一 MARS 伺服器有超過 80 TB 的初始備份資料，請洽詢 [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) 。
@@ -56,7 +56,7 @@ ms.locfileid: "82160950"
 >[!IMPORTANT]
 >單一伺服器的初始備份資料必須包含在單一 Azure 資料箱實例或 Azure 資料箱磁片中，而且不能在相同或不同 Sku 的多個裝置之間共用。 但是 Azure 資料箱裝置可以包含來自多部伺服器的初始備份。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 ### <a name="azure-subscription-and-required-permissions"></a>Azure 訂用帳戶和必要許可權
 
@@ -113,7 +113,7 @@ Azure PowerShell 也可以使用 msi 檔案來安裝。 若要移除它，請使
 
 ### <a name="order-and-receive-the-data-box-device"></a>訂購和接收資料箱裝置
 
-使用 MARS 和 Azure 資料箱的離線備份程式需要在您使用 MARS 代理程式來觸發離線備份之前，資料箱裝置必須處於已傳遞狀態。 若要為您的需求訂購最適合的 SKU，請參閱[備份資料大小和支援的資料箱 sku](#backup-data-size-and-supported-data-box-skus)。 依照[教學課程：訂購 Azure 資料箱磁片](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-ordered)來訂購和接收您的資料箱裝置中的步驟進行。
+使用 MARS 和 Azure 資料箱的離線備份程式需要在您使用 MARS 代理程式來觸發離線備份之前，資料箱裝置必須處於已傳遞狀態。 若要為您的需求訂購最適合的 SKU，請參閱[備份資料大小和支援的資料箱 sku](#backup-data-size-and-supported-data-box-skus)。 依照[教學課程：訂購 Azure 資料箱磁片](../databox/data-box-disk-deploy-ordered.md)來訂購和接收您的資料箱裝置中的步驟進行。
 
 > [!IMPORTANT]
 > 請勿針對**帳戶種類**選取 [ *BlobStorage* ]。 MARS 代理程式需要支援分頁 blob 的帳戶，這在選取*BlobStorage*時不受支援。 當您建立 Azure 資料箱作業的目標儲存體帳戶時，請選取 [**儲存體 V2 （一般用途 V2）** ] 做為**帳戶類型**。
@@ -124,7 +124,7 @@ Azure PowerShell 也可以使用 msi 檔案來安裝。 若要移除它，請使
 
 1. 請務必卸載任何先前安裝的 MARS 代理程式。
 1. 從[這個網站](https://aka.ms/azurebackup_agent)下載最新的 MARS 代理程式。
-1. 執行*MARSAgentInstaller.exe*，並*只*執行將[代理程式安裝](https://docs.microsoft.com/azure/backup/install-mars-agent#install-and-register-the-agent)到復原服務保存庫，並將其註冊到您想要儲存備份的步驟。
+1. 執行*MARSAgentInstaller.exe*，並*只*執行將[代理程式安裝](./install-mars-agent.md#install-and-register-the-agent)到復原服務保存庫，並將其註冊到您想要儲存備份的步驟。
 
    > [!NOTE]
    > 復原服務保存庫必須與 Azure 資料箱作業位於相同的訂用帳戶中。
@@ -137,14 +137,14 @@ Azure PowerShell 也可以使用 msi 檔案來安裝。 若要移除它，請使
 
 ### <a name="set-up-azure-data-box-disks"></a>設定 Azure 資料箱磁片
 
-如果您訂購一或多個 Azure 資料箱磁片（每個磁片最多 8 TB），請遵循這裡所述的步驟，將[您的資料箱磁片解壓縮、連接及解除鎖定](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-set-up)。
+如果您訂購一或多個 Azure 資料箱磁片（每個磁片最多 8 TB），請遵循這裡所述的步驟，將[您的資料箱磁片解壓縮、連接及解除鎖定](../databox/data-box-disk-deploy-set-up.md)。
 
 >[!NOTE]
 >具有 MARS 代理程式的伺服器可能沒有 USB 埠。 在這種情況下，您可以將 Azure 資料箱磁片連接到另一個伺服器或用戶端，並將裝置的根目錄公開為網路共用。
 
 ### <a name="set-up-azure-data-box"></a>設定 Azure 資料箱
 
-如果您已排序 Azure 資料箱實例（最多 100 TB），請遵循這裡的步驟[來設定您的資料箱實例](https://docs.microsoft.com/azure/databox/data-box-deploy-set-up)。
+如果您已排序 Azure 資料箱實例（最多 100 TB），請遵循這裡的步驟[來設定您的資料箱實例](../databox/data-box-deploy-set-up.md)。
 
 #### <a name="mount-your-azure-data-box-instance-as-a-local-system"></a>將您的 Azure 資料箱實例掛接為本機系統
 
@@ -160,8 +160,8 @@ MARS 代理程式會在本機系統內容中運作，因此需要將相同層級
     psexec.exe  -s  -i  cmd.exe
     ```
 
-   以先前命令的結果開啟的命令視窗位於本機系統內容中。 使用此命令視窗來執行步驟，以將 Azure 分頁 blob 共用掛接為 Windows 伺服器上的網路磁碟機機。
-1. 依照[連接到資料箱](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-nfs#connect-to-data-box)中的步驟，透過 NFS 將伺服器與 MARS 代理程式連線到資料箱裝置。 在本機系統命令提示字元上執行下列命令，以掛接 Azure 分頁 blob 共用。
+   因為先前的命令，而開啟的命令視窗是在本機系統內容中。 使用此命令視窗來執行步驟，以將 Azure 分頁 blob 共用掛接為 Windows 伺服器上的網路磁碟機機。
+1. 依照[連接到資料箱](../databox/data-box-deploy-copy-data-via-nfs.md#connect-to-data-box)中的步驟，透過 NFS 將伺服器與 MARS 代理程式連線到資料箱裝置。 在本機系統命令提示字元上執行下列命令，以掛接 Azure 分頁 blob 共用。
 
     ```cmd
     mount -o nolock \\<DeviceIPAddress>\<StorageAccountName_PageBlob X:  
@@ -195,7 +195,7 @@ MARS 代理程式會在本機系統內容中運作，因此需要將相同層級
 
     ![提取訂用帳戶識別碼資料箱作業](./media/offline-backup-azure-data-box/fetching-databox-jobs.png)
 
-1. 選取您已解除封裝、連線，並將資料箱磁片解除鎖定的正確資料箱順序。 選取 [下一步]。
+1. 選取您已解除封裝、連線，並將資料箱磁片解除鎖定的正確資料箱順序。 選取 [下一步] 。
 
     ![選取資料箱訂單](./media/offline-backup-azure-data-box/select-databox-order.png)
 
@@ -238,9 +238,9 @@ MARS 代理程式會開始將您選取的資料備份到 Azure 資料箱裝置�
 
 本節說明將資料備份至 Azure 資料箱磁碟成功之後應採取的步驟。
 
-- 請遵循本文中的步驟，將[Azure 資料箱磁片寄送至 Azure](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-picked-up)。 如果您使用 Azure 資料箱 100-TB 裝置，請遵循下列步驟將[Azure 資料箱裝置寄送至 Azure](https://docs.microsoft.com/azure/databox/data-box-deploy-picked-up)。
+- 請遵循本文中的步驟，將[Azure 資料箱磁片寄送至 Azure](../databox/data-box-disk-deploy-picked-up.md)。 如果您使用 Azure 資料箱 100-TB 裝置，請遵循下列步驟將[Azure 資料箱裝置寄送至 Azure](../databox/data-box-deploy-picked-up.md)。
 
-- [監視 Azure 入口網站中的資料箱作業](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-upload-verify)。 Azure 資料箱作業完成後，MARS 代理程式會在下一次排程備份時，自動將資料從儲存體帳戶移至復原服務保存庫。 然後，如果成功建立復原點，則會將備份作業標示為 [*作業已完成*]。
+- [監視 Azure 入口網站中的資料箱作業](../databox/data-box-disk-deploy-upload-verify.md)。 Azure 資料箱作業完成後，MARS 代理程式會在下一次排程備份時，自動將資料從儲存體帳戶移至復原服務保存庫。 然後，如果成功建立復原點，則會將備份作業標示為 [*作業已完成*]。
 
     >[!NOTE]
     >MARS 代理程式會在原則建立期間，于排程的時間觸發備份。 這些作業會標示為「等候 Azure 資料箱作業完成」，直到作業完成為止。
@@ -249,7 +249,7 @@ MARS 代理程式會開始將您選取的資料備份到 Azure 資料箱裝置�
 
 ## <a name="troubleshooting"></a>疑難排解
 
-Microsoft Azure 備份（MAB）代理程式會在您的租使用者中為您建立 Azure Active Directory （Azure AD）應用程式。 當您設定離線植入原則時，此應用程式需要憑證來進行已建立和上傳的驗證。 我們會使用 Azure PowerShell 來建立憑證，並將其上傳至 Azure AD 應用程式。
+Microsoft Azure 復原服務（MARS）代理程式會在您的租使用者中為您建立 Azure Active Directory （Azure AD）應用程式。 當您設定離線植入原則時，此應用程式需要憑證來進行已建立和上傳的驗證。 我們會使用 Azure PowerShell 來建立憑證，並將其上傳至 Azure AD 應用程式。
 
 ### <a name="problem"></a>問題
 

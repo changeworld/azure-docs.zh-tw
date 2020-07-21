@@ -3,11 +3,12 @@ title: 使用 Azure 原則自動啟用 VM 建立的備份
 description: 本文說明如何使用 Azure 原則自動啟用在指定範圍內建立之所有 Vm 的備份
 ms.topic: conceptual
 ms.date: 11/08/2019
-ms.openlocfilehash: 1d423371788f87155328e8f5c9334e47349a68e8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2b4ce7825b714eed1b025a6a807a62759177b81f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77584263"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514215"
 ---
 # <a name="auto-enable-backup-on-vm-creation-using-azure-policy"></a>使用 Azure 原則自動啟用 VM 建立的備份
 
@@ -17,7 +18,7 @@ ms.locfileid: "77584263"
 
 ## <a name="supported-scenarios"></a>支援的案例
 
-* 目前只有 Azure Vm 支援內建原則。 使用者必須小心確保指派期間指定的保留原則是 VM 保留原則。 請參閱[這](https://docs.microsoft.com/azure/backup/backup-azure-policy-supported-skus)份檔，以查看此原則支援的所有 VM sku。
+* 目前只有 Azure Vm 支援內建原則。 使用者必須小心確保指派期間指定的保留原則是 VM 保留原則。 請參閱[這](./backup-azure-policy-supported-skus.md)份檔，以查看此原則支援的所有 VM sku。
 
 * 原則一次只能指派給單一位置和訂用帳戶。 若要啟用跨位置和訂用帳戶的 Vm 備份，必須建立多個原則指派實例，分別用於每個位置和訂用帳戶的組合。
 
@@ -47,7 +48,7 @@ ms.locfileid: "77584263"
 
 > [!NOTE]
 >
-> Azure 原則也可以在現有的 Vm 上使用[補救](https://docs.microsoft.com/azure/governance/policy/how-to/remediate-resources)。
+> Azure 原則也可以在現有的 Vm 上使用[補救](../governance/policy/how-to/remediate-resources.md)。
 
 > [!NOTE]
 >
@@ -55,4 +56,4 @@ ms.locfileid: "77584263"
 
 ## <a name="next-steps"></a>後續步驟
 
-[深入瞭解 Azure 原則](https://docs.microsoft.com/azure/governance/policy/overview)
+[深入瞭解 Azure 原則](../governance/policy/overview.md)

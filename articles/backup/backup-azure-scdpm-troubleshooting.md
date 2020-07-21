@@ -3,17 +3,18 @@ title: 針對 System Center Data Protection Manager 疑難排解
 description: 在本文中，探索您在使用 System Center Data Protection Manager 時可能會遇到之問題的解決方案。
 ms.topic: troubleshooting
 ms.date: 01/30/2019
-ms.openlocfilehash: bcb30fa7eb3e05099761fc751b09a9fb16134e34
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 84646f34d905b570855f655465529eb19b717cab
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75664754"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513807"
 ---
 # <a name="troubleshoot-system-center-data-protection-manager"></a>針對 System Center Data Protection Manager 疑難排解
 
 本文說明您在使用 Data Protection Manager 時可能遇到的問題解決方案。
 
-如需 System Center Data Protection Manager 的最新版本資訊，請參閱 [System Center 文件](https://docs.microsoft.com/system-center/dpm/dpm-release-notes?view=sc-dpm-2016)。 您可以在[此對照表](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix?view=sc-dpm-2016)中深入了解對於 Data Protection Manager 的支援。
+如需 System Center Data Protection Manager 的最新版本資訊，請參閱 [System Center 文件](/system-center/dpm/dpm-release-notes)。 您可以在[此對照表](/system-center/dpm/dpm-protection-matrix)中深入了解對於 Data Protection Manager 的支援。
 
 ## <a name="error-replica-is-inconsistent"></a>錯誤：複本不一致
 

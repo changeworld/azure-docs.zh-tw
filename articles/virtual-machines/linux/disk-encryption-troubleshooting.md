@@ -8,13 +8,14 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: eeacea9e3305865881747801100dc17770b7df63
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: abd802f19917b048f6d006b8e3097b08efaf22e2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78970462"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510475"
 ---
-# <a name="azure-disk-encryption-troubleshooting-guide"></a>Azure 磁碟加密疑難排解指南
+# <a name="azure-disk-encryption-for-linux-vms-troubleshooting-guide"></a>Linux Vm 的 Azure 磁碟加密疑難排解指南
 
 本指南適用於組織採用 Azure 磁碟加密的 IT 專業人員、資訊安全性分析師和雲端系統管理員。 本文旨在協助磁碟加密相關問題的疑難排解。
 
@@ -110,5 +111,5 @@ ProgressMessage            : OS disk successfully encrypted, please reboot the V
 
 在本文件中，您已深入了解 Azure 磁碟加密中的一些常見問題，以及如何進行疑難排解。 如需此服務和其功能的相關資訊，請參閱下列文章：
 
-- [在 Azure 資訊安全中心套用磁碟加密](../../security-center/security-center-apply-disk-encryption.md)
+- [在 Azure 資訊安全中心套用磁碟加密](../../security-center/security-center-virtual-machine-protection.md)
 - [待用 Azure 資料加密](../../security/fundamentals/encryption-atrest.md)

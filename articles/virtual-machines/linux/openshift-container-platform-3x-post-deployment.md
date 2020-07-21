@@ -9,11 +9,13 @@ ms.topic: article
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: 8d76588ae9124d34902659cc0149063400b6e766
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-ansible
+ms.openlocfilehash: ba6fab2c2112c0e2c32e07965ededea817c37cbd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81759527"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510594"
 ---
 # <a name="post-deployment-tasks"></a>部署後工作
 
@@ -84,7 +86,7 @@ az ad app create --display-name OCPAzureAD --homepage https://masterdns343khhde.
 
    ![應用程式註冊存取](media/openshift-post-deployment/app-registration-access.png)
 
-8. 選取 [完成] 。
+8. 選取 [完成]。
 
 ### <a name="configure-openshift-for-azure-ad-authentication"></a>設定 OpenShift 進行 Azure AD 驗證
 
@@ -158,7 +160,7 @@ sudo /usr/local/bin/master-restart controllers
 - 在每個 OpenShift 節點上啟用 Azure 監視器 VM 擴充功能
 - 將 Log Analytics 代理程式安裝為 OpenShift daemon-set
 
-如需詳細資訊，請參閱完整[指示](https://docs.microsoft.com/azure/log-analytics/log-analytics-containers#configure-a-log-analytics-agent-for-red-hat-openshift)。
+如需詳細資訊，請參閱完整[指示](../../azure-monitor/insights/containers.md#configure-a-log-analytics-agent-for-red-hat-openshift)。
 
 ## <a name="configure-metrics-and-logging"></a>設定計量與記錄
 

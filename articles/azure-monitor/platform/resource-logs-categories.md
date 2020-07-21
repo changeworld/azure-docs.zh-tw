@@ -4,11 +4,12 @@ description: Azure 監視器的參考瞭解 Azure 資源記錄的支援服務和
 ms.subservice: logs
 ms.topic: reference
 ms.date: 06/03/2020
-ms.openlocfilehash: 6156b9d311859534160258256ff6315b037f3a14
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ceca6b0a230de6d3eeab47e60d90767b33b5ac59
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84418588"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515388"
 ---
 # <a name="supported-categories-for-azure-resource-logs"></a>支援的 Azure 資源記錄類別
 
@@ -104,7 +105,7 @@ ms.locfileid: "84418588"
 |WebApplicationFirewallLogs|Web 應用程式防火牆記錄|
 
 
-## <a name="microsoftcdnprofiles"></a>Microsoft Cdn/設定檔
+## <a name="microsoftcdnprofiles"></a>Microsoft.Cdn/profiles
 
 |類別|類別顯示名稱|
 |---|---|
@@ -711,6 +712,6 @@ ms.locfileid: "84418588"
 ## <a name="next-steps"></a>後續步驟
 
 * [深入瞭解資源記錄](../../azure-monitor/platform/platform-logs-overview.md)
-* [將資源資源記錄串流至**事件中樞**](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)
-* [使用 Azure 監視器 REST API 變更資源記錄診斷設定](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings)
-* [使用 Log Analytics 分析來自 Azure 儲存體的記錄](../../azure-monitor/platform/collect-azure-metrics-logs.md)
+* [將資源資源記錄串流至**事件中樞**](./resource-logs.md#send-to-azure-event-hubs)
+* [使用 Azure 監視器 REST API 變更資源記錄診斷設定](/rest/api/monitor/diagnosticsettings)
+* [使用 Log Analytics 分析來自 Azure 儲存體的記錄](./resource-logs.md#send-to-log-analytics-workspace)

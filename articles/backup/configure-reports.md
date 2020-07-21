@@ -3,11 +3,12 @@ title: 設定 Azure 備份報告
 description: 使用 Log Analytics 和 Azure 活頁簿來設定及檢視 Azure 備份的報告
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 20dcf7f3f9bbc5626c4a05ef064203b3ae5020cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5d1c7d628a61e550aa9dc4a5265ae16c5ed5336a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84484984"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513620"
 ---
 # <a name="configure-azure-backup-reports"></a>設定 Azure 備份報告
 
@@ -17,7 +18,7 @@ ms.locfileid: "84484984"
 - 稽核備份和還原。
 - 找出不同細微性層級的主要趨勢。
 
-現今，Azure 備份提供的報告解決方案會使用 [Azure 監視器記錄](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)和 [Azure 活頁簿](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview)。 這些資源可協助您取得有關整個備份資產中備份的豐富見解。 本文說明如何設定及檢視 Azure 備份報告。
+現今，Azure 備份提供的報告解決方案會使用 [Azure 監視器記錄](../azure-monitor/log-query/get-started-portal.md)和 [Azure 活頁簿](../azure-monitor/platform/workbooks-overview.md)。 這些資源可協助您取得有關整個備份資產中備份的豐富見解。 本文說明如何設定及檢視 Azure 備份報告。
 
 ## <a name="supported-scenarios"></a>支援的案例
 
@@ -25,7 +26,7 @@ ms.locfileid: "84484984"
 - 對於 DPM 工作負載，DPM 版本 5.1.363.0 和更新版本及代理程式版本 2.0.9127.0 和更新版本都支援備份報告。
 - 對於 MABS 工作負載，MABS 版本 13.0.415.0 和更新版本及代理程式版本 2.0.9170.0 和更新版本都支援備份報告。
 - 只要將資料傳送到使用者有權存取的 Log Analytics 工作區，即可跨所有備份項目、保存庫、訂用帳戶和區域檢視備份報告。 若要檢視一組保存庫的報告，您只需要對保存庫資料傳送至的 Log Analytics 工作區擁有讀者存取權即可。 您不需要擁有個別保存庫的存取權。
-- 如果您是 [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/) 使用者並擁有客戶訂用帳戶的委派存取權，即可使用這些報告搭配 Azure Lighthouse 來檢視所有租用戶的報告。
+- 如果您是 [Azure Lighthouse](../lighthouse/index.yml) 使用者並擁有客戶訂用帳戶的委派存取權，即可使用這些報告搭配 Azure Lighthouse 來檢視所有租用戶的報告。
 - 目前，可以在備份報告中檢視最多 100 個 Log Analytics 工作區 (跨租用戶) 的資料。
 - 記錄備份作業的資料目前不會顯示在報告中。
 
@@ -37,22 +38,22 @@ ms.locfileid: "84484984"
 
 設定一或多個 Log Analytics 工作區，以儲存您的備份報告資料。 可以建立此 Log Analytics 工作區的位置和訂用帳戶，與保存庫所在的位置和訂用帳戶無關。
 
-若要設定 Log Analytics 工作區，請參閱[在 Azure 入口網站中建立 Log Analytics 工作區](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)。
+若要設定 Log Analytics 工作區，請參閱[在 Azure 入口網站中建立 Log Analytics 工作區](../azure-monitor/learn/quick-create-workspace.md)。
 
-根據預設，Log Analytics 工作區中的資料會保留 30 天。 若要查看較長時間範圍的資料，請變更 Log Analytics 工作區的保留期間。 若要變更保留期間，請參閱[使用 Azure 監視器記錄管理使用量和成本](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage)。
+根據預設，Log Analytics 工作區中的資料會保留 30 天。 若要查看較長時間範圍的資料，請變更 Log Analytics 工作區的保留期間。 若要變更保留期間，請參閱[使用 Azure 監視器記錄管理使用量和成本](../azure-monitor/platform/manage-cost-storage.md)。
 
 ### <a name="2-configure-diagnostics-settings-for-your-vaults"></a>2.設定保存庫的診斷設定
 
 Azure Resource Manager 資源 (例如復原服務保存庫) 會將排程作業和使用者觸發作業的相關資訊記錄為診斷資料。
 
-在復原服務保存庫的 [監視] 區段中，選取 [診斷設定] 並指定復原服務保存庫診斷資料的目標。 若要深入了解如何使用診斷事件，請參閱[使用復原服務保存庫的診斷設定](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events)。
+在復原服務保存庫的 [監視] 區段中，選取 [診斷設定] 並指定復原服務保存庫診斷資料的目標。 若要深入了解如何使用診斷事件，請參閱[使用復原服務保存庫的診斷設定](./backup-azure-diagnostic-events.md)。
 
 ![診斷設定窗格](./media/backup-azure-configure-backup-reports/resource-specific-blade.png)
 
-Azure 備份也提供內建的 Azure 原則定義，可自動設定指定範圍內所有保存庫的診斷。 若要了解如何使用此原則，請參閱[設定大規模的保存庫診斷設定](https://docs.microsoft.com/azure/backup/azure-policy-configure-diagnostics)。
+Azure 備份也提供內建的 Azure 原則定義，可自動設定指定範圍內所有保存庫的診斷。 若要了解如何使用此原則，請參閱[設定大規模的保存庫診斷設定](./azure-policy-configure-diagnostics.md)。
 
 > [!NOTE]
-> 設定診斷之後，最多可能需要 24 小時的時間，才能完成初始資料推送。 資料開始流入 Log Analytics 工作區之後，您可能不會立即在報告中看到此資料，因為目前未滿一天的資料不會顯示在報告中。 如需詳細資訊，請參閱[備份報告中使用的慣例](https://docs.microsoft.com/azure/backup/configure-reports#conventions-used-in-backup-reports)。 我們建議您在將保存庫設定為將資料傳送至 Log Analytics 後兩天開始檢視報告。
+> 設定診斷之後，最多可能需要 24 小時的時間，才能完成初始資料推送。 資料開始流入 Log Analytics 工作區之後，您可能不會立即在報告中看到此資料，因為目前未滿一天的資料不會顯示在報告中。 如需詳細資訊，請參閱[備份報告中使用的慣例](#conventions-used-in-backup-reports)。 我們建議您在將保存庫設定為將資料傳送至 Log Analytics 後兩天開始檢視報告。
 
 #### <a name="3-view-reports-in-the-azure-portal"></a>3.在 Azure 入口網站中檢視報告
 
@@ -102,7 +103,7 @@ Azure 備份也提供內建的 Azure 原則定義，可自動設定指定範圍�
 
 ## <a name="cross-tenant-reports"></a>跨租用戶報告
 
-如果您使用 [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/) 搭配多個租用戶環境中訂用帳戶的委派存取權，即可使用預設的訂用帳戶篩選器。 選取 Azure 入口網站右上角的篩選按鈕，以選擇您要查看其資料的所有訂用帳戶。 這麼做可讓您選取跨租用戶的 Log Analytics 工作區，以查看多租用戶報告。
+如果您使用 [Azure Lighthouse](../lighthouse/index.yml) 搭配多個租用戶環境中訂用帳戶的委派存取權，即可使用預設的訂用帳戶篩選器。 選取 Azure 入口網站右上角的篩選按鈕，以選擇您要查看其資料的所有訂用帳戶。 這麼做可讓您選取跨租用戶的 Log Analytics 工作區，以查看多租用戶報告。
 
 ## <a name="conventions-used-in-backup-reports"></a>備份報告中使用的慣例
 
@@ -130,8 +131,8 @@ Azure 備份也提供內建的 Azure 原則定義，可自動設定指定範圍�
 
 - 先前用於報告的 Power BI 範本應用程式 (其資料來自 Azure 儲存體帳戶) 位於淘汰路徑上。 我們建議您開始將保存庫診斷資料傳送至 Log Analytics 以檢視報告。
 
-- 此外，將診斷資料傳送至儲存體帳戶或 LA 工作區的 [V1 結構描述](https://docs.microsoft.com/azure/backup/backup-azure-diagnostics-mode-data-model#v1-schema-vs-v2-schema)也位於淘汰路徑上。 這表示如果您根據 V1 結構描述撰寫了任何自訂查詢或自動化，建議您更新這些查詢，以使用目前支援的 V2 結構描述。
+- 此外，將診斷資料傳送至儲存體帳戶或 LA 工作區的 [V1 結構描述](./backup-azure-diagnostics-mode-data-model.md#v1-schema-vs-v2-schema)也位於淘汰路徑上。 這表示如果您根據 V1 結構描述撰寫了任何自訂查詢或自動化，建議您更新這些查詢，以使用目前支援的 V2 結構描述。
 
 ## <a name="next-steps"></a>後續步驟
 
-[深入了解如何使用 Azure 備份進行監視和報告](https://docs.microsoft.com/azure/backup/backup-azure-monitor-alert-faq)
+[深入了解如何使用 Azure 備份進行監視和報告](./backup-azure-monitor-alert-faq.md)

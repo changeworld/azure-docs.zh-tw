@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/26/2020
-ms.openlocfilehash: bf94631c821c8a7ba5e2870af0bf1ecfd268e888
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: d0bbde0ee4fd0eaf7387abaf6d548dc563e5b715
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203587"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515439"
 ---
 # <a name="create-and-configure-a-log-analytics-workspace-in-azure-monitor-using-powershell"></a>使用 PowerShell 在 Azure 監視器中建立和設定 Log Analytics 工作區
 本文提供兩個程式碼範例，示範如何在 Azure 監視器中建立和設定 Log Analytics 工作區。  
@@ -193,7 +193,7 @@ New-AzOperationalInsightsCustomLogDataSource -ResourceGroupName $ResourceGroup -
 ```
 
 > [!NOTE]
-> **CustomLogRawJson** 參數 (定義自訂記錄的設定) 格式可能很複雜。 使用 [Get-AzOperationalInsightsDataSource](https://docs.microsoft.com/powershell/module/az.operationalinsights/get-azoperationalinsightsdatasource?view=azps-3.2.0) 來取出現有自訂記錄的設定。 **Properties** 屬性是 **CustomLogRawJson** 參數所需的設定。
+> **CustomLogRawJson** 參數 (定義自訂記錄的設定) 格式可能很複雜。 使用 [Get-AzOperationalInsightsDataSource](/powershell/module/az.operationalinsights/get-azoperationalinsightsdatasource?view=azps-3.2.0) 來取出現有自訂記錄的設定。 **Properties** 屬性是 **CustomLogRawJson** 參數所需的設定。
 
 在上述範例中，regexDelimiter 已定義為用於換行的 "\\n"。 記錄分隔符號也可能是時間戳記。  以下是支援的格式：
 
@@ -212,14 +212,13 @@ New-AzOperationalInsightsCustomLogDataSource -ResourceGroupName $ResourceGroup -
 | `yyyy-MM-ddTHH:mm:ss` <br> T 是常值的字母 T | `((\\d{2})|(\\d{4}))-([0-1]\\d)-(([0-3]\\d)|(\\d))T((\\d)|([0-1]\\d)|(2[0-4])):[0-5][0-9]:[0-5][0-9]` |
 
 ## <a name="troubleshooting"></a>疑難排解
-當您建立在過去 14 天內刪除且處於[虛刪除狀態](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#soft-delete-behavior)的工作區時，根據您的工作區設定，此作業可能會有不同的結果：
+當您建立在過去 14 天內刪除且處於[虛刪除狀態](./delete-workspace.md#soft-delete-behavior)的工作區時，根據您的工作區設定，此作業可能會有不同的結果：
 1. 如果您提供的工作區名稱、資源群組、訂用帳戶和區域，與已刪除的工作區相同，將會復原您的工作區，包括其資料、設定和連接的代理程式。
 2. 如果您使用相同的工作區名稱，但使用不同的資源群組、訂用帳戶或區域，您將會收到錯誤：「工作區名稱 'workspace-name' 不是唯一的」或「衝突」。 若要覆寫虛刪除和永久刪除工作區，並使用相同的名稱建立新的工作區，請遵循下列步驟先復原工作區，再執行永久刪除：
-   * [復原](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#recover-workspace)您的工作區
-   * [永久刪除](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#permanent-workspace-delete)您的工作區
+   * [復原](./delete-workspace.md#recover-workspace)您的工作區
+   * [永久刪除](./delete-workspace.md#permanent-workspace-delete)您的工作區
    * 使用相同工作區名稱建立新的工作區
 
 
 ## <a name="next-steps"></a>後續步驟
-* [檢閱 Log Analytics PowerShell Cmdlet](https://docs.microsoft.com/powershell/module/az.operationalinsights/) 。
-
+* [檢閱 Log Analytics PowerShell Cmdlet](/powershell/module/az.operationalinsights/) 。

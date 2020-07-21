@@ -4,11 +4,12 @@ description: 在本文中，您將瞭解如何使用 REST API 來設定、起始
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: d037339d9ff9a891fcc595a3eff75097204a77ab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 595291549b4d181967ea168d0dc71bc7e2237a67
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84248680"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514198"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>透過 REST API 使用 Azure 備份來備份 Azure VM
 
@@ -22,7 +23,7 @@ ms.locfileid: "84248680"
 
 ### <a name="discover-unprotected-azure-vms"></a>探索未受保護的 Azure VM
 
-首先，保存庫應該能夠識別 Azure VM。 這會使用[重新整理作業](https://docs.microsoft.com/rest/api/backup/protectioncontainers/refresh) \(英文\) 來觸發。 此為非同步的 *POST* 作業，以確定保存庫會取得目前訂用帳戶中所有受保護 VM 的最新清單，並「快取」它們。 一旦「快取」VM 之後，復原服務將能存取該 VM 並保護它。
+首先，保存庫應該能夠識別 Azure VM。 這會使用[重新整理作業](/rest/api/backup/protectioncontainers/refresh) \(英文\) 來觸發。 此為非同步的 *POST* 作業，以確定保存庫會取得目前訂用帳戶中所有受保護 VM 的最新清單，並「快取」它們。 一旦「快取」VM 之後，復原服務將能存取該 VM 並保護它。
 
 ```http
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{vaultresourceGroupname}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/refreshContainers?api-version=2016-12-01
@@ -36,11 +37,11 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 #### <a name="responses"></a>回應
 
-「重新整理」作業為[非同步作業](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)。 這表示此作業會建立另一項需要個別追蹤的作業。
+「重新整理」作業為[非同步作業](../azure-resource-manager/management/async-operations.md)。 這表示此作業會建立另一項需要個別追蹤的作業。
 
 它會傳回兩個回應：在建立另一項作業時傳回 202 (已接受)，然後在該作業完成時傳回 200 (確定)。
 
-|名稱  |類型  |Description  |
+|名稱  |類型  |描述  |
 |---------|---------|---------|
 |204 沒有內容     |         |  確定，但不會傳回任何內容      |
 |202 已接受     |         |     已接受    |
@@ -91,7 +92,7 @@ X-Powered-By: ASP.NET
 
 ### <a name="selecting-the-relevant-azure-vm"></a>選取相關的 Azure VM
 
- 您可以藉由在訂用帳戶下方[列出所有可保護的項目](https://docs.microsoft.com/rest/api/backup/backupprotectableitems/list) \(英文\) 來確認「快取」已完成，並在回應中找出所需的 VM。 [這項作業的回應](#example-responses-1)也會提供復原服務如何識別 VM 的資訊。  一旦您熟悉此模式之後，就可略過此步驟，並直接前往[啟用保護](#enabling-protection-for-the-azure-vm)。
+ 您可以藉由在訂用帳戶下方[列出所有可保護的項目](/rest/api/backup/backupprotectableitems/list) \(英文\) 來確認「快取」已完成，並在回應中找出所需的 VM。 [這項作業的回應](#example-responses-1)也會提供復原服務如何識別 VM 的資訊。  一旦您熟悉此模式之後，就可略過此步驟，並直接前往[啟用保護](#enabling-protection-for-the-azure-vm)。
 
 這項作業為 *GET* 作業。
 
@@ -103,9 +104,9 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 #### <a name="responses"></a><a name="responses-1"></a>回應
 
-|名稱  |類型  |Description  |
+|名稱  |類型  |描述  |
 |---------|---------|---------|
-|200 確定     | [WorkloadProtectableItemResourceList](https://docs.microsoft.com/rest/api/backup/backupprotectableitems/list#workloadprotectableitemresourcelist)        |       確定 |
+|200 確定     | [WorkloadProtectableItemResourceList](/rest/api/backup/backupprotectableitems/list#workloadprotectableitemresourcelist)        |       確定 |
 
 #### <a name="example-responses"></a><a name="example-responses-1"></a>範例回應
 
@@ -161,7 +162,7 @@ X-Powered-By: ASP.NET
 
 ### <a name="enabling-protection-for-the-azure-vm"></a>啟用 Azure VM 的保護
 
-在「快取」並「識別出」相關的 VM 之後，選取要保護的原則。 若要深入了解保存庫中的現有原則，請參閱[清單原則 API](https://docs.microsoft.com/rest/api/backup/backuppolicies/list) \(英文\)。 然後藉由參考原則名稱來選取[相關的原則](/rest/api/backup/protectionpolicies/get) \(英文\)。 若要建立原則，請參閱[建立原則教學課程](backup-azure-arm-userestapi-createorupdatepolicy.md)。 已在下列範例中選取 "DefaultPolicy"。
+在「快取」並「識別出」相關的 VM 之後，選取要保護的原則。 若要深入了解保存庫中的現有原則，請參閱[清單原則 API](/rest/api/backup/backuppolicies/list) \(英文\)。 然後藉由參考原則名稱來選取[相關的原則](/rest/api/backup/protectionpolicies/get) \(英文\)。 若要建立原則，請參閱[建立原則教學課程](backup-azure-arm-userestapi-createorupdatepolicy.md)。 已在下列範例中選取 "DefaultPolicy"。
 
 啟用保護是建立「受保護的項目」的非同步 *PUT* 作業。
 
@@ -179,11 +180,11 @@ PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 若要建立受保護的項目，以下是要求本文的元件。
 
-|名稱  |類型  |Description  |
+|名稱  |類型  |描述  |
 |---------|---------|---------|
 |properties     | AzureIaaSVMProtectedItem        |ProtectedItem 資源屬性         |
 
-如需要求本文的完整定義清單及其他詳細資訊，請參閱[建立受保護的項目 REST API 文件](https://docs.microsoft.com/rest/api/backup/protecteditems/createorupdate#request-body) \(英文\)。
+如需要求本文的完整定義清單及其他詳細資訊，請參閱[建立受保護的項目 REST API 文件](/rest/api/backup/protecteditems/createorupdate#request-body) \(英文\)。
 
 ##### <a name="example-request-body"></a>要求本文範例
 
@@ -203,13 +204,13 @@ PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 #### <a name="responses"></a>回應
 
-受保護項目的建立是[非同步作業](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)。 這表示此作業會建立另一項需要個別追蹤的作業。
+受保護項目的建立是[非同步作業](../azure-resource-manager/management/async-operations.md)。 這表示此作業會建立另一項需要個別追蹤的作業。
 
 它會傳回兩個回應：在建立另一項作業時傳回 202 (已接受)，然後在該作業完成時傳回 200 (確定)。
 
-|名稱  |類型  |Description  |
+|名稱  |類型  |描述  |
 |---------|---------|---------|
-|200 確定     |    [ProtectedItemResource](https://docs.microsoft.com/rest/api/backup/protecteditemoperationresults/get#protecteditemresource)     |  確定       |
+|200 確定     |    [ProtectedItemResource](/rest/api/backup/protecteditemoperationresults/get#protecteditemresource)     |  確定       |
 |202 已接受     |         |     已接受    |
 
 ##### <a name="example-responses"></a>範例回應
@@ -293,11 +294,11 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 若要觸發隨選備份，以下是要求本文的元件。
 
-|名稱  |類型  |Description  |
+|名稱  |類型  |描述  |
 |---------|---------|---------|
-|properties     | [IaaSVMBackupRequest](https://docs.microsoft.com/rest/api/backup/backups/trigger#iaasvmbackuprequest)        |BackupRequestResource 屬性         |
+|properties     | [IaaSVMBackupRequest](/rest/api/backup/backups/trigger#iaasvmbackuprequest)        |BackupRequestResource 屬性         |
 
-如需要求本文的完整定義清單及其他詳細資訊，請參閱[觸發受保護項目的備份 REST API 文件](https://docs.microsoft.com/rest/api/backup/backups/trigger#request-body) \(英文\)。
+如需要求本文的完整定義清單及其他詳細資訊，請參閱[觸發受保護項目的備份 REST API 文件](/rest/api/backup/backups/trigger#request-body) \(英文\)。
 
 #### <a name="example-request-body"></a>要求本文範例
 
@@ -314,11 +315,11 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 ### <a name="responses"></a>回應
 
-觸發隨選備份為[非同步作業](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)。 這表示此作業會建立另一項需要個別追蹤的作業。
+觸發隨選備份為[非同步作業](../azure-resource-manager/management/async-operations.md)。 這表示此作業會建立另一項需要個別追蹤的作業。
 
 它會傳回兩個回應：在建立另一項作業時傳回 202 (已接受)，然後在該作業完成時傳回 200 (確定)。
 
-|名稱  |類型  |Description  |
+|名稱  |類型  |描述  |
 |---------|---------|---------|
 |202 已接受     |         |     已接受    |
 
@@ -418,7 +419,7 @@ X-Powered-By: ASP.NET
 
 ### <a name="stop-protection-and-delete-data"></a>停止保護並刪除資料
 
-若要在受保護的 VM 上移除保護，同時也要刪除備份資料，請執行刪除作業，如[此處](https://docs.microsoft.com/rest/api/backup/protecteditems/delete)所詳述。
+若要在受保護的 VM 上移除保護，同時也要刪除備份資料，請執行刪除作業，如[此處](/rest/api/backup/protecteditems/delete)所詳述。
 
 停止保護並刪除資料為 *DELETE* 作業。
 
@@ -434,11 +435,11 @@ DELETE https://management.azure.com//Subscriptions/00000000-0000-0000-0000-00000
 
 #### <a name="responses"></a><a name="responses-2"></a>回應
 
-*DELETE* 作業為[非同步作業](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)。 這表示此作業會建立另一項需要個別追蹤的作業。
+*DELETE* 作業為[非同步作業](../azure-resource-manager/management/async-operations.md)。 這表示此作業會建立另一項需要個別追蹤的作業。
 
 它會傳回兩個回應：在建立另一項作業時傳回 202 (已接受)，然後在該作業完成時傳回 204 (NoContent)。
 
-|名稱  |類型  |Description  |
+|名稱  |類型  |描述  |
 |---------|---------|---------|
 |204 NoContent     |         |  NoContent       |
 |202 已接受     |         |     已接受    |

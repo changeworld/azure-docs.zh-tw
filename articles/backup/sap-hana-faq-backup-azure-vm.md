@@ -3,12 +3,12 @@ title: 常見問題集 - 備份 Azure VM 上的 SAP Hana 資料庫
 description: 在本文中，您可以針對使用 Azure 備份服務來備份 SAP Hana 資料庫時的常見問題，找到相關解答。
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: 512075a24cf9400415f2367ead16b57f8b31c038
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: dcbf1bf6b39b2afa3fb5aaf2a7f18c5d0e8e4afb
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170321"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513501"
 ---
 # <a name="frequently-asked-questions--back-up-sap-hana-databases-on-azure-vms"></a>常見問題 - 備份 Azure VM 上的 SAP Hana 資料庫
 
@@ -22,11 +22,11 @@ ms.locfileid: "86170321"
 
 ### <a name="do-successful-backup-jobs-create-alerts"></a>成功的備份作業是否會建立警示？
 
-否。 成功的備份作業不會產生警示。 只有失敗的備份作業會傳送警示。 [這裡](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-built-in-monitor)詳載了入口網站警示的行為。 不過，如果您有興趣取得成功作業的警示，您可以使用[Azure 監視器](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-use-azuremonitor)。
+否。 成功的備份作業不會產生警示。 只有失敗的備份作業會傳送警示。 [這裡](./backup-azure-monitoring-built-in-monitor.md)詳載了入口網站警示的行為。 不過，如果您有興趣取得成功作業的警示，您可以使用[Azure 監視器](./backup-azure-monitoring-use-azuremonitor.md)。
 
 ### <a name="can-i-see-scheduled-backup-jobs-in-the-backup-jobs-menu"></a>是否可以在 [備份作業] 功能表中看到已排程的備份作業？
 
-[備份作業] 功能表只會顯示隨選備份作業。 針對排程的作業，請使用 [Azure 監視器](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-use-azuremonitor)。
+[備份作業] 功能表只會顯示隨選備份作業。 針對排程的作業，請使用 [Azure 監視器](./backup-azure-monitoring-use-azuremonitor.md)。
 
 ### <a name="are-future-databases-automatically-added-for-backup"></a>未來的資料庫會自動加入以進行備份嗎？
 
@@ -51,7 +51,7 @@ ms.locfileid: "86170321"
 
 ### <a name="will-backups-work-after-migrating-sap-hana-from-sdc-to-mdc"></a>將 SAP Hana 從 SDC 遷移至 MDC 之後，備份是否可正常運作？
 
-請參閱疑難排解指南的[這一節](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database-troubleshoot#sdc-to-mdc-upgrade-with-a-change-in-sid)。
+請參閱疑難排解指南的[這一節](./backup-azure-sap-hana-database-troubleshoot.md#sdc-to-mdc-upgrade-with-a-change-in-sid)。
 
 ### <a name="can-azure-hana-backup-be-set-up-against-a-virtual-ip-load-balancer-and-not-a-virtual-machine"></a>是否可以針對虛擬 IP (負載平衡器) 設定 Azure Hana 備份，而非針對虛擬機器進行設定？
 
@@ -59,12 +59,12 @@ ms.locfileid: "86170321"
 
 ### <a name="how-can-i-move-an-on-demand-backup-to-the-local-file-system-instead-of-the-azure-vault"></a>如何將隨選備份移至本機檔案系統，而非 Azure 保存庫？
 
-1. 等候目前正在執行的備份在所需的資料庫上完成， (從 studio 檢查完成) 。
+1. 等候目前正在執行的備份在所需的資料庫上完成（從 studio 檢查完成）。
 1. 停用記錄備份，並使用下列步驟，將所需 DB 的目錄備份設定為 [檔案系統]：
 1. 按兩下 [SYSTEMDB] -> [設定] -> [選取資料庫] -> [篩選 (記錄)]
     1. 將 enable_auto_log_backup 設定為 [否]
     1. 將 catalog_backup_using_backint 設定為**false**
-1. 在所需的資料庫上進行隨選備份 (完整/差異/增量) ，並等候備份和目錄備份完成。
+1. 在所需的資料庫上進行隨選備份（完整/差異/增量），並等候備份和目錄備份完成。
 1. 如果您也想要將記錄備份移至檔案系統，請將 enable_auto_log_backup 設定為 **[是]**
 1. 還原為先前的設定，讓備份流向 Azure 保存庫：
     1. 將 enable_auto_log_backup 設定為 [是]
@@ -75,13 +75,13 @@ ms.locfileid: "86170321"
 
 ### <a name="how-can-i-use-sap-hana-backup-with-my-hana-replication-set-up"></a>如何搭配使用 SAP Hana 備份與 HANA 複寫設定？
 
-目前，Azure 備份沒有了解 HSR 設定的能力。 這表示 HSR 的主要和次要節點會被視為兩個不相關的個別 Vm。 首先，您必須在主要節點上設定備份。 當故障轉換發生時，必須在次要節點上設定備份， (現在會成為主要節點) 。 不會自動將備份故障切換到其他節點。
+目前，Azure 備份沒有了解 HSR 設定的能力。 這表示 HSR 的主要和次要節點會被視為兩個不相關的個別 Vm。 首先，您必須在主要節點上設定備份。 當故障轉換發生時，必須在次要節點上設定備份（現在會成為主要節點）。 不會自動將備份故障切換到其他節點。
 
-若要在任何指定的時間點從作用中 (主要) 節點備份資料，您可以將**保護切換**至次要節點，這在容錯回復後現在會變成主要節點。
+若要在任何指定的時間點備份來自作用中（主要）節點的資料，您可以將**保護切換**至次要節點，這在容錯回復後現在會變成主要節點。
 
 若要執行此**交換器保護**，請遵循下列步驟：
 
--  (在主要複本上保留資料) [停止保護](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database)
+- 在主要複本上[停止保護](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database)（含保留資料）
 - 在次要節點上執行[預先註冊腳本](https://aka.ms/scriptforpermsonhana)
 - 探索次要節點上[的資料庫](tutorial-backup-sap-hana-db.md#discover-the-databases)，並[設定](tutorial-backup-sap-hana-db.md#configure-backup)其上的備份
 
@@ -89,12 +89,12 @@ ms.locfileid: "86170321"
 
 以下是如何執行**交換器保護**的詳細範例：
 
-在此範例中，您有兩個節點-節點 1 (主要) 和節點 2 (次要) 在 HSR 設定中。  在節點1上設定備份。 如上所述，尚未嘗試在節點2上設定備份。
+在此範例中，您在 HSR 設定中有兩個節點-Node 1 （主要）和節點2（次要）。  在節點1上設定備份。 如上所述，尚未嘗試在節點2上設定備份。
 
 當第一次容錯移轉發生時，節點2會變成主要複本。 如此一來，
 
-1. 使用 [保留資料] 選項停止保護節點 1 (先前的主要) 。
-1. 在節點 2 (上執行預先註冊腳本，這現在是主要) 。
+1. 使用 [保留資料] 選項停止保護節點1（前一個主要）。
+1. 在節點2上執行預先註冊腳本（現在是主要複本）。
 1. 探索節點2上的資料庫、指派備份原則，並設定備份。
 
 然後在節點2上觸發第一次完整備份，然後在完成之後，記錄備份就會啟動。
@@ -102,8 +102,8 @@ ms.locfileid: "86170321"
 當下一個故障轉換發生時，節點1會重新成為主要，而節點2會變成次要。 現在重複此程式：
 
 1. 使用 [保留資料] 選項停止保護節點2。
-1. 在節點1上執行預先註冊腳本，該 (已再次成為主要複本) 
-1. 然後，使用必要的原則 (繼續執行節點1上的[備份](sap-hana-db-manage.md#resume-protection-for-an-sap-hana-database)，因為先前在節點 1) 上已停止備份。
+1. 在節點1上執行預先註冊腳本（已再次成為主要複本）
+1. 然後使用必要的原則繼續執行節點1上的[備份](sap-hana-db-manage.md#resume-protection-for-an-sap-hana-database)（因為先前在節點1上的備份已停止）。
 
 然後，系統會再次在節點1上觸發完整備份，而完成後，就會開機記錄備份。
 
@@ -111,7 +111,7 @@ ms.locfileid: "86170321"
 
 ### <a name="why-cant-i-see-the-hana-system-i-want-my-database-to-be-restored-to"></a>為何我看不到我想要將資料庫還原到其中的 Hana 系統？
 
-請檢查是否符合還原至目標 SAP Hana 執行個體的所有必要條件。 如需詳細資訊，請參閱[必要條件 - 還原 Azure VM 中的 SAP Hana 資料庫](https://docs.microsoft.com/azure/backup/sap-hana-db-restore#prerequisites)。
+請檢查是否符合還原至目標 SAP Hana 執行個體的所有必要條件。 如需詳細資訊，請參閱[必要條件 - 還原 Azure VM 中的 SAP Hana 資料庫](./sap-hana-db-restore.md#prerequisites)。
 
 ### <a name="why-is-the-overwrite-db-restore-failing-for-my-database"></a>資料庫的覆寫 DB 還原為何會失敗？
 
@@ -127,4 +127,4 @@ ms.locfileid: "86170321"
 
 ## <a name="next-steps"></a>後續步驟
 
-了解如何[備份在 Azure VM 上執行的 SAP Hana 資料庫](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database)。
+了解如何[備份在 Azure VM 上執行的 SAP Hana 資料庫](./backup-azure-sap-hana-database.md)。

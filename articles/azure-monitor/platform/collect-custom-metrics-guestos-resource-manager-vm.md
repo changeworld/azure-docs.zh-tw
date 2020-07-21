@@ -7,11 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: bwren
 ms.subservice: metrics
-ms.openlocfilehash: 14079f42fd857495396a0c44fd3bdeaf4371ea5f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 208515b7541948ca6913e6fda092c6a424de85f9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650555"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515779"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine"></a>使用 Windows 虛擬機器的 Azure Resource Manager 範本，將客體 OS 計量傳送至 Azure 監視器計量存放區
 如同其他[平台計量](../insights/monitor-azure-resource.md#monitoring-data)，系統不會自動收集 Azure 虛擬機器客體 OS 的效能資料。 安裝 Azure 監視器[診斷延伸模組](diagnostics-extension-overview.md)，將客體 OS 計量收集到計量資料庫中，以便搭配 Azure 監視器計量的所有功能使用，包括近乎即時的警示、圖表、路由，以及從 REST API 存取。 此文章描述使用 Resource Manager 範本，將 Windows 虛擬機器的客體作業系統效能計量傳送至計量資料庫的程序。 
@@ -24,9 +25,9 @@ ms.locfileid: "83650555"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-- 您必須先向 [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services) 註冊您的訂用帳戶。
+- 您必須先向 [Microsoft.Insights](../../azure-resource-manager/management/resource-providers-and-types.md) 註冊您的訂用帳戶。
 
-- 您需要安裝 [Azure PowerShell](/powershell/azure) 或 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)。
+- 您需要安裝 [Azure PowerShell](/powershell/azure) 或 [Azure Cloud Shell](../../cloud-shell/overview.md)。
 
 - 您的 VM 資源必須位於[支援自訂計量的區域](metrics-custom-overview.md#supported-regions)中。 
 
@@ -285,4 +286,3 @@ Azure 診斷擴充功能會使用稱為「資料接收器」的功能，將計�
 
 ## <a name="next-steps"></a>後續步驟
 - 深入了解[自訂計量](metrics-custom-overview.md)。
-

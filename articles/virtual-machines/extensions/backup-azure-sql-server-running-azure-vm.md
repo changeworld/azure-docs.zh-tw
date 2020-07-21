@@ -8,25 +8,25 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: dacurwin
-ms.openlocfilehash: b17e4031edaedc6b0a63d305d20a77e5b58f91ba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 84ff3e18cf488f5536d5945d7b8fc8d78882424e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80247379"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511172"
 ---
 # <a name="azure-backup-for-sql-server-running-in-azure-vm"></a>在 Azure VM 中執行 SQL Server 的 Azure 備份
 
 在其他供應專案之間 Azure 備份，可支援備份工作負載，例如在 Azure Vm 中執行 SQL Server。 由於 SQL 應用程式是在 Azure VM 中執行，因此備份服務需要存取應用程式的許可權，並提取必要的詳細資料。
 若要這樣做，Azure 備份會在使用者所觸發的註冊程式期間，在執行 SQL Server 的 VM 上安裝**AzureBackupWindowsWorkload**擴充功能。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 如需支援的案例清單，請參閱 Azure 備份支援的支援[矩陣](../../backup/sql-support-matrix.md#scenario-support)。
 
 ## <a name="network-connectivity"></a>網路連線
 
-Azure 備份支援 NSG 標記、部署 proxy 伺服器或列出的 IP 範圍;如需每個方法的詳細資訊，請參閱這[篇文章](https://docs.microsoft.com/azure/backup/backup-sql-server-database-azure-vms#establish-network-connectivity)。
+Azure 備份支援 NSG 標記、部署 proxy 伺服器或列出的 IP 範圍;如需每個方法的詳細資訊，請參閱這[篇文章](../../backup/backup-sql-server-database-azure-vms.md#establish-network-connectivity)。
 
 ## <a name="extension-schema"></a>擴充功能結構描述
 
@@ -102,7 +102,7 @@ statusBlobUri | <https://seapod01coord1exsapk732.blob.core.windows.net/bcdrexten
 
 ## <a name="powershell-deployment"></a>PowerShell 部署
 
-您必須使用復原服務保存庫來「註冊」包含 SQL 應用程式的 Azure VM。 在註冊期間，會在 VM 上安裝 AzureBackupWindowsWorkload 擴充功能。 使用 [AzRecoveryServicesBackupContainerPS](https://docs.microsoft.com/powershell/module/az.recoveryservices/Register-AzRecoveryServicesBackupContainer?view=azps-1.5.0) Cmdlet 來註冊 VM。
+您必須使用復原服務保存庫來「註冊」包含 SQL 應用程式的 Azure VM。 在註冊期間，會在 VM 上安裝 AzureBackupWindowsWorkload 擴充功能。 使用 [AzRecoveryServicesBackupContainerPS](/powershell/module/az.recoveryservices/register-azrecoveryservicesbackupcontainer?view=azps-1.5.0) Cmdlet 來註冊 VM。
 
 ```powershell
 $myVM = Get-AzVM -ResourceGroupName <VMRG Name> -Name <VMName>
@@ -113,5 +113,5 @@ Register-AzRecoveryServicesBackupContainer -ResourceId $myVM.ID -BackupManagemen
 
 ## <a name="next-steps"></a>後續步驟
 
-- [深入瞭解](https://docs.microsoft.com/azure/backup/backup-sql-server-azure-troubleshoot)AZURE SQL Server VM 備份疑難排解指導方針
-- 有關備份在 Azure 虛擬機器（Vm）上執行並使用 Azure 備份服務之 SQL Server 資料庫的[常見問題](https://docs.microsoft.com/azure/backup/faq-backup-sql-server)。
+- [深入瞭解](../../backup/backup-sql-server-azure-troubleshoot.md)AZURE SQL Server VM 備份疑難排解指導方針
+- 有關備份在 Azure 虛擬機器（Vm）上執行並使用 Azure 備份服務之 SQL Server 資料庫的[常見問題](../../backup/faq-backup-sql-server.md)。

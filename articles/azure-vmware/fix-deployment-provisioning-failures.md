@@ -3,11 +3,12 @@ title: 取得 Azure VMware 解決方案部署或布建失敗的協助
 description: 如何取得您的 Azure VMware 解決方案（AVS）私人雲端所需的資訊，以提出適用于 AVS 部署或布建失敗的服務要求。
 ms.topic: how-to
 ms.date: 06/09/2020
-ms.openlocfilehash: 3032c01d48617347c454d71498571b0e6b789e32
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 05c9dee088b37c37cdcdee7e745cdcd2222b63e0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84986853"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514572"
 ---
 # <a name="get-help-with-azure-vmware-solution-deployment-or-provisioning-failures"></a>取得 Azure VMware 解決方案部署或布建失敗的協助
 
@@ -28,7 +29,7 @@ ms.locfileid: "84986853"
 
 如果失敗發生在預先驗證階段，在部署私人雲端之前，不會產生相互關聯識別碼。 在此情況下，您可以只提供建立 AVS 私用雲端時所使用的資訊，包括：
 
-- 位置
+- Location
 - 資源群組
 - 資源名稱
  
@@ -71,7 +72,7 @@ ms.locfileid: "84986853"
 
 ## <a name="create-your-support-request"></a>建立您的支援要求
 
-如需建立支援要求的一般指引，請參閱[如何建立 Azure 支援要求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 
+如需建立支援要求的一般指引，請參閱[如何建立 Azure 支援要求](../azure-portal/supportability/how-to-create-azure-support-request.md)。 
 
 以下是針對 AVS 部署或布建失敗建立 SR 的其他指引。
 

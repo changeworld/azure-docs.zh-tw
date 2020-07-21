@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 2bf0443465f0cfd98f8bce93e60f9007ac7503be
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 81e138e7149327c7b792df58180419b93417d263
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042064"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510968"
 ---
 # <a name="troubleshooting-vm-provisioning-with-cloud-init"></a>使用雲端初始化進行 VM 布建的疑難排解
 
@@ -21,17 +21,17 @@ ms.locfileid: "86042064"
 
 布建問題的一些範例：
 - VM 會停滯在「建立中」40分鐘，且 VM 建立會標示為失敗
-- CustomData 不會被處理
+- `CustomData`不會被處理
 - 暫時磁片無法掛接
 - 使用者未建立，或發生使用者存取問題
 - 未正確設定網路功能
 - 交換檔案或分割區失敗
 
-這篇文章會逐步引導您進行雲端 init 的疑難排解。 如需更深入的詳細資料，請參閱[雲端初始化深入探討](https://docs.microsoft.com/azure/virtual-machines/linux/cloud-init-deep-dive)。
+這篇文章會逐步引導您進行雲端 init 的疑難排解。 如需更深入的詳細資料，請參閱[雲端初始化深入探討](./cloud-init-deep-dive.md)。
 
-## <a name="step-1-test-the-deployment-without-customdata"></a>步驟1：在不 customData 的情況下測試部署
+## <a name="step-1-test-the-deployment-without-customdata"></a>步驟1：測試部署而不進行`customData`
 
-建立 VM 時，Cloud init 可以接受傳遞給它的 customData。 首先，您應該確保這不會導致部署發生問題。 嘗試布建 VM，而不傳入任何設定。 如果您發現 VM 無法布建，請繼續進行下列步驟，如果您發現未套用您所傳遞的設定，請移至[步驟 4]()。 
+建立 VM 時，雲端 init 可以接受 `customData` 傳遞給它的。 首先，您應該確保這不會導致部署發生問題。 嘗試布建 VM，而不傳入任何設定。 如果您發現 VM 無法布建，請繼續進行下列步驟，如果您發現未套用您所傳遞的設定，請移至[步驟 4]()。 
 
 ## <a name="step-2-review-image-requirements"></a>步驟2：審查影像需求
 VM 布建失敗的主要原因是 OS 映射無法滿足在 Azure 上執行的必要條件。 請先確定您的映射已正確備妥，再嘗試在 Azure 中布建它們。 
@@ -39,15 +39,16 @@ VM 布建失敗的主要原因是 OS 映射無法滿足在 Azure 上執行的必
 
 下列文章說明準備 Azure 支援的各種 linux 散發版本的步驟：
 
-- [CentOS 型發行版本](create-upload-centos.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Debian Linux](debian-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Oracle Linux](oracle-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Red Hat Enterprise Linux](redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [SLES 和 openSUSE](suse-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Ubuntu](create-upload-ubuntu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [其他：非背書的發行版本](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [CentOS 型發行版本](create-upload-centos.md)
+- [Debian Linux](debian-create-upload-vhd.md)
+- [Flatcar Container Linux](flatcar-create-upload-vhd.md)
+- [Oracle Linux](oracle-create-upload-vhd.md)
+- [Red Hat Enterprise Linux](redhat-create-upload-vhd.md)
+- [SLES 和 openSUSE](suse-create-upload-vhd.md)
+- [Ubuntu](create-upload-ubuntu.md)
+- [其他：非背書的發行版本](create-upload-generic.md)
 
-針對[支援的 Azure 雲端 init 映射](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init)，Linux 散發套件已具備所有必要的封裝和設定，可在 Azure 中正確布建映射。 如果您發現您的 VM 無法從自己的策劃映射建立，請嘗試使用您的選擇性 customData 為雲端 init 設定的支援 Azure Marketplace 映射。 如果 customData 與 Azure Marketplace 映射搭配運作正常，則策劃映射可能會有問題。
+針對[支援的 Azure 雲端 init 映射](./using-cloud-init.md)，Linux 散發套件已具備所有必要的封裝和設定，可在 Azure 中正確布建映射。 如果您發現您的 VM 無法從自己的策劃映射建立，請嘗試已針對雲端 init 設定的支援 Azure Marketplace 映射，並搭配您的選擇 `customData` 。 如果 `customData` 搭配 Azure Marketplace 的映射正常運作，則您的策劃映射可能會有問題。
 
 ## <a name="step-3-collect--review-vm-logs"></a>步驟3：收集 & 審查 VM 記錄
 
@@ -55,11 +56,11 @@ VM 布建失敗的主要原因是 OS 映射無法滿足在 Azure 上執行的必
 
 當 VM 正在執行時，您將需要來自 VM 的記錄，以瞭解布建失敗的原因。  若要瞭解為何 VM 布建失敗，請勿停止 VM。 讓 VM 保持執行狀態。 您必須將失敗的 VM 保持在執行狀態，才能收集記錄。 若要收集記錄檔，請使用下列其中一種方法：
 
-- [序列主控台](https://docs.microsoft.com/azure/virtual-machines/linux/serial-console-grub-single-user-mode)
+- [序列主控台](./serial-console-grub-single-user-mode.md)
 
-- 在建立 VM 之前先[啟用開機診斷](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-monitor#enable-boot-diagnostics)，然後在開機期間加以[查看](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-monitor#view-boot-diagnostics)。
+- 在建立 VM 之前先[啟用開機診斷](./tutorial-monitor.md#enable-boot-diagnostics)，然後在開機期間加以[查看](./tutorial-monitor.md#view-boot-diagnostics)。
 
-- [執行 AZ VM Repair](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-linux-vm-using-azure-virtual-machine-repair-commands)來連接並掛接 OS 磁片，這可讓您收集這些記錄：
+- [執行 AZ VM Repair](../troubleshooting/repair-linux-vm-using-azure-virtual-machine-repair-commands.md)來連接並掛接 OS 磁片，這可讓您收集這些記錄：
 ```bash
 /var/log/cloud-init*
 /var/log/waagent*
@@ -107,7 +108,7 @@ Stderr: mount: unknown filesystem type 'udf'
 2019-10-10 04:51:24,010 - util.py[DEBUG]: Running command ['mount', '-o', 'ro,sync', '-t', 'auto', u'/dev/sr0', '/run/cloud-init/tmp/tmpXXXXX'] with allowed return codes [0] (shell=False, capture=True)
 ```
 
-如果您有[序列主控台](https://docs.microsoft.com/azure/virtual-machines/linux/serial-console-grub-single-user-mode)的存取權，您可以嘗試重新執行 cloud init 嘗試執行的命令。
+如果您有[序列主控台](./serial-console-grub-single-user-mode.md)的存取權，您可以嘗試重新執行 cloud init 嘗試執行的命令。
 
 您 `/var/log/cloud-init.log` 也可以在/etc/cloud/cloud.cfg.d/05_logging cfg 中重新設定的記錄。 如需雲端 init 記錄的詳細資訊，請參閱[雲端 init 檔](https://cloudinit.readthedocs.io/en/latest/topics/logging.html)。 
 
@@ -132,4 +133,4 @@ Stderr: mount: unknown filesystem type 'udf'
 
 ## <a name="next-steps"></a>後續步驟
 
-如果您仍然無法隔離為什麼雲端 init 未執行設定，您需要更仔細查看每個雲端初始化階段中發生的情況，以及執行模組的時機。 如需詳細資訊，請參閱深入探索[雲端 init](https://docs.microsoft.com/azure/virtual-machines/linux/cloud-init-deep-dive)設定。 
+如果您仍然無法隔離為什麼雲端 init 未執行設定，您需要更仔細查看每個雲端初始化階段中發生的情況，以及執行模組的時機。 如需詳細資訊，請參閱深入探索[雲端 init](./cloud-init-deep-dive.md)設定。 

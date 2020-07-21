@@ -12,14 +12,14 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/18/2020
-ms.openlocfilehash: 32347f6d943565eeca7c37a9cdd2cf511e39ddb3
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 507253fcddddf7331ff51c71904c2cdd8e7e5dfd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985304"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514711"
 ---
-# <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Azure SQL 透明資料加密與客戶管理的金鑰
+# <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>搭配使用 Azure SQL 透明資料加密與客戶管理的金鑰
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 Azure SQL[透明資料加密（TDE）](/sql/relational-databases/security/encryption/transparent-data-encryption)與客戶管理的金鑰，可讓攜帶您自己的金鑰（BYOK）案例進行待用資料保護，並可讓組織在金鑰和資料的管理中執行責任分離。 有了客戶管理的透明資料加密，客戶就能以完全控制金鑰生命週期管理（金鑰建立、上傳、輪替、刪除）、金鑰使用許可權，以及對金鑰進行作業的審核。
@@ -62,7 +62,7 @@ Azure SQL[透明資料加密（TDE）](/sql/relational-databases/security/encryp
 
 - **unwrapKey** -能夠解除保護（解密） DEK
 
-金鑰保存庫系統管理員也可以[啟用金鑰保存庫 audit 事件的記錄](../../azure-monitor/insights/azure-key-vault.md)，以便稍後進行審核。
+金鑰保存庫系統管理員也可以[啟用金鑰保存庫 audit 事件的記錄](../../azure-monitor/insights/key-vault-insights-overview.md)，以便稍後進行審核。
 
 當伺服器設定為使用 AKV 的 TDE 保護裝置時，伺服器會將每個已啟用 TDE 之資料庫的 DEK 傳送至金鑰保存庫以進行加密。 Key vault 會傳回加密的 DEK，然後儲存在使用者資料庫中。
 

@@ -7,13 +7,14 @@ ms.service: iot-dps
 services: iot-dps
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: 0b13040b39ed491ec4fee4d6922d41f086edeeb2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 580c378df5fc3912aa540b5d85adf99bc42605e0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79284911"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511937"
 ---
-# <a name="use-ip-filters"></a>使用 IP 篩選器
+# <a name="use-azure-iot-dps-ip-connection-filters"></a>使用 Azure IoT DPS IP 連線篩選器
 
 安全性是任何 IoT 解決方案的重要層面。 有時候您需要在執行安全性設定的程序中明確地指定可連線的裝置 IP 位址。 Azure IoT 中樞裝置布建服務（DPS）的*IP 篩選器*功能可讓您設定規則，以拒絕或接受來自特定 IPv4 位址的流量。
 
@@ -132,7 +133,7 @@ Azure CLI 或 Azure PowerShell 目前不支援更新 DPS IP 篩選器規則，�
 
 根據您的需求更新範本的 IP 篩選規則屬性。
 
-| 屬性                | 說明 |
+| 屬性                | 描述 |
 | ------------------------ | ----------- |
 | **FilterName**           | 提供 IP 篩選規則的名稱。 名稱必須是唯一的、不區分大小寫的英數字元字串，長度上限為 128 個字元。 僅限 ASCII 7 位英數位元加上 {'-'、'： '、'/'、' \' 、'. '、' + '、'% '、' _ '、' # '、' * '、'？ '，'！ ' 已接受 ' （'、'） '、'、'、' = '、' @ '、'; '、' ' '}。 |
 | **動作**               | 接受的值**Accept**    **Reject**   為 IP 篩選規則的 [接受] 或 [拒絕] 做為動作。 |

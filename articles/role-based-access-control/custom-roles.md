@@ -11,17 +11,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/08/2020
+ms.date: 07/13/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3a30ea70c623c8456ae97c8ca9475e4989784edf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d973cf47ed691914b22d62e1a99315c6ea9183d8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82995844"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511597"
 ---
-# <a name="azure-custom-roles"></a>Azure 自訂角色
+# <a name="azure-custom-roles"></a>Azure 自訂角色 (機器翻譯)
 
 > [!IMPORTANT]
 > 將管理群組新增至 `AssignableScopes` 目前為預覽狀態。
@@ -114,17 +115,41 @@ ms.locfileid: "82995844"
 
 下表描述自訂角色屬性的意義。
 
-| 屬性 | 必要 | 類型 | Description |
+| 屬性 | 必要 | 類型 | 描述 |
 | --- | --- | --- | --- |
-| `Name`</br>`roleName` | 是 | String | 自訂角色的顯示名稱。 當角色定義是管理群組或訂用帳戶層級資源時，角色定義可以用於多個共用相同 Azure AD 目錄的訂用帳戶。 此顯示名稱在 Azure AD 目錄範圍中必須是唯一的。 可以包含字母、數字、空格和特殊字元。 字元數目上限是 128。 |
-| `Id`</br>`name` | 是 | String | 自訂角色的唯一識別碼。 針對 Azure PowerShell 和 Azure CLI，當您建立新角色時，會自動產生這個識別碼。 |
-| `IsCustom`</br>`roleType` | 是 | String | 表示這是否為自訂角色。 `true`針對自訂角色，將設為或 `CustomRole` 。 `false`針對內建角色，將設為或 `BuiltInRole` 。 |
-| `Description`</br>`description` | 是 | String | 自訂角色的描述。 可以包含字母、數字、空格和特殊字元。 字元數目上限是 1024。 |
-| `Actions`</br>`actions` | Yes | String[] | 字串陣列，指定角色允許執行的管理作業。 如需詳細資訊，請參閱 [Actions](role-definitions.md#actions)。 |
-| `NotActions`</br>`notActions` | No | String[] | 字串陣列，指定從所允許 `Actions` 中排除的管理作業。 如需詳細資訊，請參閱 [NotActions](role-definitions.md#notactions)。 |
-| `DataActions`</br>`dataActions` | No | String[] | 字串陣列，指定角色允許對物件內資料執行的管理作業。 如果您使用建立自訂角色 `DataActions` ，該角色就無法在管理群組範圍中指派。 如需詳細資訊，請參閱[DataActions](role-definitions.md#dataactions)。 |
-| `NotDataActions`</br>`notDataActions` | No | String[] | 字串陣列，指定從所允許 `DataActions` 中排除的資料作業。 如需詳細資訊，請參閱[NotDataActions](role-definitions.md#notdataactions)。 |
-| `AssignableScopes`</br>`assignableScopes` | Yes | String[] | 字串陣列，指定自訂角色可用於指派的範圍。 您只能在自訂角色中定義一個管理群組 `AssignableScopes` 。 將管理群組新增至 `AssignableScopes` 目前為預覽狀態。 如需詳細資訊，請參閱 [AssignableScopes](role-definitions.md#assignablescopes)。 |
+| `Name`</br>`roleName` | 是 | 字串 | 自訂角色的顯示名稱。 當角色定義是管理群組或訂用帳戶層級資源時，角色定義可以用於多個共用相同 Azure AD 目錄的訂用帳戶。 此顯示名稱在 Azure AD 目錄範圍中必須是唯一的。 可以包含字母、數字、空格和特殊字元。 字元數目上限是 128。 |
+| `Id`</br>`name` | 是 | 字串 | 自訂角色的唯一識別碼。 針對 Azure PowerShell 和 Azure CLI，當您建立新角色時，會自動產生這個識別碼。 |
+| `IsCustom`</br>`roleType` | 是 | 字串 | 表示這是否為自訂角色。 `true`針對自訂角色，將設為或 `CustomRole` 。 `false`針對內建角色，將設為或 `BuiltInRole` 。 |
+| `Description`</br>`description` | 是 | 字串 | 自訂角色的描述。 可以包含字母、數字、空格和特殊字元。 字元數目上限是 1024。 |
+| `Actions`</br>`actions` | 是 | String[] | 字串陣列，指定角色允許執行的管理作業。 如需詳細資訊，請參閱 [Actions](role-definitions.md#actions)。 |
+| `NotActions`</br>`notActions` | 否 | String[] | 字串陣列，指定從所允許 `Actions` 中排除的管理作業。 如需詳細資訊，請參閱 [NotActions](role-definitions.md#notactions)。 |
+| `DataActions`</br>`dataActions` | 否 | String[] | 字串陣列，指定角色允許對物件內資料執行的管理作業。 如果您使用建立自訂角色 `DataActions` ，該角色就無法在管理群組範圍中指派。 如需詳細資訊，請參閱[DataActions](role-definitions.md#dataactions)。 |
+| `NotDataActions`</br>`notDataActions` | 否 | String[] | 字串陣列，指定從所允許 `DataActions` 中排除的資料作業。 如需詳細資訊，請參閱[NotDataActions](role-definitions.md#notdataactions)。 |
+| `AssignableScopes`</br>`assignableScopes` | 是 | String[] | 字串陣列，指定自訂角色可用於指派的範圍。 您只能在自訂角色中定義一個管理群組 `AssignableScopes` 。 將管理群組新增至 `AssignableScopes` 目前為預覽狀態。 如需詳細資訊，請參閱 [AssignableScopes](role-definitions.md#assignablescopes)。 |
+
+## <a name="wildcard-permissions"></a>萬用字元許可權
+
+`Actions`、 `NotActions` 、 `DataActions` 和 `NotDataActions` 支援萬用字元（ `*` ）來定義許可權。 萬用字元（ `*` ）會將許可權延伸到符合您所提供之動作字串的所有專案。 例如，假設您想要加入與 Azure 成本管理和匯出相關的擁有權限。 您可以新增所有這些動作字串：
+
+```
+Microsoft.CostManagement/exports/action
+Microsoft.CostManagement/exports/read
+Microsoft.CostManagement/exports/write
+Microsoft.CostManagement/exports/delete
+Microsoft.CostManagement/exports/run/action
+```
+
+您可以直接加入萬用字元字串，而不是新增所有這些字串。 例如，下列萬用字元字串相當於前五個字串。 這也包括未來可能會新增的任何匯出許可權。
+
+```
+Microsoft.CostManagement/exports/*
+```
+
+您也可以在字串中有多個萬用字元。 例如，下列字串代表成本管理的所有查詢許可權。
+
+```
+Microsoft.CostManagement/*/query/*
+```
 
 ## <a name="steps-to-create-a-custom-role"></a>建立自訂角色的步驟
 
@@ -154,7 +179,7 @@ ms.locfileid: "82995844"
 | --- | --- | --- |
 | 建立/刪除自訂角色 | `Microsoft.Authorization/ roleDefinitions/write` | 獲得授權可對自訂角色的所有 `AssignableScopes` 執行此作業的使用者，可以建立 (或刪除) 用於這些範圍的自訂角色。 例如，管理群組、訂用帳戶和資源群組的[擁有](built-in-roles.md#owner)者和[使用者存取系統管理員](built-in-roles.md#user-access-administrator)。 |
 | 更新自訂角色 | `Microsoft.Authorization/ roleDefinitions/write` | 獲得授權可對自訂角色的所有 `AssignableScopes` 執行此作業的使用者，可以在這些範圍中更新自訂角色。 例如，管理群組、訂用帳戶和資源群組的[擁有](built-in-roles.md#owner)者和[使用者存取系統管理員](built-in-roles.md#user-access-administrator)。 |
-| 檢視自訂角色 | `Microsoft.Authorization/ roleDefinitions/read` | 獲得授權可在範圍中執行此作業的使用者，可以檢視可指派給該範圍的自訂角色。 所有內建角色都允許指派自訂角色。 |
+| 檢視自訂角色 | `Microsoft.Authorization/ roleDefinitions/read` | 獲得授權可在範圍中執行此作業的使用者，可以檢視可指派給該範圍的自訂角色。 所有內建角色都允許自訂角色以供指派。 |
 
 ## <a name="custom-role-limits"></a>自訂角色限制
 

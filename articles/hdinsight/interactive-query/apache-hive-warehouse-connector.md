@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: c2590a2c745969313ae73521dbcd110fbf3b7551
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 24968511d038b2cea41a59187c0a361684c6720e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86221012"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511886"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-hive-warehouse-connector-in-azure-hdinsight"></a>在 Azure HDInsight 上將 Apache Spark 和 Apache Hive 與 Hive Warehouse Connector 整合起來
 
@@ -98,7 +98,7 @@ Hive Warehouse Connector 需要為 Spark 和 Interactive Query 工作負載準�
     |----|----|
     | `spark.sql.hive.hiveserver2.jdbc.url.principal`    | `hive/<llap-headnode>@<AAD-Domain>` |
     
-    * 從網頁瀏覽器流覽至， `https://CLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/summary` 其中 CLUSTERNAME 是您的互動式查詢叢集的名稱。 按一下 [ **HiveServer2 Interactive**]。 您會看到 LLAP 執行所在之前端節點的完整功能變數名稱 (FQDN) ，如螢幕擷取畫面所示。 取代 `<llap-headnode>` 為此值。
+    * 從網頁瀏覽器流覽至， `https://CLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/summary` 其中 CLUSTERNAME 是您的互動式查詢叢集的名稱。 按一下 [ **HiveServer2 Interactive**]。 您會看到 LLAP 在其上執行之前端節點的完整功能變數名稱（FQDN），如螢幕擷取畫面所示。 取代 `<llap-headnode>` 為此值。
 
         ![hive 倉儲連接器前端節點](./media/apache-hive-warehouse-connector/head-node-hive-server-interactive.png)
 
@@ -179,9 +179,9 @@ Hive Warehouse Connector 需要為 Spark 和 Interactive Query 工作負載準�
 
 針對 Python，請一併新增下列設定。 
 
-    ```python
-    --py-files /usr/hdp/current/hive_warehouse_connector/pyspark_hwc-<VERSION>.zip
-    ```
+```python
+--py-files /usr/hdp/current/hive_warehouse_connector/pyspark_hwc-<VERSION>.zip
+```
     
 ## <a name="run-queries-on-enterprise-security-package-esp-clusters"></a>在企業安全性套件 (ESP) 叢集上執行查詢
 

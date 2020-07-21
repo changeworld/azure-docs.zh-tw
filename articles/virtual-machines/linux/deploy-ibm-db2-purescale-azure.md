@@ -6,11 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 11/09/2018
 ms.author: edprice
-ms.openlocfilehash: 98e912894a4d93a057a2f6a2153d0690deaed250
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e2ec4bfe04112d300a63e6326f0391968e385f7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78968903"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510721"
 ---
 # <a name="deploy-ibm-db2-purescale-on-azure"></a>在 Azure 上部署 IBM DB2 pureScale
 
@@ -25,7 +26,7 @@ ms.locfileid: "78968903"
 存放庫也有可供設定 Grafana 儀表板的指令碼。 您可以使用此儀表板來查詢 Prometheus 這個開放原始碼監視與警示系統 (DB2 所隨附) 的指令碼。
 
 > [!NOTE]
-> 用戶端上的 deploy.sh 指令碼會建立私人 SSH 金鑰並透過 HTTPS 將它們傳遞到部署範本。 若要獲得更高的安全性，我們建議您使用 [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) 來存放祕密、金鑰與密碼。
+> 用戶端上的 deploy.sh 指令碼會建立私人 SSH 金鑰並透過 HTTPS 將它們傳遞到部署範本。 若要獲得更高的安全性，我們建議您使用 [Azure Key Vault](../../key-vault/general/overview.md) 來存放祕密、金鑰與密碼。
 
 ## <a name="how-the-deployment-script-works"></a>部署指令碼如何運作
 
@@ -74,9 +75,9 @@ GitHub 存放庫包括 DB2server.rsp 回應檔 (.rsp)，此檔案可讓您產生
 |---------------------------|----------------------------------------------|-------------------------------------------------------------------------------------------------------|
 | 歡迎使用                   |                                              | 新安裝                                                                                           |
 | 選擇產品          |                                              | DB2 版本 11.1.3.3。 具有 DB2 pureScale 的伺服器版本                                              |
-| 組態             | 目錄                                    | /data1/opt/ibm/db2/V11.1                                                                              |
+| 設定             | 目錄                                    | /data1/opt/ibm/db2/V11.1                                                                              |
 |                           | 選取安裝類型                 | 一般                                                                                               |
-|                           | 我同意 IBM 條款                     | 已檢查                                                                                               |
+|                           | 我同意 IBM 條款                     | 已核取                                                                                               |
 | 執行個體擁有者            | 例如現有使用者、使用者名稱        | DB2sdin1                                                                                              |
 | 受限使用者               | 現有使用者、使用者名稱                     | DB2sdfe1                                                                                              |
 | 叢集檔案系統       | 共用磁碟磁碟分割裝置路徑            | /dev/dm-2                                                                                             |

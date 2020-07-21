@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/08/2019
-ms.openlocfilehash: 043369bd6112c4cac36539bbd764393d889439c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: de42a70cf2950aca3dbe151407671306c793ed10
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84696961"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515490"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Azure 診斷疑難排解
 本文說明有關使用 Azure 診斷的疑難排解資訊。 如需有關 Azure 診斷的詳細資訊，請參閱 [Azure 診斷概觀](diagnostics-extension-overview.md)。
@@ -49,7 +50,7 @@ ms.locfileid: "84696961"
 | **MonAgentHost 記錄檔** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics \<DiagnosticsVersion> \WAD0107\Configuration\MonAgentHost. <seq_num> .log |
 
 ## <a name="metric-data-doesnt-appear-in-the-azure-portal"></a>計量資料沒有出現在 Azure 入口網站中
-Azure 診斷會提供計量資料，這些資料可以在 Azure 入口網站中顯示。 如果您在入口網站中看到資料時遇到問題，請檢查 \* Azure 診斷儲存體帳戶中的 WADMetrics 資料表，以查看對應的計量記錄是否存在，並確定已註冊[資源提供者](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services)Microsoft. Insights。
+Azure 診斷會提供計量資料，這些資料可以在 Azure 入口網站中顯示。 如果您在入口網站中看到資料時遇到問題，請檢查 \* Azure 診斷儲存體帳戶中的 WADMetrics 資料表，以查看對應的計量記錄是否存在，並確定已註冊[資源提供者](../../azure-resource-manager/management/resource-providers-and-types.md)Microsoft. Insights。
 
 此處的表格 **PartitionKey** 是資源識別碼、虛擬機器或虛擬機器擴展集。 **RowKey** 是度量的名稱 (也稱為效能計數器名稱)。
 
@@ -164,7 +165,7 @@ Azure 儲存體中保存 ETW 事件的表格使用以下程式碼來命名：
             tableName = "WAD" + eventDestination;
 ```
 
-範例如下：
+以下是範例：
 
 ```XML
         <EtwEventSourceProviderConfiguration provider="prov1">
@@ -227,7 +228,7 @@ Azure 儲存體中保存 ETW 事件的表格使用以下程式碼來命名：
 ### <a name="azure-diagnostics-plugin-exit-codes"></a>Azure 診斷外掛程式結束代碼
 外掛程式會傳回下列結束代碼：
 
-| 結束碼 | 說明 |
+| 結束碼 | 描述 |
 | --- | --- |
 | 0 |成功。 |
 | -1 |一般錯誤。 |
@@ -296,4 +297,3 @@ System.IO.FileLoadException: Could not load file or assembly 'System.Threading.T
 - 儲存體中的資料是否具有英文計數器名稱。 如果計數器名稱不是英文，入口網站計量圖表將無法辨識該計數器。 **緩解方式**：針對系統帳戶，將電腦的語言變更為英文。 若要這樣做，請選取 [**控制台**]  >  **區域**系統  >  **管理**  >  **複製設定**。 接下來，取消選取 [歡迎畫面及系統帳戶]****，如此一來自訂語言就不會套用到系統帳戶。
 
 - 如果您在效能計數器名稱中使用萬用字元 (\*)，在將效能計數器傳送至 Azure 儲存體接收時，入口網站將無法關聯設定和收集的計數器。 **緩和**：為確保您可以使用萬用字元，並讓入口網站展開（ \* ），請將效能計數器路由傳送至 Azure 監視器接收。
-

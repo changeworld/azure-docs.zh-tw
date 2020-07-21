@@ -9,12 +9,12 @@ ms.date: 4/21/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: e55d3f704c76d2783c3e442a90c829448129a4d0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b0952f31bf6e327ff6d9f632f242919139ed6cae
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82134412"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512005"
 ---
 # <a name="deploy-iot-edge-modules-at-scale-using-the-azure-portal"></a>使用 Azure 入口網站大規模部署 IoT Edge 模組
 
@@ -61,7 +61,7 @@ IoT Edge 提供兩種不同類型的自動部署，您可以用來自訂您的�
 
 ### <a name="step-2-modules"></a>步驟2：模組
 
-您最多可以在部署中新增20個模組。 如果您建立不含模組的部署，它會從目標裝置移除任何目前的模組。
+您最多可以在部署中新增30個模組。 如果您建立不含模組的部署，它會從目標裝置移除任何目前的模組。
 
 在 [部署] 中，您可以管理 IoT Edge 代理程式和 IoT Edge 中樞模組的設定。 選取 [**執行時間設定**] 來設定這兩個執行時間模組。 在分層部署中，不會包含執行時間模組，因此無法設定。
 
@@ -208,8 +208,8 @@ IoT Edge 提供兩種不同類型的自動部署，您可以用來自訂您的�
    ![檢視 IoT Edge 部署](./media/how-to-deploy-monitor/iot-edge-deployments.png)
 
 1. 使用核取方塊來選取您想要刪除的部署。
-1. 選取 [刪除] 。
-1. 提示將會通知您，這個動作將刪除此部署，並將所有裝置還原成先前狀態。將會套用優先順序較低的部署。如果沒有將其他部署設為目標，將不會移除任何模組。 如果您想要從裝置中移除所有模組，請建立不含模組的部署，並將其部署至相同的裝置。選取 **[是]** 以繼續。
+1. 選取 [刪除]。
+1. 提示將會通知您，這個動作將刪除此部署，並將所有裝置還原成先前狀態。將會套用優先順序較低的部署。如果沒有將其他部署設為目標，將不會移除任何模組。 如果您想要從裝置中移除所有模組，請建立不含模組的部署，並將其部署至相同的裝置。選取 [是] 以繼續。
 
 ## <a name="next-steps"></a>後續步驟
 

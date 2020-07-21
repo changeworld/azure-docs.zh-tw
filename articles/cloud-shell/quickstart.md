@@ -10,11 +10,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: damaerte
-ms.openlocfilehash: 58d795a5aee79e4149864a79a923ce34950b31d6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3001e814a5f31725bfc78385d2435bbb0e971d40
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79458064"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513014"
 ---
 # <a name="quickstart-for-bash-in-azure-cloud-shell"></a>Azure Cloud Shell 中 Bash 的快速入門
 
@@ -25,7 +26,7 @@ ms.locfileid: "79458064"
 
 ## <a name="start-cloud-shell"></a>啟動 Cloud Shell
 1. 從 Azure 入口網站的頂端導覽啟動**Cloud Shell** 。 <br>
-![](media/quickstart/shell-icon.png)
+![顯示如何在 Azure 入口網站中啟動 Azure Cloud Shell 的螢幕擷取畫面。](media/quickstart/shell-icon.png)
 
 2. 選取用來建立儲存體帳戶和 Microsoft Azure 檔案共用的訂用帳戶。
 3. 選取 [建立儲存體]
@@ -35,7 +36,7 @@ ms.locfileid: "79458064"
 
 ### <a name="select-the-bash-environment"></a>選取 Bash 環境
 確認殼層視窗左側的環境下拉式清單顯示為 `Bash`。 <br>
-![](media/quickstart/env-selector.png)
+![螢幕擷取畫面，顯示如何選取 Azure Cloud Shell 的 Bash 環境。](media/quickstart/env-selector.png)
 
 ### <a name="set-your-subscription"></a>設定您的訂用帳戶
 1. 列出您可存取的訂用帳戶。
@@ -43,10 +44,11 @@ ms.locfileid: "79458064"
    az account list
    ```
 
-2. 設定您慣用的訂用帳戶： <br>
-```azurecli-interactive
-az account set --subscription 'my-subscription-name'
-```
+2. 設定您慣用的訂用帳戶：
+
+   ```azurecli-interactive
+   az account set --subscription 'my-subscription-name'
+   ```
 
 > [!TIP]
 > 系統將使用 `/home/<user>/.azure/azureProfile.json` 來記住您的訂用帳戶，以供未來工作階段使用。
@@ -72,7 +74,7 @@ az vm create -n myVM -g MyRG --image UbuntuLTS --generate-ssh-keys
 ### <a name="ssh-into-your-linux-vm"></a>透過 SSH 連線到您的 Linux VM
 1. 在 Azure 入口網站搜尋列中搜尋您的 VM 名稱。
 2. 按一下 [連接] 以取得您的 VM 名稱和公用 IP 位址。 <br>
-   ![](media/quickstart/sshcmd-copy.png)
+   ![螢幕擷取畫面，顯示如何使用 S H 連接到 Linux V M。](media/quickstart/sshcmd-copy.png)
 
 3. 使用 `ssh` CMD，透過 SSH 連線到您的 VM。
    ```
@@ -80,7 +82,7 @@ az vm create -n myVM -g MyRG --image UbuntuLTS --generate-ssh-keys
    ```
 
 建立 SSH 連線時，應該會看到 Ubuntu 歡迎提示。 <br>
-![](media/quickstart/ubuntu-welcome.png)
+![在您建立 S H 連線之後，顯示 Ubuntu 初始化和歡迎提示的螢幕擷取畫面。](media/quickstart/ubuntu-welcome.png)
 
 ## <a name="cleaning-up"></a>清除 
 1. 結束 SSH 工作階段。

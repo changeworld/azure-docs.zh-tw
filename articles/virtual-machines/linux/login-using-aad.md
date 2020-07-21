@@ -7,12 +7,12 @@ ms.topic: article
 ms.workload: infrastructure
 ms.date: 08/29/2019
 ms.author: iainfou
-ms.openlocfilehash: 2731693667d2129a72da72455c6bbdd74c277697
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c5275a979cbffe7fb6600978487454ac11cd2002
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80366493"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510424"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>預覽：使用 Azure Active Directory authentication 登入 Azure 中的 Linux 虛擬機器
 
@@ -109,7 +109,7 @@ az vm extension set \
     --vm-name myVM
 ```
 
-在 VM 上成功安裝延伸模組後，就會顯示 [*成功*] 的*provisioningState* 。 VM 需要執行中的 VM 代理程式才能安裝延伸模組。 如需詳細資訊，請參閱[VM 代理程式總覽](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows)。
+在 VM 上成功安裝延伸模組後，就會顯示 [*成功*] 的*provisioningState* 。 VM 需要執行中的 VM 代理程式才能安裝延伸模組。 如需詳細資訊，請參閱[VM 代理程式總覽](../extensions/agent-windows.md)。
 
 ## <a name="configure-role-assignments-for-the-vm"></a>設定 VM 的角色指派
 
@@ -138,7 +138,7 @@ az role assignment create \
 
 如需關於如何使用 RBAC 來管理 Azure 訂用帳戶資源存取權的詳細資訊，請參閱使用 [Azure CLI](../../role-based-access-control/role-assignments-cli.md)、[Azure 入口網站](../../role-based-access-control/role-assignments-portal.md)或 [Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md)。
 
-您也可以設定 Azure AD，以要求特定使用者需要進行多因素驗證才能登入 Linux 虛擬機器。 如需詳細資訊，請參閱[開始在雲端中使用 Azure Multi-Factor Authentication](../../multi-factor-authentication/multi-factor-authentication-get-started-cloud.md)。
+您也可以設定 Azure AD，以要求特定使用者需要進行多因素驗證才能登入 Linux 虛擬機器。 如需詳細資訊，請參閱[開始在雲端中使用 Azure Multi-Factor Authentication](../../active-directory/authentication/howto-mfa-getstarted.md)。
 
 ## <a name="log-in-to-the-linux-virtual-machine"></a>登入 Linux 虛擬機器
 

@@ -3,17 +3,17 @@ title: 將 Azure 事件中樞與 Azure Private Link 服務整合
 description: 了解如何將 Azure 事件中樞與 Azure Private Link 服務整合
 ms.date: 06/23/2020
 ms.topic: article
-ms.openlocfilehash: aa1eb4df425d83a37fbf4ac69e0e256c464dc5c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bfed3f8e4c19463e10b721006d742726cf916900
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85312824"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512245"
 ---
 # <a name="integrate-azure-event-hubs-with-azure-private-link"></a>將 Azure 事件中樞與 Azure Private Link 整合
 Azure Private Link 服務可讓您透過虛擬網路中的**私人端點**存取各 Azure 服務 (例如 Azure 事件中樞、Azure 儲存體和 Azure Cosmos DB)，以及 Azure 裝載的客戶/合作夥伴服務。
 
-私人端點是一種網路介面，可讓您以私人且安全的方式連線至 Azure Private Link 所支援的服務。 私人端點會使用您 VNet 中的私人 IP 位址，有效地將服務帶入您的 VNet 中。 服務的所有流量都可以透過私人端點路由傳送，因此不需要閘道、NAT 裝置、ExpressRoute 或 VPN 連線或公用 IP 位址。 虛擬網路和服務間的流量會在通過 Microsoft 骨幹網路時隨之減少，降低資料在網際網路中公開的風險。 您可連線到 Azure 資源的執行個體，以取得最高層級的存取控制細微性。
+私人端點是一種網路介面，可讓您以私人且安全的方式連線至 Azure Private Link 所支援的服務。 私人端點會使用您虛擬網路中的私人 IP 位址，有效地將服務帶入您的虛擬網路。 服務的所有流量都可以透過私人端點路由傳送，因此不需要閘道、NAT 裝置、ExpressRoute 或 VPN 連線或公用 IP 位址。 虛擬網路和服務間的流量會在通過 Microsoft 骨幹網路時隨之減少，降低資料在網際網路中公開的風險。 您可連線到 Azure 資源的執行個體，以取得最高層級的存取控制細微性。
 
 如需詳細資訊，請參閱[何謂 Azure Private Link？](../private-link/private-link-overview.md)
 
@@ -58,10 +58,13 @@ Azure Private Link 服務可讓您透過虛擬網路中的**私人端點**存取
 2. 在搜尋列中輸入**事件中樞**。
 3. 從清單中選取您要新增私人端點的**命名空間**。
 4. 選取 [設定] 底下的 [網路] 索引標籤。
-5. 選取頁面頂端的 [私人端點連線] 索引標籤。 
-6. 選取頁面頂端的 [+ 私人端點] 按鈕。
 
-    ![映像](./media/private-link-service/private-link-service-3.png)
+    > [!NOTE]
+    > 您只會看到**標準**或**專用**命名空間的 [**網路**功能] 索引標籤。 
+1. 選取頁面頂端的 [私人端點連線] 索引標籤。 
+1. 選取頁面頂端的 [+ 私人端點] 按鈕。
+
+    :::image type="content" source="./media/private-link-service/private-link-service-3.png" alt-text="網路頁面-私人端點連線索引標籤-新增私人端點連結":::
 7. 在 [基本] 頁面上，遵循下列步驟： 
     1. 選取您要在其中建立私人端點的 **Azure 訂閱**。 
     2. 選取私人端點資源的**資源群組**。
@@ -214,7 +217,7 @@ foreach ($ipconfig in $networkInterface.properties.ipConfigurations) {
 2. 選取您想要核准的**私人端點**
 3. 選取 [核准] 按鈕。
 
-    ![Image](./media/private-link-service/approve-private-endpoint.png)
+    ![映像](./media/private-link-service/approve-private-endpoint.png)
 4. 在 [核准連線] 頁面上，新增註解 (選擇性)，然後選取 [是]。 如果您選取 [否]，則不會發生任何事。 
 5. 您應該會看見清單中私人端點連線的狀態變更為 [已核准]。 
 

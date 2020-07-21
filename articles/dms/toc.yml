@@ -12,6 +12,7 @@
         - name: 入口網站
           href: quickstart-create-data-migration-service-portal.md
         - name: ARM 範本
+          displayName: Resource Manager
           href: create-dms-resource-manager-template.md
         - name: 在混合模式中 (入口網站)
           href: quickstart-create-data-migration-service-hybrid-portal.md

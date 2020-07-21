@@ -8,12 +8,12 @@ ms.date: 03/26/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6a4b90d8b6fe67de26c8e652e0dc5b62cc27023f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dd2b9bc462a9d4bc11f49a7e3294e52f88a926fb
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80545635"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511835"
 ---
 # <a name="learn-how-to-deploy-modules-and-establish-routes-in-iot-edge"></a>了解如何在 IoT Edge 中部署模組及建立路由
 
@@ -38,7 +38,7 @@ ms.locfileid: "80545635"
 
 每個部署資訊清單中都必須要有兩個模組：`$edgeAgent` 及 `$edgeHub`。 這些模組是 IoT Edge 執行階段的一部分，負責管理 IoT Edge 裝置與其上執行的模組。 如需這些模組的詳細資訊，請參閱[了解 IoT Edge 執行階段及其架構](iot-edge-runtime.md)。
 
-除了兩個執行階段模組之外，您可以新增最多 20 個您自己的模組，來在 IoT Edge 裝置上執行。
+除了這兩個執行時間模組之外，您還可以新增多達您自己的30個模組，以在 IoT Edge 裝置上執行。
 
 僅包含 IoT Edge 執行階段 (edgeAgent 與 edgeHub) 的部署資訊清單為有效。
 

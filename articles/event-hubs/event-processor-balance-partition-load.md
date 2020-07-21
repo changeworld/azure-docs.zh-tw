@@ -3,12 +3,12 @@ title: 平衡多個實例之間的分割區負載-Azure 事件中樞 |Microsoft 
 description: 描述如何使用事件處理器和 Azure 事件中樞 SDK，在應用程式的多個實例之間平衡分割區負載。
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: d5db1e877c1bfa6fac177e1ff8ed137e0301b709
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ff68408be15d8160ea7ecd878a05441d82700f99
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85314994"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512311"
 ---
 # <a name="balance-partition-load-across-multiple-instances-of-your-application"></a>平衡應用程式多個實例之間的分割區負載
 若要調整您的事件處理應用程式，您可以執行應用程式的多個實例，並讓它在負載之間取得平衡。 在較舊的版本中， [EventProcessorHost](event-hubs-event-processor-host.md)允許您在接收時，平衡程式的多個實例與檢查點事件之間的負載。 在較新的版本（5.0）中， **EventProcessorClient** （.Net 和 JAVA）或**EventHubConsumerClient** （Python 和 JavaScript）可讓您執行相同的動作。 使用事件可讓開發模型變得更簡單。 您可以藉由註冊事件處理常式來訂閱您感興趣的事件。
@@ -16,7 +16,7 @@ ms.locfileid: "85314994"
 本文說明使用多個實例從事件中樞讀取事件的範例案例，然後提供事件處理器用戶端功能的詳細資料，讓您一次從多個分割區接收事件，並與其他使用相同事件中樞和取用者群組的取用者進行負載平衡。
 
 > [!NOTE]
-> 分割取用者概念是針對事件中樞調整大小的關鍵。 與[競爭取用者](https://msdn.microsoft.com/library/dn568101.aspx)模式相比，分割取用者模式可藉由消除爭奪瓶頸，以及加速端對端平行處理原則來具有高度縮放能力。
+> 分割取用者概念是針對事件中樞調整大小的關鍵。 與[競爭取用者](/previous-versions/msp-n-p/dn568101(v=pandp.10))模式相比，分割取用者模式可藉由消除爭奪瓶頸，以及加速端對端平行處理原則來具有高度縮放能力。
 
 ## <a name="example-scenario"></a>範例案例
 
@@ -66,7 +66,7 @@ ms.locfileid: "85314994"
 
 我們建議您執行相當快速的動作。 也就是說，儘量少處理。 如果您需要寫入儲存體並進行某些路由，最好使用兩個取用者群組，並有兩個事件處理器。
 
-## <a name="checkpointing"></a>檢查點
+## <a name="checkpointing"></a>檢查點檢查
 
 *檢查點*是事件處理器用來標記或認可資料分割內上次成功處理事件之位置的進程。 標記檢查點通常會在處理事件的函式中完成，並在取用者群組內以每個分割區為基礎發生。 
 
@@ -75,7 +75,7 @@ ms.locfileid: "85314994"
 當執行檢查點以將事件標示為已處理時，檢查點存放區中的專案會以事件的位移和序號來新增或更新。 使用者應該決定更新檢查點的頻率。 在每個成功處理的事件之後更新，會在觸發基礎檢查點存放區的寫入作業時，產生效能和成本的影響。 此外，每個單一事件的檢查點都是指佇列訊息模式，其中服務匯流排佇列可能是比事件中樞更好的選項。 事件中樞背後的構想是，在大型規模中您能取得「至少一次」的傳遞。 藉由讓您的下游系統具有等冪性，即可輕鬆地從失敗中復原，或以接收多次的相同事件重新啟動該結果。
 
 > [!NOTE]
-> 如果您在支援儲存體 Blob SDK 不同版本的環境中使用 Azure Blob 儲存體做為檢查點存放區，而不是在 Azure 上提供，您必須使用程式碼，將儲存體服務 API 版本變更為該環境所支援的特定版本。 例如，如果您在[Azure Stack Hub 2002 版上執行事件中樞](https://docs.microsoft.com/azure-stack/user/event-hubs-overview)，儲存體服務的最高可用版本是2017-11-09 版。 在此情況下，您必須使用程式碼，將儲存體服務 API 版本的目標設為2017-11-09。 如需如何以特定儲存體 API 版本為目標的範例，請參閱 GitHub 上的下列範例： 
+> 如果您在支援儲存體 Blob SDK 不同版本的環境中使用 Azure Blob 儲存體做為檢查點存放區，而不是在 Azure 上提供，您必須使用程式碼，將儲存體服務 API 版本變更為該環境所支援的特定版本。 例如，如果您在[Azure Stack Hub 2002 版上執行事件中樞](/azure-stack/user/event-hubs-overview)，儲存體服務的最高可用版本是2017-11-09 版。 在此情況下，您必須使用程式碼，將儲存體服務 API 版本的目標設為2017-11-09。 如需如何以特定儲存體 API 版本為目標的範例，請參閱 GitHub 上的下列範例： 
 > - [.Net](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs)。 
 > - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/)
 > - [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript)或[TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/typescript)

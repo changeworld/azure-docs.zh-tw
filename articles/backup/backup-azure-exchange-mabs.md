@@ -4,18 +4,18 @@ description: 了解如何使用 Azure 備份伺服器將 Exchange Server 備份�
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 03/24/2017
-ms.openlocfilehash: 1d7d28d813df82a5e1ea0fe424bba2ef5a9a2684
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2e3e89d93ab35724a09138d48863badad6a41b71
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80421342"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514113"
 ---
 # <a name="back-up-an-exchange-server-to-azure-with-azure-backup-server"></a>使用 Azure 備份伺服器將 Exchange Server 備份至 Azure
 
 本文說明如何設定 Microsoft Azure 備份伺服器 (MABS)，以將 Microsoft Exchange Server 備份至 Azure。  
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 繼續之前，請確定已[安裝並備妥](backup-azure-microsoft-azure-backup.md) Azure 備份伺服器。
 
@@ -23,8 +23,8 @@ ms.locfileid: "80421342"
 
 若要在 Exchange Server 上安裝 MABS 保護代理程式，請遵循下列步驟：
 
-1. 請確定已正確設定防火牆。 請參閱 [設定代理程式的防火牆例外狀況](https://docs.microsoft.com/system-center/dpm/configure-firewall-settings-for-dpm?view=sc-dpm-2019)。
-2. 按一下 MABS 系統管理員主控台中的 [管理] > [代理程式] > [安裝]****，在 Exchange Server 上安裝代理程式。 如需詳細步驟，請參閱[安裝 MABS 保護代理程式](https://docs.microsoft.com/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019) 。
+1. 請確定已正確設定防火牆。 請參閱 [設定代理程式的防火牆例外狀況](/system-center/dpm/configure-firewall-settings-for-dpm?view=sc-dpm-2019)。
+2. 按一下 MABS 系統管理員主控台中的 [管理] > [代理程式] > [安裝]****，在 Exchange Server 上安裝代理程式。 如需詳細步驟，請參閱[安裝 MABS 保護代理程式](/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019) 。
 
 ## <a name="create-a-protection-group-for-the-exchange-server"></a>建立 Exchange Server 的保護群組
 
@@ -34,7 +34,7 @@ ms.locfileid: "80421342"
 4. 選取您想要保護的 Exchange Server 資料庫，然後按 [下一步] ****。
 
    > [!NOTE]
-   > 如果您要保護 Exchange 2013，請檢查 [Exchange 2013 先決條件](https://docs.microsoft.com/system-center/dpm/back-up-exchange?view=sc-dpm-2016)。
+   > 如果您要保護 Exchange 2013，請檢查 [Exchange 2013 先決條件](/system-center/dpm/back-up-exchange)。
    >
    >
 
@@ -47,7 +47,7 @@ ms.locfileid: "80421342"
 
    * 我想要使用磁碟進行短期保護。
    * 我想要線上保護。
-6. 按一下 [下一步] 。
+6. 按 [下一步] 。
 7. 如果您想要檢查 Exchange Server 資料庫的完整性，請選取 [執行 Eseutil 以檢查資料完整性] **** 選項。
 
     選取此選項之後，將會在 MABS 上執行備份一致性檢查，以避免在 Exchange server 上執行**eseutil**命令所產生的 i/o 流量。
@@ -57,7 +57,7 @@ ms.locfileid: "80421342"
    > ![eseutil 錯誤](./media/backup-azure-backup-exchange-server/eseutil-error.png)
    >
    >
-8. 按一下 [下一步] 。
+8. 按 [下一步] 。
 9. 選取用於 [複製備份]**** 的資料庫，然後按 [下一步]****。
 
    > [!NOTE]

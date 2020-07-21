@@ -15,11 +15,12 @@ ms.date: 05/08/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 3dc2834af501d3ecc2ff44c2511916447f27cfae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7c6f9203385c47da9803fb05358889d00d77d3e5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82996605"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511631"
 ---
 # <a name="understand-azure-role-definitions"></a>瞭解 Azure 角色定義
 
@@ -27,7 +28,7 @@ ms.locfileid: "82996605"
 
 ## <a name="role-definition"></a>角色定義
 
-「角色定義」是權限集合。 有時簡稱為「角色」**。 角色定義會列出可執行的作業，例如讀取、寫入和刪除。 它也可以列出從允許的作業或與基礎資料相關的作業中排除的作業。
+「角色定義」是權限集合。 有時就是所謂的*角色*。 角色定義會列出可執行的作業，例如讀取、寫入和刪除。 它也可以列出從允許的作業或與基礎資料相關的作業中排除的作業。
 
 以下顯示使用 Azure PowerShell 顯示時，角色定義中的屬性範例：
 
@@ -59,7 +60,7 @@ assignableScopes []
 
 下表描述角色屬性的意義。
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 | --- | --- |
 | `Name`</br>`roleName` | 角色的顯示名稱。 |
 | `Id`</br>`name` | 角色的唯一識別碼。 |
@@ -79,7 +80,7 @@ assignableScopes []
 
 作業字串的 `{action}` 部分指定您可以對資源類型執行的作業類型。 例如，您將會在 `{action}` 中看到下列子字串：
 
-| 動作子字串    | Description         |
+| 動作子字串    | 描述         |
 | ------------------- | ------------------- |
 | `*` | 此萬用字元會授與所有符合字串之作業的存取權。 |
 | `read` | 啟用讀取作業 (GET)。 |
@@ -89,7 +90,7 @@ assignableScopes []
 
 ### <a name="role-definition-example"></a>角色定義範例
 
-以下是 Azure PowerShell 和 Azure CLI 中所顯示的「[參與者](built-in-roles.md#contributor)」角色定義。 `Actions` 下的萬用字元 (`*`) 作業表示指派給這個角色的主體可以執行所有動作；換句話說，它可以管理所有項目。 這包括未來 Azure 新增資源類型時所定義的動作。 `NotActions` 下的作業會從 `Actions` 扣除。 如果是[參與者](built-in-roles.md#contributor)角色，`NotActions` 會移除此角色管理資源存取權及指派資源存取權的功能。
+以下是 Azure PowerShell 和 Azure CLI 中所顯示的「[參與者](built-in-roles.md#contributor)」角色定義。 `Actions` 下的萬用字元 (`*`) 作業表示指派給這個角色的主體可以執行所有動作；換句話說，它可以管理所有項目。 這包括未來 Azure 新增資源類型時所定義的動作。 `NotActions` 下的作業會從 `Actions` 扣除。 在[參與者](built-in-roles.md#contributor)角色的情況下，會 `NotActions` 移除此角色管理資源存取權的能力，同時也會管理 Azure 藍圖指派。
 
 Azure PowerShell 中顯示的參與者角色：
 
@@ -161,10 +162,10 @@ Azure CLI 中顯示的參與者角色：
 
 在此之前，資料作業不可使用角色型存取控制。 資料作業的授權會因為資源提供者不同而有差異。 用於管理作業的相同角色型存取控制授權模型已擴充至資料作業。
 
-為了支援資料作業，新的資料屬性已新增至角色定義。 資料作業會在 `DataActions` 和 `NotDataActions` 屬性中指定。 藉由新增這些資料屬性，可繼續維持管理和資料之間的分隔。 這可避免目前具有萬用字元 (`*`) 的角色指派突然存取資料。 以下是可在 `DataActions` 和 `NotDataActions`中指定的一些資料作業：
+為了支援資料作業，新的資料屬性已新增至角色定義。 資料作業會在 `DataActions` 和 `NotDataActions` 屬性中指定。 藉由新增這些資料屬性，可繼續維持管理和資料之間的分隔。 這可避免目前具有萬用字元 (`*`) 的角色指派突然存取資料。 以下是一些可在 `DataActions` 和 `NotDataActions` 中指定的資料作業：
 
 - 讀取容器中的 Blob 清單
-- 將儲存體 Blob 寫入容器中
+- 在容器中寫入儲存體 Blob
 - 刪除佇列中的訊息
 
 以下是[儲存體 Blob 資料讀取器](built-in-roles.md#storage-blob-data-reader)角色定義，其中包含和屬性中的 `Actions` 作業 `DataActions` 。 此角色可讓您讀取 Blob 容器和基礎 Blob 資料。
@@ -221,7 +222,7 @@ Azure CLI 中顯示的參與者角色：
 }
 ```
 
-您只能將資料作業新增至 `DataActions` 和 `NotDataActions` 屬性。 資源提供者會藉由將 `isDataAction` 屬性設為 `true`，來識別哪些作業是資料作業。 若要查看 `isDataAction` 為 `true` 的作業清單，請參閱[資源提供者作業](resource-provider-operations.md)。 在角色定義中，沒有資料作業的角色不需要有 `DataActions` 和 `NotDataActions` 屬性。
+只有資料作業才能新增至 `DataActions` 和 `NotDataActions` 屬性。 資源提供者會藉由將 `isDataAction` 屬性設為 `true`，來識別哪些作業是資料作業。 若要查看 `isDataAction` 為 `true` 的作業清單，請參閱[資源提供者作業](resource-provider-operations.md)。 在角色定義中，沒有資料作業的角色不需要有 `DataActions` 和 `NotDataActions` 屬性。
 
 所有管理作業 API 呼叫的授權都會由 Azure Resource Manager 處理。 資料作業 API 呼叫的授權是由資源提供者或 Azure Resource Manager 處理。
 
@@ -275,12 +276,12 @@ Bob 的許可權僅限於 `Actions` `DataActions` [儲存體 Blob 資料參與�
 
 - 2018-07-01
 
-## <a name="actions"></a>動作
+## <a name="actions"></a>[動作]
 
 `Actions` 權限會指定角色所允許執行的管理作業。 它是識別 Azure 資源提供者的安全性實體作業的作業字串集合。 以下是可用於 `Actions` 中的一些管理作業範例。
 
 > [!div class="mx-tableFixed"]
-> | 作業字串    | Description         |
+> | 作業字串    | 描述         |
 > | ------------------- | ------------------- |
 > | `*/read` | 授與所有 Azure 資源提供者的所有資源類型之讀取作業的存取權。|
 > | `Microsoft.Compute/*` | 授與對 Microsoft.Compute 資源提供者中所有資源類型之所有作業的存取權。|
@@ -301,7 +302,7 @@ Bob 的許可權僅限於 `Actions` `DataActions` [儲存體 Blob 資料參與�
 `DataActions` 權限會指定角色允許對物件內資料執行的管理作業。 例如，如果使用者有儲存體帳戶的讀取 Blob 資料存取權，則他們可讀取該儲存體帳戶中的 Blob。 以下是可用於 `DataActions` 中的一些資料作業範例。
 
 > [!div class="mx-tableFixed"]
-> | 作業字串    | Description         |
+> | 作業字串    | 描述         |
 > | ------------------- | ------------------- |
 > | `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read` | 傳回 Blob 或 Blob 清單。 |
 > | `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write` | 傳回寫入 Blob 的結果。 |
@@ -336,6 +337,6 @@ Bob 的許可權僅限於 `Actions` `DataActions` [儲存體 Blob 資料參與�
 
 ## <a name="next-steps"></a>後續步驟
 
-* [Azure 內建角色](built-in-roles.md)
-* [Azure 自訂角色](custom-roles.md)
-* [Azure Resource Manager 資源提供者作業](resource-provider-operations.md)
+* [Azure 內建角色](built-in-roles.md) (機器翻譯)
+* [Azure 自訂角色](custom-roles.md) (機器翻譯)
+* [Azure Resource Manager 資源提供者作業](resource-provider-operations.md) (機器翻譯)

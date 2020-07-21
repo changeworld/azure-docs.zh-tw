@@ -3,11 +3,13 @@ title: 服務匯流排寄不出的信件佇列 |Microsoft Docs
 description: 說明 Azure 服務匯流排中的無效信件佇列。 服務匯流排佇列和主題訂閱提供次要的子佇列，稱為無效信件佇列。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 62db4e71d99d1242cfbb69bdb7979bf9e5dc67ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 7078a7889947c4121713e9374d1487f408fed871
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85337590"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511206"
 ---
 # <a name="overview-of-service-bus-dead-letter-queues"></a>服務匯流排寄不出的信件佇列的概觀
 
@@ -56,7 +58,7 @@ DLQ 沒有自動清除。 訊息會保留在 DLQ 中，直到您明確地從 DLQ
 
 當 [QueueDescription.EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.queuedescription) 或 [SubscriptionDescription.EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription) 屬性設為 **true** (預設值是 **false**)，所有過期的訊息會移到 DLQ，指定 `TTLExpiredException` 原因代碼。
 
-至少要有一個作用中接收者從主要佇列或訂閱提取時，過期的訊息才會清除並移至 DLQ；這是刻意設計的行為。
+只有當至少有一個作用中的接收者從主要佇列或訂用帳戶提取時，過期的訊息才會被清除並移至 DLQ，而且在過期之後[，將不會清除或移](./message-deferral.md)至寄不出的信件佇列。 這些行為是設計的。
 
 ## <a name="errors-while-processing-subscription-rules"></a>在處理訂用帳戶規則時發生錯誤
 

@@ -3,11 +3,12 @@ title: 如何取代您的磁帶基礎結構
 description: 瞭解 Azure 備份如何提供類似磁帶的語義，讓您在 Azure 中備份和還原資料
 ms.topic: conceptual
 ms.date: 04/30/2017
-ms.openlocfilehash: aeda1cefc84d425855c40b793f8334936541e63f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 71bfa86611b3a63fa6a28f60f80608b394cab5a3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77425097"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514181"
 ---
 # <a name="move-your-long-term-storage-from-tape-to-the-azure-cloud"></a>將您的長期儲存空間從磁帶移至 Azure 雲端
 
@@ -69,5 +70,5 @@ ms.locfileid: "77425097"
 
 如需有關 Azure Backup 的詳細資訊，請參閱：
 
-* [Azure 備份的簡介](backup-introduction-to-azure-backup.md)
-* [試用 Azure 備份](backup-try-azure-backup-in-10-mins.md)
+* [Azure 備份的簡介](./backup-overview.md)
+* [試用 Azure 備份](./backup-windows-with-mars-agent.md)

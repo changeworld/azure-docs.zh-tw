@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 2dd2d3b8564535a64ff961479ed94fc92fb210f5
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: eceb34b57a0b2dd62f93f7732a6b93221e3ecb56
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86112981"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512658"
 ---
-# <a name="release-notes"></a>版本資訊
+# <a name="speech-service-release-notes"></a>語音服務版本資訊
 
 ## <a name="text-to-speech-2020-july-release"></a>文字轉換語音 2020-7 月版本
 
@@ -56,7 +56,7 @@ ms.locfileid: "86112981"
 
 * 改善5種語言的單字層級發音準確度。
 
-    | 語言 | 發音錯誤減少 |
+    | Language | 發音錯誤減少 |
     |---|---|
     | `en-GB` | 51% |
     | `ko-KR` | 17% |
@@ -64,12 +64,12 @@ ms.locfileid: "86112981"
     | `pt-PT` | 77% |
     | `id-ID` | 46% |
 
-### <a name="bug-fixes"></a>Bug 修正
+### <a name="bug-fixes"></a>錯誤修正
 
 * 貨幣閱讀
     * 已修正和的貨幣讀取問題 `es-ES``es-MX`
      
-    | 語言 | 輸入 | 改進後的讀出 |
+    | Language | 輸入 | 改進後的讀出 |
     |---|---|---|
     | `es-MX` | $1.58 | un 比索 cincuenta y ocho centavos |
     | `es-ES` | $1.58 | un dólar cincuenta y ocho centavos |
@@ -99,7 +99,7 @@ ms.locfileid: "86112981"
 **新功能**
 -   **C \# ，c + +**：說話者辨識預覽：這項功能可讓說話者識別（說話者是誰？）和說話者驗證（這是他們宣稱為嗎？）。 從[總覽](https://docs.microsoft.com/azure/cognitive-services/Speech-Service/speaker-recognition-overview)開始，閱讀[說話者辨識基本概念文章](https://docs.microsoft.com/azure/cognitive-services/speech-service/speaker-recognition-basics)，或[API 參考](https://docs.microsoft.com/rest/api/speakerrecognition/)檔。
 
-**Bug 修正**
+**錯誤修正**
 -   **C \# ，c + +**：固定麥克風錄製在1.12 中無法以說話者辨識的方式運作。
 -   **JavaScript**：針對 FireFox 中的文字轉換語音以及 MacOS 和 iOS 上的 Safari 進行修正。
 -   修正使用8通道串流時，交談轉譯的 Windows 應用程式驗證器存取違規損毀。
@@ -131,7 +131,7 @@ ms.locfileid: "86112981"
 - 改善連線邏輯，以便在服務和網路錯誤發生時多次嘗試連接。
 - 已更新[Portal.azure.com](https://portal.azure.com)語音快速入門頁面，以協助開發人員在 azure 語音旅程中進行下一個步驟。
 
-**Bug 修正**
+**錯誤修正**
 - **C #、JAVA**：已修正在 Linux ARM （32和64位）上載入 SDK 程式庫的[問題](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/587)。
 - **C #**：已針對 TranslationRecognizer、IntentRecognizer 和 Connection 物件，修正原生控制碼的明確處置。
 - **C #**：已修正 ConversationTranscriber 物件的音訊輸入存留期管理。
@@ -158,7 +158,7 @@ ms.locfileid: "86112981"
 - JavaScript：支援 NodeJS 中的語音合成（文字轉換語音）。 [在此](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/node/text-to-speech)深入了解。 
 - JavaScript：加入新的 API，以啟用所有傳送和接收訊息的檢查。 [在此](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript)深入了解。 
         
-**Bug 修正**
+**錯誤修正**
 - C #，c + +：已修正問題，因此 `SendMessageAsync` 現在會將二進位訊息當做二進位類型傳送。 [C #](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.connection.sendmessageasync?view=azure-dotnet#Microsoft_CognitiveServices_Speech_Connection_SendMessageAsync_System_String_System_Byte___System_UInt32_)、 [c + +](https://docs.microsoft.com/cpp/cognitive-services/speech/connection)的詳細資料。
 - C #、c + +：修正 `Connection MessageReceived` 如果在 `Recognizer` 物件之前處置，使用事件可能會造成損毀的問題 `Connection` 。 [C #](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.connection.messagereceived?view=azure-dotnet)、 [c + +](https://docs.microsoft.com/cpp/cognitive-services/speech/connection#messagereceived)的詳細資料。
 - Android：麥克風的音訊緩衝區大小從800ms 減少到100毫秒，以改善延遲。
@@ -187,7 +187,7 @@ ms.locfileid: "86112981"
  - TTS 現在會使用訂用帳戶金鑰進行驗證，減少建立合成器後第一個合成結果的第一個位元組延遲。
  - 已更新19個地區設定的語音辨識模型，以減少18.6% （es）的平均文字錯誤率降低 es-MX、fr-CA、fr-fr、it-IT、ja-jp、ko、巴西、zh-CN、zh-HK、nb-NO、fi、ru-RU、pl-PL、CA ES、zh-幼圓、th、pt、tr、。 新的模型會在多個網域中帶來顯著的改良，包括聽寫、話務中心轉譯和影片索引編制案例。
 
-**Bug 修正**
+**錯誤修正**
 
  - 修正了對話 Transcriber 在 JAVA Api 中未正確等待的錯誤（bug） 
  - 適用于 Xamarin GitHub 的 Android x86 模擬器修正程式[問題](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/363)
@@ -223,7 +223,7 @@ ms.locfileid: "86112981"
 - 我們已將 c # 傳回的資料類型 `WordLevelTimingResult.Offset` 從變更為 `int` `long` ，以便 `WordLevelTimingResults` 在語音資料長度超過2分鐘時，允許存取。
 - `PushAudioInputStream``PullAudioInputStream`現在會將 wav 標頭資訊傳送至以為基礎的語音服務，並在 `AudioStreamFormat` 建立時選擇性地指定。 客戶現在必須使用[支援的音訊輸入格式](how-to-use-audio-input-streams.md)。 任何其他格式都會取得次佳的辨識結果，或可能會造成其他問題。 
 
-**Bug 修正**
+**錯誤修正**
 
 - 請參閱 `OpenSSL` 上述重大變更底下的更新。 我們已修正 Linux 和 JAVA 中間歇性損毀和效能問題（在高負載下鎖定爭用）。 
 - JAVA：改善高並行處理案例中的物件關閉。
@@ -264,7 +264,7 @@ ms.locfileid: "86112981"
 - 對話 Transcriber 方法的一部分會移至新的 `Conversation` 類別。
 - 已捨棄32位（ARMv7 和 x86） iOS 的支援
 
-**Bug 修正**
+**錯誤修正**
 
 - 如果 `KeywordRecognizer` 使用本機時沒有有效的語音服務訂用帳戶金鑰，請修正損毀的問題
 
@@ -287,7 +287,7 @@ ms.locfileid: "86112981"
 - TTS 新增了 macOS、iOS 和 Android 的播放支援。
 - 已新增 TTS 的「字邊界」資訊。
 
-**Bug 修正**
+**錯誤修正**
 
 - 已修正適用于 Android 的 Unity 2019 的 IL2CPP 組建問題
 - 已修正未正確處理 wav 檔案輸入中格式錯誤之標頭的問題
@@ -327,7 +327,7 @@ ms.locfileid: "86112981"
   - 改良的錯誤報表：可能導致錯誤的方法現在會出現在兩個版本中：一個會公開 `NSError` 物件以進行錯誤處理，另一個則會引發例外狀況。 前者會公開給 Swift。 這種變更需要採用原音到現有的 Swift 程式碼。
   - 改良的事件處理
 
-**Bug 修正**
+**錯誤修正**
 
 - 針對 TTS 的修正： `SpeakTextAsync` 未來傳回而不等待，直到音訊完成呈現為止
 - 修正 c # 中的封送處理字串，以啟用完整語言支援
@@ -342,7 +342,7 @@ ms.locfileid: "86112981"
 
 這是 bug 修正版本，只會影響原生/受控 SDK。 它不會影響 JavaScript 版本的 SDK。
 
-**Bug 修正**
+**錯誤修正**
 
 - 修正搭配對話轉譯使用時的 FromSubscription。
 - 修正語音助理關鍵字找出中的 bug。
@@ -367,7 +367,7 @@ ms.locfileid: "86112981"
 - 目標-C： `OutputFormat` 屬性已加入至 `SPXSpeechConfiguration` 。
 - SDK 現在支援 Debian 9 作為 Linux 散發套件。
 
-**Bug 修正**
+**錯誤修正**
 
 - 已修正說話者資源在文字轉換語音中太早解構的問題。
 
@@ -403,7 +403,7 @@ ms.locfileid: "86112981"
 - 如需其他開發和偵錯工具支援，您可以將 SDK 記錄和診斷資訊重新導向至記錄檔（[這裡](how-to-use-logging.md)提供更多詳細資料）。
 - JavaScript：改善音訊處理效能。
 
-**Bug 修正**
+**錯誤修正**
 
 - Mac/iOS：已修正無法建立語音服務連線時，會導致長時間等候的錯誤。
 - Python：改善 Python 回呼中引數的錯誤處理。
@@ -454,7 +454,7 @@ ms.locfileid: "86112981"
 - Windows DLL 現在會包含版本資源。
 - 如果您建立辨識器 `FromEndpoint` ，您可以將參數直接新增至端點 URL。 使用 `FromEndpoint` 時，您無法透過標準設定屬性來設定辨識器。
 
-**Bug 修正**
+**錯誤修正**
 
 - 空的 Proxy 使用者名稱和 Proxy 密碼之前不會正確處理。 在此版本中，如果您將 Proxy 使用者名稱和 Proxy 密碼設定為空字串，系統將不會在連線到 Proxy 時提交出去。
 - 在某些語言&nbsp;/環境中，SDK 所建立的工作階段識別碼並不一定會真正隨機。 已新增隨機產生器初始化以修正此問題。
@@ -495,7 +495,7 @@ ms.locfileid: "86112981"
 - 已改善錯誤回報 / 資訊。 在幾種情況下，錯誤訊息並未立即傳播出去。
 - 已將 JavaScript 中的開發相依性更新為使用最新的模組。
 
-**Bug 修正**
+**錯誤修正**
 
 - 已修正由於中的類型不相符而造成的記憶體流失 `RecognizeAsync` 。
 - 在某些情況下，例外狀況正在流失。
@@ -527,7 +527,7 @@ ms.locfileid: "86112981"
 - 已改善對音訊檔案中長時間無聲之部分的處理。
 - NuGet 套件：針對 .NET Framework 專案，其可防止使用 AnyCPU 設定來建置。
 
-**Bug 修正**
+**錯誤修正**
 
 - 已修正在辨識器中找到的幾個例外狀況。 此外，也會攔截例外狀況並轉換成 `Canceled` 事件。
 - 修正屬性管理中的記憶體流失。
@@ -589,7 +589,7 @@ ms.locfileid: "86112981"
 - 在 Java (Android) 上，`SpeechFactory.configureNativePlatformBindingWithDefaultCertificate` 函式不再需要路徑參數。 系統現在會自動在所有支援平台上偵測路徑。
 - Java 和 C# 中 `EndpointUrl` 屬性的 get-accessor 已移除。
 
-**Bug 修正**
+**錯誤修正**
 
 - 在 Java 中，現已實作翻譯辨識器上的音訊合成結果。
 - 已修正錯誤，此錯誤可能導致非作用中的執行緒，並增加已開啟且未使用的通訊端數目。
@@ -623,7 +623,7 @@ ms.locfileid: "86112981"
   - 在 C++ 中，`Read` 和 `GetFormat` 方法現在會傳回 `size_t` 而不是 `int`。
 - C++：音訊輸入串流的執行個體現在只能當作 `shared_ptr` 傳遞。
 
-**Bug 修正**
+**錯誤修正**
 
 - 修正 `RecognizeAsync()` 逾時的時候，結果中不正確的傳回值。
 - 已移除 Windows 上媒體基礎程式庫的相依性。 SDK 現在使用核心音訊 API。
@@ -649,7 +649,7 @@ ms.locfileid: "86112981"
 
 - 在 C# 中已從 `SpeechRecognitionResult.RecognizedText` 變更為 `SpeechRecognitionResult.Text`。
 
-**Bug 修正**
+**錯誤修正**
 
 - 已修正在關閉期間 USP 層中可能發生的回呼問題。
 - 如果辨識器取用音訊輸入檔，其保留檔案控制代碼超過所需的時間。

@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 02/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: f2b84427b9aad2d18368d808fc618f3bfbe774ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1be80defd7a4291d1224d5b0cb9f9e833dcf9af5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81460115"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510509"
 ---
 # <a name="azure-disk-encryption-on-an-isolated-network"></a>在隔離的網路上 Azure 磁碟加密
 
@@ -43,7 +43,7 @@ Azure 磁碟加密取決於許多元件，通常會在啟用 ADE 的過程中安
 
 如果搭配[Azure AD 使用 Azure 磁碟加密（舊版）](disk-encryption-overview-aad.md)，必須針對所有散發版本（除了散發版本適用的套件以外）手動安裝[Azure Active Directory 程式庫](../../active-directory/azuread-dev/active-directory-authentication-libraries.md)（如上所[列](#package-management)）。
 
-使用 [Azure AD 認證](disk-encryption-linux-aad.md)啟用加密時，目標 VM 必須允許連線到 Azure Active Directory 端點和金鑰保存庫端點。 目前的 Azure Active Directory 驗證端點列在 [Office 365 URL 與 IP 位址範圍](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges)文件的第 56 和 59 節。 如需金鑰保存庫的指示，請參閱文件中的如何[在防火牆後存取 Azure 金鑰保存庫](../../key-vault/general/access-behind-firewall.md)。
+使用 [Azure AD 認證](disk-encryption-linux-aad.md)啟用加密時，目標 VM 必須允許連線到 Azure Active Directory 端點和金鑰保存庫端點。 目前的 Azure Active Directory 驗證端點列在 [Office 365 URL 與 IP 位址範圍](/office365/enterprise/urls-and-ip-address-ranges)文件的第 56 和 59 節。 如需金鑰保存庫的指示，請參閱文件中的如何[在防火牆後存取 Azure 金鑰保存庫](../../key-vault/general/access-behind-firewall.md)。
 
 ### <a name="azure-instance-metadata-service"></a>Azure 執行個體中繼資料服務 
 

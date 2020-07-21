@@ -3,11 +3,12 @@ title: 在 Azure 備份伺服器中使用新式備份儲存體
 description: 了解 Azure 備份伺服器中的新功能。 本文說明如何升級您的備份伺服器安裝。
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: c6346d7b0275a00271c1787b378a63b8365edf2d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ee55355b0f2cabe97f5d2a838edcbd5cfddf44e6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74172383"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513705"
 ---
 # <a name="add-storage-to-azure-backup-server"></a>在 Azure 備份伺服器中新儲存體
 
@@ -17,7 +18,7 @@ Azure 備份伺服器 V2 和更新版本支援 Modern Backup Storage，可節省
 > 若要使用新式備份儲存體，您必須在 Windows Server 2016 上執行備份伺服器 V2 或 V3 或在 Windows Server 2019 上執行 V3。
 > 如果您在舊版 Windows Server 上執行備份伺服器 V2，Azure 備份伺服器將無法利用新式備份儲存體。 相反地，它保護工作負載的方式會和備份伺服器 V1 一樣。 如需詳細資訊，請參閱備份伺服器版本[保護對照表](backup-mabs-protection-matrix.md)。
 >
-> 為了達到增強的備份效能，我們建議您在 Windows Server 2019 上部署 MABS v3 與分層式存放裝置。 如需設定階層式儲存區的步驟，請參閱 DPM 文章「[使用分層式儲存體設定 mb](https://docs.microsoft.com/system-center/dpm/add-storage?view=sc-dpm-2019#set-up-mbs-with-tiered-storage)」。
+> 為了達到增強的備份效能，我們建議您在 Windows Server 2019 上部署 MABS v3 與分層式存放裝置。 如需設定階層式儲存區的步驟，請參閱 DPM 文章「[使用分層式儲存體設定 mb](/system-center/dpm/add-storage?view=sc-dpm-2019#set-up-mbs-with-tiered-storage)」。
 
 ## <a name="volumes-in-backup-server"></a>備份伺服器中的磁碟區
 
@@ -102,13 +103,13 @@ Update-DPMDiskStorage [-Volume] <Volume> [[-FriendlyName] <String> ] [[-Datasour
 
 1. 在管理員主控台中選取 [保護]**** 功能。 在 [保護群組成員]**** 清單中，以滑鼠右鍵按一下成員，然後選取 [停止保護成員]****。
 
-   ![停止保護成員](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-stop-protection1.png)
+   ![停止保護成員](/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-stop-protection1.png)
 
 2. 在 [從群組中移除]**** 對話方塊中，檢閱儲存集區中已使用的磁碟空間和可用空間。 預設值是讓復原點留在磁碟上，並讓復原點按照所關聯的保留原則來到期。 按一下 [確定]。
 
    如果您想要立即將已使用的磁碟空間歸還給可用的儲存集區，請選取 [刪除磁碟上的複本]**** 核取方塊，以刪除與該成員相關聯的備份資料 (與復原點)。
 
-   ![[從群組中移除] 對話方塊](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-retain-data.png)
+   ![[從群組中移除] 對話方塊](/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-retain-data.png)
 
 3. 建立使用新式備份儲存體的保護群組。 納入未受保護的資料來源。
 
@@ -120,7 +121,7 @@ Update-DPMDiskStorage [-Volume] <Volume> [[-FriendlyName] <String> ] [[-Datasour
 
 1. 在 [系統管理員主控台中，選取 [**管理**]  >  **磁碟儲存體**  >  **新增**]。
 
-    ![[新增磁碟儲存體] 對話方塊](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-add-disk-storage.png)
+    ![[新增磁碟儲存體] 對話方塊](/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-add-disk-storage.png)
 
 2. 在 [新增磁碟儲存體]**** 對話方塊中選取 [新增磁碟]****。
 

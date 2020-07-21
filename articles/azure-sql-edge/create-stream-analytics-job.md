@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: fc6ab2c9c844350e83674ed96a0e79289c7f5b43
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2e1f98cffd17d0a8823cc5849830667fcdad1212
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85255410"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515218"
 ---
 # <a name="create-an-azure-stream-analytics-job-in-azure-sql-edge-preview"></a>在 Azure SQL Edge （預覽）中建立 Azure 串流分析作業 
 
@@ -39,11 +39,11 @@ T-sql 串流會使用 SQL Server 的外部資料源功能來定義與外部資�
 
 Azure SQL Edge 目前僅支援使用下列資料來源作為串流的輸入和輸出。
 
-| 資料來源類型 | 輸入 | 輸出 | Description |
+| 資料來源類型 | 輸入 | 輸出 | 描述 |
 |------------------|-------|--------|------------------|
 | Azure IoT Edge 中樞 | Y | Y | 用來讀取和寫入串流資料到 Azure IoT Edge 中樞的資料來源。 如需詳細資訊，請參閱[IoT Edge Hub](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub)。|
-| SQL Database | N | Y | 用來將串流資料寫入到 SQL Database 的資料來源連線。 資料庫可以是 Azure SQL Edge 中的本機資料庫，或是 SQL Server 或 Azure SQL Database 中的遠端資料庫。|
-| Azure Blob 儲存體 | N | Y | 用來將資料寫入到 Azure 儲存體帳戶上 Blob 的資料來源。 |
+| SQL Database | N | 是 | 用來將串流資料寫入到 SQL Database 的資料來源連線。 資料庫可以是 Azure SQL Edge 中的本機資料庫，或是 SQL Server 或 Azure SQL Database 中的遠端資料庫。|
+| Azure Blob 儲存體 | 否 | Y | 用來將資料寫入到 Azure 儲存體帳戶上 Blob 的資料來源。 |
 | Kafka | Y | N | 用來從 Kafka 主題讀取串流資料的資料來源。 此介面卡目前僅適用于 Intel 或 AMD 版本的 Azure SQL Edge。 不適用於 ARM64 版本的 Azure SQL Edge。|
 
 ### <a name="example-create-an-external-stream-inputoutput-object-for-azure-iot-edge-hub"></a>範例：建立 Azure IoT Edge 中樞的外部資料流輸入/輸出物件
@@ -153,7 +153,7 @@ SELECT
 Timestamp as [Time],
 [Temperature] As [Temperature],
 GetRecordPropertyValue(AnomalyDetection_ChangePoint(Temperature, 80, 1200) OVER(LIMIT DURATION(minute, 20)), ''Score'') as ChangePointScore,
-GetRecordPropertyValue(AnomalyDetection_ChangePoint(Temperature, 80, 1200) OVER(LIMIT DURATION(minute, 20)), ''IsAnomaly'') as IsChangePointAnomaly,
+GetRecordPropertyValue(AnomalyDetection_ChangePoint(Temperature, 80, 1200) OVER(LIMIT DURATION(minute, 20)), ''IsAnomaly'') as IsChangePointAnomaly
 INTO TemperatureAnomalies FROM MyEdgeHubInput2;
 '
 go

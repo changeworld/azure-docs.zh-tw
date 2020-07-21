@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 6/9/2020
 ms.author: baanders
-ms.openlocfilehash: 76ccd6f42f2cfd83512a2e817e8c2ac9aa61a28b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 21d910fb0e0992b35aa19ce65fc216734e30265c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85391468"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515844"
 ---
 ### <a name="functional-limits"></a>功能限制
 
@@ -20,12 +20,12 @@ ms.locfileid: "85391468"
 | --- | --- | --- | --- |
 | Azure 資源 | 區域中每個訂用帳戶的 Azure 數位 Twins 實例數目 | 10 | 是 |
 | 數位 twins | Azure 數位 Twins 實例中的 twins 數目 | 200,000 | 是 |
-| 路由 | 單一 Azure 數位 Twins 實例的端點數目 | 6 | No |
+| 路由 | 單一 Azure 數位 Twins 實例的端點數目 | 6 | 否 |
 | 路由 | 單一 Azure 數位 Twins 實例的路由數目 | 6 | 是 |
 | 模型 | 單一 Azure 數位 Twins 實例內的模型數目 | 10,000 | 是 |
-| 模型 | 可在單一 API 呼叫中上傳的模型數目 | 250 | No |
-| 模型 | 在單一頁面中傳回的專案數 | 100 | No |
-| 查詢 | 在單一頁面中傳回的專案數 | 100 | No |
+| 模型 | 可在單一 API 呼叫中上傳的模型數目 | 250 | 否 |
+| 模型 | 在單一頁面中傳回的專案數 | 100 | 否 |
+| 查詢 | 在單一頁面中傳回的專案數 | 100 | 否 |
 | 查詢 | `AND`  /  `OR` 查詢中的運算式數目 | 50 | 是 |
 | 查詢 | 子句中的陣列專案數目 `IN`  /  `NOT IN` | 50 | 是 |
 | 查詢 | 查詢中的字元數 | 8,000 | 是 |
@@ -47,4 +47,4 @@ ms.locfileid: "85391468"
 
 適用于 Azure 數位 Twins 模型之 DTDL 檔中的資料類型和欄位限制，可以在其 GitHub 中的規格檔中找到：[數位 Twins 定義語言（DTDL）-第2版](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)。
  
-如需在預覽期間撰寫查詢的查詢延遲詳細資料和其他指導方針，請參閱[如何：查詢](../articles/digital-twins/how-to-query-graph.md)對應項圖形。
+如需在預覽期間撰寫查詢的查詢延遲詳細資料和其他指導方針，請參閱[*如何：查詢*](../articles/digital-twins/how-to-query-graph.md)對應項圖形。

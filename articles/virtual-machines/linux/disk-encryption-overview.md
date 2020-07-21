@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 75e469b30632bb7e7e8f6445db78acda784ac5da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f8e4843ad71455f8e478ef74ee71975c1dbf2925
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85601270"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510549"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>適用於 Linux VM 的 Azure 磁碟加密 
 
@@ -26,7 +26,7 @@ Azure 磁碟加密可協助保護資料安全，以符合貴組織安全性和�
 > [!WARNING]
 > - 如果您先前曾使用 Azure 磁碟加密搭配 Azure AD 來加密 VM，則必須繼續使用此選項來加密您的 VM。 如需詳細資料，請參閱 [Azure 磁碟加密與 Azure AD (舊版)](disk-encryption-overview-aad.md)。 
 > - 某些建議可能會增加資料、網路或計算資源的使用量，導致額外的授權或訂用帳戶成本。 您必須擁有有效的作用中 Azure 訂用帳戶，才能在 Azure 支援的區域中建立資源。
-> - 目前，第二代 VM 不支援 Azure 磁碟加密。 如需詳細資料，請參閱 [Azure 上第 2 代 VM 的支援](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2)。
+> - 目前，第二代 VM 不支援 Azure 磁碟加密。 如需詳細資料，請參閱 [Azure 上第 2 代 VM 的支援](../windows/generation-2.md)。
 
 透過[使用 Azure CLI 快速入門來建立並加密 Linux VM](disk-encryption-cli-quickstart.md)，或[使用 Azure PowerShell 快速入門來建立並加密 Linux VM](disk-encryption-powershell-quickstart.md)，您可以在幾分鐘內了解適用於 Linux 的 Azure 磁碟加密的基本概念。
 
@@ -63,6 +63,7 @@ Azure 磁碟加密也適用於具有進階儲存體的 VM。
 | Canonical | Ubuntu 16.04 | 16.04-DAILY-LTS | Canonical:UbuntuServer:16.04-DAILY-LTS:latest | 作業系統和資料磁碟 |
 | Canonical | Ubuntu 14.04.5</br>[搭配更新至 4.15 或更新版本的 Azure 調整核心](disk-encryption-troubleshooting.md) | 14.04.5-LTS | Canonical:UbuntuServer:14.04.5-LTS:latest | 作業系統和資料磁碟 |
 | Canonical | Ubuntu 14.04.5</br>[搭配更新至 4.15 或更新版本的 Azure 調整核心](disk-encryption-troubleshooting.md) | 14.04.5-DAILY-LTS | Canonical:UbuntuServer:14.04.5-DAILY-LTS:latest | 作業系統和資料磁碟 |
+| RedHat | RHEL 7。8 | 7.8 | RedHat： RHEL：7.8：最新 | 作業系統和資料磁碟 (請參閱下列注意事項) |
 | RedHat | RHEL 7.7 | 7.7 | RedHat:RHEL:7.7:latest | 作業系統和資料磁碟 (請參閱下列注意事項) |
 | RedHat | RHEL 7.7 | 7-LVM | RedHat:RHEL:7-LVM:latest | 作業系統和資料磁碟 (請參閱下列注意事項) |
 | RedHat | RHEL 7.6 | 7.6 | RedHat:RHEL:7.6:latest | 作業系統和資料磁碟 (請參閱下列注意事項) |
@@ -95,7 +96,7 @@ Azure 磁碟加密也適用於具有進階儲存體的 VM。
 
 Azure 磁碟加密需要系統中存在 dm-crypt 和 vfat 模組。 從預設映像中移除或停用 vfat，會讓系統無法讀取金鑰磁碟區，也無法在後續重新啟動時，取得解除鎖定磁碟所需的金鑰。 將 vfat 模組從系統中移除，或強制擴充資料磁片磁碟機上的 OS 掛接點/資料夾的系統強化步驟，與 Azure 磁碟加密不相容。 
 
-在啟用加密之前，要加密的資料磁碟必須在 /etc/fstab 中正確列出。 建立項目時，請使用「nofail」選項，並選擇持續性封鎖裝置名稱 (因為「/dev/sdX」格式的裝置名稱在重新啟動時，不會與相同磁碟相關聯，尤其是加密後；如需關於此行為的詳細資料，請參閱：[針對 Linux VM 裝置名稱變更進行疑難排解](troubleshoot-device-names-problems.md))。
+在啟用加密之前，要加密的資料磁碟必須在 /etc/fstab 中正確列出。 建立項目時，請使用「nofail」選項，並選擇持續性封鎖裝置名稱 (因為「/dev/sdX」格式的裝置名稱在重新啟動時，不會與相同磁碟相關聯，尤其是加密後；如需關於此行為的詳細資料，請參閱：[針對 Linux VM 裝置名稱變更進行疑難排解](../troubleshooting/troubleshoot-device-names-problems.md))。
 
 確定 /etc/fstab 設定已正確設定而能夠掛接。 若要設定這些設定，請執行 mount -a 命令，或重新啟動 VM 再以該方式觸發重新掛接。 完成之後，檢查 lsblk 命令的輸出以確認所需的磁碟機仍有掛接。 
 
@@ -149,5 +150,3 @@ Azure 磁碟加密需要 Azure Key Vault 來控制及管理磁碟加密金鑰與
 - [Azure 磁碟加密的必要 CLI 指令碼](https://github.com/ejarvi/ade-cli-getting-started)
 - [Azure 磁碟加密的必要 PowerShell 指令碼](https://github.com/Azure/azure-powershell/tree/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts)
 - [建立及設定適用於 Azure 磁碟加密的金鑰保存庫](disk-encryption-key-vault.md)
-
-

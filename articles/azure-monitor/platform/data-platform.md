@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 58f542238c952088777ed9809b57dae3cdb9cf12
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 68e88ec90625f34e5bc8ae1b70c75e3cfe9a53ad
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81457258"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515524"
 ---
 # <a name="azure-monitor-data-platform"></a>Azure 監視器資料平台
 
@@ -49,7 +49,7 @@ Azure 監視器中的記錄會儲存在 Log Analytics 工作區中，該工作�
 > 請務必區分 Azure 監視器記錄和 Azure 中記錄資料的來源。 例如，Azure 中的訂用帳戶層級事件會寫入[活動記錄](platform-logs-overview.md)，您可從 [Azure 監視器] 功能表進行檢視。 大部分資源都會將作業資訊寫入[資源記錄](platform-logs-overview.md)，您可將其轉送至不同的位置。 Azure 監視器記錄是一種記錄資料平台，可收集活動記錄和資源記錄及其他監視資料，以提供整個資源集的深入分析。
 
 
- 您可使用 Azure 入口網站中的 [Log Analytics](../log-query/portals.md)，以互動方式來處理[記錄查詢](../log-query/log-query-overview.md)，或將結果新增至 [Azure 儀表板](../learn/tutorial-app-dashboards.md)以與其他資料一起視覺化。 您也可以建立[記錄警示](alerts-log.md)，其會根據排程查詢的結果觸發警示。
+ 您可使用 Azure 入口網站中的 [Log Analytics](../log-query/log-query-overview.md)，以互動方式來處理[記錄查詢](../log-query/log-query-overview.md)，或將結果新增至 [Azure 儀表板](../learn/tutorial-app-dashboards.md)以與其他資料一起視覺化。 您也可以建立[記錄警示](alerts-log.md)，其會根據排程查詢的結果觸發警示。
 
 若要深入了解 Azure 監視器記錄 (包括其資料來源)，請參閱 [Azure 監視器中的記錄](data-platform-logs.md)。
 
@@ -81,7 +81,7 @@ Azure 監視器中的分散式追蹤是透過 [Application Insights SDK](../app/
 
 
 ## <a name="stream-data-to-external-systems"></a>將資料串流處理到外部系統
-除了使用 Azure 中的工具來分析監視資料，您可能也有將監視資料轉送到外部工具的需求，例如安全性資訊和事件管理 (SIEM) 產品。 此轉送通常是透過 [Azure 事件中樞](/azure/event-hubs/)，直接從受監視的資源來完成。 某些來源可設定為直接將資料傳送至事件中樞，而您可使用另一個處理序 (例如邏輯應用程式) 來擷取所需資料。 如需詳細資料，請參閱[將 Azure 監視資料串流至事件中樞以供外部工具取用](stream-monitoring-data-event-hubs.md)。
+除了使用 Azure 中的工具來分析監視資料，您可能也有將監視資料轉送到外部工具的需求，例如安全性資訊和事件管理 (SIEM) 產品。 此轉送通常是透過 [Azure 事件中樞](../../event-hubs/index.yml)，直接從受監視的資源來完成。 某些來源可設定為直接將資料傳送至事件中樞，而您可使用另一個處理序 (例如邏輯應用程式) 來擷取所需資料。 如需詳細資料，請參閱[將 Azure 監視資料串流至事件中樞以供外部工具取用](stream-monitoring-data-event-hubs.md)。
 
 
 

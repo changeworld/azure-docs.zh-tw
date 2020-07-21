@@ -8,14 +8,14 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 32d4e709036135a9a88ec36eaafaa176df33fabf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5e7b22a8010d7dfbdeeaeae623a55c1aff9c006c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610348"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510492"
 ---
-# <a name="azure-disk-encryption-sample-scripts"></a>Azure 磁碟加密範例指令碼 
+# <a name="azure-disk-encryption-sample-scripts-for-linux-vms"></a>適用于 Linux Vm 的 Azure 磁碟加密範例腳本
 
 本文提供準備預先加密的 Vhd 和其他工作的範例腳本。
 
@@ -43,7 +43,7 @@ ms.locfileid: "85610348"
 下表顯示可在 PowerShell 指令碼中使用的參數： 
 
 
-|參數|說明|是否為強制？|
+|參數|描述|是否為強制？|
 |------|------|------|
 |$resourceGroupName| 金鑰保存庫所屬資源群組的名稱。  如果不存在此名稱的應用程式，將會以此名稱建立新的資源群組。| True|
 |$keyVaultName|要用來放置加密金鑰的金鑰保存庫名稱。 如果不存在此名稱的應用程式，將會以此名稱建立新的保存庫。| True|
@@ -186,7 +186,7 @@ ms.locfileid: "85610348"
 
    ![Ubuntu 16.04 設定 - 提供開機複雜密碼](./media/disk-encryption/ubuntu-1604-preencrypted-fig5.png)
 
-6. 使用[這些指示](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-create-upload-ubuntu/)準備要上傳到 Azure 的 VM。 還不要執行最後一個步驟 (解除佈建 VM)。
+6. 使用[這些指示](./create-upload-ubuntu.md?toc=/azure/virtual-machines/linux/toc.json)準備要上傳到 Azure 的 VM。 還不要執行最後一個步驟 (解除佈建 VM)。
 
 設定加密來與 Azure 搭配運作，請執行下列步驟：
 
@@ -262,7 +262,7 @@ ms.locfileid: "85610348"
 
    ![openSUSE 13.2 設定 - 提供開機複雜密碼](./media/disk-encryption/opensuse-encrypt-fig2.png)
 
-3. 請依照[準備 Azure 的 SLES 或 openSUSE 虛擬機器](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-suse-create-upload-vhd/#prepare-opensuse-131)中的指示準備 VM 以上傳至 Azure。 還不要執行最後一個步驟 (解除佈建 VM)。
+3. 請依照[準備 Azure 的 SLES 或 openSUSE 虛擬機器](./suse-create-upload-vhd.md?toc=/azure/virtual-machines/linux/toc.json#prepare-opensuse-131)中的指示準備 VM 以上傳至 Azure。 還不要執行最後一個步驟 (解除佈建 VM)。
 
 若要設定加密來與 Azure 搭配運作，請執行下列步驟：
 1. 編輯 /etc/dracut.conf 並新增下面這一行︰
@@ -339,7 +339,7 @@ ms.locfileid: "85610348"
 
    ![CentOS 7 設定 - 在開機時輸入複雜密碼](./media/disk-encryption/centos-encrypt-fig4.png)
 
-5. 請依照[準備 Azure 的 CentOS 式虛擬機器](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-create-upload-centos/#centos-70)中的「CentOS 7.0+」指示準備 VM 以上傳至 Azure。 還不要執行最後一個步驟 (解除佈建 VM)。
+5. 請依照[準備 Azure 的 CentOS 式虛擬機器](./create-upload-centos.md?toc=/azure/virtual-machines/linux/toc.json#centos-70)中的「CentOS 7.0+」指示準備 VM 以上傳至 Azure。 還不要執行最後一個步驟 (解除佈建 VM)。
 
 6. 現在您可以取消佈建 VM，並將 VHD 上傳到 Azure。
 
@@ -439,7 +439,7 @@ ms.locfileid: "85610348"
 在下一個步驟中使用 `$secretUrl`，以便[在不使用 KEK 的狀況下連接 OS 磁碟](#without-using-a-kek)。
 
 ### <a name="disk-encryption-secret-encrypted-with-a-kek"></a>使用 KEK 加密的磁碟加密密碼
-將密碼上傳至金鑰保存庫之前，您可以選擇性地使用金鑰加密金鑰來加密密碼。 使用包裝 [API](https://msdn.microsoft.com/library/azure/dn878066.aspx) 先加密使用金鑰加密金鑰的密碼。 此 wrap 作業的輸出是 base64 URL 編碼的字串，您可以使用 Cmdlet 上傳為秘密 [`Set-AzKeyVaultSecret`](/powershell/module/az.keyvault/set-azkeyvaultsecret) 。
+將密碼上傳至金鑰保存庫之前，您可以選擇性地使用金鑰加密金鑰來加密密碼。 使用包裝 [API](/rest/api/keyvault/wrapkey) 先加密使用金鑰加密金鑰的密碼。 此 wrap 作業的輸出是 base64 URL 編碼的字串，您可以使用 Cmdlet 上傳為秘密 [`Set-AzKeyVaultSecret`](/powershell/module/az.keyvault/set-azkeyvaultsecret) 。
 
 ```powershell
     # This is the passphrase that was provided for encryption during the distribution installation
