@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 01/11/2018
 ms.author: delhan
-ms.openlocfilehash: d29b2b7c2b9194f20afe4c74d117847f0e343b12
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5abb509f1753c65554bd74ababe9acca4103c15a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80422612"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86509081"
 ---
 # <a name="use-remote-tools-to-troubleshoot-azure-vm-issues"></a>使用遠端工具對 Azure VM 問題進行疑難排解
 
@@ -31,7 +31,7 @@ ms.locfileid: "80422612"
 
 ## <a name="remote-cmd"></a>遠端 CMD
 
-下載 [PsExec](https://docs.microsoft.com/sysinternals/downloads/psexec)。 執行下列命令來連線至 VM：
+下載 [PsExec](/sysinternals/downloads/psexec)。 執行下列命令來連線至 VM：
 
 ```cmd
 psexec \\<computer>-u user -s cmd
@@ -251,9 +251,7 @@ Invoke-Command -ComputerName "<<COMPUTERNAME>" -ScriptBlock {"<<SCRIPT BLOCK>>"}
 
 ## <a name="next-steps"></a>後續步驟
 
-- 如需有關輸入 PSSession Cmdlet 的詳細資訊，請參閱[enter-pssession](https://technet.microsoft.com/library/hh849707.aspx)。
-- 如需有關使用傳統部署模型的 Windows 自訂腳本擴充功能的詳細資訊，請參閱[適用于 windows 的自訂腳本擴充](../extensions/custom-script-classic.md)功能。
+- 如需有關輸入 PSSession Cmdlet 的詳細資訊，請參閱[enter-pssession](/powershell/module/microsoft.powershell.core/enter-pssession?view=powershell-5.1)。
+- 如需有關使用傳統部署模型的 Windows 自訂腳本擴充功能的詳細資訊，請參閱[適用于 windows 的自訂腳本擴充](../extensions/custom-script-windows.md)功能。
 - PsExec 屬於 [PSTools 套件](https://download.sysinternals.com/files/PSTools.zip)。
-- 如需 PSTools 套件的詳細資訊，請參閱[PSTools](https://docs.microsoft.com/sysinternals/downloads/pstools)。
-
-
+- 如需 PSTools 套件的詳細資訊，請參閱[PSTools](/sysinternals/downloads/pstools)。

@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: e94ffb3d34082745c3d7ca86cfda2b93c0ed08da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 08fb794839adf9e8a986f53da00b4855e5535af5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77919408"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508860"
 ---
 # <a name="understand-a-system-reboot-for-azure-vm"></a>了解 Azure VM 的系統重新啟動
 
@@ -33,7 +34,7 @@ Azure 虛擬機器 (VM) 可能會因不明原因而重新開機，且無法證�
 
 ## <a name="resource-health-information"></a>資源健全狀況資訊
 
-Azure 資源健康狀態是一項服務，會揭露個別 Azure 資源的健康狀態，並提供可採取動作的指導以便針對問題進行疑難排解。 在無法直接存取伺服器或基礎結構元素的雲端環境中，資源健全狀況旨在減少您花在疑難排解上的時間。 尤其旨在減少花在判斷問題根源是出自應用程式本身還是 Azure 平台內事件的時間。 如需詳細資訊，請參閱[了解和使用資源健全狀況](../../resource-health/resource-health-overview.md)。
+Azure 資源健康狀態是一項服務，會揭露個別 Azure 資源的健康狀態，並提供可採取動作的指導以便針對問題進行疑難排解。 在無法直接存取伺服器或基礎結構元素的雲端環境中，資源健全狀況旨在減少您花在疑難排解上的時間。 尤其旨在減少花在判斷問題根源是出自應用程式本身還是 Azure 平台內事件的時間。 如需詳細資訊，請參閱[了解和使用資源健全狀況](../../service-health/resource-health-overview.md)。
 
 ## <a name="actions-and-events-that-can-cause-the-vm-to-reboot"></a>可能導致 VM 重新開機的動作和事件
 
@@ -45,8 +46,8 @@ Azure 資源健康狀態是一項服務，會揭露個別 Azure 資源的健康�
 
 若要了解什麼是 Azure 預定進行的維修，以及其對 Linux VM 可用性有何影響，請參閱下列文章。 這些文章提供有關 Azure 背景計劃性維護程序的背景，以及如何排定計劃性維護以進一步降低影響。
 
-- [Azure 中 VM 的計劃性維護](../windows/planned-maintenance.md)
-- [如何在 Azure VM 上排定計劃性維護](../windows/classic/planned-maintenance-schedule.md)
+- [Azure 中 VM 的計劃性維護](../maintenance-and-updates.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json)
+- [如何在 Azure VM 上排定計劃性維護](../maintenance-and-updates.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json)
 
 ### <a name="memory-preserving-updates"></a>記憶體保留的更新
 
@@ -71,7 +72,7 @@ Azure 資源健康狀態是一項服務，會揭露個別 Azure 資源的健康�
 
 ### <a name="azure-security-center-and-windows-update"></a>Azure 資訊安全中心與 Windows Update
 
-Azure 資訊安全中心每日監視 Windows 和 Linux VM 是否有遺漏的作業系統更新。 資訊安全中心會根據 Windows VM 上設定的服務，從 Windows Update 或 Windows Server Update Services (WSUS) 擷取可用的安全性和重大更新清單。 資訊安全中心也會檢查 Linux 系統的最新更新。 如果您的 VM 遺漏系統更新，資訊安全中心建議您套用系統更新。 這些系統更新的應用程式是透過 Azure 入口網站中的資訊安全中心控制。 套用某些更新後，可能需要 VM 重新開機。 如需詳細資訊，請參閱[在 Azure 資訊安全中心套用系統更新](../../security-center/security-center-apply-system-updates.md)。
+Azure 資訊安全中心每日監視 Windows 和 Linux VM 是否有遺漏的作業系統更新。 資訊安全中心會根據 Windows VM 上設定的服務，從 Windows Update 或 Windows Server Update Services (WSUS) 擷取可用的安全性和重大更新清單。 資訊安全中心也會檢查 Linux 系統的最新更新。 如果您的 VM 遺漏系統更新，資訊安全中心建議您套用系統更新。 這些系統更新的應用程式是透過 Azure 入口網站中的資訊安全中心控制。 套用某些更新後，可能需要 VM 重新開機。 如需詳細資訊，請參閱[在 Azure 資訊安全中心套用系統更新](../../security-center/security-center-virtual-machine-protection.md)。
 
 如同內部部署伺服器，Azure 不會將 Windows Update 的更新推送至 Windows VM，因為這些機器預計是由使用者管理。 不過，建議您讓自動安裝 Windows Update 設定保持啟用狀態。 自動安裝 Windows Update 的更新也可能導致在套用更新後發生重新開機。 如需詳細資訊，請參閱 [ Windows 更新常見問題集](https://support.microsoft.com/help/12373/windows-update-faq)。
 
@@ -114,7 +115,7 @@ Azure 中的 VM 依賴作業系統的虛擬磁碟以及 Azure 儲存體基礎結
 
 **超出 IO 限制**
 
-當 I/O 要求因為每秒 I/O 作業次數 (IOPS) 超出磁碟的 I/O 限制而一直節流時，VM 可能會暫時關閉。 （標準磁片儲存體受限於 500 IOPS）。若要解決此問題，請使用磁片等量分割或設定來賓 VM 內的儲存空間（視工作負載而定）。 如需詳細資訊，請參閱[設定 Azure VM 以達到最佳的儲存體效能](https://blogs.msdn.com/b/mast/archive/2014/10/14/configuring-azure-virtual-machines-for-optimal-storage-performance.aspx)。
+當 I/O 要求因為每秒 I/O 作業次數 (IOPS) 超出磁碟的 I/O 限制而一直節流時，VM 可能會暫時關閉。 （標準磁片儲存體受限於 500 IOPS）。若要解決此問題，請使用磁片等量分割或設定來賓 VM 內的儲存空間（視工作負載而定）。 
 
 ### <a name="other-incidents"></a>其他事件
 

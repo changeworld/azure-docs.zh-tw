@@ -14,16 +14,16 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 10/09/2019
 ms.author: v-six
-ms.openlocfilehash: daf3e3aaa95734c79e513c16e5d41aeb0bf894dc
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: cf27a842d37e96c82370e9b9b81763c8a5d1f7c9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135272"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86509047"
 ---
 # <a name="troubleshoot-linux-vm-starting-issues-due-to-fstab-errors"></a>針對 Linux VM 因 fstab 錯誤而啟動的問題進行疑難排解
 
-您無法使用安全殼層（SSH）連線來連接到 Azure Linux 虛擬機器（VM）。 當您在[Azure 入口網站](https://portal.azure.com/)上執行[開機診斷](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics)功能時，會看到類似下列範例的記錄專案：
+您無法使用安全殼層（SSH）連線來連接到 Azure Linux 虛擬機器（VM）。 當您在[Azure 入口網站](https://portal.azure.com/)上執行[開機診斷](./boot-diagnostics.md)功能時，會看到類似下列範例的記錄專案：
 
 ## <a name="examples"></a>範例
 
@@ -106,8 +106,8 @@ Give root password for maintenance
 
 ### <a name="using-single-user-mode"></a>使用單一使用者模式
 
-1. 連接到[序列主控台](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux)。
-2. 使用序列主控台來採用單一使用者模式[單一使用者模式](https://docs.microsoft.com/azure/virtual-machines/linux/serial-console-grub-single-user-mode)
+1. 連接到[序列主控台](./serial-console-linux.md)。
+2. 使用序列主控台來採用單一使用者模式[單一使用者模式](../linux/serial-console-grub-single-user-mode.md)
 3. 一旦 vm 開機進入單一使用者模式。 使用您慣用的文字編輯器來開啟 fstab 檔案。 
 
    ```
@@ -140,7 +140,7 @@ Give root password for maintenance
 
 ### <a name="using-root-password"></a>使用根密碼
 
-1. 連接到[序列主控台](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux)。
+1. 連接到[序列主控台](./serial-console-linux.md)。
 2. 使用本機使用者和密碼登入系統。
 
    > [!Note]
@@ -188,7 +188,7 @@ Give root password for maintenance
 
 ## <a name="repair-the-vm-offline"></a>修復離線的 VM
 
-1. 將 VM 的系統磁片做為資料磁片連結至復原 VM （任何運作中的 Linux VM）。 若要這樣做，您可以使用[CLI 命令](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-recovery-disks-linux)，也可以使用[VM 修復命令](repair-linux-vm-using-azure-virtual-machine-repair-commands.md)自動設定復原 VM。
+1. 將 VM 的系統磁片做為資料磁片連結至復原 VM （任何運作中的 Linux VM）。 若要這樣做，您可以使用[CLI 命令](./troubleshoot-recovery-disks-linux.md)，也可以使用[VM 修復命令](repair-linux-vm-using-azure-virtual-machine-repair-commands.md)自動設定復原 VM。
 
 2. 將系統磁片掛接為復原 VM 上的資料磁片之後，請在進行變更之前先備份 fstab 檔案，然後依照後續步驟更正 fstab 檔案。
 
@@ -217,7 +217,7 @@ Give root password for maintenance
    > * 每一行上的欄位會以定位字元或空格分隔。 空白行會遭到忽略。 以數位記號（#）做為第一個字元的行是批註。 批註行可以保留在 fstab 檔案中，但不會進行處理。 我們建議您將不確定的 fstab 行批註，而不是移除行。
    > * 為了讓 VM 能夠復原和啟動，檔案系統分割區應該是唯一需要的磁碟分割。 VM 可能會遇到關於其他批註資料分割的應用程式錯誤。 不過，VM 應該會在沒有其他磁碟分割的情況下啟動。 您稍後可以將任何批註行取消批註。
    > * 建議您使用檔案系統磁碟分割的 UUID，將資料磁片掛接在 Azure Vm 上。 例如，執行下列命令：``/dev/sdc1: LABEL="cloudimg-rootfs" UUID="<UUID>" TYPE="ext4" PARTUUID="<PartUUID>"``
-   > * 若要判斷檔案系統的 UUID，請執行 blkid 命令。 如需語法的詳細資訊，請執行 man blkid 命令。 請注意，您要復原的磁片現在已掛接在新的 VM 上。 雖然 Uuid 應該一致，但此 VM 上的裝置分割區識別碼（例如，"/dev/sda1"）是不同的。 在非系統 VHD 上，原始失敗 VM 的檔案系統磁碟分割無法[使用 CLI 命令](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-recovery-disks-linux)來提供給復原 VM。
+   > * 若要判斷檔案系統的 UUID，請執行 blkid 命令。 如需語法的詳細資訊，請執行 man blkid 命令。 請注意，您要復原的磁片現在已掛接在新的 VM 上。 雖然 Uuid 應該一致，但此 VM 上的裝置分割區識別碼（例如，"/dev/sda1"）是不同的。 在非系統 VHD 上，原始失敗 VM 的檔案系統磁碟分割無法[使用 CLI 命令](./troubleshoot-recovery-disks-linux.md)來提供給復原 VM。
    > * Nofail 選項可協助確保即使檔案系統已損毀，或啟動時檔案系統不存在，VM 也會啟動。 我們建議您在 fstab 檔案中使用 nofail 選項，以便在 VM 啟動後不需要的分割區發生錯誤時，讓啟動繼續進行。
 
 7. 在 fstab 檔案中變更或批註掉任何不正確或不必要的行，讓 VM 能夠正確啟動。
@@ -240,5 +240,5 @@ Give root password for maintenance
 
 ## <a name="next-steps"></a>後續步驟
 
-* [使用 Azure CLI 2.0 將 OS 磁碟連結至復原 VM，以針對 Linux VM 進行疑難排解](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-troubleshoot-recovery-disks)
-* [使用 Azure 入口網站將 OS 磁碟連結至復原 VM，以針對 Linux VM 進行疑難排解](https://docs.microsoft.com/azure/virtual-machines/linux/troubleshoot-recovery-disks-portal)
+* [使用 Azure CLI 2.0 將 OS 磁碟連結至復原 VM，以針對 Linux VM 進行疑難排解](./troubleshoot-recovery-disks-linux.md)
+* [使用 Azure 入口網站將 OS 磁碟連結至復原 VM，以針對 Linux VM 進行疑難排解](./troubleshoot-recovery-disks-portal-linux.md)

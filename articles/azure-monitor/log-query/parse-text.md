@@ -6,14 +6,15 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/04/2018
-ms.openlocfilehash: d7a37d51c411488231205fd036f9a287f5206ce5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c76cf939959d198d2c28181295a695a65ae46af9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77672441"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505698"
 ---
 # <a name="parse-text-data-in-azure-monitor-logs"></a>剖析 Azure 監視器記錄中的文字資料
-Azure 監視器所收集的部分記錄資料將在單一屬性中包含多個資訊片段。 將此資料剖析成多個屬性可讓您更輕鬆地在查詢中使用。 常見的範例為[自訂記錄檔](../../log-analytics/log-analytics-data-sources-custom-logs.md)，可將具有多個值的整個記錄檔項目收集成單一屬性。 您可以針對不同的值建立不同的屬性，以便在每個屬性中搜尋並彙總。
+Azure 監視器所收集的部分記錄資料將在單一屬性中包含多個資訊片段。 將此資料剖析成多個屬性可讓您更輕鬆地在查詢中使用。 常見的範例為[自訂記錄檔](../platform/data-sources-custom-logs.md)，可將具有多個值的整個記錄檔項目收集成單一屬性。 您可以針對不同的值建立不同的屬性，以便在每個屬性中搜尋並彙總。
 
 本文說明在擷取資料時，以及在查詢中取出資料時，剖析 Azure 監視器中記錄資料的不同選項，並比較各個選項的相對優點。
 
@@ -22,7 +23,7 @@ Azure 監視器所收集的部分記錄資料將在單一屬性中包含多個�
 您可以在收集資料時剖析擷取期間的資料，或是在使用查詢分析資料時剖析查詢期間的資料。 每個策略都有獨特的優點，如下所述。
 
 ### <a name="parse-data-at-collection-time"></a>在收集期間剖析資料
-當您在收集時間剖析資料時，您要設定可在資料表中建立新屬性的 [[自訂欄位]](../../log-analytics/log-analytics-custom-fields.md)。 查詢不一定會包含任何剖析邏輯，因此只要使用這些屬性作為資料表中的其他任何欄位即可。
+當您在收集時間剖析資料時，您要設定可在資料表中建立新屬性的 [[自訂欄位]](../platform/custom-fields.md)。 查詢不一定會包含任何剖析邏輯，因此只要使用這些屬性作為資料表中的其他任何欄位即可。
 
 這個方法的優點包括：
 

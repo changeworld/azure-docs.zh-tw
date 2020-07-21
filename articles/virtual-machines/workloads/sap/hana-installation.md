@@ -13,11 +13,12 @@ ms.workload: infrastructure
 ms.date: 01/16/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4db072cf881c936db6721845e7823082388515b0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ae4a7dc400b347a963e07a8c696e7581e2dcd703
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83117116"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507840"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>如何在 Azure 上安裝和設定 SAP HANA (大型執行個體)
 
@@ -41,11 +42,11 @@ ms.locfileid: "83117116"
 
 當您從 Microsoft 收到 HANA 大型執行個體單位之後，請驗證下列設定，並視需要進行調整。
 
-當您收到 HANA 大型實例並建立對實例的存取和連線之後，**第一個步驟**是簽入 Azure 入口網站實例是否顯示有正確的 SKU 和 OS。 [透過 Azure 入口網站，閱讀 AZURE HANA 大型實例的控制](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-li-portal)，以執行檢查所需的步驟。
+當您收到 HANA 大型實例並建立對實例的存取和連線之後，**第一個步驟**是簽入 Azure 入口網站實例是否顯示有正確的 SKU 和 OS。 [透過 Azure 入口網站，閱讀 AZURE HANA 大型實例的控制](./hana-li-portal.md)，以執行檢查所需的步驟。
 
 當您收到 HANA 大型實例並建立對實例的存取和連線之後，**第二個步驟**是向您的作業系統提供者註冊實例的 os。 這個步驟包括「在部署於 Azure VM 的 SUSE SMT 執行個體中註冊 SUSE Linux OS」。 
 
-HANA 大型執行個體單位可以連接到這個 SMT 執行個體。 (如需詳細資訊，請參閱[如何設定 SUSE Linux 的 SMT 伺服器](hana-setup-smt.md))。 或者，需要向您必須連線的 Red Hat Subscription Manager 註冊 Red Hat OS。 如需詳細資訊，請參閱[什麼是 Azure 上的 SAP HANA (大型執行個體)？](https://docs.microsoft.com/azure/virtual-machines/linux/sap-hana-overview-architecture?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)中的備註。 
+HANA 大型執行個體單位可以連接到這個 SMT 執行個體。 (如需詳細資訊，請參閱[如何設定 SUSE Linux 的 SMT 伺服器](hana-setup-smt.md))。 或者，需要向您必須連線的 Red Hat Subscription Manager 註冊 Red Hat OS。 如需詳細資訊，請參閱[什麼是 Azure 上的 SAP HANA (大型執行個體)？](./hana-overview-architecture.md?toc=/azure/virtual-machines/linux/toc.json)中的備註。 
 
 這是修補作業系統的必要步驟，這是客戶的責任。 若為 SUSE，請尋找文件上有關 [SMT 安裝](https://www.suse.com/documentation/sles-12/book_smt/data/smt_installation.html)的這個頁面，以了解如何安裝和設定 SMT。
 
@@ -126,14 +127,14 @@ HANA 大型執行個體單位可以連接到這個 SMT 執行個體。 (如需�
 ## <a name="networking"></a>網路功能
 我們假設您已如下列文件所述，依照建議設計 Azure 虛擬網路，並將這些虛擬網路連接到 HANA 大型執行個體：
 
-- [Azure 上的 SAP Hana （大型實例）總覽和架構](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)
+- [Azure 上的 SAP Hana （大型實例）總覽和架構](./hana-overview-architecture.md)
 - [Azure 上的 SAP Hana （大型實例）基礎結構和連線能力](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-關於單一單位的網路功能，有一些值得一提的細節。 每個「HANA 大型執行個體」單位都隨附兩個或三個 IP 位址，這些位址會指派給兩個或三個 NIC 連接埠。 在 HANA 向外延展組態與「HANA 系統複寫」案例中會使用三個 IP 位址。 其中一個指派給單位之 NIC 的 IP 位址是來自 [Azure 上 SAP HANA (大型執行個體) 的概觀和架構](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)中所述的伺服器 IP 集區。
+關於單一單位的網路功能，有一些值得一提的細節。 每個「HANA 大型執行個體」單位都隨附兩個或三個 IP 位址，這些位址會指派給兩個或三個 NIC 連接埠。 在 HANA 向外延展組態與「HANA 系統複寫」案例中會使用三個 IP 位址。 其中一個指派給單位之 NIC 的 IP 位址是來自 [Azure 上 SAP HANA (大型執行個體) 的概觀和架構](./hana-overview-architecture.md)中所述的伺服器 IP 集區。
 
 若要了解架構所適用的乙太網路詳細資料，請參閱 [HLI 支援案例](hana-supported-scenario.md)。
 
-## <a name="storage"></a>儲存體
+## <a name="storage"></a>存放裝置
 
 SAP Hana on Azure （大型實例）的儲存體配置是 `service management` 透過 SAP 建議方針的 SAP Hana 在 azure 上進行設定。 這些指引列載於 [SAP HANA 儲存體需求](https://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)白皮書中。 
 
@@ -264,7 +265,3 @@ S72m HANA 大型執行個體單元的 df -h 命令輸出應該像這樣：
 
 
  
-
-
-
-

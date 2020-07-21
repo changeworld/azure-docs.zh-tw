@@ -4,11 +4,12 @@ description: 如何在 Azure Functions 中使用地理區域來進行冗余和�
 ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.topic: conceptual
 ms.date: 08/29/2019
-ms.openlocfilehash: 481a716bd6ced5c304da41c70fdcfc687b76661d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 446a76b823ce3592a83d0c2f898041951361b47e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79080227"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506276"
 ---
 # <a name="azure-functions-geo-disaster-recovery"></a>Azure Functions 異地嚴重損壞修復
 
@@ -21,7 +22,7 @@ Azure Functions 在特定區域中執行。  若要取得更高的可用性，�
 * 主動/主動。 這兩個區域都是作用中和接收事件（重複或 rotationally）。 針對 HTTPS 函式，建議使用主動/主動搭配 Azure Front 門板。
 * 主動/被動。 一個區域是作用中和接收事件，而次要資料庫處於閒置狀態。  當需要容錯移轉時，次要區域會啟動並接管處理。  這對於非 HTTP 函式（如服務匯流排和事件中樞）是建議的做法。
 
-如需多重區域部署的詳細資訊，請參閱如何[在多個區域中執行應用程式](https://docs.microsoft.com/azure/architecture/reference-architectures/app-service-web-app/multi-region)。
+如需多重區域部署的詳細資訊，請參閱如何[在多個區域中執行應用程式](/azure/architecture/reference-architectures/app-service-web-app/multi-region)。
 
 ## <a name="activeactive-for-https-functions"></a>HTTPS 函式的主動/主動
 

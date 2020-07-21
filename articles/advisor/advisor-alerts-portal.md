@@ -3,18 +3,18 @@ title: 使用 Azure 入口網站為新的建議建立 Azure Advisor 警示
 description: 建立新建議的 Azure Advisor 警示
 ms.topic: article
 ms.date: 09/09/2019
-ms.openlocfilehash: 351d1faf0cb049babe1091aaac465ff975ab47cb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0b3984b82cd5265f4940cd88597ccb29d51e1118
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85567262"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507211"
 ---
 # <a name="create-azure-advisor-alerts-on-new-recommendations-using-the-azure-portal"></a>使用 Azure 入口網站在新的建議上建立 Azure Advisor 警示 
 
 本文說明如何使用 Azure 入口網站從 Azure Advisor 設定新建議的警示。 
 
-每當 Azure Advisor 偵測到其中一個資源的新建議時，事件就會儲存在[Azure 活動記錄](https://docs.microsoft.com/azure/azure-monitor/platform/activity-logs-overview)中。 您可以使用建議特定的警示建立體驗，從 Azure Advisor 設定這些事件的警示。 您可以選取訂用帳戶和資源群組（選擇性），以指定您想要接收警示的資源。 
+每當 Azure Advisor 偵測到其中一個資源的新建議時，事件就會儲存在[Azure 活動記錄](../azure-monitor/platform/platform-logs-overview.md)中。 您可以使用建議特定的警示建立體驗，從 Azure Advisor 設定這些事件的警示。 您可以選取訂用帳戶和資源群組（選擇性），以指定您想要接收警示的資源。 
 
 您也可以使用下列屬性來判斷建議的類型：
 
@@ -57,7 +57,7 @@ ms.locfileid: "85567262"
 
     ![Advisor 警示動作群組](./media/advisor-alerts/create6.png)
 
-7. 在 [**動作群組**] 區段中，選取 [**新增現有**的] 以使用您已建立的動作群組，或選取 **[新建] 來設定**新的[動作群組](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)。 
+7. 在 [**動作群組**] 區段中，選取 [**新增現有**的] 以使用您已建立的動作群組，或選取 **[新建] 來設定**新的[動作群組](../azure-monitor/platform/action-groups.md)。 
 
     ![Advisor 警示加入現有的](./media/advisor-alerts/create7.png)
 

@@ -13,11 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: b1f7708c9bd213e201ba4eb8837a191dca68ca9e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a9c2cee1478bc64c63b0d7ad09eec386b59678ae
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77167006"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86509013"
 ---
 # <a name="azure-serial-console-for-linux"></a>適用於 Linux 的 Azure 序列主控台
 
@@ -25,7 +26,7 @@ Azure 入口網站中的序列主控台可讓您存取 Linux 虛擬機器（Vm�
 
 序列主控台的運作方式與 VM 和虛擬機器擴展集執行個體相同。 在本文件中，除非另有指示，否則所有提及的 VM 都隱含虛擬機器擴展集執行個體。
 
-如需 Windows 的序列主控台檔，請參閱[windows 的序列主控台](../windows/serial-console.md)。
+如需 Windows 的序列主控台檔，請參閱[windows 的序列主控台](./serial-console-windows.md)。
 
 > [!NOTE]
 > 序列主控台已在全球 Azure 區域中正式推出，且在 Azure Government 中處於公開預覽階段。 目前尚未在「Azure 中國」雲端中提供序列主控台。
@@ -37,7 +38,7 @@ Azure 入口網站中的序列主控台可讓您存取 Linux 虛擬機器（Vm�
 
 - 使用序列主控台的帳戶必須具有 VM 的[虛擬機器參與者角色](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)和[開機診斷](boot-diagnostics.md)儲存體帳戶
 
-- VM 或虛擬機器擴展集執行個體必須有以密碼為基礎的使用者。 您可以使用 VM 存取擴充的[重設密碼](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password)功能來建立一個帳戶。 然後，選取 [支援與疑難排解] 區段中的 [重設密碼]。
+- VM 或虛擬機器擴展集執行個體必須有以密碼為基礎的使用者。 您可以使用 VM 存取擴充的[重設密碼](../extensions/vmaccess.md#reset-password)功能來建立一個帳戶。 然後，選取 [支援與疑難排解] 區段中的 [重設密碼]。
 
 - 您的 VM 或虛擬機器擴展集實例必須啟用[開機診斷](boot-diagnostics.md)。
 
@@ -49,16 +50,16 @@ Azure 入口網站中的序列主控台可讓您存取 Linux 虛擬機器（Vm�
 
 
 > [!NOTE]
-> 序列主控台需要一個已設定密碼的本機使用者。 只使用 SSH 公開金鑰設定的 Vm 或虛擬機器擴展集，將無法登入序列主控台。 若要建立具有密碼的本機使用者，請使用 [VM 存取擴充功能](https://docs.microsoft.com/azure/virtual-machines/linux/using-vmaccess-extension) (可透過在入口網站中選取 [重設密碼]**** 來使用此功能)，然後建立具有密碼的本機使用者。
+> 序列主控台需要一個已設定密碼的本機使用者。 只使用 SSH 公開金鑰設定的 Vm 或虛擬機器擴展集，將無法登入序列主控台。 若要建立具有密碼的本機使用者，請使用 [VM 存取擴充功能](../extensions/vmaccess.md) (可透過在入口網站中選取 [重設密碼]**** 來使用此功能)，然後建立具有密碼的本機使用者。
 > 您也可以[使用 GRUB 來開機進入單一使用者模式](./serial-console-grub-single-user-mode.md)，以重設帳戶中的系統管理員密碼。
 
 ## <a name="serial-console-linux-distribution-availability"></a>序列主控台 Linux 發佈可用性
-若要讓序列主控台正確運作，必須設定讓客體作業系統將主控台訊息讀取並寫入至序列連接埠。 根據預設，大部分[背書的 Azure Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)散發套件都已設定序列主控台。 在 Azure 入口網站的 [支援與疑難排解]**** 區段中選取 [序列主控台]****，可以存取序列主控台。
+若要讓序列主控台正確運作，必須設定讓客體作業系統將主控台訊息讀取並寫入至序列連接埠。 根據預設，大部分[背書的 Azure Linux](../linux/endorsed-distros.md)散發套件都已設定序列主控台。 在 Azure 入口網站的 [支援與疑難排解]**** 區段中選取 [序列主控台]****，可以存取序列主控台。
 
 > [!NOTE]
 > 如果您在序列主控台中沒有看到任何項目，請確定您的 VM 上已啟用開機診斷。 按**Enter**通常會修正序列主控台中沒有顯示任何內容的問題。
 
-散發      | 序列主控台存取
+發行版本      | 序列主控台存取
 :-----------|:---------------------
 Red Hat Enterprise Linux    | 預設啟用的序列主控台存取。
 CentOS      | 預設啟用的序列主控台存取。
@@ -77,12 +78,12 @@ Oracle Linux        | 預設啟用的序列主控台存取。
 
 ## <a name="common-scenarios-for-accessing-the-serial-console"></a>存取序列主控台的常見案例
 
-狀況          | 序列主控台中的動作
+情節          | 序列主控台中的動作
 :------------------|:-----------------------------------------
 中斷的*FSTAB*檔 | 按下 **Enter** 鍵以繼續，並使用文字編輯器來修正 *FSTAB* 檔案。 您可能必須在單一使用者模式下，才能進行此操作。 如需詳細資訊，請參閱[如何修正 fstab 問題](https://support.microsoft.com/help/3206699/azure-linux-vm-cannot-start-because-of-fstab-errors)和[使用序列主控台來存取 GRUB 與單一使用者模式](serial-console-grub-single-user-mode.md)的序列主控台一節。
 不正確的防火牆規則 |  如果您已將 iptables 設定為封鎖 SSH 連線，您可以使用序列主控台來與您的 VM 互動，而不需要 SSH。 如需更多詳細資料，請參閱[iptables man 頁面](https://linux.die.net/man/8/iptables)。<br>同樣地，如果您的 firewalld 封鎖了 SSH 存取，您可以透過序列主控台存取 VM，然後重新設定 firewalld。 您可以在[firewalld 檔](https://firewalld.org/documentation/)中找到更多詳細資料。
 檔案系統損毀/檢查 | 請參閱 Azure Linux VM 的序列主控台區段[因為檔案系統錯誤而無法啟動](https://support.microsoft.com/en-us/help/3213321/linux-recovery-cannot-ssh-to-linux-vm-due-to-file-system-errors-fsck)，如需使用序列主控台疑難排解損毀檔案系統的詳細資訊。
-SSH 設定問題 | 存取序列主控台，然後變更設定。 無論 VM 的 SSH 設定為何，都可以使用序列主控台，因為它不需要 VM 讓網路連線正常運作。 針對[Azure LINUX VM 失敗、發生錯誤或遭到拒絕的 SSH 連線進行疑難排解時，](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-ssh-connection)可取得疑難排解指南。 如需更多詳細資料，請前往[在 Azure 中連線到 LINUX VM 問題的詳細 SSH 疑難排解步驟](./detailed-troubleshoot-ssh-connection.md)
+SSH 設定問題 | 存取序列主控台，然後變更設定。 無論 VM 的 SSH 設定為何，都可以使用序列主控台，因為它不需要 VM 讓網路連線正常運作。 針對[Azure LINUX VM 失敗、發生錯誤或遭到拒絕的 SSH 連線進行疑難排解時，](./troubleshoot-ssh-connection.md)可取得疑難排解指南。 如需更多詳細資料，請前往[在 Azure 中連線到 LINUX VM 問題的詳細 SSH 疑難排解步驟](./detailed-troubleshoot-ssh-connection.md)
 與開機載入器互動 | 從序列主控台刀鋒視窗內重新啟動您的 VM，以存取 Linux VM 上的 GRUB。 如需更多詳細資料和散發版本特定的資訊，請參閱[使用序列主控台存取 GRUB 和單一使用者模式](serial-console-grub-single-user-mode.md)。
 
 ## <a name="disable-the-serial-console"></a>停用序列主控台
@@ -98,7 +99,7 @@ SSH 設定問題 | 存取序列主控台，然後變更設定。 無論 VM 的 S
 在網路上來回傳送的所有資料都會經過加密。
 
 ### <a name="audit-logs"></a>稽核記錄
-目前對序列主控台進行的所有存取都會記錄在虛擬機器的[開機診斷](https://docs.microsoft.com/azure/virtual-machines/linux/boot-diagnostics)記錄中。 這些記錄的存取權均由 Azure 虛擬機器系統管理員所擁有和控制。
+目前對序列主控台進行的所有存取都會記錄在虛擬機器的[開機診斷](./boot-diagnostics.md)記錄中。 這些記錄的存取權均由 Azure 虛擬機器系統管理員所擁有和控制。
 
 > [!CAUTION]
 > 不會記錄主控台的存取密碼。 但是，如果在主控台內執行的命令包含或輸出密碼、祕密、使用者名稱，或任何其他形式的個人識別資訊 (PII)，則這些命令將會寫入至 VM 開機診斷記錄。 它們將與所有其他可見文字一起寫入，作為序列主控台回滾函式實作的一部分。 這些記錄是循環的，只有具有診斷儲存體帳戶讀取權限的個人才能存取它們。 如果您要輸入包含秘密或 PII 的任何 dataor 命令，則建議使用 SSH，除非序列主控台是絕對必要的。
@@ -170,6 +171,5 @@ A. 是。 因為序列主控台並不需要 SSH 金鑰，因此您只需要設�
 * 使用序列主控台來[存取 GRUB 與單一使用者模式](serial-console-grub-single-user-mode.md)。
 * 使用序列主控台來進行 [NMI 和 SysRq 呼叫](serial-console-nmi-sysrq.md)。
 * 瞭解如何使用序列主控台[在各種散發版本中啟用 GRUB](serial-console-grub-proactive-configuration.md)
-* 序列主控台也適用于[Windows vm](../windows/serial-console.md)。
+* 序列主控台也適用于[Windows vm](./serial-console-windows.md)。
 * 深入了解[開機診斷](boot-diagnostics.md)。
-

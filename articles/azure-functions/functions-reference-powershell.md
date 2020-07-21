@@ -4,11 +4,12 @@ description: 瞭解如何使用 PowerShell 開發函式。
 author: eamonoreilly
 ms.topic: conceptual
 ms.date: 04/22/2019
-ms.openlocfilehash: 41f977e7e7c23c2f49fd656461b7a3920802997e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8b8c84583bd80a7c3cbadde1caba231eed801c1f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84697267"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506123"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions PowerShell 開發人員指南
 
@@ -18,7 +19,7 @@ PowerShell Azure 函式（函式）會以 PowerShell 腳本的形式表示，並
 
 如同其他類型的函式，PowerShell 腳本函式會採用符合檔案中所定義之所有輸入系結名稱的參數 `function.json` 。 `TriggerMetadata`也會傳遞一個參數，其中包含啟動函數之觸發程式的其他資訊。
 
-本文假設您已經讀過 [Azure Functions 開發人員參考](functions-reference.md)。 您也應該已經完成[powershell 的函數快速入門](functions-create-first-function-powershell.md)，以建立您的第一個 powershell 函式。
+本文假設您已經讀過 [Azure Functions 開發人員參考](functions-reference.md)。 您也應該已經完成[powershell 的函數快速入門](./functions-create-first-function-vs-code.md?pivots=programming-language-powershell)，以建立您的第一個 powershell 函式。
 
 ## <a name="folder-structure"></a>資料夾結構
 
@@ -72,7 +73,7 @@ param($MyFirstInputBinding, $MySecondInputBinding, $TriggerMetadata)
 $TriggerMetadata.sys
 ```
 
-| 屬性   | 說明                                     | 類型     |
+| 屬性   | 描述                                     | 類型     |
 |------------|-------------------------------------------------|----------|
 | UtcNow     | 當函式在 UTC 時間內觸發時        | Datetime |
 | MethodName | 已觸發之函式的名稱     | 字串   |
@@ -295,7 +296,7 @@ HTTP 和 Webhook 觸發程序以及 HTTP 輸出繫結會使用要求和回應物
 
 | 屬性  | 描述                                                    | 類型                      |
 |-----------|----------------------------------------------------------------|---------------------------|
-| **`Body`**    | 包含要求本文的物件。 `Body`會根據資料序列化為最佳類型。 例如，如果資料是 JSON，則會以雜湊表的形式傳入。 如果資料是字串，則會以字串的形式傳入。 | 物件 (object) |
+| **`Body`**    | 包含要求本文的物件。 `Body`會根據資料序列化為最佳類型。 例如，如果資料是 JSON，則會以雜湊表的形式傳入。 如果資料是字串，則會以字串的形式傳入。 | object |
 | **`Headers`** | 包含要求標頭的字典。                | 字典<字串，字串><sup>*</sup> |
 | **`Method`** | 要求的 HTTP 方法。                                | 字串                    |
 | **`Params`**  | 包含要求之路由傳送參數的物件。 | 字典<字串，字串><sup>*</sup> |
@@ -310,7 +311,7 @@ HTTP 和 Webhook 觸發程序以及 HTTP 輸出繫結會使用要求和回應物
 
 | 屬性      | 描述                                                 | 類型                      |
 |---------------|-------------------------------------------------------------|---------------------------|
-| **`Body`**  | 包含回應本文的物件。           | 物件 (object)                    |
+| **`Body`**  | 包含回應本文的物件。           | object                    |
 | **`ContentType`** | 設定回應內容類型的簡短手勢。 | 字串                    |
 | **`Headers`** | 包含回應標頭的物件。               | 字典或雜湊表   |
 | **`StatusCode`**  | 回應的 HTTP 狀態碼。                       | 字串或整數             |
@@ -419,7 +420,7 @@ param([string] $myBlob)
 
 下列應用程式設定可以用來變更如何下載和安裝受控相依性。 您的應用程式升級會在內開始 `MDMaxBackgroundUpgradePeriod` ，而且升級程式會在大約的範圍內完成 `MDNewSnapshotCheckPeriod` 。
 
-| 函數應用程式設定              | 預設值             | 說明                                         |
+| 函數應用程式設定              | 預設值             | 描述                                         |
 |   -----------------------------   |   -------------------     |  -----------------------------------------------    |
 | **`MDMaxBackgroundUpgradePeriod`**      | `7.00:00:00`（7天）     | 每個 PowerShell 背景工作進程都會在進程啟動時，起始檢查 PowerShell 資源庫上的模組升級，而且每隔一次 `MDMaxBackgroundUpgradePeriod` 。 當 PowerShell 資源庫中有新的模組版本可用時，它會安裝到檔案系統，並提供給 PowerShell 背景工作。 降低此值可讓您的函數應用程式更快取得較新的模組版本，但它也會增加應用程式資源使用量（網路 i/o、CPU、儲存體）。 增加此值會減少應用程式的資源使用量，但它也可能會延遲傳遞新的模組版本至您的應用程式。 | 
 | **`MDNewSnapshotCheckPeriod`**         | `01:00:00`（1小時）       | 將新的模組版本安裝至檔案系統後，必須重新開機每個 PowerShell 背景工作進程。 重新開機 PowerShell 背景工作會影響您的應用程式可用性，因為它可以中斷目前的函式執行。 在重新開機所有 PowerShell 背景工作進程之前，函式呼叫可能會使用舊的或新的模組版本。 重新開機在內完成的所有 PowerShell 背景工作角色 `MDNewSnapshotCheckPeriod` 。 增加這個值會減少中斷的頻率，但也可能會增加函式呼叫使用舊或新模組版本不具決定性的時間長度。 |

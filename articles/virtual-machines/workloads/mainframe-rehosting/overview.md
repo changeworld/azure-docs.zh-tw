@@ -10,11 +10,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: ccdeefabeedfca4959239696361ccce0bc6c1c78
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d1ab9834d4bf25c7c18171ecb271f18b213d15b0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76289793"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507874"
 ---
 # <a name="mainframe-rehosting-on-azure-virtual-machines"></a>Azure 虛擬機器上的大型主機重新裝載
 
@@ -69,11 +70,11 @@ Azure 上的模擬環境可以透過應用程式開發人員控制的散發套�
 
 IBM DB2 pureScale 環境提供適用于 Azure 的資料庫叢集。 它與原始環境並不相同，但它會提供類似的可用性和規模，做為在平行 Sysplex 設定中執行之 z/OS 的 IBM DB2。
 
-若要開始使用，請參閱[Azure 上的 IBM DB2 pureScale](/azure/virtual-machines/linux/ibm-db2-purescale-azure)。
+若要開始使用，請參閱[Azure 上的 IBM DB2 pureScale](../../linux/ibm-db2-purescale-azure.md)。
 
 ## <a name="considerations"></a>考量
 
-當您將大型主機工作負載遷移至 Azure 基礎結構即服務（IaaS）時，您可以選擇數種類型的隨選、可調整的運算資源，包括 Azure Vm。 Azure 提供一系列的[Linux](/azure/virtual-machines/linux/overview)和[Windows](/azure/virtual-machines/windows/overview) vm。
+當您將大型主機工作負載遷移至 Azure 基礎結構即服務（IaaS）時，您可以選擇數種類型的隨選、可調整的運算資源，包括 Azure Vm。 Azure 提供一系列的[Linux](../../linux/overview.md)和[Windows](../../windows/overview.md) vm。
 
 ### <a name="compute"></a>計算
 
@@ -85,21 +86,21 @@ Azure 計算能力與大型主機的容量比較。 如果您想要將大型主�
 
 Azure 提供以承諾用量為基礎的服務等級協定（Sla）。 預設會有多個9的可用性，而且可以使用服務的本機或異地複寫來優化 Sla。 完整 [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) 說明保證的 Azure 整體可用性。
 
-使用 Azure IaaS （例如 VM）時，特定系統函數會提供容錯移轉支援，例如容錯移轉叢集實例和可用性設定組。 當您使用 Azure 平臺即服務（PaaS）資源時，平臺會自動處理容錯移轉。 範例包括[Azure SQL Database](/azure/sql-database/sql-database-technical-overview)和[Azure Cosmos DB](/azure/cosmos-db/introduction)。
+使用 Azure IaaS （例如 VM）時，特定系統函數會提供容錯移轉支援，例如容錯移轉叢集實例和可用性設定組。 當您使用 Azure 平臺即服務（PaaS）資源時，平臺會自動處理容錯移轉。 範例包括[Azure SQL Database](../../../azure-sql/database/sql-database-paas-overview.md)和[Azure Cosmos DB](../../../cosmos-db/introduction.md)。
 
 ### <a name="scalability"></a>延展性
 
-大型主機通常會相應增加，而雲端環境則會向外延展。Azure 提供各種[Linux](/azure/virtual-machines/linux/sizes)和[Windows](/azure/virtual-machines/windows/sizes)大小以符合您的需求。 雲端也會相應增加或減少，以符合確切的使用者規格。 計算能力、儲存體和服務會依需求以使用量為基礎的計費模型進行[調整](/azure/architecture/best-practices/auto-scaling)。
+大型主機通常會相應增加，而雲端環境則會向外延展。Azure 提供各種[Linux](../../linux/sizes.md)和[Windows](../../windows/sizes.md)大小以符合您的需求。 雲端也會相應增加或減少，以符合確切的使用者規格。 計算能力、儲存體和服務會依需求以使用量為基礎的計費模型進行[調整](/azure/architecture/best-practices/auto-scaling)。
 
-### <a name="storage"></a>儲存體
+### <a name="storage"></a>存放裝置
 
-在雲端中，您有一系列具有彈性、可擴充的儲存體選項，而且只需支付您需要的部分。 [Azure 儲存體](/azure/storage/common/storage-introduction)提供可大幅調整的資料物件存放區、雲端檔案系統服務、可靠的訊息存放區，以及 NoSQL 存放區。 針對 VM，受控和非受控磁碟可提供安全的永續性磁碟儲存體。
+在雲端中，您有一系列具有彈性、可擴充的儲存體選項，而且只需支付您需要的部分。 [Azure 儲存體](../../../storage/common/storage-introduction.md)提供可大幅調整的資料物件存放區、雲端檔案系統服務、可靠的訊息存放區，以及 NoSQL 存放區。 針對 VM，受控和非受控磁碟可提供安全的永續性磁碟儲存體。
 
 瞭解如何[將大型主機儲存體移至 Azure](./concepts/mainframe-storage-azure.md)。
 
 ### <a name="backup-and-recovery"></a>備份與復原
 
-維護您自己的嚴重損壞修復網站可能是昂貴的主張。 Azure 具備容易實行且符合成本效益的[選項，可](/azure/site-recovery/site-recovery-overview)在本機或區域層級，或透過異地冗余來進行[備份](/azure/backup/backup-introduction-to-azure-backup)、復原和[冗余](/azure/storage/common/storage-redundancy)。
+維護您自己的嚴重損壞修復網站可能是昂貴的主張。 Azure 具備容易實行且符合成本效益的[選項，可](../../../site-recovery/site-recovery-overview.md)在本機或區域層級，或透過異地冗余來進行[備份](../../../backup/backup-overview.md)、復原和[冗余](../../../storage/common/storage-redundancy.md)。
 
 ## <a name="azure-government-for-mainframe-migrations"></a>適用于大型主機遷移的 Azure Government
 
@@ -117,7 +118,7 @@ Azure Government 獲得要操作的臨時授權單位（P-ATO），以 FedRAMP �
 
 - [大型主機主題的相關白皮書](mainframe-white-papers.md)
 - [大型主機遷移](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/overview)
-- [疑難排解](/azure/virtual-machines/troubleshooting/)
+- [疑難排解](../../troubleshooting/index.yml)
 - [揭密大型主機到 Azure 的遷移](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/)
 
 <!-- INTERNAL LINKS -->

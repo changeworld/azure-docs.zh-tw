@@ -9,11 +9,12 @@ ms.topic: article
 ms.date: 09/27/2018
 ms.author: cynthn
 ms.custom: legacy
-ms.openlocfilehash: cf8d4cd3c70e28a6c70ab9321a8f55271ead754f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3aa4a7db9982d41cf32c1ddc4de6762bf1fdecf4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807497"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508792"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>在 Azure 中建立一般化 VM 的受控映像
 
@@ -23,9 +24,9 @@ ms.locfileid: "85807497"
 
 ## <a name="generalize-the-windows-vm-using-sysprep"></a>使用 Sysprep 將 Windows VM 一般化
 
-Sysprep 會移除您的所有個人帳戶與安全性資訊，然後準備使用機器做為映像。 如需 Sysprep 的詳細資訊，請參閱 [Sysprep 概觀](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview)。
+Sysprep 會移除您的所有個人帳戶與安全性資訊，然後準備使用機器做為映像。 如需 Sysprep 的詳細資訊，請參閱 [Sysprep 概觀](/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview)。
 
-請確定 Sysprep 支援電腦上執行的伺服器角色。 如需詳細資訊，請參閱[伺服器角色的 Sysprep 支援](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep-support-for-server-roles)和[不支援的案例](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview#unsupported-scenarios)。 Sysprep 需要在執行前完整解密磁片磁碟機。 如果您已在 VM 上啟用加密，請在執行 Sysprep 之前先停用加密。
+請確定 Sysprep 支援電腦上執行的伺服器角色。 如需詳細資訊，請參閱[伺服器角色的 Sysprep 支援](/windows-hardware/manufacture/desktop/sysprep-support-for-server-roles)和[不支援的案例](/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview#unsupported-scenarios)。 Sysprep 需要在執行前完整解密磁片磁碟機。 如果您已在 VM 上啟用加密，請在執行 Sysprep 之前先停用加密。
 
 > [!IMPORTANT]
 > 在 VM 中執行 Sysprep 之後，該 VM 便會被視為「已一般化」，而且無法重新啟動。 將 VM 一般化的程序是無法復原的。 如果您需要讓原始 VM 保持運作，就應該建立 [VM 的複本](create-vm-specialized.md#option-3-copy-an-existing-azure-vm)，然後將複本一般化。 
@@ -51,7 +52,7 @@ Sysprep 會移除您的所有個人帳戶與安全性資訊，然後準備使用
 6. Sysprep 完成時，它會將 VM 關機。 不要重新啟動 VM。
 
 > [!TIP]
-> **選擇性** 請使用 [DISM](https://docs.microsoft.com/windows-hardware/manufacture/desktop/dism-optimize-image-command-line-options) 來最佳化您的映像，縮短虛擬機器的第一次開機時間。
+> **選擇性** 請使用 [DISM](/windows-hardware/manufacture/desktop/dism-optimize-image-command-line-options) 來最佳化您的映像，縮短虛擬機器的第一次開機時間。
 >
 > 若要最佳化您的映像，請在 Windows 檔案總管中按兩下 VHD 來掛接，然後使用 `/optimize-image` 參數執行 DISM。
 >
@@ -246,4 +247,3 @@ Sysprep 會移除您的所有個人帳戶與安全性資訊，然後準備使用
     
 ## <a name="next-steps"></a>後續步驟
 - [從受控映像建立 VM](create-vm-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。    
-

@@ -12,12 +12,12 @@ ms.date: 06/29/2020
 tags: ''
 keywords: ''
 ms.service: multiple
-ms.openlocfilehash: 7647283444ba41a5d629ba8a26fc711a699cd78d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc61d842550f82dc8b408ed5cd421af65d0e2be6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85561133"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507891"
 ---
 # <a name="install-micro-focus-enterprise-server-50-and-enterprise-developer-50-on-azure"></a>在 Azure 上安裝微焦點企業伺服器5.0 和企業開發人員5。0
 
@@ -29,7 +29,7 @@ Azure 上的常見工作負載是開發和測試環境。 這種情況很常見�
 
 企業伺服器的對應開發環境是企業開發人員，可以在 Microsoft Visual Studio 2017 或更新版本、Visual Studio Community （免費下載）或 Eclipse 上執行。 本文說明如何使用已安裝 Visual Studio 2017 或更新版本的 Windows Server 2016 虛擬機器來部署它。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 在開始之前，請先參閱下列必要條件：
 
@@ -42,7 +42,7 @@ Azure 上的常見工作負載是開發和測試環境。 這種情況很常見�
     > [!Note]
     > 有幾個選項可控制對您 Vm 的存取：
     > -   最佳做法是設定[Azure](https://azure.microsoft.com/services/azure-bastion/)防禦。
-    > -   [站對站虛擬私人網路（VPN）](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-tutorial-vpnconnection-powershell)通道。
+    > -   [站對站虛擬私人網路（VPN）](../../../../vpn-gateway/vpn-gateway-tutorial-vpnconnection-powershell.md)通道。
     > -   Jumpbox VM。
 
 ## <a name="install-enterprise-server"></a>安裝 Enterprise Server
@@ -125,8 +125,8 @@ Azure 上的常見工作負載是開發和測試環境。 這種情況很常見�
 
 **後續步驟**
 
--   [設定 BankDemo 應用程式](https://docs.microsoft.com/azure/virtual-machines/workloads/mainframe-rehosting/microfocus/demo)
+-   [設定 BankDemo 應用程式](./demo.md)
 
--   [在 Docker 容器中執行企業伺服器](https://docs.microsoft.com/azure/virtual-machines/workloads/mainframe-rehosting/microfocus/run-enterprise-server-container)
+-   [在 Docker 容器中執行企業伺服器](./run-enterprise-server-container.md)
 
--   [大型主機應用程式移轉](https://docs.microsoft.com/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/application-strategies)
+-   [大型主機應用程式移轉](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/application-strategies)

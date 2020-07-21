@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/16/2019
 ms.author: amverma
-ms.openlocfilehash: 62e4d3dbd7357f8c98df3307c1c8fe52cbed1c5e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fed5606da84d8311785752cc8319b7a3c642c1f5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67707767"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508027"
 ---
 # <a name="hb-series-virtual-machines-overview"></a>HB 系列虛擬機器總覽
 
@@ -46,7 +46,7 @@ VM 本身並不知道 pNUMA 0 並未提供給它。 VM 瞭解 pNUMA 1-15 as Vnum
 | 核心                            | 60（SMT 已停用）                |
 | CPU                              | AMD EPYC 7551 *                   |
 | CPU 頻率（非 AVX）          | ~ 2.55 GHz （單一 + 所有核心）   |
-| Memory                           | 4 GB/核心（240總計）            |
+| 記憶體                           | 4 GB/核心（240總計）            |
 | 本機磁碟                       | 700 GB NVMe                      |
 | Infiniband                       | 100 Gb EDR Mellanox ConnectX-5 * * |
 | 網路                          | 50 Gb 乙太網路（40 Gb 可用） Azure second Gen SmartNIC * * * |
@@ -65,6 +65,6 @@ VM 本身並不知道 pNUMA 0 並未提供給它。 VM 瞭解 pNUMA 1-15 as Vnum
 
 ## <a name="next-steps"></a>後續步驟
 
-* 深入瞭解 Azure 中適用于[Linux](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc)和[WINDOWS](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc)的 HPC VM 大小。
+* 深入瞭解 Azure 中適用于[Linux](../../sizes-hpc.md)和[WINDOWS](../../sizes-hpc.md)的 HPC VM 大小。
 
-* 深入瞭解 Azure 中的[HPC](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/) 。
+* 深入瞭解 Azure 中的[HPC](/azure/architecture/topics/high-performance-computing/) 。

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
-ms.openlocfilehash: f41f3bd38013cb0ebd2cad55168551c303c1d231
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 0b00785fed7708986885e9da9102e8f1b4fd4539
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86084322"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508877"
 ---
 # <a name="remote-desktop-services-isnt-starting-on-an-azure-vm"></a>遠端桌面服務未在 Azure VM 上啟動
 
@@ -218,7 +218,7 @@ ms.locfileid: "86084322"
 
 #### <a name="attach-the-os-disk-to-a-recovery-vm"></a>將 OS 磁碟連結至復原 VM
 
-1. [將 OS 磁片連結至復原 VM](../windows/troubleshoot-recovery-disks-portal.md)。
+1. [將 OS 磁片連結至復原 VM](./troubleshoot-recovery-disks-portal-windows.md)。
 2. 啟動復原 VM 的遠端桌面連線。 確定連結的磁碟在磁碟管理主控台中標示為 [線上]****。 記下指派給所連結 OS 磁碟的磁碟機代號。
 3. 開啟提升許可權的命令提示字元實例（以**系統管理員身分執行**）。 然後執行下列指令碼。 我們假設指派給所連結 OS 磁片的磁碟機號是**F**。將它取代為您 VM 中的適當值。 
 
@@ -234,7 +234,7 @@ ms.locfileid: "86084322"
    reg add "HKLM\BROKENSYSTEM\ControlSet002\services\TermService" /v type /t REG_DWORD /d 16 /f
    ```
 
-4. [將 OS 磁碟中斷連結並建立 VM](../windows/troubleshoot-recovery-disks-portal.md)。 然後檢查問題是否已解決。
+4. [將 OS 磁碟中斷連結並建立 VM](./troubleshoot-recovery-disks-portal-windows.md)。 然後檢查問題是否已解決。
 
 ## <a name="need-help-contact-support"></a>需要協助嗎？ 請連絡支援人員
 

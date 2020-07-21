@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: bbd81730ea822381f1d0f0e15011fb4ed0c29e64
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: efb26260d0e1f59e78c8328de298c3d4d92c19d3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84735909"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86509303"
 ---
 # <a name="gpu-optimized-virtual-machine-sizes"></a>GPU 最佳化的虛擬機器大小
 
@@ -31,13 +31,13 @@ GPU 優化的 VM 大小是使用單一、多個或小數 Gpu 提供的特製化�
 
 若要利用 Azure N 系列 Vm 的 GPU 功能，必須安裝 NVIDIA 或 AMD GPU 驅動程式。
 
-- 針對 NVIDIA Gpu 支援的 Vm， [NVIDIA Gpu 驅動程式擴充](/azure/virtual-machines/extensions/hpccompute-gpu-windows)功能會安裝適當的 nvidia CUDA 或 GRID 驅動程式。 使用 Azure 入口網站或者 Azure PowerShell 或 Azure Resource Manager 範本之類的工具，安裝或管理擴充功能。 如需支援的作業系統和部署步驟，請參閱 [NVIDIA GPU 驅動程式擴充功能文件](/azure/virtual-machines/extensions/hpccompute-gpu-windows)。 如需有關虛擬機器擴充功能的一般資訊，請參閱 [Azure 虛擬機器擴充功能和功能](/azure/virtual-machines/extensions/overview)。
+- 針對 NVIDIA Gpu 支援的 Vm， [NVIDIA Gpu 驅動程式擴充](./extensions/hpccompute-gpu-windows.md)功能會安裝適當的 nvidia CUDA 或 GRID 驅動程式。 使用 Azure 入口網站或者 Azure PowerShell 或 Azure Resource Manager 範本之類的工具，安裝或管理擴充功能。 如需支援的作業系統和部署步驟，請參閱 [NVIDIA GPU 驅動程式擴充功能文件](./extensions/hpccompute-gpu-windows.md)。 如需有關虛擬機器擴充功能的一般資訊，請參閱 [Azure 虛擬機器擴充功能和功能](./extensions/overview.md)。
 
-   或者，您可以手動安裝 NVIDIA GPU 驅動程式。 如需支援的作業系統、驅動程式、安裝和驗證步驟，請參閱[在執行 Windows 的 n 系列 vm 上安裝 NVIDIA gpu 驅動程式](/azure/virtual-machines/windows/n-series-driver-setup)或[在執行 Linux 的 n 系列 VM 上安裝 nvidia gpu 驅動程式](/azure/virtual-machines/linux/n-series-driver-setup)。
+   或者，您可以手動安裝 NVIDIA GPU 驅動程式。 如需支援的作業系統、驅動程式、安裝和驗證步驟，請參閱[在執行 Windows 的 n 系列 vm 上安裝 NVIDIA gpu 驅動程式](./windows/n-series-driver-setup.md)或[在執行 Linux 的 n 系列 VM 上安裝 nvidia gpu 驅動程式](./linux/n-series-driver-setup.md)。
 
-- 針對 AMD Gpu 支援的 Vm，請參閱[在執行 Windows 的 N 系列 vm 上安裝 AMD gpu 驅動程式](/azure/virtual-machines/windows/n-series-amd-driver-setup)，以取得支援的作業系統、驅動程式、安裝和驗證步驟。
+- 針對 AMD Gpu 支援的 Vm，請參閱[在執行 Windows 的 N 系列 vm 上安裝 AMD gpu 驅動程式](./windows/n-series-amd-driver-setup.md)，以取得支援的作業系統、驅動程式、安裝和驗證步驟。
 
-## <a name="deployment-considerations"></a>部署考量因素
+## <a name="deployment-considerations"></a>部署考量
 
 - 如需了解 N 系列 VM 的可用性，請參閱[依區域提供的產品](https://azure.microsoft.com/regions/services/)。
 

@@ -8,11 +8,12 @@ ms.author: robreed
 ms.date: 04/26/2019
 ms.topic: how-to
 manager: carmonm
-ms.openlocfilehash: c6fbe66d8fbbb92c7fb668cc565da8446d97ab0a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 76ff9ff9479351eb3ec2a0e973fe3c44562adf55
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653606"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508418"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-by-using-run-command"></a>使用執行命令在 Windows 虛擬機器中執行 PowerShell 指令碼
 
@@ -22,7 +23,7 @@ ms.locfileid: "83653606"
 
 ## <a name="benefits"></a>優點
 
-您可以透過多種方式來存取虛擬機器。 執行命令可以使用虛擬機器代理程式，在虛擬機器上遠端執行指令碼。 您可以透過 Azure 入口網站、[REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand) 或 [PowerShell](https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand)，執行「執行命令」。
+您可以透過多種方式來存取虛擬機器。 執行命令可以使用虛擬機器代理程式，在虛擬機器上遠端執行指令碼。 您可以透過 Azure 入口網站、[REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand) 或 [PowerShell](/powershell/module/az.compute/invoke-azvmruncommand)，執行「執行命令」。
 
 這項功能在您想要在虛擬機器中執行指令碼的所有情況下都很有用。 這是針對因網路或管理使用者設定不當而未開啟 RDP 或 SSH 連接埠的虛擬機器，進行疑難排解和修復的唯一方法。
 
@@ -93,7 +94,7 @@ az vm run-command invoke  --command-id RunPowerShellScript --name win-vm -g my-r
 
 ## <a name="powershell"></a>PowerShell
 
-下列範例使用 [Invoke-AzVMRunCommand](https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand) Cmdlet，在 Azure VM 上執行 PowerShell 指令碼。 此 Cmdlet 預期 `-ScriptPath` 參數中所參考的指令碼，位於 Cmdlet 執行所在位置的本機環境。
+下列範例使用 [Invoke-AzVMRunCommand](/powershell/module/az.compute/invoke-azvmruncommand) Cmdlet，在 Azure VM 上執行 PowerShell 指令碼。 此 Cmdlet 預期 `-ScriptPath` 參數中所參考的指令碼，位於 Cmdlet 執行所在位置的本機環境。
 
 ```azurepowershell-interactive
 Invoke-AzVMRunCommand -ResourceGroupName '<myResourceGroup>' -Name '<myVMName>' -CommandId 'RunPowerShellScript' -ScriptPath '<pathToScript>' -Parameter @{"arg1" = "var1";"arg2" = "var2"}

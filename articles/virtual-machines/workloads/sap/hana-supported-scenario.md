@@ -13,11 +13,12 @@ ms.workload: infrastructure
 ms.date: 11/26/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 019f462d4264d19bcc4806d91223029a95f9d819
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b4946524768d0cff483feb4045a2cc5fba169a7a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77617173"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507942"
 ---
 # <a name="supported-scenarios-for-hana-large-instances"></a>HANA 大型執行個體的支援案例
 本文說明「HANA 大型實例」（今年）支援的案例和架構詳細資料。
@@ -38,7 +39,7 @@ ms.locfileid: "77617173"
 - **多重 SID**：已設定多個實例的系統;也稱為 MCOS 環境
 - **HSR**： SAP Hana 系統複寫
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 HANA 大型實例支援各種不同的架構，可協助您達成業務需求。 下列各節涵蓋架構案例和其設定詳細資料。 
 
 衍生的架構設計純粹是從基礎結構的觀點來看，您必須諮詢 SAP 或您的執行合作夥伴以進行 HANA 部署。 如果本文未列出您的案例，請洽詢 Microsoft 帳戶小組來審查架構，並為您衍生解決方案。
@@ -49,7 +50,7 @@ HANA 大型實例支援各種不同的架構，可協助您達成業務需求。
 本文說明每個支援的架構中的兩個元件詳細資料：
 
 - 乙太網路
-- 儲存體
+- 存放裝置
 
 ### <a name="ethernet"></a>乙太網路
 
@@ -95,7 +96,7 @@ HANA 大型實例支援各種不同的架構，可協助您達成業務需求。
 - Ethernet "D" 應專門用來存取 STONITH 裝置以進行 Pacemaker。 當您設定 HANA 系統複寫，而且想要使用以 SBD 為基礎的裝置來達到作業系統的自動容錯移轉時，需要此介面。
 
 
-### <a name="storage"></a>儲存體
+### <a name="storage"></a>存放裝置
 儲存體會根據要求的拓撲預先設定。 磁片區大小和掛接點會根據伺服器數目、Sku 數目和設定的拓撲而有所不同。 如需詳細資訊，請參閱您的必要案例（在本文稍後）。 如果您需要更多儲存空間，您可以在 1 TB 的增量中購買。
 
 >[!NOTE]
@@ -143,7 +144,7 @@ HANA 大型實例支援各種不同的架構，可協助您達成業務需求。
 | C | 類型二 | vlan\<tenantNo+1> | team0.tenant+1 | 節點對儲存體 |
 | D | 類型二 | vlan\<tenantNo+3> | team0.tenant+3 | 已設定但未使用 |
 
-### <a name="storage"></a>儲存體
+### <a name="storage"></a>存放裝置
 下列掛接點已預先設定：
 
 | 掛接點 | 使用案例 | 
@@ -178,7 +179,7 @@ HANA 大型實例支援各種不同的架構，可協助您達成業務需求。
 | C | 類型二 | vlan\<tenantNo+1> | team0.tenant+1 | 節點對儲存體 |
 | D | 類型二 | vlan\<tenantNo+3> | team0.tenant+3 | 已設定但未使用 |
 
-### <a name="storage"></a>儲存體
+### <a name="storage"></a>存放裝置
 下列掛接點已預先設定：
 
 | 掛接點 | 使用案例 | 
@@ -194,7 +195,7 @@ HANA 大型實例支援各種不同的架構，可協助您達成業務需求。
 
 ### <a name="key-considerations"></a>主要考量
 - /usr/sap/SID 是 /hana/shared/SID 的符號連結。
-- 磁片區大小散發是以記憶體中的資料庫大小為基礎。 若要瞭解多個 SID 環境中的記憶體支援哪些資料庫大小，請參閱[總覽和架構](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)。
+- 磁片區大小散發是以記憶體中的資料庫大小為基礎。 若要瞭解多個 SID 環境中的記憶體支援哪些資料庫大小，請參閱[總覽和架構](./hana-overview-architecture.md)。
 
 ## <a name="single-node-with-dr-using-storage-replication"></a>具有使用儲存體複寫之 DR 的單一節點
  
@@ -218,7 +219,7 @@ HANA 大型實例支援各種不同的架構，可協助您達成業務需求。
 | C | 類型二 | vlan\<tenantNo+1> | team0.tenant+1 | 節點對儲存體 |
 | D | 類型二 | vlan\<tenantNo+3> | team0.tenant+3 | 已設定但未使用 |
 
-### <a name="storage"></a>儲存體
+### <a name="storage"></a>存放裝置
 下列掛接點已預先設定：
 
 | 掛接點 | 使用案例 | 
@@ -231,9 +232,9 @@ HANA 大型實例支援各種不同的架構，可協助您達成業務需求。
 
 ### <a name="key-considerations"></a>主要考量
 - /usr/sap/SID 是 /hana/shared/SID 的符號連結。
-- 針對 MCOS：磁片區大小散發是以記憶體中的資料庫大小為基礎。 若要瞭解多個 SID 環境中的記憶體支援哪些資料庫大小，請參閱[總覽和架構](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)。
+- 針對 MCOS：磁片區大小散發是以記憶體中的資料庫大小為基礎。 若要瞭解多個 SID 環境中的記憶體支援哪些資料庫大小，請參閱[總覽和架構](./hana-overview-architecture.md)。
 - 在 DR 網站上：磁片區和掛接點已設定（標示為「HANA 安裝所需」），以便在 DR 的 HANA 單位上安裝生產 HANA 實例。 
-- 在 DR 網站上：資料、記錄備份和共用磁片區（標示為「儲存體複寫」）是透過生產網站的快照集來複寫。 這些磁片區只會在容錯移轉期間掛接。 如需詳細資訊，請參閱[災難修復容錯移轉](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery)程式。
+- 在 DR 網站上：資料、記錄備份和共用磁片區（標示為「儲存體複寫」）是透過生產網站的快照集來複寫。 這些磁片區只會在容錯移轉期間掛接。 如需詳細資訊，請參閱[災難修復容錯移轉](./hana-overview-high-availability-disaster-recovery.md)程式。
 - *SKU 類型 I 類別*的開機磁碟區已複寫到 DR 節點。
 
 
@@ -259,7 +260,7 @@ HANA 大型實例支援各種不同的架構，可協助您達成業務需求。
 | C | 類型二 | vlan\<tenantNo+1> | team0.tenant+1 | 節點對儲存體 |
 | D | 類型二 | vlan\<tenantNo+3> | team0.tenant+3 | 已設定但未使用 |
 
-### <a name="storage"></a>儲存體
+### <a name="storage"></a>存放裝置
 下列掛接點已預先設定：
 
 | 掛接點 | 使用案例 | 
@@ -280,9 +281,9 @@ HANA 大型實例支援各種不同的架構，可協助您達成業務需求。
 
 ### <a name="key-considerations"></a>主要考量
 - /usr/sap/SID 是 /hana/shared/SID 的符號連結。
-- 針對 MCOS：磁片區大小散發是以記憶體中的資料庫大小為基礎。 若要瞭解多個 SID 環境中的記憶體支援哪些資料庫大小，請參閱[總覽和架構](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)。
+- 針對 MCOS：磁片區大小散發是以記憶體中的資料庫大小為基礎。 若要瞭解多個 SID 環境中的記憶體支援哪些資料庫大小，請參閱[總覽和架構](./hana-overview-architecture.md)。
 - 在 DR 網站上：磁片區和掛接點已設定（標示為「HANA 安裝所需」），以便在 DR 的 HANA 單位上安裝生產 HANA 實例。 
-- 在 DR 網站上：資料、記錄備份和共用磁片區（標示為「儲存體複寫」）是透過生產網站的快照集來複寫。 這些磁片區只會在容錯移轉期間掛接。 如需詳細資訊，請參閱[災難修復容錯移轉](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery)程式。 
+- 在 DR 網站上：資料、記錄備份和共用磁片區（標示為「儲存體複寫」）是透過生產網站的快照集來複寫。 這些磁片區只會在容錯移轉期間掛接。 如需詳細資訊，請參閱[災難修復容錯移轉](./hana-overview-high-availability-disaster-recovery.md)程式。 
 - 在 DR 網站上：已針對 qa 實例安裝設定適用于 QA 的資料、記錄備份、記錄和共用磁片區（標示為「QA 實例安裝」）。
 - *SKU 類型 I 類別*的開機磁碟區已複寫到 DR 節點。
 
@@ -314,7 +315,7 @@ HANA 大型實例支援各種不同的架構，可協助您達成業務需求。
 | C | 類型二 | vlan\<tenantNo+1> | team0.tenant+1 | 節點對儲存體 |
 | D | 類型二 | vlan\<tenantNo+3> | team0.tenant+3 | 用於 STONITH |
 
-### <a name="storage"></a>儲存體
+### <a name="storage"></a>存放裝置
 下列掛接點已預先設定：
 
 | 掛接點 | 使用案例 | 
@@ -332,7 +333,7 @@ HANA 大型實例支援各種不同的架構，可協助您達成業務需求。
 
 ### <a name="key-considerations"></a>主要考量
 - /usr/sap/SID 是 /hana/shared/SID 的符號連結。
-- 針對 MCOS：磁片區大小散發是以記憶體中的資料庫大小為基礎。 若要瞭解多個 SID 環境中的記憶體支援哪些資料庫大小，請參閱[總覽和架構](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)。
+- 針對 MCOS：磁片區大小散發是以記憶體中的資料庫大小為基礎。 若要瞭解多個 SID 環境中的記憶體支援哪些資料庫大小，請參閱[總覽和架構](./hana-overview-architecture.md)。
 - STONITH：已針對 STONITH 安裝程式設定 SBD。 不過，使用 STONITH 是選擇性的。
 
 
@@ -360,7 +361,7 @@ HANA 大型實例支援各種不同的架構，可協助您達成業務需求。
 | C | 類型二 | vlan\<tenantNo+1> | team0.tenant+1 | 節點對儲存體 |
 | D | 類型二 | vlan\<tenantNo+3> | team0.tenant+3 | 用於 STONITH |
 
-### <a name="storage"></a>儲存體
+### <a name="storage"></a>存放裝置
 下列掛接點已預先設定：
 
 | 掛接點 | 使用案例 | 
@@ -386,11 +387,11 @@ HANA 大型實例支援各種不同的架構，可協助您達成業務需求。
 
 ### <a name="key-considerations"></a>主要考量
 - /usr/sap/SID 是 /hana/shared/SID 的符號連結。
-- 針對 MCOS：磁片區大小散發是以記憶體中的資料庫大小為基礎。 若要瞭解多個 SID 環境中的記憶體支援哪些資料庫大小，請參閱[總覽和架構](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)。
+- 針對 MCOS：磁片區大小散發是以記憶體中的資料庫大小為基礎。 若要瞭解多個 SID 環境中的記憶體支援哪些資料庫大小，請參閱[總覽和架構](./hana-overview-architecture.md)。
 - STONITH：已針對 STONITH 安裝程式設定 SBD。 不過，使用 STONITH 是選擇性的。
 - 在 DR 網站上：主要和次要節點複寫*需要兩組儲存體磁片區*。
 - 在 DR 網站上：磁片區和掛接點已設定（標示為「HANA 安裝所需」），以便在 DR 的 HANA 單位上安裝生產 HANA 實例。 
-- 在 DR 網站上：資料、記錄備份和共用磁片區（標示為「儲存體複寫」）是透過生產網站的快照集來複寫。 這些磁片區只會在容錯移轉期間掛接。 如需詳細資訊，請參閱[災難修復容錯移轉](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery)程式。 
+- 在 DR 網站上：資料、記錄備份和共用磁片區（標示為「儲存體複寫」）是透過生產網站的快照集來複寫。 這些磁片區只會在容錯移轉期間掛接。 如需詳細資訊，請參閱[災難修復容錯移轉](./hana-overview-high-availability-disaster-recovery.md)程式。 
 - 在 DR 網站上：已針對 qa 實例安裝設定適用于 QA 的資料、記錄備份、記錄和共用磁片區（標示為「QA 實例安裝」）。
 - *SKU 類型 I 類別*的開機磁碟區已複寫到 DR 節點。
 
@@ -419,7 +420,7 @@ HANA 大型實例支援各種不同的架構，可協助您達成業務需求。
 | C | 類型二 | vlan\<tenantNo+1> | team0.tenant+1 | 節點對儲存體 |
 | D | 類型二 | vlan\<tenantNo+3> | team0.tenant+3 | 已設定但未使用 |
 
-### <a name="storage"></a>儲存體
+### <a name="storage"></a>存放裝置
 下列掛接點已預先設定：
 
 | 掛接點 | 使用案例 | 
@@ -460,7 +461,7 @@ HANA 大型實例支援各種不同的架構，可協助您達成業務需求。
 | C | 類型二 | vlan\<tenantNo+1> | team0.tenant+1 | 節點對儲存體 |
 | D | 類型二 | vlan\<tenantNo+3> | team0.tenant+3 | 已設定但未使用 |
 
-### <a name="storage"></a>儲存體
+### <a name="storage"></a>存放裝置
 下列掛接點已預先設定：
 
 | 掛接點 | 使用案例 | 
@@ -496,7 +497,7 @@ HANA 大型實例支援各種不同的架構，可協助您達成業務需求。
 | C | 類型二 | vlan\<tenantNo+1> | team0.tenant+1 | 節點對儲存體 |
 | D | 類型二 | vlan\<tenantNo+3> | team0.tenant+3 | 已設定但未使用 |
 
-### <a name="storage"></a>儲存體
+### <a name="storage"></a>存放裝置
 下列掛接點已預先設定：
 
 | 掛接點 | 使用案例 | 
@@ -535,7 +536,7 @@ HANA 大型實例支援各種不同的架構，可協助您達成業務需求。
 | C | 類型二 | vlan\<tenantNo+1> | team0.tenant+1 | 節點對儲存體 |
 | D | 類型二 | vlan\<tenantNo+3> | team0.tenant+3 | 已設定但未使用 |
 
-### <a name="storage"></a>儲存體
+### <a name="storage"></a>存放裝置
 下列掛接點已預先設定：
 
 | 掛接點 | 使用案例 | 
@@ -554,7 +555,7 @@ HANA 大型實例支援各種不同的架構，可協助您達成業務需求。
 ### <a name="key-considerations"></a>主要考量
 - /usr/sap/SID 是 /hana/shared/SID 的符號連結。
 -  在 DR 網站上：磁片區和掛接點已設定（標示為「HANA 安裝所需」），以便在 DR 的 HANA 單位上安裝生產 HANA 實例。 
-- 在 DR 網站上：資料、記錄備份和共用磁片區（標示為「儲存體複寫」）是透過生產網站的快照集來複寫。 這些磁片區只會在容錯移轉期間掛接。 如需詳細資訊，請參閱[災難修復容錯移轉](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery)程式。 
+- 在 DR 網站上：資料、記錄備份和共用磁片區（標示為「儲存體複寫」）是透過生產網站的快照集來複寫。 這些磁片區只會在容錯移轉期間掛接。 如需詳細資訊，請參閱[災難修復容錯移轉](./hana-overview-high-availability-disaster-recovery.md)程式。 
 - *SKU 類型 I 類別*的開機磁碟區已複寫到 DR 節點。
 
 
@@ -580,7 +581,7 @@ HANA 大型實例支援各種不同的架構，可協助您達成業務需求。
 | C | 類型二 | vlan\<tenantNo+1> | team0.tenant+1 | 節點對儲存體 |
 | D | 類型二 | vlan\<tenantNo+3> | team0.tenant+3 | 已設定但未使用 |
 
-### <a name="storage"></a>儲存體
+### <a name="storage"></a>存放裝置
 下列掛接點已預先設定于：（主要和 DR）上：
 
 | 掛接點 | 使用案例 | 
@@ -593,9 +594,9 @@ HANA 大型實例支援各種不同的架構，可協助您達成業務需求。
 
 ### <a name="key-considerations"></a>主要考量
 - /usr/sap/SID 是 /hana/shared/SID 的符號連結。
-- 針對 MCOS：磁片區大小散發是以記憶體中的資料庫大小為基礎。 若要瞭解多個 SID 環境中的記憶體支援哪些資料庫大小，請參閱[總覽和架構](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)。
+- 針對 MCOS：磁片區大小散發是以記憶體中的資料庫大小為基礎。 若要瞭解多個 SID 環境中的記憶體支援哪些資料庫大小，請參閱[總覽和架構](./hana-overview-architecture.md)。
 - 主要節點會使用 HANA 系統複寫與 DR 節點同步。 
-- [全球範圍](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach)用來將 ExpressRoute 線路連結在一起，以在您的地區網路之間建立私人網路。
+- [全球範圍](../../../expressroute/expressroute-global-reach.md)用來將 ExpressRoute 線路連結在一起，以在您的地區網路之間建立私人網路。
 
 
 
@@ -621,7 +622,7 @@ HANA 大型實例支援各種不同的架構，可協助您達成業務需求。
 | C | 類型二 | vlan\<tenantNo+1> | team0.tenant+1 | 節點對儲存體 |
 | D | 類型二 | vlan\<tenantNo+3> | team0.tenant+3 | 已設定但未使用 |
 
-### <a name="storage"></a>儲存體
+### <a name="storage"></a>存放裝置
 下列掛接點已預先設定：
 
 | 掛接點 | 使用案例 | 
@@ -643,11 +644,11 @@ HANA 大型實例支援各種不同的架構，可協助您達成業務需求。
 
 ### <a name="key-considerations"></a>主要考量
 - /usr/sap/SID 是 /hana/shared/SID 的符號連結。
-- 針對 MCOS：磁片區大小散發是以記憶體中的資料庫大小為基礎。 若要瞭解多個 SID 環境中的記憶體支援哪些資料庫大小，請參閱[總覽和架構](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)。
+- 針對 MCOS：磁片區大小散發是以記憶體中的資料庫大小為基礎。 若要瞭解多個 SID 環境中的記憶體支援哪些資料庫大小，請參閱[總覽和架構](./hana-overview-architecture.md)。
 - 在 DR 網站上：磁片區和掛接點已設定（標示為「DR 網站的生產實例」），以用於 DR 的 HANA 實例安裝。 
 - 在 DR 網站上：已針對 qa 實例安裝設定適用于 QA 的資料、記錄備份、記錄和共用磁片區（標示為「QA 實例安裝」）。
 - 主要節點會使用 HANA 系統複寫與 DR 節點同步。 
-- [全球範圍](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach)用來將 ExpressRoute 線路連結在一起，以在您的地區網路之間建立私人網路。
+- [全球範圍](../../../expressroute/expressroute-global-reach.md)用來將 ExpressRoute 線路連結在一起，以在您的地區網路之間建立私人網路。
 
 ## <a name="high-availability-and-disaster-recovery-with-hsr"></a>使用 HSR 的高可用性和嚴重損壞修復 
  
@@ -671,7 +672,7 @@ HANA 大型實例支援各種不同的架構，可協助您達成業務需求。
 | C | 類型二 | vlan\<tenantNo+1> | team0.tenant+1 | 節點對儲存體 |
 | D | 類型二 | vlan\<tenantNo+3> | team0.tenant+3 | 已設定但未使用 |
 
-### <a name="storage"></a>儲存體
+### <a name="storage"></a>存放裝置
 下列掛接點已預先設定：
 
 | 掛接點 | 使用案例 | 
@@ -692,7 +693,7 @@ HANA 大型實例支援各種不同的架構，可協助您達成業務需求。
 - /usr/sap/SID 是 /hana/shared/SID 的符號連結。
 - 在 DR 網站上：磁片區和掛接點已設定（標示為「生產 DR 實例」），以供在 DR 的 HANA 單位上安裝生產 HANA 實例。 
 - 主要網站節點會使用 HANA 系統複寫與 DR 節點同步。 
-- [全球範圍](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach)用來將 ExpressRoute 線路連結在一起，以在您的地區網路之間建立私人網路。
+- [全球範圍](../../../expressroute/expressroute-global-reach.md)用來將 ExpressRoute 線路連結在一起，以在您的地區網路之間建立私人網路。
 
 ## <a name="high-availability-and-disaster-recovery-with-hsr-cost-optimized"></a>使用 HSR 進行高可用性和嚴重損壞修復（成本優化）
  
@@ -716,7 +717,7 @@ HANA 大型實例支援各種不同的架構，可協助您達成業務需求。
 | C | 類型二 | vlan\<tenantNo+1> | team0.tenant+1 | 節點對儲存體 |
 | D | 類型二 | vlan\<tenantNo+3> | team0.tenant+3 | 已設定但未使用 |
 
-### <a name="storage"></a>儲存體
+### <a name="storage"></a>存放裝置
 下列掛接點已預先設定：
 
 | 掛接點 | 使用案例 | 
@@ -741,7 +742,7 @@ HANA 大型實例支援各種不同的架構，可協助您達成業務需求。
 - 在 DR 網站上：磁片區和掛接點已設定（標示為「生產 DR 實例」），以供在 DR 的 HANA 單位上安裝生產 HANA 實例。 
 - 在 DR 網站上：已針對 qa 實例安裝設定適用于 QA 的資料、記錄備份、記錄和共用磁片區（標示為「QA 實例安裝」）。
 - 主要網站節點會使用 HANA 系統複寫與 DR 節點同步。 
-- [全球範圍](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach)用來將 ExpressRoute 線路連結在一起，以在您的地區網路之間建立私人網路。
+- [全球範圍](../../../expressroute/expressroute-global-reach.md)用來將 ExpressRoute 線路連結在一起，以在您的地區網路之間建立私人網路。
 
 ## <a name="scale-out-with-dr-using-hsr"></a>使用 HSR 相應放大 DR
  
@@ -767,7 +768,7 @@ HANA 大型實例支援各種不同的架構，可協助您達成業務需求。
 | C | 類型二 | vlan\<tenantNo+1> | team0.tenant+1 | 節點對儲存體 |
 | D | 類型二 | vlan\<tenantNo+3> | team0.tenant+3 | 已設定但未使用 |
 
-### <a name="storage"></a>儲存體
+### <a name="storage"></a>存放裝置
 下列掛接點已預先設定：
 
 | 掛接點 | 使用案例 | 
@@ -788,9 +789,9 @@ HANA 大型實例支援各種不同的架構，可協助您達成業務需求。
 - /usr/sap/SID 是 /hana/shared/SID 的符號連結。
 - 在 DR 網站上：磁片區和掛接點是針對在 DR 的生產 HANA 實例安裝進行設定。 
 - 主要網站節點會使用 HANA 系統複寫與 DR 節點同步。 
-- [全球範圍](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach)用來將 ExpressRoute 線路連結在一起，以在您的地區網路之間建立私人網路。
+- [全球範圍](../../../expressroute/expressroute-global-reach.md)用來將 ExpressRoute 線路連結在一起，以在您的地區網路之間建立私人網路。
 
 
 ## <a name="next-steps"></a>後續步驟
-- 適用于 HANA 大型實例的[基礎結構和連線能力](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-infrastructure-connectivity)
-- HANA 大型實例的[高可用性和嚴重損壞修復](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery)
+- 適用于 HANA 大型實例的[基礎結構和連線能力](./hana-overview-infrastructure-connectivity.md)
+- HANA 大型實例的[高可用性和嚴重損壞修復](./hana-overview-high-availability-disaster-recovery.md)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 03/25/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 9f0c6350b89dcfecefcadcc166f7af35abc4b128
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16f6919577955bda5b04db26deb9fe78a467e364
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80300975"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86509030"
 ---
 # <a name="boot-error--this-is-not-a-bootable-disk"></a>開機錯誤–這不是可開機的磁片
 
@@ -27,7 +27,7 @@ ms.locfileid: "80300975"
 
 ## <a name="symptoms"></a>徵狀
 
-當您使用 [[開機診斷](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics)] 來觀看 VM 的螢幕擷取畫面時，您會看到螢幕擷取畫面顯示了「這不是可開機的磁片」訊息的提示。 請插入可開機的軟碟，然後按任意鍵再試一次 ...」。
+當您使用 [[開機診斷](./boot-diagnostics.md)] 來觀看 VM 的螢幕擷取畫面時，您會看到螢幕擷取畫面顯示了「這不是可開機的磁片」訊息的提示。 請插入可開機的軟碟，然後按任意鍵再試一次 ...」。
 
    圖 1
 
@@ -52,7 +52,7 @@ ms.locfileid: "80300975"
 
 ### <a name="create-and-access-a-repair-vm"></a>建立和存取修復 VM
 
-1. 使用 [VM 修復命令](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands)的步驟 1-3 準備修復 VM。
+1. 使用 [VM 修復命令](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md)的步驟 1-3 準備修復 VM。
 2. 使用遠端桌面連線連線至修復 VM。
 
 ### <a name="set-partition-status-to-active"></a>將分割區狀態設定為作用中
@@ -148,4 +148,4 @@ ms.locfileid: "80300975"
 
 ### <a name="rebuild-the-original-vm"></a>重建原始 VM
 
-使用 [VM 修復命令的步驟 5](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) 重新組裝 VM。
+使用 [VM 修復命令的步驟 5](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) 重新組裝 VM。

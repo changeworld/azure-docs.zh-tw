@@ -6,11 +6,12 @@ ms.author: robb
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.subservice: alerts
-ms.openlocfilehash: 5a868167f80aaa735e4fbeab32fd1d308dd6da1f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fef975c9822cd44b94074874621e1c87a60ed27d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81114421"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505443"
 ---
 # <a name="create-a-classic-metric-alert-with-a-resource-manager-template"></a>使用 Resource Manager 範本建立傳統計量警示
 > [!WARNING]
@@ -175,7 +176,7 @@ ms.locfileid: "81114421"
 }
 ```
 
-警示規則的結構描述和屬性說明 [請見這裡](https://msdn.microsoft.com/library/azure/dn933805.aspx)。
+警示規則的結構描述和屬性說明 [請見這裡](/rest/api/monitor/alertrules)。
 
 ## <a name="resource-manager-template-for-a-resource-with-a-classic-metric-alert"></a>具有傳統計量警示之資源的 Resource Manager 範本
 在建立資源時建立警示，Resource Manager 範本上的警示通常很有用。 例如，您可能想要確保在每次部署虛擬機器時設定 “CPU % > 80” 規則。 若要這樣做，在 VM 範本的資源陣列中將警示規則新增為資源，並使用 `dependsOn` 屬性將相依性新增至 VM 資源識別碼。 以下是建立 Windows VM，並在 CPU 使用率高於 80% 時新增警示以通知訂用帳戶管理員的範例完整。
@@ -401,4 +402,3 @@ ms.locfileid: "81114421"
 * [深入了解警示](alerts-overview.md)
 * [將診斷設定新增](../../azure-monitor/platform/diagnostic-settings-template.md) 至您的 Resource Manager 範本
 * 如需 JSON 語法和屬性的相關資訊，請參閱 [Microsoft.Insights/alertrules](/azure/templates/microsoft.insights/alertrules) 範本參考。
-

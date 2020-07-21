@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 11/16/2019
 ms.author: absha
-ms.openlocfilehash: 7622ac319929548dd50a3af763b1b65ea8a36d2b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d33ec829e490ae45d38d33f5784126a71ae2d0aa
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85250225"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506548"
 ---
 # <a name="how-an-application-gateway-works"></a>應用程式閘道的運作方式
 
@@ -62,7 +62,7 @@ HTTP 設定中使用的埠和通訊協定會決定應用程式閘道與後端伺
 
 X 轉送-proto 的有效值為 HTTP 或 HTTPS。 [X-轉送-埠] 指定要求到達應用程式閘道的埠。 X-原始主機標頭包含要求抵達的原始主機標頭。 此標頭在 Azure 網站整合中很有用，其中內送主機標頭會在流量路由傳送至後端之前修改。 如果已啟用會話親和性做為選項，則會新增閘道管理的親和性 cookie。
 
-您可以使用[重寫 HTTP 標頭](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers)，將應用程式閘道設定為修改標頭，或使用路徑覆寫設定來修改 URI 路徑。 不過，除非設定為這樣做，否則所有連入要求都會代理至後端。
+您可以使用 [[重寫 HTTP 標頭] 和 [url](rewrite-http-headers-url.md) ] 來設定應用程式閘道，以修改要求和回應標頭和 url，或使用 [路徑-覆寫] 設定來修改 URI 路徑。 不過，除非設定為這樣做，否則所有連入要求都會代理至後端。
 
 ## <a name="next-steps"></a>後續步驟
 

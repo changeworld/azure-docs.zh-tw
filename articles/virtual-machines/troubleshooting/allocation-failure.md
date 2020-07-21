@@ -12,11 +12,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 04/13/2018
 ms.author: daberry
-ms.openlocfilehash: fdbf07fa51adf8151e80d230734ebe53d36b5390
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3766c31add02799c62bca7e9063e723e0a5b498e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83124783"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86509353"
 ---
 # <a name="troubleshoot-allocation-failures-when-you-create-restart-or-resize-vms-in-azure"></a>在 Azure 中建立、重新啟動或調整 VM 大小時，對配置失敗進行疑難排解
 
@@ -78,13 +79,13 @@ ms.locfileid: "83124783"
 
 如果您的配置要求相當大 (超過 500 個核心)，請參閱下列小節中的指引，將要求分解成較小的部署。
 
-請嘗試重新[部署 VM](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/redeploy-to-new-node-windows)。 重新部署 VM 會將 VM 配置到區域內的新叢集。
+請嘗試重新[部署 VM](./redeploy-to-new-node-windows.md)。 重新部署 VM 會將 VM 配置到區域內的新叢集。
 
 ## <a name="allocation-failures-for-older-vm-sizes-av1-dv1-dsv1-d15v2-ds15v2-etc"></a>較舊版 VM 大小 (Av1、Dv1、DSv1、D15v2、DS15v2 等) 的配置失敗
 
 隨著我們擴充 Azure 基礎結構，我們會部署更新一代、專為支援最新虛擬機器類型而設計的硬體。 有些較舊系列的 VM 無法在我們最新一代的基礎結構上執行。 因此，客戶可能偶爾會遇到這些舊版 SKU 的配置失敗問題。 為了避免這個問題，我們鼓勵使用舊版系列虛擬機器的客戶考慮依據下列建議移轉至對等的較新版 VM：這些 VM 已針對最新硬體進行最佳化，將可讓您享有更好的定價和效能。 
 
-|傳統 VM 系列/大小|建議的較新版 VM 系列/大小|更多資訊|
+|傳統 VM 系列/大小|建議的較新版 VM 系列/大小|詳細資訊|
 |----------------------|----------------------------|--------------------|
 |Av1 系列|[Av2 系列](../av2-series.md)|https://azure.microsoft.com/blog/new-av2-series-vm-sizes/
 |Dv1 或 DSv1 系列 (D1 到 D5)|[Dv3 或 DSv3 系列](../dv3-dsv3-series.md)|https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/
@@ -93,7 +94,7 @@ ms.locfileid: "83124783"
 
 ## <a name="allocation-failures-for-large-deployments-more-than-500-cores"></a>大型部署 (超過 500 個核心) 的配置失敗
 
-請縮減所要求 VM 大小的執行個體數目，然後重試部署作業。 此外，針對較大型的部署，您可以評估 [Azure 虛擬機器擴展集](https://docs.microsoft.com/azure/virtual-machine-scale-sets/)。 VM 執行個體的數目可以因應需求或已定義的排程來自動增加或減少，您的配置成功率將可提高，因為可以將部署分散到多個叢集。 
+請縮減所要求 VM 大小的執行個體數目，然後重試部署作業。 此外，針對較大型的部署，您可以評估 [Azure 虛擬機器擴展集](../../virtual-machine-scale-sets/index.yml)。 VM 執行個體的數目可以因應需求或已定義的排程來自動增加或減少，您的配置成功率將可提高，因為可以將部署分散到多個叢集。 
 
 ## <a name="background-information"></a>背景資訊
 ### <a name="how-allocation-works"></a>配置的運作方式
@@ -104,5 +105,3 @@ Azure 資料中心的伺服器分割成叢集。 通常會嘗試向多個叢集�
 當配置要求已釘選到叢集時，由於可用的資源集區較小，很可能找不到可用的資源。 此外，如果配置要求已釘選到叢集，但該叢集不支援您所要求的資源類型，即使叢集有可用的資源，您的要求仍會失敗。 下面圖 3 說明因為唯一候選叢集沒有可用的資源，而導致已釘選的配置發生失敗的情況。 圖 4 說明因唯一候選叢集不支援所要求的 VM 大小 (雖然叢集有可用的資源)，而導致已釘選的配置失敗的情況。
 
 ![釘選配置失敗](./media/virtual-machines-common-allocation-failure/Allocation2.png)
-
-

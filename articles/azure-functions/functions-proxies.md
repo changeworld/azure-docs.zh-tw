@@ -5,12 +5,12 @@ author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: alkarche
-ms.openlocfilehash: 5e756258bb92d7def195959d909068e87e765c0f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d66c690c3a0ba638a92150c9aa1dbb0dc2a41268
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82562061"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506154"
 ---
 # <a name="work-with-azure-functions-proxies"></a>使用 Azure Functions Proxy
 
@@ -89,7 +89,7 @@ Proxy 的設定不需要是靜態。 您可以將它設定為使用來自原始�
 
 ### <a name="reference-application-settings"></a><a name="use-appsettings"></a>參考應用程式設定
 
-您也可以參考[針對函式應用程式定義的應用程式設定](https://docs.microsoft.com/azure/azure-functions/functions-how-to-use-azure-function-app-settings)，只要以百分比符號 (%) 括住設定名稱即可。
+您也可以參考[針對函式應用程式定義的應用程式設定](./functions-how-to-use-azure-function-app-settings.md)，只要以百分比符號 (%) 括住設定名稱即可。
 
 例如，的後端 URL *https://%ORDER_PROCESSING_HOST%/api/orders* 會以 ORDER_PROCESSING_HOST 設定的值取代 "% ORDER_PROCESSING_HOST%"。
 
@@ -110,7 +110,7 @@ Proxy 的設定不需要是靜態。 您可以將它設定為使用來自原始�
 
 ## <a name="advanced-configuration"></a>進階組態
 
-您設定的 Proxy 會儲存在 proxies.json** 檔案中 (位於函式應用程式目錄的根目錄中)。 當您使用Functions 支援的任何[部署方法](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment)時，您可以手動編輯此檔案，並部署為應用程式的一部分。 
+您設定的 Proxy 會儲存在 proxies.json** 檔案中 (位於函式應用程式目錄的根目錄中)。 當您使用Functions 支援的任何[部署方法](./functions-continuous-deployment.md)時，您可以手動編輯此檔案，並部署為應用程式的一部分。 
 
 > [!TIP] 
 > 如果您尚未設定其中一個部署方法，也可以使用入口網站中的 proxies.json** 檔案。 移至您的函式應用程式，選取 [平台功能]****，然後選取 [App Service 編輯器]****。 如此一來，您可以查看函式應用程式的整個檔案結構，然後做出變更。
@@ -244,7 +244,7 @@ requestOverrides 物件定義針對傳回給用戶端之回應所做的變更。
 > 此範例會直接設定回應本文，因此不需要 `backendUri` 屬性。 此範例示範如何使用 Azure Functions Proxy 來模擬 API。
 
 [Azure 入口網站]: https://portal.azure.com
-[HTTP 觸發程序]: https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook
+[HTTP 觸發程序]: ./functions-bindings-http-webhook.md
 [Modify the back-end request]: #modify-backend-request
 [Modify the response]: #modify-response
 [定義 requestOverrides 物件]: #requestOverrides

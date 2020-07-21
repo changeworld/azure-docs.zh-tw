@@ -6,12 +6,12 @@ ms.topic: article
 author: rboucher
 ms.author: robb
 ms.date: 07/01/2020
-ms.openlocfilehash: 6fb9f691afc8874b19ca4575408027357f07cc89
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f2824d46917536957839a5734a8d446da7a44ee9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85833531"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505766"
 ---
 # <a name="upgrading-your-log-analytics-dashboard-visualizations"></a>升級您的 Log Analytics 儀表板視覺效果
 
@@ -25,7 +25,7 @@ ms.locfileid: "85833531"
 
 Azure 儀表板可讓您以視覺化方式呈現整個 Azure 介面區的狀態。 其設計目的是要為您的 Azure 資產狀態提供單一窗格，並允許常用動作的各種快捷方式。 
 
-如需詳細資訊，請參閱[Azure 儀表板](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards)
+如需詳細資訊，請參閱[Azure 儀表板](../../azure-portal/azure-portal-dashboards.md)
 
 
 ## <a name="upgrading-log-analytics-dashboard-parts"></a>升級 Log Analytics 儀表板元件
@@ -68,7 +68,7 @@ Azure 儀表板可讓您以視覺化方式呈現整個 Azure 介面區的狀態�
 
 ### <a name="query-time-scope---30-day-limit"></a>查詢時間範圍-30 天限制
 
-因為儀表板可能包含多個查詢的多個視覺效果，所以單一釘選查詢的時間範圍限制為30天。 單一查詢只能在較小或等於30天的時間範圍內執行。 這項限制是為了確保有合理的儀表板載入時間。
+因為儀表板可能包含多個查詢的多個視覺效果，所以單一釘選查詢的時間範圍限制為 30 天。 單一查詢只能在較小或等於30天的時間範圍內執行。 這項限制是為了確保有合理的儀表板載入時間。
 
 ### <a name="query-data-values---25-values-and-other-grouping"></a>查詢資料值-25 個值和其他群組
 

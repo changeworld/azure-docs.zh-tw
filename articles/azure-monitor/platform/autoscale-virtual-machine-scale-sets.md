@@ -9,18 +9,18 @@ ms.subservice: autoscale
 ms.date: 06/25/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: c003d66f59f932d818740bdd378280049bbeb7d3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 37245711008442acd0379a35b393ac88c3775482
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85373874"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505531"
 ---
 # <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>針對 VM 擴展集使用 Resource Manager 範本的進階自動調整設定
 您可以根據效能標準臨界值、循環排程或特定日期，針對虛擬機器擴展集進行相應縮小和放大。 您也可以針對調整動作設定電子郵件和 webhook 通知。 本逐步解說會示範在 VM 擴展集上使用 Resource Manager 範本設定所有這些物件。
 
 > [!NOTE]
-> 雖然此逐步解說會說明 VM 擴展集的各步驟，相同的資訊也適用於自動調整[雲端服務](https://azure.microsoft.com/services/cloud-services/)、[App Service - Web Apps](https://azure.microsoft.com/services/app-service/web/) 與 [API 管理服務](https://docs.microsoft.com/azure/api-management/api-management-key-concepts) 如需 VM 擴展集上根據簡單效能計量 (例如 CPU) 的簡單縮減/擴增設定，請參閱 [Linux](../../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-cli.md) 與 [Windows](../../virtual-machine-scale-sets/tutorial-autoscale-powershell.md) 文件
+> 雖然此逐步解說會說明 VM 擴展集的各步驟，相同的資訊也適用於自動調整[雲端服務](https://azure.microsoft.com/services/cloud-services/)、[App Service - Web Apps](https://azure.microsoft.com/services/app-service/web/) 與 [API 管理服務](../../api-management/api-management-key-concepts.md) 如需 VM 擴展集上根據簡單效能計量 (例如 CPU) 的簡單縮減/擴增設定，請參閱 [Linux](../../virtual-machine-scale-sets/tutorial-autoscale-cli.md) 與 [Windows](../../virtual-machine-scale-sets/tutorial-autoscale-powershell.md) 文件
 >
 >
 
@@ -195,7 +195,7 @@ ms.locfileid: "85373874"
             }
           }
     ```
-    如需支援的欄位和其值，請參閱[自動調整 REST API 文件](https://msdn.microsoft.com/library/azure/dn931928.aspx)。 現在，您的自動調整設定已包含前面所述的三個設定檔。
+    如需支援的欄位和其值，請參閱[自動調整 REST API 文件](/rest/api/monitor/autoscalesettings)。 現在，您的自動調整設定已包含前面所述的三個設定檔。
 
 7. 最後，我們來看一下自動調整的**通知**區段。 自動調整通知能讓您在相應放大或縮小動作成功觸發時執行三件事。
    - 通知系統管理員和共同管理員有關您訂用帳戶的狀況
@@ -243,9 +243,9 @@ ms.locfileid: "85373874"
 
 [Azure 自動調整的最佳作法](autoscale-best-practices.md)
 
-[使用 PowerShell 管理自動調整](../../azure-monitor/platform/powershell-quickstart-samples.md#create-and-manage-autoscale-settings)
+[使用 PowerShell 管理自動調整](../samples/powershell-samples.md#create-and-manage-autoscale-settings)
 
-[使用 CLI 管理自動調整](cli-samples.md#autoscale)
+[使用 CLI 管理自動調整](../samples/cli-samples.md#autoscale)
 
 [針對自動調整設定 Webhook 與電子郵件通知](autoscale-webhook-email.md)
 

@@ -5,12 +5,13 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: jehollan
-ms.openlocfilehash: d59335c5c4ebd2688097539594f11ea349939eff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: references_regions
+ms.openlocfilehash: 5ab506c57a78c67b33b888f1f50d83fe9813d0af
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85298509"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506191"
 ---
 # <a name="azure-functions-premium-plan"></a>Azure Functions Premium 方案
 
@@ -90,7 +91,7 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 
 建立或調整您的方案時，您可以選擇三種實例大小。  系統會向您收取每秒耗用的核心和記憶體總數。  您的應用程式可以視需要自動相應放大至多個實例。  
 
-|SKU|核心|Memory|儲存體|
+|SKU|核心|記憶體|存放裝置|
 |--|--|--|--|
 |EP1|1|3.5 GB|250GB|
 |EP2|2|7 GB|250GB|
@@ -125,7 +126,7 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 |日本西部| 100 | 20 |
 |南韓中部| 100 | 20 |
 |美國中北部| 100 | 20 |
-|北歐| 100 | 20 |
+|歐洲北部| 100 | 20 |
 |挪威東部| 20 | 20 |
 |美國中南部| 100 | 20 |
 |印度南部 | 100 | 無法使用 |

@@ -7,20 +7,20 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 06/26/2020
 ms.subservice: alerts
-ms.openlocfilehash: 8e917d279d8de3dbe6de540a4ea1ef8cec1b6ffc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4ea5c8552d35db67a1d2caf20c0143c74cdd642e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85830055"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505477"
 ---
 # <a name="how-to-update-alert-rules-or-action-rules-when-their-target-resource-moves-to-a-different-azure-region"></a>如何在其目標資源移至不同的 Azure 區域時，更新警示規則或動作規則
 
-本文說明當您在區域之間移動其他 Azure 資源，以及如何識別和解決這些問題時，現有的[警示規則](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview)和[動作規則](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-action-rules)可能會受到影響的原因。 請查看主要的[資源移動檔](https://docs.microsoft.com/azure/azure-resource-manager/management/move-region)，以取得有關何時會在區域之間移動資源的詳細資訊，以及設計移動程式的檢查清單。
+本文說明當您在區域之間移動其他 Azure 資源，以及如何識別和解決這些問題時，現有的[警示規則](./alerts-overview.md)和[動作規則](./alerts-action-rules.md)可能會受到影響的原因。 請查看主要的[資源移動檔](../../azure-resource-manager/management/move-region.md)，以取得有關何時會在區域之間移動資源的詳細資訊，以及設計移動程式的檢查清單。
 
 ## <a name="why-the-problem-exists"></a>問題的原因
 
-警示規則和動作規則會參照其他 Azure 資源。 範例包括[Azure vm](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-migrate)、 [azure SQL](https://docs.microsoft.com/azure/sql-database/sql-database-move-resources-across-regions)和[Azure 儲存體](https://docs.microsoft.com/azure/storage/common/storage-account-move)。 當您移動這些規則所參考的資源時，這些規則可能會因為找不到所參考的資源而停止正常運作。
+警示規則和動作規則會參照其他 Azure 資源。 範例包括[Azure vm](../../site-recovery/azure-to-azure-tutorial-migrate.md)、 [azure SQL](../../azure-sql/database/move-resources-across-regions.md)和[Azure 儲存體](../../storage/common/storage-account-move.md)。 當您移動這些規則所參考的資源時，這些規則可能會因為找不到所參考的資源而停止正常運作。
 
 在移動目標資源之後，您的規則可能會停止運作的主要原因有兩個：
 
@@ -94,20 +94,20 @@ Azure 資源發出的計量為「區域」。 每當資源移到新的區域時�
 
 ### <a name="change-scope-of-a-rule-using-rest-api"></a>使用 REST API 變更規則的範圍
 
-1. 取得現有的規則（計量[警示](https://docs.microsoft.com/rest/api/monitor/metricalerts/get)、[活動記錄警示](https://docs.microsoft.com/rest/api/monitor/activitylogalerts/get)）
-2. 修改範圍（[活動記錄警示](https://docs.microsoft.com/rest/api/monitor/activitylogalerts/update)）
-3. 重新部署規則（計量[警示](https://docs.microsoft.com/rest/api/monitor/metricalerts/createorupdate)、[活動記錄警示](https://docs.microsoft.com/rest/api/monitor/activitylogalerts/createorupdate)）
+1. 取得現有的規則（計量[警示](/rest/api/monitor/metricalerts/get)、[活動記錄警示](/rest/api/monitor/activitylogalerts/get)）
+2. 修改範圍（[活動記錄警示](/rest/api/monitor/activitylogalerts/update)）
+3. 重新部署規則（計量[警示](/rest/api/monitor/metricalerts/createorupdate)、[活動記錄警示](/rest/api/monitor/activitylogalerts/createorupdate)）
 
 ### <a name="change-scope-of-a-rule-using-powershell"></a>使用 PowerShell 變更規則的範圍
 
-1. 取得現有的規則（計量[警示](https://docs.microsoft.com/powershell/module/az.monitor/get-azmetricalertrulev2)、[活動記錄警示](https://docs.microsoft.com/powershell/module/az.monitor/get-azactivitylogalert)、[動作規則](https://docs.microsoft.com/powershell/module/az.alertsmanagement/Get-AzActionRule)）。
+1. 取得現有的規則（計量[警示](/powershell/module/az.monitor/get-azmetricalertrulev2)、[活動記錄警示](/powershell/module/az.monitor/get-azactivitylogalert)、[動作規則](/powershell/module/az.alertsmanagement/get-azactionrule)）。
 2. 修改範圍。 如有需要，分割為兩個規則（適用于某些計量警示的情況，如上面所述）。
-3. 重新部署規則（計量[警示](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrulev2)、[活動記錄警示](https://docs.microsoft.com/powershell/module/az.monitor/enable-azactivitylogalert)、[動作規則](https://docs.microsoft.com/powershell/module/az.alertsmanagement/set-azactionrule)）。
+3. 重新部署規則（計量[警示](/powershell/module/az.monitor/add-azmetricalertrulev2)、[活動記錄警示](/powershell/module/az.monitor/enable-azactivitylogalert)、[動作規則](/powershell/module/az.alertsmanagement/set-azactionrule)）。
 
 ### <a name="change-the-scope-of-a-rule-using-azure-cli"></a>使用 Azure CLI 變更規則的範圍
 
-1.  取得現有的規則（計量[警示](https://docs.microsoft.com/cli/azure/monitor/metrics/alert?view=azure-cli-latest#az-monitor-metrics-alert-show)、[活動記錄警示](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-list)）。
-2.  直接更新規則範圍（計量[警示](https://docs.microsoft.com/cli/azure/monitor/metrics/alert#az-monitor-metrics-alert-update)、[活動記錄警示](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert/scope)）
+1.  取得現有的規則（計量[警示](/cli/azure/monitor/metrics/alert?view=azure-cli-latest#az-monitor-metrics-alert-show)、[活動記錄警示](/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-list)）。
+2.  直接更新規則範圍（計量[警示](/cli/azure/monitor/metrics/alert#az-monitor-metrics-alert-update)、[活動記錄警示](/cli/azure/monitor/activity-log/alert/scope)）
 3.  如有需要，分割為兩個規則（適用于某些計量警示的情況，如上面所述）。
 
 ## <a name="next-steps"></a>後續步驟

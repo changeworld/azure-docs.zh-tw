@@ -6,12 +6,12 @@ ms.author: sread
 ms.date: 03/30/2020
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: db9d6bab2f383102434512aa63d7566cff1f579b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7fb72b9a7d0d655f99d1e5cf194f7c6f26976a37
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80411082"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508044"
 ---
 # <a name="set-up-micro-focus-cics-bankdemo-for-micro-focus-enterprise-developer-40-on-azure"></a>針對 Azure 上的微焦點企業開發人員4.0 設定微焦點 CICS BankDemo
 
@@ -22,7 +22,7 @@ CICs 代表客戶資訊控制系統，這是許多線上大型主機應用程式
 > [!NOTE]
 > 即將推出：在 Azure Vm 上設定[微焦點企業伺服器 5.0](https://techcommunity.microsoft.com/t5/azurecat/micro-focus-enterprise-server-5-0-quick-start-template-on-azure/ba-p/1160110)的指示。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 - 具有[企業開發人員](set-up-micro-focus-azure.md)的 VM。 請記住，企業開發人員在其上有企業伺服器的完整實例，供開發和測試之用。 這個實例是用於示範的企業伺服器實例。
 
@@ -146,7 +146,7 @@ CICs 代表客戶資訊控制系統，這是許多線上大型主機應用程式
     > [!NOTE]
     > 因為尚未設定 HCOSS，所以在解決方案層級建立會導致錯誤。
 
-6. 建立專案時，請檢查 [**輸出**] 視窗。 它應該類似下圖。
+6. 建立專案時，請檢查 [**輸出**] 視窗。 該應用程式應該類似下圖。
 
      ![顯示成功組建的輸出視窗](media/05-demo-output.png)
 
@@ -273,7 +273,7 @@ CICs 代表客戶資訊控制系統，這是許多線上大型主機應用程式
 ## <a name="next-steps"></a>後續步驟
 
 - [在 Azure 上的 Docker 容器中執行企業伺服器](run-enterprise-server-container.md)
-- [大型主機遷移-入口網站](https://blogs.msdn.microsoft.com/azurecat/2018/11/16/mainframe-migration-to-azure-portal/)
-- [虛擬機器](https://docs.microsoft.com/azure/virtual-machines/linux/overview)
-- [疑難排解](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/)
+- [大型主機遷移-入口網站](/archive/blogs/azurecat/mainframe-migration-to-azure-portal)
+- [虛擬機器](../../../linux/overview.md)
+- [疑難排解](../../../troubleshooting/index.yml)
 - [揭密大型主機到 Azure 的遷移](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/en-us/)

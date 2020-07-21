@@ -8,11 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 5355e43ca6ac075e76a76ceb51be135cf4b62b0a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e040f42db195760cf40f6dbdf651826b544b65a4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77564018"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507568"
 ---
 # <a name="set-up-vcenter-identity-sources-to-use-active-directory"></a>設定要使用的 vCenter 身分識別來源 Active Directory
 
@@ -79,7 +80,7 @@ VMware vCenter 支援不同的身分識別來源，以驗證存取 vCenter 的�
 * 一或多部執行 Microsoft Windows Server 的虛擬機器，做為新 Active Directory 樹系和網域的網域控制站。
 * 一或多部執行 DNS 服務以進行名稱解析的虛擬機器。
 
-如需詳細步驟，請參閱[安裝新的 Windows Server 2012 Active Directory 樹](https://docs.microsoft.com/windows-server/identity/ad-ds/deploy/install-a-new-windows-server-2012-active-directory-forest--level-200-)系。
+如需詳細步驟，請參閱[安裝新的 Windows Server 2012 Active Directory 樹](/windows-server/identity/ad-ds/deploy/install-a-new-windows-server-2012-active-directory-forest--level-200-)系。
 
 > [!TIP]
 > 如需服務的高可用性，建議您設定多個網域控制站和 DNS 伺服器。
@@ -93,7 +94,7 @@ VMware vCenter 支援不同的身分識別來源，以驗證存取 vCenter 的�
 * Active Directory 樹系位置的站對站 VPN 連線。
 * DNS 伺服器，以解析現有 Active Directory 樹系的名稱。
 
-如需詳細步驟，請參閱[安裝新的 Windows Server 2012 Active Directory 的子域或樹狀目錄網域](https://docs.microsoft.com/windows-server/identity/ad-ds/deploy/install-a-new-windows-server-2012-active-directory-child-or-tree-domain--level-200-)。
+如需詳細步驟，請參閱[安裝新的 Windows Server 2012 Active Directory 的子域或樹狀目錄網域](/windows-server/identity/ad-ds/deploy/install-a-new-windows-server-2012-active-directory-child-or-tree-domain--level-200-)。
 
 設定 Active Directory 網域之後，您可以[在 vCenter 上](#add-an-identity-source-on-vcenter)為新 Active Directory 新增身分識別來源。
 

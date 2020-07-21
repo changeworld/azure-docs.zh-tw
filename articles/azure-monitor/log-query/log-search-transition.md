@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/16/2019
-ms.openlocfilehash: 6cc7fc94162ed101d06fbbbc4722867be46987b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f34389785c0f4a43bfcab3e50f2dcd132b2cb629
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77670129"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505800"
 ---
 # <a name="transition-from-log-analytics-log-search-to-azure-monitor-logs"></a>從 Log Analytics 記錄搜尋轉換至 Azure 監視器記錄
 最近以新的體驗取代了 Log Analytics 中的記錄搜尋，以便分析 Azure 監視器記錄。 [記錄搜尋] 頁面目前仍可在 Azure 入口網站中透過 **Log Analytics 工作區** 中的 [記錄 (傳統)]**** 功能表項目存取，但是該頁面將於 2019 年 2 月 15 日移除。 本文說明兩種體驗之間的差異以協助您從記錄搜尋轉換。 
@@ -57,7 +58,7 @@ ms.locfileid: "77670129"
 ![Azure 監視器記錄向下鑽研](media/log-search-transition/drilldown-logs.png)
 
 ## <a name="take-action"></a>採取動作
-在記錄搜尋中，您可以選取 [採取動作]****，以從搜尋結果[啟動 Runbook](take-action.md)。
+在記錄搜尋中，您可以選取 [採取動作]****，以從搜尋結果[啟動 Runbook](../platform/action-groups.md)。
 
 ![採取動作](media/log-search-transition/take-action-log-search.png)
 

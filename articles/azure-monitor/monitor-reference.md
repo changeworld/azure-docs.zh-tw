@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/15/2020
-ms.openlocfilehash: 70c1b35759241c2fdf687e7b7042cf4a18232bf5
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 1f76966b0ed82ae3d4b32e54627a28e99b0dba2f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085492"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505715"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Azure 監視器監視的項目為何？
 本文說明 Azure 監視器監視的不同應用程式和服務。 
@@ -32,7 +32,7 @@ ms.locfileid: "86085492"
 [適用於資源群組的 Azure 監視器 (預覽)](insights/resource-group-insights.md) |  將個別資源碰到的任何問題加以分級與診斷，同時就資源群組整體的健康狀態與效能提供內容。 |
 | [適用於儲存體的 Azure 監視器](insights/storage-insights-overview.md) | 藉由提供 Azure 儲存體服務效能、容量和可用性的統一檢視，讓您能夠全面監視 Azure 儲存體帳戶。 |
 | [適用於 VM 的 Azure 監視器](insights/vminsights-overview.md) | 會大規模監視您的 Azure 虛擬機器 (VM) 和虛擬機器擴展集。 此服務會分析您 Windows 和 Linux VM 的效能與健康情況，並且在其他資源和外部處理序上監視其處理序及相依性。 |
-| [適用於 Key Vault 的 Azure 監視器 (預覽)](insights/key-vaults-insights-overview.md) | 藉由提供 Key Vault 要求、效能、失敗和延遲的統一觀點，提供金鑰保存庫的全面監視。 |
+| [適用於 Key Vault 的 Azure 監視器 (預覽)](./insights/key-vault-insights-overview.md) | 藉由提供 Key Vault 要求、效能、失敗和延遲的統一觀點，提供金鑰保存庫的全面監視。 |
 | [適用於 Azure Cache for Redis 的 Azure 監視器 (預覽)](insights/redis-cache-insights-overview.md) |  提供整體效能、失敗、容量、作業健康情況的統一、互動檢視。 |
 
 
@@ -118,7 +118,7 @@ ms.locfileid: "86085492"
 |Intune | 否 | 是 | 否 |  |
 |IoT 中心 | 否 | 否 | 否 |  |
 |IoT 中樞 | 是 | 是 | 否 |  |
-|Key Vault | 是 | 是 | [是](insights/key-vaults-insights-overview.md) |  |
+|Key Vault | 是 | 是 | [是](./insights/key-vault-insights-overview.md) |  |
 |Kubernetes Service (AKS) | 否 | 否 | [是](insights/container-insights-overview.md)  |  |
 |負載平衡器 | 是 | 是 | 否 |  |
 |Logic Apps | 是 | 是 | 否 |  |
@@ -142,13 +142,13 @@ ms.locfileid: "86085492"
 |Project Spool Communication Platform | 否 | 否 | 否 |  |
 |Red Hat OpenShift | 否 | 否 | 否 |  |
 |Redis 快取 | 是 | 是 | [是](insights/redis-cache-insights-overview.md) | |
-|Resource Graph | 否 | 否 | No |  |
+|Resource Graph | 否 | 否 | 否 |  |
 |Resource Manager | 否 | 否 | 否 |  |
 |Retail Search – Bing 提供 | 否 | 否 | 否 |  |
 |搜尋 | 是 | 是 | 否 |  |
 |服務匯流排 | 是 | 是 | 否 |  |
-|Service Fabric | No | 是 | 否 | 監視客體作業系統和工作流程所需的代理程式。  |
-|註冊入口網站 | 否 | 否 | No |  |
+|Service Fabric | 否 | 是 | 否 | 監視客體作業系統和工作流程所需的代理程式。  |
+|註冊入口網站 | 否 | 否 | 否 |  |
 |Site Recovery | 否 | 是 | 否 |  |
 |Spring Cloud Service | 否 | 否 | 否 |  |
 |SQL 資料倉儲 | 是 | 是 | 否 |  |
@@ -156,7 +156,7 @@ ms.locfileid: "86085492"
 |SQL Server Stretch Database | 是 | 是 | 否 |  |
 |Stack | 否 | 否 | 否 |  |
 |儲存體 | 是 | 否 | [是](insights/storage-insights-overview.md) |  |
-|儲存體快取 | 否 | 否 | No |  |
+|儲存體快取 | 否 | 否 | 否 |  |
 |儲存體同步服務 | 否 | 否 | 否 |  |
 |串流分析 | 是 | 是 | 否 |  |
 |時間序列深入解析 | 是 | 是 | 否 |  |
@@ -166,7 +166,7 @@ ms.locfileid: "86085492"
 |虛擬機器擴展集 | 否 | 是 | [是](insights/vminsights-overview.md) | 監視客體作業系統和工作流程所需的代理程式。 |
 |虛擬機器 | 是 | 是 | [是](insights/vminsights-overview.md) | 監視客體作業系統和工作流程所需的代理程式。 |
 |虛擬網路 | 是 | 是 | [是](insights/network-insights-overview.md) |  |
-|虛擬網路 - NSG 流量記錄 | No | 是 | 否 |  |
+|虛擬網路 - NSG 流量記錄 | 否 | 是 | 否 |  |
 |VPN 閘道 | 是 | 是 | 否 |  |
 |Windows 虛擬桌面 | 否 | 否 | 否 |  |
 
@@ -176,20 +176,19 @@ ms.locfileid: "86085492"
 
 | 產品/服務 | 描述 |
 |:---|:---|
-| [Azure 自動化](/azure/automation/) | 管理作業系統更新，並追蹤 Windows 和 Linux 電腦上的變更。 請參閱[變更追蹤](../automation/change-tracking.md)和[更新管理](../automation/automation-update-management.md)。 |
-| [Azure 資訊保護](https://docs.microsoft.com/azure/information-protection/) | 分類並選擇性地保護文件和電子郵件。 請參閱 [Azure 資訊保護的中央報告](https://docs.microsoft.com/azure/information-protection/reports-aip#configure-a-log-analytics-workspace-for-the-reports)。 |
-| [Azure 資訊安全中心](/azure/security-center/) | 收集和分析安全性事件，並執行威脅分析。 請參閱 [Azure 資訊安全中心的資料收集](/azure/security-center/security-center-enable-data-collection)。 |
-| [Azure Sentinel](/azure/sentinel/) | 連線到不同的來源，包括 Office 365 和 Amazon Web Services 雲端軌跡。 請參閱[連線資料來源](/azure/sentinel/connect-data-sources)。 |
-| [金鑰保存庫分析](insights/azure-key-vault.md) | 分析 Azure Key Vault 的 AuditEvent 記錄。 |
-| [Microsoft Intune](https://docs.microsoft.com/intune/) | 建立診斷設定，以將記錄檔傳送至 Azure 監視器。 請參閱[將記錄資料傳送至儲存體、事件中樞或 Intune 中的記錄分析 (預覽)](https://docs.microsoft.com/intune/fundamentals/review-logs-using-azure-monitor)。  |
-| 網路  | [網路效能監控](insights/network-performance-monitor.md) - 監視服務和應用程式端點的網路連線能力和效能。<br>[Azure 應用程式閘道](insights/azure-networking-analytics.md#azure-application-gateway-analytics-solution-in-azure-monitor) - 分析來自 Azure 應用程式閘道的記錄和計量。<br>[流量分析](/azure/network-watcher/traffic-analytics) - 分析網路監看員網路安全性群組 (NSG) 流量記錄，讓您深入了解 Azure 雲端中的流量。 |
+| [Azure 自動化](../automation/index.yml) | 管理作業系統更新，並追蹤 Windows 和 Linux 電腦上的變更。 請參閱[變更追蹤](../automation/change-tracking.md)和[更新管理](../automation/automation-update-management.md)。 |
+| [Azure 資訊保護](/azure/information-protection/) | 分類並選擇性地保護文件和電子郵件。 請參閱 [Azure 資訊保護的中央報告](/azure/information-protection/reports-aip#configure-a-log-analytics-workspace-for-the-reports)。 |
+| [Azure 資訊安全中心](../security-center/index.yml) | 收集和分析安全性事件，並執行威脅分析。 請參閱 [Azure 資訊安全中心的資料收集](../security-center/security-center-enable-data-collection.md)。 |
+| [Azure Sentinel](../sentinel/index.yml) | 連線到不同的來源，包括 Office 365 和 Amazon Web Services 雲端軌跡。 請參閱[連線資料來源](../sentinel/connect-data-sources.md)。 |
+| [Microsoft Intune](/intune/) | 建立診斷設定，以將記錄檔傳送至 Azure 監視器。 請參閱[將記錄資料傳送至儲存體、事件中樞或 Intune 中的記錄分析 (預覽)](/intune/fundamentals/review-logs-using-azure-monitor)。  |
+| 網路  | [網路效能監控](insights/network-performance-monitor.md) - 監視服務和應用程式端點的網路連線能力和效能。<br>[Azure 應用程式閘道](insights/azure-networking-analytics.md#azure-application-gateway-analytics-solution-in-azure-monitor) - 分析來自 Azure 應用程式閘道的記錄和計量。<br>[流量分析](../network-watcher/traffic-analytics.md) - 分析網路監看員網路安全性群組 (NSG) 流量記錄，讓您深入了解 Azure 雲端中的流量。 |
 | [Office 365](insights/solution-office-365.md) | 監視您的 Office 365 環境。 已透過 Azure Sentinel 提供改善上線體驗的更新版本。 |
 | [SQL Analytics](insights/azure-sql.md) | 跨多個訂用帳戶大規模監視 Azure SQL 資料庫和 SQL 受控實例的效能。 |
 | [Surface Hub](insights/surface-hubs.md) | 追蹤 Surface Hub 裝置的健康情況和使用情況。 |
-| [System Center Operations Manager](https://docs.microsoft.com/system-center/scom) | 藉由將管理群組連線至 Azure 監視器，從 Operations Manager 代理程式收集資料。 請參閱[將 Operations Manager 連線至 Azure 監視器](platform/om-agents.md)。<br> 使用 [Operations Manager 評量](insights/scom-assessment.md)解決方案，評估 System Center Operations Manager 管理群組的風險和健康情況。 |
-| [Microsoft Teams Rooms](https://docs.microsoft.com/microsoftteams/room-systems/azure-monitor-deploy) | Microsoft Teams Rooms 裝置的整合端對端管理。 |
-| [Visual Studio App Center](https://docs.microsoft.com/appcenter/) | 建立、測試、散發應用程式，然後監視其狀態和使用情況。 請參閱[開始使用 App Center 和 Application Insights 分析您的行動應用程式](learn/mobile-center-quickstart.md)。 |
-| Windows | [Windows Update 合規性](https://docs.microsoft.com/windows/deployment/update/update-compliance-get-started) - 評估您的 Windows 桌面升級。<br>[電腦分析](https://docs.microsoft.com/configmgr/desktop-analytics/overview) - 與 Configuration Manager 整合，提供深入解析和情報，以做出更明智的 Windows 用戶端更新準備決策。 |
+| [System Center Operations Manager](/system-center/scom) | 藉由將管理群組連線至 Azure 監視器，從 Operations Manager 代理程式收集資料。 請參閱[將 Operations Manager 連線至 Azure 監視器](platform/om-agents.md)。<br> 使用 [Operations Manager 評量](insights/scom-assessment.md)解決方案，評估 System Center Operations Manager 管理群組的風險和健康情況。 |
+| [Microsoft Teams Rooms](/microsoftteams/room-systems/azure-monitor-deploy) | Microsoft Teams Rooms 裝置的整合端對端管理。 |
+| [Visual Studio App Center](/appcenter/) | 建立、測試、散發應用程式，然後監視其狀態和使用情況。 請參閱[開始使用 App Center 和 Application Insights 分析您的行動應用程式](learn/mobile-center-quickstart.md)。 |
+| Windows | [Windows Update 合規性](/windows/deployment/update/update-compliance-get-started) - 評估您的 Windows 桌面升級。<br>[電腦分析](/configmgr/desktop-analytics/overview) - 與 Configuration Manager 整合，提供深入解析和情報，以做出更明智的 Windows 用戶端更新準備決策。 |
 
 
 
@@ -204,7 +203,7 @@ ms.locfileid: "86085492"
 | [DNS 分析 (預覽)](insights/dns-analytics.md) | 收集、分析 Windows DNS 分析和稽核記錄，並將其與 DNS 伺服器中的其他相關資料關聯。 |
 | [Cloud Foundry](../cloudfoundry/cloudfoundry-oms-nozzle.md) | 收集、檢視及分析多個部署的 Cloud Foundry 系統健康情況和效能計量。 |
 | [容器](insights/containers.md) | 檢視及管理 Docker 和 Windows 容器主機。 |
-| [隨選評量](https://docs.microsoft.com/services-hub/health/getting_started_with_on_demand_assessments) | 評估和最佳化內部部署、混合式、雲端 Microsoft 技術環境的可用性、安全性及效能。 |
+| [隨選評量](/services-hub/health/getting_started_with_on_demand_assessments) | 評估和最佳化內部部署、混合式、雲端 Microsoft 技術環境的可用性、安全性及效能。 |
 | [SQL 健康情況檢查](insights/sql-assessment.md) | 評估 SQL Server 環境的風險與健康情況。  |
 | [連線資料](insights/wire-data.md) | 使用 Log Analytics 代理程式從 Windows 連線和 Linux 連線的電腦收集的匯總網路和效能資料。 |
 
@@ -220,7 +219,7 @@ Azure 監視器可以使用下表所列的方法，從 Azure 外部的資源收�
 
 | 資源 | 方法 |
 |:---|:---|
-| 應用程式 | 使用 Application Insights 監視 Azure 外部的 Web 應用程式。 請參閱[什麼是 Application Insights？](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview)。 |
+| 應用程式 | 使用 Application Insights 監視 Azure 外部的 Web 應用程式。 請參閱[什麼是 Application Insights？](./app/app-insights-overview.md)。 |
 | 虛擬機器 | 使用 Log Analytics 代理程式，從其他雲端環境或內部部署中虛擬機器的客體作業系統收集資料。 請參閱[使用 Log Analytics 代理程式收集記錄資料](platform/log-analytics-agent.md)。 |
 | REST API 用戶端 | 有不同的 API 可用來將來自任何 REST API 用戶端的資料寫入 Azure 監視器記錄和計量。 針對記錄請參閱[使用 HTTP 資料收集器 API 將記錄資料傳送給 Azure 監視器](platform/data-collector-api.md)，針對計量請參閱[使用 REST API 將 Azure 資源的自訂計量傳送至 Azure 監視器計量的存放區](platform/metrics-store-custom-rest-api.md)。 |
 

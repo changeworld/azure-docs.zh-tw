@@ -3,12 +3,12 @@ title: Azure Functions C# 開發人員參考
 description: 了解如何使用 C# 開發 Azure Functions。
 ms.topic: conceptual
 ms.date: 09/12/2018
-ms.openlocfilehash: 038c1db2d4bb4d8bd80801d36cf5feec1905bbc1
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 9ecc2dad8d1d520b44972022d47c312f495d5c38
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86254362"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506502"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure Functions C# 開發人員參考
 
@@ -138,7 +138,7 @@ public static class BindingExpressionsExample
 
 此檔案的目的是要提供資訊給調整控制器，以用於針對取用[方案的調整決策](functions-scale.md#how-the-consumption-and-premium-plans-work)。 因此，檔案只會有觸發程序資訊，而不會有輸入或輸出繫結。
 
-產生的 *function.json* 檔案包含 `configurationSource` 屬性 (property)，指示執行階段使用 .NET 屬性 (attribute) 屬性進行繫結，而不是使用 *function.json* 設定。 以下是範例：
+產生的 *function.json* 檔案包含 `configurationSource` 屬性 (property)，指示執行階段使用 .NET 屬性 (attribute) 屬性進行繫結，而不是使用 *function.json* 設定。 以下為範例：
 
 ```json
 {
@@ -202,6 +202,28 @@ Visual Studio 會使用 [Azure Functions Core Tools](functions-run-local.md#inst
 [3/1/2018 9:59:53 AM] Starting Host (HostId=contoso2-1518597420, Version=2.0.11353.0, ProcessId=22020, Debug=False, Attempt=0, FunctionsExtensionVersion=)
 ```
 
+## <a name="readytorun"></a>ReadyToRun
+
+您可以將函數應用程式編譯為[ReadyToRun 二進位](/dotnet/core/whats-new/dotnet-core-3-0#readytorun-images)檔。 ReadyToRun 是一種預先編譯的形式，可以改善啟動效能，以協助降低在取用[方案](functions-scale.md#consumption-plan)中執行時[冷啟動](functions-scale.md#cold-start)的影響。
+
+ReadyToRun 可在 .NET 3.0 中取得，而且需要[3.0 版的 Azure Functions 運行](functions-versions.md)時間。
+
+若要將您的專案編譯為 ReadyToRun，請藉由新增和專案來更新您的專案檔 `<PublishReadyToRun>` `<RuntimeIdentifier>` 。 以下是發佈至 Windows 32 位函式應用程式的設定。
+
+```xml
+<PropertyGroup>
+  <TargetFramework>netcoreapp3.1</TargetFramework>
+  <AzureFunctionsVersion>v3</AzureFunctionsVersion>
+  <PublishReadyToRun>true</PublishReadyToRun>
+  <RuntimeIdentifier>win-x86</RuntimeIdentifier>
+</PropertyGroup>
+```
+
+> [!IMPORTANT]
+> ReadyToRun 目前不支援交叉編譯。 您必須在與部署目標相同的平臺上建立應用程式。 此外，請注意函數應用程式中設定的「位」。 例如，如果您在 Azure 中的函式應用程式是 Windows 64 位，您就必須使用 `win-x64` 作為[執行時間識別碼](/dotnet/core/rid-catalog)，在 Windows 上編譯您的應用程式。
+
+您也可以從命令列使用 ReadyToRun 來建立應用程式。 如需詳細資訊，請參閱 `-p:PublishReadyToRun=true` 中的選項 [`dotnet publish`](/dotnet/core/tools/dotnet-publish) 。
+
 ## <a name="supported-types-for-bindings"></a>支援的繫結類型
 
 每個繫結都有自己支援的類型；例如，Blob 觸發程序屬性可套用至字串參數、POCO 參數、`CloudBlockBlob` 參數或任何數個其他支援的類型。 [Blob 繫結的繫結參考文章](functions-bindings-storage-blob-trigger.md#usage)會列出所有支援的參數類型。 如需詳細資訊，請參閱[觸發程序和繫結](functions-triggers-bindings.md)以及[每個繫結類型的繫結參考文件](functions-triggers-bindings.md#next-steps)。
@@ -238,7 +260,7 @@ public static class ICollectorExample
 
 ## <a name="logging"></a>記錄
 
-若要使用 C# 將輸出記錄至串流記錄，請包含 [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) 類型的引數。 建議您將它命名為 `log`，如下列範例所示：  
+若要使用 C# 將輸出記錄至串流記錄，請包含 [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger) 類型的引數。 建議您將它命名為 `log`，如下列範例所示：  
 
 ```csharp
 public static class SimpleExample
@@ -257,7 +279,7 @@ public static class SimpleExample
 
 ## <a name="async"></a>非同步處理
 
-若要讓函式變成[非同步](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/)，請使用 `async` 關鍵字並傳回 `Task` 物件。
+若要讓函式變成[非同步](/dotnet/csharp/programming-guide/concepts/async/)，請使用 `async` 關鍵字並傳回 `Task` 物件。
 
 ```csharp
 public static class AsyncExample
@@ -330,7 +352,7 @@ public static class EnvironmentVariablesExample
 
 本機開發以及於 Azure 執行時，均可從環境變數讀取應用程式設定。 在本機開發時，應用程式設定來自 *local.settings.json* 檔案中的 `Values` 集合。 在本機和 Azure 這兩個環境中，`GetEnvironmentVariable("<app setting name>")` 會擷取具名應用程式設定的值。 例如在本機執行時，如果您的 *local.settings.json* 檔案包含 `{ "Values": { "WEBSITE_SITE_NAME": "My Site Name" } }`，則會傳回 "My Site Name"。
 
-[System.Configuration.ConfigurationManager.AppSettings](https://docs.microsoft.com/dotnet/api/system.configuration.configurationmanager.appsettings) 屬性是用於取得應用程式設定值的替代 API，但建議您使用 `GetEnvironmentVariable`，如下所示。
+[System.Configuration.ConfigurationManager.AppSettings](/dotnet/api/system.configuration.configurationmanager.appsettings) 屬性是用於取得應用程式設定值的替代 API，但建議您使用 `GetEnvironmentVariable`，如下所示。
 
 ## <a name="binding-at-runtime"></a>執行階段的繫結
 

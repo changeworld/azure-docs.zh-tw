@@ -5,11 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 12/20/2017
 ms.author: cshoe
-ms.openlocfilehash: ef746186717f3eb6bb93263c7f86c26606f65ea9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 290765b17cf34417176930dc9116309bdfd754c8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84322510"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506531"
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>適用於 Azure Functions 的 Microsoft Graph 繫結
 
@@ -58,7 +59,7 @@ Microsoft Graph 繫結可透過 _繫結擴充功能_ 提供。 繫結擴充功�
 
 ### <a name="configuring-authentication--authorization"></a>設定驗證/授權
 
-本文中概述的繫結需要使用身分識別。 這可讓 Microsoft Graph 強制執行權限和稽核互動。 識別可以是使用者存取您的應用程式或應用程式本身。 若要設定這個身分識別，請使用 Azure Active Directory 來設定 [App Service 驗證/授權](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization)。 您也必須要求函式所需的任何資源權限。
+本文中概述的繫結需要使用身分識別。 這可讓 Microsoft Graph 強制執行權限和稽核互動。 識別可以是使用者存取您的應用程式或應用程式本身。 若要設定這個身分識別，請使用 Azure Active Directory 來設定 [App Service 驗證/授權](../app-service/overview-authentication-authorization.md)。 您也必須要求函式所需的任何資源權限。
 
 > [!Note] 
 > Microsoft Graph 擴充功能僅支援 Azure AD 驗證。 使用者必須使用公司或學校帳戶登入。
@@ -668,7 +669,7 @@ module.exports = function (context, req) {
 
 繫結會向 .NET 函式公開下列類型：
 - byte[]
-- STREAM
+- 資料流
 - 字串
 - Microsoft.Graph.DriveItem
 
@@ -816,7 +817,7 @@ module.exports = function (context, req) {
 
 繫結會向 .NET 函式公開下列類型：
 - byte[]
-- STREAM
+- 資料流
 - 字串
 - Microsoft.Graph.DriveItem
 
@@ -982,7 +983,7 @@ Webhook 可讓您回應 Microsoft Graph 中的事件。 若要支援 webhook，�
 - [Microsoft Graph webhook 訂用帳戶輸入繫結](#webhook-input)可讓您列出現有的訂用帳戶，並選擇性地加以重新整理。
 - [Microsoft Graph webhook 訂用帳戶輸出繫結](#webhook-output)可讓您建立或刪除 webhook 訂用帳戶。
 
-繫結本身不需要任何 Azure AD 權限，但您必須要求與所需回應之資源類型相關的權限。 如需每個資源類型所需權限的清單，請參閱[訂用帳戶權限](https://docs.microsoft.com/graph/api/subscription-post-subscriptions?view=graph-rest-1.0)。
+繫結本身不需要任何 Azure AD 權限，但您必須要求與所需回應之資源類型相關的權限。 如需每個資源類型所需權限的清單，請參閱[訂用帳戶權限](/graph/api/subscription-post-subscriptions?view=graph-rest-1.0)。
 
 如需 Webhook 的詳細資訊，請參閱[在 Microsoft Graph 中使用 Webhook]。
 

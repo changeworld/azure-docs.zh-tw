@@ -7,11 +7,12 @@ ms.subservice: disks
 ms.topic: how-to
 ms.date: 07/12/2018
 ms.author: rogarana
-ms.openlocfilehash: 6173f2f60f5dd0b2b06c415bbf55ed31bacbe8b7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7b5d2e82b439454ff33a263af7710fe79f246893
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84658188"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508605"
 ---
 # <a name="convert-a-windows-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>將 Windows 虛擬機器從非受控磁碟轉換成受控磁碟
 
@@ -34,7 +35,7 @@ ms.locfileid: "84658188"
 ## <a name="convert-single-instance-vms"></a>轉換單一執行個體 VM
 本節說明如何將單一執行個體 Azure VM 從非受控磁碟轉換為受控磁碟。 (如果您的 VM 位於可用性設定組中，請參閱下一節)。 
 
-1. 使用 [Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) Cmdlet 將 VM 解除配置。 下列範例會解除配置 `myResourceGroup` 資源群組中名為 `myVM` 的 VM： 
+1. 使用 [Stop-AzVM](/powershell/module/az.compute/stop-azvm) Cmdlet 將 VM 解除配置。 下列範例會解除配置 `myResourceGroup` 資源群組中名為 `myVM` 的 VM： 
 
    ```azurepowershell-interactive
    $rgName = "myResourceGroup"
@@ -42,7 +43,7 @@ ms.locfileid: "84658188"
    Stop-AzVM -ResourceGroupName $rgName -Name $vmName -Force
    ```
 
-2. 使用 [ConvertTo-AzVMManagedDisk](https://docs.microsoft.com/powershell/module/az.compute/convertto-azvmmanageddisk) Cmdlet 將 VM 轉換成受控磁碟。 下列程序會轉換先前的 VM (包括 OS 磁碟和任何資料磁碟)，然後啟動虛擬機器：
+2. 使用 [ConvertTo-AzVMManagedDisk](/powershell/module/az.compute/convertto-azvmmanageddisk) Cmdlet 將 VM 轉換成受控磁碟。 下列程序會轉換先前的 VM (包括 OS 磁碟和任何資料磁碟)，然後啟動虛擬機器：
 
    ```azurepowershell-interactive
    ConvertTo-AzVMManagedDisk -ResourceGroupName $rgName -VMName $vmName
@@ -54,7 +55,7 @@ ms.locfileid: "84658188"
 
 如果您想要轉換為受控磁碟的 VM 位於可用性設定組中，您必須先將此可用性設定組轉換為受控可用性設定組。
 
-1. 使用 [Update-AzAvailabilitySet](https://docs.microsoft.com/powershell/module/az.compute/update-azavailabilityset) Cmdlet 來轉換可用性設定組。 下列範例會更新 `myResourceGroup` 資源群組中名為 `myAvailabilitySet` 的可用性設定組：
+1. 使用 [Update-AzAvailabilitySet](/powershell/module/az.compute/update-azavailabilityset) Cmdlet 來轉換可用性設定組。 下列範例會更新 `myResourceGroup` 資源群組中名為 `myAvailabilitySet` 的可用性設定組：
 
    ```azurepowershell-interactive
    $rgName = 'myResourceGroup'
@@ -71,7 +72,7 @@ ms.locfileid: "84658188"
    Update-AzAvailabilitySet -AvailabilitySet $avSet -Sku Aligned
    ```
 
-2. 解除配置並轉換可用性設定組中的 VM。 下列指令碼會使用 [Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) Cmdlet 將每個 VM 解除配置，使用 [ConvertTo-AzVMManagedDisk](https://docs.microsoft.com/powershell/module/az.compute/convertto-azvmmanageddisk) 轉換它，然後在轉換過程中將它自動重新啟動：
+2. 解除配置並轉換可用性設定組中的 VM。 下列指令碼會使用 [Stop-AzVM](/powershell/module/az.compute/stop-azvm) Cmdlet 將每個 VM 解除配置，使用 [ConvertTo-AzVMManagedDisk](/powershell/module/az.compute/convertto-azvmmanageddisk) 轉換它，然後在轉換過程中將它自動重新啟動：
 
    ```azurepowershell-interactive
    $avSet = Get-AzAvailabilitySet -ResourceGroupName $rgName -Name $avSetName
@@ -107,4 +108,3 @@ VM 將會停止，並且在移轉完成後重新啟動。
 [將標準受控磁碟轉換成進階受控磁碟](convert-disk-storage.md)
 
 使用[快照](snapshot-copy-managed-disk.md)來取得 VM 的唯讀複本。
-

@@ -8,19 +8,19 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 06/15/2020
 ms.author: danis
-ms.openlocfilehash: bebf4967d96177038aba64be59d43f49458b82be
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: e303b713adf2925af8bc012a5b858c6f5740fccf
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85920197"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510067"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Azure 中適用於虛擬機器的 cloud-init 支援
 此文章說明針對 [cloud-init](https://cloudinit.readthedocs.io) \(英文\) 存在的支援，以便在 Azure 中於佈建階段設定虛擬機器 (VM) 或虛擬機器擴展集。 一旦 Azure 佈建資源，這些 cloud-init 設定就會在初次開機時執行。  
 
 VM 佈建是 Azure 向下傳遞您的 VM Creater 參數值 (例如主機名稱、使用者名稱、密碼等)，並在 VM 開機時為其加以提供的程序。 「佈建代理程式」將會使用那些值，設定 VM，然後在完成時回報。 
 
-Azure 支援兩種佈建代理程式，[cloud-init](https://cloudinit.readthedocs.io) \(英文\) 和 [Azure Linux 代理程式 (WALA)](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) \(部分機器翻譯\)。
+Azure 支援兩種佈建代理程式，[cloud-init](https://cloudinit.readthedocs.io) \(英文\) 和 [Azure Linux 代理程式 (WALA)](../extensions/agent-linux.md) \(部分機器翻譯\)。
 
 ## <a name="cloud-init-overview"></a>cloud-init 概觀
 [cloud-init](https://cloudinit.readthedocs.io) \(英文\) 時常用來對初次開機的 Linux VM 進行自訂。 您可以使用 cloud-init 來安裝封裝和寫入檔案，或者設定使用者和安全性。 因為在初次開機程序期間時會呼叫 Cloud-init，因此不需要使用任何額外的步驟或必要的代理程式，就可以套用您的設定。  如需如何正確地設定 `#cloud-config` 檔案或其他輸入之格式的詳細資訊，請參閱 [cloud-init 文件網站](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data) \(英文\)。  `#cloud-config` 檔案是以 base64 編碼的文字檔。
@@ -106,7 +106,7 @@ cloud-init 也可在不同的發行版本上運作。 例如，您不使用 **ap
 目前 Azure Stack 將會支援已啟用 cloud-init 之映像的佈建。
 
 ## <a name="what-is-the-difference-between-cloud-init-and-the-linux-agent-wala"></a>cloud-init 和 Linux 代理程式 (WALA) 之間有哪些差異？
-WALA 是 Azure 平台專屬的代理程式，用於佈建及設定 VM，以及處理 [Azure 延伸模組](https://docs.microsoft.com/azure/virtual-machines/extensions/features-linux) \(部分機器翻譯\)。 
+WALA 是 Azure 平台專屬的代理程式，用於佈建及設定 VM，以及處理 [Azure 延伸模組](../extensions/features-linux.md) \(部分機器翻譯\)。 
 
 我們正在加強設定 VM 以使用 cloud-init 取代 Linux 代理程式的工作，以讓現有的 cloud-init 客戶使用其目前的 cloud-init 指令碼，或是讓新客戶利用豐富的 cloud-init 設定功能。 如果您已經對用於設定 Linux 系統所的 cloud-init 指令碼有所投入，則您**不需要其他任何設定**就可以讓 cloud-init 加以處理。 
 

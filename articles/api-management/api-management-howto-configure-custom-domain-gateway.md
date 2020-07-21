@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: apimpm
-ms.openlocfilehash: dacf1329d35117c65bcc48a82ac27a767ebd2b3b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0894203be4867e305c8e15467a2a867b9bfdc727
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82203160"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506803"
 ---
 # <a name="configure-a-custom-domain-name"></a>設定自訂網域名稱
 
@@ -41,7 +41,7 @@ ms.locfileid: "82203160"
 ## <a name="add-custom-domain-certificate-to-your-api-management-service"></a>將自訂網域憑證新增至您的 API 管理服務
 
 1. 從 [**安全性**] 底下選取 [**憑證**]。
-2. 選取 [+ 新增] 。
+2. 選取 [+ 新增]。
 3. 在 [**識別碼**] 欄位中輸入 [憑證的資源名稱]。
 4. 選取包含憑證的檔案（。PFX），方法是選取 [**憑證**] 欄位或其旁邊的資料夾圖示。
 5. 在 [**密碼**] 欄位中輸入憑證的密碼。
@@ -49,7 +49,7 @@ ms.locfileid: "82203160"
 
 ## <a name="use-the-azure-portal-to-set-a-custom-domain-name-for-your-self-hosted-gateway"></a>使用 Azure 入口網站設定自我裝載閘道的自訂功能變數名稱
 
-1. 從 [**設定**] 底下選取**閘道**。
+1. 從 [**部署和基礎結構**] 底下選取**閘道**。
 2. 選取您想要為其設定功能變數名稱的自我裝載閘道。
 3. 選取 [**設定**] 底下的 [**主機名稱**]。
 4. 選取 [+ 新增]

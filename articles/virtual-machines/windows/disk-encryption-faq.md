@@ -8,11 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 11/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: d9374f83110176e6705e2c6cca6c7794738a8c6e
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 78d4ffda62b98ca57a8204e6037f8ccd8c470924
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848833"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508537"
 ---
 # <a name="azure-disk-encryption-for-windows-virtual-machines-faq"></a>適用於 Windows 虛擬機器的 Azure 磁碟加密的常見問題集
 
@@ -133,11 +134,11 @@ Azure 備份提供一種機制，可以在相同的訂用帳戶和區域內備�
 
 ## <a name="where-can-i-go-to-ask-questions-or-provide-feedback"></a>我可以在哪裡提出問題或意見反應？
 
-您可以在 [Azure 磁碟加密的 Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-disk-encryption.html)上提問或提供意見反應。
+您可以在 [Azure 磁碟加密的 Microsoft 問與答頁面](/answers/topics/azure-disk-encryption.html)上提問或提供意見反應。
 
 ## <a name="next-steps"></a>後續步驟
 在本文件中，您已了解有關 Azure 磁碟加密的常見問題。 如需此服務的詳細資訊，請參閱下列文章：
 
 - [Azure 磁碟加密概觀](disk-encryption-overview.md)
-- [在 Azure 資訊安全中心套用磁碟加密](https://docs.microsoft.com/azure/security-center/security-center-apply-disk-encryption)
+- [在 Azure 資訊安全中心套用磁碟加密](../../security-center/security-center-virtual-machine-protection.md)
 - [待用 Azure 資料加密](../../security/fundamentals/encryption-atrest.md)

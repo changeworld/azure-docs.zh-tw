@@ -1,15 +1,15 @@
 ---
-title: 在 Azure Kubernetes Service (AKS) 叢集上建立 Windows Server 容器
+title: 使用 PowerShell 在 AKS 叢集上建立 Windows Server 容器
 description: 瞭解如何使用 PowerShell 快速建立 Kubernetes 叢集、在 Azure Kubernetes Service (AKS) 的 Windows Server 容器中部署應用程式。
 services: container-service
 ms.topic: article
 ms.date: 05/26/2020
-ms.openlocfilehash: 036c97d406e37e038474287daf39182ddce194a1
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: cf195c439a1a53d8a720505edae3c9b6d379d157
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86250867"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507041"
 ---
 # <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-powershell"></a>使用 PowerShell 在 Azure Kubernetes Service (AKS) 叢集上建立 Windows Server 容器
 

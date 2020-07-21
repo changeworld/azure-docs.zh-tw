@@ -3,18 +3,18 @@ title: 管理 Azure Functions 中的連接
 description: 了解如何使用靜態連線用戶端來避免 Azure Functions 中的效能問題。
 ms.topic: conceptual
 ms.date: 02/25/2018
-ms.openlocfilehash: 872ad9a1b8f0a7da6fe410e68f08469ac11045a5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5ab59d82ad4b11e4ac5179ef727392a83bb263e3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85846761"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505987"
 ---
 # <a name="manage-connections-in-azure-functions"></a>管理 Azure Functions 中的連接
 
 函數應用程式中的函式會共用資源。 這些共用的資源包括連線： HTTP 連線、資料庫連接，以及與服務（例如 Azure 儲存體）的連接。 同時執行許多函式時，可能會將可用的連線用完。 本文說明如何撰寫函式的程式碼，以避免使用超過所需的連接。
 
-## <a name="connection-limit"></a>連接限制
+## <a name="connection-limit"></a>連線限制
 
 可用的連線數目有限，部分原因是函式應用程式會在[沙箱環境](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox)中執行。 沙箱對您程式碼施加的其中一項限制是輸出連線數目的限制，這是目前每個實例600個作用中（1200 total）個連線。 當您達到此限制時，函數執行時間會將下列訊息寫入至記錄檔： `Host thresholds exceeded: Connections` 。 如需詳細資訊，請參閱[函數服務限制](functions-scale.md#service-limits)。
 
@@ -24,8 +24,7 @@ ms.locfileid: "85846761"
 
 ## <a name="static-clients"></a>靜態用戶端
 
-若要避免保有超過所需的連線，請重複使用用戶端執行個體，而不是在每次函式引動過程建立新的執行個體。 我們建議您針對可能會在其中撰寫函式的任何語言重複使用用戶端連接。 例如，如果您使用單一靜態用戶端，則[HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx)、 [DocumentClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
-)和 Azure 儲存體的 .net 用戶端可以管理連接。
+若要避免保有超過所需的連線，請重複使用用戶端執行個體，而不是在每次函式引動過程建立新的執行個體。 我們建議您針對可能會在其中撰寫函式的任何語言重複使用用戶端連接。 例如，如果您使用單一靜態用戶端，則[HttpClient](/dotnet/api/system.net.http.httpclient?view=netcore-3.1)、 [DocumentClient](/dotnet/api/microsoft.azure.documents.client.documentclient)和 Azure 儲存體的 .net 用戶端可以管理連接。
 
 以下是當您在 Azure Functions 應用程式中使用服務特定的用戶端時，應遵循的一些指導方針：
 
@@ -39,7 +38,7 @@ ms.locfileid: "85846761"
 
 ### <a name="httpclient-example-c"></a>HttpClient 範例 (C#)
 
-以下是建立靜態[HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx)實例的 c # 函式程式碼範例：
+以下是建立靜態[HttpClient](/dotnet/api/system.net.http.httpclient?view=netcore-3.1)實例的 c # 函式程式碼範例：
 
 ```cs
 // Create a single, static HttpClient
@@ -52,7 +51,7 @@ public static async Task Run(string input)
 }
 ```
 
-在 .NET 中[HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx)的常見問題是「我應該處置我的用戶端嗎？」 一般來說，您會處置完成使用時所執行的物件 `IDisposable` 。 但是您不會處置靜態用戶端，因為在函式結束時不會使用它。 您希望靜態用戶端在您應用程式的使用期間存留。
+在 .NET 中[HttpClient](/dotnet/api/system.net.http.httpclient?view=netcore-3.1)的常見問題是「我應該處置我的用戶端嗎？」 一般來說，您會處置完成使用時所執行的物件 `IDisposable` 。 但是您不會處置靜態用戶端，因為在函式結束時不會使用它。 您希望靜態用戶端在您應用程式的使用期間存留。
 
 ### <a name="http-agent-examples-javascript"></a>HTTP 代理程式範例（JavaScript）
 
@@ -76,8 +75,7 @@ http.request(options, onResponseCallback);
 
 ### <a name="documentclient-code-example-c"></a>DocumentClient 程式碼範例 (C#)
 
-[DocumentClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
-) \(英文\) 會連線到 Azure Cosmos DB 執行個體。 Azure Cosmos DB 文件建議您[在應用程式存留期內使用單一 Azure Cosmos DB 用戶端](https://docs.microsoft.com/azure/cosmos-db/performance-tips#sdk-usage)。 下列範例顯示在函式中執行該作業的一種模式：
+[DocumentClient](/dotnet/api/microsoft.azure.documents.client.documentclient) \(英文\) 會連線到 Azure Cosmos DB 執行個體。 Azure Cosmos DB 文件建議您[在應用程式存留期內使用單一 Azure Cosmos DB 用戶端](../cosmos-db/performance-tips.md#sdk-usage)。 下列範例顯示在函式中執行該作業的一種模式：
 
 ```cs
 #r "Microsoft.Azure.Documents.Client"
@@ -126,14 +124,13 @@ module.exports = async function (context) {
 
 ## <a name="sqlclient-connections"></a>SqlClient 連線
 
-您的函式程式碼可以使用 .NET Framework Data Provider SQL Server （[SqlClient](https://msdn.microsoft.com/library/system.data.sqlclient(v=vs.110).aspx)）來連接到 SQL 關係資料庫。 這也是依賴 ADO.NET 之資料架構的基礎提供者，例如[Entity Framework](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx)。 不同於 [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) \(英文\) 和 [DocumentClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
-) \(英文\) 連線，ADO.NET 預設會實作連線共用。 但是，因為您仍然可以用完連接，所以您應該將資料庫的連接優化。 如需詳細資訊，請參閱 [SQL Server 連線共用 (ADO.NET)](https://docs.microsoft.com/dotnet/framework/data/adonet/sql-server-connection-pooling) \(機器翻譯\)。
+您的函式程式碼可以使用 .NET Framework Data Provider SQL Server （[SqlClient](/dotnet/api/system.data.sqlclient?view=dotnet-plat-ext-3.1)）來連接到 SQL 關係資料庫。 這也是依賴 ADO.NET 之資料架構的基礎提供者，例如[Entity Framework](/ef/ef6/)。 不同於 [HttpClient](/dotnet/api/system.net.http.httpclient?view=netcore-3.1) \(英文\) 和 [DocumentClient](/dotnet/api/microsoft.azure.documents.client.documentclient) \(英文\) 連線，ADO.NET 預設會實作連線共用。 但是，因為您仍然可以用完連接，所以您應該將資料庫的連接優化。 如需詳細資訊，請參閱 [SQL Server 連線共用 (ADO.NET)](/dotnet/framework/data/adonet/sql-server-connection-pooling) \(機器翻譯\)。
 
 > [!TIP]
-> 某些資料架構（例如 Entity Framework）通常會從設定檔的**ConnectionStrings**區段取得連接字串。 在此情況下，您必須明確地將 SQL 資料庫連接字串新增至函數應用程式設定的**連接字串**集合，以及您本機專案的 [local.settings.json 檔案](functions-run-local.md#local-settings-file)中。 如果您要在函式程式碼中建立[SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx)的實例，您應該將連接字串值儲存在**應用程式設定**中，與其他連接。
+> 某些資料架構（例如 Entity Framework）通常會從設定檔的**ConnectionStrings**區段取得連接字串。 在此情況下，您必須明確地將 SQL 資料庫連接字串新增至函數應用程式設定的**連接字串**集合，以及您本機專案的 [local.settings.json 檔案](functions-run-local.md#local-settings-file)中。 如果您要在函式程式碼中建立[SqlConnection](/dotnet/api/system.data.sqlclient.sqlconnection?view=dotnet-plat-ext-3.1)的實例，您應該將連接字串值儲存在**應用程式設定**中，與其他連接。
 
 ## <a name="next-steps"></a>後續步驟
 
-如需為何建議靜態用戶端的詳細資訊，請參閱不適當的具現[化反模式](https://docs.microsoft.com/azure/architecture/antipatterns/improper-instantiation/)。
+如需為何建議靜態用戶端的詳細資訊，請參閱不適當的具現[化反模式](/azure/architecture/antipatterns/improper-instantiation/)。
 
 如需更多 Azure Functions 效能祕訣，請參閱[將 Azure Functions 效能和可靠性最佳化](functions-best-practices.md)。

@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 07/08/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 886e6cf237df94c056ec7c592e0b535327339871
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 019ae80020dafb54f2c06dd504797f21069914ae
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86243791"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507058"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 中支援的 Kubernetes 版本
 
@@ -41,15 +41,15 @@ Example:
 
 AKS 會定義正式推出的版本，做為所有 SLO 或 SLA 測量中已啟用的版本，以及所有區域中的可用時間。 AKS 支援三個 GA 次要版本的 Kubernetes：
 
-* 在 AKS 中發行的最新 GA 次要版本 (，我們將稱之為 N) 。 
+* 在 AKS 中發行的最新 GA 次要版本（我們將稱之為 N）。 
 * 兩個先前的次要版本。 
-* 每個支援的次要版本也支援最多兩個 (2) 穩定的修補程式。
+* 每個支援的次要版本也支援最多兩個（2）穩定的修補程式。
 * AKS 也可以支援預覽版本，其已明確加上標籤，並受限於[預覽條款及條件][preview-terms]。
 
 > [!NOTE]
 > AKS 會使用包含漸進式區域部署的安全部署實務。 這表示最多可能需要10個工作天，新版本或新版本才能在所有區域中使用。
 
-AKS 上的 Kubernetes 版本支援的視窗稱為「N-2」： (N (最新版本) -2 (次要版本) # A5。
+AKS 上的 Kubernetes 版本支援的視窗稱為「N-2」：（N （最新版本）-2 （次要版本））。
 
 例如，如果 AKS 引進了*1.17* ，就會提供下列版本的支援：
 
@@ -131,7 +131,7 @@ az aks get-versions --location eastus --output table
 | 1.17  | Dec-09-19  | Jan 19   | 7月20日  | 1.20 GA | 
 | 1.18  | Mar-23-20  | 5月20   | 8月20日  | 1.21 GA | 
 | 1.19  | 8月-04-20  | 8月20日   | 11 月 20 日  | 1.22 GA | 
-| 1.20  | * 11 月20日    | * 12 月21日   | * Jan 21  | 1.23 GA | 
+| 1.20  | * 11 月20日    | * Dec 20   | * Jan 21  | 1.23 GA | 
 
 \*暫止上游發行日期確認。
 
@@ -139,7 +139,7 @@ az aks get-versions --location eastus --output table
 
 **當使用者升級的 Kubernetes 叢集具有不支援的次要版本時，會發生什麼事？**
 
-如果您是在*3*個或更舊版本，則表示您不在支援範圍內，而且會要求您進行升級。 當您從第 n-3 版升級至 n-2 成功時，您就會回到我們的支援原則中。 例如︰
+如果您是在*3*個或更舊版本，則表示您不在支援範圍內，而且會要求您進行升級。 當您從第 n-3 版升級至 n-2 成功時，您就會回到我們的支援原則中。 例如：
 
 - 如果最舊的支援 AKS 版本是*1.15* ，而且您是在*1.14*或更舊版本上，您就不會在支援範圍內。
 - 當從*1.14*升級到*1.15*時，或更新版本成功時，您就會回到我們的支援原則中。
@@ -156,7 +156,7 @@ az aks get-versions --location eastus --output table
 
 **使用者可以永遠保持 Kubernetes 版本嗎？**
 
-如果叢集已不支援三個以上的 (3) 次要版本，而且發現有安全性風險，Azure 會聯絡您主動升級叢集。 如果您未採取進一步的動作，Azure 會保留自動代表您升級叢集的權利。
+如果叢集已不支援三（3）個次要版本，而且發現有安全性風險，Azure 會聯絡您主動升級叢集。 如果您未採取進一步的動作，Azure 會保留自動代表您升級叢集的權利。
 
 **如果節點集區不在其中一個支援的 AKS 版本中，控制平面支援哪些版本？**
 
@@ -181,4 +181,4 @@ az aks get-versions --location eastus --output table
 <!-- LINKS - Internal -->
 [aks-upgrade]: upgrade-cluster.md
 [az-aks-get-versions]: /cli/azure/aks#az-aks-get-versions
-[preview-terms]: /support/legal/preview-supplemental-terms
+[preview-terms]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/

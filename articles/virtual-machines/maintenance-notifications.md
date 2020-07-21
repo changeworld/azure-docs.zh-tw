@@ -7,11 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: e65b2c94b5042f857a6ea5fc61136c572b780764
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f7d9912686be8ba6076278f148067575a40f32f8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84678506"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510033"
 ---
 # <a name="handling-planned-maintenance-notifications"></a>處理預定的維護通知
 
@@ -24,7 +25,7 @@ ms.locfileid: "84678506"
 
 預定進行的維護作業若需要重新開機，會排定在不同波段。 每一波段有不同的範圍 (區域)。
 
-- 波段開始時會傳送通知給客戶。 根據預設，通知會傳送給服務管理員和共同管理員。 您可以使用[活動記錄警示](../service-health/alerts-activity-log-service-notifications.md)，新增更多收件者和訊息選項，例如電子郵件、SMS 和 webhook。  
+- 波段開始時會傳送通知給客戶。 根據預設，通知會傳送給服務管理員和共同管理員。 您可以使用[活動記錄警示](../service-health/alerts-activity-log-service-notifications-portal.md)，新增更多收件者和訊息選項，例如電子郵件、SMS 和 webhook。  
 - 一旦通知出現，就會提供*自助服務視窗*。 在此視窗中，您可以查詢哪些虛擬機器受到影響，並根據您自己的排程需求開始維護。 自助服務視窗通常大約是35天。
 - 在自助期間之後，「排定維護期間」** 隨即開始。 在此期間的某個時間點，Azure 會排定並將必要的維護套用於您的虛擬機器。 
 
@@ -75,13 +76,13 @@ ms.locfileid: "84678506"
 
 **答：** 部署在可用性設定組或虛擬機器擴展集的虛擬機器，具有更新網域 (UD) 的概念。 執行維護時，Azure 會接受 UD 條件約束，並且不會從不同的 UD (在相同的可用性設定組內) 重新啟動虛擬機器。  Azure 也會等候至少 30 分鐘，再移至下一個虛擬機器群組。 
 
-如需高可用性的詳細資訊，請參閱[Azure 中虛擬機器的可用性](./linux/availability.md)。
+如需高可用性的詳細資訊，請參閱[Azure 中虛擬機器的可用性](availability.md)。
 
 **問：我如何取得規劃維護的通知？**
 
 **答：** 規劃的維護是從對一或多個 Azure 區域設定排程開始。 不久之後，電子郵件通知會傳送給訂用帳戶管理員（每個訂用帳戶一封電子郵件）。 可以使用「活動記錄警示」來設定此通知的其他通道和收件者。 如果您將虛擬機器部署到已排程規劃的維護之區域，您不會收到通知，但是需要檢查 VM 的維護狀態。
 
-**問：我在入口網站、Powershell 或 CLI 中都看不到任何已規劃維護的指示。怎麼了？**
+**問：我在入口網站、PowerShell 或 CLI 中都看不到任何已規劃維護的指示。怎麼了？**
 
 **答：** 只有在計劃性維護期間將受到該維護波段影響的 VM 可以取得與計劃性維護相關的資訊。 也就是說，如果您看不到資料，可能是維護已完成 (或尚未啟動)，或者您的虛擬機器是裝載在更新的伺服器上。
 
@@ -121,4 +122,3 @@ ms.locfileid: "84678506"
 ## <a name="next-steps"></a>後續步驟
 
 您可以使用[Azure CLI](maintenance-notifications-cli.md)、 [Azure PowerShell](maintenance-notifications-powershell.md)或[入口網站](maintenance-notifications-portal.md)來處理預定的維護。
-

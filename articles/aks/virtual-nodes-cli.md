@@ -6,12 +6,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.custom: references_regions
-ms.openlocfilehash: 8806390fe772491b629276b21734947a149d67e4
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: d1cfbe1db33661dd712dfbc53670fb8f0525a481
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86250680"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507024"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>使用 Azure CLI 建立和設定 Azure Kubernetes Service (AKS) 叢集以使用虛擬節點
 
@@ -131,7 +131,7 @@ az ad sp create-for-rbac --skip-assignment
 }
 ```
 
-記下 appId  和密碼  。 下列步驟中會使用這些值。
+記下 appId 和密碼。 下列步驟中會使用這些值。
 
 ## <a name="assign-permissions-to-the-virtual-network"></a>對虛擬網路指派權限
 
@@ -271,7 +271,7 @@ Pod 會從 Azure 虛擬網路的子網路 (為搭配使用虛擬節點而委派)
 若要測試虛擬節點上執行的 Pod，請瀏覽至搭配 Web 用戶端的示範應用程式。 由於 Pod 會獲派內部 IP 位址，因此您可以快速地從 AKS 叢集上其他 Pod 測試此連線。 建立測試 Pod，並將終端機工作階段與它連結：
 
 ```console
-kubectl run --generator=run-pod/v1 -it --rm testvk --image=debian
+kubectl run -it --rm testvk --image=debian
 ```
 
 使用 `apt-get` 在 Pod 中安裝 `curl`：

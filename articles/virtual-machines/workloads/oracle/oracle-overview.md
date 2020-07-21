@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/05/2020
 ms.author: rogardle
-ms.openlocfilehash: e9a61c631e8a74bbbd58bb991848fcf60f81ff6a
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 6a516fc75880e3b6a5bc5b5907e8d968dce2ae31
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224429"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507857"
 ---
 # <a name="overview-of-oracle-applications-and-solutions-on-azure"></a>Azure 上的 Oracle 應用程式和解決方案概觀
 
@@ -55,13 +55,13 @@ ms.locfileid: "86224429"
 
 * 使用[Azure Site Recovery](../../../site-recovery/site-recovery-overview.md)來協調和管理 Azure 中 Oracle Linux vm 和實體伺服器的嚴重損壞修復。 
 
-* 使用[Azure VMware Solution](https://docs.microsoft.com/azure/vmware-cloudsimple/oracle-real-application-clusters/)或[FlashGrid SkyCluster](https://www.flashgrid.io/oracle-rac-in-azure/)，在 AZURE 中啟用 (RAC) 的 Oracle Real 應用程式叢集。
+* 使用[Azure VMware Solution](../../../vmware-cloudsimple/oracle-real-application-clusters.md)或[FlashGrid SkyCluster](https://www.flashgrid.io/oracle-rac-in-azure/)，在 Azure 中啟用 Oracle REAL Application 叢集（RAC）。
 
 ## <a name="backup-oracle-workloads"></a>備份 Oracle 工作負載
 
-* 使用 [Azure 備份](https://docs.microsoft.com/azure/backup/backup-overview)來備份 Oracle VM
+* 使用 [Azure 備份](../../../backup/backup-overview.md)來備份 Oracle VM
 
-* 使用 Oracle RMAN 備份 Oracle Database，也可自由選擇使用 [Azure Blob Fuse](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-mount-container-linux) 裝載[高度冗餘的 Azure Blob 儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-redundancy)，並寫入您的 RMAN 備份以提升復原能力。
+* 使用 Oracle RMAN 備份 Oracle Database，也可自由選擇使用 [Azure Blob Fuse](../../../storage/blobs/storage-how-to-mount-container-linux.md) 裝載[高度冗餘的 Azure Blob 儲存體帳戶](../../../storage/common/storage-redundancy.md)，並寫入您的 RMAN 備份以提升復原能力。
 
 ## <a name="integration-of-azure-with-oci"></a>Azure 與 OCI 的整合
 
@@ -86,7 +86,7 @@ ms.locfileid: "86224429"
 
 ### <a name="set-up-oracle-databases-in-oci"></a>在 OCI 中設定 Oracle 資料庫
 
-使用 Oracle Database 雲端服務 (自發資料庫、RAC、Exadata、DBaaS、單一節點) 搭配在 Azure 中執行的 Oracle 軟體。 深入了解 [OCI 資料庫選項](https://docs.cloud.oracle.com/iaas/Content/Database/Concepts/databaseoverview.htm)。 
+使用 Oracle Database 雲端服務（自發資料庫、RAC、Exadata、DBaaS、單一節點）搭配在 Azure 中執行的 Oracle 軟體。 深入了解 [OCI 資料庫選項](https://docs.cloud.oracle.com/iaas/Content/Database/Concepts/databaseoverview.htm)。 
  
 
 ## <a name="licensing"></a>授權

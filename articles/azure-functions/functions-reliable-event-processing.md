@@ -5,11 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.author: cshoe
-ms.openlocfilehash: fe5efd2bf4c235688aad90ae37b54268d290540c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 93a12d40e876293eb587ffba865a1d3b1f5f4983
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84676126"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506021"
 ---
 # <a name="azure-functions-reliable-event-processing"></a>Azure Functions 可靠的事件處理
 
@@ -69,7 +70,7 @@ Azure Functions 會在迴圈執行下列步驟時取用事件中樞事件：
 > [!NOTE]
 > [Polly](https://github.com/App-vNext/Polly)是 c # 應用程式的復原和暫時性錯誤處理程式庫的範例。
 
-使用預先編譯的 c # 類別庫時，[例外狀況篩選準則](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/try-catch)可讓您在每次發生未處理的例外狀況時執行程式碼。
+使用預先編譯的 c # 類別庫時，[例外狀況篩選準則](/dotnet/csharp/language-reference/keywords/try-catch)可讓您在每次發生未處理的例外狀況時執行程式碼。
 
 [AZURE WEBJOBS SDK](https://github.com/Azure/azure-webjobs-sdk/wiki)存放庫中提供示範如何使用例外狀況篩選準則的範例。
 

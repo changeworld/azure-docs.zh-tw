@@ -4,22 +4,21 @@ description: 瞭解如何在 Azure Kubernetes Service 中使用 PodSecurityPolic
 services: container-service
 ms.topic: article
 ms.date: 06/30/2020
-ms.openlocfilehash: eb2e7fca3a808a1e2c4f7d1f81b8dc1d64deeee7
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: dd526b7825279d886c60fbb1820222a75abab03e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077621"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507075"
 ---
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>預覽-在 Azure Kubernetes Service 中使用 pod 安全性原則保護您的叢集（AKS）
 
-<!--
 > [!WARNING]
-> **The pod security policy feature on AKS is set for deprecation** in favor of [Azure Policy for AKS](use-pod-security-on-azure-policy.md). The feature described in this document is not moving to general availability and is set for removal in September 2020.
-> It is highly recommended to begin testing with the Azure Policy Add-on which offers unique policies which support scenarios captured by pod security policy.
-
-**This document and feature are set for deprecation.**
--->
+> **本檔中所述的「pod 安全性原則（預覽）」功能已設定為淘汰，在2020年10月15日之後將不再提供使用**，以[Azure 原則 AKS](use-pod-security-on-azure-policy.md)。
+>
+> 在 pod 安全性原則（預覽）淘汰之後，您必須在任何現有的叢集上停用此功能，並使用已被取代的功能來執行未來的叢集升級，並留在 Azure 支援中。
+>
+> 強烈建議您開始使用 Azure 原則 for AKS 測試案例，這會提供內建原則來保護 pod 和內建計畫，以對應至 pod 安全性原則。 按一下這裡以瞭解如何[從 pod 安全性原則（預覽）遷移至 Azure 原則](use-pod-security-on-azure-policy.md#migrate-from-kubernetes-pod-security-policy-to-azure-policy)。
 
 若要改善 AKS 叢集的安全性，您可以限制可以排程的 pod。 要求您不允許之資源的 pod 無法在 AKS 叢集中執行。 您可以使用 pod 安全性原則來定義此存取權。 本文說明如何使用 pod 安全性原則來限制 AKS 中的 pod 部署。
 
@@ -35,7 +34,7 @@ ms.locfileid: "86077621"
 
 您必須安裝並設定 Azure CLI 版本 2.0.61 或更新版本。 執行  `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱 [安裝 Azure CLI][install-azure-cli]。
 
-### <a name="install-aks-preview-cli-extension"></a>安裝 aks-preview CLI 擴充功能
+### <a name="install-aks-preview-cli-extension"></a>安裝 aks-preview CLI 延伸模組
 
 若要使用 pod 安全性原則，您需要*aks-preview* CLI 擴充功能版本0.4.1 或更高版本。 請使用 [az extension add][az-extension-add] 命令安裝 aks-preview Azure CLI 擴充功能，然後使用 [az extension update][az-extension-update] 命令檢查是否有任何可用的更新：
 
@@ -48,6 +47,8 @@ az extension update --name aks-preview
 ```
 
 ### <a name="register-pod-security-policy-feature-provider"></a>註冊 pod 安全性原則功能提供者
+
+**本檔和功能已設定為在2020年10月15日淘汰。**
 
 若要建立或更新 AKS 叢集以使用 pod 安全性原則，請先在您的訂用帳戶上啟用功能旗標。 若要註冊*PodSecurityPolicyPreview*功能旗標，請使用[az feature register][az-feature-register]命令，如下列範例所示：
 

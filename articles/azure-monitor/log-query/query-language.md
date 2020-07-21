@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/11/2019
-ms.openlocfilehash: 6b81aba553fc775821c80631aa83bbb3e8ac63b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1dda2df64dc116a950498aaf581ec39a86db72bb
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80631789"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505732"
 ---
 # <a name="azure-monitor-log-queries"></a>Azure 監視器記錄查詢
 
@@ -27,7 +27,7 @@ Azure 監視器記錄以 Azure 資料總管為基礎建置，且 Azure 監視器
 ## <a name="concepts"></a>概念
 
 - [分析 Azure 監視器中的記錄資料](../../azure-monitor/log-query/log-query-overview.md)提供記錄查詢的簡短概觀，並說明建置 Azure 監視器記錄資料結構的方式。
-- [在 Azure 監視器中檢視及分析記錄資料](../../azure-monitor/log-query/portals.md)說明您要在其中建立和執行記錄查詢的入口網站。
+- [在 Azure 監視器中檢視及分析記錄資料](./log-query-overview.md)說明您要在其中建立和執行記錄查詢的入口網站。
 
 ## <a name="reference"></a>參考
 

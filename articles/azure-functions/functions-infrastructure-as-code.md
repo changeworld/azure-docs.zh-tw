@@ -5,12 +5,12 @@ ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b73b8418b202563ca7c4a73181b1b1b404db6ee2
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: e56c76583f601c2e13ab4a35c1fef2996d2e3e67
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170389"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506225"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Azure Functions 中函數應用程式的自動化資源部署
 
@@ -110,7 +110,7 @@ Azure Functions 執行階段會使用 `AzureWebJobsStorage` 連接字串來建�
 ### <a name="hosting-plan"></a>主控方案
 
 主控方案的定義會有所不同，而且可以是下列其中一項：
-* [使用量方案](#consumption) (預設) 
+* [耗用量方案](#consumption)（預設值）
 * [進階方案](#premium)
 * [App Service 計劃](#app-service-plan)
 
@@ -137,7 +137,7 @@ Azure Functions 執行階段會使用 `AzureWebJobsStorage` 連接字串來建�
 
 函數應用程式必須包含下列應用程式設定：
 
-| 設定名稱                 | 描述                                                                               | 範例值                        |
+| 設定名稱                 | 說明                                                                               | 範例值                        |
 |------------------------------|-------------------------------------------------------------------------------------------|---------------------------------------|
 | AzureWebJobsStorage          | 函式執行時間用來進行內部佇列之儲存體帳戶的連接字串 | 請參閱[儲存體帳戶](#storage)       |
 | FUNCTIONS_EXTENSION_VERSION  | Azure Functions 執行時間的版本                                                | `~2`                                  |
@@ -309,7 +309,7 @@ Premium 方案提供與取用方案相同的調整，但包含專用的資源和
 
 ### <a name="create-a-premium-plan"></a>建立進階方案
 
-Premium 方案是一種特殊類型的「伺服器陣列」資源。 您可以使用 `EP1` 、 `EP2` 或， `EP3` 針對 `Name` `sku` [description 物件](https://docs.microsoft.com/azure/templates/microsoft.web/2018-02-01/serverfarms#skudescription-object)中的屬性值來指定它。
+Premium 方案是一種特殊類型的「伺服器陣列」資源。 您可以使用 `EP1` 、 `EP2` 或， `EP3` 針對 `Name` `sku` [description 物件](/azure/templates/microsoft.web/2018-02-01/serverfarms#skudescription-object)中的屬性值來指定它。
 
 ```json
 {
@@ -516,7 +516,7 @@ Linux 應用程式也應該在底下包含 `linuxFxVersion` 屬性 `siteConfig` 
 }
 ```
 
-如果您要[部署自訂容器映射](./functions-create-function-linux-custom-image.md)，您必須使用來指定它， `linuxFxVersion` 並且包含可讓您的映射提取的設定，如同[用於容器的 Web App](/azure/app-service/containers)。 此外，請將設定 `WEBSITES_ENABLE_APP_SERVICE_STORAGE` 為 `false` ，因為容器本身會提供您的應用程式內容：
+如果您要[部署自訂容器映射](./functions-create-function-linux-custom-image.md)，您必須使用來指定它， `linuxFxVersion` 並且包含可讓您的映射提取的設定，如同[用於容器的 Web App](../app-service/containers/index.yml)。 此外，請將設定 `WEBSITES_ENABLE_APP_SERVICE_STORAGE` 為 `false` ，因為容器本身會提供您的應用程式內容：
 
 ```json
 {
@@ -641,7 +641,7 @@ Linux 應用程式也應該在底下包含 `linuxFxVersion` 屬性 `siteConfig` 
 }
 ```
 > [!TIP]
-> 此範本會使用 [[專案](https://github.com/projectkudu/kudu/wiki/Customizing-deployments#using-app-settings-instead-of-a-deployment-file)應用程式設定值]，設定函式部署引擎 (Kudu) 尋找可部署程式碼的基礎目錄。 在我們的存放庫中，我們的函數是位於 **src** 資料夾的子資料夾中。 因此，在上述範例中，我們將應用程式設定值設定為 `src`。 如果您的函數位於您存放庫的根，或您並非從來源控制項進行部署，您可以移除此應用程式設定值。
+> 此範本會使用 [[專案](https://github.com/projectkudu/kudu/wiki/Customizing-deployments#using-app-settings-instead-of-a-deployment-file)應用程式設定值]，以設定「函式部署引擎」（Kudu）在其中尋找可部署程式碼的基底目錄。 在我們的存放庫中，我們的函數是位於 **src** 資料夾的子資料夾中。 因此，在上述範例中，我們將應用程式設定值設定為 `src`。 如果您的函數位於您存放庫的根，或您並非從來源控制項進行部署，您可以移除此應用程式設定值。
 
 ## <a name="deploy-your-template"></a>部署範本
 

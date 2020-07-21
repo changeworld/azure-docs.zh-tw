@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogardle
-ms.openlocfilehash: b553256d3e6a498e36e8b5c98d90c6c14b10df75
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 78eedb9bd4f12644a1bc992d0786a43b8af767a9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224565"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507925"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>在 Azure 中設計和實作 Oracle 資料庫
 
@@ -43,17 +43,17 @@ ms.locfileid: "86224565"
 
 下表列出 Oracle 資料庫在內部部署實作和 Azure 實作之間的一些差異。
 
-> 
-> |  | **內部部署實作** | **Azure 實作** |
-> | --- | --- | --- |
-> | **網路** |LAN/WAN  |SDN (軟體定義網路)|
-> | **安全性群組** |IP/連接埠限制工具 |[ (NSG) 的網路安全性群組](https://azure.microsoft.com/blog/network-security-groups) |
-> | **恢復功能** |MTBF (平均失敗時間) |MTTR (平均復原時間)|
-> | **規劃的維護** |修補/升級|[可用性設定組](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines) (Azure 所管理的修補/升級) |
-> | **Resource** |專用  |與其他用戶端共用|
-> | **區域** |資料中心 |[區域配對](https://docs.microsoft.com/azure/virtual-machines/windows/regions#region-pairs)|
-> | **儲存體** |SAN/實體磁碟 |[Azure 受控儲存體](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
-> | **調整** |垂直調整 |水平調整|
+
+|  | 內部部署實作 | Azure 實作 |
+| --- | --- | --- |
+| **網路** |LAN/WAN  |SDN (軟體定義網路)|
+| **安全性群組** |IP/連接埠限制工具 |[網路安全性群組（NSG）](https://azure.microsoft.com/blog/network-security-groups) |
+| **恢復功能** |MTBF (平均失敗時間) |MTTR (平均復原時間)|
+| **規劃的維護** |修補/升級|[可用性設定組](../../windows/infrastructure-example.md) (Azure 所管理的修補/升級) |
+| **Resource** |專用  |與其他用戶端共用|
+| **區域** |資料中心 |[區域配對](../../regions.md#region-pairs)|
+| **Storage** |SAN/實體磁碟 |[Azure 受控儲存體](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
+| **縮放比例** |垂直調整 |水平調整|
 
 
 ### <a name="requirements"></a>需求
@@ -72,11 +72,11 @@ ms.locfileid: "86224565"
 
 ### <a name="generate-an-awr-report"></a>產生 AWR 報表
 
-如果您目前已有 Oracle 資料庫，且打算移轉至 Azure，您會有數個選項。 如果您有 Oracle 實例的[診斷套件](https://www.oracle.com/technetwork/oem/pdf/511880.pdf)，您可以執行 oracle AWR 報表，以取得 (IOPS、Mbps、gib 等) 的計量。 然後根據收集到的計量選擇 VM。 或者，連絡基礎結構小組，取得類似的資訊。
+如果您目前已有 Oracle 資料庫，且打算移轉至 Azure，您會有數個選項。 如果您有 Oracle 實例的[診斷套件](https://www.oracle.com/technetwork/oem/pdf/511880.pdf)，您可以執行 oracle AWR 報表來取得計量（IOPS、Mbps、gib 等等）。 然後根據收集到的計量選擇 VM。 或者，連絡基礎結構小組，取得類似的資訊。
 
 您可以考慮在一般和尖峰工作負載期間執行 AWR 報表，以進行比較。 根據這些報表，您可以根據平均工作負載或最大工作負載來調整 VM 大小。
 
-以下是如何產生 AWR 報表 (使用您的 Oracle Enterprise Manager 產生 AWR 報表的範例，如果您目前的安裝有一個) ：
+以下是如何產生 AWR 報表的範例（如果您目前的安裝有一個，請使用您的 Oracle Enterprise Manager 產生 AWR 報表）：
 
 ```bash
 $ sqlplus / as sysdba
@@ -116,11 +116,11 @@ SQL> @?/rdbms/admin/awrrpt.sql
 
 #### <a name="2-choose-a-vm"></a>2. 選擇 VM
 
-根據您從 AWR 報表收集到的資訊，下一個步驟是選擇符合您需求且大小類似的 VM。 您可以在[記憶體最佳化](../../linux/sizes-memory.md)一文中找到可用 VM 的清單。
+根據您從 AWR 報表收集到的資訊，下一個步驟是選擇符合您需求且大小類似的 VM。 您可以在[記憶體最佳化](../../sizes-memory.md)一文中找到可用 VM 的清單。
 
 #### <a name="3-fine-tune-the-vm-sizing-with-a-similar-vm-series-based-on-the-acu"></a>3. 使用以 ACU 為基礎的類似 VM 系列來微調 VM 大小
 
-在您選擇 VM 之後，請注意 VM 的 ACU。 您可以根據較適合您需求的 ACU 值，選擇不同的 VM。 如需詳細資訊，請參閱 [Azure 計算單位](https://docs.microsoft.com/azure/virtual-machines/windows/acu)。
+在您選擇 VM 之後，請注意 VM 的 ACU。 您可以根據較適合您需求的 ACU 值，選擇不同的 VM。 如需詳細資訊，請參閱 [Azure 計算單位](../../acu.md)。
 
 ![ACU 單位頁面的螢幕擷取畫面](./media/oracle-design/acu_units.png)
 
@@ -143,8 +143,8 @@ SQL> @?/rdbms/admin/awrrpt.sql
 
 - 與內部部署相較之下，網路延遲較高。 減少網路來回行程可以大幅改善效能。
 - 若要減少來回行程，請合併相同虛擬機器上具有高交易或 “Chatty” 應用程式的應用程式。
-- 使用具有[加速網路](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli)的虛擬機器，以獲得更好的網路效能。
-- 針對特定 Linux 散發套件，請考慮啟用[修剪/](https://docs.microsoft.com/azure/virtual-machines/linux/configure-lvm#trimunmap-support)取消對應支援。
+- 使用具有[加速網路](../../../virtual-network/create-vm-accelerated-networking-cli.md)的虛擬機器，以獲得更好的網路效能。
+- 針對特定 Linux 散發套件，請考慮啟用[修剪/](../../linux/configure-lvm.md#trimunmap-support)取消對應支援。
 - 在個別的虛擬機器上安裝[Oracle Enterprise Manager](https://www.oracle.com/technetwork/oem/enterprise-manager/overview/index.html) 。
 - 在 linux 上，預設不會啟用大量頁面。 請考慮啟用龐大的頁面，並 `use_large_pages = ONLY` 在 Oracle DB 上設定。 這可能有助於提升效能。 您可以在[這裡](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/refrn/USE_LARGE_PAGES.html#GUID-1B0F4D27-8222-439E-A01D-E50758C88390)找到詳細資訊。
 
@@ -187,7 +187,7 @@ IOPS 是 12,200,000 / 2,358 = 5,174。
 - 使用資料壓縮來減少 I/O (適用於資料和索引)。
 - 區隔不同資料磁碟上的重做記錄、系統、暫時和重做 TS。
 - 不要將任何應用程式檔案放在預設 OS 磁碟 (/dev/sda)。 這些磁碟不適合用於快速 VM 啟動階段，因此可能不會為您的應用程式提供良好的效能。
-- 使用 Premium 儲存體上的 M 系列 Vm 時，請在重做記錄磁片上啟用[寫入加速器](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator)。
+- 使用 Premium 儲存體上的 M 系列 Vm 時，請在重做記錄磁片上啟用[寫入加速器](../../linux/how-to-enable-write-accelerator.md)。
 
 ### <a name="disk-cache-settings"></a>磁碟快取設定
 
@@ -225,7 +225,7 @@ IOPS 是 12,200,000 / 2,358 = 5,174。
 - 私人網路** (子網路)：我們建議您將應用程式服務和資料庫放在不同的子網路上，讓 NSG 原則可以設定更好的控制。
 
 
-## <a name="additional-reading"></a>其他閱讀資料
+## <a name="additional-reading"></a>延伸閱讀
 
 - [設定 Oracle ASM](configure-oracle-asm.md)
 - [設定 Oracle Data Guard](configure-oracle-dataguard.md)

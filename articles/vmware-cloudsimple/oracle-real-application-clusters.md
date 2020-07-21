@@ -8,11 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: f657e18d7185d6b3c63ac8f1424da9d36d4189e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2cc2f954f4255c00b7c3549ab5d33d71b240fb70
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82793035"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507662"
 ---
 # <a name="optimize-your-cloudsimple-private-cloud-for-installing-oracle-rac"></a>優化您的 CloudSimple 私人雲端以安裝 Oracle RAC
 
@@ -45,14 +46,14 @@ Oracle RAC 虛擬機器有多個磁片，用於特定功能。  共用磁片會�
 
 | 磁碟                                      | 目的                                       | 共用磁碟 |
 |-------------------------------------------|-----------------------------------------------|-------------|
-| OS                                        | 作業系統磁碟                         | No          |
-| 格                                      | 安裝 Oracle Grid 軟體的位置     | No          |
-| DATABASE                                  | Oracle 資料庫軟體的安裝位置 | No          |
-| ORAHOME                                   | Oracle 資料庫二進位檔的基底位置    | No          |
-| DATA1、DATA2、DATA3、DATA4                | 儲存 Oracle 資料庫檔案的磁片   | Yes         |
-| REDO1, REDO2, REDO3, REDO4, REDO5, REDO6  | 重做記錄磁片                                | Yes         |
-| OCR1, OCR2, OCR3, OCR4, OCR5              | 投票磁片                                  | Yes         |
-| FRA1, FRA2                                | 快速復原區域磁片                      | Yes         |
+| OS                                        | 作業系統磁碟                         | 否          |
+| 格                                      | 安裝 Oracle Grid 軟體的位置     | 否          |
+| DATABASE                                  | Oracle 資料庫軟體的安裝位置 | 否          |
+| ORAHOME                                   | Oracle 資料庫二進位檔的基底位置    | 否          |
+| DATA1、DATA2、DATA3、DATA4                | 儲存 Oracle 資料庫檔案的磁片   | 是         |
+| REDO1, REDO2, REDO3, REDO4, REDO5, REDO6  | 重做記錄磁片                                | 是         |
+| OCR1, OCR2, OCR3, OCR4, OCR5              | 投票磁片                                  | 是         |
+| FRA1, FRA2                                | 快速復原區域磁片                      | 是         |
 
 ![Oracle 虛擬機器磁片設定](media/oracle-vmdk.png)
 
@@ -168,7 +169,7 @@ SQL > alter database add logfile thread 2 ('+ORCLRAC_REDO1','+ORCLRAC_REDO2') si
 
 vSAN 原則會針對儲存在 VM 磁片上的資料，定義容許的失敗和磁片等量。  建立 VM 時，必須在 VM 磁片上套用所建立的儲存體原則。
 
-1. 登入私人雲端[的 vSphere 用戶端](https://docs.microsoft.com/azure/vmware-cloudsimple/vcenter-access)。
+1. 登入私人雲端[的 vSphere 用戶端](./vcenter-access.md)。
 2. 從頂端功能表中，選取 [**原則和設定檔**]。
 3. 從左側功能表中，選取 [ **VM 儲存體原則**]，然後選取 [**建立 Vm 存放裝置原則**]。
 4. 為原則輸入有意義的名稱，然後按 **[下一步]**。

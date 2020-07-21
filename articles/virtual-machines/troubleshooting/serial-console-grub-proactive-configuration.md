@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/10/2019
 ms.author: mimckitt
-ms.openlocfilehash: 6e6a8fddc61e05bc2e354d77c9e56c55e354a45b
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 3f4846947b18adb1d3f33f1d46482b5c02ee831e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84309827"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86509149"
 ---
 # <a name="proactively-ensuring-you-have-access-to-grub-and-sysrq-could-save-you-lots-of-down-time"></a>主動確保您有 GRUB 和 sysrq 的存取權，可以為您省下許多停機時間
 
@@ -36,11 +37,11 @@ ms.locfileid: "84309827"
    - sshd 設定檔損壞
    - 網路設定
 
- [這裡](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux#common-scenarios-for-accessing-the-serial-console)詳述其他許多案例
+ [這裡](./serial-console-linux.md#common-scenarios-for-accessing-the-serial-console)詳述其他許多案例
 
 請確認您可以在部署於 Azure 的 VM 上存取 GRUB 和序列主控台。 
 
-如果您不熟悉序列主控台，請參閱[此連結](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux/)。
+如果您不熟悉序列主控台，請參閱[此連結](./serial-console-linux.md)。
 
 > [!TIP]
 > 在進行變更之前，請務必先備份檔案
@@ -345,7 +346,7 @@ terminal --timeout=5 serial console
 ## <a name="suse"></a>SuSE
 
 ## <a name="sles-12-sp1"></a>SLES 12 sp1
-按照官方[文件](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-grub-single-user-mode#grub-access-in-suse-sles)的指示，使用 YaST 開機載入器
+按照官方[文件](./serial-console-grub-single-user-mode.md#grub-access-in-suse-sles)的指示，使用 YaST 開機載入器
 
 或在下列參數中新增/變更 /etc/default/grub：
 
@@ -429,7 +430,7 @@ kernel /boot/vmlinuz-3.0.101-108.74-default root=/dev/disk/by-uuid/ab6b62bb--
 或者，您可能需要以「單一使用者」或「緊急模式」存取 VM。 選取您想要使用方向鍵來進行開機或中斷的核心。
 將關鍵字 **single** 或 **1** 附加至核心開機行，以進入所需的模式。 在 RHEL 系統上，您也可以附加 **rd.break**。
 
-如需如何存取單一使用者模式的詳細資訊，請參閱[本文件](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-grub-single-user-mode#general-single-user-mode-access) 
+如需如何存取單一使用者模式的詳細資訊，請參閱[本文件](./serial-console-grub-single-user-mode.md#general-single-user-mode-access) 
 
 
 ![single_user_ubuntu](./media/virtual-machines-serial-console/single-user-ubuntu.png)

@@ -4,16 +4,18 @@ description: 本文說明如何從 Azure Analysis Services 資料庫備份和還
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 05/05/2020
+ms.date: 07/13/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: aa98a13b84e89c90e29525fb6743ac33faf1d917
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: references_regions
+ms.openlocfilehash: 66d09c2faa52cee3e94402be708d654b548c0de1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82871289"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506990"
 ---
-# <a name="backup-and-restore"></a>備份與還原
+# <a name="analysis-services-database-backup-and-restore"></a>Analysis Services 資料庫備份和還原
 
 在 Azure Analysis Services 中備份表格式模型資料庫與內部部署的 Analysis Services 情況非常類似。 主要的差異在於備份檔案的儲存位置。 備份檔案必須儲存至 [Azure 儲存體帳戶](../storage/common/storage-create-storage-account.md)中的容器。 您可以使用您已經有的儲存體帳戶和容器，或是在為您的伺服器設定儲存體設定時再建立帳戶和容器。
 
@@ -51,7 +53,7 @@ ms.locfileid: "82871289"
 
     ![儲存備份設定](./media/analysis-services-backup/aas-backup-save.png)
 
-## <a name="backup"></a>備份
+## <a name="backup"></a>Backup
 
 ### <a name="to-backup-by-using-ssms"></a>使用 SSMS 來進行備份
 
