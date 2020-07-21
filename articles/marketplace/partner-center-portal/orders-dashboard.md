@@ -3,14 +3,14 @@ title: 商業市集分析中的合作夥伴中心訂單儀表板
 description: 了解如何以圖形化及可下載的格式，存取您市集供應項目訂單的分析報表。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 12/11/2019
-ms.openlocfilehash: 4f5e18a2cebc309475c4fbcf84d7baaa28c6e61d
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.topic: article
+ms.date: 07/01/2020
+ms.openlocfilehash: fe1f64994d344ad9b23895823b846da62d895128
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118353"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536125"
 ---
 # <a name="orders-dashboard-in-commercial-marketplace-analytics"></a>商業市集分析中的訂單儀表板
 
@@ -29,12 +29,9 @@ ms.locfileid: "86118353"
 - [依地理位置排序訂單](#orders-by-geography)
 - [依供應項目排序訂單](#orders-by-offers)
 - [訂單趨勢 (按照站台與按照基座的比較)](#orders-trend-per-site-versus-per-seat)
-- [依 SKU 排序訂單](#orders-by-skus)
+- [依方案的訂單](#orders-by-plans)
 - [訂單和基座趨勢](#orders-and-seats-trend)
 - [訂單詳細資料表](#order-details-table)
-
-> [!NOTE]
-> 在 Cloud Partner 入口網站 (CPP) 和合作夥伴中心的新商業市集計劃之間，分析報表的顯示方式會有所差異。 其中一種特定方式是 CPP 中的 [Seller Insights] 有 [訂單與使用量] 索引標籤，會顯示依據使用量的供應項目以及非依據使用量供應項目的資料。 在合作夥伴中心，[訂單] 頁面會有 SaaS 供應項目的個別索引標籤。
 
 ## <a name="order-dashboard-details"></a>訂單儀表板詳細資料
 
@@ -76,16 +73,16 @@ ms.locfileid: "86118353"
 
 **按照站台與按照基座的比較**環圈圖代表客戶所購買的按照站台 SaaS 與按照基座 SaaS 訂單明細 (此圖表包含已取消訂單)。 直條圖代表客戶所購買的每個站台 SaaS 與每個基座 SaaS 訂單趨勢 (此圖表包含已取消訂單)。
 
-### <a name="orders-by-skus"></a>依 SKU 排序訂單
+### <a name="orders-by-plans"></a>依方案的訂單
 
-**依 SKU 排序訂單**圖表代表您所有供應項目 (包含已取消訂單) 在庫存單位 (SKU) 層級訂單的趨勢。 環圈圖代表前五項 SKU 訂單的明細，而直條圖則代表前五項 SKU 的訂單趨勢。
+[**依方案排序**] 圖表代表您所有供應專案之計畫層級的訂單趨勢（這包括已取消的訂單）。 環圈圖代表前五個計畫訂單的明細，而直條圖代表前五個計畫的訂單趨勢。
 
 ### <a name="orders-and-seats-trend"></a>訂單和基座趨勢
 
 **訂單和基座趨勢**圖表會以最高訂單數來呈現前 50 個供應項目。 這些項目會顯示在領導者面板上，並依照最高的訂單計數和訂單百分比來排序。
 
-- **依 SKU 排序訂單**：選取供應項目以查看圖表中前五項 SKU 的訂單計數明細。
-- **依 SKU 排序基座**：前五項 SKU 的每月基座趨勢。 如果您選取的供應項目不是按照基座的供應項目，在這張區域圖中則不會看到任何資料。
+- **依方案排序**–選取供應專案以查看圖表中前五個計畫的訂單計數明細。
+- **依方案**的基座–前五個計畫的每月基座趨勢。 如果您選取的供應項目不是按照基座的供應項目，在這張區域圖中則不會看到任何資料。
 
 ### <a name="canceled-orders-by-offers"></a>依供應項目排序的取消訂單
 

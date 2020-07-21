@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: raynew
-ms.openlocfilehash: 0cf0ed943dd2135a3e8d545b76eda35285dae24d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 047b689b10d03cf92e5cc744aa707b3f70fe77bd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84300785"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529024"
 ---
 # <a name="monitor-site-recovery-with-azure-monitor-logs"></a>透過 Azure 監視器記錄監視 Site Recovery
 
@@ -29,7 +30,7 @@ Azure 監視器記錄檔提供的記錄資料平臺會收集活動和資源記�
 > [!NOTE]
 > 若要取得 VMware 和實體機器的流失資料記錄和上傳速率記錄，您需要在進程伺服器上安裝 Microsoft monitoring agent。 此代理程式會將複寫電腦的記錄傳送至工作區。 這項功能僅適用于9.30 行動代理程式的版本。
 
-## <a name="before-you-start"></a>在您開始使用 Intune 之前
+## <a name="before-you-start"></a>開始之前
 
 以下是所需項目：
 
@@ -48,7 +49,7 @@ Azure 監視器記錄檔提供的記錄資料平臺會收集活動和資源記�
 2. 在 [**診斷設定**] 中指定名稱，然後選取 [**傳送至 Log Analytics**] 方塊。
 3. 選取 [Azure 監視器記錄] 訂用帳戶和 Log Analytics 工作區。
 4. 在切換中選取 [ **Azure 診斷**]。
-5. 從 [記錄檔] 清單中，選取前置詞為**AzureSiteRecovery**的所有記錄檔。 然後按一下 [確定] 。
+5. 從 [記錄檔] 清單中，選取前置詞為**AzureSiteRecovery**的所有記錄檔。 然後按一下 [確定]。
 
     ![選取工作區](./media/monitoring-log-analytics/select-workspace.png)
 
@@ -67,8 +68,8 @@ Site Recovery 記錄會開始饋送至所選工作區中的資料表（**AzureDi
 7. 安裝完成後，請移至 Log Analytics 工作區，然後按一下 [ **Advanced Settings**]。 移至 [**資料**] 頁面，然後再按一下 [ **Windows 效能計數器**]。 
 8. 按一下 [ **+** ] 以新增下列兩個取樣間隔為300秒的計數器：
 
-        ASRAnalytics(*)\SourceVmChurnRate 
-        ASRAnalytics(*)\SourceVmThrpRate 
+    - ASRAnalytics(*)\SourceVmChurnRate
+    - ASRAnalytics(*)\SourceVmThrpRate
 
 變換和上傳速率資料會開始放入工作區中。
 

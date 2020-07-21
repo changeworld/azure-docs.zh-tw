@@ -5,12 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: vturecek
-ms.openlocfilehash: c8866714ca1736b3ba785b560cb5a7aea451fdf1
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 73ba08406e224d6c2a0d5dcaba7e7896dcb4d740
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86253332"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529296"
 ---
 # <a name="aspnet-core-in-azure-service-fabric-reliable-services"></a>Azure Service Fabric 中的 ASP.NET Core Reliable Services
 
@@ -133,7 +133,7 @@ protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceLis
 
 ### <a name="endpoint-configuration"></a>端點組態
 
-`Endpoint`使用 WINDOWS HTTP 伺服器 API 的 web 伺服器需要設定，包括 HTTP.sys。 使用 Windows HTTP 伺服器 API 的 Web 服務器必須先使用 HTTP.sys 保留其 URL (這通常是使用[netsh](/windows/win32/http/netsh-commands-for-http)工具) 來完成。 
+`Endpoint`使用 WINDOWS HTTP 伺服器 API 的 web 伺服器需要設定，包括 HTTP.sys。 使用 Windows HTTP 伺服器 API 的 Web 服務器必須先使用 HTTP.sys 保留其 URL （這通常是使用[netsh](/windows/win32/http/netsh-commands-for-http)工具來完成）。 
 
 此動作需要您的服務預設不具有的更高許可權。 ServiceManifest.xml 中設定之屬性的 "HTTP" 或 "HTTPs" 選項， `Protocol` `Endpoint` 專門用來指示 Service Fabric 執行時間代表您的 HTTP.sys 註冊 URL。 它會使用[*強式萬用字元*](/windows/win32/http/urlprefix-strings)URL 前置詞來執行這項工作。
 
@@ -251,7 +251,7 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 `Endpoint` 組態名稱*不*提供給具狀態服務中的 `KestrelCommunicationListener`。 我們會在下列各節中詳細說明這個部分。
 
 ### <a name="configure-kestrel-to-use-https"></a>將 Kestrel 設定為使用 HTTPS
-在您的服務中使用 Kestrel 啟用 HTTPS 時，您必須設定數個接聽選項。 更新 `ServiceInstanceListener` 以使用*EndpointHttps*端點，並在特定埠上接聽 (例如埠 443) 。 將 web 主機設定為使用 Kestrel 網頁伺服器時，您必須將 Kestrel 設為接聽所有網路介面上的 IPv6 位址： 
+在您的服務中使用 Kestrel 啟用 HTTPS 時，您必須設定數個接聽選項。 更新 `ServiceInstanceListener` 以使用*EndpointHttps*端點，並在特定埠上接聽（例如埠443）。 將 web 主機設定為使用 Kestrel 網頁伺服器時，您必須將 Kestrel 設為接聽所有網路介面上的 IPv6 位址： 
 
 ```csharp
 new ServiceInstanceListener(
@@ -297,7 +297,7 @@ serviceContext =>
 ### <a name="endpoint-configuration"></a>端點組態
 `Endpoint`不需要設定就能使用 Kestrel。 
 
-Kestrel 是簡單的獨立 web 伺服器。 不同于 HTTP.sys (或 HttpListener) ，它不需要 `Endpoint` ServiceManifest.xml 中的設定，因為它不需要在啟動之前進行 URL 註冊。 
+Kestrel 是簡單的獨立 web 伺服器。 與 HTTP.sys （或 HttpListener）不同的是，它不需要 ServiceManifest.xml 中的設定， `Endpoint` 因為它不需要在啟動之前進行 URL 註冊。 
 
 #### <a name="use-kestrel-with-a-static-port"></a>搭配使用 Kestrel 與靜態連接埠
 您可以在 ServiceManifest.xml 設定中設定靜態通訊埠，以 `Endpoint` 與 Kestrel 搭配使用。 雖然這並非絕對必要，但它提供兩個可能的優點：
@@ -470,8 +470,8 @@ Kestrel 是適用于前端服務的建議 web 伺服器，會公開外部、網�
  
 向網際網路公開時，無狀態服務應使用可透過負載平衡器連線的知名且穩定的端點。 您會將此 URL 提供給應用程式的使用者。 建議使用下列設定：
 
-|  |  | **注意事項** |
-| --- | --- | --- |
+| 類型 | 建議 | 注意 |
+| ---- | -------------- | ----- |
 | 網頁伺服器 | Kestrel | Kestrel 是慣用的 web 伺服器，因為它在 Windows 和 Linux 上都有受到支援。 |
 | 連接埠組態 | static | 已知的靜態連接埠應在 ServiceManifest.xml 的 `Endpoints` 組態中設定，例如 HTTP 為 80 或 443 為 HTTPS。 |
 | ServiceFabricIntegrationOptions | 無 | 設定 `ServiceFabricIntegrationOptions.None` Service Fabric 整合中介軟體時，請使用選項，如此一來，服務就不會嘗試驗證唯一識別碼的傳入要求。 您應用程式的外部使用者不會知道中介軟體所使用的唯一識別資訊。 |
@@ -495,8 +495,8 @@ Kestrel 是適用于前端服務的建議 web 伺服器，會公開外部、網�
 ### <a name="internal-only-stateless-aspnet-core-service"></a>僅供內部使用的無狀態 ASP.NET Core 服務
 只會從叢集內呼叫的無狀態服務應該使用唯一的 URL 並動態指派連接埠，以確保多個服務之間的合作。 建議使用下列設定：
 
-|  |  | **注意事項** |
-| --- | --- | --- |
+| 類型 | 建議 | 注意 |
+| ---- | -------------- | ----- |
 | 網頁伺服器 | Kestrel | 雖然您可以使用內部無狀態服務的 HTTP.sys，但 Kestrel 是允許多個服務實例共用主機的最佳伺服器。  |
 | 連接埠組態 | 動態指派 | 具狀態服務的多個複本可能會共用主機進程或主機作業系統，因此將需要唯一的埠。 |
 | ServiceFabricIntegrationOptions | UseUniqueServiceUrl | 使用動態連接埠指派，此設定可防止稍早所述的誤用識別問題。 |
@@ -505,8 +505,8 @@ Kestrel 是適用于前端服務的建議 web 伺服器，會公開外部、網�
 ### <a name="internal-only-stateful-aspnet-core-service"></a>僅供內部使用的具狀態 ASP.NET Core 服務
 只會從叢集內呼叫的具狀態服務應該使用動態指派連接埠，以確保多個服務之間的合作。 建議使用下列設定：
 
-|  |  | **注意事項** |
-| --- | --- | --- |
+| 類型 | 建議 | 注意 |
+| ---- | -------------- | ----- |
 | 網頁伺服器 | Kestrel | `HttpSysCommunicationListener`不是設計成可讓複本共用主機進程的具狀態服務使用。 |
 | 連接埠組態 | 動態指派 | 具狀態服務的多個複本可能會共用主機進程或主機作業系統，因此將需要唯一的埠。 |
 | ServiceFabricIntegrationOptions | UseUniqueServiceUrl | 使用動態連接埠指派，此設定可防止稍早所述的誤用識別問題。 |

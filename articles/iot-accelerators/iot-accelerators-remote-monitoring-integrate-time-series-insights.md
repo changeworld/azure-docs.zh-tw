@@ -8,12 +8,12 @@ ms.date: 09/12/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: edf669eb813240505cba8faef41e166785cc5b18
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: b0ab1e2e43210ecd7a61b7dffcb12d2c7c5c1c46
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232061"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536601"
 ---
 # <a name="integrate-azure-time-series-insights-with-remote-monitoring"></a>整合 Azure 時間序列深入解析與遠端監視
 
@@ -24,7 +24,7 @@ Azure 時間序列深入解析是完全受管理的分析、儲存及視覺化�
 > [!NOTE]
 > Azure China 雲端目前不提供時間序列見解。 Azure China 雲端中新的遠端監視解決方案加速器部署，將 Cosmos DB 用於所有儲存體。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 若要完成此操作說明，您必須已部署遠端監視解決方案：
 
@@ -80,7 +80,7 @@ az iot hub consumer-group create --hub-name contosorm30526 --name timeseriesinsi
 
     ![檢視事件來源](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/time-series-insights-event-sources.png)
 
-1. 按一下 [新增]。
+1. 按一下 [新增] 。
 
     ![新增事件來源](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/time-series-insights-event-sources-add.png)
 
@@ -244,7 +244,7 @@ docker pull azureiotpcs/pcs-remote-monitoring-webui:1.0.2
 
 為以上已更新的微服務設定 `standard` 部署環境
 
-1. 在命令列上執行 `kubectl proxy`。 如需詳細資訊，請參閱[存取 Kubernetes API](https://kubernetes.io/docs/reference/access-authn-authz/)。
+1. 在命令列上執行 `kubectl proxy`。 如需詳細資訊，請參閱[存取 Kubernetes API](https://kubernetes.io/docs/reference/access-authn-authz/#using-kubectl-to-start-a-proxy-server)。
 
 1. 開啟 Kubernetes 管理主控台。
 

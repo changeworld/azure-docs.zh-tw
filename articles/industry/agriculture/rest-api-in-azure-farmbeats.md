@@ -1,23 +1,20 @@
 ---
-title: reference
-description: ''
+title: Azure FarmBeats Api
+description: 瞭解 Azure FarmBeats Api，其可為農業企業提供具有以 JSON 為基礎之回應的標準化 RESTful 介面。
 author: sunasing
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: sunasing
-ms.openlocfilehash: c3a70ed905edfcf1dc60e0a12f50aca19060230f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f15bee7e802b04d04a3c87d7f84fc975b88bf260
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84488030"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536567"
 ---
-# <a name="references"></a>reference
+# <a name="azure-farmbeats-apis"></a>Azure FarmBeats Api
 
-本文說明 Azure FarmBeats Api。
-
-## <a name="rest-api"></a>REST API
-
-Azure FarmBeats Api 為農業企業提供具有以 JSON 為基礎之回應的標準化 RESTful 介面，以協助您充分利用 Azure FarmBeats 的功能，例如：
+本文說明 Azure FarmBeats Api。 Azure FarmBeats Api 為農業企業提供具有以 JSON 為基礎之回應的標準化 RESTful 介面，以協助您充分利用 Azure FarmBeats 的功能，例如：
 
 - 用來取得感應器、攝影機、無人機、天氣、衛星和策劃基礎資料的 Api。
 - 標準化和 coNtextualization 跨通用資料提供者的資料。
@@ -26,13 +23,13 @@ Azure FarmBeats Api 為農業企業提供具有以 JSON 為基礎之回應的標
 - 自動產生快速模型建立的時間序列匯總。
 - 整合式 Azure Data Factory 引擎，輕鬆建立自訂資料處理管線。
 
-## <a name="application-development"></a>XBOX Video Application Development
+## <a name="application-development"></a>應用程式開發
 
 FarmBeats Api 包含 Swagger 技術檔。 如需所有 Api 及其對應要求或回應的詳細資訊，請參閱[Swagger](https://aka.ms/FarmBeatsDatahubSwagger)。
 
 下表摘要說明 FarmBeats Datahub 中的所有物件和資源：
 
-| 物件和資源 | Description
+| 物件和資源 | 描述
 --- | ---|
 Farm | 伺服器陣列會對應至 FarmBeats 系統內的相關實體位置。 每個伺服器陣列都有伺服器陣列名稱和唯一的伺服器陣列識別碼。 |
 裝置  | 裝置對應至存在於伺服器陣列上的實體裝置。 每個裝置都有唯一的裝置識別碼。 裝置通常會布建到具有伺服器陣列識別碼的伺服器陣列。
@@ -55,14 +52,14 @@ RoleAssignment  |RoleAssignment 對應至使用者或服務主體的角色指派
 
 JSON 是一種與語言無關的通用資料格式，可提供任意資料結構的簡單文字表示。 如需詳細資訊，請參閱[JSON 網站](https://www.json.org/)。
 
-## <a name="authentication-and-authorization"></a>驗證與授權
+## <a name="authentication-and-authorization"></a>驗證和授權
 
 REST API 的 HTTP 要求會使用 Azure Active Directory （Azure AD）來保護。
 若要向 REST Api 提出已驗證的要求，用戶端程式代碼必須先使用有效的認證進行驗證，然後才能呼叫 API。 Azure AD 會在各種動作專案之間協調驗證。 它會為您的用戶端提供存取權杖，做為驗證的證明。 然後，權杖會在 REST API 要求的 HTTP 授權標頭中傳送。 若要深入瞭解 Azure AD 驗證，請參閱適用于開發人員的[Azure Active Directory](https://portal.azure.com) 。
 
 存取權杖必須在後續的 API 要求中傳送，在標頭區段中，如下所示：
 
-```
+```http
 headers = {"Authorization": "Bearer " + **access_token**}
 ```
 
@@ -181,6 +178,6 @@ Azure Active Directory 中的使用者或應用程式註冊可以存取 Azure Fa
 
 使用存取權杖，在標頭區段的後續 API 要求中傳送它，如下所示：
 
-```
+```http
 headers = {"Authorization": "Bearer " + **access_token**, "Content-Type" : "application/json" }
 ```

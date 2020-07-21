@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 7/29/2019
 ms.author: mayg
-ms.openlocfilehash: b03ac554ed578633b55ffa2fde4838c691d04d59
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: d7ee72b5f6441f2b3b3ea9a7eaa41a3e1b650745
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86132212"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86528956"
 ---
 # <a name="review-cost-estimations-in-the-vmware-deployment-planner"></a>查看 VMware 部署規劃工具中的成本估計 
 
@@ -150,16 +150,16 @@ eastus、eastus2、uswest、centralus、northcentralus、southcentralus、northe
 ## <a name="supported-currencies"></a>支援的貨幣
 Azure Site Recovery 部署規劃工具可以使用下列任何貨幣來產生成本報告。
 
-|貨幣|名稱||貨幣|名稱||貨幣|名稱|
+|貨幣|名稱|貨幣|名稱|貨幣|名稱|
 |---|---|---|---|---|---|---|---|
-|ARS 披索|阿根廷披索 ($)||澳幣|澳洲元 ($)||巴西里耳|巴西里耳 (R$)|
-|加拿大幣|加幣 ($)||瑞士法郎|瑞士法郎 (chf)||丹麥幣|丹麥克朗 (kr)|
-|歐元|歐元 (€)||英鎊|英鎊 (£)||港幣|港幣 (HK$)|
-|印尼盾|印尼盾 (Rp)||印度幣|印度盧比 (₹)||日圓|日圓 (¥)|
-|韓元|Korean Won (₩)||墨西哥批索|Mexican Peso (MX$)||馬來西亞林吉特|馬來西亞林吉特 (RM$)|
-|挪威克朗|挪威克朗 (kr)||紐西蘭幣|紐西蘭元 ($)||盧布|俄羅斯盧布 (руб)|
-|SAR 里亞爾|沙烏地里亞爾 (SR)||瑞典克朗|瑞典克朗 (kr)||新台幣|新台幣 (NT$)|
-|土耳其里拉|土耳其里拉 (TL)||美元| 美元 ($)||南非幣|南非蘭特 (R)|
+|ARS 披索|阿根廷披索 ($)|澳幣|澳洲元 ($)|巴西里耳|巴西里耳 (R$)|
+|加拿大幣|加幣 ($)|瑞士法郎|瑞士法郎 (chf)|丹麥幣|丹麥克朗 (kr)|
+|歐元|歐元 (€)|英鎊|英鎊 (£)|港幣|港幣 (HK$)|
+|印尼盾|印尼盾 (Rp)|印度幣|印度盧比 (₹)|日圓|日圓 (¥)|
+|韓元|Korean Won (₩)|墨西哥批索|Mexican Peso (MX$)|馬來西亞林吉特|馬來西亞林吉特 (RM$)|
+|挪威克朗|挪威克朗 (kr)|紐西蘭幣|紐西蘭元 ($)|盧布|俄羅斯盧布 (руб)|
+|SAR 里亞爾|沙烏地里亞爾 (SR)|瑞典克朗|瑞典克朗 (kr)|新台幣|新台幣 (NT$)|
+|土耳其里拉|土耳其里拉 (TL)|美元| 美元 ($)|南非幣|南非蘭特 (R)|
 
 ## <a name="next-steps"></a>後續步驟
 深入了解[使用 Azure Site Recovery 在 Azure 中保護 VMware](./vmware-azure-tutorial.md)。

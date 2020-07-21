@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: how-to
 ms.date: 07/10/2020
 ms.author: victorh
-ms.openlocfilehash: e55f92c624ec338005cd23ba5e6063a9ca7f82c4
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 82202705c5dbd4539eec4775d0844a749fd405f9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261815"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536998"
 ---
 # <a name="monitor-azure-firewall-logs-and-metrics"></a>監視 Azure 防火牆記錄和計量
 
@@ -24,7 +24,7 @@ ms.locfileid: "86261815"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 開始之前，您應該先閱讀[Azure 防火牆記錄和計量](logs-and-metrics.md)，以深入瞭解適用于 azure 防火牆的診斷記錄和計量。
 
@@ -97,5 +97,4 @@ ms.locfileid: "86261815"
 
 既然您已設定防火牆來收集記錄，您可以探索 Azure 監視器記錄以檢視您的資料。
 
-> [!div class="nextstepaction"]
-> [Azure 監視器記錄中的網路監視解決方案](../azure-monitor/insights/azure-networking-analytics.md)
+[Azure 監視器記錄中的網路監視解決方案](../azure-monitor/insights/azure-networking-analytics.md)

@@ -1,31 +1,34 @@
 ---
 title: 收集生產環境模型的相關資料
 titleSuffix: Azure Machine Learning
-description: 瞭解如何在 Azure Blob 儲存體中收集 Azure Machine Learning 輸入模型資料。
+description: 瞭解如何從已部署的 Azure Machine Learning 模型收集資料
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
-ms.reviewer: laobri
+ms.reviewer: sgilley
 ms.author: copeters
 author: lostmygithubaccount
-ms.date: 11/12/2019
+ms.date: 07/14/2020
 ms.custom: seodec18
-ms.openlocfilehash: 75402c71316f7cc7d068c12a240f3123569a00ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d7e3aeba14373861d831056678576c52f6b2184f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84432987"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536312"
 ---
-# <a name="collect-data-for-models-in-production"></a>在生產環境中收集模型資料
+# <a name="collect-data-from-models-in-production"></a>從生產環境中的模型收集資料
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-本文說明如何從 Azure Machine Learning 收集輸入模型資料。 它也會示範如何將輸入資料部署到 Azure Kubernetes Service （AKS）叢集，並將輸出資料儲存在 Azure Blob 儲存體中。
+本文說明如何從部署在 Azure Kubernetes Service （AKS）叢集上的 Azure Machine Learning 模型收集資料。 收集的資料接著會儲存在 Azure Blob 儲存體中。
 
 一旦啟用集合，您收集的資料可協助您：
 
-* 當生產資料進入您的模型時，[監視資料偏離](how-to-monitor-data-drift.md)。
+* 監視您所收集之生產資料的[資料偏離](how-to-monitor-datasets.md)。
+
+* 使用[Power BI](#powerbi)或[Azure Databricks](#databricks)分析收集的資料
 
 * 針對何時重新訓練或優化您的模型，做出更好的決策。
 
@@ -58,13 +61,13 @@ Blob 中輸出資料的路徑遵循此語法：
 
 - 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://aka.ms/AMLFree)。
 
-- AzureMachine 學習工作區、包含您腳本的本機目錄，以及適用于 Python 的 Azure Machine Learning SDK 都必須安裝。 若要瞭解如何安裝，請參閱[如何設定開發環境](how-to-configure-environment.md)。
+- Azure Machine Learning 工作區、包含您腳本的本機目錄，以及適用于 Python 的 Azure Machine Learning SDK 都必須安裝。 若要瞭解如何安裝，請參閱[如何設定開發環境](how-to-configure-environment.md)。
 
 - 您需要已定型的機器學習模型，才能部署至 AKS。 如果您沒有模型，請參閱[訓練影像分類模型](tutorial-train-models-with-aml.md)教學課程。
 
 - 您需要 AKS 叢集。 如需如何建立和部署至其中的資訊，請參閱[如何部署和位置](how-to-deploy-and-where.md)。
 
-- [設定您的環境](how-to-configure-environment.md)並安裝[Azure Machine Learning 監視 SDK](https://aka.ms/aml-monitoring-sdk)。
+- [設定您的環境](how-to-configure-environment.md)並安裝[Azure Machine Learning 監視 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。
 
 ## <a name="enable-data-collection"></a>啟用資料收集
 
@@ -74,7 +77,7 @@ Blob 中輸出資料的路徑遵循此語法：
 
 1. 開啟評分檔案。
 
-1. 在檔案開頭處新增[下列程式碼](https://aka.ms/aml-monitoring-sdk)：
+1. 在檔案開頭處新增下列程式碼：
 
    ```python 
    from azureml.monitoring import ModelDataCollector
@@ -115,41 +118,10 @@ Blob 中輸出資料的路徑遵循此語法：
 
 1. 若要建立新的映射並部署機器學習模型，請參閱[如何部署和位置](how-to-deploy-and-where.md)。
 
-如果您已在環境檔案和評分檔案中安裝具有相依性的服務，請遵循下列步驟來啟用資料收集：
-
-1. 移至 [Azure Machine Learning](https://ml.azure.com)。
-
-1. 開啟工作區。
-
-1. 選取 [**部署**]  >  **選取 [服務**  >  **編輯**]。
-
-   ![編輯服務](././media/how-to-enable-data-collection/EditService.PNG)
-
-1. 在 [**高級設定**] 中，選取 [**啟用 Application Insights 診斷和資料收集**]。
-
-1. 選取 [**更新**] 以套用變更。
 
 ## <a name="disable-data-collection"></a>停用資料收集
 
-您可以隨時停止收集資料。 使用 Python 程式碼或 Azure Machine Learning 來停用資料收集。
-
-### <a name="option-1---disable-data-collection-in-azure-machine-learning"></a>選項 1-停用 Azure Machine Learning 中的資料收集
-
-1. 登入 [Azure Machine Learning](https://ml.azure.com)。
-
-1. 開啟工作區。
-
-1. 選取 [**部署**]  >  **選取 [服務**  >  **編輯**]。
-
-   [![選取 [編輯] 選項](././media/how-to-enable-data-collection/EditService.PNG)](./././media/how-to-enable-data-collection/EditService.PNG#lightbox)
-
-1. 在 [**高級設定**] 中，清除 [**啟用 Application Insights 診斷和資料收集**]。
-
-1. 選取 [更新]**** 以套用變更。
-
-您也可以在[Azure Machine Learning](https://ml.azure.com)中存取工作區中的這些設定。
-
-### <a name="option-2---use-python-to-disable-data-collection"></a>選項 2-使用 Python 來停用資料收集
+您可以隨時停止收集資料。 使用 Python 程式碼來停用資料收集。
 
   ```python 
   ## replace <service_name> with the name of the web service
@@ -162,7 +134,7 @@ Blob 中輸出資料的路徑遵循此語法：
 
 ### <a name="quickly-access-your-blob-data"></a>快速存取您的 blob 資料
 
-1. 登入 [Azure Machine Learning](https://ml.azure.com)。
+1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
 1. 開啟工作區。
 
@@ -177,7 +149,7 @@ Blob 中輸出資料的路徑遵循此語法：
    # example: /modeldata/1a2b3c4d-5e6f-7g8h-9i10-j11k12l13m14/myresourcegrp/myWorkspace/aks-w-collv9/best_model/10/inputs/2018/12/31/data.csv
    ```
 
-### <a name="analyze-model-data-using-power-bi"></a>使用 Power BI 分析模型資料
+### <a name="analyze-model-data-using-power-bi"></a><a id="powerbi"></a>使用 Power BI 分析模型資料
 
 1. 下載並開啟[Power BI Desktop](https://www.powerbi.com)。
 
@@ -213,7 +185,7 @@ Blob 中輸出資料的路徑遵循此語法：
 
 1. 開始建置模型資料的自訂報告。
 
-### <a name="analyze-model-data-using-azure-databricks"></a>使用 Azure Databricks 分析模型資料
+### <a name="analyze-model-data-using-azure-databricks"></a><a id="databricks"></a>使用 Azure Databricks 分析模型資料
 
 1. 建立[Azure Databricks 工作區](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal)。
 
@@ -227,7 +199,7 @@ Blob 中輸出資料的路徑遵循此語法：
 
     [![建立 Databricks 資料表](./media/how-to-enable-data-collection/dbtable.PNG)](././media/how-to-enable-data-collection/dbtable.PNG#lightbox)
 
-1. 更新資料的位置。 範例如下：
+1. 更新資料的位置。 以下是範例：
 
     ```
     file_location = "wasbs://mycontainer@storageaccountname.blob.core.windows.net/modeldata/1a2b3c4d-5e6f-7g8h-9i10-j11k12l13m14/myresourcegrp/myWorkspace/aks-w-collv9/best_model/10/inputs/2018/*/*/data.csv" 
@@ -237,3 +209,7 @@ Blob 中輸出資料的路徑遵循此語法：
     [![Databricks 設定](./media/how-to-enable-data-collection/dbsetup.png)](././media/how-to-enable-data-collection/dbsetup.png#lightbox)
 
 1. 依照範本上的步驟來查看和分析您的資料。
+
+## <a name="next-steps"></a>後續步驟
+
+偵測您所收集資料的[資料漂移](how-to-monitor-datasets.md)。

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: ed93ba937a843618f36bac6e88b15ff77355ca75
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ce1c6bdfb38e37c18a18cf970d2dd08683967da3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82610695"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536743"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>比較與 Azure HDInsight 叢集搭配使用的儲存體選項
 
@@ -33,9 +33,9 @@ ms.locfileid: "82610695"
 |---|---|---|---|---|---|---|---|
 |Azure Data Lake Storage Gen2| 一般用途 V2 | 階層式（filesystem） | Blob | 標準 | 經常性存取層、非經常性存取層、封存 | 3.6+ | 除了 Spark 2.1 和2.2 以外的所有|
 |Azure 儲存體| 一般用途 V2 | Object | Blob | 標準 | 經常性存取層、非經常性存取層、封存 | 3.6+ | 全部 |
-|Azure 儲存體| 一般用途 V1 | Object | Blob | 標準 | 不適用 | 全部 | 全部 |
+|Azure 儲存體| 一般用途 V1 | Object | Blob | 標準 | N/A | 全部 | 全部 |
 |Azure 儲存體| Blob 儲存體 * * | Object | 區塊 Blob | 標準 | 經常性存取層、非經常性存取層、封存 | 全部 | 全部 |
-|Azure Data Lake Storage Gen1| 不適用 | 階層式（filesystem） | 不適用 | 不適用 | 不適用 | 僅限3。6 | HBase 以外的所有 |
+|Azure Data Lake Storage Gen1| N/A | 階層式（filesystem） | N/A | N/A | N/A | 僅限3。6 | HBase 以外的所有 |
 
 * * 對於 HDInsight 叢集，只有次要儲存體帳戶可以屬於類型 BlobStorage，而分頁 Blob 則不是支援的儲存體選項。
 
@@ -63,6 +63,12 @@ ms.locfileid: "82610695"
 > [!NOTE]
 > Spark 2.1 或2.2 叢集不支援 Data Lake Storage Gen2 主要儲存體。
 
+## <a name="data-replication"></a>資料複寫
+
+Azure HDInsight 不會儲存客戶資料。 叢集的主要儲存體方式是其相關聯的儲存體帳戶。 您可以將叢集連結至現有的儲存體帳戶，或在叢集建立程式期間建立新的儲存體帳戶。 如果建立新的帳戶，則會將它建立為本機的多餘儲存體（LRS）帳戶，並滿足區域內資料的常駐需求，包括在 [[信任中心](https://azuredatacentermap.azurewebsites.net)] 中指定的要求。
+
+您可以確認 HDInsight 已正確設定，以便將資料儲存在單一區域中，方法是確保與 HDInsight 相關聯的儲存體帳戶 LRS，或[信任中心](https://azuredatacentermap.azurewebsites.net)所提及的另一個儲存體選項。
+ 
 ## <a name="next-steps"></a>後續步驟
 
 * [Azure 儲存體概觀](./overview-azure-storage.md)

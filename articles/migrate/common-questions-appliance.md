@@ -3,11 +3,12 @@ title: Azure Migrate 設備常見問題
 description: 取得 Azure Migrate 設備的常見問題解答。
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: afdede99fa4485ba7e5494e844d795c2d5d3deee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9c3547667ed91331d3cb4d319279c9494eb7a3d2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85078980"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86530112"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure Migrate 設備：常見的問題
 
@@ -60,7 +61,7 @@ Azure Migrate 設備會持續分析內部部署機器，以測量效能資料。
 
 如需 Azure Migrate 設備在 Vm 上收集之資料的相關資訊，請參閱下列文章：
 
-- **VMWARE VM**：[檢查](migrate-appliance.md#collected-data---vmware)收集的資料。 [
+- **VMWARE VM**：[檢查](migrate-appliance.md#collected-data---vmware)收集的資料。
 - **HYPER-V VM**：[檢查](migrate-appliance.md#collected-data---hyper-v)收集的資料。
 
 ## <a name="how-is-data-stored"></a>儲存資料的方式

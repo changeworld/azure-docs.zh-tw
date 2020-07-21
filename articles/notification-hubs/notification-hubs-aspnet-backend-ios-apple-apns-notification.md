@@ -14,12 +14,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 71d55471de6fc8681f19a56cd67bb9ba7390e026
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0f5bc9827919c18e327dc263384f0d4b6a01c5bc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85248797"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86530162"
 ---
 # <a name="tutorial-send-push-notifications-to-specific-users-using-azure-notification-hubs"></a>教學課程：使用 Azure 通知中樞將推播通知傳送給特定使用者
 
@@ -41,7 +41,7 @@ ms.locfileid: "85248797"
 ## <a name="prerequisites"></a>必要條件
 
 本教學課程假設您已建立並設定通知中樞，如[使用 Azure 通知中樞將推播通知傳送至 iOS 應用程式](ios-sdk-get-started.md)中所述。 本教學課程還是 [安全推播 (iOS)](notification-hubs-aspnet-backend-ios-push-apple-apns-secure-notification.md) 教學課程的必要條件。
-如果您想要使用 Mobile Apps 作為您的後端服務，請參閱 [開始使用 Mobile Apps 推播](../app-service-mobile/app-service-mobile-ios-get-started-push.md)。
+如果您想要使用 Mobile Apps 作為您的後端服務，請參閱 [開始使用 Mobile Apps 推播](/previous-versions/azure/app-service-mobile/app-service-mobile-ios-get-started-push)。
 
 [!INCLUDE [notification-hubs-aspnet-backend-notifyusers](../../includes/notification-hubs-aspnet-backend-notifyusers.md)]
 

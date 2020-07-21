@@ -8,13 +8,13 @@ ms.author: heidist
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: b91c799972a21d9205577f0a5672e1182831416b
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.date: 07/12/2020
+ms.openlocfilehash: 2e62296e95a7b412a24c9d0c151c2bc9175ab4b7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86145406"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529738"
 ---
 # <a name="how-to-monitor-azure-cognitive-search-indexer-status-and-results"></a>如何監視 Azure 認知搜尋索引子的狀態和結果
 
@@ -34,7 +34,7 @@ Azure 認知搜尋提供有關每個索引子的目前和歷程記錄執行狀�
 * 使用[REST API](#restapi)
 * 使用[.NET SDK](#dotnetsdk)
 
-可用的索引子監視資訊包括下列所有 (，但資料格式會根據) 使用的存取方法而有所不同：
+可用的索引子監視資訊包括下列所有內容（雖然資料格式會根據所使用的存取方法而有所不同）：
 
 * 索引子本身的狀態資訊
 * 最新執行之索引子的相關資訊，包括其狀態、開始和結束時間，以及詳細的錯誤和警告。
@@ -117,11 +117,11 @@ api-key: [Search service admin key]
 }
 ```
 
-執行歷程記錄包含最多50個最近執行的，這些回合會以反向時間順序排序 (最近的第一個) 。
+執行歷程記錄包含最多50個最近執行，並以反向時間順序排序（最新的第一個）。
 
 請注意，有兩個不同的狀態值。 最上層狀態適用于索引子本身。 索引子狀態為 [執行中 **] 表示索引**器已正確設定且可供執行，但不是目前正在執行。
 
-每次執行索引子時，也會有自己的狀態，指出特定的執行是否**正在進行中 () ** ，或是已完成且具有**成功**、 **transientFailure**或**persistentFailure**狀態。 
+每次執行索引子時，也會有自己的狀態，指出該特定執行是否正在進行**中（執行**中），或已完成且具有**成功**、 **transientFailure**或**persistentFailure**狀態。 
 
 重設索引子以重新整理其變更追蹤狀態時，會加入具有**重設**狀態的個別執行歷程記錄專案。
 
@@ -133,7 +133,7 @@ api-key: [Search service admin key]
 
 您可以使用 Azure 認知搜尋 .NET SDK 來定義索引子的排程。 若要這麼做，請在建立或更新索引子時加入**排程**屬性。
 
-下列 c # 範例會將索引子狀態的相關資訊，以及其最近 (或進行中) 執行的結果寫入主控台。
+下列 c # 範例會將索引子狀態的相關資訊，以及其最近（或進行中）執行的結果寫入主控台。
 
 ```csharp
 static void CheckIndexerStatus(Indexer indexer, SearchServiceClient searchService)
@@ -180,7 +180,7 @@ Latest run
 
 請注意，有兩個不同的狀態值。 最上層狀態是索引子本身的狀態。 [執行中的索引子]**狀態表示索引**器已正確設定且可供執行，但不是目前正在執行。
 
-每次執行索引子時，都有它自己的狀態，以指出該特定的執行**是否正在進行中 () ** ，或是已完成且具有**成功**或**TransientError**狀態。 
+每次執行索引子時，都有它自己的狀態，以指出該特定執行是否正在進行**中（執行**中），或已完成且具有**成功**或**TransientError**狀態。 
 
 重設索引子以重新整理其變更追蹤狀態時，會加入具有**重設**狀態的個別歷程記錄專案。
 

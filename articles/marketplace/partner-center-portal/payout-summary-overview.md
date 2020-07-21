@@ -1,18 +1,18 @@
 ---
 title: 支付摘要概觀 - Azure Marketplace
 description: '[支付摘要] 會顯示透過供應項目所賺取金額的詳細資料。 此外，其還會告知何時會收到付款，以及將收到多少款項。'
-ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.service: marketplace
+ms.topic: article
 author: mingshen
 ms.author: mingshen
-ms.date: 04/24/2020
-ms.openlocfilehash: 29a8eb72814d865cb02bd632e084cec0cc06a1ff
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/14/2020
+ms.openlocfilehash: 087f7df8f8e3cc5e6e01ff023a88306d5fc4102d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118472"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86535955"
 ---
 # <a name="payout-summary-overview"></a>支付摘要概觀
 
@@ -42,19 +42,6 @@ ms.locfileid: "86118472"
 | 稅金設定檔 | 可更新 | 無存取權 | 無存取權 | 無存取權 | 可更新 | 無存取權 |
 | 支付摘要 | 可檢視 | 無存取權 | 無存取權 | 無存取權 | 可檢視 | 無存取權  |
 | | | | | | | |
-
-## <a name="payout-report-differences"></a>支付報告差異
-
-以下是 Cloud Partner 入口網站 (舊) 與合作夥伴中心 (新) 之間的支付報告差異：
-
-| 雲端合作夥伴入口網站 | 合作夥伴中心 |
-| --- | --- |
-| **連結**： https://cloudpartner.azure.com/ | **連結**： https://partner.microsoft.com/dashboard/payouts/reports/transactionhistory 和 https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments |
-| **Navigation**：見解支付中提供的支付報告 | **Navigation**：合作夥伴中心提供的支付報告 – 支付圖示 |
-| **範圍**：<ul><li>針對進行中、已收取和已支付的收款，可看到每個明細項目的交易。</li><li>報表 – 顯示建立訂購單後的所有明細項目，包括進行中的收款和計費，以及收款狀態和尚未符合付費資格的明細項目。</li></ul> | **範圍**：<ul><li>顯示在視為合格收益後的明細項目。</li><li>客戶必須先支付給 Microsoft，然後 ISV 才會看到支付報告開始。</li><li>支付報告不會顯示進行中的收款和進行中的計費。</li></ul> |
-| **尚未準備支付的交易**：進行中的計費 | **尚未準備支付的交易**：下一個預估支付：支付狀態為尚未處理狀態。 |
-| **支付狀態**：無 | **支付狀態**：<ul><li>尚未處理：收益符合付款資格。</li><li>近期：收益將在下次每月支付中送交至「發佈者」。</li><li>已送交：付款已送交至銀行。</li></ul> |
-| | |
 
 ## <a name="payment-schedules"></a>付款排程
 
@@ -90,7 +77,7 @@ ms.locfileid: "86118472"
 | earningExchangeRate | 用來顯示對應美金金額的匯率 |
 | exchangeRateDate | 用來計算 EarningAmountUSD 的匯率日期 |
 | paymentAmountWOTax | 收款人貨幣的收益金額 (不含稅)，僅適用於&quot;已送交&quot;付款 |
-| paymentCurrency | 付款設定檔中由合作夥伴選擇的收款人貨幣。 僅針對已送交付款顯示 |
+| paymentCurrency | 由合作夥伴在付款設定檔中選擇的付款貨幣。 僅針對已送交付款顯示 |
 | paymentExchangeRate | 使用 ExchangeRateDate 以付款貨幣計算 paymentAmountWOTax 的匯率 |
 | paymentId | 付款的唯一識別碼。 這個數字會顯示在銀行對帳單中 |
 | paymentStatus | 付款狀態 |

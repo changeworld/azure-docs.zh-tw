@@ -3,22 +3,22 @@ title: VM 映像的共用存取簽章 URI - Azure Marketplace
 description: 在 Azure Marketplace 中，為您的虛擬硬碟 (VHD) 產生共用存取簽章 (SAS) URI。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: article
 author: anbene
 ms.author: mingshen
-ms.date: 04/09/2020
-ms.openlocfilehash: 0fbd7aa42bf65ee0e553282b9961f1a9302b7903
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/14/2020
+ms.openlocfilehash: 569d9ce04422230c1d6b9ebb0957f01c320c5ba0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121719"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536142"
 ---
 # <a name="get-shared-access-signature-uri-for-your-vm-image"></a>取得 VM 映像的共用存取簽章 URI
 
 此文章描述如何產生每個虛擬硬碟 (VHD) 的共用存取簽章 (SAS) 統一資源識別項 (URI)。
 
-在發佈程序中，您必須為每個與您的方案相關聯的 VHD 提供 URI。 這些方案先前稱為 SKU 或庫存單位。 Microsoft 需要在認證程序期間存取這些 VHD。 您會在合作夥伴中心的 [方案] 索引標籤上輸入此 URI。
+在發佈過程中，您必須為每個與您的方案（先前稱為 Sku）相關聯的 VHD 提供 URI。 Microsoft 需要在認證程序期間存取這些 VHD。 您會在合作夥伴中心的 [方案] 索引標籤上輸入此 URI。
 
 產生 VHD 的 SAS URI 時，請遵守下列需求：
 
@@ -110,7 +110,7 @@ ms.locfileid: "86121719"
 
     `https://catech123.blob.core.windows.net/vhds/TestRGVM2.vhd?st=2018-05-06T07%3A00%3A00Z&se=2019-08-02T07%3A00%3A00Z&sp=rl&sv=2017-04-17&sr=c&sig=wnEw9RfVKeSmVgqDfsDvC9IHhis4x0fc9Hu%2FW4yvBxk%3D`
 
-您計劃發佈之 SKU 中的每個 VHD 均需重複上述步驟。
+針對您將發佈之方案中的每個 VHD 重複這些步驟。
 
 ## <a name="verify-the-sas-uri"></a>驗證 SAS URI
 

@@ -3,19 +3,21 @@ title: 針對常見驗證錯誤進行疑難排解 |Azure Marketplace
 description: 使用 Cloud Partner 入口網站 API 時，提供常見驗證錯誤的幫助。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 04/08/2020
-ms.openlocfilehash: 8c9bd6dbe54f797090c5f7405ad709db954f8fb9
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.topic: reference
+author: dsindona
+ms.author: dsindona
+ms.date: 07/14/2020
+ms.openlocfilehash: bfcee6a6d9a8448315d59009ea8a6ef62fa71da0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86115463"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86535989"
 ---
 # <a name="troubleshooting-common-authentication-errors"></a>針對常見驗證錯誤進行疑難排解
 
 > [!NOTE]
-> Cloud Partner 入口網站 API 已和合作夥伴中心整合，並會在將供應項目移轉到合作夥伴中心後繼續運作。 該整合會引進些微的變更。 請參閱[CLOUD PARTNER 入口網站 API 參考](./cloud-partner-portal-api-overview.md)中所列的變更，以確保您的程式碼會在遷移至合作夥伴中心後繼續運作。
+> Cloud Partner 入口網站 Api 會與整合，並會繼續在合作夥伴中心運作。 轉換會引進微小的變更。 請參閱[CLOUD PARTNER 入口網站 API 參考](./cloud-partner-portal-api-overview.md)中所列的變更，以確保您的程式碼在轉換至合作夥伴中心後繼續運作。 只有在轉換至合作夥伴中心之前已整合的現有產品，才應該使用 CPP Api;新產品應使用合作夥伴中心提交 Api。
 
 此文章提供了使用 Cloud Partner 入口網站 API 時常見驗證錯誤的幫助。
 
@@ -24,7 +26,6 @@ ms.locfileid: "86115463"
 如果您不斷遇到 `401 unauthorized` 錯誤，請確認您是否擁有有效的存取權杖。  如果您尚未這麼做，請依照[使用入口網站來建立可存取資源的 Azure Active Directory 應用程式和服務主體](../active-directory/develop/howto-create-service-principal-portal.md)中所述，建立基本的 Azure Active Directory (Azure AD) 應用程式和服務主體。 然後，使用應用程式或簡單的 HTTP POST 要求來驗證您的存取權。  您將包含租用戶識別碼、應用程式識別碼、物件識別碼和祕密金鑰以取得存取權杖，如下圖所示：
 
 ![疑難排解 401 錯誤](./media/cloud-partner-portal-api-troubleshooting-authentication-errors/troubleshooting-401-error.jpg)
-
 
 ## <a name="forbidden-error"></a>「禁止」錯誤
 

@@ -4,18 +4,20 @@ description: API 以取得供應專案的目前狀態。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 04/08/2020
-ms.openlocfilehash: 897c2517c3836e1c3940db02efae0e5d94667a65
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: dsindona
+ms.author: dsindona
+ms.date: 07/14/2020
+ms.openlocfilehash: 5652e7b6123a9836c574059e83101a073eea56ea
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86114069"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86535870"
 ---
 # <a name="retrieve-offer-status"></a>擷取供應項目狀態
 
 > [!NOTE]
-> Cloud Partner 入口網站 API 已和合作夥伴中心整合，並會在將供應項目移轉到合作夥伴中心後繼續運作。 該整合會引進些微的變更。 請參閱[CLOUD PARTNER 入口網站 API 參考](./cloud-partner-portal-api-overview.md)中所列的變更，以確保您的程式碼會在遷移至合作夥伴中心後繼續運作。
+> Cloud Partner 入口網站 Api 會與整合，並會繼續在合作夥伴中心運作。 轉換會引進微小的變更。 請參閱[CLOUD PARTNER 入口網站 API 參考](./cloud-partner-portal-api-overview.md)中所列的變更，以確保您的程式碼在轉換至合作夥伴中心後繼續運作。 只有在轉換至合作夥伴中心之前已整合的現有產品，才應該使用 CPP Api;新產品應使用合作夥伴中心提交 Api。
 
 擷取供應項目的目前狀態。
 
@@ -23,15 +25,14 @@ ms.locfileid: "86114069"
 
 ## <a name="uri-parameters"></a>URI 參數
 
-|  **名稱**       |   **描述**                            |  **Data type** |
+|  **名稱**       |   **說明**                            |  **Data type** |
 |  -------------  |  ------------------------------------------  |  ------------  |
-|  publisherId    | 發行者識別碼，例如 `Contoso`  |     String     |
-|  offerId        | 可唯一識別供應項目的 GUID      |     String     |
+|  publisherId    | 發行者識別碼，例如 `Contoso`  |     字串     |
+|  offerId        | 可唯一識別供應項目的 GUID      |     字串     |
 |  api-version    | API 的最新版本                        |     日期       |
 |  |  |
 
-
-## <a name="header"></a>Header
+## <a name="header"></a>頁首
 
 
 |  名稱           |  值               |
@@ -41,7 +42,6 @@ ms.locfileid: "86114069"
 |  |  |
 
 ## <a name="body-example"></a>本文範例
-
 
 ### <a name="response"></a>回應
 
@@ -116,10 +116,9 @@ ms.locfileid: "86114069"
   }
 ```
 
-
 ### <a name="response-body-properties"></a>回應主體屬性
 
-|  **名稱**             |    **描述**                                                                             |
+|  **名稱**             |    **說明**                                                                             |
 | --------------------  |   -------------------------------------------------------------------------------------------- |
 |  status               | 供應項目的狀態。 如需可能值清單，請參閱下面的[供應項目狀態](#offer-status)。 |
 |  messages             | 與供應項目相關聯的訊息陣列                                                    |
@@ -138,7 +137,7 @@ ms.locfileid: "86114069"
 
 ### <a name="response-status-codes"></a>回應狀態碼
 
-| **程式碼** |   **描述**                                                                                 |
+| **Code** |   **說明**                                                                                 |
 | -------  |   ----------------------------------------------------------------------------------------------- |
 |  200     |  `OK` - 已成功處理要求，並已傳回供應項目的最新狀態。 |
 |  400     | `Bad/Malformed request` - 錯誤回應本文可能包含更多資訊。                 |
@@ -147,12 +146,12 @@ ms.locfileid: "86114069"
 
 ### <a name="offer-status"></a>供應項目狀態
 
-|  **名稱**                    |    **描述**                                       |
+|  **名稱**                    |    **說明**                                       |
 |  --------------------------  |  ------------------------------------------------------  |
 |  NeverPublished              | 供應項目從未發行。                          |
 |  NotStarted                  | 供應項目是新的，且未啟動。                            |
 |  WaitingForPublisherReview   | 供應項目正在等候發行者核准。                 |
-|  執行中                     | 正在處理供應項目提交。                     |
+|  正在執行                     | 正在處理供應項目提交。                     |
 |  成功                   | 已完成處理供應項目提交。               |
 |  已取消                    | 已取消供應項目提交。                           |
 |  失敗                      | 供應項目提交失敗。                                 |
@@ -160,7 +159,7 @@ ms.locfileid: "86114069"
 
 ### <a name="step-status"></a>步驟狀態
 
-|  **名稱**                    |    **描述**                           |
+|  **名稱**                    |    **說明**                           |
 |  -------------------------   |  ------------------------------------------  |
 |  NotStarted                  | 步驟尚未啟動。                        |
 |  InProgress                  | 步驟正在執行。                             |

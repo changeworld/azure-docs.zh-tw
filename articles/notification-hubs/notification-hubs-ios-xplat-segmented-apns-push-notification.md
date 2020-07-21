@@ -14,18 +14,18 @@ ms.date: 11/07/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 11/07/2019
-ms.openlocfilehash: 643ef90f4d1fca3dd97a248dae304f98ff1c3ec0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 585bdfdd7033f75e5beeba7246c8fbdd03a5e6e8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85254373"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86530027"
 ---
 # <a name="tutorial-send-push-notifications-to-specific-ios-devices-using-azure-notification-hubs"></a>教學課程：使用 Azure 通知中樞將推播通知傳送至特定 iOS 裝置
 
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 本教學課程說明如何使用 Azure 通知中樞將即時新聞通知廣播至 iOS 應用程式。 完成時，您將能夠註冊自己所感興趣的即時新聞類別，並僅接收那些類別的推播通知。 此情況為適用於許多應用程式的常見模式，其中必須將通知傳送給先前宣告對該通知感興趣的使用者群組，例如 RSS 閱讀程式、供樂迷使用的應用程式等等。
 
@@ -39,7 +39,7 @@ ms.locfileid: "85254373"
 > * 從裝置傳送通知
 > * 執行應用程式並產生通知
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 這個主題會以您在[教學課程：使用 Azure 通知中樞將通知推播至 iOS 應用程式][get-started]中所建立的應用程式為基礎。 在開始進行本教學課程之前，您必須先完成[教學課程：使用 Azure 通知中樞將通知推播至 iOS 應用程式][get-started]。
 
@@ -362,11 +362,11 @@ ms.locfileid: "85254373"
 [3]: ./media/notification-hubs-ios-send-breaking-news/notification-hub-breakingnews-ios2.png
 
 <!-- URLs. -->
-[How To: Service Bus Notification Hubs (iOS Apps)]: https://msdn.microsoft.com/library/jj927168.aspx
+[How To: Service Bus Notification Hubs (iOS Apps)]: /previous-versions/azure/azure-services/jj927170(v=azure.100)
 [Use Notification Hubs to broadcast localized breaking news]: notification-hubs-ios-xplat-localized-apns-push-notification.md
 [Mobile Service]: /develop/mobile/tutorials/get-started
 [Notify users with Notification Hubs]: notification-hubs-aspnet-backend-ios-notify-users.md
-[Notification Hubs Guidance]: https://msdn.microsoft.com/library/dn530749.aspx
-[Notification Hubs How-To for iOS]: https://msdn.microsoft.com/library/jj927168.aspx
+[Notification Hubs Guidance]: /previous-versions/azure/azure-services/dn530749(v=azure.100)
+[Notification Hubs How-To for iOS]: /previous-versions/azure/azure-services/jj927170(v=azure.100)
 [get-started]: ios-sdk-get-started.md
 [Azure 入口網站]: https://portal.azure.com

@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
-ms.openlocfilehash: 63b3def9c37f53ebf68642faf3f45cee6602bbe5
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: b25d6c33aa2bd50cbf96fb09f0de03354d24f2da
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057291"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86530349"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure 媒體服務版本資訊
 
@@ -29,8 +29,8 @@ Azure 媒體服務的這些版本資訊彙總了舊版發行後的變更和已�
 
 我們想要收到客戶的意見，以針對影響到您的問題進行修正。 若要回報問題或提問，請在 [Azure 媒體服務 MSDN 論壇] 中提交貼文。 
 
-## <a name="known-issues"></a><a id="issues"/>已知問題
-### <a name="media-services-general-issues"></a><a id="general_issues"/>媒體服務一般問題
+## <a name="known-issues"></a><a name="issues"></a>已知問題
+### <a name="media-services-general-issues"></a><a name="general_issues"></a>媒體服務一般問題
 
 | 問題 | 描述 |
 | --- | --- |
@@ -43,7 +43,7 @@ Azure 媒體服務的這些版本資訊彙總了舊版發行後的變更和已�
 | 媒體服務 .NET SDK 物件無法序列化，因此無法與 Redis 的 Azure 快取搭配運作。 |如果您嘗試將 SDK AssetCollection 物件序列化以將其新增至 Redis 的 Azure 快取，則會擲回例外狀況。 |
 |當嘗試取得資產或帳戶層級篩選時，REST API 會以「此版本的 REST API 無法存取篩選」的錯誤訊息回應。|建立或修改篩選時所使用的 API 版本，比嘗試取得篩選所使用 API 版本更新。 如果客戶使用的程式碼或工具正在使用兩個 API 版本，就會發生這種情況。  此問題的最佳解決方法是升級程式碼或工具，以使用更新或兩個 API 版本。|
 
-## <a name="rest-api-version-history"></a><a id="rest_version_history"/>REST API 版本歷程記錄
+## <a name="rest-api-version-history"></a><a name="rest_version_history"></a>REST API 版本歷程記錄
 如需媒體服務 REST API 版本歷程記錄的相關資訊，請參閱 [Azure 媒體服務 REST API 參考]。
 
 ## <a name="february-2020"></a>2020 年 2 月
@@ -159,7 +159,7 @@ Azure Media Redactor 正式運作：此媒體處理器會透過將所選個人�
 
  現在，您可以使用媒體服務存取其服務的遙測/計量資料。 您可以使用目前的媒體服務版本收集直播頻道、串流端點和即時封存實體的遙測資料。 如需詳細資訊，請參閱[媒體服務遙測](media-services-telemetry-overview.md)。
 
-## <a name="july-2016-release"></a><a id="july_changes16"/>2016 年 7 月版本
+## <a name="july-2016-release"></a><a name="july_changes16"></a>2016 年 7 月版本
 ### <a name="updates-to-the-manifest-file-ism-generated-by-encoding-tasks"></a>更新編碼工作所產生的資訊清單檔案 (*.ISM)
 將編碼工作提交至「媒體編碼器標準」或「媒體編碼器進階」時，編碼工作會在輸出資產中產生[串流資訊清單檔案](media-services-deliver-content-overview.md) (*.ism)。 在最新的服務版本中，此串流資訊清單檔案的語法已更新。
 

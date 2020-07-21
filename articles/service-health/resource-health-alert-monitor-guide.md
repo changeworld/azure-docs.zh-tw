@@ -3,11 +3,12 @@ title: 使用 Azure 入口網站建立資源健康狀態警示
 description: 使用 Azure 入口網站建立警示，以在您的 Azure 資源無法使用時通知您。
 ms.topic: conceptual
 ms.date: 6/23/2020
-ms.openlocfilehash: 2ba7597283ed254b8c03e8ea58c3c7b1257250ee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b44df4f63fa2ae2bde9be431e2df268144a036fa
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85217887"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529211"
 ---
 # <a name="configure-resource-health-alerts-using-azure-portal"></a>使用 Azure 入口網站設定資源健康情況警示
 
@@ -18,7 +19,7 @@ Azure 資源健康狀態會隨時通知您 Azure 資源目前和過去的健康�
 > [!NOTE]
 > 資源健康狀態警示目前處於預覽狀態。
 
-資源健康狀態通知會儲存在[Azure 活動記錄](https://docs.microsoft.com/azure/azure-monitor/platform/platform-logs-overview)檔中，因為活動記錄中可能有大量的資訊，所以有個別的使用者介面，可讓您更輕鬆地查看和設定資源健康情況通知的警示。
+資源健康狀態通知會儲存在[Azure 活動記錄](../azure-monitor/platform/platform-logs-overview.md)檔中，因為活動記錄中可能有大量的資訊，所以有個別的使用者介面，可讓您更輕鬆地查看和設定資源健康情況通知的警示。
 當 Azure 資源將資源健康狀態通知傳送到您的 Azure 訂用帳戶時，您可以收到警示。 您可以針對下列設定警示：
 
 * 受影響的訂閱。
@@ -34,9 +35,9 @@ Azure 資源健康狀態會隨時通知您 Azure 資源目前和過去的健康�
 * 選取現有的動作群組。
 * 建立新動作群組 (可用於未來的警示)。
 
-若要深入了解動作群組，請參閱[建立及管理動作群組](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)。
+若要深入了解動作群組，請參閱[建立及管理動作群組](../azure-monitor/platform/action-groups.md)。
 
-如需如何使用 Azure Resource Manager 範本來設定資源健康狀態通知警示的詳細資訊，請參閱[Resource Manager 範本](https://docs.microsoft.com/azure/service-health/resource-health-alert-arm-template-guide)。
+如需如何使用 Azure Resource Manager 範本來設定資源健康狀態通知警示的詳細資訊，請參閱[Resource Manager 範本](./resource-health-alert-arm-template-guide.md)。
 使用 Azure 入口網站資源健康狀態警示
 
 ## <a name="resource-health-alert-using-azure-portal"></a>使用 Azure 入口網站資源健康狀態警示
@@ -58,12 +59,12 @@ Azure 資源健康狀態會隨時通知您 Azure 資源目前和過去的健康�
     1. **警示規則名稱**：新警示規則的名稱。
     2. **描述**：新警示規則的描述。
     3. **將警示儲存到資源群組**：選取您儲存此新規則的資源群組。
-7. 在 [動作群組] 下，從下拉式功能表中指定您想要指派給此新警示規則的動作群組。 或者，[建立新的動作群組](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)並指派給新規則。 若要建立新的群組，請選取 [+**新增群組**]。
+7. 在 [動作群組] 下，從下拉式功能表中指定您想要指派給此新警示規則的動作群組。 或者，[建立新的動作群組](../azure-monitor/platform/action-groups.md)並指派給新規則。 若要建立新的群組，請選取 [+**新增群組**]。
 8. 若要在建立群組之後啟用規則，請選取 [在建立時啟用規則] 選項的 [是] 。
 9. 選取 [建立警示規則]。
 
 活動記錄的新警示規則隨即建立，並會在視窗右上角顯示確認訊息。
-您可以啟用、停用、編輯或刪除規則。 深入瞭解[如何管理活動記錄規則](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log#view-and-manage-in-the-azure-portal)。
+您可以啟用、停用、編輯或刪除規則。 深入瞭解[如何管理活動記錄規則](../azure-monitor/platform/alerts-activity-log.md#view-and-manage-in-the-azure-portal)。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -74,6 +75,6 @@ Azure 資源健康狀態會隨時通知您 Azure 資源目前和過去的健康�
 
 建立服務健康狀態警示：
 
-* [設定適用於服務健康情況的警示](../azure-monitor/platform/alerts-activity-log-service-notifications.md) 
+* [設定適用於服務健康情況的警示](./alerts-activity-log-service-notifications-portal.md) 
 * [Azure 活動記錄事件結構描述](../azure-monitor/platform/activity-log-schema.md)
-* [使用 Resource Manager 範本設定資源健康狀態警示](https://docs.microsoft.com/azure/service-health/resource-health-alert-arm-template-guide)
+* [使用 Resource Manager 範本設定資源健康狀態警示](./resource-health-alert-arm-template-guide.md)

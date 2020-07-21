@@ -8,11 +8,12 @@ ms.topic: article
 ms.service: notification-hubs
 ms.reviewer: jowargo
 ms.lastreviewed: 10/16/2019
-ms.openlocfilehash: 697e8ba9c9f27e8d5644e3a78950ff006290efe7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 34b3ea9f07475affca76c8a3ff71de61abcadde8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74228149"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529704"
 ---
 # <a name="azure-notification-hubs-updates-for-ios-13"></a>適用于 iOS 13 的 Azure 通知中樞更新
 
@@ -57,7 +58,7 @@ request.Headers.Add("ServiceBusNotification-Format", "apple");
 request.Headers.Add("apns-push-type", "alert");
 ```
 
-為協助您在此轉換期間，當 Azure 通知中樞偵測到沒有設定的通知時 `apns-push-type` ，服務會從通知要求推斷推播類型，並自動設定此值。 請記住，您必須將 Azure 通知中樞設定為使用權杖型驗證來設定所需的標頭;如需詳細資訊，請參閱[APNS 的權杖型（HTTP/2）驗證](notification-hubs-push-notification-http2-token-authentification.md)。
+為協助您在此轉換期間，當 Azure 通知中樞偵測到沒有設定的通知時 `apns-push-type` ，服務會從通知要求推斷推播類型，並自動設定此值。 請記住，您必須將 Azure 通知中樞設定為使用權杖型驗證來設定所需的標頭;如需詳細資訊，請參閱[APNS 的權杖型（HTTP/2）驗證](./notification-hubs-push-notification-http2-token-authentication.md)。
 
 ## <a name="apns-priority"></a>APNS 優先順序
 

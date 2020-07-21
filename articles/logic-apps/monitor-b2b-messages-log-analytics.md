@@ -6,15 +6,16 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 01/30/2020
-ms.openlocfilehash: e9ba5a516293eb72a715dc9d0df7db4d5a4ea3c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5baa4d4d968adb25b5520ca91149970f5c5578e9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76907977"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536260"
 ---
 # <a name="set-up-azure-monitor-logs-and-collect-diagnostics-data-for-b2b-messages-in-azure-logic-apps"></a>在 Azure Logic Apps 中設定 Azure 監視器記錄並收集 B2B 訊息的診斷資料
 
-在您的整合帳戶中設定交易夥伴之間的 B2B 通訊之後，這些合作夥伴可以使用 AS2、X12 和 EDIFACT 等通訊協定來交換訊息。 若要檢查此通訊是否以您預期的方式運作，您可以設定整合帳戶的[Azure 監視器記錄](../azure-monitor/platform/data-platform-logs.md)。 [Azure 監視器](../azure-monitor/overview.md)可協助您監視您的雲端和內部部署環境，以便更輕鬆地維護其可用性和效能。 藉由使用 Azure 監視器記錄，您可以記錄和儲存有關執行時間資料和事件的資料，例如觸發程式事件、執行事件和[Log Analytics 工作區](../azure-monitor/platform/resource-logs-collect-workspace.md)中的動作事件。 對於訊息，記錄也會收集下列資訊：
+在您的整合帳戶中設定交易夥伴之間的 B2B 通訊之後，這些合作夥伴可以使用 AS2、X12 和 EDIFACT 等通訊協定來交換訊息。 若要檢查此通訊是否以您預期的方式運作，您可以設定整合帳戶的[Azure 監視器記錄](../azure-monitor/platform/data-platform-logs.md)。 [Azure 監視器](../azure-monitor/overview.md)可協助您監視您的雲端和內部部署環境，以便更輕鬆地維護其可用性和效能。 藉由使用 Azure 監視器記錄，您可以記錄和儲存有關執行時間資料和事件的資料，例如觸發程式事件、執行事件和[Log Analytics 工作區](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace)中的動作事件。 對於訊息，記錄也會收集下列資訊：
 
 * 訊息計數和狀態
 * 通知狀態
@@ -162,7 +163,7 @@ Azure 監視器可讓您建立[記錄查詢](../azure-monitor/log-query/log-quer
 
    * To search results with prebuilt queries, select **Favorites**.
 
-   * Learn [how to build queries by adding filters](../logic-apps/create-monitoring-tracking-queries.md). Or learn more about [how to find data with log searches in Azure Monitor logs](../log-analytics/log-analytics-log-searches.md).
+   * Learn [how to build queries by adding filters](../logic-apps/create-monitoring-tracking-queries.md). Or learn more about [how to find data with log searches in Azure Monitor logs](../azure-monitor/log-query/log-query-overview.md).
 
    * To change query in the search box, update the query with the columns and values that you want to use as filters.
 -->
@@ -179,7 +180,7 @@ Azure 監視器可讓您建立[記錄查詢](../azure-monitor/log-query/log-quer
 
 以下是每個 AS2 訊息的屬性描述。
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |----------|-------------|
 | **傳送者** | 針對 AS2 協議的 [接收設定]**** 中所指定的來賓合作夥伴，或 [傳送設定]**** 中所指定的主機合作夥伴 |
 | **放** | 針對 AS2 協議的 [接收設定]**** 中所指定的主機合作夥伴，或 [傳送設定]**** 中所指定的來賓合作夥伴 |
@@ -212,7 +213,7 @@ Here are the name formats for each downloaded AS2 message folder and files.
 
 以下是每個 X12 訊息的屬性描述。
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |----------|-------------|
 | **傳送者** | 針對 X12 協議的 [接收設定]**** 中所指定的來賓合作夥伴，或 [傳送設定]**** 中所指定的主機合作夥伴 |
 | **放** | 針對 X12 協議的 [接收設定]**** 中所指定的主機合作夥伴，或 [傳送設定]**** 中所指定的來賓合作夥伴 |
@@ -247,7 +248,7 @@ Here are the name formats for each downloaded X12 message folder and files.
 
 以下是每個 EDIFACT 訊息的屬性描述。
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |----------|-------------|
 | **傳送者** | 針對 EDIFACT 協議的 [接收設定]**** 中所指定的來賓合作夥伴，或 [傳送設定]**** 中所指定的主機合作夥伴 |
 | **放** | 針對 EDIFACT 協議的 [接收設定]**** 中所指定的主機合作夥伴，或 [傳送設定]**** 中所指定的來賓合作夥伴 |

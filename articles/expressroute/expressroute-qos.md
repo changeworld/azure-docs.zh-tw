@@ -7,16 +7,17 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: cherylmc
-ms.openlocfilehash: debc5d91478d0a5c3cc16c7b09f5713ba09b467e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 37c8b760ada12bd8f54c78ac6a0ea228d113b6c2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74080090"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536981"
 ---
 # <a name="expressroute-qos-requirements"></a>ExpressRoute QoS 需求
 商務用 Skype 具有各種工作負載，其所要求的 QoS 處理方式各有差異。 如果您打算透過 ExpressRoute 取用語音服務，應遵守以下所述的需求。
 
-![](./media/expressroute-qos/expressroute-qos.png)
+![顯示語音服務通過 ExpressRoute 的圖表。](./media/expressroute-qos/expressroute-qos.png)
 
 > [!NOTE]
 > QoS 需求僅適用於 Microsoft 對等項目。 在 Azure 公用對等和 Azure 私用對等上收到的網路流量的 DSCP 值將會重設為 0。 

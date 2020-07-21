@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/19/2019
 ms.author: memildin
-ms.openlocfilehash: be26a9d4c66412518079de303ac0764d979c3e7c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f14f5412b701ce055713fee347175c2dffd5c5b7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77912047"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529412"
 ---
 # <a name="onboarding-to-azure-security-center-standard-for-enhanced-security"></a>上架到 Azure 資訊安全中心標準版以增強安全性
 升級至資訊安全中心標準版，讓您的混合式雲端工作負載能充分享有強化的安全性管理和威脅防護。 您可以免費試用「標準版」。 如需詳細資訊，請參閱資訊安全中心[定價頁面](https://azure.microsoft.com/pricing/details/security-center/)。
@@ -91,7 +92,7 @@ ms.locfileid: "77912047"
 
 1. 返回資訊安全中心的主功能表[概觀]**** 儀表板。
 
-   ![總覽][5]
+   ![概觀][5]
 
 2. 選取 [計算及應用程式]****。
 3. 在 [計算及應用程式]**** 下，選取 [新增電腦]****。

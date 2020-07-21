@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, tracking-python
 ms.date: 04/29/2020
-ms.openlocfilehash: 67dfc0b2da753f005c1723ff0cf3370ce288c6de
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 8c13dc43f4b7c66bd804fd9ec016f5e1a467bd8b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086614"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536760"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>使用指令碼動作在 Azure HDInsight 上安全地管理 Python 環境
 
@@ -47,11 +47,11 @@ HDInsight 服務中有兩種類型的開放原始碼元件可用：
 
 HDInsight Spark 叢集是使用 Anaconda 安裝所建立。 叢集中有兩個 Python 安裝，Anaconda Python 2.7 和 Python 3.5。 下表顯示 Spark、Livy 和 Jupyter 的預設 Python 設定。
 
-| |Python 2.7|Python 3.5|
+|設定 |Python 2.7|Python 3.5|
 |----|----|----|
 |Path|/usr/bin/anaconda/bin|/usr/bin/anaconda/envs/py35/bin|
-|Spark|預設值設定為 2.7|N/A|
-|Livy|預設值設定為 2.7|N/A|
+|Spark 版本|預設值設定為 2.7|N/A|
+|Livy 版本|預設值設定為 2.7|N/A|
 |Jupyter|PySpark 核心|PySpark3 核心|
 
 ## <a name="safely-install-external-python-packages"></a>安全地安裝外部 Python 套件

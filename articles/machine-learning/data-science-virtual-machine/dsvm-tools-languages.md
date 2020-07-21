@@ -11,11 +11,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: c81f2a23474ff98c202cdbe5b455dd3d15535c96
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d3ab058d76186f73fa1a985d7e8af38dbd7a6f8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84557459"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536176"
 ---
 # <a name="languages-supported-on-the-data-science-virtual-machine"></a>資料科學虛擬機器上所支援的語言 
 
@@ -23,7 +24,7 @@ ms.locfileid: "84557459"
 
 ## <a name="python-windows-server-2016-edition"></a>Python （Windows Server 2016 版）
 
-|    |           |
+| 類別 | 值 |
 | ------------- | ------------- |
 | 支援的語言版本 | Python 2.7 和3。7 |
 | 支援的 DSVM 版本      | Windows Server 2016     |
@@ -67,13 +68,14 @@ ms.locfileid: "84557459"
 
 ## <a name="python-linux-edition"></a>Python （Linux 版）
 
-|    |           |
+| 類別 | 值 |
 | ------------- | ------------- |
 | 支援的語言版本 | Python 2.7 和3。5 |
 | 支援的 DSVM 版本      | Linux   |
 | 它是如何在 DSVM 上設定/安裝的？  | `conda`系統會建立兩個全域環境： <br /> * `root`位於的環境 `/anaconda/` 是 Python 2.7。 <br/> * `py35`位於的環境 `/anaconda/envs/py35` 是 Python 3.5。       |
 | 範例的連結      | 包含適用于 Python 的範例 Jupyter 筆記本。     |
 | DSVM 上的相關工具      | PySpark、R、Julia      |
+
 ### <a name="how-to-use-and-run-it"></a>如何使用並加以執行    
 
 * 在終端機中執行：
@@ -105,13 +107,14 @@ ms.locfileid: "84557459"
 
 ## <a name="r"></a>R
 
-|    |           |
+| 類別 | 值 |
 | ------------- | ------------- |
 | 支援的語言版本 | Microsoft R Open 3.x （100% 與 CRAN-R 相容）<br /> Microsoft R Server 9. x Developer edition （可擴充的企業級 R 平臺）|
 | 支援的 DSVM 版本      | Linux、Windows     |
 | 它是如何在 DSVM 上設定/安裝的？  | Windows：`C:\Program Files\Microsoft\ML Server\R_SERVER` <br />Linux：`/usr/lib64/microsoft-r/3.3/lib64/R`    |
 | 範例的連結      | 包含適用于 R 的範例 Jupyter 筆記本。     |
 | DSVM 上的相關工具      | SparkR、Python、Julia      |
+
 ### <a name="how-to-use-and-run-it"></a>如何使用並加以執行    
 
 **Windows**：
@@ -153,13 +156,14 @@ ms.locfileid: "84557459"
 
 ## <a name="julia"></a>Julia
 
-|    |           |
+| 類別 | 值 |
 | ------------- | ------------- |
 | 支援的語言版本 | 0.6 |
 | 支援的 DSVM 版本      | Linux、Windows     |
 | 它是如何在 DSVM 上設定/安裝的？  | Windows：安裝於 `C:\JuliaPro-VERSION`<br /> Linux：安裝於 `/opt/JuliaPro-VERSION`    |
 | 範例的連結      | 包含適用于 Julia 的範例 Jupyter 筆記本。     |
 | DSVM 上的相關工具      | Python、R      |
+
 ### <a name="how-to-use-and-run-it"></a>如何使用並加以執行    
 
 **Windows**：

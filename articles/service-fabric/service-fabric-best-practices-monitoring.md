@@ -5,16 +5,16 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 0ee44ae12ba0f7f4d91de12ff2fa0730f8831b61
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: a7b1c1b3fc3196557b862c488ee01af8b8e1f04f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261150"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529245"
 ---
-# <a name="monitoring-and-diagnostics"></a>監視和診斷
+# <a name="monitoring-and-diagnostic-best-practices-for-azure-service-fabric"></a>Azure Service Fabric 的監視和診斷最佳做法
 
-不論任何雲端環境，針對工作負載的開發、測試及部署進行[監視和診斷](./service-fabric-diagnostics-overview.md)都極為重要。 例如，您可以追蹤應用程式被使用的方式、由 Service Fabric 平台所採取的動作、搭配效能計數器的資源使用量，以及叢集的整體健康情況。 您可以使用這些資訊來診斷並修正問題，並防止它們於未來再度發生。
+[監視和診斷](./service-fabric-diagnostics-overview.md)對於在任何雲端環境中開發、測試和部署工作負載而言非常重要。 例如，您可以追蹤應用程式被使用的方式、由 Service Fabric 平台所採取的動作、搭配效能計數器的資源使用量，以及叢集的整體健康情況。 您可以使用這些資訊來診斷並修正問題，並防止它們於未來再度發生。
 
 ## <a name="application-monitoring"></a>應用程式監視
 

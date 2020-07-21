@@ -1,5 +1,5 @@
 ---
-title: 映像計分模型
+title: 使用整個分數 & 深度推薦模組
 titleSuffix: Azure Machine Learning
 description: 瞭解如何在 Azure Machine Learning 中使用 & Deep 推薦模組的分數範圍，以評分資料集的建議預測。
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 06/12/2020
-ms.openlocfilehash: 1d566d270f9e4b7017171a79fddf58090e21cdec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: df723824b2d80694913e32904ed81972381c5bcb
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84739799"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536210"
 ---
 # <a name="score-wide-and-deep-recommender"></a>廣泛評分和深度推薦
 

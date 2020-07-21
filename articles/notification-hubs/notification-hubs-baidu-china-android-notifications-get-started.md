@@ -14,12 +14,12 @@ ms.date: 03/18/2020
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 06/19/2019
-ms.openlocfilehash: aaaaedbd6d2262f632bd47aa6eefb4cc83ab1abd
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: a605a11b1effd5d272dc8123f7e9c5c44262a3e8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223953"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86530197"
 ---
 # <a name="get-started-with-notification-hubs-using-baidu"></a>透過百度開始使用通知中樞
 
@@ -424,10 +424,10 @@ ms.locfileid: "86223953"
 
 以下是不同的傳送通知方法：
 
-* **Rest 介面**：您可以在使用[rest 介面](https://msdn.microsoft.com/library/windowsazure/dn223264.aspx)的任何後端平臺上支援通知。
+* **Rest 介面**：您可以在使用[rest 介面](/previous-versions/azure/reference/dn223264(v=azure.100))的任何後端平臺上支援通知。
 * **Microsoft Azure 通知中樞 .NET SDK**：在適用于 Visual Studio 的 Nuget 套件管理員中，執行[Install-Package NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)。
 * **Node.js**：[如何從 Node.js 使用通知中樞](notification-hubs-nodejs-push-notification-tutorial.md)。
-* **Mobile Apps**：如需如何從已與通知中樞整合的 Azure App Service Mobile Apps 傳送通知的範例，請參閱[將推播通知新增至行動應用程式](../app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md)。
+* **Mobile Apps**：如需如何從已與通知中樞整合的 Azure App Service Mobile Apps 傳送通知的範例，請參閱[將推播通知新增至行動應用程式](/previous-versions/azure/app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push)。
 * **Java/PHP**︰如需使用 REST API 傳送通知的範例，請參閱＜如何從 Java/PHP 使用通知中樞＞([Java](notification-hubs-java-push-notification-tutorial.md) | [PHP](notification-hubs-php-push-notification-tutorial.md))。
 
 ## <a name="optional-send-notifications-from-a-net-console-app"></a>(選擇性) 從 .NET 主控台應用程式傳送通知。

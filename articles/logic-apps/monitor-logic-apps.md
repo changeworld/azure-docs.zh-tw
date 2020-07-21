@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 05/04/2020
-ms.openlocfilehash: c2a609266a77293a0e3a5cb9c973a6eb3f7f72a9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 69d018db26a42c331ff41d242eae54d6fcc43990
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82731997"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536244"
 ---
 # <a name="monitor-run-status-review-trigger-history-and-set-up-alerts-for-azure-logic-apps"></a>監視執行狀態、查看觸發程式歷程記錄，以及設定 Azure Logic Apps 的警示
 
@@ -48,11 +48,11 @@ ms.locfileid: "82731997"
 
    | 狀態 | 描述 |
    |--------|-------------|
-   | **已取消** | 工作流程正在執行，但收到取消要求 |
+   | **取消** | 工作流程正在執行，但收到取消要求 |
    | **已失敗** | 至少有一個動作失敗，且未設定工作流程中的後續動作來處理失敗 |
    | **執行中** | 工作流程目前正在執行中。 <p>此狀態也會顯示在節流的工作流程中，或因為目前的定價方案。 如需詳細資訊，請參閱[定價頁面上的動作限制](https://azure.microsoft.com/pricing/details/logic-apps/)。 如果您設定[診斷記錄](../logic-apps/monitor-logic-apps.md)，您可以取得任何發生之節流事件的相關資訊。 |
    | **已成功** | 所有動作都已成功。 <p>**注意**：如果特定動作中發生任何失敗，則工作流程中的後續動作會處理該失敗。 |
-   | **等候** | 工作流程尚未啟動或暫停（例如，因為先前仍在執行的工作流程）。 |
+   | **正在等待** | 工作流程尚未啟動或暫停（例如，因為先前仍在執行的工作流程）。 |
    |||
 
 1. 若要檢查特定執行的步驟和其他資訊，請在 [**執行歷程記錄**] 下選取該執行。
@@ -71,7 +71,7 @@ ms.locfileid: "82731997"
 
    ![查看執行中每個步驟的詳細資料](./media/monitor-logic-apps/review-logic-app-run-details.png)
 
-   例如，您可以取得執行的相互**關聯識別碼**屬性，當您使用[Logic Apps 的 REST API](https://docs.microsoft.com/rest/api/logic)時，可能會需要它。
+   例如，您可以取得執行的相互**關聯識別碼**屬性，當您使用[Logic Apps 的 REST API](/rest/api/logic)時，可能會需要它。
 
 1. 若要取得特定步驟的詳細資訊，請選取其中一個選項：
 
@@ -138,7 +138,7 @@ ms.locfileid: "82731997"
 
 ## <a name="set-up-monitoring-alerts"></a>設定監視警示
 
-若要根據特定計量或邏輯應用程式超過閾值來取得警示，請[在 Azure 監視器中設定警示](../azure-monitor/platform/alerts-overview.md)。 了解 [Azure 中的計量](../monitoring-and-diagnostics/monitoring-overview-metrics.md)。 若要在不使用[Azure 監視器](../log-analytics/log-analytics-overview.md)的情況下設定警示，請遵循下列步驟。
+若要根據特定計量或邏輯應用程式超過閾值來取得警示，請[在 Azure 監視器中設定警示](../azure-monitor/platform/alerts-overview.md)。 了解 [Azure 中的計量](../azure-monitor/platform/data-platform.md)。 若要在不使用[Azure 監視器](../azure-monitor/log-query/log-query-overview.md)的情況下設定警示，請遵循下列步驟。
 
 1. 在邏輯應用程式功能表的 [**監視**] 底下，選取 [**警示**] [  >  **新增警示規則**]。
 

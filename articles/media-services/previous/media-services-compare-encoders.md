@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.reviewer: anilmur
-ms.openlocfilehash: 4767f7bb5ba02c838c0e21721e55a6564a14acd1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ca17ffdc2a54b25bbfd855834a366ed381a54678
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "69016646"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86530383"
 ---
 # <a name="comparison-of-azure-on-demand-media-encoders"></a>Azure 隨選媒體編碼器的比較  
 
@@ -34,7 +34,7 @@ ms.locfileid: "69016646"
 |---|---|---|
 |編碼時套用條件式邏輯<br/>(例如，如果輸入是 HD，則編碼 5.1 音訊)|否|是|
 |隱藏式輔助字幕|否|[是](media-services-premium-workflow-encoder-formats.md#closed_captioning)|
-|[Dolby® Professional Loudness Correction](https://www.dolby.com/us/en/technologies/dolby-professional-loudness-solutions.pdf)<br/> with Dialogue Intelligence™|否|是|
+|[杜比 &reg; 專業音量更正](https://professional.dolby.com/product/broadcast/vm600/)<br/> 使用對話智慧&trade;|否|是|
 |非交錯顯示、反轉電影|基本|廣播品質|
 |偵測並移除黑色框線 <br/>(垂直黑邊、上下黑邊)|否|是|
 |縮圖產生|[是](media-services-dotnet-generate-thumbnail-with-mes.md)|[是](media-services-media-encoder-premium-workflow-tutorials.md#thumbnails_to__multibitrate_MP4)|
@@ -52,7 +52,7 @@ ms.locfileid: "69016646"
 ## <a name="input-containerfile-formats"></a>輸入容器/檔案格式
 | 輸入容器/檔案格式 | Media Encoder Standard | 媒體編碼器高階工作流程 |
 | --- | --- | --- |
-| Adobe® Flash® F4V |是 |是 |
+| Adobe &reg; Flash &reg; F4V |是 |是 |
 | MXF/SMPTE 377M |是 |是 |
 | GXF |是 |是 |
 | MPEG-2 傳輸資料流 |是 |是 |
@@ -73,7 +73,7 @@ ms.locfileid: "69016646"
 | Avid DNxHD (使用 MXF) |是 |是 |
 | DVCPro/DVCProHD (使用 MXF) |是 |是 |
 | JPEG2000 |是 |是 |
-| MPEG-2 (高達 422 Profile 和 High Level，包括 XDCAM、XDCAM HD、XDCAM IMX、CableLabs ® 和 D10 等變種) |最高 422 設定檔 |是 |
+| MPEG-2 （最多422的設定檔和高層級，包括 XDCAM、XDCAM HD、XDCAM IMX、CableLabs 和 D10 等變體 &reg; ） |最高 422 設定檔 |是 |
 | MPEG-1 |是 |是 |
 | Windows Media 視訊/VC-1 |是 |是 |
 | Canopus HQ/HQX |否 |否 |
@@ -91,9 +91,9 @@ ms.locfileid: "69016646"
 | 輸入音訊轉碼器 | Media Encoder Standard | 媒體編碼器高階工作流程 |
 | --- | --- | --- |
 | AES (SMPTE 331M 和 302M，AES3-2003) |否 |是 |
-| Dolby® E |否 |是 |
-| Dolby® Digital (AC3) |否 |是 |
-| Dolby® Digital Plus (E-AC3) |否 |是 |
+| 杜比 &reg; E |否 |是 |
+| 杜比 &reg; 數位（AC3） |否 |是 |
+| 杜比 &reg; 數位 Plus （E-AC3） |否 |是 |
 | AAC (AAC-LC、AAC-HE 和 AAC-HEv2；高達 5.1) |是 |是 |
 | MPEG Layer 2 |是 |是 |
 | MP3 (MPEG-1 音訊層 3) |是 |是 |
@@ -106,7 +106,7 @@ ms.locfileid: "69016646"
 ## <a name="output-containerfile-formats"></a>輸出容器/檔案格式
 | 輸出容器/檔案格式 | Media Encoder Standard | 媒體編碼器高階工作流程 |
 | --- | --- | --- |
-| Adobe® Flash® F4V |否 |是 |
+| Adobe &reg; Flash &reg; F4V |否 |是 |
 | MXF (OP1a、XDCAM 和 AS02) |否 |是 |
 | DPP (包括 AS11) |否 |是 |
 | GXF |否 |是 |
@@ -122,7 +122,7 @@ ms.locfileid: "69016646"
 | AVC (H.264；8 位元；高達 High Profile、Level 5.2；4K Ultra HD；AVC Intra) |僅限 8 位元 4:2:0 |是 |
 | HEVC (H.265；8 位元與 10 位元；)  |否 |是 |
 | Avid DNxHD (使用 MXF) |否 |是 |
-| MPEG-2 (高達 422 Profile 和 High Level，包括 XDCAM、XDCAM HD、XDCAM IMX、CableLabs ® 和 D10 等變種) |否 |是 |
+| MPEG-2 （最多422的設定檔和高層級，包括 XDCAM、XDCAM HD、XDCAM IMX、CableLabs 和 D10 等變體 &reg; ） |否 |是 |
 | MPEG-1 |否 |是 |
 | Windows Media 視訊/VC-1 |否 |是 |
 | JPEG 縮圖建立 |是 |是 |
@@ -133,15 +133,15 @@ ms.locfileid: "69016646"
 | 輸出音訊轉碼器 | Media Encoder Standard | 媒體編碼器高階工作流程 |
 | --- | --- | --- |
 | AES (SMPTE 331M 和 302M，AES3-2003) |否 |是 |
-| Dolby® Digital (AC3) |否 |是 |
-| Dolby® Digital Plus (E-AC3) 高達 7.1 |否 |是 |
+| 杜比 &reg; 數位（AC3） |否 |是 |
+| &reg;高達7.1 的杜比數位 Plus （E-AC3） |否 |是 |
 | AAC (AAC-LC、AAC-HE 和 AAC-HEv2；高達 5.1) |是 |是 |
 | MPEG Layer 2 |否 |是 |
 | MP3 (MPEG-1 音訊層 3) |否 |是 |
 | Windows Media 音訊 |否 |是 |
 
 >[!NOTE]
->如果編碼成 Dolby® Digital (AC3)，則輸出只能寫入到 ISO MP4 檔案。
+>如果您編碼為杜比 &reg; 數位（AC3），則只能將輸出寫入 ISO 檔案中的檔案。
 
 ## <a name="media-services-learning-paths"></a>媒體服務學習路徑
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
