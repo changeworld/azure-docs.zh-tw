@@ -3,12 +3,12 @@ title: 做為事件方格來源 Azure Machine Learning
 description: 說明使用 Azure 事件方格為 Machine Learning 工作區事件提供的屬性
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: b5a39539a6f39c78251a3cc7788b8e5ee4babbf9
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: e72123a4f609b93e191c82f11443cbb1de7d012d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86181517"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86522069"
 ---
 # <a name="azure-machine-learning-as-an-event-grid-source"></a>做為事件方格來源 Azure Machine Learning
 
@@ -23,7 +23,7 @@ Azure Machine Learning 會發出下列事件種類：
 | 事件類型 | 描述 |
 | ---------- | ----------- |
 | Microsoft.machinelearningservices. ModelRegistered | 已成功註冊新的模型或模型版本時引發。 |
-| Microsoft.machinelearningservices. ModelDeployed | 當模型 (s) 已成功部署至端點時引發。 |
+| Microsoft.machinelearningservices. ModelDeployed | 當模型已成功部署至端點時引發。 |
 | Microsoft.machinelearningservices. RunCompleted | 成功完成執行時引發。 |
 | Microsoft.machinelearningservices. DatasetDriftDetected | 資料集漂移監視器偵測到漂移時引發。 |
 | Microsoft.machinelearningservices. RunStatusChanged | 當執行狀態變更時引發。 |
@@ -151,7 +151,7 @@ Azure Machine Learning 會發出下列事件種類：
 [{
   "topic": "/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.MachineLearningServices/workspaces/{workspace-name}",
   "subject": "experiments/0fa9dfaa-cba3-4fa7-b590-23e48548f5c1/runs/AutoML_ad912b2d-6467-4f32-a616-dbe4af6dd8fc_5",
-  "eventType": "Microsoft.MachineLearningServices.RunCompleted",
+  "eventType": "Microsoft.MachineLearningServices.RunStatusChanged",
   "eventTime": "2017-06-26T18:41:00.9584103Z",
   "id": "831e1650-001e-001b-66ab-eeb76e069631",
   "data": {
@@ -189,13 +189,13 @@ Azure Machine Learning 會發出下列事件種類：
 | 屬性 | 類型 | 描述 |
 | -------- | ---- | ----------- |
 | 主題 | 字串 | 事件來源的完整資源路徑。 此欄位不可寫入。 Event Grid 提供此值。 |
-| subject | 字串 | 發行者定義事件主體的路徑。 |
+| subject | 字串 | 發行者定義事件主旨的路徑。 |
 | eventType | 字串 | 此事件來源已註冊的事件類型之一。 |
 | eventTime | 字串 | 事件產生的時間，以提供者之 UTC 時間為準。 |
 | id | 字串 | 事件的唯一識別碼。 |
 | data | 物件 (object) | blob 儲存體帳戶。 |
 | dataVersion | 字串 | 資料物件的結構描述版本。 發行者會定義結構描述版本。 |
-| metadataVersion | 字串 | 事件中繼資料的結構描述版本。 Event Grid 會定義最上層屬性的結構描述。 Event Grid 提供此值。 |
+| metadataVersion | 字串 | 事件中繼資料的結構描述版本。 「事件方格」會定義最上層屬性的結構描述。 「事件方格」提供此值。 |
 
 針對每個事件種類，資料物件都有下列屬性：
 
@@ -205,18 +205,18 @@ Azure Machine Learning 會發出下列事件種類：
 | -------- | ---- | ----------- |
 | ModelName | 字串 | 已註冊的模型名稱。 |
 | ModelVersion | 字串 | 已註冊的模型版本。 |
-| ModelTags | 物件 (object) | 已註冊的模型標記。 |
-| ModelProperties | 物件 (object) | 已註冊之模型的屬性。 |
+| ModelTags | object | 已註冊的模型標記。 |
+| ModelProperties | object | 已註冊之模型的屬性。 |
 
 ### <a name="microsoftmachinelearningservicesmodeldeployed"></a>Microsoft.machinelearningservices. ModelDeployed
 
 | 屬性 | 類型 | 說明 |
 | -------- | ---- | ----------- |
 | ServiceName | 字串 | 已部署之服務的名稱。 |
-| ServiceComputeType | 字串 | 計算類型 (例如 ACI、已部署服務的 AKS) 。 |
+| ServiceComputeType | 字串 | 已部署之服務的計算類型（例如 ACI、AKS）。 |
   | ModelIds | 字串 | 以逗號分隔的模型識別碼清單。 部署在服務中的模型識別碼。 |
-| ServiceTags | 物件 (object) | 已部署之服務的標記。 |
-| ServiceProperties | 物件 (object) | 已部署之服務的屬性。 |
+| ServiceTags | object | 已部署之服務的標記。 |
+| ServiceProperties | object | 已部署之服務的屬性。 |
 
 ### <a name="microsoftmachinelearningservicesruncompleted"></a>Microsoft.machinelearningservices. RunCompleted
 
@@ -226,8 +226,8 @@ Azure Machine Learning 會發出下列事件種類：
 | ExperimentName | 字串 | 執行所屬的實驗名稱。 |
 | RunId | 字串 | 已完成的執行識別碼。 |
 | RunType | 字串 | 已完成執行的執行類型。 |
-| RunTags | 物件 (object) | 已完成執行的標記。 |
-| RunProperties | 物件 (object) | 已完成執行的屬性。 |
+| RunTags | object | 已完成執行的標記。 |
+| RunProperties | object | 已完成執行的屬性。 |
 
 ### <a name="microsoftmachinelearningservicesdatasetdriftdetected"></a>Microsoft.machinelearningservices. DatasetDriftDetected
 
@@ -250,8 +250,8 @@ Azure Machine Learning 會發出下列事件種類：
 | ExperimentName | 字串 | 執行所屬的實驗名稱。 |
 | RunId | 字串 | 已完成的執行識別碼。 |
 | RunType | 字串 | 已完成執行的執行類型。 |
-| RunTags | 物件 (object) | 已完成執行的標記。 |
-| RunProperties | 物件 (object) | 已完成執行的屬性。 |
+| RunTags | object | 已完成執行的標記。 |
+| RunProperties | object | 已完成執行的屬性。 |
 | RunStatus | 字串 | 執行的狀態。 |
 
 ## <a name="tutorials-and-how-tos"></a>教學課程和操作說明

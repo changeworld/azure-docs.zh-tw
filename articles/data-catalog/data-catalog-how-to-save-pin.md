@@ -4,13 +4,14 @@ description: 強調 Azure 資料目錄中用於儲存資料來源和資料資產
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: a8545939fd027989519e0f7a161f750ec676749a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2d0baed53441893ec294784f0f8092fe89a347c9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68976807"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523701"
 ---
 # <a name="save-searches-and-pin-data-assets-in-azure-data-catalog"></a>在 Azure 資料目錄中儲存搜尋和釘選資料資產
 ## <a name="introduction"></a>簡介
@@ -73,5 +74,5 @@ Azure 資料目錄提供用來探索資料來源的功能。 您可以快速搜�
 
 ![首頁上的 [我的資產] 區段](./media/data-catalog-how-to-save-pin/07-my-assets.png)
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>總結
 Azure 資料目錄提供各種功能，以便能更容易地探索所需的資料來源，因此您和其他組織成員可以花較少的時間尋找資料，並且有更多時間使用資料。 儲存的搜尋 和釘選的資料資產是以這些核心功能為基礎所建立，因此使用者可以輕鬆地識別所要重複使用的資料來源。

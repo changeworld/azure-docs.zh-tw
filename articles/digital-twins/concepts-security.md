@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 0f1f9e17646c4432d9c1103b3c579fc6bb0d2f13
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0a1447e64b606170601e6df6a443f53e3132294d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85833159"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86522256"
 ---
 # <a name="secure-azure-digital-twins-with-role-based-access-control"></a>使用以角色為基礎的存取控制來保護 Azure 數位 Twins
 
@@ -24,7 +24,7 @@ RBAC 會透過與[Azure Active Directory](../active-directory/fundamentals/activ
 
 您可以使用 RBAC 將許可權授與*安全性主體*，這可能是使用者、群組或應用程式服務主體。 安全性主體會由 Azure AD 進行驗證，並接收傳回的 OAuth 2.0 權杖。 此權杖可用來授權對 Azure 數位 Twins 實例的存取要求。
 
-## <a name="authentication-and-authorization"></a>驗證與授權
+## <a name="authentication-and-authorization"></a>驗證和授權
 
 有了 Azure AD，存取是兩個步驟的程式。 當安全性主體（使用者、群組或應用程式）嘗試存取 Azure 數位 Twins 時，要求必須*經過驗證*和*授權*。 
 
@@ -37,7 +37,7 @@ RBAC 會透過與[Azure Active Directory](../active-directory/fundamentals/activ
 
 若要深入瞭解 Azure 中支援的角色和角色指派，請參閱瞭解 Azure RBAC 檔中[的不同角色](../role-based-access-control/rbac-and-directory-admin-roles.md)。
 
-### <a name="authentication-with-managed-identities"></a>使用受控識別進行驗證
+### <a name="authentication-with-managed-identities"></a>使用受控識別執行驗證作業
 
 [適用于 azure 資源的受控](../active-directory/managed-identities-azure-resources/overview.md)識別是一個跨 Azure 功能，可讓您建立與應用程式程式碼執行所在之部署相關聯的安全身分識別。 接著，您可以將該身分識別與存取控制角色建立關聯，以授與自訂許可權以存取您的應用程式所需的特定 Azure 資源。
 
@@ -58,7 +58,7 @@ Azure 提供下列內建的 RBAC 角色，以授權 Azure 數位 Twins 資源的
 * 透過 Azure 入口網站中 Azure 數位 Twins 的 [存取控制（IAM）] 窗格（請參閱[使用 AZURE RBAC 新增或移除角色指派和 Azure 入口網站](../role-based-access-control/role-assignments-portal.md)）
 * 透過 CLI 命令來新增或移除角色
 
-如需如何執行這項操作的詳細步驟，請在[Azure 數位 Twins 教學課程：連接端對端解決方案](tutorial-end-to-end.md)中試試看。
+如需如何執行這項操作的詳細步驟，請在[Azure 數位 Twins 教學課程：*連接端對端解決方案*](tutorial-end-to-end.md)中試試看。
 
 ## <a name="permission-scopes"></a>權限範圍
 
@@ -73,6 +73,6 @@ Azure 提供下列內建的 RBAC 角色，以授權 Azure 數位 Twins 資源的
 
 ## <a name="next-steps"></a>後續步驟
 
-* 請參閱 how to [：驗證用戶端應用程式](how-to-authenticate-client.md)中的範例用戶端應用程式，以瞭解如何逐步執行這些步驟。
+* 請參閱 how to [*：驗證用戶端應用程式*](how-to-authenticate-client.md)中的範例用戶端應用程式，以瞭解如何逐步執行這些步驟。
 
 * 深入瞭解[適用于 Azure 的 RBAC](../role-based-access-control/overview.md)。

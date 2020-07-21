@@ -8,13 +8,13 @@ ms.author: magottei
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: d6670966b4cf74510df5dd26c994e0c53b219ba9
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.date: 07/11/2020
+ms.openlocfilehash: a57232853284dad6f363797c009b1c38738d5b37
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86145247"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519774"
 ---
 # <a name="how-to-index-tables-from-azure-table-storage-with-azure-cognitive-search"></a>如何使用 Azure 認知搜尋為 Azure 資料表儲存體中的資料表編制索引
 
@@ -69,9 +69,9 @@ ms.locfileid: "86145247"
 
 您可以採取下列其中一種方式提供資料表的認證︰ 
 
-- **完整存取儲存體帳戶連接字串**： `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>` 您可以從 Azure 入口網站取得連接字串，方法是移至傳統儲存體帳戶的 [**儲存體帳戶**] [分頁] [設定] [  >  **Settings**  >  **金鑰**] () 或 Azure Resource Manager 儲存體帳戶的 [**設定**] [  >  **存取金鑰**] () 。
-- **儲存體帳戶共用存取簽章連接字串**： `TableEndpoint=https://<your account>.table.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=t&sp=rl` 在此情況下，共用存取簽章應該有容器 (資料表的清單和讀取權限) 和 (資料表資料列) 的物件。
--  **資料表共用存取**簽章： `ContainerSharedAccessUri=https://<your storage account>.table.core.windows.net/<table name>?tn=<table name>&sv=2016-05-31&sig=<the signature>&se=<the validity end time>&sp=r` 共用存取簽章應該具有資料表的查詢 (讀取) 許可權。
+- **完整存取儲存體帳戶連接字串**： `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>` 您可以移至**儲存體帳戶**的 [分頁] [設定] [索引  >  **Settings**  >  **鍵**] （適用于傳統儲存體帳戶）或 [**設定**] [  >  **存取金鑰**] （適用于 Azure Resource Manager 儲存體帳戶），以從 Azure 入口網站取得連接字串。
+- **儲存體帳戶共用存取簽章連接字串**： `TableEndpoint=https://<your account>.table.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=t&sp=rl` 共用存取簽章應該有容器（在此案例中為數據表）和物件（資料表資料列）的 [清單] 和 [讀取] 許可權。
+-  **資料表共用存取**簽章： `ContainerSharedAccessUri=https://<your storage account>.table.core.windows.net/<table name>?tn=<table name>&sv=2016-05-31&sig=<the signature>&se=<the validity end time>&sp=r` 共用存取簽章應該有資料表的查詢（讀取）許可權。
 
 如需儲存體共用存取簽章的詳細資訊，請參閱[使用共用存取簽章](../storage/common/storage-dotnet-shared-access-signature-part-1.md)。
 
@@ -117,7 +117,7 @@ ms.locfileid: "86145247"
     }
 ```
 
-這個索引子會每隔兩小時執行一次。  (排程間隔設為 "PT2H"。 ) 若要每隔30分鐘執行索引子，請將間隔設定為 "為 PT30M"。 支援的最短間隔為 5 分鐘。 排程為選擇性；如果省略，索引子只會在建立時執行一次。 不過，您隨時都可依需求執行索引子。   
+這個索引子會每隔兩小時執行一次。 （排程間隔設為 "PT2H"）。若要每隔30分鐘執行索引子，請將間隔設定為 "為 PT30M"。 支援的最短間隔為 5 分鐘。 排程為選擇性；如果省略，索引子只會在建立時執行一次。 不過，您隨時都可依需求執行索引子。   
 
 如需建立索引子 API 的詳細資訊，請參閱[建立索引子](https://docs.microsoft.com/rest/api/searchservice/create-indexer)。
 

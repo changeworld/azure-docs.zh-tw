@@ -11,13 +11,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 5b3e2db9b9769dee7599a2446b272e04cc0bedf7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 74cf34438ca142302a6853e8e488b0c7188b162b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74703380"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86522358"
 ---
-# <a name="transform-data-in-azure-data-factory"></a>Azure Data Factory 中的資料轉換
+# <a name="transform-data-in-azure-data-factory-version-1"></a>轉換 Azure Data Factory 版本1中的資料
 > [!div class="op_single_selector"]
 > * [Hive](data-factory-hive-activity.md)  
 > * [Pig](data-factory-pig-activity.md)  
@@ -28,7 +29,7 @@ ms.locfileid: "74703380"
 > * [Data Lake Analytics U-SQL](data-factory-usql-activity.md)
 > * [.NET 自訂](data-factory-use-custom-activities.md)
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 > [!NOTE]
 > 本文適用於 Data Factory 第 1 版。 如果您使用目前版本的 Data Factory 服務，請參閱 [Data Factory 中的資料轉換活動](../transform-data.md)。
 

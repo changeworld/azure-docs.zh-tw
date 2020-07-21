@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 8fae863c03ccbc17e9ec6621e73ddf475f759569
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: fb907e0b9c923a77c6956723f6df397fabd84da8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996205"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523973"
 ---
 # <a name="translator-v2-to-v3-migration"></a>Translator V2 至 V3 的遷移
 
@@ -116,8 +116,8 @@ Microsoft Translator V3 依預設會使用類神經機器翻譯。 因此，無�
 
 使用 V3 文字 API 的類神經翻譯不支援使用標準類別 (SMT、語音、技術、generalnn)。
 
-| |端點|    GDPR 處理器合規性|    使用 Translator Hub|    使用自訂翻譯 (預覽)|
-|:-----|:-----|:-----|:-----|:-----|
+| 版本 | 端點 | GDPR 處理器合規性 | 使用 Translator Hub | 使用自訂翻譯 (預覽) |
+| :------ | :------- | :------------------------ | :----------------- | :------------------------------ |
 |Translator 第2版|    api.microsofttranslator.com|    否    |是    |否|
 |Translator 第3版|    api.cognitive.microsofttranslator.com|    是|    否|    是|
 

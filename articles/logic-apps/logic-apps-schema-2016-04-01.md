@@ -8,11 +8,12 @@ ms.author: klam
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 07/25/2016
-ms.openlocfilehash: e2f65f1c52dc7dfb2e4e4bf66f5c7e82f4b802b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ccc7df5bfac327fabf05f210764dbe10658b5015
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74792887"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520710"
 ---
 # <a name="schema-updates-for-azure-logic-apps---june-1-2016"></a>Azure Logic Apps 的結構描述更新 - 2016 年 6 月 1 日
 
@@ -28,7 +29,7 @@ Azure Logic Apps 之 API 版本的[已更新結構描述](https://schema.managem
 
 ## <a name="scopes"></a>範圍
 
-這個結構描述包含可讓您將動作群組在一起或在彼此內巢狀動作的範圍。 例如，條件可包含另一個條件。 深入了解[範圍語法](../logic-apps/logic-apps-loops-and-scopes.md)，或檢閱此基本範圍範例︰
+這個結構描述包含可讓您將動作群組在一起或在彼此內巢狀動作的範圍。 例如，條件可包含另一個條件。 深入了解[範圍語法](./logic-apps-control-flow-loops.md)，或檢閱此基本範圍範例︰
 
 ```json
 {
@@ -54,7 +55,7 @@ Azure Logic Apps 之 API 版本的[已更新結構描述](https://schema.managem
 
 ## <a name="conditions-and-loops-changes"></a>條件和迴圈的變更
 
-在舊版結構描述中，條件和迴圈是與單一動作相關聯的參數。 此結構描述會放寬此限制，因此條件和迴圈現在可用來作為動作類型。 深入了解[迴圈和範圍](../logic-apps/logic-apps-loops-and-scopes.md)、或檢閱這個顯示 [條件](../logic-apps/logic-apps-control-flow-conditional-statement.md) 動作的基本範例：
+在舊版結構描述中，條件和迴圈是與單一動作相關聯的參數。 此結構描述會放寬此限制，因此條件和迴圈現在可用來作為動作類型。 深入了解[迴圈和範圍](./logic-apps-control-flow-loops.md)、或檢閱這個顯示 [條件](../logic-apps/logic-apps-control-flow-conditional-statement.md) 動作的基本範例：
 
 ```json
 {
@@ -130,7 +131,7 @@ Azure Logic Apps 之 API 版本的[已更新結構描述](https://schema.managem
 
 #### <a name="foreach-loop-with-condition"></a>'foreach' 迴圈與條件
 
-在新的結構描述中，您可以使用篩選動作來複寫使用 **For each** 迴圈 (其中每個項目有一個條件) 的模式。 不過，變更會在您升級時自動發生。 條件會變成要在 **For each** 迴圈之前出現的篩選動作，只傳回符合條件的項目陣列，並將該陣列會傳遞至 **For each** 動作。 如需範例，請參閱[迴圈和範圍](../logic-apps/logic-apps-loops-and-scopes.md)。
+在新的結構描述中，您可以使用篩選動作來複寫使用 **For each** 迴圈 (其中每個項目有一個條件) 的模式。 不過，變更會在您升級時自動發生。 條件會變成要在 **For each** 迴圈之前出現的篩選動作，只傳回符合條件的項目陣列，並將該陣列會傳遞至 **For each** 動作。 如需範例，請參閱[迴圈和範圍](./logic-apps-control-flow-loops.md)。
 
 ### <a name="resource-tags"></a>資源標籤
 

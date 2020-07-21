@@ -8,11 +8,12 @@ ms.topic: troubleshooting
 ms.date: 8/26/2019
 ms.author: abnarain
 ms.reviewer: craigg
-ms.openlocfilehash: ac6081f02ad532b512ecca335b949eec71c060ff
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 568739ebdce632ae955da5e1cec12635c86af57c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836153"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86522851"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>針對 Azure Data Factory 進行疑難排解
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -122,6 +123,14 @@ ms.locfileid: "83836153"
 - **原因**︰錯誤訊息指出各種問題，例如未預期的叢集狀態或特定活動。 通常不會出現任何錯誤訊息。
 
 - **建議**：N/A
+
+### <a name="error-code-3208"></a>錯誤碼：3208
+
+- **訊息**：`An error occurred while sending the request.`
+
+- **原因**： Databricks 服務的網路連線已中斷。
+
+- **建議**：如果您使用自我裝載整合執行時間，請確定網路連線可從整合執行時間節點可靠地執行。 如果您使用的是 Azure integration runtime，重試通常會運作。
  
 ## <a name="azure-data-lake-analytics"></a>Azure Data Lake Analytics
 

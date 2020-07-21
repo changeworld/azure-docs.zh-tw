@@ -7,16 +7,20 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 06/28/2019
 ms.author: rambala
-ms.openlocfilehash: 4c3c6ae5fbdd91e6e44438be7fef2a3a91564a34
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: da90bbbce485616afdac5997576da99ac4d62c6f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74076687"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521899"
 ---
 # <a name="designing-for-high-availability-with-expressroute"></a>使用 ExpressRoute 設計高可用性
 
 ExpressRoute 是專為高可用性所設計，可提供與 Microsoft 資源的電訊公司私人網路連線能力。 換句話說，在 Microsoft network 內的 ExpressRoute 路徑中，沒有單一失敗點。 若要將可用性最大化，您的 ExpressRoute 線路的客戶和服務提供者區段也應為高可用性架構。 在本文中，我們將探討使用 ExpressRoute 建立健全的網路連線的網路架構考慮，然後讓我們深入探討可協助您改善 ExpressRoute 線路高可用性的微調功能。
 
+>[!NOTE]
+>這篇文章中所述的概念同樣適用于在虛擬 WAN 或其外部建立 ExpressRoute 線路時。
+>
 
 ## <a name="architecture-considerations"></a>架構考慮
 

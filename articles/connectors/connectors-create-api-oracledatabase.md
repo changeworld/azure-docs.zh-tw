@@ -7,11 +7,12 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/20/2020
 tags: connectors
-ms.openlocfilehash: 3e1583abd5cca4ea1f961353eb84a4b93a997e51
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: e7055964f9515189450fac5c993f6acda946bfd4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836272"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524160"
 ---
 # <a name="get-started-with-the-oracle-database-connector"></a>開始使用 Oracle Database 連接器
 
@@ -57,30 +58,30 @@ ms.locfileid: "83836272"
 
 2. 在邏輯應用程式啟動時，選取**要求/回應 - 要求**觸發程序： 
 
-    ![](./media/connectors-create-api-oracledatabase/request-trigger.png)
+    ![對話方塊中有一個可搜尋所有觸發程式的方塊。 另外還有一個顯示「要求/回應-要求」的單一觸發程式，以及一個選取按鈕。](./media/connectors-create-api-oracledatabase/request-trigger.png)
 
 3. 選取 [儲存]。 當您儲存時，系統會自動生產生一個要求 URL。 
 
 4. 選取 [新增步驟]，再選取 [新增動作]。 輸入 `oracle` 以查看可用的動作： 
 
-    ![](./media/connectors-create-api-oracledatabase/oracledb-actions.png)
+    ![搜尋方塊包含 "oracle"。 搜尋會產生一個標記為「Oracle Database」的點擊。 有一個索引標籤式頁面，其中一個索引標籤顯示 [觸發程式（0）]，另一個則顯示「動作（6）」。 列出六個動作。 其中的第一個是「取得資料列預覽」。](./media/connectors-create-api-oracledatabase/oracledb-actions.png)
 
     > [!TIP]
     > 這也是查看連接器可使用的觸發程序和動作最快的方法。 輸入連接器的部分名稱，例如 `oracle`。 設計工具會列出所有觸發程序和動作。 
 
 5. 選取其中一個動作，例如 [Oracle Database - 立即取得]。 選取 [透過內部部署資料閘道連線]。 輸入 Oracle 伺服器名稱、驗證方法、使用者名稱、密碼並選取閘道：
 
-    ![](./media/connectors-create-api-oracledatabase/create-oracle-connection.png)
+    ![此對話方塊的標題為「Oracle Database 取得資料列」。 有一個方塊已核取，標示為「透過內部部署資料閘道連接」。 以下是五個其他文字方塊。](./media/connectors-create-api-oracledatabase/create-oracle-connection.png)
 
 6. 連線之後，從清單中選取資料表，接著輸入資料表的資料列識別碼。 您必須知道資料表的識別碼。 如果您不知道，請連絡 Oracle DB 管理員，並從 `select * from yourTableName` 取得輸出資料。 這可讓您取得必要的可識別資料以繼續作業。
 
     在下列範例中，會從人力資源資料庫中傳回作業資料： 
 
-    ![](./media/connectors-create-api-oracledatabase/table-rowid.png)
+    ![標題為「取得資料列（預覽）」的對話方塊有兩個文字方塊：「資料表名稱」，其中包含「HRJOBS」，而且有下拉式清單和「資料列識別碼」，其中包含「SA_REP」。](./media/connectors-create-api-oracledatabase/table-rowid.png)
 
-7. 在下一個步驟中，您可以使用其他任何連接器來建置您的工作流程。 若您想測試從 Oracle 取得資料，請使用其中一個「傳送電子郵件」連接器 (例如 Office 365 Outlook)，將包含 Oracle 資料的電子郵件寄給自己。 使用 Oracle 資料表中的動態權杖來建置`Subject`以及您電子郵件的 `Body`：
+7. 在下一個步驟中，您可以使用其他任何連接器來建置您的工作流程。 如果您想要測試從 Oracle 取得資料，請使用其中一個「傳送電子郵件」連接器（例如 Office 365 Outlook），將包含 Oracle 資料的電子郵件傳送給自己。 使用 Oracle 資料表中的動態權杖來建置`Subject`以及您電子郵件的 `Body`：
 
-    ![](./media/connectors-create-api-oracledatabase/oracle-send-email.png)
+    ![有兩個對話方塊。 [傳送電子郵件] 方塊包含用來指定電子郵件「內文」、「主旨」和「寄件者」位址的 box。 [新增動態內容] 對話方塊可讓您從流程的應用程式和服務搜尋動態內容。](./media/connectors-create-api-oracledatabase/oracle-send-email.png)
 
 8. **儲存**您的邏輯應用程式，接著選取 [執行]。 關閉設計工具，接著查看狀態的執行歷程記錄。 如果失敗，請選取失敗的訊息資料列。 設計工具隨即開啟，並顯示失敗的步驟，以及錯誤資訊。 如果成功，您應該會收到一封電子郵件，內含您新增的資訊。
 
@@ -89,11 +90,11 @@ ms.locfileid: "83836272"
 
 * 您希望能監視 #oracle 主題標籤，並在資料庫中放置推文以便查詢，並在其他應用程式中使用。 在邏輯應用程式中，新增 `Twitter - When a new tweet is posted` 觸發程序並輸入 **#oracle** 主題標籤。 接著，新增 `Oracle Database - Insert row` 動作，再選取您的資料表：
 
-    ![](./media/connectors-create-api-oracledatabase/twitter-oracledb.png)
+    ![[張貼新推文時] 對話方塊會顯示「主題標籤 oracle」做為搜尋文字，並可讓您指定檢查頻率。 這個對話方塊會引導至 [Oracle Database] 對話方塊，讓您選取動作。](./media/connectors-create-api-oracledatabase/twitter-oracledb.png)
 
 * 訊息已傳送至服務匯流排佇列。 您希望取得這些訊息，並將其放在資料庫中。 在邏輯應用程式中，新增 `Service Bus - when a message is received in a queue` 觸發程序，並選取該佇列。 接著，新增 `Oracle Database - Insert row` 動作，再選取您的資料表：
 
-    ![](./media/connectors-create-api-oracledatabase/sbqueue-oracledb.png)
+    ![「收到訊息時 ...」對話方塊會顯示「訂單」作為「佇列名稱」，並可讓您指定檢查頻率。 此方塊會引導至 [插入資料列（預覽）] 對話方塊，讓您選取 [資料表名稱]。](./media/connectors-create-api-oracledatabase/sbqueue-oracledb.png)
 
 ## <a name="common-errors"></a>常見錯誤
 

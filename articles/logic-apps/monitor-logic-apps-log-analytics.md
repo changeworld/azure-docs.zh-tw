@@ -6,24 +6,24 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 01/30/2020
-ms.openlocfilehash: 3e41f92f9e41f7a05102e8c0e1c2edb81fa50bf3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2a39e27c0a9fc7999d7f363767ad62513d383192
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708037"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520727"
 ---
 # <a name="set-up-azure-monitor-logs-and-collect-diagnostics-data-for-azure-logic-apps"></a>設定 Azure 監視器記錄和收集診斷資料以進行 Azure Logic Apps
 
-若要在執行時間期間取得有關邏輯應用程式的更豐富詳細資料，您可以設定及使用[Azure 監視器記錄](../azure-monitor/platform/data-platform-logs.md)來記錄和儲存執行時間資料和事件的相關資訊，例如觸發程式事件、執行事件和[Log Analytics 工作區](../azure-monitor/platform/resource-logs-collect-workspace.md)中的動作事件。 [Azure 監視器](../azure-monitor/overview.md)可協助您監視您的雲端和內部部署環境，以便更輕鬆地維護其可用性和效能。 藉由使用 Azure 監視器記錄，您可以建立[記錄查詢](../azure-monitor/log-query/log-query-overview.md)，協助您收集及審查這項資訊。 您也可以[將此診斷資料與其他 Azure 服務搭配使用](#extend-data)，例如 Azure 儲存體和 Azure 事件中樞。
+若要在執行時間期間取得有關邏輯應用程式的更豐富詳細資料，您可以設定及使用[Azure 監視器記錄](../azure-monitor/platform/data-platform-logs.md)來記錄和儲存執行時間資料和事件的相關資訊，例如觸發程式事件、執行事件和[Log Analytics 工作區](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace)中的動作事件。 [Azure 監視器](../azure-monitor/overview.md)可協助您監視您的雲端和內部部署環境，以便更輕鬆地維護其可用性和效能。 藉由使用 Azure 監視器記錄，您可以建立[記錄查詢](../azure-monitor/log-query/log-query-overview.md)，協助您收集及審查這項資訊。 您也可以[將此診斷資料與其他 Azure 服務搭配使用](#extend-data)，例如 Azure 儲存體和 Azure 事件中樞。
 
 若要設定邏輯應用程式的記錄，您可以在[建立邏輯應用程式時啟用 Log analytics](#logging-for-new-logic-apps)，也可以在現有邏輯應用程式的 Log Analytics 工作區中[安裝 Logic Apps 管理解決方案](#install-management-solution)。 此解決方案會提供邏輯應用程式執行的匯總資訊，並包含特定詳細資料，例如狀態、執行時間、重新提交狀態和相互關聯識別碼。 然後，若要啟用記錄並建立此資訊的查詢，請[設定 Azure 監視器記錄](#set-up-resource-logs)。
 
 本文說明如何在您建立邏輯應用程式、如何安裝和設定 Logic Apps 管理解決方案，以及如何設定和建立 Azure 監視器記錄的查詢時，啟用 Log Analytics。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
-開始之前，您需要[Log Analytics 工作區](../azure-monitor/platform/resource-logs-collect-workspace.md)。 如果您沒有工作區，請瞭解[如何建立 Log Analytics 工作區](../azure-monitor/learn/quick-create-workspace.md)。
+開始之前，您需要[Log Analytics 工作區](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace)。 如果您沒有工作區，請瞭解[如何建立 Log Analytics 工作區](../azure-monitor/learn/quick-create-workspace.md)。
 
 <a name="logging-for-new-logic-apps"></a>
 
@@ -41,7 +41,7 @@ ms.locfileid: "84708037"
 
       完成此步驟之後，Azure 會建立您的邏輯應用程式，此應用程式現在會與您的 Log Analytics 工作區建立關聯。 此外，此步驟會自動在您的工作區中安裝 Logic Apps 管理解決方案。
 
-1. 當您完成時，請選取 [建立]。
+1. 當您完成時，選取 [建立]。
 
 1. 執行邏輯應用程式之後，若要查看您的邏輯應用程式執行，請[繼續進行這些步驟](#view-logic-app-runs)。
 
@@ -176,15 +176,15 @@ ms.locfileid: "84708037"
 
 除了 Azure 監視器記錄之外，您還可以擴充將邏輯應用程式的診斷資料與其他 Azure 服務搭配使用的方式，例如：
 
-* [將 Azure 資源記錄封存到儲存體帳戶](../azure-monitor/platform/resource-logs-collect-storage.md)
-* [將 Azure 平臺記錄串流至 Azure 事件中樞](../azure-monitor/platform/resource-logs-stream-event-hubs.md)
+* [將 Azure 資源記錄封存到儲存體帳戶](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
+* [將 Azure 平臺記錄串流至 Azure 事件中樞](../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs)
 
 您可以接著使用其他服務的遙測和分析來取得即時監視，例如 [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) 和 [Power BI](../azure-monitor/platform/powerbi.md)。 例如：
 
 * [將資料從事件中樞串流至串流分析](../stream-analytics/stream-analytics-define-inputs.md)
 * [使用串流分析分析串流資料並在 Power BI 中建立即時分析儀表板](../stream-analytics/stream-analytics-power-bi-dashboard.md)
 
-根據您想要傳送診斷資料的位置，請確定您先[建立 azure 儲存體帳戶](../storage/common/storage-create-storage-account.md)，或[建立 azure 事件中樞](../event-hubs/event-hubs-create.md)。 然後，您可以選取要傳送該資料的目的地。 只有當您使用儲存體帳戶時，才適用保留週期。
+根據您想要傳送診斷資料的位置，請確定您先[建立 azure 儲存體帳戶](../storage/common/storage-account-create.md)，或[建立 azure 事件中樞](../event-hubs/event-hubs-create.md)。 然後，您可以選取要傳送該資料的目的地。 只有當您使用儲存體帳戶時，才適用保留週期。
 
 ![將資料傳送至 Azure 儲存體帳戶或事件中樞](./media/monitor-logic-apps-log-analytics/diagnostics-storage-event-hub-log-analytics.png)
 
@@ -192,7 +192,7 @@ ms.locfileid: "84708037"
 
 ## <a name="azure-monitor-diagnostics-events"></a>Azure 監視器診斷事件
 
-每個診斷事件都會有邏輯應用程式和該事件的詳細資料，例如，狀態、開始時間、結束時間等等。 若要以程式設計方式設定監視、追蹤和記錄，您可以使用此資訊搭配適用于[Azure Logic Apps 的 REST API](https://docs.microsoft.com/rest/api/logic)和[Azure 監視器的 REST API](../azure-monitor/platform/metrics-supported.md#microsoftlogicworkflows)。 您也可以使用 `clientTrackingId` `trackedProperties` 出現在中的和屬性。 
+每個診斷事件都會有邏輯應用程式和該事件的詳細資料，例如，狀態、開始時間、結束時間等等。 若要以程式設計方式設定監視、追蹤和記錄，您可以使用此資訊搭配適用于[Azure Logic Apps 的 REST API](/rest/api/logic)和[Azure 監視器的 REST API](../azure-monitor/platform/metrics-supported.md#microsoftlogicworkflows)。 您也可以使用 `clientTrackingId` `trackedProperties` 出現在中的和屬性。 
 
 * `clientTrackingId`： 如果未提供，Azure 會自動產生這個識別碼，並相互關聯邏輯應用程式執行之間的事件，包括從邏輯應用程式呼叫的任何巢狀工作流程。 您可以藉由在 `x-ms-client-tracking-id` 觸發程式要求中傳遞標頭與您的自訂識別碼值，在觸發程式中手動指定此識別碼。 您可以使用要求觸發程序、HTTP 觸發程序或 Webhook 觸發程序。
 

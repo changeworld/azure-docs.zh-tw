@@ -7,12 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/30/2020
-ms.openlocfilehash: 1f65feee8806b0c8dc85e14cdcd6e2687e040456
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/14/2020
+ms.openlocfilehash: 00080322b4fa474e5095d40afb041134e1a85fe7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84119215"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519727"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>選擇 Azure 認知搜尋的定價層
 
@@ -22,14 +23,17 @@ ms.locfileid: "84119215"
 
 ## <a name="feature-availability-by-tier"></a>依層級的功能可用性
 
-幾乎每一層都有提供所有功能，包括免費，但需要大量資源的功能或工作流程可能無法正常運作，除非您提供足夠的容量。 例如， [AI 擴充](cognitive-search-concept-intro.md)具有長時間執行的技能，會在免費的服務上使用，除非資料集很小。
-
 下表描述層相關的功能條件約束。
 
 | 功能 | 限制 |
 |---------|-------------|
 | [索引](search-indexer-overview.md) | 在 S3 HD 上無法使用索引子。 |
+| [AI 擴充](search-security-manage-encryption-keys.md) | 會在免費層執行，但不建議您這麼做。 |
 | [客戶管理的加密金鑰](search-security-manage-encryption-keys.md) | 免費層無法使用。 |
+| [IP 防火牆存取](service-configure-firewall.md) | 免費層無法使用。 |
+| [與 Azure 私人連結整合](service-create-private-endpoint.md) | 免費層無法使用。 |
+
+大部分的功能在每一層都有提供，包括免費，但需要大量資源的功能才能正常運作，除非您提供足夠的容量。 例如， [AI 擴充](cognitive-search-concept-intro.md)具有長時間執行的技能，會在免費的服務上使用，除非資料集很小。
 
 ## <a name="tiers-skus"></a>層（Sku）
 
@@ -56,10 +60,10 @@ ms.locfileid: "84119215"
 
 建立在 Azure 認知搜尋上的解決方案可能會以下列方式產生成本：
 
-+ 已修正服務本身的成本，以最低限度的設定（一個分割區和複本）執行全天候
-+ 相應增加時的累加成本（新增複本或資料分割）
++ 服務本身的成本，以最低設定（一個分割區和複本）的全天候執行
++ 新增容量（複本或磁碟分割）
 + 頻寬費用（輸出資料傳輸） 
-+ 認知搜尋（附加認知服務 AI 擴充，或使用適用于知識存放區的 Azure 儲存體）
++ 附加元件服務，例如 AI 擴充（在定義 AI 處理的技能集中附加認知服務，或使用 Azure storage for 知識 store）或在私人虛擬網路中部署搜尋服務
 
 ### <a name="service-costs"></a>服務成本
 
@@ -71,7 +75,7 @@ ms.locfileid: "84119215"
 
 ### <a name="bandwidth-charges"></a>頻寬費用
 
-根據服務的位置而定，使用[Azure 認知搜尋索引子](search-indexer-overview.md)可能會影響計費。 如果您在與資料相同的區域中建立 Azure 認知搜尋服務，則可以完全排除資料輸出費用。 以下是[頻寬定價頁面](https://azure.microsoft.com/pricing/details/bandwidth/)的一些資訊：
+根據服務的位置而定，使用[索引子](search-indexer-overview.md)可能會影響計費。 如果您在與資料相同的區域中建立 Azure 認知搜尋服務，則可以完全排除資料輸出費用。 以下是[頻寬定價頁面](https://azure.microsoft.com/pricing/details/bandwidth/)的一些資訊：
 
 + Microsoft 不會針對 Azure 上的任何服務或來自 Azure 認知搜尋的任何輸出資料，收取任何輸入資料的費用。
 + 在 multiservice 解決方案中，當所有服務都位於相同的區域時，就不會對跨越網路的資料收費。
@@ -82,7 +86,7 @@ ms.locfileid: "84119215"
 
 針對[AI 擴充](cognitive-search-concept-intro.md)，您應該規劃在適用于隨用隨付處理的 S0 定價層中，[將可計費的 Azure 認知服務資源](cognitive-search-attach-cognitive-services.md)連結至 Azure 認知搜尋所在的相同區域。 附加認知服務並沒有相關聯的固定成本。 您只需要支付所需的處理費用。
 
-| 操作 | 計費影響 |
+| 作業 | 計費影響 |
 |-----------|----------------|
 | 檔破解，文字解壓縮 | 免費 |
 | 檔破解，影像解壓縮 | 根據從您的檔中解壓縮的影像數目來計費。 在[索引子](https://docs.microsoft.com/rest/api/searchservice/create-indexer#indexer-parameters)設定中， **imageAction**是用來觸發影像解壓縮的參數。 如果 [ **imageAction** ] 設定為 [無] （預設值），則不會向您收取影像解壓縮的費用。 影像解壓縮的速率會記錄在 Azure 認知搜尋的[定價詳細資料](https://azure.microsoft.com/pricing/details/search/)頁面上。|
@@ -107,7 +111,7 @@ SU 是服務*所使用*之*複本*和資料分割的乘積： **（R x P = SU）
 
 ## <a name="how-to-manage-costs"></a>如何管理成本
 
-下列建議可協助您最少保留成本：
+下列建議可協助您降低成本，或更有效率地管理成本：
 
 + 在相同區域中建立所有資源，或盡可能在較少的區域中，以最小化或排除頻寬費用。
 
@@ -140,7 +144,7 @@ SU 是服務*所使用*之*複本*和資料分割的乘積： **（R x P = SU）
 
 商務需求通常會決定您需要的索引數目。 例如，您可能需要大型檔存放庫的全域索引。 或者，您可能需要以區域、應用程式或業務的小型為基礎的多個索引。
 
-若要判斷索引的大小，您必須[建置一個](search-create-index-portal.md)索引。 其大小會以匯入的資料和索引設定為基礎，例如您是否啟用建議工具、篩選和排序。 如需設定對大小影響的詳細資訊，請參閱[建立基本索引](search-what-is-an-index.md)。
+若要判斷索引的大小，您必須[建置一個](search-what-is-an-index.md)索引。 其大小會以匯入的資料和索引設定為基礎，例如您是否啟用建議工具、篩選和排序。
 
 對於全文檢索搜尋，主要資料結構是[反向索引](https://en.wikipedia.org/wiki/Inverted_index)結構，其具有與來源資料不同的特性。 針對反向索引，大小和複雜度取決於內容，而不一定是您饋送至其中的資料量。 具有高冗余的大型資料來源可能會產生比包含高度變數內容的較小資料集更小的索引。 因此，很少可以根據原始資料集的大小來推斷索引大小。
 
@@ -154,7 +158,7 @@ SU 是服務*所使用*之*複本*和資料分割的乘積： **（R x P = SU）
 
 + [建立免費服務](search-create-service-portal.md)。
 + 準備一個小型、具代表性的資料集。
-+ [在入口網站中建立初始索引](search-create-index-portal.md)，並記下其大小。 功能和屬性會影響存放裝置。 例如，新增建議工具（搜尋型別查詢）將會增加儲存需求。 使用相同的資料集，您可能會嘗試建立多個版本的索引，每個欄位各有不同的屬性，以查看儲存體需求的差異。 如需詳細資訊，請參閱[建立基本索引中的「儲存體影響](search-what-is-an-index.md#index-size)」。
++ [在入口網站中建立初始索引](search-get-started-portal.md)，並記下其大小。 功能和屬性會影響存放裝置。 例如，新增建議工具（搜尋型別查詢）將會增加儲存需求。 使用相同的資料集，您可能會嘗試建立多個版本的索引，每個欄位各有不同的屬性，以查看儲存體需求的差異。 如需詳細資訊，請參閱[建立基本索引中的「儲存體影響](search-what-is-an-index.md#index-size)」。
 
 使用粗略的估計值，您可以將兩個索引（開發和生產）的預算加倍，然後據以選擇您的定價層。
 
@@ -170,7 +174,7 @@ SU 是服務*所使用*之*複本*和資料分割的乘積： **（R x P = SU）
     + 如果您知道您要進行大規模的索引編制和查詢負載，請從最高的 S2 開始，甚至是 S3。
     + 從儲存體優化（L1 或 L2）開始，如果您要編制大量資料的索引，而且查詢負載相對較低，就像內部商務應用程式一樣。
 
-1. [建置初始索引](search-create-index-portal.md)，以判斷來源資料轉譯為索引的情形。 這是唯一能預估索引大小的方式。
+1. [建置初始索引](search-what-is-an-index.md)，以判斷來源資料轉譯為索引的情形。 這是唯一能預估索引大小的方式。
 
 1. 在入口網站中[監視儲存體、服務限制、查詢量和延遲](search-monitor-usage.md)。 入口網站會顯示每秒查詢數、節流查詢，以及搜尋延遲。 所有這些值都可協助您決定是否選取正確的層級。 
 

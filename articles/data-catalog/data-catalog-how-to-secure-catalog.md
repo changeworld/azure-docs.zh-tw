@@ -4,13 +4,14 @@ description: 本文說明如何在 Azure 資料目錄中保護資料目錄及其
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: b0972be2b8a6e05d3d90cde7354b4890ea95cbe4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a429c09b6f8082c95e29bcea62d27ec4fb46fd3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68976753"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523378"
 ---
 # <a name="how-to-secure-access-to-data-catalog-and-data-assets"></a>如何保護對資料目錄及資料資產的存取
 
@@ -31,7 +32,7 @@ ms.locfileid: "68976753"
 
    ![Azure 資料目錄使用者新增] 按鈕](media/data-catalog-how-to-secure-catalog/data-catalog-add-button.png)
 
-3. 按一下 **[新增]** 。
+3. 按一下 [新增] 。
 
 4. 在與此目錄關聯的 Azure Active Directory (AAD) 中輸入完整的「使用者名稱」**** 或「安全性群組」**** 的名稱。 如果您要新增多個使用者或群組，請使用逗號 (`,’) 作為分隔符號。
 

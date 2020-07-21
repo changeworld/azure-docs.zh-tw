@@ -6,11 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.date: 10/03/2018
 ms.topic: article
-ms.openlocfilehash: 08c7fa6abac7ed369347f1f496c70174b06edf02
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 65f9ee8f67ac4efb6ab26fa0912d11d7be7c571d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83831568"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520896"
 ---
 # <a name="run-actions-based-on-group-status-by-using-scopes-in-azure-logic-apps"></a>在 Azure Logic Apps 中，根據群組狀態使用範圍執行動作
 
@@ -70,13 +71,13 @@ ms.locfileid: "83831568"
 
       ![設定 [Bing 地圖服務 - 取得路線] 動作](./media/logic-apps-control-flow-run-steps-group-scopes/get-route.png) 
 
-      如需這些參數的詳細資訊，請參閱[計算路線](https://msdn.microsoft.com/library/ff701717.aspx)。
+      如需這些參數的詳細資訊，請參閱[計算路線](/bingmaps/rest-services/routes/calculate-a-route)。
 
       | 設定 | 值 | 描述 |
       | ------- | ----- | ----------- |
       | **導航點 1** | <起點> | 輸入您的路線起點。 | 
       | **導航點 2** | <終點> | 輸入您路線的目的地。 | 
-      | **避開** | None | 輸入路線所要避開的項目，例如高速公路、收費站等等。 如需可能使用的值，請參閱[計算路線](https://msdn.microsoft.com/library/ff701717.aspx)。 | 
+      | **避開** | None | 輸入路線所要避開的項目，例如高速公路、收費站等等。 如需可能使用的值，請參閱[計算路線](/bingmaps/rest-services/routes/calculate-a-route)。 | 
       | **最佳化** | timeWithTraffic | 選取可將路線最佳化的參數，例如距離、和使用目前交通資訊的時間等等。 此範例會使用此值："timeWithTraffic" | 
       | **距離單位** | <*your-preference*> | 輸入要計算您路線的距離單位。 此範例會使用此值：「英哩」 | 
       | **行進模式** | 開車 | 輸入路線的旅行模式。 此範例會使用此值：「開車」 | 
@@ -387,7 +388,7 @@ ms.locfileid: "83831568"
 
 ## <a name="get-support"></a>取得支援
 
-* 如有任何問題，請瀏覽 [Microsoft 問與答的 Azure Logic Apps 問題頁面](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)。
+* 如有任何問題，請瀏覽 [Microsoft 問與答的 Azure Logic Apps 問題頁面](/answers/topics/azure-logic-apps.html)。
 * 若要提交或票選功能與建議，請造訪 [Azure Logic Apps 使用者意見反應網站](https://aka.ms/logicapps-wish)。
 
 ## <a name="next-steps"></a>後續步驟

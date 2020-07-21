@@ -4,14 +4,14 @@ description: 強調如何將 Azure 資料目錄與「巨量資料」資料來源
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: 88dc85003fa2a3e41d8a31055ff8ba9b0fcc7492
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c6f7355b4505324c562ae39b05155a2902da2790
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71300576"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523446"
 ---
 # <a name="how-to-catalog-big-data-in-azure-data-catalog"></a>如何在 Azure 資料目錄中將海量資料分類
 

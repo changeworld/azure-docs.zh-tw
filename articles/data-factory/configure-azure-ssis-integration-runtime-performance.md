@@ -10,12 +10,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: ''
 manager: anandsub
-ms.openlocfilehash: 6a3b463196142691a59f625429953d1e82502f3d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6aaa02c2e14cfc31a11da260da38705ba064ba79
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85255529"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523310"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>設定 Azure-SSIS Integration Runtime 以獲得高效能
 
@@ -104,11 +104,15 @@ Data Factory (包括 Azure-SSIS IR) 支援下列選項：
 
 此資料表示單一背景工作節點上的單一套件執行。 封裝會從 Azure Blob 儲存體載入具有名字和姓氏資料行的3000000記錄、產生完整名稱資料行，並將完整名稱長度超過20個字元的記錄寫入 Azure Blob 儲存體。
 
+Y 軸是在一小時內完成執行的封裝數目。 請注意，這只是一個記憶體耗用量封裝的測試結果。 如果您想要知道封裝的輸送量，建議您自行執行測試。
+
 ![SSIS Integration Runtime 套件執行速度](media/configure-azure-ssis-integration-runtime-performance/ssisir-execution-speedV2.png)
 
 ### <a name="configure-for-overall-throughput"></a>針對整體輸送量進行設定
 
 如果您需要執行許多套件，且很重視整體輸送量，請使用下列圖表中的資訊，以選擇適合您案例的虛擬機器類型。
+
+Y 軸是在一小時內完成執行的封裝數目。 請注意，這只是一個記憶體耗用量封裝的測試結果。 如果您想要知道封裝的輸送量，建議您自行執行測試。
 
 ![SSIS Integration Runtime 最大整體輸送量](media/configure-azure-ssis-integration-runtime-performance/ssisir-overall-throughputV2.png)
 

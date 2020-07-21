@@ -3,11 +3,12 @@ title: 設定診斷記錄 - Azure 事件中樞 | Microsoft Docs
 description: 了解如何為 Azure 中的事件中樞設定活動記錄和診斷記錄。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 976d8a7127438164c8b807b6f14d3ae877f44b65
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 65c3fc783506eae19c911eb035ebc51b2db19849
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85322457"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521933"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>為 Azure 事件中樞設定診斷記錄
 
@@ -232,7 +233,7 @@ Kafka 使用者錯誤記錄 JSON 包括下表所列的元素：
 
 
 ## <a name="next-steps"></a>後續步驟
-- [事件中樞簡介](event-hubs-what-is-event-hubs.md)
+- [事件中樞簡介](./event-hubs-about.md)
 - [事件中樞範例](sdks.md)
 - 開始使用事件中心
     - [.NET Core](get-started-dotnet-standard-send-v2.md)

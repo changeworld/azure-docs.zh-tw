@@ -3,11 +3,12 @@ title: 設定公用登錄存取
 description: 設定 IP 規則，以允許從選取的公用 IP 位址或位址範圍存取 Azure 容器登錄。
 ms.topic: article
 ms.date: 05/19/2020
-ms.openlocfilehash: dc0514fbe7d3e01914965cee5dc547172d4435a4
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 967f27c05301ff339765706d0b3088ffcbaed1f2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83702080"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523820"
 ---
 # <a name="configure-public-ip-network-rules"></a>設定公用 IP 網路規則
 
@@ -101,10 +102,17 @@ az acr update --name myContainerRegistry --public-network-enabled true
 
 ![從所有網路公用存取][acr-access-all-networks]
 
+## <a name="troubleshoot"></a>疑難排解
+
+如果已設定公用網路規則，或拒絕對登錄的公用存取，則嘗試從不允許的公用網路登入登錄將會失敗。 如果未設定 proxy 的存取規則，則從 HTTPS proxy 後方的用戶端存取也會失敗。 您會看到類似或的錯誤訊息 `Error response from daemon: login attempt failed with status: 403 Forbidden` `Looks like you don't have access to registry` 。
+
+如果您使用網路存取規則所允許的 HTTPS proxy，但用戶端環境中未正確設定 proxy，也可能會發生這些錯誤。 檢查您的 Docker 用戶端和 Docker daemon 是否已設定 proxy 行為。 如需詳細資訊，請參閱 Docker 檔中的[HTTP/HTTPS proxy](https://docs.docker.com/config/daemon/systemd/#httphttps-proxy) 。
+
+
 ## <a name="next-steps"></a>後續步驟
 
 * 若要使用虛擬網路中的私人端點來限制對登錄的存取，請參閱[設定 Azure 容器登錄的 Azure 私人連結](container-registry-private-link.md)。
-* 如果您需要設定用戶端防火牆後方的登錄存取規則，請參閱[設定可以從防火牆後方存取 Azure 容器登錄的規則](container-registry-firewall-access-rules.md)。
+* 如果您需要設定用戶端防火牆後方的登錄存取規則，請參閱[設定可以從防火牆後方存取 Azure Container Registry 的規則](container-registry-firewall-access-rules.md)。
 
 [az-acr-login]: /cli/azure/acr#az-acr-login
 [az-acr-network-rule-add]: /cli/azure/acr/network-rule/#az-acr-network-rule-add

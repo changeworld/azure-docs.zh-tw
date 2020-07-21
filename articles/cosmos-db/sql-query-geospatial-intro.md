@@ -6,11 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: tisande
-ms.openlocfilehash: 59c8b31dcc8594d2cafb2db7832e290b01026f60
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2bb7fd69073dbc960904e8f7b44459ed85e98cdb
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79367579"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523514"
 ---
 # <a name="geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>Azure Cosmos DB 中的地理空間和 GeoJSON 位置資料
 
@@ -20,9 +21,19 @@ ms.locfileid: "79367579"
 * 如何以 SQL 和 LINQ 查詢 Azure Cosmos DB 中的地理空間資料？
 * 如何在 Azure Cosmos DB 中啟用或停用空間編製索引？
 
+## <a name="spatial-data-use-cases"></a>空間資料使用案例
+
+地理空間資料通常會牽涉到鄰近性查詢，例如「尋找我目前位置附近的所有咖啡廳」。 常見的使用案例包括：
+
+* 地理位置分析，驅動特定的行銷計畫。
+* 以位置為基礎的個人化，適用于多個產業，例如零售和醫療保健。
+* 物流增強功能，適用于傳輸優化。
+* 風險分析，特別是針對保險和金融公司。
+* 環境感知，適用于警示和通知。
+
 ## <a name="introduction-to-spatial-data"></a>空間資料簡介
 
-空間資料可描述空間中物件的位置和形狀。 在大部分的應用程式中，這些會對應至地球上的物件和地理空間資料。 空間資料可以用來代表人、感興趣的地方、城市邊界或湖泊。 常見使用案例通常涉及鄰近性查詢，例如「尋找我目前位置附近的所有咖啡廳」。
+空間資料可描述空間中物件的位置和形狀。 在大部分的應用程式中，這些會對應至地球上的物件和地理空間資料。 空間資料可以用來代表人、感興趣的地方、城市邊界或湖泊。
 
 Azure Cosmos DB 的 SQL API 支援兩種空間資料類型： **geometry**資料類型和**geography**資料類型。
 

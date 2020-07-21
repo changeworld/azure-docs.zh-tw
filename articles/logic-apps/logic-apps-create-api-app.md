@@ -6,11 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/26/2017
-ms.openlocfilehash: 45b53b0e692a1272ba59719655c8d60c90fd6c96
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 01ddef37702cb4dedaefb3e94e488ef478f292c3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834487"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520795"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>建立您可以從 Azure Logic Apps 呼叫的自訂 API
 
@@ -53,8 +54,8 @@ ms.locfileid: "83834487"
 如需有關自訂連接器的詳細資訊，請參閱 
 
 * [自訂連接器概觀](../logic-apps/custom-connector-overview.md)
-* [從 Web API 建立自訂連接器](../logic-apps/custom-connector-build-web-api-app-tutorial.md)
-* [在 Azure Logic Apps 中註冊自訂連接器](../logic-apps/logic-apps-custom-connector-register.md)
+* [從 Web API 建立自訂連接器](/connectors/custom-connectors/create-web-api-connector)
+* [在 Azure Logic Apps 中註冊自訂連接器](/connectors/custom-connectors/)
 
 ## <a name="helpful-tools"></a>實用工具
 
@@ -227,7 +228,7 @@ Webhook 觸發程序作用很像本主題之前所述的 [webhook 動作](#webho
 
 * 如需自訂 API 的特定說明，請連絡 [customapishelp@microsoft.com](mailto:customapishelp@microsoft.com)。
 
-* 如有任何問題，請造訪 [Azure Logic Apps 的 Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)。
+* 如有任何問題，請造訪 [Azure Logic Apps 的 Microsoft 問與答頁面](/answers/topics/azure-logic-apps.html)。
 
 * 若要協助改善 Logic Apps，請在 [Logic Apps 使用者意見反應網站](https://aka.ms/logicapps-wish)上票選或提交想法。 
 

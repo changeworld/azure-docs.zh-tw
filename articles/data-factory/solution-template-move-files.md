@@ -11,18 +11,20 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 7/12/2019
-ms.openlocfilehash: 81f072822226e4a573cf0086cac7e64ca1cfe45f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f6baea73c0c4964bb3937304603a2a92a13d52b2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82628158"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86522715"
 ---
 # <a name="move-files-with-azure-data-factory"></a>使用 Azure Data Factory 移動檔案
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-本文說明一個解決方案範本，您可以用來在檔案型存放區之間將檔案從一個資料夾移到另一個。 使用此範本的其中一個常見案例：檔案會持續卸載至來源存放區的登陸資料夾。 藉由建立排程觸發程式，ADF 管線可以定期將這些檔案從來源移至目的地存放區。  ADF 管線達到「移動檔案」的方式是從登陸資料夾取得檔案、將每個檔案複製到目的地存放區上的另一個資料夾，然後從來源存放區的登陸資料夾中刪除相同的檔案。
+在儲存體存放區之間複製二進位檔案時，ADF 複製活動具有「移動」案例的內建支援。  啟用它的方式是在複製活動中，將 "deleteFilesAfterCompletion" 設為 true。 如此一來，複製活動就會在作業完成後，從資料來源存放區刪除檔案。 
+
+本文說明解決方案範本，作為利用 ADF 彈性控制流程的另一種方法，以及複製活動和刪除活動來達到相同的案例。 使用此範本的其中一個常見案例：檔案會持續卸載至來源存放區的登陸資料夾。 藉由建立排程觸發程式，ADF 管線可以定期將這些檔案從來源移至目的地存放區。  ADF 管線達到「移動檔案」的方式是從登陸資料夾取得檔案、將每個檔案複製到目的地存放區上的另一個資料夾，然後從來源存放區的登陸資料夾中刪除相同的檔案。
 
 > [!NOTE]
 > 請注意，此範本的設計目的是要移動檔案，而不是移動資料夾。  如果您想要藉由變更資料集來移動資料夾，使其只包含資料夾路徑，然後使用「複製活動」和「刪除活動」來參考代表資料夾的相同資料集，您必須非常小心。 這是因為您必須確定在複製作業與刪除作業之間，不會有新檔案抵達資料夾。 如果在您的複製活動剛剛完成複製作業但是 Delete 活動尚未開始時就有新檔案抵達資料夾，Delete 活動可能會刪除這個新抵達檔案，系統未透過刪除整個資料夾將該檔案複製到目的地。

@@ -6,11 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: tisande
-ms.openlocfilehash: 483a0533eafc81ef8698d260a753062ae074f6d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ceffb203ccc2cca1ff6e1c53644cde955c2e0acb
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78898759"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523497"
 ---
 # <a name="where-clause-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 WHERE 子句
 
@@ -50,7 +51,7 @@ WHERE <filter_condition>
     WHERE f.id = "AndersenFamily"
 ```
 
-結果如下：
+結果為：
 
 ```json
     [{
@@ -74,7 +75,7 @@ WHERE <filter_condition>
 |位元    | \|, &, ^, <<, >>, >>> (zero-fill right shift) |
 |邏輯    | AND、OR、NOT      |
 |比較 | =, !=, &lt;, &gt;, &lt;=, &gt;=, <> |
-|String     |  \|\| (串連) |
+|字串     |  \|\| (串連) |
 
 下列查詢會使用二元運算子：
 
@@ -104,7 +105,7 @@ WHERE <filter_condition>
     WHERE (-c.grade = -5)  -- matching grades == 5
 ```
 
-您也可以在查詢中使用屬性參考。 例如，會傳回 `SELECT * FROM Families f WHERE f.isRegistered` 包含屬性 `isRegistered` 且值等於的 JSON 專案 `true` 。 任何其他值（例如 `false` 、 `null` 、、、、 `Undefined` 或）都會將 `<number>` `<string>` `<object>` `<array>` 專案從結果中排除。
+您也可以在查詢中使用屬性參考。 例如，會傳回 `SELECT * FROM Families f WHERE f.isRegistered` 包含屬性 `isRegistered` 且值等於的 JSON 專案 `true` 。 任何其他值（例如 `false` 、 `null` 、、、、 `Undefined` 或）都會將 `<number>` `<string>` `<object>` `<array>` 專案從結果中排除。 此外，您可以使用類型檢查函式， `IS_DEFINED` 根據指定的 JSON 屬性是否存在來進行查詢。 例如， `SELECT * FROM Families f WHERE NOT IS_DEFINED(f.isRegistered)` 會傳回任何不具有值的 JSON 專案 `isRegistered` 。
 
 ## <a name="next-steps"></a>後續步驟
 

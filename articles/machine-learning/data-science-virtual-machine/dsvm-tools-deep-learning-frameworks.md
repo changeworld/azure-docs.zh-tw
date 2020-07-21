@@ -11,18 +11,19 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: 25ce99d3dced3caf1ec4bcce13b062b28774642d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c56c7a0d6f0400811d085f60fd71fe72b88bf9ee
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84557491"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520556"
 ---
 # <a name="deep-learning-and-ai-frameworks-for-the-azure-data-science-vm"></a>適用于 Azure 資料科學 VM 的深度學習和 AI 架構
 下面列出 DSVM 的深度學習架構。
 
 ## <a name="caffe"></a>[Caffe](https://github.com/BVLC/caffe)
 
-|    |           |
+| 類別 | 值 |
 | ------------- | ------------- |
 | 支援的版本 | |
 | 支援的 DSVM 版本      | Linux (Ubuntu)     |
@@ -31,7 +32,7 @@ ms.locfileid: "84557491"
 
 ## <a name="caffe2"></a>[Caffe2](https://github.com/caffe2/caffe2)
 
-|    |           |
+| 類別 | 值 |
 | ------------- | ------------- |
 | 支援的版本 | |
 | 支援的 DSVM 版本      | Linux (Ubuntu)     |
@@ -40,7 +41,7 @@ ms.locfileid: "84557491"
 
 ## <a name="chainer"></a>[Chainer](https://chainer.org/)
 
-|    |           |
+| 類別 | 值 |
 | ------------- | ------------- |
 | 支援的版本 | 5.2 |
 | 支援的 DSVM 版本      | Linux (Ubuntu)     |
@@ -49,7 +50,7 @@ ms.locfileid: "84557491"
 
 ## <a name="cuda-cudnn-nvidia-driver"></a>[CUDA、cuDNN、NVIDIA 驅動程式](https://developer.nvidia.com/cuda-toolkit)
 
-|    |           |
+| 類別 | 值 |
 | ------------- | ------------- |
 | 支援的版本 | 10.0.130|
 | 支援的 DSVM 版本      | Windows 與 Linux   |
@@ -59,7 +60,7 @@ ms.locfileid: "84557491"
 
 ## <a name="horovod"></a>[Horovod](https://github.com/uber/horovod)
 
-|    |           |
+| 類別 | 值 |
 | ------------- | ------------- |
 | 支援的版本 | 0.16.1|
 | 支援的 DSVM 版本      | Linux (Ubuntu)   |
@@ -68,7 +69,7 @@ ms.locfileid: "84557491"
 
 ## <a name="keras"></a>[Keras](https://keras.io/)
 
-|    |           |
+| 類別 | 值 |
 | ------------- | ------------- |
 | 支援的版本 | 2.2.4 |
 | 支援的 DSVM 版本      | Windows 與 Linux   |
@@ -77,7 +78,7 @@ ms.locfileid: "84557491"
 
 ## <a name="microsoft-cognitive-toolkit-cntk"></a>[Microsoft Cognitive Toolkit (CNTK)](https://docs.microsoft.com/cognitive-toolkit/)
 
-|    |           |
+| 類別 | 值 |
 | ------------- | ------------- |
 | 支援的版本 | 2.5.1 |
 | 支援的 DSVM 版本      | Windows 與 Linux   |
@@ -85,7 +86,7 @@ ms.locfileid: "84557491"
 | 如何執行它      | 終端機：啟用正確的環境，然後執行 Python。 <br/>Jupyter：連接到[Jupyter](provision-vm.md)或[JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)，然後開啟 CNTK 目錄以取得範例。 |
 
 ## <a name="mxnet"></a>[MXNet](https://mxnet.apache.org/)
-|    |           |
+| 類別 | 值 |
 | ------------- | ------------- |
 | 支援的版本 | 1.3.0 |
 | 支援的 DSVM 版本      | Windows 與 Linux   |
@@ -94,7 +95,7 @@ ms.locfileid: "84557491"
 
 ## <a name="mxnet-model-server"></a>[MXNet Model Server](https://github.com/awslabs/mxnet-model-server#quick-start)
 
-|    |           |
+| 類別 | 值 |
 | ------------- | ------------- |
 | 支援的版本 | 1.0.1 |
 | 支援的 DSVM 版本      | Windows 與 Linux   |
@@ -103,7 +104,7 @@ ms.locfileid: "84557491"
 
 ## <a name="nvidia-system-management-interface-nvidia-smi"></a>[NVidia 系統管理介面（nvidia-smi-s）](https://developer.nvidia.com/nvidia-system-management-interface)
 
-|    |           |
+| 類別 | 值 |
 | ------------- | ------------- |
 | 支援的版本 |  |
 | 支援的 DSVM 版本      | Windows 與 Linux   |
@@ -113,7 +114,7 @@ ms.locfileid: "84557491"
 
 ## <a name="pytorch"></a>[PyTorch](https://pytorch.org/)
 
-|    |           |
+| 類別 | 值 |
 | ------------- | ------------- |
 | 支援的版本 | 1.2.0 （ubuntu 16.04、Windows 2016）、1.4.0 （Ubuntu 18.04、Windows 2019） |
 | 支援的 DSVM 版本      | Linux |
@@ -122,7 +123,7 @@ ms.locfileid: "84557491"
 
 ## <a name="tensorflow"></a>[TensorFlow](https://www.tensorflow.org/)
 
-|    |           |
+| 類別 | 值 |
 | ------------- | ------------- |
 | 支援的版本 | 1.13 |
 | 支援的 DSVM 版本      | Windows、Linux |
@@ -131,7 +132,7 @@ ms.locfileid: "84557491"
 
 ## <a name="tensorflow-serving"></a>[TensorFlow Serving](https://www.tensorflow.org/serving/)
 
-|    |           |
+| 類別 | 值 |
 | ------------- | ------------- |
 | 支援的版本 | 1.12 |
 | 支援的 DSVM 版本      | Linux |
@@ -141,7 +142,7 @@ ms.locfileid: "84557491"
 
 ## <a name="theano"></a>[Theano](https://github.com/Theano/Theano)
 
-|    |           |
+| 類別 | 值 |
 | ------------- | ------------- |
 | 支援的版本 | 1.0.3 |
 | 支援的 DSVM 版本      | Linux |

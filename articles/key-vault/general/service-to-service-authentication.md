@@ -9,25 +9,25 @@ ms.date: 06/30/2020
 ms.topic: conceptual
 ms.service: key-vault
 ms.subservice: general
-ms.openlocfilehash: 132663ed26eab41747f6fce25bdb2beabe286322
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 83c4a48f8c177cf84078966bae32126102b45c3b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232605"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521015"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>使用 .NET 進行 Azure Key Vault 的服務對服務驗證
 
 > [!NOTE]
 > 本文中記載的驗證方法不再被視為最佳作法。 我們建議您採用更新的驗證方法，以[瞭解如何向 Azure Key Vault 進行驗證](authentication.md)。
 
-若要驗證 Azure Key Vault，您需要 Azure Active Directory (Azure AD) 認證，也就是共用密碼或憑證。
+若要驗證 Azure Key Vault，您需要一個 Azure Active Directory （Azure AD）認證，也就是共用密碼或憑證。
 
 管理這類認證可能很棘手。 藉由將認證納入來源或設定檔案，很容易就能將其組合到應用程式中。 .NET 程式庫的 `Microsoft.Azure.Services.AppAuthentication` 可簡化此問題。 它會使用開發人員的認證，在本機開發期間進行驗證。 當解決方案在稍後部署至 Azure 時，程式庫會自動切換至應用程式認證。 在本機開發期間使用開發人員認證會更安全，因為您不需要建立 Azure AD 認證，或在開發人員之間共用認證。
 
 連結 `Microsoft.Azure.Services.AppAuthentication` 庫會自動管理驗證，而這可讓您專注于您的解決方案，而不是您的認證。 它支援 Microsoft Visual Studio、Azure CLI 或 Azure AD 整合式驗證的本機開發。 如果部署到支援受控執行個體的 Azure 資源，程式庫會自動使用 [Azure 資源的受控識別](../../active-directory/msi-overview.md)。 不需要任何程式碼或設定變更。 當受控識別無法使用時，或在本機開發期間無法判斷開發人員的安全性內容時，程式庫也支援直接使用 Azure AD[用戶端認證](../../azure-resource-manager/resource-group-authenticate-service-principal.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 - [Visual Studio 2019](https://www.visualstudio.com/downloads/)或[Visual Studio 2017 v 15.5](https://blogs.msdn.microsoft.com/visualstudio/2017/10/11/visual-studio-2017-version-15-5-preview/)。
 
@@ -156,7 +156,7 @@ ms.locfileid: "86232605"
     az ad sp create-for-rbac --create-cert
     ```
 
-    此命令會建立儲存在主目錄中 (私密金鑰) 的 pem 檔案。 請將此憑證部署至*LocalMachine*或*CurrentUser*存放區。
+    此命令會建立儲存在主目錄中的 pem 檔案（私密金鑰）。 請將此憑證部署至*LocalMachine*或*CurrentUser*存放區。
 
     > [!Important]
     > CLI 命令會產生一個 pem 檔案，但 Windows 只會提供 PFX 憑證的原生支援。 若要改為產生 PFX 憑證，請使用此處所示的 PowerShell 命令： [[使用自我簽署憑證建立服務主體](../../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-self-signed-certificate)]。 這些命令也會自動部署憑證。
@@ -230,12 +230,12 @@ ms.locfileid: "86232605"
 
 - [適用于 Azure 資源的受控識別](../..//active-directory/managed-identities-azure-resources/overview.md)
 - Visual Studio 驗證
-- [Azure CLI 驗證](/azure/authenticate-azure-cli?view=azure-cli-latest)
+- [Azure CLI 驗證](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest)
 - [整合式 Windows 驗證](/aspnet/web-api/overview/security/integrated-windows-authentication)
 
 若要控制處理程序，請使用傳遞至 `AzureServiceTokenProvider` 建構函式或 *AzureServicesAuthConnectionString* 環境變數中指定的連接字串。  支援下列選項：
 
-| 連接字串選項 | 案例 | 註解|
+| 連接字串選項 | 情節 | 註解|
 |:--------------------------------|:------------------------|:----------------------------|
 | `RunAs=Developer; DeveloperTool=AzureCli` | 本機開發 | `AzureServiceTokenProvider`會使用 AzureCli 來取得權杖。 |
 | `RunAs=Developer; DeveloperTool=VisualStudio` | 本機開發 | `AzureServiceTokenProvider`會使用 Visual Studio 來取得權杖。 |
@@ -294,7 +294,7 @@ Azureservicetokenprovider 會會在其預設安裝位置尋找 Azure CLI。 如�
 - 將 "setProfileEnvironment" 設定為 "True"。 請參閱[這裡](https://docs.microsoft.com/iis/configuration/system.applicationhost/applicationpools/add/processmodel#configuration)的詳細資訊。 
 
     - 前往% windir% \System32\inetsrv\config\applicationHost.config
-    - 搜尋 "setProfileEnvironment"。 如果設定為 "False"，請將它變更為 "True"。 如果不存在，請將它新增為 processModel 元素的屬性 (/configuration/system.applicationHost/applicationPools/applicationPoolDefaults/processModel/@setProfileEnvironment) ，並將它設定為 "True"。
+    - 搜尋 "setProfileEnvironment"。 如果設定為 "False"，請將它變更為 "True"。 如果不存在，請將它新增為 processModel 元素的屬性（ /configuration/system.applicationHost/applicationPools/applicationPoolDefaults/processModel/@setProfileEnvironment ），並將它設定為 "True"。
 
 - 深入瞭解[適用于 Azure 資源的受控](../../active-directory/managed-identities-azure-resources/index.yml)識別。
 - 深入了解 [Azure AD 驗證案例](../../active-directory/develop/active-directory-authentication-scenarios.md)。

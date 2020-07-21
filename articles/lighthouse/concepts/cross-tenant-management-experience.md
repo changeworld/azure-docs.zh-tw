@@ -1,18 +1,18 @@
 ---
 title: 跨租用戶管理體驗
 description: Azure 委派的資源管理能提供跨租用戶管理體驗。
-ms.date: 05/12/2020
+ms.date: 07/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5e8a678530d9cf334d89091e7f23191ae8613737
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 1b3aa15dd968b4cded831934103a02420d020b9a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135491"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521032"
 ---
 # <a name="cross-tenant-management-experiences"></a>跨租用戶管理體驗
 
-身為服務提供者，您可以使用[Azure 燈塔](../overview.md)，在[Azure 入口網站](https://portal.azure.com)中，從您自己的租使用者中管理多個客戶的資源。 透過使用[Azure 委派的資源管理](../concepts/azure-delegated-resource-management.md)，可以在受管理的租使用者之間對委派的 Azure 資源執行許多工和服務。
+身為服務提供者，您可以使用[Azure 燈塔](../overview.md)，在[Azure 入口網站](https://portal.azure.com)中，從您自己的租使用者中管理多個客戶的資源。 透過使用[Azure 委派的資源管理](../concepts/azure-delegated-resource-management.md)，可以跨受管理的租使用者執行許多工和服務。
 
 > [!NOTE]
 > Azure 委派的資源管理也可以用於[擁有多個 Azure AD 租用戶的企業內](enterprise.md)，以簡化跨租用戶管理。
@@ -23,7 +23,7 @@ Azure Active Directory (Azure AD) 租用戶是組織的代表。 它是組織會
 
 通常，服務提供者若要為客戶管理 Azure 資源，便必須使用與該客戶的租用戶相關聯的帳戶登入 Azure 入口網站，這要求客戶租用戶中的系統管理員必須為服務提供者建立並管理使用者帳戶。
 
-使用 Azure 燈塔時，上執行緒序會指定服務提供者的租使用者中，可以存取及管理客戶租使用者中的訂用帳戶、資源群組和資源的使用者。 這些使用者接著便可以使用自己的認證登入 Azure 入口網站。 在 Azure 入口網站內，他們可以管理屬於所有客戶，且其具有存取權的資源。 若要這樣做，請瀏覽 Azure 入口網站中的[我的客戶](../how-to/view-manage-customers.md)頁面，或是在 Azure 入口網站中或透過 API 直接在該客戶的訂用帳戶內容中工作。
+使用 Azure 燈塔時，上執行緒序會指定服務提供者的租使用者內，將能夠在客戶的租使用者中處理委派的訂用帳戶和資源群組。 這些使用者接著便可以使用自己的認證登入 Azure 入口網站。 在 Azure 入口網站內，他們可以管理屬於所有客戶，且其具有存取權的資源。 若要這樣做，請瀏覽 Azure 入口網站中的[我的客戶](../how-to/view-manage-customers.md)頁面，或是在 Azure 入口網站中或透過 API 直接在該客戶的訂用帳戶內容中工作。
 
 Azure 燈塔可讓您更有彈性地管理多個客戶的資源，而不需要登入不同租使用者中的不同帳戶。 例如，某個服務提供者可能有兩個客戶，並針對他們都具有不同的責任和存取層級。 使用 Azure 燈塔，已授權的使用者可以登入服務提供者的租使用者來存取這些資源。
 
@@ -33,7 +33,7 @@ Azure 燈塔可讓您更有彈性地管理多個客戶的資源，而不需要�
 
 您可以直接在入口網站中，或是使用 API 與管理工具 (例如 Azure CLI 和 Azure PowerShell)，對委派的資源執行管理工作。 所有現有的 API 都可以在使用委派的資源時使用，但前提是，此功能支援跨租用戶管理，且使用者擁有適當的權限。
 
-Azure PowerShell [Get-AzSubscription cmdlet](/powershell/module/Az.Accounts/Get-AzSubscription?view=azps-3.5.0) 會顯示每個訂用帳戶的 **tenantID**，可供識別傳回的訂用帳戶屬於您的服務提供者租用戶，還是屬於受控的客戶租用戶。
+Azure PowerShell [get-azsubscription 指令程式](/powershell/module/Az.Accounts/Get-AzSubscription?view=azps-3.5.0) `tenantID` 會顯示每個訂用帳戶的，讓您能夠識別傳回的訂用帳戶屬於您的服務提供者租使用者還是受管理的客戶租使用者。
 
 同樣地，[az account list](/cli/azure/account?view=azure-cli-latest#az-account-list) 之類的 Azure CLI 命令會顯示 **homeTenantId** 和 **managedByTenants** 屬性。
 
@@ -46,10 +46,17 @@ Azure PowerShell [Get-AzSubscription cmdlet](/powershell/module/Az.Accounts/Get-
 
 大部分的工作和服務都可以對受控租用戶中委派的資源執行。 以下是跨租使用者管理可能特別有效的一些主要案例。
 
-[適用於伺服器的 Azure Arc (預覽)](../../azure-arc/servers/overview.md)：
+[Azure Arc](../../azure-arc/index.yml)：
 
-- [將 Azure 外部的 Windows Server 或 Linux 電腦連線](../../azure-arc/servers/onboard-portal.md)到 Azure 中委派的訂用帳戶和/或資源群組
-- 使用 Azure 結構管理已連線的電腦，例如 Azure 原則和標記
+- 大規模管理混合式伺服器-[適用于伺服器的 Azure Arc （預覽）](../../azure-arc/servers/overview.md)：
+  - [將 Azure 外部的 Windows Server 或 Linux 電腦連線](../../azure-arc/servers/onboard-portal.md)到 Azure 中委派的訂用帳戶和/或資源群組
+  - 使用 Azure 結構管理已連線的電腦，例如 Azure 原則和標記
+  - 確保在客戶的混合式環境中套用相同的一組原則
+  - 使用 Azure 資訊安全中心來監視客戶的混合式環境中的合規性
+- 大規模管理混合式 Kubernetes 叢集-[適用于 Kubernetes 的 Azure Arc （預覽）](../../azure-arc/kubernetes/overview.md)：
+  - [將 Kubernetes](../../azure-arc/kubernetes/connect-cluster.md)叢集連線到 azure 中的委派訂用帳戶和（或）資源群組
+  - 針對已連線的叢集[使用 GitOps](../../azure-arc/kubernetes/use-gitops-connected-cluster.md)
+  - 跨已連線的叢集強制執行原則
 
 [Azure 自動化](../../automation/index.yml)：
 
@@ -63,7 +70,7 @@ Azure PowerShell [Get-AzSubscription cmdlet](/powershell/module/Az.Accounts/Get-
 
 [Azure 成本管理 + 帳單](../../cost-management-billing/index.yml)：
 
-- 從管理租使用者，CSP 合作夥伴可以針對 Azure 方案下的客戶，查看、管理及分析預先稅耗用量成本（不包含購買）。 成本將以零售費率和合作夥伴為客戶訂用帳戶所提供的 Azure RBAC 存取為基礎。
+- 從管理租使用者，CSP 合作夥伴可以針對 Azure 方案下的客戶，查看、管理及分析預先稅耗用量成本（不包含購買）。 成本將以零售費率和合作夥伴對客戶訂用帳戶所擁有的 Azure 角色型存取控制（RBAC）存取為基礎。
 
 [Azure Kubernetes Service (AKS)](../../aks/index.yml)：
 
@@ -78,7 +85,7 @@ Azure PowerShell [Get-AzSubscription cmdlet](/powershell/module/Az.Accounts/Get-
 
 [Azure 網路](../../networking/networking-overview.md)：
 
-- 部署及管理客戶租用戶內的 [Azure 虛擬網路 (VNet)](../../virtual-network/index.yml) 與虛擬網路介面卡 (vNIC)
+- 在客戶租使用者中部署和管理[Azure 虛擬網路](../../virtual-network/index.yml)和虛擬網路介面卡（vnic）
 - 部署和設定 [Azure 防火牆](../../firewall/overview.md)，以保護客戶的虛擬網路資源
 - 管理連線能力服務，例如客戶的 [Azure 虛擬 WAN](../../virtual-wan/virtual-wan-about.md)、[ExpressRoute](../../expressroute/expressroute-introduction.md) 和[ VPN 閘道](../../vpn-gateway/vpn-gateway-about-vpngateways.md)
 - 使用 Azure Lighthouse 支援 [Azure 網路 MSP 計畫](../../networking/networking-partners-msp.md)的重要使用情況
@@ -126,27 +133,27 @@ Azure PowerShell [Get-AzSubscription cmdlet](/powershell/module/Az.Accounts/Get-
 
 [Azure Site Recovery](../../site-recovery/index.yml)：
 
-- 管理客戶租用戶中 Azure 虛擬機器的災害復原選項 (請注意，您無法使用 RunAs 帳戶來複製 VM 擴充功能)
+- 在客戶租使用者中管理 Azure 虛擬機器的嚴重損壞修復選項（請注意，您無法使用 `RunAs` 帳戶來複製 VM 擴充功能）
 
 [Azure 虛擬機器](../../virtual-machines/index.yml) \(部分機器翻譯\)：
 
 - 使用虛擬機器擴充功能來在客戶租用戶中的 Azure VM 上提供部署後設定及自動化工作
 - 使用開機診斷來針對客戶租用戶中的 Azure VM 進行疑難排解
 - 透過客戶租用戶中的序列主控台來存取 VM
-- 透過[原則使用受控識別](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/create-keyvault-secret)，將 VM 與磁碟加密密碼、祕密或密碼編譯金鑰的 Azure KeyVault 整合，以確保祕密儲存在客戶租用戶的 Key Vault 中
+- 使用[受控識別透過原則](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/create-keyvault-secret)，將 vm 與密碼、秘密或密碼編譯金鑰的 Azure Key Vault 整合，以確保秘密儲存在客戶租使用者的 Key Vault 中
 - 請注意，您無法使用 Azure Active Directory 在客戶租用戶中對 VM 進行遠端登入
 
 支援要求：
 
-- 從 Azure 入口網站中的 [說明 + 支援] 刀鋒視窗開啟委派資源的支援要求 (選取可供委派範圍使用的支援方案)
+- 在委派資源的 Azure 入口網站中，從 [說明[ **+ 支援**] 開啟 [支援要求](../../azure-portal/supportability/how-to-create-azure-support-request.md#getting-started)] （選取委派範圍可用的支援方案）
 
 ## <a name="current-limitations"></a>目前的限制
 在所有案例中，請留意下列目前限制：
 
-- 由 Azure Resource Manager 所處理的要求可以使用 Azure 委派的資源管理來執行。 這些要求的作業 URI 會以 `https://management.azure.com` 作為開頭。 不過，由某個資源類型 (例如 KeyVault 祕密存取或儲存體資料存取) 的執行個體所處理的要求，並不支援 Azure 委派的資源管理。 這些要求的作業 URI 通常會以您執行個體特有的位址作為開頭，例如 `https://myaccount.blob.core.windows.net` 或 `https://mykeyvault.vault.azure.net/`。 此外，後者通常是資料作業，而非管理作業。 
-- 角色指派必須使用角色型存取控制 (RBAC) [內建角色](../../role-based-access-control/built-in-roles.md) \(部分機器翻譯\)。 除了「擁有者」或具有 [DataActions](../../role-based-access-control/role-definitions.md#dataactions) \(部分機器翻譯\) 權限的任何內建角色以外，Azure 委派的資源管理目前支援所有內建角色。 只有在[將角色指派給受控識別](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant)時，才支援「使用者存取系統管理員」角色的有限用途。  此外，不支援自訂角色與[傳統訂用帳戶管理員角色](../../role-based-access-control/classic-administrators.md) \(部分機器翻譯\)。
+- 由 Azure Resource Manager 所處理的要求可以使用 Azure 委派的資源管理來執行。 這些要求的作業 URI 會以 `https://management.azure.com` 作為開頭。 不過，Azure 委派的資源管理不支援由資源類型（例如 Key Vault 秘密存取或儲存資料存取）的實例所處理的要求。 這些要求的作業 URI 通常會以您執行個體特有的位址作為開頭，例如 `https://myaccount.blob.core.windows.net` 或 `https://mykeyvault.vault.azure.net/`。 此外，後者通常是資料作業，而非管理作業。
+- 角色指派必須使用角色型存取控制 (RBAC) [內建角色](../../role-based-access-control/built-in-roles.md) \(部分機器翻譯\)。 除了擁有者或具有許可權的任何內建角色以外，所有內建角色目前都支援 Azure 委派的資源管理 [`DataActions`](../../role-based-access-control/role-definitions.md#dataactions) 。 只有在[將角色指派給受控識別](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant)時，才支援「使用者存取系統管理員」角色的有限用途。  此外，不支援自訂角色與[傳統訂用帳戶管理員角色](../../role-based-access-control/classic-administrators.md) \(部分機器翻譯\)。
 - 雖然您可以讓使用 Azure Databricks 的訂用帳戶上線，但管理租用戶中的使用者目前無法在委派的訂閱上啟動 Azure Databricks 的工作區。
-- 雖然您可以將訂用帳戶和資源群組上線，以進行 Azure 委派的資源管理來鎖定資源，但這些鎖定無法防止管理租用戶中的使用者執行動作。 [拒絕指派](../../role-based-access-control/deny-assignments.md)可保護系統管理的資源，例如由 Azure 管理的應用程式或 Azure 藍圖所建立的資源 (系統指派的拒絕指派)，因此可防止管理租用戶中的使用者在這些資源上執行動作；不過，目前客戶租用戶中的使用者無法建立自己的拒絕指派 (使用者指派的拒絕指派)。
+- 雖然您可以將具有資源鎖定的訂用帳戶和資源群組上線，但這些鎖定將無法防止管理租使用者中的使用者執行動作。 [拒絕指派](../../role-based-access-control/deny-assignments.md)可保護系統管理的資源，例如由 Azure 管理的應用程式或 Azure 藍圖所建立的資源 (系統指派的拒絕指派)，因此可防止管理租用戶中的使用者在這些資源上執行動作；不過，目前客戶租用戶中的使用者無法建立自己的拒絕指派 (使用者指派的拒絕指派)。
 
 ## <a name="next-steps"></a>後續步驟
 

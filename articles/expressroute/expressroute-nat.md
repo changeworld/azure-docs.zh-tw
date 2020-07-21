@@ -7,11 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: cherylmc
-ms.openlocfilehash: 9f5c5cc3a943ad4a8882a91ffdcee89c2ad39743
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 62effa04fd6130c35d3e2e64a401c124fe383200
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79272964"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521916"
 ---
 # <a name="expressroute-nat-requirements"></a>ExpressRoute NAT 需求
 若要使用 ExpressRoute 連線到 Microsoft 雲端服務，您必須設定和管理 NAT。 有些連線提供者會以受控服務來支援設定和管理路由。 請洽詢您的連線服務提供者，以查看他們是否提供這類服務。 如果沒有，您必須遵守以下所述的需求。 
@@ -21,7 +22,7 @@ ms.locfileid: "79272964"
 ## <a name="nat-requirements-for-microsoft-peering"></a>Microsoft 對等的 NAT 需求
 Microsoft 對等路徑可讓您連接到不支援透過 Azure 公用對等路徑存取的 Microsoft 雲端服務。 服務清單包括 Office 365 服務，例如 Exchange Online、SharePoint Online 和商務用 Skype。 Microsoft 預計在 Microsoft 對等上支援雙向連線能力。 以 Microsoft 雲端服務為目的地的流量，必須由 SNAT 轉譯成有效的公用 IPv4 位址，才能進入 Microsoft 網路。 從 Microsoft 雲端服務送到您的網路的流量，必須在網際網路邊緣經過 SNAT 轉譯，才可防止[非對稱式路由](expressroute-asymmetric-routing.md)。 下圖提供如何為 Microsoft 對等設定 NAT 的高階圖片。
 
-![](./media/expressroute-nat/expressroute-nat-microsoft.png) 
+![如何為 Microsoft 對等互連設定 NAT 的高階圖表。](./media/expressroute-nat/expressroute-nat-microsoft.png) 
 
 ### <a name="traffic-originating-from-your-network-destined-to-microsoft"></a>從您的網路出發到 Microsoft 的流量
 * 您必須確定流量進入的 Microsoft 對等路徑具備有效的公用 IPv4 位址。 Microsoft 必須能夠向區域路由網際網路登錄 (RIR) 和網際網路路由登錄 (IRR) 驗證 IPv4 NAT 位址集區的擁有者。 將會根據所比對的 AS 編號和用於 NAT 的 IP 位址執行檢查。 如需路由登錄的詳細資訊，請參閱 [ExpressRoute 路由需求](expressroute-routing.md) 頁面。
@@ -52,7 +53,7 @@ Azure 公用對等路徑可讓您連接到裝載於 Azure 中的所有服務的�
 
 以公用對等的 Microsoft Azure 為目的地的流量，必須由 SNAT 轉譯成有效的公用 IPv4 位址，才能進入 Microsoft 網路。 下圖提供如何設定 NAT 以符合上述需求的高階圖片。
 
-![](./media/expressroute-nat/expressroute-nat-azure-public.png) 
+![在輸入 Microsoft 網路之前，如何設定 NAT 以 Snat 轉譯至有效公用 IPv4 位址的高階圖表。](./media/expressroute-nat/expressroute-nat-azure-public.png) 
 
 ### <a name="nat-ip-pool-and-route-advertisements"></a>NAT IP 集區和路由通告
 您必須確定流量進入的 Azure 公用對等路徑具備有效的公用 IPv4 位址。 Microsoft 必須能夠向區域路由網際網路登錄 (RIR) 和網際網路路由登錄 (IRR) 驗證 IPv4 NAT 位址集區的擁有權。 將會根據所比對的 AS 編號和用於 NAT 的 IP 位址執行檢查。 如需路由登錄的詳細資訊，請參閱 [ExpressRoute 路由需求](expressroute-routing.md) 頁面。

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/22/2019
-ms.openlocfilehash: b48a2ef65aeb6e8de784c7443cf4be527197464a
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 9794dd47949dc7dea891893dbcf261808ab335fd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86081803"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521372"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---data-migration-best-practices"></a>將內部部署 Apache Hadoop 叢集移轉到 Azure HDInsight - 資料移轉最佳做法
 
@@ -36,9 +36,8 @@ ms.locfileid: "86081803"
 
 下表根據資料磁碟區和網路頻寬提供粗略的資料傳輸持續時間。 若資料移轉預計要花費超過三週的時間，請使用資料箱。
 
-|資料數量|網路頻寬||||
-|---|---|---|---|---|
-|| **45 Mbps (T3)**|**100 Mbps**|**1 Gbps**|**10 Gbps**|
+|資料數量 | 網路頻寬<br>of<br>**45 Mbps (T3)**|網路頻寬<br>of<br>**100 Mbps**|網路頻寬<br>of<br>**1 Gbps**|網路頻寬<br>of<br>**10 Gbps**|
+|---|:---:|:---:|:---:|:---:|
 |1 TB|2 天|1 日| 2 小時|14 分鐘|
 |10 TB|22 天|10 天|1 日|2 小時|
 |35 TB|76 天|34 天|3 天|8 小時|
@@ -115,7 +114,7 @@ hadoop distcp -Dmapreduce.fileoutputcommitter.algorithm.version=2 -numListstatus
 - 使用 XSLT 之類的工具，將內部部署特定 HDFS 路徑轉換為 WASB/ADLS。
 - 將原則匯入在 HDInsight 上執行的 Ranger。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 閱讀此系列中的下一篇文章：
 

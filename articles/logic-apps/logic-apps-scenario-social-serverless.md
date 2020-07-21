@@ -8,11 +8,12 @@ ms.author: jehollan
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 03/15/2018
-ms.openlocfilehash: e300bf9c9aa0acf0bed6426eb73f690f9a38bd74
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2fae7d2526e6c95efe83ca8fa742a6d92457b897
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75980431"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520744"
 ---
 # <a name="create-a-streaming-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>使用 Azure Logic Apps 與 Azure Functions 來建立串流的客戶深入解析儀表板
 
@@ -21,7 +22,7 @@ Azure 提供的[無伺服器](https://azure.microsoft.com/solutions/serverless/)
 針對此解決方案，您將使用以下無伺服器應用程式的主要 Azure 元件：[Azure Functions](https://azure.microsoft.com/services/functions/) 和 [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/)。
 Azure Logic Apps 在雲端中提供無伺服器工作流程引擎，讓您可以在無伺服器元件之間建立協調流程，並連線到 200 個以上的服務和 API。 Azure Functions 可在雲端中提供無伺服器計算。 此解決方案會根據預先定義的關鍵字，使用 Azure Functions 為客戶的推文加上旗標。
 
-在此案例中，您建立的邏輯應用程式會在找到客戶意見反應時觸發。 可協助您回應客戶意見反應的一些連接器包括 Outlook.com、Office 365、Survey Monkey、Twitter 和[來自 Web 表單的 HTTP 要求](https://blogs.msdn.microsoft.com/logicapps/2017/01/30/calling-a-logic-app-from-an-html-form/)。 您所建立的工作流程會監視 Twitter 上的主題標籤。
+在此案例中，您建立的邏輯應用程式會在找到客戶意見反應時觸發。 可協助您回應客戶意見反應的一些連接器包括 Outlook.com、Office 365、Survey Monkey、Twitter 和[來自 Web 表單的 HTTP 要求](/archive/blogs/logicapps/calling-a-logic-app-from-an-html-form)。 您所建立的工作流程會監視 Twitter 上的主題標籤。
 
 您可以[在 Visual Studio 中建置整個解決方案](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)，並[使用 Azure Resource Manager 範本部署此解決方案](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md)。 如需如何建立此解決方案的逐步解說影片，請[觀看此 Channel 9 影片](https://aka.ms/logicappsdemo)。 
 
@@ -66,7 +67,7 @@ Azure Logic Apps 在雲端中提供無伺服器工作流程引擎，讓您可以
 
 ## <a name="process-data-with-azure-functions"></a>使用 Azure Functions 處理資料
 
-建立函式之前，請先在 Azure 訂用帳戶中建立函式應用程式。 此外，為了讓邏輯應用程式直接呼叫函式，函式必須具有 HTTP 觸發程序繫結，例如，可使用 **HttpTrigger** 範本。 了解[如何在 Azure 入口網站中建立您的第一個函式應用程式和涵式](../azure-functions/functions-create-first-azure-function-azure-portal.md)。
+建立函式之前，請先在 Azure 訂用帳戶中建立函式應用程式。 此外，為了讓邏輯應用程式直接呼叫函式，函式必須具有 HTTP 觸發程序繫結，例如，可使用 **HttpTrigger** 範本。 了解[如何在 Azure 入口網站中建立您的第一個函式應用程式和涵式](../azure-functions/functions-create-first-azure-function.md)。
 
 針對此案例，請使用推文文字作為 Azure 函式的要求本文。 在您的函式程式碼中，定義用來判斷推文文字是否包含關鍵字或片語的邏輯。 根據案例的需要，維持簡單或複雜的函式。
 在函式結尾處，將包含某些資料的回應傳回邏輯應用程式，例如，簡單的布林值 (例如 `containsKeyword`) 或複雜的物件。

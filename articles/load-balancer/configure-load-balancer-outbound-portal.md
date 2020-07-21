@@ -8,12 +8,12 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 09/24/2019
 ms.author: allensu
-ms.openlocfilehash: 2dff916bf005b307f27264ad7a17864fbba50872
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0484bc393ac97dc88fed5858f736f01fc41b507a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85367388"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521051"
 ---
 # <a name="configure-load-balancing-and-outbound-rules-in-standard-load-balancer-by-using-the-azure-portal"></a>使用 Azure 入口網站在 Standard Load Balancer 中設定負載平衡和輸出規則
 
@@ -43,7 +43,7 @@ ms.locfileid: "85367388"
     | 訂用帳戶               | 選取您的訂用帳戶。    |    
     | 資源群組         | 選取 [新建]****，並在文字方塊中輸入 **myResourceGroupSLB**。|
     | 名稱                   | **myLoadBalancer**                                   |
-    | 區域         | 選取 [西歐]****。                                        |
+    | 區域         | 選取 [西歐]。                                        |
     | 類型          | 選取 [公用]。                                        |
     | SKU           | 選取 [標準]。 |
     | 公用 IP 位址 | 選取 [建立新的]。 如果您有想要使用的現有公用 IP，請選取 [**使用現有**的]。  現有的公用 IP 必須是**標準**SKU。  基本公用 Ip 與**標準**SKU 負載平衡器不相容。  |
@@ -81,7 +81,7 @@ ms.locfileid: "85367388"
     
     | 設定 | 值 |
     | ------- | ----- |
-    | Name | 輸入 **myHealthProbe**。 |
+    | 名稱 | 輸入 **myHealthProbe**。 |
     | 通訊協定 | 選取 [HTTP]****。 |
     | 連接埠 | 輸入 **80**。|
     | 間隔 | 輸入 **15** 作為探查嘗試之間的 [間隔] **** 秒數。 |
@@ -114,7 +114,7 @@ ms.locfileid: "85367388"
     | 後端連接埠 | 輸入 **80**。 |
     | 後端集區 | 選取 [myBackendPool]****。|
     | 健全狀況探查 | 選取 [myHealthProbe]****。 |
-    | 建立隱含輸出規則 | 選取 [否]****。 我們會使用專用的公用 IP，在稍後的區段中建立輸出規則。 |
+    | 建立隱含輸出規則 | 請選取 [否] 。 我們會使用專用的公用 IP，在稍後的區段中建立輸出規則。 |
 4. 保留其餘的預設值，然後選取 [確定]****。
 
 ## <a name="create-outbound-rule-configuration"></a>建立輸出規則設定
@@ -131,9 +131,9 @@ ms.locfileid: "85367388"
     | 設定 | 值 |
     | ------- | ----- |
     | 名稱 | 輸入**LoadBalancerFrontEndOutbound**。 |
-    | IP 版本 | 選取 [IPv4]****。 |
-    | IP 類型 | 選取 [ **IP 位址**]。|
-    | 公用 IP 位址 | 選取 [建立新的]。 在 [**新增公用 IP 位址**] 中，輸入**myPublicIPOutbound**。  選取 [確定]。 |
+    | IP 版本 | 選取 [IPv4]。 |
+    | IP 類型 | 選取 [ **ip 位址**] 或 [ **ip 首碼**]。|
+    | 公用 IP 位址 | 選取 [建立新的]。 </br> 在 [**新增公用 IP 位址**] 中，輸入**myPublicIPOutbound**。 </br> 如果使用 IP 首碼，請在 [**新增公用 IP 首碼**] 中輸入**myPublicIPPrefixOutbound**。 選擇公用 IP 首碼的**首碼大小** </br> 選取 [確定]。  |
 
 4. 選取 [新增]。
 
@@ -157,7 +157,7 @@ ms.locfileid: "85367388"
     | ------- | ----- |
     | 名稱 | 輸入**myOutboundRule**。 |
     | 前端 IP 位址 | 選取 [ **LoadBalancerFrontEndOutbound**]。 |
-    | 閒置逾時 (分鐘) | 將滑杆移至 * * 15 分鐘。|
+    | 閒置逾時 (分鐘) | 將滑杆移至**15 分鐘**。|
     | TCP 重設 | 選取 [啟用]。|
     | 後端集區 | 選取**myBackendPoolOutbound** |
     | 埠配置-> 埠配置 | 選取 **[手動選擇輸出埠數目**] |

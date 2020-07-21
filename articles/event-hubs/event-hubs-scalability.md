@@ -3,12 +3,12 @@ title: 擴充性-Azure 事件中樞 |Microsoft Docs
 description: 本文提供如何使用資料分割和輸送量單位來調整 Azure 事件中樞的相關資訊。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 6d1c7bc5a0206b634e5a85243f25b2c926762d7e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4dacb24ace2332f590db54959cbf1f06694b982b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85315480"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521950"
 ---
 # <a name="scaling-with-event-hubs"></a>使用事件中樞進行調整
 
@@ -23,7 +23,7 @@ ms.locfileid: "85315480"
 * 輸入：每秒最多 1 MB 或 1000 個事件 (以先達到者為準)。
 * 輸出：最高每秒 2 MB 或每秒 4096 個事件。
 
-超出所購買輸送量單位的容量時，輸入就開始節流，並傳回 [ServerBusyException](/dotnet/api/microsoft.azure.eventhubs.serverbusyexception)。 輸出不會產生節流例外狀況，但仍受限於所購買輸送量單位的容量。 如果您收到發佈速率例外狀況，或輸出速率低於預期，請務必檢查您為命名空間所購買的輸送量單位數目。 在 [Azure 入口網站](https://portal.azure.com)中，您可以在命名空間的 [調整規模]**** 刀鋒視窗管理輸送量單位。 您也可以使用[事件中樞 API](event-hubs-api-overview.md) 以程式設計方式管理輸送量單位。
+超出所購買輸送量單位的容量時，輸入就開始節流，並傳回 [ServerBusyException](/dotnet/api/microsoft.azure.eventhubs.serverbusyexception)。 輸出不會產生節流例外狀況，但仍受限於所購買輸送量單位的容量。 如果您收到發佈速率例外狀況，或輸出速率低於預期，請務必檢查您為命名空間所購買的輸送量單位數目。 在 [Azure 入口網站](https://portal.azure.com)中，您可以在命名空間的 [調整規模]**** 刀鋒視窗管理輸送量單位。 您也可以使用[事件中樞 API](./event-hubs-samples.md) 以程式設計方式管理輸送量單位。
 
 輸送量單位是預先購買制且以每小時計費。 一經購買，您至少必須支付一個小時的輸送量單位費用。 最多可以為一個事件中樞命名空間購買 20 個輸送量單位，讓該命名空間中的所有事件中樞共用。
 
@@ -39,7 +39,7 @@ ms.locfileid: "85315480"
 ## <a name="partitions"></a>資料分割
 [!INCLUDE [event-hubs-partitions](../../includes/event-hubs-partitions.md)]
 
-### <a name="partition-key"></a>資料分割索引鍵
+### <a name="partition-key"></a>分割區索引鍵
 
 您可以使用[資料分割索引鍵](event-hubs-programming-guide.md#partition-key)，將連入事件資料對應至特定的資料分割來組織資料。 資料分割索引鍵是由傳送者提供的值。系統會將它傳遞到事件中樞， 然後透過靜態雜湊函式加以處理，而建立資料分割指派。 如果您在發佈事件時未指定資料分割索引鍵，系統會使用循環配置資源指派。
 
@@ -50,4 +50,4 @@ ms.locfileid: "85315480"
 您可以造訪下列連結以深入了解事件中樞︰
 
 - [自動縮放輸送量單位](event-hubs-auto-inflate.md)
-- [事件中樞服務概觀](event-hubs-what-is-event-hubs.md)
+- [事件中樞服務概觀](./event-hubs-about.md)

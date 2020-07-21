@@ -8,11 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: memildin
-ms.openlocfilehash: c30fef5c82f831365a11bcb14559b0914a9eda4c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7b0fbb7c4f680f9d732a63fff7b0b317c6cf1511
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84299939"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519692"
 ---
 # <a name="export-security-alerts-and-recommendations"></a>匯出安全性警訊和建議
 
@@ -28,7 +29,6 @@ Azure 資訊安全中心會產生詳細的安全性警示和建議。 您可以�
 
 
 
-
 ## <a name="availability"></a>可用性
 
 - 發行階段：**正式推出**
@@ -36,10 +36,7 @@ Azure 資訊安全中心會產生詳細的安全性警示和建議。 您可以�
     - 包含匯出設定之訂用帳戶上的**讀取器**
     - 資源群組（或**擁有**者）上的**安全性系統管理員角色**
     - 也必須具有目標資源的寫入權限
-- 雲端： 
-    - ✔ 商用雲端
-    - ✔ US Gov
-    - ✘中國 Gov，其他 Gov
+- 雲端：✔的商用雲端✔ US Gov ✘中國 Gov，其他 Gov
 
 
 ## <a name="setting-up-a-continuous-export"></a>設定連續匯出
@@ -142,5 +139,5 @@ Azure 監視器針對各種 Azure 警示（包括診斷記錄、計量警示，�
 
 - [Azure 事件中樞文件](https://docs.microsoft.com/azure/event-hubs/)
 - [Azure Sentinel 文件](https://docs.microsoft.com/azure/sentinel/)
-- [Azure 監視器檔](https://docs.microsoft.com/azure/azure-monitor/)
+- [Azure 監視器文件](https://docs.microsoft.com/azure/azure-monitor/)
 - [工作流程自動化和連續匯出資料類型架構](https://aka.ms/ASCAutomationSchemas)

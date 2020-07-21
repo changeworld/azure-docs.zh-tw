@@ -5,26 +5,26 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/29/2020
-ms.openlocfilehash: 05a76a1434b5a63229b335fb3973897896ec733d
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.date: 07/14/2020
+ms.openlocfilehash: d36b4fd433af716ebd97d88d05922d94bd74c309
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955807"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523531"
 ---
-# <a name="pricing-model-in-azure-cosmos-db"></a>Azure Cosmos DB 的計價模式 
+# <a name="pricing-model-in-azure-cosmos-db"></a>Azure Cosmos DB 的計價模式
 
 Azure Cosmos DB 的計價模式可簡化成本管理和規劃。 使用 Azure Cosmos DB，您需要支付所佈建的輸送量及所取用的儲存體。
 
-* 布**建的輸送量**：布建的輸送量（也稱為保留的輸送量）可確保任何規模的高效能。 您指定需要的輸送量 (RU/秒)，Azure Cosmos DB 會致力於提供保證已設定輸送量所需的資源。 您須按小時支付指定小時的最大佈建輸送量費用。
+* 布**建的輸送量**：布建的[輸送量](how-to-choose-offer.md)（也稱為保留的輸送量）可確保任何規模的高效能。 您指定需要的輸送量 (RU/秒)，Azure Cosmos DB 會致力於提供保證已設定輸送量所需的資源。 您須按小時支付指定小時的最大佈建輸送量費用。 您可以手動布建輸送量或使用[自動](provision-throughput-autoscale.md)調整。
 
    > [!NOTE]
-   > 因為佈建的輸送量模型會致力於提供容器或資料庫的資源，即使您未執行任何工作負載，仍須支付佈建的輸送量費用。
+   > 由於布建的輸送量模型會將資源專用到您的容器或資料庫，因此即使您未執行任何工作負載，也會向您收取布建輸送量的費用。
 
 * 已取用的**儲存體**：針對資料使用的總儲存量（gb），以及指定小時內的索引，以固定費率計費。
 
-佈建的輸送量指定為每秒[要求單位](request-units.md) (RU/秒)，可讓您從容器或資料庫讀取資料或將資料寫入其中。 您可以[在資料庫或容器上佈建輸送量](set-throughput.md)。 根據工作負載需求，您可以隨時相應增加/相應減少輸送量。 Azure Cosmos DB 定價具有彈性，且與您在資料庫或容器上設定的輸送量成正比。 輸送量和儲存體值下限與縮放增量為所有階層的客戶，提供從小型到大型容器的完整價格與彈性範圍。 每個資料庫或容器是按小時以 100 RU/秒為單位計費，最少 400 RU/秒，取用的儲存體以 GB 為單位。 與佈建的輸送量不同，儲存體是按取用量來計費。 也就是說，您不必事先保留任何儲存體。 您只須支付所取用的儲存體費用。
+佈建的輸送量指定為每秒[要求單位](request-units.md) (RU/秒)，可讓您從容器或資料庫讀取資料或將資料寫入其中。 您可以[在資料庫或容器上佈建輸送量](set-throughput.md)。 根據工作負載需求，您可以隨時相應增加/相應減少輸送量。 Azure Cosmos DB 定價具有彈性，且與您在資料庫或容器上設定的輸送量成正比。 輸送量和儲存體值下限與縮放增量為所有階層的客戶，提供從小型到大型容器的完整價格與彈性範圍。 每個資料庫或容器是按小時以 100 RU/秒為單位計費，最少 400 RU/秒，取用的儲存體以 GB 為單位。 與佈建的輸送量不同，儲存體是按取用量來計費。 也就是說，您不需要事先保留任何儲存體。 您只須支付所取用的儲存體費用。
 
 如需詳細資訊，請參閱 [Azure Cosmos DB 定價頁面](https://azure.microsoft.com/pricing/details/cosmos-db/)和[了解您的 Azure Cosmos DB 計費](understand-your-bill.md)。
 
@@ -41,9 +41,11 @@ Azure Cosmos DB 的計價模式在所有 API 之間都是一致的。 若要深�
 
 ## <a name="try-azure-cosmos-db-for-free"></a>免費試用 Azure Cosmos DB
 
-Azure Cosmos DB 為開發人員提供數個免費選項。 這些選項包含︰
+Azure Cosmos DB 為開發人員提供許多免費的選項。 這些選項包含︰
 
-* **Azure 免費帳戶**： azure 提供[免費層](https://azure.microsoft.com/free/)，$200 可提供您前30天的 Azure 點數，以及12個月有限的免費服務數量。 如需詳細資訊，請參閱 [Azure 免費帳戶](../cost-management-billing/manage/avoid-charges-free-account.md)。 Azure Cosmos DB 屬於 Azure 免費帳戶。 此免費帳戶會特別針對 Azure Cosmos DB，在為期一年的時間內提供 5-GB 的儲存體，以及 400 RU 的已佈建輸送量。 
+* **Azure Cosmos DB 免費層**： Azure Cosmos DB 免費層可讓您輕鬆地開始使用、開發和測試您的應用程式，甚至免費執行小型生產工作負載。 在帳戶上啟用免費層時，您會在帳戶的存留期內，免費取得帳戶中的前 400 RU/秒和 5 GB 的儲存體。 您的每個 Azure 訂用帳戶最多可以有一個免費層帳戶，而且在建立帳戶時必須加入宣告。 若要開始，請[在已啟用免費層的 Azure 入口網站中建立新帳戶](create-cosmosdb-resources-portal.md)，或使用[ARM 範本](manage-sql-with-resource-manager.md#free-tier)。
+
+* **Azure 免費帳戶**： azure 提供[免費層](https://azure.microsoft.com/free/)，$200 可提供您前30天的 Azure 點數，以及12個月有限的免費服務數量。 如需詳細資訊，請參閱 [Azure 免費帳戶](../cost-management-billing/manage/avoid-charges-free-account.md)。 Azure Cosmos DB 屬於 Azure 免費帳戶。 特別針對 Azure Cosmos DB，此免費帳戶提供了 5 GB 的儲存體，以及一年所布建的輸送量 400 RU/秒。
 
 * **免費試用 Azure Cosmos DB**： Azure Cosmos DB 使用免費帳戶的試用 Azure Cosmos DB，提供限時的體驗。 您可以透過使用快速入門和教學課程，建立 Azure Cosmos DB 帳戶、建立資料庫和集合及執行範例應用程式。 您可以在不註冊 Azure 帳戶或使用信用卡的情況下執行範例應用程式。 [免費試用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) 提供一個月的 Azure Cosmos DB，可以任意次數更新您的帳戶。
 

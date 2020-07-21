@@ -6,11 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/25/2019
-ms.openlocfilehash: 7a99038f41043b899886c7161f9b12c77c807c4c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a89eb16c8042efc86bb5cc8bd5fba7c821dc341
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81641819"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520964"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>總覽：使用 Azure Resource Manager 範本自動部署 Azure Logic Apps
 
@@ -38,7 +39,7 @@ ms.locfileid: "81641819"
 * 本主題範例所使用的[完整範本](#full-example-template)
 * GitHub 中的[範例快速入門邏輯應用程式範本](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create)
 
-如需邏輯應用程式、整合帳戶和整合帳戶成品特有的範本資源資訊，請參閱[Microsoft. 邏輯資源類型](https://docs.microsoft.com/azure/templates/microsoft.logic/allversions)。
+如需邏輯應用程式、整合帳戶和整合帳戶成品特有的範本資源資訊，請參閱[Microsoft. 邏輯資源類型](/azure/templates/microsoft.logic/allversions)。
 
 <a name="template-structure"></a>
 
@@ -60,7 +61,7 @@ ms.locfileid: "81641819"
 
 針對邏輯應用程式範本，您主要會使用這些範本物件：
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |-----------|-------------|
 | `parameters` | 宣告[範本參數](../azure-resource-manager/templates/template-syntax.md#parameters)，以便在 Azure 中建立和自訂要部署的資源時，接受要使用的值。 例如，這些參數會接受您的邏輯應用程式名稱和位置、連線，以及部署所需的其他資源的值。 您可以將這些參數值儲存在[參數](#template-parameter-files)檔案中，本主題稍後會加以描述。 如需一般詳細資料，請參閱[參數-Resource Manager 範本結構和語法](../azure-resource-manager/templates/template-syntax.md#parameters)。 |
 | `resources` | 定義要建立或更新並部署至 Azure 資源群組的[資源](../azure-resource-manager/templates/template-syntax.md#resources)，例如您的邏輯應用程式、連線、Azure 儲存體帳戶等等。 如需一般詳細資料，請參閱[資源-Resource Manager 範本結構和語法](../azure-resource-manager/templates/template-syntax.md#resources)。 |
@@ -318,16 +319,16 @@ ms.locfileid: "81641819"
 
 以下是您的邏輯應用程式資源定義特有的屬性：
 
-| 屬性 | 必要 | 類型 | Description |
+| 屬性 | 必要 | 類型 | 描述 |
 |-----------|----------|------|-------------|
-| `state` | Yes | String | 您的邏輯應用程式在部署時的狀態，即 `Enabled` 表示您的邏輯應用程式是即時的，表示邏輯應用 `Disabled` 程式為非使用中。 例如，如果您還沒有準備好讓邏輯應用程式上線，但想要部署草稿版本，您可以使用 `Disabled` 選項。 |
-| `integrationAccount` | No | Object | 如果您的邏輯應用程式使用整合帳戶，其中儲存了企業對企業（B2B）案例的成品，此物件會包含 `id` 屬性，以指定整合帳戶的識別碼。 |
+| `state` | 是 | String | 您的邏輯應用程式在部署時的狀態，即 `Enabled` 表示您的邏輯應用程式是即時的，表示邏輯應用 `Disabled` 程式為非使用中。 例如，如果您還沒有準備好讓邏輯應用程式上線，但想要部署草稿版本，您可以使用 `Disabled` 選項。 |
+| `integrationAccount` | 否 | Object | 如果您的邏輯應用程式使用整合帳戶，其中儲存了企業對企業（B2B）案例的成品，此物件會包含 `id` 屬性，以指定整合帳戶的識別碼。 |
 | `definition` | 是 | Object | 邏輯應用程式的基礎工作流程定義，也就是出現在程式碼視圖中的相同物件，而且會在[工作流程定義語言的架構參考](../logic-apps/logic-apps-workflow-definition-language.md)主題中完整說明。 在此工作流程定義中，物件會宣告 `parameters` 要在邏輯應用程式執行時間使用之值的參數。 如需詳細資訊，請參閱[工作流程定義和參數](#workflow-definition-parameters)。 <p><p>若要在邏輯應用程式的工作流程定義中查看屬性，請從 [設計檢視] 切換至 Azure 入口網站或 Visual Studio 中的 [程式碼視圖]，或使用[Azure 資源總管](https://resources.azure.com)之類的工具。 |
-| `parameters` | No | Object | 要在邏輯應用程式執行時間使用的[工作流程定義參數值](#workflow-definition-parameters)。 這些值的參數定義會出現在您[工作流程定義的 parameters 物件](#workflow-definition-parameters)中。 此外，如果您的邏輯應用程式使用[managed 連接器](../connectors/apis-list.md)來存取其他服務和系統，此物件 `$connections` 會包含物件，以設定要在執行時間使用的連接值。 |
-| `accessControl` | No | Object | 用於指定邏輯應用程式的安全性屬性，例如限制要求觸發程式的 IP 存取或執行歷程記錄輸入和輸出。 如需詳細資訊，請參閱[保護邏輯應用程式的存取](../logic-apps/logic-apps-securing-a-logic-app.md)。 |
+| `parameters` | 否 | Object | 要在邏輯應用程式執行時間使用的[工作流程定義參數值](#workflow-definition-parameters)。 這些值的參數定義會出現在您[工作流程定義的 parameters 物件](#workflow-definition-parameters)中。 此外，如果您的邏輯應用程式使用[managed 連接器](../connectors/apis-list.md)來存取其他服務和系統，此物件 `$connections` 會包含物件，以設定要在執行時間使用的連接值。 |
+| `accessControl` | 否 | Object | 用於指定邏輯應用程式的安全性屬性，例如限制要求觸發程式的 IP 存取或執行歷程記錄輸入和輸出。 如需詳細資訊，請參閱[保護邏輯應用程式的存取](../logic-apps/logic-apps-securing-a-logic-app.md)。 |
 ||||
 
-如需邏輯應用程式、整合帳戶和整合帳戶成品特有的範本資源資訊，請參閱[Microsoft. 邏輯資源類型](https://docs.microsoft.com/azure/templates/microsoft.logic/allversions)。
+如需邏輯應用程式、整合帳戶和整合帳戶成品特有的範本資源資訊，請參閱[Microsoft. 邏輯資源類型](/azure/templates/microsoft.logic/allversions)。
 
 <a name="workflow-definition-parameters"></a>
 
@@ -909,7 +910,7 @@ ms.locfileid: "81641819"
 
 ### <a name="authenticate-connections"></a>驗證連接
 
-部署之後，您的邏輯應用程式會以有效的參數端對端運作。 不過，您仍然必須授權任何 OAuth 連線，以產生有效的存取權杖來[驗證您的認證](../active-directory/develop/authentication-scenarios.md)。 如需詳細資訊，請參閱[授權 OAuth 連接](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md#authorize-oauth-connections)。
+部署之後，您的邏輯應用程式會以有效的參數端對端運作。 不過，您仍然必須授權任何 OAuth 連線，以產生有效的存取權杖來[驗證您的認證](../active-directory/develop/authentication-vs-authorization.md)。 如需詳細資訊，請參閱[授權 OAuth 連接](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md#authorize-oauth-connections)。
 
 某些連線支援使用 Azure Active Directory （Azure AD）[服務主體](../active-directory/develop/app-objects-and-service-principals.md)來授權[在 Azure AD 中註冊](../active-directory/develop/quickstart-register-app.md)之邏輯應用程式的連接。 例如，此 Azure Data Lake 連線資源定義會顯示如何參考處理服務主體資訊的範本參數，以及範本宣告這些參數的方式：
 
@@ -937,7 +938,7 @@ ms.locfileid: "81641819"
 }
 ```
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |-----------|-------------|
 | `token:clientId` | 與服務主體相關聯的應用程式或用戶端識別碼 |
 | `token:clientSecret` | 與服務主體相關聯的金鑰值 |
@@ -1005,7 +1006,7 @@ ms.locfileid: "81641819"
 如需使用服務主體的詳細資訊，請參閱下列主題：
 
 * [使用 Azure 入口網站建立服務主體](../active-directory/develop/howto-create-service-principal-portal.md)
-* [使用 Azure PowerShell 建立 Azure 服務主體](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps)
+* [使用 Azure PowerShell 建立 Azure 服務主體](/powershell/azure/create-azure-service-principal-azureps)
 * [使用 Azure PowerShell 建立具有憑證的服務主體](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
 
 <a name="parameter-references"></a>

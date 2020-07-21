@@ -13,13 +13,14 @@ ms.topic: article
 ms.date: 03/21/2019
 ms.author: kumud
 ms.reviewer: tyao
-ms.openlocfilehash: 98c86d839868eb0714c7106d5267d1c55e6e99d5
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 48e2697cb4793f10e7694aa26e29c48a397fe3a5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83739306"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521593"
 ---
-# <a name="what-is-geo-filtering-on-a-domain-for-azure-front-door"></a>什麼是 Azure Front Door 的網域地區篩選？
+# <a name="geo-filtering-on-a-domain-for-azure-front-door"></a>Azure Front 的網域上的地區篩選
 
 根據預設，不論使用者是在什麼位置提出要求，Azure Front Door 都會回應使用者的要求。 不過，在某些情況下，您可以依國家/地區來限制 Web 應用程式的存取。 Front Door 上的 Web 應用程式防火牆 (WAF) 服務可讓您定義原則，針對端點上的特定路徑使用自訂存取規則來允許或封鎖來自指定國家/地區的存取。 
 

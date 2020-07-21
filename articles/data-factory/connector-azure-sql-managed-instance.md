@@ -10,12 +10,13 @@ author: linda33wj
 manager: shwang
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 05/29/2020
-ms.openlocfilehash: 907579d44575de56f95e0828c3313d0d1682b29c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/15/2020
+ms.openlocfilehash: d67a050ccd590e220c51e02b827013ace7707ee2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513893"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523242"
 ---
 # <a name="copy-data-to-and-from-azure-sql-managed-instance-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 Azure SQL 受控執行個體複製資料
 
@@ -42,7 +43,7 @@ ms.locfileid: "85513893"
 >[!NOTE]
 > 此連接器目前不支援 SQL 受控執行個體[Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=azuresqldb-mi-current) 。 若要解決此情況，您可以透過自我裝載整合執行時間使用[一般 odbc 連接器](connector-odbc.md)和 SQL Server ODBC 驅動程式。 若要深入瞭解，請[使用 Always Encrypted](#using-always-encrypted)一節。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 若要存取 SQL 受控執行個體[公用端點](../azure-sql/managed-instance/public-endpoint-overview.md)，您可以使用 Azure Data Factory 受控 Azure 整合執行時間。 請確定您已啟用公用端點，而且也允許網路安全性群組上的公用端點流量，讓 Azure Data Factory 可以連接到您的資料庫。 如需詳細資訊，請參閱[本指引](../azure-sql/managed-instance/public-endpoint-configure.md)。
 
@@ -58,14 +59,14 @@ ms.locfileid: "85513893"
 
 以下是針對 SQL 受控執行個體連結服務支援的屬性：
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | Type 屬性必須設定為**AzureSqlMI**。 | 是 |
-| connectionString |這個屬性會指定使用 SQL 驗證連接到 SQL 受控執行個體所需的**connectionString**資訊。 如需詳細資訊，請參閱下列範例。 <br/>預設的連接埠為 1433。 如果您使用具有公用端點的 SQL 受控執行個體，請明確指定埠3342。<br> 您也可以將密碼放在 Azure Key Vault 中。 如果是 SQL 驗證，請 `password` 從連接字串中提取設定。 如需詳細資訊，請參閱資料表後面的 JSON 範例，並[將認證儲存在 Azure Key Vault 中](store-credentials-in-key-vault.md)。 |Yes |
+| connectionString |這個屬性會指定使用 SQL 驗證連接到 SQL 受控執行個體所需的**connectionString**資訊。 如需詳細資訊，請參閱下列範例。 <br/>預設的連接埠為 1433。 如果您使用具有公用端點的 SQL 受控執行個體，請明確指定埠3342。<br> 您也可以將密碼放在 Azure Key Vault 中。 如果是 SQL 驗證，請 `password` 從連接字串中提取設定。 如需詳細資訊，請參閱資料表後面的 JSON 範例，並[將認證儲存在 Azure Key Vault 中](store-credentials-in-key-vault.md)。 |是 |
 | servicePrincipalId | 指定應用程式的用戶端識別碼。 | 是，當您搭配服務主體使用 Azure AD 驗證時 |
 | servicePrincipalKey | 指定應用程式的金鑰。 將此欄位標記為**SecureString** ，將它安全地儲存在 Azure Data Factory 中，或[參考儲存在 Azure Key Vault 中的秘密](store-credentials-in-key-vault.md)。 | 是，當您搭配服務主體使用 Azure AD 驗證時 |
 | tenant | 指定租使用者資訊，例如您的應用程式所在的功能變數名稱或租使用者識別碼。 將滑鼠游標暫留在 Azure 入口網站右上角，即可加以擷取。 | 是，當您搭配服務主體使用 Azure AD 驗證時 |
-| connectVia | 用來連線到資料存放區的[整合執行階段](concepts-integration-runtime.md)。 如果您的受控實例具有公用端點，並允許 Azure Data Factory 存取它，您可以使用自我裝載整合執行時間或 Azure 整合執行時間。 若未指定，則會使用預設 Azure Integration Runtime。 |Yes |
+| connectVia | 用來連線到資料存放區的[整合執行階段](concepts-integration-runtime.md)。 如果您的受控實例具有公用端點，並允許 Azure Data Factory 存取它，您可以使用自我裝載整合執行時間或 Azure 整合執行時間。 若未指定，則會使用預設 Azure Integration Runtime。 |是 |
 
 針對不同的驗證類型，請分別參閱下列有關先決條件和 JSON 範例的章節：
 
@@ -227,9 +228,9 @@ ms.locfileid: "85513893"
 
 若要將資料複製到 SQL 受控執行個體，並將其複製到其中，則支援下列屬性：
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | 資料集的類型屬性必須設定為**AzureSqlMITable**。 | Yes |
+| type | 資料集的類型屬性必須設定為**AzureSqlMITable**。 | 是 |
 | 結構描述 | 結構描述的名稱。 |否 (來源)；是 (接收)  |
 | 資料表 | 資料表/檢視的名稱。 |否 (來源)；是 (接收)  |
 | tableName | 具有結構描述的資料表/檢視名稱。 支援此屬性是基於回溯相容性。 對於新的工作負載，請使用 `schema` 和 `table`。 | 否 (來源)；是 (接收) |
@@ -263,13 +264,13 @@ ms.locfileid: "85513893"
 
 若要從 SQL 受控執行個體複製資料，複製活動的 [來源] 區段中支援下列屬性：
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 複製活動來源的類型屬性必須設定為**SqlMISource**。 | 是 |
-| sqlReaderQuery |此屬性使用自訂 SQL 查詢來讀取資料。 例如 `select * from MyTable`。 |No |
-| sqlReaderStoredProcedureName |此屬性是從來源資料表讀取資料的預存程序名稱。 最後一個 SQL 陳述式必須是預存程序中的 SELECT 陳述式。 |No |
-| storedProcedureParameters |這些是預存程序的參數。<br/>允許的值為名稱或值組。 參數的名稱和大小寫必須符合預存程序參數的名稱和大小寫。 |No |
-| isolationLevel | 指定 SQL 來源的異動鎖定行為。 允許的值有：**ReadCommitted** (預設值)、**ReadUncommitted**、**RepeatableRead**、**Serializable**、**Snapshot**。 如需詳細資訊，請參閱[這篇文件](https://docs.microsoft.com/dotnet/api/system.data.isolationlevel)。 | No |
+| sqlReaderQuery |此屬性使用自訂 SQL 查詢來讀取資料。 例如 `select * from MyTable`。 |否 |
+| sqlReaderStoredProcedureName |此屬性是從來源資料表讀取資料的預存程序名稱。 最後一個 SQL 陳述式必須是預存程序中的 SELECT 陳述式。 |否 |
+| storedProcedureParameters |這些是預存程序的參數。<br/>允許的值為名稱或值組。 參數的名稱和大小寫必須符合預存程序參數的名稱和大小寫。 |否 |
+| isolationLevel | 指定 SQL 來源的異動鎖定行為。 允許的值有：**ReadCommitted** (預設值)、**ReadUncommitted**、**RepeatableRead**、**Serializable**、**Snapshot**。 如需詳細資訊，請參閱[這篇文件](https://docs.microsoft.com/dotnet/api/system.data.isolationlevel)。 | 否 |
 
 **請注意下列幾點：**
 
@@ -370,17 +371,17 @@ GO
 
 若要將資料複製到 SQL 受控執行個體，複製活動接收區段中支援下列屬性：
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | 複製活動接收器的 type 屬性必須設定為**SqlMISink**。 | Yes |
+| type | 複製活動接收器的 type 屬性必須設定為**SqlMISink**。 | 是 |
 | preCopyScript |這個屬性會指定要在將資料寫入 SQL 受控執行個體之前，要執行之複製活動的 SQL 查詢。 每一複製回合只會叫用此查詢一次。 您可以使用此屬性來清除預先載入的資料。 |否 |
-| tableOption | 指定是否要根據來源架構，自動建立接收資料表 (如果不存在)。 當 sink 指定了複製活動中所設定的預存程式或分段複製時，不支援自動建立資料表。 允許的值包為：`none` (預設) 或 `autoCreate`。 |否 |
-| sqlWriterStoredProcedureName | 定義如何將來源資料套用到目標資料表的預存程序名稱。 <br/>此預存程序將會*依批次叫用*。 對於只執行一次且與來源資料無關的作業（例如，刪除或截斷），請使用 `preCopyScript` 屬性。<br>請參閱從[SQL 接收器叫用預存](#invoke-a-stored-procedure-from-a-sql-sink)程式的範例。 | No |
-| storedProcedureTableTypeParameterName |預存程式中指定之資料表類型的參數名稱。  |No |
-| sqlWriterTableType |要在預存程式中使用的資料表類型名稱。 複製活動可讓正在移動的資料可用於此資料表類型的暫存資料表。 然後，預存程序程式碼可以合併正在複製的資料與現有的資料。 |No |
+| tableOption | 指定是否要根據來源架構，[自動建立接收資料表](copy-activity-overview.md#auto-create-sink-tables)（如果不存在）。 當 sink 指定了複製活動中所設定的預存程式或分段複製時，不支援自動建立資料表。 允許的值包為：`none` (預設) 或 `autoCreate`。 |否 |
+| sqlWriterStoredProcedureName | 定義如何將來源資料套用到目標資料表的預存程序名稱。 <br/>此預存程序將會*依批次叫用*。 對於只執行一次且與來源資料無關的作業（例如，刪除或截斷），請使用 `preCopyScript` 屬性。<br>請參閱從[SQL 接收器叫用預存](#invoke-a-stored-procedure-from-a-sql-sink)程式的範例。 | 否 |
+| storedProcedureTableTypeParameterName |預存程式中指定之資料表類型的參數名稱。  |否 |
+| sqlWriterTableType |要在預存程式中使用的資料表類型名稱。 複製活動可讓正在移動的資料可用於此資料表類型的暫存資料表。 然後，預存程序程式碼可以合併正在複製的資料與現有的資料。 |否 |
 | storedProcedureParameters |預存程序的參數。<br/>允許的值為：名稱和值組。 參數的名稱和大小寫必須符合預存程序參數的名稱和大小寫。 | 否 |
-| writeBatchSize |要插入 SQL 資料表中*每個批次*的資料列數目。<br/>允許的值為整數的資料列數目。 根據預設，Azure Data Factory 會依據資料列大小，以動態方式決定適當的批次大小。  |No |
-| writeBatchTimeout |此屬性會指定在逾時前等待批次插入作業完成的時間。<br/>允許的值適用于 timespan。 範例是 “00:30:00”，也就是 30 分鐘。 |No |
+| writeBatchSize |要插入 SQL 資料表中*每個批次*的資料列數目。<br/>允許的值為整數的資料列數目。 根據預設，Azure Data Factory 會依據資料列大小，以動態方式決定適當的批次大小。  |否 |
+| writeBatchTimeout |此屬性會指定在逾時前等待批次插入作業完成的時間。<br/>允許的值適用于 timespan。 範例是 “00:30:00”，也就是 30 分鐘。 |否 |
 
 **範例1：附加資料**
 

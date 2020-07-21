@@ -8,14 +8,14 @@ ms.date: 05/05/2020
 ms.topic: conceptual
 ms.service: digital-twins
 services: digital-twins
-ms.openlocfilehash: 9822044de53f5f74df302e05e0e6c5cd06f3eb92
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 31da6a6b5375571f53cd7b478e957cc350ef591c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737150"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86522341"
 ---
-# <a name="summary-of-customer-data-request-features"></a>客戶資料要求功能的摘要
+# <a name="azure-digital-twins-customer-data-request-features"></a>Azure 數位 Twins 客戶資料要求功能
 
 Azure 數位 Twins 是一種開發人員平臺，可用於建立商業環境的安全數位標記法。 表示是由使用者所選取之資料來源中的即時狀態資料驅動。
 

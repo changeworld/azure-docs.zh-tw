@@ -72,6 +72,10 @@
           href: how-to-manage-routes.md
         - name: 與 Azure 地圖服務整合
           href: how-to-integrate-maps.md
+    - name: 疑難排解
+      items:
+        - name: 已知問題
+          href: troubleshoot-known-issues.md
 - name: 參考
   items:
     - name: Digital Twins 服務限制

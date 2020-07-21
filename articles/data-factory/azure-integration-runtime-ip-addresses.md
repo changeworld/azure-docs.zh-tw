@@ -11,11 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/06/2020
-ms.openlocfilehash: f3eed03c585ba6b48a21b36c21cb77585456fc2c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0c64a38295754e4754326dec126bfbc36e1bef61
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84660259"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523327"
 ---
 # <a name="azure-integration-runtime-ip-addresses"></a>Azure Integration Runtime IP 位址
 
@@ -24,7 +25,7 @@ ms.locfileid: "84660259"
 Azure Integration Runtime 使用的 IP 位址取決於您的 Azure Integration Runtime 所在的區域。 *全部*位於相同區域中的 Azure 整合執行時間會使用相同的 IP 位址範圍。
 
 > [!IMPORTANT]  
-> 資料流程不支援使用固定的 IP 範圍。
+> 可讓受控虛擬網路不支援使用固定 IP 範圍的資料流程和 Azure Integration Runtime。
 >
 > 您可以使用這些 IP 範圍來進行資料移動、管線和外部活動執行。 這些 IP 範圍可以用於資料存放區/網路安全性群組（NSG）/防火牆中的允許清單，以從 Azure Integration runtime 進行輸入存取。 
 

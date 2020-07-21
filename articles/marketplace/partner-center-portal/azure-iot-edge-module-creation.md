@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: anbene
 ms.author: mingshen
 ms.date: 06/17/2020
-ms.openlocfilehash: f97692b604408437bc2ee457bb04ad9b855c7290
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 11deb9b8146924d1a493872219ad85556d13c405
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119288"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520267"
 ---
 # <a name="create-configure-and-publish-an-iot-edge-module-offer-in-azure-marketplace"></a>在 Azure Marketplace 中建立、設定及發佈 IoT Edge 模組供應項目
 
@@ -286,13 +286,13 @@ IoT Edge 模組供應項目必須在描述的底部包含最低硬體需求段�
 
 ### <a name="plan-overview"></a>方案概觀
 
-此索引標籤可讓您在合作夥伴中心的相同供應項目中提供不同的方案選項。 這些方案先前稱為 SKU 或庫存單位。 方案可能會因可用的雲端而有所不同，例如全域雲端、Government 雲端，以及方案所參考的映像。 若要在市集中列出您的供應項目，您至少必須設定一個方案。
+此索引標籤可讓您在合作夥伴中心的相同供應項目中提供不同的方案選項。 方案（先前稱為 Sku）的不同之處在于有哪些雲端可供使用，例如全域雲端、政府雲端，以及方案所參考的映射。 若要在市集中列出您的供應項目，您至少必須設定一個方案。
 
 建立方案之後，隨即顯示 [方案概觀] 索引標籤：
 
 - 方案名稱
 - 定價模式
-- 雲端可用性 (全域或 Government)
+- Azure 區域（全球或政府）
 - 目前的發佈狀態
 - 任何可用的動作
 
@@ -329,7 +329,7 @@ IoT Edge 模組供應項目必須在描述的底部包含最低硬體需求段�
 
 #### <a name="azure-government-certifications"></a>Azure Government 認證
 
-只有在 [**雲端可用性**] 下選取 [ **Azure Government**時，才會顯示此選項。
+只有在 [ **Azure 區域**] 底下選取 [ **Azure Government**時，才會顯示此選項。
 
 Azure Government 服務會處理受限於特定政府法規和需求的資料。 例如，FedRAMP、NIST 800.171 (DIB)、ITAR、IRS 1075、DoD L4 和 CJIS。 若要告知這些程式的認證，您可以提供最多 100 個連結來描述您的認證。 這些可以直接連結到您在程式上的清單或連結到您自己的網站。 只有 Azure Government 客戶可以看到這些連結。
 
@@ -410,7 +410,7 @@ Azure Government 服務會處理受限於特定政府法規和需求的資料。
 
 #### <a name="call-out-description"></a>向外呼叫描述
 
-1. 管理員使用者
+1. 管理使用者
 
 <br>**Azure Container Registry 的密碼**：提供與 Azure Container Registry 相關聯且擁有您容器映像之管理使用者名稱的密碼。 需要使用者名稱和密碼，以確保貴公司有權存取登錄。 若要取得 Azure 入口網站的密碼，請前往 [容器登錄] > [存取金鑰]，或是使用 Azure CLI 的 [show 命令](https://docs.microsoft.com/cli/azure/acr/credential?view=azure-cli-latest#az-acr-credential-show)。
 

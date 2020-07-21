@@ -1,5 +1,5 @@
 ---
-title: 決策樹系回歸：模組參考
+title: 雙類別平均認知：模組參考
 titleSuffix: Azure Machine Learning
 description: 瞭解如何在 Azure Machine Learning 中使用雙類別的平均認知模組，根據平均認知演算法建立機器學習模型。
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
-ms.openlocfilehash: 53e40726a5745263ee2b3cb4ada8671bf65da963
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: daa0cfdedfe634acd2039cd4ec87606d30f7e76f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82137666"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520573"
 ---
 # <a name="two-class-averaged-perceptron-module"></a>雙類別平均認知模組
 
