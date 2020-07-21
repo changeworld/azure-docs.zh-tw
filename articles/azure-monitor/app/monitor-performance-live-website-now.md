@@ -3,17 +3,17 @@ title: 使用 Azure Application Insights 監視即時 ASP.NET Web 應用程式 |
 description: 監視網站的效能而不重新部署網站。 使用裝載於內部部署或 VM 中的 ASP.NET Web 應用程式。
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: f4ce01ea8fc7b6bf1f294071f04e2bebce3e1d27
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 93b150b831a01989093fd916d17e31aee27beb3a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86166377"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499523"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>在執行時間使用 Application Insights 無程式碼 Attach 檢測 web 應用程式
 
 > [!IMPORTANT]
-> 不再建議使用狀態監視器，且**從2021年6月1日開始**，將不支援此版本的狀態監視器。 它已由 Azure 監視器 Application Insights 代理程式 (（先前名為狀態監視器 v2) ）取代。 請參閱我們的檔，以瞭解[內部部署伺服器部署](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview)或[Azure 虛擬機器和虛擬機器擴展集部署](https://docs.microsoft.com/azure/azure-monitor/app/azure-vm-vmss-apps)。
+> 不再建議使用狀態監視器，且**從2021年6月1日開始**，將不支援此版本的狀態監視器。 它已由 Azure 監視器 Application Insights 代理程式（先前名為狀態監視器 v2）取代。 請參閱我們的檔，以瞭解[內部部署伺服器部署](./status-monitor-v2-overview.md)或[Azure 虛擬機器和虛擬機器擴展集部署](./azure-vm-vmss-apps.md)。
 
 您可以使用 Azure Application Insights 檢測即時 Web 應用程式，而不需修改或重新部署您的程式碼。 您需要 [Microsoft Azure](https://azure.com) 訂用帳戶。
 
@@ -22,7 +22,7 @@ ms.locfileid: "86166377"
 - 如果您的應用程式已部署至 Azure VM 或 Azure 虛擬機器擴展集，請遵循[這些指示](azure-vm-vmss-apps.md)。
 - 如果您的應用程式已部署到 Azure 應用程式服務中，請遵循[這些指示](azure-web-apps.md)。
 - 如果您的應用程式部署在 Azure VM 中，您可以從 Azure 控制台切換為 Application Insights 監視。
--  (也有關于檢測[Azure 雲端服務](../../azure-monitor/app/cloudservices.md)的個別文章。 ) 
+- （另外還有關于檢測[Azure 雲端服務](../../azure-monitor/app/cloudservices.md)的個別文章）。
 
 
 ![App Insights 概觀圖表的螢幕擷取畫面，包含失敗的要求、伺服器回應時間和伺服器要求的相關資訊](./media/monitor-performance-live-website-now/overview-graphs.png)
@@ -97,7 +97,7 @@ ms.locfileid: "86166377"
   union * | summarize count() by cloud_RoleName, cloud_RoleInstance
   ```
 
-- 如果您需要確認已成功附加 Application Insights，您可以在命令視窗中執行[Sysinternals 控制碼](https://docs.microsoft.com/sysinternals/downloads/handle)，以確認 IIS 已載入 applicationinsights.dll。
+- 如果您需要確認已成功附加 Application Insights，您可以在命令視窗中執行[Sysinternals 控制碼](/sysinternals/downloads/handle)，以確認 IIS 已載入 applicationinsights.dll。
 
   ```console
   handle.exe /p w3wp.exe
@@ -145,7 +145,7 @@ Start-ApplicationInsightsMonitoring -Name appName -InstrumentationKey 00000000-0
 * 若要輸出詳細資訊記錄，請修改組態檔 `C:\Program Files\Microsoft Application Insights\Status Monitor\Microsoft.Diagnostics.Agent.StatusMonitor.exe.config` 並將 `<add key="TraceLevel" value="All" />` 新增至 `appsettings`。
 然後重新啟動狀態監視器。
 
-* 當狀態監視器是 .NET 應用程式時，您也可以藉[由將適當的診斷新增至設定檔來啟用 .net 追蹤](https://docs.microsoft.com/dotnet/framework/configure-apps/file-schema/trace-debug/system-diagnostics-element)。 例如，在某些情況下，藉由設定[網路追蹤](https://docs.microsoft.com/dotnet/framework/network-programming/how-to-configure-network-tracing)來查看網路層級發生的狀況，會很有説明
+* 當狀態監視器是 .NET 應用程式時，您也可以藉[由將適當的診斷新增至設定檔來啟用 .net 追蹤](/dotnet/framework/configure-apps/file-schema/trace-debug/system-diagnostics-element)。 例如，在某些情況下，藉由設定[網路追蹤](/dotnet/framework/network-programming/how-to-configure-network-tracing)來查看網路層級發生的狀況，會很有説明
 
 ### <a name="insufficient-permissions"></a>權限不足
   
@@ -182,7 +182,7 @@ Start-ApplicationInsightsMonitoring -Name appName -InstrumentationKey 00000000-0
 * Windows Server 2012 R2
 * Windows Server 2016
 
-使用最新的 SP 和 .NET Framework 4.5 (狀態監視器是以這個版本的架構為基礎) 
+使用最新的 SP 和 .NET Framework 4.5 （狀態監視器是以這個版本的架構為基礎）
 
 在用戶端 Windows 7、8、8.1 和 10 上，一樣需含有 .NET Framework 4.5
 
@@ -243,7 +243,7 @@ Import-Module 'C:\Program Files\Microsoft Application Insights\Status Monitor\Po
 `Update-ApplicationInsightsMonitoring -Name appName [-InstrumentationKey "0000000-0000-000-000-0000"`]
 
 * `-Name`：Web 應用程式在 IIS 中的名稱。
-* `-InstrumentationKey` (選擇性。 ) 使用此選項來變更要將應用程式的遙測傳送至其中的資源。
+* `-InstrumentationKey`（選擇性）。使用此來變更要傳送應用程式遙測的資源。
 * 此 Cmdlet：
   * 將具名應用程式升級至最近下載到這台電腦之 SDK 的版本。 (僅適用於 `SdkState==EnabledAfterDeployment`時)
   * 如果您提供檢測金鑰，具名應用程式會重新設定為將遙測傳送至具有該索引鍵的資源。 (適用於 `SdkState != Disabled`時)
@@ -311,7 +311,7 @@ Application Insights SDK 2.4 版是[支援 .net 4.0 的最後一個版本](https
 
 ## <a name="download-status-monitor"></a><a name="download"></a>下載狀態監視器
 
-- 使用新的[PowerShell 模組](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview)
+- 使用新的[PowerShell 模組](./status-monitor-v2-overview.md)
 - 下載並執行[狀態監視器安裝程式](https://go.microsoft.com/fwlink/?LinkId=506648)
 - 或執行 [Web Platform Installer](https://www.microsoft.com/web/downloads/platform.aspx) 並在其中搜尋 Application Insights 狀態監視器。
 
@@ -321,7 +321,7 @@ Application Insights SDK 2.4 版是[支援 .net 4.0 的最後一個版本](https
 
 * [探索計量](../../azure-monitor/platform/metrics-charts.md)以監視效能和使用量
 * [搜尋事件和記錄][diagnostic]以診斷問題
-* 更多進階查詢的[分析](../../azure-monitor/app/analytics.md)
+* 更多進階查詢的[分析](../log-query/log-query-overview.md)
 
 新增更多遙測：
 
@@ -336,6 +336,6 @@ Application Insights SDK 2.4 版是[支援 .net 4.0 的最後一個版本](https
 [client]: ../../azure-monitor/app/javascript.md
 [diagnostic]: ../../azure-monitor/app/diagnostic-search.md
 [greenbrown]: ../../azure-monitor/app/asp-net.md
-[qna]: ../../azure-monitor/app/troubleshoot-faq.md
+[qna]: ../faq.md
 [roles]: ../../azure-monitor/app/resources-roles-access-control.md
 [usage]: ../../azure-monitor/app/javascript.md

@@ -3,12 +3,12 @@ title: 監視 Windows 傳統型應用程式的使用情況和效能
 description: 使用 Application Insights 分析 Windows 傳統型應用程式的使用情况和效能。
 ms.topic: conceptual
 ms.date: 06/11/2020
-ms.openlocfilehash: 1b8909c47594ebd752035ca88b23d4b836345f88
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ddb602536e1b8bbc987c4ba366e2007163c814ec
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84718779"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499183"
 ---
 # <a name="monitoring-usage-and-performance-in-classic-windows-desktop-apps"></a>監視傳統型 Windows 桌面應用程式的使用情況和效能
 
@@ -30,7 +30,7 @@ ms.locfileid: "84718779"
 5. [使用 API](../../azure-monitor/app/api-custom-events-metrics.md) 傳送遙測。
 6. 執行您的應用程式，並查看您在 Azure 入口網站中建立之資源的遙測。
 
-## <a name="example-code"></a><a name="telemetry"></a>程式碼範例
+## <a name="example-code"></a><a name="telemetry"></a>範例程式碼
 
 ```csharp
 using Microsoft.ApplicationInsights;
@@ -73,9 +73,9 @@ using Microsoft.ApplicationInsights;
 
 根據預設，此 SDK 會收集並儲存發出遙測之系統的電腦名稱稱。
 
-Application Insights[舊版企業（每個節點）定價層](https://docs.microsoft.com/azure/azure-monitor/app/pricing#legacy-enterprise-per-node-pricing-tier)會使用電腦名稱稱進行內部計費。 根據預設，如果您使用遙測初始化運算式來覆寫 `telemetry.Context.Cloud.RoleInstance` ，則會傳送個別的屬性， `ai.internal.nodeName` 其中仍然會包含電腦名稱稱值。 此值不會與您的 Application Insights 遙測一起儲存，但是會在內部內嵌使用，以允許與舊版節點型計費模型回溯相容。
+Application Insights[舊版企業（每個節點）定價層](./pricing.md#legacy-enterprise-per-node-pricing-tier)會使用電腦名稱稱進行內部計費。 根據預設，如果您使用遙測初始化運算式來覆寫 `telemetry.Context.Cloud.RoleInstance` ，則會傳送個別的屬性， `ai.internal.nodeName` 其中仍然會包含電腦名稱稱值。 此值不會與您的 Application Insights 遙測一起儲存，但是會在內部內嵌使用，以允許與舊版節點型計費模型回溯相容。
 
-如果您是在[舊版企業（每個節點）的定價層](https://docs.microsoft.com/azure/azure-monitor/app/pricing#legacy-enterprise-per-node-pricing-tier)，而且只需要覆寫電腦名稱稱的儲存體，請使用遙測初始化運算式：
+如果您是在[舊版企業（每個節點）的定價層](./pricing.md#legacy-enterprise-per-node-pricing-tier)，而且只需要覆寫電腦名稱稱的儲存體，請使用遙測初始化運算式：
 
 **撰寫自訂 TelemetryInitializer，如下所示。**
 
@@ -116,7 +116,7 @@ namespace CustomInitializer.Telemetry
 
 ## <a name="override-transmission-of-computer-name"></a>覆寫電腦名稱稱的傳輸
 
-如果您不是在[舊版企業（每個節點）定價層](https://docs.microsoft.com/azure/azure-monitor/app/pricing#legacy-enterprise-per-node-pricing-tier)，而且想要完全避免傳送包含電腦名稱稱的任何遙測，則必須使用遙測處理器。
+如果您不是在[舊版企業（每個節點）定價層](./pricing.md#legacy-enterprise-per-node-pricing-tier)，而且想要完全避免傳送包含電腦名稱稱的任何遙測，則必須使用遙測處理器。
 
 ### <a name="telemetry-processor"></a>遙測處理器
 
@@ -172,11 +172,10 @@ namespace WindowsFormsApp2
 ```
 
 > [!NOTE]
-> 雖然在技術上您可以使用上述的遙測處理器，即使您是在[舊版企業（每個節點）的定價層](https://docs.microsoft.com/azure/azure-monitor/app/pricing#legacy-enterprise-per-node-pricing-tier)，這會導致過度計費的可能性，因為無法適當地區別每個節點定價的節點。
+> 雖然在技術上您可以使用上述的遙測處理器，即使您是在[舊版企業（每個節點）的定價層](./pricing.md#legacy-enterprise-per-node-pricing-tier)，這會導致過度計費的可能性，因為無法適當地區別每個節點定價的節點。
 
 ## <a name="next-steps"></a>後續步驟
 * [建立儀表板](../../azure-monitor/app/overview-dashboard.md)
 * [診斷搜尋](../../azure-monitor/app/diagnostic-search.md)
 * [探索度量](../../azure-monitor/platform/metrics-charts.md)
-* [撰寫分析查詢](../../azure-monitor/app/analytics.md)
-
+* [撰寫分析查詢](../log-query/log-query-overview.md)

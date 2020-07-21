@@ -12,11 +12,12 @@ ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 07/31/2019
-ms.openlocfilehash: 1d8261d05f59c7f40ba6b1e2d59d2b15ad56de95
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c3163d414e940d843489a34f319996b1b8ed6f4a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84424516"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497362"
 ---
 # <a name="execute-ssis-packages-in-azure-from-ssdt"></a>從 SSDT 在 Azure 中執行 SSIS 套件
 
@@ -26,7 +27,7 @@ ms.locfileid: "84424516"
 
 透過這項功能，您可以建立新的 Azure SSIS IR，或將現有的整合到 SSIS 專案，然後在其上執行您的封裝。  我們支援執行封裝，以部署至專案部署模型中的 SSIS 目錄（SSISDB），以及要部署到封裝部署模型中的檔案系統/檔案共用/Azure 檔案儲存體。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 若要使用這項功能，請下載並安裝最新的 SSDT，其中包含 SSIS 專案延伸模組，適用于[此處](https://marketplace.visualstudio.com/items?itemName=SSIS.SqlServerIntegrationServicesProjects)的 Visual Studio 或獨立安裝[程式。](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017#ssdt-for-vs-2017-standalone-installer)
 
 ## <a name="azure-enable-ssis-projects"></a>Azure-啟用 SSIS 專案
@@ -81,6 +82,30 @@ ms.locfileid: "84424516"
    ![選取 [Azure 儲存體]](media/how-to-invoke-ssis-package-ssdt/ssis-in-adf-connection-wizard3.png)
 
 4. 按一下 [連線 **]** 按鈕以完成連接。  我們會在 SSDT 方案總管面板中的 [**連結的 Azure 資源**] 節點底下，顯示您選取的 AZURE SSIS IR 和 Azure 儲存體帳戶。  我們也會重新整理您的 Azure SSIS IR 的狀態，您可以在節點上按一下滑鼠右鍵以顯示功能表，然後選取 [ **Start\Stop\Manage** ] 功能表項目，將您帶到 ADF 入口網站/應用程式來進行管理。
+
+## <a name="assess-ssis-projectpackages-for-executions-in-azure"></a>評估 SSIS project\packages 以在 Azure 中執行
+### <a name="assess-ssis-project-or-package"></a>評估 SSIS 專案或封裝
+在 Azure 中執行封裝之前，您可以評估您的套件，以評估是否有任何可能的遷移封鎖程式或需要注意的資訊。 
+-  您可以評估 [專案] 或 [單一封裝] 底下的所有套件。
+
+   ![評估專案 ](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-assess-project.png)
+    ![ 評估套件](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-assess-package.png)
+
+-  您可以取得評量報告來檢查每個評估問題，而每個問題都會有詳細的描述和建議。 您也可以將評量報告匯出為 csv 檔案。 
+
+   ![評估專案結果](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-assess-project-result.png)
+
+### <a name="suppress-assessment-rule"></a>隱藏評量規則
+如果您確定某些評估規則未套用至您的套件，您可以選擇將它隱藏。 
+-  您可以直接按一下 [在評估報告中**設定評定規則隱藏**] 連結。
+
+   ![評量規則隱藏設定](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-assessment-rule-suppression-settings.png)
+
+-  您也可以透過**啟用 Azure 的設定**進行設定。
+
+   ![啟用 Azure 的設定](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-azure-enabled-setting.png)
+
+   ![透過 Azure 啟用的設定的評量規則隱藏設定](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-assessment-rule-suppression-settings-via-azure-enabled-settings.png)
 
 ## <a name="execute-ssis-packages-in-azure"></a>在 Azure 中執行 SSIS 套件
 ### <a name="azure-enabled-setting"></a>啟用 Azure 的設定
@@ -159,6 +184,9 @@ ms.locfileid: "84424516"
 6. 在 Azure 中執行此封裝。 您可以藉由切換目前的 Visual Studio 設定，輕鬆地將環境切換回本機。
 
    ![切換 Visual Studio 設定](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-example-switch-configurations.png)
+
+## <a name="current-limitations"></a>目前的限制
+-  這項 SSDT 功能目前不支援國家雲端。
 
 ## <a name="next-steps"></a>後續步驟
 當您滿意從 SSDT 在 Azure 中執行套件時，您可以將其部署並執行為 ADF 管線中的 Execute SSIS 套件活動，請參閱[在 adf 管線中將 ssis 套件執行為 EXECUTE Ssis 套件活動](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)。

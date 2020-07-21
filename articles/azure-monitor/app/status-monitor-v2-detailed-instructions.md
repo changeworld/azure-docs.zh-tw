@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: c74d4f0b2e0b2d8ca09c9b2c1f1091594f5657dc
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 2faf33fdd58090a335804f084ef2d1f180a9754a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86111009"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499319"
 ---
 # <a name="application-insights-agent-formerly-named-status-monitor-v2-detailed-instructions"></a>Application Insights 代理程式（先前名為狀態監視器 v2）：詳細指示
 
@@ -29,9 +29,7 @@ ms.locfileid: "86111009"
 PowerShell 需要系統管理員層級許可權，才能對您的電腦進行變更。
 ### <a name="execution-policy"></a>執行原則
 - 描述：根據預設，會停用執行中的 PowerShell 腳本。 我們建議只允許目前範圍的 RemoteSigned 腳本。
-- 參考：[關於執行原則](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6)和[設定-ExecutionPolicy](
-https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6
-)。
+- 參考：[關於執行原則](/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6)和[設定-ExecutionPolicy](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)。
 - 命令： `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process` 。
 - 選擇性參數：
     - `-Force`. 略過確認提示。
@@ -80,7 +78,7 @@ SerializationVersion           1.1.0.1
 1. 使用提高許可權的執行原則以系統管理員身分執行 PowerShell。
 2. 安裝 NuGet 套件提供者。
     - 描述：您需要此提供者，才能與 NuGet 型存放庫（例如 PowerShell 資源庫）互動。
-    - 參考： [Install-install-packageprovider](https://docs.microsoft.com/powershell/module/packagemanagement/install-packageprovider?view=powershell-6)。
+    - 參考： [Install-install-packageprovider](/powershell/module/packagemanagement/install-packageprovider?view=powershell-6)。
     - 命令： `Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201` 。
     - 選用參數：
         - `-Proxy`. 指定要求的 proxy 伺服器。
@@ -100,7 +98,7 @@ SerializationVersion           1.1.0.1
 
 3. 將 PowerShell 資源庫設定為受信任的存放庫。
     - 描述：根據預設，PowerShell 資源庫是不受信任的存放庫。
-    - 參考：[設定-register-psrepository](https://docs.microsoft.com/powershell/module/powershellget/set-psrepository?view=powershell-6)。
+    - 參考：[設定-register-psrepository](/powershell/module/powershellget/set-psrepository?view=powershell-6)。
     - 命令： `Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted` 。
     - 選擇性參數：
         - `-Proxy`. 指定要求的 proxy 伺服器。
@@ -146,7 +144,7 @@ SerializationVersion           1.1.0.1
 1. 請確定符合 PowerShell 資源庫的所有必要條件。
 2. 使用提高許可權的執行原則以系統管理員身分執行 PowerShell。
 3. 安裝 Az ApplicationMonitor 模組。
-    - 參考： [Install-Module](https://docs.microsoft.com/powershell/module/powershellget/install-module?view=powershell-6)。
+    - 參考： [Install-Module](/powershell/module/powershellget/install-module?view=powershell-6)。
     - 命令： `Install-Module -Name Az.ApplicationMonitor` 。
     - 選用參數：
         - `-Proxy`. 指定要求的 proxy 伺服器。
@@ -160,7 +158,7 @@ SerializationVersion           1.1.0.1
 
 ### <a name="manually-download-the-latest-nupkg-file"></a>手動下載最新的 nupkg 檔案
 
-1. 移至 https://www.powershellgallery.com/packages/Az.ApplicationMonitor。
+1. 前往 https://www.powershellgallery.com/packages/Az.ApplicationMonitor。
 2. 在 [**版本歷程記錄**] 資料表中，選取檔案的最新版本。
 3. 在 [**安裝選項**] 底下，選取 [**手動下載**]。
 
@@ -172,7 +170,7 @@ SerializationVersion           1.1.0.1
 #### <a name="unzip-nupkg-as-a-zip-file-by-using-expand-archive-v1010"></a>使用 [展開-封存] 將 nupkg 解壓縮為 zip 檔案（v 1.0.1.0 版）
 
 - 描述：1.0.1.0 版的基底版本無法將 nupkg 檔案解壓縮。 將檔案重新命名為 .zip 副檔名。
-- 參考：[展開-](https://docs.microsoft.com/powershell/module/microsoft.powershell.archive/expand-archive?view=powershell-6)封存。
+- 參考：[展開-](/powershell/module/microsoft.powershell.archive/expand-archive?view=powershell-6)封存。
 - 命令：
 
     ```console
@@ -186,7 +184,7 @@ SerializationVersion           1.1.0.1
 #### <a name="unzip-nupkg-by-using-expand-archive-v1100"></a>使用 Expand-Archive 解壓縮 nupkg （v 1.1.0.0）
 
 - 描述：使用目前版本的 [擴充-封存] 來解壓縮 nupkg 檔案，而不變更延伸模組。
-- 參考：[展開-](https://docs.microsoft.com/powershell/module/microsoft.powershell.archive/expand-archive?view=powershell-6)封存和[Microsoft. PowerShell.](https://www.powershellgallery.com/packages/Microsoft.PowerShell.Archive/1.1.0.0)封存。
+- 參考：[展開-](/powershell/module/microsoft.powershell.archive/expand-archive?view=powershell-6)封存和[Microsoft. PowerShell.](https://www.powershellgallery.com/packages/Microsoft.PowerShell.Archive/1.1.0.0)封存。
 - 命令：
 
     ```console
@@ -199,7 +197,7 @@ SerializationVersion           1.1.0.1
 將手動下載的 PowerShell 模組安裝到 PowerShell 目錄中，以供 PowerShell 會話探索。
 如需詳細資訊，請參閱[安裝 PowerShell 模組](/powershell/scripting/developer/module/installing-a-powershell-module)。
 
-如果您要將模組安裝至其他任何目錄，請使用[import-module](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/import-module?view=powershell-6)手動匯入模組。
+如果您要將模組安裝至其他任何目錄，請使用[import-module](/powershell/module/microsoft.powershell.core/import-module?view=powershell-6)手動匯入模組。
 
 > [!IMPORTANT] 
 > Dll 會透過相對路徑來安裝。
@@ -218,14 +216,14 @@ SerializationVersion           1.1.0.1
 從 PowerShell 資源庫下載並安裝 Az. ApplicationMonitor 的 PowerShell 命令支援 `-Proxy` 參數。
 當您撰寫安裝腳本時，請參閱上述指示。
 
-Application Insights SDK 必須將您應用程式的遙測傳送至 Microsoft。 我們建議您在 web.config 檔案中設定應用程式的 proxy 設定。 如需詳細資訊，請參閱[APPLICATION INSIGHTS 常見問題： Proxy 傳遞](https://docs.microsoft.com/azure/azure-monitor/app/troubleshoot-faq#proxy-passthrough)。
+Application Insights SDK 必須將您應用程式的遙測傳送至 Microsoft。 我們建議您在 web.config 檔案中設定應用程式的 proxy 設定。 如需詳細資訊，請參閱[APPLICATION INSIGHTS 常見問題： Proxy 傳遞](../faq.md#proxy-passthrough)。
 
 
 ## <a name="enable-monitoring"></a>啟用監視
 
 使用 `Enable-ApplicationInsightsMonitoring` 命令來啟用監視。
 
-如需如何使用此 Cmdlet 的詳細說明，請參閱[API 參考](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#enable-applicationinsightsmonitoring)。
+如需如何使用此 Cmdlet 的詳細說明，請參閱[API 參考](./status-monitor-v2-api-reference.md#enable-applicationinsightsmonitoring)。
 
 
 
@@ -235,7 +233,7 @@ Application Insights SDK 必須將您應用程式的遙測傳送至 Microsoft。
 
 - [探索計量](../../azure-monitor/platform/metrics-charts.md)以監視效能和使用量。
 - [搜尋事件和記錄](../../azure-monitor/app/diagnostic-search.md)以診斷問題。
-- [流量分析](../../azure-monitor/app/analytics.md)進行更先進的查詢。
+- [流量分析](../log-query/log-query-overview.md)進行更先進的查詢。
 - [建立儀表板](../../azure-monitor/app/overview-dashboard.md)。
 
  新增更多遙測：

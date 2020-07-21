@@ -7,13 +7,13 @@ author: yahnoosh
 ms.author: jlembicz
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 54def7f03e28acb201d613ab5a13d9077cff121b
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.date: 07/12/2020
+ms.openlocfilehash: 8809dcf58a0baad60ba567980f1e0193138aad19
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146760"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496429"
 ---
 # <a name="how-to-create-an-index-for-multiple-languages-in-azure-cognitive-search"></a>如何在 Azure 認知搜尋中建立多個語言的索引
 
@@ -23,7 +23,7 @@ Azure 認知搜尋提供來自 Lucene 和 Microsoft 的大量語言分析器選�
 
 ## <a name="add-analyzers-to-fields"></a>將分析器新增至欄位
 
-建立欄位時，會指定語言分析器。 將分析器新增至現有的欄位定義時，需要覆寫 (並重載索引) 或建立與原始相同的新欄位，但流量分析器指派。 您接著可以在方便時刪除未使用的欄位。
+建立欄位時，會指定語言分析器。 將分析器新增至現有的欄位定義時，需要覆寫（和重載）索引，或建立與原始相同的新欄位，但流量分析器指派。 您接著可以在方便時刪除未使用的欄位。
 
 1. 登入[Azure 入口網站](https://portal.azure.com)並尋找您的搜尋服務。
 1. 在服務儀表板頂端的命令列中按一下 [新增索引] **** 即可開始新的索引，或開啟現有索引以在您加入至現有索引的新欄位上設定分析器。

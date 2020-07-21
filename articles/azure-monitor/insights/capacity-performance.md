@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/13/2017
-ms.openlocfilehash: 75c65cf9f76e711a3aeed764de8b92ed619bad2f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d52138f5b23a6a0ac8ff8c585e6aed0edd92eaf0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77666938"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499540"
 ---
 # <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-deprecated"></a>使用容量與效能解決方案規劃 Hyper-v 虛擬機器容量（已淘汰）
 
@@ -38,19 +39,19 @@ ms.locfileid: "77666938"
 
 下表描述此方案支援的連接來源。
 
-| 連接的來源 | 支援 | Description |
+| 連接的來源 | 支援 | 描述 |
 |---|---|---|
-| [Windows 代理程式](../../azure-monitor/platform/agent-windows.md) | Yes | 解決方案會從 Windows 代理程式收集容量和效能資料的資訊。 |
-| [Linux 代理程式](../../azure-monitor/learn/quick-collect-linux-computer.md) | No    | 解決方案不會從直接 Linux 代理程式收集容量和效能資料的資訊。|
-| [SCOM 管理群組](../../azure-monitor/platform/om-agents.md) | Yes |解決方案會從已連線之 SCOM 管理群組中的代理程式收集容量和效能資料。 不需要從 SCOM 代理程式直接連接到 Log Analytics。|
-| [Azure 儲存體帳戶](../../azure-monitor/platform/collect-azure-metrics-logs.md) | No | Azure 儲存體不包含容量和效能資料。|
+| [Windows 代理程式](../../azure-monitor/platform/agent-windows.md) | 是 | 解決方案會從 Windows 代理程式收集容量和效能資料的資訊。 |
+| [Linux 代理程式](../../azure-monitor/learn/quick-collect-linux-computer.md) | 否    | 解決方案不會從直接 Linux 代理程式收集容量和效能資料的資訊。|
+| [SCOM 管理群組](../../azure-monitor/platform/om-agents.md) | 是 |解決方案會從已連線之 SCOM 管理群組中的代理程式收集容量和效能資料。 不需要從 SCOM 代理程式直接連接到 Log Analytics。|
+| [Azure 儲存體帳戶](../platform/resource-logs.md#send-to-log-analytics-workspace) | 否 | Azure 儲存體不包含容量和效能資料。|
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 - Windows 或 Operations Manager 代理程式必須安裝在 Windows Server 2012 或更新版本的 Hyper-V 主機上，而非安裝在虛擬機器上。
 
 
-## <a name="configuration"></a>組態
+## <a name="configuration"></a>設定
 
 執行下列步驟以將容量和效能解決方案新增至您的工作區。
 
@@ -108,7 +109,7 @@ New Management Pack with id:"Microsoft.IntelligencePacks.CapacityPerformance", v
 
 每個組織的生產運算環境會有明顯不同。 此外，容量和效能的工作負載可能會取決於 VM 的執行方式以及您認為平常的事項。 可協助您測量效能的特定程序很可能不適用於您的環境。 因此，更為一般性的規範指引較適合提供協助。 Microsoft 發佈了各種規範指引文章，以協助您測量效能。
 
-總結來說，解決方案會從各種來源 (包括效能計數器) 收集容量和效能資料。 請使用解決方案中的各種介面所呈現的容量和效能資料，並將您的結果與[測量 Hyper-V 上的效能](https://msdn.microsoft.com/library/cc768535.aspx)文章中的結果做比較。 雖然該文章已發佈一段時間，但其計量、考量和指導方針仍然有效。 該文章包含其他有用資源的連結。
+總結來說，解決方案會從各種來源 (包括效能計數器) 收集容量和效能資料。 請使用解決方案中的各種介面所呈現的容量和效能資料，並將您的結果與[測量 Hyper-V 上的效能](https://www.microsoft.com/en-us/download/details.aspx?id=56495)文章中的結果做比較。 雖然該文章已發佈一段時間，但其計量、考量和指導方針仍然有效。 該文章包含其他有用資源的連結。
 
 
 ## <a name="sample-log-searches"></a>記錄搜尋範例

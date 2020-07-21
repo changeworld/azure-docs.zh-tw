@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 04/02/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: 67af4eae03b773fad9cf38964152c1fb9d623bd5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 55eb9a0bca3f142c1065f867cebd840cc7958b7e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72025948"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499914"
 ---
 # <a name="install-ibm-zdt-devtest-environment-on-azure"></a>在 Azure 上安裝 IBM zD&T 開發/測試環境
 
@@ -39,7 +39,7 @@ Azure 和 Azure Stack 支援下列版本：
 
 本文說明如何在 Azure 上設定 Z 開發和測試環境（zD&T） Enterprise Edition。 接著，您可以使用 zD&T Enterprise Edition web 伺服器，在 Azure 上建立和管理以 Z 為基礎的環境。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 > [!NOTE]
 > IBM 只允許在開發/測試環境中安裝 zD&T Enterprise Edition，*而不*是在生產環境中。
@@ -56,13 +56,13 @@ Azure 和 Azure Stack 支援下列版本：
 
 ## <a name="create-the-base-image-and-connect"></a>建立基底映射並聯機
 
-1. 在 Azure 入口網站中，使用您想要的作業系統設定來[建立 VM](/azure/virtual-machines/linux/quick-create-portal) 。 本文假設有一個執行 Ubuntu 16.04 的 B4ms VM （具有4個 vcpu 和 16 GB 的記憶體）。
+1. 在 Azure 入口網站中，使用您想要的作業系統設定來[建立 VM](../../../linux/quick-create-portal.md) 。 本文假設有一個執行 Ubuntu 16.04 的 B4ms VM （具有4個 vcpu 和 16 GB 的記憶體）。
 
 2. 建立 VM 之後，針對 [SSH] 開啟 [輸入埠 22]、針對 [FTP] 開啟 [21]，並針對 web 伺服器開啟 [9443]。
 
 3. 透過 [連線 **]** 按鈕取得 VM [**總覽**] 分頁上顯示的 SSH 認證。 選取 [ **ssh** ] 索引標籤，並將 [ssh 登入] 命令複製到剪貼簿。
 
-4. 從您的本機電腦登入[Bash shell](/azure/cloud-shell/quickstart) ，並貼上命令。 它會以**ssh \<user id\> \@ \<IP Address\> **形式呈現。 當系統提示您提供認證時，請輸入它們以建立與您的主目錄的連接。
+4. 從您的本機電腦登入[Bash shell](../../../../cloud-shell/quickstart.md) ，並貼上命令。 它會以**ssh \<user id\> \@ \<IP Address\> **形式呈現。 當系統提示您提供認證時，請輸入它們以建立與您的主目錄的連接。
 
 ## <a name="copy-the-installation-file-to-the-server"></a>將安裝檔案複製到伺服器
 

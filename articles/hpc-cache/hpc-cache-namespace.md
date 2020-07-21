@@ -1,17 +1,17 @@
 ---
-title: 建立 Azure HPC 快取實例
-description: 如何建立 Azure HPC Cache 執行個體
+title: 使用 Azure HPC Cache 匯總命名空間
+description: 如何規劃 Azure HPC 快取的虛擬命名空間
 author: ekpgh
 ms.service: hpc-cache
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/30/2019
-ms.author: rohogue
-ms.openlocfilehash: be09d8b903d63b9fb2b57f8b9b7486b02a60085c
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.author: v-erkel
+ms.openlocfilehash: c16d2f9e9c94603361d9a096f33d559105f2d28d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045802"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497024"
 ---
 # <a name="plan-the-aggregated-namespace"></a>規劃彙總的命名空間
 
@@ -30,7 +30,7 @@ Azure HPC 快取可讓用戶端透過會隱藏後端儲存系統詳細資料的�
 範本資料會儲存在資料中心，而此作業所需的資訊會儲存在這些子目錄中：
 
 * */goldline/templates/acme2017/sku798*
-* */goldline/templates/acme2017/sku980* 
+* */goldline/templates/acme2017/sku980*
 
 資料中心儲存體系統會公開這些匯出：
 
@@ -52,10 +52,10 @@ NFS 儲存體目標可以有多個虛擬命名空間路徑，前提是每一個�
 
 因為 NFS 來源路徑是相同匯出的子目錄，所以您必須從相同的儲存體目標定義多個命名空間路徑。
 
-| 儲存體目標主機名稱  | NFS 匯出路徑      | 子目錄路徑 | 命名空間路徑    |
-|--------------------------|----------------------|-------------------|-------------------|
-| *IP 位址或主機名稱* | /goldline/templates  | acme2017/sku798   | /templates/sku798 |
-| *IP 位址或主機名稱* | /goldline/templates  | acme2017/sku980   | /templates/sku980 |
+| 儲存體目標主機名稱  | NFS 匯出路徑     | 子目錄路徑 | 命名空間路徑    |
+|--------------------------|---------------------|-------------------|-------------------|
+| *IP 位址或主機名稱* | /goldline/templates | acme2017/sku798   | /templates/sku798 |
+| *IP 位址或主機名稱* | /goldline/templates | acme2017/sku980   | /templates/sku980 |
 
 用戶端應用程式可以掛接快取，並輕鬆地存取匯總的命名空間檔案路徑 ``/source`` 、 ``/templates/sku798`` 和 ``/templates/sku980`` 。
 

@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: 0c5e1096b0780d2f9e50389f772e63344935012b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 819ef7e61045c0ed4205eeaf0094fec706b0b9da
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84691811"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498605"
 ---
 # <a name="azure-monitor-naming-and-terminology-changes"></a>Azure 監視器命名和術語變更
 最近已對 Azure 監視器進行了重大變更，合併了不同服務以簡化對 Azure 客戶的監視。 本文說明 Azure 監視器文件中的最新名稱和術語變更。
@@ -58,4 +59,4 @@ Log Analytics 和 Application Insights 已合併到 Azure 監視器，以針對�
 ## <a name="next-steps"></a>後續步驟
 
 - 請閱讀 [Azure 監視器的概觀](overview.md)，當中會描述其不同的元件與功能。
-- 了解 [OMS 入口網站的轉換](../log-analytics/log-analytics-oms-portal-transition.md)。
+- 了解 [OMS 入口網站的轉換](./platform/oms-portal-transition.md)。

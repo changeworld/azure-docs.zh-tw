@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/30/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: d55bcf921d5bddb1612f9cfb884b339f837c7aa2
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 315c635ba0864dc1565fd7ba5ccc450223d87ac9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86225064"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86494712"
 ---
 # <a name="create-an-image-from-a-vhd-or-snapshot-in-a-shared-image-gallery-using-powershell"></a>使用 PowerShell 在共用映射資源庫中從 VHD 或快照集建立映射
 
@@ -88,11 +88,11 @@ $gallery = Get-AzGallery `
 
 映像定義會建立映像的邏輯群組。 它們可用來管理影像的相關資訊。 映像定義名稱可以由大寫或小寫字母、數字、點、虛線和句點組成。 
 
-建立映射定義時，請確定具有所有正確的資訊。 在此範例中，我們假設快照集或 VHD 來自于使用中的 VM，而且尚未一般化。 如果 VHD 或快照集是在執行適用于 Windows 或[waagent](https://github.com/Azure/WALinuxAgent)的 Sysprep 或 Linux) 之後， (建立的， `-deprovision` `-deprovision+user` 請將 `-OsState` 變更為 `generalized` 。 
+建立映射定義時，請確定具有所有正確的資訊。 在此範例中，我們假設快照集或 VHD 來自于使用中的 VM，而且尚未一般化。 如果 VHD 或快照集是由一般化 OS 所建立（執行 Windows 或[waagent](https://github.com/Azure/WALinuxAgent)的 Sysprep 或 `-deprovision` Linux 之後）， `-deprovision+user` 請將變更 `-OsState` 為 `generalized` 。 
 
-若要深入了解您可以為映像定義指定哪些值，請參閱[映像定義](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#image-definitions)。
+若要深入了解您可以為映像定義指定哪些值，請參閱[映像定義](./windows/shared-image-galleries.md#image-definitions)。
 
-使用 [New-AzGalleryImageDefinition](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion) 建立映像定義。 在此範例中，映射定義的名稱為*myImageDefinition*，而適用于特製化 Windows OS。 若要使用 Linux OS 來建立映射的定義，請使用 `-OsType Linux` 。 
+使用 [New-AzGalleryImageDefinition](/powershell/module/az.compute/new-azgalleryimageversion) 建立映像定義。 在此範例中，映射定義的名稱為*myImageDefinition*，而適用于特製化 Windows OS。 若要使用 Linux OS 來建立映射的定義，請使用 `-OsType Linux` 。 
 
 ```azurepowershell-interactive
 $imageDefinition = New-AzGalleryImageDefinition `
@@ -114,7 +114,7 @@ $imageDefinition = New-AzGalleryImageDefinition `
 
 ## <a name="create-an-image-version"></a>建立映像版本
 
-使用[new-azgalleryimageversion](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion)，從快照集建立映射版本。 
+使用[new-azgalleryimageversion](/powershell/module/az.compute/new-azgalleryimageversion)，從快照集建立映射版本。 
 
 映像版本允許的字元是數字及句點。 數字必須在 32 位元整數的範圍內。 格式：*MajorVersion*.*MinorVersion*.*Patch*。
 
@@ -148,7 +148,7 @@ $job.State
 > [!NOTE]
 > 您必須等候映射版本完全完成建立和複寫，才能使用相同的快照集來建立另一個映射版本。 
 >
-> 您也可以在建立映射版本時新增，以將映射版本儲存在[區域的多餘儲存體](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs)中 `-StorageAccountType Standard_ZRS` 。
+> 您也可以在建立映射版本時新增，以將映射版本儲存在[區域的多餘儲存體](../storage/common/storage-redundancy.md)中 `-StorageAccountType Standard_ZRS` 。
 >
 
 ## <a name="delete-the-source"></a>刪除來源

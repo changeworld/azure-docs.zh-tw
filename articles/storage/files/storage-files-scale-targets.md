@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 46c46faf8f7ee52978ae5542ab7ebd72a41b8357
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd04e92804a1d37afd8ee2cefb159c1e686748d4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81536421"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496174"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Azure 檔案服務延展性和效能目標
 
@@ -74,15 +74,15 @@ Azure 檔案同步的設計目標是無限制的使用方式，但無限制的�
 
 為了協助您規劃每個階段的部署，以下提供在採用某種組態的系統上進行內部測試期間所觀察到的結果
 
-| 系統設定 |  |
+| 系統設定 | 詳細資料 |
 |-|-|
 | CPU | 具有 64 MiB L3 快取的 64 個虛擬核心 |
-| Memory | 128 GB |
+| 記憶體 | 128 GiB |
 | 磁碟 | 具有電池供電式快取記憶體 RAID 10 的 SAS 磁碟 |
 | 網路 | 1 Gbps 的網路 |
 | 工作負載 | 一般用途檔案伺服器|
 
-| 初始一次性佈建  |  |
+| 初始一次性佈建  | 詳細資料 |
 |-|-|
 | 物件數目 | 2500 萬個物件 |
 | 資料集大小| ~ 4.7 TiB |
@@ -92,7 +92,7 @@ Azure 檔案同步的設計目標是無限制的使用方式，但無限制的�
 
 *在建立新的伺服器端點時，Azure 檔案同步代理程式不會下載任何檔案內容。 它會先同步完整命名空間，然後再觸發背景回復以下載檔案；有可能是下載完整檔案，或者，如果已啟用雲端分層處理，則會根據伺服器端點上設定的雲端分層處理原則進行下載。
 
-| 持續同步  |   |
+| 持續同步  | 詳細資料  |
 |-|--|
 | 已同步的物件數目| 125,000 個物件 (~1% 變換) |
 | 資料集大小| 50 GiB |
@@ -112,5 +112,5 @@ Azure 檔案同步的設計目標是無限制的使用方式，但無限制的�
 
 ## <a name="see-also"></a>另請參閱
 
-- [規劃 Azure 檔案部署](storage-files-planning.md)
-- [規劃 Azure 檔案同步部署](storage-sync-files-planning.md)
+- [規劃 Azure 檔案服務部署](storage-files-planning.md) (機器翻譯)
+- [針對 Azure 檔案同步部署進行規劃](storage-sync-files-planning.md) \(部分機器翻譯\)

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/11/2020
-ms.openlocfilehash: 3fd4bcd13b4d92d2c6e61d10ae9e62996b5dfcf5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8043dfb7fdda972d4ede6798d07355936b23bf93
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84945489"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498911"
 ---
 # <a name="explore-azure-monitor-for-azure-cosmos-db"></a>探索適用於 Azure Cosmos DB 的 Azure 監視器
 
@@ -78,7 +78,7 @@ ms.locfileid: "84945489"
 | `201 Created` | 建立資源的 POST 作業成功。 |
 | `404 Not Found` | 作業嘗試在已經不存在的資源上執行。 例如，資源可能已經遭到刪除。 |
 
-如需狀態碼的完整清單，請參閱 [Azure Cosmos DB HTTP 狀態碼](https://docs.microsoft.com/rest/api/cosmos-db/http-status-codes-for-cosmosdb) \(部分機器翻譯\) 一文。
+如需狀態碼的完整清單，請參閱 [Azure Cosmos DB HTTP 狀態碼](/rest/api/cosmos-db/http-status-codes-for-cosmosdb) \(部分機器翻譯\) 一文。
 
 ### <a name="capacity"></a>Capacity
 
@@ -98,7 +98,7 @@ ms.locfileid: "84945489"
 
 ## <a name="pin-export-and-expand"></a>釘選、匯出和展開
 
-您可以將其中任何一個計量區段釘選到 [Azure 儀表板](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards)，只要選取該區段右上角的圖釘圖示即可。
+您可以將其中任何一個計量區段釘選到 [Azure 儀表板](../../azure-portal/azure-portal-dashboards.md)，只要選取該區段右上角的圖釘圖示即可。
 
 ![計量區段釘選到儀表板範例](./media/cosmosdb-insights-overview/pin.png)
 
@@ -126,6 +126,6 @@ ms.locfileid: "84945489"
 
 ## <a name="next-steps"></a>後續步驟
 
-* 設定[計量警示](../platform/alerts-metric.md)和[服務健康情況通知](../../service-health/alerts-activity-log-service-notifications.md)，以設定自動化警示來協助偵測問題。
+* 設定[計量警示](../platform/alerts-metric.md)和[服務健康情況通知](../../service-health/alerts-activity-log-service-notifications-portal.md)，以設定自動化警示來協助偵測問題。
 
 * 檢閱[使用 Azure 監視器活頁簿建立互動式報表](../platform/workbooks-overview.md)，以了解設計活頁簿以提供支援、如何撰寫新報表和自訂現有報表等等的案例。

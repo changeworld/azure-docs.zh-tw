@@ -7,11 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/15/2020
-ms.openlocfilehash: 4e4abdd5d5a9e3cddf00cf47d7388a57d0d4d6fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5366166a31ee45c74c34b8af0e01da251bd7f7f0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807701"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499217"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure 監視器常見問題集
 
@@ -29,7 +30,7 @@ ms.locfileid: "85807701"
 自動啟用的 Azure 監視器功能 (例如，收集計量和活動記錄) 皆免費提供。 使用記錄查詢和警示等其他功能，則有相關聯的費用。 如需詳細定價資訊，請參閱 [Azure 監視器定價頁面](https://azure.microsoft.com/pricing/details/monitor/)。
 
 ### <a name="how-do-i-enable-azure-monitor"></a>如何啟用 Azure 監視器？
-Azure 監視器會在您建立新的 Azure 訂用帳戶時啟用，並自動收集[活動記錄](platform/activity-logs-overview.md)和平台[計量](platform/data-platform-metrics.md)。 建立[診斷設定](platform/diagnostic-settings.md)以收集更多有關 Azure 資源作業的詳細資訊，並新增[監視解決方案](insights/solutions.md)和[見解](insights/insights-overview.md)，以針對特定服務所收集的資料提供額外分析。 
+Azure 監視器會在您建立新的 Azure 訂用帳戶時啟用，並自動收集[活動記錄](./platform/platform-logs-overview.md)和平台[計量](platform/data-platform-metrics.md)。 建立[診斷設定](platform/diagnostic-settings.md)以收集更多有關 Azure 資源作業的詳細資訊，並新增[監視解決方案](insights/solutions.md)和[見解](insights/insights-overview.md)，以針對特定服務所收集的資料提供額外分析。 
 
 ### <a name="how-do-i-access-azure-monitor"></a>如何存取 Azure 監視器？
 從 Azure 入口網站的 [監視器] 功能表中，存取所有 Azure 監視器功能和資料。 適用於不同 Azure 服務的功能表 [監視] 區段，可讓您存取與篩選至特定資源之資料相同的工具。 此外，也可以使用 CLI、PowerShell 和 REST API，針對各種案例存取 Azure 監視器資料。
@@ -314,7 +315,7 @@ WireData
 
 * 瀏覽器遙測：我們會收集傳送者的 IP 位址。
 * 伺服器遙測：Application Insights 模組會收集用戶端 IP 位址。 如果已設定 `X-Forwarded-For`，則不會收集該位址。
-* 若要深入了解如何在 Application Insights 中收集 IP 位址和地理位置資料，請參閱這篇[文章](https://docs.microsoft.com/azure/azure-monitor/app/ip-collection) \(部分機器翻譯\)。
+* 若要深入了解如何在 Application Insights 中收集 IP 位址和地理位置資料，請參閱這篇[文章](./app/ip-collection.md) \(部分機器翻譯\)。
 
 
 您可以設定 `ClientIpHeaderTelemetryInitializer` 以從不同的標頭取得 IP 位址。 例如，在某些系統中，Proxy、負載平衡器或 CDN 會將它移至 `X-Originating-IP`。 [深入了解](https://apmtips.com/posts/2016-07-05-client-ip-address/)。
@@ -327,7 +328,7 @@ WireData
 
 ### <a name="what-happens-to-application-insights-telemetry-when-a-server-or-device-loses-connection-with-azure"></a>當伺服器或裝置失去與 Azure 的連線時，Application Insight 的遙測會發生什麼事？
 
-我們的所有 SDK (包括 Web SDK) 均包含「可靠的傳輸」或「健全的傳輸」。 當伺服器或裝置失去與 Azure 的連線時，遙測就會[本機儲存於檔案系統上](https://docs.microsoft.com/azure/azure-monitor/app/data-retention-privacy#does-the-sdk-create-temporary-local-storage) \(部分機器翻譯\) (伺服器 SDK) 或 HTML5 工作階段儲存體 (Web SDK) 中。 SDK 將定期重試傳送此遙測，直到我們的內嵌服務將其視為「過時」(針對記錄為 48 小時，針對計量則為 30 分鐘) 為止。 系統將捨棄過時的遙測。 在某些情況下 (例如，當本機儲存體已滿時)，將不會進行重試。
+我們的所有 SDK (包括 Web SDK) 均包含「可靠的傳輸」或「健全的傳輸」。 當伺服器或裝置失去與 Azure 的連線時，遙測就會[本機儲存於檔案系統上](./app/data-retention-privacy.md#does-the-sdk-create-temporary-local-storage) \(部分機器翻譯\) (伺服器 SDK) 或 HTML5 工作階段儲存體 (Web SDK) 中。 SDK 將定期重試傳送此遙測，直到我們的內嵌服務將其視為「過時」(針對記錄為 48 小時，針對計量則為 30 分鐘) 為止。 系統將捨棄過時的遙測。 在某些情況下 (例如，當本機儲存體已滿時)，將不會進行重試。
 
 
 ### <a name="could-personal-data-be-sent-in-the-telemetry"></a>可以在遙測中傳送個人資料嗎？
@@ -409,7 +410,7 @@ WireData
 
 #### <a name="querying-the-telemetry"></a>查詢遙測
 
-請使用 [REST API](https://dev.applicationinsights.io/) 來執行[分析](app/analytics.md)查詢。
+請使用 [REST API](https://dev.applicationinsights.io/) 來執行[分析](./log-query/log-query-overview.md)查詢。
 
 ### <a name="how-can-i-set-an-alert-on-an-event"></a>我要如何在事件上設定警示？
 
@@ -476,7 +477,7 @@ Azure 警示僅針對計量。 請建立一個會在每次事件發生時超出�
 #### <a name="proxy-passthrough"></a>Proxy 傳遞
 
 藉由設定電腦等級或應用程式等級的 Proxy 來實現 Proxy 傳遞。
-如需詳細資訊，請參閱 [DefaultProxy](https://docs.microsoft.com/dotnet/framework/configure-apps/file-schema/network/defaultproxy-element-network-settings) \(部分機器翻譯\) 上的 dotnet 文章。
+如需詳細資訊，請參閱 [DefaultProxy](/dotnet/framework/configure-apps/file-schema/network/defaultproxy-element-network-settings) \(部分機器翻譯\) 上的 dotnet 文章。
  
  範例 Web.config：
  ```xml
@@ -734,7 +735,7 @@ LogEntry : ({"Hello": "This example has multiple lines:","Docker/Moby": "will no
 ## <a name="next-steps"></a>後續步驟
 如果您的問題並未在此獲得解答，您可以參考下列論壇，以取得其他問題和答案。
 
-- [Log Analytics](https://docs.microsoft.com/answers/topics/azure-monitor.html)
-- [Application Insights](https://docs.microsoft.com/answers/topics/azure-monitor.html)
+- [Log Analytics](/answers/topics/azure-monitor.html)
+- [Application Insights](/answers/topics/azure-monitor.html)
 
 如需有關 Azure 監視器的一般意見反應，請瀏覽[意見反應論壇](https://feedback.azure.com/forums/34192--general-feedback) \(英文\)。

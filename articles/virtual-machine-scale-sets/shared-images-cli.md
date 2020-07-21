@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 中使用共用 VM 映射建立擴展集
+title: 在 Azure CLI 中使用共用 VM 映射建立擴展集
 description: 了解如何使用 Azure CLI 來建立共用 VM 映像，以用來在 Azure 中部署虛擬機器擴展集。
 author: axayjo
 tags: azure-resource-manager
@@ -10,12 +10,12 @@ ms.date: 05/06/2019
 ms.author: akjosh
 ms.reviewer: cynthn
 ms.custom: ''
-ms.openlocfilehash: 8d129ae2c6048e592bfc43f07ee609ce930aa3fd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cdcd11b6bd9c773e8018ee303564fff6abd098a6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84558780"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86494899"
 ---
 # <a name="create-and-use-shared-images-for-virtual-machine-scale-sets-with-the-azure-cli-20"></a>使用 Azure CLI 2.0 為虛擬機器擴展集建立及使用共用映像
 

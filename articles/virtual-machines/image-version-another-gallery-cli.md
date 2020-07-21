@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 764fe98ad20aa29506b4fba723762124e24af245
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: f1e3598f2a805dfc2ebf92395db6b7bf6b0b147a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224327"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86494678"
 ---
 # <a name="copy-an-image-from-another-gallery-using-the-azure-cli"></a>使用 Azure CLI 從另一個資源庫複製映射
 
@@ -154,13 +154,13 @@ az sig image-version create \
 > [!NOTE]
 > 您必須等候映像版本完全完成建立和複寫後，才能使用相同的受控映像來建立另一個映像版本。
 >
-> 建立映像版本時，您也可以藉由新增 `--storage-account-type  premium_lrs`，將映像儲存在「進階」儲存體，或新增 `--storage-account-type  standard_zrs`，將映像儲存在[區域備援儲存體](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs)。
+> 建立映像版本時，您也可以藉由新增 `--storage-account-type  premium_lrs`，將映像儲存在「進階」儲存體，或新增 `--storage-account-type  standard_zrs`，將映像儲存在[區域備援儲存體](../storage/common/storage-redundancy.md)。
 >
 
 ## <a name="next-steps"></a>後續步驟
 
 從[一般化](vm-generalized-image-version-cli.md)或[特製](vm-specialized-image-version-cli.md)化映射版本建立 VM。
 
-此外，試用[Azure 映射產生器 (預覽) ](./linux/image-builder-overview.md)可以協助將映射版本的建立自動化，甚至可以用它來更新並[從現有的映射版本建立新的映射版本](./linux/image-builder-gallery-update-image-version.md)。 
+此外，試用[Azure 映射產生器（預覽）](./linux/image-builder-overview.md)可協助自動建立映射版本，您甚至可以使用它來更新並[從現有的映射版本建立新的映射版本](./linux/image-builder-gallery-update-image-version.md)。 
 
 如需有關如何提供採購方案資訊的詳細資訊，請參閱[在建立映射時提供 Azure Marketplace 購買方案資訊](marketplace-images.md)。

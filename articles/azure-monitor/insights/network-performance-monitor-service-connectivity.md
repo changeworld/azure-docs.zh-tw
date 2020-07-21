@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 02/20/2018
-ms.openlocfilehash: 93f3820b7cf1db85b9ff4cd514fe22efc75a90d9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0ba93db3e692a34de42849b469978cea4459c6fc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84690009"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498860"
 ---
 # <a name="service-connectivity-monitor"></a>服務連線能力監視
 
@@ -28,7 +29,7 @@ ms.locfileid: "84690009"
 ![服務連線能力監視](media/network-performance-monitor-service-endpoint/service-endpoint-intro.png)
 
 
-## <a name="configuration"></a>組態 
+## <a name="configuration"></a>設定 
 若要開啟網路效能監控的設定，請開啟[網路效能監控解決方案](network-performance-monitor.md)，然後選取 [**設定**]。
 
 ![設定網路效能監控](media/network-performance-monitor-service-endpoint/npm-configure-button.png)
@@ -56,7 +57,7 @@ netsh advfirewall firewall add rule name="NPMDICMPV6TimeExceeded" protocol="icmp
 
     * 選取 [Web]**** 以監視回應 HTTP/S 要求之服務的連線，例如 outlook.office365.com 或 bing.com。<br>
     * 選取 [網路]**** 以監視回應 TCP 要求但不會回應 HTTP/S 要求之服務的連線，例如 SQL 伺服器、FTP 伺服器或 SSH 連接埠。 
-    * 例如：若要建立 blob 儲存體帳戶的 web 測試，請選取 [ **web** ]，然後輸入 target as *yourstorageaccount*. blob.core.windows.net。 同樣地，您可以使用[此連結](https://docs.microsoft.com/azure/storage/common/storage-account-overview#storage-account-endpoints)來建立其他資料表儲存體、佇列儲存體和 Azure 檔案儲存體的測試。
+    * 例如：若要建立 blob 儲存體帳戶的 web 測試，請選取 [ **web** ]，然後輸入 target as *yourstorageaccount*. blob.core.windows.net。 同樣地，您可以使用[此連結](../../storage/common/storage-account-overview.md#storage-account-endpoints)來建立其他資料表儲存體、佇列儲存體和 Azure 檔案儲存體的測試。
 4. 如果您不想要執行網路量測，例如網路延遲、封包遺失和拓撲探索，請清除 [執行網路量測]**** 核取方塊。 保持選取狀態可充分發揮功能。 
 5. 在 [目標]**** 中，輸入您要監視網路連線的 URL/FQDN/IP 位址。
 6. 在 [連接埠號碼]**** 中，輸入目標服務的連接埠號碼。 
@@ -74,7 +75,7 @@ netsh advfirewall firewall add rule name="NPMDICMPV6TimeExceeded" protocol="icmp
 
 
 
-## <a name="walkthrough"></a>逐步介紹 
+## <a name="walkthrough"></a>逐步解說 
 
 移至 [網路效能監控] 儀表板檢視。 若要對您所建立的不同測試取得健康情況摘要，請查看 [服務連線能力監視]**** 頁面。 
 

@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/26/2020
-ms.openlocfilehash: 8b3dba7996b098ec398c9fe94705c18190b30ba6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/14/2020
+ms.openlocfilehash: 0da3a0bec79ab6f60b1e69c490124e95a4b7c365
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84753574"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497636"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Azure Data Factory 中的整合執行階段 
 
@@ -124,7 +124,11 @@ Azure-SSIS IR 是一個完全受控的 Azure VM 叢集，專門用來執行您�
 
 ## <a name="integration-runtime-location"></a>整合執行階段位置
 
-Data Factory 位置中儲存資料處理站的中繼資料，也是觸發管道的源頭。 同時，資料處理站可以存取其他 Azure 區域的資料存放區和計算資料，以在資料存放區之間移動資料或使用計算服務處理資料。 此行為會透過[全域可用的 IR](https://azure.microsoft.com/global-infrastructure/services/) 來達成，以確保資料合規性、效率，並降低網路輸出成本。
+### <a name="relationship-between-factory-location-and-ir-location"></a>Factory 位置和 IR 位置之間的關聯性
+
+當客戶建立 data factory 實例時，他們需要指定資料處理站的位置。 Data Factory 位置中儲存資料處理站的中繼資料，也是觸發管道的源頭。 Factory 的中繼資料只會儲存在客戶選擇的區域中，而且不會儲存在其他區域中。
+
+同時，資料處理站可以存取其他 Azure 區域的資料存放區和計算資料，以在資料存放區之間移動資料或使用計算服務處理資料。 此行為會透過[全域可用的 IR](https://azure.microsoft.com/global-infrastructure/services/) 來達成，以確保資料合規性、效率，並降低網路輸出成本。
 
 「IR 位置」定義其後端計算的位置，基本上還會定義執行資料移動、活動分派和 SSIS 套件執行的位置。 IR 位置及其所屬的資料處理站位置可能不同。 
 

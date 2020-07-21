@@ -3,12 +3,12 @@ title: 使用 Azure 備份伺服器來備份 VMware VM
 description: 在本文中，您將瞭解如何使用 Azure 備份伺服器來備份在 VMware vCenter/ESXi 伺服器上執行的 VMware Vm。
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: fed088a9c5eea461f93c844dcb0eead74761237e
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: c9868012698fcdf5a2352c289de85261b6899dc3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86081055"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497908"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>使用 Azure 備份伺服器來備份 VMware VM
 
@@ -22,9 +22,9 @@ ms.locfileid: "86081055"
 - 將 vCenter 或 ESXi 伺服器新增至 Azure 備份伺服器。
 - 設定包含您要備份之 VMware VM 的保護群組、指定備份設定和排程備份。
 
-## <a name="before-you-start"></a>在您開始使用 Intune 之前
+## <a name="before-you-start"></a>開始之前
 
-- 請確認您正在執行支援備份的 vCenter/ESXi 版本。 請參閱[這裡](https://docs.microsoft.com/azure/backup/backup-mabs-protection-matrix)的支援矩陣。
+- 請確認您正在執行支援備份的 vCenter/ESXi 版本。 請參閱[這裡](./backup-mabs-protection-matrix.md)的支援矩陣。
 - 確定您已設定 Azure 備份伺服器。 如果還沒，請在開始之前[進行設定](backup-azure-microsoft-azure-backup.md)。 您應該執行具有最新更新的 Azure 備份伺服器。
 - 確認下列網路連接埠已開放：
   - MABS 與 vCenter 之間的 TCP 443
@@ -41,7 +41,7 @@ ms.locfileid: "86081055"
 - 請務必了解 Azure 備份伺服器處理備份的方式。
   - 作為第一個步驟，Azure 備份伺服器會將資料備份到本機磁碟儲存體上。 Azure 備份伺服器使用儲存體集區，這是一組磁碟，而 Azure 備份伺服器可在磁碟上的磁碟區儲存受保護資料的磁碟復原點。 儲存體集區可直接連結儲存體 (DAS)、光纖通道 SAN，或 iSCSI 存放裝置或 SAN。 請務必確定您有足夠的儲存空間來進行 VMware VM 資料的本機備份。
   - 接著，Azure 備份伺服器會從本機磁碟儲存體備份至 Azure。
-  - [取得說明](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-1807#figure-out-how-much-storage-space-you-need)以了解您需要多少儲存空間。 該資訊適用於 DPM，但也可用於 Azure 備份伺服器。
+  - [取得說明](/system-center/dpm/create-dpm-protection-groups#figure-out-how-much-storage-space-you-need)以了解您需要多少儲存空間。 該資訊適用於 DPM，但也可用於 Azure 備份伺服器。
 
 ### <a name="set-up-the-certificate"></a>設定憑證
 
@@ -281,7 +281,7 @@ Azure 備份伺服器需要具有存取 v-Center Server/ESXi 主機權限的使�
 
     ![指定認證](./media/backup-azure-backup-server-vmware/identify-creds.png)
 
-6. 按一下 [新增]**** 以將 VMware 伺服器新增到伺服器清單。 然後按一下 [下一步] 。
+6. 按一下 [新增]**** 以將 VMware 伺服器新增到伺服器清單。 然後按一下 [下一步]。
 
     ![新增 VMWare 伺服器和認證](./media/backup-azure-backup-server-vmware/add-vmware-server-credentials.png)
 
@@ -309,14 +309,14 @@ Azure 備份伺服器需要具有存取 v-Center Server/ESXi 主機權限的使�
 
 1. 在 [選取保護群組類型]**** 頁面上，選取 [伺服器]****，然後按 [下一步]****。 [選取群組成員]**** 頁面隨即出現。
 
-1. 在 [**選取群組成員**] 中，選取您想要備份的 vm （或 vm 資料夾）。 然後按一下 [下一步] 。
+1. 在 [**選取群組成員**] 中，選取您想要備份的 vm （或 vm 資料夾）。 然後按一下 [下一步]。
 
     - 當您選取資料夾時，也會選取該資料夾內的 VM 或資料夾以進行備份。 您可以將不想備份的資料夾或 VM 取消選取。
 1. 如果 VM 或資料夾已經過備份，您就無法加以選取。 這可確保不會為 VM 建立重複的復原點。
 
     ![選擇群組成員](./media/backup-azure-backup-server-vmware/server-add-selected-members.png)
 
-1. 在 [選取資料保護方法]**** 頁面上，輸入保護群組的名稱和保護設定。 若要備份至 Azure，請將短期保護設定為 [磁碟]****，並啟用線上保護。 然後按一下 [下一步] 。
+1. 在 [選取資料保護方法]**** 頁面上，輸入保護群組的名稱和保護設定。 若要備份至 Azure，請將短期保護設定為 [磁碟]****，並啟用線上保護。 然後按一下 [下一步]。
 
     ![選擇資料保護方式](./media/backup-azure-backup-server-vmware/name-protection-group.png)
 
@@ -347,17 +347,17 @@ Azure 備份伺服器需要具有存取 v-Center Server/ESXi 主機權限的使�
 
     ![選擇複本的建立方式](./media/backup-azure-backup-server-vmware/replica-creation.png)
 
-1. 在 [一致性檢查選項]**** 中，選取如何及何時自動執行一致性檢查。 然後按一下 [下一步] 。
+1. 在 [一致性檢查選項]**** 中，選取如何及何時自動執行一致性檢查。 然後按一下 [下一步]。
       - 當複本資料變得不一致時，或依據設定的排程，您可以執行一致性檢查。
       - 如果您不想設定自動一致性檢查，可以執行手動檢查。 若要這樣做，以滑鼠右鍵按一下保護群組 > [執行一致性檢查]****。
 
-1. 在 [指定線上保護資料]**** 頁面中，選取要備份的 VM 或 VM 資料夾。 您可以個別地選取成員，或按一下 [全選]**** 來選擇所有成員。 然後按一下 [下一步] 。
+1. 在 [指定線上保護資料]**** 頁面中，選取要備份的 VM 或 VM 資料夾。 您可以個別地選取成員，或按一下 [全選]**** 來選擇所有成員。 然後按一下 [下一步]。
 
     ![指定線上保護資料](./media/backup-azure-backup-server-vmware/select-data-to-protect.png)
 
 1. 在 [指定線上備份排程]**** 頁面上，指定要從本機儲存體將資料備份至 Azure 的頻率。
 
-    - 資料的雲端復原點將會根據排程來產生。 然後按一下 [下一步] 。
+    - 資料的雲端復原點將會根據排程來產生。 然後按一下 [下一步]。
     - 復原點在產生後會傳輸至 Azure 中的復原服務保存庫。
 
     ![指定線上備份排程](./media/backup-azure-backup-server-vmware/online-backup-schedule.png)

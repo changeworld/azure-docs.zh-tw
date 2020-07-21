@@ -6,11 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 3fbeb1120e97a884135cd4622a49ef97fd43e58e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eba250f3ca6a7af8480d24a99e6c3e8278009b82
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77671659"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499438"
 ---
 # <a name="profile-live-azure-cloud-services-with-application-insights"></a>使用 Application Insights 來分析即時 Azure 雲端服務
 
@@ -22,7 +23,7 @@ ms.locfileid: "77671659"
 Application Insights Profiler 會與 Azure 診斷擴充功能一起安裝。 您只需要設定 Azure 診斷，以便安裝 Profiler 並將設定檔傳送至 Application Insights 資源。
 
 ## <a name="enable-profiler-for-azure-cloud-services"></a>針對 Azure 雲端服務啟用 Profiler
-1. 檢查以確定您使用的是[.NET Framework 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed)或更新版本。 如果您使用的是 OS 系列4，就必須使用[啟動](https://docs.microsoft.com/azure/cloud-services/cloud-services-dotnet-install-dotnet)工作來安裝 .NET Framework 4.6.1 或更新版本。 作業系統系列5預設包含相容版本的 .NET Framework。 
+1. 檢查以確定您使用的是[.NET Framework 4.6.1](/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed)或更新版本。 如果您使用的是 OS 系列4，就必須使用[啟動](../../cloud-services/cloud-services-dotnet-install-dotnet.md)工作來安裝 .NET Framework 4.6.1 或更新版本。 作業系統系列5預設包含相容版本的 .NET Framework。 
 
 1. [將 Application Insights SDK 新增至 Azure 雲端服務](../../azure-monitor/app/cloudservices.md?toc=/azure/azure-monitor/toc.json)。
 
@@ -36,11 +37,11 @@ Application Insights Profiler 會與 Azure 診斷擴充功能一起安裝。 您
 
 1. 設定 Azure 診斷擴充功能以啟用 Profiler：
 
-    a. 針對您的應用程式角色找出 [Azure 診斷 diagnostics.wadcfgx](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) ** 檔案，如下所示：  
+    a. 針對您的應用程式角色找出 [Azure 診斷 diagnostics.wadcfgx](../platform/diagnostics-extension-overview.md) ** 檔案，如下所示：  
 
       ![診斷組態檔的位置](./media/profiler-cloudservice/cloudservice-solutionexplorer.png)  
 
-      如果您找不到檔案，請參閱[為 Azure 雲端服務和虛擬機器設定診斷](https://docs.microsoft.com/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines)。
+      如果您找不到檔案，請參閱[為 Azure 雲端服務和虛擬機器設定診斷](/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines)。
 
     b. 新增下列 `SinksConfig` 區段作為 `WadCfg` 的子元素：  
 

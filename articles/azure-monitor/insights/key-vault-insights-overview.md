@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/13/2019
-ms.openlocfilehash: 97bea90e67b9449a8f5fd7b333b9ac149abef2f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7b52a1ee67c22fb3bded49a80d35305bdf612f10
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84945455"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498945"
 ---
 # <a name="monitoring-your-key-vault-service-with-azure-monitor-for-key-vault-preview"></a>使用 Key Vault 的 Azure 監視器 (預覽) 來監視您的金鑰保存庫服務
 Key Vault 的 Azure 監視器 (預覽) 可針對您的 Key Vault 要求、效能、失敗和延遲提供統合檢視，讓您能夠全面監視金鑰保存庫。
@@ -24,7 +24,7 @@ Key Vault 的 Azure 監視器 (預覽) 可針對您的 Key Vault 要求、效能
 -   **向下切入分析**特定的金鑰保存庫，可執行詳細的分析。
 -    **可自訂項目**可讓您變更想要查看的計量、修改或設定對應於限制的閾值，以及儲存您自己的活頁簿。 活頁簿中的圖表可釘選到 Azure 儀表板。
 
-Key Vault 的 Azure 監視器結合了記錄和計量，以提供全域監視解決方案。 所有使用者都可存取以計量為基礎的監視資料，但若要納入以記錄為基礎的視覺效果，使用者可能必須[啟用 Azure Key Vault 的記錄](https://docs.microsoft.com/azure/key-vault/key-vault-logging)。
+Key Vault 的 Azure 監視器結合了記錄和計量，以提供全域監視解決方案。 所有使用者都可存取以計量為基礎的監視資料，但若要納入以記錄為基礎的視覺效果，使用者可能必須[啟用 Azure Key Vault 的記錄](../../key-vault/general/logging.md)。
 
 ## <a name="configuring-your-key-vaults-for-monitoring"></a>為金鑰保存庫進行監視設定
 
@@ -39,7 +39,7 @@ Key Vault 的 Azure 監視器結合了記錄和計量，以提供全域監視解
 
 3. 儲存診斷設定之後，您將可在 Key Vault Insights 底下檢視所有以記錄為基礎的圖表和視覺效果。 請注意，可能需要幾分鐘到數小時的時間，才會開始填入記錄。
 
-4. 如需如何為您的 Key Vault 服務啟用診斷記錄的相關協助，請參閱[完整指南](https://docs.microsoft.com/azure/key-vault/key-vault-logging)。
+4. 如需如何為您的 Key Vault 服務啟用診斷記錄的相關協助，請參閱[完整指南](../../key-vault/general/logging.md)。
 
 ## <a name="view-from-azure-monitor"></a>從 Azure 監視器檢視
 
@@ -75,7 +75,7 @@ Key Vault 的 Azure 監視器結合了記錄和計量，以提供全域監視解
 
 活頁簿會顯示 [成功] (2xx 狀態碼)、[驗證錯誤] (401/403 狀態碼)、[節流] (429 狀態碼) 和 [其他失敗] (4xx 狀態碼)。
 
-若要進一步了解每個狀態碼代表的涵義，建議您閱讀 [Azure Key Vault 的狀態碼和回應碼](https://docs.microsoft.com/azure/key-vault/authentication-requests-and-responses)的相關文件。
+若要進一步了解每個狀態碼代表的涵義，建議您閱讀 [Azure Key Vault 的狀態碼和回應碼](../../key-vault/general/authentication-requests-and-responses.md)的相關文件。
 
 ## <a name="operations--latency-workbook"></a>作業 & 延遲活頁簿
 
@@ -120,7 +120,7 @@ Key Vault 的 Azure 監視器結合了記錄和計量，以提供全域監視解
 使用者也可以根據上方資料表中的特定交易類型來界定檢視的範圍，而以動態方式更新下方資料表，讓使用者可在快顯內容窗格中檢視完整的作業詳細資料。
 
 >[!NOTE]
-> 請注意，使用者必須已啟用診斷設定，才能檢視此活頁簿。 若要深入了解如何啟用診斷設定，請參閱更多有關 [Azure Key Vault 記錄](https://docs.microsoft.com/azure/key-vault/general/logging)的資訊。
+> 請注意，使用者必須已啟用診斷設定，才能檢視此活頁簿。 若要深入了解如何啟用診斷設定，請參閱更多有關 [Azure Key Vault 記錄](../../key-vault/general/logging.md)的資訊。
 
 ## <a name="pin-and-export"></a>釘選和匯出
 
@@ -164,7 +164,7 @@ Key Vault 的 Azure 監視器結合了記錄和計量，以提供全域監視解
 
 ### <a name="resolving-performance-issues-or-failures"></a>解決效能問題或失敗
 
-若要排解您在使用 Key Vault 的 Azure 監視器 (預覽) 時發現的任何金鑰保存庫相關問題，請參閱 [Azure Key Vault 文件](https://docs.microsoft.com/azure/key-vault/)。
+若要排解您在使用 Key Vault 的 Azure 監視器 (預覽) 時發現的任何金鑰保存庫相關問題，請參閱 [Azure Key Vault 文件](../../key-vault/index.yml)。
 
 ### <a name="why-can-i-only-see-200-key-vaults"></a>為什麼我只能看到200金鑰保存庫
 
@@ -208,4 +208,4 @@ Key Vault 的 Azure 監視器結合了記錄和計量，以提供全域監視解
 
 ## <a name="next-steps"></a>後續步驟
 
-檢閱[使用 Azure 監視器活頁簿建立互動式報表](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview)，以了解設計活頁簿以提供支援的案例、如何撰寫新報表和自訂現有報表，以及其他資訊。
+檢閱[使用 Azure 監視器活頁簿建立互動式報表](../platform/workbooks-overview.md)，以了解設計活頁簿以提供支援的案例、如何撰寫新報表和自訂現有報表，以及其他資訊。

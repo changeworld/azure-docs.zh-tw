@@ -5,19 +5,20 @@ ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 02/11/2020
+ms.date: 06/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: dd7a74ff775e6e07d1c32ed198ff028765fce45d
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 589dd411e3d340eb8a0bf84b21a306cabd4bb362
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037285"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86495069"
 ---
-# <a name="send-events-to-a-time-series-insights-environment-by-using-an-event-hub"></a>使用事件中樞將事件傳送至時間序列深入解析環境
+# <a name="send-events-to-a-azure-time-series-insights-gen1-environment-by-using-an-event-hub"></a>使用事件中樞將事件傳送至 Azure 時間序列深入解析 Gen1 環境
 
 本文說明如何在 Azure 事件中樞中建立和設定事件中樞。 它也會說明如何執行範例應用程式，以將事件推送至事件中樞的 Azure 時間序列深入解析。 如果您現有的事件中樞具有 JSON 格式的事件，請略過此教學課程，並在[Azure 時間序列深入解析](./time-series-insights-update-create-environment.md)中查看您的環境。
 
@@ -37,10 +38,10 @@ ms.locfileid: "86037285"
 
     [![建立取用者群組](media/send-events/add-event-hub-consumer-group.png)](media/send-events/add-event-hub-consumer-group.png#lightbox)
 
-1. 請確定您建立的取用者群組僅供您的時間序列深入解析事件來源使用。
+1. 請確定您建立的取用者群組僅供您的 Azure 時間序列深入解析事件來源使用。
 
     > [!IMPORTANT]
-    > 請確定此取用者群組未由任何其他服務使用，例如 Azure 串流分析作業或其他時間序列深入解析環境。 如果有其他服務使用此取用者群組，讀取作業對此環境和其他服務都會造成負面影響。 如果使用 **$Default** 做為取用者群組，有可能會導致其他讀取者重複使用您的取用者群組。
+    > 請確定此取用者群組未由任何其他服務使用，例如 Azure 串流分析作業或其他 Azure 時間序列深入解析環境。 如果有其他服務使用此取用者群組，讀取作業對此環境和其他服務都會造成負面影響。 如果使用 **$Default** 做為取用者群組，有可能會導致其他讀取者重複使用您的取用者群組。
 
 1. 在功能表的 [**設定**] 底下，選取 [**共用存取原則**]，然後選取 [**新增**]。
 
@@ -52,11 +53,11 @@ ms.locfileid: "86037285"
 
 1. 在 [宣告]**底下，選取**[**傳送**] 核取方塊。
 
-## <a name="add-a-time-series-insights-instance"></a>新增時間序列深入解析執行個體
+## <a name="add-an-azure-time-series-insights-instance"></a>新增 Azure 時間序列深入解析實例
 
-時間序列深入解析更新會使用執行個體，將內容資料新增至傳入的遙測資料。 資料會在查詢期間透過使用 [時間序列識別碼]****.加入。 我們稍後在本文中使用之範例風車專案的**時間序列識別碼**為 `id` 。 若要深入瞭解時間序列深入解析實例和**時間序列識別碼**，請參閱[時間序列模型](./concepts-model-overview.md)。
+在 Azure 時間序列深入解析 Gen 2 中，您可以使用時間序列模型（TSM）將內容資料新增至傳入的遙測。 在 TSM 中，您的標籤或信號會以實例的形式來表示 *，* 而且您可以將內容資料儲存在*實例欄位中。* 資料會在查詢期間透過使用 [時間序列識別碼]****.加入。 我們稍後在本文中使用之範例風車專案的**時間序列識別碼**為 `id` 。 若要深入瞭解如何將資料儲存在實例欄位中，請參閱[時間序列模型](./concepts-model-overview.md)總覽。
 
-### <a name="create-a-time-series-insights-event-source"></a>建立時間序列深入解析事件來源
+### <a name="create-a-azure-time-series-insights-event-source"></a>建立 Azure 時間序列深入解析事件來源
 
 1. 如果您尚未建立事件來源，請完成這些步驟以[建立事件來源](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub)。
 
@@ -72,7 +73,7 @@ ms.locfileid: "86037285"
 
     [![複製主索引鍵連接字串的值](media/send-events/configure-sample-code-connection-string.png)](media/send-events/configure-sample-code-connection-string.png#lightbox)
 
-1. 移至 https://tsiclientsample.azurewebsites.net/windFarmGen.html。 URL 會建立並執行模擬的風車裝置。
+1. 前往 https://tsiclientsample.azurewebsites.net/windFarmGen.html。 URL 會建立並執行模擬的風車裝置。
 1. 在網頁的 [**事件中樞連接字串**] 方塊中，貼上您在 [[風車輸入] 欄位](#push-events-to-windmills-sample)中複製的連接字串。
   
     [![將主索引鍵連接字串貼到 [事件中樞連接字串] 方塊中](media/send-events/configure-wind-mill-sim.png)](media/send-events/configure-wind-mill-sim.png#lightbox)
@@ -80,7 +81,7 @@ ms.locfileid: "86037285"
 1. 選取 [按一下即可啟動]****。 
 
     > [!TIP]
-    > 風車模擬器也會建立 JSON，供您用來做為[時間序列深入解析 GA 查詢 api](https://docs.microsoft.com/rest/api/time-series-insights/ga-query)的承載。
+    > 風車模擬器也會建立 JSON，供您用來做為[AZURE 時間序列深入解析 GA 查詢 api](https://docs.microsoft.com/rest/api/time-series-insights/ga-query)的承載。
 
     > [!NOTE]
     > 模擬器會繼續傳送資料，直到 [瀏覽器] 索引標籤關閉為止。
@@ -197,11 +198,11 @@ ms.locfileid: "86037285"
 
     |location|manufacturer.name|manufacturer.location|events.id|events.timestamp|events.data.type|events.data.units|events.data.value|
     |---|---|---|---|---|---|---|---|
-    |WestUs|manufacturer1|EastUs|device1|2016-01-08T01:08:00Z|pressure|psi|108.09|
+    |WestUs|manufacturer1|EastUs|device1|2016-01-08T01:08:00Z|壓力|psi|108.09|
     |WestUs|manufacturer1|EastUs|device2|2016-01-08T01:17:00Z|vibration|abs G|217.09|
 
 ## <a name="next-steps"></a>後續步驟
 
-- 在 [時間序列深入解析 explorer] 中[查看您的環境](https://insights.timeseries.azure.com)。
+- 在 [Azure 時間序列深入解析 Explorer] 中[查看您的環境](https://insights.timeseries.azure.com)。
 
 - 深入瞭解[IoT 中樞裝置訊息](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct)

@@ -9,22 +9,25 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 07/16/2020
 ms.author: aahi
-ms.openlocfilehash: 611ab503dfea44e8287e95cf607ce6af3b447d1f
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
+ms.openlocfilehash: a74b77ac59ece98f1a64839fd5000f4ab5d638f7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/24/2020
-ms.locfileid: "83815786"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497874"
 ---
 # <a name="install-and-run-face-containers-preview"></a>安裝和執行臉部容器（預覽）
+
+> [!IMPORTANT]
+> 已達到臉部容器使用者的限制。 我們目前不接受臉部容器的新應用程式。
 
 Azure 認知服務臉部提供 Docker 的標準化 Linux 容器，以偵測影像中的人臉。 它也會識別屬性，包括臉部地標（例如鼻子和眼睛）、性別、年齡及其他機器預測的臉部特徵。 除了偵測以外，臉部也可以使用信賴分數來檢查相同影像或不同影像中的兩張臉部是否相同。 臉部也可以比較臉部與資料庫，以查看是否已存在外觀相似或相同的臉部。 它也可以使用共用視覺特性，將類似的臉部組織成群組。
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 使用臉部服務容器之前，您必須符合下列必要條件。
 
@@ -35,12 +38,6 @@ Azure 認知服務臉部提供 Docker 的標準化 Linux 容器，以偵測影�
 |臉部資源 |若要使用容器，您必須具有：<br><br>Azure**臉部**資源和相關聯的 API 金鑰和端點 URI。 這兩個值都可在資源的 [**總覽**] 和 [**金鑰**] 頁面上取得。 您必須啟動容器。<br><br>**{API_KEY}**： [**金鑰**] 頁面上有兩個可用的資源金鑰之一<br><br>**{ENDPOINT_URI}**： [**總覽**] 頁面上所提供的端點
 
 [!INCLUDE [Gathering required container parameters](../containers/includes/container-gathering-required-parameters.md)]
-
-## <a name="request-access-to-the-private-container-registry"></a>要求私人容器登錄的存取
-
-填寫並提交[要求表單](https://aka.ms/cognitivegate)，以要求容器的存取權。 
-
-[!INCLUDE [Request access to private container registry](../../../includes/cognitive-services-containers-request-access.md)]
 
 ### <a name="the-host-computer"></a>主機電腦
 
@@ -115,7 +112,7 @@ ApiKey={API_KEY}
 
 容器會提供以 REST 為基礎的查詢預測端點 API。 
 
-針對容器 API 請使用主機 `http://localhost:5000`。
+請對容器 API 使用主機 `http://localhost:5000`。
 
 
 <!--  ## Validate container is running -->
@@ -144,7 +141,7 @@ ApiKey={API_KEY}
 
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>摘要
 
 在本文中，您已瞭解如何下載、安裝及執行臉部服務容器的概念和工作流程。 摘要說明：
 

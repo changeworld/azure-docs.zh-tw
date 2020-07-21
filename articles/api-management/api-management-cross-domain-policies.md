@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/28/2017
+ms.date: 07/14/2020
 ms.author: apimpm
-ms.openlocfilehash: 6512edd26b59dac11f046e82940db4877728943c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 99784e43130b70554c05ff79a10993f2b6eebbde
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86243587"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499608"
 ---
 # <a name="api-management-cross-domain-policies"></a>API 管理跨網域原則
 本主題提供下列 API 管理原則的參考。 如需有關新增和設定原則的資訊，請參閱 [API 管理中的原則](https://go.microsoft.com/fwlink/?LinkID=398186)。
@@ -57,7 +57,7 @@ ms.locfileid: "86243587"
 |----------|-----------------|--------------|
 |cross-domain|根元素。 子元素必須符合 [Adobe 跨網域原則檔案規格](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html)。|是|
 
-### <a name="usage"></a>使用方式
+### <a name="usage"></a>使用量
 此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
 - **原則區段︰** inbound
@@ -67,6 +67,8 @@ ms.locfileid: "86243587"
 `cors` 原則會將跨原始來源資源分享 (CORS) 支援加入至操作或 API，以允許來自瀏覽器型用戶端的跨網域呼叫。
 
 CORS 可讓瀏覽器和伺服器互動，以決定是否允許特定的跨原始來源要求 (例如，從網頁上的 JavaScript 對其他網域提出的 XMLHttpRequests 呼叫)。 這比只允許相同原始來源的要求更有彈性，也比允許所有跨原始來源的要求更安全。
+
+您必須套用 CORS 原則，才能在開發人員入口網站中啟用互動式主控台。 如需詳細資訊，請參閱[開發人員入口網站檔](./api-management-howto-developer-portal.md#cors)。
 
 ### <a name="policy-statement"></a>原則陳述式
 
@@ -140,7 +142,7 @@ CORS 可讓瀏覽器和伺服器互動，以決定是否允許特定的跨原始
 |allow-credentials|`Access-Control-Allow-Credentials`預檢回應中的標頭會設定為這個屬性的值，而且會影響用戶端在跨網域要求中提交認證的能力。|否|false|
 |preflight-result-max-age|`Access-Control-Max-Age`預檢回應中的標頭會設定為這個屬性的值，並影響使用者代理程式快取預先傳送回應的能力。|否|0|
 
-### <a name="usage"></a>使用方式
+### <a name="usage"></a>使用量
 此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
 - **原則區段︰** inbound
@@ -177,7 +179,7 @@ CORS 可讓瀏覽器和伺服器互動，以決定是否允許特定的跨原始
 |----------|-----------------|--------------|-------------|
 |callback-parameter-name|跨網域 JavaScript 函數呼叫，開頭加上函數所在的完整網域名稱。|是|N/A|
 
-### <a name="usage"></a>使用方式
+### <a name="usage"></a>使用量
 此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
 - **原則區段︰** 輸出

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/05/2016
 ms.author: akjosh
-ms.openlocfilehash: 4919ce9ecaa3dc4f621aa5658b44aa53fad0bbf3
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 529024256b8b3f6da7146787d3a37c59a13b5bd3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201033"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86494746"
 ---
 # <a name="exporting-resource-groups-that-contain-vm-extensions"></a>匯出包含 VM 擴充功能的資源群組
 
@@ -137,7 +137,7 @@ Azure Resource Manager 自動化指令碼會產生 Resource Manager 範本、參
 }
 ```
 
-如果使用範本參數來提供屬性值，則需建立這些參數。 建立受保護設定值的範本參數時，請務必使用 `SecureString` 參數類型，以便確保敏感值的安全。 如需使用參數的詳細資訊，請參閱[編寫 Azure Resource Manager 範本](../../resource-group-authoring-templates.md)。
+如果使用範本參數來提供屬性值，則需建立這些參數。 建立受保護設定值的範本參數時，請務必使用 `SecureString` 參數類型，以便確保敏感值的安全。 如需使用參數的詳細資訊，請參閱[編寫 Azure Resource Manager 範本](../../azure-resource-manager/templates/template-syntax.md)。
 
 在 `IaasDiagnostic` 擴充功能的範例中，Resource Manager 範本的 parameters 區段中會建立下列參數。
 

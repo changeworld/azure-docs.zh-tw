@@ -5,14 +5,14 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 6527ee8be64d57b42d7753c266a5c416ceeef589
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 110fef2dcb4c1581d49fcb776276ebd9c4ae2235
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187705"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497058"
 ---
-# <a name="troubleshoot"></a>疑難排解
+# <a name="troubleshoot-azure-farmbeats"></a>針對 Azure FarmBeats 進行疑難排解
 
 本文提供 Azure FarmBeats 常見問題的解決方案。 如需其他協助，請洽詢我們的[支援論壇](https://social.msdn.microsoft.com/Forums/home?forum=ProjectFarmBeats)，或傳送電子郵件到 farmbeatssupport@microsoft.com。
 
@@ -58,8 +58,8 @@ ms.locfileid: "86187705"
 
 **矯正措施**
 
-1. 移至您的 FarmBeats Datahub 資源群組。
-2. 選取**事件中樞** (DatafeedEventHubNamespace)，然後檢查內送郵件的數目。
+1. 移至您的 FarmBeats 資源群組。
+2. 選取**事件中樞**命名空間（"感應器-協力-eh-namespace-xxxx"），按一下 [事件中樞]，然後檢查指派給合作夥伴的事件中樞內送訊息的數目
 3. 執行下列任一步驟：
 
    - 如果「沒有內送郵件」，請連絡您的裝置合作夥伴。  

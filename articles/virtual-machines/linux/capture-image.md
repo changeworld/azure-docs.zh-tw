@@ -8,11 +8,12 @@ ms.topic: how-to
 ms.date: 10/08/2018
 ms.author: cynthn
 ms.custom: legacy
-ms.openlocfilehash: 54f82d0ba4b0c5de0b4e373416857d670d4bba53
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 26c8a8746fe748585f36e5282ad6e694cdcef1f6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83723301"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86494457"
 ---
 # <a name="how-to-create-a-managed-image-of-a-virtual-machine-or-vhd"></a>如何建立虛擬機器或 VHD 的受控映像
 
@@ -24,7 +25,7 @@ ms.locfileid: "83723301"
 
 若要建立一份現有 Linux VM 的副本以進行備份或偵錯，或是從內部部署 VM 上傳特定的 Linux VHD，請參閱[從自訂的磁碟映像上傳及建立 Linux VM](upload-vhd.md)。  
 
-您可以使用 **Azure VM Image Builder (公開預覽)** 服務來建立自訂映像，而不需要學習任何工具或設定組建管道，只要提供映像設定，映像產生器就會建立映像。 如需詳細資訊，請參閱[開始使用 Azure VM Image Builder](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-overview)。
+您可以使用 **Azure VM Image Builder (公開預覽)** 服務來建立自訂映像，而不需要學習任何工具或設定組建管道，只要提供映像設定，映像產生器就會建立映像。 如需詳細資訊，請參閱[開始使用 Azure VM Image Builder](./image-builder-overview.md)。
 
 建立映像之前，您需要下列項目：
 
@@ -136,4 +137,4 @@ az vm show \
 ```
 
 ## <a name="next-steps"></a>後續步驟
-若要大規模建立、儲存和共用映像，請參閱[共用映像資源庫](shared-images.md)。
+若要大規模建立、儲存和共用映像，請參閱[共用映像資源庫](../shared-images-cli.md)。

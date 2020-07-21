@@ -3,11 +3,12 @@ title: 使用適用于容器的 Azure 監視器來設定混合式 Kubernetes 叢
 description: 本文說明如何設定容器的 Azure 監視器，以監視 Azure Stack 或其他環境上裝載的 Kubernetes 叢集。
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: c7a92476fca2bc61d51ab518c22ff0c436fb78f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d2ca977f572ee9f60c1ca72fc472f3a6ee6c6362
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85801456"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498894"
 ---
 # <a name="configure-hybrid-kubernetes-clusters-with-azure-monitor-for-containers"></a>使用適用于容器的 Azure 監視器來設定混合式 Kubernetes 叢集
 
@@ -21,7 +22,7 @@ ms.locfileid: "85801456"
 
     - Kubernetes 內部部署
     
-    - Azure 上的 AKS 引擎和 Azure Stack。 如需詳細資訊，請參閱[AKS Engine on Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908)
+    - Azure 上的 AKS 引擎和 Azure Stack。 如需詳細資訊，請參閱[AKS Engine on Azure Stack](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908)
     
     - [OpenShift](https://docs.openshift.com/container-platform/4.3/welcome/index.html)第4版和更高版本、內部部署或其他雲端環境。
 
@@ -33,7 +34,7 @@ ms.locfileid: "85801456"
 
 - 支援的存取控制： Kubernetes RBAC 和非 RBAC
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 開始之前，請確定您有下列項目：
 
@@ -84,7 +85,7 @@ ms.locfileid: "85801456"
 
 - [使用 Resource Manager 範本與 Azure CLI 部署資源](../../azure-resource-manager/templates/deploy-cli.md)
 
-如果您選擇使用 Azure CLI，必須先在本機安裝並使用 CLI。 您必須執行 Azure CLI 版2.0.59 或更新版本。 若要知道您使用的版本，請執行 `az --version`。 如果您需要安裝或升級 Azure CLI，請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+如果您選擇使用 Azure CLI，必須先在本機安裝並使用 CLI。 您必須執行 Azure CLI 版2.0.59 或更新版本。 若要知道您使用的版本，請執行 `az --version`。 如果您需要安裝或升級 Azure CLI，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
 此方法包含兩個 JSON 範本。 一個範本會指定啟用監視的設定，另一個範本則包含可設定以指定下列各項的參數值：
 
@@ -201,7 +202,7 @@ ms.locfileid: "85801456"
     }
     ```
 
-7. 使用您在步驟3中複製的值來編輯**workspaceResourceId**的值，並在執行 Azure CLI 命令[az monitor log analytics workspace show](https://docs.microsoft.com/cli/azure/monitor/log-analytics/workspace?view=azure-cli-latest#az-monitor-log-analytics-workspace-list)之後，針對**workspaceRegion**複製**區域**值。
+7. 使用您在步驟3中複製的值來編輯**workspaceResourceId**的值，並在執行 Azure CLI 命令[az monitor log analytics workspace show](/cli/azure/monitor/log-analytics/workspace?view=azure-cli-latest#az-monitor-log-analytics-workspace-list)之後，針對**workspaceRegion**複製**區域**值。
 
 8. 將此檔案儲存為本機資料夾上的 containerSolutionParams.js。
 
@@ -346,7 +347,7 @@ Proxy 設定值具有下列語法：`[protocol://][user:password@]proxyhost[:por
 |proxyhost | Proxy 伺服器的位址或 FQDN |
 |連接埠 | Proxy 伺服器的選擇性埠號碼 |
 
-例如：`omsagent.proxy=http://user01:password@proxy01.contoso.com:8080`
+例如： `omsagent.proxy=http://user01:password@proxy01.contoso.com:8080`
 
 如果您將通訊協定指定為**HTTP**，則會使用 SSL/TLS 安全連線來建立 HTTP 要求。 您的 proxy 伺服器必須支援 SSL/TLS 通訊協定。
 

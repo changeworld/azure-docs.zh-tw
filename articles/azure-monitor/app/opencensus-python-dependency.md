@@ -6,15 +6,16 @@ author: lzchen
 ms.author: lechen
 ms.date: 10/15/2019
 ms.custom: tracking-python
-ms.openlocfilehash: d12db3ab046d115b60b67a9c22bf4e885cd0ef02
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e99ea1d5a90455a4c470346fbbe5d1095c426e81
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84782563"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499455"
 ---
 # <a name="track-dependencies-with-opencensus-python"></a>使用 OpenCensus Python 追蹤相依性
 
-「相依性」（dependency）是指應用程式所呼叫的外部元件。 使用 OpenCensus Python 和其各種整合來收集相依性資料。 然後，資料會傳送至 Azure 監視器的 Application Insights，作為 `dependencies` 遙測。
+相依性是由應用程式呼叫的外部元件。 使用 OpenCensus Python 和其各種整合來收集相依性資料。 然後，資料會傳送至 Azure 監視器的 Application Insights，作為 `dependencies` 遙測。
 
 首先，使用最新的[OpenCensus PYTHON SDK](../../azure-monitor/app/opencensus-python.md)檢測您的 python 應用程式。
 
@@ -85,7 +86,7 @@ conn.close()
 使用 OpenCensus 整合來追蹤您的連出 Django 要求 `django` 。
 
 > [!NOTE]
-> 唯一追蹤的傳出 Django 要求是對資料庫發出的呼叫。 如需對 Django 應用程式提出的要求，請參閱連[入要求](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python-request#tracking-django-applications)。
+> 唯一追蹤的傳出 Django 要求是對資料庫發出的呼叫。 如需對 Django 應用程式提出的要求，請參閱連[入要求](./opencensus-python-request.md#tracking-django-applications)。
 
 `opencensus-ext-django`從[PyPI](https://pypi.org/project/opencensus-ext-django/)下載並安裝，並將下列程式程式碼新增至 Django 檔案中的 `MIDDLEWARE` 區段 `settings.py` 。
 

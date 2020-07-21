@@ -12,11 +12,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: 1461ba4ae0bea61b3a220c22144a31eade6cdf04
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9bd98d69c9a941e8da08fc7ab798c37b1a22f0bc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708796"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498390"
 ---
 # <a name="deploy-azure-sql-managed-instance-to-an-instance-pool"></a>將 Azure SQL 受控執行個體部署至實例集區
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -27,18 +28,18 @@ ms.locfileid: "84708796"
 
 下表顯示與實例集區相關的可用作業，以及其在 Azure 入口網站和 PowerShell 中的可用性。
 
-|Command|Azure 入口網站|PowerShell|
+|命令|Azure 入口網站|PowerShell|
 |:---|:---|:---|
 |建立實例集區|否|是|
 |更新實例集區（屬性數目有限）|否 |是 |
 |檢查實例集區的使用方式和屬性|否|是 |
 |刪除實例集區|否|是|
 |在實例集區內建立受控實例|否|是|
-|更新受控實例的資源使用狀況|是 |Yes|
-|檢查受控實例的使用方式和屬性|是|Yes|
-|從集區刪除受控實例|是|Yes|
-|在集區內的實例中建立資料庫|是|Yes|
-|從 SQL 受控執行個體中刪除資料庫|是|Yes|
+|更新受控實例的資源使用狀況|是 |是|
+|檢查受控實例的使用方式和屬性|是|是|
+|從集區刪除受控實例|是|是|
+|在集區內的實例中建立資料庫|是|是|
+|從 SQL 受控執行個體中刪除資料庫|是|是|
 
 可用的[PowerShell 命令](https://docs.microsoft.com/powershell/module/az.sql/)：
 
@@ -99,7 +100,7 @@ $instancePool = New-AzSqlInstancePool `
   -Name "mi-pool-name" `
   -SubnetId $subnet.Id `
   -LicenseType "LicenseIncluded" `
-  -VCore 80 `
+  -VCore 8 `
   -Edition "GeneralPurpose" `
   -ComputeGeneration "Gen5" `
   -Location "westeurope"
@@ -115,13 +116,13 @@ $instancePool = New-AzSqlInstancePool `
 若要建立受控實例，請執行下列命令：
 
 ```powershell
-$instanceOne = $instancePool | New-AzSqlInstance -Name "mi-pool-name" -VCore 2 -StorageSizeInGB 256
+$instanceOne = $instancePool | New-AzSqlInstance -Name "mi-one-name" -VCore 2 -StorageSizeInGB 256
 ```
 
 在集區中部署實例需要幾分鐘的時間。 建立第一個實例之後，即可建立其他實例：
 
 ```powershell
-$instanceTwo = $instancePool | New-AzSqlInstance -Name "mi-pool-name" -VCore 4 -StorageSizeInGB 512
+$instanceTwo = $instancePool | New-AzSqlInstance -Name "mi-two-name" -VCore 4 -StorageSizeInGB 512
 ```
 
 ## <a name="create-a-database"></a>建立資料庫 

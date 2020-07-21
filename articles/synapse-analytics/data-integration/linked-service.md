@@ -1,5 +1,5 @@
 ---
-title: 在 Azure Synapse 分析中布建和保護連結服務
+title: 保護連結服務
 description: 瞭解如何布建及保護使用受控 Vnet 的連結服務
 services: synapse-analytics
 author: acomet
@@ -9,18 +9,18 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 435c3fd6b1e6444fa3a31c68b4d74c2553d2e634
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7c7cf8ec7297b3c0ef855936becc3c06a5120a38
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81430548"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496072"
 ---
 # <a name="securing-a-linked-service-with-private-links"></a>使用私人連結保護連結服務 
 
 在本文中，您將瞭解如何使用私人端點來保護 Synapse 中的連結服務。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 * **Azure 訂**用帳戶：如果您沒有 azure 訂用帳戶，請在開始前建立[免費的 azure 帳戶](https://azure.microsoft.com/free/)。
 * **Azure 儲存體帳戶**：您可以使用 Azure Data Lake Gen 2 做為*源*資料存放區。 如果您沒有儲存體帳戶，請參閱[建立 Azure 儲存體帳戶](../../storage/blobs/data-lake-storage-quickstart-create-account.md)以取得建立步驟。 請確定儲存體帳戶具有 Synapse Studio IP 篩選來進行存取，且您只允許**選取的網路**存取儲存體帳戶。 [Blade**防火牆] 和 [虛擬網路**] 底下的設定看起來應該如下圖所示。

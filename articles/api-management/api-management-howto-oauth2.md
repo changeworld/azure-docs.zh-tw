@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: f4f5c5d9a77353f36119b77601b88f9dab01ccc0
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 7eb77b9ffae49c7d8d3e5612b685e5725829898f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86243608"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499778"
 ---
 # <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>如何在 Azure API 管理中使用 OAuth 2.0 授權開發人員帳戶
 
@@ -27,7 +27,7 @@ ms.locfileid: "86243608"
 > [!IMPORTANT]
 > 新開發人員入口網站的互動式主控台尚未提供 OAuth 2.0 授權。
 
-## <a name="prerequisites"></a><a name="prerequisites"> </a>必要條件
+## <a name="prerequisites"></a><a name="prerequisites"> </a>先決條件
 
 本指南將示範如何設定 API 管理服務執行個體，以便使用開發人員帳戶適用的 OAuth 2.0 授權，但並未示範如何設定 OAuth 2.0 提供者。 儘管步驟相似，且用來在 API 管理服務執行個體中設定 OAuth 2.0 所需的資訊也相同，但每個 OAuth 2.0 提供者的組態並不相同。 本主題演示的範例將 Azure Active Directory 當做 OAuth 2.0 提供者。
 
@@ -50,7 +50,7 @@ ms.locfileid: "86243608"
     > [!NOTE]
     > 這些欄位可用來在目前的 API 管理服務執行個體中識別 OAuth 2.0 授權伺服器，且欄位的值並非來自 OAuth 2.0 伺服器。
 
-3. 輸入 [用戶端註冊頁面 URL]****。 此頁面可供使用者建立及管理帳戶，並且會因為使用的 OAuth 2.0 提供者不同而有所差異。 [用戶端註冊頁面 URL]**** 指向使用者可用來建立和設定其對 OAuth 2.0 提供者之專屬帳戶的頁面，而提供者支援使用者帳戶管理。 即使 OAuth 2.0 提供者支援這項功能，有些組織還是未設定或未使用這項功能。 如果您的 OAuth 2.0 提供者未設定使用者帳戶管理，請在這裡輸入預留位置 URL (例如您公司的 URL) 或 `https://placeholder.contoso.com` 這類 URL。
+3. 輸入 [用戶端註冊頁面 URL]****。 此頁面可供使用者建立及管理帳戶，並且會因為使用的 OAuth 2.0 提供者不同而有所差異。 [**用戶端註冊頁面 URL** ] 指向的頁面，可讓使用者用來建立及設定自己的 OAuth 2.0 提供者帳戶，以支援帳戶的使用者管理，例如 `https://contoso.com/login` 。 即使 OAuth 2.0 提供者支援這項功能，有些組織還是未設定或未使用這項功能。 如果您的 OAuth 2.0 提供者未設定使用者帳戶管理，請在這裡輸入預留位置 URL (例如您公司的 URL) 或 `https://placeholder.contoso.com` 這類 URL。
 
     ![OAuth 2.0 新伺服器](./media/api-management-howto-oauth2/oauth-02.png)
 
@@ -76,6 +76,11 @@ ms.locfileid: "86243608"
 
 6. [用戶端認證]**** 區段含有 [用戶端識別碼]**** 和 [用戶端密碼]****，這兩個項目可在 OAuth 2.0 伺服器的建立和組態程序中取得。 指定 [用戶端識別碼]**** 和 [用戶端密碼]**** 後，系統便會產生 [授權碼]**** 的 **redirect_uri**。 此 URI 可用來設定 OAuth 2.0 伺服器組態中的回覆 URL。
 
+    在新的開發人員入口網站中，URI 尾碼的格式如下：
+
+    - `/signin-oauth/code/callback/{authServerName}`授權碼授與流程
+    - `/signin-oauth/implicit/callback`針對隱含授與流程
+
     ![OAuth 2.0 新伺服器](./media/api-management-howto-oauth2/oauth-04.png)
 
     如果將 [授權授與類型]**** 設定為 [資源擁有者密碼]****，您便需要使用 [資源擁有者密碼認證]**** 區段來指定認證，若不想這麼做，則可以將授與類型保持空白。
@@ -100,7 +105,7 @@ ms.locfileid: "86243608"
 
 [!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
-設定好 OAuth 2.0 授權伺服器並將 API 設定為使用該伺服器後，您可以前往開發人員入口網站並呼叫 API 來進行測試。 從您的 Azure API 管理實例 [**總覽**] 頁面中，按一下頂端功能表中的 [**開發人員入口網站 (舊版) ** 。
+設定好 OAuth 2.0 授權伺服器並將 API 設定為使用該伺服器後，您可以前往開發人員入口網站並呼叫 API 來進行測試。 在 Azure API 管理實例 [**總覽**] 頁面的頂端功能表中，按一下 [**開發人員入口網站（舊版）** ]。
 
 在上方功能表中按一下 [API]****，然後選取 [Echo API]****。
 

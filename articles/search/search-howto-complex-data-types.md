@@ -8,17 +8,17 @@ ms.author: brjohnst
 tags: complex data types; compound data types; aggregate data types
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: e6e66dc05ac2b6e54a1be94576b8686390949145
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.date: 07/12/2020
+ms.openlocfilehash: 0fd7ba1723da77313407725ec676e69b0ef3bca1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171834"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496667"
 ---
 # <a name="how-to-model-complex-data-types-in-azure-cognitive-search"></a>如何在 Azure 認知搜尋中建立複雜資料類型的模型
 
-用來填入 Azure 認知搜尋索引的外部資料集可能會有許多圖形。 有時候它們會包含階層式或嵌套子結構。 範例可能包括單一客戶的多個位址、單一 SKU 的多種色彩和大小、單一書籍的多位作者等等。 在模型化詞彙中，您可能會看到這些結構稱為「*複雜*」、「*複合*」、「*複合*」或「*匯總*」資料類型。 Azure 認知搜尋用於此概念的一詞是**複雜類型**。 在 Azure 認知搜尋中，複雜類型會使用**複雜欄位**進行模型化。 「複雜欄位」是一個欄位，其中包含子欄位 (子欄位) 可以是任何資料類型，包括其他複雜類型。 其運作方式類似于程式設計語言中的結構化資料類型。
+用來填入 Azure 認知搜尋索引的外部資料集可能會有許多圖形。 有時候它們會包含階層式或嵌套子結構。 範例可能包括單一客戶的多個位址、單一 SKU 的多種色彩和大小、單一書籍的多位作者等等。 在模型化詞彙中，您可能會看到這些結構稱為「*複雜*」、「*複合*」、「*複合*」或「*匯總*」資料類型。 Azure 認知搜尋用於此概念的一詞是**複雜類型**。 在 Azure 認知搜尋中，複雜類型會使用**複雜欄位**進行模型化。 「複雜欄位」是一個欄位，其中包含可以是任何資料類型（包括其他複雜類型）的子系（子欄位）。 其運作方式類似于程式設計語言中的結構化資料類型。
 
 複雜欄位代表檔中的單一物件，或物件的陣列，視資料類型而定。 類型的欄位 `Edm.ComplexType` 代表單一物件，而類型的欄位 `Collection(Edm.ComplexType)` 代表物件的陣列。
 
@@ -64,7 +64,7 @@ Azure 認知搜尋原本就支援複雜的類型和集合。 這些類型可讓�
 
 就像任何索引定義一樣，您可以使用入口網站、 [REST API](https://docs.microsoft.com/rest/api/searchservice/create-index)或[.net SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet)來建立包含複雜類型的架構。 
 
-下列範例顯示具有簡單欄位、集合和複雜類型的 JSON 索引架構。 請注意，在複雜型別中，每個子欄位都有一個型別，而且可能有屬性，就像最上層的欄位一樣。 架構對應于上述的範例資料。 `Address`是一個複雜欄位，不是 (飯店有一個位址) 的集合。 `Rooms`是一個複雜的集合欄位 (飯店有許多房間) 。
+下列範例顯示具有簡單欄位、集合和複雜類型的 JSON 索引架構。 請注意，在複雜型別中，每個子欄位都有一個型別，而且可能有屬性，就像最上層的欄位一樣。 架構對應于上述的範例資料。 `Address`是不是集合的複雜欄位（旅館有一個位址）。 `Rooms`是一個複雜的集合欄位（飯店有多個房間）。
 
 ```json
 {
@@ -103,7 +103,7 @@ Azure 認知搜尋原本就支援複雜的類型和集合。 這些類型可讓�
 
 ### <a name="data-updates"></a>資料更新
 
-使用動作來更新索引中的現有檔，在 `upload` 複雜且簡單的欄位上的運作方式相同--所有欄位都會被取代。 不過， `merge` (或套用 `mergeOrUpload` 至現有檔時) 在所有欄位中都不會有相同的作用。 具體而言， `merge` 不支援合併集合中的元素。 這項限制存在於基本類型和複雜集合的集合中。 若要更新集合，您必須取出完整的集合值、進行變更，然後在索引 API 要求中包含新的集合。
+使用動作來更新索引中的現有檔，在 `upload` 複雜且簡單的欄位上的運作方式相同--所有欄位都會被取代。 不過， `merge` （或套用 `mergeOrUpload` 至現有檔時）在所有欄位中都不會有相同的作用。 具體而言， `merge` 不支援合併集合中的元素。 這項限制存在於基本類型和複雜集合的集合中。 若要更新集合，您必須取出完整的集合值、進行變更，然後在索引 API 要求中包含新的集合。
 
 ## <a name="searching-complex-fields"></a>搜尋複雜欄位
 
@@ -117,7 +117,7 @@ Azure 認知搜尋原本就支援複雜的類型和集合。 這些類型可讓�
 
 ## <a name="selecting-complex-fields"></a>選取複雜欄位
 
-`$select`參數是用來選擇要在搜尋結果中傳回的欄位。 若要使用這個參數來選取複雜欄位的特定子欄位，請包含父欄位和子欄位，並以斜線 () 分隔 `/` 。
+`$select`參數是用來選擇要在搜尋結果中傳回的欄位。 若要使用這個參數來選取複雜欄位的特定子欄位，請包含以斜線（）分隔的父欄位和子欄位 `/` 。
 
 > `$select=HotelName, Address/City, Rooms/BaseRate`
 
@@ -131,11 +131,11 @@ Azure 認知搜尋原本就支援複雜的類型和集合。 這些類型可讓�
 
 任何子欄位都可以標記為 facetable，除非它是或類型 `Edm.GeographyPoint` `Collection(Edm.GeographyPoint)` 。
 
-在 facet 結果中傳回的檔計數是針對) 飯店的父檔 (計算，而不是 (室) 的複雜集合中的子檔。 例如，假設飯店有20個 "suite" 類型的聊天室。 指定此 facet 參數 `facet=Rooms/Type` 時，facet 計數會是旅館的一個，而不是房間的20個。
+面向結果中傳回的檔計數是針對父檔（飯店）計算，而不是針對複雜集合（聊天室）中的子檔。 例如，假設飯店有20個 "suite" 類型的聊天室。 指定此 facet 參數 `facet=Rooms/Type` 時，facet 計數會是旅館的一個，而不是房間的20個。
 
 ### <a name="sorting-complex-fields"></a>排序複雜欄位
 
-排序作業適用于 (飯店) 的檔，而不是 (室) 的子檔。 當您有複雜的類型集合（例如房間）時，請務必瞭解您無法在會議室上進行排序。 事實上，您無法對任何集合進行排序。
+排序作業適用于檔（飯店），而不是子檔（聊天室）。 當您有複雜的類型集合（例如房間）時，請務必瞭解您無法在會議室上進行排序。 事實上，您無法對任何集合進行排序。
 
 當欄位的每份檔都有單一值、欄位是簡單欄位或複雜型別中的子欄位時，排序作業就會運作。 例如， `Address/City` 允許可排序，因為每個飯店只有一個位址，因此 `$orderby=Address/City` 會依城市排序旅館。
 

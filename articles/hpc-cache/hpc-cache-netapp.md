@@ -5,12 +5,13 @@ author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 10/30/2019
-ms.author: rohogue
-ms.openlocfilehash: 374f3106ec42233cd5309c2773b05e3c96bbf98e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: v-erkel
+ms.openlocfilehash: e955ddc14bb2b0a7abc0dc815c6955247568876b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515491"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497007"
 ---
 # <a name="use-azure-hpc-cache-with-azure-netapp-files"></a>搭配 Azure NetApp Files 使用 Azure HPC Cache
 
@@ -20,7 +21,7 @@ Azure NetApp Files 結合了其 ONTAP 作業系統與 Microsoft Azure 的擴充�
 
 新增 Azure HPC 快取元件可以在一個匯總的命名空間中呈現多個 Azure NetApp Files 磁片區，以改善檔案存取。 它可以為位於不同服務區域中的磁片區提供邊緣快取。 它也可以改善在較低層服務層級所建立之磁片區的需求效能，以節省成本。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 若要使用 Azure NetApp Files 系統作為 Azure HPC Cache 的後端儲存體，請遵循此程式。
 

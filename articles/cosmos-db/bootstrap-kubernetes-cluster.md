@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/06/2019
 ms.author: sngun
-ms.openlocfilehash: e7e1480d00280fc567a69556f25db8ffab800f70
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 31c3c02f2b32594e5b20450d0bb519f4cdf82807
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85262628"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497755"
 ---
 # <a name="how-to-use-azure-kubernetes-with-azure-cosmos-db-preview"></a>如何使用採用 Azure Cosmos DB 的 Azure Kubernetes (預覽)
 
@@ -25,7 +25,7 @@ Azure Cosmos DB 中的 etcd API 可讓您使用 Azure Cosmos DB 作為 Azure Kub
 
 若要深入了解 Azure Cosmos DB 中的 etcd API，請參閱[概觀](etcd-api-introduction.md)一文。 本文會示範如何使用 [Azure Kubernetes 引擎](https://github.com/Azure/aks-engine/blob/master/docs/tutorials/quickstart.md) (aks-engine) 在採用 [Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/) 的 Azure 上執行 Kubernetes 叢集的啟動程序，而不是使用本機安裝和設定的 etcd。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 1. 安裝最新版的 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。 您可以下載專屬於您作業系統的 Azure CLI，並加以安裝。
 
@@ -33,7 +33,7 @@ Azure Cosmos DB 中的 etcd API 可讓您使用 Azure Cosmos DB 作為 Azure Kub
 
    Azure Kubernetes 引擎 (**aks-engine**) 會針對 Azure 上的 Kubernetes 叢集產生 Azure Resource Manager 範本。 aks-engine 的輸入是叢集定義檔，其中描述所需的叢集，包括協調器、功能和代理程式。 輸入檔案的結構類似於 Azure Kubernetes Service 的公用 API。
 
-1. Azure Cosmos DB 中的 etcd API 目前為預覽狀態。 若要使用預覽版本，請在此註冊：https://aka.ms/cosmosetcdapi-signup。 提交表單之後，您的訂用帳戶會列入使用 Azure Cosmos etcd API 的白名單。 
+1. Azure Cosmos DB 中的 etcd API 目前為預覽狀態。 若要使用預覽版本，請在此註冊：https://aka.ms/cosmosetcdapi-signup。 提交表單之後，您的訂用帳戶將允許使用 Azure Cosmos etcd API。 
 
 ## <a name="deploy-the-cluster-with-azure-cosmos-db"></a>使用 Azure Cosmos DB 部署叢集
 
@@ -43,7 +43,7 @@ Azure Cosmos DB 中的 etcd API 可讓您使用 Azure Cosmos DB 作為 Azure Kub
    az login 
    ```
 
-1. 如果您有多個訂用帳戶，請切換至已列入 Azure Cosmos DB etcd API 白名單的訂用帳戶。 您可以使用下列命令切換至所需的訂用帳戶：
+1. 如果您有多個訂用帳戶，請切換至已允許 Azure Cosmos DB etcd API 的訂用帳戶。 您可以使用下列命令切換至所需的訂用帳戶：
 
    ```azurecli-interactive
    az account set --subscription "<Name of your subscription>"

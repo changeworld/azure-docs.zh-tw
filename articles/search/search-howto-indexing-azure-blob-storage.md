@@ -8,18 +8,18 @@ ms.author: magottei
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 07/11/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 3ed3ff94b764c0fcb5521ef8106b32923b203a01
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 29e123666b35e4659e68a1a925047267f8519940
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260651"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496446"
 ---
 # <a name="how-to-index-documents-in-azure-blob-storage-with-azure-cognitive-search"></a>如何使用 Azure 認知搜尋在 Azure Blob 儲存體中編制檔的索引
 
-本文說明如何使用 Azure 認知搜尋來編制檔 (例如 Pdf、Microsoft Office 檔及數個其他常見格式) 儲存在 Azure Blob 儲存體中。 首先，它會說明安裝和設定 blob 索引子的基本概念。 然後，它會提供可能會發生之行為和案例的更深入探索。
+本文說明如何使用 Azure 認知搜尋來對儲存在 Azure Blob 儲存體中的檔（例如 Pdf、Microsoft Office 檔和數個其他常見格式）編制索引。 首先，它會說明安裝和設定 blob 索引子的基本概念。 然後，它會提供可能會發生之行為和案例的更深入探索。
 
 <a name="SupportedFormats"></a>
 
@@ -73,7 +73,7 @@ blob 索引子可以從下列文件格式擷取文字：
 
 您可以採取下列其中一種方式提供 blob 容器的認證︰
 
-- **完整存取儲存體帳戶連接字串**： `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>` 您可以從 Azure 入口網站取得連接字串，方法是流覽至 [儲存體帳戶] 分頁 > 設定 > [金鑰] ([傳統儲存體帳戶]) 或 > 儲存體帳戶 (的 [設定] Azure Resource Manager [存取金鑰]。
+- **完整存取儲存體帳戶連接字串**： `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>` 您可以從 Azure 入口網站取得連接字串，方法是流覽至 [儲存體帳戶] 分頁，> 設定 > 金鑰（適用于傳統儲存體帳戶）或 > 存取金鑰的設定（適用于 Azure Resource Manager 儲存體帳戶）。
 - **儲存體帳戶共用存取簽章** (SAS) 連接字串：`BlobEndpoint=https://<your account>.blob.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=b&sp=rl` SAS 應該有容器和物件 (在此案例中為 Blob) 上的列出和讀取權限。
 -  **容器共用存取**簽章： `ContainerSharedAccessUri=https://<your storage account>.blob.core.windows.net/<container name>?sv=2016-05-31&sr=c&sig=<the signature>&se=<the validity end time>&sp=rl` SAS 應該具有容器的 [清單] 和 [讀取] 許可權。
 
@@ -136,7 +136,7 @@ blob 索引子可以從下列文件格式擷取文字：
 > [!NOTE]
 > 根據預設，結構化內容 (例如 JSON 或CSV) 的 Blob 會以單一區塊文字編製索引。 如果您想要以結構化方式編制 JSON 和 CSV blob 的索引，請參閱[編制 json blob](search-howto-index-json-blobs.md)的索引和[索引 csv blob](search-howto-index-csv-blobs.md)以取得詳細資訊。
 >
-> 複合或內嵌的檔 (例如 ZIP 封存、內含包含附件之內嵌 Outlook 電子郵件的 Word 檔，或。含有附件) 的 MSG 檔案也會以單一檔的方式編制索引。 例如，從的附件解壓縮的所有影像。MSG 檔案將會在 normalized_images 欄位中傳回。
+> 複合或內嵌的檔（例如 ZIP 封存、包含附件的內嵌 Outlook 電子郵件的 Word 檔，或。含有附件的 MSG 檔案）也會以單一檔的方式編制索引。 例如，從的附件解壓縮的所有影像。MSG 檔案將會在 normalized_images 欄位中傳回。
 
 * 文件的文字內容會擷取至名為 `content` 的字串欄位。
 
@@ -148,11 +148,11 @@ blob 索引子可以從下列文件格式擷取文字：
 
   * **metadata\_storage\_name** (Edm.String) - blob 的檔案名稱。 例如，如果您有 blob /my-container/my-folder/subfolder/resume.pdf，這個欄位的值是 `resume.pdf`。
   * **metadata\_storage\_path** (Edm.String) - blob 的完整 URI，包括儲存體帳戶。 例如， `https://myaccount.blob.core.windows.net/my-container/my-folder/subfolder/resume.pdf`
-  * **metadata\_storage\_content\_type** (Edm.String) - 內容類型，如同您用來上傳 blob 的程式碼所指定。 例如，`application/octet-stream`。
+  * **metadata\_storage\_content\_type** (Edm.String) - 內容類型，如同您用來上傳 blob 的程式碼所指定。 例如： `application/octet-stream` 。
   * **metadata\_storage\_last\_modified** (Edm.DateTimeOffset) - 上次修改 blob 的時間戳記。 Azure 認知搜尋會使用此時間戳記來識別已變更的 blob，以避免在初始編制索引之後重新編制所有的專案。
   * **metadata\_storage\_size** (Edm.Int64) - blob 大小 (位元組)。
   * **metadata\_storage\_content\_md5** (Edm.String) - blob 內容的 MD5 雜湊，如果有的話。
-  * **中繼資料 \_ 儲存 \_ Sas \_ 權杖** (Edm. String) -可供[自訂技能](cognitive-search-custom-skill-interface.md)用來存取 blob 的暫存 sas 權杖。 此標記不應該儲存以供日後使用，因為它可能會過期。
+  * **中繼資料 \_ 儲存 \_ sas \_ 權杖**（Edm. String）-可供[自訂技能](cognitive-search-custom-skill-interface.md)用來存取 blob 的暫存 sas 權杖。 此標記不應該儲存以供日後使用，因為它可能會過期。
 
 * 每個文件格式特有的中繼資料屬性會擷取到[這裡](#ContentSpecificMetadata)列出的欄位。
 
@@ -174,7 +174,7 @@ blob 索引子可以從下列文件格式擷取文字：
 * 如果上述任何選項都不適合，您可以在 blob 中新增自訂中繼資料屬性。 但是，此選項需要您的 blob 上傳程序，將該中繼資料屬性新增至所有 blob。 因為索引鍵是必要屬性，所以沒有該屬性的所有 blob 都無法編製索引。
 
 > [!IMPORTANT]
-> 如果索引中的索引鍵欄位沒有明確對應，Azure 認知搜尋會自動使用 `metadata_storage_path` 做為金鑰，而 base-64 會將金鑰值編碼， (上述第二個選項) 。
+> 如果索引中的索引鍵欄位沒有明確對應，Azure 認知搜尋會自動使用 `metadata_storage_path` 做為金鑰，而以64為基礎的編碼金鑰值（上述的第二個選項）。
 >
 >
 
@@ -212,7 +212,7 @@ blob 索引子可以從下列文件格式擷取文字：
 
 #### <a name="what-if-you-need-to-encode-a-field-to-use-it-as-a-key-but-you-also-want-to-search-it"></a>如果您需要將欄位編碼以做為索引鍵，但也想要搜尋它，該怎麼做？
 
-有時候，您需要使用如 metadata_storage_path 之類的欄位編碼版本做為索引鍵，但您也需要該欄位可供搜尋 (而不) 編碼。 為了解決這個問題，您可以將它對應到兩個欄位;一個將用於金鑰，另一個則用於搜尋用途。 在下列範例中，[索引*鍵*] 欄位包含編碼的路徑，而 [*路徑*] 欄位未編碼，而且將用來做為索引中的可搜尋欄位。
+有時候，您需要使用如 metadata_storage_path 之類的欄位編碼版本做為索引鍵，但您也需要該欄位可供搜尋（不含編碼）。 為了解決這個問題，您可以將它對應到兩個欄位;一個將用於金鑰，另一個則用於搜尋用途。 在下列範例中，[索引*鍵*] 欄位包含編碼的路徑，而 [*路徑*] 欄位未編碼，而且將用來做為索引中的可搜尋欄位。
 
 ```http
     PUT https://[service name].search.windows.net/indexers/blob-indexer?api-version=2020-06-30
@@ -322,7 +322,7 @@ Azure 認知搜尋會限制已編制索引的 blob 大小。 這些限制記載�
     "parameters" : { "configuration" : { "indexStorageMetadataOnlyForOversizedDocuments" : true } }
 ```
 
-如果在處理期間發生任何錯誤，當剖析 blob 或是將文件新增至索引時，您還是可以繼續編製索引。 若要忽略特定錯誤數目，請將 `maxFailedItems` 和 `maxFailedItemsPerBatch` 組態參數設定為所需的值。 例如︰
+如果在處理期間發生任何錯誤，當剖析 blob 或是將文件新增至索引時，您還是可以繼續編製索引。 若要忽略特定錯誤數目，請將 `maxFailedItems` 和 `maxFailedItemsPerBatch` 組態參數設定為所需的值。 例如：
 
 ```http
     {
@@ -342,7 +342,7 @@ Azure 認知搜尋會限制已編制索引的 blob 大小。 這些限制記載�
 
 有兩種方式可執行虛刪除方法。 以下說明兩者。
 
-### <a name="native-blob-soft-delete-preview"></a> (預覽) 的原生 blob 虛刪除
+### <a name="native-blob-soft-delete-preview"></a>原生 Blob 虛刪除 (預覽)
 
 > [!IMPORTANT]
 > 對原生 blob 虛刪除的支援處於預覽狀態。 預覽功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 [REST API 版本 2020-06-30-Preview](https://docs.microsoft.com/azure/search/search-api-preview)提供這項功能。 目前沒有入口網站或 .NET SDK 支援。
@@ -352,7 +352,7 @@ Azure 認知搜尋會限制已編制索引的 blob 大小。 這些限制記載�
 
 在此方法中，您將使用 Azure Blob 儲存體所提供的[原生 blob 虛刪除](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete)功能。 如果您的儲存體帳戶上已啟用原生 blob 虛刪除，則您的資料來源會設定原生虛刪除原則，而且索引子會尋找已轉換成虛刪除狀態的 blob，而索引子將會從索引中移除該檔。 從 Azure Data Lake Storage Gen2 編制 blob 的索引時，不支援原生 blob 虛刪除原則。
 
-請使用下列步驟：
+使用下列步驟：
 1. 啟用[Azure Blob 儲存體的原生虛刪除](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete)。 我們建議您將保留原則設定為比索引子間隔排程更高的值。 如此一來，如果執行索引子時發生問題，或如果您有大量要編制索引的檔，則索引子會有足夠的時間來最終處理已虛刪除的 blob。 Azure 認知搜尋索引子只會在處理 blob 處於虛刪除狀態時，才從索引中刪除該檔。
 1. 在資料來源上設定原生 blob 虛刪除偵測原則。 範例如下所示。 由於這項功能目前為預覽狀態，因此您必須使用預覽 REST API。
 1. 執行索引子，或將索引子設定為依排程執行。 當索引子執行並處理 blob 時，將會從索引中移除檔。
@@ -380,7 +380,7 @@ Azure 認知搜尋會限制已編制索引的 blob 大小。 這些限制記載�
 
 在此方法中，您將使用 blob 的中繼資料來表示何時應從搜尋索引中移除檔。
 
-請使用下列步驟：
+使用下列步驟：
 
 1. 將自訂中繼資料索引鍵/值組新增至 blob，以向 Azure 認知搜尋顯示邏輯上刪除。
 1. 在資料來源上設定虛刪除資料行偵測原則。 範例如下所示。
@@ -467,26 +467,26 @@ Azure 認知搜尋會限制已編制索引的 blob 大小。 這些限制記載�
 
 | 文件格式/內容類型 | 內容類型特定的中繼資料屬性 | 處理詳細資料 |
 | --- | --- | --- |
-| HTML (text/html)  |`metadata_content_encoding`<br/>`metadata_content_type`<br/>`metadata_language`<br/>`metadata_description`<br/>`metadata_keywords`<br/>`metadata_title` |移除 HTML 標記並且擷取文字 |
-| PDF (應用程式/pdf)  |`metadata_content_type`<br/>`metadata_language`<br/>`metadata_author`<br/>`metadata_title` |擷取文字，包括內嵌文件 (不含影像) |
+| HTML （text/html） |`metadata_content_encoding`<br/>`metadata_content_type`<br/>`metadata_language`<br/>`metadata_description`<br/>`metadata_keywords`<br/>`metadata_title` |移除 HTML 標記並且擷取文字 |
+| PDF （應用程式/pdf） |`metadata_content_type`<br/>`metadata_language`<br/>`metadata_author`<br/>`metadata_title` |擷取文字，包括內嵌文件 (不含影像) |
 | DOCX (application/vnd.openxmlformats-officedocument.wordprocessingml.document) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_character_count`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_page_count`<br/>`metadata_word_count` |擷取文字，包括內嵌文件 |
 | DOC (application/msword) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_character_count`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_page_count`<br/>`metadata_word_count` |擷取文字，包括內嵌文件 |
-| DOCM (application/vnd.ms-word.document able. 12)  |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_character_count`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_page_count`<br/>`metadata_word_count` |擷取文字，包括內嵌文件 |
-| WORD XML (application/application. ms-word2006ml)  |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_character_count`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_page_count`<br/>`metadata_word_count` |移除 XML 標記並且擷取文字 |
-| WORD 2003 XML (application/application. ms-wordml)  |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date` |移除 XML 標記並且擷取文字 |
+| DOCM （application/vnd.ms-word.document able. 12） |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_character_count`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_page_count`<br/>`metadata_word_count` |擷取文字，包括內嵌文件 |
+| WORD XML （application/application. ms-word2006ml） |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_character_count`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_page_count`<br/>`metadata_word_count` |移除 XML 標記並且擷取文字 |
+| WORD 2003 XML （application/application. ms-wordml） |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date` |移除 XML 標記並且擷取文字 |
 | XLSX (application/vnd.openxmlformats-officedocument.spreadsheetml.sheet) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified` |擷取文字，包括內嵌文件 |
 | XLS (application/vnd.ms-excel) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified` |擷取文字，包括內嵌文件 |
-| XLSM (application/application. macroenabled. 12)  |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified` |擷取文字，包括內嵌文件 |
+| XLSM （application/application. macroenabled. 12） |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified` |擷取文字，包括內嵌文件 |
 | PPTX (application/vnd.openxmlformats-officedocument.presentationml.presentation) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_slide_count`<br/>`metadata_title` |擷取文字，包括內嵌文件 |
 | PPT (application/vnd.ms-powerpoint) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_slide_count`<br/>`metadata_title` |擷取文字，包括內嵌文件 |
-| PPTM (application/application. macroenabled. 12)  |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_slide_count`<br/>`metadata_title` |擷取文字，包括內嵌文件 |
+| PPTM （application/application. ms-powerpoint. macroenabled） |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_slide_count`<br/>`metadata_title` |擷取文字，包括內嵌文件 |
 | MSG (application/vnd.ms-outlook) |`metadata_content_type`<br/>`metadata_message_from`<br/>`metadata_message_from_email`<br/>`metadata_message_to`<br/>`metadata_message_to_email`<br/>`metadata_message_cc`<br/>`metadata_message_cc_email`<br/>`metadata_message_bcc`<br/>`metadata_message_bcc_email`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_subject` |將文字解壓縮，包括從附件解壓縮的文字。 `metadata_message_to_email`、 `metadata_message_cc_email` 和 `metadata_message_bcc_email` 是字串集合，其餘的欄位都是字串。|
-| ODT (application/application. oasis。 text)  |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_character_count`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_page_count`<br/>`metadata_word_count` |擷取文字，包括內嵌文件 |
-| ODS (application/application. oasis)  |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified` |擷取文字，包括內嵌文件 |
-| ODP (application/application. oasis。 presentation)  |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`title` |擷取文字，包括內嵌文件 |
+| ODT （application/application. oasis） |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_character_count`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_page_count`<br/>`metadata_word_count` |擷取文字，包括內嵌文件 |
+| ODS （application/application. oasis） |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified` |擷取文字，包括內嵌文件 |
+| ODP （application/application. oasis） |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`title` |擷取文字，包括內嵌文件 |
 | ZIP (application/zip) |`metadata_content_type` |從封存中的所有文件擷取文字 |
-| GZ (應用程式/gzip)  |`metadata_content_type` |從封存中的所有文件擷取文字 |
-| EPUB (application/EPUB + zip)  |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_title`<br/>`metadata_description`<br/>`metadata_language`<br/>`metadata_keywords`<br/>`metadata_identifier`<br/>`metadata_publisher` |從封存中的所有文件擷取文字 |
+| GZ （application/gzip） |`metadata_content_type` |從封存中的所有文件擷取文字 |
+| EPUB （application/EPUB + zip） |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_title`<br/>`metadata_description`<br/>`metadata_language`<br/>`metadata_keywords`<br/>`metadata_identifier`<br/>`metadata_publisher` |從封存中的所有文件擷取文字 |
 | XML (application/xml) |`metadata_content_type`<br/>`metadata_content_encoding`<br/> |移除 XML 標記並且擷取文字 |
 | JSON (application/json) |`metadata_content_type`<br/>`metadata_content_encoding` |擷取文字<br/>注意：如果您需要從 JSON Blob 擷取多個文件欄位，請參閱[編製索引 JSON Blob](search-howto-index-json-blobs.md) 的詳細資訊 |
 | EML (message/rfc822) |`metadata_content_type`<br/>`metadata_message_from`<br/>`metadata_message_to`<br/>`metadata_message_cc`<br/>`metadata_creation_date`<br/>`metadata_subject` |擷取文字，包括附件 |

@@ -5,14 +5,14 @@ author: roygara
 ms.service: storage
 ms.subservice: files
 ms.topic: how-to
-ms.date: 06/22/2020
+ms.date: 07/12/2020
 ms.author: rogarana
-ms.openlocfilehash: 7999f042b8a67bed8ef01cccec5890b1a2d58ebb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0f2f0def9a23437dff57dda2d1a57950cef86275
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85510215"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496123"
 ---
 # <a name="overview---on-premises-active-directory-domain-services-authentication-over-smb-for-azure-file-shares"></a>總覽-適用于 Azure 檔案共用的內部部署 Active Directory Domain Services 透過 SMB 進行驗證
 
@@ -37,7 +37,7 @@ ms.locfileid: "85510215"
 > - [以 Azure 檔案儲存體取代內部部署檔案伺服器（包括檔案和 AD 驗證的私人連結上的安裝程式）](https://sec.ch9.ms/ch9/3358/0addac01-3606-4e30-ad7b-f195f3ab3358/ITOpsTalkAzureFiles_high.mp4)
 > - [使用 Azure 檔案儲存體做為 Windows 虛擬桌面的設定檔容器（包括 AD 驗證和 FsLogix 設定上的安裝程式）](https://www.youtube.com/embed/9S5A1IJqfOQ)
 
-## <a name="prerequisites"></a>必要條件 
+## <a name="prerequisites"></a>先決條件 
 
 為 Azure 檔案共用啟用 AD DS 驗證之前，請確定您已完成下列必要條件： 
 
@@ -57,9 +57,9 @@ ms.locfileid: "85510215"
 
 ## <a name="regional-availability"></a>區域可用性
 
-[所有 Azure 公用區域](https://azure.microsoft.com/global-infrastructure/locations/)皆可使用 AD DS 的 Azure 檔案儲存體驗證。
+[所有 Azure 公用和 Gov 區域](https://azure.microsoft.com/global-infrastructure/locations/)皆可使用 AD DS 的 Azure 檔案儲存體驗證。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 如果您打算在檔案共用上啟用任何網路設定，建議您先閱讀[網路考慮](https://docs.microsoft.com/azure/storage/files/storage-files-networking-overview)一文並完成相關設定，然後再啟用 AD DS 驗證。
 

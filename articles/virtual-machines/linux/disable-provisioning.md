@@ -9,18 +9,18 @@ ms.workload: infrastructure
 ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 133de199c240cbc4ea7246a29e65347d53c50545
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 2a17825d062496e6600966dc7c90b14749507e4d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045751"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86494508"
 ---
 # <a name="disable-or-remove-the-linux-agent-from-vms-and-images"></a>從 Vm 和映射停用或移除 Linux 代理程式
 
 移除 Linux 代理程式之前，您必須瞭解在移除 Linux 代理程式之後，VM 將無法執行的動作。
 
-Azure 虛擬機器（VM）[擴充](https://docs.microsoft.com/azure/virtual-machines/extensions/overview)功能是小型的應用程式，可在 azure vm 上提供部署後設定和自動化工作，延伸模組則是由 azure 控制平面安裝和管理。 [Azure Linux 代理程式](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux)的工作是處理平臺擴充命令，並確保 VM 內的擴充功能的正確狀態。
+Azure 虛擬機器（VM）[擴充](../extensions/overview.md)功能是小型的應用程式，可在 azure vm 上提供部署後設定和自動化工作，延伸模組則是由 azure 控制平面安裝和管理。 [Azure Linux 代理程式](../extensions/agent-linux.md)的工作是處理平臺擴充命令，並確保 VM 內的擴充功能的正確狀態。
 
 Azure 平台裝載許多擴充功能，包括 VM 設定、監視、安全性和公用程式應用程式等等。 第一個和協力廠商擴充功能有很大的選擇，例如，延伸模組用於下列主要案例的範例：
 * 支援第一方的 Azure 服務，例如 Azure 備份、監視、磁片加密、安全性、網站複寫等。
@@ -31,7 +31,7 @@ Azure 平台裝載許多擴充功能，包括 VM 設定、監視、安全性和�
 
 ## <a name="disabling-extension-processing"></a>停用擴充功能處理
 
-視您的需求而定，有數種方式可以停用延伸模組處理，但在繼續之前，您**必須**先移除所有部署到 VM 的延伸模組，例如，使用 AZ CLI，您可以[列出](https://docs.microsoft.com/cli/azure/vm/extension?view=azure-cli-latest#az-vm-extension-list)和[刪除](https://docs.microsoft.com/cli/azure/vm/extension?view=azure-cli-latest#az-vm-extension-delete)：
+視您的需求而定，有數種方式可以停用延伸模組處理，但在繼續之前，您**必須**先移除所有部署到 VM 的延伸模組，例如，使用 AZ CLI，您可以[列出](/cli/azure/vm/extension?view=azure-cli-latest#az-vm-extension-list)和[刪除](/cli/azure/vm/extension?view=azure-cli-latest#az-vm-extension-delete)：
 
 ```bash
 az vm extension delete -g MyResourceGroup --vm-name MyVm -n extension_name
@@ -155,7 +155,7 @@ az sig image-version create \
 > 
 > 如果您未執行上述動作，平臺將會嘗試傳送延伸模組設定和40min 後的超時時間。
 
-若要部署已停用延伸模組的 VM，您可以使用 Azure CLI 搭配[--enable-agent](https://docs.microsoft.com/cli/azure/vm#az-vm-create)。
+若要部署已停用延伸模組的 VM，您可以使用 Azure CLI 搭配[--enable-agent](/cli/azure/vm#az-vm-create)。
 
 ```bash
 az vm create \

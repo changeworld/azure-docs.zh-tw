@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: damendo
-ms.openlocfilehash: 406b02ee2e9c2f4e78ce50fc7160b382b9662303
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7a4aa4cc545d6941f144ce0657ede7199d4f8f57
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737422"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497109"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-in-azure-using-network-watcher-and-graylog"></a>使用網路監看員和 Graylog 在 Azure 中管理和分析網路安全性群組流量記錄
 
@@ -30,7 +30,7 @@ ms.locfileid: "84737422"
 > [!Warning]
 > 下列步驟適用於流量記錄第 1 版。 如需詳細資訊，請參閱[網路安全性群組流量記錄簡介](network-watcher-nsg-flow-logging-overview.md)。 下列指示若未經修改，則不適用於第 2 版的記錄檔。
 
-## <a name="scenario"></a>狀況
+## <a name="scenario"></a>情節
 
 網路安全性群組流量記錄可使用網路監看員來啟用。 流量記錄會流入 Azure Blob 儲存體。 Logstash 外掛程式可用來從 Blob 儲存體連線和處理流量記錄，並將記錄傳送到 Graylog。 流量記錄儲存在 Graylog 後，就可供進行分析並於自訂儀表板中視覺化呈現。
 
@@ -190,7 +190,7 @@ sudo ./logstash-plugin install logstash-input-azureblob
 
    在啟動輸入後，您應該就會看到它出現在 [本機輸入]**** 區段底下，如下圖所示：
 
-   ![](./media/network-watcher-analyze-nsg-flow-logs-graylog/local-inputs.png)
+   ![顯示本機輸入區段的螢幕擷取畫面，其中包含您啟動的輸入。](./media/network-watcher-analyze-nsg-flow-logs-graylog/local-inputs.png)
 
    若要深入了解 Graylog 訊息輸入，請參閱[文件](https://docs.graylog.org/en/2.2/pages/sending_data.html#what-are-graylog-message-inputs)。
 

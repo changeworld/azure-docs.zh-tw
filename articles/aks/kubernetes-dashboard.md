@@ -6,12 +6,12 @@ author: mlearned
 ms.topic: article
 ms.date: 06/03/2020
 ms.author: mlearned
-ms.openlocfilehash: 1754e166cd5c5a3d7309bc8c6f6459cdd0852396
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 69e60c3e4ac91a5d0ca9a0245dc61f090c625c60
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84762899"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499854"
 ---
 # <a name="access-the-kubernetes-web-dashboard-in-azure-kubernetes-service-aks"></a>存取 Azure Kubernetes Service (AKS) 中的 Kubernetes Web 儀表板
 
@@ -28,7 +28,7 @@ Kubernetes 包含的 Web 儀表板可用來執行基本的管理作業。 此儀
 
 ## <a name="before-you-begin"></a>開始之前
 
-本檔中詳述的步驟假設您已建立 AKS 叢集，並已建立與叢集的連線 `kubectl` 。 如果您需要建立 AKS 叢集，請參閱 [AKS 快速入門][aks-quickstart]。
+本檔中詳述的步驟假設您已建立 AKS 叢集，並已建立與叢集的連線 `kubectl` 。 如果您需要建立 AKS 叢集，請參閱[快速入門：使用 Azure CLI 部署 Azure Kubernetes Service][aks-quickstart]叢集。
 
 您也需要安裝並設定 Azure CLI 版本2.6.0 或更新版本。 執行  `az --version`  以尋找版本。 如果您需要安裝或升級，請參閱 [安裝 Azure CLI][install-azure-cli]。
 

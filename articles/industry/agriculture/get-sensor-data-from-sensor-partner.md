@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 113ab07af8ada16c0779da510c5f5b1f1f5a290b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 707b432a4cb3918aa2dfbe460fc3cdcd53761bf1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80398224"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497075"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>從感應器合作夥伴取得感應器資料
 
@@ -66,7 +66,13 @@ Azure FarmBeats 可協助您將 IoT 裝置和感應器的串流資料帶入 Data
     cd  
     ```
 
-6. 執行下列命令。 這會將腳本下載至您的主目錄。
+6. 執行下列命令。 這會連接已驗證的帳戶以用於 Azure AD 要求
+
+    ```azurepowershell-interactive 
+    Connect-AzureAD
+    ```
+    
+7. 執行下列命令。 這會將腳本下載至您的主目錄。
 
     ```azurepowershell-interactive 
 
@@ -74,7 +80,7 @@ Azure FarmBeats 可協助您將 IoT 裝置和感應器的串流資料帶入 Data
 
     ```
 
-7. 執行下列指令碼。 腳本會要求提供租使用者識別碼，您可以從 Azure Active Directory 的**Azure Active Directory**  >  **[總覽**] 頁面取得。
+8. 執行下列指令碼。 腳本會要求提供租使用者識別碼，您可以從 Azure Active Directory 的**Azure Active Directory**  >  **[總覽**] 頁面取得。
 
     ```azurepowershell-interactive 
 
@@ -82,7 +88,7 @@ Azure FarmBeats 可協助您將 IoT 裝置和感應器的串流資料帶入 Data
 
     ```
 
-8. 依照畫面上的指示來捕獲**API 端點**、租使用者**識別碼**、**用戶端識別碼**、**用戶端密碼**和**EventHub 連接字串**的值。
+9. 依照畫面上的指示來捕獲**API 端點**、租使用者**識別碼**、**用戶端識別碼**、**用戶端密碼**和**EventHub 連接字串**的值。
 
 ### <a name="integrate-device-data-by-using-the-generated-credentials"></a>使用產生的認證來整合裝置資料
 
@@ -114,7 +120,7 @@ Azure FarmBeats 可協助您將 IoT 裝置和感應器的串流資料帶入 Data
 - **節點**：一或多個感應器所連接的裝置。
 - **閘道**：一或多個節點所連接的裝置。
 
-遵循下列步驟：
+請遵循下列步驟：
 
 1. 在 [首頁] 頁面上，從功能表中選取 [**裝置**]。
   [**裝置**] 頁面會顯示裝置類型、型號、狀態、其放置所在的伺服器陣列，以及中繼資料的上次更新日期。 根據預設，[伺服器陣列] 資料行會設定為*Null*。 您可以選擇將裝置指派給伺服器陣列。 如需詳細資訊，請參閱[指派裝置](#assign-devices)。
@@ -124,7 +130,7 @@ Azure FarmBeats 可協助您將 IoT 裝置和感應器的串流資料帶入 Data
 
 ### <a name="view-sensors"></a>觀看感應器
 
-遵循下列步驟：
+請遵循下列步驟：
 
 1. 在 [首頁] 頁面上，從功能表中選取 [**感應器**]。
   [**感應器**] 頁面會顯示感應器類型、其所連線的伺服器陣列、[父裝置]、[埠名稱]、[埠類型] 和 [上次更新] 狀態的詳細資料。
@@ -153,7 +159,7 @@ Azure FarmBeats 可協助您將 IoT 裝置和感應器的串流資料帶入 Data
 
 ### <a name="visualize-sensor-data"></a>將感應器資料視覺化
 
-遵循下列步驟：
+請遵循下列步驟：
 
 1. 在 [首頁] 頁面上，從功能表中選取 [**伺服器**陣列] 以查看 [**伺服器**陣列] 頁面。
 2. 選取您要查看其感應器資料的**伺服器**陣列。
@@ -163,7 +169,7 @@ Azure FarmBeats 可協助您將 IoT 裝置和感應器的串流資料帶入 Data
 
 ## <a name="delete-a-sensor"></a>刪除感應器
 
-遵循下列步驟：
+請遵循下列步驟：
 
 1. 在 [首頁] 頁面上，從功能表選取 [**感應器**] 以查看 [**感應器**] 頁面。
 2. 選取您要刪除的裝置，然後在確認視窗中選取 [**刪除**]。
@@ -174,7 +180,7 @@ Azure FarmBeats 可協助您將 IoT 裝置和感應器的串流資料帶入 Data
 
 ## <a name="delete-devices"></a>刪除裝置
 
-遵循下列步驟：
+請遵循下列步驟：
 
 1. 在 [首頁] 頁面上，從功能表中選取 [**裝置**] 以查看 [**裝置**] 頁面。
 2. 選取您要刪除的裝置，然後在確認視窗中選取 [**刪除**]。

@@ -1,5 +1,5 @@
 ---
-title: 建立、更新統計資料
+title: 使用 Azure Synapse SQL 建立和更新資料表的統計資料
 description: 針對 Synapse SQL 集區中的資料表建立和更新查詢優化統計資料的建議和範例。
 services: synapse-analytics
 author: XiaoyuMSFT
@@ -11,12 +11,12 @@ ms.date: 05/09/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 257b1e26127186fce07e402e58f98660005a97fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 15ba0d4b77461d77a2d0b89ecc9e411a105d49d2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85800761"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86495630"
 ---
 # <a name="table-statistics-in-synapse-sql-pool"></a>Synapse SQL 集區中的資料表統計資料
 
@@ -476,7 +476,7 @@ UPDATE STATISTICS 陳述式易於使用。 只要記住這會更新資料表上�
 
 這些系統檢視提供統計資料的相關資訊：
 
-| 目錄檢視 | Description |
+| 目錄檢視 | 描述 |
 |:--- |:--- |
 | [sys.columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |每個資料行有一個資料列。 |
 | [sys.objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |資料庫中每個物件有一個資料列。 |

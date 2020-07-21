@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/27/2017
-ms.openlocfilehash: dd3279db67fb45aee43cf1b0ef1bebf49433eef4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5cecf24f4ba086feba5ab87b5752fd665c540dff
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77663227"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498673"
 ---
 # <a name="targeting-monitoring-solutions-in-azure-monitor-preview"></a>Azure 監視器中的目標監視解決方案 (預覽版)
 當您將監視解決方案新增至訂用帳戶時，預設會將該解決方案自動部署到與您 Log Analytics 工作區連線的所有 Windows 與 Linux 代理程式。  您可能會想要管理您的成本，並透過將解決方案限制在一組特定的代理程式，來限制針對該解決方案所收集的資料量。  本文說明如何使用**設定解決方案目標**，此功能可讓您將範圍套用至解決方案。
@@ -58,7 +59,7 @@ ms.locfileid: "77663227"
 下列是無法搭配「設定解決方案目標」使用的代理程式和解決方案準則。
 
 - 「設定解決方案目標」僅適用於會部署至代理程式的解決方案。
-- 「設定解決方案目標」僅適用於 Microsoft 提供的解決方案。  不適用於[由您或合作夥伴所建立的](solutions-creating.md)解決方案。
+- 「設定解決方案目標」僅適用於 Microsoft 提供的解決方案。  不適用於[由您或合作夥伴所建立的](./solutions.md)解決方案。
 - 您只能篩選掉直接連線至 Azure 監視器的代理程式。  解決方案會自動部署到屬於已連線 Operations Manager 管理群組之一部分的所有代理程式，不論它們是否包含在範圍設定內。
 
 ### <a name="exceptions"></a>例外狀況

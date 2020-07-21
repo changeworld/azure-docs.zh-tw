@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: v-erkel
-ms.openlocfilehash: 88aea7e58aacd9a630771948c6dbc6ed5712a674
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b01c4d896d5ec600e0fe22e3ca7b7816141776a4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85505302"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497194"
 ---
 # <a name="configure-additional-azure-hpc-cache-settings"></a>設定其他 Azure HPC 快取設定
 
@@ -51,7 +51,7 @@ ms.locfileid: "85505302"
 
 如果已停用根 squash，用戶端根使用者（UID 0）的要求會傳遞至後端 NFS 儲存體系統作為根。 此設定可能會允許不適當的檔案存取。
 
-在快取上設定 root squash 有助於補償 ``no_root_squash`` 做為儲存體目標的 NAS 系統上所需的設定。 （深入瞭解[NFS 儲存體目標必要條件](hpc-cache-prereqs.md#nfs-storage-requirements)）。當搭配 Azure Blob 儲存體目標使用時，它也可以改善安全性。
+在快取上設定 root squash 有助於補償 ``no_root_squash`` 做為儲存體目標的 NAS 系統上所需的設定。 （深入瞭解[NFS 儲存體目標必要條件](hpc-cache-prerequisites.md#nfs-storage-requirements)）。當搭配 Azure Blob 儲存體目標使用時，它也可以改善安全性。
 
 預設值為 [是]。 （2020年4月之前建立的快取可能預設設定為 [**否**]）。
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: akjosh
-ms.openlocfilehash: aa8f5fa9901055957c5c94923ebd74c3d57ce41a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 302a0361c19d247b6da4abd516d3a5df8dfd10c7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85481777"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86494661"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-windows"></a>適用於 Windows 的 Log Analytics 虛擬機器擴充功能
 
@@ -98,7 +98,7 @@ Azure 資訊安全中心會自動布建 Log Analytics 代理程式，並將它�
 \* workspaceId 在 Log Analytics API 中稱為 consumerId。
 
 > [!NOTE]
-> 如需其他屬性，請參閱 Azure [Connect Windows 電腦以 Azure 監視器](https://docs.microsoft.com/azure/azure-monitor/platform/agent-windows)。
+> 如需其他屬性，請參閱 Azure [Connect Windows 電腦以 Azure 監視器](../../azure-monitor/platform/agent-windows.md)。
 
 ## <a name="template-deployment"></a>範本部署
 

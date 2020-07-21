@@ -1,14 +1,14 @@
 ---
 title: 最佳作法
 description: 了解開發 Azure Batch 解決方案的最佳做法和實用秘訣。
-ms.date: 06/22/2020
+ms.date: 07/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7a66fb383195a7de347b5e6ce83ad89fa3706e96
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 32610f54cc41bd5d7feb965b9a82903acc23c33c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85954144"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497772"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch 最佳做法
 
@@ -146,6 +146,10 @@ Batch 可以自動重試工作。 重試的類型有兩種：使用者控制和�
 ### <a name="collect-the-batch-agent-logs"></a>收集 Batch 代理程式記錄
 
 如果您注意到節點行為有異或在節點上執行的工作有問題，請在解除配置問題節點之前，先收集 Batch 代理程式記錄。 您可以使用上傳 Batch 服務記錄 API 來收集 Batch 代理程式記錄。 這些記錄可以作為 Microsoft 支援票證的一部分提供，並有助於對問題進行疑難排解。
+
+### <a name="manage-os-upgrades"></a>管理作業系統升級
+
+針對使用者訂用帳戶模式的 Batch 帳戶，自動化的 OS 升級可能會中斷工作進度，特別是當工作長時間執行時。 [建立等冪](#build-durable-tasks)工作有助於減少這些中斷所造成的錯誤。 我們也建議您[針對預期不會執行工作的時間，排程 OS 映射升級](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md#manually-trigger-os-image-upgrades)。
 
 ## <a name="isolation-security"></a>隔離安全性
 

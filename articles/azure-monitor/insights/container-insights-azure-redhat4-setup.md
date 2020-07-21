@@ -3,11 +3,12 @@ title: 使用適用于容器的 Azure 監視器來設定 Azure Red Hat OpenShift
 description: 本文說明如何使用裝載于 Azure Red Hat OpenShift 第4版或更新版本的 Azure 監視器來設定 Kubernetes 叢集的監視。
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 49097d96ecf58d7c5bf7d1a60ff01fc7182587c6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91b5644c13ac560910703454c4052e223f958014
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85801473"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499166"
 ---
 # <a name="configure-azure-red-hat-openshift-v4x-with-azure-monitor-for-containers"></a>使用適用于容器的 Azure 監視器來設定 Azure Red Hat OpenShift v4. x
 
@@ -19,7 +20,7 @@ ms.locfileid: "85801473"
 
 您可以使用本文中所述的支援方法，為 Azure Red Hat OpenShift v4. x 的一或多個現有部署啟用容器的 Azure 監視器。
 
-針對現有的叢集，請[在 Azure CLI 中執行此 Bash 腳本](https://docs.microsoft.com/cli/azure/openshift?view=azure-cli-latest#az-openshift-create)。
+針對現有的叢集，請[在 Azure CLI 中執行此 Bash 腳本](/cli/azure/openshift?view=azure-cli-latest#az-openshift-create)。
 
 ## <a name="supported-and-unsupported-features"></a>支援和不支援的功能
 
@@ -28,7 +29,7 @@ ms.locfileid: "85801473"
 - 即時資料（預覽）
 - 從叢集節點和 pod[收集計量](container-insights-update-metrics.md)，並將其儲存在 Azure 監視器計量資料庫中
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 - Azure CLI 版2.0.72 或更新版本  
 
@@ -171,4 +172,4 @@ export kubeContext="<kubeContext name of your ARO v4 cluster>"
 
 - 若要從您的叢集中抓取和分析 Prometheus 計量，請參閱[設定 Prometheus 計量抓取](container-insights-prometheus-integration.md)。
 
-- 若要瞭解如何使用適用于容器的 Azure 監視器來停止監視叢集，請參閱[如何停止監視您的 Azure Red Hat OpenShift](container-insights-optout-openshift.md)叢集。
+- 若要瞭解如何使用適用于容器的 Azure 監視器來停止監視叢集，請參閱[如何停止監視您的 Azure Red Hat OpenShift](./container-insights-optout-openshift-v3.md)叢集。

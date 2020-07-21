@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2020
-ms.openlocfilehash: 4d89c64b7ceea730dab61ffe1254d838d219b785
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 14f7b5546d30d98adf4a14408882c972687a2d71
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85971040"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498792"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure 中的 Office 365 管理解決方案 (預覽)
 
@@ -226,9 +226,9 @@ Office 365 管理解決方案可讓您監視 Azure 監視器中的 Office 365 �
 
 系統會提示您輸入認證。 提供 Log Analytics 工作區的認證。
 
-## <a name="data-collection"></a>資料收集
+## <a name="data-collection"></a>資料集合
 
-一開始收集資料可能會需要幾個小時。 一旦開始收集資料，每次建立一筆記錄時，Office 365 都會將 [Webhook 通知](https://msdn.microsoft.com/office-365/office-365-management-activity-api-reference#receiving-notifications) \(英文\) 連同詳細資料傳送至 Azure 監視器。 收到此記錄的幾分鐘內，即可將其用於 Azure 監視器。
+一開始收集資料可能會需要幾個小時。 一旦開始收集資料，每次建立一筆記錄時，Office 365 都會將 [Webhook 通知](/office/office-365-management-api/office-365-management-activity-api-reference#receiving-notifications) \(英文\) 連同詳細資料傳送至 Azure 監視器。 收到此記錄的幾分鐘內，即可將其用於 Azure 監視器。
 
 ## <a name="using-the-solution"></a>使用解決方案
 
@@ -245,7 +245,7 @@ Office 365 管理解決方案可讓您監視 Azure 監視器中的 Office 365 �
 
 | 資料行 | 描述 |
 |:--|:--|
-| Operations | 提供所有受監視 Office 365 訂閱中之作用中使用者的相關資訊。 您也可以查看一段時間內發生的活動數。
+| 作業 | 提供所有受監視 Office 365 訂閱中之作用中使用者的相關資訊。 您也可以查看一段時間內發生的活動數。
 | Exchange | 顯示 Exchange Server 活動細目，例如 Add-Mailbox 權限或 Set-Mailbox。 |
 | SharePoint | 顯示使用者最常對 SharePoint 文件執行的活動。 當您從此圖格向下鑽研時，搜尋頁面會顯示這些活動的詳細資料，例如此活動的目標文件與位置。 例如，針對檔案存取事件，您可以看到正在存取的檔、其相關聯的帳戶名稱和 IP 位址。 |
 | Azure Active Directory | 包含熱門使用者活動，例如「重設使用者密碼」和「登入嘗試」。 向下鑽研時，您可以像「結果狀態」一般地查看這些活動的詳細資料。 如果您想要監視 Azure Active Directory 上的可疑活動，這會很有幫助。 |
@@ -266,20 +266,20 @@ Office 365 管理解決方案可讓您監視 Azure 監視器中的 Office 365 �
 | 類型 | *OfficeActivity* |
 | ClientIP | 記錄活動時所使用之裝置的 IP 位址。 IP 位址會以 IPv4 或 IPv6 位址格式顯示。 |
 | OfficeWorkload | 記錄所指的 Office 365 服務。<br><br>AzureActiveDirectory<br>Exchange<br>SharePoint|
-| 操作 | 使用者或管理員活動的名稱。  |
+| 作業 | 使用者或管理員活動的名稱。  |
 | OrganizationId | 貴組織的 Office 365 租用戶 GUID。 無論此值是在哪一個 Office 365 服務中發生，對於貴組織而言它將會一律相同。 |
 | RecordType | 執行的作業類型。 |
 | ResultStatus | 指出 (Operation 屬性中指定的) 動作是否成功。 可能的值為 Succeeded、PartiallySucceeded 或 Failed。 對於 Exchange 管理員活動，這個值將會是 True 或 False。 |
 | UserId | 執行動作導致記下該記錄之使用者的 UPN (使用者主體名稱)，例如 my_name@my_domain_name。 請注意，由系統帳戶 (例如 SHAREPOINT\system 或 NTAUTHORITY\SYSTEM) 所執行之活動的記錄也會包含在內。 | 
 | UserKey | UserId 屬性所識別之使用者的替代識別碼。  例如，針對由使用者在 SharePoint、商務用 OneDrive 及 Exchange 中所執行的事件，此屬性都會填入 Passport 唯一識別碼 (PUID)。 針對在其他服務中所發生的事件，以及由系統帳戶所執行的事件，此屬性也可能會將相同的值指定為 UserID 屬性|
-| UserType | 執行作業的使用者類型。<br><br>系統管理員<br>Application<br>DcAdmin<br>標準<br>Reserved<br>ServicePrincipal<br>系統 |
+| UserType | 執行作業的使用者類型。<br><br>管理<br>應用程式<br>DcAdmin<br>定期<br>保留<br>ServicePrincipal<br>系統 |
 
 
 ### <a name="azure-active-directory-base"></a>Azure Active Directory 基底
 
 以下是所有 Azure Active Directory 記錄通用的屬性。
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |:--- |:--- |
 | OfficeWorkload | AzureActiveDirectory |
 | RecordType     | AzureActiveDirectory |
@@ -291,7 +291,7 @@ Office 365 管理解決方案可讓您監視 Azure 監視器中的 Office 365 �
 
 這些記錄會在 Active Directory 使用者嘗試登入時建立。
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |:--- |:--- |
 | `OfficeWorkload` | AzureActiveDirectory |
 | `RecordType`     | AzureActiveDirectoryAccountLogon |
@@ -305,7 +305,7 @@ Office 365 管理解決方案可讓您監視 Azure 監視器中的 Office 365 �
 
 這些記錄會在針對 Azure Active Directory 物件進行變更或新增時建立。
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |:--- |:--- |
 | OfficeWorkload | AzureActiveDirectory |
 | RecordType     | AzureActiveDirectory |
@@ -323,7 +323,7 @@ Office 365 管理解決方案可讓您監視 Azure 監視器中的 Office 365 �
 
 這些記錄是從資料中心安全性稽核資料所建立。  
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |:--- |:--- |
 | EffectiveOrganization | 提高權限/Cmdlet 的目標租用戶名稱。 |
 | ElevationApprovedTime | 核准提高權限時的時間戳記。 |
@@ -339,7 +339,7 @@ Office 365 管理解決方案可讓您監視 Azure 監視器中的 Office 365 �
 
 這些記錄會在對 Exchange 設定做出變更時建立。
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | RecordType     | ExchangeAdmin |
@@ -354,7 +354,7 @@ Office 365 管理解決方案可讓您監視 Azure 監視器中的 Office 365 �
 
 這些記錄會在針對 Exchange 信箱做出變更或新增時建立。
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | RecordType     | ExchangeItem |
@@ -377,7 +377,7 @@ Office 365 管理解決方案可讓您監視 Azure 監視器中的 Office 365 �
 
 這些記錄會在建立信箱稽核項目時建立。
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | RecordType     | ExchangeItem |
@@ -392,7 +392,7 @@ Office 365 管理解決方案可讓您監視 Azure 監視器中的 Office 365 �
 
 這些記錄會在針對 Exchange 群組做出變更或新增時建立。
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | OfficeWorkload | ExchangeItemGroup |
@@ -411,7 +411,7 @@ Office 365 管理解決方案可讓您監視 Azure 監視器中的 Office 365 �
 
 這些是所有 SharePoint 記錄通用的屬性。
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |:--- |:--- |
 | OfficeWorkload | SharePoint |
 | OfficeWorkload | SharePoint |
@@ -428,7 +428,7 @@ Office 365 管理解決方案可讓您監視 Azure 監視器中的 Office 365 �
 
 這些記錄會在針對 SharePoint 做出設定變更時建立。
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |:--- |:--- |
 | OfficeWorkload | SharePoint |
 | OfficeWorkload | SharePoint |
@@ -441,7 +441,7 @@ Office 365 管理解決方案可讓您監視 Azure 監視器中的 Office 365 �
 
 這些記錄是為了回應 SharePoint 中的檔案作業而建立。
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |:--- |:--- |
 | OfficeWorkload | SharePoint |
 | OfficeWorkload | SharePointFileOperation |

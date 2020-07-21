@@ -6,11 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: ce952bd248640d03fcff43284707614577df8469
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0d3074d58560df5cb5bd6bdc2c0437a4be828918
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77671642"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499387"
 ---
 # <a name="profile-production-applications-in-azure-with-application-insights"></a>使用 Application Insights 來分析 Azure 中的生產應用程式
 ## <a name="enable-application-insights-profiler-for-your-application"></a>為您的應用程式啟用 Application Insights Profiler
@@ -29,7 +30,7 @@ Profiler 可與部署於下列 Azure 服務的 .NET 應用程式搭配運作。 
 
 ## <a name="view-profiler-data"></a>檢視 Profiler 資料
 
-若要讓 Profiler 上傳追蹤，應用程式必須主動處理要求。 如果您要進行實驗，可以使用 [Application Insights 效能測試](https://docs.microsoft.com/vsts/load-test/app-service-web-app-performance-test)產生對 Web 應用程式的要求。 如果您剛剛啟用 Profiler，則可以執行簡短的負載測試。 在負載測試執行時，選取 [[Profiler 設定] 窗格****](profiler-settings.md)上的 [立即分析]**** 按鈕。 Profiler 開始執行後，大約每隔一小時就會隨機分析一次，時間會持續兩分鐘。 如果應用程式所處理的是穩定不斷的要求，則 Profiler 會每小時上傳追蹤。
+若要讓 Profiler 上傳追蹤，應用程式必須主動處理要求。 如果您要進行實驗，可以使用 [Application Insights 效能測試](/vsts/load-test/app-service-web-app-performance-test)產生對 Web 應用程式的要求。 如果您剛剛啟用 Profiler，則可以執行簡短的負載測試。 在負載測試執行時，選取 [[Profiler 設定] 窗格****](profiler-settings.md)上的 [立即分析]**** 按鈕。 Profiler 開始執行後，大約每隔一小時就會隨機分析一次，時間會持續兩分鐘。 如果應用程式所處理的是穩定不斷的要求，則 Profiler 會每小時上傳追蹤。
 
 在應用程式收到某些流量，且 Profiler 有時間上傳追蹤後，您應該就會有可供檢視的追蹤。 此程序可能需要 5 到 10 分鐘的時間。 若要檢視追蹤，請在 [效能]**** 窗格中選取 [採取動作]****，然後選取 [Profiler 追蹤]**** 按鈕。
 

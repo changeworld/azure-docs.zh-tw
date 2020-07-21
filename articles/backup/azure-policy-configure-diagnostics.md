@@ -3,20 +3,20 @@ title: 設定大規模的保存庫診斷設定
 description: 使用 Azure 原則，為指定範圍中的所有保存庫設定 Log Analytics 診斷設定
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: e6ba8eb98ca1d6af9fc745d9baf3840ccd1ac224
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2400be15dcd46084e9a605076c00cf5c5ac92463
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82195701"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498044"
 ---
 # <a name="configure-vault-diagnostics-settings-at-scale"></a>設定大規模的保存庫診斷設定
 
-Azure 備份所提供的報告解決方案會利用 Log Analytics （LA）。 針對要傳送至 LA 的任何給定保存庫資料，必須為該保存庫建立[診斷設定](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events)。
+Azure 備份所提供的報告解決方案會利用 Log Analytics （LA）。 針對要傳送至 LA 的任何給定保存庫資料，必須為該保存庫建立[診斷設定](./backup-azure-diagnostic-events.md)。
 
 通常，每個保存庫手動新增診斷設定可能會是一件麻煩的工作。 此外，任何建立的新保存庫也需要啟用診斷設定，才能查看此保存庫的報告。
 
-為了簡化大規模的診斷設定建立（使用 LA 作為目的地），Azure 備份提供內建[Azure 原則](https://docs.microsoft.com/azure/governance/policy/)。 此原則會將 LA 診斷設定新增至指定訂用帳戶或資源群組中的所有保存庫。 下列各節提供有關如何使用此原則的指示。
+為了簡化大規模的診斷設定建立（使用 LA 作為目的地），Azure 備份提供內建[Azure 原則](../governance/policy/index.yml)。 此原則會將 LA 診斷設定新增至指定訂用帳戶或資源群組中的所有保存庫。 下列各節提供有關如何使用此原則的指示。
 
 ## <a name="supported-scenarios"></a>支援的案例
 
@@ -70,7 +70,7 @@ Azure 備份所提供的報告解決方案會利用 Log Analytics （LA）。 �
 * 保存庫沒有任何診斷設定。
 * 保存庫有診斷設定，但這兩個設定都沒有以 LA 作為目的地啟用的**所有**資源特定事件，以及切換中選取的**資源特定**。
 
-因此，即使使用者的保存庫已在 AzureDiagnostics 模式中啟用 AzureBackupReport 事件（由備份報告支援），補救工作仍然會套用到此保存[庫，因為](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events#legacy-event)資源特定模式是建議的方法來建立診斷設定。
+因此，即使使用者的保存庫已在 AzureDiagnostics 模式中啟用 AzureBackupReport 事件（由備份報告支援），補救工作仍然會套用到此保存[庫，因為](./backup-azure-diagnostic-events.md#legacy-event)資源特定模式是建議的方法來建立診斷設定。
 
 此外，如果使用者的保存庫僅具有六個已啟用資源特定事件的子集，則會針對此保存庫套用補救工作，因為只有在所有六個資源的特定事件都已啟用時，備份報表才會如預期般運作。
 
@@ -84,6 +84,6 @@ Azure 備份所提供的報告解決方案會利用 Log Analytics （LA）。 �
 
 ## <a name="next-steps"></a>後續步驟
 
-* [瞭解如何使用備份報告](https://docs.microsoft.com/azure/backup/configure-reports)
-* [深入瞭解 Azure 原則](https://docs.microsoft.com/azure/governance/policy/)
-* [使用 Azure 原則自動啟用授與範圍中所有 Vm 的備份](https://docs.microsoft.com/azure/backup/backup-azure-auto-enable-backup)
+* [瞭解如何使用備份報告](./configure-reports.md)
+* [深入瞭解 Azure 原則](../governance/policy/index.yml)
+* [使用 Azure 原則自動啟用授與範圍中所有 Vm 的備份](./backup-azure-auto-enable-backup.md)

@@ -4,26 +4,22 @@ description: 說明不同的複製類型以及使用方式，並說明如何使�
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: timlt
-editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: how-to
-ms.tgt_pltfrm: NA
-ms.workload: TBD
-ms.date: 12/05/2017
+ms.date: 07/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 1ddc7d9e359fbb43680ae093c4e6cd2b9fb1ab2d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 86a3e2ab15e83f5393315f75f37ad8b41d3489b2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514982"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496140"
 ---
 # <a name="use-the-storsimple-device-manager-service-in-azure-portal-to-clone-a-volume"></a>在 Azure 入口網站中，使用 StorSimple 裝置管理員服務來複製磁碟區
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 本教學課程說明如何透過 [備份類別目錄]**** 刀鋒視窗使用備份組來複製個別磁碟區。 它也會說明「暫時性」** 與「永久」** 複製之間的差異。 本教學課程中的指導適用於執行 Update 3 或更新版本的所有 StorSimple 8000 系列裝置。
 
@@ -51,7 +47,7 @@ StorSimple 裝置管理員服務 [備份類別目錄] **** 刀鋒視窗會顯示
 
 您可以使用本機或雲端快照，在相同的裝置、另一個裝置，甚或雲端設備上建立複製。
 
-下列程序描述如何從備份類別目錄建立複製。  起始複製的替代方法是移至 [磁碟區]****，選取磁碟區，然後按一下滑鼠右鍵以叫用操作功能表，然後選取 [複製]****。
+下列程序描述如何從備份類別目錄建立複製。  
 
 執行下列步驟，以從備份類別目錄中建立您的磁碟區的複製。
 

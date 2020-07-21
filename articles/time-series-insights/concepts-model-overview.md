@@ -1,31 +1,30 @@
 ---
-title: 時間序列模型-Azure 時間序列深入解析 |Microsoft Docs
-description: 瞭解 Azure 時間序列深入解析 Preview 中的時間序列模型。
+title: 時間序列模型-Azure 時間序列深入解析 Gen2 |Microsoft Docs
+description: 瞭解 Azure 時間序列深入解析 Gen2 中的時間序列模型。
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 06/18/2020
+ms.date: 07/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: c5a22987b1d67f9e9f8384e5376343af2f91b5e0
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 98951dc29b7c8504cbf1654a810ebba933fef3a1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86049784"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86495375"
 ---
-# <a name="time-series-model-in-azure-time-series-insights-preview"></a>Azure 時間序列深入解析預覽中的時間序列模型
+# <a name="time-series-model-in-azure-time-series-insights-gen2"></a>Azure 時間序列深入解析 Gen2 中的時間序列模型
 
-本文描述時間序列模型、功能，以及如何開始在 Azure 時間序列深入解析預覽環境中建立及更新您自己的模型。
+本文描述時間序列模型、功能，以及如何開始在 Azure 時間序列深入解析 Gen2 環境中建立及更新您自己的模型。
 
 > [!TIP]
 >
 > * 移至 [Contoso 風伺服器陣列示範](https://insights.timeseries.azure.com/preview/samples)環境，以取得即時時間序列模型範例。
-> * 閱讀[Azure 時間序列深入解析 Preview explorer](time-series-insights-update-explorer.md)以瞭解如何流覽您的時間序列模型 UI。
-> * 瞭解如何使用時間序列深入解析 web explorer[來處理時間序列模型](time-series-insights-update-how-to-tsm.md)。
+> * 瞭解如何使用 Azure 時間序列深入解析 Gen2 Explorer[來處理時間序列模型](time-series-insights-update-how-to-tsm.md)。
 
 ## <a name="summary"></a>摘要
 
@@ -58,13 +57,13 @@ ms.locfileid: "86049784"
 
 ### <a name="key-capabilities"></a>主要功能
 
-為了達到簡單輕鬆就能管理時間序列關聯化的目的，時間序列模型在時間序列深入解析中提供下列功能。 它可協助您：
+為了讓您輕鬆且輕鬆地管理時間序列 coNtextualization，時間序列模型會在 Azure 時間序列深入解析 Gen2 中啟用下列功能。 它可協助您：
 
 * 撰寫和管理利用純量函數、匯總作業等等的計算或公式。
 * 定義父子式關聯性，以啟用導覽、搜尋和參考。
 * 定義與實例相關聯的屬性（定義為*實例欄位*），並使用它們來建立階層。
 
-### <a name="components"></a>單元
+### <a name="components"></a>元件
 
 時間序列模型有三個核心元件：
 
@@ -72,11 +71,11 @@ ms.locfileid: "86049784"
 * [時間序列模型階層](#time-series-model-hierarchies)
 * [時間序列模型類型](#time-series-model-types)
 
-這些元件會結合以指定時間序列模型，並組織您的 Azure 時間序列深入解析資料。
+這些元件結合起來可指定時間序列模型，以及組織您的資料。
 
 [![時間序列模型總覽圖表](media/v2-update-tsm/time-series-model-overview.png)](media/v2-update-tsm/time-series-model-overview.png#lightbox)
 
-您可以透過[時間序列深入解析 Preview](time-series-insights-update-how-to-tsm.md)介面來建立和管理時間序列模型。 時間序列模型設定可以透過[模型設定 API](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#model-settings-api)來管理。
+您可以透過[Azure 時間序列深入解析 Gen2 Explorer](time-series-insights-update-how-to-tsm.md)來建立及管理時間序列模型。 時間序列模型設定可以透過[模型設定 API](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#model-settings-api)來管理。
 
 ## <a name="time-series-model-instances"></a>時間序列模型執行個體
 
@@ -88,7 +87,7 @@ ms.locfileid: "86049784"
 
 *實例欄位*是描述性資訊的集合，其中可以包含階層層級的值，以及製造商、運算子等等。
 
-為時間序列深入解析環境設定事件來源之後，系統會自動探索實例並在時間序列模型中建立。 您可以使用時間序列模型查詢，透過時間序列深入解析 explorer 來建立或更新實例。
+為 Azure 時間序列深入解析 Gen2 環境設定事件來源之後，系統會自動探索實例並在時間序列模型中建立。 您可以使用時間序列模型查詢，透過 Azure 時間序列深入解析 Gen2 Explorer 來建立或更新實例。
 
 [Contoso 風伺服器陣列示範](https://insights.timeseries.azure.com/preview/samples)提供數個即時實例範例。
 
@@ -98,7 +97,7 @@ ms.locfileid: "86049784"
 
 實例是由**timeSeriesId**、 **typeId**、 **name**、 **description**、 **hierarchyIds**和**instancefields 定義**所定義。 每個實例只會對應至一個*類型*，以及一個或多個*階層。*
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 | --- | ---|
 | timeSeriesId | 與實例相關聯之時間序列的唯一識別碼。 在大部分情況下，實例是以 deviceId 或 assetId 之類的屬性來唯一識別。 在某些情況下，可以使用更明確的複合識別碼，其中最多可結合3個屬性。 |
 | typeId | 與實例相關聯之時間序列模型類型的區分大小寫唯一字串識別碼。 根據預設，所有探索到的新實例都會與預設類型建立關聯。
@@ -130,15 +129,15 @@ ms.locfileid: "86049784"
 ```
 
 > [!TIP]
-> 如需時間序列深入解析實例 API 和建立、讀取、更新和刪除（CRUD）支援，請閱讀[資料查詢](concepts-query-overview.md#time-series-model-query-tsm-q-apis)文章和[實例 API REST 檔](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#instances-api)。
+> 如需 API 建立、讀取、更新和刪除（CRUD）的支援，請參閱[資料查詢](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis)文章和[實例 API REST 檔](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#instances-api)。
 
 ## <a name="time-series-model-hierarchies"></a>時間序列模型階層
 
 時間*序列模型階層*會藉由指定屬性名稱及其關聯性來組織實例。
 
-您可以在指定的時間序列深入解析環境中設定多個階層。 時間序列模型實例可以對應到單一階層或多個階層（多對多關聯性）。
+您可以在指定的 Azure 時間序列深入解析 Gen2 環境中設定多個階層。 時間序列模型實例可以對應到單一階層或多個階層（多對多關聯性）。
 
-[Contoso 風伺服器陣列示範](https://insights.timeseries.azure.com/preview/samples)用戶端介面會顯示標準實例和類型階層。
+[Contoso 風伺服器陣列示範](https://insights.timeseries.azure.com/preview/samples)顯示標準實例和類型階層。
 
 [![時間序列模型階層範例](media/v2-update-tsm/time-series-model-hierarchies.png)](media/v2-update-tsm/time-series-model-hierarchies.png#lightbox)
 
@@ -187,7 +186,7 @@ ms.locfileid: "86049784"
 * `ManufactureDate`定義具有父系和子系的階層 `year` `month` 。 每個 `ManufactureDate` 可以有多個 `years` ，而這可以有多個 `months` 。
 
 > [!TIP]
-> 如需時間序列深入解析實例 API 和 CRUD 支援，請閱讀[資料查詢](concepts-query-overview.md#time-series-model-query-tsm-q-apis)文章和階層[API REST 檔](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#hierarchies-api)。
+> 如需階層 API 建立、讀取、更新和刪除（CRUD）的支援，請閱讀[資料查詢](concepts-query-overview.md#time-series-model-query-tsm-q-apis)文章和階層[API REST 檔](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#hierarchies-api)。
 
 ### <a name="hierarchy-example"></a>階層範例
 
@@ -217,13 +216,13 @@ ms.locfileid: "86049784"
 | ID4 | 「建築物」 = "1000"，"floor" = "10"  |
 | ID5 | 未設定任何「建築物」、「樓層」或「房間」。 |
 
-時間序列**ID1**和**ID4**會在[Azure 時間序列深入解析 Explorer](time-series-insights-update-explorer.md)中顯示為階層**H1**的一部分，因為它們具有完整定義且正確排序的*建築物*、*樓層*和*房間*參數。
+時間序列**ID1**和**ID4**會在[Azure 時間序列深入解析 Gen2 Explorer](time-series-insights-update-explorer.md)中顯示為階層**H1**的一部分，因為它們具有完整定義且正確排序的*建築物*、*樓層*和*房間*參數。
 
 其他專案會在*無上層實例*之下分類，因為它們不符合指定的資料層次。
 
 ## <a name="time-series-model-types"></a>時間序列模型類型
 
-時間序列模型「類型」** 協助您定義執行計算的變數或公式。 類型與特定的時間序列深入解析實例相關聯。
+時間序列模型「類型」** 協助您定義執行計算的變數或公式。 類型與特定實例相關聯。
 
 一個類型可以有一或多個變數。 例如，時間序列模型實例可能屬於*溫度感應器*類型，這是由變數的*平均*溫度、*最小溫度*和*最大溫度*所組成。
 
@@ -232,7 +231,7 @@ ms.locfileid: "86049784"
 [![時間序列模型類型範例](media/v2-update-tsm/time-series-model-types.png)](media/v2-update-tsm/time-series-model-types.png#lightbox)
 
 > [!TIP]
-> 如需時間序列深入解析實例 API 和 CRUD 支援，請閱讀[資料查詢](concepts-query-overview.md#time-series-model-query-tsm-q-apis)文章和[類型 API REST 檔](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#types-api)。
+> 如需 API 建立、讀取、更新和刪除（CRUD）支援的類型，請閱讀[資料查詢](concepts-query-overview.md#time-series-model-query-tsm-q-apis)文章和[類型 api REST 檔](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#types-api)。
 
 ### <a name="type-properties"></a>類型屬性
 
@@ -266,7 +265,7 @@ ms.locfileid: "86049784"
         "Interpolated Speed": {
           "kind": "numeric",
           "value": {
-              "tsx": "$event.[speed].Double"
+              "tsx": "$event['Speed-Sensor'].Double"
           },
           "filter": null,
           "interpolation": {
@@ -276,7 +275,7 @@ ms.locfileid: "86049784"
               }
           },
           "aggregation": {
-              "tsx": "left($value)"
+              "tsx": "right($value)"
           }
         }
       }
@@ -284,114 +283,12 @@ ms.locfileid: "86049784"
   ]
 }
 ```
-
-### <a name="variables"></a>變數
-
-時間序列深入解析類型可能有許多變數，可指定事件的公式和計算規則。
-
-每個變數都可以是下列三*種類型*之一：*數值*、*類別*和*匯總*。
-
-* **數值**類型會使用連續的值。
-* **類別**類型會使用一組已定義的離散值。
-* **匯總**值結合了單一種類的多個變數（全部為數值或所有類別）。
-
-下表顯示每個變數種類的相關屬性。
-
-[![時間序列模型變數資料表](media/v2-update-tsm/time-series-model-variable-table.png)](media/v2-update-tsm/time-series-model-variable-table.png#lightbox)
-
-#### <a name="numeric-variables"></a>數值變數
-
-| Variable 屬性 | Description |
-| --- | ---|
-| 變數篩選條件 | 篩選是選擇性的條件子句，可限制要考慮計算的資料列數目。 |
-| 變數值 | 用於計算來自裝置或感應器，或使用時間序列運算式轉換的遙測值。 數數值型別變數必須是*Double*類型。|
-| 變數插補 | 插補會指定如何使用現有的資料來重建信號。 [*步驟*] 和 [*線性*插補] 選項適用于數值變數。 |
-| 變數彙總 | 支援透過*Avg*、 *min*、 *max*、 *sum*、 *Count*、 *First*、 *Last*和 time-加權（*Avg*、 *Min*、 *Max*、 *sum*、 *Left*）運算子進行計算。 |
-
-變數符合下列 JSON 範例：
-
-```JSON
-"Interpolated Speed": {
-  "kind": "numeric",
-  "value": {
-    "tsx": "$event.[speed].Double"
-  },
-  "filter": null,
-  "interpolation": {
-    "kind": "step",
-    "boundary": {
-      "span": "P1D"
-    }
-  },
-  "aggregation": {
-    "tsx": "left($value)"
-  }
-}
-```
-
-#### <a name="categorical-variables"></a>類別變數
-
-| Variable 屬性 | Description |
-| --- | ---|
-| 變數篩選條件 | 篩選是選擇性的條件子句，可限制要考慮計算的資料列數目。 |
-| 變數值 | 用於計算來自裝置或感應器的遙測值。 類別類型變數必須是*Long*或*String*。 |
-| 變數插補 | 插補會指定如何使用現有的資料來重建信號。 [*步驟*內插補點] 選項適用于類別變數。 |
-| 變數類別 | 類別會在來自裝置或感應器的值與標籤之間建立對應。 |
-| 變數預設分類 | 預設類別是針對未在 [分類] 屬性中對應的所有值。 |
-
-變數符合下列 JSON 範例：
-
-```JSON
-"Status": {
-  "kind": "categorical",
-  "value": {
-     "tsx": "toLong($event.[Status].Double)"
-},
-  "interpolation": {
-    "kind": "step",
-    "boundary": {
-      "span" : "PT1M"
-    }
-  },
-  "categories": [
-    {
-      "values": [0, 1, 2],
-      "label": "Good"
-    },
-    {
-      "values": [3],
-      "label": "Bad"
-    }
-  ],
-  "defaultCategory": {
-    "label": "Not Applicable"
-  }
-}
-```
-
-#### <a name="aggregate-variables"></a>匯總變數
-
-| Variable 屬性 | Description |
-| --- | ---|
-| 變數篩選條件 | 篩選是選擇性的條件子句，可限制要考慮計算的資料列數目。 |
-| 變數彙總 | 支援透過*Avg*、 *Min*、 *Max*、 *Sum*、 *Count*、 *First*、 *Last*進行計算。 |
-
-變數符合下列 JSON 範例：
-
-```JSON
-"Aggregate Speed": {
-  "kind": "aggregate",
-  "filter": null,
-  "aggregation": {
-    "tsx": "avg($event.Speed.Double)"
-  }
-}
-```
-
-變數會儲存在時間序列模型的類型定義中，而且可以透過[查詢 api](concepts-query-overview.md)以內嵌方式提供，以覆寫儲存的定義。
+時間序列模型類型可以有許多變數，可指定事件的公式和計算規則。 深入瞭解[如何定義時間序列模型變數](./concepts-variables.md)
 
 ## <a name="next-steps"></a>後續步驟
 
-* 深入瞭解[資料查詢](concepts-query-overview.md)
+- 如需如何透過 Api 編輯模型的詳細資訊，請參閱[時間序列模型](https://docs.microsoft.com/rest/api/time-series-insights/preview-model)參考檔。
 
-* 閱讀[時間序列模型](https://docs.microsoft.com/rest/api/time-series-insights/preview-model)參考檔。
+- 探索您可以使用[時間序列模型變數](./concepts-variables.md)建立的公式和計算
+
+- 瞭解如何在 Azure 時間序列深入解析 Gen2 中[查詢資料](concepts-query-overview.md)

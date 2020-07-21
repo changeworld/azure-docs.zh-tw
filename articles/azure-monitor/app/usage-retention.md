@@ -6,11 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 05/03/2017
 ms.reviewer: mbullwin
-ms.openlocfilehash: 654dba968ba4efec1c30c94082726da04059adc0
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 25d1cccdbd56db397fc444d1488c773515ad6553
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83797741"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499302"
 ---
 # <a name="user-retention-analysis-for-web-applications-with-application-insights"></a>使用 Application Insights 進行 Web 應用程式的使用者保留期分析
 
@@ -57,12 +58,10 @@ ms.locfileid: "83797741"
 
 
 ## <a name="next-steps"></a>後續步驟
-- 若要啟用使用體驗，請開始傳送[「自訂事件」](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) 或 [「頁面檢視」](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views)。
+- 若要啟用使用體驗，請開始傳送[「自訂事件」](./api-custom-events-metrics.md#trackevent) 或 [「頁面檢視」](./api-custom-events-metrics.md#page-views)。
 - 如果您已傳送自訂事件或頁面檢視，請探索「使用量工具」，以了解使用者如何使用您的服務。
     - [使用者、工作階段、事件](usage-segmentation.md)
     - [漏斗圖](usage-funnels.md)
     - [使用者流程](usage-flows.md)
     - [活頁簿](../../azure-monitor/platform/workbooks-overview.md)
     - [新增使用者內容](usage-send-user-context.md)
-
-

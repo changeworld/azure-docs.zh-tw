@@ -1,7 +1,7 @@
 ---
 title: 常見問題集 (FAQ)
 titleSuffix: Azure SQL Managed Instance
-description: 'Azure SQL 受控執行個體常見問題 (常見問題) '
+description: Azure SQL 受控執行個體常見問題（FAQ）
 services: sql-database
 ms.service: sql-managed-instance
 ms.subservice: operations
@@ -12,14 +12,14 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 03/17/2020
-ms.openlocfilehash: b5fad1e287ffca569546092893c4f1a6501a3b7b
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 6713a1fbbbbca0aa212461cc966b42aaf2daa47e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224412"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498435"
 ---
-# <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Azure SQL 受控執行個體常見問題 (常見問題) 
+# <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Azure SQL 受控執行個體常見問題（FAQ）
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 本文包含有關[AZURE SQL 受控執行個體](sql-managed-instance-paas-overview.md)最常見的問題。
@@ -56,7 +56,7 @@ ms.locfileid: "86224412"
 
 受控實例有兩個預設限制：您可以使用的子網數目限制，以及您可以布建的虛擬核心數目限制。 限制在訂用帳戶類型和區域之間有所不同。 如需訂用帳戶類型的地區資源限制清單，請參閱來自[地區資源限制](resource-limits.md#regional-resource-limitations)的資料表。 這些是可隨需增加的軟性限制。 如果您需要在目前的區域中布建更多受控實例，請使用 Azure 入口網站來傳送支援要求，以增加配額。 如需詳細資訊，請參閱[Azure SQL Database 的要求配額增加](../database/quota-increase-request.md)。
 
-**我是否可以視需要增加受控實例上 (100) 的資料庫數目限制？**
+**我可以視需要增加受控實例上的資料庫限制數目（100）嗎？**
 
 否，目前沒有認可的計畫可增加 SQL 受控執行個體上的資料庫數目。 
 
@@ -66,11 +66,11 @@ ms.locfileid: "86224412"
 **如果我有特定的硬體需求（例如，較大的 RAM 來 vCore 比例或更多 Cpu），可以在哪裡進行遷移？**
 您可以考慮遷移至[Azure 上的 SQL Server 虛擬機器](../virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)或[Azure SQL Database](../database/sql-database-paas-overview.md)記憶體/cpu 優化。
 
-## <a name="known-issues--bugs"></a>已知問題 & bug
+## <a name="known-issues-and-defects"></a>已知問題和瑕疵
 
-**哪裡可以找到已知的問題和 bug？**
+**哪裡可以找到已知的問題和瑕疵？**
 
-如有錯誤和已知問題，請參閱[已知問題](../database/doc-changes-updates-release-notes.md#known-issues)。
+如有產品瑕疵和已知問題，請參閱[已知問題](../database/doc-changes-updates-release-notes.md#known-issues)。
 
 ## <a name="new-features"></a>新功能
 
@@ -90,7 +90,7 @@ ms.locfileid: "86224412"
 
 **為什麼我無法在子網中布建名稱以數位開頭的受控執行個體？**
 
-這是基礎元件目前的限制，它會針對 RegEx ^ [a-zA-Z_] [^ \\ \/ \: \* \? \" \<\> \| \` \' \^ ] * (？ <！ [ \. ] 驗證子網名稱。\s] ) $。 目前支援傳遞 RegEx 和的所有名稱都是有效的子網名稱。
+這是基礎元件目前的限制，它會針對 RegEx ^ [a-zA-Z_] [^ \\ \/ \: \* \? \" \<\> \| \` \' \^ ] * （？ <！ [ \.\s]） $。 目前支援傳遞 RegEx 和的所有名稱都是有效的子網名稱。
 
 **如何調整受控實例？**
 
@@ -106,7 +106,7 @@ ms.locfileid: "86224412"
 
 **建立或更新實例或還原資料庫需要多少時間？**
 
-建立新的受控實例或變更服務層級 (虛擬核心，儲存體) 的預期時間取決於數個因素。 請參閱[管理作業](sql-managed-instance-paas-overview.md#management-operations)。
+建立新的受控實例或變更服務層級（虛擬核心、儲存體）所需的時間，取決於數個因素。 請參閱[管理作業](sql-managed-instance-paas-overview.md#management-operations)。
  
 ## <a name="naming-conventions"></a>命名規範
 
@@ -126,8 +126,8 @@ ms.locfileid: "86224412"
 
 **如何從 Azure SQL Database 單一或彈性集區遷移至 SQL 受控執行個體？**
 
-受控實例會針對每個計算和儲存體大小提供相同的效能等級，做為 Azure SQL Database 的其他部署選項。 如果您想要在單一實例上合併資料，或只需要在受控實例中以獨佔方式支援的功能，您可以使用匯出/匯入 (BACPAC) 功能來遷移資料。 以下是 SQL Database 遷移至 SQL 受控執行個體的其他考慮方式： 
-- 使用[外部資料源]()
+受控實例會針對每個計算和儲存體大小提供相同的效能等級，做為 Azure SQL Database 的其他部署選項。 如果您想要在單一實例上合併資料，或只需要在受控實例中以獨佔方式支援的功能，您可以使用匯出/匯入（BACPAC）功能來遷移資料。 以下是 SQL Database 遷移至 SQL 受控執行個體的其他考慮方式： 
+- 使用[外部資料源](https://techcommunity.microsoft.com/t5/azure-database-support-blog/lesson-learned-129-using-data-source-external-from-azure-sql/ba-p/1443210)
 - 使用[SQLPackage](https://techcommunity.microsoft.com/t5/azure-database-support-blog/how-to-migrate-azure-sql-database-to-azure-sql-managed-instance/ba-p/369182)
 - 使用[BCP](https://medium.com/azure-sqldb-managed-instance/migrate-from-azure-sql-managed-instance-using-bcp-674c92efdca7)
 
@@ -202,7 +202,7 @@ ms.locfileid: "86224412"
 
 **SQL 受控執行個體的儲存體大小上限為何？**
 
-SQL 受控執行個體的儲存體大小取決於選取的服務層級 (一般用途或業務關鍵) 。 如需這些服務層級的儲存體限制，請參閱[服務層特性](../database/service-tiers-general-purpose-business-critical.md)。
+SQL 受控執行個體的儲存體大小取決於選取的服務層級（一般用途或業務關鍵）。 如需這些服務層級的儲存體限制，請參閱[服務層特性](../database/service-tiers-general-purpose-business-critical.md)。
 
 **受控實例可用的最小儲存體大小為何？**
 
@@ -228,7 +228,7 @@ SQL 受控執行個體的儲存體大小取決於選取的服務層級 (一般�
 **是否支援隨選備份？**
 是，您可以在其 Azure Blob 儲存體中建立僅限複製的完整備份，但只能在受控執行個體中進行還原。 如需詳細資訊，請參閱[只複本備份](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server?view=sql-server-ver15)。 不過，如果資料庫是由服務管理的 TDE 加密，就無法進行僅限複本備份，因為用於加密的憑證無法存取。 在這種情況下，請使用還原時間點功能，將資料庫移至另一個 SQL 受控執行個體，或切換到客戶管理的金鑰。
 
-**是否 (從 .bak 檔案) 原生還原，以支援受控執行個體？**
+**原生還原（從 .bak 檔案）到受控執行個體支援嗎？**
 可以，這是支援的版本，而且適用于 SQL Server 2005 + 版本。  若要使用原生還原，請將您的 .bak 檔案上傳至 Azure blob 儲存體，並執行 T-sql 命令。 如需詳細資訊，請參閱[從 URL 原生還原](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-migrate#native-restore-from-url)。
 
 ## <a name="business-continuity"></a>業務持續性
@@ -253,13 +253,13 @@ SQL 受控執行個體負責設定管理埠上的規則。 這是透過名為[�
 
 是。 您可以藉由設定[網路監看員流量記錄](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#analyze-traffic-to-or-from-a-network-security-group)，來分析透過網路安全性群組傳入的流量。
 
-**我可以設定 NSG 來控制對資料端點的存取 (埠 1433) 嗎？**
+**我可以設定 NSG 來控制對資料端點的存取（埠1433）嗎？**
 
 是。 布建受控執行個體之後，您可以設定 NSG 來控制埠1433的輸入存取。 建議盡可能縮小其 IP 範圍。
 
 **我可以設定 NVA 或內部部署防火牆，以根據 Fqdn 篩選輸出管理流量嗎？**
 
-不正確。 這種情況不受支援，原因如下：
+否。 這種情況不受支援，原因如下：
 -   代表回應輸入管理要求的路由流量會是非對稱的，而且無法正常執行。
 -   路由傳送至儲存體的流量會受到輸送量限制和延遲的影響，因此我們無法提供預期的服務品質和可用性。
 -   根據經驗，這些設定容易發生錯誤且無法支援。
@@ -278,7 +278,7 @@ SQL 受控執行個體負責設定管理埠上的規則。 這是透過名為[�
 
 **我是否需要空的子網來建立受控執行個體？**
 
-不正確。 您可以使用空的子網或已包含受控執行個體 (s) 的子網。 
+否。 您可以使用空的子網或已包含受控執行個體的子網。 
 
 **我可以變更子網位址範圍嗎？**
 
@@ -286,7 +286,7 @@ SQL 受控執行個體負責設定管理埠上的規則。 這是透過名為[�
 
 **我可以將受控實例移至另一個子網嗎？**
 
-不正確。 這是目前的受控執行個體設計限制。 不過，您可以在另一個子網中布建新的實例，並在舊的和新的實例之間手動備份和還原資料，或執行跨實例的[時間點還原](point-in-time-restore.md?tabs=azure-powershell)。
+否。 這是目前的受控執行個體設計限制。 不過，您可以在另一個子網中布建新的實例，並在舊的和新的實例之間手動備份和還原資料，或執行跨實例的[時間點還原](point-in-time-restore.md?tabs=azure-powershell)。
 
 **我是否需要空的虛擬網路來建立受控執行個體？**
 
@@ -294,9 +294,9 @@ SQL 受控執行個體負責設定管理埠上的規則。 這是透過名為[�
 
 **我是否可以將受控執行個體與子網中的其他服務搭配使用？**
 
-不正確。 目前，我們不支援將受控執行個體放在已包含其他資源類型的子網中。
+否。 目前，我們不支援將受控執行個體放在已包含其他資源類型的子網中。
 
-## <a name="connectivity"></a>連接性 
+## <a name="connectivity"></a>連線能力 
 
 **我可以使用 IP 位址連接到我的受控實例嗎？**
 
@@ -323,9 +323,9 @@ SQL 受控執行個體負責設定管理埠上的規則。 這是透過名為[�
 
 **我可以使用公用端點來存取受控執行個體資料庫中的資料嗎？**
 
-是。 客戶必須從[Azure 入口網站](public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-in-the-azure-portal)的 PowerShell/ARM 啟用公用端點資料存取  /  [PowerShell](public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-using-powershell) ，並將 NSG 設定為鎖定對資料埠的存取， (埠號碼 3342) 。 如需詳細資訊，請參閱[在 AZURE sql 受控執行個體中設定公用端點](public-endpoint-configure.md)和[使用 azure sql 受控執行個體安全地搭配公用端點](public-endpoint-overview.md)。 
+是。 客戶必須從[Azure 入口網站](public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-in-the-azure-portal)  /  [PowerShell](public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-using-powershell) /ARM 啟用公用端點資料存取，並將 NSG 設定為鎖定對資料埠的存取（埠號碼3342）。 如需詳細資訊，請參閱[在 AZURE sql 受控執行個體中設定公用端點](public-endpoint-configure.md)和[使用 azure sql 受控執行個體安全地搭配公用端點](public-endpoint-overview.md)。 
 
-**我可以為 SQL 資料端點 (s) 指定自訂埠嗎？**
+**我可以為 SQL 資料端點指定自訂埠嗎？**
 
 否，無法使用此選項。  對於私用資料端點，受控執行個體會使用預設埠號碼1433，而對於公用資料端點，受控執行個體會使用預設埠號碼3342。
 
@@ -333,7 +333,7 @@ SQL 受控執行個體負責設定管理埠上的規則。 這是透過名為[�
 
 Express Route 線路對等互連是執行此動作的最佳方式。 這不會與跨區域虛擬網路對等互連混合，因為內部負載平衡器相關的[條件約束](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)不支援。
 
-如果不可能有 Express Route 線路對等互連，唯一的另一個選項是建立站對站 VPN 連線 ([Azure 入口網站](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal)、 [PowerShell](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell) [Azure CLI](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli)) 。
+如果不可能有 Express Route 線路對等互連，唯一的另一個選項是建立站對站 VPN 連線（[Azure 入口網站](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal)、 [PowerShell](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell)、 [Azure CLI](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli)）。
 
 ## <a name="mitigate-data-exfiltration-risks"></a>降低資料外泄風險  
 
@@ -341,28 +341,13 @@ Express Route 線路對等互連是執行此動作的最佳方式。 這不會�
 
 若要降低任何資料外泄風險，建議客戶套用一組安全性設定和控制項：
 
-- 在所有資料庫上開啟[透明資料加密 (TDE) ](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql) 。
-- 關閉 Common Language Runtime (CLR) 。 這在內部部署中也是建議的做法。
-- 僅使用 Azure Active Directory (Azure AD) 驗證。
+- 在所有資料庫上開啟[透明資料加密（TDE）](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql) 。
+- 關閉 Common Language Runtime （CLR）。 這在內部部署中也是建議的做法。
+- 僅使用 Azure Active Directory （Azure AD）驗證。
 - 存取具有低許可權 DBA 帳戶的實例。
 - 設定系統管理員（sysadmin）帳戶的 JIT jumpbox 存取。
 - 開啟[SQL 審核](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine)，並將其與警示機制整合。
-- 從[advanced data security (ADS) ](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security) Suite 開啟[威脅偵測](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection)。
-
-
-## <a name="cost-saving-use-cases"></a>節省成本的使用案例
-
-**哪裡可以找到使用案例，並利用 SQL 受控執行個體節省成本？**
-
-SQL 受控執行個體案例研究：
-
-- [Komatsu](https://customers.microsoft.com/story/komatsu-australia-manufacturing-azure)
-- [KMD](https://customers.microsoft.com/en-ca/story/kmd-professional-services-azure-sql-database)
-- [PowerDETAILS](https://customers.microsoft.com/story/powerdetails-partner-professional-services-azure-sql-database-managed-instance)
-- [Allscripts](https://customers.microsoft.com/story/allscripts-partner-professional-services-azure)
-
-若要進一步瞭解與部署 Azure SQL 受控執行個體相關的優點、成本和風險，還有一項 Forrester 研究： [Microsoft Azure SQL Database 受控執行個體的整體經濟影響](https://azure.microsoft.com/resources/forrester-tei-sql-database-managed-instance)。
-
+- 從[advanced data security （ADS）](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)套件開啟[威脅偵測](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection)。
 
 ## <a name="dns"></a>DNS
 
@@ -419,7 +404,7 @@ DNS 設定最後會重新整理：
 是，您不需要解密資料庫，將它還原到 SQL 受控執行個體。 您需要提供一個憑證/金鑰，做為來源系統上的加密金鑰保護裝置受控執行個體，以便從加密的備份檔案讀取資料。 要執行此動作有兩個可行的方式：
 
 - *將憑證保護裝置上傳至 SQL 受控執行個體*。 只能使用 PowerShell 來完成。 [範例腳本](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-migrate-tde-certificate)會描述整個程式。
-- 將*非對稱金鑰保護裝置上傳至 Azure Key Vault，並將 SQL 受控執行個體指向其中*。 這種方法類似于攜帶您自己的金鑰 (BYOK) TDE 使用案例，也會使用 Key Vault 整合來儲存加密金鑰。 如果您不想使用金鑰做為加密金鑰保護裝置，而且只想要讓 SQL 受控執行個體的金鑰還原加密的資料庫 (s) ，請遵循[設定 BYOK TDE](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql#manage-transparent-data-encryption)的指示，並不要核取 [**將選取的金鑰設為預設的 TDE 保護**裝置] 核取方塊。
+- 將*非對稱金鑰保護裝置上傳至 Azure Key Vault，並將 SQL 受控執行個體指向其中*。 這種方法類似于攜帶您自己的金鑰（BYOK） TDE 使用案例，也會使用 Key Vault 整合來儲存加密金鑰。 如果您不想使用金鑰做為加密金鑰保護裝置，而且只想要讓 SQL 受控執行個體的金鑰還原加密的資料庫，請遵循[設定 BYOK TDE](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql#manage-transparent-data-encryption)的指示，而不要核取 [**將選取的金鑰設為預設的 TDE 保護**裝置] 核取方塊。
 
 一旦將加密保護裝置提供給 SQL 受控執行個體之後，您就可以繼續進行標準資料庫還原程式。
 
@@ -438,7 +423,7 @@ SQL 受控執行個體提供[vCore 為基礎的購買模型](sql-managed-instanc
 
 **誰符合保留實例權益的資格？**
 
-若要符合保留實例權益的資格，您的訂用帳戶類型必須是 enterprise 合約 (供應專案號碼： MS-AZR-0017P-Ms-azr-0017p 或 MS-MS-AZR-0017P-Ms-azr-0148p) 或個別合約與隨用隨付定價 (供應專案號碼： MS-MS-AZR-0017P-Ms-azr-0003p 或 MS MS-AZR-0017P-Ms-azr-0023p) 。 如需保留的詳細資訊，請參閱[保留實例權益](https://docs.microsoft.com/azure/sql-database/sql-database-reserved-capacity)。 
+若要符合保留實例權益的資格，您的訂用帳戶類型必須是 enterprise 合約（供應專案號碼： MS-AZR-0017P-Ms-azr-0017p 或 MS-MS-AZR-0017P-Ms-azr-0148p）或具有隨用隨付定價的個別合約（供應專案號碼： MS-MS-AZR-0017P-Ms-azr-0003p 或 MS-MS-AZR-0017P-Ms-azr-0023p）。 如需保留的詳細資訊，請參閱[保留實例權益](https://docs.microsoft.com/azure/sql-database/sql-database-reserved-capacity)。 
 
 **可以取消、交換或退款保留嗎？**
 
@@ -468,6 +453,19 @@ SQL 受控執行個體提供[vCore 為基礎的購買模型](sql-managed-instanc
 
 若要優化您的備份儲存體成本，請參閱[SQL 受控執行個體的微調備份](https://techcommunity.microsoft.com/t5/azure-sql-database/fine-tuning-backup-storage-costs-on-managed-instance/ba-p/1390935)微調。
 
+## <a name="cost-saving-use-cases"></a>節省成本的使用案例
+
+**哪裡可以找到使用案例，並利用 SQL 受控執行個體節省成本？**
+
+SQL 受控執行個體案例研究：
+
+- [Komatsu](https://customers.microsoft.com/story/komatsu-australia-manufacturing-azure)
+- [KMD](https://customers.microsoft.com/en-ca/story/kmd-professional-services-azure-sql-database)
+- [PowerDETAILS](https://customers.microsoft.com/story/powerdetails-partner-professional-services-azure-sql-database-managed-instance)
+- [Allscripts](https://customers.microsoft.com/story/allscripts-partner-professional-services-azure)
+
+若要進一步瞭解與部署 Azure SQL 受控執行個體相關的優點、成本和風險，還有一項 Forrester 研究： [Microsoft Azure SQL Database 受控執行個體的整體經濟影響](https://azure.microsoft.com/resources/forrester-tei-sql-database-managed-instance)。
+
 ## <a name="password-policy"></a>密碼原則 
 
 **適用于 SQL 受控執行個體 SQL 登入的密碼原則為何？**
@@ -486,7 +484,7 @@ SQL 受控執行個體提供[vCore 為基礎的購買模型](sql-managed-instanc
 | 密碼最長使用期限 | 42天 |
 | 密碼最短使用期限 | 1 日 |
 | 密碼長度下限 | 10個字元 |
-| 密碼必須符合複雜性需求 | 已啟用 |
+| 密碼必須符合複雜性需求 | 啟用 |
 
 **是否可以停用登入層級上的 SQL 受控執行個體中的密碼複雜性和到期？**
 
@@ -504,7 +502,7 @@ ALTER LOGIN <login_name> WITH CHECK_POLICY = OFF;
 ALTER LOGIN <login_name> WITH CHECK_EXPIRATION = OFF;
 ```
 
- (以所需的登入名稱取代 ' test '，並調整原則和到期值) 
+（以所需的登入名稱取代 ' test '，並調整原則和到期值）
 
 ## <a name="azure-feedback-and-support"></a>Azure 意見反應與支援
 

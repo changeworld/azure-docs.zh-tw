@@ -7,11 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: f4e5bbdc50d99eca774dc5b96657ac8bfdebca17
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c739c6483832c08a91f2a5318853bf48e5d41854
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85414142"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496956"
 ---
 # <a name="what-is-azure-private-endpoint"></a>什麼是 Azure 私人端點？
 
@@ -68,7 +69,7 @@ Azure 私人端點是一種網路介面，可讓您以私人且安全地方式�
 |**Azure Kubernetes Service - Kubernetes API** | Microsoft.ContainerService/managedClusters    | managedCluster |
 |**Azure 搜尋服務** | Microsoft.Search/searchService| searchService|  
 |**Azure Container Registry** | Microsoft.ContainerRegistry/registries    | 登錄 |
-|**Azure 應用程式組態** | Microsoft.Appconfiguration/configurationStores    | configurationStore |
+|**Azure 應用程式組態** | Microsoft.Appconfiguration/configurationStores    | configurationStores |
 |**Azure 備份** | Microsoft.RecoveryServices/vaults    | 保存庫 |
 |**Azure 事件中樞** | Microsoft.EventHub/namespaces    | 命名空間 |
 |**Azure 服務匯流排** | Microsoft.ServiceBus/namespaces | 命名空間 |

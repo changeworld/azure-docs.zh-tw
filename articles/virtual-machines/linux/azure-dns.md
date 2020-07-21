@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 10/19/2016
 ms.author: rclaus
-ms.openlocfilehash: 1e53a6a5c024fe58eae00dcda785ff9622061654
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 41cf83a3d9c756d69df2e2e9777ebd8eb54d4d74
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135314"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86494729"
 ---
 # <a name="dns-name-resolution-options-for-linux-virtual-machines-in-azure"></a>Azure 中 Linux 虛擬機器的 DNS 名稱解析選項
 Azure 預設會提供單一虛擬網路中所有虛擬機器的 DNS 名稱解析。 您可以在 Azure 託管的虛擬機器上設定專屬 DNS 服務，以實作專屬 DNS 名稱解析解決方案。 下列案例應該可協助您選擇哪一種適合您的情況。
@@ -43,7 +43,7 @@ Azure 預設會提供單一虛擬網路中所有虛擬機器的 DNS 名稱解析
 * 在虛擬網路的虛擬機器之間提供名稱解析，不需要 FQDN。
 * 您可以使用最能描述部署的主機名稱，而不是使用自動產生的名稱。
 
-**考量**
+**考量因素：**
 
 * Azure 建立的 DNS 尾碼不能修改。
 * 您無法手動註冊您自己的記錄。
@@ -121,7 +121,7 @@ DNS 轉送也允許虛擬網路之間的 DNS 解析，並可讓您的內部部�
 
 當您使用 Azure 提供的名稱解析時，會提供內部 DNS 尾碼給每部使用 DHCP 的虛擬機器。 當您使用自己的名稱解析解決方案時，不會提供此尾碼給虛擬機器，因為此尾碼會干擾其他 DNS 架構。 若要透過 FQDN 參照電腦，或要設定虛擬機器上的尾碼，您可以使用 PowerShell 或 API 來決定尾碼：
 
-* 針對 Azure Resource Manager 所管理的虛擬網路，可透過[網路介面卡](https://msdn.microsoft.com/library/azure/mt163668.aspx)資源取得尾碼。 您也可以執行 `azure network public-ip show <resource group> <pip name>` 命令來顯示您公用 IP 的詳細資料 (包括 NIC 的 FQDN)。
+* 針對 Azure Resource Manager 所管理的虛擬網路，可透過[網路介面卡](/rest/api/virtualnetwork/networkinterfaces)資源取得尾碼。 您也可以執行 `azure network public-ip show <resource group> <pip name>` 命令來顯示您公用 IP 的詳細資料 (包括 NIC 的 FQDN)。
 
 如果將查詢轉送到 Azure 不符合您的需求，您就需要提供專屬的 DNS 解決方案。  您的 DNS 解決方案需要：
 
@@ -131,6 +131,6 @@ DNS 轉送也允許虛擬網路之間的 DNS 解析，並可讓您的內部部�
 * 受保護以防止來自網際網路的存取，降低外部代理程式的威脅。
 
 > [!NOTE]
-> 為了達到最佳效能，當您在 Azure DNS 伺服器中使用虛擬機器時，請停用 IPv6，並將[執行個體層級公用 IP](../../virtual-network/virtual-networks-instance-level-public-ip.md) 指派給每部 DNS 伺服器虛擬機器。  
+> 為了達到最佳效能，當您在 Azure DNS 伺服器中使用虛擬機器時，請停用 IPv6，並將[執行個體層級公用 IP](/previous-versions/azure/virtual-network/virtual-networks-instance-level-public-ip) 指派給每部 DNS 伺服器虛擬機器。  
 >
 >

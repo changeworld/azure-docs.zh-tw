@@ -1,5 +1,5 @@
 ---
-title: Azure 時間序列深入解析中的內嵌和簡維規則即將進行的變更 |Microsoft Docs
+title: Azure 時間序列深入解析 Gen2 中的內嵌和簡維規則即將進行的變更 |Microsoft Docs
 description: 內嵌規則變更
 ms.service: time-series-insights
 services: time-series-insights
@@ -10,18 +10,18 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.custom: lyhughes
-ms.openlocfilehash: 067244aa40256e3cc76239343790974bc3c06481
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: f667ca5ad82182fcf40d5c1fbb325f2ea99a7e08
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85919037"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86495103"
 ---
 # <a name="upcoming-changes-to-the-json-flattening-and-escaping-rules-for-new-environments"></a>新環境的 JSON 簡維和轉義規則即將進行的變更
 
-這些變更只會套用至*新*的 Azure 時間序列深入解析隨用隨付（PAYG）環境。 這些變更不適用於標準的 SKU 環境。
+**這些變更只會套用到*新建立*的 Azure 時間序列深入解析 Gen2 環境。這些變更不適用於 Gen1 環境。**
 
-您的 Azure 時間序列深入解析環境會遵循一組特定的命名慣例，以動態方式建立您的儲存體資料行。 內嵌事件時，會將一組規則套用至 JSON 承載和屬性名稱。 將 JSON 資料壓平合併並儲存的變更將會在2020年7月 Azure 時間序列深入解析新的隨用隨付環境中生效。 這項變更會影響您在下列情況下的情況：
+您的 Azure 時間序列深入解析 Gen2 環境會遵循一組特定的命名慣例，以動態方式建立您的儲存體資料行。 內嵌事件時，會將一組規則套用至 JSON 承載和屬性名稱。 將 JSON 資料壓平合併並儲存的變更將會在2020年7月新的 Azure 時間序列深入解析 Gen2 環境中生效。 這項變更會影響您在下列情況下的情況：
 
 * 如果您的 JSON 承載包含嵌套物件
 *  如果您的 JSON 承載包含陣列
@@ -45,15 +45,16 @@ ms.locfileid: "85919037"
 
  #### <a name="if-your-payload-contains-nested-json-or-special-characters-and-you-automate-authoring-time-series-model-variable-expressions"></a>如果您的裝載包含嵌套的 JSON 或特殊字元，而且您自動撰寫[時間序列模型](.\time-series-insights-update-tsm.md)變數運算式
 
-*  更新您的用戶端程式代碼，執行[TypesBatchPut](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/timeseriestypes/executebatch#typesbatchput)以符合新的內嵌規則。 例如，的上一個[時間序列運算式](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax) `"value": {"tsx": "$event.series_value.Double"}` 應該更新為下列其中一個選項：
+*  更新您的用戶端程式代碼，執行[TypesBatchPut](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch#typesbatchput)以符合新的內嵌規則。 例如，的上一個[時間序列運算式](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax) `"value": {"tsx": "$event.series_value.Double"}` 應該更新為下列其中一個選項：
     * `"value": {"tsx": "$event.series.value.Double"}`
     * `"value": {"tsx": "$event['series']['value'].Double"}`
 
 
-
 ## <a name="next-steps"></a>後續步驟
 
-- 閱讀[新增 LONG 資料型別的支援](./time-series-insights-long-data-type.md)。
+- 閱讀[Azure 時間序列深入解析 Gen2 儲存體和](./time-series-insights-update-storage-ingress.md)輸入。
 
-- 閱讀[Azure 時間序列深入解析預覽儲存體和](./time-series-insights-update-storage-ingress.md)輸入。
+- 深入瞭解如何使用[時間序列查詢 api](./concepts-query-overview.md)來查詢您的資料。
+
+- 深入瞭解新的[時間序列運算式語法](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)。
 

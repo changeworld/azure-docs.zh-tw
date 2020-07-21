@@ -2,12 +2,13 @@
 title: 如何更新計量容器的 Azure 監視器 |Microsoft Docs
 description: 本文說明如何更新容器的 Azure 監視器，以啟用支援對匯總計量進行探索和警示的自訂計量功能。
 ms.topic: conceptual
-ms.date: 06/01/2020
-ms.openlocfilehash: d299fc5e6b0c41188fac1fa19bb66387263c12e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/17/2020
+ms.openlocfilehash: 78a6612e522accce8c934885a090e66a51850c97
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84298256"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498979"
 ---
 # <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>如何更新容器的 Azure 監視器以啟用計量
 
@@ -21,21 +22,23 @@ ms.locfileid: "84298256"
 
 | 計量命名空間 | 計量 | 描述 |
 |------------------|--------|-------------|
-| 深入解析。容器/節點 | cpuUsageMillicores、cpuUsagePercentage、memoryRssBytes、memoryRssPercentage、memoryWorkingSetBytes、memoryWorkingSetPercentage、nodesCount | 這些是*節點*計量和包含*主機*作為維度，而且也包括<br> 節點的名稱，做為*主機*維度的值。 |
-| 深入解析。容器/pod | podCount | 這些是*pod*計量，其中包含下列維度： ControllerName、Kubernetes 命名空間、名稱、階段。 |
+| 深入解析。容器/節點 | cpuUsageMillicores、cpuUsagePercentage、memoryRssBytes、memoryRssPercentage、memoryWorkingSetBytes、memoryWorkingSetPercentage、nodesCount、diskUsedPercentage、 | 作為*節點*計量，它們會將*主機*納入為維度。 它們也包括<br> 節點的名稱，做為*主機*維度的值。 |
+| 深入解析。容器/pod | podCount, completedJobsCount, restartingContainerCount, oomKilledContainerCount, podReadyPercentage | 作為*pod*計量，其包含下列維度： ControllerName、Kubernetes 命名空間、名稱、階段。 |
+| 深入解析。容器/容器 | cpuExceededPercentage, memoryRssExceededPercentage, memoryWorkingSetExceededPercentage | |
 
-更新叢集以支援這些新功能，可以從 Azure 入口網站、Azure PowerShell 或 Azure CLI 執行。 使用 Azure PowerShell 和 CLI，您可以針對訂用帳戶中的每個叢集或所有叢集啟用此功能。 AKS 的新部署將會自動包含此設定變更和功能。
+為了支援這些新功能，發行中包含新的容器化代理程式版本**microsoft/oms： ciprod02212019**。 AKS 的新部署會自動包含此設定變更和功能。 更新叢集以支援這項功能，可以從 Azure 入口網站、Azure PowerShell 或 Azure CLI 執行。 使用 Azure PowerShell 和 CLI。 您可以針對訂用帳戶中的每個叢集或所有叢集啟用此功能。
 
-任一程式會將**監視計量發行者**角色指派給叢集的服務主體或使用者指派的 MSI，以進行監視附加元件，讓代理程式所收集的資料可以發行至您的叢集資源。 監視計量發行者只有將計量推送至資源的許可權，它無法改變任何狀態、更新資源或讀取任何資料。 如需角色的進一步資訊，請參閱[監視計量發行者角色](../../role-based-access-control/built-in-roles.md#monitoring-metrics-publisher)。
+任一程式會將**監視計量發行者**角色指派給叢集的服務主體或使用者指派的 MSI，以進行監視附加元件，讓代理程式所收集的資料可以發行至您的叢集資源。 監視計量發行者只有將計量推送至資源的許可權，它無法改變任何狀態、更新資源或讀取任何資料。 如需角色的詳細資訊，請參閱[監視計量發行者角色](../../role-based-access-control/built-in-roles.md#monitoring-metrics-publisher)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
-開始之前，請確認下列事項：
+更新叢集之前，請確認下列事項：
 
 * 自訂計量僅適用于 Azure 區域的子集中。 支援的區域清單記載于[此處](../platform/metrics-custom-overview.md#supported-regions)。
-* 您是 AKS 叢集資源上的「**[擁有](../../role-based-access-control/built-in-roles.md#owner)** 者」角色成員，可讓您收集節點和 pod 自訂效能計量。 
 
-如果您選擇使用 Azure CLI，必須先在本機安裝並使用 CLI。 您必須執行 Azure CLI 版2.0.59 或更新版本。 若要知道您使用的版本，請執行 `az --version`。 如果您需要安裝或升級 Azure CLI，請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 
+* 您是 AKS 叢集資源上的「**[擁有](../../role-based-access-control/built-in-roles.md#owner)** 者」角色成員，可讓您收集節點和 pod 自訂效能計量。
+
+如果您選擇使用 Azure CLI，必須先在本機安裝並使用 CLI。 您必須執行 Azure CLI 版2.0.59 或更新版本。 若要知道您使用的版本，請執行 `az --version`。 如果您需要安裝或升級 Azure CLI，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
 ## <a name="upgrade-a-cluster-from-the-azure-portal"></a>從 Azure 入口網站升級叢集
 
@@ -121,4 +124,4 @@ ms.locfileid: "84298256"
 
 ## <a name="verify-update"></a>驗證更新
 
-使用稍早所述的其中一個方法來起始更新之後，您可以使用 Azure 監視器計量瀏覽器，並從列出**見解**的**度量命名空間**進行驗證。 如果是，這表示您可以繼續設定計量[警示](../platform/alerts-metric.md)，或將圖表釘選到[儀表板](../../azure-portal/azure-portal-dashboards.md)。  
+使用稍早所述的其中一個方法來起始更新之後，您可以使用 Azure 監視器計量瀏覽器，並從列出**見解**的**度量命名空間**進行驗證。 如果是，您可以直接開始設定計量[警示](../platform/alerts-metric.md)，或將圖表釘選到[儀表板](../../azure-portal/azure-portal-dashboards.md)。  

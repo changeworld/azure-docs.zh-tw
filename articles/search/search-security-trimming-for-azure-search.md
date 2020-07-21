@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: e97f607c17f746c3cb16a17b7f579a58d4914608
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 443112628edddf9c60cd6469f046b1a9e066dc82
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85553128"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496412"
 ---
 # <a name="security-filters-for-trimming-results-in-azure-cognitive-search"></a>Azure 認知搜尋中用於修剪結果的安全性篩選
 
@@ -32,28 +32,31 @@ ms.locfileid: "85553128"
 >[!NOTE]
 > 本文件未多加說明擷取主體識別碼的流程。 您應從身分識別服務提供者處取得主體識別碼。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
-本文假設您有[azure 訂](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)用帳戶、 [azure 認知搜尋服務](https://docs.microsoft.com/azure/search/search-create-service-portal)和[azure 認知搜尋索引](https://docs.microsoft.com/azure/search/search-create-index-portal)。  
+本文假設您有[azure 訂](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)用帳戶、[azure 認知搜尋服務](search-create-service-portal.md)和[索引](search-what-is-an-index.md)。  
 
 ## <a name="create-security-field"></a>建立安全性欄位
 
 您的文件必須有一個欄位指定哪些群組具有存取權限。 此資訊會成為篩選準則，決定要從傳回給簽發者之結果集選取或拒絕哪些文件。
 假設有個受保護檔案的索引，每個檔案皆可由一組不同的使用者存取。
+
 1. 將欄位 `group_ids` (可於此選擇任何名稱) 新增為 `Collection(Edm.String)`。 確定欄位中的 `filterable` 屬性已設為 `true`，如此才能根據使用者具有的存取權限來篩選搜尋結果。 例如，若您具有 `file_name` "secured_file_b" 的文件的 `group_ids` 欄位設為 `["group_id1, group_id2"]`，則僅有屬於 "group_id1" 或 "group_id2" 群組識別碼的使用者才具備該檔案的讀取權限。
+   
    確定將欄位的 `retrievable` 屬性設為 `false`，使之不會被當作搜尋要求的一部分而傳回。
+
 2. 為了本範例起見，亦請新增 `file_id` 和 `file_name` 欄位。  
 
-```JSON
-{
-    "name": "securedfiles",  
-    "fields": [
-        {"name": "file_id", "type": "Edm.String", "key": true, "searchable": false, "sortable": false, "facetable": false},
-        {"name": "file_name", "type": "Edm.String"},
-        {"name": "group_ids", "type": "Collection(Edm.String)", "filterable": true, "retrievable": false}
-    ]
-}
-```
+    ```JSON
+    {
+        "name": "securedfiles",  
+        "fields": [
+            {"name": "file_id", "type": "Edm.String", "key": true, "searchable": false, "sortable": false, "facetable": false},
+            {"name": "file_name", "type": "Edm.String"},
+            {"name": "group_ids", "type": "Collection(Edm.String)", "filterable": true, "retrievable": false}
+        ]
+    }
+    ```
 
 ## <a name="pushing-data-into-your-index-using-the-rest-api"></a>將資料推送至使用 REST API 的索引
   
