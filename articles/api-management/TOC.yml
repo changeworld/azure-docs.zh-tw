@@ -61,6 +61,10 @@
           href: api-management-security-controls.md
     - name: 訂用帳戶
       href: api-management-subscriptions.md
+    - name: 版本
+      href: api-management-versions.md
+    - name: 修訂記錄
+      href: api-management-revisions.md
     - name: 使用自動化管理
       href: automation-manage-api-management.md
     - name: 錯誤處理
@@ -69,6 +73,8 @@
       href: api-management-api-import-restrictions.md
     - name: 自我裝載閘道概觀
       href: self-hosted-gateway-overview.md
+    - name: 可檢視性
+      href: observability.md
 - name: 操作指南
   items:
     - name: 定義 API

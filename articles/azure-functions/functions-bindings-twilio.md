@@ -6,11 +6,12 @@ ms.topic: reference
 ms.date: 07/09/2018
 ms.author: cshoe
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1426d6e770cca566c4b77ca4742e2f8a0fbb5465
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8116abda71ae78b05786ede03256eb9e9bb59345
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76715071"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540259"
 ---
 # <a name="twilio-binding-for-azure-functions"></a>Azure Functions 的 Twilio 繫結
 
@@ -240,7 +241,7 @@ def main(req: func.HttpRequest, twilioMessage: func.Out[str]) -> func.HttpRespon
 
 # <a name="java"></a>[Java](#tab/java)
 
-下列範例顯示如何使用[TwilioSmsOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.twiliosmsoutput)注釋來傳送 SMS 訊息。 `to` `from` 屬性定義中需要、和的值， `body` 即使您以程式設計方式覆寫它們也一樣。
+下列範例顯示如何使用[TwilioSmsOutput](/java/api/com.microsoft.azure.functions.annotation.twiliosmsoutput)注釋來傳送 SMS 訊息。 `to` `from` 屬性定義中需要、和的值， `body` 即使您以程式設計方式覆寫它們也一樣。
 
 ```java
 package com.function;
@@ -318,7 +319,7 @@ Python 指令碼不支援屬性。
 
 # <a name="java"></a>[Java](#tab/java)
 
-將[TwilioSmsOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.twiliosmsoutput)注釋放在 [`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.outputbinding) `T` 可能是任何原生 JAVA 類型（例如 `int` 、 `String` 、 `byte[]` 或 POJO 類型）的參數上。
+將[TwilioSmsOutput](/java/api/com.microsoft.azure.functions.annotation.twiliosmsoutput)注釋放在 [`OutputBinding<T>`](/java/api/com.microsoft.azure.functions.outputbinding) `T` 可能是任何原生 JAVA 類型（例如 `int` 、 `String` 、 `byte[]` 或 POJO 類型）的參數上。
 
 ---
 

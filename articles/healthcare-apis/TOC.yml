@@ -19,6 +19,8 @@
       href: fhir-oss-powershell-quickstart.md
     - name: 部署適用於 Azure 的 FHIR Server - CLI
       href: fhir-oss-cli-quickstart.md
+    - name: 部署 IoT 連接器 - 入口網站
+      href: iot-fhir-portal-quickstart.md
 - name: 教學課程
   expanded: false
   items:
@@ -37,6 +39,11 @@
       href: access-fhir-postman-tutorial.md
     - name: 在 FHIR Proxy 上使用 SMART
       href: use-smart-on-fhir-proxy.md
+    - name: 從 IoT 裝置內嵌資料
+      expanded: false
+      items:
+        - name: 透過 Azure IoT 中樞接收裝置資料
+          href: device-data-through-iot-hub.md
 - name: 範例
   items:
     - name: Azure 原則內建
@@ -79,6 +86,8 @@
       href: enable-diagnostic-logging.md
     - name: 取得適用於 FHIR 的 Azure API 權杖 - CLI
       href: get-healthcare-apis-access-token-cli.md
+    - name: 針對 IoT 連接器中的失敗進行疑難排解
+      href: iot-troubleshoot-guide.md
 - name: 概念
   expanded: false
   items:
@@ -88,6 +97,13 @@
       href: azure-ad-hcapi-token-validation.md
     - name: 使用自訂 HTTP 標頭將資料新增至稽核記錄
       href: use-custom-headers.md
+    - name: IoT 連接器運作
+      expanded: false
+      items:
+        - name: IoT 連接器資料流程
+          href: iot-data-flow.md
+        - name: IoT 連接器對應範本
+          href: iot-mapping-templates.md
 - name: 資源
   items:
     - name: 常見問題集

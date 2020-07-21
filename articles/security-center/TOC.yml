@@ -1,6 +1,7 @@
 - name: 資訊安全中心文件
   href: index.yml
 - name: 概觀
+  expanded: true
   items:
     - name: 關於資訊安全中心
       href: security-center-intro.md
@@ -18,8 +19,11 @@
       href: recommendations-reference.md
     - name: 安全性警示和意圖狙殺鏈
       href: alerts-reference.md
+    - name: 權限
+      href: security-center-permissions.md
+    - name: 定價
+      href: security-center-pricing.md
 - name: 快速入門
-  expanded: true
   items:
     - name: Azure 訂用帳戶
       href: security-center-get-started.md
@@ -29,6 +33,12 @@
       href: quick-onboard-linux-computer.md
     - name: Azure Stack 虛擬機器
       href: quick-onboard-azure-stack.md
+    - name: 使用 PowerShell 進行自動上線
+      href: security-center-powershell-onboarding.md
+    - name: 設定資料收集
+      href: security-center-enable-data-collection.md
+    - name: 設定電子郵件通知
+      href: security-center-provide-security-contact-details.md
 - name: 教學課程
   items:
     - name: 規劃與操作指南
@@ -39,21 +49,36 @@
       href: tutorial-security-incident.md
     - name: 改善法規合規性
       href: security-center-compliance-dashboard.md
-- name: 範例
-  items:
-    - name: Azure 原則內建
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: 概念
   items:
-    - name: 安全分數
-      href: secure-score-security-controls.md
-    - name: 權限
-      href: security-center-permissions.md
+    - name: 安全分數、建議和原則
+      items:
+        - name: 安全分數
+          href: secure-score-security-controls.md
+        - name: 安全性建議概觀
+          href: security-center-recommendations.md
+        - name: 安全性原則概觀
+          href: tutorial-security-policy.md
+        - name: 內建安全性原則
+          href: security-center-policy-definitions.md
+        - name: 使用增強安全性的建議
+          href: security-center-using-recommendations.md
+    - name: 威脅防護和安全性警示
+      items:
+        - name: 資訊安全中心內的威脅防護概觀
+          href: threat-protection.md
+        - name: 安全性警訊概觀
+          href: security-center-alerts-overview.md
+        - name: 警示參考清單
+          href: alerts-reference.md
+        - name: 警示結構描述
+          href: alerts-schemas.md
+        - name: 安全性事件概觀
+          href: security-center-alerts-cloud-smart.md
     - name: 資料安全性
       href: security-center-data-security.md
-    - name: 使用增強安全性的建議
-      href: security-center-using-recommendations.md
+    - name: Just-In-Time VM 存取
+      href: just-in-time-explained.md
     - name: 跨租用戶管理
       href: security-center-cross-tenant-management.md
     - name: 容器安全性
@@ -64,32 +89,18 @@
           href: azure-container-registry-integration.md
         - name: 與 Azure Kubernetes Service 整合
           href: azure-kubernetes-service-integration.md
-    - name: 威脅防護和安全性警示
-      items:
-        - name: Azure 資訊安全中心內的威脅防護
-          href: threat-protection.md
-        - name: 安全性警訊概觀
-          href: security-center-alerts-overview.md
-        - name: 警示參考清單
-          href: alerts-reference.md
-        - name: 警示結構描述
-          href: alerts-schemas.md
-        - name: 管理安全性警示
-          href: security-center-managing-and-responding-alerts.md
-        - name: 安全性警示的隱藏規則
-          href: alerts-suppression-rules.md
-        - name: 管理安全性事件
-          href: security-center-incident.md
-        - name: 雲端智慧警示相互關聯 (事件)
-          href: security-center-alerts-cloud-smart.md
-        - name: 威脅報告
-          href: security-center-threat-report.md
-        - name: 警示驗證 (EICAR 測試檔案)
-          href: security-center-alert-validation.md
 - name: 操作指南
   items:
     - name: 升級為進階安全性
       href: security-center-onboarding.md
+    - name: 設定安全性原則和合規性標準
+      items:
+        - name: 建立自訂安全性原則
+          href: custom-security-policies.md
+        - name: 使用 Azure 原則 REST API 來管理原則
+          href: configure-security-policy-azure-policy.md
+        - name: 選擇合規性儀表板的標準
+          href: update-regulatory-compliance-packages.md
     - name: 掃描 VM 的弱點
       items:
         - name: 弱點掃描概觀
@@ -98,54 +109,28 @@
           href: built-in-vulnerability-assessment.md
         - name: 使用外部掃描器
           href: partner-vulnerability-assessment.md
-    - name: 監視您的容器
-      href: monitor-container-security.md
-    - name: 使用 Microsoft Defender ATP 保護伺服器
-      href: security-center-wdatp.md
-    - name: 使用適用於 SQL 機器的進階資料安全性
-      href: security-center-iaas-advanced-data.md
-    - name: 使用 App Service 保護您的應用程式
-      href: security-center-app-services.md
-    - name: 使用安全性原則
+    - name: 設定威脅防護並處理警示
       items:
-        - name: 安全性原則概觀
-          href: tutorial-security-policy.md
-        - name: 使用內建安全性原則
-          href: security-center-policy-definitions.md
-        - name: 建立自訂安全性原則
-          href: custom-security-policies.md
-        - name: 使用 Azure 原則 REST API 來管理原則
-          href: configure-security-policy-azure-policy.md
-    - name: 選擇合規性儀表板的標準
-      href: update-regulatory-compliance-packages.md
-    - name: 自訂資訊保護原則
-      href: security-center-info-protection-policy.md
-    - name: 管理安全性解決方案
-      href: security-center-partner-integration.md
-    - name: 使用 PowerShell 進行自動上線
-      href: security-center-powershell-onboarding.md
-    - name: 與 Windows Admin Center 整合
-      href: windows-admin-center-integration.md
-    - name: 使用檔案完整性監視比較基準
-      href: security-center-file-integrity-monitoring-baselines.md
-    - name: 自動回應警示和建議
-      href: workflow-automation.md
-    - name: 匯出警示和建議
-      href: continuous-export.md
-    - name: 設定資料收集
-      href: security-center-enable-data-collection.md
-    - name: 設定 Azure Key Vault 的進階威脅防護
-      href: advanced-threat-protection-key-vault.md
-    - name: 設定電子郵件通知
-      href: security-center-provide-security-contact-details.md
-    - name: 定價
-      href: security-center-pricing.md
-    - name: 取得全租用戶的可見度
-      href: security-center-management-groups.md
-    - name: 實作安全性建議
+        - name: 管理安全性警示
+          href: security-center-managing-and-responding-alerts.md
+        - name: 建立和管理警示歸併規則
+          href: alerts-suppression-rules.md
+        - name: 設定 Azure Key Vault 的進階威脅防護
+          href: advanced-threat-protection-key-vault.md
+        - name: 管理安全性事件
+          href: security-center-incident.md
+        - name: 產生威脅情報報告
+          href: security-center-threat-report.md
+        - name: 驗證警示設定 (EICAR 測試檔案)
+          href: security-center-alert-validation.md
+        - name: 在 Azure VM 上使用適用於 SQL 的進階資料安全性
+          href: security-center-iaas-advanced-data.md
+        - name: 自動回應警示
+          href: workflow-automation.md
+        - name: 匯出警示
+          href: continuous-export.md
+    - name: 使用安全性建議來改善安全性
       items:
-        - name: 有哪些安全性建議
-          href: security-center-recommendations.md
         - name: 補救建議
           href: security-center-remediate-recommendations.md
         - name: 鞏固安全性現況
@@ -160,8 +145,20 @@
           href: security-center-sql-service-recommendations.md
         - name: 管理身分識別和存取
           href: security-center-identity-access.md
-        - name: 管理調查使用者資料
-          href: security-center-investigation-user-data.md
+        - name: 自動回應建議
+          href: workflow-automation.md
+        - name: 匯出建議
+          href: continuous-export.md
+    - name: 與其他工具和服務整合
+      items:
+        - name: 與 Windows Admin Center 整合
+          href: windows-admin-center-integration.md
+        - name: 保護您的 Azure App Service Web 應用程式和 API
+          href: security-center-app-services.md
+        - name: 與 Microsoft Defender ATP 整合
+          href: security-center-wdatp.md
+        - name: 將安全性解決方案與資料來源整合
+          href: security-center-partner-integration.md
     - name: 套用雲端防禦
       items:
         - name: 管理 Just-In-Time 存取
@@ -170,8 +167,18 @@
           href: security-center-adaptive-application.md
         - name: 檔案完整性監視
           href: security-center-file-integrity-monitoring.md
+        - name: 使用檔案完整性監視比較基準
+          href: security-center-file-integrity-monitoring-baselines.md
         - name: 自適性網路強化
           href: security-center-adaptive-network-hardening.md
+    - name: 監視您的容器
+      href: monitor-container-security.md
+    - name: 自訂資訊保護原則
+      href: security-center-info-protection-policy.md
+    - name: 管理調查使用者資料
+      href: security-center-investigation-user-data.md
+    - name: 取得全租用戶的可見度
+      href: security-center-management-groups.md
 - name: 參考
   items:
     - name: REST API

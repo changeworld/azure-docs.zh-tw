@@ -16,6 +16,8 @@
     - name: 部署容器執行個體 - ARM 範本
       displayName: Resource Manager
       href: container-instances-quickstart-template.md
+    - name: 部署容器執行個體 - Docker CLI
+      href: container-instances-quickstart-docker-cli.md
 - name: 教學課程
   items:
     - name: 建立和部署容器映像
@@ -94,8 +96,10 @@
           href: container-instances-gpu.md
         - name: 在側車中啟用 SSL 端點
           href: container-instances-container-group-ssl.md
-        - name: 公開靜態 IP 位址
+        - name: 透過應用程式閘道公開靜態 IP
           href: container-instances-application-gateway.md
+        - name: 使用 Azure 防火牆進行輸入和輸出
+          href: container-instances-egress-ip-address.md
     - name: 裝載資料磁碟區
       items:
         - name: Azure 檔案共用

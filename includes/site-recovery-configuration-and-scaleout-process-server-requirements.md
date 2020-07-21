@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: include
-ms.date: 06/23/2020
+ms.date: 07/08/2020
 ms.author: raynew
 ms.custom: include file
-ms.openlocfilehash: c8c51d671cd98a606c11a39b6cf489aa288d71b3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 60012f79c3c04a4ff14c4a7f0609b6940d3402c4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85292192"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86544237"
 ---
 **設定和處理伺服器需求**
 
@@ -60,6 +60,9 @@ time.windows.com | 用來檢查系統與通用時間之間的時間同步處理
 | <ul> <li> https:\//management.azure.com </li><li> https:\//secure.aadcdn.microsoftonline-p.com </li><li> HTTPs： \/ /login.live.com </li><li> HTTPs： \/ /graph.windows.net </li><li> https:\//login.windows.net </li><li> *. services.visualstudio.com （選擇性） </li><li> HTTPs： \/ /www.live.com </li><li> HTTPs： \/ /www.microsoft.com </li></ul> | OVF 安裝程式需要存取這些額外的 Url。 它們是用於 Azure Active Directory 的存取控制和身分識別管理。
 https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi  | 以完成 MySQL 下載。 </br> 在幾個區域中，下載可能會重新導向至 CDN URL。 必要時，請確定 CDN URL 也會列入允許清單。
 |
+
+> [!NOTE]
+> 如果您有[私人連結](../articles/site-recovery/hybrid-how-to-enable-replication-private-endpoints.md)可與 Site Recovery 保存庫連線，則設定伺服器不需要任何額外的網際網路存取。 這項例外狀況是在使用 OVA 範本設定 CS 機器時，您需要存取下列 Url （而不是私用連結存取- https://management.azure.com 、 https://www.live.com 和） https://www.microsoft.com 。 如果您不想要允許存取這些 Url，請使用統一安裝程式來設定 CS。
 
 ## <a name="required-software"></a>必要的軟體
 

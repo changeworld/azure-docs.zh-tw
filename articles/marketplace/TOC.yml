@@ -135,10 +135,14 @@
               href: ./partner-center-portal/create-consulting-service-offer.md
         - name: Dynamics 365 供應項目
           items:
-            - name: 建立 Dynamics 365 for Customer Engagement 和 PowerApps 供應項目
+            - name: 建立 Dynamics 365 for Customer Engagement 和 Power Apps 供應項目
               href: ./partner-center-portal/create-new-customer-engagement-offer.md
             - name: 建立 Dynamics 365 for Operations 供應項目
-              href: ./partner-center-portal/create-new-operations-offer.md
+              items:
+                - name: 建立 Dynamics 365 for Operations 供應項目
+                  href: ./partner-center-portal/create-new-operations-offer.md
+                - name: 功能驗證
+                  href: ./dynamics-365-finance-operations-functional-validation.md
             - name: 建立 Dynamics 365 Business Central 供應項目
               href: ./partner-center-portal/create-new-business-central-offer.md
         - name: IoT Edge 模組供應項目

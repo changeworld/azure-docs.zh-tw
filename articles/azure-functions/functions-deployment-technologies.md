@@ -6,12 +6,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: glenga
-ms.openlocfilehash: ec5e9da2ab80f4728d342303e1eb08c49f765485
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 63c52b8b1ee9b9448a1ba6f78873ae6a036e3563
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82735295"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540208"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Azure Functions 中的部署技術
 
@@ -78,7 +78,7 @@ Azure Functions 可以自動在 zip 部署後所收到的程式碼上執行組�
 
 當應用程式在 Linux 上以遠端方式建立時，它們會[從部署套件執行](run-functions-from-deployment-package.md)。 
 
-##### <a name="consumption-plan"></a>取用方案
+##### <a name="consumption-plan"></a>使用情況方案
 
 在取用方案中執行的 Linux 函式應用程式沒有 SCM/Kudu 網站，這會限制部署選項。 不過，在取用方案中執行的 Linux 上的函式應用程式會支援遠端組建。
 
@@ -173,13 +173,13 @@ Web Deploy 封裝，並將您的 Windows 應用程式部署至任何 IIS 伺服�
 
 >__使用時機：__ 入口網站是開始使用 Azure Functions 的好方法。 如需更密集的開發工作，建議您使用下列其中一個用戶端工具：
 >
->* [Visual Studio Code](functions-create-first-function-vs-code.md)
+>* [Visual Studio Code](functions-create-first-function-vs-code.md) \(英文\)
 >* [Azure Functions Core Tools （命令列）](functions-run-local.md)
 >* [Visual Studio](functions-create-your-first-function-visual-studio.md)
 
 下表顯示支援入口網站編輯的作業系統和語言：
 
-| | Windows 耗用量 | Windows Premium | Windows 專用 | Linux 使用量 | Linux Premium | Linux 專用 |
+| Language | Windows 耗用量 | Windows Premium | Windows 專用 | Linux 使用量 | Linux Premium | Linux 專用 |
 |-|:-----------------: |:----------------:|:-----------------:|:-----------------:|:-------------:|:---------------:|
 | C# | | | | | |
 | C# 指令碼 |✔|✔|✔| |✔<sup>\*</sup> |✔<sup>\*</sup>|

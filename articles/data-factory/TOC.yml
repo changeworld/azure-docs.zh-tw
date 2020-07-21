@@ -23,7 +23,8 @@
       href: quickstart-create-data-factory-python.md
     - name: 建立資料處理站 - REST
       href: quickstart-create-data-factory-rest-api.md
-    - name: 建立資料處理站 - Resource Manager 範本
+    - name: 建立資料處理站 - ARM 範本
+      displayName: Resource Manager
       href: quickstart-create-data-factory-resource-manager-template.md
     - name: 安全性 - 啟用客戶管理的金鑰加密
       href: enable-customer-managed-key.md
@@ -98,6 +99,8 @@
               href: tutorial-incremental-copy-lastmodified-copy-data-tool.md
             - name: 依時間分割的檔案名稱新增檔案
               href: tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md
+        - name: 使用受控 VNet 和私人端點建立複製管線
+          href: tutorial-copy-data-portal-private.md
     - name: 轉換資料
       items:
         - name: 使用對應資料流程來轉換資料
@@ -126,6 +129,8 @@
                   href: tutorial-transform-data-hive-virtual-network-portal.md
                 - name: Azure PowerShell
                   href: tutorial-transform-data-hive-virtual-network.md
+        - name: 使用受控 VNet 和私人端點建立對應資料流程管線
+          href: tutorial-data-flow-private.md
     - name: 控制流程
       items:
         - name: 使用者介面 (UI)
@@ -162,6 +167,8 @@
       href: concepts-pipeline-execution-triggers.md
     - name: 整合執行階段
       href: concepts-integration-runtime.md
+    - name: 受控虛擬網路
+      href: managed-virtual-network-private-endpoint.md
     - name: 安全性
       items:
         - name: 安全性基準
@@ -408,6 +415,8 @@
           href: connector-web-table.md
         - name: Xero
           href: connector-xero.md
+        - name: XML 格式
+          href: format-xml.md
         - name: Zoho
           href: connector-zoho.md
     - name: 移動資料
@@ -469,12 +478,12 @@
           href: transform-data-using-spark.md
         - name: HDInsight 串流活動
           href: transform-data-using-hadoop-streaming.md
-        - name: Machine Learning 批次執行活動
-          href: transform-data-using-machine-learning.md
-        - name: Machine Learning 更新資源活動
-          href: update-machine-learning-models.md
         - name: Machine Learning 執行管線活動
           href: transform-data-machine-learning-service.md
+        - name: Machine Learning Studio (傳統版) 批次執行活動
+          href: transform-data-using-machine-learning.md
+        - name: Machine Learning Studio (傳統版) 更新資源活動
+          href: update-machine-learning-models.md
         - name: 預存程序活動
           href: transform-data-using-stored-procedure.md
         - name: 計算連結服務
@@ -681,7 +690,7 @@
               href: how-to-fixed-width.md
             - name: 處理資料列時發生錯誤
               href: how-to-data-flow-error-rows.md
-            - name: Azure SQL DB 至 CosmosDB
+            - name: Azure SQL DB 到 Azure Cosmos DB
               href: how-to-sqldb-to-cosmosdb.md
         - name: 從內部部署進行 SSIS 移轉
           items:

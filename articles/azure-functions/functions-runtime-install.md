@@ -5,11 +5,12 @@ author: apwestgarth
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: anwestg
-ms.openlocfilehash: 7ad748aa9a5b45af10121648a668344548484cf7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 73b9533fa00c783e1cfb85270198f5c00c66afd5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74226730"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540378"
 ---
 # <a name="install-the-azure-functions-runtime-preview-2"></a>安裝 Azure Functions 執行階段預覽 2
 
@@ -24,7 +25,7 @@ ms.locfileid: "74226730"
 1. 完成 Azure Functions 執行階段預覽 2 的設定。
 1. 在 Azure Functions 執行階段預覽中建立您的第一個函式
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 安裝 Azure Functions 執行階段預覽之前，您必須備妥下列資源：
 
@@ -70,7 +71,7 @@ Azure Functions 執行階段預覽安裝程式會引導您完成安裝 Azure Fun
 
     ![Azure Functions 執行階段預覽設定工具][7]
 
-1. 按一下 [資料庫]**** 索引標籤、輸入 SQL Server 執行個體的連線詳細資料 (包括指定[資料庫主要金鑰](https://docs.microsoft.com/sql/relational-databases/security/encryption/sql-server-and-database-encryption-keys-database-engine))，然後按一下 [套用]****。  需要與 SQL Server 執行個體連線，Azure Functions 執行階段才能建立資料庫以支援執行階段。
+1. 按一下 [資料庫]**** 索引標籤、輸入 SQL Server 執行個體的連線詳細資料 (包括指定[資料庫主要金鑰](/sql/relational-databases/security/encryption/sql-server-and-database-encryption-keys-database-engine))，然後按一下 [套用]****。  需要與 SQL Server 執行個體連線，Azure Functions 執行階段才能建立資料庫以支援執行階段。
 
     ![Azure Functions 執行階段預覽資料庫設定][8]
 

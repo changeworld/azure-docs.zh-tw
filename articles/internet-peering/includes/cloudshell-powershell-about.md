@@ -8,17 +8,17 @@ ms.service: internet-peering
 ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 3a5485475e3d8030bf85734faec53b0ff0747499
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ee071f2cf6e31d46ccd483935f137f16bcacf337
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81678503"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86544924"
 ---
 若要執行 Cmdlet，您可以使用 Azure Cloud Shell (免費的互動式殼層)。 它具有預先安裝和設定的共用 Azure 工具，可與您的帳戶搭配使用。 選取 [**複製**]，將程式碼複製並貼到 Cloud Shell 中。 然後選取**Enter 鍵**加以執行。 有幾種方式可以啟動 Cloud Shell：
 
 
-|  |   |
+| 啟動方法 | 螢幕擷取畫面  |
 |-----------------------------------------------|---|
 | 在您的瀏覽器中開啟 Cloud Shell。 | [![https://shell.azure.com/powershell](../media/launchcloudshell.png)](https://shell.azure.com/powershell) |
 | 在 Azure 入口網站右上方的工具列上，選取 [ **Cloud Shell** ] 按鈕。 | [![在入口網站中 Cloud Shell](../media/cloud-shell-menu.png)](https://portal.azure.com) |

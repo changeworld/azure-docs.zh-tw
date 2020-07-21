@@ -194,7 +194,7 @@
               href: job-error-codes.md
     - name: 高可用性
       items:
-        - name: 編碼
+        - name: 點播視訊
           displayName: 'failover, bcdr, HA, high availability'
           href: media-services-high-availability-encoding.md
         - name: 串流

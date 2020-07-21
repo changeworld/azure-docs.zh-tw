@@ -323,11 +323,11 @@
               href: azure-policy-configure-diagnostics.md
         - name: PowerShell
           items:
-            - name: Azure 入口網站中的 Azure VM
+            - name: Azure VM
               href: backup-azure-vms-automation.md
-            - name: Azure 入口網站中的 DPM
+            - name: Data Protection Manager (DPM)
               href: backup-dpm-automation.md
-            - name: Azure 入口網站中的 Windows Server
+            - name: 使用 MARS 代理程式的 Windows Server
               href: backup-client-automation.md
             - name: Azure VM 備份中的 SQL
               href: backup-azure-sql-automation.md
@@ -422,7 +422,7 @@
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Microsoft 問與答頁面
-      href: 'https://docs.microsoft.com/answers/topics/azure-backup.html'
+      href: /answers/topics/azure-backup.html
     - name: 定價計算機
       href: azure-backup-pricing.md
     - name: 服務更新

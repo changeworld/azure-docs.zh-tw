@@ -1,0 +1,56 @@
+- name: Azure Education Hub 文件
+  href: ./index.yml
+- name: 概觀
+  items:
+    - name: 什麼是 Education Hub？
+      href: about-education-hub.md
+- name: 快速入門
+  items:
+    - name: 存取 Education Hub
+      href: access-education-hub.md
+    - name: 開始使用 Education Hub
+      href: get-started-education-hub.md
+    - name: 設定課程並建立教室
+      href: set-up-course-classroom.md
+- name: 操作指南
+  items:
+    - name: 管理您的學術獎學金
+      href: hub-overview-page.md
+    - name: 建立指派並配置信用額度
+      href: create-assignment-allocate-credit.md
+- name: 支援
+  items:
+    - name: 服務台
+      href: educator-service-desk.md
+- name: Azure Dev Tools for Teaching
+  items:
+    - name: 概觀
+      items:
+        - name: 什麼是 Azure Dev Tools for Teaching？
+          href: azure-dev-tools-teaching/about-program.md
+        - name: Azure 學生版
+          href: azure-dev-tools-teaching/azure-students-program.md
+        - name: Azure 學生入門版
+          href: azure-dev-tools-teaching/azure-students-starter-program.md
+    - name: 快速入門
+      items:
+        - name: 註冊或更新訂用帳戶
+          href: azure-dev-tools-teaching/enroll-renew-subscription.md
+        - name: 設定存取權
+          href: azure-dev-tools-teaching/set-up-access.md
+    - name: 操作指南
+      items:
+        - name: 如何管理學生
+          href: azure-dev-tools-teaching/manage-students.md
+        - name: 如何下載軟體
+          href: azure-dev-tools-teaching/download-software.md
+    - name: 疑難排解
+      items:
+        - name: 登入錯誤
+          href: azure-dev-tools-teaching/troubleshoot-login.md
+- name: 資源
+  items:
+    - name: 常見問題集
+      href: azure-dev-tools-teaching/program-faq.md
+    - name: 支援
+      href: azure-dev-tools-teaching/program-support.md

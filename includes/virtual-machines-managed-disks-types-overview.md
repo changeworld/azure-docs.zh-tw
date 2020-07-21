@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/03/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 45b611144d5a62171061febfd4efa98db69bacb9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dbca8798af83108ca5e8bdfe5918a25423fd934d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84436115"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86544570"
 ---
 Azure 受控磁片目前提供四種磁片類型，每種類型都是針對特定的客戶案例。
 
@@ -21,17 +21,17 @@ Azure 受控磁片目前提供四種磁片類型，每種類型都是針對特�
 
 下表提供適用于受控磁片的 ultra 磁片、premium 固態硬碟（SSD）、標準 SSD 和標準硬碟（HDD）的比較，協助您決定要使用的內容。
 
-|   | Ultra 磁碟   | 進階 SSD   | 標準 SSD   | 標準 HDD   |
-|---------|---------|---------|---------|---------|
+| 詳細資料 | Ultra 磁碟 | 進階 SSD | 標準 SSD | 標準 HDD |
+| ------ | ---------- | ----------- | ------------ | ------------ |
 |磁碟類型   |SSD   |SSD   |SSD   |HDD   |
-|狀況   |IO 密集的工作負載，例如[SAP Hana](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md)、最上層資料庫（例如 SQL、Oracle）和其他大量交易的工作負載。   |生產環境和重視效能的工作負載   |網頁伺服器，輕量使用的企業應用程式和開發/測試   |備份、不重要、存取不頻繁   |
+|案例   |IO 密集的工作負載，例如[SAP Hana](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md)、最上層資料庫（例如 SQL、Oracle）和其他大量交易的工作負載。   |生產環境和重視效能的工作負載   |網頁伺服器、輕量使用的企業應用程式和開發/測試   |備份、不重要、存取不頻繁   |
 |最大磁碟大小   |65,536 GiB    |32,767 GiB    |32,767 GiB   |32,767 GiB   |
 |最大輸送量   |2,000 MB/秒    |900 MB/秒   |750 MB/秒   |500 MB/秒   |
 |最大 IOPS   |160,000    |20,000   |6,000   |2,000   |
 
 ## <a name="ultra-disk"></a>Ultra 磁碟
 
-Azure Ultra 磁碟可為 Azure IaaS VM 提供高輸送量、高 IOPS 以及一致的低延遲磁碟儲存體。 Ultra 磁片的一些額外優點包括能夠以動態方式變更磁片的效能，以及您的工作負載，而不需要重新開機您的虛擬機器（VM）。 Ultra 磁碟適用於處理大量資料的工作負載 (例如 SAP Hana)、最上層資料庫，以及高交易量的工作負載。 Ultra 磁碟只可用來作為資料磁碟。 建議您使用進階 SSD 作為作業系統磁碟。
+Azure Ultra 磁碟可為 Azure IaaS VM 提供高輸送量、高 IOPS 以及一致的低延遲磁碟儲存體。 Ultra 磁片的一些額外優點包括能夠以動態方式變更磁片的效能，以及您的工作負載，而不需要重新開機您的虛擬機器（VM）。 Ultra 磁碟適用於處理大量資料的工作負載 (例如 SAP Hana)、最上層資料庫，以及高交易量的工作負載。 Ultra 磁碟只可用來作為資料磁碟。 建議您使用進階 SSD 作為 OS 磁碟。
 
 ### <a name="performance"></a>效能
 

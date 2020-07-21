@@ -5,12 +5,12 @@ author: chenyl
 ms.topic: reference
 ms.date: 05/11/2020
 ms.author: chenyl
-ms.openlocfilehash: c2ad9b6c4410a62d5652050406e05be4cde5fab0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ec2952a3093661f0f6ef32908307a8a82c6367ed
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85830701"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540225"
 ---
 # <a name="signalr-service-trigger-binding-for-azure-functions"></a>Azure Functions 的 SignalR Service 觸發程式系結
 
@@ -43,7 +43,7 @@ public class SignalRTestHub : ServerlessHub
 
 ### <a name="with-traditional-model"></a>使用傳統模型
 
-傳統模型遵守由 c # 所開發的 Azure Function 慣例。 如果您不熟悉它，可以從[檔](https://docs.microsoft.com/azure/azure-functions/functions-dotnet-class-library)中學習。
+傳統模型遵守由 c # 所開發的 Azure Function 慣例。 如果您不熟悉它，可以從[檔](./functions-dotnet-class-library.md)中學習。
 
 ```cs
 [FunctionName("SignalRTest")]
@@ -162,7 +162,7 @@ def main(invocation) -> None:
 
 ---
 
-## <a name="configuration"></a>組態
+## <a name="configuration"></a>設定
 
 ### <a name="signalrtrigger"></a>SignalRTrigger
 
@@ -187,18 +187,18 @@ def main(invocation) -> None:
 
 InvocationCoNtext 包含訊息從 SignalR Service 傳送的所有內容。
 
-|InvocationCoNtext 中的屬性 | Description|
+|InvocationCoNtext 中的屬性 | 描述|
 |------------------------------|------------|
 |引數| 適用于*訊息*類別。 包含[調用訊息](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding)中的*引數*|
 |錯誤| 適用于已*中斷*連線的事件。 如果連接已關閉但沒有錯誤，或包含錯誤訊息，則它可以是空的。|
-|中樞| 訊息所屬的中樞名稱。|
+|集線器| 訊息所屬的中樞名稱。|
 |類別| 訊息的分類。|
 |事件| 訊息的事件。|
 |ConnectionId| 傳送訊息之用戶端的連接識別碼。|
 |UserId| 傳送訊息之用戶端的使用者身分識別。|
-|headers| 要求的標頭。|
+|標題| 要求的標頭。|
 |查詢| 用戶端連接到服務時的要求查詢。|
-|Claims| 用戶端的宣告。|
+|宣告| 用戶端的宣告。|
 
 ## <a name="using-parameternames"></a>使用 `ParameterNames`
 
