@@ -6,16 +6,17 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/09/2020
-ms.openlocfilehash: 58724656dd407f09687b57d0ab034f3a1f808b76
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b4882ec9eb8b81ae27a1e8eed2e5b4349fbeac3f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83196278"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516187"
 ---
 # <a name="structure-of-azure-monitor-logs"></a>Azure 監視器記錄的結構
 使用[記錄查詢](log-query-overview.md)快速取得資料見解的能力，是 Azure 監視器的強大功能。 若要建立有效率且有用的查詢，您應該瞭解一些基本概念，例如您想要的資料位於何處，以及其結構化方式。 本文提供您開始使用所需的基本概念。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 Azure 監視器記錄檔中的資料會儲存在 Log Analytics 工作區或 Application Insights 應用程式中。 這兩種技術都是由 Azure 所提供技術支援[資料總管](/azure/data-explorer/)表示它們會運用其強大的資料引擎和查詢語言。
 
 > [!IMPORTANT]
@@ -28,7 +29,7 @@ Azure 監視器記錄檔中的資料會儲存在 Log Analytics 工作區或 Appl
 ![資料表](media/logs-structure/queries-tables.png)
 
 ## <a name="log-analytics-workspace"></a>Log Analytics 工作區
-除了 Application Insights 以外，Azure 監視器記錄收集的所有資料都會儲存在[Log Analytics 工作區](../platform/manage-access.md)中。 根據您的特定需求，您可以建立一或多個工作區。 來自 Azure 資源的活動記錄和資源記錄、虛擬機器上的代理程式，以及來自深入解析和監視解決方案的資料等[資料來源](../platform/data-sources.md)，都會將資料寫入您在上架時設定的一或多個工作區。 [Azure 資訊安全中心](/azure/security-center/)和[Azure Sentinel](/azure/sentinel/)等其他服務也會使用 log Analytics 工作區來儲存其資料，以便使用記錄查詢進行分析，以及監視來自其他來源的資料。
+除了 Application Insights 以外，Azure 監視器記錄收集的所有資料都會儲存在[Log Analytics 工作區](../platform/manage-access.md)中。 根據您的特定需求，您可以建立一或多個工作區。 來自 Azure 資源的活動記錄和資源記錄、虛擬機器上的代理程式，以及來自深入解析和監視解決方案的資料等[資料來源](../platform/data-sources.md)，都會將資料寫入您在上架時設定的一或多個工作區。 [Azure 資訊安全中心](../../security-center/index.yml)和[Azure Sentinel](../../sentinel/index.yml)等其他服務也會使用 log Analytics 工作區來儲存其資料，以便使用記錄查詢進行分析，以及監視來自其他來源的資料。
 
 不同類型的資料會儲存在工作區中的不同資料表，而且每個資料表都有一組唯一的屬性。 在建立工作區時，會將一組標準的資料表新增到其中，並在上架時針對不同的資料來源、方案和服務新增資料表。 您也可以使用[資料收集器 API](../platform/data-collector-api.md)來建立自訂資料表。
 
@@ -44,7 +45,7 @@ union withsource = table *
 | summarize count() by table
 | sort by table asc
 ```
-如需所建立資料表的詳細資訊，請參閱每個資料來源的檔。 範例包括[代理程式資料來源](../platform/agent-data-sources.md)、[資源記錄](../platform/diagnostic-logs-schema.md)和[監視解決方案](../insights/solutions-inventory.md)的文章。
+如需所建立資料表的詳細資訊，請參閱每個資料來源的檔。 範例包括[代理程式資料來源](../platform/agent-data-sources.md)、[資源記錄](../platform/resource-logs-schema.md)和[監視解決方案](../monitor-reference.md)的文章。
 
 ### <a name="workspace-permissions"></a>工作區許可權
 請參閱[設計 Azure 監視器記錄部署](../platform/design-logs-deployment.md)，以瞭解存取控制策略和建議，以提供工作區中資料的存取權。 除了授與工作區本身的存取權之外，您還可以使用[資料表層級 RBAC](../platform/manage-access.md#table-level-rbac)來限制個別資料表的存取權。
@@ -58,7 +59,7 @@ union withsource = table *
 
 不同于 Log Analytics 工作區，Application Insights 應用程式有一組固定的資料表。 您無法將其他資料來源設定為寫入應用程式，因此不能建立其他資料表。 
 
-| 資料表 | 描述 | 
+| Table | 描述 | 
 |:---|:---|
 | availabilityResults | 可用性測試中的摘要資料。 |
 | browserTimings      | 用戶端效能的相關資料，例如處理傳入資料所花費的時間。 |
@@ -87,5 +88,5 @@ union withsource = table *
 | _BilledSize   |            | 指定將計費的資料大小（以位元組為單位）。 |
 
 ## <a name="next-steps"></a>後續步驟
-- 瞭解如何使用[Log Analytics 來建立和編輯記錄搜尋](../log-query/portals.md)。
+- 瞭解如何使用[Log Analytics 來建立和編輯記錄搜尋](./log-query-overview.md)。
 - 請參閱使用新的查詢語言[撰寫查詢的教學課程](../log-query/get-started-queries.md)。

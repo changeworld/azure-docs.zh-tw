@@ -8,20 +8,20 @@ manager: rkarlin
 ms.assetid: 1b71e8ad-3bd8-4475-b735-79ca9963b823
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 03/15/2020
+ms.date: 07/14/2020
 ms.author: memildin
-ms.openlocfilehash: b639b382e69be30c2f04471e0a253ef5d7c7b4e3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 25b5569c123a4c7376aecd01b8e36f68b0a8e9b5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85125765"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519590"
 ---
 # <a name="security-alerts-in-azure-security-center"></a>Azure 資訊安全中心的安全性警示
 
 在 Azure 資訊安全中心中，提供了許多不同資源類型的各種警示。 資訊安全中心會針對部署在 Azure 上的資源產生警示，也會針對內部部署和部署於混合式雲端環境的資源產生警示。
 
-安全性警示由進階偵測觸發，且只有 Azure 資訊安全中心的標準層才會提供安全性警示。 有免費試用版可用。 您可以在 [安全性原則](security-center-pricing.md)中升級定價層選取項目。 若要深入了解價格，請瀏覽 [資訊安全中心](https://azure.microsoft.com/pricing/details/security-center/) 頁面。
+安全性警示會由「先進偵測」觸發，而且僅適用于 Azure 資訊安全中心的「標準」層級。 有免費試用版可用。 您可以從 [**定價 & 設定**] 頁面進行升級。 深入瞭解[資訊安全中心定價](https://azure.microsoft.com/pricing/details/security-center/)。
 
 ## <a name="responding-to-todays-threats"></a>回應現今的威脅<a name="respond-threats"> </a>
 

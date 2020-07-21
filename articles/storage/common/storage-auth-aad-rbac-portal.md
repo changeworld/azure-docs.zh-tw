@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/06/2020
+ms.date: 07/16/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: b22c653d25dc23bbcb249344affaf83a07f190af
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 77eb3ddfdbf2525aa031c462a38df5dcb8d31217
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024875"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518753"
 ---
 # <a name="use-the-azure-portal-to-assign-an-rbac-role-for-access-to-blob-and-queue-data"></a>使用 Azure 入口網站來指派用於存取 blob 和佇列資料的 RBAC 角色
 
@@ -57,7 +57,7 @@ Azure Active Directory (Azure AD) 會透過[角色型存取控制 (RBAC)](../../
 1. 在 [ [Azure 入口網站](https://portal.azure.com)中，移至您的儲存體帳戶，並顯示帳戶的**總覽**。
 1. 在 [服務] 下，選取 [Blob]****。
 1. 找出您要為其指派角色的容器，並顯示容器的設定。
-1. 選取 [存取控制 (IAM)]****，以顯示容器的存取控制設定。 選取 [角色指派]  索引標籤，以查看角色指派的清單。
+1. 選取 [存取控制 (IAM)]****，以顯示容器的存取控制設定。 選取 [角色指派] 索引標籤，以查看角色指派的清單。
 
     ![顯示容器存取控制設定的螢幕擷取畫面](media/storage-auth-aad-rbac-portal/portal-access-control-for-storage.png)
 
@@ -84,9 +84,9 @@ Azure Active Directory (Azure AD) 會透過[角色型存取控制 (RBAC)](../../
 請遵循下列步驟來指派「**讀者**」角色，讓使用者可以從 Azure 入口網站存取 blob。 在此範例中，指派的範圍設定為儲存體帳戶：
 
 1. 在 [Azure 入口網站](https://portal.azure.com)中，瀏覽至您的儲存體帳戶。
-1. 選取 [存取控制 (IAM)]  ，以顯示儲存體帳戶的存取控制設定。 選取 [角色指派]  索引標籤，以查看角色指派的清單。
+1. 選取 [存取控制 (IAM)]，以顯示儲存體帳戶的存取控制設定。 選取 [角色指派] 索引標籤，以查看角色指派的清單。
 1. 在 [**新增角色指派**] 視窗中，選取 [**讀取**者] 角色。 
-1. 在 [存取權指派對象為]  欄位中，選取 [Azure AD 使用者、群組或服務主體]  。
+1. 在 [存取權指派對象為] 欄位中，選取 [Azure AD 使用者、群組或服務主體]。
 1. 搜尋以找出您要為其指派角色的安全性主體。
 1. 儲存角色指派。
 

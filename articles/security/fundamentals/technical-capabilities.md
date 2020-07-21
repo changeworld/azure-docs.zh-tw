@@ -2,24 +2,20 @@
 title: Azure 中的安全性技術功能-Microsoft Azure
 description: Azure 中的安全性服務簡介可協助您保護雲端中的資料、資源和應用程式。
 services: security
-documentationcenter: na
-author: UnifyCloud
-manager: barbkess
-editor: TomSh
+author: terrylanfear
 ms.assetid: ''
 ms.service: security
 ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 05/31/2019
-ms.author: TomSh
-ms.openlocfilehash: 61afad1d9994fd703bd8df047d1861baddeae997
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/13/2020
+ms.author: terrylan
+ms.openlocfilehash: 29e6aa96ea1c435e4d734e80824e1cedcfe9a761
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76845354"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519315"
 ---
 # <a name="azure-security-technical-capabilities"></a>Azure 安全性技術功能
 本文提供 Azure 中的安全性服務簡介，協助您保護雲端中的資料、資源和應用程式，並滿足企業的安全性需求。
@@ -56,7 +52,7 @@ Microsoft 身分識別和存取管理解決方案可協助 IT 保護跨公司資
 
 Azure Active Directory (Azure AD) 的安全性優點包括下列功能：
 
-- 為您的混合式企業中的每位使用者建立和管理單一身分識別，讓使用者、群組和裝置保持同步。
+- 為您的混合式企業中的每個使用者建立和管理單一身分識別，讓使用者、群組和裝置保持同步。
 
 - 提供您的應用程式 (包括數千個預先整合的 SaaS 應用程式) 的單一登入存取。
 
@@ -169,77 +165,11 @@ RBAC 可讓您區隔小組內的職責，而僅授與使用者執行作業所需
 在雲端保護資料的其中一個關鍵是考慮您的資料可能會發生的狀態，以及哪些控制項適用於該狀態。 如要了解 Azure 資料安全性和加密最佳做法，相關建議將以下列資料的狀態為主。
 
 - 待用︰這包括實體媒體 (磁碟或光碟) 上以靜態方式存在的所有資訊儲存物件、容器和類型。
-
 - 傳輸中：當資料在元件、位置或程式之間傳輸時，例如透過網路、透過服務匯流排（從內部部署到雲端，反之亦然，包括諸如 ExpressRoute 的混合式連線），或在輸入/輸出過程中，它會被視為移動中。
 
 ### <a name="encryption-at-rest"></a>待用加密
 
-若要實現待用加密，請執行下列每個動作：
-
-支援至少一個下表詳述的建議加密模型來加密資料。
-
-| 加密模型 |  |  |  |
-| ----------------  | ----------------- | ----------------- | --------------- |
-| 伺服器加密 | 伺服器加密 | 伺服器加密 | 用戶端加密
-| 使用服務管理的金鑰的伺服器端加密 | 在 Azure Key Vault 中使用客戶管理的金鑰的伺服器端加密 | 使用內部部署客戶管理金鑰的伺服器端加密 |
-| • Azure 資源提供者執行加密和解密作業 <br> • Microsoft 管理金鑰 <br>• 完整的雲端功能 | • Azure 資源提供者執行加密和解密作業<br>• 客戶透過 Azure Key Vault 控制金鑰<br>• 完整的雲端功能 | • Azure 資源提供者執行加密和解密作業 <br>•客戶控制內部部署的金鑰 <br> • 完整的雲端功能| • Azure 服務無法查看解密的資料 <br>• 客戶將金鑰保留在內部部署環境 (或其他安全的存放區中)。 金鑰無法供 Azure 服務使用 <br>• 縮減的雲端功能|
-
-### <a name="enabling-encryption-at-rest"></a>啟用待用加密
-
-**找出資料的所有存放位置**
-
-待用加密的目標是要加密所有資料。 這樣做可以避免遺失重要資料或所有存放位置。 列舉應用程式所儲存的所有資料。
-
-> [!Note]
-> 不只是「應用程式資料」或「PII」，而是所有與應用程式相關的資料，包括帳戶的中繼資料 (訂用帳戶對應、合約資訊、PII)。
-
-請細想您使用了哪些存放區來儲存資料。 例如：
-
-- 外部儲存體 (例如，SQL Azure、Document DB、HDInsights、Data Lake 等)
-
-- 暫存儲存體 (任何包含租用戶資料的本機快取)
-
-- 記憶體中快取 (可以置入分頁檔。)
-
-### <a name="leverage-the-existing-encryption-at-rest-support-in-azure"></a>在 Azure 中利用現有的待用加密支援
-
-針對您使用的每個存放區，利用現有的待用加密支援。
-
-- Azure 儲存體：請參閱[待用資料的 Azure 儲存體服務加密](../../storage/common/storage-service-encryption.md)。
-
-- SQL Azure：請參閱[透明資料加密 (TDE)、SQL Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx)
-
-- VM 與本機磁碟儲存體 ([Azure 磁碟加密](../azure-security-disk-encryption-overview.md))
-
-對於支援使用 Azure 磁碟加密的 VM 和本機磁碟儲存體：
-
-#### <a name="iaas"></a>IaaS
-
-具有 IaaS VM (Windows 或 Linux) 的服務應使用 [Azure 磁碟加密](https://microsoft.sharepoint.com/teams/AzureSecurityCompliance/Security/SitePages/Azure%20Disk%20Encryption.aspx)來加密包含客戶資料的磁碟區。
-
-#### <a name="paas-v2"></a>PaaS v2
-
-在 PaaS v2 上執行且使用 Service Fabric 的服務可以使用適用於虛擬機器擴展集 [VMSS] 的 Azure 磁碟加密來加密其 PaaS v2 VM。
-
-#### <a name="paas-v1"></a>PaaS v1
-
-PaaS v1 目前不支援 Azure 磁碟加密。 因此，您必須使用應用程式層級加密來加密保存的待用資料。  這包括 (但不限於) 應用程式資料、暫存檔案、記錄和損毀傾印。
-
-大部分的服務都應該會嘗試利用儲存體資源提供者的加密功能。 有些服務則必須進行明確加密，例如，保存的金鑰資料 (憑證、根金鑰/主要金鑰) 都必須儲存在 Key Vault。
-
-如果您支援使用客戶管理的金鑰的服務端加密，您就必須讓客戶有辦法將金鑰拿給我們。 支援且建議的辦法是與 Azure Key Vault (AKV) 整合。 在此情況下，客戶就能在 Azure Key Vault 中新增及管理其金鑰。 客戶可以透過[開始使用 Key Vault](https://go.microsoft.com/fwlink/?linkid=521402) 來了解如何使用 AKV。
-
-若要與 Azure Key Vault 整合，您必須新增程式碼以在需要解密時向 AKV 要求金鑰。
-
-- 請參閱 [Azure Key Vault – 逐步解說](https://blogs.technet.microsoft.com/kv/2015/06/02/azure-key-vault-step-by-step/)來了解如何與 AKV 整合。
-
-如果您支援客戶管理的金鑰，則需要提供 UX 給客戶以指定要使用哪個 Key Vault (或 Key Vault URI)。
-
-由於待用加密涉及到主機、基礎結構和租用戶資料的加密，因此如果系統失敗或有惡意活動而導致金鑰遺失，就可能意味著所有加密資料也將跟著遺失。 因此，您所設計的待用加密解決方案務必要有完整的災害復原劇本，以便能從系統失敗和惡意活動中復原。
-
-執行待用加密的服務通常仍容易受到加密金鑰的影響，或在主機磁片磁碟機上將資料保留為未加密（例如，在主機作業系統的分頁檔中）。因此，服務必須確保其服務的主機磁片區已加密。 為了做到這一點，計算團隊已啟用主機加密的部署，其會使用 [BitLocker](https://technet.microsoft.com/library/dn306081.aspx) \(英文\) NKP 以及 DCM 服務與代理程式的擴充來加密主機磁碟區。
-
-大部分服務會實作在標準 Azure VM 上。 這類服務應該會在計算團隊將其啟用時自動獲得[主機加密](../azure-security-disk-encryption-overview.md)。 在計算團隊管理的叢集中執行的服務，皆已在 Windows Server 2016 推出時自動啟用主機加密。
+待用加密會在[Azure 資料待用加密](encryption-atrest.md)中詳細討論。
 
 ### <a name="encryption-in-transit"></a>傳輸中加密
 
@@ -512,7 +442,7 @@ Resource Manager 會提供數個優點：
 
 - [加密](https://www.microsoft.com/en-us/trustcenter/security/encryption)
 
-- [身分識別與存取管理](https://www.microsoft.com/en-us/trustcenter/security/identity)
+- [身分識別和存取管理](https://www.microsoft.com/en-us/trustcenter/security/identity)
 
 - [網路安全性](https://www.microsoft.com/en-us/trustcenter/security/networksecurity)
 

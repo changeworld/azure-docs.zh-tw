@@ -8,11 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: c0b043bdb20cad508950a11853403958340acadf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6e7b6c7ddb33d42cca66698c87c82477f3e55621
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84434208"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517462"
 ---
 # <a name="use-the-azure-maps-indoor-maps-module"></a>使用 Azure 地圖服務室內地圖模組
 
@@ -20,7 +21,7 @@ Azure 地圖服務 Web SDK 包括「Azure 室內地圖服務」模組。 「Azur
 
 ## <a name="prerequisites"></a>Prerequisites
 
-1. [建立 Azure 地圖服務帳戶](quick-demo-map-app.md#create-an-account-with-azure-maps)
+1. [建立 Azure 地圖服務帳戶](quick-demo-map-app.md#create-an-azure-maps-account)
 2. [建立一個建立工具資源](how-to-manage-creator.md)
 3. [取得主要訂用帳戶金鑰](quick-demo-map-app.md#get-the-primary-key-for-your-account)，也稱為主要金鑰或訂用帳戶金鑰。
 4. 完成[建立室內地圖教學課程](tutorial-creator-indoor-maps.md)，以取得 `tilesetId` 和 `statesetId`。

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 0a559ec7f9138810611841eed4a035f30662bc39
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 79a239148647467185e407e1e07fdea658a7be40
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84806258"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517890"
 ---
 # <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-the-azure-cli"></a>使用 Azure CLI 建立裝載多個網站的應用程式閘道
 
@@ -30,7 +30,7 @@ ms.locfileid: "84806258"
 > * 建立包含後端集區的虛擬機器擴展集
 > * 在網域中建立 CNAME 記錄
 
-![多站台路由範例](./media/tutorial-multiple-sites-cli/scenario.png)
+:::image type="content" source="./media/tutorial-multiple-sites-cli/scenario.png" alt-text="多網站應用程式閘道":::
 
 如果您想要的話，可以使用 [Azure PowerShell](tutorial-multiple-sites-powershell.md) 完成本程序。
 
@@ -119,9 +119,13 @@ az network application-gateway address-pool create \
   --name fabrikamPool
 ```
 
-### <a name="add-backend-listeners"></a>新增後端接聽程式
+### <a name="add-listeners"></a>新增接聽程式
 
-使用 [az network application-gateway http-listener create](/cli/azure/network/application-gateway/http-listener#az-network-application-gateway-http-listener-create)，以新增路由流量時所需的後端接聽程式。
+使用[az network application-gateway HTTP-接聽程式建立](/cli/azure/network/application-gateway/http-listener#az-network-application-gateway-http-listener-create)來新增路由流量所需的接聽程式。
+
+>[!NOTE]
+> 使用應用程式閘道或 WAF v2 SKU 時，您也可以為每個接聽程式設定最多5個主機名稱，而且可以在主機名稱中使用萬用字元。 如需詳細資訊，請參閱接聽程式[中的萬用字元主機名稱](multiple-site-overview.md#wildcard-host-names-in-listener-preview)。
+>若要在使用 Azure CLI 的接聽程式中使用多個主機名稱和萬用字元，您必須使用， `--host-names` 而不是 `--host-name` 。 使用主機名稱時，您最多可以提及5個主機名稱做為逗號分隔值。 例如， `--host-names "*.contoso.com,*.fabrikam.com"`
 
 ```azurecli-interactive
 az network application-gateway http-listener create \

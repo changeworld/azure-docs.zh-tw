@@ -5,27 +5,29 @@ description: 了解如何在 Azure Kubernetes Service (AKS) 叢集中，建立�
 services: container-service
 ms.topic: article
 ms.date: 03/04/2019
-ms.openlocfilehash: f66a33f49d856abde97756a2b4b483cfa6050d0a
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: f7ea25c3348b96ec6d8818e8e1db4660b308dabc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86205782"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517768"
 ---
-# <a name="use-a-static-public-ip-address-for-egress-traffic-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中使用適用於輸出流量的靜態公用 IP 位址
+# <a name="use-a-static-public-ip-address-for-egress-traffic-with-a-basic-sku-load-balancer-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service （AKS）中使用具有*基本*SKU 負載平衡器的輸出流量的靜態公用 IP 位址
 
-根據預設，來自 Azure Kubernetes Service (AKS) 叢集的輸出 IP 位址會隨機指派。 例如，當您需要識別 IP 位址以存取外部服務時，這個設定並不理想。 您可能需要改為指派靜態 IP 位址，讓您可將其列入允許清單以用於服務存取。
+根據預設，來自 Azure Kubernetes Service (AKS) 叢集的輸出 IP 位址會隨機指派。 例如，當您需要識別 IP 位址以存取外部服務時，這個設定並不理想。 相反地，您可能需要指派靜態 IP 位址，以新增至允許清單以進行服務存取。
 
 此文章示範如何在 AKS 叢集中，建立和使用靜態公用 IP 位址來與輸出流量搭配使用。
 
 ## <a name="before-you-begin"></a>開始之前
+
+本文假設您使用的是 Azure 基本 Load Balancer。  我們建議使用[Azure Standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)，而且您可以使用更多的先進功能來[控制 AKS 輸出流量](https://docs.microsoft.com/azure/aks/limit-egress-traffic)。
 
 此文章假設您目前具有 AKS 叢集。 如果您需要 AKS 叢集，請參閱[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 入口網站][aks-quickstart-portal]的 AKS 快速入門。
 
 您也必須安裝並設定 Azure CLI 2.0.59 版或更新版本。 執行  `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱 [安裝 Azure CLI][install-azure-cli]。
 
 > [!IMPORTANT]
-> 本文使用*基本*SKU 負載平衡器搭配單一節點集區。 此設定不適用於多個節點集區，因為有多個節點集區不支援*基本*SKU 負載平衡器。 如需使用*標準*SKU 負載平衡器的詳細資訊，請參閱[在 Azure Kubernetes Service (AKS 中使用公用 Standard Load Balancer) ][slb] 。
+> 本文使用*基本*SKU 負載平衡器搭配單一節點集區。 此設定不適用於多個節點集區，因為有多個節點集區不支援*基本*SKU 負載平衡器。 如需使用*標準*SKU 負載平衡器的詳細資訊，請參閱[使用 Azure Kubernetes Service （AKS）中的公用 Standard Load Balancer][slb] 。
 
 ## <a name="egress-traffic-overview"></a>輸出流量概觀
 
@@ -105,7 +107,7 @@ kubectl apply -f egress-service.yaml
 啟動並附加至基本 *Debian* Pod：
 
 ```console
-kubectl run -it --rm aks-ip --image=debian --generator=run-pod/v1
+kubectl run -it --rm aks-ip --image=debian
 ```
 
 若要存取容器內的網站，請使用 `apt-get` 來將 `curl` 安裝到容器。

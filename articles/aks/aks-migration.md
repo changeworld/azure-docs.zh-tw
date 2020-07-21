@@ -1,26 +1,26 @@
 ---
-title: '遷移至 Azure Kubernetes Service (AKS) '
-description: 遷移至 Azure Kubernetes Service (AKS) 。
+title: 遷移至 Azure Kubernetes Service （AKS）
+description: 遷移至 Azure Kubernetes Service （AKS）。
 services: container-service
 ms.topic: article
 ms.date: 02/25/2020
 ms.custom: mvc
-ms.openlocfilehash: c864a9cc5dd5658bcb3205ce2cbe4f6142cf45a1
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 70ffe0bb98e89babe2f5998ee66666dd5368f7f2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255484"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518040"
 ---
-# <a name="migrate-to-azure-kubernetes-service-aks"></a>遷移至 Azure Kubernetes Service (AKS) 
+# <a name="migrate-to-azure-kubernetes-service-aks"></a>遷移至 Azure Kubernetes Service （AKS）
 
-本文可協助您規劃和執行成功的遷移，以 Azure Kubernetes Service (AKS) 。 為了協助您做出重要的決策，本指南提供 AKS 目前建議設定的詳細資料。 本文並未涵蓋每個案例，而且在適當的情況下，本文會包含更多詳細資訊的連結，以便規劃成功的遷移。
+本文可協助您規劃和執行成功的遷移至 Azure Kubernetes Service （AKS）。 為了協助您做出重要的決策，本指南提供 AKS 目前建議設定的詳細資料。 本文並未涵蓋每個案例，而且在適當的情況下，本文會包含更多詳細資訊的連結，以便規劃成功的遷移。
 
 本檔可用於協助支援下列案例：
 
 * 將[可用性設定組](../virtual-machines/windows/tutorial-availability-sets.md)所支援的 AKS 叢集遷移至[虛擬機器擴展集](../virtual-machine-scale-sets/overview.md)
 * 遷移 AKS 叢集以使用[標準 SKU 負載平衡器](./load-balancer-standard.md)
-* 從[Azure Container Service (ACS 遷移) -從2020年1月31日淘汰](https://azure.microsoft.com/updates/azure-container-service-will-retire-on-january-31-2020/)至 AKS
+* 從[Azure Container Service （ACS）遷移-從2020年1月31日淘汰](https://azure.microsoft.com/updates/azure-container-service-will-retire-on-january-31-2020/)至 AKS
 * 從[AKS 引擎](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908)遷移至 AKS
 * 從非以 Azure 為基礎的 Kubernetes 叢集遷移至 AKS
 
@@ -30,7 +30,7 @@ ms.locfileid: "86255484"
 
 視您的案例而定，有數個開放原始碼工具可協助您進行遷移：
 
-* [Velero](https://velero.io/) (需要 Kubernetes 1.7 +) 
+* [Velero](https://velero.io/) （需要 Kubernetes 1.7 +）
 * [Azure Kube CLI 擴充功能](https://github.com/yaron2/azure-kube-cli)
 * [ReShifter](https://github.com/mhausenblas/reshifter)
 
@@ -51,7 +51,7 @@ AKS 是受控服務，以較低的管理額外負荷提供獨特的功能。 由
 
 我們建議使用[虛擬機器擴展集](../virtual-machine-scale-sets/index.yml)和[Azure STANDARD LOAD BALANCER](./load-balancer-standard.md)支援的 AKS 叢集，以確保您可以取得諸如[多個節點](./use-multiple-node-pools.md)集區、[可用性區域](../availability-zones/az-overview.md)、[授權的 IP 範圍](./api-server-authorized-ip-ranges.md)、叢集[自動調整程式](./cluster-autoscaler.md)、 [AKS 的 Azure 原則](../governance/policy/concepts/policy-for-kubernetes.md)，以及發行時的其他新功能等功能。
 
-由[虛擬機器可用性設定組](../virtual-machine-scale-sets/availability.md#availability-sets)支援的 AKS 叢集缺少許多這些功能的支援。
+由[虛擬機器可用性設定組](../virtual-machines/availability.md#availability-sets)支援的 AKS 叢集缺少許多這些功能的支援。
 
 下列範例會建立 AKS 叢集，其中包含虛擬機器擴展集所支援的單一節點集區。 它會使用標準負載平衡器。 範例中也會啟用叢集節點集區上的叢集自動調整程式，並設定最少 1 個、最多 3 個節點：
 
@@ -92,7 +92,7 @@ az aks create \
 
 ## <a name="high-availability-and-business-continuity"></a>高可用性和商務持續性
 
-如果您的應用程式無法處理停機時間，您將需要遵循高可用性遷移案例的最佳作法。  複雜商務持續性規劃、嚴重損壞修復和最大化執行時間的最佳作法已超出本檔的範圍。  如需深入瞭解，請參閱[Azure Kubernetes Service (AKS) 中的商務持續性和嚴重損壞修復的最佳做法](./operator-best-practices-multi-region.md)。
+如果您的應用程式無法處理停機時間，您將需要遵循高可用性遷移案例的最佳作法。  複雜商務持續性規劃、嚴重損壞修復和最大化執行時間的最佳作法已超出本檔的範圍。  若要深入瞭解，請參閱[Azure Kubernetes Service （AKS）中的商務持續性和嚴重損壞修復的最佳作法](./operator-best-practices-multi-region.md)。
 
 對於複雜的應用程式，您的遷移作業通常會進行一段時間，而非全部一次完成。 這表示新舊環境可能需要透過網路進行通訊。 先前使用服務進行通訊的應用程式 `ClusterIP` 可能需要公開為類型 `LoadBalancer` ，並適當地加以保護。
 
@@ -106,7 +106,7 @@ az aks create \
 
 ### <a name="considerations-for-stateless-applications"></a>無狀態應用程式的考慮
 
-無狀態應用程式移轉是最直接的案例。 將您的資源定義 (YAML 或 Helm) 套用至新叢集、確定所有專案都如預期般運作，然後重新導向流量以啟動新的叢集。
+無狀態應用程式移轉是最直接的案例。 將您的資源定義（YAML 或 Helm）套用至新叢集，確定所有專案都如預期般運作，然後重新導向流量以啟用您的新叢集。
 
 ### <a name="considerations-for-stateful-applications"></a>具狀態應用程式的考慮
 
@@ -121,7 +121,7 @@ az aks create \
 如果這兩種方法都不適用，您可以使用備份和還原選項：
 * [Azure 上的 Velero](https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure/blob/master/README.md)
 
-#### <a name="azure-files"></a>Azure 檔案儲存體
+#### <a name="azure-files"></a>Azure 檔案
 
 不同於磁碟，Azure 檔案服務可同時掛接到多部主機。 在您的 AKS 叢集中，Azure 和 Kubernetes 不會防止您建立 ACS 叢集仍然使用的 pod。 若要防止資料遺失和非預期的行為，請確定叢集不會同時寫入相同的檔案。
 
@@ -138,11 +138,11 @@ az aks create \
 
 如果您要將現有的持續性磁片區遷移至 AKS，通常會遵循下列步驟：
 
-* 停止寫入應用程式。  (此步驟是選擇性的，而且需要停機。 ) 
+* 停止寫入應用程式。 （這是選擇性步驟，需要停機）。
 * 製作磁片的快照集。
 * 從快照集建立新的受控磁片。
 * 在 AKS 中建立持續性磁片區。
-* 將 pod 規格更新為[使用現有的磁片](./azure-disk-volume.md)區，而不是 PersistentVolumeClaims (靜態布建) 。
+* 將 pod 規格更新為[使用現有的磁片](./azure-disk-volume.md)區，而不是 PersistentVolumeClaims （靜態布建）。
 * 將您的應用程式部署至 AKS。
 * 驗證您的應用程式是否正常運作。
 * 將您的即時流量指向新的 AKS 叢集。
@@ -158,7 +158,7 @@ az aks create \
 
 ### <a name="deployment-of-your-cluster-configuration"></a>部署叢集設定
 
-我們建議您 (CI) 使用現有的持續整合，並持續傳遞 (CD) 管線，以將已知良好的設定部署至 AKS。 您可以使用 Azure Pipelines 來[建立應用程式，並將其部署至 AKS](/azure/devops/pipelines/ecosystems/kubernetes/aks-template?view=azure-devops)。 複製現有的部署工作，並確定 `kubeconfig` 指向新的 AKS 叢集。
+建議您使用現有的持續整合（CI）和持續傳遞（CD）管線，將已知良好的設定部署至 AKS。 您可以使用 Azure Pipelines 來[建立應用程式，並將其部署至 AKS](/azure/devops/pipelines/ecosystems/kubernetes/aks-template?view=azure-devops)。 複製現有的部署工作，並確定 `kubeconfig` 指向新的 AKS 叢集。
 
 如果無法這麼做，請從現有的 Kubernetes 叢集中匯出資源定義，然後將它們套用至 AKS。 您可以使用 `kubectl` 匯出物件。
 

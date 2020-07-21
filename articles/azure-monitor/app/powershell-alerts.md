@@ -3,12 +3,12 @@ title: 在 Application Insights 中使用 PowerShell 設定警示 | Microsoft Do
 description: 自動化 Application Insights 的組態以取得有關度量變更的電子郵件。
 ms.topic: conceptual
 ms.date: 10/31/2016
-ms.openlocfilehash: ea33ecfbc02bfed75a66e751ce1788474a6d0e8f
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 3a3d614ec57242a2ea4b29a86d6365a2efe56f94
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86111298"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516952"
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>在 Application Insights 中使用 PowerShell 設定警示
 
@@ -139,7 +139,7 @@ Add-AzMetricAlertRule -Name "poor sales" `
 您可以[自動回應至警示](../../azure-monitor/platform/alerts-webhooks.md)。 Azure 會在出現警示時呼叫您選擇的網址。
 
 ## <a name="see-also"></a>另請參閱
-* [用來設定 Application Insights 的指令碼](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#creating-a-resource-automatically)
+* [用來設定 Application Insights 的指令碼](./create-new-resource.md#creating-a-resource-automatically)
 * [從範本建立 Application Insights 和 Web 測試資源](powershell.md)
 * [自動化 Microsoft Azure 診斷與 Application Insights 的耦合](powershell-azure-diagnostics.md)
 * [自動回應至警示](../../azure-monitor/platform/alerts-webhooks.md)

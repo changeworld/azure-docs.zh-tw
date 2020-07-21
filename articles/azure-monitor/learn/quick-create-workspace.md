@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/26/2020
-ms.openlocfilehash: e6ef8fb7dfd98a509b0b89e049c70169dafbe134
-ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
+ms.openlocfilehash: de5b490f1ffd50e44defb1c3e3c6f0ad32ca689c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83860557"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516374"
 ---
 # <a name="create-a-log-analytics-workspace-in-the-azure-portal"></a>在 Azure 入口網站中建立 Log Analytics 工作區
 使用 [Log Analytics 工作區] 功能表，以使用 Azure 入口網站建立 Log Analytics 工作區。 Log Analytics 工作區是 Azure 監視器記錄資料的唯一環境。 每個工作區都有自己的資料存放庫與設定，而且資料來源和解決方案會設定為將其資料儲存在特定的工作區中。 如果您想從下列來源收集資料，就必須要有 Log Analytics 工作區：
@@ -51,17 +52,17 @@ ms.locfileid: "83860557"
 在驗證資訊及建立工作區時，您可以在功能表的 [通知] 底下追蹤其進度。 
 
 ## <a name="troubleshooting"></a>疑難排解
-當您建立在過去 14 天內刪除且處於[虛刪除狀態](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#soft-delete-behavior)的工作區時，根據您的工作區設定，此作業可能會有不同的結果：
+當您建立在過去 14 天內刪除且處於[虛刪除狀態](../platform/delete-workspace.md#soft-delete-behavior)的工作區時，根據您的工作區設定，此作業可能會有不同的結果：
 1. 如果您提供的工作區名稱、資源群組、訂用帳戶和區域與已刪除工作區中的相同，您的工作區將會復原，包括其資料、設定和連接的代理程式。
 2. 如果您使用相同的工作區名稱，但是不同的資源群組、訂用帳戶或區域，您將會收到錯誤：「此工作區名稱已在使用中。請嘗試另一個名稱。」 若要覆寫虛刪除並永久刪除您的工作區，並使用相同的名稱建立新的工作區，請遵循下列步驟先復原工作區，然後執行永久刪除：
-   - [復原](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#recover-workspace)您的工作區
-   - [永久刪除](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#permanent-workspace-delete)您的工作區
+   - [復原](../platform/delete-workspace.md#recover-workspace)您的工作區
+   - [永久刪除](../platform/delete-workspace.md#permanent-workspace-delete)您的工作區
    - 使用相同工作區名稱建立新的工作區
 
 ## <a name="next-steps"></a>後續步驟
 有了可用的工作區之後，您可以設定監視遙測的集合、執行記錄搜尋以分析該資料，並且新增管理解決方案，以提供額外的資料和分析深入解析。 
 
-* 若要從具有 Azure 診斷或 Azure 儲存體的 Azure 資源啟用資料收集，請參閱[收集 Azure 服務的記錄和計量以便使用於 Log Analytics](../platform/collect-azure-metrics-logs.md)。  
+* 若要從具有 Azure 診斷或 Azure 儲存體的 Azure 資源啟用資料收集，請參閱[收集 Azure 服務的記錄和計量以便使用於 Log Analytics](../platform/resource-logs.md#send-to-log-analytics-workspace)。  
 * [新增 System Center Operations Manager 作為資料來源](../platform/om-agents.md)，以從會報告 Operations Manager 管理群組的代理程式收集資料，並且將其儲存在 Log Analytics 工作區中。 
 * 連線 [Configuration Manager](../platform/collect-sccm.md) 以匯入階層中集合成員的電腦。  
 * 檢閱可用的[監視解決方案](../insights/solutions.md)，以及如何從您的工作區新增或移除解決方案。

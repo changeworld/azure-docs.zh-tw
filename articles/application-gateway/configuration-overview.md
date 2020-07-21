@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: conceptual
-ms.date: 03/24/2020
+ms.date: 07/20/2020
 ms.author: absha
-ms.openlocfilehash: 1e3ef1133628f0470ee92237abf20d3bb0a9e21a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0245a23e46770840295904685c913826950c0642
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85254662"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517836"
 ---
 # <a name="application-gateway-configuration-overview"></a>應用程式閘道設定總覽
 
@@ -25,7 +25,7 @@ Azure 應用程式閘道是由數個元件所組成，您可以在不同的案�
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 ### <a name="azure-virtual-network-and-dedicated-subnet"></a>Azure 虛擬網路和專用子網
 
@@ -146,7 +146,7 @@ Azure 也會在每個子網中保留五個 IP 位址供內部使用：前四個�
 
 - 如果您想要接受所有要求（適用于任何網域）並轉送至後端集區，請選擇 [基本]。 瞭解[如何建立具有基本接聽程式的應用程式閘道](https://docs.microsoft.com/azure/application-gateway/quick-create-portal)。
 
-- 如果您想要根據*主機*標頭或主機名稱，將要求轉送至不同的後端集區，請選擇 [多網站接聽程式]，您也必須指定符合連入要求的主機名稱。 這是因為應用程式閘道依賴 HTTP 1.1 主機標頭，在同一個公用 IP 位址和埠上裝載多個網站。
+- 如果您想要根據*主機*標頭或主機名稱，將要求轉送至不同的後端集區，請選擇 [多網站接聽程式]，您也必須指定與連入要求相符的主機名稱。 這是因為應用程式閘道依賴 HTTP 1.1 主機標頭，在同一個公用 IP 位址和埠上裝載多個網站。 若要深入瞭解，請參閱[使用應用程式閘道裝載多個網站](multiple-site-overview.md)。
 
 #### <a name="order-of-processing-listeners"></a>處理接聽程式的順序
 
@@ -279,12 +279,16 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 - [使用 PowerShell 將流量重新導向至外部網站](redirect-external-site-powershell.md)
 - [使用 CLI 將流量重新導向至外部網站](redirect-external-site-cli.md)
 
-#### <a name="rewrite-the-http-header-setting"></a>重寫 HTTP 標頭設定
+### <a name="rewrite-http-headers-and-url"></a>重寫 HTTP 標頭和 URL
 
-此設定會在要求和回應封包于用戶端與後端集區之間移動時，新增、移除或更新 HTTP 要求和回應標頭。 如需詳細資訊，請參閱：
+藉由使用重寫規則，您可以新增、移除或更新 HTTP （S）要求和回應標頭，以及 URL 路徑和查詢字串參數，因為要求和回應封包會透過應用程式閘道在用戶端和後端集區之間移動。
 
- - [重寫 HTTP 標頭總覽](rewrite-http-headers.md)
+標頭和 URL 參數可以設定為靜態值，或設為其他標頭和伺服器變數。 這有助於重要的使用案例，例如，解壓縮用戶端 IP 位址、移除後端的機密資訊、增加更多安全性等等。
+如需詳細資訊，請參閱：
+
+ - [重寫 HTTP 標頭總覽](rewrite-http-headers-url.md)
  - [設定 HTTP 標頭重寫](rewrite-http-headers-portal.md)
+ - [設定 URL 重寫](rewrite-url-portal.md)
 
 ## <a name="http-settings"></a>HTTP 設定
 
@@ -357,7 +361,7 @@ Azure 應用程式閘道會使用閘道管理的 cookie 來維護使用者會話
 > [!NOTE]
 > 自訂探查不會監視後端集區的健康情況，除非對應的 HTTP 設定已明確與接聽程式相關聯。
 
-### <a name="pick-host-name-from-back-end-address"></a><a id="pick"/></a>從後端位址挑選主機名稱
+### <a name="pick-host-name-from-back-end-address"></a><a name="pick"></a>從後端位址挑選主機名稱
 
 這項功能會將要求中的*主機*標頭動態設定為後端集區的主機名稱。 它會使用 IP 位址或 FQDN。
 

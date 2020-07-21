@@ -3,14 +3,15 @@ title: 在 Azure 入口網站中建立和管理動作群組
 description: 了解如何在 Azure 入口網站中建立和管理動作群組。
 author: dkamstra
 ms.topic: conceptual
-ms.date: 6/5/2020
+ms.date: 07/15/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: dbc810ad7227d9d47099fe85e89a92c8fa750302
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e88d51e014244892fc3ac9e2cca242dacdfd9997
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84465247"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516170"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>在 Azure 入口網站中建立和管理動作群組
 動作群組是 Azure 訂用帳戶擁有者定義的通知喜好設定集合。 Azure 監視器和服務健康狀態警示使用動作群組來通知使用者警示已被觸發。 根據使用者的需求而定，不同的警示可能使用相同的動作群組或不同的動作群組。 一個訂用帳戶中最多可設定 2,000 個動作群組。
@@ -69,7 +70,7 @@ ms.locfileid: "84465247"
 ## <a name="action-specific-information"></a>動作特定資訊
 
 > [!NOTE]
-> 如需以下每個項目的數值限制，請參閱[監視的訂用帳戶服務限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-monitor-limits)。  
+> 如需以下每個項目的數值限制，請參閱[監視的訂用帳戶服務限制](../../azure-resource-manager/management/azure-subscription-service-limits.md#azure-monitor-limits)。  
 
 ### <a name="automation-runbook"></a>自動化 Runbook
 請參閱 [Azure 訂用帳戶服務限制](../../azure-resource-manager/management/azure-subscription-service-limits.md)，了解 Runbook 承載的限制。
@@ -106,21 +107,21 @@ ITSM 動作需要 ITSM 連線。 了解如何建立 [ITSM 連線](../../azure-mo
 您在動作群組中可以有有限數量的邏輯應用程式動作。
 
 ### <a name="secure-webhook"></a>安全 Webhook
-動作群組 Webhook 動作可讓您利用 Azure Active Directory 來保護您的動作群組與受保護 Web API (Webhook 端點) 之間的連線。 利用這項功能的整體工作流程說明如下。 如需 Azure AD 應用程式和服務主體的概觀，請參閱 [Microsoft 身分識別平台 (v2.0) 概觀](https://docs.microsoft.com/azure/active-directory/develop/v2-overview)。
+動作群組 Webhook 動作可讓您利用 Azure Active Directory 來保護您的動作群組與受保護 Web API (Webhook 端點) 之間的連線。 利用這項功能的整體工作流程說明如下。 如需 Azure AD 應用程式和服務主體的概觀，請參閱 [Microsoft 身分識別平台 (v2.0) 概觀](../../active-directory/develop/v2-overview.md)。
 
-1. 為受保護 Web API 建立 Azure AD 應用程式。 請參閱＜ https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-overview ＞。
-    - 將受保護 API 設定為可由精靈應用程式呼叫。
+1. 為受保護 Web API 建立 Azure AD 應用程式。 請參閱[受保護的 Web API：應用程式註冊](https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-app-registration)。
+    - 將受保護的 API 設定為可[由背景程式應用程式呼叫](https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-app-registration#if-your-web-api-is-called-by-a-daemon-app)。
     
-1. 啟用 [動作群組] 以使用您的 Azure AD 應用程式。
+2. 啟用 [動作群組] 以使用您的 Azure AD 應用程式。
 
     > [!NOTE]
-    > 您必須是 [Azure AD 應用程式系統管理員角色](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#available-roles)的成員，才能執行此指令碼。
+    > 您必須是 [Azure AD 應用程式系統管理員角色](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#available-roles)的成員，才能執行此指令碼。
     
     - 修改 PowerShell 指令碼的 Connect-AzureAD 呼叫，以使用您的 Azure AD 租用戶識別碼。
     - 修改 PowerShell 腳本的變數 $myAzureADApplicationObjectId，以使用您 Azure AD 應用程式的物件識別碼。
     - 執行修改過的指令碼。
     
-1. 設定動作群組安全 Webhook 動作。
+3. 設定動作群組安全 Webhook 動作。
     - 從指令碼複製值 $myApp.ObjectId，並在 Webhook 動作定義的 [應用程式物件識別碼] 欄位中輸入。
     
     ![安全 Webhook 動作](./media/action-groups/action-groups-secure-webhook.png)
@@ -252,4 +253,4 @@ Webhook 會使用下列規則來處理
 * 深入瞭解[ITSM 連接器](../../azure-monitor/platform/itsmc-overview.md)。
 * 深入了解警示的[速率限制](../../azure-monitor/platform/alerts-rate-limiting.md)。
 * 取得[活動記錄警示的概觀](../../azure-monitor/platform/alerts-overview.md)，並了解如何收到警示。  
-* 了解如何[設定每當服務健康狀態通知公佈時的警示](../../azure-monitor/platform/alerts-activity-log-service-notifications.md)。
+* 了解如何[設定每當服務健康狀態通知公佈時的警示](../../service-health/alerts-activity-log-service-notifications-portal.md)。

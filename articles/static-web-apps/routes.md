@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: bde0db179216426c4279e5b03b416a04176430bb
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 48c05bf7b4cbecb09ef3bb113832974bee4bc6b2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86056781"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518770"
 ---
 # <a name="routes-in-azure-static-web-apps-preview"></a>Azure 靜態 Web Apps 預覽版中的路由
 
@@ -28,7 +28,7 @@ Azure 靜態 Web Apps 中的路由會定義靜態內容和 Api<sup>1</sup>的後
 
 如需詳細資訊，請參閱[範例路由](#example-route-file)檔案。
 
-## <a name="location"></a>位置
+## <a name="location"></a>Location
 
 _routes.json_ 檔案必須存在於應用程式組建成品資料夾的根目錄。 如果您的 Web 應用程式包含從特定資料夾將建置的檔案複製到組建成品資料夾的組建步驟，則 _routes.json_ 檔案必須存在於該特定資料夾中。
 
@@ -48,8 +48,8 @@ _routes.json_ 檔案必須存在於應用程式組建成品資料夾的根目錄
 | 規則內容  | 必要 | 預設值 | 註解                                                      |
 | -------------- | -------- | ------------- | ------------------------------------------------------------ |
 | `route`        | 是      | n/a          | 呼叫者所要求的路由模式。<ul><li>路由路徑結尾處支援[萬用字元](#wildcards)。 例如，路由 _admin/\*_ 符合 _admin_ 路徑下的任何路由。<li>路由的預設檔案是 _index.html_。</ul>|
-| `serve`        | No       | n/a          | 定義從要求傳回的檔案或路徑。 檔案路徑和名稱可與所要求的路徑不同。 如果 `serve` 未定義值，則會使用要求的路徑。 不支援 Querystring 參數;`serve`值必須指向實際檔案。  |
-| `allowedRoles` | No       | 匿名     | 角色名稱的陣列。 <ul><li>有效的字元包括 `a-z`、`A-Z`、`0-9` 和 `_`。<li>內建角色 `anonymous` 適用於所有未經驗證的使用者。<li>內建角色 `authenticated` 適用於任何已登入的使用者。<li>使用者必須至少屬於一個角色。<li>角色會以 _OR_ 為基礎進行比對。 如果使用者是在任何列出的角色中，則會授與存取權。<li>個別使用者會透過[邀請](authentication-authorization.md)，與角色相關聯。</ul> |
+| `serve`        | 否       | n/a          | 定義從要求傳回的檔案或路徑。 檔案路徑和名稱可與所要求的路徑不同。 如果 `serve` 未定義值，則會使用要求的路徑。 不支援 Querystring 參數;`serve`值必須指向實際檔案。  |
+| `allowedRoles` | 否       | 匿名     | 角色名稱的陣列。 <ul><li>有效的字元包括 `a-z`、`A-Z`、`0-9` 和 `_`。<li>內建角色 `anonymous` 適用於所有未經驗證的使用者。<li>內建角色 `authenticated` 適用於任何已登入的使用者。<li>使用者必須至少屬於一個角色。<li>角色會以 _OR_ 為基礎進行比對。 如果使用者是在任何列出的角色中，則會授與存取權。<li>個別使用者會透過[邀請](authentication-authorization.md)，與角色相關聯。</ul> |
 | `statusCode`   | 否       | 200           | 要求的 [HTTP 狀態碼](https://wikipedia.org/wiki/List_of_HTTP_status_codes)回應。 |
 
 ## <a name="securing-routes-with-roles"></a>使用角色保護路由
@@ -295,7 +295,7 @@ _routes.json_ 檔案必須存在於應用程式組建成品資料夾的根目錄
 | _/unknown-folder_ | 提供 _/custom-404.html_ 檔案。 |
 | 副檔名為的檔案 `.custom` | 是以 `text/html` MIME 類型提供 |
 
-- 所有回應都包含 `content-security-policy` 具有值的標頭 `default-src https: 'unsafe-eval' 'unsafe-inline'; object-src 'none'` 。
+所有回應都包含 `content-security-policy` 具有值的標頭 `default-src https: 'unsafe-eval' 'unsafe-inline'; object-src 'none'` 。
 
 <sup>1</sup> API 函式的路由規則僅支援[使用角色的](#securing-routes-with-roles)重新[導向](#redirects)和保護路由。
 

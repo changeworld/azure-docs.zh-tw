@@ -8,11 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: victorh
-ms.openlocfilehash: 6829efa007e9e67866bdc0efbca4d095155c35e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f752604b86634948954dd670d0b7f4edb5b3e2be
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82889692"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517870"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>應用程式閘道的後端健康情況和診斷記錄
 
@@ -155,9 +156,11 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 
 ### <a name="access-log"></a>存取記錄檔
 
-只有當您如上述步驟所述，在每個應用程式閘道上啟用存取記錄，才會產生存取記錄。 資料會儲存在您啟用記錄功能時指定的儲存體帳戶中。 應用程式閘道的每個存取都會以 JSON 格式記錄，如下列 v1 範例所示：
+只有當您如上述步驟所述，在每個應用程式閘道上啟用存取記錄，才會產生存取記錄。 資料會儲存在您啟用記錄功能時指定的儲存體帳戶中。 應用程式閘道的每個存取都會以 JSON 格式記錄下來，如下所示。 
 
-|值  |說明  |
+#### <a name="for-application-gateway-standard-and-waf-sku-v1"></a>適用于應用程式閘道 Standard 和 WAF SKU （v1）
+
+|值  |描述  |
 |---------|---------|
 |instanceId     | 處理要求的應用程式閘道執行個體。        |
 |clientIP     | 要求的原始 IP。        |
@@ -199,9 +202,9 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
     }
 }
 ```
-對於應用程式閘道和 WAF v2，記錄檔會顯示更多詳細資訊：
+#### <a name="for-application-gateway-and-waf-v2-sku"></a>適用于應用程式閘道和 WAF v2 SKU
 
-|值  |說明  |
+|值  |描述  |
 |---------|---------|
 |instanceId     | 處理要求的應用程式閘道執行個體。        |
 |clientIP     | 要求的原始 IP。        |
@@ -220,7 +223,10 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 |serverRouted| 應用程式閘道將要求路由至的後端伺服器。|
 |serverStatus| 後端伺服器的 HTTP 狀態碼。|
 |serverResponseLatency| 後端伺服器回應的延遲。|
-|主機| 要求的主機標頭中所列的位址。|
+|主機| 要求的主機標頭中所列的位址。 若已重寫，此欄位會包含更新的主機名稱|
+|originalRequestUriWithArgs| 此欄位包含原始的要求 URL |
+|requestUri| 此欄位包含在上重寫作業之後的 URL 應用程式閘道 |
+|originalHost| 此欄位包含原始的要求主機名稱
 ```json
 {
     "resourceId": "/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/PEERINGTEST/PROVIDERS/MICROSOFT.NETWORK/APPLICATIONGATEWAYS/{applicationGatewayName}",
@@ -255,13 +261,13 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 只有當您如上述步驟所述，在每個應用程式閘道上啟用效能記錄，才會產生效能記錄。 資料會儲存在您啟用記錄功能時指定的儲存體帳戶中。 產生效能記錄資料的時間間隔為 1 分鐘。 它僅適用于 v1 SKU。 針對 v2 SKU，請使用效能資料的[計量](application-gateway-metrics.md)。 會記錄下列資料：
 
 
-|值  |說明  |
+|值  |描述  |
 |---------|---------|
 |instanceId     |  將產生此應用程式閘道執行個體的效能資料。 應用程式閘道若有多個執行個體，則是一個執行個體一行資料。        |
 |healthyHostCount     | 後端集區中狀況良好主機的數目。        |
 |unHealthyHostCount     | 後端集區中狀況不良主機的數目。        |
 |requestCount     | 處理的要求數目。        |
-|latency | 從執行個體到處理要求的後端之間的要求平均延遲，單位為毫秒。 |
+|延遲 | 從執行個體到處理要求的後端之間的要求平均延遲，單位為毫秒。 |
 |failedRequestCount| 失敗的要求數目。|
 |throughput| 自最後一個記錄以來的平均輸送量，測量單位為每秒位元組。|
 
@@ -292,7 +298,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 只有當您如上述步驟所述，在每個應用程式閘道上啟用防火牆記錄，才會產生防火牆記錄。 此記錄也需要在應用程式閘道上設定該 Web 應用程式防火牆。 資料會儲存在您啟用記錄功能時指定的儲存體帳戶中。 會記錄下列資料：
 
 
-|值  |說明  |
+|值  |描述  |
 |---------|---------|
 |instanceId     | 將產生此應用程式閘道執行個體的防火牆資料。 應用程式閘道若有多個執行個體，則是一個執行個體一行資料。         |
 |clientIp     |   要求的原始 IP。      |

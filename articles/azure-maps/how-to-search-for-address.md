@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: cf0e5267885df1ace51271c53bb2d68ee5002f00
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2d8c7ce62f7c592c396fa1ea7a7f5e7dc7df2dc1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80335438"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517581"
 ---
 # <a name="search-for-a-location-using-azure-maps-search-services"></a>使用 Azure 地圖服務搜尋服務搜尋位置
 
@@ -27,9 +27,9 @@ Azure 地圖服務[搜尋服務](https://docs.microsoft.com/rest/api/maps/search
 * 進行[反向位址搜尋](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse)，將座標位置轉譯為街道位址
 * 使用[搜尋位址反向交叉街道 API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreversecrossstreet)搜尋交叉街道
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
-若要完成本文中的步驟，您必須先建立 Azure 地圖服務帳戶，並取得地圖服務帳戶金鑰。 依照[建立帳戶](quick-demo-map-app.md#create-an-account-with-azure-maps)中的指示來建立 Azure 地圖服務帳戶訂用帳戶，並遵循[取得主要金鑰](quick-demo-map-app.md#get-the-primary-key-for-your-account)中的步驟來取得您帳戶的主要金鑰。 如需 Azure 地圖服務中驗證的詳細資訊，請參閱[管理 Azure 地圖服務中的驗證](./how-to-manage-authentication.md)。
+若要完成本文中的步驟，您必須先建立 Azure 地圖服務帳戶，並取得地圖服務帳戶金鑰。 依照[建立帳戶](quick-demo-map-app.md#create-an-azure-maps-account)中的指示來建立 Azure 地圖服務帳戶訂用帳戶，並遵循[取得主要金鑰](quick-demo-map-app.md#get-the-primary-key-for-your-account)中的步驟來取得您帳戶的主要金鑰。 如需 Azure 地圖服務中驗證的詳細資訊，請參閱[管理 Azure 地圖服務中的驗證](./how-to-manage-authentication.md)。
 
 本文使用 [Postman 應用程式](https://www.getpostman.com/apps)來建置 REST 呼叫。 您可以使用您偏好的任何 API 開發環境。
 
@@ -55,7 +55,7 @@ Azure 地圖服務[搜尋服務](https://docs.microsoft.com/rest/api/maps/search
 
 ![地址搜尋](./media/how-to-search-for-address/address_search_params.png) 
 
-| 機碼 | 值 | 
+| Key | 值 | 
 |------------------|-------------------------| 
 | api-version | 1.0 | 
 | subscription-key | \<your Azure Maps key\> | 
@@ -73,7 +73,7 @@ Azure 地圖服務[搜尋服務](https://docs.microsoft.com/rest/api/maps/search
 
 6. 將下列機碼值組加入 **Params** 區段並按一下 [傳送]****： 
 
-| 機碼 | 值 | 
+| Key | 值 | 
 |-----|------------| 
 | typeahead | true | 
 
@@ -105,7 +105,7 @@ Azure 地圖服務[搜尋服務](https://docs.microsoft.com/rest/api/maps/search
 
     ![模糊搜尋](./media/how-to-search-for-address/fuzzy_search_params.png)
 
-    | 機碼 | 值 |
+    | Key | 值 |
     |------------------|-------------------------|
     | api-version | 1.0 |
     | subscription-key | \<your Azure Maps key\> |
@@ -119,7 +119,7 @@ Azure 地圖服務[搜尋服務](https://docs.microsoft.com/rest/api/maps/search
 
 5. 將下列機碼值組加入 **Params** 區段並按一下 [傳送]****：
 
-    | 機碼 | 值 |
+    | Key | 值 |
     |------------------|-------------------------|
     | countrySet | 美國 |
   
@@ -131,7 +131,7 @@ Azure 地圖服務[搜尋服務](https://docs.microsoft.com/rest/api/maps/search
 
     ![模糊搜尋](./media/how-to-search-for-address/fuzzy_search_latlon.png)
   
-    | 機碼 | 值 |
+    | Key | 值 |
     |-----|------------|
     | lat | 47.620525 |
     | lon | -122.349274 |
@@ -159,7 +159,7 @@ Azure 地圖服務[取得搜尋位址反向 API]( https://docs.microsoft.com/res
   
     ![反向位址搜尋參數](./media/how-to-search-for-address/reverse_address_search_params.png)
   
-    | 機碼 | 值 |
+    | Key | 值 |
     |------------------|-------------------------|
     | api-version | 1.0 |
     | subscription-key | \<your Azure Maps key\> |
@@ -171,7 +171,7 @@ Azure 地圖服務[取得搜尋位址反向 API]( https://docs.microsoft.com/res
   
 5. 將下列機碼值組加入 **Params** 區段並按一下 [傳送]****：
 
-    | 機碼 | 值 |
+    | Key | 值 |
     |-----|------------|
     | number | true |
 
@@ -179,7 +179,7 @@ Azure 地圖服務[取得搜尋位址反向 API]( https://docs.microsoft.com/res
   
 6. 將下列機碼值組加入 **Params** 區段並按一下 [傳送]****：
 
-    | 機碼 | 值 |
+    | Key | 值 |
     |-----|------------|
     | returnSpeedLimit | true |
   
@@ -187,7 +187,7 @@ Azure 地圖服務[取得搜尋位址反向 API]( https://docs.microsoft.com/res
 
 7. 將下列機碼值組加入 **Params** 區段並按一下 [傳送]****：
 
-    | 機碼 | 值 |
+    | Key | 值 |
     |-----|------------|
     | returnRoadUse | true |
 
@@ -195,7 +195,7 @@ Azure 地圖服務[取得搜尋位址反向 API]( https://docs.microsoft.com/res
 
 8. 將下列機碼值組加入 **Params** 區段並按一下 [傳送]****：
 
-    | 機碼 | 值 |
+    | Key | 值 |
     |-----|------------|
     | roadUse | true |
 
@@ -217,7 +217,7 @@ Azure 地圖服務[取得搜尋位址反向 API]( https://docs.microsoft.com/res
   
 3. 按一下 [Params]****，然後輸入下列金鑰 / 值組來作為要求 URL 中的查詢或路徑參數：
   
-    | 機碼 | 值 |
+    | Key | 值 |
     |------------------|-------------------------|
     | api-version | 1.0 |
     | subscription-key | \<your Azure Maps key\> |

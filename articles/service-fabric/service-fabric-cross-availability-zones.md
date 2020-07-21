@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: a8f883457c2d6da6d2776bb2119caf5d09565170
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: d763511032ebff9116702b1f649751a4b7b52afd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86246413"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518991"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>跨可用性區域部署 Azure Service Fabric 叢集
 Azure 中的可用性區域是高可用性供應專案，可保護您的應用程式和資料不受資料中心失敗的影響。 「可用性區域」是一種獨特的實體位置，具備獨立的電源、冷卻和網路功能，可在 Azure 區域內使用。
@@ -27,7 +27,7 @@ Service Fabric 藉由部署釘選到特定區域的節點類型，支援跨可�
 * 叢集可靠性層級設定為 [白金]。
 * 標示為主要的三個節點類型。
     * 每個節點類型都應該對應到位於不同區域中的專屬虛擬機器擴展集。
-    * 每個虛擬機器擴展集至少應有五個節點 (銀級持久性) 。
+    * 每個虛擬機器擴展集至少應有五個節點（銀級耐久性）。
 * 使用標準 SKU 的單一公用 IP 資源。
 * 使用標準 SKU 的單一 Load Balancer 資源。
 * 您用來部署虛擬機器擴展集的子網所參考的 NSG。
@@ -170,7 +170,7 @@ Service Fabric 藉由部署釘選到特定區域的節點類型，支援跨可�
     "properties": {
         "type": "ServiceFabricNode",
         "autoUpgradeMinorVersion": false,
-        "publisher": "Microsoft.Azure.ServiceFabric.Test",
+        "publisher": "Microsoft.Azure.ServiceFabric",
         "settings": {
             "clusterEndpoint": "[reference(parameters('clusterName')).clusterEndpoint]",
             "nodeTypeRef": "[parameters('vmNodeType1Name')]",
@@ -260,7 +260,7 @@ Service Fabric 藉由部署釘選到特定區域的節點類型，支援跨可�
 * 您用來部署虛擬機器擴展集的子網所參考的 NSG。
 * 標示為主要的三個節點類型。
     * 每個節點類型都應該對應到位於不同區域中的專屬虛擬機器擴展集。
-    * 每個虛擬機器擴展集至少應有五個節點 (銀級持久性) 。
+    * 每個虛擬機器擴展集至少應有五個節點（銀級耐久性）。
 
 如需這些資源的範例，請參閱[範例範本](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/10-VM-Ubuntu-2-NodeType-Secure)。
 

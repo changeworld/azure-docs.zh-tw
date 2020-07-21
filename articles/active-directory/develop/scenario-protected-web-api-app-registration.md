@@ -9,14 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 214d379525f2ee534415d713aa298ec858a84c92
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c1fab15cade2ce23e053bc73028e6420692c3d8a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81868835"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518269"
 ---
 # <a name="protected-web-api-app-registration"></a>受保護的 Web API：應用程式註冊
 
@@ -28,15 +29,15 @@ ms.locfileid: "81868835"
 
 Microsoft 身分識別平臺端點可以發出 v1.0 權杖和 v2.0 權杖。 如需這些權杖的詳細資訊，請參閱[存取權杖](access-tokens.md)。
 
-接受的權杖版本取決於您在建立應用程式時所選擇的**支援帳戶類型**值。
+當您在 Azure 入口網站中建立 Web API 應用程式註冊時，您的 API 可能會接受的權杖版本取決於您所**支援的帳戶類型**選項。
 
-- 如果**支援的帳戶類型**的值是**任何組織目錄中的帳戶，以及個人 Microsoft 帳戶（例如 Skype、Xbox、Outlook.com）**，則接受的權杖版本為2.0 版。
-- 否則，接受的權杖版本為 v1.0。
+- 如果**支援的帳戶類型**的值是**任何組織目錄中的帳戶，以及個人 Microsoft 帳戶（例如 Skype、Xbox、Outlook.com）**，則接受的權杖版本必須是2.0 版。
+- 否則，接受的權杖版本可以是 v1.0。
 
 建立應用程式之後，您可以依照下列步驟來判斷或變更接受的權杖版本：
 
 1. 在 [Azure 入口網站中，選取您的應用程式，然後選取 [**資訊清單**]。
-1. 在資訊清單中尋找**accessTokenAcceptedVersion**的屬性。 屬性的預設值為2。
+1. 在資訊清單中尋找**accessTokenAcceptedVersion**的屬性。
 1. 值會指定 Azure Active Directory （Azure AD） Web API 所接受的權杖版本。
     - 如果值為2，則 Web API 接受 v2.0 權杖。
     - 如果值為**null**，則 Web API 會接受 v1.0 權杖。
@@ -51,7 +52,7 @@ Web Api 不需要註冊重新導向 URI，因為沒有任何使用者以互動�
 
 ## <a name="exposed-api"></a>公開的 API
 
-Web Api 特定的其他設定是公開的 API 和公開的範圍。
+Web Api 特定的其他設定是公開的 API 和公開的範圍或應用程式角色。
 
 ### <a name="application-id-uri-and-scopes"></a>應用程式識別碼 URI 和範圍
 
@@ -63,7 +64,7 @@ Web Api 特定的其他設定是公開的 API 和公開的範圍。
 - 一或多個範圍
 - 一或多個應用程式角色
 
-根據預設，應用程式註冊入口網站會建議您使用資源 URI `api://{clientId}` 。 此 URI 是唯一的，但不是人們可讀取的。 如果您變更 URI，請確定新的值是唯一的。
+根據預設，應用程式註冊入口網站會建議您使用資源 URI `api://{clientId}` 。 此 URI 是唯一的，但不是人們可讀取的。 如果您變更 URI，請確定新的值是唯一的。 應用程式註冊入口網站可確保您使用[已設定的發行者網域](howto-configure-publisher-domain.md)
 
 在用戶端應用程式中，範圍會顯示為*委派的許可權*，而應用程式角色會顯示為您 Web API 的*應用程式許可權*。
 
@@ -71,6 +72,8 @@ Web Api 特定的其他設定是公開的 API 和公開的範圍。
 
 - 如使用者所見。
 - 如租使用者系統管理員所見，他可以授與系統管理員同意。
+
+使用者無法同意應用程式角色（因為應用程式會使用它們來代表本身呼叫 Web API）。 租使用者系統管理員必須同意 Web API 公開應用程式角色的用戶端應用程式。 如需詳細資訊，請參閱系統[管理員同意](v2-admin-consent.md)
 
 ### <a name="exposing-delegated-permissions-scopes"></a>公開委派的許可權（範圍）
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/11/2020
 ms.author: memildin
-ms.openlocfilehash: 36c3515bbdd0f08063ecad2ba26fc7b92a5f0e19
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 19a6764b68a7a06f9777bac94c9f34aaf09aec0b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970683"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519572"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Azure 資訊安全中心內新功能的封存？
 
@@ -126,7 +126,7 @@ Kubernetes 很快就成為在雲端中部署及管理軟體的新標準。 少�
 
 ### <a name="virtual-machine-vulnerability-assessment-preview"></a>虛擬機器弱點評估 (預覽)
 
-安裝在虛擬機器中的應用程式通常會有可能導致虛擬機器缺口的弱點。 我們宣佈資訊安全中心標準層級包含適用於虛擬機器的內建弱點評估，不需額外付費。 弱點評量是由 Qualys 提供且處於公開預覽，可讓您持續掃描虛擬機器上所有已安裝的應用程式，以找出易受攻擊的應用程式，並在資訊安全中心入口網站的體驗中呈現結果。 資訊安全中心會負責所有部署作業，因此使用者無須執行任何額外的工作。 接下來，我們打算提供弱點評估選項，以支援客戶的獨特商務需求。
+安裝在虛擬機器中的應用程式通常會有可能導致虛擬機器缺口的弱點。 我們宣佈資訊安全中心 standard 層包含適用于虛擬機器的內建弱點評估，不需額外付費。 弱點評量是由 Qualys 提供且處於公開預覽，可讓您持續掃描虛擬機器上所有已安裝的應用程式，以找出易受攻擊的應用程式，並在資訊安全中心入口網站的體驗中呈現結果。 資訊安全中心會負責所有部署作業，因此使用者無須執行任何額外的工作。 接下來，我們打算提供弱點評估選項，以支援客戶的獨特商務需求。
 
 [深入了解 Azure 虛擬機器的弱點評量](security-center-vulnerability-assessment-recommendations.md)。
 

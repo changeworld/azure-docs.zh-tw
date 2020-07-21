@@ -4,16 +4,17 @@ description: 傳統警示即將淘汰。 警示可讓您監視 Azure 資源度�
 ms.topic: conceptual
 ms.date: 05/19/2018
 ms.subservice: alerts
-ms.openlocfilehash: e9c269db870f582c176783a4654b5de251e24412
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d120550d17dcac7410a259e131ad81feb0afdf9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81114494"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515949"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>什麼是 Microsoft Azure 中的傳統警示？
 
 > [!NOTE]
-> 本文說明如何建立舊版傳統計量警示。 Azure 監視器現在支援[較新的近乎即時計量警示和新的警示體驗](../../azure-monitor/platform/alerts-overview.md)。 傳統警示已[淘汰](https://docs.microsoft.com/azure/azure-monitor/platform/monitoring-classic-retirement)，但仍受限於僅適用于尚未支援新警示的資源。 
+> 本文說明如何建立舊版傳統計量警示。 Azure 監視器現在支援[較新的近乎即時計量警示和新的警示體驗](../../azure-monitor/platform/alerts-overview.md)。 傳統警示已[淘汰](./monitoring-classic-retirement.md)，但仍受限於僅適用于尚未支援新警示的資源。 
 >
 
 警示可讓您對資料設定條件，並在最近的監視資料符合條件時收到通知。
@@ -88,7 +89,7 @@ Webhook 可啟用自動化和修復，例如使用：
 * [透過 Azure 入口網站設定傳統的計量警示](alerts-classic-portal.md)
 * 設定[傳統的計量警示 PowerShell](alerts-classic-portal.md)
 * 設定[傳統的計量警示命令列介面 (CLI)](alerts-classic-portal.md)
-* 設定[傳統的計量警示 Azure 監視器 REST API](https://msdn.microsoft.com/library/azure/dn931945.aspx)
+* 設定[傳統的計量警示 Azure 監視器 REST API](/rest/api/monitor/alertrules)
 * 深入瞭解[活動記錄](platform-logs-overview.md)
 * [透過 Azure 入口網站設定活動記錄警示](activity-log-alerts.md)
 * [透過 Resource Manager 設定活動記錄警示](alerts-activity-log.md)

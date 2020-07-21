@@ -3,12 +3,12 @@ title: 使用 Azure Pipelines 和 Azure 應用程式 Insights 持續監視您的
 description: 提供使用 Application Insights 快速設定持續監視的指示
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 0d47fb1eccdfcfc7b2719825575f06dc85e62452
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd7cd6a107ed45adb60167a57661b60be5dc8212
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82652758"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517122"
 ---
 # <a name="add-continuous-monitoring-to-your-release-pipeline"></a>將連續監視新增至您的發行管線
 
@@ -101,4 +101,4 @@ az monitor metrics alert create -n 'ServerExceptions_$(Release.DefinitionName)' 
 
 ## <a name="next-steps"></a>後續步驟
 
-如需 Azure Pipelines 的詳細資訊，請參閱[Azure Pipelines 檔](https://docs.microsoft.com/azure/devops/pipelines)。
+如需 Azure Pipelines 的詳細資訊，請參閱[Azure Pipelines 檔](/azure/devops/pipelines)。

@@ -3,15 +3,17 @@ title: 監視已部署的 Azure Kubernetes Service （AKS）叢集 |Microsoft Do
 description: 瞭解如何針對已部署在訂用帳戶中的容器，使用 Azure 監視器來啟用 Azure Kubernetes Service （AKS）叢集的監視。
 ms.topic: conceptual
 ms.date: 09/12/2019
-ms.openlocfilehash: 2dabbe7a5c0e183363fe05bc4e75da0b6a346e6b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-terraform
+ms.openlocfilehash: 438e9cfeebc561815c5c0cdbc70123fab718fed1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85337981"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516646"
 ---
 # <a name="enable-monitoring-of-azure-kubernetes-service-aks-cluster-already-deployed"></a>啟用已部署 Azure Kubernetes Service （AKS）叢集的監視
 
-本文說明如何設定容器的 Azure 監視器，以監視已部署在您訂用帳戶中[Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/)上的受管理 Kubernetes 叢集。
+本文說明如何設定容器的 Azure 監視器，以監視已部署在您訂用帳戶中[Azure Kubernetes Service](../../aks/index.yml)上的受管理 Kubernetes 叢集。
 
 您可以使用其中一種支援的方法，啟用已部署之 AKS 叢集的監視：
 
@@ -166,7 +168,7 @@ provisioningState       : Succeeded
 
 * [使用 Resource Manager 範本與 Azure CLI 部署資源](../../azure-resource-manager/templates/deploy-cli.md)
 
-如果您選擇使用 Azure CLI，必須先在本機安裝並使用 CLI。 您必須執行 Azure CLI 版2.0.59 或更新版本。 若要知道您使用的版本，請執行 `az --version`。 如果您需要安裝或升級 Azure CLI，請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+如果您選擇使用 Azure CLI，必須先在本機安裝並使用 CLI。 您必須執行 Azure CLI 版2.0.59 或更新版本。 若要知道您使用的版本，請執行 `az --version`。 如果您需要安裝或升級 Azure CLI，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
 ### <a name="create-and-execute-a-template"></a>建立並執行範本
 

@@ -8,11 +8,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 8c854a503e3c949be0165d9dda046e0169686c67
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a96a62d7bb93f0ede6b16008dc844ad7f1a8c8d2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84434152"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517292"
 ---
 # <a name="implement-dynamic-styling-for-creator-indoor-maps"></a>實作建立工具室內地圖的動態樣式
 
@@ -20,7 +21,7 @@ Azure 地圖服務建立工具的[功能狀態服務](https://docs.microsoft.com
 
 ## <a name="prerequisites"></a>Prerequisites
 
-1. [建立 Azure 地圖服務帳戶](quick-demo-map-app.md#create-an-account-with-azure-maps)
+1. [建立 Azure 地圖服務帳戶](quick-demo-map-app.md#create-an-azure-maps-account)
 2. [取得主要訂用帳戶金鑰](quick-demo-map-app.md#get-the-primary-key-for-your-account)，也稱為主要金鑰或訂用帳戶金鑰。
 3. [建立一個建立工具資源](how-to-manage-creator.md)
 4. 下載[範例繪圖套件](https://github.com/Azure-Samples/am-creator-indoor-data-examples)。

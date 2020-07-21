@@ -4,12 +4,12 @@ description: 將有關服務健康狀態事件的個人化通知傳送到您現�
 ms.topic: conceptual
 ms.service: service-health
 ms.date: 3/27/2018
-ms.openlocfilehash: 2609a267bd151354f83482ab16c4b9345aa88cc4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 05b0572c89a29fddc881f9977ee437d1319e6254
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80062846"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518923"
 ---
 # <a name="use-a-webhook-to-configure-health-notifications-for-problem-management-systems"></a>使用 webhook 設定問題管理系統的健康情況通知
 
@@ -96,7 +96,7 @@ HTTPs：/ <i></i> /app.azure.com/h/0DET-URB/bbadb3
 
 ## <a name="test-your-webhook-integration-via-an-http-post-request"></a>透過 HTTP POST 要求測試 webhook 整合
 
-遵循下列步驟：
+請遵循下列步驟：
 
 1. 建立您想要傳送的服務健康情況承載。 如需[Azure 活動記錄警示](../azure-monitor/platform/activity-log-alerts-webhook.md)，請參閱 webhook 上的服務健康情況 webhook 承載範例。
 
@@ -115,5 +115,5 @@ HTTPs：/ <i></i> /app.azure.com/h/0DET-URB/bbadb3
 
 ## <a name="next-steps"></a>後續步驟
 - 檢查[活動記錄警示 webhook 架構](../azure-monitor/platform/activity-log-alerts-webhook.md)。 
-- 深入了解[服務健康狀態通知](../azure-monitor/platform/service-notifications.md)。
+- 深入了解[服務健康狀態通知](./service-notifications.md)。
 - 深入了解[動作群組](../azure-monitor/platform/action-groups.md)。

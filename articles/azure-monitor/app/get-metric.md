@@ -7,11 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/28/2020
-ms.openlocfilehash: 94525ce901a89935c4ee7800ada44a9dff84b27a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7aacb951d449583c875c71f260957a9d3bc8c663
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82927899"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517139"
 ---
 # <a name="custom-metric-collection-in-net-and-net-core"></a>.NET 和 .NET Core 中的自訂計量集合
 
@@ -21,7 +22,7 @@ ms.locfileid: "82927899"
 
 `TrackMetric()`傳送代表度量的原始遙測。 傳送每個值的單一遙測專案是沒有效率的。 `TrackMetric()`在效能方面也沒有效率，因為每個都經過 `TrackMetric(item)` 遙測初始化運算式和處理器的完整 SDK 管線。 不同 `TrackMetric()` `GetMetric()` 于，會為您處理本機預先匯總，然後只以一分鐘的固定間隔提交匯總的摘要度量。 因此，如果您需要在第二個或甚至毫秒層級密切監視某個自訂計量，您可以這麼做，同時只會產生每分鐘監視的儲存體和網路流量成本。 這也能大幅降低發生節流的風險，因為需要為匯總計量傳送的遙測專案總數大幅降低。
 
-在 Application Insights 中，透過和收集的自訂計量 `TrackMetric()` `GetMetric()` 不受[取樣](https://docs.microsoft.com/azure/azure-monitor/app/sampling)的規範。 取樣重要計量可能會導致可能以這些計量為基礎建立警示的案例可能會變得不可靠。 藉由永不取樣您的自訂計量，您通常可以確信當違反警示閾值時，將會引發警示。  但是因為自訂計量並未取樣，所以有一些潛在的顧慮。
+在 Application Insights 中，透過和收集的自訂計量 `TrackMetric()` `GetMetric()` 不受[取樣](./sampling.md)的規範。 取樣重要計量可能會導致可能以這些計量為基礎建立警示的案例可能會變得不可靠。 藉由永不取樣您的自訂計量，您通常可以確信當違反警示閾值時，將會引發警示。  但是因為自訂計量並未取樣，所以有一些潛在的顧慮。
 
 如果您需要每秒追蹤計量中的趨勢，或更細微的間隔時間，這可能會導致：
 
@@ -29,16 +30,16 @@ ms.locfileid: "82927899"
 - 增加網路流量/效能額外負荷。 （在某些情況下，這可能會有貨幣和應用程式的效能成本）。
 - 內嵌節流的風險。 （當您的應用程式在短時間內傳送非常高的遙測率時，Azure 監視器服務會卸載（「節流」）資料點）。
 
-節流是特別考慮，如同取樣，節流可能會導致遺漏警示，因為觸發警示的條件可能會在本機發生，然後在內嵌端點上進行，因為傳送的資料太多。 這就是為什麼不建議使用 .NET 和 .NET Core， `TrackMetric()` 除非您已經實作為自己的本機匯總邏輯。 如果您想要追蹤每個實例在指定的時間週期內發生事件，您可能會發現這 [`TrackEvent()`](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics#trackevent) 是較佳的調整。 但請記住，與自訂計量不同的是，自訂事件會受到取樣。 `TrackMetric()`即使沒有撰寫自己的本機預先匯總，您仍然可以使用，但如果您這樣做，請注意這些陷阱。
+節流是特別考慮，如同取樣，節流可能會導致遺漏警示，因為觸發警示的條件可能會在本機發生，然後在內嵌端點上進行，因為傳送的資料太多。 這就是為什麼不建議使用 .NET 和 .NET Core， `TrackMetric()` 除非您已經實作為自己的本機匯總邏輯。 如果您想要追蹤每個實例在指定的時間週期內發生事件，您可能會發現這 [`TrackEvent()`](./api-custom-events-metrics.md#trackevent) 是較佳的調整。 但請記住，與自訂計量不同的是，自訂事件會受到取樣。 `TrackMetric()`即使沒有撰寫自己的本機預先匯總，您仍然可以使用，但如果您這樣做，請注意這些陷阱。
 
 在 [摘要] 中 `GetMetric()` 是建議的方法，因為它會進行預先匯總，它會從所有追蹤（）呼叫累積值，並每隔一分鐘傳送一次摘要/匯總。 藉由傳送較少的資料點，同時仍然收集所有相關資訊，這可以大幅降低成本和效能負擔。
 
 > [!NOTE]
-> 只有 .NET 和 .NET Core Sdk 具有 GetMetric （）方法。 如果您使用 JAVA，您可以使用[Micrometer 計量](https://docs.microsoft.com/azure/azure-monitor/app/micrometer-java)或 `TrackMetric()` 。 針對 Python，您可以使用[OpenCensus](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python#metrics)來傳送自訂計量。 針對 JavaScript 和 Node.js 您仍然可以使用 `TrackMetric()` ，但請記住上一節中所述的注意事項。
+> 只有 .NET 和 .NET Core Sdk 具有 GetMetric （）方法。 如果您使用 JAVA，您可以使用[Micrometer 計量](./micrometer-java.md)或 `TrackMetric()` 。 針對 Python，您可以使用[OpenCensus](./opencensus-python.md#metrics)來傳送自訂計量。 針對 JavaScript 和 Node.js 您仍然可以使用 `TrackMetric()` ，但請記住上一節中所述的注意事項。
 
 ## <a name="getting-started-with-getmetric"></a>開始使用 GetMetric
 
-在我們的範例中，我們將使用基本的 .NET Core 3.1 背景工作角色服務應用程式。 如果您想要完全複寫與這些範例搭配使用的測試環境，請遵循[監視背景工作服務文章](https://docs.microsoft.com/azure/azure-monitor/app/worker-service#net-core-30-worker-service-application)的步驟1-6，將 Application Insights 新增至基本背景工作服務專案範本。 這些概念適用于任何可使用 SDK 的一般應用程式，包括 web 應用程式和主控台應用程式。
+在我們的範例中，我們將使用基本的 .NET Core 3.1 背景工作角色服務應用程式。 如果您想要完全複寫與這些範例搭配使用的測試環境，請遵循[監視背景工作服務文章](./worker-service.md#net-core-30-worker-service-application)的步驟1-6，將 Application Insights 新增至基本背景工作服務專案範本。 這些概念適用于任何可使用 SDK 的一般應用程式，包括 web 應用程式和主控台應用程式。
 
 ### <a name="sending-metrics"></a>傳送計量
 
@@ -110,7 +111,7 @@ Application Insights Telemetry: {"name":"Microsoft.ApplicationInsights.Dev.00000
 > [!NOTE]
 > 雖然原始遙測專案在內嵌之後不會包含明確的 sum 屬性/欄位，但我們會為您建立一個。 在此情況下 `value` ，和 `valueSum` 屬性都代表相同的東西。
 
-您也可以在入口網站的 [[_計量_](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts)] 區段中，存取您的自訂度量遙測。 同時做為[記錄式和自訂度量](pre-aggregated-metrics-log-metrics.md)。 （下列螢幕擷取畫面是以記錄為基礎的範例）。![計量瀏覽器視圖](./media/get-metric/metrics-explorer.png)
+您也可以在入口網站的 [[_計量_](../platform/metrics-charts.md)] 區段中，存取您的自訂度量遙測。 同時做為[記錄式和自訂度量](pre-aggregated-metrics-log-metrics.md)。 （下列螢幕擷取畫面是以記錄為基礎的範例）。![計量瀏覽器視圖](./media/get-metric/metrics-explorer.png)
 
 ### <a name="caching-metric-reference-for-high-throughput-usage"></a>高輸送量使用量的快取度量參考
 
@@ -301,8 +302,8 @@ SeverityLevel.Error);
 
 ## <a name="next-steps"></a>後續步驟
 
-* [深入瞭解](https://docs.microsoft.com/azure/azure-monitor/app/worker-service)監視背景工作服務應用程式。
-* 如需[記錄式和預先匯總計量](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics)的進一步詳細資料。
-* [計量瀏覽器](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started)
+* [深入瞭解](./worker-service.md)監視背景工作服務應用程式。
+* 如需[記錄式和預先匯總計量](./pre-aggregated-metrics-log-metrics.md)的進一步詳細資料。
+* [計量瀏覽器](../platform/metrics-getting-started.md)
 * 如何啟用[ASP.NET Core 應用程式](asp-net-core.md)的 Application Insights
 * 如何啟用[ASP.NET 應用程式](asp-net.md)的 Application Insights

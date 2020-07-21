@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/22/2020
 ms.author: yelevin
-ms.openlocfilehash: 8da05da1b4aa9966b7743bc38b09d1c4b34c8cc8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6573237cbba8951bdd45c5b32c572b9af772ee5a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85555722"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519234"
 ---
 # <a name="connect-windows-security-events"></a>連線 Windows 安全性事件 
 
@@ -79,7 +79,7 @@ ms.locfileid: "85555722"
 
 1. 選取您想要串流的事件集（[全部、一般或最小](#event-sets)）。
 
-1. 按一下 [更新]  。
+1. 按一下 [更新]。
 
 1. 若要在 Log Analytics 中使用適用于 Windows 安全性事件的相關架構，請 `SecurityEvent` 在查詢視窗中輸入。
 
@@ -87,7 +87,29 @@ ms.locfileid: "85555722"
 
 大約需要20分鐘的時間，記錄才會開始出現在 Log Analytics 中。 
 
+### <a name="configure-the-security-events-connector-for-anomalous-rdp-login-detection"></a>設定安全性事件連接器以進行異常 RDP 登入偵測
 
+> [!IMPORTANT]
+> 異常的 RDP 登入偵測目前為公開預覽版。
+> 這項功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。
+> 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
+Azure Sentinel 可以將機器學習（ML）套用至安全性事件資料，以識別異常的遠端桌面通訊協定（RDP）登入活動。 案例包括：
+
+- 不**尋常的 ip** -過去30天內，IP 位址幾乎不會被觀察到
+
+- 不**尋常的地理位置**-過去30天內，IP 位址、城市、國家/地區和 ASN 幾乎不會被觀察到
+
+- **新**使用者-新使用者從 IP 位址和地理位置登入，或根據前30天內的資料，不應該看到這兩者或其中一個。
+
+**設定指示**
+
+1. 您必須透過**安全性事件**資料連線器來收集 RDP 登入資料（事件識別碼4624）。 請確定您已選取 [無] 以外的[事件集](#event-sets)，以串流至 Azure Sentinel。
+
+1. 從 Azure Sentinel 入口網站中，按一下 [**分析**]，然後按一下 [**規則範本**] 索引標籤。選擇 [ **（預覽）異常 RDP 登入偵測**] 規則，然後將 [**狀態**] 滑杆移至 [**已啟用**]。
+
+    > [!NOTE]
+    > 由於機器學習演算法需要30天的資料來建立使用者行為的基準設定檔，因此您必須先允許收集30天的安全性事件資料，才能偵測到任何事件。
 
 ## <a name="next-steps"></a>後續步驟
 在本檔中，您已瞭解如何將 Windows 安全性事件連接到 Azure Sentinel。 若要深入了解 Azure Sentinel，請參閱下列文章：

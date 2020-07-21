@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd0d17732991fd97b2406c9c5f182408f4746d96
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: a8b94d195ea1f31d228505f01c2a77a299e63c0a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223868"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518091"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的系統管理員角色權限
 
@@ -44,7 +44,7 @@ Azure AD 可能已新增一或多個角色，以提供更細微的權限，但�
 若要了解如何將系統管理角色指派給 Azure Active Directory 中的使用者，請參閱[在 Azure Active Directory 中檢視和指派系統管理員角色](directory-manage-roles-portal.md)。
 
 > [!Note]
-> 如果您有 Azure AD premium P2 授權，而且您已經是 Privileged Identity Management (PIM) 使用者，則所有角色管理工作都是在許可權身分識別管理中執行，而不是在 Azure AD 中執行。
+> 如果您有 Azure AD premium P2 授權，而且您已經是 Privileged Identity Management （PIM）使用者，則所有角色管理工作都是在許可權身分識別管理中執行，而不是在 Azure AD 中執行。
 >
 > ![在 PIM 中為已經使用 PIM 並具有 Premium P2 授權的使用者，Azure AD 管理的角色](./media/directory-manage-roles-portal/pim-manages-roles-for-p2.png)
 
@@ -215,7 +215,7 @@ Azure AD 可能已新增一或多個角色，以提供更細微的權限，但�
 
 ### <a name="external-id-user-flow-administrator"></a>[外部識別碼使用者流程管理員](#external-id-user-flow-administrator-permissions)
 
-具有此角色的使用者可以建立和管理使用者流程， (也稱為 Azure 入口網站中) 的「內建」原則。 這些使用者可以自訂 HTML/CSS/JavaScript 內容、變更 MFA 需求、選取權杖中的宣告、管理 API 連接器，以及為 Azure AD 組織中的所有使用者流程設定會話設定。 另一方面，此角色並不包括檢查使用者資料的能力，或對組織架構中包含的屬性進行變更。 Identity Experience Framework 原則的變更 (也稱為自訂原則) 也在此角色的範圍外。
+具有此角色的使用者可以建立和管理 Azure 入口網站中的使用者流程（也稱為「內建」原則）。 這些使用者可以自訂 HTML/CSS/JavaScript 內容、變更 MFA 需求、選取權杖中的宣告、管理 API 連接器，以及為 Azure AD 組織中的所有使用者流程設定會話設定。 另一方面，此角色並不包括檢查使用者資料的能力，或對組織架構中包含的屬性進行變更。 Identity Experience Framework 原則的變更（也稱為自訂原則）也不在此角色的範圍內。
 
 ### <a name="external-id-user-flow-attribute-administrator"></a>[外部識別碼使用者流程屬性管理員](#external-id-user-flow-attribute-administrator-permissions)
 
@@ -494,7 +494,7 @@ Windows Defender ATP 和 EDR | 檢視和調查警示。 當您在 Windows Defend
 
 ### <a name="user-administrator"></a>[使用者管理員](#user-administrator-permissions)
 
-具有此角色的使用者可以建立使用者，並以一些限制管理使用者的所有層面 (查看資料表) ，並可更新密碼到期原則。 此外，具有此角色的使用者可以建立與管理所有群組。 此角色也包含建立和管理使用者檢視、管理支援票證，以及監視服務健康情況的能力。 對於具有大部分系統管理員角色的使用者，使用者管理員沒有權限可管理其某些使用者屬性。 具有此角色的使用者沒有管理 MFA 的權限。 下表列出此限制的例外角色。
+具有此角色的使用者可以建立使用者，以及管理使用者的所有層面，但有一些限制（請參閱表格），而且可以更新密碼到期原則。 此外，具有此角色的使用者可以建立與管理所有群組。 此角色也包含建立和管理使用者檢視、管理支援票證，以及監視服務健康情況的能力。 對於具有大部分系統管理員角色的使用者，使用者管理員沒有權限可管理其某些使用者屬性。 具有此角色的使用者沒有管理 MFA 的權限。 下表列出此限制的例外角色。
 
 | **權限** | **可以執行** |
 | --- | --- |
@@ -798,13 +798,10 @@ Windows Defender ATP 和 EDR | 檢視和調查警示。 當您在 Windows Defend
 | --- | --- |
 | microsoft.azure.serviceHealth/allEntities/allTasks | 讀取及設定 Azure 服務健康情況。 |
 | microsoft.azure.supportTickets/allEntities/allTasks | 建立和管理 Azure 支援票證。 |
-| microsoft.office365.webPortal/allEntities/basic/read | 讀取 microsoft.office365.webPortal 中所有資源的基本屬性。 |
 | microsoft.office365.complianceManager/allEntities/allTasks | 管理 Office 365 合規性管理員的所有層面 |
-| microsoft.office365.exchange/allEntities/allTasks | 管理 Exchange Online 的所有層面。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | 讀取及設定 Office 365 服務健康情況。 |
-| microsoft.office365.sharepoint/allEntities/allTasks | 建立和刪除所有資源，以及讀取和更新 microsoft.office365.sharepoint 中的標準屬性。 |
-| microsoft.office365.skypeForBusiness/allEntities/allTasks | 管理商務用 Skype Online 的所有層面。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | 建立和管理 Office 365 支援票證。 |
+| microsoft.office365.webPortal/allEntities/basic/read | 讀取 microsoft.office365.webPortal 中所有資源的基本屬性。 |
 
 ### <a name="compliance-data-administrator-permissions"></a>合規性資料管理員權限
 
@@ -817,17 +814,14 @@ Windows Defender ATP 和 EDR | 檢視和調查警示。 當您在 Windows Defend
 
 | **動作** | **說明** |
 | --- | --- |
-| microsoft.aad.cloudAppSecurity/allEntities/allTasks | 讀取及設定 Microsoft Cloud App Security。 |
+| cloudAppSecurity/allEntities/allTasks | 讀取及設定 Microsoft Cloud App Security。 |
 | microsoft.azure.informationProtection/allEntities/allTasks | 管理 Azure 資訊保護的所有層面。 |
 | microsoft.azure.serviceHealth/allEntities/allTasks | 讀取及設定 Azure 服務健康情況。 |
 | microsoft.azure.supportTickets/allEntities/allTasks | 建立和管理 Azure 支援票證。 |
-| microsoft.office365.webPortal/allEntities/basic/read | 讀取 microsoft.office365.webPortal 中所有資源的基本屬性。 |
 | microsoft.office365.complianceManager/allEntities/allTasks | 管理 Office 365 合規性管理員的所有層面 |
-| microsoft.office365.exchange/allEntities/allTasks | 管理 Exchange Online 的所有層面。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | 讀取及設定 Office 365 服務健康情況。 |
-| microsoft.office365.sharepoint/allEntities/allTasks | 建立和刪除所有資源，以及讀取和更新 microsoft.office365.sharepoint 中的標準屬性。 |
-| microsoft.office365.skypeForBusiness/allEntities/allTasks | 管理商務用 Skype Online 的所有層面。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | 建立和管理 Office 365 支援票證。 |
+| microsoft.office365.webPortal/allEntities/basic/read | 讀取 microsoft.office365.webPortal 中所有資源的基本屬性。 |
 
 ### <a name="conditional-access-administrator-permissions"></a>條件式存取管理員權限
 

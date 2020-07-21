@@ -4,11 +4,12 @@ description: 在 Advisor 中使用快速修正來執行大量補救
 ms.topic: article
 ms.date: 03/13/2020
 ms.author: sagupt
-ms.openlocfilehash: 3c3ac27f04aa516fbef1bfff30e3392659b58919
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ebd993733c1aca9cd4f7d92f0a75e22d68a87ffe
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79502486"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518057"
 ---
 # <a name="quick-fix-remediation-for-advisor"></a>Advisor 的快速修正補救
 **快速修正**可讓您更快速且更輕鬆地進行補救，以取得多項資源的建議。 它提供了大量補救資源的功能，並可協助您透過大規模的補救措施，更快地將訂閱優化。
@@ -49,4 +50,4 @@ ms.locfileid: "79502486"
 * [建議程式效能建議](advisor-performance-recommendations.md)
 * [Advisor 安全性建議](advisor-security-recommendations.md)
 * [Advisor 操作卓越建議](advisor-operational-excellence-recommendations.md)
-* [Advisor REST API](https://docs.microsoft.com/rest/api/advisor/)
+* [Advisor REST API](/rest/api/advisor/)

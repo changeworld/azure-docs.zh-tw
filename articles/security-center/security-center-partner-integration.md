@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2020
 ms.author: memildin
-ms.openlocfilehash: 48869140ba8cd1a9598562b0057b0005d8fcd9c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dd694fd013069c33e4f3af2c81447e014d41b691
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81758078"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519213"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>在 Azure 資訊安全中心整合安全性解決方案
 這份文件可協助您管理已連線到 Azure 資訊安全中心的安全性解決方案，並且新增新的項目。
@@ -90,7 +91,7 @@ ms.locfileid: "81758078"
 資訊安全中心會自動探索在 Azure 中執行但未連線到資訊安全中心的安全性解決方案，並在 [探索到的**解決方案**] 區段中顯示解決方案。 這些解決方案包括 Azure 解決方案，例如[Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)和合作夥伴解決方案。
 
 > [!NOTE]
-> 已探索解決方案功能的訂用帳戶層級需要資訊安全中心的標準層。 若要深入瞭解定價層，請參閱[定價](security-center-pricing.md)。
+> 所探索解決方案功能的訂用帳戶層級需要資訊安全中心的標準層。 若要深入瞭解定價層，請參閱[定價](security-center-pricing.md)。
 >
 
 選取解決方案下的 **[連線]** 以與資訊安全中心整合，並收到安全性警示的通知。

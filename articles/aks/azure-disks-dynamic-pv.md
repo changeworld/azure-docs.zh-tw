@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: 瞭解如何在 Azure Kubernetes Service （AKS）中以動態方式建立具有 Azure 磁片的永久性磁片區
 services: container-service
 ms.topic: article
-ms.date: 03/01/2019
-ms.openlocfilehash: 44741452f95995327914978bbfd5b0a49566faa5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/10/2020
+ms.openlocfilehash: 0e7bc057d756215b1aa155f0e227c75c99c8737c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84751364"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518006"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中以動態方式建立和使用 Azure 磁碟的永續性磁碟區
 
@@ -31,14 +31,14 @@ ms.locfileid: "84751364"
 
 儲存體類別可用來定義如何搭配永續性磁碟區動態建立儲存體單位。 如需有關 Kubernetes 儲存體類別的詳細資訊，請參閱 [Kubernetes 儲存體類別][kubernetes-storage-classes]。
 
-每個 AKS 叢集都包含兩個預先建立的儲存體類別，而且這兩個類別都設定為可搭配 Azure 磁碟使用：
+每個 AKS 叢集都包含四個預先建立的儲存體類別，其中兩個設定為使用 Azure 磁片：
 
-* *default* 儲存體類別會佈建標準 Azure 磁碟。
-    * 標準儲存體是以 Hdd 為後盾，可提供符合成本效益的儲存體，同時仍能發揮效能。 標準磁片適用于符合成本效益的開發和測試工作負載。
+* *預設*的儲存類別會布建標準 SSD Azure 磁片。
+    * 標準儲存體是以標準 Ssd 為後盾，可提供符合成本效益的儲存體，同時仍能提供可靠的效能。 
 * *managed-premium* 儲存體類別會佈建進階 Azure 磁碟。
     * 進階磁碟是以 SSD 為基礎的高效能、低延遲磁碟為後盾。 最適合用於執行生產工作負載的 VM。 如果您叢集內的 AKS 節點使用進階儲存體，請選取 *managed-premium* 類別。
     
-如果您使用其中一個預設的儲存類別，則在建立儲存體類別之後，就無法更新磁片區大小。 若要能夠在建立儲存體類別之後更新磁片區大小，請將這一行新增 `allowVolumeExpansion: true` 至其中一個預設儲存類別，或建立您自己的自訂儲存類別。 您可以使用命令來編輯現有的儲存類別 `kubectl edit sc` 。 
+如果您使用其中一個預設的儲存類別，則在建立儲存體類別之後，就無法更新磁片區大小。 若要能夠在建立儲存體類別之後更新磁片區大小，請將這一行新增 `allowVolumeExpansion: true` 至其中一個預設儲存類別，或建立您自己的自訂儲存類別。 請注意，不支援將 PVC 大小縮減（以防止資料遺失）。 您可以使用命令來編輯現有的儲存類別 `kubectl edit sc` 。 
 
 例如，如果您想要使用大小為 4 TiB 的磁片，則必須建立可定義的存放裝置類別， `cachingmode: None` 因為磁片[不支援磁碟快取 4 TiB 和更大](../virtual-machines/windows/premium-storage-performance.md#disk-caching)。
 
@@ -151,6 +151,9 @@ Events:
   Normal  SuccessfulMountVolume  1m    kubelet, aks-nodepool1-79590246-0  MountVolume.SetUp succeeded for volume "pvc-faf0f176-8b8d-11e8-923b-deb28c58d242"
 [...]
 ```
+
+## <a name="use-ultra-disks"></a>使用 Ultra 磁片
+若要利用 ultra 磁片，請參閱[在 Azure Kubernetes Service 上使用 Ultra 磁片（AKS）](use-ultra-disks.md)。
 
 ## <a name="back-up-a-persistent-volume"></a>備份永續性磁碟區
 
@@ -284,3 +287,11 @@ Volumes:
 [operator-best-practices-storage]: operator-best-practices-storage.md
 [concepts-storage]: concepts-storage.md
 [storage-class-concepts]: concepts-storage.md#storage-classes
+[az-feature-register]: /cli/azure/feature#az-feature-register
+[az-feature-list]: /cli/azure/feature#az-feature-list
+[az-provider-register]: /cli/azure/provider#az-provider-register
+[az-extension-add]: /cli/azure/extension#az-extension-add
+[az-extension-update]: /cli/azure/extension#az-extension-update
+[az-feature-register]: /cli/azure/feature#az-feature-register
+[az-feature-list]: /cli/azure/feature#az-feature-list
+[az-provider-register]: /cli/azure/provider#az-provider-register

@@ -3,11 +3,12 @@ title: Azure Application Insights 中的智慧型偵測 | Microsoft Docs
 description: Application Insights 會自動深入分析您的 App 遙測，並且警告您有潛在的問題。
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.openlocfilehash: b7fecf886515780858ecc503a29be3bd76b73c3f
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: ad6580a0a62d331a7851c47d71b46d3ea6c81468
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83700850"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516867"
 ---
 # <a name="smart-detection-in-application-insights"></a>Application Insights 中的智慧型偵測
  「智慧偵測」會自動警告您 Web 應用程式中的可能效能問題和失敗異常。 它會針對您應用程式傳送給 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 的遙測執行主動式分析。 如果失敗率急遽上升或是用戶端或伺服器效能出現異常模式，您就會收到警示。 這項功能不需要進行任何設定。 只要您的應用程式傳送的遙測足夠，它就能發揮作用。
@@ -33,7 +34,7 @@ ms.locfileid: "83700850"
 
 * [智慧型偵測 - 失敗異常](../../azure-monitor/app/proactive-failure-diagnostics.md)。 我們使用機器學習服務來為應用程式設定預期的失敗要求率，其會與負載和其他因素相互關聯。 如果失敗率超過預期限制，我們便會傳送警示。
 * [智慧型偵測 - 效能異常](../../azure-monitor/app/proactive-performance-diagnostics.md)。 如果作業或相依性持續時間的回應時間變得比歷史基準慢，或如果我們在回應時間或頁面載入時間發現異常模式，您就會收到通知。   
-* 一般的效能降低和問題，例如[追蹤效能降低](https://docs.microsoft.com/azure/azure-monitor/app/proactive-trace-severity)、[記憶體流失](https://docs.microsoft.com/azure/azure-monitor/app/proactive-potential-memory-leak)、[例外狀況數量異常升高](https://docs.microsoft.com/azure/azure-monitor/app/proactive-exception-volume)和[安全性反向模式](https://docs.microsoft.com/azure/azure-monitor/app/proactive-application-security-detection-pack)。
+* 一般的效能降低和問題，例如[追蹤效能降低](./proactive-trace-severity.md)、[記憶體流失](./proactive-potential-memory-leak.md)、[例外狀況數量異常升高](./proactive-exception-volume.md)和[安全性反向模式](./proactive-application-security-detection-pack.md)。
 
 (每個通知中的說明連結會帶您前往相關文章。)
 
@@ -43,7 +44,7 @@ ms.locfileid: "83700850"
 
 開啟智慧型偵測 [設定] 刀鋒視窗，然後選取規則，即會開啟 [編輯規則] 刀鋒視窗，然後便可設定特定智慧偵測規則的電子郵件通知。
 
-或者，您也可以使用 Azure Resource Manager 範本來變更設定。 如需詳細資訊，請參閱[使用 Azure Resource Manager 範本來管理 Application Insights 智慧偵測規則](https://docs.microsoft.com/azure/azure-monitor/app/proactive-arm-config)。
+或者，您也可以使用 Azure Resource Manager 範本來變更設定。 如需詳細資訊，請參閱[使用 Azure Resource Manager 範本來管理 Application Insights 智慧偵測規則](./proactive-arm-config.md)。
 
 ## <a name="video"></a>影片
 
@@ -60,4 +61,3 @@ ms.locfileid: "83700850"
 
 * [手動設定的度量警示](../../azure-monitor/platform/alerts-log.md)
 * [可用性 Web 測試](../../azure-monitor/app/monitor-web-app-availability.md) 
-

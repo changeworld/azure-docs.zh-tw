@@ -7,15 +7,15 @@ ms.topic: conceptual
 ms.date: 06/12/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 77946694253ff0c1c6953d0b20836d3cb6733801
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: e6fb2f09200e42f7ad7781716bb83ab418134509
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86082296"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516136"
 ---
 # <a name="azure-activity-log"></a>Azure 活動記錄
-活動記錄是 Azure 中的[平臺記錄](platform-logs-overview.md)，可讓您深入瞭解訂用帳戶層級事件。 這包括修改資源或啟動虛擬機器時的資訊。 您可以在 Azure 入口網站中查看活動記錄，或使用 PowerShell 和 CLI 來抓取專案。 如需其他功能，您應該建立診斷設定，以將活動記錄傳送至[Azure 監視器記錄](data-platform-logs.md)，以 Azure 事件中樞在 Azure 外部轉送，或 Azure 儲存體進行封存。 本文詳細說明如何查看活動記錄，並將其傳送至不同的目的地。
+活動記錄是 Azure 中的[平臺記錄](platform-logs-overview.md)，可讓您深入瞭解訂用帳戶層級事件。 這包括修改資源或啟動虛擬機器時的資訊。 您可以在 Azure 入口網站中檢視活動記錄，或使用 PowerShell 和 CLI 來取出項目。 如需其他功能，您應該建立診斷設定，以將活動記錄傳送至[Azure 監視器記錄](data-platform-logs.md)，以 Azure 事件中樞在 Azure 外部轉送，或 Azure 儲存體進行封存。 本文詳細說明如何查看活動記錄，並將其傳送至不同的目的地。
 
 如需建立診斷設定的詳細資訊，請參閱[建立診斷設定以將平臺記錄和計量傳送至不同的目的地](diagnostic-settings.md)。
 
@@ -43,9 +43,9 @@ ms.locfileid: "86082296"
 ### <a name="other-methods-to-retrieve-activity-log-events"></a>取得活動記錄事件的其他方法
 您也可以使用下列方法來存取活動記錄事件。
 
-- 使用 [Get-AzLog](https://docs.microsoft.com/powershell/module/az.monitor/get-azlog) Cmdlet，從 PowerShell 擷取活動記錄。 請參閱[Azure 監視器 PowerShell 範例](../samples/powershell-samples.md#retrieve-activity-log)。
-- 使用 [az monitor activity-log](https://docs.microsoft.com/cli/azure/monitor/activity-log) 從 CLI 擷取活動記錄。  請參閱 [Azure 監視器 CLI 範例](../samples/cli-samples.md#view-activity-log)。
-- 使用 [Azure 監視器 REST API](https://docs.microsoft.com/rest/api/monitor/)，從 REST 用戶端擷取活動記錄。 
+- 使用 [Get-AzLog](/powershell/module/az.monitor/get-azlog) Cmdlet，從 PowerShell 擷取活動記錄。 請參閱[Azure 監視器 PowerShell 範例](../samples/powershell-samples.md#retrieve-activity-log)。
+- 使用 [az monitor activity-log](/cli/azure/monitor/activity-log) 從 CLI 擷取活動記錄。  請參閱 [Azure 監視器 CLI 範例](../samples/cli-samples.md#view-activity-log)。
+- 使用 [Azure 監視器 REST API](/rest/api/monitor/)，從 REST 用戶端擷取活動記錄。 
 
 
 ## <a name="send-to-log-analytics-workspace"></a>傳送至 Log Analytics 工作區
@@ -58,9 +58,9 @@ ms.locfileid: "86082296"
 - 儲存活動記錄專案超過90天。
 - 儲存在 Log Analytics 工作區中的活動記錄資料不會有任何資料內嵌或資料保留費用。
 
-[建立診斷設定](diagnostic-settings.md)，以將活動記錄傳送至 log Analytics 工作區。 您可以將任何單一訂用帳戶的活動記錄傳送到最多五個工作區。 跨租使用者收集記錄需要[Azure 燈塔](/azure/lighthouse)。
+[建立診斷設定](diagnostic-settings.md)，以將活動記錄傳送至 log Analytics 工作區。 您可以將任何單一訂用帳戶的活動記錄傳送到最多五個工作區。 跨租使用者收集記錄需要[Azure 燈塔](../../lighthouse/index.yml)。
 
-Log Analytics 工作區中的活動記錄資料會儲存在名為*AzureActivity*的資料表中，您可以使用[log Analytics](../log-query/get-started-portal.md)中的[記錄查詢](../log-query/log-query-overview.md)來加以抓取。 這個資料表的結構會根據[記錄專案的類別](activity-log-schema.md)而有所不同。 如需資料表屬性的描述，請參閱[Azure 監視器資料參考](https://docs.microsoft.com/azure/azure-monitor/reference/tables/azureactivity)。
+Log Analytics 工作區中的活動記錄資料會儲存在名為*AzureActivity*的資料表中，您可以使用[log Analytics](../log-query/get-started-portal.md)中的[記錄查詢](../log-query/log-query-overview.md)來加以抓取。 這個資料表的結構會根據[記錄專案的類別](activity-log-schema.md)而有所不同。 如需資料表屬性的描述，請參閱[Azure 監視器資料參考](/azure/azure-monitor/reference/tables/azureactivity)。
 
 例如，若要查看每個類別目錄的活動記錄計數，請使用下列查詢。
 
@@ -202,11 +202,11 @@ insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/00000000
     | 屬性 | 必要 | 描述 |
     | --- | --- | --- |
     | 名稱 |是 |記錄檔設定檔的名稱。 |
-    | StorageAccountId |No |應儲存活動記錄之儲存體帳戶的資源識別碼。 |
-    | serviceBusRuleId |No |服務匯流排規則識別碼，您想要在其中建立事件中樞的服務匯流排命名空間。 這是格式為的字串： `{service bus resource ID}/authorizationrules/{key name}` 。 |
+    | StorageAccountId |否 |應儲存活動記錄之儲存體帳戶的資源識別碼。 |
+    | serviceBusRuleId |否 |服務匯流排規則識別碼，您想要在其中建立事件中樞的服務匯流排命名空間。 這是格式為的字串： `{service bus resource ID}/authorizationrules/{key name}` 。 |
     | 位置 |是 |以逗號分隔的區域清單，其中列出您要收集的活動記錄檔事件的區域。 |
     | RetentionInDays |是 |在儲存體帳戶中應保留事件的天數，介於1到365之間。 值為 0 會無限期地儲存記錄。 |
-    | 類別 |No |以逗號分隔的類別清單，其中列出應該收集的事件類別。 可能的值為_Write_、 _Delete_和_Action_。 |
+    | 類別 |否 |以逗號分隔的類別清單，其中列出應該收集的事件類別。 可能的值為_Write_、 _Delete_和_Action_。 |
 
 ### <a name="example-script"></a>範例指令碼
 以下是範例 PowerShell 腳本，用來建立記錄檔設定檔，以將活動記錄寫入至儲存體帳戶和事件中樞。
@@ -248,7 +248,7 @@ insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/00000000
     | storage-account-id |是 |資源識別碼，活動記錄應該要儲存至此儲存體帳戶。 |
     | 位置 |是 |以空格分隔的區域清單，其中列出您要收集的活動記錄事件的區域。 您可以使用 `az account list-locations --query [].name` 來檢視您訂用帳戶的所有區域清單。 |
     | days |是 |應保留事件的天數，介於1到365之間。 值為 0 會無限期地 (永遠) 儲存記錄。  如果為零，則已啟用的參數應該設定為 false。 |
-    |已啟用 | 是 |True 或 False。  用來啟用或停用保留原則。  如果為 True，則 days 參數必須是大於 0 的值。
+    |已啟用 | 是 |是非題。  用來啟用或停用保留原則。  如果為 True，則 days 參數必須是大於 0 的值。
     | categories |是 |以空格分隔的類別清單，其中列出應收集的事件類別。 可能的值有 Write、Delete、Action。 |
 
 
@@ -281,7 +281,7 @@ insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/00000000
 | ResourceProvider  | ResourceProviderValue  |
 
 > [!IMPORTANT]
-> 在某些情況下，這些資料行中的值可能全部大寫。 如果您有包含這些資料行的查詢，您應該使用[= ~ 運算子](https://docs.microsoft.com/azure/kusto/query/datatypes-string-operators)來執行不區分大小寫的比較。
+> 在某些情況下，這些資料行中的值可能全部大寫。 如果您有包含這些資料行的查詢，您應該使用[= ~ 運算子](/azure/kusto/query/datatypes-string-operators)來執行不區分大小寫的比較。
 
 下列資料行已新增至已更新之架構中的*AzureActivity* ：
 

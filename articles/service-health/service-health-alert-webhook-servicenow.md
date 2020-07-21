@@ -3,12 +3,12 @@ title: 使用 ServiceNow 傳送 Azure 服務健康情況警示
 description: 取得關於 ServiceNow 執行個體服務健康情況事件的個人化通知。
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: 5cd17af080714fdf2e9e5b168e72f975c8d3a3f6
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 96c181991fc962b08e777a55d891b881fc1bdba3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260208"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519061"
 ---
 # <a name="send-azure-service-health-alerts-with-servicenow-using-webhooks"></a>使用 webhook 透過 ServiceNow 傳送 Azure 服務健康情況警示
 
@@ -147,7 +147,7 @@ ms.locfileid: "86260208"
 
 ## <a name="create-an-alert-using-servicenow-in-the-azure-portal"></a>在 Azure 入口網站使用 ServiceNow 建立警示
 ### <a name="for-a-new-action-group"></a>新的動作群組：
-1. 請遵循[本文](../azure-monitor/platform/alerts-activity-log-service-notifications.md)中的步驟 1 到 8，來建立具有新動作群組的警示。
+1. 請遵循[本文](./alerts-activity-log-service-notifications-portal.md)中的步驟 1 到 8，來建立具有新動作群組的警示。
 
 1. 在**動作**清單中定義：
 
@@ -195,5 +195,5 @@ ms.locfileid: "86260208"
 ## <a name="next-steps"></a>後續步驟
 - 瞭解如何[設定現有問題管理系統的 webhook 通知](service-health-alert-webhook-guide.md)。
 - 檢查[活動記錄警示 webhook 架構](../azure-monitor/platform/activity-log-alerts-webhook.md)。 
-- 深入了解[服務健康狀態通知](../azure-monitor/platform/service-notifications.md)。
+- 深入了解[服務健康狀態通知](./service-notifications.md)。
 - 深入了解[動作群組](../azure-monitor/platform/action-groups.md)。

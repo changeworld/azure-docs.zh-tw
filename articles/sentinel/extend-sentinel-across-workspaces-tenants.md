@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/11/2020
 ms.author: yelevin
-ms.openlocfilehash: d76f8e2d750b8ab2d82e9424f929d8b8353ac25a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 596d0f4870d9331a332dfb81bd7d2d224964a593
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84816443"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519008"
 ---
 # <a name="extend-azure-sentinel-across-workspaces-and-tenants"></a>跨工作區和租用戶擴充 Azure Sentinel
 
@@ -29,7 +29,7 @@ Azure Sentinel 建置於 Log Analytics 工作區之上。 您會發現上架 Azu
 
 使用單一工作區時，您可以獲得 Azure Sentinel 體驗的完整優點。 儘管如此，在某些情況下，您可能需要有多個工作區。 下表列出其中一些情況，並在可能的情況下，建議如何滿足單一工作區的需求：
 
-| 需求 | 說明 | 減少工作區計數的方法 |
+| 需求 | 描述 | 減少工作區計數的方法 |
 |-------------|-------------|--------------------------------|
 | 主權與法規遵循 | 工作區會系結至特定區域。 如果資料需要保留在不同的[Azure 地理](https://azure.microsoft.com/global-infrastructure/geographies/)位置以滿足法規需求，則必須將其分割為不同的工作區。 |  |
 | 資料擁有權 | 資料擁有權（例如，子公司或附屬公司）的界限，會使用個別的工作區進行更精確的描繪。 |  |
@@ -110,6 +110,12 @@ Azure Sentinel 支援[在單一查詢中查詢多個工作區](../azure-monitor/
 | 以互動方式編輯活頁簿 | 修改現有活頁簿的「高級使用者」可以編輯其中的查詢，並使用編輯器中的工作區選取器來選取目標工作區。 | 此選項可讓 power 使用者輕鬆地修改現有的活頁簿，以使用多個工作區。 |
 |
 
+### <a name="cross-workspace-hunting"></a>跨工作區搜尋
+
+Azure Sentinel 提供預先載入的查詢範例，旨在協助您開始使用，並熟悉資料表和查詢語言。 這些內建的搜尋查詢是由 Microsoft 資訊安全研究人員連續開發，包括新增查詢和微調現有的查詢，以提供您尋找新偵測的進入點，並找出您的安全性工具可能無法偵測到的入侵跡象。  
+
+跨工作區的搜尋功能可讓您的威脅獵人及使用 union 運算子和 workspace （）運算式，來建立新的搜尋查詢，或調整現有的尋找查詢，以涵蓋多個工作區，如上面所示。
+
 ## <a name="cross-workspace-management-using-automation"></a>使用自動化進行跨工作區管理
 
 若要設定和管理多個 Azure Sentinel 工作區，您必須將 Azure Sentinel 管理 API 的使用自動化。 如需如何自動化部署 Azure Sentinel 資源的詳細資訊，包括警示規則、搜尋查詢、活頁簿和操作手冊，請參閱[擴充 Azure Sentinel： api、整合和管理自動化](https://techcommunity.microsoft.com/t5/azure-sentinel/extending-azure-sentinel-apis-integration-and-management/ba-p/1116885)。
@@ -122,8 +128,6 @@ Azure Sentinel 支援[在單一查詢中查詢多個工作區](../azure-monitor/
 跨工作區不支援下列功能：
 
 - 排程的警示規則無法使用跨工作區查詢跨工作區執行。
-
-- 搜尋查詢不支援跨工作區的查詢。
 
 ## <a name="managing-workspaces-across-tenants-using-azure-lighthouse"></a>使用 Azure 燈塔管理跨租使用者的工作區
 

@@ -11,28 +11,27 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/27/2020
+ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: 060db99cf0163876b68eeee2cff8ef2d03e2b5b9
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 95b514999d7c38140bd3dd275b8ba103ee9af20e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187008"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519220"
 ---
 # <a name="feature-coverage-for-machines"></a>機器的功能涵蓋範圍
 
-下表顯示可用於虛擬機器和伺服器的 Azure 資訊安全中心功能。
+下列兩個索引標籤顯示適用于 Windows 和 Linux 虛擬機器和伺服器的 Azure 資訊安全中心功能。
 
 ## <a name="supported-features-for-virtual-machines-and-servers"></a>支援的虛擬機器和伺服器功能<a name="vm-server-features"></a>
 
-### <a name="windows-machines"></a>[Windows 機器](#tab/features-windows)
+### <a name="windows-machines"></a>[**Windows 機器**](#tab/features-windows)
 
-|||||||||
-|----|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
 |**功能**|**Azure 虛擬機器**|**Azure 虛擬機器擴展集**|**非 Azure 機器**|**定價**
-|[Microsoft Defender ATP 整合](security-center-wdatp.md)|✔</br>支援的版本上的 () |✔</br>支援的版本上的 () |✔|標準|
-|[虛擬機器行為分析 (和安全性警示) ](threat-protection.md)|✔|✔|✔| (免費) 的建議 </br></br>  (標準) 的安全性警示|
+|----|:----:|:----:|:----:|:----:|
+|[Microsoft Defender ATP 整合](security-center-wdatp.md)|✔</br>（支援的版本）|✔</br>（支援的版本）|✔|標準|
+|[虛擬機器行為分析（和安全性警示）](threat-protection.md)|✔|✔|✔|標準|
 |[Fileless 安全性警示](alerts-reference.md#alerts-windows)|✔|✔|✔|標準|
 |[以網路為基礎的安全性警示](threat-protection.md#network-layer)|✔|✔|-|標準|
 |[即時 VM 存取](security-center-just-in-time.md)|✔|-|-|標準|
@@ -43,21 +42,20 @@ ms.locfileid: "86187008"
 |[彈性網路強化](security-center-adaptive-network-hardening.md)|✔|-|-|標準|
 |[法規合規性儀表板 & 報告](security-center-compliance-dashboard.md)|✔|✔|✔|標準|
 |Docker 託管 IaaS 容器上的建議和威脅防護|-|-|-|標準|
-|缺少 OS 修補程式評估|✔|✔|✔|免費|
-|安全性錯誤的評估|✔|✔|✔|免費|
-|[Endpoint protection 評估](security-center-services.md#supported-endpoint-protection-solutions-)|✔|✔|✔|免費|
+|缺少 OS 修補程式評估|✔|✔|✔|Azure：免費<br><br>非 Azure：標準|
+|安全性錯誤的評估|✔|✔|✔|Azure：免費<br><br>非 Azure：標準|
+|[Endpoint protection 評估](security-center-services.md#supported-endpoint-protection-solutions-)|✔|✔|✔|Azure：免費<br><br>非 Azure：標準|
 |磁片加密評估|✔|✔|-|免費|
 |協力廠商的弱點評估|✔|-|-|免費|
 |[網路安全性評量](security-center-network-recommendations.md)|✔|✔|-|免費|
 
 
-### <a name="linux-machines"></a>[Linux 機器](#tab/features-linux)
+### <a name="linux-machines"></a>[**Linux 機器**](#tab/features-linux)
 
-|||||||||
-|----|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
 |**功能**|**Azure 虛擬機器**|**Azure 虛擬機器擴展集**|**非 Azure 機器**|**定價**
+|----|:----:|:----:|:----:|:----:|
 |[Microsoft Defender ATP 整合](security-center-wdatp.md)|-|-|-|標準|
-|[虛擬機器行為分析 (和安全性警示) ](security-center-alerts-iaas.md)|✔</br>支援的版本上的 () |✔</br>支援的版本上的 () |✔| (免費) 的建議 </br></br>  (標準) 的安全性警示|
+|[虛擬機器行為分析（和安全性警示）](security-center-alerts-iaas.md)|✔</br>（支援的版本）|✔</br>（支援的版本）|✔|標準|
 |[Fileless 安全性警示](alerts-reference.md#alerts-windows)|-|-|-|標準|
 |[以網路為基礎的安全性警示](threat-protection.md#network-layer)|✔|✔|-|標準|
 |[即時 VM 存取](security-center-just-in-time.md)|✔|-|-|標準|
@@ -66,11 +64,10 @@ ms.locfileid: "86187008"
 |[自適性應用程式控制](security-center-adaptive-application.md)|✔|-|✔|標準|
 |[網路地圖](security-center-network-recommendations.md#network-map)|✔|✔|-|標準|
 |[彈性網路強化](security-center-adaptive-network-hardening.md)|✔|-|-|標準|
-|自適性網路控制措施|✔|✔|-|標準|
 |[法規合規性儀表板 & 報告](security-center-compliance-dashboard.md)|✔|✔|✔|標準|
 |Docker 託管 IaaS 容器上的建議和威脅防護|✔|✔|✔|標準|
-|缺少 OS 修補程式評估|✔|✔|✔|免費|
-|安全性錯誤的評估|✔|✔|✔|免費|
+|缺少 OS 修補程式評估|✔|✔|✔|Azure：免費<br><br>非 Azure：標準|
+|安全性錯誤的評估|✔|✔|✔|Azure：免費<br><br>非 Azure：標準|
 |[Endpoint protection 評估](security-center-services.md#supported-endpoint-protection-solutions-)|-|-|-|免費|
 |磁片加密評估|✔|✔|-|免費|
 |協力廠商的弱點評估|✔|-|-|免費|
@@ -105,7 +102,7 @@ ms.locfileid: "86187008"
  **\*** 涵蓋範圍狀態和支援的資料目前僅適用于與受保護的訂用帳戶相關聯的 Log Analytics 工作區。 它不會反映在 Azure 資訊安全中心入口網站中。
 
 > [!NOTE]
-> 在 Windows Server 2008 R2 虛擬機器上偵測 System Center Endpoint Protection (SCEP) ，必須在 PowerShell (v3.0 或更新版本的) 之後，安裝 SCEP。
+> 在 Windows Server 2008 R2 虛擬機器上偵測 System Center Endpoint Protection （SCEP）時，必須在 PowerShell （3.0 版或更新版本）之後安裝 SCEP。
 
 
 ## <a name="next-steps"></a>後續步驟

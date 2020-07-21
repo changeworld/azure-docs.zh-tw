@@ -3,15 +3,19 @@ title: 使用 Application Insights 監視 SharePoint 網站
 description: 開始使用新的檢測金鑰監視新的應用程式
 ms.topic: conceptual
 ms.date: 07/11/2018
-ms.openlocfilehash: b9b31a715b19d6c06cbddb91c0bd9279088c4447
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: a545a24b5a9af883200f25cc83486e3c5621bd78
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86221046"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516884"
 ---
 # <a name="monitor-a-sharepoint-site-with-application-insights"></a>使用 Application Insights 監視 SharePoint 網站
+
 Azure Application Insights 會監視應用程式的可用性、效能和使用情況。 您將在這裡深入了解如何針對 SharePoint 網站進行設定。
+
+> [!NOTE]
+> 基於安全性考慮，您無法直接將本文所述的腳本新增至 SharePoint 現代化 UX 中的網頁。 或者，您可以使用[Sharepoint Framework （SPFx）](/sharepoint/dev/spfx/extensions/overview-extensions)來建立自訂延伸模組，以便用來在 SharePoint 網站上安裝 Application Insights。 若要深入瞭解，請參閱[如何建立已從頭安裝 AppInsights 的 SPFx 延伸模組解決方案](https://github.com/microsoft/ApplicationInsights-JS/tree/master/SPO#how-to-create-a-spfx-extension-solution-with-appinsights-installed-from-scratch)或[觀看範例](https://github.com/microsoft/ApplicationInsights-JS/tree/master/SPO/AppInsightsExtensionSolutionSample)。 
 
 ## <a name="create-an-application-insights-resource"></a>建立 Application Insights 資源
 在 [Azure 入口網站](https://portal.azure.com)中，建立新的 Application Insights 資源。 選擇 ASP.NET 做為應用程式類型。
@@ -137,5 +141,3 @@ function onRequestFail(sender, args) {
 * [Application Insights](../../azure-monitor/app/app-insights-overview.md) 。
 
 <!--Link references-->
-
-

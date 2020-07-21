@@ -47,8 +47,6 @@
       href: controls.md
     - name: 傳統原則移轉
       href: policy-migration.md
-    - name: 基準保護原則
-      href: concept-baseline-protection.md
 - name: 操作指南
   expanded: true
   items:

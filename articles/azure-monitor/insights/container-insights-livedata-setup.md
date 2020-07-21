@@ -4,12 +4,12 @@ description: 本文說明如何設定容器記錄（stdout/stderr）和事件的
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: references_regions
-ms.openlocfilehash: 9d60836af350e9af99355db9a7cc140a949d1492
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cbd697f743d0d3369a8c35537ac2755ae5d3fc8c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85337938"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516459"
 ---
 # <a name="how-to-set-up-the-live-data-preview-feature"></a>如何設定即時資料（預覽）功能
 
@@ -19,7 +19,7 @@ ms.locfileid: "85337938"
 
 - 已啟用不具 Kubernetes RBAC 授權的 AKS
 - 已使用 Kubernetes RBAC 授權啟用的 AKS
-    - 使用叢集角色系結 ClusterMonitoringUser 設定的 AKS ** [clusterMonitoringUser](https://docs.microsoft.com/rest/api/aks/managedclusters/listclustermonitoringusercredentials?view=azurermps-5.2.0)**
+    - 使用叢集角色系結 ClusterMonitoringUser 設定的 AKS ** [clusterMonitoringUser](/rest/api/aks/managedclusters/listclustermonitoringusercredentials?view=azurermps-5.2.0)**
 - AKS 已啟用 Azure Active Directory （AD） SAML 型單一登入
 
 這些指示需要 Kubernetes 叢集的系統管理存取權，而且如果設定為使用 Azure Active Directory （AD）進行使用者驗證，Azure AD 的系統管理存取權。
@@ -108,7 +108,7 @@ Azure AD 用戶端註冊必須重新設定，才能讓 Azure 入口網站將授�
 如需有關 Kubernetes 中 advanced security 設定的詳細資訊，請參閱[Kubernetes 檔](https://kubernetes.io/docs/reference/access-authn-authz/rbac/)。
 
 >[!NOTE]
->如果您要建立已啟用 RBAC 的新叢集，請參閱[整合 Azure Active Directory 與 Azure Kubernetes Service](../../aks/azure-ad-integration.md) ，並遵循步驟來設定 Azure AD 驗證。 在建立用戶端應用程式的步驟中，該區段中的附注會針對符合下列步驟3中所指定容器的 Azure 監視器，反白顯示您需要建立的兩個重新導向 Url。
+>如果您要建立已啟用 RBAC 的新叢集，請參閱[整合 Azure Active Directory 與 Azure Kubernetes Service](../../aks/azure-ad-integration-cli.md) ，並遵循步驟來設定 Azure AD 驗證。 在建立用戶端應用程式的步驟中，該區段中的附注會針對符合下列步驟3中所指定容器的 Azure 監視器，反白顯示您需要建立的兩個重新導向 Url。
 
 ### <a name="client-registration-reconfiguration"></a>用戶端註冊重新設定
 

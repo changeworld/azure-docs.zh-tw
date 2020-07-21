@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/13/2019
 ms.author: memildin
-ms.openlocfilehash: c58f70126c72a84b09f6eadc251949a0f0021657
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f3006bdd0cb90c22123c8db103a12ef3c0bee75a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84628299"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519332"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Azure 資訊安全中心的檔案完整性監視
 了解如何利用此逐步解說，在 Azure 資訊安全中心設定檔案完整性監視 (FIM)。
@@ -45,7 +46,7 @@ ms.locfileid: "84628299"
 資訊安全中心會建議要監視的實體，您可以輕鬆地對其啟用 FIM。 您也可以定義自己的 FIM 原則或要監視的實體。 本逐步解說會示範做法。
 
 > [!NOTE]
-> 檔案完整性監視 (FIM) 功能適用於 Windows 和 Linux 電腦及 VM，並可在資訊安全中心的標準層使用。 若要深入了解資訊安全中心的定價層，請參閱[價格](security-center-pricing.md)。 FIM 會將資料上傳到 Log Analytics 工作區。 根據您上傳的資料量，需要支付資料費用。 請參閱 [Log Analytics 定價](https://azure.microsoft.com/pricing/details/log-analytics/)以深入了解。
+> 檔案完整性監視（FIM）功能適用于 Windows 和 Linux 電腦和 Vm，可用於資訊安全中心的標準層。 若要深入了解資訊安全中心的定價層，請參閱[價格](security-center-pricing.md)。 FIM 會將資料上傳到 Log Analytics 工作區。 根據您上傳的資料量，需要支付資料費用。 請參閱 [Log Analytics 定價](https://azure.microsoft.com/pricing/details/log-analytics/)以深入了解。
 
 FIM 使用 Azure 變更追蹤解決方案來追蹤及識別您環境中的變更。 啟用檔案完整性監視時，您會有一個類型為 [**方案**] 的**變更追蹤**資源。 如需資料收集頻率的詳細資訊，請參閱 Azure 變更追蹤的[變更追蹤資料收集詳細資料](https://docs.microsoft.com/azure/automation/automation-change-tracking#change-tracking-data-collection-details)。
 
@@ -107,7 +108,7 @@ FIM 使用 Azure 變更追蹤解決方案來追蹤及識別您環境中的變更
 工作區也可能會顯示下列按鈕：
 
 - ![啟用圖示][3] 表示工作區未啟用 FIM。 選取工作區可讓您啟用該工作區下所有電腦的 FIM。
-- ![升級計劃圖示][4] 表示工作區或訂用帳戶未在 資訊安全中心的標準層下執行。 若要使用 FIM 功能，您的訂用帳戶必須執行標準層。  選取工作區可讓您升級為標準層。 若要深入了解標準層及如何升級，請參閱[升級為資訊安全中心標準層以增強安全性](security-center-pricing.md)。
+- ![升級計畫圖示 ][4] 表示工作區或訂用帳戶不是在資訊安全中心的標準層底下執行。 若要使用 FIM 功能，您的訂用帳戶必須執行標準層。  選取工作區可讓您升級為標準層。 若要深入瞭解標準層和如何升級，請參閱[升級為資訊安全中心的標準層以增強安全性](security-center-pricing.md)。
 - 空白 (沒有任何按鈕) 表示已啟用工作區上的 FIM。
 
 在 [檔案完整性監視]**** 下，您可以選取工作區來啟用該工作區的 FIM、檢視該工作區的 [檔案完整性監視] 儀表板，或將工作區[升級](security-center-pricing.md)為標準層。

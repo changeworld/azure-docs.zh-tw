@@ -5,11 +5,12 @@ ms.topic: conceptual
 author: Dawgfan
 ms.author: mmcc
 ms.date: 09/20/2019
-ms.openlocfilehash: f198e4aac08039eb7aed8468e6adb45b5b0d67b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4b3d489477a0ee0cc201d4383b5ed960de515c7d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84464567"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517105"
 ---
 # <a name="application-insights-for-web-pages"></a>適用於網頁的 Application Insights
 
@@ -103,7 +104,7 @@ SDK 載入失敗的報告在 IE 8 （或更少）上特別不受支援。 這有
 
 可用的設定選項為 
 
-| 名稱 | 類型 | Description
+| 名稱 | 類型 | 描述
 |------|------|----------------
 | src | 字串 **[必要]** | 要從中載入 SDK 的完整 URL。 這個值會用於動態加入之腳本/標記的 "src" 屬性 &lt; &gt; 。 您可以使用公用 CDN 位置，或您自己的私人託管。
 | NAME | 字串 *[選擇性]* | 已初始化 SDK 的全域名稱，預設為 appInsights。 因此， ```window.appInsights``` 會參考初始化的實例。 注意：如果您提供名稱值或先前的實例會被指派（透過全域名稱 appInsightsSDK），則此名稱值也會在全域命名空間中定義為 ```window.appInsightsSDK=<name value>``` ，這是 SDK 初始化程式碼所需的，以確保它會初始化並更新正確的程式碼片段基本架構和 proxy 方法。
@@ -114,7 +115,7 @@ SDK 載入失敗的報告在 IE 8 （或更少）上特別不受支援。 這有
 
 ### <a name="sending-telemetry-to-the-azure-portal"></a>將遙測傳送至 Azure 入口網站
 
-根據預設，Application Insights JavaScript SDK 會 autocollects 一些遙測專案，這有助於判斷應用程式的健康情況和基礎使用者體驗。 這些包括：
+根據預設，Application Insights JavaScript SDK 會 autocollects 一些遙測專案，這有助於判斷應用程式的健康情況和基礎使用者體驗。 其中包含：
 
 - 應用程式中未攔截到的**例外**狀況，包括的相關資訊
     - 堆疊追蹤
@@ -149,10 +150,10 @@ appInsights.addTelemetryInitializer(() => false); // Nothing is sent after this 
 appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ```
 
-## <a name="configuration"></a>組態
+## <a name="configuration"></a>設定
 大部分設定欄位的名稱都是，讓它們可以預設為 false。 除了以外，所有欄位都是選擇性的 `instrumentationKey` 。
 
-| Name | 預設 | 描述 |
+| 名稱 | 預設 | 描述 |
 |------|---------|-------------|
 | instrumentationKey | null | **必要**<br>從 Azure 入口網站取得的檢測金鑰。 |
 | accountId | null | 選擇性的帳戶識別碼，如果您的應用程式將使用者群組為帳戶。 不含空格、逗號、分號、等於或分隔號 |
@@ -185,14 +186,14 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 | isBeaconApiDisabled | true | 若為 false，SDK 會使用指標[API](https://www.w3.org/TR/beacon)傳送所有遙測 |
 | onunloadDisableBeacon | false | 預設值為 false。 當索引標籤關閉時，SDK 會使用指標[API](https://www.w3.org/TR/beacon)傳送所有剩餘的遙測 |
 | sdkExtension | null | 設定 sdk 延伸模組名稱。 只允許字母字元。 擴充功能名稱會新增為 ' sdkVersion ' 標記的前置詞（例如 ' ext_javascript： 2.0.0 '）。 預設值為 null。 |
-| isBrowserLinkTrackingEnabled | false | 預設值為 false。 若為 true，SDK 將會追蹤所有[瀏覽器連結](https://docs.microsoft.com/aspnet/core/client-side/using-browserlink)要求。 |
+| isBrowserLinkTrackingEnabled | false | 預設值為 false。 若為 true，SDK 將會追蹤所有[瀏覽器連結](/aspnet/core/client-side/using-browserlink)要求。 |
 | appId | null | AppId 會用於用戶端上發生的 AJAX 相依性與伺服器端要求之間的相互關聯。 啟用「指標 API」時，無法自動使用它，但可在設定中手動設定。 預設值為 null |
 | enableCorsCorrelation | false | 若為 true，SDK 會將兩個標頭（「要求識別碼」和「要求-內容」）新增至所有 CORS 要求，以將外寄 AJAX 相依性與伺服器端上的對應要求相互關聯。 預設值為 false。 |
 | namePrefix | 未定義 | 選擇性值，將會作為 localStorage 和 cookie 名稱的名稱後置詞使用。
 | enableAutoRouteTracking | false | 自動追蹤單一頁面應用程式（SPA）中的路由變更。 若為 true，則每個路由變更都會將新的 Pageview 傳送至 Application Insights。 雜湊路由變更（ `example.com/foo#bar` ）也會記錄為新的頁面流覽。
 | enableRequestHeaderTracking | false | 若為 true，則會追蹤 AJAX & 提取要求標頭，預設值為 false。
 | enableResponseHeaderTracking | false | 若為 true，則會追蹤 AJAX & 提取要求的回應標頭，預設值為 false。
-| distributedTracingMode | `DistributedTracingModes.AI` | 設定分散式追蹤模式。 如果已設定 AI_AND_W3C 模式或 W3C 模式，則會產生 W3C 追蹤內容標頭（traceparent/tracestate），並將其包含在所有傳出的要求中。 AI_AND_W3C 是針對與任何舊版 Application Insights 檢測服務的回溯相容性而提供的。 請參閱[這裡](https://docs.microsoft.com/azure/azure-monitor/app/correlation#enable-w3c-distributed-tracing-support-for-web-apps)的範例。
+| distributedTracingMode | `DistributedTracingModes.AI` | 設定分散式追蹤模式。 如果已設定 AI_AND_W3C 模式或 W3C 模式，則會產生 W3C 追蹤內容標頭（traceparent/tracestate），並將其包含在所有傳出的要求中。 AI_AND_W3C 是針對與任何舊版 Application Insights 檢測服務的回溯相容性而提供的。 請參閱[這裡](./correlation.md#enable-w3c-distributed-tracing-support-for-web-apps)的範例。
 | enableAjaxErrorStatusText | false | 預設值為 false。 若為 true，則在失敗的 AJAX 要求上包含相依性事件中的回應錯誤資料文字。
 | enableAjaxPerfTracking | false | 預設值為 false。 旗標，可讓您查閱和包含額外的瀏覽器視窗。報告的 ajax （XHR 和 fetch）報告的計量中的效能計時。
 | maxAjaxPerfLookupAttempts | 3 | 預設值為3。 要尋找視窗的最大次數。效能時間（如果有的話），因為並非所有瀏覽器都填入視窗，所以這是必要的。在報告 XHR 要求的結尾和提取要求之後，就會在其完成後新增這項功能。
@@ -210,34 +211,34 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 
 ## <a name="configuration-autotrackpagevisittime"></a>設定： autoTrackPageVisitTime
 
-藉由設定 `autoTrackPageVisitTime: true` ，會追蹤使用者在每個頁面上花費的時間。 在每個新的 PageView 上，使用者花費在*上一頁*的持續時間會當做名為的[自訂](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview)計量傳送 `PageVisitTime` 。 此自訂計量可在[計量瀏覽器](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started)中看到為「記錄式計量」。
+藉由設定 `autoTrackPageVisitTime: true` ，會追蹤使用者在每個頁面上花費的時間。 在每個新的 PageView 上，使用者花費在*上一頁*的持續時間會當做名為的[自訂](../platform/metrics-custom-overview.md)計量傳送 `PageVisitTime` 。 此自訂計量可在[計量瀏覽器](../platform/metrics-getting-started.md)中看到為「記錄式計量」。
 
 ## <a name="react-extensions"></a>回應延伸模組
 
 | 延伸模組 |
 |---------------|
 | [React](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md)|
-| [React Native](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-native/README.md)|
+| [React Native](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-native/README.md) \(英文\)|
 
 ## <a name="explore-browserclient-side-data"></a>探索瀏覽器/用戶端資料
 
 瀏覽器/用戶端資料可透過前往 [**計量**] 來查看，並新增您感興趣的個別計量：
 
-![](./media/javascript/page-view-load-time.png)
+![Application Insights 中 [計量] 頁面的螢幕擷取畫面，其中顯示 web 應用程式的度量資料圖形顯示。](./media/javascript/page-view-load-time.png)
 
 您也可以透過入口網站中的瀏覽器體驗，從 JavaScript SDK 來查看您的資料。
 
 選取 [**瀏覽器**]，然後選擇 [**失敗**] 或 [**效能**]。
 
-![](./media/javascript/browser.png)
+![[瀏覽器] 頁面的螢幕擷取畫面，其中 Application Insights 顯示如何將瀏覽器失敗或瀏覽器效能新增至您可以為 web 應用程式查看的度量。](./media/javascript/browser.png)
 
 ### <a name="performance"></a>效能
 
-![](./media/javascript/performance-operations.png)
+![Application Insights 中 [效能] 頁面的螢幕擷取畫面，其中顯示 web 應用程式之作業計量的圖形顯示。](./media/javascript/performance-operations.png)
 
 ### <a name="dependencies"></a>相依性
 
-![](./media/javascript/performance-dependencies.png)
+![Application Insights 中 [效能] 頁面的螢幕擷取畫面，其中顯示 web 應用程式之相依性計量的圖形顯示。](./media/javascript/performance-dependencies.png)
 
 ### <a name="analytics"></a>分析
 
@@ -270,7 +271,7 @@ dataset
 
 1. 在 [Azure 入口網站中選取例外狀況遙測專案，以查看其「端對端交易詳細資料」
 2. 識別與此呼叫堆疊對應的來源對應。 來源對應必須符合堆疊框架的原始程式檔，但尾碼為`.map`
-3. 將來源對應拖放到呼叫堆疊的 Azure 入口網站![](https://i.imgur.com/Efue9nU.gif)
+3. 將來源對應拖放到 Azure 入口網站動畫影像中的呼叫堆疊，示範 ![ 如何從組建資料夾將來源對應檔案拖放到 Azure 入口網站的 [呼叫堆疊] 視窗中。](https://i.imgur.com/Efue9nU.gif)
 
 ### <a name="application-insights-web-basic"></a>Application Insights Web 基本
 

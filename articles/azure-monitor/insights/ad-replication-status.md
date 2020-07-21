@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/24/2018
-ms.openlocfilehash: 30b0c7c87f6d55586b931be1445b175ce58565d6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 65ced5021305dce15236ded59cf79a6578e7372a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80055907"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516782"
 ---
 # <a name="monitor-active-directory-replication-status-with-azure-monitor"></a>使用 Azure 監視器監視 Active Directory 複寫狀態
 
@@ -26,7 +26,7 @@ AD 複寫狀態解決方案會定期監視您的 Active Directory 環境是否�
 ## <a name="installing-and-configuring-the-solution"></a>安裝和設定方案
 請使用下列資訊來安裝和設定方案。
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>先決條件
 
 * AD 複寫狀態解決方案需要在每一部已安裝適用于 Windows 的 Log Analytics 代理程式（也稱為 Microsoft Monitoring Agent （MMA））的電腦上安裝支援的 .NET Framework 4.6.2 或更新版本。  System Center 2016 - Operations Manager、Operations Manager 2012 R2 和 Azure 監視器都使用代理程式。
 * 方案支援執行 Windows Server 2008 和 2008 R2、Windows Server 2012 和 2012 R2 及 Windows Server 2016 的網域控制站。
@@ -62,7 +62,7 @@ AD 複寫狀態解決方案會定期監視您的 Active Directory 環境是否�
 
 [!INCLUDE [azure-monitor-solutions-overview-page](../../../includes/azure-monitor-solutions-overview-page.md)]
 
-[AD 複寫狀態] 圖格顯示您目前有多少複寫錯誤。 **重大複寫錯誤** 就是達到或超過 Active Directory 樹系 75% [標記存留期](https://technet.microsoft.com/library/cc784932%28v=ws.10%29.aspx) 的錯誤。
+[AD 複寫狀態] 圖格顯示您目前有多少複寫錯誤。 **重大複寫錯誤** 就是達到或超過 Active Directory 樹系 75% [標記存留期](/previous-versions/windows/it-pro/windows-server-2003/cc784932(v=ws.10)) 的錯誤。
 
 ![AD 複寫狀態圖格](./media/ad-replication-status/oms-ad-replication-tile.png)
 

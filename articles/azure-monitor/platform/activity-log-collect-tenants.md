@@ -6,22 +6,22 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/06/2019
-ms.openlocfilehash: d2f794365e15768dbf47647f2d9a8d08d5e8ba3f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07c38cbd2d77a3cca594acd974705af35d8189b9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80055732"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516340"
 ---
 # <a name="collect-azure-activity-logs-into-azure-monitor-across-azure-active-directory-tenants-legacy"></a>將 Azure 活動記錄收集到 Azure Active Directory 租使用者之間的 Azure 監視器（舊版）
 
 > [!NOTE]
-> 本文說明在 Azure 租使用者中設定 Azure 活動記錄以在 Log Analytics 工作區中收集的傳統方法。  您現在可以使用與收集資源記錄的方式類似的診斷設定，將活動記錄收集到 Log Analytics 工作區。 請參閱[在 Azure 監視器中收集和分析 Log Analytics 工作區中的 Azure 活動記錄](activity-log-collect.md)。
+> 本文說明在 Azure 租使用者中設定 Azure 活動記錄以在 Log Analytics 工作區中收集的傳統方法。  您現在可以使用與收集資源記錄的方式類似的診斷設定，將活動記錄收集到 Log Analytics 工作區。 請參閱[在 Azure 監視器中收集和分析 Log Analytics 工作區中的 Azure 活動記錄](./activity-log.md)。
 
 
 本文會逐步解說如何使用適用于 Logic Apps 的 Azure Log Analytics 資料收集器連接器，在 Azure 監視器中將 Azure 活動記錄收集到 Log Analytics 工作區。 當您需要將記錄傳送至不同 Azure Active Directory 租用戶中的工作區時，請使用本文中的程序。 例如，如果您是受控服務提供者，則可能會想要收集客戶訂用帳戶的活動記錄，並將其儲存在您專屬訂用帳戶的 Log Analytics 工作區中。
 
-如果 Log Analytics 工作區位於相同的 Azure 訂用帳戶中，或位於不同的訂用帳戶中，但在相同的 Azure Active Directory 中，請使用在[Azure 監視器中收集並分析 Log Analytics 工作區中的 azure 活動記錄](activity-log-collect.md)中的步驟來收集 azure 活動記錄。
+如果 Log Analytics 工作區位於相同的 Azure 訂用帳戶中，或位於不同的訂用帳戶中，但在相同的 Azure Active Directory 中，請使用在[Azure 監視器中收集並分析 Log Analytics 工作區中的 azure 活動記錄](./activity-log.md)中的步驟來收集 azure 活動記錄。
 
 ## <a name="overview"></a>概觀
 
@@ -90,17 +90,17 @@ ms.locfileid: "80055732"
 
 11. 按一下 [確定]****，然後按一下 [儲存]****，來儲存這些設定。 您的訂用帳戶時會立即套用設定。
 
-<!-- Follow the steps in [stream the Azure Activity Log to Event Hubs](../../azure-monitor/platform/activity-logs-stream-event-hubs.md) to configure a log profile that writes activity logs to an event hub. -->
+<!-- Follow the steps in [stream the Azure Activity Log to Event Hubs](./activity-log.md#legacy-collection-methods) to configure a log profile that writes activity logs to an event hub. -->
 
 ## <a name="step-3---create-logic-app"></a>步驟 3 - 建立邏輯應用程式
 
 一旦活動記錄寫入至事件中樞，您就可以建立邏輯應用程式，以從事件中樞收集記錄，並將它們寫入 Log Analytics 工作區。
 
 邏輯應用程式包含下列各項：
-- 要從事件中樞讀取的[事件中樞連接器](https://docs.microsoft.com/connectors/eventhubs/)觸發程序。
+- 要從事件中樞讀取的[事件中樞連接器](/connectors/eventhubs/)觸發程序。
 - 擷取 JSON 事件的[剖析 JSON 動作](../../logic-apps/logic-apps-content-type.md)。
 - 將 JSON 轉換為物件的[撰寫動作](../../logic-apps/logic-apps-workflow-actions-triggers.md#compose-action)。
-- [Log analytics 傳送資料連線器](https://docs.microsoft.com/connectors/azureloganalyticsdatacollector/)，以將資料張貼至 Log analytics 工作區。
+- [Log analytics 傳送資料連線器](/connectors/azureloganalyticsdatacollector/)，以將資料張貼至 Log analytics 工作區。
 
    ![在 Logic Apps 中新增事件中樞觸發程序的影像](media/collect-activity-logs-subscriptions/log-analytics-logic-apps-activity-log-overview.png)
 
@@ -129,7 +129,7 @@ ms.locfileid: "80055732"
    | 名稱           | 邏輯應用程式的唯一名稱。 |
    | 訂用帳戶   | 選取將包含邏輯應用程式的 Azure 訂用帳戶。 |
    | 資源群組 | 選取現有 Azure 資源群組，或建立邏輯應用程式的新 Azure 資源群組。 |
-   | 位置       | 選取資料中心區域，用於部署邏輯應用程式。 |
+   | Location       | 選取資料中心區域，用於部署邏輯應用程式。 |
    | Log Analytics  | 如果您想要在 Log Analytics 工作區中記錄每個邏輯應用程式執行的狀態，請選取此項。  |
 
     
@@ -284,7 +284,7 @@ ms.locfileid: "80055732"
 
 
 ### <a name="add-log-analytics-send-data-action"></a>新增 Log Analytics 傳送資料動作
-[Azure Log Analytics 資料收集器](https://docs.microsoft.com/connectors/azureloganalyticsdatacollector/)動作會從撰寫動作取得物件，並將其傳送至 Log Analytics 工作區。
+[Azure Log Analytics 資料收集器](/connectors/azureloganalyticsdatacollector/)動作會從撰寫動作取得物件，並將其傳送至 Log Analytics 工作區。
 
 1. 按一下 [**新增步驟] [新增**  >  **動作**]
 2. 鍵入 log analytics** 作為篩選條件，然後選取 [Azure Log Analytics Data Collector - Send Data] \(Azure Log Analytics 資料收集器 - 傳送資料)**** 動作。
@@ -330,7 +330,7 @@ ms.locfileid: "80055732"
 > 第一次將新的自訂記錄傳送到 Log Analytics 工作區時，最多可能需要一小時的時間，自訂記錄檔才可供搜尋。
 
 >[!NOTE]
-> 活動記錄會寫入自訂資料表，而且不會出現在[活動記錄解決方案](./activity-log-collect.md)中。
+> 活動記錄會寫入自訂資料表，而且不會出現在[活動記錄解決方案](./activity-log.md)中。
 
 
 ![測試邏輯應用程式](media/collect-activity-logs-subscriptions/log-analytics-results.png)

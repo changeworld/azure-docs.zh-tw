@@ -4,12 +4,12 @@ description: 使用 Azure 入口網站、Azure Resource Manager 範本和 Azure 
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 06/25/2019
-ms.openlocfilehash: 242192118d59f972cebe2837d74c34310cac74aa
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 5019c3111a6e04dd9b7ba6ecbb9f62c7969075ed
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86056254"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516051"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-by-using-azure-monitor"></a>使用 Azure 監視器中建立、檢視及管理活動記錄警示  
 
@@ -20,7 +20,7 @@ ms.locfileid: "86056254"
 這些警示都適用於 Azure 資源，可以使用 Azure Resource Manager 範本來建立。 也可以在 Azure 入口網站中將它們建立、更新或刪除。 一般而言，您可以建立活動記錄警示，以在 Azure 訂閱中的資源發生特定變更時接收通知。 警示的範圍通常是特定資源群組或資源。 例如，您想要在同一個資源群組 **myProductionResourceGroup** 中的任何虛擬機器遭刪除時收到通知。 或者，您想要在有任何新角色指派給訂閱中的使用者時收到通知。
 
 > [!IMPORTANT]
-> 服務健康情況通知的警示是無法透過活動記錄警示建立的介面來建立的。 若要深入了解如何建立及使用服務健康情況通知，請參閱[在服務健康情況通知上接收活動記錄警示](alerts-activity-log-service-notifications.md)。
+> 服務健康情況通知的警示是無法透過活動記錄警示建立的介面來建立的。 若要深入了解如何建立及使用服務健康情況通知，請參閱[在服務健康情況通知上接收活動記錄警示](../../service-health/alerts-activity-log-service-notifications-portal.md)。
 
 在建立警示規則時，請確定下列各項：
 
@@ -28,6 +28,7 @@ ms.locfileid: "86056254"
 - 設定警示必須以層級、狀態、呼叫端、資源群組、資源識別碼，或資源類型事件類別目錄為準則。
 - 在警示設定 JSON 中，沒有「anyOf」條件或巢狀條件。 基本上，只允許一個「allOf」條件，不允許有進一步的「allOf」或「anyOf」條件。
 - 當類別為「系統管理」時，您必須在警示中指定至少一個上述準則。 您不能建立會在每次活動記錄中建立事件時即啟動的警示。
+- 無法針對活動記錄警示類別中的事件建立警示。
 
 ## <a name="azure-portal"></a>Azure 入口網站
 
@@ -101,7 +102,7 @@ ms.locfileid: "86056254"
     您可以啟用、停用、編輯或刪除規則。 深入了解如何管理活動記錄規則。
 
 
-有一個簡單類比可用來了解哪些警示規則可在活動記錄上建立，就是透過 [Azure 入口網站中的活動記錄](activity-log-view.md#azure-portal)探索或篩選事件。 在 [Azure 監視器 - 活動記錄] 中，您可以篩選或尋找必要事件，然後透過使用 [新增活動記錄警示] 按鈕來建立警示。 然後依照前面所示的步驟 4 到 7 進行。
+有一個簡單類比可用來了解哪些警示規則可在活動記錄上建立，就是透過 [Azure 入口網站中的活動記錄](./activity-log.md#view-the-activity-log)探索或篩選事件。 在 [Azure 監視器 - 活動記錄] 中，您可以篩選或尋找必要事件，然後透過使用 [新增活動記錄警示] 按鈕來建立警示。 然後依照前面所示的步驟 4 到 7 進行。
     
  ![從活動記錄新增警示](media/alerts-activity-log/add-activity-log.png)
     
@@ -243,7 +244,7 @@ ms.locfileid: "86056254"
 > 新活動記錄警示規則最多可能需要 5 分鐘的時間才會運作。
 
 ## <a name="rest-api"></a>REST API 
-[Azure 監視器活動記錄警示 API](https://docs.microsoft.com/rest/api/monitor/activitylogalerts) 為 REST API。 它與 Azure Resource Manager REST API 完全相容。 可以藉由使用 Resource Manager Cmdlet 或 Azure CLI，來透過 PowerShell 使用它。
+[Azure 監視器活動記錄警示 API](/rest/api/monitor/activitylogalerts) 為 REST API。 它與 Azure Resource Manager REST API 完全相容。 可以藉由使用 Resource Manager Cmdlet 或 Azure CLI，來透過 PowerShell 使用它。
 
 ## <a name="powershell"></a>PowerShell
 
@@ -262,29 +263,29 @@ New-AzResourceGroupDeployment -ResourceGroupName "myRG" -TemplateFile sampleActi
 
 活動記錄警示有專用的 PowerShell Cmdlet 可供使用：
 
-- [Set-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Set-AzActivityLogAlert)：建立新的活動記錄警示，或更新現有的活動記錄警示。
-- [Get-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Get-AzActivityLogAlert)：取得一或多個活動記錄警示資源。
-- [Enable-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Enable-AzActivityLogAlert)：啟用現有的活動記錄警示，並設定其標記。
-- [Disable-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Disable-AzActivityLogAlert)：停用現有的活動記錄警示，並設定其標記。
-- [Remove-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Remove-AzActivityLogAlert)：移除活動記錄警示。
+- [Set-AzActivityLogAlert](/powershell/module/az.monitor/set-azactivitylogalert)：建立新的活動記錄警示，或更新現有的活動記錄警示。
+- [Get-AzActivityLogAlert](/powershell/module/az.monitor/get-azactivitylogalert)：取得一或多個活動記錄警示資源。
+- [Enable-AzActivityLogAlert](/powershell/module/az.monitor/enable-azactivitylogalert)：啟用現有的活動記錄警示，並設定其標記。
+- [Disable-AzActivityLogAlert](/powershell/module/az.monitor/disable-azactivitylogalert)：停用現有的活動記錄警示，並設定其標記。
+- [Remove-AzActivityLogAlert](/powershell/module/az.monitor/remove-azactivitylogalert)：移除活動記錄警示。
 
 ## <a name="azure-cli"></a>Azure CLI
 
-[az monitor activity-log alert](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert) 集合底下的專用 Azure CLI 命令可用來管理活動記錄警示規則。
+[az monitor activity-log alert](/cli/azure/monitor/activity-log/alert) 集合底下的專用 Azure CLI 命令可用來管理活動記錄警示規則。
 
 若要建立新的活動記錄警示規則，請依照此順序使用下列命令：
 
-1. [az monitor activity-log alert create](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-create)：建立新的活動記錄警示規則資源。
-1. [az monitor activity-log alert scope](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert/scope)：為所建立的活動記錄警示規則新增範圍。
-1. [az monitor activity-log alert action-group](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert/action-group)：將動作群組新增至活動記錄警示規則。
+1. [az monitor activity-log alert create](/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-create)：建立新的活動記錄警示規則資源。
+1. [az monitor activity-log alert scope](/cli/azure/monitor/activity-log/alert/scope)：為所建立的活動記錄警示規則新增範圍。
+1. [az monitor activity-log alert action-group](/cli/azure/monitor/activity-log/alert/action-group)：將動作群組新增至活動記錄警示規則。
 
-若要擷取一個活動記錄警示規則資源，請使用 Azure CLI 命令 [az monitor activity-log alert show](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-show
-)。 若要檢視某個資源群組中的所有活動記錄警示規則資源，請使用 [az monitor activity-log alert list](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-list)。
-Azure CLI 命令 [az monitor activity-log alert delete](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-delete) 則可用來移除活動記錄警示規則資源。
+若要擷取一個活動記錄警示規則資源，請使用 Azure CLI 命令 [az monitor activity-log alert show](/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-show
+)。 若要檢視某個資源群組中的所有活動記錄警示規則資源，請使用 [az monitor activity-log alert list](/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-list)。
+Azure CLI 命令 [az monitor activity-log alert delete](/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-delete) 則可用來移除活動記錄警示規則資源。
 
 ## <a name="next-steps"></a>後續步驟
 
 - 了解[活動記錄的 Webhook 結構描述](../../azure-monitor/platform/activity-log-alerts-webhook.md)。
 - 參閱[活動記錄概觀](../../azure-monitor/platform/activity-log-alerts.md)。
 - 深入了解[動作群組](../../azure-monitor/platform/action-groups.md)。  
-- 深入了解[服務健康狀態通知](../../azure-monitor/platform/service-notifications.md)。
+- 深入了解[服務健康狀態通知](../../service-health/service-notifications.md)。

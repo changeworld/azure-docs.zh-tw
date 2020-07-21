@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 10/30/2019
+ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 40e788099a159e1f60c0af02deccd7e3bef82744
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4904cd95dc81aad959c88c1dfdb09416923046e6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82181727"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518176"
 ---
 # <a name="a-web-app-that-calls-web-apis-acquire-a-token-for-the-app"></a>呼叫 web Api 的 web 應用程式：取得應用程式的權杖
 
@@ -50,6 +50,7 @@ public class HomeController : Controller
 以下是的動作簡化的程式碼 `HomeController` ，它會取得要呼叫 Microsoft Graph 的權杖：
 
 ```csharp
+[AuthorizeForScopes(Scopes = new[] { "user.read" })]
 public async Task<IActionResult> Profile()
 {
  // Acquire the access token.
@@ -65,6 +66,8 @@ public async Task<IActionResult> Profile()
 
 若要進一步瞭解此案例所需的程式碼，請參閱[aspnetcore-webapp-教學](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial)課程教學課程的第2階段（[2-1-Web 應用程式呼叫 Microsoft Graph](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-1-Call-MSGraph)）步驟。
 
+`AuthorizeForScopes`控制器動作（如果您使用 razor 範本，則為 razor 頁面）頂端的屬性是由 Microsoft 所提供。 它可確保使用者在必要時和以累加的方式要求同意。
+
 還有其他複雜的變化，例如：
 
 - 呼叫數個 Api。
@@ -79,6 +82,36 @@ ASP.NET 的程式碼類似于 ASP.NET Core 顯示的程式碼：
 - 由 [授權] 屬性保護的控制器動作，會解壓縮控制器成員的租使用者識別碼和使用者識別碼 `ClaimsPrincipal` 。 （ASP.NET 會使用 `HttpContext.User` ）。
 - 它會建立一個 MSAL.NET `IConfidentialClientApplication` 物件。
 - 最後，它會呼叫 `AcquireTokenSilent` 機密用戶端應用程式的方法。
+- 如果需要互動，web 應用程式需要挑戰使用者（重新登入）並要求更多的宣告。
+
+下列程式碼片段是以[ms-identity-aspnet-webapp-openidconnect](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect) ASP.NET MVC 程式碼範例中的[HomeController. cs # L157-L192](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/257c8f96ec3ff875c351d1377b36403eed942a18/WebApp/Controllers/HomeController.cs#L157-L192)來解壓縮：
+
+```C#
+public async Task<ActionResult> ReadMail()
+{
+    IConfidentialClientApplication app = MsalAppBuilder.BuildConfidentialClientApplication();
+    AuthenticationResult result = null;
+    var account = await app.GetAccountAsync(ClaimsPrincipal.Current.GetMsalAccountId());
+    string[] scopes = { "Mail.Read" };
+
+    try
+    {
+        // try to get token silently
+        result = await app.AcquireTokenSilent(scopes, account).ExecuteAsync().ConfigureAwait(false);
+    }
+    catch (MsalUiRequiredException)
+    {
+        ViewBag.Relogin = "true";
+        return View();
+    }
+
+    // More code here
+    return View();
+}
+```
+
+如需詳細資訊，請參閱程式碼範例中的[BuildConfidentialClientApplication （）](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/master/WebApp/Utils/MsalAppBuilder.cs)和[GetMsalAccountId](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/257c8f96ec3ff875c351d1377b36403eed942a18/WebApp/Utils/ClaimPrincipalExtension.cs#L38)程式碼
+
 
 # <a name="java"></a>[Java](#tab/java)
 

@@ -9,11 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 1137a51ab7feb5a6d18c7d137d957d8e779d170e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 94d952bcb0693941624199370de092a581d7479b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513380"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518584"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>監視、診斷與疑難排解 Microsoft Azure 儲存體
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -78,7 +79,7 @@ ms.locfileid: "85513380"
 ## <a name="introduction"></a><a name="introduction"></a>簡介
 本指南說明如何使用 Azure 儲存體分析、Azure 儲存體用戶端程式庫內的用戶端記錄，與其他協力廠商工具等功能，來為 Azure 儲存體的相關問題進行識別、診斷與疑難排解。
 
-![][1]
+![此圖顯示用戶端應用程式和 Azure 儲存體服務之間的資訊流程。][1]
 
 本指南主要提供給使用 Azure 儲存體服務的開發人員，以及負責管理此類線上服務之 IT 專業人士閱讀。 本指南宗旨如下：
 
@@ -117,7 +118,7 @@ ms.locfileid: "85513380"
 
 下圖中的圖表說明每小時計量的平均值計算如何隱藏活動中的異常高值。 每小時度量所顯示的要求率極為穩定，而每分鐘度量顯示的才是真正發生的變動起伏情況。
 
-![][3]
+![顯示每小時計量發生之平均的圖表，可以隱藏活動的尖峰。][3]
 
 本小節剩下部分說明您應該監視的度量項目及這麼做的原因。
 
@@ -347,7 +348,7 @@ catch (StorageException storageException)
 ### <a name="metrics-show-high-averagee2elatency-and-low-averageserverlatency"></a><a name="metrics-show-high-AverageE2ELatency-and-low-AverageServerLatency"></a>度量顯示高 AverageE2ELatency 與低 AverageServerLatency
 下圖來自 [Azure 入口網站](https://portal.azure.com)監視工具，顯示一個 **AverageE2ELatency** 遠遠高出 **AverageServerLatency** 的範例。
 
-![][4]
+![Azure 入口網站中的圖例，其中顯示 AverageE2ELatency 明顯高於 AverageServerLatency 的範例。][4]
 
 儲存體服務只會計算成功要求的度量 **AverageE2ELatency**，不像 **AverageServerLatency** 會將用戶端用來傳送資料與接收儲存體服務認可所需的時間納入計算。 因此，**AverageE2ELatency** 與 **AverageServerLatency** 之間的差異可能是因為用戶端應用程式回應速度太慢，或是其他網路狀況所引起。
 
@@ -726,7 +727,7 @@ Fiddler 一經啟動後，就會開始擷取本機電腦上的 HTTP 與 HTTPS �
 
 若要限制 Fiddler 所擷取的流量數量，請使用您在 [篩選器] 索引標籤中設定的篩選器。以下螢幕擷取畫面顯示只會擷取傳送至 **contosoemaildist.table.core.windows.net** 儲存體端點的流量之篩選器：
 
-![][5]
+![顯示篩選器的螢幕擷取畫面，只會捕獲傳送至 contosoemaildist.table.core.windows.net 儲存體端點的流量。][5]
 
 ### <a name="appendix-2-using-wireshark-to-capture-network-traffic"></a><a name="appendix-2"></a>附錄 2：使用 Wireshark 擷取網路流量
 [Wireshark](https://www.wireshark.org/) 是一項網路通訊協定工具，能幫助您針對各式各樣的網路通訊協定檢視詳細的封包資訊。
@@ -738,18 +739,18 @@ Fiddler 一經啟動後，就會開始擷取本機電腦上的 HTTP 與 HTTPS �
 3. 按一下 [擷取選項] 。
 4. 在 [擷取篩選器] 文字方塊中，新增一項篩選器。 舉例來說，**host contosoemaildist.table.core.windows.net** 會將 Wireshark 設定為僅擷取 **contosoemaildist** 儲存體帳戶中資料表服務端點所流入與流出的封包。 請參閱[擷取篩選器的完整清單](https://wiki.wireshark.org/CaptureFilters)。
 
-   ![][6]
+   ![顯示如何將篩選新增至 [捕捉篩選] 文字方塊的螢幕擷取畫面。][6]
 5. 按一下 [啟動] 。 現在當您於本機電腦上使用用戶端應用程式時，Wireshark 會開始擷取流入/流出資料表服務端點的所有封包。
 6. 完成作業時，按一下主要功能表上的 [擷取]，然後按一下 [停止]。
 7. 若要將擷取的資料儲存在 Wireshark 擷取檔案中，按一下主要功能表上的 [檔案]，然後按一下 [儲存]。
 
 WireShark 會反白顯示任何存在 **packetlist** 視窗的錯誤。 您也可以使用 **Expert Info** 視窗 (依序按一下 [分析]、[專家資訊]) 來檢視錯誤與警告摘要。
 
-![][7]
+![顯示 [專家資訊] 視窗的螢幕擷取畫面，您可以在其中查看錯誤和警告的摘要。][7]
 
 您也可以選擇應用程式層所顯示的 TCP 資料，方法是以滑鼠右鍵按一下 TCP 資料，然後選取 [Follow TCP Stream] \(追蹤 TCP 資料流\)。 當您不使用擷取篩選器而擷取到傾印時，這個方法很有用。 如需詳細資訊，請參閱 [追蹤 TCP 串流](https://www.wireshark.org/docs/wsug_html_chunked/ChAdvFollowTCPSection.html)。
 
-![][8]
+![螢幕擷取畫面：顯示如何在應用層看到 TCP 資料時進行查看。][8]
 
 > [!NOTE]
 > 如需有關使用 Wireshark 的詳細資訊，請參閱 [Wireshark 使用者指南](https://www.wireshark.org/docs/wsug_html_chunked)。
@@ -782,11 +783,11 @@ Microsoft Message Analyzer 內建的 **Web Proxy** 追蹤功能是依據 Fiddler
 
 下列螢幕擷取畫面顯示以**本機連結層**追蹤功能所擷取到的一些**知識性**訊息 (在 [DiagnosisTypes] 資料欄中)。 按下 [DiagnosisTypes]  資料欄中的圖示，即可顯示該訊息的詳細資料。 在以下範例中，由於伺服器並未收到來自用戶端的認可，因此重新傳送訊息 #305：
 
-![][9]
+![顯示範例本機連結層追蹤的螢幕擷取畫面，其中包含 DiagnosisTypes 資料行中的一些參考用訊息][9]
 
 當您在 Microsoft Message Analyzer 中建立追蹤工作階段時，可以指定篩選器來減少追蹤所產生的雜訊。 在您定義追蹤功能的 [Capture / Trace] 頁面中，按一下 [Microsoft-Windows-NDIS-PacketCapture] 旁邊的 [設定] 連結。 下列螢幕擷取畫面顯示針對三個儲存體服務的 IP 位址進行 TCP 流量篩選的組態：
 
-![][10]
+![顯示設定的螢幕擷取畫面，可針對三個儲存體服務的 IP 位址篩選 TCP 流量。][10]
 
 如需有關「Microsoft Message Analyzer 本機連結層」追蹤的詳細資訊，請參閱 [Microsoft-PEF-NDIS-PacketCapture 提供者](https://technet.microsoft.com/library/jj659264.aspx)。
 

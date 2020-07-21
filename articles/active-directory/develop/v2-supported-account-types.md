@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 07/14/2020
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: d19381094e027bd567ffc503d32f9212ef56a948
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 50a0859b58e2db0d3f644db01cfcde8c533b6871
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82583099"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518125"
 ---
 # <a name="supported-account-types"></a>支援的帳戶類型
 
@@ -45,7 +45,6 @@ ms.locfileid: "82583099"
 - Daemon 應用程式只能與 Azure AD 組織搭配使用。 嘗試使用 daemon 應用程式來操作 Microsoft 個人帳戶並不合理。 永遠不會授與系統管理員同意。
 - 您只能使用整合式 Windows 驗證流程搭配公司或學校帳戶（在您的組織或任何組織中）。 整合式 Windows 驗證可與網域帳戶搭配使用，而且需要電腦加入網域或 Azure AD 聯結。 此流程對於個人 Microsoft 帳戶沒有意義。
 - [資源擁有者密碼認證授](./v2-oauth-ropc.md)與（使用者名稱/密碼）無法搭配個人 Microsoft 帳戶使用。 個人 Microsoft 帳戶會要求使用者同意在每個登入會話存取個人資源。 這就是這種行為與非互動式流程不相容的原因。
-- 裝置程式碼流程無法搭配個人 Microsoft 帳戶使用。
 
 ## <a name="account-types-in-national-clouds"></a>國家雲端中的帳戶類型
 

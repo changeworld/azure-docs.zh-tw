@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 2/23/2020
+ms.date: 07/16/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 5a5417d20229356eb2a0574a35b8a5a884e50193
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e4e64a022a8cb071eb1b3447995c1e91b910fe2d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84807625"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519196"
 ---
 # <a name="authorize-access-to-blobs-and-queues-using-azure-active-directory"></a>使用 Azure Active Directory 授權存取 blob 和佇列
 
@@ -85,7 +85,7 @@ Azure 入口網站指出當您流覽至容器或佇列時，所使用的授權�
 
 Azure CLI 和 PowerShell 支援使用 Azure AD 認證進行登入。 登入之後，您的會話會在這些認證下執行。 若要深入瞭解，請參閱[使用 Azure AD 認證來執行 Azure CLI 或 PowerShell 命令，以存取 blob 或佇列資料](authorize-active-directory-powershell.md)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [使用適用于 Azure 資源的 Azure Active Directory 和受控識別，授權對 blob 和佇列的存取](storage-auth-aad-msi.md)
 - [使用應用程式中的 Azure Active Directory 進行授權，以存取 blob 和佇列](storage-auth-aad-app.md)

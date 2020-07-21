@@ -3,11 +3,12 @@ title: 建立新的 Azure Application Insights 資源 | Microsoft Docs
 description: 針對新的即時應用程式手動設定 Application Insights 監視。
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 4d8979469ca83dfd6b81aab10191e8fbf36104ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cb47453140c7659ca2f5e6da2e40d9d78405f8e7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83200679"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517088"
 ---
 # <a name="create-an-application-insights-resource"></a>建立 Application Insights 資源
 
@@ -31,7 +32,7 @@ Azure 應用程式 Insights 會在 Microsoft Azure*資源*中顯示應用程式�
    | **資源模式** | `Classic` 或 `Workspace-based` | 以工作區為基礎的資源目前處於公開預覽狀態，可讓您將 Application Insights 遙測傳送至一般的 Log Analytics 工作區。 如需詳細資訊，請參閱以[工作區為基礎的資源一文](create-workspace-resource.md)。
 
 > [!NOTE]
-> 雖然您可以在不同的資源群組上使用相同的資源名稱，但使用全域唯一的名稱可能會很有説明。 如果您打算[執行跨資源查詢](https://docs.microsoft.com/azure/azure-monitor/log-query/cross-workspace-query#identifying-an-application)，因為它會簡化必要的語法，這會很有用。
+> 雖然您可以在不同的資源群組上使用相同的資源名稱，但使用全域唯一的名稱可能會很有説明。 如果您打算[執行跨資源查詢](../log-query/cross-workspace-query.md#identifying-an-application)，因為它會簡化必要的語法，這會很有用。
 
 在必要欄位中輸入適當的值，然後選取 [**審查 + 建立**]。
 
@@ -92,7 +93,7 @@ SamplingPercentage :
 TenantId           : {subid}
 ```
 
-如需此 Cmdlet 的完整 PowerShell 檔，並瞭解如何取得檢測金鑰，請參閱[Azure PowerShell 檔](https://docs.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsights?view=azps-2.5.0)。
+如需此 Cmdlet 的完整 PowerShell 檔，並瞭解如何取得檢測金鑰，請參閱[Azure PowerShell 檔](/powershell/module/az.applicationinsights/new-azapplicationinsights?view=azps-2.5.0)。
 
 ### <a name="azure-cli-preview"></a>Azure CLI （預覽）
 
@@ -149,12 +150,12 @@ az monitor app-insights component create --app demoApp --location eastus --kind 
 }
 ```
 
-如需此命令的完整 Azure CLI 檔，並瞭解如何取得檢測金鑰，請參閱[Azure CLI 檔](https://docs.microsoft.com/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest#ext-application-insights-az-monitor-app-insights-component-create)。
+如需此命令的完整 Azure CLI 檔，並瞭解如何取得檢測金鑰，請參閱[Azure CLI 檔](/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest#ext-application-insights-az-monitor-app-insights-component-create)。
 
 ## <a name="next-steps"></a>後續步驟
 * [診斷搜尋](../../azure-monitor/app/diagnostic-search.md)
 * [探索度量](../../azure-monitor/platform/metrics-charts.md)
-* [撰寫分析查詢](../../azure-monitor/app/analytics.md)
+* [撰寫分析查詢](../log-query/log-query-overview.md)
 
 <!--Link references-->
 

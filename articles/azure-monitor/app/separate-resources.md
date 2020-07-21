@@ -3,12 +3,12 @@ title: 如何設計 Application Insights 部署 (一或多個資源)？
 description: 將遙測導向開發、測試和生產戳記的不同資源。
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 53fe54d1e674a9d15cab5a3fac0c85f415e40260
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: ff301887aebf64d26d0fb391a8a16adefc8a3860
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86107422"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516714"
 ---
 # <a name="how-many-application-insights-resources-should-i-deploy"></a>我應該部署多少 Application Insights 資源
 
@@ -35,7 +35,7 @@ ms.locfileid: "86107422"
 
 ### <a name="other-things-to-keep-in-mind"></a>要牢記在心的其他事項
 
--   您可能需要加入自訂程式碼，才能確保在 [Cloud_RoleName](https://docs.microsoft.com/azure/azure-monitor/app/app-map?tabs=net#set-cloud-role-name) 屬性中設定有意義的值。 如果沒有為此屬性設定有意義的值，*任何*入口網站體驗都不會有任何作用。
+-   您可能需要加入自訂程式碼，才能確保在 [Cloud_RoleName](./app-map.md?tabs=net#set-cloud-role-name) 屬性中設定有意義的值。 如果沒有為此屬性設定有意義的值，*任何*入口網站體驗都不會有任何作用。
 - SDK 會針對 Service Fabric 應用程式和傳統雲端服務，自動從 Azure 角色環境讀取並進行這些設定。 置於其他所有類型的應用程式，您可能需要明確地進行這個設定。
 -   即時計量體驗不支援依角色名稱分割。
 
@@ -76,7 +76,7 @@ var appInsights = window.appInsights || function(config){ ...
 
 ## <a name="create-additional-application-insights-resources"></a>建立其他 Application Insights 資源
 
-若要建立 Application Insights 資源，請依照[資源建立指南](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource) \(部分機器翻譯\) 進行。
+若要建立 Application Insights 資源，請依照[資源建立指南](./create-new-resource.md) \(部分機器翻譯\) 進行。
 
 ### <a name="getting-the-instrumentation-key"></a>取得檢測金鑰
 檢測金鑰會識別您所建立的資源。

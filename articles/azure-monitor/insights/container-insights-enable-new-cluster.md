@@ -3,16 +3,17 @@ title: 監視新的 Azure Kubernetes Service （AKS）叢集 |Microsoft Docs
 description: 瞭解如何使用容器訂用帳戶的 Azure 監視器，為新的 Azure Kubernetes Service （AKS）叢集啟用監視。
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: c731826f2780c45358730f9ce20d6a6151f6f259
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-terraform
+ms.openlocfilehash: 86ace49ea60bf1bd11633b5a883401f678ecaf8d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85847204"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516629"
 ---
 # <a name="enable-monitoring-of-a-new-azure-kubernetes-service-aks-cluster"></a>啟用新 Azure Kubernetes Service （AKS）叢集的監視
 
-本文說明如何設定容器的 Azure 監視器，以監視您在訂用帳戶中準備部署[Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/)上所裝載的受管理 Kubernetes 叢集。
+本文說明如何設定容器的 Azure 監視器，以監視您在訂用帳戶中準備部署[Azure Kubernetes Service](../../aks/index.yml)上所裝載的受管理 Kubernetes 叢集。
 
 您可以使用其中一種支援的方法來啟用 AKS 叢集的監視：
 
@@ -24,7 +25,7 @@ ms.locfileid: "85847204"
 若要使用 Azure CLI 針對建立的新 AKS 叢集啟用監視，請依照快速入門文章中[建立 AKS 叢集](../../aks/kubernetes-walkthrough.md#create-aks-cluster)一節下的步驟執行。  
 
 >[!NOTE]
->如果您選擇使用 Azure CLI，必須先在本機安裝並使用 CLI。 您必須執行 Azure CLI 版2.0.74 或更新版本。 若要知道您使用的版本，請執行 `az --version`。 如果您需要安裝或升級 Azure CLI，請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 如果您已安裝 aks-preview CLI 擴充功能版本0.4.12 或更高版本，請移除您所做的任何變更以啟用預覽延伸模組，因為它可以覆寫預設的 Azure CLI 行為，因為 Azure US Governmnet cloud 中無法使用 AKS 預覽功能。
+>如果您選擇使用 Azure CLI，必須先在本機安裝並使用 CLI。 您必須執行 Azure CLI 版2.0.74 或更新版本。 若要知道您使用的版本，請執行 `az --version`。 如果您需要安裝或升級 Azure CLI，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。 如果您已安裝 aks-preview CLI 擴充功能版本0.4.12 或更高版本，請移除您所做的任何變更以啟用預覽延伸模組，因為它可以覆寫預設的 Azure CLI 行為，因為 Azure US Governmnet cloud 中無法使用 AKS 預覽功能。
 
 ## <a name="enable-using-terraform"></a>啟用使用 Terraform
 

@@ -3,12 +3,12 @@ title: 沒有要進行疑難排解的資料 - Application Insights for .NET
 description: 在 Azure Application Insights 中看不到資料？ 試試這裡。
 ms.topic: conceptual
 ms.date: 05/21/2020
-ms.openlocfilehash: 3f1c4a741bf092ab89638fdca130a52d96318157
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 351ef145ab65fee8397034912f9a6ce295f1f909
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86221029"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517163"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>針對沒有資料進行疑難排解 - Application Insights for .NET/.NET Core
 
@@ -42,7 +42,7 @@ ms.locfileid: "86221029"
 當我以滑鼠右鍵按一下 [方案總管] 中的現有專案時，沒有看到任何 Application Insights 選項。
 
 * 工具並非支援所有類型的 .NET 專案。 支援 Web 和 WCF 專案。 對於其他像是傳統型或服務應用程式的專案類型，您仍然可以 [手動將 Application Insights SDK 新增至您的專案](../../azure-monitor/app/windows-desktop.md)。
-* 請確定您有 [Visual Studio 2013 Update 3 或更新版本](https://docs.microsoft.com/visualstudio/releasenotes/vs2013-update3-rtm-vs)。 它會預先安裝開發人員分析工具，這些工具提供 Application Insights SDK。
+* 請確定您有 [Visual Studio 2013 Update 3 或更新版本](/visualstudio/releasenotes/vs2013-update3-rtm-vs)。 它會預先安裝開發人員分析工具，這些工具提供 Application Insights SDK。
 * 選取 [工具]、[擴充功能和更新]，檢查 [開發人員分析工具] 是否已安裝並啟用。 如果是，按一下 [更新]  以查看是否有可用的更新。
 * 開啟 [新增專案] 對話方塊，並且選擇 [ASP.NET Web 應用程式]。 如果您在那裡看到 Application Insights 選項，則工具已安裝。 如果沒有，請嘗試先解除安裝，然後再重新安裝 Developer Analytics Tools。
 
@@ -132,7 +132,7 @@ ApplicationInsights.config 中的檢測金鑰會控制遙測傳送的位置。 �
   * 在 Visual Studio [方案總管] 中，以滑鼠右鍵按一下專案，然後選擇 [Application Insights]、[設定]。 重設應用程式，以將遙測傳送至正確的資源。
   * 如果找不到相符的金鑰，請確認您在 Visual Studio 中使用與入口網站相同的登入認證。
 * 在 [Microsoft Azure 主儀表板](https://portal.azure.com)中，查看服務健全狀況對應。 如果看到一些警示指示，請等待它們恢復 [正常]，然後關閉再重新開啟 Application Insights 應用程式刀鋒視窗。
-* 也請查閱 [我們的狀態部落格](https://blogs.msdn.microsoft.com/servicemap-status/)。
+* 也請查閱 [我們的狀態部落格](https://techcommunity.microsoft.com/t5/azure-monitor-status/bg-p/AzureMonitorStatusBlog)。
 * 您針對[伺服器端 SDK](../../azure-monitor/app/api-custom-events-metrics.md) 撰寫的任何程式碼是否可能會變更 `TelemetryClient` 執行個體或 `TelemetryContext` 中的檢測金鑰？ 或者您撰寫的 [篩選或取樣組態](../../azure-monitor/app/api-filtering-sampling.md) 可能會篩選出過多項目？
 * 如果您編輯過 ApplicationInsights.config，請仔細檢查 [TelemetryInitializers 和 TelemetryProcessors](../../azure-monitor/app/api-filtering-sampling.md)的組態。 不當命名的類型或參數可能導致 SDK 不會傳送任何資料。
 
@@ -154,7 +154,7 @@ ApplicationInsights.config 中的檢測金鑰會控制遙測傳送的位置。 �
 ## <a name="no-server-data-since-i-published-the-app-to-my-server"></a>我發佈應用程式到我的伺服器之後卻沒有 (伺服器) 資料
 * 請確認您實際上已複製所有 Microsoft. ApplicationInsights DLL 到伺服器，並且連帶 Microsoft.Diagnostics.Instrumentation.Extensions.Intercept.dll ApplicationInsights Dll 一併複製。
 * 在防火牆中，您可能必須[開啟某些 TCP 連接埠](../../azure-monitor/app/ip-addresses.md)。
-* 如果您必須使用 Proxy 在貴公司網路之外傳送內容，請設定 Web.config 中的 [defaultProxy](https://msdn.microsoft.com/library/aa903360.aspx)
+* 如果您必須使用 Proxy 在貴公司網路之外傳送內容，請設定 Web.config 中的 [defaultProxy](/previous-versions/dotnet/netframework-1.1/aa903360(v=vs.71))
 * Windows Server 2008：請確定您已安裝下列更新：[KB2468871](https://support.microsoft.com/kb/2468871)、[KB2533523](https://support.microsoft.com/kb/2533523)、[KB2600217](https://support.microsoft.com/kb/2600217)。
 
 ## <a name="i-used-to-see-data-but-it-has-stopped"></a>我曾經看到資料，但是已停止
@@ -170,7 +170,7 @@ ApplicationInsights.config 中的檢測金鑰會控制遙測傳送的位置。 �
 我們已在 2018 年 2 月 5 日宣布我們已移除記錄用戶端 IP 位址的功能。 這不會影響地理位置。
 
 > [!NOTE]
-> 如果您需要 IP 位址的前 3 個八位元，可以使用[遙測初始設定式](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling#addmodify-properties-itelemetryinitializer)來新增自訂屬性。
+> 如果您需要 IP 位址的前 3 個八位元，可以使用[遙測初始設定式](./api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)來新增自訂屬性。
 > 這不會影響到 2018 年 2 月 5 日以前收集的資料。
 
 ## <a name="wrong-geographical-data-in-user-telemetry"></a>使用者遙測中錯誤的地理資料
@@ -206,9 +206,9 @@ ApplicationInsights.config 中的檢測金鑰會控制遙測傳送的位置。 �
 
 ### <a name="net-core"></a>.NET Core
 
-1. 從 NuGet 安裝 [Microsoft.AspNet.ApplicationInsights.HostingStartup](https://www.nuget.org/packages/Microsoft.AspNet.ApplicationInsights.HostingStartup) 套件。 您安裝的版本必須符合目前安裝的 `Microsoft.ApplicationInsights` 版本
+1. 從 NuGet 安裝適用于 ASP.NET Core 套件的[APPLICATION INSIGHTS SDK NuGet 套件](https://nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore)。 您安裝的版本必須符合目前安裝的版本 `Microsoft.ApplicationInsights` 。
 
-Microsoft.ApplicationInsights.AspNetCore 的最新版本是 2.8.2，但其參照的是 Microsoft.ApplicationInsights 2.11.2 版。 因此，要安裝的 Microsoft.AspNet.ApplicationInsights.HostingStartup 版本應該是 2.11.2
+   AspNetCore 的最新版本是2.14.0，而它是指 ApplicationInsights 版本2.14.0。 因此，要安裝的 ApplicationInsights 版本應該是2.14.0。
 
 2. 修改 `Startup.cs` 類別中的 `ConfigureServices` 方法：
 
@@ -249,7 +249,7 @@ PerfView.exe collect -MaxCollectSec:300 -NoGui /onlyProviders=*Microsoft-Applica
 
 ## <a name="collect-logs-with-dotnet-trace"></a>使用 dotnet-trace 收集記錄
 
-[`dotnet-trace`](https://docs.microsoft.com/dotnet/core/diagnostics/dotnet-trace) 是可收集記錄以供疑難排解之用的替代方法，此方法對於 Linux 型環境可能特別有用
+[`dotnet-trace`](/dotnet/core/diagnostics/dotnet-trace) 是可收集記錄以供疑難排解之用的替代方法，此方法對於 Linux 型環境可能特別有用
 
 ```bash
 dotnet-trace collect --process-id <PID> --providers Microsoft-ApplicationInsights-Core,Microsoft-ApplicationInsights-Data,Microsoft-ApplicationInsights-WindowsServer-TelemetryChannel,Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Dependency,Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Web,Microsoft-ApplicationInsights-Extensibility-DependencyCollector,Microsoft-ApplicationInsights-Extensibility-HostingStartup,Microsoft-ApplicationInsights-Extensibility-PerformanceCollector,Microsoft-ApplicationInsights-Extensibility-EventCounterCollector,Microsoft-ApplicationInsights-Extensibility-PerformanceCollector-QuickPulse,Microsoft-ApplicationInsights-Extensibility-Web,Microsoft-ApplicationInsights-Extensibility-WindowsServer,Microsoft-ApplicationInsights-WindowsServer-Core,Microsoft-ApplicationInsights-Extensibility-EventSourceListener,Microsoft-ApplicationInsights-AspNetCore
@@ -260,4 +260,4 @@ dotnet-trace collect --process-id <PID> --providers Microsoft-ApplicationInsight
 請遵循移除[文章](../../azure-monitor/app/remove-application-insights.md)中提供的步驟，以了解如何移除 Visual Studio 中的 Application Insights。
 
 ## <a name="still-not-working"></a>仍然無法運作...
-* [Application Insights 的 Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-monitor.html)
+* [Application Insights 的 Microsoft 問與答頁面](/answers/topics/azure-monitor.html)

@@ -4,11 +4,12 @@ description: 取得作用中建議的定期摘要
 ms.topic: article
 ms.date: 03/16/2020
 ms.author: sagupt
-ms.openlocfilehash: 98f1bfd42a486e005cd1e777a83f5b615a7c8304
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e446fca11e029e28e44ada884efd071f3142514c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79502460"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518074"
 ---
 # <a name="configure-periodic-summary-for-recommendations"></a>設定建議的定期摘要
 
@@ -20,7 +21,7 @@ Advisor**建議摘要**提供一個簡單又主動的方法，讓您在不同的
 **建議摘要**建立體驗可協助您設定摘要。 您可以選取下列設定的參數：
 1. 類別：我們的建議類別如成本、高可用性、效能和營運卓越。 此功能尚不適用於安全性建議。
 2. 摘要的頻率：摘要通知的頻率可以是每週、每週和每月。
-3. 動作群組：您可以選取現有的動作群組，或建立新的動作群組。 若要深入瞭解動作群組，請參閱[建立和管理動作群組](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)。
+3. 動作群組：您可以選取現有的動作群組，或建立新的動作群組。 若要深入瞭解動作群組，請參閱[建立和管理動作群組](../azure-monitor/platform/action-groups.md)。
 4. 摘要的語言
 5. 建議摘要名稱：您可以使用使用者易記的字串，以更好的追蹤和監視摘要。
 
@@ -43,7 +44,7 @@ Advisor**建議摘要**提供一個簡單又主動的方法，讓您在不同的
 
    ![提供建議摘要輸入條件](./media/digest-2.png)
 
-* **步驟5：** 在 [**動作群組**] 區段中，選取摘要的 [**動作群組**]。 您可以在這裡深入瞭解-[建立和管理動作群組](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)
+* **步驟5：** 在 [**動作群組**] 區段中，選取摘要的 [**動作群組**]。 您可以在這裡深入瞭解-[建立和管理動作群組](../azure-monitor/platform/action-groups.md)
 
    ![提供建議摘要輸入動作群組](./media/digest-3.png)
 
@@ -59,4 +60,4 @@ Advisor**建議摘要**提供一個簡單又主動的方法，讓您在不同的
 * [建議程式效能建議](advisor-performance-recommendations.md)
 * [Advisor 安全性建議](advisor-security-recommendations.md)
 * [Advisor 操作卓越建議](advisor-operational-excellence-recommendations.md)
-* [Advisor REST API](https://docs.microsoft.com/rest/api/advisor/)
+* [Advisor REST API](/rest/api/advisor/)
