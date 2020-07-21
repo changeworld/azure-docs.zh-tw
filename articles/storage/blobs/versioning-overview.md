@@ -9,11 +9,12 @@ ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 89d69547d793599fc669927b1a500716a858cc89
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd620e253e661f986f67a440272937026cb4ff7f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84433584"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86528395"
 ---
 # <a name="blob-versioning-preview"></a>Blob 版本設定 (預覽)
 
@@ -175,7 +176,7 @@ Blob 版本設定是為了保護您的資料免于遭到意外或惡意刪除所
 
 下表顯示哪些 RBAC 動作支援刪除 blob 或 blob 版本。
 
-| Description | Blob 服務作業 | 需要 RBAC 資料動作 | RBAC 內建角色支援 |
+| 描述 | Blob 服務作業 | 需要 RBAC 資料動作 | RBAC 內建角色支援 |
 |----------------------------------------------|------------------------|---------------------------------------------------------------------------------------|-------------------------------|
 | 刪除 blob 的目前版本 | 刪除 Blob | **Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete** | 儲存體 Blob 資料參與者 |
 | 刪除版本 | 刪除 Blob | **Microsoft. Storage/storageAccounts/blobServices/container/blob/deleteBlobVersion/action** | 儲存體 Blob 資料擁有者 |
@@ -194,6 +195,10 @@ Blob 版本的已簽署資源是 `bv` 。 如需詳細資訊，請參閱[建立�
 
 Blob 版本設定在下欄區域提供預覽：
 
+- 美國東部 2
+- 美國中部
+- 北歐
+- 西歐
 - 法國中部
 - 加拿大東部
 - 加拿大中部

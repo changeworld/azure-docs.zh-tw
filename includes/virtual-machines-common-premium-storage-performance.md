@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: e10d1d5aa5b45c0ea0e31df4d5d847f8541838b9
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 60053f24aa4231f1100d0b00cb6cf70b851b1939
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86218203"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526024"
 ---
 ## <a name="application-performance-indicators"></a>應用程式效能指標
 
@@ -138,7 +138,7 @@ IOPS，亦即 Input/output Operations Per Second (每秒鐘輸入/輸出作業�
 IO 要求是指應用程式執行的輸入/輸出作業單位。 識別 IO 要求的本質、隨機或循序、讀取或寫入、小型或大型，可協助您判斷應用程式的效能需求。 設計應用程式基礎結構時，務必了解 IO 要求的本質，才能做出正確的決策。 IO 必須平均散發，才能達到最佳效能。
 
 IO 大小是其中一個很重要的因素。 IO 大小是指應用程式所產生的輸入/輸出作業要求的大小。 IO 大小對效能有很重大的影響，特別是應用程式可達到的 IOPS 和頻寬。 下列公式顯示 IOPS、IO 大小和頻寬/輸送量之間的關聯性。  
-    ![](media/premium-storage-performance/image1.png)
+    ![圖表，顯示我的 i/o 大小等於輸送量的方程式 I O P S。](media/premium-storage-performance/image1.png)
 
 有些應用程式可讓您改變 IO 大小，而有些應用程式則不能改變。 例如，SQL Server 會自行決定最佳的 IO 大小，不提供任何參數讓使用者變更 IO 大小。 相反地，Oracle 提供 [DB\_BLOCK\_SIZE](https://docs.oracle.com/cd/B19306_01/server.102/b14211/iodesign.htm#i28815) 參數，可用來設定資料庫的 I/O 要求大小。
 
@@ -371,13 +371,13 @@ Azure 已將進階儲存體平台設計為大規模平行。 因此，多執行�
 
 *最佳佇列深度*  
 佇列深度值太高也有其缺點。 如果佇列深度值太高，應用程式會嘗試推動非常高的 IOPS。 除非應用程式的永續性磁碟已佈建足夠的 IOPS，否則這可能對應用程式延遲造成負面影響。 下列公式顯示 IOPS、延遲和佇列深度之間的關聯性。  
-    ![](media/premium-storage-performance/image6.png)
+    ![顯示方程式 I O P S 乘以延遲等於佇列深度的圖表。](media/premium-storage-performance/image6.png)
 
 不應該只想將佇列深度設定為較高的值，而是應該設定為最佳值，以提供足夠的 IOPS 給應用程式，但又不影響延遲。 例如，如果應用程式延遲必須是 1 毫秒，則達成 5,000 IOPS 所需的佇列深度為 QD = 5000 x 0.001 = 5。
 
 *等量磁碟區的佇列深度*  
 對於等量磁碟區，應該維持夠高的佇列深度，讓每個磁碟有各自的尖峰佇列深度。 例如，假設應用程式推送的佇列深度為 2，而等量磁碟區中有四個磁碟。 兩個 IO 要求會流向兩個磁碟，而剩餘的兩個磁碟會處於閒置狀態。 因此，請將佇列深度設定為讓所有磁碟都有工作執行。 下列公式顯示如何決定等量磁碟區的佇列深度。  
-    ![](media/premium-storage-performance/image7.png)
+    ![此圖顯示每個磁片的方程式 Q D 每個磁片區的資料行數乘以等量磁片區的 Q D。](media/premium-storage-performance/image7.png)
 
 ## <a name="throttling"></a>節流
 

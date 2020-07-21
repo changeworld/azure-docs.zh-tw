@@ -14,18 +14,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogardle
-ms.openlocfilehash: 5a491bf85546c982db126ef4d6260a46ca8bf88b
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 7f6b9ddfd5b25ea8482e0bbf5622fa16bc450662
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224446"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525591"
 ---
 # <a name="back-up-and-recover-an-oracle-database-12c-database-on-an-azure-linux-virtual-machine"></a>在 Azure Linux 虛擬機器上備份及復原 Oracle Database 12c 資料庫
 
 您可以使用 Azure CLI 在命令提示字元或使用指令碼建立和管理 Azure 資源。 在本文中，我們會使用 Azure CLI 指令碼，從 Azure Marketplace 資源庫映像部署 Oracle Database 12c 資料庫。
 
-在開始之前，請確定您已安裝 Azure CLI。 如需詳細資訊，請參閱[Azure CLI 安裝指南](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+在開始之前，請確定您已安裝 Azure CLI。 如需詳細資訊，請參閱[Azure CLI 安裝指南](/cli/azure/install-azure-cli)。
 
 ## <a name="prepare-the-environment"></a>準備環境
 
@@ -33,7 +33,7 @@ ms.locfileid: "86224446"
 
 *   若要執行備份和復原程序，您必須先建立具有已安裝 Oracle Database 12c 執行個體的 Linux VM。 您用來建立 VM 的 Marketplace 映像名為 Oracle:Oracle-Database-Ee:12.1.0.2:latest**。
 
-    若要了解如何建立 Oracle 資料庫，請參閱 [Oracle 建立資料庫快速入門](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-database-quick-create)。
+    若要了解如何建立 Oracle 資料庫，請參閱 [Oracle 建立資料庫快速入門](./oracle-database-quick-create.md)。
 
 
 ### <a name="step-2-connect-to-the-vm"></a>步驟 2：連線至 VM
@@ -572,6 +572,3 @@ az group delete --name myResourceGroup
 [教學課程︰建立高可用性 VM](../../linux/create-cli-complete.md)
 
 [瀏覽 VM 部署 Azure CLI 範例](../../linux/cli-samples.md)
-
-
-

@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 08/28/2019
 ms.author: tiag
-ms.openlocfilehash: c24a840716841d04537ac5b77bcaf26fca4b78cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7774ea5138e6d77547e386531e573457cd6d2862
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77561944"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525937"
 ---
 # <a name="linux-vm-boots-to-grub-rescue"></a>Linux VM 開機至 Grub 修復
 
@@ -33,8 +34,8 @@ ms.locfileid: "77561944"
 
 * 如果您收到錯誤不明的**檔案系統**，此錯誤可能是由於開機磁碟分割上的檔案系統損毀或不正確的核心設定所造成。
 
-   * 針對檔案系統問題，請遵循[Linux 復原：由於檔案系統錯誤（fsck、inode）](https://blogs.msdn.microsoft.com/linuxonazure/2016/09/13/linux-recovery-cannot-ssh-to-linux-vm-due-to-file-system-errors-fsck-inodes/)一文中的步驟，而無法透過 SSH 連線到 linux VM。
-   * 針對核心問題，請遵循[Linux 復原：手動修正與核心問題相關的非開機問題](https://blogs.msdn.microsoft.com/linuxonazure/2016/10/09/linux-recovery-manually-fixing-non-boot-issues-related-to-kernel-problems/)一文中的步驟，或[linux 修復：使用 Chroot 修正與核心問題相關的非開機問題](https://blogs.msdn.microsoft.com/linuxonazure/2016/10/09/linux-recovery-fixing-non-boot-issues-related-to-kernel-problems-using-chroot/)。
+   * 針對檔案系統問題，請遵循[Linux 復原：由於檔案系統錯誤（fsck、inode）](/archive/blogs/linuxonazure/linux-recovery-cannot-ssh-to-linux-vm-due-to-file-system-errors-fsck-inodes)一文中的步驟，而無法透過 SSH 連線到 linux VM。
+   * 針對核心問題，請遵循[Linux 復原：手動修正與核心問題相關的非開機問題](/archive/blogs/linuxonazure/linux-recovery-manually-fixing-non-boot-issues-related-to-kernel-problems)一文中的步驟，或[linux 修復：使用 Chroot 修正與核心問題相關的非開機問題](/archive/blogs/linuxonazure/linux-recovery-fixing-non-boot-issues-related-to-kernel-problems-using-chroot)。
    
 ### <a name="error---file-not-found"></a>錯誤-找不到檔案
 
@@ -50,7 +51,7 @@ ms.locfileid: "77561944"
 
 ### <a name="error---no-such-partition"></a>錯誤-沒有這類資料分割
 
-* 如果您收到錯誤資料**分割**，請參閱[案例：在嘗試擴充 OS 磁片磁碟機之後，嘗試啟動 VM 時，「沒有這種分割區」錯誤](https://blogs.technet.microsoft.com/shwetanayak/2017/03/12/case-scenario-no-such-partition-error-while-trying-to-start-the-vm-after-attempting-to-extend-the-os-drive/)。
+* 如果您收到錯誤資料**分割**，請參閱[案例：在嘗試擴充 OS 磁片磁碟機之後，嘗試啟動 VM 時，「沒有這種分割區」錯誤](/archive/blogs/shwetanayak/case-scenario-no-such-partition-error-while-trying-to-start-the-vm-after-attempting-to-extend-the-os-drive)。
 
 ### <a name="error---grubcfg-file-not-found"></a>錯誤-找不到 grub 檔案
 
@@ -68,4 +69,3 @@ ms.locfileid: "77561944"
 
 * [Azure 虛擬機器代理程式概觀](../extensions/agent-windows.md)
 * [適用於 Windows 的虛擬機器擴充功能和功能](../extensions/features-windows.md)
-

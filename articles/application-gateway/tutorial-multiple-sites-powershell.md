@@ -6,15 +6,15 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: how-to
-ms.date: 11/14/2019
+ms.date: 07/20/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: b351a828c47058025247a3edd95f31dc6cc84295
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f6c6dd18ba57d83aa235f66285e7cb2ed42c1703
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84806187"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524954"
 ---
 # <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-azure-powershell"></a>使用 Azure PowerShell 建立裝載多個網站的應用程式閘道
 
@@ -30,7 +30,7 @@ ms.locfileid: "84806187"
 > * 建立包含後端集區的虛擬機器擴展集
 > * 在網域中建立 CNAME 記錄
 
-![多站台路由範例](./media/tutorial-multiple-sites-powershell/scenario.png)
+:::image type="content" source="./media/tutorial-multiple-sites-powershell/scenario.png" alt-text="多網站應用程式閘道":::
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -125,6 +125,10 @@ $poolSettings = New-AzApplicationGatewayBackendHttpSettings `
 需要接聽程式才能讓應用程式閘道將流量適當地路由傳送到後端位址集區。 在本文中，您會為兩個網域建立兩個接聽程式。 系統會為*contoso.com*和*fabrikam.com*網域建立接聽程式。
 
 使用 [New-AzApplicationGatewayHttpListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener) 搭配先前建立的前端組態和前端連接埠，建立第一個接聽程式。 接聽程式需要規則以便知道要針對連入流量使用哪個後端集區。 使用 [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule) 建立名為 contosoRule** 的基本規則。
+
+>[!NOTE]
+> 使用應用程式閘道或 WAF v2 SKU 時，您也可以為每個接聽程式設定最多5個主機名稱，而且可以在主機名稱中使用萬用字元。 如需詳細資訊，請參閱接聽程式[中的萬用字元主機名稱](multiple-site-overview.md#wildcard-host-names-in-listener-preview)。
+>若要在使用 Azure PowerShell 的接聽程式中使用多個主機名稱和萬用字元，您必須使用， `-HostNames` 而不是 `-HostName` 。 使用主機名稱時，您最多可以提及5個主機名稱做為逗號分隔值。 例如， `-HostNames "*.contoso.com,*.fabrikam.com"`
 
 ```azurepowershell-interactive
 $contosolistener = New-AzApplicationGatewayHttpListener `

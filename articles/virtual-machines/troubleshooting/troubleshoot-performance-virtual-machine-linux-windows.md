@@ -13,15 +13,16 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: v-miegge
-ms.openlocfilehash: 176b0634fe2c7ee2f47162e439c4ea16bde77a8a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 53fd2332224d903c5a4b33563470cf3569f82b13
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75772613"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526651"
 ---
 # <a name="troubleshoot-azure-virtual-machine-performance-on-linux-or-windows"></a>針對 Linux 或 Windows 上的 Azure 虛擬機器效能進行疑難排解
 
-本文說明透過監視和觀察瓶頸的虛擬機器（VM）一般效能疑難排解，並針對可能發生的問題提供可能的補救措施。 除了監視，您也可以使用 Perfinsights，它可以提供具有最佳做法建議的報告，以及 IO/CPU/記憶體的關鍵瓶頸。 Perfinsights 適用于 Azure 中的[Windows](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfInsights)和[Linux](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfinsights-linux) VM。
+本文說明透過監視和觀察瓶頸的虛擬機器（VM）一般效能疑難排解，並針對可能發生的問題提供可能的補救措施。 除了監視，您也可以使用 Perfinsights，它可以提供具有最佳做法建議的報告，以及 IO/CPU/記憶體的關鍵瓶頸。 Perfinsights 適用于 Azure 中的[Windows](./how-to-use-perfinsights.md)和[Linux](./how-to-use-perfinsights-linux.md) VM。
 
 本文將逐步解說如何使用監視來診斷效能瓶頸。
 
@@ -29,7 +30,7 @@ ms.locfileid: "75772613"
 
 ### <a name="azure-iaas-virtual-machine-monitoring"></a>Azure IAAS 虛擬機器監視
 
-若要監視來賓 VM，請使用 Azure VM 監視，這會向您發出特定高階資源條件的警示。 若要檢查是否已啟用 VM 診斷，請參閱[Azure 資源記錄檔總覽](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-resource-logs)。 如果您看到下列內容，則您很可能未啟用診斷：
+若要監視來賓 VM，請使用 Azure VM 監視，這會向您發出特定高階資源條件的警示。 若要檢查是否已啟用 VM 診斷，請參閱[Azure 資源記錄檔總覽](../../azure-monitor/learn/tutorial-resource-logs.md)。 如果您看到下列內容，則您很可能未啟用診斷：
 
 ![未啟用監視](media/troubleshoot-performance-virtual-machine-linux-windows/1-virtual-machines-monitoring-not-enabled.png)
  
@@ -68,7 +69,7 @@ ms.locfileid: "75772613"
 
 若要設定這些選項：
 
-1.  選取 [**計量**]。
+1.  選取 [計量]。
 2.  選取**資源**（儲存體帳戶）。
 3.  選取**命名空間**
 4.  選取 [**度量**]。
@@ -100,7 +101,7 @@ ms.locfileid: "75772613"
 
 ### <a name="cpu-observe-trends"></a>CPU 觀察趨勢
 
-查看效能問題時，請留意趨勢，並瞭解它們是否會影響您。 在接下來的章節中，我們將使用入口網站中的監視圖形來顯示趨勢。 它們也適用于在相同時間週期內交叉參考差異資源行為。 若要自訂圖形，請按一下 [ [Azure 監視器資料平臺](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform)]。
+查看效能問題時，請留意趨勢，並瞭解它們是否會影響您。 在接下來的章節中，我們將使用入口網站中的監視圖形來顯示趨勢。 它們也適用于在相同時間週期內交叉參考差異資源行為。 若要自訂圖形，請按一下 [ [Azure 監視器資料平臺](../../azure-monitor/platform/data-platform.md)]。
 
 Artificial spiking – Artificial spiking 可能與已排程的工作/已知事件相關。 如果您可以識別工作，請判斷工作是否在所需的效能層級執行。 如果效能是可接受的，您可能不需要增加資源。
 
@@ -119,7 +120,7 @@ Artificial spiking – Artificial spiking 可能與已排程的工作/已知事�
 
 如果您已增加 VM，而且 CPU 仍在執行95%，請判斷此設定是否提供較佳的效能，或更高的應用程式輸送量至可接受的層級。 如果不是，請針對個別 application\process. 進行疑難排解
 
-您可以使用適用于[Windows](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfInsights)或[Linux](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfinsights-linux)的 Perfinsights 來分析哪個進程會驅動 CPU 耗用量。 
+您可以使用適用于[Windows](./how-to-use-perfinsights.md)或[Linux](./how-to-use-perfinsights-linux.md)的 Perfinsights 來分析哪個進程會驅動 CPU 耗用量。 
 
 ## <a name="check-for-memory-bottleneck"></a>檢查記憶體瓶頸
 
@@ -150,13 +151,13 @@ Artificial spiking – Artificial spiking 可能與已排程的工作/已知事�
 
 如果升級至較大的 VM 之後，您發現仍有持續穩定的增加，直到100%、識別應用程式/進程和疑難排解。
 
-您可以使用適用于[Windows](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfInsights)或[Linux](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfinsights-linux)的 Perfinsights 來分析哪個進程正在驅動記憶體耗用量。 
+您可以使用適用于[Windows](./how-to-use-perfinsights.md)或[Linux](./how-to-use-perfinsights-linux.md)的 Perfinsights 來分析哪個進程正在驅動記憶體耗用量。 
 
 ## <a name="check-for-disk-bottleneck"></a>檢查磁碟瓶頸
 
 若要檢查 VM 的儲存子系統，請使用 VM 診斷中的計數器，以及儲存體帳戶診斷來檢查 Azure VM 層級的診斷。
 
-針對 VM 特定的疑難排解，您可以使用適用于[Windows](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfInsights)或[Linux](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfinsights-linux)的 Perfinsights，這有助於分析正在驅動 IO 的進程。 
+針對 VM 特定的疑難排解，您可以使用適用于[Windows](./how-to-use-perfinsights.md)或[Linux](./how-to-use-perfinsights-linux.md)的 Perfinsights，這有助於分析正在驅動 IO 的進程。 
 
 請注意，我們沒有適用于區域多餘和進階儲存體帳戶的計數器。 對於與這些計數器相關的問題，請提出支援案例。
 
@@ -207,7 +208,7 @@ AverageE2ELatency 代表用戶端延遲。 確認應用程式正在執行 IOPS �
 
 透過標準儲存體下的新磁片供應專案，IOPS 和輸送量限制可能不同，但標準儲存體帳戶的累計限制為 20000 IOPS （Premium 儲存體在帳戶或磁片層級有不同的限制）。 深入瞭解不同的標準儲存體磁片供應專案和每個磁片的限制：
 
-* [Windows 上 VM 磁片的擴充性和效能目標](https://docs.microsoft.com/azure/virtual-machines/windows/disk-scalability-targets)。
+* [Windows 上 VM 磁片的擴充性和效能目標](../windows/disk-scalability-targets.md)。
 
 #### <a name="references"></a>參考資料
 
@@ -223,19 +224,19 @@ AverageE2ELatency 代表用戶端延遲。 確認應用程式正在執行 IOPS �
 
 標準儲存體下的新磁片供應專案有不同的 IOPS 和輸送量限制（IOPS 不會針對每個 VHD 公開）。 查看資料，查看您是否已達到 VM 層級的 VHD 結合輸送量 MB 的限制（使用磁片讀取和寫入），然後將您的 VM 存放裝置設定優化，以調整超過單一 VHD 限制。 深入瞭解不同的標準儲存體磁片供應專案和每個磁片的限制：
 
-* [Windows 上 VM 磁片的擴充性和效能目標](https://docs.microsoft.com/azure/virtual-machines/windows/disk-scalability-targets)。
+* [Windows 上 VM 磁片的擴充性和效能目標](../windows/disk-scalability-targets.md)。
 
 ### <a name="high-disk-utilizationlatency-remediation"></a>高磁片使用率/延遲修復
 
 降低用戶端延遲，並優化 VM IO 以擴充過去的 VHD 限制
 
-* [在 Azure 中將 Windows 的 IO 優化](https://azure.microsoft.com/documentation/articles/virtual-machines-sql-server-performance-best-practices/)
+* [在 Azure 中將 Windows 的 IO 優化](../../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md?toc=/azure/virtual-machines/windows/toc.json)
 
-* [針對 Azure 中的 Linux 優化 IO](https://blogs.msdn.microsoft.com/igorpag/2014/10/23/azure-storage-secrets-and-linux-io-optimizations/)
+* [針對 Azure 中的 Linux 優化 IO](/archive/blogs/igorpag/azure-storage-secrets-and-linux-io-optimizations)
 
 #### <a name="reduce-throttling"></a>減少節流
 
-如果達到儲存體帳戶的上限，請重新平衡儲存體帳戶之間的 Vhd。 請參閱[Azure 儲存體的擴充性和效能目標](https://azure.microsoft.com/documentation/articles/storage-scalability-targets/)。
+如果達到儲存體帳戶的上限，請重新平衡儲存體帳戶之間的 Vhd。 請參閱[Azure 儲存體的擴充性和效能目標](../../storage/common/scalability-targets-standard-account.md)。
 
 ### <a name="increase-throughput-and-reduce-latency"></a>增加輸送量並減少延遲
 
@@ -243,9 +244,9 @@ AverageE2ELatency 代表用戶端延遲。 確認應用程式正在執行 IOPS �
 
 這些文章討論特定案例：
 
-* [移轉到 Azure 進階儲存體](https://azure.microsoft.com/documentation/articles/storage-migration-to-premium-storage/)
+* [移轉到 Azure 進階儲存體](../windows/migrate-to-managed-disks.md)
 
-* [搭配 SQL Server 使用 Azure 進階儲存體](https://azure.microsoft.com/documentation/articles/virtual-machines-sql-server-use-premium-storage/)
+* [搭配 SQL Server 使用 Azure 進階儲存體](/previous-versions/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-sql-server-premium-storage)
 
 ## <a name="next-steps"></a>後續步驟
 

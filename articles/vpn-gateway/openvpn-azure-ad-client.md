@@ -1,19 +1,20 @@
 ---
-title: VPN 閘道： OpenVPN 通訊協定 P2S 連線的 VPN 用戶端： Azure AD 驗證
+title: VPN 閘道： P2S OpenVPN 通訊協定連線的 VPN 用戶端： Azure AD 驗證
 description: 您可以使用 P2S VPN，使用 Azure AD authentication 來連線到您的 VNet
 services: vpn-gateway
-author: anzaman
+author: kumudD
 ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 06/25/2020
 ms.author: alzam
-ms.openlocfilehash: 868bcfc898fc6bc804f36516f2cc01a52ad2db47
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c14d300e2c09316e0665ece3f3e15f7036d5b9a1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85414329"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525070"
 ---
-# <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication"></a>設定 P2S OpenVPN 通訊協定連線的 VPN 用戶端：Azure AD 驗證
+# <a name="azure-active-directory-authentication-configure-a-vpn-client-for-p2s-openvpn-protocol-connections"></a>Azure Active Directory 驗證：設定 VPN 用戶端以進行 P2S OpenVPN 通訊協定連線
 
 本文可協助您設定 VPN 用戶端，以使用點對站 VPN 和 Azure Active Directory 驗證來連線到虛擬網路。 您必須先設定 Azure AD 租使用者，才可以使用 Azure AD 進行連線和驗證。 如需詳細資訊，請參閱[設定 Azure AD 租](openvpn-azure-ad-tenant.md)使用者。
 
@@ -121,19 +122,19 @@ ms.locfileid: "85414329"
 
 1. 在 VPN 用戶端的首頁上，選取 [ **VPN 設定**]。
 
-    ![auto](./media/openvpn-azure-ad-client/auto/auto1.jpg)
+    ![自動](./media/openvpn-azure-ad-client/auto/auto1.jpg)
 
 2. 在 [切換應用程式] 對話方塊上選取 **[是]** 。
 
-    ![auto](./media/openvpn-azure-ad-client/auto/auto2.jpg)
+    ![自動](./media/openvpn-azure-ad-client/auto/auto2.jpg)
 
 3. 請確定您要設定的連線尚未連接，然後將設定檔反白顯示，並勾選 [**自動連接]** 核取方塊。
 
-    ![auto](./media/openvpn-azure-ad-client/auto/auto3.jpg)
+    ![自動](./media/openvpn-azure-ad-client/auto/auto3.jpg)
 
 4. 選取 **[連線]** 以起始 VPN 連線。
 
-    ![auto](./media/openvpn-azure-ad-client/auto/auto4.jpg)
+    ![自動](./media/openvpn-azure-ad-client/auto/auto4.jpg)
 
 ## <a name="diagnose-connection-issues"></a><a name="diagnose"></a>診斷連線問題
 

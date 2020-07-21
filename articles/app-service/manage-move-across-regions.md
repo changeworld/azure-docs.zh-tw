@@ -4,14 +4,14 @@ description: 瞭解如何將 App Service 資源從一個區域移至另一個區
 ms.topic: how-to
 ms.date: 02/27/2020
 ms.custom: subject-moving-resources
-ms.openlocfilehash: c19c18e8d9980b75acd9790dba712fbb6b2a4b1d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 87a2da31802a8b6858e875c23ef1dbd2d6d006bc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84945472"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524849"
 ---
-# <a name="move-an-app-service-app-to-another-region"></a>將 App Service 應用程式移至另一個區域
+# <a name="move-an-app-service-resource-to-another-region"></a>將 App Service 資源移到另一個區域
 
 本文說明如何將 App Service 資源移至不同的 Azure 區域。 您可能會因為許多原因而將您的資源移至另一個區域。 例如，若要利用新的 Azure 區域，只部署特定區域中可用的功能或服務，以符合內部原則和治理需求，或是為了回應容量規劃需求。
 
@@ -19,7 +19,7 @@ App Service 資源是區域特定的，無法跨區域移動。 您必須在目�
 
 為了讓複製應用程式更容易，您可以將[個別 App Service 應用程式](app-service-web-app-cloning.md)複製到另一個區域中的 App Service 方案，但它有[一些限制](app-service-web-app-cloning.md#current-restrictions)，特別是它不支援 Linux 應用程式。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 - 請確定 App Service 應用程式位於您要移動的 Azure 區域中。
 - 請確定目的地區域支援 App Service 和任何相關的服務，而您想要移動其資源。

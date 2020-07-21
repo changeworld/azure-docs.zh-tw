@@ -15,18 +15,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/30/2020
 ms.author: radeltch
-ms.openlocfilehash: fc4e8766f77a41a3a53e3db3098a6d9cefd628d6
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 306983e612793eb92dd95fe57e7177da17874893
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964221"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525427"
 ---
 # <a name="azure-monitor-for-sap-solutions-preview"></a>適用于 SAP 解決方案的 Azure 監視器（預覽）
 
-## <a name="overview"></a>總覽  
+## <a name="overview"></a>概觀  
 
-適用于 SAP 解決方案的 Azure 監視器是適用于客戶的 Azure 原生監視產品，其在 Azure 上執行其 SAP 環境。 此產品同時適用于[Azure 上的 SAP 虛擬機器](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-get-started)和[Azure 上的 SAP 大型實例](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)。  
+適用于 SAP 解決方案的 Azure 監視器是適用于客戶的 Azure 原生監視產品，其在 Azure 上執行其 SAP 環境。 此產品同時適用于[Azure 上的 SAP 虛擬機器](./hana-get-started.md)和[Azure 上的 SAP 大型實例](./hana-overview-architecture.md)。  
 透過適用于 SAP 解決方案的 Azure 監視器，客戶可以在一個集中位置收集 Azure 基礎結構和資料庫的遙測資料，並以視覺化方式將遙測資料相互關聯，以進行更快速的疑難排解。  
 
 SAP 解決方案的 Azure 監視器是透過 Azure Marketplace 提供。 它提供簡單、直覺的安裝體驗，並只需按幾下滑鼠，就能針對 SAP 解決方案（稱為**sap 監視器資源**）的 Azure 監視器部署資源。  
@@ -42,7 +42,7 @@ SAP 解決方案的 Azure 監視器是透過 Azure Marketplace 提供。 它提�
 - SAP HANA 資料庫 
 - Microsoft SQL server  
 
-SAP 解決方案的 Azure 監視器利用現有[Azure 監視器](https://docs.microsoft.com/azure/azure-monitor/overview)功能（例如 Log Analytics 和活頁[簿](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview)）的威力來提供其他監視功能。 客戶可以藉由編輯 SAP 解決方案 Azure 監視器所提供的預設活頁簿來建立[自訂視覺效果](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview#getting-started)、撰寫[自訂查詢](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)，以及使用 Azure Log Analytics 工作區建立[自訂警示](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response)、利用[彈性的保留期間](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)，以及將監視資料與票證系統連線。
+SAP 解決方案的 Azure 監視器利用現有[Azure 監視器](../../../azure-monitor/overview.md)功能（例如 Log Analytics 和活頁[簿](../../../azure-monitor/platform/workbooks-overview.md)）的威力來提供其他監視功能。 客戶可以藉由編輯 SAP 解決方案 Azure 監視器所提供的預設活頁簿來建立[自訂視覺效果](../../../azure-monitor/platform/workbooks-overview.md#getting-started)、撰寫[自訂查詢](../../../azure-monitor/log-query/get-started-portal.md)，以及使用 Azure Log Analytics 工作區建立[自訂警示](../../../azure-monitor/learn/tutorial-response.md)、利用[彈性的保留期間](../../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)，以及將監視資料與票證系統連線。
 
 ## <a name="what-data-does-azure-monitor-for-sap-solutions-collect"></a>Azure 監視器 SAP 解決方案收集哪些資料？
 
@@ -87,11 +87,11 @@ Azure 監視器的 SAP 解決方案會收集系統中繼資料，為我們的 Az
 - 適用于 SAP 解決方案資源的 Azure 監視器–客戶用來觀看監視遙測資料的登陸位置 
 - 受控資源群組-會自動部署為 SAP 解決方案資源部署 Azure 監視器的一部分。 在受管理資源群組中部署的資源可協助收集遙測。 已部署的重要資源及其目的如下：  
    - Azure 虛擬機器：也稱為*收集器 VM*。 這是 Standard_B2ms 的 VM。 此 VM 的主要目的是要裝載*監視*承載。 監視裝載是指從來源系統收集遙測，並將收集到的資料傳輸到監視架構的邏輯。 在上圖中，監視承載包含透過 SQL 埠連接到 SAP Hana 資料庫的邏輯。
-   - [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/general/basic-concepts)：部署此資源以安全地保存 SAP Hana 的資料庫認證，並儲存[提供者](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/azure-monitor-providers)的相關資訊。  
+   - [Azure Key Vault](../../../key-vault/general/basic-concepts.md)：部署此資源以安全地保存 SAP Hana 的資料庫認證，並儲存[提供者](./azure-monitor-providers.md)的相關資訊。  
    - Log Analytics 工作區：遙測資料所在的目的地。  
-      - 視覺效果是以使用[Azure 活頁簿](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview)的 Log Analytics 中的遙測為基礎。 客戶可以自訂視覺效果。 客戶也可以將活頁簿中的活頁簿或特定視覺效果釘選到 Azure 儀表板，以取得 autorefresh 功能，最小的30分鐘資料細微性。  
+      - 視覺效果是以使用[Azure 活頁簿](../../../azure-monitor/platform/workbooks-overview.md)的 Log Analytics 中的遙測為基礎。 客戶可以自訂視覺效果。 客戶也可以將活頁簿中的活頁簿或特定視覺效果釘選到 Azure 儀表板，以取得 autorefresh 功能，最小的30分鐘資料細微性。  
       - 客戶可以在部署時選擇此選項，以在與 SAP 監視器資源相同的訂用帳戶內使用其現有的工作區。 
-      - 客戶可以使用 Kusto 查詢語言（KQL），對 Log Analytics 工作區中的原始資料表執行[查詢](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)。 查看*自訂記錄*檔。  
+      - 客戶可以使用 Kusto 查詢語言（KQL），對 Log Analytics 工作區中的原始資料表執行[查詢](../../../azure-monitor/log-query/log-query-overview.md)。 查看*自訂記錄*檔。  
 
 > [!Note]
 > 客戶須負責修補和維護部署在受控資源群組中的 VM。  
@@ -113,5 +113,5 @@ Azure 監視器的 SAP 解決方案會收集系統中繼資料，為我們的 Az
 ## <a name="next-steps"></a>後續步驟
 
 瞭解提供者，並建立您的第一個 Azure 監視器的 SAP 解決方案資源。
- - 深入瞭解[提供者](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/azure-monitor-providers)
- - 您對 SAP 解決方案的 Azure 監視器有任何疑問嗎？ 查看[常見問題](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/azure-monitor-faq)一節
+ - 深入瞭解[提供者](./azure-monitor-providers.md)
+ - 您對 SAP 解決方案的 Azure 監視器有任何疑問嗎？ 查看[常見問題](./azure-monitor-faq.md)一節

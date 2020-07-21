@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 7e43995c4221127580333c3f013fcb209730f863
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b3f9451a5ffd13c67232107d8db1e2da4a3891ec
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791109"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524738"
 ---
 # <a name="using-the-azure-maps-drawing-error-visualizer"></a>使用 Azure 地圖服務繪製錯誤視覺化檢視
 
@@ -23,7 +23,7 @@ ms.locfileid: "84791109"
 
 您必須先執行下列動作才能下載繪製錯誤視覺化檢視：
 
-1. [建立 Azure 地圖服務帳戶](quick-demo-map-app.md#create-an-account-with-azure-maps)
+1. [建立 Azure 地圖服務帳戶](quick-demo-map-app.md#create-an-azure-maps-account)
 2. [取得主要訂用帳戶金鑰](quick-demo-map-app.md#get-the-primary-key-for-your-account)，也稱為主要金鑰或訂用帳戶金鑰。
 3. [建立一個建立工具資源](how-to-manage-creator.md)
 

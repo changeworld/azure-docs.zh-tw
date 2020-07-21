@@ -13,11 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 7/10/2019
 ms.author: genli
-ms.openlocfilehash: 19b2fcaed2c80d4ca52ada9f9f0898479e73bcf2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 13e4c7a981124aba22dcb324d60e075d1d552bf8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79266984"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526794"
 ---
 # <a name="how-to-use-perfinsights"></a>如何使用 PerfInsights
 
@@ -43,7 +44,7 @@ PerfInsights 可以收集並分析多種資訊。 下列幾節會說明常見案
 
 - 儲存體資訊
 
-- Azure 虛擬機器設定（使用[azure Instance Metadata Service](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)進行收集）
+- Azure 虛擬機器設定（使用[azure Instance Metadata Service](../windows/instance-metadata-service.md)進行收集）
 
 - 執行中的進程、磁片、記憶體和 CPU 使用量的清單
 
@@ -60,7 +61,7 @@ PerfInsights 可以收集並分析多種資訊。 下列幾節會說明常見案
 
 ## <a name="what-kind-of-information-is-collected-by-perfinsights"></a>PerfInsights 收集的資訊種類
 
-系統會收集 Linux 虛擬機器、作業系統、封鎖裝置、高資源取用者、設定和各種記錄檔的相關資訊。 以下是詳細資料：
+系統會收集 Linux 虛擬機器、作業系統、封鎖裝置、高資源取用者、設定和各種記錄檔的相關資訊。 以下是更多詳細資料：
 
 - 作業系統
   - Linux 散發套件和版本
@@ -82,7 +83,7 @@ PerfInsights 可以收集並分析多種資訊。 下列幾節會說明常見案
   - 網路路由表
   - 開啟的埠和狀態
 
-- 儲存體
+- 存放裝置
   - 封鎖裝置清單
   - 資料分割清單
   - 掛接點清單
@@ -108,7 +109,7 @@ PerfInsights 可以收集並分析多種資訊。 下列幾節會說明常見案
   - /etc/waagent.config
   - 過去五天的 journalctl 輸出
 
-- [Azure 虛擬機器實例中繼資料](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)
+- [Azure 虛擬機器實例中繼資料](../windows/instance-metadata-service.md)
 
 >[!Note]
 >[ `*` ] 尚未在 Debian 和 SLES 發行版本上收集 PCI 資訊

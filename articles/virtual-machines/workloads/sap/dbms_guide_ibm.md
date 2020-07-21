@@ -12,11 +12,12 @@ ms.workload: infrastructure
 ms.date: 04/10/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fb9d46adf63f9cd0f4b19e4eace0a2f4a7129226
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 110e8d3be88fb2e1bd958f40d5defa23f8c679f3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84022602"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525393"
 ---
 # <a name="ibm-db2-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>適用於 SAP 工作負載的 IBM DB2 Azure 虛擬機器 DBMS 部署
 
@@ -25,7 +26,7 @@ ms.locfileid: "84022602"
 
 如需有關 Azure 中 Db2 for LUW 上 SAP 的詳細資訊和更新，請參閱 SAP 附註 [2233094]。 
 
-目前有各種公佈的文章提到 Azure 上的 SAP 工作負載。  建議您先從[Azure 上的 SAP 工作負載 - 入門](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started)開始，然後挑選感興趣的領域
+目前有各種公佈的文章提到 Azure 上的 SAP 工作負載。  建議您先從[Azure 上的 SAP 工作負載 - 入門](./get-started.md)開始，然後挑選感興趣的領域
 
 下列的 SAP 附註，在本文所討論的領域上與 Azure 上的 SAP 有關：
 
@@ -43,7 +44,7 @@ ms.locfileid: "84022602"
 | [2002167] |Red Hat Enterprise Linux 7.x：安裝與升級 |
 | [1597355] |適用於 Linux 的交換空間建議 |
 
-在閱讀本文件之前，您應該先參閱[適用於 SAP 工作負載的 Azure 虛擬機器 DBMS 部署考量](dbms_guide_general.md)文件，以及 [Azure 上的 SAP 工作負載文件](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started)中的其他指南。 
+在閱讀本文件之前，您應該先參閱[適用於 SAP 工作負載的 Azure 虛擬機器 DBMS 部署考量](dbms_guide_general.md)文件，以及 [Azure 上的 SAP 工作負載文件](./get-started.md)中的其他指南。 
 
 
 ## <a name="ibm-db2-for-linux-unix-and-windows-version-support"></a>IBM Db2 for Linux, UNIX, and Windows 支援版本
@@ -72,7 +73,7 @@ ms.locfileid: "84022602"
 
 如果磁碟包含適用於您 sapdata 和 saptmp 目錄的 Db2 儲存路徑，您必須將實體磁碟磁區大小指定為 512 KB。 使用 Windows 儲存集區時，您必須透過命令列介面，使用參數 `-LogicalSectorSizeDefault`，以手動方式建立儲存集區。 如需詳細資訊，請參閱 <https://technet.microsoft.com/itpro/powershell/windows/storage/new-storagepool>。
 
-和「Azure 進階儲存體」相比之下，使用 Azure 寫入加速器時，會有諸多因素造成寫入交易記錄的延遲時間被縮短。 因此，您應該針對組成 Db2 交易記錄磁碟區的 VHD 來部署 Azure 寫入加速器。 如需詳細資訊，請參閱[寫入加速器](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)文件。
+和「Azure 進階儲存體」相比之下，使用 Azure 寫入加速器時，會有諸多因素造成寫入交易記錄的延遲時間被縮短。 因此，您應該針對組成 Db2 交易記錄磁碟區的 VHD 來部署 Azure 寫入加速器。 如需詳細資訊，請參閱[寫入加速器](../../windows/how-to-enable-write-accelerator.md)文件。
 
 ### <a name="backuprestore"></a>備份/還原
 針對 IBM Db2 for LUW 的備份/還原功能，是利用與標準 Windows Server 作業系統和 Hyper-V 上所做的相同方式來支援。

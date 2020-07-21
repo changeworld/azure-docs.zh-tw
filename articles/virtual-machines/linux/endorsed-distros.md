@@ -13,15 +13,16 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: guybo
-ms.openlocfilehash: e51eeb32ecd306986dc22d6bfa09ee95b8b87852
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a2edc8d0116778e292f0e44761100d3c1e9212ff
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84658706"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527382"
 ---
 # <a name="endorsed-linux-distributions-on-azure"></a>Azure 上背書的 Linux 散發套件
 
-合作夥伴會在 Azure Marketplace 中提供 Linux 映像。 Microsoft 與各種 Linux 團體合作，將更多的類別新增至背書的通訊群組清單。 針對 Marketplace 中無法使用的散發套件，您可以隨時遵循[建立和上傳包含 linux 作業系統的虛擬硬碟](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic)中的指導方針，自備您自己的 linux。
+合作夥伴會在 Azure Marketplace 中提供 Linux 映像。 Microsoft 與各種 Linux 團體合作，將更多的類別新增至背書的通訊群組清單。 針對 Marketplace 中無法使用的散發套件，您可以隨時遵循[建立和上傳包含 linux 作業系統的虛擬硬碟](./create-upload-generic.md)中的指導方針，自備您自己的 linux。
 
 ## <a name="supported-distributions-and-versions"></a>支援的發佈和版本
 
@@ -35,17 +36,17 @@ Azure Linux 代理程式已預先安裝於 Azure Marketplace 映像上，而且�
 | --- | --- | --- | --- |
 | 由 Rogue Wave 軟體 CentOS |CentOS 6.x、7.x、8。x |CentOS 6.3： [.lis 下載](https://www.microsoft.com/download/details.aspx?id=55106)<p>CentOS 6.4 +：在核心中 |封裝[：在 "WALinuxAgent" 下的](http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/)存放庫中 <br/>原始程式碼：[GitHub](https://github.com/Azure/WALinuxAgent) |
 | [CoreOS](https://coreos.com/docs/running-coreos/cloud-providers/azure/)<p> CoreOS 現已于 2020 5 月26日[結束](https://coreos.com/os/eol/)。 |不再提供 | | |
-| Credativ 的 Debian |8. x、9. x |在核心中 |套件：在「waagent」下的儲存機制中  <br/>原始程式碼：[GitHub](https://github.com/Azure/WALinuxAgent) |
-|Flatcar 容器 Linux by Kinvolk| 穩定、邊緣| | |
-| Oracle Oracle Linux |6.x、7.x、8. x |在核心中 |套件：在「WALinuxAgent」下的儲存機制中  <br/>原始程式碼：[GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
-| 由 Red Hat Red Hat Enterprise Linux |6.x、7.x、8. x |在核心中 |套件：在「WALinuxAgent」下的儲存機制中  <br/>原始程式碼：[GitHub](https://github.com/Azure/WALinuxAgent) |
+| Credativ 的 Debian |8.x、9.x |在核心中 |套件：在「waagent」下的儲存機制中  <br/>原始程式碼：[GitHub](https://github.com/Azure/WALinuxAgent) |
+|Flatcar 容器 Linux by Kinvolk| Stable、Edge| | |
+| Oracle Oracle Linux |6.x、7.x、8.x |在核心中 |套件：在「WALinuxAgent」下的儲存機制中  <br/>原始程式碼：[GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
+| 由 Red Hat Red Hat Enterprise Linux |6.x、7.x、8.x |在核心中 |套件：在「WALinuxAgent」下的儲存機制中  <br/>原始程式碼：[GitHub](https://github.com/Azure/WALinuxAgent) |
 | Suse Linux Enterprise （依 SUSE） |適用于 SAP 11. x、12. x、15. x 的 SLES/SLES <br/> [SUSE 公用雲端映射生命週期](https://www.suse.com/c/suse-public-cloud-image-life-cycle/) |在核心中 |套件：<p> 適用於 11：在 [Cloud:Tools](https://build.opensuse.org/project/show/Cloud:Tools) 儲存機制中<br>適用於 12：包含在 "Public Cloud" 模組中的 "python-azure-agent" 底下<br/>原始程式碼：[GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
-| 由 SUSE openSUSE |openSUSE 閏 15. x |在核心中 |封裝：在 "python-azure-agent" 下的[雲端：工具](https://build.opensuse.org/project/show/Cloud:Tools)儲存機制中 <br/>原始程式碼：[GitHub](https://github.com/Azure/WALinuxAgent) |
+| 由 SUSE openSUSE |openSUSE Leap 15.x |在核心中 |封裝：在 "python-azure-agent" 下的[雲端：工具](https://build.opensuse.org/project/show/Cloud:Tools)儲存機制中 <br/>原始程式碼：[GitHub](https://github.com/Azure/WALinuxAgent) |
 | 依標準的 Ubuntu |Ubuntu Server 和 Pro。 16. x、18. x、20. x<p>您可以在這裡找到有關 Ubuntu 12.04 和14.04 擴充支援的資訊： [Ubuntu 擴充安全性維護](https://www.ubuntu.com/esm)。 |在核心中 |套件：在「WALinuxAgent」下的儲存機制中  <br/>原始程式碼：[GitHub](https://github.com/Azure/WALinuxAgent) |
 
 ## <a name="image-update-cadence"></a>映射更新步調
 
-Azure 要求經背書的 Linux 散發套件發行者定期以最新的修補程式和安全性修正程式更新其映射 Azure Marketplace，每季或更快的步調。 Azure Marketplace 中的已更新映射會自動提供給客戶，做為映射 SKU 的新版本。 有關如何尋找 Linux 映射的詳細資訊：[在 Azure Marketplace 中尋找 LINUX VM 映射](https://docs.microsoft.com/azure/virtual-machines/linux/cli-ps-findimage)。
+Azure 要求經背書的 Linux 散發套件發行者定期以最新的修補程式和安全性修正程式更新其映射 Azure Marketplace，每季或更快的步調。 Azure Marketplace 中的已更新映射會自動提供給客戶，做為映射 SKU 的新版本。 有關如何尋找 Linux 映射的詳細資訊：[在 Azure Marketplace 中尋找 LINUX VM 映射](./cli-ps-findimage.md)。
 
 ## <a name="azure-tuned-kernels"></a>Azure 微調的核心
 

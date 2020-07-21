@@ -8,11 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 8d2adca661882ea11d04ebe55afe25f7f9c2ef4e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 754baa66d79d169f830332f3c39660f1d71f608a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84219957"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527909"
 ---
 # <a name="azcopy-login"></a>azcopy 登入
 
@@ -39,7 +40,7 @@ azcopy login [flags]
 
 - [開始使用 AzCopy](storage-use-azcopy-v10.md)
 - [使用 AzCopy 和 Blob 儲存體傳輸資料](storage-use-azcopy-blobs.md)
-- [使用 AzCopy 和檔案儲存體轉送資料](storage-use-azcopy-files.md)
+- [使用 AzCopy 和檔案儲存體傳輸資料](storage-use-azcopy-files.md) (機器翻譯)
 - [對 AzCopy 進行設定、最佳化及疑難排解](storage-use-azcopy-configure.md)
 
 ## <a name="examples"></a>範例
@@ -83,7 +84,7 @@ azcopy login --identity --identity-resource-id "/subscriptions/<subscriptionId>/
 使用用戶端密碼，以服務主體的身分登入。 將環境變數 AZCOPY_SPA_CLIENT_SECRET 設定為以密碼為基礎的服務主體驗證的用戶端密碼。
 
 ```azcopy
-azcopy login --service-principal
+azcopy login --service-principal --application-id "YOUR_APP_ID" --tenant-id "YOUR_TENANT_ID"
 ```
 
 使用憑證和密碼，以服務主體的身分登入。 針對以憑證為基礎的服務主體授權，將環境變數 AZCOPY_SPA_CERT_PASSWORD 設定為憑證的密碼。
@@ -96,9 +97,9 @@ azcopy login --service-principal --certificate-path /path/to/my/cert
 
 --執行以憑證為基礎的服務主體驗證時，憑證路徑是強制的。
 
-## <a name="options"></a>選項
+## <a name="options"></a>選項。
 
-|選項|說明|
+|選項|描述|
 |--|--|
 |--aad-端點|要使用的 Azure Active Directory 端點。 `https://login.microsoftonline.com`公用 Azure 雲端的預設（）是正確的。 在國家雲端中進行驗證時，請設定此參數。 請參閱[Azure AD 驗證端點](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud#azure-ad-authentication-endpoints)。
 受控服務識別不需要此旗標。|
@@ -114,7 +115,7 @@ azcopy login --service-principal --certificate-path /path/to/my/cert
 
 ## <a name="options-inherited-from-parent-commands"></a>繼承自父命令的選項
 
-|選項|說明|
+|選項|描述|
 |---|---|
 |--cap-mbps uint32|上限（以每秒 mb 為單位）傳輸速率。 時間點的輸送量可能會與端點略有不同。 如果此選項設定為零或省略，則輸送量不會限制。|
 |--output-類型字串|命令輸出的格式。 選項包括： text、json。 預設值為 "text"。|

@@ -8,17 +8,17 @@ ms.topic: article
 ms.workload: infrastructure
 ms.date: 02/22/2019
 ms.author: cynthn
-ms.openlocfilehash: 194610845d9625139ff826711fc361bd9670a426
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 14b2e3df6d7ea3f72c1968cfed222a1b9b0d636d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202652"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525852"
 ---
 # <a name="how-to-use-packer-to-create-windows-virtual-machine-images-in-azure"></a>如何在 Azure 中使用 Packer 來建立 Windows 虛擬機器映像
 Azure 中的每個虛擬機器 (VM) 都是透過映像所建立，而映像則會定義 Windows 散發套件和作業系統版本。 映像中可包含預先安裝的應用程式與組態。 Azure Marketplace 提供了許多第一方和第三方映像，這些映像適用於最常見的作業系統和應用程式環境，而您也可以建立自己自訂的映像，以符合您的需求。 本文詳述如何使用開放原始碼工具 [Packer](https://www.packer.io/) \(英文\)，在 Azure 中定義和建置自訂映像。
 
-本文最後一次測試是在 2019 年 2 月 21 日，使用 [Az PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps) 1.3.0 版和 [Packer](https://www.packer.io/docs/install) 1.3.4 版進行的。
+本文最後一次測試是在 2019 年 2 月 21 日，使用 [Az PowerShell 模組](/powershell/azure/install-az-ps) 1.3.0 版和 [Packer](https://www.packer.io/docs/install) 1.3.4 版進行的。
 
 > [!NOTE]
 > Azure 現在有一個服務，也就是 Azure Image Builder (預覽)，用來定義和建立您自己的自訂映像。 Azure Image Builder 建置在 Packer 上，因此您甚至可以搭配使用現有的 Packer 殼層佈建指令碼。 若要開始使用 Azure Image Builder，請參閱[使用 Azure Image Builder 建立 Windows VM](image-builder.md)。
@@ -26,7 +26,7 @@ Azure 中的每個虛擬機器 (VM) 都是透過映像所建立，而映像則�
 ## <a name="create-azure-resource-group"></a>建立 Azure 資源群組
 建置程序進行期間，Packer 會在建置來源 VM 時建立暫存的 Azure 資源。 若要擷取該來源 VM 以作為映像，您必須定義資源群組。 Packer 建置程序所產生的輸出會儲存在此資源群組中。
 
-使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) 來建立資源群組。 下列範例會在 eastus 位置建立名為 myResourceGroup 的資源群組：
+使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 來建立資源群組。 下列範例會在 eastus 位置建立名為 myResourceGroup 的資源群組：
 
 ```azurepowershell
 $rgName = "myResourceGroup"
@@ -37,7 +37,7 @@ New-AzResourceGroup -Name $rgName -Location $location
 ## <a name="create-azure-credentials"></a>建立 Azure 認證
 Packer 會使用服務主體來向 Azure 驗證。 Azure 服務主體是安全性識別，可供您與應用程式、服務及諸如 Packer 等自動化工具搭配使用。 您可以控制和定義對於服務主體可以在 Azure 中執行哪些作業的權限。
 
-使用 [New-AzADServicePrincipal](https://docs.microsoft.com/powershell/module/az.resources/new-azadserviceprincipal) 建立服務主體，並為服務主體指派權限以便使用 [New-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignment) 來建立和管理資源。 `-DisplayName` 的值必須是唯一的；視需求將其取代為您自己的值。  
+使用 [New-AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal) 建立服務主體，並為服務主體指派權限以便使用 [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) 來建立和管理資源。 `-DisplayName` 的值必須是唯一的；視需求將其取代為您自己的值。  
 
 ```azurepowershell
 $sp = New-AzADServicePrincipal -DisplayName "PackerServicePrincipal"
@@ -54,7 +54,7 @@ $sp.ApplicationId
 ```
 
 
-若要向 Azure 驗證，您還需要使用 [Get-AzSubscription](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription) 取得 Azure 租用戶與訂用帳戶識別碼：
+若要向 Azure 驗證，您還需要使用 [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription) 取得 Azure 租用戶與訂用帳戶識別碼：
 
 ```powershell
 Get-AzSubscription
@@ -213,7 +213,7 @@ Packer 需要幾分鐘的時間來建置 VM、執行佈建程式並清除部署�
 
 
 ## <a name="create-a-vm-from-the-packer-image"></a>從 Packer 映像建立 VM
-您現在可以使用 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) 從您的映像建立 VM。 如果支援網路資源尚未存在，則會加以建立。 出現提示時，輸入要在 VM 上建立的系統管理使用者名稱和密碼。 下列範例會從 *myPackerImage* 建立名為 *myVM* 的 VM：
+您現在可以使用 [New-AzVM](/powershell/module/az.compute/new-azvm) 從您的映像建立 VM。 如果支援網路資源尚未存在，則會加以建立。 出現提示時，輸入要在 VM 上建立的系統管理使用者名稱和密碼。 下列範例會從 *myPackerImage* 建立名為 *myVM* 的 VM：
 
 ```powershell
 New-AzVm `
@@ -228,13 +228,13 @@ New-AzVm `
     -Image "myPackerImage"
 ```
 
-如果想要在不同於您 Packer 映像的資源群組或區域中建立 VM，請指定映像識別碼，而非映像名稱。 您可以使用 [Get-AzImage](https://docs.microsoft.com/powershell/module/az.compute/Get-AzImage) 取得映像識別碼。
+如果想要在不同於您 Packer 映像的資源群組或區域中建立 VM，請指定映像識別碼，而非映像名稱。 您可以使用 [Get-AzImage](/powershell/module/az.compute/get-azimage) 取得映像識別碼。
 
 從 Packer 映像建立虛擬機器需要幾分鐘的時間。
 
 
 ## <a name="test-vm-and-webserver"></a>測試 VM 和網頁伺服器
-使用 [Get-AzPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress) 取得 VM 的公用 IP 位址。 下列範例會取得稍早建立的 myPublicIP IP 位址︰
+使用 [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) 取得 VM 的公用 IP 位址。 下列範例會取得稍早建立的 myPublicIP IP 位址︰
 
 ```powershell
 Get-AzPublicIPAddress `

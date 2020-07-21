@@ -13,11 +13,12 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a6532558107463311c4225b9855bc4cd3f19eed9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 85acd8e26ca10730638332047a37d281358d205f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75965616"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526545"
 ---
 # <a name="troubleshoot-deployment-issues-with-restarting-or-resizing-an-existing-windows-vm-in-azure"></a>針對在 Azure 中重新啟動或調整現有 Windows VM 大小的部署問題進行疑難排解
 當您嘗試啟動已停止的 Azure 虛擬機器 (VM)，或調整現有 Azure VM 的大小時，常會遇到的錯誤是配置失敗。 當叢集或區域沒有可用的資源或無法支援所要求的 VM 大小，就會產生此錯誤。
@@ -29,7 +30,7 @@ ms.locfileid: "75965616"
 
 [檢視部署作業](../../azure-resource-manager/templates/deployment-history.md)
 
-[檢視活動記錄以管理 Azure 資源](../../resource-group-audit.md)
+[檢視活動記錄以管理 Azure 資源](../../azure-resource-manager/management/view-activity-logs.md)
 
 ## <a name="issue-error-when-starting-a-stopped-vm"></a>問題：啟動已停止的 VM 時發生錯誤
 您嘗試啟動已停止的 VM，但是發現配置失敗。
@@ -61,5 +62,4 @@ ms.locfileid: "75965616"
   3. 選取已調整大小的 VM，按一下 [啟動] ****，然後啟動每個已停止的 VM。
 
 ## <a name="next-steps"></a>後續步驟
-如果您在 Azure 中建立新的 Windows VM 時遇到問題，請參閱[針對在 Azure 中建立新 Windows 虛擬機器的部署問題進行疑難排解](../windows/troubleshoot-deployment-new-vm.md)。
-
+如果您在 Azure 中建立新的 Windows VM 時遇到問題，請參閱[針對在 Azure 中建立新 Windows 虛擬機器的部署問題進行疑難排解](./troubleshoot-deployment-new-vm-windows.md)。

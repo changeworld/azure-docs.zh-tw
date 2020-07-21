@@ -9,11 +9,12 @@ ms.topic: article
 ms.workload: infrastructure
 ms.date: 10/23/2019
 ms.author: haroldw
-ms.openlocfilehash: 26b190515819378309c2b0705efdbc349ecccbe2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 244bea1aaf5457601ced9bac05c8dae43e5b9199
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81759500"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527127"
 ---
 # <a name="common-prerequisites-for-deploying-openshift-container-platform-311-in-azure"></a>在 Azure 中部署 OpenShift 容器平臺3.11 的常見必要條件
 
@@ -83,7 +84,7 @@ ssh-keygen -f ~/.ssh/openshift_rsa -t rsa -N ''
 > [!NOTE]
 > 您的 SSH 金鑰組不能有密碼 / 複雜密碼。
 
-如需有關 Windows 上的 SSH 金鑰詳細資訊，請參閱[如何在 Windows 上建立 SSH 金鑰](/azure/virtual-machines/linux/ssh-from-windows)。 請務必以 OpenSSH 格式匯出私密金鑰。
+如需有關 Windows 上的 SSH 金鑰詳細資訊，請參閱[如何在 Windows 上建立 SSH 金鑰](./ssh-from-windows.md)。 請務必以 OpenSSH 格式匯出私密金鑰。
 
 ## <a name="store-the-ssh-private-key-in-azure-key-vault"></a>將 SSH 私密金鑰儲存在 Azure Key Vault 中
 OpenShift 部署會使用您建立的 SSH 金鑰來安全存取 OpenShift 主機。 若要啟用部署以安全地擷取 SSH 金鑰，請使用下列命令將金鑰儲存在金鑰保存庫中：
@@ -133,7 +134,7 @@ az ad sp create-for-rbac --name openshiftsp \
  > [!WARNING] 
  > 請務必寫下安全密碼，因為它無法再次取得此密碼。
 
-如需有關服務主體的詳細資訊，請參閱[使用 Azure CLI 建立 Azure 服務主體](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest)。
+如需有關服務主體的詳細資訊，請參閱[使用 Azure CLI 建立 Azure 服務主體](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest)。
 
 ## <a name="prerequisites-applicable-only-to-resource-manager-template"></a>僅適用于 Resource Manager 範本的必要條件
 

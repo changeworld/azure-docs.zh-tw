@@ -8,19 +8,20 @@ ms.date: 05/28/2020
 ms.author: rogarana
 ms.subservice: files
 services: storage
-ms.openlocfilehash: 6ee38dd6f9a2e254c57d6f79c09eee7bccfcd0aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 11940a43438b72eb8a2e9391d56806744c4c27fc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84204679"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527807"
 ---
 # <a name="prevent-accidental-deletion-of-azure-file-shares"></a>防止意外刪除 Azure 檔案共用
 
-Azure 儲存體現在提供檔案共用的虛刪除（預覽）。 虛刪除可讓您在應用程式或其他儲存體帳戶使用者錯誤地刪除您的資料時進行復原。
+Azure 儲存體現在提供檔案共用的虛刪除（預覽）。 虛刪除可讓您在應用程式或其他儲存體帳戶使用者錯誤地刪除檔案共用時進行復原。
 
 ## <a name="how-soft-delete-preview-works"></a>虛刪除（預覽）的運作方式
 
-啟用 Azure 檔案共用的虛刪除時，如果已刪除檔案共用，它會轉換成虛刪除狀態，而不是永久清除。 您可以設定虛刪除的資料在永久刪除之前可進行復原的時間長度。
+啟用 Azure 檔案共用的虛刪除時，如果已刪除檔案共用，它會轉換成虛刪除狀態，而不是永久清除。 您可以設定虛刪除資料在永久刪除之前可復原的時間量，並在此保留期間內隨時取消刪除該共用。 在取消刪除之後，共用和所有內容（包括快照集）都會還原至刪除之前的狀態。 虛刪除僅適用于檔案共用層級-已刪除的個別檔案仍會永久清除。
 
 可以在新的或現有的檔案共用上啟用虛刪除。 虛刪除也具有回溯相容性，如此一來，您不需要對應用程式進行任何變更，即可使用虛刪除的保護。 
 

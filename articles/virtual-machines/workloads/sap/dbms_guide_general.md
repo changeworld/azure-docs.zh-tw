@@ -15,11 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 581efde3128294a326bdfd08e622a8dcabe5784d
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 44a41f43aa31c15b71d7b35ebd29bf935c7df966
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84232643"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525461"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>適用於 SAP 工作負載的 Azure 虛擬機器 DBMS 部署考量
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -65,7 +66,7 @@ ms.locfileid: "84232643"
 * **SAP 系統**︰DBMS 層與應用程式層的組合，例如 SAP ERP 開發系統、SAP Business Warehouse 測試系統，或 SAP CRM 生產系統。 Azure 部署不支援將這兩層區分為內部部署和 Azure。 因此，SAP 系統可為內部部署，也可部署在 Azure 中。 您可以不同的 SAP 環境系統部署於 Azure 或內部部署。 例如，您可將 SAP CRM 開發和測試系統部署在 Azure 中，但將 SAP CRM 生產系統部署在內部部署。
 * **跨單位**：描述將 VM 部署到在內部部署資料中心與 Azure 之間具有站對站、多網站或 Azure ExpressRoute 連線能力的 Azure 訂閱的案例。 在一般 Azure 文件中，這類部署也會描述為跨單位案例。 
 
-    連線的原因是為了將內部部署網域、內部部署 Active Directory 和內部部署 DNS 擴充到 Azure。 內部部署的架構會擴充到訂用帳戶的 Azure 資產。 透過此擴充，VM 可以是內部部署網域的一部分。 內部部署網域的網域使用者可存取伺服器，並可在這些 VM 上執行服務，例如 DBMS 服務。 您可以在內部部署的 VM 與 Azure 中部署的 VM 之間進行通訊與名稱解析。 在 Azure 上部署 SAP 資產時最常使用這種案例。 如需詳細資訊，請參閱[規劃與設計 VPN 閘道](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-plan-design)。
+    連線的原因是為了將內部部署網域、內部部署 Active Directory 和內部部署 DNS 擴充到 Azure。 內部部署的架構會擴充到訂用帳戶的 Azure 資產。 透過此擴充，VM 可以是內部部署網域的一部分。 內部部署網域的網域使用者可存取伺服器，並可在這些 VM 上執行服務，例如 DBMS 服務。 您可以在內部部署的 VM 與 Azure 中部署的 VM 之間進行通訊與名稱解析。 在 Azure 上部署 SAP 資產時最常使用這種案例。 如需詳細資訊，請參閱[規劃與設計 VPN 閘道](../../../vpn-gateway/vpn-gateway-about-vpngateways.md)。
 
 > [!NOTE]
 > 跨單位 SAP 系統部署是 Azure 虛擬機器執行 SAP 系統的位置，這些 VM 是內部部署網域的成員，且可生產 SAP 系統。 跨單位組態可將部分或完整 SAP 環境部署到 Azure。 即使在 Azure 中執行完整的 SAP 環境，這些 VM 也必須隸屬於內部部署網域和 Active Directory/LDAP。 
@@ -77,7 +78,7 @@ ms.locfileid: "84232643"
 有些 Microsoft 文件在描述跨單位案例時會略有不同，特別是針對 DBMS 高可用性設定。 在 SAP 相關的文件中，跨單位案例會縮減為站對站或私人 [ExpressRoute](https://azure.microsoft.com/services/expressroute/) 連線能力，以及分散至內部部署與 Azure 之間的 SAP 環境。
 
 ## <a name="resources"></a>資源
-Azure 提供其他有關 SAP 工作負載的文章。 開始[在 Azure 上 使用 SAP 工作負載：](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started)，然後選擇感興趣的區域。
+Azure 提供其他有關 SAP 工作負載的文章。 開始[在 Azure 上 使用 SAP 工作負載：](./get-started.md)，然後選擇感興趣的區域。
 
 下列 SAP 附註在本文件所討論的領域上與 Azure 上的 SAP 有關。
 
@@ -102,7 +103,7 @@ Azure 提供其他有關 SAP 工作負載的文章。 開始[在 Azure 上 使�
 
 如需所有適用於 Linux 的 SAP 附註相關資訊，請參閱 [SAP 社區 Wiki](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes)。
 
-您需要有關 Microsoft Azure 架構以及如何部署與操作 Microsoft Azure 虛擬機器的有效知識。 如需詳細資訊，請參閱 [Azure 文件](https://docs.microsoft.com/azure/)。
+您需要有關 Microsoft Azure 架構以及如何部署與操作 Microsoft Azure 虛擬機器的有效知識。 如需詳細資訊，請參閱 [Azure 文件](../../../index.yml)。
 
 一般而言，Windows、Linux 和 DBMS 的安裝和設定基本上與要安裝內部部署的任何虛擬機器或裸機機器相同。 但有一些架構和系統管理實作決策，與使用 Azure IaaS 時不同。 本文件會說明使用 Azure IaaS 時，您必須準備面對的特定架構和系統管理差異。
 
@@ -157,8 +158,8 @@ VM 類型不同，可連接的資料磁碟數目限制也各不相同。 另一�
 >
 > 只支援使用 MDADM 和邏輯磁碟區管理員 (LVM) 在 Linux 上建立軟體 RAID。 如需詳細資訊，請參閱
 >
-> - 使用 MDADM [在 Linux 上設定軟體 RAID](https://docs.microsoft.com/azure/virtual-machines/linux/configure-raid) (機器翻譯)
-> - 使用 LVM [在 Azure 中的 Linux VM 上設定 LVM](https://docs.microsoft.com/azure/virtual-machines/linux/configure-lvm)
+> - 使用 MDADM [在 Linux 上設定軟體 RAID](../../linux/configure-raid.md) (機器翻譯)
+> - 使用 LVM [在 Azure 中的 Linux VM 上設定 LVM](../../linux/configure-lvm.md)
 >
 >
 
@@ -169,9 +170,9 @@ VM 類型不同，可連接的資料磁碟數目限制也各不相同。 另一�
 >
 
 ### <a name="managed-or-nonmanaged-disks"></a>受控或非受控磁碟
-Azure 儲存體帳戶是系統管理建構，也是限制的緣由。 標準儲存體帳戶和進階儲存體帳戶之間的限制有所不同。 如需功能和限制的相關資訊，請參閱[Azure 儲存體的可擴縮性和效能目標](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets) (機器翻譯)。
+Azure 儲存體帳戶是系統管理建構，也是限制的緣由。 標準儲存體帳戶和進階儲存體帳戶之間的限制有所不同。 如需功能和限制的相關資訊，請參閱[Azure 儲存體的可擴縮性和效能目標](../../../storage/common/scalability-targets-standard-account.md) (機器翻譯)。
 
-請記住標準儲存體對每個儲存體帳戶都有 IOPS 限制。 請參閱 [Azure 儲存體的可擴縮性和效能目標](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets) (機器翻譯) 一文中包含**總要求率**的資料列。 每個 Azure 訂閱也有儲存體帳戶數目的初始限制。 將較大 SAP 環境的 VHD 平均分散到不同儲存體帳戶，可避免達到這些儲存體帳戶的限制。 討論包含上千個 VHD 的數百部虛擬機器，是很乏味的工作。
+請記住標準儲存體對每個儲存體帳戶都有 IOPS 限制。 請參閱 [Azure 儲存體的可擴縮性和效能目標](../../../storage/common/scalability-targets-standard-account.md) (機器翻譯) 一文中包含**總要求率**的資料列。 每個 Azure 訂閱也有儲存體帳戶數目的初始限制。 將較大 SAP 環境的 VHD 平均分散到不同儲存體帳戶，可避免達到這些儲存體帳戶的限制。 討論包含上千個 VHD 的數百部虛擬機器，是很乏味的工作。
 
 因為不建議使用 DBMS 部署的標準儲存體搭配 SAP 工作負載，所以標準儲存體的參考和建議僅限於此簡短[文章](https://blogs.msdn.com/b/mast/archive/2014/10/14/configuring-azure-virtual-machines-for-optimal-storage-performance.aspx)
 
@@ -187,8 +188,8 @@ Azure 儲存體帳戶是系統管理建構，也是限制的緣由。 標準儲�
 
 若要從非受控磁碟轉換為受控磁碟，請參閱：
 
-- [將 Windows 虛擬機器從非受控磁碟轉換成受控磁碟](https://docs.microsoft.com/azure/virtual-machines/windows/convert-unmanaged-to-managed-disks) (機器翻譯)。
-- [將 Linux 虛擬機器從非受控磁碟轉換成受控磁碟](https://docs.microsoft.com/azure/virtual-machines/linux/convert-unmanaged-to-managed-disks) (機器翻譯)。
+- [將 Windows 虛擬機器從非受控磁碟轉換成受控磁碟](../../windows/convert-unmanaged-to-managed-disks.md) (機器翻譯)。
+- [將 Linux 虛擬機器從非受控磁碟轉換成受控磁碟](../../linux/convert-unmanaged-to-managed-disks.md) (機器翻譯)。
 
 
 ### <a name="caching-for-vms-and-data-disks"></a><a name="c7abf1f0-c927-4a7c-9c1d-c7b5b3b7212f"></a>VM 和資料磁碟的快取
@@ -220,13 +221,13 @@ Azure 儲存體帳戶是系統管理建構，也是限制的緣由。 標準儲�
 
 針對進階儲存體，建議使用 SAP 資料庫的 [資料檔案讀取快取]，並選擇 [No caching for the disks of log file] \(不快取記錄檔磁碟\)。
 
-針對 M 系列部署，建議對 DBMS 部署使用 Azure 寫入加速器。 如需 Azure 寫入加速器的詳細資料、限制和部署，請參閱[啟用寫入加速器](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator) (機器翻譯)。
+針對 M 系列部署，建議對 DBMS 部署使用 Azure 寫入加速器。 如需 Azure 寫入加速器的詳細資料、限制和部署，請參閱[啟用寫入加速器](../../windows/how-to-enable-write-accelerator.md) (機器翻譯)。
 
 
 ### <a name="azure-nonpersistent-disks"></a>Azure 非永久性磁碟
 Azure VM 會在部署 VM 之後提供非永久性磁碟。 如果 VM 重新開機，就會抹除這些磁碟機上的所有內容。假設在任何情況下，資料庫的資料檔和記錄/重做檔都不得位於這些非永久性磁碟機上。 有些資料庫可能會出現一些非永久性磁碟機適用於 tempdb 和暫存資料表空間例外狀況。 請避免將這些磁碟機使用於 A 系列 VM，因為這些非永久性磁碟機對該 VM 系列的輸送量有所限制。 
 
-如需詳細資訊，請參閱[了解 Windows Azure VM 上的暫存磁碟機](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/) (英文)。
+如需詳細資訊，請參閱[了解 Windows Azure VM 上的暫存磁碟機](/archive/blogs/mast/understanding-the-temporary-drive-on-windows-azure-virtual-machines) (英文)。
 
 ---
 > ![Windows][Logo_Windows] Windows
@@ -246,7 +247,7 @@ Azure VM 會在部署 VM 之後提供非永久性磁碟。 如果 VM 重新開�
 ### <a name="microsoft-azure-storage-resiliency"></a><a name="10b041ef-c177-498a-93ed-44b3441ab152"></a>Microsoft Azure 儲存體復原
 Microsoft Azure 儲存體會將基底 VHD 和 OS 以及連接的磁碟或 BLOB 一起儲存在至少 3 個不同儲存體節點上。 這種類型的儲存體稱為本機備援儲存體 (LRS)。 LRS 是 Azure 中所有儲存體類型的預設值。
 
-還有其他的備援方法。 如需詳細資訊，請參閱 [Azure 儲存體複寫](https://docs.microsoft.com/azure/storage/common/storage-redundancy?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)。
+還有其他的備援方法。 如需詳細資訊，請參閱 [Azure 儲存體複寫](../../../storage/common/storage-redundancy.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)。
 
 > [!NOTE]
 >DBMS VM 和儲存資料庫和記錄/重做檔案的磁碟，建議使用的儲存體類型為進階儲存體。 進階儲存體唯一可用的備援方法是 LRS。 因此，您必須設定資料庫方法，讓資料庫資料能複寫到另一個 Azure 區域或可用性區域。 資料庫方法包括 SQL Server Always On、Oracle Data Guard 及 HANA System Replication。
@@ -258,7 +259,7 @@ Microsoft Azure 儲存體會將基底 VHD 和 OS 以及連接的磁碟或 BLOB �
 
 
 ## <a name="vm-node-resiliency"></a>VM 節點復原
-Azure 會為 VM 提供數個不同的 SLA。 如需詳細資訊，請參閱最新版的[虛擬機器 SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)。 因為 DBMS 層對 SAP 系統的可用性通常極為重要，所以您必須了解可用性設定組、可用性區域和維護事件。 如需這些概念的詳細資訊，請參閱[在 Azure 中管理 Windows 虛擬機器的可用性](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability) (機器翻譯) 以及[在 Azure 中管理 Linux 虛擬機器的可用性](https://docs.microsoft.com/azure/virtual-machines/linux/manage-availability) (機器翻譯)。
+Azure 會為 VM 提供數個不同的 SLA。 如需詳細資訊，請參閱最新版的[虛擬機器 SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)。 因為 DBMS 層對 SAP 系統的可用性通常極為重要，所以您必須了解可用性設定組、可用性區域和維護事件。 如需這些概念的詳細資訊，請參閱[在 Azure 中管理 Windows 虛擬機器的可用性](../../windows/manage-availability.md) (機器翻譯) 以及[在 Azure 中管理 Linux 虛擬機器的可用性](../../linux/manage-availability.md) (機器翻譯)。
 
 針對包含 SAP 工作負載的生產 DBMS 案例，最低建議如下：
 
@@ -268,43 +269,43 @@ Azure 會為 VM 提供數個不同的 SLA。 如需詳細資訊，請參閱最�
 
 您也可以在另一個 Azure 區域中部署第三部 VM，使用相同的資料庫方法在另一個 Azure 區域中提供非同步複本。
 
-如需如何設定 Azure 可用性設定組的相關資訊，請參閱[本教學課程](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets)。
+如需如何設定 Azure 可用性設定組的相關資訊，請參閱[本教學課程](../../windows/tutorial-availability-sets.md)。
 
 
 
 ## <a name="azure-network-considerations"></a>Azure 網路考量事項
-在大規模的 SAP 部署中，請使用 [Azure 虛擬資料中心](https://docs.microsoft.com/azure/architecture/vdc/networking-virtual-datacenter)藍圖。 將此藍圖用於虛擬網路設定以及組織不同單位的權限和角色指派。
+在大規模的 SAP 部署中，請使用 [Azure 虛擬資料中心](/azure/architecture/vdc/networking-virtual-datacenter)藍圖。 將此藍圖用於虛擬網路設定以及組織不同單位的權限和角色指派。
 
 這些最佳做法是數百個客戶部署的結果：
 
 - SAP 應用程式部署所在的虛擬網路無法存取網際網路。
 - 資料庫 VM 是在與應用程式層相同的虛擬網路中執行。
 - 虛擬網路內 VM 具有私人 IP 位址的靜態配置。 如需詳細資訊，請參閱 [Azure 中的 IP 位址類型及配置方法](../../../virtual-network/public-ip-addresses.md)。
-- DBMS VM 的往返路由限制「不會」與安裝在本機 DBMS VM 上的防火牆一起設定。 流量路由反而會與 [網路安全性群組 (NSG)](https://docs.microsoft.com/azure/virtual-network/security-overview) (機器翻譯) 一起定義。
+- DBMS VM 的往返路由限制「不會」與安裝在本機 DBMS VM 上的防火牆一起設定。 流量路由反而會與 [網路安全性群組 (NSG)](../../../virtual-network/security-overview.md) (機器翻譯) 一起定義。
 - 若要將流量分開並隔離到 DBMS VM，請將不同的 NIC 指派給 VM。 每個 NIC 都會取得不同 IP 位址，且每個 NIC 會指派給不同的虛擬網路子網路。 每個子網路都有不同的 NSG 規則。 隔離或分開網路流量是一種測量路由的方法。 不會用來設定網路輸送量配額。
 
 > [!NOTE]
-> 透過 Azure 指派靜態 IP 位址，表示將這些位址指派給個別的虛擬 NIC。 請不要將客體 OS 內的靜態 IP 位址指派給虛擬 NIC。 有些像 Azure 備份這樣的 Azure 服務，依賴主要虛擬 NIC 至少會設為 DHCP，而不是設為靜態 IP 位址的事實。 如需詳細資訊，請參閱[針對 Azure 虛擬機器的備份進行疑難排解](https://docs.microsoft.com/azure/backup/backup-azure-vms-troubleshoot#networking)。 若要將多個靜態 IP 位址指派給 VM，請將多個虛擬 NIC 指派給 VM。
+> 透過 Azure 指派靜態 IP 位址，表示將這些位址指派給個別的虛擬 NIC。 請不要將客體 OS 內的靜態 IP 位址指派給虛擬 NIC。 有些像 Azure 備份這樣的 Azure 服務，依賴主要虛擬 NIC 至少會設為 DHCP，而不是設為靜態 IP 位址的事實。 如需詳細資訊，請參閱[針對 Azure 虛擬機器的備份進行疑難排解](../../../backup/backup-azure-vms-troubleshoot.md#networking)。 若要將多個靜態 IP 位址指派給 VM，請將多個虛擬 NIC 指派給 VM。
 >
 
 
 > [!IMPORTANT]
-> 不支援在 SAP 應用程式與 SAP NetWeaver、Hybris 或 S/4HANA 型 SAP 系統的 DBMS 層之間的通訊路徑中設定[網路虛擬設備](https://azure.microsoft.com/solutions/network-appliances/)。 因功能和效能原因而有此限制。 SAP 應用程式層和 DBMS 層之間必須有直接的通訊路徑。 如果 ASG 和 NSG 規則允許直接通訊路徑，此限制即不包括這些[應用程式安全性群組 (ASG) 和 NSG 規則](https://docs.microsoft.com/azure/virtual-network/security-overview)。 
+> 不支援在 SAP 應用程式與 SAP NetWeaver、Hybris 或 S/4HANA 型 SAP 系統的 DBMS 層之間的通訊路徑中設定[網路虛擬設備](https://azure.microsoft.com/solutions/network-appliances/)。 因功能和效能原因而有此限制。 SAP 應用程式層和 DBMS 層之間必須有直接的通訊路徑。 如果 ASG 和 NSG 規則允許直接通訊路徑，此限制即不包括這些[應用程式安全性群組 (ASG) 和 NSG 規則](../../../virtual-network/security-overview.md)。 
 >
 > 其他不支援網路虛擬設備的案例出現在：
 >
-> * Azure VM 之間的通訊路徑，這些 VM 代表 Linux Pacemaker 叢集節點與 SBD 裝置，如 [SAP NetWeaver 在適用於 SAP 應用程式的 SUSE Linux Enterprise Server 上 Azure VM 高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse)中所述。
-> * Azure VM 與 Windows Server 向外延展檔案伺服器 (SOFS) 之間的通訊路徑，其設定如[在 Azure 中使用檔案共用於 Windows 容錯移轉叢集上進行 SAP ASCS/SCS 執行個體叢集處理](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-file-share)中所述。 
+> * Azure VM 之間的通訊路徑，這些 VM 代表 Linux Pacemaker 叢集節點與 SBD 裝置，如 [SAP NetWeaver 在適用於 SAP 應用程式的 SUSE Linux Enterprise Server 上 Azure VM 高可用性](./high-availability-guide-suse.md)中所述。
+> * Azure VM 與 Windows Server 向外延展檔案伺服器 (SOFS) 之間的通訊路徑，其設定如[在 Azure 中使用檔案共用於 Windows 容錯移轉叢集上進行 SAP ASCS/SCS 執行個體叢集處理](./sap-high-availability-guide-wsfc-file-share.md)中所述。 
 >
 > 通訊路徑中網路虛擬設備可輕鬆加倍兩個通訊合作夥伴之間的網路延遲。 也可以限制 SAP 應用程式層與 DBMS 層間重要路徑中的輸送量。 有些客戶案例中的網路虛擬設備會導致 Pacemaker Linux 叢集失敗。 這些案例都是 Linux Pacemaker 叢集節點與其 SBD 裝置透過網路虛擬設備通訊的情況。
 >
 
 > [!IMPORTANT]
-> 另一種「不」支援的設計，是將 SAP 應用程式層與 DBMS 層隔離到彼此之間不[對等互連](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)的不同 Azure 虛擬網路。 建議使用 Azure 虛擬網路內的子網路來隔離 SAP 應用程式層和 DBMS 層，不要使用不同的 Azure 虛擬網路。 
+> 另一種「不」支援的設計，是將 SAP 應用程式層與 DBMS 層隔離到彼此之間不[對等互連](../../../virtual-network/virtual-network-peering-overview.md)的不同 Azure 虛擬網路。 建議使用 Azure 虛擬網路內的子網路來隔離 SAP 應用程式層和 DBMS 層，不要使用不同的 Azure 虛擬網路。 
 >
-> 如果決定不遵循建議，且堅持要使用不同的虛擬網路來隔離兩個層，則這兩個虛擬網路必須要[對等互連](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)。 
+> 如果決定不遵循建議，且堅持要使用不同的虛擬網路來隔離兩個層，則這兩個虛擬網路必須要[對等互連](../../../virtual-network/virtual-network-peering-overview.md)。 
 >
-> 請注意，兩個[對等互連](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)的 Azure 虛擬網路間網路流量會產生傳輸成本。 SAP 應用程式層和 DBMS 層之間會交換多達數 TB 的龐大資料量。 如果 SAP 應用程式層和 DBMS 層分隔在兩個對等互連的 Azure 虛擬網路，則會累積大量的費用。
+> 請注意，兩個[對等互連](../../../virtual-network/virtual-network-peering-overview.md)的 Azure 虛擬網路間網路流量會產生傳輸成本。 SAP 應用程式層和 DBMS 層之間會交換多達數 TB 的龐大資料量。 如果 SAP 應用程式層和 DBMS 層分隔在兩個對等互連的 Azure 虛擬網路，則會累積大量的費用。
 
 請在 Azure 可用性設定組內使用兩部 VM 部署生產 DBMS。 另請為 SAP 應用程式層以及兩部 DBMS VM 的管理和作業流量使用不同路由。 請見下圖：
 
@@ -316,7 +317,7 @@ Azure 會為 VM 提供數個不同的 SLA。 如需詳細資訊，請參閱最�
 
 如果資料庫節點有容錯移轉，您就不需要重新設定 SAP 應用程式。 然而，最常見的 SAP 應用程式架構會重新連線私人虛擬 IP 位址。 同時，負載平衡器會將私人虛擬 IP 位址的流量重新導向至第二個節點，藉此回應節點的容錯移轉。
 
-Azure 提供兩個不同的[負載平衡器 SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)：基本 SKU 和標準 SKU。 除非想要跨許多 Azure 可用性區域部署，不然基本的負載平衡器 SKU 即已足夠。
+Azure 提供兩個不同的[負載平衡器 SKU](../../../load-balancer/load-balancer-overview.md)：基本 SKU 和標準 SKU。 除非想要跨許多 Azure 可用性區域部署，不然基本的負載平衡器 SKU 即已足夠。
 
 DBMS VM 與 SAP 應用程式層之間的流量一律透過負載平衡器路由嗎？ 答案取決於您設定負載平衡器的方式。 
 
@@ -326,7 +327,7 @@ DBMS VM 與 SAP 應用程式層之間的流量一律透過負載平衡器路由�
 
 建議搭配位於 SAP 應用程式層與 DBMS 層之間的負載平衡器設定 DirectServerReturn。 此設定可減少兩層之間的網路延遲。
 
-如需如何使用 SQL Server Always On 設定此設定的範例，請參閱[在 Azure 中設定 Always On 可用性群組的 ILB 接聽程式](https://docs.microsoft.com/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-int-listener) (機器翻譯)。
+如需如何使用 SQL Server Always On 設定此設定的範例，請參閱[在 Azure 中設定 Always On 可用性群組的 ILB 接聽程式](/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-int-listener) (機器翻譯)。
 
 如果使用已發佈 GitHub JSON 範本作為 Azure 中 SAP 基礎結構部署的參考，請研讀 [SAP 3 層系統範本](https://github.com/Azure/azure-quickstart-templates/tree/4099ad9bee183ed39b88c62cd33f517ae4e25669/sap-3-tier-marketplace-image-converged-md)。 您也可以在此範本中，了解負載平衡器的正確設定。
 
@@ -340,11 +341,11 @@ DBMS VM 與 SAP 應用程式層之間的流量一律透過負載平衡器路由�
 ---
 > ![Windows][Logo_Windows] Windows
 >
-> 若要了解如何部署使用加速網路的 Windows VM，請參閱[建立使用加速網路的 Windows 虛擬機器](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-powershell)。
+> 若要了解如何部署使用加速網路的 Windows VM，請參閱[建立使用加速網路的 Windows 虛擬機器](../../../virtual-network/create-vm-accelerated-networking-powershell.md)。
 >
 > ![Linux][Logo_Linux] Linux
 >
-> 如需 Linux 散發套件的詳細資訊，請參閱[建立使用加速網路的 Linux 虛擬機器](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli)。
+> 如需 Linux 散發套件的詳細資訊，請參閱[建立使用加速網路的 Linux 虛擬機器](../../../virtual-network/create-vm-accelerated-networking-cli.md)。
 >
 >
 
@@ -372,4 +373,3 @@ DBMS VM 與 SAP 應用程式層之間的流量一律透過負載平衡器路由�
 - [Azure 上的 SAP HANA 作業指南](hana-vm-operations.md)
 - [Azure 虛擬機器的 SAP Hana 高可用性](sap-hana-availability-overview.md)
 - [Azure 虛擬機器上的 SAP HANA 備份指南](sap-hana-backup-guide.md)
-

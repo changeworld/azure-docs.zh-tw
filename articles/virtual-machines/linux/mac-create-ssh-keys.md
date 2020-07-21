@@ -7,11 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 12/06/2019
 ms.author: cynthn
-ms.openlocfilehash: 0c57e370cf2f43fc5636cc6c70d2a9bdce4a1923
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: df02378e638e9883d802318eba86dbfb066cd6cb
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84141733"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527283"
 ---
 # <a name="quick-steps-create-and-use-an-ssh-public-private-key-pair-for-linux-vms-in-azure"></a>快速步驟：在 Azure 中建立和使用 Linux VM 的 SSH 公開和私密金鑰組
 
@@ -95,4 +96,4 @@ ssh azureuser@myvm.westus.cloudapp.azure.com
 
 * 如需有關使用 SSH 金鑰組的詳細資訊，請參閱[建立及管理 SSH 金鑰組的詳細步驟](create-ssh-keys-detailed.md)。
 
-* 如果您無法使用 SSH 連線到 Azure VM，請參閱[針對 SSH 連線至 Azure Linux VM 進行疑難排解](troubleshoot-ssh-connection.md)。
+* 如果您無法使用 SSH 連線到 Azure VM，請參閱[針對 SSH 連線至 Azure Linux VM 進行疑難排解](../troubleshooting/troubleshoot-ssh-connection.md)。

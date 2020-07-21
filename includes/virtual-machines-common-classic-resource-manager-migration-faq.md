@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/06/2020
 ms.author: tagore
 ms.custom: include file
-ms.openlocfilehash: fa97935c10b2a5df70c9babf031a889a9c1e9f34
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: d05386f1dfbab28d5fe42d02b8e9be0f257afafd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83837939"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527198"
 ---
 ## <a name="what-is-the-time-required-for-migration"></a>移轉需要多久時間？
 
@@ -29,7 +29,7 @@ ms.locfileid: "83837939"
 
 ## <a name="why-am-i-getting-an-error-stating-newclassicvmcreationnotallowedforsubscription"></a>為什麼我會收到 "NewClassicVMCreationNotAllowedForSubscription" 的錯誤？
 
-在淘汰過程中，IaaS VM (傳統) 不再提供給新客戶。 我們將您視為新客戶，因此未授權您的作業。 強烈建議[使用 ARM 來執行 Azure 虛擬機器](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-powershell)。 如果您無法使用 ARM 執行 Azure VM，請連絡支援人員將您列入訂用帳戶允許清單。
+在淘汰過程中，IaaS VM (傳統) 不再提供給新客戶。 我們將您視為新客戶，因此未授權您的作業。 強烈建議[使用 ARM 來執行 Azure 虛擬機器](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-powershell)。 如果您無法使用 ARM 的 Azure Vm，請洽詢支援人員，將您的訂用帳戶新增至允許清單。
 
 ## <a name="does-this-migration-plan-affect-any-of-my-existing-services-or-applications-that-run-on-azure-virtual-machines"></a>此移轉計劃是否會影響任何在 Azure 虛擬機器上執行的現有服務或應用程式？ 
 

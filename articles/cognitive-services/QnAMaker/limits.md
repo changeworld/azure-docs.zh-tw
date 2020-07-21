@@ -3,12 +3,12 @@ title: 限制和界限 - QnA Maker
 description: QnA Maker 知識庫和服務的某些部分有中繼資料的限制。 請務必將您的知識庫保持在這些限制範圍內，以便進行測試及發佈。
 ms.topic: reference
 ms.date: 02/14/2020
-ms.openlocfilehash: 6a600bcb25bc524cda38d1e35a777d23d47b15c9
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: cce95574c8ffc245818b61e9843c5f7984de972f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855557"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524432"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>QnA Maker 知識庫的限制和界限
 
@@ -79,7 +79,8 @@ ms.locfileid: "85855557"
 知識庫內容的整體限制：
 * 解答文字的長度：25,000
 * 問題文字的長度：1,000
-* 中繼資料索引鍵/值文字的長度：100
+* 中繼資料索引鍵文字的長度：100
+* 中繼資料值文字的長度：500
 * 中繼資料名稱的支援字元：字母、數位和`_`
 * 中繼資料值的支援字元：除了 `:` 和以外`|`
 * 檔案名稱的長度：200

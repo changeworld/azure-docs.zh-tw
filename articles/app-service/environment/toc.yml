@@ -46,6 +46,8 @@
       href: forced-tunnel-support.md
     - name: 防火牆整合
       href: firewall-integration.md
+    - name: 區域備援
+      href: zone-redundancy.md
 - name: 參考
   items:
     - name: 管理位址
@@ -80,10 +82,10 @@
   items:
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/roadmap/'
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/app-service/'
     - name: 配額資訊
-      href: '../../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits'
+      href: ../../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits
     - name: 服務更新
       href: 'https://azure.microsoft.com/updates/?product=app-service'
     - name: 最佳作法

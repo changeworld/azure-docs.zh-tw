@@ -8,11 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 3262841efb9109b1de24fe501ea0a7bea0dd612d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e661485e58c7e00c4eee41d808f727153a7761c9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77025124"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525036"
 ---
 # <a name="back-up-workload-vms-on-cloudsimple-private-cloud-using-veeam-br"></a>使用 Veeam B&R 來備份 CloudSimple 私人雲端上的工作負載 Vm
 
@@ -135,7 +136,7 @@ Veeam 解決方案會要求您執行下列動作：
 
 下表提供埠清單。
 
-| 圖示 | 描述 | 圖示 | Description |
+| 圖示 | 描述 | 圖示 | 描述 |
 | ------------ | ------------- | ------------ | ------------- |
 | 備份伺服器  | vCenter  | HTTPS/TCP  | 443 |
 | 備份伺服器 <br> *部署 Veeam 備份 & 複寫元件所需* | 備份 Proxy  | TCP/UDP  | 135、137到139和445 |
@@ -194,7 +195,7 @@ Veeam 解決方案會要求您執行下列動作：
 ### <a name="configure-azure-blob-storage-for-long-term-data-retention"></a>針對長期資料保留設定 Azure blob 儲存體
 
 1. 建立標準類型和 blob 容器的一般用途儲存體帳戶（GPv2），如 Microsoft video[消費者入門 with Azure 儲存體](https://azure.microsoft.com/resources/videos/get-started-with-azure-storage)所述。
-2. 如[建立容器](https://docs.microsoft.com/rest/api/storageservices/create-container)參考中所述，建立 Azure 儲存體容器。
+2. 如[建立容器](/rest/api/storageservices/create-container)參考中所述，建立 Azure 儲存體容器。
 2. `azcopy`從 Microsoft 下載適用于 Linux 的命令列公用程式。 您可以在 CentOS 7.5 中的 bash shell 中使用下列命令。
 
     ```
@@ -205,7 +206,7 @@ Veeam 解決方案會要求您執行下列動作：
     sudo yum -y install icu
     ```
 
-3. 您可以使用命令，將 `azcopy` 備份檔案複製到 blob 容器，或從該檔案複製。  如需詳細的命令，請參閱[使用 AzCopy On Linux 傳送資料](../storage/common/storage-use-azcopy-linux.md)。
+3. 您可以使用命令，將 `azcopy` 備份檔案複製到 blob 容器，或從該檔案複製。  如需詳細的命令，請參閱[使用 AzCopy On Linux 傳送資料](../storage/common/storage-use-azcopy-v10.md)。
 
 ### <a name="vcenter-console-of-private-cloud-install-veeam-br"></a>私人雲端的 vCenter 主控台：安裝 Veeam B&R
 
@@ -290,8 +291,8 @@ Veeam 解決方案會要求您執行下列動作：
 * [在 Azure 入口網站中建立 Linux 虛擬機器](../virtual-machines/linux/quick-create-portal.md)
 * [如何將受控資料磁碟連結至 Azure 入口網站中的 Windows VM](../virtual-machines/windows/attach-managed-disk-portal.md)
 * [使用 Azure 儲存體的消費者入門-影片](https://azure.microsoft.com/resources/videos/get-started-with-azure-storage)
-* [建立容器](https://docs.microsoft.com/rest/api/storageservices/create-container)
-* [使用 AzCopy on Linux 傳送資料](../storage/common/storage-use-azcopy-linux.md)
+* [建立容器](/rest/api/storageservices/create-container)
+* [使用 AzCopy on Linux 傳送資料](../storage/common/storage-use-azcopy-v10.md)
 
 ### <a name="vmware-references"></a>VMware 參考
 

@@ -10,11 +10,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: delhan
-ms.openlocfilehash: fe2427d008b49daa6222ca981994f0dc2fbea355
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 092d3893c3cc5473debf8f7d51f393751cfd82bf
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79476581"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526813"
 ---
 # <a name="how-to-use-boot-diagnostics-to-troubleshoot-virtual-machines-in-azure"></a>如何使用開機診斷對 Azure 中的虛擬機器進行疑難排解
 
@@ -95,5 +96,4 @@ ms.locfileid: "79476581"
 
 ### <a name="enable-boot-diagnostics-using-the-azure-cli"></a>使用 Azure CLI 啟用開機診斷
 
-您可以使用 Azure CLI 在現有的 Azure 虛擬機器上啟用開機診斷。 如需詳細資訊，請參閱 [az vm boot-diagnostics](
-https://docs.microsoft.com/cli/azure/vm/boot-diagnostics?view=azure-cli-latest)。
+您可以使用 Azure CLI 在現有的 Azure 虛擬機器上啟用開機診斷。 如需詳細資訊，請參閱 [az vm boot-diagnostics](/cli/azure/vm/boot-diagnostics?view=azure-cli-latest)。

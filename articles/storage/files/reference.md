@@ -1,30 +1,30 @@
 ---
-title: Azure 檔案共用儲存體參考
+title: Azure 檔案儲存體參考
 description: 尋找 Azure 儲存體 API 參考、讀我檔案和用戶端程式庫套件。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 06/02/2020
+ms.date: 07/14/2020
 ms.service: storage
 ms.topic: conceptual
 ms.reviewer: ripohane
-ms.openlocfilehash: ffe3777882cd857ffb776bbadb41da0fb88d994e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c5799b7ec9f6ecce1b9203345446b2d3240beb80
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84976518"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527841"
 ---
-# <a name="azure-file-shares-storage-reference"></a>Azure 檔案共用儲存體參考
+# <a name="azure-files-reference"></a>Azure 檔案儲存體參考
 
-尋找 Azure 檔案共用儲存體 API 參考、程式庫套件、讀我檔案和快速入門文章。
+尋找 Azure 檔案儲存體的 API 參考、程式庫套件、讀我檔案和快速入門文章。
 
 ## <a name="net-client-libraries"></a>.NET 用戶端程式庫
 
-下表列出 Azure 檔案共用 .NET Api 的參考和範例檔。
+下表列出 Azure 檔案儲存體 .NET Api 的參考和範例檔。
 
 |  版本  | 參考文件 | 套件 | 快速入門 |
 | :-------: | ----------------------- | ------- | ---------- |
-| 12.x | [適用于 .NET 的 Azure 檔案共用用戶端程式庫 v12](/dotnet/api/overview/azure/storage.files.shares-readme) | [套件 (NuGet)](https://www.nuget.org/packages/Azure.Storage.Files/) | &nbsp; |
+| 12.x | [適用于 .NET 的 Azure 檔案儲存體用戶端程式庫 v12](/dotnet/api/overview/azure/storage.files.shares-readme) | [套件 (NuGet)](https://www.nuget.org/packages/Azure.Storage.Files/) | &nbsp; |
 | 11. x | [Microsoft. Azure. File 命名空間](/dotnet/api/microsoft.azure.storage.file) | [套件 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.File/) | [使用 .NET 開發 Azure 檔案服務](/azure/storage/files/storage-dotnet-how-to-use-files) |
 
 ### <a name="storage-management"></a>存放管理
@@ -45,11 +45,11 @@ ms.locfileid: "84976518"
 
 ## <a name="java-client-libraries"></a>JAVA 用戶端程式庫
 
-下表列出 Azure 檔案共用 JAVA Api 的參考和範例檔。
+下表列出 Azure 檔案儲存體 JAVA Api 的參考和範例檔。
 
 |  版本  | 參考文件 | 套件 | 快速入門 |
 | :-------: | ----------------------- | ------- | ---------- |
-| 12.x | [適用于 JAVA 的 Azure 檔案共用用戶端程式庫](/java/api/overview/azure/storage-file-share-readme) | [封裝（Maven）](https://mvnrepository.com/artifact/com.azure/azure-storage-file-share) | &nbsp; |
+| 12.x | [適用于 JAVA 的 Azure 檔案儲存體用戶端程式庫](/java/api/overview/azure/storage-file-share-readme) | [封裝（Maven）](https://mvnrepository.com/artifact/com.azure/azure-storage-file-share) | &nbsp; |
 | 推進 | [.com. azure. 儲存檔案](/java/api/com.microsoft.azure.storage.file) | [封裝（Maven）](https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage) | [使用 Java 開發 Azure 檔案服務](/azure/storage/files/storage-java-how-to-use-file-storage) |
 
 ### <a name="storage-management"></a>存放管理
@@ -62,7 +62,7 @@ ms.locfileid: "84976518"
 
 ## <a name="python-client-libraries"></a>Python 用戶端程式庫
 
-下表列出 Azure 檔案共用 Python Api 的參考和範例檔。
+下表列出 Azure 檔案儲存體 Python Api 的參考和範例檔。
 
 |  版本  | 參考文件 | 套件 | 快速入門 |
 | :-------: | ----------------------- | ------- | ---------- |
@@ -71,18 +71,18 @@ ms.locfileid: "84976518"
 
 ## <a name="javascript-client-libraries"></a>JavaScript 用戶端程式庫
 
-下表列出 Azure 檔案共用 JavaScript Api 的參考和範例檔。
+下表列出 Azure 檔案儲存體 JavaScript Api 的參考和範例檔。
 
 |  版本  | 參考文件 | 套件 | 快速入門 |
 | :-------: | ----------------------- | ------- | ---------- |
-| 12.x | [適用于 JavaScript 的 Azure 儲存體檔案共用用戶端程式庫](/javascript/api/overview/azure/storage-file-share-readme) | [封裝（npm）](https://www.npmjs.com/package/@azure/storage-file-share) | [範例](/javascript/api/overview/azure/storage-file-share-readme#examples) |
+| 12.x | [適用于 JavaScript 的 Azure 檔案儲存體用戶端程式庫](/javascript/api/overview/azure/storage-file-share-readme) | [封裝（npm）](https://www.npmjs.com/package/@azure/storage-file-share) | [範例](/javascript/api/overview/azure/storage-file-share-readme#examples) |
 | 10.x | [@azure/storage-file](/javascript/api/@azure/storage-file) | [封裝（npm）](https://www.npmjs.com/package/@azure/storage-file) | &nbsp; |
 
 ## <a name="rest-apis"></a>REST API
 
-下表列出 Azure 檔案共用 REST Api 的參考和範例檔。
+下表列出 Azure 檔案儲存體 REST Api 的參考和範例檔。
 
-| 參考文件 | 總覽 |
+| 參考文件 | 概觀 |
 | ----------------------- | -------- |
 | [檔案服務 REST API](/rest/api/storageservices/file-service-rest-api) | [檔案服務概念](/rest/api/storageservices/file-service-concepts) |
 

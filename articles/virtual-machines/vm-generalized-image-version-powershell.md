@@ -9,18 +9,18 @@ ms.topic: how-to
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: efce2eb33bb95a3dc13cec4cbe0ea89d1a2c3452
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 68a0db9113c705134084fb5291eb267b7a31fba0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82796742"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525801"
 ---
 # <a name="create-a-vm-using-a-generalized-image"></a>使用一般化映射建立 VM 
 
 從儲存在共用映射資源庫中的一般化映射建立 VM。 如果想要使用特製化映射建立 VM，請參閱[從特製化映射建立 vm](vm-specialized-image-version-powershell.md)。
 
-一旦有了一般化映射版本，您就可以建立一或多個新的 Vm。 使用 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) Cmdlet。 
+一旦有了一般化映射版本，您就可以建立一或多個新的 Vm。 使用 [New-AzVM](/powershell/module/az.compute/new-azvm) Cmdlet。 
 
 在此範例中，我們會使用映射定義識別碼，以確保您的新 VM 會使用最新版本的映射。 您也可以使用的映射版本識別碼，來使用特定版本 `Set-AzVMSourceImage -Id` 。 例如，若要使用 image *1.0.0*版的型別： `Set-AzVMSourceImage -Id "/subscriptions/<subscription ID where the gallery is located>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition/versions/1.0.0"` 。 
 

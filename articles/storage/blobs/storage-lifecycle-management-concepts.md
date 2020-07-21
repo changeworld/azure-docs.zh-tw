@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.openlocfilehash: 789d70f77558bbade854ba31fd10ecd2b8e7b853
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6285c25c44b7b8c5b2c1d9c148424fc36912b57c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85194700"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86528689"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>管理 Azure Blob 儲存體生命週期
 
@@ -36,7 +36,7 @@ ms.locfileid: "85194700"
 
 ## <a name="pricing"></a>定價
 
-生命週期管理功能是免費的。 客戶需針對 [List Blobs ](https://docs.microsoft.com/rest/api/storageservices/list-blobs) (列出 Blob) 和[Set Blob Tier](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) (設定 Blob 層) API 呼叫的一般作業成本支付費用。 刪除作業是免費的。 如需定價的詳細資訊，請參閱[區塊 Blob 價格](https://azure.microsoft.com/pricing/details/storage/blobs/)。
+生命週期管理功能是免費的。 客戶需支付[設定 Blob 層](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier)API 呼叫的一般作業成本。 刪除作業是免費的。 如需定價的詳細資訊，請參閱[區塊 Blob 價格](https://azure.microsoft.com/pricing/details/storage/blobs/)。
 
 ## <a name="regional-availability"></a>區域可用性
 
@@ -49,7 +49,7 @@ ms.locfileid: "85194700"
 * [Azure 入口網站](https://portal.azure.com)
 * [Azure PowerShell](https://github.com/Azure/azure-powershell/releases)
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)
-* [REST APIs](https://docs.microsoft.com/rest/api/storagerp/managementpolicies)
+* [REST API](https://docs.microsoft.com/rest/api/storagerp/managementpolicies)
 
 原則可以完整讀取或寫入。 不支援部分更新。 
 
@@ -226,16 +226,16 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 
 原則是一組規則：
 
-| 參數名稱 | 參數類型 | 備註 |
+| 參數名稱 | 參數類型 | 備忘稿 |
 |----------------|----------------|-------|
 | `rules`        | 規則物件的陣列 | 原則中至少需要一個規則。 您最多可以在原則中定義100個規則。|
 
 原則中的每個規則都有數個參數：
 
-| 參數名稱 | 參數類型 | 備註 | 必要 |
+| 參數名稱 | 參數類型 | 備忘稿 | 必要 |
 |----------------|----------------|-------|----------|
-| `name`         | String |規則名稱最多可包含256個英數位元。 規則名稱會區分大小寫。  它在原則內必須是唯一的。 | True |
-| `enabled`      | Boolean | 選擇性布林值，允許暫時停用規則。 如果未設定，預設值為 true。 | False | 
+| `name`         | 字串 |規則名稱最多可包含256個英數位元。 規則名稱會區分大小寫。  它在原則內必須是唯一的。 | True |
+| `enabled`      | 布林值 | 選擇性布林值，允許暫時停用規則。 如果未設定，預設值為 true。 | False | 
 | `type`         | 列舉值 | 目前的有效類型為 `Lifecycle` 。 | True |
 | `definition`   | 定義生命週期規則的物件 | 每個定義是由篩選集和動作集組成。 | True |
 
@@ -289,11 +289,11 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 
 篩選器包括：
 
-| 篩選名稱 | 篩選類型 | 備註 | 必要 |
+| 篩選名稱 | 篩選類型 | 備忘稿 | 必要 |
 |-------------|-------------|-------|-------------|
-| blobTypes   | 預先定義的列舉值陣列。 | 目前的版本支援 `blockBlob` 。 | Yes |
-| prefixMatch | 要比對之前置詞的字串陣列。 每個規則最多可以定義10個首碼。 前置詞字串必須以容器名稱開頭。 例如，如果您想要比對底下的所有 blob `https://myaccount.blob.core.windows.net/container1/foo/...` ，則 prefixMatch 為 `container1/foo` 。 | 如果您未定義 prefixMatch，此規則會套用至儲存體帳戶內的所有 blob。  | No |
-| blobIndexMatch | 包含要比對之 Blob 索引標記索引鍵和值條件的字典值陣列。 每個規則最多可以定義10個 Blob 索引標記條件。 例如，如果您想要將規則的所有 blob 與 `Project = Contoso` 下的 `https://myaccount.blob.core.windows.net/` 進行比對，則 blobIndexMatch 為 `{"name": "Project","op": "==","value": "Contoso"}` 。 | 如果您未定義 blobIndexMatch，此規則會套用至儲存體帳戶內的所有 blob。 | No |
+| blobTypes   | 預先定義的列舉值陣列。 | 目前的版本支援 `blockBlob` 。 | 是 |
+| prefixMatch | 要比對之前置詞的字串陣列。 每個規則最多可以定義10個首碼。 前置詞字串必須以容器名稱開頭。 例如，如果您想要比對底下的所有 blob `https://myaccount.blob.core.windows.net/container1/foo/...` ，則 prefixMatch 為 `container1/foo` 。 | 如果您未定義 prefixMatch，此規則會套用至儲存體帳戶內的所有 blob。  | 否 |
+| blobIndexMatch | 包含要比對之 Blob 索引標記索引鍵和值條件的字典值陣列。 每個規則最多可以定義10個 Blob 索引標記條件。 例如，如果您想要將規則的所有 blob 與 `Project = Contoso` 下的 `https://myaccount.blob.core.windows.net/` 進行比對，則 blobIndexMatch 為 `{"name": "Project","op": "==","value": "Contoso"}` 。 | 如果您未定義 blobIndexMatch，此規則會套用至儲存體帳戶內的所有 blob。 | 否 |
 
 > [!NOTE]
 > Blob 索引處於公開預覽狀態，並適用於**法國中部**和**法國南部**區域。 若要深入了解這項功能以及已知的問題和限制，請參閱[使用 Blob 索引 (預覽) 來管理和尋找 Azure Blob 儲存體上的資料](storage-manage-find-blobs.md)。
@@ -304,7 +304,7 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 
 生命週期管理支援分層及刪除 blob 和刪除 blob 快照集。 在 Blob 或 Blob 快照集上每項規則至少需定義一個動作。
 
-| 動作        | 基底 Blob                                   | 快照式      |
+| 動作        | 基底 Blob                                   | 快照集      |
 |---------------|---------------------------------------------|---------------|
 | tierToCool    | 支援目前在經常性儲存層的 Blob         | 不支援 |
 | tierToArchive | 支援目前在經常儲存性或非經常性儲存層的 Blob | 不支援 |
@@ -315,7 +315,7 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 
 執行條件是以年齡為基礎。 基底 Blob 使用上次修改時間來追蹤存在時間，而 Blob 快照集使用快照集建立時間來追蹤存在時間。
 
-| 動作執行條件             | 條件值                          | Description                             |
+| 動作執行條件             | 條件值                          | 描述                             |
 |----------------------------------|------------------------------------------|-----------------------------------------|
 | daysAfterModificationGreaterThan | 表示存在時間的整數值 (以天數為單位) | 基底 blob 動作的條件     |
 | daysAfterCreationGreaterThan     | 表示存在時間的整數值 (以天數為單位) | Blob 快照集動作的條件 |

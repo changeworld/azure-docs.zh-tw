@@ -2,24 +2,28 @@
 title: 設定私人連結
 description: 在容器登錄上設定私用端點，並透過本機虛擬網路中的私人連結啟用存取。 私用連結存取是高階服務層的一項功能。
 ms.topic: article
-ms.date: 05/19/2020
-ms.openlocfilehash: f25f7b94a3008b829340cdaaed247d7ab1203c19
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 06/26/2020
+ms.openlocfilehash: 713b19e4a60e5dcad6cfd92d65f97af2e921c0e9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84509333"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523837"
 ---
-# <a name="configure-azure-private-link-for-an-azure-container-registry"></a>設定 Azure Container Registry 的 Azure Private Link 
+# <a name="connect-privately-to-an-azure-container-registry-using-azure-private-link"></a>使用 Azure 私人連結私下連接到 Azure container registry
 
-使用 [Azure Private Link](../private-link/private-link-overview.md)，將虛擬網路私人 IP 位址指派給登錄端點，以限制登錄的存取權。 虛擬網路上的用戶端與登錄之間的網路流量會流經虛擬網路和 Microsoft 骨幹網路上的私人連結，以排除公開網際網路的風險。
 
-您可以[設定私人端點的 DNS 設定](../private-link/private-endpoint-overview.md#dns-configuration)，讓設定解析為登錄的已配置私人 IP 位址。 透過 DNS 組態，網路中的用戶端和服務可繼續以登錄的完整網域名稱 (例如 myregistry.azurecr.io) 來存取登錄。
+將虛擬網路私人 IP 位址指派給登錄端點，並使用[Azure 私用連結](../private-link/private-link-overview.md)，以限制登錄的存取權。 虛擬網路上的用戶端與登錄的私人端點之間的網路流量會流經虛擬網路，並在 Microsoft 骨幹網路上進行私人連結，以消除公開網際網路的風險。 私用連結也可讓您透過[Azure ExpressRoute](../expressroute/expressroute-introduction.MD)私用對等互連或[VPN 閘道](../vpn-gateway/vpn-gateway-about-vpngateways.md)，從內部部署啟用私用登錄存取。
+
+您可以設定登錄私人端點的[DNS 設定](../private-link/private-endpoint-overview.md#dns-configuration)，讓設定解析為登錄的已配置私人 IP 位址。 透過 DNS 組態，網路中的用戶端和服務可繼續以登錄的完整網域名稱 (例如 myregistry.azurecr.io) 來存取登錄。 
 
 **進階**容器登錄服務層級中提供這項功能。 如需登錄服務層級和限制的相關資訊，請參閱 [Azure Container Registry 層級](container-registry-skus.md)。
+
 
 ## <a name="things-to-know"></a>須知事項
 
 * 目前，使用 Azure 資訊安全中心的映像掃描在以私人端點設定的登錄中無法使用。
+* 目前，最多可以為登錄設定10個私人端點。
 
 ## <a name="prerequisites"></a>Prerequisites
 

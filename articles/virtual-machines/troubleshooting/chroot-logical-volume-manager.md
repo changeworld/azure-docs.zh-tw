@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/24/2019
 ms.author: vilibert
-ms.openlocfilehash: 20d710f717a9dff26f46ac7a201a9b694f3fbe84
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c0041a835c02263f23c5cdc6f839756edfb070c1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74684137"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526872"
 ---
 # <a name="troubleshooting-a-linux-vm-when-there-is-no-access-to-the-azure-serial-console-and-the-disk-layout-is-using-lvm-logical-volume-manager"></a>當沒有 Azure 序列主控台的存取權，且磁片配置使用 LVM （邏輯磁片區管理員）時，針對 Linux VM 進行疑難排解
 
@@ -28,7 +29,7 @@ ms.locfileid: "74684137"
 
 製作受影響 VM 的快照集。 
 
-快照集會附加至**修復**VM。 依照[這裡](https://docs.microsoft.com/azure/virtual-machines/linux/snapshot-copy-managed-disk#use-azure-portal)的指示，瞭解如何製作**快照**集。
+快照集會附加至**修復**VM。 依照[這裡](../linux/snapshot-copy-managed-disk.md#use-azure-portal)的指示，瞭解如何製作**快照**集。
 
 ## <a name="create-a-rescue-vm"></a>建立修復 VM
 通常建議使用相同或類似作業系統版本的修復 VM。 使用受影響 VM 的相同**區域**和**資源群組**
@@ -208,7 +209,7 @@ grub2-mkconfig -o /boot/grub2/grub.cfg
 
 
 ### <a name="example-3---enable-serial-console"></a>範例 3-啟用序列主控台
-如果無法存取 Azure 序列主控台，請確認 Linux VM 的 GRUB 設定參數，並加以修正。 您可以[在本檔中](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-grub-proactive-configuration)找到詳細資訊
+如果無法存取 Azure 序列主控台，請確認 Linux VM 的 GRUB 設定參數，並加以修正。 您可以[在本檔中](./serial-console-grub-proactive-configuration.md)找到詳細資訊
 
 ### <a name="example-4---kernel-loading-with-problematic-lvm-swap-volume"></a>範例 4-具有有問題的 LVM 交換磁片區的核心載入
 
@@ -273,4 +274,4 @@ umount /rescue
 
  [Azure 序列主控台]( https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux)
 
-[單一使用者模式](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-grub-single-user-mode)
+[單一使用者模式](./serial-console-grub-single-user-mode.md)

@@ -2,16 +2,17 @@
 title: 遠端使用 P2S： Azure VPN 閘道
 description: 此頁面說明如何利用 VPN 閘道，讓您能夠從遠端工作，因為 COVID-19 流感。
 services: vpn-gateway
-author: anzaman
+author: kumudD
 ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: alzam
-ms.openlocfilehash: 2d07a13c654f30e48c37d2e8d3e801166e26f4f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 302706b67900bd0dd82aabfa750bba48918b134a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80886580"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525359"
 ---
 # <a name="remote-work-using-azure-vpn-gateway-point-to-site"></a>使用 Azure VPN 閘道點對站進行遠端工作
 

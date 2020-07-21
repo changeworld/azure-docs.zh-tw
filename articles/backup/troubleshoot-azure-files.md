@@ -3,12 +3,12 @@ title: Azure 檔案共用備份的移難排解
 description: 本文說明如何排解您在保護 Azure 檔案共用時所發生的問題。
 ms.date: 02/10/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: d09c89433be17e16ad768e2d28305819146e6b5e
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 7b007a9ef893bb772929584eb3137c7a5200d756
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86079882"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524483"
 ---
 # <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>針對備份 Azure 檔案共用時的問題進行疑難排解
 
@@ -57,6 +57,9 @@ ms.locfileid: "86079882"
 >復原服務保存庫只有在取消註冊所有已登錄至保存庫的儲存體帳戶之後，才能予以刪除。
 
 ## <a name="common-backup-or-restore-errors"></a>一般備份或還原錯誤
+
+>[!NOTE]
+>請參閱[這份檔](./backup-rbac-rs-vault.md#minimum-role-requirements-for-the-azure-file-share-backup)，以確保您有足夠的許可權可以執行備份或還原作業。
 
 ### <a name="filesharenotfound--operation-failed-as-the-file-share-is-not-found"></a>FileShareNotFound-操作失敗，因為找不到檔案共用
 
@@ -313,9 +316,9 @@ ms.locfileid: "86079882"
 
 錯誤訊息：備份失敗，因為相關聯的 Azure 檔案共用已永久刪除
 
-檢查是否已永久刪除備份的檔案共用。 如果是，請停止檔案共用的備份，以避免重複的備份失敗。 若要瞭解如何停止保護，請參閱[停止保護 Azure 檔案共用](https://docs.microsoft.com/azure/backup/manage-afs-backup#stop-protection-on-a-file-share)
+檢查是否已永久刪除備份的檔案共用。 如果是，請停止檔案共用的備份，以避免重複的備份失敗。 若要瞭解如何停止保護，請參閱[停止保護 Azure 檔案共用](./manage-afs-backup.md#stop-protection-on-a-file-share)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 如需備份 Azure 檔案共用的更多資訊，請參閱︰
 

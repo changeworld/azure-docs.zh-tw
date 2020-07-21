@@ -7,11 +7,12 @@ ms.topic: how-to
 ms.date: 08/15/2017
 ms.author: luywang
 ms.subservice: disks
-ms.openlocfilehash: ee6800d2d0f589c43c96b240a74a86db488e0b46
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 51fa0c063de106f627fc097910514e7c5416ee51
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83827789"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525954"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>使用 Azure Site Recovery 移轉到進階儲存體
 
@@ -23,7 +24,7 @@ Site Recovery 可提供測試用容錯移轉，既能支援災害復原演練，
 
 我們的建議是使用 Site Recovery 來移轉到進階儲存體，因為此選項的停機時間最短， 也不需要手動執行複製磁碟和建立新 VM 的作業。 在容錯移轉期間，Site Recovery 會有系統地複製您的磁碟並建立新的 VM。 
 
-Site Recovery 支援數種類型的容錯移轉，且停機時間最短或甚至不用停機。 若要規劃停機時間並預估資料損失情形，請參閱 Site Recovery 中的[容錯移轉的類型](../../site-recovery/site-recovery-failover.md)。 如果您[準備在容錯移轉後連接到 Azure VM](../../site-recovery/vmware-walkthrough-overview.md)，您應該可以在容錯移轉後使用 RDP 連接到 Azure VM。
+Site Recovery 支援數種類型的容錯移轉，且停機時間最短或甚至不用停機。 若要規劃停機時間並預估資料損失情形，請參閱 Site Recovery 中的[容錯移轉的類型](../../site-recovery/site-recovery-failover.md)。 如果您[準備在容錯移轉後連接到 Azure VM](../../site-recovery/vmware-azure-tutorial.md)，您應該可以在容錯移轉後使用 RDP 連接到 Azure VM。
 
 ![災害復原圖表][1]
 
@@ -31,7 +32,7 @@ Site Recovery 支援數種類型的容錯移轉，且停機時間最短或甚至
 
 以下 Site Recovery 元件與此移轉案例有關：
 
-* **組態伺服器**是協調通訊以及管理資料複寫與復原程序的 Azure VM。 在此 VM 上，您會執行單一安裝程式檔案，以安裝組態伺服器和其他元件 (稱為處理序伺服器) 來做為複寫閘道。 請參閱[組態伺服器必要條件](../../site-recovery/vmware-walkthrough-overview.md)。 您只需設定組態伺服器一次，即可用於所有移轉到相同區域的作業。
+* **組態伺服器**是協調通訊以及管理資料複寫與復原程序的 Azure VM。 在此 VM 上，您會執行單一安裝程式檔案，以安裝組態伺服器和其他元件 (稱為處理序伺服器) 來做為複寫閘道。 請參閱[組態伺服器必要條件](../../site-recovery/vmware-azure-tutorial.md)。 您只需設定組態伺服器一次，即可用於所有移轉到相同區域的作業。
 
 * **處理序伺服器**是複寫閘道器，能夠： 
 
@@ -41,7 +42,7 @@ Site Recovery 支援數種類型的容錯移轉，且停機時間最短或甚至
 
   它還會處理對來源 VM 進行的行動服務推送安裝作業，並執行來源 VM 的自動探索。 組態伺服器上會安裝預設的處理序伺服器。 您可以部署額外的獨立處理序伺服器來調整您的部署。 請參閱[處理序伺服器部署的最佳作法](https://azure.microsoft.com/blog/best-practices-for-process-server-deployment-when-protecting-vmware-and-physical-workloads-with-azure-site-recovery/)和[部署額外的處理序伺服器](../../site-recovery/site-recovery-plan-capacity-vmware.md#deploy-additional-process-servers)。 您只需設定處理序伺服器一次，即可用於所有移轉到相同區域的作業。
 
-* **行動服務**是部署在每個您想要複寫之標準 VM 上的元件。 它會擷取在標準 VM 上寫入的資料，並將它們轉送到處理序伺服器。 請參閱[複寫之機器的必要條件](../../site-recovery/vmware-walkthrough-overview.md)。
+* **行動服務**是部署在每個您想要複寫之標準 VM 上的元件。 它會擷取在標準 VM 上寫入的資料，並將它們轉送到處理序伺服器。 請參閱[複寫之機器的必要條件](../../site-recovery/vmware-azure-tutorial.md)。
 
 此圖顯示這些元件如何互動：
 
@@ -50,7 +51,7 @@ Site Recovery 支援數種類型的容錯移轉，且停機時間最短或甚至
 > [!NOTE]
 > Site Recovery 不支援儲存空間磁碟的移轉。
 
-如需適用於其他案例的其他元件，請參閱[案例架構](../../site-recovery/vmware-walkthrough-overview.md)。
+如需適用於其他案例的其他元件，請參閱[案例架構](../../site-recovery/vmware-azure-tutorial.md)。
 
 ## <a name="azure-essentials"></a>Azure 基本元件
 
@@ -68,14 +69,14 @@ Site Recovery 支援數種類型的容錯移轉，且停機時間最短或甚至
 
 ## <a name="setup-and-migration-steps"></a>設定和移轉步驟
 
-您可以使用 Site Recovery 在區域間或相同區域內移轉 Azure IaaS VM。 下列指示專用於[將 VMware VM 或實體伺服器複寫至 Azure](../../site-recovery/vmware-walkthrough-overview.md) 一文中的移轉案例。 除了這篇文章中的指示外，請遵循連結以取得詳細步驟。
+您可以使用 Site Recovery 在區域間或相同區域內移轉 Azure IaaS VM。 下列指示專用於[將 VMware VM 或實體伺服器複寫至 Azure](../../site-recovery/vmware-azure-tutorial.md) 一文中的移轉案例。 除了這篇文章中的指示外，請遵循連結以取得詳細步驟。
 
 ### <a name="step-1-create-a-recovery-services-vault"></a>步驟 1:建立復原服務保存庫
 
 1. 開啟 [Azure 入口網站](https://portal.azure.com)。
 2. 選取 [建立資源] > [管理] > [備份與 Site Recovery] \(OMS\)。 或者，您也可以選取 [瀏覽] > [復原服務保存庫] > [加入]。
    >[!NOTE]
-   >備份和 Site Recovery 先前是 [OMS 套件](/azure/azure-monitor/terminology#april-2018---retirement-of-operations-management-suite-brand)的一部分。
+   >備份和 Site Recovery 先前是 [OMS 套件](../../azure-monitor/terminology.md#april-2018---retirement-of-operations-management-suite-brand)的一部分。
 1. 指定 VM 將複寫到的地區。 若要在相同區域中移轉，請選取來源 VM 和來源儲存體帳戶所在的區域。 
 
 ### <a name="step-2-choose-your-protection-goals"></a>步驟 2:選擇您的保護目標 
@@ -101,7 +102,7 @@ Site Recovery 支援數種類型的容錯移轉，且停機時間最短或甚至
 
    ![已選取組態伺服器的 [新增伺服器] 窗格][5]
 
-3. 在您用來作為組態伺服器的 VM 上，執行統一安裝以安裝組態伺服器和處理序伺服器。 您可以按照[螢幕擷取畫面逐步進行](../../site-recovery/vmware-walkthrough-overview.md)，以完成安裝。 您可以參考下列螢幕擷取畫面，來了解此移轉案例的指定步驟。
+3. 在您用來作為組態伺服器的 VM 上，執行統一安裝以安裝組態伺服器和處理序伺服器。 您可以按照[螢幕擷取畫面逐步進行](../../site-recovery/vmware-azure-tutorial.md)，以完成安裝。 您可以參考下列螢幕擷取畫面，來了解此移轉案例的指定步驟。
 
    1. 在 [開始之前] 選取 [安裝設定伺服器和處理序伺服器]。
 
@@ -135,7 +136,7 @@ Site Recovery 會檢查您是否有一或多個相容的 Azure 儲存體帳戶�
 
 ### <a name="step-5-set-up-replication-settings"></a>步驟 5：設定複寫設定
 
-若要確認組態伺服器已順利與您所建立的複寫原則相關聯，請遵循[設定複寫設定](../../site-recovery/vmware-walkthrough-overview.md)。
+若要確認組態伺服器已順利與您所建立的複寫原則相關聯，請遵循[設定複寫設定](../../site-recovery/vmware-azure-tutorial.md)。
 
 ### <a name="step-6-plan-capacity"></a>步驟 6：規劃容量
 
@@ -146,11 +147,11 @@ Site Recovery 會檢查您是否有一或多個相容的 Azure 儲存體帳戶�
 
 ### <a name="step-7-install-the-mobility-service-and-enable-replication"></a>步驟 7：安裝行動服務並啟用複寫
 
-1. 您可以選擇[推送安裝](../../site-recovery/vmware-walkthrough-overview.md)到來源 VM，或在來源 VM 上[手動安裝行動服務](../../site-recovery/site-recovery-vmware-to-azure-install-mob-svc.md)。 您可以在提供的連結中找到推送安裝的需求和手動安裝程式的路徑。 如果您要手動安裝，您可能需要使用內部 IP 位址來找到組態伺服器。
+1. 您可以選擇[推送安裝](../../site-recovery/vmware-azure-tutorial.md)到來源 VM，或在來源 VM 上[手動安裝行動服務](../../site-recovery/vmware-azure-install-mobility-service.md)。 您可以在提供的連結中找到推送安裝的需求和手動安裝程式的路徑。 如果您要手動安裝，您可能需要使用內部 IP 位址來找到組態伺服器。
 
    ![[組態伺服器詳細資料] 頁面][12]
 
-   容錯移轉的 VM 會有兩個暫存磁碟︰一個來自主要 VM，另一個則是在 VM 於復原區域中佈建期間所建立。 若要在複寫前排除暫存磁碟，請先安裝行動服務再啟用複寫。 若要深入了解如何排除暫存磁碟，請參閱[從複寫排除磁碟](../../site-recovery/vmware-walkthrough-overview.md)。
+   容錯移轉的 VM 會有兩個暫存磁碟︰一個來自主要 VM，另一個則是在 VM 於復原區域中佈建期間所建立。 若要在複寫前排除暫存磁碟，請先安裝行動服務再啟用複寫。 若要深入了解如何排除暫存磁碟，請參閱[從複寫排除磁碟](../../site-recovery/vmware-azure-tutorial.md)。
 
 2. 啟用複寫，如下所示︰
    1. 選取 [複寫應用程式] > [來源]。 第一次啟用複寫之後，請選取保存庫中的 [+複寫]，以對其他機器啟用複寫。
@@ -176,7 +177,7 @@ Site Recovery 會檢查您是否有一或多個相容的 Azure 儲存體帳戶�
 
 若要檢查複寫是否已完成，請選取 Site Recovery 執行個體，然後選取 [設定] > [複寫的項目]。 您將會看到複寫程序的狀態和百分比。 
 
-在初始複寫完成之後，請執行測試容錯移轉來驗證複寫策略。 如需測試容錯移轉的詳細步驟，請參閱[在 Site Recovery 中執行測試容錯移轉](../../site-recovery/vmware-walkthrough-overview.md)。 
+在初始複寫完成之後，請執行測試容錯移轉來驗證複寫策略。 如需測試容錯移轉的詳細步驟，請參閱[在 Site Recovery 中執行測試容錯移轉](../../site-recovery/vmware-azure-tutorial.md)。 
 
 > [!NOTE]
 > 執行任何容錯移轉前，請確定 VM 和複寫策略符合需求。 如需執行測試容錯移轉的詳細資訊，請參閱[在 Site Recovery 中測試容錯移轉到 Azure](../../site-recovery/site-recovery-test-failover-to-azure.md)。
@@ -194,17 +195,17 @@ Site Recovery 會建立類型與可支援進階儲存體之 VM 相同或類似�
 ## <a name="post-migration-steps"></a>移轉後步驟
 
 1. **在情況允許時將複寫的 VM 設定至可用性設定組**。 Site Recovery 不支援移轉 VM 以及可用性設定組。 根據複寫 VM 的部署，執行下列其中一項︰
-   * 對於透過傳統部署模型建立的 VM：在 Azure 入口網站中將 VM 新增至可用性設定組。 如需詳細步驟，請移至[將現有虛擬機器加入至可用性設定組](../linux/classic/configure-availability-classic.md)。
+   * 對於透過傳統部署模型建立的 VM：在 Azure 入口網站中將 VM 新增至可用性設定組。 如需詳細步驟，請移至[將現有虛擬機器加入至可用性設定組](/previous-versions/azure/virtual-machines/linux/classic/configure-availability-classic)。
    * 對於透過 Resource Manager 部署模型建立的 VM：儲存 VM 的組態，然後在可用性設定組中刪除再重新建立 VM。 若要這樣做，請使用[設定 Azure Resource Manager VM 可用性設定組](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4)中的指令碼。 執行此指令碼之前，請先檢查其限制並規劃您的停機時間。
 
-2. **刪除舊 VM 和磁碟**。 請確定進階磁碟與來源磁碟一致，而且新的 VM 執行的是與來源 VM 相同的函式。 在 Azure 入口網站中，從來源儲存體帳戶刪除 VM 和磁碟。 如果有即使已刪除 VM，其中的磁碟卻未刪除的問題，請參閱[針對儲存體資源刪除錯誤進行疑難排解](storage-resource-deletion-errors.md)。
+2. **刪除舊 VM 和磁碟**。 請確定進階磁碟與來源磁碟一致，而且新的 VM 執行的是與來源 VM 相同的函式。 在 Azure 入口網站中，從來源儲存體帳戶刪除 VM 和磁碟。 如果有即使已刪除 VM，其中的磁碟卻未刪除的問題，請參閱[針對儲存體資源刪除錯誤進行疑難排解](../troubleshooting/storage-resource-deletion-errors.md)。
 
 3. **清除 Azure Site Recovery 基礎結構**。 如果不再需要 Site Recovery，您可以清除它的基礎結構。 請刪除複寫的項目、組態伺服器和復原原則，然後刪除 Azure Site Recovery 保存庫。
 
 ## <a name="troubleshooting"></a>疑難排解
 
-* [監視和疑難排解虛擬機器與實體伺服器的保護](../../site-recovery/site-recovery-monitoring-and-troubleshooting.md)
-* [Microsoft 的 Microsoft Azure Site Recovery 問題頁面](https://docs.microsoft.com/answers/topics/azure-site-recovery.html)
+* [監視和疑難排解虛擬機器與實體伺服器的保護](../../site-recovery/site-recovery-monitor-and-troubleshoot.md)
+* [Microsoft 的 Microsoft Azure Site Recovery 問題頁面](/answers/topics/azure-site-recovery.html)
 
 ## <a name="next-steps"></a>後續步驟
 

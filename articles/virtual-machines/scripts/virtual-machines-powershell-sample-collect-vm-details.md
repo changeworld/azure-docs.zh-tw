@@ -15,17 +15,18 @@ ms.workload: infrastructure
 ms.date: 07/01/2019
 ms.author: v-miegge
 ms.custom: mvc
-ms.openlocfilehash: 27e88966759eaa158ffe86efce9905b1709ddbbe
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: a45f0a882c58c7035badcc1270c66bd9c6fb252a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848717"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526906"
 ---
 # <a name="collect-details-about-all-vms-in-a-subscription-with-powershell"></a>使用 PowerShell 收集訂用帳戶中所有 VM 的詳細資料
 
 此指令碼會建立 CSV，其中會包含所提供訂用帳戶中所有 VM 的 VM 名稱、資源群組名稱、區域、VM 大小、虛擬網路、子網路、私人 IP 位址、OS 類型，以及公用 IP 位址。
 
-如果您沒有 [Azure 訂用帳戶](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing)，請在開始前建立[免費帳戶](https://azure.microsoft.com/free)。
+如果您沒有 [Azure 訂用帳戶](../../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing)，請在開始前建立[免費帳戶](https://azure.microsoft.com/free)。
 
 ## <a name="launch-azure-cloud-shell"></a>啟動 Azure Cloud Shell
 
@@ -74,15 +75,13 @@ $report | Export-CSV "$home/$reportName"
 
 |Command|注意|
 |-|-|
-|[Select-AzSubscription](https://docs.microsoft.com/powershell/module/Az.Accounts/Set-AzContext)|設定要在目前工作階段中 Cmdlet 要使用的租用戶、訂閱和環境。|
-|[Get-AzVM](https://docs.microsoft.com/powershell/module/Az.Compute/Get-AzVM)|設定虛擬機器的屬性。|
-|[Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/Az.Network/Get-AzPublicIpAddress)|取得公用 IP 位址。|
-|[Get-AzNetworkInterface](https://docs.microsoft.com/powershell/module/Az.Network/Get-AzNetworkInterface)|取得網路介面。|
+|[Select-AzSubscription](/powershell/module/az.accounts/set-azcontext)|設定要在目前工作階段中 Cmdlet 要使用的租用戶、訂閱和環境。|
+|[Get-AzVM](/powershell/module/az.compute/get-azvm)|設定虛擬機器的屬性。|
+|[Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress)|取得公用 IP 位址。|
+|[Get-AzNetworkInterface](/powershell/module/az.network/get-aznetworkinterface)|取得網路介面。|
 
 ## <a name="next-steps"></a>後續步驟
 
-如需有關 Azure PowerShell 模組的詳細資訊，請參閱 [Azure PowerShell 文件](https://docs.microsoft.com/powershell/azure/overview)。
+如需有關 Azure PowerShell 模組的詳細資訊，請參閱 [Azure PowerShell 文件](/powershell/azure/overview)。
 
-您可以在 [Azure Windows VM 文件](https://docs.microsoft.com/azure/virtual-machines/windows/powershell-samples?toc=/azure/virtual-machines/windows/toc.json)中找到其他的虛擬機器 PowerShell 指令碼範例。
-
-
+您可以在 [Azure Windows VM 文件](../windows/powershell-samples.md?toc=/azure/virtual-machines/windows/toc.json)中找到其他的虛擬機器 PowerShell 指令碼範例。

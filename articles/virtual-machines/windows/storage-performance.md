@@ -8,11 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 04/17/2019
 ms.author: joelpell
-ms.openlocfilehash: 3a093303efe63a051e8e2ff9824a35228e44e1aa
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 666f84da8f0999268b09dfd06ff5b3fe21bbef96
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652609"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525563"
 ---
 # <a name="optimize-performance-on-the-lsv2-series-virtual-machines"></a>將 Lsv2 系列虛擬機器上的效能最佳化
 
@@ -95,4 +96,4 @@ Lsv2 系列 VM 會使用以 Zen 微架構為基礎的 AMD EYPC™ 伺服器處�
    
 ## <a name="next-steps"></a>後續步驟
 
-* 請參閱針對 Azure 上所有的[儲存體效能進行最佳化的 VM](sizes-storage.md) 規格
+* 請參閱針對 Azure 上所有的[儲存體效能進行最佳化的 VM](../sizes-storage.md) 規格

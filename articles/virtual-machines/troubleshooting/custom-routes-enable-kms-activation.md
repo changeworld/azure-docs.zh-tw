@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 12/20/2018
 ms.author: genli
-ms.openlocfilehash: 085647c392bb6cec51fba8b6e42cb8f03707223c
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 1c2050969e95b521554bba100b688add3a987a80
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134579"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526736"
 ---
 # <a name="windows-activation-fails-in-forced-tunneling-scenario"></a>強制通道案例中的 Windows 啟用失敗
 
@@ -53,9 +53,9 @@ Azure Global 雲端其 KMS 伺服器的 IP 位址是 23.102.135.246。 其 DNS �
  
 
 > [!NOTE] 
-> 啟用會使用公用 IP 位址，並會受到標準 SKU Load Balancer 設定的影響。 請仔細查看[Azure 中的輸出](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections)連線，以瞭解需求。
+> 啟用會使用公用 IP 位址，並會受到標準 SKU Load Balancer 設定的影響。 請仔細查看[Azure 中的輸出](../../load-balancer/load-balancer-outbound-connections.md)連線，以瞭解需求。
 
-1. 開啟 Azure PowerShell，然後[登入您的 Azure 訂用帳戶](https://docs.microsoft.com/powershell/azure/authenticate-azureps)。
+1. 開啟 Azure PowerShell，然後[登入您的 Azure 訂用帳戶](/powershell/azure/authenticate-azureps)。
 2. 執行下列命令：
 
     ```powershell
@@ -77,7 +77,7 @@ Azure Global 雲端其 KMS 伺服器的 IP 位址是 23.102.135.246。 其 DNS �
 
     Set-AzVirtualNetwork -VirtualNetwork $vnet
     ```
-3. 移至有啟用問題的 VM。 使用 [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) 測試是否能與 KMS 伺服器連線：
+3. 移至有啟用問題的 VM。 使用 [PsPing](/sysinternals/downloads/psping) 測試是否能與 KMS 伺服器連線：
 
     ```console
     psping kms.core.windows.net:1688
@@ -89,7 +89,7 @@ Azure Global 雲端其 KMS 伺服器的 IP 位址是 23.102.135.246。 其 DNS �
 
 [!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
-1. 開啟 Azure PowerShell，然後[登入您的 Azure 訂用帳戶](https://docs.microsoft.com/powershell/azure/authenticate-azureps)。
+1. 開啟 Azure PowerShell，然後[登入您的 Azure 訂用帳戶](/powershell/azure/authenticate-azureps)。
 2. 執行下列命令：
 
     ```powershell
@@ -107,7 +107,7 @@ Azure Global 雲端其 KMS 伺服器的 IP 位址是 23.102.135.246。 其 DNS �
     -RouteTableName "VNet-DM-KmsRouteTable"
     ```
 
-3. 移至有啟用問題的 VM。 使用 [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) 測試是否能與 KMS 伺服器連線：
+3. 移至有啟用問題的 VM。 使用 [PsPing](/sysinternals/downloads/psping) 測試是否能與 KMS 伺服器連線：
 
     ```console
     psping kms.core.windows.net:1688
@@ -117,7 +117,5 @@ Azure Global 雲端其 KMS 伺服器的 IP 位址是 23.102.135.246。 其 DNS �
 
 ## <a name="next-steps"></a>後續步驟
 
-- [KMS 用戶端安裝金鑰](https://docs.microsoft.com/windows-server/get-started/kmsclientkeys
-)
-- [檢閱並選取啟用方法](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj134256(v=ws.11)
-)
+- [KMS 用戶端安裝金鑰](/windows-server/get-started/kmsclientkeys)
+- [檢閱並選取啟用方法](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/jj134256(v=ws.11))

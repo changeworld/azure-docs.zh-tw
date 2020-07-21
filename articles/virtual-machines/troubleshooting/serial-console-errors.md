@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 8/20/2019
 ms.author: alsin
-ms.openlocfilehash: 61ae0ef92fe522a2a038a6076a5e0c0a10ee47b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cad12a55332a6c7898f9709776c58d7dba8dd81a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80060697"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526430"
 ---
 # <a name="common-errors-within-the-azure-serial-console"></a>Azure 序列主控台中的常見錯誤
 Azure 序列主控台內有一組已知錯誤。 這是這些錯誤和風險降低步驟的清單。
@@ -40,7 +40,7 @@ Azure 序列主控台內有一組已知錯誤。 這是這些錯誤和風險降�
 此 VM 的布建尚未成功。 請確定已完全部署 VM，然後重試序列主控台連線。 | 您的 VM 或虛擬機器擴展集可能仍在布建中。 請稍候片刻，然後再試一次。
 Web 通訊端已關閉或無法開啟。 | 您可能需要將防火牆存取新增至 `*.console.azure.com` 。 更詳細但較長的方法是允許防火牆存取 Microsoft Azure 的[資料中心 IP 範圍](https://www.microsoft.com/download/details.aspx?id=41653)，這會定期變更。
 序列主控台無法搭配使用具有階層命名空間之 Azure Data Lake Storage Gen2 的儲存體帳戶使用。 | 這是階層命名空間的已知問題。 若要減輕問題，請確定您的 VM 開機診斷儲存體帳戶不是使用 Azure Data Lake Storage Gen2 建立的。 只有在建立儲存體帳戶時，才能設定此選項。 您可能必須在未啟用 Azure Data Lake Storage Gen2 的情況下，建立個別的開機診斷儲存體帳戶來減輕此問題。
-與 VM 的序列主控台連線發生錯誤：「禁止」（SubscriptionNotEnabled）-未定義訂用帳戶名稱，識別碼 \<subscription id> 處於未啟用狀態（未定義） | 如果使用者已在中建立其 Cloud Shell 儲存體帳戶的訂用帳戶已停用，則可能會發生此問題。 若要減輕問題，請啟動 Cloud Shell 並[執行必要步驟](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage#unmount-clouddrive-1)，以在目前的訂用帳戶中重新布建 Cloud Shell 的備份儲存體帳戶。
+與 VM 的序列主控台連線發生錯誤：「禁止」（SubscriptionNotEnabled）-未定義訂用帳戶名稱，識別碼 \<subscription id> 處於未啟用狀態（未定義） | 如果使用者已在中建立其 Cloud Shell 儲存體帳戶的訂用帳戶已停用，則可能會發生此問題。 若要減輕問題，請啟動 Cloud Shell 並[執行必要步驟](../../cloud-shell/persisting-shell-storage.md#unmount-clouddrive-1)，以在目前的訂用帳戶中重新布建 Cloud Shell 的備份儲存體帳戶。
 
 ## <a name="next-steps"></a>後續步驟
 * 深入瞭解[適用于 Linux vm 的 Azure 序列主控台](./serial-console-linux.md)

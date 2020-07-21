@@ -15,11 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 03/23/2018
 ms.author: akjosh
-ms.openlocfilehash: c65161b6c0ffb0623260a9d896b10bf99eeeced2
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: a259217280be343f383372a066d4033368c2b651
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235569"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526690"
 ---
 # <a name="troubleshoot-remote-desktop-connections-to-an-azure-virtual-machine"></a>針對 Azure 虛擬機器的遠端桌面連線進行疑難排解
 有各式各樣的原因可能導致 Windows 型 Azure 虛擬機器 (VM) 的遠端桌面通訊協定 (RDP) 連線失敗，讓您無法存取您的 VM。 問題可能與 VM 上的遠端桌面服務、網路連線或主機電腦上的遠端桌面用戶端有關。 本文將引導您完成一些可解決 RDP 連線問題的最常見方法。 
@@ -66,13 +67,13 @@ ms.locfileid: "84235569"
     在 Azure 入口網站中選取您的 VM。 向下捲動至 [設定] 窗格中接近清單底部的 [支援 + 疑難排解] 區段。 按一下 [重設密碼] 按鈕。 將 [模式] 設定為 [只重設組態]，然後按一下 [更新] 按鈕︰
    
     ![在 Azure 入口網站中重設 RDP 組態](./media/troubleshoot-rdp-connection/reset-rdp.png)
-2. **確認網路安全性群組規則**。 使用 [IP 流量驗證](../../network-watcher/network-watcher-check-ip-flow-verify-portal.md)來確認網路安全性群組中的規則是否會封鎖虛擬機器的輸入或輸出流量。 您也可以檢閱有效的安全性群組規則，以確保輸入「允許」NSG 規則存在並已針對 RDP 連接埠 (預設值 3389) 設定優先順序。 如需詳細資訊，請參閱[使用有效安全性規則對 VM 流量流程進行疑難排解](../../virtual-network/diagnose-network-traffic-filter-problem.md)。
+2. **確認網路安全性群組規則**。 使用 [IP 流量驗證](../../network-watcher/diagnose-vm-network-traffic-filtering-problem.md)來確認網路安全性群組中的規則是否會封鎖虛擬機器的輸入或輸出流量。 您也可以檢閱有效的安全性群組規則，以確保輸入「允許」NSG 規則存在並已針對 RDP 連接埠 (預設值 3389) 設定優先順序。 如需詳細資訊，請參閱[使用有效安全性規則對 VM 流量流程進行疑難排解](../../virtual-network/diagnose-network-traffic-filter-problem.md)。
 
 3. **檢閱 VM 開機診斷**。 此疑難排解步驟可檢閱 VM 主控台記錄，以判斷 VM 是否報告問題。 並非所有 VM 都已啟用開機診斷，所以此疑難排解步驟可能是選擇性的。
    
     特定疑難排解步驟已超出本文的範圍，但可能指出會影響 RDP 連線的更廣問題。 如需有關檢閱主控台記錄和 VM 螢幕擷取畫面的詳細資訊，請參閱 [VM 的開機診斷](boot-diagnostics.md)。
 
-4. **重設 VM 的 NIC**。 如需詳細資訊，請參閱[如何重設 Azure Windows VM 的 NIC](../windows/reset-network-interface.md)。
+4. **重設 VM 的 NIC**。 如需詳細資訊，請參閱[如何重設 Azure Windows VM 的 NIC](./reset-network-interface.md)。
 5. **檢查 VM 資源健康狀態**。 此疑難排解步驟可確認 Azure 平台沒有任何可能影響 VM 連線的已知問題。
    
     在 Azure 入口網站中選取您的 VM。 向下捲動至 [設定] 窗格中接近清單底部的 [支援 + 疑難排解] 區段。 按一下 [資源健康狀態] 按鈕。 狀況良好的 VM 會報告為 [可用]：
@@ -96,7 +97,7 @@ ms.locfileid: "84235569"
    
     此作業完成之後，會遺失暫時磁碟資料，並且會更新與 VM 相關聯的動態 IP 位址。
 
-9. **確認路由**。 使用網路監看員的[下一個躍點](../../network-watcher/network-watcher-check-next-hop-portal.md)功能，確認路由不會防止流量從虛擬機器往返路由傳送。 您也可以檢閱有效路由，以查看網路介面的所有有效路由。 如需詳細資訊，請參閱[使用有效路由來針對 VM 流量流程進行疑難排解](../../virtual-network/diagnose-network-routing-problem.md)。
+9. **確認路由**。 使用網路監看員的[下一個躍點](../../network-watcher/diagnose-vm-network-routing-problem.md)功能，確認路由不會防止流量從虛擬機器往返路由傳送。 您也可以檢閱有效路由，以查看網路介面的所有有效路由。 如需詳細資訊，請參閱[使用有效路由來針對 VM 流量流程進行疑難排解](../../virtual-network/diagnose-network-routing-problem.md)。
 
 10. 確保任何內部部署防火牆或您電腦上的防火牆允許對 Azure 輸出 TCP 3389 流量。
 
@@ -108,7 +109,7 @@ ms.locfileid: "84235569"
 下列範例使用 `myResourceGroup``myVM` 和 `myVMAccessExtension` 等變數。 以您自己的值取代這些變數名稱和位置。
 
 > [!NOTE]
-> 您可以使用 [Set-AzVMAccessExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmaccessextension) \(英文\) PowerShell Cmdlet 來重設使用者認證和 RDP 設定。 在下列範例中，`myVMAccessExtension` 是您指定為程序一部分的名稱。 如果您先前使用了 VMAccessAgent，則可以使用 `Get-AzVM -ResourceGroupName "myResourceGroup" -Name "myVM"` 來檢查 VM 的屬性，以取得現有擴充功能的名稱。 請查看輸出的 'Extensions' 區段底下來檢視名稱。
+> 您可以使用 [Set-AzVMAccessExtension](/powershell/module/az.compute/set-azvmaccessextension) \(英文\) PowerShell Cmdlet 來重設使用者認證和 RDP 設定。 在下列範例中，`myVMAccessExtension` 是您指定為程序一部分的名稱。 如果您先前使用了 VMAccessAgent，則可以使用 `Get-AzVM -ResourceGroupName "myResourceGroup" -Name "myVM"` 來檢查 VM 的屬性，以取得現有擴充功能的名稱。 請查看輸出的 'Extensions' 區段底下來檢視名稱。
 
 在每個疑難排解步驟完成之後，請再次嘗試連接到 VM。 如果仍然無法連線，請嘗試下一個步驟。
 
@@ -185,7 +186,7 @@ ms.locfileid: "84235569"
     Set-AzVM -Redeploy -ResourceGroupName "myResourceGroup" -Name "myVM"
     ```
 
-6. **確認路由**。 使用網路監看員的[下一個躍點](../../network-watcher/network-watcher-check-next-hop-portal.md)功能，確認路由不會防止流量從虛擬機器往返路由傳送。 您也可以檢閱有效路由，以查看網路介面的所有有效路由。 如需詳細資訊，請參閱[使用有效路由來針對 VM 流量流程進行疑難排解](../../virtual-network/diagnose-network-routing-problem.md)。
+6. **確認路由**。 使用網路監看員的[下一個躍點](../../network-watcher/diagnose-vm-network-routing-problem.md)功能，確認路由不會防止流量從虛擬機器往返路由傳送。 您也可以檢閱有效路由，以查看網路介面的所有有效路由。 如需詳細資訊，請參閱[使用有效路由來針對 VM 流量流程進行疑難排解](../../virtual-network/diagnose-network-routing-problem.md)。
 
 7. 確保任何內部部署防火牆或您電腦上的防火牆允許對 Azure 輸出 TCP 3389 流量。
 
@@ -211,7 +212,7 @@ ms.locfileid: "84235569"
    
    ![在 Azure 入口網站中確認雲端服務端點](./media/troubleshoot-rdp-connection/classic-verify-cloud-services-endpoints.png)
    
-   如果您沒有可允許 RDP 流量的端點，請[建立雲端服務端點](../windows/classic/setup-endpoints.md)。 允許使用 TCP 連接至私人連接埠 3389。
+   如果您沒有可允許 RDP 流量的端點，請[建立雲端服務端點](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints)。 允許使用 TCP 連接至私人連接埠 3389。
 3. **檢閱 VM 開機診斷**。 此疑難排解步驟可檢閱 VM 主控台記錄，以判斷 VM 是否報告問題。 並非所有 VM 都已啟用開機診斷，所以此疑難排解步驟可能是選擇性的。
    
     特定疑難排解步驟已超出本文的範圍，但可能指出會影響 RDP 連線的更廣問題。 如需有關檢閱主控台記錄和 VM 螢幕擷取畫面的詳細資訊，請參閱 [VM 的開機診斷](https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/)。
@@ -246,7 +247,5 @@ ms.locfileid: "84235569"
 
 ## <a name="additional-resources"></a>其他資源
 如果這些錯誤皆未發生，而您仍然無法透過「遠端桌面」連接到 VM，請閱讀詳細的 [遠端桌面疑難排解指南](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
-* 如需存取在 VM 上執行之應用程式的疑難排解步驟，請參閱[針對在 Azure VM 上執行之應用程式的存取進行疑難排解](../linux/troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
-* 如果您在 Azure 中使用安全殼層 (SSH) 連線到 Linux VM 時遇到問題，請參閱[針對 Azure 中對 Linux VM 的 SSH 連線進行疑難排解](../linux/troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
-
-
+* 如需存取在 VM 上執行之應用程式的疑難排解步驟，請參閱[針對在 Azure VM 上執行之應用程式的存取進行疑難排解](./troubleshoot-app-connection.md?toc=/azure/virtual-machines/linux/toc.json)。
+* 如果您在 Azure 中使用安全殼層 (SSH) 連線到 Linux VM 時遇到問題，請參閱[針對 Azure 中對 Linux VM 的 SSH 連線進行疑難排解](./troubleshoot-ssh-connection.md?toc=/azure/virtual-machines/linux/toc.json)。

@@ -8,11 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 13496a18f4c99b69a5b8095caf5b74a04d1bba88
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b0aff8298ac2335e5216252eb2cbd5a393cc37d5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81869290"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524991"
 ---
 # <a name="manage-private-cloud-resources-and-activity"></a>管理私人雲端資源和活動
 
@@ -36,13 +37,13 @@ ms.locfileid: "81869290"
 
 ## <a name="private-cloud-summary"></a>私人雲端摘要
 
-檢視所選私人雲端的完整摘要。  [摘要] 頁面包含部署在私人雲端上的 DNS 伺服器。  您可設定從內部部署 DNS 伺服器到私人雲端 DNS 伺服器的 DNS 轉送。  如需 DNS 轉送的詳細資訊，請參閱[設定 DNS 名稱解析以從內部部署存取私人雲端 vCenter](https://docs.microsoft.com/azure/vmware-cloudsimple/on-premises-dns-setup/) (機器翻譯)。
+檢視所選私人雲端的完整摘要。  [摘要] 頁面包含部署在私人雲端上的 DNS 伺服器。  您可設定從內部部署 DNS 伺服器到私人雲端 DNS 伺服器的 DNS 轉送。  如需 DNS 轉送的詳細資訊，請參閱[設定 DNS 名稱解析以從內部部署存取私人雲端 vCenter](./on-premises-dns-setup.md) (機器翻譯)。
 
 ![私人雲端摘要](media/private-cloud-summary.png)
 
 ### <a name="available-actions"></a>可用動作
 
-* [啟動 vSphere 用戶端](https://docs.microsoft.com/azure/vmware-cloudsimple/vcenter-access)。 存取此私人雲端的 vCenter。
+* [啟動 vSphere 用戶端](./vcenter-access.md)。 存取此私人雲端的 vCenter。
 * [購買節點](create-nodes.md)。 將節點新增至此私人雲端。
 * [擴充](expand-private-cloud.md)。 將節點新增至此私人雲端。
 * **重新整理**。 更新此頁面上的資訊。
@@ -57,10 +58,10 @@ ms.locfileid: "81869290"
 
 ### <a name="available-actions"></a>可用動作
 
-* [新增 VLAN/子網路](https://docs.microsoft.com/azure/vmware-cloudsimple/create-vlan-subnet/)。 將 VLAN/子網路新增至此私人雲端。
+* [新增 VLAN/子網路](./create-vlan-subnet.md)。 將 VLAN/子網路新增至此私人雲端。
 
 選取 VLAN/子網路以執行下列動作
-* [連結防火牆資料表](https://docs.microsoft.com/azure/vmware-cloudsimple/firewall/)。 將防火牆資料表連結至此私人雲端。
+* [連結防火牆資料表](./firewall.md)。 將防火牆資料表連結至此私人雲端。
 * **編輯**
 * **刪除** (僅限使用者定義的 VLAN/子網路)
 

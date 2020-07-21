@@ -4,29 +4,24 @@ description: 說明如何使用 StorSimple 裝置管理員服務的 [備份類�
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: timlt
-editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: how-to
-ms.tgt_pltfrm: NA
-ms.workload: TBD
-ms.date: 05/23/2017
+ms.date: 07/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 0f0be9609dfd00e8e5dc9919b20fc42ec91ce9eb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8783d5ce5596cdb4678c09b79c09797ef62cc9c9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514564"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527824"
 ---
 # <a name="restore-a-storsimple-volume-from-a-backup-set"></a>從備份組還原 StorSimple 磁碟區
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 本教學課程說明在 StorSimple 8000 系列裝置上使用現有的備份組執行的還原作業。 使用 [備份類別目錄]**** 刀鋒視窗可從本機或雲端備份還原磁碟區。 [備份類別目錄]**** 刀鋒視窗顯示在產生手動或自動備份時建立的所有備份組。 當資料在背景下載時，從備份組進行的還原作業會立即讓磁碟區連線。
-
-啟動還原的一個替代方法是移至 [裝置] > [您的裝置] > [磁碟區]****。 在 [磁碟區]**** 刀鋒視窗中，選取磁碟區，以滑鼠右鍵按一下以叫用操作功能表，然後選取 [還原]****。
 
 ## <a name="before-you-restore"></a>還原之前
 

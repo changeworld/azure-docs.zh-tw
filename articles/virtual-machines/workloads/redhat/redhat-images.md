@@ -1,5 +1,5 @@
 ---
-title: Azure 中的 Red Hat Enterprise Linux 映像 | Microsoft Docs
+title: Azure 中 Red Hat Enterprise Linux 映射的總覽
 description: 瞭解 Microsoft Azure 中 Red Hat Enterprise Linux 映射。
 services: virtual-machines-linux
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: f06c4304be67fbc2f3116375dae33b10228723a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: de7ead8acd059d957673b2f063dd3d330cf473f5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80239865"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525495"
 ---
 # <a name="overview-of-red-hat-enterprise-linux-images"></a>Red Hat Enterprise Linux 映射的總覽
 
@@ -26,7 +26,7 @@ ms.locfileid: "80239865"
 如需所有 RHEL 版本的 Red Hat 支援原則資訊，請參閱[Red Hat Enterprise Linux 生命週期](https://access.redhat.com/support/policy/updates/errata)。 如需定價詳細資料，請參閱[Azure 定價計算機](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)。
 
 >[!IMPORTANT]
-> Azure Marketplace 中目前提供的 RHEL 映射支援自備訂用帳戶（BYOS）或隨用隨付授權模型。 不支援 BYOS 與隨用隨付授權之間的[Azure 混合式使用權益](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing)和動態切換。 若要切換授權模式，您必須從對應的映射重新部署 VM。
+> Azure Marketplace 中目前提供的 RHEL 映射支援自備訂用帳戶（BYOS）或隨用隨付授權模型。 不支援 BYOS 與隨用隨付授權之間的[Azure 混合式使用權益](../../windows/hybrid-use-benefit-licensing.md)和動態切換。 若要切換授權模式，您必須從對應的映射重新部署 VM。
 
 >[!NOTE]
 > 如有任何與 Azure Marketplace 中 RHEL 映射相關的問題，請向 Microsoft 提出支援票證。
@@ -64,8 +64,8 @@ az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:8-LVM:lat
 ```
 
 >[!NOTE]
-> 一般而言，比較版本以決定最新版本的程序會遵循 [CompareTo 方法](https://msdn.microsoft.com/library/a5ts8tb6.aspx)來進行。
-這個映射版本比較是藉由比較值為[版本](https://docs.microsoft.com/dotnet/api/system.version.-ctor?view=netframework-4.8)物件（而不是字串）來完成。
+> 一般而言，比較版本以決定最新版本的程序會遵循 [CompareTo 方法](/dotnet/api/system.version.compareto?view=netcore-3.1#system_version_compareto_system_version_)來進行。
+這個映射版本比較是藉由比較值為[版本](/dotnet/api/system.version.-ctor?view=netframework-4.8)物件（而不是字串）來完成。
 
 ## <a name="rhel-6-image-types"></a>RHEL 6 映射類型
 
@@ -105,7 +105,7 @@ RHEL 8 映射類型的詳細資料如下。
 |發行者 | 供應項目 | SKU 值 | 版本 | 詳細資料
 |----------|-------|------------|---------|--------
 |RedHat | RHEL | 8 | RHEL 次要版本的串連值和發佈的日期（例如，8.0.20191023） | 這些映射是連接到標準 Red Hat 存放庫的 RHEL 8 LVM 資料分割映射。
-|RedHat | RHEL | 8-gen2 | RHEL 次要版本的串連值和發佈的日期（例如，8.0.20191024） | 這些映射是連接到標準 Red Hat 存放庫的 Hyper-v 第2版 RHEL 8 LVM 資料分割映射。 如需 Azure 中第2代 Vm 的詳細資訊，請參閱[azure 上第2代 vm 的支援](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2)。
+|RedHat | RHEL | 8-gen2 | RHEL 次要版本的串連值和發佈的日期（例如，8.0.20191024） | 這些映射是連接到標準 Red Hat 存放庫的 Hyper-v 第2版 RHEL 8 LVM 資料分割映射。 如需 Azure 中第2代 Vm 的詳細資訊，請參閱[azure 上第2代 vm 的支援](../../linux/generation-2.md)。
 
 ## <a name="rhel-longer-support-add-ons"></a>RHEL 長期支援附加元件
 
@@ -147,7 +147,7 @@ RedHat:RHEL:7.6:7.6.2019102813
 RHEL 7.4      |RedHat： RHEL：7.4：7.4.2019041718 | 預設會 EUS 4 月2019和更新版本所發行的映射。|
 RHEL 7.5      |RedHat： RHEL：7.5：7.5.2019060305 | 預設會 EUS 2019 年6月發佈的映射。 |
 RHEL 7.6      |RedHat： RHEL：7.6：7.6.2019052206 | 預設會 EUS 已發佈的映射2019和更新版本。 |
-RHEL 8。0      |不適用                            | Red Hat 不提供任何 EUS。                               |
+RHEL 8。0      |N/A                            | Red Hat 不提供任何 EUS。                               |
 
 ### <a name="update-services-for-sap"></a>更新 SAP 服務
 

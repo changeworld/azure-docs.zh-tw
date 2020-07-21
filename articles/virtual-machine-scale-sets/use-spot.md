@@ -9,11 +9,12 @@ ms.subservice: spot
 ms.date: 03/25/2020
 ms.reviewer: jagaveer
 ms.custom: jagaveer
-ms.openlocfilehash: 756e0d62927b67d26ae75af90c64facfe9c92d31
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 70d7eb000ed2d50bc22bb005621ee7515e5a2a61
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84310558"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527450"
 ---
 # <a name="azure-spot-vms-for-virtual-machine-scale-sets"></a>適用于虛擬機器擴展集的 Azure 位置 Vm 
 
@@ -114,12 +115,12 @@ $vmssConfig = New-AzVmssConfig `
 
 **問：** 如何管理適用于點的配額？
 
-**答：** 點實例和標準實例會有不同的配額集區。 點配額會在 Vm 與擴展集實例之間共用。 如需詳細資訊，請參閱[Azure 訂用帳戶和服務限制、配額和條件約束](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)。
+**答：** 點實例和標準實例會有不同的配額集區。 點配額會在 Vm 與擴展集實例之間共用。 如需詳細資訊，請參閱[Azure 訂用帳戶和服務限制、配額和條件約束](../azure-resource-manager/management/azure-subscription-service-limits.md)。
 
 
 **問：** 我可以要求額外的時間配額嗎？
 
-**答：** 是，您可以提交要求以增加您的配額，以透過[標準配額要求](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests)程式來找出您的 vm。
+**答：** 是，您可以提交要求以增加您的配額，以透過[標準配額要求](../azure-portal/supportability/per-vm-quota-requests.md)程式來找出您的 vm。
 
 
 **問：** 我可以將現有的擴展集轉換成點擴展集嗎？
@@ -155,17 +156,17 @@ $vmssConfig = New-AzVmssConfig `
 
 | Azure 頻道               | Azure 點 Vm 可用性       |
 |------------------------------|-----------------------------------|
-| Enterprise 合約         | Yes                               |
-| 隨用隨付                | Yes                               |
-| 雲端服務提供者 (CSP) | [聯絡您的合作夥伴](https://docs.microsoft.com/partner-center/azure-plan-get-started) |
+| Enterprise 合約         | 是                               |
+| 隨用隨付                | 是                               |
+| 雲端服務提供者 (CSP) | [聯絡您的合作夥伴](/partner-center/azure-plan-get-started) |
 | 優點                     | 無法使用                     |
-| 商                    | Yes                               |
+| 商                    | 是                               |
 | 免費試用                   | 無法使用                     |
 
 
 **問：** 我可以在何處張貼問題？
 
-**答：** 您可以 `azure-spot` 在[Q&A](https://docs.microsoft.com/answers/topics/azure-spot.html)張貼和標記您的問題。 
+**答：** 您可以 `azure-spot` 在[Q&A](/answers/topics/azure-spot.html)張貼和標記您的問題。 
 
 ## <a name="next-steps"></a>後續步驟
 

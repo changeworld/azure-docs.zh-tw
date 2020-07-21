@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: cathys
 keywords: visualstudio
-ms.openlocfilehash: ecec05da3904782199e68cfdca917a8c451edec6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f1da7dabfb562ea32697745460d92ed27089878c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85105996"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525529"
 ---
 # <a name="visual-studio-images-on-azure"></a>Azure 上的 Visual Studio 映像
 在預先設定的 Azure 虛擬機器 (VM) 中使用 Visual Studio，是從零開始到建立已啟動並執行中之開發環境的快速簡單方式。 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?filters=virtual-machine-images%3Bmicrosoft%3Bwindows&page=1&subcategories=application-infrastructure) 中提供具有各種不同 Visual Studio 設定的系統映像。
@@ -23,7 +23,7 @@ ms.locfileid: "85105996"
 不熟悉 Azure 嗎？ [建立 Azure 免費帳戶](https://azure.microsoft.com/free)。
 
 > [!NOTE]
-> 並非所有訂用帳戶都有資格部署 Windows 10 映像。 如需詳細資訊，請參閱[在 Azure 中使用 Windows 用戶端進行開發/測試案例](https://docs.microsoft.com/azure/virtual-machines/windows/client-images)
+> 並非所有訂用帳戶都有資格部署 Windows 10 映像。 如需詳細資訊，請參閱[在 Azure 中使用 Windows 用戶端進行開發/測試案例](./client-images.md)
 
 ## <a name="what-configurations-and-versions-are-available"></a>有哪些設定和版本可用？
 在 Azure Marketplace 中，您可以找到適用於最新主要版本的映像：Visual Studio 2019、Visual Studio 2017 和 Visual Studio 2015。  針對每個已發行的主要版本，您會看到原始發行至 Web (RTW) 版本和最新更新版本。  每個版本都提供 Visual Studio Enterprise 和 Visual Studio Community 版本。  這些映像會每個月至少更新一次，以納入最新的 Visual Studio 和 Windows 更新。  雖然映像的名稱會維持不變，但每個映像的描述會納入已安裝的產品版本和映像的「生效」日期。
@@ -77,9 +77,9 @@ Azure 提供各種不同的虛擬機器大小。 由於 Visual Studio 是一個�
    * Standard_D2S_v2
    * Standard_D3_v2
     
-如需有關最新機器大小的詳細資訊，請參閱 [Azure 中 Windows 虛擬機器的大小](/azure/virtual-machines/windows/sizes) \(機器翻譯\)。
+如需有關最新機器大小的詳細資訊，請參閱 [Azure 中 Windows 虛擬機器的大小](./sizes.md) \(機器翻譯\)。
 
-使用 Azure 時，您可以藉由調整 VM 大小來重新平衡您的初始選擇。 您可以佈建大小較適當的新 VM，或調整現有 VM 的大小以配合不同的基礎硬體。 如需詳細資訊，請參閱[調整 Windows VM 大小](/azure/virtual-machines/windows/resize-vm)。
+使用 Azure 時，您可以藉由調整 VM 大小來重新平衡您的初始選擇。 您可以佈建大小較適當的新 VM，或調整現有 VM 的大小以配合不同的基礎硬體。 如需詳細資訊，請參閱[調整 Windows VM 大小](./resize-vm.md)。
 
 ## <a name="after-the-vm-is-running-whats-next"></a>在 VM 執行之後，接下來呢？
 Visual Studio 會依循 Azure 中的「自備授權」模型。 如同專用硬體上的安裝，前幾個步驟之一，就是為您的 Visual Studio 安裝取得授權。 若要將 Visual Studio 解除鎖定，請執行下列任何一項作業：
@@ -96,7 +96,7 @@ Visual Studio 會依循 Azure 中的「自備授權」模型。 如同專用硬�
 
 <img src="media/using-visual-studio-vm/capture-vm.png" alt="Capture an image through the Azure portal UI" style="border:3px solid Silver; display: block; margin: auto;"><center> *(圖 1) 透過 Azure 入口網站 UI 擷取映像。* </center>
 
-如需詳細資訊，請參閱[在 Azure 中建立一般化 VM 的受控映像](/azure/virtual-machines/windows/capture-image-resource)。
+如需詳細資訊，請參閱[在 Azure 中建立一般化 VM 的受控映像](./capture-image-resource.md)。
 
 > [!IMPORTANT]
 > 請別忘了使用 Sysprep 來準備 VM。 如果您遺漏該步驟，Azure 將無法從映像佈建 VM。

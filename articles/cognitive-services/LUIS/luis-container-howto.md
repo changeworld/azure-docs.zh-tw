@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 8c5e384e85861cdced3ed6dbe60733128b499407
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 6a2208fac98d3cd8e4ddcea887d9b8cf30fb6482
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86039002"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524500"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>安裝和執行 LUIS Docker 容器
 
@@ -53,7 +53,7 @@ Language Understanding （LUIS）容器會載入您已定型或已發行的 Lang
 
 ### <a name="container-requirements-and-recommendations"></a>容器的需求和建議
 
-此容器支援設定的最小值和建議值：
+下表列出容器主機的最小和建議值。 您的需求可能會隨著流量量而改變。
 
 |容器| 最小值 | 建議 | 本<br>（最小值，最大值）|
 |-----------|---------|-------------|--|
@@ -241,7 +241,7 @@ ApiKey={API_KEY}
 
 容器會提供以 REST 為基礎的查詢預測端點 API。 已發佈（預備或生產）應用程式的端點與版本設定應用程式的端點具有_不同_的路由。
 
-針對容器 API 請使用主機 `http://localhost:5000`。
+請對容器 API 使用主機 `http://localhost:5000`。
 
 # <a name="v3-prediction-endpoint"></a>[V3 預測端點](#tab/v3)
 
@@ -372,7 +372,7 @@ LUIS 容器會使用您 Azure 帳戶上的_認知服務_資源，將帳單資訊
 <!--blogs/samples/video courses -->
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>總結
 
 在本文中，您已了解下載、安裝及執行 Language Understanding (LUIS) 容器的概念和工作流程。 摘要說明：
 

@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 10/09/2019
 ms.author: v-six
-ms.openlocfilehash: 455cb1e0067217be6edcf665e8c07e8fcd684ab5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e26d4070bc9fabeb3467e7bdc805faad4e6646c3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76842396"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526498"
 ---
 # <a name="troubleshoot-linux-vm-starting-issues-due-to-file-system-errors"></a>針對因檔案系統錯誤而啟動的 Linux VM 問題進行疑難排解
 
@@ -74,7 +75,7 @@ Linux 有數個可用的檔案系統檢查程式。 在 Azure 中，散發套件
 
 ## <a name="resolution"></a>解決方案
 
-若要解決此問題，請使用[序列主控台](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux)將 VM 開機進入緊急模式，並使用該工具修復檔案系統。 如果未在您的 VM 上啟用序列主控台或無法使用，請參閱本文的[修復虛擬機器離線](#repair-the-vm-offline)一節。
+若要解決此問題，請使用[序列主控台](./serial-console-linux.md)將 VM 開機進入緊急模式，並使用該工具修復檔案系統。 如果未在您的 VM 上啟用序列主控台或無法使用，請參閱本文的[修復虛擬機器離線](#repair-the-vm-offline)一節。
 
 ## <a name="use-the-serial-console"></a>使用序列主控台
 
@@ -82,8 +83,8 @@ Linux 有數個可用的檔案系統檢查程式。 在 Azure 中，散發套件
 
    > [!Note]
    > 如需使用適用于 Linux 的序列主控台的詳細資訊，請參閱：
-   > * [使用序列主控台來存取 GRUB 與單一使用者模式](https://docs.microsoft.com/azure/virtual-machines/linux/serial-console-grub-single-user-mode)
-   > * [使用序列主控台進行 SysRq 和 NMI 呼叫](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-nmi-sysrq)
+   > * [使用序列主控台來存取 GRUB 與單一使用者模式](../linux/serial-console-grub-single-user-mode.md)
+   > * [使用序列主控台進行 SysRq 和 NMI 呼叫](./serial-console-nmi-sysrq.md)
 
 2. 選取電源圖示按鈕，然後選取 [重新開機 VM]。 （如果序列主控台未啟用或未成功連線，您就不會看到此按鈕）。
 
@@ -133,7 +134,7 @@ Linux 有數個可用的檔案系統檢查程式。 在 Azure 中，散發套件
 
 ## <a name="repair-the-vm-offline"></a>修復離線的 VM
 
-1. 將 VM 的系統磁片做為資料磁片連結至復原 VM （任何運作中的 Linux VM）。 若要這樣做，您可以使用[CLI 命令](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-recovery-disks-linux)，也可以使用[VM 修復命令](repair-linux-vm-using-azure-virtual-machine-repair-commands.md)自動設定復原 VM。
+1. 將 VM 的系統磁片做為資料磁片連結至復原 VM （任何運作中的 Linux VM）。 若要這樣做，您可以使用[CLI 命令](./troubleshoot-recovery-disks-linux.md)，也可以使用[VM 修復命令](repair-linux-vm-using-azure-virtual-machine-repair-commands.md)自動設定復原 VM。
 
 2. 找出您所連接之系統磁片的磁片磁碟機標籤。 在此情況下，我們假設您附加的系統磁片標籤是/dev/sdc1。 以適用于您 VM 的適當值來取代它。
 
@@ -177,6 +178,5 @@ Linux 有數個可用的檔案系統檢查程式。 在 Azure 中，散發套件
 
 ## <a name="next-steps"></a>後續步驟
 
-* [使用 Azure CLI 2.0 將 OS 磁碟連結至復原 VM，以針對 Linux VM 進行疑難排解](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-troubleshoot-recovery-disks)
-* [使用入口網站將資料磁碟附加至 Linux VM](https://docs.microsoft.com/azure/virtual-machines/linux/attach-disk-portal)
-
+* [使用 Azure CLI 2.0 將 OS 磁碟連結至復原 VM，以針對 Linux VM 進行疑難排解](./troubleshoot-recovery-disks-linux.md)
+* [使用入口網站將資料磁碟附加至 Linux VM](../linux/attach-disk-portal.md)

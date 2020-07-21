@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 6db43300632ec5b2c4f6c18848442901a40561b0
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 8d49d9b9d29116d95173c1daf5133622c3694de6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996993"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523990"
 ---
 # <a name="customize-your-text-translations"></a>自訂文字翻譯
 
@@ -27,7 +27,7 @@ ms.locfileid: "83996993"
 
 利用自訂翻譯工具，您可以建置類神經翻譯系統，以了解您自己的企業和產業中使用的術語。 然後，自訂的翻譯系統會整合到現有的應用程式、工作流程和網站。
 
-### <a name="how-does-it-work"></a>運作方式
+### <a name="how-does-it-work"></a>如何運作？
 
 使用您先前翻譯的檔（傳單、網頁、檔等）來建立轉譯系統，以反映您領域專屬的術語和樣式，優於標準翻譯系統。 使用者可以上傳 TMX、XLIFF、TXT、DOCX 和 XLSX 文件。  
 
@@ -47,8 +47,8 @@ ms.locfileid: "83996993"
 
 ## <a name="custom-translator-versus-hub"></a>自訂翻譯工具與中樞
 
-|   | **中樞** | **自訂翻譯工具**|
-|:-----|:----:|:----:|
+| 功能 | 集線器 | 自訂翻譯工具 |
+| ------- | :-: | :---------------: |
 |自訂功能狀態    | 正式運作    | 正式運作 |
 | 文字 API 版本    | 僅限第 2 版    | 僅限第 3 版 |
 | SMT 自訂    | 是    | 否 |

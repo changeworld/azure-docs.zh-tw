@@ -14,16 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/03/2017
 ms.author: alkohli
-ms.openlocfilehash: becbf7f89266fb0f56aaa053eb7cba9291da6896
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 038084ba9ae43e14bc2eb42bf258912be27d062c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514103"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527858"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-change-your-storsimple-passwords"></a>使用 StorSimple 裝置管理員服務變更您的 StorSimple 密碼
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 Azure 入口網站的 [裝置設定]**** 選項包含所有裝置參數，可讓您重新設定 StorSimple 裝置管理員服務所管理的 StorSimple 裝置。 本教學課程說明如何使用 [裝置設定]**** 下的 [安全性]**** 選項，變更您的裝置系統管理員或 StorSimple Snapshot Manager 密碼。
 
 ## <a name="change-the-device-administrator-password"></a>變更裝置系統管理員密碼
@@ -36,25 +36,25 @@ Azure 入口網站的 [裝置設定]**** 選項包含所有裝置參數，可讓
 
 2. 從裝置的表格式清單中，選取並按一下您想要變更其密碼的裝置。
 
-    ![](./media/storsimple-8000-change-passwords/changepwd1.png)
+    ![顯示 StorSimple Device Manager 服務的螢幕擷取畫面。 在 [管理] 下，選取 [裝置]。 在裝置清單中，已選取一個裝置。](./media/storsimple-8000-change-passwords/changepwd1.png)
 
 3. 在 [設定]**** 刀鋒視窗中，移至 [裝置設定] > [安全性]****。
 
-    ![](./media/storsimple-8000-change-passwords/changepwd2.png)
+    ![螢幕擷取畫面，其中顯示 [Device Manager] 服務的 [設定] 分頁。 在 [裝置設定] 下，選取 [安全性]。](./media/storsimple-8000-change-passwords/changepwd2.png)
 
 4. 在 [安全性設定]**** 刀鋒視窗中，按一下 [密碼]****，以變更裝置系統管理員密碼。
 
-    ![](./media/storsimple-8000-change-passwords/changepwd3.png)
+    ![顯示 [安全性設定] 分頁的螢幕擷取畫面。 [密碼] 按鈕會反白顯示。](./media/storsimple-8000-change-passwords/changepwd3.png)
 
 5. 在 [密碼]**** 刀鋒視窗中，提供含有 8 到 15 個字元的系統管理員密碼。 密碼必須是 3 個以上大寫、小寫、數字和特殊字元的組合。
 
 6. 確認密碼。
 
-    ![](./media/storsimple-8000-change-passwords/changepwd4.png)
+    ![顯示密碼分頁的螢幕擷取畫面。 在 [裝置管理密碼] 底下，會填入 [新密碼] 和 [確認密碼] 方塊。](./media/storsimple-8000-change-passwords/changepwd4.png)
 
 7. 按一下 [儲存]****，當系統提示您進行確認時，按一下 [是]****。
 
-    ![](./media/storsimple-8000-change-passwords/changepwd6.png)
+    ![顯示密碼分頁的螢幕擷取畫面。 [儲存] 按鈕會反白顯示。](./media/storsimple-8000-change-passwords/changepwd6.png)
 
 現在應該已更新裝置系統管理員密碼。 您可以使用此修改過的密碼來存取 Windows PowerShell 介面。
 
@@ -70,25 +70,25 @@ StorSimple Snapshot Manager 軟體位於您的 Windows 主機上，而且可讓�
 
 2. 從裝置的表格式清單中，選取並按一下您想要設定或變更其 StorSimple Snapshot Manager 密碼的裝置。
 
-     ![](./media/storsimple-8000-change-passwords/changepwd1.png)
+     ![顯示 StorSimple Device Manager 服務的螢幕擷取畫面。 在 [管理] 下，選取 [裝置]。 在裝置清單中，已選取一個裝置。](./media/storsimple-8000-change-passwords/changepwd1.png)
 
 3. 在 [設定]**** 刀鋒視窗中，移至 [裝置設定] > [安全性]****。
 
-     ![](./media/storsimple-8000-change-passwords/changepwd2.png)
+     ![螢幕擷取畫面，其中顯示 [Device Manager] 服務的 [設定] 分頁。 在 [裝置設定] 下，選取 [安全性]。](./media/storsimple-8000-change-passwords/changepwd2.png)
 
 4. 在 [安全性設定]**** 刀鋒視窗中，按一下 [密碼]****，以設定或變更 StorSimple Snapshot Manager 密碼。
 
-     ![](./media/storsimple-8000-change-passwords/changepwd3.png) 
+     ![顯示 [安全性設定] 分頁的螢幕擷取畫面。 [密碼] 按鈕會反白顯示。](./media/storsimple-8000-change-passwords/changepwd3.png) 
 
 5. 在 [密碼]**** 刀鋒視窗中，輸入 14 或 15 個字元的密碼。 請確定密碼包含 3 個以上大寫、小寫、數字和特殊字元的組合。
 
 6. 確認密碼。
 
-     ![](./media/storsimple-8000-change-passwords/changepwd5.png)
+     ![顯示密碼分頁的螢幕擷取畫面。 在 [Snapshot Manager 密碼] 底下，會填入 [新密碼] 和 [確認密碼] 方塊。](./media/storsimple-8000-change-passwords/changepwd5.png)
 
 7. 按一下 [儲存]****，當系統提示您進行確認時，按一下 [是]****。
 
-     ![](./media/storsimple-8000-change-passwords/changepwd6.png)
+     ![顯示密碼分頁的螢幕擷取畫面。 [儲存] 按鈕會反白顯示。](./media/storsimple-8000-change-passwords/changepwd6.png)
 
 StorSimple Snapshot Manager 密碼現在應該已更新。
 

@@ -10,15 +10,16 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: 1cf6c7417aa86d47e59e08786e7807e32c175a25
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 08d32e4b7806ec53f48389b127ab34371271cf07
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81759567"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527229"
 ---
 # <a name="configure-prerequisites"></a>設定必要條件
 
-在使用 Marketplace 供應專案在 Azure 中部署自我管理的 OpenShift 容器平臺3.11 叢集之前，必須先設定幾個必要條件。  如需建立 ssh 金鑰（不含複雜密碼）、Azure 金鑰保存庫、金鑰保存庫密碼和服務主體的指示，請參閱[OpenShift 必要條件](https://docs.microsoft.com/azure/virtual-machines/linux/openshift-container-platform-3x-prerequisites)一文。
+在使用 Marketplace 供應專案在 Azure 中部署自我管理的 OpenShift 容器平臺3.11 叢集之前，必須先設定幾個必要條件。  如需建立 ssh 金鑰（不含複雜密碼）、Azure 金鑰保存庫、金鑰保存庫密碼和服務主體的指示，請參閱[OpenShift 必要條件](./openshift-container-platform-3x-prerequisites.md)一文。
 
  
 ## <a name="deploy-using-the-marketplace-offer"></a>使用 Marketplace 供應專案進行部署
@@ -64,7 +65,7 @@ ms.locfileid: "81759567"
 | 管理使用者的 SSH 公開金鑰 | 用來登入 VM 的 SSH 公用金鑰-不能有複雜密碼 |
 | 訂用帳戶 | 要在其中部署叢集的 Azure 訂用帳戶 |
 | 資源群組 | 為叢集資源建立新的資源群組，或選取現有的空白資源群組 |
-| 位置 | 要在其中部署叢集的 Azure 區域 |
+| Location | 要在其中部署叢集的 Azure 區域 |
 
    ![供應專案基本功能分頁](media/openshift-marketplace-self-managed/ocp-basics.png)  
 <br>
@@ -167,7 +168,7 @@ ms.locfileid: "81759567"
    ![提供額外的 cn 安裝](media/openshift-marketplace-self-managed/ocp-additionalcnsall.png)  
 <br>
 
-**摘要**
+**總結**
 
 此階段會進行驗證，以檢查核心配額是否足以部署為叢集選取的 Vm 總數。  檢查所有輸入的參數。  如果可以接受輸入，請按一下 **[確定]** 繼續進行。
 

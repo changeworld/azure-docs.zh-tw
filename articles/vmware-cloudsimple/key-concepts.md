@@ -9,11 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 410215550f728d6b11b02b3ef108d429481e42a0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8677bc7e4b9f4c2b24b5439aeefb307b9c544ed3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81869018"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525019"
 ---
 # <a name="key-concepts-for-administration-of-azure-vmware-solutions-by-cloudsimple"></a>透過 CloudSimple 管理 Azure VMware 解決方案的重要概念
 
@@ -60,4 +61,4 @@ CloudSimple 服務會為您的 CloudSimple 服務部署所在的每個區域提�
 深入了解：
 
 * [CloudSimple 虛擬機器](cloudsimple-virtual-machines.md)
-* [Azure 訂用帳戶對應](https://docs.microsoft.com/azure/vmware-cloudsimple/azure-subscription-mapping/)
+* [Azure 訂用帳戶對應](./azure-subscription-mapping.md)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 03/26/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 5d2fb62870e2c41af635627f5d692f08c67f8394
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2457952051f575306de46e3e8145cc26678a1ef8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80373345"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526533"
 ---
 # <a name="windows-vm-cannot-boot-due-to-windows-boot-manager"></a>Windows VM 無法開機，因為 Windows 開機管理程式
 
@@ -29,7 +29,7 @@ ms.locfileid: "80373345"
 
 VM 在等候使用者提示時停滯，除非手動指示，否則不會開機。
 
-當您使用 [[開機診斷](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics)] 來查看 VM 的螢幕擷取畫面時，您會看到螢幕擷取畫面顯示 Windows 開機管理程式，其中包含 [*選擇要啟動的作業系統]，或按 tab 鍵來選取工具：*。
+當您使用 [[開機診斷](./boot-diagnostics.md)] 來查看 VM 的螢幕擷取畫面時，您會看到螢幕擷取畫面顯示 Windows 開機管理程式，其中包含 [*選擇要啟動的作業系統]，或按 tab 鍵來選取工具：*。
 
 圖 1
  
@@ -53,7 +53,7 @@ VM 在等候使用者提示時停滯，除非手動指示，否則不會開機�
 
 如果您可以存取序列主控台，有兩種方式可達到更快速的開機時間。 請減少*displaybootmenu*等候時間，或完全移除旗標。
 
-1. 遵循指示來存取[適用于 Windows 的 Azure 序列主控台](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-windows)，以取得以文字為基礎的主控台存取權。
+1. 遵循指示來存取[適用于 Windows 的 Azure 序列主控台](./serial-console-windows.md)，以取得以文字為基礎的主控台存取權。
 
    > [!NOTE]
    > 如果您無法存取序列主控台，請直接跳到[建立並存取修復 VM](#create-and-access-a-repair-vm)。
@@ -77,7 +77,7 @@ VM 在等候使用者提示時停滯，除非手動指示，否則不會開機�
 
 ### <a name="create-and-access-a-repair-vm"></a>建立和存取修復 VM
 
-1. 使用 [VM 修復命令的步驟 1-3](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) 準備修復 VM。
+1. 使用 [VM 修復命令的步驟 1-3](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) 準備修復 VM。
 2. 使用遠端桌面連線連接到修復 VM。
 
 ### <a name="configure-for-faster-boot-time-on-a-repair-vm"></a>針對修復 VM 設定更快速的開機時間
@@ -154,4 +154,4 @@ VM 在等候使用者提示時停滯，除非手動指示，否則不會開機�
 
 ### <a name="rebuild-the-original-vm"></a>重建原始 VM
 
-使用 [VM 修復命令的步驟 5](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) 重新組裝 VM。
+使用 [VM 修復命令的步驟 5](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) 重新組裝 VM。

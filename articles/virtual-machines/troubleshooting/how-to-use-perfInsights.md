@@ -13,14 +13,14 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 896e69bad9cd75b57ef2bf93048c332ef4d974c0
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 7abff8c33ea276b8b8aaeffd010d5f5e09440d9b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207702"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526634"
 ---
-# <a name="how-to-use-perfinsights"></a>如何使用 PerfInsights
+# <a name="how-to-use-perfinsights-in-azure"></a>如何在 Azure 中使用 PerfInsights
 
 [PerfInsights](https://aka.ms/perfinsightsdownload) 是一種自助診斷工具，此工具會收集和分析診斷資料，並提供報表來協助進行 Azure 中 Windows 虛擬機器效能問題的疑難排解。 您可以在虛擬機器上將 PerfInsights 當作獨立工具執行、使用 [Azure 虛擬機器的效能診斷](performance-diagnostics.md)直接從入口網站執行，或藉由安裝 [Azure 效能診斷 VM 擴充功能](performance-diagnostics-vm-extension.md)來執行。
 
@@ -65,7 +65,7 @@ PerfInsights 可以收集並分析多種資訊。 下列幾節會說明常見案
 
 ### <a name="performance-analysis"></a>效能分析
 
-此案例會使用於 RuleEngineConfig.json 檔案中指定的計數器來執行[效能計數器](https://msdn.microsoft.com/library/windows/desktop/aa373083(v=vs.85).aspx) \(英文\) 追蹤。 如果將 VM 識別為執行 SQL Server 的伺服器，就會執行效能計數器追蹤。 它會使用可在 RuleEngineConfig.json 檔案中找到的計數器來執行此動作。 此案例也會包含效能診斷資料。
+此案例會使用於 RuleEngineConfig.json 檔案中指定的計數器來執行[效能計數器](/windows/win32/perfctrs/performance-counters-portal) \(英文\) 追蹤。 如果將 VM 識別為執行 SQL Server 的伺服器，就會執行效能計數器追蹤。 它會使用可在 RuleEngineConfig.json 檔案中找到的計數器來執行此動作。 此案例也會包含效能診斷資料。
 
 ### <a name="azure-files-analysis"></a>Azure 檔案分析
 
@@ -265,7 +265,7 @@ Diskspd I/O 工作負載測試 (OS 磁碟 [寫入] 和集區磁碟 [讀取/寫�
 
 [DiskMap]**** 和 [VolumeMap]**** 區段說明邏輯磁碟區和實體磁碟如何彼此相關。
 
-在實體磁碟檢視方塊 (磁碟對應) 中，資料表會顯示在磁碟上執行的所有邏輯磁碟區。 在下列範例中， **PhysicalDrive2**會在 (J 和 H) 的多個磁碟分割上，執行兩個建立的邏輯磁片區：
+在實體磁碟檢視方塊 (磁碟對應) 中，資料表會顯示在磁碟上執行的所有邏輯磁碟區。 在下列範例中， **PhysicalDrive2**會執行在多個磁碟分割（J 和 H）上建立的兩個邏輯磁片區：
 
 ![磁碟索引標籤的螢幕擷取畫面](media/how-to-use-perfInsights/pi-disk-tab.png)
 
@@ -300,7 +300,7 @@ Diskspd 是來自 Microsoft 的儲存體負載產生器和效能測試工具。 
 
 ### <a name="xperf"></a>Xperf
 
-Xperf 是命令列工具，會從 Windows 效能工具組擷取追蹤。 如需詳細資訊，請參閱 [Windows 效能工具組 – Xperf](https://blogs.msdn.microsoft.com/ntdebugging/2008/04/03/windows-performance-toolkit-xperf/)。
+Xperf 是命令列工具，會從 Windows 效能工具組擷取追蹤。 如需詳細資訊，請參閱 [Windows 效能工具組 – Xperf](/archive/blogs/ntdebugging/windows-performance-toolkit-xperf)。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -313,4 +313,3 @@ Xperf 是命令列工具，會從 Windows 效能工具組擷取追蹤。 如需�
 請依照訊息中的指示來存取檔案傳輸工作區。 為增加安全性，您必須在第一次使用時變更密碼。
 
 登入之後，您會發現一個對話方塊，可上傳 PerfInsights 收集的 **PerformanceDiagnostics\_yyyy-MM-dd\_hh-mm-ss-fff.zip** 檔案。
-

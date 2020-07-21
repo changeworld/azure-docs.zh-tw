@@ -15,11 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/14/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 15f94e93c270c8d62436b81a7caedbf181c1aeb8
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 5b6879d11a4b47c0090f13baa0a15dcc696c8534
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84022537"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525376"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-workload"></a>適用於 SAP 工作負載的 Azure 虛擬機器 DBMS 部署
 
@@ -306,7 +307,7 @@ ms.locfileid: "84022537"
 [xplat-cli-azure-resource-manager]:../../../xplat-cli-azure-resource-manager.md
 
 
-本文件介紹在 Azure IaaS 中部署適用於 SAP 工作負載的 Oracle Database 時，幾個需要考量的地方。 在您閱讀本文件之前，建議您先參閱[適用於 SAP 工作負載的 Azure 虛擬機器 DBMS 部署考量](dbms_guide_general.md)。 我們也建議您參閱 [Azure 上的 SAP 工作負載文件](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started)中的其他指南。 
+本文件介紹在 Azure IaaS 中部署適用於 SAP 工作負載的 Oracle Database 時，幾個需要考量的地方。 在您閱讀本文件之前，建議您先參閱[適用於 SAP 工作負載的 Azure 虛擬機器 DBMS 部署考量](dbms_guide_general.md)。 我們也建議您參閱 [Azure 上的 SAP 工作負載文件](./get-started.md)中的其他指南。 
 
 您可以在 SAP 附註 [2039619] 中找到支援在 Azure 的 Oracle 上執行 SAP 的 Oracle 版本和對應的 OS 版本。
 
@@ -347,14 +348,14 @@ Windows 和 Oracle Linux 是 Oracle 和 Azure 上的 SAP 唯一支援的作業�
 
 如果您擁有較小的 VM，我們建議將 Oracle home、stage、"saptrace"、"saparch"、"sapbackup"、"sapcheck"，或 "sapreorg" 安裝/置於 OS 磁碟中。 這些部分的 Oracle DBMS 元件並不會密集地使用 I/O 和 I/O 輸送量。 這代表 OS 磁碟可以處理它們的 I/O 需求。 OS 磁碟的預設大小為 127 GB。 
 
-如果可用空間不足，則可以將該磁碟的大小[調整](https://docs.microsoft.com/azure/virtual-machines/windows/expand-os-disk)為 2048 GB。 Oracle Database 和重做記錄檔則必須儲存在個別的資料磁碟上。 例外狀況為 Oracle 暫存資料表空間。 Tempfiles 可以在 D:/ (非永續性磁碟) 上建立。 非持續性 D:\ 磁碟機也會提供更好的 I/O 延遲和輸送量 (但 A 系列 VM 除外)。 
+如果可用空間不足，則可以將該磁碟的大小[調整](../../windows/expand-os-disk.md)為 2048 GB。 Oracle Database 和重做記錄檔則必須儲存在個別的資料磁碟上。 例外狀況為 Oracle 暫存資料表空間。 Tempfiles 可以在 D:/ (非永續性磁碟) 上建立。 非持續性 D:\ 磁碟機也會提供更好的 I/O 延遲和輸送量 (但 A 系列 VM 除外)。 
 
 若要判斷 Tempfiles 空間的正確容量，您可以檢查現有系統上的 Tempfiles 大小。
 
 ### <a name="storage-configuration"></a>儲存體組態
-只支援使用 NTFS 格式化磁碟的單一執行個體 Oracle。 所有的資料庫檔案都必須儲存在受控磁碟 (建議) 或 VHD 上的 NTFS 檔案系統上。 這些磁碟會掛接到 Azure VM，並且以 [Azure 分頁 Blob 儲存體](https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs) \(英文\) 或 [Azure 受控磁碟](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview)為基礎。 
+只支援使用 NTFS 格式化磁碟的單一執行個體 Oracle。 所有的資料庫檔案都必須儲存在受控磁碟 (建議) 或 VHD 上的 NTFS 檔案系統上。 這些磁碟會掛接到 Azure VM，並且以 [Azure 分頁 Blob 儲存體](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) \(英文\) 或 [Azure 受控磁碟](../../windows/managed-disks-overview.md)為基礎。 
 
-我們強烈建議使用 [Azure 受控磁碟](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview)。 我們也強烈建議針對 Oracle Database 部署使用[進階 SSD](../../windows/disks-types.md)。
+我們強烈建議使用 [Azure 受控磁碟](../../windows/managed-disks-overview.md)。 我們也強烈建議針對 Oracle Database 部署使用[進階 SSD](../../windows/disks-types.md)。
 
 Oracle Database 檔案不支援網路磁碟機或遠端共用 (例如 Azure 檔案服務)。 如需詳細資訊，請參閱
 
@@ -403,19 +404,19 @@ Azure 磁碟具有 IOPS 輸送量上的配額。 此概念已詳述於[適用於
 
 
 #### <a name="write-accelerator"></a>寫入加速器
-針對 Azure M 系列的 VM，和 Azure 進階儲存體效能相比，寫入線上重做記錄的延遲將會大幅降低。 請針對以 Azure 進階儲存體為基礎並用於線上重做記錄檔的磁碟 (VHD) 啟用 Azure 寫入加速器。 如需詳細資訊，請參閱[寫入加速器](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator)。
+針對 Azure M 系列的 VM，和 Azure 進階儲存體效能相比，寫入線上重做記錄的延遲將會大幅降低。 請針對以 Azure 進階儲存體為基礎並用於線上重做記錄檔的磁碟 (VHD) 啟用 Azure 寫入加速器。 如需詳細資訊，請參閱[寫入加速器](../../linux/how-to-enable-write-accelerator.md)。
 
 
 ### <a name="backuprestore"></a>備份/還原
 針對備份/還原功能，適用於 Oracle 的 SAP BR*Tools 的支援方式，與其在標準 Windows Server 作業系統上的支援方式相同。 Oracle Recovery Manager (RMAN) 也支援備份至磁碟，以及從磁碟還原。
 
-您也可以使用 Azure 備份來執行應用程式一致的 VM 備份。 [在 Azure 中規劃 VM 備份基礎結構](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction)一文說明 Azure 備份如何使用 Windows VSS 功能來執行應用程式一致的備份。 由 SAP 在 Azure 上所支援的 Oracle DBMS 版本，能夠利用 VSS 功能進行備份。 如需詳細資訊，請參閱 Oracle 文件[搭配 VSS 進行資料庫備份與復原的基本概念](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/ntqrf/basic-concepts-of-database-backup-and-recovery-with-vss.html#GUID-C085101B-237F-4773-A2BF-1C8FD040C701) \(英文\)。
+您也可以使用 Azure 備份來執行應用程式一致的 VM 備份。 [在 Azure 中規劃 VM 備份基礎結構](../../../backup/backup-azure-vms-introduction.md)一文說明 Azure 備份如何使用 Windows VSS 功能來執行應用程式一致的備份。 由 SAP 在 Azure 上所支援的 Oracle DBMS 版本，能夠利用 VSS 功能進行備份。 如需詳細資訊，請參閱 Oracle 文件[搭配 VSS 進行資料庫備份與復原的基本概念](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/ntqrf/basic-concepts-of-database-backup-and-recovery-with-vss.html#GUID-C085101B-237F-4773-A2BF-1C8FD040C701) \(英文\)。
 
 
 ### <a name="high-availability"></a>高可用性
 基於高可用性和災害復原目的支援 Oracle Data Guard。 若要在 Data Guard 中達成自動容錯移轉，便必須使用 Fast-Start Failover (FSFA)。 觀察者 (FSFA) 會觸發容錯移轉。 如果您不使用 FSFA，則只能使用手動容錯移轉設定。
 
-如需 Azure 中適用於 Oracle Database 之災害復原的相關資訊，請參閱[Azure 環境中 Oracle Database 12c 資料庫的災害復原](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-disaster-recovery)。
+如需 Azure 中適用於 Oracle Database 之災害復原的相關資訊，請參閱[Azure 環境中 Oracle Database 12c 資料庫的災害復原](../oracle/oracle-disaster-recovery.md)。
 
 ### <a name="accelerated-networking"></a>加速網路
 針對 Windows 上的 Oracle 部署，我們強烈建議使用 [Azure 加速網路](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) \(英文\) 中所述的加速網路功能。 另請考慮在[適用於 SAP 工作負載的 Azure 虛擬機器 DBMS 部署考量](dbms_guide_general.md)中所提出的建議。 
@@ -443,7 +444,7 @@ Oracle 支援 Oracle 軟體在以 Oracle Linux 為客體 OS 的 Microsoft Azure 
 
 針對 Azure 上的 Oracle Database 檔案，支援 ext4、xfs 或 Oracle ASM 檔案系統。 所有的資料庫檔案都必須儲存於以 VHD 或受控磁碟為基礎的這些檔案系統上。 這些磁碟會掛接到 Azure VM，並且以 [Azure 分頁 Blob 儲存體](<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) \(英文\) 或 [Azure 受控磁碟](../../windows/managed-disks-overview.md)為基礎。
 
-針對 Oracle Linux UEK 核心，UEK 必須至少為第 4 版，才能支援 [Azure 進階 SSD](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#disk-caching)。
+針對 Oracle Linux UEK 核心，UEK 必須至少為第 4 版，才能支援 [Azure 進階 SSD](../../windows/premium-storage-performance.md#disk-caching)。
 
 我們非常建議使用 [Azure 受控磁碟](../../windows/managed-disks-overview.md)。 我們也非常建議針對 Oracle Database 部署使用 [Azure 進階 SSD](../../windows/disks-types.md)。
 
@@ -497,19 +498,19 @@ Oracle Database 檔案不支援網路磁碟機或遠端共用 (例如 Azure 檔�
 
 
 #### <a name="write-accelerator"></a>寫入加速器
-針對 Azure M 系列的 VM，當您使用 Azure 寫入加速器時，和 Azure 進階儲存體效能相比，寫入線上重做記錄的延遲將會大幅降低。 請針對以 Azure 進階儲存體為基礎並用於線上重做記錄檔的磁碟 (VHD) 啟用 Azure 寫入加速器。 如需詳細資訊，請參閱[寫入加速器](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator)。
+針對 Azure M 系列的 VM，當您使用 Azure 寫入加速器時，和 Azure 進階儲存體效能相比，寫入線上重做記錄的延遲將會大幅降低。 請針對以 Azure 進階儲存體為基礎並用於線上重做記錄檔的磁碟 (VHD) 啟用 Azure 寫入加速器。 如需詳細資訊，請參閱[寫入加速器](../../linux/how-to-enable-write-accelerator.md)。
 
 
 ### <a name="backuprestore"></a>備份/還原
 針對備份/還原功能，適用於 Oracle 的 SAP BR*Tools 的支援方式，與其在裸機和 Hyper-V 上的支援方式相同。 Oracle Recovery Manager (RMAN) 也支援備份至磁碟，以及從磁碟還原。
 
-如需如何使用 Azure 備份及復原服務來備份和復原 Oracle Database 的詳細資料，請參閱[在 Azure Linux 虛擬機器上備份及復原 Oracle Database 12c 資料庫](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-backup-recovery)。
+如需如何使用 Azure 備份及復原服務來備份和復原 Oracle Database 的詳細資料，請參閱[在 Azure Linux 虛擬機器上備份及復原 Oracle Database 12c 資料庫](../oracle/oracle-backup-recovery.md)。
 
 ### <a name="high-availability"></a>高可用性
-基於高可用性和災害復原目的支援 Oracle Data Guard。 若要在 Data Guard 中達成自動容錯移轉，便必須使用 Fast-Start Failover (FSFA)。 觀察者功能 (FSFA) 會觸發容錯移轉。 如果您不使用 FSFA，則只能使用手動容錯移轉設定。 如需詳細資訊，請參閱[在 Azure Linux 虛擬機器上實作 Oracle Data Guard](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/configure-oracle-dataguard)。
+基於高可用性和災害復原目的支援 Oracle Data Guard。 若要在 Data Guard 中達成自動容錯移轉，便必須使用 Fast-Start Failover (FSFA)。 觀察者功能 (FSFA) 會觸發容錯移轉。 如果您不使用 FSFA，則只能使用手動容錯移轉設定。 如需詳細資訊，請參閱[在 Azure Linux 虛擬機器上實作 Oracle Data Guard](../oracle/configure-oracle-dataguard.md)。
 
 
-Azure 中適用於 Oracle 資料庫的災害復原層面，已詳述於[Azure 環境中 Oracle Database 12c 資料庫的災害復原](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-disaster-recovery)中。
+Azure 中適用於 Oracle 資料庫的災害復原層面，已詳述於[Azure 環境中 Oracle Database 12c 資料庫的災害復原](../oracle/oracle-disaster-recovery.md)中。
 
 ### <a name="accelerated-networking"></a>加速網路
 Oracle Linux 中針對 Azure 加速網路的支援，已於 Oracle Linux 7 Update 5 (Oracle Linux 7.5) 中推出。 如果您無法升級至最新的 Oracle Linux 7.5 版，可能的因應措施為使用 RedHat Compatible Kernel (RHCK)，而非使用 Oracle UEK 核心。 

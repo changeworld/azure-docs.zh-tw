@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 05/07/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 187098f557cb691e023abb282a265b11e975c544
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cbf2fe491e1fe0b553eab04ca7190da0413a3ba6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84629253"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526005"
 ---
 # <a name="vm-is-unresponsive-when-applying-group-policy-local-users-and-groups-policy"></a>應用群組原則本機使用者和群組原則時，VM 沒有回應
 
@@ -26,7 +27,7 @@ ms.locfileid: "84629253"
 
 ## <a name="symptoms"></a>徵狀
 
-當您使用 [[開機診斷](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics)] 來查看 VM 的螢幕擷取畫面時，畫面會停滯並出現下列訊息：「正在套用群組原則本機使用者和群組原則」。
+當您使用 [[開機診斷](./boot-diagnostics.md)] 來查看 VM 的螢幕擷取畫面時，畫面會停滯並出現下列訊息：「正在套用群組原則本機使用者和群組原則」。
 
 :::image type="content" source="media//unresponsive-vm-apply-group-policy/applying-group-policy-1.png" alt-text="載入套用群組原則本機使用者與群組原則 (Windows Server 2012 R2) 的螢幕擷取畫面。":::
 
@@ -57,7 +58,7 @@ ms.locfileid: "84629253"
 
 ### <a name="step-1-create-and-access-a-repair-vm"></a>步驟 1:建立和存取修復 VM
 
-1. 使用 [VM 修復命令的步驟 1-3](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) 來準備修復 VM。
+1. 使用 [VM 修復命令的步驟 1-3](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) 來準備修復 VM。
 2. 使用遠端桌面連線連接到修復 VM。
 
 ### <a name="step-2-disable-the-policy"></a>步驟 2:停用原則
@@ -139,7 +140,7 @@ ms.locfileid: "84629253"
 
 ### <a name="step-4-rebuild-the-vm"></a>步驟 4：重建 VM
 
-使用[vm 修復命令的步驟 5](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example)來重新組裝 vm。
+使用[vm 修復命令的步驟 5](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example)來重新組裝 vm。
 
 如果問題已修正，原則現在會在本機停用。 針對永久解決方案，請勿在 Vm 上使用 CleanupProfiles 原則。 使用不同的方法來執行設定檔清除。
 
@@ -149,4 +150,4 @@ ms.locfileid: "84629253"
 
 ## <a name="next-steps"></a>後續步驟
 
-如果您在套用 Windows Update 時遇到問題，請參閱[在套用 Windows Update 時，VM 沒有回應「C01A001D」錯誤](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/unresponsive-vm-apply-windows-update)。
+如果您在套用 Windows Update 時遇到問題，請參閱[在套用 Windows Update 時，VM 沒有回應「C01A001D」錯誤](./unresponsive-vm-apply-windows-update.md)。

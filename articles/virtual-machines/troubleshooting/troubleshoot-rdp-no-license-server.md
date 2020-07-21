@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
-ms.openlocfilehash: 154160f9a3fbd485ee6383bf3d5ff1c291520a75
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 276be92ea4c03b9ebeb3e13df69ce1b10328dcaf
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71088528"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526464"
 ---
 # <a name="remote-desktop-license-server-isnt-available-when-you-connect-to-an-azure-vm"></a>當您連線到 Azure VM 時無法使用遠端桌面授權伺服器
 
@@ -122,7 +122,7 @@ mstsc /v:<Server>[:<Port>] /admin
        telnet <FQDN / IP License Server> 135
        ```
 
-3. 如果環境中沒有遠端桌面授權伺服器，但您想要一部，則您可以[安裝遠端桌面授權角色服務](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731765(v=ws.11)) \(英文\)。 然後[設定 RDS 授權](https://techcommunity.microsoft.com/t5/Ask-The-Performance-Team/RD-Licensing-Configuration-on-Windows-Server-2012/ba-p/375383) \(英文\)。
+3. 如果環境中沒有遠端桌面授權伺服器，但您想要一部，則您可以[安裝遠端桌面授權角色服務](/previous-versions/windows/it-pro/windows-server-2008-r2-and-2008/cc731765(v=ws.11)) \(英文\)。 然後[設定 RDS 授權](https://techcommunity.microsoft.com/t5/Ask-The-Performance-Team/RD-Licensing-Configuration-on-Windows-Server-2012/ba-p/375383) \(英文\)。
 
 4. 如果遠端桌面授權伺服器已設定且狀況良好，請確定會使用 CAL 來啟動遠端桌面授權伺服器。
 

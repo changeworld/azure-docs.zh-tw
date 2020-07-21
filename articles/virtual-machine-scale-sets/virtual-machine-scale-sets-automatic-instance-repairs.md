@@ -9,11 +9,12 @@ ms.subservice: availability
 ms.date: 02/28/2020
 ms.reviewer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: 9e2b15eceff9bca4cee960fa462eb5148e3716dd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 45c316c1d1dd56f6d920423a725b2488df1a5032
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83197026"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527416"
 ---
 # <a name="automatic-instance-repairs-for-azure-virtual-machine-scale-sets"></a>Azure 虛擬機器擴展集的執行個體自動修復
 
@@ -140,7 +141,7 @@ New-AzVmssConfig `
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
 
-下列範例會在使用*[az vmss create](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest#az-vmss-create)* 建立新的擴展集時，啟用自動修復原則。 首先，建立資源群組，然後建立一個新的擴展集，並將 [自動修復] 原則寬限期設為30分鐘。
+下列範例會在使用*[az vmss create](/cli/azure/vmss?view=azure-cli-latest#az-vmss-create)* 建立新的擴展集時，啟用自動修復原則。 首先，建立資源群組，然後建立一個新的擴展集，並將 [自動修復] 原則寬限期設為30分鐘。
 
 ```azurecli-interactive
 az group create --name <myResourceGroup> --location <VMSSLocation>
@@ -208,7 +209,7 @@ Update-AzVmss `
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
 
-以下是使用*[az vmss update](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest#az-vmss-update)* 來更新現有擴展集之自動實例修復原則的範例。
+以下是使用*[az vmss update](/cli/azure/vmss?view=azure-cli-latest#az-vmss-update)* 來更新現有擴展集之自動實例修復原則的範例。
 
 ```azurecli-interactive
 az vmss update \  
@@ -222,7 +223,7 @@ az vmss update \
 
 ### <a name="rest-api"></a>REST API 
 
-針對虛擬機器擴展集使用[取得實例視圖](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/getinstanceview)搭配 API 版本2019-12-01 或更高版本，以在屬性*orchestrationServices*下查看自動修復的*serviceState* 。 
+針對虛擬機器擴展集使用[取得實例視圖](/rest/api/compute/virtualmachinescalesets/getinstanceview)搭配 API 版本2019-12-01 或更高版本，以在屬性*orchestrationServices*下查看自動修復的*serviceState* 。 
 
 ```http
 GET '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/instanceView?api-version=2019-12-01'
@@ -258,7 +259,7 @@ GET '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/provider
 
 ### <a name="azure-cli"></a>Azure CLI 
 
-使用[get-instance-view](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest#az-vmss-get-instance-view) Cmdlet 來查看自動實例修復的*serviceState* 。 
+使用[get-instance-view](/cli/azure/vmss?view=azure-cli-latest#az-vmss-get-instance-view) Cmdlet 來查看自動實例修復的*serviceState* 。 
 
 ```azurecli-interactive
 az vmss get-instance-view \
@@ -266,7 +267,7 @@ az vmss get-instance-view \
     --resource-group MyResourceGroup
 ```
 
-使用[設定-協調流程-服務狀態](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest#az-vmss-set-orchestration-service-state)Cmdlet 來更新*serviceState* ，以進行自動實例修復。 將擴展集加入自動修復功能之後，您就可以使用此 Cmdlet 來暫停或繼續自動修復您的擴展集。 
+使用[設定-協調流程-服務狀態](/cli/azure/vmss?view=azure-cli-latest#az-vmss-set-orchestration-service-state)Cmdlet 來更新*serviceState* ，以進行自動實例修復。 將擴展集加入自動修復功能之後，您就可以使用此 Cmdlet 來暫停或繼續自動修復您的擴展集。 
 
 ```azurecli-interactive
 az vmss set-orchestration-service-state \
@@ -277,7 +278,7 @@ az vmss set-orchestration-service-state \
 ```
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-使用[get-azvmss](https://docs.microsoft.com/powershell/module/az.compute/get-azvmss?view=azps-3.7.0)指令程式搭配參數*InstanceView* ，以查看自動實例修復的*ServiceState* 。
+使用[get-azvmss](/powershell/module/az.compute/get-azvmss?view=azps-3.7.0)指令程式搭配參數*InstanceView* ，以查看自動實例修復的*ServiceState* 。
 
 ```azurepowershell-interactive
 Get-AzVmss `

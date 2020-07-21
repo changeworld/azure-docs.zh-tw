@@ -15,16 +15,16 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/30/2020
 ms.author: radeltch
-ms.openlocfilehash: a7e44046de3eccab83e8315e6adea150a146e660
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 267d600270e834cf4f1f077452fda7459fac3029
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964187"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525444"
 ---
 # <a name="azure-monitor-for-sap-solutions-providers-preview"></a>適用于 SAP 解決方案提供者的 Azure 監視器（預覽）
 
-## <a name="overview"></a>總覽  
+## <a name="overview"></a>概觀  
 
 在 SAP 解決方案的 Azure 監視器內容中，*提供者類型*是指特定的*提供者*。 例如*SAP Hana*，它是針對 SAP 環境內的特定元件所設定，如 SAP Hana 資料庫。 提供者包含對應元件的連接資訊，並有助於從該元件收集遙測資料。 您可以使用相同提供者類型的多個提供者，或多個提供者類型的多個提供者，設定 SAP 解決方案資源的一個 Azure 監視器（也稱為 SAP 監視器資源）。
    
@@ -82,4 +82,4 @@ ms.locfileid: "85964187"
 ## <a name="next-steps"></a>後續步驟
 
 - 建立您的第一個 Azure 監視器的 SAP 解決方案資源。
-- 您對 SAP 解決方案的 Azure 監視器有任何疑問嗎？ 查看[常見問題](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/azure-monitor-faq)一節
+- 您對 SAP 解決方案的 Azure 監視器有任何疑問嗎？ 查看[常見問題](./azure-monitor-faq.md)一節

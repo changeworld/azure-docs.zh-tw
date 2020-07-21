@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: d2a14a501ebcf0913804ce39019a3fa4018ca141
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 9363f400754a38d4cc6efd29ac48d7a0476de66f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362368"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524296"
 ---
 # <a name="add-parameters-to-commands"></a>將參數新增至命令
 
 在本文中，您將瞭解如何將參數新增至自訂命令。 參數是用來完成工作的命令所需的資訊。 在複雜的案例中，參數也可以用來定義觸發自訂動作的條件。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 > [!div class="checklist"]
 > * [如何：使用簡單的命令建立應用程式](./how-to-custom-commands-create-application-with-simple-commands.md)
@@ -52,18 +52,21 @@ ms.locfileid: "85362368"
 
        | 設定      | 建議的值     | 描述                                                      |
        | ------------------ | ----------------| ---------------------------------------------------------------------|
-       | Name               | `OnOff`           | 參數的描述性名稱                                                                           |
+       | 名稱               | `OnOff`           | 參數的描述性名稱                                                                           |
        | 為全域          | unchecked       | 核取方塊，指出此參數的值是否會全域套用至應用程式中的所有命令|
        | 必要           | checked         | 指出是否需要此參數值的核取方塊，才能完成命令 |
        | 必要參數的回應      |簡單編輯器 >`On or Off?`      | 當不知道此參數的值時，所要求的提示 |
-       | 類型               | String          | 參數的類型，例如數位、字串、日期時間或地理位置   |
+       | 類型               | 字串          | 參數的類型，例如數位、字串、日期時間或地理位置   |
        | 設定      | 接受來自內部目錄的預先定義輸入值 | 若為字串，這會將輸入限制為一組可能的值 |
        | 預先定義的輸入值     | `on`, `off`           | 一組可能的值及其別名         |
        
         
    1. 若要新增預先定義的輸入值，請選取 [新增**預先定義的輸入**]，然後在 [**新專案**] 視窗中，輸入如上表所提供的**名稱**。 在此情況下，我們不會使用別名，因此您可以將其保留空白。 
+
     > [!div class="mx-imgBorder"]
-        > ![建立參數](media/custom-commands/create-on-off-parameter.png)
+
+    > ![建立參數](media/custom-commands/create-on-off-parameter.png)
+
    1. 選取 [**儲存**] 以儲存參數的所有設定。
  
  ### <a name="add-subjectdevice-parameter"></a>新增 SubjectDevice 參數 
@@ -73,11 +76,11 @@ ms.locfileid: "85362368"
 
        | 設定            | 建議的值       |
        | ------------------ | --------------------- |
-       | Name               | `SubjectDevice`         |
+       | 名稱               | `SubjectDevice`         |
        | 為全域          | unchecked             |
        | 必要           | checked               |
        | 必要參數的回應     | 簡單編輯器 >`Which device do you want to control?`    | 
-       | 類型               | String                |          |
+       | 類型               | 字串                |          |
        | 設定      | 接受來自內部目錄的預先定義輸入值 | 
        | 預先定義的輸入值 | `tv`, `fan`               |
        | 別名（ `tv` ）      | `television`, `telly`     |
@@ -115,7 +118,7 @@ turn something
 
 1. 在 [**條件**] 區段中，選取 [**新增條件**]。
 1. 在 [**新增條件**] 視窗的 [**類型**] 清單中，選取 [**必要參數**]。 在下面的檢查清單中，檢查**OnOff**和**SubjectDevice**。
-1. 選取 [建立]****。
+1. 選取 [建立]。
 1. 在 [**動作**] 區段中，將滑鼠游標停留在動作上，然後選取 [編輯] 按鈕，以編輯現有的**傳送語音回應**動作。 這次，請使用新建立的**OnOff**和**SubjectDevice**參數
 
     ```
@@ -123,7 +126,7 @@ turn something
     ```
 1. 選取 [儲存]。
 
-### <a name="try-it-out"></a>試試看
+### <a name="try-it-out"></a>試做
 1. 選取右窗格頂端的 [**定型**] 圖示。
 
 1. 訓練完成時，選取 [**測試**]。 [**測試您的應用程式**] 視窗隨即出現。
@@ -166,9 +169,9 @@ change the temperature
 | 設定      | 建議的值     |
 | ------------------ | ----------------|
 | 條件         | 必要參數 > 溫度           |
-| 動作           | 傳送語音回應 >`Ok, setting temperature to {Temperature} degrees` |
+| [動作]           | 傳送語音回應 >`Ok, setting temperature to {Temperature} degrees` |
 
-### <a name="try-it-out"></a>試試看
+### <a name="try-it-out"></a>試做
 
 使用一些互動來**定型**和**測試**變更。
 
@@ -207,10 +210,10 @@ alarm for {DateTime}
 
    | 設定    | 建議的值                               |
    | ---------- | ------------------------------------------------------- |
-   | 動作    | 傳送語音回應-`Ok, alarm set for {DateTime}`  |
+   | [動作]    | 傳送語音回應-`Ok, alarm set for {DateTime}`  |
 
 
-### <a name="try-it-out"></a>試試看
+### <a name="try-it-out"></a>試做
 
 **定型**和**測試**變更。
 - 輸入：為明天的中午設定鬧鐘

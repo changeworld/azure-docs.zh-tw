@@ -1,5 +1,5 @@
 ---
-title: 使用新的工作階段主機擴充現有的主機集區-Azure
+title: 以新的工作階段主機擴充現有的主機集區 2019-Azure
 description: 如何在 Windows 虛擬桌面中使用新的工作階段主機擴充現有的主機集區。
 services: virtual-desktop
 author: Heidilohr
@@ -8,14 +8,14 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 956934bd536d8eb5e692ed193cad1424929db24b
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 291dc32453001dd1e188bacae8be372bb3645ece
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260761"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527535"
 ---
-# <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>使用新的工作階段主機擴充現有的主機集區
+# <a name="expand-an-existing-host-pool-with-new-session-hosts-fall-2019"></a>使用新的工作階段主機擴充現有的主機集區（秋季2019）
 
 >[!IMPORTANT]
 >此內容適用於不支援 Azure Resource Manager Windows 虛擬桌面物件的 2019 年秋季版本。 如果您嘗試管理 2020 年春季版更新中引進的 Azure Resource Manager Windows 虛擬桌面物件，請參閱[這篇文章](../expand-existing-host-pool.md)。
@@ -26,7 +26,7 @@ ms.locfileid: "86260761"
 
 ## <a name="what-you-need-to-expand-the-host-pool"></a>擴充主機集區所需的內容
 
-開始之前，請確定您已使用下列其中一種方法， (Vm 建立主機集區和工作階段主機虛擬機器) ：
+開始之前，請確定您已使用下列其中一種方法建立主機集區和工作階段主機虛擬機器（Vm）：
 
 - [Azure Marketplace 供應專案](create-host-pools-azure-marketplace-2019.md)
 - [GitHub Azure Resource Manager 範本](create-host-pools-arm-template.md)
@@ -76,7 +76,7 @@ ms.locfileid: "86260761"
 
 遵循[使用 Azure Marketplace 建立主機集](create-host-pools-azure-marketplace-2019.md)區中的指示，直到[執行 Azure Marketplace 供應專案以布建新的主機集](create-host-pools-azure-marketplace-2019.md#run-the-azure-marketplace-offering-to-provision-a-new-host-pool)區為止。 當您進入該點時，您必須在每個索引標籤上輸入下列資訊：
 
-### <a name="basics"></a>基本動作
+### <a name="basics"></a>基礎
 
 此區段中的所有值都應該符合您第一次建立主機集區和工作階段主機 Vm 時所提供的內容（*預設的桌面使用者*除外）：
 
