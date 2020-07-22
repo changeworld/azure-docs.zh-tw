@@ -4,12 +4,12 @@ description: 了解如何還原磁碟，並在 Azure 中使用備份與復原服
 ms.topic: tutorial
 ms.date: 01/31/2019
 ms.custom: mvc
-ms.openlocfilehash: 56410b5302611d5de3d72f727e1a4c36bd49ca7e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 75aa06d4c99c2b9c99015acfae98c30e75209f64
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82160933"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503518"
 ---
 # <a name="restore-a-disk-and-create-a-recovered-vm-in-azure"></a>在 Azure 中還原磁碟並建立已復原的 VM
 
@@ -43,7 +43,7 @@ Azure 備份會建立復原點，並儲存在異地備援復原保存庫。 當�
 
 若要還原磁碟，您可選取復原點作為復原資料的來源。 由於預設原則會每天建立復原點並保留 30 天，您可保留一組復原點，讓您選取特定的時間點進行復原。
 
-若要查看可用的復原點清單，請使用 [az backup recoverypoint list](https://docs.microsoft.com/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-list)。 復原點**名稱**用來復原磁碟。 在本教學課程中，我們需要最近可用的復原點。 `--query [0].name` 參數可選取最近的復原點名稱，如下所示：
+若要查看可用的復原點清單，請使用 [az backup recoverypoint list](/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-list)。 復原點**名稱**用來復原磁碟。 在本教學課程中，我們需要最近可用的復原點。 `--query [0].name` 參數可選取最近的復原點名稱，如下所示：
 
 ```azurecli-interactive
 az backup recoverypoint list \
@@ -65,7 +65,7 @@ az backup recoverypoint list \
 
 如果備份的 VM 具有受控磁碟，且其目的是要從復原點還原受控磁碟，您必須先提供 Azure 儲存體帳戶。 此儲存體帳戶會用來儲存 VM 組態和部署範本，以便後續用來從還原的磁碟部署 VM。 然後，您也可以為要還原的受控磁碟提供目標資源群組。
 
-1. 若要建立儲存體帳戶，請使用 [az storage account create](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create)。 儲存體帳戶名稱必須全部小寫，並且是全域唯一的。 以自己的唯一名稱取代 *mystorageaccount*：
+1. 若要建立儲存體帳戶，請使用 [az storage account create](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create)。 儲存體帳戶名稱必須全部小寫，並且是全域唯一的。 以自己的唯一名稱取代 *mystorageaccount*：
 
     ```azurecli-interactive
     az storage account create \
@@ -74,7 +74,7 @@ az backup recoverypoint list \
         --sku Standard_LRS
     ```
 
-2. 使用 [az backup restore restore-disks](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-disks) 從您的復原點還原磁碟。 以您在上一個命令中建立的儲存體帳戶名稱取代 *mystorageaccount*。 以您在先前 [az backup recoverypoint list](https://docs.microsoft.com/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-list) 命令的輸出中取得的復原點名稱取代 *myRecoveryPointName*。 ***也請提供要將受控磁碟還原到其中的目標資源群組***。
+2. 使用 [az backup restore restore-disks](/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-disks) 從您的復原點還原磁碟。 以您在上一個命令中建立的儲存體帳戶名稱取代 *mystorageaccount*。 以您在先前 [az backup recoverypoint list](/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-list) 命令的輸出中取得的復原點名稱取代 *myRecoveryPointName*。 ***也請提供要將受控磁碟還原到其中的目標資源群組***。
 
     ```azurecli-interactive
     az backup restore restore-disks \
@@ -109,7 +109,7 @@ az backup recoverypoint list \
 
 在其他步驟中，已還原的磁碟用來建立 VM。
 
-1. 若要建立儲存體帳戶，請使用 [az storage account create](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create)。 儲存體帳戶名稱必須全部小寫，並且是全域唯一的。 以自己的唯一名稱取代 *mystorageaccount*：
+1. 若要建立儲存體帳戶，請使用 [az storage account create](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create)。 儲存體帳戶名稱必須全部小寫，並且是全域唯一的。 以自己的唯一名稱取代 *mystorageaccount*：
 
     ```azurecli-interactive
     az storage account create \
@@ -118,7 +118,7 @@ az backup recoverypoint list \
         --sku Standard_LRS
     ```
 
-2. 使用 [az backup restore restore-disks](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-disks) 從您的復原點還原磁碟。 以您在上一個命令中建立的儲存體帳戶名稱取代 *mystorageaccount*。 以您在先前 [az backup recoverypoint list](https://docs.microsoft.com/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-list) 命令的輸出中取得的復原點名稱取代 *myRecoveryPointName*：
+2. 使用 [az backup restore restore-disks](/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-disks) 從您的復原點還原磁碟。 以您在上一個命令中建立的儲存體帳戶名稱取代 *mystorageaccount*。 以您在先前 [az backup recoverypoint list](/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-list) 命令的輸出中取得的復原點名稱取代 *myRecoveryPointName*：
 
     ```azurecli-interactive
     az backup restore restore-disks \
@@ -145,7 +145,7 @@ az backup recoverypoint list \
 
 ## Monitor the restore job
 
-To monitor the status of restore job, use [az backup job list](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-list):
+To monitor the status of restore job, use [az backup job list](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-list):
 
 ```azurecli-interactive
 az backup job list \
@@ -181,7 +181,7 @@ az backup job show \
     -n 1fc2d55d-f0dc-4ca6-ad48-aca0fe5d0414
 ```
 
-此查詢的輸出會提供所有詳細資料，但我們只對儲存體帳戶內容感興趣。 我們可以使用 Azure CLI 的[查詢功能](https://docs.microsoft.com/cli/azure/query-azure-cli?view=azure-cli-latest)來提取相關的詳細資料
+此查詢的輸出會提供所有詳細資料，但我們只對儲存體帳戶內容感興趣。 我們可以使用 Azure CLI 的[查詢功能](/cli/azure/query-azure-cli?view=azure-cli-latest)來提取相關的詳細資料
 
 ```azurecli-interactive
 az backup job show \
@@ -226,7 +226,7 @@ https://<storageAccountName.blob.core.windows.net>/<containerName>/<templateName
 
 因此，上述範例中的範本名稱將是 ```azuredeploy1fc2d55d-f0dc-4ca6-ad48-aca0519c0232.json```，而容器名稱為 ```myVM-daa1931199fd4a22ae601f46d8812276```
 
-現在，取得此容器和範本的 SAS 權杖，詳細說明請見[此處](https://docs.microsoft.com/azure/azure-resource-manager/templates/secure-template-with-sas-token?tabs=azure-cli#provide-sas-token-during-deployment)
+現在，取得此容器和範本的 SAS 權杖，詳細說明請見[此處](../azure-resource-manager/templates/secure-template-with-sas-token.md?tabs=azure-cli#provide-sas-token-during-deployment)
 
 ```azurecli-interactive
 expiretime=$(date -u -d '30 minutes' +%Y-%m-%dT%H:%MZ)
@@ -250,7 +250,7 @@ url=$(az storage blob url \
 
 ### <a name="deploy-the-template-to-create-the-vm"></a>部署範本以建立 VM
 
-現在，請部署範本以建立 VM，如[此處](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-cli)所說明。
+現在，請部署範本以建立 VM，如[此處](../azure-resource-manager/templates/deploy-cli.md)所說明。
 
 ```azurecli-interactive
 az group deployment create \

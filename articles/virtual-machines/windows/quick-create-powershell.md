@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 07/02/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 45160e8bc406318f3b3924142899e33640ee6b73
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e9ea550b9d9579438e18a3ee1d93ab9e9e22cc65
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82097943"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508469"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-in-azure-with-powershell"></a>快速入門：使用 PowerShell 在 Azure 中建立 Windows 虛擬機器
 
@@ -25,12 +25,12 @@ Azure PowerShell 模組用於從 PowerShell 命令列或在指令碼中建立和
 
 Azure Cloud Shell 是免費的互動式 Shell，可讓您用來執行本文中的步驟。 它具有預先安裝和設定的共用 Azure 工具，可與您的帳戶搭配使用。 
 
-若要開啟 Cloud Shell，只要選取程式碼區塊右上角的 [試試看]  即可。 您也可以移至 [https://shell.azure.com/powershell](https://shell.azure.com/powershell)，從另一個瀏覽器索引標籤啟動 Cloud Shell。 選取 [複製]  即可複製程式碼區塊，將它貼到 Cloud Shell 中，然後按 enter 鍵加以執行。
+若要開啟 Cloud Shell，只要選取程式碼區塊右上角的 [試試看] 即可。 您也可以移至 [https://shell.azure.com/powershell](https://shell.azure.com/powershell)，從另一個瀏覽器索引標籤啟動 Cloud Shell。 選取 [複製]  即可複製程式碼區塊，將它貼到 Cloud Shell 中，然後按 enter 鍵加以執行。
 
 
 ## <a name="create-resource-group"></a>建立資源群組
 
-使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) 來建立 Azure 資源群組。 資源群組是在其中部署與管理 Azure 資源的邏輯容器。
+使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 來建立 Azure 資源群組。 資源群組是在其中部署與管理 Azure 資源的邏輯容器。
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name myResourceGroup -Location EastUS
@@ -38,7 +38,7 @@ New-AzResourceGroup -Name myResourceGroup -Location EastUS
 
 ## <a name="create-virtual-machine"></a>建立虛擬機器
 
-使用 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) 建立 VM。 提供每個資源的名稱，而 `New-AzVM` Cmdlet 會建立這些名稱 (如果尚未存在)。
+使用 [New-AzVM](/powershell/module/az.compute/new-azvm) 建立 VM。 提供每個資源的名稱，而 `New-AzVM` Cmdlet 會建立這些名稱 (如果尚未存在)。
 
 出現提示時，請提供使用者名稱與密碼以作為 VM 的登入認證：
 
@@ -58,7 +58,7 @@ New-AzVm `
 
 部署完成後，以 RDP 連線至 VM。 若要查看作用中的 VM，接著會安裝 IIS 網頁伺服器。
 
-若要查看 VM 的公用 IP 位址，請使用 [Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress) Cmdlet：
+若要查看 VM 的公用 IP 位址，請使用 [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) Cmdlet：
 
 ```powershell
 Get-AzPublicIpAddress -ResourceGroupName "myResourceGroup" | Select "IpAddress"
@@ -92,7 +92,7 @@ Install-WindowsFeature -name Web-Server -IncludeManagementTools
 
 ## <a name="clean-up-resources"></a>清除資源
 
-當不再需要時，您可以使用 [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) 命令來移除資源群組、VM 及所有相關資源：
+當不再需要時，您可以使用 [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) 命令來移除資源群組、VM 及所有相關資源：
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup

@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/27/2019
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: cac17d15d792622d9a26ff7c228ce1f0ba76bbc4
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: fe53f400c1e03f0f3bb9d5e85891769d58320d84
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027574"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86501937"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-linux-virtual-machine-in-azure"></a>教學課程：在 Azure 中監視變更及更新 Linux 虛擬機器
 
@@ -77,7 +77,7 @@ az vm create \
 將會執行驗證來判斷此 VM 是否已啟用更新管理。
 驗證包括檢查 Log Analytics 工作區及連結的自動化帳戶，以及解決方法是否在工作區中。
 
-[Log Analytics](../../log-analytics/log-analytics-overview.md) 工作區可用來收集功能和服務 (例如更新管理) 所產生的資料。
+[Log Analytics](../../azure-monitor/log-query/log-query-overview.md) 工作區可用來收集功能和服務 (例如更新管理) 所產生的資料。
 工作區提供單一位置來檢閱和分析來自多個來源的資料。
 若要在需要更新的 VM 上執行其他動作，Azure 自動化可讓您對 VM 執行 Runbook，例如下載和套用更新。
 
@@ -87,8 +87,8 @@ az vm create \
 
 如果在上線期間遺漏下列任何必要條件，就會自動新增：
 
-* [Log Analytics](../../log-analytics/log-analytics-overview.md) 工作區
-* [自動化帳戶](../../automation/automation-offering-get-started.md)
+* [Log Analytics](../../azure-monitor/log-query/log-query-overview.md) 工作區
+* [自動化帳戶](../../automation/index.yml)
 * VM 上已啟用 [Hybrid Runbook 背景工作角色](../../automation/automation-hybrid-runbook-worker.md)
 
 [更新管理] 畫面隨即開啟。 設定位置、Log Analytics 工作區以及要使用的自動化帳戶，然後選取 [啟用]。 如果欄位呈現灰色，就表示已啟用 VM 的另一個自動化解決方案，且必須使用相同的工作區和自動化帳戶。

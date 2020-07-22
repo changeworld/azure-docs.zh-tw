@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/12/2017
 ms.author: cynthn
-ms.openlocfilehash: d6162c10cb880ea79232a7c3ab310e499179c654
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 52ce81cb69470adf000465b97e976e5e43514da2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81459333"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86501125"
 ---
 # <a name="create-an-iis-vm-with-powershell"></a>使用 PowerShell 建立 IIS VM
 
@@ -48,10 +48,10 @@ Remove-AzResourceGroup -Name myResourceGroup
 
 | Command | 注意 |
 |---|---|
-| [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) | 建立用來存放所有資源的資源群組。 |
-| [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) | 建立虛擬機器，並將它連線到網路卡、虛擬網路、子網路及網路安全性群組。 此命令也會開啟連接埠 80 並設定系統管理認證。 |
-| [Set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) | 將 VM 擴充功能新增至虛擬機器。 此範例使用 DSC 擴充功能來安裝 IIS。 |
-|[Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | 移除資源群組及其內含的所有資源。 |
+| [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | 建立用來存放所有資源的資源群組。 |
+| [New-AzVM](/powershell/module/az.compute/new-azvm) | 建立虛擬機器，並將它連線到網路卡、虛擬網路、子網路及網路安全性群組。 此命令也會開啟連接埠 80 並設定系統管理認證。 |
+| [Set-AzVMExtension](/powershell/module/az.compute/set-azvmextension) | 將 VM 擴充功能新增至虛擬機器。 此範例使用 DSC 擴充功能來安裝 IIS。 |
+|[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | 移除資源群組及其內含的所有資源。 |
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: 1616466619c7c7627106c09de703d02a7c40d248
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 83f0ea094c26a1ff664ef27729731b77d987e7ec
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75458413"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86501486"
 ---
 # <a name="create-a-virtual-machine-using-an-existing-managed-os-disk-with-cli"></a>使用現有受控 OS 磁碟搭配 CLI 以建立虛擬機器
 
@@ -52,10 +52,10 @@ az group delete --name myResourceGroup
 
 | Command | 注意 |
 |---|---|
-| [az disk show](https://docs.microsoft.com/cli/azure/disk) | 使用磁碟名稱和資源群組名稱取得受控磁碟屬性。 Id 屬性用來將受控磁碟連結至新的 VM |
-| [az vm create](https://docs.microsoft.com/cli/azure/vm) | 建立使用受控 OS 磁碟的 VM |
+| [az disk show](/cli/azure/disk) | 使用磁碟名稱和資源群組名稱取得受控磁碟屬性。 Id 屬性用來將受控磁碟連結至新的 VM |
+| [az vm create](/cli/azure/vm) | 建立使用受控 OS 磁碟的 VM |
 ## <a name="next-steps"></a>後續步驟
 
-如需 Azure CLI 的詳細資訊，請參閱 [Azure CLI 文件](https://docs.microsoft.com/cli/azure)。
+如需 Azure CLI 的詳細資訊，請參閱 [Azure CLI 文件](/cli/azure)。
 
 您可以在 [Azure Linux VM 文件](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)中找到其他的虛擬機器 CLI 指令碼範例。

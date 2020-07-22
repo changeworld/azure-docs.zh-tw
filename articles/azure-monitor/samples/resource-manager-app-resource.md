@@ -6,12 +6,12 @@ ms.topic: sample
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/08/2020
-ms.openlocfilehash: 82032c6a5ac8ec65265ffb44f896be6cea8fe4ce
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: d7a8a7b7fa75d7d9bb4dc45a3432370bac4cb4d6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86208792"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498639"
 ---
 # <a name="resource-manager-template-samples-for-creating-application-insights-resources"></a>用於建立 Application Insights 資源的 Resource Manager 範本範例
 
@@ -21,7 +21,7 @@ ms.locfileid: "86208792"
 
 ## <a name="classic-application-insights-resource"></a>傳統 Application Insights 資源
 
-下列範例會建立[傳統 Application Insights 資源](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)。 
+下列範例會建立[傳統 Application Insights 資源](../app/create-new-resource.md)。 
 
 ### <a name="template-file"></a>範本檔案
 
@@ -107,7 +107,7 @@ ms.locfileid: "86208792"
 
 ## <a name="workspace-based-application-insights-resource"></a>工作區型 Application Insights 資源 
 
-下列範例會建立[工作區型 Application Insights 資源](https://docs.microsoft.com/azure/azure-monitor/app/create-workspace-resource)。 工作區型 Application Insights 目前為**預覽**狀態。 
+下列範例會建立[工作區型 Application Insights 資源](../app/create-workspace-resource.md)。 工作區型 Application Insights 目前為**預覽**狀態。 
 
 
 ### <a name="template-file"></a>範本檔案

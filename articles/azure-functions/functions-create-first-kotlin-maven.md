@@ -6,12 +6,12 @@ ms.service: azure-functions
 ms.topic: quickstart
 ms.date: 03/25/2020
 ms.author: dglover
-ms.openlocfilehash: e4ac4f669d38f07d9fe4edbd600cc06f135fac03
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: d8abf6cdf8506dc491f4e026c9a61ac1391f6ea4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80674559"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506293"
 ---
 # <a name="quickstart-create-your-first-function-with-kotlin-and-maven"></a>快速入門：使用 Kotlin 和 Maven 建立您的第一個函式
 
@@ -25,7 +25,7 @@ ms.locfileid: "80674559"
 
 - [Java Developer Kit](https://aka.ms/azure-jdks) 第 8 版
 - [Apache Maven](https://maven.apache.org) 3.0 版或更新版本
-- [Azure CLI](https://docs.microsoft.com/cli/azure)
+- [Azure CLI](/cli/azure)
 - [Azure Functions Core Tools](./functions-run-local.md#v2) 2.6.666 版或更新版本
 
 > [!IMPORTANT]
@@ -79,7 +79,7 @@ Maven 會要求您提供完成產生專案所需的值。 如需 _groupId_、_ar
 [INFO] Parameter: artifactId, Value: fabrikam-function
 </pre>
 
-Maven 會以 _artifactId_ 名稱在新資料夾中建立專案檔案，在此例中為 `fabrikam-functions`。 在本專案中所產生且準備要執行的程式碼是一個簡單的 [HTTP 觸發](/azure/azure-functions/functions-bindings-http-webhook)函式，能回應要求的本文：
+Maven 會以 _artifactId_ 名稱在新資料夾中建立專案檔案，在此例中為 `fabrikam-functions`。 在本專案中所產生且準備要執行的程式碼是一個簡單的 [HTTP 觸發](./functions-bindings-http-webhook.md)函式，能回應要求的本文：
 
 ```kotlin
 class Function {

@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 12/15/2019
-ms.openlocfilehash: d356042d65c419163de4951e64a635a22ea90e6d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f2c780ffb7705575bf1bb5cabb6a09d9dabc0690
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78269198"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505834"
 ---
 # <a name="tutorial-collect-and-analyze-resource-logs-from-an-azure-resource"></a>教學課程：從 Azure 資源收集資源記錄並加以分析
 
@@ -86,7 +86,7 @@ Azure 監視器中的 Log Analytics 工作區會從各種來源收集記錄資�
    
     ![記錄](media/tutorial-resource-logs/logs.png)
 
-4. 範例中顯示的服務會將資源記錄寫入 **AzureDiagnostics** 資料表，但其他服務可能會寫入其他資料表。 如需不同 Azure 服務所使用的資料表，請參閱 [Azure 資源記錄的支援服務、結構描述和類別](../platform/diagnostic-logs-schema.md)。
+4. 範例中顯示的服務會將資源記錄寫入 **AzureDiagnostics** 資料表，但其他服務可能會寫入其他資料表。 如需不同 Azure 服務所使用的資料表，請參閱 [Azure 資源記錄的支援服務、結構描述和類別](../platform/resource-logs-schema.md)。
 
     > [!NOTE]
     > 有多個服務會將資源記錄寫入 AzureDiagnostics 資料表。 如果您從 Azure 監視器功能表啟動 Log Analytics，則需要新增具有 `ResourceProvider` 資料行的 `where` 語句來指定特定服務。 當您從資源功能表啟動 Log Analytics 時，範圍會設定為僅限此資源的記錄，因此不需要此資料行。 請參閱範例查詢的服務文件。

@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: f15beeee2c5843506f0bf89b4c6d66d77826e152
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0e5cabdf9c69ead9a2d7f497aceec183cf0be900
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81459883"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86509659"
 ---
 # <a name="troubleshoot-a-vms-operating-system-disk"></a>針對 VM 作業系統磁碟進行疑難排解
 
@@ -40,14 +40,14 @@ ms.locfileid: "81459883"
 
 | Command | 注意 |
 |---|---|
-| [az vm show](https://docs.microsoft.com/cli/azure/vm) | 傳回虛擬機器清單。 此案例使用查詢選項來傳回虛擬機器的作業系統磁碟。 接著將此值新增至 'uri' 變數名稱。 |
-| [az vm delete](https://docs.microsoft.com/cli/azure/vm) | 刪除虛擬機器。 |
-| [az vm create](https://docs.microsoft.com/cli/azure/vm) | 建立虛擬機器。  |
-| [az vm disk attach](https://docs.microsoft.com/cli/azure/vm/disk) | 將磁碟連接至虛擬機器。 |
-| [az vm list-ip-addresses](https://docs.microsoft.com/cli/azure/vm) | 傳回虛擬機器的 IP 位址。 |
+| [az vm show](/cli/azure/vm) | 傳回虛擬機器清單。 此案例使用查詢選項來傳回虛擬機器的作業系統磁碟。 接著將此值新增至 'uri' 變數名稱。 |
+| [az vm delete](/cli/azure/vm) | 刪除虛擬機器。 |
+| [az vm create](/cli/azure/vm) | 建立虛擬機器。  |
+| [az vm disk attach](/cli/azure/vm/disk) | 將磁碟連接至虛擬機器。 |
+| [az vm list-ip-addresses](/cli/azure/vm) | 傳回虛擬機器的 IP 位址。 |
 
 ## <a name="next-steps"></a>後續步驟
 
-如需 Azure CLI 的詳細資訊，請參閱 [Azure CLI 文件](https://docs.microsoft.com/cli/azure)。
+如需 Azure CLI 的詳細資訊，請參閱 [Azure CLI 文件](/cli/azure)。
 
 您可以在 [Azure Linux VM 文件](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)中找到其他的虛擬機器 CLI 指令碼範例。

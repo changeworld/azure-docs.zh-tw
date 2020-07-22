@@ -9,12 +9,12 @@ ms.subservice: windows
 ms.date: 11/30/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 14777b85fdc531b96c61882d5f244ca40ed28fa6
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: f6dd0792a764ef423f31131e80ab28a45f1fe4c3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83197978"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86500288"
 ---
 # <a name="tutorial-create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-windows-with-azure-powershell"></a>教學課程：使用 Azure PowerShell 在 Windows 上建立虛擬機器擴展集及部署高可用性應用程式
 虛擬機器擴展集可讓您部署和管理一組相同、自動調整的虛擬機器。 您可以手動調整擴展集中的 VM 數目。 您也可以定義規則以根據如 CPU、記憶體需求或網路流量的資源使用量來自動調整。 在本教學課程中，您將會在 Azure 部署虛擬機器擴展集，並了解如何：
@@ -41,7 +41,7 @@ VM 會視需要建立於擴展集中。 您將定義自動調整規則，以控�
 
 
 ## <a name="create-a-scale-set"></a>建立擴展集
-使用 [New-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/new-azvmss) 建立虛擬機器擴展集。 下列範例會建立使用 Windows Server 2016 資料中心  平台映像，名為 myScaleSet  的擴展集。 系統會自動建立虛擬網路、公用 IP 位址和負載平衡器的 Azure 網路資源。 出現提示時，您可以為擴展集中的 VM 執行個體設定自己的系統管理認證：
+使用 [New-AzVmss](/powershell/module/az.compute/new-azvmss) 建立虛擬機器擴展集。 下列範例會建立使用 Windows Server 2016 資料中心  平台映像，名為 myScaleSet  的擴展集。 系統會自動建立虛擬網路、公用 IP 位址和負載平衡器的 Azure 網路資源。 出現提示時，您可以為擴展集中的 VM 執行個體設定自己的系統管理認證：
 
 ```azurepowershell-interactive
 New-AzVmss `
@@ -59,7 +59,7 @@ New-AzVmss `
 
 
 ## <a name="deploy-sample-application"></a>部署範例應用程式
-若要測試您的擴展集，請安裝基本的 Web 應用程式。 您可以使用 Azure 自訂指令碼延伸模組來下載及執行會在 VM 執行個體上安裝 IIS 的指令碼。 此擴充功能適用於部署後組態、軟體安裝或其他任何組態/管理工作。 如需詳細資訊，請參閱[自訂指令碼延伸模組概觀](extensions-customscript.md)。
+若要測試您的擴展集，請安裝基本的 Web 應用程式。 您可以使用 Azure 自訂指令碼延伸模組來下載及執行會在 VM 執行個體上安裝 IIS 的指令碼。 此擴充功能適用於部署後組態、軟體安裝或其他任何組態/管理工作。 如需詳細資訊，請參閱[自訂指令碼延伸模組概觀](../extensions/custom-script-windows.md)。
 
 使用自訂指令碼延伸模組安裝基本的 IIS Web 伺服器。 套用安裝 IIS 的自訂指令碼延伸模組，如下所示：
 
@@ -92,7 +92,7 @@ Update-AzVmss `
 
 ## <a name="allow-traffic-to-application"></a>允許流量流向應用程式
 
-若要允許存取基本 Web 應用程式，請使用 [New-AzNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecurityruleconfig) 和 [New-AzNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecuritygroup) 建立網路安全性群組。 如需詳細資訊，請參閱 [Azure 虛擬機器擴展集的網路功能](../../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md)。
+若要允許存取基本 Web 應用程式，請使用 [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig) 和 [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) 建立網路安全性群組。 如需詳細資訊，請參閱 [Azure 虛擬機器擴展集的網路功能](../../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md)。
 
 ```azurepowershell-interactive
 # Get information about the scale set
@@ -141,7 +141,7 @@ Update-AzVmss `
 ```
 
 ## <a name="test-your-scale-set"></a>測試您的擴展集
-若要查看作用中的擴展集，可使用 [Get-AzPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress) 取得負載平衡器的公用 IP 位址。 下列範例會顯示建立作為擴展集一部分的 myPublicIP  IP 位址︰
+若要查看作用中的擴展集，可使用 [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) 取得負載平衡器的公用 IP 位址。 下列範例會顯示建立作為擴展集一部分的 myPublicIP  IP 位址︰
 
 ```azurepowershell-interactive
 Get-AzPublicIPAddress `
@@ -160,7 +160,7 @@ Get-AzPublicIPAddress `
 在擴展集生命週期中，您可能需要執行一或多個管理工作。 此外，您可以建立指令碼來自動化各種生命週期工作。 Azure PowerShell 提供快速的方式來執行這些工作。 以下是一些常見工作。
 
 ### <a name="view-vms-in-a-scale-set"></a>檢視擴展集中的 VM
-若要檢視擴展集中的 VM 執行個體清單，請使用 [Get-AzVmssVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvmssvm)，如下所示：
+若要檢視擴展集中的 VM 執行個體清單，請使用 [Get-AzVmssVM](/powershell/module/az.compute/get-azvmssvm)，如下所示：
 
 ```azurepowershell-interactive
 Get-AzVmssVM `
@@ -177,7 +177,7 @@ MYRESOURCEGROUPSCALESET   myScaleSet_0   eastus Standard_DS1_v2          0      
 MYRESOURCEGROUPSCALESET   myScaleSet_1   eastus Standard_DS1_v2          1         Succeeded
 ```
 
-若要檢視特定 VM 執行個體的其他資訊，請將 `-InstanceId` 參數新增至 [Get-AzVmssVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvmssvm)。 下列範例顯示 VM 執行個體 *1* 的相關資訊：
+若要檢視特定 VM 執行個體的其他資訊，請將 `-InstanceId` 參數新增至 [Get-AzVmssVM](/powershell/module/az.compute/get-azvmssvm)。 下列範例顯示 VM 執行個體 *1* 的相關資訊：
 
 ```azurepowershell-interactive
 Get-AzVmssVM `
@@ -188,7 +188,7 @@ Get-AzVmssVM `
 
 
 ### <a name="increase-or-decrease-vm-instances"></a>增加或減少 VM 執行個體
-若要查看擴展集中目前擁有的執行個體數目，請使用 [Get-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/get-azvmss) 並查詢 sku.capacity  ：
+若要查看擴展集中目前擁有的執行個體數目，請使用 [Get-AzVmss](/powershell/module/az.compute/get-azvmss) 並查詢 sku.capacity  ：
 
 ```azurepowershell-interactive
 Get-AzVmss -ResourceGroupName "myResourceGroupScaleSet" `
@@ -196,7 +196,7 @@ Get-AzVmss -ResourceGroupName "myResourceGroupScaleSet" `
   Select -ExpandProperty Sku
 ```
 
-然後，您可以使用 [Update-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/update-azvmss)，手動增加或減少擴展集中的虛擬機器數目。 下列範例會將擴展集中的 VM 數目設定為 *3*：
+然後，您可以使用 [Update-AzVmss](/powershell/module/az.compute/update-azvmss)，手動增加或減少擴展集中的虛擬機器數目。 下列範例會將擴展集中的 VM 數目設定為 *3*：
 
 ```azurepowershell-interactive
 # Get current scale set

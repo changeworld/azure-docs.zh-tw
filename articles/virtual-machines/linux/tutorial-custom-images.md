@@ -10,12 +10,12 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.custom: mvc
 ms.reviewer: akjosh
-ms.openlocfilehash: 0ea5c11254d8dba050fe63a4cd915240c8270dd1
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: bd4da23ed3f4b2dc92652493c77efbcbc0542066
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84324567"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510118"
 ---
 # <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-the-azure-cli"></a>教學課程：使用 Azure CLI 建立 Azure VM 的自訂映像
 
@@ -29,7 +29,7 @@ ms.locfileid: "84324567"
 > * 共用映像庫
 
 
-本教學課程會使用 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) 內的 CLI，這會不斷更新至最新版本。 若要開啟 Cloud Shell，請選取任何程式碼區塊頂端的 [試試看]。
+本教學課程會使用 [Azure Cloud Shell](../../cloud-shell/overview.md) 內的 CLI，這會不斷更新至最新版本。 若要開啟 Cloud Shell，請選取任何程式碼區塊頂端的 [試試看]。
 
 如果您選擇在本機安裝和使用 CLI，本教學課程會要求您執行 Azure CLI 2.4.0 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。
 
@@ -90,11 +90,11 @@ az vm get-instance-view -g MyResourceGroup -n MyVm --query id
 
 映像定義名稱可以由大寫或小寫字母、數字、點、虛線和句點組成。 
 
-若要深入了解您可以為映像定義指定哪些值，請參閱[映像定義](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#image-definitions)。
+若要深入了解您可以為映像定義指定哪些值，請參閱[映像定義](./shared-image-galleries.md#image-definitions)。
 
 使用 [az sig image-definition create](/cli/azure/sig/image-definition#az-sig-image-definition-create)，在資源庫中建立映像定義。 
 
-在此範例中，映像定義會命名為 myImageDefinition，而且適用於[特製化](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#generalized-and-specialized-images)的 Linux OS 映像。 
+在此範例中，映像定義會命名為 myImageDefinition，而且適用於[特製化](./shared-image-galleries.md#generalized-and-specialized-images)的 Linux OS 映像。 
 
 ```azurecli-interactive 
 az sig image-definition create \
@@ -134,7 +134,7 @@ az sig image-version create \
 > [!NOTE]
 > 您必須等候映像版本完全完成建立和複寫後，才能使用相同的受控映像來建立另一個映像版本。
 >
-> 建立映像版本時，您也可以藉由新增 `--storage-account-type  premium_lrs`，將映像儲存在「進階」儲存體，或新增 `--storage-account-type  standard_zrs`，將映像儲存在[區域備援儲存體](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs)。
+> 建立映像版本時，您也可以藉由新增 `--storage-account-type  premium_lrs`，將映像儲存在「進階」儲存體，或新增 `--storage-account-type  standard_zrs`，將映像儲存在[區域備援儲存體](../../storage/common/storage-redundancy.md)。
 >
 
  
@@ -176,11 +176,11 @@ az role assignment create \
    --scope <gallery ID>
 ```
 
-如需使用 RBAC 共用資源的詳細資訊，請參閱[使用 RBAC 和 Azure CLI 管理存取](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)。
+如需使用 RBAC 共用資源的詳細資訊，請參閱[使用 RBAC 和 Azure CLI 管理存取](../../role-based-access-control/role-assignments-cli.md)。
 
 ## <a name="azure-image-builder"></a>Azure Image Builder
 
-Azure 也提供以 Packer 為基礎的服務：[Azure VM Image Builder](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-overview)。 只要在範本中描述您的自訂，其就會處理映像建立作業。 
+Azure 也提供以 Packer 為基礎的服務：[Azure VM Image Builder](./image-builder-overview.md)。 只要在範本中描述您的自訂，其就會處理映像建立作業。 
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -197,4 +197,3 @@ Azure 也提供以 Packer 為基礎的服務：[Azure VM Image Builder](https://
 
 > [!div class="nextstepaction"]
 > [建立高可用性 VM](tutorial-availability-sets.md)
-

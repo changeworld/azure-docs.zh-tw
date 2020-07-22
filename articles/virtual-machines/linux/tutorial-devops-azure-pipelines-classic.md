@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 4/10/2020
 ms.author: moala
 ms.custom: devops
-ms.openlocfilehash: 28f093bc464a45862d3b253d628b7ae03810f81a
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: b8eec0d95144c012d3034e3f2c7c6e8adc921651
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871227"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510169"
 ---
 # <a name="tutorial---configure-the-rolling-deployment-strategy-for-azure-linux-virtual-machines"></a>教學課程 - 設定 Azure Linux 虛擬機器的輪流部署策略
 
@@ -33,7 +33,7 @@ Azure Pipelines 提供了一組功能齊全的 CI/CD 自動化工具，可用來
 
 ### <a name="configure-cicd-on-virtual-machines"></a>在虛擬機器上設定 CI/CD
 
-您可以將虛擬機器新增為[部署群組](https://docs.microsoft.com/azure/devops/pipelines/release/deployment-groups)的目標。 然後，您可以將其設為多機器更新的目標。 部署至機器後，請檢視部署群組內的 [部署歷程記錄]。 此檢視可讓您從 VM 追蹤至管線，然後再追蹤至認可。
+您可以將虛擬機器新增為[部署群組](/azure/devops/pipelines/release/deployment-groups)的目標。 然後，您可以將其設為多機器更新的目標。 部署至機器後，請檢視部署群組內的 [部署歷程記錄]。 此檢視可讓您從 VM 追蹤至管線，然後再追蹤至認可。
 
 ### <a name="rolling-deployments"></a>輪流部署
 
@@ -93,5 +93,5 @@ Azure Pipelines 提供了一組功能齊全的 CI/CD 自動化工具，可用來
  
 ## <a name="additional-resources"></a>其他資源
 
-- [使用 Azure DevOps Projects 部署 Azure 虛擬機器](https://docs.microsoft.com/azure/devops-project/azure-devops-project-vms)
-- [為應用程式實作目標為虛擬機器擴展集的持續部署](https://docs.microsoft.com/azure/devops/pipelines/apps/cd/azure/deploy-azure-scaleset)
+- [使用 Azure DevOps Projects 部署 Azure 虛擬機器](../../devops-project/azure-devops-project-vms.md)
+- [為應用程式實作目標為虛擬機器擴展集的持續部署](/azure/devops/pipelines/apps/cd/azure/deploy-azure-scaleset)

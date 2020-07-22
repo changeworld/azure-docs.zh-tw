@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 1/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c9bad99d0ce39fb5f179043278ca4785d726744
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7d080fd3cac7a0550452908e9e0265bb2ffcb462
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73157791"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499989"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-autotask-endpoint-backup"></a>教學課程：Azure Active Directory 與 Autotask Endpoint Backup 整合
 
@@ -111,7 +111,7 @@ ms.locfileid: "73157791"
     b. 在 [回覆 URL]  文字方塊中，使用下列模式來輸入 URL：`https://<subdomain>.backup.autotask.net/singlesignon/saml/SSO`
 
     > [!NOTE]
-    > 這些都不是真正的值。 請使用實際的識別碼和回覆 URL 更新這些值。 請連絡 [Autotask Endpoint Backup 用戶端支援小組](https://backup.autotask.net/help/Content/0_HOME/Support_for_End_Clients.htm) \(英文\) 以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 請使用實際的識別碼和回覆 URL 更新這些值。 請連絡 [Autotask Endpoint Backup 用戶端支援小組](https://backup.autotask.net/help/Content/0_HOME/_AutotaskCustomerSupport.htm) \(英文\) 以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
 
 5. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載**同盟中繼資料 XML**，並儲存在您的電腦上。
 
@@ -129,7 +129,7 @@ ms.locfileid: "73157791"
 
 ### <a name="configure-autotask-endpoint-backup-single-sign-on"></a>設定 Autotask Endpoint Backup 單一登入
 
-若要在 **Autotask Endpoint Backup** 端設定單一登入，您必須將從 Azure 入口網站下載的 [同盟中繼資料 XML]  和所複製的適當 URL 傳送給 [Autotask Endpoint Backup 支援小組](https://backup.autotask.net/help/Content/0_HOME/Support_for_End_Clients.htm)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
+若要在 **Autotask Endpoint Backup** 端設定單一登入，您必須將從 Azure 入口網站下載的 [同盟中繼資料 XML]  和所複製的適當 URL 傳送給 [Autotask Endpoint Backup 支援小組](https://backup.autotask.net/help/Content/0_HOME/_AutotaskCustomerSupport.htm)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
 
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者 
 
@@ -184,7 +184,7 @@ ms.locfileid: "73157791"
 
 ### <a name="create-autotask-endpoint-backup-test-user"></a>建立 Autotask Endpoint Backup 測試使用者
 
-在本節中，您會在 Autotask Endpoint Backup 中建立名為 Britta Simon 的使用者。 請與 [Autotask Endpoint Backup 支援小組](https://backup.autotask.net/help/Content/0_HOME/Support_for_End_Clients.htm)合作，在 Autotask Endpoint Backup 平台中新增使用者。 您必須先建立和啟動使用者，然後才能使用單一登入。
+在本節中，您會在 Autotask Endpoint Backup 中建立名為 Britta Simon 的使用者。 請與 [Autotask Endpoint Backup 支援小組](https://backup.autotask.net/help/Content/0_HOME/_AutotaskCustomerSupport.htm)合作，在 Autotask Endpoint Backup 平台中新增使用者。 您必須先建立和啟動使用者，然後才能使用單一登入。
 
 ### <a name="test-single-sign-on"></a>測試單一登入
 

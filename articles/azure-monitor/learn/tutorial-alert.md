@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/10/2019
 ms.custom: mvc
-ms.openlocfilehash: 7195de1cf58e5dd2e1d0b49b309f3afc718cca92
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 1c39bfdbcfb924505473b20b3d56a28d54c84f93
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77656257"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505868"
 ---
 # <a name="monitor-and-alert-on-application-health-with-azure-application-insights"></a>使用 Azure Application Insights 監視應用程式健康情況並傳送警示
 
@@ -28,7 +28,7 @@ Azure Application Insights 可讓您監視您的應用程式，並在應用程�
 
 若要完成本教學課程：
 
-建立 [Application Insights 資源](https://docs.microsoft.com/azure/azure-monitor/learn/dotnetcore-quick-start#enable-application-insights)。
+建立 [Application Insights 資源](./dotnetcore-quick-start.md#enable-application-insights)。
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
 
@@ -56,7 +56,7 @@ Application Insights 中的可用性測試，可讓您從世界各地的不同�
 
     ![編輯警示](media/tutorial-alert/edit-alert-001.png)
 
-6. 將失敗的位置設定為大於或等於 3。 建立[動作群組](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)，以設定在違反警示閾值時收到通知的對象。
+6. 將失敗的位置設定為大於或等於 3。 建立[動作群組](../platform/action-groups.md)，以設定在違反警示閾值時收到通知的對象。
 
     ![儲存警示 UI](media/tutorial-alert/save-alert-001.png)
 

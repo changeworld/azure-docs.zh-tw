@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.custom: mvc
 ms.date: 04/05/2017
-ms.openlocfilehash: 00aa744f09b7bcbbbc258b92a8fd5ab750e447c7
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 471690c5c0f5ebb4cea111b85cab1fe0524a36cd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74039106"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86509716"
 ---
 # <a name="deploy-the-lamp-stack-in-a-load-balanced-virtual-machine-scale-set"></a>在負載平衡虛擬機器擴展集中部署 LAMP 堆疊
 
@@ -50,17 +50,17 @@ az group delete -n myResourceGroup
 
 | Command | 注意 |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group) | 建立用來存放所有資源的資源群組。 |
-| [az vmss create](https://docs.microsoft.com/cli/azure/vmss) | 建立虛擬機器擴展集 |
-| [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule) | 新增負載平衡端點 |
-| [az vmss extension set](https://docs.microsoft.com/cli/azure/vmss/extension) | 建立擴充功能，該擴充功能在 VM 部署上執行自訂指令碼 |
-| [az vmss update-instances](https://docs.microsoft.com/cli/azure/vmss) | 在 VM 執行個體上執行自訂指令碼，該執行個體是在擴充功能套用至擴展集之前部署的。 |
-| [az vmss scale](https://docs.microsoft.com/cli/azure/vmss) | 藉由新增更多 VM 執行個體以擴大擴展集。 當這些執行個體部署時，自訂指令碼會在上面執行。 |
-| [az network public-ip list](https://docs.microsoft.com/cli/azure/network/public-ip) | 取得範例建立之 VM 的 IP 位址。 |
-| [az network lb show](https://docs.microsoft.com/cli/azure/network/lb) | 取得由負載平衡器使用的前端和後端連接埠。 |
+| [az group create](/cli/azure/group) | 建立用來存放所有資源的資源群組。 |
+| [az vmss create](/cli/azure/vmss) | 建立虛擬機器擴展集 |
+| [az network lb rule create](/cli/azure/network/lb/rule) | 新增負載平衡端點 |
+| [az vmss extension set](/cli/azure/vmss/extension) | 建立擴充功能，該擴充功能在 VM 部署上執行自訂指令碼 |
+| [az vmss update-instances](/cli/azure/vmss) | 在 VM 執行個體上執行自訂指令碼，該執行個體是在擴充功能套用至擴展集之前部署的。 |
+| [az vmss scale](/cli/azure/vmss) | 藉由新增更多 VM 執行個體以擴大擴展集。 當這些執行個體部署時，自訂指令碼會在上面執行。 |
+| [az network public-ip list](/cli/azure/network/public-ip) | 取得範例建立之 VM 的 IP 位址。 |
+| [az network lb show](/cli/azure/network/lb) | 取得由負載平衡器使用的前端和後端連接埠。 |
 
 ## <a name="next-steps"></a>後續步驟
 
-如需 Azure CLI 的詳細資訊，請參閱 [Azure CLI 文件](https://docs.microsoft.com/cli/azure)。
+如需 Azure CLI 的詳細資訊，請參閱 [Azure CLI 文件](/cli/azure)。
 
 您可以在 [Azure Linux VM 文件](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)中找到其他的虛擬機器 CLI 指令碼範例。

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 06/05/2017
 ms.author: ramankum
-ms.openlocfilehash: 540ad6e820a909f86b43d1957d8abb407a0606d8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: da3b80dc2d313b38cc8e505c0e18586c26a7d5db
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81460328"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86501240"
 ---
 # <a name="exportcopy-managed-snapshots-as-vhd-to-a-storage-account-in-different-region-with-powershell"></a>使用 PowerShell 將受控快照集匯出/複製到不同區域的儲存體帳戶當做 VHD
 
@@ -41,9 +41,9 @@ ms.locfileid: "81460328"
 
 | Command | 注意 |
 |---|---|
-| [Grant-AzSnapshotAccess](https://docs.microsoft.com/powershell/module/az.compute/New-AzDisk) | 產生快照集的 SAS URI 並用它來將快照集複製到儲存體帳戶。 |
-| [New-AzureStorageContext](https://docs.microsoft.com/powershell/module/azure.storage/New-AzureStorageContext) | 使用帳戶名稱與金鑰建立儲存體帳戶內容。 此內容可用來對儲存體帳戶執行讀取/寫入作業。 |
-| [Start-AzureStorageBlobCopy](https://docs.microsoft.com/powershell/module/azure.storage/Start-AzureStorageBlobCopy) | 將快照集的底層 VHD 複製到儲存體帳戶 |
+| [Grant-AzSnapshotAccess](/powershell/module/az.compute/new-azdisk) | 產生快照集的 SAS URI 並用它來將快照集複製到儲存體帳戶。 |
+| [New-AzureStorageContext](/powershell/module/azure.storage/new-azurestoragecontext) | 使用帳戶名稱與金鑰建立儲存體帳戶內容。 此內容可用來對儲存體帳戶執行讀取/寫入作業。 |
+| [Start-AzureStorageBlobCopy](/powershell/module/azure.storage/start-azurestorageblobcopy) | 將快照集的底層 VHD 複製到儲存體帳戶 |
 
 ## <a name="next-steps"></a>後續步驟
 

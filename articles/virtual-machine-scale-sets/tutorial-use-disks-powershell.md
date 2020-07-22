@@ -9,12 +9,12 @@ ms.subservice: disks
 ms.date: 03/27/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 5c82f087505c1634dd621252935c4017687340b2
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: b3b57cd2a2e5d5502f3865eddcdddfac67460dc7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83198233"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86495018"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-azure-powershell"></a>教學課程：使用 Azure PowerShell 建立及使用虛擬機器擴展集所適用的磁碟
 
@@ -44,12 +44,12 @@ ms.locfileid: "83198233"
 ### <a name="temporary-disk-sizes"></a>暫存磁碟大小
 | 類型 | 一般大小 | 暫存磁碟大小上限 (GiB) |
 |----|----|----|
-| [一般用途](../virtual-machines/windows/sizes-general.md) | A、B 和 D 系列 | 1600 |
-| [計算最佳化](../virtual-machines/windows/sizes-compute.md) | F 系列 | 576 |
-| [記憶體最佳化](../virtual-machines/windows/sizes-memory.md) | D、E、G 和 M 系列 | 6144 |
-| [儲存體最佳化](../virtual-machines/windows/sizes-storage.md) | L 系列 | 5630 |
-| [GPU](../virtual-machines/windows/sizes-gpu.md) | N 系列 | 1440 |
-| [高效能](../virtual-machines/windows/sizes-hpc.md) | A 和 H 系列 | 2000 |
+| [一般用途](../virtual-machines/sizes-general.md) | A、B 和 D 系列 | 1600 |
+| [計算最佳化](../virtual-machines/sizes-compute.md) | F 系列 | 576 |
+| [記憶體最佳化](../virtual-machines/sizes-memory.md) | D、E、G 和 M 系列 | 6144 |
+| [儲存體最佳化](../virtual-machines/sizes-storage.md) | L 系列 | 5630 |
+| [GPU](../virtual-machines/sizes-gpu.md) | N 系列 | 1440 |
+| [高效能](../virtual-machines/sizes-hpc.md) | A 和 H 系列 | 2000 |
 
 
 ## <a name="azure-data-disks"></a>Azure 資料磁碟
@@ -58,12 +58,12 @@ ms.locfileid: "83198233"
 ### <a name="max-data-disks-per-vm"></a>每部 VM 的資料磁碟上限
 | 類型 | 一般大小 | 每部 VM 的資料磁碟上限 |
 |----|----|----|
-| [一般用途](../virtual-machines/windows/sizes-general.md) | A、B 和 D 系列 | 64 |
-| [計算最佳化](../virtual-machines/windows/sizes-compute.md) | F 系列 | 64 |
-| [記憶體最佳化](../virtual-machines/windows/sizes-memory.md) | D、E、G 和 M 系列 | 64 |
-| [儲存體最佳化](../virtual-machines/windows/sizes-storage.md) | L 系列 | 64 |
-| [GPU](../virtual-machines/windows/sizes-gpu.md) | N 系列 | 64 |
-| [高效能](../virtual-machines/windows/sizes-hpc.md) | A 和 H 系列 | 64 |
+| [一般用途](../virtual-machines/sizes-general.md) | A、B 和 D 系列 | 64 |
+| [計算最佳化](../virtual-machines/sizes-compute.md) | F 系列 | 64 |
+| [記憶體最佳化](../virtual-machines/sizes-memory.md) | D、E、G 和 M 系列 | 64 |
+| [儲存體最佳化](../virtual-machines/sizes-storage.md) | L 系列 | 64 |
+| [GPU](../virtual-machines/sizes-gpu.md) | N 系列 | 64 |
+| [高效能](../virtual-machines/sizes-hpc.md) | A 和 H 系列 | 64 |
 
 
 ## <a name="vm-disk-types"></a>VM 磁碟類型
@@ -135,7 +135,7 @@ Update-AzVmss `
 ## <a name="prepare-the-data-disks"></a>準備資料磁碟
 您所建立並連結至擴展集 VM 執行個體的磁碟，是原始磁碟。 磁碟必須完成準備工作，才能用於您的資料與應用程式。 若要準備磁碟，您可以建立分割區、建立檔案系統，並將其掛接。
 
-若要自動執行跨擴展集中多個 VM 執行個體的程序，您可以使用 Azure 自訂指令碼延伸模組。 此延伸模組可在每個 VM 執行個體的本機位置執行指令碼，以準備已連結的資料磁碟 (舉例而言)。 如需詳細資訊，請參閱[自訂指令碼延伸模組概觀](../virtual-machines/windows/extensions-customscript.md)。
+若要自動執行跨擴展集中多個 VM 執行個體的程序，您可以使用 Azure 自訂指令碼延伸模組。 此延伸模組可在每個 VM 執行個體的本機位置執行指令碼，以準備已連結的資料磁碟 (舉例而言)。 如需詳細資訊，請參閱[自訂指令碼延伸模組概觀](../virtual-machines/extensions/custom-script-windows.md)。
 
 
 下列範例會使用 [Add-AzVmssExtension](/powershell/module/az.compute/Add-AzVmssExtension) 在每個 VM 執行個體上執行 GitHub 範例存放庫中的指令碼，以準備所有已連結的原始資料磁碟：

@@ -10,12 +10,12 @@ ms.workload: infrastructure
 ms.date: 09/27/2018
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: a021675632a093d41e2565f63f8bb4e844213628
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c60d27cb75526d801880658846a6b61760f4bf7e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82101615"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508078"
 ---
 # <a name="tutorial-monitor-a-windows-virtual-machine-in-azure"></a>教學課程：在 Azure 中監視 Windows 虛擬機器
 
@@ -39,13 +39,13 @@ Azure Cloud Shell 是免費的互動式 Shell，可讓您用來執行本文中�
 
 ## <a name="create-virtual-machine"></a>建立虛擬機器
 
-若要在本教學課程中設定 Azure 監視和更新管理，您需要在 Azure 中擁有 Windows VM。 首先，使用 [Get-credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) 設定 VM 的系統管理員使用者名稱和密碼：
+若要在本教學課程中設定 Azure 監視和更新管理，您需要在 Azure 中擁有 Windows VM。 首先，使用 [Get-credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1) 設定 VM 的系統管理員使用者名稱和密碼：
 
 ```azurepowershell-interactive
 $cred = Get-Credential
 ```
 
-現在，使用 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) 建立 VM。 下列範例會在 *EastUS* 位置中建立名為 *myVM* 的 VM。 如果它們尚不存在，建立支援網路資源的資源群組 *myResourceGroupMonitorMonitor*：
+現在，使用 [New-AzVM](/powershell/module/az.compute/new-azvm) 建立 VM。 下列範例會在 *EastUS* 位置中建立名為 *myVM* 的 VM。 如果它們尚不存在，建立支援網路資源的資源群組 *myResourceGroupMonitorMonitor*：
 
 ```azurepowershell-interactive
 New-AzVm `
@@ -61,7 +61,7 @@ New-AzVm `
 
 Windows 虛擬機器開機時，開機診斷代理程式會擷取可用於疑難排解的螢幕輸出。 此功能預設為啟用狀態。 擷取的螢幕畫面會儲存在 Azure 儲存體帳戶，這也是預設會建立的帳戶。
 
-您可以使用 [Get-AzureRmVMBootDiagnosticsData](https://docs.microsoft.com/powershell/module/az.compute/get-azvmbootdiagnosticsdata) 命令取得開機診斷資料。 在下列範例中，開機診斷會下載到 *c:\* 磁碟機的根目錄。
+您可以使用 [Get-AzureRmVMBootDiagnosticsData](/powershell/module/az.compute/get-azvmbootdiagnosticsdata) 命令取得開機診斷資料。 在下列範例中，開機診斷會下載到 *c:\* 磁碟機的根目錄。
 
 ```powershell
 Get-AzVMBootDiagnosticsData -ResourceGroupName "myResourceGroupMonitor" -Name "myVM" -Windows -LocalPath "c:\"

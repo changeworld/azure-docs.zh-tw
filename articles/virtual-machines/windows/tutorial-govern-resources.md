@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/05/2018
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: fce613da352e55bae64db2912af23a07f4bf954f
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: f7f993ca817d6ed6b395343eb180b3601a22f7a1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86200685"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508265"
 ---
 # <a name="tutorial-learn-about-windows-virtual-machine-management-with-azure-powershell"></a>教學課程：了解如何使用 Azure PowerShell 來管理 Windows 虛擬機器
 
@@ -53,7 +53,7 @@ New-AzResourceGroup -Name myResourceGroup -Location EastUS
 
 相較於將角色指派給個別使用者，使用 Azure Active Directory 群組來含括需要執行類似動作的使用者，通常會較為容易。 然後，將該群組指派給適當的角色。 在本文中，請使用現有的群組來管理虛擬機器，或使用入口網站來[建立 Azure Active Directory 群組](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。
 
-建立新群組或找到現有群組後，請使用 [New-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignment) 命令，將 Azure Active Directory 群組指派給資源群組的虛擬機器參與者角色。  
+建立新群組或找到現有群組後，請使用 [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) 命令，將 Azure Active Directory 群組指派給資源群組的虛擬機器參與者角色。  
 
 ```azurepowershell-interactive
 $adgroup = Get-AzADGroup -DisplayName <your-group-name>
@@ -69,7 +69,7 @@ New-AzRoleAssignment -ObjectId $adgroup.id `
 
 ## <a name="azure-policy"></a>Azure 原則
 
-[Azure 原則](../../governance/policy/overview.md)可協助您確認訂用帳戶中的所有資源均符合公司標準。 您的訂用帳戶已經有數個原則定義。 若要查看可用的原則定義，請使用 [Get-AzPolicyDefinition](https://docs.microsoft.com/powershell/module/az.resources/Get-AzPolicyDefinition) 命令：
+[Azure 原則](../../governance/policy/overview.md)可協助您確認訂用帳戶中的所有資源均符合公司標準。 您的訂用帳戶已經有數個原則定義。 若要查看可用的原則定義，請使用 [Get-AzPolicyDefinition](/powershell/module/az.resources/get-azpolicydefinition) 命令：
 
 ```azurepowershell-interactive
 (Get-AzPolicyDefinition).Properties | Format-Table displayName, policyType
@@ -81,7 +81,7 @@ New-AzRoleAssignment -ObjectId $adgroup.id `
 * 限制虛擬機器的 SKU。
 * 稽核未使用受控磁碟的虛擬機器。
 
-在下列範例中，您會根據顯示名稱擷取三個原則定義。 您使用 [New-AzPolicyAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azpolicyassignment) 命令將這些定義指派給資源群組。 針對某些原則，您要提供參數值來指定允許的值。
+在下列範例中，您會根據顯示名稱擷取三個原則定義。 您使用 [New-AzPolicyAssignment](/powershell/module/az.resources/new-azpolicyassignment) 命令將這些定義指派給資源群組。 針對某些原則，您要提供參數值來指定允許的值。
 
 ```azurepowershell-interactive
 # Values to use for parameters
@@ -135,7 +135,7 @@ New-AzVm -ResourceGroupName "myResourceGroup" `
 
 [資源鎖定](../../azure-resource-manager/management/lock-resources.md)可避免組織中的使用者不小心刪除或修改重要資源。 不同於角色型存取控制，資源鎖定會對所有使用者和角色套用限制。 您可以將鎖定層級設定為 *CanNotDelete* 或 *ReadOnly*。
 
-若要鎖定虛擬機器和網路安全性群組，請使用 [New-AzResourceLock](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcelock) 命令：
+若要鎖定虛擬機器和網路安全性群組，請使用 [New-AzResourceLock](/powershell/module/az.resources/new-azresourcelock) 命令：
 
 ```azurepowershell-interactive
 # Add CanNotDelete lock to the VM
@@ -167,7 +167,7 @@ Remove-AzResourceGroup -Name myResourceGroup
 
 [!INCLUDE [Resource Manager governance tags Powershell](../../../includes/resource-manager-governance-tags-powershell.md)]
 
-若要將標籤套用至虛擬機器，請使用 [Set-AzResource](https://docs.microsoft.com/powershell/module/az.resources/set-azresource) 命令：
+若要將標籤套用至虛擬機器，請使用 [Set-AzResource](/powershell/module/az.resources/set-azresource) 命令：
 
 ```azurepowershell-interactive
 # Get the virtual machine
@@ -181,7 +181,7 @@ Set-AzResource -Tag @{ Dept="IT"; Environment="Test"; Project="Documentation" } 
 
 ### <a name="find-resources-by-tag"></a>依標籤尋找資源
 
-若要尋找具有某標籤名稱和值的資源，請使用 [Get-AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource) 命令：
+若要尋找具有某標籤名稱和值的資源，請使用 [Get-AzResource](/powershell/module/az.resources/get-azresource) 命令：
 
 ```azurepowershell-interactive
 (Get-AzResource -Tag @{ Environment="Test"}).Name
@@ -199,7 +199,7 @@ Get-AzResource -Tag @{ Environment="Test"} | Where-Object {$_.ResourceType -eq "
 
 ## <a name="clean-up-resources"></a>清除資源
 
-您無法刪除已鎖定的網路安全性群組，除非移除鎖定。 若要移除鎖定，請使用 [Remove-AzResourceLock](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcelock) 命令：
+您無法刪除已鎖定的網路安全性群組，除非移除鎖定。 若要移除鎖定，請使用 [Remove-AzResourceLock](/powershell/module/az.resources/remove-azresourcelock) 命令：
 
 ```azurepowershell-interactive
 Remove-AzResourceLock -LockName LockVM `
@@ -212,7 +212,7 @@ Remove-AzResourceLock -LockName LockNSG `
   -ResourceGroupName myResourceGroup
 ```
 
-當不再需要時，您可以使用 [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) 命令來移除資源群組、VM 及所有相關資源。
+當不再需要時，您可以使用 [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) 命令來移除資源群組、VM 及所有相關資源。
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup
@@ -236,4 +236,3 @@ Remove-AzResourceGroup -Name myResourceGroup
 
 > [!div class="nextstepaction"]
 > [管理虛擬機器](tutorial-config-management.md)
-

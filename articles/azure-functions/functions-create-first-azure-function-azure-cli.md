@@ -5,12 +5,12 @@ ms.date: 03/30/2020
 ms.topic: quickstart
 ms.custom: tracking-python
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 671404b952156ff6ad20eaf082d7af33058923a3
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.openlocfilehash: 86be7ec73d8e19597062f3fa3777f3aa422082c3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85100032"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506344"
 ---
 # <a name="quickstart-create-a-function-in-azure-that-responds-to-http-requests"></a>快速入門：在 Azure 中建立可回應 HTTP 要求的函式
 
@@ -40,7 +40,7 @@ ms.locfileid: "85100032"
 ::: zone-end  
 ::: zone pivot="programming-language-java"  
 > [!NOTE]
-> 如果 Maven 不是您慣用的開發工具，請參閱供 JAVA 開發人員參考的類似教學課程，內容分別使用 [Gradle](/azure/azure-functions/functions-create-first-java-gradle)、[IntelliJ IDEA](/azure/developer/java/toolkit-for-intellij/quickstart-functions) 和 [Visual Studio Code](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java) 等開發工具。
+> 如果 Maven 不是您慣用的開發工具，請參閱供 JAVA 開發人員參考的類似教學課程，內容分別使用 [Gradle](./functions-create-first-java-gradle.md)、[IntelliJ IDEA](/azure/developer/java/toolkit-for-intellij/quickstart-functions) 和 [Visual Studio Code](./functions-create-first-function-vs-code.md?pivots=programming-language-java) 等開發工具。
 ::: zone-end  
 
 [!INCLUDE [functions-requirements-cli](../../includes/functions-requirements-cli.md)]
@@ -139,7 +139,7 @@ cd fabrikam-functions
 
 :::code language="csharp" source="~/functions-docs-csharp/http-trigger-template/HttpExample.cs":::
 
-傳回物件是 [ActionResult](/dotnet/api/microsoft.aspnetcore.mvc.actionresult)，會以 [OkObjectResult](/dotnet/api/microsoft.aspnetcore.mvc.okobjectresult) (200) 或 [BadRequestObjectResult](/dotnet/api/microsoft.aspnetcore.mvc.badrequestobjectresult) (400) 的形式傳回回應消息。 若要深入了解，請參閱 [Azure Functions HTTP 觸發程序和繫結](/azure/azure-functions/functions-bindings-http-webhook?tabs=csharp)。
+傳回物件是 [ActionResult](/dotnet/api/microsoft.aspnetcore.mvc.actionresult)，會以 [OkObjectResult](/dotnet/api/microsoft.aspnetcore.mvc.okobjectresult) (200) 或 [BadRequestObjectResult](/dotnet/api/microsoft.aspnetcore.mvc.badrequestobjectresult) (400) 的形式傳回回應消息。 若要深入了解，請參閱 [Azure Functions HTTP 觸發程序和繫結](./functions-bindings-http-webhook.md?tabs=csharp)。
 ::: zone-end
 
 ::: zone pivot="programming-language-java"
@@ -169,7 +169,7 @@ Function.java 包含 `run` 方法，會接收 `request` 變數中的要求資料
 
 :::code language="python" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-Python/__init__.py":::
 
-針對 HTTP 觸發程序，函式會接收變數 `req` 中的要求資料，如 *function.json* 中所定義。 `req` 是 [azure.functions.HttpRequest 類別](/python/api/azure-functions/azure.functions.httprequest)的執行個體。 傳回物件 (在 function.json 中定義為 `$return`)，是 [azure.functions.HttpResponse 類別](/python/api/azure-functions/azure.functions.httpresponse)的執行個體。 若要深入了解，請參閱 [Azure Functions HTTP 觸發程序和繫結](/azure/azure-functions/functions-bindings-http-webhook?tabs=python)。
+針對 HTTP 觸發程序，函式會接收變數 `req` 中的要求資料，如 *function.json* 中所定義。 `req` 是 [azure.functions.HttpRequest 類別](/python/api/azure-functions/azure.functions.httprequest)的執行個體。 傳回物件 (在 function.json 中定義為 `$return`)，是 [azure.functions.HttpResponse 類別](/python/api/azure-functions/azure.functions.httpresponse)的執行個體。 若要深入了解，請參閱 [Azure Functions HTTP 觸發程序和繫結](./functions-bindings-http-webhook.md?tabs=python)。
 ::: zone-end
 
 ::: zone pivot="programming-language-javascript"
@@ -179,7 +179,7 @@ Function.java 包含 `run` 方法，會接收 `request` 變數中的要求資料
 
 :::code language="javascript" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-JavaScript/index.js":::
 
-針對 HTTP 觸發程序，函式會接收變數 `req` 中的要求資料，如 *function.json* 中所定義。 傳回物件 (在 *function.json* 中定義為 `$return`) 是回應。 若要深入了解，請參閱 [Azure Functions HTTP 觸發程序和繫結](/azure/azure-functions/functions-bindings-http-webhook?tabs=javascript)。
+針對 HTTP 觸發程序，函式會接收變數 `req` 中的要求資料，如 *function.json* 中所定義。 傳回物件 (在 *function.json* 中定義為 `$return`) 是回應。 若要深入了解，請參閱 [Azure Functions HTTP 觸發程序和繫結](./functions-bindings-http-webhook.md?tabs=javascript)。
 ::: zone-end
 
 ::: zone pivot="programming-language-typescript"

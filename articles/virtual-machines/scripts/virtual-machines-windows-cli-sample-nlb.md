@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 02/23/2017
 ms.author: rclaus
-ms.openlocfilehash: 765794076c389f199fba0d6078754c82e7280c69
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0d48930d7a9aa1742c26ff85aecdd197b93ab126
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81459401"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86501058"
 ---
 # <a name="load-balance-traffic-between-highly-available-virtual-machines"></a>對高可用性虛擬機器之間的流量進行負載平衡
 
@@ -47,22 +47,22 @@ az group delete --name myResourceGroup --yes
 
 | Command | 注意 |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group) | 建立用來存放所有資源的資源群組。 |
-| [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet) | 建立 Azure 虛擬網路和子網路。 |
-| [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip) | 建立具有靜態 IP 位址和相關聯 DNS 名稱的公用 IP 位址。 |
-| [az network lb create](https://docs.microsoft.com/cli/azure/network/lb) | 建立 Azure 網路負載平衡器 (NLB)。 |
-| [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe) | 建立 NLB 探查。 NLB 探查可用來監視 NLB 集合中的每部 VM。 如有任何 VM 變得無法存取，就不會將流量路由至該 VM。 |
-| [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule) | 建立 NLB 規則。 在此範例中，會為連接埠 80 建立規則。 當 HTTP 流量抵達 NLB 時，就會經由連接埠 80 將其路由傳送至 NLB 集合的其中一部 VM。 |
-| [az network lb inbound-nat-rule create](https://docs.microsoft.com/cli/azure/network/lb/inbound-nat-rule) | 建立 NLB 網路位址轉譯 (NAT) 規則。  NAT 規則會將 NLB 的連接埠對應到 VM 上的連接埠。 在此範例中，會為 NLB 集合的每部 VM 所收到的 SSH 流量建立 NAT 規則。  |
-| [az network nsg create](https://docs.microsoft.com/cli/azure/network/nsg) | 建立網路安全性群組 (NSG)，做為網際網路和虛擬機器之間的安全性界限。 |
-| [az network nsg rule create](https://docs.microsoft.com/cli/azure/network/nsg/rule) | 建立允許輸入流量的 NSG 規則。 在此範例中，會開放連接埠 22 供 SSH 流量使用。 |
-| [az network nic create](https://docs.microsoft.com/cli/azure/network/nic) | 建立虛擬網路卡，並將它連接至虛擬網路、子網路及 NSG。 |
-| [az vm availability-set create](https://docs.microsoft.com/cli/azure/network/lb/rule) | 建立可用性設定組。 可用性設定組可將虛擬機器分散到各個實體資源，讓整個集合不致受到萬一發生的失敗所影響，藉此來確保應用程式運作時間。 |
-| [az vm create](https://docs.microsoft.com/cli/azure/vm/availability-set) | 建立虛擬機器，並將它連線到網路卡、虛擬網路、子網路及 NSG。 此命令也會指定要使用的虛擬機器映像和管理認證。  |
-| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | 刪除資源群組，包括所有的巢狀資源。 |
+| [az group create](/cli/azure/group) | 建立用來存放所有資源的資源群組。 |
+| [az network vnet create](/cli/azure/network/vnet) | 建立 Azure 虛擬網路和子網路。 |
+| [az network public-ip create](/cli/azure/network/public-ip) | 建立具有靜態 IP 位址和相關聯 DNS 名稱的公用 IP 位址。 |
+| [az network lb create](/cli/azure/network/lb) | 建立 Azure 網路負載平衡器 (NLB)。 |
+| [az network lb probe create](/cli/azure/network/lb/probe) | 建立 NLB 探查。 NLB 探查可用來監視 NLB 集合中的每部 VM。 如有任何 VM 變得無法存取，就不會將流量路由至該 VM。 |
+| [az network lb rule create](/cli/azure/network/lb/rule) | 建立 NLB 規則。 在此範例中，會為連接埠 80 建立規則。 當 HTTP 流量抵達 NLB 時，就會經由連接埠 80 將其路由傳送至 NLB 集合的其中一部 VM。 |
+| [az network lb inbound-nat-rule create](/cli/azure/network/lb/inbound-nat-rule) | 建立 NLB 網路位址轉譯 (NAT) 規則。  NAT 規則會將 NLB 的連接埠對應到 VM 上的連接埠。 在此範例中，會為 NLB 集合的每部 VM 所收到的 SSH 流量建立 NAT 規則。  |
+| [az network nsg create](/cli/azure/network/nsg) | 建立網路安全性群組 (NSG)，做為網際網路和虛擬機器之間的安全性界限。 |
+| [az network nsg rule create](/cli/azure/network/nsg/rule) | 建立允許輸入流量的 NSG 規則。 在此範例中，會開放連接埠 22 供 SSH 流量使用。 |
+| [az network nic create](/cli/azure/network/nic) | 建立虛擬網路卡，並將它連接至虛擬網路、子網路及 NSG。 |
+| [az vm availability-set create](/cli/azure/network/lb/rule) | 建立可用性設定組。 可用性設定組可將虛擬機器分散到各個實體資源，讓整個集合不致受到萬一發生的失敗所影響，藉此來確保應用程式運作時間。 |
+| [az vm create](/cli/azure/vm/availability-set) | 建立虛擬機器，並將它連線到網路卡、虛擬網路、子網路及 NSG。 此命令也會指定要使用的虛擬機器映像和管理認證。  |
+| [az group delete](/cli/azure/vm/extension) | 刪除資源群組，包括所有的巢狀資源。 |
 
 ## <a name="next-steps"></a>後續步驟
 
-如需 Azure CLI 的詳細資訊，請參閱 [Azure CLI 文件](https://docs.microsoft.com/cli/azure)。
+如需 Azure CLI 的詳細資訊，請參閱 [Azure CLI 文件](/cli/azure)。
 
 您可以在 [Azure Windows VM 文件](../windows/cli-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)中找到其他的虛擬機器 CLI 指令碼範例。

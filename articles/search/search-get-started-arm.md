@@ -8,13 +8,13 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.date: 03/20/2020
-ms.openlocfilehash: 2579249cc088063d98bb101c7a5b5118e4b07722
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.date: 07/15/2020
+ms.openlocfilehash: 192673ab2e21046f7af75887ffe13f47420dfbf3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027047"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496769"
 ---
 # <a name="quickstart-deploy-cognitive-search-using-an-arm-template"></a>快速入門：使用 ARM 範本部署認知搜尋
 

@@ -5,18 +5,18 @@ ms.date: 03/30/2020
 ms.topic: tutorial
 ms.custom: mvc, tracking-python
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: bb9fc07c0c909f1fcec1644175c1dbac1e2bbb57
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 57468a4b4234809ca6293ca39ed54a3934f9a4fc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560925"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506378"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>在 Linux 上使用自訂容器建立函式
 
 在本教學課程中，您會使用 Linux 基礎映像，建立您的程式碼並將其部署至 Azure Functions 作為自訂 Docker 容器。 當您的函式需要特定的語言版本，或有內建映像所未提供的特定相依性或組態時，您通常會想使用自訂映像。
 
-您也可以如[建立您在 Linux 上託管的第一個函式](functions-create-first-azure-function-azure-cli-linux.md)所述，使用預設 Azure App Service 容器。 在 [Azure Functions 基底映像存放庫](https://hub.docker.com/_/microsoft-azure-functions-base)中可找到針對 Azure Functions 支援的基底映像。
+您也可以如[建立您在 Linux 上託管的第一個函式](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-python)所述，使用預設 Azure App Service 容器。 在 [Azure Functions 基底映像存放庫](https://hub.docker.com/_/microsoft-azure-functions-base)中可找到針對 Azure Functions 支援的基底映像。
 
 在本教學課程中，您會了解如何：
 
@@ -409,9 +409,7 @@ SSH 可讓容器和用戶端之間進行安全通訊。 啟用 SSH 之後，您�
     FROM mcr.microsoft.com/azure-functions/node:2.0-appservice
     ```
     ::: zone-end
-
-    [ - 自訂 Docker 映像教學課程](../app-service/containers/tutorial-custom-docker-image.md#enable-ssh-connections)會說明基底映像之間的差異。
-
+    
 1. 再次使用 `docker build` 命令重建映像，並以您的 Docker ID 取代 `<docker_id>`：
 
     ```

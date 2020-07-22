@@ -8,16 +8,16 @@ ms.author: mbullwin
 ms.date: 06/26/2019
 ms.reviewer: daviste
 ms.custom: mvc
-ms.openlocfilehash: c31083c5e0591d5a49f878ba24a7fd2f0ef6c84d
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: a5c025f40f3d78e9e2ff54a0de76763a3e717640
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82731946"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498690"
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>開始使用 App Center 和 Application Insights 分析您的行動應用程式
 
-本快速入門會引導您將應用程式的 App Center 執行個體連線到 Application Insights。 Application Insights 提供查詢、分割、篩選及分析遙測資料的強大工具，遠勝於 App Center 的 [Analytics](https://docs.microsoft.com/mobile-center/analytics/) \(英文\) 服務。
+本快速入門會引導您將應用程式的 App Center 執行個體連線到 Application Insights。 Application Insights 提供查詢、分割、篩選及分析遙測資料的強大工具，遠勝於 App Center 的 [Analytics](/mobile-center/analytics/) \(英文\) 服務。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -33,27 +33,27 @@ ms.locfileid: "82731946"
 
 ## <a name="onboard-to-app-center"></a>登入 App Center
 
-您必須先將應用程式上架至 [App Center](https://docs.microsoft.com/mobile-center/) \(英文\)，才能將 Application Insights 與行動應用程式搭配使用。 Application Insights 不會直接從您的行動應用程式接收遙測資料。 相反地，您的應用程式會將自訂事件遙測資料傳送到 App Center。 之後，當 App Center 接收到這些自訂事件，會持續將這些自訂事件的複本匯出到 Application Insights。 (這不適用於 [Application Insights JS SDK](https://github.com/Microsoft/ApplicationInsights-JS)，或將遙測直接傳送至 Application Insights 的 [React Native 外掛程式](https://github.com/Microsoft/ApplicationInsights-JS/tree/master/extensions/applicationinsights-react-native))。
+您必須先將應用程式上架至 [App Center](/mobile-center/) \(英文\)，才能將 Application Insights 與行動應用程式搭配使用。 Application Insights 不會直接從您的行動應用程式接收遙測資料。 相反地，您的應用程式會將自訂事件遙測資料傳送到 App Center。 之後，當 App Center 接收到這些自訂事件，會持續將這些自訂事件的複本匯出到 Application Insights。 (這不適用於 [Application Insights JS SDK](https://github.com/Microsoft/ApplicationInsights-JS)，或將遙測直接傳送至 Application Insights 的 [React Native 外掛程式](https://github.com/Microsoft/ApplicationInsights-JS/tree/master/extensions/applicationinsights-react-native))。
 
 若要將應用程式上架，請針對應用程式支援的每個平台，遵循 App Center 快速入門來操作。 針對每個平台建立個別的 App Center 執行個體：
 
-* [iOS](https://docs.microsoft.com/mobile-center/sdk/getting-started/ios)。
-* [Android](https://docs.microsoft.com/mobile-center/sdk/getting-started/android)。
-* [Xamarin](https://docs.microsoft.com/mobile-center/sdk/getting-started/xamarin)。
-* [通用 Windows](https://docs.microsoft.com/mobile-center/sdk/getting-started/uwp)。
-* [React Native](https://docs.microsoft.com/mobile-center/sdk/getting-started/react-native)。
+* [iOS](/mobile-center/sdk/getting-started/ios)。
+* [Android](/mobile-center/sdk/getting-started/android)。
+* [Xamarin](/mobile-center/sdk/getting-started/xamarin)。
+* [通用 Windows](/mobile-center/sdk/getting-started/uwp)。
+* [React Native](/mobile-center/sdk/getting-started/react-native)。
 
 ## <a name="track-events-in-your-app"></a>追蹤應用程式中的事件
 
 您的應用程式上架到 App Center 之後，必須使用 App Center SDK 將它修改成會傳送自訂事件遙測資料。 自訂事件是唯一會匯出到 Application Insights 的 App Center 遙測資料類型。
 
-若要從 iOS 應用程式傳送自訂事件，請使用 App Center SDK 中的 `trackEvent` 或 `trackEvent:withProperties` 方法。 [深入了解追蹤 iOS 應用程式的事件。](https://docs.microsoft.com/mobile-center/sdk/analytics/ios) \(英文\)
+若要從 iOS 應用程式傳送自訂事件，請使用 App Center SDK 中的 `trackEvent` 或 `trackEvent:withProperties` 方法。 [深入了解追蹤 iOS 應用程式的事件。](/mobile-center/sdk/analytics/ios) \(英文\)
 
 ```Swift
 MSAnalytics.trackEvent("Video clicked")
 ```
 
-若要從 Android 應用程式傳送自訂事件，請使用 App Center SDK 中的 `trackEvent` 方法。 [深入了解追蹤 Android 應用程式的事件](https://docs.microsoft.com/mobile-center/sdk/analytics/android) \(英文\)。
+若要從 Android 應用程式傳送自訂事件，請使用 App Center SDK 中的 `trackEvent` 方法。 [深入了解追蹤 Android 應用程式的事件](/mobile-center/sdk/analytics/android) \(英文\)。
 
 ```Java
 Analytics.trackEvent("Video clicked")
@@ -71,7 +71,7 @@ Analytics.trackEvent("Video clicked")
 2. 選取 [建立資源] > [開發人員工具] > [Application Insights]。
 
     > [!NOTE]
-    > 如果這是您第一次建立 Application Insights 資源，您可以瀏覽[建立 Application Insights 資源](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)文件以進一步了解。
+    > 如果這是您第一次建立 Application Insights 資源，您可以瀏覽[建立 Application Insights 資源](../app/create-new-resource.md)文件以進一步了解。
 
     隨後將會出現設定方塊。 根據下表來填寫輸入欄位。
 
@@ -98,7 +98,7 @@ Analytics.trackEvent("Video clicked")
 
 請記得對應用程式支援的每個平台重複執行此程序。
 
-一旦設定好[匯出](https://docs.microsoft.com/mobile-center/analytics/export) \(英文\) 之後，App Center 收到的每個自訂事件就都會複製到 Application Insights。 事件可能需要幾分鐘才會送達 Application Insights，因此如果它們沒有馬上顯示，請先稍等一下再進行進一步的診斷。
+一旦設定好[匯出](/mobile-center/analytics/export) \(英文\) 之後，App Center 收到的每個自訂事件就都會複製到 Application Insights。 事件可能需要幾分鐘才會送達 Application Insights，因此如果它們沒有馬上顯示，請先稍等一下再進行進一步的診斷。
 
 為了在您第一次連線時提供更多資料，App Center 中最近 48 小時的自訂事件會自動匯出到 Application Insights。
 
@@ -124,7 +124,7 @@ Application Insights 可以查詢、分割、篩選及分析應用程式的自�
    1. 在文字編輯器中的查詢上任一處按一下，以選取該查詢。
    2. 按一下 [執行] 來執行查詢。 
 
-   深入了解 [Application Insights 分析](../../azure-monitor/app/analytics.md)以及 [Log Analytics 查詢語言](https://aka.ms/LogAnalyticsLanguageReference) \(英文\)。
+   深入了解 [Application Insights 分析](../log-query/log-query-overview.md)以及 [Log Analytics 查詢語言](https://aka.ms/LogAnalyticsLanguageReference) \(英文\)。
 
 
 2. **分割及篩選您的自訂事件遙測資料。** 從 Application Insights [概觀] 頁面，選擇目錄中的 [使用者]。

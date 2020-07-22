@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 07/01/2020
-ms.openlocfilehash: 11dd12fce669d6b6a027eb182d5f9e6e493577ad
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: c6ab5c2cae2bb966c2b040b40dbf36e56a54411b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955687"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496747"
 ---
 # <a name="quickstart-create-a-demo-app-in-the-portal-azure-cognitive-search"></a>快速入門：在入口網站中建立示範應用程式 (Azure 認知搜尋)
 
@@ -31,7 +31,7 @@ ms.locfileid: "85955687"
 
 + [Microsoft Edge (最新版本)](https://www.microsoft.com/edge) 或 Google Chrome。
 
-+ [搜尋索引](search-create-index-portal.md)可作為所產生應用程式的基礎。 
++ [搜尋索引](search-what-is-an-index.md)可作為所產生應用程式的基礎。 
 
   本快速入門會使用內建的房地產資料和索引範例，因為其具有縮圖影像 (精靈可支援將影像新增至結果頁面)。 若要建立此練習中所用的索引，請執行**匯入資料**精靈，並選擇 realestate-us-sample 資料來源。
 
