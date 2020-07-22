@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: e7a83478654b848b8e001dd3fea276c5cc9e125a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 3f180f075a32ac193ed003b58a99483ea3210cc7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84022687"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86528888"
 ---
 # <a name="use-cli-to-copy-a-database-in-azure-sql-database-to-a-new-server"></a>使用 CLI 將 Azure SQL Database 中的資料庫複製到新伺服器
 
@@ -53,7 +53,7 @@ az group delete --name $targetResource
 
 此指令碼會使用下列命令。 下表中的每個命令都會連結至命令特定的文件。
 
-| | |
+| Command | 說明 |
 |---|---|
 | [az sql db copy](/cli/azure/sql/db#az-sql-db-copy) | 為使用目前快照集的資料庫建立複本。 |
 

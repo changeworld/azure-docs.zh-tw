@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 4/10/2020
 ms.author: moala
 ms.custom: devops
-ms.openlocfilehash: e0fb26896b79fb23bb0f784c0f23aa3af0593c22
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 22f36448a4246f7cc8c66b2c4f8051c835ed939a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871866"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510152"
 ---
 # <a name="tutorial---configure-the-canary-deployment-strategy-for-azure-linux-virtual-machines"></a>教學課程 - 設定 Azure Linux 虛擬機器的 Canary 部署策略
 
@@ -29,7 +29,7 @@ Azure Pipelines 提供了一組功能齊全的 CI/CD 自動化工具，可用來
 
 ### <a name="configure-cicd-on-virtual-machines"></a>在虛擬機器上設定 CI/CD
 
-您可以將虛擬機器新增為[部署群組](https://docs.microsoft.com/azure/devops/pipelines/release/deployment-groups)的目標。 然後，您可以將其設為多機器更新的目標。 部署至機器後，請檢視部署群組內的 [部署歷程記錄]。 此檢視可讓您從 VM 追蹤至管線，然後再追蹤至認可。
+您可以將虛擬機器新增為[部署群組](/azure/devops/pipelines/release/deployment-groups)的目標。 然後，您可以將其設為多機器更新的目標。 部署至機器後，請檢視部署群組內的 [部署歷程記錄]。 此檢視可讓您從 VM 追蹤至管線，然後再追蹤至認可。
 
 ### <a name="canary-deployments"></a>Canary 部署
 
@@ -87,5 +87,5 @@ Canary 部署會慢慢地向一小部分使用者推出變更，以降低風險�
 
 ## <a name="additional-resources"></a>其他資源
 
-- [使用 Azure DevOps Projects 部署 Azure 虛擬機器](https://docs.microsoft.com/azure/devops-project/azure-devops-project-vms)
-- [為應用程式實作目標為虛擬機器擴展集的持續部署](https://docs.microsoft.com/azure/devops/pipelines/apps/cd/azure/deploy-azure-scaleset)
+- [使用 Azure DevOps Projects 部署 Azure 虛擬機器](../../devops-project/azure-devops-project-vms.md)
+- [為應用程式實作目標為虛擬機器擴展集的持續部署](/azure/devops/pipelines/apps/cd/azure/deploy-azure-scaleset)

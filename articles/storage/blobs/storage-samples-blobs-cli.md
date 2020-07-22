@@ -7,18 +7,18 @@ ms.date: 06/13/2017
 ms.service: storage
 ms.subservice: blobs
 ms.topic: sample
-ms.openlocfilehash: 345710e1ade459d49602c18820d47826141e6f81
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: aa9dcc45656256e1f666bbf1b096c5c66b123b31
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "68721938"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86528497"
 ---
 # <a name="azure-cli-samples-for-azure-blob-storage"></a>適用於 Azure Blob 儲存體的 Azure CLI 範例
 
 下表包含使用 Azure CLI 所建置、可建立和管理 Azure 儲存體之 Bash 指令碼的連結。
 
-| | |
+| 指令碼 | 描述 |
 |---|---|
 |**儲存體帳戶**||
 | [建立儲存體帳戶並擷取/輪替存取金鑰](../scripts/storage-common-rotate-account-keys-cli.md?toc=%2fcli%2fazure%2ftoc.json) | 建立 Azure 儲存體帳戶並擷取和輪替其存取金鑰。 |

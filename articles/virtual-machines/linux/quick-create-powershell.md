@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 10/17/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 397fac7609d9527165a1a0a35215a2e2bac23c6d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e18f66beb8f318e993bd9367f5e50740d76db73f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81759211"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510322"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-azure-with-powershell"></a>快速入門：使用 PowerShell 在 Azure 中建立 Linux 虛擬機器
 
@@ -39,11 +39,11 @@ ssh-keygen -t rsa -b 2048
 
 如需如何建立 SSH 金鑰的詳細資訊 (包括 PuTTy 的用法)，請參閱[對 Windows 使用 SSH 金鑰](ssh-from-windows.md)。
 
-如果您使用 Cloud Shell 建立 SSH 金鑰組，該金鑰組會儲存在容器映像中，而這映像會位在 [Cloud Shell 所自動建立的儲存體帳戶](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage)內。 在擷取到金鑰前請勿刪除儲存體帳戶或其中的檔案共用，否則會無法存取 VM。 
+如果您使用 Cloud Shell 建立 SSH 金鑰組，該金鑰組會儲存在容器映像中，而這映像會位在 [Cloud Shell 所自動建立的儲存體帳戶](../../cloud-shell/persisting-shell-storage.md)內。 在擷取到金鑰前請勿刪除儲存體帳戶或其中的檔案共用，否則會無法存取 VM。 
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 
-使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) 來建立 Azure 資源群組。 資源群組是在其中部署與管理 Azure 資源的邏輯容器：
+使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 來建立 Azure 資源群組。 資源群組是在其中部署與管理 Azure 資源的邏輯容器：
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name "myResourceGroup" -Location "EastUS"
@@ -111,7 +111,7 @@ $nsg = New-AzNetworkSecurityGroup `
   -SecurityRules $nsgRuleSSH,$nsgRuleWeb
 ```
 
-使用 [New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface) 建立虛擬網路介面卡 (NIC)。 虛擬 NIC 會將 VM 連線至子網路、網路安全性群組和公用 IP 位址。
+使用 [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) 建立虛擬網路介面卡 (NIC)。 虛擬 NIC 會將 VM 連線至子網路、網路安全性群組和公用 IP 位址。
 
 ```azurepowershell-interactive
 # Create a virtual network card and associate with public IP address and NSG
@@ -160,7 +160,7 @@ Add-AzVMSshPublicKey `
   -Path "/home/azureuser/.ssh/authorized_keys"
 ```
 
-現在，使用 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) 合併上述要建立的組態定義：
+現在，使用 [New-AzVM](/powershell/module/az.compute/new-azvm) 合併上述要建立的組態定義：
 
 ```azurepowershell-interactive
 New-AzVM `
@@ -172,7 +172,7 @@ New-AzVM `
 
 ## <a name="connect-to-the-vm"></a>連接至 VM
 
-使用公用 IP 位址對 VM 建立 SSH 連線。 若要查看 VM 的公用 IP 位址，請使用 [Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress) Cmdlet：
+使用公用 IP 位址對 VM 建立 SSH 連線。 若要查看 VM 的公用 IP 位址，請使用 [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) Cmdlet：
 
 ```azurepowershell-interactive
 Get-AzPublicIpAddress -ResourceGroupName "myResourceGroup" | Select "IpAddress"
@@ -207,7 +207,7 @@ sudo apt-get -y install nginx
 
 ## <a name="clean-up-resources"></a>清除資源
 
-當不再需要時，您可以使用 [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) 命令來移除資源群組、VM 及所有相關資源：
+當不再需要時，您可以使用 [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) 命令來移除資源群組、VM 及所有相關資源：
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name "myResourceGroup"

@@ -11,12 +11,12 @@ author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 93afb5b52df7ac3ff638ff5fc180c3c4774880b8
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 48ebf87a732380188b1c5f03954385b61bc765f9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84020382"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86528820"
 ---
 # <a name="use-cli-to-configure-active-geo-replication-for-a-single-database-in-azure-sql-database"></a>使用 CLI 為 Azure SQL Database 中的單一資料庫設定作用中異地複寫
 
@@ -52,7 +52,7 @@ az group delete --name $resource
 
 此指令碼會使用下列命令。 下表中的每個命令都會連結至命令特定的文件。
 
-| | |
+| Command | 說明 |
 |---|---|
 | [az sql db replica](/cli/azure/sql/db/replica) | 資料庫複本命令。 |
 

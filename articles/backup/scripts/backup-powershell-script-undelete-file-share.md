@@ -3,12 +3,12 @@ title: PowerShell 指令碼 - 將已刪除的檔案共用取消刪除
 description: 瞭解如何使用 Azure PowerShell 指令碼，將意外刪除的檔案共用取消刪除。
 ms.topic: sample
 ms.date: 02/02/2020
-ms.openlocfilehash: 2eb89735a8327e782d8d8a712f4f0d59911540cc
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 199cb4720c2efe03d47fd06ea0cf41eae29d06fa
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84121258"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513229"
 ---
 # <a name="powershell-script-to-undelete-an-accidentally-deleted-file-share"></a>用來將意外刪除的檔案共用取消刪除的 PowerShell 指令碼
 
@@ -154,7 +154,7 @@ Restore-DeletedFileShare $sa.Context $FileShareName $DeletedShareVersion
 
 ### <a name="prerequisites"></a>必要條件
 
-1. 在執行指令碼之前，請先從[此連結](https://docs.microsoft.com//powershell/azure/install-az-ps?view=azps-3.3.0)安裝最新的 Azure PowerShell Az 模組。
+1. 在執行指令碼之前，請先從[此連結](//powershell/azure/install-az-ps)安裝最新的 Azure PowerShell Az 模組。
 2. 請備妥下列詳細資料，因為您必須將這些資料當做指令碼的不同參數值來傳遞：
 
     * **-SubscriptionId** - 檔案共用所屬之訂用帳戶 ID。
@@ -209,4 +209,3 @@ Restore-DeletedFileShare : More than one share with the specified name was found
 ```powershell
    .\UnDelete.ps1 -ResourceGroupName afsshare-StorageAccountName afsshare -SubscriptionId f75d8d8b-6735-4697-82e1-1a7a3ff0d5d4 -FileShareName share1 -DeletedShareVersion 01D5D7F77ACC7864
 ```
-

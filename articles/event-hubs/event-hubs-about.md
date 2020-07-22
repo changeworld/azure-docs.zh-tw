@@ -3,12 +3,12 @@ title: Azure 事件中樞是什麼？ - 巨量資料擷取服務 | Microsoft Doc
 description: 深入了解 Azure 事件中樞，這是一個每秒可內嵌數百萬個事件的巨量資料串流服務。
 ms.topic: overview
 ms.date: 06/23/2020
-ms.openlocfilehash: 175f7e249e02d5c85dd38cf49821b2893de159a3
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: b442a7e0b10f3f882f12943c642ccdd6feef3114
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85314248"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86522103"
 ---
 # <a name="azure-event-hubs--a-big-data-streaming-platform-and-event-ingestion-service"></a>Azure 事件中樞 — 巨量資料串流平台和事件擷取服務
 Azure 事件中樞是巨量資料串流平台和事件擷取服務。 其每秒可接收和處理數百萬個事件。 傳送至事件中樞的資料可以透過任何即時分析提供者或批次/儲存體配接器來轉換和儲存。
@@ -44,7 +44,7 @@ Azure 事件中樞是巨量資料串流平台和事件擷取服務。 其每秒�
 
 近乎即時地[擷取 ](event-hubs-capture-overview.md)[Azure Blob 儲存體](https://azure.microsoft.com/services/storage/blobs/)或 [Azure Data Lake Storage](https://azure.microsoft.com/services/data-lake-store/)  中的資料，以用於長期保留或微批次處理。 您可以在用來取得即時分析的相同資料流上實現此行為。 擷取事件資料的作業很快就能設定完成。 執行作業時不需要系統管理成本，而且它可以針對事件中樞的 [輸送量單位](event-hubs-scalability.md#throughput-units)自動進行調整。 事件中樞可讓您專注於資料處理，而不是資料擷取。
 
-Azure 事件中樞也整合了 [Azure Functions](/azure/azure-functions/) 來達到無伺服器架構。
+Azure 事件中樞也整合了 [Azure Functions](../azure-functions/index.yml) 來達到無伺服器架構。
 
 ## <a name="scalable"></a>可調整
 
@@ -74,7 +74,7 @@ Azure Stack Hub 上的事件中樞可讓您實現混合式雲端情況。 針對
 
 事件中樞版本 (位於 Azure Stack Hub 和 Azure 上) 提供高度功能同位。 此同位表示 SDK、範例、PowerShell、CLI 和入口網站提供類似的體驗，但有一些差異。 
 
-在公開預覽期間，堆疊上的事件中樞可免費使用。 如需詳細資訊，請參閱 [Azure Stack Hub 上的事件中樞概觀](https://docs.microsoft.com/azure-stack/user/event-hubs-overview)。
+在公開預覽期間，堆疊上的事件中樞可免費使用。 如需詳細資訊，請參閱 [Azure Stack Hub 上的事件中樞概觀](/azure-stack/user/event-hubs-overview)。
 
 
 ## <a name="next-steps"></a>後續步驟
@@ -94,5 +94,3 @@ Azure Stack Hub 上的事件中樞可讓您實現混合式雲端情況。 針對
 
 - [事件中樞功能概觀](event-hubs-features.md)
 - [常見問題集](event-hubs-faq.md)。
-
-

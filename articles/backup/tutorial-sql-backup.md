@@ -3,12 +3,12 @@ title: 教學課程 - 將 SQL Server 資料庫備份到 Azure
 description: 在本教學課程中，您將了解如何將執行於 Azure VM 上的 SQL Server 資料庫備份至 Azure 備份復原服務保存庫。
 ms.topic: tutorial
 ms.date: 06/18/2019
-ms.openlocfilehash: f1d76fe0dfa428688714b8383c3974ac63195681
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e0f3ec8e9407c97f91a7f215a6a2734a254006d1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81680739"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513290"
 ---
 # <a name="back-up-a-sql-server-database-in-an-azure-vm"></a>在 Azure VM 中備份 SQL Server 資料庫
 
@@ -64,7 +64,7 @@ ms.locfileid: "81680739"
 * 右方括號 ‘]’
 * 開頭為 ‘F:\’ 的資料庫名稱
 
-對於 Azure 表格不支援的字元，可以使用別名，但建議避免採用此做法。 [深入了解](https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model)。
+對於 Azure 表格不支援的字元，可以使用別名，但建議避免採用此做法。 [深入了解](/rest/api/storageservices/understanding-the-table-service-data-model)。
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 

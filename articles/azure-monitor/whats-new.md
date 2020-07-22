@@ -6,12 +6,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 07/08/2020
-ms.openlocfilehash: 4d061e7a105fc73f7f44c8336df82ff363ee6ded
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 192219a804365957e9eaa0577019ff18d75861bf
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203761"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498503"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Azure 監視器文件的最新動向
 
@@ -67,21 +67,21 @@ ms.locfileid: "86203761"
 - [使用 Azure Resource Manager 範本將 Azure 活動記錄傳送至 Log Analytics 工作區](learn/quick-collect-activity-log-arm.md) - 新文章。
 
 #### <a name="new-and-updated-articles-from-restructure-and-consolidation-of-platform-log-content"></a>平台記錄內容重構和彙總的最新和更新文章
-- [將 Azure 資源記錄封存到儲存體帳戶](platform/resource-logs-collect-storage.md)
+- [將 Azure 資源記錄封存到儲存體帳戶](./platform/resource-logs.md#send-to-azure-storage)
 - [Azure 活動記錄事件結構描述](platform/activity-log-schema.md)
 - [Azure 活動記錄](platform/activity-log.md)
 - [Azure 監視器 CLI 範例](samples/cli-samples.md)
 - [Azure 監視器 PowerShell 範例](samples/powershell-samples.md)
 - [Azure 監視 REST API 逐步解說](platform/rest-api-walkthrough.md)
-- [Azure Resource 記錄支援的服務和結構描述](platform/diagnostic-logs-schema.md)
+- [Azure Resource 記錄支援的服務和結構描述](./platform/resource-logs-schema.md)
 - [Azure 資源記錄](platform/resource-logs.md)
-- [收集並分析 Azure 監視器中的 Azure 活動記錄](platform/activity-log-collect.md)
-- [在 Log Analytics 工作區中收集 Azure 資源記錄](platform/resource-logs-collect-workspace.md)
+- [收集並分析 Azure 監視器中的 Azure 活動記錄](./platform/activity-log.md)
+- [在 Log Analytics 工作區中收集 Azure 資源記錄](./platform/resource-logs.md#send-to-log-analytics-workspace)
 - [建立診斷設定以將平台記錄和計量傳送至不同目的地](platform/diagnostic-settings.md)
-- [匯出 Azure 活動記錄](platform/activity-log-export.md)
+- [匯出 Azure 活動記錄](./platform/activity-log.md#legacy-collection-methods)
 - [Azure 平台記錄概觀](platform/platform-logs-overview.md)
-- [將 Azure 平台記錄串流至事件中樞](platform/resource-logs-stream-event-hubs.md)
-- [在 Azure 監視器中檢視 Azure 活動記錄](platform/activity-log-view.md)
+- [將 Azure 平台記錄串流至事件中樞](./platform/resource-logs.md#send-to-azure-event-hubs)
+- [在 Azure 監視器中檢視 Azure 活動記錄](./platform/activity-log.md#view-the-activity-log)
 
 ### <a name="virtual-machines"></a>虛擬機器
 - [在 Azure 入口網站中啟用適用於 VM 的 Azure 監視器](insights/vminsights-enable-single-vm.md) - 已更新為包含 Azure Arc。
@@ -155,7 +155,7 @@ ms.locfileid: "86203761"
 
 ### <a name="insights"></a>深入解析
 - [適用於 Azure Cache for Redis 的 Azure 監視器 (預覽)](insights/redis-cache-insights-overview.md) - 新文章。
-- [藉由適用於 Key Vault 的 Azure 監視器來監視 Key Vault (預覽)](insights/key-vaults-insights-overview.md) - 新文章。
+- [藉由適用於 Key Vault 的 Azure 監視器來監視 Key Vault (預覽)](./insights/key-vault-insights-overview.md) - 新文章。
 
 ### <a name="logs"></a>記錄
 - [藉由 PowerShell 建立並設定 Log Analytics](platform/powershell-workspace-configuration.md) - 新增疑難排解一節。
@@ -280,7 +280,7 @@ ms.locfileid: "86203761"
 
 ### <a name="platform-logs"></a>平台記錄
 
-- [在 Azure 監視器中收集並分析 Azure 活動記錄](platform/activity-log-collect.md) - 內容重寫，更完整的說明如何使用診斷設定收集活動記錄。
+- [在 Azure 監視器中收集並分析 Azure 活動記錄](./platform/activity-log.md) - 內容重寫，更完整的說明如何使用診斷設定收集活動記錄。
 
 ### <a name="virtual-machines"></a>虛擬機器
 
@@ -326,7 +326,7 @@ ms.locfileid: "86203761"
 
 #### <a name="azure-monitor-for-containers"></a>適用於容器的 Azure 監視器
 
-- [整合 Azure Active Directory 與 Azure Kubernetes Service](../aks/azure-ad-integration.md) - 新增的備註，用來建立用戶端應用程式以支援已啟用 RBAC 的叢集，進而支援容器的 Azure 監視器。
+- [整合 Azure Active Directory 與 Azure Kubernetes Service](../aks/azure-ad-integration-cli.md) - 新增的備註，用來建立用戶端應用程式以支援已啟用 RBAC 的叢集，進而支援容器的 Azure 監視器。
 
 #### <a name="azure-monitor-for-vms"></a>適用於 VM 的 Azure 監視器
 
@@ -412,8 +412,8 @@ ms.locfileid: "86203761"
 
 ### <a name="platform-logs"></a>平台記錄
 
-- [使用診斷設定收集 Azure 活動記錄 - Azure 監視器](platform/diagnostic-settings-legacy.md) - 已變更屬性的其他資訊。
-- [匯出 Azure 活動記錄](platform/activity-log-export.md) - 已針對 UI 變更進行更新。 
+- [使用診斷設定收集 Azure 活動記錄 - Azure 監視器](./platform/activity-log.md) - 已變更屬性的其他資訊。
+- [匯出 Azure 活動記錄](./platform/activity-log.md#legacy-collection-methods) - 已針對 UI 變更進行更新。 
 
 ## <a name="december-2019"></a>2019 年 12 月
 
@@ -450,7 +450,7 @@ ms.locfileid: "86203761"
 
 ### <a name="insights-and-solutions"></a>見解和解決方案
 
-- [適用於容器的 Azure 監視器常見問題集](insights/container-insights-faq.md) - 已新增有關 [映像] 和 [名稱] 欄位的問題。
+- [適用於容器的 Azure 監視器常見問題集](./faq.md) - 已新增有關 [映像] 和 [名稱] 欄位的問題。
 - [Azure 監視器中的 Azure SQL 分析解決方案](insights/azure-sql.md) - 已更新資料庫等候受控執行個體支援。
 - [設定適用於容器的 Azure 監視器代理程式資料集合](insights/container-insights-agent-config.md) - 已新增 enrich_container_logs 的設定。
 - [使用適用於容器的 Azure 監視器來設定混合式 Kubernetes 叢集](insights/container-insights-hybrid-setup.md) - 已新增疑難排解章節。
@@ -474,19 +474,19 @@ ms.locfileid: "86203761"
 
 根據使用診斷設定來設定活動記錄的新功能，在平台記錄內容的重新建構過程中更新了多篇文章。
 
-- [將 Azure 資源記錄封存到儲存體帳戶](platform/resource-logs-collect-storage.md)
+- [將 Azure 資源記錄封存到儲存體帳戶](./platform/resource-logs.md#send-to-azure-storage)
 - [Azure 活動記錄事件結構描述](platform/activity-log-schema.md)
 - [Azure 監視器服務限制](service-limits.md)
-- [在 Log Analytics 工作區中收集和分析 Azure 活動記錄](platform/activity-log-collect.md)
-- [使用診斷設定收集 Azure 活動記錄 (預覽) - Azure 監視器](platform/diagnostic-settings-legacy.md)
+- [在 Log Analytics 工作區中收集和分析 Azure 活動記錄](./platform/activity-log.md)
+- [使用診斷設定收集 Azure 活動記錄 (預覽) - Azure 監視器](./platform/activity-log.md)
 - [跨 Azure 租用戶將 Azure 活動記錄收集到 Log Analytics 工作區中](platform/activity-log-collect-tenants.md)
-- [在 Log Analytics 工作區中收集 Azure 資源記錄](platform/resource-logs-collect-workspace.md)
+- [在 Log Analytics 工作區中收集 Azure 資源記錄](./platform/resource-logs.md#send-to-log-analytics-workspace)
 - [使用 Resource Manager 範本在 Azure 中建立診斷設定](platform/diagnostic-settings-template.md)
 - [建立診斷設定以收集 Azure 中的記錄和計量](platform/diagnostic-settings.md)
-- [匯出 Azure 活動記錄](platform/activity-log-export.md)
+- [匯出 Azure 活動記錄](./platform/activity-log.md#legacy-collection-methods)
 - [Azure 平台記錄概觀](platform/platform-logs-overview.md)
 - [將 Azure 監視資料串流至事件中樞](platform/stream-monitoring-data-event-hubs.md)
-- [將 Azure 平台記錄串流至事件中樞](platform/resource-logs-stream-event-hubs.md)
+- [將 Azure 平台記錄串流至事件中樞](./platform/resource-logs.md#send-to-azure-event-hubs)
 
 ### <a name="quickstarts-and-tutorials"></a>快速入門與教學課程
 

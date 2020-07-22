@@ -17,12 +17,12 @@ ms.date: 03/22/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/22/2019
-ms.openlocfilehash: a8a939f0d0c3575adec147c1942ddbbef334cb65
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: e13e7c1057d5a01867b561fc7ee7d1eed1a97ca3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86220145"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86530485"
 ---
 # <a name="tutorial-send-notifications-to-specific-users-by-using-azure-notification-hubs"></a>教學課程：使用 Azure 通知中樞將通知傳送給特定使用者
 
@@ -51,7 +51,7 @@ ms.locfileid: "86220145"
 本教學課程以您在以下教學課程中建立的通知中樞和 Visual Studio 專案為基礎：[教學課程：使用 Azure 通知中樞將通知傳送至通用 Windows 平台應用程式](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)。 因此，請先加以完成，再開始進行本教學課程。
 
 > [!NOTE]
-> 如果您使用 Azure App Service 中的 Mobile Apps 作為後端服務，請參閱本教學課程的 [Mobile Apps 版本](../app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md) 。
+> 如果您使用 Azure App Service 中的 Mobile Apps 作為後端服務，請參閱本教學課程的 [Mobile Apps 版本](/previous-versions/azure/app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push) 。
 
 [!INCLUDE [notification-hubs-aspnet-backend-notifyusers](../../includes/notification-hubs-aspnet-backend-notifyusers.md)]
 
@@ -224,7 +224,7 @@ ms.locfileid: "86220145"
     ```
 13. 以滑鼠右鍵按一下 **WindowsApp** 專案、按一下 [新增]，然後按一下 [類別]。 將類別命名為 `RegisterClient.cs`，然後按一下 [確定] 以產生類別。
 
-    為了註冊推播通知，此類別會包裝連絡應用程式後端所需的 REST 呼叫。 它也會在本機儲存通知中心所建立的 *registrationIds* ，如 [從您的應用程式後端註冊](https://msdn.microsoft.com/library/dn743807.aspx)中的詳細說明。 當您按一下 [登入並註冊] 按鈕時，系統會使用儲存在本機儲存體中的授權權杖。
+    為了註冊推播通知，此類別會包裝連絡應用程式後端所需的 REST 呼叫。 它也會在本機儲存通知中心所建立的 *registrationIds* ，如 [從您的應用程式後端註冊](/previous-versions/azure/azure-services/dn743807(v=azure.100))中的詳細說明。 當您按一下 [登入並註冊] 按鈕時，系統會使用儲存在本機儲存體中的授權權杖。
 14. 在 RegisterClient.cs 檔案開頭加入下列 `using` 陳述式：
 
     ```csharp
@@ -357,4 +357,4 @@ ms.locfileid: "86220145"
 [Get started with Notification Hubs]: notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
 [Secure Push]: notification-hubs-aspnet-backend-windows-dotnet-wns-secure-push-notification.md
 [Use Notification Hubs to send breaking news]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
-[Notification Hubs Guidance]: https://msdn.microsoft.com/library/jj927170.aspx
+[Notification Hubs Guidance]: /previous-versions/azure/azure-services/jj927170(v=azure.100)

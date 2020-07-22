@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/25/2019
-ms.openlocfilehash: fd2c7a33c0747aa21a8bda53ad5437c9e79a6557
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 9d0058fd90590b10a0d5745bce1875db9ad35745
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84115418"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518889"
 ---
 # <a name="use-cli-to-create-an-azure-sql-managed-instance"></a>使用 CLI 建立 Azure SQL 受控執行個體
 
@@ -49,7 +49,7 @@ az group delete --name $resource
 
 此指令碼會使用下列命令。 下表中的每個命令都會連結至命令特定的文件。
 
-| | |
+| Command | 說明 |
 |---|---|
 | [az network vnet](/cli/azure/network/vnet) | 虛擬網路命令。 |
 | [az network vnet subnet](/cli/azure/network/vnet/subnet) | 虛擬網路子網路命令。 |

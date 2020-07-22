@@ -3,12 +3,12 @@ title: 教學課程 - 將 SAP HANA 資料庫備份至 Azure VM
 description: 在本教學課程中，您將了解如何將執行於 Azure VM 上的 SAP HANA 資料庫備份至 Azure 備份復原服務保存庫。
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: 123f27a6e2114ed17cbb5e11b34202c17ba69a2d
-ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
+ms.openlocfilehash: 8f6fa00f65a99798ee105852a269247d717ad75d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84770725"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513263"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>教學課程：將 SAP HANA 資料庫備份至 Azure VM
 
@@ -23,7 +23,7 @@ ms.locfileid: "84770725"
 [這裡](sap-hana-backup-support-matrix.md#scenario-support)提供我們目前支援的所有案例。
 
 >[!NOTE]
->[開始使用](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db)適用於 RHEL (7.4、7.6、7.7 或 8.1) 的 SAP Hana 備份預覽。 如有其他問題，請透過此地址發送電子郵件給我們：[AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com)。
+>[開始使用]()適用於 RHEL (7.4、7.6、7.7 或 8.1) 的 SAP Hana 備份預覽。 如有其他問題，請透過此地址發送電子郵件給我們：[AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com)。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -53,13 +53,13 @@ ms.locfileid: "84770725"
 
 ### <a name="allow-access-using-nsg-tags"></a>允許使用 NSG 標籤來存取
 
-如果您使用 NSG 來限制連線，則請使用 AzureBackup 服務標籤來允許針對 Azure 備份進行輸出存取。 此外，您也應該使用 Azure AD 和 Azure 儲存體的[規則](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)，來允許驗證和資料傳輸使用連線能力。 這可以從 Azure 入口網站或透過 PowerShell 來進行。
+如果您使用 NSG 來限制連線，則請使用 AzureBackup 服務標籤來允許針對 Azure 備份進行輸出存取。 此外，您也應該使用 Azure AD 和 Azure 儲存體的[規則](../virtual-network/security-overview.md#service-tags)，來允許驗證和資料傳輸使用連線能力。 這可以從 Azure 入口網站或透過 PowerShell 來進行。
 
 若要使用入口網站建立規則：
 
   1. 在 [所有服務]**** 中，移至 [網路安全性群組]****，然後選取網路安全性群組。
   2. 選取 [設定]**** 底下的 [輸出安全性規則]****。
-  3. 選取 [新增]****。 輸入可供用於建立新規則的所有必要詳細資料，如[安全性規則設定](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings)中所述。 請確定 [目的地]**** 選項已設定為 [服務標籤]****，且 [目的地服務標籤]**** 已設定為 [AzureBackup]****。
+  3. 選取 [新增]****。 輸入可供用於建立新規則的所有必要詳細資料，如[安全性規則設定](../virtual-network/manage-network-security-group.md#security-rule-settings)中所述。 請確定 [目的地]**** 選項已設定為 [服務標籤]****，且 [目的地服務標籤]**** 已設定為 [AzureBackup]****。
   4. 按一下 [新增]**** 以儲存新建立的輸出安全性規則。
 
 若要使用 PowerShell 建立規則：
@@ -85,7 +85,7 @@ ms.locfileid: "84770725"
  7. 儲存 NSG<br/>
     `Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg`
 
-**允許使用 Azure 防火牆標籤來存取**。 如果您使用的是 Azure 防火牆，請使用 AzureBackup [FQDN 標籤](https://docs.microsoft.com/azure/firewall/fqdn-tags)來建立應用程式規則。 這會允許針對 Azure 備份進行輸出存取。
+**允許使用 Azure 防火牆標籤來存取**。 如果您使用的是 Azure 防火牆，請使用 AzureBackup [FQDN 標籤](../firewall/fqdn-tags.md)來建立應用程式規則。 這會允許針對 Azure 備份進行輸出存取。
 
 **部署 HTTP Proxy 伺服器以路由流量**。 當您在 Azure VM 上備份 SAP HANA 資料庫時，VM 上的備份擴充功能會使用 HTTPS API 將管理命令傳送至 Azure 備份，並將資料傳送至 Azure 儲存體。 備份延伸模組也會使用 Azure AD 進行驗證。 透過 HTTP Proxy 路由傳送這三項服務的備份延伸模組流量。 延伸模組是唯一為了要存取公用網際網路而設定的元件。
 
@@ -153,7 +153,7 @@ hdbuserstore list
    * **Name**：名稱會用來識別復原服務保存庫，且對於 Azure 訂用帳戶必須是唯一的。 指定的名稱至少要有兩個字元，但不能超過 50 個字元。 名稱開頭必須是字母，且只能包含字母、數字和連字號。 在本教學課程中，我們使用名稱 **SAPHanaVault**。
    * 訂用帳戶****：選擇要使用的訂用帳戶。 如果您是唯一一個訂用帳戶的成員，就會看到該名稱。 如果您不確定要使用哪個訂用帳戶，請使用預設 (建議) 的訂用帳戶。 只有在您的公司或學校帳戶與多個 Azure 訂用帳戶相關聯時，才會有多個選擇。 在此，我們使用了 **SAP HANA 解決方案實驗室訂用帳戶**訂用帳戶。
    * **資源群組**：使用現有的資源群組或建立新群組。 在此，我們使用了 **SAPHANADemo**。<br>
-   若要查看您訂用帳戶中可用的資源群組清單，請選取 [使用現有的]****﹐然後從下拉式清單方塊中選取資源。 若要建立新的資源群組，請選取 [新建]****，然後輸入名稱。 如需資源群組的完整資訊，請參閱 [Azure Resource Manager 概觀](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)。
+   若要查看您訂用帳戶中可用的資源群組清單，請選取 [使用現有的]****﹐然後從下拉式清單方塊中選取資源。 若要建立新的資源群組，請選取 [新建]****，然後輸入名稱。 如需資源群組的完整資訊，請參閱 [Azure Resource Manager 概觀](../azure-resource-manager/management/overview.md)。
    * **位置**：選取保存庫的地理區域。 保存庫必須與執行 SAP HANA 的虛擬機器位於相同的區域中。 我們使用**美國東部 2**。
 
 5. 選取 [檢閱 + 建立]****。
