@@ -5,12 +5,12 @@ ms.date: 02/07/2020
 ms.topic: quickstart
 ms.custom: tracking-python
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: d41c018e07f792fd0af4027229449d8352aa6c55
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 65570674f16e660c4101088cd77db433abab59a2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85849978"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540327"
 ---
 # <a name="connect-azure-functions-to-azure-storage-using-visual-studio-code"></a>使用 Visual Studio Code 將 Azure Functions 連線至 Azure 儲存體
 
@@ -29,7 +29,7 @@ ms.locfileid: "85849978"
 * 安裝 [Azure 儲存體總管](https://storageexplorer.com/)。 儲存體總管是您將用來檢查由您的輸出繫結所產生之佇列訊息的工具。 儲存體總管支援安裝在以 macOS、Windows 和 Linux 為基礎的作業系統上。
 
 ::: zone pivot="programming-language-csharp"
-* 安裝 [.NET Core CLI 工具](https://docs.microsoft.com/dotnet/core/tools/?tabs=netcore2x)。
+* 安裝 [.NET Core CLI 工具](/dotnet/core/tools/?tabs=netcore2x)。
 ::: zone-end
 
 * 完成 [Visual Studio Code 快速入門第 1 部分](functions-create-first-function-vs-code.md)中的步驟。 

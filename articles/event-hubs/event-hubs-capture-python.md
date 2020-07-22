@@ -3,12 +3,12 @@ title: 快速入門：從 Python 應用程式讀取擷取的資料 - Azure 事�
 description: 快速入門：使用 Azure Python SDK 來示範事件中樞擷取功能的指令碼。
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 8e6174970a6821f7541387f91b226cdebe555625
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 364ca789f560dc8fdae099b09c77946bc4ad5005
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85323056"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537219"
 ---
 # <a name="quickstart-event-hubs-capture-walkthrough-python-azure-eventhub-version-1"></a>快速入門：事件中樞擷取逐步解說︰Python (azure-eventhub 第 1 版)
 
@@ -190,4 +190,4 @@ ms.locfileid: "85323056"
 [1]: ./media/event-hubs-archive-python/event-hubs-python1.png
 [About Azure storage accounts]:../storage/common/storage-create-storage-account.md
 [Visual Studio Code]: https://code.visualstudio.com/
-[Event Hubs overview]: event-hubs-what-is-event-hubs.md
+[Event Hubs overview]: ./event-hubs-about.md

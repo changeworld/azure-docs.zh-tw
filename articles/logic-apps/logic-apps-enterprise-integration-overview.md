@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, logicappspm
 ms.topic: overview
 ms.date: 08/01/2019
-ms.openlocfilehash: 9356cecb22672ae15505d14b5ac73d5baeef09e0
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: adf15904d4490647074d6e2b46ac7e9e871dd388
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77191364"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536397"
 ---
 # <a name="b2b-enterprise-integration-solutions-with-azure-logic-apps-and-enterprise-integration-pack"></a>搭配 Azure Logic Apps 與企業整合套件的 B2B 企業整合解決方案
 
@@ -42,7 +42,7 @@ ms.locfileid: "77191364"
 
 * 若要建立對應和結構描述，您可以使用[適用於 Visual Studio 2015 2.0 和 Visual Studio 2015 的 Microsoft Azure Logic Apps 企業整合工具](https://aka.ms/vsmapsandschemas)。
 
-建立整合帳戶並新增構件之後，您就可以在 Azure 入口網站中建立邏輯應用程式，以開始使用這些構件來建立 B2B 工作流程。 如果您不熟悉邏輯應用程式，請嘗試[建立基本邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 若要使用這些構件，您必須先將您的整合帳戶連結到您的邏輯應用程式。 之後，您的邏輯應用程式就可以存取您的整合帳戶。 您也可以使用 Visual Studio 或 [PowerShell](https://docs.microsoft.com/powershell/module/az.logicapp) 來建立、管理及部署邏輯應用程式。
+建立整合帳戶並新增構件之後，您就可以在 Azure 入口網站中建立邏輯應用程式，以開始使用這些構件來建立 B2B 工作流程。 如果您不熟悉邏輯應用程式，請嘗試[建立基本邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 若要使用這些構件，您必須先將您的整合帳戶連結到您的邏輯應用程式。 之後，您的邏輯應用程式就可以存取您的整合帳戶。 您也可以使用 Visual Studio 或 [PowerShell](/powershell/module/az.logicapp) 來建立、管理及部署邏輯應用程式。
 
 以下是開始建立 B2B 邏輯應用程式的概括步驟：
 

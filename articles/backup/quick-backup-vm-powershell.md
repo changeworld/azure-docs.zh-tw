@@ -5,16 +5,16 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 04/16/2019
 ms.custom: mvc
-ms.openlocfilehash: 8021ca553a1434c891bee911e85d351c61938594
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: fa190c670c5bdcae8bcb31d2b8d5d9bd011acae9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74171951"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538576"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-powershell"></a>使用 PowerShell 在 Azure 中備份虛擬機器
 
-[Azure PowerShell AZ](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-1.4.0) 模組用於從命令列或在指令碼中建立和管理 Azure 資源。
+[Azure PowerShell AZ](/powershell/azure/new-azureps-module-az) 模組用於從命令列或在指令碼中建立和管理 Azure 資源。
 
 [Azure 備份](backup-overview.md)會備份內部部署機器與應用程式，以及 Azure VM。 本文說明如何使用 AZ 模組來備份 Azure VM。 此外，您可以使用 [Azure CLI](quick-backup-vm-cli.md) 或在[Azure 入口網站](quick-backup-vm-portal.md)中備份 VM。
 
@@ -46,7 +46,7 @@ ms.locfileid: "74171951"
 
 - 針對資源群組和位置，指定您想要備份的資源群組和 VM 的位置。
 - 如果您使用[範例指令碼](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fpowershell%2fmodule%2ftoc.json)來建立 VM，則資源群組為 **myResourceGroup**、VM 為***myVM**，而資源位於 **WestEurope** 區域。
-- 「Azure 備份」會自動處理用於備份資料的儲存體。 保存庫預設會使用[異地備援儲存體 (GRS)](../storage/common/storage-redundancy-grs.md)。 異地備援可確保會將備份的資料複寫到與主要區域相距數百英哩的次要 Azure 區域。
+- 「Azure 備份」會自動處理用於備份資料的儲存體。 保存庫預設會使用[異地備援儲存體 (GRS)](../storage/common/storage-redundancy.md)。 異地備援可確保會將備份的資料複寫到與主要區域相距數百英哩的次要 Azure 區域。
 
 現在請建立保存庫：
 
@@ -66,7 +66,7 @@ ms.locfileid: "74171951"
         -Name "myRecoveryServicesVault" | Set-AzRecoveryServicesVaultContext
     ```
 
-3. 使用[Set-AzRecoveryServicesBackupProperty](https://docs.microsoft.com/powershell/module/az.recoveryservices/Set-AzRecoveryServicesBackupProperty) 變更保存庫的儲存體備援組態 (LRS/GRS)，如下所示：
+3. 使用[Set-AzRecoveryServicesBackupProperty](/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty) 變更保存庫的儲存體備援組態 (LRS/GRS)，如下所示：
 
     ```powershell
     Get-AzRecoveryServicesVault `

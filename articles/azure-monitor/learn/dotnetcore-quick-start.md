@@ -7,18 +7,18 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/26/2019
 ms.custom: mvc
-ms.openlocfilehash: 9aa19dfa0626ff0726911815addbb03945ee36f1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e066ef1910373734d9a6607500e45e8a9ccc80b2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82144856"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539749"
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>開始監視 ASP.NET Core Web 應用程式
 
 Azure Application Insights 可讓您輕鬆監視 Web 應用程式的可用性、效能和使用情形。 還可讓您快速識別並診斷應用程式的錯誤，不必等使用者回報。 
 
-本快速入門會引導您將 Application Insights SDK 新增至現有的 ASP.NET Core Web 應用程式。 若要了解如何在不需要簽出 Visual Studio 的情況下設定 Application Insights，請參閱此[文章](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) \(英文\)。
+本快速入門會引導您將 Application Insights SDK 新增至現有的 ASP.NET Core Web 應用程式。 若要了解如何在不需要簽出 Visual Studio 的情況下設定 Application Insights，請參閱此[文章](../app/asp-net-core.md) \(英文\)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -45,7 +45,7 @@ Application Insights 可以從任何連上網際網路的應用程式收集遙�
 1. 選取 [建立資源]   > [開發人員工具]   > [Application Insights]  。
 
    > [!NOTE]
-   >如果這是您第一次建立 Application Insights 資源，您可以瀏覽[建立 Application Insights 資源](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)文件以進一步了解。
+   >如果這是您第一次建立 Application Insights 資源，您可以瀏覽[建立 Application Insights 資源](../app/create-new-resource.md)文件以進一步了解。
 
     設定方塊隨即出現，請使用下表來填寫輸入欄位。
 
@@ -112,4 +112,4 @@ Application Insights 可以從任何連上網際網路的應用程式收集遙�
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [尋找並診斷執行階段例外狀況](https://docs.microsoft.com/azure/application-insights/app-insights-tutorial-runtime-exceptions)
+> [尋找並診斷執行階段例外狀況](./tutorial-runtime-exceptions.md)
