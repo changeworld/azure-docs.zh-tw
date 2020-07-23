@@ -1,18 +1,18 @@
 ---
 title: 適用於 Azure 虛擬機器的內建原則定義
 description: 列出適用於 Azure 虛擬機器的 Azure 原則內建原則定義。 這些內建原則定義提供管理 Azure 資源的常見方法。
-ms.date: 07/10/2020
+ms.date: 07/13/2020
 ms.topic: sample
 author: cynthn
 ms.author: cynthn
 ms.service: virtual-machines
 ms.custom: subject-policy-samples
-ms.openlocfilehash: 7402e1f034c6fb4e9d6816bb71cdf3826a5ffc88
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: 7e3e125017313686d85974ca425d4c219963ca4a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86276918"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86509835"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-virtual-machines"></a>適用於 Azure 虛擬機器的 Azure 原則內建定義
 
@@ -23,6 +23,10 @@ ms.locfileid: "86276918"
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 
 [!INCLUDE [azure-policy-samples-rp-compute](../../includes/policy/samples/byrp/microsoft.compute.md)]
+
+## <a name="microsoftvirtualmachineimages"></a>Microsoft.VirtualMachineImages
+
+[!INCLUDE [azure-policy-samples-rp-vmimages](../../includes/policy/samples/byrp/microsoft.virtualmachineimages.md)]
 
 ## <a name="microsoftclassiccompute"></a>Microsoft.ClassicCompute
 

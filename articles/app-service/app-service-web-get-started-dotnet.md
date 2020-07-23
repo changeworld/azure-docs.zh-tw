@@ -5,12 +5,12 @@ ms.assetid: b1e6bd58-48d1-4007-9d6c-53fd6db061e3
 ms.topic: quickstart
 ms.date: 04/22/2020
 ms.custom: mvc, devcenter, vs-azure, seodec18
-ms.openlocfilehash: b7566260786b6fcfa639f244e2eff0cc8304ed9e
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: d489ed9dbf9b8075951258e0841675877e11be38
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85205789"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506786"
 ---
 # <a name="quickstart-create-an-aspnet-core-web-app-in-azure"></a>快速入門：在 Azure 中建立 ASP.NET Core Web 應用程式
 
@@ -80,7 +80,7 @@ ms.locfileid: "85205789"
    | 設定  | 建議的值 | 描述 |
    | -------- | --------------- | ----------- |
    | **主控方案**  | *myFirstAzureWebAppPlan* | App Service 方案的名稱。 |
-   | **位置**      | 歐洲西部  | 裝載 Web 應用程式的資料中心。 |
+   | **位置**      | 歐洲西部 | 裝載 Web 應用程式的資料中心。 |
    | **大小**          | *免費* | [定價層](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)可決定裝載功能。 |
    
    ![建立新的主控方案](./media/app-service-web-get-started-dotnet/create-new-hosting-plan-vs2019.png)
@@ -153,3 +153,8 @@ Web 應用程式的**概觀**頁面，其中包含瀏覽、停止、啟動、重
 
 > [!div class="nextstepaction"]
 > [設定 ASP.NET Core 應用程式](configure-language-dotnetcore.md)
+
+想要最佳化並節省您的雲端費用嗎？
+
+> [!div class="nextstepaction"]
+> [使用成本管理開始分析成本](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

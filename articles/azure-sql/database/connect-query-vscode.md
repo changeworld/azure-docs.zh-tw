@@ -13,12 +13,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: e0554711aa6db436bc0c3076ec468555c47fff39
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 7a096e355e140b18bd7df010c379e31d21f90634
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267251"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515048"
 ---
 # <a name="quickstart-use-visual-studio-code-to-connect-and-query"></a>快速入門：使用 Visual Studio Code 連線及查詢 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -29,7 +29,7 @@ ms.locfileid: "84267251"
 
 - Azure SQL Database 或 Azure SQL 受控執行個體中的資料庫。 您可以使用其中一個快速入門，在 Azure SQL Database 中建立資料庫並加以設定：
 
-  || Azure SQL Database | Azure SQL 受控執行個體 |
+  | 動作 | Azure SQL Database | Azure SQL 受控執行個體 |
   |:--- |:--- |:---|
   | 建立| [入口網站](single-database-create-quickstart.md) | [入口網站](../managed-instance/instance-create-quickstart.md) |
   || [CLI](scripts/create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
@@ -37,7 +37,7 @@ ms.locfileid: "84267251"
   | 設定 | [伺服器層級 IP 防火牆規則](firewall-create-server-level-portal-quickstart.md))| [來自虛擬機器 (VM) 的連線](../managed-instance/connect-vm-instance-configure.md)|
   |||[來自內部部署環境的連線](../managed-instance/point-to-site-p2s-configure.md)
   |載入資料|每個快速入門載入的 Adventure Works|[還原 Wide World Importers](../managed-instance/restore-sample-database-quickstart.md)
-  |||從 [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) 中的 [BACPAC](database-import.md) 檔案還原或匯入 Adventure Works|
+  |||從 [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) 的 [BACPAC](database-import.md) 檔案，還原或匯入 Adventure Works|
   |||
 
   > [!IMPORTANT]

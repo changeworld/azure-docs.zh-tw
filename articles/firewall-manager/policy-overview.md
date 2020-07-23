@@ -7,12 +7,12 @@ services: firewall-manager
 ms.topic: overview
 ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 88b7dc60b865325ef7dcd9e79015fdee10b4f9a2
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 6e532634fb40eee100e73a333ac6aa7e0a79cf3c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85563714"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521644"
 ---
 # <a name="azure-firewall-manager-policy-overview"></a>Azure 防火牆管理員原則概觀
 
@@ -47,8 +47,8 @@ NAT 規則集合不會被繼承，因為其專屬於特定的防火牆。
 Azure 防火牆支援傳統規則和原則。 下表是原則和規則的比較：
 
 
-|         |原則  |規則  |
-|---------|---------|---------|
+| 主體 | 原則  | 規則 |
+| ------- | ------- | ----- |
 |包含     |NAT、網路、應用程式規則、自訂 DNS 和 DNS Proxy 設定、IP 群組和威脅情報設定 (包括允許清單)|NAT、網路和應用程式規則、自訂 DNS 和 DNS Proxy 設定、IP 群組和威脅情報設定 (包括允許清單)|
 |保護     |虛擬中樞與虛擬網路|僅限虛擬網路|
 |入口網站體驗     |使用防火牆管理員進行集中管理|獨立防火牆體驗|
