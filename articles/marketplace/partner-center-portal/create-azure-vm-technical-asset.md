@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: dannyevers
 ms.author: mingshen
 ms.date: 04/13/2020
-ms.openlocfilehash: aee2016b422dcf447dbae047c8a77ae93bf79ab7
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 5bed073799521498efe5302ab9af616dcdf9f9ab
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86107150"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053580"
 ---
 # <a name="create-your-azure-virtual-machine-technical-assets"></a>建立 Azure 虛擬機器技術資產
 
@@ -43,7 +43,7 @@ VM 映像包含一個作業系統磁碟以及多逹 16 個資料磁碟。 針對
 
 請考慮使用下列其中一種指令碼環境來協助管理 VM 和 VHD：
 
-* [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)
+* [Azure PowerShell](https://docs.microsoft.com/powershell/azure/)
 * [Azure CLI](https://code.visualstudio.com/)
 
 此外，也請考慮將下列工具新增至開發環境：
