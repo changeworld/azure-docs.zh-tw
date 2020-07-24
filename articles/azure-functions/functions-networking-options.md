@@ -5,12 +5,12 @@ author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: 03402828720272851f9b74000d5bcb79405885a5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5a88570805a9fc23904bfe82f91813b3460d0b10
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85117220"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045949"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Functions 網路選項
 
@@ -119,7 +119,7 @@ az resource update -g <resource_group> -n <function_app_name>/config/web --set p
 
 ## <a name="hybrid-connections"></a>混合式連線
 
-[混合式連線](../service-bus-relay/relay-hybrid-connections-protocol.md)是 Azure 轉送的功能，您可用來存取其他網路中的應用程式資源。 它可讓您從應用程式存取應用程式端點。 您可將其用於存取應用程式。 混合式連線適用於所有在 Windows 上執行的函式 (但取用方案除外)。
+[混合式連線](../azure-relay/relay-hybrid-connections-protocol.md)是 Azure 轉送的功能，您可用來存取其他網路中的應用程式資源。 它可讓您從應用程式存取應用程式端點。 您可將其用於存取應用程式。 混合式連線適用於所有在 Windows 上執行的函式 (但取用方案除外)。
 
 如同在 Azure Functions 中使用，每個混合式連線都會與單一 TCP 主機和連接埠組合相互關聯。 這意謂著混合式連線的端點可位於任何作業系統和任何應用程式上，只要您正在存取 TCP 接聽連接埠即可。 混合式連線不知道 (或不在意) 應用程式通訊協定為何，或您要存取什麼資源。 其只會提供網路存取。
 

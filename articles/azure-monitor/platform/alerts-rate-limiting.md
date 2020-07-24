@@ -6,11 +6,12 @@ ms.author: dukek
 ms.topic: conceptual
 ms.date: 3/12/2018
 ms.subservice: alerts
-ms.openlocfilehash: 61e6cc22171815b15b865dd6ed5670bd9c446ead
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 39b9fd8396601d777aa802a147bee3acc4a22cd0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81114319"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045302"
 ---
 # <a name="rate-limiting-for-voice-sms-emails-azure-app-push-notifications-and-webhook-posts"></a>語音、SMS、電子郵件、Azure App 推播通知和 Webhook 發佈的速率限制
 速率限制是當傳送了太多通知給特定電話號碼、電子郵件地址或裝置時所發生的通知暫停。 速率限制可確保警示為可管理且可採取動作。
@@ -31,5 +32,4 @@ ms.locfileid: "81114319"
 ## <a name="next-steps"></a>後續步驟 ##
 * 進一步了解 [SMS 警示行為](alerts-sms-behavior.md)。
 * 取得[活動記錄警示的概觀](alerts-overview.md)，並了解如何收到警示。  
-* 了解如何[設定每當服務健康狀態通知公佈時的警示](../../azure-monitor/platform/alerts-activity-log-service-notifications.md)。
-
+* 了解如何[設定每當服務健康狀態通知公佈時的警示](../../service-health/alerts-activity-log-service-notifications-portal.md)。

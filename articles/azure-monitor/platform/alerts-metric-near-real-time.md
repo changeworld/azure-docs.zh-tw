@@ -7,12 +7,12 @@ services: monitoring
 ms.topic: conceptual
 ms.date: 3/5/2020
 ms.subservice: alerts
-ms.openlocfilehash: c036fa3708d718d6199d27989e60b11015a1227e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bc3b11cd09c1c987a74ad07b12117e62b065a6de
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80585861"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045408"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Azure 監視器中計量警示所支援的資源
 
@@ -21,7 +21,7 @@ Azure 監視器現已可支援[新的計量警示類型](../../azure-monitor/pla
 您也可以針對儲存在 Log Analytics 工作區中的熱門記錄資料，使用新的計量警示，並將其解壓縮為度量。 如需詳細資訊，請檢視[記錄的計量警示](../../azure-monitor/platform/alerts-metric-logs.md)。
 
 ## <a name="portal-powershell-cli-rest-support"></a>入口網站、PowerShell、CLI、REST 支援
-目前，您只能在 [Azure 入口網站]、[ [REST API](https://docs.microsoft.com/rest/api/monitor/metricalerts/)] 或 [Resource Manager][範本](../../azure-monitor/platform/alerts-metric-create-templates.md)中建立較新的計量警示。 即將支援使用 PowerShell 和 Azure CLI 2.0 版與更新版本來設定新版警示。
+目前，您只能在 [Azure 入口網站]、[ [REST API](/rest/api/monitor/metricalerts/)] 或 [Resource Manager][範本](../../azure-monitor/platform/alerts-metric-create-templates.md)中建立較新的計量警示。 即將支援使用 PowerShell 和 Azure CLI 2.0 版與更新版本來設定新版警示。
 
 ## <a name="metrics-and-dimensions-supported"></a>支援的計量和維度
 新版計量警示支援針對使用維度的計量發出警示。 您可以使用維度來將計量篩選到正確層級。 從 [Azure 監視器 - 計量瀏覽器](../../azure-monitor/platform/metrics-charts.md)，即可探索並以視覺化方式檢視所有支援的計量及適用的維度。

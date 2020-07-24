@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: ''
-ms.openlocfilehash: 7656b60c31e7da7841f9afb723167eb061fe3401
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 87277c0c61f6d63e453386724dd472d2663e3148
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85124464"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045210"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metrics-database-for-a-windows-virtual-machine-classic"></a>將客體作業系統計量傳送至 Windows 虛擬機器的 Azure 監視器計量資料庫（傳統）
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Azure 監視器[診斷擴充功能](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) (也稱為 "WAD" 或「診斷」) 可讓您從當作虛擬機器、雲端服務或 Service Fabric 叢集一部分執行的客體作業系統 (客體 OS) 收集計量與記錄。 擴充功能可以將遙測資料傳送到[許多不同位置](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json)。
+Azure 監視器[診斷擴充功能](./diagnostics-extension-overview.md) (也稱為 "WAD" 或「診斷」) 可讓您從當作虛擬機器、雲端服務或 Service Fabric 叢集一部分執行的客體作業系統 (客體 OS) 收集計量與記錄。 擴充功能可以將遙測資料傳送到[許多不同位置](./data-platform.md?toc=/azure/azure-monitor/toc.json)。
 
 本文說明將 Windows 虛擬機器（傳統）的來賓 OS 效能計量傳送至 Azure 監視器公制資料庫的程式。 從診斷 1.11 版開始，您可以直接將計量寫入到已收集標準平台計量的 Azure 監視器計量存放區。 
 
@@ -30,9 +30,9 @@ Azure 監視器[診斷擴充功能](https://docs.microsoft.com/azure/monitoring-
 
 - 您必須是 Azure 訂用帳戶的[服務管理員或共同管理員](../../cost-management-billing/manage/add-change-subscription-administrator.md)。 
 
-- 您必須先向 [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services) 註冊您的訂用帳戶。 
+- 您必須先向 [Microsoft.Insights](../../azure-resource-manager/management/resource-providers-and-types.md) 註冊您的訂用帳戶。 
 
-- 您需要安裝 [Azure PowerShell](/powershell/azure) 或 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)。
+- 您需要安裝 [Azure PowerShell](/powershell/azure) 或 [Azure Cloud Shell](../../cloud-shell/overview.md)。
 
 - 您的 VM 資源必須位於[支援自訂計量的區域](metrics-custom-overview.md#supported-regions)中。
 
@@ -186,7 +186,7 @@ Azure 監視器[診斷擴充功能](https://docs.microsoft.com/azure/monitoring-
 
 ## <a name="plot-the-metrics-in-the-azure-portal"></a>在 Azure 入口網站中繪製計量
 
-1.  移至 Azure 入口網站。 
+1.  前往 Azure 入口網站。 
 
 1.  在左側功能表上，選取 [**監視]。**
 
@@ -204,4 +204,3 @@ Azure 監視器[診斷擴充功能](https://docs.microsoft.com/azure/monitoring-
 
 ## <a name="next-steps"></a>後續步驟
 - 深入了解[自訂計量](metrics-custom-overview.md)。
-

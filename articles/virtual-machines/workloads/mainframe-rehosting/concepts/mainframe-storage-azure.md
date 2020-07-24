@@ -6,11 +6,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: storage
-ms.openlocfilehash: 86419811cdf2c11204caae0ca5bf6f65fba063d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7f83d798bbffeb232b45701beee828114ad3db7d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76288909"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87042598"
 ---
 # <a name="move-mainframe-storage-to-azure"></a>將大型主機儲存體移至 Azure
 
@@ -44,13 +45,13 @@ IBM 大型主機以兩種方式來區分儲存體。 第一個是直接存取儲
 
 對於裝載于 Azure 中的應用程式，Microsoft 提供數 pb 的儲存體，而且您有數個儲存體選項。 從 SSD 儲存體的範圍，到低成本的 blob 儲存體，以供大量儲存和封存之用。 此外，Azure 會為儲存體提供資料冗余選項，這會在大型主機環境中進行更多的設定。
 
-Azure 儲存體是以[Azure 磁片](/azure/virtual-machines/windows/managed-disks-overview)、 [Azure 檔案儲存體](/azure/storage/files/storage-files-introduction)和[azure blob](/azure/storage/blobs/storage-blobs-overview)的形式提供，如下表摘要所示。 深入瞭解[每個使用](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks)時機。
+Azure 儲存體是以[Azure 磁片](../../../windows/managed-disks-overview.md)、 [Azure 檔案儲存體](../../../../storage/files/storage-files-introduction.md)和[azure blob](../../../../storage/blobs/storage-blobs-overview.md)的形式提供，如下表摘要所示。 深入瞭解[每個使用](../../../../storage/common/storage-introduction.md)時機。
 
 <!-- markdownlint-disable MD033 -->
 
 <table>
 <thead>
-    <tr><th>類型</th><th>Description</th><th>當您想要執行下列動作時，請使用：</th></tr>
+    <tr><th>類型</th><th>描述</th><th>當您想要執行下列動作時，請使用：</th></tr>
 </thead>
 <tbody>
 <tr><td>Azure 檔案
@@ -101,13 +102,13 @@ Ssd 可在 Azure 上提供最高的儲存體效能。 以下是可用的選項�
 
 Blob 儲存體提供 Azure 上的最大儲存體數量。 除了儲存體大小，Azure 還提供受控和非受控儲存體。 使用受控儲存體，Azure 會負責管理基礎儲存體帳戶。 使用非受控儲存體時，使用者需負責設定適當大小的 Azure 儲存體帳戶，以符合儲存體需求。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [大型主機遷移](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/overview)
-- [Azure 虛擬機器上的大型主機重新裝載](/azure/virtual-machines/workloads/mainframe-rehosting/overview)
+- [Azure 虛擬機器上的大型主機重新裝載](../overview.md)
 - [將大型主機計算移至 Azure](mainframe-compute-Azure.md)
-- [決定何時使用 Azure Blob、Azure 檔案服務或 Azure 磁碟](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks)
-- [適用于 Azure VM 工作負載的標準 SSD 受控磁碟](https://docs.microsoft.com/azure/virtual-machines/windows/disks-standard-ssd)
+- [決定何時使用 Azure Blob、Azure 檔案服務或 Azure 磁碟](../../../../storage/common/storage-introduction.md)
+- [適用于 Azure VM 工作負載的標準 SSD 受控磁碟](../../../windows/disks-types.md#standard-ssd)
 
 ### <a name="ibm-resources"></a>IBM 資源
 

@@ -3,11 +3,12 @@ title: 範本函式 - 資源
 description: 描述 Azure Resource Manager 範本中用來擷取資源相關值的函式。
 ms.topic: conceptual
 ms.date: 06/18/2020
-ms.openlocfilehash: f79fa3420420a2ff440c3228f227cc71436b4a1c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 19f5b6c07010c82ba6675e6db031e663ef7c5cdd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85099261"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87044955"
 ---
 # <a name="resource-functions-for-arm-templates"></a>ARM 範本的資源函式
 
@@ -137,6 +138,7 @@ Resource Manager 提供下列函式，以在您的 Azure Resource Manager (ARM) 
 | Microsoft.BatchAI/workspaces/experiments/jobs | [listoutputfiles](/rest/api/batchai/jobs/listoutputfiles) |
 | Microsoft.Blockchain/blockchainMembers | [listApiKeys](/rest/api/blockchain/2019-06-01-preview/blockchainmembers/listapikeys) |
 | Microsoft.Blockchain/blockchainMembers/transactionNodes | [listApiKeys](/rest/api/blockchain/2019-06-01-preview/transactionnodes/listapikeys) |
+| BotService/botServices/通道 | [listChannelWithKeys](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/botservice/resource-manager/Microsoft.BotService/stable/2020-06-02/botservice.json#L553) |
 | Microsoft.Cache/redis | [listKeys](/rest/api/redis/redis/listkeys) |
 | Microsoft.CognitiveServices/accounts | [listKeys](/rest/api/cognitiveservices/accountmanagement/accounts/listkeys) |
 | Microsoft.ContainerRegistry/registries | [listBuildSourceUploadUrl](/rest/api/containerregistry/registries%20(tasks)/getbuildsourceuploadurl) |
@@ -397,7 +399,7 @@ Resource Manager 提供下列函式，以在您的 Azure Resource Manager (ARM) 
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 描述 |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
 | resourceName 或 resourceIdentifier |是 |字串 |資源的名稱或唯一識別碼。 當參考目前範本中的資源時，只會提供資源名稱做為參數。 參考先前部署的資源時，或資源的名稱不明確時，請提供資源識別碼。 |
 | apiVersion |否 |字串 |指定的資源的 API 版本。 **如果在相同的範本內未供應資源，則需要此參數。** 一般而言，格式為 **yyyy-mm-dd**。 如需資源的有效 API 版本，請參閱[範本參考](/azure/templates/)。 |
@@ -726,7 +728,7 @@ resourceGroup 函式的常見用法是在和資源群組相同的位置中建立
 | resourceGroupName |否 |字串 |預設值為目前資源群組。 需要擷取另一個訂用帳戶中的資源群組時，請指定此值。 只有在部署於資源群組範圍時，才需要提供此值。 |
 | resourceType |是 |字串 |資源的類型 (包括資源提供者命名空間)。 |
 | resourceName1 |是 |字串 |資源的名稱。 |
-| resourceName2 |No |字串 |下一個資源名稱區段 (如有必要)。 |
+| resourceName2 |否 |字串 |下一個資源名稱區段 (如有必要)。 |
 
 當資源類型包含更多區段時，請繼續新增資源名稱作為參數。
 
@@ -916,12 +918,12 @@ resourceGroup 函式的常見用法是在和資源群組相同的位置中建立
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | Description |
+| 參數 | 必要 | 類型 | 說明 |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |否 |字串 (GUID 格式) |預設值為目前的訂用帳戶。 需要擷取另一個訂用帳戶中的資源群組時，請指定此值。 |
 | resourceType |是 |字串 |資源的類型 (包括資源提供者命名空間)。 |
 | resourceName1 |是 |字串 |資源的名稱。 |
-| resourceName2 |No |字串 |下一個資源名稱區段 (如有必要)。 |
+| resourceName2 |否 |字串 |下一個資源名稱區段 (如有必要)。 |
 
 當資源類型包含更多區段時，請繼續新增資源名稱作為參數。
 
@@ -1002,7 +1004,7 @@ resourceGroup 函式的常見用法是在和資源群組相同的位置中建立
 |:--- |:--- |:--- |:--- |
 | resourceType |是 |字串 |資源的類型 (包括資源提供者命名空間)。 |
 | resourceName1 |是 |字串 |資源的名稱。 |
-| resourceName2 |No |字串 |下一個資源名稱區段 (如有必要)。 |
+| resourceName2 |否 |字串 |下一個資源名稱區段 (如有必要)。 |
 
 當資源類型包含更多區段時，請繼續新增資源名稱作為參數。
 

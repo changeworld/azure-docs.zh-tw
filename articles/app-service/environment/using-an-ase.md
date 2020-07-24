@@ -7,11 +7,12 @@ ms.topic: article
 ms.date: 5/10/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: fd1ffc8636e11ca20bc32b4b6f600e03d923d8b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f9bfd601642ff9d6b5b5c5a1c2c508d1821e19c7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83125803"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87042182"
 ---
 # <a name="use-an-app-service-environment"></a>使用 App Service 環境
 
@@ -61,7 +62,7 @@ App Service 環境（ASE）是在客戶的 Azure 虛擬網路實例的子網中 
 
     f. 選取 [執行時間堆疊]。
 
-    如 選取 [Linux] 或 [Windows]。 
+    g. 選取 [Linux] 或 [Windows]。 
 
     h. 在 [**區域**] 下拉式清單中選取您的 ASE。 
 
@@ -160,7 +161,7 @@ ASE 預設網域尾碼的 DNS 設定並不會將您的應用程式限制為僅�
 
 ILB ASE 中應用程式的發佈端點會使用用來建立 ILB ASE 的網域。 您可以在應用程式的發行設定檔和應用程式的入口網站窗格中看到它（在 [**總覽**] [  >  **基本**] 和 [**屬性**] 中）。
 
-## <a name="storage"></a>儲存體
+## <a name="storage"></a>存放裝置
 
 ASE 針對 ASE 中的所有應用程式都有 1 TB 的儲存體。 隔離定價 SKU 中的 App Service 方案有 250 GB 的限制。 在 ASE 中，250 GB 的儲存體會根據 App Service 方案新增至 1 TB 的限制。 您可以有多個 App Service 方案，而不只是四個，但不會有超過 1 TB 限制的額外儲存空間。
 
@@ -208,7 +209,7 @@ ASE 針對 ASE 中的所有應用程式都有 1 TB 的儲存體。 隔離定價 
 
 如果您有多個 Ase，您可能會想要在其他人之前先升級某些 Ase。 在 ASE **HostingEnvironment Resource Manager**物件中，您可以設定**upgradePreference**的值。 您可以使用範本、ARMClient 或來設定**upgradePreference**設定 https://resources.azure.com 。 三種可能的值如下：
 
-- **無**： Azure 不會在特定的批次中升級您的 ASE。 此值為預設。
+- **無**： Azure 不會在特定的批次中升級您的 ASE。 此值為預設值。
 - **早期**：您的 ASE 將會在 App Service 升級的前半部升級。
 - **晚期**：您的 ASE 將會在 App Service 升級的下半年升級。
 
@@ -250,6 +251,30 @@ ASE 針對 ASE 中的所有應用程式都有 1 TB 的儲存體。 隔離定價 
     ![ASE 刪除][3]
 
 1. 選取 [確定]。
+
+## <a name="ase-cli"></a>ASE CLI
+
+有一些命令列功能可管理 ASE。  Az cli 命令如下所示。
+
+```azurecli
+C:\>az appservice ase --help
+
+Group
+    az appservice ase : Manage App Service Environments v2.
+        This command group is in preview. It may be changed/removed in a future release.
+Commands:
+    create         : Create app service environment.
+    delete         : Delete app service environment.
+    list           : List app service environments.
+    list-addresses : List VIPs associated with an app service environment.
+    list-plans     : List app service plans associated with an app service environment.
+    show           : Show details of an app service environment.
+    update         : Update app service environment.
+
+For more specific examples, use: az find "az appservice ase"
+```
+
+
 
 <!--Image references-->
 [1]: ./media/using_an_app_service_environment/usingase-appcreate.png

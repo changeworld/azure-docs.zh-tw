@@ -7,12 +7,12 @@ author: danimir
 ms.author: danil
 ms.date: 02/21/2020
 ms.reviewer: carlrab
-ms.openlocfilehash: bb9bc847944a4228a7b583e21d0aa957f1910a29
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 7e5f7bd9ec3cc9a66adb8743ce2a56d8b2ead204
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087175"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87041548"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>使用 Azure SQL 分析來監視 Azure SQL Database (預覽)
 
@@ -34,25 +34,25 @@ Azure SQL 分析是僅限雲端的監視解決方案，可支援所有 Azure SQL
 | 連接的來源 | 支援 | 描述 |
 | --- | --- | --- |
 | [診斷設定](../platform/diagnostic-settings.md) | **是** | Azure 計量和記錄資料會直接傳送至 Azure 監視器的記錄。 |
-| [Azure 儲存體帳戶](../platform/collect-azure-metrics-logs.md) | No | Azure 監視器不會從儲存體帳戶讀取資料。 |
-| [Windows 代理程式](../platform/agent-windows.md) | No | Azure SQL 分析不使用直接 Windows 代理程式。 |
-| [Linux 代理程式](../learn/quick-collect-linux-computer.md) | No | Azure SQL 分析不使用直接 Linux 代理程式。 |
-| [System Center Operations Manager 管理群組](../platform/om-agents.md) | No | Azure SQL 分析不會使用從 Operations Manager 代理程式到 Azure 監視器的直接連接。 |
+| [Azure 儲存體帳戶](../platform/resource-logs.md#send-to-log-analytics-workspace) | 否 | Azure 監視器不會從儲存體帳戶讀取資料。 |
+| [Windows 代理程式](../platform/agent-windows.md) | 否 | Azure SQL 分析不使用直接 Windows 代理程式。 |
+| [Linux 代理程式](../learn/quick-collect-linux-computer.md) | 否 | Azure SQL 分析不使用直接 Linux 代理程式。 |
+| [System Center Operations Manager 管理群組](../platform/om-agents.md) | 否 | Azure SQL 分析不會使用從 Operations Manager 代理程式到 Azure 監視器的直接連接。 |
 
 ## <a name="azure-sql-analytics-options"></a>Azure SQL 分析選項
 
 下表概述兩個 Azure SQL 分析儀表板版本的支援選項，一個用於 Azure SQL Database，另一個用於 Azure SQL 受控執行個體資料庫。
 
-| Azure SQL 分析選項 | Description | SQL Database 支援 | SQL 受控執行個體支援 |
+| Azure SQL 分析選項 | 描述 | SQL Database 支援 | SQL 受控執行個體支援 |
 | --- | ------- | ----- | ----- |
-| 資源 (依類型) | 可計算所有受監視資源的檢視方塊。 | Yes | 是 |
-| 深入解析 | 可透過階層的方式，向下鑽研至 Intelligent Insights 乃至效能。 | Yes | 是 |
-| 錯誤 | 可透過階層的方式，向下鑽研至資料庫上發生的 SQL 錯誤。 | Yes | 是 |
+| 資源 (依類型) | 可計算所有受監視資源的檢視方塊。 | 是 | 是 |
+| 深入解析 | 可透過階層的方式，向下鑽研至 Intelligent Insights 乃至效能。 | 是 | 是 |
+| 錯誤 | 可透過階層的方式，向下鑽研至資料庫上發生的 SQL 錯誤。 | 是 | 是 |
 | 逾時 | 可透過階層的方式，向下鑽研至資料庫上發生的 SQL 逾時。 | 是 | 否 |
 | 封鎖 | 可透過階層的方式，向下鑽研至資料庫上發生的 SQL 封鎖。 | 是 | 否 |
 | 資料庫等候 | 可透過階層的方式，向下鑽研至資料庫層級的 SQL 等候統計資料。 包含總等候時間及每種等候類型等候時間的摘要。 |是 | 否 |
-| 查詢持續時間 | 可透過階層的方式，向下鑽研至查詢執行統計資料，例如查詢持續時間、CPU 使用量、資料 IO 使用量、記錄 IO 使用量。 | Yes | 是 |
-| 查詢等候 | 可透過階層的方式，依等候類別，向下鑽研至查詢等候統計資料。 | Yes | 是 |
+| 查詢持續時間 | 可透過階層的方式，向下鑽研至查詢執行統計資料，例如查詢持續時間、CPU 使用量、資料 IO 使用量、記錄 IO 使用量。 | 是 | 是 |
+| 查詢等候 | 可透過階層的方式，依等候類別，向下鑽研至查詢等候統計資料。 | 是 | 是 |
 
 ## <a name="configuration"></a>組態
 
@@ -292,7 +292,7 @@ AzureDiagnostics
 
 雖然 Azure SQL 分析可免費使用，但超過每個月所配置的免費資料提取單位數，才會耗用診斷遙測，請參閱[Log Analytics 定價](https://azure.microsoft.com/pricing/details/monitor)。 所提供的免費資料擷取單位可讓您每個月免費監視多個資料庫。 較繁重工作負載的更多作用中資料庫會內嵌更多資料與閒置資料庫。 您可以在 Azure SQL 分析的導覽功能表上選取 [OMS 工作區]，然後選取 [使用量和估計成本]，輕鬆地監視 Azure SQL 分析中的資料內嵌耗用量。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>接下來的步驟
 
 - 使用 Azure 監視器中的[記錄查詢](../log-query/log-query-overview.md)來查看詳細的 Azure SQL 資料。
 - [建立您自己的儀表板](../learn/tutorial-logs-dashboards.md)來顯示 Azure SQL 資料。

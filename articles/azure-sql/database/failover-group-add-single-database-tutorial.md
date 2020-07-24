@@ -11,17 +11,17 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 06/19/2019
-ms.openlocfilehash: 53645b6ba9f1463eac14ea974a17c356c1791db6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ad4ef93b34639abffaf15c806fd86d550e03f0bc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85255308"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045268"
 ---
 # <a name="tutorial-add-an-azure-sql-database-to-an-autofailover-group"></a>教學課程：將 Azure SQL Database 新增至 autofailover 群組
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-[容錯移轉群組](auto-failover-group-overview.md)是宣告式抽象層，可讓您將多個異地複寫資料庫分組。 瞭解如何使用 Azure 入口網站、PowerShell 或 Azure CLI 來設定 Azure SQL Database 的容錯移轉群組，並測試容錯移轉。  您將在本教學課程中了解如何：
+[容錯移轉群組](auto-failover-group-overview.md)是宣告式抽象層，可讓您將多個異地複寫資料庫分組。 瞭解如何使用 Azure 入口網站、PowerShell 或 Azure CLI 來設定 Azure SQL Database 的容錯移轉群組，並測試容錯移轉。  在本教學課程中，您將了解如何：
 
 > [!div class="checklist"]
 >
@@ -29,7 +29,7 @@ ms.locfileid: "85255308"
 > - 在兩部伺服器之間建立資料庫的容錯移轉群組。
 > - 測試容錯移轉。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 # <a name="the-portal"></a>[入口網站](#tab/azure-portal)
 
@@ -42,7 +42,7 @@ ms.locfileid: "85255308"
 若要完成本教學課程，請確定您有下列專案：
 
 - Azure 訂用帳戶。 如果您還沒有帳戶，請[建立一個免費帳戶](https://azure.microsoft.com/free/)。
-- [Azure PowerShell](/powershell/azureps-cmdlets-docs)
+- [Azure PowerShell](/powershell/azure/)
 
 # <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -427,7 +427,7 @@ ms.locfileid: "85255308"
 
 您可以在這裡找到其他 Azure SQL Database 腳本： [Azure PowerShell](powershell-script-content-guide.md)和[Azure CLI](az-cli-script-samples-content-guide.md)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 在本教學課程中，您已將 Azure SQL Database 中的資料庫新增到容錯移轉群組，並已測試容錯移轉。 您已了解如何︰
 

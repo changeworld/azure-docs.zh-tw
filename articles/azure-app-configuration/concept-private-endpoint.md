@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 3/12/2020
 ms.author: lcozzens
-ms.openlocfilehash: bbf2039ad695f332b69bd5429ff527a4a2534e26
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 3ec2a0e38f3bead5fbab8a119099bb5bbc3ded2e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86026979"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87042123"
 ---
 # <a name="using-private-endpoints-for-azure-app-configuration"></a>使用 Azure 應用程式組態的私用端點
 
@@ -22,9 +22,6 @@ ms.locfileid: "86026979"
 - 設定防火牆以封鎖所有連線至公用端點上的應用程式組態，以保護您的應用程式設定詳細資料。
 - 增加虛擬網路（VNet）的安全性，以確保資料不會從 VNet 中取消。
 - 使用[VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md)或[ExpressRoutes](../expressroute/expressroute-locations.md)搭配私用對等互連，從連線到 VNet 的內部部署網路安全地連線到應用程式組態存放區。
-
-> [!NOTE]
-> 私用端點功能現已在所有區域（印度中部*除外*）中正式推出。 在**印度中部**地區，Azure 應用程式組態提供私人端點的使用作為公開預覽。 公開預覽版供應項目可讓客戶在其正式發行前，先試驗新功能。  公開預覽功能和服務不適用於生產環境。
 
 ## <a name="conceptual-overview"></a>概念概觀
 
@@ -64,7 +61,7 @@ Azure 依賴 DNS 解析，透過私人連結將 VNet 的連線路由至設定存
 
 啟用私用端點需要[標準層](https://azure.microsoft.com/pricing/details/app-configuration/)應用程式組態存放區。  若要深入瞭解私人連結定價詳細資料，請參閱[Azure 私人連結定價](https://azure.microsoft.com/pricing/details/private-link)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 若要深入瞭解如何建立應用程式組態存放區的私用端點，請參閱下列文章：
 

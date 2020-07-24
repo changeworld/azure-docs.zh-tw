@@ -15,16 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: b6c6fccd473ae57139c0b46bf32dc9468a4ba1a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fa68c842495725c73a6a4b5629d38fb9c12a819f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74901266"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038727"
 ---
 # <a name="manage-streaming-endpoints-with-net-sdk"></a>使用 .NET SDK 來管理串流端點  
 
 >[!NOTE]
->請務必檢閱[概觀](media-services-streaming-endpoints-overview.md)一文。 此外，也請檢閱 [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint)。
+>請務必檢閱[概觀](media-services-streaming-endpoints-overview.md)一文。 此外，也請檢閱 [StreamingEndpoint](/rest/api/media/operations/streamingendpoint)。
 
 本文章中的程式碼示範如何使用「Azure 媒體服務 .NET SDK」來執行下列工作：
 
@@ -149,4 +150,3 @@ namespace AMSStreamingEndpoint
 
 ## <a name="provide-feedback"></a>提供意見反應
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

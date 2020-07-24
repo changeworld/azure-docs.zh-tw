@@ -13,16 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 8e1aeaf105ce371e965b433ac78e2b257f4bc18b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9d73c280e3f5639b11e0d07b9ef2f775f48cd3c3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81682035"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038483"
 ---
 # <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>使用 Azure AD 驗證存取 Azure 媒體服務 API  
 
 > [!NOTE]
-> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
+> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](../latest/index.yml)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
 
 Azure 媒體服務 API 是一種 RESTful API。 您可以使用 REST API 或使用可用的用戶端 SDK 來執行媒體資源的作業。 Azure 媒體服務提供適用於 Microsoft .NET 的媒體服務用戶端 SDK。 在獲得存取媒體服務資源和媒體服務 API 的授權之前，您必須先進行驗證。 
 
@@ -148,12 +149,11 @@ Azure 媒體 REST 要求若要成功，呼叫的使用者必須擁有嘗試存�
 
 下列文章是 Azure AD 驗證概念的概觀： 
 
-- [Azure AD 的驗證案例](../../active-directory/develop/authentication-scenarios.md)
-- [在 Azure AD 新增、更新或移除應用程式](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md)
+- [Azure AD 的驗證案例](../../active-directory/develop/authentication-vs-authorization.md)
+- [在 Azure AD 新增、更新或移除應用程式](../../active-directory/develop/quickstart-register-app.md)
 - [使用 PowerShell 設定及 管理角色型存取控制](../../role-based-access-control/role-assignments-powershell.md)
 
 ## <a name="next-steps"></a>後續步驟
 
 * 使用 Azure 入口網站[存取 Azure AD 驗證以取用 Azure 媒體服務 API](media-services-portal-get-started-with-aad.md)。
 * 使用 Azure AD 驗證[搭配 .NET 存取 Azure 媒體服務 API](media-services-dotnet-get-started-with-aad.md)。
-

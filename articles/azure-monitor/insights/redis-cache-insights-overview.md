@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/21/2020
-ms.openlocfilehash: 469b402c694bcfae5a826c03ea35dbef2c365148
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 70bf39011761bcf59c8270ecdcc0542e326aef42
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84945404"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045852"
 ---
 # <a name="explore-azure-monitor-for-azure-cache-for-redis-preview"></a>探索適用於 Azure Cache for Redis 的 Azure 監視器 (預覽)
 
@@ -120,7 +120,7 @@ ms.locfileid: "84945404"
 
 ### <a name="metric-definitions"></a>計量定義
 
-如需形成這些活頁簿之計量定義的完整清單，請參閱[可用的計量和報告間隔](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-monitor#available-metrics-and-reporting-intervals) \(部分機器翻譯\) 一文。
+如需形成這些活頁簿之計量定義的完整清單，請參閱[可用的計量和報告間隔](../../azure-cache-for-redis/cache-how-to-monitor.md#available-metrics-and-reporting-intervals) \(部分機器翻譯\) 一文。
 
 ## <a name="view-from-an-azure-cache-for-redis-resource"></a>Azure Cache for Redis 資源的檢視
 
@@ -156,7 +156,7 @@ ms.locfileid: "84945404"
 
 ## <a name="pin-export-and-expand"></a>釘選、匯出和展開
 
-若要將任何計量區段釘選到 [Azure 儀表板](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards)，請選取該區段右上角的圖釘符號。
+若要將任何計量區段釘選到 [Azure 儀表板](../../azure-portal/azure-portal-dashboards.md)，請選取該區段右上角的圖釘符號。
 
 ![醒目提示圖釘符號的計量區段](./media/cosmosdb-insights-overview/pin.png)
 
@@ -186,6 +186,6 @@ ms.locfileid: "84945404"
 
 ## <a name="next-steps"></a>後續步驟
 
-* 設定[計量警示](../platform/alerts-metric.md)和[服務健康情況通知](../../service-health/alerts-activity-log-service-notifications.md)，以設定可協助偵測問題的自動化警示。
+* 設定[計量警示](../platform/alerts-metric.md)和[服務健康情況通知](../../service-health/alerts-activity-log-service-notifications-portal.md)，以設定可協助偵測問題的自動化警示。
 
 * 檢閱[使用 Azure 監視器活頁簿建立互動式報表](../platform/workbooks-overview.md)，以了解活頁簿支援、如何撰寫或自訂報表等等的案例。

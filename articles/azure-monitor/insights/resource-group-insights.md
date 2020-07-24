@@ -7,11 +7,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 06bdedf1dac92a2010718ffd3eb5c6e43bb51e6c
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: bf8ea45f37e421d70a68c4a6e138f5203e92d78f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83798132"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045778"
 ---
 # <a name="monitor-resource-groups-with-azure-monitor-preview"></a>使用 Azure 監視器監視資源群組 (預覽)
 
@@ -45,10 +46,10 @@ ms.locfileid: "83798132"
 
    |         |          |
    | ---------------- |:-----|
-   | [**警示**](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)      |  檢視、建立與管理警示。 |
-   | [**計量**](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics) | 視覺化與探索以計量為基礎的資料。    |
-   | [**活動記錄**](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) | 發生在 Azure 的訂用帳戶層級事件。  |
-   | [**應用程式對應**](https://docs.microsoft.com/azure/application-insights/app-insights-app-map) | 瀏覽分散式應用程式的拓撲，以找出效能瓶頸或失敗熱點。 |
+   | [**警示**](../platform/alerts-overview.md)      |  檢視、建立與管理警示。 |
+   | [**計量**](../platform/data-platform.md) | 視覺化與探索以計量為基礎的資料。    |
+   | [**活動記錄**](../platform/platform-logs-overview.md) | 發生在 Azure 的訂用帳戶層級事件。  |
+   | [**應用程式對應**](../app/app-map.md) | 瀏覽分散式應用程式的拓撲，以找出效能瓶頸或失敗熱點。 |
 
 ## <a name="failures-and-performance"></a>失敗與效能
 
@@ -116,6 +117,6 @@ ms.locfileid: "83798132"
 
 ## <a name="next-steps"></a>後續步驟
 
-- [Azure 監視器活頁簿](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview)
-- [Azure 資源健康狀態](https://docs.microsoft.com/azure/service-health/resource-health-overview)
-- [Azure 監視器警示](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)
+- [Azure 監視器活頁簿](../platform/workbooks-overview.md)
+- [Azure 資源健康狀態](../../service-health/resource-health-overview.md)
+- [Azure 監視器警示](../platform/alerts-overview.md)

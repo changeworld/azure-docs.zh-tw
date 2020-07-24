@@ -4,16 +4,16 @@ description: 了解如何使用 IntelliJ IDEA 建立您的第一個 Azure Resour
 ms.devlang: java
 ms.date: 08/01/2019
 ms.topic: conceptual
-ms.openlocfilehash: fa09fbe8d239bbe10c0762d3aad7e19df23a9044
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: bce3d8ff2662ff62e1493cb26d797619b65c2762
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057444"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87040746"
 ---
 # <a name="create-and-deploy-arm-templates-by-using-the-intellij-idea"></a>使用 IntelliJ 概念來建立和部署 ARM 範本
 
-瞭解如何使用 IntelliJ 概念將 Azure Resource Manager （ARM）範本部署至 Azure，以及直接從 IDE 編輯和更新範本的程式。 ARM 範本是 JSON 檔案，可定義您需要為解決方案部署的資源。 若要了解部署和管理 Azure 解決方案的相關概念，請參閱[範本部署概觀](overview.md)。
+瞭解如何使用 IntelliJ 概念將 Azure Resource Manager （ARM）範本部署至 Azure，以及直接從 IDE 編輯和更新範本的程式。 ARM 範本是 JSON 檔案，該檔案定義您需要為您的解決方案部署的資源。 若要了解部署和管理 Azure 解決方案的相關概念，請參閱[範本部署概觀](overview.md)。
 
 ![Resource Manager 範本入口網站圖表](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-export-deploy-template-portal.png)
 
@@ -27,7 +27,7 @@ ms.locfileid: "86057444"
 
 * 已安裝的 [IntelliJ IDEA](https://www.jetbrains.com/idea/download/) Ultimate Edition 或 Community Edition
 * 已安裝的 [Azure Toolkit for IntelliJ](https://plugins.jetbrains.com/plugin/8053)，請查看 [IntelliJ 的外掛程式管理指南](https://www.jetbrains.com/help/idea/managing-plugins.html)以取得詳細資訊
-* 已針對 Azure Toolkit for IntelliJ [登入](/java/azure/intellij/azure-toolkit-for-intellij-sign-in-instructions)您的 Azure 帳戶
+* 已針對 Azure Toolkit for IntelliJ [登入](/azure/developer/java/toolkit-for-intellij/sign-in-instructions)您的 Azure 帳戶
 
 ## <a name="deploy-a-quickstart-template"></a>部署快速入門範本
 
@@ -78,7 +78,7 @@ ms.locfileid: "86057444"
 > [!NOTE]
 > 請注意，刪除部署並不會刪除部署所建立的資源。 如果您不再需要對應的資源群組或特定資源，請將其刪除。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 本文的主要重點是要使用 IntelliJ 概念，從 Azure 快速入門範本部署現有的範本。 您也已經了解如何在 Azure 上檢視和更新現有部署。 Azure 快速入門範本中的範本可能無法提供您所需的一切。 若要深入了解範本開發，請參閱我們的新初學者教學課程系列：
 

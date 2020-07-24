@@ -6,11 +6,12 @@ ms.author: harelbr
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.subservice: alerts
-ms.openlocfilehash: cefccd08ea66638f08f00e280fe2704444a7f916
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b535cda8fe7d98748eb0657a599a61ed1f8549d2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79369381"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045357"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>使用 Azure 監視器建立、檢視及管理計量警示
 
@@ -89,7 +90,7 @@ Azure 監視器中的計量警示可讓您在其中一個度量超出臨界值�
 
 ## <a name="with-azure-cli"></a>透過 Azure CLI
 
-先前的章節說明如何使用 Azure 入口網站來建立、查看和管理計量警示規則。 此節說明如何使用跨平台 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) 執行相同的作業。 開始使用 Azure CLI 最快的方式就是透過 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest)。 在本文中，我們將使用 Cloud Shell。
+先前的章節說明如何使用 Azure 入口網站來建立、查看和管理計量警示規則。 此節說明如何使用跨平台 [Azure CLI](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) 執行相同的作業。 開始使用 Azure CLI 最快的方式就是透過 [Azure Cloud Shell](../../cloud-shell/overview.md?view=azure-cli-latest)。 在本文中，我們將使用 Cloud Shell。
 
 1. 移至 Azure 入口網站，按一下 [ **Cloud Shell**]。
 
@@ -139,4 +140,3 @@ Azure 監視器中的計量警示可讓您在其中一個度量超出臨界值�
 - [了解計量警示的運作方式](alerts-metric-overview.md)。
 - [了解計量警示如何搭配動態閾值條件運作](alerts-dynamic-thresholds.md)。
 - [了解計量警示的 Webhook 結構描述](../../azure-monitor/platform/alerts-metric-near-real-time.md#payload-schema)
-

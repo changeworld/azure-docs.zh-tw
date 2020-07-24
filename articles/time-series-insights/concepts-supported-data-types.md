@@ -1,6 +1,6 @@
 ---
-title: 支援的資料類型-Azure 時間序列深入解析 |Microsoft Docs
-description: 瞭解 Azure 時間序列深入解析 Preview 中支援的資料類型。
+title: 支援的資料類型-Azure 時間序列深入解析 Gen2 |Microsoft Docs
+description: 瞭解 Azure 時間序列深入解析 Gen2 中支援的資料類型。
 author: lyrana
 ms.author: lyhughes
 manager: deepakpalled
@@ -8,18 +8,17 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 06/03/2020
-ms.custom: seodec18
-ms.openlocfilehash: 1a1ab9fa19956341e930c85d13d7067be4449cea
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.date: 07/07/2020
+ms.openlocfilehash: c2e70a4f5cdbbc7a5a408138c3ec832cc831cf33
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86049835"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046578"
 ---
 # <a name="supported-data-types"></a>支援的資料類型
 
-下表列出支援的資料類型時間序列深入解析
+下表列出 Azure 時間序列深入解析 Gen2 所支援的資料類型
 
 | 資料類型 | 描述 | 範例 | Parquet 中的屬性資料行名稱
 |---|---|---|---|
@@ -28,11 +27,11 @@ ms.locfileid: "86049835"
 | **double** | 雙精確度64位數位  | "value"：31.0482941 | value_double
 | **long** | 帶正負號的64位整數  | "value"：31 | value_long
 | **string** | 文字值必須包含有效的 UTF-8。 |  "site"： "DIM_MLGGG" | site_string
-| **動態** | 複雜（非基本）型別，由陣列或屬性包（字典）組成。 目前只有 stringified 基本或物件陣列（不包含 TS 識別碼或時間戳記屬性）的 JSON 陣列會儲存為動態。 閱讀這[篇文章](./concepts-json-flattening-escaping-rules.md)以瞭解如何將物件壓平合併，以及如何將陣列取消匯總 |  "values"： "[197，194，189，188]" | values_dynamic
+| **動態** | 複雜（非基本）型別，由陣列或屬性包（字典）組成。 目前只有 stringified 基本或物件陣列（不包含 TS 識別碼或時間戳記屬性）的 JSON 陣列會儲存為動態。 閱讀這[篇文章](./concepts-json-flattening-escaping-rules.md)，以瞭解如何將物件壓平合併，以及如何將陣列取消匯總。 儲存為此類型的裝載屬性可透過 Azure 時間序列深入解析 Gen2 Explorer 和 GetEvents 查詢 API 來存取。 |  "values"： "[197，194，189，188]" | values_dynamic
 
 > [!IMPORTANT]
 >
-> * TSI 環境是強型別。 如果裝置或標籤同時傳送整數和非整數資料，裝置屬性值將會儲存在兩個不同的 double 和 long 資料行中，而且在進行 API 呼叫和定義您的時間序列模型變數運算式時，應該使用[聯合（）函數](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)。
+> * 您的 Azure 時間序列深入解析 Gen2 環境是強型別。 如果裝置或標籤同時傳送整數和非整數資料，裝置屬性值將會儲存在兩個不同的 double 和 long 資料行中，而且在進行 API 呼叫和定義您的時間序列模型變數運算式時，應該使用[聯合（）函數](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)。
 
 #### <a name="objects-and-arrays"></a>物件和陣列
 
@@ -42,6 +41,6 @@ ms.locfileid: "86049835"
 
 * 閱讀 JSON 簡維[和「轉義規則](./concepts-json-flattening-escaping-rules.md)」，以瞭解事件的儲存方式。 
 
-* 瞭解您環境的[輸送量限制](concepts-streaming-throughput-limitations.md)
+* 瞭解您環境的[輸送量限制](./concepts-streaming-ingress-throughput-limits.md)
 
 * 瞭解用來內嵌串流資料的[事件來源](concepts-streaming-ingestion-event-sources.md)。

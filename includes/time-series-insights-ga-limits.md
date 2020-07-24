@@ -4,23 +4,23 @@ description: 包含檔案
 services: digital-twins
 ms.service: digital-twins
 ms.topic: include
-ms.date: 02/03/2020
+ms.date: 07/09/2020
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 ms.custom: include file
-ms.openlocfilehash: 11469d992e0f5669cd3fc1e3864627dd0b8ae23d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1e07f56bc2e820b325414e124c7825c1d356ca26
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81263333"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046397"
 ---
-以下摘要說明一般可用性的主要限制。
+以下摘要說明 Azure 時間序列深入解析 Gen1 中的主要限制。
 
 ### <a name="sku-ingress-rates-and-capacities"></a>SKU 輸入速率和容量
 
-設定新的時間序列深入解析環境時，S1 和 S2 SKU 輸入速率和容量可提供彈性。 您的 SKU 容量會根據所儲存的事件或位元組數（以先發生者為准），指出您的每日輸入速率。 請注意，輸入會以*每分鐘*測量，而**節流**會使用權杖 bucket 演算法來套用。 輸入是以 1 KB 區塊來測量。 例如，0.8-KB 的實際事件會當做一個事件來測量，而 2.6 KB 的事件則會計為三個事件。
+設定新的 Azure 時間序列深入解析環境時，S1 和 S2 SKU 輸入速率和容量可提供彈性。 您的 SKU 容量會根據所儲存的事件或位元組數（以先發生者為准），指出您的每日輸入速率。 請注意，輸入會以*每分鐘*測量，而**節流**會使用權杖 bucket 演算法來套用。 輸入是以 1 KB 區塊來測量。 例如，0.8-KB 的實際事件會當做一個事件來測量，而 2.6 KB 的事件則會計為三個事件。
 
 | S1 SKU 容量 | 輸入速率 | 儲存體容量上限
 | --- | --- | --- |
@@ -44,7 +44,7 @@ S2 SKU 環境支援每月大幅增加的事件，且輸入容量會大幅提高�
 
 ### <a name="property-limits"></a>屬性限制
 
-GA 屬性限制取決於選取的 SKU 環境。 提供的事件屬性具有可在[時間序列深入解析總管](https://docs.microsoft.com/azure/time-series-insights/time-series-quickstart)內查看的對應 JSON、CSV 和圖表資料行。
+Gen1 屬性限制取決於選取的 SKU 環境。 提供的事件屬性具有可在[Azure 時間序列深入解析 Explorer](https://docs.microsoft.com/azure/time-series-insights/time-series-quickstart)中查看的對應 JSON、CSV 和圖表資料行。
 
 | SKU | 最大屬性 |
 | --- | --- |
@@ -53,11 +53,11 @@ GA 屬性限制取決於選取的 SKU 環境。 提供的事件屬性具有可�
 
 ### <a name="event-sources"></a>事件來源
 
-每個實例最多可支援兩個事件來源。 
+每個實例最多可支援兩個事件來源。
 
 * 瞭解如何[新增事件中樞來源](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub)。
 * 設定[IoT 中樞來源](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub)。
 
 ### <a name="api-limits"></a>API 限制
 
-[REST API 參考檔](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#limits)中指定了時間序列深入解析一般可用性的 REST API 限制。
+Azure 時間序列深入解析 Gen1 的 REST API 限制是在[REST API 參考檔](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#limits)中指定。

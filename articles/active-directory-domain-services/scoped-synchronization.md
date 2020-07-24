@@ -11,11 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 03/31/2020
 ms.author: iainfou
-ms.openlocfilehash: 5f2c823b0932db42876be6ab04ebcd82783729aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 097c894594987e92038beeaf4b17a3e67538fdad
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84734416"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046063"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-azure-active-directory-domain-services"></a>設定從 Azure AD 到 Azure Active Directory Domain Services 的範圍同步處理
 
@@ -39,8 +40,8 @@ ms.locfileid: "84734416"
 
 您可以使用 Azure 入口網站或 PowerShell 來設定限域的同步處理設定：
 
-| 動作 | | |
-|--|--|--|
+| 動作 | 用途<br>Azure 入口網站 | 用途<br>PowerShell |
+| ------ | ------------------- | ----------------- |
 | 建立受控網域並設定限域同步處理 | [Azure 入口網站](#enable-scoped-synchronization-using-the-azure-portal) | [PowerShell](#enable-scoped-synchronization-using-powershell) |
 | 修改限域同步處理 | [Azure 入口網站](#modify-scoped-synchronization-using-the-azure-portal) | [PowerShell](#modify-scoped-synchronization-using-powershell) |
 | 停用範圍同步處理 | [Azure 入口網站](#disable-scoped-synchronization-using-the-azure-portal) | [PowerShell](#disable-scoped-synchronization-using-powershell) |
@@ -59,7 +60,7 @@ ms.locfileid: "84734416"
 1. 依照[教學課程來建立及設定受控網域](tutorial-create-instance-advanced.md)。 完成同步處理範圍以外的所有必要條件和部署步驟。
 1. 選擇 [在同步處理步驟設定**範圍**]，然後選取要與受控網域同步的 Azure AD 群組。
 
-受控網域最多可能需要一小時的時間來完成部署。 在 Azure 入口網站中，受控網域的 [概觀]**** 頁面會顯示整個部署階段的目前狀態。
+受控網域最多可能需要一小時的時間來完成部署。 在 Azure 入口網站中，受控網域的 [概觀] 頁面會顯示整個部署階段的目前狀態。
 
 當 Azure 入口網站顯示受控網域已完成佈建時，必須完成下列工作：
 
@@ -71,7 +72,7 @@ ms.locfileid: "84734416"
 
 若要修改使用者應該同步處理至受控網域的群組清單，請完成下列步驟：
 
-1. 在 [Azure 入口網站中，搜尋並選取 [ **Azure AD Domain Services**]。 選擇您的受控網域，例如 aaddscontoso.com**。
+1. 在 [Azure 入口網站中，搜尋並選取 [ **Azure AD Domain Services**]。 選擇您的受控網域，例如 aaddscontoso.com。
 1. 從左側功能表中選取 [**同步**處理]。
 1. 若要新增群組，請選擇頂端的 [ **+ 選取群組**]，然後選擇要新增的群組。
 1. 若要從同步處理範圍中移除群組，請從目前同步處理的群組清單中選取它，然後選擇 [**移除群組**]。
@@ -83,7 +84,7 @@ ms.locfileid: "84734416"
 
 若要針對受控網域停用以群組為基礎的範圍同步處理，請完成下列步驟：
 
-1. 在 [Azure 入口網站中，搜尋並選取 [ **Azure AD Domain Services**]。 選擇您的受控網域，例如 aaddscontoso.com**。
+1. 在 [Azure 入口網站中，搜尋並選取 [ **Azure AD Domain Services**]。 選擇您的受控網域，例如 aaddscontoso.com。
 1. 從左側功能表中選取 [**同步**處理]。
 1. 將同步處理範圍從 [**範圍**] 設定為 [**全部**]，然後選取 [**儲存同步處理範圍**]。
 
@@ -212,7 +213,7 @@ Write-Output "******************************************************************
    -Force -Verbose
    ```
 
-需要幾分鐘的時間來建立資源，並將控制權交還給 PowerShell 提示字元。 受控網域會繼續在背景中佈建，且最多可能需要一小時才能完成部署。 在 Azure 入口網站中，受控網域的 [概觀]**** 頁面會顯示整個部署階段的目前狀態。
+需要幾分鐘的時間來建立資源，並將控制權交還給 PowerShell 提示字元。 受控網域會繼續在背景中佈建，且最多可能需要一小時才能完成部署。 在 Azure 入口網站中，受控網域的 [概觀] 頁面會顯示整個部署階段的目前狀態。
 
 當 Azure 入口網站顯示受控網域已完成佈建時，必須完成下列工作：
 

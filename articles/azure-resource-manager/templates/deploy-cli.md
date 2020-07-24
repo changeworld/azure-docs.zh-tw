@@ -2,16 +2,17 @@
 title: 使用 Azure CLI 和範本部署資源
 description: 使用 Azure Resource Manager 和 Azure CLI，將資源部署至 Azure。 資源會定義在 Resource Manager 範本中。
 ms.topic: conceptual
-ms.date: 06/04/2020
-ms.openlocfilehash: a2a1c1fe63d0a841f57407ed5402d7ddca3fcea4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/21/2020
+ms.openlocfilehash: da865d3b425da6b5969e540a424b513d9a58bd9a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84432073"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87040811"
 ---
-# <a name="deploy-resources-with-arm-templates-and-azure-cli"></a>使用 ARM 範本和 Azure CLI 部署資源
+# <a name="deploy-resources-with-arm-templates-and-azure-cli"></a>使用 ARM 範本與 Azure CLI 來部署資源
 
-本文說明如何使用 Azure CLI 搭配 Azure Resource Manager （ARM）範本，將您的資源部署至 Azure。 如果您不熟悉部署和管理 Azure 解決方案的概念，請參閱[範本部署總覽](overview.md)。
+本文說明如何使用 Azure CLI 搭配 Azure Resource Manager 範本（ARM 範本）將您的資源部署至 Azure。 如果您不熟悉部署和管理 Azure 解決方案的概念，請參閱[範本部署總覽](overview.md)。
 
 Azure CLI 版本2.2.0 中的部署命令已變更。 本文中的範例需要 Azure CLI 版2.2.0 或更新版本。
 
@@ -63,7 +64,7 @@ Azure CLI 版本2.2.0 中的部署命令已變更。 本文中的範例需要 Az
 
 1. 登入您的 Azure 帳戶
 2. 建立資源群組，作為已部署資源的容器。 資源群組的名稱只能包含英數字元、句點 (.)、底線、連字號及括弧。 最多可有 90 個字元。 不能以句點結束。
-3. 將範本部署至資源群組，範本中定義要建立的資源
+3. 部署至資源群組，此範本會定義要建立的資源。
 
 範本可以包含讓您自訂部署的參數。 例如，您可以提供針對特定環境 (例如開發、測試和生產) 量身訂做的值。 範例範本會定義儲存體帳戶 SKU 的參數。
 
@@ -83,6 +84,32 @@ az deployment group create \
 ```output
 "provisioningState": "Succeeded",
 ```
+
+## <a name="deployment-name"></a>部署名稱
+
+在上述範例中，您已將部署命名為 `ExampleDeployment` 。 如果您未提供部署的名稱，則會使用範本檔案的名稱。 例如，如果您部署名為的範本， `azuredeploy.json` 但未指定部署名稱，則會將部署命名為 `azuredeploy` 。
+
+每次執行部署時，會使用部署名稱將專案新增至資源群組的部署歷程記錄。 如果您執行另一個部署並指定相同的名稱，則會將先前的專案取代為目前的部署。 如果您想要在部署歷程記錄中維護唯一的專案，請為每個部署提供一個唯一的名稱。
+
+若要建立唯一的名稱，您可以指派一個亂數字。
+
+```azurecli-interactive
+deploymentName='ExampleDeployment'$RANDOM
+```
+
+或者，加入日期值。
+
+```azurecli-interactive
+deploymentName='ExampleDeployment'$(date +"%d-%b-%Y")
+```
+
+如果您使用相同的部署名稱對相同的資源群組執行並行部署，則只會完成最後一個部署。 任何名稱不會完成的部署都會取代為最後一個部署。 例如，如果您執行名為的部署， `newStorage` 並部署名為的儲存體帳戶 `storage1` ，而且同時執行名為的另一個部署，並部署 `newStorage` 名為的儲存體帳戶 `storage2` ，則您只會部署一個儲存體帳戶。 產生的儲存體帳戶名稱為 `storage2` 。
+
+不過，如果您執行名為 `newStorage` 的部署來部署名為的儲存體帳戶 `storage1` ，而且在它完成後立即執行另一個名為的部署，並部署 `newStorage` 名為的儲存體帳戶 `storage2` ，則您有兩個儲存體帳戶。 其中一個名為 `storage1` ，另一個名為 `storage2` 。 但是，在部署歷程記錄中，您只會有一個專案。
+
+當您為每個部署指定唯一的名稱時，您可以同時執行它們，而不會發生衝突。 如果您執行名為的部署， `newStorage1` 並部署名為的儲存體帳戶 `storage1` ，而且同時執行名為的另一個部署 `newStorage2` 來部署名為的儲存體帳戶 `storage2` ，則您在部署歷程記錄中會有兩個儲存體帳戶和兩個專案。
+
+若要避免與並行部署發生衝突，並確保部署歷程記錄中的唯一專案，請為每個部署提供唯一的名稱。
 
 ## <a name="deploy-remote-template"></a>部署遠端範本
 

@@ -11,11 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 04/01/2020
 ms.author: juliako
-ms.openlocfilehash: 055f651552313732c000a2e91d2862cda22a9c26
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e358742635d9ed939bbc62bb0d54e8169382e7de
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82995886"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87043499"
 ---
 <!-- If you update limits in this topic, make sure to also update https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#media-services-limits -->
 # <a name="azure-media-services-quotas-and-limits"></a>Azure 媒體服務配額和限制
@@ -92,7 +93,7 @@ ms.locfileid: "82995886"
 | [串流原則](streaming-policy-concept.md) | 100 <sup>（6）</sup> |
 | 一次與資產相關聯的唯一[串流定位器](streaming-locators-concept.md) | 100<sup>（7）</sup> （固定） |
 
-<sup>6</sup>使用自訂[串流原則](https://docs.microsoft.com/rest/api/media/streamingpolicies)時，您應該為媒體服務帳戶設計一組有限的這類原則，並且在需要相同的加密選項和通訊協定時，針對您的 streaminglocator 重複使用它們。 不建議您對每個串流定位器建立新的串流原則。
+<sup>6</sup>使用自訂[串流原則](/rest/api/media/streamingpolicies)時，您應該為媒體服務帳戶設計一組有限的這類原則，並且在需要相同的加密選項和通訊協定時，針對您的 streaminglocator 重複使用它們。 不建議您對每個串流定位器建立新的串流原則。
 
 <sup>7</sup>串流定位器並非設計來管理每個使用者的存取控制。 若要給予個別使用者不同的存取權限，請使用數位版權管理 (DRM) 方案。
 

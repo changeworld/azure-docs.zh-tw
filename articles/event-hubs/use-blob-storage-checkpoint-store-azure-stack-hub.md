@@ -3,15 +3,15 @@ title: 使用 Blob 儲存體作為 Azure Stack 中樞上的檢查點存放區（
 description: 本文說明如何使用 Blob 儲存體做為 Azure Stack Hub （預覽）事件中樞中的檢查點存放區。
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: 0990941191827c66cd51d70216c75e106d0448fd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1c876ed36be6aec9395a1acba3a1deb25a47de2c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85322372"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87039220"
 ---
 # <a name="use-blob-storage-as-checkpoint-store---event-hubs-on-azure-stack-hub-preview"></a>在 Azure Stack Hub 上使用 Blob 儲存體作為檢查點存放區事件中樞（預覽）
-如果您在支援儲存體 Blob SDK 不同版本的環境中使用 Azure Blob 儲存體做為檢查點存放區，而不是在 Azure 上執行的功能，您將需要使用程式碼，將儲存體服務 API 版本變更為該環境所支援的特定版本。 例如，如果您是[在 Azure Stack Hub 2002 版上執行事件中樞](https://docs.microsoft.com/azure-stack/user/event-hubs-overview)，儲存體服務的最高可用版本是2017-11-09 版。 在此情況下，您必須使用程式碼，將儲存體服務 API 版本的目標設為2017-11-09。 如需如何以特定儲存體 API 版本為目標的範例，請參閱 GitHub 上的下列範例： 
+如果您在支援儲存體 Blob SDK 不同版本的環境中使用 Azure Blob 儲存體做為檢查點存放區，而不是在 Azure 上執行的功能，您將需要使用程式碼，將儲存體服務 API 版本變更為該環境所支援的特定版本。 例如，如果您是[在 Azure Stack Hub 2002 版上執行事件中樞](/azure-stack/user/event-hubs-overview)，儲存體服務的最高可用版本是2017-11-09 版。 在此情況下，您必須使用程式碼，將儲存體服務 API 版本的目標設為2017-11-09。 如需如何以特定儲存體 API 版本為目標的範例，請參閱 GitHub 上的下列範例： 
 
 - [.NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs)
 - [JAVA](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/EventProcessorWithCustomStorageVersion.java)。 

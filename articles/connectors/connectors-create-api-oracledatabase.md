@@ -7,12 +7,12 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/20/2020
 tags: connectors
-ms.openlocfilehash: e7055964f9515189450fac5c993f6acda946bfd4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f4bca70fbec5cf847a6bb5c0b97ed3496d6c2f8c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86524160"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87039998"
 ---
 # <a name="get-started-with-the-oracle-database-connector"></a>開始使用 Oracle Database 連接器
 
@@ -77,7 +77,7 @@ ms.locfileid: "86524160"
 
     在下列範例中，會從人力資源資料庫中傳回作業資料： 
 
-    ![標題為「取得資料列（預覽）」的對話方塊有兩個文字方塊：「資料表名稱」，其中包含「HRJOBS」，而且有下拉式清單和「資料列識別碼」，其中包含「SA_REP」。](./media/connectors-create-api-oracledatabase/table-rowid.png)
+    ![標題為「取得資料列（預覽）」的對話方塊有兩個文字方塊：「資料表名稱」，其中包含「H R 作業」並具有下拉式清單和「資料列 i d」，其中包含 "S A _ REP"。](./media/connectors-create-api-oracledatabase/table-rowid.png)
 
 7. 在下一個步驟中，您可以使用其他任何連接器來建置您的工作流程。 如果您想要測試從 Oracle 取得資料，請使用其中一個「傳送電子郵件」連接器（例如 Office 365 Outlook），將包含 Oracle 資料的電子郵件傳送給自己。 使用 Oracle 資料表中的動態權杖來建置`Subject`以及您電子郵件的 `Body`：
 

@@ -3,12 +3,12 @@ title: 針對連線問題進行疑難排解-Azure 事件中樞 |Microsoft Docs
 description: 本文提供有關針對 Azure 事件中樞的連線問題進行疑難排解的資訊。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 15c93873a25e70b0f9a88fc5ea621b90d58e7581
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b85c0895d1c8f165f494d29013adea014187dd23
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85322377"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87039322"
 ---
 # <a name="troubleshoot-connectivity-issues---azure-event-hubs"></a>針對連線問題進行疑難排解-Azure 事件中樞
 用戶端應用程式無法連接到事件中樞的原因有很多種。 您所遇到的連線問題可能是永久性或暫時性的。 如果問題持續發生（永久），您可能會想要檢查連接字串、組織的防火牆設定、IP 防火牆設定、網路安全性設定（服務端點、私人端點等等）等等。 針對暫時性問題，升級至最新版本的 SDK、執行命令以檢查捨棄的封包，以及取得網路追蹤，可能有助於疑難排解問題。 
@@ -48,7 +48,7 @@ telnet <yournamespacename>.servicebus.windows.net 5671
 ```
 
 ### <a name="verify-that-ip-addresses-are-allowed-in-your-corporate-firewall"></a>確認公司防火牆中允許的 IP 位址
-當您使用 Azure 時，有時必須允許公司防火牆或 proxy 中的特定 IP 位址範圍或 Url 存取您正在使用或嘗試使用的所有 Azure 服務。 確認事件中樞所使用的 IP 位址允許流量。 針對 Azure 事件中樞所使用的 IP 位址：請參閱[AZURE IP 範圍和服務標籤-公用雲端](https://www.microsoft.com/download/details.aspx?id=56519)和服務標籤[-EventHub](network-security.md#service-tags)。
+當您使用 Azure 時，有時必須允許公司防火牆或 proxy 中的特定 IP 位址範圍或 Url 存取您正在使用或嘗試使用的所有 Azure 服務。 確認事件中樞所使用的 IP 位址允許流量。 針對 Azure 事件中樞所使用的 IP 位址：請參閱[AZURE IP 範圍和服務標籤-公用雲端](https://www.microsoft.com/download/details.aspx?id=56519)。
 
 此外，請確認您命名空間的 IP 位址是允許的。 若要尋找正確的 IP 位址以允許您的連線，請遵循下列步驟：
 
@@ -75,13 +75,16 @@ telnet <yournamespacename>.servicebus.windows.net 5671
     ```
 3. 針對每個尾碼為 s1、s2 和 s3 的程式執行 nslookup，以取得三個可用性區域中執行的三個實例的 IP 位址。 
 
+### <a name="verify-that-azureeventgrid-service-tag-is-allowed-in-your-network-security-groups"></a>確認您的網路安全性群組中允許 AzureEventGrid 服務標記
+如果您的應用程式是在子網內執行，而且有相關聯的網路安全性群組，請確認是否允許網際網路輸出，或允許 AzureEventGrid 服務標籤。 請參閱[虛擬網路服務](../virtual-network/service-tags-overview.md)標籤，並搜尋 `EventHub` 。
+
 ### <a name="check-if-the-application-needs-to-be-running-in-a-specific-subnet-of-a-vnet"></a>檢查應用程式是否需要在 vnet 的特定子網中執行
 確認您的應用程式正在具有命名空間存取權的虛擬網路子網中執行。 如果不是，請在可以存取命名空間的子網中執行應用程式，或將應用程式正在執行的電腦 IP 位址新增到[ip 防火牆](event-hubs-ip-filtering.md)。 
 
 當您建立事件中樞命名空間的虛擬網路服務端點時，命名空間只會接受系結至服務端點之子網的流量。 這種行為有例外。 您可以在 IP 防火牆中新增特定的 IP 位址，以啟用事件中樞公用端點的存取權。 如需詳細資訊，請參閱[網路服務端點](event-hubs-service-endpoints.md)。
 
 ### <a name="check-the-ip-firewall-settings-for-your-namespace"></a>檢查命名空間的 IP 防火牆設定
-檢查 IP 防火牆不會封鎖執行應用程式之電腦的 IP 位址。  
+檢查 IP 防火牆不會封鎖執行應用程式之電腦的公用 IP 位址。  
 
 根據預設，只要要求具備有效的驗證和授權，便可以從網際網路存取事件中樞命名空間。 透過 IP 防火牆，您可以將其進一步限制為僅允許一組 IPv4 位址，或是使用 [CIDR (無類別網域間路由)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) 標記法來設定 IPv4 位址範圍。
 
@@ -108,9 +111,9 @@ IP 防火牆規則會在事件中樞命名空間層級套用。 因此，規則�
 ### <a name="check-if-the-namespace-can-be-accessed-using-only-a-private-endpoint"></a>檢查是否只能使用私用端點來存取命名空間
 如果事件中樞命名空間設定為只能透過私人端點存取，請確認用戶端應用程式正在透過私人端點存取命名空間。 
 
-[Azure 私人連結服務](../private-link/private-link-overview.md)可讓您透過虛擬網路中的**私人端點**來存取 Azure 事件中樞。 私人端點是一種網路介面，其可以私人且安全的方式連線至 Azure Private Link 所支援服務。 私人端點會使用您 VNet 中的私人 IP 位址，有效地將服務帶入您的 VNet 中。 服務的所有流量都可以透過私人端點路由傳送，因此不需要閘道、NAT 裝置、ExpressRoute 或 VPN 連線或公用 IP 位址。 虛擬網路和服務間的流量會在通過 Microsoft 骨幹網路時隨之減少，降低資料在網際網路中公開的風險。 您可連線到 Azure 資源的執行個體，以取得最高層級的存取控制細微性。
+[Azure 私人連結服務](../private-link/private-link-overview.md)可讓您透過虛擬網路中的**私人端點**來存取 Azure 事件中樞。 私人端點是一種網路介面，其可以私人且安全的方式連線至 Azure Private Link 所支援服務。 私人端點會使用您虛擬網路中的私人 IP 位址，有效地將服務帶入您的虛擬網路。 服務的所有流量都可以透過私人端點路由傳送，因此不需要閘道、NAT 裝置、ExpressRoute 或 VPN 連線或公用 IP 位址。 虛擬網路和服務間的流量會在通過 Microsoft 骨幹網路時隨之減少，降低資料在網際網路中公開的風險。 您可連線到 Azure 資源的執行個體，以取得最高層級的存取控制細微性。
 
-如需詳細資訊，請參閱[設定私人端點](private-link-service.md)。 
+如需詳細資訊，請參閱[設定私人端點](private-link-service.md)。 請參閱**驗證私用端點連接的運作**一節，以確認已使用私用端點。 
 
 ### <a name="troubleshoot-network-related-issues"></a>針對網路相關問題進行疑難排解
 若要針對事件中樞的網路相關問題進行疑難排解，請遵循下列步驟： 
@@ -160,7 +163,7 @@ IP 防火牆規則會在事件中樞命名空間層級套用。 因此，規則�
 - 應用程式可能會在幾秒內中斷與服務的連線。
 - 要求可能會短暫地進行節流。
 
-如果應用程式代碼利用 SDK，則重試原則已經內建且作用中。 應用程式會重新連線，而不會對應用程式/工作流程造成重大影響。 否則，請在幾分鐘後重試連接到服務，以查看問題是否消失。 
+如果應用程式代碼利用 SDK，則重試原則已經內建且作用中。 應用程式會重新連線，而不會對應用程式/工作流程造成重大影響。 攔截這些暫時性錯誤、將其關閉，然後重試呼叫，將可確保您的程式碼可在這些暫時性問題中復原。
 
 ## <a name="next-steps"></a>後續步驟
 查看下列文章：

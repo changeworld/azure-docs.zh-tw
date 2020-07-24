@@ -13,15 +13,16 @@ ms.topic: article
 ms.date: 10/21/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 7ea74c85af062ce00dbccf8a486ce39cbd524bb0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 703c08cd5a884c8bfdd027b4ecf457c9e954a2dc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515062"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87043413"
 ---
 # <a name="develop-with-media-services-v3-apis"></a>使用媒體服務 v3 API 開發
 
-身為開發人員，您可以使用媒體服務 [REST API](https://docs.microsoft.com/rest/api/media/)，或是可讓您與 REST API 互動的用戶端程式庫，輕鬆建立、管理及維護自訂媒體工作流程。 [媒體服務 v3](https://aka.ms/ams-v3-rest-sdk) API 以 OpenAPI 規格 (先前稱為 Swagger) 作為基礎。
+身為開發人員，您可以使用媒體服務 [REST API](/rest/api/media/)，或是可讓您與 REST API 互動的用戶端程式庫，輕鬆建立、管理及維護自訂媒體工作流程。 [媒體服務 v3](https://aka.ms/ams-v3-rest-sdk) API 以 OpenAPI 規格 (先前稱為 Swagger) 作為基礎。
 
 本文討論使用媒體服務 v3 開發時，適用於實體與 API 的規則。
 
@@ -53,7 +54,7 @@ ms.locfileid: "85515062"
    * REST 媒體服務的資源 URI。
    * Azure AD 應用程式值：用戶端識別碼與用戶端密碼。
 
-   若要取得所有需要的值，請參閱[存取 Azure 媒體服務 API](access-api-cli-how-to.md)。
+   若要取得所有需要的值，請參閱[存取 Azure 媒體服務 API](./access-api-howto.md)。
 
 2. Azure AD 存取權杖會傳送至中介層。
 4. 中介層使用該 Azure AD 權杖傳送要求至 Azure 媒體 REST API。
@@ -79,36 +80,36 @@ Azure 媒體服務 v3 資源名稱 (例如資產、作業、轉換) 會受到 Az
 
 ### <a name="names-of-filesblobs-within-an-asset"></a>資產中的檔案/Blob 名稱
 
-資產中的檔案/Blob 名稱必須遵循 [Blob 名稱需求](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata)與 [NTFS 名稱需求](https://docs.microsoft.com/windows/win32/fileio/naming-a-file)。 之所以會有這些需求，是因為檔案會從 Blob 儲存體複製到本機 NTFS 磁碟加以處理。
+資產中的檔案/Blob 名稱必須遵循 [Blob 名稱需求](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)與 [NTFS 名稱需求](/windows/win32/fileio/naming-a-file)。 之所以會有這些需求，是因為檔案會從 Blob 儲存體複製到本機 NTFS 磁碟加以處理。
 
 ## <a name="long-running-operations"></a>長期執行作業
 
 Azure 媒體服務 [Swagger 檔案](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/streamingservice.json)中以 `x-ms-long-running-operation` 標示的作業，是長期執行作業。 
 
-如需如何追蹤非同步 Azure 作業的詳細資訊，請參閱[非同步作業](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations#monitor-status-of-operation)。
+如需如何追蹤非同步 Azure 作業的詳細資訊，請參閱[非同步作業](../../azure-resource-manager/management/async-operations.md#monitor-status-of-operation)。
 
 媒體服務具有下列長期執行作業：
 
-* [建立即時事件](https://docs.microsoft.com/rest/api/media/liveevents/create) (機器翻譯)
-* [更新即時事件](https://docs.microsoft.com/rest/api/media/liveevents/update) (機器翻譯)
-* [刪除即時事件](https://docs.microsoft.com/rest/api/media/liveevents/delete) (機器翻譯)
-* [啟動即時事件](https://docs.microsoft.com/rest/api/media/liveevents/start) (機器翻譯)
-* [停止即時事件](https://docs.microsoft.com/rest/api/media/liveevents/stop) (機器翻譯)
+* [建立即時事件](/rest/api/media/liveevents/create) (機器翻譯)
+* [更新即時事件](/rest/api/media/liveevents/update) (機器翻譯)
+* [刪除即時事件](/rest/api/media/liveevents/delete) (機器翻譯)
+* [啟動即時事件](/rest/api/media/liveevents/start) (機器翻譯)
+* [停止即時事件](/rest/api/media/liveevents/stop) (機器翻譯)
 
   當停止事件時，請使用 `removeOutputsOnStop` 參數刪除所有相關聯的即時輸出。  
-* [重設即時事件](https://docs.microsoft.com/rest/api/media/liveevents/reset) (機器翻譯)
-* [建立即時輸出](https://docs.microsoft.com/rest/api/media/liveevents/create)
-* [刪除即時輸出](https://docs.microsoft.com/rest/api/media/liveevents/delete)
-* [建立串流端點](https://docs.microsoft.com/rest/api/media/streamingendpoints/create) (機器翻譯)
-* [更新串流端點](https://docs.microsoft.com/rest/api/media/streamingendpoints/update) (機器翻譯)
-* [刪除串流端點](https://docs.microsoft.com/rest/api/media/streamingendpoints/delete) (機器翻譯)
-* [啟動串流端點](https://docs.microsoft.com/rest/api/media/streamingendpoints/start) (機器翻譯)
-* [停止串流端點](https://docs.microsoft.com/rest/api/media/streamingendpoints/stop) (機器翻譯)
-* [調整串流端點](https://docs.microsoft.com/rest/api/media/streamingendpoints/scale) (機器翻譯)
+* [重設即時事件](/rest/api/media/liveevents/reset) (機器翻譯)
+* [建立即時輸出](/rest/api/media/liveevents/create)
+* [刪除即時輸出](/rest/api/media/liveevents/delete)
+* [建立串流端點](/rest/api/media/streamingendpoints/create) (機器翻譯)
+* [更新串流端點](/rest/api/media/streamingendpoints/update) (機器翻譯)
+* [刪除串流端點](/rest/api/media/streamingendpoints/delete) (機器翻譯)
+* [啟動串流端點](/rest/api/media/streamingendpoints/start) (機器翻譯)
+* [停止串流端點](/rest/api/media/streamingendpoints/stop) (機器翻譯)
+* [調整串流端點](/rest/api/media/streamingendpoints/scale) (機器翻譯)
 
 成功提交長期執行作業時，您會收到「202 已接受」訊息，而且必須使用傳回的作業識別碼來輪詢作業完成度。
 
-[追蹤非同步 Azure 作業](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)一文會深入說明如何透過回應中傳回的值，追蹤非同步 Azure 作業的狀態。
+[追蹤非同步 Azure 作業](../../azure-resource-manager/management/async-operations.md)一文會深入說明如何透過回應中傳回的值，追蹤非同步 Azure 作業的狀態。
 
 僅支援指定即時事件或其任何相關聯即時輸出的一個長期執行作業。 啟動之後，長期執行作業必須先完成，才能在相同的即時事件或任何相關聯的即時輸出上，啟動後續的長期執行作業。 針對具有多個即時輸出的即時事件，您必須先等待一個即時輸出的長期執行作業完成，才能觸發另一個即時輸出的長期執行作業。 
 
@@ -147,7 +148,7 @@ AMSE 是一個開放原始碼專案，由社群提供支援 (可將問題回報�
 
 ## <a name="see-also"></a>另請參閱
 
-若要取得所有需要的值，請參閱[存取 Azure 媒體服務 API](access-api-cli-how-to.md)。
+若要取得所有需要的值，請參閱[存取 Azure 媒體服務 API](./access-api-howto.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -3,28 +3,29 @@ title: 建立自訂 Azure Resource Manager 角色並指派給服務主體-Azure
 description: 本文提供有關如何使用 Azure CLI 在 IoT Edge 上建立自訂 Azure Resource Manager 角色並指派給服務主體以進行即時影片分析的指導方針。
 ms.topic: how-to
 ms.date: 05/27/2020
-ms.openlocfilehash: be317ac1e86fd38c72b87734909004a64dc2938b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eb4c9a1f90ab50f7070184fc9a394d9e6edb833a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84260511"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87043174"
 ---
 # <a name="create-custom-azure-resource-manager-role-and-assign-to-service-principal"></a>建立自訂 Azure Resource Manager 角色並指派給服務主體
 
-IoT Edge 模組實例上的即時影片分析需要有效的 Azure 媒體服務帳戶，才能正常運作。 IoT Edge 模組上的即時影片分析和 Azure 媒體服務帳戶之間的關聯性是透過一組模組對應項屬性來建立。 其中一個對應項屬性是[服務主體](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object)，可讓模組實例與媒體服務帳戶進行通訊並觸發必要的作業。 為了盡可能減少潛在的誤用及/或從 edge 裝置意外產生的資料，此服務主體應具有最低許可權。
+IoT Edge 模組實例上的即時影片分析需要有效的 Azure 媒體服務帳戶，才能正常運作。 IoT Edge 模組上的即時影片分析和 Azure 媒體服務帳戶之間的關聯性是透過一組模組對應項屬性來建立。 其中一個對應項屬性是[服務主體](../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)，可讓模組實例與媒體服務帳戶進行通訊並觸發必要的作業。 為了盡可能減少潛在的誤用及/或從 edge 裝置意外產生的資料，此服務主體應具有最低許可權。
 
 本文說明使用 Azure Cloud Shell 建立自訂 Azure Resource Manager 角色，然後用來建立服務主體的步驟。
 
-## <a name="prerequisites"></a>必要條件  
+## <a name="prerequisites"></a>先決條件  
 
 本文的必要條件如下：
 
 * 具有擁有者訂用帳戶的 Azure 訂用帳戶。
 * 具有許可權可建立應用程式並將服務主體指派給角色的 Azure Active Directory。
 
-檢查您的帳戶是否具有足夠的權限，最簡單的方式是透過入口網站。 請參閱[檢查必要的權限](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions)。
+檢查您的帳戶是否具有足夠的權限，最簡單的方式是透過入口網站。 請參閱[檢查必要的權限](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)。
 
-## <a name="overview"></a>總覽  
+## <a name="overview"></a>概觀  
 
 我們將逐步執行建立自訂角色，並以下列順序連結服務主體的步驟：
 
@@ -48,7 +49,7 @@ IoT Edge 模組實例上的即時影片分析需要有效的 Azure 媒體服務�
     ```
     az account set --subscription " <yourSubscriptionName or yourSubscriptionId>"
     ```
-1. 建立[資源群組](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create)和[儲存體帳戶](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create)。
+1. 建立[資源群組](/cli/azure/group?view=azure-cli-latest#az-group-create)和[儲存體帳戶](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create)。
 1. 現在，請在 Cloud Shell 中使用下列命令範本來建立 Azure 媒體服務帳戶：
 
     ```
@@ -84,8 +85,8 @@ az ams account sp create --account-name < yourAMSAccountName > --resource-group 
 ```
 1. 具有密碼驗證之服務主體的輸出會包含密碼金鑰，在此案例中為 "AadSecret" 參數。 
 
-    請務必複製此值 (此值無法擷取)。 如果您忘記密碼，[請重設服務主體認證](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest#reset-credentials)。
-1. AppId 和租使用者金鑰分別會在輸出中顯示為 "AadClientId" 和 "AadTenantId"。 它們會在服務主體驗證中使用。 請記錄其值，但這些值可以隨時透過 [az ad sp list](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-list) 來擷取。
+    請務必複製此值 (此值無法擷取)。 如果您忘記密碼，[請重設服務主體認證](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest#reset-credentials)。
+1. AppId 和租使用者金鑰分別會在輸出中顯示為 "AadClientId" 和 "AadTenantId"。 它們會在服務主體驗證中使用。 請記錄其值，但這些值可以隨時透過 [az ad sp list](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-list) 來擷取。
 
 ### <a name="create-a-custom-role-definition"></a>建立自訂角色定義  
 
@@ -170,7 +171,7 @@ az ad sp show --id "<appId>" | Select-String "objectId"
 “objectId” : “<yourObjectId>”,
 ```
 
-使用[az role 指派 create 命令](https://docs.microsoft.com/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create)範本，將自訂角色與服務主體連結：
+使用[az role 指派 create 命令](/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create)範本，將自訂角色與服務主體連結：
 
 ```
 az role assignment create --role “LVAEdge User” --assignee-object-id < objectId>    
@@ -178,7 +179,7 @@ az role assignment create --role “LVAEdge User” --assignee-object-id < objec
 
 參數：
 
-|參數|說明| 
+|參數|描述| 
 |---|---|
 |--角色 |自訂角色名稱或識別碼。 在我們的案例中：「LVAEdge 使用者」。|
 |--受託人-物件識別碼|您將使用之服務主體的物件識別碼。|
@@ -252,7 +253,7 @@ az role assignment list  --assignee < objectId>
     The client '<AadClientId>' with object id '<AadClientId>' does not have authorization to perform action 'Microsoft.Resources/subscriptions/resourcegroups/write' over scope '/subscriptions/<yourSubscriptionId>/resourcegroups/testresourcegroup' or the scope is invalid. If access was recently granted, please refresh your credentials.
     ```
 
-## <a name="next-steps"></a>後續步驟  
+## <a name="next-steps"></a>接下來的步驟  
 
 請注意本文中的下列值。 您需要這些值，才能在 IoT Edge 模組上設定即時影片分析的對應項屬性，請參閱模組對應項[JSON 架構](module-twin-configuration-schema.md)。
 

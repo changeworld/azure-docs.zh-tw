@@ -4,11 +4,12 @@ description: Application Insights 會執行您應用程式遙測的智慧型分�
 ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
-ms.openlocfilehash: 22c1eeb00372b9b3c67d6a87f2300225a071438e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5152a3deb73c7069655ff016fbfc03f6b9cee16d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84016843"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045793"
 ---
 # <a name="smart-detection---performance-anomalies"></a>智慧型偵測 - 效能異常
 
@@ -48,7 +49,7 @@ Application Insights 偵測到您的應用程式以下列其中一種方式降�
 
 ## <a name="configure-email-notifications"></a>設定電子郵件通知
 
-預設會啟用智慧偵測通知，並傳送給具有 [監視讀者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) \(部分機器翻譯\) 和[監視參與者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) \(部分機器翻譯\) 權限可存取 Application Insights 資源所在訂用帳戶的人員。 若要變更這種情況，請按一下電子郵件通知中的 [設定]，或開啟 Application Insights 中的 [智慧型偵測] 設定。 
+預設會啟用智慧偵測通知，並傳送給具有 [監視讀者](../../role-based-access-control/built-in-roles.md#monitoring-reader) \(部分機器翻譯\) 和[監視參與者](../../role-based-access-control/built-in-roles.md#monitoring-contributor) \(部分機器翻譯\) 權限可存取 Application Insights 資源所在訂用帳戶的人員。 若要變更這種情況，請按一下電子郵件通知中的 [設定]，或開啟 Application Insights 中的 [智慧型偵測] 設定。 
   
   ![智慧型偵測設定](media/proactive-performance-diagnostics/smart_detection_configuration.png)
   
@@ -69,12 +70,12 @@ Application Insights 偵測到您的應用程式以下列其中一種方式降�
 * 我可以建立自己的異常偵測規則或自訂現有的規則嗎？
 
   * 還不行，但是您可以︰
-    * [設定警示](/azure/azure-monitor/platform/alerts-log)，使其在計量超出臨界值時通知您。
+    * [設定警示](../platform/alerts-log.md)，使其在計量超出臨界值時通知您。
     * [匯出遙測](../../azure-monitor/app/export-telemetry.md)至[資料庫](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md)或[至 Power BI](../../azure-monitor/app/export-power-bi.md )，您就能自行分析遙測。
 * *執行分析的頻率為何？*
 
   * 我們每天都會根據前一天的遙測執行分析 (UTC 時區中全天)。
-* *那麼，這可以取代[計量警示](/azure/azure-monitor/platform/alerts-log)嗎？*
+* *那麼，這可以取代[計量警示](../platform/alerts-log.md)嗎？*
   * 否。  我們不保證能偵測到您可能認為異常的每項行為。
 
 
@@ -175,9 +176,9 @@ Application Insights 會尋找可能只會影響某部分使用者，或只在�
 * [分析工具](profiler.md) 
 * [快照集偵錯工具](../../azure-monitor/app/snapshot-debugger.md)
 * [分析](../../azure-monitor/log-query/get-started-portal.md)
-* [分析智慧型診斷](../../azure-monitor/app/analytics.md)
+* [分析智慧型診斷](../log-query/log-query-overview.md)
 
 智慧型偵測是完全自動的。 但是，或許您會想要再設定一些警示？
 
-* [手動設定的度量警示](/azure/azure-monitor/platform/alerts-log)
+* [手動設定的度量警示](../platform/alerts-log.md)
 * [可用性 Web 測試](../../azure-monitor/app/monitor-web-app-availability.md)

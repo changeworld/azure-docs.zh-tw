@@ -2,13 +2,13 @@
 title: 如何管理適用於容器的 Azure 監視器代理程式 | Microsoft Docs
 description: 本文說明如何利用適用於容器的 Azure 監視器所使用的容器化 Log Analytics 代理程式來管理最常見的維護工作。
 ms.topic: conceptual
-ms.date: 06/15/2020
-ms.openlocfilehash: fc5bc0d60cb4ef1e375a997cbb3fe4bd2aed3235
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/21/2020
+ms.openlocfilehash: 1a397dbc5ebc4952b09c504b70df6ad99c00b216
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86107405"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87041272"
 ---
 # <a name="how-to-manage-the-azure-monitor-for-containers-agent"></a>如何管理適用於容器的 Azure 監視器代理程式
 
@@ -30,31 +30,12 @@ ms.locfileid: "86107405"
 
 若要安裝新版的代理程式，請依照[使用 Azure CLI 啟用監視](container-insights-enable-new-cluster.md#enable-using-azure-cli)一文中說明的步驟，使用 Azure CLI 完成此程序。  
 
-啟用監視之後，可能需要約 15 分鐘的時間才能檢視叢集的更新健康情況計量。 若要確認代理程式已順利升級，請執行下列命令：`kubectl logs omsagent-484hw --namespace=kube-system`
+啟用監視之後，可能需要約 15 分鐘的時間才能檢視叢集的更新健康情況計量。 若要確認代理程式已成功升級，您可以執行下列其中一項：
 
-狀態應該類似下列範例，其中 *omi* 和 *omsagent* 的值應符合[代理程式發行歷程記錄](https://github.com/microsoft/docker-provider/tree/ci_feature_prod) \(英文\) 中所指定的最新版本。  
+* 執行命令： `kubectl get pod <omsagent-pod-name> -n kube-system -o=jsonpath='{.spec.containers[0].image}'` 。 在傳回的狀態中，請注意輸出之 [*容器*] 區段中 [omsagent] 下的 [**影像**] 值。
+* 在 [**節點**] 索引標籤上，選取叢集節點，然後在右側的 [**屬性**] 窗格中，記下 [**代理程式映射標記**] 底下的值。
 
-```console
-User@aksuser:~$ kubectl logs omsagent-484hw --namespace=kube-system
-:
-:
-instance of Container_HostInventory
-{
-    [Key] InstanceID=3a4407a5-d840-4c59-b2f0-8d42e07298c2
-    Computer=aks-nodepool1-39773055-0
-    DockerVersion=1.13.1
-    OperatingSystem=Ubuntu 16.04.3 LTS
-    Volume=local
-    Network=bridge host macvlan null overlay
-    NodeRole=Not Orchestrated
-    OrchestratorType=Kubernetes
-}
-Primary Workspace: b438b4f6-912a-46d5-9cb1-b44069212abc
-Status: Onboarded(OMSAgent Running)
-omi 1.4.2.5
-omsagent 1.6.0-163
-docker-cimprov 1.0.0.31
-```
+所顯示的代理程式版本應符合 [[發行歷程記錄](https://github.com/microsoft/docker-provider/tree/ci_feature_prod)] 頁面上所列的最新版本。
 
 ### <a name="upgrade-agent-on-hybrid-kubernetes-cluster"></a>在混合式 Kubernetes 叢集上升級代理程式
 

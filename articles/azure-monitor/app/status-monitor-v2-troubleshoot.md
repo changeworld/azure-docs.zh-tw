@@ -5,11 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 9bb22b12a7b3e972ff144bd121db4288801e2488
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07b5ae99b98c6c6bbf4dc903cd1b583eb655a825
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81732942"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87041410"
 ---
 # <a name="troubleshooting-application-insights-agent-formerly-named-status-monitor-v2"></a>疑難排解 Application Insights 代理程式（先前稱為狀態監視器 v2）
 
@@ -54,7 +55,7 @@ ms.locfileid: "81732942"
 
 ### <a name="conflict-with-iis-shared-configuration"></a>與 IIS 共用設定衝突
 
-如果您有一部 web 伺服器的叢集，您可能會使用[共用](https://docs.microsoft.com/iis/web-hosting/configuring-servers-in-the-windows-web-platform/shared-configuration_211)設定。
+如果您有一部 web 伺服器的叢集，您可能會使用[共用](/iis/web-hosting/configuring-servers-in-the-windows-web-platform/shared-configuration_211)設定。
 無法將 HttpModule 插入此共用設定。
 在每部 web 伺服器上執行 Enable 命令，將 DLL 安裝到每部伺服器的 GAC 中。
 
@@ -134,10 +135,10 @@ Cmdlet          Start-ApplicationInsightsMonitoringTrace           0.4.0      Az
 
 1. 從[GitHub](https://github.com/Microsoft/perfview/releases)下載 PerfView.exe 和 PerfView64.exe。
 2. 啟動 PerfView64.exe。
-3. 展開 [進階選項]  。
+3. 展開 [進階選項]。
 4. 清除這些核取方塊：
     - **位址**
-    - **合併**
+    - **合併式**
     - **.NET 符號集合**
 5. 設定這些**額外的提供者**：`61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,925fa42b-9ef6-5fa7-10b8-56449d7a2040,f7d60e07-e910-5aca-bdd2-9de45b46c560,7c739bb9-7861-412e-ba50-bf30d95eae36,61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,252e28f4-43f9-5771-197a-e8c7e750a984`
 
@@ -152,7 +153,7 @@ Cmdlet          Start-ApplicationInsightsMonitoringTrace           0.4.0      Az
 
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 請參閱[API 參考](status-monitor-v2-overview.md#powershell-api-reference)，以瞭解您可能遺漏的參數。
 - 如果您遇到此處未列出的問題，可以在[GitHub](https://github.com/Microsoft/ApplicationInsights-Home/issues)上與我們聯繫。

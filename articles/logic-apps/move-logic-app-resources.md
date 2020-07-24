@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: d420f244b0d1e5ccf9a7aaa78c10f613cdbad38f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1e844934852f3eb45f665a67bbdb7087a8ba0202
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85564264"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87039154"
 ---
 # <a name="move-logic-app-resources-to-other-azure-resource-groups-regions-or-subscriptions"></a>將邏輯應用程式資源移到其他 Azure 資源群組、區域或訂用帳戶
 
@@ -27,7 +27,7 @@ ms.locfileid: "85564264"
 
 * 您只能將[整合服務環境（ISE）](connect-virtual-network-vnet-isolated-environment-overview.md)移至存在於相同 Azure 區域或 Azure 訂用帳戶中的另一個資源群組。 您無法將 ISE 移至位於不同 Azure 區域或 Azure 訂用帳戶中的資源群組。 此外，在這類移動之後，您必須在邏輯應用程式工作流程、整合帳戶、連接等中更新 ISE 的所有參考。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 * 相同的 Azure 訂用帳戶，用來建立您要移動的邏輯應用程式或整合帳戶
 
@@ -94,7 +94,7 @@ ms.locfileid: "85564264"
 
 例如，若要將邏輯應用程式連結至整合帳戶，這兩個資源必須存在於相同的區域中。 在嚴重損壞修復的情況下，您通常會想要具有相同設定和構件的整合帳戶。 在其他案例中，您可能需要具有不同設定和成品的整合帳戶。
 
-連接器的作者和具有相同 Azure 訂用帳戶和相同 Azure Active Directory 租使用者的使用者可以看到 Azure Logic Apps 中的自訂連接器。 這些連接器可在邏輯應用程式部署所在的相同區域中使用。 如需詳細資訊，請參閱[在貴組織中共用自訂連接器](https://docs.microsoft.com/connectors/custom-connectors/share)。
+連接器的作者和具有相同 Azure 訂用帳戶和相同 Azure Active Directory 租使用者的使用者可以看到 Azure Logic Apps 中的自訂連接器。 這些連接器可在邏輯應用程式部署所在的相同區域中使用。 如需詳細資訊，請參閱[在貴組織中共用自訂連接器](/connectors/custom-connectors/share)。
 
 您從 Visual Studio 取得的範本只會包含邏輯應用程式及其連線的資源定義。 因此，如果您的邏輯應用程式使用其他資源，例如整合帳戶和 B2B 成品（例如合作夥伴、協定和架構），您就必須使用 Azure 入口網站來匯出該整合帳戶的範本。 此範本包含整合帳戶和構件的資源定義。 不過，此範本並未完全參數化。 因此，您必須手動將您想要用於部署的值參數化。
 
@@ -108,6 +108,6 @@ ms.locfileid: "85564264"
 
 1. 開啟並編輯範本，將部署的必要值參數化。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 [將 Azure 資源移至新的資源群組或訂用帳戶](../azure-resource-manager/management/move-resource-group-and-subscription.md)

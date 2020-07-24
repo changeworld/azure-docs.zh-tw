@@ -6,11 +6,12 @@ ms.author: ofmanor
 ms.topic: reference
 ms.date: 03/16/2020
 ms.subservice: alerts
-ms.openlocfilehash: 3e9eb9d0910e4c0e00e57eac80c09910f214db6a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c3eed095d87d1e1fa1f210b360822ceefdbe0521
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84300768"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045245"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-alerts"></a>疑難排解 Azure 監視器警示中的問題
 
@@ -240,13 +241,13 @@ ms.locfileid: "84300768"
 
 1. **您是否收到許可權錯誤？**  
 
-    您應具有「 [監視參與者」內建角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor)，或與動作規則和警示相關的特定許可權。
+    您應具有「 [監視參與者」內建角色](../../role-based-access-control/built-in-roles.md#monitoring-contributor)，或與動作規則和警示相關的特定許可權。
 
 1. **您驗證了動作規則參數嗎？**  
 
-    檢查[動作規則檔](alerts-action-rules.md)或[動作規則 PowerShell AzActionRule](https://docs.microsoft.com/powershell/module/az.alertsmanagement/Set-AzActionRule?view=azps-3.5.0)命令。 
+    檢查[動作規則檔](alerts-action-rules.md)或[動作規則 PowerShell AzActionRule](/powershell/module/az.alertsmanagement/set-azactionrule?view=azps-3.5.0)命令。 
 
 
 ## <a name="next-steps"></a>後續步驟
-- 如果使用記錄警示，另請參閱[疑難排解記錄警示](alert-log-troubleshoot.md)。
+- 如果使用記錄警示，另請參閱[疑難排解記錄警示](./alerts-troubleshoot-log.md)。
 - 回到[Azure 入口網站](https://portal.azure.com)，以檢查您是否已解決上述指引的問題 

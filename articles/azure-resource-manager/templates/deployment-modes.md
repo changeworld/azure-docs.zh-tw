@@ -2,12 +2,13 @@
 title: 部署模式
 description: 說明如何指定是否要透過 Azure Resource Manager 使用完整或累加部署模式。
 ms.topic: conceptual
-ms.date: 01/17/2020
-ms.openlocfilehash: 1077d92f076797fb03c4fe750b353e2306f9b6de
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/22/2020
+ms.openlocfilehash: f20f41e989e1a994b7806aecf6e7cee5a4c27014
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79460240"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87040437"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Azure Resource Manager 部署模式
 
@@ -20,6 +21,9 @@ ms.locfileid: "79460240"
 ## <a name="complete-mode"></a>完整模式
 
 在完整模式中，Resource Manager 會**刪除**現存於資源群組中但未在範本內指定的資源。
+
+> [!NOTE]
+> 在完成模式中部署範本之前，請一律使用「[假設](template-deploy-what-if.md)」作業。 假設會顯示要建立、刪除或修改的資源。 使用 [假設] 以避免不小心刪除資源。
 
 如果您的範本包含未部署的資源，因為[條件](conditional-resource-deployment.md)評估為 false，則結果會取決於您用來部署範本的 REST API 版本。 如果您使用早于2019-05-10 的版本，則**不會刪除**資源。 使用2019-05-10 或更新版本時，**會刪除**資源。 Azure PowerShell 和 Azure CLI 的最新版本會刪除資源。
 
@@ -49,6 +53,8 @@ ms.locfileid: "79460240"
 
 > [!NOTE]
 > 在增量模式中重新部署現有的資源時，會重新套用所有屬性。 這些**屬性不會以累加方式加入**。 常見的誤解是認為未在範本中指定的屬性會保持不變。 如果您未指定某些屬性，Resource Manager 會將部署解讀為覆寫這些值。 未包含在範本中的屬性會重設為預設值。 指定資源的所有非預設值，而不只是您要更新的值。 範本中的資源定義一律包含資源的最終狀態。 它不能代表現有資源的部分更新。
+>
+> 在罕見的情況下，您為資源指定的屬性實際上會實作為子資源。 例如，當您提供 web 應用程式的網站設定值時，這些值會在子資源類型中執行 `Microsoft.Web/sites/config` 。 如果您重新部署 web 應用程式，並為網站設定值指定空的物件，則子資源不會更新。 不過，如果您提供新的網站設定值，則會更新子資源類型。
 
 ## <a name="example-result"></a>範例結果
 
@@ -118,7 +124,7 @@ az deployment group create \
 ]
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 若要瞭解如何建立 Resource Manager 範本，請參閱[編寫 Azure Resource Manager 範本](template-syntax.md)。
 * 若要了解如何部署資源，請參閱 [使用 Azure 資源管理員範本部署應用程式](deploy-powershell.md)。

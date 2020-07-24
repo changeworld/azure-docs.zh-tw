@@ -6,16 +6,16 @@ ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
 ms.custom: tracking-python
-ms.openlocfilehash: 5e41f5d2189cce19dab3e0b48943ef0568ddedb8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2c3e872dee06ac4fa0c8c37ce8fb77bd34dc78bc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807004"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87041860"
 ---
 # <a name="azure-cosmos-db-input-binding-for-azure-functions-2x-and-higher"></a>Azure Functions 2.x 和更高版本的 Azure Cosmos DB 輸入系結
 
-Azure Cosmos DB 輸入繫結會使用 SQL API 來擷取一或多個 Azure Cosmos DB 文件，並傳遞給函式的輸入參數。 您可以叫用函式的觸發程序作為基礎來判斷文件識別碼或查詢參數。
+Azure Cosmos DB 輸入繫結會使用 SQL API 來擷取一或多個 Azure Cosmos DB 文件，並傳遞給函式的輸入參數。 您能以叫用函式的觸發程序作為基礎，來判斷文件識別碼或查詢參數。
 
 如需安裝和設定詳細資料的相關資訊，請參閱[概觀](./functions-bindings-cosmosdb-v2.md)。
 
@@ -296,7 +296,7 @@ namespace CosmosDBSamplesV2
 下列範例示範會顯示擷取文件清單的 [C# 函式](functions-dotnet-class-library.md)。 函式是由 HTTP 要求所觸發。 程式碼會使用由 Azure Cosmos DB 繫結提供的 `DocumentClient` 執行個體來讀取文件清單。 `DocumentClient` 執行個體也會用來進行寫入作業。
 
 > [!NOTE]
-> 您也可以使用[IDocumentClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.idocumentclient?view=azure-dotnet)介面，讓測試變得更容易。
+> 您也可以使用[IDocumentClient](/dotnet/api/microsoft.azure.documents.idocumentclient?view=azure-dotnet)介面，讓測試變得更容易。
 
 ```cs
 using Microsoft.AspNetCore.Http;
@@ -1420,7 +1420,7 @@ Python 指令碼不支援屬性。
 
 # <a name="java"></a>[Java](#tab/java)
 
-從 JAVA 函式執行時間連結[庫](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)， `@CosmosDBOutput` 在寫入 Cosmos DB 的參數上使用注釋。 注釋參數類型應該是 `OutputBinding<T>` ，其中 `T` 是原生 JAVA 類型或 POJO。
+從 JAVA 函式執行時間連結[庫](/java/api/overview/azure/functions/runtime)， `@CosmosDBOutput` 在寫入 Cosmos DB 的參數上使用注釋。 注釋參數類型應該是 `OutputBinding<T>` ，其中 `T` 是原生 JAVA 類型或 POJO。
 
 ---
 
@@ -1463,11 +1463,11 @@ Python 指令碼不支援屬性。
 
 # <a name="java"></a>[Java](#tab/java)
 
-從 JAVA 函式執行時間連結[庫](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)中，批註會將 [@CosmosDBInput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.cosmosdbinput) Cosmos DB 資料公開給函式。 此註釋可以搭配原生 Java 類型、POJO 或使用 `Optional<T>` 的可為 Null 值使用。
+從 JAVA 函式執行時間連結[庫](/java/api/overview/azure/functions/runtime)中，批註會將 [@CosmosDBInput](/java/api/com.microsoft.azure.functions.annotation.cosmosdbinput) Cosmos DB 資料公開給函式。 此註釋可以搭配原生 Java 類型、POJO 或使用 `Optional<T>` 的可為 Null 值使用。
 
 ---
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [建立或修改 Azure Cosmos DB 檔時執行函數（觸發程式）](./functions-bindings-cosmosdb-v2-trigger.md)
 - [儲存 Azure Cosmos DB 檔的變更（輸出系結）](./functions-bindings-cosmosdb-v2-output.md)

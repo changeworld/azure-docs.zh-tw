@@ -14,11 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 04/08/2020
 ms.author: juliako
-ms.openlocfilehash: 8eca95f9fca47fca4d54bacbab35f3a0ffc3ba31
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c41538acdb8ed94ee4995ad8d5f5e4cebb2e14d6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81010574"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87043452"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>媒體服務中的即時事件和即時輸出
 
@@ -29,11 +30,11 @@ Azure 媒體服務可讓您在 Azure 雲端上將實況活動傳遞給客戶。 
 
 ## <a name="live-events"></a>即時活動
 
-[實況活動](https://docs.microsoft.com/rest/api/media/liveevents)負責內嵌和處理即時視訊摘要。 當您建立即時事件時，系統會建立主要和次要輸入端點，讓您用來從遠端編碼器傳送即時信號。 遠端即時編碼器會使用[RTMP](https://www.adobe.com/devnet/rtmp.html)或[Smooth Streaming](https://msdn.microsoft.com/library/ff469518.aspx) （分散式）輸入通訊協定，將發佈摘要傳送至該輸入端點。 對於 RTMP 內嵌通訊協定，內容可以用純文字（）傳送， `rtmp://` 或在網路上安全地加密（ `rtmps://` ）。 針對 Smooth Streaming 內嵌通訊協定，支援的 URL 配置為 `http://` 或 `https://`。  
+[實況活動](/rest/api/media/liveevents)負責內嵌和處理即時視訊摘要。 當您建立即時事件時，系統會建立主要和次要輸入端點，讓您用來從遠端編碼器傳送即時信號。 遠端即時編碼器會使用[RTMP](https://www.adobe.com/devnet/rtmp.html)或[Smooth Streaming](/openspecs/windows_protocols/ms-sstr/8383f27f-7efe-4c60-832a-387274457251) （分散式）輸入通訊協定，將發佈摘要傳送至該輸入端點。 對於 RTMP 內嵌通訊協定，內容可以用純文字（）傳送， `rtmp://` 或在網路上安全地加密（ `rtmps://` ）。 針對 Smooth Streaming 內嵌通訊協定，支援的 URL 配置為 `http://` 或 `https://`。  
 
 ## <a name="live-event-types"></a>實況活動類型
 
-[即時事件](https://docs.microsoft.com/rest/api/media/liveevents)可以設定為傳遞（內部部署即時編碼器會傳送多位元率串流）或*即時編碼*（內部部署即時編碼器會*傳送*單一位元速率串流）。 在建立期間，會使用[LiveEventEncodingType](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventencodingtype)來設定類型：
+[即時事件](/rest/api/media/liveevents)可以設定為傳遞（內部部署即時編碼器會傳送多位元率串流）或*即時編碼*（內部部署即時編碼器會*傳送*單一位元速率串流）。 在建立期間，會使用[LiveEventEncodingType](/rest/api/media/liveevents/create#liveeventencodingtype)來設定類型：
 
 * **LiveEventEncodingType。 None**：內部部署即時編碼器會傳送多位元率串流。 內嵌資料流程會通過即時事件，而不需要進行任何進一步的處理。 也稱為「傳遞」模式。
 * **LiveEventEncodingType**：內部部署即時編碼器會將單一位元速率串流傳送至即時事件，媒體服務會建立多位元率串流。 如果「貢獻摘要」是720p 或更高的解析度， **Default720p**預設值將會編碼一組6個解析/位元速率配對。
@@ -86,7 +87,7 @@ Azure 媒體服務可讓您在 Azure 雲端上將實況活動傳遞給客戶。 
 ### <a name="naming-rules"></a>命名規則
 
 * Live event name 的最大值為32個字元。
-* 名稱應遵循此[RegEx](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference)模式： `^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$` 。
+* 名稱應遵循此[RegEx](/dotnet/standard/base-types/regular-expression-language-quick-reference)模式： `^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$` 。
 
 另請參閱[串流端點命名慣例](streaming-endpoint-concept.md#naming-convention)。
 
@@ -121,11 +122,11 @@ Azure 媒體服務可讓您在 Azure 雲端上將實況活動傳遞給客戶。 
 
     使用下列 Api 來啟用虛名 URL，並將存取權杖設定為有效的 GUID （例如， `"accessToken": "1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"` ）。  
 
-    |語言|啟用虛名 URL|設定存取權杖|
+    |Language|啟用虛名 URL|設定存取權杖|
     |---|---|---|
-    |REST|[屬性。 vanityUrl](https://docs.microsoft.com/rest/api/media/liveevents/create#liveevent)|[LiveEventInput. accessToken](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventinput)|
-    |CLI|[--虛名-url](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest#az-ams-live-event-create)|[--存取權杖](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest#optional-parameters)|
-    |.NET|[LiveEvent. VanityUrl](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveevent.vanityurl?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEvent_VanityUrl)|[LiveEventInput. AccessToken](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveeventinput.accesstoken?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEventInput_AccessToken)|
+    |REST|[屬性。 vanityUrl](/rest/api/media/liveevents/create#liveevent)|[LiveEventInput. accessToken](/rest/api/media/liveevents/create#liveeventinput)|
+    |CLI|[--虛名-url](/cli/azure/ams/live-event?view=azure-cli-latest#az-ams-live-event-create)|[--存取權杖](/cli/azure/ams/live-event?view=azure-cli-latest#optional-parameters)|
+    |.NET|[LiveEvent. VanityUrl](/dotnet/api/microsoft.azure.management.media.models.liveevent.vanityurl?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEvent_VanityUrl)|[LiveEventInput. AccessToken](/dotnet/api/microsoft.azure.management.media.models.liveeventinput.accesstoken?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEventInput_AccessToken)|
     
 ### <a name="live-ingest-url-naming-rules"></a>即時內嵌 URL 命名規則
 
@@ -163,7 +164,7 @@ Azure 媒體服務可讓您在 Azure 雲端上將實況活動傳遞給客戶。 
 
 ## <a name="live-event-preview-url"></a>實況活動預覽 URL
 
-當實況活動開始接收發布摘要之後，您就可以使用其預覽端點來預覽及驗證您是否收到即時串流，再進行進一步的發佈。 當您檢查過預覽資料流程是否良好之後，您可以使用即時事件，讓即時串流可透過一或多個（預先建立）的串流端點傳遞。 若要完成此動作，請在實況活動上建立新的[即時輸出](https://docs.microsoft.com/rest/api/media/liveoutputs)。
+當實況活動開始接收發布摘要之後，您就可以使用其預覽端點來預覽及驗證您是否收到即時串流，再進行進一步的發佈。 當您檢查過預覽資料流程是否良好之後，您可以使用即時事件，讓即時串流可透過一或多個（預先建立）的串流端點傳遞。 若要完成此動作，請在實況活動上建立新的[即時輸出](/rest/api/media/liveoutputs)。
 
 > [!IMPORTANT]
 > 請先確定視訊流向預覽 URL，再繼續操作！
@@ -174,7 +175,7 @@ Azure 媒體服務可讓您在 Azure 雲端上將實況活動傳遞給客戶。 
 
 ## <a name="live-outputs"></a>即時輸出
 
-讓資料流流入「實況活動」之後，您即可建立[資產](https://docs.microsoft.com/rest/api/media/assets)、[實況輸出](https://docs.microsoft.com/rest/api/media/liveoutputs)及[串流定位器](https://docs.microsoft.com/rest/api/media/streaminglocators)來開始串流事件。 「即時事件」會封存資料流，並透過[串流端點](https://docs.microsoft.com/rest/api/media/streamingendpoints)將它提供給檢視者。  
+讓資料流流入「實況活動」之後，您即可建立[資產](/rest/api/media/assets)、[實況輸出](/rest/api/media/liveoutputs)及[串流定位器](/rest/api/media/streaminglocators)來開始串流事件。 「即時事件」會封存資料流，並透過[串流端點](/rest/api/media/streamingendpoints)將它提供給檢視者。  
 
 如需有關即時輸出的詳細資訊，請參閱[使用雲端 DVR](live-event-cloud-dvr.md)。
 

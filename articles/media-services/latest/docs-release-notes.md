@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 04/20/2020
 ms.author: juliako
-ms.openlocfilehash: 40a2510fcb6fd5fe51cebc702604e2d09df7b061
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 56c6b3732d0a77580c27f6cc8720b414e8e49d23
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84982164"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038982"
 ---
 # <a name="azure-media-services-v3-documentation-updates"></a>Azure 媒體服務 v3 檔更新
 
@@ -26,7 +26,7 @@ ms.locfileid: "84982164"
 
 ## <a name="june-2020"></a>2020 年 6 月
 
-* 即時影片分析的預覽已公開 IoT Edge。 如需 IoT Edge 檔的[即時影片分析](https://docs.microsoft.com/azure/media-services/live-video-analytics-edge/)，請參閱詳細資料。
+* 即時影片分析的預覽已公開 IoT Edge。 如需 IoT Edge 檔的[即時影片分析](../live-video-analytics-edge/index.yml)，請參閱詳細資料。
 * 新的快速入門：
 
     * [使用入口網站上傳、編碼和串流內容](manage-assets-quickstart.md)

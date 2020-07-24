@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/28/2020
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: 4f5ad6fd0444c40d95bf4c2f1105959bde07245d
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: 24c3ec1ee16123cef0c4e2bd230bfdb66915fc9f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86276306"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87040578"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL Database 和 Azure Synapse 分析的審核
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -50,7 +50,7 @@ ms.locfileid: "86276306"
 
 #### <a name="define-server-level-vs-database-level-auditing-policy"></a><a id="server-vs-database-level"></a>定義伺服器層級與資料庫層級的稽核原則
 
-您可以針對特定資料庫定義稽核原則，或為 Azure (中裝載 SQL Database 或 Azure Synapse) 的預設[伺服器](logical-servers.md)原則：
+您可以針對特定資料庫或 Azure 中的預設[伺服器](logical-servers.md)原則（裝載 SQL Database 或 azure Synapse）定義稽核原則：
 
 - 伺服器原則會套用至伺服器上所有現有和新建立的資料庫。
 
@@ -79,15 +79,18 @@ ms.locfileid: "86276306"
 Azure SQL Database 和 Azure Synapse Audit 會為 Audit 記錄中的字元欄位儲存4000個字元的資料。 當**陳述式**或從可稽核的動作傳回的 **data_sensitivity_information** 值包含超過 4000 個字元，超過前 4000 個字元的任何資料將會**截斷且不會稽核**。
 下節描述使用 Azure 入口網站進行稽核的設定。
 
-1. 前往 [Azure 入口網站](https://portal.azure.com)。
+  > [!NOTE]
+  > 不可能在暫停的 Synapse SQL 集區上啟用審核。 若要啟用審核，請取消暫停 Synapse SQL 集區。 深入瞭解[SYNAPSE SQL 集](https://docs.microsoft.com/azure/synapse-analytics/sql/best-practices-sql-pool)區。
+
+1. 移至 [Azure 入口網站](https://portal.azure.com)。
 2. 流覽至 [ **sql database** ] 或 [ **sql server** ] 窗格中 [安全性] 標題底下的 [**審核**]。
 3. 如果您想要設定伺服器稽核原則，可以選取資料庫稽核頁面上的 [檢視伺服器設定]**** 連結。 然後，您可以檢視或修改伺服器稽核設定。 伺服器稽核原則會套用至此伺服器上所有現有和新建立的資料庫。
 
-    ![瀏覽窗格](./media/auditing-overview/2_auditing_get_started_server_inherit.png)
+    ![[瀏覽] 窗格](./media/auditing-overview/2_auditing_get_started_server_inherit.png)
 
 4. 如果您偏向在資料庫層級啟用稽核，請將 [稽核]**** 切換到 [開啟]****。 如果已啟用伺服器稽核，資料庫設定的稽核將會與伺服器稽核並存。
 
-5. 您有多個選項可用來設定要寫入 audit 記錄的位置。 您可以將記錄寫入至 Azure 儲存體帳戶、Log Analytics 工作區以供取用，方法是 Azure 監視器記錄 (預覽) ，或使用事件中樞 (preview) 來取用。 您可以設定這些選項的任何組合，並將稽核記錄寫入至每個組合。
+5. 您有多個選項可用來設定要寫入 audit 記錄的位置。 您可以使用事件中樞（預覽），將記錄寫入至 Azure 儲存體帳戶、Log Analytics 工作區，以供取用 Azure 監視器記錄（預覽）或事件中樞取用。 您可以設定這些選項的任何組合，並將稽核記錄寫入至每個組合。
   
    ![儲存體選項](./media/auditing-overview/auditing-select-destination.png)
 
@@ -95,7 +98,7 @@ Azure SQL Database 和 Azure Synapse Audit 會為 Audit 記錄中的字元欄位
 
 若要設定將稽核記錄寫入至儲存體帳戶，請選取 [儲存體]****，然後開啟 [儲存體詳細資料]****。 選取將儲存記錄的 Azure 儲存體帳戶，然後選取保留期間。 然後按一下 [確定]。 早于保留期限的記錄會遭到刪除。
 
-- 保留期限的預設值為 0 (無限制保留) 。 您可以變更此值，方法是在設定儲存體帳戶以進行審核時，將 [**保留 (天]) **滑杆移至 [**儲存體設定**] 中。
+- [保留週期] 的預設值為0（無限制保留）。 您可以變更此值，方法是在設定儲存體帳戶以進行審核時，將 [**保留（天數）** ] 滑杆移至 [**儲存體設定**]。
   - 如果您將保留期間從 0 (無限制的保留) 變更為任何其他值，請注意保留期只會套用至保留值變更之後所寫入的記錄 (設定為無限制的期間所寫入的記錄會予以保留，即使已啟用保留期)。
 
   ![storage account](./media/auditing-overview/auditing_select_storage.png)
@@ -119,10 +122,6 @@ Azure SQL Database 和 Azure Synapse Audit 會為 Audit 記錄中的字元欄位
 如需 Azure 監視器記錄] 工作區的詳細資訊，請參閱[設計您的 Azure 監視器記錄部署](https://docs.microsoft.com/azure/azure-monitor/platform/design-logs-deployment)
    
 ### <a name="audit-to-event-hub-destination"></a><a id="audit-event-hub-destination"></a>審核至事件中樞目的地
-
-> [!WARNING]
-> 在其上有 SQL Database 集區的伺服器上啟用審核會**導致 SQL Database 集區繼續，並再次重新暫停，** 這可能會產生計費費用。
-> 不可能在暫停的 SQL Database 集區上啟用審核。 若要啟用它，請取消暫停 SQL Database 集區。
 
 若要設定將稽核記錄寫入至事件中樞，請選取 [事件中樞 (預覽)]****，然後開啟 [事件中樞詳細資料]****。 選取要寫入記錄的事件中樞，然後按一下 [確定]****。 請確定事件中樞與您的資料庫和伺服器位於相同的區域。
 
@@ -164,7 +163,7 @@ Azure SQL Database 和 Azure Synapse Audit 會為 Audit 記錄中的字元欄位
 
 - 使用 [Azure 入口網站](https://portal.azure.com)。  開啟相關的資料庫。 在資料庫的 [稽核]**** 頁面頂端，按一下 [檢視稽核記錄]****。
 
-    ![瀏覽窗格](./media/auditing-overview/7_auditing_get_started_blob_view_audit_logs.png)
+    ![[瀏覽] 窗格](./media/auditing-overview/7_auditing_get_started_blob_view_audit_logs.png)
 
     隨即開啟 [稽核記錄]****，您可以在其中檢視記錄。
 
@@ -172,14 +171,14 @@ Azure SQL Database 和 Azure Synapse Audit 會為 Audit 記錄中的字元欄位
   - 切換 [稽核來源]****，即可在由「伺服器稽核原則」** 和「資料庫稽核原則」** 建立的稽核記錄之間切換。
   - 如果勾選 [只顯示 SQL 插入的稽核記錄]**** 核取方塊，只可以檢視 SQL 插入相關的稽核記錄。
 
-       ![瀏覽窗格]( ./media/auditing-overview/8_auditing_get_started_blob_audit_records.png)
+       ![[瀏覽] 窗格]( ./media/auditing-overview/8_auditing_get_started_blob_audit_records.png)
 
 - 使用系統函數 **sys.fn_get_audit_file** (T-SQL) 以表格格式傳回稽核記錄資料。 如需使用此函式的詳細資訊，請參閱 [sys.fn_get_audit_file](/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql)。
 
 - 使用 SQL Server Management Studio (SSMS 17 或更新版本) 中的 [合併稽核檔案]****：
     1. 從 SSMS 功能表中 **，選取 [** 檔案] [開啟] [合併] [  >  **Open**  >  **Audit Files**]。
 
-        ![瀏覽窗格](./media/auditing-overview/9_auditing_get_started_ssms_1.png)
+        ![[瀏覽] 窗格](./media/auditing-overview/9_auditing_get_started_ssms_1.png)
     2. 隨即開啟 [新增稽核檔案]**** 對話方塊。 選取其中一個 [新增]**** 選項以選擇是否要從本機磁碟合併稽核檔案，或從 Azure 儲存體匯入稽核檔案。 您將需要提供您的 Azure 儲存體詳細資料和帳戶金鑰。
 
     3. 已新增要合併的所有檔案之後，請按一下 [確定]**** 以完成合併作業。
@@ -219,10 +218,10 @@ Azure SQL Database 和 Azure Synapse Audit 會為 Audit 記錄中的字元欄位
 
 1. 開啟 [儲存體詳細資料]****。 在 [儲存體存取金鑰]**** 方塊中，選取 [次要]****，然後按一下 [確定]****。 然後按一下稽核設定頁面頂端的 [儲存]****。
 
-    ![瀏覽窗格](./media/auditing-overview/5_auditing_get_started_storage_key_regeneration.png)
+    ![[瀏覽] 窗格](./media/auditing-overview/5_auditing_get_started_storage_key_regeneration.png)
 2. 移至儲存體設定頁面，並重新產生主要存取金鑰。
 
-    ![瀏覽窗格](./media/auditing-overview/6_auditing_get_started_regenerate_key.png)
+    ![[瀏覽] 窗格](./media/auditing-overview/6_auditing_get_started_regenerate_key.png)
 3. 返回稽核設定頁面，將儲存體存取金鑰從次要切換成主要，然後按一下 [確定]****。 然後按一下稽核設定頁面頂端的 [儲存]****。
 4. 返回儲存體設定頁面，並重新產生次要存取金鑰 (為下一個金鑰重新整理週期做準備)。
 
@@ -232,12 +231,12 @@ Azure SQL Database 和 Azure Synapse Audit 會為 Audit 記錄中的字元欄位
 
 **PowerShell Cmdlet (包含其他篩選的 WHERE 子句支援)**：
 
-- [建立或更新資料庫稽核原則 (AzSqlDatabaseAudit) ](/powershell/module/az.sql/set-azsqldatabaseaudit)
-- [建立或補救伺服器稽核原則 (AzSqlServerAudit) ](/powershell/module/az.sql/set-azsqlserveraudit)
-- [取得資料庫稽核原則 (AzSqlDatabaseAudit) ](/powershell/module/az.sql/get-azsqldatabaseaudit)
-- [取得伺服器稽核原則 (AzSqlServerAudit) ](/powershell/module/az.sql/get-azsqlserveraudit)
-- [移除資料庫稽核原則 (移除-AzSqlDatabaseAudit) ](/powershell/module/az.sql/remove-azsqldatabaseaudit)
-- [移除伺服器稽核原則 (移除-AzSqlServerAudit) ](/powershell/module/az.sql/remove-azsqlserveraudit)
+- [建立或更新資料庫稽核原則（設定-AzSqlDatabaseAudit）](/powershell/module/az.sql/set-azsqldatabaseaudit)
+- [建立或補救伺服器稽核原則（設定-AzSqlServerAudit）](/powershell/module/az.sql/set-azsqlserveraudit)
+- [取得資料庫稽核原則（AzSqlDatabaseAudit）](/powershell/module/az.sql/get-azsqldatabaseaudit)
+- [取得伺服器稽核原則（AzSqlServerAudit）](/powershell/module/az.sql/get-azsqlserveraudit)
+- [移除資料庫稽核原則（移除-AzSqlDatabaseAudit）](/powershell/module/az.sql/remove-azsqldatabaseaudit)
+- [移除伺服器稽核原則（移除-AzSqlServerAudit）](/powershell/module/az.sql/remove-azsqlserveraudit)
 
 如需指令碼範例，請參閱[使用 PowerShell 設定稽核與威脅偵測](scripts/auditing-threat-detection-powershell-configure.md)。
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.reviewer: anilmur
-ms.openlocfilehash: ca17ffdc2a54b25bbfd855834a366ed381a54678
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f42361df438a434548b3bc9394c007ef8d4c6eb0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86530383"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038965"
 ---
 # <a name="comparison-of-azure-on-demand-media-encoders"></a>Azure 隨選媒體編碼器的比較  
 
@@ -44,7 +44,7 @@ ms.locfileid: "86530383"
 |多重音訊語言曲目|限制|[是](media-services-media-encoder-premium-workflow-multiplefilesinput.md#example-2--multiple-audio-language-encoding)|
 
 ## <a name="billing-meter-used-by-each-encoder"></a><a id="billing"></a>每個編碼器所使用的計費計量表
-| 媒體處理器名稱 | 適用的價格 | 備忘稿 |
+| 媒體處理器名稱 | 適用的價格 | 附註 |
 | --- | --- | --- |
 | **Media Encoder Standard** |ENCODER |在 ENCODER 資料行底下，「編碼工作」會以[這裡][1]指定的費率，根據所有產生來輸出之媒體檔案的總持續時間 (以分鐘為單位) 計費。 |
 | **媒體編碼器高階工作流程** |PREMIUM ENCODER |在 PREMIUM ENCODER 資料行底下，「編碼工作」會以[這裡][1]指定的費率，根據所有產生來輸出之媒體檔案的總持續時間 (以分鐘為單位) 計費。 |
@@ -62,7 +62,7 @@ ms.locfileid: "86530383"
 | AVI (未壓縮 8 位元/10 位元) |是 |是 |
 | 3GPP/3GPP2 |是 |否 |
 | Smooth Streaming 檔案格式 (PIFF 1.3) |是 |否 |
-| [Microsoft Digital Video Recording(DVR-MS)](https://msdn.microsoft.com/library/windows/desktop/dd692984) |是 |否 |
+| [Microsoft Digital Video Recording(DVR-MS)](/previous-versions/windows/desktop/mstv/about-the-dvr-ms-file-format) |是 |否 |
 | Matroska/WebM |是 |否 |
 | QuickTime (.mov) |是 |否 |
 

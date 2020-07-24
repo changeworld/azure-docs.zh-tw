@@ -6,16 +6,17 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/16/2020
-ms.openlocfilehash: 18cd74ac9298b7dd058de2b224f677ec0d8f2d64
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 736daa8a09a8f08721c7b7d9c20f012f274b384a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79480278"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045520"
 ---
 # <a name="azure-monitor-log-query-examples"></a>Azure 監視器記錄查詢範例
 本文包含多個使用 [Kusto 查詢語言](/azure/kusto/query/)的[查詢](log-query-overview.md)範例，以從 Azure 監視器擷取不同的記錄資料類型。 您可以透過方法來合併和分析資料，以使用這些範例識別用於您的要求的不同策略。  
 
-請參閱 [Kusto 語言參考](https://docs.microsoft.com/azure/kusto/query/)了解在這些範例中使用不同關鍵字的詳細資料。 如果您不熟悉 Azure 監視器，請逐步查看[建立查詢的課程](get-started-queries.md)。
+請參閱 [Kusto 語言參考](/azure/kusto/query/)了解在這些範例中使用不同關鍵字的詳細資料。 如果您不熟悉 Azure 監視器，請逐步查看[建立查詢的課程](get-started-queries.md)。
 
 ## <a name="events"></a>事件
 
@@ -36,7 +37,7 @@ Event
 search in (Event, SecurityEvent) "unmarshaling"
 ```
 
-## <a name="heartbeat"></a>Heartbeat
+## <a name="heartbeat"></a>活動訊號
 
 ### <a name="chart-a-week-over-week-view-of-the-number-of-computers-sending-data"></a>列出逐週傳送資料的電腦數目圖表
 
@@ -374,7 +375,7 @@ suspicious_users_that_later_logged_in
 
 ## <a name="usage"></a>使用方式
 
-`Usage`資料類型可以用來依解決方案或資料類型追蹤內嵌資料量。 還有其他技術可依[電腦](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#data-volume-by-computer)或[Azure 訂用帳戶、資源群組或資源](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#data-volume-by-azure-resource-resource-group-or-subscription)來研究內嵌資料量。
+`Usage`資料類型可以用來依解決方案或資料類型追蹤內嵌資料量。 還有其他技術可依[電腦](../platform/manage-cost-storage.md#data-volume-by-computer)或[Azure 訂用帳戶、資源群組或資源](../platform/manage-cost-storage.md#data-volume-by-azure-resource-resource-group-or-subscription)來研究內嵌資料量。
 
 #### <a name="data-volume-by-solution"></a>依方案分類的資料量
 

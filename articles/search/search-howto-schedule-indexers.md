@@ -7,13 +7,13 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: f85645d8c77d2317807bb02a19a308070acb6007
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.date: 07/12/2020
+ms.openlocfilehash: 4a78c85918725533df8c616e598afbd2ad84bdd5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86143541"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038506"
 ---
 # <a name="how-to-schedule-indexers-in-azure-cognitive-search"></a>如何在 Azure 認知搜尋中排程索引子
 
@@ -31,7 +31,7 @@ ms.locfileid: "86143541"
 
 索引子排程有兩個屬性：
 * **間隔**，定義排程的索引子執行之間的時間量。 允許的最小間隔為5分鐘，最大值為24小時。
-* **開始時間 (UTC) **，這表示第一次應執行索引子。
+* **開始時間（UTC）**，表示應該執行索引子的第一次。
 
 您可以在第一次建立索引子時指定排程，或稍後更新索引子的屬性。 您可以使用[入口網站](#portal)、 [REST API](#restApi)或[.net SDK](#dotNetSdk)來設定索引子排程。
 
@@ -44,7 +44,7 @@ ms.locfileid: "86143541"
 * 第三次執行排定在 UTC 上午10:00 開始，但當時仍在執行上一次。 然後會略過這個已排程的執行。 下次執行索引子時，將不會啟動到 11:00 AM UTC。
 
 > [!NOTE]
-> 如果索引子設定為特定的排程，但每次執行時重複地在同一份檔上失敗，則索引子將會以較不頻繁的間隔開始執行 (最多每 24) 小時一次，直到成功地再次執行進度為止。  如果您相信您已修正導致索引子停滯在某個時間點的任何問題，您可以依需求執行索引子，如果該作業成功，則索引子會再次回到其設定的排程間隔。
+> 如果索引子設定為特定排程，但每次執行時重複地在同一份檔上失敗，則索引子將會以較不頻繁的間隔（最多每24小時至少一次）開始執行，直到它再次成功進行。  如果您相信您已修正導致索引子停滯在某個時間點的任何問題，您可以依需求執行索引子，如果該作業成功，則索引子會再次回到其設定的排程間隔。
 
 <a name="portal"></a>
 
@@ -54,7 +54,7 @@ ms.locfileid: "86143541"
 
 如果您不想要讓索引子自動再次執行，**或每天執行**一次，您可以將排程設定變更為 [**一次**]。 如果您想要指定不同的間隔或特定的未來開始時間，請將它設定為 [**自訂**]。
 
-當您將排程設定為 [**自訂**] 時，會顯示欄位，讓您指定**間隔**和**開始時間 (UTC) **。 允許的最短時間間隔為5分鐘，而最長為1440分鐘 (24 小時) 。
+當您將排程設定為 [**自訂**] 時，會顯示欄位，讓您指定**間隔**和**開始時間（UTC）**。 允許的最短時間間隔為5分鐘，最長為1440分鐘（24小時）。
 
    ![在匯入資料嚮導中設定索引子排程](media/search-howto-schedule-indexers/schedule-import-data.png "在匯入資料嚮導中設定索引子排程")
 

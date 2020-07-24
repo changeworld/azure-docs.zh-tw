@@ -4,12 +4,12 @@ description: 瞭解 Azure 監視器中的動作規則，以及如何設定和管
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.subservice: alerts
-ms.openlocfilehash: 573567386ba9cbaf8b36440fda5073f899fcdfc7
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 083db4ad046ee586f139309b62eedf0fcc2ffa6a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86112335"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045728"
 ---
 # <a name="action-rules-preview"></a>動作規則（預覽）
 
@@ -21,14 +21,13 @@ ms.locfileid: "86112335"
 
 ### <a name="suppression-of-alerts"></a>隱藏警示
 
-在許多情況下，隱藏警示產生的通知會很有用。 這些案例的範圍從在預定的維護期間，到在非上班時間顯示時隱藏。 例如，負責**ContosoVM**的小組想要隱藏近期週末的警示通知，因為**ContosoVM**正在進行規劃的維護。 
+在許多情況下，隱藏警示產生的通知會很有用。 這些案例的範圍從在預定的維護期間，到在非上班時間顯示時隱藏。 例如，負責**ContosoVM**的小組想要隱藏近期週末的警示通知，因為**ContosoVM**正在進行規劃的維護。
 
 雖然小組可以手動停用在**ContosoVM**上設定的每個警示規則（並在維護之後再次啟用），但它並不是一個簡單的程式。 動作規則可協助您以彈性地設定隱藏時段的功能，大規模定義警示抑制。 在上述範例中，小組可以在**ContosoVM**上定義一個動作規則，以隱藏週末的所有警示通知。
 
-
 ### <a name="actions-at-scale"></a>大規模動作
 
-雖然警示規則可協助您定義在產生警示時觸發的動作群組，但客戶在其作業範圍內通常會有共同的動作群組。 例如，負責資源群組**ContosoRG**的小組可能會針對**ContosoRG**中定義的所有警示規則定義相同的動作群組。 
+雖然警示規則可協助您定義在產生警示時觸發的動作群組，但客戶在其作業範圍內通常會有共同的動作群組。 例如，負責資源群組**ContosoRG**的小組可能會針對**ContosoRG**中定義的所有警示規則定義相同的動作群組。
 
 動作規則可協助您簡化此程式。 藉由定義大規模的動作，可以針對在設定的範圍上產生的任何警示觸發動作群組。 在上述範例中，小組可以在**ContosoRG**上定義一個動作規則，以針對在其中產生的所有警示觸發相同的動作群組。
 
@@ -37,11 +36,13 @@ ms.locfileid: "86112335"
 
 ## <a name="configuring-an-action-rule"></a>設定動作規則
 
+### <a name="portal"></a>[入口網站](#tab/portal)
+
 您可以從 Azure 監視器中的 [**警示**] 登陸頁面選取 [**管理動作**]，以存取此功能。 然後選取 **[動作規則（預覽）**]。 您可以從警示登陸頁面的儀表板中選取 [**動作規則（預覽）** ] 來存取規則。
 
 ![Azure 監視器登陸頁面中的動作規則](media/alerts-action-rules/action-rules-landing-page.png)
 
-選取 [ **+ 新增動作規則**]。 
+選取 [ **+ 新增動作規則**]。
 
 ![新增動作規則](media/alerts-action-rules/action-rules-new-rule.png)
 
@@ -49,7 +50,7 @@ ms.locfileid: "86112335"
 
 ![新增動作規則](media/alerts-action-rules/action-rules-alert-rule.png)
 
-您現在應該會看到建立動作規則的 [流程] 頁面。 設定下列元素： 
+您現在應該會看到建立動作規則的 [流程] 頁面。 設定下列元素：
 
 ![新增動作規則建立流程](media/alerts-action-rules/action-rules-new-rule-creation-flow.png)
 
@@ -61,9 +62,9 @@ ms.locfileid: "86112335"
 
 ### <a name="filter-criteria"></a>篩選準則
 
-此外，您還可以定義篩選器，將它們縮小到特定的警示子集。 
+此外，您還可以定義篩選器，將它們縮小到特定的警示子集。
 
-可用的篩選器是： 
+可用的篩選器是：
 
 * **嚴重性**：選取一或多個警示嚴重性的選項。 **嚴重性 = Sev1**表示動作規則適用于設定為 Sev1 的所有警示。
 * **監視服務**：以原始監視服務為基礎的篩選準則。 此篩選也是多重選取。 例如， **Monitor Service = "Application Insights"** 表示動作規則適用于所有以 Application Insights 為基礎的警示。
@@ -73,7 +74,7 @@ ms.locfileid: "86112335"
 * **描述**：根據描述定義字串比對的 RegEx （正則運算式）比對，定義為警示規則的一部分。 例如，「**描述」包含「生產**」將會比對在其描述中包含「生產」字串的所有警示。
 * **警示內容（承載）**：根據警示承載的警示內容欄位，定義字串相符的 RegEx 比對。 例如，**警示內容（承載）包含 ' computer-01 '** ，將會比對其裝載包含字串 "computer-01" 的所有警示。
 
-這些篩選器會彼此搭配使用。 例如，如果您將**資源類型 ' = 虛擬機器**和**嚴重性 ' = Sev0**，則只會針對您的 vm 篩選所有**Sev0**警示。 
+這些篩選器會彼此搭配使用。 例如，如果您將**資源類型 ' = 虛擬機器**和**嚴重性 ' = Sev0**，則只會針對您的 vm 篩選所有**Sev0**警示。
 
 ![動作規則篩選](media/alerts-action-rules/action-rules-new-rule-creation-flow-filters.png)
 
@@ -92,7 +93,7 @@ ms.locfileid: "86112335"
 
 #### <a name="action-group"></a>動作群組
 
-如果您在切換中選取 [**動作群組**]，請加入現有的動作群組，或建立一個新的群組。 
+如果您在切換中選取 [**動作群組**]，請加入現有的動作群組，或建立一個新的群組。
 
 > [!NOTE]
 > 您只能將一個動作群組與一個動作規則產生關聯。
@@ -104,7 +105,83 @@ ms.locfileid: "86112335"
 最後，設定動作規則的下列詳細資料：
 * 名稱
 * 儲存它的資源群組
-* 描述 
+* 說明
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+您可以使用[az monitor action-rule create](/cli/azure/ext/alertsmanagement/monitor/action-rule#ext-alertsmanagement-az-monitor-action-rule-create)命令，利用 Azure CLI 來建立動作規則。  `az monitor action-rule`參考只是 Azure 監視器的許多[Azure CLI 參考](/cli/azure/azure-cli-reference-for-monitor)的其中一個。
+
+### <a name="prepare-your-environment"></a>準備您的環境
+
+1. [安裝 Azure CLI](/cli/azure/install-azure-cli)
+
+   如果您想要的話，也可以使用 Azure Cloud Shell 來完成這篇文章中的步驟。  Azure Cloud Shell 是您透過瀏覽器使用的互動式 Shell 環境。  使用下列其中一種方法啟動 Cloud Shell：
+
+   - 前往來開啟 Cloud Shell[https://shell.azure.com](https://shell.azure.com)
+
+   - 在[Azure 入口網站](https://portal.azure.com)的右上角功能表列上，選取 [ **Cloud Shell** ] 按鈕
+
+1. 登入。
+
+   如果您使用的是 CLI 的本機安裝，請使用[az login 命令登](/cli/azure/reference-index#az-login)入。  請遵循您終端機上顯示的步驟，來完成驗證程序。
+
+    ```azurecli
+    az login
+    ```
+
+1. 安裝 `alertsmanagement` 擴充功能
+
+   此 `az monitor action-rule` 命令是核心 Azure CLI 的實驗性延伸模組。 深入瞭解[使用延伸](/cli/azure/azure-cli-extensions-overview?)模組中 Azure CLI 的延伸模組參考。
+
+   ```azurecli
+   az extension add --name alertsmanagement
+   ```
+
+   應該會出現下列警告。
+
+   ```output
+   The installed extension `alertsmanagement` is experimental and not covered by customer support.  Please use with discretion.
+   ```
+
+### <a name="create-action-rules-with-the-azure-cli"></a>使用 Azure CLI 建立動作規則
+
+如需瞭解必要和選擇性參數的詳細資訊，請參閱[az monitor action-rule create](/cli/azure/ext/alertsmanagement/monitor/action-rule#ext-alertsmanagement-az-monitor-action-rule-create)的 Azure CLI 參考內容。
+
+建立動作規則以隱藏資源群組中的通知。
+
+```azurecli
+az monitor action-rule create --resource-group MyResourceGroupName \
+                              --name MyNewActionRuleName \
+                              --location Global \
+                              --status Enabled \
+                              --rule-type Suppression \
+                              --scope-type ResourceGroup \
+                              --scope /subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/MyResourceGroupName \
+                              --suppression-recurrence-type Always \
+                              --alert-context Contains Computer-01 \
+                               --monitor-service Equals "Log Analytics"
+```
+
+建立動作規則，針對訂用帳戶中所有 Vm 上的所有 Sev4 警示，隱藏每個週末的通知。
+
+```azurecli
+az monitor action-rule create --resource-group MyResourceGroupName \
+                              --name MyNewActionRuleName \
+                              --location Global \
+                              --status Enabled \
+                              --rule-type Suppression \
+                              --severity Equals Sev4 \
+                              --target-resource-type Equals Microsoft.Compute/VirtualMachines \
+                              --suppression-recurrence-type Weekly \
+                              --suppression-recurrence 0 6 \
+                              --suppression-start-date 12/09/2018 \
+                              --suppression-end-date 12/18/2018 \
+                              --suppression-start-time 06:00:00 \
+                              --suppression-end-time 14:00:00
+
+```
+
+* * *
 
 ## <a name="example-scenarios"></a>範例案例
 
@@ -114,7 +191,7 @@ Contoso 想要在每個週末，針對訂用帳戶**ContosoSub**內所有 vm 的
 
 **解決方案：** 使用下列方式建立動作規則：
 * 範圍 = **ContosoSub**
-* 篩選條件
+* 篩選器
     * 嚴重性 = **Sev4**
     * 資源類型 =**虛擬機器**
 * [週期] 設為 [每週]，並核取 [**星期六**] 和 [**星期日**]
@@ -125,14 +202,14 @@ Contoso 想要在**ContosoSub**中，無限期地隱藏針對**電腦 01**所產
 
 **解決方案：** 使用下列方式建立動作規則：
 * 範圍 = **ContosoSub**
-* 篩選條件
+* 篩選器
     * 監視服務 = **Log Analytics**
     * 警示內容（承載）包含**Computer-01**
 * 隱藏專案設定為**從現在（一律）**
 
 ### <a name="scenario-3-action-group-defined-at-a-resource-group"></a>案例3：在資源群組中定義的動作群組
 
-Contoso 已[在訂用帳戶層級定義度量警示](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-overview#monitoring-at-scale-using-metric-alerts-in-azure-monitor)。 但它想要針對從資源群組**ContosoRG**產生的警示定義特別觸發的動作。
+Contoso 已[在訂用帳戶層級定義度量警示](./alerts-metric-overview.md#monitoring-at-scale-using-metric-alerts-in-azure-monitor)。 但它想要針對從資源群組**ContosoRG**產生的警示定義特別觸發的動作。
 
 **解決方案：** 使用下列方式建立動作規則：
 * 範圍 = **ContosoRG**
@@ -140,15 +217,39 @@ Contoso 已[在訂用帳戶層級定義度量警示](https://docs.microsoft.com/
 * 動作群組設定為**ContosoActionGroup**
 
 > [!NOTE]
-> *在動作規則中定義的動作群組和警示規則會獨立運作，而不會進行重復資料刪除。* 在稍早所述的案例中，如果為警示規則定義了動作群組，它會與動作規則中定義的動作群組一起觸發。 
+> *在動作規則中定義的動作群組和警示規則會獨立運作，而不會進行重復資料刪除。* 在稍早所述的案例中，如果為警示規則定義了動作群組，它會與動作規則中定義的動作群組一起觸發。
 
 ## <a name="managing-your-action-rules"></a>管理您的動作規則
+
+### <a name="portal"></a>[入口網站](#tab/portal)
 
 您可以從清單視圖中查看和管理您的動作規則：
 
 ![動作規則清單視圖](media/alerts-action-rules/action-rules-list-view.png)
 
 您可以從這裡選取其旁邊的核取方塊，以大規模啟用、停用或刪除動作規則。 當您選取 [動作規則] 時，其 [設定] 頁面隨即開啟。 此頁面可協助您更新動作規則的定義，並啟用或停用它。
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+您可以使用 Azure CLI 中的[az monitor action-rule](/cli/azure/ext/alertsmanagement/monitor)命令來查看和管理動作規則。
+
+在您使用 Azure CLI 來管理動作規則之前，請先使用設定[動作規則](#configuring-an-action-rule)中提供的指示來準備您的環境。
+
+```azurecli
+# List all action rules for a subscription
+az monitor action-rule list
+
+# Get details of an action rule
+az monitor action-rule show --resource-group MyResourceGroupName --name MyActionRuleName
+
+# Update an action rule.
+az monitor action-rule update --resource-group MyResourceGroupName --name MyActionRuleName --status Disabled
+
+# Delete an action rule.
+az monitor action-rule delete --resource-group MyResourceGroupName --name MyActionRuleName
+```
+
+* * *
 
 ## <a name="best-practices"></a>最佳作法
 
@@ -181,12 +282,12 @@ Contoso 已[在訂用帳戶層級定義度量警示](https://docs.microsoft.com/
 * 子集：例如，您所定義的警示規則是在訂用帳戶上，而動作規則則是在訂用帳戶內的資源群組上。
 * 超集合：例如，您所定義的警示規則是在資源群組上，而動作規則則是在包含資源群組的訂用帳戶上。
 * 交集：例如，您所定義的警示規則是在**VM1**和**VM2**上，而動作規則是在**VM2**和**VM3**上。
-    
+
 ![重迭動作規則](media/alerts-action-rules/action-rules-alert-rule-overlapping.png)
 
 ### <a name="can-i-see-the-alerts-that-have-been-suppressed-by-an-action-rule"></a>我可以看到動作規則已隱藏的警示嗎？
 
-在 [[警示清單] 頁面](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-managing-alert-instances)中，您可以選擇另一個稱為**隱藏狀態**的資料行。 如果警示實例的通知已隱藏，它會在清單中顯示該狀態。
+在 [[警示清單] 頁面](./alerts-managing-alert-instances.md)中，您可以選擇另一個稱為**隱藏狀態**的資料行。 如果警示實例的通知已隱藏，它會在清單中顯示該狀態。
 
 ![隱藏的警示實例](media/alerts-action-rules/action-rules-suppressed-alerts.png)
 
@@ -200,7 +301,7 @@ Contoso 已[在訂用帳戶層級定義度量警示](https://docs.microsoft.com/
 
    `action rule AR2 defined for VM2 and VM3 with action group AG1`
 
-針對 VM1 和 VM3 上的每個警示，動作群組 AG1 會觸發一次。 針對**VM2**上的每個警示，動作群組 AG1 會觸發兩次，因為動作規則不會刪除重複動作。 
+針對 VM1 和 VM3 上的每個警示，動作群組 AG1 會觸發一次。 針對**VM2**上的每個警示，動作群組 AG1 會觸發兩次，因為動作規則不會刪除重複動作。
 
 ### <a name="what-happens-if-i-have-a-resource-monitored-in-two-separate-action-rules-and-one-calls-for-action-while-another-for-suppression-for-example-vm2-in-the-following-scenario"></a>如果我的資源是在兩個不同的動作規則中進行監視，而另一項動作是針對抑制而執行，則會發生什麼事？ 例如，下列案例中的**VM2** ：
 
@@ -208,7 +309,7 @@ Contoso 已[在訂用帳戶層級定義度量警示](https://docs.microsoft.com/
 
    `action rule AR2 defined for VM2 and VM3 with suppression`
 
-針對 VM1 上的每個警示，動作群組 AG1 會觸發一次。 VM2 和 VM3 上的每個警示的動作和通知都會隱藏起來。 
+針對 VM1 上的每個警示，動作群組 AG1 會觸發一次。 VM2 和 VM3 上的每個警示的動作和通知都會隱藏起來。
 
 ### <a name="what-happens-if-i-have-an-alert-rule-and-an-action-rule-defined-for-the-same-resource-calling-different-action-groups-for-example-vm1-in-the-following-scenario"></a>如果我針對呼叫不同動作群組的相同資源定義了警示規則和動作規則，會發生什麼事？ 例如，下列案例中的**VM1** ：
 
@@ -216,8 +317,8 @@ Contoso 已[在訂用帳戶層級定義度量警示](https://docs.microsoft.com/
 
    `action rule AR1 defined for VM1 with action group AG1`
 
-針對 VM1 上的每個警示，動作群組 AG1 會觸發一次。 每次觸發警示規則 "rule1" 時，它也會另外觸發 AG2。 在動作規則中定義的動作群組和警示規則會獨立運作，而不會進行重復資料刪除。 
+針對 VM1 上的每個警示，動作群組 AG1 會觸發一次。 每次觸發警示規則 "rule1" 時，它也會另外觸發 AG2。 在動作規則中定義的動作群組和警示規則會獨立運作，而不會進行重復資料刪除。
 
 ## <a name="next-steps"></a>後續步驟
 
-- [深入瞭解 Azure 中的警示](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview)
+- [深入瞭解 Azure 中的警示](./alerts-overview.md)

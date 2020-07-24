@@ -1,5 +1,5 @@
 ---
-title: 針對 Synapse SQL 集區設計 ELT，而不是 ETL |Microsoft Docs
+title: 設計 SQL 集區的 PolyBase 資料載入策略
 description: 不使用 ETL，而是設計用於載入資料或 SQL 集區的「解壓縮」、「載入」和「轉換」（ELT）流程。
 services: synapse-analytics
 author: kevinvngo
@@ -10,16 +10,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 49ffb848dbcbed72776a5d767bb4b4872978af20
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: ca1f535c7f2d949e1f71a06ba9efab2818ee0201
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965458"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046768"
 ---
 # <a name="designing-a-polybase-data-loading-strategy-for-azure-synapse-sql-pool"></a>設計 Azure Synapse SQL 集區的 PolyBase 資料載入策略
 
-傳統 SMP 資料倉儲會使用擷取、轉換和載入 (ETL) 程序來載入資料。 Azure SQL 集區是大規模的平行處理（MPP）架構，可利用計算和儲存體資源的擴充性和彈性。 運用擷取、載入及轉換 (ELT) 程序可以利用 MPP，而且不需要載入之前轉換資料的資源。
+傳統 SMP 資料倉儲會使用「解壓縮」、「轉換」和「載入」（ETL）處理常式來載入資料。 Azure SQL 集區是大規模的平行處理（MPP）架構，可利用計算和儲存體資源的擴充性和彈性。 使用解壓縮、載入和轉換（ELT）程式可以利用 MPP，並排除在載入之前轉換資料所需的資源。
 
 雖然 SQL 集區支援許多載入方法，包括 BCP 和 SQL BulkCopy API 之類的非 Polybase 選項，但最快速且可調整的方式是透過 PolyBase 來載入日期。  PolyBase 是一種技術，能夠透過 T-SQL 語言存取在 Azure Blob 儲存體或 Azure Data Lake Store 中儲存的外部資料。
 
@@ -27,7 +27,7 @@ ms.locfileid: "85965458"
 
 ## <a name="what-is-elt"></a>什麼是 ELT?
 
-擷取、載入及轉換 (ELT) 是從來源系統擷取資料、載入至資料倉儲再進行轉換的程序。
+「解壓縮」、「載入」和「轉換」（ELT）是一種程式，可讓資料從來源系統中解壓縮、載入資料倉儲，然後進行轉換。
 
 針對 SQL 集區執行 PolyBase ELT 的基本步驟如下：
 
@@ -95,7 +95,7 @@ PolyBase 會從 UTF-8 和 UTF-16 編碼分隔符號文字檔載入資料。 除�
 
 在您可以載入資料之前，您必須在您的資料倉儲中定義外部資料表。 PolyBase 使用外部資料表以定義及存取 Azure 儲存體中的資料。 外部資料表類似於資料表檢視。 外部資料表包含資料表結構描述，並指向儲存在資料倉儲外部的資料。
 
-定義外部資料表牽涉到指定資料來源、文字檔格式和資料表定義。 以下是您需要的 T-SQL 語法主題：
+定義外部資料表牽涉到指定資料來源、文字檔格式和資料表定義。 以下是您需要的 T-sql 語法主題：
 
 - [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)

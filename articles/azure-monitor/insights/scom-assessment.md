@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2018
-ms.openlocfilehash: 94251dfa2d9fa732912ed20d825e64f542d79188
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b71c6d8e0890bde377fae761f4486803229ceff4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80055420"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045690"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>使用 System Center Operations Manager 健康情況檢查 (預覽) 解決方案進行環境最佳化
 
@@ -64,7 +64,7 @@ System Center Operations Manager 健全狀況檢查解決方案會從下列來�
 
 ## <a name="operations-manager-run-as-accounts-for-log-analytics"></a>Log Analytics 的 Operations Manager 執行身分帳戶
 
-Log Analytics 會建立工作負載的管理套件以提供加值服務。 每個工作負載都需要具有特定的工作負載權限，才能在不同的安全性內容中執行管理套件，例如網域使用者帳戶。 請使用具特殊權限的認證設定 Operations Manager 執行身分帳戶。 如需詳細資訊，請參閱 Operations Manager 文件中的[如何建立執行身分帳戶](https://technet.microsoft.com/library/hh321655(v=sc.12).aspx)。
+Log Analytics 會建立工作負載的管理套件以提供加值服務。 每個工作負載都需要具有特定的工作負載權限，才能在不同的安全性內容中執行管理套件，例如網域使用者帳戶。 請使用具特殊權限的認證設定 Operations Manager 執行身分帳戶。 如需詳細資訊，請參閱 Operations Manager 文件中的[如何建立執行身分帳戶](/previous-versions/system-center/system-center-2012-R2/hh321655(v=sc.12))。
 
 請使用下列資訊來設定 System Center Operations Manager 健康情況檢查的 Operations Manager 執行身分帳戶。
 
@@ -147,7 +147,7 @@ ALTER ROLE [db_owner] ADD MEMBER [UserName]
 
 System Center Operations Manager 健全狀況檢查解決方案的管理元件包含名為*Microsoft System Center Operations Manager 執行健康情況檢查規則*的規則。 此規則負責執行健康情況檢查。 若要啟用規則和設定頻率，請使用下列程序。
 
-根據預設，Microsoft System Center Operations Manager 執行健全狀況檢查規則已停用。 若要執行健康情況檢查，您必須在管理伺服器上啟用此規則。 請使用下列步驟。
+根據預設，Microsoft System Center Operations Manager 執行健全狀況檢查規則已停用。 若要執行健康情況檢查，您必須在管理伺服器上啟用此規則。 使用下列步驟。
 
 #### <a name="enable-the-rule-for-a-specific-management-server"></a>針對特定的管理伺服器啟用此規則
 

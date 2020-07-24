@@ -12,15 +12,16 @@ ms.topic: article
 ms.date: 04/29/2020
 ms.author: juliako
 ms.custom: ''
-ms.openlocfilehash: 57a8d308955719be0d84b87fb3a23c6f510c2836
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3669919a8ddf4ffcbcf0d3e7e060c62f4c8df1c6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84234888"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87039137"
 ---
 # <a name="use-the-content-aware-encoding-preset-to-find-the-optimal-bitrate-value-for-a-given-resolution"></a>使用「內容感知編碼」預設來尋找給定解析的最佳位元速率值
 
-為了準備以彈性[位元速率串流](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)傳遞內容，必須以多個位元速率（高至低）編碼影片。 這可確保品質的正常降低，因為位元速率會降低，因此是影片的解析度。 這種多位元率編碼會使用所謂的編碼階梯–一份解析度和位元速率表，請參閱媒體服務[內建的編碼](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset)預設值。
+為了準備以彈性[位元速率串流](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)傳遞內容，必須以多個位元速率（高至低）編碼影片。 這可確保品質的正常降低，因為位元速率會降低，因此是影片的解析度。 這種多位元率編碼會使用所謂的編碼階梯–一份解析度和位元速率表，請參閱媒體服務[內建的編碼](/rest/api/media/transforms/createorupdate#encodernamedpreset)預設值。
 
 您應該留意正在處理的內容，並自訂/微調編碼階梯，以獲得個別影片的複雜性。 每次解決時，都有比得品質還差的位元速率，編碼器會以此最佳位元速率值運作。 下一個優化層級是根據內容來選取解析度–例如，PowerPoint 簡報的影片無法從以下的720p 中獲益。 接下來，編碼器可能會負責將影片中每個拍照的設定優化。 
 
@@ -81,7 +82,7 @@ TransformOutput[] output = new TransformOutput[]
 ## <a name="next-steps"></a>後續步驟
 
 * [教學課程：使用媒體服務 v3 上傳、編碼和串流影片](stream-files-tutorial-with-api.md)
-* [教學課程：根據 URL 編碼遠端檔案和串流影片-REST](stream-files-tutorial-with-rest.md)
+* [教學課程：編碼以 URL 為基礎的遠端檔案及串流處理影片 - REST](stream-files-tutorial-with-rest.md)
 * [教學課程：根據 URL 編碼遠端檔案和串流影片-CLI](stream-files-cli-quickstart.md)
 * [教學課程：根據 URL 編碼遠端檔案和串流影片-.NET](stream-files-dotnet-quickstart.md)
 * [教學課程：根據 URL 編碼遠端檔案和串流影片-Node.js](stream-files-nodejs-quickstart.md)

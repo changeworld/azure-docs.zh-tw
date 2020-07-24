@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 5c038f0be31acea52c2ef07d43f0dbaf3434a371
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b40bc8521755fae08e851e5b324979d5798e3dcd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "64709519"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87042863"
 ---
 # <a name="encoding-error-codes"></a>編碼錯誤碼
 
-下表列出在編碼工作執行期間發生錯誤的情況下可能傳回的錯誤碼。  若要取得 .NET 程式碼中的錯誤詳細資料，請使用 [ErrorDetails](https://msdn.microsoft.com/library/microsoft.windowsazure.mediaservices.client.errordetail.aspx) 類別。 若要取得 REST 程式碼中的錯誤詳細資料，請使用 [ErrorDetail](https://msdn.microsoft.com/library/jj853026.aspx) REST API。
+下表列出在編碼工作執行期間發生錯誤的情況下可能傳回的錯誤碼。  若要取得 .NET 程式碼中的錯誤詳細資料，請使用 [ErrorDetails](/previous-versions/azure/jj126075(v=azure.100)) 類別。 若要取得 REST 程式碼中的錯誤詳細資料，請使用 [ErrorDetail](/rest/api/media/operations/errordetail) REST API。
 
 | ErrorDetail.Code | 導致發生錯誤的可能原因 |
 | --- | --- |
-| Unknown |執行工作時發生不明錯誤 |
+| 未知 |執行工作時發生不明錯誤 |
 | ErrorDownloadingInputAssetMalformedContent |涵蓋下載輸入資產中之錯誤 (例如無效的檔案名稱、長度為零檔案、錯誤格式等等) 的錯誤類別。 |
 | ErrorDownloadingInputAssetServiceFailure |涵蓋服務端問題 (例如下載時發生網路或儲存體錯誤) 的錯誤類別。 |
 | ErrorParsingConfiguration |工作 \<see cref="MediaTask.PrivateData"/> (設定) 無效時的錯誤類別，例如設定不是有效的系統預設或包含無效的 XML。 |

@@ -14,18 +14,19 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: f875b4a5c4f1322f4a992dc3738ab1ce6431149d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b28e200cab2edb4c1f603e4c67264cdc1c46d7f8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81641131"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87042850"
 ---
 # <a name="overview-of-live-streaming-using-media-services"></a>使用媒體服務之即時串流的概觀
 
 > [!NOTE]
-> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
+> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](../latest/index.yml)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 使用 Azure 媒體服務傳遞即時串流時，通常涉及下列元件：
 
@@ -76,14 +77,14 @@ ms.locfileid: "81641131"
 | 單一位元速率輸入會在雲端編碼為多重位元速率 |否 |是 |
 | 最大解析度、分層數目 |1080p、8 層、60+fps |720p、6 層、30 fps |
 | 輸入通訊協定 |RTMP、Smooth Streaming |RTMP、Smooth Streaming |
-| Price |請參閱 [定價頁面](https://azure.microsoft.com/pricing/details/media-services/) 並按一下 [即時影片] 索引標籤 |請參閱[定價頁面](https://azure.microsoft.com/pricing/details/media-services/) |
+| 價格 |請參閱 [定價頁面](https://azure.microsoft.com/pricing/details/media-services/) 並按一下 [即時影片] 索引標籤 |請參閱[定價頁面](https://azure.microsoft.com/pricing/details/media-services/) |
 | 最長執行時間 |全天候 |8 小時 |
 | 插入靜態圖像支援 |否 |是 |
 | 廣告訊號支援 |否 |是 |
-| 傳遞 CEA 608/708 字幕 |是 |Yes |
-| 支援未統一輸入的 GOP |Yes |否 – 輸入必須為固定式 2 秒 GOP |
-| 支援變動畫面播放速率輸入 |Yes |否 – 輸入必須為固定畫面播放速率。<br/>輕微的差異可以接受，例如：處於高速動態場景的情況。 但編碼器無法降至 10 個畫面/秒的標準。 |
-| 在輸入摘要遺失時自動關閉通道 |No |經過 12 個小時，如果沒有程式仍在執行 |
+| 傳遞 CEA 608/708 字幕 |是 |是 |
+| 支援未統一輸入的 GOP |是 |否 – 輸入必須為固定式 2 秒 GOP |
+| 支援變動畫面播放速率輸入 |是 |否 – 輸入必須為固定畫面播放速率。<br/>輕微的差異可以接受，例如：處於高速動態場景的情況。 但編碼器無法降至 10 個畫面/秒的標準。 |
+| 在輸入摘要遺失時自動關閉通道 |否 |經過 12 個小時，如果沒有程式仍在執行 |
 
 ## <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders-pass-through"></a>使用可從內部部署編碼器接收多位元速率即時串流的通道 (傳遞)
 
@@ -103,9 +104,9 @@ ms.locfileid: "81641131"
 
 ## <a name="description-of-a-channel-and-its-related-components"></a>通道和其相關元件的說明
 
-### <a name="channel"></a>通路
+### <a name="channel"></a>管道
 
-在媒體服務中， [通道](https://docs.microsoft.com/rest/api/media/operations/channel)負責處理即時資料流內容。 通道會提供輸入端點 (內嵌 URL)，接著您再提供給即時轉碼器。 通道從即時轉碼器接收即時輸入資料流，再透過一或多個 StreamingEndpoint 進行串流處理。 通道也會提供預覽端點 (預覽 URL)，您可在進一步處理和傳遞之前先用來預覽及驗證您的資料流。
+在媒體服務中， [通道](/rest/api/media/operations/channel)負責處理即時資料流內容。 通道會提供輸入端點 (內嵌 URL)，接著您再提供給即時轉碼器。 通道從即時轉碼器接收即時輸入資料流，再透過一或多個 StreamingEndpoint 進行串流處理。 通道也會提供預覽端點 (預覽 URL)，您可在進一步處理和傳遞之前先用來預覽及驗證您的資料流。
 
 您可在建立通道時取得內嵌 URL 和預覽 URL。 通道不需處於啟動狀態也可以取得這些 URL。 當您準備好要開始從即時轉碼器推播資料給通道時，就必須先啟動通道。 即時轉碼器開始內嵌資料後，您就可以預覽您的資料流。
 
@@ -114,7 +115,7 @@ ms.locfileid: "81641131"
 建立通道時，您可以使用下列其中一種格式來指定允許的 IP 位址：具有4個數字的 IpV4 位址、CIDR 位址範圍。
 
 ### <a name="program"></a>程式
-[程式](https://docs.microsoft.com/rest/api/media/operations/program)可讓您控制即時串流中區段的發行和儲存。 通道會管理程式。 通道和程式的關聯性非常類似於傳統媒體，此處的通道有常數內容資料流，而程式的範圍是該通道上的某些計時事件。
+[程式](/rest/api/media/operations/program)可讓您控制即時串流中區段的發行和儲存。 通道會管理程式。 通道和程式的關聯性非常類似於傳統媒體，此處的通道有常數內容資料流，而程式的範圍是該通道上的某些計時事件。
 您可以藉由設定**ArchiveWindowLength**屬性，指定您想要保留程式之錄製內容的時數。 此值最小可以設定為 5 分鐘，最大可以設定為 25 個小時。
 
 ArchiveWindowLength 也指定用戶端可從目前即時位置往回搜尋的最大時間量。 程式在超過指定的時間量後還是可以執行，但是會持續捨棄落後時間範圍長度的內容。 此屬性值也會決定用戶端資訊清單可以擴充的時間。
@@ -150,9 +151,9 @@ ArchiveWindowLength 也指定用戶端可從目前即時位置往回搜尋的最
 | 通道狀態 | 入口網站 UI 指標 | 會計費嗎？ |
 | --- | --- | --- |
 | 啟動中 |啟動中 |無 (暫時性狀態) |
-| 執行中 |就緒 (沒有執行中的程式)<br/>或<br/>串流 (至少一個執行中的程式) |YES |
+| 正在執行 |就緒 (沒有執行中的程式)<br/>或<br/>串流 (至少一個執行中的程式) |YES |
 | 停止中 |停止中 |無 (暫時性狀態) |
-| 已停止 |已停止 |No |
+| 已停止 |已停止 |否 |
 
 ## <a name="media-services-learning-paths"></a>媒體服務學習路徑
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

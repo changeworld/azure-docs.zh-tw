@@ -5,11 +5,12 @@ author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/18/2018
-ms.openlocfilehash: e635c243a887690fb1f7a5dcd017c1130d74a747
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 97c1819d665e6964343e853249a0d22aa07c3588
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81114589"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045579"
 ---
 # <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>使用 Azure 監視器建立、檢視及管理傳統計量警示
 
@@ -39,7 +40,7 @@ ms.locfileid: "81114589"
 
 9. 如果您使用 Azure 自動化，可以選取警示引發時執行的 Runbook。
 
-10. 選取 [確定]**** 可建立警示。
+10. 選取 [確定] 可建立警示。
 
 在幾分鐘之內，警示會開始作用，且先前所述觸發。
 
@@ -51,7 +52,7 @@ ms.locfileid: "81114589"
 
 ## <a name="with-azure-cli"></a>透過 Azure CLI
 
-先前幾節說明如何使用 Azure 入口網站建立、檢視及管理計量警示規則。 此節說明如何使用跨平台 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) 執行相同的作業。 開始使用 Azure CLI 最快的方式就是透過 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest)。
+先前幾節說明如何使用 Azure 入口網站建立、檢視及管理計量警示規則。 此節說明如何使用跨平台 [Azure CLI](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) 執行相同的作業。 開始使用 Azure CLI 最快的方式就是透過 [Azure Cloud Shell](../../cloud-shell/overview.md?view=azure-cli-latest)。
 
 ### <a name="get-all-classic-metric-alert-rules-in-a-resource-group"></a>取得資源群組中的所有傳統警示規則
 
@@ -87,7 +88,7 @@ az monitor alert delete --name <alert name> --resource-group <group name>
 
 此節示範如何使用 PowerShell 命令建立、檢視及管理傳統計量警示。文章中的範例說明針對傳統計量警示使用 Azure 監視器 Cmdlet 的方式。
 
-1. 設定要在電腦上執行的 PowerShell (如果您還未設定)。 如需詳細資訊，請參閱[如何安裝及設定 PowerShell](/powershell/azure/overview)。 您也可以在 [Azure 監視器 Cmdlet](https://docs.microsoft.com/powershell/module/az.applicationinsights) 檢閱整個 Azure 監視器 PowerShell Cmdlet 清單。
+1. 設定要在電腦上執行的 PowerShell (如果您還未設定)。 如需詳細資訊，請參閱[如何安裝及設定 PowerShell](/powershell/azure/)。 您也可以在 [Azure 監視器 Cmdlet](/powershell/module/az.applicationinsights) 檢閱整個 Azure 監視器 PowerShell Cmdlet 清單。
 
 2. 首先，登入您的 Azure 訂用帳戶。
 

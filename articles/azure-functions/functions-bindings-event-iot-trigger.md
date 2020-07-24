@@ -1,15 +1,16 @@
 ---
-title: Azure Functions 的 Azure IoT 中樞系結
+title: Azure Functions 的 Azure IoT 中樞觸發程式
 description: 瞭解如何在 Azure Functions 中回應傳送至 IoT 中樞事件資料流程的事件。
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
-ms.openlocfilehash: f63fe965b3f37add8ddf9d262f1ef1dae9fff966
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 25396da3fb9a4293633308bf2e9d3c6b3d07265d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77589723"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87041644"
 ---
 # <a name="azure-iot-hub-trigger-for-azure-functions"></a>Azure Functions 的 Azure IoT 中樞觸發程式
 
@@ -22,6 +23,6 @@ ms.locfileid: "77589723"
 
 [!INCLUDE [functions-bindings-event-hubs](../../includes/functions-bindings-event-hubs-trigger.md)]
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [將事件寫入事件資料流程（輸出系結）](./functions-bindings-event-iot-output.md)

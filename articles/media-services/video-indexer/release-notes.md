@@ -12,11 +12,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 06/02/2020
 ms.author: juliako
-ms.openlocfilehash: 5bd4c9aa3fde9e3fa596ce5a18b892edfab60af5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d7667f7c5194762b227c3cddd5bea5ed9d50a96e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84325060"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87042628"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure 媒體服務影片索引子版本資訊
 
@@ -28,6 +29,18 @@ ms.locfileid: "84325060"
 * 已知問題
 * 錯誤修正
 * 已被取代的功能
+
+## <a name="june-2020"></a>2020 年 6 月
+
+### <a name="search-by-topics"></a>依主題搜尋
+
+您現在可以使用搜尋 API 來搜尋包含特定主題的影片（僅限 API）。
+
+主題會加入做為 `textScope` （選擇性參數）的一部分。 如需詳細資訊，請參閱[API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Search-Videos) 。  
+
+### <a name="labels-enhancement"></a>標籤增強功能
+
+標籤標記已升級，現在包含更多可以識別的視覺標籤。
 
 ## <a name="may-2020"></a>2020 年 5 月
 

@@ -3,11 +3,12 @@ title: 影片播放-Azure
 description: 預留位置
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 1fc65a00b2aa1e82c5585583ee9e0ccb97e5168f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 17b1f93c18dfb013916c4c0d3756fb97a73e2675
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84260171"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87042964"
 ---
 # <a name="video-playback"></a>影片播放 
 
@@ -17,7 +18,7 @@ ms.locfileid: "84260171"
 * [IoT Edge 上的 Live Video Analytics 術語](terminology.md)
 * [媒體圖表概念](media-graph-concept.md)
 
-## <a name="overview"></a>總覽  
+## <a name="overview"></a>概觀  
 
 您可以使用[媒體圖形](media-graph-concept.md)，將影片錄製到 Azure 媒體服務[資產](terminology.md#asset)中。 在本檔中，您可以瞭解使用 Azure 媒體服務的現有串流功能來播放資產所需採取的步驟。
 
@@ -43,9 +44,9 @@ Azure 媒體服務提供您不同的方法來保護您的影片串流，如[使�
 
 如[media graph 檔案接收](media-graph-concept.md#file-sink)中所述，您可以使用媒體圖形，將影片記錄到 edge 裝置的本機檔案系統中，並使用 media graph 中的 file 接收。 File 接收[會產生有](https://developer.mozilla.org/docs/Web/Media/Formats/Containers#MP4)案的檔案，您可以使用 HTML5 [ &lt; video &gt; ](https://developer.mozilla.org/docs/Web/HTML/Element/video)元素來播放這類內容。 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-[Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/)
+[Azure IoT Edge](../../iot-edge/index.yml)
 <!--
 ## Next steps
 

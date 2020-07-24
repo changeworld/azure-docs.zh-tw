@@ -4,14 +4,14 @@ description: Azure 監視器計量警示和可能解決方案的常見問題。
 author: harelbr
 ms.author: harelbr
 ms.topic: reference
-ms.date: 07/15/2020
+ms.date: 07/21/2020
 ms.subservice: alerts
-ms.openlocfilehash: 0d569facb6c2b58222980cfa1488de3b1f5fb60f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 98cd7a4d31f4d7053426f44dd02a876759688cc7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86515762"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045229"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>針對 Azure 監視器計量警示中的問題進行疑難排解 
 
@@ -32,11 +32,11 @@ ms.locfileid: "86515762"
 
 2. 已**引發但沒有通知**-請檢查[引發的警示清單](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/alertsV2)，以查看是否可以找到引發的警示。 如果您可以在清單中看到警示，但有一些動作或通知發生問題，請參閱[這裡](./alerts-troubleshoot.md#action-or-notification-on-my-alert-did-not-work-as-expected)的詳細資訊。
 
-3. **已**在作用中-檢查您預期會收到警示的計量時間序列是否已引發警示。 計量警示是可設定狀態的，這表示一旦在特定計量時間序列上引發警示，就不會引發該時間序列上的其他警示，直到不再發現該問題為止。 這個設計選擇可減少雜訊。 當警示條件不符合三個連續的評估時，就會自動解決警示。
+3. **已**在作用中-檢查您預期會收到警示的計量時間序列是否已引發警示。 計量警示是可設定狀態的，這表示在特定計量時間序列上引發警示後，將不會引發該時間序列上的其他警示，直到不再觀察到問題為止。 這個設計選擇可減少雜訊。 當警示條件不符合三個連續的評估時，就會自動解決警示。
 
-4. **使用的維度**-如果您已選取計量[的某些維度值](./alerts-metric-overview.md#using-dimensions)，警示規則會監視每個個別的計量時間序列（如維度值的組合所定義）是否有閾值缺口。 若要同時監視匯總計量時間序列（未選取任何維度），請在 [度量] 上設定其他警示規則，而不選取維度。
+4. **使用的維度**-如果您已選取計量[的某些維度值](./alerts-metric-overview.md#using-dimensions)，警示規則會監視每個個別的計量時間序列（如維度值的組合所定義），以達到閾值缺口。 若要同時監視匯總計量時間序列（未選取任何維度），請在 [度量] 上設定其他警示規則，而不選取維度。
 
-5. **匯總和時間細微性**-如果您要使用[計量圖表](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/metrics)視覺化度量，請確定：
+5. **匯總和時間細微性**-如果您要使用[計量圖表](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/metrics)將度量視覺化，請確定：
     * 度量圖表中選取的**匯總**與您的警示規則中的**匯總類型**相同
     * 選取的**時間細微性**與警示規則中的**匯總資料細微性（期間）** 相同（而不是設定為 [自動]）
 
@@ -47,7 +47,7 @@ ms.locfileid: "86515762"
 1. 檢查[引發的警示清單](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/alertsV2)以找出引發的警示，然後按一下以查看其詳細資料。 請參閱 [為什麼會**引發此警示？** ] 底下所提供的資訊，以查看觸發警示時的計量圖表、計量**值**和**臨界值**。
 
     > [!NOTE] 
-    > 如果您使用動態閾值條件類型，而且認為使用的閾值不正確，請使用不悅圖示來提供意見反應。 此意見反應將會影響機器學習演算法研究，並協助改善未來的偵測。
+    > 如果您使用動態閾值條件類型，並認為所使用的臨界值不正確，請使用苦臉圖示提供意見反應。 此意見反應將會影響機器學習演算法研究，並協助改善未來的偵測。
 
 2. 如果您已針對計量選取多個維度值，當**任何**計量時間序列（如維度值組合所定義）違反閾值時，就會觸發警示。 如需在計量警示中使用維度的詳細資訊，請參閱[此處](./alerts-metric-overview.md#using-dimensions)。
 
@@ -67,7 +67,7 @@ ms.locfileid: "86515762"
 
 ## <a name="cant-find-the-metric-to-alert-on---virtual-machines-guest-metrics"></a>找不到警示虛擬機器來賓計量的度量
 
-若要對虛擬機器（例如記憶體、磁碟空間）的客體作業系統計量發出警示，請確定您已安裝必要的代理程式來收集此資料，以 Azure 監視器計量：
+若要對虛擬機器的客體作業系統計量發出警示（例如：記憶體、磁碟空間），請確定您已安裝必要的代理程式來收集此資料，以 Azure 監視器計量：
 - [針對 Windows VM](./collect-custom-metrics-guestos-resource-manager-vm.md)
 - [針對 Linux VM](./collect-custom-metrics-linux-telegraf.md)
 
@@ -106,6 +106,29 @@ ms.locfileid: "86515762"
 > [!NOTE] 
 > 將計量警示規則設為無狀態，可防止引發的警示變成已解決，因此即使在不符合條件的情況下，引發的警示仍會維持在已引發狀態，直到30天的保留期限為止。
 
+## <a name="define-an-alert-rule-on-a-custom-metric-that-isnt-emitted-yet"></a>針對尚未發出的自訂計量定義警示規則
+
+建立計量警示規則時，系統會根據計量[定義 API](https://docs.microsoft.com/rest/api/monitor/metricdefinitions/list)來驗證計量名稱，以確保它存在。 在某些情況下，您會想要建立自訂計量的警示規則，即使在發出之前也一樣。 例如，建立（使用 ARM 範本）時，會發出自訂計量的 Application Insights 資源，以及監視該度量的警示規則。
+
+若要避免在嘗試驗證自訂計量的定義時部署失敗，您可以在警示規則的 [準則] 區段中使用*skipMetricValidation*參數，這會導致略過計量驗證。 請參閱下列範例，以瞭解如何在 ARM 範本中使用此參數（如需建立計量警示規則的完整 ARM 範本範例，請參閱[這裡]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates)）。
+
+```json
+"criteria": {
+    "odata.type": "Microsoft.Azure.Monitor.SingleResourceMultipleMetricCriteria",
+        "allOf": [
+            {
+                    "name" : "condition1",
+                        "metricName": "myCustomMetric",
+                "metricNamespace": "myCustomMetricNamespace",
+                        "dimensions":[],
+                        "operator": "GreaterThan",
+                        "threshold" : 10,
+                        "timeAggregation": "Average",
+                    "skipMetricValidation": true
+        }
+              ]
+        }
+```
 
 ## <a name="metric-alert-rules-quota-too-small"></a>度量警示規則配額太小
 
@@ -133,7 +156,7 @@ ms.locfileid: "86515762"
 3. 請確定不會篩選至特定的資源群組、資源類型或資源
 4. 在 [**信號類型**] 下拉式控制項中，選取 [**計量**]
 5. 確認 [**狀態**] 下拉式清單控制項已設定為 [**已啟用**]
-6. 計量警示規則總數會顯示在規則清單上方
+6. 計量警示規則總數會顯示在 [警示規則] 清單上方
 
 ### <a name="from-api"></a>從 API
 
@@ -152,18 +175,18 @@ ms.locfileid: "86515762"
 
 ### <a name="rest-api"></a>REST API
 
-檢閱 [REST API 指南](/rest/api/monitor/metricalerts/)，確保您將正確地傳遞所有參數
+請參閱[REST API 指南](/rest/api/monitor/metricalerts/)，確認您是否正確地傳遞所有參數
 
 ### <a name="powershell"></a>PowerShell
 
-請確定您使用正確的 PowerShell Cmdlet 來進行計量警示：
+請確定您使用的是正確的 PowerShell Cmdlet 來進行計量警示：
 
 - 計量警示的 PowerShell Cmdlet 可在 [Az.Monitor 模組](/powershell/module/az.monitor/?view=azps-3.6.1)中取得
 - 針對新的（非傳統）計量警示（例如， [AzMetricAlertRuleV2](/powershell/module/az.monitor/add-azmetricalertrulev2?view=azps-3.6.1)），請務必使用以 ' V2 ' 結尾的 Cmdlet
 
 ### <a name="azure-cli"></a>Azure CLI
 
-請確定您使用適用于計量警示的正確 CLI 命令：
+請確定您使用的是適用于計量警示的正確 CLI 命令：
 
 - 計量警示的 CLI 命令會以 `az monitor metrics alert` 開頭。 請檢閱 [Azure CLI 參考](/cli/azure/monitor/metrics/alert?view=azure-cli-latest)以了解語法。
 - 您會看到[說明如何使用計量警示 CLI 的範例](./alerts-metric.md#with-azure-cli)
@@ -175,9 +198,9 @@ ms.locfileid: "86515762"
 
    - 針對平臺計量：請確定您使用[的是 [Azure 監視器支援的計量] 頁面](./metrics-supported.md)中的 [**度量**] 名稱，而不是 [**度量] 顯示名稱**
 
-   - 針對自訂計量：確定已發出計量（您無法針對尚未存在的自訂計量建立警示規則），並提供自訂度量的命名空間（請參閱[這裡](./alerts-metric-create-templates.md#template-for-a-static-threshold-metric-alert-that-monitors-a-custom-metric)的 ARM 範本範例）
+   - 若為自訂計量：請確定已發出計量（您無法在尚未存在的自訂計量上建立警示規則），而且您要提供自訂計量的命名空間（請參閱[這裡](./alerts-metric-create-templates.md#template-for-a-static-threshold-metric-alert-that-monitors-a-custom-metric)的 ARM 範本範例）
 
-- 如果您要建立[記錄的計量警示](./alerts-metric-logs.md)，請確實包含適當的相依性。 請參閱[範例範本](./alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs)。
+- 如果您要建立[記錄的計量警示](./alerts-metric-logs.md)，請確保包含適當的相依性。 請參閱[範例範本](./alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs)。
 
 - 如果您要建立包含多個準則的警示規則，請注意下列條件約束：
 
@@ -197,7 +220,7 @@ ms.locfileid: "86515762"
 
 ## <a name="naming-restrictions-for-metric-alert-rules"></a>計量警示規則的命名限制
 
-請注意計量警示規則名稱的下列限制：
+請考慮計量警示規則名稱的下列限制：
 
 - 計量警示規則名稱一經建立，即無法變更（重新命名）
 - 度量警示規則名稱在資源群組內必須是唯一的
@@ -209,11 +232,11 @@ ms.locfileid: "86515762"
 
 計量警示支援多維度度量的警示，以及定義多個條件的支援（每個警示規則最多5個條件）。
 
-在包含多個條件的警示規則中使用維度時，請注意下列條件約束：
-1. 在每個條件中，您只能為每個維度選取一個值。
-2. 您不能使用 [選取所有目前和未來的值] 選項（選取 \* ）。
-3. 當不同條件中設定的計量支援相同的維度時，就必須以相同的方式，針對所有這些計量（在相關的條件中）明確設定已設定的維度值。
-例如：
+在包含多個條件的警示規則中使用維度時，請考慮下列條件約束：
+- 在每個條件中，您只能為每個維度選取一個值。
+- 您不能使用 [選取所有目前和未來的值] 選項（選取 \* ）。
+- 當不同條件中設定的計量支援相同的維度時，就必須以相同的方式，針對所有這些計量（在相關的條件中）明確設定已設定的維度值。
+例如:
     - 請考慮在儲存體帳戶上定義的度量警示規則，並監視兩個條件：
         * 總**交易**數 > 5
         * 平均**SuccessE2ELatency** > 250 毫秒

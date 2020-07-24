@@ -8,11 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: memildin
-ms.openlocfilehash: 76bf38c9d15e977b39922fdfbc7d30f533707cda
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5f558aaa367d156a8a4fa8633f113c6480236f5b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85801371"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038609"
 ---
 # <a name="monitor-the-security-of-your-containers"></a>監視容器的安全性
 
@@ -35,13 +36,11 @@ ms.locfileid: "85801371"
 
 1. 若要觸發映射掃描，請將其推送至您的登錄。 
 
-    當掃描完成時（通常在大約10分鐘之後），資訊安全中心建議中會提供結果。
-    
+    當掃描完成時（通常是大約2分鐘，但最長可達15分鐘），結果會以資訊安全中心建議的形式提供，如下所示：
 
 1. 若要查看結果，請移至 [**建議**] 頁面。 如果發現問題，您將會看到下列建議：
 
     ![補救問題的建議 ](media/monitor-container-security/acr-finding.png)
-
 
 1. 選取建議。 
     [建議詳細資料] 頁面隨即開啟，其中包含其他資訊。 這項資訊包括具有易受攻擊的映射（「受影響的資源」）和補救步驟的登錄清單。 
@@ -125,7 +124,7 @@ ms.locfileid: "85801371"
 
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 在本文中，您已瞭解如何使用資訊安全中心的容器安全性功能。 
 

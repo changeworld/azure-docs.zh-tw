@@ -2,13 +2,13 @@
 title: 設定 QnA Maker 服務-QnA Maker
 description: 您必須先在 Azure 中設定 QnA Maker 服務，才能建立任何 QnA Maker 知識庫。 任何具備授權而可在訂用帳戶中建立新資源的人，皆可建立 QnA Maker 服務。
 ms.topic: conceptual
-ms.date: 05/28/2020
-ms.openlocfilehash: 0a1b79c91e4e1bd9a57d6dcbb38432125573b9e6
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.date: 07/13/2020
+ms.openlocfilehash: 7ba8134f58a4f0e4e26a3246a44574df295e3c20
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85214123"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87040382"
 ---
 # <a name="manage-qna-maker-resources"></a>管理 QnA Maker 資源
 
@@ -62,7 +62,7 @@ ms.locfileid: "85214123"
 
 ## <a name="find-authoring-keys-in-the-azure-portal"></a>在 Azure 入口網站中尋找撰寫金鑰
 
-您可以從建立 QnA Maker 資源的 Azure 入口網站，來查看和重設您的撰寫金鑰。 這些金鑰可能稱為「訂用帳戶金鑰」。 
+您可以從建立 QnA Maker 資源的 Azure 入口網站，來查看和重設您的撰寫金鑰。 這些金鑰可能稱為「訂用帳戶金鑰」。
 
 1. 移至 Azure 入口網站中的 QnA Maker 資源，然後選取具有_認知服務_類型的資源：
 
@@ -90,7 +90,11 @@ ms.locfileid: "85214123"
     >[!NOTE]
     >如果您認為金鑰已遭盜用，請重新整理。 為此，您可能需要對用戶端應用程式或 Bot 程式碼進行對應的變更。
 
-## <a name="upgrade-qna-maker-sku"></a>升級 QnA Maker SKU
+### <a name="update-the-resources"></a>更新資源
+
+瞭解如何升級知識庫所使用的資源。
+
+### <a name="upgrade-qna-maker-sku"></a>升級 QnA Maker SKU
 
 當您想要在您的知識庫中有更多問題和答案，而不是您目前的層級，請升級您的 QnA Maker 服務定價層。
 
@@ -104,7 +108,7 @@ ms.locfileid: "85214123"
 
     ![QnA Maker 價格](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-pricing-page.png)
 
-## <a name="upgrade-app-service"></a>升級 App Service
+### <a name="upgrade-app-service"></a>升級 App Service
 
  當您的知識庫需要服務來自用戶端應用程式的更多要求時，請升級您的 App Service 定價層。
 
@@ -114,11 +118,11 @@ ms.locfileid: "85214123"
 
 ![QnA Maker App Service 規模](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-scale.png)
 
-## <a name="upgrade-the-azure-cognitive-search-service"></a>升級 Azure 認知搜尋服務
+### <a name="upgrade-the-azure-cognitive-search-service"></a>升級 Azure 認知搜尋服務
 
 如果您打算有許多知識庫，請升級您的 Azure 認知搜尋服務定價層。
 
-目前，您無法執行 Azure 搜尋服務 SKU 的就地升級。 不過，您可以使用所需的 SKU 建立新的 Azure 搜尋服務資源，並將資料還原到新的資源，然後再將新的資源連結至 QnA Maker 堆疊。 若要這樣做，請執行下列步驟：
+目前，您無法執行 Azure 搜尋服務 SKU 的就地升級。 不過，您可以使用所需的 SKU 建立新的 Azure 搜尋服務資源，並將資料還原到新的資源，然後再將新的資源連結至 QnA Maker 堆疊。 若要這樣做，請遵循下列步驟：
 
 1. 在 Azure 入口網站中建立新的 Azure 搜尋服務資源，然後選取所需的 SKU。
 
@@ -163,7 +167,11 @@ QnAMaker 執行時間是您在 Azure 入口網站中[建立 QnAMaker 服務](./s
 
     ![重新開機 QnAMaker App Service 實例](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-restart.png)
 
-## <a name="configure-qna-maker-to-use-different-cognitive-search-resource"></a>設定 QnA Maker 以使用不同的認知搜尋資源
+## <a name="cognitive-search-consideration"></a>認知搜尋考慮
+
+認知搜尋是個別的資源，有一些您應該注意的不同設定。
+
+### <a name="configure-qna-maker-to-use-different-cognitive-search-resource"></a>設定 QnA Maker 以使用不同的認知搜尋資源
 
 如果您透過入口網站建立 QnA 服務及其相依性（例如搜尋），系統就會為您建立搜尋服務，並連結至 QnA Maker 服務。 建立這些資源之後，您可以更新 App Service 設定，以使用先前現有的搜尋服務，並移除您剛建立的搜尋服務。
 
@@ -192,6 +200,34 @@ QnA Maker 的**App Service**資源會使用認知搜尋資源。 為了變更 Qn
 
 深入瞭解如何設定 App Service[應用程式設定](../../../app-service/configure-common.md#configure-app-settings)。
 
+### <a name="configuring-cognitive-search-as-a-private-endpoint-inside-a-vnet"></a>將認知搜尋設定為 VNET 內的私用端點
+
+在建立 QnA Maker 資源期間建立搜尋實例時，您可以強制認知搜尋，以支援完全在客戶的 VNet 內建立的私用端點設定。
+
+所有資源都必須在相同區域中建立，才能使用私用端點。
+
+* QnA Maker 資源
+* 新的認知搜尋資源
+* 新增虛擬網路資源
+
+在[Azure 入口網站](https://portal.azure.com)中，完成下列步驟：
+
+1. 建立[QnA Maker 資源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)。
+1. 建立新的認知搜尋資源，並將端點連線（資料）設定為 [_私人_]。 在與步驟1中建立的 QnA Maker 資源相同的區域中建立資源。 深入瞭解如何[建立認知搜尋資源](../../../search/search-create-service-portal.md)，然後使用此連結直接移至資源的 [[建立] 頁面](https://ms.portal.azure.com/#create/Microsoft.Search)。
+1. 建立新的[虛擬網路資源](https://ms.portal.azure.com/#create/Microsoft.VirtualNetwork-ARM)。
+1. 在此程式的步驟1中建立的 App service 資源上設定 VNET。
+    1. 針對在步驟2中建立的新認知搜尋資源，在 VNET 中建立新的 DNS 專案。 到認知搜尋的 IP 位址。
+1. [將 App service 與在步驟2中建立的新認知搜尋資源建立關聯](#configure-qna-maker-to-use-different-cognitive-search-resource)。 然後，您可以刪除在步驟1中建立的原始認知搜尋資源。
+
+在[QnA Maker 入口網站](https://www.qnamaker.ai/)中，建立您的第一個知識庫。
+
+
+### <a name="inactivity-policy-for-free-search-resources"></a>免費搜尋資源的無活動原則
+
+如果您不是使用 QnA maker 資源，則應該移除所有資源。 如果您未移除未使用的資源，當您建立免費的搜尋資源時，您的知識庫將會停止運作。
+
+免費搜尋資源會在90天后刪除，而不會收到 API 呼叫。
+
 ## <a name="configure-app-service-idle-setting-to-avoid-timeout"></a>設定 App service 閒置設定以避免超時
 
 應用程式服務（為已發佈的知識庫提供 QnA Maker 的預測執行時間）具有閒置的 timeout 設定，其預設會在服務閒置時自動超時。 就 QnA Maker 而言，這表示您的預測執行時間 generateAnswer API 偶爾會在沒有流量的期間結束。
@@ -207,14 +243,24 @@ QnA Maker 的**App Service**資源會使用認知搜尋資源。 為了變更 Qn
     > ![在 [設定] 窗格中，選取 [一般設定]，然後尋找 * * [永遠開啟]，並選取 * * On * * 作為值。](../media/qnamaker-how-to-upgrade-qnamaker/configure-app-service-idle-timeout.png)
 
 1. 選取 [**儲存**] 以儲存設定。
-1. 系統會詢問您是否要重新開機應用程式，以使用新的設定。 選取 [繼續]。
+1. 系統會詢問您是否要重新開機應用程式，以使用新的設定。 選取 \[繼續\]。
 
 深入瞭解如何設定 App Service[一般設定](../../../app-service/configure-common.md#configure-general-settings)。
-## <a name="configure-app-service-environment-to-host-qna-maker-app-service"></a>設定 App Service 環境以裝載 Qna Maker App Service
+
+## <a name="configure-app-service-environment-to-host-qna-maker-app-service"></a>設定 App Service 環境以裝載 QnA Maker App Service
 App Service 環境可以用來裝載 QnA Maker App Service。 如果 App Service 環境為內部，則您需要遵循下列步驟：
-1. 建立 app service 和 azure 搜尋服務。
-2. 在公用 DNS 上公開應用程式服務，並將 QnA Maker 服務標籤的白名單： CognitiveServicesManagement，或讓它保持網際網路面向。
-3. 使用 Azure Resource Manager 建立 QnA Maker 認知服務實例（CognitiveServices/帳戶），其中 QnA Maker 端點應設定為 App Service 環境。 
+1. 建立 App service 和 Azure 搜尋服務。
+2. 公開 app service 並允許 QnA Maker 可用性，如下所示：
+    * 公開可用-預設
+    * DNS 服務標籤：
+        * `CognitiveServicesManagement`
+    * 與 QnA Maker 相關聯的 Ip 是：
+        * 13.91.138.229
+        * 40.88.22.25
+        * 13.86.184.142
+        * 20.185.105.28
+        * 13.86.178.10
+1. 使用 Azure Resource Manager 建立 QnA Maker 認知服務實例（CognitiveServices/帳戶），其中 QnA Maker 端點應設定為 App Service 環境。
 
 ## <a name="business-continuity-with-traffic-manager"></a>流量管理員的業務持續性
 
@@ -243,7 +289,7 @@ App Service 環境可以用來裝載 QnA Maker App Service。 如果 App Service
 
 如果您刪除任何用於 QnA Maker 知識庫的 Azure 資源，知識庫將無法再運作。 在刪除任何資源之前，請務必先從 [設定]**** 頁面匯出知識庫。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 深入瞭解[App service](../../../app-service/index.yml)和[Search 服務](../../../search/index.yml)。
 

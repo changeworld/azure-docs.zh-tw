@@ -6,11 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
-ms.openlocfilehash: e26215115b4c4484e5e05a2fd94a4d2c6680a4d0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9ab79a60f55fad6a45fadb6bf8890d2879caac62
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81727160"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87043578"
 ---
 # <a name="options"></a>選項 #
 
@@ -62,7 +63,7 @@ Width 屬性會設定影片的顯示寬度。
 
 `<video width="640" ...>` 或 `{ "width": 640 }`
 
-### <a name="height"></a>height ###
+### <a name="height"></a>身高 ###
 
 Height 屬性會設定影片的顯示高度。
 
@@ -100,7 +101,7 @@ Height 屬性會設定影片的顯示高度。
 `<video ... data-setup='{"playbackSpeed": {"enabled": true}}'>`
 
 
-設定的其他屬性 `playbackSpeed` 是由[PlaybackSpeedOptions](https://docs.microsoft.com/javascript/api/azuremediaplayer/amp.player.playbackspeedoptions)物件所提供。
+設定的其他屬性 `playbackSpeed` 是由[PlaybackSpeedOptions](/javascript/api/azuremediaplayer/amp.player.playbackspeedoptions)物件所提供。
 
 在 JavaScript 中設定播放速度選項的範例：
 

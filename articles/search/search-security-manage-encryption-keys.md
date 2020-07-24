@@ -8,12 +8,12 @@ ms.author: natinimn
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: f6bda61960efd9a5e176f8792601e315ba96bcca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 13ffd1eeb2df3c21a6167b056557b9141444f7c2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85553296"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038574"
 ---
 # <a name="encryption-at-rest-of-content-in-azure-cognitive-search-using-customer-managed-keys-in-azure-key-vault"></a>在 Azure Key Vault 中使用客戶管理的金鑰，在 Azure 認知搜尋中進行內容的待用加密
 
@@ -36,7 +36,7 @@ ms.locfileid: "85553296"
 
 + [建立 Azure Key Vault 資源](https://docs.microsoft.com/azure/key-vault/quick-create-portal#create-a-vault)，或在您的訂用帳戶下尋找現有的保存庫。
 
-+ [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)或[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)用於設定工作。
++ [Azure PowerShell](https://docs.microsoft.com/powershell/azure/)或[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)用於設定工作。
 
 + 您可以使用[Postman](search-get-started-postman.md)、 [AZURE POWERSHELL](search-create-index-rest-api.md)和[.net SDK preview](https://aka.ms/search-sdk-preview)來呼叫 REST API。 目前不支援客戶管理的加密的入口網站。
 

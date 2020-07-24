@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 09eba483a258c1e88b15a5795d32b3b4a029a175
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 68f7ec9aaffa2bad73d77d730749642a1b57f50b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232707"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87044852"
 ---
 # <a name="whats-new-in-form-recognizer"></a>表單辨識器的新功能
 
@@ -26,14 +26,13 @@ ms.locfileid: "86232707"
 ## <a name="july-2020"></a>2020 年 7 月
 
 ### <a name="new-features"></a>新功能
-* v2.0**參考可供使用**請參閱 v2.0 [API 參考](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)和[.net](https://docs.microsoft.com/dotnet/api/overview/azure/ai.formrecognizer-readme-pre)、 [Python](https://docs.microsoft.com/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer)、 [JAVA](https://docs.microsoft.com/java/api/overview/azure/formrecognizer)和[JavaScript](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/)的更新版 sdk。
+* v2.0**參考可供使用**請參閱 v2.0 [API 參考](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)和[.net](https://docs.microsoft.com/dotnet/api/overview/azure/formrecognizer)、 [Python](https://docs.microsoft.com/python/api/overview/azure/formrecognizer)、 [JAVA](https://docs.microsoft.com/java/api/overview/azure/ai-formrecognizer-readme-pre?view=azure-java-preview)和[JavaScript](https://docs.microsoft.com/javascript/api/overview/azure/formrecognizer)的更新版 sdk。
 * **資料表增強功能和提取增強功能**包括精確度改進和資料表提取增強功能，特別是在不含標籤的自訂定型中學習資料表標頭和結構的功能。 
 * **貨幣支援**偵測和解壓縮全域貨幣符號。
 * **Azure Gov**表單辨識器現在也可在 Azure Gov 中取得。
-*    **增強的安全性功能**： 
-    *    **攜帶您自己的金鑰** 表單辨識器會在保存到雲端時，自動將您的資料加密，以保護它，並協助您符合組織的安全性和合規性承諾。 根據預設，您的訂用帳戶會使用 Microsoft 管理的加密金鑰。 您現在也可以使用自己的加密金鑰來管理您的訂用帳戶。 [客戶管理的金鑰 (CMK) ，也稱為自備金鑰 (BYOK) ](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/form-recognizer-encryption-of-data-at-rest
-)，可提供更大的彈性來建立、輪替、停用及撤銷存取控制。 您也可以審核用來保護資料的加密金鑰。  
-    *    **私人端點**–可讓您在虛擬網路 (VNet) ，透過[私人連結安全地存取資料。](https://docs.microsoft.com/azure/private-link/private-link-overview)
+* **增強的安全性功能**： 
+   * **攜帶您自己的金鑰** 表單辨識器會在保存到雲端時，自動將您的資料加密，以保護它，並協助您符合組織的安全性和合規性承諾。 根據預設，您的訂用帳戶會使用 Microsoft 管理的加密金鑰。 您現在也可以使用自己的加密金鑰來管理您的訂用帳戶。 [客戶管理的金鑰（CMK）也稱為「自備金鑰」（BYOK）](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/form-recognizer-encryption-of-data-at-rest)，可提供更大的彈性來建立、輪替、停用及撤銷存取控制。 您也可以審核用來保護資料的加密金鑰。  
+   * **私人端點**–可讓您在虛擬網路（VNet）上透過[私人連結安全地存取資料。](https://docs.microsoft.com/azure/private-link/private-link-overview)
 
 
 ## <a name="june-2020"></a>2020 年 6 月
@@ -50,11 +49,11 @@ ms.locfileid: "86232707"
 ## <a name="april-2020"></a>2020 年 4 月
 
 ### <a name="new-features"></a>新功能
-* **表單辨識器 API V2.0 公開預覽的 SDK 支援**本月份我們已擴充服務支援，以包含表單辨識器 v2.0 (preview) 版本的預覽 SDK。 使用下列連結以開始使用您選擇的語言： 
-   * [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/ai.formrecognizer-readme-pre)
-   * [Java SDK](https://docs.microsoft.com/java/api/overview/azure/formrecognizer)
-   * [Python SDK](https://docs.microsoft.com/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer)
-   * [JavaScript SDK](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/)
+* **表單辨識器 API V2.0 公開預覽的 SDK 支援**本月份我們已擴充服務支援，以包含適用于表單辨識器 v2.0 （預覽）版本的預覽 SDK。 使用下列連結以開始使用您選擇的語言： 
+   * [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/formrecognizer)
+   * [Java SDK](https://docs.microsoft.com/java/api/overview/azure/ai-formrecognizer-readme-pre?view=azure-java-preview)
+   * [Python SDK](https://docs.microsoft.com/python/api/overview/azure/formrecognizer)
+   * [JavaScript SDK](https://docs.microsoft.com/javascript/api/overview/azure/formrecognizer)
 
   新的 SDK 支援適用于表單辨識器的 v2.0 REST API 的所有功能。 例如，您可以將具有或不含標籤的模型定型，並從表單中解壓縮文字、索引鍵值組和資料表、使用預先建立的回條服務從回條解壓縮資料，以及使用您的檔中的版面佈建服務來解壓縮文字和資料表。 您可以透過[Sdk 意見反應表單](https://aka.ms/FR_SDK_v1_feedback)，在 sdk 上分享您的意見反應。
  
@@ -112,7 +111,7 @@ ms.locfileid: "86232707"
 
 ## <a name="january-2020"></a>2020 年 1 月
 
-此版本導入了表單辨識器 2.0 (預覽) 。 在下列各節中，您可以找到有關新功能、增強功能和變更的詳細資訊。 
+此版本導入了表單辨識器2.0 （預覽）。 在下列各節中，您可以找到有關新功能、增強功能和變更的詳細資訊。 
 
 ### <a name="new-features"></a>新功能
 

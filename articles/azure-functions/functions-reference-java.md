@@ -3,20 +3,26 @@ title: Azure Functions 的 JAVA 開發人員參考
 description: 了解如何使用 Java 開發函式。
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.openlocfilehash: 339615ac99f231fd293a7ea15c853d43da8f998a
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: f1c2c3a3b6c28813cc9ecd9eb794e26e1e60d5e2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057597"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87041539"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions Java 開發人員指南
 
-Azure Functions 執行階段支援 [JAVA SE 8 LTS (zulu8.31.0.2-jre8.0.181-win_x64)](https://repos.azul.com/azure-only/zulu/packages/zulu-8/8u181/)。 本指南探討以 JAVA 撰寫 Azure Functions 時的錯綜複雜性。
+本指南包含可協助您使用 JAVA 成功開發 Azure Functions 的詳細資訊。
 
-如同其他語言一樣，一個函數應用程式可能有一或多個函式。 JAVA 函式是 `public` 方法，以註釋 `@FunctionName` 裝飾。 此方法定義 JAVA 函式的進入點，在特定封裝中必須是唯一的。 以 JAVA 撰寫的一個函數應用程式可能有多個類別，而類別有多個以 `@FunctionName` 標註的公用方法。
+身為 JAVA 開發人員，如果您不熟悉 Azure Functions，請先閱讀下列其中一篇文章：
 
-本文假設您已經讀過 [Azure Functions 開發人員參考](functions-reference.md)。 您也應該完成下列其中一個 Functions 快速入門：[使用 Visual Studio Code 建立您的第一個 JAVA 函式](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java) 或[使用 Maven 從命令列建立您的第一個 JAVA 函式](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java)。
+| 開始使用 | 概念| 
+| -- | -- |  
+| <ul><li>[使用 Visual Studio Code 的 JAVA 函式](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java)</li><li>[使用終端機/命令提示字元的 JAVA/Maven 函式](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java)</li><li>[使用 Gradle 的 JAVA 函式](functions-create-first-java-gradle.md)</li><li>[使用 Eclipse 的 JAVA 函式](functions-create-maven-eclipse.md)</li><li>[使用 IntelliJ 的 JAVA 函數概念](functions-create-maven-intellij.md)</li></ul> | <ul><li>[開發人員指南](functions-reference.md)</li><li>[主機選項](functions-scale.md)</li><li>[效能 &nbsp; 考慮](functions-best-practices.md)</li></ul> |
+
+## <a name="java-function-basics"></a>JAVA 函數基本概念
+
+JAVA 函式是 `public` 方法，以註釋 `@FunctionName` 裝飾。 此方法定義 JAVA 函式的進入點，在特定封裝中必須是唯一的。 封裝可以有多個類別，其中有多個以標注的公用方法 `@FunctionName` 。 單一套件會部署至 Azure 中的函數應用程式。 在 Azure 中執行時，函數應用程式會為您的個別 JAVA 函式提供部署、執行和管理內容。
 
 ## <a name="programming-model"></a>程式設計模型 
 
@@ -48,7 +54,7 @@ mvn archetype:generate \
     -DarchetypeArtifactId=azure-functions-archetype 
 ```
 
-若要開始使用此原型，請參閱 [JAVA 快速入門](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java)。 
+若要開始使用此原型，請參閱 [JAVA 快速入門](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java)。 
 
 ## <a name="folder-structure"></a>資料夾結構
 
@@ -87,7 +93,7 @@ FunctionsProject
 請使用 [com.microsoft.azure.functions.annotation.*](/java/api/com.microsoft.azure.functions.annotation) 套件中所包含的 Java 註釋，以將輸入和輸出繫結至方法。 如需詳細資訊，請參閱 [JAVA 參考文件](/java/api/com.microsoft.azure.functions.annotation)。
 
 > [!IMPORTANT] 
-> 您必須在 [local.settings.json](/azure/azure-functions/functions-run-local#local-settings-file) 中設定 Azure 儲存體帳戶，以在本機執行 Azure Blob 儲存體、Azure 佇列儲存體或 Azure 資料表觸發程序。
+> 您必須在 [local.settings.json](./functions-run-local.md#local-settings-file) 中設定 Azure 儲存體帳戶，以在本機執行 Azure Blob 儲存體、Azure 佇列儲存體或 Azure 資料表觸發程序。
 
 範例：
 
@@ -125,9 +131,58 @@ public class Function {
 
 ```
 
+## <a name="java-versions"></a>Java 版本
+
+_JAVA 11 的支援目前為預覽狀態_
+
+建立函式應用程式時所使用的 JAVA 版本，在 Azure 中執行的函式是在 pom.xml 檔案中指定。 Maven 原型目前會產生 JAVA 8 的 pom.xml，您可以在發佈之前變更此程式。 pom.xml 中的 JAVA 版本應符合您在本機開發並測試應用程式的版本。 
+
+### <a name="supported-versions"></a>支援的版本
+
+下錶針對每個主要版本的函式執行時間，依作業系統顯示目前支援的 JAVA 版本：
+
+| Functions 版本 | JAVA 版本（Windows） | JAVA 版本（Linux） |
+| ----- | ----- | --- |
+| 3.x | 11（預覽）<br/>8<sup>\*</sup> | 11（預覽）<br/>8 |
+| 2.x | 8 | n/a |
+
+<sup>\*</sup>這是 Maven 原型所產生之 pom.xml 的目前預設值。
+
+### <a name="specify-the-deployment-version"></a>指定部署版本
+
+目前，Maven 原型會產生以 JAVA 8 為目標的 pom.xml。 pom.xml 中的下列元素需要更新，才能建立執行 JAVA 11 的函式應用程式。
+
+| 項目 |  JAVA 8 值 | JAVA 11 值 | 描述 |
+| ---- | ---- | ---- | --- |
+| **`Java.version`** | 1.8 | 11 | Maven 所使用的 JAVA 版本。 |
+| **`JavaVersion`** | 8 | 11 | Azure 中的函數應用程式所裝載的 JAVA 版本。 |
+
+下列範例會在 pom.xml 檔案的相關區段中，顯示 JAVA 8 的設定：
+
+#### `Java.version`
+:::code language="xml" source="~/functions-quickstart-java/functions-add-output-binding-storage-queue/pom.xml" range="12-19" highlight="14":::
+
+#### `JavaVersion`
+:::code language="xml" source="~/functions-quickstart-java/functions-add-output-binding-storage-queue/pom.xml" range="77-85" highlight="80":::
+
+> [!IMPORTANT]
+> 您必須將 JAVA_HOME 環境變數正確設定為 JDK 目錄，以使用 Maven 進行程式碼編譯期間使用。 請確定 JDK 的版本至少為設定的最高值 `Java.version` 。 
+
+### <a name="specify-the-deployment-os"></a>指定部署作業系統
+
+Maven 也可讓您指定函數應用程式在 Azure 中執行的作業系統。 使用 `os` 元素來選擇作業系統。 
+
+| 項目 |  Windows | Linux | Docker |
+| ---- | ---- | ---- | --- |
+| **`os`** | windows | 廠商 | docker |
+
+下列範例顯示 pom.xml 檔案之區段中的作業系統設定 `runtime` ：
+
+:::code language="xml" source="~/functions-quickstart-java/functions-add-output-binding-storage-queue/pom.xml" range="77-85" highlight="79":::
+ 
 ## <a name="jdk-runtime-availability-and-support"></a>JDK 執行階段可用性和支援 
 
-若是在本機開發 JAVA 函數應用程式，請從 [Azul Systems](https://www.azul.com/downloads/azure-only/zulu/) 下載並使用 [Azul Zulu Enterprise for Azure](https://assets.azul.com/files/Zulu-for-Azure-FAQ.pdf) JAVA 8 JDK。 當您將函數應用程式部署至雲端時，Azure Functions 使用 Azul Java 8 JDK 執行階段。
+若要在本機開發 JAVA 函數應用程式，請從[Azul 系統](https://www.azul.com/downloads/azure-only/zulu/)下載並使用適用于 Azure java jdk 的適當[Azul 祖魯 Enterprise](https://assets.azul.com/files/Zulu-for-Azure-FAQ.pdf) 。 當您將函數應用程式部署至雲端時，Azure Functions 會使用 Azul JAVA JDK 執行時間。
 
 [合格的支援方案](https://azure.microsoft.com/support/plans/)讓您享有 JDK 和函數應用程式相關問題的 [Azure 支援](https://azure.microsoft.com/support/)。
 
@@ -334,7 +389,7 @@ public class Function {
 
 ## <a name="metadata"></a>中繼資料
 
-有幾個觸發程序會將[觸發程序中繼資料](/azure/azure-functions/functions-triggers-bindings)與輸入資料一起傳送。 您可以使用註釋 `@BindingName` 來繫結至觸發程序中繼資料。
+有幾個觸發程序會將[觸發程序中繼資料](./functions-triggers-bindings.md)與輸入資料一起傳送。 您可以使用註釋 `@BindingName` 來繫結至觸發程序中繼資料。
 
 
 ```Java

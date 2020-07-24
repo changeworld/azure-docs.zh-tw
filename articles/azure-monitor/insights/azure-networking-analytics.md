@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/21/2018
-ms.openlocfilehash: 1084be9a63e023257326de824ea200dcc1be74d9
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 96df96fd6145d1c6e58eb5dfc672ec324da75202
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684639"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87041603"
 ---
 # <a name="azure-networking-monitoring-solutions-in-azure-monitor"></a>Azure 監視器中的 Azure 網路監視解決方案
 
@@ -23,18 +24,18 @@ Azure 監視器提供下列解決方案來監視網路：
     * Azure 應用程式閘道記錄
     * Azure 應用程式閘道計量
 * 監視和稽核雲端網路上網路活動的解決方案
-    * [流量分析](https://docs.microsoft.com/azure/networking/network-monitoring-overview#traffic-analytics) 
+    * [流量分析](../../networking/network-monitoring-overview.md#traffic-analytics) 
     * Azure 網路安全性群組分析
 
 ## <a name="network-performance-monitor-npm"></a>網路效能監視器 (NPM)
 
-[網路效能監視器](https://docs.microsoft.com/azure/networking/network-monitoring-overview)管理解決方案是網路監視解決方案，可監視網路的健康狀態、可用性和連線能力。  可用來監視下列項目之間的連線能力︰
+[網路效能監視器](../../networking/network-monitoring-overview.md)管理解決方案是網路監視解決方案，可監視網路的健康狀態、可用性和連線能力。  可用來監視下列項目之間的連線能力︰
 
 * 公用雲端與內部部署環境
 * 資料中心與使用者地點 (分公司)
 * 裝載多層式應用程式各層的子網路。
 
-如需詳細資訊，請參閱[網路效能監視器](https://docs.microsoft.com/azure/networking/network-monitoring-overview)。
+如需詳細資訊，請參閱[網路效能監視器](../../networking/network-monitoring-overview.md)。
 
 ## <a name="azure-application-gateway-and-network-security-group-analytics"></a>Azure 應用程式閘道和網路安全性群組分析
 若要使用解決方案：

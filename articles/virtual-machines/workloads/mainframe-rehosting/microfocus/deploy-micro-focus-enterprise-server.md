@@ -12,16 +12,16 @@ ms.date: 06/29/2020
 tags: ''
 keywords: ''
 ms.service: multiple
-ms.openlocfilehash: 900e76fff3e5ccf88fa1e25ebea97f26e406a358
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6780942d922f885c7afebd8e64f4f28654c3800e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610365"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87042548"
 ---
 # <a name="deploy-micro-focus-enterprise-server-50-to-aks"></a>將微焦點企業伺服器5.0 部署到 AKS
 
-在另一[篇文章](https://docs.microsoft.com/azure/virtual-machines/workloads/mainframe-rehosting/microfocus/run-enterprise-server-container)中，我已概述在 Docker 容器中執行微焦點企業伺服器5.0 的步驟。 接下來，我想要示範如何進一步部署您所建立的 Docker 映射，以 Azure Kubernetes Service （AKS）。
+在另一[篇文章](./run-enterprise-server-container.md)中，我已概述在 Docker 容器中執行微焦點企業伺服器5.0 的步驟。 接下來，我想要示範如何進一步部署您所建立的 Docker 映射，以 Azure Kubernetes Service （AKS）。
 
 Azure Kubernetes Service 是以 Kubernetes 為基礎的受控協調流程服務。 它可讓您在容器主機的叢集上部署、調整及管理 Docker 容器（和其他容器型應用程式）。
 

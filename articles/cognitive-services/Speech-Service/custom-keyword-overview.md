@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: hasshah
-ms.openlocfilehash: 0a6df626f9567b51a8371c17004b454f9c5b4597
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 60bcdac0d7e19c424b007980294898638814d586
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83202039"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87044871"
 ---
 # <a name="what-is-a-keyword"></a>什麼是關鍵字？
 
@@ -33,10 +33,13 @@ ms.locfileid: "83202039"
 
 ## <a name="get-started-with-custom-keywords"></a>開始使用自訂關鍵字
 
-* 教學課程：如何[使用語音 Studio 建立自訂關鍵字](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-create-kws)
-* 教學課程：如何[使用 c # 以語音 SDK 語音啟動您的產品](tutorial-voice-enable-your-bot-speech-sdk.md)
-* 快速入門：[使用 c # 在通用 Windows 平臺上以語音 SDK 辨識關鍵字](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/uwp/keyword-recognizer)
-* 快速入門：[使用 JAVA 在 Android 上以語音 SDK 辨識關鍵字](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/java/android/keyword-recognizer)
+* 如需基本使用方式和設計模式，請參閱[自訂關鍵字基本概念](custom-keyword-basics.md)。
+* 如何[使用 c # 以語音 SDK 來啟動您的產品](tutorial-voice-enable-your-bot-speech-sdk.md)
+
+## <a name="see-samples-on-github"></a>請參閱 GitHub 上的範例
+
+* [在通用 Windows 平臺上使用 C 來辨識使用語音 SDK 的關鍵字#](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/uwp/keyword-recognizer)
+* [在 Android 上使用 JAVA 以語音 SDK 辨識關鍵字](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/java/android/keyword-recognizer)
 
 ## <a name="next-steps"></a>後續步驟
 

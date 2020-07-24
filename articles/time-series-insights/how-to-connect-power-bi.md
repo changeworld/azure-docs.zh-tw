@@ -3,24 +3,25 @@ title: 將您的環境連接到 Power BI-Azure 時間序列深入解析 |Microso
 description: 瞭解如何將 Azure 時間序列深入解析連接到 Power BI，以在整個組織中共用、繪製圖表和顯示資料。
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
-ms.date: 06/01/2020
-ms.openlocfilehash: ea46f37b0c09ca655b29ac3cfa2f168e18c85590
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 06/30/2020
+ms.openlocfilehash: b9d91921fc375a1209e8fa8df6e3c6ff56e55be0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85052439"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046707"
 ---
-# <a name="visualize-data-from-time-series-insights-in-power-bi"></a>在 Power BI 中從時間序列深入解析將資料視覺化
+# <a name="visualize-data-from-azure-time-series-insights-in-power-bi"></a>從 Power BI 中的 Azure 時間序列深入解析將資料視覺化
 
-Azure 時間序列深入解析是在雲端中儲存、管理、查詢和視覺化時間序列資料的平臺。 [Power BI](https://powerbi.microsoft.com)是具有豐富視覺效果功能的商務分析工具，可讓您在整個組織內共用見解和結果。 這兩項服務現在都可以整合，以獲得時間序列深入解析的固有視覺效果功能，以及 Power BI 的最佳做法。
+Azure 時間序列深入解析是在雲端中儲存、管理、查詢和視覺化時間序列資料的平臺。 [Power BI](https://powerbi.microsoft.com)是具有豐富視覺效果功能的商務分析工具，可讓您在整個組織內共用見解和結果。 這兩項服務現在都可以整合，以獲得 Azure 時間序列深入解析的固有視覺效果功能，以及 Power BI 的最佳做法。
 
 您將學習如何：
 
-* 使用雲端連接器將時間序列深入解析連線至 Power BI
+* 使用雲端連接器將 Azure 時間序列深入解析連線至 Power BI
 * 在 Power BI 中使用您的資料建立視覺效果
 * 將報表發行至 Power BI，並與貴組織的其他人共用
 
@@ -31,16 +32,18 @@ Azure 時間序列深入解析是在雲端中儲存、管理、查詢和視覺�
 ## <a name="prerequisites"></a>必要條件
 
 * 下載並安裝最新版本的[Power BI Desktop](https://powerbi.microsoft.com/downloads/)
-* 建立或建立[Azure 時間序列深入解析 Preview 實例](time-series-insights-update-how-to-manage.md)
+* 建立或建立[Azure 時間序列深入解析 Gen2 環境](time-series-insights-update-how-to-manage.md)
 
 > [!IMPORTANT]
-> 在針對**暖存放區**設定的時間序列深入解析 Preview*隨用隨付*環境中，目前支援 Power BI 連接器。
+>
+> * 目前僅支援使用**暖存放區**設定的 Azure 時間序列深入解析 Gen2 環境中的連接器。
+> * 如果您有來自另一個 Azure AD 租使用者之 Azure 時間序列深入解析 Gen2 環境的來賓存取權，您將無法存取該連接器。 閱讀[環境存取原則](./concepts-access-policies.md)的相關資訊。
 
-## <a name="connect-data-from-time-series-insights-to-power-bi"></a>將資料從時間序列深入解析連線到 Power BI
+## <a name="connect-data-from-azure-time-series-insights-to-power-bi"></a>將資料從 Azure 時間序列深入解析連線到 Power BI
 
-若要將您的時間序列深入解析環境連接到 Power BI，請遵循下列步驟：
+若要將您的 Azure 時間序列深入解析環境連接到 Power BI，請遵循下列步驟：
 
-1. 開啟時間序列深入解析總管
+1. 開啟 Azure 時間序列深入解析 Explorer
 1. 將資料匯出為查詢或原始資料
 1. 開啟 Power BI Desktop
 1. 從自訂查詢載入
@@ -49,10 +52,10 @@ Azure 時間序列深入解析是在雲端中儲存、管理、查詢和視覺�
 
 開始進行之前：
 
-1. 開啟時間序列深入解析 Preview Explorer，並策展您的資料。
+1. 開啟 Azure 時間序列深入解析 Gen2 Explorer 並策展您的資料。
 1. 一旦您建立了您滿意的視圖，請流覽至 [**其他動作**] 下拉式功能表，然後選取 **[連接到 Power BI]**。
 
-    [![時間序列深入解析預覽瀏覽器匯出](media/how-to-connect-power-bi/time-series-insights-export-option.png)](media/how-to-connect-power-bi/time-series-insights-export-option.png#lightbox)
+    [![Azure 時間序列深入解析 Gen2 Explorer 匯出](media/how-to-connect-power-bi/time-series-insights-export-option.png)](media/how-to-connect-power-bi/time-series-insights-export-option.png#lightbox)
 
 1. 在此索引標籤中設定您的參數：
 
@@ -64,11 +67,11 @@ Azure 時間序列深入解析是在雲端中儲存、管理、查詢和視覺�
        > 您稍後可以在 Power BI 中匯總資料，但無法在匯總之後還原為原始資料。 
        
        > [!NOTE]
-       > 原始事件層級資料的事件計數限制為 100-K。
+       > 原始事件層級資料有250000事件計數限制。
 
-       [![到](media/how-to-connect-power-bi/connect-to-power-bi.png)](media/how-to-connect-power-bi/connect-to-power-bi.png#lightbox)
+       [![連線](media/how-to-connect-power-bi/connect-to-power-bi.png)](media/how-to-connect-power-bi/connect-to-power-bi.png#lightbox)
 
-   1. 如果您尚未為**暖存放區**設定時間序列深入解析實例，您將會收到警告。
+   1. 如果您尚未使用**暖存放區**設定 Azure 時間序列深入解析環境，您會收到警告。
 
        [![暖存放區警告](media/how-to-connect-power-bi/connect-to-power-bi-warning.png)](media/how-to-connect-power-bi/connect-to-power-bi-warning.png#lightbox)
 
@@ -81,9 +84,9 @@ Azure 時間序列深入解析是在雲端中儲存、管理、查詢和視覺�
 
     [![首頁下拉式清單](media/how-to-connect-power-bi/power-bi-home-drop-down.png)](media/how-to-connect-power-bi/power-bi-home-drop-down.png#lightbox)
 
-1. 搜尋**時間序列深入解析**，選取 **[Azure 時間序列深入解析（搶鮮版（Beta））**]，然後 **[連線]**。
+1. 搜尋**Azure 時間序列深入解析**，選取 **[Azure 時間序列深入解析（搶鮮版（Beta））**]，然後 **[連線]**。
 
-    [![將 Power BI 連接到時間序列深入解析](media/how-to-connect-power-bi/connect-to-time-series-insights.png)](media/how-to-connect-power-bi/connect-to-time-series-insights.png#lightbox)
+    [![將 Power BI 連接到 Azure 時間序列深入解析](media/how-to-connect-power-bi/connect-to-time-series-insights.png)](media/how-to-connect-power-bi/connect-to-time-series-insights.png#lightbox)
 
     或者，流覽至 [ **Azure** ] 索引標籤，選取 [ **Azure 時間序列深入解析（Beta）**]，然後按一下 **[連線]**。
     
@@ -146,5 +149,3 @@ Azure 時間序列深入解析是在雲端中儲存、管理、查詢和視覺�
 * 閱讀 Azure 時間序列深入解析[Power BI 連接器概念](https://docs.microsoft.com/power-bi/desktop-query-overview)的相關資訊。
 
 * 深入瞭解[Power BI desktop](https://docs.microsoft.com/power-bi/desktop-query-overview)。
-
-* 閱讀[時間序列深入解析 GA explorer](https://docs.microsoft.com/azure/time-series-insights/time-series-quickstart)和[時間序列深入解析預覽瀏覽器](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-quickstart)。

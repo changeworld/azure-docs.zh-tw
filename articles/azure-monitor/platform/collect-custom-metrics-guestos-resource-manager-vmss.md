@@ -7,11 +7,12 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 9a7aa512c636f700cf9c6d990814d9367007c942
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 76f73df01b34cb20be48aefa3b5b3a6392a35b8b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83125769"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045197"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>使用 Windows 虛擬機器擴展集的 Azure Resource Manager 範本將客體作業系統計量傳送至 Azure 監視器計量存放區
 
@@ -25,9 +26,9 @@ ms.locfileid: "83125769"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-- 您必須先向 [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services) 註冊您的訂用帳戶。 
+- 您必須先向 [Microsoft.Insights](../../azure-resource-manager/management/resource-providers-and-types.md) 註冊您的訂用帳戶。 
 
-- 您需要安裝 [Azure PowerShell](/powershell/azure)，或可以使用 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)。 
+- 您需要安裝 [Azure PowerShell](/powershell/azure)，或可以使用 [Azure Cloud Shell](../../cloud-shell/overview.md)。 
 
 - 您的 VM 資源必須位於[支援自訂計量的區域](metrics-custom-overview.md#supported-regions)中。
 
@@ -244,7 +245,7 @@ MSI 擴充功能中的下列程式碼也可以將診斷擴充功能與設定作�
    ```powershell
    Select-AzSubscription -SubscriptionName "<Name of the subscription>" 
    ```
-1. 為要部署的 VM 建立新的資源群組。 執行下列命令： 
+1. 為要部署的 VM 建立新的資源群組。 執行以下命令： 
 
    ```powershell
     New-AzResourceGroup -Name "VMSSWADtestGrp" -Location "<Azure Region>" 
@@ -292,5 +293,3 @@ MSI 擴充功能中的下列程式碼也可以將診斷擴充功能與設定作�
 
 ## <a name="next-steps"></a>後續步驟
 - 深入了解[自訂計量](metrics-custom-overview.md)。
-
-

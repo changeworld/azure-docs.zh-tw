@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: f5a2dd68d86a7a38fc7f2942351c42c84742d104
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6911b16c3fdf5bb94d42a40198943c3b1baa00da
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74887062"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87042833"
 ---
 # <a name="azure-media-services-error-codes"></a>Azure 媒體服務錯誤代碼
 使用 Microsoft Azure 媒體服務時，您可能會根據問題從服務收到 HTTP 錯誤代碼，例如驗證權杖過期到媒體服務中不支援的動作。 以下是媒體服務可能會傳回的「HTTP 錯誤代碼」**** 的清單，以及其可能原因。  
@@ -27,19 +28,19 @@ ms.locfileid: "74887062"
 要求包含無效的資訊，並且因為下列其中一個原因遭到拒絕︰
 
 * 指定了不支援的 API 版本。 如需最新版本，請參閱[媒體服務 REST API 開發設定](media-services-rest-how-to-use.md)。
-* 未指定媒體服務的 API 版本。 如需如何指定 API 版本的詳細資訊，請參閱[媒體服務作業 REST API 參考](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference) \(英文\)。
+* 未指定媒體服務的 API 版本。 如需如何指定 API 版本的詳細資訊，請參閱[媒體服務作業 REST API 參考](/rest/api/media/operations/azure-media-services-rest-api-reference) \(英文\)。
   
   > [!NOTE]
   > 如果您使用 .NET 或 Java SDK 來連接到媒體服務，每當您針對媒體服務嘗試和執行某些動作時，會為您指定 API 版本。
   > 
   > 
-* 已指定未定義的屬性。 屬性名稱在錯誤訊息中。 只能指定屬於指定實體的屬性。 請參閱 [Azure 媒體服務 REST API 參考](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference)，以取得實體及其屬性的清單。
+* 已指定未定義的屬性。 屬性名稱在錯誤訊息中。 只能指定屬於指定實體的屬性。 請參閱 [Azure 媒體服務 REST API 參考](/rest/api/media/operations/azure-media-services-rest-api-reference)，以取得實體及其屬性的清單。
 * 已指定無效的屬性值。 屬性名稱在錯誤訊息中。 請參閱先前連結以取得有效屬性類型及其值。
 * 遺漏必要的屬性值。
 * 指定 URL 的一部分包含不正確的值。
 * 嘗試更新 WriteOnce 屬性。
 * 嘗試使用主要 AssetFile (未指定或無法決定) 建立具有輸入資產的作業。
-* 嘗試更新 SAS 定位器。 僅能建立或刪除 SAS 定位器。 可以更新串流定位器。 如需詳細資訊，請參閱[定位器](https://docs.microsoft.com/rest/api/media/operations/locator)。
+* 嘗試更新 SAS 定位器。 僅能建立或刪除 SAS 定位器。 可以更新串流定位器。 如需詳細資訊，請參閱[定位器](/rest/api/media/operations/locator)。
 * 不支援的作業或查詢已提交。
 
 ## <a name="401-unauthorized"></a>401 未經授權
@@ -108,7 +109,7 @@ ms.locfileid: "74887062"
 * 「伺服器忙碌中。 每秒可以節流超過 {0} 個要求」。
 * 「伺服器忙碌中。 {1} 秒內可以節流超過 {0} 個要求」。
 
-若要處理此錯誤，我們建議使用指數輪詢重試邏輯。 這表示在連續錯誤回應的重試之間使用越來越久的等候。  如需詳細資訊，請參閱[暫時性錯誤處理應用程式區塊](https://msdn.microsoft.com/library/hh680905.aspx)。
+若要處理此錯誤，我們建議使用指數輪詢重試邏輯。 這表示在連續錯誤回應的重試之間使用越來越久的等候。  如需詳細資訊，請參閱[暫時性錯誤處理應用程式區塊](/previous-versions/msp-n-p/hh680905(v=pandp.50))。
 
 > [!NOTE]
 > 如果您使用 [Azure Media Services SDK for .Net](https://github.com/Azure/azure-sdk-for-media-services/tree/master)，已由 SDK 實作 503 錯誤的重試邏輯。  
@@ -116,11 +117,10 @@ ms.locfileid: "74887062"
 > 
 
 ## <a name="see-also"></a>另請參閱
-[媒體服務管理錯誤代碼](https://msdn.microsoft.com/library/windowsazure/dn167016.aspx)
+[媒體服務管理錯誤代碼](/rest/api/media/)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>提供意見反應
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

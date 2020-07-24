@@ -11,11 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 523fd3103585865a969f6463b3dc41fe362b9130
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e76ccc83be8f269cb14826b5e3e8873d4c7c427a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84324703"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045022"
 ---
 # <a name="tutorial-implement-a-geo-distributed-database-azure-sql-database"></a>教學課程：執行地理位置分散的資料庫（Azure SQL Database）
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -39,7 +40,7 @@ ms.locfileid: "84324703"
 
 若要完成本教學課程，請確定您已安裝下列項目：
 
-- [Azure PowerShell](/powershell/azureps-cmdlets-docs)
+- [Azure PowerShell](/powershell/azure/)
 - Azure SQL Database 中的單一資料庫。 若要建立一次使用，
   - [Azure 入口網站](single-database-create-quickstart.md)
   - [Azure CLI](az-cli-script-samples-content-guide.md)
@@ -367,7 +368,7 @@ az sql failover-group show --name $failoverGroup --resource-group $resourceGroup
 
 * * *
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 在本教學課程中，您已在 Azure SQL Database 和應用程式中設定資料庫，以容錯移轉至遠端區域並測試容錯移轉計畫。 您已了解如何︰
 

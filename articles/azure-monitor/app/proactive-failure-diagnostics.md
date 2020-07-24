@@ -4,12 +4,12 @@ description: 針對 Web 應用程式失敗要求比率的不尋常變化對您�
 ms.topic: conceptual
 ms.date: 12/18/2018
 ms.reviewer: yalavi
-ms.openlocfilehash: 35c1769672e11cd7d1ec2f628b9d763dc8b90ac3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 27cf38a1cfcf8a9f87582ab3e78b48e78f3c63c2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85254781"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045803"
 ---
 # <a name="smart-detection---failure-anomalies"></a>智慧型偵測 - 失敗異常
 當 Web 應用程式的失敗要求比率異常增加時，[Application Insights](../../azure-monitor/app/app-insights-overview.md) 會以幾乎即時的方式自動向您發出警示。 它偵測到回報為失敗的 HTTP 要求率異常提高或相依性呼叫。 對於要求，失敗的要求通常會有 400 或更高的回應碼。 為了協助您分級並診斷問題，警示詳細資料中會提供失敗的特性分析與相關應用程式資料。 其中也有 Application Insights 入口網站的連結，以供進一步診斷。 不需要設定該功能，因為它是使用機器學習演算法來預測一般失敗率。
@@ -61,13 +61,13 @@ ms.locfileid: "85254781"
 
 ## <a name="configure-alerts"></a>設定警示
 
-您可以從入口網站或使用 Azure Resource Manager ([請參閱範本範例](https://docs.microsoft.com/azure/azure-monitor/app/proactive-arm-config)) 來停用智慧偵測警示規則。
+您可以從入口網站或使用 Azure Resource Manager ([請參閱範本範例](./proactive-arm-config.md)) 來停用智慧偵測警示規則。
 
-建立此警示規則時，會使用名為「Application Insights 智慧偵測」的相關聯[動作群組](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)，其中包含電子郵件和 Webhook 動作，並可加以擴充以在引發警示時觸發其他動作。
+建立此警示規則時，會使用名為「Application Insights 智慧偵測」的相關聯[動作群組](../platform/action-groups.md)，其中包含電子郵件和 Webhook 動作，並可加以擴充以在引發警示時觸發其他動作。
 
 > [!NOTE]
-> 從這項警示規則傳送的電子郵件通知，現在預設會傳送給與訂用帳戶的監視讀者和監視參與者角色相關聯的使用者。 如需這方面的詳細資訊，請參閱[這裡](https://docs.microsoft.com/azure/azure-monitor/app/proactive-email-notification)。
-> 從這項警示規則傳送過來的通知會遵循[一般警示結構描述](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema)。
+> 從這項警示規則傳送的電子郵件通知，現在預設會傳送給與訂用帳戶的監視讀者和監視參與者角色相關聯的使用者。 如需這方面的詳細資訊，請參閱[這裡](./proactive-email-notification.md)。
+> 從這項警示規則傳送過來的通知會遵循[一般警示結構描述](../platform/alerts-common-schema.md)。
 >
 
 開啟 [警示] 頁面。 「失敗異常」警示規則已包含在任何您已手動設定的警示中，您可以查看它目前是否處於警示狀態。
@@ -348,7 +348,7 @@ ms.locfileid: "85254781"
 
 *部分警示與已知問題相關，我不想接收它們。*
 
-* 您可以使用[警示動作規則](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-action-rules)歸併功能。
+* 您可以使用[警示動作規則](../platform/alerts-action-rules.md)歸併功能。
 
 ## <a name="next-steps"></a>後續步驟
 這些診斷工具可協助您檢查來自您的應用程式的資料︰

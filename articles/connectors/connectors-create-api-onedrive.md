@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/18/2016
 tags: connectors
-ms.openlocfilehash: 8dd54fec963b8f4775a8ade6277b071d62ca3850
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9fe4988b5499943f4b11ec5d640209ceb68e84ec
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86524196"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87040240"
 ---
 # <a name="access-and-manage-files-in-onedrive-connector-by-using-azure-logic-apps"></a>使用 Azure Logic Apps 存取和管理 OneDrive 連接器中的檔案
 
@@ -40,7 +40,7 @@ ms.locfileid: "86524196"
 
 1. 在邏輯應用程式設計工具中，輸入 `onedrive` 以取得觸發程式的清單：  
 
-   ![標題為「顯示 Microsoft 受控 Api」的對話方塊有一個包含「onedrive」的方塊。 以下是四個觸發程式的清單。 其中的第一個是「OneDrive-當檔案建立時」。 第二個「OneDrive-修改檔案時」已被選取。](./media/connectors-create-api-onedrive/onedrive-1.png)
+   ![標題為「顯示 Microsoft 受控 A P I」的對話方塊有一個包含「onedrive」的方塊。 以下是四個觸發程式的清單。 其中的第一個是「OneDrive-當檔案建立時」。 第二個「OneDrive-修改檔案時」已被選取。](./media/connectors-create-api-onedrive/onedrive-1.png)
 
 2. 選取 [當檔案遭到修改時]****。 如果連線已存在，則選取 [顯示選擇器] 按鈕以選取資料夾。
 
@@ -68,7 +68,7 @@ ms.locfileid: "86524196"
 
 3. 在 [搜尋] 方塊中，輸入 `onedrive` 以取得所有可用動作的清單。
 
-   ![標題為「顯示 Microsoft 受控 Api」的對話方塊有一個包含「onedrive」的方塊。 以下是八個動作的清單。 第一個是「OneDrive-建立檔案」，並已選取。](./media/connectors-create-api-onedrive/onedrive-actions.png) 
+   ![標題為「顯示 Microsoft 受控 A P I」的對話方塊有一個包含「onedrive」的方塊。 以下是八個動作的清單。 第一個是「OneDrive-建立檔案」，並已選取。](./media/connectors-create-api-onedrive/onedrive-actions.png) 
 
 4. 在我們的範例中，選擇 [OneDrive - 建立檔案]****。 如果連線已存在，則選取 [資料夾路徑]**** 以供放置檔案、輸入 [檔案名稱]****，然後選擇想要的 [檔案內容]****︰  
 
@@ -86,6 +86,6 @@ ms.locfileid: "86524196"
 
 檢視 Swagger 中定義的任何觸發程序和動作，另請參閱[連接器詳細資料](/connectors/onedriveconnector/)的所有限制。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * [適用於 Azure Logic Apps 的連接器](apis-list.md)

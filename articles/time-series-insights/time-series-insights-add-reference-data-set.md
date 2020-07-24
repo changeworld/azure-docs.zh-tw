@@ -5,23 +5,24 @@ ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 ms.reviewer: jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 05/05/2020
-ms.custom: seodec18~~~~
-ms.openlocfilehash: 010f7b908ceb9c8d07208db1312d8af8d4e27051
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 06/30/2020
+ms.custom: seodec18
+ms.openlocfilehash: 2503a58f7d5fe05240f374fabbe2bf88d34dcf6c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82838513"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046631"
 ---
-# <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>使用 Azure 入口網站建立時間序列深入解析環境的參考資料集
+# <a name="create-a-reference-data-set-for-your-azure-time-series-insights-gen1-environment-using-the-azure-portal"></a>使用 Azure 入口網站為您的 Azure 時間序列深入解析 Gen1 環境建立參考資料集
 
 本文說明如何將參考資料集新增至 Azure 時間序列深入解析環境。 將參考資料聯結至您的來源資料很實用，可以增加資料值。
 
-參考資料集是許多項目的集合，由這些項目來擴展您事件來源中的事件。 Time Series Insights 輸入引擎會將事件來源的每個事件和參考資料集中的對應資料聯結在一起。 然後此增強的事件可用於查詢。 這項聯結是以參考資料集中定義的主索引鍵資料行為基礎。
+參考資料集是許多項目的集合，由這些項目來擴展您事件來源中的事件。 Azure 時間序列深入解析輸入引擎會將事件來源中的每個事件與參考資料集中的對應資料列聯結在一起。 然後此增強的事件可用於查詢。 這項聯結是以參考資料集中定義的主索引鍵資料行為基礎。
 
 參考資料不會回溯加入。 因此，一旦設定並上傳，只有目前和未來的輸入資料會進行比對並加入參考日期集。
 
@@ -35,15 +36,15 @@ ms.locfileid: "82838513"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
-1. 找出您現有的 Azure 時間序列深入解析環境。 在 Azure 入口網站左側的功能表中選取 [所有資源]****。 選取 Time Series Insights 環境。
+1. 找出您現有的 Azure 時間序列深入解析環境。 在 Azure 入口網站左側的功能表中選取 [所有資源]****。 選取您的 Azure 時間序列深入解析環境。
 
-1. 選取 [概觀]**** 頁面。 展開頁面頂端附近的 [**基本**] 區段，找出 [**時間序列深入解析 explorer URL** ] 並開啟連結。  
+1. 選取 [概觀] 頁面。 展開頁面頂端附近的 [**基本**] 區段，找出 [**時間序列深入解析總管 URL**並開啟連結。  
 
    [![展開 [基本] 區段](media/add-reference-data-set/essentials.png)](media/add-reference-data-set/essentials.png#lightbox)
 
-   查看時間序列深入解析環境的 [explorer]。
+   查看 Azure 時間序列深入解析環境的 [Explorer]。
 
-1. 展開 [時間序列深入解析 explorer] 中的環境選取器。 選擇使用中的環境。 在 [總管] 頁面右上方選取參考資料圖示。
+1. 展開 [Azure 時間序列深入解析 Explorer] 中的環境選取器。 選擇使用中的環境。 選取 [Explorer] 頁面右上角的 [參考資料] 圖示。
 
    [![新增參考資料](media/add-reference-data-set/tsi-select-environment-and-data-icons.png)](media/add-reference-data-set/tsi-select-environment-and-data-icons.png#lightbox)
 

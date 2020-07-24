@@ -7,12 +7,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/09/2020
 ms.author: daperlov
-ms.openlocfilehash: 74c2e738153b1afa5c90f4769b6d9b0e982af363
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: e9df7b00a384859fb29577be0ad05da233683f46
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86225154"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87044520"
 ---
 # <a name="delta-format-in-azure-data-factory"></a>Azure Data Factory 中的差異格式
 
@@ -22,6 +22,8 @@ ms.locfileid: "86225154"
 
 > [!NOTE]
 > 用於對應資料流程的差異格式連接器目前以公開預覽形式提供。
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4ALTs]
 
 ## <a name="mapping-data-flow-properties"></a>對應資料流程屬性
 
@@ -34,10 +36,10 @@ ms.locfileid: "86225154"
 | 名稱 | 描述 | 必要 | 允許的值 | 資料流程腳本屬性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | 格式 | 格式必須是`delta` | 是 | `delta` | format |
-| 檔案系統 | Delta lake 的容器/檔案系統 | 是 | String | fileSystem |
-| 資料夾路徑 | Delta lake 的直接 | 是 | String | folderPath |
+| 檔案系統 | Delta lake 的容器/檔案系統 | 是 | 字串 | fileSystem |
+| 資料夾路徑 | Delta lake 的直接 | 是 | 字串 | folderPath |
 | 壓縮類型 | 差異資料表的壓縮類型 | 否 | `bzip2`<br>`gzip`<br>`deflate`<br>`ZipDeflate`<br>`snappy`<br>`lz4` | compressionType |
-| 壓縮等級 | 選擇壓縮是否儘快完成，或是否應該以最佳方式壓縮所產生的檔案。 | 如果 `compressedType` 指定，則為必要。 | compressionLevel |
+| 壓縮等級 | 選擇壓縮是否儘快完成，或是否應該以最佳方式壓縮所產生的檔案。 | 如果 `compressedType` 指定，則為必要。 | `Optimal` 或 `Fastest` | compressionLevel |
 | 時間移動 | 選擇是否要查詢較舊的差異資料表快照集 | 否 | 依時間戳記查詢：時間戳記 <br> 依版本查詢：整數 | timestampAsOf <br> versionAsOf |
 
 #### <a name="import-schema"></a>匯入架構
@@ -70,10 +72,10 @@ source(output(movieId as integer,
 | 名稱 | 描述 | 必要 | 允許的值 | 資料流程腳本屬性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | 格式 | 格式必須是`delta` | 是 | `delta` | format |
-| 檔案系統 | Delta lake 的容器/檔案系統 | 是 | String | fileSystem |
-| 資料夾路徑 | Delta lake 的直接 | 是 | String | folderPath |
+| 檔案系統 | Delta lake 的容器/檔案系統 | 是 | 字串 | fileSystem |
+| 資料夾路徑 | Delta lake 的直接 | 是 | 字串 | folderPath |
 | 壓縮類型 | 差異資料表的壓縮類型 | 否 | `bzip2`<br>`gzip`<br>`deflate`<br>`ZipDeflate`<br>`snappy`<br>`lz4` | compressionType |
-| 壓縮等級 | 選擇壓縮是否儘快完成，或是否應該以最佳方式壓縮所產生的檔案。 | 如果 `compressedType` 指定，則為必要。 | compressionLevel |
+| 壓縮等級 | 選擇壓縮是否儘快完成，或是否應該以最佳方式壓縮所產生的檔案。 | 如果 `compressedType` 指定，則為必要。 | `Optimal` 或 `Fastest` | compressionLevel |
 | 真空 | 指定舊版資料表的保留閾值（以小時為單位）。 0或以下的預設值為30天 | 是 | 整數 | 真空 |
 | Update 方法 | 指定在 delta lake 上允許的更新作業。 對於不是插入的方法，需要前面的 alter row 轉換來標示資料列。 | 是 | `true` 或 `false` | 可以刪除 <br> 插入 <br> 份 <br> upsertable |
 
@@ -106,7 +108,7 @@ moviesAltered sink(
 
 寫入差異接收時，有已知的限制，其中所寫入的資料列數目不會在監視輸出中傳回。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 在對應的資料流程中建立[來源轉換](data-flow-source.md)。
 * 在對應的資料流程中建立[接收轉換](data-flow-sink.md)。

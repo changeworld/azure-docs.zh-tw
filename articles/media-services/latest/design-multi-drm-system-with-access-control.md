@@ -14,11 +14,12 @@ ms.topic: article
 ms.date: 12/21/2018
 ms.author: willzhan
 ms.custom: seodec18
-ms.openlocfilehash: 3d02c335f6e950300a7ced36643e6276c3d8d16a
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 79f06bd5d6af05e334faf4e1f6d8cd3e358f89ba
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85957370"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87039186"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>設計具有存取控制的多重 DRM 內容保護系統 
 
@@ -132,7 +133,7 @@ DRM 子系統可能包含下列元件：
 
 | **建置組塊** | **技術** |
 | --- | --- |
-| **播放** |[Azure 媒體播放器](https://azure.microsoft.com/services/media-services/media-player/) |
+| **球員** |[Azure 媒體播放器](https://azure.microsoft.com/services/media-services/media-player/) |
 | **識別提供者（IDP）** |Azure Active Directory (Azure AD) |
 | **安全權杖服務 (STS)** |Azure AD |
 | **DRM 保護工作流程** |Azure 媒體服務動態保護 |
@@ -213,7 +214,7 @@ DRM 子系統可能包含下列元件：
 如需 Azure AD 的資訊：
 
 * 您可以在 [Azure Active Directory 開發人員指南](../../active-directory/develop/v2-overview.md)中找到開發人員的資訊。
-* 您可以在 [管理 Azure AD 租用戶目錄](../../active-directory/fundamentals/active-directory-administer.md)中找到系統管理員的資訊。
+* 您可以在 [管理 Azure AD 租用戶目錄](../../active-directory/fundamentals/active-directory-whatis.md)中找到系統管理員的資訊。
 
 ### <a name="some-issues-in-implementation"></a>實作中的一些問題
 

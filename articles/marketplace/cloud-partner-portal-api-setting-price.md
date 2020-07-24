@@ -3,26 +3,25 @@ title: 虛擬機器供應專案的定價-Azure Marketplace
 description: 說明用來指定虛擬機器供應專案定價的三種方法。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 04/08/2020
-ms.openlocfilehash: b3d38c59d4c79e908aeef857164603a2a5160e05
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.topic: reference
+author: dsindona
+ms.author: dsindona
+ms.date: 07/14/2020
+ms.openlocfilehash: 8d6dcd7f3f86e111cfb17fb08c4faadac1552b94
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86115497"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87039104"
 ---
-<a name="pricing-for-virtual-machine-offers"></a>虛擬機器供應項目定價
-==================================
+# <a name="pricing-for-virtual-machine-offers"></a>虛擬機器供應項目定價
 
 > [!NOTE]
-> Cloud Partner 入口網站 API 已和合作夥伴中心整合，並會在將供應項目移轉到合作夥伴中心後繼續運作。 該整合會引進些微的變更。 請參閱[CLOUD PARTNER 入口網站 API 參考](./cloud-partner-portal-api-overview.md)中所列的變更，以確保您的程式碼會在遷移至合作夥伴中心後繼續運作。
+> Cloud Partner 入口網站 Api 會與整合，並會繼續在合作夥伴中心運作。 轉換會引進微小的變更。 請參閱[CLOUD PARTNER 入口網站 API 參考](./cloud-partner-portal-api-overview.md)中所列的變更，以確保您的程式碼在轉換至合作夥伴中心後繼續運作。 只有在轉換至合作夥伴中心之前已整合的現有產品，才應該使用 CPP Api;新產品應使用合作夥伴中心提交 Api。
 
 指定虛擬機器供應項目定價的方法有三種：自訂核心定價、每一核心定價，以及試算表定價。
 
-
-<a name="customized-core-pricing"></a>自訂核心定價
------------------------
+## <a name="customized-core-pricing"></a>自訂核心定價
 
 定價專屬於各個地區和核心組合。 銷售清單中的每個區域都必須在定義的**virtualMachinePricing** / **regionPrices**區段中指定。  在您的要求中為每個[區域](#regions)使用正確的貨幣代碼。  下列範例示範這些需求：
 
@@ -66,9 +65,7 @@ ms.locfileid: "86115497"
      }
 ```
 
-
-<a name="per-core-pricing"></a>每一核心定價
-----------------
+## <a name="per-core-pricing"></a>每一核心定價
 
 在此情況下，發行者會為其 SKU 指定一個價格 (USD)，並自動產生所有其他價格。 每個核心的價格會在要求中的**單一**參數中指定。
 
@@ -84,9 +81,7 @@ ms.locfileid: "86115497"
      }
 ```
 
-
-<a name="spreadsheet-pricing"></a>試算表定價
--------------------
+## <a name="spreadsheet-pricing"></a>試算表定價
 
 發行者還可以將他們的定價試算表上傳至暫存位置，然後像其他檔案成品一樣，在要求中包含 URI。 然後上傳試算表、進行轉譯以評估指定的價格排程，最後使用定價資訊更新供應項目。 針對供應項目後續的 GET 要求將會傳回試算表 URI 和該區域的評估價格。
 
@@ -101,14 +96,11 @@ ms.locfileid: "86115497"
      }
 ```
 
-<a name="new-core-sizes-added-on-722019"></a>7/2/2019 新增的核心大小
----------------------------
+## <a name="new-core-sizes-added-on-722019"></a>7/2/2019 新增的核心大小
 
 針對新的 Azure 虛擬機器大小（根據核心數目），在2019年7月2日新增新價格的 VM 發行者已收到通知。  新的價格是針對核心大小10、44、48、60、120、208和416。  針對現有的 VM，會根據目前的價格自動計算這些核心大小的新價格。  發行者必須等到2019年8月1日，才能查看額外的價格，並進行任何想要的變更。  在此日期之後（如果發行者尚未重新發行），這些新核心大小自動計算的價格將會生效。
 
-
-<a name="regions"></a>區域
--------
+## <a name="regions"></a>區域
 
 下表顯示您可以為自訂核心定價指定的不同區域，以及其相對應的貨幣代碼。
 

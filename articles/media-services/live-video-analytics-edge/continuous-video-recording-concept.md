@@ -3,11 +3,12 @@ title: 連續影片錄製-Azure
 description: 連續影片錄製（CVR）是指從影片來源持續錄製影片的程式。 本主題討論 CVR 的內容。
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 9a785125d4cfb2324224f4676e1d429342ec325c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 76af97fe1398421f5f37cfca32127d926ce56bac
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84260621"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87043301"
 ---
 # <a name="continuous-video-recording"></a>連續影片錄製  
 
@@ -16,7 +17,7 @@ ms.locfileid: "84260621"
 * [媒體圖表概念](media-graph-concept.md)
 * [影片錄影概念](video-recording-concept.md)
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 連續影片錄製（CVR）是指從影片來源持續錄製影片的程式。 IoT Edge 上的即時影片分析可透過由 RTSP 來源節點和資產接收器節點組成的[媒體圖形](media-graph-concept.md)，以全天候的方式持續 CCTV 攝影機錄製影片。 下圖顯示這類 media graph 的圖形表示。 這類媒體圖形的[圖形拓撲](media-graph-concept.md?branch=release-preview-media-services-lva#media-graph-topologies-and-instances)的 JSON 表示可以在[這裡](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/cvr-asset)找到。
 
@@ -33,7 +34,7 @@ IoT Edge 上的即時影片分析支援在不理想的網路狀況下運作，Ed
     "localMediaCacheMaximumSizeMiB": "2048",
     "localMediaCachePath": "/var/lib/azuremediaservices/tmp/",
 ```
-後面兩個屬性與復原記錄相關（這兩者也是資產接收節點的必要屬性）。 LocalMediaCachePath 屬性會告知資產接收器使用該資料夾路徑來快取媒體資料，然後再上傳至資產。 您可以查看[這](https://docs.microsoft.com/azure/iot-edge/how-to-access-host-storage-from-module)篇文章，以瞭解 edge 模組如何利用您裝置的本機儲存體。 LocalMediaCacheMaximumSizeMiB 屬性會定義資產接收器可使用多少磁碟空間做為快取（1 MiB = 1024 * 1024 個位元組）。 
+後面兩個屬性與復原記錄相關（這兩者也是資產接收節點的必要屬性）。 LocalMediaCachePath 屬性會告知資產接收器使用該資料夾路徑來快取媒體資料，然後再上傳至資產。 您可以查看[這](../../iot-edge/how-to-access-host-storage-from-module.md)篇文章，以瞭解 edge 模組如何利用您裝置的本機儲存體。 LocalMediaCacheMaximumSizeMiB 屬性會定義資產接收器可使用多少磁碟空間做為快取（1 MiB = 1024 * 1024 個位元組）。 
 
 如果您的 edge 模組長時間失去連線，而且儲存在快取資料夾中的內容達到 localMediaCacheMaximumSizeMiB 值，則資產接收會開始從最舊的資料開始，捨棄快取中的資料。 例如，如果裝置在10AM 中斷連線，而快取達到下午6點的最大限制，則資產接收會開始刪除記錄在10AM 的資料。 
 
@@ -57,6 +58,6 @@ SegmentLength 屬性可確保邊緣模組每 segmentLength 秒最多可上傳一
 * [播放錄製的內容](video-playback-concept.md)
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 [教學課程：連續影片錄製](continuous-video-recording-tutorial.md)

@@ -15,18 +15,19 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
-ms.openlocfilehash: 6210d6ee4877c6ba84178340cf0a6610e402da31
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8d103e6a0f7a47aadce524325e58fbb7069a1e13
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81641112"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87042814"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>使用 Azure 媒體服務執行即時串流，以建立多位元速率串流
 
 > [!NOTE]
 > 從 2018 年 5 月 12 日開始，即時通道將不再支援 RTP/MPEG-2 傳輸串流內嵌通訊協定。 請從 RTP/MPEG-2 移轉到 RTMP 或分散式 MP4 (Smooth Streaming) 內嵌通訊協定。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 在 Azure 媒體服務 (AMS) 中， **通道** 代表一個管線，負責處理即時資料流內容。 **通道**會以兩種方式的其中一種接收即時輸入串流：
 
 * 內部部署即時編碼器會將單一位元速率串流傳送至通道，可以使用下列格式之一，以媒體服務執行即時編碼：RTMP 或 Smooth Streaming (分散的 MP4)。 通道接著會執行即時編碼，將連入的單一位元速率串流編碼成多位元速率 (自動調整) 視訊串流。 接到要求時，媒體服務會傳遞串流給客戶。
@@ -70,9 +71,9 @@ ms.locfileid: "81641112"
 | 通道狀態 | 入口網站 UI 指標 | 會計費嗎？ |
 | --- | --- | --- |
 | 啟動中 |啟動中 |無 (暫時性狀態) |
-| 執行中 |就緒 (沒有執行中的程式)<br/>或<br/>串流 (至少一個執行中的程式) |YES |
+| 正在執行 |就緒 (沒有執行中的程式)<br/>或<br/>串流 (至少一個執行中的程式) |YES |
 | 停止中 |停止中 |無 (暫時性狀態) |
-| 已停止 |已停止 |No |
+| 已停止 |已停止 |否 |
 
 ### <a name="automatic-shut-off-for-unused-channels"></a>自動關閉未使用的通道
 自 2016 年 1 月 25 日開始，媒體服務推出的更新會在 (啟用即時編碼的) 通道已長時間處於未使用的狀態時，自動停止該通道。 這適用沒有使用中程式的通道，以及已長時間未收到輸入發佈摘要的通道。
@@ -206,7 +207,7 @@ ms.locfileid: "81641112"
 #### <a name="index"></a>索引
 建議您傳送單一程式傳輸串流 (SPTS)。 如果輸入串流包含多個程式，通道內的即時編碼器會剖析輸入中的程式對應資料表 (PMT)、識別具有串流類型名稱 MPEG-2 AAC ADTS 或 AC-3 System-A 或 AC-3 System-B 或 MPEG-2 Private PES 或 MPEG-1 音訊或 MPEG-2 音訊的輸入，並以 PMT 中指定的順序加以排列。 接著會使用以零起始的索引，在排列中挑選第 n 個項目。
 
-#### <a name="language"></a>語言
+#### <a name="language"></a>Language
 音訊串流的語言識別碼，符合 ISO 639-2，例如 ENG。 如果不存在，則預設為 UND (未定義)。
 
 ### <a name="system-preset"></a><a id="preset"></a>系統預設
@@ -263,7 +264,7 @@ slate 的持續時間，以秒為單位。 必須為非零的正整數值才能�
 
 ### <a name="default-slate-asset-id"></a><a id="default_slate"></a>預設靜態圖像資產識別碼
 
-選擇性。 指定包含 slate 映像之媒體服務資產的資產識別碼。 預設值為 null。 
+選擇性。 指定包含 slate 映像之媒體服務資產的資產識別碼。 預設為 Null。 
 
 
 > [!NOTE] 
@@ -312,9 +313,9 @@ slate 的持續時間，以秒為單位。 必須為非零的正整數值才能�
 | 通道狀態 | 入口網站 UI 指標 | 是否計費？ |
 | --- | --- | --- |
 | 啟動中 |啟動中 |無 (暫時性狀態) |
-| 執行中 |就緒 (沒有執行中的程式)<br/>或<br/>串流 (至少一個執行中的程式) |Yes |
+| 正在執行 |就緒 (沒有執行中的程式)<br/>或<br/>串流 (至少一個執行中的程式) |是 |
 | 停止中 |停止中 |無 (暫時性狀態) |
-| 已停止 |已停止 |No |
+| 已停止 |已停止 |否 |
 
 > [!NOTE]
 > 目前的通道啟動平均大約是 2 分鐘，但是有時可能需要多達 20 分鐘以上的時間。 重設通道可能需要最多 5 分鐘。
@@ -343,7 +344,7 @@ slate 的持續時間，以秒為單位。 必須為非零的正整數值才能�
 
 您可以藉由瀏覽至[新增支援要求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)來開啟支援票證
 
-## <a name="next-step"></a>下一步
+## <a name="next-step"></a>後續步驟
 
 檢閱媒體服務學習路徑。
 
@@ -359,11 +360,10 @@ slate 的持續時間，以秒為單位。 必須為非零的正整數值才能�
 
 [使用 .NET SDK 建立通道，以執行從單一位元速率到自適性串流的即時編碼](media-services-dotnet-creating-live-encoder-enabled-channel.md)
 
-[使用 REST API 管理通道 (英文)](https://docs.microsoft.com/rest/api/media/operations/channel)
+[使用 REST API 管理通道 (英文)](/rest/api/media/operations/channel)
 
 [媒體服務概念](media-services-concepts.md)
 
 [Azure 媒體服務分散的未規範即時內嵌規格](../media-services-fmp4-live-ingest-overview.md)
 
 [live-overview]: ./media/media-services-manage-live-encoder-enabled-channels/media-services-live-streaming-new.png
-
