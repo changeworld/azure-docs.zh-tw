@@ -7,11 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 4/22/2018
 ms.author: xujing
-ms.openlocfilehash: f84d4fcd85f1e718f414e63bbe76fd29fa32427d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1c87c517a0013fa31ba63ef1f78677fe85f5d287
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81869573"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074269"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>適用於 Windows Server 的 Azure Hybrid Benefit
 對於擁有軟體保證的客戶，適用於 Windows Server 的 Azure Hybrid Benefit 讓您能夠以較低的成本來使用內部部署 Windows Server 授權，以及在 Azure 上執行 Windows 虛擬機器。 您可以使用適用於 Windows Server 的 Azure Hybrid Benefit 部署具有 Windows OS 的新虛擬機器。 本文章會詳述使用適用於 Windows Server 的 Azure Hybrid Benefit 來部署新 VM 的步驟，以及您如何更新現有的執行中 VM。 如需有關適用於 Windows Server 之 Azure Hybrid Benefit 的授權和節省成本詳細資訊，請參閱[適用於 Windows Server 的 Azure Hybrid Benefit 授權頁面](https://azure.microsoft.com/pricing/hybrid-use-benefit/)。
@@ -64,8 +65,8 @@ az vm create \
     --license-type Windows_Server
 ```
 
-### <a name="template"></a>[範本]
-在 Resource Manager 範本內，必須指定 `licenseType` 的額外參數。 您可以進一步了解如何[製作 Azure Resource Manager 範本](../../resource-group-authoring-templates.md)
+### <a name="template"></a>範本
+在 Resource Manager 範本內，必須指定 `licenseType` 的額外參數。 您可以進一步了解如何[製作 Azure Resource Manager 範本](../../azure-resource-manager/templates/template-syntax.md)
 ```json
 "properties": {
     "licenseType": "Windows_Server",
@@ -189,7 +190,7 @@ az vm list --query "[?licenseType=='Windows_Server']" -o table
 ## <a name="next-steps"></a>後續步驟
 - 閱讀更多有關[如何使用 Azure Hybrid Benefit 節省成本的](https://azure.microsoft.com/pricing/hybrid-use-benefit/)資訊
 - 深入了解 [Azure Hybrid Benefit 的常見問題集](https://azure.microsoft.com/pricing/hybrid-use-benefit/faq/)
-- 深入了解[適用於 Windows Server 的 Azure Hybrid Benefit 授權詳細指導方針](https://docs.microsoft.com/windows-server/get-started/azure-hybrid-benefit)
+- 深入了解[適用於 Windows Server 的 Azure Hybrid Benefit 授權詳細指導方針](/windows-server/get-started/azure-hybrid-benefit)
 - 深入了解[適用於 Windows Server 的 Azure Hybrid Benefit 和 Azure Site Recovery 能使將應用程式移轉至 Azure 更符合成本效益](https://azure.microsoft.com/blog/hybrid-use-benefit-migration-with-asr/) \(英文\)
-- 深入了解[在 Azure上使用多租用戶裝載權限的 Windows 10](https://docs.microsoft.com/azure/virtual-machines/windows/windows-desktop-multitenant-hosting-deployment) \(英文\)
+- 深入了解[在 Azure上使用多租用戶裝載權限的 Windows 10](./windows-desktop-multitenant-hosting-deployment.md) \(英文\)
 - 深入瞭解如何[使用 Resource Manager 範本](../../azure-resource-manager/management/overview.md)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 03/31/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 16c8eed3377c2191b4345ec59ec1eba8be01369d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 76c3f729a8520c7bff7b49a1d2200d7950f8a9f4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80633953"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074304"
 ---
 # <a name="vm-is-unresponsive-with-c01a001d-error-when-applying-windows-update"></a>應用 Windows Update 時，VM 沒有回應 "C01A001D" 錯誤
 
@@ -27,7 +27,7 @@ ms.locfileid: "80633953"
 
 ## <a name="symptoms"></a>徵狀
 
-使用[開機診斷](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics)來觀看 VM 的螢幕擷取畫面時，會顯示 [WINDOWS UPDATE （KB）]，但會失敗，錯誤碼為： ' C01A001D '。
+使用[開機診斷](./boot-diagnostics.md)來觀看 VM 的螢幕擷取畫面時，會顯示 [WINDOWS UPDATE （KB）]，但會失敗，錯誤碼為： ' C01A001D '。
 
 ![沒有回應的 Windows Update](./media/unresponsive-vm-apply-windows-update/unresponsive-windows-update.png)
 
@@ -49,17 +49,17 @@ ms.locfileid: "80633953"
 
 ### <a name="create-and-access-a-repair-vm"></a>建立及存取修復 VM
 
-1. 遵循[VM 修復命令的步驟 1-3](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands)來準備修復 VM。
+1. 遵循[VM 修復命令的步驟 1-3](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md)來準備修復 VM。
 2. 使用遠端桌面連線連接到修復 VM。
 
 ### <a name="free-up-space-on-the-hard-disk"></a>釋放硬碟上的空間
 
 如果磁片尚未是 1 Tb，您必須調整它的大小。 一旦磁片為 1 TB，請執行磁片清理，並進行磁片磁碟機的磁碟重組。
 
-1. 檢查磁碟是否已滿。 如果磁片低於 1 Tb，請[使用 PowerShell 將它擴展為最大 1 tb](https://docs.microsoft.com/azure/virtual-machines/windows/expand-os-disk?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json)。
+1. 檢查磁碟是否已滿。 如果磁片低於 1 Tb，請[使用 PowerShell 將它擴展為最大 1 tb](../windows/expand-os-disk.md?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json)。
 2. 一旦磁片為 1 Tb，請執行磁片清理。
-    - [從中斷的 VM 卸離資料磁片](https://docs.microsoft.com/azure/virtual-machines/windows/detach-disk)。
-    - [將資料磁片連結至運作中的 VM](https://docs.microsoft.com/azure/virtual-machines/windows/attach-disk-ps#attach-an-existing-data-disk-to-a-vm)。
+    - [從中斷的 VM 卸離資料磁片](../windows/detach-disk.md)。
+    - [將資料磁片連結至運作中的 VM](../windows/attach-disk-ps.md#attach-an-existing-data-disk-to-a-vm)。
     - 使用[磁碟清理工具](https://support.microsoft.com/help/4026616/windows-10-disk-cleanup)釋放空間。
 3. 調整大小和清除之後，重組磁片磁碟機：
 
@@ -115,4 +115,4 @@ ms.locfileid: "80633953"
 
 ### <a name="rebuild-the-vm"></a>重建 VM
 
-使用[vm 修復命令的步驟 5](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example)來重新組裝 vm。
+使用[vm 修復命令的步驟 5](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example)來重新組裝 vm。

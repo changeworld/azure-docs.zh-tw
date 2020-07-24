@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 2b901c0d77b5bd550e7e98434cf1cba2a61e6bdb
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 65679c900baaf0f98a21e4b1f6b1d350c4b945c4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656478"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074333"
 ---
 # <a name="azure-serial-console"></a>Azure 序列主控台
 
@@ -33,7 +34,7 @@ Azure 入口網站上的序列主控台可讓您針對執行 Linux 或 Windows �
 若要在 VM 或虛擬機器擴展集執行個體上執行序列主控台，您需要下列各項：
 
 - 必須為 VM 啟用開機診斷
-- 使用密碼驗證的使用者帳戶必須存在於 VM 中。 您可以使用 VM 存取擴充的[重設密碼](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password)功能，建立以密碼為基礎的使用者。 然後，選取 [支援與疑難排解] 區段中的 [重設密碼]。
+- 使用密碼驗證的使用者帳戶必須存在於 VM 中。 您可以使用 VM 存取擴充的[重設密碼](../extensions/vmaccess.md#reset-password)功能，建立以密碼為基礎的使用者。 然後，選取 [支援與疑難排解] 區段中的 [重設密碼]。
 - 存取序列主控台的 Azure 帳戶必須具有 VM的 [虛擬機器參與者角色](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)和[開機診斷](boot-diagnostics.md)儲存體帳戶
 
 > [!NOTE]
@@ -68,7 +69,7 @@ VM 的序列主控台非常簡單，只要在 Azure 入口網站的 [支援 + �
 
 
 ### <a name="tls-12-in-serial-console"></a>序列主控台中的 TLS 1.2
-序列主控台使用 TLS 1.2 端對端來保護服務內的所有通訊。 序列主控台相依於使用者管理的開機診斷儲存體帳戶，而 TLS 1.2 必須分別為儲存體帳戶進行設定。 具體執行指示位於[此處](https://docs.microsoft.com/azure/storage/common/storage-security-tls)。
+序列主控台使用 TLS 1.2 端對端來保護服務內的所有通訊。 序列主控台相依於使用者管理的開機診斷儲存體帳戶，而 TLS 1.2 必須分別為儲存體帳戶進行設定。 具體執行指示位於[此處](../../storage/common/transport-layer-security-configure-minimum-version.md)。
 
 ## <a name="advanced-uses-for-serial-console"></a>序列主控台的進階使用
 除了對 VM 的主控台存取，您也可以使用 Azure 序列主控台來進行下列動作：

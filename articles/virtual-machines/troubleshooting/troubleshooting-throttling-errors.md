@@ -13,11 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: changov
 ms.reviewer: vashan, rajraj
-ms.openlocfilehash: f5fbd80fc9a8e519cf8f49ab16d7e747c6a8171b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b1cc8a43423ecd33218948aaa001fc34877eac60
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76045354"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074282"
 ---
 # <a name="troubleshooting-api-throttling-errors"></a>針對 API 節流錯誤進行疑難排解 
 
@@ -25,13 +26,13 @@ Azure 計算要求可在訂用帳戶上和個別區域中受到節流，以利�
 
 ## <a name="throttling-by-azure-resource-manager-vs-resource-providers"></a>Azure Resource Manager 與資源提供者的節流  
 
-作為 Azure 的主要進入點，Azure Resource Manager 會對所有內送的 API 要求進行驗證、一級驗證和節流。 Azure Resource Manager 的呼叫率限制和相關的診斷回應 HTTP 標頭說明於[此處](https://docs.microsoft.com/azure/azure-resource-manager/management/request-limits-and-throttling)。
+作為 Azure 的主要進入點，Azure Resource Manager 會對所有內送的 API 要求進行驗證、一級驗證和節流。 Azure Resource Manager 的呼叫率限制和相關的診斷回應 HTTP 標頭說明於[此處](../../azure-resource-manager/management/request-limits-and-throttling.md)。
  
 當 Azure API 用戶端發生節流錯誤時，HTTP 狀態會是「429 要求太多」。 若要了解要求節流是由 Azure Resource Manager 還是 CRP 之類的基礎資源提供者所執行，請檢查 GET 要求的 `x-ms-ratelimit-remaining-subscription-reads` 和非 GET 要求的 `x-ms-ratelimit-remaining-subscription-writes` 回應標頭。 如果剩餘的呼叫計數趨近於 0，表示已達到 Azure 資源管理員所定義的訂用帳戶一般呼叫限制。 所有訂用帳戶用戶端的活動會一起計算。 若非如此，表示節流來自於目標資源提供者 (要求 URL 的 `/providers/<RP>` 區段所指出的提供者)。 
 
 ## <a name="call-rate-informational-response-headers"></a>呼叫率資訊回應標頭 
 
-| Header                            | 值格式                           | 範例                               | 描述                                                                                                                                                                                               |
+| 頁首                            | 值格式                           | 範例                               | 描述                                                                                                                                                                                               |
 |-----------------------------------|----------------------------------------|---------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | x-ms-ratelimit-remaining-resource |```<source RP>/<policy or bucket>;<count>```| Microsoft.Compute/HighCostGet3Min;159 | 涵蓋資源貯體或作業群組 (包括此要求的目標) 的節流原則剩餘的 API 呼叫計數                                                                   |
 | x-ms-request-charge               | ```<count>```                             | 1                                     | 此 HTTP 要求計入適用原則限制的呼叫計數。 此值通常是 1。 對於批次要求 (例如，用來調整虛擬機器擴展集)，則可能計入多個計數。 |
@@ -78,8 +79,8 @@ Content-Type: application/json; charset=utf-8
 
 ## <a name="api-call-rate-and-throttling-error-analyzer"></a>API 呼叫率和節流處理錯誤分析器
 「計算」資源提供者的 API 有一個可用的預覽版疑難排解功能。 這些 PowerShell Cmdlet 提供與每一作業每一時間間隔之 API 要求率及每一作業群組 (原則) 之節流處理違規相關的統計資料：
--   [Export-AzLogAnalyticRequestRateByInterval](https://docs.microsoft.com/powershell/module/az.compute/export-azloganalyticrequestratebyinterval)
--   [匯出-AzLogAnalyticThrottledRequest](https://docs.microsoft.com/powershell/module/az.compute/export-azloganalyticthrottledrequest)
+-   [Export-AzLogAnalyticRequestRateByInterval](/powershell/module/az.compute/export-azloganalyticrequestratebyinterval)
+-   [匯出-AzLogAnalyticThrottledRequest](/powershell/module/az.compute/export-azloganalyticthrottledrequest)
 
 API 呼叫統計資料可提供訂用帳戶用戶端行為的絕佳深入解析，讓您能夠輕鬆識別出造成節流的呼叫模式。
 
@@ -99,4 +100,4 @@ PowerShell Cmdlet 目前使用 REST 服務 API，這是用戶端可直接輕鬆�
 
 ## <a name="next-steps"></a>後續步驟
 
-若想進一步了解 Azure 中其他資源的重試指引，請參閱[特定服務的重試指引](https://docs.microsoft.com/azure/architecture/best-practices/retry-service-specific)
+若想進一步了解 Azure 中其他資源的重試指引，請參閱[特定服務的重試指引](/azure/architecture/best-practices/retry-service-specific)

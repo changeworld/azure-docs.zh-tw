@@ -13,13 +13,14 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 3ad68438f5fc015b6a9150d67485b90a095f1a4a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 545399e1d7941351ce861ac98d995d5e57006ea1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79250084"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074367"
 ---
-# <a name="use-serial-console-for-sysrq-and-nmi-calls"></a>使用適用於 SysRq 和 NMI 呼叫的序列主控台
+# <a name="use-the-azure-serial-console-for-sysrq-and-nmi-calls"></a>使用 Azure 序列主控台進行 SysRq 和 NMI 呼叫
 
 ## <a name="system-request-sysrq"></a>系統要求 (SysRq)
 SysRq 是可讓 Linux 作業系統核心理解的按鍵序列，可觸發一組預先定義的動作。 當虛擬機器疑難排解或復原無法透過傳統系統管理（例如，如果 VM 沒有回應）執行時，通常會使用這些命令。 使用 Azure 序列主控台的 SysRq 功能，就像按下 SysRq 鍵及在實體鍵盤上輸入的字元。
@@ -28,11 +29,11 @@ SysRq 序列傳遞出去後，核心組態將會控制系統的回應方式。 �
 
 使用命令列中的鍵盤圖示，即可使用 Azure 序列主控台將 SysRq 傳送至 Azure 虛擬機器，如下所示。
 
-![](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg)
+![Azure 序列主控台的螢幕擷取畫面。 鍵盤圖示會反白顯示，並顯示其功能表。 該功能表包含傳送 SysRq 命令專案。](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg)
 
 選擇 [傳送 SysRq 命令] 後會開啟對話方塊，其中會提供一般 SysRq 選項，或接受輸入至對話方塊中的一串 SysRq 命令。  這可讓一系列 SysRq 命令執行高階作業，例如，使用 `REISUB` 進行安全的重新開機。
 
-![](../media/virtual-machines-serial-console/virtual-machine-serial-console-sysreq_UI.png)
+![[將 SysRq 命令傳送給來賓] 對話方塊的螢幕擷取畫面。 已選取 [輸入命令] 選項，而且 [命令] 方塊包含 REISUB。](../media/virtual-machines-serial-console/virtual-machine-serial-console-sysreq_UI.png)
 
 SysRq 命令不能在已停止或其核心處於無回應狀態 (例如內核錯誤) 的虛擬機器上使用 。
 
@@ -50,7 +51,7 @@ echo "1" >/proc/sys/kernel/sysrq
 ### <a name="command-keys"></a>命令鍵
 來自上述的 SysRq 系統管理指南：
 
-|Command| 函式
+|命令| 函式
 | ------| ----------- |
 |``b``  |   將立即重新啟動系統，並且不會同步或取消掛接磁碟。
 |``c``  |   將執行 NULL 指標取值 (Dereference) 引起的系統損壞。 如有設定，將會採用損毀傾印 (crashdump)。
@@ -101,7 +102,7 @@ echo "1" >/proc/sys/kernel/sysrq
 
 使用序列主控台命令列中的鍵盤圖示，即可將 NMI 傳送至 Azure 虛擬機器，如下所示。 NMI 序列傳遞出去後，虛擬機器組態將會控制系統的回應方式。  Linux 作業系統可以設定為損毀，並在作業系統收到 NMI 時，建立記憶體傾印。
 
-![](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg) <br>
+![序列主控台的螢幕擷取畫面。 鍵盤圖示會反白顯示，並顯示其功能表。 該功能表包含 [傳送非遮罩式插斷] 專案。](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg) <br>
 
 ### <a name="enable-nmi"></a>啟用 NMI
 針對支援 sysctl 來設定核心參數的 Linux 系統，您可以在收到此 NMI 時，使用下列命令來引發系統異常：

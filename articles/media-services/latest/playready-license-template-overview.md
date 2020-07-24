@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2018
 ms.author: juliako
-ms.openlocfilehash: 0588f02c6dfb557f32aae56dc742b9390c3cdbcb
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: ba4b8de4b8cf1d1d1b8124185a8006eb7695b21e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955075"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074507"
 ---
 # <a name="media-services-v3-with-playready-license-template"></a>使用 PlayReady 授權範本媒體服務 v3 
 
@@ -62,7 +62,7 @@ XML 需符合 [PlayReady 授權範本 XML 結構描述](#schema)一節中定義�
 
 媒體服務會提供您可以用來設定 PlayReady 授權範本的類型。 
 
-接下來的程式碼片段會使用媒體服務 .NET 類別來設定 PlayReady 授權範本。 類別會定義於 [Microsoft.Azure.Management.Media.Models](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models?view=azure-dotnet) 命名空間。 程式碼片段會設定 PlayReady 授權的 PlayRight。 PlayRight 會授與使用者針對於授權中及 PlayRight 本身 (適用於播放特定原則) 上有設定任何限制的內容播放能力。 PlayRight 中大部分的原則都與輸出限制有關，這些限制能夠控制可播放該內容的輸出類型。 它也包括使用指定輸出時必須設置的任何限制。 例如，如果啟用 DigitalVideoOnlyContentRestriction，DRM 執行階段就會限制只能透過數位輸出顯示該影片。 (不允許透過類比視訊輸出傳遞內容)。
+接下來的程式碼片段會使用媒體服務 .NET 類別來設定 PlayReady 授權範本。 類別會定義於 [Microsoft.Azure.Management.Media.Models](/dotnet/api/microsoft.azure.management.media.models?view=azure-dotnet) 命名空間。 程式碼片段會設定 PlayReady 授權的 PlayRight。 PlayRight 會授與使用者針對於授權中及 PlayRight 本身 (適用於播放特定原則) 上有設定任何限制的內容播放能力。 PlayRight 中大部分的原則都與輸出限制有關，這些限制能夠控制可播放該內容的輸出類型。 它也包括使用指定輸出時必須設置的任何限制。 例如，如果啟用 DigitalVideoOnlyContentRestriction，DRM 執行階段就會限制只能透過數位輸出顯示該影片。 (不允許透過類比視訊輸出傳遞內容)。
 
 > [!IMPORTANT]
 > PlayReady 授權擁有功能強大的限制。 如果輸出保護的限制太多，內容就可能無法在某些用戶端上播放。 如需詳細資訊，請參閱 [PlayReady 合規性規則](https://www.microsoft.com/playready/licensing/compliance/) \(英文\)。

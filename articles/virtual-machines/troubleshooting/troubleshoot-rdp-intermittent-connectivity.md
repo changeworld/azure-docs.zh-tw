@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/24/2018
 ms.author: genli
-ms.openlocfilehash: eec52fb2342ee85932a6e24aa4cb292496beccad
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 60be7c234a0166331c35eb6528eae11bfbbf518f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087294"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074320"
 ---
 # <a name="remote-desktop-disconnects-frequently-in-azure-vm"></a>Azure VM 中的遠端桌面時常斷線
 
@@ -95,7 +95,7 @@ ms.locfileid: "86087294"
 
 ### <a name="repair-the-vm-offline"></a>修復離線的 VM
 
-1. [將 OS 磁片連結至復原 VM](../windows/troubleshoot-recovery-disks-portal.md)。
+1. [將 OS 磁片連結至復原 VM](./troubleshoot-recovery-disks-portal-windows.md)。
 2. 在 OS 磁碟連結至復原 VM 後，請確定該磁碟在磁碟管理主控台中標示為 [線上]****。 記下指派給已連結 OS 磁碟的磁碟機代號。
 3. 在您連接的 OS 磁碟上，瀏覽至 **\windows\system32\config** 資料夾。 複製此資料夾中的所有檔案作為備份，以在需要復原時使用。
 4. 啟動 [登錄編輯程式] (regedit.exe)。
@@ -184,8 +184,3 @@ ms.locfileid: "86087294"
 
 ## <a name="need-help"></a>需要協助嗎？ 
 請連絡支援人員。 如果仍需要協助，請[連絡支援人員](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解決您的問題。
-
-
-
-
-
