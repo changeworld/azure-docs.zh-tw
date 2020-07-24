@@ -14,16 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2016
 ms.author: alkohli
-ms.openlocfilehash: 1596503f5f0a333bf061015827596464aed7558e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dd82f7dd821991bbcf57cc7d8105575e0baa4d12
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513638"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87070702"
 ---
 # <a name="clone-from-a-backup-of-your-storsimple-virtual-array"></a>從 StorSimple Virtual Array 的備份複製
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 本文逐步說明如何複製 Microsoft Azure StorSimple Virtual Array 上的共用或磁碟區的備份組。 複製的備份用來復原已刪除或遺失的檔案。 本文也包含如何在設定為檔案伺服器的 StorSimple Virtual Array 上執行項目層級復原的詳細步驟。
 
@@ -33,7 +33,7 @@ ms.locfileid: "85513638"
 
 #### <a name="to-clone-a-share"></a>複製共用
 
-1. 瀏覽至 [裝置]**** 刀鋒視窗。 選取並按一下您的裝置，然後按一下 [共用]****。 選取您想要複製的共用，以滑鼠右鍵按一下共用以叫用操作功能表。 選取 [複製]****。
+1. 瀏覽至 [裝置]**** 刀鋒視窗。 選取並按一下您的裝置，然後按一下 [共用]****。 選取您想要複製的共用，以滑鼠右鍵按一下共用以叫用操作功能表。 選取 [複製]。
    
    ![複製備份](./media/storsimple-virtual-array-clone/cloneshare1.png)
 2. 在 [複製]**** 刀鋒視窗中，按一下 [備份] > [選取]****，然後執行下列動作︰ 
@@ -42,7 +42,7 @@ ms.locfileid: "85513638"
    
    b.    在顯示的已篩選備份清單中，選取要複製的備份。
    
-   c.    按一下 [確定]。
+   c.    按一下 [確定]  。
    
    ![複製備份](./media/storsimple-virtual-array-clone/cloneshare3.png)
 3. 在 [複製]**** 刀鋒視窗中，按一下 [目標設定]****，然後執行下列動作︰
@@ -57,7 +57,7 @@ ms.locfileid: "85513638"
    
    e.    指派此共用的系統管理員。 複製完成後，您可以透過 [檔案總管] 修改共用內容。
    
-   f.    按一下 [確定]。
+   f.    按一下 [確定]  。
    
    ![複製備份](./media/storsimple-virtual-array-clone/cloneshare6.png)
 
@@ -73,7 +73,7 @@ ms.locfileid: "85513638"
 
 #### <a name="to-clone-a-volume"></a>若要複製磁碟區
 
-1. 瀏覽至 [裝置]**** 刀鋒視窗。 選取並按一下您的裝置，然後按一下 [磁碟區]****。 選取您想要複製的磁碟區，以滑鼠右鍵按一下磁碟區以叫用操作功能表。 選取 [複製]****。
+1. 瀏覽至 [裝置]**** 刀鋒視窗。 選取並按一下您的裝置，然後按一下 [磁碟區]****。 選取您想要複製的磁碟區，以滑鼠右鍵按一下磁碟區以叫用操作功能表。 選取 [複製]。
    
    ![複製磁碟區](./media/storsimple-virtual-array-clone/clonevolume1.png)
 2. 在 [複製]**** 刀鋒視窗中，按一下 [備份]****，然後執行下列動作︰ 
@@ -82,7 +82,7 @@ ms.locfileid: "85513638"
    
    b.    在顯示的已篩選備份清單中，選取要複製的備份。
    
-   c.    按一下 [確定]。
+   c.    按一下 [確定]  。
    
    ![複製備份](./media/storsimple-virtual-array-clone/clonevolume3.png)
 3. 在 [複製]**** 刀鋒視窗中，按一下 [目標磁碟區設定]****，然後執行下列動作︰
@@ -127,7 +127,7 @@ ms.locfileid: "85513638"
    * **排程備份**，命名為 &lt;裝置名稱&gt;DailySchedule-YYYYMMDD-HHMMSS-UTC。
    * **手動備份** ，命名為 Ad-hoc-YYYYMMDD-HHMMSS-UTC。
      
-     ![](./media/storsimple-virtual-array-clone/image14.png)
+     ![檔案瀏覽器的螢幕擷取畫面，其中顯示 [備份] 資料夾。 在該資料夾內，會選取 [手動備份] 資料夾。](./media/storsimple-virtual-array-clone/image14.png)
 
 2. 識別包含已刪除檔案之最新版本的備份。 在上述所有情況下，雖然資料夾名稱包含 UTC 時間戳記，但是資料夾建立時間是備份啟動時的實際裝置時間。 使用資料夾時間戳記來尋找並識別備份。
 

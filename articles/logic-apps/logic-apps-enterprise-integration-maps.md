@@ -8,11 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/06/2019
-ms.openlocfilehash: e186b9713c8464f8f37e1e0bf112c4118621925c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ff6bd1a52e05d55d43969644141f39aed8c8eb63
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75979416"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072653"
 ---
 # <a name="transform-xml-with-maps-in-azure-logic-apps-with-enterprise-integration-pack"></a>使用 Enterprise Integration Pack 在 Azure Logic Apps 中以對應來轉換 XML
 
@@ -22,7 +23,7 @@ ms.locfileid: "75979416"
 
 針對與整合帳戶和成品 (例如對應) 的限制，請參閱 [Azure Logic Apps 的限制與設定資訊](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits).
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 * Azure 訂用帳戶。 如果您沒有訂用帳戶，請[註冊一個免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
@@ -35,14 +36,14 @@ ms.locfileid: "75979416"
   * 針對組件，您需要 Azure Blob 容器 (以在其中上傳您的組件) 與該容器的位置。 如此一來，您就可以在稍後將組件新增到您的整合帳戶時提供該位置。 
   針對此工作，您需要下列項目：
 
-    | 項目 | 說明 |
+    | 項目 | 描述 |
     |------|-------------|
     | [Azure 儲存體帳戶](../storage/common/storage-account-overview.md) | 在此帳戶中，為您的組件建立 Azure Blob 容器。 瞭解[如何建立儲存體帳戶](../storage/common/storage-account-create.md)。 |
     | Blob 容器 | 在此容器中，您可以上傳您的組件。 當您將組件新增到您的整合帳戶時，您也需要此容器的位置。 了解如何[建立 Blob 容器](../storage/blobs/storage-quickstart-blobs-portal.md)。 |
     | [Azure 儲存體總管](../vs-azure-tools-storage-manage-with-storage-explorer.md) | 此工具可協助您更輕鬆地管理儲存體帳戶與 Blob 容器。 若要使用 [儲存體總管]，請[下載並安裝 Azure 儲存體總管](https://www.storageexplorer.com/)。 接著，依照[開始使用儲存體總管](../vs-azure-tools-storage-manage-with-storage-explorer.md) [儲存體總管] 連線到您的儲存體帳戶。 若要深入瞭解，請參閱[快速入門：使用 Azure 儲存體總管在物件儲存體中建立 blob](../storage/blobs/storage-quickstart-blobs-storage-explorer.md)。 <p>或者，在 Azure 入口網站中，尋找並選取您的儲存體帳戶。 從您的儲存體帳戶功能表，選取 [儲存體總管]****。 |
     |||
 
-  * 針對對應，您目前可以使用 [Azure Logic Apps REST API - 對應](https://docs.microsoft.com/rest/api/logic/maps/createorupdate)新增更大的對應。
+  * 針對對應，您目前可以使用 [Azure Logic Apps REST API - 對應](/rest/api/logic/maps/createorupdate)新增更大的對應。
 
 建立並新增對應時，不需要邏輯應用程式。 不過，若要使用對應，您的邏輯應用程式必須連結到您在其中儲存對應的整合帳戶。 了解[如何將邏輯應用程式連結到整合帳戶](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account)。 如果您尚未擁有邏輯應用程式，請了解[如何建立邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
@@ -112,7 +113,7 @@ ms.locfileid: "75979416"
 
    * 如果您的 blob 容器至少具有公用存取權，請選擇 [**取消**]，並遵循此頁面稍後的下列步驟：[上傳至具有公用存取權的容器](#public-access-assemblies)
 
-     ![公用存取權](media/logic-apps-enterprise-integration-schemas/azure-blob-container-public-access.png)
+     ![公用存取](media/logic-apps-enterprise-integration-schemas/azure-blob-container-public-access.png)
 
    * 如果您的 blob 容器沒有公用存取權，請選擇 [**取消**]，並遵循此頁面稍後的下列步驟：[上傳至沒有公用存取權的容器](#no-public-access-assemblies)
 
@@ -219,7 +220,7 @@ ms.locfileid: "75979416"
 
 ### <a name="add-maps-more-than-2-mb"></a>新增大小超過 2 MB 的對應
 
-目前，若要新增較大的對應，請使用 [Azure Logic Apps REST API - 對應](https://docs.microsoft.com/rest/api/logic/maps/createorupdate)。
+目前，若要新增較大的對應，請使用 [Azure Logic Apps REST API - 對應](/rest/api/logic/maps/createorupdate)。
 
 <!--
 

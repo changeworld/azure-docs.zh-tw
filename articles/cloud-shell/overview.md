@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/03/2019
 ms.author: damaerte
-ms.openlocfilehash: 513c3da8031774f5f111ee357b5a3c43e1d09d95
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d0cfd428e1bd380d17049cbc229bb8850793056e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75832481"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073026"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Azure Cloud Shell 的概觀
 Azure Cloud Shell 是可經由瀏覽器存取的已驗證互動式殼層，應用在 Azure 資源管理上。
@@ -32,7 +33,7 @@ Azure Cloud Shell 是可經由瀏覽器存取的已驗證互動式殼層，應�
 
 ![入口網站啟動](media/overview/portal-launch-icon.png)
 
-## <a name="features"></a>特性
+## <a name="features"></a>功能
 
 ### <a name="browser-based-shell-experience"></a>以瀏覽器為基礎的體驗
 Cloud Shell 以 Azure 管理工作為考量，提供以瀏覽器存取命令列的體驗。
@@ -60,15 +61,15 @@ Cloud Shell 提供一種以開放原始碼 Monaco Editor 為基礎的整合式�
 
 ### <a name="integrated-with-docsmicrosoftcom"></a>與 docs.microsoft.com 整合
 
-您可以直接從 [docs.microsoft.com](https://docs.microsoft.com)上裝載的文件使用 Cloud Shell。 它整合在 [Microsoft Learn](https://docs.microsoft.com/learn/)、[Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) 和 [Azure CLI documentation](https://docs.microsoft.com/cli/azure) 中 - 按一下程式碼片段中的 [試試看] 按鈕，即可開啟沈浸式殼層體驗。 
+您可以直接從 [docs.microsoft.com](https://docs.microsoft.com)上裝載的文件使用 Cloud Shell。 它整合在 [Microsoft Learn](https://docs.microsoft.com/learn/)、[Azure PowerShell](https://docs.microsoft.com/powershell/azure/) 和 [Azure CLI documentation](https://docs.microsoft.com/cli/azure) 中 - 按一下程式碼片段中的 [試試看] 按鈕，即可開啟沈浸式殼層體驗。 
 
 ### <a name="multiple-access-points"></a>多個存取點
 您可以從下列位置使用 Cloud Shell 這個彈性的工具：
 * [portal.azure.com](https://portal.azure.com)
 * [shell.azure.com](https://shell.azure.com)
 * [Azure CLI 檔](https://docs.microsoft.com/cli/azure)
-* [Azure PowerShell 文件](https://docs.microsoft.com/powershell/azure/overview)
-* [Azure 行動裝置應用程式](https://azure.microsoft.com/features/azure-portal/mobile-app/)
+* [Azure PowerShell 文件](https://docs.microsoft.com/powershell/azure/)
+* [Azure 行動應用程式](https://azure.microsoft.com/features/azure-portal/mobile-app/)
 * [Visual Studio Code Azure 帳戶延伸模組](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)
 
 ### <a name="connect-your-microsoft-azure-files-storage"></a>連線 Microsoft Azure 檔案儲存體

@@ -7,17 +7,18 @@ ms.topic: reference
 ms.date: 07/03/2019
 ms.author: vitalyg
 ms.subservice: application-insights
-ms.openlocfilehash: 12bc51e800ef5ccd4ad3c72d3860fb22bac5b749
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ca8aa62c4119b9b0b7bbed53cf722c694696ef5b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77664910"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073566"
 ---
 # <a name="application-insights-log-based-metrics"></a>Application Insights 以記錄為基礎的計量
 
 Application Insights 以記錄為基礎的計量可讓您分析受監視應用程式的健康情況、建立強大的儀表板，以及設定警示。 計量有兩種：
 
-* 場景後方以[記錄為基礎的度量](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#log-based-metrics)會從預存事件轉譯成[Kusto 查詢](https://docs.microsoft.com/azure/kusto/query/)。
+* 場景後方以[記錄為基礎的度量](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#log-based-metrics)會從預存事件轉譯成[Kusto 查詢](/azure/kusto/query/)。
 * [標準計量](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#pre-aggregated-metrics)會儲存為預先匯總的時間序列。
 
 由於*標準計量*會在集合期間預先匯總，因此在查詢時會有較佳的效能。 這讓它們成為儀表板管理和即時警示的較佳選擇。 以*記錄為基礎的度量*有更多維度，這使得它們成為資料分析和臨機操作診斷的絕佳選項。 使用[命名空間選取器](metrics-getting-started.md#create-your-first-metric-chart)，在[計量瀏覽器](metrics-getting-started.md)中切換記錄式和標準計量。
@@ -97,7 +98,7 @@ availabilityResults
 
 |測量單位|支援的匯總|預先匯總的維度|
 |---|---|---|
-|毫秒|平均值、最小值、最大值|None|
+|毫秒|平均值、最小值、最大值|無|
 
 ```Kusto
 browserTimings
@@ -113,7 +114,7 @@ browserTimings
 
 |測量單位|支援的匯總|預先匯總的維度|
 |---|---|---|
-|毫秒|平均值、最小值、最大值|None|
+|毫秒|平均值、最小值、最大值|無|
 
 ```Kusto
 browserTimings
@@ -129,7 +130,7 @@ browserTimings
 
 |測量單位|支援的匯總|預先匯總的維度|
 |---|---|---|
-|毫秒|平均值、最小值、最大值|None|
+|毫秒|平均值、最小值、最大值|無|
 
 ```Kusto
 browserTimings
@@ -145,7 +146,7 @@ browserTimings
 
 |測量單位|支援的匯總|預先匯總的維度|
 |---|---|---|
-|毫秒|平均值、最小值、最大值|None|
+|毫秒|平均值、最小值、最大值|無|
 
 ```Kusto
 browserTimings
@@ -161,7 +162,7 @@ browserTimings
 
 |測量單位|支援的匯總|預先匯總的維度|
 |---|---|---|
-|毫秒|平均值、最小值、最大值|None|
+|毫秒|平均值、最小值、最大值|無|
 
 ```Kusto
 browserTimings
@@ -181,9 +182,9 @@ browserTimings
 
 此標準會反映在瀏覽器中執行的應用程式程式碼所擲回的例外狀況數目。 只有使用 Application Insights API 呼叫追蹤的例外狀況才 ```trackException()``` 會包含在度量中。
 
-|測量單位|支援的匯總|預先匯總的維度|備註|
+|測量單位|支援的匯總|預先匯總的維度|附註|
 |---|---|---|---|
-|Count|Count|None|以記錄為基礎的版本使用**Sum**匯總|
+|Count|Count|無|以記錄為基礎的版本使用**Sum**匯總|
 
 ```Kusto
 exceptions
@@ -196,9 +197,9 @@ exceptions
 
 失敗的相依性呼叫數目。
 
-|測量單位|支援的匯總|預先匯總的維度|備註|
+|測量單位|支援的匯總|預先匯總的維度|附註|
 |---|---|---|---|
-|Count|Count|None|以記錄為基礎的版本使用**Sum**匯總|
+|Count|Count|無|以記錄為基礎的版本使用**Sum**匯總|
 
 ```Kusto
 dependencies
@@ -211,7 +212,7 @@ dependencies
 
 每次當您將例外狀況記錄到 Application Insights 時，就會呼叫 SDK 的[trackException （）方法](../../azure-monitor/app/api-custom-events-metrics.md#trackexception)。 [例外狀況] 度量會顯示已記錄的例外狀況數目。
 
-|測量單位|支援的匯總|預先匯總的維度|備註|
+|測量單位|支援的匯總|預先匯總的維度|附註|
 |---|---|---|---|
 |Count|Count|雲端角色名稱、雲端角色實例、裝置類型|以記錄為基礎的版本使用**Sum**匯總|
 
@@ -225,7 +226,7 @@ exceptions
 
 標示為*失敗*的追蹤伺服器要求計數。 根據預設，Application Insights SDK 會自動將傳回 HTTP 回應碼5xx 或4xx 的每個伺服器要求標示為失敗的要求。 您可以在[自訂遙測初始化運算式](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)中修改要求遙測專案的*success*屬性，以自訂此邏輯。
 
-|測量單位|支援的匯總|預先匯總的維度|備註|
+|測量單位|支援的匯總|預先匯總的維度|附註|
 |---|---|---|---|
 |Count|Count|雲端角色實例，雲端角色名稱，實際或綜合流量，要求效能，回應碼|以記錄為基礎的版本使用**Sum**匯總|
 
@@ -240,7 +241,7 @@ requests
 
 此度量會顯示伺服器例外狀況的數目。
 
-|測量單位|支援的匯總|預先匯總的維度|備註|
+|測量單位|支援的匯總|預先匯總的維度|附註|
 |---|---|---|---|
 |Count|Count|雲端角色名稱、雲端角色實例|以記錄為基礎的版本使用**Sum**匯總|
 

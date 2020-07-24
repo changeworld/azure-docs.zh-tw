@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: aec3fe2386ce916c556f6da295a8554fff140259
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a183589c3e5274cf747164cdc33d46044f95e716
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708870"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073689"
 ---
 # <a name="agent-data-sources-in-azure-monitor"></a>Azure 監視器中的代理程式資料來源
 Azure 監視器從代理程式收集的資料由您設定的資料來源設定。  系統會將來自代理程式的資料連同一組記錄儲存成[記錄資料](data-platform-logs.md)。  每個資料來源都會建立特定類型的記錄，每種類型各有自己的一組屬性。
@@ -46,7 +47,7 @@ Azure 監視器從代理程式收集的資料由您設定的資料來源設定�
 ## <a name="data-collection"></a>資料收集
 系統會在幾分鐘內，將資料來源組態傳遞給直接連接到 Azure 監視器的代理程式。  系統會從代理程式收集指定的資料，並依據每個資料來源特定的時間間隔，直接傳遞給 Azure 監視器。  請參閱每個資料來源的文件，以了解這些特性。
 
-若是已連接管理群組中的 System Center Operations Manager 代理程式，系統會將資料來源組態轉譯為管理組件，並依預設每隔 5 分鐘傳遞給管理群組。  如同其他任何代理程式一樣，此代理程式也會下載管理組件，並收集指定的資料。 視資料來源而定，資料會傳送至管理伺服器，而管理伺服器再將資料轉送至 Azure 監視器，或者，由這個代理程式直接將資料傳送至 Azure 監視器，而沒有經過管理伺服器。 如需詳細資訊，請參閱 [Azure 中監視解決方案的資料收集詳細資料](../insights/solutions-inventory.md)。  您可以閱讀連接 Operations Manager 與 Azure 監視器的詳細資訊，以及修改在[設定與 System Center Operations Manager 的整合](om-agents.md)時傳遞之組態頻率的詳細資訊。
+若是已連接管理群組中的 System Center Operations Manager 代理程式，系統會將資料來源組態轉譯為管理組件，並依預設每隔 5 分鐘傳遞給管理群組。  如同其他任何代理程式一樣，此代理程式也會下載管理組件，並收集指定的資料。 視資料來源而定，資料會傳送至管理伺服器，而管理伺服器再將資料轉送至 Azure 監視器，或者，由這個代理程式直接將資料傳送至 Azure 監視器，而沒有經過管理伺服器。 如需詳細資訊，請參閱 [Azure 中監視解決方案的資料收集詳細資料](../monitor-reference.md)。  您可以閱讀連接 Operations Manager 與 Azure 監視器的詳細資訊，以及修改在[設定與 System Center Operations Manager 的整合](om-agents.md)時傳遞之組態頻率的詳細資訊。
 
 如果代理程式無法連接到 Azure 監視器或 Operations Manager，它將會繼續收集資料，以便在建立連線時進行傳遞。  如果資料量達到用戶端的快取大小上限，或者代理程式無法在 24 小時內建立連線，可能就會遺失資料。
 

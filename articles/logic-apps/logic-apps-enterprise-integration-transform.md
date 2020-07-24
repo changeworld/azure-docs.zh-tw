@@ -8,11 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 07/08/2016
-ms.openlocfilehash: 500769a39ba7658b35c1abb80101f6234170c941
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 38861ed941d49317e69bfab9afd17638a790bf7b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74792388"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072433"
 ---
 # <a name="create-maps-that-transform-xml-between-formats-in-azure-logic-apps-with-enterprise-integration-pack"></a>在採用 Enterprise Integration Pack 的 Azure Logic Apps 中建立對應，以轉換 XML 格式
 
@@ -37,11 +38,11 @@ ms.locfileid: "74792388"
 
 1. 建立邏輯應用程式，並將[它連結到](../logic-apps/logic-apps-enterprise-integration-accounts.md "瞭解如何將整合帳戶連結至邏輯應用程式")包含對應的整合帳戶。
 2. 將**要求**觸發程序新增至邏輯應用程式  
-   ![](./media/logic-apps-enterprise-integration-transforms/transform-1.png)    
+   ![[顯示 Microsoft 受控 Api] 下拉式清單中已選取要求觸發程式的螢幕擷取畫面。 下拉式清單位於使用 Visual Studio Enterprise 整合 SDK 所建立的邏輯應用程式中。](./media/logic-apps-enterprise-integration-transforms/transform-1.png)    
 3. 先選取 [新增動作]**** 來新增 [轉換 XML]**** 動作   
-   ![](./media/logic-apps-enterprise-integration-transforms/transform-2.png)   
+   ![顯示在 [要求觸發程式] 畫面中選取 [新增動作] 按鈕的螢幕擷取畫面。](./media/logic-apps-enterprise-integration-transforms/transform-2.png)   
 4. 在搜尋方塊中輸入「轉換」**，篩選所有動作以取得您想要使用的動作  
-   ![](./media/logic-apps-enterprise-integration-transforms/transform-3.png)  
+   ![螢幕擷取畫面：顯示如何在 [顯示 Microsoft 受控 Api] 下拉式清單中搜尋 [轉換 XML] 動作，使其可以新增至要求觸發程式。](./media/logic-apps-enterprise-integration-transforms/transform-3.png)  
 5. 選取 [轉換 XML]**** 動作   
 6. 新增您將轉換的 XML **內容**。 您可以使用在 HTTP 要求中收到的任何 XML 資料做為 **內容**。 在此範例中，選取觸發邏輯應用程式的 HTTP 要求本文。
 
@@ -50,9 +51,9 @@ ms.locfileid: "74792388"
  
 
 7. 選取您想要用來執行轉換的 **對應** 名稱。 對應必須已經位於您的整合帳戶中。 在先前步驟中，您已經為邏輯應用程式提供權限來存取包含對應的整合帳戶。      
-   ![](./media/logic-apps-enterprise-integration-transforms/transform-4.png) 
+   ![螢幕擷取畫面，顯示要求觸發程式的 [轉換 XML] 畫面中的內容和對應欄位。](./media/logic-apps-enterprise-integration-transforms/transform-4.png) 
 8. 儲存您的工作   
-    ![](./media/logic-apps-enterprise-integration-transforms/transform-5.png) 
+    ![顯示 Logic Apps 設計工具中 [儲存] 按鈕的螢幕擷取畫面。](./media/logic-apps-enterprise-integration-transforms/transform-5.png) 
 
 此時，您已完成設定對應。 在真實世界應用程式中，您可能想要在 LOB 應用程式 (例如 SalesForce) 中儲存已轉換的資料。 您可以輕鬆新增動作，來將轉換的輸出傳送到 Salesforce。 
 

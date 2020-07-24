@@ -13,11 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/04/2018
 ms.author: mikeray
-ms.openlocfilehash: 1a19bf26418d6a61d3aa2421957614abe6dd04e8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 27438b0729aa309878eb54a346f04754cb983af1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84669187"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073271"
 ---
 # <a name="backup-and-restore-for-sql-server-on-azure-vms"></a>Azure VM 上的 SQL Server 備份與還原
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -126,7 +127,7 @@ SQL Server 2016 和更新版本的 VM，會透過自動備份 v2 提供更多自
 
 下表會摘要說明適用於 Azure 中 SQL Server 虛擬機器的每個備份和還原選項功能。
 
-|| **自動備份** | **適用於 SQL 的 Azure 備份** | **手動備份** |
+| 選項 | 自動備份 | 適用於 SQL 的 Azure 備份 | 手動備份 |
 |---|---|---|---|
 | 需要其他 Azure 服務 |   | ![是](./media/backup-restore/yes.png) |   |
 | 在 Azure 入口網站中設定備份原則 | ![是](./media/backup-restore/yes.png) | ![是](./media/backup-restore/yes.png) |   |

@@ -5,11 +5,12 @@ ms.date: 11/20/2019
 ms.topic: how-to
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
-ms.openlocfilehash: b316d2579e1dde98b04a2dc7652a9721c7f8de77
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16e7f9a6c36ea42e1d0a4144e680baebee5a6c21
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85214208"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073094"
 ---
 # <a name="using-azure-blockchain-workbench-data-with-sql-server-management-studio"></a>將 Azure Blockchain Workbench 資料搭配 SQL Server Management Studio 使用
 
@@ -17,7 +18,7 @@ Microsoft SQL Server Management Studio 可供快速撰寫查詢並對 Azure Bloc
 
 ## <a name="prerequisites"></a>必要條件
 
-* 下載[SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017)。
+* 下載[SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017)。
 
 ## <a name="connecting-sql-server-management-studio-to-data-in-azure-blockchain-workbench"></a>在 Azure Blockchain Workbench 中將 SQL Server Management Studio 連線至資料
 
@@ -40,7 +41,7 @@ Microsoft SQL Server Management Studio 可供快速撰寫查詢並對 Azure Bloc
 6. 以滑鼠右鍵按一下物件總管中的任何資料庫檢視。
 7. 選取 [指令碼檢視為]****。
 8. 選擇 [SELECT 至]****。
-9. 選取 [新增查詢編輯器視窗]****。
+9. 選取 [新增查詢編輯器視窗]。
 10. 您可以選取 [新增查詢]**** 建立新的查詢。
 
 ## <a name="next-steps"></a>後續步驟

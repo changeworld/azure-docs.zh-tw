@@ -4,12 +4,12 @@ description: 瞭解 Azure App Service 如何協助您維護商務持續性和嚴
 ms.topic: how-to
 ms.date: 06/09/2020
 ms.custom: subject-moving-resources
-ms.openlocfilehash: 8c57cf5054bea898370cdccc7bea4243877d27b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1388dc11254324f74efcbaa55c97cac2ccd0c026
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84946927"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073735"
 ---
 # <a name="move-an-app-service-app-to-another-region"></a>將 App Service 應用程式移至另一個區域
 
@@ -23,7 +23,7 @@ App Service 資源是區域特定的，無法跨區域移動。 您必須將應�
 
 ## <a name="prepare"></a>準備
 
-識別受影響的應用程式目前使用的所有 App Service 資源。 例如：
+識別受影響的應用程式目前使用的所有 App Service 資源。 例如:
 
 - App Service 應用程式
 - [App Service 方案](overview-hosting-plans.md)
@@ -43,9 +43,9 @@ App Service 資源是區域特定的，無法跨區域移動。 您必須將應�
 
 1. 在 [ [Azure 入口網站](https://portal.azure.com)中，流覽至受影響應用程式的 [管理] 頁面。 在失敗的 Azure 區域中，受影響的應用程式會顯示警告文字。 按一下警告文字。
 
-    ![](media/manage-disaster-recovery/restore-start.png)
+    ![受影響應用程式頁面的螢幕擷取畫面。 此時會顯示警告通知，說明這種情況，並提供用來還原應用程式的連結。](media/manage-disaster-recovery/restore-start.png)
 
-1. 在 [**還原備份**] 頁面中，根據下表設定還原作業。 完成時按一下 **[確定]**。
+1. 在 [**還原備份**] 頁面中，根據下表設定還原作業。 完成後，請按一下 **[確定]** 。
 
    | 設定 | 值 | 說明 |
    |-|-|-|
@@ -53,7 +53,7 @@ App Service 資源是區域特定的，無法跨區域移動。 您必須將應�
    | **還原目的地** | **現有的應用程式** | 按一下下方的附注，此處會顯示 [**按一下這裡以變更還原目的地應用程式**]，然後選取目標應用程式。 在嚴重損壞案例中，您只能將快照集還原至不同 Azure 區域中的應用程式。 |
    | **還原網站設定** | **是** | |
 
-    ![](media/manage-disaster-recovery/restore-configure.png)
+    ![[還原備份] 頁面的螢幕擷取畫面。 特定的快照集、上表所列出的選項，以及 [確定] 按鈕會反白顯示。](media/manage-disaster-recovery/restore-configure.png)
 
 3. 設定目標應用程式中的[其他專案](#prepare)，以鏡像受影響的應用程式並驗證您的設定。
 
@@ -65,9 +65,9 @@ App Service 資源是區域特定的，無法跨區域移動。 您必須將應�
 
 1. 在 [ [Azure 入口網站](https://portal.azure.com)中，流覽至受影響應用程式的管理頁面，然後按一下 [**取得發行設定檔**]。
 
-    ![](media/manage-disaster-recovery/get-publish-profile.png)
+    ![受影響應用程式頁面的螢幕擷取畫面。 警告通知是可見的，但未反白顯示。 改為反白顯示 [取得發行設定檔] 專案。](media/manage-disaster-recovery/get-publish-profile.png)
 
-1. 開啟下載的檔案，然後尋找包含 `ReadOnly - FTP` 在其名稱中的發佈設定檔。 這是嚴重損壞修復設定檔。 例如：
+1. 開啟下載的檔案，然後尋找包含 `ReadOnly - FTP` 在其名稱中的發佈設定檔。 這是嚴重損壞修復設定檔。 例如:
 
     ```xml
     <publishProfile profileName="%app-name% - ReadOnly - FTP" publishMethod="FTP" publishUrl="ftp://%ftp-site%/site/wwwroot" ftpPassiveMode="True" userName="%app-name%\$%app-name%" userPWD="" destinationAppUrl="http://%app-name%.azurewebsites.net" SQLServerDBConnectionString="" mySQLDBConnectionString="" hostingProviderForumLink="" controlPanelLink="http://windows.azure.com" webSystem="WebSites">
@@ -84,7 +84,7 @@ App Service 資源是區域特定的，無法跨區域移動。 您必須將應�
 
 1. 連線之後，請下載整個 */site/wwwroot*資料夾。 下列螢幕擷取畫面顯示如何在[FileZilla](https://filezilla-project.org/)中下載。
 
-    ![](media/manage-disaster-recovery/download-content.png)
+    ![FileZilla 檔案階層的螢幕擷取畫面。 [Wwwroot] 資料夾會反白顯示，並顯示其快捷方式功能表。 在該功能表中，會反白顯示 [下載]。](media/manage-disaster-recovery/download-content.png)
 
 ## <a name="next-steps"></a>後續步驟
 [在 Azure 中透過快照集還原應用程式](app-service-web-restore-snapshots.md)

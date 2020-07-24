@@ -4,11 +4,12 @@ description: 路由 Azure 監視器與 Application Insights 資料，以便使�
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 11/06/2017
-ms.openlocfilehash: 142e3e19c13710963d239a75bc237b63713c29cc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 23bba091628eee767fbf292a8a8d772ffab674cb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77672203"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073467"
 ---
 # <a name="monitor-your-azure-services-in-grafana"></a>在 Grafana 中監視 Azure 服務
 您現在可以從使用 [Azure 監視器資料來源外掛程式](https://grafana.com/plugins/grafana-azure-monitor-datasource)的 [Grafana](https://grafana.com/)，監視 Azure 服務和應用程式。 外掛程式會蒐集 Azure 監視器所收集的應用程式效能資料，包括各種記錄和計量。 然後，您就可以在 Grafana 儀表板上顯示此資料。
@@ -58,9 +59,9 @@ ms.locfileid: "77672203"
 2. 選取資料來源的名稱，然後從下拉式清單中選取 [Azure 監視器]**** 為類型。
 
 3. 建立服務主體 - Grafana 使用 Azure Active Directory 服務主體連接到 Azure 監視器 API，並收集計量資料。 您必須建立或使用現有的服務主體來管理對 Azure 資源的存取。
-    * 請參閱[這些指示](../../azure-resource-manager/resource-group-create-service-principal-portal.md)來建立服務主體。 複製並儲存您的租用戶識別碼 (目錄識別碼)、用戶端識別碼 (應用程式識別碼) 和用戶端祕密 (應用程式機碼值)。
-    * 請參閱[將應用程式指派至角色](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)，以將「讀者」角色指派給要監視的訂用帳戶、資源組或資源上的 Azure Active Directory 應用程式。 
-    Log Analytics API需要 [Log Analytics 讀者角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-reader)，其中包含「讀者」角色的權限並加入到其中。
+    * 請參閱[這些指示](../../active-directory/develop/howto-create-service-principal-portal.md)來建立服務主體。 複製並儲存您的租用戶識別碼 (目錄識別碼)、用戶端識別碼 (應用程式識別碼) 和用戶端祕密 (應用程式機碼值)。
+    * 請參閱[將應用程式指派至角色](../../active-directory/develop/howto-create-service-principal-portal.md)，以將「讀者」角色指派給要監視的訂用帳戶、資源組或資源上的 Azure Active Directory 應用程式。 
+    Log Analytics API需要 [Log Analytics 讀者角色](../../role-based-access-control/built-in-roles.md#log-analytics-reader)，其中包含「讀者」角色的權限並加入到其中。
 
 4. 提供您想要使用的 API 的連線詳細資料。 您可以連接到所有或其中一部分。 
     * 如果您連接到 Azure 監視器中的計量和記錄，您可以選取與**AZURE 監視器 API 相同的詳細資料**，以重複使用相同的認證。
@@ -158,4 +159,3 @@ Grafana 有許多實用功能，儀表板播放清單就是其中之一。 您�
 
 ## <a name="next-steps"></a>後續步驟
 * [Azure 監視器計量概觀](data-platform.md)
-

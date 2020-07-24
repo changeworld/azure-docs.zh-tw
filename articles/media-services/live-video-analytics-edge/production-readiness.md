@@ -3,15 +3,16 @@ title: 生產環境就緒和最佳做法-Azure
 description: 本文提供有關如何在生產環境中的 IoT Edge 模組上設定及部署即時影片分析的指導方針。
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: a5a2ff78d456d4423facdf5f3533ee94bc25bfc4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c34e05e184cfa6f0933701a76177fae3eed70c0a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84260371"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071928"
 ---
 # <a name="production-readiness-and-best-practices"></a>生產環境就緒和最佳做法
 
-本文提供有關如何在生產環境中的 IoT Edge 模組上設定及部署即時影片分析的指導方針。 關於準備您的 IoT Edge 解決方案，您也應該參閱[準備在生產環境中部署您的 IoT Edge 解決方案](https://docs.microsoft.com/azure/iot-edge/production-checklist)。 
+本文提供有關如何在生產環境中的 IoT Edge 模組上設定及部署即時影片分析的指導方針。 關於準備您的 IoT Edge 解決方案，您也應該參閱[準備在生產環境中部署您的 IoT Edge 解決方案](../../iot-edge/production-checklist.md)。 
 
 > [!NOTE]
 > 您應該向組織的 IT 部門詢問安全性的相關層面。
@@ -132,7 +133,7 @@ sudo chown -R edgeuser /var/local/mediaservices
 "filePathPattern": "/var/media/sampleFilesFromEVR-${fileSinkOutputName}-${System.DateTime}"
 ```
 
-Or 
+或者 
 
 ```
 "filePathPattern": "/var/media/sampleFilesFromEVR-${fileSinkOutputName}--${System.GraphTopologyName}-${System.GraphInstanceName} ${System.DateTime}"

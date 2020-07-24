@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/24/2020
 ms.author: allensu
-ms.openlocfilehash: b22ce64e7058f093a102aebec8b00842c8a41cb5
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: a2292dc789938b8bde709728f5bbffe661529cc2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85849399"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072630"
 ---
 # <a name="outbound-connections-in-azure"></a>Azure 中的輸出連線
 
@@ -36,7 +36,7 @@ Azure Load Balancer 透過不同的機制提供輸出連線能力。 本文說�
 | SNAT 埠| TCP | SNAT 連接埠是可供特定公用 IP 來源位址使用的暫時連接埠。 每個流程會取用一個 SNAT 連接埠至單一目的地 IP 位址、連接埠。 針對相同目的地 IP 位址、連接埠和通訊協定的多個 TCP 流程，每個 TCP 流程都會取用單一 SNAT 連接埠。 這可確保流程在從相同公用 IP 位址產生並前往相同目的地 IP 位址、連接埠及通訊協定時，會是唯一的。 多個各自前往不同目的地 IP 位址、連接埠及通訊協定的流程會共用單一 SNAT 連接埠。 目的地 IP 位址、連接埠及通訊協定可讓流程成為唯一的，而無須使用額外的來源連接埠來區別公用 IP 位址空間中的流程。|
 |SNAT 埠 | UDP | UDP SNAT 連接埠是由與 TCP SNAT 連接埠不同的演算法管理。  Load Balancer 會對 UDP 使用稱為 "Port-Restricted cone NAT" 的演算法。  每個流程都會取用一個 SNAT 連接埠 (不管目的地 IP 位址、連接埠為何)。|
 | 耗盡 | - | 當 SNAT 連接埠資源耗盡時，輸出流程會失敗，直到現有的流程釋出 SNAT 連接埠為止。 當流程關閉並使用 [4 分鐘閒置逾時](../load-balancer/troubleshoot-outbound-connection.md#idletimeout)來從閒置流程回收 SNAT 連接埠時，Load Balancer 會回收 SNAT 連接埠。 UDP SNAT 連接埠通常比 TCP SNAT 連接埠更快耗盡，因為使用的演算法有所差異。 您必須在設計及調整測試時記住此差異。|
-| SNAT 埠發行行為 | TCP | 如果伺服器/用戶端傳送 FINACK，則會在 240 秒後釋出 SNAT 連接埠。 如果看到 RST，則會在15秒後釋放 SNAT 埠。 如已達到閒置逾時，則會釋放連接埠。|
+| SNAT 埠發行行為 | TCP | 如果伺服器/用戶端傳送 FINACK，則會在 240 秒後釋出 SNAT 連接埠。 如果看到 RST，則會在 15 秒之後釋出 SNAT 連接埠。 如已達到閒置逾時，則會釋放連接埠。|
 | SNAT 埠發行行為 | UDP |如已達到閒置逾時，則會釋放連接埠。|
 | 重複使用 SNAT 連接埠 | TCP、UDP | 連接埠一經釋放，即可視需要重複使用。  您可將 SNAT 連接埠想成順序由低到高可供指定案例使用的連接埠，第一個可用的 SNAT 連接埠供新連線使用。|
 
@@ -121,7 +121,7 @@ Azure 會根據使用 PAT 時的後端集區大小，使用演算法來判斷可
 
 ## <a name="scenarios-with-outbound-rules"></a>具有輸出規則的案例
 
-| # | 狀況| 詳細資料|
+| # | 案例| 詳細資料|
 |---|---|---|
 | I |  清理與一組特定公用 IP 位址的輸出連線| 您可以使用輸出規則來清理似乎源自一組特定公用 IP 位址的輸出連線，以簡化允許清單情節。  此來源公用 IP 位址可以與負載平衡規則所使用的來源公用 IP 位址相同，或與負載平衡規則所使用的一組不同公用 IP 位址。  1. 建立[公用 ip 首碼](https://aka.ms/lbpublicipprefix)（或公用 ip 首碼中的公用 ip 位址）2。 建立公用 Standard Load Balancer 3。 建立前端，參考您想要使用的公用 IP 首碼（或公用 IP 位址）4。 重複使用後端集區或建立後端集區，並將 Vm 放入公用 Load Balancer 5 的後端集區。 在公用 Load Balancer 上設定輸出規則，以使用前端針對這些 Vm 的輸出 NAT 進行程式設計。 如果您不想要將負載平衡規則用於輸出，則需要在負載平衡規則上停用輸出 SNAT。
 | II |  修改 SNAT 連接埠配置| 您可以使用輸出規則來調整[根據後端集區大小的自動 SNAT 連接埠配置](load-balancer-outbound-connections.md#preallocatedports)。 例如，如果您有兩部虛擬機器共用輸出 NAT 的單一公用 IP 位址，則建議您在遇到 SNAT 消耗時增加從預設 1024 個連接埠配置的 SNAT 連接埠數目。 每個公用 IP 位址都會提供最多 64,000 個暫時連接埠。  如果您使用單一公用 IP 位址前端來設定輸出規則，則可以將共 64,000 個 SNAT 連接埠散發到後端集區中的 VM。  針對兩個 VM，最多可以使用輸出規則來配置 32,000 個 SNAT 連接埠 (2x 32,000 = 64,000)。 您可以使用輸出規則來微調預設配置的 SNAT 埠。 您可以配置比預設 SNAT 埠配置所提供的更多或更少。來自輸出規則之所有前端的每個公用 IP 位址，最多可貢獻64000個暫時埠，以作為 SNAT 埠使用。  Load Balancer 會以 8 的倍數來配置 SNAT 連接埠數目。 如果您提供的值無法與 8 整除，則會拒絕設定作業。  如果您嘗試根據公用 IP 位址數目來配置比可用 SNAT 連接埠更多的 SNAT 連接埠，則會拒絕設定作業。  例如，如果您為每個 VM 配置10000埠，而後端集區中的7個 Vm 會共用單一公用 IP 位址，則會拒絕設定（7 x 10000 SNAT 埠 > 64000 SNAT 埠）。  您可以將更多公用 IP 位址新增至輸出規則的前端，以啟用此情節。 您可以指定埠數目為0，以[根據後端集區大小還原回預設的 SNAT 埠配置](load-balancer-outbound-connections.md#preallocatedports)。 在此情況下，前50個 VM 實例會取得1024埠，51-100 VM 實例會根據[資料表](#snatporttable)取得512等等。|

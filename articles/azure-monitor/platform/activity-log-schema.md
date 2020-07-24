@@ -7,25 +7,25 @@ ms.topic: reference
 ms.date: 06/09/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 553492a3ca6868279b1aec9446e2ce04ca673ab0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3d7085f54634ab1175fc0f916e24b7f03dc1bc9b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84945353"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073665"
 ---
 # <a name="azure-activity-log-event-schema"></a>Azure 活動記錄事件結構描述
 [Azure 活動記錄](platform-logs-overview.md)可讓您深入瞭解 azure 中發生的任何訂用帳戶層級事件。 本文說明每個的活動記錄類別和架構。 
 
 架構會根據您存取記錄的方式而有所不同：
  
-- 當您從[REST API](https://docs.microsoft.com/rest/api/monitor/activitylogs)存取活動記錄檔時，本文中所述的架構為。 這也是在 Azure 入口網站中查看事件時，您選取 [ **JSON** ] 選項時所使用的架構。
+- 當您從[REST API](/rest/api/monitor/activitylogs)存取活動記錄檔時，本文中所述的架構為。 這也是在 Azure 入口網站中查看事件時，您選取 [ **JSON** ] 選項時所使用的架構。
 - 當您使用[診斷設定](diagnostic-settings.md)將活動記錄傳送至 Azure 儲存體或 Azure 事件中樞時，請參閱適用于此架構[之儲存體帳戶和事件中樞](#schema-from-storage-account-and-event-hubs)的最後一節架構。
-- 當您使用[診斷設定](diagnostic-settings.md)將活動記錄傳送至 log Analytics 工作區時，請參閱架構的[Azure 監視器資料參考](https://docs.microsoft.com/azure/azure-monitor/reference/)。
+- 當您使用[診斷設定](diagnostic-settings.md)將活動記錄傳送至 log Analytics 工作區時，請參閱架構的[Azure 監視器資料參考](/azure/azure-monitor/reference/)。
 
 
-## <a name="categories"></a>類別
-活動記錄中的每個事件都具有下表所述的特定類別。 當您從入口網站、PowerShell、CLI 和 REST API 存取活動記錄時，請參閱下列各節，以取得每個類別目錄及其架構的詳細資料。 當您將[活動記錄串流至儲存體或事件中樞](resource-logs-stream-event-hubs.md)時，架構會不同。 在本文的最後一節中，會提供屬性與[資源記錄架構](diagnostic-logs-schema.md)的對應。
+## <a name="categories"></a>Categories
+活動記錄中的每個事件都具有下表所述的特定類別。 當您從入口網站、PowerShell、CLI 和 REST API 存取活動記錄時，請參閱下列各節，以取得每個類別目錄及其架構的詳細資料。 當您將[活動記錄串流至儲存體或事件中樞](./resource-logs.md#send-to-azure-event-hubs)時，架構會不同。 在本文的最後一節中，會提供屬性與[資源記錄架構](./resource-logs-schema.md)的對應。
 
 | 類別 | 描述 |
 |:---|:---|
@@ -130,7 +130,7 @@ ms.locfileid: "84945353"
 ```
 
 ### <a name="property-descriptions"></a>屬性描述
-| 元素名稱 | Description |
+| 元素名稱 | 說明 |
 | --- | --- |
 | 授權 |事件的 RBAC 屬性的 blob。 通常包括 action、role 和 scope 屬性。 |
 | 呼叫者 |已執行作業的使用者的電子郵件地址，根據可用性的 UPN 宣告或 SPN 宣告。 |
@@ -214,7 +214,7 @@ ms.locfileid: "84945353"
   }
 }
 ```
-請參閱[服務健康情況通知](./../../azure-monitor/platform/service-notifications.md)一文，以取得關於屬性中之值的文件。
+請參閱[服務健康情況通知](../../service-health/service-notifications.md)一文，以取得關於屬性中之值的文件。
 
 ## <a name="resource-health-category"></a>資源健全狀況類別
 此類別包含 Azure 資源已發生的任何資源健康情況事件的記錄。 「虛擬機器健康情況已變更為無法使用」是您可能在此類別中看到的事件類型。 資源健康情況事件可以代表四個健康情況的其中一個：可用、無法使用、已降級、未知。 此外，資源健康情況事件可分類為「平台起始」或「使用者起始」。
@@ -277,7 +277,7 @@ ms.locfileid: "84945353"
 ```
 
 ### <a name="property-descriptions"></a>屬性描述
-| 元素名稱 | Description |
+| 元素名稱 | 說明 |
 | --- | --- |
 | 通道 | 一律是 “Admin, Operation” |
 | correlationId | 字串格式的 GUID。 |
@@ -370,7 +370,7 @@ ms.locfileid: "84945353"
 ```
 
 ### <a name="property-descriptions"></a>屬性描述
-| 元素名稱 | Description |
+| 元素名稱 | 說明 |
 | --- | --- |
 | 呼叫者 | 一律是 Microsoft.Insights/alertRules |
 | 通道 | 一律是 “Admin, Operation” |
@@ -396,7 +396,7 @@ ms.locfileid: "84945353"
 屬性欄位將依據警示事件來源包含不同的值。 兩個常見的警示事件提供者為活動記錄警示和計量警示。
 
 #### <a name="properties-for-activity-log-alerts"></a>活動記錄警示的屬性
-| 元素名稱 | Description |
+| 元素名稱 | 說明 |
 | --- | --- |
 | properties.subscriptionId | 導致啟用此活動記錄警示規則之活動記錄事件的訂用帳戶識別碼。 |
 | properties.eventDataId | 導致啟用此活動記錄警示規則之活動記錄事件的事件資料識別碼。 |
@@ -407,7 +407,7 @@ ms.locfileid: "84945353"
 | properties.status | 導致啟用此活動記錄警示規則之活動記錄事件的狀態。|
 
 #### <a name="properties-for-metric-alerts"></a>計量警示屬性
-| 元素名稱 | Description |
+| 元素名稱 | 說明 |
 | --- | --- |
 | properties.RuleUri | 計量警示規則本身的資源識別碼。 |
 | properties.RuleName | 計量警示規則的名稱。 |
@@ -480,7 +480,7 @@ ms.locfileid: "84945353"
 ```
 
 ### <a name="property-descriptions"></a>屬性描述
-| 元素名稱 | Description |
+| 元素名稱 | 說明 |
 | --- | --- |
 | 呼叫者 | 一律是 Microsoft.Insights/autoscaleSettings |
 | 通道 | 一律是 “Admin, Operation” |
@@ -570,7 +570,7 @@ ms.locfileid: "84945353"
 ```
 
 ### <a name="property-descriptions"></a>屬性描述
-| 元素名稱 | Description |
+| 元素名稱 | 說明 |
 | --- | --- |
 | 通道 | 一律為 “Operation” |
 | correlationId | 字串格式的 GUID。 |
@@ -578,7 +578,7 @@ ms.locfileid: "84945353"
 | eventDataId |安全性事件的唯一識別碼。 |
 | eventName |安全性事件的易記名稱。 |
 | category | 一律為「安全性」 |
-| 識別碼 |安全性事件的唯一資源識別碼。 |
+| ID |安全性事件的唯一資源識別碼。 |
 | 等級 |事件的層級。 下列其中一個值：“Critical”、“Error”、“Warning” 和 “Informational” |
 | resourceGroupName |資源的資源群組名稱。 |
 | resourceProviderName |「Azure 資訊安全中心」的資源提供者名稱。 一律為 "Microsoft.Security"。 |
@@ -651,14 +651,14 @@ ms.locfileid: "84945353"
 
 ```
 ### <a name="property-descriptions"></a>屬性描述
-| 元素名稱 | Description |
+| 元素名稱 | 說明 |
 | --- | --- |
 | 通道 | 一律為 “Operation” |
 | correlationId | 字串格式的 GUID。 |
 | description |建議事件的靜態文字描述 |
 | eventDataId | 建議事件的唯一識別碼。 |
 | category | 一律為 "Recommendation" |
-| 識別碼 |建議事件的唯一資源識別碼。 |
+| ID |建議事件的唯一資源識別碼。 |
 | 等級 |事件的層級。 下列其中一個值：“Critical”、“Error”、“Warning” 和 “Informational” |
 | operationName |作業名稱。  一律為 "Microsoft.Advisor/generateRecommendations/action"|
 | resourceGroupName |資源的資源群組名稱。 |
@@ -761,7 +761,7 @@ ms.locfileid: "84945353"
 
 ### <a name="policy-event-property-descriptions"></a>原則事件屬性描述
 
-| 元素名稱 | Description |
+| 元素名稱 | 說明 |
 | --- | --- |
 | 授權 | 事件的 RBAC 屬性陣列。 針對新資源，這是觸發評估的要求其動作和範圍。 針對現有的資源，此動作為「Microsoft.Resources/checkPolicyCompliance/read」。 |
 | 呼叫者 | 針對新資源，則為啟動部署的身分識別。 針對現有的資源，則為 Microsoft Azure Policy Insights RP 的 GUID。 |
@@ -773,7 +773,7 @@ ms.locfileid: "84945353"
 | eventName | 「BeginRequest」或「EndRequest」。 「BeginRequest」用於延遲的 auditIfNotExists 和 deployIfNotExists 評估，以及當 deployIfNotExists 效果開始範本部署時。 所有其他的作業都會傳回「EndRequest」。 |
 | category | 將活動記錄事件宣告為屬於「Policy」。 |
 | eventTimestamp | 處理與事件對應之要求的Azure 服務產生事件時的時間戳記。 |
-| 識別碼 | 特定資源上事件的唯一識別碼。 |
+| ID | 特定資源上事件的唯一識別碼。 |
 | 等級 | 事件的層級。 Audit 會使用「Warning」，Deny 會使用「Error」。 auditIfNotExists 或 deployIfNotExists 錯誤會根據嚴重性產生「Warning」或「Error」。 所有其他的原則事件會使用「Informational」。 |
 | operationId | 對應至單一作業的事件共用的 GUID。 |
 | operationName | 作業的名稱，且直接與「原則」效果相互關聯。 |
@@ -793,13 +793,13 @@ ms.locfileid: "84945353"
 
 
 ## <a name="schema-from-storage-account-and-event-hubs"></a>來自儲存體帳戶和事件中樞的架構
-將 Azure 活動記錄串流處理至儲存體帳戶或事件中樞時，資料會遵循[資源記錄架構](diagnostic-logs-schema.md)。 下表提供從上述架構到資源記錄架構的屬性對應。
+將 Azure 活動記錄串流處理至儲存體帳戶或事件中樞時，資料會遵循[資源記錄架構](./resource-logs-schema.md)。 下表提供從上述架構到資源記錄架構的屬性對應。
 
 > [!IMPORTANT]
-> 寫入儲存體帳戶的活動記錄資料格式，在2018年11月1日變更為 JSON 行。 如需此格式變更的詳細資訊，請參閱[準備將格式變更 Azure 監視器封存到儲存體帳戶的資源記錄](diagnostic-logs-append-blobs.md)。
+> 寫入儲存體帳戶的活動記錄資料格式，在2018年11月1日變更為 JSON 行。 如需此格式變更的詳細資訊，請參閱[準備將格式變更 Azure 監視器封存到儲存體帳戶的資源記錄](./resource-logs-append-blobs.md)。
 
 
-| 資源記錄架構屬性 | 活動記錄 REST API 結構描述屬性 | 備註 |
+| 資源記錄架構屬性 | 活動記錄 REST API 結構描述屬性 | 附註 |
 | --- | --- | --- |
 | time | eventTimestamp |  |
 | resourceId | resourceId | subscriptionId、resourceType、resourceGroupName 全都推斷自 resourceId。 |
@@ -808,13 +808,13 @@ ms.locfileid: "84945353"
 | resultType | status.value | |
 | resultSignature | substatus.value | |
 | resultDescription | description |  |
-| durationMs | N/A | 一律為 0 |
+| durationMs | 不適用 | 一律為 0 |
 | callerIpAddress | httpRequest.clientIpAddress |  |
 | correlationId | correlationId |  |
 | 身分識別 | 宣告和授權屬性 |  |
 | 層級 | 層級 |  |
-| location | N/A | 處理事件所在的位置。 *這不是資源的位置，而是事件的處理位置。在未來的更新中將會移除此屬性。* |
-| 屬性 | properties.eventProperties |  |
+| location | 不適用 | 處理事件所在的位置。 *這不是資源的位置，而是事件的處理位置。在未來的更新中將會移除此屬性。* |
+| [內容] | properties.eventProperties |  |
 | properties.eventCategory | category | 如果 properties.eventCategory 不存在，則類別為 "Administrative" |
 | properties.eventName | eventName |  |
 | properties.operationId | operationId |  |
@@ -885,4 +885,3 @@ ms.locfileid: "84945353"
 ## <a name="next-steps"></a>後續步驟
 * [深入瞭解活動記錄](platform-logs-overview.md)
 * [建立診斷設定，以將活動記錄傳送至 Log Analytics 工作區、Azure 儲存體或事件中樞](diagnostic-settings.md)
-

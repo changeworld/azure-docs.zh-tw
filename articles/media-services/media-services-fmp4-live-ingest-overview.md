@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 3ff356ef67630429b72208107541b1696e4eceac
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 9d0bfdf4719b4c3a92a0632a1edda63324d700e5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85958560"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072039"
 ---
 # <a name="azure-media-services-fragmented-mp4-live-ingest-specification"></a>Azure 媒體服務的分散 MP4 即時內嵌規格 
 
@@ -48,7 +48,7 @@ ms.locfileid: "85958560"
 1. [1] 中的區段3.3.2 會定義一個稱為**為 streammanifestbox**的選擇性方塊來進行即時內嵌。 由於 Azure 負載平衡器的路由邏輯，使用此方塊已遭取代。 內嵌至媒體服務時，「不應」出現方塊。 如果有此方塊，則媒體服務會以無訊息方式將其忽略。
 1. 每個片段必須具有在 [1] 之 3.2.3.2 中定義的 **TrackFragmentExtendedHeaderBox** 方塊。
 1. 「應該」使用第 2 版的 **TrackFragmentExtendedHeaderBox** 方塊，才能產生在多個資料中心中擁有相同 URL 的媒體區段。 如需跨資料中心容錯移轉以索引為基礎的資料流格式，例如 Apple HLS 和以索引為基礎的 MPEG DASH，則片段索引欄位為「必要」項目。 若要啟用跨資料中心容錯移轉，多個編碼器之間的片段索引「必須」同步處理，後續的每個媒體片段會增加 1，即使是跨編碼器重新啟動或失敗亦然。
-1. [1] 中的第 3.3.6 節定義名為 **MovieFragmentRandomAccessBox** (**mfra**) 的方塊，此方塊「可能」會在即時內嵌結束時傳送，以表示通道的結束資料流 (EOS)。 由於使用 EOS 的媒體服務內嵌邏輯已遭取代，因此「不應」傳送即時內嵌的 **mfra** 方塊。 如果已傳送，媒體服務會以無訊息方式將其忽略。 若要重設內嵌點的狀態，建議您使用[通道重設](https://docs.microsoft.com/rest/api/media/operations/channel#reset_channels)。 我們也建議您使用[程式停止](https://msdn.microsoft.com/library/azure/dn783463.aspx#stop_programs)以結束簡報和資料流。
+1. [1] 中的第 3.3.6 節定義名為 **MovieFragmentRandomAccessBox** (**mfra**) 的方塊，此方塊「可能」會在即時內嵌結束時傳送，以表示通道的結束資料流 (EOS)。 由於使用 EOS 的媒體服務內嵌邏輯已遭取代，因此「不應」傳送即時內嵌的 **mfra** 方塊。 如果已傳送，媒體服務會以無訊息方式將其忽略。 若要重設內嵌點的狀態，建議您使用[通道重設](/rest/api/media/operations/channel#reset_channels)。 我們也建議您使用[程式停止](/rest/api/media/operations/program#stop_programs)以結束簡報和資料流。
 1. MP4 片段持續期間「應該」是常數，可縮減用戶端資訊清單的大小。 常數 MP4 片段持續時間也可以透過使用重複標記來改善用戶端下載啟發學習法。 持續時間「可能」會變動以補償非整數的畫面播放速率。
 1. MP4 片段持續期間「應該」大約在 2 到 6 秒之間。
 1. 「應該」以遞增順序送達 MP4 片段時間戳記和索引 (**TrackFragmentExtendedHeaderBox** `fragment_ absolute_ time` 和 `fragment_index`)。 雖然媒體服務在複製片段方面很有彈性，但是其在根據媒體時間軸重新排列片段順序方面的功能有限。
@@ -58,7 +58,7 @@ ms.locfileid: "85958560"
 
 `http://customer.channel.mediaservices.windows.net/ingest.isml/streams(720p)`
 
-### <a name="requirements"></a>規格需求
+### <a name="requirements"></a>需求
 詳細需求如下：
 
 1. 編碼器「應該」使用相同的內嵌 URL 來傳送空白 “body” (零內容長度) 的 HTTP POST 要求，藉此開始廣播。 這可協助編碼器快速偵測即時內嵌端點是否有效，以及是否需要任何的驗證或其他條件。 伺服器無法對每個 HTTP 通訊協定傳回 HTTP 回應，直到收到整個要求為止，包括 POST 內文。 由於即時事件其長時間執行的性質，若無此步驟，編碼器在完成傳送所有資料之前，無法偵測到任何錯誤。
@@ -70,7 +70,7 @@ ms.locfileid: "85958560"
 1. 如果 HTTP POST 要求在資料流結束之前因為出現 TCP 錯誤而終止或逾時，則編碼器「必須」藉由使用新連線發出新的 POST 要求，並遵循上述要求。 此外，編碼器「必須」為資料流中的每個資料軌重新傳送前兩個 MP4 片段，並在不會造成媒體時間軸不連續的情況下繼續運作。 為每個資料軌重新傳送最後兩個 MP4 片段，可確保不會遺失資料。 換句話說，如果資料流包含音訊和視訊播放軌，而且目前的 POST 要求失敗，則編碼器必須重新連線，然後為音訊播放軌重新傳送最後兩個片段 (先前已成功傳送)，為視訊播放軌重新傳送最後兩個片段 (先前已成功傳送)，以確保不會遺失任何資料。 編碼器「必須」維護媒體片段的 “forward” 緩衝區，當重新連線時會重新傳送此緩衝區。
 
 ## <a name="5-timescale"></a>5. 刻度
-[[MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx) 描述 **SmoothStreamingMedia** (2.2.2.1 節)、**StreamElement** (2.2.2.3 節)、**StreamFragmentElement** (2.2.2.6 節) 和 **LiveSMIL** (2.2.7.3.1 節) 的「時幅」使用方式。 如果沒有時幅值，則使用的預設值為 10,000,000 (10 MHz)。 雖然 Smooth Streaming 格式規格不會封鎖使用其他的時幅值，但大部分的編碼器實作會使用此預設值 (10 MHz) 來產生 Smooth Streaming 內嵌資料。 由於 [Azure 媒體動態封裝](media-services-dynamic-packaging-overview.md) 功能之故，建議您針對視訊資料流使用 90-KHz 時幅，針對音訊資料流使用 44.1 KHz 或 48.1 KHz。 如果不同的資料流採用不同的時幅值，則「必須」傳送資料流層級時幅。 如需詳細資訊，請參閱 [[MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx)。     
+[[MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx) 描述 **SmoothStreamingMedia** (2.2.2.1 節)、**StreamElement** (2.2.2.3 節)、**StreamFragmentElement** (2.2.2.6 節) 和 **LiveSMIL** (2.2.7.3.1 節) 的「時幅」使用方式。 如果沒有時幅值，則使用的預設值為 10,000,000 (10 MHz)。 雖然 Smooth Streaming 格式規格不會封鎖使用其他的時幅值，但大部分的編碼器實作會使用此預設值 (10 MHz) 來產生 Smooth Streaming 內嵌資料。 由於 [Azure 媒體動態封裝](./previous/media-services-dynamic-packaging-overview.md) 功能之故，建議您針對視訊資料流使用 90-KHz 時幅，針對音訊資料流使用 44.1 KHz 或 48.1 KHz。 如果不同的資料流採用不同的時幅值，則「必須」傳送資料流層級時幅。 如需詳細資訊，請參閱 [[MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx)。     
 
 ## <a name="6-definition-of-stream"></a>6. "stream" 的定義
 「資料流」是指在撰寫即時簡報、處理資料流容錯移轉和備援案例的即時內嵌中，作業的基本單位。 「資料流」定義為一個唯一的分散 MP4 位元資料流，其中可能包含單一資料軌或多個資料軌。 完整即時簡報可包含一或多個資料流，視即時編碼器組態而定。 以下範例說明各種使用資料流撰寫完整即時簡報的選項。
@@ -174,7 +174,7 @@ ms.locfileid: "85958560"
 
     f. 當讓時間戳記值相等或更大的對應上層資料軌片段可供用戶端使用時，疏鬆資料軌片段便會對用戶端變成可用狀態。 例如，如果疏鬆片段的時間戳記 t=1000，則預期在用戶端看見視訊 (假設上層資料軌名稱為視訊) 片段時間戳記為 1000 或以上後，便可下載 t=1000 的疏鬆片段。 請注意，實際訊號能夠在簡報時間軸上的不同位置上，運用在其指定用途。 在此範例中，t=1000 的疏鬆片段具有 XML 承載，可將廣告插入到數秒後的位置上。
 
-    如 疏鬆資料軌片段的承載可以是不同格式 (例如 XML、文字或二進位)，視情況而定。
+    g. 疏鬆資料軌片段的承載可以是不同格式 (例如 XML、文字或二進位)，視情況而定。
 
 ### <a name="redundant-audio-track"></a>備援音訊資料軌
 在一般的 HTTP 彈性資料流案例中 (例如 Smooth Streaming 或 DASH)，通常在整個簡報中只有一個音訊資料軌。 具有多個品質層級的視訊資料軌可讓用戶端在錯誤條件中選擇，而音訊資料軌不同於這類資料軌，當內嵌的資料流中有損壞的音訊資料軌時，音訊資料軌會是唯一的故障點。 

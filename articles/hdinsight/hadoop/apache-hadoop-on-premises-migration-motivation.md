@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 11/15/2019
-ms.openlocfilehash: b975ee8cebdac3855c3fca88b20c01145d11baeb
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 1de9fc480c753b2497a1ea4e3438583b3582bc96
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86080188"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072783"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>將內部部署 Apache Hadoop 叢集遷移到 Azure HDInsight - 動機和優點
 
@@ -28,7 +28,7 @@ Azure HDInsight 是 Hadoop 元件的雲端發行版。 Azure HDInsight 可輕鬆
 - 含 LLAP 的 Apache Hive
 - Apache Kafka
 - Apache Storm
-- Apache HBase (英文)
+- Apache HBase
 - R
 
 ## <a name="azure-hdinsight-advantages-over-on-premises-hadoop"></a>Azure HDInsight 的優勢勝過內部部署 Hadoop
@@ -163,9 +163,9 @@ Azure HDInsight 是 Hadoop 元件的雲端發行版。 Azure HDInsight 可輕鬆
 
 ### <a name="azure-requirements-questionnaire"></a>Azure 需求問卷
 
-|**主題**：**基礎結構** |||
-|---|---|---|
 |**問題**|**範例**|**回答**|
+|---|---|---|
+|**主題**：**基礎結構** |||
 | 慣用區域|美國東部||
 |是否慣用 VNet？|是||
 |是否需要 HA / DR？|是||
@@ -183,7 +183,7 @@ Azure HDInsight 是 Hadoop 元件的雲端發行版。 Azure HDInsight 可輕鬆
 |要同步處理的 AD 使用者數目？|          100||
 |是否將密碼同步套雲端？|    是||
 |僅雲端使用者？|                 是||
-|是否需要 MFA？|                       No|| 
+|是否需要 MFA？|                       否|| 
 |是否符合資料授權需求？|  是||
 |是否使用角色型存取控制？|        是||
 |是否需要稽核？|                  是||

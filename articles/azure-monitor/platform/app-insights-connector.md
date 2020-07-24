@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/13/2019
-ms.openlocfilehash: c143d8aa24d3479f4619ea2c220d4a0c593f9cb1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0b18c34f8c0378d22d138b865d72fa4f351d7b8f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77665148"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073644"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Application Insights Connector 管理解決方案 (取代)
 
@@ -43,10 +44,10 @@ Applications Insights Connector 解決方案可協助您診斷效能問題，以
 
 | 連接的來源 | 支援 | 描述 |
 | --- | --- | --- |
-| [Windows 代理程式](../../azure-monitor/platform/agent-windows.md) | No | 解決方案不會收集來自 Windows 代理程式的資訊。 |
-| [Linux 代理程式](../../azure-monitor/learn/quick-collect-linux-computer.md) | No | 解決方案不會收集來自 Linux 代理程式的資訊。 |
-| [SCOM 管理群組](../../azure-monitor/platform/om-agents.md) | No | 解決方案不會收集來自連線 SCOM 管理群組的代理程式之中的資訊。 |
-| [Azure 儲存體帳戶](collect-azure-metrics-logs.md) | No | 解決方案不會收集來自 Azure 儲存體的資訊。 |
+| [Windows 代理程式](../../azure-monitor/platform/agent-windows.md) | 否 | 解決方案不會收集來自 Windows 代理程式的資訊。 |
+| [Linux 代理程式](../../azure-monitor/learn/quick-collect-linux-computer.md) | 否 | 解決方案不會收集來自 Linux 代理程式的資訊。 |
+| [SCOM 管理群組](../../azure-monitor/platform/om-agents.md) | 否 | 解決方案不會收集來自連線 SCOM 管理群組的代理程式之中的資訊。 |
+| [Azure 儲存體帳戶](./resource-logs.md#send-to-log-analytics-workspace) | 否 | 解決方案不會收集來自 Azure 儲存體的資訊。 |
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -186,7 +187,7 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 | Continent | 要求的起源洲 |
 | 國家/地區 | 要求的來源國家/地區 |
 | Province | 要求的起源省、州或地區設定 |
-| City | 要求的起源城市或鄉鎮 |
+| 城市 | 要求的起源城市或鄉鎮 |
 | isSynthetic | 指出要求是由使用者或自動化方法建立。 True = 自動化方法或 false = 使用者產生 |
 | SamplingRate | 由傳送至入口網站之 SDK 所產生的遙測百分比。 範圍 0.0-100.0。 |
 | SampledCount | 100/(SamplingRate)。 例如，4 =&gt; 25% |
@@ -303,7 +304,7 @@ $Headers = @{
 $Connections = Invoke-RestMethod -Method "GET" -Uri "https://management.azure.com$($LAWorkspace.ResourceId)/dataSources/?%24filter=kind%20eq%20'ApplicationInsights'&api-version=2015-11-01-preview" -Headers $Headers
 $ConnectionsJson = $Connections | ConvertTo-Json
 ```
-此指令碼需要持有人驗證權杖，以便對 Azure Active Directory 進行驗證。 擷取此權杖的其中一個方法是使用 [REST API 文件網站](https://docs.microsoft.com/rest/api/loganalytics/datasources/createorupdate)中的發行項。 按一下 [試用]**** 並登入您的 Azure 訂用帳戶。 您可以從 [要求預覽]**** 複製持有人權杖，如下圖所示。
+此指令碼需要持有人驗證權杖，以便對 Azure Active Directory 進行驗證。 擷取此權杖的其中一個方法是使用 [REST API 文件網站](/rest/api/loganalytics/datasources/createorupdate)中的發行項。 按一下 [試用]**** 並登入您的 Azure 訂用帳戶。 您可以從 [要求預覽]**** 複製持有人權杖，如下圖所示。
 
 
 ![持有人權杖](media/app-insights-connector/bearer-token.png)

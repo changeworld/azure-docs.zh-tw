@@ -1,14 +1,14 @@
 ---
 title: 大規模監視委派的資源
 description: 瞭解如何在您所管理的客戶租使用者中，以可調整的方式有效率地使用 Azure 監視器記錄。
-ms.date: 07/07/2020
+ms.date: 07/15/2020
 ms.topic: how-to
-ms.openlocfilehash: 3be7494f929fc91e2b01bde0b4f26f7c2e4b907b
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 758437fdc7a32fd5937434ce10f16a8c792423d3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86133466"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072714"
 ---
 # <a name="monitor-delegated-resources-at-scale"></a>大規模監視委派的資源
 
@@ -34,10 +34,11 @@ ms.locfileid: "86133466"
 
 ## <a name="analyze-the-gathered-data"></a>分析收集的資料
 
-在您部署原則之後，資料會記錄在您已在每個客戶租使用者中建立的 Log Analytics 工作區。 若要取得所有受管理客戶的深入解析，您可以使用工具（例如[Azure 監視器活頁簿](../../azure-monitor/platform/workbooks-overview.md)）來收集及分析來自多個資料來源的資訊。
+在您部署原則之後，資料會記錄在您已在每個客戶租使用者中建立的 Log Analytics 工作區。 若要取得所有受管理客戶的深入解析，您可以使用工具（例如[Azure 監視器活頁簿](../../azure-monitor/platform/workbooks-overview.md)）來收集及分析來自多個資料來源的資訊。 
 
 ## <a name="next-steps"></a>後續步驟
 
+- 探索此[MVP 建立的範例活頁簿](https://github.com/scautomation/Azure-Automation-Update-Management-Workbooks)，藉由查詢多個 Log Analytics 工作區的[更新管理記錄](../../automation/automation-update-management-query-logs.md)，來追蹤修補程式合規性報告。 
 - 了解 [Azure 監視器](../../azure-monitor/index.yml)。
 - 深入瞭解[Azure 監視器記錄](../../azure-monitor/platform/data-platform-logs.md)。
 - 了解[跨租用戶管理體驗](../concepts/cross-tenant-management-experience.md)。

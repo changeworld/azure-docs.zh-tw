@@ -4,16 +4,17 @@ description: Microsoft Azure 的自動調整
 ms.subservice: autoscale
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 4403c2957cb2d2d9d4af98d64cdb5177ae3d0726
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: d9ba94d9990e494a8d3e68bbcd7c176bb30e6ce2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83828979"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073480"
 ---
 # <a name="overview-of-autoscale-in-microsoft-azure"></a>Microsoft Azure 的自動調整概觀
 本文說明何謂 Microsoft Azure 自動調整、其優點，以及如何開始使用它。  
 
-Azure 監視器自動調整僅適用於[虛擬機器擴展集](https://azure.microsoft.com/services/virtual-machine-scale-sets/)、[雲端服務](https://azure.microsoft.com/services/cloud-services/)、[App Service - Web Apps](https://azure.microsoft.com/services/app-service/web/)、[API 管理服務](https://docs.microsoft.com/azure/api-management/api-management-key-concepts)與 [Azure 資料總管叢集](https://docs.microsoft.com/azure/data-explorer/)。
+Azure 監視器自動調整僅適用於[虛擬機器擴展集](https://azure.microsoft.com/services/virtual-machine-scale-sets/)、[雲端服務](https://azure.microsoft.com/services/cloud-services/)、[App Service - Web Apps](https://azure.microsoft.com/services/app-service/web/)、[API 管理服務](../../api-management/api-management-key-concepts.md)與 [Azure 資料總管叢集](/azure/data-explorer/)。
 
 > [!NOTE]
 > Azure 有兩種自動調整方法。 舊版自動調整適用於虛擬機器 (可用性設定組)。 這項功能的支援能力有限，建議您移轉至虛擬機器擴展集，以獲得更快、更可靠的自動調整支援。 本文包含如何使用舊版技術的連結。  
@@ -73,12 +74,12 @@ Azure 監視器自動調整僅適用於[虛擬機器擴展集](https://azure.mic
 
 ![Azure 自動調整設定、設定檔和規則結構](./media/autoscale-overview/AzureResourceManagerRuleStructure3.png)
 
-可設定之欄位和說明的完整清單可在 [自動調整 REST API](https://msdn.microsoft.com/library/dn931928.aspx)中取得。
+可設定之欄位和說明的完整清單可在 [自動調整 REST API](/rest/api/monitor/autoscalesettings)中取得。
 
 如需程式碼範例，請參閱
 
 * [針對 VM 擴展集使用 Resource Manager 範本進行進階自動調整設定](autoscale-virtual-machine-scale-sets.md)  
-* [自動調整 REST API](https://msdn.microsoft.com/library/dn931953.aspx)
+* [自動調整 REST API](/rest/api/monitor/autoscalesettings)
 
 ## <a name="horizontal-vs-vertical-scaling"></a>水平和垂直調整
 自動調整只會水平調整，亦即增加 (相應放大) 或減少 (相應縮小) VM 執行個體數目。  在雲端的情況下，水平調整會更有彈性，因為它有可能讓您執行數千台 VM 來處理負載。
@@ -89,29 +90,28 @@ Azure 監視器自動調整僅適用於[虛擬機器擴展集](https://azure.mic
 您可以透過下列途徑設定自動調整
 
 * [Azure 入口網站](autoscale-get-started.md)
-* [PowerShell](powershell-quickstart-samples.md#create-and-manage-autoscale-settings)
+* [PowerShell](../samples/powershell-samples.md#create-and-manage-autoscale-settings)
 * [跨平台命令列介面 (CLI)](../samples/cli-samples.md#autoscale)
-* [Azure 監視器 REST API](https://msdn.microsoft.com/library/azure/dn931953.aspx)
+* [Azure 監視器 REST API](/rest/api/monitor/autoscalesettings)
 
 ## <a name="supported-services-for-autoscale"></a>支援的自動調整服務
 | 服務 | 結構描述與文件 |
 | --- | --- |
 | Web Apps |[調整 Web Apps](autoscale-get-started.md) |
 | 雲端服務 |[自動調整雲端服務](../../cloud-services/cloud-services-how-to-scale-portal.md) |
-| 虛擬機器：傳統 |[調整傳統的虛擬機器可用性設定組](https://blogs.msdn.microsoft.com/kaevans/2015/02/20/autoscaling-azurevirtual-machines/) |
+| 虛擬機器：傳統 |[調整傳統的虛擬機器可用性設定組](/archive/blogs/kaevans/autoscaling-azurevirtual-machines) |
 | 虛擬機器：Windows 擴展集 |[在 Windows 中調整虛擬機器擴展集](../../virtual-machine-scale-sets/tutorial-autoscale-powershell.md) |
 | 虛擬機器：Linux 擴展集 |[在 Linux 中調整虛擬機器擴展集](../../virtual-machine-scale-sets/tutorial-autoscale-cli.md) |
 | 虛擬機器：Windows 範例 |[針對 VM 擴展集使用 Resource Manager 範本進行進階自動調整設定](autoscale-virtual-machine-scale-sets.md) |
-| API 管理服務|[自動調整 Azure API 管理執行個體](https://docs.microsoft.com/azure/api-management/api-management-howto-autoscale)
-| Azure 資料總管叢集|[管理 Azure 資料總管叢集的大小調整以適應不斷變化的需求](https://docs.microsoft.com/azure/data-explorer/manage-cluster-horizontal-scaling)|
-| Azure App Service |[在 Azure App Service 中擴大應用程式](https://docs.microsoft.com/azure/app-service/manage-scale-up)|
-| Logic Apps |[新增整合服務環境 (ISE) 容量](https://docs.microsoft.com/azure/logic-apps/ise-manage-integration-service-environment#add-ise-capacity)|
+| API 管理服務|[自動調整 Azure API 管理執行個體](../../api-management/api-management-howto-autoscale.md)
+| Azure 資料總管叢集|[管理 Azure 資料總管叢集的大小調整以適應不斷變化的需求](/azure/data-explorer/manage-cluster-horizontal-scaling)|
+| Azure App Service |[在 Azure App Service 中擴大應用程式](../../app-service/manage-scale-up.md)|
+| Logic Apps |[新增整合服務環境 (ISE) 容量](../../logic-apps/ise-manage-integration-service-environment.md#add-ise-capacity)|
 ## <a name="next-steps"></a>後續步驟
 若要深入了解自動調整，請使用先前所列的＜自動調整逐步解說＞或參閱下列資源︰
 
 * [Azure 監視器自動調整的常用度量](autoscale-common-metrics.md)
 * [Azure 監視器自動調整的最佳作法](autoscale-best-practices.md)
 * [使用自動調整動作傳送電子郵件和 Webhook 警示通知](autoscale-webhook-email.md)
-* [自動調整 REST API](https://msdn.microsoft.com/library/dn931953.aspx)
+* [自動調整 REST API](/rest/api/monitor/autoscalesettings)
 * [排解虛擬機器擴展集自動調整的問題](../../virtual-machine-scale-sets/virtual-machine-scale-sets-troubleshoot.md)
-

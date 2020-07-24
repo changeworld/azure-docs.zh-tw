@@ -1,23 +1,23 @@
 ---
-title: 'Azure Machine Learning (preview 中的模型 interpretability) '
+title: Azure Machine Learning 中的模型 interpretability （預覽）
 titleSuffix: Azure Machine Learning
 description: 瞭解如何使用 Azure Machine Learning SDK 來說明您的模型為何會進行預測。 它可以在定型和推斷期間用來瞭解模型如何進行預測。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
-ms.author: mesameki
-author: mesameki
+ms.author: mithigpe
+author: minthigpen
 ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
-ms.openlocfilehash: 83fc13362a373686ee027fd642f03003b411cd63
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: deeb47b55253b9bf1659dd5eba7bc3465602583b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201451"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072229"
 ---
-# <a name="model-interpretability-in-azure-machine-learning-preview"></a>Azure Machine Learning (preview 中的模型 interpretability) 
+# <a name="model-interpretability-in-azure-machine-learning-preview"></a>Azure Machine Learning 中的模型 interpretability （預覽）
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 ## <a name="overview-of-model-interpretability"></a>模型 interpretability 總覽
@@ -38,13 +38,13 @@ ms.locfileid: "86201451"
 
 ## <a name="interpretability-with-azure-machine-learning"></a>具有 Azure Machine Learning 的 Interpretability
 
-Interpretability 類別可透過多個 SDK 套件取得： (瞭解如何[安裝適用于 Azure Machine Learning 的 SDK 套件](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)) 
+Interpretability 類別可透過多個 SDK 套件取得：（瞭解如何[安裝適用于 Azure Machine Learning 的 sdk 套件](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)）
 
 * `azureml.interpret`，主要封裝包含 Microsoft 支援的功能。
 
 * `azureml.contrib.interpret`，您可以嘗試的、預覽和實驗性功能。
 
-使用 `pip install azureml-interpret` 和 `pip install azureml-interpret-contrib` 進行一般使用，並 `pip install azureml-contrib-interpret` 讓 AutoML 用來取得 interpretability 套件。
+`pip install azureml-interpret`針對一般用途，請使用和 `pip install azureml-contrib-interpret` 。
 
 
 > [!IMPORTANT]
@@ -73,11 +73,11 @@ Interpretability 類別可透過多個 SDK 套件取得： (瞭解如何[安裝�
 |Interpretability 技術|描述|類型|
 |--|--|--------------------|
 |SHAP 樹狀說明| [SHAP](https://github.com/slundberg/shap)的樹狀說明，著重于多項式時間快速 SHAP 價值估計演算法，適用于**樹狀結構和整體的**樹系。|模型特定|
-|SHAP 深層說明| 根據 SHAP 的說明，深度說明」是一種高速的近似值演算法，可在深度學習模型中，以[SHAP NIPS](https://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model-predictions)檔中所述的 DeepLIFT 連接為基礎來 SHAP 值。 支援使用 TensorFlow 後端的**TensorFlow**模型和**Keras**模型 (也會提供 PyTorch) 」的初步支援。|模型特定|
+|SHAP 深層說明| 根據 SHAP 的說明，深度說明」是一種高速的近似值演算法，可在深度學習模型中，以[SHAP NIPS](https://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model-predictions)檔中所述的 DeepLIFT 連接為基礎來 SHAP 值。 支援使用 TensorFlow 後端的**TensorFlow**模型和**Keras**模型（也有 PyTorch 的初步支援）」。|模型特定|
 |SHAP 線性說明| SHAP 的線性說明會計算**線性模型**的 SHAP 值，並選擇性地會計入功能間的相互關聯。|模型特定|
 |SHAP 核心說明| SHAP 的核心說明會使用特殊加權的區域線性回歸來估計**任何模型**的 SHAP 值。|與模型無關|
-|模擬說明 (全域代理) | 模擬說明是以定型[全域代理模型](https://christophm.github.io/interpretable-ml-book/global.html)來模擬黑箱模型的概念為基礎。 全域代理模型是一種內部可解譯模型，經過訓練以盡可能精確地大致估計**任何黑色方塊模型**的預測。 資料科學家可以解讀代理模型，以繪製有關黑色箱模型的結論。 您可以使用下列其中一個可解譯模型做為您的代理模型： LightGBM (LGBMExplainableModel) 、線性回歸 (LinearExplainableModel) 、隨機梯度下降 explainable 模型 (SGDExplainableModel) 和決策樹 (DecisionTreeExplainableModel) 。|與模型無關|
-|排列功能重要性說明 (PFI) | 排列功能重要性是一種技術，用來說明[Breiman 的隨機](https://www.stat.berkeley.edu/~breiman/randomforest2001.pdf)樹系論文所能啟發的分類和回歸模型 (請參閱第10節) 。 概括而言，它的運作方式是針對整個資料集，一次隨機亂數據一項功能，並計算感利率的效能計量有多大的變化。 變更愈大，該特性愈重要。 PFI 可以說明**任何基礎模型**的整體行為，但不會說明個別的預測。 |與模型無關|
+|模擬說明（全域代理）| 模擬說明是以定型[全域代理模型](https://christophm.github.io/interpretable-ml-book/global.html)來模擬黑箱模型的概念為基礎。 全域代理模型是一種內部可解譯模型，經過訓練以盡可能精確地大致估計**任何黑色方塊模型**的預測。 資料科學家可以解讀代理模型，以繪製有關黑色箱模型的結論。 您可以使用下列其中一個可解譯模型做為您的代理模型： LightGBM （LGBMExplainableModel）、線性回歸（LinearExplainableModel）、隨機梯度下降 explainable 模型（SGDExplainableModel）和決策樹（DecisionTreeExplainableModel）。|與模型無關|
+|排列功能重要性說明（PFI）| 排列功能重要性是一種技術，用來說明[Breiman 的隨機](https://www.stat.berkeley.edu/~breiman/randomforest2001.pdf)樹系紙張所能啟發的分類和回歸模型（請參閱第10節）。 概括而言，它的運作方式是針對整個資料集，一次隨機亂數據一項功能，並計算感利率的效能計量有多大的變化。 變更愈大，該特性愈重要。 PFI 可以說明**任何基礎模型**的整體行為，但不會說明個別的預測。 |與模型無關|
 
 
 

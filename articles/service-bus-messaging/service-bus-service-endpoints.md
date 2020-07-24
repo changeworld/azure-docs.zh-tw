@@ -3,17 +3,19 @@ title: 設定 Azure 服務匯流排的虛擬網路服務端點
 description: 本文提供如何將 Microsoft 服務端點新增至虛擬網路的相關資訊。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 2b3e7d23dcfd3f932aefa3809ebd13b9cfee0c69
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 48d7f1783f197804e12a8c2d20a0c46b6efd2160
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340985"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071321"
 ---
 # <a name="configure-virtual-network-service-endpoints-for-azure-service-bus"></a>設定 Azure 服務匯流排的虛擬網路服務端點
 
 將服務匯流排與[虛擬網路（VNet）服務端點][vnet-sep]整合，可讓您從系結至虛擬網路的工作負載（例如虛擬機器）安全地存取訊息功能，而兩端的網路流量路徑都受到保護。
 
-一旦設定為繫結到至少一個虛擬網路子網路服務端點，個別的服務匯流排命名空間除了授權的虛擬網路以外，無法再接受任何位置的流量。 從虛擬網路的觀點而言，將服務匯流排命名空間繫結至服務端點，會設定從虛擬網路子網路到傳訊服務的隔離網路通道。
+一旦設定為系結到至少一個虛擬網路子網服務端點，個別的服務匯流排命名空間就不會再接受來自任何位置的流量，但已授權的虛擬網路，以及（選擇性地）特定的網際網路 IP 位址。 從虛擬網路的觀點而言，將服務匯流排命名空間繫結至服務端點，會設定從虛擬網路子網路到傳訊服務的隔離網路通道。
 
 結果是繫結至子網路的工作負載與個別服務匯流排命名空間之間的私人和隔離關係，儘管傳訊服務端點的可觀察網路位址是在公用 IP 範圍中。
 

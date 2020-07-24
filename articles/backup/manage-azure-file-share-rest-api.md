@@ -3,16 +3,16 @@ title: 使用 Rest API 管理 Azure 檔案共用備份
 description: 瞭解如何使用 REST API 來管理和監視 Azure 備份備份的 Azure 檔案共用。
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 1e1d3463aa5d6ee10782e2ee17a7c17ffd64cb61
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c4d1ee187fd1c45dfd043b28c0d4b3d5935f50e1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82184906"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073247"
 ---
 # <a name="manage-azure-file-share-backup-with-rest-api"></a>使用 REST API 管理 Azure 檔案共用備份
 
-本文說明如何執行工作來管理和監視[Azure 備份](https://docs.microsoft.com/azure/backup/backup-overview)所備份的 Azure 檔案共用。
+本文說明如何執行工作來管理和監視[Azure 備份](./backup-overview.md)所備份的 Azure 檔案共用。
 
 ## <a name="monitor-jobs"></a>監視工作
 
@@ -38,7 +38,7 @@ Azure 備份服務會觸發在背景執行的作業。 這包括觸發備份、�
 }
 ```
 
-Azure 檔案共用備份作業是由 [ **jobId** ] 欄位所識別，並可使用 GET 要求來追蹤，如[這裡](https://docs.microsoft.com/rest/api/backup/jobdetails/)所述。
+Azure 檔案共用備份作業是由 [ **jobId** ] 欄位所識別，並可使用 GET 要求來追蹤，如[這裡](/rest/api/backup/jobdetails/)所述。
 
 ### <a name="tracking-the-job"></a>追蹤作業
 
@@ -190,7 +190,7 @@ GET https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af
 
 ## <a name="stop-protection-and-delete-data"></a>停止保護並刪除資料
 
-若要在受保護的檔案共用上移除保護並刪除備份資料，請執行[此處](https://docs.microsoft.com/rest/api/backup/protecteditems/delete)詳述的刪除作業。
+若要在受保護的檔案共用上移除保護並刪除備份資料，請執行[此處](/rest/api/backup/protecteditems/delete)詳述的刪除作業。
 
 ```http
 DELETE https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}?api-version=2019-05-13

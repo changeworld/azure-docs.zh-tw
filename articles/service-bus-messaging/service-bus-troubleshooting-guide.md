@@ -2,12 +2,13 @@
 title: Azure 服務匯流排的疑難排解指南 |Microsoft Docs
 description: 本文提供在發生例外狀況時所要採取的 Azure 服務匯流排訊息例外狀況和建議的動作清單。
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 3b2759916e1f9ef0cec660157f577ff54cd39928
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/15/2020
+ms.openlocfilehash: 6071aae85daa1852c9384656d7caf5e2deffd84e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340455"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071304"
 ---
 # <a name="troubleshooting-guide-for-azure-service-bus"></a>Azure 服務匯流排的疑難排解指南
 本文提供使用 Azure 服務匯流排時，您可能會看到的幾個問題的疑難排解秘訣和建議。 
@@ -15,7 +16,7 @@ ms.locfileid: "85340455"
 ## <a name="connectivity-certificate-or-timeout-issues"></a>連線、憑證或超時問題
 下列步驟可協助您針對 *. servicebus.windows.net 下所有服務的連線/憑證/超時問題進行疑難排解。 
 
-- 流覽至或[wget](https://www.gnu.org/software/wget/) `https://<yournamespace>.servicebus.windows.net/` 。 它有助於檢查您是否有 IP 篩選或虛擬網路或憑證鏈問題（最常見的情況是使用 java SDK）。
+- 流覽至或[wget](https://www.gnu.org/software/wget/) `https://<yournamespace>.servicebus.windows.net/` 。 它有助於檢查您是否有 IP 篩選或虛擬網路或憑證鏈問題，這在使用 java SDK 時很常見。
 
     成功訊息的範例：
     
@@ -53,25 +54,48 @@ ms.locfileid: "85340455"
 - 如果先前的步驟沒有使用[Wireshark](https://www.wireshark.org/)之類的工具來協助並加以分析，請取得網路追蹤。 如有需要，請聯絡[Microsoft 支援服務](https://support.microsoft.com/)。 
 
 ## <a name="issues-that-may-occur-with-service-upgradesrestarts"></a>服務升級/重新開機時可能發生的問題
-後端服務升級和重新開機，可能會對您的應用程式造成下列影響：
 
+### <a name="symptoms"></a>徵狀
 - 要求可能會短暫地進行節流。
 - 傳入訊息/要求中可能會有一個下降。
 - 記錄檔可能包含錯誤訊息。
 - 應用程式可能會在幾秒內中斷與服務的連線。
 
-如果應用程式代碼利用 SDK，則重試原則已經內建且作用中。 應用程式會重新連線，而不會對應用程式/工作流程造成重大影響。
+### <a name="cause"></a>原因
+後端服務升級和重新開機，可能會在您的應用程式中造成這些問題。
+
+### <a name="resolution"></a>解決方案
+如果應用程式程式碼使用 SDK，則重試原則已經內建且作用中。 應用程式會重新連線，而不會對應用程式/工作流程造成重大影響。
 
 ## <a name="unauthorized-access-send-claims-are-required"></a>未經授權的存取：需要傳送宣告
+
+### <a name="symptoms"></a>徵狀 
 當您嘗試使用具有傳送許可權的使用者指派受控識別，從內部部署電腦上的 Visual Studio 存取服務匯流排主題時，可能會看到此錯誤。
 
 ```bash
 Service Bus Error: Unauthorized access. 'Send' claim\(s\) are required to perform this operation.
 ```
 
+### <a name="cause"></a>原因
+身分識別沒有存取服務匯流排主題的許可權。 
+
+### <a name="resolution"></a>解決方案
 若要解決此錯誤，請安裝[AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication/)程式庫。  如需詳細資訊，請參閱[本機開發驗證](..\key-vault\service-to-service-authentication.md#local-development-authentication)。 
 
 若要瞭解如何將許可權指派給角色，請參閱[使用 Azure Active Directory 來驗證受控識別，以存取 Azure 服務匯流排資源](service-bus-managed-service-identity.md)。
+
+## <a name="service-bus-exception-put-token-failed"></a>服務匯流排例外狀況： Put token 失敗
+
+### <a name="symptoms"></a>徵狀
+當您嘗試使用相同的服務匯流排連線傳送超過1000個訊息時，您會收到下列錯誤訊息： 
+
+`Microsoft.Azure.ServiceBus.ServiceBusException: Put token failed. status-code: 403, status-description: The maximum number of '1000' tokens per connection has been reached.` 
+
+### <a name="cause"></a>原因
+使用服務匯流排命名空間的單一連接來傳送和接收訊息時，會使用權杖數目限制。 其為1000。 
+
+### <a name="resolution"></a>解決方案
+開啟與服務匯流排命名空間的新連接，以傳送更多訊息。
 
 ## <a name="next-steps"></a>後續步驟
 查看下列文章： 

@@ -10,11 +10,12 @@ ms.subservice: core
 ms.topic: how-to
 ms.date: 01/31/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 6b74f9cdc5b3317edc8bf2339ba1d2c29f43e55b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 90ad8cc87f1d6a1893b96f6201a4260c03c94fee
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84560167"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072210"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>使用 REST 建立、執行及刪除 Azure ML 資源
 
@@ -32,7 +33,7 @@ ms.locfileid: "84560167"
 > * 使用刪除要求來清除資源 
 > * 使用以金鑰為基礎的授權來評分已部署的模型
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 - 您具有系統管理許可權的**Azure 訂**用帳戶。 如果您沒有這類訂用帳戶，請試用[免費或付費的個人訂](https://aka.ms/AMLFree)用帳戶
 - [Azure Machine Learning 工作區](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace)
@@ -47,7 +48,7 @@ ms.locfileid: "84560167"
 - 您的用戶端識別碼（將與建立的權杖相關聯）
 - 您的用戶端密碼（您應加以保護）
 
-如[設定 Azure Machine Learning 資源和工作流程的驗證](https://docs.microsoft.com/azure/machine-learning/how-to-setup-authentication#set-up-service-principal-authentication)中所述，您應該將這些值從回應中提供給服務主體的建立。 如果您使用的是公司訂用帳戶，您可能沒有建立服務主體的許可權。 在此情況下，您應該使用[免費或付費的個人訂](https://aka.ms/AMLFree)用帳戶。
+您應該將這些值從回應中提供給服務主體的建立。 [設定 Azure Machine Learning 資源和工作流程的驗證](https://docs.microsoft.com/azure/machine-learning/how-to-setup-authentication#set-up-service-principal-authentication)中會討論取得這些值。 如果您使用的是公司訂用帳戶，您可能沒有建立服務主體的許可權。 在此情況下，您應該使用[免費或付費的個人訂](https://aka.ms/AMLFree)用帳戶。
 
 若要取得權杖：
 
@@ -199,15 +200,15 @@ providers/Microsoft.MachineLearningServices/workspaces/{your-workspace-name}/mod
 -H "Authorization:Bearer {your-access-token}"
 ```
 
-請注意，若要列出實驗，一開始是 `history/v1.0` 以列出模型，路徑的開頭為 `modelmanagement/v1.0` 。 REST API 分成數個作業群組，每個都有不同的路徑。 下列連結中的 API 參考檔會列出各種作業的作業、參數和回應碼。
+請注意，若要列出實驗，一開始是 `history/v1.0` 以列出模型，路徑的開頭為 `modelmanagement/v1.0` 。 REST API 分成數個作業群組，每個都有不同的路徑。 
 
-|區域|路徑|參考|
-|-|-|-|
-|Artifacts|成品/v2.0/|[REST API 參考](https://docs.microsoft.com/rest/api/azureml/artifacts)|
-|資料存放區|資料存放區/v1.0/|[REST API 參考](https://docs.microsoft.com/rest/api/azureml/datastores)|
-|超參數微調|hyperdrive/v1.0/|[REST API 參考](https://docs.microsoft.com/rest/api/azureml/hyperparametertuning)|
-|模型|modelmanagement/v1.0/|[REST API 參考](https://docs.microsoft.com/rest/api/azureml/modelsanddeployments/mlmodels)|
-|執行記錄|執行/v1.0/和歷程記錄/1.0/|[REST API 參考](https://docs.microsoft.com/rest/api/azureml/runs)|
+|區域|路徑|
+|-|-|
+|Artifacts|成品/v2.0/|
+|資料存放區|資料存放區/v1.0/|
+|超參數微調|hyperdrive/v1.0/|
+|模型|modelmanagement/v1.0/|
+|執行記錄|執行/v1.0/和歷程記錄/1.0/|
 
 您可以使用的一般模式來探索 REST API：
 

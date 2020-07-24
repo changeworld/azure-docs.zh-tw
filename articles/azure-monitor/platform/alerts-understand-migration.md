@@ -6,11 +6,12 @@ ms.date: 07/10/2019
 ms.author: yalavi
 author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: d31c856e17348c23ad61130869af6ae440d3050d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c9696167d9addc3029a53f25e289d17bd3add263
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81114314"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073621"
 ---
 # <a name="understand-how-the-migration-tool-works"></a>了解移轉工具的運作方式
 
@@ -63,7 +64,7 @@ ms.locfileid: "81114314"
 - SASThrottlingError
 - ThrottlingError
 
-百分比計量的傳統警示規則必須根據[新舊儲存體計量之間的對應](https://docs.microsoft.com/azure/storage/common/storage-metrics-migration#metrics-mapping-between-old-metrics-and-new-metrics)進行遷移。 臨界值必須適當地修改，因為可用的新計量是絕對的。
+百分比計量的傳統警示規則必須根據[新舊儲存體計量之間的對應](../../storage/common/storage-metrics-migration.md#metrics-mapping-between-old-metrics-and-new-metrics)進行遷移。 臨界值必須適當地修改，因為可用的新計量是絕對的。
 
 AnonymousThrottlingError、SASThrottlingError 和 ThrottlingError 上的傳統警示規則必須分割成兩個新的警示，因為沒有提供相同功能的結合計量。 閾值將必須適當地調整。
 

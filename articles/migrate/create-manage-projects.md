@@ -2,13 +2,13 @@
 title: 建立和管理 Azure Migrate 專案
 description: 在 Azure Migrate 中尋找、建立、管理和刪除專案。
 ms.topic: how-to
-ms.date: 04/19/2020
-ms.openlocfilehash: 644ac5ecab9f5384b446c3b1ebe762a5d06aaf12
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/23/2020
+ms.openlocfilehash: d60868f9d0d4c60291cfd92a9e8d11fd3f9a42b9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86113423"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071794"
 ---
 # <a name="create-and-manage-azure-migrate-projects"></a>建立和管理 Azure Migrate 專案
 
@@ -65,7 +65,6 @@ ms.locfileid: "86113423"
     - 資源類型為 [ **Microsoft. 遷移/migrateprojects**]。
     - 如果資源群組是由 Azure Migrate 專案獨佔使用，您可以刪除整個資源群組。
 
-
 請注意：
 
 - 當您刪除時，會刪除專案和有關探索到之電腦的中繼資料。
@@ -73,6 +72,7 @@ ms.locfileid: "86113423"
 - 如果您是使用 Azure Log Analytics 工作區的相依性分析：
     - 如果您已將 Log Analytics 工作區附加至伺服器評估工具，則不會自動刪除工作區。 相同的 Log Analytics 工作區可以用於多個案例。
     - 如果您想要刪除 Log Analytics 工作區，請手動執行此動作。
+- 專案刪除無法復原。 無法復原已刪除的物件。
 
 ### <a name="delete-a-workspace-manually"></a>手動刪除工作區
 

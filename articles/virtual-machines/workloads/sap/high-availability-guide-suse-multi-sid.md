@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/26/2020
 ms.author: radeltch
-ms.openlocfilehash: 793851780e1154b6b6a21c88ea8cae063a277790
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 89d7ca3e37b107dce3f832499db45e0506c3fa64
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80350065"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074006"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications-multi-sid-guide"></a>Azure Vm 上的 SAP NetWeaver 高可用性-適用于 SAP 應用程式的 SUSE Linux Enterprise Server 多 SID 指南
 
@@ -91,7 +91,7 @@ ms.locfileid: "80350065"
 
 在容錯移轉發生時，參與叢集的虛擬機器必須調整大小，才能執行所有資源。 每個 SAP SID 可以在多重 SID 高可用性叢集中彼此獨立地故障轉換。  如果使用 SBD 隔離，可以在多個叢集之間共用 SBD 裝置。  
 
-為了達到高可用性，SAP NetWeaver 需要高度可用的 NFS 共用。 在此範例中，我們假設 SAP NFS 共用是裝載于高可用性[NFS 檔案伺服器](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)上，可供多個 SAP 系統使用。 或共用會部署在[Azure NetApp FILES NFS 磁片](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes)區上。  
+為了達到高可用性，SAP NetWeaver 需要高度可用的 NFS 共用。 在此範例中，我們假設 SAP NFS 共用是裝載于高可用性[NFS 檔案伺服器](./high-availability-guide-suse-nfs.md)上，可供多個 SAP 系統使用。 或共用會部署在[Azure NetApp FILES NFS 磁片](../../../azure-netapp-files/azure-netapp-files-create-volumes.md)區上。  
 
 ![SAP NetWeaver 高可用性概觀](./media/high-availability-guide-suse/ha-suse-multi-sid.png)
 
@@ -101,7 +101,7 @@ ms.locfileid: "80350065"
 > [!TIP]
 > SAP ASCS/ERS 的多 SID 叢集是較複雜的解決方案。 更複雜的方式是執行。 執行維護活動（例如 OS 修補）時，它也牽涉到更高的系統管理工作。 開始實際執行之前，請花時間仔細規劃部署和所有相關元件，例如 Vm、NFS 掛接、Vip、負載平衡器設定等等。  
 
-NFS 伺服器、SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS 和 SAP HANA 資料庫會使用虛擬主機名稱和虛擬 IP 位址。 在 Azure 上必須有負載平衡器才能使用虛擬 IP 位址。 我們建議使用 [tandard Load Balancer](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal)。  
+NFS 伺服器、SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS 和 SAP HANA 資料庫會使用虛擬主機名稱和虛擬 IP 位址。 在 Azure 上必須有負載平衡器才能使用虛擬 IP 位址。 我們建議使用 [tandard Load Balancer](../../../load-balancer/quickstart-load-balancer-standard-public-portal.md)。  
 
 下列清單顯示此多 SID 叢集範例（具有三個 SAP 系統）的（A） SCS 和 ERS 負載平衡器的設定。 針對每個 Sid，您將需要個別的前端 IP、健康情況探查和負載平衡規則，分別用於每個 ASCS 和 ERS 實例。 將屬於 ASCS/ASCS 叢集一部分的所有 Vm 指派給一個後端集區。  
 
@@ -147,23 +147,23 @@ NFS 伺服器、SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS 和 S
 
 
 > [!Note]
-> 當不具公用 IP 位址的 VM 放在內部 (沒有公用 IP 位址) Standard Azure Load Balancer 的後端集區時，除非另外設定來允許路由傳送至公用端點，否則不會有輸出網際網路連線能力。 如需如何實現輸出連線能力的詳細資料，請參閱[在 SAP 高可用性案例中使用 Azure Standard Load Balancer 實現虛擬機器的公用端點連線能力](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)。  
+> 當不具公用 IP 位址的 VM 放在內部 (沒有公用 IP 位址) Standard Azure Load Balancer 的後端集區時，除非另外設定來允許路由傳送至公用端點，否則不會有輸出網際網路連線能力。 如需如何實現輸出連線能力的詳細資料，請參閱[在 SAP 高可用性案例中使用 Azure Standard Load Balancer 實現虛擬機器的公用端點連線能力](./high-availability-guide-standard-load-balancer-outbound-connections.md)。  
 
 > [!IMPORTANT]
-> 請勿在位於 Azure Load Balancer 後方的 Azure VM 上啟用 TCP 時間戳記。 啟用 TCP 時間戳記會導致健康狀態探查失敗。 將參數 **net.ipv4.tcp_timestamps** 設定為 **0**。 如需詳細資料，請參閱 [Load Balancer 健康狀態探查](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)。
+> 請勿在位於 Azure Load Balancer 後方的 Azure VM 上啟用 TCP 時間戳記。 啟用 TCP 時間戳記會導致健康狀態探查失敗。 將參數 **net.ipv4.tcp_timestamps** 設定為 **0**。 如需詳細資料，請參閱 [Load Balancer 健康狀態探查](../../../load-balancer/load-balancer-custom-probe-overview.md)。
 
 ## <a name="sap-nfs-shares"></a>SAP NFS 共用
 
 SAP NetWeaver 需要傳輸、設定檔目錄等的共用儲存體。 針對高可用性的 SAP 系統，請務必擁有高度可用的 NFS 共用。 您將需要決定 SAP NFS 共用的架構。 其中一個選項是[在 SUSE Linux Enterprise Server 上的 Azure vm 上建立高可用性 NFS][nfs-ha]叢集，可以在多個 SAP 系統之間共用。 
 
-另一個選項是在[Azure NetApp FILES NFS 磁片](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes)區上部署共用。  使用 Azure NetApp Files，您將可取得 SAP NFS 共用的內建高可用性。
+另一個選項是在[Azure NetApp FILES NFS 磁片](../../../azure-netapp-files/azure-netapp-files-create-volumes.md)區上部署共用。  使用 Azure NetApp Files，您將可取得 SAP NFS 共用的內建高可用性。
 
 ## <a name="deploy-the-first-sap-system-in-the-cluster"></a>在叢集中部署第一個 SAP 系統
 
 既然您已決定 SAP NFS 共用的架構，請在叢集中部署第一個 SAP 系統，遵循對應的檔。
 
-* 如果使用高可用性 NFS 伺服器，請[在適用于 sap 應用程式的 SUSE Linux Enterprise Server 上，遵循 Azure vm 上的 Sap NetWeaver 高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse)。  
-* 如果您使用 Azure NetApp Files NFS 磁片區，請[在 SUSE Linux Enterprise Server 搭配適用于 sap 應用程式的 Azure Netapp files，遵循 Azure vm 上的 Sap NetWeaver 高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files)
+* 如果使用高可用性 NFS 伺服器，請[在適用于 sap 應用程式的 SUSE Linux Enterprise Server 上，遵循 Azure vm 上的 Sap NetWeaver 高可用性](./high-availability-guide-suse.md)。  
+* 如果您使用 Azure NetApp Files NFS 磁片區，請[在 SUSE Linux Enterprise Server 搭配適用于 sap 應用程式的 Azure Netapp files，遵循 Azure vm 上的 Sap NetWeaver 高可用性](./high-availability-guide-suse-netapp-files.md)
 
 以上所列的檔會引導您完成準備必要的基礎結構、建立叢集、準備執行 SAP 應用程式的 OS 等步驟。  
 
@@ -176,7 +176,7 @@ SAP NetWeaver 需要傳輸、設定檔目錄等的共用儲存體。 針對高�
 
 下列項目會加上下列其中一個前置詞： **[A]** - 適用於所有節點、 **[1]** - 僅適用於節點 1 或 **[2]** - 僅適用於節點 2。
 
-### <a name="prerequisites"></a>必要條件 
+### <a name="prerequisites"></a>先決條件 
 
 > [!IMPORTANT]
 > 在遵循在叢集中部署其他 SAP 系統的指示之前，請遵循指示，在叢集中部署第一個 SAP 系統，因為只有在第一次部署時才需要執行步驟。  
@@ -189,7 +189,7 @@ SAP NetWeaver 需要傳輸、設定檔目錄等的共用儲存體。 針對高�
 
 ### <a name="prepare-for-sap-netweaver-installation"></a>準備進行 SAP NetWeaver 安裝
 
-1. 將新部署之系統的設定（也就是**NW2**、 **NW3**）新增至現有的 Azure Load Balancer，遵循透過[Azure 入口網站手動部署 Azure Load Balancer](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files#deploy-azure-load-balancer-manually-via-azure-portal)的指示。 調整您設定的 IP 位址、健康情況探查埠、負載平衡規則。  
+1. 將新部署之系統的設定（也就是**NW2**、 **NW3**）新增至現有的 Azure Load Balancer，遵循透過[Azure 入口網站手動部署 Azure Load Balancer](./high-availability-guide-suse-netapp-files.md#deploy-azure-load-balancer-manually-via-azure-portal)的指示。 調整您設定的 IP 位址、健康情況探查埠、負載平衡規則。  
 
 2. **[A]** 設定其他 SAP 系統的名稱解析。 您可以使用 [DNS 伺服器] 或 [ `/etc/hosts` 在所有節點上修改]。 這個範例顯示如何使用檔案 `/etc/hosts` 。  將 IP 位址和主機名稱調整為您的環境。 
 
@@ -236,8 +236,8 @@ SAP NetWeaver 需要傳輸、設定檔目錄等的共用儲存體。 針對高�
 
    `/etc/auto.direct`針對您要部署至叢集的其他 SAP 系統，使用檔案系統來更新檔案。  
 
-   * 如果使用 NFS 檔案伺服器，請遵循[這裡](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse#prepare-for-sap-netweaver-installation)的指示
-   * 如果使用 Azure NetApp Files，請遵循[這裡](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files#prepare-for-sap-netweaver-installation)的指示 
+   * 如果使用 NFS 檔案伺服器，請遵循[這裡](./high-availability-guide-suse.md#prepare-for-sap-netweaver-installation)的指示
+   * 如果使用 Azure NetApp Files，請遵循[這裡](./high-availability-guide-suse-netapp-files.md#prepare-for-sap-netweaver-installation)的指示 
 
    您將需要重新開機 `autofs` 服務，以掛接新加入的共用。  
 
@@ -561,17 +561,17 @@ SAP NetWeaver 需要傳輸、設定檔目錄等的共用儲存體。 針對高�
 
 完成 SAP 安裝的方式：
 
-* [準備您的 SAP NetWeaver 應用程式伺服器](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse#2d6008b0-685d-426c-b59e-6cd281fd45d7)
-* [安裝 DBMS 實例](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse#install-database)
-* [安裝主要 SAP 應用程式伺服器](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse#sap-netweaver-application-server-installation)
+* [準備您的 SAP NetWeaver 應用程式伺服器](./high-availability-guide-suse.md#2d6008b0-685d-426c-b59e-6cd281fd45d7)
+* [安裝 DBMS 實例](./high-availability-guide-suse.md#install-database)
+* [安裝主要 SAP 應用程式伺服器](./high-availability-guide-suse.md#sap-netweaver-application-server-installation)
 * 安裝一或多個額外的 SAP 應用程式實例
 
 ## <a name="test-the-multi-sid-cluster-setup"></a>測試多 SID 叢集設定
 
 下列測試是 SUSE 最佳做法指南中的測試案例子集。 為了方便起見，其中包含了它們。 如需完整的叢集測試清單，請參考下列檔：
 
-* 如果使用高可用性 NFS 伺服器，請[在適用于 sap 應用程式的 SUSE Linux Enterprise Server 上，遵循 Azure vm 上的 Sap NetWeaver 高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse)。  
-* 如果您使用 Azure NetApp Files NFS 磁片區，請[在 SUSE Linux Enterprise Server 搭配適用于 sap 應用程式的 Azure Netapp files，遵循 Azure vm 上的 Sap NetWeaver 高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files)
+* 如果使用高可用性 NFS 伺服器，請[在適用于 sap 應用程式的 SUSE Linux Enterprise Server 上，遵循 Azure vm 上的 Sap NetWeaver 高可用性](./high-availability-guide-suse.md)。  
+* 如果您使用 Azure NetApp Files NFS 磁片區，請[在 SUSE Linux Enterprise Server 搭配適用于 sap 應用程式的 Azure Netapp files，遵循 Azure vm 上的 Sap NetWeaver 高可用性](./high-availability-guide-suse-netapp-files.md)
 
 請一律閱讀 SUSE 最佳做法指南，並執行可能已加入的所有其他測試。  
 所呈現的測試是在兩個節點中，已安裝三個 SAP 系統的多 SID 叢集。  

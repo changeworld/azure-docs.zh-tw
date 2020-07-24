@@ -14,11 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 01/13/2017
 ms.author: mikeray
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f3c7009e5ecb43a809b9a3f703fc5ba289a2fd00
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 50be33bf0cb89c7baff58e5f8e4a2a23b9a1ecef
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84669268"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073273"
 ---
 # <a name="introducing-sql-server-always-on-availability-groups-on-azure-virtual-machines"></a>Azure 虛擬機器上的 SQL Server Always On 可用性群組簡介
 
@@ -40,10 +41,9 @@ Azure 虛擬機器上可用性群組的主要差異在於，這些虛擬機器�
 
 |  | Windows Server 版本 | SQL Server 版本 | SQL Server 版本 | WSFC 仲裁設定 | 多重地區災害復原 | 多重子網路支援 | 對現有 AD 的支援 | 相同地區多重區域災害復原 | 不包含 AD 網域的 Dist-AG 支援 | 不包含叢集的 Dist-AG 支援 |  
 | :------ | :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----|
-| [SQL VM CLI](availability-group-az-cli-configure.md) | 2016 | 2017 </br>2016   | Ent | 雲端見證 | 否 | 是 | 是 | 是 | 否 | 否 |
-| [快速入門範本](availability-group-quickstart-template-configure.md) | 2016 | 2017</br>2016  | Ent | 雲端見證 | 否 | 是 | 是 | 是 | 否 | 否 |
-| [手動](availability-group-manually-configure-prerequisites-tutorial.md) | 全部 | 全部 | 全部 | 全部 | 是 | 是 | 是 | 是 | 是 | Yes |
-| &nbsp; | &nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |
+| **[SQL VM CLI](availability-group-az-cli-configure.md)** | 2016 | 2017 </br>2016   | Ent | 雲端見證 | 否 | 是 | 是 | 是 | 否 | 否 |
+| **[快速入門範本](availability-group-quickstart-template-configure.md)** | 2016 | 2017</br>2016  | Ent | 雲端見證 | 否 | 是 | 是 | 是 | 否 | 否 |
+| **[手動](availability-group-manually-configure-prerequisites-tutorial.md)** | 全部 | 全部 | 全部 | 全部 | 是 | 是 | 是 | 是 | 是 | 是 |
 
 已從 Azure Marketplace 移除**SQL Server AlwaysOn 叢集（預覽）** 範本，因此無法再使用。 
 

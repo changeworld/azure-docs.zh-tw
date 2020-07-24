@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 06/03/2020
 ms.author: juliako
-ms.openlocfilehash: d09fba2130dc302378a59200349a569cc248234b
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 53e337cf4ccbabf7f0b7a227632ba5e996e2b4f3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86075428"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072137"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure 媒體服務 v3 版本資訊
 
@@ -36,6 +36,20 @@ ms.locfileid: "86075428"
 >
 > 如需詳細資訊，請參閱：[媒體服務 v3 的 Azure 入口網站限制](frequently-asked-questions.md#what-are-the-azure-portal-limitations-for-media-services-v3)。
 
+## <a name="july-2020"></a>2020 年 7 月
+
+### <a name="live-transcriptions"></a>即時轉譯
+
+即時轉譯現在支援19種語言和8個區域。
+
+## <a name="protecting-your-content-with-media-services-and-azure-ad"></a>使用媒體服務和 Azure AD 保護您的內容
+
+我們已發佈名[為端對端內容保護的教學課程，使用 Azure AD](./azure-ad-content-protection.md)。
+
+### <a name="high-availablity"></a>高可用性
+
+我們發佈了具有媒體服務和隨選影片（VOD）[總覽](./media-services-high-availability-encoding.md)和[範例](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/HighAvailabilityEncodingStreaming)的高可用性。
+
 ## <a name="june-2020"></a>2020 年 6 月
 
 ### <a name="live-video-analytics-on-iot-edge-preview-release"></a>IoT Edge preview 版本上的即時影片分析
@@ -43,16 +57,6 @@ ms.locfileid: "86075428"
 即時影片分析的預覽已公開 IoT Edge。 如需詳細資訊，請參閱[版本](../live-video-analytics-edge/release-notes.md)資訊。
 
 IoT Edge 上的即時影片分析是媒體服務系列的擴充。 它可讓您在自己的邊緣裝置上使用您選擇的 AI 模型來分析即時影片，並選擇性地捕捉並錄製該影片。 您現在可以在邊緣使用即時影片分析來建立應用程式，而不必擔心建立和操作即時影片管線的複雜性。
-
-### <a name="search-by-topics"></a>依主題搜尋
-
-您現在可以使用搜尋 API 來搜尋包含特定主題的影片（僅限 API）。
-
-主題會加入做為 `textScope` （選擇性參數）的一部分。 如需詳細資訊，請參閱[API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Search-Videos) 。  
-
-### <a name="labels-enhancement"></a>標籤增強功能
-
-標籤標記已升級，現在包含更多可以識別的視覺標籤。
 
 ## <a name="may-2020"></a>2020 年 5 月
 
@@ -137,7 +141,7 @@ Azure 媒體播放器文件已遷移至 [Azure 文件](../azure-media-player/azu
 
 #### <a name="deprecation-of-media-processors"></a>淘汰媒體處理器
 
-我們宣布取代「Azure 媒體索引器」和「Azure 媒體索引器 2 預覽版」。 關於淘汰日期，請參閱[舊版元件](../previous/legacy-components.md)主題。 [Azure 媒體服務影片索引器](https://docs.microsoft.com/azure/media-services/video-indexer/)取代這些舊版媒體處理器。
+我們宣布取代「Azure 媒體索引器」和「Azure 媒體索引器 2 預覽版」。 關於淘汰日期，請參閱[舊版元件](../previous/legacy-components.md)主題。 [Azure 媒體服務影片索引器](../video-indexer/index.yml)取代這些舊版媒體處理器。
 
 如需詳細資訊，請參閱[從 Azure 媒體索引器和 Azure 媒體索引器 2 遷移到 Azure 媒體服務影片索引器](../previous/migrate-indexer-v1-v2.md)。
 
@@ -171,9 +175,9 @@ Azure 媒體播放器文件已遷移至 [Azure 文件](../azure-media-player/azu
 
 ### <a name="video-subclipping"></a>影片子剪輯
 
-現在，進行影片編碼時，您可以使用[作業](https://docs.microsoft.com/rest/api/media/jobs)來修剪或子剪輯影片。 
+現在，進行影片編碼時，您可以使用[作業](/rest/api/media/jobs)來修剪或子剪輯影片。 
 
-這項功能適用於使用 [BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) 預設或 [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) 預設所建立的任何[轉換](https://docs.microsoft.com/rest/api/media/transforms)。 
+這項功能適用於使用 [BuiltInStandardEncoderPreset](/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) 預設或 [StandardEncoderPreset](/rest/api/media/transforms/createorupdate#standardencoderpreset) 預設所建立的任何[轉換](/rest/api/media/transforms)。 
 
 請參閱範例：
 
@@ -212,8 +216,8 @@ Azure 媒體播放器文件已遷移至 [Azure 文件](../azure-media-player/azu
 
 ### <a name="new-presets"></a>新的預設
 
-* 內建的分析器預設中新增 [FaceDetectorPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#facedetectorpreset)。
-* 內建的編碼器預設中新增 [ContentAwareEncodingExperimental](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset)。 如需詳細資訊，請參閱[內容感知編碼](content-aware-encoding.md)。 
+* 內建的分析器預設中新增 [FaceDetectorPreset](/rest/api/media/transforms/createorupdate#facedetectorpreset)。
+* 內建的編碼器預設中新增 [ContentAwareEncodingExperimental](/rest/api/media/transforms/createorupdate#encodernamedpreset)。 如需詳細資訊，請參閱[內容感知編碼](content-aware-encoding.md)。 
 
 ## <a name="march-2019"></a>2019 年 3 月
 
@@ -246,21 +250,21 @@ Azure 國家雲端現在支援媒體服務 v3。 尚未在所有雲端中提供�
 
 ## <a name="november-2018"></a>2018 年 11 月
 
-CLI 2.0 模組現已適用於 [Azure 媒體服務 v3 GA](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest) – v 2.0.50。
+CLI 2.0 模組現已適用於 [Azure 媒體服務 v3 GA](/cli/azure/ams?view=azure-cli-latest) – v 2.0.50。
 
 ### <a name="new-commands"></a>新的命令
 
-- [az ams account](https://docs.microsoft.com/cli/azure/ams/account?view=azure-cli-latest)
-- [az ams account-filter](https://docs.microsoft.com/cli/azure/ams/account-filter?view=azure-cli-latest)
-- [az ams asset](https://docs.microsoft.com/cli/azure/ams/asset?view=azure-cli-latest)
-- [az ams asset-filter](https://docs.microsoft.com/cli/azure/ams/asset-filter?view=azure-cli-latest)
-- [az ams content-key-policy](https://docs.microsoft.com/cli/azure/ams/content-key-policy?view=azure-cli-latest)
-- [az ams job](https://docs.microsoft.com/cli/azure/ams/job?view=azure-cli-latest)
-- [az ams live-event](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest)
-- [az ams live-output](https://docs.microsoft.com/cli/azure/ams/live-output?view=azure-cli-latest)
-- [az ams streaming-endpoint](https://docs.microsoft.com/cli/azure/ams/streaming-endpoint?view=azure-cli-latest)
-- [az ams streaming-locator](https://docs.microsoft.com/cli/azure/ams/streaming-locator?view=azure-cli-latest)
-- [az ams account mru](https://docs.microsoft.com/cli/azure/ams/account/mru?view=azure-cli-latest) - 可讓您管理媒體保留單位。 如需詳細資訊，請參閱[調整媒體保留單位](media-reserved-units-cli-how-to.md)。
+- [az ams account](/cli/azure/ams/account?view=azure-cli-latest)
+- [az ams account-filter](/cli/azure/ams/account-filter?view=azure-cli-latest)
+- [az ams asset](/cli/azure/ams/asset?view=azure-cli-latest)
+- [az ams asset-filter](/cli/azure/ams/asset-filter?view=azure-cli-latest)
+- [az ams content-key-policy](/cli/azure/ams/content-key-policy?view=azure-cli-latest)
+- [az ams job](/cli/azure/ams/job?view=azure-cli-latest)
+- [az ams live-event](/cli/azure/ams/live-event?view=azure-cli-latest)
+- [az ams live-output](/cli/azure/ams/live-output?view=azure-cli-latest)
+- [az ams streaming-endpoint](/cli/azure/ams/streaming-endpoint?view=azure-cli-latest)
+- [az ams streaming-locator](/cli/azure/ams/streaming-locator?view=azure-cli-latest)
+- [az ams account mru](/cli/azure/ams/account/mru?view=azure-cli-latest) - 可讓您管理媒體保留單位。 如需詳細資訊，請參閱[調整媒體保留單位](media-reserved-units-cli-how-to.md)。
 
 ### <a name="new-features-and-breaking-changes"></a>新功能和重大變更
 
@@ -351,7 +355,7 @@ Apple HLS (iOS 11 +) 的 CMAF 和 'cbcs' 加密支援和支援 CMAF 的 MPEG-DAS
 
 ### <a name="video-indexer"></a>影片索引子
 
-我們已在 8 月發表了影片索引器 GA 版本。 如需目前支援功能的全新詳細資訊，請參閱[什麼是影片索引器](../../cognitive-services/video-indexer/video-indexer-overview.md?toc=/azure/media-services/video-indexer/toc.json&bc=/azure/media-services/video-indexer/breadcrumb/toc.json)。 
+我們已在 8 月發表了影片索引器 GA 版本。 如需目前支援功能的全新詳細資訊，請參閱[什麼是影片索引器](../video-indexer/video-indexer-overview.md?bc=/azure/media-services/video-indexer/breadcrumb/toc.json&toc=/azure/media-services/video-indexer/toc.json)。 
 
 ### <a name="plans-for-changes"></a>方案變更
 

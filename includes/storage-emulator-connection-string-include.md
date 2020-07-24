@@ -2,16 +2,16 @@
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 10/26/2018
+ms.date: 07/17/2020
 ms.author: tamram
-ms.openlocfilehash: 8c577db3e9f2bff9e86c3a7c37274630f90dd680
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 85e7cb86217340e77a6f597a357c3de1f91fb8d0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67174183"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87070561"
 ---
-儲存體模擬器支援共用金鑰驗證的單一固定帳戶及已知驗證金鑰。 此帳戶和金鑰都是唯一允許搭配儲存體模擬器使用的共用金鑰認證。 其中包括：
+Azurite 支援單一固定帳戶及已知的驗證金鑰，以進行共用金鑰驗證。 此帳戶和金鑰是唯一允許與 Azurite 搭配使用的共用金鑰認證。 其中包括：
 
 ```
 Account name: devstoreaccount1
@@ -19,13 +19,13 @@ Account key: Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZ
 ```
 
 > [!NOTE]
-> 儲存體模擬器所支援的驗證金鑰僅可用來測試用戶端驗證碼的功能。 它不提供任何安全性用途。 您無法將生產儲存體帳戶和金鑰與儲存體模擬器搭配使用。 您不應該將開發帳戶與生產資料搭配使用。
+> Azurite 支援的驗證金鑰僅適用于測試用戶端驗證程式代碼的功能。 它不提供任何安全性用途。 您不能搭配 Azurite 使用您的生產儲存體帳戶和金鑰。 您不應該將開發帳戶與生產資料搭配使用。
 > 
-> 儲存體模擬器只透過 HTTP 支援連線。 不過，HTTPS 是建議的通訊協定，用於存取生產 Azure 儲存體帳戶中的資源。
+> Azurite 僅支援透過 HTTP 連接。 不過，HTTPS 是建議的通訊協定，用於存取生產 Azure 儲存體帳戶中的資源。
 > 
 
 #### <a name="connect-to-the-emulator-account-using-a-shortcut"></a>使用捷徑連接到模擬器帳戶
-從您的應用程式連線到儲存體模擬器的最簡單方法，就是在應用程式參照捷徑 `UseDevelopmentStorage=true` 的組態檔中設定連接字串。 以下是*app.config*檔案中儲存體模擬器的連接字串範例： 
+從您的應用程式連線到 Azurite 最簡單的方式，就是在應用程式的設定檔中設定參考快捷方式的連接字串 `UseDevelopmentStorage=true` 。 以下是在*app.config*檔案中 Azurite 的連接字串範例： 
 
 ```xml
 <appSettings>
@@ -40,16 +40,7 @@ Account key: Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZ
 DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;
 AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;
 BlobEndpoint=http://127.0.0.1:10000/devstoreaccount1;
-TableEndpoint=http://127.0.0.1:10002/devstoreaccount1;
 QueueEndpoint=http://127.0.0.1:10001/devstoreaccount1;
 ```
 
 此值等同於上面顯示的捷徑 `UseDevelopmentStorage=true`。
-
-#### <a name="specify-an-http-proxy"></a>指定 HTTP proxy
-您也可以指定在對儲存體模擬器測試服務時要使用的 HTTP Proxy。 當您正在對儲存體服務進行作業偵錯時，這對於觀察 HTTP 要求和回應非常有用。 若要指定 Proxy，可將 `DevelopmentStorageProxyUri` 選項新增至連接字串，並將其值設為 Proxy URI。 例如，以下是指向儲存體模擬器並設定 HTTP Proxy 的連接字串：
-
-```
-UseDevelopmentStorage=true;DevelopmentStorageProxyUri=http://myProxyUri
-```
-

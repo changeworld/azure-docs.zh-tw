@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 65e1fa07d2af15e9ccb5f85ce4645e3e6c287952
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 44f10bd49a768004fc63a3287799e6b79dd5bae1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85960362"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071904"
 ---
 # <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>如何建置 Smooth Streaming Windows 市集應用程式  
 
@@ -32,7 +32,7 @@ Smooth Streaming Client SDK for Windows 8 可讓開發人員建置能夠播放�
 3. 選取 Smooth Streaming 資料流
 4. 選取 Smooth Streaming 曲目
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 > [!NOTE]
 > Windows 市集 8.1 版和更早版本的專案在 Visual Studio 2017 不受支援。  如需詳細資訊，請參閱 [Visual Studio 2017 平台目標及相容性](https://www.visualstudio.com/en-us/productinfo/vs2017-compatibility-vs)。
 
@@ -53,7 +53,7 @@ Smooth Streaming Client SDK for Windows 8 可讓開發人員建置能夠播放�
 
 ![Smooth Streaming Windows Store application example][PlayerApplication]
 
-如需關於開發 Windows 市集應用程式的詳細資訊，請參閱 [開發 Windows 8 適用的好用應用程式](https://msdn.microsoft.com/windows/apps/br229512.aspx)。 本課程包含下列程序：
+如需關於開發 Windows 市集應用程式的詳細資訊，請參閱 [開發 Windows 8 適用的好用應用程式](https://developer.microsoft.com/en-us/windows/)。 本課程包含下列程序：
 
 1. 建立 Windows 市集專案
 2. 設計使用者介面 (XAML)
@@ -66,28 +66,28 @@ Smooth Streaming Client SDK for Windows 8 可讓開發人員建置能夠播放�
 1. **在 [檔案**] 功能表上，按一下 [**新增**]，然後按一下 [**專案**]。
 1. 從 [新增專案] 對話方塊中，輸入或選取下列值：
 
-    | Name | 值 |
+    | 名稱 | 值 |
     | --- | --- |
     | 範本群組 |已安裝/範本/Visual C#/Windows 市集 |
-    | [範本] |空白應用程式 (XAML) |
-    | Name |SSPlayer |
-    | 位置 |C:\SSTutorials |
+    | 範本 |空白應用程式 (XAML) |
+    | 名稱 |SSPlayer |
+    | Location |C:\SSTutorials |
     | 方案名稱 |SSPlayer |
     | 為方案建立目錄 |(已選取) |
 
-1. 按一下 [確定]。
+1. 按一下 [確定]  。
 
 ### <a name="to-add-a-reference-to-the-smooth-streaming-client-sdk"></a>新增 Smooth Streaming Client SDK 的參考
 
 1. 從 [方案總管] 中，在 [SSPlayer]**** 上按一下滑鼠右鍵，然後按一下 [加入參考]****。
 1. 輸入或選取下列值：
 
-    | Name | 值 |
+    | 名稱 | 值 |
     | --- | --- |
     | 參考群組 |Windows/延伸 |
     | 參考 |選取 Microsoft Smooth Streaming Client SDK for Windows 8 和 Microsoft Visual C++ Runtime Package |
 
-1. 按一下 [確定]。 
+1. 按一下 [確定]  。 
 
 加入參考之後，您必須選取目標平台 (x64 或 x86)，而加入參考在「任何 CPU 平台」組態中將沒有作用。  在方案總管中，您會看到這些加入的參考具有黃色警告標記。
 
@@ -141,7 +141,7 @@ Smooth Streaming Client SDK for Windows 8 可讓開發人員建置能夠播放�
          </StackPanel>
    ```
    MediaElement 控制項會用來播放媒體。 下一個課程將使用名稱為 sliderProgress 的滑動軸控制項來控制媒體進度。
-3. 按 **CTRL+S** 儲存檔案。
+3. 按**CTRL + S**以儲存檔案。
 
 MediaElement 控制項預設不支援 Smooth Streaming 內容。 若要啟用 Smooth Streaming 支援，您必須依副檔名和 MIME 類型來註冊 Smooth Streaming 位元組資料流處理常式。  若要註冊，請使用 Windows.Media 命名空間的 MediaExtensionManager.RegisterByteStreamHandler 方法。
 
@@ -214,7 +214,7 @@ MediaElement 控制項預設不支援 Smooth Streaming 內容。 若要啟用 Sm
          # endregion
    ```
    這裡在定義 sliderProgress_PointerPressed 事件處理常式。  還需要進行其他工作，才能讓它運作，在本教學課程的下一個課程中，將會涵蓋這項資訊。
-6. 按 **CTRL+S** 儲存檔案。
+6. 按**CTRL + S**以儲存檔案。
 
 完成的程式碼後置檔案看起來像這樣：
 
@@ -291,7 +291,7 @@ MediaElement 控制項預設不支援 Smooth Streaming 內容。 若要啟用 Sm
             "application/vnd.ms-sstr+xml", 
          propertySet);
    ```
-6. 按 **CTRL+S** 儲存檔案。
+6. 按**CTRL + S**以儲存檔案。
 
 ### <a name="to-add-the-adaptive-source-manager-level-event-handler"></a>新增調適性來源管理員層級事件處理常式
 
@@ -319,7 +319,7 @@ MediaElement 控制項預設不支援 Smooth Streaming 內容。 若要啟用 Sm
          adaptiveSourceManager.AdaptiveSourceOpenedEvent += 
            new AdaptiveSourceOpenedEventHandler(mediaElement_AdaptiveSourceOpened);
    ```
-5. 按 **CTRL+S** 儲存檔案。
+5. 按**CTRL + S**以儲存檔案。
 
 ### <a name="to-add-adaptive-source-level-event-handlers"></a>新增調適性來源層級事件處理常式
 
@@ -368,7 +368,7 @@ MediaElement 控制項預設不支援 Smooth Streaming 內容。 若要啟用 Sm
 
             mediaElement_AdaptiveSourceFailed;
    ```
-5. 按 **CTRL+S** 儲存檔案。
+5. 按**CTRL + S**以儲存檔案。
 
 在調適性來源管理員層級也有相同的事件，可用於處理應用程式中所有媒體元素通用的功能。 每個 AdaptiveSource 都包含自己專屬的事件，而且所有 AdaptiveSource 事件都會在 AdaptiveSourceManager 下階層式列出。
 
@@ -406,7 +406,7 @@ MediaElement 控制項預設不支援 Smooth Streaming 內容。 若要啟用 Sm
          mediaElement.MediaEnded += MediaEnded;
          mediaElement.MediaFailed += MediaFailed;
    ```
-4. 按 **CTRL+S** 儲存檔案。
+4. 按**CTRL + S**以儲存檔案。
 
 ### <a name="to-add-slider-bar-related-code"></a>新增滑動軸相關程式碼
 
@@ -516,7 +516,7 @@ MediaElement 控制項預設不支援 Smooth Streaming 內容。 若要啟用 Sm
    ```
 
    > [!NOTE]
-   > CoreDispatcher 用來從非 UI 執行緒對 UI 執行緒進行變更。 如果發送器執行緒發生瓶頸，開發人員可以選擇使用他們想要更新的 UI 元素所提供的發送器。  例如：
+   > CoreDispatcher 用來從非 UI 執行緒對 UI 執行緒進行變更。 如果發送器執行緒發生瓶頸，開發人員可以選擇使用他們想要更新的 UI 元素所提供的發送器。  例如:
 
    ```csharp
          await sliderProgress.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => { TimeSpan 
@@ -539,7 +539,7 @@ MediaElement 控制項預設不支援 Smooth Streaming 內容。 若要啟用 Sm
          sliderProgress.Width = mediaElement.Width;
          setupTimer();
    ```
-8. 按 **CTRL+S** 儲存檔案。
+8. 按**CTRL + S**以儲存檔案。
 
 ### <a name="to-compile-and-test-the-application"></a>編譯和測試應用程式
 
@@ -1045,4 +1045,3 @@ Smooth Streaming 簡報可以包含多個以不同品質等級 (位元速率) �
 
 [PlayerApplication]: ./media/media-services-build-smooth-streaming-apps/SSClientWin8-1.png
 [CodeViewPic]: ./media/media-services-build-smooth-streaming-apps/SSClientWin8-2.png
-

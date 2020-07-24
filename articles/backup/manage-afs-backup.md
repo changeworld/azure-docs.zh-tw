@@ -3,15 +3,16 @@ title: 管理 Azure 檔案共用備份
 description: 本文說明管理和監視 Azure 備份所備份之 Azure 檔案共用的一般工作。
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: cb764fa441c063328dc350cf26f42c5bc7a0ca99
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6684cb348c9edb35b5f3e46fb7922e9aa265c725
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84712083"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073298"
 ---
 # <a name="manage-azure-file-share-backups"></a>管理 Azure 檔案共用備份
 
-本文說明管理和監視[Azure 備份](https://docs.microsoft.com/azure/backup/backup-overview)所備份之 Azure 檔案共用的一般工作。 您將瞭解如何在復原服務保存庫中執行管理工作。
+本文說明管理和監視[Azure 備份](./backup-overview.md)所備份之 Azure 檔案共用的一般工作。 您將瞭解如何在復原服務保存庫中執行管理工作。
 
 ## <a name="monitor-jobs"></a>監視工作
 
@@ -164,4 +165,4 @@ ms.locfileid: "84712083"
 
 ## <a name="next-steps"></a>後續步驟
 
-如需詳細資訊，請參閱針對[Azure 檔案共用備份進行疑難排解](https://docs.microsoft.com/azure/backup/troubleshoot-azure-files)。
+如需詳細資訊，請參閱針對[Azure 檔案共用備份進行疑難排解](./troubleshoot-azure-files.md)。

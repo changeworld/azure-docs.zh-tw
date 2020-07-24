@@ -12,11 +12,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 07/01/2019
 ms.author: juliako
-ms.openlocfilehash: 72aa0762d001c28b21d5e27ed8f6f9d099f62bfb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 34b1061519f91c93be2f5eb43f813b83db8305f8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79499831"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072004"
 ---
 # <a name="azure-storage-accounts"></a>Azure 儲存體帳戶
 
@@ -31,7 +32,7 @@ ms.locfileid: "79499831"
 > [!NOTE]
 > 只有經常性存取層支援與 Azure 媒體服務搭配使用，雖然其他存取層可用來降低未主動使用之內容的儲存成本。
 
-您可以為儲存體帳戶選擇不同的 Sku。 如需詳細資訊，請參閱[儲存體帳戶](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest)。 如果您想要以儲存體帳戶進行試驗，請使用 `--sku Standard_LRS`。 不過，在挑選生產環境的 SKU 時，您應該考慮 `--sku Standard_RAGRS` 為商務持續性提供地理複寫。
+您可以為儲存體帳戶選擇不同的 Sku。 如需詳細資訊，請參閱[儲存體帳戶](/cli/azure/storage/account?view=azure-cli-latest)。 如果您想要以儲存體帳戶進行試驗，請使用 `--sku Standard_LRS`。 不過，在挑選生產環境的 SKU 時，您應該考慮 `--sku Standard_RAGRS` 為商務持續性提供地理複寫。
 
 ## <a name="assets-in-a-storage-account"></a>儲存體帳戶中的資產
 
@@ -44,11 +45,11 @@ ms.locfileid: "79499831"
 
 為了保護您的待用資產，資產應該透過儲存端加密進行加密。 下表顯示儲存端加密在媒體服務 v3 中的運作方式：
 
-|加密選項|Description|媒體服務 v3|
+|加密選項|描述|媒體服務 v3|
 |---|---|---|
 |媒體服務儲存體加密| AES-256 加密，媒體服務管理的金鑰。 |不支援。<sup>（1）</sup>|
-|[待用資料的儲存體服務加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|Azure 儲存體提供的伺服器端加密、由 Azure 或客戶管理的金鑰。|支援。|
-|[儲存體用戶端加密](https://docs.microsoft.com/azure/storage/common/storage-client-side-encryption)|Azure 儲存體所提供的用戶端加密、由客戶在 Key Vault 中管理的金鑰。|不支援。|
+|[待用資料的儲存體服務加密](../../storage/common/storage-service-encryption.md)|Azure 儲存體提供的伺服器端加密、由 Azure 或客戶管理的金鑰。|支援。|
+|[儲存體用戶端加密](../../storage/common/storage-client-side-encryption.md)|Azure 儲存體所提供的用戶端加密、由客戶在 Key Vault 中管理的金鑰。|不支援。|
 
 <sup>1</sup>在媒體服務 v3 中，只有當您的資產是以媒體服務 v2 建立時，才支援使用儲存體加密（AES-256 加密），這表示 v3 可用於現有的儲存體加密資產，但不允許建立新的金鑰。
 
@@ -65,8 +66,8 @@ ms.locfileid: "79499831"
 
 ## <a name="azure-storage-firewall"></a>Azure 儲存體防火牆
 
-Azure 媒體服務不支援已啟用「Azure 儲存體防火牆」或「[私人端點](https://docs.microsoft.com/azure/storage/common/storage-network-security)」的儲存體帳戶。
+Azure 媒體服務不支援已啟用「Azure 儲存體防火牆」或「[私人端點](../../storage/common/storage-network-security.md)」的儲存體帳戶。
 
 ## <a name="next-steps"></a>後續步驟
 
-若要深入了解如何將儲存體帳戶附加到媒體服務帳戶，請參閱[建立帳戶](create-account-cli-quickstart.md)。
+若要深入了解如何將儲存體帳戶附加到媒體服務帳戶，請參閱[建立帳戶](./create-account-howto.md)。

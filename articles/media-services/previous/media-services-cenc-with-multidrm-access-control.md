@@ -14,15 +14,16 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: willzhan
 ms.reviewer: kilroyh;yanmf;juliako
-ms.openlocfilehash: 4b5a18f0dc5edc06e4800215e88b694e681b5bbb
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 254659c58b9830645211596da0095c33d70e8d95
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85960457"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072025"
 ---
 # <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>使用 Azure 媒體服務設計具有存取控制的內容保護系統 
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 設計及建置適用於 Over-The-Pop (OTT) 或線上串流解決方案的數位版權管理 (DRM) 子系統是一項複雜的工作。 操作員/線上視訊提供者通常會將這個工作外包給專門的 DRM 服務提供者。 這份文件的目標是呈現 OTT 或線上串流解決方案中端對端 DRM 子系統的參考設計和實作。
 
@@ -147,7 +148,7 @@ DRM 子系統可能包含下列元件：
 
 | **建置組塊** | **技術** |
 | --- | --- |
-| **播放** |[Azure 媒體播放器](https://azure.microsoft.com/services/media-services/media-player/) |
+| **球員** |[Azure 媒體播放器](https://azure.microsoft.com/services/media-services/media-player/) |
 | **身分識別提供者 (IDP)** |Azure Active Directory (Azure AD) |
 | **Security Token Service (STS)** |Azure AD |
 | **DRM 保護工作流程** |媒體服務動態保護 |
@@ -226,7 +227,7 @@ DRM 子系統可能包含下列元件：
 如需 Azure AD 的資訊：
 
 * 您可以在 [Azure Active Directory 開發人員指南](../../active-directory/azuread-dev/v1-overview.md)中找到開發人員的資訊。
-* 您可以在 [管理 Azure AD 租用戶目錄](../../active-directory/fundamentals/active-directory-administer.md)中找到系統管理員的資訊。
+* 您可以在 [管理 Azure AD 租用戶目錄](../../active-directory/fundamentals/active-directory-whatis.md)中找到系統管理員的資訊。
 
 ### <a name="some-issues-in-implementation"></a>實作中的一些問題
 使用下列疑難排解資訊來取得實作問題的說明。
@@ -295,7 +296,7 @@ ASP.NET 播放器應用程式的最佳做法是使用 HTTPS，因此媒體播放
 
 Azure AD 使用業界標準，運用 Azure AD 在本身和應用程式之間建立信任。 具體而言，Azure AD 使用簽署金鑰，該金鑰是由公開和私密金鑰組所組成。 當 Azure AD 建立包含使用者相關資訊的安全性權杖時，是由 Azure AD 在其私密金鑰傳送回應用程式之前，使用該私密金鑰進行簽署。 若要確認權杖有效且是來自 Azure AD，應用程式就必須驗證權杖的簽章。 應用程式所使用的公開金鑰是由 Azure AD 公開，會包含在租用戶的同盟中繼資料文件中。 此公開金鑰和它從其衍生的簽署金鑰，是用於 Azure AD 中所有租用戶的相同金鑰。
 
-如需 Azure AD 金鑰變換的詳細資訊，請參閱 [Azure AD 中簽署金鑰變換的相關重要資訊](../../active-directory/active-directory-signing-key-rollover.md)。
+如需 Azure AD 金鑰變換的詳細資訊，請參閱 [Azure AD 中簽署金鑰變換的相關重要資訊](../../active-directory/develop/active-directory-signing-key-rollover.md)。
 
 在[公開/私密金鑰組](https://login.microsoftonline.com/common/discovery/keys/)之間：
 
@@ -328,7 +329,7 @@ DRM 授權傳遞服務一律會檢查來自 Azure AD 的目前/有效公開金�
 * Azure AD 驗證應用程式，並傳回用來呼叫 Web API 的 JWT 存取權杖。
 * Web 應用程式使用傳回的 JWT 存取權杖，透過 HTTPS，在對 Web API 的要求的 "Authorization" 標頭中新增 JWT 字串並指定 "Bearer"。 然後 Web API 會驗證 JWT。 如果驗證成功，它會傳回所需的資源。
 
-在此「應用程式身分識別」流程中，Web API 信任 Web 應用程式已驗證使用者。 基於這個理由，這種模式稱為受信任子系統。 [授權流程圖](https://docs.microsoft.com/azure/active-directory/active-directory-protocols-oauth-code)說明授權碼授與流程的運作方式。
+在此「應用程式身分識別」流程中，Web API 信任 Web 應用程式已驗證使用者。 基於這個理由，這種模式稱為受信任子系統。 [授權流程圖](../../active-directory/azuread-dev/v1-protocols-oauth-code.md)說明授權碼授與流程的運作方式。
 
 具有權杖限制的授權取得會遵循相同的受信任子系統模式。 媒體服務中的授權傳遞服務是 Web API 資源，或是 Web 應用程式需要存取的「後端資源」。 那麼存取權杖在哪裡？
 
@@ -469,7 +470,7 @@ Widevine 不會防止您對受保護的視訊進行螢幕擷取。
 
 在上述兩個案例中，使用者驗證會保持相同。 它會透過 Azure AD 進行。 唯一的差別在於，JWT 是由自訂 STS 發出，而不是 Azure AD。 設定動態 CENC 保護時，授權傳遞服務限制會指定 JWT 的類型 (對稱或非對稱金鑰)。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>總結
 
 本文件討論了透過權杖驗證的 CENC 與多重原生 DRM 和存取控制，它的設計，以及使用 Azure、媒體服務和 Azure 媒體播放器進行實作。
 

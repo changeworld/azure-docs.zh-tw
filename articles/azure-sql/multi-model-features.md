@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/17/2018
-ms.openlocfilehash: d50a9a064e6fa279d65f196c0f031e60081d86bf
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 59a709a206eb29b875272674ee19e414023cc37f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85979993"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073323"
 ---
 # <a name="multi-model-capabilities-of-azure-sql-database--sql-managed-instance"></a>Azure SQL Database & SQL 受控執行個體的多模型功能
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -33,7 +33,7 @@ ms.locfileid: "85979993"
 - 您想要利用豐富的 Transact-sql 語言來查詢和分析關聯式和 NoSQL 資料，並將其與可使用 SQL 語言的各種工具和應用程式整合。
 - 您想要套用[記憶體內部技術](in-memory-oltp-overview.md)的資料庫功能，以改善 NoSQL 資料結構的分析或處理效能、使用[異動複寫](managed-instance/replication-transactional-overview.md)或[可讀取的複本](database/read-scale-out.md)，在另一個位置建立資料的複本，並從主資料庫卸載一些分析工作負載。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 Azure SQL 系列產品提供下列多模型功能：
 
@@ -96,10 +96,7 @@ Azure SQL 系列產品可讓您輕鬆地使用 JSON 資料，並將您的資料�
 
 空間資料代表幾何物件的實體位置和圖形相關資訊。 這些物件可以是點位置或更複雜的物件，例如國家/地區、道路或 lake。
 
-Azure SQL 系列產品可讓您剖析及查詢以 JavaScript 物件標記法[（JSON）](https://www.json.org/)格式表示的資料，並將您的關聯式資料匯出為 JSON 文字。
-
-
- 兩種支援的兩種空間資料類型： 
+ 兩種支援的空間資料類型： 
 
 - 幾何類型代表歐氏 (平面) 座標系統中的資料。
 - 地理類型代表球形地球座標系統中的資料。
@@ -132,7 +129,7 @@ SQL Server 資料庫引擎提供強大的平臺，可針對半結構化資料管
 - 您需要將子系資料表或實體物件值模式反正規化，以簡化您的資料模型。
 - 您需要載入或匯出以 XML 格式儲存的資料，而不需一些可剖析資料的其他工具。
 
-## <a name="key-value-pairs"></a>索引鍵/值組
+## <a name="key-value-pairs"></a>機碼值組
 
 Azure SQL 系列的產品沒有支援索引鍵/值組的特製化類型或結構，因為索引鍵/值結構可以原生表示為標準關聯式資料表：
 

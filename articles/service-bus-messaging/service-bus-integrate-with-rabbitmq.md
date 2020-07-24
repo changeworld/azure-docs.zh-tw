@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.service: service-bus
 ms.date: 07/02/2020
 ms.author: alvidela
-ms.openlocfilehash: df0541802dfc331ffc94e95be112ea7e005960b5
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: cf21030fbf1aaa9f36e4d34aac918c4604066ec2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86049792"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071629"
 ---
 # <a name="how-to-integrate-rabbitmq-with-azure-service-bus"></a>如何整合 RabbitMQ 與 Azure 服務匯流排
 
@@ -90,7 +90,7 @@ rabbitmq-plugins enable rabbitmq_shovel_management
 
 :::image type="content" source="./media/service-bus-integrate-with-rabbitmq/converter.png" alt-text="轉換連接字串":::
 
-現在，在瀏覽器中開啟 RabbitMQ 管理外掛程式 [http://localhost:15672/#/dynamic-shovels](http://localhost:15672/#/dynamic-shovels) 並移至 `Admin -> Shovel Management` ，您可以在其中新增鏟，以將訊息從 RabbitMQ 佇列傳送到 Azure 服務匯流排佇列。
+現在，在瀏覽器中開啟 RabbitMQ 管理外掛程式 `http://localhost:15672/#/dynamic-shovels` 並移至 `Admin -> Shovel Management` ，您可以在其中新增鏟，以將訊息從 RabbitMQ 佇列傳送到 Azure 服務匯流排佇列。
 
 :::image type="content" source="./media/service-bus-integrate-with-rabbitmq/add-shovel.png" alt-text="新增 RabbitMQ 鏟":::
 
@@ -98,7 +98,7 @@ rabbitmq-plugins enable rabbitmq_shovel_management
 
 在佇列的端，您可以使用 `azure` 做為佇列的名稱。 如果該佇列不存在，RabbitMQ 會為您建立。 您也可以選擇已經存在的佇列名稱。 您可以將其他選項保留為預設值。
 
-然後在 [ `destination` 專案] 旁，選擇 `AMQP 1.0` 作為 [通訊協定]。 在 `URI` 欄位中，輸入您從上一個步驟中得到的連接字串，是否已將您的 Azure 連接字串轉換為 RabbitMQ 格式。 它看起來應該如下所示：
+然後在 [ `destination` 專案] 旁，選擇 `AMQP 1.0` 作為 [通訊協定]。 在 `URI` 欄位中，輸入您從上一個步驟中得到的連接字串，是否已將您的 Azure 連接字串轉換為 RabbitMQ 格式。 它看起來應該像這樣：
 
 ```
 amqps://rabbitmq-shovel:StringOfRandomChars@rabbitmq.servicebus.windows.net:5671/?sasl=plain

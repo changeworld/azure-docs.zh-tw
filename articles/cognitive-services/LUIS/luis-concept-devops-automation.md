@@ -1,14 +1,14 @@
 ---
-title: 測試 DevOps-LUIS
+title: LUIS 應用程式的連續工作流程
 description: 如何為 Language Understanding （LUIS）的 DevOps 執行 CI/CD 工作流程。
 ms.topic: conceptual
 ms.date: 06/5/2020
-ms.openlocfilehash: 87b922d176f3ef11f25e46c8e076c88d5f3854c3
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
+ms.openlocfilehash: 4cedf0cbe3f9ab675c191f8e4639688bb7916ee0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84783780"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072994"
 ---
 # <a name="continuous-integration-and-continuous-delivery-workflows-for-luis-devops"></a>適用于 LUIS DevOps 的持續整合與持續傳遞工作流程
 

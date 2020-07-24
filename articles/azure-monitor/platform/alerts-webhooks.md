@@ -6,11 +6,12 @@ ms.author: harelbr
 ms.topic: conceptual
 ms.date: 04/03/2017
 ms.subservice: alerts
-ms.openlocfilehash: 0677c7a0521fe1f63c9c2c9fce65d8dbd8e6d5c4
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 5561dfee3ede72f9cd28adbd47caf2db4e634360
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83826905"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073593"
 ---
 # <a name="call-a-webhook-with-a-classic-metric-alert-in-azure-monitor"></a>在 Azure 監視器中呼叫具有傳統計量警示的 Webhook
 
@@ -25,7 +26,7 @@ Azure 警示會使用 HTTP POST 將警示內容以 JSON 格式傳送到您在建
 
 ![新增警示規則窗格](./media/alerts-webhooks/Alertwebhook.png)
 
-您也可以使用 [Azure PowerShell Cmdlet](../samples/powershell-samples.md#create-metric-alerts)、[跨平台 CLI](../samples/cli-samples.md#work-with-alerts) 或 [Azure 監視器 REST API](https://msdn.microsoft.com/library/azure/dn933805.aspx) \(英文\) 設定警示以張貼至 Webhook URI。
+您也可以使用 [Azure PowerShell Cmdlet](../samples/powershell-samples.md#create-metric-alerts)、[跨平台 CLI](../samples/cli-samples.md#work-with-alerts) 或 [Azure 監視器 REST API](/rest/api/monitor/alertrules) \(英文\) 設定警示以張貼至 Webhook URI。
 
 ## <a name="authenticate-the-webhook"></a>驗證 Webhook
 Webhook 可透過使用權杖型授權來驗證。 儲存的 Webhook URI 含有權杖識別碼。 例如： `https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue`
@@ -78,11 +79,11 @@ POST 作業對於所有以計量為基礎的警示會包含下列 JSON 承載和
 | conditionType |Y |Metric、Event |支援兩種類型的警示：計量和事件。 以計量條件為基礎的計量警示。 以活動記錄中的事件為基礎的事件警示。 使用此值來檢查警示是以計量或事件為基礎。 |
 | condition (條件) |Y | |要以 **conditionType** 值為基礎來檢查的特定欄位。 |
 | metricName |用於計量警示 | |定義規則所監視的計量名稱。 |
-| metricUnit |用於計量警示 |Bytes、BytesPerSecond、Count、CountPerSecond、Percent、Seconds |計量允許的單位。 請參閱[允許的值](https://msdn.microsoft.com/library/microsoft.azure.insights.models.unit.aspx)。 |
+| metricUnit |用於計量警示 |Bytes、BytesPerSecond、Count、CountPerSecond、Percent、Seconds |計量允許的單位。 請參閱[允許的值](/previous-versions/azure/reference/dn802430(v=azure.100))。 |
 | metricValue |用於計量警示 | |造成警示的計量實際值。 |
 | threshold |用於計量警示 | |會啟動警示的臨界值。 |
 | windowSize |用於計量警示 | |以 threshold 為基礎用來監視警示活動的時間長度。 值必須介於 5 分鐘到 1 天之間。 值必須為 ISO 8601 持續時間格式。 |
-| timeAggregation |用於計量警示 |Average、Last、Maximum、Minimum、None、Total |收集的資料應如何隨著時間結合。 預設值為 Average。 請參閱[允許的值](https://msdn.microsoft.com/library/microsoft.azure.insights.models.aggregationtype.aspx)。 |
+| timeAggregation |用於計量警示 |Average、Last、Maximum、Minimum、None、Total |收集的資料應如何隨著時間結合。 預設值為 Average。 請參閱[允許的值](/previous-versions/azure/reference/dn802410(v=azure.100))。 |
 | ! 運算子之後 |用於計量警示 | |用來比較目前計量資料與所設定臨界值的運算子。 |
 | subscriptionId |Y | |Azure 訂用帳戶識別碼。 |
 | resourceGroupName |Y | |受影響資源的資源群組名稱。 |
@@ -94,7 +95,7 @@ POST 作業對於所有以計量為基礎的警示會包含下列 JSON 承載和
 | properties |N |選用 |一組索引鍵/值組，具有事件的詳細資料。 例如： `Dictionary<String, String>` 。 properties 欄位是選擇性的。 在自訂 UI 或邏輯應用程式的工作流程中，使用者可以輸入可透過承載傳遞的索引鍵/值。 另一種將自訂屬性傳回給 Webhook 的替代方式是透過 Webhook URI 本身 (做為查詢參數)。 |
 
 > [!NOTE]
-> 您只能使用 [Azure 監視器 REST API](https://msdn.microsoft.com/library/azure/dn933805.aspx) \(英文\) 來設定 **properties**欄位。
+> 您只能使用 [Azure 監視器 REST API](/rest/api/monitor/alertrules) \(英文\) 來設定 **properties**欄位。
 >
 >
 
@@ -104,4 +105,3 @@ POST 作業對於所有以計量為基礎的警示會包含下列 JSON 承載和
 * 深入了解如何[使用邏輯應用程式透過 Twilio 從 Azure 警示傳送簡訊](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app) \(英文\)。
 * 深入了解如何[使用邏輯應用程式從 Azure 警示傳送 Slack 訊息](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app) \(英文\)。
 * 深入了解如何[使用邏輯應用程式從 Azure 警示將訊息傳送到 Azure 佇列](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app) \(英文\)。
-

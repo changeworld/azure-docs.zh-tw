@@ -6,20 +6,21 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 5/31/2019
 ms.subservice: alerts
-ms.openlocfilehash: 0e81d48f4e709a9a0bb8ebb33c7029d3841167b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0d080c18a1af9549373750b787093fec03b32006
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84609041"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073601"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Azure 監視器中的記錄警示
 
 記錄警示是[Azure 警示](../../azure-monitor/platform/alerts-overview.md)中支援的其中一種警示類型。 記錄警示可讓使用者使用 Azure 分析平臺做為警示的基礎。
 
-記錄警示包含針對 [Azure 監視器記錄](../../azure-monitor/learn/tutorial-viewdata.md)或 [Application Insights](../../azure-monitor/app/cloudservices.md#view-azure-diagnostics-events) 所建立的記錄搜尋規則。 若要深入了解其使用方式，請參閱[在 Azure 中建立記錄警示](../../azure-monitor/platform/alerts-log.md)
+記錄警示包含針對 [Azure 監視器記錄](../log-query/get-started-portal.md)或 [Application Insights](../../azure-monitor/app/cloudservices.md#view-azure-diagnostics-events) 所建立的記錄搜尋規則。 若要深入了解其使用方式，請參閱[在 Azure 中建立記錄警示](../../azure-monitor/platform/alerts-log.md)
 
 > [!NOTE]
-> [Azure 監視器記錄](../../azure-monitor/learn/tutorial-viewdata.md)中常用的記錄資料現在也會在 Azure 監視器的計量平台上提供。 如需詳細資料檢視，請參閱[記錄的計量警示](../../azure-monitor/platform/alerts-metric-logs.md)
+> [Azure 監視器記錄](../log-query/get-started-portal.md)中常用的記錄資料現在也會在 Azure 監視器的計量平台上提供。 如需詳細資料檢視，請參閱[記錄的計量警示](../../azure-monitor/platform/alerts-metric-logs.md)
 
 
 ## <a name="log-search-alert-rule---definition-and-types"></a>記錄搜尋警示規則 - 定義和類型
@@ -40,10 +41,10 @@ Azure 警示會建立記錄搜尋規則，以自動定期執行指定的記錄�
 
 - **閾值**。  系統會評估記錄搜尋的結果，以判斷是否應該建立警示。  不同類型的記錄搜尋警示規則會有不同的閾值。
 
-不論是 [Azure 監視器記錄](../../azure-monitor/learn/tutorial-viewdata.md)還是 [Application Insights](../../azure-monitor/app/cloudservices.md#view-azure-diagnostics-events) 的記錄搜尋規則都可以屬於兩個類型。 下列各節會詳細說明這兩個類型。
+不論是 [Azure 監視器記錄](../log-query/get-started-portal.md)還是 [Application Insights](../../azure-monitor/app/cloudservices.md#view-azure-diagnostics-events) 的記錄搜尋規則都可以屬於兩個類型。 下列各節會詳細說明這兩個類型。
 
 - **[結果數目](#number-of-results-alert-rules)**。 當記錄搜尋所傳回的數目記錄超過指定數目時，系統會建立單一警示。
-- **[計量測量](#metric-measurement-alert-rules)**。  針對記錄搜尋結果中的每個物件，若其值超過指定的閾值，系統就會為其建立警示。
+- 度量**[測量](#metric-measurement-alert-rules)**。  針對記錄搜尋結果中的每個物件，若其值超過指定的閾值，系統就會為其建立警示。
 
 警示規則類型之間的差異如下所示。
 
@@ -89,7 +90,7 @@ Azure 警示會建立記錄搜尋規則，以自動定期執行指定的記錄�
     
 - **閾值**：計量測量警示規則的閾值是由彙總值與若干違規所定義。  如果記錄搜尋中的任何資料點超過此值，系統就會將其視為違規。  如果結果中任何物件的違規數目超過指定值，系統舊會為該物件建立警示。
 
-[彙總項目]** 或 *metricColumn* 選項設定錯誤可能會造成警示規則錯誤地觸發。 如需詳細資訊，請參閱[在公制度量單位警示規則不正確時進行疑難排解](alert-log-troubleshoot.md#metric-measurement-alert-rule-is-incorrect)。
+[彙總項目]** 或 *metricColumn* 選項設定錯誤可能會造成警示規則錯誤地觸發。 如需詳細資訊，請參閱[在公制度量單位警示規則不正確時進行疑難排解](./alerts-troubleshoot-log.md#metric-measurement-alert-rule-is-incorrect)。
 
 #### <a name="example-of-metric-measurement-type-log-alert"></a>計量測量類型記錄警示的範例
 
@@ -131,7 +132,7 @@ Azure 警示會建立記錄搜尋規則，以自動定期執行指定的記錄�
 在以下的每個間隔中，Azure 警示系統會評估*Contoso-記錄警示*的條件。
 
 
-| 時間    | 記錄搜尋查詢所傳回的記錄數目 | 記錄條件 evalution | 結果 
+| Time    | 記錄搜尋查詢所傳回的記錄數目 | 記錄條件 evalution | 結果 
 | ------- | ----------| ----------| ------- 
 | 下午1:05 | 0筆記錄 | 0不 > 0，因此為 FALSE |  警示不會引發。 沒有任何動作呼叫。
 | 下午1:10 | 2筆記錄 | 2 > 0 為 TRUE  | 會引發警示，並呼叫名為的動作群組。 警示狀態為作用中。
@@ -149,7 +150,7 @@ Azure 警示會建立記錄搜尋規則，以自動定期執行指定的記錄�
 在 [Azure 監視器價格](https://azure.microsoft.com/pricing/details/monitor/)頁面有說明適用於記錄警示的價格。 在 Azure 帳單中，記錄警示是以類型 `microsoft.insights/scheduledqueryrules` 搭配下列項目來表示：
 
 - 隨著警示名稱與資源群組警示內容顯示的 Application Insights 上的記錄警示
-- 所顯示 Log Analytics 上的「記錄警示」會有確切的警示名稱，以及資源群組和屬性 (當建立方式是使用 [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) 時)
+- 所顯示 Log Analytics 上的「記錄警示」會有確切的警示名稱，以及資源群組和屬性 (當建立方式是使用 [scheduledQueryRules API](/rest/api/monitor/scheduledqueryrules) 時)
 
 [舊版 Log Analytics API](../../azure-monitor/platform/api-alerts.md) 具有屬於 Log Analytics 儲存搜尋的警示動作和排程，且並非為適當的 [Azure 資源](../../azure-resource-manager/management/overview.md)。 因此，若要啟用這類針對使用 Azure 入口網站的 Log Analytics 所建立的舊版記錄警示，而「沒有」**** [切換至新 API](../../azure-monitor/platform/alerts-log-api-switch.md) 或透過[舊版 Log Analytics API](../../azure-monitor/platform/api-alerts.md)，則會在 `microsoft.insights/scheduledqueryrules` 上建立 Azure 隱藏虛擬警示規則以啟用計費。 在`microsoft.insights/scheduledqueryrules`上為計費建立的隱藏虛擬警示規則，會有如`<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>`所示的資源群組和警示屬性。
 
@@ -158,15 +159,15 @@ Azure 警示會建立記錄搜尋規則，以自動定期執行指定的記錄�
 
 若要使用[舊版 Log Analytics API](api-alerts.md) 來移除為警示規則計費建立的隱藏 scheduleQueryRules 資源，使用者可以執行下列任一項：
 
-- 使用者可以在 [Log Analytics 工作區上切換警示規則的 API 喜好設定](../../azure-monitor/platform/alerts-log-api-switch.md)，並且不會遺失警示規則或監視移至 Azure Resource Manager 規範 [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules)。 因此可排除為計費建立虛擬隱藏警示規則的需求。
+- 使用者可以在 [Log Analytics 工作區上切換警示規則的 API 喜好設定](../../azure-monitor/platform/alerts-log-api-switch.md)，並且不會遺失警示規則或監視移至 Azure Resource Manager 規範 [scheduledQueryRules API](/rest/api/monitor/scheduledqueryrules)。 因此可排除為計費建立虛擬隱藏警示規則的需求。
 - 或者，如果使用者不想切換 API 喜好設定，使用者則必須使用[舊版 Log Analytics API](api-alerts.md) 來**刪除**原始排程和警示動作，或在 [Azure 入口網站刪除原始警示動作](../../azure-monitor/platform/alerts-log.md#view--manage-log-alerts-in-azure-portal)。
 
-此外，針對使用[舊版 Log ANALYTICS API](api-alerts.md)來計費警示規則而建立的隱藏 scheduleQueryRules 資源，任何修改作業（例如 PUT）都會失敗。 因為 `microsoft.insights/scheduledqueryrules` 型別虛擬規則是用來計費使用[舊版 LOG Analytics API](api-alerts.md)建立的警示規則。 您應該使用[舊版 Log ANALYTICS API](api-alerts.md) （或）來修改任何警示規則，使用者也可以將[警示規則的 API 喜好設定切換](../../azure-monitor/platform/alerts-log-api-switch.md)為改用[scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) 。
+此外，針對使用[舊版 Log ANALYTICS API](api-alerts.md)來計費警示規則而建立的隱藏 scheduleQueryRules 資源，任何修改作業（例如 PUT）都會失敗。 因為 `microsoft.insights/scheduledqueryrules` 型別虛擬規則是用來計費使用[舊版 LOG Analytics API](api-alerts.md)建立的警示規則。 您應該使用[舊版 Log ANALYTICS API](api-alerts.md) （或）來修改任何警示規則，使用者也可以將[警示規則的 API 喜好設定切換](../../azure-monitor/platform/alerts-log-api-switch.md)為改用[scheduledQueryRules API](/rest/api/monitor/scheduledqueryrules) 。
 
 ## <a name="next-steps"></a>後續步驟
 
 * 了解[在 Azure 警示中的記錄警示中建立](../../azure-monitor/platform/alerts-log.md)。
 * 了解 [Azure 中記錄警示中的 Webhook](alerts-log-webhook.md)。
 * 了解 [Azure 警示](../../azure-monitor/platform/alerts-overview.md)。
-* 深入了解 [Application Insights](../../azure-monitor/app/analytics.md)。
+* 深入了解 [Application Insights](../log-query/log-query-overview.md)。
 * 深入瞭解[Log Analytics](../../azure-monitor/log-query/log-query-overview.md)。

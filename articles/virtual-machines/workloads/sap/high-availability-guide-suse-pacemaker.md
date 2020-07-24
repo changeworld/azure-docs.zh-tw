@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/24/2020
 ms.author: radeltch
-ms.openlocfilehash: ed754e3f69feaf6d5415db8f71cb5c1bb65632e0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 28e53c5ca53f5be4aafc685445e67dcf4d558773
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85368240"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073990"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>在 Azure 中於 SUSE Linux Enterprise Server 上設定 Pacemaker
 
@@ -41,7 +41,7 @@ Azure 隔離代理程式不需要部署額外的虛擬機器。
 ![SLES 上的 Pacemaker 概觀](./media/high-availability-guide-suse-pacemaker/pacemaker.png)
 
 >[!IMPORTANT]
-> 規劃和部署 Linux Pacemaker 叢集節點與 SBD 裝置時，對於完整叢集設定的整體可靠性而言，最重要的是相關 VM 與裝載 SBD 裝置的 VM 之間，其路由傳送不會通過 [NVA](https://azure.microsoft.com/solutions/network-appliances/) 等任何其他裝置。 否則，與 NVA 相關的問題與維護事件，會對整體叢集設定的穩定性與可靠性造成負面影響。 為了避免這類障礙，在規劃和部署 Linux Pacemaker 叢集節點與 SBD 裝置時，請不要定義 NVA 路由規則，也不要定義透過 NVA 與類似裝置在叢集節點與 SBD 裝置之間路由傳送流量的[使用者定義的路由規則](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview)。 
+> 規劃和部署 Linux Pacemaker 叢集節點與 SBD 裝置時，對於完整叢集設定的整體可靠性而言，最重要的是相關 VM 與裝載 SBD 裝置的 VM 之間，其路由傳送不會通過 [NVA](https://azure.microsoft.com/solutions/network-appliances/) 等任何其他裝置。 否則，與 NVA 相關的問題與維護事件，會對整體叢集設定的穩定性與可靠性造成負面影響。 為了避免這類障礙，在規劃和部署 Linux Pacemaker 叢集節點與 SBD 裝置時，請不要定義 NVA 路由規則，也不要定義透過 NVA 與類似裝置在叢集節點與 SBD 裝置之間路由傳送流量的[使用者定義的路由規則](../../../virtual-network/virtual-networks-udr-overview.md)。 
 >
 
 ## <a name="sbd-fencing"></a>SBD 隔離
@@ -583,7 +583,7 @@ STONITH 裝置會使用服務主體來對 Microsoft Azure 授權。 請遵循下
 
 ### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]** 為柵欄代理程式建立自訂角色
 
-服務主體預設沒有存取您 Azure 資源的權限。 您需要為服務主體提供權限來啟動和停止 (解除配置) 叢集的所有虛擬機器。 如果您尚未建立自訂角色，您可以使用 [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/custom-roles-powershell#create-a-custom-role) 或 [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/custom-roles-cli) 來建立
+服務主體預設沒有存取您 Azure 資源的權限。 您需要為服務主體提供權限來啟動和停止 (解除配置) 叢集的所有虛擬機器。 如果您尚未建立自訂角色，您可以使用 [PowerShell](../../../role-based-access-control/custom-roles-powershell.md#create-a-custom-role) 或 [Azure CLI](../../../role-based-access-control/custom-roles-cli.md) 來建立
 
 針對輸入檔使用下列內容。 您必須調整訂用帳戶的內容，也就是使用您訂用帳戶的識別碼取代 c276fc76-9cd4-44c9-99a7-4fd71546436e 和 e91d47c4-76f3-4271-a796-21b4ecfe3624。 如果您只有一個訂用帳戶，請在 AssignableScopes 中移除第二個項目。
 
@@ -647,11 +647,11 @@ sudo crm configure property stonith-timeout=900
 > 監視和隔離作業會解除序列化。 因此，如果有較長的執行中監視作業和同時隔離的事件，叢集容錯移轉就不會延遲，因為已經在執行監視作業。
 
 > [!TIP]
->Azure 柵欄代理程式需要[使用標準 ILB 的 VM 公用端點連線](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)中記載的公用端點輸出連線能力，以及可能的解決方案。  
+>Azure 柵欄代理程式需要[使用標準 ILB 的 VM 公用端點連線](./high-availability-guide-standard-load-balancer-outbound-connections.md)中記載的公用端點輸出連線能力，以及可能的解決方案。  
 
 ## <a name="pacemaker-configuration-for-azure-scheduled-events"></a>Azure 已排定事件的 Pacemaker 設定
 
-Azure 提供[已排定事件](https://docs.microsoft.com/azure/virtual-machines/linux/scheduled-events)。 已排定事件是透過中繼資料服務提供，讓應用程式有時間針對 VM 關機、VM 重新部署等事件進行準備。資源代理程式 **[azure-events](https://github.com/ClusterLabs/resource-agents/pull/1161)** 會監視已排定的 Azure 事件。 如果偵測到事件，此代理程式將會嘗試停止受影響 VM 上的所有資源，並將其移至叢集中的另一個節點。 若要達到此目的，必須設定額外的 Pacemaker 資源。 
+Azure 提供[已排定事件](../../linux/scheduled-events.md)。 已排定事件是透過中繼資料服務提供，讓應用程式有時間針對 VM 關機、VM 重新部署等事件進行準備。資源代理程式 **[azure-events](https://github.com/ClusterLabs/resource-agents/pull/1161)** 會監視已排定的 Azure 事件。 如果偵測到事件，此代理程式將會嘗試停止受影響 VM 上的所有資源，並將其移至叢集中的另一個節點。 若要達到此目的，必須設定額外的 Pacemaker 資源。 
 
 1. **[A]** 確定已安裝 **azure-events** 代理程式的套件，且為最新狀態。 
 

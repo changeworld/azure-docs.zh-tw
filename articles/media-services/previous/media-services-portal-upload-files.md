@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 3327304916c30863bb4de4b4d18c41ba3c58270d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 73e92fa505a994cc5cc2fdb3a297dfd653a596a1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84982555"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071809"
 ---
 # <a name="upload-files-to-a-media-services-account-in-the-azure-portal"></a>在 Azure 入口網站中將檔案上傳至媒體服務帳戶 
 
@@ -30,7 +30,7 @@ ms.locfileid: "84982555"
 > 
 
 > [!NOTE]
-> 媒體服務 v2 不會再新增任何新的特性或功能。 如需使用入口網站的最新上傳檔案，請參閱[使用入口網站上傳、編碼和串流內容](../latest/manage-assets-quickstart.md)。<br/>此外，請參閱：[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
+> 媒體服務 v2 不會再新增任何新的特性或功能。 如需使用入口網站的最新上傳檔案，請參閱[使用入口網站上傳、編碼和串流內容](../latest/manage-assets-quickstart.md)。<br/>此外，請參閱：[媒體服務 v3](../latest/index.yml)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
 
 在 Azure 媒體服務中，您會將數位檔案上傳到到資產。 資產可以包含視訊、音訊、影像、縮圖集合、文字播放軌及隱藏式輔助字幕檔案 (以及這些檔案的中繼資料)。 上傳檔案之後，您的內容會安全地儲存在雲端，以進一步進行處理和串流處理。
 
@@ -65,5 +65,3 @@ ms.locfileid: "84982555"
 * 了解如何[將上傳的資產編碼](media-services-portal-encode.md)。
 
 * 您也可以使用 Azure Functions，以在檔案到達所設定的容器時觸發編碼作業。 如需詳細資訊，請參閱[媒體服務：整合 Microsoft Azure 媒體服務與 Azure Functions 和 Logic Apps](https://azure.microsoft.com/resources/samples/media-services-dotnet-functions-integration/) 中的範例。
-
-

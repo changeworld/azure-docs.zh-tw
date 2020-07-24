@@ -12,12 +12,12 @@ ms.topic: article
 ms.custom: ''
 ms.date: 09/25/2019
 ms.author: juliako
-ms.openlocfilehash: 0d8f88e6c2fe273efa969278146de67ba18eaecf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 99e0a78ea1aed0ecf08618c919e7949c5645de5b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72392185"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072066"
 ---
 # <a name="signal-descriptive-audio-tracks"></a>信號描述性音訊曲目
 
@@ -27,14 +27,14 @@ ms.locfileid: "72392185"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-- [建立媒體服務帳戶](create-account-cli-how-to.md)。
-- 請依照[使用 Azure CLI 存取 Azure 媒體服務 API](access-api-cli-how-to.md) 中的步驟，並儲存認證。 您必須使用這些認證來存取 API。
+- [建立媒體服務帳戶](./create-account-howto.md)。
+- 請依照[使用 Azure CLI 存取 Azure 媒體服務 API](./access-api-howto.md) 中的步驟，並儲存認證。 您必須使用這些認證來存取 API。
 - 請參閱[動態封裝](dynamic-packaging-overview.md)。
 - 請參閱[上傳、編碼和串流](stream-files-tutorial-with-api.md)影片教學課程。
 
 ## <a name="create-an-input-asset-and-upload-a-local-file-into-it"></a>建立輸入資產並將本機檔案上傳到其中 
 
-**CreateInputAsset** 函式會建立新的輸入[資產](https://docs.microsoft.com/rest/api/media/assets)，並將指定的本機影片檔案上傳到其中。 此**資產**會用來作為編碼作業的輸入。 在媒體服務 v3 中，**作業**的輸入可以是**資產**，也可以是您透過 HTTPS url 提供給您的媒體服務帳戶的內容。 
+**CreateInputAsset** 函式會建立新的輸入[資產](/rest/api/media/assets)，並將指定的本機影片檔案上傳到其中。 此**資產**會用來作為編碼作業的輸入。 在媒體服務 v3 中，**作業**的輸入可以是**資產**，也可以是您透過 HTTPS url 提供給您的媒體服務帳戶的內容。 
 
 如果您想要瞭解如何從 HTTPS URL 進行編碼，請參閱[這篇文章](job-input-from-http-how-to.md)。  
 
@@ -43,7 +43,7 @@ ms.locfileid: "72392185"
 下列函式會執行下列動作：
 
 * 建立**資產** 
-* 取得[儲存體中資產容器](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-dotnet#upload-blobs-to-a-container)的可寫入[SAS URL](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)
+* 取得[儲存體中資產容器](../../storage/blobs/storage-quickstart-blobs-dotnet.md#upload-blobs-to-a-container)的可寫入[SAS URL](../../storage/common/storage-sas-overview.md)
 * 使用 SAS URL，將檔案上傳至儲存體中的容器
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateInputAsset)]
@@ -52,7 +52,7 @@ ms.locfileid: "72392185"
 
 ## <a name="create-an-output-asset-to-store-the-result-of-the-encoding-job"></a>建立輸出資產以儲存編碼作業的結果
 
-輸出[資產](https://docs.microsoft.com/rest/api/media/assets)會儲存您的編碼作業結果。 下列函式顯示如何建立輸出資產。
+輸出[資產](/rest/api/media/assets)會儲存您的編碼作業結果。 下列函式顯示如何建立輸出資產。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateOutputAsset)]
 
@@ -62,7 +62,7 @@ ms.locfileid: "72392185"
 
 ## <a name="create-a-transform-and-a-job-that-encodes-the-uploaded-file"></a>建立轉換和作業，以將上傳的檔案編碼
 
-在媒體服務中編碼或處理內容時，將編碼設定設為配方 (recipe) 是很常見的模式。 然後您可以透過提交**作業**，將該配方套用到影片。 藉由為每部新影片提交新的作業，您可以將該配方套用到媒體櫃中的所有影片。 配方在媒體服務中稱為「**轉換 (Transform)**」。 如需詳細資訊，請參閱[轉換和作業](transform-concept.md)。 本教學課程中所述的範例會定義編碼影片的配方，以便將影片串流到各種 iOS 和 Android 裝置。 
+在媒體服務中編碼或處理內容時，將編碼設定設為配方 (recipe) 是很常見的模式。 然後您可以透過提交**作業**，將該配方套用到影片。 藉由為每部新影片提交新的作業，您可以將該配方套用到媒體櫃中的所有影片。 配方在媒體服務中稱為「**轉換 (Transform)**」。 如需詳細資訊，請參閱[轉換和作業](./transforms-jobs-concept.md)。 本教學課程中所述的範例會定義編碼影片的配方，以便將影片串流到各種 iOS 和 Android 裝置。 
 
 下列範例會建立轉換（如果不存在的話）。
 
@@ -202,14 +202,14 @@ await UpoadAudioIntoOutputAsset(client, config.ResourceGroup, config.AccountName
 
 ## <a name="get-a-streaming-locator"></a>取得串流定位器
 
-編碼完成後，下一個步驟是要讓用戶端可播放輸出資產中的視訊。 您可以透過兩個步驟來執行此動作：第一步，建立[串流定位器](https://docs.microsoft.com/rest/api/media/streaminglocators)，第二步，建置用戶端可以使用的串流 URL。 
+編碼完成後，下一個步驟是要讓用戶端可播放輸出資產中的視訊。 您可以透過兩個步驟來執行此動作：第一步，建立[串流定位器](/rest/api/media/streaminglocators)，第二步，建置用戶端可以使用的串流 URL。 
 
-建立 [串流定位器]  的程序稱為發佈。 根據預設，在您進行 API 呼叫之後，**串流定位器**會立即生效，除非您設定選擇性的開始和結束時間，否則會一直持續到刪除為止。 
+建立 [串流定位器] 的程序稱為發佈。 根據預設，在您進行 API 呼叫之後，**串流定位器**會立即生效，除非您設定選擇性的開始和結束時間，否則會一直持續到刪除為止。 
 
-建立 [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) 時，您必須指定需要的 **StreamingPolicyName**。 在此範例中，您將會以純文字（或未加密的內容）串流處理，因此會使用預先定義的清除串流原則（**predefinedstreamingpolicy.clearstreamingonly. predefinedstreamingpolicy.clearstreamingonly**）。
+建立 [StreamingLocator](/rest/api/media/streaminglocators) 時，您必須指定需要的 **StreamingPolicyName**。 在此範例中，您將會以純文字（或未加密的內容）串流處理，因此會使用預先定義的清除串流原則（**predefinedstreamingpolicy.clearstreamingonly. predefinedstreamingpolicy.clearstreamingonly**）。
 
 > [!IMPORTANT]
-> 使用自訂的[串流原則](https://docs.microsoft.com/rest/api/media/streamingpolicies)時，您應該為媒體服務帳戶設計一組受限的這類原則，並且在需要相同的加密選項和通訊協定時，對 StreamingLocators 重新使用這些原則。 媒體服務帳戶有串流原則項目的數量配額。 不建議您對每個串流定位器建立新的串流原則。
+> 使用自訂的[串流原則](/rest/api/media/streamingpolicies)時，您應該為媒體服務帳戶設計一組受限的這類原則，並且在需要相同的加密選項和通訊協定時，對 StreamingLocators 重新使用這些原則。 媒體服務帳戶有串流原則項目的數量配額。 不建議您對每個串流定位器建立新的串流原則。
 
 下列程式碼假設您要呼叫具有唯一 locatorName 的函式。
 
@@ -219,7 +219,7 @@ await UpoadAudioIntoOutputAsset(client, config.ResourceGroup, config.AccountName
 
 ### <a name="get-streaming-urls"></a>取得串流 URL
 
-建立了[串流定位器](https://docs.microsoft.com/rest/api/media/streaminglocators)之後，現在您可以取得串流 URL，如 **GetStreamingURLs** 中所示。 若要建置 URL，您需要串連[串流端點](https://docs.microsoft.com/rest/api/media/streamingendpoints)主機名稱和**串流定位器**路徑。 此範例會使用預設的  **串流端點**。 初次建立媒體服務帳戶時，此預設的  **串流端點**會處於停止狀態，因此您需要呼叫 **Start**。
+建立了[串流定位器](/rest/api/media/streaminglocators)之後，現在您可以取得串流 URL，如 **GetStreamingURLs** 中所示。 若要建置 URL，您需要串連[串流端點](/rest/api/media/streamingendpoints)主機名稱和**串流定位器**路徑。 此範例會使用預設的**串流端點**。 初次建立媒體服務帳戶時，此預設的**串流端點**會處於停止狀態，因此您需要呼叫 **Start**。
 
 > [!NOTE]
 > 在此方法中，您需要 locatorName，也就是為輸出資產建立**串流定位器**時所使用的項目。
