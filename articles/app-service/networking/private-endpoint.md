@@ -9,12 +9,12 @@ ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: fdad2f7c2ce4f82529866b4235ebebab8da664d3
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 4fab75aef2a94ba7108085e9d5b5dbbf190342f6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86054571"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87068297"
 ---
 # <a name="using-private-endpoints-for-azure-web-app-preview"></a>使用 Azure Web 應用程式的私人端點 (預覽)
 
@@ -127,7 +127,7 @@ ms.locfileid: "86054571"
 - 若要透過入口網站部署 Web 應用程式的私用端點，請參閱[如何使用入口網站私下連接到 Web 應用程式][howtoguide1]
 - 若要使用 Azure CLI 部署 Web 應用程式的私用端點，請參閱[如何使用 Azure CLI 私下連接到 Web 應用程式][howtoguide2]
 - 若要使用 PowerShell 為您的 Web 應用程式部署私用端點，請參閱[如何使用 powershell 以私下連線到 Web 應用程式][howtoguide3]
-
+- 若要使用 Azure 範本來部署 Web 應用程式的私用端點，請參閱[如何使用 azure 範本私下連接到 Web 應用程式][howtoguide4]
 
 
 <!--Links-->
@@ -143,3 +143,4 @@ ms.locfileid: "86054571"
 [howtoguide1]: https://docs.microsoft.com/azure/private-link/create-private-endpoint-webapp-portal
 [howtoguide2]: https://docs.microsoft.com/azure/app-service/scripts/cli-deploy-privateendpoint
 [howtoguide3]: https://docs.microsoft.com/azure/app-service/scripts/powershell-deploy-private-endpoint
+[howtoguide4]: https://docs.microsoft.com/azure/app-service/scripts/template-deploy-private-endpoint

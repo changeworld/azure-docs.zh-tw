@@ -6,17 +6,18 @@ ms.assetid: dea3f41e-cf35-481b-a6bc-33d7fc9d01b1
 ms.topic: article
 ms.date: 11/09/2017
 ms.custom: seodec18
-ms.openlocfilehash: b1c44fb9f44eb75e6d2a766213c5db094ebe79b1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 93f823a623145f8dd8bf5118de973dfbc095bfb4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81537639"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87068198"
 ---
 # <a name="azure-app-service-plan-overview"></a>Azure App Service 方案概觀
 
-在 App Service 中，應用程式會在 _App Service 方案_中執行。 App Service 方案會針對要執行的 Web 應用程式定義一組計算資源。 這些計算資源類似於傳統 Web 裝載中的[_伺服器陣列_](https://wikipedia.org/wiki/Server_farm)。 一或多個應用程式可設定為在相同的計算資源上執行 (或在相同的 App Service 方案中執行)。
+在 App Service 中，應用程式會在 _App Service 方案_中執行。 App Service 方案會針對要執行的 Web 應用程式定義一組計算資源。 這些計算資源類似于傳統 web 裝載中的[_伺服器_](https://wikipedia.org/wiki/Server_farm)陣列。 一或多個應用程式可設定為在相同的計算資源上執行 (或在相同的 App Service 方案中執行)。
 
-當您在特定區域 (例如，西歐) 建立 App Service 方案時，會為該區域的方案建立一組計算資源。 無論您將何種應用程式置入此 App Service 方案，都會在該 App Service 方案定義的計算資源上執行。 每個 App Service 方案可定義：
+當您在特定區域 (例如，西歐) 建立 App Service 方案時，會為該區域的方案建立一組計算資源。 無論您將何種應用程式置入此 App Service 方案，都會在該 App Service 方案定義的計算資源上執行。 每個 App Service 方案都會定義：
 
 - 區域 (美國西部、美國東部等)
 - 虛擬機器執行個體的數目
@@ -26,7 +27,7 @@ ms.locfileid: "81537639"
 App Service 方案的_定價層_可決定您獲得哪些 App Service 功能，以及為該方案支付多少費用。 定價層有幾個類別：
 
 - **共用計算**：**免費**和**共用**，這兩個基底層會在與其他 App Service 應用程式相同的 Azure VM 上執行應用程式，包括其他客戶的應用程式。 這些層會將 CPU 配額配置到在共用資源上執行的每個應用程式，而且該資源無法向外延展。
-- **專用計算**：**基本**、**標準**、**進階**和 **PremiumV2** 層會在專用的 Azure VM 上執行應用程式。 只有位於同個 App Service 方案中的應用程式，才會共用相同的計算資源。 層越高，可用於向外延展的 VM 執行個體就越多。
+- **專用計算**：**基本**、**標準**、**進階**和 **PremiumV2** 層會在專用的 Azure VM 上執行應用程式。 只有位於相同 App Service 方案中的應用程式，才會共用相同的計算資源。 層越高，可用於向外延展的 VM 執行個體就越多。
 - **隔離**：這一層會在專用的 Azure 虛擬網路上執行專用的 azure vm。 它會在計算隔離的基礎上提供網路隔離給您的應用程式。 它提供了最大的向外延展能力。
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
@@ -78,8 +79,10 @@ App Service 方案的_定價層_可決定您獲得哪些 App Service 功能，�
 
 > [!NOTE]
 > 如果您將 App Service 與另一個 App Service 整合，可能需要考慮來自其他服務的費用。 例如，如果您使用 Azure 流量管理員來調整您的異地應用程式、Azure 流量管理員也會根據您的使用量來收費。 若要預估您在 Azure 中的跨服務成本，請參閱[價格計算器](https://azure.microsoft.com/pricing/calculator/)。 
->
->
+
+想要最佳化並節省您的雲端費用嗎？
+
+[!INCLUDE [cost-management-horizontal](../../includes/cost-management-horizontal.md)]
 
 ## <a name="what-if-my-app-needs-more-capabilities-or-features"></a>如果我的應用程式需要更多的功能？
 
@@ -95,7 +98,7 @@ App Service 方案的_定價層_可決定您獲得哪些 App Service 功能，�
 
 ## <a name="should-i-put-an-app-in-a-new-plan-or-an-existing-plan"></a>我應該將應用程式置入新的方案或現有方案？
 
-由於您要針對 App Service 方案配置的計算資源付費 (請參閱[我的 App Service 方案成本是多少？](#cost))，您可以將多個應用程式置入一個 App Service 方案來節省費用。 只要現有方案有足夠資源處理負載，即可繼續將應用程式新增至該方案。 不過，請記住，同個 App Service 方案中的應用程式皆會共用相同的計算資源。 若要判斷新的應用程式是否有所需的資源，您必須了解現有 App Service 方案的容量，以及新應用程式預期的負載。 多載 App Service 方案可能會導致新的和現有的應用程式停機。
+由於您要針對 App Service 方案配置的計算資源付費 (請參閱[我的 App Service 方案成本是多少？](#cost))，您可以將多個應用程式置入一個 App Service 方案來節省費用。 只要現有方案有足夠資源處理負載，即可繼續將應用程式新增至該方案。 不過，請記住，同個 App Service 方案中的應用程式皆會共用相同的計算資源。 若要判斷新的應用程式是否有所需的資源，您必須了解現有 App Service 方案的容量，以及新應用程式的預期負載。 多載 App Service 方案可能會導致新的和現有的應用程式停機。
 
 如果有下列情況，請將您的應用程式隔離至新的 App Service 方案中：
 

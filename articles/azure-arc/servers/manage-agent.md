@@ -6,14 +6,14 @@ ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.date: 05/18/2020
+ms.date: 07/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 086491484592c8015bdb519bb498e73da3836f6f
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 122f88e8bf14d3e3b082930716cffc3621afd336
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103903"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067707"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>管理和維護 Connected Machine 代理程式
 
@@ -142,6 +142,9 @@ Azcmagent 工具 (Azcmagent.exe) 是用來在安裝或安裝之後修改代理�
 * **-v 或 --verbose** - 啟用詳細資訊記錄
 
 您可以在以互動方式登入的情況下，手動執行 **Connect**、**Disconnect** 和 **Reconnect**，或使用您用來將多個代理程式上線的相同服務主體或使用 Microsoft 身分識別平台[存取權杖](../../active-directory/develop/access-tokens.md)，將其自動化。 如果您未使用服務主體向適用於伺服器的 Azure Arc (預覽) 註冊機器，請參閱下列[文章](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale)以建立服務主體。
+
+>[!NOTE]
+>您必須具備 Linux 電腦的*根*存取權限，才能執行**azcmagent**。
 
 ### <a name="connect"></a>連線
 

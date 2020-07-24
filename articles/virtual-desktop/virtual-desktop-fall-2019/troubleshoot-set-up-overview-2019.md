@@ -1,5 +1,5 @@
 ---
-title: Windows 虛擬桌面疑難排解總覽-Azure
+title: Windows 虛擬桌面疑難排解總覽-秋季 2019-Azure
 description: 在設定 Windows 虛擬桌面租使用者環境時，針對問題進行疑難排解的總覽。
 services: virtual-desktop
 author: Heidilohr
@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 7fff21ec4fdb53483eea1a6c37ce9269081fe77e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 82ac5a8178973396c4c1975cb1c84d23e61430f7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82615444"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87069930"
 ---
 # <a name="troubleshooting-overview-feedback-and-support"></a>疑難排解概觀、意見反應和支援
 

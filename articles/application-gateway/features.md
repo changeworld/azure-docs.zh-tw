@@ -7,11 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: victorh
-ms.openlocfilehash: f021eed959ef88a1ef3671e1d0ace8080710c92a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 560d836f99f7a1be85007bb9d488f80a68d7999b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80810242"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067973"
 ---
 # <a name="azure-application-gateway-features"></a>Azure 應用程式閘道功能
 
@@ -34,7 +35,7 @@ ms.locfileid: "80810242"
 - [Websocket 和 HTTP/2 流量](#websocket-and-http2-traffic)
 - [清空連線](#connection-draining)
 - [自訂錯誤頁面](#custom-error-pages)
-- [重新撰寫 HTTP 標頭](#rewrite-http-headers)
+- [重寫 HTTP 標頭和 URL](#rewrite-http-headers-and-url)
 - [調整大小](#sizing)
 
 ## <a name="secure-sockets-layer-ssltls-termination"></a>安全通訊端層 (SSL/TLS) 終止
@@ -82,13 +83,13 @@ URL 路徑型路由可讓您根據要求的 URL 路徑，將流量路由傳送�
 
 ## <a name="multiple-site-hosting"></a>多網站裝載
 
-多網站裝載可讓您在相同的應用程式閘道執行個體上設定多個網站。 這項功能可讓您將最多100個網站新增到一個應用程式閘道（以獲得最佳效能），為您的部署設定更有效率的拓撲。 每個網站都可以導向到自己的集區。 例如，應用程式閘道可以從兩個伺服器集區 (名為 ContosoServerPool 和 FabrikamServerPool) 為 `contoso.com` 和 `fabrikam.com` 處理流量。
+您可以使用應用程式閘道，根據相同應用程式閘道上的多個 web 應用程式，設定主機名稱或功能變數名稱的路由。 它可讓您為部署設定更有效率的拓撲，其方式是在一個應用程式閘道上新增多達100個以上的網站。 每個網站都可以導向到自己的後端集區。 例如，有三個網域、contoso.com、fabrikam.com 和 adatum.com，指向應用程式閘道的 IP 位址。 您會建立三個多網站接聽程式，並針對個別的埠和通訊協定設定，設定每個接聽程式。 
 
-對 `http://contoso.com` 的要求會路由傳送至 ContosoServerPool，而對 `http://fabrikam.com` 的要求則會路由傳送至 FabrikamServerPool。
+對的要求 `http://contoso.com` 會路由傳送至 ContosoServerPool， `http://fabrikam.com` 並路由傳送至 FabrikamServerPool 等等。
 
-同樣地，相同父系網域的兩個子網域也可以裝載在相同的應用程式閘道部署上。 使用子網域的範例可能包括單一應用程式閘道部署上裝載的 `http://blog.contoso.com` 和 `http://app.contoso.com`。
+同樣地，相同父系網域的兩個子網域也可以裝載在相同的應用程式閘道部署上。 使用子網域的範例可能包括單一應用程式閘道部署上裝載的 `http://blog.contoso.com` 和 `http://app.contoso.com`。 如需詳細資訊，請參閱[應用程式閘道多個網站裝載](multiple-site-overview.md)。
 
-如需詳細資訊，請參閱[應用程式閘道多個網站裝載](multiple-site-overview.md)。
+您也可以在多網站接聽程式中定義萬用字元主機名稱，以及每個接聽程式最多5個主機名稱。 若要深入瞭解，請參閱接聽程式[中的萬用字元主機名稱（預覽）](multiple-site-overview.md#wildcard-host-names-in-listener-preview)。
 
 ## <a name="redirection"></a>重新導向
 
@@ -130,7 +131,7 @@ WebSocket 和 HTTP/2 通訊協定都可透過長時間執行的 TCP 連線，讓
 
 如需相關資訊，請參閱[自訂錯誤](custom-error.md)。
 
-## <a name="rewrite-http-headers"></a>重新撰寫 HTTP 標頭
+## <a name="rewrite-http-headers-and-url"></a>重寫 HTTP 標頭和 URL
 
 HTTP 標頭允許用戶端和伺服器透過要求或回應傳遞其他資訊。 重寫這些 HTTP 標頭可協助您完成幾個重要的案例，例如：
 
@@ -138,9 +139,11 @@ HTTP 標頭允許用戶端和伺服器透過要求或回應傳遞其他資訊。
 - 移除可能會顯示機密資訊的回應標頭欄位。
 - 從 X-Forwarded-For 標頭中移除連接埠資訊。
 
-Application Gateway 支援在要求及回應封包於用戶端與後端應用程式之間移動時，新增、移除或更新 HTTP 要求及回應標頭的功能。 它還為您提供了新增條件的功能，以確保僅在符合特定條件時才重新寫入指定的標頭。
+應用程式閘道和 WAF v2 SKU 支援新增、移除或更新 HTTP 要求和回應標頭的功能，而要求和回應封包則會在用戶端與後端集區之間移動。 您也可以重寫 Url、查詢字串參數和主機名稱。 使用 URL 重寫和 URL 路徑型路由，您可以選擇使用 [重新評估路徑對應] 選項，根據原始路徑或重寫路徑，將要求路由傳送至其中一個後端集區。 
 
-如需詳細資訊，請參閱[重新撰寫 HTTP 標頭](rewrite-http-headers.md)。
+它也會提供您新增條件的功能，以確保只有在符合特定條件時，才會重寫指定的標頭或 URL。 這些條件是以要求和回應資訊為基礎。
+
+如需詳細資訊，請參閱[重寫 HTTP 標頭和 URL](rewrite-http-headers-url.md)。
 
 ## <a name="sizing"></a>調整大小
 

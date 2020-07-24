@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/12/2019
-ms.openlocfilehash: dc9425b25fa594d06473865f1add9c91c7760a97
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b1756bd72dc78bfafc8959c4ff1c8f95d255c931
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85557225"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067575"
 ---
 # <a name="integrate-system-center-operations-manager-with-azure-monitor-for-vms-map-feature"></a>整合 System Center Operations Manager 與適用於 VM 的 Azure 監視器對應功能
 
@@ -126,7 +126,7 @@ ms.locfileid: "85557225"
 * **TimeoutSeconds**：指定要求超時前的時間長度。
 * **TimeWindowMinutes**：指定用來查詢資料的時間範圍。 預設值是60分鐘，這是允許的最大間隔。
 
-## <a name="known-issues-and-limitations"></a>已知的問題及限制
+## <a name="known-issues-and-limitations"></a>已知的問題和限制
 
 目前的設計有以下問題和限制︰
 
@@ -138,9 +138,9 @@ ms.locfileid: "85557225"
 
 如需建立服務主體的官方 Azure 文件，請參閱︰
 
-* [使用 PowerShell 建立服務主體](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal)
-* [使用 Azure CLI 建立服務主體](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal-cli)
-* [使用 Azure 入口網站建立服務主體](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)
+* [使用 PowerShell 建立服務主體](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)
+* [使用 Azure CLI 建立服務主體](/azure/azure-resource-manager/resource-group-authenticate-service-principal-cli)
+* [使用 Azure 入口網站建立服務主體](../../active-directory/develop/howto-create-service-principal-portal.md)
 
 ### <a name="suggestions"></a>建議
 

@@ -3,16 +3,16 @@ title: 監視 Azure 應用程式服務效能 | Microsoft Docs
 description: Azure 應用程式服務的應用程式效能監視。 圖表載入和回應時間、相依性資訊，以及設定效能警示。
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 574aefa4d554be7b0027c921289d8d15cffb8e49
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 042dd67c0e1e5a0ba2f81d5678e191dbfdd60a43
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169930"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067889"
 ---
 # <a name="monitor-azure-app-service-performance"></a>監視 Azure App Service 效能
 
-在您的 ASP.NET 和[Azure App 服務](https://docs.microsoft.com/azure/app-service/)上執行的 ASP.NET Core web 應用程式上啟用監視，現在比以往更容易。 雖然先前您需要手動安裝網站延伸模組，但根據預設，最新的擴充功能/代理程式已內建到 app service 映射中。 這篇文章將逐步引導您啟用 Application Insights 監視，以及提供將大規模部署程式自動化的初步指導方針。
+在您的 ASP.NET 和[Azure App 服務](../../app-service/index.yml)上執行的 ASP.NET Core web 應用程式上啟用監視，現在比以往更容易。 雖然先前您需要手動安裝網站延伸模組，但根據預設，最新的擴充功能/代理程式已內建到 app service 映射中。 這篇文章將逐步引導您啟用 Application Insights 監視，以及提供將大規模部署程式自動化的初步指導方針。
 
 > [!NOTE]
 > 透過**開發工具**擴充功能來手動新增 Application Insights 網站延伸模組  >  **Extensions**已被取代。 這種擴充功能安裝方法相依于每個新版本的手動更新。 擴充功能的最新穩定版本現在已[預先安裝](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions)為 App Service 映射的一部分。 這些檔案位於 `d:\Program Files (x86)\SiteExtensions\ApplicationInsightsAgent` ，並會在每個穩定版本自動更新。 如果您遵循以代理程式為基礎的指示來啟用下列監視，它會自動為您移除已淘汰的延伸模組。
@@ -21,24 +21,24 @@ ms.locfileid: "86169930"
 
 有兩種方式可針對 Azure App Services 裝載的應用程式啟用應用程式監視：
 
-* 以**代理程式為基礎的應用程式監視** (ApplicationInsightsAgent) 。  
+* 以**代理程式為基礎的應用程式監視**（ApplicationInsightsAgent）。  
     * 這個方法最容易啟用，而且不需要任何 advanced 設定。 這通常稱為「執行時間」監視。 對於 Azure App 服務，我們建議您至少啟用此層級的監視，然後根據您的特定案例，您可以評估是否需要透過手動檢測進行更先進的監視。
 
 * 藉由安裝 Application Insights SDK，**透過程式碼手動檢測應用程式**。
 
-    * 這種方法更容易自訂，但需要[在 APPLICATION INSIGHTS SDK NuGet 套件上新增](https://docs.microsoft.com/azure/azure-monitor/app/asp-net)相依性。 這種方法也表示您必須自行管理最新版本套件的更新。
+    * 這種方法更容易自訂，但需要[在 APPLICATION INSIGHTS SDK NuGet 套件上新增](./asp-net.md)相依性。 這種方法也表示您必須自行管理最新版本套件的更新。
 
-    * 如果您需要進行自訂 API 呼叫來追蹤預設不是以代理程式為基礎所捕捉的事件/相依性，則必須使用此方法。 若要深入瞭解，請參閱[自訂事件和計量的 API 一文](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics)。 這也是 Linux 型工作負載目前唯一支援的選項。
+    * 如果您需要進行自訂 API 呼叫來追蹤預設不是以代理程式為基礎所捕捉的事件/相依性，則必須使用此方法。 若要深入瞭解，請參閱[自訂事件和計量的 API 一文](./api-custom-events-metrics.md)。 這也是 Linux 型工作負載目前唯一支援的選項。
 
 > [!NOTE]
-> 如果偵測到以代理程式為基礎的監視和手動以 SDK 為基礎的檢測，則只會接受手動檢測設定。 這是為了防止傳送重複的資料。 若要深入瞭解，請參閱下面的[疑難排解一節](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#troubleshooting)。
+> 如果偵測到以代理程式為基礎的監視和手動以 SDK 為基礎的檢測，則只會接受手動檢測設定。 這是為了防止傳送重複的資料。 若要深入瞭解，請參閱下面的[疑難排解一節](#troubleshooting)。
 
 ## <a name="enable-agent-based-monitoring"></a>啟用以代理程式為基礎的監視
 
 # <a name="net"></a>[.NET](#tab/net)
 
 > [!NOTE]
-> 不支援 APPINSIGHTS_JAVASCRIPT_ENABLED 和 urlCompression 的組合。 如需詳細資訊，請參閱[疑難排解一節](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#troubleshooting)中的說明。
+> 不支援 APPINSIGHTS_JAVASCRIPT_ENABLED 和 urlCompression 的組合。 如需詳細資訊，請參閱[疑難排解一節](#troubleshooting)中的說明。
 
 
 1. 在應用程式服務的 Azure 控制台中，**選取 [Application Insights** ]。
@@ -64,19 +64,19 @@ ms.locfileid: "86169930"
 | 收集使用趨勢，並啟用從可用性結果到交易的相互關聯 | 是 |是 |
 | 收集主機程序未處理的例外狀況 | 是 |是 |
 | 在使用取樣時，改善 APM 計量在負載下的精確度 | 是 |是 |
-| 將不同要求/相依性界限間的微服務相互關聯 | 無 (單一實例 APM 功能僅)  |是 |
+| 將不同要求/相依性界限間的微服務相互關聯 | 否（僅限單一實例 APM 功能） |是 |
 
 3. 若要設定取樣（例如您先前可以透過 applicationinsights.config 檔案控制的設定），您現在可以透過應用程式設定與對應的前置詞，與這些相同的設定進行互動。 
 
     * 例如，若要變更初始取樣百分比，您可以建立的應用程式設定： `MicrosoftAppInsights_AdaptiveSamplingTelemetryProcessor_InitialSamplingPercentage` 和的值 `100` 。
 
-    * 如需支援的調適型取樣遙測處理器設定清單，您可以查閱程式[代碼](https://github.com/microsoft/ApplicationInsights-dotnet/blob/master/BASE/Test/ServerTelemetryChannel.Test/TelemetryChannel.Tests/AdaptiveSamplingTelemetryProcessorTest.cs)和[相關聯的檔](https://docs.microsoft.com/azure/azure-monitor/app/sampling)。
+    * 如需支援的調適型取樣遙測處理器設定清單，您可以查閱程式[代碼](https://github.com/microsoft/ApplicationInsights-dotnet/blob/master/BASE/Test/ServerTelemetryChannel.Test/TelemetryChannel.Tests/AdaptiveSamplingTelemetryProcessorTest.cs)和[相關聯的檔](./sampling.md)。
 
 # <a name="net-core"></a>[.NET Core](#tab/netcore)
 
 支援下列 .NET Core 版本： ASP.NET Core 2.0、ASP.NET Core 2.1、ASP.NET Core 2.2、ASP.NET Core 3。0
 
-以 .NET Core、獨立式部署和以 Linux 為基礎的應用程式為目標的完整架構，目前**不支援**以代理程式/延伸模組為基礎的監視。 透過程式碼 ([手動檢測](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)會在先前的所有案例中使用。 ) 
+以 .NET Core、獨立式部署和以 Linux 為基礎的應用程式為目標的完整架構，目前**不支援**以代理程式/延伸模組為基礎的監視。 （透過程式碼的[手動檢測](./asp-net-core.md)功能將在先前的所有案例中使用）。
 
 1. 在應用程式服務的 Azure 控制台中，**選取 [Application Insights** ]。
 
@@ -99,11 +99,11 @@ ms.locfileid: "86169930"
 
 # <a name="java"></a>[Java](#tab/java)
 
-以 JAVA App Service 為基礎的 web 應用程式目前不支援自動代理程式/擴充功能型監視。 若要啟用 JAVA 應用程式的監視，您必須[手動檢測您的應用程式](https://docs.microsoft.com/azure/azure-monitor/app/java-get-started)。
+以 JAVA App Service 為基礎的 web 應用程式目前不支援自動代理程式/擴充功能型監視。 若要啟用 JAVA 應用程式的監視，您必須[手動檢測您的應用程式](./java-get-started.md)。
 
 # <a name="python"></a>[Python](#tab/python)
 
-以 Python App Service 為基礎的 web 應用程式目前不支援以自動代理程式/延伸模組為基礎的監視。 若要為您的 Python 應用程式啟用監視，您必須[手動檢測應用程式](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python)。
+以 Python App Service 為基礎的 web 應用程式目前不支援以自動代理程式/延伸模組為基礎的監視。 若要為您的 Python 應用程式啟用監視，您必須[手動檢測應用程式](./opencensus-python.md)。
 
 ---
 
@@ -145,15 +145,15 @@ ms.locfileid: "86169930"
 
 # <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
-若要為您的 Node.js 應用程式啟用用戶端監視，您必須[手動將用戶端 JAVASCRIPT SDK 新增至您的應用程式](https://docs.microsoft.com/azure/azure-monitor/app/javascript)。
+若要為您的 Node.js 應用程式啟用用戶端監視，您必須[手動將用戶端 JAVASCRIPT SDK 新增至您的應用程式](./javascript.md)。
 
 # <a name="java"></a>[Java](#tab/java)
 
-若要啟用 JAVA 應用程式的用戶端監視，您必須[手動將用戶端 JAVASCRIPT SDK 新增至您的應用程式](https://docs.microsoft.com/azure/azure-monitor/app/javascript)。
+若要啟用 JAVA 應用程式的用戶端監視，您必須[手動將用戶端 JAVASCRIPT SDK 新增至您的應用程式](./javascript.md)。
 
 # <a name="python"></a>[Python](#tab/python)
 
-若要為您的 Python 應用程式啟用用戶端監視，您必須[手動將用戶端 JAVASCRIPT SDK 新增至您的應用程式](https://docs.microsoft.com/azure/azure-monitor/app/javascript)。
+若要為您的 Python 應用程式啟用用戶端監視，您必須[手動將用戶端 JAVASCRIPT SDK 新增至您的應用程式](./javascript.md)。
 
 ---
 
@@ -174,7 +174,7 @@ ms.locfileid: "86169930"
 
 ### <a name="app-service-application-settings-with-azure-resource-manager"></a>使用 Azure Resource Manager App Service 應用程式設定
 
-應用程式服務的應用程式設定可以使用[Azure Resource Manager 範本](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates)進行管理和設定。 使用 Azure Resource Manager 自動化部署新的 App Service 資源，或修改現有資源的設定時，可以使用這個方法。
+應用程式服務的應用程式設定可以使用[Azure Resource Manager 範本](../../azure-resource-manager/templates/template-syntax.md)進行管理和設定。 使用 Azure Resource Manager 自動化部署新的 App Service 資源，或修改現有資源的設定時，可以使用這個方法。
 
 App service 的應用程式設定 JSON 基本結構如下：
 
@@ -339,14 +339,14 @@ $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.Resourc
 
 從版本2.8.9 開始，會使用預先安裝的網站延伸模組。 如果您是較舊的版本，您可以透過下列兩種方式的其中一種來更新：
 
-* 透過[入口網站啟用來進行升級](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#enable-application-insights)。  (即使已安裝 Azure App Service 的 Application Insights 延伸模組，UI 只會顯示 [**啟用**] 按鈕。 在幕後，將會移除舊的私人網站延伸模組。 ) 
+* 透過[入口網站啟用來進行升級](#enable-application-insights)。 （即使已安裝 Azure App Service 的 Application Insights 延伸模組，UI 只會顯示 [**啟用**] 按鈕。 在幕後，將會移除舊的私用網站延伸模組）。
 
-* [透過 PowerShell 升級](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#enabling-through-powershell)：
+* [透過 PowerShell 升級](#enabling-through-powershell)：
 
-    1. 設定 [應用程式設定] 以啟用預先安裝的網站擴充功能 ApplicationInsightsAgent。 請參閱[透過 Powershell 啟用](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#enabling-through-powershell)。
+    1. 設定 [應用程式設定] 以啟用預先安裝的網站擴充功能 ApplicationInsightsAgent。 請參閱[透過 Powershell 啟用](#enabling-through-powershell)。
     2. 手動移除名為 Application Insights extension for Azure App Service 的私人網站延伸模組。
 
-如果是從2.5.1 之前的版本完成升級，請檢查 ApplicationInsigths dll 是否已從應用程式 bin 資料夾中移除，[請參閱疑難排解步驟](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#troubleshooting)。
+如果是從2.5.1 之前的版本完成升級，請檢查 ApplicationInsigths dll 是否已從應用程式 bin 資料夾中移除，[請參閱疑難排解步驟](#troubleshooting)。
 
 ## <a name="troubleshooting"></a>疑難排解
 
@@ -363,7 +363,7 @@ $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.Resourc
     ![[結果] 頁面的螢幕擷取畫面 https://yoursitename.scm.azurewebsites/applicationinsights](./media/azure-web-apps/app-insights-sdk-status.png)
 
     * 確認 `Application Insights Extension Status` 為`Pre-Installed Site Extension, version 2.8.12.1527, is running.`
-        * 如果未執行，請遵循[啟用 Application Insights 監視指示](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#enable-application-insights)
+        * 如果未執行，請遵循[啟用 Application Insights 監視指示](#enable-application-insights)
 
     * 確認狀態來源存在，而且看起來像這樣：`Status source D:\home\LogFiles\ApplicationInsights\status\status_RD0003FF0317B6_4248_1.json`
         * 如果沒有類似的值，則表示應用程式目前不在執行中或不受支援。 若要確保應用程式正在執行，請嘗試手動流覽應用程式 url/應用程式端點，這將允許執行時間資訊變成可用。
@@ -380,7 +380,7 @@ $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.Resourc
 |---- |----|---|
 | `AppAlreadyInstrumented:true` | 此值表示延伸模組偵測到應用程式中已有 SDK 的某些層面，而且將會回復。 這可能是因為 `System.Diagnostics.DiagnosticSource` 、或的參考 `Microsoft.AspNet.TelemetryCorrelation``Microsoft.ApplicationInsights`  | 移除參考。 根據預設，某些參考會從某些 Visual Studio 範本加入，而舊版的 Visual Studio 可能會加入的參考 `Microsoft.ApplicationInsights` 。
 |`AppAlreadyInstrumented:true` | 如果應用程式是以 .NET Core 2.1 或2.2 為目標，並參考[AspNetCore](https://www.nuget.org/packages/Microsoft.AspNetCore.All) ，則會帶入 Application Insights，而且延伸模組將會回復。 | [建議您使用](https://github.com/aspnet/Announcements/issues/287).net Core 2.1、2.2 的客戶，改為使用 AspNetCore 應用程式元封裝。|
-|`AppAlreadyInstrumented:true` | 這個值也可能是因為先前部署的應用程式資料夾中有上述的 dll。 | 清除應用程式資料夾，以確保這些 dll 已移除。 檢查本機應用程式的 bin 目錄，以及 App Service 上的 wwwroot 目錄。  (，以檢查 App Service web 應用程式的 wwwroot 目錄： Advanced Tools (Kudu) > Debug 主控台 > CMD > home\site\wwwroot) 。
+|`AppAlreadyInstrumented:true` | 這個值也可能是因為先前部署的應用程式資料夾中有上述的 dll。 | 清除應用程式資料夾，以確保這些 dll 已移除。 檢查本機應用程式的 bin 目錄，以及 App Service 上的 wwwroot 目錄。 （若要檢查 App Service web 應用程式的 wwwroot 目錄： Advanced Tools （Kudu） > Debug 主控台 > CMD > home\site\wwwroot）。
 |`AppContainsAspNetTelemetryCorrelationAssembly: true` | 此值表示延伸模組偵測到 `Microsoft.AspNet.TelemetryCorrelation` 應用程式中的參考，而且將會回復。 | 移除參考。
 |`AppContainsDiagnosticSourceAssembly**:true`|此值表示延伸模組偵測到 `System.Diagnostics.DiagnosticSource` 應用程式中的參考，而且將會回復。| 移除參考。
 |`IKeyExists:false`|這個值表示檢測金鑰不存在於 AppSetting 中 `APPINSIGHTS_INSTRUMENTATIONKEY` 。 可能的原因：這些值可能已被意外移除、忘記設定自動化腳本中的值等等。 | 請確定 App Service 的應用程式設定中有該設定。
@@ -390,7 +390,7 @@ $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.Resourc
 如果您在編碼內容的情況下使用 APPINSIGHTS_JAVASCRIPT_ENABLED = true，您可能會收到類似下列的錯誤： 
 
 - 500 URL 重寫錯誤
-- 500.53 URL 重寫模組錯誤：當 HTTP 回應的內容編碼 ( ' gzip ' ) 時，無法套用訊息輸出重寫規則。 
+- 500.53 URL 重寫模組錯誤，而且當 HTTP 回應的內容編碼時，無法套用訊息輸出重寫規則（' gzip '）。 
 
 這是因為 APPINSIGHTS_JAVASCRIPT_ENABLED 應用程式設定設為 true，同時同時出現內容編碼。 尚不支援此案例。 解決方法是從您的應用程式設定中移除 APPINSIGHTS_JAVASCRIPT_ENABLED。 可惜的是，如果仍然需要用戶端/瀏覽器端的 JavaScript 檢測，您的網頁需要手動的 SDK 參考。 請遵循使用 JavaScript SDK 進行手動檢測的[指示](https://github.com/Microsoft/ApplicationInsights-JS#snippet-setup-ignore-if-using-npm-setup)。
 
@@ -398,7 +398,7 @@ $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.Resourc
 
 ### <a name="php-and-wordpress-are-not-supported"></a>不支援 PHP 和 WordPress
 
-不支援 PHP 和 WordPress 網站。 目前沒有任何正式支援的 SDK/代理程式可供伺服器端監視這些工作負載。 不過，若要手動檢測 PHP 或 WordPress 網站上的用戶端交易，您可以將用戶端 javascript 新增至您的網頁，方法是使用[JAVASCRIPT SDK](https://docs.microsoft.com/azure/azure-monitor/app/javascript)來完成。
+不支援 PHP 和 WordPress 網站。 目前沒有任何正式支援的 SDK/代理程式可供伺服器端監視這些工作負載。 不過，若要手動檢測 PHP 或 WordPress 網站上的用戶端交易，您可以將用戶端 javascript 新增至您的網頁，方法是使用[JAVASCRIPT SDK](./javascript.md)來完成。
 
 ### <a name="connection-string-and-instrumentation-key"></a>連接字串和檢測金鑰
 

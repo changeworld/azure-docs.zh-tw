@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 原則來限制 VM 延伸模組安裝
+title: 使用 Azure 原則來限制 VM 延伸模組安裝（Windows）
 description: 使用 Azure 原則來限制延伸模組部署。
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: 96cd16c08421a4e365391c0db0b257f71a06551f
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: e4959c9dca909afde4bf6d351d79ecca1e4022a0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85919801"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87069767"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-windows-vms"></a>使用 Azure 原則來限制 Windows VM 上的延伸模組安裝
 
@@ -98,7 +98,7 @@ nano $home/clouddrive/parameters.json
 
 ## <a name="create-the-policy"></a>建立政策
 
-原則定義是一個用來儲存您所要使用之設定的物件。 原則定義會使用規則檔和參數檔來定義原則。 請使用 [New-AzPolicyDefinition](https://docs.microsoft.com/powershell/module/az.resources/new-azpolicydefinition) Cmdlet 來建立原則定義。
+原則定義是一個用來儲存您所要使用之設定的物件。 原則定義會使用規則檔和參數檔來定義原則。 請使用 [New-AzPolicyDefinition](/powershell/module/az.resources/new-azpolicydefinition) Cmdlet 來建立原則定義。
 
  原則規則和參數是您在 Cloud Shell 中以 .json 檔案形式建立並儲存的檔案。
 
@@ -117,9 +117,9 @@ $definition = New-AzPolicyDefinition `
 
 ## <a name="assign-the-policy"></a>指派原則
 
-以下範例會使用 [New-AzPolicyAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azpolicyassignment) 將原則指派給資源群組。 任何建立在 **myResourceGroup** 資源群組中的 VM 都將無法安裝「VM 存取代理程式」或「自訂指令碼」延伸模組。 
+以下範例會使用 [New-AzPolicyAssignment](/powershell/module/az.resources/new-azpolicyassignment) 將原則指派給資源群組。 任何建立在 **myResourceGroup** 資源群組中的 VM 都將無法安裝「VM 存取代理程式」或「自訂指令碼」延伸模組。 
 
-請使用 [Get-AzSubscription | Format-Table](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription) Cmdlet 來取得您的訂用帳戶 ID，以用來取代範例中的 ID。
+請使用 [Get-AzSubscription | Format-Table](/powershell/module/az.accounts/get-azsubscription) Cmdlet 來取得您的訂用帳戶 ID，以用來取代範例中的 ID。
 
 ```azurepowershell-interactive
 $scope = "/subscriptions/<subscription id>/resourceGroups/myResourceGroup"
@@ -150,7 +150,7 @@ Set-AzVMAccessExtension `
    -Location EastUS 
 ```
 
-在入口網站中，密碼變更應該會失敗並出現「因為違反了原則，所以範本部署失敗。」 訊息。
+在入口網站中，密碼變更應該會失敗並出現「因為違反了原則，所以範本部署失敗。」 回應。
 
 ## <a name="remove-the-assignment"></a>移除指派
 

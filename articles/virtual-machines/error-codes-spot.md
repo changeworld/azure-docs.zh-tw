@@ -7,11 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: troubleshooting
 ms.date: 03/25/2020
 ms.author: cynthn
-ms.openlocfilehash: 4625a0fa75f992ac18eeb91629af373a426aa955
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e5e621cc3763cfa7fe28790baf2f5d9866c8d618
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84676568"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87069792"
 ---
 # <a name="error-messages-for-spot-vms-and-scale-sets"></a>適用于點 Vm 和擴展集的錯誤訊息
 
@@ -34,7 +35,6 @@ ms.locfileid: "84676568"
 | MaxPriceIsSupportedOnlyForAzureSpotVirtualMachines  |  只有 Azure 位置虛擬機器支援最大價格。 | 如需詳細資訊，請參閱[點虛擬機器](./linux/spot-vms.md)。 |
 | MoveResourcesWithAzureSpotVMNotSupported  |  移動資源要求包含 Azure 點虛擬機器。 目前不支援。 請檢查虛擬機器識別碼的錯誤詳細資料。 | 您無法移動點 Vm。 |
 | MoveResourcesWithAzureSpotVmssNotSupported  |  移動資源要求包含 Azure 點虛擬機器擴展集。 目前不支援。 請檢查虛擬機器擴展集識別碼的錯誤詳細資料。 | 您無法移動位置擴展集實例。 |
-| EphemeralOSDisksNotSupportedForSpotVMs | 點 Vm 不支援暫時 OS 磁片。 | 使用適用于您的點 VM 的一般 OS 磁片。 |
 | AzureSpotVMNotSupportedInVmssWithVMOrchestrationMode | 具有 VM 協調流程模式的虛擬機器擴展集不支援 Azure 點虛擬機器。 | 將協調流程模式設定為虛擬機器擴展集，以便使用點實例。 |
 
 

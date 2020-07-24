@@ -16,11 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 045c73e3efefb29aac6bb25a8661fd510e351926
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 5eee96702a5efbddcc66c2a0e428640f0848442a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021121"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87068618"
 ---
 # <a name="high-availability-architecture-and-scenarios-for-sap-netweaver"></a>SAP NetWeaver 的高可用性架構和案例
 
@@ -288,12 +289,12 @@ Azure 中的 SAP 高可用性與內部部署實體或虛擬環境中的 SAP 高�
 
 
 ### <a name="azure-availability-zones"></a>Azure 可用性區域
-Azure 正在不同的 [Azure 區域](https://azure.microsoft.com/global-infrastructure/regions/)到處推廣 [Azure 可用性區域](https://docs.microsoft.com/azure/availability-zones/az-overview)的概念。 有提供可用性區域的 Azure 區域會有多個資料中心，而這些資料中心與電力來源、冷卻及網路無關。 之所以在單一 Azure 區域 (region) 中提供不同區域 (zone)，是要讓您可跨兩個或三個所提供的可用性區域來部署應用程式。 假設電力來源和/或網路中的問題只會影響一個可用性區域基礎結構，那麼 Azure 區域內的應用程式部署仍然可完全正常運作。 由於可能會失去單一區域內的一些 VM，因此最後會造成部分產能降低。 但其他兩個區域中的 VM 仍舊會繼續執行。 [Azure 可用性區域](https://docs.microsoft.com/azure/availability-zones/az-overview)會列出提供可用性區域的 Azure 區域。
+Azure 正在不同的 [Azure 區域](https://azure.microsoft.com/global-infrastructure/regions/)到處推廣 [Azure 可用性區域](../../../availability-zones/az-overview.md)的概念。 有提供可用性區域的 Azure 區域會有多個資料中心，而這些資料中心與電力來源、冷卻及網路無關。 之所以在單一 Azure 區域 (region) 中提供不同區域 (zone)，是要讓您可跨兩個或三個所提供的可用性區域來部署應用程式。 假設電力來源和/或網路中的問題只會影響一個可用性區域基礎結構，那麼 Azure 區域內的應用程式部署仍然可完全正常運作。 由於可能會失去單一區域內的一些 VM，因此最後會造成部分產能降低。 但其他兩個區域中的 VM 仍舊會繼續執行。 [Azure 可用性區域](../../../availability-zones/az-overview.md)會列出提供可用性區域的 Azure 區域。
 
 使用可用性區域時有一些考量事項。 考量清單如下：
 
 - 您無法在可用性區域內部署 Azure 可用性設定組。 您必須選擇可用性區域或可用性設定組作為 VM 的部署框架。
-- 您無法使用[基本 Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)，來建立以 Windows 容錯移轉叢集服務或 Linux Pacemaker 為基礎的容錯移轉叢集解決方案。 您必須改為使用 [Azure Standard Load Balancer SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones)
+- 您無法使用[基本 Load Balancer](../../../load-balancer/load-balancer-overview.md)，來建立以 Windows 容錯移轉叢集服務或 Linux Pacemaker 為基礎的容錯移轉叢集解決方案。 您必須改為使用 [Azure Standard Load Balancer SKU](../../../load-balancer/load-balancer-standard-availability-zones.md)
 - Azure 可用性區域並未保證同一區域內的不同可用性區域之間會相隔一定距離
 - 在不同 Azure 區域內的不同 Azure 可用性區域之間，網路延遲可能會隨著所在的 Azure 區域而有所不同。 有時候，因為某個可用性區域到作用中 DBMS VM 的網路延遲對商務程序的影響來說並不大，因此身為客戶的您可以合情合理地執行部署在不同區域的 SAP 應用程式層。 然而，也會有客戶的情況是某個可用性區域中的作用中 DBMS VM 與另一個可用性區域中 VM 內的 SAP 應用程式執行個體之間的延遲太久，而不適合 SAP 商務程序的運轉。 因此，如果延遲太久，部署架構就必須與應用程式的主動/主動架構不同，或與主動/被動架構不同。
 - 必須使用 [Azure 受控磁碟](https://azure.microsoft.com/services/managed-disks/)才能部署至 Azure 可用性區域 
@@ -354,12 +355,12 @@ _**圖 1：** 高可用性的 SAP 應用程式伺服器_
 
 所有裝載 SAP 應用程式伺服器執行個體的虛擬機器都必須放置在同一個 Azure 可用性設定組中。 Azure 可用性設定組可確保：
 
-* 所有虛擬機器都是相同更新網域的一部分。  
+* 所有虛擬機器都不屬於相同的更新網域。  
     更新網域可確保虛擬機器不會在規劃的維護停機期間同時更新。
 
     [升級網域][planning-guide-3.2.2]一節已介紹以 Azure 縮放單位內不同升級網域和容錯網域為基礎的基本功能。
 
-* 所有虛擬機器都是相同容錯網域的一部分。  
+* 所有虛擬機器都不是相同容錯網域的一部分。  
     容錯網域可確保部署虛擬機器，以便不會有任何單一失敗點影響所有虛擬機器的可用性。
 
 Azure 縮放單位內的 Azure 可用性設定組可使用的更新和容錯網域數目。 如果您持續將 VM 新增至單一可用性設定組，兩個或多個 VM 最終會在相同容錯或更新網域中。
@@ -390,7 +391,7 @@ _**圖 2：** Azure 可用性設定組中 SAP 應用程式伺服器的高可用�
 
 * **使用檔案共用進行 SAP ASCS/SCS 執行個體叢集處理**：如需此架構的詳細資訊，請參閱[使用檔案共用於 Windows 容錯移轉叢集上進行 SAP ASCS/SCS 執行個體叢集處理][sap-high-availability-guide-wsfc-file-share]。
 
-* **使用 ANF SMB 共用進行 SAP ASCS/SCS 執行個體叢集處理**：如需此架構的詳細資訊，請參閱[使用 ANF SMB 共用於 Windows 容錯移轉叢集上進行 SAP ASCS/SCS 執行個體叢集處理](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-windows-netapp-files-smb)。
+* **使用 ANF SMB 共用進行 SAP ASCS/SCS 執行個體叢集處理**：如需此架構的詳細資訊，請參閱[使用 ANF SMB 共用於 Windows 容錯移轉叢集上進行 SAP ASCS/SCS 執行個體叢集處理](./high-availability-guide-windows-netapp-files-smb.md)。
 
 ### <a name="high-availability-architecture-for-an-sap-ascsscs-instance-on-linux"></a>Linux 上 SAP ASCS/SCS 執行個體的高可用性架構
 
@@ -398,7 +399,7 @@ _**圖 2：** Azure 可用性設定組中 SAP 應用程式伺服器的高可用�
 > 
 > 如需藉由使用 SLES 叢集架構將 SAP ASCS/SCS 執行個體組成叢集的詳細資訊，請參閱[SAP NetWeaver 在適用於 SAP 應用程式之 SUSE Linux Enterprise Server 上的 Azure VM 高可用性][sap-suse-ascs-ha]。 如需 SLES 上的替代 HA 架構 (不需要高可用性 NFS)，請參閱[針對 SAP 應用程式使用 Azure NetApp Files 於 SUSE Linux Enterprise Server 上達到 SAP NetWeaver 高可用性的指南][sap-suse-ascs-ha-anf]。
 
-如需如何使用 Red Hat 叢集架構來進行 SAP ASCS/SCS 執行個體叢集處理的詳細資訊，請參閱 [Red Hat Enterprise Linux 上 SAP NetWeaver 的 Azure 虛擬機器高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel)
+如需如何使用 Red Hat 叢集架構來進行 SAP ASCS/SCS 執行個體叢集處理的詳細資訊，請參閱 [Red Hat Enterprise Linux 上 SAP NetWeaver 的 Azure 虛擬機器高可用性](./high-availability-guide-rhel.md)
 
 
 ### <a name="sap-netweaver-multi-sid-configuration-for-a-clustered-sap-ascsscs-instance"></a>叢集 SAP ASCS/SCS 執行個體的 SAP NetWeaver 多重 SID 設定
@@ -418,8 +419,8 @@ _**圖 2：** Azure 可用性設定組中 SAP 應用程式伺服器的高可用�
 > SAP ASCS/ERS 的 Linux Pacemaker 叢集支援多重 SID 群集 (在相同叢集上限制只能有**五**個 SAP SID)。
 > 如需 Linux 上多重 SID 高可用性架構的詳細資訊，請參閱：
 
-* [適用於具備多個 SID SAP 應用程式 SLES 上 Azure VM 中 SAP NW HA 的指南](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-multi-sid)
-* [適用於具備多個 SID SAP 應用程式 RHEL 上 Azure VM 中 SAP NW HA 的指南](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-multi-sid)
+* [適用於具備多個 SID SAP 應用程式 SLES 上 Azure VM 中 SAP NW HA 的指南](./high-availability-guide-suse-multi-sid.md)
+* [適用於具備多個 SID SAP 應用程式 RHEL 上 Azure VM 中 SAP NW HA 的指南](./high-availability-guide-rhel-multi-sid.md)
 
 ### <a name="high-availability-dbms-instance"></a>高可用性 DBMS 執行個體
 

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 07/20/2020
 ms.author: absha
-ms.openlocfilehash: 0245a23e46770840295904685c913826950c0642
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 892ace66c4994f4c2e263d529d69e505ed9c1c1f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517836"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87068023"
 ---
 # <a name="application-gateway-configuration-overview"></a>應用程式閘道設定總覽
 
@@ -25,7 +25,7 @@ Azure 應用程式閘道是由數個元件所組成，您可以在不同的案�
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 ### <a name="azure-virtual-network-and-dedicated-subnet"></a>Azure 虛擬網路和專用子網
 
@@ -284,9 +284,9 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 藉由使用重寫規則，您可以新增、移除或更新 HTTP （S）要求和回應標頭，以及 URL 路徑和查詢字串參數，因為要求和回應封包會透過應用程式閘道在用戶端和後端集區之間移動。
 
 標頭和 URL 參數可以設定為靜態值，或設為其他標頭和伺服器變數。 這有助於重要的使用案例，例如，解壓縮用戶端 IP 位址、移除後端的機密資訊、增加更多安全性等等。
-如需詳細資訊，請參閱：
+如需詳細資訊，請參閱
 
- - [重寫 HTTP 標頭總覽](rewrite-http-headers-url.md)
+ - [重寫 HTTP 標頭和 URL 總覽](rewrite-http-headers-url.md)
  - [設定 HTTP 標頭重寫](rewrite-http-headers-portal.md)
  - [設定 URL 重寫](rewrite-url-portal.md)
 

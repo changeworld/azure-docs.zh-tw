@@ -1,21 +1,25 @@
 ---
-title: 使用 Azure 儲存體模擬器進行開發和測試 | Microsoft Docs
+title: 使用 Azure 儲存體模擬器進行開發和測試
 description: Azure 儲存體模擬器提供免費的本機開發環境，針對 Azure 儲存體應用程式進行開發和測試。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 08/21/2019
+ms.date: 07/16/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: how-to
-ms.openlocfilehash: eb13dbb7e4cfbbb1b2ea42ea1753e7615df03a7d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dd179160ad6796da40a5b98e89a10999ad0445d1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512179"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87070537"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>使用 Azure 儲存體模擬器進行開發和測試
 
 Microsoft Azure 儲存體模擬器是模擬 Azure Blob、佇列和表格服務的工具，以供本機開發之用。 您可以在本機針對儲存體服務測試應用程式，而不需要建立 Azure 訂用帳戶或產生任何成本。 當您滿意應用程式在模擬器中的運作方式時，請切換至使用雲端中的 Azure 儲存體帳戶。
+
+> [!IMPORTANT]
+> Azure 儲存體模擬器已不再積極開發。 [**Azurite**](storage-use-azurite.md)是儲存體模擬器平臺的未來發展。 Azurite 會取代 Azure 儲存體模擬器。 Azurite 將繼續更新，以支援最新版本的 Azure 儲存體 Api。 如需詳細資訊，請參閱[**使用 Azurite 模擬器進行本機 Azure 儲存體開發**](storage-use-azurite.md)。
 
 ## <a name="get-the-storage-emulator"></a>取得儲存體模擬器
 
@@ -74,7 +78,7 @@ Microsoft Azure 儲存體模擬器是模擬 Azure Blob、佇列和表格服務�
 
    `AzureStorageEmulator.exe init /server .`
 
-   或者，您也可以使用下列命令，將資料庫重新初始化至預設 LocalDB 執行個體：
+   或者，您可以使用下列命令，將資料庫初始化為預設 LocalDB 實例：
 
    `AzureStorageEmulator.exe init /forceCreate`
 
@@ -178,13 +182,13 @@ http://127.0.0.1:10000/devstoreaccount1/sascontainer?sv=2012-02-12&se=2015-07-08
 
 若要檢視選項清單，請在命令提示字元輸入 `/help` 。
 
-| 選項 | 說明 | Command | 引數 |
+| 選項 | 描述 | 命令 | 引數 |
 | --- | --- | --- | --- |
 | **開始** |啟動儲存體模擬器。 |`AzureStorageEmulator.exe start [-inprocess]` |*-* 重新處理：在目前的進程中啟動模擬器，而不是建立新的進程。 |
 | **停止** |停止儲存體模擬器。 |`AzureStorageEmulator.exe stop` | |
 | **狀態** |列印儲存體模擬器的狀態。 |`AzureStorageEmulator.exe status` | |
 | **清除** |清除命令列上指定的所有服務中的資料。 |`AzureStorageEmulator.exe clear [blob] [table] [queue] [all]` |*blob*：清除 blob 資料。 <br/>*queue*：清除佇列資料。 <br/>*table*：清除資料表資料。 <br/>*all*：清除所有服務中的所有資料。 |
-| **Init** |執行一次性初始化來設定模擬器。 |<code>AzureStorageEmulator.exe init [-server serverName] [-sqlinstance instanceName] [-forcecreate&#124;-skipcreate] [-reserveports&#124;-unreserveports] [-inprocess]</code> |*-server serverName\instanceName*︰指定裝載 SQL 執行個體的伺服器。 <br/>*-sqlinstance instanceName*：指定在預設伺服器執行個體中使用之 SQL 執行個體的名稱。 <br/>*-forcecreate*：強制建立 SQL 資料庫，即使它已經存在。 <br/>*-skipcreate*︰略過建立 SQL 資料庫。 其優先順序高於 -forcecreate。<br/>*-reserveports*︰嘗試保留與服務相關聯的 HTTP 連接埠。<br/>*-unreserveports*︰嘗試移除服務相關聯 HTTP 連接埠的保留。 其優先順序高於 -reserveports。<br/>*-inprocess*：在目前的處理序中執行初始化，而不是繁衍新的處理序。 如果變更連接埠保留，必須以提高權限啟動目前的處理程序。 |
+| **初始** |執行一次性初始化來設定模擬器。 |<code>AzureStorageEmulator.exe init [-server serverName] [-sqlinstance instanceName] [-forcecreate&#124;-skipcreate] [-reserveports&#124;-unreserveports] [-inprocess]</code> |*-server serverName\instanceName*︰指定裝載 SQL 執行個體的伺服器。 <br/>*-sqlinstance instanceName*：指定在預設伺服器執行個體中使用之 SQL 執行個體的名稱。 <br/>*-forcecreate*：強制建立 SQL 資料庫，即使它已經存在。 <br/>*-skipcreate*︰略過建立 SQL 資料庫。 其優先順序高於 -forcecreate。<br/>*-reserveports*︰嘗試保留與服務相關聯的 HTTP 連接埠。<br/>*-unreserveports*︰嘗試移除服務相關聯 HTTP 連接埠的保留。 其優先順序高於 -reserveports。<br/>*-inprocess*：在目前的處理序中執行初始化，而不是繁衍新的處理序。 如果變更連接埠保留，必須以提高權限啟動目前的處理程序。 |
 
 ## <a name="differences-between-the-storage-emulator-and-azure-storage"></a>儲存體模擬器和 Azure 儲存體之間的差異
 
@@ -327,3 +331,7 @@ http://127.0.0.1:10000/devstoreaccount1/sascontainer?sv=2012-02-12&se=2015-07-08
 * 評估跨平臺、由社區維護的開放原始碼儲存體模擬器[Azurite](https://github.com/azure/azurite)。 
 * [使用 .NET 的 Azure 儲存體範例](../storage-samples-dotnet.md)包含開發應用程式時您可以使用的數個程式碼範例的連結。
 * 您可以使用 [Microsoft Azure 儲存體總管](https://storageexplorer.com)，來使用雲端儲存體帳戶和儲存體模擬器中的資源。
+
+## <a name="see-also"></a>另請參閱
+
+* [使用 Azurite、Azure Sdk 和 Azure 儲存體總管進行本機 Azure 儲存體開發](https://blog.jongallant.com/2020/04/local-azure-storage-development-with-azurite-azuresdks-storage-explorer/)

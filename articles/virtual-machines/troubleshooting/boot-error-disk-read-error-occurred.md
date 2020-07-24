@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 06/01/2020
 ms.author: v-miegge
-ms.openlocfilehash: dea09b1ac29db99e1c52a31a605007fa4129e8ea
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: f59903ed111be1fe414f4b3ded250d754c91d323
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84302600"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87069143"
 ---
 # <a name="troubleshoot-boot-error---disk-read-error-occurred"></a>針對開機錯誤進行疑難排解 - 發生磁碟讀取錯誤
 
@@ -26,7 +27,7 @@ ms.locfileid: "84302600"
 
 ## <a name="symptoms"></a>徵狀
 
-當您使用[開機診斷](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) \(部分機器翻譯\) 來檢視 VM 的螢幕擷取畫面時，您會看到螢幕擷取畫面顯示含有下列訊息的提示：「發生磁碟讀取錯誤。 按 Ctrl+Alt+Del 以重新啟動」。
+當您使用[開機診斷](./boot-diagnostics.md) \(部分機器翻譯\) 來檢視 VM 的螢幕擷取畫面時，您會看到螢幕擷取畫面顯示含有下列訊息的提示：「發生磁碟讀取錯誤。 按 Ctrl+Alt+Del 以重新啟動」。
 
    ![錯誤訊息：發生磁碟讀取錯誤。 按下 Ctrl+Alt+Del 重新啟動。](./media/disk-read-error-occurred/1.png)
 
@@ -50,7 +51,7 @@ ms.locfileid: "84302600"
 
 ### <a name="create-and-access-a-repair-vm"></a>建立及存取修復 VM
 
-1. 使用 [VM 修復命令](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) \(部分機器翻譯\) 的步驟 1-3 準備修復 VM。
+1. 使用 [VM 修復命令](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) \(部分機器翻譯\) 的步驟 1-3 準備修復 VM。
 1. 使用遠端桌面連線，連線至修復 VM。
 
 ### <a name="set-partition-status-to-active"></a>將磁碟分割狀態設定為使用中
@@ -142,4 +143,4 @@ ms.locfileid: "84302600"
    
 ### <a name="rebuild-the-vm"></a>重建 VM
 
-使用 [VM 修復命令的步驟 5](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example)\(部分機器翻譯\)重建 VM。
+使用 [VM 修復命令的步驟 5](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example)\(部分機器翻譯\)重建 VM。

@@ -1,5 +1,5 @@
 ---
-title: 從一般化映射建立擴展集
+title: 使用 Azure CLI 從一般化映射建立擴展集
 description: 使用共用映射資源庫中的一般化映射建立擴展集。
 author: cynthn
 ms.service: virtual-machine-scale-sets
@@ -9,13 +9,14 @@ ms.topic: how-to
 ms.date: 05/01/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 59e29be2aade993c8aeae64b4aa4918b36a26b26
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3cde06b652befa8fbb655273c19f65bd2f38e850
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82797132"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87069851"
 ---
-# <a name="create-a-scale-set-from-a-generalized-image"></a>從一般化映射建立擴展集
+# <a name="create-a-scale-set-from-a-generalized-image-with-azure-cli"></a>使用 Azure CLI 從一般化映射建立擴展集
 
 使用 Azure CLI，從儲存在[共用映射資源庫](shared-image-galleries.md)中的一般化映射版本建立擴展集。 如果想要使用特製化映射版本來建立擴展集，請參閱[從特製化映射建立擴展集實例](instance-specialized-image-version-cli.md)。
 

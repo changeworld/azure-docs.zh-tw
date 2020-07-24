@@ -6,11 +6,12 @@ ms.service: storsimple
 ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: alkohli
-ms.openlocfilehash: d9a75cde58062061149fa4304eace587b1480dd1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 55cc3049e437cc18eac6dc537de3ee1c0d894c23
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76277043"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87070346"
 ---
 # <a name="storsimple-solution-support"></a>StorSimple 解決方案支援
 
@@ -27,8 +28,8 @@ Microsoft 為 StorSimple 企業儲存區客戶提供具彈性之支援選項。 
 
 ## <a name="storsimple-support-plans"></a>StorSimple 支援方案
 
-|                                                                                                                                                     | **標準** <sup>sha-1                                                 |  **進階** <sup>1                                                                         |
-|---------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------|--------------------------------------------------------------------------------|
+| 支援功能 | 標準 <sup> 1 | PREMIUM <sup> 1 |
+| --------------- | --------------- | -------------- |
 | 帳單及訂用帳戶管理                                                                     | ✓                                                                               | ✓                                                                              |
 | Azure 入口網站票證提交                                                                          | ✓                                                                               | ✓                                                                              |
 | 線上支援入口網站存取                                                                            | ✓                                                                               | ✓                                                                              |

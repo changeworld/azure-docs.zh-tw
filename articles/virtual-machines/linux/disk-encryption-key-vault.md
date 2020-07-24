@@ -7,12 +7,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: c3212ed201b5106b9c84e4e1add92508d42e675f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ce52c73752691693ff42832d37c222f95edd0d51
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86494355"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87069727"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption"></a>建立及設定適用於 Azure 磁碟加密的金鑰保存庫
 
@@ -39,7 +39,7 @@ Azure 磁碟加密會使用 Azure Key Vault，來控制及管理磁碟加密金�
 
 ## <a name="install-tools-and-connect-to-azure"></a>安裝工具並連線至 Azure
 
-您可以使用 [Azure CLI](/cli/azure/)、[Azure PowerShell Az 模組](/powershell/azure/overview)或 [Azure 入口網站](https://portal.azure.com)來完成本文中的步驟。 
+您可以使用 [Azure CLI](/cli/azure/)、[Azure PowerShell Az 模組](/powershell/azure/)或 [Azure 入口網站](https://portal.azure.com)來完成本文中的步驟。 
 
 雖然可以透過瀏覽器存取入口網站，但 Azure CLI 和 Azure PowerShell 需要本機安裝；請參閱[適用於 Linux 的 Azure 磁碟加密：安裝工具](disk-encryption-linux.md#install-tools-and-connect-to-azure)，以取得詳細資料。
 

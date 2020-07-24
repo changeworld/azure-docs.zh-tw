@@ -16,11 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 07/24/2019
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2df092d49f2dfe9153b52be677e8ee6314dd9b60
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bf9e00e8acba241f1445977dcc53724b9981039f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82982967"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87068695"
 ---
 # <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-file-share-in-azure"></a>在 Azure 中使用檔案共用於 Windows 容錯移轉叢集上進行 SAP ASCS/SCS 執行個體叢集處理
 
@@ -113,7 +114,7 @@ _**圖 4：** 用來保護 SAP 全域主機檔案的向外延展檔案共用_
 選擇儲存空間直接存取時，請考慮下列使用案例：
 
 - 用來建立儲存空間直接存取叢集的虛擬機器必須部署在 Azure 可用性設定組中。
-- 針對儲存空間直接存取叢集的嚴重損壞修復，您可以使用[Azure Site Recovery 服務](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#replicated-machines---storage)。
+- 針對儲存空間直接存取叢集的嚴重損壞修復，您可以使用[Azure Site Recovery 服務](../../../site-recovery/azure-to-azure-support-matrix.md#replicated-machines---storage)。
 - 不支援跨不同 Azure 可用性區域延展儲存空間直接存取叢集。
 
 ### <a name="sap-prerequisites-for-scale-out-file-shares-in-azure"></a>Azure 中向外延展檔案共用的 SAP 必要條件

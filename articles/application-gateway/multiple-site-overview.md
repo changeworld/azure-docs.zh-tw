@@ -4,21 +4,23 @@ description: 本文提供「Azure 應用程式閘道」多站台支援的概觀�
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.date: 03/11/2020
+ms.date: 07/20/2020
 ms.author: amsriva
 ms.topic: conceptual
-ms.openlocfilehash: 4d945a255dacd35c61c3c80574b7d46b56de4aab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b3e6bc6d2dd5568dcc11a37c6ab44bd3b4089c66
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80257405"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067919"
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>應用程式閘道多站台裝載
 
-多網站裝載可讓您在應用程式閘道的相同埠上設定多個 web 應用程式。 此功能可讓您將最多 100 個網站新增到一個應用程式閘道，為您的部署設定更有效率的拓撲。 每個網站都可以導向到自己的後端集區。 在下列範例中，應用程式閘道會 `contoso.com` 提供 `fabrikam.com` 來自兩個後端伺服器集區（稱為 ContosoServerPool 和 FabrikamServerPool）的流量。
+多網站裝載可讓您在應用程式閘道的相同埠上設定多個 web 應用程式。 它可讓您為部署設定更有效率的拓撲，其方式是在一個應用程式閘道上新增多達100個以上的網站。 每個網站都可以導向到自己的後端集區。 例如，有三個網域、contoso.com、fabrikam.com 和 adatum.com，指向應用程式閘道的 IP 位址。 您會建立三個多網站接聽程式，並針對個別的埠和通訊協定設定，設定每個接聽程式。 
 
-![imageURLroute](./media/multiple-site-overview/multisite.png)
+您也可以在多網站接聽程式中定義萬用字元主機名稱，以及每個接聽程式最多5個主機名稱。 若要深入瞭解，請參閱接聽程式[中的萬用字元主機名稱](#wildcard-host-names-in-listener-preview)。
+
+:::image type="content" source="./media/multiple-site-overview/multisite.png" alt-text="多網站應用程式閘道":::
 
 > [!IMPORTANT]
 > 規則會依照其列于 v1 SKU 入口網站中的順序進行處理。 針對 v2 SKU，完全相符的優先順序較高。 強烈建議纖設定多站台接聽程式，再設定基本接聽程式。  這可確保流量路由傳送到右邊後端。 如果先列出了基本接聽程式，且該接聽程式符合傳入的要求，就會由該接聽程式處理。
@@ -26,6 +28,56 @@ ms.locfileid: "80257405"
 對 `http://contoso.com` 的要求會路由傳送至 ContosoServerPool，而對 `http://fabrikam.com` 的要求則會路由傳送至 FabrikamServerPool。
 
 同樣地，您可以在相同的應用程式閘道部署上裝載相同父系網域的多個子域。 例如，您可以 `http://blog.contoso.com` `http://app.contoso.com` 在單一應用程式閘道部署上裝載和。
+
+## <a name="wildcard-host-names-in-listener-preview"></a>接聽程式中的萬用字元主機名稱（預覽）
+
+應用程式閘道允許使用多網站 HTTP （S）接聽程式進行以主機為基礎的路由。 現在，您可以在主機名稱中使用萬用字元（例如星號（*）和問號（？）），以及每個多網站 HTTP （S）接聽程式最多5個主機名稱。 例如： `*.contoso.com` 。
+
+在主機名稱中使用萬用字元，您可以在單一接聽程式中比對多個主機名稱。 例如， `*.contoso.com` 可以比對 `ecom.contoso.com` ，以及 `b2b.contoso.com` `customer1.b2b.contoso.com` 和等。 使用主機名稱陣列，您可以為接聽程式設定一個以上的主機名稱，以將要求路由至後端集區。 例如， `contoso.com, fabrikam.com` 接聽程式可以包含接受這兩個主機名稱的要求。
+
+:::image type="content" source="./media/multiple-site-overview/wildcard-listener-diag.png" alt-text="萬用字元接聽程式":::
+
+>[!NOTE]
+> 這項功能目前為預覽狀態，僅適用于應用程式閘道的 Standard_v2 和 WAF_v2 SKU。 若要深入瞭解預覽，請參閱[這裡的使用](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)規定。
+
+在[Azure 入口網站](create-multiple-sites-portal.md)中，您可以在個別的文字方塊中定義它們，如下列螢幕擷取畫面所示。
+
+:::image type="content" source="./media/multiple-site-overview/wildcard-listener-example.png" alt-text="萬用字元接聽程式範例設定":::
+
+>[!NOTE]
+>如果您要建立新的多網站接聽程式，或將多個主機名稱新增至 Azure 入口網站的現有多網站接聽程式，則預設會將它新增至接聽程式設定的 `HostNames` 參數，這會在設定中新增更多功能至現有的 `HostName` 參數。
+
+在[Azure PowerShell](tutorial-multiple-sites-powershell.md)中，您必須使用， `-HostNames` 而不是 `-HostName` 。 使用主機名稱時，您最多可以提及5個主機名稱做為逗號分隔值，並使用萬用字元。 例如， `-HostNames "*.contoso.com,*.fabrikam.com"`
+
+在[Azure CLI](tutorial-multiple-sites-cli.md)中，您必須使用， `--host-names` 而不是 `--host-name` 。 使用主機名稱時，您最多可以提及5個主機名稱做為逗號分隔值，並使用萬用字元。 例如， `--host-names "*.contoso.com,*.fabrikam.com"`
+
+### <a name="allowed-characters-in-the-host-names-field"></a>[主機名稱] 欄位中允許的字元：
+
+* `(A-Z,a-z,0-9)`-英數位元
+* `-`-連字號或減號
+* `.`-period 作為分隔符號
+*   `*`-可以符合允許範圍中的多個字元
+*   `?`-可以與允許範圍中的單一字元相符
+
+### <a name="conditions-for-using-wildcard-characters-and-multiple-host-names-in-a-listener"></a>在接聽程式中使用萬用字元和多個主機名稱的條件：
+
+*   您最多隻能在單一接聽程式中提及5個主機名稱
+*   星號只能 `*` 在網域樣式名稱或主機名稱的元件中提及一次。 例如，component1 *. component2*. component3。 `(*.contoso-*.com)`有效。
+*   主機名稱中最多隻能有兩個星號 `*` 。 例如， `*.contoso.*` 是有效的，而且 `*.contoso.*.*.com` 無效。
+*   主機名稱中最多隻能有4個萬用字元。 例如， `????.contoso.com` `w??.contoso*.edu.*` 是有效的，但無效 `????.contoso.*` 。
+*   `*` `?` 在主機名稱（或或）的元件中一起使用星號和 `*?` 問號 `?*` `**` 是不正確。 例如， `*?.contoso.com` 和 `**.contoso.com` 無效。
+
+### <a name="considerations-and-limitations-of-using-wildcard-or-multiple-host-names-in-a-listener"></a>在接聽程式中使用萬用字元或多個主機名稱的考慮和限制：
+
+*   [Ssl 終止和端對端 ssl](ssl-overview.md)會要求您將通訊協定設定為 HTTPS，並上傳要在接聽程式設定中使用的憑證。 如果它是多網站接聽程式，您也可以輸入主機名稱，這通常是 SSL 憑證的 CN。 當您在接聽程式中指定多個主機名稱或使用萬用字元時，您必須考慮下列事項：
+    *   如果它是萬用字元主機名稱（例如 *. contoso.com），您必須上傳具有 CN 的萬用字元憑證，例如 *. contoso.com
+    *   如果相同接聽程式中提及多個主機名稱，您必須上傳 SAN 憑證（主體替代名稱）與與所述主機名稱相符的 Cn。
+*   您不能使用正則運算式來提及主機名稱。 您只能使用星號（*）和問號（？）之類的萬用字元來形成主機名稱模式。
+*   針對後端健康情況檢查，您無法為每個 HTTP 設定建立多個[自訂探查](application-gateway-probe-overview.md)的關聯。 相反地，您可以在後端探查其中一個網站，或使用 "127.0.0.1" 來探查後端伺服器的 localhost。 不過，當您在接聽程式中使用萬用字元或多個主機名稱時，將會根據規則類型（基本或路徑型），將所有指定網域模式的要求路由傳送至後端集區。
+*   屬性「主機名稱」接受一個字串做為輸入，您可以在其中只提及一個非萬用字元功能變數名稱，而「主機名稱」接受字串陣列做為輸入，您可以在其中提及最多5個萬用字元功能變數名稱。 但這兩個屬性一次不能使用。
+*   您無法使用使用萬用字元或多個主機名稱的目標接聽程式來建立重新[導向規則。](redirect-overview.md)
+
+如需如何在多網站接聽程式中設定萬用字元主機名稱的逐步指南，請參閱[使用 Azure 入口網站建立多網站](create-multiple-sites-portal.md)或[使用 Azure PowerShell](tutorial-multiple-sites-powershell.md)或[使用 Azure CLI](tutorial-multiple-sites-cli.md) 。
 
 ## <a name="host-headers-and-server-name-indication-sni"></a>主機標頭和伺服器名稱指示 (SNI)
 
@@ -41,92 +93,8 @@ ms.locfileid: "80257405"
 
 「應用程式閘道」需依賴 HTTP 1.1 主機標頭，才能在相同的公用 IP 位址和連接埠上裝載多個網站。 裝載在應用程式閘道上的網站也可以支援具有伺服器名稱指示（SNI） TLS 擴充功能的 TLS 卸載。 此案例表示用戶端瀏覽器和後端 Web 伺服陣列必須支援 RFC 6066 中所定義的 HTTP/1.1 和 TLS 擴充功能。
 
-## <a name="listener-configuration-element"></a>接聽程式組態元素
-
-已增強現有的 HTTPListener 設定元素，以支援主機名稱和伺服器名稱指示元素。 它會由應用程式閘道用來將流量路由傳送至適當的後端集區。 
-
-下列程式碼範例是範本檔案中 HttpListeners 元素的程式碼片段：
-
-```json
-"httpListeners": [
-    {
-        "name": "appGatewayHttpsListener1",
-        "properties": {
-            "FrontendIPConfiguration": {
-                "Id": "/subscriptions/<subid>/resourceGroups/<rgName>/providers/Microsoft.Network/applicationGateways/applicationGateway1/frontendIPConfigurations/DefaultFrontendPublicIP"
-            },
-            "FrontendPort": {
-                "Id": "/subscriptions/<subid>/resourceGroups/<rgName>/providers/Microsoft.Network/applicationGateways/applicationGateway1/frontendPorts/appGatewayFrontendPort443'"
-            },
-            "Protocol": "Https",
-            "SslCertificate": {
-                "Id": "/subscriptions/<subid>/resourceGroups/<rgName>/providers/Microsoft.Network/applicationGateways/applicationGateway1/sslCertificates/appGatewaySslCert1'"
-            },
-            "HostName": "contoso.com",
-            "RequireServerNameIndication": "true"
-        }
-    },
-    {
-        "name": "appGatewayHttpListener2",
-        "properties": {
-            "FrontendIPConfiguration": {
-                "Id": "/subscriptions/<subid>/resourceGroups/<rgName>/providers/Microsoft.Network/applicationGateways/applicationGateway1/frontendIPConfigurations/appGatewayFrontendIP'"
-            },
-            "FrontendPort": {
-                "Id": "/subscriptions/<subid>/resourceGroups/<rgName>/providers/Microsoft.Network/applicationGateways/applicationGateway1/frontendPorts/appGatewayFrontendPort80'"
-            },
-            "Protocol": "Http",
-            "HostName": "fabrikam.com",
-            "RequireServerNameIndication": "false"
-        }
-    }
-],
-```
-
-您可以瀏覽[使用多站台裝載的 Resource Manager 範本](https://github.com/Azure/azure-quickstart-templates/blob/master/201-application-gateway-multihosting)，以了解以範本為基礎的端對端部署。
-
-## <a name="routing-rule"></a>路由規則
-
-路由規則中不需要進行任何變更。 應該繼續選擇路由規則 'Basic'，以將適當的站台接聽程式繫結到對應的後端位址集區。
-
-```json
-"requestRoutingRules": [
-{
-    "name": "<ruleName1>",
-    "properties": {
-        "RuleType": "Basic",
-        "httpListener": {
-            "id": "/subscriptions/<subid>/resourceGroups/<rgName>/providers/Microsoft.Network/applicationGateways/applicationGateway1/httpListeners/appGatewayHttpsListener1')]"
-        },
-        "backendAddressPool": {
-            "id": "/subscriptions/<subid>/resourceGroups/<rgName>/providers/Microsoft.Network/applicationGateways/applicationGateway1/backendAddressPools/ContosoServerPool')]"
-        },
-        "backendHttpSettings": {
-            "id": "/subscriptions/<subid>/resourceGroups/<rgName>/providers/Microsoft.Network/applicationGateways/applicationGateway1/backendHttpSettingsCollection/appGatewayBackendHttpSettings')]"
-        }
-    }
-
-},
-{
-    "name": "<ruleName2>",
-    "properties": {
-        "RuleType": "Basic",
-        "httpListener": {
-            "id": "/subscriptions/<subid>/resourceGroups/<rgName>/providers/Microsoft.Network/applicationGateways/applicationGateway1/httpListeners/appGatewayHttpListener2')]"
-        },
-        "backendAddressPool": {
-            "id": "/subscriptions/<subid>/resourceGroups/<rgName>/providers/Microsoft.Network/applicationGateways/applicationGateway1/backendAddressPools/FabrikamServerPool')]"
-        },
-        "backendHttpSettings": {
-            "id": "/subscriptions/<subid>/resourceGroups/<rgName>/providers/Microsoft.Network/applicationGateways/applicationGateway1/backendHttpSettingsCollection/appGatewayBackendHttpSettings')]"
-        }
-    }
-
-}
-]
-```
-
 ## <a name="next-steps"></a>後續步驟
 
-了解多站台裝載之後，請移至 [使用多站台裝載建立應用程式閘道](tutorial-multiple-sites-powershell.md) ，以建立能夠支援多個 Web 應用程式的應用程式閘道。
+瞭解多個網站裝載之後，請移至[使用 Azure 入口網站建立多網站](create-multiple-sites-portal.md)或[使用 Azure PowerShell](tutorial-multiple-sites-powershell.md)或[使用 Azure CLI](tutorial-multiple-sites-cli.md) ，以取得建立應用程式閘道來裝載多個網站的逐步指南。
 
+您可以瀏覽[使用多站台裝載的 Resource Manager 範本](https://github.com/Azure/azure-quickstart-templates/blob/master/201-application-gateway-multihosting)，以了解以範本為基礎的端對端部署。

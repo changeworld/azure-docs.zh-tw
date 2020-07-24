@@ -8,18 +8,19 @@ ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7f2c7a6f9c1146627f81dc20386c59a91724b245
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c1a3d0b05f04ad8c182d428843479160666b96ee
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84698949"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87070313"
 ---
 # <a name="deploy-storsimple-virtual-array---prepare-the-azure-portal"></a>部署 StorSimple Virtual Array - 準備 Azure 入口網站
 
-![](./media/storsimple-virtual-array-deploy1-portal-prep/getstarted4.png)
+![此圖顯示部署虛擬陣列所需的步驟。 第一個步驟標示為 [開始使用]，並反白顯示。](./media/storsimple-virtual-array-deploy1-portal-prep/getstarted4.png)
 
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 [!INCLUDE [storsimple-virtual-array-eol-banner](../../includes/storsimple-virtual-array-eol-banner.md)]
 
@@ -51,7 +52,7 @@ ms.locfileid: "84698949"
 * 下載 [StorSimple Virtual Array 檔案伺服器的設定檢查清單](https://download.microsoft.com/download/E/E/6/EE690BB0-B442-4B84-8165-4731EE727ACF/MicrosoftAzureStorSimpleVirtualArrayFileServerConfigurationChecklist.pdf)。
 * 下載 [StorSimple Virtual Array iSCSI 伺服器的設定檢查清單](https://download.microsoft.com/download/E/E/6/EE690BB0-B442-4B84-8165-4731EE727ACF/MicrosoftAzureStorSimpleVirtualArrayiSCSIServerConfigurationChecklist.pdf)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 我們在此提供 StorSimple 裝置管理員服務、StorSimple Virtual Array 及資料中心網路的設定必要條件。
 
@@ -126,7 +127,7 @@ ms.locfileid: "84698949"
 
 #### <a name="to-get-the-virtual-array-image"></a>若要取得虛擬陣列映像
 
-1. 登入[Azure 入口網站](https://portal.azure.com/)。 
+1. 登入 [Azure 入口網站](https://portal.azure.com/)。 
 2. 在 Azure 入口網站中，按一下 [瀏覽] > [StorSimple 裝置管理員]****。
 3. 選取現有的 StorSimple 裝置管理員服務。 在 [StorSimple 裝置管理員]**** 刀鋒視窗中，按一下 [快速啟動]****。 
 4. 按一下與您想要從「Microsoft 下載中心」下載的映像對應的連結。 映像檔大約是 4.8 GB。
@@ -148,7 +149,7 @@ ms.locfileid: "84698949"
 
 1. 瀏覽至您的裝置管理員服務，選取它並按兩下。 這會開啟 [概觀]**** 刀鋒視窗。
 2. 在 [設定]**** 區段內選取 [儲存體帳戶認證]****。
-3. 按一下 **[新增]** 。
+3. 按一下 [新增] 。
 4. 在 [加入儲存體帳戶]**** 刀鋒視窗中，執行下列動作︰
    
    1. 在 [訂用帳戶]**** 中，選取 [目前]****。
@@ -157,11 +158,11 @@ ms.locfileid: "84698949"
    
    3. 選取 [啟用]****，為 StorSimple 裝置與雲端之間的網路通訊建立安全通道。 只有當您在私人雲端內操作時，才選取 [停用]****。
    
-   4. 按一下 **[新增]** 。 成功建立儲存體帳戶之後會通知您。<br></br>
+   4. 按一下 [新增] 。 成功建立儲存體帳戶之後會通知您。<br></br>
    
       ![新增現有儲存體帳戶認證](./media/storsimple-virtual-array-manage-storage-accounts/ova-add-storageacct.png)
 
-## <a name="next-step"></a>下一步
+## <a name="next-step"></a>後續步驟
 
 下一個步驟是為 StorSimple Virtual Array 佈建虛擬機器。 請根據您的主機作業系統，來參閱下列其中一個詳細指示：
 
