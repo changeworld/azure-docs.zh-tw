@@ -2,18 +2,19 @@
 title: 如何保護精靈應用程式
 titleSuffix: Azure Maps
 description: 使用 [Azure 入口網站來管理驗證，以設定受信任的 daemon 應用程式。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 06/12/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 4fa3492b0cd71e61900dc4be150cd0f0169379ac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 066118622f19d7efac71ddd66ac1abe058008b55
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84988347"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87126766"
 ---
 # <a name="secure-a-daemon-application"></a>保護 daemon 應用程式
 
@@ -113,7 +114,7 @@ Daemon 應用程式會負責從安全的儲存區中抓取共用金鑰。 具有
 > [!div class="mx-imgBorder"]
 > ![檢視可用的角色](./media/how-to-manage-authentication/how-to-view-avail-roles.png)
 
-1. 移至您的**Azure 地圖服務帳戶**。 選取 **[存取控制（IAM）**  >  **角色指派**]。
+1. 移至您的**Azure 地圖服務帳戶**。 選取 [存取控制 (IAM)] > [角色指派]。
 
     > [!div class="mx-imgBorder"]
     > ![授與 RBAC](./media/how-to-manage-authentication/how-to-grant-rbac.png)
@@ -123,7 +124,7 @@ Daemon 應用程式會負責從安全的儲存區中抓取共用金鑰。 具有
     > [!div class="mx-imgBorder"]
     > ![新增角色指派](./media/how-to-manage-authentication/add-role-assignment.png)
 
-3. 選取內建的 Azure 地圖服務角色定義，例如**Azure 地圖服務資料讀取器**或**Azure 地圖服務資料參與者**。 在 [**指派存取**權] 底下，選取 [使用者**指派的受控識別**系統指派的受控識別] **Azure AD 使用者、群組或服務主體**或受控識別  /  ** **。 選取 [主體]。 接著，選取 [儲存]。
+3. 選取內建的 Azure 地圖服務角色定義，例如**Azure 地圖服務資料讀取器**或**Azure 地圖服務資料參與者**。 在 [**指派存取**權] 底下，選取 [使用者**指派的受控識別**系統指派的受控識別] **Azure AD 使用者、群組或服務主體**或受控識別  /  ** **。 選取 [主體]。 然後選取 [儲存]。
 
     > [!div class="mx-imgBorder"]
     > ![新增角色指派](./media/how-to-manage-authentication/how-to-add-role-assignment.png)

@@ -2,19 +2,19 @@
 title: 為使用者授與以角色為基礎的存取權
 titleSuffix: Azure Maps
 description: 使用角色型存取控制將授權授與使用者 Azure 地圖服務
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 06/17/2020
 ms.topic: include
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 86f89397f3685443071788580253ee11ce4b70be
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2b138dab2a97537a93b8d873f79b6ee9c00b4af4
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84988335"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87126735"
 ---
 ## <a name="grant-role-based-access-for-users-to-azure-maps"></a>將角色型存取權授與使用者，以 Azure 地圖服務
 
@@ -29,7 +29,7 @@ ms.locfileid: "84988335"
 
     ![授與 RBAC](../media/how-to-manage-authentication/how-to-grant-rbac.png)
 
-2. 在 [**角色指派**] 索引標籤的 [**角色**] 底下，選取內建 Azure 地圖服務角色定義，例如**Azure 地圖服務資料讀取器**或**Azure 地圖服務資料參與者**。 在 [存取權指派對象為]**** 底下，選取 [Azure AD 使用者、群組或服務主體]****。 依名稱選取 [主體]。 接著，選取 [儲存]。
+2. 在 [**角色指派**] 索引標籤的 [**角色**] 底下，選取內建 Azure 地圖服務角色定義，例如**Azure 地圖服務資料讀取器**或**Azure 地圖服務資料參與者**。 在 [存取權指派對象為]**** 底下，選取 [Azure AD 使用者、群組或服務主體]****。 依名稱選取 [主體]。 然後選取 [儲存]。
 
    * 請參閱[新增或移除角色指派](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)的詳細資料。
 

@@ -1,20 +1,20 @@
 ---
 title: 要求傳輸資料 |Microsoft Azure 對應
 description: 在本文中，您將瞭解如何使用 Microsoft Azure Maps 行動服務來要求公開傳輸資料。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 09/06/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 135da2102b77f1d6a94b4458e10fba8c4f2b8534
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c50a3cee3cf4d0ac7aa55eb4e9d80e97e5248876
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517496"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87126545"
 ---
 # <a name="request-public-transit-data-using-the-azure-maps-mobility-service"></a>使用 Azure 地圖服務行動服務來要求公開傳輸資料 
 
@@ -28,7 +28,7 @@ ms.locfileid: "86517496"
 * 使用「[取得運輸路線 API](https://aka.ms/https://azure.microsoft.com/services/azure-maps/)」來要求運輸路線幾何和路線的詳細排程。
 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 您必須先擁有 Azure 地圖服務帳戶和訂用帳戶金鑰，才能對 Azure 地圖服務公用傳輸 Api 進行任何呼叫。 如需相關資訊，請遵循[建立帳戶](quick-demo-map-app.md#create-an-azure-maps-account)中的指示來建立 Azure 地圖服務帳戶。 請依照[取得主要金鑰](quick-demo-map-app.md#get-the-primary-key-for-your-account)中的步驟來取得您帳戶的主要金鑰。 如需 Azure 地圖服務中驗證的詳細資訊，請參閱[管理 Azure 地圖服務中的驗證](./how-to-manage-authentication.md)。
 
