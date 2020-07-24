@@ -15,11 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 4/26/2019
 ms.author: steveesp
 ms.reviewer: kumud, mareat
-ms.openlocfilehash: 47f58b25b082784177910d14ab95d8d242fda71a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1cbec961f6249ebd59324dca1745bfd9e77f5388
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84695995"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088167"
 ---
 # <a name="virtual-machine-network-bandwidth"></a>虛擬機器網路頻寬
 
@@ -55,8 +56,8 @@ Azure 虛擬機器必須連結一個 (但可以有數個) 網路介面。 配置
 
 目前，Azure 網路堆疊針對具有8個以上 CPU 核心和100k 流量總計的 Vm，支援250K 的總網路流量，並在 CPU 核心少於8個的 Vm 上提供良好的效能。 超過此限制時，網路效能會正常降低，而其他流量則會以固定限制500K 總流量，250K 輸入和250K 輸出，在這之後會捨棄額外的流程。
 
-||具有 <8 個 CPU 核心的 Vm|具有8個以上 CPU 核心的 Vm|
-|---|---|---|
+| 效能等級 | 具有 <8 個 CPU 核心的 Vm | 具有8個以上 CPU 核心的 Vm |
+| ----------------- | --------------------- | --------------------- |
 |<b>良好的效能</b>|100K 流量 |250K 流程|
 |<b>效能降低</b>|超過100k 流量|上述250K 流程|
 |<b>流程限制</b>|500K 流程|500K 流程|

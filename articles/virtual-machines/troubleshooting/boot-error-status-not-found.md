@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: v-miegge
-ms.openlocfilehash: 817f9e362e639cbb8f0cc79607c376c0e8216ec7
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 3677d67f55cfccdc80245b2ec870ffa76b0a1940
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83663726"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088660"
 ---
 # <a name="troubleshoot-windows-boot-manager-error----0xc0000225-status-not-found"></a>針對 Windows 開機管理程式錯誤進行疑難排解 - 0xC0000225「找不到狀態」
  
@@ -26,7 +27,7 @@ ms.locfileid: "83663726"
 
 ## <a name="symptoms"></a>徵狀
 
-當您使用[開機診斷](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics)來檢視 VM 的螢幕擷取畫面時，您會看到螢幕擷取畫面顯示 Windows 無法啟動錯誤，且具有狀態碼「0xc0000225」。
+當您使用[開機診斷](./boot-diagnostics.md)來檢視 VM 的螢幕擷取畫面時，您會看到螢幕擷取畫面顯示 Windows 無法啟動錯誤，且具有狀態碼「0xc0000225」。
 
 與這個錯誤碼相關聯的檔案會通知您要採取哪些步驟才能解決問題。 找出 [檔案：] 區段的文字，以判斷適當的動作。
 
@@ -89,7 +90,7 @@ ms.locfileid: "83663726"
 
 ### <a name="create-and-access-a-repair-vm"></a>建立和存取修復 VM
 
-1. 使用 [VM 修復命令](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands)的步驟 1-3 準備修復 VM。
+1. 使用 [VM 修復命令](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md)的步驟 1-3 準備修復 VM。
 1. 使用遠端桌面連線，連線至修復 VM。
 
 ### <a name="select-a-solution"></a>選取解決方案
@@ -177,7 +178,7 @@ ms.locfileid: "83663726"
          sel disk <DISK #>
          ```
 
-         下圖顯示列出和選取磁碟的結果。 列出磁碟 0 (127 GB | 線上)、磁碟 1 (32 GB | 線上)，以及磁碟 2 (127 GB | 線上)，使用 `sel disk 2` 命令選取「磁碟 2」。
+         下圖顯示列出和選取磁碟的結果。 磁片0（127 GB/線上）、磁片1（32 GB/線上）和磁片2（127 GB/線上）都會列出，並使用命令來選取磁片 2 `sel disk 2` 。
 
          ![列出然後選取磁碟的結果。 列出磁碟 0 (127 GB | 線上)、磁碟 1 (32 GB | 線上)，以及磁碟 2 (127 GB | 線上)，選取「磁碟 2」。](./media/troubleshoot-boot-error-status-not-found/9.png)
 
@@ -188,7 +189,7 @@ ms.locfileid: "83663726"
          sel partition <PARTITION #>
          ```
 
-         下圖顯示列出和選取磁碟分割的結果。 列出磁碟分割 1 (保留 | 16MB)、磁碟分割 2 (系統 | 100MB)，以及磁碟分割 3 (主要 | 126 GB)，使用 `sel part 2` 命令選取「磁碟分割 2」。
+         下圖顯示列出和選取磁碟分割的結果。 資料分割1（保留/16MB）、資料分割2（系統/100MB）和分割區3（主要/126 GB）都會列出，並使用命令選取分割區 2 `sel part 2` 。
 
          ![列出然後選取磁碟分割的結果。 列出磁碟分割 1 (保留 | 16MB)、磁碟分割 2 (系統 | 100MB)，以及磁碟分割 3 (主要 | 126 GB)，選取「磁碟分割 2」。](./media/troubleshoot-boot-error-status-not-found/10.png)
 
@@ -302,4 +303,4 @@ ms.locfileid: "83663726"
    
 ### <a name="rebuild-the-vm"></a>重建 VM
 
-使用 [VM 修復命令的步驟 5](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) 重建 VM。
+使用 [VM 修復命令的步驟 5](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) 重建 VM。

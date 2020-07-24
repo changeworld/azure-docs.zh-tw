@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: ''
 ms.date: 04/23/2020
-ms.openlocfilehash: 46b899b1891a6759ea2b9501f43c687990198f1f
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: ab1865608146880bbf612b7cb08c2a673c93b31f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86078012"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087954"
 ---
 # <a name="configure-always-encrypted-by-using-azure-key-vault"></a>使用 Azure Key Vault 設定 Always Encrypted 
 
@@ -45,7 +45,7 @@ Always Encrypted 是一種資料加密技術，可在用戶端與伺服器之間
 - [SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) 13.0.700.242 版或更新版本。
 - [.NET Framework 4.6](https://msdn.microsoft.com/library/w0x726c2.aspx) 或更新版本 (於用戶端電腦上)。
 - [Visual Studio](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx)。
-- [Azure PowerShell](/powershell/azure/overview)或[Azure CLI](/cli/azure/install-azure-cli)
+- [Azure PowerShell](/powershell/azure/)或[Azure CLI](/cli/azure/install-azure-cli)
 
 ## <a name="enable-client-application-access"></a>啟用用戶端應用程式存取
 
@@ -159,7 +159,7 @@ SSMS 提供一個精靈，可為您設定資料行主要金鑰、資料行加密
 
 請加密每個病患的 **SSN** 和 **BirthDate** 資訊。 SSN 資料行將使用決定性加密，這可支援等式查閱、聯結及群組依據。 BirthDate 資料行將使用不支援操作的隨機加密。
 
-將 SSN 資料行的 [加密類型]**** 設定為 [決定性]****，並將 BirthDate 資料行設定為 [隨機化]****。 按 [下一步] 。
+將 SSN 資料行的 [加密類型]**** 設定為 [決定性]****，並將 BirthDate 資料行設定為 [隨機化]****。 按 [下一步]  。
 
 ![加密資料行](./media/always-encrypted-azure-key-vault-configure/column-selection.png)
 
@@ -171,7 +171,7 @@ SSMS 提供一個精靈，可為您設定資料行主要金鑰、資料行加密
 
 1. 選取 [Azure 金鑰保存庫] ****。
 2. 從下拉式清單中選取想要的金鑰保存庫。
-3. 按 [下一步] 。
+3. 按 [下一步]  。
 
 ![主要金鑰組態](./media/always-encrypted-azure-key-vault-configure/master-key-configuration.png)
 
@@ -179,11 +179,11 @@ SSMS 提供一個精靈，可為您設定資料行主要金鑰、資料行加密
 
 您現在可以加密資料行，或儲存為 PowerShell 指令碼以供日後執行。 針對這個教學課程，請選取 [繼續以立即完成]****，然後按 [下一步]****。
 
-### <a name="summary"></a>摘要
+### <a name="summary"></a>總結
 
 確認設定全都正確，然後按一下 [完成] **** 以完成 [一律加密] 的設定。
 
-![摘要](./media/always-encrypted-azure-key-vault-configure/summary.png)
+![總結](./media/always-encrypted-azure-key-vault-configure/summary.png)
 
 ### <a name="verify-the-wizards-actions"></a>確認精靈的動作
 

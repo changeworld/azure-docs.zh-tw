@@ -1,6 +1,6 @@
 ---
 title: 在 Azure Data Lake Storage Gen2 中使用 & Acl 的 JavaScript
-description: 使用 Azure 儲存體 Data Lake 適用于 JavaScript 的用戶端程式庫，來管理已啟用階層命名空間 (HNS) 之儲存體帳戶中的目錄和檔案和目錄存取控制清單 (ACL) 。
+description: 使用 Azure 儲存體 Data Lake 適用于 JavaScript 的用戶端程式庫，來管理已啟用階層命名空間（HNS）之儲存體帳戶中的目錄和檔案和目錄存取控制清單（ACL）。
 author: normesta
 ms.service: storage
 ms.date: 03/20/2020
@@ -8,20 +8,20 @@ ms.author: normesta
 ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: c774d3f56eaf666a31ff73f433a3b4a5a363ce2f
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 506d9cd9581172d6eb1f36921ab96e8731ea3803
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86142499"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089425"
 ---
 # <a name="use-javascript-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>使用 JavaScript 管理 Azure Data Lake Storage Gen2 中的目錄、檔案和 Acl
 
-本文說明如何使用 JavaScript 來建立和管理已啟用階層命名空間 (HNS) 的儲存體帳戶中的目錄、檔案和許可權。 
+本文說明如何使用 JavaScript 來建立和管理已啟用階層命名空間（HNS）之儲存體帳戶中的目錄、檔案和許可權。 
 
-[封裝 (Node 封裝管理員) ](https://www.npmjs.com/package/@azure/storage-file-datalake)  | [範例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-datalake/samples)  | [提供意見](https://github.com/Azure/azure-sdk-for-java/issues)反應
+[封裝（Node Package Manager）](https://www.npmjs.com/package/@azure/storage-file-datalake)  | [範例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-datalake/samples)  | [提供意見](https://github.com/Azure/azure-sdk-for-java/issues)反應
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 > [!div class="checklist"]
 > * Azure 訂用帳戶。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
@@ -67,9 +67,9 @@ function GetDataLakeServiceClient(accountName, accountKey) {
 
 ```
 > [!NOTE]
-> 這種授權方法僅適用于 Node.js 應用程式。 如果您打算在瀏覽器中執行程式碼，您可以使用 Azure Active Directory (AD) 進行授權。 
+> 這種授權方法僅適用于 Node.js 應用程式。 如果您打算在瀏覽器中執行程式碼，您可以使用 Azure Active Directory （AD）來進行授權。 
 
-### <a name="connect-by-using-azure-active-directory-ad"></a>使用 Azure Active Directory (AD) 進行連接
+### <a name="connect-by-using-azure-active-directory-ad"></a>使用 Azure Active Directory （AD）進行連接
 
 您可以使用[適用于 JS 的 Azure 身分識別用戶端程式庫](https://www.npmjs.com/package/@azure/identity)，透過 Azure AD 來驗證您的應用程式。
 
@@ -170,7 +170,7 @@ async function DeleteDirectory(fileSystemClient) {
 這個範例會取得並設定名為之目錄的 ACL `my-directory` 。 這個範例提供擁有使用者的讀取、寫入和執行許可權，授與擁有群組 [讀取] 和 [執行] 許可權，並提供其他所有讀取權限。
 
 > [!NOTE]
-> 如果您的應用程式使用 Azure Active Directory (Azure AD) 來授權存取，請確定您的應用程式用來授權存取的安全性主體已獲指派[儲存體 Blob 資料擁有者角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)。 若要深入了解如何套用 ACL 權限以及變更權限的效果，請參閱 [Azure Data Lake Storage Gen2 中的存取控制](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)。
+> 如果您的應用程式使用 Azure Active Directory （Azure AD）來授權存取，請確定您的應用程式用來授權存取的安全性主體已獲指派[儲存體 Blob 資料擁有者角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)。 若要深入了解如何套用 ACL 權限以及變更權限的效果，請參閱 [Azure Data Lake Storage Gen2 中的存取控制](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)。
 
 ```javascript
 async function ManageDirectoryACLs(fileSystemClient) {
@@ -219,6 +219,8 @@ async function ManageDirectoryACLs(fileSystemClient) {
 }
 ```
 
+您也可以取得並設定容器根目錄的 ACL。 若要取得根目錄，請將空字串（ `/` ）傳遞至**DataLakeFileSystemClient. getDirectoryClient**方法。
+
 ## <a name="upload-a-file-to-a-directory"></a>將檔案上傳至目錄
 
 首先，讀取檔案。 這個範例會使用 Node.js `fs` 模組。 然後，藉由建立**FileClient**實例，然後呼叫**FileClient. create**方法，在目標目錄中建立檔案參考。 藉由呼叫**FileClient. append**方法來上傳檔案。 請務必呼叫**FileClient**方法來完成上傳。
@@ -252,7 +254,7 @@ async function UploadFile(fileSystemClient) {
 這個範例會取得並設定名為之檔案的 ACL `upload-file.txt` 。 這個範例提供擁有使用者的讀取、寫入和執行許可權，授與擁有群組 [讀取] 和 [執行] 許可權，並提供其他所有讀取權限。
 
 > [!NOTE]
-> 如果您的應用程式使用 Azure Active Directory (Azure AD) 來授權存取，請確定您的應用程式用來授權存取的安全性主體已獲指派[儲存體 Blob 資料擁有者角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)。 若要深入了解如何套用 ACL 權限以及變更權限的效果，請參閱 [Azure Data Lake Storage Gen2 中的存取控制](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)。
+> 如果您的應用程式使用 Azure Active Directory （Azure AD）來授權存取，請確定您的應用程式用來授權存取的安全性主體已獲指派[儲存體 Blob 資料擁有者角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)。 若要深入了解如何套用 ACL 權限以及變更權限的效果，請參閱 [Azure Data Lake Storage Gen2 中的存取控制](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)。
 
 ```javascript
 async function ManageFileACLs(fileSystemClient) {
@@ -360,6 +362,6 @@ async function ListFilesInDirectory(fileSystemClient) {
 
 ## <a name="see-also"></a>另請參閱
 
-* [封裝 (Node 封裝管理員) ](https://www.npmjs.com/package/@azure/storage-file-datalake)
+* [封裝（Node Package Manager）](https://www.npmjs.com/package/@azure/storage-file-datalake)
 * [範例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-datalake/samples)
 * [提供意見反應](https://github.com/Azure/azure-sdk-for-java/issues)

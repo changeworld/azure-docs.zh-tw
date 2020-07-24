@@ -6,14 +6,14 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
-ms.openlocfilehash: ca4dc888af414ede270118eff72652f098d3306c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8a459d1fba4353b4b3e092e83a759314cc455ead
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82779037"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087283"
 ---
-# <a name="localization"></a>當地語系化 #
+# <a name="azure-media-player-localization"></a>Azure 媒體播放機當地語系化 #
 
 多種語言支援可讓非英文地區設定的使用者以原生方式與播放程式互動。 Azure 媒體播放機會使用語言的全域字典來具現化，這會根據頁面語言將錯誤訊息當地語系化。 開發人員也可以建立具有強制 set 語言的 player 實例。 預設語言為英文（en）。
 

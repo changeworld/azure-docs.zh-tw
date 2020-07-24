@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2020
 ms.author: memildin
-ms.openlocfilehash: d394f0bb72f353e65c48a564fa7187364eae8121
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: f8ed7dc2caf3ad471ea7d4bb2fc8213114aad109
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970802"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089697"
 ---
 # <a name="microsoft-defender-advanced-threat-protection-with-azure-security-center"></a>使用 Azure 資訊安全中心的 Microsoft Defender Advanced 威脅防護
 
@@ -59,8 +59,9 @@ Microsoft Defender ATP 提供：
 
 若要將伺服器上架到資訊安全中心，請按一下 [**移至**]，Azure 資訊安全中心從 MICROSOFT Defender ATP 伺服器上線中將伺服器上架。
 
-1. **在 [上線**] 區域中，選取或建立用來儲存資料的工作區。 <br>
-2. 如果您看不到所有的工作區，可能是因為許可權不足，請確定您的工作區已設定為 Azure 安全性標準層。 如需詳細資訊，請參閱[升級為資訊安全中心的標準層以增強安全性](security-center-pricing.md)。
+1. **在 [上線**] 區域中，選取或建立用來儲存資料的工作區。
+
+2. 如果您看不到所有的工作區，可能是因為許可權不足，請確定您的工作區已設定為 Azure 安全性標準定價層。 如需詳細資訊，請參閱[升級為資訊安全中心的標準層以增強安全性](security-center-pricing.md)。
     
 3. 選取 [**新增伺服器**] 以查看如何安裝 Log Analytics 代理程式的指示。 
 

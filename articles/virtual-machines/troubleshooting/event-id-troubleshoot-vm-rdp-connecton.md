@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
-ms.openlocfilehash: d569bf454a62272a5c60cc92abc0f24715218894
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 507cd6cfe9f251dbc304b579d634ff986b001264
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85958390"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088592"
 ---
 # <a name="troubleshoot-azure-vm-rdp-connection-issues-by-event-id"></a>依事件識別碼對 Azure VM 的 RDP 連線問題進行疑難排解 
 
@@ -289,13 +290,12 @@ NULL <br />
 
 ## <a name="next-steps"></a>後續步驟
 
-[Schannel 事件](https://technet.microsoft.com/library/dn786445(v=ws.11).aspx)
+[Schannel 事件](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn786445(v=ws.11))
 
-[SChannel SSP 技術概觀](https://technet.microsoft.com/library/dn786429(v=ws.11).aspx)
+[SChannel SSP 技術概觀](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn786429(v=ws.11))
 
-[遠端桌面工作階段主機憑證與 SSL 通訊的 RDP 失敗，並出現事件識別碼 1058 和事件 36870](https://blogs.technet.microsoft.com/askperf/2014/10/22/rdp-fails-with-event-id-1058-event-36870-with-remote-desktop-session-host-certificate-ssl-communication/)
+[遠端桌面工作階段主機憑證與 SSL 通訊的 RDP 失敗，並出現事件識別碼 1058 和事件 36870](https://techcommunity.microsoft.com/t5/ask-the-performance-team/bg-p/AskPerf)
 
-[網域控制站上的 Schannel 36872 或 Schannel 36870](https://blogs.technet.microsoft.com/instan/2009/01/05/schannel-36872-or-schannel-36870-on-a-domain-controller/)
+[網域控制站上的 Schannel 36872 或 Schannel 36870](/archive/blogs/instan/schannel-36872-or-schannel-36870-on-a-domain-controller)
 
-[事件識別碼 1058 - 遠端桌面服務驗證和加密](https://technet.microsoft.com/library/ee890862(v=ws.10).aspx)
-
+[事件識別碼 1058 - 遠端桌面服務驗證和加密](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/ee890862(v=ws.10))

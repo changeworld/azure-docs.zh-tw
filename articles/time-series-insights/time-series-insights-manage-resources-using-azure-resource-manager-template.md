@@ -5,31 +5,31 @@ ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 04/16/2020
+ms.date: 06/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: a670e32058794daeaa233464ba7d054f45ef25e3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bb818627cb38c736804a0e88cd701fe08b23b678
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81536313"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089066"
 ---
-# <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>使用 Azure Resource Manager 範本建立時間序列深入解析資源
+# <a name="create-azure-time-series-insights-gen-1-resources-using-azure-resource-manager-templates"></a>使用 Azure Resource Manager 範本建立 Azure 時間序列深入解析 Gen 1 資源
 
-本文描述如何使用 [Azure Resource Manager 範本](https://docs.microsoft.com/azure/azure-resource-manager/)、PowerShell 和時間序列見解資源提供者來建立和部署時間序列見解資源。
+本文說明如何使用[Azure Resource Manager 範本](https://docs.microsoft.com/azure/azure-resource-manager/)、PowerShell 和 Azure 時間序列深入解析資源提供者來建立和部署 Azure 時間序列深入解析資源。
 
-「時間序列深入解析」支援下列資源：
+Azure 時間序列深入解析支援下列資源：
 
    | 資源 | 描述 |
    | --- | --- |
-   | 環境 | 時間序列見解環境是從事件訊息代理程式讀取、儲存並用於查詢的事件邏輯群組。 如需詳細資訊，請參閱[規劃 Azure 時間序列見解環境](time-series-insights-environment-planning.md) |
-   | 事件來源 | 事件來源是與事件訊息代理程式的連線，「時間序列深入解析」會從該訊息代理程式讀取事件，並將事件內嵌到環境中。 目前支援的事件來源為 IoT 中樞和事件中樞。 |
+   | 環境 | Azure 時間序列深入解析環境是事件的邏輯群組，會從事件代理程式讀取、儲存並供查詢之用。 如需詳細資訊，請參閱[規劃 Azure 時間序列見解環境](time-series-insights-environment-planning.md) |
+   | 事件來源 | 事件來源是事件代理程式的連接，Azure 時間序列深入解析將事件讀取及內嵌至環境。 目前支援的事件來源為 IoT 中樞和事件中樞。 |
    | 參考資料集 | 參考資料集可提供和環境中事件有關的中繼資料。 參考資料集中的中繼資料將會在輸入過程中與事件結合。 參考資料集會由它們的事件索引鍵屬性定義為資源。 構成參考資料集的實際中繼資料會透過資料層 API 上傳或修改。 |
-   | 存取原則 | 存取原則可授與下列權限：發出資料查詢、在環境中操作參考資料，以及共用與環境相關聯的已儲存查詢和檢視方塊。 如需詳細資訊，請參閱[使用 Azure 入口網站授與時間序列見解環境的資料存取權](time-series-insights-data-access.md) |
+   | 存取原則 | 存取原則可授與下列權限：發出資料查詢、在環境中操作參考資料，以及共用與環境相關聯的已儲存查詢和檢視方塊。 如需詳細資訊，請參閱[使用 Azure 入口網站授與 Azure 時間序列深入解析環境的資料存取權](time-series-insights-data-access.md) |
 
 Resource Manager 範本是一個 JSON 檔案，定義了資源群組中資源的基礎結構和設定。 下列文件會更詳細地描述範本檔案：
 
@@ -37,13 +37,13 @@ Resource Manager 範本是一個 JSON 檔案，定義了資源群組中資源的
 - [使用 Resource Manager 範本與 Azure PowerShell 來部署資源](../azure-resource-manager/templates/deploy-powershell.md)
 - [Microsoft.TimeSeriesInsights 資源類型](/azure/templates/microsoft.timeseriesinsights/allversions)
 
-[201-timeseriesinsights-environment-with-eventhub](https://github.com/Azure/azure-quickstart-templates/tree/master/201-timeseriesinsights-environment-with-eventhub) 快速入門範本已在 GitHub 上發行。 此範本會建立一個「時間序列深入解析」環境、一個設定為從事件中樞取用事件的子系事件來源，以及授與環境資料存取權的存取原則。 如果未指定現有事件中樞，就會隨著部署建立一個事件中樞。
+[201-timeseriesinsights-environment-with-eventhub](https://github.com/Azure/azure-quickstart-templates/tree/master/201-timeseriesinsights-environment-with-eventhub) 快速入門範本已在 GitHub 上發行。 此範本會建立一個 Azure 時間序列深入解析環境、一個設定為從事件中樞取用事件的子系事件來源，以及授與環境資料存取權的存取原則。 如果未指定現有事件中樞，就會隨著部署建立一個事件中樞。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="specify-deployment-template-and-parameters"></a>指定部署範本和參數
 
-以下程序說明如何使用 PowerShell 來部署 Azure Resource Manager 範本，此範本會建立一個「時間序列深入解析」環境、一個設定為從事件中樞取用事件的子系事件來源，以及授與環境資料存取權的存取原則。 如果未指定現有事件中樞，就會隨著部署建立一個事件中樞。
+下列程式說明如何使用 PowerShell 來部署 Azure Resource Manager 範本，以建立 Azure 時間序列深入解析環境、設定為從事件中樞取用事件的子事件來源，以及授與環境資料存取權的存取原則。 如果未指定現有事件中樞，就會隨著部署建立一個事件中樞。
 
 1. 依照下列指示安裝 Azure PowerShell：[開始使用 Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps)。
 
@@ -63,7 +63,7 @@ Resource Manager 範本是一個 JSON 檔案，定義了資源群組中資源的
      | --- | --- |
      | eventHubNamespaceName | 來源事件中樞的命名空間。 |
      | eventHubName | 來源事件中樞的名稱。 |
-     | consumerGroupName | 「時間序列深入解析」服務將用來從事件中樞讀取資料的取用者群組名稱。 **注意：** 為避免資源爭用，此取用者群組必須專用於「時間序列深入解析」服務，而不和其他讀取者共用。 |
+     | consumerGroupName | Azure 時間序列深入解析服務將用來從事件中樞讀取資料的取用者組名。 **注意：** 為避免資源爭用，此取用者群組必須專門用於 Azure 時間序列深入解析服務，而不會與其他讀取器共用。 |
      | environmentName | 環境的名稱。 名稱不能包含：`<`、`>`、`%`、`&`、`:`、`\\`、`?`、`/` 和任何控制字元。 允許所有其他字元。|
      | eventSourceName | 事件來源子系資源的名稱。 名稱不能包含：`<`、`>`、`%`、`&`、`:`、`\\`、`?`、`/` 和任何控制字元。 允許所有其他字元。 |
 
@@ -73,14 +73,14 @@ Resource Manager 範本是一個 JSON 檔案，定義了資源群組中資源的
 
      | 參數 | 描述 |
      | --- | --- |
-     | existingEventHubResourceId | 現有事件中樞的選擇性資源識別碼，將透過事件來源連線至「時間序列深入解析」環境。 **注意：** 部署範本的使用者必須擁有在事件中樞中執行 listkey 作業的權限。 如果沒有傳遞任何值，將會由範本建立新的事件中樞。 |
+     | existingEventHubResourceId | 現有事件中樞的選擇性資源識別碼，將透過事件來源連接到 Azure 時間序列深入解析環境。 **注意：** 部署範本的使用者必須擁有在事件中樞中執行 listkey 作業的權限。 如果沒有傳遞任何值，將會由範本建立新的事件中樞。 |
      | environmentDisplayName | 要在工具或使用者介面中顯示的選擇性易記名稱，而不是環境名稱。 |
-     | environmentSkuName | SKU 的名稱。 如需詳細資訊，請參閱[時間序列見解定價頁面](https://azure.microsoft.com/pricing/details/time-series-insights/)。  |
-     | environmentSkuCapacity | SKU 的單位容量。 如需詳細資訊，請參閱[時間序列見解定價頁面](https://azure.microsoft.com/pricing/details/time-series-insights/)。|
+     | environmentSkuName | SKU 的名稱。 如需詳細資訊，請參閱[Azure 時間序列深入解析定價頁面](https://azure.microsoft.com/pricing/details/time-series-insights/)。  |
+     | environmentSkuCapacity | SKU 的單位容量。 如需詳細資訊，請參閱[Azure 時間序列深入解析定價頁面](https://azure.microsoft.com/pricing/details/time-series-insights/)。|
      | environmentDataRetentionTime | 查詢時將能使用環境事件的最小時間範圍。 必須以 ISO 8601 格式指定值，例如 `P30D` 代表 30 天保留原則。 |
      | eventSourceDisplayName | 要在工具或使用者介面中顯示的選擇性易記名稱，而不是事件來源名稱。 |
      | eventSourceTimestampPropertyName | 將用來作為事件來源時間戳記的事件屬性。 如果沒有為 timestampPropertyName 指定值，或如果指定的是空值或空字串，將會使用事件建立時間。 |
-     | eventSourceKeyName | 「時間序列深入解析」服務將用來連線至事件中樞的共用存取金鑰名稱。 |
+     | eventSourceKeyName | Azure 時間序列深入解析服務將用來連線到事件中樞的共用存取金鑰名稱。 |
      | accessPolicyReaderObjectIds | Azure AD 中使用者或應用程式的物件識別碼清單，這些使用者和應用程式應擁有環境讀取者存取權。 服務主體 objectId 可透過呼叫 **Get-AzADUser** 或 **Get-AzADServicePrincipal** Cmdlet 來取得。 尚未支援為 Azure AD 群組建立存取原則。 |
      | accessPolicyContributorObjectIds | Azure AD 中使用者或應用程式的物件識別碼清單，這些使用者和應用程式應擁有環境參與者存取權。 服務主體 objectId 可透過呼叫 **Get-AzADUser** 或 **Get-AzADServicePrincipal** Cmdlet 來取得。 尚未支援為 Azure AD 群組建立存取原則。 |
 
@@ -124,7 +124,7 @@ Resource Manager 範本是一個 JSON 檔案，定義了資源群組中資源的
 ## <a name="deploy-the-quickstart-template-locally-using-powershell"></a>使用 PowerShell 在本機部署快速入門範本
 
 > [!IMPORTANT]
-> 以下顯示的命令列作業描述 [Az PowerShell 模組](https://docs.microsoft.com/powershell/azure/overview)。
+> 以下顯示的命令列作業描述 [Az PowerShell 模組](https://docs.microsoft.com/powershell/azure/)。
 
 1. 在 PowerShell 中登入您的 Azure 帳戶。
 
@@ -252,4 +252,4 @@ Resource Manager 範本是一個 JSON 檔案，定義了資源群組中資源的
 
 ## <a name="next-steps"></a>後續步驟
 
-- 如需使用 REST API 以程式設計方式管理時間序列見解資源的資訊，請參閱[時間序列見解管理](https://docs.microsoft.com/rest/api/time-series-insights-management/) (機器翻譯)。
+- 如需使用 REST Api 以程式設計方式管理 Azure 時間序列深入解析資源的相關資訊，請參閱[Azure 時間序列深入解析管理](https://docs.microsoft.com/rest/api/time-series-insights-management/)。

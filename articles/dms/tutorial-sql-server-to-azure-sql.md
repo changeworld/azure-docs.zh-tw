@@ -3,8 +3,8 @@ title: 教學課程：將 SQL Server 離線遷移到 SQL 單一資料庫
 titleSuffix: Azure Database Migration Service
 description: 瞭解如何使用 Azure 資料庫移轉服務，從 SQL Server 遷移至 Azure SQL Database 離線。
 services: dms
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/08/2020
-ms.openlocfilehash: 45a343fdbd41abf1388556131f1f53a675d8ab49
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a0d2353364767dfb1fd73d517926d0fa63c11a1d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85316233"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087708"
 ---
 # <a name="tutorial-migrate-sql-server-to-azure-sql-database-offline-using-dms"></a>教學課程：使用 DMS 在離線狀態下將 SQL Server 移轉至 Azure SQL Database
 
@@ -193,7 +193,7 @@ ms.locfileid: "85316233"
 
 建立服務之後，請在 Azure 入口網站中找出該服務，然後建立新的移轉專案。
 
-1. 在 [Azure 入口網站] 功能表中，選取 [**所有服務**]。 搜尋並選取 [ **Azure 資料庫移轉服務**]。
+1. 在 Azure 入口網站功能表中，選取 [所有服務]。 搜尋並選取 [ **Azure 資料庫移轉服務**]。
 
      ![找出 Azure 資料庫移轉服務的所有執行個體](media/tutorial-sql-server-to-azure-sql/dms-search.png)
 

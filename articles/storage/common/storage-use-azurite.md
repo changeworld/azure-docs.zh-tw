@@ -1,22 +1,22 @@
 ---
 title: 使用 Azurite 模擬器進行本機 Azure 儲存體開發
-description: Azurite 開放原始碼模擬器（預覽）提供免費的本機環境來測試您的 Azure 儲存體應用程式。
+description: Azurite 開放原始碼模擬器提供免費的本機環境來測試您的 Azure 儲存體應用程式。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 05/01/2020
+ms.date: 07/15/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: how-to
-ms.openlocfilehash: af846b0c203934468b7f6282234819142093286f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c850fccf5a86df4c35ce4db53b5b40d5e8588210
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512149"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089408"
 ---
-# <a name="use-the-azurite-emulator-for-local-azure-storage-development-and-testing-preview"></a>使用 Azurite 模擬器進行本機 Azure 儲存體開發和測試（預覽）
+# <a name="use-the-azurite-emulator-for-local-azure-storage-development"></a>使用 Azurite 模擬器進行本機 Azure 儲存體開發
 
-Azurite 版本3.2 開放原始碼模擬器（預覽）提供免費的本機環境來測試您的 Azure blob 和佇列儲存體應用程式。 當您對應用程式在本機運作的方式感到滿意時，請切換至使用雲端中的 Azure 儲存體帳戶。 模擬器提供 Windows、Linux 和 macOS 的跨平臺支援。 Azurite v3 支援 Azure Blob 服務所執行的 Api。
+Azurite 開放原始碼模擬器提供免費的本機環境來測試您的 Azure blob 和佇列儲存體應用程式。 當您對應用程式在本機運作的方式感到滿意時，請切換至使用雲端中的 Azure 儲存體帳戶。 模擬器提供 Windows、Linux 和 macOS 的跨平臺支援。
 
 Azurite 是未來的儲存體模擬器平臺。 Azurite 會取代[Azure 儲存體模擬器](storage-use-emulator.md)。 Azurite 將繼續更新，以支援最新版本的 Azure 儲存體 Api。
 
@@ -34,8 +34,6 @@ Azurite 是未來的儲存體模擬器平臺。 Azurite 會取代[Azure 儲存�
 ![Visual Studio Code 延伸模組 marketplace](media/storage-use-azurite/azurite-vs-code-extension.png)
 
 您也可以在瀏覽器中流覽至[Visual Studio Code 延伸模組市場](https://marketplace.visualstudio.com/items?itemName=Azurite.azurite)。 選取 [**安裝**] 按鈕以開啟 Visual Studio Code，並直接移至 [Azurite 延伸模組] 頁面。
-
-您可以在 [Visual Studio Code] 狀態列中快速啟動或關閉 Azurite。 按一下 **[Azurite Blob 服務]** 或 **[Azurite 佇列服務]**。
 
 延伸模組支援下列 Visual Studio Code 命令。 若要開啟命令選擇區，請在 Visual Studio Code 中按 F1 鍵。 
 
@@ -67,6 +65,7 @@ Azurite 是未來的儲存體模擬器平臺。 Azurite 會取代[Azure 儲存�
    - **Azurite： Queue Host** -佇列服務接聽端點。 預設設定為127.0.0.1。
    - **Azurite：佇列埠**-佇列服務接聽埠。 預設通訊埠為10001。
    - **Azurite：無**訊息-無訊息模式會停用存取記錄。 預設值為 **false**。
+   - **Azurite：略過 Api 版本檢查**-略過要求 api 版本檢查。 預設值為 **false**。
 
 ## <a name="install-and-run-azurite-by-using-npm"></a>使用 NPM 安裝及執行 Azurite
 
@@ -148,7 +147,7 @@ azurite --silent --location c:\azurite --debug c:\azurite\debug.log
 
 本節詳細說明啟動 Azurite 時可用的命令列參數。
 
-### <a name="help"></a>[說明]
+### <a name="help"></a>説明
 
 **選擇性**-使用或參數取得命令列說明 `-h` `--help` 。
 
@@ -310,6 +309,15 @@ azurite --oauth basic --cert path/server.pem --key path/key.pem
 > OAuth 需要 HTTPS 端點。 請確定已透過提供 `--cert` 交換器和交換器來啟用 HTTPS `--oauth` 。
 
 Azurite 會藉由指定參數來支援基本驗證 `basic` `--oauth` 。 Azurite 會執行基本驗證，例如驗證傳入的持有人權杖、檢查簽發者、物件和到期日。 Azurite 不會檢查權杖簽章或許可權。
+
+### <a name="skip-api-version-check"></a>略過 API 版本檢查
+
+**選擇性**-啟動時，Azurite 會檢查要求的 API 版本是否有效。 下列命令會略過 API 版本檢查：
+
+```console
+azurite --skipApiVersionCheck
+```
+
 
 ## <a name="authorization-for-tools-and-sdks"></a>工具和 Sdk 的授權
 

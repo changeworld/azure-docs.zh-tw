@@ -3,16 +3,16 @@ title: 建立已啟用擷取的事件中樞 - Azure 事件中樞 | Microsoft Doc
 description: 使用 Azure Resource Manager 範本建立含有一個事件中樞的 Azure 事件中樞命名空間並啟用擷取
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 51b654635fa7e06901a257c930e04bff3ea86cf8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7308d951cf48d8123df050bdf58772ec914aac3e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85315702"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087589"
 ---
 # <a name="create-a-namespace-with-event-hub-and-enable-capture-using-a-template"></a>使用範本來建立含有事件中樞的命名空間並啟用擷取
 
-本文說明如何使用 Azure Resource Manager 範本來建立含有一個事件中樞實例的[事件中樞](event-hubs-what-is-event-hubs.md)命名空間，並在事件中樞上啟用「[捕捉」功能](event-hubs-capture-overview.md)。 此文章說明如何定義要部署哪些資源，以及如何定義執行部署時所指定的參數。 您可以直接在自己的部署中使用此範本，或自訂此範本以符合您的需求。
+本文說明如何使用 Azure Resource Manager 範本來建立含有一個事件中樞實例的[事件中樞](./event-hubs-about.md)命名空間，並在事件中樞上啟用「[捕捉」功能](event-hubs-capture-overview.md)。 此文章說明如何定義要部署哪些資源，以及如何定義執行部署時所指定的參數。 您可以直接在自己的部署中使用此範本，或自訂此範本以符合您的需求。
 
 本文也會示範如何根據您選擇的目的地，指定將事件擷取到 Azure 儲存體 Blob 或 Azure Data Lake Store 中。
 
@@ -418,7 +418,7 @@ az group deployment create \<my-resource-group\> \<my-deployment-name\> --templa
 
 您可以造訪下列連結以深入了解事件中樞︰
 
-* [事件中心概觀](event-hubs-what-is-event-hubs.md)
+* [事件中心概觀](./event-hubs-about.md)
 * [建立事件中樞](event-hubs-create.md)
 * [事件中樞常見問題集](event-hubs-faq.md)
 

@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: how-to
-ms.date: 06/19/2020
+ms.date: 07/20/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c666a11f8d5e13d022309eddab16edb6aab76381
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5fb992edea38c3dff9beffab1f131d3e7a6fdbf6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86527756"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087215"
 ---
 # <a name="customize-remote-desktop-protocol-rdp-properties-for-a-host-pool"></a>自訂主機集區的遠端桌面通訊協定（RDP）內容
 
@@ -30,18 +30,6 @@ ms.locfileid: "86527756"
 ## <a name="prerequisites"></a>Prerequisites
 
 開始之前，請依照[設定 Windows 虛擬桌面 PowerShell 模組](powershell-module.md)中的指示來設定您的 PowerShell 模組，並登入 Azure。
-
-## <a name="default-rdp-properties"></a>預設 RDP 屬性
-
-根據預設，已發佈的 RDP 檔案包含下列屬性：
-
-|RDP 屬性 | 桌上型電腦 | RemoteApps |
-|---|---| --- |
-| 多監視器模式 | 啟用 | N/A |
-| 磁片磁碟機重新導向已啟用 | 磁片磁碟機、剪貼簿、印表機、COM 埠、USB 裝置和智慧卡| 磁片磁碟機、剪貼簿和印表機 |
-| 遠端音訊模式 | 在本機播放 | 在本機播放 |
-
-您為主機集區定義的任何自訂屬性都會覆寫這些預設值。
 
 ## <a name="configure-rdp-properties-in-the-azure-portal"></a>在 Azure 入口網站中設定 RDP 屬性
 

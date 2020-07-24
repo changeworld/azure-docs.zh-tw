@@ -3,12 +3,12 @@ title: Azure Event Grid 傳遞與重試
 description: 說明 Azure Event Grid 如何傳遞事件，以及如何處理未傳遞的訊息。
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: e565bbc8592dc2818e3573672e6e3035c3c8983a
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: fe7574d7e17b1763afb2292c15007dd87b056ef1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86113831"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087606"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Event Grid 訊息傳遞與重試
 
@@ -78,8 +78,12 @@ az eventgrid event-subscription create \
 延遲傳遞的功能目的是要保護狀況不良的端點，以及事件方格系統。 如果沒有輪詢和延遲傳遞至狀況不良的端點，事件方格的重試原則和磁片區功能就很容易就會造成系統的負荷。
 
 ## <a name="dead-letter-events"></a>無效信件事件
+當事件方格無法在特定期間內或在嘗試傳遞事件一段特定的時間之後傳遞事件時，它可以將無法傳遞的事件傳送至儲存體帳戶。 此**程式**稱為無效信件處理。 當符合**下列其中一**項條件時，事件方格會將事件失效。 
 
-當事件方格無法傳遞事件時，它可以將未傳遞事件傳送到儲存體帳戶。 這個程序稱為無效信件處理。 根據預設，事件方格不會開啟無效信件處理。 若要啟用它，您必須指定儲存體帳戶在建立事件訂用帳戶時保留未傳遞事件。 您可從這個儲存體帳戶提取事件，以解析傳遞項目。
+- 事件不會在存留時間期間內傳遞
+- 嘗試傳遞事件的次數已超過限制
+
+如果符合其中一個條件，就會捨棄或不正確事件。  根據預設，事件方格不會開啟無效信件處理。 若要啟用它，您必須指定儲存體帳戶在建立事件訂用帳戶時保留未傳遞事件。 您可從這個儲存體帳戶提取事件，以解析傳遞項目。
 
 事件方格在試過所有重試嘗試後，會將事件傳送至無效信件位置。 如果事件方格收到 400 (錯誤的要求) 或 413 (要求實體太大) 回應碼，則會立即將事件傳送至無效信件端點。 這些回應碼表示事件傳遞會永遠不會成功。
 

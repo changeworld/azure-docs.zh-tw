@@ -3,8 +3,8 @@ title: 教學課程：將 RDS MySQL online 遷移至適用於 MySQL 的 Azure �
 titleSuffix: Azure Database Migration Service
 description: 了解如何使用 Azure 資料庫移轉服務，在線上從 RDS MySQL 遷移至適用於 MySQL 的 Azure 資料庫。
 services: dms
-author: HJToland3
-ms.author: jtoland
+author: arunkumarthiags
+ms.author: arthiaga
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -12,13 +12,14 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 06/09/2020
-ms.openlocfilehash: 8cfe8d1a87b8b52c21927696101704bd01b7641a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c0c62cf28c9e9368e80982fa7c5badeb79d40ae4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84609245"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087725"
 ---
-# <a name="tutorial-migrate-rds-mysql-to-azure-database-for-mysql-online-using-dms"></a>教學課程：使用 DMS 將 RDS MySQL 遷移至適用於 MySQL 的 Azure 資料庫 online
+# <a name="tutorial-migrate-rds-mysql-to-azure-database-for-mysql-online-using-dms"></a>教學課程：使用 DMS 在線上從 RDS MySQL 遷移至適用於 MySQL 的 Azure 資料庫
 
 您可以使用 Azure 資料庫移轉服務，將資料庫從 RDS MySQL 執行個體遷移至[適用於 MySQL 的 Azure 資料庫](https://docs.microsoft.com/azure/mysql/)，同時讓來源資料庫在移轉期間保持連線。 換句話說，可在最短的應用程式停機時間內完成移轉。 在本教學課程中，您會在 Azure 資料庫移轉服務中使用線上移轉活動，將 **Employees** 範例資料庫從 RDS MySQL 執行個體遷移至適用於 MySQL 的 Azure 資料庫。
 
@@ -121,6 +122,10 @@ ms.locfileid: "84609245"
     ```
 
 4. 執行查詢結果中的 drop 外部索引鍵 (這是第二個資料行)，以卸除外部索引鍵。
+
+> [!NOTE]
+> Azure DMS 不支援 CASCADE 引用動作，這有助於在父資料表中刪除或更新資料列時，自動刪除或更新子資料工作表中相符的資料列。 如需詳細資訊，請參閱 MySQL 檔中的「[外鍵條件約束](https://dev.mysql.com/doc/refman/8.0/en/create-table-foreign-keys.html)」一文中所述的「參考動作」一節。
+> Azure DMS 會要求您在初始資料載入期間，將 foreign key 條件約束放在目標資料庫伺服器中，而且您不能使用參考動作。 如果您的工作負載相依于透過此參照動作來更新相關的子資料工作表，建議您改為執行傾印[和還原](https://docs.microsoft.com/azure/mysql/concepts-migrate-dump-restore)。 
 
 5. 如果資料中有觸發程序 (insert 或 update 觸發程序)，該觸發程序將會在目標中強制執行資料完整性，再複製來源中的資料。 建議您在移轉期間停用「目標上」** 所有資料表中的觸發程序，然後在移轉完成後啟用觸發程序。
 

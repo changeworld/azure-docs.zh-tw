@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 10/25/2019
-ms.openlocfilehash: 479c5165c206ced9f387d7b4a475945173da8a16
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 6d720eee668edf2de968f0ce6955a5a586a92419
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086223"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087674"
 ---
 # <a name="custom-roles-for-sql-server-to-azure-sql-managed-instance-online-migrations"></a>SQL Server 到 Azure SQL 受控執行個體線上遷移的自訂角色
 
@@ -83,7 +83,7 @@ Azure 資料庫移轉服務會使用應用程式識別碼來與 Azure 服務互�
 
 上述 json 必須儲存在三個文字檔中，而且您可以使用 AzureRM、AZ PowerShell Cmdlet 或 Azure CLI，使用**get-azurermroledefinition （AzureRM）** 或**get-azroledefinition （AZ）** 來建立角色。
 
-如需詳細資訊，請參閱[適用于 Azure 資源的自訂角色](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)一文。
+如需詳細資訊，請參閱[Azure 自訂角色](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)一文。
 
 建立這些自訂角色之後，您必須將角色指派新增至適當資源或資源群組的使用者和應用程式識別碼：
 

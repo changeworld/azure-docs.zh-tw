@@ -14,14 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: ed4f2d769dbda3dec7b353fddfd1e5e0f3d00f9b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c8af1c32607e5fc7bf548b40069e18923c666303
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531264"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089646"
 ---
 # <a name="connect-your-infoblox-nios-to-azure-sentinel"></a>將您的 Infoblox NIOS 連線至 Azure Sentinel
+
+> [!IMPORTANT]
+> Azure Sentinel 中的 Infoblox NIOS 資料連線器目前為公開預覽狀態。
+> 這項功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 本文說明如何將您的[Infoblox 網路身分識別作業系統（NIOS）應用裝置](https://www.infoblox.com/glossary/network-identity-operating-system-nios/)連線到 Azure Sentinel。 Infoblox NIOS 資料連線器可讓您輕鬆地將 Infoblox 記錄與 Azure Sentinel 連線、查看儀表板、建立自訂警示，以及改善調查。 Infoblox NIOS 與 Azure Sentinel 之間的整合會使用 Syslog。
 

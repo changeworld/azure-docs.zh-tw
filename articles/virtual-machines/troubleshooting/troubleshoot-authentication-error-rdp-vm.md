@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
-ms.openlocfilehash: 03356c0b4a93f4befdbc529523e58642137a8887
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc1ad3104596cc7ad4bb48f88e4c8312bc833371
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80420823"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088558"
 ---
 # <a name="troubleshoot-authentication-errors-when-you-use-rdp-to-connect-to-azure-vm"></a>針對使用 RDP 來連線至 Azure VM 時的驗證錯誤進行疑難排解
 
@@ -161,7 +161,7 @@ Reset-ComputerMachinePassword -Server "<COMPUTERNAME>" -Credential <DOMAIN CREDE
 
 如果 DC 與 VM 之間的通訊良好，但 DC 狀況未良好到足以開啟 RDP 工作階段，則您可以嘗試重新啟動 DC。
 
-如果上述命令無法修正與網域的通訊問題，您可以將 VM 重新加入網域。 若要這樣做，請執行下列步驟：
+如果上述命令無法修正與網域的通訊問題，您可以將 VM 重新加入網域。 若要這樣做，請遵循下列步驟：
 
 1. 使用下列內容來建立名為 Unjoin.ps1 的指令碼，然後在 Azure 入口網站上將該指令碼部署為「自訂指令碼延伸模組」：
 
@@ -276,8 +276,8 @@ reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP
 
 ## <a name="next-steps"></a>後續步驟
 
-[Win32_TSGeneralSetting 類別的 SetEncryptionLevel 方法](https://docs.microsoft.com/windows/desktop/TermServ/win32-tsgeneralsetting-setencryptionlevel) \(英文\)
+[Win32_TSGeneralSetting 類別的 SetEncryptionLevel 方法](/windows/desktop/termserv/win32-tsgeneralsetting-setencryptionlevel) \(英文\)
 
-[設定伺服器驗證和加密層級](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc770833(v=ws.11)) \(英文\)
+[設定伺服器驗證和加密層級](/previous-versions/windows/it-pro/windows-server-2008-r2-and-2008/cc770833(v=ws.11)) \(英文\)
 
-[Win32_TSGeneralSetting 類別](https://docs.microsoft.com/windows/desktop/TermServ/win32-tsgeneralsetting)
+[Win32_TSGeneralSetting 類別](/windows/desktop/termserv/win32-tsgeneralsetting)

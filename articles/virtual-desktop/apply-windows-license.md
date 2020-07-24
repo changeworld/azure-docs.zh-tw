@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 08/14/2019
 ms.author: chrimo
-ms.openlocfilehash: c60303d2306ca167a4d90b0cc27c1d265f2e2db8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 53e70fbb1321f33849073bbd6b2176f5d88a1f8b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85204416"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088992"
 ---
 # <a name="apply-windows-license-to-session-host-virtual-machines"></a>將 Windows 授權套用至工作階段主機虛擬機器
 
@@ -27,7 +27,7 @@ Windows 虛擬桌面授權可讓您將授權套用至任何在主機集區中註
 - 您可以將授權套用至現有的工作階段主機虛擬機器。 若要這麼做，請先依照[使用 PowerShell 建立主機集](./create-host-pools-powershell.md)區中的指示建立主機集區和相關聯的 vm，然後回到本文以瞭解如何套用授權。
 
 ## <a name="apply-a-windows-license-to-a-session-host-vm"></a>將 Windows 授權套用至工作階段主機 VM
-確定您已 [安裝並設定最新的 Azure PowerShell](/powershell/azure/overview)。 執行下列 PowerShell Cmdlet 以套用 Windows 授權：
+確定您已 [安裝並設定最新的 Azure PowerShell](/powershell/azure/)。 執行下列 PowerShell Cmdlet 以套用 Windows 授權：
 
 ```powershell
 $vm = Get-AzVM -ResourceGroup <resourceGroupName> -Name <vmName>

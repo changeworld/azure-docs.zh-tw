@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 04/12/2020
-ms.openlocfilehash: f09f5010c18f5ea064b02f0fbbae107bf473e1f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a3382f93990612b0ab34eb0848cbf3d6577c44ff
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81313673"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087929"
 ---
 # <a name="how-to-manually-fix-servicenow-sync-problems"></a>如何手動修正 ServiceNow 同步問題
 
@@ -38,7 +38,7 @@ Azure 監視器可以連接到協力廠商的 IT 服務管理（ITSM）提供者
     1. 按一下連接器名稱以進行設定
     1. 刪除不再使用的任何連接器
 
-    1. 根據您的合作夥伴類型，依據[這些定義](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-connections)更新欄位
+    1. 根據您的合作夥伴類型，依據[這些定義](./itsmc-connections.md)更新欄位
 
     1. 按一下 [同步]
 

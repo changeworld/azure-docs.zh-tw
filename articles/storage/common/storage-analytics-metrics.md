@@ -9,11 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 5613453667e3bb278f4da22ebed4502def70235b
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: b4bb17fce7be7aeff2a6978177106201e4c80aee
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83675896"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087266"
 ---
 # <a name="azure-storage-analytics-metrics-classic"></a>Azure 儲存體分析計量 (傳統)
 
@@ -145,18 +146,16 @@ queueClient.SetServiceProperties(serviceProperties);
 
 如果要下載長期儲存體的計量，或在本機加以分析，您必須使用工具或撰寫程式碼來讀取資料表。 您必須下載每分鐘度量以進行分析。 如果您在儲存體帳戶中列出所有資料表，則資料表就不會出現，但您可以直接依名稱存取它們。 許多儲存體瀏覽工具可以感知這些資料表，讓您能夠直接檢視它們。 如需可用工具的清單，請參閱 [Azure 儲存體用戶端工具](/azure/storage/storage-explorers)。
 
-||||  
+|計量|資料表名稱|附註| 
 |-|-|-|  
-|**計量**|**資料表名稱**|**注意事項**|  
 |每小時度量|$MetricsHourPrimaryTransactionsBlob<br /><br /> $MetricsHourPrimaryTransactionsTable<br /><br /> $MetricsHourPrimaryTransactionsQueue<br /><br /> $MetricsHourPrimaryTransactionsFile|在 2013 年 8 月 15 日前的版本中，這些資料表也稱為：<br /><br /> $MetricsTransactionsBlob<br /><br /> $MetricsTransactionsTable<br /><br /> $MetricsTransactionsQueue<br /><br /> 從 2015 年 4 月 5 日的版本開始，提供檔案服務的計量。|  
 |每分鐘度量|$MetricsMinutePrimaryTransactionsBlob<br /><br /> $MetricsMinutePrimaryTransactionsTable<br /><br /> $MetricsMinutePrimaryTransactionsQueue<br /><br /> $MetricsMinutePrimaryTransactionsFile|只能使用 PowerShell 或以程式設計方式啟用。<br /><br /> 從 2015 年 4 月 5 日的版本開始，提供檔案服務的計量。|  
 |Capacity|$MetricsCapacityBlob|僅限 Blob 服務。|  
 
 如需這些資料表的結構描述有關的完整詳細資料，請參閱[儲存體分析計量資料表結構描述](/rest/api/storageservices/storage-analytics-metrics-table-schema)。 下列資料列範例只會顯示可用的資料行子集，但可說明儲存體計量儲存這些計量資訊之方式的一些重要功能：  
 
-||||||||||||  
+|PartitionKey|RowKey|Timestamp|TotalRequests|TotalBillableRequests|TotalIngress|TotalEgress|可用性|AverageE2ELatency|AverageServerLatency|PercentSuccess| 
 |-|-|-|-|-|-|-|-|-|-|-|  
-|**PartitionKey**|**RowKey**|**Timestamp**|**TotalRequests**|**TotalBillableRequests**|**TotalIngress**|**TotalEgress**|**可用性**|**AverageE2ELatency**|**AverageServerLatency**|**PercentSuccess**|  
 |20140522T1100|user;All|2014-05-22T11:01:16.7650250Z|7|7|4003|46801|100|104.4286|6.857143|100|  
 |20140522T1100|user;QueryEntities|2014-05-22T11:01:16.7640250Z|5|5|2694|45951|100|143.8|7.8|100|  
 |20140522T1100|user;QueryEntity|2014-05-22T11:01:16.7650250Z|1|1|538|633|100|3|3|100|  

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/28/2020
 ms.author: memildin
-ms.openlocfilehash: 4487d1452611b269eec756cdbc76e8e55c466cd2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 882f8ab7e4f55809759f3a94fd04fb2c410fe188
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85801133"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089714"
 ---
 # <a name="upgrade-to-standard-tier-for-enhanced-security"></a>升級為標準層以增強安全性
 
@@ -43,7 +43,7 @@ Azure 資訊安全中心提供統一的安全性管理和進階的威脅防護�
 1. 選取**資訊安全中心**主功能表上的 [**定價 & 設定**]。
 2. 選取您要升級為 [標準] 的訂用帳戶。
 3. 選取 [定價層]  。
-4. 選取 [標準版]**** 以進行升級。
+4. 選取 [**標準**] 進行升級。
 5. 按一下 [檔案] 。
 
 [![資訊安全中心定價](media/security-center-pricing/pricing-tier-page.png)](media/security-center-pricing/pricing-tier-page.png#lightbox)

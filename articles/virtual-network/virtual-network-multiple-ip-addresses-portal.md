@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/30/2016
 ms.author: allensu
-ms.openlocfilehash: 6118763bf76795e30e862826f8f5b847f3382a5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9cec3e3ad4934ce368baa44984d252dc981d5d81
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84687968"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088201"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-portal"></a>使用 Azure 入口網站將多個 IP 位址指派給虛擬機器
 
@@ -29,7 +30,7 @@ ms.locfileid: "84687968"
 
 ## <a name="create-a-vm-with-multiple-ip-addresses"></a><a name = "create"></a>建立有多個 IP 位址的 VM
 
-如果您想要建立具有多個 IP 位址或一個靜態私人 IP 位址的 VM，您必須使用 PowerShell 或 Azure CLI 來建立它。 若要深入了解，請按一下本文頂端的 PowerShell 或 CLI 選項。 您可以建立具有單一動態私人 IP 位址及 (選擇性) 單一公用 IP 位址的 VM。 遵循[建立 Windows VM](../virtual-machines/virtual-machines-windows-hero-tutorial.md) 或[建立 Linux VM](../virtual-machines/linux/quick-create-portal.md) 文章中的步驟，以使用入口網站。 建立 VM 之後，您可以依照本文的[將 IP 位址新增至 VM](#add) 一節中的步驟，透過入口網站將 IP 位址類型從動態變更為靜態，並新增其他 IP 位址。
+如果您想要建立具有多個 IP 位址或一個靜態私人 IP 位址的 VM，您必須使用 PowerShell 或 Azure CLI 來建立它。 若要深入了解，請按一下本文頂端的 PowerShell 或 CLI 選項。 您可以建立具有單一動態私人 IP 位址及 (選擇性) 單一公用 IP 位址的 VM。 遵循[建立 Windows VM](../virtual-machines/windows/quick-create-portal.md) 或[建立 Linux VM](../virtual-machines/linux/quick-create-portal.md) 文章中的步驟，以使用入口網站。 建立 VM 之後，您可以依照本文的[將 IP 位址新增至 VM](#add) 一節中的步驟，透過入口網站將 IP 位址類型從動態變更為靜態，並新增其他 IP 位址。
 
 ## <a name="add-ip-addresses-to-a-vm"></a><a name="add"></a>將 IP 位址新增至 VM
 
@@ -52,7 +53,7 @@ ms.locfileid: "84687968"
 完成下列步驟，以新增私人 IP 位址：
 
 1. 完成本文的[核心步驟](#coreadd)一節中的步驟，並確定您位於 VM 網路介面的 [ **IP**設定] 區段中。  檢查顯示為預設值的子網（例如 10.0.0.0/24）。
-2. 按一下 **[新增]** 。 在出現的 [**新增 ip**設定] 窗格中，以新的*靜態*私人 IP 位址建立名為*IPConfig-4*的 IP 設定，方法是挑選最後八位的新號碼，然後按一下 **[確定]**。  （針對 10.0.0.0/24 子網，範例 IP 會是*10.0.0.7*）。
+2. 按一下 [新增] 。 在出現的 [**新增 ip**設定] 窗格中，以新的*靜態*私人 IP 位址建立名為*IPConfig-4*的 IP 設定，方法是挑選最後八位的新號碼，然後按一下 **[確定]**。  （針對 10.0.0.0/24 子網，範例 IP 會是*10.0.0.7*）。
 
     > [!NOTE]
     > 新增靜態 IP 位址時，您必須在 NIC 所連接的子網路上指定未使用的有效位址。 如果您選取的位址無法使用，入口網站會針對 IP 位址顯示 X，而您必須選取不同的位址。
@@ -84,7 +85,7 @@ ms.locfileid: "84687968"
 #### <a name="associate-the-public-ip-address-resource-to-a-new-ip-configuration"></a>將公用 IP 位址資源與新的 IP 組態產生關聯
 
 1. 完成本文的[核心步驟](#coreadd)一節中的步驟。
-2. 按一下 **[新增]** 。 在顯示的 [新增 IP 組態]**** 窗格中，建立名為 IPConfig-4** 的 IP 組態。 啟用 [公用 IP 位址]****，然後從顯示的 [選擇公用 IP 位址]**** 窗格中，選取現有的可用公用 IP 位址資源。
+2. 按一下 [新增] 。 在顯示的 [新增 IP 組態]**** 窗格中，建立名為 IPConfig-4** 的 IP 組態。 啟用 [公用 IP 位址]****，然後從顯示的 [選擇公用 IP 位址]**** 窗格中，選取現有的可用公用 IP 位址資源。
 
     選取公用 IP 位址資源後，請按一下 [確定]****，窗格便會關閉。 如果您沒有現有的公用 IP 位址，您可以完成[建立公用 IP 位址資源](#create-public-ip)一節中的步驟，加以建立。 
 

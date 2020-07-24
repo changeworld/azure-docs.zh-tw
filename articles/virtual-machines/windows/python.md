@@ -8,11 +8,12 @@ ms.topic: article
 ms.date: 06/22/2017
 ms.author: cynthn
 ms.custom: tracking-python
-ms.openlocfilehash: b5f8b0e8f22a476ad379b55275d79c2874966852
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 92b6d8c6cd59f82439beec24c003aac6673014e7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84551970"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088320"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-python"></a>在 Azure 中使用 Python 建立並管理 Windows VM
 
@@ -31,7 +32,7 @@ ms.locfileid: "84551970"
 
 ## <a name="create-a-visual-studio-project"></a>建立 Visual Studio 專案
 
-1. 如果您尚未安裝 [Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio)，請進行安裝。 在 [工作負載] 頁面上選取 [Python 開發]，然後按一下 [安裝]。 在摘要中，您可以看到會自動為您選擇 **Python 3 64 位元 (3.6.0)** 。 如果您已安裝 Visual Studio，您可以使用 Visual Studio Launcher 新增 Python 工作負載。
+1. 如果您尚未安裝 [Visual Studio](/visualstudio/install/install-visual-studio)，請進行安裝。 在 [工作負載] 頁面上選取 [Python 開發]，然後按一下 [安裝]。 在摘要中，您可以看到會自動為您選擇 **Python 3 64 位元 (3.6.0)** 。 如果您已安裝 Visual Studio，您可以使用 Visual Studio Launcher 新增 Python 工作負載。
 2. 安裝並啟動 Visual Studio 後，按一下 [檔案] > [新增] > [專案]。
 3. 按一下 [範本] > [Python] > [Python 應用程式]，輸入 myPythonProject 作為專案的名稱，選取專案的位置，然後按一下 [確定]。
 
@@ -565,6 +566,5 @@ compute_client = ComputeManagementClient(
 
 ## <a name="next-steps"></a>後續步驟
 
-- 如果部署有問題，下一個步驟就是查看 [使用 Azure 入口網站針對資源群組部署進行疑難排解](../../resource-manager-troubleshoot-deployments-portal.md)
-- 深入了解 [Azure Python 程式庫](https://docs.microsoft.com/python/api/overview/azure/?view=azure-python)
-
+- 如果部署有問題，下一個步驟就是查看 [使用 Azure 入口網站針對資源群組部署進行疑難排解](../../azure-resource-manager/templates/deployment-history.md)
+- 深入了解 [Azure Python 程式庫](/python/api/overview/azure/?view=azure-python)

@@ -1,5 +1,5 @@
 ---
-title: 使用 Visual Studio 和 SSDT 連線至 Synapse SQL 並進行查詢
+title: 使用 Visual Studio 和 SSDT 來連接及查詢 Synapse SQL
 description: 使用 Visual Studio 以利用 Azure Synapse Analytics 查詢 SQL 集區。
 services: synapse analytics
 author: azaricstefan
@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3f98a9d6dd79ba1da1a3be1e9e187ed4e8eca8ee
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 93c975bbbc69a43f1bd47bd4b1e7b857338ac1c0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85962981"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089238"
 ---
 # <a name="connect-to-synapse-sql-with-visual-studio-and-ssdt"></a>使用 Visual Studio 和 SSDT 連線至 Synapse SQL
 > [!div class="op_single_selector"]

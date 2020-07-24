@@ -3,8 +3,8 @@ title: 教學課程：將 SQL Server online 遷移至 SQL 受控執行個體
 titleSuffix: Azure Database Migration Service
 description: 瞭解如何使用 Azure 資料庫移轉服務，從 SQL Server 執行線上遷移至 Azure SQL 受控執行個體。
 services: dms
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/10/2020
-ms.openlocfilehash: 3d462fa0fa2afe5937c60985938c8268991dfa41
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 4bd6c3dc1f3cd1ef553efc6ac3cd3c4e558afc97
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86084217"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087657"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-managed-instance-online-using-dms"></a>教學課程：使用 DMS 在線上將 SQL Server 遷移至 Azure SQL 受控執行個體
 
@@ -88,6 +88,9 @@ ms.locfileid: "86084217"
   > Azure 資料庫移轉服務需要訂用帳戶的「參與者」權限，以取得指定的應用程式識別碼。 或者，您可以建立自訂角色，以授與 Azure 資料庫移轉服務所需的特定權限。 如需使用自訂角色的逐步指引，請參閱[SQL Server 至 SQL 受控執行個體線上遷移的自訂角色](https://docs.microsoft.com/azure/dms/resource-custom-roles-sql-db-managed-instance)一文。
 
 * 建立或記下 Azure 儲存體帳戶的**標準效能層**，這可讓 DMS 服務將資料庫備份檔案上傳至該處，並用於遷移資料庫。  請務必在建立 Azure 資料庫移轉服務執行個體的相同區域中建立 Azure 儲存體帳戶。
+
+  > [!NOTE]
+  > 當您使用線上遷移將受[透明資料加密](https://docs.microsoft.com/azure/azure-sql/database/transparent-data-encryption-tde-overview)保護的資料庫移轉至受控實例時，必須先遷移內部部署或 Azure VM SQL Server 實例的對應憑證，才能還原資料庫。 如需詳細步驟，請參閱將[TDE Cert 遷移至受控實例](https://docs.microsoft.com/azure/azure-sql/database/transparent-data-encryption-tde-overview)。
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>註冊 Microsoft.DataMigration 資源提供者
 
@@ -264,7 +267,7 @@ ms.locfileid: "86084217"
 
     ![完全移轉完成](media/tutorial-sql-server-to-managed-instance-online/dms-cutover-complete.png)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * 如需示範如何使用 T-sql RESTORE 命令將資料庫移轉至 SQL 受控執行個體的教學課程，請參閱[使用 restore 命令將備份還原至 sql 受控執行個體](../sql-database/sql-database-managed-instance-restore-from-backup-tutorial.md)。
 * 如需 SQL 受控執行個體的詳細資訊，請參閱[什麼是 sql 受控執行個體](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)。

@@ -14,16 +14,16 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 03/25/2019
 ms.author: genli
-ms.openlocfilehash: 580ec443dc087f270e30856c336a5699bbf1ae71
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 03c1d8e6d6b5b1d55fee964b509c1bc08537cf6b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71058449"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088575"
 ---
 # <a name="reset-remote-desktop-services-or-its-administrator-password-in-a-windows-vm"></a>在 Windows VM 中重設遠端桌面服務或其系統管理員密碼
 如果您無法連線到 Windows 虛擬機器 (VM)，您可以重設本機系統管理員密碼，或重設遠端桌面服務設定 (Windows 網域控制站上不支援)。 若要重設密碼，請使用 Azure 入口網站或 Azure PowerShell 中的 VM 存取延伸模組。 當您登入 VM 之後，請重設該本機系統管理員的密碼。  
-如果您使用的是 PowerShell，確定您已[安裝並設定最新的 PowerShell 模組](/powershell/azure/overview)，而且已登入您的 Azure 訂用帳戶。 您也可以[針對使用傳統部署模型建立的 vm 執行這些步驟](https://docs.microsoft.com/azure/virtual-machines/windows/classic/reset-rdp)。
+如果您使用的是 PowerShell，確定您已[安裝並設定最新的 PowerShell 模組](/powershell/azure/)，而且已登入您的 Azure 訂用帳戶。 您也可以[針對使用傳統部署模型建立的 vm 執行這些步驟](/azure/virtual-machines/windows/classic/reset-rdp)。
 
 您可以透過下列方式來重設遠端桌面服務和認證：
 
@@ -55,11 +55,11 @@ ms.locfileid: "71058449"
 
 ## <a name="reset-by-using-the-vmaccess-extension-and-powershell"></a>使用 VMAccess 延伸模組和 PowerShell 重設
 
-首先，請確定您已[安裝並設定最新的 PowerShell 模組](/powershell/azure/overview)，並且已使用 [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) \(英文\) Cmdlet 登入您的 Azure 訂用帳戶。
+首先，請確定您已[安裝並設定最新的 PowerShell 模組](/powershell/azure/)，並且已使用 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) \(英文\) Cmdlet 登入您的 Azure 訂用帳戶。
 
 ### <a name="reset-the-local-administrator-account-password"></a>**重設本機系統管理員帳戶密碼**
 
-- 請使用 [Set-AzVMAccessExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmaccessextension) PowerShell Cmdlet，來重設系統管理員密碼或使用者名稱。 `typeHandlerVersion` 設定必須是 2.0 或更新版本，因為第 1 版已淘汰。 
+- 請使用 [Set-AzVMAccessExtension](/powershell/module/az.compute/set-azvmaccessextension) PowerShell Cmdlet，來重設系統管理員密碼或使用者名稱。 `typeHandlerVersion` 設定必須是 2.0 或更新版本，因為第 1 版已淘汰。 
 
     ```powershell
     $SubID = "<SUBSCRIPTION ID>" 
@@ -77,7 +77,7 @@ ms.locfileid: "71058449"
 
 ### <a name="reset-the-remote-desktop-services-configuration"></a>**重設遠端桌面服務設定**
 
-1. 使用 [Set-AzVMAccessExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmaccessextension) PowerShell Cmdlet，重設對您 VM 的遠端存取。 下列範例會在資源群組 `myResourceGroup` 中的 VM `myVM` 上重設存取擴充功能 `myVMAccess`：
+1. 使用 [Set-AzVMAccessExtension](/powershell/module/az.compute/set-azvmaccessextension) PowerShell Cmdlet，重設對您 VM 的遠端存取。 下列範例會在資源群組 `myResourceGroup` 中的 VM `myVM` 上重設存取擴充功能 `myVMAccess`：
 
     ```powershell
     Set-AzVMAccessExtension -ResourceGroupName "myResoureGroup" -VMName "myVM" -Name "myVMAccess" -Location WestUS -typeHandlerVersion "2.0" -ForceRerun
@@ -94,7 +94,6 @@ ms.locfileid: "71058449"
 
 - [瞭解 AZURE VM 延伸模組和功能](../extensions/features-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
-- [使用 RDP 或 SSH 連接至 Azure 虛擬機器](https://msdn.microsoft.com/library/azure/dn535788.aspx)。
+- [使用 RDP 或 SSH 連接至 Azure 虛擬機器](/previous-versions/azure/dn535788(v=azure.100))。
 
 - [針對以 Windows 為基礎的 Azure 虛擬機器的遠端桌面連線進行疑難排解](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
-

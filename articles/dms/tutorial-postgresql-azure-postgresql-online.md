@@ -3,8 +3,8 @@ title: 教學課程：透過 Azure CLI 將于 postgresql 遷移至適用於 Post
 titleSuffix: Azure Database Migration Service
 description: 瞭解如何透過 CLI 使用 Azure 資料庫移轉服務，從內部部署于 postgresql 到適用於 PostgreSQL 的 Azure 資料庫進行線上遷移。
 services: dms
-author: HJToland3
-ms.author: jtoland
+author: arunkumarthiags
+ms.author: arthiaga
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 04/11/2020
-ms.openlocfilehash: e8f79512e132ff4632c067b23ad6e80a76b8d4cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e6a39a7967c061a90e75d717402cf63da15b06b3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81113878"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087623"
 ---
 # <a name="tutorial-migrate-postgresql-to-azure-db-for-postgresql-online-using-dms-via-the-azure-cli"></a>教學課程：透過 Azure CLI，使用 DMS 將于 postgresql 遷移至 Azure DB for 于 postgresql online
 
@@ -107,7 +108,7 @@ ms.locfileid: "81113878"
     psql -h hostname -U db_username -d db_name < your_schema.sql 
     ```
 
-    例如：
+    例如:
 
     ```
     psql -h mypgserver-20170401.postgres.database.azure.com  -U postgres -d dvdrental < dvdrentalSchema.sql
@@ -170,7 +171,7 @@ ms.locfileid: "81113878"
            az extension list-available –otable
            ```
 
-       * 若要安裝延伸模組，請執行下列命令：
+       * 請執行下列命令以安裝延伸模組：
 
            ```azurecli
            az extension add –n dms-preview
@@ -229,7 +230,7 @@ ms.locfileid: "81113878"
     az network nic list -g <ResourceGroupName>--query '[].ipConfigurations | [].privateIpAddress'
     ```
 
-    例如：
+    例如:
 
     ```azurecli
     az network nic list -g PostgresDemo --query '[].ipConfigurations | [].privateIpAddress'
@@ -475,7 +476,7 @@ ms.locfileid: "81113878"
     az dms project task cutover -h
     ```
 
-    例如：
+    例如:
 
     ```azurecli
     az dms project task cutover --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask  --object-name Inventory

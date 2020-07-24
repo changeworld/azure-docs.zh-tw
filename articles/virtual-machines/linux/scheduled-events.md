@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 06/01/2020
 ms.author: ericrad
 ms.reviewer: mimckitt
-ms.openlocfilehash: ba06350a564990899a593714a1f49d1e00ea544a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f91b5879922fc473ff1e46f817b3d649b1b30a9c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85262101"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088728"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure 中繼資料服務：Linux VM 的已排定事件
 
@@ -39,7 +39,7 @@ ms.locfileid: "85262101"
 
 排程的事件會提供下列使用案例中的事件：
 
-- [平台起始的維護](https://docs.microsoft.com/azure/virtual-machines/linux/maintenance-and-updates) (例如，主機的 VM 重新開機、即時移轉或記憶體保留更新)
+- [平台起始的維護](../maintenance-and-updates.md?bc=/azure/virtual-machines/linux/breadcrumb/toc.json&toc=/azure/virtual-machines/linux/toc.json) (例如，主機的 VM 重新開機、即時移轉或記憶體保留更新)
 - 虛擬機器正在預期即將失敗的[效能下降主機硬體](https://azure.microsoft.com/blog/find-out-when-your-virtual-machine-hardware-is-degraded-with-scheduled-events)上執行
 - 使用者起始的維護 (例如，使用者重新啟動或重新部署 VM)
 - [現成 VM](spot-vms.md) 和[現成擴展集](../../virtual-machine-scale-sets/use-spot.md)執行個體收回。
@@ -138,7 +138,7 @@ curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-versio
 | 資源| 受此事件影響的資源清單。 其中最多只能包含來自一個[更新網域](manage-availability.md)的機器，但不能包含更新網域中的所有機器。 <br><br> 範例： <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
 | EventStatus | 此事件的狀態。 <br><br> 值： <ul><li>`Scheduled`:此事件已排定在 `NotBefore` 屬性所指定的時間之後啟動。<li>`Started`:已啟動事件。</ul> 未曾提供 `Completed` 或類似的狀態。 當事件完成時，不會再傳回事件。
 | NotBefore| 自此之後可啟動此事件的時間。 <br><br> 範例： <br><ul><li> Mon, 19 Sep 2016 18:29:47 GMT  |
-| Description | 此事件的描述。 <br><br> 範例： <br><ul><li> 主機伺服器正在進行維護。 |
+| 描述 | 此事件的描述。 <br><br> 範例： <br><ul><li> 主機伺服器正在進行維護。 |
 | EventSource | 事件的起始端。 <br><br> 範例： <br><ul><li> `Platform`：此事件是由平臺起始。 <li>`User`：此事件是由使用者起始。 |
 
 ### <a name="event-scheduling"></a>事件排程
@@ -189,7 +189,7 @@ import json
 import socket
 import urllib2
 
-metadata_url = "http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01"
+metadata_url = "http://169.254.169.254/metadata/scheduledevents?api-version=2019-08-01"
 this_host = socket.gethostname()
 
 
@@ -233,4 +233,4 @@ if __name__ == '__main__':
 - 觀看 [Azure Friday 上的已排定事件](https://channel9.msdn.com/Shows/Azure-Friday/Using-Azure-Scheduled-Events-to-Prepare-for-VM-Maintenance) \(英文\) 的示範。 
 - 在 [Azure 執行個體中繼資料已排定事件 GitHub 存放庫](https://github.com/Azure-Samples/virtual-machines-scheduled-events-discover-endpoint-for-non-vnet-vm) \(英文\) 中檢閱排程的事件程式碼範例。
 - 深入了解[執行個體中繼資料服務](instance-metadata-service.md)中提供的 API。
-- 了解 [Azure 中 Linux 虛擬機器預定進行的維修](planned-maintenance.md)。
+- 了解 [Azure 中 Linux 虛擬機器預定進行的維修](../maintenance-and-updates.md?bc=/azure/virtual-machines/linux/breadcrumb/toc.json&toc=/azure/virtual-machines/linux/toc.json)。

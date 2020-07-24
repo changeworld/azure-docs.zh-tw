@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
-ms.openlocfilehash: bced6a9e6c59dc32657dbabef986e29e0447b28b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 29457f2f5021fed9d8785f5764c4119de4be1fa9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60947185"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089544"
 ---
 # <a name="cost-estimation-report-by-azure-site-recovery-deployment-planner"></a>Azure Site Recovery 部署規劃工具的成本估計報告 
 
@@ -115,11 +115,11 @@ DR 總成本是根據兩個不同的狀態來分類的：複寫和 DR 演練。
 
     d. **VM 總儲存體大小 (GB)**
 
-    e。 **一年中的 DR 演練次數**
+    e. **一年中的 DR 演練次數**
 
     f. **每次 DR 演練持續時間（天）**
 
-    如 **OS 類型**
+    g. **OS 類型**
 
     h. **資料備援**
 
@@ -167,16 +167,16 @@ eastus、eastus2、uswest、centralus、northcentralus、southcentralus、northe
 ## <a name="supported-currencies"></a>支援的貨幣
 Site Recovery 部署規劃工具可以使用下列任何貨幣來產生成本報告。
 
-|貨幣|名稱||貨幣|名稱||貨幣|名稱|
+|貨幣|名稱|貨幣|名稱|貨幣|名稱|
 |---|---|---|---|---|---|---|---|
-|ARS 披索|阿根廷披索 ($)||澳幣|澳洲元 ($)||巴西里耳|巴西里耳 (R$)|
-|加拿大幣|加幣 ($)||瑞士法郎|瑞士法郎 (chf)||丹麥幣|丹麥克朗 (kr)|
-|歐元|歐元 (€)||英鎊|英鎊 (£)||港幣|港幣 (HK$)|
-|印尼盾|印尼盾 (Rp)||印度幣|印度盧比 (₹)||日圓|日圓 (¥)|
-|韓元|韓圜 (₩)||墨西哥批索|墨西哥披索 (MX$)||馬來西亞林吉特|馬來西亞林吉特 (RM$)|
+|ARS 披索|阿根廷披索 ($)|澳幣|澳洲元 ($)|巴西里耳|巴西里耳 (R$)|
+|加拿大幣|加幣 ($)|瑞士法郎|瑞士法郎 (chf)|丹麥幣|丹麥克朗 (kr)|
+|歐元|歐元 (€)|英鎊|英鎊 (£)|港幣|港幣 (HK$)|
+|印尼盾|印尼盾 (Rp)|印度幣|印度盧比 (₹)|日圓|日圓 (¥)|
+|韓元|韓圜 (₩)|墨西哥批索|墨西哥披索 (MX$)|馬來西亞林吉特|馬來西亞林吉特 (RM$)|
 |挪威克朗|挪威克朗 (kr)||紐西蘭幣|紐西蘭元 ($)||盧布|俄羅斯盧布 (руб)|
-|SAR 里亞爾|沙烏地里亞爾 (SR)||瑞典克朗|瑞典克朗 (kr)||新台幣|新台幣 (NT$)|
-|土耳其里拉|土耳其里拉 (TL)||美元| 美元 ($)||南非幣|南非蘭特 (R)|
+|SAR 里亞爾|沙烏地里亞爾 (SR)|瑞典克朗|瑞典克朗 (kr)|新台幣|新台幣 (NT$)|
+|土耳其里拉|土耳其里拉 (TL)|美元| 美元 ($)|南非幣|南非蘭特 (R)|
 
 ## <a name="next-steps"></a>後續步驟
 深入了解如何[使用 Site Recovery 保護移轉至 Azure 的 Hyper-V VM](hyper-v-azure-tutorial.md)。

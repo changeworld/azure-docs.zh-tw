@@ -1,18 +1,18 @@
 ---
 title: 使用 Azure Active Directory 認證登入 Linux VM
 description: 瞭解如何建立和設定 Linux VM，以使用 Azure Active Directory authentication 進行登入。
-author: iainfoulds
+author: SanDeo-MSFT
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.workload: infrastructure
 ms.date: 08/29/2019
-ms.author: iainfou
-ms.openlocfilehash: c5275a979cbffe7fb6600978487454ac11cd2002
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.author: sandeo
+ms.openlocfilehash: 89b89d30de46727f4d5b52a236a4b0133e663bb9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86510424"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088762"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>預覽：使用 Azure Active Directory authentication 登入 Azure 中的 Linux 虛擬機器
 
@@ -113,7 +113,7 @@ az vm extension set \
 
 ## <a name="configure-role-assignments-for-the-vm"></a>設定 VM 的角色指派
 
-Azure 角色型存取控制 (RBAC) 原則會決定哪些人可以登入 VM。 有兩個 RBAC 角色可用來授權 VM 登入：
+Azure 角色型存取控制（Azure RBAC）原則會決定誰可以登入 VM。 有兩個 RBAC 角色可用來授權 VM 登入：
 
 - **虛擬機器系統管理員登入**：被指派此角色的使用者能夠以 Windows 系統管理員或 Linux 根使用者權限登入 Azure 虛擬機器。
 - **虛擬機器使用者登入**：被指派此角色的使用者能夠以一般使用者權限登入 Azure 虛擬機器。

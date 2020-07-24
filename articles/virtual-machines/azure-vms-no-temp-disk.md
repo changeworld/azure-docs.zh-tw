@@ -7,15 +7,15 @@ ms.topic: article
 ms.author: brbell
 ms.reviewer: mimckitt
 ms.date: 06/15/2020
-ms.openlocfilehash: 7ce816aba6bee36cd20eed6d31b0642dc8931e0b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 502883a0c4eb36be9e89ba8693f4d32ba7f16ebd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86503025"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088864"
 ---
 # <a name="azure-vm-sizes-with-no-local-temporary-disk"></a>沒有本機暫存磁片的 Azure VM 大小 
-本文提供有關 Azure VM 大小（不含本機暫存磁片）（也就是沒有本機的桌面）的常見問題（FAQ）的解答。 如需這些 VM 大小的詳細資訊，請參閱[Dv4 和 Dsv4 系列（一般用途工作負載）的規格](dv4-dsv4-series.md)，或[Ev4 和 Esv4 系列（記憶體優化工作負載）的規格](ev4-esv4-series.md)。
+本文提供有關 Azure VM 大小（不含本機暫存磁片）（也就是沒有本機暫存磁片）的常見問題（FAQ）的解答。 如需這些 VM 大小的詳細資訊，請參閱[Dv4 和 Dsv4 系列（一般用途工作負載）的規格](dv4-dsv4-series.md)，或[Ev4 和 Esv4 系列（記憶體優化工作負載）的規格](ev4-esv4-series.md)。
 
 > [!IMPORTANT]
 > Dv4、Dsv4、Ev4 和 Esv4 系列 VM 大小現已開放公開預覽。 若要註冊公開預覽版，請填寫此[表單](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR_Y3toRKxchLjARedqtguBRURE1ZSkdDUzg1VzJDN0cwWUlKTkcyUlo5Mi4u)。 
@@ -38,7 +38,7 @@ ms.locfileid: "86503025"
 | Esv3 | Edsv4 |    Esv4 | 
 
 ## <a name="can-i-resize-a-vm-size-that-has-a-local-temp-disk-to-a-vm-size-with-no-local-temp-disk"></a>我可以將具有本機暫存磁片的 VM 大小調整為沒有本機暫存磁片的 VM 大小嗎？  
-否。 唯一允許進行調整大小的組合如下： 
+不可以。 唯一允許進行調整大小的組合如下： 
 
 1. VM （使用本機暫存磁片）-> VM （含本機暫存磁片）;和 
 2. VM （不含本機暫存磁片）-> VM （不含本機暫存磁片）。 

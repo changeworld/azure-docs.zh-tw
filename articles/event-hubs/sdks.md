@@ -3,12 +3,12 @@ title: Azure 事件中樞-用戶端 Sdk |Microsoft Docs
 description: 本文提供 Azure 事件中樞的用戶端 Sdk 的相關資訊。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 4c3557556500f2a536e20331bd3d05d84f608f0b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2b75a66197b152425198b94a68ac77e392cb4c0e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85312558"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087555"
 ---
 # <a name="azure-event-hubs---client-sdks"></a>Azure 事件中樞-用戶端 Sdk
 本文提供 Azure 事件中樞所支援 Sdk 的下列資訊： 
@@ -27,7 +27,7 @@ ms.locfileid: "85312558"
 | . NET Standard （**舊版**和支援 .net Core 和 .NET Framework） | [Microsoft.Azure.EventHubs](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) | <ul><li>[GitHub 位置](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Microsoft.Azure.EventHubs)</li><li>[教學課程](event-hubs-dotnet-standard-getstarted-send.md)</li></ul> | 
 |       | [Microsoft.Azure.EventHubs.Processor](https://www.nuget.org/packages/Microsoft.Azure.EventHubs.Processor) | <ul><li>[GitHub 位置](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Microsoft.Azure.EventHubs.Processor)</li><li>[教學課程](event-hubs-dotnet-standard-getstarted-send.md)</li></ul> |
 | . NET Framework （**舊**） | [WindowsAzure.Messaging](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) |<ul><li>[教學課程](event-hubs-dotnet-framework-getstarted-send.md)</li></ul> |
-| Java | [azure-訊息-eventhubs](https://search.maven.org/search?q=a:azure-messaging-eventhubs) | <ul><li>[GitHub 位置](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/eventhubs/azure-messaging-eventhubs)</li><li>[教學課程](get-started-java-send-v2.md)</li></ul> |
+| Java | [azure-messaging-eventhubs](https://search.maven.org/search?q=a:azure-messaging-eventhubs) | <ul><li>[GitHub 位置](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/eventhubs/azure-messaging-eventhubs)</li><li>[教學課程](get-started-java-send-v2.md)</li></ul> |
 |      | [azure-eventhubs](https://search.maven.org/search?q=a:azure-eventhubs) **（舊版）** | <ul><li>[GitHub 位置](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/eventhubs/microsoft-azure-eventhubs)</li><li>[教學課程](event-hubs-java-get-started-send.md)</li></ul> |
 | Python |  [azure-eventhub](https://pypi.org/project/azure-eventhub/) | <ul><li>[GitHub 位置](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhub)</li><li>[教學課程](get-started-python-send-v2.md)</li></ul> |
 |        | [azure-eventhub-checkpointstoreblob-aio](https://pypi.org/project/azure-eventhub-checkpointstoreblob-aio/) | <ul><li>[GitHub 位置](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio)</li><li>[教學課程](get-started-python-send-v2.md)</li></ul> |
@@ -48,6 +48,6 @@ ms.locfileid: "85312558"
 
 您可以造訪下列連結以深入了解事件中樞︰
 
-* [事件中心概觀](event-hubs-what-is-event-hubs.md)
+* [事件中心概觀](./event-hubs-about.md)
 * [建立事件中樞](event-hubs-create.md)
 * [事件中樞常見問題集](event-hubs-faq.md)

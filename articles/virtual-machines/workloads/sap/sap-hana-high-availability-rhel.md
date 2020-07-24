@@ -12,11 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/21/2020
 ms.author: radeltch
-ms.openlocfilehash: ed53b77587e307926689b2c20d7223212f3394d4
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 2ce3a4116c12065bbaee8e11d5ada3b8c89b1a9d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800268"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088218"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux 上 Azure VM 的 SAP HANA 高可用性
 
@@ -107,7 +108,7 @@ Azure Marketplace 包含 Red Hat Enterprise Linux for SAP HANA 7.4 的映像，�
     * **SAP 系統大小**：輸入新系統要提供的 SAP 數量。 如果您不確定系統需要多少 SAP，請詢問您的 SAP 技術合作夥伴或系統整合者。
     * **系統可用性**：選取 **HA**。
     * **管理員使用者名稱、管理員密碼或 SSH 金鑰**：將建立可用來登入電腦的新使用者。
-    * **子網路識別碼**：如果您想將 VM 部署至現有的 VNet (其中具有定義 VM 應指派的目的子網路)，請說明該特定子網路的 ID。 識別碼通常如下所示： **/subscriptions/\<訂用帳戶識別碼>/resourceGroups/\<資源群組名稱>/providers/Microsoft.Network/virtualNetworks/\<虛擬網路名稱>/subnets/\<子網路名稱>** 。 如果您想要建立新的虛擬網路，請保留空白
+    * **子網路識別碼**：如果您想將 VM 部署至現有的 VNet (其中具有定義 VM 應指派的目的子網路)，請說明該特定子網路的 ID。 此識別碼通常看起來像是 **/Subscriptions/ \<subscription ID> /resourceGroups/ \<resource group name> /providers/Microsoft.Network/virtualNetworks/ \<virtual network name> /subnets/ \<subnet name> **。 如果您想要建立新的虛擬網路，請保留空白
 
 ### <a name="manual-deployment"></a>手動部署
 
@@ -115,7 +116,7 @@ Azure Marketplace 包含 Red Hat Enterprise Linux for SAP HANA 7.4 的映像，�
 1. 建立虛擬網路。
 1. 建立可用性設定組。  
    設定更新網域上限。
-1. 建立負載平衡器 (內部)。 建議[標準負載平衡器](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)。
+1. 建立負載平衡器 (內部)。 建議[標準負載平衡器](../../../load-balancer/load-balancer-overview.md)。
    * 選取步驟 2 所建立的虛擬網路。
 1. 建立虛擬機器 1。  
    至少使用 Red Hat Enterprise Linux for SAP HANA 7.4。 這個範例會使用 Red Hat Enterprise Linux for SAP HANA 7.4 的映像 <https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux75forSAP-ARM> 選取在步驟 3 建立的可用性設定組。
@@ -158,7 +159,7 @@ Azure Marketplace 包含 Red Hat Enterprise Linux for SAP HANA 7.4 的映像，�
       1. 選取 [確定]。
 
    > [!Note]
-   > 當不具公用 IP 位址的 VM 放在內部 (沒有公用 IP 位址) 標準 Azure 負載平衡器的後端集區時，除非另外設定來允許路由傳送至公用端點，否則不會有輸出網際網路連線能力。 如需如何實現輸出連線能力的詳細資訊，請參閱[在 SAP 高可用性情節中使用 Azure Standard Load Balancer 實現虛擬機器的公用端點連線能力](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)。  
+   > 當不具公用 IP 位址的 VM 放在內部 (沒有公用 IP 位址) 標準 Azure 負載平衡器的後端集區時，除非另外設定來允許路由傳送至公用端點，否則不會有輸出網際網路連線能力。 如需如何實現輸出連線能力的詳細資訊，請參閱[在 SAP 高可用性情節中使用 Azure Standard Load Balancer 實現虛擬機器的公用端點連線能力](./high-availability-guide-standard-load-balancer-outbound-connections.md)。  
 
 1. 或者，如果您的情節要求使用基本負載平衡器，請遵循下列設定步驟：
    1. 設定負載平衡器。 首先，建立前端 IP 集區：
@@ -221,7 +222,7 @@ Azure Marketplace 包含 Red Hat Enterprise Linux for SAP HANA 7.4 的映像，�
 如需 SAP Hana 所需連接埠的詳細資訊，請參閱 [SAP Hana 租用戶資料庫](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6)指南的[連線到租用戶資料庫](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6/latest/en-US/7a9343c9f2a2436faa3cfdb5ca00c052.html)一章，或 [SAP Note 2388694][2388694]。
 
 > [!IMPORTANT]
-> 請勿在位於 Azure Load Balancer 後方的 Azure VM 上啟用 TCP 時間戳記。 啟用 TCP 時間戳記會導致健康情況探查失敗。 將參數 **net.ipv4.tcp_timestamps** 設定為 **0**。 如需詳細資料，請參閱[負載平衡器健康情況探查](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)。
+> 請勿在位於 Azure Load Balancer 後方的 Azure VM 上啟用 TCP 時間戳記。 啟用 TCP 時間戳記會導致健康情況探查失敗。 將參數 **net.ipv4.tcp_timestamps** 設定為 **0**。 如需詳細資料，請參閱[負載平衡器健康情況探查](../../../load-balancer/load-balancer-custom-probe-overview.md)。
 > 另請參閱 SAP Note [2382421](https://launchpad.support.sap.com/#/notes/2382421)。 
 
 ## <a name="install-sap-hana"></a>安裝 SAP HANA
@@ -262,11 +263,11 @@ Azure Marketplace 包含 Red Hat Enterprise Linux for SAP HANA 7.4 的映像，�
    sudo vgcreate vg_hana_shared_<b>HN1</b> /dev/disk/azure/scsi1/lun3
    </code></pre>
 
-   建立邏輯磁碟區。 當您使用 `lvcreate` 卻未搭配 `-i` 參數時，會建立線性磁碟區。 建議您建立等量磁碟區以提高 I/O 效能，並將等量大小調整為 [SAP Hana VM 儲存體設定](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)中記載的值。 `-i` 引數應該為基礎實體磁碟區的數目，`-I` 引數是等量大小。 本文件會使用 2 個實體磁碟區來作為資料磁碟區，因此 `-i` 參數引數會設定為 **2**。 資料磁碟區的等量大小是 **256KiB**。 有一個實體磁碟區作為記錄磁碟區，因此，記錄磁碟區命令中不需要明確使用 `-i` 或 `-I` 參數。  
+   建立邏輯磁碟區。 當您使用 `lvcreate` 卻未搭配 `-i` 參數時，會建立線性磁碟區。 建議您建立等量磁碟區以提高 I/O 效能，並將等量大小調整為 [SAP Hana VM 儲存體設定](./hana-vm-operations-storage.md)中記載的值。 `-i` 引數應該為基礎實體磁碟區的數目，`-I` 引數是等量大小。 本文件會使用 2 個實體磁碟區來作為資料磁碟區，因此 `-i` 參數引數會設定為 **2**。 資料磁碟區的等量大小是 **256KiB**。 有一個實體磁碟區作為記錄磁碟區，因此，記錄磁碟區命令中不需要明確使用 `-i` 或 `-I` 參數。  
 
    > [!IMPORTANT]
    > 當您要對每個資料、記錄或共用磁碟區使用多個實體磁碟區時，請使用 `-i` 參數，並將其值設定為基礎實體磁碟區的數目。 建立等量磁碟區時，請使用 `-I` 參數來指定等量大小。  
-   > 請參閱 [SAP Hana VM 儲存體設定](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)，以取得建議的儲存體設定，包括等量大小和磁碟數目。  
+   > 請參閱 [SAP Hana VM 儲存體設定](./hana-vm-operations-storage.md)，以取得建議的儲存體設定，包括等量大小和磁碟數目。  
 
    <pre><code>sudo lvcreate <b>-i 2</b> <b>-I 256</b> -l 100%FREE -n hana_data vg_hana_data_<b>HN1</b>
    sudo lvcreate -l 100%FREE -n hana_log vg_hana_log_<b>HN1</b>
@@ -801,4 +802,4 @@ Resource Group: g_ip_HN1_03
 * [適用於 SAP 的 Azure 虛擬機器規劃和實作][planning-guide]
 * [適用於 SAP 的 Azure 虛擬機器部署][deployment-guide]
 * [適用於 SAP 的 Azure 虛擬機器 DBMS 部署][dbms-guide]
-* [SAP Hana VM 儲存體設定](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)
+* [SAP Hana VM 儲存體設定](./hana-vm-operations-storage.md)

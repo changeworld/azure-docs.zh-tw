@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 1a8023a700e83892fae9a16bb2bfbe2a2eb0b307
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e66af8e55f7b60347d9577c64b7183c6ef8b44f4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85193408"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089306"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>保護您的 Synapse 工作區 (預覽)
 
@@ -112,7 +112,7 @@ Synapse 工作區需要 STG1 和 CNT1 的存取權，才能執行管線和系統
 
 每個角色中的使用者都需要完成下列步驟：
 
-|   | 步驟 | 工作區管理員 | Spark 管理員 | SQL 管理員 |
+| Number | 步驟 | 工作區管理員 | Spark 管理員 | SQL 管理員 |
 | --- | --- | --- | --- | --- |
 | 1 | 將 Parquet 檔案上傳至 CNT1 | YES | YES | YES |
 | 2 | 使用 SQL 隨選讀取 Parquet 檔案 | YES | 否 | YES |

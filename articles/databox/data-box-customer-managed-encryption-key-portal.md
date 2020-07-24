@@ -8,11 +8,12 @@ ms.topic: how-to
 ms.date: 05/07/2020
 ms.author: alkohli
 ms.subservice: pod
-ms.openlocfilehash: 4bcd8deef28f8e0123e6e2171b3ab24d6ac49292
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 60e621b34250b036888b233b084ba1ddff939048
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84634994"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087793"
 ---
 # <a name="use-customer-managed-keys-in-azure-key-vault-for-azure-data-box"></a>在 Azure Key Vault 中使用客戶管理的金鑰 Azure 資料箱
 
@@ -58,7 +59,7 @@ Azure 資料箱保護用來透過加密金鑰鎖定裝置的裝置解除鎖定�
 
     ![建立新的 Azure Key Vault](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-31.png)
 
-    您也可以選取 [**建立新**的] 來建立新的金鑰保存庫。 在 [**建立金鑰保存庫**] 分頁中，輸入資源群組和金鑰保存庫名稱。 請確定已啟用虛**刪除**和**清除保護**。 接受所有其他預設值。 選取 [檢閱 + 建立]****。
+    您也可以選取 [**建立新**的] 來建立新的金鑰保存庫。 在 [**建立金鑰保存庫**] 分頁中，輸入資源群組和金鑰保存庫名稱。 請確定已啟用虛**刪除**和**清除保護**。 接受所有其他預設值。 選取 [檢閱 + 建立]。
 
     ![建立新的 Azure Key Vault](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-4.png)
 
@@ -106,13 +107,13 @@ Azure 資料箱保護用來透過加密金鑰鎖定裝置的裝置解除鎖定�
 |-------------|--------------|---------|
 | SsemUserErrorEncryptionKeyDisabled| 因為客戶管理的金鑰已停用，所以無法提取金鑰。| 是，藉由啟用金鑰版本。|
 | SsemUserErrorEncryptionKeyExpired| 因為客戶管理的金鑰已過期，所以無法提取金鑰。| 是，藉由啟用金鑰版本。|
-| SsemUserErrorKeyDetailsNotFound| 因為找不到客戶管理的金鑰，所以無法提取金鑰。| 如果您已刪除金鑰保存庫，則無法復原客戶管理的金鑰。  如果您已將金鑰保存庫遷移至不同的租使用者，請參閱在[訂用帳戶移動之後變更金鑰保存庫租使用者識別碼](https://docs.microsoft.com/azure/key-vault/key-vault-subscription-move-fix)。 如果您已刪除金鑰保存庫：<ol><li>是，如果是在清除保護期間，請使用[復原金鑰保存庫](https://docs.microsoft.com/azure/key-vault/general/soft-delete-powershell#recovering-a-key-vault)中的步驟。</li><li>否（如果超過清除保護期間）。</li></ol><br>否則，如果金鑰保存庫進行租使用者遷移，可以使用下列其中一個步驟來復原： <ol><li>將金鑰保存庫還原回舊的租使用者。</li><li>設定 `Identity = None` ，然後將值設定回 `Identity = SystemAssigned` 。 這會在建立新的身分識別之後，刪除並重新建立身分識別。 針對 `Get` `Wrap` `Unwrap` 金鑰保存庫的存取原則中的新身分識別啟用、和許可權。</li></ol> |
+| SsemUserErrorKeyDetailsNotFound| 因為找不到客戶管理的金鑰，所以無法提取金鑰。| 如果您已刪除金鑰保存庫，則無法復原客戶管理的金鑰。  如果您已將金鑰保存庫遷移至不同的租使用者，請參閱在[訂用帳戶移動之後變更金鑰保存庫租使用者識別碼](../key-vault/general/move-subscription.md)。 如果您已刪除金鑰保存庫：<ol><li>是，如果是在清除保護期間，請使用[復原金鑰保存庫](../key-vault/general/soft-delete-powershell.md#recovering-a-key-vault)中的步驟。</li><li>否（如果超過清除保護期間）。</li></ol><br>否則，如果金鑰保存庫進行租使用者遷移，可以使用下列其中一個步驟來復原： <ol><li>將金鑰保存庫還原回舊的租使用者。</li><li>設定 `Identity = None` ，然後將值設定回 `Identity = SystemAssigned` 。 這會在建立新的身分識別之後，刪除並重新建立身分識別。 針對 `Get` `Wrap` `Unwrap` 金鑰保存庫的存取原則中的新身分識別啟用、和許可權。</li></ol> |
 | SsemUserErrorKeyVaultBadRequestException| 因為已撤銷客戶管理的金鑰存取權，所以無法提取金鑰。| 是，請檢查： <ol><li>金鑰保存庫在存取原則中仍有 MSI。</li><li>存取原則提供了取得、包裝、解除封裝的許可權。</li><li>如果 key vault 位於防火牆後方的 vNet 中，請檢查是否已啟用 [**允許 Microsoft 信任的服務**]。</li></ol>|
-| SsemUserErrorKeyVaultDetailsNotFound| 因為找不到客戶管理的金鑰相關聯的金鑰保存庫，所以無法提取金鑰。 | 如果您已刪除金鑰保存庫，則無法復原客戶管理的金鑰。  如果您已將金鑰保存庫遷移至不同的租使用者，請參閱在[訂用帳戶移動之後變更金鑰保存庫租使用者識別碼](https://docs.microsoft.com/azure/key-vault/key-vault-subscription-move-fix)。 如果您已刪除金鑰保存庫：<ol><li>是，如果是在清除保護期間，請使用[復原金鑰保存庫](https://docs.microsoft.com/azure/key-vault/general/soft-delete-powershell#recovering-a-key-vault)中的步驟。</li><li>否（如果超過清除保護期間）。</li></ol><br>否則，如果金鑰保存庫進行租使用者遷移，可以使用下列其中一個步驟來復原： <ol><li>將金鑰保存庫還原回舊的租使用者。</li><li>設定 `Identity = None` ，然後將值設定回 `Identity = SystemAssigned` 。 這會在建立新的身分識別之後，刪除並重新建立身分識別。 針對 `Get` `Wrap` `Unwrap` 金鑰保存庫的存取原則中的新身分識別啟用、和許可權。</li></ol> |
+| SsemUserErrorKeyVaultDetailsNotFound| 因為找不到客戶管理的金鑰相關聯的金鑰保存庫，所以無法提取金鑰。 | 如果您已刪除金鑰保存庫，則無法復原客戶管理的金鑰。  如果您已將金鑰保存庫遷移至不同的租使用者，請參閱在[訂用帳戶移動之後變更金鑰保存庫租使用者識別碼](../key-vault/general/move-subscription.md)。 如果您已刪除金鑰保存庫：<ol><li>是，如果是在清除保護期間，請使用[復原金鑰保存庫](../key-vault/general/soft-delete-powershell.md#recovering-a-key-vault)中的步驟。</li><li>否（如果超過清除保護期間）。</li></ol><br>否則，如果金鑰保存庫進行租使用者遷移，可以使用下列其中一個步驟來復原： <ol><li>將金鑰保存庫還原回舊的租使用者。</li><li>設定 `Identity = None` ，然後將值設定回 `Identity = SystemAssigned` 。 這會在建立新的身分識別之後，刪除並重新建立身分識別。 針對 `Get` `Wrap` `Unwrap` 金鑰保存庫的存取原則中的新身分識別啟用、和許可權。</li></ol> |
 | SsemUserErrorSystemAssignedIdentityAbsent  | 因為找不到客戶管理的金鑰，所以無法提取金鑰。| 是，請檢查： <ol><li>金鑰保存庫在存取原則中仍有 MSI。</li><li>身分識別是系統指派的類型。</li><li>針對金鑰保存庫的存取原則中的身分識別啟用 Get、Wrap 和解除包裝許可權。</li></ol>|
 | 一般錯誤  | 無法提取金鑰。| 這是一般錯誤。 請聯絡 Microsoft 支援服務以疑難排解錯誤，並決定後續步驟。|
 
 
 ## <a name="next-steps"></a>後續步驟
 
-- [什麼是 Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)？
+- [什麼是 Azure Key Vault](../key-vault/general/overview.md)？

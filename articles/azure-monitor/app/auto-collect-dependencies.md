@@ -5,15 +5,16 @@ ms.topic: reference
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/06/2020
-ms.openlocfilehash: 21e98ee9dc59e7520fb715f1146e492b9198f883
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ba7830cc1c0a3e6a563b4343b37ec07f7d508af4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82891603"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087980"
 ---
 # <a name="dependency-auto-collection"></a>相依性自動收集
 
-以下是目前支援的相依性呼叫清單，系統會自動將這些呼叫偵測為相依性，而且不需要修改應用程式的任何其他程式碼。 這些相依項目會在 Application Insights 中的[應用程式對應](https://docs.microsoft.com/azure/application-insights/app-insights-app-map)和[交易診斷](https://docs.microsoft.com/azure/application-insights/app-insights-transaction-diagnostics)檢視中加以視覺化。 如果您的相依性不在以下清單中，您仍可以透過[追蹤相依性呼叫](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackdependency)，以手動方式進行追蹤。
+以下是目前支援的相依性呼叫清單，系統會自動將這些呼叫偵測為相依性，而且不需要修改應用程式的任何其他程式碼。 這些相依項目會在 Application Insights 中的[應用程式對應](./app-map.md)和[交易診斷](./transaction-diagnostics.md)檢視中加以視覺化。 如果您的相依性不在以下清單中，您仍可以透過[追蹤相依性呼叫](./api-custom-events-metrics.md#trackdependency)，以手動方式進行追蹤。
 
 ## <a name="net"></a>.NET
 
@@ -61,7 +62,7 @@ ms.locfileid: "82891603"
 
 > [!NOTE]
 > *不包含回應式程式設計支援。
-> <br>†需要安裝 [JVM 代理程式](https://docs.microsoft.com/azure/application-insights/app-insights-java-agent#install-the-application-insights-agent-for-java)。
+> <br>†需要安裝 [JVM 代理程式](./java-agent.md#install-the-application-insights-agent-for-java)。
 
 ## <a name="nodejs"></a>Node.js
 

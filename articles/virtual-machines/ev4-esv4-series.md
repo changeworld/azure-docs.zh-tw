@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 6/8/2020
-ms.openlocfilehash: ccb6bbcddaa5ce76e9dbb04d737830fbaf5c2d9f
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 025d41724a88b4060d2dd22308641283992a68fa
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134327"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088881"
 ---
 # <a name="ev4-and-esv4-series"></a>Ev4 和 Esv4 系列
 
@@ -82,7 +82,7 @@ ACU：195-210
 | Standard_E48s_v4 | 48 | 384 | 僅限遠端存放 | 32 | 462000/2904 （1200） | 76800/1152 | 8/24000 |
 | Standard_E64s_v4 <sup>1</sup> | 64 | 504| 僅限遠端存放 | 32 | 615000/3872 （1600） | 80000/1200 | 8/30000 |
 
-<sup>1</sup> [可用的限制核心大小](https://docs.microsoft.com/azure/virtual-machines/windows/constrained-vcpu)。
+<sup>1</sup> [可用的限制核心大小](./windows/constrained-vcpu.md)。
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 

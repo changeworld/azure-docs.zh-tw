@@ -1,15 +1,15 @@
 ---
 title: 支援的 Azure Resource Manager 資源類型
 description: 提供 Azure Resource Graph 和變更歷程記錄所支援的 Azure Resource Manager 資源類型清單。
-ms.date: 06/04/2020
+ms.date: 07/16/2020
 ms.topic: reference
 ms.custom: generated
-ms.openlocfilehash: 7a1890c8decb6f918ecacee99764e45817e3d38a
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 8ea8dff157437dd37ad178b1580eddb9d218559d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970564"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087521"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Azure Resource Graph 資料表和資源類型參考
 
@@ -19,6 +19,7 @@ Azure Resource Graph 支援下列 [Azure Resource Manager](../../../azure-resour
 
 - microsoft.advisor/configurations
 - microsoft.advisor/recommendations
+- microsoft advisor/建議/隱藏
 - microsoft.advisor/suppressions
 
 ## <a name="alertsmanagementresources"></a>alertsmanagementresources

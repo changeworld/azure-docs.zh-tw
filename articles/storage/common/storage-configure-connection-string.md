@@ -6,22 +6,22 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/06/2020
+ms.date: 07/16/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 26faad0bb8aeb8dff693eea4cb9d47e0df1814b4
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 30e8bd7fda08795ecc1aa78b0d2507e7c915ad0d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027322"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087249"
 ---
 # <a name="configure-azure-storage-connection-strings"></a>設定 Azure 儲存體連接字串
 
 連接字串包含您的應用程式在執行時間使用共用金鑰授權存取 Azure 儲存體帳戶中資料所需的授權資訊。 您可以設定連接字串，以進行下列動作：
 
-* 連線至 Azure 儲存體模擬器
+* 連接到 Azurite 儲存體模擬器。
 * 在 Azure 中存取儲存體帳戶。
 * 透過共用存取簽章 (SAS) 存取 Azure 中的指定資源。
 
@@ -37,15 +37,15 @@ ms.locfileid: "86027322"
 * 在桌面上或裝置上執行的應用程式可將連接字串儲存在 **app.config** 或 **web.config** 檔案。 將連接字串新增至這些檔案中的 **AppSettings** 區段。
 * 在 Azure 雲端服務中執行的應用程式可將連接字串儲存在 [Azure 服務組態結構描述 (.cscfg) 檔](https://msdn.microsoft.com/library/ee758710.aspx)中。 將此連接字串加入服務組態檔的 [ConfigurationSettings] **** 區段。
 
-在組態檔內儲存連接字串，可讓您更容易更新連接字串，藉此在儲存體模擬器和雲端中的 Azure 儲存體帳戶之間切換。 您只需要編輯連接字串以指向您的目標環境。
+將連接字串儲存在設定檔中，可讓您輕鬆地更新連接字串，以在[Azurite 儲存體模擬器](../common/storage-use-azurite.md)和雲端中的 Azure 儲存體帳戶之間切換。 您只需要編輯連接字串以指向您的目標環境。
 
 您可以使用 [Microsoft Azure Configuration Manager](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/)，在執行階段存取連接字串，而不論應用程式執行所在的地方為何。
 
-## <a name="configure-a-connection-string-for-the-storage-emulator"></a>設定儲存體模擬器的連接字串
+## <a name="configure-a-connection-string-for-azurite"></a>設定 Azurite 的連接字串
 
 [!INCLUDE [storage-emulator-connection-string-include](../../../includes/storage-emulator-connection-string-include.md)]
 
-如需儲存體模擬器的詳細資訊，請參閱 [使用 Azure 儲存體模擬器進行開發和測試](storage-use-emulator.md) 。
+如需 Azurite 的詳細資訊，請參閱[使用 Azurite 模擬器進行本機 Azure 儲存體開發](../common/storage-use-azurite.md)。
 
 ## <a name="configure-a-connection-string-for-an-azure-storage-account"></a>設定 Azure 儲存體帳戶的連接字串
 
@@ -140,6 +140,6 @@ EndpointSuffix=core.chinacloudapi.cn;
 
 ## <a name="next-steps"></a>後續步驟
 
-* [使用 Azure 儲存體模擬器進行開發和測試](storage-use-emulator.md)
+* [使用 Azurite 模擬器進行本機 Azure 儲存體開發](../common/storage-use-azurite.md)
 * [Azure 儲存體總管](storage-explorers.md)
 * [使用共用存取簽章 (SAS)](storage-sas-overview.md)

@@ -7,19 +7,19 @@ ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 8f668844951a2416b25d1649721fc005a0d70b75
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0270cebec21ca10327a86ea5efebef9a52455930
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85509841"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089340"
 ---
 # <a name="use-azure-files-with-linux"></a>搭配 Linux 使用 Azure 檔案
 [Azure 檔案服務](storage-files-introduction.md)是 Microsoft 易於使用的雲端檔案系統。 可以使用 [SMB 核心用戶端](https://wiki.samba.org/index.php/LinuxCIFS)將 Azure 檔案共用裝載在 Linux 發行版本中。 本文將說明掛接 Azure 檔案共用的兩種方式：使用 `mount` 命令的隨選掛接，以及建立項目 `/etc/fstab` 的開機掛接。
 
 在 Linux 上掛接 Azure 檔案共用的建議方式是使用 SMB 3.0。 根據預設，Azure 檔案儲存體需要在傳輸中加密，只有 SMB 3.0 支援。 Azure 檔案儲存體也支援 SMB 2.1，這不支援傳輸中的加密，但基於安全性考慮，您可能不會從另一個 Azure 區域或內部部署的 SMB 2.1 掛接 Azure 檔案共用。 除非您的應用程式特別需要 SMB 2.1，否則使用它的原因很少，因為最熱門的最近發行的 Linux 發行版本支援 SMB 3.0：  
 
-| | SMB 2.1 <br>(掛接在相同 Azure 區域內的 VM 上) | SMB 3.0 <br>(從內部部署環境和跨區域掛接) |
+| Linux 發行版本 | SMB 2.1 <br>(掛接在相同 Azure 區域內的 VM 上) | SMB 3.0 <br>(從內部部署環境和跨區域掛接) |
 | --- | :---: | :---: |
 | Ubuntu | 14.04+ | 16.04+ |
 | Red Hat Enterprise Linux (RHEL) | 7+ | 7.5+ |
@@ -34,7 +34,7 @@ ms.locfileid: "85509841"
 uname -r
 ```
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 <a id="smb-client-reqs"></a>
 
 * <a id="install-cifs-utils"></a>**確定已安裝 cifs utils 套件。**  
@@ -246,24 +246,24 @@ uname -r
 
 從 Linux 核心4.18 開始，SMB 核心模組（稱為 `cifs` 舊版原因）會公開新的模組參數（通常稱為由各種外部檔所*parm* ），稱為 `disable_legacy_dialects` 。 雖然是在 Linux 核心4.18 中引進，但部分廠商已將這項變更 backport 到其支援的舊版核心。 為了方便起見，下表詳細說明通用 Linux 散發套件上此模組參數的可用性。
 
-| 散發 | 可以停用 SMB 1 |
+| 發行版本 | 可以停用 SMB 1 |
 |--------------|-------------------|
-| Ubuntu 14.04-16.04 | No |
-| Ubuntu 18.04 | Yes |
-| Ubuntu 19.04 + | Yes |
-| Debian 8-9 | No |
-| Debian 10 + | Yes |
-| Fedora 29 + | Yes |
-| CentOS 7 | No | 
-| CentOS 8 + | Yes |
-| Red Hat Enterprise Linux 6.x-7. x | No |
-| Red Hat Enterprise Linux 8 + | Yes |
-| openSUSE Leap 15。0 | No |
-| openSUSE Leap 15.1 + | Yes |
-| openSUSE Tumbleweed | Yes |
-| SUSE Linux Enterprise 11. x-12. x | No |
-| SUSE Linux Enterprise 15 | No |
-| SUSE Linux Enterprise 15。1 | No |
+| Ubuntu 14.04-16.04 | 否 |
+| Ubuntu 18.04 | 是 |
+| Ubuntu 19.04 + | 是 |
+| Debian 8-9 | 否 |
+| Debian 10 + | 是 |
+| Fedora 29 + | 是 |
+| CentOS 7 | 否 | 
+| CentOS 8 + | 是 |
+| Red Hat Enterprise Linux 6.x-7. x | 否 |
+| Red Hat Enterprise Linux 8 + | 是 |
+| openSUSE Leap 15。0 | 否 |
+| openSUSE Leap 15.1 + | 是 |
+| openSUSE Tumbleweed | 是 |
+| SUSE Linux Enterprise 11. x-12. x | 否 |
+| SUSE Linux Enterprise 15 | 否 |
+| SUSE Linux Enterprise 15。1 | 否 |
 
 您可以透過下列命令，查看您的 Linux 散發套件是否支援 `disable_legacy_dialects` 模組參數。
 

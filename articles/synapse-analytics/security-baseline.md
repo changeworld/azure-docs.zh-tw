@@ -1,19 +1,20 @@
 ---
-title: Azure 安全性基準測試的 Synapse 分析安全性基準
+title: 適用于 Synapse 分析的 Azure 安全性基準
 description: Synapse Analytics 安全性基準提供程式指引和資源，可用於執行 Azure 安全性基準測試中所指定的安全性建議。
 author: msmbaldwin
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.date: 07/02/2020
+ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 4b40bdeb6f60aafea760c6c6e3e0b0f99b419614
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 34453dacd763b8b6a2bff3d977a7bc9b2ab78ca9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86040651"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089323"
 ---
-# <a name="synapse-analytics-security-baseline-for-azure-security-benchmark"></a>Azure 安全性基準測試的 Synapse 分析安全性基準
+# <a name="azure-security-baseline-for-synapse-analytics"></a>適用于 Synapse 分析的 Azure 安全性基準
 
 適用于 Synapse 分析的 Azure 安全性基準包含可協助您改善部署安全性狀態的建議。
 
@@ -27,9 +28,9 @@ ms.locfileid: "86040651"
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1.1：保護虛擬網路中的 Azure 資源
 
-**指導**方針：透過私人連結保護虛擬網路 Azure SQL Database。 Azure 私人連結可讓您透過虛擬網路中的私人端點來存取 Azure PaaS 服務。 您的虛擬網路與服務之間的流量會經由 Microsoft 骨幹網路傳輸。
+**指引**：透過私人連結保護您的 Azure SQL Server 對虛擬網路的安全。 Azure 私人連結可讓您透過虛擬網路中的私人端點來存取 Azure PaaS 服務。 您的虛擬網路與服務之間的流量會經由 Microsoft 骨幹網路傳輸。
 
-或者，當您連線到 Synapse SQL 集區時，請使用網路安全性群組，將連出連線的範圍縮小至 SQL Database。 將 [允許 Azure 服務] 設為 [關閉]，即可阻止所有 Azure 服務流量透過公用端點流向 SQL Database。 請確定防火牆規則中不允許公用 IP 位址。
+或者，當您連線到 Synapse SQL 集區時，請使用網路安全性群組，將連出連線的範圍縮小至 SQL 資料庫。 藉由將 [允許 Azure 服務] 設定為 [關閉]，以停用透過公用端點對 SQL 資料庫的所有 Azure 服務流量。 請確定防火牆規則中不允許公用 IP 位址。
 
 * [瞭解 Azure 私人連結](https://docs.microsoft.com/azure/private-link/private-link-overview)
 
@@ -43,7 +44,7 @@ ms.locfileid: "86040651"
 
 **責任**：客戶
 
-### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-nics"></a>1.2：監視和記錄虛擬網路、子網和 Nic 的設定和流量
+### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-network-interfaces"></a>1.2：監視和記錄虛擬網路、子網和網路介面的設定和流量
 
 **指引**.. 連線到您的 AZURE Synapse SQL 集區，而且您已啟用網路安全性群組（NSG）流量記錄時，請將記錄傳送到 Azure 儲存體帳戶以進行流量審核。
 
@@ -69,7 +70,7 @@ ms.locfileid: "86040651"
 
 **責任**：不適用
 
-### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4：拒絕與已知惡意 IP 位址通訊
+### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4：拒絕與已知惡意 IP 位址的通訊
 
 **指引**：針對 AZURE Synapse SQL 使用先進的威脅防護（ATP）。 ATP 會偵測異常活動，指出不尋常且可能有害的嘗試存取或惡意探索資料庫，而且它可以觸發各種警示，例如「潛在的 SQL 插入式」和「從不尋常的位置存取」。 ATP 是 Advanced data security （ADS）供應專案的一部分，可以透過中央 SQL ADS 入口網站存取及管理。
 
@@ -123,7 +124,7 @@ ms.locfileid: "86040651"
 
 **指導**方針：使用虛擬網路服務標籤來定義網路安全性群組或 Azure 防火牆上的網路存取控制。 建立安全性規則時，您可以使用服務標籤取代特定的 IP 位址。 在規則的適當來源或目的地欄位中指定服務標籤名稱 (例如 ApiManagement)，即可允許或拒絕對應服務的流量。 Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更自動更新服務標籤。
 
-使用 Azure Synapse SQL 集區的服務端點時，需要輸出到 Azure SQL Database 的公用 IP 位址：必須開啟網路安全性群組（Nsg），才能 Azure SQL Database Ip 以允許連線。 您可以使用 Azure SQL Database 的 NSG 服務標記來執行這項操作。
+使用 Azure Synapse SQL 集區的服務端點時，需要輸出至 Azure SQL database 公用 IP 位址：必須開啟網路安全性群組（Nsg），才能 Azure SQL Database Ip 來允許連線。 您可以使用 Azure SQL Database 的 NSG 服務標記來執行這項操作。
 
 * [瞭解 Azure SQL Database 服務端點的服務標記](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview#limitations)
 
@@ -135,7 +136,7 @@ ms.locfileid: "86040651"
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9：維護網路裝置的標準安全性設定
 
-**指導**方針：使用 Azure 原則，為與您的 SQL 集區相關的資源定義和執行網路安全性設定。 您可以使用 "Microsoft .Sql" 命名空間來定義自訂原則定義，或使用針對 Azure SQL Database/伺服器網路保護所設計的任何內建原則定義。 Azure SQL Database 伺服器適用的內建網路安全性原則範例如下：「SQL Server 應該使用虛擬網路服務端點」。
+**指導**方針：使用 Azure 原則，為與您的 SQL 集區相關的資源定義和執行網路安全性設定。 您可以使用 "Microsoft .Sql" 命名空間來定義自訂原則定義，或使用針對 Azure SQL database/伺服器網路保護所設計的任何內建原則定義。 Azure SQL Database 伺服器適用的內建網路安全性原則範例如下：「SQL Server 應該使用虛擬網路服務端點」。
 
 使用 Azure 藍圖，藉由在單一藍圖定義中封裝金鑰環境成品（例如 Azure 資源管理範本、角色型存取控制（RBAC）和原則），以簡化大規模的 Azure 部署。 輕鬆地將藍圖套用至新的訂閱、環境，以及透過版本控制來微調控制和管理。
 
@@ -243,7 +244,7 @@ ms.locfileid: "86040651"
 
 **責任**：客戶
 
-### <a name="26-monitor-and-review-logs"></a>2.6：監視和檢閱記錄
+### <a name="26-monitor-and-review-logs"></a>2.6：監視和審核記錄
 
 **指引**：分析和監視異常行為的記錄，並定期審查結果。 使用適用于 Azure SQL Database 的 Advanced 威脅防護搭配 Azure 資訊安全中心，以警示與您的 SQL Database 相關的異常活動。 或者，根據計量值或與您的 SQL database 相關的 Azure 活動記錄專案來設定警示。
 
@@ -359,7 +360,7 @@ ms.locfileid: "86040651"
 
 **責任**：客戶
 
-### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3.4：使用單一登入 (SSO) 搭配 Azure Active Directory
+### <a name="34-use-azure-active-directory-single-sign-on-sso"></a>3.4：使用 Azure Active Directory 單一登入（SSO）
 
 **指引**：使用 Azure 應用程式註冊（服務主體）來抓取權杖，其可透過 API 呼叫在控制平面（Azure 入口網站）上用來與您的資料倉儲互動。
 
@@ -373,7 +374,7 @@ ms.locfileid: "86040651"
 
 **責任**：客戶
 
-### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5：針對所有以 Azure Active Directory 為基礎的存取使用多重要素驗證
+### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5：所有以 Azure Active Directory 為基礎的存取都使用多重要素驗證
 
 **指引**：啟用 Azure Active Directory (AD) 多重要素驗證 (MFA)，並遵循 Azure 資訊安全中心的身分識別與存取管理建議。
 
@@ -387,7 +388,7 @@ ms.locfileid: "86040651"
 
 **責任**：客戶
 
-### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6：使用專用電腦 (特殊權限存取工作站) 進行所有系統管理工作
+### <a name="36-use-secure-azure-managed-workstations-for-administrative-tasks"></a>3.6：使用安全、受 Azure 管理的工作站來進行系統管理工作
 
 **指導**方針：使用已設定多重要素驗證（MFA）的特殊許可權存取工作站（PAW）來登入及設定 Azure 資源。
 
@@ -475,7 +476,7 @@ SQL Server 稽核可讓您建立伺服器稽核，其中可能包含伺服器等
 
 **責任**：客戶
 
-### <a name="312-alert-on-account-login-behavior-deviation"></a>3.12：帳戶登入行為偏差警示
+### <a name="312-alert-on-account-sign-in-behavior-deviation"></a>3.12：帳戶登入行為偏差的警示
 
 **指導**方針：使用 Azure Active Directory （Azure AD）身分識別保護和風險偵測功能，針對偵測到與使用者身分識別相關的可疑動作設定自動回應。 此外，您還可以將資料內嵌到 Azure Sentinel 以進一步調查。
 
@@ -583,7 +584,7 @@ SQL Server 稽核可讓您建立伺服器稽核，其中可能包含伺服器等
 
 ### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6：使用以角色為基礎的存取控制來控制對資源的存取
 
-**指導**方針：使用 Azure 角色型存取控制（RBAC）來管理 Synapse SQL 集區中 Azure SQL Database 的存取權。
+**指導**方針：使用 azure 角色型存取控制（RBAC）來管理 Synapse SQL 集區中 azure SQL 資料庫的存取權。
 
 授權是由使用者帳戶的資料庫角色成員資格和物件層級許可權所控制。 最好的作法是，您應該授與使用者所需的最低權限。
 
@@ -641,9 +642,9 @@ SQL Server 稽核可讓您建立伺服器稽核，其中可能包含伺服器等
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1：執行自動化弱點掃描工具
 
-**指引**：啟用先進的資料安全性，並遵循 SQL Database 上執行弱點評定 Azure 資訊安全中心的建議。
+**指引**：啟用先進的資料安全性，並遵循 Azure 資訊安全中心在 Azure SQL 資料庫上執行弱點評定的建議。
 
-* [如何在 Azure SQL Database 上執行弱點評定](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment)
+* [如何在 Azure SQL 資料庫上執行弱點評定](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment)
 
 * [如何啟用 Advanced Data Security](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)
 
@@ -737,7 +738,7 @@ SQL Server 稽核可讓您建立伺服器稽核，其中可能包含伺服器等
 
 **責任**：客戶
 
-### <a name="64-define-and-maintain-an-inventory-of-approved-azure-resources"></a>6.4：定義和維護已核准 Azure 資源的清查
+### <a name="64-define-and-maintain-inventory-of-approved-azure-resources"></a>6.4：定義並維護已核准 Azure 資源的清查
 
 **指引**：定義與 Synapse SQL 集區相關的已核准 Azure 資源清單。
 
@@ -845,8 +846,7 @@ SQL Server 稽核可讓您建立伺服器稽核，其中可能包含伺服器等
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1：為所有 Azure 資源建立安全設定
 
-**指引**：在 "Synapse" 命名空間中使用 Azure 原則別名來建立自訂原則，以審核或強制設定與您的 Sql 集區相關的資源。 您也可以利用 Azure 資料庫的內建原則定義，例如：
-
+**指引**：在 "Synapse" 命名空間中使用 Azure 原則別名來建立自訂原則，以審核或強制設定與您的 Sql 集區相關的資源。 您也可以利用 Azure 資料庫/伺服器的內建原則定義，例如：
 - 在 SQL 伺服器上部署威脅偵測
 - SQL Server 應該使用虛擬網路服務端點
 
@@ -1010,7 +1010,7 @@ SQL Server 稽核可讓您建立伺服器稽核，其中可能包含伺服器等
 
 *如需詳細資訊，請參閱[安全性控制：資料復原](/azure/security/benchmarks/security-control-data-recovery)。*
 
-### <a name="91-ensure-regular-automated-back-ups"></a>9.1：確保會定期自動備份
+### <a name="91-ensure-regular-automated-back-ups"></a>9.1：確保週期性自動化備份
 
 **指引**： Synapse SQL 集區的快照集會在每天自動進行，建立可供七天使用的還原點。 此保留期無法變更。 SQL 集區支援八小時的復原點目標（RPO）。 您可以透過過去七天內所建立的任一個快照集，在主要區域中還原資料倉儲。 請注意，您也可以視需要手動觸發快照集。
 

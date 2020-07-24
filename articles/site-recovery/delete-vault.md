@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/05/2019
 ms.author: rajanaki
-ms.openlocfilehash: e1254a2998a0acbf86b3689c66b83502c0334282
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 8237888d46e1f1ad48e678234cf1edce3558876a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134478"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089578"
 ---
 # <a name="delete-a-site-recovery-services-vault"></a>刪除 Site Recovery 復原服務保存庫
 
@@ -21,7 +21,7 @@ ms.locfileid: "86134478"
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 
-## <a name="before-you-start"></a>在您開始使用 Intune 之前
+## <a name="before-you-start"></a>開始之前
 
 在您可以刪除保存庫之前，您必須先移除已註冊的伺服器和保存庫中的專案。 您需要移除的內容取決於您已部署的複寫案例。 
 
@@ -64,12 +64,14 @@ ms.locfileid: "86134478"
 
 即使有受保護的項目也要刪除 Site Recovery 保存庫，請使用這些命令：
 
-    Connect-AzAccount
+```azurepowershell
+Connect-AzAccount
 
-    Select-AzSubscription -SubscriptionName "XXXXX"
+Select-AzSubscription -SubscriptionName "XXXXX"
 
-    $vault = Get-AzRecoveryServicesVault -Name "vaultname"
+$vault = Get-AzRecoveryServicesVault -Name "vaultname"
 
-    Remove-AzRecoveryServicesVault -Vault $vault
+Remove-AzRecoveryServicesVault -Vault $vault
+```
 
 深入瞭解[new-azrecoveryservicesvault](/powershell/module/az.recoveryservices/get-azrecoveryservicesvault)和[Remove-new-azrecoveryservicesvault](/powershell/module/az.recoveryservices/remove-azrecoveryservicesvault)。

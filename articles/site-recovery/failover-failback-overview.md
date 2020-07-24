@@ -4,10 +4,11 @@ description: 深入瞭解 Azure Site Recovery 中的容錯移轉和 failable。
 ms.topic: conceptual
 ms.date: 12/24/2019
 ms.openlocfilehash: d9b54f3c452212e12419a5ffd67b116c8660308d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79281804"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089527"
 ---
 # <a name="about-on-premises-disaster-recovery-failoverfailback"></a>關於內部部署嚴重損壞修復容錯移轉/容錯回復
 
@@ -82,7 +83,7 @@ Site Recovery 提供不同的容錯移轉選項。
 **最新應用程式一致** |  如果已啟用應用程式一致復原點，此選項會將 Vm 損毀修復至 Site Recovery 所處理的最新應用程式一致復原點。 檢查 VM 設定中的最新復原點。
 **已處理最新多個 VM** | 此選項適用於一或多部 VM 已啟用多部 VM 一致性的復原計劃。 啟用這項設定的 VM 會容錯移轉至最新的一般多部 VM 一致復原點。 方案中的任何其他 Vm 會故障切換至最新處理的復原點。
 **最新多 VM 應用程式一致** |  此選項適用於一或多部 VM 已啟用多部 VM 一致性的復原計劃。 屬於最新一般多部 VM 應用程式一致復原點的複寫群組容錯移轉一部分的 VM。 對於最新應用程式一致復原點進行的其他 VM 容錯移轉。
-**自訂** | 使用此選項可將特定 VM 故障切換至特定的復原點。 此選項不適用於復原方案。
+**Custom** | 使用此選項可將特定 VM 故障切換至特定的復原點。 此選項不適用於復原方案。
 
 > [!NOTE]
 > 復原點無法遷移至另一個復原服務保存庫。

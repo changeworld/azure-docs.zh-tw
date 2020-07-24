@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: aa662dfbd98be5ec16a30e690f28196ca3868390
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 35fd95272530ed31f8ee197679e9368ca74ebef1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855896"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089663"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure 身分識別管理和存取控制安全性最佳作法
 
@@ -216,7 +216,7 @@ ms.locfileid: "85855896"
 * **區段管理群組**適用於範圍有限的小組 (通常是因為法規或其他組織界限)
 
 **最佳做法**：向具有直接營運責任的安全性小組授與適當權限。
-**詳細資料**：請檢閱 RBAC 內建角色以進行適當的角色指派。 如果內建角色無法滿足您組織的特定需求，您可以建立 [Azure 資源自訂角色](/azure/role-based-access-control/custom-roles)。 和內建角色一樣，您也可以將自訂角色指派給訂用帳戶、資源群組和資源範圍的使用者、群組和服務主體。
+**詳細資料**：請檢閱 RBAC 內建角色以進行適當的角色指派。 如果內建角色不符合您組織的特定需求，您可以建立[Azure 自訂角色](/azure/role-based-access-control/custom-roles)。 和內建角色一樣，您也可以將自訂角色指派給訂用帳戶、資源群組和資源範圍的使用者、群組和服務主體。
 
 **最佳做法**：向需要 Azure 資訊安全中心存取權的安全性角色授與此存取權。 資訊安全中心可讓安全性小組快速找出並補救風險。
 **詳細資料**：將具有這些需求的安全性小組新增至 RBAC [安全性管理員](/azure/role-based-access-control/built-in-roles#security-admin)角色，使其可以檢視安全性原則、檢視安全性狀態、編輯安全性原則、檢視警示和建議，以及解除警示和建議。 視責任範圍而定，您可以使用根管理群組或區段管理群組來執行這項操作。

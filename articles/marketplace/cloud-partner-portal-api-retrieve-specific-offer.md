@@ -4,19 +4,20 @@ description: 要在發行者命名空間內抓取指定供應專案的 API。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 06/19/2020
-ms.openlocfilehash: a4bbe133d8b223bf717597467336eb486f432380
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: dsindona
+ms.author: dsindona
+ms.date: 07/14/2020
+ms.openlocfilehash: bf64645f672e54849064d86f9250a62efeac8d66
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86115531"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087402"
 ---
-<a name="retrieve-a-specific-offer"></a>擷取特定供應項目
-=========================
+# <a name="retrieve-a-specific-offer"></a>擷取特定供應項目
 
 > [!NOTE]
-> Cloud Partner 入口網站 API 已和合作夥伴中心整合，並會在將供應項目移轉到合作夥伴中心後繼續運作。 該整合會引進些微的變更。 請參閱[CLOUD PARTNER 入口網站 API 參考](./cloud-partner-portal-api-overview.md)中所列的變更，以確保您的程式碼會在遷移至合作夥伴中心後繼續運作。
+> Cloud Partner 入口網站 Api 會與整合，並會繼續在合作夥伴中心運作。 轉換會引進微小的變更。 請參閱[CLOUD PARTNER 入口網站 API 參考](./cloud-partner-portal-api-overview.md)中所列的變更，以確保您的程式碼在轉換至合作夥伴中心後繼續運作。 只有在轉換至合作夥伴中心之前已整合的現有產品，才應該使用 CPP Api;新產品應使用合作夥伴中心提交 Api。
 
 在發行者命名空間內擷取特定供應項目。  
 
@@ -34,23 +35,18 @@ ms.locfileid: "86115531"
 
 ```
 
-
-<a name="uri-parameters"></a>URI 參數
---------------
-
+## <a name="uri-parameters"></a>URI 參數
 
 | **名稱**    | **描述**                                                                          | **Data type** |
 |-------------|------------------------------------------------------------------------------------------|---------------|
-| publisherId | publisherId。 例如 Contoso                                                        | String        |
-| offerId     | 可唯一識別供應項目的 GUID。                                                 | String        |
+| publisherId | publisherId。 例如 Contoso                                                        | 字串        |
+| offerId     | 可唯一識別供應項目的 GUID。                                                 | 字串        |
 | version     | 要擷取之供應項目的版本。 根據預設值，會擷取最新的供應項目版本。 | 整數       |
 | slotId      | 要從中擷取供應項目的位置，這可以是下列其中一個：      <br/>  - `Draft` (預設值) 會擷取目前處於草稿狀態的供應項目版本。  <br/>  -  `Preview` 會擷取目前處於預覽狀態的供應項目版本。     <br/>  -  `Production` 會擷取目前處於生產狀態的供應項目版本。          |      列舉 |
 | api-version | API 的最新版本                                                                    | 日期          |
 |  |  |  |
 
-
-<a name="header"></a>Header
-------
+## <a name="header"></a>頁首
 
 |  **名稱**          |   **ReplTest1**            |
 |  ---------------   |  --------------        |
@@ -58,9 +54,7 @@ ms.locfileid: "86115531"
 |  授權     | `Bearer YOUR_TOKEN`    |
 |  |  |
 
-
-<a name="body-example"></a>本文範例
-------------
+## <a name="body-example"></a>本文範例
 
 ### <a name="response"></a>回應
 
@@ -175,7 +169,6 @@ ms.locfileid: "86115531"
 }
 ```
 
-
 ### <a name="response-body-properties"></a>回應主體屬性
 
 |  **名稱**       |   **描述**                                                                                                               |
@@ -189,17 +182,15 @@ ms.locfileid: "86115531"
 |  changedTime    | 供應項目上次修改時間 (UTC 日期時間)                                                                                   |
 |  |  |
 
-
 ### <a name="response-status-codes"></a>回應狀態碼
 
-| **程式碼**  | **描述**                                                                                                                 |
+| **Code**  | **描述**                                                                                                                 |
 |  ------   | ------------------------------------------------------------------------------------------------------------------------------- |
 |  200      | `OK` - 已成功處理要求，且發行者下的所有供應項目已傳回給用戶端。               |
 |  400      | `Bad/Malformed request` - 錯誤回應本文可能包含更多資訊。                                                 |
 |  403      | `Forbidden` - 用戶端沒有所指定命名空間的存取權。                                                        |
 |  404      | `Not found` - 指定的實體不存在。 用戶端應該檢查 publisherId、offerId 與 version (若已指定)。      |
 |  |  |
-
 
 ### <a name="offer-status"></a>供應項目狀態
 
@@ -208,7 +199,7 @@ ms.locfileid: "86115531"
 |  NeverPublished             | 供應項目從未發行。               |
 |  NotStarted                 | 供應項目是新的，但未啟動。              |
 |  WaitingForPublisherReview  | 供應項目正在等候發行者核准。      |
-|  執行中                    | 正在處理供應項目提交。          |
+|  正在執行                    | 正在處理供應項目提交。          |
 |  成功                  | 已完成處理供應項目提交。    |
 |  已取消                   | 已取消供應項目提交。                |
 |  失敗                     | 供應項目提交失敗。                      |
