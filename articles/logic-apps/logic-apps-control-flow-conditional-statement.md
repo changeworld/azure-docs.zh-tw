@@ -6,11 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/09/2018
-ms.openlocfilehash: a7f9ab478067cecbac6f01a5a969bf48653b6dd1
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 796558c2579504b673fd15c468ce635c6b1cca8e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83831495"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87066359"
 ---
 # <a name="create-conditional-statements-that-control-workflow-actions-in-azure-logic-apps"></a>建立條件陳述式以控制 Azure Logic Apps 中的工作流程動作
 
@@ -109,7 +110,7 @@ ms.locfileid: "83831495"
 
 ## <a name="get-support"></a>取得支援
 
-* 如有任何問題，請瀏覽 [Microsoft 問答集的 Azure Logic Apps 問題頁面](https://docs.microsoft.com/answers/topics/azure-logic-apps.html) \(英文\)。
+* 如有任何問題，請瀏覽 [Microsoft 問答集的 Azure Logic Apps 問題頁面](/answers/topics/azure-logic-apps.html) \(英文\)。
 * 若要提交或票選功能與建議，請造訪 [Azure Logic Apps 使用者意見反應網站](https://aka.ms/logicapps-wish)。
 
 ## <a name="next-steps"></a>後續步驟

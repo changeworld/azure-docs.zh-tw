@@ -1,18 +1,19 @@
 ---
 title: Azure 地圖服務搜尋服務的最佳做法 | Microsoft Azure 地圖服務
 description: 了解如何在使用 Microsoft Azure 地圖服務的搜尋服務時套用最佳做法。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 01/23/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 8f8f5a2f605f8e8b7109267e5223593eb1e2cfb9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5e98763a3a1c8273cdeec5e945dd324ae43e773f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84264361"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87064262"
 ---
 # <a name="best-practices-for-azure-maps-search-service"></a>Azure 地圖服務搜尋服務的最佳做法
 
@@ -27,7 +28,7 @@ Azure 地圖服務[搜尋服務](https://docs.microsoft.com/rest/api/maps/search
 
 ## <a name="prerequisites"></a>Prerequisites
 
-若要對 Azure 地圖服務 API 進行呼叫，您需要 Azure 地圖服務帳戶和金鑰。 如需詳細資訊，請參閱[建立帳戶](quick-demo-map-app.md#create-an-account-with-azure-maps)和[取得主要金鑰](quick-demo-map-app.md#get-the-primary-key-for-your-account)。 
+若要對 Azure 地圖服務 API 進行呼叫，您需要 Azure 地圖服務帳戶和金鑰。 如需詳細資訊，請參閱[建立帳戶](quick-demo-map-app.md#create-an-azure-maps-account)和[取得主要金鑰](quick-demo-map-app.md#get-the-primary-key-for-your-account)。 
 
 如需 Azure 地圖服務中驗證的相關資訊，請參閱[管理 Azure 地圖服務中的驗證](./how-to-manage-authentication.md)。
 
@@ -84,7 +85,7 @@ Azure 地圖服務[搜尋服務](https://docs.microsoft.com/rest/api/maps/search
 
 ### <a name="reverse-geocode-and-filter-for-a-geography-entity-type"></a>針對地理實體類型進行反向地理編碼和篩選
 
-當您在[反向搜尋地址 API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) \(部分機器翻譯\) 中進行反向地理編碼搜尋時，此服務可以傳回適用於行政區的多邊形。 例如，yoi 可能會想要提取城市的區域多邊形。 若要將搜尋範圍縮小至特定地理實體類型，請在您的要求中包含 `entityType` 參數。 
+當您在[反向搜尋地址 API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) \(部分機器翻譯\) 中進行反向地理編碼搜尋時，此服務可以傳回適用於行政區的多邊形。 例如，您可能想要提取城市的區域多邊形。 若要將搜尋範圍縮小至特定地理實體類型，請在您的要求中包含 `entityType` 參數。 
 
 產生的回應會包含地理識別碼及相符的實體類型。 如果您提供一個以上的實體，則端點會傳回「可用的最小實體」。 您可以使用傳回的幾何識別碼，透過[搜尋多邊形服務](https://docs.microsoft.com/rest/api/maps/search/getsearchpolygon) \(部分機器翻譯\) 來取得地理位置的幾何。
 
@@ -966,7 +967,7 @@ https://atlas.microsoft.com/search/address/json?subscription-key={subscription-k
 
 ## <a name="next-steps"></a>後續步驟
 
-若要深入了解，請參閱：
+若要深入瞭解，請參閱：
 
 > [!div class="nextstepaction"]
 > [如何建置 Azure 地圖服務搜尋服務要求](https://docs.microsoft.com/azure/azure-maps/how-to-search-for-address)

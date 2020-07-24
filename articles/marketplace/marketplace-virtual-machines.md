@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 04/15/2020
-ms.openlocfilehash: 2d615e81891d68327b3225138495262d4eab9aa3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: dac67c6dae801d11866f7c4978a050a0cb2fa1dd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86116721"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87065646"
 ---
 # <a name="publishing-guide-for-virtual-machine-offers"></a>虛擬機器供應專案發佈指南
 
@@ -47,7 +47,7 @@ ms.locfileid: "86116721"
 > 此時，與 Enterprise 合約相關聯的承諾用量可用於您 VM 的 Azure 使用量，但不能用於您的軟體授權費用。  
 > 
 > [!NOTE]
-> 您可以將映射和定價發佈為私人供應專案，以將 VM 的探索和部署限制為一組特定的客戶。 私用供應專案可讓您為最接近的客戶建立專屬的供應專案，並提供自訂的軟體和條款。 這些自訂條款可讓您突顯各式各樣的案例，包括具有特殊定價和條款的實地主導交易，以及限制版軟體的優先存取權。 私用供應專案可讓您建立具有這些詳細資料的新 SKU，為一組有限的客戶提供特定的定價或產品。  
+> 您可以將映射和定價發佈為私人供應專案，以將 VM 的探索和部署限制為一組特定的客戶。 私用供應專案可讓您為最接近的客戶建立專屬的供應專案，並提供自訂的軟體和條款。 這些自訂條款可讓您突顯各式各樣的案例，包括具有特殊定價和條款的實地主導交易，以及限制版軟體的優先存取權。 私用供應專案可讓您藉由使用這些詳細資料建立新的方案，為一組有限的客戶提供特定的定價或產品。  
 >
 > 如需詳細資訊，請參閱[Azure Marketplace 上的私](https://azure.microsoft.com/blog/private-offers-on-azure-marketplace)用供應專案。  
 

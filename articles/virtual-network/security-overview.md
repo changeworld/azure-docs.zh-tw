@@ -13,11 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: 7464a9d13e1ffccbc3fab3256fe6c7ab1cb10495
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 60c350b10fb3db82af47551591d95e87cacd63a4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84321491"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87065013"
 ---
 # <a name="network-security-groups"></a>網路安全性群組
 <a name="network-security-groups"></a>
@@ -32,15 +33,16 @@ ms.locfileid: "84321491"
 
 |屬性  |說明  |
 |---------|---------|
-|Name|網路安全性群組中的唯一名稱。|
-|優先順序 | 100 和 4096 之間的數字。 系統會依照優先權順序處理規則，較低的數字會在較高的數字之前處理，因為較低的數字具有較高的優先順序。 一旦流量符合規則，處理就會停止。 因此，如果存在較低優先順序 (較高數字) 的規則具有與較高優先順序之規則相同的屬性，則不會進行處理。|
+|名稱|網路安全性群組內的唯一名稱。|
+|優先順序 | 100 到 4096 之間的數字。 系統會依照優先權順序處理規則，較低的數字會在較高的數字之前處理，因為較低的數字具有較高的優先順序。 一旦流量符合規則，處理就會停止。 因此，如果存在較低優先順序 (較高數字) 的規則具有與較高優先順序之規則相同的屬性，則不會進行處理。|
 |來源或目的地| 任何或個別的 IP 位址、無類別網域間路由 (CIDR) 區塊 (例如 10.0.0.0/24)、服務標籤或應用程式安全性群組。 當您指定 Azure 資源的位址時，可以指定指派給資源的私人 IP 位址。 在 Azure 針對輸入流量將公用 IP 位址轉譯為私人 IP 位址之後，和 Azure 針對輸出流量將私人 IP 位址轉譯為公用 IP 位址之前，網路安全性群組會進行處理。 . 指定範圍、服務標籤或應用程式安全性群組，可讓您建立較少的安全性規則。 在規則中指定多個個別 IP 位址和範圍（您無法指定多個服務標籤或應用程式群組）的功能稱為增強型[安全性規則](#augmented-security-rules)。 增強型安全性規則只可以在透過 Resource Manager 部署模型建立的網路安全性群組中建立。 您無法在透過傳統部署模型建立的網路安全性群組中指定多個 IP 位址與 IP 位址範圍。|
 |通訊協定     | TCP、UDP、ICMP 或 Any。|
-|Direction| 規則是否套用至輸入或輸出流量。|
+|方向| 規則適用於連入還是連出流量。|
 |連接埠範圍     |您可以指定個別連接埠或連接埠範圍。 例如，您可以指定 80 或 10000-10005。 指定範圍可讓您建立較少的安全性規則。 增強型安全性規則只可以在透過 Resource Manager 部署模型建立的網路安全性群組中建立。 您無法在透過傳統部署模型建立之網路安全性群組的相同安全性規則中指定多個連接埠與連接埠範圍。   |
 |動作     | 允許或拒絕        |
 
 系統會依優先順序使用 5 項 Tuple 資訊 (來源、來源連接埠、目的地、目的地連接埠和通訊協定) 來評估網路安全性群組的安全性規則，以允許或拒絕流量。 系統會為現有連線建立流程記錄。 允許或拒絕通訊都會以此流程記錄的連線狀態為依據。 流程記錄可讓網路安全性群組成為具狀態的形式。 如果您將輸出安全性規則指定至任何透過連接埠 80 (舉例來說) 的位址，則不必為了回應輸出流量來指定輸入安全性規則。 如果在外部起始通訊，您只需要指定輸入安全性規則。 反之亦然。 如果允許透過連接埠傳送輸入流量，則不必指定輸出安全性規則來透過連接埠回應流量。
+
 當您移除啟用流量的安全性規則時，現有的連線不會中斷。 當連線停止，且兩個方向至少有數分鐘都沒有流量時，流量即會中斷。
 
 您可以在網路安全性群組中建立的安全性規則數量會有所限制。 如需詳細資訊，請參閱 [Azure 限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)。
@@ -81,7 +83,7 @@ Azure 會在您建立的每個網路安全性群組中，建立下列預設規�
 
 |優先順序|來源|來源連接埠| Destination | 目的地連接埠 | 通訊協定 | Access |
 |---|---|---|---|---|---|---|
-| 65001 | 0.0.0.0/0 | 0-65535 | Internet | 0-65535 | 任意 | 允許 |
+| 65001 | 0.0.0.0/0 | 0-65535 | 網際網路 | 0-65535 | 任意 | 允許 |
 
 ##### <a name="denyalloutbound"></a>DenyAllOutBound
 
@@ -99,7 +101,7 @@ Azure 會在您建立的每個網路安全性群組中，建立下列預設規�
 
 #### <a name="service-tags"></a>服務標籤
 
-服務標籤代表來自指定 Azure 服務的一組 IP 位址前置詞。 它有助於將網路安全性規則頻繁更新的複雜度降到最低。
+服務標籤代表來自指定 Azure 服務的一組 IP 位址前置詞。 它有助於將經常更新網路安全性規則的複雜性降到最低。
 
 如需詳細資訊，請參閱[Azure 服務標記](service-tags-overview.md)。 如需如何使用儲存體服務標籤來限制網路存取的範例，請參閱[限制對 PaaS 資源的網路存取](tutorial-restrict-network-access-to-resources.md)。
 
@@ -140,9 +142,7 @@ Azure 會在您建立的每個網路安全性群組中，建立下列預設規�
 
 請務必注意，與子網相關聯之 NSG 中的安全性規則，可能會影響其中 VM 之間的連線能力。 例如，如果將規則新增至拒絕所有輸入和輸出流量的*NSG1* ， *VM1*和*VM2*將無法再彼此通訊。 另一個規則必須特別加入才能允許此情況。 
 
-
-
-藉由檢視網路介面的[有效安全性規則](virtual-network-network-interface.md#view-effective-security-rules)，可以輕鬆地檢視套用至網路介面的彙總規則。 您也可以使用 Azure 網路監看員中的 [IP 流量確認](../network-watcher/diagnose-vm-network-traffic-filtering-problem.md?toc=%2fazure%2fvirtual-network%2ftoc.json)功能來判斷是否允許網路介面的雙向通訊。 IP 流量確認會告訴您已允許會拒絕通訊，以及哪個網路安全性規則允許或拒絕流量。
+藉由檢視網路介面的[有效安全性規則](virtual-network-network-interface.md#view-effective-security-rules)，可以輕鬆地檢視套用至網路介面的彙總規則。 您也可以使用 Azure 網路監看員中的 [IP 流量確認](../network-watcher/diagnose-vm-network-traffic-filtering-problem.md?toc=%2fazure%2fvirtual-network%2ftoc.json)功能來判斷是否允許網路介面的雙向通訊。 IP 流量驗證會告訴您是否允許或拒絕通訊，以及哪個網路安全性規則允許或拒絕流量。
 
 > [!NOTE]
 > 網路安全性群組會與子網或部署在傳統部署模型中的虛擬機器和雲端服務相關聯，以及 Resource Manager 部署模型中的子網或網路介面。 若要深入了解 Azure 部署模型，請參閱[了解 Azure 部署模型](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
@@ -160,14 +160,14 @@ Azure 會在您建立的每個網路安全性群組中，建立下列預設規�
 
   如果您在 2017 年 11 月 15 日前建立了 Azure 訂用帳戶，除了能夠使用 SMTP 轉送服務，您還可以直接透過 TCP 連接埠 25 傳送電子郵件。 如果您在 2017 年 11 月 15 日後建立了訂用帳戶，您可能無法直接透過連接埠 25 傳送電子郵件。 透過連接埠 25 的連出通訊行為取決於您擁有的訂用帳戶類型，如下所示：
 
-     - **Enterprise 合約**：允許輸出通訊埠 25 通訊。 您能夠從虛擬機器將外寄電子郵件直接傳送到外部電子郵件提供者 (Azure 平台沒有限制)。 
+     - **Enterprise 合約**：允許輸出通訊埠 25 通訊。 您可以直接從虛擬機器將輸出電子郵件傳送給外部電子郵件提供者，Azure 平臺沒有任何限制。 
      - **隨用隨付：** 所有資源的輸出連接埠 25 通訊都遭到封鎖。 如果您需要將電子郵件從虛擬機器直接傳送給外部電子郵件提供者 (不使用已驗證的 SMTP 轉送)，可以提出移除限制的要求。 要求是在 Microsoft 的斟酌之下審查與核准，而且只會在執行反詐騙檢查之後授權。 若要提出要求，請開啟問題類型為 [技術]**、[虛擬網路連線]**、[無法傳送電子郵件 (SMTP/連接埠 25)]** 的支援案例。 在您的支援案例中，請包含訂用帳戶需要將電子郵件直接傳送到郵件提供者，而不需經過已驗證 SMTP 轉送之原因的詳細資料。 如果您的訂用帳戶獲得豁免，則只有在豁免日期之後建立的虛擬機器能夠透過連接埠 25 對外通訊。
      - **MSDN、Azure Pass、Azure in Open、Education、BizSpark 和免費試用**：所有資源的輸出連接埠 25 通訊都遭到封鎖。 無法進行任何移除限制的要求，因為要求未獲授權。 如果您必須從虛擬機器傳送電子郵件，就必須使用 SMTP 轉送服務。
      - **雲端服務提供者**：透過雲端服務提供者使用 Azure 資源的客戶，可以建立其雲端服務提供者的支援案例，以及在安全的 SMTP 轉送無法使用時，要求提供者代表他們建立解除封鎖案例。
 
   如果 Azure 允許您透過連接埠 25 傳送電子郵件，Microsoft 無法保證電子郵件提供者會接受您虛擬機器所發出的內送電子郵件。 如果特定提供者拒絕來自虛擬機器的郵件，請直接與提供者合作以解決任何訊息傳遞或垃圾郵件篩選問題，或使用已驗證的 SMTP 轉送服務。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 若要瞭解哪些 Azure 資源可以部署到虛擬網路，並具有相關聯的網路安全性群組，請參閱[Azure 服務的虛擬網路整合](virtual-network-for-azure-services.md)
 * 如果您從未建立過網路安全性群組，可以完成快速[教學課程](tutorial-filter-network-traffic.md)，以取得一些建立體驗。 

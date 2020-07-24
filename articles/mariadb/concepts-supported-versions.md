@@ -5,12 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 6/3/2020
-ms.openlocfilehash: a6d340543289fa07370e053681599348a86940cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 7/20/2020
+ms.openlocfilehash: 0b495bf21b1f78e5e6a9285f67e1769d2d2a0db1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84343399"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87065693"
 ---
 # <a name="supported-azure-database-for-mariadb-server-versions"></a>支援的適用於 MariaDB 的 Azure 資料庫伺服器版本
 
@@ -25,21 +26,21 @@ ms.locfileid: "84343399"
 
 ## <a name="mariadb-version-102"></a>適用于 mariadb 版本10。2
 
-修補程式版本：10.2.31
+修補程式版本：10.2.32
 
-請參閱[適用于 mariadb 檔](https://mariadb.com/kb/en/mariadb-10231-release-notes/)，以深入瞭解此版本中的改進功能和修正。
+請參閱[適用于 mariadb 檔](https://mariadb.com/kb/en/mariadb-10232-release-notes/)，以深入瞭解此版本中的改進功能和修正。
 
 ## <a name="mariadb-version-103"></a>適用于 mariadb 版本10。3
 
-修補程式版本：10.3.22
+修補程式版本：10.3.23
 
-請參閱[適用于 mariadb 檔](https://mariadb.com/kb/en/mariadb-10322-release-notes/)，以深入瞭解此版本中的改進功能和修正。
+請參閱[適用于 mariadb 檔](https://mariadb.com/kb/en/mariadb-10323-release-notes/)，以深入瞭解此版本中的改進功能和修正。
 
 ## <a name="managing-updates-and-upgrades"></a>管理更新和升級
 服務會自動管理修補程式更新的升級。 例如，10.2.21 至10.2.23。  
 
 目前不支援主要和次要版本升級。 例如，不支援從 MariaDB 10.2 升級至 MariaDB 10.3。 如果您想要從10.2 升級至10.3，請使用傾印並將它[還原](./howto-migrate-dump-restore.md)至使用新引擎版本所建立的伺服器。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 如需根據您的**服務層級**之特定資源配額和限制的詳細資訊，請參閱[服務層級](./concepts-pricing-tiers.md)。

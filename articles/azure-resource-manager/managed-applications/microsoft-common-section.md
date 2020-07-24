@@ -5,11 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: 999a7386ee7c5b3ef76f87280cc2d0cd45f143cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 924aff8f2ba3d796b65f52494845f3b10018065c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75652251"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87063973"
 ---
 # <a name="microsoftcommonsection-ui-element"></a>Microsoft.Common.Section UI 元素
 
@@ -17,7 +18,7 @@ ms.locfileid: "75652251"
 
 ## <a name="ui-sample"></a>UI 範例
 
-![Microsoft.Common.Section](./media/managed-application-elements/microsoft.common.section.png)
+![Microsoft.Common.Section](./media/managed-application-elements/microsoft-common-section.png)
 
 ## <a name="schema"></a>結構描述
 
@@ -48,7 +49,7 @@ ms.locfileid: "75652251"
 - 此元素不支援 `toolTip` 屬性。
 
 ## <a name="sample-output"></a>範例輸出
-若要存取 `elements` 中的元素輸出值，可使用 [basics()](create-uidefinition-functions.md#basics) 或 [steps()](create-uidefinition-functions.md#steps) 函式和點標記法︰
+若要存取 `elements` 中的元素輸出值，可使用 [basics()](create-ui-definition-referencing-functions.md#basics) 或 [steps()](create-ui-definition-referencing-functions.md#steps) 函式和點標記法︰
 
 ```json
 steps('configuration').section1.text1
@@ -56,7 +57,7 @@ steps('configuration').section1.text1
 
 `Microsoft.Common.Section` 類型的元素本身沒有任何輸出值。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 如需建立 UI 定義的簡介，請參閱[開始使用 CreateUiDefinition](create-uidefinition-overview.md)。
 * 如需 UI 元素中通用屬性的說明，請參閱 [CreateUiDefinition 元素](create-uidefinition-elements.md)。

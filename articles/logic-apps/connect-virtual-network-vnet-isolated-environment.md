@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 06/18/2020
-ms.openlocfilehash: 3643092cf867fb49a24d5c1961d1a10834d5d3a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/22/2020
+ms.openlocfilehash: b1290a17c93043ffbedb7a641e1a0afad6ae79d1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85298849"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87066471"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>透過使用整合服務環境 (ISE) 從 Azure Logic Apps 連線至 Azure 虛擬網路
 
@@ -44,7 +44,7 @@ ISE 已增加執行期間、儲存體保留期、輸送量、HTTP 要求和回�
   > [!IMPORTANT]
   > Logic Apps、內建動作，以及在您 ISE 中執行的連接器，其使用的定價方案不同於耗用量式定價方案。 若要了解適用於 ISE 的定價和計費方式，請參閱 [Logic Apps 定價模型](../logic-apps/logic-apps-pricing.md#fixed-pricing)。 如需定價費率，請參閱 [Logic Apps 定價](../logic-apps/logic-apps-pricing.md)。
 
-* [Azure 虛擬網路](../virtual-network/virtual-networks-overview.md)。 您的虛擬網路必須有四個*空白*子網未委派給任何服務，以在您的 ISE 中建立及部署資源。 每個子網都支援在您的 ISE 中使用不同的 Logic Apps 元件。 您可以事先建立子網，也可以等到建立 ISE，讓您可以同時建立子網。 深入了解[子網路需求](#create-subnet)。
+* [Azure 虛擬網路](../virtual-network/virtual-networks-overview.md)。 您的虛擬網路必須有四個*空白*子網，這是在 ISE 中建立及部署資源所需，且由內部 Logic Apps 元件（例如連接器和快取效能）使用。 您可以事先建立子網，也可以等到建立 ISE 之後，才可以同時建立子網。 不過，在建立子網之前，請先參閱[子網需求](#create-subnet)。
 
   > [!IMPORTANT]
   >
@@ -55,8 +55,6 @@ ISE 已增加執行期間、儲存體保留期、輸送量、HTTP 要求和回�
   > * 127.0.0.0/8
   > * 168.63.129.16/32
   > * 169.254.169.254/32
-  > 
-  > 子網名稱的開頭必須是字母字元或底線，而且不能使用下列字元：`<`、`>`、`%`、`&`、`\\`、`?`、`/`。 若要透過 Azure Resource Manager 範本部署 ISE，請先確定您將一個空白子網委派給 `Microsoft.Logic/integrationServiceEnvironment` 。 當您透過 Azure 入口網站部署時，不需要執行此委派。
 
   * 確定您的虛擬網路[啟用 ISE 的存取](#enable-access)，讓您的 ISE 能夠正常運作並保持可存取狀態。
 
@@ -134,6 +132,7 @@ ISE 已增加執行期間、儲存體保留期、輸送量、HTTP 要求和回�
 | Azure 資源健康狀態 | **VirtualNetwork** | * | **AzureMonitor** | 1886 | 需要將健康狀態發佈至資源健康狀態。 |
 | 「記錄到事件中樞」原則和監視代理程式的相依性 | **VirtualNetwork** | * | **EventHub** | 5672 ||
 | 針對角色執行個體之間的 Redis 執行個體存取 Azure 快取 | **VirtualNetwork** | * | **VirtualNetwork** | 6379 - 6383，請參閱**附註**| 為了讓 ISE 能夠使用 Azure Cache for Redis，您必須開啟這些[由 Azure Cache for Redis 描述的輸出和輸入連接埠](../azure-cache-for-redis/cache-how-to-premium-vnet.md#outbound-port-requirements)。 |
+| DNS 名稱解析 | **VirtualNetwork** | * | 虛擬網路上任何自訂網域名稱系統（DNS）伺服器的 IP 位址 | 53 | 只有當您在虛擬網路上使用自訂 DNS 伺服器時才需要 |
 |||||||
 
 此外，您還需要為[App Service 環境（ASE）](../app-service/environment/intro.md)新增輸出規則：
@@ -160,26 +159,38 @@ ISE 已增加執行期間、儲存體保留期、輸送量、HTTP 要求和回�
 
    | 屬性 | 必要 | 值 | 描述 |
    |----------|----------|-------|-------------|
-   | **訂用帳戶** | Yes | <*Azure-subscription-name*> | 要用於環境的 Azure 訂用帳戶 |
-   | **資源群組** | Yes | <*Azure-resource-group-name*> | 新的或現有的 Azure 資源群組，您想要在其中建立您的環境 |
+   | **訂用帳戶** | 是 | <*Azure-subscription-name*> | 要用於環境的 Azure 訂用帳戶 |
+   | **資源群組** | 是 | <*Azure-resource-group-name*> | 新的或現有的 Azure 資源群組，您想要在其中建立您的環境 |
    | **整合服務環境名稱** | 是 | <*environment-name*> | 您的 ISE 名稱，其中只能包含字母、數字、連字號 (`-`)、底線 (`_`) 和 (`.`)。 |
    | **位置** | 是 | <*Azure-datacenter-region*> | 要用來部署環境的 Azure 資料中心區域 |
-   | **SKU** | Yes | **進階**或**開發人員 (沒有 SLA)** | 要建立和使用的 ISE SKU。 如需這些 SKU 之間的差異，請參閱 [ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)。 <p><p>**重要**：只有在建立 ISE 時才可使用此選項，而且稍後無法變更。 |
-   | **額外容量** | 進階： <br>Yes <p><p>開發人員： <br>不適用 | 進階： <br>0 到 10 <p><p>開發人員： <br>不適用 | 此 ISE 資源要額外使用的處理單位數。 若要在建立後新增容量，請參閱[新增 ISE 容量](../logic-apps/ise-manage-integration-service-environment.md#add-capacity)。 |
-   | **存取端點** | Yes | **內部**或**外部** | 要用於 ISE 的存取端點類型。 這些端點會判斷 ISE 中邏輯應用程式上的要求或 Webhook 觸發程序是否可以接收來自您虛擬網路外部的呼叫。 <p><p>您的選擇也會影響您可以在邏輯應用程式執行歷程記錄中檢視和存取輸入和輸出的方式。 如需詳細資訊，請參閱 [ISE 端點存取](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)。 <p><p>**重要**：您只能在 ISE 建立期間選取存取端點，而且稍後無法變更此選項。 |
-   | **虛擬網路** | Yes | <*Azure-virtual-network-name*> | 要插入環境的 Azure 虛擬網路，讓該環境中的邏輯應用程式可以存取虛擬網路。 如果您沒有網路，請[先建立 Azure 虛擬網路](../virtual-network/quick-create-portal.md)。 <p><p>**重要**：您「只」可以在建立您的 ISE 時執行此插入作業。 |
-   | **子網路** | 是 | <*subnet-resource-list*> | ISE 需要四個「空白」子網路，以在您的環境中建立和部署資源。 若要建立每個子網路，[請遵循此表格底下的步驟](#create-subnet)。 |
+   | **SKU** | 是 | **進階**或**開發人員 (沒有 SLA)** | 要建立和使用的 ISE SKU。 如需這些 SKU 之間的差異，請參閱 [ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)。 <p><p>**重要**：只有在建立 ISE 時才可使用此選項，而且稍後無法變更。 |
+   | **額外容量** | 進階： <br>是 <p><p>開發人員： <br>不適用 | 進階： <br>0 到 10 <p><p>開發人員： <br>不適用 | 此 ISE 資源要額外使用的處理單位數。 若要在建立後新增容量，請參閱[新增 ISE 容量](../logic-apps/ise-manage-integration-service-environment.md#add-capacity)。 |
+   | **存取端點** | 是 | **內部**或**外部** | 要用於 ISE 的存取端點類型。 這些端點會判斷 ISE 中邏輯應用程式上的要求或 Webhook 觸發程序是否可以接收來自您虛擬網路外部的呼叫。 <p><p>您的選擇也會影響您可以在邏輯應用程式執行歷程記錄中檢視和存取輸入和輸出的方式。 如需詳細資訊，請參閱 [ISE 端點存取](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)。 <p><p>**重要**：您只能在 ISE 建立期間選取存取端點，而且稍後無法變更此選項。 |
+   | **虛擬網路** | 是 | <*Azure-virtual-network-name*> | 要插入環境的 Azure 虛擬網路，讓該環境中的邏輯應用程式可以存取虛擬網路。 如果您沒有網路，請[先建立 Azure 虛擬網路](../virtual-network/quick-create-portal.md)。 <p><p>**重要**：您「只」可以在建立您的 ISE 時執行此插入作業。 |
+   | **子網路** | 是 | <*subnet-resource-list*> | ISE 需要四個*空*的子網，這是在 ISE 中建立及部署資源所需，並供內部 Logic Apps 元件使用，例如連接器和快取效能。 <p>**重要**事項：請務必[先檢查子網需求，再繼續執行這些步驟來建立您的子網](#create-subnet)。 |
    |||||
 
    <a name="create-subnet"></a>
 
-   **建立子網路**
+   **建立子網**
 
-   若要在您的環境中建立及部署資源，您的 ISE 需要四個不會委派給任何服務的「空白」子網路。 每個子網都支援在您的 ISE 中使用不同的 Logic Apps 元件。 您在建立環境之後「無法」變更這些子網路位址。 每個子網路都必須符合下列需求：
+   您的 ISE 需要四個*空白*子網，這是在您的 ise 中建立及部署資源所需，供內部 Logic Apps 元件使用，例如連接器和快取效能。 您在建立環境之後「無法」變更這些子網路位址。 如果您透過 Azure 入口網站建立及部署 ISE，請確定您不會將這些子網委派給任何 Azure 服務。 不過，如果您透過 REST API、Azure PowerShell 或 Azure Resource Manager 範本來建立及部署 ISE，則需要將一個空的子網[委派](../virtual-network/manage-subnet-delegation.md)給 `Microsoft.integrationServiceEnvironment` 。 如需詳細資訊，請參閱[新增子網委派](../virtual-network/manage-subnet-delegation.md)。
 
-   * 具有以字母字元或底線 (無數字) 開頭的名稱，而且不會使用下列字元：`<`、`>`、`%`、`&`、`\\`、`?`、`/`。
+   每個子網路都必須符合下列需求：
+
+   * 會使用以字母字元或底線（沒有數位）開頭的名稱，而且不會使用下列字元： `<` 、 `>` 、 `%` 、 `&` 、 `\\` 、 `?` 、 `/` 。
 
    * 使用[無類別網域間路由選擇 (CIDR) 格式](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)及類別 B 位址空間。
+   
+     > [!IMPORTANT]
+     >
+     > 請不要將下列 IP 位址空間用於您的虛擬網路或子網，因為它們無法透過 Azure Logic Apps 來解析：<p>
+     > 
+     > * 0.0.0.0/8
+     > * 100.64.0.0/10
+     > * 127.0.0.0/8
+     > * 168.63.129.16/32
+     > * 169.254.169.254/32
 
    * 使用位址空間中的 `/27`，因為每個子網路都需要 32 個位址。 例如，`10.0.0.0/27` 有 32 個位址，因為 2<sup>(32-27)</sup> 是 2<sup>5</sup> 或 32。 有更多的位址不會提供額外的權益。 若要深入了解如何計算位址，請參閱 [IPv4 CIDR 區塊](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#IPv4_CIDR_blocks)。
 

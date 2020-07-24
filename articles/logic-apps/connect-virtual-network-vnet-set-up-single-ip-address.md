@@ -6,11 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/06/2020
-ms.openlocfilehash: 2132dc464ee404339d9de03c0c797426aea04ce2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9ee804f7bed01ca0c7f365a04e6108afd9598157
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82927134"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87066402"
 ---
 # <a name="set-up-a-single-ip-address-for-one-or-more-integration-service-environments-in-azure-logic-apps"></a>在 Azure Logic Apps 中設定一或多個整合服務環境的單一 IP 位址
 
@@ -18,7 +19,7 @@ ms.locfileid: "82927134"
 
 本主題說明如何透過 Azure 防火牆路由輸出流量，但是您可以將類似的概念套用至網路虛擬裝置，例如 Azure Marketplace 的協力廠商防火牆。 雖然本主題著重于多個 ISE 實例的設定，但當您的案例需要限制需要存取的 IP 位址數目時，您也可以將此方法用於單一 ISE。 請考慮防火牆或虛擬網路設備的額外成本對您的案例是否有意義。 深入了解 [Azure 防火牆定價](https://azure.microsoft.com/pricing/details/azure-firewall/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 * 在與 ISE 相同的虛擬網路中執行的 Azure 防火牆。 如果您沒有防火牆，請先將名為的[子網新增](../virtual-network/virtual-network-manage-subnet.md#add-a-subnet) `AzureFirewallSubnet` 至您的虛擬網路。 接著，您可以在虛擬網路中[建立及部署防火牆](../firewall/tutorial-firewall-deploy-portal.md#deploy-the-firewall)。
 
@@ -48,7 +49,7 @@ ms.locfileid: "82927134"
 
    ![設定規則以引導輸出流量](./media/connect-virtual-network-vnet-set-up-single-ip-address/add-rule-to-route-table.png)
 
-   | 屬性 | 值 | 說明 |
+   | 屬性 | 值 | 描述 |
    |----------|-------|-------------|
    | **路由名稱** | <*唯一-路由名稱*> | 路由表中路由的唯一名稱 |
    | **位址首碼** | <*目的地-位址*> | 您想要輸出流量前往的目的地系統位址首碼。 請確定您針對此位址使用無[類別網域間路由（CIDR）標記法](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)。 在此範例中，此位址首碼適用于 SFTP 伺服器，如[設定網路規則](#set-up-network-rule)一節中所述。 |
@@ -95,9 +96,9 @@ ms.locfileid: "82927134"
    * [設定網路規則](../firewall/tutorial-firewall-deploy-portal.md#configure-a-network-rule)
    * [Azure 防火牆規則處理邏輯](../firewall/rule-processing.md#network-rules-and-applications-rules)
    * [Azure 防火牆常見問題集](../firewall/firewall-faq.md)
-   * [Azure PowerShell：新增-AzFirewallNetworkRule](https://docs.microsoft.com/powershell/module/az.network/new-azfirewallnetworkrule)
-   * [Azure CLI： az network firewall network-rule](https://docs.microsoft.com/cli/azure/ext/azure-firewall/network/firewall/network-rule?view=azure-cli-latest#ext-azure-firewall-az-network-firewall-network-rule-create)
+   * [Azure PowerShell：新增-AzFirewallNetworkRule](/powershell/module/az.network/new-azfirewallnetworkrule)
+   * [Azure CLI： az network firewall network-rule](/cli/azure/ext/azure-firewall/network/firewall/network-rule?view=azure-cli-latest#ext-azure-firewall-az-network-firewall-network-rule-create)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * [從 Azure Logic Apps 連線到 Azure 虛擬網路](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)

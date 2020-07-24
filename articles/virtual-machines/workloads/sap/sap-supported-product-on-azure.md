@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 04/21/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8b2f4e7a16c967b26b545d1405f973bf8b8afaae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 217d5b060ca1b7d32cd334049db9b7c68b7949a0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82086125"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87065081"
 ---
 # <a name="what-sap-software-is-supported-for-azure-deployments"></a>Azure 部署支援哪些 SAP 軟體
 本文說明如何找出 Azure 部署支援的 SAP 軟體，以及所需的作業系統版本或 DBMS 版本。
@@ -87,12 +87,12 @@ Azure 上支援的 Oracle DBMS 版本和 Oracle 功能特別列于[SAP 支援附
 在 Azure 中，有兩項服務可用於執行 HANA 資料庫：
 
 - Azure 虛擬機器
-- [HANA 大型實例](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)
+- [HANA 大型實例](./hana-overview-architecture.md)
 
 針對執行 SAP Hana，SAP 具有比執行 NetWeaver 或其他 SAP 應用程式和 DBMS 更多且更強的條件基礎結構必須符合。 因此，較少數的 Azure Vm 符合執行 SAP Hana DBMS 的資格。 如需 SAP Hana 支援的 Azure 基礎結構清單，請參閱所謂的[SAP Hana 硬體目錄](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)。 
 
 > [!NOTE]
-> 以字母 ' ' 開頭的單位是[HANA 大型實例](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)單位。 
+> 以字母 ' ' 開頭的單位是[HANA 大型實例](./hana-overview-architecture.md)單位。 
 
 > [!NOTE]
 > SAP 沒有與 SAP Hana 主要版本相依的特定認證。 相反地，「 [hana 認證的 IaaS 平臺](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)」中的「資料行**認證」案例**，此專欄不會對**hana 主要或次要發行認證提供任何聲明**。 您必須假設 HANA 1.0 版本也支援適用于 HANA 1.0 和 HANA 2.0 的所有單位，只要該特定單位的認證作業系統版本也可供使用。 
@@ -138,12 +138,11 @@ Sap[支援附注](https://launchpad.support.sap.com/#/notes/2451795)中會描述
 [Hybris 檔](https://help.sap.com/viewer/a74589c3a81a4a95bf51d87258c0ab15/1811/en-US/8c71300f866910149b40c88dfc0de431.html)中會詳細說明 Azure 上的 SAP Hybris Commerce 平臺支援。 就 SAP Hybris Commerce 平臺支援的 DBMS 而言，它會列出如下：
 
 - Windows 作業系統平臺上的 SQL Server 和 Oracle。 相同的最低發行版本適用于 SAP NetWeaver。 如需詳細資訊，請參閱[SAP 支援附注 #1928533](https://launchpad.support.sap.com/#/notes/1928533)
-- Red Hat 和 SUSE Linux 上的 SAP Hana。 如[本檔](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure#sap-hana-support)稍早所述，需要 SAP Hana 認證的 VM 類型。 SAP （Hybris） Commerce 平臺視為 OLTP 工作負載
+- Red Hat 和 SUSE Linux 上的 SAP Hana。 如[本檔](#sap-hana-support)稍早所述，需要 SAP Hana 認證的 VM 類型。 SAP （Hybris） Commerce 平臺視為 OLTP 工作負載
 - SAP 的 SQL Azure DB （Hybris）商務平臺版本1811
 
 
 
 
 ## <a name="next-steps"></a>後續步驟
-閱讀[適用于 SAP NetWeaver 的 Azure 虛擬機器規劃與實施](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide)中的後續步驟
-
+閱讀[適用于 SAP NetWeaver 的 Azure 虛擬機器規劃與實施](./planning-guide.md)中的後續步驟

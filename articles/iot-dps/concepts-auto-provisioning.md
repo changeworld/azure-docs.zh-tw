@@ -8,17 +8,18 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: c94fa6b851dfc9923628a738a15f7c245204f73f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4755d3ac30a4f6fdc0568dd88fa0e362d7d140a9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74975324"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87066565"
 ---
 # <a name="auto-provisioning-concepts"></a>自動佈建概念
 
 如[概觀](about-iot-dps.md)中所述，「裝置佈建服務」是一項協助程式服務，可將裝置以 Just-In-Time 方式佈建到 IoT 中樞，而不需要人為介入。 在成功佈建之後，裝置會直接與指定的「IoT 中樞」連線。 此程序稱為自動佈建，可為裝置提供一個現成的登錄和初始設定體驗。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 Azure IoT 自動佈建可分成三個階段：
 
@@ -102,10 +103,10 @@ Azure IoT 自動佈建可分成三個階段：
 
 接著，繼續進行適合您裝置證明機制和「裝置佈建服務」SDK/語言喜好設定的「自動佈建模擬裝置」快速入門。 在此快速入門中，您將逐步完成「裝置註冊」和「裝置登錄與設定」階段： 
 
-|  | 模擬裝置證明機制 | 快速入門 SDK/語言 |  |
-|--|--|--|--|
-|  | 信賴平台模組 (TPM) | [C](quick-create-simulated-device.md)<br>[Java](quick-create-simulated-device-tpm-java.md)<br>[C#](quick-create-simulated-device-tpm-csharp.md)<br>[Python](quick-create-simulated-device-tpm-python.md) |  |
-|  | X.509 憑證 | [C](quick-create-simulated-device-x509.md)<br>[Java](quick-create-simulated-device-x509-java.md)<br>[C#](quick-create-simulated-device-x509-csharp.md)<br>[Node.js](quick-create-simulated-device-x509-node.md)<br>[Python](quick-create-simulated-device-x509-python.md) |  |
+| 模擬裝置證明機制 | 快速入門 SDK/語言 |
+| -------------------------------------- | ----------------------- |
+| 信賴平台模組 (TPM) | [C](quick-create-simulated-device.md)<br>[Java](quick-create-simulated-device-tpm-java.md)<br>[C#](quick-create-simulated-device-tpm-csharp.md)<br>[Python](quick-create-simulated-device-tpm-python.md) |
+| X.509 憑證 | [C](quick-create-simulated-device-x509.md)<br>[Java](quick-create-simulated-device-x509-java.md)<br>[C#](quick-create-simulated-device-x509-csharp.md)<br>[Node.js](quick-create-simulated-device-x509-node.md)<br>[Python](quick-create-simulated-device-x509-python.md) |
 
 
 

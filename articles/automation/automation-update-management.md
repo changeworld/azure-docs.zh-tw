@@ -3,14 +3,14 @@ title: Azure 自動化更新管理概觀
 description: 此文章提供可對 Windows 和 Linux 機器實作更新的更新管理功能概觀。
 services: automation
 ms.subservice: update-management
-ms.date: 06/23/2020
+ms.date: 07/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: 127a83bbe29a5e102a82cf169919a44f52532228
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 228a24fbc4fb68a72f2cb8abb7d4382127be2147
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185682"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87064428"
 ---
 # <a name="update-management-overview"></a>更新管理概觀
 
@@ -98,7 +98,7 @@ ms.locfileid: "86185682"
 
 |作業系統  |注意  |
 |---------|---------|
-|Windows 用戶端     | 不支援用戶端作業系統 (例如 Windows 7 和 Windows 10)。<br> 針對 Azure Windows 虛擬桌面 (WVD)，建議用來<br> 管理更新的方法是[商務用 Windows Update](/windows/deployment/update/waas-manage-updates-wufb) \(部分機器翻譯\)，其適用於進行 Windows 10 用戶端機器修補管理。 |
+|Windows 用戶端     | 不支援用戶端作業系統 (例如 Windows 7 和 Windows 10)。<br> 針對 Azure Windows 虛擬桌面 (WVD)，建議用來<br> 若要管理更新， [Microsoft Endpoint Configuration Manager](../virtual-desktop/configure-automatic-updates.md)適用于 Windows 10 用戶端機器修補程式管理。 |
 |Windows Server 2016 Nano Server     | 不支援。       |
 |Azure Kubernetes Service 節點 | 不支援。 使用[在 Azure Kubernetes Service (AKS) 中將安全性和核心更新套用至 Linux 節點](../aks/node-updates-kured.md)中所述的修補程序。|
 
@@ -193,15 +193,15 @@ Windows 代理程式必須設定為可與 WSUS 伺服器通訊，或需要存取
 |`*.blob.core.windows.net` | `*.blob.core.usgovcloudapi.net`|
 |`*.azure-automation.net` | `*.azure-automation.us`|
 
+當您建立網路群組安全性規則或設定 Azure 防火牆以允許流量傳送至自動化服務和 Log Analytics 工作區時，請使用[服務標記](../virtual-network/service-tags-overview.md#available-service-tags) **GuestAndHybridManagement**和**AzureMonitor**。 這可簡化網路安全性規則的持續管理。 若要安全且私下地從您的 Azure Vm 連線到自動化服務，請參閱[使用 Azure 私用連結](how-to/private-link-security.md)。 若要取得目前的服務標籤和範圍資訊，以納入內部部署防火牆設定的一部分，請參閱[可下載的 JSON](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)檔案。
+
 對於 Windows 機器，您也必須允許流量傳送到 Windows Update 所需的任何端點。 您可以在[與 HTTP/Proxy 相關的問題](/windows/deployment/update/windows-update-troubleshooting#issues-related-to-httpproxy)中，找到所需端點的更新清單。 如果您有本機 [Windows Update 伺服器](/windows-server/administration/windows-server-update-services/plan/plan-your-wsus-deployment)，也必須允許流量傳送到您 [WSUS 金鑰](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry)中指定的伺服器。
 
 對於 Red Hat Linux 機器，請參閱 [RHUI 內容傳遞伺服器的 IP](../virtual-machines/workloads/redhat/redhat-rhui.md#the-ips-for-the-rhui-content-delivery-servers) 以取得必要的端點。 對於其他 Linux 發行版本，請參閱您的提供者文件。
 
 如需混合式 Runbook 背景工作角色所需連接埠的詳細資訊，請參閱[混合式 Runbook 背景工作角色的更新管理位址](automation-hybrid-runbook-worker.md#update-management-addresses-for-hybrid-runbook-worker)。
 
-建議您使用定義例外狀況時所列出的位址。 針對 IP 位址，您可以下載 [Microsoft Azure 資料中心 IP 範圍](https://www.microsoft.com/download/details.aspx?id=41653)。 此檔案會每週更新，並反映目前已部署的範圍及任何即將進行的 IP 範圍變更。
-
-遵循[在無法存取網際網路的情況下連線電腦](../azure-monitor/platform/gateway.md)中的指示，來設定無法存取網際網路的機器。
+如果您的 IT 安全性原則不允許網路上的電腦連線到網際網路，您可以設定[Log Analytics 閘道](../azure-monitor/platform/gateway.md)，然後將電腦設定為透過閘道連接，以 Azure 自動化和 Azure 監視器。
 
 ## <a name="update-classifications"></a>更新分類
 
@@ -230,7 +230,7 @@ Windows 代理程式必須設定為可與 WSUS 伺服器通訊，或需要存取
 >* Azure 美國政府
 >* 中國的世紀
 >
-> Linux 更新沒有任何分類，而且會在 [**其他更新**] 類別之下回報。 更新管理使用支援的散發套件所發佈的資料，特別是其發行的[OVAL](https://oval.mitre.org/) (開放式弱點和評估語言) 檔。 因為網際網路存取受到這些國家雲端的限制，所以更新管理無法存取和使用這些檔案。
+> Linux 更新沒有任何分類，而且會在 [**其他更新**] 類別之下回報。 更新管理使用支援的發行版本所發佈的資料，特別是其發行的[OVAL](https://oval.mitre.org/) （開放弱點和評估語言）檔案。 因為網際網路存取受到這些國家雲端的限制，所以更新管理無法存取和使用這些檔案。
 
 針對 Linux，更新管理可以區分雲端中的重大更新和安全性更新，同時基於雲端中的資料擴充顯示評量資料。 針對修補，「更新管理」仰賴機器上可用的分類資料。 與其他發行版本不同，CentOS 在 RTM 版本中沒有此資訊可供使用。 如果您將 CentOS 機器設定為傳回以下命令的安全性資料，更新管理就能根據分類進行修補。
 

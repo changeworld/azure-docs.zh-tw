@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: 7bf71ce7c44229ccf19022e9cfb0162f9d77cd97
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc55b24c4852028eb1244e97b48415ba08420e20
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80437707"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87066538"
 ---
 # <a name="business-continuity-and-disaster-recovery-for-azure-logic-apps"></a>Azure Logic Apps 的商務持續性和嚴重損壞修復
 
@@ -157,7 +157,7 @@ Azure Logic Apps 提供內建的觸發程式和動作，以及您的邏輯應用
 
 若要將已放棄的進行中工作流程實例數目降至最低，您可以從各種可執行檔訊息模式中選擇，例如：
 
-* [固定路由傳送模式](https://docs.microsoft.com/biztalk/esb-toolkit/message-routing-patterns#routing-slip)
+* [固定路由傳送模式](/biztalk/esb-toolkit/message-routing-patterns#routing-slip)
 
   這種企業訊息模式會將商務程式分割成較小的階段。 針對每個階段，您可以設定邏輯應用程式來處理該階段的工作負載。 若要彼此通訊，您的邏輯應用程式會使用非同步訊息通訊協定，例如 Azure 服務匯流排的佇列或主題。 當您將程式分成較小的階段時，您可以減少可能會停滯在失敗的邏輯應用程式實例上的商務進程數目。 如需此模式的一般資訊，請參閱[企業整合模式-路由單](https://www.enterpriseintegrationpatterns.com/patterns/messaging/RoutingTable.html)。
 
@@ -165,7 +165,7 @@ Azure Logic Apps 提供內建的觸發程式和動作，以及您的邏輯應用
 
   ![將商務程式分割成邏輯應用程式所代表的階段，使用 Azure 服務匯流排的佇列彼此通訊](./media/business-continuity-disaster-recovery-guidance/fixed-routing-slip-pattern.png)
 
-  如果主要和次要邏輯應用程式實例在其位置遵循相同的路由傳送模式，您可以為這些實例設定[主動-主動角色](#roles)，以執行[競爭取用者模式](https://docs.microsoft.com/azure/architecture/patterns/competing-consumers)。
+  如果主要和次要邏輯應用程式實例在其位置遵循相同的路由傳送模式，您可以為這些實例設定[主動-主動角色](#roles)，以執行[競爭取用者模式](/azure/architecture/patterns/competing-consumers)。
 
 * [進程管理員（broker）模式](https://www.enterpriseintegrationpatterns.com/patterns/messaging/ProcessManager.html)
 
@@ -249,7 +249,7 @@ Azure Logic Apps 提供內建的觸發程式和動作，以及您的邏輯應用
   例如，從訊息佇列讀取（例如 Azure 服務匯流排佇列）時，會使用伺服器端狀態，因為佇列服務會維護訊息的鎖定，以防止其他用戶端讀取相同的訊息。
 
   > [!NOTE]
-  > 如果您的邏輯應用程式需要以特定順序（例如，從服務匯流排的佇列讀取訊息），您可以使用競爭取用者模式，但只有在結合服務匯流排會話（也稱為[*連續*群組模式](https://docs.microsoft.com/azure/architecture/patterns/sequential-convoy)）時。 否則，您必須使用主動-被動角色來設定邏輯應用程式實例。
+  > 如果您的邏輯應用程式需要以特定順序（例如，從服務匯流排的佇列讀取訊息），您可以使用競爭取用者模式，但只有在結合服務匯流排會話（也稱為[*連續*群組模式](/azure/architecture/patterns/sequential-convoy)）時。 否則，您必須使用主動-被動角色來設定邏輯應用程式實例。
 
 <a name="request-trigger"></a>
 
@@ -271,7 +271,7 @@ Azure Logic Apps 提供內建的觸發程式和動作，以及您的邏輯應用
 
 * [主動-被動](#roles)：只有主要實例是作用中的，而且會處理所有工作，而次要實例則會等到主要體驗中斷或失敗為止。 呼叫端或路由器會決定呼叫次要實例的時機。
 
-作為建議的架構，您可以使用 Azure API 管理作為使用要求觸發程式之邏輯應用程式的 proxy。 API 管理提供[內建的跨區域復原功能，以及跨多個端點路由傳送流量的能力](https://docs.microsoft.com/azure/api-management/api-management-howto-deploy-multi-region)。
+作為建議的架構，您可以使用 Azure API 管理作為使用要求觸發程式之邏輯應用程式的 proxy。 API 管理提供[內建的跨區域復原功能，以及跨多個端點路由傳送流量的能力](../api-management/api-management-howto-deploy-multi-region.md)。
 
 <a name="webhook-trigger"></a>
 
@@ -331,7 +331,7 @@ Azure Logic Apps 提供內建的觸發程式和動作，以及您的邏輯應用
 
 ### <a name="activate-your-secondary-instance"></a>啟用您的次要實例
 
-若要自動啟動次要實例，您可以建立一個邏輯應用程式來呼叫管理 API （例如[Azure Resource Manager 連接器](https://docs.microsoft.com/connectors/arm/)），以在次要位置啟動適當的邏輯應用程式。 您可以擴充您的看門狗應用程式，以在發生特定數目的失敗後呼叫此啟用邏輯應用程式。
+若要自動啟動次要實例，您可以建立一個邏輯應用程式來呼叫管理 API （例如[Azure Resource Manager 連接器](/connectors/arm/)），以在次要位置啟動適當的邏輯應用程式。 您可以擴充您的看門狗應用程式，以在發生特定數目的失敗後呼叫此啟用邏輯應用程式。
 
 <a name="collect-diagnostic-data"></a>
 
@@ -346,11 +346,11 @@ Azure Logic Apps 提供內建的觸發程式和動作，以及您的邏輯應用
   * [Azure Blob 儲存體嚴重損壞修復和帳戶容錯移轉](../storage/common/storage-disaster-recovery-guidance.md)
   * [Azure 事件中樞異地嚴重損壞修復](../event-hubs/event-hubs-geo-dr.md)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-* [Azure 的復原功能總覽](https://docs.microsoft.com/azure/architecture/framework/resiliency/overview)
-* [特定 Azure 服務的復原檢查清單](https://docs.microsoft.com/azure/architecture/checklist/resiliency-per-service)
-* [Azure 中的復原資料管理](https://docs.microsoft.com/azure/architecture/framework/resiliency/data-management)
-* [Azure 應用程式的備份和嚴重損壞修復](https://docs.microsoft.com/azure/architecture/framework/resiliency/backup-and-recovery)
-* [從全區域服務中斷復原](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region)
+* [Azure 的復原功能總覽](/azure/architecture/framework/resiliency/overview)
+* [特定 Azure 服務的復原檢查清單](/azure/architecture/checklist/resiliency-per-service)
+* [Azure 中的復原資料管理](/azure/architecture/framework/resiliency/data-management)
+* [Azure 應用程式的備份和嚴重損壞修復](/azure/architecture/framework/resiliency/backup-and-recovery)
+* [從全區域服務中斷復原](/azure/architecture/resiliency/recovery-loss-azure-region)
 * [適用于 Azure 服務的 Microsoft 服務等級協定（Sla）](https://azure.microsoft.com/support/legal/sla/)

@@ -9,11 +9,12 @@ ms.topic: conceptual
 author: likebupt
 ms.author: keli19
 ms.date: 04/25/2019
-ms.openlocfilehash: 21bb8253d94ca91ee1baffb6de1f47ca34e9a7d0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3977bd13d0d3300126e06626e33fde753acc964f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84117550"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87065777"
 ---
 # <a name="powershell-modules-for-azure-machine-learning-studio-classic"></a>適用于 Azure Machine Learning Studio 的 PowerShell 模組（傳統）
 
@@ -50,7 +51,7 @@ PowerShell 傳統可以與 Az 或 AzureRM 一起安裝，以同時涵蓋「新�
 ## <a name="powershell-support-table"></a><a name="support-table"></a> PowerShell 支援表格
 
 
-| | **Az** |  **PowerShell 傳統** |
+|  **Az** |  **PowerShell 傳統** |
 | --- | --- | --- |
 | 建立/刪除工作區 | [Resource Manager 範本](https://docs.microsoft.com/azure/machine-learning/studio/deploy-with-resource-manager-template) |  |
 | 管理工作區承諾用量方案 | [New-AzMlCommitmentPlan](https://docs.microsoft.com/powershell/module/az.machinelearning/new-azmlcommitmentplan) | |
@@ -62,7 +63,7 @@ PowerShell 傳統可以與 Az 或 AzureRM 一起安裝，以同時涵蓋「新�
 | 管理自訂模組 | | [New-AmlCustomModule](https://github.com/hning86/azuremlps#manage-custom-module) |
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 如要完整的檔，請參閱下列 PowerShell 模組：
 * [PowerShell 傳統](https://aka.ms/amlps)
 * [Azure PowerShell Az](https://docs.microsoft.com/powershell/module/az.machinelearning/#machine_learning)

@@ -2,17 +2,17 @@
 title: 從 SSTP 轉換至 OpenVPN 或 IKEv2 |Azure VPN 閘道
 description: 本文可協助您瞭解解決 SSTP 的128並行連線限制的方法。
 services: vpn-gateway
-author: anzaman
+author: kumudD
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: alzam
-ms.openlocfilehash: e98fd0d57219599fb1c3934638a928542e4311a7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1531bca6c56c159b7535536fb31a577f0d7253ef
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84983345"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87064681"
 ---
 # <a name="transition-to-openvpn-protocol-or-ikev2-from-sstp"></a>從 SSTP 轉換至 OpenVPN 通訊協定或 IKEv2
 
@@ -160,7 +160,7 @@ P2S 設定需要相當多的特定步驟。 下列文章包含的步驟可引導
 
 * [設定 OpenVPN](vpn-gateway-howto-openvpn.md)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * [設定 P2S 連線 - RADIUS 驗證](point-to-site-how-to-radius-ps.md)
 

@@ -5,11 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: tomfitz
-ms.openlocfilehash: 23a7c54a84ec083b8fa470f26582913fcc3d2ee6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e730201812005a9b469a964e4acd081ebe86b100
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75652199"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87063954"
 ---
 # <a name="microsoftcommontagsbyresource-ui-element"></a>TagsByResource UI 元素
 
@@ -17,7 +18,7 @@ ms.locfileid: "75652199"
 
 ## <a name="ui-sample"></a>UI 範例
 
-![Microsoft.Common.DropDown](./media/managed-application-elements/microsoft.common.tagsbyresource.png)
+![Microsoft.Common.DropDown](./media/managed-application-elements/microsoft-common-tagsbyresource.png)
 
 ## <a name="schema"></a>結構描述
 
@@ -70,7 +71,7 @@ ms.locfileid: "75652199"
 
 - 存取 tagsByResource 參數時，請使用[if](../templates/template-functions-logical.md#if)函數。 它可讓您在未將標記指派給指定的資源類型時，指派空的物件。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 如需建立 UI 定義的簡介，請參閱[開始使用 CreateUiDefinition](create-uidefinition-overview.md)。
 - 如需 UI 元素中通用屬性的說明，請參閱 [CreateUiDefinition 元素](create-uidefinition-elements.md)。

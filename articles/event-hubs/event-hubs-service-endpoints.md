@@ -2,13 +2,13 @@
 title: 虛擬網路服務端點 - Azure 事件中樞 | Microsoft Docs
 description: 本文提供有關如何將 Microsoft EventHub 服務端點新增至虛擬網路的資訊。
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: cf8b956a38f0b22581da3608cd64219aba484988
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/16/2020
+ms.openlocfilehash: 134e310e0859bb6c0a50630f467513e07e6ff390
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85315435"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87066699"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-event-hubs"></a>將虛擬網路服務端點搭配 Azure 事件中樞使用
 
@@ -24,7 +24,6 @@ ms.locfileid: "85315435"
 > 實作「虛擬網路」時，不支援受信任的 Microsoft 服務。
 >
 > 無法與「虛擬網路」搭配運作的常見 Azure 案例 (請注意，這**不是**完整的清單) -
-> - Azure 監視器 (診斷設定)
 > - Azure 串流分析
 > - 與 Azure 事件方格的整合
 > - Azure IoT 中樞路由

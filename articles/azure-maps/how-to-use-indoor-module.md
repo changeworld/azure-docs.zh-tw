@@ -3,17 +3,17 @@ title: 使用 Azure 地圖服務室內地圖模組
 description: 了解如何使用 Microsoft Azure 地圖服務室內地圖模組，藉由內嵌模組的 JavaScript 程式庫來呈現轉譯地圖。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 05/18/2020
+ms.date: 07/20/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 6e7b6c7ddb33d42cca66698c87c82477f3e55621
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5f7bca363e22524546e7ee46bf44ddb18dacf00d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517462"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87064238"
 ---
 # <a name="use-the-azure-maps-indoor-maps-module"></a>使用 Azure 地圖服務室內地圖模組
 
@@ -42,16 +42,14 @@ Azure 地圖服務 Web SDK 包括「Azure 室內地圖服務」模組。 「Azur
 
  或者，您可以下載「Azure 室內地圖服務」模組。 「Azure 室內地圖服務」模組包含用來存取 Azure 地圖服務各項服務的用戶端程式庫。 請遵循下列步驟，將「室內」模組安裝並載入至您的 Web 應用程式。  
   
-  1. 下載 [azure-maps-indoor package](https://www.npmjs.com/package/azure-maps-indoor)。
+  1. 安裝[azure maps-室內套件](https://www.npmjs.com/package/azure-maps-indoor)。
   
-  2. 安裝 NPM 套件。 請務必在主控台中使用管理員權限：
-
       ```powershell
       >npm install azure-maps-control
       >npm install azure-maps-indoor
       ```
 
-  3. 在 HTML 檔案的 `<head>` 元素中，參考「Azure 室內地圖服務」模組 JavaScript 和樣式表：
+  2. 在 HTML 檔案的 `<head>` 元素中，參考「Azure 室內地圖服務」模組 JavaScript 和樣式表：
 
       ```html
       <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css" />
@@ -71,7 +69,7 @@ const map = new atlas.Map("map-id", {
   //or, you can use bounds: [# west, # south, # east, # north] and replace # with your map's bounds
   style: "blank",
   view: 'Auto',
-  authOptions: { 
+  authOptions: {
       authType: 'subscriptionKey',
       subscriptionKey: subscriptionKey
   },

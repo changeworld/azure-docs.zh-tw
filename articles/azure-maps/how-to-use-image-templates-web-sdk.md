@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: 28fee67ccfc1e67d89d0151c8e14bd7c0b688749
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 12c407ecacdce6b9052ca70ef70a2ae87928b6c2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85207085"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87064687"
 ---
 # <a name="how-to-use-image-templates"></a>如何使用映像範本
 
@@ -106,7 +106,7 @@ map.imageSprite.createFromTemplate('myTemplatedIcon', 'marker-flat', 'teal', '#f
 
 
 > [!TIP]
-> 影像範本也可以在地圖之外使用。 GetImageTemplate 運作會傳回具有預留位置的 SVG 字串;`{color}`, `{secondaryColor}`, `{scale}`, `{text}`. 取代這些預留位置值，以建立有效的 SVG 字串。 接著，您可以將 SVG 字串直接新增至 HTML DOM，或將它轉換成資料 URI，並將它插入影像標記中。 例如：
+> 影像範本也可以在地圖之外使用。 GetImageTemplate 運作會傳回具有預留位置的 SVG 字串;`{color}`, `{secondaryColor}`, `{scale}`, `{text}`. 取代這些預留位置值，以建立有效的 SVG 字串。 接著，您可以將 SVG 字串直接新增至 HTML DOM，或將它轉換成資料 URI，並將它插入影像標記中。 例如:
 > ```JavaScript
 > //Retrieve an SVG template and replace the placeholder values.
 > var svg = atlas.getImageTemplate('marker').replace(/{color}/, 'red').replace(/{secondaryColor}/, 'white').replace(/{text}/, '').replace(/{scale}/, 1);
@@ -119,7 +119,7 @@ map.imageSprite.createFromTemplate('myTemplatedIcon', 'marker-flat', 'teal', '#f
 
 如果您的應用程式使用不同圖示的相同圖示，或如果您要建立可新增其他影像範本的模組，您可以從 Azure 地圖服務 web SDK 輕鬆地新增和取出這些圖示。 在命名空間上使用下列靜態函式 `atlas` 。
 
-| Name | 傳回類型 | Description | 
+| 名稱 | 傳回類型 | 描述 | 
 |-|-|-|
 | `addImageTemplate(templateName: string, template: string, override: boolean)` | | 將自訂 SVG 影像範本新增至 [阿特拉斯] 命名空間。 |
 |  `getImageTemplate(templateName: string, scale?: number)`| 字串 | 依名稱捕獲 SVG 範本。 |
@@ -148,44 +148,337 @@ SVG 影像範本支援下列預留位置值：
 
 **符號圖示範本**
 
-|||||
-|:-:|:-:|:-:|:-:|
-| marker | 標記-粗 | 標記-圓形 | 標記-一般 |
-|![標記圖示](./media/image-templates/marker.png)|![標記-粗圖示](./media/image-templates/marker-thick.png)|![標記-圓形圖示](./media/image-templates/marker-circle.png)|![標記-平面圖標](./media/image-templates/marker-flat.png)|
-||||
-| 標記-正方形 | 標記-方形-叢集 | 標記-箭號 | 標記-球-圖釘 | 
-|![標記-正方形圖示](./media/image-templates/marker-square.png)|![標記-方形-叢集圖示](./media/image-templates/marker-square-cluster.png)|![標記-箭號圖示](./media/image-templates/marker-arrow.png)|![標記-球形釘選圖示](./media/image-templates/marker-ball-pin.png)|
-||||
-| 標記-方形圓角 | 標記-方形-進位-叢集 | 旗標 | 旗標-三角形 |
-| ![標記-方形圓角圖示](./media/image-templates/marker-square-rounded.png) | ![標記-方形-進位-叢集圖示](./media/image-templates/marker-square-rounded-cluster.png) | ![旗標圖示](./media/image-templates/flag.png) | ![旗標-三角形圖示](./media/image-templates/flag-triangle.png) |
-||||
-| 三角形 | 三角形-粗 | 三角形-向上箭號 | 三角形-箭號-左 |
-| ![三角形圖示](./media/image-templates/triangle.png) | ![三角形-粗圖示](./media/image-templates/triangle-thick.png) | ![三角形-向上箭號圖示](./media/image-templates/triangle-arrow-up.png) | ![三角形-箭號左圖示](./media/image-templates/triangle-arrow-left.png) |
-||||
-| 六邊形 | 六邊形-粗 | 六邊形-圓角 | 六邊形-進位-粗 |
-| ![六邊形圖示](./media/image-templates/hexagon.png) | ![六邊形-粗圖示](./media/image-templates/hexagon-thick.png) | ![六邊形-圓角圖示](./media/image-templates/hexagon-rounded.png) | ![六邊形-進位-粗圖示](./media/image-templates/hexagon-rounded-thick.png) |
-||||
-| 釘選 | 圖釘-round | 圓角-正方形 | 進位-正方形-粗 |
-| ![釘選圖示](./media/image-templates/pin.png) | ![圖釘-round 圖示](./media/image-templates/pin-round.png) | ![圓角-正方形圖示](./media/image-templates/rounded-square.png) | ![圓角-方形-粗圖示](./media/image-templates/rounded-square-thick.png) |
-||||
-| 向上箭號 | 向上箭號-細 | car ||
-| ![向上箭號圖示](./media/image-templates/arrow-up.png) | ![向上箭號-精簡型圖示](./media/image-templates/arrow-up-thin.png) | ![汽車圖示](./media/image-templates/car.png) | |
+:::row:::
+   :::column span="":::
+      marker
+   :::column-end:::
+   :::column span="":::
+      標記-粗
+   :::column-end:::
+   :::column span="":::
+      標記-圓形
+   :::column-end:::
+   :::column span="":::
+      標記-一般
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![標記圖示](./media/image-templates/marker.png)
+   :::column-end:::
+   :::column span="":::
+      ![標記-粗圖示](./media/image-templates/marker-thick.png)
+   :::column-end:::
+   :::column span="":::
+      ![標記-圓形圖示](./media/image-templates/marker-circle.png)
+   :::column-end:::
+   :::column span="":::
+      ![標記-平面圖標](./media/image-templates/marker-flat.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      標記-正方形
+   :::column-end:::
+   :::column span="":::
+      標記-方形-叢集
+   :::column-end:::
+   :::column span="":::
+      標記-箭號
+   :::column-end:::
+   :::column span="":::
+      標記-球-圖釘
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![標記-正方形圖示](./media/image-templates/marker-square.png)
+   :::column-end:::
+   :::column span="":::
+      ![標記-方形-叢集圖示](./media/image-templates/marker-square-cluster.png)
+   :::column-end:::
+   :::column span="":::
+      ![標記-箭號圖示](./media/image-templates/marker-arrow.png)
+   :::column-end:::
+   :::column span="":::
+      ![標記-球形釘選圖示](./media/image-templates/marker-ball-pin.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      標記-方形圓角
+   :::column-end:::
+   :::column span="":::
+      標記-方形-進位-叢集
+   :::column-end:::
+   :::column span="":::
+      flag
+   :::column-end:::
+   :::column span="":::
+      旗標-三角形
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![標記-方形圓角圖示](./media/image-templates/marker-square-rounded.png)
+   :::column-end:::
+   :::column span="":::
+      ![標記-方形-進位-叢集圖示](./media/image-templates/marker-square-rounded-cluster.png)
+   :::column-end:::
+   :::column span="":::
+      ![旗標圖示](./media/image-templates/flag.png)
+   :::column-end:::
+   :::column span="":::
+      ![旗標-三角形圖示](./media/image-templates/flag-triangle.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      三角形
+   :::column-end:::
+   :::column span="":::
+      三角形-粗
+   :::column-end:::
+   :::column span="":::
+      三角形-向上箭號
+   :::column-end:::
+   :::column span="":::
+      三角形-箭號-左
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![三角形圖示](./media/image-templates/triangle.png)
+   :::column-end:::
+   :::column span="":::
+      ![三角形-粗圖示](./media/image-templates/triangle-thick.png)
+   :::column-end:::
+   :::column span="":::
+      ![三角形-向上箭號圖示](./media/image-templates/triangle-arrow-up.png)
+   :::column-end:::
+   :::column span="":::
+      ![三角形-箭號左圖示](./media/image-templates/triangle-arrow-left.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      六邊形
+   :::column-end:::
+   :::column span="":::
+      六邊形-粗
+   :::column-end:::
+   :::column span="":::
+      六邊形-圓角
+   :::column-end:::
+   :::column span="":::
+      六邊形-進位-粗
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![六邊形圖示](./media/image-templates/hexagon.png)
+   :::column-end:::
+   :::column span="":::
+      ![六邊形-粗圖示](./media/image-templates/hexagon-thick.png)
+   :::column-end:::
+   :::column span="":::
+      ![六邊形-圓角圖示](./media/image-templates/hexagon-rounded.png)
+   :::column-end:::
+   :::column span="":::
+      ![六邊形-進位-粗圖示](./media/image-templates/hexagon-rounded-thick.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      釘選
+   :::column-end:::
+   :::column span="":::
+      圖釘-round
+   :::column-end:::
+   :::column span="":::
+      圓角-正方形
+   :::column-end:::
+   :::column span="":::
+      進位-正方形-粗
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![釘選圖示](./media/image-templates/pin.png)
+   :::column-end:::
+   :::column span="":::
+      ![圖釘-round 圖示](./media/image-templates/pin-round.png)
+   :::column-end:::
+   :::column span="":::
+      ![圓角-正方形圖示](./media/image-templates/rounded-square.png)
+   :::column-end:::
+   :::column span="":::
+      ![圓角-方形-粗圖示](./media/image-templates/rounded-square-thick.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      向上箭號
+   :::column-end:::
+   :::column span="":::
+      向上箭號-細
+   :::column-end:::
+   :::column span="":::
+      car
+   :::column-end:::
+   :::column span="":::
+      &nbsp;
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![向上箭號圖示](./media/image-templates/arrow-up.png)
+   :::column-end:::
+   :::column span="":::
+      ![向上箭號-精簡型圖示](./media/image-templates/arrow-up-thin.png)
+   :::column-end:::
+   :::column span="":::
+      ![汽車圖示](./media/image-templates/car.png)
+   :::column-end:::
+   :::column span="":::
+      &nbsp;
+   :::column-end:::
+:::row-end:::
+
 
 **多邊形填滿模式範本**
 
-|||||
-|:-:|:-:|:-:|:-:|
-| 棋盤 | 檢查程式-旋轉 | 圓形 | 圓圈-間距 |
-| ![檢查工具圖示](./media/image-templates/checker.png) | ![檢查器-旋轉圖示](./media/image-templates/checker-rotated.png) | ![圓形圖示](./media/image-templates/circles.png) | ![圓圈-間距圖示](./media/image-templates/circles-spaced.png) |
-|||||
-| 對角線-向上 | 對角線-行-向下 | 對角線-向上 | 對角線-向下 |
-| ![對角線-線條-向上圖示](./media/image-templates/diagonal-lines-up.png) | ![對角線-行向下圖示](./media/image-templates/diagonal-lines-down.png) | ![對角線-向上圖示](./media/image-templates/diagonal-stripes-up.png) | ![對角線-向下鍵](./media/image-templates/diagonal-stripes-down.png) |
-|||||
-| 格線 | 旋轉格線 | 旋轉格線-條紋 | x-填滿 |
-| ![格線圖示](./media/image-templates/grid-lines.png) | ![旋轉格線圖示](./media/image-templates/rotated-grid-lines.png) | ![旋轉格線-條紋圖示](./media/image-templates/rotated-grid-stripes.png) | ![x-填滿圖示](./media/image-templates/x-fill.png) |
-|||||
-| 鋸齒-紋 | 鋸齒-紋-垂直 | 句點 |  |
-| ![鋸齒-紋圖示](./media/image-templates/zig-zag.png) | ![鋸齒-紋-垂直圖示](./media/image-templates/zig-zag-vertical.png) | ![點圖示](./media/image-templates/dots.png) | |
+:::row:::
+   :::column span="":::
+      棋盤
+   :::column-end:::
+   :::column span="":::
+      檢查程式-旋轉
+   :::column-end:::
+   :::column span="":::
+      圓形
+   :::column-end:::
+   :::column span="":::
+      圓圈-間距
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![檢查工具圖示](./media/image-templates/checker.png)
+   :::column-end:::
+   :::column span="":::
+      ![檢查器-旋轉圖示](./media/image-templates/checker-rotated.png)
+   :::column-end:::
+   :::column span="":::
+      ![圓形圖示](./media/image-templates/circles.png)
+   :::column-end:::
+   :::column span="":::
+      ![圓圈-間距圖示](./media/image-templates/circles-spaced.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      對角線-向上
+   :::column-end:::
+   :::column span="":::
+      對角線-行-向下
+   :::column-end:::
+   :::column span="":::
+      對角線-向上
+   :::column-end:::
+   :::column span="":::
+      對角線-向下
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![對角線-線條-向上圖示](./media/image-templates/diagonal-lines-up.png)
+   :::column-end:::
+   :::column span="":::
+      ![對角線-行向下圖示](./media/image-templates/diagonal-lines-down.png)
+   :::column-end:::
+   :::column span="":::
+      ![對角線-向上圖示](./media/image-templates/diagonal-stripes-up.png)
+   :::column-end:::
+   :::column span="":::
+      ![對角線-向下鍵](./media/image-templates/diagonal-stripes-down.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      格線
+   :::column-end:::
+   :::column span="":::
+      旋轉格線
+   :::column-end:::
+   :::column span="":::
+      旋轉格線-條紋
+   :::column-end:::
+   :::column span="":::
+      x-填滿
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![格線圖示](./media/image-templates/grid-lines.png)
+   :::column-end:::
+   :::column span="":::
+      ![旋轉格線圖示](./media/image-templates/rotated-grid-lines.png)
+   :::column-end:::
+   :::column span="":::
+      ![旋轉格線-條紋圖示](./media/image-templates/rotated-grid-stripes.png)
+   :::column-end:::
+   :::column span="":::
+      ![x-填滿圖示](./media/image-templates/x-fill.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      鋸齒-紋
+   :::column-end:::
+   :::column span="":::
+      鋸齒-紋-垂直
+   :::column-end:::
+   :::column span="":::
+      句點
+   :::column-end:::
+   :::column span="":::
+      &nbsp;
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![鋸齒-紋圖示](./media/image-templates/zig-zag.png)
+   :::column-end:::
+   :::column span="":::
+      ![鋸齒-紋-垂直圖示](./media/image-templates/zig-zag-vertical.png)
+   :::column-end:::
+   :::column span="":::
+      ![點圖示](./media/image-templates/dots.png)
+   :::column-end:::
+   :::column span="":::
+      &nbsp;
+   :::column-end:::
+:::row-end:::
+<br>
 
 **預先載入的影像圖示**
 

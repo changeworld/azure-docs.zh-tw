@@ -1,5 +1,5 @@
 ---
-title: 建立受控私人端點以連接到您的資料來源結果。
+title: 建立受控私人端點以連接到您的資料來源結果
 description: 本文將告訴您如何從 Azure Synapse 工作區，為您的資料來源建立受控私人端點。
 author: RonyMSFT
 ms.service: synapse-analytics
@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: c6f0054364e5bbfb80fc4c1b9db6a4c15f365a81
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fae958542f1bc391f285104d80d1e19131470abe
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85193884"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87065483"
 ---
 # <a name="create-a-managed-private-endpoint-to-your-data-source-preview"></a>為您的資料來源建立受控私用端點（預覽）
 
@@ -31,7 +31,7 @@ ms.locfileid: "85193884"
 
 ## <a name="step-3-select-the-data-source-type"></a>步驟3：選取資料來源類型
 
-選取 [資料來源類型]。 在此情況下，目標資料來源是 ADLS Gen2 帳戶。 選取 [繼續]。
+選取 [資料來源類型]。 在此情況下，目標資料來源是 ADLS Gen2 帳戶。 選取 \[繼續\]。
 ![選取目標資料來源類型](./media/how-to-create-managed-private-endpoints/managed-private-endpoint-3.png)
 
 ## <a name="step-4-enter-information-about-the-data-source"></a>步驟4：輸入資料來源的相關資訊
@@ -46,6 +46,6 @@ ms.locfileid: "85193884"
 您也可以看到*核准狀態*為 [*擱置*]。 目標資源的擁有者可以核准或拒絕私人端點連接要求。 如果擁有者核准私用端點連接要求，則會建立私人連結。 若拒絕，則不會建立私用連結。
 ![受控私人端點建立要求狀態](./media/how-to-create-managed-private-endpoints/managed-private-endpoint-5.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 深入了解[受控私人端點](./synapse-workspace-managed-private-endpoints.md)

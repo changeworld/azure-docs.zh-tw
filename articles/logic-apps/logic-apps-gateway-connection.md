@@ -6,11 +6,12 @@ ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 02/14/2020
-ms.openlocfilehash: 096943ff796f9c12c7f8715cadce5c3085965d4d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b216fa668483ef6fc30c1054dd4f65361ad17934
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80657126"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87065950"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>從 Azure Logic Apps 連線到內部部署資料來源
 
@@ -47,9 +48,9 @@ ms.locfileid: "80657126"
 * SQL Server
 * Teradata
 
-Azure Logic Apps 支援透過資料閘道進行的讀取和寫入作業。 不過，這些作業的[承載大小有限制](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem#considerations)。 雖然閘道本身不會產生額外成本，但[Logic Apps 定價模式](../logic-apps/logic-apps-pricing.md)適用于 Azure Logic Apps 中的這些連接器和其他作業。
+Azure Logic Apps 支援透過資料閘道進行的讀取和寫入作業。 不過，這些作業的[承載大小有限制](/data-integration/gateway/service-gateway-onprem#considerations)。 雖然閘道本身不會產生額外成本，但[Logic Apps 定價模式](../logic-apps/logic-apps-pricing.md)適用于 Azure Logic Apps 中的這些連接器和其他作業。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 * 您已在[本機電腦上安裝內部部署資料閘道](../logic-apps/logic-apps-gateway-install.md)。
 
@@ -78,7 +79,7 @@ Azure Logic Apps 支援透過資料閘道進行的讀取和寫入作業。 不�
 
    ![為數據閘道新增 Azure 資源](./media/logic-apps-gateway-connection/add-azure-data-gateway-resource.png)
 
-1. 在 [**建立連線閘道**] 底下，為您的閘道資源提供此資訊。 當您完成時，請選取 [建立]。
+1. 在 [**建立連線閘道**] 底下，為您的閘道資源提供此資訊。 當您完成時，選取 [建立]。
 
    | 屬性 | 描述 |
    |----------|-------------|
@@ -116,11 +117,11 @@ Azure Logic Apps 支援透過資料閘道進行的讀取和寫入作業。 不�
 
    唯一的連線名稱可協助您稍後輕鬆地找到該連接，特別是當您建立多個連接時。 如果情況允許，也請在使用者名稱中包含完整網域。
 
-   範例如下：
+   以下是範例：
 
    ![建立邏輯應用程式與資料閘道之間的連線](./media/logic-apps-gateway-connection/logic-app-gateway-connection.png)
 
-1. 當您完成時，請選取 [建立]。
+1. 當您完成時，選取 [建立]。
 
 您的閘道連線現已可供邏輯應用程式使用。
 
@@ -152,7 +153,7 @@ Azure Logic Apps 支援透過資料閘道進行的讀取和寫入作業。 不�
 
 1. 如果尚未選取，請在您的閘道資源功能表上選取 [內部部署資料閘道]****。 在 [閘道資源] 工具列上，選取 [**刪除**]。
 
-   例如：
+   例如:
 
    ![刪除 Azure 中的閘道資源](./media/logic-apps-gateway-connection/delete-on-premises-data-gateway.png)
 
@@ -171,7 +172,7 @@ Azure Logic Apps 支援透過資料閘道進行的讀取和寫入作業。 不�
 
 [!INCLUDE [existing-gateway-location-changed](../../includes/logic-apps-existing-gateway-location-changed.md)]
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * [保護邏輯應用程式](./logic-apps-securing-a-logic-app.md)
 * [Logic Apps 範例和常見案例](./logic-apps-examples-and-scenarios.md)

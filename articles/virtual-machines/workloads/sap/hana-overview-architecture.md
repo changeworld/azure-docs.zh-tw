@@ -13,11 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/12/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 39fcf5d0fe2273c4debd3ae5ebe5fd1190ddc959
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d413b2babda4c73f9f29ce3750bf7d0461db43c1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77616957"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87065094"
 ---
 #  <a name="what-is-sap-hana-on-azure-large-instances"></a>什麼是 SAP HANA on Azure (大型執行個體)？
 
@@ -53,8 +54,8 @@ HANA 大型執行個體指南的不同文件涵蓋下列領域：
 - [在 Azure 上安裝和設定 SAP HANA (大型執行個體)](hana-installation.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 - [在 Azure 上 SAP Hana （大型實例）高可用性和嚴重損壞修復](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 - [Azure 上的 SAP Hana （大型實例）疑難排解和監視](troubleshooting-monitoring.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [使用 STONITH 在 SUSE 中進行高可用性設定](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/ha-setup-with-stonith)
-- [修訂版3戳記之類型 II Sku 的 OS 備份和還原](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/os-backup-type-ii-skus)
+- [使用 STONITH 在 SUSE 中進行高可用性設定](./ha-setup-with-stonith.md)
+- [修訂版3戳記之類型 II Sku 的 OS 備份和還原](./os-backup-type-ii-skus.md)
 
 **後續步驟**
 - 請參閱[認識詞彙](hana-know-terms.md)

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/26/2019
-ms.openlocfilehash: a9e6e8276733eeed88561ed39a6702aec76286a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07fb91f081719a2e51cff45be67bbe9f362123f6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85317781"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87066078"
 ---
 # <a name="create-azure-resource-manager-templates-to-automate-deployment-for-azure-logic-apps"></a>建立 Azure Resource Manager 範本以自動部署 Azure Logic Apps
 
@@ -49,14 +49,14 @@ Azure Logic Apps 提供預先建立的[邏輯應用程式 Azure Resource Manager
 
 這些範例示範如何使用 Azure Resource Manager 範本、Azure DevOps 中的 Azure Pipelines 和 Azure PowerShell 來建立和部署邏輯應用程式：
 
-* [範例：從 Azure Logic Apps 連接到 Azure 服務匯流排的佇列](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
-* [範例：從 Azure Logic Apps 連接到 Azure 儲存體帳戶](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
-* [範例：為 Azure Logic Apps 設定函數應用程式動作](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/set-up-an-azure-function-app-action-for-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
-* [範例：從 Azure Logic Apps 連接到整合帳戶](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-an-integration-account-from-azure-logic-apps-and-deploy-by-using-azure-devops-pipelines/)
+* [範例：從 Azure Logic Apps 連接到 Azure 服務匯流排的佇列](/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [範例：從 Azure Logic Apps 連接到 Azure 儲存體帳戶](/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [範例：為 Azure Logic Apps 設定函數應用程式動作](/samples/azure-samples/azure-logic-apps-deployment-samples/set-up-an-azure-function-app-action-for-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [範例：從 Azure Logic Apps 連接到整合帳戶](/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-an-integration-account-from-azure-logic-apps-and-deploy-by-using-azure-devops-pipelines/)
 
 ### <a name="install-powershell-modules"></a>安裝 PowerShell 模組
 
-1. 如果您還沒有這麼做，請安裝[Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps)。
+1. 如果您還沒有這麼做，請安裝[Azure PowerShell](/powershell/azure/install-az-ps)。
 
 1. 若要從[PowerShell 資源庫](https://www.powershellgallery.com/packages/LogicAppTemplate)安裝 LogicAppTemplate 模組的最簡單方式，請執行此命令：
 
@@ -80,7 +80,7 @@ Azure Logic Apps 提供預先建立的[邏輯應用程式 Azure Resource Manager
 
 ### <a name="generate-template-with-powershell"></a>使用 PowerShell 產生範本
 
-若要在安裝 LogicAppTemplate 模組並[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)之後產生範本，請執行此 PowerShell 命令：
+若要在安裝 LogicAppTemplate 模組並[Azure CLI](/cli/azure/?view=azure-cli-latest)之後產生範本，請執行此 PowerShell 命令：
 
 ```text
 PS> Get-LogicAppTemplate -Token (az account get-access-token | ConvertFrom-Json).accessToken -LogicApp <logic-app-name> -ResourceGroup <Azure-resource-group-name> -SubscriptionId $SubscriptionId -Verbose | Out-File C:\template.json
@@ -104,13 +104,13 @@ PS> Get-ParameterTemplate -TemplateFile $filename | Out-File '<parameters-file-n
 PS> Get-ParameterTemplate -TemplateFile $filename -KeyVault Static | Out-File $fileNameParameter
 ```
 
-| 參數 | 必要 | 說明 |
+| 參數 | 必要 | 描述 |
 |------------|----------|-------------|
-| TemplateFile | Yes | 範本檔案的檔案路徑 |
-| KeyVault | No | 列舉，描述如何處理可能的金鑰保存庫值。 預設值為 `None`。 |
+| TemplateFile | 是 | 範本檔案的檔案路徑 |
+| KeyVault | 否 | 列舉，描述如何處理可能的金鑰保存庫值。 預設為 `None`。 |
 ||||
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 > [!div class="nextstepaction"]
 > [部署邏輯應用程式範本](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md)

@@ -8,11 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/29/2020
-ms.openlocfilehash: 9398b40763e8226cedf788f9cefbf5ed28cd649d
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 61f3f2af61bc24f76d061de672a3eaacd54f7f0e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83739527"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87066118"
 ---
 # <a name="exchange-x12-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>在採用 Enterprise Integration Pack 的 Azure Logic Apps 中交換適用於 B2B 企業整合的 X12 訊息
 
@@ -86,7 +87,7 @@ ms.locfileid: "83739527"
 
 ![輸入訊息的結構描述](./media/logic-apps-enterprise-integration-x12/x12-receive-settings-schemas.png)
 
-在此區段，請在[整合帳戶](../logic-apps/logic-apps-enterprise-integration-accounts.md)中，為每個交易類型 (ST01) 和傳送者應用程式 (GS02) 選取[結構描述](../logic-apps/logic-apps-enterprise-integration-schemas.md)。 EDI 接收管線會比對輸入訊息中 ST01 與 GS02 的值與在此區段所設定值，以及比對輸入訊息的結構描述與在此區段所設定結構描述來解譯輸入訊息。 在完成每個列時，即會自動出現一個新的空白列。
+在此區段，請在[整合帳戶](./logic-apps-enterprise-integration-create-integration-account.md)中，為每個交易類型 (ST01) 和傳送者應用程式 (GS02) 選取[結構描述](../logic-apps/logic-apps-enterprise-integration-schemas.md)。 EDI 接收管線會比對輸入訊息中 ST01 與 GS02 的值與在此區段所設定值，以及比對輸入訊息的結構描述與在此區段所設定結構描述來解譯輸入訊息。 在完成每個列時，即會自動出現一個新的空白列。
 
 | 屬性 | 描述 |
 |----------|-------------|
@@ -209,7 +210,7 @@ ms.locfileid: "83739527"
 
 ![輸出訊息的結構描述](./media/logic-apps-enterprise-integration-x12/x12-send-settings-schemas.png)
 
-針對此區段，請在[整合帳戶](../logic-apps/logic-apps-enterprise-integration-accounts.md)中，為每個交易類型 (ST01) 選取[結構描述](../logic-apps/logic-apps-enterprise-integration-schemas.md)。 在完成每個列時，即會自動出現一個新的空白列。
+針對此區段，請在[整合帳戶](./logic-apps-enterprise-integration-create-integration-account.md)中，為每個交易類型 (ST01) 選取[結構描述](../logic-apps/logic-apps-enterprise-integration-schemas.md)。 在完成每個列時，即會自動出現一個新的空白列。
 
 | 屬性 | 描述 |
 |----------|-------------|
@@ -235,7 +236,7 @@ ms.locfileid: "83739527"
 
 ![輸出訊息的控制版本號碼](./media/logic-apps-enterprise-integration-x12/x12-send-settings-control-version-number.png)
 
-針對此區段，請在[整合帳戶](../logic-apps/logic-apps-enterprise-integration-accounts.md)中，為每個交換選取[結構描述](../logic-apps/logic-apps-enterprise-integration-schemas.md)。 在完成每個列時，即會自動出現一個新的空白列。
+針對此區段，請在[整合帳戶](./logic-apps-enterprise-integration-create-integration-account.md)中，為每個交換選取[結構描述](../logic-apps/logic-apps-enterprise-integration-schemas.md)。 在完成每個列時，即會自動出現一個新的空白列。
 
 | 屬性 | 描述 |
 |----------|-------------|
@@ -380,7 +381,7 @@ ms.locfileid: "83739527"
 
 ## <a name="connector-reference"></a>連接器參考
 
-如需有關此連接器的其他技術詳細資料 (例如連接器 Swagger 檔案中所述的動作和限制)，請參閱[連接器的參考頁面](https://docs.microsoft.com/connectors/x12/)。
+如需有關此連接器的其他技術詳細資料 (例如連接器 Swagger 檔案中所述的動作和限制)，請參閱[連接器的參考頁面](/connectors/x12/)。
 
 > [!NOTE]
 > 針對[整合服務環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 中的邏輯應用程式，此連接器其 ISE 標籤版本使用 [ISE 的 B2B 訊息限制](../logic-apps/logic-apps-limits-and-config.md#b2b-protocol-limits)。

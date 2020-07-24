@@ -7,12 +7,13 @@ ms.topic: conceptual
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 04/14/2020
-ms.openlocfilehash: 6997c1aaab8cbe635ccef21967a0fce1f735c1ab
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-terraform
+ms.openlocfilehash: ab729d34219c05ee76a2a14832f41342d29eab21
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103019"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87065791"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>商業市集合作夥伴與客戶使用狀況歸因
 

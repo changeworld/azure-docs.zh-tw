@@ -5,11 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 09/29/2018
 ms.author: tomfitz
-ms.openlocfilehash: baee83e08505ddabb4680b5bbb4101479010ea47
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 47c88e08e5d2eac09fbcd5b60a8ccd73b46c9616
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75652134"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87063761"
 ---
 # <a name="microsoftcomputecredentialscombo-ui-element"></a>Microsoft.Compute.CredentialsCombo UI 元素
 
@@ -19,15 +20,15 @@ ms.locfileid: "75652134"
 
 針對 Windows，使用者會看到：
 
-![Microsoft.Compute.CredentialsCombo Windows](./media/managed-application-elements/microsoft.compute.credentialscombo-windows.png)
+![Microsoft.Compute.CredentialsCombo Windows](./media/managed-application-elements/microsoft-compute-credentialscombo-windows.png)
 
 針對已選取密碼的 Linux，使用者會看到：
 
-![Microsoft.Compute.CredentialsCombo Linux 密碼](./media/managed-application-elements/microsoft.compute.credentialscombo-linux-password.png)
+![Microsoft.Compute.CredentialsCombo Linux 密碼](./media/managed-application-elements/microsoft-compute-credentialscombo-linux-password.png)
 
 針對已選取 SSH 公開金鑰的 Linux，使用者會看到：
 
-![Microsoft.Compute.CredentialsCombo Linux 金鑰](./media/managed-application-elements/microsoft.compute.credentialscombo-linux-key.png)
+![Microsoft.Compute.CredentialsCombo Linux 金鑰](./media/managed-application-elements/microsoft-compute-credentialscombo-linux-key.png)
 
 ## <a name="schema"></a>結構描述
 
@@ -116,7 +117,7 @@ ms.locfileid: "75652134"
 - 如果將 `options.hidePassword` 設為 **true**，就會將使用密碼驗證的選項加以隱藏。 只有在 `osPlatform` 是 **Linux** 時才可以使用。 預設值為 **false**。
 - 可使用 `customPasswordRegex` 屬性將允許密碼上的其他條件約束加以實作。 密碼無法自訂驗證時，就會顯示 `customValidationMessage` 中的字串。 這兩個屬性的預設值是 **null**。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 如需建立 UI 定義的簡介，請參閱[開始使用 CreateUiDefinition](create-uidefinition-overview.md)。
 * 如需 UI 元素中通用屬性的說明，請參閱 [CreateUiDefinition 元素](create-uidefinition-elements.md)。

@@ -3,12 +3,12 @@ title: 還原加密 VM 的 Key Vault 金鑰 & 秘密
 description: 了解如何使用 PowerShell 以 Azure 備份還原金鑰保存庫金鑰與密碼
 ms.topic: conceptual
 ms.date: 08/28/2017
-ms.openlocfilehash: 826b3917fda820ed02cde425ca5a394bffec0df1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 49628697b7a271fed55c752026026ab57b17cd4d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82186816"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067208"
 ---
 # <a name="restore-key-vault-key-and-secret-for-encrypted-vms-using-azure-backup"></a>使用 Azure 備份還原已加密 VM 的金鑰保存庫金鑰與密碼
 
@@ -19,7 +19,7 @@ ms.locfileid: "82186816"
 ## <a name="prerequisites"></a>必要條件
 
 * **備份已加密的 VM** - 已使用 Azure 備份將已加密的 Azure VM 備份。 如需如何備份已加密 Azure Vm 的詳細資訊，請參閱[使用 PowerShell 管理 Azure vm 的備份和還原一](backup-azure-vms-automation.md)文。
-* **設定 Azure 金鑰保存庫** – 先確定金鑰保存庫已存在，才能將金鑰和密碼還原至該金鑰保存庫。 請參閱[開始使用 Azure 金鑰保存庫](../key-vault/key-vault-get-started.md)一文，以取得金鑰保存庫管理的相關詳細資料。
+* **設定 Azure 金鑰保存庫** – 先確定金鑰保存庫已存在，才能將金鑰和密碼還原至該金鑰保存庫。 請參閱[開始使用 Azure 金鑰保存庫](../key-vault/general/overview.md)一文，以取得金鑰保存庫管理的相關詳細資料。
 * **還原磁碟** - 請確定您已使用 [PowerShell 步驟](backup-azure-vms-automation.md#restore-an-azure-vm)觸發還原作業，以還原加密 VM 的磁碟。 這是因為此作業會在您的儲存體帳戶中產生 JSON 檔案，其中包含要還原之加密 VM 的金鑰和祕密。
 
 ## <a name="get-key-and-secret-from-azure-backup"></a>從 Azure 備份取得金鑰和祕密

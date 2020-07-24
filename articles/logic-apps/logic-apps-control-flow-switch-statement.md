@@ -6,11 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/08/2018
-ms.openlocfilehash: 4f24efc4ea306046ab09119b859fa1d0853b25b6
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: d2c8271f0bc33bc47e64c85846061a9b77bbe66f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834521"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87066228"
 ---
 # <a name="create-switch-statements-that-run-workflow-actions-based-on-specific-values-in-azure-logic-apps"></a>建立 Switch 陳述式，以根據 Azure Logic Apps 中的特定值執行工作流程動作
 
@@ -120,7 +121,7 @@ ms.locfileid: "83834521"
 
 ## <a name="get-support"></a>取得支援
 
-* 如有任何問題，請瀏覽 [Azure Logic Apps 的 Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)。
+* 如有任何問題，請瀏覽 [Azure Logic Apps 的 Microsoft 問與答頁面](/answers/topics/azure-logic-apps.html)。
 * 若要提交或票選功能與建議，請造訪 [Azure Logic Apps 使用者意見反應網站](https://aka.ms/logicapps-wish)。
 
 ## <a name="next-steps"></a>後續步驟

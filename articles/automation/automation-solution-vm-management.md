@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: dbfb50b40b4705cae55ba6e4f1ef950b586b5fb5
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 2cbed4d6dd2a9c5e63e73d89e5327fa3759777fd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185869"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87064462"
 ---
 # <a name="startstop-vms-during-off-hours-overview"></a>停機期間啟動/停止 VM 概觀
 
@@ -49,7 +49,7 @@ ms.locfileid: "86185869"
 
 ### <a name="permissions-for-pre-existing-automation-account-and-log-analytics-workspace"></a>既有自動化帳戶和 Log Analytics 工作區的權限
 
-若要使用現有的自動化帳戶和 Log Analytics 工作區，以啟用 VM 的「停機期間啟動/停止 VM」功能，您在資源群組範圍內需要下列權限。 若要深入了解角色，請參閱 [Azure 資源的自訂角色](../role-based-access-control/custom-roles.md)。
+若要使用現有的自動化帳戶和 Log Analytics 工作區，以啟用 VM 的「停機期間啟動/停止 VM」功能，您在資源群組範圍內需要下列權限。 若要深入瞭解角色，請參閱[Azure 自訂角色](../role-based-access-control/custom-roles.md)。
 
 | 權限 | 影響範圍|
 | --- | --- |
@@ -107,7 +107,7 @@ ms.locfileid: "86185869"
 |Runbook | 參數 | 描述|
 | --- | --- | ---|
 |AutoStop_CreateAlert_Child | VMObject <br> AlertAction <br> WebHookURI | 從父系 Runbook 呼叫。 在自動停止案例中，此 Runbook 會為每個資源建立警示。|
-|AutoStop_CreateAlert_Parent | VMList<br> WhatIf：True 或 False  | 在目標訂用帳戶或資源群組中的 VM 上建立或更新 Azure 警示規則。 <br> `VMList`是以逗號分隔的 Vm 清單， (不含空格) ，例如 `vm1,vm2,vm3` 。<br> `WhatIf` 可驗證 Runbook 邏輯但不執行。|
+|AutoStop_CreateAlert_Parent | VMList<br> WhatIf：True 或 False  | 在目標訂用帳戶或資源群組中的 VM 上建立或更新 Azure 警示規則。 <br> `VMList`是以逗號分隔的 Vm 清單（不含空格），例如 `vm1,vm2,vm3` 。<br> `WhatIf` 可驗證 Runbook 邏輯但不執行。|
 |AutoStop_Disable | None | 停用「自動停止」警示和預設排程。|
 |AutoStop_VM_Child | WebHookData | 從父系 Runbook 呼叫。 警示規則會呼叫此 Runbook 以停止傳統 VM。|
 |AutoStop_VM_Child_ARM | WebHookData |從父系 Runbook 呼叫。 警示規則會呼叫此 Runbook 以停止 VM。  |
@@ -173,7 +173,7 @@ ms.locfileid: "86185869"
 如果每個雲端服務有 20 個以上的 VM，以下提供一些建議：
 
 * 使用父代 Runbook **ScheduledStartStop_Parent** 建立多個排程，並為每個排程指定 20 個 VM。 
-* 在 [排程] 屬性中，使用 `VMList` 參數將 VM 名稱指定為逗號分隔清單， (不會) 空格。 
+* 在 [排程] 屬性中，使用 `VMList` 參數將 VM 名稱指定為逗號分隔清單（無空格）。 
 
 否則，如果此功能的自動化作業執行超過三個小時，則根據[公平共用](automation-runbook-execution.md#fair-share)限制，作業會暫時卸載或停止。
 

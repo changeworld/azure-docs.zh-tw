@@ -7,11 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/25/2018
 ms.author: yushwang
-ms.openlocfilehash: d71e8af607ac15c708ff18a2f2a91e11ed36a987
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f3a6dd70bf57cabe8014c49e2cd3ee38c8de72b4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987739"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87064778"
 ---
 # <a name="how-to-configure-bgp-on-an-azure-vpn-gateway-by-using-cli"></a>如何使用 CLI 在 Azure VPN 閘道上設定 BGP
 
@@ -300,6 +301,6 @@ az network vpn-connection create -n VNet2ToVNet1 -g TestBGPRG2 --vnet-gateway1 /
 
 完成這些步驟之後，連線將會在幾分鐘之後建立。 當 VNet 對 VNet 連線完成後，便會啟動 BGP 對等處理工作階段。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-一旦完成您的連線，就可以將虛擬機器加入您的虛擬網路。 如需相關步驟，請參閱[建立虛擬機器](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+一旦完成您的連線，就可以將虛擬機器加入您的虛擬網路。 如需相關步驟，請參閱[建立虛擬機器](../virtual-machines/windows/quick-create-portal.md)。

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/16/2019
 ms.author: willzhan
 ms.reviewer: dwgeo
-ms.openlocfilehash: f3bd7bc78eeb62cc33a01ed31bb04d94078cae4b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b9a47ac9af1d96cbd65ed68dbafccefa3b95bb20
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80294342"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87065494"
 ---
 # <a name="offline-widevine-streaming-for-android"></a>適用於 Android 的離線 Widevine 串流  
 
@@ -29,7 +29,7 @@ ms.locfileid: "80294342"
 > * [第 2 版](offline-widevine-for-android.md)
 
 > [!NOTE]
-> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
+> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](../latest/index.yml)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
 
 除了保護線上串流的內容之外，媒體內容訂用帳戶與租賃服務能提供可在未連線到網際網路時使用的可下載內容。 在和網路中斷連線的飛行途中，您可能需要先將內容下載至手機或平板電腦，以在飛航模式中播放。 您可能會想要下載內容的其他案例如下：
 
@@ -181,7 +181,7 @@ Android 5.0 Lollipop 或更新版本不會發生此問題，因為 Android 5.0 �
 
 ### <a name="question"></a>問題
 
-如需 Widevine 安全性等級，在 Google 的[WIDEVINE DRM 架構總覽](https://storage.googleapis.com/wvdocs/Widevine_DRM_Architecture_Overview.pdf)檔中，它會定義三個不同的安全性層級。 然而，[關於 Widevine 授權範本的 Azure 媒體服務文件](https://docs.microsoft.com/azure/media-services/media-services-widevine-license-template-overview)則將安全性層級分成五個不同的層級。 這兩組不同的安全性層級之間有什麼關聯和對應？
+如需 Widevine 安全性等級，在 Google 的[WIDEVINE DRM 架構總覽](https://storage.googleapis.com/wvdocs/Widevine_DRM_Architecture_Overview.pdf)檔中，它會定義三個不同的安全性層級。 然而，[關於 Widevine 授權範本的 Azure 媒體服務文件](./media-services-widevine-license-template-overview.md)則將安全性層級分成五個不同的層級。 這兩組不同的安全性層級之間有什麼關聯和對應？
 
 ### <a name="answer"></a>回答
 
@@ -191,7 +191,7 @@ Android 5.0 Lollipop 或更新版本不會發生此問題，因為 Android 5.0 �
 2.  安全性層級 2：在 TEE 內執行密碼編譯 (但非視訊處理)：解密的緩衝區會傳回應用程式網域，並透過個別的視訊硬體或軟體進行處理。 不過，層級 2 中的密碼編譯資訊仍然只會在 TEE 內處理。
 3.  安全性層級 3：裝置上沒有 TEE。 可採取適當的措施以保護主機作業系統上的密碼編譯資訊和解密內容。 層級 3 實作也可能包括硬體密碼編譯引擎，但那只會提升效能，而非安全性。
 
-同時，在[關於 Widevine 授權範本的 Azure 媒體服務文件](https://docs.microsoft.com/azure/media-services/media-services-widevine-license-template-overview)中，content_key_specs 的 security_level 屬性可以有下列五個不同的值 (針對播放的用戶端穩健性需求)：
+同時，在[關於 Widevine 授權範本的 Azure 媒體服務文件](./media-services-widevine-license-template-overview.md)中，content_key_specs 的 security_level 屬性可以有下列五個不同的值 (針對播放的用戶端穩健性需求)：
 
 1.  以軟體為基礎的白箱加密為必要。
 2.  軟體加密和模糊化的解碼器為必要。

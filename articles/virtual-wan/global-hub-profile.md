@@ -2,17 +2,17 @@
 title: 下載 Azure 虛擬 WAN 全域或以中樞為基礎的 VPN 設定檔 |Microsoft Docs
 description: 了解虛擬 WAN 自動化可調整的分支對分支連線、可用的區域和夥伴。
 services: virtual-wan
-author: anzaman
+author: kumudD
 ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 4/20/2020
 ms.author: alzam
-ms.openlocfilehash: be2ea92ddbcce7c1e0ab5ba7d172cda0e05984fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d0fc2f608617ca00fea8b9ed5c4b874c65940263
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84753387"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87064795"
 ---
 # <a name="download-a-global-or-hub-based-profile-for-user-vpn-clients"></a>為使用者 VPN 用戶端下載以全域或中樞為基礎的設定檔
 

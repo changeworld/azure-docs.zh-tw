@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: 7e8f34f3d68a957dbd5bb13b69f751184d224e2c
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 785054222dc3281b11b5e6abe1b82f67e2fc5ace
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85961110"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87066656"
 ---
 # <a name="create-an-internal-load-balancer-using-a-template"></a>使用範本建立內部負載平衡器
 
@@ -40,7 +40,7 @@ ms.locfileid: "85961110"
 
 若要使用 PowerShell 部署您下載的範本，請依照下列步驟執行。
 
-1. 如果您從未用過 Azure PowerShell，請參閱 [如何安裝和設定 Azure PowerShell](/powershell/azure/overview) ，並遵循其中的所有指示登入 Azure，然後選取您的訂用帳戶。
+1. 如果您從未用過 Azure PowerShell，請參閱 [如何安裝和設定 Azure PowerShell](/powershell/azure/) ，並遵循其中的所有指示登入 Azure，然後選取您的訂用帳戶。
 2. 將參數檔案下載至本機磁碟。
 3. 編輯並儲存檔案。
 4. 執行**new-azresourcegroupdeployment** Cmdlet，以使用範本建立資源群組。
