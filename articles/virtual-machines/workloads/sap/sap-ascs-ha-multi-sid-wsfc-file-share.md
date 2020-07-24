@@ -16,11 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1de9c07c99666ed4011214bd9b426eac8f494991
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: acf60138aaecd914b30a020fdead292eb0ef1473
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82978173"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87035973"
 ---
 # <a name="sap-ascsscs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-file-share-on-azure"></a>在 Azure 上搭配 Windows Server 容錯移轉叢集和檔案共用的 SAP ASCS/SCS 執行個體多重 SID 高可用性
 
@@ -41,10 +42,10 @@ ms.locfileid: "82978173"
 >
 >一個 WSFC 叢集中 SAP ASCS/SCS 執行個體數目上限等於每個 Azure 內部負載平衡器的私人前端 IP 數目上限。
 >
-> 本文件所介紹的組態尚不支援用於 [Azure 可用性區域](https://docs.microsoft.com/azure/availability-zones/az-overview)
+> 本文件所介紹的組態尚不支援用於 [Azure 可用性區域](../../../availability-zones/az-overview.md)
 > 
 
-如需負載平衡器限制的詳細資訊，請參閱[網路限制：Azure Resource Manager][networking-limits-azure-resource-manager] 中的「每個負載平衡器的私人前端 IP」一節。 也請考慮使用 [Azure Standard Load Balancer SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) 而非 Azure 負載平衡器的基本 SKU。
+如需負載平衡器限制的詳細資訊，請參閱[網路限制：Azure Resource Manager][networking-limits-azure-resource-manager] 中的「每個負載平衡器的私人前端 IP」一節。 也請考慮使用 [Azure Standard Load Balancer SKU](../../../load-balancer/load-balancer-standard-availability-zones.md) 而非 Azure 負載平衡器的基本 SKU。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -240,7 +241,7 @@ _**圖 7：** 選取 [SMB 共用 - 快速]_
 
 ![圖 8：選取 [sapglobalhost2] 並在 Volume2 上指定路徑][sap-ha-guide-figure-8019]
 
-_**圖 8：** 選取 [sapglobalhost2] 並在 Volume2 上指定路徑_
+_**圖8：** 選取 [sapglobalhost2] 並在 Volume2 上指定路徑_
 
 <br>
 

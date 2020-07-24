@@ -4,12 +4,12 @@ description: Batch 支援 Azure AD 從 Batch 服務進行驗證。 了解兩種�
 ms.topic: how-to
 ms.date: 01/28/2020
 ms.custom: has-adal-ref
-ms.openlocfilehash: a8601c69c37e973118a7ec9521070864caffb101
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 7daf26d7c52e07be999bb93edd6fe694f79d1be2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170304"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87032454"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>使用 Active Directory 驗證 Batch 服務解決方案
 
@@ -193,7 +193,7 @@ Azure Batch 支援使用 [Azure Active Directory][aad_about] (Azure AD) 進行�
 }
 ```
 
-如需建立自訂角色的更完整資訊，請參閱[適用於 Azure 資源的自訂角色](../role-based-access-control/custom-roles.md)。
+如需有關建立自訂角色的一般資訊，請參閱[Azure 自訂角色](../role-based-access-control/custom-roles.md)。
 
 ### <a name="get-the-tenant-id-for-your-azure-active-directory"></a>取得 Azure Active Directory 的租用戶識別碼
 

@@ -3,19 +3,19 @@ title: 常見問題-適用于 Apache Kafka 的 Azure 事件中樞
 description: 本文將說明使用不同通訊協定 (AMQP、Apache Kafka 及 HTTPS) 的取用者和產生者如何在使用 Azure 事件中樞時交換事件。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 066024f657e011aac1449106ec32689f145c5534
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8bdd86d9f299a69d5f2d05bb8ec526ed94780608
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85314186"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87031678"
 ---
 # <a name="frequently-asked-questions---event-hubs-for-apache-kafka"></a>常見問題-適用于 Apache Kafka 的事件中樞 
 本文提供一些關於遷移至 Apache Kafka 事件中樞常見問題的解答。
 
 ## <a name="do-you-run-apache-kafka"></a>您是否執行 Apache Kafka？
 
-否。  我們會針對事件中樞基礎結構執行 Kafka API 作業。  由於 Apache Kafka 與事件中樞 AMQP 功能（也就是產生、接收、管理等等）之間有緊密的關聯性，因此我們能夠將已知的事件中樞可靠性帶入 Kafka PaaS 空間。
+不可以。  我們會針對事件中樞基礎結構執行 Kafka API 作業。  由於 Apache Kafka 與事件中樞 AMQP 功能（也就是產生、接收、管理等等）之間有緊密的關聯性，因此我們能夠將已知的事件中樞可靠性帶入 Kafka PaaS 空間。
 
 ## <a name="event-hubs-consumer-group-vs-kafka-consumer-group"></a>事件中樞取用者群組與 Kafka 取用者群組
 事件中樞取用者群組與事件中樞上 Kafka 取用者群組之間的差異為何？ 事件中樞上的 Kafka 取用者群組完全有別于標準事件中樞取用者群組。
@@ -41,5 +41,5 @@ ms.locfileid: "85314186"
 - [適用于事件中樞的 Apache Kafka 開發人員指南](apache-kafka-developer-guide.md)
 - [適用于事件中樞的 Apache Kafka 遷移指南](apache-kafka-migration-guide.md)
 - [適用于事件中樞的 Apache Kafka 疑難排解指南](apache-kafka-troubleshooting-guide.md)
-- [建議設定](https://github.com/Azure/azure-event-hubs-for-kafka/blob/master/CONFIGURATION.md)
+- [建議設定](apache-kafka-configurations.md)
 

@@ -6,11 +6,12 @@ author: TimothyMothra
 ms.author: tilee
 ms.date: 4/23/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: cf0c97fd65f9966bf42fa22e2c8f92263952cb7a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 333bba2b1d3cd83457196e38b827daa78199f235
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77655645"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87033508"
 ---
 # <a name="application-insights-for-azure-functions-supported-features"></a>適用於 Azure Functions 的 Application Insights 支援的功能
 
@@ -30,23 +31,23 @@ Azure Functions 提供與 Application Insights 的[內建整合](../../azure-fun
 | &bull; 例外狀況                   | 是             | 是               | 
 | &bull; 效能計數器         | 是             | 是               |
 | &bull; 相依性                   |                   |                   |               
-| &nbsp;&nbsp;&nbsp;&mdash; HTTP      |                 | Yes               | 
-| &nbsp;&nbsp;&nbsp;&mdash; ServiceBus|                 | Yes               | 
-| &nbsp;&nbsp;&nbsp;&mdash; EventHub  |                 | Yes               | 
-| &nbsp;&nbsp;&nbsp;&mdash; SQL       |                 | Yes               | 
+| &nbsp;&nbsp;&nbsp;&mdash; HTTP      |                 | 是               | 
+| &nbsp;&nbsp;&nbsp;&mdash; ServiceBus|                 | 是               | 
+| &nbsp;&nbsp;&nbsp;&mdash; EventHub  |                 | 是               | 
+| &nbsp;&nbsp;&nbsp;&mdash; SQL       |                 | 是               | 
 | | | | 
 | **支援的功能**                |                   |                   |               
 | &bull; QuickPulse/LiveMetrics       | 是             | 是               | 
-| &nbsp;&nbsp;&nbsp;&mdash; 保護控制通道|                 | Yes               | 
+| &nbsp;&nbsp;&nbsp;&mdash; 保護控制通道|                 | 是               | 
 | &bull; 取樣                     | 是             | 是               | 
-| &bull; 活動訊號                   |                 | Yes               | 
+| &bull; 活動訊號                   |                 | 是               | 
 | | | | 
-| **Correlation**                       |                   |                   |               
-| &bull; ServiceBus                     |                   | Yes               | 
-| &bull; EventHub                       |                   | Yes               | 
+| **Correlation (相互關聯)**                        |                   |                   |               
+| &bull; ServiceBus                     |                   | 是               | 
+| &bull; EventHub                       |                   | 是               | 
 | | | | 
 | **可設定**                      |                   |                   |           
-| &bull;可完整設定。<br/>如需相關指示，請參閱 [Azure Functions](https://github.com/Microsoft/ApplicationInsights-aspnetcore/issues/759#issuecomment-426687852)。<br/>請參閱 [Asp.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration) 以了解所有選項。               |                   | Yes                   | 
+| &bull;可完整設定。<br/>如需相關指示，請參閱 [Azure Functions](https://github.com/Microsoft/ApplicationInsights-aspnetcore/issues/759#issuecomment-426687852)。<br/>請參閱 [Asp.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration) 以了解所有選項。               |                   | 是                   | 
 
 
 ## <a name="performance-counters"></a>效能計數器
@@ -56,11 +57,11 @@ Azure Functions 提供與 Application Insights 的[內建整合](../../azure-fun
 
 ## <a name="live-metrics--secure-control-channel"></a>即時計量和保護控制通道
 
-您指定的自訂篩選條件準則會傳回給 Application Insights SDK 中的即時計量元件。 篩選條件可能會包含機密資訊，例如 customerIDs。 您可以利用祕密 API 金鑰來保護通道安全。 如需指示，請參閱[保護控制通道](https://docs.microsoft.com/azure/azure-monitor/app/live-stream#secure-the-control-channel)。
+您指定的自訂篩選條件準則會傳回給 Application Insights SDK 中的即時計量元件。 篩選條件可能會包含機密資訊，例如 customerIDs。 您可以利用祕密 API 金鑰來保護通道安全。 如需指示，請參閱[保護控制通道](./live-stream.md#secure-the-control-channel)。
 
 ## <a name="sampling"></a>取樣
 
-Azure Functions 依預設會在其設定中啟用取樣。 如需詳細資訊，請參閱[設定取樣](https://docs.microsoft.com/azure/azure-functions/functions-monitoring#configure-sampling)。
+Azure Functions 依預設會在其設定中啟用取樣。 如需詳細資訊，請參閱[設定取樣](../../azure-functions/functions-monitoring.md#configure-sampling)。
 
 如果您的專案相依于 Application Insights SDK 以進行手動遙測追蹤，則如果您的取樣設定與函式的取樣設定不同，可能會遇到奇怪的行為。 
 

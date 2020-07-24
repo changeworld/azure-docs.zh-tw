@@ -1,7 +1,7 @@
 ---
-title: '分析和監視資料集上的資料漂移 (預覽) '
+title: 分析和監視資料集上的資料漂移（預覽）
 titleSuffix: Azure Machine Learning
-description: 建立 Azure Machine Learning 資料集監視器 (預覽) 、監視資料集中的資料漂移，以及設定警示。
+description: 建立 Azure Machine Learning 資料集監視器（預覽）、監視資料集中的資料漂移，以及設定警示。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,19 +10,23 @@ ms.reviewer: sgilley
 ms.author: copeters
 author: lostmygithubaccount
 ms.date: 06/25/2020
-ms.openlocfilehash: 2e0f1765f9f91824f716cb70f591ce6b178c4563
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 7ee9d37b19d4796f826fbd9831f6e84a92a12e7c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223138"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87031179"
 ---
-# <a name="detect-data-drift-preview-on-datasets"></a>在資料集上偵測 (預覽) 的資料漂移
+# <a name="detect-data-drift-preview-on-datasets"></a>在資料集上偵測資料漂移（預覽）
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
+> [!IMPORTANT]
+> 在資料集上偵測資料漂移目前為公開預覽狀態。
+> 預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 瞭解如何監視資料漂移，並在漂移偏高時設定警示。  
 
-有了 Azure Machine Learning 資料集監視器 (預覽) ，您可以：
+使用 Azure Machine Learning 資料集監視器（預覽），您可以：
 * **分析資料中的漂移**，以瞭解它在一段時間內的變化。
 * **監視模型資料**，以瞭解定型和服務資料集之間的差異。  首先[從已部署的模型收集模型資料](how-to-enable-data-collection.md)。
 * **監視新的資料**，以瞭解任何基準和目標資料集之間的差異。
@@ -36,13 +40,13 @@ ms.locfileid: "86223138"
 > [!Important]
 > 所有版本都提供與 SDK 的監視資料漂移。 不過，透過 web 上的 studio 監視資料漂移僅限 Enterprise edition。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 若要建立及使用資料集監視器，您需要：
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前先建立免費帳戶。 立即試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
 * [Azure Machine Learning 工作區](how-to-manage-workspace.md)。
 * [已安裝適用于 Python 的 AZURE MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)，其中包括 azureml 資料集封裝。
-* 結構化 (表格式) 資料，其中包含檔案路徑、檔案名或資料行中所指定的時間戳記。
+* 結構化（表格式）資料，其中包含檔案路徑、檔案名或資料行中所指定的時間戳記。
 
 ## <a name="what-is-data-drift"></a>什麼是資料漂移？
 
@@ -83,7 +87,7 @@ Azure Machine Learning 藉由計算單一計量來抽象化比較資料集的複
 
 資料集監視相依于下列 Azure 服務。
 
-|Azure 服務  |描述  |
+|Azure 服務  |說明  |
 |---------|---------|
 | *資料集* | 漂移會使用 Machine Learning 資料集來捕獲定型資料，並比較模型定型的資料。  產生資料的設定檔會用來產生一些回報的計量，例如 min、max、distinct values、distinct values count。 |
 | *Azureml 管線和計算* | 漂移計算作業裝載于 azureml 管線中。  作業會視需要觸發，或依排程在漂移監視器建立時間所設定的計算上執行。
@@ -225,11 +229,11 @@ monitor = monitor.enable_schedule()
     | 設定 | 說明 | 提示 | 可變動 | 
     | ------- | ----------- | ---- | ------- |
     | 名稱 | 資料集監視器的名稱。 | | 否 |
-    | 功能 | 將分析一段時間內資料漂移的功能清單。 | 設定為模型的輸出功能 (s) 以測量概念漂移。 請勿包含在一段時間內自然漂移的功能 (月份、年度、索引等等 ) 。 調整功能清單之後，您可以回填和現有的資料漂移監視器。 | 是 | 
+    | 功能 | 將分析一段時間內資料漂移的功能清單。 | 設定為模型的輸出功能，以測量概念漂移。 請勿包含在一段時間內自然漂移的功能（月、年、索引等等）。 調整功能清單之後，您可以回填和現有的資料漂移監視器。 | 是 | 
     | 計算目標 | Azure Machine Learning 計算目標來執行資料集監視作業。 | | 是 | 
     | 啟用 | 啟用或停用資料集監視器管線上的排程 | 使用回填設定來停用排程來分析歷程記錄資料。 您可以在建立資料集監視器之後啟用它。 | 是 | 
-    | 頻率 | 在執行回填時，用來排程管線作業和分析歷程記錄資料的頻率。 選項包括 [每日]、[每週] 或 [每月]。 | 每次執行都會根據頻率來比較目標資料集內的資料： <li>每日：比較目標資料集的最新完整日與基準 <li>每週：比較目標資料集中的最近一周 (星期一-星期日) 和基準 <li>每月：比較目標資料集的最新完整月份與基準 | 否 | 
-    | 延遲 | 資料在資料集中抵達所需的時間（以小時為單位）。 例如，如果需要三天的時間，資料才會抵達 SQL DB （dataset 封裝），請將延遲設定為72。 | 建立資料集監視器之後無法變更 | 否 | 
+    | 頻率 | 在執行回填時，用來排程管線作業和分析歷程記錄資料的頻率。 選項包括 [每日]、[每週] 或 [每月]。 | 每次執行都會根據頻率來比較目標資料集內的資料： <li>每日：比較目標資料集的最新完整日與基準 <li>每週：比較目標資料集的最新完整周（星期一-星期日）與基準 <li>每月：比較目標資料集的最新完整月份與基準 | 否 | 
+    | Latency | 資料在資料集中抵達所需的時間（以小時為單位）。 例如，如果需要三天的時間，資料才會抵達 SQL DB （dataset 封裝），請將延遲設定為72。 | 建立資料集監視器之後無法變更 | 否 | 
     | 電子郵件地址 | 根據違反資料漂移百分比閾值而發出警示的電子郵件地址。 | 電子郵件是透過 Azure 監視器傳送。 | 是 | 
     | 閾值 | 電子郵件警示的資料漂移百分比閾值。 | 進一步的警示和事件可以在工作區相關聯 Application Insights 資源中的許多其他計量上設定。 | 是 |
 
@@ -290,7 +294,7 @@ monitor = monitor.enable_schedule()
     | 計量 | 描述 |  
     | ------ | ----------- |  
     | Euclidian 距離     |  針對分類資料行計算。Euclidean 距離是以兩個向量計算而成，從兩個資料集的相同類別的經驗分佈產生。0表示經驗分佈中沒有任何差異。它與0的偏差愈多，此資料行的漂移越多。您可以從這個計量的時間序列圖觀察趨勢，並在發現離開功能時很有説明。  |
-    | 唯一值 | 功能 (基數) 的唯一值數目。 |
+    | 唯一值 | 功能的唯一值（基數）數目。 |
 
 在此圖表上，選取單一日期來比較目標和此日期之間的功能分佈，以瞭解所顯示的功能。 對於數值特徵，這會顯示兩個機率分佈。  如果此功能為數值，則會顯示橫條圖。
 
@@ -304,9 +308,9 @@ monitor = monitor.enable_schedule()
 
 [![Azure 入口網站概觀](./media/how-to-monitor-datasets/ap-overview.png)](media/how-to-monitor-datasets/ap-overview-expanded.png)
 
-在左窗格的 [監視] 底下，選取 [記錄] (分析) ：
+在左窗格中，選取 [監視] 下的 [記錄（分析）]：
 
-![Application insights 總覽](./media/how-to-monitor-datasets/ai-overview.png)
+![Application Insights 概觀](./media/how-to-monitor-datasets/ai-overview.png)
 
 資料集監視器計量會儲存為 `customMetrics` 。 您可以在設定資料集監視器之後撰寫並執行查詢來加以查看：
 

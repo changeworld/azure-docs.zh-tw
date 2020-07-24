@@ -5,11 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/29/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 8da4ce7801cc98f9ffb32eb7b506eaf1ccd877dd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b117fca23b26919f3c404dd32ba64c0c89d66ae7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77562051"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87033559"
 ---
 # <a name="function-chaining-in-durable-functions---hello-sequence-sample"></a>Durable Functions 中的函式鏈結- Hello 序列範例
 
@@ -59,7 +60,7 @@ ms.locfileid: "77562051"
 
 所有的 JavaScript 協調流程函式都必須包含[ `durable-functions` 模組](https://www.npmjs.com/package/durable-functions)。 它是可讓您以 JavaScript 撰寫 Durable Functions 的程式庫。 協調流程函式與其他 JavaScript 函式之間有三項重大差異：
 
-1. 函數是產生器函式[。](https://docs.microsoft.com/scripting/javascript/advanced/iterators-and-generators-javascript)
+1. 函數是產生器函式[。](/scripting/javascript/advanced/iterators-and-generators-javascript)
 2. 此函式會包裝在對`durable-functions`模組的`orchestrator`方法進行的呼叫中 (在此是 `df`)。
 3. 此函式必須是同步的。 「Orchestrator」方法會處理呼叫「context.done」，因為函式應該只是「return」。
 
@@ -77,7 +78,7 @@ ms.locfileid: "77562051"
 
 `E1_SayHello` 的實作是相當簡單的字串格式化作業。
 
-您可以直接系結至傳遞至活動函式的型別，而不是系結至 `IDurableActivityContext` 。 例如：
+您可以直接系結至傳遞至活動函式的型別，而不是系結至 `IDurableActivityContext` 。 例如:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HelloSequence.cs?range=34-38)]
 

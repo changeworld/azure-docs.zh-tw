@@ -6,11 +6,13 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 05/29/2020
-ms.openlocfilehash: 581d77a5568b9533d85ff476b63001c8a237bc4e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-java
+ms.openlocfilehash: 1f48cd185f2aa25954627a9ff26f3e59b8e76e7a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84457196"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87037307"
 ---
 # <a name="how-to-self-diagnose-and-solve-problems-in-azure-spring-cloud"></a>如何自行診斷並解決 Azure 春季雲端中的問題
 Azure 春季雲端診斷是一種互動式體驗，可協助您針對應用程式進行疑難排解。 不需要組態。 當您發現問題時，Azure 春季雲端診斷會指出錯誤的原因，並引導您取得有助於疑難排解及解決問題的資訊。
@@ -24,7 +26,7 @@ Azure 春季雲端診斷是一種互動式體驗，可協助您針對應用程�
 
 ## <a name="navigate-to-the-diagnostics-page"></a>流覽至 [診斷] 頁面
 1. 登入 Azure 入口網站。
-2. 移至 Azure Spring Cloud 的 [概觀]**** 頁面。
+2. 移至 Azure Spring Cloud 的 [概觀] 頁面。
 3. 在頁面左側的功能表中，開啟 [**診斷並解決問題**]。
 
  ![診斷，解決對話方塊](media/spring-cloud-diagnose/diagnose-solve-dialog.png)

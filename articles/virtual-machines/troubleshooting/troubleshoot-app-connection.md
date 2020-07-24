@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: caf73ffbc18a603ace22acfbd0da490048da698a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a2fe1b8bdc80a5265add22bd3602050034471fe2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71058126"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87036432"
 ---
 # <a name="troubleshoot-application-connectivity-issues-on-virtual-machines-in-azure"></a>針對 Azure 中 虛擬機器上的應用程式連線問題進行疑難排解
 
@@ -117,7 +117,7 @@ ms.locfileid: "71058126"
   
   * 確認 VM 的端點組態允許連入流量，特別是通訊協定 (TCP 或 UDP) 和公用與私人連接埠號碼。
   * 確認端點上的存取控制清單 (ACL) 不會阻擋來自網際網路的連入流量。
-  * 如需詳細資訊，請參閱[如何設定虛擬機器的端點](../windows/classic/setup-endpoints.md)。
+  * 如需詳細資訊，請參閱[如何設定虛擬機器的端點](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints)。
 * 對於使用資源管理員部署模型建立的 VM：
   
   * 確認 VM 的輸入 NAT 規則組態允許連入流量，特別是通訊協定 (TCP 或 UDP) 和公用與私人連接埠號碼。
@@ -138,11 +138,9 @@ ms.locfileid: "71058126"
 
 ## <a name="step-4-if-you-cannot-access-the-application-use-ip-verify-to-check-the-settings"></a>步驟 4 如果您無法存取應用程式，請使用 IP 驗證來檢查設定。 
 
-如需詳細資訊，請參閱 [Azure 網路監視概觀](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)。 
+如需詳細資訊，請參閱 [Azure 網路監視概觀](../../network-watcher/network-watcher-monitoring-overview.md)。 
 
 ## <a name="additional-resources"></a>其他資源
 [針對以 Windows 為基礎之 Azure 虛擬機器的遠端桌面連線進行疑難排解](troubleshoot-rdp-connection.md)
 
 [疑難排解以 Linux 為基礎之 Azure 虛擬機器的安全殼層 (SSH) 連線](troubleshoot-ssh-connection.md)
-
-

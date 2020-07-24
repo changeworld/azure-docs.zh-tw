@@ -11,11 +11,12 @@ ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 03/05/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 13ce9204ad09d2ecb4b149cf50696aa73d927314
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 68c328bde853bbf4e48ab7ab1a6e2c7b51198f59
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85214361"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87030686"
 ---
 # <a name="troubleshoot-docker-deployment-of-models-with-azure-kubernetes-service-and-azure-container-instances"></a>針對使用 Azure Kubernetes Service 和 Azure 容器實例的模型進行 Docker 部署進行疑難排解 
 
@@ -100,6 +101,8 @@ ms.locfileid: "85214361"
 
 如果您在將模型部署至 ACI 或 AKS 時遇到問題，請嘗試將其部署為本機 Web 服務。 使用本機 Web 服務可讓您更輕鬆地針對問題進行疑難排解。 系統會下載包含模型的 Docker 映像並在您的本機系統上啟動。
 
+您可以在[MachineLearningNotebooks](https://github.com/Azure/MachineLearningNotebooks)存放庫中找到範例[本機部署筆記本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/deploy-to-local/register-model-deploy-local.ipynb)，以探索可執行檔範例。
+
 > [!WARNING]
 > 針對生產案例，不支援本機 Web 服務部署。
 
@@ -181,6 +184,7 @@ print(service.get_logs())
 # if you only know the name of the service (note there might be multiple services with the same name but different version number)
 print(ws.webservices['mysvc'].get_logs())
 ```
+
 ## <a name="container-cannot-be-scheduled"></a>無法排程容器
 
 將服務部署至 Azure Kubernetes Service 計算目標時，Azure Machine Learning 會嘗試使用要求的資源量來排程服務。 如果在5分鐘之後，叢集中沒有可用的適當資源量的節點，部署將會失敗並顯示訊息 `Couldn't Schedule because the kubernetes cluster didn't have available resources after trying for 00:05:00` 。 您可以藉由新增更多節點、變更節點的 SKU 或變更服務的資源需求，來解決這個錯誤。 

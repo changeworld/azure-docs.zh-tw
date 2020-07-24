@@ -1,6 +1,6 @@
 ---
-title: 在 PIM 中使用適用于 Azure 資源的自訂角色-Azure AD |Microsoft Docs
-description: 了解如何在 Azure AD Privileged Identity Management (PIM) 中使用適用於 Azure 資源的自訂角色。
+title: 在 PIM 中使用 Azure 自訂角色-Azure AD |Microsoft Docs
+description: 瞭解如何使用 Azure AD Privileged Identity Management （PIM）中的 Azure 自訂角色。
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -14,14 +14,14 @@ ms.subservice: pim
 ms.date: 11/08/2019
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa51508746d0024be0a5acfaeeac62e86db67d3f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d1c9255de6b9f449a89a994cb3286139daa28ea9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84743740"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87034094"
 ---
-# <a name="use-custom-roles-for-azure-resources-in-privileged-identity-management"></a>在 Privileged Identity Management 中使用適用于 Azure 資源的自訂角色
+# <a name="use-azure-custom-roles-in-privileged-identity-management"></a>在 Privileged Identity Management 中使用 Azure 自訂角色
 
 您可能需要將嚴格的 Privileged Identity Management （PIM）設定套用到您 Azure Active Directory （Azure AD）組織中特殊許可權角色的某些使用者，同時為其他人提供更大的自主性。 例如，假設您的組織雇用數個合約相關聯，以協助開發將在 Azure 訂用帳戶中執行的應用程式。
 
@@ -31,7 +31,7 @@ ms.locfileid: "84743740"
 
 ## <a name="create-the-custom-role"></a>建立自訂角色
 
-若要建立資源適用的自訂角色，請依照[建立 Azure 角色型存取控制適用的自訂角色](../role-based-access-control-custom-roles.md)所述步驟操作。
+若要建立資源的自訂角色，請遵循[Azure 自訂角色](../role-based-access-control-custom-roles.md)中所述的步驟。
 
 建立自訂角色時請包含描述性名稱，如此方可輕易記住您打算複製的內建角色。
 

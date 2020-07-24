@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: troubleshooting
-ms.reviewer: trbye, jmartens, larryfr, vaidyas, laobri
+ms.reviewer: jmartens, larryfr, vaidyas, laobri, tracych
 ms.author: trmccorm
 author: tmccrmck
-ms.date: 07/06/2020
-ms.openlocfilehash: 870563a1a27ee00c2f14935e5200f722136011a1
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.date: 07/16/2020
+ms.openlocfilehash: a6a3e9a7a914711f6b7c923ac2249ebf3285c877
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86026996"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87031009"
 ---
 # <a name="debug-and-troubleshoot-parallelrunstep"></a>ParallelRunStep 的偵錯和疑難排解
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -36,7 +36,7 @@ ParallelRunStep 作業具有分散的特性，因此會有來自數個不同來�
 
 - `~/logs/overview.txt`:此檔案會提供關於目前為止所建立的迷你批次 (也稱為工作) 數目，以及目前為止處理的迷你批次數目的高階資訊。 在這部分，會顯示作業的結果。 如果作業失敗，則會顯示錯誤訊息，以及應從何處開始進行疑難排解。
 
-- `~/logs/sys/master.txt`:此檔案會提供執行中作業的主要節點 (也稱為協調器) 檢視。 其中包含工作建立、進度監視和執行結果。
+- `~/logs/sys/master.txt`：此檔案會提供執行中作業的主要節點（也稱為協調器）。 其中包含工作建立、進度監視和執行結果。
 
 使用 EntryScript 協助程式和 print 陳述式從輸入指令碼產生的記錄，將位於下列檔案中：
 
@@ -61,11 +61,11 @@ ParallelRunStep 作業具有分散的特性，因此會有來自數個不同來�
 您也可以找到每個背景工作程序的資源使用量資訊。 這項資訊採用 CSV 格式，位於 `~/logs/sys/perf/overview.csv` 中。 您可以在下取得每個進程的相關資訊 `~logs/sys/processes.csv` 。
 
 ### <a name="how-do-i-log-from-my-user-script-from-a-remote-context"></a>如何從遠端內容中的使用者指令碼進行記錄？
-您可以依照下列範例程式碼的說明從 EntryScript 取得記錄器，使記錄顯示在入口網站的 **logs/user** 資料夾中。
+ParallelRunStep 可以根據 process_count_per_node 在一個節點上執行多個進程。 為了從節點上的每個進程整理記錄，並結合 print 和 log 語句，我們建議使用 ParallelRunStep 記錄器，如下所示。 您會從 EntryScript 取得記錄器，並讓記錄檔顯示在入口網站的**logs/user**資料夾中。
 
 **使用記錄器的範例輸入指令碼：**
 ```python
-from entry_script import EntryScript
+from azureml_user.parallel_run import EntryScript
 
 def init():
     """ Initialize the node."""
@@ -87,7 +87,9 @@ def run(mini_batch):
 
 ### <a name="how-could-i-pass-a-side-input-such-as-a-file-or-files-containing-a-lookup-table-to-all-my-workers"></a>如何將端輸入 (例如，包含查閱資料表的一或多個檔案) 傳至我所有的背景工作角色？
 
-建立包含端輸入的[資料集](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py)，並將其註冊至您的工作區。 將其傳至您 `ParallelRunStep` 的 `side_input` 參數。 此外，您可以在區段中新增其路徑， `arguments` 以輕鬆存取其掛接的路徑：
+使用者可以使用 ParalleRunStep 的 side_inputs 參數，將參考資料傳遞給腳本。 以 side_inputs 提供的所有資料集會裝載于每個背景工作節點上。 使用者可以藉由傳遞引數來取得掛接的位置。
+
+建立包含參考資料的[資料集](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py)，並向您的工作區註冊。 將其傳至您 `ParallelRunStep` 的 `side_inputs` 參數。 此外，您可以在區段中新增其路徑， `arguments` 以輕鬆存取其掛接的路徑：
 
 ```python
 label_config = label_ds.as_named_input("labels_input")

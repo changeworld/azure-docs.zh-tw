@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 07/09/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: 4ba48e5beb8ce4b4ae126dd23acbe0dec650f655
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 49a1b190ece4ae4e937757e88af325a29f4825c5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232146"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87031111"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>使用 Azure Resource Manager 範本建立 Azure Machine Learning 的工作區
 
@@ -30,7 +30,7 @@ ms.locfileid: "86232146"
 
 * **Azure 訂用帳戶**。 如果您沒有訂用帳戶，則可[試用免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
 
-* 若要從 CLI 使用範本，您需要 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.2.0) 或 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+* 若要從 CLI 使用範本，您需要 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/?view=azps-1.2.0) 或 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
 ## <a name="workspace-resource-manager-template"></a>工作區 Resource Manager 範本
 
@@ -154,6 +154,9 @@ New-AzResourceGroupDeployment `
 * 啟用工作區的高機密性設定
 * 啟用工作區的加密
 * 使用現有 Azure Key Vault 來擷取客戶管理的金鑰
+
+> [!IMPORTANT]
+> 建立工作區之後，即無法變更機密資料、加密、金鑰保存庫識別碼或金鑰識別碼的設定。 若要變更這些值，則必須使用新的值來建立新工作區。
 
 如需詳細資訊，請參閱[靜態加密](concept-enterprise-security.md#encryption-at-rest)。
 
@@ -353,6 +356,9 @@ New-AzResourceGroupDeployment `
 * 清除執行之間的本機暫存磁片。
 * 使用 key vault，將儲存體帳戶、容器登錄和 SSH 帳戶的認證，從執行層安全地傳遞至您的計算叢集。
 * 啟用 IP 篩選以確保基礎 batch 集區無法由 AzureMachineLearningService 以外的任何外部服務呼叫。
+
+    > [!IMPORTANT]
+    > 建立工作區之後，即無法變更機密資料、加密、金鑰保存庫識別碼或金鑰識別碼的設定。 若要變更這些值，則必須使用新的值來建立新工作區。
 
   如需詳細資訊，請參閱[靜態加密](concept-enterprise-security.md#encryption-at-rest)。
 

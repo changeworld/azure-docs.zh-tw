@@ -4,11 +4,12 @@ description: 了解可搭配 Azure Batch 服務用來開發解決方案的 API �
 ms.topic: conceptual
 ms.date: 05/22/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1a3b2bb080e80e5ddc5ac12413f312dcd930d03f
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: c7484e59391be8f4853c2394bff20c6d9676dec9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85958016"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87032187"
 ---
 # <a name="overview-of-batch-apis-and-tools"></a>Batch API 和工具的概觀
 
@@ -64,7 +65,7 @@ Azure Batch 有兩組 API，一個用於服務等級，另一個用於管理等�
 
 這些命令列工具可提供與 Batch 服務和 Batch 管理 API 相同的功能︰ 
 
-- [Batch PowerShell Cmdlet](/powershell/module/az.batch/)：[Azure PowerShell](/powershell/azure/overview) 模組中的 Azure Batch Cmdlet 可讓您使用 PowerShell 來管理 Batch 資源。
+- [Batch PowerShell Cmdlet](/powershell/module/az.batch/)：[Azure PowerShell](/powershell/azure/) 模組中的 Azure Batch Cmdlet 可讓您使用 PowerShell 來管理 Batch 資源。
 - [Azure CLI](/cli/azure)：Azure CLI 是一個跨平台工具組，可提供用來與許多 Azure 服務 (包括 Batch 服務和 Batch Management 服務) 互動的殼層命令。 如需搭配使用 Azure CLI 與 Batch 的詳細資訊，請參閱[使用 Azure CLI 管理 Batch 資源](batch-cli-get-started.md)。
 
 ## <a name="other-tools-for-application-development"></a>其他用於應用程式開發的工具

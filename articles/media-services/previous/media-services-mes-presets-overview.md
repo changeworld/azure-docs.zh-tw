@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 50c52369a5a957a4dd6279cac5079e2dea023106
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1d264b0ae0b06079a45cd1e862144a6920133901
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "61463398"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038437"
 ---
 # <a name="sample-presets-for-media-encoder-standard-mes"></a>媒體編碼器標準 (MES) 的範例預設
 
@@ -29,7 +29,7 @@ ms.locfileid: "61463398"
 「媒體服務」可完整支援自訂預設中的所有值，以滿足您的特定編碼需要和需求。 如果您需要自訂編碼預設，應該從本節所提供的下列其中一個系統預設著手，使用它來作為您自訂組態的範本。 如需這些預設中每個元素的意義說明，請參閱[媒體編碼器標準結構描述](media-services-mes-schema.md)主題。  
   
 > [!NOTE]
->  使用 4k 編碼的預設值時，您應該取得 `S3` 保留單元類型。 如需詳細資訊，請參閱 [如何調整編碼](https://azure.microsoft.com/documentation/articles/media-services-portal-encoding-units)。  
+>  使用 4k 編碼的預設值時，您應該取得 `S3` 保留單元類型。 如需詳細資訊，請參閱 [如何調整編碼](./media-services-scale-media-processing-overview.md)。  
 
 #### <a name="video-rotation-default-setting-in-presets"></a>預設中的影片旋轉預設設定：
 使用「媒體編碼器標準」時，預設會啟用影片旋轉。 如果您的影片是在行動裝置上以「直向」模式錄製的，則這些預設會先將影片旋轉至「橫向」模式，再進行編碼。
@@ -86,4 +86,4 @@ ms.locfileid: "61463398"
   
  [H264 單一位元速率低品質 SD (適用於 Android)](media-services-mes-preset-H264-Single-Bitrate-Low-Quality-SD-for-Android.md) 會產生位元速率為 56 kbps 的單一 MP4 檔案，而且是立體聲 AAC 音訊。  
   
- 如需與媒體服務編碼器相關的詳細資訊，請參閱[使用 Azure 媒體服務隨選編碼](https://azure.microsoft.com/documentation/articles/media-services-encode-asset/)。
+ 如需與媒體服務編碼器相關的詳細資訊，請參閱[使用 Azure 媒體服務隨選編碼](./media-services-encode-asset.md)。

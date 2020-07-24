@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2019
 ms.author: terrylan
-ms.openlocfilehash: 3925e39824d1702ff43a6b981ac997ddab658b96
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6058b0d72eafe3a44ebdbabf291af05c08e772b3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80548664"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038268"
 ---
 # <a name="security-recommendations-for-azure-marketplace-images"></a>Azure Marketplace 映像的安全性建議
 
@@ -27,9 +27,8 @@ ms.locfileid: "80548664"
 
 ## <a name="open-source-based-images"></a>開啟以來源為基礎的映像
 
-|||
-|--------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **類別**                                                 | **勾選**                                                                                                                                                                                                                                                                              |
+| 類別 | 勾選 |
+| -------- | ----- |
 | 安全性                                                     | 安裝 Linux 散發套件的所有最新安全性修補程式。                                                                                                                                                                                                              |
 | 安全性                                                     | 遵循業界指導方針來保護特定 Linux 散發套件的 VM 映射。                                                                                                                                                                                     |
 | 安全性                                                     | 只利用需要的 Windows 伺服器角色、功能、服務和網路連接埠來維持最少的使用量，藉以限制受攻擊面。                                                                                                                                               |
@@ -40,8 +39,8 @@ ms.locfileid: "80548664"
 | 安全性                                                     | 避免使用 LVM。                                                                                                                                                                                                                                            |
 | 安全性                                                     | 包含必要程式庫的最新版本： </br> - OpenSSL v1.0 或更新版本 </br> - Python 2.5 或更新版本 (強烈建議使用 Python 2.6+) </br> - Python pyasn1 套件 (如果尚未安裝) </br> - d.OpenSSL v 1.0 或更新版本                                                                |
 | 安全性                                                     | 清除 Bash/Shell 歷程記錄專案。                                                                                                                                                                                                                                             |
-| 網路                                                   | 預設包含 SSH 伺服器。 使用下列選項，將 [SSH 保持運作] 設定為 sshd config： ClientAliveInterval 180。                                                                                                                                                        |
-| 網路                                                   | 從映射中移除任何自訂網路設定。 刪除 resolv.conf： `rm /etc/resolv.conf` 。                                                                                                                                                                                |
+| 網路功能                                                   | 預設包含 SSH 伺服器。 使用下列選項，將 [SSH 保持運作] 設定為 sshd config： ClientAliveInterval 180。                                                                                                                                                        |
+| 網路功能                                                   | 從映射中移除任何自訂網路設定。 刪除 resolv.conf： `rm /etc/resolv.conf` 。                                                                                                                                                                                |
 | 部署                                                   | 安裝最新的 Azure Linux 代理程式。</br> -使用 RPM 或 Deb 套件進行安裝。  </br> - 您也可以使用手動安裝程序，但建議使用且慣用安裝程式套件。 </br> - 如果是從 GitHub 存放庫手動安裝代理程式，請先將 `waagent` 檔案複製到 `/usr/sbin` 並 (以 root 身分) 執行： </br>`# chmod 755 /usr/sbin/waagent` </br>`# /usr/sbin/waagent -install` </br>代理程式設定檔將會放在 `/etc/waagent.conf`。 |
 | 部署                                                   | 請確定 Azure 支援人員可以在必要時提供序列主控台輸出給我們的合作夥伴，並針對從雲端儲存體掛接的 OS 磁片提供足夠的時間。 將下列參數新增至影像核心開機行： `console=ttyS0 earlyprintk=ttyS0 rootdelay=300` 。 |
 | 部署                                                   | OS 磁碟上沒有交換磁碟分割。 交換可透過 Linux 代理程式要求，以便在本機資源磁碟上建立。         |
@@ -50,9 +49,8 @@ ms.locfileid: "80548664"
 
 ## <a name="windows-server-based-images"></a>以 Windows Server 為基礎的映像
 
-|||
-|-------------| -------------------------|
-| **類別**                                                     | **勾選**                                                                                                                                                                |
+| 類別 | 勾選 |
+|--------- | ----- |
 | 安全性                                                         | 使用安全的 OS 基本映像。 針對以 Windows Server 為基礎之任何映像的來源使用的 VHD，必須來自透過 Microsoft Azure 提供的 Windows Server OS 映像。 |
 | 安全性                                                         | 安裝所有最新的安全性更新。                                                                                                                                     |
 | 安全性                                                         | 應用程式不應該依賴受限的使用者名稱，例如 administrator、root 或 admin。                                                                |

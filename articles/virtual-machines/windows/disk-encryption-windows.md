@@ -8,16 +8,16 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: b423cc4cd933f84fccae5c2116be7abbdc288c67
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: edc52198208aa86772704bde7637a2801688da59
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203670"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87036126"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Windows VM 上的 Azure 磁碟加密案例
 
-Azure 磁碟加密 Windows 虛擬機器 (Vm) 會使用 Windows 的 BitLocker 功能來提供作業系統磁片和資料磁片的完整磁片加密。 此外，當 VolumeType 參數為 All 時，也會提供暫存磁碟的加密。
+Windows 虛擬機器（Vm）的 Azure 磁碟加密會使用 Windows 的 BitLocker 功能來提供作業系統磁片和資料磁片的完整磁片加密。 此外，當 VolumeType 參數為 All 時，也會提供暫存磁碟的加密。
 
 Azure 磁碟加密會與 [Azure Key Vault](disk-encryption-key-vault.md) 整合，協助您控制及管理磁碟加密金鑰與祕密。 如需服務的總覽，請參閱[適用于 Windows vm 的 Azure 磁碟加密](disk-encryption-overview.md)。
 
@@ -225,20 +225,20 @@ Azure 磁碟加密不適用於下列案例、功能和技術：
 
 - 將基本層 VM 或透過傳統 VM 建立方法所建立的 VM 加密。
 - 加密以軟體為基礎的 RAID 系統設定的 Vm。
-- 在設定 Windows 儲存空間的2016之前，將儲存空間直接存取 (S2D) 或 Windows Server 版本設定的 Vm 加密。
+- 在設定 Windows 儲存空間的2016之前，使用儲存空間直接存取（S2D）或 Windows Server 版本設定的 Vm 加密。
 - 與內部部署金鑰管理系統整合。
 - Azure 檔案 (共用檔案系統)。
 - 網路檔案系統 (NFS)。
 - 動態磁碟區。
 - Windows Server 容器，為每個容器建立動態磁碟區。
 - 暫時性 OS 磁碟。
-- 加密共用/分散式檔案系統（例如 (，但不限於) DFS、GFS、DRDB 和 CephFS）。
+- 共用/分散式檔案系統的加密，例如（但不限於） DFS、GFS、DRDB 和 CephFS。
 - 將已加密的 Vm 移到另一個訂用帳戶或區域。
 - 建立已加密 VM 的映射或快照集，並使用它來部署額外的 Vm。
-- Gen2 Vm (參閱： [Azure 上第2代 vm 的支援](generation-2.md#generation-1-vs-generation-2-capabilities)) 
-- Lsv2 系列 Vm (參閱： [Lsv2 系列](../lsv2-series.md)) 
+- Gen2 Vm （請參閱：[在 Azure 上支援第2代 vm](generation-2.md#generation-1-vs-generation-2-capabilities)）
+- Lsv2 系列 Vm （請參閱： [Lsv2 系列](../lsv2-series.md)）
 - 具有寫入加速器磁片的 M 系列 Vm。
-- 將[具有客戶管理金鑰的伺服器端加密](disk-encryption.md)套用至 ADE 所加密的 vm，反之亦然。
+- 將 ADE 套用至具有以[客戶管理的金鑰](disk-encryption.md)（SSE + CMK）加密之資料磁片的 vm，或將 SSE + CMK 套用至以 ADE 加密之 VM 上的資料磁片。
 - 將使用 ADE 加密的 VM 遷移至[使用客戶管理金鑰的伺服器端加密](disk-encryption.md)。
 
 

@@ -14,14 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/21/2020
 ms.author: yelevin
-ms.openlocfilehash: 964bab2b81f6ce69e77fd69cab55f6d1894e4edb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c57f4a49ac89f1347fc88f8bacddce3abab7e44e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85368379"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038217"
 ---
 # <a name="connect-ai-vectra-detect-to-azure-sentinel"></a>將 AI Vectra 偵測連接到 Azure Sentinel
+
+> [!IMPORTANT]
+> Azure Sentinel 中的 AI Vectra 偵測資料連線器目前處於公開預覽狀態。
+> 這項功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 本文說明如何將您的[AI Vectra](https://www.vectra.ai/product/cognito-detect)偵測設備連線到 Azure Sentinel。 AI Vectra 偵測資料連線器可讓您輕鬆地將 AI Vectra 偵測到 Azure Sentinel，讓您可以在活頁簿中查看資料、用它來建立自訂警示，並將其納入以改善調查。
 

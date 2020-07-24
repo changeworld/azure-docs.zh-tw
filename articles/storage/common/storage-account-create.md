@@ -9,17 +9,18 @@ ms.topic: how-to
 ms.date: 02/07/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 7ff7db383a74ce01f7f1a7bf49a33e41f91decf8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 219638f70797fc5ea413e4db72e528262df2fa87
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82853491"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87037044"
 ---
 # <a name="create-an-azure-storage-account"></a>建立 Azure 儲存體帳戶
 
 Azure 儲存體帳戶包含您所有的 Azure 儲存體資料物件：Blob、檔案、佇列、資料表和磁碟。 儲存體帳戶會為您的 Azure 儲存體資料提供唯一的命名空間，可透過 HTTP 或 HTTPS 從世界各地存取。 您的 Azure 儲存體帳戶中的資料既持久又高可用性、安全且可大幅擴充。
 
-在此操作說明文章中，您將瞭解如何使用[Azure 入口網站](https://portal.azure.com/)、 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)、 [Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest)或[Azure Resource Manager 範本](../../azure-resource-manager/management/overview.md)來建立儲存體帳戶。  
+在此操作說明文章中，您將瞭解如何使用[Azure 入口網站](https://portal.azure.com/)、 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/)、 [Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest)或[Azure Resource Manager 範本](../../azure-resource-manager/management/overview.md)來建立儲存體帳戶。  
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -47,12 +48,12 @@ Get-InstalledModule -Name "Az"
 
 您可以登入 Azure，並且以下列兩種方式之一執行 Azure CLI 命令：
 
-- 您可以從 Azure 入口網站的 Azure Cloud Shell 中執行 CLI 命令。
+- 您可以從 Azure 入口網站，在 Azure Cloud Shell 中執行 CLI 命令。
 - 您可以安裝 CLI，並在本機執行 CLI 命令。
 
 ### <a name="use-azure-cloud-shell"></a>使用 Azure Cloud Shell
 
-Azure Cloud Shell 是免費的 Bash Shell，您可以直接在 Azure 入口網站內執行。 Azure CLI 已預先安裝並設定為與您的帳戶搭配使用。 在 Azure 入口網站右上方區段的功能表上，按一下 [ **Cloud Shell** ] 按鈕：
+Azure Cloud Shell 是免費的 Bash Shell，您可以直接在 Azure 入口網站內執行。 Azure CLI 可預先安裝和設定，以便與您的帳戶搭配使用。 在 Azure 入口網站右上方區段的功能表上，按一下 [ **Cloud Shell** ] 按鈕：
 
 [![Cloud Shell](./media/storage-quickstart-create-account/cloud-shell-menu.png)](https://portal.azure.com)
 
@@ -96,7 +97,7 @@ az login
 
 # <a name="template"></a>[範本](#tab/template)
 
-N/A
+不適用
 
 ---
 
@@ -147,7 +148,7 @@ New-AzStorageAccount -ResourceGroupName $resourceGroup `
 
 |複寫選項  |SkuName 參數  |
 |---------|---------|
-|本機備援儲存體 (LRS)     |Standard_LRS         |
+|本地備援儲存體 (LRS)     |Standard_LRS         |
 |區域備援儲存體 (ZRS)     |Standard_ZRS         |
 |異地備援儲存體 (GRS)     |Standard_GRS         |
 |讀取權限異地備援儲存體 (GRS)     |Standard_RAGRS         |
@@ -190,7 +191,7 @@ az storage account create \
 
 |複寫選項  |sku 參數  |
 |---------|---------|
-|本機備援儲存體 (LRS)     |Standard_LRS         |
+|本地備援儲存體 (LRS)     |Standard_LRS         |
 |區域備援儲存體 (ZRS)     |Standard_ZRS         |
 |異地備援儲存體 (GRS)     |Standard_GRS         |
 |讀取權限異地備援儲存體 (GRS)     |Standard_RAGRS         |
@@ -199,7 +200,7 @@ az storage account create \
 
 # <a name="template"></a>[範本](#tab/template)
 
-您可以使用 Azure PowerShell 或 Azure CLI 來部署 Resource Manager 範本，以建立儲存體帳戶。 本操作說明文章中使用的範本是來自[Azure Resource Manager 快速入門範本](https://azure.microsoft.com/resources/templates/101-storage-account-create/)。 若要執行腳本，請選取 [**試試看**] 以開啟 Azure Cloud Shell。 若要貼上指令碼，請以滑鼠右鍵按一下 Shell，然後選取 [貼上]  。
+您可以使用 Azure PowerShell 或 Azure CLI 來部署 Resource Manager 範本，以建立儲存體帳戶。 本操作說明文章中使用的範本是來自[Azure Resource Manager 快速入門範本](https://azure.microsoft.com/resources/templates/101-storage-account-create/)。 若要執行腳本，請選取 [**試試看**] 以開啟 Azure Cloud Shell。 若要貼上指令碼，請以滑鼠右鍵按一下 Shell，然後選取 [貼上]。
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"

@@ -4,12 +4,12 @@ description: 在本文中，了解如何針對備份和還原 Azure 虛擬機器
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: e40b74cc5bf995e943b20ddcd21127ed4f7d7ead
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 5393ba1b7c604ef49cee83f759ed798cfc473417
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86184186"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87032828"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>針對 Azure 虛擬機器上的備份失敗進行疑難排解
 
@@ -21,13 +21,13 @@ ms.locfileid: "86184186"
 
 ### <a name="basic-troubleshooting"></a>基本疑難排解
 
-* 確定 VM 代理程式 (WA 代理程式) 是[最新版本](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms-prepare#install-the-vm-agent)。
-* 確定支援 Windows 或 Linux VM 作業系統版本，請參閱 [IaaS VM 備份支援矩陣](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas)。
+* 確定 VM 代理程式 (WA 代理程式) 是[最新版本](./backup-azure-arm-vms-prepare.md#install-the-vm-agent)。
+* 確定支援 Windows 或 Linux VM 作業系統版本，請參閱 [IaaS VM 備份支援矩陣](./backup-support-matrix-iaas.md)。
 * 確認另一個備份服務未執行。
-  * 若要確保沒有快照集擴充功能問題，請[解除安裝擴充功能，以強制重新載入並重試備份](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout)。
+  * 若要確保沒有快照集擴充功能問題，請[解除安裝擴充功能，以強制重新載入並重試備份](./backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md)。
 * 確認 VM 具有網際網路連線。
   * 確定另一個備份服務未執行。
-* 從 `Services.msc` 中，確定 **Windows Azure 客體代理程式**服務**執行中**。 如果遺漏 **Windows Azure 客體代理程式** 服務，請從[備份復原服務保存庫中的 Azure VM](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms-prepare#install-the-vm-agent)安裝該服務。
+* 從 `Services.msc` 中，確定 **Windows Azure 客體代理程式**服務**執行中**。 如果遺漏 **Windows Azure 客體代理程式** 服務，請從[備份復原服務保存庫中的 Azure VM](./backup-azure-arm-vms-prepare.md#install-the-vm-agent)安裝該服務。
 * **事件記錄檔** 可能會顯示來自其他備份產品 (例如，Windows Server 備份)，而不是由於 Azure 備份而產生的備份失敗。 請使用下列步驟來判斷問題是否與 Azure 備份有關：
   * 如果事件來源或訊息中的項目**備份**發生錯誤，請檢查 Azure IaaS VM 備份是否成功，以及是否已使用所需的快照集類型建立還原點。
   * 如果 Azure 備份運作中，則問題可能與另一個備份解決方案有關。
@@ -133,7 +133,7 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotWithoutThre
    * 讀取權限
 2. 刪除 [發給] 是傳統部署模型或 **Windows Azure CRP 憑證產生器**的所有憑證：
 
-   * [在本機電腦主控台上開啟憑證](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in) \(機器翻譯\)。
+   * [在本機電腦主控台上開啟憑證](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in) \(機器翻譯\)。
    * 在 [個人] > [憑證] 底下，刪除 [核發對象] 是傳統部署模型或 **Windows Azure CRP 憑證產生器**的所有憑證。
 3. 觸發 VM 備份作業。
 
@@ -208,8 +208,8 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v CalculateSnapshotTi
 
 VM 代理程式是 Azure 復原服務延伸模組的必要條件。 請安裝 Azure 虛擬機器代理程式並重新啟動註冊作業。 <br> <ol> <li>檢查是否已正確安裝 VM 代理程式。 <li>確定已正確設定 VM 設定上的旗標。</ol> 深入了解如何安裝 VM 代理程式，以及如何驗證 VM 代理程式安裝。
 
-## <a name="extensionsnapshotbitlockererror---the-snapshot-operation-failed-with-the-volume-shadow-copy-service-vss-operation-error"></a>ExtensionSnapshotBitlockerError-快照集作業失敗，磁碟區陰影複製服務 (VSS) 作業錯誤
-錯誤碼：ExtensionSnapshotBitlockerError <br/> 錯誤訊息：快照集作業失敗，磁碟區陰影複製服務 (VSS) 作業錯誤**此磁片磁碟機已由 BitLocker 磁碟機加密鎖定。您必須從 [控制台] 解除鎖定這個磁片磁碟機。**
+## <a name="extensionsnapshotbitlockererror---the-snapshot-operation-failed-with-the-volume-shadow-copy-service-vss-operation-error"></a>ExtensionSnapshotBitlockerError-快照集作業失敗，發生磁碟區陰影複製服務（VSS）作業錯誤
+錯誤碼：ExtensionSnapshotBitlockerError <br/> 錯誤訊息：快照集作業失敗，發生磁碟區陰影複製服務（VSS）作業錯誤，**此磁片磁碟機已由 BitLocker 磁碟機加密鎖定。您必須從 [控制台] 解除鎖定這個磁片磁碟機。**
 
 對 VM 上的所有磁碟機關閉 BitLocker，並檢查是否已解決 VSS 問題。
 
@@ -237,7 +237,7 @@ VM 代理程式是 Azure 復原服務延伸模組的必要條件。 請安裝 Az
 ## <a name="usererrorrequestdisallowedbypolicy---an-invalid-policy-is-configured-on-the-vm-which-is-preventing-snapshot-operation"></a>UserErrorRequestDisallowedByPolicy-VM 上設定了不正確原則，導致無法進行快照操作
 錯誤碼：UserErrorRequestDisallowedByPolicy <BR> 錯誤訊息：VM 上設定了會防止進行快照集作業的無效原則。
 
-如果您有[在環境內管理標籤](https://docs.microsoft.com/azure/governance/policy/tutorials/govern-tags)的 Azure 原則，請考慮將原則從[拒絕效果](https://docs.microsoft.com/azure/governance/policy/concepts/effects#deny)變更為[修改效果](https://docs.microsoft.com/azure/governance/policy/concepts/effects#modify)，或根據 [Azure 備份所需的命名結構描述](https://docs.microsoft.com/azure/backup/backup-during-vm-creation#azure-backup-resource-group-for-virtual-machines)，手動建立資源群組。
+如果您有[在環境內管理標籤](../governance/policy/tutorials/govern-tags.md)的 Azure 原則，請考慮將原則從[拒絕效果](../governance/policy/concepts/effects.md#deny)變更為[修改效果](../governance/policy/concepts/effects.md#modify)，或根據 [Azure 備份所需的命名結構描述](./backup-during-vm-creation.md#azure-backup-resource-group-for-virtual-machines)，手動建立資源群組。
 
 ## <a name="jobs"></a>工作
 
@@ -277,12 +277,12 @@ VM 代理程式是 Azure 復原服務延伸模組的必要條件。 請安裝 Az
 #### <a name="windows-vms"></a>Windows VM
 
 * 下載並安裝 [代理程式 MSI](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)。 您需要有系統管理員權限，才能完成安裝。
-* 針對使用傳統部署模型建立的虛擬機器，請[更新 VM 屬性](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/install-vm-agent-offline#use-the-provisionguestagent-property-for-classic-vms) \(英文\) 以指出代理程式已安裝。 Azure Resource Manager 虛擬機器不需要此步驟。
+* 針對使用傳統部署模型建立的虛擬機器，請[更新 VM 屬性](../virtual-machines/troubleshooting/install-vm-agent-offline.md#use-the-provisionguestagent-property-for-classic-vms) \(英文\) 以指出代理程式已安裝。 Azure Resource Manager 虛擬機器不需要此步驟。
 
 #### <a name="linux-vms"></a>Linux VM
 
 * 從散發套件存放庫安裝最新版的代理程式。 如需套件名稱的詳細資料，請參閱 [Linux 代理程式存放庫](https://github.com/Azure/WALinuxAgent) \(英文\)。
-* 針對使用傳統部署模型建立的 VM，請[更新 VM 屬性](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/install-vm-agent-offline#use-the-provisionguestagent-property-for-classic-vms)並確認代理程式已安裝。 資源管理員虛擬機器不需要此步驟。
+* 針對使用傳統部署模型建立的 VM，請[更新 VM 屬性](../virtual-machines/troubleshooting/install-vm-agent-offline.md#use-the-provisionguestagent-property-for-classic-vms)並確認代理程式已安裝。 資源管理員虛擬機器不需要此步驟。
 
 ### <a name="update-the-vm-agent"></a>更新 VM 代理程式
 
@@ -292,7 +292,7 @@ VM 代理程式是 Azure 復原服務延伸模組的必要條件。 請安裝 Az
 
 #### <a name="linux-vms"></a>Linux VM
 
-* 若要更新 Linux VM 代理程式，請遵循[更新 Linux VM 代理程式](../virtual-machines/linux/update-agent.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)一文中的指示。
+* 若要更新 Linux VM 代理程式，請遵循[更新 Linux VM 代理程式](../virtual-machines/extensions/update-linux-agent.md?toc=/azure/virtual-machines/linux/toc.json)一文中的指示。
 
     > [!NOTE]
     > 請一律使用散發套件存放庫來更新代理程式。
@@ -326,5 +326,5 @@ VM 備份仰賴發給底層儲存體的快照命令。 無法存取儲存體或�
 必須在來賓內啟用 DHCP，IaaS VM 備份才能運作。 如果您需要靜態私人 IP，請透過 Azure 入口網站或 PowerShell 加以設定。 確定 VM 內的 DHCP 選項已啟用。
 取得如何透過 PowerShell 設定靜態 IP 的詳細資訊：
 
-* [如何將靜態內部 IP 位址新增至現有的 VM](https://docs.microsoft.com/powershell/module/az.network/set-aznetworkinterfaceipconfig?view=azps-3.5.0#description)
+* [如何將靜態內部 IP 位址新增至現有的 VM](/powershell/module/az.network/set-aznetworkinterfaceipconfig#description)
 * [針對指派至網路介面的私人 IP 位址變更配置方法](../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface)

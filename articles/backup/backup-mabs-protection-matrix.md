@@ -3,12 +3,12 @@ title: MABS （Azure 備份伺服器） V3 UR1 保護矩陣
 description: 本文提供支援矩陣，其中列出 Azure 備份伺服器保護的所有工作負載、資料類型和安裝。
 ms.date: 03/19/2020
 ms.topic: conceptual
-ms.openlocfilehash: cfcb8fbf9f793cfbe11d2c25b3d2caa7018d0fd4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 974820389e84f727a9aab284716b3be9020c6dd8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538729"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87032590"
 ---
 # <a name="mabs-azure-backup-server-v3-ur1-protection-matrix"></a>MABS （Azure 備份伺服器） V3 UR1 保護矩陣
 
@@ -54,7 +54,7 @@ ms.locfileid: "86538729"
 
 | **工作負載** | **版本**                               | **Azure 備份伺服器安裝**                      | **支援的 Azure 備份伺服器** | **保護與修復**                                 |
 | ------------ | ----------------------------------------- | ------------------------------------------------------------ | ---------------------------------- | ------------------------------------------------------------ |
-| Linux        | 以 Hyper-v 或 VMware 來賓身分執行的 Linux | 實體伺服器、內部部署 Hyper-v VM、VMWare 中的 Windows VM | V3 UR1                             | Hyper-v 必須在 Windows Server 2012 R2 或 Windows Server 2016 上執行。 保護：整部虛擬機器   <br><br>   復原：整部虛擬機器   <br><br>    僅支援檔案一致的快照集。    <br><br>   如需支援的 Linux 散發套件和版本的完整清單，請參閱[Azure 背書的 linux 發行](../virtual-machines/linux/endorsed-distros.md)版一文。 |
+| Linux        | 以 Hyper-v 或 VMware 來賓身分執行的 Linux | 實體伺服器、內部部署 Hyper-v VM、VMWare 中的 Windows VM | V3 UR1                             | Hyper-v 必須在 Windows Server 2012 R2、Windows Server 2016 或 Windows Server 2019 上執行。 保護：整部虛擬機器   <br><br>   復原：整部虛擬機器   <br><br>    僅支援檔案一致的快照集。    <br><br>   如需支援的 Linux 散發套件和版本的完整清單，請參閱[Azure 背書的 linux 發行](../virtual-machines/linux/endorsed-distros.md)版一文。 |
 
 ## <a name="azure-expressroute-support"></a>Azure ExpressRoute 支援
 

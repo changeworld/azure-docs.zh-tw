@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 05/30/2017
 ms.author: genli
-ms.openlocfilehash: f221a0bdf579dbbf42ecf64e18803decfb718456
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c0f4e02a76044268946a4a482eaeccf5d622b8a7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80060653"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87036259"
 ---
 # <a name="troubleshoot-ssh-connections-to-an-azure-linux-vm-that-fails-errors-out-or-is-refused"></a>針對 SSH 連線至 Azure Linux VM 失敗、發生錯誤或被拒進行疑難排解
 本文可協助您找出並更正當您嘗試連接到 Linux 虛擬機器 (VM) 時，因為安全殼層 (SSH) 錯誤、SSH 連線失敗或 SSH 被拒而發生的問題。 您可以使用 Azure 入口網站、Azure CLI 或適用於 Linux 的 VM 存取擴充功能，針對連線問題進行疑難排解並予以解決。
@@ -34,7 +34,7 @@ ms.locfileid: "80060653"
 3. 確認[網路安全性群組](../../virtual-network/security-overview.md)規則允許 SSH 流量。
    * 請確定[網路安全性群組規則](#security-rules)存在，以允許 SSH 流量（預設為 TCP 通訊埠22）。
    * 若未使用 Azure 負載平衡器，則無法使用連接埠重新導向 / 對應功能。
-4. 檢查[VM 資源健康狀態](../../resource-health/resource-health-overview.md)。
+4. 檢查[VM 資源健康狀態](../../service-health/resource-health-overview.md)。
    * 確定 VM 回報告為狀況良好。
    * 如果您已[啟用開機診斷](boot-diagnostics.md)，請確認 VM 並未在記錄中回報開機錯誤。
 5. [重新開機 VM](#restart-vm)。
@@ -69,11 +69,11 @@ Azure 入口網站可供快速重設 SSH 組態或使用者認證，而不需在
 
 ### <a name="check-security-rules"></a><a id="security-rules" />檢查安全性規則
 
-使用[IP 流量驗證](../../network-watcher/network-watcher-check-ip-flow-verify-portal.md)來確認網路安全性群組中的規則是否會封鎖虛擬機器的流量。 您也可以檢閱有效的安全性群組規則，以確保輸入「允許」NSG 規則存在並已針對 SSH 連接埠 (預設值 22) 設定優先順序。 如需詳細資訊，請參閱[使用有效安全性規則對 VM 流量流程進行疑難排解](../../virtual-network/diagnose-network-traffic-filter-problem.md)。
+使用[IP 流量驗證](../../network-watcher/diagnose-vm-network-traffic-filtering-problem.md)來確認網路安全性群組中的規則是否會封鎖虛擬機器的流量。 您也可以檢閱有效的安全性群組規則，以確保輸入「允許」NSG 規則存在並已針對 SSH 連接埠 (預設值 22) 設定優先順序。 如需詳細資訊，請參閱[使用有效安全性規則對 VM 流量流程進行疑難排解](../../virtual-network/diagnose-network-traffic-filter-problem.md)。
 
 ### <a name="check-routing"></a>檢查路由
 
-使用網路監看員的[下一個躍點](../../network-watcher/network-watcher-check-next-hop-portal.md)功能，確認路由不會防止流量從虛擬機器往返路由傳送。 您也可以檢閱有效路由，以查看網路介面的所有有效路由。 如需詳細資訊，請參閱[使用有效路由來針對 VM 流量流程進行疑難排解](../../virtual-network/diagnose-network-routing-problem.md)。
+使用網路監看員的[下一個躍點](../../network-watcher/diagnose-vm-network-routing-problem.md)功能，確認路由不會防止流量從虛擬機器往返路由傳送。 您也可以檢閱有效路由，以查看網路介面的所有有效路由。 如需詳細資訊，請參閱[使用有效路由來針對 VM 流量流程進行疑難排解](../../virtual-network/diagnose-network-routing-problem.md)。
 
 ## <a name="use-the-azure-vm-serial-console"></a>使用 Azure VM 序列主控台
 [AZURE VM 序列主控台](./serial-console-linux.md)可讓您存取 Linux 虛擬機器的文字型主控台。 您可以使用主控台，在互動式 shell 中針對 SSH 連線進行疑難排解。 請確定您已符合使用序列主控台的[必要條件](./serial-console-linux.md#prerequisites)，並嘗試下列命令以進一步疑難排解您的 SSH 連線能力。
@@ -137,7 +137,7 @@ az vm user update --resource-group myResourceGroup --name myVM \
 
 ```json
 {
-    "reset_ssh":"True"
+    "reset_ssh":True
 }
 ```
 
@@ -173,7 +173,7 @@ az vm extension set --resource-group philmea --vm-name Ubuntu \
 ```
 
 ## <a name="use-the-azure-classic-cli"></a>使用 Azure 傳統 CLI
-如果尚未安裝，請 [安裝 Azure 傳統 CLI 並連線至您的 Azure 訂用帳戶](../../cli-install-nodejs.md)。 確定您使用的是 Resource Manager 模式，如下所示：
+如果尚未安裝，請 [安裝 Azure 傳統 CLI 並連線至您的 Azure 訂用帳戶](/cli/azure/install-classic-cli)。 確定您使用的是 Resource Manager 模式，如下所示：
 
 ```azurecli
 azure config mode arm
@@ -232,7 +232,7 @@ azure vm restart --resource-group myResourceGroup --name myVM
 ```
 
 ## <a name="redeploy-a-vm"></a><a id="redeploy-vm" />重新部署 VM
-您可以將 VM 重新部署到 Azure 中的另一個節點，這可能會修正任何的基礎網路問題。 如需重新部署 VM 的相關資訊，請參閱[將虛擬機器重新部署至新的 Azure 節點](../windows/redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+您可以將 VM 重新部署到 Azure 中的另一個節點，這可能會修正任何的基礎網路問題。 如需重新部署 VM 的相關資訊，請參閱[將虛擬機器重新部署至新的 Azure 節點](./redeploy-to-new-node-windows.md?toc=/azure/virtual-machines/windows/toc.json)。
 
 > [!NOTE]
 > 此作業完成之後，會遺失暫時磁碟資料，並且會更新與虛擬機器關聯的動態 IP 位址。
@@ -268,10 +268,10 @@ azure vm redeploy --resource-group myResourceGroup --name myVM
 * 透過 [Azure 入口網站](https://portal.azure.com)，重設遠端存取。 在 Azure 入口網站上選取您的 VM，然後選取 [重設遠端...]****。
 * 重新啟動 VM。 在 [Azure 入口網站](https://portal.azure.com)上選取您的 VM，然後選取 [重新啟動]****。
 
-* 將 VM 重新部署到新的 Azure 節點。 如需如何重新部署 VM 的資訊，請參閱[將虛擬機器重新部署至新的 Azure 節點](../windows/redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+* 將 VM 重新部署到新的 Azure 節點。 如需如何重新部署 VM 的資訊，請參閱[將虛擬機器重新部署至新的 Azure 節點](./redeploy-to-new-node-windows.md?toc=/azure/virtual-machines/windows/toc.json)。
 
     此作業完成之後，暫時磁碟機資料將會遺失，且將會更新與虛擬機器相關聯的動態 IP 位址。
-* 請依循[如何為 Linux 虛擬機器重設密碼或 SSH](../linux/classic/reset-access-classic.md) 中的指示進行，以：
+* 請依循[如何為 Linux 虛擬機器重設密碼或 SSH](/previous-versions/azure/virtual-machines/linux/classic/reset-access-classic) 中的指示進行，以：
 
   * 重設密碼或 SSH 金鑰。
   * 建立 *sudo* 使用者帳戶。
@@ -281,5 +281,5 @@ azure vm redeploy --resource-group myResourceGroup --name myVM
 
 ## <a name="additional-resources"></a>其他資源
 * 如果在依循這些步驟之後仍無法以 SSH 連線到您的 VM，請參閱[更詳細的疑難排解步驟](detailed-troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)以檢閱其他的步驟來解決您的問題。
-* 如需疑難排解應用程式存取的詳細資訊，請參閱[針對存取在 Azure 虛擬機器上執行的應用程式進行疑難排解](../windows/troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* 如需針對使用傳統部署模型所建立之虛擬機器進行疑難排解的詳細資訊，請參閱[如何為 Linux 虛擬機器重設密碼或 SSH](../linux/classic/reset-access-classic.md)。
+* 如需疑難排解應用程式存取的詳細資訊，請參閱[針對存取在 Azure 虛擬機器上執行的應用程式進行疑難排解](./troubleshoot-app-connection.md?toc=/azure/virtual-machines/linux/toc.json)
+* 如需針對使用傳統部署模型所建立之虛擬機器進行疑難排解的詳細資訊，請參閱[如何為 Linux 虛擬機器重設密碼或 SSH](/previous-versions/azure/virtual-machines/linux/classic/reset-access-classic)。

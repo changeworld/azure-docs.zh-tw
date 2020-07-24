@@ -6,19 +6,19 @@ author: cynthn
 ms.topic: article
 ms.date: 01/31/2020
 ms.author: cynthn
-ms.openlocfilehash: e014dbe440f1b7baf39c290b8b7ab8fcaea0bada
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: cf0d6639f215cd0fce8dc4bbc50b4e37f48d3f7a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86165850"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87036242"
 ---
 # <a name="change-the-availability-set-for-a-vm"></a>變更 VM 的可用性設定組
 下列步驟說明如何使用 Azure PowerShell 來變更 VM 的可用性設定組。 只有在建立 VM 時，才能將 VM 新增到可用性設定組中。 若要變更可用性設定組，您必須將虛擬機器刪除，然後再重新建立。 
 
 本文適用于 Linux 和 Windows Vm。
 
-本文最後一次測試是在 2019 年 2 月 12 日，使用 [Azure Cloud Shell](https://shell.azure.com/powershell) 和 [Az PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps) 1.2.0 版進行的。
+本文最後一次測試是在 2019 年 2 月 12 日，使用 [Azure Cloud Shell](https://shell.azure.com/powershell) 和 [Az PowerShell 模組](/powershell/azure/install-az-ps) 1.2.0 版進行的。
 
 此範例不會檢查 VM 是否已連接至負載平衡器。 如果您的 VM 已連接至負載平衡器，您將需要更新腳本來處理該案例。 
 
@@ -107,4 +107,3 @@ ms.locfileid: "86165850"
 ## <a name="next-steps"></a>後續步驟
 
 透過新增額外 [資料磁碟](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)，將額外的存放裝置新增到您的 VM。
-

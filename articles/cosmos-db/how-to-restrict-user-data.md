@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 12/9/2019
 ms.author: tvoellm
-ms.openlocfilehash: 88899dc697839b16c2b0cd24ac9233f87da26b41
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16452337eeda86a9b019897954179bfe6db6e1b2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261217"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87031987"
 ---
 # <a name="restrict-user-access-to-data-operations-only"></a>限制使用者只能存取資料作業
 
@@ -35,10 +35,10 @@ ms.locfileid: "85261217"
 > 若要在接下來的幾節中執行命令，您必須安裝 Azure PowerShell 模組3.0.0 或更新版本，以及您嘗試修改之訂用帳戶上的[Azure 擁有者角色](../role-based-access-control/built-in-roles.md#owner)。
 
 在下一節中的 PowerShell 腳本中，以您環境特定的值取代下列預留位置：
-- `$MySubscriptionId`-訂用帳戶識別碼，其中包含您想要限制許可權的 Azure Cosmos 帳戶。 例如： `e5c8766a-eeb0-40e8-af56-0eb142ebf78e` 。
-- `$MyResourceGroupName`-包含 Azure Cosmos 帳戶的資源群組。 例如： `myresourcegroup` 。
-- `$MyAzureCosmosDBAccountName`-您的 Azure Cosmos 帳戶名稱。 例如： `mycosmosdbsaccount` 。
-- `$MyUserName`- username@domain 您想要限制存取權之使用者的登入（）。 例如： `cosmosdbuser@contoso.com` 。
+- `$MySubscriptionId`-訂用帳戶識別碼，其中包含您想要限制許可權的 Azure Cosmos 帳戶。 例如：`e5c8766a-eeb0-40e8-af56-0eb142ebf78e`。
+- `$MyResourceGroupName`-包含 Azure Cosmos 帳戶的資源群組。 例如：`myresourcegroup`。
+- `$MyAzureCosmosDBAccountName`-您的 Azure Cosmos 帳戶名稱。 例如：`mycosmosdbsaccount`。
+- `$MyUserName`- username@domain 您想要限制存取權之使用者的登入（）。 例如：`cosmosdbuser@contoso.com`。
 
 ## <a name="select-your-azure-subscription"></a>選取您的 Azure 訂用帳戶
 
@@ -51,7 +51,7 @@ Select-AzSubscription $MySubscriptionId
 
 ## <a name="create-the-custom-azure-active-directory-role"></a>建立自訂 Azure Active Directory 角色
 
-下列腳本會建立具有 Azure Cosmos 帳戶「僅金鑰」存取權的 Azure Active Directory 角色指派。 角色是[以適用于 Azure 資源的自訂角色](../role-based-access-control/custom-roles.md)和[Azure Cosmos DB 的細微動作](../role-based-access-control/resource-provider-operations.md#microsoftdocumentdb)為基礎。 這些角色和動作是 `Microsoft.DocumentDB` Azure Active Directory 命名空間的一部分。
+下列腳本會建立具有 Azure Cosmos 帳戶「僅金鑰」存取權的 Azure Active Directory 角色指派。 角色是以[Azure 自訂角色](../role-based-access-control/custom-roles.md)和[Azure Cosmos DB 的細微動作為](../role-based-access-control/resource-provider-operations.md#microsoftdocumentdb)基礎。 這些角色和動作是 `Microsoft.DocumentDB` Azure Active Directory 命名空間的一部分。
 
 1. 首先，使用下列內容建立名為的 JSON 檔 `AzureCosmosKeyOnlyAccess.json` ：
 

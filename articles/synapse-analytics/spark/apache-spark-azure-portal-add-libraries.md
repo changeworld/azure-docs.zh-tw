@@ -1,5 +1,5 @@
 ---
-title: 在 Azure Synapse Analytics 中新增和管理 Apache Spark 的程式庫
+title: 新增和管理 Apache Spark 的程式庫
 description: 瞭解如何在 Azure Synapse Analytics 中新增和管理 Apache Spark 所使用的程式庫。
 services: synapse-analytics
 author: euangMS
@@ -8,24 +8,24 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 85635ff3a52236d0c53b72c68eda0d71debe1f61
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: b0231b28894ea7233e5f6e588300f03cb8784e5b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86145914"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87036449"
 ---
 # <a name="add-and-manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中新增和管理 Apache Spark 的程式庫
 
 Apache Spark 取決於許多程式庫來提供功能。 這些程式庫可以擴充或取代為其他程式庫或更新版本的舊版。
 
-您可以在 Spark 集區中新增 Python 套件 (預覽) 層級，並可在 Spark 作業定義層級新增以 jar 為基礎的套件。
+您可以在 Spark 集區（預覽）層級新增 Python 套件，並可在 Spark 作業定義層級新增以 .jar 為基礎的套件。
 
 ## <a name="adding-or-updating-python-libraries"></a>新增或更新 Python 程式庫
 
 Azure Synapse 分析中的 Apache Spark 有完整的 Anacondas 安裝加上額外的程式庫。 您可以在[Apache Spark 版本支援](apache-spark-version-support.md)中找到完整的程式庫清單。
 
-當 Spark 實例啟動時，會使用此安裝作為基底來建立新的虛擬環境。 此外，命令) 的*requirements.txt*檔案 (輸出， `pip freeze` 可以用來升級虛擬環境。 此檔案中所列用於安裝或升級的封裝，會在叢集啟動時從 PyPi 下載。 每次從該 Spark 集區建立 Spark 實例時，都會使用此需求檔案。
+當 Spark 實例啟動時，會使用此安裝作為基底來建立新的虛擬環境。 此外，也可以使用*requirements.txt*檔案（命令的輸出 `pip freeze` ）來升級虛擬環境。 此檔案中所列用於安裝或升級的封裝，會在叢集啟動時從 PyPi 下載。 每次從該 Spark 集區建立 Spark 實例時，都會使用此需求檔案。
 
 > [!IMPORTANT]
 >

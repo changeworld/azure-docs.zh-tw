@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 06/22/2020
 ms.author: v-mibufo
-ms.openlocfilehash: daefaca45adb061295928c64b6a0e328a12d8a3e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 186b1c46303be59e191a1754361e07a2003b997a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85268670"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87036177"
 ---
 # <a name="os-start-up--computer-restarted-unexpectedly-or-encountered-an-unexpected-error"></a>OS 啟動-電腦意外重新開機或發生未預期的錯誤
 
@@ -27,7 +27,7 @@ ms.locfileid: "85268670"
 
 ## <a name="symptom"></a>徵狀
 
-當您使用 [[開機診斷](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics)] 來查看 VM 的螢幕擷取畫面時，您會看到螢幕擷取畫面顯示 Windows 安裝失敗，並出現下列錯誤：
+當您使用 [[開機診斷](./boot-diagnostics.md)] 來查看 VM 的螢幕擷取畫面時，您會看到螢幕擷取畫面顯示 Windows 安裝失敗，並出現下列錯誤：
 
 **電腦意外重新開機或發生未預期的錯誤。Windows 安裝無法繼續。若要安裝 Windows，請按一下 [確定] 重新開機電腦，然後重新開機安裝。**
 
@@ -37,7 +37,7 @@ ms.locfileid: "85268670"
 
 ## <a name="cause"></a>原因
 
-電腦嘗試執行[一般化映射](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation)的初始開機，但因為處理的自訂回應檔案（unattend.xml）而遇到問題。 Azure 不支援自訂回應檔案。 
+電腦嘗試執行[一般化映射](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation)的初始開機，但因為處理的自訂回應檔案（unattend.xml）而遇到問題。 Azure 不支援自訂回應檔案。 
 
 回應檔案是特殊的 XML 檔案，其中包含您想要在安裝 Windows Server 作業系統時自動執行的設定定義和值。 設定選項包括如何分割磁片、在何處尋找要安裝的 Windows 映像、要套用的產品金鑰，以及您想要執行的其他命令的指示。
 
@@ -57,7 +57,7 @@ ms.locfileid: "85268670"
 
 - 在上一個命令中，將取代 `<NameOfYourAnswerFile.XML>` 為您的檔案名。
 
-若要修正此問題，請遵循[Azure 指引來準備/捕獲映射](https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed)，並準備新的一般化映射。 在 sysprep 期間，請勿使用 `/unattend:<answerfile>` 旗標。 相反地，請只使用下列旗標：
+若要修正此問題，請遵循[Azure 指引來準備/捕獲映射](../windows/upload-generalized-managed.md)，並準備新的一般化映射。 在 sysprep 期間，請勿使用 `/unattend:<answerfile>` 旗標。 相反地，請只使用下列旗標：
 
 `sysprep /oobe /generalize /shutdown`
 

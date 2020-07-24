@@ -3,11 +3,12 @@ title: 在 Azure Application Insights 中使用搜尋服務 | Microsoft Docs
 description: 搜尋和篩選 Web 應用程式傳送的原始遙測。
 ms.topic: conceptual
 ms.date: 07/30/2019
-ms.openlocfilehash: 8039a55784f63030f330d6c1e2061e99b8b63bbf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7a264f25f92bed1b93848c323fd59eafd7b09215
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84695652"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87033610"
 ---
 # <a name="using-search-in-application-insights"></a>在 Application Insights 中使用搜尋
 
@@ -17,7 +18,7 @@ ms.locfileid: "84695652"
 
 ## <a name="where-do-you-see-search"></a>「搜尋」在哪裡？
 
-### <a name="in-the-azure-portal"></a>在 Azure 入口網站
+### <a name="in-the-azure-portal"></a>在 Azure 入口網站中
 
 您可以從應用程式的 [Application Insights 總覽] 索引標籤（位於頂端列）或左側的 [調查] 底下開啟診斷搜尋。
 
@@ -91,7 +92,7 @@ ms.locfileid: "84695652"
 
 請搜尋完整單字，而不是子字串。 使用引號來括住的特殊字元。
 
-| String | 找*不*到 | 已找到 |
+| 字串 | 找*不*到 | 已找到 |
 | --- | --- | --- |
 | HomeController.About |`home`<br/>`controller`<br/>`out` | `homecontroller`<br/>`about`<br/>`"homecontroller.about"`|
 |美國|`Uni`<br/>`ted`|`united`<br/>`states`<br/>`united AND states`<br/>`"united states"`
@@ -147,4 +148,4 @@ ms.locfileid: "84695652"
 * [在分析中撰寫複雜的查詢](../../azure-monitor/log-query/get-started-portal.md)
 * [將記錄和自訂遙測傳送至 Application Insights](../../azure-monitor/app/asp-net-trace-logs.md)
 * [設定可用性和回應性測試](../../azure-monitor/app/monitor-web-app-availability.md)
-* [疑難排解](../../azure-monitor/app/troubleshoot-faq.md)
+* [疑難排解](../faq.md)

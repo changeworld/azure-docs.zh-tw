@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 4253e496aca4cbf71fab7ef0ee388b1356df5c16
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 82103da3f2547baab62d0d95cf9a6084ef099cba
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84456788"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87033762"
 ---
 # <a name="select-and-deploy-a-security-agent-on-your-iot-device"></a>在 IoT 裝置上選取並部署安全性代理程式
 
@@ -43,19 +44,18 @@ IoT 安全性代理程式類別的每個 Azure 資訊安全中心都提供一組
 
 |     | 以 C 為基礎的安全性代理程式 | 以 c # 為基礎的安全性代理程式 |
 | --- | ----------- | --------- |
-| 開放原始碼 | 適用于[GitHub](https://aka.ms/iot-security-github-c)中的[MIT 授權](https://en.wikipedia.org/wiki/MIT_License) | 適用于[GitHub](https://aka.ms/iot-security-github-cs)中的[MIT 授權](https://en.wikipedia.org/wiki/MIT_License) |
-| 開發語言    | C | C# |
-| 支援的 Windows 平臺？ | 否 | 是 |
-| Windows 必要條件 | --- | [WMI](https://docs.microsoft.com/windows/desktop/wmisdk/) |
-| 支援的 Linux 平臺？ | 是，x64 和 x86 | 是，僅限 x64 |
-| Linux 必要條件 | libunwind8、libcurl3、uuid-runtime、auditd、audispd-外掛程式 | libunwind8、libcurl3、uuid-runtime、auditd、audispd-外掛程式、sudo、netstat、iptables |
-| 磁片使用量 | 10.5 MB | 90 MB |
-| 記憶體使用量（平均） | 5.5 MB | 33 MB |
-| IoT 中樞的[驗證](concept-security-agent-authentication-methods.md) | 是 | Yes |
-| 安全性資料[收集](how-to-agent-configuration.md#supported-security-events) | 是 | Yes |
-| 事件彙總 | 是 | Yes |
-| 透過[安全性模組](concept-security-module.md)對應項進行遠端設定 | 是 | Yes |
-|
+| **開放原始碼** | 適用于[GitHub](https://aka.ms/iot-security-github-c)中的[MIT 授權](https://en.wikipedia.org/wiki/MIT_License) | 適用于[GitHub](https://aka.ms/iot-security-github-cs)中的[MIT 授權](https://en.wikipedia.org/wiki/MIT_License) |
+| **開發語言**    | C | C# |
+| **支援的 Windows 平臺？** | 否 | 是 |
+| **Windows 必要條件** | --- | [WMI](https://docs.microsoft.com/windows/desktop/wmisdk/) |
+| **支援的 Linux 平臺？** | 是，x64 和 x86 | 是，僅限 x64 |
+| **Linux 必要條件** | libunwind8、libcurl3、uuid-runtime、auditd、audispd-外掛程式 | libunwind8、libcurl3、uuid-runtime、auditd、audispd-外掛程式、sudo、netstat、iptables |
+| **磁片使用量** | 10.5 MB | 90 MB |
+| **記憶體使用量（平均）** | 5.5 MB | 33 MB |
+| **IoT 中樞的[驗證](concept-security-agent-authentication-methods.md)** | 是 | 是 |
+| **安全性資料[收集](how-to-agent-configuration.md#supported-security-events)** | 是 | 是 |
+| **事件彙總** | 是 | 是 |
+| **透過[安全性模組](concept-security-module.md)對應項進行遠端設定** | 是 | 是 |
 
 ## <a name="security-agent-installation-guidelines"></a>安全性代理程式安裝指導方針
 

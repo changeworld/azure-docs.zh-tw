@@ -3,11 +3,12 @@ title: Web 應用程式效能監視-Azure 應用程式深入資訊
 description: Application Insights 如何融入 DevOps 循環
 ms.topic: conceptual
 ms.date: 12/21/2018
-ms.openlocfilehash: 24095aade80022d1e1ebb38357971512bfc873c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fa62e8840c14e87d24db029d6bb7a215124a0511
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77669687"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87033677"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>使用 Application Insights 深入診斷 Web 應用程式
 ## <a name="why-do-i-need-application-insights"></a>我為什麼需要 Application Insights 呢？
@@ -109,7 +110,7 @@ Web 系統中的失敗通常是由組態問題或其許多元件之間的互動�
 ![應用程式對應](./media/devops/0050.png)
 
 ## <a name="application-insights-analytics"></a>Application Insights 分析
-使用 [分析](../../azure-monitor/app/analytics.md)，您就能利用功能強大的 SQL 式語言撰寫任意查詢。  將各種不同的觀點連結在一起時，跨整個應用程式堆疊的診斷就會變得很容易，而您可以詢問正確的問題，以便將服務效能與商務計量和客戶體驗相互關聯。 
+使用 [分析](../log-query/log-query-overview.md)，您就能利用功能強大的 SQL 式語言撰寫任意查詢。  將各種不同的觀點連結在一起時，跨整個應用程式堆疊的診斷就會變得很容易，而您可以詢問正確的問題，以便將服務效能與商務計量和客戶體驗相互關聯。 
 
 您可以查詢您儲存在入口網站中的所有遙測執行個體和未經處理的計量資料。 語言包括篩選、聯結、彙總及其他作業。 您可以計算欄位並執行統計分析。 目前提供表格式和圖形視覺效果。
 
@@ -159,4 +160,3 @@ Visual Studio 和 Eclipse 提供工具，可為您正在開發的專案設定正
 * [IIS 伺服器](../../azure-monitor/app/monitor-performance-live-website-now.md)，也適用于[Azure App Service](../../azure-monitor/app/app-insights-overview.md)。
 * 在開發期間檢測您的專案。 您可以針對 [ASP.NET](../../azure-monitor/app/asp-net.md) 或 [Java](../../azure-monitor/app/java-get-started.md) 應用程式，以及 [Node.js](../../azure-monitor/app/nodejs.md) 和許多[其他類型](../../azure-monitor/app/platforms.md)執行此動作。 
 * 藉由新增簡短的程式碼片段來檢測 [任何網頁](../../azure-monitor/app/javascript.md) 。
-

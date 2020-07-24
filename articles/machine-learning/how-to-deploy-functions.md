@@ -11,11 +11,12 @@ author: vaidyas
 ms.reviewer: larryfr
 ms.date: 03/06/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 3afe5d0993f7e647cbae1281cb9e7387df6e2f50
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b2f42729b97f4a02e549766dc816db8361b3b8e6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84560400"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87030924"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-preview"></a>將機器學習模型部署到 Azure Functions （預覽）
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -55,6 +56,7 @@ ms.locfileid: "84560400"
     >
     > 根據預設，封裝函式時，會將輸入視為文字。 如果您有興趣取用輸入的原始位元組（例如，針對 Blob 觸發程式），您應該使用[AMLRequest 來接受原始資料](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where#binary-data)。
 
+如需輸入腳本的詳細資訊，請參閱[定義評分程式碼](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where#script)
 
 * 執行專案腳本或模型所**需的相依性，例如**helper 腳本或 Python/Conda 套件
 

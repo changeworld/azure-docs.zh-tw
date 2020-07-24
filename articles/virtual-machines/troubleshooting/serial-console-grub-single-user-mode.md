@@ -13,11 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: alsin
-ms.openlocfilehash: 06cb3fe5d551ddfc95fcbd37cd9620adebd825c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e31a10b1086679b7c2493f5a6d6b62f75e363dd4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "70883920"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87036466"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>使用序列主控台來存取 GRUB 與單一使用者模式
 當您啟動虛擬機器（VM）時，可能是您第一次看到的是最重要的整合開機載入器（GRUB）。 因為它是在作業系統啟動之前顯示，所以無法透過 SSH 存取 GRUB。 在 GRUB 中，您可以修改開機設定以開機進入單一使用者模式，還有其他專案。
@@ -36,7 +37,7 @@ ms.locfileid: "70883920"
 ## <a name="general-grub-access"></a>一般 GRUB 存取
 若要存取 GRUB，請在序列主控台窗格開啟時，重新開機您的 VM。 某些散發套件需要鍵盤輸入以顯示 GRUB，而其他散發則會自動顯示 GRUB 幾秒鐘，讓使用者鍵盤輸入可以取消超時。
 
-若要能夠存取單一使用者模式，您必須確定已在您的 VM 上啟用 GRUB。 視您的散發套件而定，可能需要進行一些設定工作，才能確保已啟用 GRUB。 如需散發特定的資訊，請參閱下一節和我們的[Linux On Azure 支援](https://blogs.msdn.microsoft.com/linuxonazure/2018/10/23/why-proactively-ensuring-you-have-access-to-grub-and-sysrq-in-your-linux-vm-could-save-you-lots-of-down-time/)頁面。
+若要能夠存取單一使用者模式，您必須確定已在您的 VM 上啟用 GRUB。 視您的散發套件而定，可能需要進行一些設定工作，才能確保已啟用 GRUB。 如需散發特定的資訊，請參閱下一節。
 
 ### <a name="restart-your-vm-to-access-grub-in-serial-console"></a>將您的 VM 重新啟動以在序列主控台中存取 GRUB
 您可以將滑鼠移至 [**重新開機**] 按鈕，然後選取 [**重新開機 vm**]，以在序列主控台內重新開機 vm。 [重新開機] 的通知會顯示在窗格底部。
@@ -112,7 +113,7 @@ GRUB_CMDLINE_LINUX="console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0,115200
 
    系統會提示您輸入系統管理員密碼，才能進入單一使用者模式。 這個密碼是您在上一個指示中建立的密碼。
 
-    ![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-enter-emergency-shell.gif)
+    ![顯示命令列介面的動畫影像。 使用者選取伺服器，尋找核心行的結尾，然後輸入指定的文字。](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-enter-emergency-shell.gif)
 
 ### <a name="enter-single-user-mode-without-root-account-enabled-in-rhel"></a>輸入 RHEL 中未啟用根帳號的單一使用者模式
 如果您未遵循先前的指示來啟用根使用者，您仍然可以執行下列動作來重設根密碼：
@@ -136,7 +137,7 @@ GRUB_CMDLINE_LINUX="console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0,115200
 1. 您現在是在根目錄。 您可以輸入 `passwd` ，然後使用上述指示來進入單一使用者模式，以重設您的根密碼。 
 1. 完成之後，請輸入 `reboot -f` 以重新開機。
 
-![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-emergency-mount-no-root.gif)
+![顯示命令列介面的動畫影像。 使用者選取伺服器，尋找核心行的結尾，然後輸入指定的命令。](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-emergency-mount-no-root.gif)
 
 > [!NOTE]
 > 透過上述指示執行時，會將您帶到緊急 shell，讓您也可以執行編輯之類的工作 `fstab` 。 不過，我們通常會建議您重設根密碼，並使用它來進入單一使用者模式。
@@ -240,7 +241,7 @@ Oracle Linux 預設會啟用 GRUB。 若要進入 GRUB，請執行來重新開�
 ## <a name="next-steps"></a>後續步驟
 若要深入瞭解序列主控台，請參閱：
 * [Linux 序列主控台檔](serial-console-linux.md)
-* [使用序列主控台在各種發行版本中啟用 GRUB](https://blogs.msdn.microsoft.com/linuxonazure/2018/10/23/why-proactively-ensuring-you-have-access-to-grub-and-sysrq-in-your-linux-vm-could-save-you-lots-of-down-time/)
+* [使用序列主控台在各種發行版本中啟用 GRUB](/archive/blogs/linuxonazure/why-proactively-ensuring-you-have-access-to-grub-and-sysrq-in-your-linux-vm-could-save-you-lots-of-down-time)
 * [使用序列主控台進行 NMI 和 SysRq 呼叫](serial-console-nmi-sysrq.md)
 * [Windows Vm 的序列主控台](serial-console-windows.md)
 * [開機診斷](boot-diagnostics.md)

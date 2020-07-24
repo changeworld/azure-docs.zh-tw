@@ -3,11 +3,12 @@ title: 建立 Azure VM 時啟用備份
 description: 說明當您使用 Azure 備份建立 Azure VM 時，如何啟用備份。
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: 7739109eb8bad88c9b723e67e13adc78c127499a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7fb6fd25f5031669633641ea02f34180f6f795d4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80672815"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87032845"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>建立 Azure VM 時啟用備份
 
@@ -15,7 +16,7 @@ ms.locfileid: "80672815"
 
 本文詳細說明當您在 Azure 入口網站中建立虛擬機器（VM）時，如何啟用備份。  
 
-## <a name="before-you-start"></a>在您開始使用 Intune 之前
+## <a name="before-you-start"></a>開始之前
 
 - 如果您在建立 VM 時啟用備份，[請檢查](backup-support-matrix-iaas.md#supported-backup-actions)支援的作業系統。
 
@@ -29,7 +30,7 @@ ms.locfileid: "80672815"
 
 2. 在 [Azure Marketplace 中，按一下 [**計算**]，然後選取 VM 映射。
 
-3. 根據[Windows](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal)或[LINUX](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-portal)指示設定 VM。
+3. 根據[Windows](../virtual-machines/windows/quick-create-portal.md)或[LINUX](../virtual-machines/linux/quick-create-portal.md)指示設定 VM。
 
 4. 在 [**管理**] 索引標籤的 [**啟用備份**] 中，按一下 [**開啟**]。
 5. Azure 備份復原服務保存庫的備份。 如果您沒有現有的保存庫，請按一下 [**建立新**的]。

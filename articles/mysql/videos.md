@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: c18604a9f4b95f4b586efaf3201dd0a679d8d316
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9b306bc55c97b977d0f06fa3e7a56f734f2f9db9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60342605"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87030635"
 ---
 # <a name="azure-database-for-mysql-videos"></a>Azure Database for MySQL 影片
 
@@ -19,7 +19,7 @@ ms.locfileid: "60342605"
 
 >[!VIDEO https://channel9.msdn.com/Events/Connect/2017/T147/player]
 
-適用於 PostgreSQL 的 Azure 資料庫和適用於 MySQL 的 Azure 資料庫結合了社群版資料庫引擎和完全受控服務的功能，因此您可以專注於您的應用程式，而無須分心於管理資料庫。 觀看影片以快速瀏覽使用該服務的優點，並了解應用上的部分功能。
+適用於 PostgreSQL 的 Azure 資料庫和適用於 MySQL 的 Azure 資料庫結合了社群版資料庫引擎和完全受控服務的功能，因此您可以專注於您的應用程式，而無須分心於管理資料庫。 觀看影片以快速瀏覽使用該服務的優點，並了解應用上的部分功能。 請參閱如何建立[適用於 PostgreSQL 的 Azure 資料庫](https://azure.microsoft.com/resources/videos/create-an-azure-database-for-postgresql-server-in-the-azure-portal)和[適用於 MySQL 的 Azure 資料庫](https://azure.microsoft.com/resources/videos/create-an-azure-database-for-mysql-server-by-using-the-azure-portal)。
 
 [深入探索 MySQL 和 PostgreSQL 的受控服務功能](https://channel9.msdn.com/Events/Connect/2017/T148)
 

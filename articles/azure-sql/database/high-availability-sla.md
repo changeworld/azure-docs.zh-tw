@@ -12,12 +12,12 @@ author: sashan
 ms.author: sashan
 ms.reviewer: carlrab, sashan
 ms.date: 04/02/2020
-ms.openlocfilehash: 01906935de76b2b262f2058563a3eee0e297e8a4
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: cc0c4b6bc7dd340f17ac500c5d319a83370a2f2b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985322"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87033032"
 ---
 # <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Azure SQL Database 和 SQL 受控執行個體的高可用性
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -104,7 +104,7 @@ SQL Database 和 SQL 受控執行個體都是在最新穩定版本的 SQL Server
 
 ## <a name="conclusion"></a>結論
 
-Azure SQL Database 和 Azure SQL 受控執行個體功能是內建的高可用性解決方案，與 Azure 平臺緊密整合。 這取決於失敗偵測和復原的 Service Fabric、用於資料保護的 Azure Blob 儲存體，以及在可用性區域上，以提供更高的容錯能力。 此外，SQL Database 和 SQL 受控執行個體會利用 SQL Server 實例的 Always On 可用性群組技術來進行複寫和容錯移轉。 這些技術的結合可讓應用程式完全實現混合儲存體模型的優點，並支援最嚴苛的 Sla。
+Azure SQL Database 和 Azure SQL 受控執行個體功能是內建的高可用性解決方案，與 Azure 平臺緊密整合。 其相依于失敗偵測和復原的 Service Fabric、Azure Blob 儲存體上的資料保護，以及可用性區域以獲得更高的容錯（如稍早在不適用於 Azure SQL 受控執行個體的檔中所述）。 此外，SQL Database 和 SQL 受控執行個體會利用 SQL Server 實例的 Always On 可用性群組技術來進行複寫和容錯移轉。 這些技術的結合可讓應用程式完全實現混合儲存體模型的優點，並支援最嚴苛的 Sla。
 
 ## <a name="next-steps"></a>後續步驟
 

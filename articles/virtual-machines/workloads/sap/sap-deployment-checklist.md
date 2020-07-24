@@ -15,11 +15,12 @@ ms.workload: infrastructure
 ms.date: 02/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ba229025608d183b886a17346a725bc64dc6b60e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 47f412dae6b467518fb1b51518716625c1395717
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84556670"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87035820"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Azure 上的 SAP 工作負載：規劃和部署檢查清單
 
@@ -39,8 +40,8 @@ ms.locfileid: "84556670"
     - 負責定義相關合作物件之責任和指派的責任指派矩陣（RACI）。 從高階開始，並在整個規劃和第一個部署中處理更細微的層級。
     - 高階解決方案架構。
     - 決定要部署到哪些 Azure 區域。 請參閱[Azure 區域清單](https://azure.microsoft.com/global-infrastructure/regions/)。 若要瞭解每個區域中可用的服務，請參閱[依區域提供的產品](https://azure.microsoft.com/global-infrastructure/services/)。
-    - 從內部部署連線至 Azure 的網路架構。 開始熟悉[Azure 的虛擬資料中心藍圖](https://docs.microsoft.com/azure/architecture/vdc/)。
-    - 在 Azure 中執行高影響力商務資料的安全性原則。 若要深入瞭解資料安全性，請從[Azure 安全性檔案](https://docs.microsoft.com/azure/security/)開始。
+    - 從內部部署連線至 Azure 的網路架構。 開始熟悉[Azure 的虛擬資料中心藍圖](/azure/architecture/vdc/)。
+    - 在 Azure 中執行高影響力商務資料的安全性原則。 若要深入瞭解資料安全性，請從[Azure 安全性檔案](../../../security/index.yml)開始。
 2.  技術設計檔。 本檔應包含：
     - 方案的區塊圖表。
     - Azure 中的計算、儲存體和網路元件大小。 如需 Azure Vm 的 SAP 大小調整，請參閱[sap 支援附注 #1928533](https://launchpad.support.sap.com/#/notes/1928533)。
@@ -50,35 +51,35 @@ ms.locfileid: "84556670"
         - [SAP 支援附注 #2015553](https://launchpad.support.sap.com/#/notes/2015553)。 此附注會定義 Azure 儲存體的支援原則，並支援 Microsoft 所需的關係。
         - [SAP 支援附注 #2039619](https://launchpad.support.sap.com/#/notes/2039619)。 此附注會定義 Azure 的 Oracle 支援矩陣。 Oracle 僅支援將 Windows 和 Oracle Linux 作為 SAP 工作負載的 Azure 上的客體作業系統。 此支援聲明也適用于執行 SAP 實例的 SAP 應用層。 不過，Oracle 不支援透過 Pacemaker 在 Oracle Linux 中使用 SAP 中央服務的高可用性。 如果您需要 Oracle Linux 上 ASCS 的高可用性，您必須使用適用于 Linux 的 SIOS 保護套件。 如需詳細的 SAP 認證資料，請參閱 SAP 支援附注[#1662610-適用于 Linux 的 SIOS 保護套件支援詳細](https://launchpad.support.sap.com/#/notes/1662610)資料。 針對 Windows，支援 SAP 中央服務的 SAP 支援的 Windows Server 容錯移轉叢集解決方案與 Oracle 做為 DBMS 層。
         - [SAP 支援附注 #2235581](https://launchpad.support.sap.com/#/notes/2235581)。 此附注提供不同 OS 版本 SAP Hana 的支援矩陣。
-        - [SAP 網站](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)上列出 SAP Hana 支援的 Azure Vm 和[HANA 大型實例](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)。
+        - [SAP 網站](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)上列出 SAP Hana 支援的 Azure Vm 和[HANA 大型實例](./hana-overview-architecture.md)。
         - [SAP 產品可用性矩陣](https://support.sap.com/en/)。
         - [SAP 支援附注 #2555629-SAP Hana 2.0 動態分層–虛擬程式和雲端支援](https://launchpad.support.sap.com/#/notes/2555629)
         - [SAP 支援附注 #1662610-適用于 Linux SIOS 保護套件的支援詳細資料](https://launchpad.support.sap.com/#/notes/1662610)
         - 適用于其他 SAP 特定產品的 SAP 附注。     
     - 我們建議針對 SAP 生產系統進行嚴格的三層式設計。 我們不建議將 ASCS 和/或 DBMS 和（或）應用程式伺服器合併在一個 VM 上。 在 Azure 上的 Windows 客體作業系統上支援使用 SAP 中央服務的多 SID 叢集設定。 但在 Azure 上，Linux 作業系統上的 SAP 中央服務不支援此設定。 您可以在下列文章中找到 Windows 客體作業系統案例的檔：
-        - [在 Azure 上搭配 Windows Server 容錯移轉叢集和共用磁碟的 SAP ASCS/SCS 執行個體多重 SID 高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ascs-ha-multi-sid-wsfc-shared-disk)
-        - [在 Azure 上搭配 Windows Server 容錯移轉叢集和檔案共用的 SAP ASCS/SCS 執行個體多重 SID 高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ascs-ha-multi-sid-wsfc-file-share)
+        - [在 Azure 上搭配 Windows Server 容錯移轉叢集和共用磁碟的 SAP ASCS/SCS 執行個體多重 SID 高可用性](./sap-ascs-ha-multi-sid-wsfc-shared-disk.md)
+        - [在 Azure 上搭配 Windows Server 容錯移轉叢集和檔案共用的 SAP ASCS/SCS 執行個體多重 SID 高可用性](./sap-ascs-ha-multi-sid-wsfc-file-share.md)
     - 高可用性和嚴重損壞修復架構。
         - 根據 RTO 和 RPO，定義高可用性和嚴重損壞修復架構所需的外觀。
-        - 針對區域內的高可用性，請檢查所需的 DBMS 在 Azure 中提供的功能。 大部分的 DBMS 封裝都會提供同步熱待命的同步方法，我們建議用於生產系統。 另請參閱 SAP 相關檔中的不同資料庫，從適用于[sap 工作負載的 Azure 虛擬機器 DBMS 部署考慮](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general)和相關檔開始。
-           不支援使用 Windows Server 容錯移轉叢集搭配 DBMS 層的共用磁片設定（例如，[針對 SQL Server 所述](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server?view=sql-server-2017)）。 請改用下列解決方案：
-           - [SQL Server AlwaysOn](https://docs.microsoft.com/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups)
-           - [Oracle 資料保護](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/configure-oracle-dataguard)
+        - 針對區域內的高可用性，請檢查所需的 DBMS 在 Azure 中提供的功能。 大部分的 DBMS 封裝都會提供同步熱待命的同步方法，我們建議用於生產系統。 另請參閱 SAP 相關檔中的不同資料庫，從適用于[sap 工作負載的 Azure 虛擬機器 DBMS 部署考慮](./dbms_guide_general.md)和相關檔開始。
+           不支援使用 Windows Server 容錯移轉叢集搭配 DBMS 層的共用磁片設定（例如，[針對 SQL Server 所述](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server?view=sql-server-2017)）。 請改用下列解決方案：
+           - [SQL Server AlwaysOn](/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups)
+           - [Oracle 資料保護](../oracle/configure-oracle-dataguard.md)
            - [HANA 系統複寫](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/b74e16a9e09541749a745f41246a065e.html)
         - 針對跨 Azure 區域的嚴重損壞修復，請參閱不同 DBMS 廠商所提供的解決方案。 其中大部分支援非同步複寫或記錄傳送。
         - 針對 SAP 應用層，請判斷您是否要執行商務迴歸測試系統，這在理想情況下是生產部署的複本，位於相同的 Azure 區域或 DR 區域中。 在第二個案例中，您可以將該商務回歸系統的目標設為生產部署的 DR 目標。
-        - 如果您決定不要在 DR 網站中放置非生產系統，請參閱 Azure Site Recovery 做為將 SAP 應用層複寫至 Azure DR 區域的方法。 如需詳細資訊，請參閱[設定多層式 SAP NetWeaver 應用程式部署](https://docs.microsoft.com/azure/site-recovery/site-recovery-sap)的嚴重損壞修復。
-        - 如果您決定使用[Azure 可用性區域](https://docs.microsoft.com/azure/availability-zones/az-overview)結合 HADR 設定，請熟悉可用可用性區域的 Azure 區域。 此外，也請考慮增加兩個可用性區域之間的網路延遲，可能會產生的限制。  
+        - 如果您決定不要在 DR 網站中放置非生產系統，請參閱 Azure Site Recovery 做為將 SAP 應用層複寫至 Azure DR 區域的方法。 如需詳細資訊，請參閱[設定多層式 SAP NetWeaver 應用程式部署](../../../site-recovery/site-recovery-sap.md)的嚴重損壞修復。
+        - 如果您決定使用[Azure 可用性區域](../../../availability-zones/az-overview.md)結合 HADR 設定，請熟悉可用可用性區域的 Azure 區域。 此外，也請考慮增加兩個可用性區域之間的網路延遲，可能會產生的限制。  
 3.  所有 SAP 介面（SAP 和非 SAP）的清查。
 4.  基礎服務的設計。 這項設計應該包含下列專案：
     - Active Directory 和 DNS 設計。
     - Azure 內的網路拓撲和不同 SAP 系統的指派。
-    - [角色型存取](https://docs.microsoft.com/azure/role-based-access-control/overview)結構，適用于在 Azure 中管理基礎結構和 SAP 應用程式的小組。
+    - [角色型存取](../../../role-based-access-control/overview.md)結構，適用于在 Azure 中管理基礎結構和 SAP 應用程式的小組。
     - 資源群組拓撲。
-    - [標記策略](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags#tags-and-billing)。
+    - [標記策略](../../../azure-resource-manager/management/tag-resources.md#tags-and-billing)。
     - Vm 和其他基礎結構元件和（或）邏輯名稱的命名慣例。
 5.  Microsoft 頂級支援合約。 識別您的 Microsoft 技術客戶經理（TAM）。 如需 SAP 支援需求，請參閱[sap 支援附注 #2015553](https://launchpad.support.sap.com/#/notes/2015553)。
-6.  訂用帳戶的 Azure 訂用帳戶和核心配額數目。 [開啟支援要求，視需要增加 Azure](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request)訂用帳戶的配額。
+6.  訂用帳戶的 Azure 訂用帳戶和核心配額數目。 [開啟支援要求，視需要增加 Azure](../../../azure-portal/supportability/resource-manager-core-quotas-request.md)訂用帳戶的配額。
 7.  將 SAP 資料移轉至 Azure 的資料縮減和資料移轉計畫。 針對 SAP NetWeaver 系統，SAP 具有如何限制大量資料量的指導方針。 請參閱這份有關 SAP ERP 系統中資料管理的[sap 指南](https://wiki.scn.sap.com/wiki/download/attachments/247399467/DVM_%20Guide_7.2.pdf?version=1&modificationDate=1549365516000&api=v2)。 部分內容也適用于一般的 NetWeaver 和 S/4HANA 系統。
 8.  自動化部署方法。 Azure 上的基礎結構部署自動化目標是以具決定性的方式進行部署，並取得具決定性的結果。 許多客戶使用 PowerShell 或 CLI 架構的腳本。 但有各種開放原始碼技術可供您用來部署適用于 SAP 的 Azure 基礎結構，甚至是安裝 SAP 軟體。 您可以在 GitHub 上找到範例：
     - [Azure Cloud 雲端中的自動化 SAP 部署](https://github.com/Azure/sap-hana) \(英文\)
@@ -102,46 +103,46 @@ ms.locfileid: "84556670"
         - 請參閱 SAP 支援附注、SAP Hana 硬體目錄，以及 SAP PAM 中的資源。 請確定不會變更 Azure 支援的 Vm、這些 VM 類型支援的作業系統版本，以及支援的 SAP 和 DBMS 版本。
         - 再次驗證您在 Azure 上部署之應用程式和基礎結構的大小。 如果您要移動現有的應用程式，您通常可以從所使用的基礎結構和[sap 基準測試網頁](https://www.sap.com/dmc/exp/2018-benchmark-directory/#/sd)衍生所需的 sap，並將其與[sap 支援附注 #1928533](https://launchpad.support.sap.com/#/notes/1928533)中列出的 sap 數位進行比較。 也請記住[這篇關於 sap 評等的文章](https://techcommunity.microsoft.com/t5/Running-SAP-Applications-on-the/SAPS-ratings-on-Azure-VMs-8211-where-to-look-and-where-you-can/ba-p/368208)。
         - 針對您在規劃階段中所選擇 VM 類型的最大儲存體輸送量和網路輸送量，評估及測試您的 Azure Vm 大小。 您可以在這裡找到資料：
-           -  [Azure 中的 Windows 虛擬機器大小](https://docs.microsoft.com/azure/virtual-machines/windows/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json)。 請務必考慮調整大小的最大未快取*磁片輸送量*。
-           -  [Azure 中 Linux 虛擬機器的大小](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json)。 請務必考慮調整大小的最大未快取*磁片輸送量*。
+           -  [Azure 中的 Windows 虛擬機器大小](../../windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 請務必考慮調整大小的最大未快取*磁片輸送量*。
+           -  [Azure 中 Linux 虛擬機器的大小](../../linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 請務必考慮調整大小的最大未快取*磁片輸送量*。
    2. [儲存空間]。
-        - 針對代表 SAP 應用層的 Vm，以及針對不區分效能的 Dbms 部署，請至少使用[Azure 標準 SSD 儲存體](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#standard-ssd)。
-        - 一般而言，我們不建議使用[Azure 標準 HDD 磁片](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#standard-hdd)。
-        - 針對任何遠端效能敏感的 DBMS Vm，使用[Azure 進階儲存體](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#premium-ssd)。
+        - 針對代表 SAP 應用層的 Vm，以及針對不區分效能的 Dbms 部署，請至少使用[Azure 標準 SSD 儲存體](../../windows/disks-types.md#standard-ssd)。
+        - 一般而言，我們不建議使用[Azure 標準 HDD 磁片](../../windows/disks-types.md#standard-hdd)。
+        - 針對任何遠端效能敏感的 DBMS Vm，使用[Azure 進階儲存體](../../windows/disks-types.md#premium-ssd)。
         - 使用[Azure 受控磁片](https://azure.microsoft.com/services/managed-disks/)。
-        - 透過 M 系列將「Azure 寫入加速器」用於 DBMS 記錄磁碟機。 請注意寫入加速器的限制和使用方式，如[寫入加速器](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator)所述。
-        - 針對不同的 DBMS 類型，請檢查[一般 SAP 相關的 dbms 檔](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general)和一般檔指向的 dbms 特定檔。
-        - 如需 SAP Hana 的詳細資訊，請參閱[Azure 上的 SAP Hana 基礎結構設定和作業](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations)。
-        - 請絕對避免透過裝置識別碼將 Azure 資料磁碟掛接到 Azure Linux VM。 相反地，請使用全域唯一識別碼 (UUID)。 舉例來說，使用圖形工具來掛接 Azure 資料磁碟時應多加留意。 請仔細檢查/etc/fstab 中的專案，確定已使用 UUID 來掛接磁片。 您可以在[這篇文章](https://docs.microsoft.com/azure/virtual-machines/linux/attach-disk-portal#connect-to-the-linux-vm-to-mount-the-new-disk)中找到更多詳細資料。
+        - 透過 M 系列將「Azure 寫入加速器」用於 DBMS 記錄磁碟機。 請注意寫入加速器的限制和使用方式，如[寫入加速器](../../linux/how-to-enable-write-accelerator.md)所述。
+        - 針對不同的 DBMS 類型，請檢查[一般 SAP 相關的 dbms 檔](./dbms_guide_general.md)和一般檔指向的 dbms 特定檔。
+        - 如需 SAP Hana 的詳細資訊，請參閱[Azure 上的 SAP Hana 基礎結構設定和作業](./hana-vm-operations.md)。
+        - 請絕對避免透過裝置識別碼將 Azure 資料磁碟掛接到 Azure Linux VM。 相反地，請使用全域唯一識別碼 (UUID)。 舉例來說，使用圖形工具來掛接 Azure 資料磁碟時應多加留意。 請仔細檢查/etc/fstab 中的專案，確定已使用 UUID 來掛接磁片。 您可以在[這篇文章](../../linux/attach-disk-portal.md#connect-to-the-linux-vm-to-mount-the-new-disk)中找到更多詳細資料。
    3. 網路功能。
         - 測試及評估您的虛擬網路基礎結構，以及在不同的 Azure 虛擬網路中進行 SAP 應用程式的散發。
         -  評估單一 Azure 虛擬網路內的中樞和輪輻虛擬網路架構方法或 microsegmentation 方法。 評估基礎：
-               1. [對等互連 Azure 虛擬網路](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)之間的資料交換成本。 如需成本的詳細資訊，請參閱[虛擬網路定價](https://azure.microsoft.com/pricing/details/virtual-network/)。
+               1. [對等互連 Azure 虛擬網路](../../../virtual-network/virtual-network-peering-overview.md)之間的資料交換成本。 如需成本的詳細資訊，請參閱[虛擬網路定價](https://azure.microsoft.com/pricing/details/virtual-network/)。
                2. Azure 虛擬網路之間的對等互連快速中斷連線的優點，而不是將網路安全性群組變更為隔離虛擬網路中的子網。 這項評估適用于在虛擬網路的子網中裝載的應用程式或 Vm 已成為安全性風險的情況。
                 3. 集中記錄和審核內部部署、外部世界，以及您在 Azure 中建立的虛擬資料中心之間的網路流量。
         - 評估和測試 SAP 應用層與 SAP DBMS 層之間的資料路徑。
             -  不支援將[Azure 網路虛擬裝置](https://azure.microsoft.com/solutions/network-appliances/)放置在 sap 應用程式與 sap 系統的 DBMS 層（以 sap NetWeaver、Hybris 或 S/4HANA 為基礎）之間的通訊路徑中。
             -  不支援在不同的 Azure 虛擬網路中放置 SAP 應用層和 SAP DBMS，而不對等互連。
-            -  您可以使用[應用程式安全性群組和網路安全性群組規則](https://docs.microsoft.com/azure/virtual-network/security-overview)，來定義 sap 應用層與 sap DBMS 層之間的路由。
+            -  您可以使用[應用程式安全性群組和網路安全性群組規則](../../../virtual-network/security-overview.md)，來定義 sap 應用層與 sap DBMS 層之間的路由。
         - 請確定在 SAP 應用層和 SAP DBMS 層中使用的 Vm 上已啟用[Azure 加速網路](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/)。 請記住，若要支援 Azure 中的「加速網路」，需要有各種不同的 OS 層級：
             - Windows Server 2012 R2 或更新版本。
             - SUSE Linux 12 SP3 或更新版本。
             - RHEL 7.4 或更新版本。
             - Oracle Linux 7.5。 如果您使用的是 RHCKL 核心，則需要 release 3.10.0-862.13.1. el7。 如果您使用的是 Oracle UEK 核心，則需要第5版。
-        - 根據 SAP 支援附注[#500235](https://launchpad.support.sap.com/#/notes/500235)和[#1100926](https://launchpad.support.sap.com/#/notes/1100926/E)，測試和評估 sap 應用層 vm 與 DBMS vm 之間的網路延遲。 根據[SAP 支援附注 #1100926](https://launchpad.support.sap.com/#/notes/1100926/E)中的網路延遲指引來評估結果。 網路延遲應為適中或良好的範圍。 例外狀況適用于 Vm 與 HANA 大型實例單位之間的流量，如[這篇文章](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture#networking-architecture-for-hana-large-instance)中所述。
+        - 根據 SAP 支援附注[#500235](https://launchpad.support.sap.com/#/notes/500235)和[#1100926](https://launchpad.support.sap.com/#/notes/1100926/E)，測試和評估 sap 應用層 vm 與 DBMS vm 之間的網路延遲。 根據[SAP 支援附注 #1100926](https://launchpad.support.sap.com/#/notes/1100926/E)中的網路延遲指引來評估結果。 網路延遲應為適中或良好的範圍。 例外狀況適用于 Vm 與 HANA 大型實例單位之間的流量，如[這篇文章](./hana-network-architecture.md#networking-architecture-for-hana-large-instance)中所述。
         - 請確定 ILB 部署已設定為使用伺服器直接回傳。 當 Azure Ilb 在 DBMS 層上用於高可用性設定時，此設定可減少延遲。
         - 如果您同時使用 Azure Load Balancer 與 Linux 客體作業系統，請檢查 Linux 網路參數**net.tcp. tcp_timestamps**是否設定為**0**。 這項建議與舊版[SAP note #2382421](https://launchpad.support.sap.com/#/notes/2382421)中的建議衝突。 SAP 附注現在已更新，以指出此參數必須設定為**0** ，才能使用 Azure 負載平衡器。
-        - 請考慮使用[Azure 鄰近放置群組](https://docs.microsoft.com/azure/virtual-machines/linux/co-location)來取得最佳的網路延遲。 如需詳細資訊，請參閱[Azure 鄰近放置群組，以取得 SAP 應用程式的最佳網路延遲](sap-proximity-placement-scenarios.md)。
+        - 請考慮使用[Azure 鄰近放置群組](../../linux/co-location.md)來取得最佳的網路延遲。 如需詳細資訊，請參閱[Azure 鄰近放置群組，以取得 SAP 應用程式的最佳網路延遲](sap-proximity-placement-scenarios.md)。
    4. 高可用性和嚴重損壞修復部署。
-        - 如果您在未定義特定 Azure 可用性區域的情況下部署 SAP 應用層，請確定執行 SAP 對話實例或單一 SAP 系統中介軟體實例的所有 Vm 都部署在[可用性設定組](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability)中。
+        - 如果您在未定義特定 Azure 可用性區域的情況下部署 SAP 應用層，請確定執行 SAP 對話實例或單一 SAP 系統中介軟體實例的所有 Vm 都部署在[可用性設定組](../../windows/manage-availability.md)中。
         - 如果您不需要 SAP 中央服務和 DBMS 的高可用性，您可以將這些 Vm 部署到與 SAP 應用層相同的可用性設定組中。
         - 如果您使用被動複寫來保護 SAP 中央服務和 DBMS 層，以獲得高可用性，請將 SAP 中央服務的兩個節點放在一個不同的可用性設定組，並將兩個 DBMS 節點置於另一個可用性設定組中。
         - 如果您將部署到 Azure 可用性區域，就無法使用可用性設定組。 但是，您必須確定將主動和被動中央服務節點部署到兩個不同的可用性區域。 使用在兩者之間具有最低延遲的可用性區域。
-          請記住，您需要使用[Azure Standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones)來建立跨可用性區域 DBMS 和 SAP 中央服務層的 Windows 或 Pacemaker 容錯移轉叢集的使用案例。 您不能使用[基本 Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)進列區域性部署。
+          請記住，您需要使用[Azure Standard Load Balancer](../../../load-balancer/load-balancer-standard-availability-zones.md)來建立跨可用性區域 DBMS 和 SAP 中央服務層的 Windows 或 Pacemaker 容錯移轉叢集的使用案例。 您不能使用[基本 Load Balancer](../../../load-balancer/load-balancer-overview.md)進列區域性部署。
    5. Timeout 設定。
         - 檢查 sap NetWeaver 開發人員追蹤的 SAP 實例，以確定排入佇列伺服器與 SAP 工作進程之間不會中斷連接。 您可以藉由設定這兩個登錄參數來避免這些連接中斷：
-            - HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\KeepAliveTime = 120000。 如需詳細資訊，請參閱[KeepAliveTime](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-2000-server/cc957549(v=technet.10))。
-            - HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\KeepAliveInterval = 120000。 如需詳細資訊，請參閱[KeepAliveInterval](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-2000-server/cc957548(v=technet.10))。
+            - HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\KeepAliveTime = 120000。 如需詳細資訊，請參閱[KeepAliveTime](/previous-versions/windows/it-pro/windows-2000-server/cc957549(v=technet.10))。
+            - HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\KeepAliveInterval = 120000。 如需詳細資訊，請參閱[KeepAliveInterval](/previous-versions/windows/it-pro/windows-2000-server/cc957548(v=technet.10))。
         - 若要避免內部部署 SAP GUI 介面和 Azure 中部署的 SAP 應用層之間的 GUI 超時，請檢查是否已在 default.pfl 或實例設定檔中設定這些參數：
             - rdisp/keepalive_timeout = 3600
             - rdisp/keepalive = 20
@@ -174,9 +175,9 @@ ms.locfileid: "84556670"
    4. 測試跨區域 DR 功能和架構。
 1. 安全性檢查。
    1. 測試 Azure 角色型存取控制（RBAC）架構的有效性。 其目標是要區分和限制不同小組的存取權與許可權。 例如，SAP 基礎小組成員應該能夠部署 Vm，並將磁片從 Azure 儲存體指派至指定的 Azure 虛擬網路。 但是 SAP 基礎小組不應該能夠建立自己的虛擬網路，也不能變更現有虛擬網路的設定。 網路小組的成員不應該能夠將 Vm 部署到 SAP 應用程式和 DBMS Vm 執行所在的虛擬網路中。 或者，此小組的成員也不能變更 Vm 的屬性，甚至是刪除 Vm 或磁片。  
-   1.  請確認[網路安全性群組和 ASC](https://docs.microsoft.com/azure/virtual-network/security-overview)規則是否如預期般運作，並防護受保護的資源。
+   1.  請確認[網路安全性群組和 ASC](../../../virtual-network/security-overview.md)規則是否如預期般運作，並防護受保護的資源。
    1.  確定所有需要加密的資源都已加密。 定義和執行處理常式以備份憑證、儲存和存取這些憑證，以及還原加密的實體。
-   1.  從 OS 支援的觀點來看，盡可能使用 OS 磁片的[Azure 磁碟加密](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-faq)。
+   1.  從 OS 支援的觀點來看，盡可能使用 OS 磁片的[Azure 磁碟加密](../../../security/fundamentals/azure-disk-encryption-vms-vmss.md)。
    1.  請確定您不是使用太多層的加密。 在某些情況下，使用 Azure 磁碟加密搭配其中一種 DBMS 透明資料加密方法來保護相同伺服器上的不同磁片或元件是合理的。  例如，在 SAP DBMS 伺服器上，可以在作業系統開機磁片（如果 OS 支援 ADE）和 DBMS 資料持續性檔案未使用的資料磁片上啟用 Azure 磁碟加密（ADE）。  例如，在保留 DBMS TDE 加密金鑰的磁片上使用 ADE。
 1. 效能測試。 在 SAP 中，根據 SAP 追蹤和度量，進行這些比較：
    - 適用時，請將前10個線上報表與您目前的執行方式進行比較。
@@ -192,22 +193,22 @@ ms.locfileid: "84556670"
 1.  將系統從舊平臺移至 Azure 之前，請收集資源耗用量資料，例如 CPU 使用量、儲存體輸送量及 IOPS 資料。 特別是從 DBMS 層單位收集此資料，但也從應用層單位收集。 此外，也請測量網路和儲存體延遲。
 2.  記錄系統的可用性使用時間模式。 其目標是要找出非生產系統是否需要每天都能使用，或是否有非生產系統可以在一周或一個月的特定階段關閉。
 3.  測試並判斷您是否想要在 Azure 中為您的 Vm 建立自己的 OS 映射，或是否要使用 Azure 共用映射庫中的映射。 如果您使用的是共用映射庫中的映射，請務必使用反映作業系統廠商支援合約的映射。 針對某些 OS 廠商，共用映射庫可讓您攜帶自己的授權映射。 針對其他 OS 映射，支援會包含在 Azure 所括住的價格中。 如果您決定建立自己的 OS 映像，您可以在下列文章中找到相關文件：
-    -   [建立在 Azure 中部署之 Windows VM 的一般化映射](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource)
-    -   [建立在 Azure 中部署之 Linux VM 的一般化映射](https://docs.microsoft.com/azure/virtual-machines/linux/capture-image)
+    -   [建立在 Azure 中部署之 Windows VM 的一般化映射](../../windows/capture-image-resource.md)
+    -   [建立在 Azure 中部署之 Linux VM 的一般化映射](../../linux/capture-image.md)
 3.  如果您使用來自共用映射資源庫的 SUSE 和 Red Hat Linux 映射，您需要在共用映射資源庫中使用 Linux 廠商提供的 SAP 映射。
-4.  請務必滿足 Microsoft 支援合約的 SAP 支援需求。 請參閱[SAP 支援附注 #2015553](https://launchpad.support.sap.com/#/notes/2015553)。 對於 HANA 大型實例，請參閱上[架需求](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-onboarding-requirements)。
+4.  請務必滿足 Microsoft 支援合約的 SAP 支援需求。 請參閱[SAP 支援附注 #2015553](https://launchpad.support.sap.com/#/notes/2015553)。 對於 HANA 大型實例，請參閱上[架需求](./hana-onboarding-requirements.md)。
 4.  請確定適當的人員取得[預定的維護通知](https://azure.microsoft.com/blog/a-new-planned-maintenance-experience-for-your-virtual-machines/)，讓您可以選擇最佳的停機。
 5.  經常檢查[Channel 9](https://channel9.msdn.com/)等頻道上的 Azure 簡報，以瞭解可能適用于您的部署的新功能。
 6.  檢查與 Azure 相關的 SAP 附注，例如[支援附注 #1928533](https://launchpad.support.sap.com/#/notes/1928533)，適用于新的 VM sku 和新支援的 OS 和 DBMS 版本。 比較新 VM 類型與舊版 VM 類型的價格，讓您可以部署具有最佳價格/效能比率的 Vm。
 7.  重新檢查 SAP 支援附注、SAP Hana 硬體目錄，以及 SAP PAM。 請確定 Azure 支援的 Vm、這些 Vm 上支援的作業系統版本，以及支援的 SAP 和 DBMS 版本沒有任何變更。
 8.  請查看[SAP 網站](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)，以取得 Azure 中新的 HANA 認證 sku。 比較新 Sku 與您規劃使用的 Sku 的價格。 最後，進行必要的變更，以使用具有最佳價格/效能比率的變更。
 9.  調整您的部署腳本，以使用新的 VM 類型，並納入您想要使用的新 Azure 功能。
-10. 部署基礎結構之後，請根據 SAP 支援附注[#500235](https://launchpad.support.sap.com/#/notes/500235)和[#1100926](https://launchpad.support.sap.com/#/notes/1100926/E)，測試和評估 sap 應用層 vm 與 DBMS vm 之間的網路延遲。 根據[SAP 支援附注 #1100926](https://launchpad.support.sap.com/#/notes/1100926/E)中的網路延遲指引來評估結果。 網路延遲應為適中或良好的範圍。 例外狀況適用于 Vm 與 HANA 大型實例單位之間的流量，如[這篇文章](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture#networking-architecture-for-hana-large-instance)中所述。 請確定適用于[SAP 工作負載的 azure 虛擬機器 DBMS 部署考慮](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#azure-network-considerations)和[azure 上的 SAP Hana 基礎結構設定和作業](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations)都不會有任何限制，會套用至您的部署。
-11. 請確定您的 Vm 已部署至正確的[azure 鄰近放置群組](https://docs.microsoft.com/azure/virtual-machines/linux/co-location)（如 Azure 鄰近放置群組中所述），[以取得 SAP 應用程式的最佳網路延遲](sap-proximity-placement-scenarios.md)。
+10. 部署基礎結構之後，請根據 SAP 支援附注[#500235](https://launchpad.support.sap.com/#/notes/500235)和[#1100926](https://launchpad.support.sap.com/#/notes/1100926/E)，測試和評估 sap 應用層 vm 與 DBMS vm 之間的網路延遲。 根據[SAP 支援附注 #1100926](https://launchpad.support.sap.com/#/notes/1100926/E)中的網路延遲指引來評估結果。 網路延遲應為適中或良好的範圍。 例外狀況適用于 Vm 與 HANA 大型實例單位之間的流量，如[這篇文章](./hana-network-architecture.md#networking-architecture-for-hana-large-instance)中所述。 請確定適用于[SAP 工作負載的 azure 虛擬機器 DBMS 部署考慮](./dbms_guide_general.md#azure-network-considerations)和[azure 上的 SAP Hana 基礎結構設定和作業](./hana-vm-operations.md)都不會有任何限制，會套用至您的部署。
+11. 請確定您的 Vm 已部署至正確的[azure 鄰近放置群組](../../linux/co-location.md)（如 Azure 鄰近放置群組中所述），[以取得 SAP 應用程式的最佳網路延遲](sap-proximity-placement-scenarios.md)。
 11. 在套用工作負載之前，請先執行針對概念證明階段列出的其他所有檢查。
 12. 當工作負載適用時，記錄 Azure 中系統的資源耗用量。 比較此耗用量與舊版平臺的記錄。 如果您發現有很大的差異，請調整未來部署的 VM 大小。 請記住，當您縮減時，Vm 的儲存體和網路頻寬也會減少。
-    - [Azure 中 Windows 虛擬機器的大小](https://docs.microsoft.com/azure/virtual-machines/windows/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json)
-    - [Azure 中的 Linux 虛擬機器大小](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json) 
+    - [Azure 中的 Windows 虛擬機器大小](../../windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+    - [Azure 中的 Linux 虛擬機器大小](../../linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 
 13. 使用系統複製功能和程式進行實驗。 目標是讓您輕鬆複製開發系統或測試系統，讓專案小組可以快速地取得新的系統。 請考慮使用[SAP LaMa](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+Landscape+Management+%28SAP+LaMa%29+at+a+Glance)來進行這些工作。
 14. 優化並調整小組的 Azure 角色型存取、許可權和流程，以確保您有責任區隔。 同時，請確定所有小組都可以在 Azure 基礎結構中執行其工作。
 15. 練習、測試及記錄高可用性和嚴重損壞修復程式，讓您的員工能夠執行這些工作。 找出缺點，並調整您要整合到部署中的新 Azure 功能。
@@ -237,16 +238,16 @@ ms.locfileid: "84556670"
     - Azure 進階儲存體用於延遲敏感磁片，或需要[99.9% 的單一 VM SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/) 。
     - 已正確部署 Azure 寫入加速器。
         - 請確定在 Vm、儲存空間或等量集合中，已在需要寫入加速器的磁片上正確建立。
-        - 檢查[Linux 上的軟體 RAID](https://docs.microsoft.com/azure/virtual-machines/linux/configure-raid)設定。
-        - 檢查[Azure 中 Linux vm 上的 LVM](https://docs.microsoft.com/azure/virtual-machines/linux/configure-lvm)設定。
+        - 檢查[Linux 上的軟體 RAID](../../linux/configure-raid.md)設定。
+        - 檢查[Azure 中 Linux vm 上的 LVM](../../linux/configure-lvm.md)設定。
     - [Azure 受控磁片](https://azure.microsoft.com/services/managed-disks/)會以獨佔方式使用。
     - Vm 已部署到正確的可用性設定組和可用性區域。
     - 在 SAP 應用層和 SAP DBMS 層使用的 Vm 上已啟用[Azure 加速網路](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/)。
     - 根據 SAP NetWeaver、Hybris 或 S/4HANA，sap 應用程式與 SAP 系統的 DBMS 層之間的通訊路徑中沒有任何[Azure 網路虛擬裝置](https://azure.microsoft.com/solutions/network-appliances/)。
     - 「應用程式安全性群組」和「網路安全性群組」規則允許視需要進行通訊及規劃，並在必要時封鎖通訊。
     - 如先前所述，正確設定了 Timeout 設定。
-    - Vm 會部署到正確的[azure 鄰近放置群組](https://docs.microsoft.com/azure/virtual-machines/linux/co-location)（如 Azure 鄰近性放置群組中所述），[以取得 SAP 應用程式的最佳網路延遲](sap-proximity-placement-scenarios.md)。
-    - SAP 應用層 Vm 與 DBMS Vm 之間的網路延遲會如 SAP 支援附注[#500235](https://launchpad.support.sap.com/#/notes/500235)和[#1100926](https://launchpad.support.sap.com/#/notes/1100926/E)中所述進行測試和驗證。 根據[SAP 支援附注 #1100926](https://launchpad.support.sap.com/#/notes/1100926/E)中的網路延遲指引來評估結果。 網路延遲應為適中或良好的範圍。 例外狀況適用于 Vm 與 HANA 大型實例單位之間的流量，如[這篇文章](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture#networking-architecture-for-hana-large-instance)中所述。
+    - Vm 會部署到正確的[azure 鄰近放置群組](../../linux/co-location.md)（如 Azure 鄰近性放置群組中所述），[以取得 SAP 應用程式的最佳網路延遲](sap-proximity-placement-scenarios.md)。
+    - SAP 應用層 Vm 與 DBMS Vm 之間的網路延遲會如 SAP 支援附注[#500235](https://launchpad.support.sap.com/#/notes/500235)和[#1100926](https://launchpad.support.sap.com/#/notes/1100926/E)中所述進行測試和驗證。 根據[SAP 支援附注 #1100926](https://launchpad.support.sap.com/#/notes/1100926/E)中的網路延遲指引來評估結果。 網路延遲應為適中或良好的範圍。 例外狀況適用于 Vm 與 HANA 大型實例單位之間的流量，如[這篇文章](./hana-network-architecture.md#networking-architecture-for-hana-large-instance)中所述。
     - 加密會在必要時和適當的加密方法中執行。
     - 介面和其他應用程式可以連接新部署的基礎結構。
 1.  建立腳本來回應規劃的 Azure 維護。 判斷系統和 Vm 應重新開機以進行預定維護的順序。
@@ -296,7 +297,6 @@ ms.locfileid: "84556670"
 ## <a name="next-steps"></a>後續步驟
 請參閱以下文章：
 
-- [SAP NetWeaver 的 Azure 虛擬機器規劃和實作指南](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide)
-- [適用於 SAP NetWeaver 的 Azure 虛擬機器部署](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/deployment-guide)
-- [適用于 SAP 工作負載的 Azure 虛擬機器 DBMS 部署考慮](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general)
-
+- [SAP NetWeaver 的 Azure 虛擬機器規劃和實作指南](./planning-guide.md)
+- [適用於 SAP NetWeaver 的 Azure 虛擬機器部署](./deployment-guide.md)
+- [適用于 SAP 工作負載的 Azure 虛擬機器 DBMS 部署考慮](./dbms_guide_general.md)

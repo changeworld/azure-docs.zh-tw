@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/05/2016
 ms.author: matd
-ms.openlocfilehash: 699df6ab44a08645c9f46e95cd2ad279de75ea70
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 397dac67ea94db22829080a65dfae857bb3706dd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85509654"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87036925"
 ---
 # <a name="storsimple-as-a-backup-target-with-backup-exec"></a>使用 StorSimple 做為 Backup Exec 的備份目標
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 Azure StorSimple 是 Microsoft 提供的混合式雲端儲存體解決方案。 StorSimple 使用 Azure 儲存體帳戶做為內部部署解決方案的擴充功能，跨內部部署儲存體和雲端儲存體自動將資料分層，解決資料暴增的複雜性問題。
 
@@ -102,7 +102,7 @@ StorSimple 提供下列優點︰
 | 備份案例  | 本機儲存體容量  | 雲端儲存體容量  |
 |---|---|---|
 | 主要備份  | 最近的備份會儲存在本機儲存體供快速復原，以符合復原點目標 (RPO) | 備份歷程記錄 (RPO) 可放入雲端容量 |
-| 次要備份 | 備份資料的次要複本可儲存在雲端容量  | N/A  |
+| 次要備份 | 備份資料的次要複本可儲存在雲端容量  | 不適用  |
 
 ## <a name="storsimple-as-a-primary-backup-target"></a>使用 StorSimple 做為主要備份目標
 
@@ -439,7 +439,7 @@ StorSimple 雲端快照集可保護位於 StorSimple 裝置中的資料。 建�
 
 ![備份生命週期圖表](./media/storsimple-configure-backup-target-using-backup-exec/backuplifecycle.png)
 
-### <a name="requirements"></a>規格需求
+### <a name="requirements"></a>需求
 
 -   執行指令碼的伺服器必須能夠存取 Azure 雲端資源。
 -   使用者帳戶必須擁有必要的權限。
@@ -448,7 +448,7 @@ StorSimple 雲端快照集可保護位於 StorSimple 裝置中的資料。 建�
 
 ### <a name="to-start-or-delete-a-cloud-snapshot"></a>若要啟動或刪除雲端快照集
 
-1. [安裝 Azure PowerShell](/powershell/azure/overview)。
+1. [安裝 Azure PowerShell](/powershell/azure/)。
 2. 下載及安裝 [Manage-CloudSnapshots.ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Manage-CloudSnapshots.ps1) PowerShell 指令碼。
 3. 在執行指令碼的伺服器上，以系統管理員身分執行 PowerShell。 請確定您搭配 `-WhatIf $true` 執行指令碼，以查看指令碼會執行哪些變更。 完成驗證之後，傳遞 `-WhatIf $false`。 執行下列命令：
    ```powershell
@@ -472,7 +472,7 @@ StorSimple 雲端快照集可保護位於 StorSimple 裝置中的資料。 建�
 
 各種因素都可能造成災害。 下表列出常見的災害復原案例。
 
-| 狀況 | 影響 | 如何復原 | 備註 |
+| 案例 | 影響 | 如何復原 | 附註 |
 |---|---|---|---|
 | StorSimple 裝置故障 | 備份和還原作業會中斷。 | 更換故障的裝置，並執行 [StorSimple 容錯移轉和災害復原](storsimple-device-failover-disaster-recovery.md)。 | 如果您需要在裝置復原後執行還原，則會從雲端擷取完整的使用中資料集到新裝置。 所有作業都會以雲端速度進行。 編製索引及編製目錄的重新掃描程序可能會造成所有備份集都要進行掃描並從雲端層提取到本機裝置層，而這可能會非常耗時。 |
 | Backup Exec 伺服器故障 | 備份和還原作業會中斷。 | 重建備份伺服器，並依[如何執行手動備份和還原 Backup Exec (BEDB) 資料庫 (英文)](http://www.veritas.com/docs/000041083) 中所述執行資料庫還原。 | 您必須在災害復原站台重建或還原 Backup Exec 伺服器。 將資料庫還原到最新的點。 如果還原的 Backup Exec 資料庫沒有與您最新的備份作業同步，就必須編製索引及編製目錄。 重新掃描索引和目錄的程序可能會造成所有備份集都要進行掃描並從雲端層提取到本機裝置層。 這會更耗費時間。 |

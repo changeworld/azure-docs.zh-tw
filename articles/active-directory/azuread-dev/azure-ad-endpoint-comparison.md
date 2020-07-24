@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.subservice: azuread-dev
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/26/2019
+ms.date: 07/17/2020
 ms.author: ryanwi
 ms.reviewer: saeeda, hirsin, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, negoe
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 67a54a2cd4fa071fd47bcebb9aa53fd11fefd61e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 001de375edab7505ed4687d848aca0ad0965dbfb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80154911"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87034902"
 ---
 # <a name="why-update-to-microsoft-identity-platform-v20"></a>為何要更新至 Microsoft 身分識別平台 (v2.0)？
 
@@ -141,34 +141,7 @@ Microsoft 身分識別平臺端點將演進以排除此處所列的限制，因�
 
 ### <a name="restrictions-on-redirect-urls"></a>重新導向 URL 的限制
 
-針對 Microsoft 身分識別平臺註冊的應用程式僅限於一組有限的重新導向 URL 值。 Web 應用程式和服務的重新導向 URL 必須以配置 `https` 開頭，而且所有重新導向 URL 值必須共用單一 DNS 網域。  註冊系統會將現有重新導向 URL 的整個 DNS 名稱與您要新增之重新導向 URL 的 DNS 名稱做比較。 系統也支援將 `http://localhost` 作為重新導向 URL。  
-
-如果下列任一條件成立，新增 DNS 名稱的要求就會失敗︰  
-
-* 新重新導向 URL 的整個 DNS 名稱與現有重新導向 URL 的 DNS 名稱不相符。
-* 新重新導向 URL 的整個 DNS 名稱不是現有重新導向 URL 的子網域。
-
-#### <a name="example-1"></a>範例 1
-
-如果應用程式的重新導向 URL 是 `https://login.contoso.com`，您可以新增 DNS 名稱完全相符的重新導向 URL，如下列範例所示：
-
-`https://login.contoso.com/new`
-
-或者，您可以參照 login.contoso.com 的 DNS 子網域，如下列範例所示：
-
-`https://new.login.contoso.com`
-
-#### <a name="example-2"></a>範例 2
-
-如果您希望應用程式以 `login-east.contoso.com` 和 `login-west.contoso.com` 作為重新導向 URL，您必須依下列順序新增這些重新導向 URL︰
-
-`https://contoso.com`  
-`https://login-east.contoso.com`  
-`https://login-west.contoso.com`  
-
-您可以新增後面兩個，因為它們是第一個重新導向 URL contoso.com 的子域。
-
-特定應用程式只能有20個回復 Url-此限制適用于註冊支援的所有應用程式類型（單一頁面應用程式（SPA）、native client、web 應用程式和服務）。  
+如需針對 Microsoft 身分識別平臺註冊之應用程式的重新導向 Url 限制的最新資訊，請參閱 Microsoft 身分識別平臺檔中的重新[導向 URI/回復 URL 限制和限制](https://docs.microsoft.com/azure/active-directory/develop/reply-url)。
 
 若要瞭解如何註冊應用程式以與 Microsoft 身分識別平臺搭配使用，請參閱[使用新的應用程式註冊體驗註冊應用程式](../develop/quickstart-register-app.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)。
 

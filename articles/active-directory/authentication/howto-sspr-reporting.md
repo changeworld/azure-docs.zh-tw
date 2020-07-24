@@ -11,11 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 348082ad96a5efa4d8f866c3675044edf7b6f8a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e3425407fdb131fb1499b2cd085fbe6d427804a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80652146"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87035293"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Azure AD 密碼管理的報告選項
 
@@ -50,9 +51,9 @@ ms.locfileid: "80652146"
 6. 從窗格頂端的 [**篩選**] 功能表中，選取 [**服務**] 下拉式清單，並將它變更為 [**自助式密碼管理**] 服務類型。
 7. 另可選擇您有興趣的特定 [活動]****，以進一步篩選清單。
 
-### <a name="converged-registration-preview"></a>聚合式註冊 (預覽)
+### <a name="combined-registration"></a>合併的註冊
 
-如果您參與聚合式註冊的公開預覽，則會在 [**安全性**  >  **驗證方法**] 底下找到有關 audit 記錄中使用者活動的資訊。
+如果您已啟用[合併註冊](https://docs.microsoft.com/azure/active-directory/authentication/concept-registration-mfa-sspr-combined)，則會在 [**安全性**  >  **驗證方法**] 底下的 [audit 記錄檔] 中找到有關使用者活動的資訊。
 
 ## <a name="description-of-the-report-columns-in-the-azure-portal"></a>Azure 入口網站中報告資料行的說明
 

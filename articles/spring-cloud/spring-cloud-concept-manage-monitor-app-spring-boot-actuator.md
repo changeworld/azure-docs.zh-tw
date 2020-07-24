@@ -6,17 +6,19 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: e932930e43e6131e8e1e82fe2f42246c967a19fe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-java
+ms.openlocfilehash: 5cfc13700decf0176b283f5f1f9bd81503c1b10a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84205939"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87037588"
 ---
 # <a name="manage-and-monitor-app-with-azure-spring-boot-actuator"></a>使用 Azure Spring Boot Actuator 來管理和監視應用程式
 
 將新的二進位檔部署至您的應用程式之後，您可能會想要檢查功能，並查看執行中應用程式的相關資訊。 本文說明如何從 Azure 春季雲端所提供的測試端點存取 API，並為您的應用程式公開已準備好用於生產環境的功能。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 本文假設您有一個春季 Boot 2.x 應用程式，可以在 Azure 春季雲端服務上成功部署和啟動。  請參閱[快速入門：使用 Azure 入口網站啟動現有的 Azure 春季雲端應用程式](spring-cloud-quickstart-launch-app-portal.md)
 
 ## <a name="verify-app-through-test-endpoint"></a>透過測試端點驗證應用程式
@@ -70,6 +72,6 @@ ms.locfileid: "84205939"
 
 若要查看內建的所有端點，請參閱[公開端點](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html#production-ready-endpoints-exposing-endpoints)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 * [瞭解 Azure 春季雲端的計量](spring-cloud-concept-metrics.md)
 * [瞭解 Azure 春季雲端中的應用程式狀態](spring-cloud-concept-app-status.md)

@@ -14,17 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: e2cbb36158722a47518f575b391340b5e25bd908
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 52b737e88e13c59d260da73c6fa37a1088cb91d5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74895784"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038455"
 ---
 # <a name="azure-media-services-telemetry"></a>Azure 媒體服務遙測  
 
 
 > [!NOTE]
-> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
+> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](../latest/index.yml)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
 
 Azure 媒體服務 (AMS) 可讓您存取其服務的遙測/計量資料。 目前的 AMS 版本可讓您收集直播**頻道**、**串流端點**和即時**封存**實體的遙測資料。 
 
@@ -50,9 +51,9 @@ Azure 媒體服務 (AMS) 可讓您存取其服務的遙測/計量資料。 目�
 
 您可以使用下列其中一個方法取用遙測資料︰
 
-- 直接從 Azure 表格儲存體 (例如使用儲存體 SDK) 中讀取資料。 如需遙測儲存體資料表的說明，請參閱[這個](https://msdn.microsoft.com/library/mt742089.aspx)主題中的**取用遙測資訊**。
+- 直接從 Azure 表格儲存體 (例如使用儲存體 SDK) 中讀取資料。 如需遙測儲存體資料表的說明，請參閱[這個](/previous-versions/azure/mt742089(v=azure.100))主題中的**取用遙測資訊**。
 
-Or
+或者
 
 - 使用媒體服務 .NET SDK 中的支援讀取儲存體資料，如[這個](media-services-dotnet-telemetry.md)主題所述。 
 
@@ -77,9 +78,9 @@ Or
 ---|---|---
 PartitionKey|{帳戶識別碼} _ {實體識別碼}|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66<br/<br/>帳戶識別碼包含在分割區索引鍵中，以簡化多個媒體服務帳戶寫入同一儲存體帳戶的工作流程。
 RowKey|{到午夜的秒數}_{隨機值}|01688_00199<br/><br/>資料列索引鍵以到午夜的秒數開始，以允許磁碟分割內的前 n 個樣式查詢。 如需詳細資訊，請參閱[本篇文章](../../cosmos-db/table-storage-design-guide.md#log-tail-pattern)。 
-時間戳記|日期/時間|Azure 資料表中的自動時間戳記 2016-09-09T22:43:42.241Z
+Timestamp|日期/時間|Azure 資料表中的自動時間戳記 2016-09-09T22:43:42.241Z
 類型|提供遙測資料之實體的類型|頻道/串流端點/封存<br/><br/>事件類型只是字串值。
-Name|遙測事件的名稱|ChannelHeartbeat/StreamingEndpointRequestLog
+名稱|遙測事件的名稱|ChannelHeartbeat/StreamingEndpointRequestLog
 ObservedTime|遙測事件發生時間 (UTC)|2016-09-09T22:42:36.924Z<br/><br/>觀察的時間由傳送遙測資料的實體提供 (例如頻道)。 元件之間可能有時間同步問題，因此這個值是近似值
 ServiceID|{服務識別碼}|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 實體特定屬性|如事件所定義|StreamName：stream1、Bitrate 10123…<br/><br/>其餘的屬性是針對指定的事件類型定義。 Azure 資料表內容是機碼值組。  (亦即資料表中的不同資料列有不同的屬性集)。
@@ -100,7 +101,7 @@ PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab701
 RowKey|RowKey|01688_00199
 時間戳記|時間戳記|Azure 資料表中的自動時間戳記 2016-09-09T22:43:42.241Z
 類型|類型|StreamingEndpoint
-Name|Name|StreamingEndpointRequestLog
+名稱|名稱|StreamingEndpointRequestLog
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924Z
 ServiceID|服務識別碼|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 HostName|端點的主機名稱|builddemoserver.origin.mediaservices.windows.net
@@ -118,8 +119,8 @@ E2ELatency|平均端對端延遲|250
 PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66
 RowKey|RowKey|01688_00199
 時間戳記|時間戳記|Azure 資料表中的自動時間戳記 2016-09-09T22:43:42.241Z
-類型|類型|通路
-Name|Name|ChannelHeartbeat
+類型|類型|管道
+名稱|名稱|ChannelHeartbeat
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924Z
 ServiceID|服務識別碼|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 TrackType|曲目視訊/音訊/文字的類型|視訊/音訊
@@ -131,10 +132,10 @@ OverlapCount|內嵌中的重疊|0
 DiscontinuityCount|曲目不連續|0
 LastTimestamp|上次內嵌資料時間戳記|1800488800
 NonincreasingCount|由於未增加的時間戳記而捨棄的片段數|2
-UnalignedKeyFrames|我們是否收到主要畫面未對齊的片段 (跨品質等級) |True
-UnalignedPresentationTime|我們是否收到呈現方式時間未對齊的片段 (跨品質等級/曲目)|True
-UnexpectedBitrate|如果下列條件成立則為 True：音訊/視訊曲目的計算的/實際的位元速率 > 40,000 bps，且 IncomingBitrate == 0 或 IncomingBitrate 和 actualBitrate 相差 50% |True
-Healthy|如果下列條件成立則為 True <br/>overlapCount、 <br/>DiscontinuityCount、 <br/>NonIncreasingCount、 <br/>UnalignedKeyFrames、 <br/>UnalignedPresentationTime 及 <br/>UnexpectedBitrate<br/> 均為 0|True<br/><br/>Healthy 是複合函數，當下列任一條件成立時會傳回 false︰<br/><br/>- OverlapCount > 0<br/>- DiscontinuityCount > 0<br/>- NonincreasingCount > 0<br/>- UnalignedKeyFrames == True<br/>- UnalignedPresentationTime == True<br/>- UnexpectedBitrate == True
+UnalignedKeyFrames|我們是否收到主要畫面未對齊的片段 (跨品質等級) |是
+UnalignedPresentationTime|我們是否收到呈現方式時間未對齊的片段 (跨品質等級/曲目)|是
+UnexpectedBitrate|如果下列條件成立則為 True：音訊/視訊曲目的計算的/實際的位元速率 > 40,000 bps，且 IncomingBitrate == 0 或 IncomingBitrate 和 actualBitrate 相差 50% |是
+Healthy|如果下列條件成立則為 True <br/>overlapCount、 <br/>DiscontinuityCount、 <br/>NonIncreasingCount、 <br/>UnalignedKeyFrames、 <br/>UnalignedPresentationTime 及 <br/>UnexpectedBitrate<br/> 均為 0|是<br/><br/>Healthy 是複合函數，當下列任一條件成立時會傳回 false︰<br/><br/>- OverlapCount > 0<br/>- DiscontinuityCount > 0<br/>- NonincreasingCount > 0<br/>- UnalignedKeyFrames == True<br/>- UnalignedPresentationTime == True<br/>- UnexpectedBitrate == True
 
 **即時封存**
 
@@ -144,7 +145,7 @@ PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab701
 RowKey|RowKey|01688_00199
 時間戳記|時間戳記|Azure 資料表中的自動時間戳記 2016-09-09T22:43:42.241Z
 類型|類型|封存
-Name|Name|ArchiveHeartbeat
+名稱|名稱|ArchiveHeartbeat
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924Z
 ServiceID|服務識別碼|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 ManifestName|程式 URL|asset-eb149703-ed0a-483c-91c4-e4066e72cce3/a0a5cfbf-71ec-4bd2-8c01-a92a2b38c9ba.ism

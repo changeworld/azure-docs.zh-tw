@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: how-to
 ms.date: 05/20/2020
 ms.custom: seodec18, tracking-python
-ms.openlocfilehash: 528696daf4bddd1f448266243b511e600351606a
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 4815e51d22501d6110f3bc26a878513d6d700ce7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202601"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87031281"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>在 Python 中設定自動化 ML 實驗
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -212,26 +212,26 @@ automl_config = AutoMLConfig(task = "classification")
 時間序列 `forecasting` 工作需要在設定物件中使用其他參數：
 
 1. `time_column_name`:此為必要參數，會定義您的定型資料中包含有效時間序列的資料行名稱。
-1. `max_horizon`:定義您想要根據定型資料的週期性預測的時間長度。 例如，如果您有每日時間粒紋的定型資料，則應定義要定型模型的天數。
-1. `grain_column_names`:定義您的定型資料中包含個別時間序列資料的資料行名稱。 例如，如果您要依商店預測特定品牌的銷售量，則應將商店和品牌資料行定義為粒紋資料行。 系統會針對每個粒紋/群組建立個別的時間序列和預測。 
+1. `forecast_horizon`：定義您想要預測的期間數。 整數水準是以時間序列頻率的單位計算。 例如，如果您有每日頻率的定型資料，您會定義要將模型定型的天數。
+1. `time_series_id_column_names`：定義資料行，以唯一識別資料中具有相同時間戳記之多個資料列的時間序列。 例如，如果您是依商店預測特定品牌的銷售量，您會將商店和品牌資料行定義為時間序列識別碼。 系統會針對每個群組建立個別的預測。 如果未定義時間序列識別碼，則會假設資料集為一個時間序列。
 
 如需以下使用之設定的範例，請參閱[範例筆記本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-orange-juice-sales/auto-ml-forecasting-orange-juice-sales.ipynb)。
 
 ```python
-# Setting Store and Brand as grains for training.
-grain_column_names = ['Store', 'Brand']
-nseries = data.groupby(grain_column_names).ngroups
+# Setting Store and Brand as time series identifiers for training.
+time_series_id_column_names = ['Store', 'Brand']
+nseries = data.groupby(time_series_id_column_names).ngroups
 
-# View the number of time series data with defined grains
+# View the number of time series data with defined time series identifiers
 print('Data contains {0} individual time-series.'.format(nseries))
 ```
 
 ```python
 time_series_settings = {
     'time_column_name': time_column_name,
-    'grain_column_names': grain_column_names,
+    'time_series_id_column_names': time_series_id_column_names,
     'drop_column_names': ['logQuantity'],
-    'max_horizon': n_test_periods
+    'forecast_horizon': n_test_periods
 }
 
 automl_config = AutoMLConfig(task = 'forecasting',

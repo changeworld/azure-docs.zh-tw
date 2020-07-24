@@ -4,11 +4,12 @@ description: 本文提供 Microsoft Azure 備份 Server （MABS） v3 的已知�
 ms.topic: conceptual
 ms.date: 06/03/2020
 ms.asset: 0c4127f2-d936-48ef-b430-a9198e425d81
-ms.openlocfilehash: 2f67b73612bd970c903b179a4a02c787ee0320b0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1f4900bb129ee67cd75d2b793f4179e3135569a6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84629122"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87032556"
 ---
 # <a name="release-notes-for-microsoft-azure-backup-server"></a>Microsoft Azure 備份伺服器版本資訊
 
@@ -53,13 +54,13 @@ ms.locfileid: "84629122"
 
 **因應措施：** 使用俄文安裝套件，執行下列步驟以升級至 MABS V3：
 
-1. [備份](https://docs.microsoft.com/sql/relational-databases/backup-restore/create-a-full-database-backup-sql-server?view=sql-server-2017#SSMSProcedure) 您的 SQL 資料庫，並解除安裝 MABS V2 (解除安裝期間，選擇此選項以保留受保護的資料)。
+1. [備份](/sql/relational-databases/backup-restore/create-a-full-database-backup-sql-server#SSMSProcedure) 您的 SQL 資料庫，並解除安裝 MABS V2 (解除安裝期間，選擇此選項以保留受保護的資料)。
 2. 升級到 SQL 2017 (Enterprise).，並解除安裝報告，作為升級的一部分。
-3. [安裝](https://docs.microsoft.com/sql/reporting-services/install-windows/install-reporting-services?view=sql-server-2017#install-your-report-server) SQL Server Reporting Services (SSRS)。
-4. [安裝](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) SQL Server Management Studio (SSMS)。
-5. 使用 [SQL 2017 的 SSRS 設定](https://docs.microsoft.com/azure/backup/backup-azure-microsoft-azure-backup#upgrade-mabs)中記錄的參數來設定報告。
+3. [安裝](/sql/reporting-services/install-windows/install-reporting-services#install-your-report-server)SQL Server Reporting Services （SSRS）。
+4. [安裝](/sql/ssms/download-sql-server-management-studio-ssms) SQL Server Management Studio (SSMS)。
+5. 使用 [SQL 2017 的 SSRS 設定](./backup-azure-microsoft-azure-backup.md#upgrade-mabs)中記錄的參數來設定報告。
 6. [安裝](backup-azure-microsoft-azure-backup.md) MABS V3。
-7. 使用 SSMS 以[還原](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms?view=sql-server-2017) SQL，並執行 DPM 同步工具，如[此處](https://docs.microsoft.com/system-center/dpm/back-up-the-dpm-server?view=sc-dpm-2019#using-dpmsync)所述。
+7. 使用 SSMS 以[還原](/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms) SQL，並執行 DPM 同步工具，如[此處](/system-center/dpm/back-up-the-dpm-server?view=sc-dpm-2019#using-dpmsync)所述。
 8. 使用下列命令，更新 dbo.tbl_DLS_GlobalSetting 表格中的 ‘DataBaseVersion’ 屬性：
 
     ```sql
@@ -104,6 +105,6 @@ ms.locfileid: "84629122"
 
 1. 取代檔案之後，請重新開機 MABS 服務，並使用報告檔案。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 [MABS 的新功能](backup-mabs-whats-new-mabs.md)

@@ -3,12 +3,12 @@ title: Azure 服務匯流排-暫止訊息實體
 description: 本文說明如何暫時暫停和重新開機 Azure 服務匯流排訊息實體（佇列、主題和訂用帳戶）。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 4c4e554ada8c66b56d5d466c7becfc813701402a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: da7c25c8ef9f3daa32984ac26aa62710ab775951
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340005"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038132"
 ---
 # <a name="suspend-and-reactivate-messaging-entities-disable"></a>暫止及重新啟動傳訊實體 (停用)
 
@@ -20,7 +20,7 @@ ms.locfileid: "85340005"
 
 在入口網站中，個別實體的 [**屬性**] 區段可讓您變更狀態;下列螢幕擷取畫面顯示佇列的切換：
 
-![][1]
+![已醒目提示 [屬性] 設定的 [服務匯流排] 功能的螢幕擷取畫面，而 [佇列狀態] 選項設為 [作用中] 並以紅色標示。][1]
 
 入口網站只允許完全停止佇列。 您也可以使用 .NET Framework SDK 中的服務匯流排 [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) API 分別停用傳送和接收作業，或是透過 Azure CLI 或 Azure PowerShell 使用 Azure Resource Manager 範本來達成。
 

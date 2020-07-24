@@ -9,17 +9,20 @@ ms.topic: how-to
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 03/13/2020
-ms.openlocfilehash: ed3b59b9e6aecb91f4ecb9d569b989b6b2396c48
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.date: 07/14/2020
+ms.openlocfilehash: 4e76a7adf7435cc1bdee3bb4e64f8cc699a16724
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134874"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87031213"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace-preview"></a>設定 Azure Machine Learning 工作區的 Azure 私人連結（預覽）
 
-在本檔中，您將瞭解如何搭配使用 Azure 私用連結與您的 Azure Machine Learning 工作區。 這項功能目前為預覽狀態，適用于美國東部、美國西部2、美國中南部區域。 
+在本檔中，您將瞭解如何搭配使用 Azure 私用連結與您的 Azure Machine Learning 工作區。 
+
+> [!IMPORTANT]
+> 使用具有 Azure Machine Learning 工作區的 Azure 私人連結目前為公開預覽狀態。 這項功能僅適用于**美國東部**、**美國西部 2**和**美國中南部**區域。 此預覽版是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 Azure 私人連結可讓您使用私人端點連接到您的工作區。 私人端點是虛擬網路內的一組私人 IP 位址。 接著，您可以將工作區的存取限制為只在私人 IP 位址上進行。 私用連結有助於降低資料外泄的風險。 若要深入了解私人端點，請參閱 [Azure Private Link](/azure/private-link/private-link-overview) 一文。
 
@@ -51,8 +54,8 @@ Azure 私人連結可讓您使用私人端點連接到您的工作區。 私人�
 
 提交範本並完成布建之後，包含您工作區的資源群組將會包含三個與私人連結相關的新成品類型：
 
-* 私人端點
-* Linux
+* 私用端點
+* 網路介面
 * 私人 DNS 區域
 
 工作區也包含可以透過私人端點與工作區通訊的 Azure 虛擬網路。
@@ -112,6 +115,9 @@ az group deployment create \
 若要保護您的工作區所使用的 Azure 儲存體帳戶，請將它放在虛擬網路中。
 
 如需將儲存體帳戶放在虛擬網路中的相關資訊，請參閱針對[您的工作區使用儲存體帳戶](how-to-enable-virtual-network.md#use-a-storage-account-for-your-workspace)。
+
+> [!WARNING]
+> Azure Machine Learning 不支援使用已啟用私人連結的 Azure 儲存體帳戶。
 
 ## <a name="using-azure-key-vault"></a>使用 Azure Key Vault
 

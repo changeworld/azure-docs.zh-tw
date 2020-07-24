@@ -15,20 +15,21 @@ ms.workload: infrastructure
 ms.date: 07/27/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ef7161e653ec582708f242b67c643d960d75e27f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 27b6e2e3cedcc8eca84644562639e0436e48245d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78255468"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87035854"
 ---
 # <a name="sap-hana-availability-within-one-azure-region"></a>單一 Azure 區域中的 SAP HANA 可用性
-本文說明單一 Azure 區域中的幾種可用性案例。 Azure 有許多分散在世界各地的區域。 如需 Azure 區域的清單，請參閱 [Azure 區域](https://azure.microsoft.com/regions/)。 為了讓您能夠在單一 Azure 區域內的 VM 上部署 SAP HANA，Microsoft 提供了含一個 HANA 執行個體的單一 VM 部署。 如需提升可用性，您可以在 [Azure 可用性設定組](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets)中部署含兩個 HANA 執行個體的兩個 VM，以便使用 HANA 系統複寫來獲得可用性。 
+本文說明單一 Azure 區域中的幾種可用性案例。 Azure 有許多分散在世界各地的區域。 如需 Azure 區域的清單，請參閱 [Azure 區域](https://azure.microsoft.com/regions/)。 為了讓您能夠在單一 Azure 區域內的 VM 上部署 SAP HANA，Microsoft 提供了含一個 HANA 執行個體的單一 VM 部署。 如需提升可用性，您可以在 [Azure 可用性設定組](../../windows/tutorial-availability-sets.md)中部署含兩個 HANA 執行個體的兩個 VM，以便使用 HANA 系統複寫來獲得可用性。 
 
-目前，Azure 提供的是 [Azure 可用性區域](https://docs.microsoft.com/azure/availability-zones/az-overview)。 本文不會詳細說明可用性區域。 但文章中會包含有關使用可用性設定組與可用性區域的一般討論。
+目前，Azure 提供的是 [Azure 可用性區域](../../../availability-zones/az-overview.md)。 本文不會詳細說明可用性區域。 但文章中會包含有關使用可用性設定組與可用性區域的一般討論。
 
 有提供可用性區域的 Azure 區域會有多個資料中心。 這些資料中心有獨立供應的電源、冷卻系統和網路。 之所以在單一 Azure 區域 (region) 中提供不同區域 (zone)，是要讓您可以跨兩到三個所提供的可用性區域 (zone) 來部署應用程式。 透過跨區域 (zone) 部署，電力來源和網路中的問題就只會影響一個 Azure 可用性區域基礎結構，Azure 區域 (region) 內的應用程式部署仍然可完全正常運作。 但容量可能會降低。 例如，您可能會失去某個區域中的 VM，但另外兩個區域中的 VM 仍保持啟動並執行。 
  
-Azure 可用性設定組是一種邏輯群組功能，有助於確保您放置在可用性設定組內的 VM 資源若是部署在 Azure 資料中心內，則不會因為失敗而對彼此造成影響。 Azure 可確保您在可用性設定組中所放置的 VM，會橫跨多部實體伺服器、計算機架、儲存體單位和網路交換器來執行。 在某些 Azure 文件中，這個設定是指不同[更新網域和容錯網域](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability)中的配置。 這些配置通常在 Azure 資料中心內。 假使電源和網路問題會影響您要部署的資料中心，則也會影響到您在單一 Azure 區域中的所有容量。
+Azure 可用性設定組是一種邏輯群組功能，有助於確保您放置在可用性設定組內的 VM 資源若是部署在 Azure 資料中心內，則不會因為失敗而對彼此造成影響。 Azure 可確保您在可用性設定組中所放置的 VM，會橫跨多部實體伺服器、計算機架、儲存體單位和網路交換器來執行。 在某些 Azure 文件中，這個設定是指不同[更新網域和容錯網域](../../windows/manage-availability.md)中的配置。 這些配置通常在 Azure 資料中心內。 假使電源和網路問題會影響您要部署的資料中心，則也會影響到您在單一 Azure 區域中的所有容量。
 
 配置代表 Azure 可用性區域的資料中心，是在服務 (部署在不同區域) 之間傳遞可接受網路延遲與在資料中心之間有一定距離的折衷辦法。 最理想的情況是，此區域內所有可用性區域的電力、網路供應與基礎結構，都不會受到自然災害的影響。 不過，從歷史上的重大自然災害看來，可用性區域不一定能永遠提供您想要在單一區域內獲得的可用性。 例如 2017 年 9 月 20 日侵襲波多黎各島嶼的瑪莉亞 (Maria) 颶風。 這個颶風至少造成島上方圓 90 英里內的地區幾乎完全停電。
 
@@ -81,7 +82,7 @@ Azure VM 有 Azure 提供的主機和 VM 監視功能，因此在遇到主機問
 
 此設定不適合用來實現絕佳的復原點目標 (RPO) 和復原時間目標 (RTO) 時間。 特別是 RTO 時間會因為需使用複製的備份來完整還原整個資料庫而受到影響。 不過，此設定適合用來復原不小心從主要執行個體上刪除的資料。 透過此設定，您可以隨時還原至特定時間點、擷取資料，以及將已刪除的資料匯入至您的主要執行個體。 因此，將備份複製方法與其他高可用性功能結合是很合理的行為。 
 
-在複製備份時，您可以使用比 SAP HANA 執行個體執行所在的主要 VM 還要小的 VM。 請注意，您可以將更少量的 VHD 連結至較小的 VM。 如需個別 VM 類型限制的相關資訊，請參閱 [Azure 中的 Linux 虛擬機器大小](https://docs.microsoft.com/azure/virtual-machines/linux/sizes)。
+在複製備份時，您可以使用比 SAP HANA 執行個體執行所在的主要 VM 還要小的 VM。 請注意，您可以將更少量的 VHD 連結至較小的 VM。 如需個別 VM 類型限制的相關資訊，請參閱 [Azure 中的 Linux 虛擬機器大小](../../linux/sizes.md)。
 
 ### <a name="sap-hana-system-replication-without-automatic-failover"></a>不含自動容錯移轉的 SAP HANA 系統複寫
 
@@ -107,7 +108,7 @@ Azure VM 有 Azure 提供的主機和 VM 監視功能，因此在遇到主機問
 
 ### <a name="sap-hana-system-replication-with-automatic-failover"></a>具有自動容錯移轉的 SAP HANA 系統複寫
 
-在單一 Azure 區域內最常見的標準可用性設定中，兩個執行 SLES Linux 的 Azure VM 會定義容錯移轉叢集。 SLES Linux 叢集會以 [Pacemaker](/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) 架構為基礎，並搭配 [STONITH](/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#create-azure-fence-agent-stonith-device) 裝置。 
+在單一 Azure 區域內最常見的標準可用性設定中，兩個執行 SLES Linux 的 Azure VM 會定義容錯移轉叢集。 SLES Linux 叢集會以 [Pacemaker](./high-availability-guide-suse-pacemaker.md) 架構為基礎，並搭配 [STONITH](./high-availability-guide-suse-pacemaker.md#create-azure-fence-agent-stonith-device) 裝置。 
 
 如果從 SAP HANA 的角度來看，所使用的複寫模式已同步處理，且自動容錯移轉也已設定。 在第二個 VM 中，SAP HANA 執行個體會作為熱待命節點。 待命節點會接收與主要 SAP HANA 執行個體同步的變更記錄資料流。 HANA 主要節點上的應用程式認可交易後，主要 HANA 節點會等候向應用程式確認該認可，直到次要 SAP HANA 節點確認接收到認可記錄為止。 SAP HANA 提供兩種同步複寫模式。 如需詳細資料以及這兩種同步複寫模式差異的說明，請參閱 SAP 的[SAP HANA 系統複寫的複寫模式](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/c039a1a5b8824ecfa754b55e0caffc01.html)一文。
 
@@ -126,5 +127,4 @@ Azure VM 有 Azure 提供的主機和 VM 監視功能，因此在遇到主機問
 
 如需跨 Azure 區域的 SAP HANA 可用性詳細資訊，請參閱：
 
-- [跨 Azure 區域的 SAP HANA 可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-across-regions) 
-
+- [跨 Azure 區域的 SAP HANA 可用性](./sap-hana-availability-across-regions.md) 

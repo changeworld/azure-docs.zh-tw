@@ -9,16 +9,16 @@ ms.author: johndeu
 ms.date: 04/16/2020
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 53d68a18c5904b8b7e2f6145ae26221e99395a82
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 67c26cbad2a723fa21fbe1719c6e43d3d63f2547
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84749938"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87030660"
 ---
 # <a name="verified-on-premises-live-streaming-encoders"></a>已驗證內部部署即時串流編碼器
 
-在 Azure 媒體服務中，[即時事件](https://docs.microsoft.com/rest/api/media/liveevents) (通道) 代表處理即時串流內容的管線。 即時事件會以兩種方式之一收到即時輸入資料流。
+在 Azure 媒體服務中，[即時事件](/rest/api/media/liveevents) (通道) 代表處理即時串流內容的管線。 即時事件會以兩種方式之一收到即時輸入資料流。
 
 * 內部部署即時編碼器會將多位元速率 RTMP 或 Smooth Streaming (分散式 MP4) 串流傳送到未啟用執行媒體服務即時編碼的即時事件。 內嵌的資料流會通過即時事件，而不需任何進一步處理。 此方法稱為 **傳遞**。 建議將即時編碼器傳送多位元率串流，而不是將單一位元速率串流傳送至傳遞即時事件，以允許彈性位元速率串流至用戶端。 
 
@@ -114,7 +114,7 @@ ms.locfileid: "84749938"
 > [!IMPORTANT]
 > 監看電腦的實體狀況（CPU/記憶體/等等），因為將片段上傳至雲端牽涉到 CPU 和 IO 作業。 如果您變更編碼器中的任何設定，請務必重設通道/即時事件，讓變更生效。
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
 [使用媒體服務 v3 進行即時串流](live-streaming-overview.md)
 

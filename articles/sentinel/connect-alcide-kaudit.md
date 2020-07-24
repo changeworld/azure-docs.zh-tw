@@ -14,14 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/21/2020
 ms.author: yelevin
-ms.openlocfilehash: 121c9258353505b6147aa059d327bc711e9fede4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cf8da1d88529a823ff4399fb955c8a5e0abbd20e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85368375"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038234"
 ---
 # <a name="connect-your-alcide-kaudit-to-azure-sentinel"></a>將您的 Alcide kAudit 連線至 Azure Sentinel
+
+> [!IMPORTANT]
+> Azure Sentinel 中的 Alcide kAudit 資料連線器目前為公開預覽狀態。
+> 這項功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 [Alcide kAudit](https://www.alcide.io/kaudit-K8s-forensics/)可協助您識別異常 Kubernetes 行為，並專注于 Kubernetes 缺口和事件，同時減少偵測時間。 本文說明如何將您的 Alcide kAudit 解決方案連接到 Azure Sentinel。 Alcide kAudit 資料連線器可讓您輕鬆地將 kAudit 記錄資料帶入 Azure Sentinel 中，以便在活頁簿中進行查看、使用它來建立自訂警示，並將其納入以改善調查。 Alcide kAudit 和 Azure Sentinel 之間的整合會使用 REST API。
 

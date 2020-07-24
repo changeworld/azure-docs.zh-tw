@@ -3,11 +3,12 @@ title: 備份 Azure Stack Vm 中的檔
 description: 使用 Azure 備份可備份 Azure Stack 檔案和應用程式，並復原到 Azure Stack 環境。
 ms.topic: conceptual
 ms.date: 06/05/2018
-ms.openlocfilehash: 2bcdf7f720708db1487d7d5cdaee41dc93c05728
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07a64e5457963ea4a6d3b39b3f2326dbcfc5e63a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74172325"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87032760"
 ---
 # <a name="back-up-files-and-applications-on-azure-stack"></a>備份 Azure Stack 上的檔案和應用程式
 
@@ -43,15 +44,15 @@ ms.locfileid: "74172325"
 
     ![開啟新的保護群組精靈](./media/backup-mabs-files-applications-azure-stack/5-select-group-members.png)
 
-    Microsoft 建議將所有共用保護原則的資料置於一個保護群組中。 如需規劃和部署保護群組的完整資訊，請參閱 System Center DPM 文章：[部署保護群組](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-1801)。
+    Microsoft 建議將所有共用保護原則的資料置於一個保護群組中。 如需規劃和部署保護群組的完整資訊，請參閱 System Center DPM 文章：[部署保護群組](/system-center/dpm/create-dpm-protection-groups)。
 
-4. 在 [選取資料保護方式]**** 畫面中，鍵入保護群組的名稱。 選取 [我想要使用下列項目進行短期保護：]**** 和 [我想要線上保護]**** 的核取方塊。 按 [下一步] 。
+4. 在 [選取資料保護方式]**** 畫面中，鍵入保護群組的名稱。 選取 [我想要使用下列項目進行短期保護：]**** 和 [我想要線上保護]**** 的核取方塊。 按 [下一步]  。
 
     ![開啟新的保護群組精靈](./media/backup-mabs-files-applications-azure-stack/6-select-data-protection-method.png)
 
     若要選取 [我想要線上保護]****，您必須先選取 [我想要使用下列項目進行短期保護：磁碟]****。 Azure 備份伺服器不會保護至磁帶，因此磁碟是進行短期保護的唯一選擇。
 
-5. 在 [指定短期目標]**** 畫面上，選擇保留儲存至磁碟之復原點的時間長度，以及儲存增量備份的時機。 按 [下一步] 。
+5. 在 [指定短期目標]**** 畫面上，選擇保留儲存至磁碟之復原點的時間長度，以及儲存增量備份的時機。 按 [下一步]  。
 
     > [!IMPORTANT]
     > 您**不應該**將作業復原 (備份) 資料保留在 Azure 備份伺服器連結的磁碟上超過五天。
@@ -132,5 +133,5 @@ ms.locfileid: "74172325"
 
 如需使用 Azure 備份伺服器保護其他工作負載的資訊，請參閱下列文章：
 
-* [備份 SharePoint 伺服器陣列](https://docs.microsoft.com/azure/backup/backup-mabs-sharepoint-azure-stack)
-* [備份 SQL Server](https://docs.microsoft.com/azure/backup/backup-mabs-sql-azure-stack)
+* [備份 SharePoint 伺服器陣列](./backup-mabs-sharepoint-azure-stack.md)
+* [備份 SQL Server](./backup-mabs-sql-azure-stack.md)

@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f04fcae1ba218949019637e9a101492a487b430f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e27adde84f62f8c8d79389e1de4e867439d5a3be
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85603735"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87034732"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Azure Active Directory 新增功能的封存檔
 
@@ -2768,7 +2768,7 @@ Criterion HCM、[FiscalNote](https://docs.microsoft.com/azure/active-directory/a
 
 針對 SAML 型單一登入設定的企業應用程式，有些使用者未收到相關通知。 此問題已解決。 若憑證將在 7、30 和 60 天內到期，Azure AD 就會傳送通知。 您可以在稽核記錄中看到此事件。
 
-如需詳細資訊，請參閱：
+如需詳細資訊，請參閱
 
 - [在 Azure Active Directory 中管理同盟單一登入的憑證](https://docs.microsoft.com/azure/active-directory/active-directory-sso-certs)
 - [Azure Active Directory 入口網站中的稽核活動報告](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-activity-audit-logs)
@@ -3114,7 +3114,7 @@ Azure AD Connect 是在 Azure AD 與內部部署資料來源 (包括 Windows Ser
 
 - Microsoft Invoicing
 
-如需詳細資訊，請參閱：
+如需詳細資訊，請參閱
 
 - [已核准的用戶端應用程式需求](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#client-apps-preview)
 - [以 Azure AD 應用程式為基礎的條件式存取](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
@@ -3323,7 +3323,7 @@ Azure AD 目錄角色的核准工作流程已正式運作。
 
 **類型：** 已變更的功能 **服務類別：** Privileged Identity Management **產品功能：** Privileged Identity Management
 
-有了適用於 Azure 角色型存取控制 (RBAC) 的 Azure AD Privileged Identity Management (PIM) 公開預覽更新，您現在可以：
+透過 Azure 角色型存取控制（Azure RBAC）的 Azure AD Privileged Identity Management （PIM）公開預覽更新，您現在可以：
 
 * 使用恰到好處的系統管理。
 * 要求必須經過核准才能啟用資源角色。
@@ -3372,7 +3372,7 @@ Azure Active Directory 存取控制 (也稱為「存取控制」服務) 將於 2
 - [Microsoft Kaizala](https://www.microsoft.com/garage/profiles/kaizala/) \(英文\)
 - Microsoft StaffHub
 
-如需詳細資訊，請參閱：
+如需詳細資訊，請參閱
 
 - [已核准的用戶端應用程式需求](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#client-apps-preview)
 - [以 Azure AD 應用程式為基礎的條件式存取](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)

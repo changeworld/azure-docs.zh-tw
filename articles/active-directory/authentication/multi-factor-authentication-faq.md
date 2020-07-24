@@ -5,17 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 04/13/2020
+ms.date: 07/14/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa25cffd84ee9255fed8bbaa0f2fb6adf762b47e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d6f5cabace81d53edf36ac6be0a2eb8830e6cc5f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84483791"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87035072"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>與 Azure Multi-Factor Authentication 相關的常見問題
 
@@ -55,6 +56,8 @@ ms.locfileid: "84483791"
 
 驗證結果 (成功或拒絕) 和拒絕原因會與驗證資料一起儲存。 可在驗證和使用方式報告中取得此資料。
 
+如需詳細資訊，請參閱[Azure 多因素驗證的資料常駐和客戶資料](concept-mfa-data-residency.md)。
+
 ### <a name="what-sms-short-codes-are-used-for-sending-sms-messages-to-my-users"></a>何種 SMS 簡短程式碼可用來傳送 SMS 訊息給我的使用者？
 
 在美國，我們使用下列 SMS 簡短代碼：
@@ -69,7 +72,9 @@ ms.locfileid: "84483791"
 * *759731*
 * *673801*
 
-不保證會有相同數目的一致 SMS 或以語音為基礎的多重要素驗證提示傳遞。 為了使用者的利益，我們可能會在調整路由來改善 SMS 傳遞能力時，隨時新增或移除簡短代碼。 美國和加拿大以外的國家或地區不支援簡短代碼。
+不保證會有相同數目的一致 SMS 或以語音為基礎的多重要素驗證提示傳遞。 為了使用者的利益，我們可能會在調整路由來改善 SMS 傳遞能力時，隨時新增或移除簡短代碼。
+
+美國和加拿大以外的國家或地區不支援簡短代碼。
 
 ## <a name="billing"></a>計費
 
@@ -185,7 +190,7 @@ ms.locfileid: "84483791"
 
 若為具有 Azure MFA Server v7.0 或更高版本的單向 SMS，您可以設定登錄機碼來設定逾時設定。 MFA 雲端服務傳送文字訊息之後，驗證碼 (或單次密碼) 就會傳回 MFA 伺服器。 依預設，MFA 伺服器會將程式碼儲存在記憶體中達 300 秒。 如果使用者在 300 秒內未輸入代碼，則他們的驗證會遭到拒絕。 若要變更預設逾時設定，請使用下列步驟：
 
-1. 移至 `HKLM\Software\Wow6432Node\Positive Networks\PhoneFactor`。
+1. 前往 `HKLM\Software\Wow6432Node\Positive Networks\PhoneFactor`。
 2. 建立名為*pfsvc_pendingSmsTimeoutSeconds*的**DWORD**登錄機碼，並設定您想要讓 Azure MFA Server 儲存一次密碼的時間（以秒為單位）。
 
 >[!TIP]

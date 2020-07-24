@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: article
 keywords: Kinect，Windows，v2，Azure Kinect，比較，SDK，差異，硬體，軟體
-ms.openlocfilehash: ec105cef0c52b02c763487fbe5b2d8c018315f4c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0a8d399370f354524858bdd658ffd65c0494dd4d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67452510"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87031569"
 ---
 # <a name="azure-kinect-and-kinect-windows-v2-comparison"></a>Azure Kinect 和 Kinect Windows v2 的比較
 
@@ -22,8 +22,8 @@ Azure Kinect DK 的硬體和軟體發展工具組與 Kinect for Windows v2 有�
 
 下表列出 Azure Kinect 開發工具組和 Kinect for Windows v2 之間的高階差異。
 
-|    |      | Azure Kinect DK |  Kinect for Windows v2 |
-|----------|---------------|--------| ------------|
+| 功能 | 類型 | Azure Kinect DK | Kinect for Windows v2 |
+| ------- | ---- | --------------- | --------------------- |
 | **音訊** | 詳細資料  | 7-mic 迴圈陣列 | 4-mic 線性分段陣列 |
 | **動作感應器** | 詳細資料 | 3軸加速計 3-軸 gyro | 3軸加速計 |
 | **RGB 相機**    | 詳細資料 | 3840 x 2160 px @30 fps | 1920 x 1080 px @30 fps |

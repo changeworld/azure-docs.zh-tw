@@ -3,12 +3,12 @@ title: 使用 DPM 將 SharePoint 伺服器陣列備份至 Azure
 description: 這篇文章概述 SharePoint 伺服器陣列至 Azure 的 DPM/Azure 備份伺服器保護
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: 447776af7cb021fd0c3381334bf3acf258ff22ab
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b326ce15cd605f4f768a03b95337bbc5bd6aaabc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539103"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87032879"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-dpm"></a>使用 DPM 將 SharePoint 伺服器陣列備份至 Azure
 
@@ -24,7 +24,7 @@ ms.locfileid: "86539103"
 
 您需要先確定幾件事，再將 SharePoint 伺服器陣列備份至 Azure。
 
-### <a name="prerequisites"></a>先決條件
+### <a name="prerequisites"></a>必要條件
 
 繼續之前，請確定 [使用 Microsoft Azure 備份來保護工作負載的所有必要條件](backup-azure-dpm-introduction.md#prerequisites-and-limitations) 已滿足。 一些滿足必要條件的工作包括︰建立備份保存庫、下載保存庫認證、安裝 Azure 備份代理程式，以及向保存庫註冊 DPM/Azure 備份伺服器。
 
@@ -32,7 +32,7 @@ ms.locfileid: "86539103"
 
 ## <a name="configure-backup"></a>設定備份
 
-若要備份 SharePoint 伺服器陣列，您要使用 ConfigureSharePoint.exe 設定 SharePoint 保護，然後在 DPM 中建立保護群組。 如需指示，請參閱 DPM 檔中的[設定備份](//system-center/dpm/back-up-sharepoint?view=sc-dpm-2019#configure-backup)。
+若要備份 SharePoint 伺服器陣列，您要使用 ConfigureSharePoint.exe 設定 SharePoint 保護，然後在 DPM 中建立保護群組。 如需指示，請參閱 DPM 檔中的[設定備份](/system-center/dpm/back-up-sharepoint?view=sc-dpm-2019#configure-backup)。
 
 ## <a name="monitoring"></a>監視
 

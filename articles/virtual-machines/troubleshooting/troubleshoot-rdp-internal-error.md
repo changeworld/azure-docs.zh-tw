@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/22/2018
 ms.author: genli
-ms.openlocfilehash: 8600971ffd23b1c253e8de807d365c46409b37bc
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 4831a084153c28576cca7c40dfefeb8c5ff3c4e6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86081446"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87036381"
 ---
 #  <a name="an-internal-error-occurs-when-you-try-to-connect-to-an-azure-vm-through-remote-desktop"></a>嘗試透過遠端桌面連線至 Azure VM 時發生內部錯誤
 
@@ -55,8 +55,7 @@ ms.locfileid: "86081446"
 
 #### <a name="step-1-check-the-rdp-port"></a>步驟 1：檢查 RDP 連接埠
 
-1. 在 PowerShell 執行個體中，使用 [NETSTAT](https://docs.microsoft.com/windows-server/administration/windows-commands/netstat
-) 來檢查是否有其他應用程式正在使用連接埠 8080：
+1. 在 PowerShell 執行個體中，使用 [NETSTAT](/windows-server/administration/windows-commands/netstat) 來檢查是否有其他應用程式正在使用連接埠 8080：
 
     ```powershell
     Netstat -anob |more
@@ -186,7 +185,7 @@ RDP 用戶端會使用 TLS 1.0 作為預設通訊協定。 不過，您也可以
 
 #### <a name="attach-the-os-disk-to-a-recovery-vm"></a>將 OS 磁碟連結至復原 VM
 
-1. [將 OS 磁片連結至復原 VM](../windows/troubleshoot-recovery-disks-portal.md)。
+1. [將 OS 磁片連結至復原 VM](./troubleshoot-recovery-disks-portal-windows.md)。
 2. 在 OS 磁碟連結至復原 VM 後，請確定該磁碟在磁碟管理主控台中標示為 [線上]****。 記下指派給已連結 OS 磁碟的磁碟機代號。
 3. 啟動復原 VM 的遠端桌面連線。
 
@@ -299,4 +298,4 @@ RDP 用戶端會使用 TLS 1.0 作為預設通訊協定。 不過，您也可以
     REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\Terminal Server\WinStations\RDP-Tcp" /v fAllowSecProtocolNegotiation /t REG_DWORD /d 1 /f reg unload HKLM\BROKENSYSTEM
     ```
 
-5. [卸離 OS 磁碟並重新建立 VM](../windows/troubleshoot-recovery-disks-portal.md)，然後檢查問題是否已解決。
+5. [卸離 OS 磁碟並重新建立 VM](./troubleshoot-recovery-disks-portal-windows.md)，然後檢查問題是否已解決。

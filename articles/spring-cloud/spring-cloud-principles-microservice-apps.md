@@ -6,14 +6,15 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 05/27/2020
-ms.openlocfilehash: 1a8f48ff365ffae4a7013d2bfd537721ba2bc381
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.custom: devx-track-java
+ms.openlocfilehash: a8e1d43138e0b7481ebb89d747fa26df9470a09f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86172533"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87037130"
 ---
-# <a name="java-and-base-os-for-spring-microservice-apps"></a>適用于春天微服務應用程式的 JAVA 和基礎作業系統
+# <a name="java-and-base-os-for-spring-microservice-apps"></a>適用於 Spring 微服務應用程式的 Java 和基底 OS
 以下是針對春季微服務應用程式維護狀況良好的 JAVA 和基礎作業系統的原則。
 ## <a name="principles-for-healthy-java-and-base-os"></a>狀況良好的 JAVA 和基礎作業系統的原則
 * 應該是跨層的相同基本作業系統-基本 |標準 |進階.
@@ -39,8 +40,8 @@ Azul 系統會持續掃描基礎作業系統的變更，並將最後建立的映
 * 誰建立了這些 JAVA 執行時間？
     * Azul 系統。
 * 映射的基礎作業系統為何？
-    * Ubuntu 20.04 LTS (焦 Fossa) 。 應用程式會繼續保持在最新的 Ubuntu LTS 版本。
-    * 請參閱[Ubuntu 20.04 LTS (焦 Fossa) ](http://releases.ubuntu.com/focal/)
+    * Ubuntu 20.04 LTS （焦點 Fossa）。 應用程式會繼續保持在最新的 Ubuntu LTS 版本。
+    * 請參閱[Ubuntu 20.04 LTS （焦點 Fossa）](http://releases.ubuntu.com/focal/)
 * 如何下載適用于本機開發的支援 JAVA 執行時間？ 
     * 請參閱[安裝適用于 Azure 的 JDK 和 Azure Stack](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-install)
 * 如何在 JAVA 執行時間層級取得問題的支援？
@@ -51,5 +52,5 @@ Azul 系統會持續掃描基礎作業系統的變更，並將最後建立的映
 > ![預設部署](media/spring-cloud-principles/spring-cloud-default-deployment.png)
  
 ## <a name="next-steps"></a>後續步驟
-* [快速入門：使用 Azure 入口網站啟動現有的 Azure 春季雲端應用程式](spring-cloud-quickstart-launch-app-portal.md)
+* [快速入門：使用 Azure 入口網站來啟動現有的 Azure Spring Cloud 應用程式](spring-cloud-quickstart-launch-app-portal.md)
 * [適用于 Azure 和 Azure Stack 的 JAVA 長期支援](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-long-term-support)

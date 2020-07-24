@@ -1,20 +1,20 @@
 ---
-title: 適用于 Azure 安全性基準測試的 Service Fabric 安全性基準
+title: 適用于 Service Fabric 的 Azure 安全性基準
 description: Service Fabric 的安全性基準提供程式指引和資源，可用於執行 Azure 安全性基準測試中所指定的安全性建議。
 author: msmbaldwin
 ms.service: service-fabric
 ms.topic: conceptual
-ms.date: 07/13/2020
+ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: d9d5d686c692c45acfff4fa811ed668c17f19861
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 97285ae9eadee3717f0b1a1510627392250424b7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531297"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87037860"
 ---
-# <a name="service-fabric-security-baseline-for-azure-security-benchmark"></a>適用于 Azure 安全性基準測試的 Service Fabric 安全性基準
+# <a name="azure-security-baseline-for-service-fabric"></a>適用于 Service Fabric 的 Azure 安全性基準
 
 適用于 Service Fabric 的 Azure 安全性基準包含可協助您改善部署之安全性狀態的建議。
 

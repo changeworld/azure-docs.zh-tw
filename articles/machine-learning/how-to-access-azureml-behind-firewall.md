@@ -9,13 +9,14 @@ ms.topic: how-to
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 04/27/2020
+ms.date: 07/17/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 31daec93352c0e142075a55c61f2b8d3a6d56fab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 10b9e055ce5b1e2ba27d942a987bf6b38291f094
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85080224"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87031417"
 ---
 # <a name="use-workspace-behind-azure-firewall-for-azure-machine-learning"></a>使用適用于 Azure Machine Learning 的 Azure 防火牆後方的工作區
 
@@ -61,6 +62,7 @@ ms.locfileid: "85080224"
 | ---- | ---- |
 | **anaconda.com** | 安裝 conda 套件時使用 |
 | **pypi.org** | 安裝 pip 套件時使用 |
+
 
 ## <a name="r-hosts"></a>R 主機
 
