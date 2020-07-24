@@ -1,19 +1,19 @@
 ---
 title: 天氣涵蓋範圍 |Microsoft Azure 對應
 description: 在本文中，您將瞭解 Microsoft Azure Maps 中的氣象涵蓋範圍。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 11/20/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: c18a09b494de7ecb639fbc5639b7162bdb02d2a6
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: d6e08f53fa6c5fbfa8e7f4569b7475c21e40dc05
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86241976"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133209"
 ---
 # <a name="azure-maps-weather-coverage"></a>Azure 地圖服務氣象涵蓋範圍
 

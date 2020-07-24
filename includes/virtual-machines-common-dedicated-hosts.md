@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/10/2020
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 7cf03de2efdb1026934985c225a2a9eecbfbb5a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 24e4554e2202c8b5452193e1b0f48cf6c8ada5dd
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84902591"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133795"
 ---
 ## <a name="limitations"></a>限制
 
@@ -79,7 +79,15 @@ ms.locfileid: "84902591"
 
 ## <a name="quotas"></a>配額
 
-針對專用主機，每個區域都有3000個 vcpu 的預設配額限制。 但是，您可以部署的主機數目也會受限於用於主機之 VM 大小系列的配額。 例如，隨用**隨付**訂用帳戶在美國東部區域只能有10個 vcpu 的配額可供 Dsv3 大小數列使用。 在此情況下，您必須先將配額增加到至少64個 vcpu，才能部署專用主機。 選取右上角的 [**要求增加**] 按鈕，視需要提出要求。
+當您部署專用主機時，會使用兩種類型的配額。
+
+1. 專用主機 vCPU 配額。 預設配額限制為每個區域3000個 vcpu。
+1. VM 大小系列配額。 例如，隨用**隨付**訂用帳戶在美國東部區域只能有10個 vcpu 的配額可供 Dsv3 大小數列使用。 若要部署 Dsv3 專用主機，您必須先要求增加至少64個 vcpu 的配額，才可以部署專用主機。 
+
+若要要求增加配額，請在[Azure 入口網站](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)中建立支援要求。
+
+布建專用主機將會同時使用專用主機 vCPU 和 VM 系列 vCPU 配額，但不會使用區域 vCPU。
+
 
 ![入口網站中 [使用量和配額] 頁面的螢幕擷取畫面](./media/virtual-machines-common-dedicated-hosts/quotas.png)
 
@@ -113,7 +121,7 @@ SKU 是針對主機定義的，它代表 VM 大小數列和類型。 您可以�
 
 Azure 會監視並管理您主機的健全狀況狀態。 當您查詢主機時，將會傳回下列狀態：
 
-| 健全狀況狀態   | Description       |
+| 健全狀況狀態   | 說明       |
 |----------|----------------|
 | 主機可供使用     | 您的主機沒有已知的問題。   |
 | 調查中的主機  | 我們正在尋找的主機有一些問題。 這是 Azure 嘗試和識別所識別問題的範圍和根本原因所需的過渡狀態。 在主機上執行的虛擬機器可能會受到影響。 |

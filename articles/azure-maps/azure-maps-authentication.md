@@ -2,19 +2,20 @@
 title: 驗證方法
 titleSuffix: Azure Maps
 description: 在本文中，您將瞭解 Azure Active Directory 和共用金鑰驗證。 這兩者都用於 Microsoft Azure Maps 服務。 瞭解如何取得 Azure 地圖服務訂用帳戶金鑰。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 06/12/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: fe79b630291959ce4dc8b4743127986088a876ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e270a9a1a773442a4d1d28d9bbfe37639cac7c65
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987548"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133379"
 ---
 # <a name="authentication-with-azure-maps"></a>向 Azure 地圖服務驗證
 
@@ -89,7 +90,7 @@ Azure 地圖服務支援存取 Azure[角色型存取控制](https://docs.microso
 
 有下列角色定義類型可支援應用程式案例。
 
-| Azure 角色定義       | Description                                                                                              |
+| Azure 角色定義       | 說明                                                                                              |
 | :-------------------------- | :------------------------------------------------------------------------------------------------------- |
 | Azure 地圖服務資料讀者      | 提供不可變 Azure 地圖服務 REST Api 的存取。                                                       |
 | Azure 地圖服務資料參與者 | 提供可變 Azure 地圖服務 REST Api 的存取權。 可變動性是由 [動作] 所定義： [寫入] 和 [刪除]。 |
@@ -113,7 +114,7 @@ Azure 地圖服務支援存取 Azure[角色型存取控制](https://docs.microso
 
 以下是一些範例案例，其中的自訂角色可以改善應用程式安全性。
 
-| 狀況                                                                                                                                                                                                                 | 自訂角色資料動作                                                                                                                  |
+| 案例                                                                                                                                                                                                                 | 自訂角色資料動作                                                                                                                  |
 | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------ |
 | 具有基本地圖磚和沒有其他 REST Api 的公開或互動式登入網頁。                                                                                                                              | `Microsoft.Maps/accounts/services/render/read`                                                                                              |
 | 只需要反向地理編碼和其他 REST Api 的應用程式。                                                                                                                                             | `Microsoft.Maps/accounts/services/search/read`                                                                                              |

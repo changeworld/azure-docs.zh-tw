@@ -1,19 +1,19 @@
 ---
 title: 選擇正確的定價層 |Microsoft Azure 對應
 description: 在本文中，您將瞭解 Microsoft Azure Maps 所提供的定價層。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 01/15/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: a8bf7ff9bacd4fe84ee5b64d0aed5cb271ce06f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4b32706822ff16780388f4acb5d59bf3d91e6d91
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80335668"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133328"
 ---
 # <a name="choose-the-right-pricing-tier-in-azure-maps"></a>在 Azure 地圖服務中選擇正確的定價層
 

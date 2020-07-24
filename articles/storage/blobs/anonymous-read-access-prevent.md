@@ -6,27 +6,29 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/13/2020
+ms.date: 07/23/2020
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: 24d726f7600c3ba80833640be8036bf0daa2c014
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e30c4142232a2d695204f5c8f612eb44791c847c
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518719"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133158"
 ---
 # <a name="prevent-anonymous-public-read-access-to-containers-and-blobs"></a>防止對容器和 blob 的匿名公用讀取權限
 
 Azure 儲存體中容器和 blob 的匿名公用讀取權限，是共用資料的便利方式，但也可能會帶來安全性風險。 請務必謹慎管理匿名存取，並瞭解如何評估匿名存取您的資料。 對於可公開存取的資料，操作複雜度、人為錯誤或惡意攻擊可能會導致成本高昂的資料違規。 Microsoft 建議您只有在應用程式案例需要時，才啟用匿名存取。
 
-根據預設，具有適當許可權的使用者可以設定對容器和 blob 的公用存取權。 您可以防止儲存體帳戶層級的所有公用存取。 當您不允許儲存體帳戶的公用 blob 存取時，帳戶中的容器將無法設定為公用存取。 任何已設定為公開存取的容器將不再接受匿名要求。 如需詳細資訊，請參閱[設定容器和 blob 的匿名公用讀取權限](anonymous-read-access-configure.md)。
+根據預設，一律禁止對 blob 資料進行公用存取。 不過，儲存體帳戶的預設設定允許具有適當許可權的使用者，在儲存體帳戶中設定容器和 blob 的公用存取權。 為了加強安全性，不論個別容器的公用存取設定為何，您都可以不允許所有對儲存體帳戶的公用存取。 不允許對儲存體帳戶進行公用存取，以防止使用者啟用帳戶中容器的公用存取權。 除非您的案例需要儲存體帳戶的公用存取權，否則 Microsoft 建議您不要對其進行公開存取。 不允許公用存取有助於防止不想要的匿名存取所造成的資料缺口。
+
+當您不允許儲存體帳戶的公用 blob 存取時，Azure 儲存體會拒絕該帳戶的所有匿名要求。 當帳戶不允許公用存取之後，該帳戶中的容器將無法後續設定為公開存取。 任何已設定為公開存取的容器將不再接受匿名要求。 如需詳細資訊，請參閱[設定容器和 blob 的匿名公用讀取權限](anonymous-read-access-configure.md)。
 
 本文說明如何針對儲存體帳戶分析匿名要求，以及如何防止整個儲存體帳戶或個別容器的匿名存取。
 
 ## <a name="detect-anonymous-requests-from-client-applications"></a>從用戶端應用程式偵測匿名要求
 
-當您不允許儲存體帳戶的公用讀取權限時，您會拒絕對目前設定為公用存取的容器和 blob 提出要求的風險。 不允許儲存體帳戶的公用存取會覆寫該儲存體帳戶中所有容器的公用存取設定。 當儲存體帳戶不允許公用存取時，任何未來對該帳戶的匿名要求都會失敗。
+當您不允許儲存體帳戶的公用讀取權限時，您會拒絕對目前設定為公用存取的容器和 blob 提出要求的風險。 不允許儲存體帳戶的公用存取會覆寫該儲存體帳戶中個別容器的公用存取設定。 當儲存體帳戶不允許公用存取時，任何未來對該帳戶的匿名要求都會失敗。
 
 若要瞭解不允許公用存取如何影響用戶端應用程式，Microsoft 建議您啟用該帳戶的記錄和計量，並在一段時間內分析匿名要求的模式。 使用計量來判斷對儲存體帳戶的匿名要求數目，並使用記錄來判斷以匿名方式存取的容器。
 

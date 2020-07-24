@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 6/9/2020
 ms.author: baanders
-ms.openlocfilehash: 21d910fb0e0992b35aa19ce65fc216734e30265c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 3035bd71a91f7cad6fb951d74081b77d8445a81f
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86515844"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133788"
 ---
 ### <a name="functional-limits"></a>功能限制
 
@@ -45,6 +45,6 @@ ms.locfileid: "86515844"
 
 ### <a name="other-limits"></a>其他限制
 
-適用于 Azure 數位 Twins 模型之 DTDL 檔中的資料類型和欄位限制，可以在其 GitHub 中的規格檔中找到：[數位 Twins 定義語言（DTDL）-第2版](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)。
+適用于 Azure 數位 Twins 模型之 DTDL 檔中的資料類型和欄位限制，可以在其 GitHub 中的規格檔中找到：[*數位 Twins 定義語言（DTDL）-第2版*](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)。
  
 如需在預覽期間撰寫查詢的查詢延遲詳細資料和其他指導方針，請參閱[*如何：查詢*](../articles/digital-twins/how-to-query-graph.md)對應項圖形。

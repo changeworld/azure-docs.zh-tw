@@ -1,19 +1,19 @@
 ---
 title: 在 Azure 地圖服務中變更地圖的樣式 |Microsoft Azure 對應
 description: 在本文中，您將瞭解 Microsoft Azure Maps web SDK 中可用的樣式相關功能。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: b1c5d9b5cd2b6b9bfecf8a0af79699061003eec1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 815b76f2a1c8872ff01439b126cb2ba1cdf27953
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80335677"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133362"
 ---
 # <a name="change-the-style-of-the-map"></a>變更地圖樣式
 

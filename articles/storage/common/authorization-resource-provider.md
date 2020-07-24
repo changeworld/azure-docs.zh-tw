@@ -9,12 +9,12 @@ ms.date: 12/12/2019
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 73077b6b25c09c17deb4ad468c79fe6d5ddd648e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 634e1866a2c3e30e0750b9e6f4b2b3f93db2f8dc
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85833250"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133107"
 ---
 # <a name="use-the-azure-storage-resource-provider-to-access-management-resources"></a>使用 Azure 儲存體資源提供者來存取管理資源
 
@@ -26,7 +26,7 @@ Azure Resource Manager 是 Azure 的部署和管理服務。 Azure 儲存體資�
 
 Microsoft 提供兩個 REST Api 來使用 Azure 儲存體資源。 這些 Api 會形成您可以對 Azure 儲存體執行的所有動作的基礎。 Azure 儲存體 REST API 可讓您使用儲存體帳戶中的資料，包括 blob、佇列、檔案和資料表資料。 Azure 儲存體資源提供者 REST API 可讓您使用儲存體帳戶和相關資源。
 
-讀取或寫入 blob 資料的要求所需的許可權，必須與執行管理作業的要求不同。 RBAC 可讓您更精細地控制兩種資源類型的許可權。 當您將 RBAC 角色指派給安全性主體時，請確定您瞭解將授與主體的許可權。 如需描述哪些動作與每個內建 RBAC 角色相關聯的詳細參考，請參閱[Azure 資源的內建角色](../../role-based-access-control/built-in-roles.md)。
+讀取或寫入 blob 資料的要求所需的許可權，必須與執行管理作業的要求不同。 RBAC 可讓您更精細地控制兩種資源類型的許可權。 當您將 RBAC 角色指派給安全性主體時，請確定您瞭解將授與主體的許可權。 如需描述哪些動作與每個內建 RBAC 角色相關聯的詳細參考，請參閱[Azure 內建角色](../../role-based-access-control/built-in-roles.md)。
 
 Azure 儲存體支援使用 Azure AD 來授權對 Blob 和佇列儲存體的要求。 如需有關適用于 blob 和佇列資料作業之 RBAC 角色的詳細資訊，請參閱[使用 Active Directory 授權存取 blob 和佇列](storage-auth-aad.md)。
 
@@ -34,7 +34,7 @@ Azure 儲存體支援使用 Azure AD 來授權對 Blob 和佇列儲存體的要�
 
 每個 Azure 訂用帳戶都有相關聯的 Azure Active Directory，可管理使用者、群組和應用程式。 使用者、群組或應用程式也稱為[Microsoft 身分識別平臺](/azure/active-directory/develop/)內容中的安全性主體。 您可以使用角色型存取控制（RBAC），將訂用帳戶中的資源存取權授與 Active Directory 中所定義的安全性主體。
 
-當您將 RBAC 角色指派給安全性主體時，也會指出角色所授與的許可權生效的範圍。 針對管理作業，您可以在訂用帳戶層級、資源群組或儲存體帳戶指派角色。 您可以使用[Azure 入口網站](https://portal.azure.com/)、 [Azure CLI 工具](../../cli-install-nodejs.md)、 [PowerShell](/powershell/azureps-cmdlets-docs)或[AZURE 儲存體資源提供者 REST API](/rest/api/storagerp)，將 RBAC 角色指派給安全性主體。
+當您將 RBAC 角色指派給安全性主體時，也會指出角色所授與的許可權生效的範圍。 針對管理作業，您可以在訂用帳戶層級、資源群組或儲存體帳戶指派角色。 您可以使用[Azure 入口網站](https://portal.azure.com/)、 [Azure CLI 工具](../../cli-install-nodejs.md)、 [PowerShell](/powershell/azure/)或[AZURE 儲存體資源提供者 REST API](/rest/api/storagerp)，將 RBAC 角色指派給安全性主體。
 
 如需詳細資訊，請參閱[什麼是 azure 角色型存取控制（AZURE RBAC）？](../../role-based-access-control/overview.md) 和[傳統訂用帳戶管理員角色、AZURE RBAC 角色和 Azure AD 系統管理員角色](../../role-based-access-control/rbac-and-directory-admin-roles.md)。
 
@@ -44,11 +44,11 @@ Azure 提供的內建角色可授與呼叫管理作業的許可權。 Azure 儲�
 
 授與呼叫存放裝置管理作業許可權的內建角色，包括下表所述的角色：
 
-|    RBAC 角色    |    Description    |    包含帳戶金鑰的存取權嗎？    |
+|    RBAC 角色    |    說明    |    包含帳戶金鑰的存取權嗎？    |
 |---------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------|
 | **擁有者** | 可以管理所有儲存體資源和資源的存取權。  | 是，提供查看和重新產生儲存體帳戶金鑰的許可權。 |
 | **參與者**  | 可以管理所有存放裝置資源，但無法管理指派給資源。 | 是，提供查看和重新產生儲存體帳戶金鑰的許可權。 |
-| **讀取者** | 可以查看儲存體帳戶的相關資訊，但無法查看帳戶金鑰。 | 否。 |
+| **讀取者** | 可以查看儲存體帳戶的相關資訊，但無法查看帳戶金鑰。 | 不可以。 |
 | **儲存體帳戶參與者** | 可以管理儲存體帳戶、取得訂用帳戶資源群組和資源的相關資訊，以及建立和管理訂用帳戶資源群組部署。 | 是，提供查看和重新產生儲存體帳戶金鑰的許可權。 |
 | **使用者存取系統管理員** | 可以管理對儲存體帳戶的存取。   | 是，允許安全性主體將任何許可權指派給自己和其他人。 |
 | **虛擬機器參與者** | 可以管理虛擬機器，但不能管理它們所連接的儲存體帳戶。   | 是，提供查看和重新產生儲存體帳戶金鑰的許可權。 |
@@ -57,7 +57,7 @@ Azure 提供的內建角色可授與呼叫管理作業的許可權。 Azure 儲�
 
 ### <a name="custom-roles-for-management-operations"></a>管理作業的自訂角色
 
-Azure 也支援定義自訂 RBAC 角色來存取管理資源。 如需自訂角色的詳細資訊，請參閱[適用于 Azure 資源的自訂角色](../../role-based-access-control/custom-roles.md)。
+Azure 也支援定義 Azure 自訂角色來存取管理資源。 如需自訂角色的詳細資訊，請參閱[Azure 自訂角色](../../role-based-access-control/custom-roles.md)。
 
 ## <a name="code-samples"></a>程式碼範例
 

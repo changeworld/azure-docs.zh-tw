@@ -2,19 +2,17 @@
 title: 包含檔案
 description: 包含檔案
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
 ms.custom: include file
 ms.date: 04/16/2020
-ms.author: diberry
-ms.openlocfilehash: 1c3631b4a2964c5e3a8d8267d1934a5822966342
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: ac0192da3afa76c3c21056f218f2b249c44d1c36
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83673436"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133796"
 ---
 認知服務提供兩種自然語言處理服務， [Language Understanding](../luis/what-is-luis.md)和[QnA Maker](../qnamaker/overview/overview.md)，各有不同的用途。 瞭解每個服務的使用時機，以及它們彼此的補充方式。
 
@@ -43,7 +41,7 @@ Language Understanding （LUIS）和 QnA Maker 解決不同的問題。 LUIS 會
 
 ## <a name="when-do-you-use-luis"></a>何時使用 LUIS？
 
-當您需要知道語句在聊天機器人中的處理過程中的意圖時，請使用 LUIS。 繼續進行範例文字， `How do I get to the Human Resources building on the Seattle North campus?` 一旦您知道使用者的意圖是尋找某個位置，您可以將語句的詳細資料（包含實體）傳遞給另一個服務（例如運輸伺服器），以取得答案。
+當您需要知道聊天機器人在處理過程中使用該語句的意圖時，請使用 LUIS。 繼續進行範例文字， `How do I get to the Human Resources building on the Seattle North campus?` 一旦您知道使用者的意圖是尋找某個位置，您可以將語句的詳細資料（包含實體）傳遞給另一個服務（例如運輸伺服器），以取得答案。
 
 您不需要結合 LUIS 和 QnA Maker 來判斷意圖。
 
@@ -51,7 +49,7 @@ Language Understanding （LUIS）和 QnA Maker 解決不同的問題。 LUIS 會
 
 ## <a name="when-do-you-use-qna-maker"></a>何時使用 QnA Maker？
 
-當您有答案的靜態知識庫時，請使用 QnA Maker。 此知識庫是依據需求所自訂的，且您已使用 PDF 和 URL 等文件建置好。
+當您有答案的靜態知識庫時，請使用 QnA Maker。 此知識庫是依據需求所自訂的，且您已使用 PDF 和 URL 等文件建置完成。
 
 繼續進行範例語句， `How do I get to the Human Resources building on the Seattle North campus?` 將文字當做查詢傳送至您發佈的 QnA Maker 服務，並獲得最佳解答。
 
@@ -75,7 +73,7 @@ Language Understanding （LUIS）和 QnA Maker 解決不同的問題。 LUIS 會
 
 使用 Bot framework**[分派 CLI](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)** 工具，協助建立處理這兩項服務的程式。 此工具會建立意圖的熱門 LUIS 應用程式，以在 LUIS 和 QnA Maker 之間分派作為子應用程式。 [深入瞭解](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&tabs=cs)如何與 LUIS、QnA Maker 和 Bot framework 整合。
 
-在[c #](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/14.nlp-with-dispatch)或[Node.js](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/14.nlp-with-dispatch)中使用 Bot builder 範例**NLP with 分派**，以執行這種類型的聊天機器人。
+使用 Bot 建立器範例，以[c #](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/14.nlp-with-dispatch)或[Node.js](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/14.nlp-with-dispatch)中的**分派 NLP**，來執行這種類型的聊天機器人。
 
 ## <a name="best-practices"></a>最佳作法
 
@@ -84,9 +82,9 @@ Language Understanding （LUIS）和 QnA Maker 解決不同的問題。 LUIS 會
 * [LUIS](../luis/luis-concept-best-practices.md)最佳作法
 * [QnA Maker](../qnamaker/concepts/best-practices.md)最佳做法
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
-* [語言理解 (LUIS)](../luis/what-is-luis.md)
+* [Language Understanding （LUIS）](../luis/what-is-luis.md)
 * [QnA Maker](../qnamaker/overview/overview.md)
 * [分派 CLI](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)
 * [Bot framework 範例](https://github.com/Microsoft/BotBuilder-Samples)
