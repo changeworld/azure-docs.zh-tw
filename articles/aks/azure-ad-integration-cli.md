@@ -6,12 +6,12 @@ author: TomGeske
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: thomasge
-ms.openlocfilehash: dfc3a546f4845d5eb2e4e144b66b5d97e4a68829
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f99b304d2e238d72b47b09261ede19b44827264a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518023"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87057363"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli-legacy"></a>使用 Azure CLI 將 Azure Active Directory 整合 Azure Kubernetes Service （舊版）
 
@@ -79,7 +79,7 @@ serverApplicationSecret=$(az ad sp credential reset \
     --query password -o tsv)
 ```
 
-Azure AD 需要執行下列動作的許可權：
+Azure AD 服務主體需要執行下列動作的許可權：
 
 * 讀取目錄資料
 * 登入和讀取使用者設定檔
@@ -246,7 +246,7 @@ error: You must be logged in to the server (Unauthorized)
 * 使用者不是 200 個以上的群組成員。
 * 在伺服器的應用程式註冊中定義的密碼符合使用設定的值`--aad-server-app-secret`
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 如需包含本文所示命令的完整腳本，請參閱[AKS 範例存放庫中的 Azure AD 整合腳本][complete-script]。
 

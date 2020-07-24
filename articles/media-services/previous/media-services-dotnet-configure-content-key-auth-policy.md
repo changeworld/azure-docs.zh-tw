@@ -14,17 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 58d52cd194ca4391c61f2477189984273df1198a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e05c7a8388b662731c04ac4098d6eecb1d89fe4f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84712389"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87060147"
 ---
-# <a name="configure-a-content-key-authorization-policy"></a>設定內容金鑰授權原則
+# <a name="configure-a-content-key-authorization-policy-by-using-the-media-services-net-sdk"></a>使用媒體服務 .NET SDK 設定內容金鑰授權原則
 
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../../includes/media-services-selector-content-key-auth-policy.md)]
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
  您可以使用 Azure 媒體服務來傳遞受到進階加密標準 (AES) 保護的 MPEG DASH、Smooth Streaming 和 HTTP Live Streaming (HLS) 串流，方法是使用 128 位元加密金鑰或 [PlayReady 數位版權管理 (DRM)](https://www.microsoft.com/playready/overview/)。 使用媒體服務，您還可以傳遞使用 Widevine DRM 加密的 DASH 串流。 PlayReady 和 Widevine 是依照一般加密 (ISO/IEC 23001-7 CENC) 規格加密。
 
 媒體服務也提供金鑰/授權傳遞服務，用戶端可以從該處取得 AES 金鑰或 PlayReady/Widevine 授權，以便播放加密的內容。
@@ -33,7 +34,7 @@ ms.locfileid: "84712389"
 
 播放程式要求串流時，媒體服務便會使用 AES 或 DRM 加密，使用指定的金鑰動態加密您的內容。 為了將串流解密，播放程式將向金鑰傳遞服務要求金鑰。 為了決定使用者是否有權取得金鑰，服務會評估為金鑰指定的授權原則。
 
-媒體服務支援多種方式來驗證提出金鑰要求的使用者。 內容金鑰授權原則可以有一或多個授權限制。 選項包括開放式或權杖限制。 權杖限制原則必須伴隨 Security Token Service (STS) 所發出的權杖。 媒體服務支援簡單 web 權杖（[SWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)）格式和 JSON web 權杖（[JWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_3)）格式的權杖。
+媒體服務支援多種方式來驗證提出金鑰要求的使用者。 內容金鑰授權原則可以有一或多個授權限制。 選項包括開放式或權杖限制。 權杖限制原則必須伴隨 Security Token Service (STS) 所發出的權杖。 媒體服務支援簡單 web 權杖（[SWT](/previous-versions/azure/azure-services/gg185950(v=azure.100)#BKMK_2)）格式和 JSON web 權杖（[JWT](/previous-versions/azure/azure-services/gg185950(v=azure.100)#BKMK_3)）格式的權杖。
 
 媒體服務不提供 STS。 您可以建立自訂 STS，或使用 Azure 存取控制服務來發行權杖。 STS 必須設定為建立使用指定金鑰簽署的權杖，並發行在權杖限制組態中指定的宣告 (如本文中所述)。 如果權杖有效，且權杖中的宣告符合為內容金鑰設定的宣告，媒體服務金鑰傳遞服務會將加密金鑰傳回給用戶端。
 
@@ -436,6 +437,5 @@ Open 限制表示系統會將金鑰傳遞給提出金鑰要求的任何人。 �
 ## <a name="provide-feedback"></a>提供意見反應
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 現在，您已設定內容金鑰的授權原則，接著請參閱[如何設定資產傳遞原則](media-services-dotnet-configure-asset-delivery-policy.md)。
-

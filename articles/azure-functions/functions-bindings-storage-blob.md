@@ -5,16 +5,16 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
-ms.openlocfilehash: 6950f1dd81ef2c70f2c45fb4c547ed7676067790
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eead2d6ae2860bf06f1b878c1bb1692d74c06df6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85847650"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87055965"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions-overview"></a>適用于 Azure Functions 總覽的 Azure Blob 儲存體系結
 
-Azure Functions 透過[觸發程式和](./functions-triggers-bindings.md)系結與[Azure 儲存體](https://docs.microsoft.com/azure/storage/)整合。 與 Blob 儲存體整合可讓您建立函式，以回應 Blob 資料的變更，以及讀取和寫入值。
+Azure Functions 透過[觸發程式和](./functions-triggers-bindings.md)系結與[Azure 儲存體](../storage/index.yml)整合。 與 Blob 儲存體整合可讓您建立函式，以回應 Blob 資料的變更，以及讀取和寫入值。
 
 | 動作 | 類型 |
 |---------|---------|
@@ -28,7 +28,7 @@ Azure Functions 透過[觸發程式和](./functions-triggers-bindings.md)系結�
 
 使用觸發程式和系結時，您需要參考適當的套件。 NuGet 套件適用于 .NET 類別庫，而延伸模組配套則用於所有其他應用程式類型。
 
-| 語言                                        | 加入者 .。。                                   | 備註 
+| Language                                        | 加入者 .。。                                   | 備註 
 |-------------------------------------------------|---------------------------------------------|-------------|
 | C#                                              | 安裝[NuGet 套件]3.x 版 | |
 | C # 腳本，JAVA，JavaScript，Python，PowerShell | 註冊[延伸]模組配套          | 建議使用[Azure Tools 擴充](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack)功能搭配 Visual Studio Code。 |

@@ -6,17 +6,18 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/01/2018
-ms.openlocfilehash: 0f5f01c757bf651beddaa76fc3eb8046b21b31eb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9163071237041d7c8510a644c573e3763434bb0c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75979384"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87060663"
 ---
 # <a name="create-edit-or-extend-json-for-logic-app-workflow-definitions-in-azure-logic-apps"></a>在 Azure Logic Apps 中建立、編輯或擴充邏輯應用程式工作流程定義的 JSON
 
 當您在 [Azure Logic Apps](../logic-apps/logic-apps-overview.md) 中使用自動化工作流程建立企業整合解決方案時，基礎邏輯應用程式定義會針對其描述和驗證，使用簡單的宣告式 JavaScript 物件標記法 (JSON) 及[工作流程定義語言 (WDL) 結構描述](../logic-apps/logic-apps-workflow-definition-language.md)。 這些格式讓邏輯應用程式定義更容易閱讀及了解，且無須很多程式碼方面的知識。
 如果您想要自動化邏輯應用程式的建立及部署，您可以將邏輯應用程式定義納入 [Azure Resource Manager 範本](../azure-resource-manager/templates/overview.md)中的 [Azure 資源](../azure-resource-manager/management/overview.md)。
-然後您可以使用 [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.logicapp)、[Azure CLI](../azure-resource-manager/templates/deploy-cli.md) 或 [Azure Logic Apps REST API](https://docs.microsoft.com/rest/api/logic/) 來建立、管理及部署邏輯應用程式。
+然後您可以使用 [Azure PowerShell](/powershell/module/az.logicapp)、[Azure CLI](../azure-resource-manager/templates/deploy-cli.md) 或 [Azure Logic Apps REST API](/rest/api/logic/) 來建立、管理及部署邏輯應用程式。
 
 若要以 JSON 編寫邏輯應用程式定義，可以在 Azure 入口網站或 Visual Studio 中開啟程式碼檢視編輯器，或將定義複製到任何您想要的編輯器中。
 如果您還不熟悉邏輯應用程式，請先檢閱[如何建立第一個邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)。

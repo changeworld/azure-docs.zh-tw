@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.custom: has-adal-ref
-ms.openlocfilehash: 3833b27e9f90cbffa2320c84877d4eb5bb6520f7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a7d83c327eb1c37478c0c2e5725136d43a91a009
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82613263"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87061218"
 ---
 # <a name="ingest-historical-telemetry-data"></a>內嵌歷程記錄遙測資料
 
@@ -33,7 +33,7 @@ ms.locfileid: "82613263"
 - 用戶端密碼
 - EventHub 連接字串
 
-遵循下列步驟：
+請遵循這些步驟：
 
 > [!NOTE]
 > 您必須是系統管理員，才能執行下列步驟。
@@ -61,8 +61,14 @@ ms.locfileid: "82613263"
     ```azurepowershell-interactive 
     cd
     ```
+    
+6. 執行下列命令。 這會連接已驗證的帳戶以用於 Azure AD 要求
 
-6. 執行下列命令。 這會將腳本下載至您的主目錄。
+    ```azurepowershell-interactive 
+    Connect-AzureAD
+    ```
+
+7. 執行下列命令。 這會將腳本下載至您的主目錄。
 
     ```azurepowershell-interactive 
 
@@ -70,7 +76,7 @@ ms.locfileid: "82613263"
 
     ```
 
-7. 執行下列指令碼。 腳本會要求提供租使用者識別碼，您可以從 Azure Active Directory 的**Azure Active Directory**  >  **[總覽**] 頁面取得。
+8. 執行下列指令碼。 腳本會要求提供租使用者識別碼，您可以從 Azure Active Directory 的**Azure Active Directory**  >  **[總覽**] 頁面取得。
 
     ```azurepowershell-interactive 
 
@@ -78,7 +84,7 @@ ms.locfileid: "82613263"
 
     ```
 
-8. 依照畫面上的指示來捕獲**API 端點**、租使用者**識別碼**、**用戶端識別碼**、**用戶端密碼**和**EventHub 連接字串**的值。
+9. 依照畫面上的指示來捕獲**API 端點**、租使用者**識別碼**、**用戶端識別碼**、**用戶端密碼**和**EventHub 連接字串**的值。
 
 
 ## <a name="create-device-or-sensor-metadata"></a>建立裝置或感應器中繼資料
@@ -458,6 +464,6 @@ write_client.stop()
 }
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 如需以 REST API 為基礎的整合詳細資料的詳細資訊，請參閱[REST API](rest-api-in-azure-farmbeats.md)。

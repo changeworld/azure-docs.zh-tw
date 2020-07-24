@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: cshoe
-ms.openlocfilehash: f8abc670535f240d436e90c34f7245a3d176f517
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: f84dc17c6c074fc4dbda8a13fad3586a397fdf10
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86242775"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87055424"
 ---
 # <a name="azure-functions-deployment-slots"></a>Azure Functions 部署位置
 
@@ -37,13 +37,13 @@ Azure Functions 部署位置可讓您的函數應用程式執行稱為「位置�
 交換期間，會將一個位置視為來源，另一個是目標。 來源位置具有套用至目標位置之應用程式的實例。 下列步驟可確保目標位置在交換期間不會遇到停機時間：
 
 1. 套用**設定：** 來自目標位置的設定會套用至來源位置的所有實例。 例如，生產環境設定會套用至暫存實例。 套用的設定包含下列類別：
-    - 位置[特定的](#manage-settings)應用程式設定和連接字串（如果適用) ） (
-    - 若已啟用，則[持續部署](../app-service/deploy-continuous-deployment.md)設定 () 
-    - [App Service 驗證](../app-service/overview-authentication-authorization.md)設定 (啟用) 
+    - 位置[特定的](#manage-settings)應用程式設定和連接字串（如果適用）
+    - [持續部署](../app-service/deploy-continuous-deployment.md)設定（如果已啟用）
+    - [App Service 驗證](../app-service/overview-authentication-authorization.md)設定（如果已啟用）
 
 1. **等待重新開機和可用性：** 交換會等候來源位置中的每個實例完成其重新開機，並且可供要求使用。 如果有任何實例無法重新開機，則交換作業會將所有變更還原到來源位置，並停止作業。
 
-1. **更新路由：** 如果來源位置上的所有實例都已成功準備就緒，這兩個插槽會藉由切換路由規則來完成交換。 在此步驟之後，目標位置 (例如，生產位置) 的應用程式先前已在來源插槽中準備就緒。
+1. **更新路由：** 如果來源位置上的所有實例都已成功準備就緒，這兩個插槽會藉由切換路由規則來完成交換。 在此步驟之後，目標位置（例如，生產位置）會有先前在來源插槽中準備就緒的應用程式。
 
 1. **重複操作：** 既然來源位置先前已在目標插槽中有預先交換的應用程式，請套用所有設定，然後重新開機來源位置的實例，以完成相同的操作。
 
@@ -96,7 +96,7 @@ Azure Functions 部署位置可讓您的函數應用程式執行稱為「位置�
 
 ## <a name="add-a-slot"></a>新增位置
 
-您可以透過[CLI](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-create)或入口網站來新增位置。 下列步驟示範如何在入口網站中建立新的位置：
+您可以透過[CLI](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-create)或入口網站來新增位置。 下列步驟示範如何在入口網站中建立新的位置：
 
 1. 流覽至您的函數應用程式。
 
@@ -110,7 +110,7 @@ Azure Functions 部署位置可讓您的函數應用程式執行稱為「位置�
 
 ## <a name="swap-slots"></a>交換位置
 
-您可以經由[CLI](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-swap)或透過入口網站交換位置。 下列步驟示範如何在入口網站中交換位置：
+您可以經由[CLI](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-swap)或透過入口網站交換位置。 下列步驟示範如何在入口網站中交換位置：
 
 1. 巡覽至函式應用程式。
 1. 選取 [**部署**位置]，然後選取 [**交換**]。
@@ -129,7 +129,7 @@ Azure Functions 部署位置可讓您的函數應用程式執行稱為「位置�
 
 ## <a name="remove-a-slot"></a>移除位置
 
-您可以透過[CLI](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-delete)或透過入口網站來移除位置。 下列步驟示範如何在入口網站中移除位置：
+您可以透過[CLI](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-delete)或透過入口網站來移除位置。 下列步驟示範如何在入口網站中移除位置：
 
 1. 流覽至函數應用程式中的 [**部署**位置]，然後選取 [位置名稱]。
 
@@ -149,13 +149,13 @@ Azure Functions 部署位置可讓您的函數應用程式執行稱為「位置�
 
 ## <a name="automate-slot-management"></a>自動插槽管理
 
-使用[Azure CLI](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest)，您可以自動執行下列動作：
+使用[Azure CLI](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest)，您可以自動執行下列動作：
 
-- [create](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-create)
-- [delete](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-delete)
-- [list](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-list)
-- [調換](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-swap)
-- [自動交換](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-auto-swap)
+- [create](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-create)
+- [delete](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-delete)
+- [list](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-list)
+- [調換](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-swap)
+- [自動交換](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-auto-swap)
 
 ## <a name="change-app-service-plan"></a>變更 App Service 計畫
 
@@ -190,7 +190,7 @@ Azure Functions 部署位置有下列限制：
 
 部署位置有兩種支援層級：
 
-- **正式運作 (GA) **：完全支援並已核准可供生產環境使用。
+- 正式運作 **（GA）**：完全支援並已核准可供生產環境使用。
 - **預覽**：尚不支援，但未來預期會到達 GA 狀態。
 
 | OS/主控方案           | 支援層級     |

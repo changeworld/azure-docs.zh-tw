@@ -3,14 +3,14 @@ title: 適用於 Azure Functions 2.x 的 host.json 參考
 description: Azure Functions host.json 檔案與 v2 執行階段的參考文件。
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 8d9ea01ffd5bcf2adb25d4f1b3900ff291438ac8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 629f579642185c5600586473d1280d9b26f4cba3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85298492"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87055292"
 ---
-# <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Functions 2.x 和更新版本的參考 host.js 
+# <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Functions 2.x 和更新版本的 host.json 參考 (機器翻譯) 
 
 > [!div class="op_single_selector" title1="選取您要使用的 Azure Functions 執行階段版本： "]
 > * [第 1 版](functions-host-json-v1.md)
@@ -181,7 +181,7 @@ ms.locfileid: "85298492"
 
 ### <a name="applicationinsightssnapshotconfiguration"></a>applicationInsights. snapshotConfiguration
 
-如需有關快照集的詳細資訊，請參閱[.net 應用程式中的例外](/azure/azure-monitor/app/snapshot-debugger)狀況的 Debug 錯快照集和[疑難排解啟用 Application Insights 快照偵錯工具或查看快照](/azure/azure-monitor/app/snapshot-debugger-troubleshoot)集的問題。
+如需有關快照集的詳細資訊，請參閱[.net 應用程式中的例外](../azure-monitor/app/snapshot-debugger.md)狀況的 Debug 錯快照集和[疑難排解啟用 Application Insights 快照偵錯工具或查看快照](../azure-monitor/app/snapshot-debugger-troubleshoot.md)集的問題。
 
 |屬性 | 預設 | 描述 |
 | --------- | --------- | --------- | 
@@ -310,7 +310,7 @@ ms.locfileid: "85298492"
 |屬性  |預設 | 描述 |
 |---------|---------|---------|
 |fileLoggingMode|debugOnly|定義已啟用何種檔案記錄層級。  選項為 `never`、`always`、`debugOnly`。 |
-|logLevel|n/a|為應用程式中的函式定義記錄類別篩選的物件。 2.x 版和更新版本會遵循記錄類別篩選的 ASP.NET Core 版面配置。 此設定可讓您篩選特定功能的記錄。 如需詳細資訊，請參閱 ASP.NET Core 文件中的[記錄篩選](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering)。 |
+|logLevel|n/a|為應用程式中的函式定義記錄類別篩選的物件。 2.x 版和更新版本會遵循記錄類別篩選的 ASP.NET Core 版面配置。 此設定可讓您篩選特定功能的記錄。 如需詳細資訊，請參閱 ASP.NET Core 文件中的[記錄篩選](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering)。 |
 |console|n/a| [主控台](#console)記錄設定。 |
 |applicationInsights|n/a| [applicationInsights](#applicationinsights) 設定。 |
 

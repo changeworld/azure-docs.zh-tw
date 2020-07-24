@@ -10,18 +10,18 @@ ms.subservice: keys
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: ambapat
-ms.openlocfilehash: 4eea0529e88e183ab517e8546e3ec1cb3cd0af7d
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: e67769d37b45a9e1344ce6aa72bd1e60e6bfe287
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042929"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87061282"
 ---
 # <a name="import-hsm-protected-keys-for-key-vault-ncipher"></a>為 Key Vault 匯入受 HSM 保護的金鑰（nCipher）
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-為了加強保證，當您使用 Azure 金鑰保存庫時，您可以在硬體安全模組 (HSM) 中匯入或產生無需離開 HSM 界限的金鑰。 此案例通常稱為 *自備金鑰*或 BYOK。 Azure Key Vault 使用 Hsm 的 nCipher nShield 系列（已驗證 FIPS 140-2 Level 2）來保護您的金鑰。
+為了加強保證，當您使用 Azure 金鑰保存庫時，您可以在硬體安全模組 (HSM) 中匯入或產生無需離開 HSM 界限的金鑰。 此案例通常稱為「自備金鑰」(BYOK)。 Azure Key Vault 使用 Hsm 的 nCipher nShield 系列（已驗證 FIPS 140-2 Level 2）來保護您的金鑰。
 
 > [!NOTE]
 > 本檔中所述的 HSM 金鑰匯入方法僅適用于 nCipher nShield 的 Hsm 系列。 如需從其他 Hsm 匯入 HSM 金鑰，[請參閱這裡](hsm-protected-keys-byok.md)。
@@ -57,12 +57,12 @@ Microsoft 已與 nCipher 安全性共同合作，以加強 Hsm 的美工狀態�
 
 請參閱下表的必要條件清單以取得 Azure 金鑰保存庫的自備金鑰 (BYOK)。
 
-| 需求 | 更多資訊 |
+| 需求 | 詳細資訊 |
 | --- | --- |
 | Azure 訂用帳戶 |若要建立 Azure 金鑰保存庫，您需要 Azure 訂用帳戶： [註冊免費試用](https://azure.microsoft.com/pricing/free-trial/) |
 | 可支援受 HSM 保護之金鑰的 Azure 金鑰保存庫進階服務層級 |如需 Azure 金鑰保存庫的服務層級和功能的詳細資訊，請參閱 [Azure 金鑰保存庫價格](https://azure.microsoft.com/pricing/details/key-vault/) 網站。 |
 | nCipher nShield Hsm、智慧卡和支援軟體 |您必須能夠存取 nCipher 硬體安全性模組，以及 nCipher nShield Hsm 的基本操作知識。 如需相容模型的清單，請參閱[NCipher NShield 硬體安全性模組](https://www.ncipher.com/products/key-management/cloud-microsoft-azure/how-to-buy)，或購買 HSM （如果沒有的話）。 |
-| 下列的硬體和軟體︰<ol><li>一個離線的 x64 工作站，其中至少有 windows 7 和 nCipher nShield 軟體的 Windows 作業系統，最低版本為11.50。<br/><br/>如果此工作站執行 Windows 7，您必須[安裝 Microsoft .NET Framework 4.5](https://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe)。</li><li>連線至網際網路且 Windows 作業系統至少為 Windows 7 的工作站，並已安裝至少為 [1.1.0 版的 Azure PowerShell](/powershell/azure/overview?view=azps-1.2.0) ****。</li><li>至少有 16 MB 可用空間的 USB 磁碟機或其他可攜式儲存裝置。</li></ol> |基於安全性理由，建議第一個工作站不要連線到網路。 不過，在程式設計方面並不強迫採取這項建議。<br/><br/>在接下來的指示中，此工作站稱為中斷連線的工作站。</p></blockquote><br/>此外，如果您的租用戶金鑰適用於生產網路，建議您另外使用第二個工作站來下載工具組，並上傳租用戶金鑰。 但如果只是測試，您可以直接使用第一個工作站。<br/><br/>在接下來的指示中，此第二個工作站稱為網際網路連線的工作站。</p></blockquote><br/> |
+| 下列的硬體和軟體︰<ol><li>一個離線的 x64 工作站，其中至少有 windows 7 和 nCipher nShield 軟體的 Windows 作業系統，最低版本為11.50。<br/><br/>如果此工作站執行 Windows 7，您必須[安裝 Microsoft .NET Framework 4.5](https://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe)。</li><li>連線至網際網路且 Windows 作業系統至少為 Windows 7 的工作站，並已安裝至少為 [1.1.0 版的 Azure PowerShell](/powershell/azure/?view=azps-1.2.0) ****。</li><li>至少有 16 MB 可用空間的 USB 磁碟機或其他可攜式儲存裝置。</li></ol> |基於安全性理由，建議第一個工作站不要連線到網路。 不過，在程式設計方面並不強迫採取這項建議。<br/><br/>在接下來的指示中，此工作站稱為中斷連線的工作站。</p></blockquote><br/>此外，如果您的租用戶金鑰適用於生產網路，建議您另外使用第二個工作站來下載工具組，並上傳租用戶金鑰。 但如果只是測試，您可以直接使用第一個工作站。<br/><br/>在接下來的指示中，此第二個工作站稱為網際網路連線的工作站。</p></blockquote><br/> |
 
 ## <a name="generate-and-transfer-your-key-to-azure-key-vault-hsm"></a>產生金鑰並將其傳輸至 Azure 金鑰保存庫 HSM
 
@@ -80,7 +80,7 @@ Microsoft 已與 nCipher 安全性共同合作，以加強 Hsm 的美工狀態�
 
 ### <a name="step-11-install-azure-powershell"></a>步驟 1.1：安裝 Azure PowerShell
 
-從網際網路連線的工作站，下載並安裝 Azure PowerShell 模組，其包含 cmdlet 以管理 Azure 金鑰保存庫。 如需安裝指示，請參閱 [如何安裝和設定 Azure PowerShell](/powershell/azure/overview)。
+從網際網路連線的工作站，下載並安裝 Azure PowerShell 模組，其包含 cmdlet 以管理 Azure 金鑰保存庫。 如需安裝指示，請參閱 [如何安裝和設定 Azure PowerShell](/powershell/azure/)。
 
 ### <a name="step-12-get-your-azure-subscription-id"></a>步驟 1.2：取得您的 Azure 訂用帳戶識別碼
 
@@ -684,6 +684,6 @@ generatekey --generate simple type=RSA size=2048 protect=module ident=contosokey
 
 如果上傳成功，就會顯示您剛才加入之金鑰的屬性。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 您現在可以在您的金鑰保存庫中使用這個受 HSM 保護的金鑰。 如需詳細資訊，請參閱此價格與功能[比較](https://azure.microsoft.com/pricing/details/key-vault/)。

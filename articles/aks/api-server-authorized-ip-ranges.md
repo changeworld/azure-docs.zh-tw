@@ -4,11 +4,12 @@ description: 瞭解如何使用 IP 位址範圍來保護您的叢集，以存取
 services: container-service
 ms.topic: article
 ms.date: 11/05/2019
-ms.openlocfilehash: 4d9030e21c3b8f31c18c26fc54dc76d5b8d84a17
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c92d4e00da1cc3d372cca0bf4efbe648ae522608
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85100051"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87057476"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service （AKS）中使用授權的 IP 位址範圍來保護 API 伺服器的存取
 
@@ -17,7 +18,7 @@ ms.locfileid: "85100051"
 本文說明如何使用 API 伺服器授權的 IP 位址範圍，來限制哪些 IP 位址和 CIDRs 可以存取控制平面。
 
 > [!IMPORTANT]
-> 在新叢集上，只有*標準*SKU 負載平衡器才支援 API 伺服器授權的 IP 位址範圍。 已設定*基本*SKU 負載平衡器和 API 伺服器授權 IP 位址範圍的現有叢集，會繼續正常工作，但無法遷移至*標準*SKU 負載平衡器。 如果升級 Kubernetes 版本或控制平面，這些現有的叢集也會繼續工作。
+> 在2019年10月已授權的 API 伺服器已授權 IP 位址範圍完成後建立的叢集上，只有*標準*SKU 負載平衡器支援 api 伺服器授權的 ip 位址範圍。 已設定*基本*SKU 負載平衡器和 API 伺服器授權 IP 位址範圍的現有叢集，會繼續正常工作，但無法遷移至*標準*SKU 負載平衡器。 如果升級 Kubernetes 版本或控制平面，這些現有的叢集也會繼續工作。 私人叢集不支援 API 伺服器授權的 IP 位址範圍。
 
 ## <a name="before-you-begin"></a>開始之前
 
@@ -35,7 +36,7 @@ Kubernetes API 伺服器是基礎 Kubernetes Api 的公開方式。 此元件可
 
 ## <a name="create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled"></a>建立已啟用 API 伺服器授權 IP 範圍的 AKS 叢集
 
-API 伺服器授權的 IP 範圍僅適用于新的 AKS 叢集，且不支援私人 AKS 叢集。 使用[az aks create][az-aks-create]建立叢集，並指定 *`--api-server-authorized-ip-ranges`* 參數以提供授權的 IP 位址範圍清單。 這些 IP 位址範圍通常是內部部署網路或公用 Ip 所使用的位址範圍。 當您指定 CIDR 範圍時，請從範圍中的第一個 IP 位址開始。 例如， *137.117.106.90/29*是有效的範圍，但請務必指定範圍中的第一個 IP 位址，例如*137.117.106.88/29*。
+使用[az aks create][az-aks-create]建立叢集，並指定 *`--api-server-authorized-ip-ranges`* 參數以提供授權的 IP 位址範圍清單。 這些 IP 位址範圍通常是內部部署網路或公用 Ip 所使用的位址範圍。 當您指定 CIDR 範圍時，請從範圍中的第一個 IP 位址開始。 例如， *137.117.106.90/29*是有效的範圍，但請務必指定範圍中的第一個 IP 位址，例如*137.117.106.88/29*。
 
 > [!IMPORTANT]
 > 根據預設，您的叢集會使用[標準 SKU 負載平衡器][standard-sku-lb]，您可以用來設定輸出閘道。 當您在叢集建立期間啟用 API 伺服器授權的 IP 範圍時，除了您指定的範圍之外，預設也會允許叢集的公用 IP。 如果您指定 *""* 或沒有的值 *`--api-server-authorized-ip-ranges`* ，則會停用 API 伺服器授權的 IP 範圍。 請注意，如果您使用的是 PowerShell，請使用 *`--api-server-authorized-ip-ranges=""`* （加上等號）來避免任何剖析問題。
@@ -58,12 +59,14 @@ az aks create \
 > - 防火牆公用 IP 位址
 > - 任何範圍，代表您將從中管理叢集的網路
 > - 如果您在 AKS 叢集上使用 Azure Dev Spaces，您必須根據您的[區域允許額外的範圍][dev-spaces-ranges]。
-
-> 您可以指定的 IP 範圍數目上限為3500。 
+>
+> 您可以指定的 IP 範圍數目上限為200。
+>
+> 這些規則最多可能需要2min 才能傳播。 請在測試連接時最多允許這段時間。
 
 ### <a name="specify-the-outbound-ips-for-the-standard-sku-load-balancer"></a>指定標準 SKU 負載平衡器的輸出 Ip
 
-建立 AKS 叢集時，如果您指定叢集的輸出 IP 位址或首碼，則也會允許這些位址或首碼。 例如：
+建立 AKS 叢集時，如果您指定叢集的輸出 IP 位址或首碼，則也會允許這些位址或首碼。 例如:
 
 ```azurecli-interactive
 az aks create \

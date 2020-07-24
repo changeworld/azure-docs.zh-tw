@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/24/2018
+ms.date: 07/15/2020
 ms.author: kkrishna
 ms.reviewer: kkrishna, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 940ef671ab58074aaded49acb70db68a4971c1f2
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 0ec314e6b5abde60102dacfc81c9303cef16e887
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187025"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87058632"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>如何：在您的應用程式中新增應用程式角色，並且在權杖中接收這些角色
 
@@ -76,7 +76,7 @@ ms.locfileid: "86187025"
 > [!NOTE]
 >`displayName` 不能包含空格。
 
-您可以將應用程式角色定義成以 `users`、`applications` 或兩者為目標。 可供 `applications` 使用時，應用程式角色就會在 [必要權限] 刀鋒視窗中顯示為應用程式權限。 下列範例顯示以 `Application` 為目標的應用程式角色。
+您可以將應用程式角色定義成以 `users`、`applications` 或兩者為目標。 適用于時 `applications` ，應用程式角色會顯示為 [**管理**] 區段下的 [應用程式許可權] > **API 許可權 > 新增許可權 > [我的 API] > 選擇 API > 應用程式許可權**。 下列範例顯示以 `Application` 為目標的應用程式角色。
 
 ```Json
 "appId": "8763f1c4-f988-489c-a51e-158e9ef97d6a",
@@ -119,10 +119,14 @@ ms.locfileid: "86187025"
 1. 按底部的 [指派] 按鈕，即可將使用者和群組指派給應用程式。
 1. 確認您新增的使用者和群組有顯示在更新後的 [使用者和群組] 清單中。
 
+### <a name="receive-roles-in-tokens"></a>在權杖中接收角色
+
+當指派給各種應用程式角色的使用者登入應用程式時，其權杖在宣告中將會有其指派的角色 `roles` 。
+
 ## <a name="more-information"></a>詳細資訊
 
 - [使用應用程式角色與角色宣告將授權新增至 ASP.NET Core Web 應用程式](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/5-WebApp-AuthZ/5-1-Roles)
-- [使用 Microsoft 身分識別平臺，在您的應用程式中執行授權 (Video) ](https://www.youtube.com/watch?v=LRoc-na27l0)
+- [使用 Microsoft 身分識別平臺在應用程式中執行授權（影片）](https://www.youtube.com/watch?v=LRoc-na27l0)
 - [Azure Active Directory 現在具有群組宣告和應用程式角色](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-Active-Directory-now-with-Group-Claims-and-Application/ba-p/243862)
 - [Azure Active Directory 應用程式資訊清單](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)
 - [AAD 存取權杖](access-tokens.md)

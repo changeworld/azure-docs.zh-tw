@@ -3,12 +3,12 @@ title: 使用 Advisor 改善 Azure 應用程式的效能
 description: 在 Azure Advisor 中使用效能建議，以改善業務關鍵應用程式的速度和回應能力。
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 45fb1f8844067cb34b415c3897db3b1233ab5c7a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7ecd6a45dc255f4748ed5074a3adb3d948f4122e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85124481"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87057566"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>使用 Azure Advisor 改善 Azure 應用程式的效能
 
@@ -16,7 +16,7 @@ Azure Advisor 中的效能建議有助於改善業務關鍵應用程式的速度
 
 ## <a name="reduce-dns-time-to-live-on-your-traffic-manager-profile-to-fail-over-to-healthy-endpoints-faster"></a>在您的流量管理員設定檔上減少 DNS 存留時間，以更快故障切換到狀況良好的端點
 
-您可以使用 Azure 流量管理員設定檔上的生存[時間（TTL）設定](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-performance-considerations)，指定當指定的端點停止回應查詢時，切換端點的速度。 如果您減少 TTL 值，用戶端將會更快地路由到運作中的端點。
+您可以使用 Azure 流量管理員設定檔上的生存[時間（TTL）設定](../traffic-manager/traffic-manager-performance-considerations.md)，指定當指定的端點停止回應查詢時，切換端點的速度。 如果您減少 TTL 值，用戶端將會更快地路由到運作中的端點。
 
 Azure Advisor 識別已設定較長 TTL 的流量管理員設定檔。 視設定檔是否設定為[快速容錯移轉](https://azure.microsoft.com/roadmap/fast-failover-and-tcp-probing-in-azure-traffic-manager/)而定，建議您將 TTL 設為20秒或60秒。
 
@@ -27,7 +27,7 @@ Azure Advisor 可針對所有的 Azure 資源提供一致的合併建議檢視�
 > [!NOTE]
 > 在您可以取得建議之前，您的資料庫必須使用大約一周，而且該周內必須有一些一致的活動。 相較於隨機蹦出的活動，一致的查詢模式更有利於 SQL Database Advisor 最佳化。
 
-如需詳細資訊，請參閱[SQL Database Advisor](https://azure.microsoft.com/documentation/articles/sql-database-advisor/)。
+如需詳細資訊，請參閱[SQL Database Advisor](../azure-sql/database/database-advisor-implement-performance-recommendations.md)。
 
 ## <a name="upgrade-your-storage-client-library-to-the-latest-version-for-better-reliability-and-performance"></a>將您的儲存體用戶端程式庫升級至最新版本，以獲得更好的可靠性和效能
 
@@ -39,7 +39,7 @@ Azure Advisor 整合建議來改善您的 App Service 體驗，以及探索相�
 * 偵測應用程式執行時間耗盡記憶體或 CPU 資源的實例，並提供緩和選項。
 * 偵測共同尋找資源（例如 web 應用程式和資料庫）可改善效能並降低成本的實例。
 
-如需詳細資訊，請參閱[Azure App Service 的最佳做法](https://azure.microsoft.com/documentation/articles/app-service-best-practices/)。
+如需詳細資訊，請參閱[Azure App Service 的最佳做法](../app-service/app-service-best-practices.md)。
 
 ## <a name="use-managed-disks-to-prevent-disk-io-throttling"></a>使用受控磁片來防止磁片 i/o 節流
 
@@ -53,11 +53,11 @@ Advisor 會識別具有在您儲存體帳戶上具有大量交易之標準磁片
 
 ## <a name="remove-data-skew-on-your-sql-data-warehouse-tables-to-increase-query-performance"></a>移除 SQL 資料倉儲資料表上的資料扭曲，以提高查詢效能
 
-當您執行工作負載時，資料扭曲可能會造成不必要的資料移動或資源瓶頸。 Advisor 會偵測到大於15% 的分佈資料扭曲。 建議您轉散發資料，並重新流覽您的資料表散發索引鍵選取專案。 若要深入了解如何識別和移除扭曲，請參閱[針對扭曲進行疑難排解](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-distribute#how-to-tell-if-your-distribution-column-is-a-good-choice)。
+當您執行工作負載時，資料扭曲可能會造成不必要的資料移動或資源瓶頸。 Advisor 會偵測到大於15% 的分佈資料扭曲。 建議您轉散發資料，並重新流覽您的資料表散發索引鍵選取專案。 若要深入了解如何識別和移除扭曲，請參閱[針對扭曲進行疑難排解](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-distribute.md#how-to-tell-if-your-distribution-column-is-a-good-choice)。
 
 ## <a name="create-or-update-outdated-table-statistics-in-your-sql-data-warehouse-tables-to-increase-query-performance"></a>在 SQL 資料倉儲資料表中建立或更新過期的資料表統計資料，以提高查詢效能
 
-Advisor 會識別沒有最新[資料表統計資料](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics)的資料表，並建議建立或更新統計資料。 Azure SQL 資料倉儲中的查詢最佳化工具會使用最新的統計資料，來估計基數或查詢結果中的資料列數目。 這些估計值可讓查詢最佳化工具建立查詢計劃，以提供最快的效能。
+Advisor 會識別沒有最新[資料表統計資料](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-statistics.md)的資料表，並建議建立或更新統計資料。 Azure SQL 資料倉儲中的查詢最佳化工具會使用最新的統計資料，來估計基數或查詢結果中的資料列數目。 這些估計值可讓查詢最佳化工具建立查詢計劃，以提供最快的效能。
 
 ## <a name="improve-mysql-connection-management"></a>改善 MySQL 連線管理
 
@@ -76,7 +76,7 @@ Advisor 會識別不是複寫資料表的資料表，但可受益于轉換。 �
 - 資料表散發類型。 
 - SQL 資料倉儲資料表上的資料分割數目。 
 
-內容的建議中可能會提供其他啟發學習法。 若要深入瞭解如何判斷此建議，請參閱[SQL 資料倉儲建議](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-concept-recommendations#replicate-tables)。 
+內容的建議中可能會提供其他啟發學習法。 若要深入瞭解如何判斷此建議，請參閱[SQL 資料倉儲建議](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-concept-recommendations.md#replicate-tables)。 
 
 ## <a name="migrate-your-storage-account-to-azure-resource-manager-to-get-the-latest-azure-features"></a>將您的儲存體帳戶遷移至 Azure Resource Manager 以取得最新的 Azure 功能
 
@@ -88,7 +88,7 @@ Advisor 會識別不是複寫資料表的資料表，但可受益于轉換。 �
 Advisor 會識別任何使用傳統部署模型的獨立儲存體帳戶，並建議遷移至 Resource Manager 部署模型。
 
 > [!NOTE]
-> Azure 監視器中的傳統警示已于2019年8月淘汰。 建議您將傳統儲存體帳戶升級為使用 Resource Manager，以在新平台上保留警示功能。 如需詳細資訊，請參閱[傳統警示淘汰](https://docs.microsoft.com/azure/azure-monitor/platform/monitoring-classic-retirement#retirement-of-classic-monitoring-and-alerting-platform)。
+> Azure 監視器中的傳統警示已于2019年8月淘汰。 建議您將傳統儲存體帳戶升級為使用 Resource Manager，以在新平台上保留警示功能。 如需詳細資訊，請參閱[傳統警示淘汰](../azure-monitor/platform/monitoring-classic-retirement.md#retirement-of-classic-monitoring-and-alerting-platform)。
 
 ## <a name="design-your-storage-accounts-to-prevent-reaching-the-maximum-subscription-limit"></a>設計您的儲存體帳戶，以避免達到最大訂用帳戶限制
 
@@ -120,17 +120,17 @@ Advisor 偵測到不支援的 Kubernetes 版本。
 長時間的 CPU 高使用率，會導致工作負載的查詢效能變慢。 增加 CPU 大小有助於優化資料庫查詢的執行時間，並改善整體效能。 Advisor 會識別 CPU 使用率很高的伺服器，其可能正在執行 CPU 限制的工作負載，並建議調整您的計算。
 
 ### <a name="reduce-memory-constraints-on-your-azure-database-for-mysql-azure-database-for-postgresql-and-azure-database-for-mariadb-servers-or-move-to-a-memory-optimized-sku"></a>降低適用於 MySQL 的 Azure 資料庫、適用於 PostgreSQL 的 Azure 資料庫和適用於 MariaDB 的 Azure 資料庫伺服器的記憶體限制，或移至記憶體優化 SKU
-較低的快取點擊率會導致查詢效能變慢，並增加 IOPS。 這種狀況可能是因為不正確的查詢計劃或記憶體密集型工作負載所造成。 修正查詢計劃或增加適用於 PostgreSQL 的 Azure 資料庫、適用於 MySQL 的 Azure 資料庫或適用於 MariaDB 的 Azure 資料庫伺服器 [的記憶體](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers)，將有助於優化資料庫工作負載的執行。 Azure Advisor 識別受此高緩衝集區變換影響的伺服器。 建議您採取下列其中一項動作： 
+較低的快取點擊率會導致查詢效能變慢，並增加 IOPS。 這種狀況可能是因為不正確的查詢計劃或記憶體密集型工作負載所造成。 修正查詢計劃或增加適用於 PostgreSQL 的 Azure 資料庫、適用於 MySQL 的 Azure 資料庫或適用於 MariaDB 的 Azure 資料庫伺服器 [的記憶體](../postgresql/concepts-pricing-tiers.md)，將有助於優化資料庫工作負載的執行。 Azure Advisor 識別受此高緩衝集區變換影響的伺服器。 建議您採取下列其中一項動作： 
 - 修正查詢計劃
 - 移至擁有更多記憶體的 SKU 
 - 增加儲存體大小以取得更多 IOPS。
 
 ### <a name="use-an-azure-database-for-mysql-or-azure-database-for-postgresql-read-replica-to-scale-out-reads-for-read-intensive-workloads"></a>使用適用於 MySQL 的 Azure 資料庫或適用於 PostgreSQL 的 Azure 資料庫讀取複本，以向外延展大量讀取的工作負載
-Advisor 會使用以工作負載為基礎的啟發學習法，如過去七天內，伺服器上的讀取與寫入比例，以識別大量讀取的工作負載。 具有高讀取/寫入比率的適用於 PostgreSQL 的 Azure 資料庫或適用於 MySQL 的 Azure 資料庫資源可能會導致 CPU 或記憶體爭用，並導致查詢效能變慢。 新增 [複本](https://docs.microsoft.com/azure/postgresql/howto-read-replicas-portal)有助於向外延展讀取至複本伺服器，並防止主伺服器上的 CPU 或記憶體限制。 Advisor 會識別具有大量讀取工作負載的伺服器，並建議您新增 [讀取複本](https://docs.microsoft.com/azure/postgresql/concepts-read-replicas)   來卸載部分讀取工作負載。
+Advisor 會使用以工作負載為基礎的啟發學習法，如過去七天內，伺服器上的讀取與寫入比例，以識別大量讀取的工作負載。 具有高讀取/寫入比率的適用於 PostgreSQL 的 Azure 資料庫或適用於 MySQL 的 Azure 資料庫資源可能會導致 CPU 或記憶體爭用，並導致查詢效能變慢。 新增 [複本](../postgresql/howto-read-replicas-portal.md)有助於向外延展讀取至複本伺服器，並防止主伺服器上的 CPU 或記憶體限制。 Advisor 會識別具有大量讀取工作負載的伺服器，並建議您新增 [讀取複本](../postgresql/concepts-read-replicas.md)   來卸載部分讀取工作負載。
 
 
 ### <a name="scale-your-azure-database-for-mysql-azure-database-for-postgresql-or-azure-database-for-mariadb-server-to-a-higher-sku-to-prevent-connection-constraints"></a>將您的適用於 MySQL 的 Azure 資料庫、適用於 PostgreSQL 的 Azure 資料庫或適用於 MariaDB 的 Azure 資料庫伺服器調整為較高的 SKU，以避免連接限制
-資料庫伺服器的每個新連接都會佔用記憶體。 如果伺服器的連接因為記憶體的 [上限](https://docs.microsoft.com/azure/postgresql/concepts-limits)而失敗，資料庫伺服器的效能會降低。 Azure Advisor 識別執行有許多連線失敗的伺服器。 它會建議您升級伺服器的連接限制，藉由採取下列其中一項動作來提供更多記憶體給您的伺服器：
+資料庫伺服器的每個新連接都會佔用記憶體。 如果伺服器的連接因為記憶體的 [上限](../postgresql/concepts-limits.md)而失敗，資料庫伺服器的效能會降低。 Azure Advisor 識別執行有許多連線失敗的伺服器。 它會建議您升級伺服器的連接限制，藉由採取下列其中一項動作來提供更多記憶體給您的伺服器：
 - 相應增加計算。 
 - 使用記憶體優化 Sku，其每個核心有更多計算。
 
@@ -158,7 +158,7 @@ Azure Advisor 會識別使用100查詢頁面大小的 Azure Cosmos DB 容器。 
 
 2.  在 Advisor 儀表板上，選取 [**效能**] 索引標籤。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 若要深入了解 Advisor 建議，請參閱：
 
@@ -168,4 +168,4 @@ Azure Advisor 會識別使用100查詢頁面大小的 Azure Cosmos DB 容器。 
 * [Advisor 可靠性建議](advisor-high-availability-recommendations.md)
 * [Advisor 安全性建議](advisor-security-recommendations.md)
 * [Advisor 操作卓越建議](advisor-operational-excellence-recommendations.md)
-* [Advisor REST API](https://docs.microsoft.com/rest/api/advisor/)
+* [Advisor REST API](/rest/api/advisor/)

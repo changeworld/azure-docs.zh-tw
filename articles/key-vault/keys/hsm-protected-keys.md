@@ -1,5 +1,5 @@
 ---
-title: 如何為 Azure Key Vault 產生並傳輸受 HSM 保護的金鑰 - Azure Key Vault | Microsoft Docs
+title: 如何產生 & 傳輸 HSM 保護的金鑰-Azure Key Vault
 description: 使用這份文件協助您規劃、產生，並傳輸受 HSM 保護的金鑰，以搭配 Azure 金鑰保存庫使用。 也稱為 BYOK 或「攜帶您自己的金鑰」。
 services: key-vault
 author: amitbapat
@@ -10,15 +10,16 @@ ms.subservice: keys
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: ambapat
-ms.openlocfilehash: 5433d9746cd64d0e942e056cfcd1940eba35c77d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ce59fadfcdbb38327ce603197400e9317202d651
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84417917"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87061082"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault"></a>將受 HSM 保護的金鑰匯入 Key Vault
 
-為了加強保證，當您使用 Azure 金鑰保存庫時，您可以在硬體安全模組 (HSM) 中匯入或產生無需離開 HSM 界限的金鑰。 此案例通常稱為 *自備金鑰*或 BYOK。 Azure Key Vault 使用 Hsm 的 nCipher nShield 系列（已驗證 FIPS 140-2 Level 2）來保護您的金鑰。
+為了加強保證，當您使用 Azure 金鑰保存庫時，您可以在硬體安全模組 (HSM) 中匯入或產生無需離開 HSM 界限的金鑰。 此案例通常稱為「自備金鑰」(BYOK)。 Azure Key Vault 使用 Hsm 的 nCipher nShield 系列（已驗證 FIPS 140-2 Level 2）來保護您的金鑰。
 
 此功能不適用於 Azure 中國世紀。
 
@@ -39,7 +40,7 @@ ms.locfileid: "84417917"
 |Cryptomathic|ISV （企業金鑰管理系統）|多個 HSM 品牌和型號，包括<ul><li>nCipher</li><li>Thales</li><li>Utimaco</li></ul>[如需詳細資訊，請參閱 Cryptomathic 網站](https://www.cryptomathic.com/azurebyok)|[使用新的 BYOK 方法](hsm-protected-keys-byok.md)|
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 遵循[Key Vault 最佳作法](../general/best-practices.md)，以確保金鑰的安全性、耐久性和監視。
 * 如需新 BYOK 方法的完整說明，請參閱[BYOK 規格](https://docs.microsoft.com/azure/key-vault/keys/byok-specification)

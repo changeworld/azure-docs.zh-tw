@@ -3,15 +3,16 @@ title: 備份 Azure 檔案服務常見問題集
 description: 在本文中，您可以針對如何使用 Azure 備份服務來保護 Azure 檔案共用的常見問題，找到相關解答。
 ms.date: 04/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: ded1551dad1be34c116e61b9bf59f372169bca5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 134d9520a3c2348b23ec27c6e14eb56468f2002d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84488693"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87054972"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>有關備份 Azure 檔案服務的問題
 
-本文提供有關備份 Azure 檔案服務的常見問題解答。 在某些答案中，有具有完整資訊的文章連結。 您也可以在 [Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-backup.html)中張貼有關 Azure 備份服務的問題，以供討論。
+本文提供有關備份 Azure 檔案服務的常見問題解答。 在某些答案中，有具有完整資訊的文章連結。 您也可以在 [Microsoft 問與答頁面](/answers/topics/azure-backup.html)中張貼有關 Azure 備份服務的問題，以供討論。
 
 若要快速掃描本文中的各節內容，在**本文**下使用右方連結。
 
@@ -55,7 +56,7 @@ ms.locfileid: "84488693"
 
 ### <a name="can-i-recover-from-a-deleted-azure-file-share"></a>已刪除的 Azure 檔案共用是否可以復原？
 
-如果檔案共用處於虛刪除狀態，您必須先將檔案共用取消刪除，以執行還原作業。 取消刪除作業會將檔案共用帶入作用中狀態，您可以在其中還原至任何時間點。 若要瞭解如何取消刪除您的檔案共用，請造訪[此連結](https://docs.microsoft.com/azure/storage/files/storage-files-enable-soft-delete?tabs=azure-portal#restore-soft-deleted-file-share)，或參閱取消[刪除檔案共用腳本](./scripts/backup-powershell-script-undelete-file-share.md)。 如果已永久刪除檔案共用，您將無法還原內容和快照集。
+如果檔案共用處於虛刪除狀態，您必須先將檔案共用取消刪除，以執行還原作業。 取消刪除作業會將檔案共用帶入作用中狀態，您可以在其中還原至任何時間點。 若要瞭解如何取消刪除您的檔案共用，請造訪[此連結](../storage/files/storage-files-enable-soft-delete.md?tabs=azure-portal#restore-soft-deleted-file-share)，或參閱取消[刪除檔案共用腳本](./scripts/backup-powershell-script-undelete-file-share.md)。 如果已永久刪除檔案共用，您將無法還原內容和快照集。
 
 ### <a name="can-i-restore-from-backups-if-i-stopped-protection-on-an-azure-file-share"></a>如果我停止保護 Azure 檔案共用，是否可以從備份還原？
 

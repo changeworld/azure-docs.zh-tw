@@ -1,5 +1,5 @@
 ---
-title: 針對 Linux VM 搭配映像庫使用 Azure Image Builder (預覽)
+title: 使用適用于 Linux Vm 的 Azure 映射產生器 & 共用映射資源庫（預覽）
 description: 使用 Azure Image Builder 和共用映像庫建立 Linux VM 映像。
 author: cynthn
 ms.author: cynthn
@@ -8,15 +8,16 @@ ms.topic: how-to
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: danis
-ms.openlocfilehash: ccb622f786e6df5271684cf2aabba36cd2f5184f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b918bb02de9a8003dfab76c436b3ec22cb540244
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82930687"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87059035"
 ---
 # <a name="preview-create-a-linux-image-and-distribute-it-to-a-shared-image-gallery"></a>預覽：建立 Linux 映像並將其發佈到共用映像庫 
 
-此文章說明如何使用 Azure Image Builder 及 Azure CLI 在[共用映像庫](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries)中建立映像版本，然後以全域方式發佈該映像。 您也可以使用 [Azure PowerShell](../windows/image-builder-gallery.md) 來執行這項工作。
+此文章說明如何使用 Azure Image Builder 及 Azure CLI 在[共用映像庫](../windows/shared-image-galleries.md)中建立映像版本，然後以全域方式發佈該映像。 您也可以使用 [Azure PowerShell](../windows/image-builder-gallery.md) 來執行這項工作。
 
 
 我們將會使用樣本 .json 範本來設定映像。 我們要使用的 .json 檔案位於這裡：[helloImageTemplateforSIG.json](https://github.com/danielsollondon/azvmimagebuilder/blob/master/quickquickstarts/1_Creating_a_Custom_Linux_Shared_Image_Gallery_Image/helloImageTemplateforSIG.json)。 
@@ -92,7 +93,7 @@ az group create -n $sigResourceGroup -l $location
 ```
 
 ## <a name="create-a-user-assigned-identity-and-set-permissions-on-the-resource-group"></a>建立使用者指派的身分識別，並在資源群組上設定權限
-Image Builder 會使用所提供的[使用者身分識別](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity)，來將映像插入 Azure 共用映像庫 (SIG)。 在此範例中，您將建立 Azure 角色定義，其中包括將映像發佈到 SIG 的細微動作。 然後此將角色定義指派給使用者身分識別。
+Image Builder 會使用所提供的[使用者身分識別](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md#user-assigned-managed-identity)，來將映像插入 Azure 共用映像庫 (SIG)。 在此範例中，您將建立 Azure 角色定義，其中包括將映像發佈到 SIG 的細微動作。 然後此將角色定義指派給使用者身分識別。
 
 ```bash
 # create user assigned identity for image builder to access the storage account where the script is located

@@ -3,15 +3,16 @@ title: 管理 Azure 復原服務保存庫與伺服器
 description: 在本文中，您將瞭解如何使用復原服務保存庫總覽儀表板來監視和管理您的復原服務保存庫。
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: 598e9198ee7e153d8008389f97c0be399a0186ba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1b3cc317b8a26b16bbeda9793f87d089f2fbc59f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84234602"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87054909"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>監視及管理復原服務保存庫
 
-本文說明如何使用復原服務保存庫的 [概觀]**** 儀表板來監視及管理復原服務保存庫。 當您從清單開啟復原服務保存庫時，所選保存庫的 [概觀]**** 儀表板隨即開啟。 此儀表板會提供有關保存庫的各種詳細資料。 其中有*磚*顯示：重大和警告警示的狀態、進行中和失敗的備份作業，以及使用的本機多餘儲存體（LRS）和異地多餘儲存體（GRS）數量。 如果您將 Azure VM 備份到保存庫，[[備份前置檢查狀態]**** 圖格會顯示任何重大或警告項目](https://docs.microsoft.com/azure/backup/backup-azure-manage-windows-server#backup-pre-check-status)。 下圖是 **Contoso-vault** 的 [概觀]**** 儀表板。 [備份項目]**** 圖格會顯示有九個註冊到保存庫的項目。
+本文說明如何使用復原服務保存庫的 [概觀]**** 儀表板來監視及管理復原服務保存庫。 當您從清單開啟復原服務保存庫時，所選保存庫的 [概觀]**** 儀表板隨即開啟。 此儀表板會提供有關保存庫的各種詳細資料。 其中有*磚*顯示：重大和警告警示的狀態、進行中和失敗的備份作業，以及使用的本機多餘儲存體（LRS）和異地多餘儲存體（GRS）數量。 如果您將 Azure VM 備份到保存庫，[[備份前置檢查狀態]**** 圖格會顯示任何重大或警告項目](#backup-pre-check-status)。 下圖是 **Contoso-vault** 的 [概觀]**** 儀表板。 [備份項目]**** 圖格會顯示有九個註冊到保存庫的項目。
 
 ![復原服務保存庫儀表板](./media/backup-azure-manage-windows-server/rs-vault-blade.png)
 
@@ -23,13 +24,13 @@ ms.locfileid: "84234602"
 
 若要監視警示，或檢視關於復原服務保存庫的管理資料，請開啟保存庫。
 
-1. 使用您的 Azure 訂用帳戶登入[Azure 入口網站](https://portal.azure.com/)。
+1. 使用 Azure 訂用帳戶登入 [Azure 入口網站](https://portal.azure.com/)。
 
 2. 在入口網站中，按一下 [所有服務]****。
 
    ![開啟復原服務保存庫清單的步驟 1](./media/backup-azure-manage-windows-server/open-rs-vault-list.png)
 
-3. 在 [所有服務]**** 對話方塊中，輸入**復原服務**。 當您開始輸入時，清單會根據您輸入的文字進行篩選。 當 [復原服務保存庫]**** 選項出現時，按一下它以開啟您訂用帳戶中的復原服務保存庫清單。
+3. 在 [所有服務]**** 對話方塊中，輸入**復原服務**。 當您開始輸入時，清單會根據您的輸入來篩選。 當 [復原服務保存庫]**** 選項出現時，按一下它以開啟您訂用帳戶中的復原服務保存庫清單。
 
     ![建立復原服務保存庫的步驟 1](./media/backup-azure-manage-windows-server/list-of-rs-vaults.png) <br/>
 
@@ -109,7 +110,7 @@ ms.locfileid: "84234602"
 * 警示
 * 備份項目
 * 受保護的伺服器
-* Severity
+* 嚴重性
 * Duration
 * 建立時間
 * 狀態
@@ -177,7 +178,7 @@ ms.locfileid: "84234602"
 
 ![備份類型清單](./media/backup-azure-manage-windows-server/list-of-protected-virtual-machines.png)
 
-虛擬機器清單中有很有用的資料：相關聯的資源群組、先前[備份前置檢查](https://docs.microsoft.com/azure/backup/backup-azure-manage-windows-server#backup-pre-check-status)、上次備份狀態，以及最近還原點的日期。 最後一欄中的省略符號可開啟用來觸發一般工作的功能表。 各欄中針對每個備份類型提供的有用資料都不同。
+虛擬機器清單中有很有用的資料：相關聯的資源群組、先前[備份前置檢查](#backup-pre-check-status)、上次備份狀態，以及最近還原點的日期。 最後一欄中的省略符號可開啟用來觸發一般工作的功能表。 各欄中針對每個備份類型提供的有用資料都不同。
 
 ![備份類型清單](./media/backup-azure-manage-windows-server/ellipsis-menu.png)
 
@@ -286,4 +287,4 @@ ms.locfileid: "84234602"
 ## <a name="next-steps"></a>後續步驟
 
 * [從 Azure 還原 Windows Server 或 Windows 用戶端](backup-azure-restore-windows-server.md)
-* 若要深入了解 Azure 備份，請參閱 [Azure 備份概觀](backup-introduction-to-azure-backup.md)
+* 若要深入了解 Azure 備份，請參閱 [Azure 備份概觀](./backup-overview.md)

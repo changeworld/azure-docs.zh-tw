@@ -1,14 +1,14 @@
 ---
-title: 改善知識庫 - QnA Maker
+title: 主動式學習建議的問題-QnA Maker
 description: 利用主動式學習來改善知識庫的品質。 在不移除或變更現有問題的情況下，進行審查、接受或拒絕、新增。
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 88ccbc52e0eb3447d0b99cac9ba41761e292a6fd
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: bb95ddc40e122e2589d0396b94f0de921aab9350
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231772"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053927"
 ---
 # <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>接受知識庫中的主動式學習建議問題
 
@@ -71,7 +71,7 @@ Bot 或其他用戶端應用程式應該使用下列架構流程來使用主動�
 
 ### <a name="use-the-score-property-along-with-business-logic-to-get-list-of-answers-to-show-user"></a>使用分數屬性和商務邏輯來取得顯示使用者的答案清單
 
-當用戶端應用程式 (例如聊天機器人) 收到回應時，就會傳回前3個問題。 使用 `score` 屬性來分析分數之間的近距離。 這個鄰近範圍是由您自己的商務邏輯所決定。
+當用戶端應用程式（例如聊天機器人）收到回應時，就會傳回前3個問題。 使用 `score` 屬性來分析分數之間的近距離。 這個鄰近範圍是由您自己的商務邏輯所決定。
 
 ```json
 {
@@ -131,8 +131,8 @@ Content-Type: application/json
 |--|--|--|--|
 |URL 路由參數|知識庫識別碼|字串|測試您知識庫的 GUID。|
 |自訂子域|QnAMaker 資源名稱|字串|資源名稱會用來做為 QnA Maker 的自訂子域。 這會在您發佈知識庫之後的 [設定] 頁面上提供。 它會列為 `host` 。|
-|標頭|Content-Type|字串|傳送至 API 的本文媒體類型。 預設值為：`application/json`|
-|標頭|授權|字串|您的端點金鑰 (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)。|
+|頁首|Content-Type|字串|傳送至 API 的本文媒體類型。 預設值為：`application/json`|
+|頁首|授權|字串|您的端點金鑰 (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)。|
 |張貼本文|JSON 物件|JSON|訓練意見反應|
 
 JSON 主體有數個設定：
@@ -334,7 +334,7 @@ async callTrain(stepContext){
 
 
 
-## <a name="best-practices"></a>最佳做法
+## <a name="best-practices"></a>最佳作法
 
 如需使用主動式學習時的最佳做法，請參閱[最佳做法](../Concepts/best-practices.md#active-learning)。
 

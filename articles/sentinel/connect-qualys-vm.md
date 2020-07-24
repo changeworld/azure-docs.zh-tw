@@ -14,14 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: 44002a8f4ab3b644e3530ee2d2fc06a7af271fbe
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 34f2cfa06cbdbb75b8fd610cd1f76fb33dde4cde
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531177"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87059856"
 ---
 # <a name="connect-your-qualys-vm-to-azure-sentinel-with-azure-function"></a>使用 Azure Function 將您的 Qualys VM 連線至 Azure Sentinel
+
+> [!IMPORTANT]
+> Azure Sentinel 中的 Qualys VM 資料連線器目前為公開預覽狀態。
+> 這項功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 Qualys 弱點管理（VM）連接器可讓您輕鬆地將所有[QUALYS VM](https://www.qualys.com/apps/vulnerability-management/)安全性解決方案記錄與 Azure Sentinel 連線，以查看儀表板、建立自訂警示及改善調查。 Qualys VM 與 Azure Sentinel 之間的整合會使用 Azure Functions，利用 REST API 來提取記錄資料。
 
@@ -46,7 +50,7 @@ Azure Functions 可以直接從 Qualys VM 整合和提取事件和記錄，並�
 
 可能需要20分鐘的時間，您的記錄才會開始出現在 Log Analytics 中。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 在本檔中，您已瞭解如何使用 Azure 函數應用程式將 Qualys VM 連線至 Azure Sentinel。 若要深入了解 Azure Sentinel，請參閱下列文章：
 

@@ -1,16 +1,16 @@
 ---
 title: 將 Azure Container Registry 與 Azure Kubernetes Service 整合
-description: '瞭解如何整合 Azure Kubernetes Service (AKS) 與 Azure Container Registry (ACR) '
+description: 瞭解如何整合 Azure Kubernetes Service （AKS）與 Azure Container Registry （ACR）
 services: container-service
 manager: gwallace
 ms.topic: article
 ms.date: 02/25/2020
-ms.openlocfilehash: a60f0e2f40fa1a4945198a4b5738b4f7b65b05ed
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: e1ddff9a416b55c22fcd2bfaedff32666414e4bf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86251836"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87057254"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>從 Azure Kubernetes Service 對 Azure Container Registry 進行驗證
 
@@ -44,7 +44,10 @@ az aks create -n myAKSCluster -g myResourceGroup --generate-ssh-keys --attach-ac
 
 或者，您可以使用 ACR 資源識別碼指定 ACR 名稱，其格式如下：
 
-`/subscriptions/\<subscription-id\>/resourceGroups/\<resource-group-name\>/providers/Microsoft.ContainerRegistry/registries/\<name\>` 
+`/subscriptions/\<subscription-id\>/resourceGroups/\<resource-group-name\>/providers/Microsoft.ContainerRegistry/registries/\<name\>`
+
+> [!NOTE]
+> 如果您使用的 ACR 位於 AKS 叢集的不同訂用帳戶中，請在從 AKS 叢集附加或卸離時，使用 ACR 資源識別碼。
 
 ```azurecli
 az aks create -n myAKSCluster -g myResourceGroup --generate-ssh-keys --attach-acr /subscriptions/<subscription-id>/resourceGroups/myContainerRegistryResourceGroup/providers/Microsoft.ContainerRegistry/registries/myContainerRegistry

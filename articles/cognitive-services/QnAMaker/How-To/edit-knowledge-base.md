@@ -2,13 +2,13 @@
 title: 編輯知識庫 - QnA Maker
 description: QnA Maker 可讓您提供方便使用的編輯方式，藉以管理知識庫的內容。
 ms.topic: conceptual
-ms.date: 05/19/2020
-ms.openlocfilehash: 66adf9e1fe227f11514276147de32e8691db7fab
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.date: 07/16/2020
+ms.openlocfilehash: 52aaaf630806ed6c71101860a1286f88a23ec3fa
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83993570"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87054017"
 ---
 # <a name="edit-qna-pairs-in-your-knowledge-base"></a>在您的知識庫中編輯 QnA 配對
 
@@ -111,6 +111,10 @@ QnA 組會從資料來源（例如檔案或 URL）新增，或加入做為編輯
 ## <a name="add-metadata"></a>新增中繼資料
 
 藉由先選取 [**視圖選項**]，然後選取 [**顯示中繼資料**] 來新增中繼資料組。 這會顯示 [中繼資料] 資料行。 接下來，選取 **+** 正負號來新增中繼資料組。 此配對包含一個索引鍵和一個值。
+
+在 QnA Maker 入口網站的中繼資料快速入門中深入瞭解中繼資料：
+* [撰寫-將中繼資料新增至 QnA 配對](../quickstarts/add-question-metadata-portal.md#add-metadata-to-filter-the-answers)
+* [查詢預測-依中繼資料篩選答案](../quickstarts/get-answer-from-knowledge-base-using-url-tool.md)
 
 ## <a name="save-changes-to-the-qna-pairs"></a>儲存 QnA 配對的變更
 

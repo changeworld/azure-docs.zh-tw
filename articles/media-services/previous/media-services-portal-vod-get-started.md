@@ -14,24 +14,24 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 5a09d672f44ce8835571277ab35f7545c7f5f33e
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 62754c455ec6aad4a3990bf4af749dcdcd425e55
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86058277"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87060230"
 ---
 # <a name="get-started-with-delivering-content-on-demand-by-using-the-azure-portal"></a>使用 Azure 入口網站開始傳遞點播內容
 
 > [!NOTE]
-> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
+> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](../latest/index.yml)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
 
 本教學課程會逐步引導您在 Azure 入口網站中透過 Azure 媒體服務 (AMS) 應用程式實作基本點播視訊內容傳遞服務。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 需要有下列項目，才能完成教學課程：
 
-* 一個 Azure 帳戶。 如需詳細資訊，請參閱[Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。 
+* Azure 帳戶。 如需詳細資訊，請參閱[Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。 
 * 媒體服務帳戶。 若要建立媒體服務帳戶，請參閱[如何建立媒體服務帳戶](media-services-portal-create-account.md)。
 
 本教學課程內容包括以下工作：
@@ -125,7 +125,7 @@ ms.locfileid: "86058277"
 > 
 > 
 
-若要更新定位器的到期日，您可以使用 [REST API](https://docs.microsoft.com/rest/api/media/operations/locator#update_a_locator) 或 [.NET API](https://go.microsoft.com/fwlink/?LinkID=533259)。 
+若要更新定位器的到期日，您可以使用 [REST API](/rest/api/media/operations/locator#update_a_locator) 或 [.NET API](https://go.microsoft.com/fwlink/?LinkID=533259)。 
 
 > [!NOTE]
 > 當您更新共用存取簽章定位器的到期日時，URL 也會隨之變更。

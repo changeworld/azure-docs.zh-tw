@@ -3,20 +3,22 @@ title: API 必要條件-Azure Marketplace
 description: 使用 Cloud Partner 入口網站 Api 的必要條件。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 04/08/2020
-ms.openlocfilehash: c932db1b86cecae4d90b0d6acffc4a0cde49e369
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.topic: reference
+author: dsindona
+ms.author: dsindona
+ms.date: 07/14/2020
+ms.openlocfilehash: b672afcd8f52d8293b1bb81e30097062e2ee49c3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86115735"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053589"
 ---
 <a name="api-prerequisites"></a>API 先決條件
 ================
 
 > [!NOTE]
-> Cloud Partner 入口網站 API 已和合作夥伴中心整合，並會在將供應項目移轉到合作夥伴中心後繼續運作。 該整合會引進些微的變更。 請參閱[CLOUD PARTNER 入口網站 API 參考](./cloud-partner-portal-api-overview.md)中所列的變更，以確保您的程式碼會在遷移至合作夥伴中心後繼續運作。
+> Cloud Partner 入口網站 Api 會與整合，並會繼續在合作夥伴中心運作。 轉換會引進微小的變更。 請參閱[CLOUD PARTNER 入口網站 API 參考](./cloud-partner-portal-api-overview.md)中所列的變更，以確保您的程式碼在轉換至合作夥伴中心後繼續運作。 只有在轉換至合作夥伴中心之前已整合的現有產品，才應該使用 CPP Api;新產品應使用合作夥伴中心提交 Api。
 
 有兩個您需要使用 Cloud Partner 入口網站 API 的必要程式設計資產：服務主體和 Azure Active Directory (Azure AD) 存取權杖。
 

@@ -3,12 +3,12 @@ title: Azure 建議程式簡介
 description: 使用 Azure 建議程式將 Azure 部署最佳化。
 ms.topic: article
 ms.date: 02/01/2019
-ms.openlocfilehash: 0c6c79dd764f92475b3b0121ae46706c0dfc0bcb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 17b68e220b7011dee2cc8fca440d58d980c28e6d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85117772"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87057691"
 ---
 # <a name="introduction-to-azure-advisor"></a>Azure 建議程式簡介
 
@@ -51,19 +51,19 @@ Advisor 儀表板會顯示您所有訂用帳戶的個人化建議。  您可以�
 
 ### <a name="what-permissions-do-i-need-to-access-advisor"></a>我需要哪些權限才能存取建議程式？
  
-您能夠以訂用帳戶的「擁有者」**、「參與者」** 或「讀取者」** 身分存取 Advisor 建議。
+您可以將 Advisor 建議當做訂用帳戶、資源群組或資源的*擁有*者、*參與者*或*讀者*來存取。
 
 ### <a name="what-resources-does-advisor-provide-recommendations-for"></a>建議程式可提供哪些資源的建議？
 
 Advisor 會提供應用程式閘道、應用程式服務、可用性設定組、Azure 快取、Azure Data Factory、適用於 MySQL 的 Azure 資料庫、適用於 PostgreSQL 的 Azure 資料庫、適用於 MariaDB 的 Azure 資料庫、Azure ExpressRoute、Azure Cosmos DB、Azure 公用 IP 位址、SQL 資料倉儲、SQL server、儲存體帳戶、流量管理員設定檔和虛擬機器的建議。
 
-Azure Advisor 也包含來自[Azure 資訊安全中心](https://docs.microsoft.com/azure/security-center/security-center-recommendations)的建議，其中可能包括其他資源類型的建議。
+Azure Advisor 也包含來自[Azure 資訊安全中心](../security-center/security-center-recommendations.md)的建議，其中可能包括其他資源類型的建議。
 
 ### <a name="can-i-postpone-or-dismiss-a-recommendation"></a>是否可以延期或解除建議？
 
 若要延期或關閉建議，請按一下 [延期]**** 連結。 您可以指定延期週期，或選取 [永不]**** 來解除建議。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 若要深入了解 Advisor 建議，請參閱：
 

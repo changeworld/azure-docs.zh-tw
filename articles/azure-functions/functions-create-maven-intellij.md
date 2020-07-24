@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 7ced455e8124abed75dc7b2bbf7f92eb13613347
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b1eb430f94ef545fa74ed225c427a121a47f7cf8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85556524"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87055793"
 ---
 # <a name="create-your-first-azure-function-with-java-and-intellij"></a>使用 JAVA 和 IntelliJ 建立您的第一個 Azure 函式
 
@@ -44,7 +44,7 @@ ms.locfileid: "85556524"
 2. 若要登入您的 Azure 帳戶，請開啟 **Azure 總管**資訊看板，然後按一下頂端列中的 [Azure 登入] 圖示 (或從 IDEA 功能表**工具/Azure/Azure 登入**點選)。
     ![IntelliJ 的 [Azure 登入] 命令][intellij-azure-login]
 
-3. 在 [Azure 登入] 視窗中選取 [裝置登入]，然後按一下 [登入] ([其他登入選項](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/sign-in-instructions))。
+3. 在 [Azure 登入] 視窗中選取 [裝置登入]，然後按一下 [登入] ([其他登入選項](/azure/developer/java/toolkit-for-intellij/sign-in-instructions))。
 
    ![選取了 [裝置登入] 的 [Azure 登入] 視窗][intellij-azure-popup]
 
@@ -156,7 +156,7 @@ ms.locfileid: "85556524"
 您已使用 HTTP 觸發的函式建立 Java 函式專案，並在本機電腦上執行，然後部署到 Azure。 現在，請藉由下列作業擴充您的函式...
 
 > [!div class="nextstepaction"]
-> [新增 Azure 儲存體佇列輸出繫結](/azure/azure-functions/functions-add-output-binding-storage-queue-java)
+> [新增 Azure 儲存體佇列輸出繫結](./functions-add-output-binding-storage-queue-java.md)
 
 
 [marketplace]:./media/functions-create-first-java-intellij/marketplace.png

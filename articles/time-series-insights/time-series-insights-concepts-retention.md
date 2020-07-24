@@ -5,26 +5,26 @@ ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 ms.reviewer: jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 07/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: fd34595d5ea942602efc920904ff326fc203c088
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 005725acf7270ff87ac9418f27941bdb205ae986
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81380680"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87059417"
 ---
-# <a name="understand-data-retention-in-azure-time-series-insights"></a>瞭解 Azure 時間序列深入解析中的資料保留
+# <a name="understand-data-retention-in-azure-time-series-insights-gen1"></a>瞭解 Azure 時間序列深入解析 Gen1 中的資料保留
 
 本文說明兩個主要設定，會影響 Azure 時間序列深入解析環境中的資料保留。
 
 ## <a name="video"></a>影片
 
-### <a name="the-following-video-summarizes-time-series-insights-data-retention-and-how-to-plan-for-itbr"></a>下列影片將摘要說明時間序列深入解析資料保留以及如何進行規劃。</br>
+### <a name="the-following-video-summarizes-azure-time-series-insights-data-retention-and-how-to-plan-for-itbr"></a>下列影片將摘要說明 Azure 時間序列深入解析資料保留以及如何進行規劃。</br>
 
 > [!VIDEO https://www.youtube.com/embed/03x6zKDQ6DU]
 
@@ -36,15 +36,15 @@ ms.locfileid: "81380680"
 - **暫停輸入**
 
 > [!NOTE]
-> 根據預設，建立新環境時，保留期會設定為**清除舊資料**。 在建立時間之後，您可以在時間序列深入解析環境的 [**設定**] 頁面上，使用 [Azure 入口網站]，視需要切換此設定。
-> * 如需有關如何設定保留原則的詳細資訊，請參閱[在時間序列深入解析中設定保留](time-series-insights-how-to-configure-retention.md)。
+> 根據預設，建立新環境時，保留期會設定為**清除舊資料**。 在建立時間之後，您可以在 Azure 時間序列深入解析環境的 [**設定**] 頁面上，使用 [Azure 入口網站]，視需要切換此設定。
+> * 如需有關如何設定保留原則的詳細資訊，請參閱[在 Azure 時間序列深入解析中設定保留](time-series-insights-how-to-configure-retention.md)。
 
 下面會更詳細地說明這兩個數據保留原則。
 
 ## <a name="purge-old-data"></a>清除舊資料
 
 - [**清除舊資料**] 是 Azure 時間序列深入解析環境的預設設定。  
-- 當使用者想要在其時間序列深入解析環境中一律擁有*最新的資料*時，建議您**清除舊資料**。
+- 當使用者想要在其 Azure 時間序列深入解析環境中一律擁有*最新的資料*時，建議您**清除舊資料**。
 - 一旦達到環境的限制（保留時間、大小或計數（以先發生者為准）時，[**清除舊資料**] 設定就會*清除*資料。 保留期預設值為 30 天。
 - 最舊的內嵌資料會先清除（「先進先出」方法）。
 
@@ -69,7 +69,7 @@ ms.locfileid: "81380680"
 - 它可協助保護您免于資料遺失，但如果輸入暫停超過事件來源的保留期間，可能會造成資料遺失的機會。
 - 不過，一旦達到環境的最大容量，環境就會暫停資料輸入，直到發生下列其他動作為止：
 
-   - 您會增加環境的最大容量，以新增更多縮放單位，如[如何調整您的時間序列深入解析環境](time-series-insights-how-to-scale-your-environment.md)中所述。
+   - 您會增加環境的最大容量，以新增更多縮放單位，如[如何調整您的 Azure 時間序列深入解析環境](time-series-insights-how-to-scale-your-environment.md)中所述。
    - 已達到資料保留期並清除資料，將環境帶入其最大容量。
 
 ### <a name="example-three"></a>範例三
@@ -86,16 +86,16 @@ ms.locfileid: "81380680"
 > [!IMPORTANT]
 > 您應該設定警示，以提供可協助避免暫停輸入資料的通知。 因為 Azure 事件來源的保留期預設為 1 天，所以是有可能會遺失資料的。 因此，輸入暫停之後，除非您採取其他動作，否則就可能會遺失最新資料。 您必須增加容量，或將行為切換為 [清除舊資料]****，以避免發生資料遺失。
 
-當事件中樞受到影響時，請考慮調整 [訊息保留期]**** 屬性，以在「時間序列深入解析」中發生暫停輸入時，將資料遺失機率降到最低。
+在受影響的事件中樞中，請考慮調整 [**訊息保留**] 屬性，以在 Azure 時間序列深入解析中發生暫停輸入時，將資料遺失降至最低。
 
 [![事件中樞訊息保留。](media/time-series-insights-concepts-retention/event-hub-retention.png)](media/time-series-insights-concepts-retention/event-hub-retention.png#lightbox)
 
-如果事件來源（）上未設定任何屬性 `timeStampPropertyName` ，時間序列深入解析預設為以 X 軸到達事件中樞的時間戳記。 如果 `timeStampPropertyName` 設定為其他專案，環境會在剖析事件時，尋找 `timeStampPropertyName` 資料封包中所設定的。
+如果事件來源（）上未設定任何屬性 `timeStampPropertyName` ，Azure 時間序列深入解析預設為以 X 軸到達事件中樞的時間戳記。 如果 `timeStampPropertyName` 設定為其他專案，環境會在剖析事件時，尋找 `timeStampPropertyName` 資料封包中所設定的。
 
-瞭解[如何調整您的時間序列深入解析環境](time-series-insights-how-to-scale-your-environment.md)，以調整您的環境以容納額外的容量或增加保留的長度。
+瞭解[如何調整您的 Azure 時間序列深入解析環境](time-series-insights-how-to-scale-your-environment.md)，以調整您的環境以容納額外的容量或增加保留的長度。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-- 如需設定或變更資料保留設定的詳細資訊，請參閱[在時間序列深入解析中設定保留](time-series-insights-how-to-configure-retention.md)。
+- 如需設定或變更資料保留設定的詳細資訊，請參閱[在 Azure 時間序列深入解析中設定保留](time-series-insights-how-to-configure-retention.md)。
 
 - 瞭解[Azure 時間序列深入解析中的緩和延遲](time-series-insights-environment-mitigate-latency.md)。

@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: 了解如何在 Azure Kubernetes Service (AKS) 叢集中安裝及設定基本 NGINX 輸入控制器。
 services: container-service
 ms.topic: article
-ms.date: 04/27/2020
-ms.openlocfilehash: bb7ac1d76e93a95fedc1dfdbfd67d2b057db60e3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 07/20/2020
+ms.openlocfilehash: d96118e8f9de37432874a9864fc5c35faeb95a5a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499812"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87057218"
 ---
 # <a name="create-an-ingress-controller-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中建立輸入控制器
 
@@ -163,10 +163,10 @@ kubectl apply -f aks-helloworld-two.yaml --namespace ingress-basic
 
 在下列範例中， *EXTERNAL_IP*的流量會路由傳送至名為的服務 `aks-helloworld-one` 。 *EXTERNAL_IP/hello-world-two*的流量會路由傳送至 `aks-helloworld-two` 服務。 *EXTERNAL_IP/靜態*的流量會路由傳送至名 `aks-helloworld-one` 為的靜態資產服務。
 
-建立名為 `hello-world-ingress.yaml` 的檔案，並複製到下列範例 YAML 中。
+建立名為*hello-yaml*的檔案，並複製下列範例 yaml。
 
 ```yaml
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: hello-world-ingress
@@ -188,7 +188,7 @@ spec:
           servicePort: 80
         path: /hello-world-two(/|$)(.*)
 ---
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: hello-world-ingress-static
@@ -276,7 +276,7 @@ kubectl delete -f hello-world-ingress.yaml
 kubectl delete namespace ingress-basic
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 本文包含 AKS 的一些外部元件。 若要深入了解這些元件，請參閱下列專案頁面：
 

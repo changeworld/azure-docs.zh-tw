@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 4/24/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 895e33a111fe5bb881d198ee4995b9534ca3d528
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 2e2a7f09ac6ff3be119a07ed0a2162525801ceef
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135871"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87061854"
 ---
 # <a name="create-custom-sdks-for-azure-digital-twins-using-autorest"></a>使用 AutoRest 建立適用于 Azure 數位 Twins 的自訂 Sdk
 
-目前，用來與 Azure 數位 Twins Api 互動的唯一已發佈資料平面 SDK 適用于 .NET （c #）。 如需瞭解 .NET SDK 和 Api 的一般資訊，請參閱[如何：使用 Azure 數位 Twins api 和 sdk](how-to-use-apis-sdks.md)。 如果您使用另一種語言，本文將說明如何使用 AutoRest，以您選擇的語言產生您自己的 SDK。
+目前，用來與 Azure 數位 Twins Api 互動的唯一已發佈資料平面 SDK 適用于 .NET （c #）。 如需瞭解 .NET SDK 和 Api 的一般資訊，請參閱[*如何：使用 Azure 數位 Twins api 和 sdk*](how-to-use-apis-sdks.md)。 如果您使用另一種語言，本文將說明如何使用 AutoRest，以您選擇的語言產生您自己的 SDK。
 
 ## <a name="set-up-your-machine"></a>設定您的電腦
 
@@ -37,23 +37,23 @@ npm install -g autorest@2.0.4413
 若要對 Azure 數位 Twins Swagger 檔案執行 AutoRest，請遵循下列步驟：
 1. 將 Azure 數位 Twins Swagger 檔案和其隨附的範例資料夾複製到工作目錄中。
 2. 使用 [命令提示字元] 視窗切換至該工作目錄。
-3. 使用下列命令來執行 AutoRest。 `<language>`以您選擇的語言取代預留位置： `--python` 、 `--java` 、等 `--go` （您可以在[AutoRest 讀我檔案](https://github.com/Azure/autorest)中找到完整的選項清單）。
+3. 使用下列命令來執行 AutoRest。 `<language>`以您選擇的語言取代預留位置： `--python` 、 `--java` 、 `--go` 等等。 （您可以在[AUTOREST 讀我檔案](https://github.com/Azure/autorest)中找到完整的選項清單。）
 
 ```cmd/sh
 autorest --input-file=adtApiSwagger.json --<language> --output-folder=ADTApi --add-credentials --azure-arm --namespace=ADTApi
 ```
 
-因此，您會在工作目錄中看到名為*ADTApi*的新資料夾。 產生的 SDK 檔案將具有命名空間*ADTApi*，而您將繼續在本文中的其餘使用範例中使用。
+因此，您會在工作目錄中看到名為*ADTApi*的新資料夾。 產生的 SDK 檔案會有命名空間*ADTApi*。 您將繼續使用該命名空間，這篇文章中的其餘部分使用方式範例。
 
 AutoRest 支援各種語言的程式碼產生器。
 
 ## <a name="add-the-sdk-to-a-visual-studio-project"></a>將 SDK 新增至 Visual Studio 專案
 
-您可以將 AutoRest 所產生的檔案直接包含在 .NET 方案中。 不過，因為您可能需要在數個不同的專案（用戶端應用程式、Azure Functions 應用程式等）中使用 Azure 數位 Twins SDK，所以從產生的檔案建立個別的專案（.NET 類別庫）可能會很有用。 接著，您可以將此類別庫專案納入數個方案中，做為專案參考。
+您可以將 AutoRest 所產生的檔案直接包含在 .NET 方案中。 不過，您可能會想要在數個不同的專案（您的用戶端應用程式、Azure Functions 應用程式等）中包含 Azure 數位 Twins SDK。 基於這個理由，從產生的檔案建立個別的專案（.NET 類別庫）可能會很有用。 然後，您可以將此類別庫專案納入數個方案中，做為專案參考。
 
 本節提供如何建立 SDK 做為類別庫的指示，這是它自己的專案，而且可以包含在其他專案中。 這些步驟依賴**Visual Studio** （您可以從[這裡](https://visualstudio.microsoft.com/downloads/)安裝最新版本）。
 
-以下是步驟：
+步驟如下：
 
 1. 為類別庫建立新的 Visual Studio 解決方案
 2. 使用*ADTApi*做為專案名稱
@@ -73,7 +73,7 @@ AutoRest 支援各種語言的程式碼產生器。
 
 1. 在面板中，請確定已選取 [*流覽*] 索引標籤
 2. 搜尋*Microsoft. Rest*
-3. 選取*ClientRuntime*和*ClientRuntime*套件，並將其新增至您的方案
+3. 選取 `ClientRuntime` 和 `ClientRuntime.Azure` 封裝，並將它們新增至您的方案
 
 您現在可以建立專案，並在您撰寫的任何 Azure 數位 Twins 應用程式中將其納入做為專案參考。
 
@@ -87,7 +87,7 @@ AutoRest 支援各種語言的程式碼產生器。
 
 ### <a name="typed-and-untyped-data"></a>具類型和不具類型的資料
 
-REST API 呼叫通常會傳回強型別物件。 不過，因為 Azure 數位 Twins 可讓使用者定義自己的 Twins 自訂類型，所以沒有任何方法可以預先定義許多 Azure 數位 Twins 呼叫的靜態傳回資料。 相反地，Api 會在適用的情況下傳回強型別包裝函式，而自訂類型對應項資料則會在 Json.NET 物件中（使用於 API 簽章中的資料類型「物件」出現的地方）。 您可以在程式碼中適當地轉換這些物件。
+REST API 呼叫通常會傳回強型別物件。 不過，因為 Azure 數位 Twins 可讓使用者定義自己的 Twins 自訂類型，所以沒有任何方法可以預先定義許多 Azure 數位 Twins 呼叫的靜態傳回資料。 相反地，Api 會在適用的情況下傳回強型別包裝函式類型，而自訂類型對應項資料則會在 Json.NET 物件中（用於任何資料類型 "object" 出現在 API 簽章中的位置）。 您可以在程式碼中適當地轉換這些物件。
 
 ### <a name="error-handling"></a>錯誤處理
 
@@ -115,7 +115,7 @@ AutoRest 會針對 SDK 產生兩種類型的分頁模式：
 
 在非查詢分頁模式中，每個呼叫都有兩個版本：
 * 進行初始呼叫的版本（例如 `DigitalTwins.ListEdges()` ）
-* 取得後續頁面的版本，後置字元為 "Next" （例如 `DigitalTwins.ListEdgesNext()` ）
+* 要取得下列頁面的版本。 這些呼叫的尾碼為 "Next" （例如 `DigitalTwins.ListEdgesNext()` ）
 
 以下程式碼片段顯示如何從 Azure 數位 Twins 抓取已分頁的傳出關聯性清單：
 ```csharp
@@ -188,4 +188,4 @@ try
 ## <a name="next-steps"></a>後續步驟
 
 逐步執行建立用戶端應用程式的步驟，您可以在其中使用您的 SDK：
-* [教學課程：撰寫用戶端應用程式的程式碼](tutorial-code.md)
+* [*教學課程：撰寫用戶端應用程式的程式碼*](tutorial-code.md)

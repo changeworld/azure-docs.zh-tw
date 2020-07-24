@@ -3,17 +3,18 @@ title: 使用 REST API 備份 Azure 檔案共用
 description: 瞭解如何使用 REST API 來備份復原服務保存庫中的 Azure 檔案共用
 ms.topic: conceptual
 ms.date: 02/16/2020
-ms.openlocfilehash: 2cf385830ec1be17cb62432e6ef9cba7d82a9db1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7059dbae9d448b710880f1f9d72b843a6d77d98b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710604"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87055023"
 ---
 # <a name="backup-azure-file-share-using-azure-backup-via-rest-api"></a>使用 Azure 備份透過 Rest API 備份 Azure 檔案共用
 
 本文說明如何使用 Azure 備份透過 REST API 來備份 Azure 檔案共用。
 
-本文假設您已建立復原服務保存庫和原則，以設定檔案共用的備份。 如果您尚未這麼做，請參閱[建立保存庫](https://docs.microsoft.com/azure/backup/backup-azure-arm-userestapi-createorupdatevault)和[建立原則](https://docs.microsoft.com/azure/backup/backup-azure-arm-userestapi-createorupdatepolicy)REST API 教學課程，以建立新的保存庫和原則。
+本文假設您已建立復原服務保存庫和原則，以設定檔案共用的備份。 如果您尚未這麼做，請參閱[建立保存庫](./backup-azure-arm-userestapi-createorupdatevault.md)和[建立原則](./backup-azure-arm-userestapi-createorupdatepolicy.md)REST API 教學課程，以建立新的保存庫和原則。
 
 在本文中，我們將使用下列資源：
 
@@ -31,7 +32,7 @@ ms.locfileid: "84710604"
 
 ### <a name="discover-storage-accounts-with-unprotected-azure-file-shares"></a>探索具有未受保護之 Azure 檔案共用的儲存體帳戶
 
-保存庫必須探索訂用帳戶中具有可備份至復原服務保存庫之檔案共用的所有 Azure 儲存體帳戶。 這會使用[重新整理作業](https://docs.microsoft.com/rest/api/backup/protectioncontainers/refresh) \(英文\) 來觸發。 這是一項非同步*POST*作業，可確保保存庫取得目前訂用帳戶中所有未受保護 Azure 檔案共用的最新清單，並加以「快取」。 檔案共用「快取」之後，復原服務就可以存取檔案共用並加以保護。
+保存庫必須探索訂用帳戶中具有可備份至復原服務保存庫之檔案共用的所有 Azure 儲存體帳戶。 這會使用[重新整理作業](/rest/api/backup/protectioncontainers/refresh) \(英文\) 來觸發。 這是一項非同步*POST*作業，可確保保存庫取得目前訂用帳戶中所有未受保護 Azure 檔案共用的最新清單，並加以「快取」。 檔案共用「快取」之後，復原服務就可以存取檔案共用並加以保護。
 
 ```http
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{vaultresourceGroupname}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/refreshContainers?api-version=2016-12-01&$filter={$filter}
@@ -55,7 +56,7 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 #### <a name="responses"></a>回應
 
-「重新整理」作業為[非同步作業](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)。 這表示此作業會建立另一項需要個別追蹤的作業。
+「重新整理」作業為[非同步作業](../azure-resource-manager/management/async-operations.md)。 這表示此作業會建立另一項需要個別追蹤的作業。
 
 它會傳回兩個回應：當另一個作業已建立時，202（已接受），而當該作業完成時，則傳回200（確定）。
 
@@ -107,7 +108,7 @@ Date   : Mon, 27 Jan 2020 10:53:04 GMT
 
 ### <a name="get-list-of-storage-accounts-that-can-be-protected-with-recovery-services-vault"></a>取得可使用復原服務保存庫保護的儲存體帳戶清單
 
-若要確認「快取」已完成，請列出訂用帳戶下所有可保護的儲存體帳戶。 然後，在回應中找出所需的儲存體帳戶。 這會使用[GET ProtectableContainers](https://docs.microsoft.com/rest/api/backup/protectablecontainers/list)作業來完成。
+若要確認「快取」已完成，請列出訂用帳戶下所有可保護的儲存體帳戶。 然後，在回應中找出所需的儲存體帳戶。 這會使用[GET ProtectableContainers](/rest/api/backup/protectablecontainers/list)作業來完成。
 
 ```http
 GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/protectableContainers?api-version=2016-12-01&$filter=backupManagementType eq 'AzureStorage'
@@ -159,7 +160,7 @@ protectableContainers/StorageContainer;Storage;AzureFiles;testvault2",
 
 ### <a name="register-storage-account-with-recovery-services-vault"></a>向復原服務保存庫註冊儲存體帳戶
 
-只有在您稍早未向保存庫註冊儲存體帳戶時，才需要執行此步驟。 您可以透過[ProtectionContainers-register](https://docs.microsoft.com/rest/api/backup/protectioncontainers/register)作業註冊保存庫。
+只有在您稍早未向保存庫註冊儲存體帳戶時，才需要執行此步驟。 您可以透過[ProtectionContainers-register](/rest/api/backup/protectioncontainers/register)作業註冊保存庫。
 
 ```http
 PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}?api-version=2016-12-01
@@ -208,7 +209,7 @@ PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
  }
 ```
 
-如需要求本文的完整定義清單及其他詳細資料，請參閱[ProtectionContainers-Register](https://docs.microsoft.com/rest/api/backup/protectioncontainers/register#azurestoragecontainer)。
+如需要求本文的完整定義清單及其他詳細資料，請參閱[ProtectionContainers-Register](/rest/api/backup/protectioncontainers/register#azurestoragecontainer)。
 
 這是非同步作業，並會傳回兩個回應：當作業已被接受時，會傳回「202已接受」，而當作業完成時，則會傳回「200 OK」。  若要追蹤作業狀態，請使用 location 標頭來取得作業的最新狀態。
 
@@ -240,7 +241,7 @@ protectionContainers/StorageContainer;Storage;AzureFiles;testvault2",
 
 ### <a name="inquire-all-unprotected-files-shares-under-a-storage-account"></a>在儲存體帳戶下查詢所有未受保護的檔案共用
 
-您可以使用[保護容器-inquire](https://docs.microsoft.com/rest/api/backup/protectioncontainers/inquire)作業來查詢儲存體帳戶中的可保護專案。 這是非同步作業，而且應該使用 location 標頭來追蹤結果。
+您可以使用[保護容器-inquire](/rest/api/backup/protectioncontainers/inquire)作業來查詢儲存體帳戶中的可保護專案。 這是非同步作業，而且應該使用 location 標頭來追蹤結果。
 
 ```http
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/inquire?api-version=2016-12-01
@@ -275,7 +276,7 @@ Date  : Mon, 27 Jan 2020 10:53:05 GMT
 
 ### <a name="select-the-file-share-you-want-to-back-up"></a>選取您想要備份的檔案共用
 
-您可以列出訂用帳戶下所有可保護的專案，並使用[GET backupprotectableItems](https://docs.microsoft.com/rest/api/backup/backupprotectableitems/list)作業找出所需的檔案共用，以進行備份。
+您可以列出訂用帳戶下所有可保護的專案，並使用[GET backupprotectableItems](/rest/api/backup/backupprotectableitems/list)作業找出所需的檔案共用，以進行備份。
 
 ```http
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupProtectableItems?api-version=2016-12-01&$filter={$filter}
@@ -350,7 +351,7 @@ Status Code:200
 
 ### <a name="enable-backup-for-the-file-share"></a>啟用檔案共用的備份
 
-使用易記名稱「識別」相關的檔案共用之後，請選取要保護的原則。 若要深入瞭解保存庫中的現有原則，請參閱[清單原則 API](https://docs.microsoft.com/rest/api/backup/backuppolicies/list)。 然後藉由參考原則名稱來選取[相關的原則](https://docs.microsoft.com/rest/api/backup/protectionpolicies/get) \(英文\)。 若要建立原則，請參閱[建立原則教學課程](https://docs.microsoft.com/azure/backup/backup-azure-arm-userestapi-createorupdatepolicy)。
+使用易記名稱「識別」相關的檔案共用之後，請選取要保護的原則。 若要深入瞭解保存庫中的現有原則，請參閱[清單原則 API](/rest/api/backup/backuppolicies/list)。 然後藉由參考原則名稱來選取[相關的原則](/rest/api/backup/protectionpolicies/get) \(英文\)。 若要建立原則，請參閱[建立原則教學課程](./backup-azure-arm-userestapi-createorupdatepolicy.md)。
 
 啟用保護是一個可建立「受保護專案」的非同步*PUT*作業。
 
@@ -466,11 +467,11 @@ POST https://management.azure.com/subscriptions/00000000-0000-0000-0000-00000000
 
 若要觸發隨選備份，以下是要求本文的元件。
 
-| 名稱       | 類型                       | Description                       |
+| 名稱       | 類型                       | 說明                       |
 | ---------- | -------------------------- | --------------------------------- |
-| 屬性 | AzurefilesharebackupReques | BackupRequestResource 屬性 |
+| [內容] | AzurefilesharebackupReques | BackupRequestResource 屬性 |
 
-如需要求本文的完整定義清單及其他詳細資訊，請參閱[觸發受保護項目的備份 REST API 文件](https://docs.microsoft.com/rest/api/backup/backups/trigger#request-body) \(英文\)。
+如需要求本文的完整定義清單及其他詳細資訊，請參閱[觸發受保護項目的備份 REST API 文件](/rest/api/backup/backups/trigger#request-body) \(英文\)。
 
 要求本文範例
 
@@ -488,7 +489,7 @@ POST https://management.azure.com/subscriptions/00000000-0000-0000-0000-00000000
 
 ### <a name="responses"></a>回應
 
-觸發隨選備份為[非同步作業](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)。 這表示此作業會建立另一項需要個別追蹤的作業。
+觸發隨選備份為[非同步作業](../azure-resource-manager/management/async-operations.md)。 這表示此作業會建立另一項需要個別追蹤的作業。
 
 它會傳回兩個回應：在建立另一個作業時，202（已接受），而當該作業完成時，則會傳回200（確定）。
 
@@ -539,7 +540,7 @@ GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 }
 ```
 
-由於備份作業是長時間執行的作業，因此需要加以追蹤，如[使用 REST API 監視作業文件](https://docs.microsoft.com/azure/backup/backup-azure-arm-userestapi-managejobs#tracking-the-job)所述。
+由於備份作業是長時間執行的作業，因此需要加以追蹤，如[使用 REST API 監視作業文件](./backup-azure-arm-userestapi-managejobs.md#tracking-the-job)所述。
 
 ## <a name="next-steps"></a>後續步驟
 

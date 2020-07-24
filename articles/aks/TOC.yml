@@ -66,6 +66,9 @@
       items:
         - name: 概觀
           href: best-practices.md
+        - name: AKS 叢集的基準架構
+          href: /azure/architecture/reference-architectures/containers/aks/secure-baseline-aks/
+          maintainContext: true
         - name: 針對叢集運算子
           items:
             - name: 多租用戶和叢集隔離

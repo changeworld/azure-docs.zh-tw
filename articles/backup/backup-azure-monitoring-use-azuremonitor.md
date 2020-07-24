@@ -4,11 +4,12 @@ description: 使用 Azure 監視器監視 Azure 備份工作負載並建立自�
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: 81e4f9f63df19ed57f26be8eb246c6dab1bf512c
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: fbd1c7f5e7fab9f77815e782160e855a9a854dc9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714826"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87054620"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>使用 Azure 監視器進行大規模監視
 
@@ -55,7 +56,7 @@ Azure 備份提供復原服務保存庫中的[內建監視和警示功能](backu
 
 您可以單獨滿足 Log Analytics 中的所有警示和監視需求，也可以使用 Log Analytics 補充內建通知。
 
-如需詳細資訊，請參閱[使用 Azure 監視器建立、查看和記錄管理警示](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log)和[在 Azure 入口網站中建立和管理動作群組](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)。
+如需詳細資訊，請參閱[使用 Azure 監視器建立、查看和記錄管理警示](../azure-monitor/platform/alerts-log.md)和[在 Azure 入口網站中建立和管理動作群組](../azure-monitor/platform/action-groups.md)。
 
 ### <a name="sample-kusto-queries"></a>範例 Kusto 查詢
 
@@ -179,7 +180,7 @@ Azure 備份提供復原服務保存庫中的[內建監視和警示功能](backu
 
 2. 選取作業名稱以檢視相關的詳細資料。
 3. 選取 [新增警示規則] 開啟 [建立規則] 頁面。
-4. 遵循[使用 Azure 監視器建立、查看和管理活動記錄警示](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)中的步驟建立警示。
+4. 遵循[使用 Azure 監視器建立、查看和管理活動記錄警示](../azure-monitor/platform/alerts-activity-log.md)中的步驟建立警示。
 
    ![新增警示規則](media/backup-azure-monitoring-laworkspace/new-alert-rule.png)
 
@@ -192,8 +193,8 @@ Azure 備份提供復原服務保存庫中的[內建監視和警示功能](backu
 雖然您可以透過活動記錄取得通知，但我們強烈建議使用 Log Analytics 而非活動記錄大規模進行監視。 原因如下：
 
 - **有限的案例**：活動記錄的通知僅適用於 Azure VM 備份。 必須為每個復原服務保存庫設定通知。
-- **定義符合**：排程的備份活動不符合最新的活動記錄定義。 相反地，它會與[資源記錄檔](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-workspace#what-you-can-do-with-platform-logs-in-a-workspace)一致。 當流經活動記錄通道的資料變更時，這種對齊方式會導致非預期的效果。
-- **活動記錄通道的問題**：在復原服務保存庫中，從 Azure 備份抽出的活動記錄會遵循新的模型。 可惜的是，這項變更會影響 Azure Government、Azure 德國和 Azure China 21Vianet 的活動記錄產生。 如果這些雲端服務的使用者在 Azure 監視器中，從活動記錄建立或設定任何警示，則不會觸發警示。 此外，在所有 Azure 公用區域中，如果使用者[要將復原服務活動記錄收集到 Log Analytics 工作區](https://docs.microsoft.com/azure/azure-monitor/platform/collect-activity-logs)，則這些記錄也不會出現。
+- **定義符合**：排程的備份活動不符合最新的活動記錄定義。 相反地，它會與[資源記錄檔](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace)一致。 當流經活動記錄通道的資料變更時，這種對齊方式會導致非預期的效果。
+- **活動記錄通道的問題**：在復原服務保存庫中，從 Azure 備份抽出的活動記錄會遵循新的模型。 可惜的是，這項變更會影響 Azure Government、Azure 德國和 Azure China 21Vianet 的活動記錄產生。 如果這些雲端服務的使用者在 Azure 監視器中，從活動記錄建立或設定任何警示，則不會觸發警示。 此外，在所有 Azure 公用區域中，如果使用者[要將復原服務活動記錄收集到 Log Analytics 工作區](../azure-monitor/platform/activity-log.md)，則這些記錄也不會出現。
 
 針對 Azure 備份保護的所有工作負載，使用 Log Analytics 工作區進行大規模監視和警示。
 

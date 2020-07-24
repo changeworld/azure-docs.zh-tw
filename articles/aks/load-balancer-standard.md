@@ -1,29 +1,29 @@
 ---
 title: 使用公用 Load Balancer
 titleSuffix: Azure Kubernetes Service
-description: 瞭解如何搭配標準 SKU 使用公用負載平衡器，透過 Azure Kubernetes Service (AKS) 來公開您的服務。
+description: 瞭解如何搭配標準 SKU 使用公用負載平衡器，以 Azure Kubernetes Service （AKS）公開您的服務。
 services: container-service
 ms.topic: article
 ms.date: 06/14/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 11f8442f188ea6ce7ee1de5a093362279da4594c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 417ca42e014c0bb197d7dd834b960f25fcfdf468
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86251158"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056798"
 ---
-# <a name="use-a-public-standard-load-balancer-in-azure-kubernetes-service-aks"></a>使用 Azure Kubernetes Service (AKS 中的公用 Standard Load Balancer) 
+# <a name="use-a-public-standard-load-balancer-in-azure-kubernetes-service-aks"></a>使用 Azure Kubernetes Service 中的公用 Standard Load Balancer （AKS）
 
-Azure Load Balancer 是支援輸入和輸出案例的開放系統互相連線 (OSI) 模型的 L4。 它會將抵達負載平衡器前端的輸入流量散發至後端集區實例。
+Azure Load Balancer 是開放系統互相連線（OSI）模型的 L4，支援輸入和輸出案例。 它會將抵達負載平衡器前端的輸入流量散發至後端集區實例。
 
 與 AKS 整合時的**公用**Load Balancer 有兩個用途：
 
 1. 提供 AKS 虛擬網路內叢集節點的輸出連線。 它會將節點私人 IP 位址轉譯為其*輸出集*區的公用 ip 位址，達到此目標。
 2. 透過類型的 Kubernetes 服務提供應用程式的存取權 `LoadBalancer` 。 有了它，您就可以輕鬆地調整應用程式，並建立高可用性的服務。
 
-**內部 (或私用) **負載平衡器會在僅允許私人 ip 作為前端的情況下使用。 內部負載平衡器可用來對虛擬網路內的流量進行負載平衡。 在混合式案例中，您也可以從內部部署網路存取負載平衡器前端。
+**內部（或私人）** 負載平衡器會在僅允許私人 ip 作為前端的情況下使用。 內部負載平衡器可用來對虛擬網路內的流量進行負載平衡。 在混合式案例中，您也可以從內部部署網路存取負載平衡器前端。
 
 本檔涵蓋與公用負載平衡器的整合。 如需內部 Load Balancer 整合，請參閱[AKS 內部負載平衡器檔](internal-lb.md)。
 
@@ -36,11 +36,11 @@ Azure Load Balancer 有兩種 SKU -「基本」和「標準」。 根據預設�
 本文假設您有一個具有*標準*SKU AZURE LOAD BALANCER 的 AKS 叢集，並逐步解說如何使用和設定負載平衡器的一些功能和功能。 如果您需要 AKS 叢集，請參閱[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 入口網站][aks-quickstart-portal]的 AKS 快速入門。
 
 > [!IMPORTANT]
-> 如果您不想要利用 Azure Load Balancer 來提供輸出連線，而改為使用自己的閘道、防火牆或 proxy 來進行該目的，您可以使用[**輸出類型做為 UserDefinedRouting (UDR) **](egress-outboundtype.md)，略過建立負載平衡器輸出集區和個別前端 IP。 輸出類型會定義叢集的傳出方法，而且預設為類型：負載平衡器。
+> 如果您不想要利用 Azure Load Balancer 來提供輸出連線，而改為使用自己的閘道、防火牆或 proxy 來進行該目的，您可以將[**輸出類型設為 UserDefinedRouting （UDR）**](egress-outboundtype.md)，以略過建立負載平衡器輸出集區和個別前端 IP。 輸出類型會定義叢集的傳出方法，而且預設為類型：負載平衡器。
 
 ## <a name="use-the-public-standard-load-balancer"></a>使用公用標準負載平衡器
 
-建立具有輸出類型的 AKS 叢集之後： Load Balancer (預設) ，叢集也準備好使用負載平衡器來公開服務。
+建立具有輸出類型的 AKS 叢集之後： Load Balancer （預設值），叢集也準備好使用負載平衡器來公開服務。
 
 為此，您可以建立類型的公用服務， `LoadBalancer` 如下列範例所示。 首先，建立名為的服務資訊清單 `public-svc.yaml` ：
 
@@ -167,7 +167,7 @@ az aks update \
 
 #### <a name="create-the-cluster-with-your-own-public-ip-or-prefixes"></a>使用您自己的公用 IP 或首碼來建立叢集
 
-在叢集建立時，您可能會想要對於輸出帶入您自己的 IP 位址或 IP 首碼，以支援白名單輸出端點之類的情況。 將上面顯示的相同參數附加至叢集建立步驟，以便在叢集生命週期開始時定義您自己的公用 Ip 和 IP 首碼。
+在建立叢集時，您可能會想要將自己的 IP 位址或 IP 首碼帶入輸出，以支援將輸出端點新增至允許清單等案例。 將上面顯示的相同參數附加至叢集建立步驟，以便在叢集生命週期開始時定義您自己的公用 Ip 和 IP 首碼。
 
 使用 az aks create 命令搭配 load-balancer-outbound-ips 參數，以您的公用 IP 在開始時建立新的叢集。
 
@@ -189,7 +189,7 @@ az aks create \
 ### <a name="configure-the-allocated-outbound-ports"></a>設定配置的輸出埠
 
 > [!IMPORTANT]
-> 如果您的叢集上有應用程式，預期會與一組較小的目的地建立大量的連線，例如 許多連線到 SQL DB 的前端實例，您有很容易遇到 SNAT 埠耗盡的情況， (用來從) 連接的埠。 在這些情況下，強烈建議您在負載平衡器上增加配置的輸出埠和輸出前端 Ip。 增加的情況應該考慮到一個 (1) 額外的 IP 位址會增加64k 個額外的埠，以散發到所有叢集節點上。
+> 如果您的叢集上有應用程式，預期會與一組較小的目的地建立大量的連線，例如 許多連接到 SQL DB 的前端實例，都有很容易遇到 SNAT 埠耗盡（用來連線的埠不足）的情況。 在這些情況下，強烈建議您在負載平衡器上增加配置的輸出埠和輸出前端 Ip。 增加的情況應該考慮到一（1）個額外的 IP 位址會增加64k 個額外的埠，以散發到所有叢集節點上。
 
 
 除非另有指定，否則 AKS 會使用配置之輸出埠的預設值，Standard Load Balancer 定義它的時機。 此值在 AKS API 上為**null** ，而在 SLB api 上為**0** ，如下列命令所示：
@@ -229,7 +229,7 @@ az aks update \
 > [!IMPORTANT]
 > 在自訂*allocatedOutboundPorts*之前，您必須先[計算所需的配額並檢查需求][requirements]，以避免連線能力或調整問題。
 
-您也可以在 **`load-balancer-outbound-ports`** 建立叢集時使用參數，但也必須同時指定 **`load-balancer-managed-outbound-ip-count`** 、 **`load-balancer-outbound-ips`** 或 **`load-balancer-outbound-ip-prefixes`** 。  例如︰
+您也可以在 **`load-balancer-outbound-ports`** 建立叢集時使用參數，但也必須同時指定 **`load-balancer-managed-outbound-ip-count`** 、 **`load-balancer-outbound-ips`** 或 **`load-balancer-outbound-ip-prefixes`** 。  例如：
 
 ```azurecli-interactive
 az aks create \
@@ -243,7 +243,7 @@ az aks create \
 ### <a name="configure-the-load-balancer-idle-timeout"></a>設定負載平衡器閒置時間
 
 當 SNAT 連接埠資源耗盡時，輸出流程會失敗，直到現有的流程釋出 SNAT 連接埠為止。 Load Balancer 會在流程關閉時回收 SNAT 埠，而 AKS 設定的負載平衡器會使用30分鐘的閒置超時時間，從閒置的流量回收 SNAT 埠。
-您也可以使用傳輸 (例如， **`TCP keepalives`**) 或 **`application-layer keepalives`** 重新整理閒置流程，並視需要重設此閒置超時。 您可以依照下列範例設定此超時時間： 
+您也可以使用傳輸（例如）， **`TCP keepalives`** 或 **`application-layer keepalives`** 重新整理閒置流程，並視需要重設此閒置超時。 您可以依照下列範例設定此超時時間： 
 
 
 ```azurecli-interactive
@@ -293,6 +293,24 @@ spec:
   - MY_EXTERNAL_IP_RANGE
 ```
 
+## <a name="maintain-the-clients-ip-on-inbound-connections"></a>在輸入連線上維護用戶端的 IP
+
+根據預設， `LoadBalancer` [KUBERNETES](https://kubernetes.io/docs/tutorials/services/source-ip/#source-ip-for-services-with-type-loadbalancer)和 AKS 中類型的服務不會在與 pod 的連線上保存用戶端的 IP 位址。 傳遞至 pod 的封包上的來源 IP 會是節點的私人 IP。 若要維護用戶端的 IP 位址，您必須 `service.spec.externalTrafficPolicy` `local` 在服務定義中將設為。 下列資訊清單顯示一個範例：
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: azure-vote-front
+spec:
+  type: LoadBalancer
+  externalTrafficPolicy: Local
+  ports:
+  - port: 80
+  selector:
+    app: azure-vote-front
+```
+
 ## <a name="additional-customizations-via-kubernetes-annotations"></a>透過 Kubernetes 注釋的其他自訂專案
 
 以下是具有類型的 Kubernetes 服務所支援的注釋清單 `LoadBalancer` ，這些注釋僅適用于**輸入**流程：
@@ -303,7 +321,7 @@ spec:
 | `service.beta.kubernetes.io/azure-load-balancer-internal-subnet`  | 子網的名稱                    | 指定內部負載平衡器應系結的子網。 如果未設定，則會預設為雲端設定檔中設定的子網。
 | `service.beta.kubernetes.io/azure-dns-label-name`                 | 公用 Ip 上的 DNS 標籤名稱   | 指定**公用**服務的 DNS 標籤名稱。 如果它設定為空字串，則不會使用公用 IP 中的 DNS 專案。
 | `service.beta.kubernetes.io/azure-shared-securityrule`            | `true` 或 `false`                     | 指定應使用可與另一個服務共用的 Azure 安全性規則來公開服務，並針對可公開的服務數目增加的規則進行交易精確性。 此注釋依賴「網路安全性群組」的「Azure 增強型[安全性規則](../virtual-network/security-overview.md#augmented-security-rules)」功能。 
-| `service.beta.kubernetes.io/azure-load-balancer-resource-group`   | 資源群組的名稱            | 請指定負載平衡器公用 Ip 的資源群組，而不在與叢集基礎結構 (節點資源群組) 相同的資源群組中。
+| `service.beta.kubernetes.io/azure-load-balancer-resource-group`   | 資源群組的名稱            | 請指定負載平衡器公用 Ip 的資源群組，而不在與叢集基礎結構（節點資源群組）相同的資源群組中。
 | `service.beta.kubernetes.io/azure-allowed-service-tags`           | 允許的服務標記清單          | 指定允許的[服務標記](../virtual-network/security-overview.md#service-tags)清單（以逗號分隔）。
 | `service.beta.kubernetes.io/azure-load-balancer-tcp-idle-timeout` | TCP 閒置超時（分鐘）          | 指定負載平衡器上發生 TCP 連線閒置超時的時間（以分鐘為單位）。 預設值和最小值為4。 最大值為30。 必須是整數。
 |`service.beta.kubernetes.io/azure-load-balancer-disable-tcp-reset` | `true`                                | `enableTcpReset`針對 SLB 停用
@@ -311,7 +329,7 @@ spec:
 
 ## <a name="troubleshooting-snat"></a>針對 SNAT 進行疑難排解
 
-如果您知道您正在啟動多個連至相同目的地 IP 位址和埠的連出 TCP 或 UDP 連線，並且觀察到失敗的輸出連線，或因為支援您耗盡 SNAT 埠 (由 PAT) 所使用的預先配置暫時埠所建議，您會有數個一般的緩和選項。 請檢閱這些選項並判斷哪一個可用且最適合您的案例。 可能會有一或多個選項有助於管理此案例。 如需詳細資訊，請參閱[輸出連線疑難排解指南](../load-balancer/troubleshoot-outbound-connection.md)。
+如果您知道您正在啟動多個連至相同目的地 IP 位址和埠的連出 TCP 或 UDP 連線，並且觀察到失敗的輸出連線，或因為支援耗盡 SNAT 埠（由 PAT 使用預先配置的暫時埠）所建議，您有數個一般的緩和選項。 請檢閱這些選項並判斷哪一個可用且最適合您的案例。 可能會有一或多個選項有助於管理此案例。 如需詳細資訊，請參閱[輸出連線疑難排解指南](../load-balancer/troubleshoot-outbound-connection.md)。
 
 SNAT 耗盡的根本原因通常是一種反模式，說明如何建立、管理或設定計時器從其預設值變更。 請仔細檢閱這一節。
 
@@ -325,7 +343,7 @@ SNAT 耗盡的根本原因通常是一種反模式，說明如何建立、管理
 ### <a name="design-patterns"></a>設計模式
 可能的話，一律利用連線重複使用和連線共用。 這些模式會避免發生資源耗盡問題，並產生可預測的行為。 您可以在許多開發程式庫和架構中找到這些模式的基元。
 
-- 不可部分完成的要求 (每個連接的一個要求) 通常不是理想的設計選擇。 這種反向模式會限制規模調整、降低效能，並降低可靠性。 相反地，應重複使用 HTTP/S 連線以減少連線數目和關聯的 SNAT 連接埠。 應用程式規模會增加並提升效能，因為使用 TLS 時，會降低交握、額外負荷和密碼編譯作業成本。
+- 不可部分完成的要求（每個連接一個要求）通常不是理想的設計選擇。 這種反向模式會限制規模調整、降低效能，並降低可靠性。 相反地，應重複使用 HTTP/S 連線以減少連線數目和關聯的 SNAT 連接埠。 應用程式規模會增加並提升效能，因為使用 TLS 時，會降低交握、額外負荷和密碼編譯作業成本。
 - 如果您使用的是叢集/自訂 DNS，或 coreDNS 上的自訂上游伺服器，請記住，當用戶端未快取 DNS 解析程式結果時，DNS 可能會在磁片區引進許多個別的流量。 請務必先自訂 coreDNS，而不是使用自訂 DNS 伺服器，並定義良好的快取值。
 - UDP 流程 (例如 DNS 查閱) 會在閒置逾時期間配置 SNAT 連接埠。 閒置的逾時時間愈長，SNAT 連接埠上的壓力愈高。 使用較短的閒置時間 (例如4分鐘)。
 使用連接集區來塑造您的連線磁碟區。

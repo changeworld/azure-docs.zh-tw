@@ -8,11 +8,12 @@ ms.topic: troubleshooting
 ms.date: 03/31/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 76348a0aee48cc6d768e8233e376f266eca31917
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0efff05f84bf02908dfc8b966b80539d309f491d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83005994"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87059127"
 ---
 # <a name="troubleshoot-the-remote-desktop-client"></a>針對遠端桌面用戶端進行疑難排解
 
@@ -61,7 +62,7 @@ nslookup rdweb.wvd.microsoft.com
 
 ## <a name="web-client-does-not-show-my-resources"></a>Web 用戶端不會顯示我的資源
 
-首先，請檢查您所使用的 Azure Active Directory 帳戶。 如果您已使用 Azure Active Directory 不同于 Winodws 虛擬桌面的帳戶登入，您應該簽署或使用私用瀏覽器視窗。
+首先，請檢查您所使用的 Azure Active Directory 帳戶。 如果您已使用不同于您想要用於 Windows 虛擬桌面的 Azure Active Directory 帳戶登入，您應該簽署或使用私用瀏覽器視窗。
 
 如果您使用 Windows 虛擬桌面秋季2019版，請使用本文中的 web 用戶端連結來[連線到您](./virtual-desktop-fall-2019/connect-web-2019.md)的資源。
 

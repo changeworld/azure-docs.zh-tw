@@ -4,12 +4,12 @@ description: 了解在使用 Azure Kubernetes Service (AKS) 時，如何針對�
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: f334f501335e9e384cfcc35b356e61ab66efe7a8
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: a65e5e2b507f45fe51a8f6406edae4d96affe227
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86243676"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056522"
 ---
 # <a name="aks-troubleshooting"></a>AKS 疑難排解
 
@@ -36,7 +36,7 @@ ms.locfileid: "86243676"
 
 這些錯誤也會出現在[AKS 診斷](./concepts-diagnostics.md)中，這會主動呈現子網大小不足的問題。
 
-下列三個 (3) 案例會造成子網大小不足的錯誤：
+下列三（3）個案例會導致子網大小不足的錯誤：
 
 1. AKS Scale 或 AKS Nodepool scale
    1. 如果使用 Kubenet，當小於時，就會發生這種情況 `number of free IPs in the subnet` **less than** `number of new nodes requested` 。
@@ -46,7 +46,7 @@ ms.locfileid: "86243676"
    1. 如果使用 Kubenet，當小於時，就會發生這種情況 `number of free IPs in the subnet` **less than** `number of buffer nodes needed to upgrade` 。
    1. 如果使用 Azure CNI，當小於時，就會發生這種情況 `number of free IPs in the subnet` **less than** `number of buffer nodes needed to upgrade times (*) the node pool's --max-pod value` 。
    
-   根據預設，AKS 叢集會設定一個 (1) 的最大浪湧 (升級緩衝區) 值，但您可以藉由設定[節點集區的最大浪湧值](upgrade-cluster.md#customize-node-surge-upgrade-preview)來自訂此升級行為，這會增加完成升級所需的可用 ip 數目。
+   根據預設，AKS 叢集會設定一（1）的最大浪湧（升級緩衝區）值，但您可以藉由設定[節點集區的最大浪湧值](upgrade-cluster.md#customize-node-surge-upgrade-preview)來自訂此升級行為，這會增加完成升級所需的可用 ip 數目。
 
 1. AKS 建立或 AKS Nodepool 新增
    1. 如果使用 Kubenet，當小於時，就會發生這種情況 `number of free IPs in the subnet` **less than** `number of nodes requested for the node pool` 。
@@ -70,7 +70,7 @@ ms.locfileid: "86243676"
 如需有關如何針對 Pod 問題進行疑難排解的詳細資訊，請參閱[偵錯應用程式](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-application/#debugging-pods)。
 
 ## <a name="im-receiving-tcp-timeouts-when-using-kubectl-or-other-third-party-tools-connecting-to-the-api-server"></a>我 `TCP timeouts` 在使用 `kubectl` 或其他協力廠商工具連接到 API 伺服器時收到
-AKS 有 HA 控制平面，會根據核心數垂直調整，以確保其服務等級目標 (Slo) 和服務等級協定 (Sla) 。 如果您遇到連線超時的問題，請檢查下列內容：
+AKS 具有 HA 控制平面，會根據核心數目垂直調整，以確保其服務等級目標（Slo）和服務等級協定（Sla）。 如果您遇到連線超時的問題，請檢查下列內容：
 
 - **您的所有 API 命令是否一致地計時，或只是幾個？** 如果只有少數幾個，您的 `tunnelfront` pod 或 `aks-link` pod （負責節點 > 的控制平面通訊）可能不會處於執行中狀態。 請確定裝載此 pod 的節點未過度使用或在壓力下。 請考慮將它們移至自己的[ `system` 節點集](use-system-pools.md)區。
 - **您是否已開啟[AKS 限制輸出流量](limit-egress-traffic.md)檔中所述的所有必要端口、Fqdn 和 ip？** 否則，可能會有數個命令呼叫失敗。
@@ -80,7 +80,11 @@ AKS 有 HA 控制平面，會根據核心數垂直調整，以確保其服務等
     - https://github.com/helm/helm/issues/4821
     - https://github.com/helm/helm/issues/3500
     - https://github.com/helm/helm/issues/4543
+- **[要封鎖的節點之間是否有內部流量？](#im-receiving-tcp-timeouts-such-as-dial-tcp-node_ip10250-io-timeout)**
 
+## <a name="im-receiving-tcp-timeouts-such-as-dial-tcp-node_ip10250-io-timeout"></a>我收到 `TCP timeouts` 的是，例如`dial tcp <Node_IP>:10250: i/o timeout`
+
+這些超時可能與被封鎖的節點之間的內部流量有關。 確認未封鎖此流量，例如叢集節點的子網上的[網路安全性群組](concepts-security.md#azure-network-security-groups)。
 
 ## <a name="im-trying-to-enable-role-based-access-control-rbac-on-an-existing-cluster-how-can-i-do-that"></a>我正嘗試在現有叢集上啟用角色型存取控制 (RBAC)。 如何執行該作業？
 
@@ -197,14 +201,14 @@ AKS 有 HA 控制平面，會根據核心數垂直調整，以確保其服務等
 
 在 Kubernetes 1.10 版中，MountVolume.WaitForAttach 可能會因為 Azure 磁碟重新掛接而失敗。
 
-在 Linux 上，您可能會看到不正確的 DevicePath 格式錯誤。 例如︰
+在 Linux 上，您可能會看到不正確的 DevicePath 格式錯誤。 例如:
 
 ```console
 MountVolume.WaitForAttach failed for volume "pvc-f1562ecb-3e5f-11e8-ab6b-000d3af9f967" : azureDisk - Wait for attach expect device path as a lun number, instead got: /dev/disk/azure/scsi1/lun1 (strconv.Atoi: parsing "/dev/disk/azure/scsi1/lun1": invalid syntax)
   Warning  FailedMount             1m (x10 over 21m)   kubelet, k8s-agentpool-66825246-0  Unable to mount volumes for pod
 ```
 
-在 Windows 上，您可能會看到錯誤的 DevicePath(LUN) 數字錯誤。 例如︰
+在 Windows 上，您可能會看到錯誤的 DevicePath(LUN) 數字錯誤。 例如：
 
 ```console
 Warning  FailedMount             1m    kubelet, 15282k8s9010    MountVolume.WaitForAttach failed for volume "disk01" : azureDisk - WaitForAttach failed within timeout node (15282k8s9010) diskId:(andy-mghyb
@@ -251,7 +255,7 @@ spec:
   >[!NOTE]
   > 因為 gid 和 uid 預設會以根目錄或 0 形式掛接。 如果 gid 或 uid 並未設定為根目錄，例如 1000，則 Kubernetes 將使用 `chown` 來變更該磁碟底下的所有目錄和檔案。 此作業可能非常耗時，而且可能會讓磁碟的載入速度變慢。
 
-* 使用 initContainers 中的 `chown` 來設定 gid 和 uid。 例如：
+* 使用 initContainers 中的 `chown` 來設定 gid 和 uid。 例如:
 
 ```yaml
 initContainers:
@@ -274,7 +278,7 @@ initContainers:
 | 1.12 | 1.12.9 或更新版本 |
 | 1.13 | 1.13.6 或更新版本 |
 | 1.14 | 1.14.2 或更新版本 |
-| 1.15 及更新版本 | N/A |
+| 1.15 及更新版本 | 不適用 |
 
 如果您使用的 Kubernetes 版本沒有此問題的修正程式，而且您的節點具有過時的磁碟清單，則您能以大量作業形式從 VM 中斷連結所有不存在的磁碟來減輕。 **個別中斷連結不存在的磁碟可能會失敗。**
 
@@ -293,7 +297,7 @@ initContainers:
 | 1.12 | 1.12.10 或更新版本 |
 | 1.13 | 1.13.8 或更新版本 |
 | 1.14 | 1.14.4 或更新版本 |
-| 1.15 及更新版本 | N/A |
+| 1.15 及更新版本 | 不適用 |
 
 如果您使用的 Kubernetes 版本沒有此問題的修正程式，而且您的節點處於失敗狀態，則您可以使用下列其中一種方式，手動更新 VM 狀態來減輕：
 
@@ -410,7 +414,7 @@ E0118 08:15:52.041014    2112 nestedpendingoperations.go:267] Operation for "\"k
 
 您可以使用 base64 編碼的儲存體帳戶金鑰，以手動方式在 Azure 檔案祕密中手動更新 `azurestorageaccountkey` 欄位來減輕。
 
-若要以 base64 來為您的儲存體帳戶金鑰進行編碼，您可以使用 `base64`。 例如︰
+若要以 base64 來為您的儲存體帳戶金鑰進行編碼，您可以使用 `base64`。 例如:
 
 ```console
 echo X+ALAAUgMhWHL7QmQ87E1kSfIqLKfgC03Guy7/xk9MyIg2w4Jzqeu60CVw2r/dm6v6E0DWHTnJUEJGVQAoPaBc== | base64

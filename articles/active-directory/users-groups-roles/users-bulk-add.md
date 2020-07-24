@@ -13,11 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a2c9500ecefed02b28c066de80137d8f0882fd5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 41329f2f5500db35ee76c9880bdbef984413004b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84731495"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87057891"
 ---
 # <a name="bulk-create-users-in-azure-active-directory"></a>在 Azure Active Directory 中大量建立使用者
 
@@ -47,6 +48,7 @@ Azure Active Directory (Azure AD) 支援大量使用者建立和刪除作業，�
 - 首先會列出必要的欄。
 - 我們不建議您將新的欄新增至範本。 您額外新增的任何欄都會被忽略，且不會進行處理。
 - 我們建議您盡可能頻繁下載最新版的 CSV 範本。
+- 請務必檢查任何欄位之前/之後沒有任何非預期的空白字元。 對於**使用者主體名稱**，有這類空白字元會導致匯入失敗。
 
 ## <a name="to-create-users-in-bulk"></a>大量建立使用者
 

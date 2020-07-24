@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/02/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 918e34114faa7a57e54ec45c1cca8036462a8fa1
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 61e2cdf63e5553ba8d796115284dad9a538c2b81
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187382"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056275"
 ---
 # <a name="manage-certificates-in-azure-automation"></a>管理 Azure 自動化中的憑證
 
@@ -34,7 +34,7 @@ Azure 自動化使用 Azure Resource Manager 資源的 [Get-AzAutomationCertific
 |[Remove-AzAutomationCertificate](/powershell/module/Az.Automation/Remove-AzAutomationCertificate?view=azps-3.7.0)|從自動化中移除憑證。|
 |[Set-AzAutomationCertificate](/powershell/module/Az.Automation/Set-AzAutomationCertificate?view=azps-3.7.0)|設定現有憑證的屬性，包括上傳憑證檔案和設定 **.pfx** 檔案的密碼。|
 
-您也可以使用 [Add-AzureCertificate](/powershell/module/servicemanagement/azure/add-azurecertificate) Cmdlet 來上傳指定雲端服務的服務憑證。
+您也可以使用 [Add-AzureCertificate](/powershell/module/servicemanagement/azure.service/add-azurecertificate) Cmdlet 來上傳指定雲端服務的服務憑證。
 
 ## <a name="internal-cmdlets-to-access-certificates"></a>用來存取憑證的內部 Cmdlet
 

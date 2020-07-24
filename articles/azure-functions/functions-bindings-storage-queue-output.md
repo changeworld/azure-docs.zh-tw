@@ -6,11 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47, tracking-python
-ms.openlocfilehash: eb61cad5f505e6895b550adca3e9f156222d6d30
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1141186a262676fc47b0727c47e682dfe95ba6fb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84559964"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87055929"
 ---
 # <a name="azure-queue-storage-output-bindings-for-azure-functions"></a>Azure Functions 的 Azure 佇列儲存體輸出系結
 
@@ -320,7 +321,7 @@ public class HttpTriggerQueueOutput {
 |**direction** | n/a | 必須設為 `out`。 當您在 Azure 入口網站中建立觸發程序時，會自動設定此屬性。 |
 |**name** | n/a | 代表函式程式碼中佇列的變數名稱。 設為 `$return` 以參考函式傳回值。|
 |**queueName** |**QueueName** | 佇列的名稱。 |
-|**connection** | **[連接]** |應用程式設定的名稱包含要用於此繫結的儲存體連接字串。 如果應用程式設定名稱是以「AzureWebJobs」開頭，於此僅能指定名稱的其餘部分。 例如，如果您將設定 `connection` 為 "MyStorage"，函數執行時間會尋找名為 "MyStorage" 的應用程式設定。 如果您將 `connection` 保留空白，則函式執行階段會使用應用程式設定中名稱為 `AzureWebJobsStorage` 的預設儲存體連接字串。|
+|**connection** | **連線** |應用程式設定的名稱包含要用於此繫結的儲存體連接字串。 如果應用程式設定名稱是以「AzureWebJobs」開頭，於此僅能指定名稱的其餘部分。 例如，如果您將設定 `connection` 為 "MyStorage"，函數執行時間會尋找名為 "MyStorage" 的應用程式設定。 如果您將 `connection` 保留空白，則函式執行階段會使用應用程式設定中名稱為 `AzureWebJobsStorage` 的預設儲存體連接字串。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -368,25 +369,25 @@ public class HttpTriggerQueueOutput {
 
 - 傳回**值**：將 `name` 中*function.js*的屬性設定為 `$return` 。 使用此設定時，函數的傳回值會保存為佇列儲存體訊息。
 
-- **命令式**：將值傳遞給宣告為[Out](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python)類型之參數的[set](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none)方法。 傳遞給的值 `set` 會保存為佇列儲存體訊息。
+- **命令式**：將值傳遞給宣告為[Out](/python/api/azure-functions/azure.functions.out?view=azure-python)類型之參數的[set](/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none)方法。 傳遞給的值 `set` 會保存為佇列儲存體訊息。
 
 # <a name="java"></a>[Java](#tab/java)
 
-有兩個選項可從函式使用[QueueOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.queueoutput)批註輸出事件中樞訊息：
+有兩個選項可從函式使用[QueueOutput](/java/api/com.microsoft.azure.functions.annotation.queueoutput)批註輸出事件中樞訊息：
 
 - 傳回**值**：藉由將注釋套用至函式本身，函式的傳回值會保存為事件中樞訊息。
 
-- **命令式**：若要明確設定訊息值，請將注釋套用至類型的特定參數 [`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.OutputBinding) ，其中 `T` 是 POJO 或任何原生 JAVA 類型。 使用此設定時，將值傳遞至 `setValue` 方法會將值保存為事件中樞訊息。
+- **命令式**：若要明確設定訊息值，請將注釋套用至類型的特定參數 [`OutputBinding<T>`](/java/api/com.microsoft.azure.functions.outputbinding) ，其中 `T` 是 POJO 或任何原生 JAVA 類型。 使用此設定時，將值傳遞至 `setValue` 方法會將值保存為事件中樞訊息。
 
 ---
 
 ## <a name="exceptions-and-return-codes"></a>例外狀況和傳回碼
 
-| 繫結 |  參考 |
+| 繫結 |  參考資料 |
 |---|---|
-| 佇列 | [佇列錯誤碼](https://docs.microsoft.com/rest/api/storageservices/queue-service-error-codes) |
-| Bob、資料表、佇列 | [儲存體錯誤碼](https://docs.microsoft.com/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
-| Bob、資料表、佇列 |  [疑難排解](https://docs.microsoft.com/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
+| 佇列 | [佇列錯誤碼](/rest/api/storageservices/queue-service-error-codes) |
+| Bob、資料表、佇列 | [儲存體錯誤碼](/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
+| Bob、資料表、佇列 |  [疑難排解](/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
 
 <a name="host-json"></a>  
 

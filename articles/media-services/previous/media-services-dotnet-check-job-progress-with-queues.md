@@ -14,19 +14,19 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: d75ba63955deb3fb6ef4a1207754097b0b3be532
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 533990ef0ea88be7f1f06021d7aa398e89f6390b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85962674"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87060320"
 ---
 # <a name="use-azure-queue-storage-to-monitor-media-services-job-notifications-with-net"></a>使用 Azure 佇列儲存體監視 .NET 的媒體服務工作通知 
 
 > [!NOTE]
-> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
+> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](../latest/index.yml)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
 
-執行編碼作業時，您通常需要設法追蹤作業進度。 您可以設定媒體服務，將通知傳遞給 [Azure 佇列儲存體](../../storage/storage-dotnet-how-to-use-queues.md)。 從佇列儲存體取得通知，即可監視作業進度。 
+執行編碼作業時，您通常需要設法追蹤作業進度。 您可以設定媒體服務，將通知傳遞給 [Azure 佇列儲存體](../../storage/queues/storage-dotnet-how-to-use-queues.md)。 從佇列儲存體取得通知，即可監視作業進度。 
 
 使用者可以從世界各個角落存取之前已傳送至佇列儲存體的訊息。 佇列儲存體訊息架構十分可靠，而且具有高擴充性。 建議利用其他方法，針對訊息輪詢佇列儲存體。
 
@@ -37,10 +37,10 @@ ms.locfileid: "85962674"
 ## <a name="considerations"></a>考量
 若您開發的媒體服務應用程式會使用佇列儲存體，請考慮下列幾點：
 
-* 佇列儲存體不保證會按照先進先出 (FIFO) 的順序進行。 如需詳細資訊，請參閱 [Azure 佇列和 Azure 服務匯流排佇列的比較和對比](https://msdn.microsoft.com/library/azure/hh767287.aspx)。
+* 佇列儲存體不保證會按照先進先出 (FIFO) 的順序進行。 如需詳細資訊，請參閱 [Azure 佇列和 Azure 服務匯流排佇列的比較和對比](/previous-versions/azure/hh767287(v=azure.100))。
 * 佇列儲存體不是推送服務。 您必須輪詢佇列。
-* 您可以有任意數目的佇列。 如需詳細資訊，請參閱 [佇列服務 REST API](https://docs.microsoft.com/rest/api/storageservices/Queue-Service-REST-API)。
-* 佇列儲存體具有一些要注意的限制和細節。 如需這些限制與細節的說明，請參閱 [Azure 佇列和 Azure 服務匯流排佇列的異同比較](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted)。
+* 您可以有任意數目的佇列。 如需詳細資訊，請參閱 [佇列服務 REST API](/rest/api/storageservices/queue-service-rest-api)。
+* 佇列儲存體具有一些要注意的限制和細節。 如需這些限制與細節的說明，請參閱 [Azure 佇列和 Azure 服務匯流排佇列的異同比較](../../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md)。
 
 ## <a name="net-code-example"></a>.NET 程式碼範例
 
@@ -374,7 +374,7 @@ job with Id: nb:jid:UUID:526291de-f166-be47-b62a-11ffe6d4be54 reached expected
 State: Finished
 ```
 
-## <a name="next-step"></a>下一步
+## <a name="next-step"></a>後續步驟
 檢閱媒體服務學習路徑。
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

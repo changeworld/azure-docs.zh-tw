@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: 了解如何在 Azure Kubernetes Service (AKS) 叢集中安裝及設定內部私人網路的 NGINX 輸入控制器。
 services: container-service
 ms.topic: article
-ms.date: 07/02/2020
-ms.openlocfilehash: eecf34c6ad622c374e6f43670972279e297662a9
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 07/21/2020
+ms.openlocfilehash: a20ef3155e41a438aed7cea7e7d9814b3add4d14
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86251581"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056973"
 ---
 # <a name="create-an-ingress-controller-to-an-internal-virtual-network-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中建立內部虛擬網路的輸入控制器
 
@@ -35,7 +35,7 @@ ms.locfileid: "86251581"
 
 根據預設，NGINX 輸入控制器會使用靜態公用 IP 位址指派來建立。 常見的設定需求是使用內部私人網路和 IP 位址。 此方法可讓您將對服務的存取限定於內部使用者，而不提供外部存取。
 
-使用下列範例資訊清單檔建立名為 *internal-ingress.yaml* 的檔案。 此範例會將 *10.240.0.42* 指派給 *loadBalancerIP* 資源。 請提供您自己的內部 IP 位址，用於輸入控制器。 請確定此 IP 位址在您的虛擬網路內尚未被使用。
+使用下列範例資訊清單檔建立名為 *internal-ingress.yaml* 的檔案。 此範例會將 *10.240.0.42* 指派給 *loadBalancerIP* 資源。 請提供您自己的內部 IP 位址，用於輸入控制器。 請確定此 IP 位址在您的虛擬網路內尚未被使用。 此外，如果您使用現有的虛擬網路和子網，則必須使用正確的許可權來設定您的 AKS 叢集，以管理虛擬網路和子網。 如需詳細資訊，請參閱[在 Azure Kubernetes Service （AKS）中使用您自己的 IP 位址範圍的 kubenet 網路][aks-configure-kubenet-networking]功能或[在 Azure Kubernetes Service （AKS）中設定 Azure CNI 網路][aks-configure-advanced-networking]。
 
 ```yaml
 controller:
@@ -185,7 +185,7 @@ kubectl apply -f ingress-demo.yaml --namespace ingress-basic
 建立名為 `hello-world-ingress.yaml` 的檔案，並複製到下列範例 YAML 中。
 
 ```yaml
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: hello-world-ingress
@@ -330,7 +330,7 @@ kubectl delete -f hello-world-ingress.yaml
 kubectl delete namespace ingress-basic
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 本文包含 AKS 的一些外部元件。 若要深入了解這些元件，請參閱下列專案頁面：
 
@@ -358,3 +358,5 @@ kubectl delete namespace ingress-basic
 [aks-http-app-routing]: http-application-routing.md
 [aks-ingress-own-tls]: ingress-own-tls.md
 [client-source-ip]: concepts-network.md#ingress-controllers
+[aks-configure-kubenet-networking]: configure-kubenet.md
+[aks-configure-advanced-networking]: configure-azure-cni.md

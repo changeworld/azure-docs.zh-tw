@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: 了解如何安裝及設定 NGINX 輸入控制器，而該控制器在 Azure Kubernetes Service (AKS) 叢集中使用您自有的憑證。
 services: container-service
 ms.topic: article
-ms.date: 07/02/2020
-ms.openlocfilehash: b3e844c0c4d4861f7a0a0e12c4ae9d59e23c24e2
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 07/21/2020
+ms.openlocfilehash: 7588614f615e7aa7dee00fa7553ad986f2e26b37
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86251506"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056959"
 ---
 # <a name="create-an-https-ingress-controller-and-use-your-own-tls-certificates-on-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 上建立 HTTPS 輸入控制器及使用自有的 TLS 憑證
 
@@ -27,7 +27,7 @@ ms.locfileid: "86251506"
 
 ## <a name="before-you-begin"></a>開始之前
 
-本文使用[Helm 3][helm]來安裝 NGINX 輸入控制器。 請確定您使用的是 Helm 的最新版本。 如需升級指示，請參閱[Helm 安裝][helm-install]檔。如需設定和使用 Helm 的詳細資訊，請參閱[在 Azure Kubernetes Service (AKS) 中使用 Helm 安裝應用程式][use-helm]。
+本文使用[Helm 3][helm]來安裝 NGINX 輸入控制器。 請確定您使用的是 Helm 的最新版本。 如需升級指示，請參閱[Helm 安裝][helm-install]檔。如需設定和使用 Helm 的詳細資訊，請參閱[在 Azure Kubernetes Service （AKS）中使用 Helm 安裝應用程式][use-helm]。
 
 本文也會要求您執行 Azure CLI 版本2.0.64 或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI][azure-cli-install]。
 
@@ -211,7 +211,7 @@ tls** 區段會告知輸入路由對主機 demo.azure.com** 使用名為 aks-ing
 建立名為 `hello-world-ingress.yaml` 的檔案，並複製到下列範例 YAML 中。
 
 ```yaml
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: hello-world-ingress
@@ -257,13 +257,13 @@ ingress.extensions/hello-world-ingress created
 若要使用假的 demo.azure.com** 主機測試憑證，請使用 `curl` 並指定 --resolve** 參數。 此參數可讓您將 demo.azure.com** 名稱對應到輸入控制器的公用 IP 位址。 指定您自有輸入控制器的公用 IP 位址，如下列範例所示：
 
 ```
-curl -v -k --resolve demo.azure.com:443:40.87.46.190 https://demo.azure.com
+curl -v -k --resolve demo.azure.com:443:EXTERNAL_IP https://demo.azure.com
 ```
 
 位址未提供任何其他路徑，因此輸入控制器會預設為 */* 路由。 此時會傳回第一個示範應用程式，如下列簡要範例輸出所示：
 
 ```
-$ curl -v -k --resolve demo.azure.com:443:40.87.46.190 https://demo.azure.com
+$ curl -v -k --resolve demo.azure.com:443:EXTERNAL_IP https://demo.azure.com
 
 [...]
 <!DOCTYPE html>
@@ -290,7 +290,7 @@ $ curl -v -k --resolve demo.azure.com:443:40.87.46.190 https://demo.azure.com
 現在，將 */hello-world-two* 路徑新增至位址，例如 `https://demo.azure.com/hello-world-two`。 此時會傳回含有自訂標題的第二個示範應用程式，如下列簡要範例輸出所示：
 
 ```
-$ curl -v -k --resolve demo.azure.com:443:137.117.36.18 https://demo.azure.com/hello-world-two
+$ curl -v -k --resolve demo.azure.com:443:EXTERNAL_IP https://demo.azure.com/hello-world-two
 
 [...]
 <!DOCTYPE html>
@@ -369,7 +369,7 @@ kubectl delete secret aks-ingress-tls
 kubectl delete namespace ingress-basic
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 本文包含 AKS 的一些外部元件。 若要深入了解這些元件，請參閱下列專案頁面：
 

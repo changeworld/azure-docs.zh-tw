@@ -4,11 +4,12 @@ description: 瞭解如何在 Azure Kubernetes Service （AKS）節點的 kubelet
 services: container-service
 ms.topic: article
 ms.date: 03/05/2019
-ms.openlocfilehash: b7a74803af916f9e9de72dd528273007ce37832f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2ef38aa76f4ef9152e7bc55a1d74c84ef426f0ac
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77595377"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056764"
 ---
 # <a name="get-kubelet-logs-from-azure-kubernetes-service-aks-cluster-nodes"></a>從 Azure Kubernetes Service (AKS) 叢集節點取得 kubelet 記錄
 
@@ -31,6 +32,12 @@ ms.locfileid: "77595377"
 ```console
 sudo journalctl -u kubelet -o cat
 ```
+
+> [!NOTE]
+> 對於 Windows 節點而言，記錄資料會在中， `C:\k` 而且可以使用 [*更多*] 命令來查看：
+> ```
+> more C:\k\kubelet.log
+> ```
 
 下列範例輸出顯示 kubelet** 記錄資料：
 
@@ -58,7 +65,7 @@ I0508 12:28:48.321952    8672 kubelet_node_status.go:497] Using Node Hostname fr
 I0508 12:28:58.344656    8672 kubelet_node_status.go:497] Using Node Hostname from cloudprovider: "aks-agentpool-11482510-0"
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 如果您需要 Kubernetes 主檔中的其他疑難排解資訊，請參閱[在 AKS 中檢視 Kubernetes 主要節點記錄][aks-master-logs]。
 

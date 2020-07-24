@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: f9484b81622e208077f0659975f42f46d90d2137
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 17616a223292ec07186b0a3fba264400423977ac
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232231"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87058753"
 ---
 # <a name="enable-or-disable-a-firewall-rule-on-an-azure-vm-guest-os"></a>啟用或停用 Azure VM 客體作業系統上的防火牆規則
 
@@ -77,7 +77,7 @@ ms.locfileid: "86232231"
 
 如果虛擬機器為連線狀態，而且可以在相同的虛擬網路上存取另一個虛擬機器，您可以使用其他虛擬機器來進行後續的緩解措施。
 
-1.  在要對其進行疑難排解的 VM 上，下載 [PSTools](https://docs.microsoft.com/sysinternals/downloads/pstools)。
+1.  在要對其進行疑難排解的 VM 上，下載 [PSTools](/sysinternals/downloads/pstools)。
 
 2.  開啟 CMD 執行個體，並透過其內部 IP (DIP) 存取虛擬機器。 
 
@@ -97,7 +97,7 @@ ms.locfileid: "86232231"
 
 如果虛擬機器為連線狀態，而且可以在相同的虛擬網路上存取另一個虛擬機器，您可以在其他虛擬機器上使用[遠端登錄](https://support.microsoft.com/help/314837/how-to-manage-remote-access-to-the-registry)。
 
-1.  在疑難排解 VM 上，啟動 [登錄編輯程式] ( # A0) ，然後**選取**  >  **[檔案] [連線網路登入]**。
+1.  在疑難排解 VM 上，啟動登錄編輯程式（regedit.exe），**然後選取**  >  **[檔案] [連線網路登入]**。
 
 2.  開啟*目的機器*\SYSTEM 分支，然後指定下列值：
 

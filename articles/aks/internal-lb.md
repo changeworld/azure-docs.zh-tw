@@ -5,12 +5,12 @@ description: 了解如何建立和使用內部負載平衡器，透過 Azure Kub
 services: container-service
 ms.topic: article
 ms.date: 03/04/2019
-ms.openlocfilehash: 0789a866ebda270f3e5e8b150e072c7aedea7f04
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 58aadc4fadb93a4f6eb47214f580f7a2bebdf49c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82790604"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056815"
 ---
 # <a name="use-an-internal-load-balancer-with-azure-kubernetes-service-aks"></a>搭配 Azure Kubernetes Service (AKS) 使用內部負載平衡器
 
@@ -65,7 +65,7 @@ internal-app   LoadBalancer   10.0.248.59   10.240.0.7    80:30555/TCP   2m
 
 ## <a name="specify-an-ip-address"></a>指定 IP 位址
 
-如果您想要搭配內部負載平衡器使用特定 IP 位址，請將 loadBalancerIP** 屬性新增至負載平衡器 YAML 資訊清單中。 指定的 IP 位址必須位於與 AKS 叢集相同的子網路，而且必須尚未指派給資源。
+如果您想要搭配內部負載平衡器使用特定 IP 位址，請將 loadBalancerIP** 屬性新增至負載平衡器 YAML 資訊清單中。 指定的 IP 位址必須位於與 AKS 叢集相同的子網路，而且必須尚未指派給資源。 例如，您不應該使用 Kubernetes 子網指定範圍中的 IP 位址。
 
 ```yaml
 apiVersion: v1

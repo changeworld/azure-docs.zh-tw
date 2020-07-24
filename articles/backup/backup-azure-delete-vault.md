@@ -3,18 +3,18 @@ title: 刪除 Microsoft Azure 復原服務保存庫
 description: 在本文中，瞭解如何移除相依性，然後刪除 Azure 備份復原服務保存庫。
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: e6aaab80cabbdd8a58d8adc64409bf1bcd8ebf03
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5446c54ac070555987dfc05afa67825f307ee61b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85563107"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87055208"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>刪除 Azure 備份復原服務保存庫
 
 本文說明如何刪除[Azure 備份](backup-overview.md)復原服務保存庫。 其中包含移除相依性，然後刪除保存庫的指示。
 
-## <a name="before-you-start"></a>在您開始使用 Intune 之前
+## <a name="before-you-start"></a>開始之前
 
 您無法刪除具有下列任何相依性的復原服務保存庫：
 
@@ -27,7 +27,7 @@ ms.locfileid: "85563107"
 
 - 保存庫無法刪除，因為其中仍有既有資源。 請確定沒有與此保存庫相關聯的備份專案、受保護的伺服器或備份管理伺服器。 請先取消註冊與此保存庫相關聯的下列容器，再繼續進行刪除。
 
-- 無法刪除復原服務保存庫，因為保存庫中有處於虛刪除狀態的備份項目。 刪除作業14天后，會永久刪除虛刪除的專案。 請在永久刪除備份專案之後，嘗試刪除保存庫，而且保存庫中沒有任何已虛刪除狀態的專案。 如需詳細資訊，請參閱[Azure 備份的虛刪除](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud)。
+- 無法刪除復原服務保存庫，因為保存庫中有處於虛刪除狀態的備份項目。 刪除作業14天后，會永久刪除虛刪除的專案。 請在永久刪除備份專案之後，嘗試刪除保存庫，而且保存庫中沒有任何已虛刪除狀態的專案。 如需詳細資訊，請參閱[Azure 備份的虛刪除](./backup-azure-security-feature-cloud.md)。
 
 ## <a name="proper-way-to-delete-a-vault"></a>刪除保存庫的適當方式
 
@@ -36,9 +36,9 @@ ms.locfileid: "85563107"
 
 若要正確地刪除保存庫，您必須依照下列循序執行步驟：
 
-- **步驟 1**：停用虛刪除功能。 如需停用虛刪除的步驟，[請參閱這裡](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#enabling-and-disabling-soft-delete)。
+- **步驟 1**：停用虛刪除功能。 如需停用虛刪除的步驟，[請參閱這裡](./backup-azure-security-feature-cloud.md#enabling-and-disabling-soft-delete)。
 
-- **步驟 2**：停用虛刪除之後，請檢查是否有任何先前已在「虛刪除」狀態中保留的專案。 如果專案處於「虛刪除」狀態，則您必須重新*刪除並將*它們*刪除*。 [請遵循下列步驟](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#permanently-deleting-soft-deleted-backup-items)來尋找虛刪除專案，並永久刪除它們。
+- **步驟 2**：停用虛刪除之後，請檢查是否有任何先前已在「虛刪除」狀態中保留的專案。 如果專案處於「虛刪除」狀態，則您必須重新*刪除並將*它們*刪除*。 [請遵循下列步驟](./backup-azure-security-feature-cloud.md#permanently-deleting-soft-deleted-backup-items)來尋找虛刪除專案，並永久刪除它們。
 
 - **步驟 3**：您必須檢查下列三個位置，以確認是否有任何受保護的專案：
 
@@ -209,7 +209,7 @@ ms.locfileid: "85563107"
            [<CommonParameters>]
     ```
 
-  [深入瞭解](https://docs.microsoft.com/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupautoprotection?view=azps-2.6.0)如何停用受 Azure 備份保護專案的保護。
+  [深入瞭解](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupautoprotection)如何停用受 Azure 備份保護專案的保護。
 
 - 停止保護並刪除雲端中所有受備份保護專案的資料（例如： IaaS VM、Azure 檔案共用等等）：
 
@@ -225,7 +225,7 @@ ms.locfileid: "85563107"
        [<CommonParameters>]
     ```
 
-    [深入瞭解](https://docs.microsoft.com/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection?view=azps-2.6.0&viewFallbackFrom=azps-2.5.0)  關於停用受備份保護專案的保護。
+    [深入瞭解](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection)  關於停用受備份保護專案的保護。
 
 - 針對使用備份至 Azure Azure 備份代理程式（MARS）保護的內部部署檔案和資料夾，請使用下列 PowerShell 命令來刪除每個 MARS PowerShell 模組中的已備份資料：
 
@@ -263,7 +263,7 @@ ms.locfileid: "85563107"
               [<CommonParameters>]
     ```
 
-    [深入瞭解](https://docs.microsoft.com/powershell/module/az.recoveryservices/unregister-azrecoveryservicesbackupcontainer?view=azps-2.6.0)如何從保存庫取消註冊 Windows Server 或其他容器。
+    [深入瞭解](/powershell/module/az.recoveryservices/unregister-azrecoveryservicesbackupcontainer)如何從保存庫取消註冊 Windows Server 或其他容器。
 
 - 若為使用 MABS （Microsoft Azure 備份 Server）或 DPM 保護至 Azure 的內部部署機器（System Center 資料保護管理：
 
@@ -278,7 +278,7 @@ ms.locfileid: "85563107"
           [<CommonParameters>]
     ```
 
-    [深入瞭解](https://docs.microsoft.com/powershell/module/az.recoveryservices/unregister-azrecoveryservicesbackupcontainer?view=azps-2.6.0)從保存庫取消註冊備份管理容器。
+    [深入瞭解](/powershell/module/az.recoveryservices/unregister-azrecoveryservicesbackupcontainer)從保存庫取消註冊備份管理容器。
 
 在永久刪除備份的資料並取消註冊所有容器之後，請繼續刪除保存庫。
 
@@ -293,7 +293,7 @@ ms.locfileid: "85563107"
       [<CommonParameters>]
    ```
 
-[深入瞭解](https://docs.microsoft.com/powershell/module/az.recoveryservices/remove-azrecoveryservicesvault)如何刪除復原服務保存庫。
+[深入瞭解](/powershell/module/az.recoveryservices/remove-azrecoveryservicesvault)如何刪除復原服務保存庫。
 
 ## <a name="delete-the-recovery-services-vault-by-using-cli"></a>使用 CLI 刪除復原服務保存庫
 
@@ -330,7 +330,7 @@ ms.locfileid: "85563107"
                        [--yes]
     ```
 
-    如需詳細資訊，請參閱這 [篇文章](https://docs.microsoft.com/cli/azure/backup/vault?view=azure-cli-latest)
+    如需詳細資訊，請參閱這 [篇文章](/cli/azure/backup/vault?view=azure-cli-latest)
 
 ## <a name="delete-the-recovery-services-vault-by-using-azure-resource-manager"></a>使用 Azure Resource Manager 刪除復原服務保存庫
 

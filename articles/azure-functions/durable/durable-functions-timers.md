@@ -2,17 +2,18 @@
 title: Durable Functions 中的計時器 - Azure
 description: 了解如何在 Azure Functions 的 Durable Functions 擴充中實作永久性計時器。
 ms.topic: conceptual
-ms.date: 11/03/2019
+ms.date: 07/13/2020
 ms.author: azfuncdf
-ms.openlocfilehash: 0565cc149a36baf31d8516fffcf48b194c465760
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0226e5141b100aa3fcf89dd1a5cade8f3cd6cf1c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76261478"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056233"
 ---
 # <a name="timers-in-durable-functions-azure-functions"></a>Durable Functions (Azure Functions) 中的計時器
 
-[Durable Functions](durable-functions-overview.md) 提供「永久性計時器」**，用於協調器函式中實作延遲，或在非同步動作上設定逾時。 永久性計時器應該用於協調器函式中，以代替 `Thread.Sleep` 和 `Task.Delay` (C#)，或 `setTimeout()` 和 `setInterval()` (JavaScript)。
+[Durable Functions](durable-functions-overview.md) 提供「永久性計時器」**，用於協調器函式中實作延遲，或在非同步動作上設定逾時。 持久性計時器應該用於協調器函式，而不是 `Thread.Sleep` 和 `Task.Delay` （c #）、 `setTimeout()` 和（ `setInterval()` JavaScript），或 `time.sleep()` （Python）。
 
 您可以藉由呼叫協調流程觸發程式系結的 `CreateTimer` （.net）方法或 `createTimer` （JavaScript） [orchestration trigger binding](durable-functions-bindings.md#orchestration-trigger)方法來建立持久計時器。 方法會傳回在指定的日期和時間完成的工作。
 
@@ -61,7 +62,21 @@ module.exports = df.orchestrator(function*(context) {
     }
 });
 ```
+# <a name="python"></a>[Python](#tab/python)
 
+```python
+import azure.functions as func
+import azure.durable_functions as df
+from datetime import datetime, timedelta
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    for i in range(0, 9):
+        deadline = context.current_utc_datetime + timedelta(days=1)
+        yield context.create_timer(deadline)
+        yield context.call_activity("SendBillingEvent")
+
+main = df.Orchestrator.create(orchestrator_function)
+```
 ---
 
 > [!WARNING]
@@ -129,6 +144,28 @@ module.exports = df.orchestrator(function*(context) {
         return false;
     }
 });
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+from datetime import datetime, timedelta
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    deadline = context.current_utc_datetime + timedelta(seconds=30)
+    activity_task = context.call_activity("GetQuote")
+    timeout_task = context.create_timer(deadline)
+
+    winner = yield context.task_any([activity_task, timeout_task])
+    if winner == activity_task:
+        timeout_task.cancel()
+        return True
+    elif winner == timeout_task:
+        return False
+
+main = df.Orchestrator.create(orchestrator_function)
 ```
 
 ---

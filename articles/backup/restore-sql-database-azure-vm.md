@@ -3,12 +3,12 @@ title: 在 Azure VM 上還原 SQL Server 資料庫
 description: 本文說明如何還原在 Azure VM 上執行，並使用 Azure 備份備份的 SQL Server 資料庫。
 ms.topic: conceptual
 ms.date: 05/22/2019
-ms.openlocfilehash: 5d7fc52aaaca0bf99955919c954cc22ab0d9d3d8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2c3b81c4d0bc4c7548fec8ec131fea66684a7aa8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538406"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87054582"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>在 Azure VM 上還原 SQL Server 資料庫
 
@@ -23,7 +23,7 @@ Azure 備份可以還原在 Azure Vm 上執行 SQL Server 資料庫，如下所�
 - 使用交易記錄備份還原到特定的日期或時間（到第二個）。 Azure 備份會自動決定適當的完整差異備份，以及根據所選時間還原所需的記錄備份鏈。
 - 還原特定的完整或差異備份，以還原到特定的復原點。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 在還原資料庫之前，請注意下列事項：
 
@@ -127,7 +127,7 @@ Azure 備份可以還原在 Azure Vm 上執行 SQL Server 資料庫，如下所�
     >   - 執行 `cmdkey /add:<storageacct>.file.core.windows.net /user:AZURE\<storageacct> /pass:<storagekey>`
     >   - 驗證存取`dir \\<storageacct>.file.core.windows.net\<filesharename>`
     >- 開始將備份保存庫中的檔案還原為 `\\<storageacct>.file.core.windows.net\<filesharename>` 路徑<BR>
-    您可以透過下載 Psexec<https://docs.microsoft.com/sysinternals/downloads/psexec>
+    您可以從 [ [Sysinternals](/sysinternals/downloads/psexec) ] 頁面下載 PsExec。
 
 1. 選取 [確定]。
 

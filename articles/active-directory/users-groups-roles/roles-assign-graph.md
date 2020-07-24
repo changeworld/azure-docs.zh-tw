@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44299a55424f9b0338ee49d2742aeedf16db22e8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b27bd52ad8794222d52d37032b0cd4fdf99f47b7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84732084"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87057920"
 ---
 # <a name="assign-custom-admin-roles-using-the-microsoft-graph-api-in-azure-active-directory"></a>在 Azure Active Directory 中使用 Microsoft Graph API 指派自訂管理員角色 
 
@@ -26,11 +26,11 @@ ms.locfileid: "84732084"
 
 ## <a name="required-permissions"></a>所需的權限
 
-使用全域管理員帳戶或特殊權限身分識別管理員連線到 Azure AD 組織，以指派或移除角色。
+使用全域管理員或特殊權限角色管理員帳戶，連接到您的 Azure AD 組織，以指派或移除角色。
 
 ## <a name="post-operations-on-roleassignment"></a>RoleAssignment 上的 POST 作業
 
-用來在使用者與角色定義之間建立角色指派的 HTTP 要求。
+### <a name="example-1-create-a-role-assignment-between-a-user-and-a-role-definition"></a>範例1：建立使用者與角色定義之間的角色指派。
 
 POST
 
@@ -45,7 +45,7 @@ body
 {
     "principalId":"ab2e1023-bddc-4038-9ac1-ad4843e7e539",
     "roleDefinitionId":"194ae4cb-b126-40b2-bd5b-6091b380977d",
-    "resourceScopes":"/"
+    "directoryScopeId":"/"  // Don't use "resourceScope" attribute in Azure AD role assignments. It will be deprecated soon.
 }
 ```
 
@@ -55,7 +55,7 @@ body
 HTTP/1.1 201 Created
 ```
 
-用來在主體或角色定義不存在的地方建立角色指派的 HTTP 要求
+### <a name="example-2-create-a-role-assignment-where-the-principal-or-role-definition-does-not-exist"></a>範例2：建立主體或角色定義不存在的角色指派
 
 POST
 
@@ -69,7 +69,7 @@ body
 {
     "principalId":" 2142743c-a5b3-4983-8486-4532ccba12869",
     "roleDefinitionId":"194ae4cb-b126-40b2-bd5b-6091b380977d",
-    "resourceScopes":"/"
+    "directoryScopeId":"/"  //Don't use "resourceScope" attribute in Azure AD role assignments. It will be deprecated soon.
 }
 ```
 
@@ -78,11 +78,31 @@ body
 ``` HTTP
 HTTP/1.1 404 Not Found
 ```
+### <a name="example-3-create-a-role-assignment-on-a-single-resource-scope"></a>範例3：在單一資源範圍上建立角色指派
 
-用來在內建角色定義上建立單一資源範圍角色指派的 HTTP 要求。
+POST
 
-> [!NOTE] 
-> 內建角色目前有受到限制，其範圍僅限於「/」整個組織範圍或「/AU/*」範圍。 單一資源範圍不適用於內建角色，但適用於自訂角色。
+``` HTTP
+https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments
+```
+
+body
+
+``` HTTP
+{
+    "principalId":" 2142743c-a5b3-4983-8486-4532ccba12869",
+    "roleDefinitionId":"e9b2b976-1dea-4229-a078-b08abd6c4f84",    //role template ID of a custom role
+    "directoryScopeId":"/13ff0c50-18e7-4071-8b52-a6f08e17c8cc"  //object ID of an application
+}
+```
+
+回應
+
+``` HTTP
+HTTP/1.1 201 Created
+```
+
+### <a name="example-4-create-an-administrative-unit-scoped-role-assignment-on-a-built-in-role-definition-which-is-not-supported"></a>範例4：在不支援的內建角色定義上建立系統管理單位範圍的角色指派
 
 POST
 
@@ -95,8 +115,8 @@ body
 ``` HTTP
 {
     "principalId":"ab2e1023-bddc-4038-9ac1-ad4843e7e539",
-    "roleDefinitionId":"194ae4cb-b126-40b2-bd5b-6091b380977d",
-    "resourceScopes":"/ab2e1023-bddc-4038-9ac1-ad4843e7e539"
+    "roleDefinitionId":"29232cdf-9323-42fd-ade2-1d097af3e4de",    //role template ID of Exchange Administrator
+    "directoryScopeId":"/administrativeUnits/13ff0c50-18e7-4071-8b52-a6f08e17c8cc"    //object ID of an administrative unit
 }
 ```
 
@@ -110,23 +130,17 @@ HTTP/1.1 400 Bad Request
         "code":"Request_BadRequest",
         "message":
         {
-            "lang":"en",
-            "value":"Provided authorization scope is not supported for built-in role definitions."},
-            "values":
-            [
-                {
-                    "item":"scope",
-                    "value":"/ab2e1023-bddc-4038-9ac1-ad4843e7e539"
-                }
-            ]
+            "message":"The given built-in role is not supported to be assigned to a single resource scope."
         }
     }
 }
 ```
 
+系統管理單位範圍只會啟用內建角色的子集。 如需管理單位支援的內建角色清單，請參閱[這份檔](https://docs.microsoft.com/azure/active-directory/users-groups-roles/roles-admin-units-assign-roles)。
+
 ## <a name="get-operations-on-roleassignment"></a>RoleAssignment 上的 GET 作業
 
-用來取得指定主體角色指派的 HTTP 要求
+### <a name="example-5-get-role-assignments-for-a-given-principal"></a>範例5：取得給定主體的角色指派
 
 GET
 
@@ -138,21 +152,25 @@ https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments&$filte
 
 ``` HTTP
 HTTP/1.1 200 OK
-{ 
-    "id":"mhxJMipY4UanIzy2yE-r7JIiSDKQoTVJrLE9etXyrY0-1"
-    "principalId":"ab2e1023-bddc-4038-9ac1-ad4843e7e539",
-    "roleDefinitionId":"10dae51f-b6af-4016-8d66-8c2a99b929b3",
-    "resourceScopes":"/"
-} ,
 {
-    "id":"CtRxNqwabEKgwaOCHr2CGJIiSDKQoTVJrLE9etXyrY0-1"
-    "principalId":"ab2e1023-bddc-4038-9ac1-ad4843e7e539",
-    "roleDefinitionId":"3671d40a-1aac-426c-a0c1-a3821ebd8218",
-    "resourceScopes":"/"
+"value":[
+            { 
+                "id":"mhxJMipY4UanIzy2yE-r7JIiSDKQoTVJrLE9etXyrY0-1"
+                "principalId":"ab2e1023-bddc-4038-9ac1-ad4843e7e539",
+                "roleDefinitionId":"10dae51f-b6af-4016-8d66-8c2a99b929b3",
+                "directoryScopeId":"/"  
+            } ,
+            {
+                "id":"CtRxNqwabEKgwaOCHr2CGJIiSDKQoTVJrLE9etXyrY0-1"
+                "principalId":"ab2e1023-bddc-4038-9ac1-ad4843e7e539",
+                "roleDefinitionId":"fe930be7-5e62-47db-91af-98c3a49a38b1",
+                "directoryScopeId":"/"
+            }
+        ]
 }
 ```
 
-用來取得指定角色定義角色指派的 HTTP 要求。
+### <a name="example-6-get-role-assignments-for-a-given-role-definition"></a>範例6：取得給定角色定義的角色指派。
 
 GET
 
@@ -165,14 +183,18 @@ https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments&$filte
 ``` HTTP
 HTTP/1.1 200 OK
 {
-    "id":"CtRxNqwabEKgwaOCHr2CGJIiSDKQoTVJrLE9etXyrY0-1"
-    "principalId":"ab2e1023-bddc-4038-9ac1-ad4843e7e539",
-    "roleDefinitionId":"3671d40a-1aac-426c-a0c1-a3821ebd8218",
-    "resourceScopes":"/"
+"value":[
+            {
+                "id":"CtRxNqwabEKgwaOCHr2CGJIiSDKQoTVJrLE9etXyrY0-1"
+                "principalId":"ab2e1023-bddc-4038-9ac1-ad4843e7e539",
+                "roleDefinitionId":"fe930be7-5e62-47db-91af-98c3a49a38b1",
+                "directoryScopeId":"/"
+            }
+     ]
 }
 ```
 
-用來依識別碼取得角色指派的 HTTP 要求。
+### <a name="example-7-get-a-role-assignment-by-id"></a>範例7：依識別碼取得角色指派。
 
 GET
 
@@ -188,13 +210,44 @@ HTTP/1.1 200 OK
     "id":"mhxJMipY4UanIzy2yE-r7JIiSDKQoTVJrLE9etXyrY0-1",
     "principalId":"ab2e1023-bddc-4038-9ac1-ad4843e7e539",
     "roleDefinitionId":"10dae51f-b6af-4016-8d66-8c2a99b929b3",
-    "resourceScopes":"/"
+    "directoryScopeId":"/"
+}
+```
+
+### <a name="example-8-get-role-assignments-for-a-given-scope"></a>範例8：取得給定範圍的角色指派
+
+
+GET
+
+``` HTTP
+GET https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments?$filter=directoryScopeId eq '/d23998b1-8853-4c87-b95f-be97d6c6b610'
+```
+
+回應
+
+``` HTTP
+HTTP/1.1 200 OK
+{
+"value":[
+            { 
+                "id":"mhxJMipY4UanIzy2yE-r7JIiSDKQoTVJrLE9etXyrY0-1"
+                "principalId":"ab2e1023-bddc-4038-9ac1-ad4843e7e539",
+                "roleDefinitionId":"10dae51f-b6af-4016-8d66-8c2a99b929b3",
+                "directoryScopeId":"/d23998b1-8853-4c87-b95f-be97d6c6b610"
+            } ,
+            {
+                "id":"CtRxNqwabEKgwaOCHr2CGJIiSDKQoTVJrLE9etXyrY0-1"
+                "principalId":"ab2e1023-bddc-4038-9ac1-ad4843e7e539",
+                "roleDefinitionId":"3671d40a-1aac-426c-a0c1-a3821ebd8218",
+                "directoryScopeId":"/d23998b1-8853-4c87-b95f-be97d6c6b610"
+            }
+        ]
 }
 ```
 
 ## <a name="delete-operations-on-roleassignment"></a>RoleAssignment 上的 DELETE 作業
 
-用來在使用者與角色定義之間刪除角色指派的 HTTP 要求。
+### <a name="example-9-delete-a-role-assignment-between-a-user-and-a-role-definition"></a>範例9：刪除使用者與角色定義之間的角色指派。
 
 刪除
 
@@ -207,7 +260,7 @@ GET https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments/lA
 HTTP/1.1 204 No Content
 ```
 
-用來刪除不再存在角色指派的 HTTP 要求
+### <a name="example-10-delete-a-role-assignment-that-no-longer-exists"></a>範例10：刪除不再存在的角色指派
 
 刪除
 
@@ -221,7 +274,7 @@ GET https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments/lA
 HTTP/1.1 404 Not Found
 ```
 
-用來刪除自我和內建角色定義之間角色指派的 HTTP 要求
+### <a name="example-11-delete-a-role-assignment-between-self-and-global-administrator-role-definition"></a>範例11：刪除自助和全域管理員角色定義之間的角色指派
 
 刪除
 
@@ -240,12 +293,14 @@ HTTP/1.1 400 Bad Request
         "message":
         {
             "lang":"en",
-            "value":"Cannot remove self from built-in role definitions."},
+            "value":"Removing self from Global Administrator built-in role is not allowed"},
             "values":null
         }
     }
 }
 ```
+
+我們會防止使用者刪除自己的全域管理員角色，以避免租使用者擁有零全域管理員的情況。 允許移除指派給 self 的其他角色。
 
 ## <a name="next-steps"></a>後續步驟
 

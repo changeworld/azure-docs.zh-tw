@@ -4,12 +4,12 @@ description: 在 Azure Resource Graph 中進行 Advisor 資料的查詢
 ms.topic: article
 ms.date: 03/12/2020
 ms.author: sagupt
-ms.openlocfilehash: c0786d1d09ff61ddd9c375c68b7199521e319a4f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 66bb500d419d1f5537afafd7a2df543ded8cc7ce
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85117829"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87057782"
 ---
 # <a name="query-for-advisor-data-in-resource-graph-explorer-azure-resource-graph"></a>在 Resource Graph Explorer 中查詢 Advisor 資料（Azure Resource Graph）
 
@@ -24,7 +24,7 @@ Advisor 資源現在已上架到[Azure Resource Graph](https://azure.microsoft.c
 
 ## <a name="advisor-resource-types-in-azure-graph"></a>Azure Graph 中的 Advisor 資源類型
 
-[Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/)中可用的 Advisor 資源類型：有3個資源類型可供在 Advisor 資源下查詢。 以下是現在可在 Resource Graph 中查詢的資源清單。
+[Resource Graph](../governance/resource-graph/index.yml)中可用的 Advisor 資源類型：有3個資源類型可供在 Advisor 資源下查詢。 以下是現在可在 Resource Graph 中查詢的資源清單。
 * Microsoft Advisor/設定
 * Microsoft Advisor/建議
 * Microsoft Advisor/隱藏
@@ -32,7 +32,7 @@ Advisor 資源現在已上架到[Azure Resource Graph](https://azure.microsoft.c
 這些資源類型會列在名為 AdvisorResources 的新資料表底下，您也可以在 Azure 入口網站的 [Resource Graph Explorer] 中查詢。
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 如需 Advisor 建議的詳細資訊，請參閱：
 * [Azure 建議程式簡介](advisor-overview.md)
@@ -42,4 +42,4 @@ Advisor 資源現在已上架到[Azure Resource Graph](https://azure.microsoft.c
 * [Advisor 效能建議](advisor-performance-recommendations.md)
 * [Advisor 安全性建議](advisor-security-recommendations.md)
 * [Advisor 操作卓越建議](advisor-operational-excellence-recommendations.md)
-* [Advisor REST API](https://docs.microsoft.com/rest/api/advisor/)
+* [Advisor REST API](/rest/api/advisor/)

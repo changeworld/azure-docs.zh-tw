@@ -15,17 +15,17 @@ ms.topic: conceptual
 ms.date: 07/09/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 4bc7fe4e464b07c77d5a857fb793faa4262f97e4
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 8ab8a3ce0718cac3135bfdac67088d36fcd4f184
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206829"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87060621"
 ---
 # <a name="tutorial-use-drm-dynamic-encryption-and-license-delivery-service"></a>教學課程：使用 DRM 動態加密與授權傳遞服務
 
 > [!NOTE]
-> 雖然本教學課程使用 [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) 範例，但是 [REST API](https://docs.microsoft.com/rest/api/media/liveevents)、[CLI](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest) 或其他受支援 [SDK](media-services-apis-overview.md#sdks) 的一般步驟都相同。
+> 雖然本教學課程使用 [.NET SDK](/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) 範例，但是 [REST API](/rest/api/media/liveevents)、[CLI](/cli/azure/ams/live-event?view=azure-cli-latest) 或其他受支援 [SDK](media-services-apis-overview.md#sdks) 的一般步驟都相同。
 
 您可以使用 Azure 媒體服務，傳遞以 Microsoft PlayReady、Google Widevine 或 Apple FairPlay 授權加密的串流。 如需深入說明，請參閱[使用動態加密進行內容保護](content-protection-overview.md)。
 
@@ -48,16 +48,16 @@ ms.locfileid: "86206829"
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 需要有下列項目，才能完成教學課程：
 
 * 請檢閱[內容保護概觀](content-protection-overview.md)文章。
 * 請參閱[使用存取控制設計多重 DRM 內容保護系統](design-multi-drm-system-with-access-control.md)。
 * 安裝 Visual Studio Code 或 Visual Studio。
-* 建立新的 Azure 媒體服務帳戶，如[此快速入門](create-account-cli-quickstart.md)所述。
-* 藉由遵循[存取 API](access-api-cli-how-to.md) 以取得使用媒體服務 API 所需的認證
-* 在) 上設定應用程式佈建檔中的適當值 ( # B0。
+* 建立新的 Azure 媒體服務帳戶，如[此快速入門](./create-account-howto.md)所述。
+* 藉由遵循[存取 API](./access-api-howto.md) 以取得使用媒體服務 API 所需的認證
+* 在應用程式佈建檔中設定適當的值（appsettings.js開啟）。
 
 ## <a name="download-code"></a>下載程式碼
 
@@ -70,7 +70,7 @@ ms.locfileid: "86206829"
 「使用 DRM 進行加密」範例位於 [EncryptWithDRM](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM) 資料夾中。
 
 > [!NOTE]
-> 此範例會在您每次執行應用程式時建立唯一的資源。 一般來說，如果現有資源具有必要的設定) ，您將會重複使用現有的資源，例如轉換和原則 (。
+> 此範例會在您每次執行應用程式時建立唯一的資源。 一般而言，您會重複使用現有的資源，例如轉換和原則（如果現有資源具有必要的設定）。
 
 ## <a name="start-using-media-services-apis-with-net-sdk"></a>開始搭配使用媒體服務 API 與 .NET SDK
 
@@ -86,7 +86,7 @@ ms.locfileid: "86206829"
 
 ## <a name="get-or-create-an-encoding-transform"></a>取得或建立編碼轉換
 
-建立新的[轉換](transforms-jobs-concept.md)執行個體時，您需要指定想要其產生的輸出是什麼。 必要的參數是 `transformOutput` 物件，如下列程式碼所示。 每個 TransformOutput 都會包含 **Preset (預設)** 。 Preset 會描述影片和/或音訊處理作業的逐步指示，以產生所需的 TransformOutput。 本文中所述的範例會使用稱為 **AdaptiveStreaming** 的內建 Preset。 預設會根據輸入解析度和位元速率，將輸入影片編碼成自動產生的位元速率階梯， (位元速率解析組) ，並使用 h.264 video 和 AAC 音訊（對應于每個位元速率解析組）來產生 ISO 目標檔案。 
+建立新的[轉換](transforms-jobs-concept.md)執行個體時，您需要指定想要其產生的輸出是什麼。 必要的參數是 `transformOutput` 物件，如下列程式碼所示。 每個 TransformOutput 都會包含 **Preset (預設)** 。 Preset 會描述影片和/或音訊處理作業的逐步指示，以產生所需的 TransformOutput。 本文中所述的範例會使用稱為 **AdaptiveStreaming** 的內建 Preset。 預設會根據輸入解析度和位元速率，將輸入影片編碼成自動產生的位元速率階梯（位元速率解析組），並使用 h.264 video 和 AAC 音訊（對應于每個位元速率解析組）來產生 ISO 的已執行檔。 
 
 在建立新的**轉換**之前，您應該先使用 **Get** 方法檢查是否已有轉換存在，如後續程式碼所示。  在媒體服務 v3 中，如果實體不存在，對實體執行的 **Get** 方法會傳回 **null** (檢查名稱時不區分大小寫)。
 
@@ -112,15 +112,15 @@ ms.locfileid: "86206829"
 
 內容金鑰可提供資產的安全存取。 使用 DRM 加密內容時，您必須建立[內容金鑰原則](content-key-policy-concept.md)。 原則會設定如何將內容金鑰傳遞給終端用戶端。 內容金鑰與串流定位器相關聯。 媒體服務也提供加密金鑰傳遞服務，可將加密金鑰和授權傳遞給已授權的使用者。
 
-您需要設定**內容金鑰原則**的需求 (限制) 必須符合才能以指定的設定傳遞金鑰。 在此範例中，我們會設定下列組態和需求：
+您必須在**內容金鑰原則**上設定需要符合的需求（限制），才能使用指定的設定來傳遞金鑰。 在此範例中，我們會設定下列組態和需求：
 
-* 設定
+* 組態
 
     設定 [PlayReady](playready-license-template-overview.md) 和 [Widevine](widevine-license-template-overview.md) 授權，使其可由媒體服務授權傳遞服務來傳遞。 雖然此範例應用程式不會設定[FairPlay](fairplay-license-overview.md)授權，但它包含可用來設定 FairPlay 的方法。 您可以新增 FairPlay 設定作為另一個選項。
 
 * 限制
 
-    應用程式會在原則上設定 (JWT) 權杖類型限制的 JSON Web 權杖。
+    應用程式會設定原則的 JSON Web 權杖（JWT）權杖類型限制。
 
 播放程式要求串流時，媒體服務便會使用指定的金鑰動態加密您的內容。 為了將串流解密，播放程式將向金鑰傳遞服務要求金鑰。 為了判斷使用者是否有權取得金鑰，服務會評估您為金鑰指定的內容金鑰原則。
 
@@ -144,7 +144,7 @@ ms.locfileid: "86206829"
 
 ## <a name="get-a-test-token"></a>取得測試權杖
 
-在本教學課程中，我們會指定內容金鑰原則具有權杖限制。 權杖限制原則必須伴隨 Security Token Service (STS) 所發出的權杖。 媒體服務支援[JWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_3)格式的權杖，這就是我們在範例中設定的內容。
+在本教學課程中，我們會指定內容金鑰原則具有權杖限制。 權杖限制原則必須伴隨 Security Token Service (STS) 所發出的權杖。 媒體服務支援[JWT](/previous-versions/azure/azure-services/gg185950(v=azure.100)#BKMK_3)格式的權杖，這就是我們在範例中設定的內容。
 
 ContentKeyIdentifierClaim 用於 ContentKeyPolicy，表示向金鑰傳遞服務提出的權杖必須具有 ContentKey 的識別碼。 在範例中，我們不會在建立串流定位器時指定內容金鑰，系統會為我們建立隨機的索引鍵。 若要產生測試權杖，我們必須取得要放入 ContentKeyIdentifierClaim 宣告中的 ContentKeyId。
 
@@ -152,7 +152,7 @@ ContentKeyIdentifierClaim 用於 ContentKeyPolicy，表示向金鑰傳遞服務�
 
 ## <a name="build-a-streaming-url"></a>建立串流 URL
 
-建立了 [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) 之後，現在您就可以取得串流 URL。 若要建立 URL，您需要串連[StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints)主機名稱和**串流定位器**路徑。 此範例會使用預設的  **串流端點**。 初次建立媒體服務帳戶時，此預設的  **串流端點**會處於停止狀態，因此您需要呼叫 **Start**。
+建立了 [StreamingLocator](/rest/api/media/streaminglocators) 之後，現在您就可以取得串流 URL。 若要建立 URL，您需要串連[StreamingEndpoint](/rest/api/media/streamingendpoints)主機名稱和**串流定位器**路徑。 此範例會使用預設的**串流端點**。 初次建立媒體服務帳戶時，此預設的**串流端點**會處於停止狀態，因此您需要呼叫 **Start**。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithDRM/Program.cs#GetMPEGStreamingUrl)]
 
@@ -164,7 +164,7 @@ ContentKeyIdentifierClaim 用於 ContentKeyPolicy，表示向金鑰傳遞服務�
 
 ## <a name="clean-up-resources-in-your-media-services-account"></a>清除媒體服務帳戶中的資源
 
-一般來說，您應該清除您打算重複使用之物件以外的所有專案 (通常會重複使用轉換、Streaminglocator 等等) 。 如果您想要在實驗之後有乾淨的帳戶，請刪除您不打算重複使用的資源。 例如，下列程式碼會刪除作業、已建立的資產和內容金鑰原則：
+一般來說，您應該清除您打算重複使用之物件以外的所有專案（您通常會重複使用轉換、Streaminglocator 等等）。 如果您想要在實驗之後有乾淨的帳戶，請刪除您不打算重複使用的資源。 例如，下列程式碼會刪除作業、已建立的資產和內容金鑰原則：
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithDRM/Program.cs#CleanUp)]
 

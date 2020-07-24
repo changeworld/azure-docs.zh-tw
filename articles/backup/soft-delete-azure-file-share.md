@@ -3,15 +3,17 @@ title: 意外刪除 Azure 檔案共用的保護
 description: 瞭解如何進行虛刪除，以保護您的 Azure 檔案共用不會遭到意外刪除。
 ms.topic: conceptual
 ms.date: 02/02/2020
-ms.openlocfilehash: 09d74a135fc43a7758004d77af2ec4c478345a2c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: references_regions
+ms.openlocfilehash: 7070cb1ee3881fbec2c6f44eae18f3bc51f8051d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84122274"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87054378"
 ---
 # <a name="accidental-delete-protection-for-azure-file-shares-using-azure-backup"></a>使用 Azure 備份意外刪除 Azure 檔案共用的保護
 
-若要針對網路攻擊或意外刪除提供保護，當您為個別儲存體帳戶中的任何檔案共用設定備份時，會針對儲存體帳戶中的所有檔案共用啟用虛[刪除](https://docs.microsoft.com/azure/storage/files/storage-files-prevent-file-share-deletion)。 使用虛刪除時，即使惡意執行者刪除檔案共用，檔案共用的內容和復原點（快照集）至少會保留14個額外的天數，允許復原不會遺失資料的檔案共用。  
+若要針對網路攻擊或意外刪除提供保護，當您為個別儲存體帳戶中的任何檔案共用設定備份時，會針對儲存體帳戶中的所有檔案共用啟用虛[刪除](../storage/files/storage-files-prevent-file-share-deletion.md)。 使用虛刪除時，即使惡意執行者刪除檔案共用，檔案共用的內容和復原點（快照集）至少會保留14個額外的天數，允許復原不會遺失資料的檔案共用。  
 
 只有 standard 和 premium 儲存體帳戶支援虛刪除，而且目前可從[這些區域](azure-file-share-support-matrix.md)的 Azure 備份端啟用。
 
@@ -27,7 +29,7 @@ ms.locfileid: "84122274"
 
 ### <a name="can-i-configure-the-number-of-days-for-which-my-snapshots-and-restore-points-will-be-retained-in-soft-deleted-state-after-i-delete-the-file-share"></a>我可以在刪除檔案共用之後，設定將快照集和還原點保留在虛刪除狀態的天數嗎？
 
-是，您可以根據您的需求設定保留週期。 [本檔](https://docs.microsoft.com/azure/storage/files/storage-files-enable-soft-delete?tabs=azure-portal)說明設定保留期限的步驟。 針對具有備份檔案共用的儲存體帳戶，最小保留設定應為14天。
+是，您可以根據您的需求設定保留週期。 [本檔](../storage/files/storage-files-enable-soft-delete.md?tabs=azure-portal)說明設定保留期限的步驟。 針對具有備份檔案共用的儲存體帳戶，最小保留設定應為14天。
 
 ### <a name="does-azure-backup-reset-my-retention-setting-because-i-configured-it-to-less-than-14-days"></a>Azure 備份重設我的保留設定，因為我將其設定為少於14天？
 
@@ -39,14 +41,14 @@ ms.locfileid: "84122274"
 
 ### <a name="can-i-perform-a-restore-operation-when-my-data-is-in-soft-deleted-state"></a>當我的資料處於虛刪除狀態時，可以執行還原作業嗎？
 
-您必須先取消刪除虛刪除的檔案共用，以執行還原作業。 取消刪除作業會將檔案共用帶入已備份的狀態，您可以在其中還原至任何時間點。 若要瞭解如何取消刪除您的檔案共用，請造訪[此連結](https://docs.microsoft.com/azure/storage/files/storage-files-enable-soft-delete?tabs=azure-portal#restore-soft-deleted-file-share)，或參閱取消[刪除檔案共用腳本](./scripts/backup-powershell-script-undelete-file-share.md)。
+您必須先取消刪除虛刪除的檔案共用，以執行還原作業。 取消刪除作業會將檔案共用帶入已備份的狀態，您可以在其中還原至任何時間點。 若要瞭解如何取消刪除您的檔案共用，請造訪[此連結](../storage/files/storage-files-enable-soft-delete.md?tabs=azure-portal#restore-soft-deleted-file-share)，或參閱取消[刪除檔案共用腳本](./scripts/backup-powershell-script-undelete-file-share.md)。
 
 ### <a name="how-can-i-purge-the-data-of-a-file-share-in-a-storage-account-that-has-at-least-one-protected-file-share"></a>如何清除至少有一個受保護檔案共用之儲存體帳戶中的檔案共用資料？
 
 如果您在儲存體帳戶中至少有一個受保護的檔案共用，這表示該帳戶中的所有檔案共用都已啟用虛刪除，而且您的資料會在刪除作業之後保留14天。 但是，如果您想要立即清除資料，而不想要保留它，請遵循下列步驟：
 
-1. 如果您已在啟用虛刪除時刪除檔案共用，則會先從檔案[入口網站](https://docs.microsoft.com/azure/storage/files/storage-files-enable-soft-delete?tabs=azure-portal#restore-soft-deleted-file-share)或使用 [取消刪除檔案共用][腳本](./scripts/backup-powershell-script-undelete-file-share.md)，將檔案共用取消刪除。
-2. 依照[這份](https://docs.microsoft.com/azure/storage/files/storage-files-enable-soft-delete?tabs=azure-portal#disable-soft-delete)檔中所述的步驟，停用儲存體帳戶中檔案共用的虛刪除。
+1. 如果您已在啟用虛刪除時刪除檔案共用，則會先從檔案[入口網站](../storage/files/storage-files-enable-soft-delete.md?tabs=azure-portal#restore-soft-deleted-file-share)或使用 [取消刪除檔案共用][腳本](./scripts/backup-powershell-script-undelete-file-share.md)，將檔案共用取消刪除。
+2. 依照[這份](../storage/files/storage-files-enable-soft-delete.md?tabs=azure-portal#disable-soft-delete)檔中所述的步驟，停用儲存體帳戶中檔案共用的虛刪除。
 3. 現在刪除您想要立即清除其內容的檔案共用。
 
 >[!NOTE]
@@ -57,7 +59,7 @@ ms.locfileid: "84122274"
 
 ### <a name="in-the-context-of-a-file-shares-soft-delete-setting-what-changes-does-azure-backup-do-when-i-unregister-a-storage-account"></a>在檔案共用的虛刪除設定內容中，當我取消註冊儲存體帳戶時 Azure 備份執行哪些變更？
 
-在取消註冊時，Azure 備份會檢查檔案共用的保留期限設定，如果超過14天或少於14天，則會保留為不保持。 不過，如果保留時間為14天，我們會將它視為已 Azure 備份啟用，因此我們會在取消註冊程式期間停用虛刪除。 如果您想要取消註冊儲存體帳戶，同時保持保留設定的狀態，請在完成取消註冊之後，從 [儲存體帳戶] 窗格再次啟用它。 如需設定步驟，您可以參考[此連結](https://docs.microsoft.com/azure/storage/files/storage-files-enable-soft-delete?tabs=azure-portal#restore-soft-deleted-file-share)。
+在取消註冊時，Azure 備份會檢查檔案共用的保留期限設定，如果超過14天或少於14天，則會保留為不保持。 不過，如果保留時間為14天，我們會將它視為已 Azure 備份啟用，因此我們會在取消註冊程式期間停用虛刪除。 如果您想要取消註冊儲存體帳戶，同時保持保留設定的狀態，請在完成取消註冊之後，從 [儲存體帳戶] 窗格再次啟用它。 如需設定步驟，您可以參考[此連結](../storage/files/storage-files-enable-soft-delete.md?tabs=azure-portal#restore-soft-deleted-file-share)。
 
 ## <a name="next-steps"></a>後續步驟
 

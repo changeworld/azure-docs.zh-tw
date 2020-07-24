@@ -9,12 +9,12 @@ ms.workload: mobile
 ms.topic: article
 ms.author: apimpm
 ms.date: 04/23/2020
-ms.openlocfilehash: 51ce2e0dec8b38c9285f4f4e71dd35056b292b66
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: abcda4ea4b14f058325318661daa574494268780
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86254277"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056380"
 ---
 # <a name="deploy-a-self-hosted-gateway-to-kubernetes"></a>將自我裝載閘道部署至 Kubernetes
 
@@ -33,11 +33,11 @@ ms.locfileid: "86254277"
 1. 選取 [**部署和基礎結構**] 底下的 [**閘道**]。
 2. 選取您想要部署的自我裝載閘道資源。
 3. 選取 [**部署**]。
-4. [**權杖**] 文字方塊中的存取權杖會根據預設的**到期**和**秘密金鑰**值自動產生。 如有需要，請選擇其中一個或兩個控制項中的值，以產生新的權杖。
+4. 系統會根據預設的**到期**和**秘密金鑰**值，自動為您產生 [**權杖**] 文字方塊中的存取權杖。 如有需要，請選擇其中一個或兩個控制項中的值，以產生新的權杖。
 5. 選取 [**部署腳本**] 底下的 [ **Kubernetes** ] 索引標籤。
-6. 選取 **<的閘道名稱> yml**檔案連結，並下載 YAML 檔案。
+6. 選取** \<gateway-name\> yml**檔案連結並下載 YAML 檔案。
 7. 選取 [**部署**] 文字方塊右下角的**複製**圖示，將 `kubectl` 命令儲存到剪貼簿。
-8. 將命令貼到終端機 (或命令) 視窗。 第一個命令會建立 Kubernetes 秘密，其中包含步驟4中產生的存取權杖。 第二個命令會將步驟6中所下載的設定檔套用至 Kubernetes 叢集，並預期該檔案位於目前目錄中。
+8. 將命令貼到 [終端機] （或命令）視窗。 第一個命令會建立 Kubernetes 秘密，其中包含步驟4中產生的存取權杖。 第二個命令會將步驟6中所下載的設定檔套用至 Kubernetes 叢集，並預期該檔案位於目前目錄中。
 9. 執行命令，以在[預設命名空間](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/)中建立必要的 Kubernetes 物件，並從從 Microsoft container Registry 下載的[容器映射](https://aka.ms/apim/sputnik/dhub)啟動自我裝載閘道 pod。
 10. 執行下列命令來檢查部署是否成功。 請注意，您可能需要花一點時間來建立所有物件，並將 pod 初始化。
     ```console
@@ -106,6 +106,12 @@ DNS 名稱解析在自我裝載閘道能夠連線到 Azure 中的相依性，以
 Azure 入口網站中提供的 YAML 檔案會套用預設的[ClusterFirst](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy)原則。 此原則會導致叢集 DNS 未解析的名稱解析要求轉送到繼承自節點的上游 DNS 伺服器。
 
 若要瞭解 Kubernetes 中的名稱解析，請參閱[Kubernetes 網站](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service)。 根據您的設定，請考慮自訂[dns 原則](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy)或[dns](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-config)設定。
+
+### <a name="custom-domain-names-and-ssl-certificates"></a>自訂功能變數名稱和 SSL 憑證
+
+如果您使用 API 管理端點的自訂功能變數名稱，特別是當您使用管理端點的自訂功能變數名稱時，您可能需要更新 yaml 檔案中的值， `config.service.endpoint` 以** \<gateway-name\> **使用自訂功能變數名稱來取代預設功能變數名稱。 請確定可以從 Kubernetes 叢集中自我裝載閘道的 pod 存取管理端點。
+
+在此案例中，如果管理端點所使用的 SSL 憑證未由知名的 CA 憑證簽署，則您必須確定 CA 憑證受自我裝載閘道的 pod 所信任。
 
 ### <a name="configuration-backup"></a>設定備份
 若要瞭解暫時性的 Azure 連線中斷時的自我裝載閘道行為，請參閱[自我裝載閘道總覽](self-hosted-gateway-overview.md#connectivity-to-azure)。

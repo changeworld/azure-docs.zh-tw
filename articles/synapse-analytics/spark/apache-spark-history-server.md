@@ -1,5 +1,5 @@
 ---
-title: 使用擴充的 Spark 歷程記錄伺服器來對應用程式進行偵錯工具-在 Azure Synapse 中 Apache Spark
+title: 使用擴充的 Spark 歷程記錄伺服器來偵錯工具
 description: 使用擴充的 Spark 歷程記錄伺服器，在 Azure Synapse 分析中偵測和診斷 Spark 應用程式。
 services: synapse-analytics
 author: euangMS
@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: b4ee5d064d17d7b11305c6c86dc1d29ddccc642e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e8dece3478e00c6f9279767e57e3bb8aca865f45
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85194989"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87059983"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>使用擴充的 Apache Spark 歷程記錄伺服器來對 Apache Spark 的應用程式進行 debug 和診斷
 
@@ -100,7 +100,7 @@ Apache Spark 歷程記錄伺服器是已完成和執行中 Spark 應用程式的
 
 選取您想要查看之作業的作業識別碼。 然後，在工具功能表上選取 [**圖形]** ，以取得作業圖形視圖。
 
-### <a name="overview"></a>總覽
+### <a name="overview"></a>概觀
 
 您可以在產生的作業圖形中查看作業的總覽。 根據預設，圖表會顯示所有作業。 您可以依**工作識別碼**篩選此視圖。
 
@@ -120,12 +120,12 @@ Apache Spark 歷程記錄伺服器是已完成和執行中 Spark 應用程式的
 
 若要播放作業，請選取 [**播放**]。 您可以隨時選取 [**停止**] 來停止。 播放時，工作色彩會顯示不同的狀態：
 
-|Color|意義|
+|色彩|意義|
 |-|-|
 |綠色|成功：工作已順利完成。|
 |橙色|已重試：失敗但不會影響作業最終結果的工作實例。 這些工作具有稍後可能會成功的重複或重試執行個體。|
 |藍色|正在執行：工作正在執行。|
-|白色|正在等候或略過：工作正在等候執行，或已略過該階段。|
+|白種人|正在等候或略過：工作正在等候執行，或已略過該階段。|
 |紅色|Failed：工作失敗。|
 
 下圖顯示綠色、橙色和藍色狀態色彩。
@@ -157,7 +157,7 @@ Apache Spark 歷程記錄伺服器是已完成和執行中 Spark 應用程式的
 
 在 [作業圖表] 索引標籤上，如果有符合下列條件的工作，階段就會顯示工具提示和小圖示：
 
-|條件|說明|
+|條件|描述|
 |-|-|
 |資料扭曲|資料讀取大小 > 此階段中所有工作的平均資料讀取大小 * 2 和資料讀取大小 > 10 MB|
 |時間誤差|執行時間 > 此階段中所有工作的平均執行時間 * 2，而執行時間 > 2 分鐘|

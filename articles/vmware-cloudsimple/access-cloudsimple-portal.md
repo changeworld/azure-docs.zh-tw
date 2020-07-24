@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: fd2e5a4d057e1074c6cce0f374846bc9e0a64950
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0ea178655646f7f130476acaffc35c60181968ea
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525087"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87058711"
 ---
 # <a name="access-the-vmware-solution-by-cloudsimple-portal-from-the-azure-portal"></a>從 [Azure 入口網站] 的 [CloudSimple] 入口網站存取 VMware 解決方案
 
@@ -23,7 +23,7 @@ ms.locfileid: "86525087"
 
 具有內建**擁有**者和**參與者**角色的使用者可以存取 CloudSimple 入口網站。  您必須在部署 CloudSimple 服務的資源群組上設定角色。  角色也可以在 CloudSimple 服務物件上進行設定。  如需檢查角色的詳細資訊，請參閱[View role 指派](../role-based-access-control/check-access.md)一文。 只有具備內建**擁有**者和**參與者**角色的使用者可以存取 CloudSimple 入口網站。  必須在訂用帳戶上設定角色。  如需檢查角色的詳細資訊，請參閱[View role 指派](../role-based-access-control/check-access.md)一文。
 
-如果您使用自訂角色，此角色應該會有下列任何一項作業 ```Actions``` 。  如需自訂角色的詳細資訊，請參閱[適用于 Azure 資源的自訂角色](../role-based-access-control/custom-roles.md)。  如果有任何作業屬於的一部分 ```NotActions``` ，使用者就無法存取 CloudSimple 入口網站。
+如果您使用自訂角色，此角色應該會有下列任何一項作業 ```Actions``` 。  如需自訂角色的詳細資訊，請參閱[Azure 自訂角色](../role-based-access-control/custom-roles.md)。  如果有任何作業屬於的一部分 ```NotActions``` ，使用者就無法存取 CloudSimple 入口網站。
 
 ```
 Microsoft.VMwareCloudSimple/*
@@ -61,7 +61,7 @@ Microsoft.VMwareCloudSimple/dedicatedCloudServices/*/write
 
 ![同意 CloudSimple 服務授權-系統管理員](media/cloudsimple-azure-consent.png)
 
-如果您有全域管理員許可權，您可以同意您的組織。  選取 [代表貴組織同意]****。
+如果您有全域管理員許可權，您可以同意您的組織。  選取 [代表貴組織同意]。
 
 ![同意 CloudSimple 服務授權-全域管理員](media/cloudsimple-azure-consent-global-admin.png)
 
@@ -69,7 +69,7 @@ Microsoft.VMwareCloudSimple/dedicatedCloudServices/*/write
 
 ![同意 CloudSimple 服務授權-需要系統管理員](media/cloudsimple-azure-consent-requires-administrator.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 瞭解如何[建立私用雲端](./create-private-cloud.md)
 * 瞭解如何[設定私用雲端環境](quickstart-create-private-cloud.md)

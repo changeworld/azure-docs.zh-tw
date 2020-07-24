@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 02/10/2020
-ms.openlocfilehash: 190cc74bc2967cdee7f3154e0d6a6fedd8ee90dd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 06c10cffcfa5c68b1da8ba366ca270f1c2fa6ea4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565031"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87060977"
 ---
 # <a name="authenticate-access-to-azure-resources-by-using-managed-identities-in-azure-logic-apps"></a>使用 Azure Logic Apps 中的受控識別驗證及存取 Azure 資源
 
@@ -306,8 +306,8 @@ Azure Logic Apps 支援[*系統指派的*](../active-directory/managed-identitie
 
 * [Azure 入口網站](#azure-portal-assign-access)
 * [Azure Resource Manager 範本](../role-based-access-control/role-assignments-template.md)
-* Azure PowerShell ([New-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignment)) -如需詳細資訊，請參閱[使用 Azure RBAC 新增角色指派和 Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)。
-* Azure CLI ([az role assignment create](https://docs.microsoft.com/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create)) -如需詳細資訊，請參閱[使用 Azure RBAC 新增角色指派和 Azure CLI](../role-based-access-control/role-assignments-cli.md)。
+* Azure PowerShell ([New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment)) -如需詳細資訊，請參閱[使用 Azure RBAC 新增角色指派和 Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)。
+* Azure CLI ([az role assignment create](/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create)) -如需詳細資訊，請參閱[使用 Azure RBAC 新增角色指派和 Azure CLI](../role-based-access-control/role-assignments-cli.md)。
 * [Azure REST API](../role-based-access-control/role-assignments-rest.md)
 
 <a name="azure-portal-assign-access"></a>
@@ -387,18 +387,18 @@ Azure Logic Apps 支援[*系統指派的*](../active-directory/managed-identitie
    | **驗證** | 是 | 用來驗證對目標資源或實體存取的驗證類型 |
    ||||
 
-   在特定的範例中，假設您想要在先前設定身分識別存取權的 Azure 儲存體帳戶中，於 Blob 上執行[快照集 Blob 作業](https://docs.microsoft.com/rest/api/storageservices/snapshot-blob)。 不過，[Azure Blob 儲存體連接器](https://docs.microsoft.com/connectors/azureblob/)目前不提供這種操作。 相反地，您可以使用 [HTTP 動作](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action)或其他 [Blob 服務 REST API 作業](https://docs.microsoft.com/rest/api/storageservices/operations-on-blobs)來執行這項作業。
+   在特定的範例中，假設您想要在先前設定身分識別存取權的 Azure 儲存體帳戶中，於 Blob 上執行[快照集 Blob 作業](/rest/api/storageservices/snapshot-blob)。 不過，[Azure Blob 儲存體連接器](/connectors/azureblob/)目前不提供這種操作。 相反地，您可以使用 [HTTP 動作](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action)或其他 [Blob 服務 REST API 作業](/rest/api/storageservices/operations-on-blobs)來執行這項作業。
 
    > [!IMPORTANT]
    > 若要使用 HTTP 要求和受控識別存取防火牆後方的 Azure 儲存體帳戶，請確定您也使用[允許受信任Microsoft 服務存取的例外狀況](../connectors/connectors-create-api-azureblobstorage.md#access-trusted-service)設定儲存體帳戶。
 
-   若要執行[快照集 Blob 作業](https://docs.microsoft.com/rest/api/storageservices/snapshot-blob)，HTTP 動作會指定下列屬性：
+   若要執行[快照集 Blob 作業](/rest/api/storageservices/snapshot-blob)，HTTP 動作會指定下列屬性：
 
    | 屬性 | 必要 | 範例值 | 描述 |
    |----------|----------|---------------|-------------|
    | **方法** | 是 | `PUT`| 快照集 Blob 操作所使用的HTTP 方法 |
    | **URI** | 是 | `https://{storage-account-name}.blob.core.windows.net/{blob-container-name}/{folder-name-if-any}/{blob-file-name-with-extension}` | Azure 全域 (公用) 環境中 Azure Blob 儲存體檔案的資源識別碼會使用此語法 |
-   | **標頭** | 是，適用於 Azure 儲存體 | `x-ms-blob-type` = `BlockBlob` <p>`x-ms-version` = `2019-02-02` | Azure 儲存體作業所需的 `x-ms-blob-type` 和 `x-ms-version` 標題值。 <p><p>**重要**：在 Azure 儲存體的傳出 HTTP 觸發和動作要求中，標題需要您要執行的作業所用的 `x-ms-version` 屬性和 API 版本。 <p>如需詳細資訊，請參閱下列主題： <p><p>- [要求標題 - 快照集 Blob](https://docs.microsoft.com/rest/api/storageservices/snapshot-blob#request) <br>- [Azure 儲存體服務的版本設定](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#specifying-service-versions-in-requests) |
+   | **標頭** | 是，適用於 Azure 儲存體 | `x-ms-blob-type` = `BlockBlob` <p>`x-ms-version` = `2019-02-02` | Azure 儲存體作業所需的 `x-ms-blob-type` 和 `x-ms-version` 標題值。 <p><p>**重要**：在 Azure 儲存體的傳出 HTTP 觸發和動作要求中，標題需要您要執行的作業所用的 `x-ms-version` 屬性和 API 版本。 <p>如需詳細資訊，請參閱下列主題： <p><p>- [要求標題 - 快照集 Blob](/rest/api/storageservices/snapshot-blob#request) <br>- [Azure 儲存體服務的版本設定](/rest/api/storageservices/versioning-for-the-azure-storage-services#specifying-service-versions-in-requests) |
    | **查詢** | 是，適用於此作業 | `comp` = `snapshot` | 快照集 Blob 作業的查詢參數名稱和值。 |
    |||||
 
@@ -441,7 +441,7 @@ Azure Logic Apps 支援[*系統指派的*](../active-directory/managed-identitie
    如需使用 Azure 儲存體的Azure AD 授權存取的詳細資訊，請參閱下列主題：
 
    * [使用 Azure Active Directory 來授權 Azure Blob 和佇列的存取權](../storage/common/storage-auth-aad.md)
-   * [使用 Azure Active Directory 授與 Azure 儲存體的存取權](https://docs.microsoft.com/rest/api/storageservices/authorize-with-azure-active-directory#use-oauth-access-tokens-for-authentication)
+   * [使用 Azure Active Directory 授與 Azure 儲存體的存取權](/rest/api/storageservices/authorize-with-azure-active-directory#use-oauth-access-tokens-for-authentication)
 
 1. 繼續按照您想要的方式建置邏輯應用程式。
 

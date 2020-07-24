@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 07/08/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 019ae80020dafb54f2c06dd504797f21069914ae
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: fc50934b4c301b4eea509ecc22e00c62ca091d75
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507058"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056543"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 中支援的 Kubernetes 版本
 
@@ -139,7 +139,7 @@ az aks get-versions --location eastus --output table
 
 **當使用者升級的 Kubernetes 叢集具有不支援的次要版本時，會發生什麼事？**
 
-如果您是在*3*個或更舊版本，則表示您不在支援範圍內，而且會要求您進行升級。 當您從第 n-3 版升級至 n-2 成功時，您就會回到我們的支援原則中。 例如：
+如果您是在*3*個或更舊版本，則表示您不在支援範圍內，而且會要求您進行升級。 當您從第 n-3 版升級至 n-2 成功時，您就會回到我們的支援原則中。 例如:
 
 - 如果最舊的支援 AKS 版本是*1.15* ，而且您是在*1.14*或更舊版本上，您就不會在支援範圍內。
 - 當從*1.14*升級到*1.15*時，或更新版本成功時，您就會回到我們的支援原則中。
@@ -162,15 +162,15 @@ az aks get-versions --location eastus --output table
 
 控制平面必須位於所有節點集區的版本視窗內。 如需有關升級控制平面或節點集區的詳細資訊，請造訪[升級節點](use-multiple-node-pools.md#upgrade-a-cluster-control-plane-with-multiple-node-pools)集區的相關檔。
 
-**升級時可以略過某個版本嗎？**
+**在叢集升級期間可以略過多個 AKS 版本嗎？**
 
-否，遵循 kubernetes 的最佳做法，AKS 只允許升級至立即支援的下一個修補程式或次要版本。 Azure 入口網站只會顯示您可以升級到的版本，而且您可以在 CLI 上執行， `az aks get-upgrades -n MyAKSCluster -g MyResourceGroup` 以查看目前版本可用的升級。
+當您升級支援的 AKS 叢集時，無法略過 Kubernetes 次要版本。 例如，允許在*1.12.* x  ->  *1.13. x*或*1.13. x*  ->  *1.14*之間進行升級，但*1.12. x*  ->  *1.14*不是。
 
-**如果我是最新支援版本背後的多個版本，如何升級至支援的版本？**
+若要升級，請從*1.12. x*  ->  *1.14*，先從*1.12.* x 1.13. x 升級  ->  * *，然後從*1.13. x*  ->  *1.14*升級。
 
-若要維持在支援範圍內，您必須避免從目前支援的清單落後到多個版本，但如果您在此情況下，AKS 一律會允許升級至最低支援版本。
+只有在從不受支援的版本升級回支援的版本時，才能略過多個版本。 例如，從不支援的*1.10. x*升級 > 支援的*1.15。 x*可以完成。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 如需如何升級叢集的相關資訊，請參閱[升級 Azure Kubernetes Service (AKS) 叢集][aks-upgrade]。
 

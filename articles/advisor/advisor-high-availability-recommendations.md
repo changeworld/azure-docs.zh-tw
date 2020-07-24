@@ -3,12 +3,12 @@ title: 使用 Advisor 改善應用程式的可靠性
 description: 使用 Azure Advisor 來確保並改善您的業務關鍵 Azure 部署中的可靠性。
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 928e0b098cb2cf117eff40d2257fc79dbe114f85
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1eba688a67a8684cdbb6846b389f83e61b349abe
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85124617"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87057677"
 ---
 # <a name="improve-the-reliability-of-your-application-by-using-azure-advisor"></a>使用 Azure Advisor 改善應用程式的可靠性
 
@@ -59,7 +59,7 @@ Advisor 可以識別您的虛擬機器是否執行的檢查點映射版本，在
 
 ## <a name="use-soft-delete-on-your-azure-storage-account-to-save-and-recover-data-after-accidental-overwrite-or-deletion"></a>在您的 Azure 儲存體帳戶上使用虛刪除來儲存及復原意外覆寫或刪除後的資料
 
-在儲存體帳戶上啟用[虛刪除](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete)，可讓刪除的 Blob 轉換為虛刪除狀態，而不是永久刪除。 當資料遭到覆寫時，系統會產生虛刪除的快照集，以儲存覆寫資料的狀態。 使用虛刪除可讓您從意外刪除或覆寫復原。 Advisor 會識別未啟用虛刪除的 Azure 儲存體帳戶，並建議您加以啟用。
+在儲存體帳戶上啟用[虛刪除](../storage/blobs/soft-delete-overview.md)，可讓刪除的 Blob 轉換為虛刪除狀態，而不是永久刪除。 當資料遭到覆寫時，系統會產生虛刪除的快照集，以儲存覆寫資料的狀態。 使用虛刪除可讓您從意外刪除或覆寫復原。 Advisor 會識別未啟用虛刪除的 Azure 儲存體帳戶，並建議您加以啟用。
 
 ## <a name="configure-your-vpn-gateway-to-active-active-for-connection-resiliency"></a>將您的 VPN 閘道設定為主動-主動以得到連線復原能力
 
@@ -107,7 +107,7 @@ Azure Advisor 可識別使用舊版 Azure Cosmos DB Spark 連接器的 Azure Cos
 從2020年7月1日開始，您將無法在 HDInsight 3.6 上使用 Spark 2.1 或2.2 來建立新的 Spark 叢集。 您將無法在 HDInsight 4.0 上使用 Spark 2.3 建立新的 Spark 叢集。 現有的叢集將會以現狀執行，不再有 Microsoft 支援。 
 
 ## <a name="enable-virtual-machine-replication"></a>啟用虛擬機器複寫
-未啟用複寫至另一個區域的虛擬機器，不會有區域性中斷的彈性。 複寫虛擬機器可降低 Azure 區域中斷期間的任何負面業務影響。 Advisor 會偵測到未啟用複寫的 Vm，並建議啟用複寫。 當您啟用複寫時，如果發生中斷，您可以快速地在遠端 Azure 區域中啟動您的虛擬機器。 [深入瞭解虛擬機器複寫。](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-quickstart)
+未啟用複寫至另一個區域的虛擬機器，不會有區域性中斷的彈性。 複寫虛擬機器可降低 Azure 區域中斷期間的任何負面業務影響。 Advisor 會偵測到未啟用複寫的 Vm，並建議啟用複寫。 當您啟用複寫時，如果發生中斷，您可以快速地在遠端 Azure 區域中啟動您的虛擬機器。 [深入瞭解虛擬機器複寫。](../site-recovery/azure-to-azure-quickstart.md)
 
 ## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>如何存取 Advisor 中的高可用性建議
 
@@ -115,7 +115,7 @@ Azure Advisor 可識別使用舊版 Azure Cosmos DB Spark 連接器的 Azure Cos
 
 2.  在 Advisor 儀表板上，選取 [**高可用性**] 索引標籤。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 如需 Advisor 建議的詳細資訊，請參閱：
 * [Advisor 簡介](advisor-overview.md)

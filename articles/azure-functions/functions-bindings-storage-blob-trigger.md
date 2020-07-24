@@ -6,11 +6,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: tracking-python
-ms.openlocfilehash: c88ace8693d15a58c78c70ba46001c98e92fc0a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6b9cf3f76afecb1e6f7ad00a18eb7290b8decb5f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84559987"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056064"
 ---
 # <a name="azure-blob-storage-trigger-for-azure-functions"></a>適用于 Azure Functions 的 Azure Blob 儲存體觸發程式
 
@@ -202,7 +203,7 @@ public void run(
 
 * [BlobTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Blobs/BlobTriggerAttribute.cs)
 
-  該屬性的建構函式採用路徑字串，指示要監看的容器以及可選的 [Blob 名稱模式](#blob-name-patterns)。 以下是範例：
+  該屬性的建構函式採用路徑字串，指示要監看的容器以及可選的 [Blob 名稱模式](#blob-name-patterns)。 以下為範例：
 
   ```csharp
   [FunctionName("ResizeImage")]
@@ -280,7 +281,7 @@ Python 指令碼不支援屬性。
 |**direction** | n/a | 必須設為 `in`。 當您在 Azure 入口網站中建立觸發程序時，會自動設定此屬性。 例外狀況在[使用方式](#usage)一節中會加以說明。 |
 |**name** | n/a | 表示函式程式碼中 Blob 的變數名稱。 |
 |**path** | **BlobPath** |要監視的[容器](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources)。  可能是 [Blob 名稱模式](#blob-name-patterns)。 |
-|**connection** | **[連接]** | 應用程式設定的名稱包含要用於此繫結的儲存體連接字串。 如果應用程式設定名稱是以「AzureWebJobs」開頭，於此僅能指定名稱的其餘部分。 例如，如果您將 `connection` 設定為「MyStorage」，則函式執行階段會尋找名稱為「AzureWebJobsMyStorage」的應用程式設定。 如果您將 `connection` 保留空白，則函式執行階段會使用應用程式設定中名稱為 `AzureWebJobsStorage` 的預設儲存體連接字串。<br><br>連接字串必須是用於一般用途的儲存體帳戶，而不是[Blob 儲存體帳戶](../storage/common/storage-account-overview.md#types-of-storage-accounts)。|
+|**connection** | **連線** | 應用程式設定的名稱包含要用於此繫結的儲存體連接字串。 如果應用程式設定名稱是以「AzureWebJobs」開頭，於此僅能指定名稱的其餘部分。 例如，如果您將 `connection` 設定為「MyStorage」，則函式執行階段會尋找名稱為「AzureWebJobsMyStorage」的應用程式設定。 如果您將 `connection` 保留空白，則函式執行階段會使用應用程式設定中名稱為 `AzureWebJobsStorage` 的預設儲存體連接字串。<br><br>連接字串必須是用於一般用途的儲存體帳戶，而不是[Blob 儲存體帳戶](../storage/common/storage-account-overview.md#types-of-storage-accounts)。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -300,7 +301,7 @@ Python 指令碼不支援屬性。
 
 # <a name="python"></a>[Python](#tab/python)
 
-透過輸入為[InputStream](https://docs.microsoft.com/python/api/azure-functions/azure.functions.inputstream?view=azure-python)的參數來存取 blob 資料。 如需詳細資訊，請參閱[觸發程式範例](#example)。
+透過輸入為[InputStream](/python/api/azure-functions/azure.functions.inputstream?view=azure-python)的參數來存取 blob 資料。 如需詳細資訊，請參閱[觸發程式範例](#example)。
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -411,7 +412,7 @@ Blob 觸發程序會在內部使用佇列，因此並行函式叫用數上限由
 
 取用[方案](functions-scale.md#how-the-consumption-and-premium-plans-work)會將一部虛擬機器（VM）上的函數應用程式限制為 1.5 GB 的記憶體。 每個並行執行的函式執行個體和函式執行階段本身都會使用記憶體。 如果 Blob 觸發的函式將整個 Blob 載入記憶體中，則該函式用於 Blob 的記憶體上限為 24 * Blob 大小上限。 例如，若某個函式應用程式有三個 Blob 觸發的函式，則預設的每一 VM 並行存取上限將是 3 * 24 = 72 個函式叫用。
 
-JavaScript 和 Java 函式會將整個 Blob 載入記憶體中，而 C# 函式則會在您繫結至 `string`、`Byte[]` 或 POCO 時有此行為。
+JavaScript 和 JAVA 函式會將整個 blob 載入記憶體中，而如果您系結至、或，則 c # 函式會執行此工作 `string` `Byte[]` 。
 
 ## <a name="polling"></a>輪詢
 

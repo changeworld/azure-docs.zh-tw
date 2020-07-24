@@ -13,11 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 09/12/2019
 ms.author: cynthn
-ms.openlocfilehash: 2e97442d4104f52c1a76ba8cd1d81c99508bb242
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cc442886c4c4c26db5f5cde908ea647e2ee2f1bf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81605194"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87059023"
 ---
 # <a name="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure"></a>在 Azure 中安裝和設定遠端桌面，以連接至 Linux VM
 在 Azure 中的 Linux 虛擬機器 (VM) 通常是使用安全殼層 (SSH) 連接從命令列管理。 如果是 Linux 的新手，或者是快速疑難排解的案例，使用遠端桌面可能會比較容易。 本文將詳細說明如何使用 Resource Manager 部署模型為您的 Linux VM 安裝和設定桌面環境 ([xfce](https://www.xfce.org)) 和遠端桌面 ([xrdp](http://xrdp.org))。
@@ -132,11 +133,10 @@ tail -f /var/log/syslog
 
 Red Hat Enterprise Linux 和 SUSE 等其他 Linux 散發重新啟動服務的方式可能有所不同，要檢閱的記錄檔位置也不同。
 
-如果您未在遠端桌面用戶端收到任何回應，而且在系統記錄檔中看不到任何事件，這種行為表示遠端桌面流量無法觸達 VM。 檢閱網路安全性群組規則，以確保您擁有規則以允許連接埠 3389 上的 TCP。 如需詳細資訊，請參閱[針對應用程式連線能力問題進行疑難排解](../windows/troubleshoot-app-connection.md)。
+如果您未在遠端桌面用戶端收到任何回應，而且在系統記錄檔中看不到任何事件，這種行為表示遠端桌面流量無法觸達 VM。 檢閱網路安全性群組規則，以確保您擁有規則以允許連接埠 3389 上的 TCP。 如需詳細資訊，請參閱[針對應用程式連線能力問題進行疑難排解](../troubleshooting/troubleshoot-app-connection.md)。
 
 
 ## <a name="next-steps"></a>後續步驟
 如需有關建立和使用 SSH 金鑰與 Linux VM 的詳細資訊，請參閱[在 Azure 中為 Linux VM 建立 SSH 金鑰](mac-create-ssh-keys.md)。
 
 如需從 Windows 使用 SSH 的詳細資訊，請參閱[如何以 Windows 使用 SSH 金鑰](ssh-from-windows.md)。
-

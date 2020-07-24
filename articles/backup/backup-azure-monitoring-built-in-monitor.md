@@ -4,11 +4,12 @@ description: 在本文中，您將瞭解使用 Azure 入口網站 Azure 備份�
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: f4b91302723119e707d12a86480bbaff2eb4bec5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 645bf701a8f8561b2cb4f19378036ada82c4bedd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84485096"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87054543"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>監視 Azure 備份工作負載
 
@@ -27,7 +28,7 @@ Azure 備份針對受 Azure 備份保護的工作負載，提供內建的監視�
 - Azure VM 備份
 - Azure 檔案備份
 - Azure 工作負載備份，例如 SQL 和 SAP Hana
-- Azure 備份代理程式 (MAB)
+- Microsoft Azure 復原服務 (MARS) 代理程式
 
 系統不會顯示來自 System Center Data Protection Manager （SC-DPM）、Microsoft Azure 備份 Server （MABS）的作業。
 
@@ -43,7 +44,7 @@ Azure 備份針對受 Azure 備份保護的工作負載，提供內建的監視�
 下列案例是由服務定義為打斷案例。
 
 - 備份/還原失敗
-- 備份成功但有 Azure 備份代理程式 (MAB) 的警告
+- 備份成功，並出現 Microsoft Azure 復原服務（MARS）代理程式的警告
 - 使用 [刪除資料] 停止保護 [保留資料]/[停止保護]
 
 ### <a name="alerts-from-the-following-azure-backup-solutions-are-shown-here"></a>下列 Azure 備份解決方案的警示如下所示
@@ -51,7 +52,7 @@ Azure 備份針對受 Azure 備份保護的工作負載，提供內建的監視�
 - Azure VM 備份
 - Azure 檔案備份
 - Azure 工作負載備份，例如 SQL、SAP Hana
-- Azure 備份代理程式 (MAB)
+- Microsoft Azure 復原服務 (MARS) 代理程式 
 
 > [!NOTE]
 > 這裡不會顯示來自 System Center Data Protection Manager （SC-DPM）、Microsoft Azure 備份 Server （MABS）的警示。

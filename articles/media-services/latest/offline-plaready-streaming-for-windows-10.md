@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/01/2019
 ms.author: willzhan
-ms.openlocfilehash: 63b835d5d6c442f19f6d1fbe1710547ab96e1b40
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d5d6c7738516337b3db90bbc5d1a94515e96b3ce
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82160234"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87060590"
 ---
 # <a name="offline-playready-streaming-for-windows-10-with-media-services-v3"></a>適用于 Windows 10 的離線 PlayReady 串流（含媒體服務 v3）
 
@@ -44,7 +44,7 @@ Azure 媒體服務支援在具備 DRM 保護的情況下離線下載/播放。 �
 * 許多播放器和編碼器工具支援 MP4，但 MP4 容器與 DRM 並未綁定，因此彼此之間沒有約束力；
 * 長期來看，可以使用 CFF 搭配 CENC。 但是目前工具/播放器支援生態系統尚未成形。 而我們現在就需要一個解決方案。
  
-這個概念是：將採用 H264/AAC 的 Smooth Streaming ([PIFF](https://docs.microsoft.com/iis/media/smooth-streaming/protected-interoperable-file-format)) 檔案格式與 PlayReady (AES-128 CTR) 綁定，並產生約束力。 個別 Smooth Streaming .ismv 檔案 (假設影片中的音訊是多工的) 本身是 fMP4，而且可用於播放。 如果 Smooth Streaming 內容透過 PlayReady 加密，每個 .ismv 檔案都會變成受 PlayReady 保護的分散式 MP4。 我們可以選擇具備偏好位元速率的 .ismv 檔案，然後將它重新命名為 .mp4 以用於下載。
+這個概念是：將採用 H264/AAC 的 Smooth Streaming ([PIFF](/iis/media/smooth-streaming/protected-interoperable-file-format)) 檔案格式與 PlayReady (AES-128 CTR) 綁定，並產生約束力。 個別 Smooth Streaming .ismv 檔案 (假設影片中的音訊是多工的) 本身是 fMP4，而且可用於播放。 如果 Smooth Streaming 內容透過 PlayReady 加密，每個 .ismv 檔案都會變成受 PlayReady 保護的分散式 MP4。 我們可以選擇具備偏好位元速率的 .ismv 檔案，然後將它重新命名為 .mp4 以用於下載。
 
 裝載受 PlayReady 保護的 MP4 以用於漸進式下載時有兩個選項可選擇：
 
@@ -122,6 +122,6 @@ private async void LoadUri_Click(object sender, RoutedEventArgs e)
 * PlayReady 授權傳遞服務可以從 Azure 媒體服務或其他位置提供；
 * 所準備的 Smooth Streaming 內容仍可用來透過 DASH 進行線上串流，或使用 PlayReady 以 DRM 內容的方式進行串流。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 [設計具有存取控制的多重 DRM 內容保護系統](design-multi-drm-system-with-access-control.md)

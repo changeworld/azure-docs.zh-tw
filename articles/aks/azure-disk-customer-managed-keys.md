@@ -1,22 +1,19 @@
 ---
-title: '在 Azure Kubernetes Service (AKS 中使用客戶管理的金鑰來加密 Azure 磁片) '
-description: 攜帶您自己的金鑰 (BYOK) ，以加密 AKS OS 和資料磁片。
+title: 在 Azure Kubernetes Service （AKS）中使用客戶管理的金鑰來加密 Azure 磁片
+description: 攜帶您自己的金鑰（BYOK）來加密 AKS OS 和資料磁片。
 services: container-service
 ms.topic: article
-ms.date: 01/12/2020
-ms.openlocfilehash: 6452facc999456c35aa5d1c3bfe6b2f59141b7c5
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 07/17/2020
+ms.openlocfilehash: d8443c9c7a0af7bfb7f146904c913663d82786b8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252040"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87057299"
 ---
-# <a name="bring-your-own-keys-byok-with-azure-disks-in-azure-kubernetes-service-aks"></a>使用 Azure Kubernetes Service (AKS 中的 Azure 磁片，讓您自己的金鑰 (BYOK) ) 
+# <a name="bring-your-own-keys-byok-with-azure-disks-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service （AKS）中攜帶您自己的金鑰（BYOK）與 Azure 磁片
 
 Azure 儲存體會加密待用儲存體帳戶中的所有資料。 根據預設，資料是以使用 Microsoft 管理的金鑰加密。 若要進一步控制加密金鑰，您可以為 AKS 叢集的 OS 和資料磁片提供[客戶管理的金鑰][customer-managed-keys]，以用於待用加密。
-
-> [!NOTE]
-> 在支援 Azure 受控磁片之伺服器端加密的[azure 區域][supported-regions]中，會提供 BYOK Linux 和 Windows 型的 AKS 叢集。
 
 ## <a name="before-you-begin"></a>開始之前
 
@@ -110,7 +107,7 @@ az aks create -n myAKSCluster -g myResourceGroup --node-osdisk-diskencryptionset
 
 將新的節點集區新增至上面建立的叢集時，會使用在建立期間提供的客戶管理金鑰來加密 OS 磁片。
 
-## <a name="encrypt-your-aks-cluster-data-diskoptional"></a> (選擇性) 將您的 AKS 叢集資料磁片加密
+## <a name="encrypt-your-aks-cluster-data-diskoptional"></a>加密您的 AKS 叢集資料磁片（選擇性）
 如果未針對1.17.2 的資料磁片提供金鑰，則 OS 磁片加密金鑰將用來加密資料磁片，而且您也可以使用其他金鑰將 AKS 資料磁片加密。
 
 > [!IMPORTANT]
@@ -164,12 +161,11 @@ kubectl apply -f byok-azure-disk.yaml
 
 ## <a name="limitations"></a>限制
 
-* BYOK 目前僅適用于特定[Azure 區域][supported-regions]中的 GA 和預覽
 * Kubernetes 1.17 版和更新版本支援的資料磁片加密   
 * 僅適用于支援 BYOK 的區域
 * 使用客戶管理的金鑰加密目前僅適用于新的 AKS 叢集，無法升級現有的叢集
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 審查[AKS 叢集安全性的最佳做法][best-practices-security]
 

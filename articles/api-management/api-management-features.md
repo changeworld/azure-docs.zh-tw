@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/01/2019
+ms.date: 07/15/2020
 ms.author: apimpm
-ms.openlocfilehash: c0cabab6f867df918c4ac86d035918c483e12da9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7ec89d985c025814d903ae9a16f9b0f5123b3571
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82203163"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056433"
 ---
 # <a name="feature-based-comparison-of-the-azure-api-management-tiers"></a>Azure API 管理層的功能式比較
 
@@ -42,7 +42,7 @@ ms.locfileid: "82203163"
 | [備份與還原](api-management-howto-disaster-recovery-backup-restore.md)               | 否          | 是       | 是   | 是      | 是     |
 | [透過 Git 管理](api-management-configuration-repository-git.md)                        | 否          | 是       | 是   | 是      | 是     |
 | 直接管理 API                                                                        | 否          | 是       | 是   | 是      | 是     |
-| Azure 監視器記錄和計量                                                               | 否          | 是       | 是   | 是      | 是     |
+| Azure 監視器記錄和計量                                                               | 是         | 是       | 是   | 是      | 是     |
 | 靜態 IP                                                                                    | 否          | 是       | 是   | 是      | 是     |
 
 <sup>1</sup>可在開發人員入口網站上，使用 Azure AD （和 Azure AD B2C）做為使用者登入的身分識別提供者。<br/>

@@ -5,30 +5,31 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: conceptual
-ms.date: 06/27/2019
+ms.date: 07/20/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca08b81a71cd61e727b11bbeb88c0c235d25c5e6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3839c7b87e5d07368727d037b585965dce91303a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85554902"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87058096"
 ---
 # <a name="azure-ad-joined-devices"></a>Azure AD 加入裝置
 
 Azure AD Join 適用於想要成為雲端優先或僅限雲端的組織。 任何組織都可以部署加入 Azure AD 的裝置，不論其大小或產業為何。 Azure AD Join 即使在混合式環境中也可以運作，可讓您同時存取雲端及內部部署應用程式與資源。
 
-| Azure AD Join | Description |
+| Azure AD Join | 描述 |
 | --- | --- |
 | **[定義]** | 僅加入到需要組織帳戶才能登入裝置的 Azure AD |
 | **主要對象** | 適用於僅限雲端和混合式組織。 |
 |   | 適用於組織中的所有使用者 |
 | **裝置擁有權** | 組織 |
 | **作業系統** | 所有 Windows 10 裝置 |
+|   | [在 Azure 中執行的 Windows Server 2019 虛擬機器](howto-vm-sign-in-azure-ad-windows.md)（不支援 Server core） |
 | **佈建** | 自助：Windows OOBE 或設定 |
 |   | 大量註冊 |
 |   | Windows Autopilot |

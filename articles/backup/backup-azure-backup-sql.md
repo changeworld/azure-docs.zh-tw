@@ -3,11 +3,12 @@ title: 將 SQL Server 備份至 Azure 做為 DPM 工作負載
 description: 使用 Azure 備份服務備份 SQL Server 資料庫的簡介
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: f6a612bc56d1fa6b70ac89ed48f28d1ae48da2e6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dd091f9446cafdb6ff91ae5679c703e07457169c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84195784"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87055382"
 ---
 # <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>將 SQL Server 備份至 Azure 做為 DPM 工作負載
 
@@ -21,7 +22,35 @@ ms.locfileid: "84195784"
 1. 在 Azure 中建立隨選備份複本。
 1. 從 Azure 復原資料庫。
 
-## <a name="before-you-start"></a>在您開始使用 Intune 之前
+## <a name="prerequisites-and-limitations"></a>必要條件和限制
+
+* 如果您有一個資料庫上其檔案位於遠端的檔案共用，則保護將會失敗，錯誤識別碼為 104。 DPM 不支援保護遠端檔案共用上的 SQL Server 資料。
+* DPM 無法保護儲存在遠端 SMB 共用上的資料庫。
+* 請確定[可用性群組複本已設定為唯讀](/sql/database-engine/availability-groups/windows/configure-read-only-access-on-an-availability-replica-sql-server?view=sql-server-ver15)。
+* 您必須明確地將系統帳戶**NTAuthority\System**新增至 SQL Server 上的 Sysadmin 群組。
+* 當您執行部分自主資料庫的替代位置復原時，您必須確定目標 SQL 實例已啟用「自主[資料庫](/sql/relational-databases/databases/migrate-to-a-partially-contained-database?view=sql-server-ver15#enable)」功能。
+* 當您針對檔案資料流程資料庫執行替代位置復原時，必須確定目標 SQL 實例已啟用「檔案[資料流程資料庫](/sql/relational-databases/blob/enable-and-configure-filestream?view=sql-server-ver15)」功能。
+* 保護 SQL Server AlwaysOn：
+  * DPM 在保護群組建立之際執行查詢時，會偵測可用性群組。
+  * DPM 會偵測容錯移轉和資料庫的連續保護。
+  * DPM 支援 SQL Server 執行個體的多站台叢集設定。
+* 當您保護使用 AlwaysOn 功能的資料庫時，DPM 有下列限制：
+  * DPM 將會根據備份喜好設定，採用 SQL Server 中設定的可用性群組備份原則，如下所示：
+    * 慣用次要：除非主要複本是唯一的線上複本，否則應在次要複本上執行備份。 如果有多個次要複本可用，則會選取具有最高備份優先權的節點進行備份。 如果只有主要複本可用，則應該在主要複本上進行備份。
+    * 僅次要：不應在主要複本上執行備份。 如果主要複本是唯一的線上複本，則不應進行備份。
+    * 主要備份：您應該一律在主要複本上進行備份。
+    * 任何複本：備份可以在可用性群組中的任何可用性複本上執行。 作為備份來源的節點將依據每個節點的備份優先順序而定。
+  * 請注意：
+    * 備份可能會從任何可讀取的複本（也就是主要、同步次要、非同步次要）進行。
+    * 如果從備份中排除任何複本，例如 [**排除複本**] 已啟用或標示為 [無法讀取]，則不會在任何選項下選取該複本進行備份。
+    * 如果有多個複本可用且可讀取，則會選取備份優先順序最高的節點進行備份。
+    * 如果在選取的節點上備份失敗，則備份作業會失敗。
+    * 不支援復原到原始位置。
+* SQL Server 2014 或以上的備份問題：
+  * SQL server 2014 新增了新功能，可為[Windows Azure Blob 儲存體中的內部部署 SQL Server 建立資料庫](/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure?view=sql-server-ver15)。 DPM 無法用來保護此設定。
+  * SQL AlwaysOn 選項的「偏好次要」備份喜好設定有一些已知問題。 DPM 一律會從次要複本進行備份。 如果找不到次要複本，則備份會失敗。
+
+## <a name="before-you-start"></a>開始之前
 
 開始之前，請確定您已符合使用 Azure 備份來保護工作負載的[必要條件](backup-azure-dpm-introduction.md#prerequisites-and-limitations)。 以下是一些必要的工作：
 

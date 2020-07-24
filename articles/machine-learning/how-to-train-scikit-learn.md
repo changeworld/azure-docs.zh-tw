@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.date: 03/09/2020
 ms.custom: seodec18, tracking-python
-ms.openlocfilehash: 525dd90f37175dc5b2b50bc577a5a4f04649555b
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 3669bfb10a990f042d1470fbabee19809a6785cc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146384"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87060696"
 ---
 # <a name="build-scikit-learn-models-at-scale-with-azure-machine-learning"></a>組建 scikit-learn-以 Azure Machine Learning 大規模學習模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -26,7 +26,7 @@ ms.locfileid: "86146384"
 
 無論您是從基礎開始訓練機器學習服務 scikit-learn-學習模型，或將現有的模型帶入雲端，您都可以使用 Azure Machine Learning，使用彈性雲端計算資源來相應放大開放原始碼訓練作業。 您可以使用 Azure Machine Learning 來建立、部署、版本及監視生產層級模型。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 在下列任一環境中執行此程式碼：
  - Azure Machine Learning 計算執行個體 - 不需要下載或安裝
@@ -104,7 +104,7 @@ shutil.copy('./train_iris.py', project_folder)
 
 建立要在其上執行之 scikit-learn 學習作業的計算目標。 Scikit-learn-瞭解僅支援單一節點，CPU 運算。
 
-下列程式碼會為您的遠端訓練計算資源建立 Azure Machine Learning 受控計算 (AmlCompute) 。 建立 AmlCompute 大約需要5分鐘的時間。 如果具有該名稱的 AmlCompute 已經在您的工作區中，此程式碼將會略過建立進程。
+下列程式碼會為您的遠端訓練計算資源建立 Azure Machine Learning 受控計算（AmlCompute）。 建立 AmlCompute 大約需要5分鐘的時間。 如果具有該名稱的 AmlCompute 已經在您的工作區中，此程式碼將會略過建立進程。
 
 ```Python
 cluster_name = "cpu-cluster"
@@ -121,6 +121,8 @@ except ComputeTargetException:
 
     compute_target.wait_for_completion(show_output=True, min_node_count=None, timeout_in_minutes=20)
 ```
+
+[!INCLUDE [low-pri-note](../../includes/machine-learning-low-pri-vm.md)]
 
 如需計算目標的詳細資訊，請參閱[什麼是計算目標一](concept-compute-target.md)文。
 
@@ -199,9 +201,9 @@ model = run.register_model(model_name='sklearn-iris',
 
 您剛註冊的模型可以使用與 Azure Machine Learning 中任何其他已註冊的模型完全相同的方式來部署，不論您用於定型的估計工具為何。 部署如何包含註冊模型的區段，但您可以直接跳到建立部署的[計算目標](how-to-deploy-and-where.md#choose-a-compute-target)，因為您已經有已註冊的模型。
 
-### <a name="preview-no-code-model-deployment"></a> (預覽) 無程式碼模型部署
+### <a name="preview-no-code-model-deployment"></a>預覽無程式碼模型部署
 
-除了傳統部署路由以外，您也可以使用無程式碼部署功能 (preview) 進行 scikit-learn-學習。 所有內建的 scikit-learn-學習模型類型都不支援任何程式碼模型部署。 藉由使用、和參數來註冊您的模型（如上所示 `model_framework` `model_framework_version` ）， `resource_configuration` 您可以直接使用靜態函式 [`deploy()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) 來部署您的模型。
+除了傳統部署路由以外，您也可以使用無程式碼部署功能（預覽）進行 scikit-learn-學習。 所有內建的 scikit-learn-學習模型類型都不支援任何程式碼模型部署。 藉由使用、和參數來註冊您的模型（如上所示 `model_framework` `model_framework_version` ）， `resource_configuration` 您可以直接使用靜態函式 [`deploy()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) 來部署您的模型。
 
 ```python
 web_service = Model.deploy(ws, "scikit-learn-service", [model])

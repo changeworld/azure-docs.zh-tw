@@ -3,11 +3,12 @@ title: 監視和記錄-Azure
 description: 本文提供有關 IoT Edge 監視和記錄的即時影片分析總覽。
 ms.topic: reference
 ms.date: 04/27/2020
-ms.openlocfilehash: 807b0623159e0b50285b89da2835e9dd6cb037aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 82e4a5879e4c88e462edcddb02866ec9b671d7fe
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84260571"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87060450"
 ---
 # <a name="monitoring-and-logging"></a>監視和記錄
 
@@ -97,7 +98,7 @@ IoT Edge 上的即時影片分析會根據下列分類來發出事件或遙測�
      }
    }
    ```
-模組發出的事件會傳送至[IoT Edge 中樞](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub)，然後從該處路由傳送至其他目的地。 
+模組發出的事件會傳送至[IoT Edge 中樞](../../iot-edge/iot-edge-runtime.md#iot-edge-hub)，然後從該處路由傳送至其他目的地。 
 
 ## <a name="controlling-events"></a>控制事件
 
@@ -109,7 +110,7 @@ IoT Edge 上的即時影片分析會根據下列分類來發出事件或遙測�
    
 分析事件是由節點（例如，動作偵測處理器或 HTTP 擴充處理器）所產生，而 IoT 中樞接收則是用來將它們傳送至 IoT Edge 中樞。 
 
-您可以透過 $edgeHub 模組對應項的所需屬性來控制[所有上述事件的路由](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes)（在部署資訊清單中）：
+您可以透過 $edgeHub 模組對應項的所需屬性來控制[所有上述事件的路由](../../iot-edge/module-composition.md#declare-routes)（在部署資訊清單中）：
 
 ```
  "$edgeHub": {
@@ -125,14 +126,14 @@ IoT Edge 上的即時影片分析會根據下列分類來發出事件或遙測�
  }
 ```
 
-在上述的中，lvaEdge 是 IoT Edge 模組上即時影片分析的名稱，而路由規則會遵循[declare](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes)route 中定義的架構。
+在上述的中，lvaEdge 是 IoT Edge 模組上即時影片分析的名稱，而路由規則會遵循[declare](../../iot-edge/module-composition.md#declare-routes)route 中定義的架構。
 
 > [!NOTE]
 > 為了確保分析事件會到達 IoT Edge 中樞，必須有任何動作偵測處理器節點和/或任何 HTTP 擴充處理器節點下游的 IoT 中樞接收節點。
 
 ## <a name="event-schema"></a>結構描述
 
-事件源自于 Edge 裝置，並可在邊緣或雲端中使用。 即時影片分析在 IoT Edge 上所產生的事件，符合由 Azure IoT 中樞所建立的[串流訊息模式](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct)，包含系統屬性、應用程式屬性和主體。
+事件源自于 Edge 裝置，並可在邊緣或雲端中使用。 即時影片分析在 IoT Edge 上所產生的事件，符合由 Azure IoT 中樞所建立的[串流訊息模式](../../iot-hub/iot-hub-devguide-messages-construct.md)，包含系統屬性、應用程式屬性和主體。
 
 ### <a name="summary"></a>摘要
 
@@ -148,7 +149,7 @@ IoT Edge 上的即時影片分析會根據下列分類來發出事件或遙測�
 |body|body  |物件 (object)|    特定事件資料。|
 |dataVersion    |applicationProperty|   字串  |{主要}。刻度|
 
-### <a name="properties"></a>屬性
+### <a name="properties"></a>[內容]
 
 #### <a name="message-id"></a>message-id
 
@@ -179,7 +180,7 @@ Subject 屬性可讓泛型事件對應到其產生的模組。 例如，如果�
 
 #### <a name="event-classes"></a>事件類別
 
-|類別名稱|Description|
+|類別名稱|描述|
 |---|---|
 |分析  |在內容分析過程中產生的事件。|
 |診斷    |有助於診斷問題和效能的事件。|
@@ -199,7 +200,7 @@ Subject 屬性可讓泛型事件對應到其產生的模組。 例如，如果�
 
 ## <a name="logging"></a>記錄
 
-和其他 IoT Edge 模組一樣，您也可以檢查 Edge 裝置上[的容器記錄](https://docs.microsoft.com/azure/iot-edge/troubleshoot#check-container-logs-for-issues)。 寫入記錄檔的資訊可由[下列模組](module-twin-configuration-schema.md)對應項屬性控制：
+和其他 IoT Edge 模組一樣，您也可以檢查 Edge 裝置上[的容器記錄](../../iot-edge/troubleshoot.md#check-container-logs-for-issues)。 寫入記錄檔的資訊可由[下列模組](module-twin-configuration-schema.md)對應項屬性控制：
 
 * logLevel
 
@@ -221,7 +222,7 @@ Subject 屬性可讓泛型事件對應到其產生的模組。 例如，如果�
 
 在某些情況下，您可能需要產生比上面所述更詳細的記錄，以協助 Azure 支援解決問題。 有兩個步驟可完成此動作。
 
-首先，您可以透過 createOptions 將[模組儲存體連結至裝置存放裝置](https://docs.microsoft.com/azure/iot-edge/how-to-access-host-storage-from-module#link-module-storage-to-device-storage)。 如果您從快速入門檢查[部署資訊清單範本](https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp/blob/master/src/edge/deployment.template.json)，您將會看到：
+首先，您可以透過 createOptions 將[模組儲存體連結至裝置存放裝置](../../iot-edge/how-to-access-host-storage-from-module.md#link-module-storage-to-device-storage)。 如果您從快速入門檢查[部署資訊清單範本](https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp/blob/master/src/edge/deployment.template.json)，您將會看到：
 
 ```
 "createOptions": {
@@ -242,6 +243,6 @@ Subject 屬性可讓泛型事件對應到其產生的模組。 例如，如果�
 
 [常見問題集](faq.md#monitoring-and-metrics)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 [連續影片錄製](continuous-video-recording-tutorial.md)

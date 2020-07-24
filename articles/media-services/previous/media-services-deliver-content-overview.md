@@ -1,25 +1,21 @@
 ---
-title: 將內容傳遞給客戶 | Microsoft Docs
+title: 將內容傳遞給客戶
 description: 本主題簡介當您利用 Azure 媒體服務傳遞內容時會涉及各個方面。
 services: media-services
-documentationcenter: ''
 author: Juliako
 manager: femila
-editor: ''
 ms.assetid: 89ede54a-6a9c-4814-9858-dcfbb5f4fed5
 ms.service: media-services
 ms.workload: media
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 60d75a23609e962547c8c753086e9bef1d4c84eb
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 7a6a717f663e6e1ee5c2371c35557c7c374246fa
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85956588"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87060360"
 ---
 # <a name="deliver-content-to-customers"></a>將內容傳遞給客戶
 當您將串流或點播視訊內容傳遞給客戶時，您的目標是在不同的網路條件下將高品質的視訊傳遞到各種裝置。
@@ -55,7 +51,7 @@ ms.locfileid: "85956588"
 
 如需詳細資訊，請參閱 [篩選器與動態資訊清單](media-services-dynamic-manifest-overview.md)。
 
-## <a name="locators"></a><a id="locators"/>定位器
+## <a name="locators"></a><a name="locators"></a>定位器
 若要提供 URL 給使用者，讓使用者可以利用這個 URL 來串流或下載內容，您必須先建立定位器來發佈您的資產。 定位器提供一個登入點，讓使用者可以存取資產包含的檔案。 媒體服務支援兩種類型的定位器：
 
 * OnDemandOrigin 定位器。 這些定位器可用來串流媒體 (例如，MPEG-DASH、HLS 或 Smooth Streaming) 或漸進式下載檔案。
@@ -70,9 +66,9 @@ ms.locfileid: "85956588"
 > 
 > 
 
-若要更新定位器的到期日，請使用 [REST](https://docs.microsoft.com/rest/api/media/operations/locator#update_a_locator) 或 [.NET](https://go.microsoft.com/fwlink/?LinkID=533259) API。 請注意，當您更新 SAS 定位器的到期日，URL 也會隨之變更。
+若要更新定位器的到期日，請使用 [REST](/rest/api/media/operations/locator#update_a_locator) 或 [.NET](https://go.microsoft.com/fwlink/?LinkID=533259) API。 請注意，當您更新 SAS 定位器的到期日，URL 也會隨之變更。
 
-定位器並不是用來控制每個使用者的權限。 您可以使用數位版權管理 (DRM) 方案，給予個別使用者不同的存取權限。 如需詳細資訊，請參閱 [保護媒體](https://msdn.microsoft.com/library/azure/dn282272.aspx)。
+定位器並不是用來控制每個使用者的權限。 您可以使用數位版權管理 (DRM) 方案，給予個別使用者不同的存取權限。 如需詳細資訊，請參閱 [保護媒體](/previous-versions/azure/dn282272(v=azure.100))。
 
 建立定位器時，由於 Azure 儲存體需要執行一些儲存體和傳播程序，因此有時候會延遲 30 秒的時間。
 
@@ -87,7 +83,7 @@ ms.locfileid: "85956588"
 
 如果您傳遞內容的來源串流端點是在2014年9月10日之後建立的，您只能透過 TLS 串流。 如果您的串流 URL 是根據 2014 年 9 月 10 日之後建立的串流端點，則 URL 會包含 "streaming.mediaservices.windows.net"。 包含 "origin.mediaservices.windows.net" （舊格式）的串流 Url 不支援 TLS。 如果您的 URL 是舊格式，而且您想要能夠透過 TLS 串流，請建立新的串流端點。 使用以新串流端點為基礎的 Url，透過 TLS 串流您的內容。
 
-## <a name="streaming-url-formats"></a><a id="URLs"/>Streaming URL 格式
+## <a name="streaming-url-formats"></a><a name="URLs"></a>Streaming URL 格式
 
 ### <a name="mpeg-dash-format"></a>MPEG-DASH 格式
 {串流端點名稱-媒體服務帳戶名稱}.streaming.mediaservices.windows.net/{定位器識別碼}/{檔案名稱}.ism/Manifest(format=mpd-time-csf)
@@ -155,7 +151,7 @@ HTTP： \/ /testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb2
 
 ## <a name="known-issues"></a>已知問題
 ### <a name="changes-to-smooth-streaming-manifest-version"></a>Smooth Streaming 資訊清單版本變更
-在 2016 年 7 月之前的服務版本 -- 使用動態封裝串流媒體編碼器標準、媒體編碼器高階工作流程或舊版 Azure 媒體編碼器所產生的資產時 -- 傳回的 Smooth Streaming 資訊清單會符合 2.0 版。 在 2.0 版中，片段持續期間不使用所謂的重複 ('r') 標籤。 例如：
+在 2016 年 7 月之前的服務版本 -- 使用動態封裝串流媒體編碼器標準、媒體編碼器高階工作流程或舊版 Azure 媒體編碼器所產生的資產時 -- 傳回的 Smooth Streaming 資訊清單會符合 2.0 版。 在 2.0 版中，片段持續期間不使用所謂的重複 ('r') 標籤。 例如:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -170,7 +166,7 @@ HTTP： \/ /testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb2
 </SmoothStreamingMedia>
 ```
 
-在 2016 年 7 月之後的服務版本中，產生的 Smooth Streaming 資訊清單會符合 2.2 版，即片段持續時間使用重複標籤。 例如：
+在 2016 年 7 月之後的服務版本中，產生的 Smooth Streaming 資訊清單會符合 2.2 版，即片段持續時間使用重複標籤。 例如:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -192,4 +188,3 @@ HTTP： \/ /testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb2
 
 ## <a name="related-topics"></a>相關主題
 [啟動儲存體金鑰之後更新媒體服務定位器](media-services-roll-storage-access-keys.md)
-

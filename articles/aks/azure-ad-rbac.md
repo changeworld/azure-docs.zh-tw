@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: 瞭解如何使用 Azure Kubernetes Service （AKS）中的角色型存取控制（RBAC），以 Azure Active Directory 群組成員資格來限制對叢集資源的存取
 services: container-service
 ms.topic: article
-ms.date: 04/16/2019
-ms.openlocfilehash: bb48e4f72506a69969cae39810640d23d771bde3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/21/2020
+ms.openlocfilehash: 646b1b5fb5079f0b959aaa2337c1dbab09ff4134
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86106079"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87057334"
 ---
 # <a name="control-access-to-cluster-resources-using-role-based-access-control-and-azure-active-directory-identities-in-azure-kubernetes-service"></a>使用 Azure Kubernetes Service 中的角色型存取控制和 Azure Active Directory 身分識別，來控制叢集資源的存取權
 
@@ -137,7 +137,7 @@ kubectl create namespace dev
 
 ```yaml
 kind: Role
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: dev-user-full-access
   namespace: dev
@@ -168,7 +168,7 @@ az ad group show --group appdev --query objectId -o tsv
 
 ```yaml
 kind: RoleBinding
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: dev-user-access
   namespace: dev
@@ -202,7 +202,7 @@ kubectl create namespace sre
 
 ```yaml
 kind: Role
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: sre-user-full-access
   namespace: sre
@@ -233,7 +233,7 @@ az ad group show --group opssre --query objectId -o tsv
 
 ```yaml
 kind: RoleBinding
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: sre-user-access
   namespace: sre
@@ -266,13 +266,13 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster --ov
 使用*dev*命名空間中的[kubectl run][kubectl-run]命令來排程基本 NGINX pod：
 
 ```console
-kubectl run --generator=run-pod/v1 nginx-dev --image=nginx --namespace dev
+kubectl run nginx-dev --image=nginx --namespace dev
 ```
 
 在登入提示中，輸入您自己在發行 `appdev@contoso.com` 項開始時所建立之帳戶的認證。 成功登入之後，就會快取帳戶權杖以供未來的命令之用 `kubectl` 。 已成功排程 NGINX，如下列範例輸出所示：
 
 ```console
-$ kubectl run --generator=run-pod/v1 nginx-dev --image=nginx --namespace dev
+$ kubectl run nginx-dev --image=nginx --namespace dev
 
 To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code B24ZD6FP8 to authenticate.
 
@@ -313,7 +313,7 @@ Error from server (Forbidden): pods is forbidden: User "aksdev@contoso.com" cann
 以同樣的方式，嘗試在不同的命名空間（例如*sre*命名空間）中排程 pod。 使用者的群組成員資格不會與 Kubernetes 角色和接著一致，以授與這些許可權，如下列範例輸出所示：
 
 ```console
-$ kubectl run --generator=run-pod/v1 nginx-dev --image=nginx --namespace sre
+$ kubectl run nginx-dev --image=nginx --namespace sre
 
 Error from server (Forbidden): pods is forbidden: User "aksdev@contoso.com" cannot create resource "pods" in API group "" in the namespace "sre"
 ```
@@ -331,14 +331,14 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster --ov
 嘗試在指派的*sre*命名空間中排程和觀看 pod。 出現提示時，使用您在 `opssre@contoso.com` 本文開頭建立的自己認證登入：
 
 ```console
-kubectl run --generator=run-pod/v1 nginx-sre --image=nginx --namespace sre
+kubectl run nginx-sre --image=nginx --namespace sre
 kubectl get pods --namespace sre
 ```
 
 如下列範例輸出所示，您可以成功建立並觀看 pod：
 
 ```console
-$ kubectl run --generator=run-pod/v1 nginx-sre --image=nginx --namespace sre
+$ kubectl run nginx-sre --image=nginx --namespace sre
 
 To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code BM4RHP3FD to authenticate.
 
@@ -354,7 +354,7 @@ nginx-sre   1/1     Running   0
 
 ```console
 kubectl get pods --all-namespaces
-kubectl run --generator=run-pod/v1 nginx-sre --image=nginx --namespace dev
+kubectl run nginx-sre --image=nginx --namespace dev
 ```
 
 這些 `kubectl` 命令會失敗，如下列範例輸出所示。 使用者的群組成員資格和 Kubernetes 角色和 RoleBindings 不會授與許可權來建立或管理其他命名空間中的資源：
@@ -363,7 +363,7 @@ kubectl run --generator=run-pod/v1 nginx-sre --image=nginx --namespace dev
 $ kubectl get pods --all-namespaces
 Error from server (Forbidden): pods is forbidden: User "akssre@contoso.com" cannot list pods at the cluster scope
 
-$ kubectl run --generator=run-pod/v1 nginx-sre --image=nginx --namespace dev
+$ kubectl run nginx-sre --image=nginx --namespace dev
 Error from server (Forbidden): pods is forbidden: User "akssre@contoso.com" cannot create pods in the namespace "dev"
 ```
 
@@ -388,7 +388,7 @@ az ad group delete --group appdev
 az ad group delete --group opssre
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 如需如何保護 Kubernetes 叢集的詳細資訊，請參閱[AKS 的存取和身分識別選項）][rbac-authorization]。
 

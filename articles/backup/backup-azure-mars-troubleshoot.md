@@ -4,12 +4,12 @@ description: 在本文中，您將瞭解如何針對 Azure 備份代理程式的
 ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/15/2019
-ms.openlocfilehash: ddff3ca8a89d8d5674be00fdebc70b0232cdbd13
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b810b5abfb15a39d19a0571b6ac36a6c86bf0b4f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539052"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87054640"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>針對 Microsoft Azure 復原服務（MARS）代理程式進行疑難排解
 
@@ -75,6 +75,12 @@ ms.locfileid: "86539052"
 | 錯誤  | 可能的原因 | 建議動作 |
 | ---     | ---     | ---    |
 | <br /><ul><li>Microsoft Azure 復原服務代理程式無法連接到 Microsoft Azure 備份。 （識別碼：100050）檢查您的網路設定，並確定您能夠連線到網際網路。<li>(407) 需要 Proxy 驗證。 |Proxy 正在封鎖連接。 |  <ul><li>在 Internet Explorer 中，移至 [**工具**] [  >  **Internet options**  >  **Security**  >  **Internet**]。 選取 [**自訂層級**]，並向下卷到 [檔案**下載**] 區段。 選取 [啟用]。<p>您也可能需要在 Internet Explorer 中將[url 和 IP 位址](install-mars-agent.md#verify-internet-access)新增至信任的網站。<li>變更設定以使用 Proxy 伺服器。 接著提供 Proxy 伺服器詳細資料。<li> 如果您的電腦具有有限的網際網路存取權，請確定電腦或 proxy 上的防火牆設定允許這些[url 和 IP 位址](install-mars-agent.md#verify-internet-access)。 <li>如果您已在伺服器上安裝防毒軟體，請將這些檔案從防毒軟體掃描中排除： <ul><li>CBEngine.exe (而不是 dpmra.exe)。<li>CSC.exe (與 .NET Framework 相關)。 伺服器上安裝的每個 .NET Framework 版本都有一個 CSC.exe。 在受影響的伺服器上排除所有 .NET Framework 版本的 CSC.exe 檔案。 <li>暫存檔案夾或快取位置。 <br>暫存檔案夾或快取路徑的預設位置是 C:\Program Files\Microsoft Azure Recovery Services Agent\scratch。<li>C:\Program Files\Microsoft Azure Recovery Services Agent\Bin. 的 bin 資料夾
+
+## <a name="the-specified-vault-credential-file-cannot-be-used-as-it-is-not-downloaded-from-the-vault-associated-with-this-server"></a>無法使用指定的保存庫認證檔，因為它不是從與此伺服器相關聯的保存庫下載的
+
+| 錯誤  | 可能的原因 | 建議動作 |
+| ---     | ---     | ---    |
+| 無法使用指定的保存庫認證檔，因為它不是從與此伺服器相關聯的保存庫下載。 （識別碼：100110）請提供適當的保存庫認證。 | 保存庫認證檔與此伺服器已註冊的保存庫不同。 | 確定目標電腦和來源電腦均已註冊到相同的復原服務保存庫。 如果目標伺服器已註冊到不同的保存庫，請使用 [**註冊伺服器**] 選項來註冊正確的保存庫。  
 
 ## <a name="backup-jobs-completed-with-warning"></a>備份作業已完成，但出現警告
 
@@ -217,7 +223,7 @@ Azure 備份可能未成功掛接復原磁碟區，即使數分鐘後仍未成�
 
 如果快取資料夾（也稱為「暫存檔案夾」）的設定不正確、缺少必要條件或限制存取，則備份作業可能會失敗。
 
-### <a name="prerequisites"></a>先決條件
+### <a name="prerequisites"></a>必要條件
 
 若要讓 MARS 代理程式作業成功，快取資料夾必須符合下列需求：
 

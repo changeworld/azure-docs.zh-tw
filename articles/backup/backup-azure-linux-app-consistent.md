@@ -4,11 +4,12 @@ description: 在 Azure 建立 Linux 虛擬機器的應用程式一致備份。 �
 ms.reviewer: anuragm
 ms.topic: conceptual
 ms.date: 01/12/2018
-ms.openlocfilehash: 36eeb9f63c67a01bf37412101e23be035596de94
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8d578df45235b3bef314245e4eb7a0976c4d48d6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74173014"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87054855"
 ---
 # <a name="application-consistent-backup-of-azure-linux-vms"></a>Azure Linux VM 的應用程式一致備份
 
@@ -64,7 +65,7 @@ ms.locfileid: "74173014"
 
     - **ScriptsExecutionPollTimeSeconds**：設定在每次輪詢與腳本執行之間，延伸模組必須進入睡眠狀態的時間。 例如，如果值為2，延伸模組會檢查前置/後置腳本執行是否每2秒完成一次。 其可接受的最小和最大值分別為1和5。 此值應嚴格為整數。
 
-6. 此指令碼架構現在已設定完成。 如果已經設定 VM 備份，則下次備份會叫用指令碼，並觸發應用程式一致備份。 如果未設定 VM 備份，則使用[將 Azure 虛擬機器備份到復原服務保存庫](https://docs.microsoft.com/azure/backup/backup-azure-vms-first-look-arm)來設定。
+6. 此指令碼架構現在已設定完成。 如果已經設定 VM 備份，則下次備份會叫用指令碼，並觸發應用程式一致備份。 如果未設定 VM 備份，則使用[將 Azure 虛擬機器備份到復原服務保存庫](./backup-azure-vms-first-look-arm.md)來設定。
 
 ## <a name="troubleshooting"></a>疑難排解
 
@@ -85,4 +86,4 @@ ms.locfileid: "74173014"
 
 ## <a name="next-steps"></a>後續步驟
 
-[設定 VM 備份至復原服務保存庫](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms)
+[設定 VM 備份至復原服務保存庫](./backup-azure-vms-first-look-arm.md)

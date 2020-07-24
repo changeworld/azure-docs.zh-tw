@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 03b9995eab503ac1fcd4615882419dde31d4f8bf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4025ace5c2609783a8d0f09b99d60537addb6f08
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "64869477"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87060112"
 ---
 # <a name="upload-files-into-a-media-services-account-using-net"></a>使用 .NET 將檔案上傳至媒體服務帳戶 
 
 > [!NOTE]
-> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
+> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](../latest/index.yml)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
 
 在媒體服務中，您可以將數位檔案上傳 (或內嵌) 到資產。 **資產**實體可以包含影片、音訊、影像、縮圖集合、文字播放軌和隱藏式輔助字幕檔案（以及這些檔案的相關中繼資料）。 檔案上傳之後，您的內容就會安全地儲存在雲端，以進行進一步的處理和串流。
 
@@ -299,7 +299,7 @@ IngestManifestAsset 會建立資產與大量 IngestManifest 的關聯，以進�
     var asset = UploadFile(@"C:\VideoFiles\BigBuckBunny.mp4", AssetCreationOptions.StorageEncrypted);
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 您現在可以將上傳的資產編碼。 如需詳細資訊，請參閱 [為資產編碼](media-services-portal-encode.md)。
 
@@ -311,8 +311,7 @@ IngestManifestAsset 會建立資產與大量 IngestManifest 的關聯，以進�
 ## <a name="provide-feedback"></a>提供意見反應
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="next-step"></a>下一步
+## <a name="next-step"></a>後續步驟
 您已將資產上傳至媒體服務，現在請移至 [如何取得媒體處理器][How to Get a Media Processor]一文。
 
 [How to Get a Media Processor]: media-services-get-media-processor.md
-

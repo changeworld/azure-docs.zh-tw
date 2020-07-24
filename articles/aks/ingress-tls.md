@@ -1,16 +1,16 @@
 ---
 title: 使用自動 TLS 建立輸入
 titleSuffix: Azure Kubernetes Service
-description: 瞭解如何安裝及設定 NGINX 輸入控制器，其使用「讓我們在 Azure Kubernetes Service (AKS) 叢集中自動產生 TLS 憑證的加密。
+description: 瞭解如何安裝及設定 NGINX 輸入控制器，其使用 Let's Encrypt 在 Azure Kubernetes Service （AKS）叢集中自動產生 TLS 憑證。
 services: container-service
 ms.topic: article
-ms.date: 04/27/2020
-ms.openlocfilehash: 9536d8ee6c1cab0d3ebd2648200683d454843760
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 07/21/2020
+ms.openlocfilehash: b25c431c7771e3c72280e936b2275f2fd10165b0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86251347"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056844"
 ---
 # <a name="create-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 上建立 HTTPS 輸入控制器
 
@@ -32,7 +32,7 @@ ms.locfileid: "86251347"
 
 本文也假設您在與 AKS 叢集相同的資源群組中，有一個[DNS 區域][dns-zone]的[自訂網域][custom-domain]。
 
-本文使用[Helm 3][helm]來安裝 NGINX 輸入控制器和 cert 管理員。 請確定您使用的是 Helm 的最新版本。 如需升級指示，請參閱[Helm 安裝][helm-install]檔。如需設定和使用 Helm 的詳細資訊，請參閱[在 Azure Kubernetes Service (AKS) 中使用 Helm 安裝應用程式][use-helm]。
+本文使用[Helm 3][helm]來安裝 NGINX 輸入控制器和 cert 管理員。 請確定您使用的是 Helm 的最新版本。 如需升級指示，請參閱[Helm 安裝][helm-install]檔。如需設定和使用 Helm 的詳細資訊，請參閱[在 Azure Kubernetes Service （AKS）中使用 Helm 安裝應用程式][use-helm]。
 
 本文也會要求您執行 Azure CLI 版本2.0.64 或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI][azure-cli-install]。
 
@@ -268,7 +268,7 @@ kubectl apply -f aks-helloworld-two.yaml --namespace ingress-basic
 使用下列範例 YAML 建立名為的檔案 `hello-world-ingress.yaml` 。 將 *hosts* 和 *host* 更新為您在上一個步驟中建立的 DNS 名稱。
 
 ```yaml
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: hello-world-ingress
@@ -294,7 +294,7 @@ spec:
           servicePort: 80
         path: /hello-world-two(/|$)(.*)
 ---
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: hello-world-ingress-static
@@ -398,7 +398,7 @@ kubectl delete -f hello-world-ingress.yaml --namespace ingress-basic
 kubectl delete namespace ingress-basic
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 本文包含 AKS 的一些外部元件。 若要深入了解這些元件，請參閱下列專案頁面：
 

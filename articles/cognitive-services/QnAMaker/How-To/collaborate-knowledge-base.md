@@ -2,13 +2,13 @@
 title: 在知識庫上共同作業-QnA Maker
 description: QnA Maker 可讓多位使用者對知識庫進行共同作業。 這項功能是連同 Azure 角色型存取控制一起提供。
 ms.topic: conceptual
-ms.date: 03/17/2020
-ms.openlocfilehash: 1a2908b4b65017f427682627ce5d83b186956a58
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 07/13/2020
+ms.openlocfilehash: 4c550a36dd045873df4bc4a382e1c884466f95ad
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650779"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87054051"
 ---
 # <a name="collaboration-with-authors-and-editors"></a>與作者和編輯者共同作業
 
@@ -30,15 +30,15 @@ QnA Maker 可讓多人共同處理相同 QnA Maker 資源中的所有知識庫�
 
 1. 登入[Azure](https://portal.azure.com/)入口網站，然後移至您的 QnA Maker 資源。
 
-    ![QnA Maker 資源清單](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-resource-list.PNG)
+    ![QnA Maker 資源清單](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-resource-list.png)
 
 1. 移至 [存取控制 (IAM)]**** 索引標籤。
 
-    ![QnA Maker IAM](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam.PNG)
+    ![QnA Maker IAM](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam.png)
 
 1. 選取 [新增]。
 
-    ![QnA Maker IAM 新增](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add.PNG)
+    ![QnA Maker IAM 新增](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add.png)
 
 1. 從下列清單中選取角色：
 
@@ -46,17 +46,23 @@ QnA Maker 可讓多人共同處理相同 QnA Maker 資源中的所有知識庫�
     |--|
     |擁有者|
     |參與者|
-    |QnA Maker 讀取器|
-    |QnA Maker 編輯器|
+    |認知服務 QnA Maker 讀取器|
+    |認知服務 QnA Maker 編輯器|
     |認知服務使用者|
 
-    ![QnA Maker IAM 新增角色](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add-role.PNG)
+    :::image type="content" source="../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-add-role-iam.png" alt-text="QnA Maker IAM 新增角色。":::
 
 1. 輸入使用者的電子郵件地址，然後按 [**儲存**]。
 
-    ![QnA Maker IAM 新增電子郵件](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add-email.PNG)
+    ![QnA Maker IAM 新增電子郵件](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add-email.png)
+
+### <a name="view-qna-maker-knowledge-bases"></a>View QnA Maker 知識庫
 
 當您將 QnA Maker 服務與登入[QnA Maker 入口網站](https://qnamaker.ai)的人員共用時，他們可以根據其角色查看該服務中的所有知識庫。
+
+當他們選取知識庫時，其在該 QnA Maker 資源上的目前角色會顯示在知識庫名稱旁邊。
+
+:::image type="content" source="../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-knowledge-base-role-name.png" alt-text="網頁左上角 [知識庫名稱] 旁的 [角色名稱] 以編輯模式的知識庫螢幕擷取畫面。":::
 
 ## <a name="next-steps"></a>後續步驟
 

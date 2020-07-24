@@ -3,12 +3,12 @@ title: 使用 Advisor 改善操作 excellency
 description: 使用 Azure Advisor，為您的 Azure 訂用帳戶優化並成熟您的營運卓越。
 ms.topic: article
 ms.date: 10/24/2019
-ms.openlocfilehash: 1cac5a3f93df8422a3896b1251857bf552731fb4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2b4c4726400134e4eec3868e155da47cb8c515b5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85125390"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87057631"
 ---
 # <a name="achieve-operational-excellence-by-using-azure-advisor"></a>使用 Azure Advisor 實現卓越的營運
 
@@ -54,7 +54,7 @@ Azure 原則是 Azure 中的一項服務，可讓您用來建立、指派和管�
 
 **[啟用] 會*從資源群組繼承標記*。** 此原則會在建立或更新任何資源時，從父代資源群組中新增或取代指定的標記和值。 您可以藉由觸發補救工作來補救現有的資源。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 若要深入了解 Advisor 建議，請參閱：
 * [Advisor 簡介](advisor-overview.md)
@@ -63,4 +63,4 @@ Azure 原則是 Azure 中的一項服務，可讓您用來建立、指派和管�
 * [Advisor 效能建議](advisor-performance-recommendations.md)
 * [Advisor 可靠性建議](advisor-high-availability-recommendations.md)
 * [Advisor 安全性建議](advisor-security-recommendations.md)
-* [Advisor REST API](https://docs.microsoft.com/rest/api/advisor/)
+* [Advisor REST API](/rest/api/advisor/)

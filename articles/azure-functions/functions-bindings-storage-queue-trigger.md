@@ -6,11 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47, tracking-python
-ms.openlocfilehash: 4759541966de1d436c72cce4aaa46c2bd1235599
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 920f53fa962cc30f2068d78c9d1907b93019fe34
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84559922"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87055850"
 ---
 # <a name="azure-queue-storage-trigger-for-azure-functions"></a>Azure Functions 的 Azure 佇列儲存體觸發程式
 
@@ -316,7 +317,7 @@ public class QueueTriggerDemo {
 |**direction**| n/a | 僅限在 *function.json* 檔案中。 必須設為 `in`。 當您在 Azure 入口網站中建立觸發程序時，會自動設定此屬性。 |
 |**name** | n/a |在函式程式碼中包含佇列項目承載的變數名稱。  |
 |**queueName** | **QueueName**| 要輪詢的佇列名稱。 |
-|**connection** | **[連接]** |應用程式設定的名稱包含要用於此繫結的儲存體連接字串。 如果應用程式設定名稱是以「AzureWebJobs」開頭，於此僅能指定名稱的其餘部分。 例如，如果您將設定 `connection` 為 "MyStorage"，函數執行時間會尋找名為 "MyStorage" 的應用程式設定。 如果您將 `connection` 保留空白，則函式執行階段會使用應用程式設定中名稱為 `AzureWebJobsStorage` 的預設儲存體連接字串。|
+|**connection** | **連線** |應用程式設定的名稱包含要用於此繫結的儲存體連接字串。 如果應用程式設定名稱是以「AzureWebJobs」開頭，於此僅能指定名稱的其餘部分。 例如，如果您將設定 `connection` 為 "MyStorage"，函數執行時間會尋找名為 "MyStorage" 的應用程式設定。 如果您將 `connection` 保留空白，則函式執行階段會使用應用程式設定中名稱為 `AzureWebJobsStorage` 的預設儲存體連接字串。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -350,19 +351,19 @@ public class QueueTriggerDemo {
 
 # <a name="python"></a>[Python](#tab/python)
 
-透過輸入為[QueueMessage](https://docs.microsoft.com/python/api/azure-functions/azure.functions.queuemessage?view=azure-python)的參數來存取佇列訊息。
+透過輸入為[QueueMessage](/python/api/azure-functions/azure.functions.queuemessage?view=azure-python)的參數來存取佇列訊息。
 
 # <a name="java"></a>[Java](#tab/java)
 
-[QueueTrigger](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.queuetrigger?view=azure-java-stable)注釋可讓您存取觸發函式的佇列訊息。
+[QueueTrigger](/java/api/com.microsoft.azure.functions.annotation.queuetrigger?view=azure-java-stable)注釋可讓您存取觸發函式的佇列訊息。
 
 ---
 
 ## <a name="message-metadata"></a>訊息中繼資料
 
-佇列觸發程序提供數個[中繼資料屬性](./functions-bindings-expressions-patterns.md#trigger-metadata)。 這些屬性可作為其他繫結中繫結運算式的一部分或程式碼中的參數使用。 屬性是[CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage)類別的成員。
+佇列觸發程序提供數個[中繼資料屬性](./functions-bindings-expressions-patterns.md#trigger-metadata)。 這些屬性可作為其他繫結中繫結運算式的一部分或程式碼中的參數使用。 屬性是[CloudQueueMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage)類別的成員。
 
-|屬性|類型|Description|
+|屬性|類型|說明|
 |--------|----|-----------|
 |`QueueTrigger`|`string`|佇列承載 (如果為有效字串)。 如果佇列訊息裝載是字串， `QueueTrigger` 其值與中的屬性所命名的變數相同， `name` *function.js開啟*。|
 |`DequeueCount`|`int`|此訊息已從佇列清除的次數。|
