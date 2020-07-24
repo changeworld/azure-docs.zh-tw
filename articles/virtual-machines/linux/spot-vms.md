@@ -22,7 +22,7 @@ ms.locfileid: "87028784"
 
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 使用[CLI](spot-cli.md)、[入口網站](../windows/spot-portal.md)、 [ARM 範本](spot-template.md)或[PowerShell](../windows/spot-powershell.md)來部署點 vm。
 
 您也可以使用「[點」 VM 實例來部署擴展集](../../virtual-machine-scale-sets/use-spot.md)。
