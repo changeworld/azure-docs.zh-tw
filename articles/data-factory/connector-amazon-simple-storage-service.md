@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/12/2020
-ms.openlocfilehash: 03468d8ff39cfbe64d6ef3707098732e22e5dd9b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 023d6734195dabefff12210c2e63a0a4f4f9ac93
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85100983"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87007651"
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 Amazon Simple Storage Service 複製資料
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
@@ -64,20 +64,20 @@ ms.locfileid: "85100983"
 
 以下是針對 Amazon S3 已連結服務支援的屬性：
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | **Type**屬性必須設定為**AmazonS3**。 | Yes |
-| accessKeyId | 密碼存取金鑰的識別碼。 |Yes |
+| type | **Type**屬性必須設定為**AmazonS3**。 | 是 |
+| accessKeyId | 密碼存取金鑰的識別碼。 |是 |
 | secretAccessKey | 密碼存取金鑰本身。 將此欄位標記為 **SecureString**，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 |是 |
 | serviceUrl | 如果您要從與 S3 相容的儲存提供者（而非官方 Amazon S3 服務）複製資料，請指定自訂的 S3 端點。 例如，若要從 Google Cloud Storage 中複製資料，請指定 `https://storage.googleapis.com`。 | 否 |
-| connectVia | 用來連線到資料存放區的[整合執行階段](concepts-integration-runtime.md)。 您可以使用 Azure integration runtime 或自我裝載整合執行時間（如果您的資料存放區位於私人網路中）。 如果未指定此屬性，服務就會使用預設的 Azure integration runtime。 |No |
+| connectVia | 用來連線到資料存放區的[整合執行階段](concepts-integration-runtime.md)。 您可以使用 Azure integration runtime 或自我裝載整合執行時間（如果您的資料存放區位於私人網路中）。 如果未指定此屬性，服務就會使用預設的 Azure integration runtime。 |否 |
 
 此連接器需要 AWS 身分識別和存取管理（IAM）帳戶的存取金鑰，才能從 Amazon S3 複製資料。 目前不支援[暫時的安全性認證](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html)。
 
 >[!TIP]
 >如果您要從與 S3 相容的儲存體複製資料，而非官方的 Amazon S3 服務，請指定自訂的 S3 服務 URL。
 
-以下是範例：
+以下為範例：
 
 ```json
 {
@@ -107,13 +107,13 @@ ms.locfileid: "85100983"
 
 下列屬性支援以格式為基礎之資料集的 [設定] 下的 Amazon S3 `location` ：
 
-| 屬性   | 說明                                                  | 必要 |
+| 屬性   | 描述                                                  | 必要 |
 | ---------- | ------------------------------------------------------------ | -------- |
 | type       | 資料集內的**類型**屬性 `location` 必須設定為**AmazonS3Location**。 | 是      |
-| bucketName | S3 貯體名稱。                                          | Yes      |
-| folderPath | 給定值區下的資料夾路徑。 如果您想要使用萬用字元來篩選資料夾，請略過此設定，並在 [活動來源] 設定中指定。 | No       |
-| fileName   | 給定值區和資料夾路徑下的檔案名。 如果您想要使用萬用字元來篩選檔案，請略過此設定，並在 [活動來源] 設定中指定。 | No       |
-| version | 如果已啟用 S3 版本設定功能，則為 S3 物件的版本。 如果未指定，將會提取最新版本。 |No |
+| bucketName | S3 貯體名稱。                                          | 是      |
+| folderPath | 給定值區下的資料夾路徑。 如果您想要使用萬用字元來篩選資料夾，請略過此設定，並在 [活動來源] 設定中指定。 | 否       |
+| fileName   | 給定值區和資料夾路徑下的檔案名。 如果您想要使用萬用字元來篩選檔案，請略過此設定，並在 [活動來源] 設定中指定。 | 否       |
+| version | 如果已啟用 S3 版本設定功能，則為 S3 物件的版本。 如果未指定，將會提取最新版本。 |否 |
 
 **範例︰**
 
@@ -152,21 +152,21 @@ ms.locfileid: "85100983"
 
 以格式為基礎的複製來源的 [設定] 下，Amazon S3 支援下列屬性 `storeSettings` ：
 
-| 屬性                 | 說明                                                  | 必要                                                    |
+| 屬性                 | 描述                                                  | 必要                                                    |
 | ------------------------ | ------------------------------------------------------------ | ----------------------------------------------------------- |
-| type                     | 底下的**type**屬性 `storeSettings` 必須設定為**AmazonS3ReadSettings**。 | Yes                                                         |
+| type                     | 底下的**type**屬性 `storeSettings` 必須設定為**AmazonS3ReadSettings**。 | 是                                                         |
 | 尋找要複製的檔案： |  |  |
 | 選項 1：靜態路徑<br> | 從在資料集內指定的貯體或資料夾/檔案路徑複製。 如果您想要複製 bucket 或資料夾中的所有檔案，請另外將指定 `wildcardFileName` 為 `*` 。 |  |
 | 選項 2：S3 前置詞<br>- 前置詞 | 在資料集內設定的指定值區底下，S3 金鑰名稱的前置詞，用來篩選來源 S3 檔案。 已選取其名稱開頭為的 S3 金鑰 `bucket_in_dataset/this_prefix` 。 它會利用 S3's 服務端篩選，提供比萬用字元篩選更好的效能。 | 否 |
 | 選項 3：萬用字元<br>- wildcardFolderPath | 在資料集內設定的指定值區底下，具有萬用字元的資料夾路徑，用來篩選來源資料夾。 <br>允許的萬用字元為：`*` (符合零或多個字元) 和 `?` (符合零或單一字元)。 `^`如果您的資料夾名稱包含萬用字元或內的此 escape 字元，請使用來進行 escape。 <br>如需更多範例，請參閱[資料夾和檔案篩選範例](#folder-and-file-filter-examples)。 | 否                                            |
 | 選項 3：萬用字元<br>- wildcardFileName | 在指定的值區和資料夾路徑（或萬用字元資料夾路徑）底下，含有萬用字元的檔案名，用來篩選來源檔案。 <br>允許的萬用字元為：`*` (符合零或多個字元) 和 `?` (符合零或單一字元)。 `^`如果您的資料夾名稱包含萬用字元或內的此 escape 字元，請使用來進行 escape。  如需更多範例，請參閱[資料夾和檔案篩選範例](#folder-and-file-filter-examples)。 | 是 |
-| 選項 3：檔案清單<br>- fileListPath | 表示要複製指定的檔案集。 指向包含您要複製之檔案清單的文字檔，每行一個檔案，這是在資料集中設定之路徑的相對路徑。<br/>當您使用此選項時，請勿指定資料集中的檔案名。 [檔案清單範例](#file-list-examples) (英文) 有更多範例可供參閱。 |No |
+| 選項 4：檔案清單<br>- fileListPath | 表示要複製指定的檔案集。 指向包含您要複製之檔案清單的文字檔，每行一個檔案，這是在資料集中設定之路徑的相對路徑。<br/>當您使用此選項時，請勿指定資料集中的檔案名。 [檔案清單範例](#file-list-examples) (英文) 有更多範例可供參閱。 |否 |
 | 其他設定： |  | |
-| 遞迴 | 指出是否從子資料夾、或只有從指定的資料夾，以遞迴方式讀取資料。 請注意，當**遞迴**設定為**true**且接收是以檔案為基礎的存放區時，不會在接收時複製或建立空的資料夾或子資料夾。 <br>允許的值為 **true** (預設值) 和 **false**。<br>設定 `fileListPath` 時，不適用此屬性。 |No |
+| 遞迴 | 指出是否從子資料夾、或只有從指定的資料夾，以遞迴方式讀取資料。 請注意，當**遞迴**設定為**true**且接收是以檔案為基礎的存放區時，不會在接收時複製或建立空的資料夾或子資料夾。 <br>允許的值為 **true** (預設值) 和 **false**。<br>設定 `fileListPath` 時，不適用此屬性。 |否 |
 | deleteFilesAfterCompletion | 指出在成功移至目的地存放區之後，是否會從來源存放區刪除二進位檔案。 檔案刪除是每個檔案，因此當複製活動失敗時，您會看到某些檔案已複製到目的地，並從來源刪除，而其他檔案仍在來源存放區上剩餘。 <br/>此屬性只在二進位複製案例中有效，其中資料來源存放區為 Blob、ADLS Gen1、ADLS Gen2、S3、Google Cloud Storage、File、Azure 檔案、SFTP 或 FTP。 預設值： false。 |否 |
 | modifiedDatetimeStart    | 檔案會根據屬性進行篩選：上次修改。 <br>若檔案的上次修改時間在 `modifiedDatetimeStart` 與 `modifiedDatetimeEnd` 之間的時間範圍內，系統就會選取該檔案。 時間會以 "2018-12-01T05：00： 00Z" 的格式套用至 UTC 時區。 <br> 屬性可以是**Null**，這表示不會將檔案屬性篩選套用至資料集。  當 `modifiedDatetimeStart` 具有日期時間值 `modifiedDatetimeEnd` ，但為**Null**時，將會選取上次修改屬性大於或等於日期時間值的檔案。  當 `modifiedDatetimeEnd` 具有日期時間值 `modifiedDatetimeStart` ，但為**Null**時，將會選取上次修改屬性小於日期時間值的檔案。<br/>設定 `fileListPath` 時，不適用此屬性。 | 否                                            |
 | modifiedDatetimeEnd      | 同上。                                               | 否                                                          |
-| maxConcurrentConnections | 資料存放區的並行連接數目。 只有當您想要限制與資料存放區的並行連接時，才指定。 | No                                                          |
+| maxConcurrentConnections | 資料存放區的並行連接數目。 只有當您想要限制與資料存放區的並行連接時，才指定。 | 否                                                          |
 
 **範例︰**
 
@@ -253,15 +253,15 @@ ms.locfileid: "85100983"
 
 ### <a name="legacy-dataset-model"></a>舊版資料集模型
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 資料集的**類型**屬性必須設定為**AmazonS3Object**。 |是 |
 | bucketName | S3 貯體名稱。 不支援萬用字元篩選。 |針對複製或查閱活動為 [是]，[GetMetadata] 活動為 [否] |
 | 索引鍵 | 指定值區下 S3 物件索引鍵的名稱或萬用字元篩選準則。 只有在未指定**prefix**屬性時才適用。 <br/><br/>資料夾部分和檔案名部分都支援萬用字元篩選。 允許的萬用字元為：`*` (符合零或多個字元) 和 `?` (符合零或單一字元)。<br/>- 範例 1：`"key": "rootfolder/subfolder/*.csv"`<br/>- 範例 2：`"key": "rootfolder/subfolder/???20180427.txt"`<br/>如需更多範例，請參閱[資料夾和檔案篩選範例](#folder-and-file-filter-examples)。 `^`如果您的實際資料夾或檔案名中有萬用字元或此 escape 字元，請使用來進行 escape。 |否 |
-| prefix | S3 物件索引鍵的前置詞。 系統會選取索引鍵以此前置詞開頭的物件。 只有在未指定索引**鍵**屬性時才適用。 |No |
-| version | 如果已啟用 S3 版本設定功能，則為 S3 物件的版本。 如果未指定版本，則會提取最新版本。 |No |
-| modifiedDatetimeStart | 檔案會根據屬性進行篩選：上次修改。 若檔案的上次修改時間在 `modifiedDatetimeStart` 與 `modifiedDatetimeEnd` 之間的時間範圍內，系統就會選取該檔案。 此時間會以 "2018-12-01T05:00:00Z" 格式套用至 UTC 時區。 <br/><br/> 請注意，當您想要篩選大量檔案時，啟用這項設定將會影響資料移動的整體效能。 <br/><br/> 屬性可以是**Null**，這表示不會將檔案屬性篩選套用至資料集。  當 `modifiedDatetimeStart` 具有日期時間值 `modifiedDatetimeEnd` ，但為**Null**時，將會選取上次修改屬性大於或等於日期時間值的檔案。  當 `modifiedDatetimeEnd` 具有日期時間值 `modifiedDatetimeStart` ，但為 Null 時，將會選取上次修改屬性小於日期時間值的檔案。| No |
-| modifiedDatetimeEnd | 檔案會根據屬性進行篩選：上次修改。 若檔案的上次修改時間在 `modifiedDatetimeStart` 與 `modifiedDatetimeEnd` 之間的時間範圍內，系統就會選取該檔案。 此時間會以 "2018-12-01T05:00:00Z" 格式套用至 UTC 時區。 <br/><br/> 請注意，當您想要篩選大量檔案時，啟用這項設定將會影響資料移動的整體效能。 <br/><br/> 屬性可以是**Null**，這表示不會將檔案屬性篩選套用至資料集。  當 `modifiedDatetimeStart` 具有日期時間值 `modifiedDatetimeEnd` ，但為**Null**時，將會選取上次修改屬性大於或等於日期時間值的檔案。  當 `modifiedDatetimeEnd` 具有日期時間值 `modifiedDatetimeStart` ，但為**Null**時，將會選取上次修改屬性小於日期時間值的檔案。| No |
+| prefix | S3 物件索引鍵的前置詞。 系統會選取索引鍵以此前置詞開頭的物件。 只有在未指定索引**鍵**屬性時才適用。 |否 |
+| version | 如果已啟用 S3 版本設定功能，則為 S3 物件的版本。 如果未指定版本，則會提取最新版本。 |否 |
+| modifiedDatetimeStart | 檔案會根據屬性進行篩選：上次修改。 若檔案的上次修改時間在 `modifiedDatetimeStart` 與 `modifiedDatetimeEnd` 之間的時間範圍內，系統就會選取該檔案。 此時間會以 "2018-12-01T05:00:00Z" 格式套用至 UTC 時區。 <br/><br/> 請注意，當您想要篩選大量檔案時，啟用這項設定將會影響資料移動的整體效能。 <br/><br/> 屬性可以是**Null**，這表示不會將檔案屬性篩選套用至資料集。  當 `modifiedDatetimeStart` 具有日期時間值 `modifiedDatetimeEnd` ，但為**Null**時，將會選取上次修改屬性大於或等於日期時間值的檔案。  當 `modifiedDatetimeEnd` 具有日期時間值 `modifiedDatetimeStart` ，但為 Null 時，將會選取上次修改屬性小於日期時間值的檔案。| 否 |
+| modifiedDatetimeEnd | 檔案會根據屬性進行篩選：上次修改。 若檔案的上次修改時間在 `modifiedDatetimeStart` 與 `modifiedDatetimeEnd` 之間的時間範圍內，系統就會選取該檔案。 此時間會以 "2018-12-01T05:00:00Z" 格式套用至 UTC 時區。 <br/><br/> 請注意，當您想要篩選大量檔案時，啟用這項設定將會影響資料移動的整體效能。 <br/><br/> 屬性可以是**Null**，這表示不會將檔案屬性篩選套用至資料集。  當 `modifiedDatetimeStart` 具有日期時間值 `modifiedDatetimeEnd` ，但為**Null**時，將會選取上次修改屬性大於或等於日期時間值的檔案。  當 `modifiedDatetimeEnd` 具有日期時間值 `modifiedDatetimeStart` ，但為**Null**時，將會選取上次修改屬性小於日期時間值的檔案。| 否 |
 | format | 如果您想要在以檔案為基礎的存放區之間依原樣複製檔案 (二進位複製)，請在輸入和輸出資料集定義中略過格式區段。<br/><br/>如果您想要剖析或產生特定格式的檔案，以下是支援的檔案格式類型：**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat**。 將 [format] 下的 [type] 屬性設定為下列其中一個值。 如需詳細資訊，請參閱[文字格式](supported-file-formats-and-compression-codecs-legacy.md#text-format)、[JSON 格式](supported-file-formats-and-compression-codecs-legacy.md#json-format)、[Avro 格式](supported-file-formats-and-compression-codecs-legacy.md#avro-format)、[Orc 格式](supported-file-formats-and-compression-codecs-legacy.md#orc-format)和 [Parquet 格式](supported-file-formats-and-compression-codecs-legacy.md#parquet-format)小節。 |否 (僅適用於二進位複製案例) |
 | compression | 指定此資料的壓縮類型和層級。 如需詳細資訊，請參閱[支援的檔案格式和壓縮轉碼器](supported-file-formats-and-compression-codecs-legacy.md#compression-support)。<br/>支援的類型為：GZip、Deflate、BZip2 及 ZipDeflate。<br/>支援的層級為 **Optimal** 和 **Fastest**。 |否 |
 
@@ -333,11 +333,11 @@ ms.locfileid: "85100983"
 
 ### <a name="legacy-source-model-for-the-copy-activity"></a>複製活動的舊版來源模型
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 複製活動來源的**類型**屬性必須設定為**FileSystemSource**。 |是 |
 | 遞迴 | 指出是否從子資料夾、或只有從指定的資料夾，以遞迴方式讀取資料。 請注意，當**recursive**設定為**true**且接收是以檔案為基礎的存放區時，將不會在接收時複製或建立空的資料夾或子資料夾。<br/>允許的值為 **true** (預設值) 和 **false**。 | 否 |
-| maxConcurrentConnections | 可同時連線到資料存放區的連線數目。 只有當您想要限制與資料存放區的並行連接時，才指定。 | No |
+| maxConcurrentConnections | 可同時連線到資料存放區的連線數目。 只有當您想要限制與資料存放區的並行連接時，才指定。 | 否 |
 
 **範例︰**
 

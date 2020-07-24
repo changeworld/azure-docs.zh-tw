@@ -9,13 +9,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
-ms.date: 11/27/2019
-ms.openlocfilehash: 7b5e4174da3ffa0dff5c840e5da1d98435e8d07b
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.date: 07/21/2020
+ms.openlocfilehash: c54979efbbd164a11614b92d9a337a86e2f221fd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985545"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87007736"
 ---
 # <a name="vcore-model-overview---azure-sql-database-and-azure-sql-managed-instance"></a>vCore 模型總覽-Azure SQL Database 和 Azure SQL 受控執行個體 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -25,7 +25,7 @@ Azure SQL Database 和 Azure SQL 受控執行個體所使用的虛擬核心（vC
 - 較高的計算、記憶體、i/o 和儲存體限制。
 - 控制硬體世代，以更符合工作負載的計算和記憶體需求。
 - [Azure Hybrid Benefit （AHB）](../azure-hybrid-benefit.md)和[保留實例（RI）](reserved-capacity-overview.md)的定價折扣。
-- 提高計算能力的硬體詳細資料中有更大的透明度;有助於規劃從內部部署進行遷移。
+- 提高計算能力的硬體詳細資料中的透明度，有助於規劃從內部部署進行遷移。
 
 ## <a name="service-tiers"></a>服務層
 
@@ -34,7 +34,7 @@ VCore 模型中的服務層選項包括一般用途、業務關鍵和超大規�
 |-|**一般用途**|**業務關鍵**|**超大規模資料庫**|
 |---|---|---|---|
 |適用對象|大部分的商業工作負載。 提供以預算為導向、平衡且可調整的計算和儲存體選項。 |使用數個隔離複本，為商務應用程式提供失敗的最高復原能力，並提供每個資料庫複本最高的 i/o 效能。|具有可高度擴充性的儲存體和讀取規模需求的大多數商務工作負載。  允許設定一個以上的隔離資料庫複本，以提供更高的失敗復原能力。 |
-|儲存體|使用遠端存放。<br/>**SQL Database 布建的計算**：<br/>5 GB – 4 TB<br/>**無伺服器計算**：<br/>5 GB-3 TB<br/>**SQL 受控執行個體**： 32 GB-8 TB |使用本機 SSD 儲存體。<br/>**SQL Database 布建的計算**：<br/>5 GB – 4 TB<br/>**SQL 受控執行個體**：<br/>32 GB - 4 TB |視需要彈性自動成長儲存體。 最多可支援 100 TB 的儲存體。 會針對本機緩衝集區快取和本機資料儲存體使用本機 SSD 儲存體。 使用 Azure 遠端儲存體作為最終長期資料存放區。 |
+|存放裝置|使用遠端存放。<br/>**SQL Database 布建的計算**：<br/>5 GB – 4 TB<br/>**無伺服器計算**：<br/>5 GB-3 TB<br/>**SQL 受控執行個體**： 32 GB-8 TB |使用本機 SSD 儲存體。<br/>**SQL Database 布建的計算**：<br/>5 GB – 4 TB<br/>**SQL 受控執行個體**：<br/>32 GB - 4 TB |視需要彈性自動成長儲存體。 最多可支援 100 TB 的儲存體。 會針對本機緩衝集區快取和本機資料儲存體使用本機 SSD 儲存體。 使用 Azure 遠端儲存體作為最終長期資料存放區。 |
 |IOPS 和輸送量（大約）|**SQL Database**：請參閱[單一資料庫](resource-limits-vcore-single-databases.md)和[彈性](resource-limits-vcore-elastic-pools.md)集區的資源限制。<br/>**SQL 受控執行個體**：請參閱[Azure SQL 受控執行個體資源限制總覽](../managed-instance/resource-limits.md#service-tier-characteristics)。|請參閱[單一資料庫](resource-limits-vcore-single-databases.md)和[彈性](resource-limits-vcore-elastic-pools.md)集區的資源限制。|超大規模資料庫是多層式架構，在多個層級進行快取。 有效的 IOPS 和輸送量將視工作負載而定。|
 |可用性|1個複本、無讀取規模複本|3 個複本、1 個[讀取規模複本](read-scale-out.md)、<br/>區域冗余高可用性（HA）|1個讀寫複本，加上 0-4[個讀取規模複本](read-scale-out.md)|
 |備份|[讀取權限異地多餘儲存體（RA-GRS）](../../storage/common/geo-redundant-design.md)，7-35 天（預設為7天）|[RA-GRS](../..//storage/common/geo-redundant-design.md)，7-35 天（預設為7天）|Azure 遠端儲存體中以快照集為基礎的備份。 還原時可使用這些快照集進行快速復原。 備份是即時的，不會影響計算 i/o 效能。 還原速度很快，而且不是資料大小的作業（需要幾分鐘，而不是小時或數天）。|
@@ -69,7 +69,7 @@ VCore 模型中的計算層選項包括布建和無伺服器計算層。
 
 ## <a name="hardware-generations"></a>硬體世代
 
-VCore 模型中的硬體產生選項包括 Gen 4/5、M 系列（預覽）和 Fsv2 系列（預覽）。 硬體世代通常會定義計算和記憶體限制，以及影響工作負載效能的其他特性。
+VCore 模型中的硬體產生選項包括 Gen 4/5、M 系列和 Fsv2 系列。 硬體世代通常會定義計算和記憶體限制，以及影響工作負載效能的其他特性。
 
 ### <a name="gen4gen5"></a>第4代/第5代
 
@@ -77,21 +77,21 @@ VCore 模型中的硬體產生選項包括 Gen 4/5、M 系列（預覽）和 Fsv
 
 如需第4代/第5代可用的區域，請參閱[第4代/第5代 availability](#gen4gen5-1)。
 
-### <a name="fsv2-seriespreview"></a>Fsv2 系列（預覽）
+### <a name="fsv2-series"></a>Fsv2 系列
 
 - Fsv2 系列是一種計算優化硬體選項，可為最多 CPU 需求的工作負載提供低 CPU 延遲和高頻率速度。
 - 視工作負載而定，Fsv2 系列可以提供比第5代更多的每個 vCore CPU 效能，而 72 vCore 大小可提供比虛擬核心上80第5代更多的 CPU 效能。 
 - Fsv2 提供比其他硬體更少的記憶體和 tempdb，因此，這些限制的相關工作負載可能會想要改為考慮第5代或 M 系列。  
 
-Fsv2 系列僅在一般用途層中受到支援。  如需 Fsv2 系列的可用區域，請參閱[Fsv2 系列可用性](#fsv2-series)。
+Fsv2 系列僅在一般用途層中受到支援。 如需 Fsv2 系列的可用區域，請參閱[Fsv2 系列可用性](#fsv2-series)。
 
 
-### <a name="m-seriespreview"></a>M 系列（預覽）
+### <a name="m-series"></a>M 系列
 
 - M 系列是記憶體優化硬體選項，適用于需要更多記憶體和更高計算限制的工作負載，而不是由第5代所提供。
-- M 系列提供每 vCore 29 GB 和128虛擬核心，這會將相對於8月第5代的記憶體限制增加到將近 4 TB。
+- M 系列提供每 vCore 29 GB 和最多128虛擬核心，這會將相對於8月第5代的記憶體限制增加到將近 4 TB。
 
-M 系列僅在業務關鍵層中受到支援，不支援區域冗余。  訂用帳戶必須是付費供應專案類型，包括隨用隨付或 Enterprise 合約（EA）。  如需 M 系列可用的區域，請參閱[m 系列可用性](#m-series)。
+M 系列僅在業務關鍵層中受到支援，不支援區域冗余。  訂用帳戶必須是付費供應專案類型，包括隨用隨付或 Enterprise 合約（EA）。 如需 M 系列可用的區域，請參閱[m 系列可用性](#m-series)。
 
 <!--
 To enable M-series hardware for a subscription and region, a support request must be opened. The subscription must be a paid offer type including Pay-As-You-Go or Enterprise Agreement (EA).  If the support request is approved, then the selection and provisioning experience of M-series follows the same pattern as for other hardware generations. For regions where M-series is available, see [M-series availability](#m-series).
@@ -104,8 +104,8 @@ To enable M-series hardware for a subscription and region, a support request mus
 |:---------|:---------|:---------|
 |Gen4     |-Intel E5-2673 v3 （Haswell） 2.4 GHz 處理器<br>-最多可布建24虛擬核心（1 vCore = 1 個實體核心）  |-每個 vCore 7 GB<br>-布建最多 168 GB|
 |Gen5     |**佈建計算**<br>-Intel E5-2673 v4 （Broadwell） 2.3-GHz 和 Intel SP-8160 （Skylake） * 處理器<br>-最多可布建80虛擬核心（1 vCore = 1 個超執行緒）<br><br>**無伺服器計算**<br>-Intel E5-2673 v4 （Broadwell） 2.3-GHz 和 Intel SP-8160 （Skylake） * 處理器<br>-自動相應增加至16個虛擬核心（1個 vCore = 1 個超執行緒）|**佈建計算**<br>-每個 vCore 5.1 GB<br>-布建最多 408 GB<br><br>**無伺服器計算**<br>-每個 vCore 自動相應增加至 24 GB<br>-自動調整至最多 48 GB 的最大值|
-|Fsv2 系列     |-Intel 更強白金8168（SkyLake）處理器<br>-提供 3.4 GHz 的全部核心 turbo 主頻速度，以及最大的單一核心 turbo 頻率速度（3.7 GHz）。<br>-布建72虛擬核心（1 vCore = 1 個超執行緒）|-每個 vCore 1.9 GB<br>-布建 136 GB|
-|M 系列     |-Intel （r） E7-8890 v3 2.5 GHz 和 Intel 強式白金 8280M 2.7 g h z （Cascade Lake）處理器<br>-布建128虛擬核心（1 vCore = 1 個超執行緒）|-每 vCore 29 GB<br>-布建 3.7 TB|
+|Fsv2 系列     |-Intel 更強白金8168（Skylake）處理器<br>-提供 3.4 GHz 的全部核心 turbo 主頻速度，以及最大的單一核心 turbo 頻率速度（3.7 GHz）。<br>-最多可布建72虛擬核心（1 vCore = 1 個超執行緒）|-每個 vCore 1.9 GB<br>-布建最多 136 GB|
+|M 系列     |-Intel （r） E7-8890 v3 2.5 GHz 和 Intel 強式白金 8280M 2.7 g h z （Cascade Lake）處理器<br>-最多可布建128虛擬核心（1 vCore = 1 個超執行緒）|-每 vCore 29 GB<br>-布建最多 3.7 TB|
 
 \*在[dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database)動態管理檢視中，使用 Intel SP-8160 （Skylake）處理器的第5代資料庫硬體產生會顯示為 Gen6。 無論處理器類型為何（Broadwell 或 Skylake），所有第5代資料庫的資源限制都相同。
 
@@ -154,7 +154,7 @@ To enable M-series hardware for a subscription and region, a support request mus
 
 ![變更 SQL 受控執行個體硬體](./media/service-tiers-vcore/change-managed-instance-hardware.png)
 
-在 [**定價層**] 頁面上，您將能夠如先前步驟所述變更硬體世代。
+在 [定價層] 頁面上，您將能夠如先前步驟所述變更硬體世代。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -164,7 +164,7 @@ To enable M-series hardware for a subscription and region, a support request mus
 Set-AzSqlInstance -Name "managedinstance1" -ResourceGroupName "ResourceGroup01" -ComputeGeneration Gen5
 ```
 
-如需詳細資訊，請參閱[Set-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstance)命令。
+如需詳細資訊，請參閱[AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstance)命令。
 
 # <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -222,7 +222,7 @@ On the **Details** page, provide the following:
 Approved support requests are typically fulfilled within 5 business days.
 -->
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 若要開始使用，請參閱： 
 - [使用 Azure 入口網站建立 SQL Database](single-database-create-quickstart.md)

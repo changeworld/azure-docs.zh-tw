@@ -9,21 +9,21 @@ ms.topic: conceptual
 ms.author: daperlov
 author: djpmsft
 manager: anandsub
-ms.date: 10/10/2019
-ms.openlocfilehash: f033651eb7e52ba60cce9b74941a4ef0eb376d2b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/16/2020
+ms.openlocfilehash: 83a7f072af64b0fe8f7f3d7c982cf3466288f63e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81418995"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87007192"
 ---
 # <a name="execute-azure-machine-learning-pipelines-in-azure-data-factory"></a>在 Azure Data Factory 中執行 Azure Machine Learning 管線
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 在您的 Azure Data Factory 管線中，以步驟的方式執行 Azure Machine Learning 管線。 Machine Learning 執行管線活動可啟用批次預測案例，例如識別可能的貸款預設值、判斷情感，以及分析客戶行為模式。
 
-下列影片提供這項功能的六分鐘簡介和示範。
+下列影片提供這項功能的六分鐘簡介與示範。
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/How-to-execute-Azure-Machine-Learning-service-pipelines-in-Azure-Data-Factory/player]
 

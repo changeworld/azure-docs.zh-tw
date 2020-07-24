@@ -7,12 +7,12 @@ ms.service: firewall-manager
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: victorh
-ms.openlocfilehash: 87af7f0f9b446fb3a54a600f61409c2cfc1a2494
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 652c7cbfbe63ef2ae9a0d54e05407152ea300f1d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86189401"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006954"
 ---
 # <a name="deploy-an-azure-firewall-with-multiple-public-ip-addresses"></a>部署具有多個公用 IP 位址的 Azure 防火牆
 
@@ -37,9 +37,9 @@ $fw = New-AzFirewall -Name <firewall name> -ResourceGroupName $rgName `
      -VirtualHubId $vHubId 
 ```
 
-### <a name="delete-a-public-ip-address"></a>刪除公用 IP 位址
+### <a name="update-a-public-ip-address"></a>更新公用 IP 位址
 
-您可以使用 Azure PowerShell 從 Azure 防火牆刪除公用 IP 位址。 下列範例會從防火牆刪除一個公用 IP 位址。 其開頭為三個公用 IP 位址。
+您可以使用 Azure PowerShell 來更新 Azure 防火牆的公用 IP 位址。 下列範例會從防火牆刪除一個公用 IP 位址。 其開頭為三個公用 IP 位址。
 
 ```azurepowershell
 Select-AzSubscription -SubscriptionId <subscription ID>
@@ -53,6 +53,6 @@ $azfw.HubIPAddresses.publicIPs.count = 2
 Set-AzFirewall -AzureFirewall $azfw
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 [什麼是安全虛擬中樞？](secured-virtual-hub.md)

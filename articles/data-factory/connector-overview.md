@@ -6,15 +6,15 @@ author: linda33wj
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 07/08/2020
+ms.date: 07/16/2020
 ms.author: jingwang
 ms.reviewer: craigg
-ms.openlocfilehash: f22b4bec17abe95be2a17d3e0e3c41fab3483fe0
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 334d5b5113dba17c5abc2b4f2520bde0d16e4c06
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224805"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87007433"
 ---
 # <a name="azure-data-factory-connector-overview"></a>Azure Data Factory 連接器總覽
 
@@ -39,8 +39,9 @@ Azure Data Factory 支援下列檔案格式。 請參閱每一篇文章，以取
 - [JSON 格式](format-json.md)
 - [ORC 格式](format-orc.md)
 - [Parquet 格式](format-parquet.md)
+- [XML 格式](format-xml.md)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [複製活動](copy-activity-overview.md)
 - [對應資料流](concepts-data-flow-overview.md)
