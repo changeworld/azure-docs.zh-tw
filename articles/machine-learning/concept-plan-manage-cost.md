@@ -10,11 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: ae1beeebfddfe250ae20a70c3e78ec32774218d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2fc9a1a1c3a08f0530649ae64926c673e2d666e0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82996330"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012683"
 ---
 # <a name="plan-and-manage-costs-for-azure-machine-learning"></a>規劃和管理 Azure Machine Learning 的成本
 
@@ -80,7 +81,7 @@ AmlCompute 叢集是設計來根據您的工作負載動態擴充。 叢集可�
 
 您也可以設定在相應減少之前，節點閒置的時間量。 根據預設，相應減少之前的閒置時間會設定為120秒。
 
-+ 如果您執行較少的反復實驗，請減少這段時間來節省成本。 
++ 如果您執行較少的反復實驗，請減少這段時間來節省成本。
 + 如果您執行高度反復的開發/測試實驗，您可能需要增加時間，以便在每次變更訓練腳本或環境之後，不需支付持續的相應縮小和減少。
 
 您可以使用[AMLCOMPUTE SDK 類別](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py) [AmlCompute CLI](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-create-amlcompute)搭配[REST api](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable)，針對 Azure 入口網站中變更的工作負載需求設定 AmlCompute 叢集。
@@ -106,31 +107,13 @@ AmlCompute 隨附[配額（或限制）](how-to-manage-quotas.md#azure-machine-l
 * 針對[超參數微調](how-to-tune-hyperparameters.md#early-termination)，請從 Bandit 原則、中間值停止原則或截斷選取原則定義提早終止原則。 若要進一步控制超參數掃描，請使用或之類的參數 `max_total_runs` `max_duration_minutes` 。
 * 針對[自動化機器學習](how-to-configure-auto-train.md#exit)，請使用旗標來設定類似的終止原則 `enable_early_stopping` 。 也可以使用和等 `iteration_timeout_minutes` 屬性 `experiment_timeout_minutes` 來控制執行或整個實驗的最長持續時間。
 
-## <a name="use-low-priority-vms"></a>使用低優先順序 VM
+## <a name="use-low-priority-vms"></a><a id="low-pri-vm"></a>使用低優先順序 Vm
 
 Azure 可讓您使用超額的未運用容量作為虛擬機器擴展集、批次和 Machine Learning 服務之間的低優先順序 Vm。 這些配置會預先 emptible，但相較于專用 Vm，其價格會降低。 一般來說，我們建議針對 Batch 工作負載使用低優先順序的 Vm。 您也應該使用它們，透過重新提交（適用于批次推斷）或透過重新開機（適用于使用檢查點的深度學習訓練）來中斷可復原。
 
 低優先順序 Vm 的單一配額會與專用配額值（依 VM 系列而不同）。 深入瞭解[AmlCompute 配額](how-to-manage-quotas.md)。
 
-以下列任何方式設定 VM 的優先順序：
-
-* 在 studio 中，當您建立 VM 時，請選擇 [**低優先順序**]。
-
-* 使用 Python SDK，在您的布建 `vm_priority` 配置中設定屬性。  
-
-    ```python
-    compute_config = AmlCompute.provisioning_configuration(vm_size='STANDARD_D2_V2',
-                                                               vm_priority='lowpriority',
-                                                               max_nodes=4)
-    ```
-
-* 使用 CLI，設定 `vm-priority` ：
-
-    ```azurecli-interactive
-    az ml computetarget create amlcompute --name lowpriocluster --vm-size Standard_NC6 --max-nodes 5 --vm-priority lowpriority
-    ```
-
- 低優先順序的 Vm 不適用於計算實例，因為它們需要支援互動式筆記本體驗。 
+ 低優先順序的 Vm 不適用於計算實例，因為它們需要支援互動式筆記本體驗。
 
 ## <a name="use-reserved-instances"></a>使用保留執行個體
 
@@ -143,5 +126,5 @@ Azure Machine Learning 計算原本就支援保留實例。 如果您購買一�
 
 深入了解：
 * [管理及增加資源配額](how-to-manage-quotas.md)
-* [使用[成本分析](../cost-management-billing/costs/quick-acm-cost-analysis.md)來管理成本。
+* [使用成本分析來管理成本](../cost-management-billing/costs/quick-acm-cost-analysis.md)。
 * [Azure Machine Learning 計算](how-to-set-up-training-targets.md#amlcompute)。

@@ -10,16 +10,16 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 9d0964fb28451abe0a77276d6f9d605fcaac2514
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 72ccf2a765f50358635e4a803ed0b92e60bd7d19
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86156416"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012207"
 ---
 # <a name="azure-machine-learning-curated-environments"></a>Azure Machine Learning 策劃環境
 
-本文列出 Azure Machine Learning 中的策劃環境，以及預先安裝的套件和通道。
+本文列出 Azure Machine Learning 中的策劃環境，以及預先安裝的套件和通道。 策劃環境是由 Azure Machine Learning 提供，而且預設會在您的工作區中提供。 它們是由快取的 Docker 映射所支援，可降低執行準備成本並允許更快的部署時間。 使用這些環境，快速開始使用各種機器學習架構。
 
 > [!NOTE]
 > 此清單會在2020年6月更新。 使用 Python SDK 來取得最新的清單。 如需詳細資訊，請參閱[環境一文](./how-to-use-environments.md#use-a-curated-environment)。

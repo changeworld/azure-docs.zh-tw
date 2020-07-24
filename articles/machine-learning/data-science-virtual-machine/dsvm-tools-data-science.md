@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: c414087270558e21340e50114c0563ff7e50064c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 15c3f3994b9d519a4144fa2c2e1418e92cdbd6ae
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80282302"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012401"
 ---
 # <a name="machine-learning-and-data-science-tools-on-azure-data-science-virtual-machines"></a>Azure 資料科學上的機器學習和資料科學工具虛擬機器
 Azure 資料科學虛擬機器（Dsvm）具有一組豐富的工具和程式庫，適用于以熱門語言（例如 Python、R 和 Julia）提供的機器學習服務。
@@ -26,7 +26,7 @@ Azure 資料科學虛擬機器（Dsvm）具有一組豐富的工具和程式庫�
 
 請參閱適用于 Python 的[AZURE MACHINE LEARNING SDK](https://docs.microsoft.com/azure/machine-learning/overview-what-is-azure-ml)的完整參考。
 
-|    |           |
+| 類別 | 值 |
 | ------------- | ------------- |
 | 這是什麼？   |   Azure Machine Learning 是一種雲端服務，可讓您用來開發和部署機器學習服務模型。 您可以使用 Python SDK，在進行模型建置、定型、調整規模及管理時加以追蹤。 將模型部署成容器，並在雲端、內部部署環境或 Azure IoT Edge 上執行。   |
 | 支援的版本     | Windows (Conda 環境：AzureML)、Linux (Conda 環境：py36)    |
@@ -38,7 +38,7 @@ Azure 資料科學虛擬機器（Dsvm）具有一組豐富的工具和程式庫�
 
 ## <a name="h2o"></a>H2O
 
-|    |           |
+| 類別 | 值 |
 | ------------- | ------------- |
 | 這是什麼？   | 一種開放原始碼 AI 平臺，支援記憶體內部、分散式、快速且可調整的機器學習服務。  |
 | 支援的版本      | Linux   |
@@ -52,7 +52,7 @@ Dsvm 上有數個其他的機器學習程式庫，例如 Dsvm 的 `scikit-learn`
 
 ## <a name="lightgbm"></a>LightGBM
 
-|    |           |
+| 類別 | 值 |
 | ------------- | ------------- |
 | 這是什麼？   | 以決策樹演算法為基礎的快速、分散式、高效能漸層提升（GBDT、GBRT、GBM 或超市）架構。 它用於排名、分類及許多其他機器學習工作。    |
 | 支援的版本      | Windows、Linux    |
@@ -62,7 +62,7 @@ Dsvm 上有數個其他的機器學習程式庫，例如 Dsvm 的 `scikit-learn`
 | 相關工具      | MXNet、XgBoost  |
 
 ## <a name="rattle"></a>Rattle
-|    |           |
+| 類別 | 值 |
 | ------------- | ------------- |
 | 這是什麼？   |   使用 R 進行資料採礦的圖形化使用者介面。   |
 | 支援的版本     | Windows、Linux     |
@@ -72,7 +72,7 @@ Dsvm 上有數個其他的機器學習程式庫，例如 Dsvm 的 `scikit-learn`
 | 相關工具      |LightGBM、Weka、XGBoost   |
 
 ## <a name="vowpal-wabbit"></a>Vowpal Wabbit
-|    |           |
+| 類別 | 值 |
 | ------------- | ------------- |
 | 這是什麼？   |   快速、開放原始碼的跨核心學習系統程式庫    |
 | 支援的版本     | Windows、Linux     |
@@ -84,7 +84,7 @@ Dsvm 上有數個其他的機器學習程式庫，例如 Dsvm 的 `scikit-learn`
 
 
 ## <a name="weka"></a>Weka
-|    |           |
+| 類別 | 值 |
 | ------------- | ------------- |
 | 這是什麼？   |  資料採礦工作的機器學習演算法集合。 您可以將這些演算法直接套用至資料集，也可以從您自己的 Java 程式碼呼叫它們。 Weka 包含資料前置處理、分類、迴歸、群集、關聯規則和視覺效果的工具。 |
 | 支援的版本     | Windows、Linux     |
@@ -94,7 +94,7 @@ Dsvm 上有數個其他的機器學習程式庫，例如 Dsvm 的 `scikit-learn`
 | 相關工具      |LightGBM、Rattle、XGBoost   |
 
 ## <a name="xgboost"></a>XGBoost 
-|    |           |
+| 類別 | 值 |
 | ------------- | ------------- |
 | 這是什麼？   |   適用于 Python、R、JAVA、Scala、c + + 等的快速、可攜且分散式漸層提升（GBDT、GBRT 或 GBM）程式庫。 它會在單一電腦上，以及在 Apache Hadoop 和 Spark 上執行。    |
 | 支援的版本     | Windows、Linux     |
@@ -105,7 +105,7 @@ Dsvm 上有數個其他的機器學習程式庫，例如 Dsvm 的 `scikit-learn`
 | 相關工具      | LightGBM、MXNet   |
 
 ## <a name="apache-drill"></a>Apache 深入探詢
-|    |           |
+| 類別 | 值 |
 | ------------- | ------------- |
 | 這是什麼？   | 海量資料的開放原始碼 SQL 查詢引擎    |
 | 支援的 DSVM 版本      | Windows 2019，Linux  |

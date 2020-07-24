@@ -10,11 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: ccb95064f756ef035b7da92d029680f1c195982b
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 3e1cfa13a3fd568ab2f1253c015880c57f99ce7e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85958730"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012480"
 ---
 # <a name="data-platforms-supported-on-the-data-science-virtual-machine"></a>資料科學虛擬機器上所支援的資料平台
 
@@ -24,13 +25,13 @@ DSVM 支援下列資料平臺工具。
 
 ## <a name="sql-server-developer-edition"></a>SQL Server Developer Edition
 
-| | |
+| 類別 | 值 |
 | ------------- | ------------- |
 | 這是什麼？   | 本機關聯式資料庫執行個體      |
 | 支援的 DSVM 版本      | Windows 2016： SQL Server 2017、Windows 2019： SQL Server 2019      |
-| 典型的使用案例      | 在本機使用較小的資料集進行快速的開發 <br/> 執行資料庫內 R   |
-| 範例的連結      |    新的紐約市資料集的小型範例會載入至 SQL 資料庫：<br/>  `nyctaxi` <br/> Jupyter 範例顯示 Microsoft Machine Learning Server 和資料庫內分析，可以在下列位置找到：<br/> `~notebooks/SQL_R_Services_End_to_End_Tutorial.ipynb`  |
-| DSVM 上的相關工具       | SQL Server Management Studio <br/> ODBC/JDBC 驅動程式<br/> pyodbc、RODBC<br />Apache 深入探詢      |
+| 典型的使用案例      | <ul><li>在本機使用較小的資料集進行快速的開發</li><li>執行資料庫內 R</li></ul> |
+| 範例的連結      | <ul><li>新的紐約市資料集的小型範例會載入至 SQL 資料庫：<br/>  `nyctaxi`</li><li>Jupyter 範例顯示 Microsoft Machine Learning Server 和資料庫內分析，可以在下列位置找到：<br/> `~notebooks/SQL_R_Services_End_to_End_Tutorial.ipynb`</li></ul> |
+| DSVM 上的相關工具       | <ul><li>SQL Server Management Studio</li><li>ODBC/JDBC 驅動程式</li><li>pyodbc、RODBC</li><li>Apache 深入探詢</li></ul> |
 
 > [!NOTE]
 > SQL Server Developer 版本只能用於開發和測試目的。 您需要授權或其中一個 SQL Server VM，才能在生產環境中執行。
@@ -61,13 +62,13 @@ CREATE LOGIN [%COMPUTERNAME%\SQLRUserGroup] FROM WINDOWS
 
 ## <a name="apache-spark-2x-standalone"></a>Apache Spark 2.x (獨立)
 
-| | |
+| 類別 | 值 |
 | ------------- | ------------- |
 | 這是什麼？   | 受歡迎的 Apache Spark 平臺的獨立（單一節點同進程）實例;一種系統，用於快速、大規模的資料處理和機器學習     |
 | 支援的 DSVM 版本      | Linux     |
-| 典型的使用案例      | * 以較小的資料集在本機上快速開發 Spark/PySpark 應用程式，並于稍後部署在大型 Spark 叢集上，例如 Azure HDInsight<br/> * 測試 Microsoft Machine Learning Server Spark 內容 <br />* 使用 SparkML 或 Microsoft 的開放原始碼[MMLSpark](https://github.com/Azure/mmlspark)程式庫來建立 ML 應用程式 |
-| 範例的連結      |    Jupyter 範例： <br />&nbsp;&nbsp;* ~/notebooks/SparkML/pySpark <br /> &nbsp;&nbsp;* ~/notebooks/MMLSpark <br /> Microsoft Machine Learning Server （Spark 內容）：/dsvm/samples/MRS/MRSSparkCoNtextSample。R |
-| DSVM 上的相關工具       | PySpark、Scala<br/>Jupyter (Spark/PySpark 核心)<br/>Microsoft Machine Learning Server、SparkR、Sparklyr <br />Apache 深入探詢      |
+| 典型的使用案例      | <ul><li>使用較小的資料集在本機上快速開發 Spark/PySpark 應用程式，並于稍後部署在大型 Spark 叢集上（例如 Azure HDInsight</li><li>測試 Microsoft Machine Learning Server Spark 內容</li><li>使用 SparkML 或 Microsoft 的開放原始碼[MMLSpark](https://github.com/Azure/mmlspark)程式庫來建立 ML 應用程式</li></ul> |
+| 範例的連結      |    Jupyter 範例：<ul><li>~/notebooks/SparkML/pySpark</li><li>~/notebooks/MMLSpark</li></ul><p>Microsoft Machine Learning Server （Spark 內容）：/dsvm/samples/MRS/MRSSparkCoNtextSample。R</p> |
+| DSVM 上的相關工具       | <ul><li>PySpark、Scala</li><li>Jupyter (Spark/PySpark 核心)</li><li>Microsoft Machine Learning Server、SparkR、Sparklyr</li><li>Apache 深入探詢</li></ul> |
 
 ### <a name="how-to-use-it"></a>用法
 您可以執行或命令，在命令列上提交 Spark `spark-submit` 作業 `pyspark` 。 您也可以使用 Spark 核心建立新的 Notebook，以便建立 Jupyter Notebook。

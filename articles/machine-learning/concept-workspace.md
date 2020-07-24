@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/08/2020
-ms.openlocfilehash: 415c624153971e88afac3b18920a3ba3a8f2cfae
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 118c80b27d10714703d631f0e2560540eb2d39cf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147033"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012547"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>什麼是 Azure Machine Learning 工作區？
 
 工作區是 Azure Machine Learning 的最上層資源，提供一個集中的位置來處理您在使用 Azure Machine Learning 時所建立的所有成品。  工作區會保留所有定型執行的歷程記錄，包括記錄、計量、輸出，以及腳本的快照集。 您可以使用此資訊來判斷哪一個定型回合會產生最佳模型。  
 
-一旦擁有您想要的模型之後，您就可以向工作區註冊它。 接著，您可以使用已註冊的模型和評分腳本，將部署到 Azure 容器實例、Azure Kubernetes Service 或可現場程式化閘道陣列 (FPGA) 作為 REST 架構的 HTTP 端點。 您也可以將模型部署到 Azure IoT Edge 裝置作為模組。
+一旦擁有您想要的模型之後，您就可以向工作區註冊它。 接著，您可以使用已註冊的模型和評分腳本，將部署到 Azure 容器實例、Azure Kubernetes Service 或可現場程式化閘道陣列（FPGA），做為 REST 架構的 HTTP 端點。 您也可以將模型部署到 Azure IoT Edge 裝置作為模組。
 
 可用的定價和功能取決於是否已針對工作區選取 [[基本] 或 [企業版](overview-what-is-azure-ml.md#sku)]。 您會在[建立工作區](#create-workspace)時選取版本。  您也可以從 Basic[升級](#upgrade)至 Enterprise edition。
 
@@ -47,13 +47,18 @@ ms.locfileid: "86147033"
 
 您可以透過下列方式與工作區進行互動：
 
+> [!IMPORTANT]
+> 下列已標記的工具（預覽）目前為公開預覽狀態。
+> 預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
 + 在網站上：
     + [Azure Machine Learning studio](https://ml.azure.com) 
-    + [Azure Machine Learning 設計工具 (預覽) ](concept-designer.md) -僅適用于[Enterprise edition](overview-what-is-azure-ml.md#sku)工作區。
+    + [Azure Machine Learning 設計工具（預覽）](concept-designer.md) -僅適用于[Enterprise edition](overview-what-is-azure-ml.md#sku)工作區。
 + 在任何 Python 環境中，使用[適用于 python 的 AZURE MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)。
-+ 在任何 R 環境中，使用[適用于 r 的 AZURE MACHINE LEARNING SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html)。
++ 在任何 R 環境中，使用[適用于 r 的 AZURE MACHINE LEARNING SDK （預覽）](https://azure.github.io/azureml-sdk-for-r/reference/index.html)。
 + 在命令列上使用 Azure Machine Learning [CLI 擴充](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli)功能
 + [Azure Machine Learning VS Code 延伸模組](how-to-manage-resources-vscode.md#workspaces)
+
 
 ## <a name="machine-learning-with-a-workspace"></a>具有工作區的機器學習服務
 
@@ -121,5 +126,5 @@ ms.locfileid: "86147033"
 + [管理工作區](how-to-manage-workspace.md)
 + [教學課程：使用 Python SDK 開始建立您的第一個 ML 實驗](tutorial-1st-experiment-sdk-setup.md)
 + [教學課程：使用 R SDK 開始使用 Azure Machine Learning](tutorial-1st-r-experiment.md)
-+ [教學課程：使用自動化機器學習建立您的第一個分類模型](tutorial-first-experiment-automated-ml.md) (僅適用于[Enterprise edition](overview-what-is-azure-ml.md#sku)工作區) 
-+ [教學課程：使用設計工具預測汽車價格](tutorial-designer-automobile-price-train-score.md)， (僅適用于[Enterprise edition](overview-what-is-azure-ml.md#sku)工作區) 
++ [教學課程：使用自動化機器學習建立您的第一個分類模型](tutorial-first-experiment-automated-ml.md)（僅適用于[Enterprise edition](overview-what-is-azure-ml.md#sku)工作區）
++ [教學課程：使用設計工具預測汽車價格](tutorial-designer-automobile-price-train-score.md)（僅適用于[Enterprise edition](overview-what-is-azure-ml.md#sku)工作區）

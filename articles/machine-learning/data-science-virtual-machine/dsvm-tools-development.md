@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: c48cf6a7a82e90d3c9d8dc4c35e37dfb944af99f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 42a595246f45b2c7423aaf77c95f17243cf8813c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80282676"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012378"
 ---
 # <a name="development-tools-on-the-azure-data-science-virtual-machine"></a>Azure 資料科學虛擬機器上的開發工具
 
@@ -23,7 +23,7 @@ ms.locfileid: "80282676"
 
 ## <a name="visual-studio-community-edition"></a>Visual Studio Community 版本
 
-|    |           |
+| 類別 | 值 |
 | ------------- | ------------- |
 | 這是什麼？   | 一般用途 IDE      |
 | 支援的 DSVM 版本      | Windows： Visual Studio 2017、Windows 2019： Visual Studio 2019      |
@@ -37,7 +37,7 @@ ms.locfileid: "80282676"
 
 ## <a name="visual-studio-code"></a>Visual Studio Code 
 
-|    |           |
+| 類別 | 值 |
 | ------------- | ------------- |
 | 這是什麼？   | 一般用途 IDE      |
 | 支援的 DSVM 版本      | Windows、Linux     |
@@ -47,7 +47,7 @@ ms.locfileid: "80282676"
 
 ## <a name="rstudio-desktop"></a>RStudio Desktop
 
-|    |           |
+| 類別 | 值 |
 | ------------- | ------------- |
 | 這是什麼？   | 適用于 R 語言的用戶端 IDE   |
 | 支援的 DSVM 版本      | Windows、Linux      |
@@ -57,7 +57,7 @@ ms.locfileid: "80282676"
 
 ## <a name="rstudio-server"></a>RStudio Server
 
-|    |           |
+| 類別 | 值 |
 | ------------- | ------------- |
 | 這是什麼？   | 適用于 R 語言的用戶端 IDE   |
 | 這是什麼？   | 適用於 R 的網頁型 IDE    |
@@ -68,7 +68,7 @@ ms.locfileid: "80282676"
 
 ## <a name="juno"></a>Juno 
 
-|    |           |
+| 類別 | 值 |
 | ------------- | ------------- |
 | 這是什麼？   | Julia 語言的用戶端 IDE   |
 | 支援的 DSVM 版本      | Windows、Linux      |
@@ -78,7 +78,7 @@ ms.locfileid: "80282676"
 
 ## <a name="pycharm"></a>Pycharm
 
-|    |           |
+| 類別 | 值 |
 | ------------- | ------------- |
 | 這是什麼？   | Python 語言的用戶端 IDE    |
 | 支援的 DSVM 版本      | Windows 2019，Linux      |

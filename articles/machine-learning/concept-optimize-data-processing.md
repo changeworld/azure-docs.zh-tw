@@ -4,18 +4,18 @@ titleSuffix: Azure Machine Learning
 description: 瞭解優化資料處理速度的最佳做法，以及 Azure Machine Learning 支援大規模資料處理的整合。
 services: machine-learning
 ms.service: machine-learning
-author: sgilley
 ms.author: sgilley
+author: sdgilley
 ms.subservice: core
 ms.reviewer: nibaccam
 ms.topic: conceptual
 ms.date: 06/26/2020
-ms.openlocfilehash: 09e48bd5c27dc4835ba0261ccd929f858fdb58b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b0badd92a3156f76f99bf1f48fca2093a2bca2f5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85481879"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012632"
 ---
 # <a name="optimize-data-processing-with-azure-machine-learning"></a>使用 Azure Machine Learning 優化資料處理
 
@@ -51,7 +51,7 @@ CSV 檔案通常用來匯入和匯出資料，因為在 Excel 中很容易就能
 
 如果您無法將更多 RAM 新增至您的電腦，您可以套用下列技術，以協助將 CPU 工作負載最小化，並將處理時間優化。 這些建議同時適用于單一和分散式系統。
 
-技巧 | Description
+技巧 | 描述
 ----|----
 壓縮 | 針對您的資料使用不同的標記法，方法是使用較少的記憶體，而不會大幅影響您的計算結果。<br><br>*範例：* 不是將專案儲存為每個專案大約10個位元組以上的字串，而是將其儲存為布林值 True 或 False，您可以將其儲存在1個位元組中。
 區塊化 | 將資料載入子集（區塊）中的記憶體，一次處理一個子集的資料，或以平行方式處理多個子集。 如果您需要處理所有資料，但不需要一次將所有資料載入記憶體中，則這個方法最適合。 <br><br>*範例：* 不需要一次處理一整天的資料，而是一次載入及處理一個月的資料。

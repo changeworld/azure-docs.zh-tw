@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: d86858f8d7f09628457b718ca3c481934d720081
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 736504febea16af53c2c05bc367513b2dde93ccf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708003"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012309"
 ---
 # <a name="data-science-virtual-machine-data-ingestion-tools"></a>資料科學虛擬機器資料擷取工具
 
@@ -25,7 +25,7 @@ ms.locfileid: "84708003"
 
 ## <a name="adlcopy"></a>AdlCopy
 
-|    |           |
+| 類別 | 值 |
 | ------------- | ------------- |
 | 這是什麼？   | 將資料從 Azure Blob 儲存體複製到 Azure Data Lake 存放區的工具。 它也可以在兩個 Azure Data Lake Store 帳戶之間複製資料。      |
 | 支援的 DSVM 版本      | Windows      |
@@ -36,7 +36,7 @@ ms.locfileid: "84708003"
 
 ## <a name="azure-cli"></a>Azure CLI
 
-|    |           |
+| 類別 | 值 |
 | ------------- | ------------- |
 | 這是什麼？   | Azure 的管理工具。 它也包含從 azure 資料平臺（例如 Azure Blob 儲存體和 Azure Data Lake 存放區）移動資料的命令動詞。     |
 | 支援的 DSVM 版本      | Windows、Linux     |
@@ -48,7 +48,7 @@ ms.locfileid: "84708003"
 
 ## <a name="azcopy"></a>AzCopy
 
-|    |           |
+| 類別 | 值 |
 | ------------- | ------------- |
 | 這是什麼？   | 一種工具，可將資料複製到本機檔案、Azure Blob 儲存體、檔案和資料表。      |
 | 支援的 DSVM 版本      | Windows      |
@@ -60,7 +60,7 @@ ms.locfileid: "84708003"
 
 ## <a name="azure-cosmos-db-data-migration-tool"></a>Azure Cosmos DB 資料移轉工具
 
-|    |           |
+| 類別 | 值 |
 | ------------- | ------------- |
 | 這是什麼？   | 此工具可將各種來源的資料匯入至 Azure Cosmos DB，這是雲端中的 NoSQL 資料庫。 這些來源包括 JSON 檔案、CSV 檔案、SQL、MongoDB、Azure 資料表儲存體、Amazon DynamoDB，以及 Azure Cosmos DB SQL API 集合。      |
 | 支援的 DSVM 版本      | Windows      |
@@ -71,7 +71,7 @@ ms.locfileid: "84708003"
 
 ## <a name="azure-storage-explorer"></a>Azure 儲存體總管
 
-|    |           |
+| 類別 | 值 |
 | ------------- | ------------- |
 | 這是什麼？   | 用來與 Azure 雲端中儲存之檔案互動的圖形化使用者介面。 |
 | 支援的 DSVM 版本      | Windows      |
@@ -82,7 +82,7 @@ ms.locfileid: "84708003"
 
 ## <a name="bcp"></a>bcp
 
-|    |           |
+| 類別 | 值 |
 | ------------- | ------------- |
 | 這是什麼？   | 在 SQL Server 和資料檔案之間複製資料的 SQL Server 工具。      |
 | 支援的 DSVM 版本      | Windows      |
@@ -93,7 +93,7 @@ ms.locfileid: "84708003"
 
 ## <a name="blobfuse"></a>blobfuse
 
-|    |           |
+| 類別 | 值 |
 | ------------- | ------------- |
 | 這是什麼？   | 在 Linux 檔案系統中掛接 Azure Blob 儲存體容器的工具。      |
 | 支援的 DSVM 版本      | Linux      |
