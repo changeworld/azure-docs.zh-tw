@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2019
-ms.openlocfilehash: 9ae0aec6b87a746ed1f141dcf98f599acd20ab3a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5a454d04701160492539f5c9caba57c9e617401e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82864244"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067481"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>優化 Azure 監視器中的記錄查詢
 Azure 監視器記錄會使用[Azure 資料總管（ADX）](/azure/data-explorer/)來儲存記錄資料，並執行查詢來分析該資料。 它會為您建立、管理及維護 ADX 叢集，並針對您的記錄分析工作負載將它們優化。 當您執行查詢時，它會進行優化，並路由傳送至適當的 ADX 叢集，以儲存工作區資料。 Azure 監視器記錄和 Azure 資料總管都使用許多自動查詢優化機制。 雖然自動優化提供顯著的提升，但在某些情況下，您可以大幅提升查詢效能。 這篇文章說明效能考慮，以及解決這些問題的數種技術。
@@ -156,7 +157,7 @@ Heartbeat
 > 此指標只會顯示來自立即叢集的 CPU。 在多重區域查詢中，它只會代表其中一個區域。 在多工作區查詢中，它可能不會包含所有工作區。
 
 ### <a name="avoid-full-xml-and-json-parsing-when-string-parsing-works"></a>當字串剖析運作時，避免進行完整的 XML 和 JSON 剖析
-完整剖析 XML 或 JSON 物件可能會耗用大量的 CPU 和記憶體資源。 在許多情況下，當只需要一個或兩個參數，而且 XML 或 JSON 物件很簡單時，使用[parse 運算子](/azure/kusto/query/parseoperator)或其他[文字剖析技術](/azure/azure-monitor/log-query/parse-text)，就能更輕鬆地將它們剖析為字串。 當 XML 或 JSON 物件中的記錄數目增加時，效能提升會更顯著。 當記錄數目達到數十百萬時，這是不可或缺的。
+完整剖析 XML 或 JSON 物件可能會耗用大量的 CPU 和記憶體資源。 在許多情況下，當只需要一個或兩個參數，而且 XML 或 JSON 物件很簡單時，使用[parse 運算子](/azure/kusto/query/parseoperator)或其他[文字剖析技術](./parse-text.md)，就能更輕鬆地將它們剖析為字串。 當 XML 或 JSON 物件中的記錄數目增加時，效能提升會更顯著。 當記錄數目達到數十百萬時，這是不可或缺的。
 
 例如，下列查詢會傳回與上述查詢完全相同的結果，而不會執行完整的 XML 剖析。 請注意，它會對 XML 檔案結構進行一些假設，例如該 FilePath 元素會在 Get-filehash 之後，而且沒有任何屬性。 
 
@@ -219,6 +220,64 @@ SecurityEvent
 | summarize LoginSessions = dcount(LogonGuid) by Account
 ```
 
+### <a name="avoid-multiple-scans-of-same-source-data-using-conditional-aggregation-functions-and-materialize-function"></a>避免使用條件式彙總函式和具體化函式多次掃描相同的來源資料
+當查詢有數個使用 join 或 union 運算子合併的子查詢時，每個子查詢會分別掃描整個來源，然後合併結果。 這會將資料掃描的次數乘以非常大的資料集的關鍵因素。
+
+避免這種情況的技巧是使用條件式彙總函式。 「摘要」運算子中所使用的大部分[彙總函式](/azure/data-explorer/kusto/query/summarizeoperator#list-of-aggregation-functions)都具有條件式版本，可讓您使用單一「摘要」運算子搭配多個條件。 
+
+例如，下列查詢會顯示登入事件的數目，以及每個帳戶的進程執行事件數目。 它們會傳回相同的結果，但第一個會掃描資料兩次，第二次掃描只會執行一次：
+
+```Kusto
+//Scans the SecurityEvent table twice and perform expensive join
+SecurityEvent
+| where EventID == 4624 //Login event
+| summarize LoginCount = count() by Account
+| join 
+(
+    SecurityEvent
+    | where EventID == 4688 //Process execution event
+    | summarize ExecutionCount = count(), ExecutedProcesses = make_set(Process) by Account
+) on Account
+```
+
+```Kusto
+//Scan only once with no join
+SecurityEvent
+| where EventID == 4624 or EventID == 4688 //early filter
+| summarize LoginCount = countif(EventID == 4624), ExecutionCount = countif(EventID == 4688), ExecutedProcesses = make_set_if(Process,EventID == 4688)  by Account
+```
+
+不需要子查詢的另一種情況是針對[parse 運算子](/azure/data-explorer/kusto/query/parseoperator?pivots=azuremonitor)進行預先篩選，以確保它只會處理符合特定模式的記錄。 這不是必要的，因為 parse 運算子和其他類似的運算子會在模式不相符時傳回空的結果。 以下兩個查詢會傳回完全相同的結果，而第二個查詢只會掃描一次資料。 在第二個查詢中，每個 parse 命令僅與其事件相關。 之後的擴充運算子會顯示如何參考空白資料的情況。
+
+```Kusto
+//Scan SecurityEvent table twice
+union(
+SecurityEvent
+| where EventID == 8002 
+| parse EventData with * "<FilePath>" FilePath "</FilePath>" * "<FileHash>" FileHash "</FileHash>" *
+| distinct FilePath
+),(
+SecurityEvent
+| where EventID == 4799
+| parse EventData with * "CallerProcessName\">" CallerProcessName1 "</Data>" * 
+| distinct CallerProcessName1
+)
+```
+
+```Kusto
+//Single scan of the SecurityEvent table
+SecurityEvent
+| where EventID == 8002 or EventID == 4799
+| parse EventData with * "<FilePath>" FilePath "</FilePath>" * "<FileHash>" FileHash "</FileHash>" * //Relevant only for event 8002
+| parse EventData with * "CallerProcessName\">" CallerProcessName1 "</Data>" *  //Relevant only for event 4799
+| extend FilePath = iif(isempty(CallerProcessName1),FilePath,"")
+| distinct FilePath, CallerProcessName1
+```
+
+當上述的不允許避免使用子查詢時，另一項技術是提示查詢引擎，其中每一個都使用[具體化（）函數](/azure/data-explorer/kusto/query/materializefunction?pivots=azuremonitor)來使用單一來源資料。 當來源資料來自于查詢中多次使用的函數時，這會很有用。
+
+
+
 ### <a name="reduce-the-number-of-columns-that-is-retrieved"></a>減少抓取的資料行數目
 
 因為 Azure 資料總管是單欄式資料存放區，所以每個資料行的抓取都與其他欄位無關。 直接抓取的資料行數目會影響整體資料量。 您應該只在輸出結果或[投影](/azure/kusto/query/projectoperator)特定資料行時， [summarizing](/azure/kusto/query/summarizeoperator)將所需的資料行包含在輸出中。 Azure 資料總管有數個優化功能可減少抓取的資料行數目。 如果它判斷不需要資料行（例如，在 [[摘要](/azure/kusto/query/summarizeoperator)] 命令中不會參考它），就不會將它取出。
@@ -260,7 +319,7 @@ Perf
 ) on Computer
 ```
 
-發生這種錯誤的常見情況是，當[arg_max （）](/azure/kusto/query/arg-max-aggfunction)用來尋找最近發生的情況時。 例如：
+發生這種錯誤的常見情況是，當[arg_max （）](/azure/kusto/query/arg-max-aggfunction)用來尋找最近發生的情況時。 例如:
 
 ```Kusto
 Perf

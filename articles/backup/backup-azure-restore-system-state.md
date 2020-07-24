@@ -3,16 +3,16 @@ title: 將系統狀態還原到 Windows Server
 description: 從 Azure 中的備份還原 Windows Server 系統狀態的逐步說明。
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 5212e5ea0ed3a8c0e0a8e9d4fa45f1eb6c901bf5
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 8ba4cb5d5617b6a051aec8c54a595e701f62fb87
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86184447"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067362"
 ---
 # <a name="restore-system-state-to-windows-server"></a>將系統狀態還原到 Windows Server
 
-本文說明如何從 Azure 復原服務保存庫來還原 Windows Server 系統狀態備份。 若要還原系統狀態，您必須使用[備份系統狀態](backup-azure-system-state.md#back-up-windows-server-system-state)中的指示來建立系統狀態備份 (，並確定您已安裝[最新版的 Microsoft Azure 復原服務 (MARS) 代理程式](https://aka.ms/azurebackup_agent)。 從 Azure 復原服務保存庫來復原 Windows Server 系統狀態資料的程序需要兩個步驟：
+本文說明如何從 Azure 復原服務保存庫來還原 Windows Server 系統狀態備份。 若要還原系統狀態，您必須有系統狀態備份（使用[備份系統狀態](backup-azure-system-state.md#back-up-windows-server-system-state)中的指示建立），並確定您已安裝[最新版的 Microsoft Azure 復原服務（MARS）代理程式](https://aka.ms/azurebackup_agent)。 從 Azure 復原服務保存庫來復原 Windows Server 系統狀態資料的程序需要兩個步驟：
 
 1. 從 Azure 備份來還原檔案形式的系統狀態。 在從 Azure 備份來還原檔案形式的系統狀態時，您可以：
    * 將系統狀態還原到進行備份時所在的相同伺服器，或
@@ -83,7 +83,7 @@ ms.locfileid: "86184447"
 
     ![其他伺服器](./media/backup-azure-restore-system-state/anotherserver.png)
 
-5. 提供與「範例保存庫」 ** 相對應的保存庫認證檔。 如果保存庫認證檔無效 (或過期) ，請從 Azure 入口網站中的*範例*保存庫下載新的保存庫認證檔。 一旦提供保存庫認證檔，即會顯示與保存庫認證檔相關聯的復原服務保存庫。
+5. 提供與「範例保存庫」 ** 相對應的保存庫認證檔。 如果保存庫認證檔無效（或已過期），請從 Azure 入口網站中的*範例*保存庫下載新的保存庫認證檔。 一旦提供保存庫認證檔，即會顯示與保存庫認證檔相關聯的復原服務保存庫。
 
 6. 在 [選取備份伺服器]** 窗格上，從顯示的電腦清單選取 [來源電腦]。
 7. 在 [選取復原模式] 窗格上，選擇 [系統狀態]****，然後按 [下一步]****。
@@ -166,7 +166,7 @@ ms.locfileid: "86184447"
 * 當樹系中沒有任何可運作的網域控制站時，還原所有 Active Directory 資料
 * 還原已刪除或損毀這些物件時的部分 Active Directory 資料
 
-本文只會討論第一個案例，這會呼叫 AD DS 的 nonauthorative 還原，以及 sysvol 資料夾的授權還原。  如果您需要執行第二個案例 (網域控制站仍然正常運作，但您需要還原) 的特定 AD 物件，請參閱[這些指示](https://support.microsoft.com/help/840001/how-to-restore-deleted-user-accounts-and-their-group-memberships-in-ac)。
+本文只會討論第一個案例，這會呼叫 AD DS 的 nonauthorative 還原，以及 sysvol 資料夾的授權還原。  如果您需要執行第二個案例（其中網域控制站仍然正常運作，但您需要還原特定的 AD 物件），請參閱[這些指示](https://support.microsoft.com/help/840001/how-to-restore-deleted-user-accounts-and-their-group-memberships-in-ac)。
 
 1. 請遵循這裡的步驟，將[系統狀態檔案復原到替代伺服器](#recover-system-state-files-to-an-alternate-server)。
 1. 使用下列命令以「目錄服務修復模式」** 重新啟動您的伺服器。 在提高權限的命令提示字元上：
@@ -181,9 +181,9 @@ ms.locfileid: "86184447"
     * 遵循上面的指示，使用 Windows Server Backup 公用程式[在 Windows Server 上套用已還原的系統狀態](#apply-restored-system-state-on-a-windows-server)。
 
         >[!NOTE]
-        >如果您要還原所有 Active Directory 資料 (而且樹系) 中沒有任何可運作的網域控制站，則在上述步驟9中，請務必選取 [**執行 Active Directory 檔案的授權還原**]。
+        >如果您要還原所有 Active Directory 資料（而且樹系中沒有任何可運作的網域控制站），則在上述步驟9中，請務必選取 [**執行 Active Directory 檔案的授權還原**]。
 
-    * 使用[wbadmin](https://docs.microsoft.com/windows-server/administration/windows-commands/wbadmin-start-systemstaterecovery)公用程式，從命令列執行還原。
+    * 使用[wbadmin](/windows-server/administration/windows-commands/wbadmin-start-systemstaterecovery)公用程式，從命令列執行還原。
 
         您將需要您想要使用之備份的版本識別碼。 您可以藉由執行下列命令來取得版本識別碼清單：
 
@@ -193,7 +193,7 @@ ms.locfileid: "86184447"
 
         接著，您可以使用該版本識別碼來執行還原。
 
-        例如，若要執行[nonauthorative 還原 AD DS 和 sysvol 資料夾的授權還原](https://docs.microsoft.com/windows-server/identity/ad-ds/manage/ad-forest-recovery-nonauthoritative-restore)，請使用 9:00 04/30/2020 （儲存在共用資源上的備份 `\\servername\share` `server01` ），並輸入：
+        例如，若要執行[nonauthorative 還原 AD DS 和 sysvol 資料夾的授權還原](/windows-server/identity/ad-ds/manage/ad-forest-recovery-nonauthoritative-restore)，請使用 9:00 04/30/2020 （儲存在共用資源上的備份 `\\servername\share` `server01` ），並輸入：
 
         ```cmd
         wbadmin start systemstaterecovery -version:04/30/2020-09:00 -backupTarget:\\servername\share -machine:server01 -authsysvol
@@ -204,7 +204,7 @@ ms.locfileid: "86184447"
 
 ## <a name="troubleshoot-failed-system-state-restore"></a>針對失敗的系統狀態還原進行疑難排解
 
-如果先前套用系統狀態的程式未順利完成，請使用 Windows 修復環境 (Win RE) 復原您的 Windows Server。 下列步驟說明如何使用 Win RE 來進行復原。 只有當 Windows Server 在系統狀態還原之後無法正常開機時，才使用此選項。 下列程序會清除非系統資料，請小心使用。
+如果先前套用系統狀態的程式未順利完成，請使用 Windows 修復環境（Win RE）來復原您的 Windows Server。 下列步驟說明如何使用 Win RE 來進行復原。 只有當 Windows Server 在系統狀態還原之後無法正常開機時，才使用此選項。 下列程序會清除非系統資料，請小心使用。
 
 1. 將您的 Windows Server 開機到 Windows 修復環境 (Win RE)。
 

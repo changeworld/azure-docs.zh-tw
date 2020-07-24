@@ -9,14 +9,14 @@ ms.subservice: service
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 05/13/2020
+ms.date: 06/17/2020
 ms.author: sstein
-ms.openlocfilehash: ed6f164adb9e0a6daf24342021087b2cede3289d
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 4257b2fab5e0cca0cb016794673ed39ae4973895
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85981368"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067418"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>Azure SQL Database & SQL 受控執行個體有哪些新功能？
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -42,7 +42,7 @@ Azure SQL Database 和 Azure SQL 受控執行個體的檔已分割成不同的�
 |**Azure SQL Database**|Azure SQL Database*單一資料庫*| 除非另有明確指定，否則產品名稱 Azure SQL Database 包括部署到彈性集區的單一資料庫和資料庫。 |
 |**Azure SQL Database**|Azure SQL Database*彈性集*區| 除非另有明確指定，否則產品名稱 Azure SQL Database 包括部署到彈性集區的單一資料庫和資料庫。  |
 |**Azure SQL Database** |Azure SQL Database | 雖然這一詞維持不變，但現在僅適用于單一資料庫和彈性集區部署，而且不包含受控實例。 |
-| **Azure SQL**| N/A | 這是指 Azure 中可用的 SQL Server 資料庫引擎產品系列： Azure SQL Database、Azure SQL 受控執行個體，以及 Azure Vm 上的 SQL Server。 | 
+| **Azure SQL**| 不適用 | 這是指 Azure 中可用的 SQL Server 資料庫引擎產品系列： Azure SQL Database、Azure SQL 受控執行個體，以及 Azure Vm 上的 SQL Server。 | 
 
 ## <a name="features-in-public-preview"></a>公開預覽中的功能
 
@@ -50,7 +50,6 @@ Azure SQL Database 和 Azure SQL 受控執行個體的檔已分割成不同的�
 
 | 功能 | 詳細資料 |
 | ---| --- |
-| 新的 Fsv2 系列和 M 系列硬體世代| 如需相關資訊，請參閱[硬體](service-tiers-vcore.md#hardware-generations)世代。|
 | 使用單一資料庫和彈性集區加速資料庫復原 | 如需相關資訊，請參閱[加速資料庫](../accelerated-database-recovery.md)復原。|
 | 資料探索與分類  |如需詳細資訊，請參閱[Azure SQL Database 和 Azure Synapse 分析資料探索 & 分類](data-discovery-and-classification-overview.md)。|
 | 彈性資料庫工作 | 如需相關資訊，請參閱[建立、設定和管理彈性作業](elastic-jobs-overview.md)。 |
@@ -98,8 +97,8 @@ Azure SQL Database 和 Azure SQL 受控執行個體的檔已分割成不同的�
 
 |問題  |探索日期  |狀態  |解決日期  |
 |---------|---------|---------|---------|
-|[還原不含總和檢查碼的手動備份可能會失敗](#restoring-manual-backup-without-checksum-might-fail)|2020 年 5 月|有因應措施| |
-|[代理程式在修改、停用或啟用現有作業時變得沒有回應](#agent-becomes-unresponsive-upon-modifying-disabling-or-enabling-existing-jobs)|2020 年 5 月|自動緩和| |
+|[還原不含總和檢查碼的手動備份可能會失敗](#restoring-manual-backup-without-checksum-might-fail)|2020 年 5 月|已解決|2020 年 6 月|
+|[代理程式在修改、停用或啟用現有作業時變得沒有回應](#agent-becomes-unresponsive-upon-modifying-disabling-or-enabling-existing-jobs)|2020 年 5 月|已解決|2020 年 6 月|
 |[資源群組的許可權未套用至 SQL 受控執行個體](#permissions-on-resource-group-not-applied-to-sql-managed-instance)|2020年2月|有因應措施||
 |[透過入口網站針對容錯移轉群組進行手動容錯移轉的限制](#limitation-of-manual-failover-via-portal-for-failover-groups)|Jan 2020|有因應措施||
 |[SQL Agent 角色需要非系統管理員 (sysadmin) 登入的明確 EXECUTE 許可權](#in-memory-oltp-memory-limits-are-not-applied)|12月2019|有因應措施||

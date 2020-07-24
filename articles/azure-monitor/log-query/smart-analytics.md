@@ -6,16 +6,17 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/15/2019
-ms.openlocfilehash: 51584ccf5f845be8a06b1e049cae11e636edef11
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 82960845e357579b82c493958287cb602d75182e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77659827"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067395"
 ---
 # <a name="log-analytics-smart-analytics-examples"></a>Log Analytics 智慧分析範例
 本文包含了在 Log Analytics 中使用智慧分析功能執行使用者活動分析的範例。 您可以使用這些範例來分析 Application Insights 監視的應用程式，或使用這些查詢中的概念對其他資料進行類似的分析。 
 
-請參閱 [Kusto 語言參考](https://docs.microsoft.com/azure/kusto/query/)了解在這些範例中使用不同關鍵字的詳細資料。 如果您不熟悉 Log Analytics，請逐步查看[建立查詢的課程](get-started-queries.md)。
+請參閱 [Kusto 語言參考](/azure/kusto/query/)了解在這些範例中使用不同關鍵字的詳細資料。 如果您不熟悉 Log Analytics，請逐步查看[建立查詢的課程](get-started-queries.md)。
 
 ## <a name="cohorts-analytics"></a>世代分析
 
