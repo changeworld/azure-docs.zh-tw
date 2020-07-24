@@ -3,15 +3,16 @@ title: Application Insights 的發行註解 | Microsoft Docs
 description: 在 Application Insights 中對計量瀏覽器新增部署或建置標記。
 ms.topic: conceptual
 ms.date: 07/01/2019
-ms.openlocfilehash: 0ad773ca6a7102ac718d43dfbbf6a4f834e681a0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8f6ffed8ae2039ec36ec8bd86518e6b359da65ec
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81010699"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87093029"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Application Insights 中度量圖表上的註解
 
-批註會顯示您部署新組建或其他重要事件的位置。 批註可讓您輕鬆查看您的變更是否對應用程式效能有任何影響。 [Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/tasks/)組建系統可以自動建立這些元件。 您也可以從 PowerShell 建立註解來標記您想要的任何事件。
+批註會顯示您部署新組建或其他重要事件的位置。 批註可讓您輕鬆查看您的變更是否對應用程式效能有任何影響。 [Azure Pipelines](/azure/devops/pipelines/tasks/)組建系統可以自動建立這些元件。 您也可以從 PowerShell 建立註解來標記您想要的任何事件。
 
 ## <a name="release-annotations-with-azure-pipelines-build"></a>Azure Pipelines 組建的發行批註
 
