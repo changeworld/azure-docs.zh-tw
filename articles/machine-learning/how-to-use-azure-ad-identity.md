@@ -3,18 +3,19 @@ title: 搭配您的 web 服務使用 AAD 身分識別
 titleSuffix: Azure Machine Learning
 description: 在 Azure Kubernetes Service 中使用 AAD 身分識別搭配 web 服務，以在計分期間存取雲端資源。
 services: machine-learning
-author: trevorbye
-ms.author: trbye
+ms.author: larryfr
+author: BlackMist
 ms.reviewer: aashishb
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.date: 02/10/2020
-ms.openlocfilehash: 660cb14bd081dffbf3e9fb5f02b7690212915355
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aa434a4e19321e88e388661ccb488f15c98d3a0f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807480"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078082"
 ---
 # <a name="use-azure-ad-identity-with-your-machine-learning-web-service-in-azure-kubernetes-service"></a>在 Azure Kubernetes Service 中使用 Azure AD 身分識別與您的機器學習 web 服務
 
@@ -149,6 +150,9 @@ secret_client = SecretClient(
     credential=credential)
 secret = secret_client.get_secret(my_secret_name)
 ```
+
+> [!IMPORTANT]
+> 這個範例會使用 DefaultAzureCredential。 若要使用特定的存取原則來授與您的身分識別存取權，請參閱[第4部分：從您的 Azure Key Vault 取出密碼](../key-vault/general/authentication.md#part-4-retrieve-the-secret-from-your-azure-key-vault-in-an-application-python)。
 
 ### <a name="access-blob-from-your-web-service"></a>從您的 web 服務存取 Blob
 

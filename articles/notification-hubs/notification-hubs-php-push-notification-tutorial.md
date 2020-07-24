@@ -14,18 +14,18 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: fb2d2d33d380819a88da57a78c449e22256bf41b
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: daebf7c6a5fc9056e16b77a40ee9f90db598749f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169522"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076638"
 ---
 # <a name="how-to-use-notification-hubs-from-php"></a>如何從 PHP 使用通知中樞
 
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
 
-您可以使用通知中樞 REST 介面，從 JAVA/PHP/Ruby 後端存取所有通知中樞的功能，如 MSDN 主題[通知中樞 Rest api](https://msdn.microsoft.com/library/dn223264.aspx)中所述。
+您可以使用通知中樞 REST 介面，從 JAVA/PHP/Ruby 後端存取所有通知中樞的功能，如 MSDN 主題[通知中樞 Rest api](/previous-versions/azure/reference/dn223264(v=azure.100))中所述。
 
 在本主題中，我們將說明如何：
 
@@ -56,7 +56,7 @@ $hub->sendNotification($notification, null);
 如果您還沒有這麼做，請遵循 [快速入門教學課程]，直到您必須執行後端的最後一節。
 另外，若有需要，您可以使用 [PHP REST 包裝函式範例]的程式碼，並直接移至[完成教學課程](#complete-tutorial)一節。
 
-您可以在 [MSDN](https://msdn.microsoft.com/library/dn530746.aspx)上找到所有實作完整 REST 包裝函式的詳細資料。 在本節中，我們將針對存取通知中心 REST 端點所需主要步驟的 PHP 實作進行說明：
+您可以在 [MSDN](/previous-versions/azure/reference/dn530746(v=azure.100))上找到所有實作完整 REST 包裝函式的詳細資料。 在本節中，我們將針對存取通知中心 REST 端點所需主要步驟的 PHP 實作進行說明：
 
 1. 解析連接字串
 2. 產生授權權杖
@@ -102,7 +102,7 @@ class NotificationHub {
 
 ### <a name="create-a-security-token"></a>建立安全性權杖
 
-請參閱 Azure 文件，以取得如何[建立 SAS 的安全性權杖](https://docs.microsoft.com/previous-versions/azure/reference/dn495627(v=azure.100)#create-sas-security-token)的資訊。
+請參閱 Azure 文件，以取得如何[建立 SAS 的安全性權杖](/previous-versions/azure/reference/dn495627(v=azure.100)#create-sas-security-token)的資訊。
 
 將 `generateSasToken` 方法新增到 `NotificationHub` 類別，以根據目前要求的 URI 和從連接字串擷取的認證來建立權杖。
 
@@ -151,7 +151,7 @@ class Notification {
 
 此類別是原生通知主體的容器，或是一組範本通知案例的屬性，及一組包含格式 (原生平台或範本) 的標頭，以及平台特定屬性 (如 Apple 到期屬性和 WNS 標頭)。
 
-請參閱[通知中樞 REST API 文件](https://msdn.microsoft.com/library/dn495827.aspx)及特定通知平台的格式，以取得所有可用選項。
+請參閱[通知中樞 REST API 文件](/previous-versions/azure/reference/dn495827(v=azure.100))及特定通知平台的格式，以取得所有可用選項。
 
 有了此類別之後，我們現在可以在 `NotificationHub` 類別內寫入傳送通知方法：
 
@@ -220,7 +220,7 @@ public function sendNotification($notification, $tagsOrTagExpression="") {
 
 現在您可以透過從 PHP 後端傳送通知，來完成開始使用教學課程。
 
-初始化您的通知中樞用戶端 (以 [開始使用教學課程] ) 中指示的連接字串和中樞名稱取代：
+初始化您的通知中樞用戶端（以 [快速入門教學課程] 中指示的方式取代連接字串和中樞名稱）：
 
 ```php
 $hub = new NotificationHub("connection string", "hubname");
@@ -290,4 +290,3 @@ $hub->sendNotification($notification, null);
 
 [PHP REST 包裝函式範例]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/notificationhubs-rest-php
 [使用 Azure 通知中樞將推播通知傳送至 iOS 應用程式](ios-sdk-get-started.md))
-

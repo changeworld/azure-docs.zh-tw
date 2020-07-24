@@ -12,11 +12,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: amverma
-ms.openlocfilehash: a4cd74c9c85ee7413cde9f0fb4cf3ffb54c9b3d0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7110f3417937b623260983a9d94e9e6834fc8fc9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76906738"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077386"
 ---
 # <a name="hc-series-virtual-machine-overview"></a>HC 系列虛擬機器總覽
 
@@ -57,11 +58,11 @@ Intel 更強的白金、金級和銀級 Cpu 也引進了一種可在 CPU 通訊�
 | 其他架構       | 整合通訊 X、libfabric、PGAS |
 | Azure 儲存體支援       | Std + Premium （最多4個磁片） |
 | SRIOV RDMA 的 OS 支援   | CentOS/RHEL 7.6 +、SLES 12 SP4 +、WinServer 2016 + |
-| Azure CycleCloud 支援    | Yes                         |
+| Azure CycleCloud 支援    | 是                         |
 | Azure Batch 支援         | 是                         |
 
 ## <a name="next-steps"></a>後續步驟
 
-* 深入瞭解 Azure 中適用于[Linux](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc)和[WINDOWS](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc)的 HPC VM 大小。
+* 深入瞭解 Azure 中適用于[Linux](../../sizes-hpc.md)和[WINDOWS](../../sizes-hpc.md)的 HPC VM 大小。
 
-* 深入瞭解 Azure 中的[HPC](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/) 。
+* 深入瞭解 Azure 中的[HPC](/azure/architecture/topics/high-performance-computing/) 。

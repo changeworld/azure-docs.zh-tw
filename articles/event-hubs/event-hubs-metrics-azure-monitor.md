@@ -3,18 +3,18 @@ title: Azure 監視器中的計量 - Azure 事件中樞 | Microsoft Docs
 description: 本文提供有關如何使用「Azure 監視」來監視「Azure 事件中樞」的資訊
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 76df9920c517e8370409bca26e5a6533c7253c1e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c7841007fa1736c88c30108099f86b99d3dad0fb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85314596"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074868"
 ---
 # <a name="azure-event-hubs-metrics-in-azure-monitor"></a>Azure 監視器中的 Azure 事件中樞計量
 
 事件中樞計量會提供您 Azure 訂用帳戶中事件中樞資源的狀態。 您可以使用一組豐富的計量資料，來評估事件中樞的整體健康情況 (不僅是命名空間層級，還包括實體層級)。 這些統計資料相當重要，因為它們可協助您監視事件中樞的狀態。 計量也可協助針對問題的根本原因進行疑難排解，而不需要連絡 Azure 支援。
 
-「Azure 監視器」提供統一的使用者介面，可供您監視各個不同的 Azure 服務。 如需詳細資訊，請參閱 [Microsoft Azure 中的監視](../monitoring-and-diagnostics/monitoring-overview.md)和 GitHub 上的 [Retrieve Azure Monitor metrics with .NET](https://github.com/Azure-Samples/monitor-dotnet-metrics-api) (使用 .NET 擷取 Azure 監視計量) 範例。
+「Azure 監視器」提供統一的使用者介面，可供您監視各個不同的 Azure 服務。 如需詳細資訊，請參閱 [Microsoft Azure 中的監視](../azure-monitor/overview.md)和 GitHub 上的 [Retrieve Azure Monitor metrics with .NET](https://github.com/Azure-Samples/monitor-dotnet-metrics-api) (使用 .NET 擷取 Azure 監視計量) 範例。
 
 ## <a name="access-metrics"></a>存取計量
 
@@ -103,7 +103,7 @@ Azure 監視器提供了多種方法供您存取計量。 您可以透過 [Azure
 使用 Azure 監視器將您的監視資料（活動記錄、診斷記錄等）路由傳送至事件中樞，可讓您輕鬆地與安全性資訊和事件管理（SIEM）工具整合。 如需詳細資訊，請參閱下列文章/blog 文章：
 
 - [將 Azure 監視資料串流至事件中樞以供外部工具取用](../azure-monitor/platform/stream-monitoring-data-event-hubs.md)
-- [Azure 記錄整合簡介](../security/fundamentals/azure-log-integration-overview.md)
+- [Azure 記錄整合簡介](/previous-versions/azure/security/fundamentals/azure-log-integration-overview)
 - [使用 Azure 監視器以與 SIEM 工具整合](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
 在 SIEM 工具從事件中樞取用記錄資料的案例中，如果您未看到任何內送訊息，或在計量圖表中看不到傳入訊息，但沒有任何外寄訊息，請遵循下列步驟：
@@ -114,7 +114,7 @@ Azure 監視器提供了多種方法供您存取計量。 您可以透過 [Azure
 
 ## <a name="next-steps"></a>後續步驟
 
-* 請參閱 [Azure 監視概觀](../monitoring-and-diagnostics/monitoring-overview.md)。
+* 請參閱 [Azure 監視概觀](../azure-monitor/overview.md)。
 * GitHub 上的[使用 .NET 擷取 Azure 監視計量](https://github.com/Azure-Samples/monitor-dotnet-metrics-api) \(英文\) 範例。 
 
 如需事件中樞的詳細資訊，請造訪下列連結：
@@ -129,6 +129,3 @@ Azure 監視器提供了多種方法供您存取計量。 您可以透過 [Azure
 
 [1]: ./media/event-hubs-metrics-azure-monitor/event-hubs-monitor1.png
 [2]: ./media/event-hubs-metrics-azure-monitor/event-hubs-monitor2.png
-
-
-

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/23/2019
-ms.openlocfilehash: 48a5c192051d8e715deb7e354827ff4cd4152bcd
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 5be217cd2afbb95c4c02a958c1299db599c349d0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077876"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074776"
 ---
 # <a name="create-a-non-interactive-authentication-net-hdinsight-application"></a>建立非互動式驗證 .NET HDInsight 應用程式
 
@@ -25,7 +25,7 @@ ms.locfileid: "86077876"
 * Azure Active Directory (Azure AD) 應用程式用戶端識別碼。 請參閱[建立 Azure Active Directory 應用程式](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)並[取得應用程式識別碼](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)。
 * Azure AD 應用程式秘密金鑰。 請參閱[取得應用程式驗證金鑰](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 HDInsight 叢集。 請參閱[入門教學課程](hadoop/apache-hadoop-linux-tutorial-get-started.md)。
 
@@ -119,8 +119,8 @@ HDInsight 叢集。 請參閱[入門教學課程](hadoop/apache-hadoop-linux-tut
     }
     ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [在入口網站中建立 Azure Active Directory 應用程式和服務主體](../active-directory/develop/howto-create-service-principal-portal.md)。
 * 了解如何[使用 Azure Resource Manager 驗證服務主體](../active-directory/develop/howto-authenticate-service-principal-powershell.md)。
-* 深入了解 [Azure 角色型存取控制 (RBAC)](../role-based-access-control/role-assignments-portal.md)。
+* 瞭解[azure 角色型存取控制（AZURE RBAC）](../role-based-access-control/role-assignments-portal.md)。

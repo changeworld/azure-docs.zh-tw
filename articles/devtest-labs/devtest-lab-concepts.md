@@ -3,15 +3,15 @@ title: 研發/測試實驗室概念 | Microsoft Docs
 description: 了解研發/測試實驗室的基本概念，以及它如何讓您輕鬆地建立、管理和監視 Azure 虛擬機器
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: b6e845acb34a398af52392b3a90b9213a9945dd2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8f82f0484caf23d20092318b5bc2a32b0e6b1f1d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482746"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074958"
 ---
 # <a name="devtest-labs-concepts"></a>研發/測試實驗室概念
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 下列清單包含重要的研發/測試實驗室概念和定義：
 
 ## <a name="labs"></a>實驗室
@@ -56,7 +56,7 @@ Azure 可宣告 VM 是可供任何具有權限的實驗室使用者使用的虛�
 最高限度是可將您實驗室中的成本浪費降至最低的機制。 例如，您可以設定一個最高限度，來限制每位使用者或每個實驗室中可建立的 VM 數目。
 
 ## <a name="security-levels"></a>安全性層級
-安全性存取權是由 Azure 角色型存取控制 (RBAC) 所決定。 若要了解存取權的運作方式，了解 RBAC 所定義的權限、角色和範圍之間的差異將有所幫助。
+安全性存取權是由 Azure 角色型存取控制（Azure RBAC）所決定。 若要了解存取權的運作方式，了解 RBAC 所定義的權限、角色和範圍之間的差異將有所幫助。
 
 * 權限 - 權限是針對特定動作所定義的存取權 (例如，針對所有虛擬機器的讀取權限)。
 * 角色 - 角色是一組可以分組並指派給使用者的權限。 例如，「訂用帳戶擁有者」 ** 角色擁有訂用帳戶內所有資源的存取權。

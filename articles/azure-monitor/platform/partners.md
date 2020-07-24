@@ -4,11 +4,12 @@ description: 了解 Azure Monitor 的監視合作夥伴以及如何存取與合�
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 05/29/2020
-ms.openlocfilehash: be309bf6caeb716fee86e4542363f5554b4568fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f40d38d182e1a8c233b15f711fd557a5d72e8f30
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84248966"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077329"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure 監視器合作夥伴整合
 
@@ -269,8 +270,8 @@ Turbonomic 透過同時讓效能、成本及合規性即時達到最佳狀態，
 
 - [深入瞭解 Azure 監視器](../../azure-monitor/overview.md)
 - [使用 REST API 存取計量](rest-api-walkthrough.md)
-- [將活動記錄串流至非 Microsoft 服務](../../azure-monitor/platform/activity-logs-stream-event-hubs.md)
-- [將資源記錄串流至非 Microsoft 服務](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)
+- [將活動記錄串流至非 Microsoft 服務](./activity-log.md#legacy-collection-methods)
+- [將資源記錄串流至非 Microsoft 服務](./resource-logs.md#send-to-azure-event-hubs)
 
 
 
@@ -301,4 +302,3 @@ Turbonomic 透過同時讓效能、成本及合規性即時達到最佳狀態，
 [splunk-doc]: https://github.com/Microsoft/AzureMonitorAddonForSplunk/wiki/Azure-Monitor-Addon-For-Splunk "Splunk 文件。"
 [sumologic-doc]: https://www.sumologic.com/azure "SumoLogic 文件。"
 [turbonomic-doc]: https://turbonomic.com/ "Turbonomic 簡介。"
-

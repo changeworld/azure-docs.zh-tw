@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: erhopf
 ms.service: cognitive-services
 ms.date: 07/09/2020
-ms.openlocfilehash: da09cb8aa112cdf927c1a67401ab3f6a92e85ece
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 59d19bd2a1dca2a3bc3c6ec3aee9e63b8f12b5d3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86225115"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075170"
 ---
 # <a name="cognitive-services-docs-whats-new-for-june-1-2020---june-30-2020"></a>認知服務檔：2020年6月1日至2020年6月30日的新功能
 
@@ -41,7 +41,7 @@ ms.locfileid: "86225115"
 
 ### <a name="new-articles"></a>新文章
 
-- [Language Understanding 中的人工智慧 (LUIS) ](/azure/cognitive-services/luis/artificial-intelligence)
+- [Language Understanding 中的人工智慧（LUIS）](/azure/cognitive-services/luis/artificial-intelligence)
 - [適用于 LUIS DevOps 的持續整合與持續傳遞工作流程](/azure/cognitive-services/luis/luis-concept-devops-automation)
 - [LUIS 的 DevOps 做法](/azure/cognitive-services/luis/luis-concept-devops-sourcecontrol)
 - [測試 LUIS DevOps](/azure/cognitive-services/luis/luis-concept-devops-testing)
@@ -69,16 +69,16 @@ ms.locfileid: "86225115"
 ### <a name="new-articles"></a>新文章
 
 - [自訂命令概念](/azure/cognitive-services/speech-service/custom-commands-references)
-- [將確認新增至命令](/azure/cognitive-services/speech-service/how-to-custom-commands-add-confirmations)
-- [將參數設定為外部目錄實體](/azure/cognitive-services/speech-service/how-to-custom-commands-add-external-catalog-string-entity)
+- [將確認新增至命令](/azure/cognitive-services/speech-service/how-to-custom-commands-add-interaction-rules#add-confirmations-to-a-command)
+- [將參數設定為外部目錄實體](/azure/cognitive-services/speech-service/how-to-custom-commands-add-parameter-configuration#configure-parameter-as-external-catalog-entity)
 - [使用適用于語音回應的語言產生範本](/azure/cognitive-services/speech-service/how-to-custom-commands-add-language-generation-templates)
-- [在命令中執行更正](/azure/cognitive-services/speech-service/how-to-custom-commands-add-one-step-correction)
+- [在命令中執行更正](/azure/cognitive-services/speech-service/how-to-custom-commands-add-parameter-configuration)
 - [將參數新增至命令](/azure/cognitive-services/speech-service/how-to-custom-commands-add-parameters-to-commands)
-- [新增簡單的命令](/azure/cognitive-services/speech-service/how-to-custom-commands-add-simple-commands)
-- [將驗證新增至自訂命令參數](/azure/cognitive-services/speech-service/how-to-custom-commands-add-validations)
-- [建立自訂命令應用程式](/azure/cognitive-services/speech-service/how-to-custom-commands-create-empty-project)
+- [新增簡單的命令](/azure/cognitive-services/speech-service/how-to-custom-commands-create-application-with-simple-commands)
+- [將驗證新增至自訂命令參數](/azure/cognitive-services/speech-service/how-to-custom-commands-add-parameter-configuration#add-validation-to-parameters)
+- [建立自訂命令應用程式](/azure/cognitive-services/speech-service/how-to-custom-commands-create-application-with-simple-commands#create-empty-application)
 - [自訂語音的 CI/CD](/azure/cognitive-services/speech-service/how-to-custom-speech-continuous-integration-continuous-deployment)
-- [使用自訂命令建立端對端語音助理](/azure/cognitive-services/speech-service/quickstart-custom-commands-e2e-application)
+- [使用自訂命令建立端對端語音助理](/azure/cognitive-services/speech-service/quickstart-custom-commands-application)
 - [快速入門：在 Speech Studio 中使用音訊檔案來測試模型](/azure/cognitive-services/speech-service/quickstarts/speech-studio-test-model)
 - [瞭解說話者辨識的基本概念](/azure/cognitive-services/speech-service/speaker-recognition-basics)
 - [什麼是 Azure 說話者辨識服務？](/azure/cognitive-services/speech-service/speaker-recognition-overview)
@@ -100,7 +100,7 @@ ms.locfileid: "86225115"
 - [快速入門：使用 Python REST API 呼叫文字分析認知服務](/azure/cognitive-services/text-analytics/quickstarts/python)
 - [快速入門：使用 Ruby 來呼叫文字分析認知服務](/azure/cognitive-services/text-analytics/quickstarts/ruby)
 
-## <a name="translator"></a>轉譯程式
+## <a name="translator"></a>Translator
 
 ### <a name="updated-articles"></a>更新的文章
 
@@ -110,7 +110,7 @@ ms.locfileid: "86225115"
 
 下列人員會在這段期間貢獻給認知服務檔。 感謝您！ 
 
-- [changeworld](https://github.com/changeworld) -Takashi Takebayashi (1) 
-- [huaigulin](https://github.com/huaigulin) -Huaigu Lin (1) 
+- [changeworld](https://github.com/changeworld) -Takashi Takebayashi （1）
+- [huaigulin](https://github.com/huaigulin) -Huaigu Lin （1）
 
 [!INCLUDE [Service specific updates](./includes/service-specific-updates.md)]

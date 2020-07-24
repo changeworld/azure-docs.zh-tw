@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: 77d8143743f899bcb9fd3927de223d84d406ed6f
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 0a20a120f72c70cb50cae37cece54d5efad31f47
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086784"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074812"
 ---
 # <a name="use-c-with-mapreduce-streaming-on-apache-hadoop-in-hdinsight"></a>搭配 HDInsight 的 Apache Hadoop 上的 MapReduce 串流使用 C#
 
@@ -47,7 +47,7 @@ HDInsight 叢集會使用[Mono https://mono-project.com) （](https://mono-proje
 
 * 將 .exe 檔案上傳至叢集的方式。 本文件中的步驟使用 Data Lake Tools for Visual Studio 將檔案上傳至叢集的主要儲存體。
 
-* 如果使用 PowerShell，您將需要 [Az 模組](https://docs.microsoft.com/powershell/azure/overview) \(部分機器翻譯\)。
+* 如果使用 PowerShell，您將需要 [Az 模組](https://docs.microsoft.com/powershell/azure/) \(部分機器翻譯\)。
 
 * HDInsight 上的 Apache Hadoop 叢集。 請參閱[開始在 Linux 上使用 HDInsight](../hadoop/apache-hadoop-linux-tutorial-get-started.md)。
 
@@ -218,7 +218,7 @@ namespace reducer
 
    下列清單說明每個參數和選項所代表的意義：
 
-   |參數 | 說明 |
+   |參數 | 描述 |
    |---|---|
    |hadoop-streaming.jar|指定包含串流處理 MapReduce 功能的 jar 檔案。|
    |-files|指定此作業的*mapper.exe*和*reducer.exe*檔案。 在 `wasbs:///` `adl:///` 每個檔案之前的、或 `abfs:///` 通訊協定宣告，是叢集之預設儲存體根目錄的路徑。|
@@ -267,7 +267,7 @@ yourselves      3
 youth   17
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [在 HDInsight 上的 Apache Hadoop 中使用 MapReduce](hdinsight-use-mapreduce.md)。
 * [使用 c # 使用者定義函數搭配 Apache Hive 和 Apache Pig](apache-hadoop-hive-pig-udf-dotnet-csharp.md)。

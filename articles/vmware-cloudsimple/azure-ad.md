@@ -8,11 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 674ca8bea110d60557d1e50e7b68c9c3f7a92bf2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f90f5f4298fcca77e293965ddd377598bcfd1930
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77564579"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077302"
 ---
 # <a name="use-azure-ad-as-an-identity-provider-for-vcenter-on-cloudsimple-private-cloud"></a>使用 Azure AD 做為 CloudSimple 私用雲端上的 vCenter 身分識別提供者
 
@@ -45,7 +46,7 @@ Azure AD 是 Microsoft 多租使用者雲端式目錄和身分識別管理服務
 > [!NOTE]
 > 如果您已經有 Azure AD，可以略過本節。
 
-1. 如[Azure AD 檔](../active-directory/fundamentals/get-started-azure-ad.md)所述，在您的訂用帳戶上設定 Azure AD。
+1. 如[Azure AD 檔](../active-directory/fundamentals/active-directory-whatis.md)所述，在您的訂用帳戶上設定 Azure AD。
 2. 如[註冊 Azure Active Directory Premium](../active-directory/fundamentals/active-directory-get-started-premium.md)所述，在您的訂用帳戶上啟用 Azure Active Directory Premium。
 3. 設定自訂功能變數名稱，並驗證自訂功能變數名稱，如[將自訂功能變數名稱新增至 Azure Active Directory](../active-directory/fundamentals/add-custom-domain.md)中所述。
     1. 使用 Azure 上提供的資訊，在您的網域註冊機構上設定 DNS 記錄。
@@ -58,17 +59,17 @@ Azure AD 是 Microsoft 多租使用者雲端式目錄和身分識別管理服務
 > [!NOTE]
 > 這是啟用 Azure AD 做為 vCenter 身分識別來源的重要步驟。  若要避免任何問題，請確定已正確執行所有步驟。
 
-1. 啟用 Azure AD 網域服務，如[使用 Azure 入口網站啟用 Azure Active Directory 網域服務](../active-directory-domain-services/active-directory-ds-getting-started.md)中所述。
-2. 設定 Azure AD 網域服務將使用的網路，如[使用 Azure 入口網站啟用 Azure Active Directory Domain Services](../active-directory-domain-services/active-directory-ds-getting-started-network.md)所述。
-3. 如[使用 Azure 入口網站啟用 Azure Active Directory Domain Services](../active-directory-domain-services/active-directory-ds-getting-started-admingroup.md)所述，設定管理 Azure AD Domain Services 的系統管理員群組。
-4. 如[啟用 Azure Active Directory Domain Services](../active-directory-domain-services/active-directory-ds-getting-started-dns.md)所述，更新 AZURE AD DOMAIN SERVICES 的 DNS 設定。  如果您想要透過網際網路連線到 AD，請將 Azure AD 網域服務之公用 IP 位址的 DNS 記錄設定為功能變數名稱。
-5. 為使用者啟用密碼雜湊同步處理。  此步驟可將 NT LAN Manager （NTLM）和 Kerberos 驗證所需的密碼雜湊同步處理到 Azure AD Domain Services。 設定密碼雜湊同步後，使用者即可使用他們的公司認證來登入受控網域。 請參閱[啟用密碼雜湊同步處理以 Azure Active Directory Domain Services](../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md)。
+1. 啟用 Azure AD 網域服務，如[使用 Azure 入口網站啟用 Azure Active Directory 網域服務](../active-directory-domain-services/tutorial-create-instance.md)中所述。
+2. 設定 Azure AD 網域服務將使用的網路，如[使用 Azure 入口網站啟用 Azure Active Directory Domain Services](../active-directory-domain-services/tutorial-create-instance.md)所述。
+3. 如[使用 Azure 入口網站啟用 Azure Active Directory Domain Services](../active-directory-domain-services/tutorial-create-instance.md)所述，設定管理 Azure AD Domain Services 的系統管理員群組。
+4. 如[啟用 Azure Active Directory Domain Services](../active-directory-domain-services/tutorial-create-instance.md)所述，更新 AZURE AD DOMAIN SERVICES 的 DNS 設定。  如果您想要透過網際網路連線到 AD，請將 Azure AD 網域服務之公用 IP 位址的 DNS 記錄設定為功能變數名稱。
+5. 為使用者啟用密碼雜湊同步處理。  此步驟可將 NT LAN Manager （NTLM）和 Kerberos 驗證所需的密碼雜湊同步處理到 Azure AD Domain Services。 設定密碼雜湊同步後，使用者即可使用他們的公司認證來登入受控網域。 請參閱[啟用密碼雜湊同步處理以 Azure Active Directory Domain Services](../active-directory-domain-services/tutorial-create-instance.md)。
     1. 如果有僅限雲端的使用者，他們必須使用<a href="http://myapps.microsoft.com/" target="_blank">Azure AD 存取面板</a>來變更其密碼，以確保密碼雜湊會以 NTLM 或 Kerberos 所需的格式儲存。  遵循[針對僅限雲端的使用者帳戶啟用受控網域的密碼雜湊同步](../active-directory-domain-services/tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)處理中的指示。  針對個別使用者，以及使用 Azure 入口網站或 Azure AD PowerShell Cmdlet 在 Azure AD 目錄中建立的任何新使用者，都必須執行此步驟。 需要存取 Azure AD 網域服務的使用者必須使用<a href="http://myapps.microsoft.com/" target="_blank">Azure AD 存取面板</a>，並存取其設定檔以變更密碼。
 
         > [!NOTE]
         > 如果您的組織有僅限雲端使用者帳戶，則需要使用 Azure Active Directory Domain Services 的所有使用者必須變更其密碼。 僅限雲端使用者帳戶是您使用 Azure 入口網站或 Azure AD PowerShell Cmdlet 在 Azure AD 目錄中建立的帳戶。 這類使用者帳戶不是從內部部署目錄進行同步。
 
-    2. 如果您要從內部部署 Active directory 同步處理密碼，請依照[Active Directory 檔](../active-directory-domain-services/active-directory-ds-getting-started-password-sync-synced-tenant.md)中的步驟進行。
+    2. 如果您要從內部部署 Active directory 同步處理密碼，請依照[Active Directory 檔](../active-directory-domain-services/tutorial-configure-password-hash-sync.md)中的步驟進行。
 
 6.  如[設定 Azure AD Domain Services 受控網域的安全 ldap （LDAPS）](../active-directory-domain-services/tutorial-configure-ldaps.md)中所述，在您的 Azure Active Directory Domain Services 上設定安全 ldap。
     1. 上傳憑證以供安全 LDAP 使用，如 Azure 主題[取得安全 ldap 的憑證](../active-directory-domain-services/tutorial-configure-ldaps.md#create-a-certificate-for-secure-ldap)中所述。  CloudSimple 建議使用憑證授權單位單位所發行的簽署憑證，以確保 vCenter 可以信任該憑證。

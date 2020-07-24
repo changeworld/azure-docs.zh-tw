@@ -7,10 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
 ms.openlocfilehash: aa34196233ce4037ef6fa49b782b9aa958f7632d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79274680"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075257"
 ---
 # <a name="windows-event-log-data-sources-in-azure-monitor"></a>Azure 監視器中的 Windows 事件記錄檔資料來源
 Windows 事件記錄是使用 Windows 代理程式收集資料的常見[資料來源](agent-data-sources.md)之一，因為許多應用程式會寫入 Windows 事件記錄。  除了指定您要監視之應用程式所建立的任何自訂記錄之外，您也可以透過標準記錄 (例如系統和應用程式) 來收集事件。
@@ -39,7 +40,7 @@ Azure 監視器只會從設定中指定的 Windows 事件記錄收集事件。  
 ## <a name="windows-event-records-properties"></a>Windows 事件記錄屬性
 Windows 事件記錄具有**事件**類型，且具有下表中的屬性：
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |:--- |:--- |
 | 電腦 |收集事件的來源電腦名稱。 |
 | EventCategory |事件的類別。 |
@@ -54,7 +55,7 @@ Windows 事件記錄具有**事件**類型，且具有下表中的屬性：
 | 來源 |事件的來源。 |
 | SourceSystem |收集事件的來源代理程式類型。 <br> OpsManager - Windows 代理程式，直接連接或由 Operations Manager 管理 <br> Linux – 所有的 Linux 代理程式  <br> AzureStorage – Azure 診斷 |
 | TimeGenerated |在 Windows 中建立事件的日期和時間。 |
-| UserName |記錄此事件之帳戶的使用者名稱。 |
+| 使用者名稱 |記錄此事件之帳戶的使用者名稱。 |
 
 ## <a name="log-queries-with-windows-events"></a>使用 Windows 事件的記錄查詢
 下表提供擷取 Windows 事件記錄的不同記錄查詢範例。

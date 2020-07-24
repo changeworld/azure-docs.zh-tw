@@ -4,15 +4,15 @@ description: 瞭解如何將 Azure 資源記錄串流至 Azure 監視器中的 L
 author: bwren
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 12/18/2019
+ms.date: 07/17/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 492aae69895d62c784d15cd77405d0c52ec13e3e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a7b24de860b543778d7e6ceabc95d10bf7c44c2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84946919"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077081"
 ---
 # <a name="azure-resource-logs"></a>Azure 資源記錄
 Azure 資源記錄是[平臺記錄](platform-logs-overview.md)，可讓您深入瞭解在 Azure 資源內執行的作業。 資源記錄的內容會因 Azure 服務和資源類型而異。 預設不會收集資源記錄。 您必須為每個 Azure 資源建立診斷設定，以將其資源記錄傳送到 Log Analytics 工作區，以搭配[Azure 監視器記錄](data-platform-logs.md)、Azure 事件中樞在 Azure 外部轉送，或 Azure 儲存體進行封存。
@@ -85,17 +85,15 @@ AzureDiagnostics 資料表看起來會像這樣：
 
 
 ### <a name="select-the-collection-mode"></a>選取收集模式
-大部分的 Azure 資源會在**Azure 診斷**或**資源特定模式下**將資料寫入工作區，而不會提供您選擇。 請參閱[每個服務的檔](diagnostic-logs-schema.md)，以取得其所使用模式的詳細資料。 所有 Azure 服務最終都會使用資源特定模式。 在此轉換過程中，有些資源可讓您選取診斷設定中的模式。 針對任何新的診斷設定指定資源特定模式，因為這可讓資料更容易管理，並可協助您在日後避免複雜的遷移。
+大部分的 Azure 資源會在**Azure 診斷**或**資源特定模式下**將資料寫入工作區，而不會提供您選擇。 請參閱[每個服務的檔](./resource-logs-schema.md)，以取得其所使用模式的詳細資料。 所有 Azure 服務最終都會使用資源特定模式。 在此轉換過程中，有些資源可讓您選取診斷設定中的模式。 針對任何新的診斷設定指定資源特定模式，因為這可讓資料更容易管理，並可協助您在日後避免複雜的遷移。
   
    ![診斷設定模式選取器](media/resource-logs-collect-workspace/diagnostic-settings-mode-selector.png)
 
-
-
-
 > [!NOTE]
-> 目前，只有在 Azure 入口網站中設定診斷設定時，才可以選取**Azure 診斷**和**資源特定**模式。 如果您使用 CLI、PowerShell 或 Rest API 來進行設定，它會預設為**Azure 診斷**。
+> 如需使用 resource manager 範本設定收集模式的範例，請參閱[Azure 監視器中診斷設定的 Resource Manager 範本範例](../samples/resource-manager-diagnostic-settings.md#diagnostic-setting-for-recovery-services-vault)。
 
-您可以將現有的診斷設定修改為資源特定模式。 在此情況下，已收集的資料會保留在_AzureDiagnostics_資料表中，直到根據您工作區的保留設定加以移除為止。 系統會在專用資料表中收集新的資料。 使用[union](https://docs.microsoft.com/azure/kusto/query/unionoperator)運算子查詢兩個數據表之間的資料。
+
+您可以將現有的診斷設定修改為資源特定模式。 在此情況下，已收集的資料會保留在_AzureDiagnostics_資料表中，直到根據您工作區的保留設定加以移除為止。 系統會在專用資料表中收集新的資料。 使用[union](/azure/kusto/query/unionoperator)運算子查詢兩個數據表之間的資料。
 
 繼續觀看[Azure 更新](https://azure.microsoft.com/updates/)blog，以取得支援資源特定模式之 azure 服務的相關公告。
 
@@ -191,7 +189,7 @@ insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/00000000
 
 每個 PT1H.json blob 有一個 JSON blob，包含在 blob URL 指定時數內 (例如 h = 12) 發生的事件。 在目前這一小時，事件一發生就會附加到 PT1H.json 檔案。 分鐘值（m = 00）一定是00，因為資源記錄事件會分成每小時的個別 blob。
 
-在 PT1H.js的檔案中，每個事件都會以下列格式儲存。 這會使用通用的最上層架構，但每個 Azure 服務都是唯一的，如[資源記錄架構](diagnostic-logs-schema.md)中所述。
+在 PT1H.js的檔案中，每個事件都會以下列格式儲存。 這會使用通用的最上層架構，但每個 Azure 服務都是唯一的，如[資源記錄架構](./resource-logs-schema.md)中所述。
 
 ``` JSON
 {"time": "2016-07-01T00:00:37.2040000Z","systemId": "46cdbb41-cb9c-4f3d-a5b4-1d458d827ff1","category": "NetworkSecurityGroupRuleCounter","resourceId": "/SUBSCRIPTIONS/s1id1234-5679-0123-4567-890123456789/RESOURCEGROUPS/TESTRESOURCEGROUP/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/TESTNSG","operationName": "NetworkSecurityGroupCounters","properties": {"vnetResourceGuid": "{12345678-9012-3456-7890-123456789012}","subnetPrefix": "10.3.0.0/24","macAddress": "000123456789","ruleName": "/subscriptions/ s1id1234-5679-0123-4567-890123456789/resourceGroups/testresourcegroup/providers/Microsoft.Network/networkSecurityGroups/testnsg/securityRules/default-allow-rdp","direction": "In","type": "allow","matchedConnections": 1988}}

@@ -3,12 +3,12 @@ title: Azure Migrate 中的 VMware 評估支援
 description: 了解使用 Azure Migrate 伺服器評估來評估 VMware VM 的支援。
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 4ca59e3b9eaf62a46ca4df3a582e7b8f290e7da6
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 1c1e349f31f6650c0f0910642d60193ebc0dd3a5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86108799"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078015"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>VMware 評估的支援矩陣 
 
@@ -87,7 +87,7 @@ Azure Migrate 會使用 [Azure Migrate 設備](migrate-appliance.md)來進行探
 **Windows VM** | Windows Server 2016<br/> Windows Server 2012 R2<br/> Windows Server 2012<br/> Windows Server 2008 R2 (64 位元)。
 **vCenter Server 認證** | 相依性視覺效果需要具有唯讀存取權的 vCenter Server 帳戶，以及為 [虛擬機器] > [來賓作業] 啟用權限。
 **Windows VM 許可權** |  針對相依性分析，Azure Migrate 設備需要有網域系統管理員帳戶或本機系統管理員帳戶才能存取 Windows VM。
-**Linux VM 許可權** | Red Hat Enterprise Linux 7、6、5<br/> Ubuntu Linux 14.04、16.04<br/> Debian 7、8<br/> Oracle Linux 6、7<br/> CentOS 5、6、7。
+**Linux VM** | Red Hat Enterprise Linux 7、6、5<br/> Ubuntu Linux 14.04、16.04<br/> Debian 7、8<br/> Oracle Linux 6、7<br/> CentOS 5、6、7。
 **Linux 帳戶** | 針對相依性分析，在 Linux 機器上，Azure Migrate 設備需要具有根權限的使用者帳戶。<br/><br/> 或者，使用者帳戶需要 /bin/netstat 和 /bin/ls 檔案上的這些權限：CAP_DAC_READ_SEARCH 和 CAP_SYS_PTRACE。
 **所需的代理程式** | 您想要分析的電腦上不需要任何代理程式。
 **VMware 工具** | 您想要分析的每個 VM 上必須安裝並執行 VMware 工具 (10.2 之後的版本)。

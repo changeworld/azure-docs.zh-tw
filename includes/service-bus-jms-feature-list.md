@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 6/9/2020
 ms.author: aschhab
 ms.custom: include file
-ms.openlocfilehash: 3fd4c6416241302a4969d9b3de26fa6b8316c1f7
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: e4b9925459463ff66685c797f0edaba13883f4d5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86122286"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076237"
 ---
-下表列出 Azure 服務匯流排目前支援和不支援的**JAVA Message Service （JMS）** 功能。
+下表列出 Azure 服務匯流排目前支援的 JAVA 訊息服務（JMS）功能。 它也會顯示不支援的功能。
 
 
 | 功能 | 狀態 |
@@ -30,5 +30,5 @@ ms.locfileid: "86122286"
 | 未共用的持久訂閱 | 支援 |
 | 共用的非持久訂閱 | 支援 |
 | 不共用的非持久性訂閱 | 支援 |
-| 分散式交易 | **不支援** |
-| 持久終點 | **不支援** |
+| 分散式交易 | 不支援 |
+| 持久終點 | 不支援 |

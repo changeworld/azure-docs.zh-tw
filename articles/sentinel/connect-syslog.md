@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: 65c4e5d9e0752379541063c8a80a4316196ad7c3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 38e47469723d767561dd778b8f175780ab181fd4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565371"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076258"
 ---
 # <a name="connect-your-external-solution-using-syslog"></a>使用 Syslog 連接您的外部解決方案
 
@@ -87,14 +87,16 @@ Azure Sentinel 可以將機器學習（ML）套用至 syslog 資料，以識別�
  
 此偵測需要特定的 Syslog 資料連線器設定： 
 
-1. 在上一個程式的步驟5中，請確定已選取 [**驗證**] 和 [ **authpriv** ] 做為要監視的設備。 保留 [嚴重性] 選項的預設設定，讓它們全部選取。 例如：
+1. 在上一個程式的步驟5中，請確定已選取 [**驗證**] 和 [ **authpriv** ] 做為要監視的設備。 保留 [嚴重性] 選項的預設設定，讓它們全部選取。 例如:
     
     > [!div class="mx-imgBorder"]
     > ![異常 SSH 登入偵測所需的設備](./media/connect-syslog/facilities-ssh-detection.png)
 
 2. 允許收集 syslog 資訊足夠的時間。 然後，流覽至**Azure Sentinel 記錄**檔，並複製並貼上下列查詢：
     
-        Syslog |  where Facility in ("authpriv","auth")| extend c = extract( "Accepted\\s(publickey|password|keyboard-interactive/pam)\\sfor ([^\\s]+)",1,SyslogMessage)| where isnotempty(c) | count 
+    ```console
+    Syslog |  where Facility in ("authpriv","auth")| extend c = extract( "Accepted\\s(publickey|password|keyboard-interactive/pam)\\sfor ([^\\s]+)",1,SyslogMessage)| where isnotempty(c) | count 
+    ```
     
     視需要變更**時間範圍**，然後選取 [**執行**]。
     

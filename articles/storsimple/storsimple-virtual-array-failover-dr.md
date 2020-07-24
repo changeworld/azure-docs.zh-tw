@@ -15,11 +15,12 @@ ms.workload: NA
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b864cc8bc0e5d39967a2307bd98bda082b6cfd5e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 05f31993b7491dbfb0bff46c8fd2362b6bab0d4e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515227"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077784"
 ---
 # <a name="disaster-recovery-and-device-failover-for-your-storsimple-virtual-array-via-azure-portal"></a>透過 Azure 入口網站進行 StorSimple Virtual Array 的災害復原和裝置容錯移轉
 
@@ -121,12 +122,12 @@ DR 順利完成之後，來源裝置上雲端資料的擁有權會移轉給目�
 
 5. 在 [停用]**** 刀鋒視窗中，系統會提示您進行確認。 裝置停用是無法復原的「永久性」** 程序。 系統也會提醒您讓主機上的共用/磁碟區離線。 輸入裝置名稱加以確認，然後按一下 [停用]****。
    
-    ![](./media/storsimple-virtual-array-failover-dr/failover1.png)
+    ![停用分頁的螢幕擷取畫面。 [裝置名稱] 方塊會填入，而 [停用] 按鈕會反白顯示。](./media/storsimple-virtual-array-failover-dr/failover1.png)
 6. 開始停用。 停用順利完成之後，您將會收到通知。
    
-    ![](./media/storsimple-virtual-array-failover-dr/failover2.png)
+    ![進度列的螢幕擷取畫面，表示已停用裝置。](./media/storsimple-virtual-array-failover-dr/failover2.png)
 7. 在 [裝置] 頁面上，裝置狀態現在會變更為 [已停用]****。
-    ![](./media/storsimple-virtual-array-failover-dr/failover3.png)
+    ![[裝置] 頁面的螢幕擷取畫面。 隨即會顯示已停用裝置的屬性，包括狀態，其列為已停用。](./media/storsimple-virtual-array-failover-dr/failover3.png)
 8. 在 [裝置]**** 刀鋒視窗上，選取並按一下已停用的裝置來進行容錯移轉。 
 9. 在 [裝置儀表板]**** 刀鋒視窗中，按一下 [容錯移轉]****。 
 10. 在 [容錯移轉裝置]**** 刀鋒視窗中，執行下列動作︰
@@ -139,22 +140,22 @@ DR 順利完成之後，來源裝置上雲端資料的擁有權會移轉給目�
 
     4. 按一下 [**故障切換**]。
     
-        ![](./media/storsimple-virtual-array-failover-dr/failover4.png)
+        ![[故障通過裝置] 分頁的螢幕擷取畫面，其中已填入來源和目標裝置、已核取選項，以及反白顯示 [故障切換] 按鈕。](./media/storsimple-virtual-array-failover-dr/failover4.png)
 11. 容錯移轉工作起始，您會收到通知。 移至 [裝置] > [作業]**** 來監視容錯移轉。
     
-     ![](./media/storsimple-virtual-array-failover-dr/failover5.png)
+     ![進度列的螢幕擷取畫面，指出裝置正在進行容錯移轉。](./media/storsimple-virtual-array-failover-dr/failover5.png)
 12. 在 [作業]**** 刀鋒視窗中，您會看到針對來源裝置所建立的容錯移轉作業。 此工作會執行 DR 前置檢查。
     
-    ![](./media/storsimple-virtual-array-failover-dr/failover6.png)
+    ![螢幕擷取畫面，顯示已成功啟動容錯移轉工作。](./media/storsimple-virtual-array-failover-dr/failover6.png)
     
      DR 前置檢查成功之後，容錯移轉工作會產生來源裝置上每個共用/磁碟區的還原作業。
     
-    ![](./media/storsimple-virtual-array-failover-dr/failover7.png)
+    ![顯示容錯移轉工作詳細資料的螢幕擷取畫面，例如 [狀態]、[裝置] 和 [持續時間]。](./media/storsimple-virtual-array-failover-dr/failover7.png)
 13. 完成容錯移轉後，移至 [裝置]**** 刀鋒視窗。
     
     1. 選取並按一下已做為容錯移轉程序目標裝置的 StorSimple 裝置。
     2. 移至 [設定] > [管理] > [共用]**** \(如果是 iSCSI 伺服器，則移至 [磁碟區]****)。 在 [共用]**** 刀鋒視窗中，您可以檢視來自舊裝置的所有共用 (磁碟區)。
-        ![](./media/storsimple-virtual-array-failover-dr/failover9.png)
+        ![[裝置] 分頁的螢幕擷取畫面。 目標裝置會列示為 [線上] 狀態。](./media/storsimple-virtual-array-failover-dr/failover9.png)
 14. 您將需要[建立 DNS 別名](https://support.microsoft.com/kb/168322)，讓所有嘗試連接的應用程式都可以重新導向至新的裝置。
 
 ## <a name="errors-during-dr"></a>DR 期間發生錯誤

@@ -14,11 +14,12 @@ ms.workload: identity
 ms.date: 01/22/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 298ec15700537f2368ef33ead267e85f5f22bfd7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 76b41e25a95f23b66edfbd4715037074537221f9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791787"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076448"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Azure 傳統訂用帳戶管理員
 
@@ -29,7 +30,7 @@ Microsoft 建議您使用 Azure 角色型存取控制（Azure RBAC）來管理 A
 ## <a name="add-a-co-administrator"></a>新增共同管理員
 
 > [!TIP]
-> 如果使用者需要管理 Azure 傳統部署，請透過使用 [Azure 服務管理 PowerShell 模組](https://docs.microsoft.com/powershell/module/servicemanagement/azure)新增共同管理員即可。 如果使用者僅使用 Azure 入口網站來管理傳統資源，則不需要針對使用者新增傳統系統管理員。
+> 如果使用者需要管理 Azure 傳統部署，請透過使用 [Azure 服務管理 PowerShell 模組](/powershell/module/servicemanagement/azure.service)新增共同管理員即可。 如果使用者僅使用 Azure 入口網站來管理傳統資源，則不需要針對使用者新增傳統系統管理員。
 
 1. 以服務系統管理員或共同管理員身分登入[Azure 入口網站](https://portal.azure.com)。
 
@@ -125,7 +126,7 @@ Microsoft 建議您使用 Azure 角色型存取控制（Azure RBAC）來管理 A
 | 帳戶系統管理員帳戶 | 可以將服務管理員變更為不同的 Microsoft 帳戶嗎？ | 可以將服務管理員變更為相同目錄中的 Azure AD 帳戶嗎？ | 可以將服務管理員變更為不同目錄中的 Azure AD 帳戶嗎？ |
 | --- | --- | --- | --- |
 | Microsoft 帳戶 | 是 | 否 | 否 |
-| Azure AD 帳戶 | Yes | 是 | 否 |
+| Azure AD 帳戶 | 是 | 是 | 否 |
 
 如果帳戶管理員是 Azure AD 帳戶，您可以將服務管理員變更為相同目錄中的 Azure AD 帳戶，而不是在不同的目錄中。 例如， abby@contoso.com 可以將服務管理員變更為 bob@contoso.com ，但無法將服務管理員變更為， john@notcontoso.com 除非 john@notcontoso.com contoso.com 目錄中有存在。
 

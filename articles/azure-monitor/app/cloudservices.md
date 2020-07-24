@@ -3,18 +3,19 @@ title: Azure 雲端服務的 Application Insight | Microsoft Docs
 description: 使用 Application Insights 有效地監視您的 Web 和背景工作角色
 ms.topic: conceptual
 ms.date: 09/05/2018
-ms.openlocfilehash: 17813d17a1c40caac5587e37e279be6376992b90
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bf75bb145a3b0d7c861d3c92af972b39de11bcdf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81537588"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075420"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Azure 雲端服務的 Application Insights
-[Application Insights][start] 透過將 Application Insights SDK 的資料與 [Azure 診斷](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) 資料結合的方式，監視 [Azure 雲端服務應用程式](https://azure.microsoft.com/services/cloud-services/)的可用性、效能、故障與使用狀況。 當您取得有關應用程式在現實世界的效能和效率的意見反應時，您可以在每個開發生命週期中針對設計方向做出明智的抉擇。
+[Application Insights][start] 透過將 Application Insights SDK 的資料與 [Azure 診斷](../platform/diagnostics-extension-overview.md) 資料結合的方式，監視 [Azure 雲端服務應用程式](https://azure.microsoft.com/services/cloud-services/)的可用性、效能、故障與使用狀況。 當您取得有關應用程式在現實世界的效能和效率的意見反應時，您可以在每個開發生命週期中針對設計方向做出明智的抉擇。
 
 ![概觀儀表板](./media/cloudservices/overview-graphs.png)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 在開始之前，您需要：
 
 * [Azure](https://azure.com)訂用帳戶。 使用 Windows、Xbox Live 或其他 Microsoft 雲端服務適用的 Microsoft 帳戶登入。 
@@ -30,7 +31,7 @@ ms.locfileid: "81537588"
 
 如果此選項就是您所需的一切，您就已大功告成。 
 
-接下來的步驟是[從您的應用程式中查看計量](../../azure-monitor/platform/metrics-charts.md)，[流量分析查詢您的資料](../../azure-monitor/app/analytics.md)。 
+接下來的步驟是[從您的應用程式中查看計量](../../azure-monitor/platform/metrics-charts.md)，[流量分析查詢您的資料](../log-query/log-query-overview.md)。 
 
 若要在瀏覽器中監視效能，您可以設定[可用性測試](../../azure-monitor/app/monitor-web-app-availability.md)及[在網頁中新增程式碼](../../azure-monitor/app/javascript.md)。
 
@@ -131,7 +132,7 @@ ms.locfileid: "81537588"
 
 只有當您想要在 .NET Framework 上捕獲完整的 SQL 查詢時，才需要執行此步驟。 
 
-1. 在 [檔案] 中 `\*.csdef` ，為每個角色新增[啟動](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks)工作，如下所示 
+1. 在 [檔案] 中 `\*.csdef` ，為每個角色新增[啟動](../../cloud-services/cloud-services-startup-tasks.md)工作，如下所示 
 
     ```xml
     <Startup>
@@ -177,7 +178,7 @@ ms.locfileid: "81537588"
 如需詳細資訊，請參閱[疑難排解][qna]。
 
 ## <a name="view-azure-diagnostics-events"></a>檢視 Azure 診斷事件
-您可以在 Application Insights 的下列位置中，找到 [Azure 診斷](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics)資訊：
+您可以在 Application Insights 的下列位置中，找到 [Azure 診斷](../platform/diagnostics-extension-overview.md)資訊：
 
 * 效能計數器顯示為自訂度量。 
 * Windows 事件記錄顯示為追蹤和自訂事件。
@@ -241,7 +242,7 @@ ms.locfileid: "81537588"
 
 若要達成此檢視背景工作角色的目的，您可以使用自訂遙測初始設定式，為所有遙測設定一個通用 Operation.Id 內容屬性。 這可讓您一目了然延遲/失敗問題是相依性或程式碼所造成的。 
 
-其做法如下：
+方式如下：
 
 * 設定相互關聯識別碼到 CallContext 中，如[此範例所示](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L36)。 在此案例中，我們使用「要求 ID」做為相互關聯識別碼。
 * 新增自訂的 TelemetryInitializer 實作，其會將 Operation.Id 設為前面所設定的相互關聯識別碼。 例如，請見 [ItemCorrelationTelemetryInitializer](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/Telemetry/ItemCorrelationTelemetryInitializer.cs#L13)。
@@ -258,7 +259,7 @@ ms.locfileid: "81537588"
 
 如果您的系統使用其他 Azure 服務 (例如「串流分析」)，請將它們的監視圖表一併納入。 
 
-如果您有用戶端行動應用程式，請使用 [App Center](../../azure-monitor/learn/mobile-center-quickstart.md)。 請在[分析](../../azure-monitor/app/analytics.md)中建立查詢以顯示事件計數，並將它們釘選到儀表板。
+如果您有用戶端行動應用程式，請使用 [App Center](../../azure-monitor/learn/mobile-center-quickstart.md)。 請在[分析](../log-query/log-query-overview.md)中建立查詢以顯示事件計數，並將它們釘選到儀表板。
 
 ## <a name="example"></a>範例
 [此範例](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService) 監視具有 Web 角色和兩個背景工作角色的服務。
@@ -283,6 +284,6 @@ ms.locfileid: "81537588"
 [diagnostic]: ../../azure-monitor/app/diagnostic-search.md
 [netlogs]: ../../azure-monitor/app/asp-net-trace-logs.md
 [portal]: https://portal.azure.com/
-[qna]: ../../azure-monitor/app/troubleshoot-faq.md
+[qna]: ../faq.md
 [redfield]: ../../azure-monitor/app/monitor-performance-live-website-now.md
-[start]: ../../azure-monitor/app/app-insights-overview.md 
+[start]: ../../azure-monitor/app/app-insights-overview.md

@@ -11,12 +11,12 @@ ms.date: 07/12/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 2b7e980f2ffd31bd10b481fe4fc8e0617c40717a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3c8d78c164cefbab03d9d3fa783c75ded9773d38
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85205079"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075810"
 ---
 # <a name="geo-restore-for-sql-pool"></a>SQL 集區的異地還原
 
@@ -36,7 +36,7 @@ ms.locfileid: "85205079"
 > 您可以執行異地還原來還原至 Gen2！ 若要這麼做，請指定 Gen2 ServiceObjectiveName (例如 DW1000**c**) 作為選擇性參數。
 >
 
-1. 開始之前，請務必[安裝 Azure PowerShell](/powershell/azure/overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
+1. 開始之前，請務必[安裝 Azure PowerShell](/powershell/azure/?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
 2. 開啟 PowerShell。
 3. 連接到您的 Azure 帳戶，然後列出與您帳戶關聯的所有訂用帳戶。
 4. 選取包含要還原之資料倉儲的訂用帳戶。
@@ -77,7 +77,7 @@ $GeoRestoredDatabase.status
 請遵循以下所述的步驟，從異地備份還原 SQL 集區：
 
 1. 登入您的[Azure 入口網站](https://portal.azure.com/)帳戶。
-2. 按一下 [+ 建立資源]****。
+2. 按一下 [+ 建立資源]。
 
    ![新的 DW](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new.png)
 

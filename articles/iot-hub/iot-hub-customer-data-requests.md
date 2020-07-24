@@ -7,13 +7,14 @@ ms.date: 05/16/2018
 ms.topic: conceptual
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: a05fbf6e1908f88014cd8da99fafb875de033f45
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0bb7b91cd31761b801ad469b8ce556b29e09fd3a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79499325"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074705"
 ---
-# <a name="summary-of-customer-data-request-features"></a>客戶資料要求功能的摘要
+# <a name="customer-data-request-features-for-azure-iot-hub-devices"></a>Azure IoT 中樞裝置的客戶資料要求功能
 
 Azure IoT 中樞是 REST API 型的雲端服務，目標是企業客戶，它能夠實現數百萬個裝置與資料分割 Azure 服務之間的安全、雙向通訊。
 

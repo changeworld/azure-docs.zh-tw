@@ -4,18 +4,18 @@ description: 如何使用 Azure CLI 管理 Azure 區塊鏈 Service
 ms.date: 11/22/2019
 ms.topic: how-to
 ms.reviewer: janders
-ms.openlocfilehash: fc00bedee5ff55033a1d65c6d5d6bfa766f0f01e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4b41bc44c9efbf71621fcfba06e668f42caa0f8c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85208156"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076942"
 ---
 # <a name="manage-azure-blockchain-service-using-azure-cli"></a>使用 Azure CLI 管理 Azure 區塊鏈 Service
 
 除了 Azure 入口網站以外，您還可以使用 Azure CLI 來管理 Azure 區塊鏈服務的區塊鏈成員和交易節點。
 
-請確定您已安裝最新的[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) ，並使用登入 Azure 帳戶 `az login` 。
+請確定您已安裝最新的[Azure CLI](/cli/azure/install-azure-cli) ，並使用登入 Azure 帳戶 `az login` 。
 
 在下列範例中，將 example 取代 `<parameter names>` 成您自己的值。
 

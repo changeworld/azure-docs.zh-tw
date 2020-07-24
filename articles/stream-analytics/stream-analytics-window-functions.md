@@ -6,12 +6,13 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 06/11/2019
-ms.openlocfilehash: 872eec62e7a629d76533aa6c9906cbdb64c32236
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/10/2020
+ms.openlocfilehash: fd741a9401a3936ec02939562e8e85046e829d31
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80745551"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075931"
 ---
 # <a name="introduction-to-stream-analytics-windowing-functions"></a>串流分析時間範圍函式簡介
 
@@ -34,7 +35,8 @@ ms.locfileid: "80745551"
 ![Stream Analytics 跳動時間範圍](media/stream-analytics-window-functions/stream-analytics-window-functions-hopping-intro.png)
 
 ## <a name="sliding-window"></a>滑動時間範圍
-不同于輪轉或跳動視窗，滑動時間範圍函式**只**會在事件發生時產生輸出。 每個視窗都至少會有一個事件，而視窗會持續以ε（epsilon）向前移動。 如同跳動時間範圍，事件可以屬於一個以上的滑動時間範圍。
+
+不同于輪轉或跳動視窗的滑動視窗，只會輸出視窗內容實際變更時間點的事件。 換句話說，當事件進入或離開視窗時。 每個視窗都至少有一個事件，如同跳動視窗的情況，事件可以屬於一個以上的滑動視窗
 
 ![Stream Analytics 滑動時間範圍](media/stream-analytics-window-functions/stream-analytics-window-functions-sliding-intro.png)
 
@@ -49,6 +51,11 @@ ms.locfileid: "80745551"
 
 當提供資料分割索引鍵時，則會依索引鍵將事件分組在一起，且工作階段時間範圍會獨立套用至每個群組。 當您需要針對不同的使用者或裝置使用不同的工作階段時間範圍時，此分割功能非常實用。
 
+## <a name="snapshot-window"></a>快照集視窗
+
+快照集視窗會群組具有相同時間戳記的事件。 不同于需要特定視窗函數（例如[SessionWindow （））](https://docs.microsoft.com/stream-analytics-query/session-window-azure-stream-analytics)的其他視窗型別，您可以藉由將 system.string （）新增至 group by 子句來套用快照集視窗。
+
+![串流分析快照集視窗](media/stream-analytics-window-functions/snapshot.png)
 
 ## <a name="next-steps"></a>後續步驟
 * [Azure Stream Analytics 介紹](stream-analytics-introduction.md)

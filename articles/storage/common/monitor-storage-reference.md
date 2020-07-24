@@ -9,11 +9,12 @@ ms.date: 05/01/2020
 ms.author: normesta
 ms.subservice: logs
 ms.custom: monitoring
-ms.openlocfilehash: 12df9566dd3ddfedd1f4553ad8877258d840858c
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: fa8838dd5eca03d9dd85e424f0163eb9ca8ed5e2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85960209"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077855"
 ---
 # <a name="azure-storage-monitoring-data-reference"></a>Azure 儲存體監視資料參考
 
@@ -45,6 +46,7 @@ Azure 儲存體會提供下列 Azure 監視器容量計量。
 | ------------------- | ----------------- |
 | BlobCapacity | 儲存體帳戶中所使用的 Blob 儲存體總計。 <br/><br/> 單位：位元組 <br/> 彙總類型：Average <br/> 值範例：1024 <br/> 維度：**BlobType** 和 **BlobTier** ([定義](#metrics-dimensions)) |
 | BlobCount    | 儲存體帳戶中所儲存的 Blob 物件數目。 <br/><br/> 單位：Count <br/> 彙總類型：Average <br/> 值範例：1024 <br/> 維度：**BlobType** 和 **BlobTier** ([定義](#metrics-dimensions)) |
+| BlobProvisionedSize | 在儲存體帳戶中布建的儲存體數量。 此度量僅適用于 premium 儲存體帳戶。 <br/><br/> 單位：位元組 <br/> 彙總類型：Average |
 | ContainerCount    | 儲存體帳戶中的容器數目。 <br/><br/> 單位：Count <br/> 彙總類型：Average <br/> 值範例：1024 |
 | IndexCapacity     | ADLS Gen2 階層式索引使用的儲存體容量 <br/><br/> 單位：位元組 <br/> 彙總類型：Average <br/> 值範例：1024 |
 
@@ -77,6 +79,7 @@ Azure 儲存體會提供下列 Azure 監視器容量計量。
 | FileCapacity | 儲存體帳戶所使用的檔案儲存體數量。 <br/><br/> 單位：位元組 <br/> 彙總類型：Average <br/> 值範例：1024 |
 | FileCount   | 儲存體帳戶中的檔案數目。 <br/><br/> 單位：Count <br/> 彙總類型：Average <br/> 值範例：1024 |
 | FileShareCount | 儲存體帳戶中的檔案共用數目。 <br/><br/> 單位：Count <br/> 彙總類型：Average <br/> 值範例：1024 |
+| FileShareProvisionedIOPS | 檔案共用上已布建的 IOPS 數目。 此度量僅適用于 premium 檔案儲存體。 <br/><br/> 單位：位元組 <br/> 彙總類型：Average |
 
 ### <a name="transaction-metrics"></a>交易度量
 
@@ -84,7 +87,7 @@ Azure 儲存體會提供下列 Azure 監視器容量計量。
 
 Azure 儲存體會提供下列 Azure 監視器交易計量。
 
-| 計量 | 描述 |
+| 計量 | 說明 |
 | ------------------- | ----------------- |
 | 交易 | 向儲存體服務或所指定 API 作業傳送的要求數。 此數目包括成功與失敗的要求，以及產生錯誤的要求。 <br/><br/> 單位：Count <br/> 彙總類型：總計 <br/> 適用維度：ResponseType、GeoType、ApiName 和 Authentication ([定義](#metrics-dimensions))<br/> 值範例：1024 |
 | 輸入 | 輸入資料量。 此數目包括從外部用戶端輸入到 Azure 儲存體與 Azure 內的輸入。 <br/><br/> 單位：位元組 <br/> 彙總類型：總計 <br/> 適用維度：GeoType、ApiName 和 Authentication ([定義](#metrics-dimensions)) <br/> 值範例：1024 |
@@ -139,20 +142,20 @@ Azure 儲存體支援下列 Azure 監視器計量維度。
 
 | 屬性 | 說明 |
 |:--- |:---|
-|**time** | 儲存體收到要求時的國際標準時間 (UTC) 時間。 例如： `2018/11/08 21:09:36.6900118` 。|
+|**time** | 儲存體收到要求時的國際標準時間 (UTC) 時間。 例如：`2018/11/08 21:09:36.6900118`。|
 |**resourceId** | 儲存體帳戶的資源識別碼。 例如：`/subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/`<br>`myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/storageAccounts/blobServices/default`|
 |**類別** | 所要求作業的分類。 例如：`StorageRead`、`StorageWrite` 或 `StorageDelete`。|
 |**operationName** | 執行的 REST 作業類型。 <br> 如需作業的完整清單，請參閱[儲存體分析記錄作業和狀態訊息主題](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)。 |
-|**operationVersion** | 提出要求時所指定的儲存體服務版本。 這等同於 **x-ms-version** 標頭值。 例如： `2017-04-17` 。|
-|**schemaVersion** | 記錄的結構描述版本。 例如： `1.0` 。|
+|**operationVersion** | 提出要求時所指定的儲存體服務版本。 這等同於 **x-ms-version** 標頭值。 例如：`2017-04-17`。|
+|**schemaVersion** | 記錄的結構描述版本。 例如：`1.0`。|
 |**statusCode** | 要求的 HTTP 狀態碼。 如果要求中斷，此值可能會被設為 `Unknown`。 <br> 例如：`206` |
 |**statusText** | 所要求作業的狀態。  如需狀態訊息的完整清單，請參閱[儲存體分析記錄作業和狀態訊息主題](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)。 在 2017-04-17 版和更新版本中，不會使用狀態訊息 `ClientOtherError`。 相反地，此欄位包含錯誤碼。 例如：`SASSuccess`  |
 |**durationMs** | 執行要求作業的總時間 (以毫秒表示)。 包括讀取連入要求和傳送回應給要求者的時間。 例如： `12` 。|
-|**callerIpAddress** | 要求者的 IP 位址，包含連接埠號碼。 例如： `192.100.0.102:4362` 。 |
-|**correlationId** | 用來讓資源之間記錄相互關聯的識別碼。 例如： `b99ba45e-a01e-0042-4ea6-772bbb000000` 。 |
-|**location** | 儲存體帳戶的位置。 例如： `North Europe` 。 |
+|**callerIpAddress** | 要求者的 IP 位址，包含連接埠號碼。 例如：`192.100.0.102:4362`。 |
+|**correlationId** | 用來讓資源之間記錄相互關聯的識別碼。 例如：`b99ba45e-a01e-0042-4ea6-772bbb000000`。 |
+|**location** | 儲存體帳戶的位置。 例如：`North Europe`。 |
 |**protocol**|作業中使用的通訊協定。 例如：`HTTP`、`HTTPS`、`SMB` 或 `NFS`|
-| **uri** | 要求的統一資源識別項。 例如： `http://myaccountname.blob.core.windows.net/cont1/blobname?timeout=10` 。 |
+| **uri** | 要求的統一資源識別項。 例如：`http://myaccountname.blob.core.windows.net/cont1/blobname?timeout=10`。 |
 
 ### <a name="fields-that-describe-how-the-operation-was-authenticated"></a>描述如何驗證作業的欄位
 
@@ -191,15 +194,15 @@ Azure 儲存體支援下列 Azure 監視器計量維度。
 |**identity / tokenHash**|這個欄位保留為僅供內部使用。 |
 |**authorization / action** | 指派給要求的動作。 例如： `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read` |
 |**authorization / roleAssignmentId** | 角色指派識別碼。 例如： `4e2521b7-13be-4363-aeda-111111111111` 。|
-|**authorization / roleDefinitionId** | 角色定義識別碼。 例如： `ba92f5b4-2d11-453d-a403-111111111111"` 。|
-|**principals / id** | 安全性主體的識別碼。 例如： `a4711f3a-254f-4cfb-8a2d-111111111111` 。|
-|**principals / type** | 安全性主體的類型。 例如： `ServicePrincipal` 。 |
-|**requester / appID** | 用來作為要求者的 Open Authorization (OAuth) 應用程式識別碼。 <br> 例如： `d3f7d5fe-e64a-4e4e-871d-333333333333` 。|
-|**requester / audience** | 要求的 OAuth 對象。 例如： `https://storage.azure.com` 。 |
-|**requester / objectId** | 要求者的 OAuth 物件識別碼。 若為 Kerberos 驗證，則代表 Kerberos 已驗證使用者的物件識別碼。 例如： `0e0bf547-55e5-465c-91b7-2873712b249c` 。 |
+|**authorization / roleDefinitionId** | 角色定義識別碼。 例如：`ba92f5b4-2d11-453d-a403-111111111111"`。|
+|**principals / id** | 安全性主體的識別碼。 例如：`a4711f3a-254f-4cfb-8a2d-111111111111`。|
+|**principals / type** | 安全性主體的類型。 例如：`ServicePrincipal`。 |
+|**requester / appID** | 用來作為要求者的 Open Authorization (OAuth) 應用程式識別碼。 <br> 例如：`d3f7d5fe-e64a-4e4e-871d-333333333333`。|
+|**requester / audience** | 要求的 OAuth 對象。 例如：`https://storage.azure.com`。 |
+|**requester / objectId** | 要求者的 OAuth 物件識別碼。 若為 Kerberos 驗證，則代表 Kerberos 已驗證使用者的物件識別碼。 例如：`0e0bf547-55e5-465c-91b7-2873712b249c`。 |
 |**requester / tenantId** | 身分識別的 OAuth 租用戶識別碼。 例如： `72f988bf-86f1-41af-91ab-222222222222` 。|
-|**requester / tokenIssuer** | OAuth 權杖簽發者。 例如： `https://sts.windows.net/72f988bf-86f1-41af-91ab-222222222222/` 。|
-|**requester / upn** | 要求者的使用者主體名稱 (UPN)。 例如： `someone@contoso.com` 。 |
+|**requester / tokenIssuer** | OAuth 權杖簽發者。 例如：`https://sts.windows.net/72f988bf-86f1-41af-91ab-222222222222/`。|
+|**requester / upn** | 要求者的使用者主體名稱 (UPN)。 例如：`someone@contoso.com`。 |
 |**requester / userName** | 這個欄位保留為僅供內部使用。|
 
 ### <a name="fields-that-describe-the-service"></a>描述服務的欄位
@@ -243,29 +246,29 @@ Azure 儲存體支援下列 Azure 監視器計量維度。
 | 屬性 | 描述 |
 |:--- |:---|
 |**accountName** | 儲存體帳戶的名稱。 例如： `mystorageaccount` 。  |
-|**requestUrl** | 要求的 URL。 例如： `http://mystorageaccount.blob.core.windows.net/cont1/blobname?timeout=10` 。|
-|**userAgentHeader** | **使用者代理程式標頭**值，以引號括住。 例如： `WA-Storage/6.2.0 (.NET CLR 4.0.30319.42000; Win32NT 6.2.9200.0)` 。|
-|**referrerHeader** | **查閱者**標頭值。 例如： `http://contoso.com/about.html` 。|
-|**clientRequestId** | 要求的 **x-ms-client-request-id** 標頭值。 例如： `360b66a6-ad4f-4c4a-84a4-0ad7cb44f7a6` 。 |
-|**etag** | 所傳回物件的 ETag 識別碼 (以引號括住)。 例如： `0x8D101F7E4B662C4` 。  |
-|**serverLatencyMs** | 執行要求作業的總時間 (以毫秒表示)。 此值不包括網路延遲 (讀取連入要求和傳送回應給要求者的時間)。 例如： `22` 。 |
+|**requestUrl** | 要求的 URL。 例如：`http://mystorageaccount.blob.core.windows.net/cont1/blobname?timeout=10`。|
+|**userAgentHeader** | **使用者代理程式標頭**值，以引號括住。 例如：`WA-Storage/6.2.0 (.NET CLR 4.0.30319.42000; Win32NT 6.2.9200.0)`。|
+|**referrerHeader** | **查閱者**標頭值。 例如：`http://contoso.com/about.html`。|
+|**clientRequestId** | 要求的 **x-ms-client-request-id** 標頭值。 例如：`360b66a6-ad4f-4c4a-84a4-0ad7cb44f7a6`。 |
+|**etag** | 所傳回物件的 ETag 識別碼 (以引號括住)。 例如：`0x8D101F7E4B662C4`。  |
+|**serverLatencyMs** | 執行要求作業的總時間 (以毫秒表示)。 此值不包括網路延遲 (讀取連入要求和傳送回應給要求者的時間)。 例如：`22`。 |
 |**serviceType** | 與此要求相關聯的服務。 例如：`blob`、`table`、`files` 或 `queue`。 |
-|**operationCount** | 要求中牽涉到的每個已記錄作業的數目。 此計數會從 `0` 的索引開始。 某些要求需要一項以上的作業，例如複製 Blob 的要求。 大部分的要求只會執行一項作業。 例如： `1` 。 |
-|**requestHeaderSize** | 要求標頭的大小 (以位元組表示)。 例如： `578` 。 <br>如果要求不成功，這個值可能是空值。 |
-|**requestBodySize** | 儲存體服務讀取的要求封包大小 (以位元組表示)。 <br> 例如： `0` 。 <br>如果要求不成功，這個值可能是空值。  |
-|**responseHeaderSize** | 回應標頭的大小 (以位元組表示)。 例如： `216` 。 <br>如果要求不成功，這個值可能是空值。  |
-|**responseBodySize** | 儲存體服務寫入的回應封包大小 (以位元組為單位)。 如果要求不成功，這個值可能是空值。 例如： `216` 。  |
-|**requestMd5** | 要求中 **Content-MD5** 標頭或 **x-ms-content-md5** 標頭的值。 在此欄位中指定的 MD5 雜湊值代表要求中的內容。 例如： `788815fd0198be0d275ad329cafd1830` 。 <br>這個欄位可以是空白的。  |
-|**serverMd5** | 儲存體服務計算的 MD5 雜湊值。 例如： `3228b3cf1069a5489b298446321f8521` 。 <br>這個欄位可以是空白的。  |
-|**lastModifiedTime** | 所傳回物件的上次修改時間 (LMT)。  例如： `Tuesday, 09-Aug-11 21:13:26 GMT` 。 <br>對於可傳回多個物件的作業而言，此欄位是空白的。 |
-|**conditionsUsed** | 代表條件的索引鍵/值組分號分隔清單。 條件可以是下列任何一項： <li> If-Modified-Since <li> If-Unmodified-Since <li> If-Match <li> If-None-Match  <br> 例如： `If-Modified-Since=Friday, 05-Aug-11 19:11:54 GMT` 。 |
+|**operationCount** | 要求中牽涉到的每個已記錄作業的數目。 此計數會從 `0` 的索引開始。 某些要求需要一項以上的作業，例如複製 Blob 的要求。 大部分的要求只會執行一項作業。 例如：`1`。 |
+|**requestHeaderSize** | 要求標頭的大小 (以位元組表示)。 例如：`578`。 <br>如果要求不成功，這個值可能是空值。 |
+|**requestBodySize** | 儲存體服務讀取的要求封包大小 (以位元組表示)。 <br> 例如：`0`。 <br>如果要求不成功，這個值可能是空值。  |
+|**responseHeaderSize** | 回應標頭的大小 (以位元組表示)。 例如：`216`。 <br>如果要求不成功，這個值可能是空值。  |
+|**responseBodySize** | 儲存體服務寫入的回應封包大小 (以位元組為單位)。 如果要求不成功，這個值可能是空值。 例如：`216`。  |
+|**requestMd5** | 要求中 **Content-MD5** 標頭或 **x-ms-content-md5** 標頭的值。 在此欄位中指定的 MD5 雜湊值代表要求中的內容。 例如：`788815fd0198be0d275ad329cafd1830`。 <br>這個欄位可以是空白的。  |
+|**serverMd5** | 儲存體服務計算的 MD5 雜湊值。 例如：`3228b3cf1069a5489b298446321f8521`。 <br>這個欄位可以是空白的。  |
+|**lastModifiedTime** | 所傳回物件的上次修改時間 (LMT)。  例如：`Tuesday, 09-Aug-11 21:13:26 GMT`。 <br>對於可傳回多個物件的作業而言，此欄位是空白的。 |
+|**conditionsUsed** | 代表條件的索引鍵/值組分號分隔清單。 條件可以是下列任何一項： <li> If-Modified-Since <li> If-Unmodified-Since <li> If-Match <li> If-None-Match  <br> 例如：`If-Modified-Since=Friday, 05-Aug-11 19:11:54 GMT`。 |
 |**contentLengthHeader** | 傳送至儲存體服務的要求內容長度標頭值。 如果要求成功，則此值等於 requestBodySize。 如果要求不成功，則此值可能不等於 requestBodySize，或可能是空值。 |
 |**tlsVersion** | 要求連線中使用的 TLS 版本。 例如： `TLS 1.2` 。 |
 |**smbTreeConnectID** | 伺服器訊息區 (SMB) **treeConnectId** 會在樹狀結構連線時間建立。 例如：`0x3` |
 |**smbPersistentHandleID** | 網路重新連線後持續存在的 SMB2 CREATE 要求，其中的持續控點識別碼。  在 [MS-SMB2](https://docs.microsoft.com/openspecs/windows_protocols/ms-smb2/f1d9b40d-e335-45fc-9d0b-199a31ede4c3) 2.2.14.1 中參考為 **SMB2_FILEID.Persistent**。 例如：`0x6003f` |
 |**smbVolatileHandleID** | 在網路重新連線時回收的 SMB2 CREATE 要求，其中的變動性控點識別碼。  在 [MS-SMB2](https://docs.microsoft.com/openspecs/windows_protocols/ms-smb2/f1d9b40d-e335-45fc-9d0b-199a31ede4c3) 2.2.14.1 中參考為 **SMB2_FILEID.Volatile**。 例如：`0xFFFFFFFF00000065` |
-|**smbMessageID** | 連線相對 **MessageId**。 例如：`0x3b165` |
-|**smbCreditsConsumed** | 要求所使用的輸入或輸出 (單位為 64k)。 例如： `0x3` |
+|**smbMessageID** | 連線相對 **MessageId**。 例如： `0x3b165` |
+|**smbCreditsConsumed** | 要求所使用的輸入或輸出 (單位為 64k)。 例如：`0x3` |
 |**smbCommandDetail** | 此特定要求的詳細資訊，而不是一般的要求類型。 例如：`0x2000 bytes at offset 0xf2000` |
 |**smbFileId** | 與檔案或目錄相關聯的 **FileId**。  大致類似於 NTFS 欄位。 例如：`0x9223442405598953` |
 |**smbSessionID** | 在工作階段設定期間建立的 SMB2 **SessionId**。 例如：`0x8530280128000049` |

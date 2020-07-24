@@ -8,14 +8,14 @@ ms.topic: troubleshooting
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 2ead16c655d4790e81931371e67da8106dabf83e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4b9e63ca3c6822f4fd9ff215ccddaaf82ff55369
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85200540"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075667"
 ---
-# <a name="identify-and-diagnose-issues"></a>識別並診斷問題
+# <a name="identify-and-diagnose-windows-virtual-desktop-issues"></a>識別及診斷 Windows 虛擬桌面問題
 
 >[!IMPORTANT]
 >此內容適用於具有 Azure Resource Manager Windows 虛擬桌面物件的 2020 年春季更新版。 如果您使用不含 Azure Resource Manager 物件的 Windows 虛擬桌面 2019 年秋季版，請參閱[這篇文章](./virtual-desktop-fall-2019/diagnostics-role-service-2019.md)。

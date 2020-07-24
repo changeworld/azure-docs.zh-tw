@@ -1,18 +1,20 @@
 ---
-title: 使用 GitHub 動作中的 Key Vault 來驗證 Azure 春季雲端
+title: 在 GitHub Actions 中使用 Key Vault 驗證 Azure Spring Cloud
 description: 如何搭配 GitHub 動作使用 key vault 搭配適用于 Azure 春季雲端的 CI/CD 工作流程
 author: MikeDodaro
 ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/20/2019
-ms.openlocfilehash: 4a836ae195674556c486592a421c188f7c40e3f0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-java
+ms.openlocfilehash: 433cd9e7b8cfe69ce5008366db884659cccbc149
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84484356"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076017"
 ---
-# <a name="authenticate-azure-spring-cloud-with-key-vault-in-github-actions"></a>使用 GitHub 動作中的 Key Vault 來驗證 Azure 春季雲端
+# <a name="authenticate-azure-spring-cloud-with-key-vault-in-github-actions"></a>在 GitHub Actions 中使用 Key Vault 驗證 Azure Spring Cloud
 金鑰保存庫是儲存金鑰的安全位置。 企業使用者需要將 CI/CD 環境的認證儲存在他們所控制的範圍內。 要在金鑰保存庫中取得認證的金鑰應限制為資源範圍。  它只能存取金鑰保存庫範圍，而不是整個 Azure 範圍。 就像是只能開啟一個強式箱的索引鍵，而不是可以開啟大樓所有大門的主要金鑰。 這是使用另一個金鑰來取得金鑰的方法，這在 CICD 工作流程中很有用。 
 
 ## <a name="generate-credential"></a>產生認證

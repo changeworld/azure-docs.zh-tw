@@ -4,16 +4,16 @@ description: 使用 Ethereum 區塊鏈連接器搭配 Azure Logic Apps，觸發�
 ms.date: 10/14/2019
 ms.topic: how-to
 ms.reviewer: chrisseg
-ms.openlocfilehash: c7b45134e8b5c3e33e5d05d59c006abe103e5bda
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 61dbda7cd7f486c7a8d838084875b34803833502
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85200727"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077031"
 ---
 # <a name="use-the-ethereum-blockchain-connector-with-azure-logic-apps"></a>使用 Ethereum 區塊鏈連接器搭配 Azure Logic Apps
 
-使用 [Ethereum 區塊鏈連接器](https://docs.microsoft.com/connectors/blockchainethereum/)搭配 [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/)，執行智慧型合約動作及回應智慧型合約事件。 例如，假設您想要建立以 REST 為基礎的微服務，以傳回區塊鏈總帳中的資訊。 使用邏輯應用程式時，您可以接受所查詢的資訊儲存在區塊鏈總帳中的 HTTP 要求。
+使用 [Ethereum 區塊鏈連接器](/connectors/blockchainethereum/)搭配 [Azure Logic Apps](../../logic-apps/index.yml)，執行智慧型合約動作及回應智慧型合約事件。 例如，假設您想要建立以 REST 為基礎的微服務，以傳回區塊鏈總帳中的資訊。 使用邏輯應用程式時，您可以接受所查詢的資訊儲存在區塊鏈總帳中的 HTTP 要求。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -24,7 +24,7 @@ ms.locfileid: "85200727"
 當您需要整合系統和服務時，Azure Logic Apps 可協助您排程及自動化商務程序和工作流程。 首先，您必須建立使用 Ethereum 區塊鏈連接器的邏輯。
 
 1. 在 [Azure 入口網站](https://portal.azure.com)中，選取 [建立資源]   > [整合]   > [邏輯應用程式]  。
-1. 在 [建立邏輯應用程式]**** 底下，提供關於應在何處建立邏輯應用程式的詳細資訊。 在完成作業後，選取 [建立]****。
+1. 在 [建立邏輯應用程式]**** 底下，提供關於應在何處建立邏輯應用程式的詳細資訊。 在完成作業後，選取 [建立]。
 
     如需如何建立邏輯應用程式的詳細資訊，請參閱[使用 Azure Logic Apps 來建立自動化工作流程](../../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
@@ -155,7 +155,7 @@ Ethereum 區塊鏈連接器需要與區塊鏈的 API 連線。 您可以對多�
 
 | 屬性 | 說明 |
 |----------|-------------|
-|**連接名稱** | API 連線的名稱。 必要。 |
+|**連線名稱** | API 連線的名稱。 必要。 |
 |**以太坊 RPC 端點** | Azure 區塊鏈服務交易節點的 HTTP 位址。 必要。 如需詳細資訊，請參閱[取得 RPC 端點](#get-the-rpc-endpoint)。 |
 |**私密金鑰** | Ethereum 帳戶私密金鑰。 交易必須要有私密金鑰或帳戶位址和密碼。 如需詳細資訊，請參閱[取得私密金鑰](#get-the-private-key)。 |
 |**帳戶位址** | Azure 區塊鏈服務成員帳戶位址。 交易必須要有私密金鑰或帳戶位址和密碼。 如需詳細資訊，請參閱[取得帳戶位址](#get-the-account-address)。 |

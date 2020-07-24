@@ -7,11 +7,12 @@ ms.date: 05/05/2020
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.subservice: imaging
-ms.openlocfilehash: 65e8818e19ac5ad20bb87fd8eb27a4c36c2839cf
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 0db618d63964c6f271f9a14b91849e704cfd7820
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656668"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077522"
 ---
 # <a name="preview-create-a-windows-image-and-distribute-it-to-a-shared-image-gallery"></a>預覽：建立 Windows 映像並將其發佈到共用映像庫 
 
@@ -23,7 +24,7 @@ ms.locfileid: "83656668"
 
 Azure Image Builder 會自動執行 sysprep 以將映像一般化；此為一般的 sysprep 命令，您可以視需要將其[覆寫](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#vms-created-from-aib-images-do-not-create-successfully) \(英文\)。 
 
-請注意您將自訂分層的次數。 您可以對單一 Windows 映像執行多達 8 次的 Sysprep 命令。 執行 Sysprep 達 8 次之後，您就必須重新建立 Windows 映像。 如需詳細資訊，請參閱[關於 Sysprep 執行次數的限制](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep)。 
+請注意您將自訂分層的次數。 您可以對單一 Windows 映像執行多達 8 次的 Sysprep 命令。 執行 Sysprep 達 8 次之後，您就必須重新建立 Windows 映像。 如需詳細資訊，請參閱[關於 Sysprep 執行次數的限制](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep)。 
 
 > [!IMPORTANT]
 > Azure Image Builder 目前處於公開預覽狀態。
@@ -97,7 +98,7 @@ New-AzResourceGroup `
 
 
 ## <a name="create-a-user-assigned-identity-and-set-permissions-on-the-resource-group"></a>建立使用者指派的身分識別，並設定資源群組的權限
-Image Builder 將會使用所提供的[使用者身分識別](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell) \(部分機器翻譯\) 來將映像插入 Azure 共用映像庫 (SIG)。 在此範例中，您將會建立 Azure 角色定義，其具備可加以執行以將映像發佈到 SIG 的細微動作。 系統接著會將角色定義指派給使用者身分識別。
+Image Builder 將會使用所提供的[使用者身分識別](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md) \(部分機器翻譯\) 來將映像插入 Azure 共用映像庫 (SIG)。 在此範例中，您將會建立 Azure 角色定義，其具備可加以執行以將映像發佈到 SIG 的細微動作。 系統接著會將角色定義指派給使用者身分識別。
 
 ```powershell
 # setup role def names, these need to be unique

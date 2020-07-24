@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/01/2019
-ms.openlocfilehash: bcce08285c7412644de22f19ddd9d821ad3adea7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/14/2020
+ms.openlocfilehash: 80ad9475eb9b3724e09fb450787adfa079896bed
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85124386"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075320"
 ---
 # <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>使用 HTTP 資料收集器 API 將記錄資料傳送給 Azure 監視器 (公開預覽)
 本文示範如何使用 HTTP 資料收集器 API 將記錄資料從 REST API 用戶端傳送給 Azure 監視器。  內容說明如何將您指令碼或應用程式所收集的資料格式化、將其包含在要求中，以及讓 Azure 監視器授權該要求。  提供的範例適用於 PowerShell、C# 及 Python。
@@ -42,14 +42,14 @@ Log Analytics 工作區中的所有資料都會以具有特定記錄類型的記
 | 內容類型 |application/json |
 
 ### <a name="request-uri-parameters"></a>要求 URI 參數
-| 參數 | 說明 |
+| 參數 | 描述 |
 |:--- |:--- |
 | CustomerID |Log Analytics 工作區的唯一識別碼。 |
 | 資源 |API 資源名稱︰/api/logs。 |
 | API 版本 |要使用於這個要求的 API 版本。 目前是 2016-04-01。 |
 
 ### <a name="request-headers"></a>要求標頭
-| Header | 描述 |
+| 頁首 | 描述 |
 |:--- |:--- |
 | 授權 |授權簽章。 本文稍後會說明如何建立 HMAC-SHA256 標頭。 |
 | Log-Type |指定正在提交的資料記錄類型。 只能包含字母、數位和底線（_），且不得超過100個字元。 |
@@ -66,7 +66,7 @@ Log Analytics 工作區中的所有資料都會以具有特定記錄類型的記
 Authorization: SharedKey <WorkspaceID>:<Signature>
 ```
 
-WorkspaceID** 是 Log Analytics 工作區的唯一識別碼。 Signature** 是[雜湊式訊息驗證碼 (HMAC)](https://msdn.microsoft.com/library/system.security.cryptography.hmacsha256.aspx)，該驗證碼從要求建構而來，而後使用 [SHA256 演算法](https://msdn.microsoft.com/library/system.security.cryptography.sha256.aspx)進行計算。 接下來，您可使用 Base64 編碼方式進行編碼。
+WorkspaceID** 是 Log Analytics 工作區的唯一識別碼。 Signature** 是[雜湊式訊息驗證碼 (HMAC)](/dotnet/api/system.security.cryptography.hmacsha256?view=netcore-3.1)，該驗證碼從要求建構而來，而後使用 [SHA256 演算法](/dotnet/api/system.security.cryptography.sha256?view=netcore-3.1)進行計算。 接下來，您可使用 Base64 編碼方式進行編碼。
 
 使用此格式來進行 **SharedKey** 簽章字串的編碼︰
 
@@ -134,11 +134,14 @@ Signature=Base64(HMAC-SHA256(UTF8(StringToSign)))
 
 | 屬性資料類型 | 後置詞 |
 |:--- |:--- |
-| String |_s |
-| Boolean |_b |
+| 字串 |_s |
+| 布林值 |_b |
 | Double |_d |
 | 日期/時間 |_t |
 | GUID （儲存為字串） |_g |
+
+> [!NOTE]
+> 看似 Guid 的字串值將會被賦予 _g 尾碼，並格式化為 GUID，即使傳入的值不包含連字號。 例如，"8145d822-13a7-44ad-859c-36f31a84f6dd" 和 "8145d82213a744ad859c36f31a84f6dd" 都會儲存為 "8145d822-13a7-44ad-859c-36f31a84f6dd"。 這個和另一個字串之間唯一的差異是名稱中的 _g，如果輸入中未提供，則會插入破折號。 
 
 Azure 監視器用於每個屬性的資料類型取決於新記錄的記錄類型是否已經存在。
 
@@ -464,14 +467,99 @@ def post_data(customer_id, shared_key, body, log_type):
 
 post_data(customer_id, shared_key, body, log_type)
 ```
+
+### <a name="python-3-sample"></a>Python 3 範例
+```python
+import json
+import requests
+import datetime
+import hashlib
+import hmac
+import base64
+
+# Update the customer ID to your Log Analytics workspace ID
+customer_id = 'xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
+
+# For the shared key, use either the primary or the secondary Connected Sources client authentication key   
+shared_key = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+
+# The log type is the name of the event that is being submitted
+log_type = 'WebMonitorTest'
+
+# An example JSON web monitor object
+json_data = [{
+   "slot_ID": 12345,
+    "ID": "5cdad72f-c848-4df0-8aaa-ffe033e75d57",
+    "availability_Value": 100,
+    "performance_Value": 6.954,
+    "measurement_Name": "last_one_hour",
+    "duration": 3600,
+    "warning_Threshold": 0,
+    "critical_Threshold": 0,
+    "IsActive": "true"
+},
+{   
+    "slot_ID": 67890,
+    "ID": "b6bee458-fb65-492e-996d-61c4d7fbb942",
+    "availability_Value": 100,
+    "performance_Value": 3.379,
+    "measurement_Name": "last_one_hour",
+    "duration": 3600,
+    "warning_Threshold": 0,
+    "critical_Threshold": 0,
+    "IsActive": "false"
+}]
+body = json.dumps(json_data)
+
+#####################
+######Functions######  
+#####################
+
+# Build the API signature
+def build_signature(customer_id, shared_key, date, content_length, method, content_type, resource):
+    x_headers = 'x-ms-date:' + date
+    string_to_hash = method + "\n" + str(content_length) + "\n" + content_type + "\n" + x_headers + "\n" + resource
+    bytes_to_hash = bytes(string_to_hash, encoding="utf-8")  
+    decoded_key = base64.b64decode(shared_key)
+    encoded_hash = base64.b64encode(hmac.new(decoded_key, bytes_to_hash, digestmod=hashlib.sha256).digest()).decode()
+    authorization = "SharedKey {}:{}".format(customer_id,encoded_hash)
+    return authorization
+
+# Build and send a request to the POST API
+def post_data(customer_id, shared_key, body, log_type):
+    method = 'POST'
+    content_type = 'application/json'
+    resource = '/api/logs'
+    rfc1123date = datetime.datetime.utcnow().strftime('%a, %d %b %Y %H:%M:%S GMT')
+    content_length = len(body)
+    signature = build_signature(customer_id, shared_key, rfc1123date, content_length, method, content_type, resource)
+    uri = 'https://' + customer_id + '.ods.opinsights.azure.com' + resource + '?api-version=2016-04-01'
+
+    headers = {
+        'content-type': content_type,
+        'Authorization': signature,
+        'Log-Type': log_type,
+        'x-ms-date': rfc1123date
+    }
+
+    response = requests.post(uri,data=body, headers=headers)
+    if (response.status_code >= 200 and response.status_code <= 299):
+        print('Accepted')
+    else:
+        print("Response code: {}".format(response.status_code))
+
+post_data(customer_id, shared_key, body, log_type)
+```
+
+
 ## <a name="alternatives-and-considerations"></a>替代方案和考慮
 雖然資料收集器 API 應涵蓋將自由格式資料收集到 Azure 記錄的大部分需求，但有一些實例可能需要有替代方法，才能克服 API 的某些限制。 您所有的選項如下所示，主要考慮包括：
 
-| 替代函式 | Description | 最適用於 |
+| 替代函式 | 描述 | 最適用於 |
 |---|---|---|
-| [自訂事件](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics?toc=%2Fazure%2Fazure-monitor%2Ftoc.json#properties)： Application Insights 中以原生 SDK 為基礎的內嵌 | Application Insights，通常會透過應用程式內的 SDK 進行檢測，讓您能夠透過自訂事件傳送自訂資料。 | <ul><li> 在您的應用程式中產生的資料，但 SDK 不會透過其中一個預設資料類型（要求、相依性、例外狀況等等）來拾取。</li><li> 最常與中的其他應用程式資料相互關聯的資料 Application Insights </li></ul> |
-| Azure 監視器記錄中的資料收集器 API | Azure 監視器記錄檔中的資料收集器 API 是完全開放式的資料內嵌方式。 您可以在這裡傳送 JSON 物件格式的任何資料。 一旦傳送之後，就會進行處理，並在記錄檔中使用，以與記錄檔中的其他資料或其他 Application Insights 資料相互關聯。 <br/><br/> 將資料以檔案形式上傳至 Azure Blob blob 相當容易，因為這些檔案會在其中進行處理，並上傳至 Log Analytics。 如需這類管線的範例執行，請參閱[這](https://docs.microsoft.com/azure/log-analytics/log-analytics-create-pipeline-datacollector-api)篇文章。 | <ul><li> 不一定會在 Application Insights 內所檢測的應用程式中產生的資料。</li><li> 範例包括查閱和事實資料表、參考資料、預先匯總統計資料等等。 </li><li> 適用于將針對其他 Azure 監視器資料（Application Insights、其他記錄資料類型、資訊安全中心 Azure 監視器、容器/Vm 等）交叉參考的資料。 </li></ul> |
-| [Azure 資料總管](https://docs.microsoft.com/azure/data-explorer/ingest-data-overview) | Azure 資料總管（ADX）是可 Application Insights 分析和 Azure 監視器記錄的資料平臺。 現已正式推出（「GA」），使用其原始形式的資料平臺，可讓您在叢集上（RBAC、保留率、架構等）提供完整的彈性（但需要額外的管理負荷）。 ADX 提供許多內嵌[選項](https://docs.microsoft.com/azure/data-explorer/ingest-data-overview#ingestion-methods)，包括[CSV、TSV 和 JSON](https://docs.microsoft.com/azure/kusto/management/mappings?branch=master)檔案。 | <ul><li> 不會與 Application Insights 或記錄下的任何其他資料相互關聯的資料。 </li><li> 需要先進的內嵌或處理功能的資料，目前無法在 Azure 監視器記錄中提供。 </li></ul> |
+| [自訂事件](../app/api-custom-events-metrics.md?toc=%2Fazure%2Fazure-monitor%2Ftoc.json#properties)： Application Insights 中以原生 SDK 為基礎的內嵌 | Application Insights，通常會透過應用程式內的 SDK 進行檢測，讓您能夠透過自訂事件傳送自訂資料。 | <ul><li> 在您的應用程式中產生的資料，但 SDK 不會透過其中一個預設資料類型（要求、相依性、例外狀況等等）來拾取。</li><li> 最常與中的其他應用程式資料相互關聯的資料 Application Insights </li></ul> |
+| Azure 監視器記錄中的資料收集器 API | Azure 監視器記錄檔中的資料收集器 API 是完全開放式的資料內嵌方式。 您可以在這裡傳送 JSON 物件格式的任何資料。 一旦傳送之後，就會進行處理，並在記錄檔中使用，以與記錄檔中的其他資料或其他 Application Insights 資料相互關聯。 <br/><br/> 將資料以檔案形式上傳至 Azure Blob blob 相當容易，因為這些檔案會在其中進行處理，並上傳至 Log Analytics。 如需這類管線的範例執行，請參閱[這](./create-pipeline-datacollector-api.md)篇文章。 | <ul><li> 不一定會在 Application Insights 內所檢測的應用程式中產生的資料。</li><li> 範例包括查閱和事實資料表、參考資料、預先匯總統計資料等等。 </li><li> 適用于將針對其他 Azure 監視器資料（Application Insights、其他記錄資料類型、資訊安全中心 Azure 監視器、容器/Vm 等）交叉參考的資料。 </li></ul> |
+| [Azure 資料總管](/azure/data-explorer/ingest-data-overview) | Azure 資料總管（ADX）是可 Application Insights 分析和 Azure 監視器記錄的資料平臺。 現已正式推出（「GA」），使用其原始形式的資料平臺，可讓您在叢集上（RBAC、保留率、架構等）提供完整的彈性（但需要額外的管理負荷）。 ADX 提供許多內嵌[選項](/azure/data-explorer/ingest-data-overview#ingestion-methods)，包括[CSV、TSV 和 JSON](/azure/kusto/management/mappings?branch=master)檔案。 | <ul><li> 不會與 Application Insights 或記錄下的任何其他資料相互關聯的資料。 </li><li> 需要先進的內嵌或處理功能的資料，目前無法在 Azure 監視器記錄中提供。 </li></ul> |
 
 
 ## <a name="next-steps"></a>後續步驟

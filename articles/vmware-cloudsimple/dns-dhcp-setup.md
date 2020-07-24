@@ -8,11 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: ef1266b783034cf18dc2b3ea4be5ebc01bc12c70
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d7531a22d5b0f44fdaae837a75d17ea18852acf0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77024682"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077291"
 ---
 # <a name="set-up-dns-and-dhcp-applications-and-workloads-in-your-cloudsimple-private-cloud"></a>在您的 CloudSimple 私人雲端中設定 DNS 和 DHCP 應用程式和工作負載
 
@@ -32,5 +33,5 @@ Linux 提供各種封裝來設定 DNS 伺服器。  以下是[從 DigitalOcean �
 
 這些 Microsoft 主題說明如何將 Windows server 設定為 DNS 伺服器和 DHCP 伺服器。
 
-* [Windows Server 做為 DNS 伺服器](https://docs.microsoft.com/windows-server/networking/dns/dns-top)
-* [做為 DHCP 伺服器的 Windows Server](https://docs.microsoft.com/windows-server/networking/technologies/dhcp/dhcp-top)
+* [Windows Server 做為 DNS 伺服器](/windows-server/networking/dns/dns-top)
+* [做為 DHCP 伺服器的 Windows Server](/windows-server/networking/technologies/dhcp/dhcp-top)

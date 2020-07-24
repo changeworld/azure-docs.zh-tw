@@ -11,11 +11,12 @@ ms.date: 04/09/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 4dc054d26f0cb64a8f7faf2ffa4b2b688562f404
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 334d37ad36336d1aa737894482fd8f66e929c822
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213545"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077676"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-synapse-analytics"></a>監視 Azure Synapse Analytics 中的資源使用率和查詢活動
 
@@ -41,9 +42,6 @@ Azure Synapse Analytics 在 Azure 入口網站中提供豐富的監視體驗，�
 | 快取命中的百分比    | (快取命中數 / 快取遺漏) * 100  其中快取命中數是在本機 SSD 快取中所有資料行存放區的區段命中數總和，而快取遺漏是本機 SSD 快取中資料行存放區的區段遺漏數 (從所有節點上加總) | 平均值、最小值、最大值    |
 | 已用快取的百分比   | (已用快取 / 快取容量) * 100 其中已用快取是本機 SSD 快取 (跨所有節點) 中的所有位元組總和，而快取容量是本機 SSD 快取 (跨所有節點) 的儲存體容量總和 | 平均值、最小值、最大值    |
 | 本機 tempdb 百分比 | 跨所有計算節點的本機 tempdb 使用率 - 此值每五分鐘發出一次 | 平均值、最小值、最大值    |
-| 資料儲存體大小 (GB) | 資料庫的總大小。 這包括已使用、已保留和未配置的空間。 系統會為資料庫保留未配置的空間，以最佳化查詢和載入效能。 | Sum |
-| 災害復原大小 (GB) | 每 24 小時進行的異地備份大小總計 | Sum |
-| 快照集儲存體大小 (GB) | 用來提供資料庫還原點的快照集大小總計。 這包括自動化和使用者定義的快照集。 | Sum |
 
 在檢視計量和設定警示時要考量的事項：
 

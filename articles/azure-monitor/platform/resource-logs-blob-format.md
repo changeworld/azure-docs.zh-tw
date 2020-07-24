@@ -7,16 +7,17 @@ ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 001dfbc78c0027249143e933684523d47af383d1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 45b18352d88877a5d611f203d87da83fd0d58c6b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79096773"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077123"
 ---
 # <a name="prepare-for-format-change-to-azure-monitor-platform-logs-archived-to-a-storage-account"></a>準備封存至儲存體帳戶 Azure 監視器平臺記錄的格式變更
 
 > [!WARNING]
-> 如果您是使用[記錄設定檔](resource-logs-collect-storage.md)，將[Azure 資源記錄或計量](resource-logs-collect-storage.md)傳送至儲存體帳戶，則儲存體帳戶中的資料格式會在2018年11月1日變更為 JSON 行。 下方的指示會說明新格式的影響，以及如何更新工具來加以因應。
+> 如果您是使用[記錄設定檔](./resource-logs.md#send-to-azure-storage)，將[Azure 資源記錄或計量](./resource-logs.md#send-to-azure-storage)傳送至儲存體帳戶，則儲存體帳戶中的資料格式會在2018年11月1日變更為 JSON 行。 下方的指示會說明新格式的影響，以及如何更新工具來加以因應。
 >
 
 ## <a name="what-changed"></a>變更內容
@@ -28,9 +29,9 @@ Azure 監視器提供一項功能，可讓您將資源記錄和活動記錄傳�
 * 在11月1日之前設定診斷設定，會繼續以目前的格式發出資料，直到11月1日為止。
 * 這種變更會在所有公用雲端區域發生一次。 這項變更不會發生在由世紀、Azure 德國或 Azure Government 雲端操作 Microsoft Azure。
 * 這項變更會影響下列資料類型：
-  * [Azure 資源記錄](archive-diagnostic-logs.md)（[請參閱這裡的資源清單](diagnostic-logs-schema.md)）
+  * [Azure 資源記錄](./resource-logs.md#send-to-azure-storage)（[請參閱這裡的資源清單](./resource-logs-schema.md)）
   * [診斷設定所匯出的 Azure 資源計量](diagnostic-settings.md)
-  * [記錄設定檔所匯出的 Azure 活動記錄資料](activity-log-collect.md)
+  * [記錄設定檔所匯出的 Azure 活動記錄資料](./activity-log.md)
 * 這項變更不會影響：
   * 網路流量記錄
   * Azure 服務記錄尚未透過 Azure 監視器提供（例如，Azure App Service 資源記錄、儲存體分析記錄）
@@ -122,7 +123,7 @@ Azure Blob 儲存體中 PT1H.json 檔案的目前格式會使用記錄的 JSON �
 {"time": "2016-01-05T01:33:56.5264523Z","resourceId": "/SUBSCRIPTIONS/361DA5D4-A47A-4C79-AFDD-XXXXXXXXXXXX/RESOURCEGROUPS/CONTOSOGROUP/PROVIDERS/MICROSOFT.KEYVAULT/VAULTS/CONTOSOKEYVAULT","operationName": "VaultGet","operationVersion": "2015-06-01","category": "AuditEvent","resultType": "Success","resultSignature": "OK","resultDescription": "","durationMs": "83","callerIpAddress": "104.40.82.76","correlationId": "","identity": {"claim": {"http://schemas.microsoft.com/identity/claims/objectidentifier": "d9da5048-2737-4770-bd64-XXXXXXXXXXXX","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn": "live.com#username@outlook.com","appid": "1950a258-227b-4e31-a9cf-XXXXXXXXXXXX"}},"properties": {"clientInfo": "azure-resource-manager/2.0","requestUri": "https://control-prod-wus.vaultcore.azure.net/subscriptions/361da5d4-a47a-4c79-afdd-XXXXXXXXXXXX/resourcegroups/contosoresourcegroup/providers/Microsoft.KeyVault/vaults/contosokeyvault?api-version=2015-06-01","id": "https://contosokeyvault.vault.azure.net/","httpStatusCode": 200}}
 ```
 
-這種新格式可讓 Azure 監視器使用[附加 Blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs) 發送記錄檔，以更有效率地持續附加新的事件資料。
+這種新格式可讓 Azure 監視器使用[附加 Blob](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs) 發送記錄檔，以更有效率地持續附加新的事件資料。
 
 ## <a name="how-to-update"></a>更新方式
 
@@ -132,6 +133,5 @@ Azure Blob 儲存體中 PT1H.json 檔案的目前格式會使用記錄的 JSON �
 
 ## <a name="next-steps"></a>後續步驟
 
-* 瞭解如何[將資源資源記錄封存到儲存體帳戶](./../../azure-monitor/platform/archive-diagnostic-logs.md)
-* 了解[將活動記錄資料封存至儲存體帳戶](./../../azure-monitor/platform/archive-activity-log.md)
-
+* 瞭解如何[將資源資源記錄封存到儲存體帳戶](./resource-logs.md#send-to-azure-storage)
+* 了解[將活動記錄資料封存至儲存體帳戶](./activity-log.md#legacy-collection-methods)

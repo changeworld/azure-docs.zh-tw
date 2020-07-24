@@ -1,5 +1,5 @@
 ---
-title: 功能-LUIS
+title: 使用功能來改善 LUIS 字組清單
 titleSuffix: Azure Cognitive Services
 description: 使用 Language Understanding (LUIS) 來新增應用程式功能，可改善對類別和模式進行意圖和實體的偵測或預測
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/17/2020
 ms.author: diberry
-ms.openlocfilehash: 7d9f1e520ab5c96b9c5288383324b165a4cd74f0
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 25698fe2b05cbfb564e441e488bfa93221a9618a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344436"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075207"
 ---
 # <a name="use-features-to-boost-signal-of-word-list"></a>使用功能來提升單字清單的信號
 
@@ -43,7 +43,7 @@ ms.locfileid: "84344436"
 
 1. 片語清單可套用至具有**全域**設定的整個應用程式，或套用至特定模型（意圖或實體）。 如果您建立片語清單做為意圖或實體的_功能_，則不會針對全域設定切換。 在此情況下，切換的意義是此功能只會在該模型的本機上，因此不是應用程式的_全域_。
 
-1. 選取 [完成] 。 新的功能會新增至**ML 功能**頁面。
+1. 選取 [完成]。 新的功能會新增至**ML 功能**頁面。
 
 <a name="edit-phrase-list"></a>
 <a name="delete-phrase-list"></a>

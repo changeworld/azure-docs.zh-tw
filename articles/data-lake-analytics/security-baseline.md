@@ -1,20 +1,20 @@
 ---
-title: 適用于 Azure 安全性基準測試的 Data Lake Analytics 安全性基準
+title: 適用于 Data Lake Analytics 的 Azure 安全性基準
 description: Data Lake Analytics 的安全性基準提供程式指引和資源，可用於執行 Azure 安全性基準測試中所指定的安全性建議。
 author: msmbaldwin
 ms.service: data-lake-analytics
 ms.topic: conceptual
-ms.date: 07/13/2020
+ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 5e6d5beaad5080bf3081d5f68722623fb62d6c8a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: cb93fa266111a0f60a139d7b76a149ba81b486e9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531229"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075078"
 ---
-# <a name="data-lake-analytics-security-baseline-for-azure-security-benchmark"></a>適用于 Azure 安全性基準測試的 Data Lake Analytics 安全性基準
+# <a name="azure-security-baseline-for-data-lake-analytics"></a>適用于 Data Lake Analytics 的 Azure 安全性基準
 
 適用于 Data Lake Analytics 的 Azure 安全性基準包含可協助您改善部署之安全性狀態的建議。
 

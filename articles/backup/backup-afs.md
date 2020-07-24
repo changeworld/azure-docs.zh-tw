@@ -3,16 +3,16 @@ title: 在 Azure 入口網站中備份 Azure 檔案共用
 description: 瞭解如何使用 Azure 入口網站來備份復原服務保存庫中的 Azure 檔案共用
 ms.topic: conceptual
 ms.date: 01/20/2020
-ms.openlocfilehash: 76bf8e00dede5f227cb862f9c9474844e349e298
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 58bcd7ecd7c6fac80f5b78fb2c8b568b63e3e1b2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85391143"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077148"
 ---
 # <a name="back-up-azure-file-shares"></a>備份 Azure 檔案共用
 
-本文說明如何使用 Azure 入口網站來備份[Azure 檔案共用](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)。
+本文說明如何使用 Azure 入口網站來備份[Azure 檔案共用](../storage/files/storage-files-introduction.md)。
 
 在本文中，您將學會如何：
 

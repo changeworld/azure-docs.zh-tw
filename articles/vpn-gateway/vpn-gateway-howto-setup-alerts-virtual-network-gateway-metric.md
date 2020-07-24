@@ -2,16 +2,17 @@
 title: 在 Azure VPN 閘道計量上設定警示
 description: 設定 VPN 閘道計量警示的步驟
 services: vpn-gateway
-author: anzaman
+author: kumudD
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 04/22/2019
 ms.author: alzam
-ms.openlocfilehash: ce9ab972d961a9193c3aa568878f9c93ccdcf6b1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c2c44720853500ad6a9a4af1c8d93d6c8bc3eea2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84988013"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075533"
 ---
 # <a name="set-up-alerts-on-vpn-gateway-metrics"></a>設定 VPN 閘道計量的警示
 
@@ -22,14 +23,14 @@ ms.locfileid: "84988013"
 |---       | ---        | ---       | ---            | ---       |
 |**AverageBandwidth**| 位元組/秒  | 5 分鐘| 閘道上所有站對站連線的平均結合頻寬使用量。     |
 |**P2SBandwidth**| 位元組/秒  | 1 分鐘  | 閘道上所有點對站連線的平均結合頻寬使用量。    |
-|**P2SConnectionCount**| Count  | 1 分鐘  | 閘道上的點對站連線計數。   |
+|**P2SConnectionCount**| 計數  | 1 分鐘  | 閘道上的點對站連線計數。   |
 |**TunnelAverageBandwidth** | 位元組/秒    | 5 分鐘  | 在閘道上建立之通道的平均頻寬使用量。 |
 |**TunnelEgressBytes** | 位元組 | 5 分鐘 | 在閘道上建立的通道上的連出流量。   |
-|**TunnelEgressPackets** | Count | 5 分鐘 | 在閘道上建立之通道上的傳出封包計數。   |
-|**TunnelEgressPacketDropTSMismatch** | Count | 5 分鐘 | 流量選取器不相符所造成的通道上丟棄的傳出封包計數。 |
+|**TunnelEgressPackets** | 計數 | 5 分鐘 | 在閘道上建立之通道上的傳出封包計數。   |
+|**TunnelEgressPacketDropTSMismatch** | 計數 | 5 分鐘 | 流量選取器不相符所造成的通道上丟棄的傳出封包計數。 |
 |**TunnelIngressBytes** | 位元組 | 5 分鐘 | 在閘道上建立的通道上的連入流量。   |
-|**TunnelIngressPackets** | Count | 5 分鐘 | 在閘道上建立的通道上的傳入封包計數。   |
-|**TunnelIngressPacketDropTSMismatch** | Count | 5 分鐘 | 因流量選取器不相符而在通道上捨棄的傳入封包計數。 |
+|**TunnelIngressPackets** | 計數 | 5 分鐘 | 在閘道上建立的通道上的傳入封包計數。   |
+|**TunnelIngressPacketDropTSMismatch** | 計數 | 5 分鐘 | 因流量選取器不相符而在通道上捨棄的傳入封包計數。 |
 
 
 ## <a name="set-up-azure-monitor-alerts-based-on-metrics-by-using-the-azure-portal"></a><a name="setup"></a>使用 Azure 入口網站設定以度量為基礎的 Azure 監視器警示

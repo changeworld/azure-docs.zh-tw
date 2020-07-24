@@ -12,12 +12,12 @@ ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 6af05a6c17253a2032f493a7d2cd6254dafd352c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4873c1c998f62b6180df73a04852704665a4125d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85831415"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075835"
 ---
 # <a name="azure-synapse-analytics-release-notes"></a>Azure Synapse Analytics 版本資訊
 
@@ -28,7 +28,6 @@ ms.locfileid: "85831415"
 新功能會推出到所有區域，請檢查部署至您執行個體的版本和最新版本資訊是否提供此功能。 若要檢查版本，請透過 SQL Server Management Studio (SSMS) 連線至您的 SQL 集區，並執行 `SELECT @@VERSION;` 以傳回目前的版本。 使用此版本以確認 SQL 集區已套用哪個版本。 輸出中的日期會識別套用至您 SQL 集區的版本月份。 這僅適用於服務層級的改進。 
 
 如需工具改進，請確定您已安裝在版本資訊中指定的正確版本。 
-
 
 > [!NOTE]
 > 由 SELECT @@VERSION 傳回的產品名稱會從 Microsoft Azure SQL 資料倉儲變更為 Microsoft Azure Synapse Analytics。 在進行變更之前，我們會預先傳送通知。 這項變更與在其應用程式程式碼中從 SELECT @@VERSION 的結果剖析產品名稱的客戶相關。 若要避免應用程式程式碼因為產品品牌重新命名而變更，請使用以下命令來查詢 SERVERPROPERTY，以取得資料庫產品名稱和版本：若要傳回版本號碼 XX.X.XXXXX.X (沒有產品名稱)，請使用以下命令：
@@ -42,11 +41,13 @@ ms.locfileid: "85831415"
 > ```
 
 ## <a name="july-2020"></a>2020 年 7 月
+
 | 服務改進功能 | 詳細資料 |
 | --- | --- |
 |**資料行層級加密（公開預覽）**|藉由使用 Transact-sql 將對稱式加密套用至資料行，來保護 Synapse SQL 資料倉儲中的機密資訊。 資料行層級加密具有內建函數，可讓您使用以憑證、密碼、對稱金鑰或非對稱金鑰進一步保護的對稱金鑰來加密資料。 如需詳細資訊，請造訪[加密資料行](/sql/relational-databases/security/encryption/encrypt-a-column-of-data?view=azure-sqldw-latest)。|
 |**相容性層級支援（GA）**|在此版本中，使用者現在可以設定資料庫的相容性層級，以取得特定版本 Synapse SQL 引擎的 Transact-SQL 語言和查詢處理行為。 如需詳細資訊，請參閱 [sys.database_scoped_configurations](/sql/relational-databases/system-catalog-views/sys-database-scoped-configurations-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 和[改變資料庫範圍設定](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。|
 |**資料列層級安全性**|此版本包含對在其上強制執行 RLS 的資料列進行更新和刪除作業的改善。 在此版本中，如果內建函式不參考 DML 目標資料表中的任何資料行，則具有 ' is_rolemember ' 等內建函式的更新和刪除作業就會成功。 在這項改進之前，這些作業會因為基礎 DML 作業的限制而失敗。|
+|**DBCC SHRINKDATABASE （GA）**|您現在可以在指定的資料庫中壓縮資料和記錄檔的大小。 如需詳細資訊，請參閱[檔](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql?view=sql-server-ver15)集。|
 
 ## <a name="may-2020"></a>2020 年 5 月
 
@@ -116,7 +117,7 @@ ms.locfileid: "85831415"
 
 | 服務改進功能 | 詳細資料 |
 | --- | --- |
-|**具體化檢視 (預覽)**|具體化檢視會保存從檢視定義查詢傳回的資料，並在底層資料表中的資料變更時自動取得更新。 它可以改進複雜查詢 (通常是具有聯結與會總的查詢) 的效能，同時提供簡單的維護作業。 如需詳細資訊，請參閱： </br> - [CREATE MATERIALIZED VIEW AS SELECT &#40;Transact-SQL&#41;](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)</br> - [ALTER MATERIALIZED VIEW &#40;Transact-SQL&#41;](/sql/t-sql/statements/alter-materialized-view-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) </br> - [Synapse SQL 中支援的 T-SQL 陳述式](sql-data-warehouse-reference-tsql-statements.md)|
+|**具體化檢視 (預覽)**|具體化檢視會保存從檢視定義查詢傳回的資料，並在底層資料表中的資料變更時自動取得更新。 它可以改進複雜查詢 (通常是具有聯結與會總的查詢) 的效能，同時提供簡單的維護作業。 如需詳細資訊，請參閱 </br> - [CREATE MATERIALIZED VIEW AS SELECT &#40;Transact-SQL&#41;](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)</br> - [ALTER MATERIALIZED VIEW &#40;Transact-SQL&#41;](/sql/t-sql/statements/alter-materialized-view-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) </br> - [Synapse SQL 中支援的 T-SQL 陳述式](sql-data-warehouse-reference-tsql-statements.md)|
 |**其他 T-SQL 支援**|Synapse SQL 的 T-SQL 語言介面區已擴充為包含以下支援： </br> - [AT TIME ZONE (Transact-SQL)](/sql/t-sql/queries/at-time-zone-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)</br> - [STRING_AGG (Transact-SQL)](/sql/t-sql/functions/string-agg-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)|
 |**結果集快取 (預覽)**|已新增 DBCC 命令以管理先前宣佈的結果集快取。 如需詳細資訊，請參閱 </br> - [DBCC DROPRESULTSETCACHE &#40;Transact-SQL&#41;](/sql/t-sql/database-console-commands/dbcc-dropresultsetcache-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)  </br> - [DBCC SHOWRESULTCACHESPACEUSED &#40;Transact-SQL&#41;](/sql/t-sql/database-console-commands/dbcc-showresultcachespaceused-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) </br></br> 另請參閱 [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 中新的 result_set_cache 資料行，其中顯示執行快取使用結果集快取的時機。|
 |**已排序的叢集資料行存放區索引 (預覽)**|新的資料行 column_store_order_ordinal 已新增至 [sys.index_columns](/sql/relational-databases/system-catalog-views/sys-index-columns-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)，以識別已排序的叢集資料行存放區索引中資料行的順序。|

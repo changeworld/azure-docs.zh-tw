@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 07/13/2020
+ms.date: 07/22/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b7ab9e63bfe92967eca22b60dceec0de882768a6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 721f9c623255b964e38da1c0f4b7bbf72d0c721d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531377"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075634"
 ---
 # <a name="windows-virtual-desktop-faq"></a>Windows 虛擬桌面常見問題
 
@@ -25,7 +25,7 @@ ms.locfileid: "86531377"
 
 您必須獲指派應用程式群組的「使用者存取系統管理員」角色，才能將應用程式群組發佈給使用者或使用者群組。
 
-若要限制系統管理員只能管理使用者會話，例如傳送訊息給使用者、登出使用者等等，您可以建立自訂角色。 例如： 
+若要限制系統管理員只能管理使用者會話，例如傳送訊息給使用者、登出使用者等等，您可以建立自訂角色。 例如: 
 
 ```powershell
 "actions": [
@@ -62,7 +62,7 @@ Azure 燈塔不完全支援管理 Windows 虛擬桌面環境。 由於燈塔目�
 
 當您執行 PowerShell Cmdlet 時，您只會看到資源名稱和位置。
 
-例如：
+例如:
 
 ```powershell
 Get-AzWvdHostPool -Name 0224hp -ResourceGroupName 0224rg
@@ -74,7 +74,7 @@ westus   0224hp Microsoft.DesktopVirtualization/hostpools
 
 若要查看所有資源的屬性，請將 `format-list` 或新增 `fl` 至 Cmdlet 的結尾。
 
-例如：
+例如:
 
 ```powershell
 Get-AzWvdHostPool -Name 0224hp -ResourceGroupName 0224rg |fl
@@ -82,7 +82,7 @@ Get-AzWvdHostPool -Name 0224hp -ResourceGroupName 0224rg |fl
 
 若要查看特定屬性，請在或後面加入特定的屬性名稱 `format-list` `fl` 。
 
-例如：
+例如:
 
 ```powershell
 Get-AzWvdHostPool -Name demohp -ResourceGroupName 0414rg |fl CustomRdpProperty
@@ -121,7 +121,7 @@ FSLogix 中的限制或配額取決於用來儲存使用者設定檔 VHD （X）
 | 資源 | 需求 |
 |---|---|
 | 穩定狀態 IOPS | 10 |
-| 登入/登出 IOPS | 5 |
+| 登入/登出 IOPS | 50 |
 
 此表格中的範例是單一使用者，但可用來估計您環境中的使用者總數需求。 例如，您需要100位使用者大約 1000 IOPS，以及在登入和登出期間的 5000 IOPS。
 

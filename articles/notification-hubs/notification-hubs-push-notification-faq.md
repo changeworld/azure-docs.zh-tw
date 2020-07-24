@@ -15,12 +15,12 @@ ms.date: 11/13/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 11/13/2019
-ms.openlocfilehash: 0fe4ae76645ec2a0ae8aae93b9db987ece9a45b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 85ebb7f5ac52f4eea25f9e6f1a2b1b5ac6f4caa5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85255121"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077928"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>使用 Azure 通知中樞推播通知：常見問題集 (FAQ)
 
@@ -138,7 +138,7 @@ PNS 不保證任何傳送通知的 SLA。 不過，大部分的推播通知皆�
 
 ### <a name="what-is-the-push-notification-delivery-security-model"></a>什麼是推播通知傳送資訊安全模型？
 
-Azure 通知中樞使用[共用存取簽章](../storage/common/storage-dotnet-shared-access-signature-part-1.md) 型資訊安全模型。 您可以在根命名空間層級或更細微的通知中樞層級使用共用存取簽章權杖。 共用存取簽章權杖可設定為依循不同授權規則，例如傳送訊息權限或接聽通知權限。 如需詳細資訊，請參閱[通知中樞資訊安全模型]文件。
+Azure 通知中樞使用[共用存取簽章](../storage/common/storage-sas-overview.md) 型資訊安全模型。 您可以在根命名空間層級或更細微的通知中樞層級使用共用存取簽章權杖。 共用存取簽章權杖可設定為依循不同授權規則，例如傳送訊息權限或接聽通知權限。 如需詳細資訊，請參閱[通知中樞資訊安全模型]文件。
 
 ### <a name="how-should-i-handle-sensitive-payload-in-push-notifications"></a>應如何處理推播通知中的機密承載？
 
@@ -151,7 +151,7 @@ Azure 通知中樞使用[共用存取簽章](../storage/common/storage-dotnet-sh
 
 若要傳送機密乘載，我們建議您使用「安全推播」模式。 傳送者會傳送 Ping 通知與訊息識別碼給裝置 (不含機密承載)。 當裝置上的應用程式收到此承載時，就能夠直接呼叫安全 API 以擷取訊息詳細資料。 您可以在[通知中樞安全推播教學課程]頁面上，取得如何實作此模式的指南。
 
-## <a name="operations"></a>Operations
+## <a name="operations"></a>作業
 
 ### <a name="what-support-is-provided-for-disaster-recovery"></a>我可以得到哪些災害復原支援？
 
@@ -203,15 +203,15 @@ Azure 通知中樞提供數個功能以進行疑難排解，特別是在已捨�
 [Azure 入口網站]: https://portal.azure.com
 [通知中樞價格]: https://azure.microsoft.com/pricing/details/notification-hubs/
 [Notification Hubs SLA]: https://azure.microsoft.com/support/legal/sla/
-[通知中樞 REST API]: https://msdn.microsoft.com/library/azure/dn530746.aspx
+[通知中樞 REST API]: /previous-versions/azure/reference/dn530746(v=azure.100)
 [Mobile Services Pricing]: https://azure.microsoft.com/pricing/details/mobile-services/
-[後端註冊指引]: https://msdn.microsoft.com/library/azure/dn743807.aspx
-[後端註冊指導方針 2]: https://msdn.microsoft.com/library/azure/dn530747.aspx
-[通知中樞資訊安全模型]: https://msdn.microsoft.com/library/azure/dn495373.aspx
-[通知中樞安全推播教學課程]: https://azure.microsoft.com/documentation/articles/notification-hubs-aspnet-backend-ios-secure-push/
-[通知中樞疑難排解]: https://azure.microsoft.com/documentation/articles/notification-hubs-diagnosing/
+[後端註冊指引]: /previous-versions/azure/azure-services/dn743807(v=azure.100)
+[後端註冊指導方針 2]: /previous-versions/azure/azure-services/dn530747(v=azure.100)
+[通知中樞資訊安全模型]: /previous-versions/azure/azure-services/dn495373(v=azure.100)
+[通知中樞安全推播教學課程]: ./notification-hubs-aspnet-backend-ios-push-apple-apns-secure-notification.md
+[通知中樞疑難排解]: ./notification-hubs-push-notification-fixer.md
 [通知中樞計量]: ../azure-monitor/platform/metrics-supported.md#microsoftnotificationhubsnamespacesnotificationhubs
-[註冊匯出/匯入]: https://docs.microsoft.com/azure/notification-hubs/export-modify-registrations-bulk
+[註冊匯出/匯入]: ./export-modify-registrations-bulk.md
 [Azure 入口網站]: https://portal.azure.com
 [complete samples]: https://github.com/Azure/azure-notificationhubs-samples
 [App Service Pricing]: https://azure.microsoft.com/pricing/details/app-service/

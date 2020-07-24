@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 1/24/2018
 ms.author: xujing
-ms.openlocfilehash: c85eef1a5d035e23c7e63632ac92c21440b15cae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 40b5f4ee0c30e38c6cd5bd01c724ed783921670d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82101547"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077422"
 ---
 # <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>如何使用多租用戶主機權限在 Azure 上部署 Windows 10 
 對於每位使用者都具有 Windows 10 企業版 E3/E5 或每位使用者都具有 Windows 虛擬桌面存取 (使用者訂用帳戶授權或附加元件使用者訂用帳戶授權) 的客戶，適用於 Windows 10 的多租用戶主機權限可讓您將 Windows 10 授權帶到雲端，並在 Azure 上執行 Windows 10 虛擬機器，而不必付費取得其他授權。 如需詳細資訊，請參閱[適用於 Windows 10 的多租用戶主機](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx)。
@@ -55,7 +55,7 @@ if($adminAccount.Disabled)
 
 
 ## <a name="deploying-windows-10-with-multitenant-hosting-rights"></a>使用多租用戶主機權限部署 Windows 10
-確定您已 [安裝並設定最新的 Azure PowerShell](/powershell/azure/overview)。 備妥 VHD 之後，請使用 `Add-AzVhd` Cmdlet，將 VHD 上傳到 Azure 儲存體帳戶，如下所示：
+確定您已 [安裝並設定最新的 Azure PowerShell](/powershell/azure/)。 備妥 VHD 之後，請使用 `Add-AzVhd` Cmdlet，將 VHD 上傳到 Azure 儲存體帳戶，如下所示：
 
 ```powershell
 Add-AzVhd -ResourceGroupName "myResourceGroup" -LocalFilePath "C:\Path\To\myvhd.vhd" `
@@ -63,7 +63,7 @@ Add-AzVhd -ResourceGroupName "myResourceGroup" -LocalFilePath "C:\Path\To\myvhd.
 ```
 
 
-**使用 Azure Resource Manager 範本部署進行部署**Resource Manager 範本內可指定另外的 `licenseType` 參數。 您可以閱讀更多有關[撰寫 Azure Resource Manager 範本](../../resource-group-authoring-templates.md)的資訊。 將 VHD 上傳至 Azure 之後，請編輯 Resource Manager 範本以將授權類型納入計算提供者，之後再照常部署範本即可：
+**使用 Azure Resource Manager 範本部署進行部署**Resource Manager 範本內可指定另外的 `licenseType` 參數。 您可以閱讀更多有關[撰寫 Azure Resource Manager 範本](../../azure-resource-manager/templates/template-syntax.md)的資訊。 將 VHD 上傳至 Azure 之後，請編輯 Resource Manager 範本以將授權類型納入計算提供者，之後再照常部署範本即可：
 ```json
 "properties": {
     "licenseType": "Windows_Client",
@@ -106,7 +106,5 @@ LicenseType              :
 >
 
 ## <a name="next-steps"></a>後續步驟
-- 深入了解如何[設定 Windows 10 的 VDA](https://docs.microsoft.com/windows/deployment/vda-subscription-activation)
+- 深入了解如何[設定 Windows 10 的 VDA](/windows/deployment/vda-subscription-activation)
 - 深入了解[適用於 Windows 10 的多租用戶主機](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx)
-
-

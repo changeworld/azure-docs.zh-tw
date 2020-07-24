@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: e58df0997c62a131a3c9987369f8e076a62d6654
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 82114164d70eae71678e70ff2bdb7ea44a54d4cd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81408349"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076311"
 ---
 # <a name="security-control-logging-and-monitoring"></a>安全性控制：記錄和監視
 
@@ -124,9 +124,9 @@ ms.locfileid: "81408349"
 
 針對 Azure 虛擬機器和雲端服務啟用反惡意程式碼事件收集。
 
-- [如何設定虛擬機器的 Microsoft Antimalware](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azurevmmicrosoftantimalwareextension?view=azuresmps-4.0.0)
+- [如何設定虛擬機器的 Microsoft Antimalware](/powershell/module/servicemanagement/azure.service/set-azurevmmicrosoftantimalwareextension?view=azuresmps-4.0.0)
 
-- [如何設定雲端服務的 Microsoft Antimalware](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azureserviceantimalwareextension?view=azuresmps-4.0.0)
+- [如何設定雲端服務的 Microsoft Antimalware](/powershell/module/servicemanagement/azure.service/set-azureserviceantimalwareextension?view=azuresmps-4.0.0)
 
 - [瞭解 Microsoft Antimalware](https://docs.microsoft.com/azure/security/fundamentals/antimalware)
 

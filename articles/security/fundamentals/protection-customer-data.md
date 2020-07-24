@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/28/2018
+ms.date: 07/10/2020
 ms.author: terrylan
-ms.openlocfilehash: d723e60afe543808c88b1ae040e2979412ff324c
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: 4f3b4b5e26c8feab44a01d3714c194eee0fc98e9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86273467"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076290"
 ---
 # <a name="azure-customer-data-protection"></a>Azure 客戶資料保護   
-預設會拒絕 Microsoft 運作與支援人員對於客戶資料的存取。 當授與支援案例相關資料的存取權時，只會使用即時 (JIT) 模型來授與對我們的合規性和隱私權原則進行審核及通過的原則。  存取控制需求是由下列 Azure 安全性原則所建立：
+預設會拒絕 Microsoft 運作與支援人員對於客戶資料的存取。 授與與支援案例相關之資料的存取權時，只會使用即時（JIT）模型來授與對符合性和隱私權原則進行審核及通過的原則。  存取控制需求是由下列 Azure 安全性原則所建立：
 
 - 依預設無法存取客戶資料。
 - 客戶虛擬機器 (VM) 上沒有任何使用者或系統管理員帳戶。
@@ -40,9 +40,9 @@ Azure 以預設和設為客戶選項的方式為客戶提供強大的資料安�
 
 **待用資料保護**：客戶有責任確保根據其標準將儲存在 Azure 中的資料加密。 Azure 提供各式各樣的加密功能，賦予客戶靈活彈性來選擇最符合本身需求的解決方案。 Azure Key Vault 會協助客戶以輕鬆的方式，控管雲端應用程式和服務用來加密資料的金鑰。 Azure 磁碟加密讓客戶能夠加密 VM。 Azure 儲存體服務加密可以加密所有放入客戶儲存體帳戶中的資料。
 
-**傳輸中資料保護**： Microsoft 提供一些選項，可讓客戶用來保護 Azure 網路內部傳輸中的資料，以及從外部透過網際網路對終端使用者的安全。  其中包括透過虛擬私人網路進行通訊 (利用 IPsec/IKE 加密) 、傳輸層安全性 (TLS) 1.2 或更新版本 (透過 Azure 元件（例如應用程式閘道或 Azure Front 門) ），直接在 Azure 虛擬機器上 (（例如 Windows IPsec 或 SMB) 等）。 
+**傳輸中資料保護**： Microsoft 提供一些選項，可讓客戶用來保護 Azure 網路內部傳輸中的資料，以及從外部透過網際網路對終端使用者的安全。  這些包括透過虛擬私人網路（使用 IPsec/IKE 加密）、傳輸層安全性（TLS）1.2 或更新版本（透過 Azure 元件（例如應用程式閘道或 Azure Front））、直接在 Azure 虛擬機器上的通訊協定（例如 Windows IPsec 或 SMB）等等。 
 
-此外，「預設加密」在資料連結層使用 MACsec (IEEE 標準) 會針對 Azure 資料中心之間的所有 Azure 流量進行啟用，以確保客戶資料的機密性和完整性。 
+此外，使用 MACsec （資料連結層的 IEEE 標準）的「預設加密」會針對 Azure 資料中心之間的所有 Azure 流量啟用，以確保客戶資料的機密性和完整性。 
 
 **資料備援**：如果資料中心發生網路攻擊或實體損毀，Microsoft 可協助確保資料受到保護。 客戶可以選擇：
 

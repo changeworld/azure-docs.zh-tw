@@ -5,17 +5,18 @@ ms.topic: conceptual
 author: tokaplan
 ms.author: alkaplan
 ms.date: 04/25/2019
-ms.openlocfilehash: a5e73039db541023b1fd4a9b75e7c14030c8e219
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 4bb1af6ca2126b7ae58a6c836624ec78a071a5a5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83797893"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075289"
 ---
 # <a name="zero-instrumentation-application-monitoring-for-kubernetes-hosted-applications-with-istio---deprecated"></a>使用 Istio 針對 Kubernetes 裝載的應用程式進行的零檢測設備應用程式監視 - 已過時
 
 > [!IMPORTANT]
 > 此功能目前即將淘汰，將於 2020 年 8 月 1 日之後不再支援。
-> 目前，只有[透過獨立代理程式的 Java](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent) \(部分機器翻譯\)，才能啟用無程式碼監視。 針對其他語言，請使用 SDK 來監視 AKS 上的應用程式：[ASP.Net Core](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) \(部分機器翻譯\)、[ASP.Net](https://docs.microsoft.com/azure/azure-monitor/app/asp-net)、[Node.js](https://docs.microsoft.com/azure/azure-monitor/app/nodejs) \(部分機器翻譯\)、[JavaScript](https://docs.microsoft.com/azure/azure-monitor/app/javascript) \(部分機器翻譯\) 及 [Python](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python) \(部分機器翻譯\)。
+> 目前，只有[透過獨立代理程式的 Java](./java-in-process-agent.md) \(部分機器翻譯\)，才能啟用無程式碼監視。 針對其他語言，請使用 SDK 來監視 AKS 上的應用程式：[ASP.Net Core](./asp-net-core.md) \(部分機器翻譯\)、[ASP.Net](./asp-net.md)、[Node.js](./nodejs.md) \(部分機器翻譯\)、[JavaScript](./javascript.md) \(部分機器翻譯\) 及 [Python](./opencensus-python.md) \(部分機器翻譯\)。
 
 Azure 監視器現在會在您的 Kubernetes 叢集上運用服務網格技術 Istio，為任何 Kubernetes 裝載的應用程式提供全新的應用程式監視。 使用預設的 Application Insight 功能，例如，使用[應用程式對應](../../azure-monitor/app/app-map.md)來建立相依性模型、使用[即時計量資料流](../../azure-monitor/app/live-stream.md)進行即時監視，以及利用[預設儀表板](../../azure-monitor/app/overview-dashboard.md)、[計量瀏覽器](../../azure-monitor/platform/metrics-getting-started.md)和[活頁簿](../../azure-monitor/platform/workbooks-overview.md)來產生功能強大的視覺效果。 此功能將協助使用者，在選取的 Kubernetes 命名空間中，找出其所有 Kubernetes 工作負載之間的效能瓶頸和失敗作用區。 藉由使用 Istio 之類的技術來讓您的現有服務網格投資發揮最大效益，Azure 監視器就能夠自動檢測應用程式監視，而不需對您應用程式的程式碼進行任何修改。
 
@@ -24,10 +25,10 @@ Azure 監視器現在會在您的 Kubernetes 叢集上運用服務網格技術 I
 
 ## <a name="prerequisites"></a>Prerequisites
 
-- 一個[Kubernetes 叢集](https://docs.microsoft.com/azure/aks/concepts-clusters-workloads) \(部分機器翻譯\)。
+- 一個[Kubernetes 叢集](../../aks/concepts-clusters-workloads.md) \(部分機器翻譯\)。
 - 對要執行 *kubectl* 之叢集的主控台存取權。
 - 一個 [Application Insights 資源](create-new-resource.md)。
-- 具有一個服務網格。 如果您的叢集並未部署 Istio，則您可以了解如何[在 Azure Kubernetes Service 中安裝和使用 Istio](https://docs.microsoft.com/azure/aks/istio-install) \(部分機器翻譯\)。
+- 具有一個服務網格。 如果您的叢集並未部署 Istio，則您可以了解如何[在 Azure Kubernetes Service 中安裝和使用 Istio](../../aks/servicemesh-istio-install.md) \(部分機器翻譯\)。
 
 ## <a name="capabilities"></a>功能
 

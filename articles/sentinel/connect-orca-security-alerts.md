@@ -1,5 +1,5 @@
 ---
-title: 將 Orca 警示連接到 Azure Sentinel |Microsoft Docs
+title: 將 Orca 安全性警示連接到 Azure Sentinel |Microsoft Docs
 description: 瞭解如何將 Orca 安全性警示資料連線到 Azure Sentinel、查看儀表板、建立自訂警示，以及改善調查。
 services: sentinel
 documentationcenter: na
@@ -14,14 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: 1f2f67281079142f0c4fe4985738dc48332a107d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 735f4b447d7258a9b444f3b75a6537dec20b1307
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531300"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076273"
 ---
-# <a name="connect-your-orca-alerts-to-azure-sentinel"></a>將您的 Orca 警示連接到 Azure Sentinel 
+# <a name="connect-your-orca-security-alerts-to-azure-sentinel"></a>將您的 Orca 安全性警示連接到 Azure Sentinel 
+
+> [!IMPORTANT]
+> Azure Sentinel 中的 Orca 安全性警示連接器目前處於公開預覽狀態。
+> 這項功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 [Orca 安全性警示] 連接器可讓您輕鬆地將您的[Orca 警示](https://orca.security/)安全性解決方案警示帶入 Azure Sentinel，讓您可以在活頁簿中進行查看、使用它們來建立自訂警示，並將其納入以改善調查。 在 Orca 安全性警示與 Azure Sentinel 之間的整合會使用 REST API。
 

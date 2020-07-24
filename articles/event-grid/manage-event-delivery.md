@@ -2,19 +2,22 @@
 title: 死信和重試原則-Azure 事件方格
 description: 說明如何為事件方格自訂事件傳遞選項。 設定無效信件目的地，然後指定要重試傳遞的時間長度。
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 88e782eb7dafc10956120bdae870aa2eb58778a5
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/20/2020
+ms.openlocfilehash: 2ff1d05899fb74583489649154ffa062e857cb95
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86105501"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074872"
 ---
 # <a name="dead-letter-and-retry-policies"></a>無效信件與重試原則
 
 當建立事件訂用帳戶時，您可以自訂事件傳遞的設定。 本文說明如何設定無效信件位置及自訂重試設定。 如需這些功能的相關資訊，請參閱[事件方格訊息傳遞和重試](delivery-and-retry.md)。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+> [!NOTE]
+> 若要瞭解訊息傳遞、重試和無效信件，請參閱概念性文章：[事件方格訊息傳遞和重試]()。
 
 ## <a name="set-dead-letter-location"></a>設定無效信件位置
 
@@ -95,7 +98,8 @@ az eventgrid event-subscription create \
   --max-delivery-attempts 18
 ```
 
-如果您同時設定 `event-ttl` 和 `max-deliver-attempts`，事件方格就會使用前者作為到期條件，來判斷何時停止事件傳遞。
+> [!NOTE]
+> 如果您同時設定 `event-ttl` 和 `max-deliver-attempts`，事件方格就會使用前者作為到期條件，來判斷何時停止事件傳遞。 例如，如果您將30分鐘設定為存留時間（TTL）和10個最大傳遞嘗試。 當未在30分鐘後傳遞事件（或）未在嘗試10次之後傳遞時（以先發生者為准），事件會是無效字母。  
 
 ### <a name="powershell"></a>PowerShell
 
@@ -123,7 +127,8 @@ New-AzEventGridSubscription `
   -MaxDeliveryAttempt 18
 ```
 
-如果您同時設定 `EventTtl` 和 `MaxDeliveryAttempt`，事件方格就會使用前者作為到期條件，來判斷何時停止事件傳遞。
+> [!NOTE]
+> 如果您同時設定 `event-ttl` 和 `max-deliver-attempts`，事件方格就會使用前者作為到期條件，來判斷何時停止事件傳遞。 例如，如果您將30分鐘設定為存留時間（TTL）和10個最大傳遞嘗試。 當未在30分鐘後傳遞事件（或）未在嘗試10次之後傳遞時（以先發生者為准），事件會是無效字母。  
 
 ## <a name="next-steps"></a>後續步驟
 

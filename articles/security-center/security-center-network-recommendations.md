@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2019
 ms.author: memildin
-ms.openlocfilehash: 792b95b120f67afcd360730acbd783a3071388b2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 36118bb99da5f0c7f918009413394d931415886f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77431480"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076376"
 ---
 # <a name="protect-your-network-resources"></a>保護您的網路資源
 Azure 資訊安全中心會持續分析 Azure 資源的安全性狀態，以獲得網路安全性最佳做法。 當資訊安全中心發現潛在的安全性弱點時，它會建立可引導您完成所需控制之設定程序的建議，以加強並保護您的資源。
@@ -34,7 +35,7 @@ Azure 資訊安全中心會持續分析 Azure 資源的安全性狀態，以獲�
 
 [網路]**** 頁面提供您可以深入了解之區段的概觀，以取得網路資源健康情況的詳細資訊：
 
-- 網路地圖 (僅限 Azure 資訊安全中心標準層)
+- 網路地圖（僅限 Azure 資訊安全中心標準層）
 - 自適性網路強化
 - 網路安全性建議。
 - 舊版 [網路]**** 刀鋒視窗 (先前的網路刀鋒視窗) 
@@ -115,7 +116,7 @@ Azure 資訊安全中心會持續分析 Azure 資源的安全性狀態，以獲�
 
 ## <a name="legacy-networking"></a>舊版網路功能 <a name ="legacy-networking"></a>
 
-如果您沒有資訊安全中心標準層，此節將說明如何檢視可用的網路功能建議。
+如果您沒有資訊安全中心標準層，本節將說明如何觀看免費的網路建議。
 
 若要存取此資訊，請在 [網路功能] 刀鋒視窗中，按一下 [檢視舊版網路功能]****。 
 

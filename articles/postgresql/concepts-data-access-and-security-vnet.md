@@ -5,12 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: bee705e33267a765c1fb5300c0bfe2d04ff2015d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/17/2020
+ms.openlocfilehash: f473a4621c6b2214717b5036eae5abeaa564fb72
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85099647"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076616"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-postgresql---single-server"></a>使用適用於 PostgreSQL 的 Azure 資料庫單一伺服器虛擬網路服務端點和規則
 
@@ -24,8 +25,9 @@ ms.locfileid: "85099647"
 > 如果適用於 PostgreSQL 的 Azure 資料庫是針對「一般用途」和「記憶體最佳化」伺服器來部署的，則此功能可在所有 Azure 公用雲端區域中使用。
 > 在 VNet 對等互連的案例中，如果流量流經含有服務端點的通用 VNet 閘道，且應流往同儕節點，請建立 ACL/VNet 規則以允許閘道 VNet 中的 Azure 虛擬機器存取適用於 PostgreSQL 的 Azure 資料庫伺服器。
 
-<a name="anch-terminology-and-description-82f" />
+您也可以考慮使用[私人連結](concepts-data-access-and-security-private-link.md)進行連接。 私人連結會在您的 VNet 中為適用於 PostgreSQL 的 Azure 資料庫伺服器提供私人 IP 位址。
 
+<a name="anch-terminology-and-description-82f"></a>
 ## <a name="terminology-and-description"></a>術語和描述
 
 **虛擬網路：** Azure 訂用帳戶可以有相關聯的虛擬網路。
@@ -37,12 +39,6 @@ ms.locfileid: "85099647"
 **虛擬網路規則：** 適用於 PostgreSQL 伺服器的 Azure 資料庫虛擬網路規則，是適用於 PostgreSQL 伺服器的 Azure 資料庫存取控制清單 (ACL) 中所列的子網路。 子網路必須包含 **Microsoft.Sql** 類型名稱，才能列在適用於 PostgreSQL 伺服器的 Azure 資料庫的 ACL 中。
 
 虛擬網路規則會指示適用於 PostgreSQL 伺服器的 Azure 資料庫接受來自子網路上每個節點的通訊。
-
-
-
-
-
-
 
 <a name="anch-details-about-vnet-rules-38q"></a>
 
@@ -62,11 +58,6 @@ ms.locfileid: "85099647"
 
 不過，靜態 IP 方法可能變得難以管理，在大規模使用時成本很高。 虛擬網路規則較容易建立和管理。
 
-### <a name="c-cannot-yet-have-azure-database-for-postgresql-on-a-subnet-without-defining-a-service-endpoint"></a>C. 在未定義服務端點的情況下，您尚不能在子網路上建立適用於 PostgreSQL 的 Azure 資料庫
-
-如果 **Microsoft.Sql** 伺服器是虛擬網路中某個子網路的節點，則虛擬網路內的所有節點都可以與適用於 PostgreSQL 伺服器的 Azure 資料庫通訊。 在此情況下，虛擬機器可以與適用於 PostgreSQL 的 Azure 資料庫通訊，而不需要任何虛擬網路規則或 IP 規則。
-
-不過，截至 2018 年 8 月，適用於 PostgreSQL 的 Azure 資料庫服務還不是可直接指派給子網路的服務。
 
 <a name="anch-details-about-vnet-rules-38q"></a>
 
@@ -119,6 +110,8 @@ RBAC 替代方案：**
 
 - VNet 服務端點的支援僅適用於一般用途伺服器和記憶體最佳化伺服器。
 
+- 如果在子網中啟用了**Microsoft** ，表示您只想要使用 VNet 規則來連接。 該子網中資源的[非 VNet 防火牆規則](concepts-firewall-rules.md)將無法使用。
+
 - 在防火牆上，IP 位址範圍會套用到下列網路項目，但虛擬網路規則不這麼做：
     - [站對站 (S2S) 虛擬私人網路 (VPN)][vpn-gateway-indexmd-608y]
     - 透過 [ExpressRoute][expressroute-indexmd-744v] 的內部部署
@@ -129,9 +122,9 @@ RBAC 替代方案：**
 
 若要允許從您的線路與適用於 PostgreSQL 的 Azure 資料庫通訊，您必須為線路的公用 IP 位址建立 IP 網路規則。 若要尋找您 ExpressRoute 線路的公用 IP 位址，請使用 Azure 入口網站開啟具有 ExpressRoute 的支援票證。
 
-## <a name="adding-a-vnet-firewall-rule-to-your-server-without-turning-on-vnet-service-endpoints"></a>在不開啟 VNET 服務端點的情況下將 VNET 防火牆規則新增至伺服器
+## <a name="adding-a-vnet-firewall-rule-to-your-server-without-turning-on-vnet-service-endpoints"></a>在不開啟 VNET 服務端點的情況下將 VNET 防火牆規則新增至您的伺服器
 
-只是設定防火牆規則不能協助伺服器防禦 VNet。 您也必須**開啟** VNet 服務端點，安全性才會生效。 當您**開啟**服務端點時，您的 VNet 子網路會停機，直到完成**關閉**到**開啟**的轉換。 特別是大型的 VNet，這會更明顯。 您可以使用 **IgnoreMissingServiceEndpoint** 旗標來減少或排除在轉換期間的停機時間。
+只是設定 VNet 防火牆規則並不會協助保護伺服器對 VNet 的安全。 您也必須**開啟** VNet 服務端點，安全性才會生效。 當您**開啟**服務端點時，您的 VNet 子網路會停機，直到完成**關閉**到**開啟**的轉換。 特別是大型的 VNet，這會更明顯。 您可以使用 **IgnoreMissingServiceEndpoint** 旗標來減少或排除在轉換期間的停機時間。
 
 您可以使用 Azure CLI 或入口網站設定 **IgnoreMissingServiceEndpoint** 旗標。
 

@@ -4,11 +4,12 @@ description: 透過 Azure 監視器監視 Azure 區塊鏈服務
 ms.date: 01/08/2020
 ms.topic: how-to
 ms.reviewer: v-umha
-ms.openlocfilehash: 9d5b3cb02f6e4cd0804dc7fb15a4eacc8370bb99
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7300a5dcfb0150e6182636dcb71bacfa68c787db
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85214038"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076923"
 ---
 # <a name="monitor-azure-blockchain-service-through-azure-monitor"></a>透過 Azure 監視器監視 Azure 區塊鏈服務  
 
@@ -16,20 +17,20 @@ ms.locfileid: "85214038"
 
 ## <a name="what-is-azure-monitor"></a>Azure 監視器是什麼？
 
-Azure 區塊鏈 Service 會使用 Azure 監視器建立監視資料，這是 Azure 中的完整堆疊監視服務，可提供一組完整的功能來監視您的 Azure 資源。 如需 Azure 監視器的詳細資訊，請參閱[使用 Azure 監視器監視 Azure 資源](https://docs.microsoft.com/azure/azure-monitor/insights/monitor-azure-resource)。
+Azure 區塊鏈 Service 會使用 Azure 監視器建立監視資料，這是 Azure 中的完整堆疊監視服務，可提供一組完整的功能來監視您的 Azure 資源。 如需 Azure 監視器的詳細資訊，請參閱[使用 Azure 監視器監視 Azure 資源](../../azure-monitor/insights/monitor-azure-resource.md)。
  
 
 下列各節將描述從 Azure 區塊鏈 Service 收集的特定資料，並提供使用 Azure tools 設定資料收集和分析此資料的範例，以本文為您所建立。
 
 ## <a name="monitor-data-collected-from-azure-blockchain-service"></a>監視從 Azure 區塊鏈 Service 收集的資料  
 
-Azure 區塊鏈服務會收集與其他 Azure 資源相同類型的監視資料，如從 Azure 資源[監視資料](https://docs.microsoft.com/azure/azure-monitor/insights/monitor-azure-resource#monitoring-data)中所述。 如需 Azure 區塊鏈 Service 所建立之記錄和計量的詳細參考，請參閱[監視 Azure 區塊鏈 Service 資料參考](#monitor-azure-blockchain-service-data-reference)。
+Azure 區塊鏈服務會收集與其他 Azure 資源相同類型的監視資料，如從 Azure 資源[監視資料](../../azure-monitor/insights/monitor-azure-resource.md#monitoring-data)中所述。 如需 Azure 區塊鏈 Service 所建立之記錄和計量的詳細參考，請參閱[監視 Azure 區塊鏈 Service 資料參考](#monitor-azure-blockchain-service-data-reference)。
 
 每個 Azure 區塊鏈服務成員資源的 Azure 入口網站中的 [總覽] 頁面包含交易的簡要觀點，包括要求已處理和已處理的區塊。 當您建立 Azure 區塊鏈服務成員資源時，會自動收集這項資料並可供分析，而您可以使用其他設定來啟用其他資料收集。
 
 ## <a name="diagnostic-settings"></a>診斷設定  
 
-系統會自動收集平台計量和活動記錄，但您必須建立診斷設定來收集資源記錄，或將其轉送到 Azure 監視器外部。 如需使用 Azure 入口網站、CLI 或 PowerShell 建立診斷設定的詳細程式，請參閱[建立診斷設定以收集 Azure 中的平臺記錄和計量](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings)。
+系統會自動收集平台計量和活動記錄，但您必須建立診斷設定來收集資源記錄，或將其轉送到 Azure 監視器外部。 如需使用 Azure 入口網站、CLI 或 PowerShell 建立診斷設定的詳細程式，請參閱[建立診斷設定以收集 Azure 中的平臺記錄和計量](../../azure-monitor/platform/diagnostic-settings.md)。
 
 當您建立診斷設定時，可以指定要收集的記錄類別。 Azure 區塊鏈服務的類別如下所示。
 
@@ -41,13 +42,13 @@ Azure 區塊鏈服務會收集與其他 Azure 資源相同類型的監視資料�
 
 ## <a name="analyze-metric-data"></a>分析計量資料  
 
-您可以使用計量瀏覽器來分析 Azure 區塊鏈 Service 的計量，流覽至 ABS 資源分頁中 [監視] 區段底下的 [計量] 索引標籤。 如需使用此工具的詳細資訊，請參閱[開始使用 Azure 計量瀏覽器](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started)。 Azure 區塊鏈 Service 的完整計量位於命名空間 Azure 區塊鏈 Service 標準計量中。
+您可以使用計量瀏覽器來分析 Azure 區塊鏈 Service 的計量，流覽至 ABS 資源分頁中 [監視] 區段底下的 [計量] 索引標籤。 如需使用此工具的詳細資訊，請參閱[開始使用 Azure 計量瀏覽器](../../azure-monitor/platform/metrics-getting-started.md)。 Azure 區塊鏈 Service 的完整計量位於命名空間 Azure 區塊鏈 Service 標準計量中。
 
 新增篩選或分割計量時，您可以使用**節點**維度，這基本上會提供每個交易節點的度量值，以及 ABS 成員的驗證器節點。
 
 ## <a name="analyze-log-data"></a>分析記錄資料
 
-以下是一些您可以在記錄搜尋列中輸入的查詢，以協助您監視您的 Azure 區塊鏈服務成員。 這些查詢使用[新語言](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)。
+以下是一些您可以在記錄搜尋列中輸入的查詢，以協助您監視您的 Azure 區塊鏈服務成員。 這些查詢使用[新語言](../../azure-monitor/log-query/log-query-overview.md)。
 
 若要查詢區塊鏈應用程式記錄檔中的錯誤狀況，請使用下列查詢：
 
@@ -73,7 +74,7 @@ BlockchainProxyLog
 
 ### <a name="resource-logs"></a>資源記錄
 
-所有資源記錄都會共用最上層的通用架構，其中包含區塊鏈服務特有的幾個唯一屬性。 您可以參閱[最上層資源記錄架構一](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-schema#top-level-resource-logs-schema)文，以下涵蓋 Azure 區塊鏈服務特定屬性的詳細資料  
+所有資源記錄都會共用最上層的通用架構，其中包含區塊鏈服務特有的幾個唯一屬性。 您可以參閱[最上層資源記錄架構一](../../azure-monitor/platform/resource-logs-schema.md#top-level-common-schema)文，以下涵蓋 Azure 區塊鏈服務特定屬性的詳細資料  
 
 下表列出 Azure 區塊鏈 proxy 記錄檔在 Azure 監視器記錄或 Azure 儲存體中收集時的屬性。  
 
@@ -123,18 +124,18 @@ BlockchainProxyLog
 
 下表列出為 Azure 區塊鏈 Service 收集的平臺計量。 所有計量都會儲存在命名空間**Azure 區塊鏈 Service**標準計量中。
 
-如需所有 Azure 監視器支援的計量（包括 Azure 區塊鏈 Service）的清單，請參閱[Azure 監視器支援的計量](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported)。
+如需所有 Azure 監視器支援的計量（包括 Azure 區塊鏈 Service）的清單，請參閱[Azure 監視器支援的計量](../../azure-monitor/platform/metrics-supported.md)。
 
 ### <a name="blockchain-metrics"></a>區塊鏈計量
 
 下表指定針對 Azure 區塊鏈服務成員資源所收集的區塊鏈計量清單。
 
 
-| 度量名稱 | 單位  |  彙總類型| Description   |
+| 度量名稱 | 單位  |  彙總類型| 說明   |
 |---|---|---|---|
 | 擱置交易   | Count  |  Average | 正在等候挖掘的交易數目。   |
-| 已處理的區塊   | Count  | Sum  |  每個時間間隔內處理的區塊數目。 區塊大小目前為5秒，因此在一分鐘內，每個節點會在5分鐘內處理12個區塊和60個區塊。   |
-|已處理的交易    | Count  | Sum  | 在區塊中處理的交易數目。    |
+| 已處理的區塊   | 計數  | 加總  |  每個時間間隔內處理的區塊數目。 區塊大小目前為5秒，因此在一分鐘內，每個節點會在5分鐘內處理12個區塊和60個區塊。   |
+|已處理的交易    | 計數  | 加總  | 在區塊中處理的交易數目。    |
 |已排入佇列的交易    |  Count | Average  | 無法立即挖掘的交易數目。 這可能是因為它們未按順序抵達，而未來的交易會等待前一筆交易抵達。 或者，可以是兩筆交易，只使用一次（nonce）和相同的天然氣值，因此無法挖掘第二個。   |
 
 ### <a name="connection-metrics"></a>連接計量  
@@ -142,12 +143,12 @@ BlockchainProxyLog
 下表列出針對 Azure 區塊鏈服務成員資源所收集的不同連接計量。 這些是 NGINX proxy 計量。
 
 
-| 度量名稱 | 單位  |  彙總類型| Description |
+| 度量名稱 | 單位  |  彙總類型| 說明 |
 |---|---|---|---|
-| 已接受的連線   | Count  |  Sum | 已接受的用戶端連接總數。   |
+| 已接受的連線   | 計數  |  加總 | 已接受的用戶端連接總數。   |
 | 作用中的連線  | Count  | Average  |  目前的作用中用戶端連線數目，包括等候連接。    |
-|已處理的連線    | Count  | Sum  | 已處理的連接總數。 一般而言，除非已達到一些資源限制，否則參數值會與已接受的連接相同。     |
-|已處理的要求     |  Count | Sum  | 用戶端要求總數。  |
+|已處理的連線    | 計數  | 加總  | 已處理的連接總數。 一般而言，除非已達到一些資源限制，否則參數值會與已接受的連接相同。     |
+|已處理的要求     |  Count | 加總  | 用戶端要求總數。  |
 
 
 ### <a name="performance-metrics"></a>效能度量
@@ -155,11 +156,11 @@ BlockchainProxyLog
 下表列出針對 Azure 區塊鏈成員資源的每個節點收集的效能計量。  
 
 
-| 度量名稱 | 單位  |  彙總類型| Description   |
+| 度量名稱 | 單位  |  彙總類型| 說明   |
 |---|---|---|---|
 | CPU 使用量百分比   | 百分比  |  最大值 | CPU 使用量的百分比。     |
-| IO 讀取位元組   | KB   | Sum  |  區塊鏈成員資源的所有節點之間的 IO 讀取位元組總和。      |
-|IO 寫入位元組     | KB   | Sum  | IO 在區塊鏈成員資源的所有節點之間寫入位元組的總和。     |
+| IO 讀取位元組   | KB   | 加總  |  區塊鏈成員資源的所有節點之間的 IO 讀取位元組總和。      |
+|IO 寫入位元組     | KB   | 加總  | IO 在區塊鏈成員資源的所有節點之間寫入位元組的總和。     |
 |記憶體限制       |  千兆   | Average    | 每個節點的區塊鏈進程可用的記憶體上限。 |
 |記憶體使用量     | 千兆  |  Average | 在所有節點上平均使用的記憶體數量。  |
 | 記憶體使用量百分比     | 百分比   | Average  |  在所有節點上平均使用的記憶體百分比。       |
@@ -168,4 +169,4 @@ BlockchainProxyLog
 
 ## <a name="next-steps"></a>後續步驟
 
-深入瞭解[區塊鏈資料管理員](https://docs.microsoft.com/azure/blockchain/service/data-manager)，以取得區塊鏈資料並將其轉換為 Azure 事件方格。
+深入瞭解[區塊鏈資料管理員](./data-manager.md)，以取得區塊鏈資料並將其轉換為 Azure 事件方格。

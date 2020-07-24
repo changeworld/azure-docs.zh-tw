@@ -4,18 +4,19 @@ description: 瞭解如何藉由塑造 JSON 來改善您的 Azure 時間序列深
 services: time-series-insights
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 ms.service: time-series-insights
 ms.topic: article
-ms.date: 04/17/2020
+ms.date: 06/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 63a708f80ad18309269e37c354b047c304a260d3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc24c1f49a48e81509961d5d7d01dba60dc50475
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81641301"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077642"
 ---
-# <a name="shape-json-to-maximize-query-performance"></a>塑造 JSON 以最大化查詢效能
+# <a name="shape-json-to-maximize-query-performance-in-your-gen1-environment"></a>塑造 JSON 以將 Gen1 環境中的查詢效能最大化
 
 本文提供如何塑造 JSON 以將 Azure 時間序列深入解析查詢效率最大化的指引。
 
@@ -27,16 +28,13 @@ ms.locfileid: "81641301"
 
 ## <a name="best-practices"></a>最佳作法
 
-考慮如何將事件傳送至時間序列深入解析。 亦即，您一律會：
+考慮如何將事件傳送至 Azure 時間序列深入解析。 亦即，您一律會：
 
 1. 盡可能有效率地透過網路傳送資料。
 1. 請確定您的資料是以一種方式儲存，讓您可以執行適用于您案例的匯總。
-1. 請確定您未達到時間序列深入解析的最大屬性限制：
+1. 請確定您未達到 Azure 時間序列深入解析的最大屬性限制：
    - S1 環境為 600 個屬性 (資料行)。
    - S2 環境為 800 個屬性 (資料行)。
-
-> [!TIP]
-> 查看 Azure 時間序列深入解析 Preview 中的[限制和計畫](time-series-insights-update-plan.md)。
 
 下列指導方針有助於確保最佳的查詢效能：
 
@@ -44,7 +42,7 @@ ms.locfileid: "81641301"
 1. 請勿傳送不必要的屬性。 如果查詢屬性不是必要的，最好不要傳送它。 如此一來，您就可以避免儲存限制。
 1. 使用[參考資料](time-series-insights-add-reference-data-set.md)，以避免透過網路傳送靜態資料。
 1. 在多個事件之間共用維度屬性，以更有效率地透過網路傳送資料。
-1. 請勿使用深層陣列巢狀結構。 時間序列深入解析支援最多兩個包含物件的嵌套陣列層級。 時間序列深入解析將訊息中的陣列壓平合併為具有屬性值組的多個事件。
+1. 請勿使用深層陣列巢狀結構。 Azure 時間序列深入解析支援最多兩個包含物件的嵌套陣列層級。 Azure 時間序列深入解析將訊息中的陣列壓平合併為具有屬性值組的多個事件。
 1. 如果所有或大部分的事件只存在少數的量值，最好將這些量值當作相同物件內的個別屬性來傳送。 將它們分開傳送可減少事件數目，而且可能會改善查詢效能，因為需要處理的事件較少。 有數個量值時，將它們當做單一屬性中的值來傳送，會使達到最大屬性限制的可能性降到最低。
 
 ## <a name="example-overview"></a>範例總覽
@@ -60,7 +58,7 @@ ms.locfileid: "81641301"
 
 在下列範例中，有一個 Azure IoT 中樞訊息，其中外部陣列包含通用維度值的共用區段。 外部陣列使用參考資料來提高訊息的效率。 參考資料報含每個事件都不會變更的裝置中繼資料，但它會提供有用的資料分析屬性。 批次處理一般維度值和採用參考資料會節省透過網路傳送的位元組，讓訊息更有效率。
 
-請考慮將下列 JSON 承載傳送至您的時間序列深入解析 GA 環境，其使用在傳送至 Azure 雲端時序列化為 JSON 的[IoT 裝置訊息物件](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.message?view=azure-dotnet)：
+請考慮將下列 JSON 承載傳送至您的 Azure 時間序列深入解析 GA 環境，其使用在傳送至 Azure 雲端時序列化為 JSON 的[IoT 裝置訊息物件](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.message?view=azure-dotnet)：
 
 
 ```JSON
@@ -99,7 +97,7 @@ ms.locfileid: "81641301"
    | FXXX | LINE\_DATA | EU |
    | FYYY | LINE\_DATA | 美國 |
 
-* 在簡維之後時間序列深入解析事件資料表：
+* 在簡維之後 Azure 時間序列深入解析事件資料表：
 
    | deviceId | messageId | deviceLocation | timestamp | series.Flow Rate ft3/s | series.Engine Oil Pressure psi |
    | --- | --- | --- | --- | --- | --- |
@@ -110,8 +108,8 @@ ms.locfileid: "81641301"
 > [!NOTE]
 > - **deviceId** 資料行是車隊中各種裝置的資料行標頭。 將**deviceId**值設為其本身的屬性名稱，會將裝置的總計限制為595（適用于 S1 環境）或795（適用于 S2 環境），以及其他五個數據行。
 > - 避免不必要的屬性（例如，make 和 model 資訊）。 因為未來不會查詢這些屬性，所以排除它們可提高網路和儲存體的效率。
-> - 使用參考資料來減少透過網路傳輸的位元組數目。 使用索引鍵屬性**deviceId**聯結兩個屬性**messageId**和**deviceLocation** 。 這項資料會在輸入時與遙測資料聯結，然後儲存在時間序列深入解析以進行查詢。
-> - 會使用兩層的嵌套，這是時間序列深入解析所支援的最大嵌套數量。 請務必避免巢狀結構很深的陣列。
+> - 使用參考資料來減少透過網路傳輸的位元組數目。 使用索引鍵屬性**deviceId**聯結兩個屬性**messageId**和**deviceLocation** 。 這項資料會在輸入時與遙測資料聯結，然後儲存在 Azure 時間序列深入解析以進行查詢。
+> - 會使用兩層的嵌套，這是 Azure 時間序列深入解析所支援的最大嵌套數量。 請務必避免巢狀結構很深的陣列。
 > - 量值會當做相同物件內的個別屬性來傳送，因為有幾個量值。 在本例中，**series.Flow Rate psi** 和 **series.Engine Oil Pressure ft3/s** 是唯一的資料行。
 
 ## <a name="scenario-two-several-measures-exist"></a>案例二：有數個量值存在
@@ -171,7 +169,7 @@ ms.locfileid: "81641301"
    | FYYY | pumpRate | LINE\_DATA | 美國 | 流動率 | ft3/s |
    | FYYY | oilPressure | LINE\_DATA | 美國 | 引擎機油壓力 | psi |
 
-* 在簡維之後時間序列深入解析事件資料表：
+* 在簡維之後 Azure 時間序列深入解析事件資料表：
 
    | deviceId | series.tagId | messageId | deviceLocation | 類型 | unit | timestamp | series.value |
    | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -185,7 +183,7 @@ ms.locfileid: "81641301"
 > [!NOTE]
 > - 資料行**deviceId**和**tagId**可做為車隊中各種裝置和標記的欄標題。 使用每個做為其本身的屬性，會將查詢限制為594（適用于 S1 環境）或794（適用于 S2 環境）與其他六個數據行的裝置總數。
 > - 基於第一個範例中提及的原因，已避免不必要的屬性。
-> - 參考資料是用來減少透過網路傳輸的位元組數，方法是引進**deviceId**，這會用於唯一的**messageId**和**deviceLocation**。 複合索引鍵**序列. tagId**是用於**類型**和**單位**的唯一配對。 複合索引鍵可讓**deviceId**和**tagId 組**用來參考四個值： **messageId、deviceLocation、type**和**unit**。 此資料會在輸入時與遙測資料聯結。 然後，它會儲存在時間序列深入解析以進行查詢。
+> - 參考資料是用來減少透過網路傳輸的位元組數，方法是引進**deviceId**，這會用於唯一的**messageId**和**deviceLocation**。 複合索引鍵**序列. tagId**是用於**類型**和**單位**的唯一配對。 複合索引鍵可讓**deviceId**和**tagId 組**用來參考四個值： **messageId、deviceLocation、type**和**unit**。 此資料會在輸入時與遙測資料聯結。 然後，它會儲存在 Azure 時間序列深入解析以進行查詢。
 > - 針對第一個範例中所述的原因，會使用兩層的嵌套。
 
 ### <a name="for-both-scenarios"></a>針對這兩個案例
@@ -199,6 +197,6 @@ ms.locfileid: "81641301"
 
 - 深入瞭解將[IoT 中樞裝置訊息傳送至雲端](../iot-hub/iot-hub-devguide-messages-construct.md)。
 
-- 若要深入瞭解時間序列深入解析資料存取 REST API 的查詢語法，請參閱[Azure 時間序列深入解析查詢語法](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-syntax)。
+- 若要深入瞭解 Azure 時間序列深入解析資料存取 REST API 的查詢語法，請參閱[Azure 時間序列深入解析查詢語法](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-syntax)。
 
 - 瞭解[如何塑造事件](./time-series-insights-send-events.md)。

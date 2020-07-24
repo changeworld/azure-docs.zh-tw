@@ -1,14 +1,15 @@
 ---
-title: Azure 資源記錄支援的服務和架構
+title: Azure Resource 記錄支援的服務和結構描述
 description: 瞭解 Azure 資源記錄的支援服務和事件架構。
 ms.subservice: logs
 ms.topic: reference
 ms.date: 06/15/2020
-ms.openlocfilehash: 37c4093e52caf091489c60a8cdf497cffeffe9ac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7a97afa3f960393637b8af63c56fba419f853465
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85413853"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077051"
 ---
 # <a name="common-and-service-specific-schema-for-azure-resource-logs"></a>適用于 Azure 資源記錄的通用和服務特定架構
 
@@ -22,7 +23,7 @@ ms.locfileid: "85413853"
 
 ## <a name="top-level-common-schema"></a>最上層通用架構
 
-| Name | 必要/選用 | 說明 |
+| 名稱 | 必要/選用 | 說明 |
 |---|---|---|
 | time | 必要 | 事件的時間戳記 (UTC)。 |
 | resourceId | 必要 | 發出事件之資源的資源識別碼。 對於租用戶服務，這是 /tenants/tenant-id/providers/provider-name 的格式。 |
@@ -59,7 +60,7 @@ ms.locfileid: "85413853"
 | 認知服務 | [Azure 認知服務的記錄](../../cognitive-services/diagnostic-logging.md) |
 | Container Registry | [Azure Container Registry 的記錄](../../container-registry/container-registry-diagnostics-audit-logs.md) |
 | 內容傳遞網路 | [適用于 CDN 的 Azure 記錄](../../cdn/cdn-azure-diagnostic-logs.md) |
-| CosmosDB | [Azure Cosmos DB 記錄](../../cosmos-db/logging.md) |
+| CosmosDB | [Azure Cosmos DB 記錄](../../cosmos-db/monitor-cosmos-db.md) |
 | Data Factory | [使用 Azure 監視器監視 Data factory](../../data-factory/monitor-using-azure-monitor.md) |
 | Data Lake Analytics |[存取 Azure Data Lake Analytics 的記錄](../../data-lake-analytics/data-lake-analytics-diagnostic-logs.md) |
 | Data Lake Store |[存取 Azure Data Lake 存放區的記錄](../../data-lake-store/data-lake-store-diagnostic-logs.md) |
@@ -67,13 +68,13 @@ ms.locfileid: "85413853"
 | ExpressRoute | 無法使用結構描述。 |
 | Azure 防火牆 | 無法使用結構描述。 |
 | IoT 中樞 | [IoT 中樞作業](../../iot-hub/iot-hub-monitor-resource-health.md#use-azure-monitor) |
-| Key Vault |[Azure Key Vault 記錄](../../key-vault/general/logging.md) |
+| Key Vault |[Azure 金鑰保存庫記錄](../../key-vault/general/logging.md) |
 | Kubernetes Service |[Azure Kubernetes 記錄](../../aks/view-master-logs.md#log-event-schema) |
 | Load Balancer |[Azure 負載平衡器的記錄檔分析](../../load-balancer/load-balancer-monitor-log.md) |
 | Logic Apps |[Logic Apps B2B 自訂追蹤結構描述](../../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |
 | 網路安全性群組 |[網路安全性群組 (NSG) 的記錄檔分析](../../virtual-network/virtual-network-nsg-manage-log.md) |
 | DDOS 保護 | [管理 Azure DDoS Protection Standard](../../virtual-network/manage-ddos-protection.md) |
-| Power BI 專用 | [Azure 中的 Power BI Embedded 記錄](https://docs.microsoft.com/power-bi/developer/azure-pbie-diag-logs) |
+| Power BI 專用 | [Azure 中的 Power BI Embedded 記錄](/power-bi/developer/azure-pbie-diag-logs) |
 | [復原服務] | [Azure 備份的資料模型](../../backup/backup-azure-reports-data-model.md)|
 | 搜尋 |[啟用和使用搜尋流量分析](../../search/search-traffic-analytics.md) |
 | 服務匯流排 |[Azure 服務匯流排記錄](../../service-bus-messaging/service-bus-diagnostic-logs.md) |
@@ -88,6 +89,6 @@ ms.locfileid: "85413853"
 
 * [查看您可以收集的資源記錄類別](resource-logs-categories.md)
 * [深入瞭解資源記錄](../../azure-monitor/platform/platform-logs-overview.md)
-* [將資源資源記錄串流至**事件中樞**](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)
-* [使用 Azure 監視器 REST API 變更資源記錄診斷設定](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings)
-* [使用 Log Analytics 分析來自 Azure 儲存體的記錄](../../azure-monitor/platform/collect-azure-metrics-logs.md)
+* [將資源資源記錄串流至**事件中樞**](./resource-logs.md#send-to-azure-event-hubs)
+* [使用 Azure 監視器 REST API 變更資源記錄診斷設定](/rest/api/monitor/diagnosticsettings)
+* [使用 Log Analytics 分析來自 Azure 儲存體的記錄](./resource-logs.md#send-to-log-analytics-workspace)

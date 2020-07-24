@@ -1,6 +1,6 @@
 ---
-title: Windows 虛擬桌面診斷記錄分析-Azure
-description: 如何搭配使用 log analytics 與 Windows 虛擬桌面診斷功能。
+title: Windows 虛擬桌面診斷記錄分析（秋季2019）-Azure
+description: 瞭解如何使用 log analytics 搭配 Windows 虛擬桌面（秋季2019版）診斷功能。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,14 +8,14 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: beb48b90afd54b044eb6d0ceaff32b53ebfcdc34
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c4c59268f63252813c7e08608d5d8ee499b11f53
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85205963"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077613"
 ---
-# <a name="use-log-analytics-for-the-diagnostics-feature"></a>針對診斷功能使用 Log Analytics
+# <a name="use-log-analytics-for-the-diagnostics-feature-fall-2019-release"></a>使用 Log Analytics 進行診斷功能（2019版）
 
 >[!IMPORTANT]
 >此內容適用於不支援 Azure Resource Manager Windows 虛擬桌面物件的 2019 年秋季版本。 如果您嘗試管理 2020 年春季版更新中引進的 Azure Resource Manager Windows 虛擬桌面物件，請參閱[這篇文章](../diagnostics-log-analytics.md)。

@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 3565af1f3e0a002cf3852faef9c2853ff88d46e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9ab1e2ed4aeace0ec98cb358f32a07f64c3dfea2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82691731"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075049"
 ---
 # <a name="comparing-azure-data-lake-storage-gen1-and-azure-blob-storage"></a>比較 Azure Data Lake Storage Gen1 和 Azure Blob 儲存體
 
@@ -19,8 +19,8 @@ ms.locfileid: "82691731"
 
 本文章中的表格摘要說明 Azure Data Lake Storage Gen1 與 Azure Blob 儲存體之間的差異，以及巨量資料處理的一些重要層面。 Azure Blob 儲存體是一般用途的可調整物件存放區，針對各種不同的儲存體案例所設計。 Azure Data Lake Storage Gen1 是超大規模儲存機制，已針對巨量資料分析的工作負載最佳化。
 
-|  | Azure Data Lake Storage Gen1 | Azure Blob 儲存體 |
-| --- | --- | --- |
+| 類別 | Azure Data Lake Storage Gen1 | Azure Blob 儲存體 |
+| -------- | ---------------------------- | ------------------ |
 | 目的 |適用於巨量資料分析工作負載的最佳化儲存機制 |適用於各種不同儲存體案例的一般用途物件存放區，包括巨量資料分析 |
 | 使用案例 |批次、互動式、資料流分析、機器學習的資料，例如記錄檔、IoT 資料、點擊串流、大型資料集 |任何類型的文字或二進位資料，例如應用程式後端、備份資料、串流和一般用途資料的媒體儲存體。 此外，分析工作負載的完整支援；批次、互動式、串流分析、機器學習的資料，例如記錄檔、IoT 資料、點擊串流、大型資料集 |
 | 重要概念 |Data Lake Storage Gen1 帳戶包含資料夾，其中又包含儲存為檔案的資料 |儲存體帳戶包含容器，其中又包含 Blob 形式的資料 |
@@ -40,6 +40,6 @@ ms.locfileid: "82691731"
 | 異地備援 |本機多餘（一個 Azure 區域中的多個資料複本） |本機備援 (LRS)、區域備援 (ZRS)、全域備援 (GRS)、讀取存取全域備援 (RA-GRS)。 如需詳細資訊，請參閱[這裡](../storage/common/storage-redundancy.md) |
 | 服務狀態 |正式推出 |正式推出 |
 | 區域可用性 |請參閱[這裡](https://azure.microsoft.com/regions/#services) |所有 Azure 區域均可使用 |
-| Price |請參閱 [價格](https://azure.microsoft.com/pricing/details/data-lake-store/) |請參閱 [價格](https://azure.microsoft.com/pricing/details/storage/) |
+| 價格 |請參閱[定價](https://azure.microsoft.com/pricing/details/data-lake-store/) |請參閱[定價](https://azure.microsoft.com/pricing/details/storage/) |
 
 

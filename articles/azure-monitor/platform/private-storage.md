@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/20/2020
-ms.openlocfilehash: da9ec0fc421f0cb2f2a1e6fa65d8c936cfd5a3c7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 78cdf1798d9176c9d3c7b3705a11dccde5e47e67
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86515422"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077102"
 ---
 # <a name="customer-owned-storage-accounts-for-log-ingestion-in-azure-monitor"></a>Azure 監視器中可供記錄擷取的客戶自有儲存體帳戶
 
@@ -54,7 +54,7 @@ Azure 監視器在某些資料類型的擷取程序中會使用儲存體帳戶�
 ## <a name="command-line-and-rest-api"></a>命令列和 REST API
 
 ### <a name="command-line"></a>命令列
-若要建立及管理連結的儲存體帳戶，請使用已[連結儲存體的 az monitor log analytics 工作區](/cli/azure/monitor/log-analytics/workspace/linked-storage)。 此命令可從工作區連結和取消連結儲存體帳戶，並列出連結的儲存體帳戶。
+若要建立及管理連結的儲存體帳戶，請使用已[連結儲存體的 az monitor log analytics 工作區](https://docs.microsoft.com/cli/azure/monitor/log-analytics/workspace/linked-storage)。 此命令可從工作區連結和取消連結儲存體帳戶，並列出連結的儲存體帳戶。
 
 ### <a name="request-and-cli-values"></a>要求和 CLI 值
 

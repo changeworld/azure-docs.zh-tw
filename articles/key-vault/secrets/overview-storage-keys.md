@@ -9,12 +9,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/18/2019
-ms.openlocfilehash: 58f41742519effc3959a3868345ed77c64db6341
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e8f8a333c880850b239fbaba1ea405b94a1460e8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85508498"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076739"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-the-azure-cli"></a>使用 Key Vault 和 Azure CLI 管理儲存體帳戶金鑰
 
@@ -48,7 +48,7 @@ Key Vault 是在所有 Azure AD 租使用者中預先註冊的 Microsoft 應用�
 | Azure AD | Azure 公用 | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 | 其他  | 任意 | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 若要完成本指南，您必須先執行下列動作：
 
@@ -90,7 +90,7 @@ az keyvault set-policy --name <YourKeyVaultName> --upn user@domain.com --storage
 請注意，適用於儲存體帳戶的使用權限並不會在該儲存體於 Azure 入口網站中的 [存取原則] 頁面上提供。
 ### <a name="create-a-key-vault-managed-storage-account"></a>建立 Key Vault 受控儲存體帳戶
 
- 使用 Azure CLI [az keyvault storage](/cli/azure/keyvault/storage?view=azure-cli-latest#az-keyvault-storage-add)命令來建立 Key Vault 受控儲存體帳戶。 設定90天的重新產生期間。 90天后，Key Vault 重新產生， `key1` 並將作用中的金鑰從交換 `key2` 到 `key1` 。 `key1`接著會標示為使用中的索引鍵。 提供命令下列參數值：
+ 使用 Azure CLI [az keyvault storage](/cli/azure/keyvault/storage?view=azure-cli-latest#az-keyvault-storage-add)命令來建立 Key Vault 受控儲存體帳戶。 設定90天的重新產生期間。 當您需要輪替時，KeyVault 會重新產生非作用中的金鑰，然後將新建立的金鑰設定為作用中。 只有其中一個金鑰會用來在任何時間發出 SAS 權杖，這是使用中的金鑰。 提供命令下列參數值：
 
 - `--vault-name`：傳遞金鑰保存庫的名稱。 若要尋找金鑰保存庫的名稱，請使用 Azure CLI [az keyvault list](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-list)命令。
 - `-n`：傳遞您的儲存體帳戶名稱。 若要尋找儲存體帳戶的名稱，請使用 Azure CLI [az storage account list](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-list)命令。

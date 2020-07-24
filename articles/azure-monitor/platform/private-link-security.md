@@ -6,12 +6,12 @@ ms.author: nikiest
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.subservice: ''
-ms.openlocfilehash: 14ecd1a35f8aae8365b7c7dc458712acdb894e62
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6045fa475b3bb112afee9ceacd8d6b136087feab
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85602579"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077198"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>使用 Azure 私人連結將網路安全地連線到 Azure 監視器
 
@@ -69,6 +69,23 @@ Azure 監視器私人連結範圍是一種群組資源，可將一或多個私�
 ![AMPLS A 拓撲圖表](./media/private-link-security/ampls-topology-a-1.png)
 
 ![AMPLS B 拓撲圖表](./media/private-link-security/ampls-topology-b-1.png)
+
+### <a name="consider-limits"></a>考慮限制
+
+在規劃私人連結設定時，您應該考慮幾個限制：
+
+* VNet 只能連接到1個 AMPLS 物件。 這表示 AMPLS 物件必須提供 VNet 可存取的所有 Azure 監視器資源的存取權。
+* Azure 監視器的資源（工作區或 Application Insights 元件）最多可以連接到5個 AMPLSs。
+* AMPLS 物件最多可以連接到20個 Azure 監視器資源。
+* AMPLS 物件最多可以連接到10個私人端點。
+
+在下列拓撲中：
+* 每個 VNet 會連接到1個 AMPLS 物件，因此無法連線到其他 AMPLSs。
+* AMPLS B 會連接到2個 Vnet：使用其可能的私用端點連線2/10。
+* AMPLS 會連接到2個工作區和1個 Application insights 元件：使用3/20 可能的 Azure 監視器資源。
+* 工作區2會連接到 AMPLS A 和 AMPLS B：使用2/5 的可能 AMPLS 連接。
+
+![AMPLS 限制的圖表](./media/private-link-security/ampls-limits.png)
 
 ## <a name="example-connection"></a>範例連線
 
@@ -137,13 +154,13 @@ Azure 監視器私人連結範圍是一種群組資源，可將一或多個私�
 
 ## <a name="configure-log-analytics"></a>設定 Log Analytics
 
-移至 Azure 入口網站。 在您的 Azure 監視器中，Log Analytics 工作區資源是左側的 [網路隔離] 功能表項目。 您可以從這個功能表控制兩種不同的狀態。 
+前往 Azure 入口網站。 在您的 Log Analytics 工作區資源中，左側有一個功能表項目 [**網路隔離**]。 您可以從這個功能表控制兩種不同的狀態。 
 
 ![Log Analytics 網路隔離](./media/private-link-security/ampls-log-analytics-lan-network-isolation-6.png)
 
 首先，您可以將此 Log Analytics 資源連線到您可存取的任何 Azure 監視器私人連結範圍。 按一下 [新增]，然後選取 [Azure 監視器私人連結範圍]。  按一下 [套用] 以與之連線。 所有連線的範圍都會顯示在此畫面中。 進行此連線可以使連線的虛擬網路中的網路流量連線到此工作區。 建立連線的效果與從範圍進行連線相同，如同我們在[連線 Azure 監視器資源](#connect-azure-monitor-resources)中所做的。  
 
-然後，您可以控制如何從上方所列的私人連結範圍外部連線到此資源。 如果您將 [允許擷取的公用網路存取] 設為 [否]，則連線範圍以外的電腦就無法將資料上傳到此工作區。 如果您將 [允許查詢的公用網路存取] 設為 [否]，則範圍以外的電腦就無法存取此工作區中的資料。 該資料包括對活頁簿、儀表板、以查詢 API 為基礎的用戶端體驗、Azure 入口網站中的深入解析等等的存取。 使用 Log Analytics 資料在 Azure 入口網站外執行的體驗，也必須在私人連結的 VNET 內執行。
+然後，您可以控制如何從上方所列的私人連結範圍外部連線到此資源。 如果您將 [允許擷取的公用網路存取] 設為 [否]，則連線範圍以外的電腦就無法將資料上傳到此工作區。 如果您將 [允許查詢的公用網路存取] 設為 [否]，則範圍以外的電腦就無法存取此工作區中的資料。 該資料包括對活頁簿、儀表板、以查詢 API 為基礎的用戶端體驗、Azure 入口網站中的深入解析等等的存取。 在 Azure 入口網站外執行的體驗，以及查詢 Log Analytics 資料也必須在私人連結的 VNET 內執行。
 
 以這種方式限制的存取僅適於工作區中的資料。 設定變更 (包括開啟或關閉這些存取設定) 是由 Azure Resource Manager 管理。 使用適當的角色、權限、網路控制、稽核，限制對 Resource Manager 的存取。 如需詳細資訊，請參閱 [Azure 監視器的角色、權限和安全性](roles-permissions-security.md)。
 
@@ -162,26 +179,26 @@ Azure 監視器私人連結範圍是一種群組資源，可將一或多個私�
 
 請注意，非入口網站的使用體驗也必須在包含受監視工作負載的私人連結 VNET 內執行。 
 
-您必須將裝載受監視工作負載的資源新增至私人連結。 以下是如何針對 App Service 執行此動作的[文件](https://docs.microsoft.com/azure/app-service/networking/private-endpoint)。
+您必須將裝載受監視工作負載的資源新增至私人連結。 以下是如何針對 App Service 執行此動作的[文件](../../app-service/networking/private-endpoint.md)。
 
 以這種方式限制存取僅適用於 Application Insights 資源中的資料。 設定變更 (包括開啟或關閉這些存取設定) 是由 Azure Resource Manager 管理。 因此，使用適當的角色、權限、網路控制、稽核，限制對 Resource Manager 的存取。 如需詳細資訊，請參閱 [Azure 監視器的角色、權限和安全性](roles-permissions-security.md)。
 
 > [!NOTE]
 > 若要完整保護以工作區運作的 Application Insights，必須同時鎖定對 Application Insights 資源的存取，以及對其基礎 Log Analytics 工作區的存取。
 >
-> 程式碼層級診斷（profiler/偵錯工具）需要您提供自己的儲存體帳戶，才能支援私用連結。 以下是如何執行此動作的[檔](https://docs.microsoft.com/azure/azure-monitor/app/profiler-bring-your-own-storage)。
+> 程式碼層級診斷（profiler/偵錯工具）需要您提供自己的儲存體帳戶，才能支援私用連結。 以下是如何執行此動作的[檔](../app/profiler-bring-your-own-storage.md)。
 
 ## <a name="use-apis-and-command-line"></a>使用 API 和命令列
 
 您可以使用 Azure Resource Manager 範本和命令列介面，將先前所述的程序自動化。
 
-若要建立及管理私人連結範圍，請使用 [az monitor private-link-scope](https://docs.microsoft.com/cli/azure/monitor/private-link-scope?view=azure-cli-latest)。 使用此命令，您可以建立範圍、將 Log Analytics 工作區和 Application Insights 元件建立關聯、新增/移除/核准私人端點。
+若要建立及管理私人連結範圍，請使用 [az monitor private-link-scope](/cli/azure/monitor/private-link-scope?view=azure-cli-latest)。 使用此命令，您可以建立範圍、將 Log Analytics 工作區和 Application Insights 元件建立關聯、新增/移除/核准私人端點。
 
-若要管理網路存取，請在 [Log Analytics 工作區](https://docs.microsoft.com/cli/azure/monitor/log-analytics/workspace?view=azure-cli-latest)或 [Application Insights 元件](https://docs.microsoft.com/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest)上使用 `[--ingestion-access {Disabled, Enabled}]` 和 `[--query-access {Disabled, Enabled}]` 旗標。
+若要管理網路存取，請在 [Log Analytics 工作區](/cli/azure/monitor/log-analytics/workspace?view=azure-cli-latest)或 [Application Insights 元件](/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest)上使用 `[--ingestion-access {Disabled, Enabled}]` 和 `[--query-access {Disabled, Enabled}]` 旗標。
 
 ## <a name="collect-custom-logs-over-private-link"></a>透過私人連結收集自訂記錄
 
-擷取自訂記錄的程序會使用儲存體帳戶。 根據預設，會使用服務管理的儲存體帳戶。 不過，若要在私人連結上擷取自訂記錄，您必須使用您自己的儲存體帳戶，並將其與 Log Analytics 工作區建立關聯。 請細看如需如何使用[命令列](https://docs.microsoft.com/cli/azure/monitor/log-analytics/workspace/linked-storage?view=azure-cli-latest)設定這類帳戶。
+擷取自訂記錄的程序會使用儲存體帳戶。 根據預設，會使用服務管理的儲存體帳戶。 不過，若要在私人連結上擷取自訂記錄，您必須使用您自己的儲存體帳戶，並將其與 Log Analytics 工作區建立關聯。 請細看如需如何使用[命令列](/cli/azure/monitor/log-analytics/workspace/linked-storage?view=azure-cli-latest)設定這類帳戶。
 
 如需有關自備儲存體帳戶的詳細資訊，請參閱[客戶自備儲存體帳戶的記錄擷取](private-storage.md)。
 
@@ -189,7 +206,7 @@ Azure 監視器私人連結範圍是一種群組資源，可將一或多個私�
 
 ### <a name="agents"></a>代理程式
 
-在私人網路上必須使用最新版本的 Windows 和 Linux 代理程式，才能保護 Log Analytics 工作區的遙測擷取。 較舊的版本無法在私人網路中上傳監視資料。
+您必須在私人網路上使用最新版的 Windows 和 Linux 代理程式，以啟用 Log Analytics 工作區的安全內嵌。 較舊的版本無法在私人網路中上傳監視資料。
 
 **Log Analytics Windows 代理程式**
 
@@ -210,7 +227,7 @@ $ sudo /opt/microsoft/omsagent/bin/omsadmin.sh -w <workspace id> -s <workspace k
 
 ### <a name="programmatic-access"></a>以程式設計方式存取
 
-若要在私人網路上使用 REST API、[CLI](https://docs.microsoft.com/cli/azure/monitor?view=azure-cli-latest) 或具有 Azure 監視器的 PowerShell，請在您的防火牆新增 **AzureActiveDirectory** 和 **AzureResourceManager** [服務標記](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)。
+若要在私人網路上使用 REST API、[CLI](/cli/azure/monitor?view=azure-cli-latest) 或具有 Azure 監視器的 PowerShell，請在您的防火牆新增 **AzureActiveDirectory** 和 **AzureResourceManager** [服務標記](../../virtual-network/service-tags-overview.md)。
 
 新增這些標記可讓您執行一些動作，例如查詢記錄資料、建立和管理 Log Analytics 工作區和 Application Insights 元件。
 

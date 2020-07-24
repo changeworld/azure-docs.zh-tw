@@ -1,6 +1,6 @@
 ---
-title: 監視管線執行 Azure Synapse Studio （預覽）
-description: 使用 Azure Synapse Studio 來監視您的工作區管線執行。
+title: 使用 Synapse Studio 監視管線執行
+description: 使用 Synapse Studio 來監視您的工作區管線執行。
 services: synapse-analytics
 author: matt1883
 ms.service: synapse-analytics
@@ -9,22 +9,22 @@ ms.subservice: monitoring
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: 16400d7f292ad5844add3d4a5fc019e84bd27127
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 385b06dd7756c3bebf6557f9ea0b518473a37d49
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85194887"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075891"
 ---
-# <a name="use-azure-synapse-studio-to-monitor-your-workspace-pipeline-runs"></a>使用 Azure Synapse Studio 來監視您的工作區管線執行
+# <a name="use-synapse-studio-to-monitor-your-workspace-pipeline-runs"></a>使用 Synapse Studio 來監視您的工作區管線執行
 
-透過 Azure Synapse 分析，您可以建立複雜的管線，以自動化及協調您的解決方案內的資料移動、資料轉換和計算活動。 您可以使用 Azure Synapse Studio （預覽）來撰寫和監視這些管線。
+透過 Azure Synapse 分析，您可以建立複雜的管線，以自動化及協調您的解決方案內的資料移動、資料轉換和計算活動。 您可以使用 Synapse Studio （預覽）來撰寫和監視這些管線。
 
 本文說明如何監視您的管線執行，讓您留意管線的最新狀態、問題和進度。
 
 ## <a name="access-the-list-of-pipeline-runs"></a>存取管線執行清單
 
-若要查看您工作區中的管線執行清單，請先[開啟 Azure Synapse Studio](https://web.azuresynapse.net/) ，然後選取您的工作區。
+若要查看您工作區中的管線執行清單，請先[開啟 Synapse Studio](https://web.azuresynapse.net/) ，然後選取您的工作區。
 
 ![登入工作區](./media/common/login-workspace.png)
 

@@ -8,26 +8,26 @@ ms.author: brjohnst
 ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 07/01/2020
-ms.openlocfilehash: 436c2620b83513a2b814e050b2ae6407930b082d
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.date: 07/08/2020
+ms.openlocfilehash: 5f6a198445f9c9bd8e02cd8b6df3405431263e0b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232044"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076402"
 ---
 # <a name="upgrading-versions-of-the-azure-search-net-management-sdk"></a>升級 Azure 搜尋服務 .NET Management SDK 的版本
 
 本文說明如何遷移至 Azure 搜尋服務 .NET Management SDK 的後續版本，用來布建或取消布建搜尋服務、調整容量和管理 API 金鑰。
 
-管理 Sdk 會以特定版本的管理 REST API 為目標。 如需概念和作業的詳細資訊，請參閱[搜尋管理 (REST) ](https://docs.microsoft.com/rest/api/searchmanagement/)。
+管理 Sdk 會以特定版本的管理 REST API 為目標。 如需概念和作業的詳細資訊，請參閱[搜尋管理（REST）](https://docs.microsoft.com/rest/api/searchmanagement/)。
 
 ## <a name="versions"></a>版本
 
 | SDK 版本 | 對應的 REST API 版本 | 功能新增或行為變更 |
 |-------------|--------------------------------|-------------------------------------|
-| [3.0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/3.0.0) | api 版本 = 2020-30-20 | 新增端點安全性 (IP 防火牆，並與[Azure 私用連結](../private-link/private-endpoint-overview.md)整合)  |
-| [2.0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/2.0.0) | api 版本 = 2019-10-01 | 可用性改良。 [清單查詢金鑰](https://docs.microsoft.com/rest/api/searchmanagement/querykeys/listbysearchservice)的重大變更 (GET 已) 中止。 |
+| [3.0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/3.0.0) | api 版本 = 2020-30-20 | 新增端點安全性（IP 防火牆，以及與[Azure 私人連結](../private-link/private-endpoint-overview.md)整合） |
+| [2.0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/2.0.0) | api 版本 = 2019-10-01 | 可用性改良。 [清單查詢金鑰](https://docs.microsoft.com/rest/api/searchmanagement/querykeys/listbysearchservice)的重大變更（GET 已中止）。 |
 | [1.0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/1.0.1) | api 版本 = 2015-08-19  | 第一個版本 |
 
 ## <a name="how-to-upgrade"></a>如何升級
@@ -49,10 +49,10 @@ ms.locfileid: "86232044"
 | API | 類別| 詳細資料 |
 |-----|--------|------------------|
 | [NetworkRuleSet](https://docs.microsoft.com/rest/api/searchmanagement/services/createorupdate#networkruleset) | IP 防火牆 | 將服務端點的存取限制為允許的 IP 位址清單。 如需概念和入口網站指示，請參閱[設定 IP 防火牆](service-configure-firewall.md)。 |
-| [共用的私人連結資源](https://docs.microsoft.com/rest/api/searchmanagement/sharedprivatelinkresources) | 私人連結 | 建立要供搜尋服務使用的共用私人連結資源。  |
-| [私人端點連接](https://docs.microsoft.com/rest/api/searchmanagement/privateendpointconnections) | 私人連結 | 透過私用端點來建立和管理搜尋服務的連接。 如需概念和入口網站的指示，請參閱[建立私用端點](service-create-private-endpoint.md)。|
-| [私人連結資源](https://docs.microsoft.com/rest/api/searchmanagement/privatelinkresources/) | 私人連結 | 針對具有私人端點連線的搜尋服務，取得相同虛擬網路中使用的所有服務清單。 如果您的搜尋解決方案包含從 Azure 資料來源提取的索引子 (Azure 儲存體、Cosmos DB、Azure SQL) ，或使用認知服務或 Key Vault，則這些資源都應該在虛擬網路中有端點，而此 API 應該會傳回清單。 |
-| [PublicNetworkAccess](https://docs.microsoft.com/rest/api/searchmanagement/services/createorupdate#publicnetworkaccess)| 私人連結 | 這是建立或更新服務要求的屬性。 停用時，私用連結是唯一的存取形式。 |
+| [共用的私人連結資源](https://docs.microsoft.com/rest/api/searchmanagement/sharedprivatelinkresources) | Private Link | 建立要供搜尋服務使用的共用私人連結資源。  |
+| [私人端點連接](https://docs.microsoft.com/rest/api/searchmanagement/privateendpointconnections) | Private Link | 透過私用端點來建立和管理搜尋服務的連接。 如需概念和入口網站的指示，請參閱[建立私用端點](service-create-private-endpoint.md)。|
+| [私人連結資源](https://docs.microsoft.com/rest/api/searchmanagement/privatelinkresources/) | Private Link | 針對具有私人端點連線的搜尋服務，取得相同虛擬網路中使用的所有服務清單。 如果您的搜尋解決方案包含從 Azure 資料來源（Azure 儲存體、Cosmos DB、Azure SQL）提取的索引子，或是使用認知服務或 Key Vault，則這些資源都應該在虛擬網路中有端點，而此 API 應該會傳回清單。 |
+| [PublicNetworkAccess](https://docs.microsoft.com/rest/api/searchmanagement/services/createorupdate#publicnetworkaccess)| Private Link | 這是建立或更新服務要求的屬性。 停用時，私用連結是唯一的存取形式。 |
 
 ### <a name="breaking-changes"></a>重大變更
 

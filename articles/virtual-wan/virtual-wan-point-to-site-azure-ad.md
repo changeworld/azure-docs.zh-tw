@@ -2,23 +2,23 @@
 title: 設定使用者 VPN 連線的 Azure AD 驗證：虛擬 WAN
 description: 瞭解如何設定使用者 VPN 的 Azure Active Directory 驗證。
 services: virtual-wan
-author: anzaman
+author: kumudD
 ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 03/17/2020
 ms.author: alzam
-ms.openlocfilehash: dd80724d62c71fdec81965fb4aa6a07a6233a288
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2028cae4908214db28de2545f02f5f2997eeb8af
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84753953"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077476"
 ---
 # <a name="configure-azure-active-directory-authentication-for-user-vpn"></a>設定使用者 VPN 的 Azure Active Directory 驗證
 
 本文說明如何在虛擬 WAN 中設定使用者 VPN 的 Azure AD 驗證，以透過 OpenVPN VPN 連線連接到您在 Azure 中的資源。 Azure Active Directory 驗證僅適用於使用 OpenVPN 通訊協定的閘道以及執行 Windows 的用戶端。
 
-此類型的連線需要在用戶端電腦上設定用戶端。 如需有關虛擬 WAN 的詳細資訊，請參閱[虛擬 Wan 總覽](virtual-wan-about.md)。
+此類型的連線需要在用戶端電腦上設定用戶端。 如需有關虛擬 WAN 的詳細資訊，請參閱[虛擬 WAN 概觀](virtual-wan-about.md)。
 
 在本文中，您將學會如何：
 
@@ -50,9 +50,9 @@ ms.locfileid: "84753953"
 
 透過瀏覽器瀏覽至 [Azure 入口網站](https://portal.azure.com) ，並使用您的 Azure 帳戶登入。
 
-1. 瀏覽至 [虛擬 WAN] 頁面。 在入口網站中，按一下 [+建立資源]  。 在搜尋方塊中鍵入**虛擬 WAN** 並選取 [輸入]。
-2. 從結果中選取 [虛擬 WAN]  。 在 [虛擬 WAN] 頁面中，按一下 [建立]  ，以開啟 [建立 WAN] 頁面。
-3. 在 [建立 WAN]  頁面的 [基本]  索引標籤中，填寫下列欄位：
+1. 瀏覽至 [虛擬 WAN] 頁面。 在入口網站中，按一下 [+建立資源]。 在搜尋方塊中鍵入**虛擬 WAN** 並選取 [輸入]。
+2. 從結果中選取 [虛擬 WAN]。 在 [虛擬 WAN] 頁面中，按一下 [建立]，以開啟 [建立 WAN] 頁面。
+3. 在 [建立 WAN] 頁面的 [基本] 索引標籤中，填寫下列欄位：
 
    ![虛擬 WAN](./media/virtual-wan-point-to-site-azure-ad/vwan.png)
 
@@ -61,7 +61,7 @@ ms.locfileid: "84753953"
    * **資源群組位置** - 從下拉式清單中選擇資源位置。 WAN 是全域資源，並不會在特定區域存留。 不過，您必須選取一個區域以方便管理，以及放置所建立的 WAN 資源。
    * **名稱** - 鍵入要用來稱呼 WAN 的名稱。
    * **類型：** 標準。 如果您建立基本 WAN，則只能建立基本中樞。 基本中樞只能進行 VPN 站對站連線。
-4. 填寫完欄位之後，選取 [檢閱 + 建立]  。
+4. 填寫完欄位之後，選取 [檢閱 + 建立]。
 5. 驗證通過後，選取 [建立]****，以建立虛擬 WAN。
 
 ## <a name="create-an-empty-virtual-hub"></a><a name="site"></a>建立空的虛擬中樞

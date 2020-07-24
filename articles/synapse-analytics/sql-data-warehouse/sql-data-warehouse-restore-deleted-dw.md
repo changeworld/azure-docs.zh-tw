@@ -11,12 +11,12 @@ ms.date: 08/29/2018
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f369be97c65c7d6704e61241c4455eb60166b2c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fc21dc67dd6c686eedf307660a8d8b7afd60db71
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85205130"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075851"
 ---
 # <a name="restore-a-deleted-sql-pool-using-azure-synapse-analytics"></a>使用 Azure Synapse 分析還原已刪除的 SQL 集區
 
@@ -32,7 +32,7 @@ ms.locfileid: "85205130"
 
 若要還原已刪除的 SQL 集區，請使用[set-azsqldatabase 搭配](/powershell/module/az.sql/restore-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)Cmdlet。 如果對應的伺服器也已刪除，您就無法還原該資料倉儲。
 
-1. 開始之前，請務必[安裝 Azure PowerShell](/powershell/azure/overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
+1. 開始之前，請務必[安裝 Azure PowerShell](/powershell/azure/?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
 2. 開啟 PowerShell。
 3. 連接到您的 Azure 帳戶，然後列出與您帳戶關聯的所有訂用帳戶。
 4. 選取包含要還原之已刪除 SQL 集區的訂用帳戶。
@@ -79,7 +79,7 @@ $RestoredDatabase.status
 
 4. 選取您想要還原的已刪除 SQL 資料倉儲。
 
-    ![選取已刪除的資料庫](./media/sql-data-warehouse-restore-deleted-dw/restoring-deleted-11.png)
+    ![選取 [已刪除的資料庫]](./media/sql-data-warehouse-restore-deleted-dw/restoring-deleted-11.png)
 
 5. 指定新的**資料庫名稱**，然後按一下 **[確定]**
 

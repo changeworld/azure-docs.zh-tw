@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/25/2019
-ms.openlocfilehash: 1a5a2682198f9ce9f5cb39f21e244c723ca513d9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/17/2020
+ms.openlocfilehash: 1f0fb1ee8580c0c7f6eb30228b65e0a3780ef0a8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81416658"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076793"
 ---
 # <a name="copy-data-from-salesforce-marketing-cloud-using-azure-data-factory"></a>使用 Azure Data Factory 從 Salesforce Marketing Cloud 複製資料
 
@@ -34,7 +34,7 @@ ms.locfileid: "81416658"
 
 您可以將資料從 Salesforce Marketing Cloud 複製到任何支援的接收資料存放區。 如需複製活動所支援作為來源/接收器的資料存放區清單，請參閱[支援的資料存放區](copy-activity-overview.md#supported-data-stores-and-formats)表格。
 
-Salesforce Marketing 雲端連接器支援 OAuth 2 驗證。 它建置於[Salesforce Marketing Cloud REST API](https://developer.salesforce.com/docs/atlas.en-us.mc-apis.meta/mc-apis/index-api.htm)之上。
+Salesforce Marketing 雲端連接器支援 OAuth 2 驗證，同時支援舊版和增強套件類型。 此連接器建置於[Salesforce Marketing Cloud REST API](https://developer.salesforce.com/docs/atlas.en-us.mc-apis.meta/mc-apis/index-api.htm)上。
 
 >[!NOTE]
 >此連接器不支援擷取自訂物件或自訂資料延伸模組。
@@ -52,13 +52,17 @@ Salesforce Marketing 雲端連接器支援 OAuth 2 驗證。 它建置於[Salesf
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 類型屬性必須設為：**SalesforceMarketingCloud** | 是 |
+| connectionProperties | 定義如何連接到 Salesforce 行銷雲端的一組屬性。 | 是 |
+| ***在 `connectionProperties` 下列底下：*** | | |
+| authenticationType | 指定要使用的驗證方法。 允許的值為 `Enhanced sts OAuth 2.0` 或 `OAuth_2.0` 。<br><br>Salesforce 行銷雲端舊版套件僅支援 `OAuth_2.0` ，同時增強套件需求 `Enhanced sts OAuth 2.0` 。 <br>自2019年8月1日起，Salesforce 行銷雲端已移除建立舊版套件的能力。 所有新的封裝都是增強的封裝。 | 是 |
+| 主機 | 針對增強套件，主機應該是以字母 "mc" 開頭的28個字元字串表示的[子域](https://developer.salesforce.com/docs/atlas.en-us.mc-apis.meta/mc-apis/your-subdomain-tenant-specific-endpoints.htm)，例如 `mc563885gzs27c5t9-63k636ttgm` 。 <br>若是舊版套件，請指定 `www.exacttargetapis.com` 。 | 是 |
 | clientId | 與 Salesforce Marketing Cloud 應用程式相關聯的用戶端識別碼。  | 是 |
-| clientSecret | 與 Salesforce Marketing Cloud 應用程式相關聯的用戶端密碼。 您可以選擇將這個欄位標記為 SecureString 以將它安全地儲存在 ADF，或將密碼儲存在 Azure Key Vault，然後在執行複製資料時，讓 ADF 複製活動從該處提取 - 請參閱[將認證儲存在 Key Vault](store-credentials-in-key-vault.md) 以進一步了解。 | 是 |
+| clientSecret | 與 Salesforce Marketing Cloud 應用程式相關聯的用戶端密碼。 您可以選擇將此欄位標記為 SecureString 以將它安全地儲存在 ADF，或將密碼儲存在 Azure Key Vault 中，然後在執行資料複製時，讓 ADF 複製活動從該處提取; 若要深入瞭解，請前往[Key Vault 中的儲存認證](store-credentials-in-key-vault.md)。 | 是 |
 | useEncryptedEndpoints | 指定是否使用 HTTPS 來加密資料來源端點。 預設值為 true。  | 否 |
 | useHostVerification | 指定在透過 TLS 連線時，是否要求伺服器憑證中的主機名稱符合伺服器的主機名稱。 預設值為 true。  | 否 |
 | usePeerVerification | 指定在透過 TLS 連接時，是否要確認伺服器的身分識別。 預設值為 true。  | 否 |
 
-**範例︰**
+**範例：針對增強套件使用增強的 STS OAuth 2 驗證** 
 
 ```json
 {
@@ -66,14 +70,66 @@ Salesforce Marketing 雲端連接器支援 OAuth 2 驗證。 它建置於[Salesf
     "properties": {
         "type": "SalesforceMarketingCloud",
         "typeProperties": {
-            "clientId" : "<clientId>",
+            "connectionProperties": {
+                "host": "<subdomain e.g. mc563885gzs27c5t9-63k636ttgm>",
+                "authenticationType": "Enhanced sts OAuth 2.0",
+                "clientId": "<clientId>",
+                "clientSecret": {
+                     "type": "SecureString",
+                     "value": "<clientSecret>"
+                },
+                "useEncryptedEndpoints": true,
+                "useHostVerification": true,
+                "usePeerVerification": true
+            }
+        }
+    }
+}
+
+```
+
+**範例：針對舊版套件使用 OAuth 2 驗證** 
+
+```json
+{
+    "name": "SalesforceMarketingCloudLinkedService",
+    "properties": {
+        "type": "SalesforceMarketingCloud",
+        "typeProperties": {
+            "connectionProperties": {
+                "host": "www.exacttargetapis.com",
+                "authenticationType": "OAuth_2.0",
+                "clientId": "<clientId>",
+                "clientSecret": {
+                     "type": "SecureString",
+                     "value": "<clientSecret>"
+                },
+                "useEncryptedEndpoints": true,
+                "useHostVerification": true,
+                "usePeerVerification": true
+            }
+        }
+    }
+}
+
+```
+
+如果您使用具有下列承載的 Salesforce Marketing Cloud 已連結服務，則仍會依其支援，但建議您使用新的，這會新增增強的封裝支援。
+
+```json
+{
+    "name": "SalesforceMarketingCloudLinkedService",
+    "properties": {
+        "type": "SalesforceMarketingCloud",
+        "typeProperties": {
+            "clientId": "<clientId>",
             "clientSecret": {
                  "type": "SecureString",
                  "value": "<clientSecret>"
             },
-            "useEncryptedEndpoints" : true,
-            "useHostVerification" : true,
-            "usePeerVerification" : true
+            "useEncryptedEndpoints": true,
+            "useHostVerification": true,
+            "usePeerVerification": true
         }
     }
 }

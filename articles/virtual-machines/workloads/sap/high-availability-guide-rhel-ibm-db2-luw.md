@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/13/2020
 ms.author: juergent
-ms.openlocfilehash: 1a00a3c1e0d34a8c7abbcd5bfc7a6771d9e2a4c3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 527d9e2e43a4003dd5300c26fc58b1e456186351
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82983035"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077387"
 ---
 # <a name="high-availability-of-ibm-db2-luw-on-azure-vms-on-red-hat-enterprise-linux-server"></a>Red Hat Enterprise Linux Server 上 Azure VM 的 IBM Db2 LUW 高可用性
 
@@ -32,7 +33,7 @@ ms.locfileid: "82983035"
 
 在開始安裝之前，請參閱下列 SAP 附注和檔：
 
-| SAP 附注 | Description |
+| SAP 附注 | 說明 |
 | --- | --- |
 | [1928533] | Azure 上的 SAP 應用程式：支援的產品和 Azure VM 類型 |
 | [2015553] | Azure 上的 SAP：支援必要條件 |
@@ -66,7 +67,7 @@ ms.locfileid: "82983035"
 
 
 ## <a name="overview"></a>總覽
-為了達到高可用性，IBM Db2 LUW with HADR 會安裝在至少兩個 Azure 虛擬機器上，它們會部署在[azure 可用性設定組](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets)或跨[Azure 可用性區域](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ha-availability-zones)。 
+為了達到高可用性，IBM Db2 LUW with HADR 會安裝在至少兩個 Azure 虛擬機器上，它們會部署在[azure 可用性設定組](../../windows/tutorial-availability-sets.md)或跨[Azure 可用性區域](./sap-ha-availability-zones.md)。 
 
 下列圖形顯示兩個資料庫伺服器 Azure Vm 的設定。 這兩個資料庫伺服器 Azure Vm 都有自己的儲存體，且已啟動並執行。 在 HADR 中，其中一個 Azure Vm 中的一個資料庫實例具有主要實例的角色。 所有用戶端都會連接到主要實例。 資料庫交易中的所有變更都會保存在 Db2 交易記錄檔的本機。 當交易記錄檔記錄在本機保存時，記錄會透過 TCP/IP 傳輸到第二個資料庫伺服器、待命伺服器或待命實例上的資料庫實例。 待命實例會藉由向前復原已傳送的交易記錄檔記錄來更新本機資料庫。 如此一來，待命伺服器就會與主伺服器保持同步。
 
@@ -397,10 +398,10 @@ Daemon 狀態： corosync：作用中/已停用的 pacemaker： active/disabled 
 
 
 ### <a name="configure-azure-load-balancer"></a>設定 Azure 負載平衡器
-若要設定 Azure Load Balancer，建議使用[Azure STANDARD LOAD BALANCER SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview) ，然後執行下列動作：
+若要設定 Azure Load Balancer，建議使用[Azure STANDARD LOAD BALANCER SKU](../../../load-balancer/load-balancer-overview.md) ，然後執行下列動作：
 
 > [!NOTE]
-> Standard Load Balancer SKU 有從 Load Balancer 之下的節點存取公用 IP 位址的限制。 在[SAP 高可用性案例中使用 Azure Standard Load Balancer 虛擬機器的公用端點](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)連線一文說明如何讓這些節點存取公用 IP 位址的方式
+> Standard Load Balancer SKU 有從 Load Balancer 之下的節點存取公用 IP 位址的限制。 在[SAP 高可用性案例中使用 Azure Standard Load Balancer 虛擬機器的公用端點](./high-availability-guide-standard-load-balancer-outbound-connections.md)連線一文說明如何讓這些節點存取公用 IP 位址的方式
 
 
 
@@ -506,11 +507,11 @@ j2ee/dbhost = db-virt-hostname
 
 我們建議您設定通用 NFS 共用或 GlusterFS，其中記錄是從兩個節點寫入。 NFS 共用或 GlusterFS 必須具有高度可用性。 
 
-您可以使用現有的高可用性 NFS 共用或 GlusterFS 來進行傳輸或設定檔目錄。 如需詳細資訊，請參閱：
+您可以使用現有的高可用性 NFS 共用或 GlusterFS 來進行傳輸或設定檔目錄。 如需詳細資訊，請參閱
 
 - [Red Hat Enterprise Linux for SAP NetWeaver 上適用於 Azure VM 的 GlusterFS][glusterfs] 
 - [Red Hat Enterprise Linux 上的 Azure Vm 上的 SAP NetWeaver 高可用性與適用于 SAP 應用程式的 Azure NetApp Files][anf-rhel]
-- [Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-introduction) （用來建立 NFS 共用）
+- [Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-introduction.md) （用來建立 NFS 共用）
 
 ## <a name="test-the-cluster-setup"></a>測試叢集設定
 
@@ -815,7 +816,7 @@ rsc_st_azure    (stonith:fence_azure_arm):      Started az-idb02
      nc_db2id2_ID2      (ocf::heartbeat:azure-lb):      Started az-idb02</code></pre>
 
 ## <a name="next-steps"></a>後續步驟
-- [SAP NetWeaver 的高可用性架構和案例](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-architecture-scenarios)
+- [SAP NetWeaver 的高可用性架構和案例](./sap-high-availability-architecture-scenarios.md)
 - [在 Azure 中的 Red Hat Enterprise Linux 上設定 Pacemaker][rhel-pcs-azr]
 
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533

@@ -5,15 +5,15 @@ services: virtual-desktop
 author: heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 07/10/2020
+ms.date: 07/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 9b1bdfc326ff217e68785d823b4af046af3241b7
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 9f7a3b51afa11562123a280da8634e100a22e6b6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86225069"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075615"
 ---
 # <a name="safe-url-list"></a>安全 URL 清單
 
@@ -33,6 +33,7 @@ ms.locfileid: "86225069"
 |catalogartifact.azureedge.net|443|Azure Marketplace|AzureCloud|
 |kms.core.windows.net|1688|Windows 啟用|Internet|
 |wvdportalstorageblob.blob.core.windows.net|443|Azure 入口網站支援|AzureCloud|
+| 169.254.169.254 | 80 | [Azure 實例中繼資料服務端點](../virtual-machines/windows/instance-metadata-service.md) | 不適用 |
 
 >[!IMPORTANT]
 >Windows 虛擬桌面現在支援 FQDN 標記。 如需詳細資訊，請參閱[使用 Azure 防火牆來保護 Windows 虛擬桌面部署](../firewall/protect-windows-virtual-desktop.md)。
@@ -59,8 +60,8 @@ ms.locfileid: "86225069"
 >對於涉及服務流量的 URL，必須使用萬用字元 (*)。 如果您不想使用 * 來表示代理程式相關流量，下列方法可讓您不使用萬用字元來尋找 URL：
 >
 >1. 向 Windows 虛擬桌面主機集區註冊您的虛擬機器。
->2. 開啟 [**事件檢視器]**，然後移至 [ **Windows 記錄**] [  >  **應用程式**  >  **WVD** ]，並尋找事件識別碼3702。
->3. 將您在事件識別碼 3702 下找到的 URL 列入白名單中。 事件識別碼 3702 下的 URL 會隨區域而不同。 您必須針對您想要在其中部署虛擬機器的每個區域，使用相關的 Url 來重複解除封鎖處理常式。
+>2. 開啟 [**事件檢視器]**，然後移至 [ **Windows 記錄**] [  >  **應用程式**  >  **WVD** ]，並尋找事件識別碼3701。
+>3. 將您在 [事件識別碼 3701] 下找到的 Url 列入白名單。 事件識別碼3701下的 Url 是區域特定的。 您必須針對您想要在其中部署虛擬機器的每個區域，使用相關的 Url 來重複解除封鎖處理常式。
 
 ## <a name="remote-desktop-clients"></a>遠端桌面用戶端
 
