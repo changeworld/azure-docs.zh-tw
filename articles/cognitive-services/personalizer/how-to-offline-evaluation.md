@@ -3,19 +3,17 @@ title: 如何執行離線評估-個人化工具
 titleSuffix: Azure Cognitive Services
 description: 本文將說明如何使用離線評估來測量應用程式的有效性，並分析您的學習迴圈。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: how-to
 ms.date: 02/20/2020
-ms.author: diberry
-ms.openlocfilehash: 2fa4e47f600737c9bff5dbff4dd743946b4e82aa
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: d1e11ffcb96bc233604464e90edb7dd42578bf08
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84342148"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132699"
 ---
 # <a name="analyze-your-learning-loop-with-an-offline-evaluation"></a>使用離線評估來分析您的學習迴圈
 

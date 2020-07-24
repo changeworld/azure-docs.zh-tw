@@ -3,19 +3,17 @@ title: Batch 測試 TSV 格式-QnA Maker
 titleSuffix: Azure Cognitive Services
 description: 瞭解批次測試的 TSV 格式
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 10/24/2019
-ms.author: diberry
-ms.openlocfilehash: dccf034b6497651db70b6cc09fff3f1b1d645a1b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0ed948b4bf69fc672a59a7825279a12868d10521
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73501032"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132120"
 ---
 # <a name="batch-testing-tsv-format"></a>Batch 測試 TSV 格式
 
@@ -48,13 +46,13 @@ batchtesting.exe input.tsv https://YOUR-HOST.azurewebsites.net ENDPOINT-KEY out.
 
 ## <a name="tsv-output-fields"></a>TSV 輸出欄位 
 
-|TSV 輸出檔案參數|備忘錄|
+|TSV 輸出檔案參數|附註|
 |--|--|
 |KBID|您在 [發佈] 頁面上找到您的知識庫識別碼。|
 |問題|從輸入檔輸入的問題。|
-|Answer|您的知識庫中的最佳解答。|
+|回答|您的知識庫中的最佳解答。|
 |解答識別碼|解答識別碼|
-|分數|答案的預測分數。 |
+|Score|答案的預測分數。 |
 |中繼資料標記|與傳回的答案相關聯|
 |預期答案的識別碼|選擇性（僅在指定預期的解答識別碼時）|
 |判斷標籤|選擇性，值可能是：正確或不正確（僅限指定了預期的答案）|

@@ -3,18 +3,16 @@ title: 認知服務和 Machine Learning
 titleSuffix: Azure Cognitive Services
 description: 了解 Microsoft 認知服務如何與其他機器學習相關的 Azure 供應項目搭配使用。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 08/22/2019
-ms.author: diberry
-ms.openlocfilehash: c8480557d0f27594fa369e4e2451a5d0fe7ad3cc
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 0b034d0135c66852b07e0a2ed2fd69e8c3fdc4a6
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856729"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132835"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>認知服務和機器學習
 
@@ -25,8 +23,8 @@ ms.locfileid: "85856729"
 |服務類別|目的|
 |--|--|
 |[決策](https://azure.microsoft.com/services/cognitive-services/directory/decision/)|建置應用程式，以顯示有助於做出明智與高效決策的建議。|
-|[語言](https://azure.microsoft.com/services/cognitive-services/directory/lang/)|允許您的應用程式使用預先建立的指令碼處理自然語言、評估情感，以及了解如何辨識使用者想要的內容。|
-|[搜尋](https://azure.microsoft.com/services/cognitive-services/directory/search/)|將 Bing 搜尋 API 新增至您的應用程式，並充分利用以單一 API 呼叫合併數十億個網頁、影像、影片和新聞的能力。|
+|[語言](https://azure.microsoft.com/services/cognitive-services/directory/lang/)|可讓您的應用程式使用預先建置的指令碼處理自然語言、評估情感，以及了解如何辨識使用者想要的內容。|
+|[搜尋](https://azure.microsoft.com/services/cognitive-services/directory/search/)|將 Bing 搜尋 API 新增至您的應用程式，並透過單一 API 呼叫，充分利用搜查數十億個網頁、影像、視訊和新聞的能力。|
 |[語音](https://azure.microsoft.com/services/cognitive-services/directory/speech/)|將語音轉換成文字，並將文字轉換成自然發音語音。 從一種語言翻譯成另一種語言，並啟用說話者驗證和辨識。|
 |[視覺](https://azure.microsoft.com/services/cognitive-services/directory/vision/)|辨識、識別、仲裁您的圖片、影片和數位筆跡內容，並為其製作標題及編製索引。|
 ||||
@@ -91,7 +89,7 @@ ms.locfileid: "85856729"
 
 |認知服務|不需要定型資料|您提供部分或所有定型資料|即時或近乎即時的資料收集|
 |--|--|--|--|
-|[Anomaly Detector](./Anomaly-Detector/overview.md)|x|x|x|
+|[異常偵測器](./Anomaly-Detector/overview.md)|x|x|x|
 |Bing 搜尋 |x|||
 |[電腦視覺](./Computer-vision/Home.md)|x|||
 |[內容仲裁](./Content-Moderator/overview.md)|x||x|
@@ -100,7 +98,7 @@ ms.locfileid: "85856729"
 |[表單辨識器](./form-recognizer/overview.md)||x||
 |[沈浸式閱讀程式](./immersive-reader/overview.md)|x|||
 |[筆跡辨識器](./Ink-recognizer/overview.md)|x|x||
-|[語言理解 (LUIS)](./LUIS/what-is-luis.md)||x||
+|[Language Understanding （LUIS）](./LUIS/what-is-luis.md)||x||
 |[個人化工具](./personalizer/what-is-personalizer.md)|x*|x*|x|
 |[QnA Maker](./QnAMaker/Overview/overview.md)||x||
 |[說話者辨識器](./speaker-recognition/home.md)||x||

@@ -3,20 +3,18 @@ title: 知識庫上的分析-QnA Maker
 titleSuffix: Azure Cognitive Services
 description: 如果您在 QnA Maker 服務建立期間啟用 App Insights，QnA Maker 會儲存所有交談記錄和其他遙測。 執行範例查詢，從 App Insights 取得您的交談記錄。
 services: cognitive-services
-author: diberry
 manager: nitinme
 displayName: chat history, history, chat logs, logs
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/05/2019
-ms.author: diberry
-ms.openlocfilehash: d247c55112bc1c3cd921c0eda8e4ddadd6b5aed9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 00b7b88aa4ce0cab2a2379756e40054f27fc633b
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80878063"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131645"
 ---
 # <a name="get-analytics-on-your-knowledge-base"></a>取得知識庫的分析
 
@@ -44,7 +42,7 @@ ms.locfileid: "80878063"
     | project timestamp, resultCode, duration, id, question, answer, score, performanceBucket,KbId
     ```
 
-    選取 [執行]**** 執行查詢。
+    選取 [執行] 執行查詢。
 
     [![執行查詢以判斷使用者的問題、解答和分數](../media/qnamaker-how-to-analytics-kb/run-query.png)](../media/qnamaker-how-to-analytics-kb/run-query.png#lightbox)
 

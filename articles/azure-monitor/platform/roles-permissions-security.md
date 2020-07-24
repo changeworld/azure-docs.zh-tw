@@ -7,11 +7,12 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: 86314fd5bfe103cef8332ee3113f46fb0e39dafc
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 4ffbe10a1f9a1629c74c144b8773a7de89890576
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836357"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132002"
 ---
 # <a name="roles-permissions-and-security-in-azure-monitor"></a>Azure 監視器中的角色、權限與安全性
 
@@ -27,10 +28,10 @@ Azure 監視器的內建角色是專為協助限制存取訂用帳戶中的資�
 
 * 在入口網站中檢視監視儀表板，並建立自己的私人監視儀表板。
 * 檢視 [Azure 警示](alerts-overview.md)中定義的警示規則
-* 使用 [Azure 監視器 REST API](https://msdn.microsoft.com/library/azure/dn931930.aspx)、[PowerShell cmdlets](powershell-quickstart-samples.md) 或[跨平台 CLI](../samples/cli-samples.md) 查詢度量。
+* 使用 [Azure 監視器 REST API](/rest/api/monitor/metrics)、[PowerShell cmdlets](../samples/powershell-samples.md) 或[跨平台 CLI](../samples/cli-samples.md) 查詢度量。
 * 使用入口網站、Azure 監視器 REST API、PowerShell Cmdlets 或跨平台 CLI 查詢活動記錄檔。
 * 檢視用於資源的 [診斷設定](diagnostic-settings.md) 。
-* 檢視用於訂用帳戶的 [記錄檔設定檔](activity-log-export.md) 。
+* 檢視用於訂用帳戶的 [記錄檔設定檔](./activity-log.md#legacy-collection-methods) 。
 * 檢視自動調整設定。
 * 檢視警示活動和設定。
 * 存取 Application Insights 資料，並檢視 AI 分析中的資料。
@@ -51,7 +52,7 @@ Azure 監視器的內建角色是專為協助限制存取訂用帳戶中的資�
 
 * 將監視儀表板發佈為共用儀表板。
 * 設定用於資源的[診斷設定](diagnostic-settings.md)。\*
-* 設定用於訂用帳戶的[記錄檔設定檔](activity-log-export.md)。\*
+* 設定用於訂用帳戶的[記錄檔設定檔](./activity-log.md#legacy-collection-methods)。\*
 * 透過 [Azure 警示](alerts-overview.md)設定警示規則活動和設定。
 * 建立 Application Insights web 測試和元件。
 * 列出 Log Analytics 工作區共用金鑰。
@@ -66,8 +67,8 @@ Azure 監視器的內建角色是專為協助限制存取訂用帳戶中的資�
 > 
 > 
 
-## <a name="monitoring-permissions-and-custom-rbac-roles"></a>監視權限和自訂的 RBAC 角色
-如果上述的內建角色不符合您團隊的確切需求，您可以使用更精確的權限 [建立自訂的 RBAC 角色](../../role-based-access-control/custom-roles.md) 。 以下是一般 Azure 監視器 RBAC 作業及其說明。
+## <a name="monitoring-permissions-and-azure-custom-roles"></a>監視許可權和 Azure 自訂角色
+如果上述的內建角色不符合小組的確切需求，您可以建立具有更細微許可權的[Azure 自訂角色](../../role-based-access-control/custom-roles.md)。 以下是一般 Azure 監視器 RBAC 作業及其說明。
 
 | 作業 | 描述 |
 | --- | --- |
@@ -96,7 +97,7 @@ Azure 監視器的內建角色是專為協助限制存取訂用帳戶中的資�
 > 
 > 
 
-例如，您可以使用上述資料表針對「活動記錄檔讀取器」建立如下的自訂 RBAC 角色︰
+例如，您可以使用上表來建立「活動記錄讀取器」的 Azure 自訂角色，如下所示：
 
 ```powershell
 $role = Get-AzRoleDefinition "Reader"
@@ -125,7 +126,7 @@ New-AzRoleDefinition -Role $role
 * 當使用者只需要存取監視資料時，切勿針對訂用帳戶範圍內的儲存體帳戶或事件中樞授與 ListKeys 權限。 反之，對資源或資源群組 (如果您有專用的監視資源群組) 範圍內的使用者授與這些權限。
 
 ### <a name="limiting-access-to-monitoring-related-storage-accounts"></a>限制存取監控相關的儲存體帳戶
-當使用者或應用程式需要存取儲存體帳戶中的監視資料時，您應該在包含具有 Blob 儲存體服務層級唯讀存取權的監視資料儲存體帳戶上 [產生帳戶 SAS](https://msdn.microsoft.com/library/azure/mt584140.aspx) 。 在 PowerShell 中，它看起來應該如下所示：
+當使用者或應用程式需要存取儲存體帳戶中的監視資料時，您應該在包含具有 Blob 儲存體服務層級唯讀存取權的監視資料儲存體帳戶上 [產生帳戶 SAS](/rest/api/storageservices/create-account-sas) 。 在 PowerShell 中，它看起來應該如下所示：
 
 ```powershell
 $context = New-AzStorageContext -ConnectionString "[connection string for your monitoring Storage Account]"
@@ -134,7 +135,7 @@ $token = New-AzStorageAccountSASToken -ResourceType Service -Service Blob -Permi
 
 接著，您可將權杖提供給需要從該儲存體帳戶進行讀取的實體，且它可以從該儲存體帳戶中的所有 blob 進行列出並讀取。
 
-或者，如果您需要使用 RBAC 控制此權限，可以在該特定儲存體帳戶上對該實體授與 Microsoft.Storage/storageAccounts/listkeys/action 權限。 對於需要設定診斷設定或記錄檔設定檔以封存至儲存體帳戶的使用者而言，這是必要的。 例如，針對只需要從一個儲存體帳戶進行讀取的使用者或應用程式，您可以建立下列自訂 RBAC 角色︰
+或者，如果您需要使用 RBAC 控制此權限，可以在該特定儲存體帳戶上對該實體授與 Microsoft.Storage/storageAccounts/listkeys/action 權限。 對於需要設定診斷設定或記錄檔設定檔以封存至儲存體帳戶的使用者而言，這是必要的。 例如，您可以針對只需要從一個儲存體帳戶讀取的使用者或應用程式，建立下列 Azure 自訂角色：
 
 ```powershell
 $role = Get-AzRoleDefinition "Reader"
@@ -188,5 +189,3 @@ Azure 監視器需要存取您的 Azure 資源，才能提供您啟用的服務�
 ## <a name="next-steps"></a>後續步驟
 * [深入了解 RBAC 和 Resource Manager 中的權限](../../role-based-access-control/overview.md)
 * [閱讀 Azure 中的監視概觀](../../azure-monitor/overview.md)
-
-

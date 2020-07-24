@@ -10,12 +10,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 02/20/2020
 ms.reviewer: ''
-ms.openlocfilehash: 8104302afa84446e2d57c7156f33bc0160e31472
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 00369ae45a13414ce46f324e37afe24be24a48e0
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85986772"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132937"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>使用 Azure SQL Database 和 Azure SQL 受控執行個體解決常見安全性需求的腳本
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -228,10 +228,10 @@ SQL 驗證指的是使用使用者名稱和密碼連接到 Azure SQL Database �
 - 在 SQL 資料庫中：
   - 使用細微許可權和使用者定義資料庫角色（或受控執行個體中的伺服器角色）：
     1. 建立所需的角色
-       - [建立角色](https://docs.microsoft.com/sql/t-sql/statements/create-role-transact-sql)
+       - [CREATE ROLE](https://docs.microsoft.com/sql/t-sql/statements/create-role-transact-sql)
        - [CREATE SERVER ROLE](https://docs.microsoft.com/sql/t-sql/statements/create-server-role-transact-sql)
     1. 建立必要的使用者
-       - [建立使用者](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql)
+       - [CREATE USER](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql)
     1. 將使用者新增為角色的成員
        - [ALTER ROLE](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql)
        - [ALTER SERVER ROLE](https://docs.microsoft.com/sql/t-sql/statements/alter-server-role-transact-sql)
@@ -240,9 +240,9 @@ SQL 驗證指的是使用使用者名稱和密碼連接到 Azure SQL Database �
   - 請務必不要將使用者指派給不必要的角色。
 
 - 在 Azure Resource Manager：
-  - 使用內建角色（如果可用）或自訂 RBAC 角色，並指派必要的許可權。
-    - [Azure 的內建角色](../../role-based-access-control/built-in-roles.md)
-    - [適用於 Azure 資源的自訂角色](../../role-based-access-control/custom-roles.md)
+  - 使用內建角色（如果可用）或 Azure 自訂角色，並指派必要的許可權。
+    - [Azure 內建角色](../../role-based-access-control/built-in-roles.md) (機器翻譯)
+    - [Azure 自訂角色](../../role-based-access-control/custom-roles.md) (機器翻譯)
 
 **最佳做法**：
 
@@ -291,7 +291,7 @@ SQL 驗證指的是使用使用者名稱和密碼連接到 Azure SQL Database �
 - 識別存取系統的完整使用者（和自動化進程）階層。
 
 - 根據所需的使用者群組建立角色，並將許可權指派給角色。
-  - 針對 Azure 入口網站中的管理層級工作，或透過 PowerShell-自動化會使用 RBAC 角色。 尋找符合需求的內建角色，或使用可用的許可權建立自訂的 RBAC 角色
+  - 針對 Azure 入口網站中的管理層級工作，或透過 PowerShell-自動化會使用 RBAC 角色。 尋找符合需求的內建角色，或使用可用的許可權建立 Azure 自訂角色
   - 在受控實例中建立伺服器範圍工作（建立新的登入、資料庫）的伺服器角色。
   - 建立資料庫層級工作的資料庫角色。
 
@@ -342,8 +342,8 @@ SQL 驗證指的是使用使用者名稱和密碼連接到 Azure SQL Database �
   - [簽署預存程式](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/signing-stored-procedures-in-sql-server)
 
 - 針對 Azure 資源管理：
-  - [Azure 的內建角色](../../role-based-access-control/built-in-roles.md)
-  - [適用於 Azure 資源的自訂角色](../../role-based-access-control/custom-roles.md)
+  - [Azure 內建角色](../../role-based-access-control/built-in-roles.md) (機器翻譯)
+  - [Azure 自訂角色](../../role-based-access-control/custom-roles.md) (機器翻譯)
   - [使用 Azure AD Privileged Identity Management 提升存取權](https://www.microsoft.com/itshowcase/using-azure-ad-privileged-identity-management-for-elevated-access)
 
 ### <a name="perform-regular-code-reviews"></a>執行一般程式碼審查

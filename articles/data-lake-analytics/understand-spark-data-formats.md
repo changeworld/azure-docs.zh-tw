@@ -1,19 +1,17 @@
 ---
 title: 瞭解 Azure Data Lake Analytics U-SQL 開發人員的 Apache Spark 資料格式。
 description: 本文說明 Apache Spark 的概念，以協助 U_SQL 的開發人員瞭解 U-SQL 與 Spark 資料格式之間的差異。
-author: guyhay
-ms.author: guyhay
 ms.reviewer: jasonh
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.custom: understand-apache-spark-data-formats
 ms.date: 01/31/2019
-ms.openlocfilehash: ed929b9dd6d262d63554ef3df59d3e3806dd28dc
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: bff8c89dcdcbb7c319e04e5e7518985badf5a5ff
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86106419"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132308"
 ---
 # <a name="understand-differences-between-u-sql-and-spark-data-formats"></a>瞭解 U-SQL 與 Spark 資料格式之間的差異
 
@@ -50,7 +48,7 @@ Spark 不了解 U-SQL 資料表。 如果您將資料儲存在 U-SQL 資料表�
 
 - [瞭解適用于 U-SQL 開發人員的 Spark 程式碼概念](understand-spark-code-concepts.md)
 - [將您的巨量資料分析解決方案從 Azure Data Lake Storage Gen1 升級為 Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-upgrade.md)
-- [適用於 Apache Spark 的 .NET](https://docs.microsoft.com/dotnet/spark/what-is-apache-spark-dotnet)
+- [.NET for Apache Spark](https://docs.microsoft.com/dotnet/spark/what-is-apache-spark-dotnet)
 - [使用 Azure Data Factory 中的 Spark 活動轉換資料](../data-factory/transform-data-using-spark.md)
 - [使用 Azure Data Factory 中的 Hadoop Hive 活動轉換資料](../data-factory/transform-data-using-hadoop-hive.md)
 - [什麼是 Azure HDInsight 中的 Apache Spark](../hdinsight/spark/apache-spark-overview.md)

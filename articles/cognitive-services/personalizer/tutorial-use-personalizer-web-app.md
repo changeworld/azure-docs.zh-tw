@@ -3,13 +3,12 @@ title: 使用 Web 應用程式 - 個人化工具
 description: 使用個人化工具迴圈自訂 C# .Net Web 應用程式，以根據動作 (具有特性) 和內容特性來提供正確內容給使用者。
 ms.topic: tutorial
 ms.date: 06/10/2020
-ms.author: diberry
-ms.openlocfilehash: 9514e92432c2be5441dec5ff998a9deede35d7f4
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: b8b5c005f7003f9b0d9ac228c5a5961c80c85599
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207607"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133124"
 ---
 # <a name="tutorial-add-personalizer-to-a-net-web-app"></a>教學課程：將個人化工具新增至 .NET Web 應用程式
 

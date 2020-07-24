@@ -3,19 +3,17 @@ title: 增強式學習 - 個人化工具
 titleSuffix: Azure Cognitive Services
 description: 個人化工具會使用動作和目前內容的相關資訊來提出更好的排名建議。 這些動作和內容的相關資訊是稱為特性的屬性或內容。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/07/2019
-ms.author: diberry
-ms.openlocfilehash: 36071cdee25cfa99fc54b0e5c0c0aa822cb5fe2f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8b97221de4921e06ddfab610618f37683b990181
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68662827"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132733"
 ---
 # <a name="what-is-reinforcement-learning"></a>增強式學習是什麼？
 

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 06/09/2020
 ms.author: surmb
-ms.openlocfilehash: b5524d0612bf8f5d69979a8392f664e417c5f98d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 531a7fd8547130b4897f3dad0900e1c27fb7fe9a
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84808184"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132036"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>針對應用程式閘道中的後端健康情況問題進行疑難排解
 ==================================================
@@ -176,7 +176,7 @@ BackendAddressPoolsText : [
 
 | **錯誤** | **動作** |
 | --- | --- |
-| 探查狀態碼不相符：收到 401 | 檢查後端伺服器是否需要驗證。 應用程式閘道探查此時無法傳遞驗證所需的認證。 在探查狀態碼相符中允許 \"HTTP 401\"，或探查至伺服器不需要驗證的路徑。 | |
+| 探查狀態碼不相符：收到 401 | 檢查後端伺服器是否需要驗證。 應用程式閘道探查無法傳遞認證以進行驗證。 在探查狀態碼相符中允許 \"HTTP 401\"，或探查至伺服器不需要驗證的路徑。 | |
 | 探查狀態碼不相符：收到 403 | 禁止存取。 檢查後端伺服器上是否允許存取路徑。 | |
 | 探查狀態碼不相符：收到 404 | 找不到頁面。 檢查後端伺服器上的主機名稱路徑是否可存取。 將主機名稱或路徑參數變更為可存取的值。 | |
 | 探查狀態碼不相符：收到 405 | 應用程式閘道的探查要求會使用 HTTP GET 方法。 檢查您的伺服器是否允許此方法。 | |

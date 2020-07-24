@@ -1,19 +1,19 @@
 ---
 title: 使用 Azure 地圖服務 Android SDK 來設定地圖樣式 |Microsoft Azure 對應
 description: 在本文中，您將瞭解 Android SDK 的 Microsoft Azure Maps 樣式相關功能。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: a4d761abf54682ed0263922d0a118debc9eccf0a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 81f89a4b5aa758d506ecdb9cf7b4f510e333ef25
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80334360"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131254"
 ---
 # <a name="set-map-style-using-azure-maps-android-sdk"></a>使用 Azure 地圖服務 Android SDK 設定地圖樣式
 

@@ -3,19 +3,17 @@ title: 功能：動作和內容個人化工具
 titleSuffix: Azure Cognitive Services
 description: 個人化工具會使用特性 (即動作和內容的相關資訊) 來提出更好的排名建議。 特性可能是所有項目通用的，也可能為某個項目所特有。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 10/14/2019
-ms.author: diberry
-ms.openlocfilehash: 408501232891a7971d03c89acc647d9ed19609b3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 590416f077fc1ff9430e42e27217548476c9032f
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77026144"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132767"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>特性是動作和內容的相關資訊
 
@@ -25,7 +23,7 @@ ms.locfileid: "77026144"
 
 例如，您可能會有關於下列項目的**特性**：
 
-* _使用者角色_，例如`Sports_Shopper`。 這不應該是個別的使用者識別碼。 
+* _使用者角色_，例如 `Sports_Shopper` 。 這不應該是個別的使用者識別碼。 
 * 內容__，例如某段影片是 `Documentary`、`Movie` 還是 `TV Series`，或是商店內是否有某個零售商品。
 * 當前__ 的一段時間，例如一週內的哪一天。
 
@@ -56,12 +54,12 @@ ms.locfileid: "77026144"
 以下是應用程式所用特性命名空間的範例：
 
 * User_Profile_from_CRM
-* 時間
+* Time
 * Mobile_Device_Info
 * http_user_agent
 * VideoResolution
 * UserDeviceInfo
-* Weather
+* 天氣
 * Product_Recommendation_Ratings
 * current_time
 * NewsArticle_TextAnalytics
@@ -72,7 +70,7 @@ ms.locfileid: "77026144"
 在下列 JSON 中，`user`、`state` 和 `device` 便是特性命名空間。 
 
 > [!Note]
-> 目前，我們強烈建議您針對以 UTF-8 為基礎並以不同字母開頭的功能命名空間使用名稱。 `user` `device` `u` `s`例如，、和的開頭為、和`d` `state` 目前具有相同第一個字元的命名空間，可能會導致用於機器學習的索引發生衝突。
+> 目前，我們強烈建議您針對以 UTF-8 為基礎並以不同字母開頭的功能命名空間使用名稱。 例如，、 `user` `state` 和的 `device` 開頭為 `u` 、 `s` 和 `d` 。 目前具有相同第一個字元的命名空間，可能會導致用於機器學習的索引發生衝突。
 
 JSON 物件可以包含 nested JSON 物件和簡單屬性/值。 只有在陣列專案是數位時，才可以包含陣列。 
 
@@ -146,7 +144,7 @@ JSON 物件可以包含 nested JSON 物件和簡單屬性/值。 只有在陣列
 
 藉由使用人工智慧服務來前置處理您的項目，您就可以自動擷取出可能與個人化有所關聯的資訊。
 
-例如：
+例如:
 
 * 您可以透過[影片索引器](https://azure.microsoft.com/services/media-services/video-indexer/)來執行電影檔案，以擷取場景元素、文字、情緒和其他眾多屬性。 然後讓這些屬性變得更密集，以反映原始項目的中繼資料所沒有的特徵。 
 * 可以透過偵測物件來執行影像，透過情緒來執行臉部等等。
@@ -156,7 +154,7 @@ JSON 物件可以包含 nested JSON 物件和簡單屬性/值。 只有在陣列
 
 * [實體連結](../entitylinking/home.md)
 * [文字分析](../text-analytics/overview.md)
-* [表情 API](../emotion/home.md)
+* [表情](../emotion/home.md)
 * [電腦視覺](../computer-vision/home.md)
 
 ## <a name="actions-represent-a-list-of-options"></a>動作代表選項清單
@@ -179,7 +177,7 @@ JSON 物件可以包含 nested JSON 物件和簡單屬性/值。 只有在陣列
 
 您傳送給排名 API 的動作取決於您要嘗試個人化的項目。
 
-以下是一些範例：
+這裡有一些範例：
 
 |目的|動作|
 |--|--|

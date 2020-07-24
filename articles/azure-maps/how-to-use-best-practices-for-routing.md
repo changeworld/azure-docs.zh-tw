@@ -1,18 +1,19 @@
 ---
 title: Azure 地圖服務路線規劃服務的最佳做法 |Microsoft Azure 對應
 description: 瞭解如何使用來自 Microsoft Azure 地圖的路線規劃服務來路由車輛。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 03/11/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 24fa4c48f6ca03e4049483a9acfff067d5a6a736
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 79e9096030aada9fa368bb2e78af323139c0586c
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84266690"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132206"
 ---
 # <a name="best-practices-for-azure-maps-route-service"></a>Azure 地圖服務路線規劃服務的最佳作法
 
@@ -30,7 +31,7 @@ Azure 地圖服務[路線規劃服務](https://docs.microsoft.com/rest/api/maps/
 
 ## <a name="prerequisites"></a>必要條件
 
-若要對 Azure 地圖服務 Api 進行呼叫，您需要 Azure 地圖服務帳戶和金鑰。 如需詳細資訊，請參閱[建立帳戶](quick-demo-map-app.md#create-an-account-with-azure-maps)和[取得主要金鑰](quick-demo-map-app.md#get-the-primary-key-for-your-account)。 主要金鑰也稱為「主要訂用帳戶金鑰」或「訂用帳戶金鑰」。
+若要對 Azure 地圖服務 Api 進行呼叫，您需要 Azure 地圖服務帳戶和金鑰。 如需詳細資訊，請參閱[建立帳戶](quick-demo-map-app.md#create-an-azure-maps-account)和[取得主要金鑰](quick-demo-map-app.md#get-the-primary-key-for-your-account)。 主要金鑰也稱為「主要訂用帳戶金鑰」或「訂用帳戶金鑰」。
 
 如需 Azure 地圖服務中驗證的相關資訊，請參閱[管理 Azure 地圖服務中的驗證](./how-to-manage-authentication.md)。 如需有關路線規劃服務涵蓋範圍的詳細資訊，請參閱[路由涵蓋範圍](routing-coverage.md)。
 

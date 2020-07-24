@@ -3,20 +3,18 @@ title: 信賴分數-QnA Maker
 titleSuffix: Azure Cognitive Services
 description: 必須發行知識庫。 發佈之後，就會使用 generateAnswer API，在執行時間預測端點上查詢知識庫。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: d901a803311805825c22503af6098e805a67e8f6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: faf24f11763ca2bcd9bb872b09b5d1b69e78bd06
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76843447"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131152"
 ---
 # <a name="the-confidence-score-of-an-answer"></a>解答的信賴分數
 當使用者查詢與某個知識庫相符時，QnA Maker 會傳回相關的答案以及信賴分數。 此分數表示該答案針對指定之使用者查詢正確比對的信賴度。
@@ -61,7 +59,7 @@ ms.locfileid: "76843447"
 
 將臨界值分數設定為[GENERATEANSWER API JSON 主體](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration)的屬性。 這表示您會針對每個 GenerateAnswer 呼叫進行設定。
 
-從 bot framework 中，使用[c #](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-c)或 node.js 將分數設定為 options 物件的[一部分。](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-nodejs)
+從 bot framework 中，使用[c #](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-c)或[Node.js](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-nodejs)將分數設定為 options 物件的一部分。
 
 ## <a name="improve-confidence-scores"></a>改善信賴分數
 若要改善使用者查詢特定回應的信賴分數，您可以將使用者查詢加入至知識庫做為該回應的替代問題。 您也可以使用不區分大小寫的[文字變異形式](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) \(英文\)，來將同義字新增至 KB 中的關鍵字。

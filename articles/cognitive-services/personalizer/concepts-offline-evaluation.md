@@ -3,19 +3,17 @@ title: 使用離線評估方法-個人化工具
 titleSuffix: Azure Cognitive Services
 description: 本文將說明如何使用離線評估來測量應用程式的有效性，並分析您的學習迴圈。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.author: diberry
-ms.openlocfilehash: f8ceef5e80bf15f0ba52a9c289e617018febfb5c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 627f511bb12c16c8f54935d1f782cb7c2c962163
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77623596"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132750"
 ---
 # <a name="offline-evaluation"></a>離線評估
 
@@ -108,5 +106,5 @@ ms.locfileid: "77623596"
 
 ## <a name="next-steps"></a>後續步驟
 
-[設定個人化工具](how-to-settings.md)
+[設定個人化工具](how-to-settings.md) 
 [執行離線評估](how-to-offline-evaluation.md)瞭解[個人化工具的運作方式](how-personalizer-works.md)

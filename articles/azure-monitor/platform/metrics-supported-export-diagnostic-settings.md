@@ -1,1672 +1,552 @@
 ---
-title: 可透過診斷設定匯出的 Azure 監視器平台計量
-description: AAzure 監視器每一個資源類型的可用計量清單。
+title: 具有 Null 和零值的計量匯出行為
+description: 匯出度量和無法匯出的計量清單的指標時，會討論 Null 和零值。
 services: azure-monitor
 ms.topic: reference
-ms.date: 03/30/2020
+ms.date: 07/22/2020
 ms.subservice: metrics
-ms.openlocfilehash: f0a8fd186862cf95ebdbb2d5bd92d8ff860b3ba1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ca6acb97e52123a0663d988b3f217d305bce2c4b
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86515473"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131679"
 ---
 # <a name="azure-monitor-platform-metrics-exportable-via-diagnostic-settings"></a>可透過診斷設定匯出的 Azure 監視器平台計量
 
 Azure 監視器依預設會提供未設定的[平台計量](data-platform-metrics.md)。 其中提供數種與平台計量進行互動的方式，包括在入口網站中製作計量圖表、透過 REST API 存取計量，或使用 PowerShell 或 CLI 查詢計量。 請參閱[支援的計量](metrics-supported.md)，以了解目前可供 Azure 監視器的合併計量管線使用的所有平台計量。 若要查詢及存取這些計量，請使用 [2018-01-01 api-version](/rest/api/monitor/metricdefinitions)。 其他計量可在入口網站中或使用舊版 API 提供。
 
-您可以透過兩種方式之一，將平台計量從 Azure 監視器管線匯出至其他位置。
-1. 使用[診斷設定](diagnostic-settings.md)傳送至 Log Analytics、事件中樞或 Azure 儲存體。
-2. 使用[計量 REST API](/rest/api/monitor/metrics/list)
+## <a name="metrics-not-exportable-via-diagnostic-settings"></a>無法透過診斷設定匯出計量
 
-由於 Azure 監視器後端的複雜性，並非所有計量都可以使用診斷設定匯出。 下表列出哪些計量可使用診斷設定匯出，哪些無法以此方式匯出。
+用在此位置的內容已移至[支援的 Azure 監視器計量清單](metrics-supported.md#exporting-platform-metrics-to-other-locations)。
 
-## <a name="change-to-behavior-for-nulls-and-zero-values"></a>NULL 和零值的行為變更 
- 
-對於可透過診斷設定匯出的平台計量，有幾項計量的 '0' 值會被 Azure 監視器解譯為 'Null'。 這造成了實數 '0' (由資源所發出) 與解譯的 '0' (Null) 之間的混淆。 相關變更即將推出，屆時，透過診斷設定匯出的平台計量就不再匯出 '0'，除非確實是由基礎資源所發出的。 
+透過診斷設定匯出計量時，會有一些限制。 所有計量都可使用 REST API 進行匯出。 
 
-> [!CAUTION]
-> 上述行為變更已排定在 2020 年 6 月 1 日進行。
+## <a name="exported-zero-vs-null-values"></a>已匯出零與 Null 值 
 
-請注意：
+處理0或 Null 值時，計量會有不同的行為。  某些計量會在未取得任何資料時回報0，例如 HTTP 失敗的計量。 當沒有資料取得時，其他計量會儲存 Null，因為它可能表示資源已離線。 您可以在以[虛線](metrics-troubleshoot.md#chart-shows-dashed-line)顯示具有 Null 值的這些計量圖表時，看到差異。 
 
-1.  如果您刪除了資源群組或特定資源，來自受影響資源的計量資料就不會再傳送至診斷設定匯出目的地。 也就是說，該資料將不再出現於事件中樞、儲存體帳戶和 Log Analytics 工作區中。
-2.  這項改進將在所有公用和私人雲端中提供。
-3.  此變更不會影響以下任何體驗的行為： 
-   - 透過診斷設定匯出的平台資源記錄
+當平臺計量可以透過診斷設定匯出時，它們會符合度量的行為。 也就是說，當資源不傳送任何資料時，它們會匯出 Null。  它們只會匯出 ' 0 '，但只有當基礎資源確實發出它們時。 
+
+如果您刪除資源群組或特定資源，受影響資源的計量資料就不會再傳送到診斷設定匯出目的地。 也就是說，它不會再出現在事件中樞、Azure 儲存體帳戶和 Log Analytics 工作區中。
+
+### <a name="metrics-that-used-to-export-zero-for-null"></a>用來匯出零為 Null 的計量
+
+在2020年6月1日前，下列計量**用來**在沒有資料時發出 ' 0 '。 然後，這些零可以匯出到下游系統（例如 Log Analytics 和 Azure 儲存體）。  這種行為會造成實際 ' 0 ' （由資源所發出）與轉譯 ' 0 ' （Null）之間的混淆，因此行為已變更為符合上一節中所述的基礎度量。 
+
+變更發生在所有公用和私人雲端。
+
+這項變更並不會影響下列任何經驗的行為： 
+   - 透過診斷設定匯出的平臺資源記錄
    - 計量瀏覽器中的計量圖表
    - 平台計量的警示
  
-## <a name="metrics-exportable-table"></a>可匯出的計量資料表 
+以下是其行為已變更的計量清單。 
 
-該資料表包含下列資料行。 
-- 是否可透過診斷設定匯出？ 
-- 受 NULL/0 影響 
-- ResourceType 
-- 計量 
-- MetricDisplayName
-- 單位 
-- AggregationType
+| ResourceType                    | 計量               |  MetricDisplayName  | 
+|---------------------------------|----------------------|---------------------|
+| Microsoft.ApiManagement/service | UnauthorizedRequests |  未經授權的閘道要求 (已淘汰)  | 
+| Microsoft.ApiManagement/service | TotalRequests |  閘道要求總數 (已淘汰)  | 
+| Microsoft.ApiManagement/service | SuccessfulRequests |  成功的閘道要求 (已淘汰)  | 
+| Microsoft.ApiManagement/service | Requests |  Requests  | 
+| Microsoft.ApiManagement/service | OtherRequests |  其他閘道要求 (已淘汰)  | 
+| Microsoft.ApiManagement/service | FailedRequests |  失敗的閘道要求 (已淘汰)  | 
+| Microsoft.ApiManagement/service | EventHubTotalFailedEvents |  失敗的 EventHub 事件  | 
+| Microsoft.ApiManagement/service | EventHubTotalEvents |  EventHub 事件總數  | 
+| Microsoft.ApiManagement/service | EventHubTotalBytesSent |  EventHub 事件的大小  | 
+| Microsoft.ApiManagement/service | EventHubTimedoutEvents |  已逾時的 EventHub 事件  | 
+| Microsoft.ApiManagement/service | EventHubThrottledEvents |  已節流的 EventHub 事件  | 
+| Microsoft.ApiManagement/service | EventHubSuccessfulEvents |  成功的 EventHub 事件  | 
+| Microsoft.ApiManagement/service | EventHubRejectedEvents |  已拒絕的 EventHub 事件  | 
+| Microsoft.ApiManagement/service | EventHubDroppedEvents |  已卸除的 EventHub 事件  | 
+| Microsoft.ApiManagement/service | Duration |  閘道要求的整體持續期間  | 
+| Microsoft.ApiManagement/service | BackendDuration |  後端要求的持續時間  | 
+| Microsoft.DBforMariaDB/servers | storage_used |  已使用儲存體  | 
+| Microsoft.DBforMariaDB/servers | storage_percent |  儲存體百分比  | 
+| Microsoft.DBforMariaDB/servers | storage_limit |  儲存體限制  | 
+| Microsoft.DBforMariaDB/servers | serverlog_storage_usage |  使用的伺服器記錄儲存體  | 
+| Microsoft.DBforMariaDB/servers | serverlog_storage_percent |  伺服器記錄儲存體百分比  | 
+| Microsoft.DBforMariaDB/servers | serverlog_storage_limit |  伺服器記錄儲存體限制  | 
+| Microsoft.DBforMariaDB/servers | seconds_behind_master |  複寫延遲 (秒)  | 
+| Microsoft.DBforMariaDB/servers | network_bytes_ingress |  Network In  | 
+| Microsoft.DBforMariaDB/servers | network_bytes_egress |  Network Out  | 
+| Microsoft.DBforMariaDB/servers | memory_percent |  記憶體百分比  | 
+| Microsoft.DBforMariaDB/servers | io_consumption_percent |  IO 百分比  | 
+| Microsoft.DBforMariaDB/servers | cpu_percent |  CPU 百分比  | 
+| Microsoft.DBforMariaDB/servers | connections_failed |  失敗的連線  | 
+| Microsoft.DBforMariaDB/servers | backup_storage_used |  已使用的備份儲存體  | 
+| Microsoft.DBforMariaDB/servers | active_connections |  作用中的連線  | 
+| Microsoft.DBforMySQL/servers | storage_used |  已使用儲存體  | 
+| Microsoft.DBforMySQL/servers | storage_percent |  儲存體百分比  | 
+| Microsoft.DBforMySQL/servers | storage_limit |  儲存體限制  | 
+| Microsoft.DBforMySQL/servers | serverlog_storage_usage |  使用的伺服器記錄儲存體  | 
+| Microsoft.DBforMySQL/servers | serverlog_storage_percent |  伺服器記錄儲存體百分比  | 
+| Microsoft.DBforMySQL/servers | serverlog_storage_limit |  伺服器記錄儲存體限制  | 
+| Microsoft.DBforMySQL/servers | seconds_behind_master |  複寫延遲 (秒)  | 
+| Microsoft.DBforMySQL/servers | network_bytes_ingress |  Network In  | 
+| Microsoft.DBforMySQL/servers | network_bytes_egress |  Network Out  | 
+| Microsoft.DBforMySQL/servers | memory_percent |  記憶體百分比  | 
+| Microsoft.DBforMySQL/servers | io_consumption_percent |  IO 百分比  | 
+| Microsoft.DBforMySQL/servers | cpu_percent |  CPU 百分比  | 
+| Microsoft.DBforMySQL/servers | connections_failed |  失敗的連線  | 
+| Microsoft.DBforMySQL/servers | backup_storage_used |  已使用的備份儲存體  | 
+| Microsoft.DBforMySQL/servers | active_connections |  作用中的連線  | 
+| Microsoft.Devices/Account | digitaltwins.telemetry.nodes |  Digital Twins 節點遙測預留位置  | 
+| Microsoft.Devices/IotHubs | twinQueries.success |  成功對應項查詢  | 
+| Microsoft.Devices/IotHubs | twinQueries.resultSize |  對應項查詢結果大小  | 
+| Microsoft.Devices/IotHubs | twinQueries.failure |  失敗對應項查詢  | 
+| Microsoft.Devices/IotHubs | jobs.queryJobs.success |  成功作業查詢  | 
+| Microsoft.Devices/IotHubs | jobs.queryJobs.failure |  失敗作業查詢  | 
+| Microsoft.Devices/IotHubs | jobs.listJobs.success |  成功呼叫列出作業  | 
+| Microsoft.Devices/IotHubs | jobs.listJobs.failure |  呼叫列出作業失敗  | 
+| Microsoft.Devices/IotHubs | jobs.failed |  失敗作業  | 
+| Microsoft.Devices/IotHubs | jobs.createTwinUpdateJob.success |  成功建立的對應項更新作業  | 
+| Microsoft.Devices/IotHubs | jobs.createTwinUpdateJob.failure |  建立失敗的對應項更新作業  | 
+| Microsoft.Devices/IotHubs | jobs.createDirectMethodJob.success |  成功建立的方法叫用作業  | 
+| Microsoft.Devices/IotHubs | jobs.createDirectMethodJob.failure |  建立失敗的方法叫用作業  | 
+| Microsoft.Devices/IotHubs | jobs.completed |  已完成的工作  | 
+| Microsoft.Devices/IotHubs | jobs.cancelJob.success |  成功取消作業  | 
+| Microsoft.Devices/IotHubs | jobs.cancelJob.failure |  取消作業失敗  | 
+| Microsoft.Devices/IotHubs | EventGridLatency |  事件方格延遲 (預覽)  | 
+| Microsoft.Devices/IotHubs | EventGridDeliveries |  事件方格傳遞 (預覽)  | 
+| Microsoft.Devices/IotHubs | devices.totalDevices |  裝置總計 (已淘汰)  | 
+| Microsoft.Devices/IotHubs | devices.connectedDevices.allProtocol |  連接的裝置 (已淘汰)   | 
+| Microsoft.Devices/IotHubs | deviceDataUsageV2 |  裝置資料使用量總計 (預覽)  | 
+| Microsoft.Devices/IotHubs | deviceDataUsage |  裝置資料使用量總計  | 
+| Microsoft.Devices/IotHubs | dailyMessageQuotaUsed |  已使用的訊息總數  | 
+| Microsoft.Devices/IotHubs | d2c.twin.update.success |  裝置的成功對應項更新  | 
+| Microsoft.Devices/IotHubs | d2c.twin.update.size |  裝置的對應項更新大小  | 
+| Microsoft.Devices/IotHubs | d2c.twin.update.failure |  裝置的失敗對應項更新  | 
+| Microsoft.Devices/IotHubs | d2c.twin.read.success |  裝置的成功對應項讀取  | 
+| Microsoft.Devices/IotHubs | d2c.twin.read.size |  裝置的對應項讀取回應大小  | 
+| Microsoft.Devices/IotHubs | d2c.twin.read.failure |  裝置的失敗對應項讀取  | 
+| Microsoft.Devices/IotHubs | d2c.telemetry.ingress.success |  已傳送的遙測訊息  | 
+| Microsoft.Devices/IotHubs | d2c.telemetry.ingress.sendThrottle |  節流錯誤數目  | 
+| Microsoft.Devices/IotHubs | d2c.telemetry.ingress.allProtocol |  遙測訊息傳送嘗試  | 
+| Microsoft.Devices/IotHubs | d2c.telemetry.egress.success |  路由：已傳遞的遙測訊息  | 
+| Microsoft.Devices/IotHubs | d2c.telemetry.egress.orphaned |  路由：已遺棄的遙測訊息   | 
+| Microsoft.Devices/IotHubs | d2c.telemetry.egress.invalid |  路由：不相容的遙測訊息  | 
+| Microsoft.Devices/IotHubs | d2c.telemetry.egress.fallback |  路由：傳遞至後援的訊息  | 
+| Microsoft.Devices/IotHubs | d2c.telemetry.egress.dropped |  路由：已捨棄的遙測訊息   | 
+| Microsoft.Devices/IotHubs | d2c.endpoints.latency.storage |  路由：儲存體的訊息延遲  | 
+| Microsoft.Devices/IotHubs | d2c.endpoints.latency.serviceBusTopics |  路由：服務匯流排主題的訊息延遲  | 
+| Microsoft.Devices/IotHubs | d2c.endpoints.latency.serviceBusQueues |  路由：服務匯流排佇列的訊息延遲  | 
+| Microsoft.Devices/IotHubs | d2c.endpoints.latency.eventHubs |  路由：事件中樞的訊息延遲  | 
+| Microsoft.Devices/IotHubs | d2c.endpoints.latency.builtIn.events |  路由：訊息/事件的訊息延遲  | 
+| Microsoft.Devices/IotHubs | d2c.endpoints.egress.storage.bytes |  路由：傳遞至儲存體的資料  | 
+| Microsoft.Devices/IotHubs | d2c.endpoints.egress.storage.blobs |  路由：傳遞至儲存體的 BLOB  | 
+| Microsoft.Devices/IotHubs | d2c.endpoints.egress.storage |  路由：傳遞至儲存體的訊息  | 
+| Microsoft.Devices/IotHubs | d2c.endpoints.egress.serviceBusTopics |  路由：傳遞至服務匯流排主題的訊息  | 
+| Microsoft.Devices/IotHubs | d2c.endpoints.egress.serviceBusQueues |  路由：傳遞至服務匯流排佇列的訊息  | 
+| Microsoft.Devices/IotHubs | d2c.endpoints.egress.eventHubs |  路由：傳遞至事件中樞的訊息  | 
+| Microsoft.Devices/IotHubs | d2c.endpoints.egress.builtIn.events |  路由：傳遞至訊息/事件的訊息  | 
+| Microsoft.Devices/IotHubs | 組態 |  設定計量  | 
+| Microsoft.Devices/IotHubs | C2DMessagesExpired |  已過期的 C2D 訊息 (預覽)  | 
+| Microsoft.Devices/IotHubs | c2d.twin.update.success |  後端的成功對應項更新  | 
+| Microsoft.Devices/IotHubs | c2d.twin.update.size |  後端的對應項更新大小  | 
+| Microsoft.Devices/IotHubs | c2d.twin.update.failure |  後端的失敗對應項更新  | 
+| Microsoft.Devices/IotHubs | c2d.twin.read.success |  後端的成功對應項讀取  | 
+| Microsoft.Devices/IotHubs | c2d.twin.read.size |  後端的對應項讀取回應大小  | 
+| Microsoft.Devices/IotHubs | c2d.twin.read.failure |  後端的失敗對應項讀取  | 
+| Microsoft.Devices/IotHubs | c2d.methods.success |  成功直接方法叫用  | 
+| Microsoft.Devices/IotHubs | c2d.methods.responseSize |  直接方法叫用的回應大小  | 
+| Microsoft.Devices/IotHubs | c2d.methods.requestSize |  直接方法叫用的要求大小  | 
+| Microsoft.Devices/IotHubs | c2d.methods.failure |  失敗直接方法叫用  | 
+| Microsoft.Devices/IotHubs | c2d.commands.egress.reject.success |  已拒絕的 C2D 訊息  | 
+| Microsoft.Devices/IotHubs | c2d.commands.egress.complete.success |  已完成的 C2D 訊息傳遞  | 
+| Microsoft.Devices/IotHubs | c2d.commands.egress.abandon.success |  已放棄的 C2D 訊息  | 
+| Microsoft.Devices/provisioningServices | RegistrationAttempts |  註冊嘗試數  | 
+| Microsoft.Devices/provisioningServices | DeviceAssignments |  已指派的裝置數  | 
+| Microsoft.Devices/provisioningServices | AttestationAttempts |  證明嘗試數  | 
+| Microsoft.DocumentDB/databaseAccounts | TotalRequestUnits |  要求單位總計  | 
+| Microsoft.DocumentDB/databaseAccounts | TotalRequests |  要求總數  | 
+| Microsoft.DocumentDB/databaseAccounts | MongoRequests |  Mongo 要求  | 
+| Microsoft.DocumentDB/databaseAccounts | MongoRequestCharge |  Mongo 要求收費  | 
+| Microsoft.EventGrid/domains | PublishSuccessLatencyInMs |  發行成功延遲  | 
+| Microsoft.EventGrid/domains | PublishSuccessCount |  已發佈的事件  | 
+| Microsoft.EventGrid/domains | PublishFailCount |  發行失敗的事件  | 
+| Microsoft.EventGrid/domains | MatchedEventCount |  相符的事件  | 
+| Microsoft.EventGrid/domains | DroppedEventCount |  卸除的事件  | 
+| Microsoft.EventGrid/domains | DeliverySuccessCount |  已傳遞的事件  | 
+| Microsoft.EventGrid/domains | DeadLetteredCount |  失效信件事件  | 
+| Microsoft.EventGrid/eventSubscriptions | MatchedEventCount |  相符的事件  | 
+| Microsoft.EventGrid/eventSubscriptions | DroppedEventCount |  卸除的事件  | 
+| Microsoft.EventGrid/eventSubscriptions | DeliverySuccessCount |  已傳遞的事件  | 
+| Microsoft.EventGrid/eventSubscriptions | DeadLetteredCount |  失效信件事件  | 
+| Microsoft.EventGrid/extensionTopics | UnmatchedEventCount |  不相符的事件  | 
+| Microsoft.EventGrid/extensionTopics | PublishSuccessLatencyInMs |  發行成功延遲  | 
+| Microsoft.EventGrid/extensionTopics | PublishSuccessCount |  已發佈的事件  | 
+| Microsoft.EventGrid/extensionTopics | PublishFailCount |  發行失敗的事件  | 
+| Microsoft.EventGrid/topics | UnmatchedEventCount |  不相符的事件  | 
+| Microsoft.EventGrid/topics | PublishSuccessLatencyInMs |  發行成功延遲  | 
+| Microsoft.EventGrid/topics | PublishSuccessCount |  已發佈的事件  | 
+| Microsoft.EventGrid/topics | PublishFailCount |  發行失敗的事件  | 
+| Microsoft.EventHub/clusters | OutgoingMessages |  外送訊息  | 
+| Microsoft.EventHub/clusters | OutgoingBytes |  傳出位元組數。  | 
+| Microsoft.EventHub/clusters | IncomingRequests |  傳入的要求  | 
+| Microsoft.EventHub/clusters | IncomingMessages |  傳入訊息  | 
+| Microsoft.EventHub/clusters | IncomingBytes |  傳入位元組數。  | 
+| Microsoft.EventHub/namespaces | SVRBSY |  伺服器忙線錯誤 (已淘汰)  | 
+| Microsoft.EventHub/namespaces | SUCCREQ |  成功的要求 (已淘汰)  | 
+| Microsoft.EventHub/namespaces | OUTMSGS |  傳出的訊息 (過時) (已淘汰)  | 
+| Microsoft.EventHub/namespaces | OutgoingMessages |  外送訊息  | 
+| Microsoft.EventHub/namespaces | OutgoingBytes |  傳出位元組數。  | 
+| Microsoft.EventHub/namespaces | MISCERR |  其他錯誤 (已淘汰)  | 
+| Microsoft.EventHub/namespaces | INTERR |  內部伺服器錯誤 (已淘汰)  | 
+| Microsoft.EventHub/namespaces | INREQS |  傳入的要求 (已淘汰)  | 
+| Microsoft.EventHub/namespaces | INMSGS |  傳入的訊息 (過時) (已淘汰)  | 
+| Microsoft.EventHub/namespaces | IncomingRequests |  傳入的要求  | 
+| Microsoft.EventHub/namespaces | IncomingMessages |  傳入訊息  | 
+| Microsoft.EventHub/namespaces | IncomingBytes |  傳入位元組數。  | 
+| Microsoft.EventHub/namespaces | FAILREQ |  失敗的要求 (已淘汰)  | 
+| Microsoft.EventHub/namespaces | EHOUTMSGS |  傳出訊息數 (已過時)  | 
+| Microsoft.EventHub/namespaces | EHOUTMBS |  傳出位元組數 (過時) (已淘汰)  | 
+| Microsoft.EventHub/namespaces | EHOUTBYTES |  傳出位元組數 (已過時)  | 
+| Microsoft.EventHub/namespaces | EHINMSGS |  連入訊息數 (已過時)  | 
+| Microsoft.EventHub/namespaces | EHINMBS |  傳入位元組數 (過時) (已淘汰)  | 
+| Microsoft.EventHub/namespaces | EHINBYTES |  傳入位元組數 (已過時)  | 
+| Microsoft.EventHub/namespaces | EHAMSGS |  封存訊息 (已淘汰)  | 
+| Microsoft.EventHub/namespaces | EHAMBS |  封存訊息輸送量 (已淘汰)  | 
+| Microsoft.EventHub/namespaces | EHABL |  封存待處理項目訊息 (已淘汰)  | 
+| Microsoft.HDInsight/clusters | NumActiveWorkers |  作用中背景工作數目  | 
+| Microsoft.HDInsight/clusters | GatewayRequests |  閘道要求數  | 
+| Microsoft.HDInsight/clusters | CategorizedGatewayRequests |  已分類的閘道要求數  | 
+| Microsoft.Insights/AutoscaleSettings | ScaleActionsInitiated |  已起始的調整規模動作數  | 
+| Microsoft.Insights/Components | traces/count |  追蹤  | 
+| Microsoft.Insights/Components | performanceCounters/requestsPerSecond |  HTTP 要求率  | 
+| Microsoft.Insights/Components | performanceCounters/requestsInQueue |  應用程式佇列中的 HTTP 要求數  | 
+| Microsoft.Insights/Components | performanceCounters/exceptionsPerSecond |  例外狀況比率  | 
+| Microsoft.Insights/Components | pageViews/count |  頁面檢視  | 
+| Microsoft.Insights/Components | exceptions/count |  例外狀況  | 
+| Microsoft.Kusto/Clusters | StreamingIngestResults |  串流內嵌結果  | 
+| Microsoft.Kusto/Clusters | StreamingIngestDuration |  串流內嵌持續時間  | 
+| Microsoft.Kusto/Clusters | StreamingIngestDataRate |  串流內嵌資料速率  | 
+| Microsoft.Kusto/Clusters | SteamingIngestRequestRate |  串流內嵌要求率  | 
+| Microsoft.Kusto/Clusters | QueryDuration |  查詢持續時間  | 
+| Microsoft.Kusto/Clusters | KeepAlive |  保持運作  | 
+| Microsoft.Kusto/Clusters | IngestionVolumeInMB |  擷取量 (以 MB 為單位)  | 
+| Microsoft.Kusto/Clusters | IngestionUtilization |  擷取使用率  | 
+| Microsoft.Kusto/Clusters | IngestionResult |  擷取結果  | 
+| Microsoft.Kusto/Clusters | IngestionLatencyInSeconds |  擷取延遲 (以秒為單位)  | 
+| Microsoft.Kusto/Clusters | ExportUtilization |  匯出使用率  | 
+| Microsoft.Kusto/Clusters | EventsProcessedForEventHubs |  已處理的事件 (針對事件/IoT 中樞)  | 
+| Microsoft.Kusto/Clusters | CPU |  CPU  | 
+| Microsoft.Kusto/Clusters | ContinuousExportResult |  連續匯出結果  | 
+| Microsoft.Kusto/Clusters | ContinuousExportPendingCount |  連續匯出擱置計數  | 
+| Microsoft.Kusto/Clusters | ContinuousExportNumOfRecordsExported |  連續匯出 - 已匯出的記錄數  | 
+| Microsoft.Kusto/Clusters | ContinuousExportMaxLatenessMinutes |  連續匯出最大延遲分鐘數  | 
+| Microsoft.Kusto/Clusters | CacheUtilization |  快取使用率  | 
+| Microsoft.Logic/integrationServiceEnvironments | TriggerThrottledEvents |  觸發程序節流的事件  | 
+| Microsoft.Logic/integrationServiceEnvironments | TriggersSucceeded |  成功的觸發程序   | 
+| Microsoft.Logic/integrationServiceEnvironments | TriggersStarted |  啟動的觸發程序   | 
+| Microsoft.Logic/integrationServiceEnvironments | TriggersSkipped |  略過的觸發程序  | 
+| Microsoft.Logic/integrationServiceEnvironments | TriggersFired |  引發的觸發程序   | 
+| Microsoft.Logic/integrationServiceEnvironments | TriggersFailed |  失敗的觸發程序   | 
+| Microsoft.Logic/integrationServiceEnvironments | TriggersCompleted |  完成的觸發程序   | 
+| Microsoft.Logic/integrationServiceEnvironments | RunThrottledEvents |  執行節流的事件  | 
+| Microsoft.Logic/integrationServiceEnvironments | RunStartThrottledEvents |  執行開始節流處理事件  | 
+| Microsoft.Logic/integrationServiceEnvironments | RunsSucceeded |  已成功的執行  | 
+| Microsoft.Logic/integrationServiceEnvironments | RunsStarted |  執行已啟動  | 
+| Microsoft.Logic/integrationServiceEnvironments | RunsFailed |  失敗的執行  | 
+| Microsoft.Logic/integrationServiceEnvironments | RunsCompleted |  完成的執行  | 
+| Microsoft.Logic/integrationServiceEnvironments | RunsCancelled |  已取消的執行  | 
+| Microsoft.Logic/integrationServiceEnvironments | RunFailurePercentage |  執行失敗百分比  | 
+| Microsoft.Logic/integrationServiceEnvironments | ActionThrottledEvents |  動作節流的事件  | 
+| Microsoft.Logic/integrationServiceEnvironments | ActionsSucceeded |  成功的動作   | 
+| Microsoft.Logic/integrationServiceEnvironments | ActionsStarted |  啟動的動作   | 
+| Microsoft.Logic/integrationServiceEnvironments | ActionsSkipped |  略過的動作   | 
+| Microsoft.Logic/integrationServiceEnvironments | ActionsFailed |  動作的失敗   | 
+| Microsoft.Logic/integrationServiceEnvironments | ActionsCompleted |  完成的動作   | 
+| Microsoft.Logic/workflows | TriggerThrottledEvents |  觸發程序節流的事件  | 
+| Microsoft.Logic/workflows | TriggersSucceeded |  成功的觸發程序   | 
+| Microsoft.Logic/workflows | TriggersStarted |  啟動的觸發程序   | 
+| Microsoft.Logic/workflows | TriggersSkipped |  略過的觸發程序  | 
+| Microsoft.Logic/workflows | TriggersFired |  引發的觸發程序   | 
+| Microsoft.Logic/workflows | TriggersFailed |  失敗的觸發程序   | 
+| Microsoft.Logic/workflows | TriggersCompleted |  完成的觸發程序   | 
+| Microsoft.Logic/workflows | TotalBillableExecutions |  可計費的總執行次數  | 
+| Microsoft.Logic/workflows | RunThrottledEvents |  執行節流的事件  | 
+| Microsoft.Logic/workflows | RunStartThrottledEvents |  執行開始節流處理事件  | 
+| Microsoft.Logic/workflows | RunsSucceeded |  已成功的執行  | 
+| Microsoft.Logic/workflows | RunsStarted |  執行已啟動  | 
+| Microsoft.Logic/workflows | RunsFailed |  失敗的執行  | 
+| Microsoft.Logic/workflows | RunsCompleted |  完成的執行  | 
+| Microsoft.Logic/workflows | RunsCancelled |  已取消的執行  | 
+| Microsoft.Logic/workflows | RunFailurePercentage |  執行失敗百分比  | 
+| Microsoft.Logic/workflows | BillingUsageStorageConsumption |  為使用儲存體使用量執行計費  | 
+| Microsoft.Logic/workflows | BillingUsageStorageConsumption |  為使用儲存體使用量執行計費  | 
+| Microsoft.Logic/workflows | BillingUsageStandardConnector |  為使用標準連接器執行計費  | 
+| Microsoft.Logic/workflows | BillingUsageStandardConnector |  為使用標準連接器執行計費  | 
+| Microsoft.Logic/workflows | BillingUsageNativeOperation |  為使用原生作業執行計費  | 
+| Microsoft.Logic/workflows | BillingUsageNativeOperation |  為使用原生作業執行計費  | 
+| Microsoft.Logic/workflows | BillableTriggerExecutions |  可計費的觸發程序執行  | 
+| Microsoft.Logic/workflows | BillableActionExecutions |  可計費的動作執行  | 
+| Microsoft.Logic/workflows | ActionThrottledEvents |  動作節流的事件  | 
+| Microsoft.Logic/workflows | ActionsSucceeded |  成功的動作   | 
+| Microsoft.Logic/workflows | ActionsStarted |  啟動的動作   | 
+| Microsoft.Logic/workflows | ActionsSkipped |  略過的動作   | 
+| Microsoft.Logic/workflows | ActionsFailed |  動作的失敗   | 
+| Microsoft.Logic/workflows | ActionsCompleted |  完成的動作   | 
+| Microsoft.Network/frontdoors | WebApplicationFirewallRequestCount |  Web 應用程式防火牆要求計數  | 
+| Microsoft.Network/frontdoors | TotalLatency |  延遲總計  | 
+| Microsoft.Network/frontdoors | ResponseSize |  回應大小  | 
+| Microsoft.Network/frontdoors | RequestSize |  要求大小  | 
+| Microsoft.Network/frontdoors | RequestCount |  要求計數  | 
+| Microsoft.Network/frontdoors | BillableResponseSize |  可計費的回應大小  | 
+| Microsoft.Network/frontdoors | BackendRequestLatency |  後端要求延遲  | 
+| Microsoft.Network/frontdoors | BackendRequestCount |  後端要求計數  | 
+| Microsoft.Network/frontdoors | BackendHealthPercentage |  後端健康情況百分比  | 
+| Microsoft.Network/trafficManagerProfiles | QpsByEndpoint |  傳回的依端點查詢數  | 
+| Microsoft.NotificationHubs/Namespaces/NotificationHubs | scheduled.pending |  暫止已排程的通知  | 
+| Microsoft.NotificationHubs/Namespaces/NotificationHubs | registration.update |  註冊更新作業  | 
+| Microsoft.NotificationHubs/Namespaces/NotificationHubs | registration.get |  註冊讀取作業  | 
+| Microsoft.NotificationHubs/Namespaces/NotificationHubs | registration.delete |  註冊刪除作業  | 
+| Microsoft.NotificationHubs/Namespaces/NotificationHubs | registration.create |  註冊建立作業  | 
+| Microsoft.NotificationHubs/Namespaces/NotificationHubs | registration.all |  註冊作業數  | 
+| Microsoft.NotificationHubs/Namespaces/NotificationHubs | outgoing.wns.wrongtoken |  WNS 授權錯誤 (錯誤權杖)  | 
+| Microsoft.NotificationHubs/Namespaces/NotificationHubs | outgoing.wns.tokenproviderunreachable |  WNS 授權錯誤 (無法連線)  | 
+| Microsoft.NotificationHubs/Namespaces/NotificationHubs | outgoing.wns.throttled |  WNS 節流通知  | 
+| Microsoft.NotificationHubs/Namespaces/NotificationHubs | outgoing.wns.success |  WNS 成功通知  | 
+| Microsoft.NotificationHubs/Namespaces/NotificationHubs | outgoing.wns.pnserror |  WNS 錯誤  | 
+| Microsoft.NotificationHubs/Namespaces/NotificationHubs | outgoing.wns.invalidtoken |  WNS 授權錯誤 (無效權杖)  | 
+| Microsoft.NotificationHubs/Namespaces/NotificationHubs | outgoing.wns.invalidnotificationsize |  WNS 無效通知大小錯誤  | 
+| Microsoft.NotificationHubs/Namespaces/NotificationHubs | outgoing.wns.invalidnotificationformat |  WNS 無效通知格式  | 
+| Microsoft.NotificationHubs/Namespaces/NotificationHubs | outgoing.wns.invalidcredentials |  WNS 授權錯誤 (無效認證)  | 
+| Microsoft.NotificationHubs/Namespaces/NotificationHubs | outgoing.wns.expiredchannel |  WNS 過期通道錯誤  | 
+| Microsoft.NotificationHubs/Namespaces/NotificationHubs | outgoing.wns.dropped |  WNS 已捨棄通知  | 
+| Microsoft.NotificationHubs/Namespaces/NotificationHubs | outgoing.wns.channelthrottled |  WNS 通道已節流處理  | 
+| Microsoft.NotificationHubs/Namespaces/NotificationHubs | outgoing.wns.channeldisconnected |  WNS 通道已中斷連線  | 
+| Microsoft.NotificationHubs/Namespaces/NotificationHubs | outgoing.wns.badchannel |  WNS 不正確的通道錯誤  | 
+| Microsoft.NotificationHubs/Namespaces/NotificationHubs | outgoing.wns.authenticationerror |  WNS 驗證錯誤  | 
+| Microsoft.NotificationHubs/Namespaces/NotificationHubs | outgoing.mpns.throttled |  MPNS 已將通知節流處理  | 
+| Microsoft.NotificationHubs/Namespaces/NotificationHubs | outgoing.mpns.success |  MPNS 成功通知  | 
+| Microsoft.NotificationHubs/Namespaces/NotificationHubs | outgoing.mpns.pnserror |  MPNS 錯誤  | 
+| Microsoft.NotificationHubs/Namespaces/NotificationHubs | outgoing.mpns.invalidnotificationformat |  MPNS 無效通知格式  | 
+| Microsoft.NotificationHubs/Namespaces/NotificationHubs | outgoing.mpns.invalidcredentials |  MPNS 無效認證  | 
+| Microsoft.NotificationHubs/Namespaces/NotificationHubs | outgoing.mpns.dropped |  MPNS 已捨棄通知  | 
+| Microsoft.NotificationHubs/Namespaces/NotificationHubs | outgoing.mpns.channeldisconnected |  MPNS 通道已中斷連線  | 
+| Microsoft.NotificationHubs/Namespaces/NotificationHubs | outgoing.mpns.badchannel |  MPNS 不正確的通道錯誤  | 
+| Microsoft.NotificationHubs/Namespaces/NotificationHubs | outgoing.mpns.authenticationerror |  MPNS 驗證錯誤  | 
+| Microsoft.NotificationHubs/Namespaces/NotificationHubs | outgoing.gcm.wrongchannel |  GCM 不正確的通道錯誤  | 
+| Microsoft.NotificationHubs/Namespaces/NotificationHubs | outgoing.gcm.throttled |  GCM 已將通知節流處理  | 
+| Microsoft.NotificationHubs/Namespaces/NotificationHubs | outgoing.gcm.success |  GCM 成功通知  | 
+| Microsoft.NotificationHubs/Namespaces/NotificationHubs | outgoing.gcm.pnserror |  GCM 錯誤  | 
+| Microsoft.NotificationHubs/Namespaces/NotificationHubs | outgoing.gcm.invalidnotificationsize |  GCM 無效通知大小錯誤  | 
+| Microsoft.NotificationHubs/Namespaces/NotificationHubs | outgoing.gcm.invalidnotificationformat |  GCM 無效通知格式  | 
+| Microsoft.NotificationHubs/Namespaces/NotificationHubs | outgoing.gcm.invalidcredentials |  GCM 授權錯誤 (無效認證)  | 
+| Microsoft.NotificationHubs/Namespaces/NotificationHubs | outgoing.gcm.expiredchannel |  GCM 過期通道錯誤  | 
+| Microsoft.NotificationHubs/Namespaces/NotificationHubs | outgoing.gcm.badchannel |  GCM 不正確的通道錯誤  | 
+| Microsoft.NotificationHubs/Namespaces/NotificationHubs | outgoing.gcm.authenticationerror |  GCM 驗證錯誤  | 
+| Microsoft.NotificationHubs/Namespaces/NotificationHubs | outgoing.apns.success |  APNS 成功通知  | 
+| Microsoft.NotificationHubs/Namespaces/NotificationHubs | outgoing.apns.pnserror |  APNS 錯誤  | 
+| Microsoft.NotificationHubs/Namespaces/NotificationHubs | outgoing.apns.invalidnotificationsize |  APNS 無效通知大小錯誤  | 
+| Microsoft.NotificationHubs/Namespaces/NotificationHubs | outgoing.apns.invalidcredentials |  APNS 授權錯誤  | 
+| Microsoft.NotificationHubs/Namespaces/NotificationHubs | outgoing.apns.expiredchannel |  APNS 過期通道錯誤  | 
+| Microsoft.NotificationHubs/Namespaces/NotificationHubs | outgoing.apns.badchannel |  APNS 不正確的通道錯誤  | 
+| Microsoft.NotificationHubs/Namespaces/NotificationHubs | outgoing.allpns.success |  成功通知  | 
+| Microsoft.NotificationHubs/Namespaces/NotificationHubs | outgoing.allpns.pnserror |  外部通知系統錯誤  | 
+| Microsoft.NotificationHubs/Namespaces/NotificationHubs | outgoing.allpns.invalidpayload |  承載錯誤  | 
+| Microsoft.NotificationHubs/Namespaces/NotificationHubs | outgoing.allpns.channelerror |  通道錯誤  | 
+| Microsoft.NotificationHubs/Namespaces/NotificationHubs | notificationhub.pushes |  所有外寄通知  | 
+| Microsoft.NotificationHubs/Namespaces/NotificationHubs | installation.upsert |  建立或更新安裝作業  | 
+| Microsoft.NotificationHubs/Namespaces/NotificationHubs | installation.patch |  修補安裝作業  | 
+| Microsoft.NotificationHubs/Namespaces/NotificationHubs | installation.get |  取得安裝作業  | 
+| Microsoft.NotificationHubs/Namespaces/NotificationHubs | installation.delete |  刪除安裝作業  | 
+| Microsoft.NotificationHubs/Namespaces/NotificationHubs | installation.all |  安裝管理作業  | 
+| Microsoft.NotificationHubs/Namespaces/NotificationHubs | incoming.scheduled.cancel |  取消已排程的推播通知  | 
+| Microsoft.NotificationHubs/Namespaces/NotificationHubs | incoming.scheduled |  傳送已排程的推播通知  | 
+| Microsoft.NotificationHubs/Namespaces/NotificationHubs | incoming.all.requests |  所有傳入要求  | 
+| Microsoft.NotificationHubs/Namespaces/NotificationHubs | incoming.all.failedrequests |  所有傳入的失敗要求  | 
+| Microsoft.NotificationHubs/Namespaces/NotificationHubs | incoming |  傳入訊息  | 
+| Microsoft.OperationalInsights/workspaces | Heartbeat |  Heartbeat  | 
+| Microsoft.Relay/namespaces | BytesTransferred |  BytesTransferred  | 
+| Microsoft.ServiceBus/namespaces | OutgoingMessages |  外送訊息  | 
+| Microsoft.ServiceBus/namespaces | IncomingRequests |  傳入的要求  | 
+| Microsoft.ServiceBus/namespaces | IncomingMessages |  傳入訊息  | 
+| Microsoft.SignalRService/SignalR | UserErrors |  使用者錯誤  | 
+| Microsoft.SignalRService/SignalR | SystemErrors |  系統錯誤  | 
+| Microsoft.SignalRService/SignalR | OutboundTraffic |  輸出流量  | 
+| Microsoft.SignalRService/SignalR | MessageCount |  訊息計數  | 
+| Microsoft.SignalRService/SignalR | InboundTraffic |  輸入流量  | 
+| Microsoft.SignalRService/SignalR | ConnectionCount |  連線計數  | 
+| Microsoft.Sql/managedInstances | avg_cpu_percent |  CPU 百分比平均  | 
+| Microsoft.Sql/servers | dtu_used |  已使用 DTU  | 
+| Microsoft.Sql/servers | dtu_consumption_percent |  DTU 百分比  | 
+| Microsoft.Sql/servers/databases | xtp_storage_percent |  記憶體內部 OLTP 儲存體百分比  | 
+| Microsoft.Sql/servers/databases | workers_percent |  背景工作角色百分比  | 
+| Microsoft.Sql/servers/databases | sessions_percent |  工作階段百分比  | 
+| Microsoft.Sql/servers/databases | physical_data_read_percent |  資料 IO 百分比  | 
+| Microsoft.Sql/servers/databases | log_write_percent |  記錄 IO 百分比  | 
+| Microsoft.Sql/servers/databases | dwu_used |  已使用 DWU  | 
+| Microsoft.Sql/servers/databases | dwu_consumption_percent |  DWU 百分比  | 
+| Microsoft.Sql/servers/databases | dtu_used |  已使用 DTU  | 
+| Microsoft.Sql/servers/databases | dtu_consumption_percent |  DTU 百分比  | 
+| Microsoft.Sql/servers/databases | deadlock |  死結  | 
+| Microsoft.Sql/servers/databases | cpu_used |  已使用的 CPU  | 
+| Microsoft.Sql/servers/databases | cpu_percent |  CPU 百分比  | 
+| Microsoft.Sql/servers/databases | connection_successful |  成功的連線  | 
+| Microsoft.Sql/servers/databases | connection_failed |  失敗的連線  | 
+| Microsoft.Sql/servers/databases | cache_hit_percent |  快取命中的百分比  | 
+| Microsoft.Sql/servers/databases | blocked_by_firewall |  遭到防火牆封鎖  | 
+| Microsoft.Sql/servers/elasticPools | xtp_storage_percent |  記憶體內部 OLTP 儲存體百分比  | 
+| Microsoft.Sql/servers/elasticPools | workers_percent |  背景工作角色百分比  | 
+| Microsoft.Sql/servers/elasticPools | sessions_percent |  工作階段百分比  | 
+| Microsoft.Sql/servers/elasticPools | physical_data_read_percent |  資料 IO 百分比  | 
+| Microsoft.Sql/servers/elasticPools | log_write_percent |  記錄 IO 百分比  | 
+| Microsoft.Sql/servers/elasticPools | eDTU_used |  已使用 eDTU  | 
+| Microsoft.Sql/servers/elasticPools | dtu_consumption_percent |  DTU 百分比  | 
+| Microsoft.Sql/servers/elasticPools | cpu_percent |  CPU 百分比  | 
+| Microsoft.Web/hostingEnvironments/multiRolePools | TotalFrontEnds |  前端總數  | 
+| Microsoft.Web/hostingEnvironments/multiRolePools | SmallAppServicePlanInstances |  小型 App Service 方案背景工作角色  | 
+| Microsoft.Web/hostingEnvironments/multiRolePools | Requests |  Requests  | 
+| Microsoft.Web/hostingEnvironments/multiRolePools | MemoryPercentage |  記憶體百分比  | 
+| Microsoft.Web/hostingEnvironments/multiRolePools | MediumAppServicePlanInstances |  中型 App Service 方案背景工作角色  | 
+| Microsoft.Web/hostingEnvironments/multiRolePools | LargeAppServicePlanInstances |  大型 App Service 方案背景工作角色  | 
+| Microsoft.Web/hostingEnvironments/multiRolePools | HttpQueueLength |  Http 佇列長度  | 
+| Microsoft.Web/hostingEnvironments/multiRolePools | Http5xx |  Http 伺服器錯誤  | 
+| Microsoft.Web/hostingEnvironments/multiRolePools | Http4xx |  Http 4xx  | 
+| Microsoft.Web/hostingEnvironments/multiRolePools | Http406 |  Http 406  | 
+| Microsoft.Web/hostingEnvironments/multiRolePools | Http404 |  Http 404  | 
+| Microsoft.Web/hostingEnvironments/multiRolePools | Http403 |  Http 403  | 
+| Microsoft.Web/hostingEnvironments/multiRolePools | Http401 |  Http 401  | 
+| Microsoft.Web/hostingEnvironments/multiRolePools | Http3xx |  Http 3xx  | 
+| Microsoft.Web/hostingEnvironments/multiRolePools | Http2xx |  Http 2xx  | 
+| Microsoft.Web/hostingEnvironments/multiRolePools | Http101 |  Http 101  | 
+| Microsoft.Web/hostingEnvironments/multiRolePools | DiskQueueLength |  磁碟佇列長度  | 
+| Microsoft.Web/hostingEnvironments/multiRolePools | CpuPercentage |  CPU 百分比  | 
+| Microsoft.Web/hostingEnvironments/multiRolePools | BytesSent |  資料輸出  | 
+| Microsoft.Web/hostingEnvironments/multiRolePools | BytesReceived |  資料輸入  | 
+| Microsoft.Web/hostingEnvironments/multiRolePools | AverageResponseTime |  平均回應時間  | 
+| Microsoft.Web/hostingEnvironments/multiRolePools | ActiveRequests |  使用中的要求  | 
+| Microsoft.Web/hostingEnvironments/workerPools | WorkersUsed |  已使用的背景工作角色  | 
+| Microsoft.Web/hostingEnvironments/workerPools | WorkersTotal |  背景工作角色總數  | 
+| Microsoft.Web/hostingEnvironments/workerPools | WorkersAvailable |  可用的背景工作角色  | 
+| Microsoft.Web/hostingEnvironments/workerPools | MemoryPercentage |  記憶體百分比  | 
+| Microsoft.Web/hostingEnvironments/workerPools | CpuPercentage |  CPU 百分比  | 
+| Microsoft.Web/serverfarms | TcpTimeWait |  TCP 等候時間  | 
+| Microsoft.Web/serverfarms | TcpSynSent |  已傳送的 TCP 同步  | 
+| Microsoft.Web/serverfarms | TcpSynReceived |  已接收的 TCP 同步  | 
+| Microsoft.Web/serverfarms | TcpLastAck |  TCP 上次認可  | 
+| Microsoft.Web/serverfarms | TcpFinWait2 |  TCP 完成等候 2  | 
+| Microsoft.Web/serverfarms | TcpFinWait1 |  TCP 完成等候 1  | 
+| Microsoft.Web/serverfarms | TcpEstablished |  已建立的 TCP  | 
+| Microsoft.Web/serverfarms | TcpClosing |  正在關閉的 TCP  | 
+| Microsoft.Web/serverfarms | TcpCloseWait |  等候關閉的 TCP  | 
+| Microsoft.Web/serverfarms | MemoryPercentage |  記憶體百分比  | 
+| Microsoft.Web/serverfarms | HttpQueueLength |  Http 佇列長度  | 
+| Microsoft.Web/serverfarms | DiskQueueLength |  磁碟佇列長度  | 
+| Microsoft.Web/serverfarms | CpuPercentage |  CPU 百分比  | 
+| Microsoft.Web/serverfarms | BytesSent |  資料輸出  | 
+| Microsoft.Web/serverfarms | BytesReceived |  資料輸入  | 
+| Microsoft.Web/sites | TotalAppDomainsUnloaded |  已卸載的應用程式網域總計  | 
+| Microsoft.Web/sites | TotalAppDomains |  應用程式網域總計  | 
+| Microsoft.Web/sites | Threads |  執行緒計數  | 
+| Microsoft.Web/sites | RequestsInApplicationQueue |  應用程式佇列中的要求數  | 
+| Microsoft.Web/sites | Requests |  Requests  | 
+| Microsoft.Web/sites | PrivateBytes |  私用位元組  | 
+| Microsoft.Web/sites | MemoryWorkingSet |  記憶體工作集  | 
+| Microsoft.Web/sites | IoWriteOperationsPerSecond |  每秒的 IO 寫入作業數  | 
+| Microsoft.Web/sites | IoWriteBytesPerSecond |  每秒的 IO 寫入位元組數  | 
+| Microsoft.Web/sites | IoReadOperationsPerSecond |  每秒的 IO 讀取作業數  | 
+| Microsoft.Web/sites | IoReadBytesPerSecond |  每秒的 IO 讀取位元組數  | 
+| Microsoft.Web/sites | IoOtherOperationsPerSecond |  每秒的 IO 其他作業數  | 
+| Microsoft.Web/sites | IoOtherBytesPerSecond |  每秒的 IO 其他位元組數  | 
+| Microsoft.Web/sites | HttpResponseTime |  回應時間  | 
+| Microsoft.Web/sites | Http5xx |  Http 伺服器錯誤  | 
+| Microsoft.Web/sites | Http4xx |  Http 4xx  | 
+| Microsoft.Web/sites | Http406 |  Http 406  | 
+| Microsoft.Web/sites | Http404 |  Http 404  | 
+| Microsoft.Web/sites | Http403 |  Http 403  | 
+| Microsoft.Web/sites | Http401 |  Http 401  | 
+| Microsoft.Web/sites | Http3xx |  Http 3xx  | 
+| Microsoft.Web/sites | Http2xx |  Http 2xx  | 
+| Microsoft.Web/sites | Http101 |  Http 101  | 
+| Microsoft.Web/sites | HealthCheckStatus |  健康情況檢查狀態  | 
+| Microsoft.Web/sites | 處理 |  控制代碼計數  | 
+| Microsoft.Web/sites | Gen2Collections |  Gen 2 記憶體回收  | 
+| Microsoft.Web/sites | Gen1Collections |  Gen 1 記憶體回收  | 
+| Microsoft.Web/sites | Gen0Collections |  Gen 0 記憶體回收  | 
+| Microsoft.Web/sites | FunctionExecutionUnits |  函式執行單位  | 
+| Microsoft.Web/sites | FunctionExecutionCount |  函式執行計數  | 
+| Microsoft.Web/sites | CurrentAssemblies |  目前的組件  | 
+| Microsoft.Web/sites | CpuTime |  CPU 時間  | 
+| Microsoft.Web/sites | BytesSent |  資料輸出  | 
+| Microsoft.Web/sites | BytesReceived |  資料輸入  | 
+| Microsoft.Web/sites | AverageResponseTime |  平均回應時間  | 
+| Microsoft.Web/sites | AverageMemoryWorkingSet |  平均記憶體工作集  | 
+| Microsoft.Web/sites | AppConnections |  連接  | 
+| Microsoft.Web/sites/slots | TotalAppDomainsUnloaded |  已卸載的應用程式網域總計  | 
+| Microsoft.Web/sites/slots | TotalAppDomains |  應用程式網域總計  | 
+| Microsoft.Web/sites/slots | Threads |  執行緒計數  | 
+| Microsoft.Web/sites/slots | RequestsInApplicationQueue |  應用程式佇列中的要求數  | 
+| Microsoft.Web/sites/slots | Requests |  Requests  | 
+| Microsoft.Web/sites/slots | PrivateBytes |  私用位元組  | 
+| Microsoft.Web/sites/slots | MemoryWorkingSet |  記憶體工作集  | 
+| Microsoft.Web/sites/slots | IoWriteOperationsPerSecond |  每秒的 IO 寫入作業數  | 
+| Microsoft.Web/sites/slots | IoWriteBytesPerSecond |  每秒的 IO 寫入位元組數  | 
+| Microsoft.Web/sites/slots | IoReadOperationsPerSecond |  每秒的 IO 讀取作業數  | 
+| Microsoft.Web/sites/slots | IoReadBytesPerSecond |  每秒的 IO 讀取位元組數  | 
+| Microsoft.Web/sites/slots | IoOtherOperationsPerSecond |  每秒的 IO 其他作業數  | 
+| Microsoft.Web/sites/slots | IoOtherBytesPerSecond |  每秒的 IO 其他位元組數  | 
+| Microsoft.Web/sites/slots | HttpResponseTime |  回應時間  | 
+| Microsoft.Web/sites/slots | Http5xx |  Http 伺服器錯誤  | 
+| Microsoft.Web/sites/slots | Http4xx |  Http 4xx  | 
+| Microsoft.Web/sites/slots | Http406 |  Http 406  | 
+| Microsoft.Web/sites/slots | Http404 |  Http 404  | 
+| Microsoft.Web/sites/slots | Http403 |  Http 403  | 
+| Microsoft.Web/sites/slots | Http401 |  Http 401  | 
+| Microsoft.Web/sites/slots | Http3xx |  Http 3xx  | 
+| Microsoft.Web/sites/slots | Http2xx |  Http 2xx  | 
+| Microsoft.Web/sites/slots | Http101 |  Http 101  | 
+| Microsoft.Web/sites/slots | HealthCheckStatus |  健康情況檢查狀態  | 
+| Microsoft.Web/sites/slots | 處理 |  控制代碼計數  | 
+| Microsoft.Web/sites/slots | Gen2Collections |  Gen 2 記憶體回收  | 
+| Microsoft.Web/sites/slots | Gen1Collections |  Gen 1 記憶體回收  | 
+| Microsoft.Web/sites/slots | Gen0Collections |  Gen 0 記憶體回收  | 
+| Microsoft.Web/sites/slots | FunctionExecutionUnits |  函式執行單位  | 
+| Microsoft.Web/sites/slots | FunctionExecutionCount |  函式執行計數  | 
+| Microsoft.Web/sites/slots | CurrentAssemblies |  目前的組件  | 
+| Microsoft.Web/sites/slots | CpuTime |  CPU 時間  | 
+| Microsoft.Web/sites/slots | BytesSent |  資料輸出  | 
+| Microsoft.Web/sites/slots | BytesReceived |  資料輸入  | 
+| Microsoft.Web/sites/slots | AverageResponseTime |  平均回應時間  | 
+| Microsoft.Web/sites/slots | AverageMemoryWorkingSet |  平均記憶體工作集  | 
+| Microsoft.Web/sites/slots | AppConnections |  連接  | 
+| Microsoft.Sql/servers/databases | cpu_percent | CPU 百分比 | 
+| Microsoft.Sql/servers/databases | physical_data_read_percent | 資料 IO 百分比 | 
+| Microsoft.Sql/servers/databases | log_write_percent | 記錄 IO 百分比 | 
+| Microsoft.Sql/servers/databases | dtu_consumption_percent | DTU 百分比 | 
+| Microsoft.Sql/servers/databases | connection_successful | 成功的連線 | 
+| Microsoft.Sql/servers/databases | connection_failed | 失敗的連線 | 
+| Microsoft.Sql/servers/databases | blocked_by_firewall | 遭到防火牆封鎖 | 
+| Microsoft.Sql/servers/databases | deadlock | 死結 | 
+| Microsoft.Sql/servers/databases | xtp_storage_percent | 記憶體內部 OLTP 儲存體百分比 | 
+| Microsoft.Sql/servers/databases | workers_percent | 背景工作角色百分比 | 
+| Microsoft.Sql/servers/databases | sessions_percent | 工作階段百分比 | 
+| Microsoft.Sql/servers/databases | dtu_used | 已使用 DTU | 
+| Microsoft.Sql/servers/databases | cpu_used | 已使用的 CPU | 
+| Microsoft.Sql/servers/databases | dwu_consumption_percent | DWU 百分比 | 
+| Microsoft.Sql/servers/databases | dwu_used | 已使用 DWU | 
+| Microsoft.Sql/servers/databases | cache_hit_percent | 快取命中的百分比 | 
+| Microsoft.Sql/servers/databases | wlg_allocation_relative_to_system_percent | 依系統百分比配置的工作負載群組 | 
+| Microsoft.Sql/servers/databases | wlg_allocation_relative_to_wlg_effective_cap_percent | 依最大資源百分比配置的工作負載群組 | 
+| Microsoft.Sql/servers/databases | wlg_active_queries | 工作負載群組使用中查詢 | 
+| Microsoft.Sql/servers/databases | wlg_queued_queries | 已排入佇列的工作負載群組查詢 | 
+| Microsoft.Sql/servers/databases | active_queries | 現用查詢 | 
+| Microsoft.Sql/servers/databases | queued_queries | 佇列查詢 | 
+| Microsoft.Sql/servers/databases | wlg_active_queries_timeouts | 工作負載群組查詢逾時 | 
+| Microsoft.Sql/servers/databases | wlg_queued_queries_timeouts | 工作負載群組佇列查詢超時 | 
+| Microsoft.Sql/servers/databases | wlg_effective_min_resource_percent | 有效的最低資源百分比 | 
+| Microsoft.Sql/servers/databases | wlg_effective_cap_resource_percent | 有效的容量資源百分比 | 
+| Microsoft.Sql/servers/elasticPools | cpu_percent | CPU 百分比 | 
+| Microsoft.Sql/servers/elasticPools | physical_data_read_percent | 資料 IO 百分比 | 
+| Microsoft.Sql/servers/elasticPools | log_write_percent | 記錄 IO 百分比 | 
+| Microsoft.Sql/servers/elasticPools | dtu_consumption_percent | DTU 百分比 | 
+| Microsoft.Sql/servers/elasticPools | workers_percent | 背景工作角色百分比 | 
+| Microsoft.Sql/servers/elasticPools | sessions_percent | 工作階段百分比 | 
+| Microsoft.Sql/servers/elasticPools | eDTU_used | 已使用 eDTU | 
+| Microsoft.Sql/servers/elasticPools | xtp_storage_percent | 記憶體內部 OLTP 儲存體百分比 | 
+| Microsoft.Sql/servers | dtu_consumption_percent | DTU 百分比 | 
+| Microsoft.Sql/servers | dtu_used | 已使用 DTU | 
+| Microsoft.Sql/managedInstances | avg_cpu_percent | CPU 百分比平均 | 
 
-
-> [!NOTE]
-> 下表的底部可能會有水準捲軸。 如果您認為遺漏了資訊，請確認捲軸是否已達到最左側。  
-
-
-| 是否可透過診斷設定匯出？  | 已發出 NULL |  ResourceType  |  計量  |  MetricDisplayName  |  單位  |  AggregationType | 
-|---|---| ---- | ----- | ------ | ---- | ---- | 
-| ****是****  | 否 |  Microsoft.AnalysisServices/servers  |  CleanerCurrentPrice  |  記憶體：清除工具目前價格  |  Count  |  Average | 
-| ****是****  | 否 |  Microsoft.AnalysisServices/servers  |  CleanerMemoryNonshrinkable  |  記憶體：不可壓縮的清除器記憶體  |  位元組  |  Average | 
-| ****是****  | 否 |  Microsoft.AnalysisServices/servers  |  CleanerMemoryShrinkable  |  記憶體：可壓縮的清除器記憶體  |  位元組  |  Average | 
-| ****是****  | 否 |  Microsoft.AnalysisServices/servers  |  CommandPoolBusyThreads  |  執行緒：命令集區的忙碌執行緒數  |  Count  |  Average | 
-| ****是****  | 否 |  Microsoft.AnalysisServices/servers  |  CommandPoolIdleThreads  |  執行緒：命令集區的閒置執行緒數  |  Count  |  Average | 
-| ****是****  | 否 |  Microsoft.AnalysisServices/servers  |  CommandPoolJobQueueLength  |  命令集區作業佇列長度  |  Count  |  Average | 
-| ****是****  | 否 |  Microsoft.AnalysisServices/servers  |  CurrentConnections  |  連線：目前的連線數  |  Count  |  Average | 
-| ****是****  | 否 |  Microsoft.AnalysisServices/servers  |  CurrentUserSessions  |  目前的使用者工作階段  |  Count  |  Average | 
-| ****是****  | 否 |  Microsoft.AnalysisServices/servers  |  LongParsingBusyThreads  |  執行緒：完整剖析的忙碌執行緒數  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.AnalysisServices/servers  |  LongParsingIdleThreads  |  執行緒：完整剖析的閒置執行緒數  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.AnalysisServices/servers  |  LongParsingJobQueueLength  |  執行緒：完整剖析的作業佇列長度  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.AnalysisServices/servers  |  mashup_engine_memory_metric  |  M 引擎記憶體  |  位元組  |  Average | 
-| **是**  | 否 |  Microsoft.AnalysisServices/servers  |  mashup_engine_private_bytes_metric  |  M 引擎私人位元組  |  位元組  |  Average | 
-| **是**  | 否 |  Microsoft.AnalysisServices/servers  |  mashup_engine_qpu_metric  |  M 引擎 QPU  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.AnalysisServices/servers  |  mashup_engine_virtual_bytes_metric  |  M 引擎虛擬位元組  |  位元組  |  Average | 
-| **是**  | 否 |  Microsoft.AnalysisServices/servers  |  memory_metric  |  記憶體  |  位元組  |  Average | 
-| **是**  | 否 |  Microsoft.AnalysisServices/servers  |  memory_thrashing_metric  |  記憶體猛移  |  百分比  |  Average | 
-| **是**  | 否 |  Microsoft.AnalysisServices/servers  |  MemoryLimitHard  |  記憶體：固定記憶體限制  |  位元組  |  Average | 
-| **是**  | 否 |  Microsoft.AnalysisServices/servers  |  MemoryLimitHigh  |  記憶體：記憶體上限  |  位元組  |  Average | 
-| **是**  | 否 |  Microsoft.AnalysisServices/servers  |  MemoryLimitLow  |  記憶體：記憶體下限  |  位元組  |  Average | 
-| **是**  | 否 |  Microsoft.AnalysisServices/servers  |  MemoryLimitVertiPaq  |  記憶體：記憶體限制 VertiPaq  |  位元組  |  Average | 
-| **是**  | 否 |  Microsoft.AnalysisServices/servers  |  MemoryUsage  |  記憶體：記憶體使用量  |  位元組  |  Average | 
-| **是**  | 否 |  Microsoft.AnalysisServices/servers  |  private_bytes_metric  |  私用位元組  |  位元組  |  Average | 
-| **是**  | 否 |  Microsoft.AnalysisServices/servers  |  ProcessingPoolBusyIOJobThreads  |  執行緒：處理集區的忙碌 I/O 作業執行緒數  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.AnalysisServices/servers  |  ProcessingPoolBusyNonIOThreads  |  執行緒：處理集區的忙碌非 I/O 執行緒數  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.AnalysisServices/servers  |  ProcessingPoolIdleIOJobThreads  |  執行緒：處理集區的閒置 I/O 作業執行緒數  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.AnalysisServices/servers  |  ProcessingPoolIdleNonIOThreads  |  執行緒：處理集區的閒置非 I/O 執行緒數  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.AnalysisServices/servers  |  ProcessingPoolIOJobQueueLength  |  執行緒：處理集區 I/O 作業佇列長度  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.AnalysisServices/servers  |  ProcessingPoolJobQueueLength  |  處理集區作業佇列長度  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.AnalysisServices/servers  |  qpu_metric  |  QPU  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.AnalysisServices/servers  |  QueryPoolBusyThreads  |  查詢集區忙碌執行緒  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.AnalysisServices/servers  |  QueryPoolIdleThreads  |  執行緒：查詢集區的閒置執行緒數  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.AnalysisServices/servers  |  QueryPoolJobQueueLength  |  執行緒：查詢集區的作業佇列長度  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.AnalysisServices/servers  |  Quota  |  記憶體：Quota  |  位元組  |  Average | 
-| **是**  | 否 |  Microsoft.AnalysisServices/servers  |  QuotaBlocked  |  記憶體：封鎖的配額  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.AnalysisServices/servers  |  RowsConvertedPerSec  |  處理：每秒轉換的資料列  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.AnalysisServices/servers  |  RowsReadPerSec  |  處理：每秒讀取的資料列  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.AnalysisServices/servers  |  RowsWrittenPerSec  |  處理：每秒寫入的資料列  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.AnalysisServices/servers  |  ShortParsingBusyThreads  |  執行緒：簡短剖析的忙碌執行緒數  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.AnalysisServices/servers  |  ShortParsingIdleThreads  |  執行緒：簡短剖析的閒置執行緒數  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.AnalysisServices/servers  |  ShortParsingJobQueueLength  |  執行緒：簡短剖析的作業佇列長度  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.AnalysisServices/servers  |  SuccessfullConnectionsPerSec  |  每秒連線成功的次數  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.AnalysisServices/servers  |  TotalConnectionFailures  |  連線失敗的總計  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.AnalysisServices/servers  |  TotalConnectionRequests  |  連線要求的總計  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.AnalysisServices/servers  |  VertiPaqNonpaged  |  記憶體：未分頁的 VertiPaq  |  位元組  |  Average | 
-| **是**  | 否 |  Microsoft.AnalysisServices/servers  |  VertiPaqPaged  |  記憶體：分頁的 VertiPaq  |  位元組  |  Average | 
-| **是**  | 否 |  Microsoft.AnalysisServices/servers  |  virtual_bytes_metric  |  虛擬位元組  |  位元組  |  Average | 
-| **是**  | **是** |  Microsoft.ApiManagement/service  |  BackendDuration  |  後端要求的持續時間  |  毫秒  |  Average | 
-| **是**  | 否 |  Microsoft.ApiManagement/service  |  Capacity  |  Capacity  |  百分比  |  Average | 
-| **是**  | **是** |  Microsoft.ApiManagement/service  |  Duration  |  閘道要求的整體持續期間  |  毫秒  |  Average | 
-| **是**  | **是** |  Microsoft.ApiManagement/service  |  EventHubDroppedEvents  |  已卸除的 EventHub 事件  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.ApiManagement/service  |  EventHubRejectedEvents  |  已拒絕的 EventHub 事件  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.ApiManagement/service  |  EventHubSuccessfulEvents  |  成功的 EventHub 事件  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.ApiManagement/service  |  EventHubThrottledEvents  |  已節流的 EventHub 事件  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.ApiManagement/service  |  EventHubTimedoutEvents  |  已逾時的 EventHub 事件  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.ApiManagement/service  |  EventHubTotalBytesSent  |  EventHub 事件的大小  |  位元組  |  總計 | 
-| **是**  | **是** |  Microsoft.ApiManagement/service  |  EventHubTotalEvents  |  EventHub 事件總數  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.ApiManagement/service  |  EventHubTotalFailedEvents  |  失敗的 EventHub 事件  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.ApiManagement/service  |  FailedRequests  |  失敗的閘道要求 (已淘汰)  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.ApiManagement/service  |  OtherRequests  |  其他閘道要求 (已淘汰)  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.ApiManagement/service  |  Requests  |  Requests  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.ApiManagement/service  |  SuccessfulRequests  |  成功的閘道要求 (已淘汰)  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.ApiManagement/service  |  TotalRequests  |  閘道要求總數 (已淘汰)  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.ApiManagement/service  |  UnauthorizedRequests  |  未經授權的閘道要求 (已淘汰)  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.AppPlatform/Spring  |  AppCpuUsagePercentage  |  應用程式 CPU 使用率百分比  |  百分比  |  Average | 
-| **是**  | 否 |  Microsoft.AppPlatform/Spring  |  AppMemoryCommitted  |  已指派的應用程式記憶體  |  位元組  |  Average | 
-| **是**  | 否 |  Microsoft.AppPlatform/Spring  |  AppMemoryMax  |  應用程式記憶體最大值  |  位元組  |  最大值 | 
-| **是**  | 否 |  Microsoft.AppPlatform/Spring  |  AppMemoryUsed  |  已使用的應用程式記憶體  |  位元組  |  Average | 
-| **是**  | 否 |  Microsoft.AppPlatform/Spring  |  GCPauseTotalCount  |  GC 暫停計數  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.AppPlatform/Spring  |  GCPauseTotalTime  |  GC 暫停總時間  |  毫秒  |  總計 | 
-| **是**  | 否 |  Microsoft.AppPlatform/Spring  |  MaxOldGenMemoryPoolBytes  |  可用的舊世代資料大小上限  |  位元組  |  Average | 
-| **是**  | 否 |  Microsoft.AppPlatform/Spring  |  OldGenMemoryPoolBytes  |  舊世代資料大小  |  位元組  |  Average | 
-| **是**  | 否 |  Microsoft.AppPlatform/Spring  |  OldGenPromotedBytes  |  升階為舊世代資料大小  |  位元組  |  最大值 | 
-| **是**  | 否 |  Microsoft.AppPlatform/Spring  |  SystemCpuUsagePercentage  |  系統 CPU 使用率百分比  |  百分比  |  Average | 
-| **是**  | 否 |  Microsoft.AppPlatform/Spring  |  TomcatErrorCount  |  Tomcat 全域錯誤  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.AppPlatform/Spring  |  TomcatReceivedBytes  |  Tomcat 接收到的位元組總數  |  位元組  |  總計 | 
-| **是**  | 否 |  Microsoft.AppPlatform/Spring  |  TomcatRequestMaxTime  |  Tomcat 要求時間上限  |  毫秒  |  最大值 | 
-| **是**  | 否 |  Microsoft.AppPlatform/Spring  |  TomcatRequestTotalCount  |  Tomcat 要求總計數  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.AppPlatform/Spring  |  TomcatRequestTotalTime  |  Tomcat 要求總次數  |  毫秒  |  總計 | 
-| **是**  | 否 |  Microsoft.AppPlatform/Spring  |  TomcatResponseAvgTime  |  Tomcat 要求平均時間  |  毫秒  |  Average | 
-| **是**  | 否 |  Microsoft.AppPlatform/Spring  |  TomcatSentBytes  |  Tomcat 已傳送的位元組總數  |  位元組  |  總計 | 
-| **是**  | 否 |  Microsoft.AppPlatform/Spring  |  TomcatSessionActiveCurrentCount  |  Tomcat 工作階段有效計數  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.AppPlatform/Spring  |  TomcatSessionActiveMaxCount  |  Tomcat 工作階段最大作用中計數  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.AppPlatform/Spring  |  TomcatSessionAliveMaxTime  |  Tomcat 工作階段最大有效時間  |  毫秒  |  最大值 | 
-| **是**  | 否 |  Microsoft.AppPlatform/Spring  |  TomcatSessionCreatedCount  |  Tomcat 已建立的工作階段計數  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.AppPlatform/Spring  |  TomcatSessionExpiredCount  |  Tomcat 已過期的工作階段計數  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.AppPlatform/Spring  |  TomcatSessionRejectedCount  |  Tomcat 已拒絕的工作階段計數  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.AppPlatform/Spring  |  YoungGenPromotedBytes  |  升階為新世代資料大小  |  位元組  |  最大值 | 
-| **是**  | 否 |  Microsoft.Automation/automationAccounts  |  TotalJob  |  工作總數  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Automation/automationAccounts  |  TotalUpdateDeploymentMachineRuns  |  更新部署機器執行總計  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Automation/automationAccounts  |  TotalUpdateDeploymentRuns  |  更新部署執行總計  |  Count  |  總計 | 
-| 否  | 否 |  Microsoft.Batch/batchAccounts  |  CoreCount  |  專用核心計數  |  Count  |  總計 | 
-| 否  | 否 |  Microsoft.Batch/batchAccounts  |  CreatingNodeCount  |  建立節點計數  |  Count  |  總計 | 
-| 否  | 否 |  Microsoft.Batch/batchAccounts  |  IdleNodeCount  |  閒置的節點計數  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Batch/batchAccounts  |  JobDeleteCompleteEvent  |  作業刪除完成事件  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Batch/batchAccounts  |  JobDeleteStartEvent  |  作業刪除啟動事件  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Batch/batchAccounts  |  JobDisableCompleteEvent  |  作業停用完成事件  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Batch/batchAccounts  |  JobDisableStartEvent  |  作業停用啟動事件  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Batch/batchAccounts  |  JobStartEvent  |  作業啟動事件  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Batch/batchAccounts  |  JobTerminateCompleteEvent  |  作業終止完成事件  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Batch/batchAccounts  |  JobTerminateCompleteEvent  |  作業終止啟動事件  |  Count  |  總計 | 
-| 否  | 否 |  Microsoft.Batch/batchAccounts  |  LeavingPoolNodeCount  |  離開集區節點計數  |  Count  |  總計 | 
-| 否  | 否 |  Microsoft.Batch/batchAccounts  |  LowPriorityCoreCount  |  LowPriority 核心計數  |  Count  |  總計 | 
-| 否  | 否 |  Microsoft.Batch/batchAccounts  |  OfflineNodeCount  |  離線節點計數  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Batch/batchAccounts  |  PoolCreateEvent  |  集區建立事件  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Batch/batchAccounts  |  PoolDeleteCompleteEvent  |  集區刪除完成事件  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Batch/batchAccounts  |  PoolDeleteStartEvent  |  集區刪除啟動事件  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Batch/batchAccounts  |  PoolResizeCompleteEvent  |  調整集區大小完成事件  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Batch/batchAccounts  |  PoolResizeStartEvent  |  調整集區大小啟動事件  |  Count  |  總計 | 
-| 否  | 否 |  Microsoft.Batch/batchAccounts  |  PreemptedNodeCount  |  先占節點計數  |  Count  |  總計 | 
-| 否  | 否 |  Microsoft.Batch/batchAccounts  |  RebootingNodeCount  |  重新啟動節點計數  |  Count  |  總計 | 
-| 否  | 否 |  Microsoft.Batch/batchAccounts  |  RebootingNodeCount  |  重新安裝映像節點計數  |  Count  |  總計 | 
-| 否  | 否 |  Microsoft.Batch/batchAccounts  |  RunningNodeCount  |  執行節點計數  |  Count  |  總計 | 
-| 否  | 否 |  Microsoft.Batch/batchAccounts  |  StartingNodeCount  |  啟動節點計數  |  Count  |  總計 | 
-| 否  | 否 |  Microsoft.Batch/batchAccounts  |  StartTaskFailedNodeCount  |  啟動工作失敗的節點計數  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Batch/batchAccounts  |  TaskCompleteEvent  |  工作完成事件  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Batch/batchAccounts  |  TaskFailEvent  |  工作失敗事件  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Batch/batchAccounts  |  TaskStartEvent  |  工作啟動的事件  |  Count  |  總計 | 
-| 否  | 否 |  Microsoft.Batch/batchAccounts  |  TotalLowPriorityNodeCount  |  低優先順序節點計數  |  Count  |  總計 | 
-| 否  | 否 |  Microsoft.Batch/batchAccounts  |  TotalNodeCount  |  專用節點計數  |  Count  |  總計 | 
-| 否  | 否 |  Microsoft.Batch/batchAccounts  |  UnusableNodeCount  |  無法使用的節點計數  |  Count  |  總計 | 
-| 否  | 否 |  Microsoft.Batch/batchAccounts  |  WaitingForStartTaskNodeCount  |  等候啟動工作節點計數  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.BatchAI/workspaces  |  作用中核心  |  作用中核心  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.BatchAI/workspaces  |  作用中節點  |  作用中節點  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.BatchAI/workspaces  |  閒置核心  |  閒置核心  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.BatchAI/workspaces  |  閒置節點  |  閒置節點  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.BatchAI/workspaces  |  已完成的作業  |  已完成的作業  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.BatchAI/workspaces  |  已提交的作業  |  已提交的作業  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.BatchAI/workspaces  |  正在離開的核心  |  正在離開的核心  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.BatchAI/workspaces  |  正在離開的節點  |  正在離開的節點  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.BatchAI/workspaces  |  先佔節點  |  先佔節點  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.BatchAI/workspaces  |  先佔節點  |  先佔節點  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.BatchAI/workspaces  |  配額使用率百分比  |  配額使用率百分比  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.BatchAI/workspaces  |  總核心數  |  總核心數  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.BatchAI/workspaces  |  節點總計  |  節點總計  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.BatchAI/workspaces  |  無法使用的核心  |  無法使用的核心  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.BatchAI/workspaces  |  無法使用的節點  |  無法使用的節點  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.Blockchain/blockchainMembers  |  ConnectionAccepted  |  已接受的連線  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Blockchain/blockchainMembers  |  ConnectionActive  |  作用中的連線  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.Blockchain/blockchainMembers  |  ConnectionHandled  |  已處理的連線  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Blockchain/blockchainMembers  |  CpuUsagePercentageInDouble  |  CPU 使用率百分比  |  百分比  |  最大值 | 
-| **是**  | 否 |  Microsoft.Blockchain/blockchainMembers  |  IOReadBytes  |  IO 讀取位元組  |  位元組  |  總計 | 
-| **是**  | 否 |  Microsoft.Blockchain/blockchainMembers  |  IOWriteBytes  |  IO 寫入位元組  |  位元組  |  總計 | 
-| **是**  | 否 |  Microsoft.Blockchain/blockchainMembers  |  MemoryLimit  |  記憶體限制  |  位元組  |  Average | 
-| **是**  | 否 |  Microsoft.Blockchain/blockchainMembers  |  MemoryUsage  |  記憶體使用量  |  位元組  |  Average | 
-| **是**  | 否 |  Microsoft.Blockchain/blockchainMembers  |  MemoryUsagePercentageInDouble  |  記憶體使用量百分比  |  百分比  |  Average | 
-| **是**  | 否 |  Microsoft.Blockchain/blockchainMembers  |  PendingTransactions  |  擱置交易  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.Blockchain/blockchainMembers  |  ProcessedBlocks  |  已處理的區塊  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Blockchain/blockchainMembers  |  ProcessedTransactions  |  已處理的交易  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Blockchain/blockchainMembers  |  QueuedTransactions  |  已排入佇列的交易  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.Blockchain/blockchainMembers  |  RequestHandled  |  已處理的要求  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Blockchain/blockchainMembers  |  StorageUsage  |  儲存體使用量  |  位元組  |  Average | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  cachehits  |  快取點擊  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  cachehits0  |  快取點擊 (分區 0)  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  cachehits1  |  快取點擊 (分區 1)  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  cachehits2  |  快取點擊 (分區 2)  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  cachehits3  |  快取點擊 (分區 3)  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  cachehits4  |  快取點擊 (分區 4)  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  cachehits5  |  快取點擊 (分區 5)  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  cachehits6  |  快取點擊 (分區 6)  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  cachehits7  |  快取點擊 (分區 7)  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  cachehits8  |  快取點擊 (分區 8)  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  cachehits9  |  快取點擊 (分區 9)  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  cacheLatency  |  快取延遲 (毫秒) (預覽)  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  cachemisses  |  快取遺漏  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  cachemisses0  |  快取遺漏 (分區 0)  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  cachemisses1  |  快取遺漏 (分區 1)  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  cachemisses2  |  快取遺漏 (分區 2)  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  cachemisses3  |  快取遺漏 (分區 3)  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  cachemisses4  |  快取遺漏 (分區 4)  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  cachemisses5  |  快取遺漏 (分區 5)  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  cachemisses6  |  快取遺漏 (分區 6)  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  cachemisses7  |  快取遺漏 (分區 7)  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  cachemisses8  |  快取遺漏 (分區 8)  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  cachemisses9  |  快取遺漏 (分區 9)  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  cacheRead  |  快取讀取  |  每秒位元組  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  cacheRead0  |  快取讀取 (分區 0)  |  每秒位元組  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  cacheRead1  |  快取讀取 (分區 1)  |  每秒位元組  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  cacheRead2  |  快取讀取 (分區 2)  |  每秒位元組  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  cacheRead3  |  快取讀取 (分區 3)  |  每秒位元組  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  cacheRead4  |  快取讀取 (分區 4)  |  每秒位元組  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  cacheRead5  |  快取讀取 (分區 5)  |  每秒位元組  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  cacheRead6  |  快取讀取 (分區 6)  |  每秒位元組  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  cacheRead7  |  快取讀取 (分區 7)  |  每秒位元組  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  cacheRead8  |  快取讀取 (分區 8)  |  每秒位元組  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  cacheRead9  |  快取讀取 (分區 9)  |  每秒位元組  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  cacheWrite  |  快取寫入  |  每秒位元組  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  cacheWrite0  |  快取寫入 (分區 0)  |  每秒位元組  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  cacheWrite1  |  快取寫入 (分區 1)  |  每秒位元組  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  cacheWrite2  |  快取寫入 (分區 2)  |  每秒位元組  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  cacheWrite3  |  快取寫入 (分區 3)  |  每秒位元組  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  cacheWrite4  |  快取寫入 (分區 4)  |  每秒位元組  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  cacheWrite5  |  快取寫入 (分區 5)  |  每秒位元組  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  cacheWrite6  |  快取寫入 (分區 6)  |  每秒位元組  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  cacheWrite7  |  快取寫入 (分區 7)  |  每秒位元組  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  cacheWrite8  |  快取寫入 (分區 8)  |  每秒位元組  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  cacheWrite9  |  快取寫入 (分區 9)  |  每秒位元組  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  connectedclients  |  連線的用戶端  |  Count  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  connectedclients0  |  連線的用戶端 (分區 0)  |  Count  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  connectedclients1  |  連線的用戶端 (分區 1)  |  Count  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  connectedclients2  |  連線的用戶端 (分區 2)  |  Count  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  connectedclients3  |  連線的用戶端 (分區 3)  |  Count  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  connectedclients4  |  連線的用戶端 (分區 4)  |  Count  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  connectedclients5  |  連線的用戶端 (分區 5)  |  Count  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  connectedclients6  |  連線的用戶端 (分區 6)  |  Count  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  connectedclients7  |  連線的用戶端 (分區 7)  |  Count  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  connectedclients8  |  連線的用戶端 (分區 8)  |  Count  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  connectedclients9  |  連線的用戶端 (分區 9)  |  Count  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  錯誤  |  Errors  |  Count  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  evictedkeys  |  收回的金鑰  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  evictedkeys0  |  收回的金鑰 (分區 0)  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  evictedkeys1  |  收回的金鑰 (分區 1)  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  evictedkeys2  |  收回的金鑰 (分區 2)  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  evictedkeys3  |  收回的金鑰 (分區 3)  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  evictedkeys4  |  收回的金鑰 (分區 4)  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  evictedkeys5  |  收回的金鑰 (分區 5)  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  evictedkeys6  |  收回的金鑰 (分區 6)  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  evictedkeys7  |  收回的金鑰 (分區 7)  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  evictedkeys8  |  收回的金鑰 (分區 8)  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  evictedkeys9  |  收回的金鑰 (分區 9)  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  expiredkeys  |  到期的金鑰  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  expiredkeys0  |  到期的金鑰 (分區 0)  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  expiredkeys1  |  到期的金鑰 (分區 1)  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  expiredkeys2  |  到期的金鑰 (分區 2)  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  expiredkeys3  |  到期的金鑰 (分區 3)  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  expiredkeys4  |  到期的金鑰 (分區 4)  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  expiredkeys5  |  到期的金鑰 (分區 5)  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  expiredkeys6  |  到期的金鑰 (分區 6)  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  expiredkeys7  |  到期的金鑰 (分區 7)  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  expiredkeys8  |  到期的金鑰 (分區 8)  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  expiredkeys9  |  到期的金鑰 (分區 9)  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  getcommands  |  取得  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  getcommands0  |  取得 (分區 0)  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  getcommands1  |  取得 (分區 1)  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  getcommands2  |  取得 (分區 2)  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  getcommands3  |  取得 (分區 3)  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  getcommands4  |  取得 (分區 4)  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  getcommands5  |  取得 (分區 5)  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  getcommands6  |  取得 (分區 6)  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  getcommands7  |  取得 (分區 7)  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  getcommands8  |  取得 (分區 8)  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  getcommands9  |  取得 (分區 9)  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  operationsPerSecond  |  每秒的作業數  |  Count  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  operationsPerSecond0  |  每秒的作業數 (分區 0)  |  Count  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  operationsPerSecond1  |  每秒的作業數 (分區 1)  |  Count  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  operationsPerSecond2  |  每秒的作業數 (分區 2)  |  Count  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  operationsPerSecond3  |  每秒的作業數 (分區 3)  |  Count  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  operationsPerSecond4  |  每秒的作業數 (分區 4)  |  Count  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  operationsPerSecond5  |  每秒的作業數 (分區 5)  |  Count  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  operationsPerSecond6  |  每秒的作業數 (分區 6)  |  Count  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  operationsPerSecond7  |  每秒的作業數 (分區 7)  |  Count  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  operationsPerSecond8  |  每秒的作業數 (分區 8)  |  Count  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  operationsPerSecond9  |  每秒的作業數 (分區 9)  |  Count  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  percentProcessorTime  |  CPU  |  百分比  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  percentProcessorTime0  |  CPU (分區 0)  |  百分比  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  percentProcessorTime1  |  CPU (分區 1)  |  百分比  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  percentProcessorTime2  |  CPU (分區 2)  |  百分比  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  percentProcessorTime3  |  CPU (分區 3)  |  百分比  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  percentProcessorTime4  |  CPU (分區 4)  |  百分比  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  percentProcessorTime5  |  CPU (分區 5)  |  百分比  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  percentProcessorTime6  |  CPU (分區 6)  |  百分比  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  percentProcessorTime7  |  CPU (分區 7)  |  百分比  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  percentProcessorTime8  |  CPU (分區 8)  |  百分比  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  percentProcessorTime9  |  CPU (分區 9)  |  百分比  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  serverLoad  |  伺服器負載  |  百分比  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  serverLoad0  |  伺服器負載 (分區 0)  |  百分比  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  serverLoad1  |  伺服器負載 (分區 1)  |  百分比  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  serverLoad2  |  伺服器負載 (分區 2)  |  百分比  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  serverLoad3  |  伺服器負載 (分區 3)  |  百分比  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  serverLoad4  |  伺服器負載 (分區 4)  |  百分比  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  serverLoad5  |  伺服器負載 (分區 5)  |  百分比  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  serverLoad6  |  伺服器負載 (分區 6)  |  百分比  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  serverLoad7  |  伺服器負載 (分區 7)  |  百分比  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  serverLoad8  |  伺服器負載 (分區 8)  |  百分比  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  serverLoad9  |  伺服器負載 (分區 9)  |  百分比  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  setcommands  |  集合  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  setcommands0  |  設定 (分區 0)  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  setcommands1  |  設定 (分區 1)  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  setcommands2  |  設定 (分區 2)  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  setcommands3  |  設定 (分區 3)  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  setcommands4  |  設定 (分區 4)  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  setcommands5  |  設定 (分區 5)  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  setcommands6  |  設定 (分區 6)  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  setcommands7  |  設定 (分區 7)  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  setcommands8  |  設定 (分區 8)  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  setcommands9  |  設定 (分區 9)  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  totalcommandsprocessed  |  總作業數  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  totalcommandsprocessed0  |  總作業數 (分區 0)  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  totalcommandsprocessed1  |  總作業數 (分區 1)  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  totalcommandsprocessed2  |  總作業數 (分區 2)  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  totalcommandsprocessed3  |  總作業數 (分區 3)  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  totalcommandsprocessed4  |  總作業數 (分區 4)  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  totalcommandsprocessed5  |  總作業數 (分區 5)  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  totalcommandsprocessed6  |  總作業數 (分區 6)  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  totalcommandsprocessed7  |  總作業數 (分區 7)  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  totalcommandsprocessed8  |  總作業數 (分區 8)  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  totalcommandsprocessed9  |  總作業數 (分區 9)  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  totalkeys  |  索引鍵總計  |  Count  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  totalkeys0  |  金鑰總數 (分區 0)  |  Count  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  totalkeys1  |  金鑰總數 (分區 1)  |  Count  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  totalkeys2  |  金鑰總數 (分區 2)  |  Count  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  totalkeys3  |  金鑰總數 (分區 3)  |  Count  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  totalkeys4  |  金鑰總數 (分區 4)  |  Count  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  totalkeys5  |  金鑰總數 (分區 5)  |  Count  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  totalkeys6  |  金鑰總數 (分區 6)  |  Count  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  totalkeys7  |  金鑰總數 (分區 7)  |  Count  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  totalkeys8  |  金鑰總數 (分區 8)  |  Count  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  totalkeys9  |  金鑰總數 (分區 9)  |  Count  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  usedmemory  |  已使用的記憶體  |  位元組  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  usedmemory0  |  已用的記憶體 (分區 0)  |  位元組  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  usedmemory1  |  已用的記憶體 (分區 1)  |  位元組  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  usedmemory2  |  已用的記憶體 (分區 2)  |  位元組  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  usedmemory3  |  已用的記憶體 (分區 3)  |  位元組  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  usedmemory4  |  已用的記憶體 (分區 4)  |  位元組  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  usedmemory5  |  已用的記憶體 (分區 5)  |  位元組  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  usedmemory6  |  已用的記憶體 (分區 6)  |  位元組  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  usedmemory7  |  已用的記憶體 (分區 7)  |  位元組  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  usedmemory8  |  已用的記憶體 (分區 8)  |  位元組  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  usedmemory9  |  已用的記憶體 (分區 9)  |  位元組  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  usedmemorypercentage  |  已用的記憶體百分比  |  百分比  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  usedmemoryRss  |  已用的記憶體 RSS  |  位元組  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  usedmemoryRss0  |  已用的記憶體 RSS (分區 0)  |  位元組  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  usedmemoryRss1  |  已用的記憶體 RSS (分區 1)  |  位元組  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  usedmemoryRss2  |  已用的記憶體 RSS (分區 2)  |  位元組  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  usedmemoryRss3  |  已用的記憶體 RSS (分區 3)  |  位元組  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  usedmemoryRss4  |  已用的記憶體 RSS (分區 4)  |  位元組  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  usedmemoryRss5  |  已用的記憶體 RSS (分區 5)  |  位元組  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  usedmemoryRss6  |  已用的記憶體 RSS (分區 6)  |  位元組  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  usedmemoryRss7  |  已用的記憶體 RSS (分區 7)  |  位元組  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  usedmemoryRss8  |  已用的記憶體 RSS (分區 8)  |  位元組  |  最大值 | 
-| **是**  | 否 |  Microsoft.Cache/redis  |  usedmemoryRss9  |  已用的記憶體 RSS (分區 9)  |  位元組  |  最大值 | 
-| 否  | 否 |  Microsoft.ClassicCompute/domainNames/slots/roles  |  Disk Read Bytes/Sec  |  磁碟讀取  |  每秒位元組  |  Average | 
-| **是**  | 否 |  Microsoft.ClassicCompute/domainNames/slots/roles  |  Disk Read Operations/Sec  |  Disk Read Operations/Sec  |  每秒計數  |  Average | 
-| 否  | 否 |  Microsoft.ClassicCompute/domainNames/slots/roles  |  Disk Write Bytes/Sec  |  磁碟寫入  |  每秒位元組  |  Average | 
-| **是**  | 否 |  Microsoft.ClassicCompute/domainNames/slots/roles  |  Disk Write Operations/Sec  |  Disk Write Operations/Sec  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.ClassicCompute/domainNames/slots/roles  |  Network In  |  Network In  |  位元組  |  總計 | 
-| **是**  | 否 |  Microsoft.ClassicCompute/domainNames/slots/roles  |  Network Out  |  Network Out  |  位元組  |  總計 | 
-| **是**  | 否 |  Microsoft.ClassicCompute/domainNames/slots/roles  |  Percentage CPU  |  Percentage CPU  |  百分比  |  Average | 
-| 否  | 否 |  Microsoft.ClassicCompute/virtualMachines  |  Disk Read Bytes/Sec  |  磁碟讀取  |  每秒位元組  |  Average | 
-| **是**  | 否 |  Microsoft.ClassicCompute/virtualMachines  |  Disk Read Operations/Sec  |  Disk Read Operations/Sec  |  每秒計數  |  Average | 
-| 否  | 否 |  Microsoft.ClassicCompute/virtualMachines  |  Disk Write Bytes/Sec  |  磁碟寫入  |  每秒位元組  |  Average | 
-| **是**  | 否 |  Microsoft.ClassicCompute/virtualMachines  |  Disk Write Operations/Sec  |  Disk Write Operations/Sec  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.ClassicCompute/virtualMachines  |  Network In  |  Network In  |  位元組  |  總計 | 
-| **是**  | 否 |  Microsoft.ClassicCompute/virtualMachines  |  Network Out  |  Network Out  |  位元組  |  總計 | 
-| **是**  | 否 |  Microsoft.ClassicCompute/virtualMachines  |  Percentage CPU  |  Percentage CPU  |  百分比  |  Average | 
-| **是**  | 否 |  Microsoft.ClassicStorage/storageAccounts  |  可用性  |  可用性  |  百分比  |  Average | 
-| **是**  | 否 |  Microsoft.ClassicStorage/storageAccounts  |  輸出  |  輸出  |  位元組  |  總計 | 
-| **是**  | 否 |  Microsoft.ClassicStorage/storageAccounts  |  輸入  |  輸入  |  位元組  |  總計 | 
-| **是**  | 否 |  Microsoft.ClassicStorage/storageAccounts  |  SuccessE2ELatency  |  成功 E2E 延遲  |  毫秒  |  Average | 
-| **是**  | 否 |  Microsoft.ClassicStorage/storageAccounts  |  SuccessServerLatency  |  成功伺服器延遲  |  毫秒  |  Average | 
-| **是**  | 否 |  Microsoft.ClassicStorage/storageAccounts  |  交易  |  交易  |  Count  |  總計 | 
-| 否  | 否 |  Microsoft.ClassicStorage/storageAccounts  |  UsedCapacity  |  已使用容量  |  位元組  |  Average | 
-| **是**  | 否 |  Microsoft.ClassicStorage/storageAccounts/blobServices  |  可用性  |  可用性  |  百分比  |  Average | 
-| 否  | 否 |  Microsoft.ClassicStorage/storageAccounts/blobServices  |  BlobCapacity  |  Blob 容量  |  位元組  |  Average | 
-| 否  | 否 |  Microsoft.ClassicStorage/storageAccounts/blobServices  |  BlobCount  |  Blob 計數  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.ClassicStorage/storageAccounts/blobServices  |  ContainerCount  |  Blob 容器計數  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.ClassicStorage/storageAccounts/blobServices  |  輸出  |  輸出  |  位元組  |  總計 | 
-| 否  | 否 |  Microsoft.ClassicStorage/storageAccounts/blobServices  |  IndexCapacity  |  索引容量  |  位元組  |  Average | 
-| **是**  | 否 |  Microsoft.ClassicStorage/storageAccounts/blobServices  |  輸入  |  輸入  |  位元組  |  總計 | 
-| **是**  | 否 |  Microsoft.ClassicStorage/storageAccounts/blobServices  |  SuccessE2ELatency  |  成功 E2E 延遲  |  毫秒  |  Average | 
-| **是**  | 否 |  Microsoft.ClassicStorage/storageAccounts/blobServices  |  SuccessServerLatency  |  成功伺服器延遲  |  毫秒  |  Average | 
-| **是**  | 否 |  Microsoft.ClassicStorage/storageAccounts/blobServices  |  交易  |  交易  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.ClassicStorage/storageAccounts/fileServices  |  可用性  |  可用性  |  百分比  |  Average | 
-| **是**  | 否 |  Microsoft.ClassicStorage/storageAccounts/fileServices  |  輸出  |  輸出  |  位元組  |  總計 | 
-| 否  | 否 |  Microsoft.ClassicStorage/storageAccounts/fileServices  |  FileCapacity  |  檔案容量  |  位元組  |  Average | 
-| 否  | 否 |  Microsoft.ClassicStorage/storageAccounts/fileServices  |  FileCount  |  檔案計數  |  Count  |  Average | 
-| 否  | 否 |  Microsoft.ClassicStorage/storageAccounts/fileServices  |  FileShareCount  |  檔案共用計數  |  Count  |  Average | 
-| 否  | 否 |  Microsoft.ClassicStorage/storageAccounts/fileServices  |  FileShareQuota  |  檔案共用配額大小  |  位元組  |  Average | 
-| 否  | 否 |  Microsoft.ClassicStorage/storageAccounts/fileServices  |  FileShareSnapshotCount  |  檔案共用快照集計數  |  Count  |  Average | 
-| 否  | 否 |  Microsoft.ClassicStorage/storageAccounts/fileServices  |  FileShareSnapshotSize  |  檔案共用快照集大小  |  位元組  |  Average | 
-| **是**  | 否 |  Microsoft.ClassicStorage/storageAccounts/fileServices  |  輸入  |  輸入  |  位元組  |  總計 | 
-| **是**  | 否 |  Microsoft.ClassicStorage/storageAccounts/fileServices  |  SuccessE2ELatency  |  成功 E2E 延遲  |  毫秒  |  Average | 
-| **是**  | 否 |  Microsoft.ClassicStorage/storageAccounts/fileServices  |  SuccessServerLatency  |  成功伺服器延遲  |  毫秒  |  Average | 
-| **是**  | 否 |  Microsoft.ClassicStorage/storageAccounts/fileServices  |  交易  |  交易  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.ClassicStorage/storageAccounts/queueServices  |  可用性  |  可用性  |  百分比  |  Average | 
-| **是**  | 否 |  Microsoft.ClassicStorage/storageAccounts/queueServices  |  輸出  |  輸出  |  位元組  |  總計 | 
-| **是**  | 否 |  Microsoft.ClassicStorage/storageAccounts/queueServices  |  輸入  |  輸入  |  位元組  |  總計 | 
-| **是**  | 否 |  Microsoft.ClassicStorage/storageAccounts/queueServices  |  QueueCapacity  |  佇列容量  |  位元組  |  Average | 
-| **是**  | 否 |  Microsoft.ClassicStorage/storageAccounts/queueServices  |  QueueCount  |  佇列計數  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.ClassicStorage/storageAccounts/queueServices  |  QueueMessageCount  |  佇列訊息計數  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.ClassicStorage/storageAccounts/queueServices  |  SuccessE2ELatency  |  成功 E2E 延遲  |  毫秒  |  Average | 
-| **是**  | 否 |  Microsoft.ClassicStorage/storageAccounts/queueServices  |  SuccessServerLatency  |  成功伺服器延遲  |  毫秒  |  Average | 
-| **是**  | 否 |  Microsoft.ClassicStorage/storageAccounts/queueServices  |  交易  |  交易  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.ClassicStorage/storageAccounts/tableServices  |  可用性  |  可用性  |  百分比  |  Average | 
-| **是**  | 否 |  Microsoft.ClassicStorage/storageAccounts/tableServices  |  輸出  |  輸出  |  位元組  |  總計 | 
-| **是**  | 否 |  Microsoft.ClassicStorage/storageAccounts/tableServices  |  輸入  |  輸入  |  位元組  |  總計 | 
-| **是**  | 否 |  Microsoft.ClassicStorage/storageAccounts/tableServices  |  SuccessE2ELatency  |  成功 E2E 延遲  |  毫秒  |  Average | 
-| **是**  | 否 |  Microsoft.ClassicStorage/storageAccounts/tableServices  |  SuccessServerLatency  |  成功伺服器延遲  |  毫秒  |  Average | 
-| **是**  | 否 |  Microsoft.ClassicStorage/storageAccounts/tableServices  |  TableCapacity  |  資料表容量  |  位元組  |  Average | 
-| **是**  | 否 |  Microsoft.ClassicStorage/storageAccounts/tableServices  |  TableCount  |  資料表計數  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.ClassicStorage/storageAccounts/tableServices  |  TableEntityCount  |  資料表實體計數  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.ClassicStorage/storageAccounts/tableServices  |  交易  |  交易  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.CognitiveServices/accounts  |  BlockedCalls  |  已封鎖的呼叫  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.CognitiveServices/accounts  |  CharactersTrained  |  已定型的字元  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.CognitiveServices/accounts  |  CharactersTranslated  |  轉譯字元數  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.CognitiveServices/accounts  |  ClientErrors  |  用戶端錯誤  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.CognitiveServices/accounts  |  DataIn  |  資料輸入  |  位元組  |  總計 | 
-| **是**  | 否 |  Microsoft.CognitiveServices/accounts  |  DataOut  |  資料輸出  |  位元組  |  總計 | 
-| **是**  | 否 |  Microsoft.CognitiveServices/accounts  |  Latency  |  Latency  |  毫秒  |  Average | 
-| **是**  | 否 |  Microsoft.CognitiveServices/accounts  |  ServerErrors  |  伺服器錯誤  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.CognitiveServices/accounts  |  SpeechSessionDuration  |  語音工作階段持續時間  |  秒  |  總計 | 
-| **是**  | 否 |  Microsoft.CognitiveServices/accounts  |  SuccessfulCalls  |  成功的呼叫  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.CognitiveServices/accounts  |  TotalCalls  |  呼叫總數  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.CognitiveServices/accounts  |  TotalErrors  |  錯誤總數  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.CognitiveServices/accounts  |  TotalTokenCalls  |  呼叫權杖總計  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.CognitiveServices/accounts  |  TotalTransactions  |  交易數總計  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachines  |  CPU Credits Consumed  |  CPU Credits Consumed  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachines  |  剩餘 CPU 信用額度  |  剩餘 CPU 信用額度  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachines  |  資料磁碟佇列深度  |  資料磁碟佇列深度 (預覽)  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachines  |  資料磁碟讀取位元組數/秒  |  資料磁碟讀取位元組/秒 (預覽)  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachines  |  資料磁碟讀取作業/秒  |  資料磁碟讀取作業/秒 (預覽)  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachines  |  資料磁碟寫入位元組數/秒  |  資料磁碟寫入位元組/秒 (預覽)  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachines  |  資料磁碟寫入作業/秒  |  資料磁碟寫入作業/秒 (預覽)  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachines  |  Disk Read Bytes  |  Disk Read Bytes  |  位元組  |  總計 | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachines  |  Disk Read Operations/Sec  |  Disk Read Operations/Sec  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachines  |  Disk Write Bytes  |  Disk Write Bytes  |  位元組  |  總計 | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachines  |  Disk Write Operations/Sec  |  Disk Write Operations/Sec  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachines  |  輸入流量  |  輸入流量  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachines  |  輸入流量最大建立速率  |  輸入流量最大建立速率 (預覽)  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachines  |  Network In  |  計費網路流入量 (已淘汰)  |  位元組  |  總計 | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachines  |  網路流入量總計  |  網路流入量總計  |  位元組  |  總計 | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachines  |  Network Out  |  計費網路流出量 (已淘汰)  |  位元組  |  總計 | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachines  |  網路流出量總計  |  網路流出量總計  |  位元組  |  總計 | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachines  |  OS 磁碟佇列深度  |  OS 磁碟佇列深度 (預覽)  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachines  |  OS 磁碟讀取位元組/秒  |  OS 磁碟讀取位元組/秒 (預覽)  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachines  |  OS 磁碟讀取作業/秒  |  OS 磁碟讀取作業/秒 (預覽)  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachines  |  OS 磁碟寫入位元組數/秒  |  OS 磁碟寫入位元組/秒 (預覽)  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachines  |  OS 磁碟寫入作業/秒  |  OS 磁碟寫入作業/秒 (預覽)  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachines  |  OS 每一磁碟 QD  |  OS 磁碟 QD (已淘汰)  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachines  |  OS 每一磁碟讀取位元組/秒  |  OS 磁碟讀取位元組數/秒 (已淘汰)  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachines  |  OS 每一磁碟讀取作業/秒  |  OS 磁碟讀取作業數/秒 (已淘汰)  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachines  |  OS 每一磁碟寫入位元組/秒  |  OS 磁碟寫入位元組數/秒 (已淘汰)  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachines  |  OS 每一磁碟寫入作業/秒  |  OS 磁碟寫入作業數/秒 (已淘汰)  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachines  |  連出流量  |  連出流量  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachines  |  輸出流量最大建立速率  |  輸出流量最大建立速率 (預覽)  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachines  |  每一磁碟 QD  |  資料磁碟 QD (已淘汰)  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachines  |  每一磁碟讀取位元組/秒  |  資料磁碟讀取位元組數/秒 (已淘汰)  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachines  |  每一磁碟讀取作業/秒  |  資料磁碟讀取作業數/秒 (已淘汰)  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachines  |  每一磁碟寫入位元組/秒  |  資料磁碟寫入位元組數/秒 (已淘汰)  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachines  |  每一磁碟寫入作業/秒  |  資料磁碟寫入作業數/秒 (已淘汰)  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachines  |  Percentage CPU  |  Percentage CPU  |  百分比  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachines  |  進階資料磁碟快取讀取命中  |  進階資料磁碟快取讀取命中 (預覽)  |  百分比  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachines  |  進階資料磁碟快取讀取遺漏  |  進階資料磁碟快取讀取遺漏 (預覽)  |  百分比  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachines  |  進階 OS 磁碟快取讀取命中  |  進階 OS 磁碟快取讀取命中 (預覽)  |  百分比  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachines  |  進階 OS 磁碟快取讀取遺漏  |  進階 OS 磁碟快取讀取遺漏 (預覽)  |  百分比  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets  |  CPU Credits Consumed  |  CPU Credits Consumed  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets  |  剩餘 CPU 信用額度  |  剩餘 CPU 信用額度  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets  |  資料磁碟佇列深度  |  資料磁碟佇列深度 (預覽)  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets  |  資料磁碟讀取位元組數/秒  |  資料磁碟讀取位元組/秒 (預覽)  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets  |  資料磁碟讀取作業/秒  |  資料磁碟讀取作業/秒 (預覽)  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets  |  資料磁碟寫入位元組數/秒  |  資料磁碟寫入位元組/秒 (預覽)  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets  |  資料磁碟寫入作業/秒  |  資料磁碟寫入作業/秒 (預覽)  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets  |  Disk Read Bytes  |  Disk Read Bytes  |  位元組  |  總計 | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets  |  Disk Read Operations/Sec  |  Disk Read Operations/Sec  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets  |  Disk Write Bytes  |  Disk Write Bytes  |  位元組  |  總計 | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets  |  Disk Write Operations/Sec  |  Disk Write Operations/Sec  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets  |  輸入流量  |  輸入流量  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets  |  輸入流量最大建立速率  |  輸入流量最大建立速率 (預覽)  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets  |  Network In  |  計費網路流入量 (已淘汰)  |  位元組  |  總計 | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets  |  網路流入量總計  |  網路流入量總計  |  位元組  |  總計 | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets  |  Network Out  |  計費網路流出量 (已淘汰)  |  位元組  |  總計 | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets  |  網路流出量總計  |  網路流出量總計  |  位元組  |  總計 | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets  |  OS 磁碟佇列深度  |  OS 磁碟佇列深度 (預覽)  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets  |  OS 磁碟讀取位元組/秒  |  OS 磁碟讀取位元組/秒 (預覽)  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets  |  OS 磁碟讀取作業/秒  |  OS 磁碟讀取作業/秒 (預覽)  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets  |  OS 磁碟寫入位元組數/秒  |  OS 磁碟寫入位元組/秒 (預覽)  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets  |  OS 磁碟寫入作業/秒  |  OS 磁碟寫入作業/秒 (預覽)  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets  |  OS 每一磁碟 QD  |  OS 磁碟 QD (已淘汰)  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets  |  OS 每一磁碟讀取位元組/秒  |  OS 磁碟讀取位元組數/秒 (已淘汰)  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets  |  OS 每一磁碟讀取作業/秒  |  OS 磁碟讀取作業數/秒 (已淘汰)  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets  |  OS 每一磁碟寫入位元組/秒  |  OS 磁碟寫入位元組數/秒 (已淘汰)  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets  |  OS 每一磁碟寫入作業/秒  |  OS 磁碟寫入作業數/秒 (已淘汰)  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets  |  連出流量  |  連出流量  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets  |  輸出流量最大建立速率  |  輸出流量最大建立速率 (預覽)  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets  |  每一磁碟 QD  |  資料磁碟 QD (已淘汰)  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets  |  每一磁碟讀取位元組/秒  |  資料磁碟讀取位元組數/秒 (已淘汰)  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets  |  每一磁碟讀取作業/秒  |  資料磁碟讀取作業數/秒 (已淘汰)  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets  |  每一磁碟寫入位元組/秒  |  資料磁碟寫入位元組數/秒 (已淘汰)  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets  |  每一磁碟寫入作業/秒  |  資料磁碟寫入作業數/秒 (已淘汰)  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets  |  Percentage CPU  |  Percentage CPU  |  百分比  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets  |  進階資料磁碟快取讀取命中  |  進階資料磁碟快取讀取命中 (預覽)  |  百分比  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets  |  進階資料磁碟快取讀取遺漏  |  進階資料磁碟快取讀取遺漏 (預覽)  |  百分比  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets  |  進階 OS 磁碟快取讀取命中  |  進階 OS 磁碟快取讀取命中 (預覽)  |  百分比  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets  |  進階 OS 磁碟快取讀取遺漏  |  進階 OS 磁碟快取讀取遺漏 (預覽)  |  百分比  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  CPU Credits Consumed  |  CPU Credits Consumed  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  剩餘 CPU 信用額度  |  剩餘 CPU 信用額度  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  資料磁碟佇列深度  |  資料磁碟佇列深度 (預覽)  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  資料磁碟讀取位元組數/秒  |  資料磁碟讀取位元組/秒 (預覽)  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  資料磁碟讀取作業/秒  |  資料磁碟讀取作業/秒 (預覽)  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  資料磁碟寫入位元組數/秒  |  資料磁碟寫入位元組/秒 (預覽)  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  資料磁碟寫入作業/秒  |  資料磁碟寫入作業/秒 (預覽)  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Disk Read Bytes  |  Disk Read Bytes  |  位元組  |  總計 | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Disk Read Operations/Sec  |  Disk Read Operations/Sec  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Disk Write Bytes  |  Disk Write Bytes  |  位元組  |  總計 | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Disk Write Operations/Sec  |  Disk Write Operations/Sec  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  輸入流量  |  輸入流量  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  輸入流量最大建立速率  |  輸入流量最大建立速率 (預覽)  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Network In  |  計費網路流入量 (已淘汰)  |  位元組  |  總計 | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  網路流入量總計  |  網路流入量總計  |  位元組  |  總計 | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Network Out  |  計費網路流出量 (已淘汰)  |  位元組  |  總計 | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  網路流出量總計  |  網路流出量總計  |  位元組  |  總計 | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  OS 磁碟佇列深度  |  OS 磁碟佇列深度 (預覽)  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  OS 磁碟讀取位元組/秒  |  OS 磁碟讀取位元組/秒 (預覽)  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  OS 磁碟讀取作業/秒  |  OS 磁碟讀取作業/秒 (預覽)  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  OS 磁碟寫入位元組數/秒  |  OS 磁碟寫入位元組/秒 (預覽)  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  OS 磁碟寫入作業/秒  |  OS 磁碟寫入作業/秒 (預覽)  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  OS 每一磁碟 QD  |  OS 磁碟 QD (已淘汰)  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  OS 每一磁碟讀取位元組/秒  |  OS 磁碟讀取位元組數/秒 (已淘汰)  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  OS 每一磁碟讀取作業/秒  |  OS 磁碟讀取作業數/秒 (已淘汰)  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  OS 每一磁碟寫入位元組/秒  |  OS 磁碟寫入位元組數/秒 (已淘汰)  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  OS 每一磁碟寫入作業/秒  |  OS 磁碟寫入作業數/秒 (已淘汰)  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  連出流量  |  連出流量  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  輸出流量最大建立速率  |  輸出流量最大建立速率 (預覽)  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  每一磁碟 QD  |  資料磁碟 QD (已淘汰)  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  每一磁碟讀取位元組/秒  |  資料磁碟讀取位元組數/秒 (已淘汰)  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  每一磁碟讀取作業/秒  |  資料磁碟讀取作業數/秒 (已淘汰)  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  每一磁碟寫入位元組/秒  |  資料磁碟寫入位元組數/秒 (已淘汰)  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  每一磁碟寫入作業/秒  |  資料磁碟寫入作業數/秒 (已淘汰)  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  Percentage CPU  |  Percentage CPU  |  百分比  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  進階資料磁碟快取讀取命中  |  進階資料磁碟快取讀取命中 (預覽)  |  百分比  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  進階資料磁碟快取讀取遺漏  |  進階資料磁碟快取讀取遺漏 (預覽)  |  百分比  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  進階 OS 磁碟快取讀取命中  |  進階 OS 磁碟快取讀取命中 (預覽)  |  百分比  |  Average | 
-| **是**  | 否 |  Microsoft.Compute/virtualMachineScaleSets/virtualMachines  |  進階 OS 磁碟快取讀取遺漏  |  進階 OS 磁碟快取讀取遺漏 (預覽)  |  百分比  |  Average | 
-| **是**  | 否 |  Microsoft.ContainerInstance/containerGroups  |  CpuUsage  |  CPU 使用率  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.ContainerInstance/containerGroups  |  MemoryUsage  |  記憶體使用量  |  位元組  |  Average | 
-| **是**  | 否 |  Microsoft.ContainerInstance/containerGroups  |  NetworkBytesReceivedPerSecond  |  每秒接收的網路位元組數  |  位元組  |  Average | 
-| **是**  | 否 |  Microsoft.ContainerInstance/containerGroups  |  NetworkBytesReceivedPerSecond  |  每秒傳輸的網路位元組數  |  位元組  |  Average | 
-| **是**  | 否 |  Microsoft.ContainerRegistry/registries  |  RunDuration  |  執行持續時間  |  毫秒  |  總計 | 
-| **是**  | 否 |  Microsoft.ContainerRegistry/registries  |  SuccessfulPullCount  |  成功提取計數  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.ContainerRegistry/registries  |  SuccessfulPushCount  |  成功推送計數  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.ContainerRegistry/registries  |  TotalPullCount  |  提取總數  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.ContainerRegistry/registries  |  TotalPushCount  |  推送總數  |  Count  |  Average | 
-| 否  | 否 |  Microsoft.ContainerService/managedClusters  |  kube_node_status_allocatable_cpu_cores  |  受控叢集中可用的 cpu 核心總數  |  Count  |  Average | 
-| 否  | 否 |  Microsoft.ContainerService/managedClusters  |  kube_node_status_allocatable_memory_bytes  |  受控叢集中可用的記憶體總量  |  位元組  |  Average | 
-| 否  | 否 |  Microsoft.ContainerService/managedClusters  |  kube_node_status_condition  |  各種節點條件的狀態  |  Count  |  Average | 
-| 否  | 否 |  Microsoft.ContainerService/managedClusters  |  kube_pod_status_phase  |  各階段的 Pod 數目  |  Count  |  Average | 
-| 否  | 否 |  Microsoft.ContainerService/managedClusters  |  kube_pod_status_ready  |  處於就緒狀態的 Pod 數目  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.DataBoxEdge/dataBoxEdgeDevices  |  AvailableCapacity  |  可用容量  |  位元組  |  Average | 
-| **是**  | 否 |  Microsoft.DataBoxEdge/dataBoxEdgeDevices  |  BytesUploadedToCloud  |  上傳的雲端位元組數 (裝置)  |  位元組  |  Average | 
-| **是**  | 否 |  Microsoft.DataBoxEdge/dataBoxEdgeDevices  |  BytesUploadedToCloudPerShare  |  上傳的雲端位元組數 (共用)  |  位元組  |  Average | 
-| **是**  | 否 |  Microsoft.DataBoxEdge/dataBoxEdgeDevices  |  CloudReadThroughput  |  雲端下載輸送量  |  每秒位元組  |  Average | 
-| **是**  | 否 |  Microsoft.DataBoxEdge/dataBoxEdgeDevices  |  CloudReadThroughputPerShare  |  雲端下載輸送量 (共用)  |  每秒位元組  |  Average | 
-| **是**  | 否 |  Microsoft.DataBoxEdge/dataBoxEdgeDevices  |  CloudUploadThroughput  |  雲端上傳輸送量  |  每秒位元組  |  Average | 
-| **是**  | 否 |  Microsoft.DataBoxEdge/dataBoxEdgeDevices  |  CloudUploadThroughputPerShare  |  雲端上傳輸送量 (共用)  |  每秒位元組  |  Average | 
-| **是**  | 否 |  Microsoft.DataBoxEdge/dataBoxEdgeDevices  |  HyperVMemoryUtilization  |  Edge 計算 - 記憶體使用量  |  百分比  |  Average | 
-| **是**  | 否 |  Microsoft.DataBoxEdge/dataBoxEdgeDevices  |  HyperVVirtualProcessorUtilization  |  Edge 計算 - 百分比 CPU  |  百分比  |  Average | 
-| **是**  | 否 |  Microsoft.DataBoxEdge/dataBoxEdgeDevices  |  NICReadThroughput  |  讀取輸送量 (網路)  |  每秒位元組  |  Average | 
-| **是**  | 否 |  Microsoft.DataBoxEdge/dataBoxEdgeDevices  |  NICWriteThroughput  |  寫入輸送量 (網路)  |  每秒位元組  |  Average | 
-| **是**  | 否 |  Microsoft.DataBoxEdge/dataBoxEdgeDevices  |  TotalCapacity  |  容量總計  |  位元組  |  Average | 
-| **是**  | 否 |  Microsoft.DataFactory/datafactories  |  FailedRuns  |  失敗的執行  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.DataFactory/datafactories  |  SuccessfulRuns  |  成功的執行  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.DataFactory/factories  |  ActivityCancelledRuns  |  已取消的活動執行計量  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.DataFactory/factories  |  ActivityFailedRuns  |  失敗的活動執行計量  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.DataFactory/factories  |  ActivitySucceededRuns  |  成功的活動執行計量  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.DataFactory/factories  |  FactorySizeInGbUnits  |  處理站大小總計 (以 GB 為單位)  |  Count  |  最大值 | 
-| **是**  | 否 |  Microsoft.DataFactory/factories  |  IntegrationRuntimeAvailableMemory  |  整合執行階段可用記憶體  |  位元組  |  Average | 
-| **是**  | 否 |  Microsoft.DataFactory/factories  |  IntegrationRuntimeAverageTaskPickupDelay  |  整合執行階段佇列持續時間  |  秒  |  Average | 
-| **是**  | 否 |  Microsoft.DataFactory/factories  |  IntegrationRuntimeCpuPercentage  |  整合執行階段 CPU 使用率  |  百分比  |  Average | 
-| **是**  | 否 |  Microsoft.DataFactory/factories  |  IntegrationRuntimeQueueLength  |  整合執行階段佇列長度  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.DataFactory/factories  |  MaxAllowedFactorySizeInGbUnits  |  允許的處理站大小上限 (以 GB 為單位)  |  Count  |  最大值 | 
-| **是**  | 否 |  Microsoft.DataFactory/factories  |  MaxAllowedResourceCount  |  允許的實體計數上限  |  Count  |  最大值 | 
-| **是**  | 否 |  Microsoft.DataFactory/factories  |  PipelineCancelledRuns  |  已取消的管線執行計量  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.DataFactory/factories  |  PipelineFailedRuns  |  失敗的管線執行計量  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.DataFactory/factories  |  PipelineSucceededRuns  |  成功的管線執行計量  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.DataFactory/factories  |  ResourceCount  |  實體總數  |  Count  |  最大值 | 
-| **是**  | 否 |  Microsoft.DataFactory/factories  |  TriggerCancelledRuns  |  已取消的觸發程序執行計量  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.DataFactory/factories  |  TriggerFailedRuns  |  失敗的觸發程序執行計量  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.DataFactory/factories  |  TriggerSucceededRuns  |  成功的觸發程序執行計量  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.DataLakeAnalytics/accounts  |  JobAUEndedCancelled  |  取消的 AU 時間  |  秒  |  總計 | 
-| **是**  | 否 |  Microsoft.DataLakeAnalytics/accounts  |  JobAUEndedFailure  |  失敗 AU 時間  |  秒  |  總計 | 
-| **是**  | 否 |  Microsoft.DataLakeAnalytics/accounts  |  JobAUEndedSuccess  |  成功 AU 時間  |  秒  |  總計 | 
-| **是**  | 否 |  Microsoft.DataLakeAnalytics/accounts  |  JobEndedCancelled  |  取消的作業  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.DataLakeAnalytics/accounts  |  JobEndedFailure  |  失敗的作業  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.DataLakeAnalytics/accounts  |  JobEndedSuccess  |  成功的作業  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.DataLakeStore/accounts  |  DataRead  |  讀取的資料  |  位元組  |  總計 | 
-| **是**  | 否 |  Microsoft.DataLakeStore/accounts  |  DataWritten  |  寫入的資料  |  位元組  |  總計 | 
-| **是**  | 否 |  Microsoft.DataLakeStore/accounts  |  ReadRequests  |  讀取要求  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.DataLakeStore/accounts  |  TotalStorage  |  儲存體總計  |  位元組  |  最大值 | 
-| **是**  | 否 |  Microsoft.DataLakeStore/accounts  |  WriteRequests  |  寫入要求  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.DBforMariaDB/servers  |  active_connections  |  作用中的連線  |  Count  |  Average | 
-| **是**  | **是** |  Microsoft.DBforMariaDB/servers  |  backup_storage_used  |  已使用的備份儲存體  |  位元組  |  Average | 
-| **是**  | **是** |  Microsoft.DBforMariaDB/servers  |  connections_failed  |  失敗的連線  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.DBforMariaDB/servers  |  cpu_percent  |  CPU 百分比  |  百分比  |  Average | 
-| **是**  | **是** |  Microsoft.DBforMariaDB/servers  |  io_consumption_percent  |  IO 百分比  |  百分比  |  Average | 
-| **是**  | **是** |  Microsoft.DBforMariaDB/servers  |  memory_percent  |  記憶體百分比  |  百分比  |  Average | 
-| **是**  | **是** |  Microsoft.DBforMariaDB/servers  |  network_bytes_egress  |  Network Out  |  位元組  |  總計 | 
-| **是**  | **是** |  Microsoft.DBforMariaDB/servers  |  network_bytes_ingress  |  Network In  |  位元組  |  總計 | 
-| **是**  | **是** |  Microsoft.DBforMariaDB/servers  |  seconds_behind_master  |  複寫延遲 (秒)  |  Count  |  最大值 | 
-| **是**  | **是** |  Microsoft.DBforMariaDB/servers  |  serverlog_storage_limit  |  伺服器記錄儲存體限制  |  位元組  |  Average | 
-| **是**  | **是** |  Microsoft.DBforMariaDB/servers  |  serverlog_storage_percent  |  伺服器記錄儲存體百分比  |  百分比  |  Average | 
-| **是**  | **是** |  Microsoft.DBforMariaDB/servers  |  serverlog_storage_usage  |  使用的伺服器記錄儲存體  |  位元組  |  Average | 
-| **是**  | **是** |  Microsoft.DBforMariaDB/servers  |  storage_limit  |  儲存體限制  |  位元組  |  最大值 | 
-| **是**  | **是** |  Microsoft.DBforMariaDB/servers  |  storage_percent  |  儲存體百分比  |  百分比  |  Average | 
-| **是**  | **是** |  Microsoft.DBforMariaDB/servers  |  storage_used  |  已使用儲存體  |  位元組  |  Average | 
-| **是**  | **是** |  Microsoft.DBforMySQL/servers  |  active_connections  |  作用中的連線  |  Count  |  Average | 
-| **是**  | **是** |  Microsoft.DBforMySQL/servers  |  backup_storage_used  |  已使用的備份儲存體  |  位元組  |  Average | 
-| **是**  | **是** |  Microsoft.DBforMySQL/servers  |  connections_failed  |  失敗的連線  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.DBforMySQL/servers  |  cpu_percent  |  CPU 百分比  |  百分比  |  Average | 
-| **是**  | **是** |  Microsoft.DBforMySQL/servers  |  io_consumption_percent  |  IO 百分比  |  百分比  |  Average | 
-| **是**  | **是** |  Microsoft.DBforMySQL/servers  |  memory_percent  |  記憶體百分比  |  百分比  |  Average | 
-| **是**  | **是** |  Microsoft.DBforMySQL/servers  |  network_bytes_egress  |  Network Out  |  位元組  |  總計 | 
-| **是**  | **是** |  Microsoft.DBforMySQL/servers  |  network_bytes_ingress  |  Network In  |  位元組  |  總計 | 
-| **是**  | **是** |  Microsoft.DBforMySQL/servers  |  seconds_behind_master  |  複寫延遲 (秒)  |  Count  |  最大值 | 
-| **是**  | **是** |  Microsoft.DBforMySQL/servers  |  serverlog_storage_limit  |  伺服器記錄儲存體限制  |  位元組  |  最大值 | 
-| **是**  | **是** |  Microsoft.DBforMySQL/servers  |  serverlog_storage_percent  |  伺服器記錄儲存體百分比  |  百分比  |  Average | 
-| **是**  | **是** |  Microsoft.DBforMySQL/servers  |  serverlog_storage_usage  |  使用的伺服器記錄儲存體  |  位元組  |  Average | 
-| **是**  | **是** |  Microsoft.DBforMySQL/servers  |  storage_limit  |  儲存體限制  |  位元組  |  最大值 | 
-| **是**  | **是** |  Microsoft.DBforMySQL/servers  |  storage_percent  |  儲存體百分比  |  百分比  |  Average | 
-| **是**  | **是** |  Microsoft.DBforMySQL/servers  |  storage_used  |  已使用儲存體  |  位元組  |  Average | 
-| **是**  | 否 |  Microsoft.DBforPostgreSQL/servers  |  active_connections  |  作用中的連線  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.DBforPostgreSQL/servers  |  backup_storage_used  |  已使用的備份儲存體  |  位元組  |  Average | 
-| **是**  | 否 |  Microsoft.DBforPostgreSQL/servers  |  connections_failed  |  失敗的連線  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.DBforPostgreSQL/servers  |  cpu_percent  |  CPU 百分比  |  百分比  |  Average | 
-| **是**  | 否 |  Microsoft.DBforPostgreSQL/servers  |  io_consumption_percent  |  IO 百分比  |  百分比  |  Average | 
-| **是**  | 否 |  Microsoft.DBforPostgreSQL/servers  |  memory_percent  |  記憶體百分比  |  百分比  |  Average | 
-| **是**  | 否 |  Microsoft.DBforPostgreSQL/servers  |  network_bytes_egress  |  Network Out  |  位元組  |  總計 | 
-| **是**  | 否 |  Microsoft.DBforPostgreSQL/servers  |  network_bytes_ingress  |  Network In  |  位元組  |  總計 | 
-| **是**  | 否 |  Microsoft.DBforPostgreSQL/servers  |  pg_replica_log_delay_in_bytes  |  複本之間的最大延隔時間  |  位元組  |  最大值 | 
-| **是**  | 否 |  Microsoft.DBforPostgreSQL/servers  |  pg_replica_log_delay_in_seconds  |  複本延隔時間  |  秒  |  最大值 | 
-| **是**  | 否 |  Microsoft.DBforPostgreSQL/servers  |  serverlog_storage_limit  |  伺服器記錄儲存體限制  |  位元組  |  最大值 | 
-| **是**  | 否 |  Microsoft.DBforPostgreSQL/servers  |  serverlog_storage_percent  |  伺服器記錄儲存體百分比  |  百分比  |  Average | 
-| **是**  | 否 |  Microsoft.DBforPostgreSQL/servers  |  serverlog_storage_usage  |  使用的伺服器記錄儲存體  |  位元組  |  Average | 
-| **是**  | 否 |  Microsoft.DBforPostgreSQL/servers  |  storage_limit  |  儲存體限制  |  位元組  |  最大值 | 
-| **是**  | 否 |  Microsoft.DBforPostgreSQL/servers  |  storage_percent  |  儲存體百分比  |  百分比  |  Average | 
-| **是**  | 否 |  Microsoft.DBforPostgreSQL/servers  |  storage_used  |  已使用儲存體  |  位元組  |  Average | 
-| **是**  | 否 |  Microsoft.DBforPostgreSQL/serversv2  |  active_connections  |  作用中的連線  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.DBforPostgreSQL/serversv2  |  cpu_percent  |  CPU 百分比  |  百分比  |  Average | 
-| **是**  | 否 |  Microsoft.DBforPostgreSQL/serversv2  |  iops  |  IOPS  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.DBforPostgreSQL/serversv2  |  memory_percent  |  記憶體百分比  |  百分比  |  Average | 
-| **是**  | 否 |  Microsoft.DBforPostgreSQL/serversv2  |  network_bytes_egress  |  Network Out  |  位元組  |  總計 | 
-| **是**  | 否 |  Microsoft.DBforPostgreSQL/serversv2  |  network_bytes_ingress  |  Network In  |  位元組  |  總計 | 
-| **是**  | 否 |  Microsoft.DBforPostgreSQL/serversv2  |  storage_percent  |  儲存體百分比  |  百分比  |  Average | 
-| **是**  | 否 |  Microsoft.DBforPostgreSQL/serversv2  |  storage_used  |  已使用儲存體  |  位元組  |  Average | 
-| **是**  | **是** |  Microsoft.Devices/Account  |  digitaltwins.telemetry.nodes  |  Digital Twins 節點遙測預留位置  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Devices/IotHubs  |  c2d.commands.egress.abandon.success  |  已放棄的 C2D 訊息  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Devices/IotHubs  |  c2d.commands.egress.complete.success  |  已完成的 C2D 訊息傳遞  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Devices/IotHubs  |  c2d.commands.egress.reject.success  |  已拒絕的 C2D 訊息  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Devices/IotHubs  |  c2d.methods.failure  |  失敗直接方法叫用  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Devices/IotHubs  |  c2d.methods.requestSize  |  直接方法叫用的要求大小  |  位元組  |  Average | 
-| **是**  | **是** |  Microsoft.Devices/IotHubs  |  c2d.methods.responseSize  |  直接方法叫用的回應大小  |  位元組  |  Average | 
-| **是**  | **是** |  Microsoft.Devices/IotHubs  |  c2d.methods.success  |  成功直接方法叫用  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Devices/IotHubs  |  c2d.twin.read.failure  |  後端的失敗對應項讀取  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Devices/IotHubs  |  c2d.twin.read.size  |  後端的對應項讀取回應大小  |  位元組  |  Average | 
-| **是**  | **是** |  Microsoft.Devices/IotHubs  |  c2d.twin.read.success  |  後端的成功對應項讀取  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Devices/IotHubs  |  c2d.twin.update.failure  |  後端的失敗對應項更新  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Devices/IotHubs  |  c2d.twin.update.size  |  後端的對應項更新大小  |  位元組  |  Average | 
-| **是**  | **是** |  Microsoft.Devices/IotHubs  |  c2d.twin.update.success  |  後端的成功對應項更新  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Devices/IotHubs  |  C2DMessagesExpired  |  已過期的 C2D 訊息 (預覽)  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Devices/IotHubs  |  組態  |  設定計量  |  Count  |  總計 | 
-| 否  | 否 |  Microsoft.Devices/IotHubs  |  connectedDeviceCount  |  連接的裝置 (預覽)  |  Count  |  Average | 
-| **是**  | **是** |  Microsoft.Devices/IotHubs  |  d2c.endpoints.egress.builtIn.events  |  路由：傳遞至訊息/事件的訊息  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Devices/IotHubs  |  d2c.endpoints.egress.eventHubs  |  路由：傳遞至事件中樞的訊息  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Devices/IotHubs  |  d2c.endpoints.egress.serviceBusQueues  |  路由：傳遞至服務匯流排佇列的訊息  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Devices/IotHubs  |  d2c.endpoints.egress.serviceBusTopics  |  路由：傳遞至服務匯流排主題的訊息  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Devices/IotHubs  |  d2c.endpoints.egress.storage  |  路由：傳遞至儲存體的訊息  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Devices/IotHubs  |  d2c.endpoints.egress.storage.blobs  |  路由：傳遞至儲存體的 BLOB  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Devices/IotHubs  |  d2c.endpoints.egress.storage.bytes  |  路由：傳遞至儲存體的資料  |  位元組  |  總計 | 
-| **是**  | **是** |  Microsoft.Devices/IotHubs  |  d2c.endpoints.latency.builtIn.events  |  路由：訊息/事件的訊息延遲  |  毫秒  |  Average | 
-| **是**  | **是** |  Microsoft.Devices/IotHubs  |  d2c.endpoints.latency.eventHubs  |  路由：事件中樞的訊息延遲  |  毫秒  |  Average | 
-| **是**  | **是** |  Microsoft.Devices/IotHubs  |  d2c.endpoints.latency.serviceBusQueues  |  路由：服務匯流排佇列的訊息延遲  |  毫秒  |  Average | 
-| **是**  | **是** |  Microsoft.Devices/IotHubs  |  d2c.endpoints.latency.serviceBusTopics  |  路由：服務匯流排主題的訊息延遲  |  毫秒  |  Average | 
-| **是**  | **是** |  Microsoft.Devices/IotHubs  |  d2c.endpoints.latency.storage  |  路由：儲存體的訊息延遲  |  毫秒  |  Average | 
-| **是**  | **是** |  Microsoft.Devices/IotHubs  |  d2c.telemetry.egress.dropped  |  路由：已捨棄的遙測訊息   |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Devices/IotHubs  |  d2c.telemetry.egress.fallback  |  路由：傳遞至後援的訊息  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Devices/IotHubs  |  d2c.telemetry.egress.invalid  |  路由：不相容的遙測訊息  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Devices/IotHubs  |  d2c.telemetry.egress.orphaned  |  路由：已遺棄的遙測訊息   |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Devices/IotHubs  |  d2c.telemetry.egress.success  |  路由：已傳遞的遙測訊息  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Devices/IotHubs  |  d2c.telemetry.ingress.allProtocol  |  遙測訊息傳送嘗試  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Devices/IotHubs  |  d2c.telemetry.ingress.sendThrottle  |  節流錯誤數目  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Devices/IotHubs  |  d2c.telemetry.ingress.success  |  已傳送的遙測訊息  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Devices/IotHubs  |  d2c.twin.read.failure  |  裝置的失敗對應項讀取  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Devices/IotHubs  |  d2c.twin.read.size  |  裝置的對應項讀取回應大小  |  位元組  |  Average | 
-| **是**  | **是** |  Microsoft.Devices/IotHubs  |  d2c.twin.read.success  |  裝置的成功對應項讀取  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Devices/IotHubs  |  d2c.twin.update.failure  |  裝置的失敗對應項更新  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Devices/IotHubs  |  d2c.twin.update.size  |  裝置的對應項更新大小  |  位元組  |  Average | 
-| **是**  | **是** |  Microsoft.Devices/IotHubs  |  d2c.twin.update.success  |  裝置的成功對應項更新  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Devices/IotHubs  |  dailyMessageQuotaUsed  |  已使用的訊息總數  |  Count  |  Average | 
-| **是**  | **是** |  Microsoft.Devices/IotHubs  |  deviceDataUsage  |  裝置資料使用量總計  |  位元組  |  總計 | 
-| **是**  | **是** |  Microsoft.Devices/IotHubs  |  deviceDataUsageV2  |  裝置資料使用量總計 (預覽)  |  位元組  |  總計 | 
-| **是**  | **是** |  Microsoft.Devices/IotHubs  |  devices.connectedDevices.allProtocol  |  連接的裝置 (已淘汰)   |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Devices/IotHubs  |  devices.totalDevices  |  裝置總計 (已淘汰)  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Devices/IotHubs  |  EventGridDeliveries  |  事件方格傳遞 (預覽)  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Devices/IotHubs  |  EventGridLatency  |  事件方格延遲 (預覽)  |  毫秒  |  Average | 
-| **是**  | **是** |  Microsoft.Devices/IotHubs  |  jobs.cancelJob.failure  |  取消作業失敗  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Devices/IotHubs  |  jobs.cancelJob.success  |  成功取消作業  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Devices/IotHubs  |  jobs.completed  |  已完成的工作  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Devices/IotHubs  |  jobs.createDirectMethodJob.failure  |  建立失敗的方法叫用作業  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Devices/IotHubs  |  jobs.createDirectMethodJob.success  |  成功建立的方法叫用作業  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Devices/IotHubs  |  jobs.createTwinUpdateJob.failure  |  建立失敗的對應項更新作業  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Devices/IotHubs  |  jobs.createTwinUpdateJob.success  |  成功建立的對應項更新作業  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Devices/IotHubs  |  jobs.failed  |  失敗作業  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Devices/IotHubs  |  jobs.listJobs.failure  |  呼叫列出作業失敗  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Devices/IotHubs  |  jobs.listJobs.success  |  成功呼叫列出作業  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Devices/IotHubs  |  jobs.queryJobs.failure  |  失敗作業查詢  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Devices/IotHubs  |  jobs.queryJobs.success  |  成功作業查詢  |  Count  |  總計 | 
-| 否  | 否 |  Microsoft.Devices/IotHubs  |  totalDeviceCount  |  裝置總計 (預覽)  |  Count  |  Average | 
-| **是**  | **是** |  Microsoft.Devices/IotHubs  |  twinQueries.failure  |  失敗對應項查詢  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Devices/IotHubs  |  twinQueries.resultSize  |  對應項查詢結果大小  |  位元組  |  Average | 
-| **是**  | **是** |  Microsoft.Devices/IotHubs  |  twinQueries.success  |  成功對應項查詢  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Devices/provisioningServices  |  AttestationAttempts  |  證明嘗試數  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Devices/provisioningServices  |  DeviceAssignments  |  已指派的裝置數  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Devices/provisioningServices  |  RegistrationAttempts  |  註冊嘗試數  |  Count  |  總計 | 
-| 否  | 否 |  Microsoft.DocumentDB/databaseAccounts  |  AvailableStorage  |  可用的儲存體  |  位元組  |  總計 | 
-| 否  | 否 |  Microsoft.DocumentDB/databaseAccounts  |  CassandraConnectionClosures  |  Cassandra 連線終止  |  Count  |  總計 | 
-| 否  | 否 |  Microsoft.DocumentDB/databaseAccounts  |  CassandraRequestCharges  |  Cassandra 要求費用  |  Count  |  總計 | 
-| 否  | 否 |  Microsoft.DocumentDB/databaseAccounts  |  CassandraRequests  |  Cassandra 要求  |  Count  |  Count | 
-| 否  | 否 |  Microsoft.DocumentDB/databaseAccounts  |  DataUsage  |  資料使用量  |  位元組  |  總計 | 
-| **是**  | 否 |  Microsoft.DocumentDB/databaseAccounts  |  DeleteVirtualNetwork  |  DeleteVirtualNetwork  |  Count  |  Count | 
-| 否  | 否 |  Microsoft.DocumentDB/databaseAccounts  |  DocumentCount  |  文件計數  |  Count  |  總計 | 
-| 否  | 否 |  Microsoft.DocumentDB/databaseAccounts  |  DocumentQuota  |  文件配額  |  位元組  |  總計 | 
-| 否  | 否 |  Microsoft.DocumentDB/databaseAccounts  |  IndexUsage  |  索引使用量  |  位元組  |  總計 | 
-| 否  | 否 |  Microsoft.DocumentDB/databaseAccounts  |  MetadataRequests  |  中繼資料要求  |  Count  |  Count | 
-| **是**  | **是** |  Microsoft.DocumentDB/databaseAccounts  |  MongoRequestCharge  |  Mongo 要求收費  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.DocumentDB/databaseAccounts  |  MongoRequests  |  Mongo 要求  |  Count  |  Count | 
-| 否  | 否 |  Microsoft.DocumentDB/databaseAccounts  |  MongoRequestsCount  |  Mongo 要求率  |  每秒計數  |  Average | 
-| 否  | 否 |  Microsoft.DocumentDB/databaseAccounts  |  MongoRequestsDelete  |  Mongo 刪除要求率  |  每秒計數  |  Average | 
-| 否  | 否 |  Microsoft.DocumentDB/databaseAccounts  |  MongoRequestsInsert  |  Mongo 插入要求率  |  每秒計數  |  Average | 
-| 否  | 否 |  Microsoft.DocumentDB/databaseAccounts  |  MongoRequestsQuery  |  Mongo 查詢要求率  |  每秒計數  |  Average | 
-| 否  | 否 |  Microsoft.DocumentDB/databaseAccounts  |  MongoRequestsUpdate  |  Mongo 更新要求率  |  每秒計數  |  Average | 
-| 否  | 否 |  Microsoft.DocumentDB/databaseAccounts  |  ProvisionedThroughput  |  佈建的輸送量  |  Count  |  最大值 | 
-| **是**  | 否 |  Microsoft.DocumentDB/databaseAccounts  |  ReplicationLatency  |  P99 複寫延遲  |  毫秒  |  Average | 
-| 否  | 否 |  Microsoft.DocumentDB/databaseAccounts  |  ServiceAvailability  |  服務可用性  |  百分比  |  Average | 
-| **是**  | **是** |  Microsoft.DocumentDB/databaseAccounts  |  TotalRequests  |  要求總數  |  Count  |  Count | 
-| **是**  | **是** |  Microsoft.DocumentDB/databaseAccounts  |  TotalRequestUnits  |  要求單位總計  |  Count  |  總計 | 
-| 否  | 否 |  Microsoft.EnterpriseKnowledgeGraph/services  |  FailureCount  |  失敗計數  |  Count  |  Count | 
-| 否  | 否 |  Microsoft.EnterpriseKnowledgeGraph/services  |  SuccessCount  |  成功計數  |  Count  |  Count | 
-| 否  | 否 |  Microsoft.EnterpriseKnowledgeGraph/services  |  SuccessLatency  |  成功延遲  |  毫秒  |  Average | 
-| 否  | 否 |  Microsoft.EnterpriseKnowledgeGraph/services  |  TransactionCount  |  交易計數  |  Count  |  Count | 
-| **是**  | **是** |  Microsoft.EventGrid/domains  |  DeadLetteredCount  |  失效信件事件  |  Count  |  總計 | 
-| 否  | 否 |  Microsoft.EventGrid/domains  |  DeliveryAttemptFailCount  |  傳遞失敗的事件  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.EventGrid/domains  |  DeliverySuccessCount  |  已傳遞的事件  |  Count  |  總計 | 
-| 否  | 否 |  Microsoft.EventGrid/domains  |  DestinationProcessingDurationInMs  |  目的端處理持續期間  |  毫秒  |  Average | 
-| **是**  | **是** |  Microsoft.EventGrid/domains  |  DroppedEventCount  |  卸除的事件  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.EventGrid/domains  |  MatchedEventCount  |  相符的事件  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.EventGrid/domains  |  PublishFailCount  |  發行失敗的事件  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.EventGrid/domains  |  PublishSuccessCount  |  已發佈的事件  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.EventGrid/domains  |  PublishSuccessLatencyInMs  |  發行成功延遲  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.EventGrid/eventSubscriptions  |  DeadLetteredCount  |  失效信件事件  |  Count  |  總計 | 
-| 否  | 否 |  Microsoft.EventGrid/eventSubscriptions  |  DeliveryAttemptFailCount  |  傳遞失敗的事件  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.EventGrid/eventSubscriptions  |  DeliverySuccessCount  |  已傳遞的事件  |  Count  |  總計 | 
-| 否  | 否 |  Microsoft.EventGrid/eventSubscriptions  |  DestinationProcessingDurationInMs  |  目的端處理持續期間  |  毫秒  |  Average | 
-| **是**  | **是** |  Microsoft.EventGrid/eventSubscriptions  |  DroppedEventCount  |  卸除的事件  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.EventGrid/eventSubscriptions  |  MatchedEventCount  |  相符的事件  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.EventGrid/extensionTopics  |  PublishFailCount  |  發行失敗的事件  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.EventGrid/extensionTopics  |  PublishSuccessCount  |  已發佈的事件  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.EventGrid/extensionTopics  |  PublishSuccessLatencyInMs  |  發行成功延遲  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.EventGrid/extensionTopics  |  UnmatchedEventCount  |  不相符的事件  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.EventGrid/topics  |  PublishFailCount  |  發行失敗的事件  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.EventGrid/topics  |  PublishSuccessCount  |  已發佈的事件  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.EventGrid/topics  |  PublishSuccessLatencyInMs  |  發行成功延遲  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.EventGrid/topics  |  UnmatchedEventCount  |  不相符的事件  |  Count  |  總計 | 
-| 否  | 否 |  Microsoft.EventHub/clusters  |  ActiveConnections  |  ActiveConnections  |  Count  |  Average | 
-| 否  | 否 |  Microsoft.EventHub/clusters  |  AvailableMemory  |  可用的記憶體  |  百分比  |  最大值 | 
-| 否  | 否 |  Microsoft.EventHub/clusters  |  CaptureBacklog  |  擷取待辦項目。  |  Count  |  總計 | 
-| 否  | 否 |  Microsoft.EventHub/clusters  |  CapturedBytes  |  已擷取的位元組。  |  位元組  |  總計 | 
-| 否  | 否 |  Microsoft.EventHub/clusters  |  CapturedMessages  |  已擷取的訊息。  |  Count  |  總計 | 
-| 否  | 否 |  Microsoft.EventHub/clusters  |  ConnectionsClosed  |  已關閉的連線。  |  Count  |  Average | 
-| 否  | 否 |  Microsoft.EventHub/clusters  |  ConnectionsOpened  |  已開啟的連線。  |  Count  |  Average | 
-| 否  | 否 |  Microsoft.EventHub/clusters  |  CPU  |  CPU  |  百分比  |  最大值 | 
-| **是**  | **是** |  Microsoft.EventHub/clusters  |  IncomingBytes  |  傳入位元組數。  |  位元組  |  總計 | 
-| **是**  | **是** |  Microsoft.EventHub/clusters  |  IncomingMessages  |  傳入訊息  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.EventHub/clusters  |  IncomingRequests  |  傳入的要求  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.EventHub/clusters  |  OutgoingBytes  |  傳出位元組數。  |  位元組  |  總計 | 
-| **是**  | **是** |  Microsoft.EventHub/clusters  |  OutgoingMessages  |  外送訊息  |  Count  |  總計 | 
-| 否  | 否 |  Microsoft.EventHub/clusters  |  QuotaExceededErrors  |  超出配額的錯誤。  |  Count  |  總計 | 
-| 否  | 否 |  Microsoft.EventHub/clusters  |  ServerErrors  |  伺服器錯誤。  |  Count  |  總計 | 
-| 否  | 否 |  Microsoft.EventHub/clusters  |  SuccessfulRequests  |  成功的要求  |  Count  |  總計 | 
-| 否  | 否 |  Microsoft.EventHub/clusters  |  ThrottledRequests  |  節流的要求。  |  Count  |  總計 | 
-| 否  | 否 |  Microsoft.EventHub/clusters  |  UserErrors  |  使用者錯誤。  |  Count  |  總計 | 
-| 否  | 否 |  Microsoft.EventHub/namespaces  |  ActiveConnections  |  ActiveConnections  |  Count  |  Average | 
-| 否  | 否 |  Microsoft.EventHub/namespaces  |  CaptureBacklog  |  擷取待辦項目。  |  Count  |  總計 | 
-| 否  | 否 |  Microsoft.EventHub/namespaces  |  CapturedBytes  |  已擷取的位元組。  |  位元組  |  總計 | 
-| 否  | 否 |  Microsoft.EventHub/namespaces  |  CapturedMessages  |  已擷取的訊息。  |  Count  |  總計 | 
-| 否  | 否 |  Microsoft.EventHub/namespaces  |  ConnectionsClosed  |  已關閉的連線。  |  Count  |  Average | 
-| 否  | 否 |  Microsoft.EventHub/namespaces  |  ConnectionsOpened  |  已開啟的連線。  |  Count  |  Average | 
-| **是**  | **是** |  Microsoft.EventHub/namespaces  |  EHABL  |  封存待處理項目訊息 (已淘汰)  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.EventHub/namespaces  |  EHAMBS  |  封存訊息輸送量 (已淘汰)  |  位元組  |  總計 | 
-| **是**  | **是** |  Microsoft.EventHub/namespaces  |  EHAMSGS  |  封存訊息 (已淘汰)  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.EventHub/namespaces  |  EHINBYTES  |  傳入位元組數 (已過時)  |  位元組  |  總計 | 
-| **是**  | **是** |  Microsoft.EventHub/namespaces  |  EHINMBS  |  傳入位元組數 (過時) (已淘汰)  |  位元組  |  總計 | 
-| **是**  | **是** |  Microsoft.EventHub/namespaces  |  EHINMSGS  |  連入訊息數 (已過時)  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.EventHub/namespaces  |  EHOUTBYTES  |  傳出位元組數 (已過時)  |  位元組  |  總計 | 
-| **是**  | **是** |  Microsoft.EventHub/namespaces  |  EHOUTMBS  |  傳出位元組數 (過時) (已淘汰)  |  位元組  |  總計 | 
-| **是**  | **是** |  Microsoft.EventHub/namespaces  |  EHOUTMSGS  |  傳出訊息數 (已過時)  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.EventHub/namespaces  |  FAILREQ  |  失敗的要求 (已淘汰)  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.EventHub/namespaces  |  IncomingBytes  |  傳入位元組數。  |  位元組  |  總計 | 
-| **是**  | **是** |  Microsoft.EventHub/namespaces  |  IncomingMessages  |  傳入訊息  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.EventHub/namespaces  |  IncomingRequests  |  傳入的要求  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.EventHub/namespaces  |  INMSGS  |  傳入的訊息 (過時) (已淘汰)  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.EventHub/namespaces  |  INREQS  |  傳入的要求 (已淘汰)  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.EventHub/namespaces  |  INTERR  |  內部伺服器錯誤 (已淘汰)  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.EventHub/namespaces  |  MISCERR  |  其他錯誤 (已淘汰)  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.EventHub/namespaces  |  OutgoingBytes  |  傳出位元組數。  |  位元組  |  總計 | 
-| **是**  | **是** |  Microsoft.EventHub/namespaces  |  OutgoingMessages  |  外送訊息  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.EventHub/namespaces  |  OUTMSGS  |  傳出的訊息 (過時) (已淘汰)  |  Count  |  總計 | 
-| 否  | 否 |  Microsoft.EventHub/namespaces  |  QuotaExceededErrors  |  超出配額的錯誤。  |  Count  |  總計 | 
-| 否  | 否 |  Microsoft.EventHub/namespaces  |  ServerErrors  |  伺服器錯誤。  |  Count  |  總計 | 
-| 否  | 否 |  Microsoft.EventHub/namespaces  |  大小  |  大小  |  位元組  |  Average | 
-| 否  | 否 |  Microsoft.EventHub/namespaces  |  SuccessfulRequests  |  成功的要求  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.EventHub/namespaces  |  SUCCREQ  |  成功的要求 (已淘汰)  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.EventHub/namespaces  |  SVRBSY  |  伺服器忙線錯誤 (已淘汰)  |  Count  |  總計 | 
-| 否  | 否 |  Microsoft.EventHub/namespaces  |  ThrottledRequests  |  節流的要求。  |  Count  |  總計 | 
-| 否  | 否 |  Microsoft.EventHub/namespaces  |  UserErrors  |  使用者錯誤。  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.HDInsight/clusters  |  CategorizedGatewayRequests  |  已分類的閘道要求數  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.HDInsight/clusters  |  GatewayRequests  |  閘道要求數  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.HDInsight/clusters  |  NumActiveWorkers  |  作用中背景工作數目  |  Count  |  最大值 | 
-| **是**  | 否 |  Microsoft.HDInsight/clusters  |  ScalingRequests  |  調整要求  |  Count  |  最大值 | 
-| **是**  | 否 |  Microsoft.Insights/AutoscaleSettings  |  MetricThreshold  |  計量閾值  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.Insights/AutoscaleSettings  |  ObservedCapacity  |  觀察的容量  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.Insights/AutoscaleSettings  |  ObservedMetricValue  |  觀察的計量值  |  Count  |  Average | 
-| **是**  | **是** |  Microsoft.Insights/AutoscaleSettings  |  ScaleActionsInitiated  |  已起始的調整規模動作數  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Insights/Components  |  availabilityResults/availabilityPercentage  |  可用性  |  百分比  |  Average | 
-| 否  | 否 |  Microsoft.Insights/Components  |  availabilityResults/count  |  可用性集合  |  Count  |  Count | 
-| **是**  | 否 |  Microsoft.Insights/Components  |  availabilityResults/duration  |  可用性測試持續期間  |  毫秒  |  Average | 
-| **是**  | 否 |  Microsoft.Insights/Components  |  browserTimings/networkDuration  |  頁面載入網路連線時間  |  毫秒  |  Average | 
-| **是**  | 否 |  Microsoft.Insights/Components  |  browserTimings/processingDuration  |  用戶端處理時間  |  毫秒  |  Average | 
-| **是**  | 否 |  Microsoft.Insights/Components  |  browserTimings/receiveDuration  |  接收回應時間  |  毫秒  |  Average | 
-| **是**  | 否 |  Microsoft.Insights/Components  |  browserTimings/sendDuration  |  傳送要求時間  |  毫秒  |  Average | 
-| **是**  | 否 |  Microsoft.Insights/Components  |  browserTimings/totalDuration  |  瀏覽器頁面載入時間  |  毫秒  |  Average | 
-| 否  | 否 |  Microsoft.Insights/Components  |  dependencies/count  |  相依性呼叫  |  Count  |  Count | 
-| **是**  | 否 |  Microsoft.Insights/Components  |  dependencies/duration  |  相依性持續時間  |  毫秒  |  Average | 
-| 否  | 否 |  Microsoft.Insights/Components  |  dependencies/failed  |  相依性呼叫失敗  |  Count  |  Count | 
-| 否  | 否 |  Microsoft.Insights/Components  |  exceptions/browser  |  瀏覽器例外狀況  |  Count  |  Count | 
-| **是**  | **是** |  Microsoft.Insights/Components  |  exceptions/count  |  例外狀況  |  Count  |  Count | 
-| 否  | 否 |  Microsoft.Insights/Components  |  exceptions/server  |  伺服器例外狀況  |  Count  |  Count | 
-| **是**  | **是** |  Microsoft.Insights/Components  |  pageViews/count  |  頁面檢視  |  Count  |  Count | 
-| **是**  | 否 |  Microsoft.Insights/Components  |  pageViews/duration  |  頁面檢視載入時間  |  毫秒  |  Average | 
-| **是**  | **是** |  Microsoft.Insights/Components  |  performanceCounters/exceptionsPerSecond  |  例外狀況比率  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.Insights/Components  |  performanceCounters/memoryAvailableBytes  |  可用的記憶體  |  位元組  |  Average | 
-| **是**  | 否 |  Microsoft.Insights/Components  |  performanceCounters/processCpuPercentage  |  處理程序 CPU  |  百分比  |  Average | 
-| **是**  | 否 |  Microsoft.Insights/Components  |  performanceCounters/processIOBytesPerSecond  |  處理程序 IO 速率  |  每秒位元組  |  Average | 
-| **是**  | 否 |  Microsoft.Insights/Components  |  performanceCounters/processorCpuPercentage  |  處理器時間  |  百分比  |  Average | 
-| **是**  | 否 |  Microsoft.Insights/Components  |  performanceCounters/processPrivateBytes  |  處理程序私人位元組  |  位元組  |  Average | 
-| **是**  | 否 |  Microsoft.Insights/Components  |  performanceCounters/requestExecutionTime  |  HTTP 要求執行時間  |  毫秒  |  Average | 
-| **是**  | **是** |  Microsoft.Insights/Components  |  performanceCounters/requestsInQueue  |  應用程式佇列中的 HTTP 要求數  |  Count  |  Average | 
-| **是**  | **是** |  Microsoft.Insights/Components  |  performanceCounters/requestsPerSecond  |  HTTP 要求率  |  每秒計數  |  Average | 
-| 否  | 否 |  Microsoft.Insights/Components  |  requests/count  |  伺服器要求  |  Count  |  Count | 
-| **是**  | 否 |  Microsoft.Insights/Components  |  requests/duration  |  伺服器回應時間  |  毫秒  |  Average | 
-| 否  | 否 |  Microsoft.Insights/Components  |  requests/failed  |  失敗的要求  |  Count  |  Count | 
-| 否  | 否 |  Microsoft.Insights/Components  |  要求/速率  |  伺服器要求率  |  每秒計數  |  Average | 
-| **是**  | **是** |  Microsoft.Insights/Components  |  traces/count  |  追蹤  |  Count  |  Count | 
-| **是**  | 否 |  Microsoft.KeyVault/vaults  |  ServiceApiHit  |  服務 API 點擊次數總計  |  Count  |  Count | 
-| **是**  | 否 |  Microsoft.KeyVault/vaults  |  ServiceApiLatency  |  整體服務 API 延遲  |  毫秒  |  Average | 
-| **是**  | 否 |  Microsoft.KeyVault/vaults  |  ServiceApiResult  |  服務 API 結果總計  |  Count  |  Count | 
-| **是**  | **是** |  Microsoft.Kusto/Clusters  |  CacheUtilization  |  快取使用率  |  百分比  |  Average | 
-| **是**  | **是** |  Microsoft.Kusto/Clusters  |  ContinuousExportMaxLatenessMinutes  |  連續匯出最大延遲分鐘數  |  Count  |  最大值 | 
-| **是**  | **是** |  Microsoft.Kusto/Clusters  |  ContinuousExportNumOfRecordsExported  |  連續匯出 - 已匯出的記錄數  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Kusto/Clusters  |  ContinuousExportPendingCount  |  連續匯出擱置計數  |  Count  |  最大值 | 
-| **是**  | **是** |  Microsoft.Kusto/Clusters  |  ContinuousExportResult  |  連續匯出結果  |  Count  |  Count | 
-| **是**  | **是** |  Microsoft.Kusto/Clusters  |  CPU  |  CPU  |  百分比  |  Average | 
-| **是**  | **是** |  Microsoft.Kusto/Clusters  |  EventsProcessedForEventHubs  |  已處理的事件 (針對事件/IoT 中樞)  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Kusto/Clusters  |  ExportUtilization  |  匯出使用率  |  百分比  |  最大值 | 
-| **是**  | **是** |  Microsoft.Kusto/Clusters  |  IngestionLatencyInSeconds  |  擷取延遲 (以秒為單位)  |  秒  |  Average | 
-| **是**  | **是** |  Microsoft.Kusto/Clusters  |  IngestionResult  |  擷取結果  |  Count  |  Count | 
-| **是**  | **是** |  Microsoft.Kusto/Clusters  |  IngestionUtilization  |  擷取使用率  |  百分比  |  Average | 
-| **是**  | **是** |  Microsoft.Kusto/Clusters  |  IngestionVolumeInMB  |  擷取量 (以 MB 為單位)  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Kusto/Clusters  |  KeepAlive  |  保持運作  |  Count  |  Average | 
-| **是**  | **是** |  Microsoft.Kusto/Clusters  |  QueryDuration  |  查詢持續時間  |  毫秒  |  Average | 
-| **是**  | **是** |  Microsoft.Kusto/Clusters  |  SteamingIngestRequestRate  |  串流內嵌要求率  |  Count  |  RateRequestsPerSecond | 
-| **是**  | **是** |  Microsoft.Kusto/Clusters  |  StreamingIngestDataRate  |  串流內嵌資料速率  |  Count  |  Average | 
-| **是**  | **是** |  Microsoft.Kusto/Clusters  |  StreamingIngestDuration  |  串流內嵌持續時間  |  毫秒  |  Average | 
-| **是**  | **是** |  Microsoft.Kusto/Clusters  |  StreamingIngestResults  |  串流內嵌結果  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.Logic/integrationServiceEnvironments  |  ActionLatency  |  動作延遲   |  秒  |  Average | 
-| **是**  | **是** |  Microsoft.Logic/integrationServiceEnvironments  |  ActionsCompleted  |  完成的動作   |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Logic/integrationServiceEnvironments  |  ActionsFailed  |  動作的失敗   |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Logic/integrationServiceEnvironments  |  ActionsSkipped  |  略過的動作   |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Logic/integrationServiceEnvironments  |  ActionsStarted  |  啟動的動作   |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Logic/integrationServiceEnvironments  |  ActionsSucceeded  |  成功的動作   |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Logic/integrationServiceEnvironments  |  ActionSuccessLatency  |  動作成功延遲   |  秒  |  Average | 
-| **是**  | **是** |  Microsoft.Logic/integrationServiceEnvironments  |  ActionThrottledEvents  |  動作節流的事件  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Logic/integrationServiceEnvironments  |  IntegrationServiceEnvironmentConnectorMemoryUsage  |  整合服務環境的連接器記憶體使用量  |  百分比  |  Average | 
-| **是**  | 否 |  Microsoft.Logic/integrationServiceEnvironments  |  IntegrationServiceEnvironmentConnectorProcessorUsage  |  整合服務環境的連接器處理器使用量  |  百分比  |  Average | 
-| **是**  | 否 |  Microsoft.Logic/integrationServiceEnvironments  |  IntegrationServiceEnvironmentWorkflowMemoryUsage  |  整合服務環境的工作流程記憶體使用量  |  百分比  |  Average | 
-| **是**  | 否 |  Microsoft.Logic/integrationServiceEnvironments  |  IntegrationServiceEnvironmentWorkflowProcessorUsage  |  整合服務環境的工作流程處理器使用量  |  百分比  |  Average | 
-| **是**  | **是** |  Microsoft.Logic/integrationServiceEnvironments  |  RunFailurePercentage  |  執行失敗百分比  |  百分比  |  總計 | 
-| **是**  | 否 |  Microsoft.Logic/integrationServiceEnvironments  |  RunLatency  |  執行延遲  |  秒  |  Average | 
-| **是**  | **是** |  Microsoft.Logic/integrationServiceEnvironments  |  RunsCancelled  |  已取消的執行  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Logic/integrationServiceEnvironments  |  RunsCompleted  |  完成的執行  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Logic/integrationServiceEnvironments  |  RunsFailed  |  失敗的執行  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Logic/integrationServiceEnvironments  |  RunsStarted  |  執行已啟動  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Logic/integrationServiceEnvironments  |  RunsSucceeded  |  已成功的執行  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Logic/integrationServiceEnvironments  |  RunStartThrottledEvents  |  執行開始節流處理事件  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Logic/integrationServiceEnvironments  |  RunSuccessLatency  |  執行成功的延遲  |  秒  |  Average | 
-| **是**  | **是** |  Microsoft.Logic/integrationServiceEnvironments  |  RunThrottledEvents  |  執行節流的事件  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Logic/integrationServiceEnvironments  |  TriggerFireLatency  |  觸發程序引發延遲   |  秒  |  Average | 
-| **是**  | 否 |  Microsoft.Logic/integrationServiceEnvironments  |  TriggerLatency  |  觸發程序延遲   |  秒  |  Average | 
-| **是**  | **是** |  Microsoft.Logic/integrationServiceEnvironments  |  TriggersCompleted  |  完成的觸發程序   |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Logic/integrationServiceEnvironments  |  TriggersFailed  |  失敗的觸發程序   |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Logic/integrationServiceEnvironments  |  TriggersFired  |  引發的觸發程序   |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Logic/integrationServiceEnvironments  |  TriggersSkipped  |  略過的觸發程序  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Logic/integrationServiceEnvironments  |  TriggersStarted  |  啟動的觸發程序   |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Logic/integrationServiceEnvironments  |  TriggersSucceeded  |  成功的觸發程序   |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Logic/integrationServiceEnvironments  |  TriggerSuccessLatency  |  觸發程序成功延遲   |  秒  |  Average | 
-| **是**  | **是** |  Microsoft.Logic/integrationServiceEnvironments  |  TriggerThrottledEvents  |  觸發程序節流的事件  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Logic/workflows  |  ActionLatency  |  動作延遲   |  秒  |  Average | 
-| **是**  | **是** |  Microsoft.Logic/workflows  |  ActionsCompleted  |  完成的動作   |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Logic/workflows  |  ActionsFailed  |  動作的失敗   |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Logic/workflows  |  ActionsSkipped  |  略過的動作   |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Logic/workflows  |  ActionsStarted  |  啟動的動作   |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Logic/workflows  |  ActionsSucceeded  |  成功的動作   |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Logic/workflows  |  ActionSuccessLatency  |  動作成功延遲   |  秒  |  Average | 
-| **是**  | **是** |  Microsoft.Logic/workflows  |  ActionThrottledEvents  |  動作節流的事件  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Logic/workflows  |  BillableActionExecutions  |  可計費的動作執行  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Logic/workflows  |  BillableTriggerExecutions  |  可計費的觸發程序執行  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Logic/workflows  |  BillingUsageNativeOperation  |  為使用原生作業執行計費  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Logic/workflows  |  BillingUsageNativeOperation  |  為使用原生作業執行計費  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Logic/workflows  |  BillingUsageStandardConnector  |  為使用標準連接器執行計費  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Logic/workflows  |  BillingUsageStandardConnector  |  為使用標準連接器執行計費  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Logic/workflows  |  BillingUsageStorageConsumption  |  為使用儲存體使用量執行計費  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Logic/workflows  |  BillingUsageStorageConsumption  |  為使用儲存體使用量執行計費  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Logic/workflows  |  RunFailurePercentage  |  執行失敗百分比  |  百分比  |  總計 | 
-| **是**  | 否 |  Microsoft.Logic/workflows  |  RunLatency  |  執行延遲  |  秒  |  Average | 
-| **是**  | **是** |  Microsoft.Logic/workflows  |  RunsCancelled  |  已取消的執行  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Logic/workflows  |  RunsCompleted  |  完成的執行  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Logic/workflows  |  RunsFailed  |  失敗的執行  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Logic/workflows  |  RunsStarted  |  執行已啟動  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Logic/workflows  |  RunsSucceeded  |  已成功的執行  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Logic/workflows  |  RunStartThrottledEvents  |  執行開始節流處理事件  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Logic/workflows  |  RunSuccessLatency  |  執行成功的延遲  |  秒  |  Average | 
-| **是**  | **是** |  Microsoft.Logic/workflows  |  RunThrottledEvents  |  執行節流的事件  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Logic/workflows  |  TotalBillableExecutions  |  可計費的總執行次數  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Logic/workflows  |  TriggerFireLatency  |  觸發程序引發延遲   |  秒  |  Average | 
-| **是**  | 否 |  Microsoft.Logic/workflows  |  TriggerLatency  |  觸發程序延遲   |  秒  |  Average | 
-| **是**  | **是** |  Microsoft.Logic/workflows  |  TriggersCompleted  |  完成的觸發程序   |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Logic/workflows  |  TriggersFailed  |  失敗的觸發程序   |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Logic/workflows  |  TriggersFired  |  引發的觸發程序   |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Logic/workflows  |  TriggersSkipped  |  略過的觸發程序  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Logic/workflows  |  TriggersStarted  |  啟動的觸發程序   |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Logic/workflows  |  TriggersSucceeded  |  成功的觸發程序   |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Logic/workflows  |  TriggerSuccessLatency  |  觸發程序成功延遲   |  秒  |  Average | 
-| **是**  | **是** |  Microsoft.Logic/workflows  |  TriggerThrottledEvents  |  觸發程序節流的事件  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.MachineLearningServices/workspaces  |  作用中核心  |  作用中核心  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.MachineLearningServices/workspaces  |  作用中節點  |  作用中節點  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.MachineLearningServices/workspaces  |  已完成的執行  |  已完成的執行  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.MachineLearningServices/workspaces  |  失敗的執行  |  失敗的執行  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.MachineLearningServices/workspaces  |  閒置核心  |  閒置核心  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.MachineLearningServices/workspaces  |  閒置節點  |  閒置節點  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.MachineLearningServices/workspaces  |  正在離開的核心  |  正在離開的核心  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.MachineLearningServices/workspaces  |  正在離開的節點  |  正在離開的節點  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.MachineLearningServices/workspaces  |  失敗的模型部署  |  失敗的模型部署  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.MachineLearningServices/workspaces  |  已啟動的模型部署  |  已啟動的模型部署  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.MachineLearningServices/workspaces  |  成功的模型部署  |  成功的模型部署  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.MachineLearningServices/workspaces  |  失敗的模型註冊  |  失敗的模型註冊  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.MachineLearningServices/workspaces  |  成功的模型註冊  |  成功的模型註冊  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.MachineLearningServices/workspaces  |  先佔節點  |  先佔節點  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.MachineLearningServices/workspaces  |  先佔節點  |  先佔節點  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.MachineLearningServices/workspaces  |  配額使用率百分比  |  配額使用率百分比  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.MachineLearningServices/workspaces  |  已啟動的執行  |  已啟動的執行  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.MachineLearningServices/workspaces  |  總核心數  |  總核心數  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.MachineLearningServices/workspaces  |  節點總計  |  節點總計  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.MachineLearningServices/workspaces  |  無法使用的核心  |  無法使用的核心  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.MachineLearningServices/workspaces  |  無法使用的節點  |  無法使用的節點  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.Maps/accounts  |  可用性  |  可用性  |  百分比  |  Average | 
-| 否  | 否 |  Microsoft.Maps/accounts  |  使用量  |  使用量  |  Count  |  Count | 
-| **是**  | 否 |  Microsoft.Media/mediaservices  |  AssetCount  |  資產計數  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.Media/mediaservices  |  AssetQuota  |  資產配額  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.Media/mediaservices  |  AssetQuotaUsedPercentage  |  已使用的資產配額百分比  |  百分比  |  Average | 
-| **是**  | 否 |  Microsoft.Media/mediaservices  |  ContentKeyPolicyCount  |  內容金鑰原則計數  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.Media/mediaservices  |  ContentKeyPolicyQuota  |  內容金鑰原則配額  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.Media/mediaservices  |  ContentKeyPolicyQuotaUsedPercentage  |  已使用的內容金鑰原則配額百分比  |  百分比  |  Average | 
-| **是**  | 否 |  Microsoft.Media/mediaservices  |  StreamingPolicyCount  |  串流原則計數  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.Media/mediaservices  |  StreamingPolicyQuota  |  串流原則配額  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.Media/mediaservices  |  StreamingPolicyQuotaUsedPercentage  |  已使用的串流原則配額百分比  |  百分比  |  Average | 
-| **是**  | 否 |  Microsoft.Media/mediaservices/streamingEndpoints  |  輸出  |  輸出  |  位元組  |  總計 | 
-| **是**  | 否 |  Microsoft.Media/mediaservices/streamingEndpoints  |  Requests  |  Requests  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Media/mediaservices/streamingEndpoints  |  SuccessE2ELatency  |  成功端對端延遲  |  毫秒  |  Average | 
-| **是**  | 否 |  Microsoft.Microservices4Spring/appClusters  |  GCPauseTotalCount  |  GC 暫停計數  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Microservices4Spring/appClusters  |  GCPauseTotalTime  |  GC 暫停總時間  |  毫秒  |  總計 | 
-| **是**  | 否 |  Microsoft.Microservices4Spring/appClusters  |  MaxOldGenMemoryPoolBytes  |  可用的舊世代資料大小上限  |  位元組  |  Average | 
-| **是**  | 否 |  Microsoft.Microservices4Spring/appClusters  |  OldGenMemoryPoolBytes  |  舊世代資料大小  |  位元組  |  Average | 
-| **是**  | 否 |  Microsoft.Microservices4Spring/appClusters  |  OldGenPromotedBytes  |  升階為舊世代資料大小  |  位元組  |  最大值 | 
-| **是**  | 否 |  Microsoft.Microservices4Spring/appClusters  |  ServiceCpuUsagePercentage  |  服務 CPU 使用率百分比  |  百分比  |  Average | 
-| **是**  | 否 |  Microsoft.Microservices4Spring/appClusters  |  ServiceMemoryCommitted  |  已指派的服務記憶體  |  位元組  |  Average | 
-| **是**  | 否 |  Microsoft.Microservices4Spring/appClusters  |  ServiceMemoryMax  |  服務記憶體最大值  |  位元組  |  最大值 | 
-| **是**  | 否 |  Microsoft.Microservices4Spring/appClusters  |  ServiceMemoryUsed  |  已使用的服務記憶體  |  位元組  |  Average | 
-| **是**  | 否 |  Microsoft.Microservices4Spring/appClusters  |  SystemCpuUsagePercentage  |  系統 CPU 使用率百分比  |  百分比  |  Average | 
-| **是**  | 否 |  Microsoft.Microservices4Spring/appClusters  |  TomcatErrorCount  |  Tomcat 全域錯誤  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Microservices4Spring/appClusters  |  TomcatReceivedBytes  |  Tomcat 接收到的位元組總數  |  位元組  |  總計 | 
-| **是**  | 否 |  Microsoft.Microservices4Spring/appClusters  |  TomcatRequestMaxTime  |  Tomcat 要求時間上限  |  毫秒  |  最大值 | 
-| **是**  | 否 |  Microsoft.Microservices4Spring/appClusters  |  TomcatRequestTotalCount  |  Tomcat 要求總計數  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Microservices4Spring/appClusters  |  TomcatRequestTotalTime  |  Tomcat 要求總次數  |  毫秒  |  總計 | 
-| **是**  | 否 |  Microsoft.Microservices4Spring/appClusters  |  TomcatResponseAvgTime  |  Tomcat 要求平均時間  |  毫秒  |  Average | 
-| **是**  | 否 |  Microsoft.Microservices4Spring/appClusters  |  TomcatSentBytes  |  Tomcat 已傳送的位元組總數  |  位元組  |  總計 | 
-| **是**  | 否 |  Microsoft.Microservices4Spring/appClusters  |  TomcatSessionActiveCurrentCount  |  Tomcat 工作階段有效計數  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Microservices4Spring/appClusters  |  TomcatSessionActiveMaxCount  |  Tomcat 工作階段最大作用中計數  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Microservices4Spring/appClusters  |  TomcatSessionAliveMaxTime  |  Tomcat 工作階段最大有效時間  |  毫秒  |  最大值 | 
-| **是**  | 否 |  Microsoft.Microservices4Spring/appClusters  |  TomcatSessionCreatedCount  |  Tomcat 已建立的工作階段計數  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Microservices4Spring/appClusters  |  TomcatSessionExpiredCount  |  Tomcat 已過期的工作階段計數  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Microservices4Spring/appClusters  |  TomcatSessionRejectedCount  |  Tomcat 已拒絕的工作階段計數  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Microservices4Spring/appClusters  |  YoungGenPromotedBytes  |  升階為新世代資料大小  |  位元組  |  最大值 | 
-| **是**  | 否 |  Microsoft.NetApp/netAppAccounts/capacityPools  |  VolumePoolAllocatedUsed  |  已使用的磁碟區集區配置  |  位元組  |  Average | 
-| **是**  | 否 |  Microsoft.NetApp/netAppAccounts/capacityPools  |  VolumePoolTotalLogicalSize  |  磁碟區集區邏輯大小總計  |  位元組  |  Average | 
-| **是**  | 否 |  Microsoft.NetApp/netAppAccounts/capacityPools/volumes  |  AverageReadLatency  |  讀取延遲的平均值  |  毫秒  |  Average | 
-| **是**  | 否 |  Microsoft.NetApp/netAppAccounts/capacityPools/volumes  |  AverageWriteLatency  |  寫入延遲的平均值  |  毫秒  |  Average | 
-| **是**  | 否 |  Microsoft.NetApp/netAppAccounts/capacityPools/volumes  |  ReadIops  |  讀取 IOPS  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.NetApp/netAppAccounts/capacityPools/volumes  |  VolumeLogicalSize  |  磁碟區邏輯大小  |  位元組  |  Average | 
-| **是**  | 否 |  Microsoft.NetApp/netAppAccounts/capacityPools/volumes  |  VolumeSnapshotSize  |  磁碟區快照集大小  |  位元組  |  Average | 
-| **是**  | 否 |  Microsoft.NetApp/netAppAccounts/capacityPools/volumes  |  WriteIops  |  寫入 IOPS  |  每秒計數  |  Average | 
-| 否  | 否 |  Microsoft.Network/applicationGateways  |  ApplicationGatewayTotalTime  |  應用程式閘道總時間  |  毫秒  |  Average | 
-| 否  | 否 |  Microsoft.Network/applicationGateways  |  AvgRequestCountPerHealthyHost  |  每個健康情況主機每分鐘的要求  |  Count  |  Average | 
-| 否  | 否 |  Microsoft.Network/applicationGateways  |  BackendConnectTime  |  後端連線時間  |  毫秒  |  Average | 
-| 否  | 否 |  Microsoft.Network/applicationGateways  |  BackendFirstByteResponseTime  |  後端第一個位元組回應時間  |  毫秒  |  Average | 
-| 否  | 否 |  Microsoft.Network/applicationGateways  |  BackendLastByteResponseTime  |  後端最後位元組回應時間  |  毫秒  |  Average | 
-| **是**  | 否 |  Microsoft.Network/applicationGateways  |  BackendResponseStatus  |  後端回應狀態  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Network/applicationGateways  |  BlockedCount  |  Web 應用程式防火牆封鎖的要求規則散發  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Network/applicationGateways  |  BlockedReqCount  |  Web 應用程式防火牆封鎖的要求計數  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Network/applicationGateways  |  BytesReceived  |  接收的位元組數  |  位元組  |  總計 | 
-| **是**  | 否 |  Microsoft.Network/applicationGateways  |  BytesSent  |  傳送的位元組數  |  位元組  |  總計 | 
-| 否  | 否 |  Microsoft.Network/applicationGateways  |  CapacityUnits  |  目前的容量單位  |  Count  |  Average | 
-| 否  | 否 |  Microsoft.Network/applicationGateways  |  ClientRtt  |  用戶端 RTT  |  毫秒  |  Average | 
-| 否  | 否 |  Microsoft.Network/applicationGateways  |  ComputeUnits  |  目前的計算單位  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.Network/applicationGateways  |  CurrentConnections  |  目前的連線數  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Network/applicationGateways  |  FailedRequests  |  失敗的要求  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Network/applicationGateways  |  HealthyHostCount  |  狀況良好的主機計數  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.Network/applicationGateways  |  MatchedCount  |  Web 應用程式防火牆的規則散發總計  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Network/applicationGateways  |  ResponseStatus  |  回應狀態  |  Count  |  總計 | 
-| 否  | 否 |  Microsoft.Network/applicationGateways  |  Throughput  |  Throughput  |  每秒位元組  |  Average | 
-| **是**  | 否 |  Microsoft.Network/applicationGateways  |  TlsProtocol  |  用戶端 TLS 通訊協定  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Network/applicationGateways  |  TotalRequests  |  要求總數  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Network/applicationGateways  |  UnhealthyHostCount  |  狀況不良的主機計數  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.Network/azurefirewalls  |  ApplicationRuleHit  |  應用程式規則命中計數  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Network/azurefirewalls  |  DataProcessed  |  已處理的資料量  |  位元組  |  總計 | 
-| **是**  | 否 |  Microsoft.Network/azurefirewalls  |  FirewallHealth  |  防火牆健全狀態  |  百分比  |  Average | 
-| **是**  | 否 |  Microsoft.Network/azurefirewalls  |  NetworkRuleHit  |  網路規則命中計數  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Network/azurefirewalls  |  SNATPortUtilization  |  SNAT 連接埠使用率  |  百分比  |  Average | 
-| **是**  | 否 |  Microsoft.Network/connections  |  BitsInPerSecond  |  BitsInPerSecond  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.Network/connections  |  BitsOutPerSecond  |  BitsOutPerSecond  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.Network/dnszones  |  QueryVolume  |  查詢磁碟區  |  Count  |  總計 | 
-| 否  | 否 |  Microsoft.Network/dnszones  |  RecordSetCapacityUtilization  |  記錄集容量使用率  |  百分比  |  最大值 | 
-| **是**  | 否 |  Microsoft.Network/dnszones  |  RecordSetCount  |  記錄集計數  |  Count  |  最大值 | 
-| **是**  | 否 |  Microsoft.Network/expressRouteCircuits  |  ArpAvailability  |  Arp 可用性  |  百分比  |  Average | 
-| **是**  | 否 |  Microsoft.Network/expressRouteCircuits  |  BgpAvailability  |  Bgp 可用性  |  百分比  |  Average | 
-| 否  | 否 |  Microsoft.Network/expressRouteCircuits  |  BitsInPerSecond  |  BitsInPerSecond  |  每秒計數  |  Average | 
-| 否  | 否 |  Microsoft.Network/expressRouteCircuits  |  BitsOutPerSecond  |  BitsOutPerSecond  |  每秒計數  |  Average | 
-| 否  | 否 |  Microsoft.Network/expressRouteCircuits  |  GlobalReachBitsInPerSecond  |  GlobalReachBitsInPerSecond  |  每秒計數  |  Average | 
-| 否  | 否 |  Microsoft.Network/expressRouteCircuits  |  GlobalReachBitsOutPerSecond  |  GlobalReachBitsOutPerSecond  |  每秒計數  |  Average | 
-| 否  | 否 |  Microsoft.Network/expressRouteCircuits  |  QosDropBitsInPerSecond  |  DroppedInBitsPerSecond  |  每秒計數  |  Average | 
-| 否  | 否 |  Microsoft.Network/expressRouteCircuits  |  QosDropBitsOutPerSecond  |  DroppedOutBitsPerSecond  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.Network/expressRouteCircuits/peerings  |  BitsInPerSecond  |  BitsInPerSecond  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.Network/expressRouteCircuits/peerings  |  BitsOutPerSecond  |  BitsOutPerSecond  |  每秒計數  |  Average | 
-| 否  | 否 |  Microsoft.Network/expressRouteGateways  |  ErGatewayConnectionBitsInPerSecond  |  BitsInPerSecond  |  每秒計數  |  Average | 
-| 否  | 否 |  Microsoft.Network/expressRouteGateways  |  ErGatewayConnectionBitsOutPerSecond  |  BitsOutPerSecond  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.Network/expressRoutePorts  |  AdminState  |  AdminState  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.Network/expressRoutePorts  |  LineProtocol  |  LineProtocol  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.Network/expressRoutePorts  |  PortBitsInPerSecond  |  BitsInPerSecond  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.Network/expressRoutePorts  |  PortBitsOutPerSecond  |  BitsOutPerSecond  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.Network/expressRoutePorts  |  RxLightLevel  |  RxLightLevel  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.Network/expressRoutePorts  |  TxLightLevel  |  TxLightLevel  |  Count  |  Average | 
-| **是**  | **是** |  Microsoft.Network/frontdoors  |  BackendHealthPercentage  |  後端健康情況百分比  |  百分比  |  Average | 
-| **是**  | **是** |  Microsoft.Network/frontdoors  |  BackendRequestCount  |  後端要求計數  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Network/frontdoors  |  BackendRequestLatency  |  後端要求延遲  |  毫秒  |  Average | 
-| **是**  | **是** |  Microsoft.Network/frontdoors  |  BillableResponseSize  |  可計費的回應大小  |  位元組  |  總計 | 
-| **是**  | **是** |  Microsoft.Network/frontdoors  |  RequestCount  |  要求計數  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Network/frontdoors  |  RequestSize  |  要求大小  |  位元組  |  總計 | 
-| **是**  | **是** |  Microsoft.Network/frontdoors  |  ResponseSize  |  回應大小  |  位元組  |  總計 | 
-| **是**  | **是** |  Microsoft.Network/frontdoors  |  TotalLatency  |  延遲總計  |  毫秒  |  Average | 
-| **是**  | **是** |  Microsoft.Network/frontdoors  |  WebApplicationFirewallRequestCount  |  Web 應用程式防火牆要求計數  |  Count  |  總計 | 
-| 否  | 否 |  Microsoft.Network/loadBalancers  |  AllocatedSnatPorts  |  配置的 SNAT 連接埠 (預覽)  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Network/loadBalancers  |  ByteCount  |  位元組計數  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Network/loadBalancers  |  DipAvailability  |  健全狀況探查狀態  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.Network/loadBalancers  |  PacketCount  |  封包計數  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Network/loadBalancers  |  SnatConnectionCount  |  SNAT 連線計數  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Network/loadBalancers  |  SYNCount  |  SYN 計數  |  Count  |  總計 | 
-| 否  | 否 |  Microsoft.Network/loadBalancers  |  UsedSnatPorts  |  使用的 SNAT 連接埠 (預覽)  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Network/loadBalancers  |  VipAvailability  |  資料路徑可用性  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.Network/networkInterfaces  |  BytesReceivedRate  |  接收的位元組數  |  位元組  |  總計 | 
-| **是**  | 否 |  Microsoft.Network/networkInterfaces  |  BytesSentRate  |  傳送的位元組數  |  位元組  |  總計 | 
-| **是**  | 否 |  Microsoft.Network/networkInterfaces  |  PacketsReceivedRate  |  接收的封包  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Network/networkInterfaces  |  PacketsSentRate  |  傳送的封包  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Network/networkWatchers/connectionMonitors  |  AverageRoundtripMs  |  Avg.來回時間 (毫秒)  |  毫秒  |  Average | 
-| **是**  | 否 |  Microsoft.Network/networkWatchers/connectionMonitors  |  ChecksFailedPercent  |  檢查失敗百分比 (預覽)  |  百分比  |  Average | 
-| **是**  | 否 |  Microsoft.Network/networkWatchers/connectionMonitors  |  ProbesFailedPercent  |  失敗的探查百分比  |  百分比  |  Average | 
-| **是**  | 否 |  Microsoft.Network/networkWatchers/connectionMonitors  |  RoundTripTimeMs  |  來回時間 (毫秒) (預覽)  |  毫秒  |  Average | 
-| **是**  | 否 |  Microsoft.Network/publicIPAddresses  |  ByteCount  |  位元組計數  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Network/publicIPAddresses  |  BytesDroppedDDoS  |  傳入位元組數捨棄 DDoS  |  每秒位元組  |  最大值 | 
-| **是**  | 否 |  Microsoft.Network/publicIPAddresses  |  BytesForwardedDDoS  |  傳入位元組數轉送 DDoS  |  每秒位元組  |  最大值 | 
-| **是**  | 否 |  Microsoft.Network/publicIPAddresses  |  BytesInDDoS  |  傳入位元組數 DDoS  |  每秒位元組  |  最大值 | 
-| **是**  | 否 |  Microsoft.Network/publicIPAddresses  |  DDoSTriggerSYNPackets  |  用以觸發 DDoS 風險降低措施的輸入 SYN 封包數  |  每秒計數  |  最大值 | 
-| **是**  | 否 |  Microsoft.Network/publicIPAddresses  |  DDoSTriggerTCPPackets  |  傳入 TCP 封包數以觸發 DDoS 緩和  |  每秒計數  |  最大值 | 
-| **是**  | 否 |  Microsoft.Network/publicIPAddresses  |  DDoSTriggerUDPPackets  |  傳入 UDP 封包數以觸發 DDoS 緩和  |  每秒計數  |  最大值 | 
-| **是**  | 否 |  Microsoft.Network/publicIPAddresses  |  IfUnderDDoSAttack  |  是否正遭受 DDoS 攻擊  |  Count  |  最大值 | 
-| **是**  | 否 |  Microsoft.Network/publicIPAddresses  |  PacketCount  |  封包計數  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Network/publicIPAddresses  |  PacketsDroppedDDoS  |  傳入封包捨棄 DDoS  |  每秒計數  |  最大值 | 
-| **是**  | 否 |  Microsoft.Network/publicIPAddresses  |  PacketsForwardedDDoS  |  傳入封包轉寄 DDoS  |  每秒計數  |  最大值 | 
-| **是**  | 否 |  Microsoft.Network/publicIPAddresses  |  PacketsInDDoS  |  傳入封包 DDoS  |  每秒計數  |  最大值 | 
-| **是**  | 否 |  Microsoft.Network/publicIPAddresses  |  SynCount  |  SYN 計數  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Network/publicIPAddresses  |  TCPBytesDroppedDDoS  |  傳入 TCP 位元組數捨棄 DDoS  |  每秒位元組  |  最大值 | 
-| **是**  | 否 |  Microsoft.Network/publicIPAddresses  |  TCPBytesForwardedDDoS  |  傳入 TCP 位元組數轉送 DDoS  |  每秒位元組  |  最大值 | 
-| **是**  | 否 |  Microsoft.Network/publicIPAddresses  |  TCPBytesInDDoS  |  傳入 TCP 位元組數 DDoS  |  每秒位元組  |  最大值 | 
-| **是**  | 否 |  Microsoft.Network/publicIPAddresses  |  TCPPacketsDroppedDDoS  |  傳入 TCP 封包捨棄 DDoS  |  每秒計數  |  最大值 | 
-| **是**  | 否 |  Microsoft.Network/publicIPAddresses  |  TCPPacketsForwardedDDoS  |  傳入 TCP 封包轉送 DDoS  |  每秒計數  |  最大值 | 
-| **是**  | 否 |  Microsoft.Network/publicIPAddresses  |  TCPPacketsInDDoS  |  傳入 TCP 封包 DDoS  |  每秒計數  |  最大值 | 
-| **是**  | 否 |  Microsoft.Network/publicIPAddresses  |  UDPBytesDroppedDDoS  |  傳入 UDP 位元組數捨棄 DDoS  |  每秒位元組  |  最大值 | 
-| **是**  | 否 |  Microsoft.Network/publicIPAddresses  |  UDPBytesForwardedDDoS  |  傳入 UDP 位元組數轉送 DDoS  |  每秒位元組  |  最大值 | 
-| **是**  | 否 |  Microsoft.Network/publicIPAddresses  |  UDPBytesInDDoS  |  傳入 UDP 位元組數 DDoS  |  每秒位元組  |  最大值 | 
-| **是**  | 否 |  Microsoft.Network/publicIPAddresses  |  UDPPacketsDroppedDDoS  |  傳入 UDP 封包捨棄 DDoS  |  每秒計數  |  最大值 | 
-| **是**  | 否 |  Microsoft.Network/publicIPAddresses  |  UDPPacketsForwardedDDoS  |  傳入 UDP 封包轉送 DDoS  |  每秒計數  |  最大值 | 
-| **是**  | 否 |  Microsoft.Network/publicIPAddresses  |  UDPPacketsInDDoS  |  傳入 UDP 封包 DDoS  |  每秒計數  |  最大值 | 
-| **是**  | 否 |  Microsoft.Network/publicIPAddresses  |  VipAvailability  |  資料路徑可用性  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.Network/trafficManagerProfiles  |  ProbeAgentCurrentEndpointStateByProfileResourceId  |  依端點的端點狀態  |  Count  |  最大值 | 
-| **是**  | **是** |  Microsoft.Network/trafficManagerProfiles  |  QpsByEndpoint  |  傳回的依端點查詢數  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Network/virtualNetworkGateways  |  AverageBandwidth  |  閘道 S2S 頻寬  |  每秒位元組  |  Average | 
-| **是**  | 否 |  Microsoft.Network/virtualNetworkGateways  |  P2SBandwidth  |  閘道 S2S 頻寬  |  每秒位元組  |  Average | 
-| **是**  | 否 |  Microsoft.Network/virtualNetworkGateways  |  P2SConnectionCount  |  P2S 連線計數  |  Count  |  最大值 | 
-| **是**  | 否 |  Microsoft.Network/virtualNetworkGateways  |  TunnelAverageBandwidth  |  通道頻寬  |  每秒位元組  |  Average | 
-| **是**  | 否 |  Microsoft.Network/virtualNetworkGateways  |  TunnelEgressBytes  |  通道輸出位元組數  |  位元組  |  總計 | 
-| **是**  | 否 |  Microsoft.Network/virtualNetworkGateways  |  TunnelEgressPacketDropTSMismatch  |  通道輸出 TS 不相符封包捨棄  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Network/virtualNetworkGateways  |  TunnelEgressPackets  |  通道輸出封包數  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Network/virtualNetworkGateways  |  TunnelIngressBytes  |  通道輸入位元組數  |  位元組  |  總計 | 
-| **是**  | 否 |  Microsoft.Network/virtualNetworkGateways  |  TunnelIngressPacketDropTSMismatch  |  通道輸入 TS 不符合封包捨棄  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Network/virtualNetworkGateways  |  TunnelIngressPackets  |  通道輸入封包數  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Network/virtualNetworks  |  PingMeshAverageRoundtripMs  |  Ping 至 VM 的來回時間  |  毫秒  |  Average | 
-| **是**  | 否 |  Microsoft.Network/virtualNetworks  |  PingMeshProbesFailedPercent  |  Ping 至 VM 失敗  |  百分比  |  Average | 
-| **是**  | **是** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  incoming  |  傳入訊息  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  incoming.all.failedrequests  |  所有傳入的失敗要求  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  incoming.all.requests  |  所有傳入要求  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  incoming.scheduled  |  傳送已排程的推播通知  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  incoming.scheduled.cancel  |  取消已排程的推播通知  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  installation.all  |  安裝管理作業  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  installation.delete  |  刪除安裝作業  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  installation.get  |  取得安裝作業  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  installation.patch  |  修補安裝作業  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  installation.upsert  |  建立或更新安裝作業  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  notificationhub.pushes  |  所有外寄通知  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  outgoing.allpns.badorexpiredchannel  |  錯誤或過期的通道錯誤  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  outgoing.allpns.channelerror  |  通道錯誤  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  outgoing.allpns.invalidpayload  |  承載錯誤  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  outgoing.allpns.pnserror  |  外部通知系統錯誤  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  outgoing.allpns.success  |  成功通知  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  outgoing.apns.badchannel  |  APNS 不正確的通道錯誤  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  outgoing.apns.expiredchannel  |  APNS 過期通道錯誤  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  outgoing.apns.invalidcredentials  |  APNS 授權錯誤  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  outgoing.apns.invalidnotificationsize  |  APNS 無效通知大小錯誤  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  outgoing.apns.pnserror  |  APNS 錯誤  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  outgoing.apns.success  |  APNS 成功通知  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  outgoing.gcm.authenticationerror  |  GCM 驗證錯誤  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  outgoing.gcm.badchannel  |  GCM 不正確的通道錯誤  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  outgoing.gcm.expiredchannel  |  GCM 過期通道錯誤  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  outgoing.gcm.invalidcredentials  |  GCM 授權錯誤 (無效認證)  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  outgoing.gcm.invalidnotificationformat  |  GCM 無效通知格式  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  outgoing.gcm.invalidnotificationsize  |  GCM 無效通知大小錯誤  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  outgoing.gcm.pnserror  |  GCM 錯誤  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  outgoing.gcm.success  |  GCM 成功通知  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  outgoing.gcm.throttled  |  GCM 已將通知節流處理  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  outgoing.gcm.wrongchannel  |  GCM 不正確的通道錯誤  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  outgoing.mpns.authenticationerror  |  MPNS 驗證錯誤  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  outgoing.mpns.badchannel  |  MPNS 不正確的通道錯誤  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  outgoing.mpns.channeldisconnected  |  MPNS 通道已中斷連線  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  outgoing.mpns.dropped  |  MPNS 已捨棄通知  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  outgoing.mpns.invalidcredentials  |  MPNS 無效認證  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  outgoing.mpns.invalidnotificationformat  |  MPNS 無效通知格式  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  outgoing.mpns.pnserror  |  MPNS 錯誤  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  outgoing.mpns.success  |  MPNS 成功通知  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  outgoing.mpns.throttled  |  MPNS 已將通知節流處理  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  outgoing.wns.authenticationerror  |  WNS 驗證錯誤  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  outgoing.wns.badchannel  |  WNS 不正確的通道錯誤  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  outgoing.wns.channeldisconnected  |  WNS 通道已中斷連線  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  outgoing.wns.channelthrottled  |  WNS 通道已節流處理  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  outgoing.wns.dropped  |  WNS 已捨棄通知  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  outgoing.wns.expiredchannel  |  WNS 過期通道錯誤  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  outgoing.wns.invalidcredentials  |  WNS 授權錯誤 (無效認證)  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  outgoing.wns.invalidnotificationformat  |  WNS 無效通知格式  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  outgoing.wns.invalidnotificationsize  |  WNS 無效通知大小錯誤  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  outgoing.wns.invalidtoken  |  WNS 授權錯誤 (無效權杖)  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  outgoing.wns.pnserror  |  WNS 錯誤  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  outgoing.wns.success  |  WNS 成功通知  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  outgoing.wns.throttled  |  WNS 節流通知  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  outgoing.wns.tokenproviderunreachable  |  WNS 授權錯誤 (無法連線)  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  outgoing.wns.wrongtoken  |  WNS 授權錯誤 (錯誤權杖)  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  registration.all  |  註冊作業數  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  registration.create  |  註冊建立作業  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  registration.delete  |  註冊刪除作業  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  registration.get  |  註冊讀取作業  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  registration.update  |  註冊更新作業  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.NotificationHubs/Namespaces/NotificationHubs  |  scheduled.pending  |  暫止已排程的通知  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.OperationalInsights/workspaces  |  Average_% Available Memory  |  % Available Memory  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.OperationalInsights/workspaces  |  Average_% Available Swap Space  |  % Available Swap Space  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.OperationalInsights/workspaces  |  Average_% Committed Bytes In Use  |  % Committed Bytes In Use  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.OperationalInsights/workspaces  |  Average_% DPC Time  |  % DPC Time  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.OperationalInsights/workspaces  |  Average_% Free Inodes  |  % Free Inodes  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.OperationalInsights/workspaces  |  Average_% Free Space  |  % Free Space  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.OperationalInsights/workspaces  |  Average_% Free Space  |  % Free Space  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.OperationalInsights/workspaces  |  Average_% Idle Time  |  % Idle Time  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.OperationalInsights/workspaces  |  Average_% Interrupt Time  |  % Interrupt Time  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.OperationalInsights/workspaces  |  Average_% IO Wait Time  |  % IO Wait Time  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.OperationalInsights/workspaces  |  Average_% Nice Time  |  % Nice Time  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.OperationalInsights/workspaces  |  Average_% Privileged Time  |  % Privileged Time  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.OperationalInsights/workspaces  |  Average_% Processor Time  |  % Processor Time  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.OperationalInsights/workspaces  |  Average_% Processor Time  |  % Processor Time  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.OperationalInsights/workspaces  |  Average_% Used Inodes  |  % Used Inodes  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.OperationalInsights/workspaces  |  Average_% Used Memory  |  % Used Memory  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.OperationalInsights/workspaces  |  Average_% Used Space  |  % Used Space  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.OperationalInsights/workspaces  |  Average_% Used Swap Space  |  % Used Swap Space  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.OperationalInsights/workspaces  |  Average_% User Time  |  % User Time  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.OperationalInsights/workspaces  |  Average_Available MBytes  |  可用的 MB  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.OperationalInsights/workspaces  |  Average_Available MBytes Memory  |  Available MBytes Memory  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.OperationalInsights/workspaces  |  Average_Available MBytes Swap  |  Available MBytes Swap  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.OperationalInsights/workspaces  |  Average_Avg. Disk sec/Read  |  Avg.Disk sec/Read  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.OperationalInsights/workspaces  |  Average_Avg. Disk sec/Read  |  Avg.Disk sec/Read  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.OperationalInsights/workspaces  |  Average_Avg. Disk sec/Transfer  |  Avg.Disk sec/Transfer  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.OperationalInsights/workspaces  |  Average_Avg. Disk sec/Write  |  Avg.Disk sec/Write  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.OperationalInsights/workspaces  |  Average_Avg. Disk sec/Write  |  Avg.Disk sec/Write  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.OperationalInsights/workspaces  |  Average_Bytes Received/sec  |  Bytes Received/sec  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.OperationalInsights/workspaces  |  Average_Bytes Sent/sec  |  Bytes Sent/sec  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.OperationalInsights/workspaces  |  Average_Bytes Total/sec  |  Bytes Total/sec  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.OperationalInsights/workspaces  |  Average_Current Disk Queue Length  |  Current Disk Queue Length  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.OperationalInsights/workspaces  |  Average_Disk Read Bytes/sec  |  Disk Read Bytes/sec  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.OperationalInsights/workspaces  |  Average_Disk Reads/sec  |  Disk Reads/sec  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.OperationalInsights/workspaces  |  Average_Disk Reads/sec  |  Disk Reads/sec  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.OperationalInsights/workspaces  |  Average_Disk Transfers/sec  |  Disk Transfers/sec  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.OperationalInsights/workspaces  |  Average_Disk Transfers/sec  |  Disk Transfers/sec  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.OperationalInsights/workspaces  |  Average_Disk Write Bytes/sec  |  Disk Write Bytes/sec  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.OperationalInsights/workspaces  |  Average_Disk Writes/sec  |  Disk Writes/sec  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.OperationalInsights/workspaces  |  Average_Disk Writes/sec  |  Disk Writes/sec  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.OperationalInsights/workspaces  |  Average_Free Megabytes  |  Free Megabytes  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.OperationalInsights/workspaces  |  Average_Free Megabytes  |  Free Megabytes  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.OperationalInsights/workspaces  |  Average_Free Physical Memory  |  Free Physical Memory  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.OperationalInsights/workspaces  |  Average_Free Space in Paging Files  |  Free Space in Paging Files  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.OperationalInsights/workspaces  |  Average_Free Virtual Memory  |  Free Virtual Memory  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.OperationalInsights/workspaces  |  Average_Logical Disk Bytes/sec  |  Logical Disk Bytes/sec  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.OperationalInsights/workspaces  |  Average_Page Reads/sec  |  Page Reads/sec  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.OperationalInsights/workspaces  |  Average_Page Writes/sec  |  Page Writes/sec  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.OperationalInsights/workspaces  |  Average_Pages/sec  |  Pages/sec  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.OperationalInsights/workspaces  |  Average_Pct Privileged Time  |  Pct Privileged Time  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.OperationalInsights/workspaces  |  Average_Pct User Time  |  Pct User Time  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.OperationalInsights/workspaces  |  Average_Physical Disk Bytes/sec  |  Physical Disk Bytes/sec  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.OperationalInsights/workspaces  |  Average_Processes  |  處理序  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.OperationalInsights/workspaces  |  Average_Processor Queue Length  |  處理器佇列長度  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.OperationalInsights/workspaces  |  Average_Size Stored In Paging Files  |  Size Stored In Paging Files  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.OperationalInsights/workspaces  |  Average_Total Bytes  |  Total Bytes  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.OperationalInsights/workspaces  |  Average_Total Bytes Received  |  Total Bytes Received  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.OperationalInsights/workspaces  |  Average_Total Bytes Transmitted  |  Total Bytes Transmitted  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.OperationalInsights/workspaces  |  Average_Total Collisions  |  Total Collisions  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.OperationalInsights/workspaces  |  Average_Total Packets Received  |  Total Packets Received  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.OperationalInsights/workspaces  |  Average_Total Packets Transmitted  |  Total Packets Transmitted  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.OperationalInsights/workspaces  |  Average_Total Rx Errors  |  Total Rx Errors  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.OperationalInsights/workspaces  |  Average_Total Tx Errors  |  Total Tx Errors  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.OperationalInsights/workspaces  |  Average_Uptime  |  Uptime  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.OperationalInsights/workspaces  |  Average_Used MBytes Swap Space  |  Used MBytes Swap Space  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.OperationalInsights/workspaces  |  Average_Used Memory kBytes  |  Used Memory kBytes  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.OperationalInsights/workspaces  |  Average_Used Memory MBytes  |  Used Memory MBytes  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.OperationalInsights/workspaces  |  Average_Users  |  使用者  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.OperationalInsights/workspaces  |  Average_Virtual Shared Memory  |  Virtual Shared Memory  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.OperationalInsights/workspaces  |  事件  |  事件  |  Count  |  Average | 
-| **是**  | **是** |  Microsoft.OperationalInsights/workspaces  |  Heartbeat  |  Heartbeat  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.OperationalInsights/workspaces  |  更新  |  更新  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.PowerBIDedicated/capacities  |  memory_metric  |  記憶體  |  位元組  |  Average | 
-| **是**  | 否 |  Microsoft.PowerBIDedicated/capacities  |  memory_thrashing_metric  |  記憶體過度置換 (資料集)  |  百分比  |  Average | 
-| **是**  | 否 |  Microsoft.PowerBIDedicated/capacities  |  qpu_high_utilization_metric  |  QPU 高使用率  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.PowerBIDedicated/capacities  |  QueryDuration  |  查詢持續時間 (資料集)  |  毫秒  |  Average | 
-| **是**  | 否 |  Microsoft.PowerBIDedicated/capacities  |  QueryPoolJobQueueLength  |  查詢集區的作業佇列長度 (資料集)  |  Count  |  Average | 
-| 否  | 否 |  Microsoft.Relay/namespaces  |  ActiveConnections  |  ActiveConnections  |  Count  |  總計 | 
-| 否  | 否 |  Microsoft.Relay/namespaces  |  ActiveListeners  |  ActiveListeners  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Relay/namespaces  |  BytesTransferred  |  BytesTransferred  |  Count  |  總計 | 
-| 否  | 否 |  Microsoft.Relay/namespaces  |  ListenerConnections-ClientError  |  ListenerConnections-ClientError  |  Count  |  總計 | 
-| 否  | 否 |  Microsoft.Relay/namespaces  |  ListenerConnections-ServerError  |  ListenerConnections-ServerError  |  Count  |  總計 | 
-| 否  | 否 |  Microsoft.Relay/namespaces  |  ListenerConnections-Success  |  ListenerConnections-Success  |  Count  |  總計 | 
-| 否  | 否 |  Microsoft.Relay/namespaces  |  ListenerConnections-TotalRequests  |  ListenerConnections-TotalRequests  |  Count  |  總計 | 
-| 否  | 否 |  Microsoft.Relay/namespaces  |  ListenerDisconnects  |  ListenerDisconnects  |  Count  |  總計 | 
-| 否  | 否 |  Microsoft.Relay/namespaces  |  SenderConnections-ClientError  |  SenderConnections-ClientError  |  Count  |  總計 | 
-| 否  | 否 |  Microsoft.Relay/namespaces  |  SenderConnections-ServerError  |  SenderConnections-ServerError  |  Count  |  總計 | 
-| 否  | 否 |  Microsoft.Relay/namespaces  |  SenderConnections-Success  |  SenderConnections-Success  |  Count  |  總計 | 
-| 否  | 否 |  Microsoft.Relay/namespaces  |  SenderConnections-TotalRequests  |  SenderConnections-TotalRequests  |  Count  |  總計 | 
-| 否  | 否 |  Microsoft.Relay/namespaces  |  SenderDisconnects  |  SenderDisconnects  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Search/searchServices  |  SearchLatency  |  搜尋延遲  |  秒  |  Average | 
-| **是**  | 否 |  Microsoft.Search/searchServices  |  SearchQueriesPerSecond  |  每秒搜尋查詢  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.Search/searchServices  |  ThrottledSearchQueriesPercentage  |  節流的搜尋查詢百分比  |  百分比  |  Average | 
-| 否  | 否 |  Microsoft.ServiceBus/namespaces  |  ActiveConnections  |  ActiveConnections  |  Count  |  總計 | 
-| 否  | 否 |  Microsoft.ServiceBus/namespaces  |  ActiveMessages  |  佇列/主題中的作用中訊息計數。  |  Count  |  Average | 
-| 否  | 否 |  Microsoft.ServiceBus/namespaces  |  ConnectionsClosed  |  已關閉的連線。  |  Count  |  Average | 
-| 否  | 否 |  Microsoft.ServiceBus/namespaces  |  ConnectionsOpened  |  已開啟的連線。  |  Count  |  Average | 
-| 否  | 否 |  Microsoft.ServiceBus/namespaces  |  CPUXNS  |  CPU (已淘汰)  |  百分比  |  最大值 | 
-| 否  | 否 |  Microsoft.ServiceBus/namespaces  |  DeadletteredMessages  |  佇列/主題中的無效訊息計數。  |  Count  |  Average | 
-| **是**  | **是** |  Microsoft.ServiceBus/namespaces  |  IncomingMessages  |  傳入訊息  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.ServiceBus/namespaces  |  IncomingRequests  |  傳入的要求  |  Count  |  總計 | 
-| 否  | 否 |  Microsoft.ServiceBus/namespaces  |  訊息  |  佇列/主題中的訊息計數。  |  Count  |  Average | 
-| 否  | 否 |  Microsoft.ServiceBus/namespaces  |  NamespaceCpuUsage  |  CPU  |  百分比  |  最大值 | 
-| 否  | 否 |  Microsoft.ServiceBus/namespaces  |  NamespaceMemoryUsage  |  記憶體使用量  |  百分比  |  最大值 | 
-| **是**  | **是** |  Microsoft.ServiceBus/namespaces  |  OutgoingMessages  |  外送訊息  |  Count  |  總計 | 
-| 否  | 否 |  Microsoft.ServiceBus/namespaces  |  ScheduledMessages  |  佇列/主題中已排程的訊息計數。  |  Count  |  Average | 
-| 否  | 否 |  Microsoft.ServiceBus/namespaces  |  ServerErrors  |  伺服器錯誤。  |  Count  |  總計 | 
-| 否  | 否 |  Microsoft.ServiceBus/namespaces  |  大小  |  大小  |  位元組  |  Average | 
-| 否  | 否 |  Microsoft.ServiceBus/namespaces  |  SuccessfulRequests  |  成功的要求  |  Count  |  總計 | 
-| 否  | 否 |  Microsoft.ServiceBus/namespaces  |  ThrottledRequests  |  節流的要求。  |  Count  |  總計 | 
-| 否  | 否 |  Microsoft.ServiceBus/namespaces  |  UserErrors  |  使用者錯誤。  |  Count  |  總計 | 
-| 否  | 否 |  Microsoft.ServiceBus/namespaces  |  WSXNS  |  記憶體使用量 (已淘汰)  |  百分比  |  最大值 | 
-| 否  | 否 |  Microsoft.ServiceFabricMesh/applications  |  ActualCpu  |  ActualCpu  |  Count  |  Average | 
-| 否  | 否 |  Microsoft.ServiceFabricMesh/applications  |  ActualMemory  |  ActualMemory  |  位元組  |  Average | 
-| 否  | 否 |  Microsoft.ServiceFabricMesh/applications  |  AllocatedCpu  |  AllocatedCpu  |  Count  |  Average | 
-| 否  | 否 |  Microsoft.ServiceFabricMesh/applications  |  AllocatedMemory  |  AllocatedMemory  |  位元組  |  Average | 
-| 否  | 否 |  Microsoft.ServiceFabricMesh/applications  |  ApplicationStatus  |  ApplicationStatus  |  Count  |  Average | 
-| 否  | 否 |  Microsoft.ServiceFabricMesh/applications  |  ContainerStatus  |  ContainerStatus  |  Count  |  Average | 
-| 否  | 否 |  Microsoft.ServiceFabricMesh/applications  |  CpuUtilization  |  CpuUtilization  |  百分比  |  Average | 
-| 否  | 否 |  Microsoft.ServiceFabricMesh/applications  |  MemoryUtilization  |  MemoryUtilization  |  百分比  |  Average | 
-| 否  | 否 |  Microsoft.ServiceFabricMesh/applications  |  RestartCount  |  RestartCount  |  Count  |  Average | 
-| 否  | 否 |  Microsoft.ServiceFabricMesh/applications  |  ServiceReplicaStatus  |  ServiceReplicaStatus  |  Count  |  Average | 
-| 否  | 否 |  Microsoft.ServiceFabricMesh/applications  |  ServiceStatus  |  ServiceStatus  |  Count  |  Average | 
-| **是**  | **是** |  Microsoft.SignalRService/SignalR  |  ConnectionCount  |  連線計數  |  Count  |  最大值 | 
-| **是**  | **是** |  Microsoft.SignalRService/SignalR  |  InboundTraffic  |  輸入流量  |  位元組  |  總計 | 
-| **是**  | **是** |  Microsoft.SignalRService/SignalR  |  MessageCount  |  訊息計數  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.SignalRService/SignalR  |  OutboundTraffic  |  輸出流量  |  位元組  |  總計 | 
-| **是**  | **是** |  Microsoft.SignalRService/SignalR  |  SystemErrors  |  系統錯誤  |  百分比  |  最大值 | 
-| **是**  | **是** |  Microsoft.SignalRService/SignalR  |  UserErrors  |  使用者錯誤  |  百分比  |  最大值 | 
-| **是**  | **是** |  Microsoft.Sql/managedInstances  |  avg_cpu_percent  |  CPU 百分比平均  |  百分比  |  Average | 
-| **是**  | 否 |  Microsoft.Sql/managedInstances  |  io_bytes_read  |  讀取的 IO 位元組  |  位元組  |  Average | 
-| **是**  | 否 |  Microsoft.Sql/managedInstances  |  io_bytes_written  |  寫入的 IO 位元組  |  位元組  |  Average | 
-| **是**  | 否 |  Microsoft.Sql/managedInstances  |  io_requests  |  IO 要求計數  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.Sql/managedInstances  |  reserved_storage_mb  |  保留的儲存體空間  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.Sql/managedInstances  |  storage_space_used_mb  |  使用的儲存體空間  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.Sql/managedInstances  |  virtual_core_count  |  虛擬核心計數  |  Count  |  Average | 
-| 否  | 否 |  Microsoft.Sql/servers  |  database_dtu_consumption_percent  |  DTU 百分比  |  百分比  |  Average | 
-| 否  | 否 |  Microsoft.Sql/servers  |  database_storage_used  |  已使用的資料空間  |  位元組  |  Average | 
-| **是**  | **是** |  Microsoft.Sql/servers  |  dtu_consumption_percent  |  DTU 百分比  |  百分比  |  Average | 
-| **是**  | **是** |  Microsoft.Sql/servers  |  dtu_used  |  已使用 DTU  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.Sql/servers  |  storage_used  |  已使用的資料空間  |  位元組  |  Average | 
-| **是**  | 否 |  Microsoft.Sql/servers/databases  |  allocated_data_storage  |  已配置的資料空間  |  位元組  |  Average | 
-| **是**  | 否 |  Microsoft.Sql/servers/databases  |  app_cpu_billed  |  已計費應用程式 CPU  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Sql/servers/databases  |  app_cpu_percent  |  應用程式 CPU 百分比  |  百分比  |  Average | 
-| **是**  | 否 |  Microsoft.Sql/servers/databases  |  app_memory_percent  |  應用程式記憶體百分比  |  百分比  |  Average | 
-| **是**  | **是** |  Microsoft.Sql/servers/databases  |  blocked_by_firewall  |  遭到防火牆封鎖  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Sql/servers/databases  |  cache_hit_percent  |  快取命中的百分比  |  百分比  |  最大值 | 
-| **是**  | 否 |  Microsoft.Sql/servers/databases  |  cache_used_percent  |  已用快取的百分比  |  百分比  |  最大值 | 
-| **是**  | **是** |  Microsoft.Sql/servers/databases  |  connection_failed  |  失敗的連線  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Sql/servers/databases  |  connection_successful  |  成功的連線  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Sql/servers/databases  |  cpu_limit  |  CPU 限制  |  Count  |  Average | 
-| **是**  | **是** |  Microsoft.Sql/servers/databases  |  cpu_percent  |  CPU 百分比  |  百分比  |  Average | 
-| **是**  | **是** |  Microsoft.Sql/servers/databases  |  cpu_used  |  已使用的 CPU  |  Count  |  Average | 
-| **是**  | **是** |  Microsoft.Sql/servers/databases  |  deadlock  |  死結  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Sql/servers/databases  |  dtu_consumption_percent  |  DTU 百分比  |  百分比  |  Average | 
-| **是**  | 否 |  Microsoft.Sql/servers/databases  |  dtu_limit  |  DTU 限制  |  Count  |  Average | 
-| **是**  | **是** |  Microsoft.Sql/servers/databases  |  dtu_used  |  已使用 DTU  |  Count  |  Average | 
-| **是**  | **是** |  Microsoft.Sql/servers/databases  |  dwu_consumption_percent  |  DWU 百分比  |  百分比  |  最大值 | 
-| **是**  | 否 |  Microsoft.Sql/servers/databases  |  dwu_limit  |  DWU 限制  |  Count  |  最大值 | 
-| **是**  | **是** |  Microsoft.Sql/servers/databases  |  dwu_used  |  已使用 DWU  |  Count  |  最大值 | 
-| **是**  | 否 |  Microsoft.Sql/servers/databases  |  local_tempdb_usage_percent  |  本機 tempdb 百分比  |  百分比  |  Average | 
-| **是**  | **是** |  Microsoft.Sql/servers/databases  |  log_write_percent  |  記錄 IO 百分比  |  百分比  |  Average | 
-| **是**  | 否 |  Microsoft.Sql/servers/databases  |  memory_usage_percent  |  記憶體百分比  |  百分比  |  最大值 | 
-| **是**  | **是** |  Microsoft.Sql/servers/databases  |  physical_data_read_percent  |  資料 IO 百分比  |  百分比  |  Average | 
-| **是**  | **是** |  Microsoft.Sql/servers/databases  |  sessions_percent  |  工作階段百分比  |  百分比  |  Average | 
-| **是**  | 否 |  Microsoft.Sql/servers/databases  |  儲存  |  已使用的資料空間  |  位元組  |  最大值 | 
-| **是**  | 否 |  Microsoft.Sql/servers/databases  |  storage_percent  |  已使用的資料空間百分比  |  百分比  |  最大值 | 
-| **是**  | 否 |  Microsoft.Sql/servers/databases  |  tempdb_data_size  |  TempDB 資料檔案大小 (KB)  |  Count  |  最大值 | 
-| **是**  | 否 |  Microsoft.Sql/servers/databases  |  tempdb_log_size  |  Tempdb 記錄檔大小 (KB)  |  Count  |  最大值 | 
-| **是**  | 否 |  Microsoft.Sql/servers/databases  |  tempdb_log_used_percent  |  Tempdb 使用的記錄百分比  |  百分比  |  最大值 | 
-| **是**  | **是** |  Microsoft.Sql/servers/databases  |  workers_percent  |  背景工作角色百分比  |  百分比  |  Average | 
-| **是**  | **是** |  Microsoft.Sql/servers/databases  |  xtp_storage_percent  |  記憶體內部 OLTP 儲存體百分比  |  百分比  |  Average | 
-| **是**  | 否 |  Microsoft.Sql/servers/elasticPools  |  allocated_data_storage  |  已配置的資料空間  |  位元組  |  Average | 
-| **是**  | 否 |  Microsoft.Sql/servers/elasticPools  |  allocated_data_storage_percent  |  已配置的資料空間百分比  |  百分比  |  最大值 | 
-| **是**  | 否 |  Microsoft.Sql/servers/elasticPools  |  cpu_limit  |  CPU 限制  |  Count  |  Average | 
-| **是**  | **是** |  Microsoft.Sql/servers/elasticPools  |  cpu_percent  |  CPU 百分比  |  百分比  |  Average | 
-| **是**  | 否 |  Microsoft.Sql/servers/elasticPools  |  cpu_used  |  已使用的 CPU  |  Count  |  Average | 
-| 否  | 否 |  Microsoft.Sql/servers/elasticPools  |  database_allocated_data_storage  |  已配置的資料空間  |  位元組  |  Average | 
-| 否  | 否 |  Microsoft.Sql/servers/elasticPools  |  database_cpu_limit  |  CPU 限制  |  Count  |  Average | 
-| 否  | 否 |  Microsoft.Sql/servers/elasticPools  |  database_cpu_percent  |  CPU 百分比  |  百分比  |  Average | 
-| 否  | 否 |  Microsoft.Sql/servers/elasticPools  |  database_cpu_used  |  已使用的 CPU  |  Count  |  Average | 
-| 否  | 否 |  Microsoft.Sql/servers/elasticPools  |  database_dtu_consumption_percent  |  DTU 百分比  |  百分比  |  Average | 
-| 否  | 否 |  Microsoft.Sql/servers/elasticPools  |  database_eDTU_used  |  已使用 eDTU  |  Count  |  Average | 
-| 否  | 否 |  Microsoft.Sql/servers/elasticPools  |  database_log_write_percent  |  記錄 IO 百分比  |  百分比  |  Average | 
-| 否  | 否 |  Microsoft.Sql/servers/elasticPools  |  database_physical_data_read_percent  |  資料 IO 百分比  |  百分比  |  Average | 
-| 否  | 否 |  Microsoft.Sql/servers/elasticPools  |  database_sessions_percent  |  工作階段百分比  |  百分比  |  Average | 
-| 否  | 否 |  Microsoft.Sql/servers/elasticPools  |  database_storage_used  |  已使用的資料空間  |  位元組  |  Average | 
-| 否  | 否 |  Microsoft.Sql/servers/elasticPools  |  database_workers_percent  |  背景工作角色百分比  |  百分比  |  Average | 
-| **是**  | **是** |  Microsoft.Sql/servers/elasticPools  |  dtu_consumption_percent  |  DTU 百分比  |  百分比  |  Average | 
-| **是**  | 否 |  Microsoft.Sql/servers/elasticPools  |  eDTU_limit  |  eDTU 限制  |  Count  |  Average | 
-| **是**  | **是** |  Microsoft.Sql/servers/elasticPools  |  eDTU_used  |  已使用 eDTU  |  Count  |  Average | 
-| **是**  | **是** |  Microsoft.Sql/servers/elasticPools  |  log_write_percent  |  記錄 IO 百分比  |  百分比  |  Average | 
-| **是**  | **是** |  Microsoft.Sql/servers/elasticPools  |  physical_data_read_percent  |  資料 IO 百分比  |  百分比  |  Average | 
-| **是**  | **是** |  Microsoft.Sql/servers/elasticPools  |  sessions_percent  |  工作階段百分比  |  百分比  |  Average | 
-| **是**  | 否 |  Microsoft.Sql/servers/elasticPools  |  storage_limit  |  資料大小上限  |  位元組  |  Average | 
-| **是**  | 否 |  Microsoft.Sql/servers/elasticPools  |  storage_percent  |  已使用的資料空間百分比  |  百分比  |  Average | 
-| **是**  | 否 |  Microsoft.Sql/servers/elasticPools  |  storage_used  |  已使用的資料空間  |  位元組  |  Average | 
-| **是**  | 否 |  Microsoft.Sql/servers/elasticPools  |  tempdb_data_size  |  TempDB 資料檔案大小 (KB)  |  Count  |  最大值 | 
-| **是**  | 否 |  Microsoft.Sql/servers/elasticPools  |  tempdb_log_size  |  Tempdb 記錄檔大小 (KB)  |  Count  |  最大值 | 
-| **是**  | 否 |  Microsoft.Sql/servers/elasticPools  |  tempdb_log_used_percent  |  Tempdb 使用的記錄百分比  |  百分比  |  最大值 | 
-| **是**  | **是** |  Microsoft.Sql/servers/elasticPools  |  workers_percent  |  背景工作角色百分比  |  百分比  |  Average | 
-| **是**  | **是** |  Microsoft.Sql/servers/elasticPools  |  xtp_storage_percent  |  記憶體內部 OLTP 儲存體百分比  |  百分比  |  Average | 
-| **是**  | 否 |  Microsoft.Storage/storageAccounts  |  可用性  |  可用性  |  百分比  |  Average | 
-| **是**  | 否 |  Microsoft.Storage/storageAccounts  |  輸出  |  輸出  |  位元組  |  總計 | 
-| **是**  | 否 |  Microsoft.Storage/storageAccounts  |  輸入  |  輸入  |  位元組  |  總計 | 
-| **是**  | 否 |  Microsoft.Storage/storageAccounts  |  SuccessE2ELatency  |  成功 E2E 延遲  |  毫秒  |  Average | 
-| **是**  | 否 |  Microsoft.Storage/storageAccounts  |  SuccessServerLatency  |  成功伺服器延遲  |  毫秒  |  Average | 
-| **是**  | 否 |  Microsoft.Storage/storageAccounts  |  交易  |  交易  |  Count  |  總計 | 
-| 否  | 否 |  Microsoft.Storage/storageAccounts  |  UsedCapacity  |  已使用容量  |  位元組  |  Average | 
-| **是**  | 否 |  Microsoft.Storage/storageAccounts/blobServices  |  可用性  |  可用性  |  百分比  |  Average | 
-| 否  | 否 |  Microsoft.Storage/storageAccounts/blobServices  |  BlobCapacity  |  Blob 容量  |  位元組  |  Average | 
-| 否  | 否 |  Microsoft.Storage/storageAccounts/blobServices  |  BlobCount  |  Blob 計數  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.Storage/storageAccounts/blobServices  |  ContainerCount  |  Blob 容器計數  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.Storage/storageAccounts/blobServices  |  輸出  |  輸出  |  位元組  |  總計 | 
-| 否  | 否 |  Microsoft.Storage/storageAccounts/blobServices  |  IndexCapacity  |  索引容量  |  位元組  |  Average | 
-| **是**  | 否 |  Microsoft.Storage/storageAccounts/blobServices  |  輸入  |  輸入  |  位元組  |  總計 | 
-| **是**  | 否 |  Microsoft.Storage/storageAccounts/blobServices  |  SuccessE2ELatency  |  成功 E2E 延遲  |  毫秒  |  Average | 
-| **是**  | 否 |  Microsoft.Storage/storageAccounts/blobServices  |  SuccessServerLatency  |  成功伺服器延遲  |  毫秒  |  Average | 
-| **是**  | 否 |  Microsoft.Storage/storageAccounts/blobServices  |  交易  |  交易  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Storage/storageAccounts/fileServices  |  可用性  |  可用性  |  百分比  |  Average | 
-| **是**  | 否 |  Microsoft.Storage/storageAccounts/fileServices  |  輸出  |  輸出  |  位元組  |  總計 | 
-| 否  | 否 |  Microsoft.Storage/storageAccounts/fileServices  |  FileCapacity  |  檔案容量  |  位元組  |  Average | 
-| 否  | 否 |  Microsoft.Storage/storageAccounts/fileServices  |  FileCount  |  檔案計數  |  Count  |  Average | 
-| 否  | 否 |  Microsoft.Storage/storageAccounts/fileServices  |  FileShareCount  |  檔案共用計數  |  Count  |  Average | 
-| 否  | 否 |  Microsoft.Storage/storageAccounts/fileServices  |  FileShareQuota  |  檔案共用配額大小  |  位元組  |  Average | 
-| 否  | 否 |  Microsoft.Storage/storageAccounts/fileServices  |  FileShareSnapshotCount  |  檔案共用快照集計數  |  Count  |  Average | 
-| 否  | 否 |  Microsoft.Storage/storageAccounts/fileServices  |  FileShareSnapshotSize  |  檔案共用快照集大小  |  位元組  |  Average | 
-| **是**  | 否 |  Microsoft.Storage/storageAccounts/fileServices  |  輸入  |  輸入  |  位元組  |  總計 | 
-| **是**  | 否 |  Microsoft.Storage/storageAccounts/fileServices  |  SuccessE2ELatency  |  成功 E2E 延遲  |  毫秒  |  Average | 
-| **是**  | 否 |  Microsoft.Storage/storageAccounts/fileServices  |  SuccessServerLatency  |  成功伺服器延遲  |  毫秒  |  Average | 
-| **是**  | 否 |  Microsoft.Storage/storageAccounts/fileServices  |  交易  |  交易  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Storage/storageAccounts/queueServices  |  可用性  |  可用性  |  百分比  |  Average | 
-| **是**  | 否 |  Microsoft.Storage/storageAccounts/queueServices  |  輸出  |  輸出  |  位元組  |  總計 | 
-| **是**  | 否 |  Microsoft.Storage/storageAccounts/queueServices  |  輸入  |  輸入  |  位元組  |  總計 | 
-| **是**  | 否 |  Microsoft.Storage/storageAccounts/queueServices  |  QueueCapacity  |  佇列容量  |  位元組  |  Average | 
-| **是**  | 否 |  Microsoft.Storage/storageAccounts/queueServices  |  QueueCount  |  佇列計數  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.Storage/storageAccounts/queueServices  |  QueueMessageCount  |  佇列訊息計數  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.Storage/storageAccounts/queueServices  |  SuccessE2ELatency  |  成功 E2E 延遲  |  毫秒  |  Average | 
-| **是**  | 否 |  Microsoft.Storage/storageAccounts/queueServices  |  SuccessServerLatency  |  成功伺服器延遲  |  毫秒  |  Average | 
-| **是**  | 否 |  Microsoft.Storage/storageAccounts/queueServices  |  交易  |  交易  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.Storage/storageAccounts/tableServices  |  可用性  |  可用性  |  百分比  |  Average | 
-| **是**  | 否 |  Microsoft.Storage/storageAccounts/tableServices  |  輸出  |  輸出  |  位元組  |  總計 | 
-| **是**  | 否 |  Microsoft.Storage/storageAccounts/tableServices  |  輸入  |  輸入  |  位元組  |  總計 | 
-| **是**  | 否 |  Microsoft.Storage/storageAccounts/tableServices  |  SuccessE2ELatency  |  成功 E2E 延遲  |  毫秒  |  Average | 
-| **是**  | 否 |  Microsoft.Storage/storageAccounts/tableServices  |  SuccessServerLatency  |  成功伺服器延遲  |  毫秒  |  Average | 
-| **是**  | 否 |  Microsoft.Storage/storageAccounts/tableServices  |  TableCapacity  |  資料表容量  |  位元組  |  Average | 
-| **是**  | 否 |  Microsoft.Storage/storageAccounts/tableServices  |  TableCount  |  資料表計數  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.Storage/storageAccounts/tableServices  |  TableEntityCount  |  資料表實體計數  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.Storage/storageAccounts/tableServices  |  交易  |  交易  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.StorageCache/caches  |  ClientIOPS  |  用戶端 IOPS 總計  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.StorageCache/caches  |  ClientLatency  |  平均用戶端延遲  |  毫秒  |  Average | 
-| **是**  | 否 |  Microsoft.StorageCache/caches  |  ClientLockIOPS  |  用戶端鎖定 IOPS  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.StorageCache/caches  |  ClientMetadataReadIOPS  |  用戶端中繼資料讀取 IOPS  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.StorageCache/caches  |  ClientMetadataWriteIOPS  |  用戶端中繼資料寫入 IOPS  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.StorageCache/caches  |  ClientReadIOPS  |  用戶端讀取 IOPS  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.StorageCache/caches  |  ClientReadThroughput  |  平均快取讀取輸送量  |  每秒位元組  |  Average | 
-| **是**  | 否 |  Microsoft.StorageCache/caches  |  ClientWriteIOPS  |  用戶端寫入 IOPS  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.StorageCache/caches  |  ClientWriteThroughput  |  平均快取寫入輸送量  |  每秒位元組  |  Average | 
-| **是**  | 否 |  Microsoft.StorageCache/caches  |  StorageTargetAsyncWriteThroughput  |  StorageTarget 非同步寫入輸送量  |  每秒位元組  |  Average | 
-| **是**  | 否 |  Microsoft.StorageCache/caches  |  StorageTargetFillThroughput  |  StorageTarget 填滿輸送量  |  每秒位元組  |  Average | 
-| **是**  | 否 |  Microsoft.StorageCache/caches  |  StorageTargetHealth  |  儲存目標健康狀態  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.StorageCache/caches  |  StorageTargetIOPS  |  StorageTarget IOPS 總計  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.StorageCache/caches  |  StorageTargetLatency  |  StorageTarget 延遲  |  毫秒  |  Average | 
-| **是**  | 否 |  Microsoft.StorageCache/caches  |  StorageTargetMetadataReadIOPS  |  StorageTarget 中繼資料讀取 IOPS  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.StorageCache/caches  |  StorageTargetMetadataWriteIOPS  |  StorageTarget 中繼資料寫入 IOPS  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.StorageCache/caches  |  StorageTargetReadAheadThroughput  |  StorageTarget 預讀輸送量  |  每秒位元組  |  Average | 
-| **是**  | 否 |  Microsoft.StorageCache/caches  |  StorageTargetReadIOPS  |  StorageTarget 讀取 IOPS  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.StorageCache/caches  |  StorageTargetSyncWriteThroughput  |  StorageTarget 同步寫入輸送量  |  每秒位元組  |  Average | 
-| **是**  | 否 |  Microsoft.StorageCache/caches  |  StorageTargetTotalReadThroughput  |  StorageTarget 讀取輸送量總計  |  每秒位元組  |  Average | 
-| **是**  | 否 |  Microsoft.StorageCache/caches  |  StorageTargetTotalWriteThroughput  |  StorageTarget 寫入輸送量總計  |  每秒位元組  |  Average | 
-| **是**  | 否 |  Microsoft.StorageCache/caches  |  StorageTargetWriteIOPS  |  StorageTarget 寫入 IOPS  |  Count  |  Average | 
-| **是**  | 否 |  Microsoft.StorageCache/caches  |  Uptime  |  Uptime  |  Count  |  Average | 
-| **是**  | 否 |  microsoft.storagesync/storageSyncServices  |  ServerSyncSessionResult  |  同步工作階段結果  |  Count  |  Average | 
-| **是**  | 否 |  microsoft.storagesync/storageSyncServices  |  StorageSyncBatchTransferredFileBytes  |  同步的位元組  |  位元組  |  總計 | 
-| **是**  | 否 |  microsoft.storagesync/storageSyncServices  |  StorageSyncRecalledNetworkBytesByApplication  |  雲端階層處理重新叫用大小 (依應用程式)  |  位元組  |  總計 | 
-| **是**  | 否 |  microsoft.storagesync/storageSyncServices  |  StorageSyncRecalledTotalNetworkBytes  |  雲端階層處理重新叫用大小  |  位元組  |  總計 | 
-| **是**  | 否 |  microsoft.storagesync/storageSyncServices  |  StorageSyncRecallIOTotalSizeBytes  |  雲端階層處理重新叫用  |  位元組  |  總計 | 
-| **是**  | 否 |  microsoft.storagesync/storageSyncServices  |  StorageSyncRecallThroughputBytesPerSecond  |  雲端階層處理重新叫用輸送量  |  每秒位元組  |  Average | 
-| **是**  | 否 |  microsoft.storagesync/storageSyncServices  |  StorageSyncServerHeartbeat  |  伺服器線上狀態  |  Count  |  最大值 | 
-| **是**  | 否 |  microsoft.storagesync/storageSyncServices  |  StorageSyncSyncSessionAppliedFilesCount  |  同步的檔案  |  Count  |  總計 | 
-| **是**  | 否 |  microsoft.storagesync/storageSyncServices  |  StorageSyncSyncSessionPerItemErrorsCount  |  檔案無法同步  |  Count  |  總計 | 
-| **是**  | 否 |  microsoft.storagesync/storageSyncServices/registeredServers  |  ServerHeartbeat  |  伺服器線上狀態  |  Count  |  最大值 | 
-| **是**  | 否 |  microsoft.storagesync/storageSyncServices/registeredServers  |  ServerRecallIOTotalSizeBytes  |  雲端階層處理重新叫用  |  位元組  |  總計 | 
-| **是**  | 否 |  microsoft.storagesync/storageSyncServices/syncGroups  |  SyncGroupBatchTransferredFileBytes  |  同步的位元組  |  位元組  |  總計 | 
-| **是**  | 否 |  microsoft.storagesync/storageSyncServices/syncGroups  |  SyncGroupSyncSessionAppliedFilesCount  |  同步的檔案  |  Count  |  總計 | 
-| **是**  | 否 |  microsoft.storagesync/storageSyncServices/syncGroups  |  SyncGroupSyncSessionPerItemErrorsCount  |  檔案無法同步  |  Count  |  總計 | 
-| **是**  | 否 |  microsoft.storagesync/storageSyncServices/syncGroups/serverEndpoints  |  ServerEndpointBatchTransferredFileBytes  |  同步的位元組  |  位元組  |  總計 | 
-| **是**  | 否 |  microsoft.storagesync/storageSyncServices/syncGroups/serverEndpoints  |  ServerEndpointSyncSessionAppliedFilesCount  |  同步的檔案  |  Count  |  總計 | 
-| **是**  | 否 |  microsoft.storagesync/storageSyncServices/syncGroups/serverEndpoints  |  ServerEndpointSyncSessionPerItemErrorsCount  |  檔案無法同步  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.StreamAnalytics/streamingjobs  |  AMLCalloutFailedRequests  |  失敗的函式要求  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.StreamAnalytics/streamingjobs  |  AMLCalloutInputEvents  |  函式事件  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.StreamAnalytics/streamingjobs  |  AMLCalloutRequests  |  函式要求  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.StreamAnalytics/streamingjobs  |  ConversionErrors  |  資料轉換錯誤  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.StreamAnalytics/streamingjobs  |  DeserializationError  |  輸入還原序列化錯誤  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.StreamAnalytics/streamingjobs  |  DroppedOrAdjustedEvents  |  次序錯誤事件  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.StreamAnalytics/streamingjobs  |  EarlyInputEvents  |  早期輸入事件  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.StreamAnalytics/streamingjobs  |  Errors  |  執行階段錯誤  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.StreamAnalytics/streamingjobs  |  InputEventBytes  |  輸入事件位元組  |  位元組  |  總計 | 
-| **是**  | 否 |  Microsoft.StreamAnalytics/streamingjobs  |  InputEvents  |  輸入事件  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.StreamAnalytics/streamingjobs  |  InputEventsSourcesBacklogged  |  待處理輸入事件數  |  Count  |  最大值 | 
-| **是**  | 否 |  Microsoft.StreamAnalytics/streamingjobs  |  InputEventsSourcesPerSecond  |  收到的輸入來源數  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.StreamAnalytics/streamingjobs  |  LateInputEvents  |  延遲輸入事件  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.StreamAnalytics/streamingjobs  |  OutputEvents  |  輸出事件  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.StreamAnalytics/streamingjobs  |  OutputWatermarkDelaySeconds  |  浮水印延遲秒數  |  秒  |  最大值 | 
-| **是**  | 否 |  Microsoft.StreamAnalytics/streamingjobs  |  ResourceUtilization  |  SU % 使用率  |  百分比  |  最大值 | 
-| **是**  | 否 |  Microsoft.VMwareCloudSimple/virtualMachines  |  Disk Read Bytes  |  Disk Read Bytes  |  位元組  |  總計 | 
-| **是**  | 否 |  Microsoft.VMwareCloudSimple/virtualMachines  |  Disk Read Operations/Sec  |  Disk Read Operations/Sec  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.VMwareCloudSimple/virtualMachines  |  Disk Write Bytes  |  Disk Write Bytes  |  位元組  |  總計 | 
-| **是**  | 否 |  Microsoft.VMwareCloudSimple/virtualMachines  |  Disk Write Operations/Sec  |  Disk Write Operations/Sec  |  每秒計數  |  Average | 
-| **是**  | 否 |  Microsoft.VMwareCloudSimple/virtualMachines  |  DiskReadBytesPerSecond  |  Disk Read Bytes/Sec  |  每秒位元組  |  Average | 
-| **是**  | 否 |  Microsoft.VMwareCloudSimple/virtualMachines  |  DiskReadLatency  |  磁碟讀取延遲  |  毫秒  |  Average | 
-| **是**  | 否 |  Microsoft.VMwareCloudSimple/virtualMachines  |  DiskReadOperations  |  磁碟讀取作業  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.VMwareCloudSimple/virtualMachines  |  DiskWriteBytesPerSecond  |  Disk Write Bytes/Sec  |  每秒位元組  |  Average | 
-| **是**  | 否 |  Microsoft.VMwareCloudSimple/virtualMachines  |  DiskWriteLatency  |  磁碟寫入延遲  |  毫秒  |  Average | 
-| **是**  | 否 |  Microsoft.VMwareCloudSimple/virtualMachines  |  DiskWriteOperations  |  磁碟寫入作業  |  Count  |  總計 | 
-| **是**  | 否 |  Microsoft.VMwareCloudSimple/virtualMachines  |  MemoryActive  |  作用中記憶體  |  位元組  |  Average | 
-| **是**  | 否 |  Microsoft.VMwareCloudSimple/virtualMachines  |  MemoryGranted  |  已授與的記憶體  |  位元組  |  Average | 
-| **是**  | 否 |  Microsoft.VMwareCloudSimple/virtualMachines  |  MemoryUsed  |  已使用的記憶體  |  位元組  |  Average | 
-| **是**  | 否 |  Microsoft.VMwareCloudSimple/virtualMachines  |  Network In  |  Network In  |  位元組  |  總計 | 
-| **是**  | 否 |  Microsoft.VMwareCloudSimple/virtualMachines  |  Network Out  |  Network Out  |  位元組  |  總計 | 
-| **是**  | 否 |  Microsoft.VMwareCloudSimple/virtualMachines  |  NetworkInBytesPerSecond  |  網路輸入位元組數/秒  |  每秒位元組  |  Average | 
-| **是**  | 否 |  Microsoft.VMwareCloudSimple/virtualMachines  |  NetworkOutBytesPerSecond  |  網路輸出位元組數/秒  |  每秒位元組  |  Average | 
-| **是**  | 否 |  Microsoft.VMwareCloudSimple/virtualMachines  |  Percentage CPU  |  Percentage CPU  |  百分比  |  Average | 
-| **是**  | 否 |  Microsoft.VMwareCloudSimple/virtualMachines  |  PercentageCpuReady  |  CPU 已就緒百分比  |  毫秒  |  總計 | 
-| **是**  | **是** |  Microsoft.Web/hostingEnvironments/multiRolePools  |  ActiveRequests  |  使用中的要求  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Web/hostingEnvironments/multiRolePools  |  AverageResponseTime  |  平均回應時間  |  秒  |  Average | 
-| **是**  | **是** |  Microsoft.Web/hostingEnvironments/multiRolePools  |  BytesReceived  |  資料輸入  |  位元組  |  總計 | 
-| **是**  | **是** |  Microsoft.Web/hostingEnvironments/multiRolePools  |  BytesSent  |  資料輸出  |  位元組  |  總計 | 
-| **是**  | **是** |  Microsoft.Web/hostingEnvironments/multiRolePools  |  CpuPercentage  |  CPU 百分比  |  百分比  |  Average | 
-| **是**  | **是** |  Microsoft.Web/hostingEnvironments/multiRolePools  |  DiskQueueLength  |  磁碟佇列長度  |  Count  |  Average | 
-| **是**  | **是** |  Microsoft.Web/hostingEnvironments/multiRolePools  |  Http101  |  Http 101  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Web/hostingEnvironments/multiRolePools  |  Http2xx  |  Http 2xx  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Web/hostingEnvironments/multiRolePools  |  Http3xx  |  Http 3xx  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Web/hostingEnvironments/multiRolePools  |  Http401  |  Http 401  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Web/hostingEnvironments/multiRolePools  |  Http403  |  Http 403  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Web/hostingEnvironments/multiRolePools  |  Http404  |  Http 404  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Web/hostingEnvironments/multiRolePools  |  Http406  |  Http 406  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Web/hostingEnvironments/multiRolePools  |  Http4xx  |  Http 4xx  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Web/hostingEnvironments/multiRolePools  |  Http5xx  |  Http 伺服器錯誤  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Web/hostingEnvironments/multiRolePools  |  HttpQueueLength  |  Http 佇列長度  |  Count  |  Average | 
-| **是**  | **是** |  Microsoft.Web/hostingEnvironments/multiRolePools  |  LargeAppServicePlanInstances  |  大型 App Service 方案背景工作角色  |  Count  |  Average | 
-| **是**  | **是** |  Microsoft.Web/hostingEnvironments/multiRolePools  |  MediumAppServicePlanInstances  |  中型 App Service 方案背景工作角色  |  Count  |  Average | 
-| **是**  | **是** |  Microsoft.Web/hostingEnvironments/multiRolePools  |  MemoryPercentage  |  記憶體百分比  |  百分比  |  Average | 
-| **是**  | **是** |  Microsoft.Web/hostingEnvironments/multiRolePools  |  Requests  |  Requests  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Web/hostingEnvironments/multiRolePools  |  SmallAppServicePlanInstances  |  小型 App Service 方案背景工作角色  |  Count  |  Average | 
-| **是**  | **是** |  Microsoft.Web/hostingEnvironments/multiRolePools  |  TotalFrontEnds  |  前端總數  |  Count  |  Average | 
-| **是**  | **是** |  Microsoft.Web/hostingEnvironments/workerPools  |  CpuPercentage  |  CPU 百分比  |  百分比  |  Average | 
-| **是**  | **是** |  Microsoft.Web/hostingEnvironments/workerPools  |  MemoryPercentage  |  記憶體百分比  |  百分比  |  Average | 
-| **是**  | **是** |  Microsoft.Web/hostingEnvironments/workerPools  |  WorkersAvailable  |  可用的背景工作角色  |  Count  |  Average | 
-| **是**  | **是** |  Microsoft.Web/hostingEnvironments/workerPools  |  WorkersTotal  |  背景工作角色總數  |  Count  |  Average | 
-| **是**  | **是** |  Microsoft.Web/hostingEnvironments/workerPools  |  WorkersUsed  |  已使用的背景工作角色  |  Count  |  Average | 
-| **是**  | **是** |  Microsoft.Web/serverfarms  |  BytesReceived  |  資料輸入  |  位元組  |  總計 | 
-| **是**  | **是** |  Microsoft.Web/serverfarms  |  BytesSent  |  資料輸出  |  位元組  |  總計 | 
-| **是**  | **是** |  Microsoft.Web/serverfarms  |  CpuPercentage  |  CPU 百分比  |  百分比  |  Average | 
-| **是**  | **是** |  Microsoft.Web/serverfarms  |  DiskQueueLength  |  磁碟佇列長度  |  Count  |  Average | 
-| **是**  | **是** |  Microsoft.Web/serverfarms  |  HttpQueueLength  |  Http 佇列長度  |  Count  |  Average | 
-| **是**  | **是** |  Microsoft.Web/serverfarms  |  MemoryPercentage  |  記憶體百分比  |  百分比  |  Average | 
-| **是**  | **是** |  Microsoft.Web/serverfarms  |  TcpCloseWait  |  等候關閉的 TCP  |  Count  |  Average | 
-| **是**  | **是** |  Microsoft.Web/serverfarms  |  TcpClosing  |  正在關閉的 TCP  |  Count  |  Average | 
-| **是**  | **是** |  Microsoft.Web/serverfarms  |  TcpEstablished  |  已建立的 TCP  |  Count  |  Average | 
-| **是**  | **是** |  Microsoft.Web/serverfarms  |  TcpFinWait1  |  TCP 完成等候 1  |  Count  |  Average | 
-| **是**  | **是** |  Microsoft.Web/serverfarms  |  TcpFinWait2  |  TCP 完成等候 2  |  Count  |  Average | 
-| **是**  | **是** |  Microsoft.Web/serverfarms  |  TcpLastAck  |  TCP 上次認可  |  Count  |  Average | 
-| **是**  | **是** |  Microsoft.Web/serverfarms  |  TcpSynReceived  |  已接收的 TCP 同步  |  Count  |  Average | 
-| **是**  | **是** |  Microsoft.Web/serverfarms  |  TcpSynSent  |  已傳送的 TCP 同步  |  Count  |  Average | 
-| **是**  | **是** |  Microsoft.Web/serverfarms  |  TcpTimeWait  |  TCP 等候時間  |  Count  |  Average | 
-| **是**  | **是** |  Microsoft.Web/sites  |  AppConnections  |  連接  |  Count  |  Average | 
-| **是**  | **是** |  Microsoft.Web/sites  |  AverageMemoryWorkingSet  |  平均記憶體工作集  |  位元組  |  Average | 
-| **是**  | **是** |  Microsoft.Web/sites  |  AverageResponseTime  |  平均回應時間  |  秒  |  Average | 
-| **是**  | **是** |  Microsoft.Web/sites  |  BytesReceived  |  資料輸入  |  位元組  |  總計 | 
-| **是**  | **是** |  Microsoft.Web/sites  |  BytesSent  |  資料輸出  |  位元組  |  總計 | 
-| **是**  | **是** |  Microsoft.Web/sites  |  CpuTime  |  CPU 時間  |  秒  |  總計 | 
-| **是**  | **是** |  Microsoft.Web/sites  |  CurrentAssemblies  |  目前的組件  |  Count  |  Average | 
-| **是**  | **是** |  Microsoft.Web/sites  |  FunctionExecutionCount  |  函式執行計數  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Web/sites  |  FunctionExecutionUnits  |  函式執行單位  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Web/sites  |  Gen0Collections  |  Gen 0 記憶體回收  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Web/sites  |  Gen1Collections  |  Gen 1 記憶體回收  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Web/sites  |  Gen2Collections  |  Gen 2 記憶體回收  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Web/sites  |  處理  |  控制代碼計數  |  Count  |  Average | 
-| **是**  | **是** |  Microsoft.Web/sites  |  HealthCheckStatus  |  健康情況檢查狀態  |  Count  |  Average | 
-| **是**  | **是** |  Microsoft.Web/sites  |  Http101  |  Http 101  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Web/sites  |  Http2xx  |  Http 2xx  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Web/sites  |  Http3xx  |  Http 3xx  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Web/sites  |  Http401  |  Http 401  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Web/sites  |  Http403  |  Http 403  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Web/sites  |  Http404  |  Http 404  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Web/sites  |  Http406  |  Http 406  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Web/sites  |  Http4xx  |  Http 4xx  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Web/sites  |  Http5xx  |  Http 伺服器錯誤  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Web/sites  |  HttpResponseTime  |  回應時間  |  秒  |  Average | 
-| **是**  | **是** |  Microsoft.Web/sites  |  IoOtherBytesPerSecond  |  每秒的 IO 其他位元組數  |  每秒位元組  |  總計 | 
-| **是**  | **是** |  Microsoft.Web/sites  |  IoOtherOperationsPerSecond  |  每秒的 IO 其他作業數  |  每秒位元組  |  總計 | 
-| **是**  | **是** |  Microsoft.Web/sites  |  IoReadBytesPerSecond  |  每秒的 IO 讀取位元組數  |  每秒位元組  |  總計 | 
-| **是**  | **是** |  Microsoft.Web/sites  |  IoReadOperationsPerSecond  |  每秒的 IO 讀取作業數  |  每秒位元組  |  總計 | 
-| **是**  | **是** |  Microsoft.Web/sites  |  IoWriteBytesPerSecond  |  每秒的 IO 寫入位元組數  |  每秒位元組  |  總計 | 
-| **是**  | **是** |  Microsoft.Web/sites  |  IoWriteOperationsPerSecond  |  每秒的 IO 寫入作業數  |  每秒位元組  |  總計 | 
-| **是**  | **是** |  Microsoft.Web/sites  |  MemoryWorkingSet  |  記憶體工作集  |  位元組  |  Average | 
-| **是**  | **是** |  Microsoft.Web/sites  |  PrivateBytes  |  私用位元組  |  位元組  |  Average | 
-| **是**  | **是** |  Microsoft.Web/sites  |  Requests  |  Requests  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Web/sites  |  RequestsInApplicationQueue  |  應用程式佇列中的要求數  |  Count  |  Average | 
-| **是**  | **是** |  Microsoft.Web/sites  |  Threads  |  執行緒計數  |  Count  |  Average | 
-| **是**  | **是** |  Microsoft.Web/sites  |  TotalAppDomains  |  應用程式網域總計  |  Count  |  Average | 
-| **是**  | **是** |  Microsoft.Web/sites  |  TotalAppDomainsUnloaded  |  已卸載的應用程式網域總計  |  Count  |  Average | 
-| **是**  | **是** |  Microsoft.Web/sites/slots  |  AppConnections  |  連接  |  Count  |  Average | 
-| **是**  | **是** |  Microsoft.Web/sites/slots  |  AverageMemoryWorkingSet  |  平均記憶體工作集  |  位元組  |  Average | 
-| **是**  | **是** |  Microsoft.Web/sites/slots  |  AverageResponseTime  |  平均回應時間  |  秒  |  Average | 
-| **是**  | **是** |  Microsoft.Web/sites/slots  |  BytesReceived  |  資料輸入  |  位元組  |  總計 | 
-| **是**  | **是** |  Microsoft.Web/sites/slots  |  BytesSent  |  資料輸出  |  位元組  |  總計 | 
-| **是**  | **是** |  Microsoft.Web/sites/slots  |  CpuTime  |  CPU 時間  |  秒  |  總計 | 
-| **是**  | **是** |  Microsoft.Web/sites/slots  |  CurrentAssemblies  |  目前的組件  |  Count  |  Average | 
-| **是**  | **是** |  Microsoft.Web/sites/slots  |  FunctionExecutionCount  |  函式執行計數  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Web/sites/slots  |  FunctionExecutionUnits  |  函式執行單位  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Web/sites/slots  |  Gen0Collections  |  Gen 0 記憶體回收  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Web/sites/slots  |  Gen1Collections  |  Gen 1 記憶體回收  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Web/sites/slots  |  Gen2Collections  |  Gen 2 記憶體回收  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Web/sites/slots  |  處理  |  控制代碼計數  |  Count  |  Average | 
-| **是**  | **是** |  Microsoft.Web/sites/slots  |  HealthCheckStatus  |  健康情況檢查狀態  |  Count  |  Average | 
-| **是**  | **是** |  Microsoft.Web/sites/slots  |  Http101  |  Http 101  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Web/sites/slots  |  Http2xx  |  Http 2xx  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Web/sites/slots  |  Http3xx  |  Http 3xx  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Web/sites/slots  |  Http401  |  Http 401  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Web/sites/slots  |  Http403  |  Http 403  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Web/sites/slots  |  Http404  |  Http 404  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Web/sites/slots  |  Http406  |  Http 406  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Web/sites/slots  |  Http4xx  |  Http 4xx  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Web/sites/slots  |  Http5xx  |  Http 伺服器錯誤  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Web/sites/slots  |  HttpResponseTime  |  回應時間  |  秒  |  Average | 
-| **是**  | **是** |  Microsoft.Web/sites/slots  |  IoOtherBytesPerSecond  |  每秒的 IO 其他位元組數  |  每秒位元組  |  總計 | 
-| **是**  | **是** |  Microsoft.Web/sites/slots  |  IoOtherOperationsPerSecond  |  每秒的 IO 其他作業數  |  每秒位元組  |  總計 | 
-| **是**  | **是** |  Microsoft.Web/sites/slots  |  IoReadBytesPerSecond  |  每秒的 IO 讀取位元組數  |  每秒位元組  |  總計 | 
-| **是**  | **是** |  Microsoft.Web/sites/slots  |  IoReadOperationsPerSecond  |  每秒的 IO 讀取作業數  |  每秒位元組  |  總計 | 
-| **是**  | **是** |  Microsoft.Web/sites/slots  |  IoWriteBytesPerSecond  |  每秒的 IO 寫入位元組數  |  每秒位元組  |  總計 | 
-| **是**  | **是** |  Microsoft.Web/sites/slots  |  IoWriteOperationsPerSecond  |  每秒的 IO 寫入作業數  |  每秒位元組  |  總計 | 
-| **是**  | **是** |  Microsoft.Web/sites/slots  |  MemoryWorkingSet  |  記憶體工作集  |  位元組  |  Average | 
-| **是**  | **是** |  Microsoft.Web/sites/slots  |  PrivateBytes  |  私用位元組  |  位元組  |  Average | 
-| **是**  | **是** |  Microsoft.Web/sites/slots  |  Requests  |  Requests  |  Count  |  總計 | 
-| **是**  | **是** |  Microsoft.Web/sites/slots  |  RequestsInApplicationQueue  |  應用程式佇列中的要求數  |  Count  |  Average | 
-| **是**  | **是** |  Microsoft.Web/sites/slots  |  Threads  |  執行緒計數  |  Count  |  Average | 
-| **是**  | **是** |  Microsoft.Web/sites/slots  |  TotalAppDomains  |  應用程式網域總計  |  Count  |  Average | 
-| **是**  | **是** |  Microsoft.Web/sites/slots  |  TotalAppDomainsUnloaded  |  已卸載的應用程式網域總計  |  Count  |  Average | 

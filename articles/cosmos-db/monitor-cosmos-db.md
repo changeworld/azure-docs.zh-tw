@@ -5,15 +5,15 @@ author: bwren
 services: cosmos-db
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 05/20/2020
+ms.date: 07/22/2020
 ms.author: bwren
 ms.custom: subject-monitoring
-ms.openlocfilehash: cd100fca074e63c56cd6a19843cc68e1a1ddf214
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 9c2a87f3d70d3873771b3a59114b424efffe4fb9
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85850297"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87130183"
 ---
 # <a name="monitoring-azure-cosmos-db"></a>監視 Azure Cosmos DB
 
@@ -23,7 +23,7 @@ ms.locfileid: "85850297"
 
 * **從 Azure Cosmos DB 入口網站進行監視：** 您可以在 Azure Cosmos 帳戶的 [**計量**] 索引標籤中，使用可用的計量進行監視。 此索引標籤上的計量包括輸送量、儲存體、可用性、延遲、一致性和系統層級計量。 根據預設，這些計量的保留期間為7天。 若要深入瞭解，請參閱本文的[監視從 Azure Cosmos DB 收集的資料](#monitoring-from-azure-cosmos-db)一節。
 
-* **使用 Azure 監視器中的計量進行監視：** 您可以監視 Azure Cosmos 帳戶的計量，並從 Azure 監視器建立儀表板。 Azure 監視器預設會收集 Azure Cosmos DB 計量，您不需要明確地設定任何專案。 這些計量會以一分鐘為單位收集，而資料細微性可能會根據您選擇的度量而有所不同。 根據預設，這些計量的保留期間為30天。 這些計量中也提供了先前選項所提供的大部分計量。 若要深入瞭解，請參閱本文的[分析度量資料](#analyze-metric-data)一節。
+* **使用 Azure 監視器中的計量進行監視：** 您可以監視 Azure Cosmos 帳戶的計量，並從 Azure 監視器建立儀表板。 Azure 監視器預設會收集 Azure Cosmos DB 計量，您不需要明確地設定任何專案。 這些計量會以一分鐘為單位收集，而資料細微性可能會根據您選擇的度量而有所不同。 根據預設，這些計量的保留期間為30天。 這些計量中也提供了先前選項所提供的大部分計量。 「容器名稱」等計量的維度值不區分大小寫。 因此，在對這些維度值進行字串比較時，您必須使用不區分大小寫比較。 若要深入瞭解，請參閱本文的[分析度量資料](#analyze-metric-data)一節。
 
 * **使用 Azure 監視器中的診斷記錄進行監視：** 您可以監視 Azure Cosmos 帳戶的記錄，並從 Azure 監視器建立儀表板。 以第二個數據細微性發生的事件和追蹤之類的遙測資料會儲存為記錄。 例如，如果容器的輸送量變更，則會變更 Cosmos 帳戶的屬性，這些事件會在記錄檔中捕捉。 您可以對收集到的資料執行查詢來分析這些記錄。 若要深入瞭解，請參閱本文的[分析記錄資料](#analyze-log-data)一節。
 

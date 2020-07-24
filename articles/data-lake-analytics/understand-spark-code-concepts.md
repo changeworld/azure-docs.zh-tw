@@ -1,19 +1,17 @@
 ---
 title: 瞭解 Azure Data Lake Analytics U-SQL 開發人員的 Apache Spark 程式碼概念。
 description: 本文說明 Apache Spark 的概念，以協助 SQL 開發人員瞭解 Spark 程式碼概念。
-author: guyhay
-ms.author: guyhay
 ms.reviewer: jasonh
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.custom: Understand-apache-spark-code-concepts
 ms.date: 10/15/2019
-ms.openlocfilehash: d7cdcd5a3b176b60bb7801b37a831f8feb08c21f
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 7b5be20bb8b5eb1d56c1214104037d5d824445b3
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86106487"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132342"
 ---
 # <a name="understand-apache-spark-code-for-u-sql-developers"></a>瞭解適用于 U-SQL 開發人員的 Apache Spark 程式碼
 
@@ -128,10 +126,10 @@ Spark 分別提供自己的 Python 和 R 整合、pySpark 和 SparkR，並提供
 |`SQL.MAP<K,V>`   |`MapType(keyType, valueType, valueContainsNull)` |`scala.collection.Map` | `MapType(keyType, valueType, valueContainsNull=True)`|
 |`SQL.ARRAY<T>`   |`ArrayType(elementType, containsNull)` |`scala.collection.Seq` | `ArrayType(elementType, containsNull=True)`|
 
-如需詳細資訊，請參閱：
+如需詳細資訊，請參閱
 
 - [. spark. .sql 類型](https://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.types.package)
-- [Spark SQL 和資料框架類型](https://spark.apache.org/docs/latest/sql-reference.html#data-types)
+- [Spark SQL 和資料框架類型](https://spark.apache.org/docs/latest/sql-ref-datatypes.html)
 - [Scala 數值型別](https://www.scala-lang.org/api/current/scala/AnyVal.html)
 - [pyspark 類型](https://spark.apache.org/docs/latest/api/python/pyspark.sql.html#module-pyspark.sql.types)
 
@@ -216,7 +214,7 @@ Spark 的成本型查詢最佳化工具有它自己的功能，可提供提示�
 ## <a name="next-steps"></a>後續步驟
 
 - [瞭解適用于 U-SQL 開發人員的 Spark 資料格式](understand-spark-data-formats.md)
-- [適用於 Apache Spark 的 .NET](https://docs.microsoft.com/dotnet/spark/what-is-apache-spark-dotnet)
+- [.NET for Apache Spark](https://docs.microsoft.com/dotnet/spark/what-is-apache-spark-dotnet)
 - [將您的巨量資料分析解決方案從 Azure Data Lake Storage Gen1 升級為 Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-upgrade.md)
 - [使用 Azure Data Factory 中的 Spark 活動轉換資料](../data-factory/transform-data-using-spark.md)
 - [使用 Azure Data Factory 中的 Hadoop Hive 活動轉換資料](../data-factory/transform-data-using-hadoop-hive.md)

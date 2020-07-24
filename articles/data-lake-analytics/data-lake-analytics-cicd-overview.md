@@ -2,20 +2,20 @@
 title: 如何設定 Azure Data Lake Analytics 的 CI/CD 管線
 description: 了解如何為 Azure Data Lake Analytics 設定持續整合和持續部署。
 services: data-lake-analytics
-author: yanancai
-ms.author: yanacai
-ms.reviewer: jasonwhowell
+author: liudan66
+ms.author: liud
+ms.reviewer: jasonh
 ms.assetid: 66dd58b1-0b28-46d1-aaae-43ee2739ae0a
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.workload: big-data
 ms.date: 09/14/2018
-ms.openlocfilehash: cd696539cda5b24d801da692822b13de143249dd
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 09b4f36a5c97b6bcc0a8d11d2fb1ee0893fae80a
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121515"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87130132"
 ---
 # <a name="how-to-set-up-a-cicd-pipeline-for-azure-data-lake-analytics"></a>如何設定 Azure Data Lake Analytics 的 CI/CD 管線  
 
@@ -302,7 +302,7 @@ Azure Data Lake Tools for Visual Studio 會提供 U-SQL 資料庫專案範本，
 
 MSBuild 未提供內建的 U-SQL 資料庫專案支援。 若要獲得這項功能，您需要為解決方案新增對於 [Microsoft.Azure.DataLake.USQL.SDK](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/) NuGet 套件的參考，以新增所需的語言服務。
 
-若要新增 NuGet 套件參考，請在 Visual Studio 方案總管中以滑鼠右鍵按一下解決方案。 選擇 [管理 NuGet 封裝]****。 然後搜尋並安裝 NuGet 套件。 您也可以在解決方案資料夾內新增名為 **packages.config** 的檔案，然後將以下內容放入檔案中：
+若要新增 NuGet 套件參考，請在 Visual Studio 方案總管中以滑鼠右鍵按一下解決方案。 選擇 [管理 NuGet 套件]。 然後搜尋並安裝 NuGet 套件。 您也可以在解決方案資料夾內新增名為 **packages.config** 的檔案，然後將以下內容放入檔案中：
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -455,7 +455,7 @@ U-SQL 資料庫專案的建置輸出，是一個名稱加上 `.usqldbpack` 尾�
 
 | 參數 | 描述 | 預設值 | 必要 |
 |---------|-----------|-------------|--------|
-|套件|待部署的 U-SQL 資料庫部署套件路徑。|null|true|
+|封裝|待部署的 U-SQL 資料庫部署套件路徑。|null|true|
 |資料庫|要作為部署目標或要建立的資料庫名稱。|master|false|
 |LogFile|記錄檔的路徑。 預設為標準輸出 (主控台)。|null|false|
 |LogLevel|記錄層級：詳細資訊、一般、警告或錯誤。|LogLevel.Normal|false|

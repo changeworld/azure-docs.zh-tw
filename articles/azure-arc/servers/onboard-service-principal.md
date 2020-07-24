@@ -6,14 +6,14 @@ ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.date: 02/04/2020
+ms.date: 07/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: ac6a00efa7db848e4c05703c81ba835fbf5f77e3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 7ac04b29853ce0d4f6ac4004bdfad4effd283170
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103784"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132988"
 ---
 # <a name="connect-hybrid-machines-to-azure-at-scale"></a>大規模將混合式機器連線至 Azure
 
@@ -76,7 +76,7 @@ ms.locfileid: "86103784"
 
 ## <a name="install-the-agent-and-connect-to-azure"></a>安裝代理程式並連線至 Azure
 
-下列步驟會藉由使用指令碼範本，在您的混合式機器上安裝及設定 Connected Machine 代理程式，該指令碼範本會執行如同[從 Azure 入口網站將混合式機器連線至 Azure](onboard-portal.md)一文所述的類似步驟。 其差異在於最後一個步驟，您使用服務主題，透過 `azcmagent` 命令建立與 Azure Arc 的連線。 
+下列步驟會藉由使用指令碼範本，在您的混合式機器上安裝及設定 Connected Machine 代理程式，該指令碼範本會執行如同[從 Azure 入口網站將混合式機器連線至 Azure](onboard-portal.md)一文所述的類似步驟。 其差異在於最後一個步驟，您使用服務主題，透過 `azcmagent` 命令建立與 Azure Arc 的連線。
 
 以下是您設定 `azcmagent` 命令以用於服務主體的設定。
 
@@ -110,6 +110,10 @@ msiexec /i AzureConnectedMachineAgent.msi /l*v installationlog.txt /qn | Out-Str
   --subscription-id "{subscriptionID}"
 ```
 
+>[!NOTE]
+>此腳本只支援從64位版本的 Windows PowerShell 執行。
+>
+
 ### <a name="linux-installation-script"></a>Linux 安裝指令碼
 
 以下是適用於 Linux 的 Connected Machine 代理程式安裝指令碼範例，該指令碼已修改為使用服務主體，以支援完全自動化、非互動式的代理程式安裝。
@@ -130,6 +134,9 @@ azcmagent connect \
   --location "{resourceLocation}" \
   --subscription-id "{subscriptionID}"
 ```
+
+>[!NOTE]
+>您必須具備 Linux 電腦的*根*存取權限，才能執行**azcmagent**。
 
 在安裝好代理程式並將其設定為連線至適用於伺服器的 Azure Arc (預覽) 之後，請移至 Azure 入口網站以確認伺服器已成功連線。 在 [Azure 入口網站](https://aka.ms/hybridmachineportal)中檢視您的機器。
 

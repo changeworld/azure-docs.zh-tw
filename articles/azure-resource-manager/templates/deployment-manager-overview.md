@@ -4,11 +4,12 @@ description: 描述如何使用 Azure 部署管理員在許多區域中部署服
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 006c123dfbb682ff5c498872d7f717a4a09e0bb5
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 27e8c9c0aa2ee86b490d266fc6ff76f263eee7ef
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057920"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87130217"
 ---
 # <a name="enable-safe-deployment-practices-with-azure-deployment-manager-public-preview"></a>使用 Azure Deployment Manager 啟用安全部署實務（公開預覽）
 
@@ -36,7 +37,7 @@ Azure Deployment Manager 處於預覽狀態。 提供[意見](https://aka.ms/adm
 
 ## <a name="identity-and-access"></a>身分識別與存取
 
-透過部署管理員，[user-assigned managed identity](../../active-directory/managed-identities-azure-resources/overview.md) 會執行部署動作。 在開始部署之前，您要建立此身分識別。 此身分識別必須可存取其中將部署服務的訂用帳戶，並且有足夠的權限可完成部署。 如需透過角色所授與的動作相關資訊，請參閱[適用於 Azure 資源的內建角色](../../role-based-access-control/built-in-roles.md)。
+透過部署管理員，[user-assigned managed identity](../../active-directory/managed-identities-azure-resources/overview.md) 會執行部署動作。 在開始部署之前，您要建立此身分識別。 此身分識別必須可存取其中將部署服務的訂用帳戶，並且有足夠的權限可完成部署。 如需透過角色授與之動作的相關資訊，請參閱[Azure 內建角色](../../role-based-access-control/built-in-roles.md)。
 
 身分識別必須位於與首度發行相同的位置。
 

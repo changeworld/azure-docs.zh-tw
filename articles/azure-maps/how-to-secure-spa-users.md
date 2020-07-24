@@ -2,19 +2,19 @@
 title: 如何使用使用者登入保護單一頁面應用程式
 titleSuffix: Azure Maps
 description: 如何設定單一頁面應用程式，以支援 Azure 地圖服務 Web SDK 的 Azure AD 單一登入。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 06/12/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 307f1ea8d98aec8594dd4f666d4e18922122b0f6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0602829f1334e13241c2e396d409280506099d34
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84988333"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87130880"
 ---
 # <a name="secure-a-single-page-application-with-user-sign-in"></a>使用使用者登入保護單一頁面應用程式
 

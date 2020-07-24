@@ -7,11 +7,12 @@ ms.author: cschorm
 ms.date: 3/17/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 351f7ed131d545d2aa83df753cac3f26e76e4ccb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7c73f007f85a963a09de4e05222082fd52f784c0
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84725846"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131560"
 ---
 # <a name="ingest-iot-hub-telemetry-into-azure-digital-twins"></a>將 IoT 中樞遙測內嵌到 Azure 數位 Twins
 
@@ -41,7 +42,7 @@ Azure 數位 Twins 是由 IoT 裝置和其他來源的資料所驅動。 要在 
 
 繼續執行此範例之前，您必須先完成下列必要條件。
 1. 建立 IoT 中樞。 如需相關指示，請參閱[本 IoT 中樞快速入門](../iot-hub/quickstart-send-telemetry-cli.md)的*建立 IoT 中樞*一節。
-2. 建立至少一個 Azure 函式，以處理來自 IoT 中樞的事件。 請參閱[如何：設定用來處理資料的 azure](how-to-create-azure-function.md)函式，以建立可連線至 Azure 數位 Twins 並呼叫 Azure 數位 Twins API 功能的基本 Azure 函式。 本操作說明的其餘部分將會根據此功能來建立。
+2. 建立至少一個 Azure 函式，以處理來自 IoT 中樞的事件。 請參閱[*如何：設定用來處理資料的 azure*](how-to-create-azure-function.md)函式，以建立可連線至 Azure 數位 Twins 並呼叫 Azure 數位 Twins API 功能的基本 Azure 函式。 本操作說明的其餘部分將會根據此功能來建立。
 3. 設定中樞資料的事件目的地。 在 [ [Azure 入口網站](https://portal.azure.com/)中，流覽至您的 IoT 中樞實例。 在 [*事件*] 底下，為您的 Azure function 建立訂用帳戶。 
 
     :::image type="content" source="media/how-to-ingest-iot-hub-data/add-event-subscription.png" alt-text="Azure 入口網站：新增事件訂用帳戶":::
@@ -54,7 +55,7 @@ Azure 數位 Twins 是由 IoT 裝置和其他來源的資料所驅動。 要在 
 
 ## <a name="create-an-azure-function-in-visual-studio"></a>在 Visual Studio 中建立 Azure 函式
 
-本節使用相同的 Visual Studio 啟動步驟和 Azure 函式基本架構，從[如何：設定 azure 函數來處理資料](how-to-create-azure-function.md)。 此基本架構會處理驗證並建立服務用戶端，以供您處理資料和呼叫 Azure 數位 Twins Api 以進行回應。 
+本節使用相同的 Visual Studio 啟動步驟和 Azure 函式基本架構，從[*如何：設定 azure 函數來處理資料*](how-to-create-azure-function.md)。 此基本架構會處理驗證並建立服務用戶端，以供您處理資料和呼叫 Azure 數位 Twins Api 以進行回應。 
 
 基本架構函式的核心如下：
 
@@ -267,9 +268,9 @@ public static async Task UpdateTwinProperty(DigitalTwinsClient client, string tw
 
 ## <a name="debug-azure-function-apps-locally"></a>在本機上對 Azure 函數應用程式進行 Debug
 
-您可以在本機使用事件方格觸發程式來進行 Azure 函數的偵測。 如需這方面的詳細資訊，請參閱在[本機偵錯工具事件方格觸發](../azure-functions/functions-debug-event-grid-trigger-local.md)程式。
+您可以在本機使用事件方格觸發程式來進行 Azure 函數的偵測。 如需這方面的詳細資訊，請參閱在[*本機偵錯工具事件方格觸發*](../azure-functions/functions-debug-event-grid-trigger-local.md)程式。
 
 ## <a name="next-steps"></a>後續步驟
 
 閱讀 Azure 數位 Twins 的資料輸入和輸出：
-* [概念：與其他服務整合](concepts-integration.md)
+* [*概念：與其他服務整合*](concepts-integration.md)

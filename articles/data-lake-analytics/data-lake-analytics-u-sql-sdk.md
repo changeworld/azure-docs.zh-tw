@@ -4,16 +4,15 @@ description: 了解如何使用本機工作站上的命令列及程式設計介�
 services: data-lake-analytics
 ms.service: data-lake-analytics
 author: yanacai
-ms.author: yanacai
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 03/01/2017
-ms.openlocfilehash: 58521b16e0f4ff133fd032abd4451f785256bbee
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: daf72fcf7baba289b4145d06d878c8a7232f1c6a
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110465"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132410"
 ---
 # <a name="run-and-test-u-sql-with-azure-data-lake-u-sql-sdk"></a>使用 Azure Data Lake U-SQL SDK 來執行及測試 U-SQL
 
@@ -65,7 +64,7 @@ Data Lake U-SQL SDK 需要下列相依性︰
 
 當在本機執行 U-SQL 指令碼時，系統會在編譯期間於目前執行的目錄下建立一個工作目錄。 除了編譯輸出，本機執行所需的執行階段檔案會陰影複製到這個工作目錄。 工作目錄根資料夾稱為 "ScopeWorkDir"，而在工作目錄下的檔案如下：
 
-|目錄/檔案|目錄/檔案|目錄/檔案|定義|描述|
+|目錄/檔案|目錄/檔案|目錄/檔案|定義|說明|
 |--------------|--------------|--------------|----------|-----------|
 |C6A101DDCB470506| | |執行階段版本的雜湊字串|陰影複製本機執行所需的執行階段檔案|
 | |Script_66AE4909AA0ED06C| |指令碼名稱 + 指令碼路徑的雜湊字串|編譯輸出和執行步驟記錄|
@@ -144,21 +143,21 @@ LocalRunHelper run -Script path_to_usql_script.usql [optional_arguments]
 
 |引數|預設值|描述|
 |--------|-------------|-----------|
-|-CodeBehind|False|指令碼具有.cs 程式碼後置|
+|-CodeBehind|否|指令碼具有.cs 程式碼後置|
 |-CppSDK| |CppSDK 目錄|
 |-DataRoot| DataRoot 環境變數|本機執行的 DataRoot，預設為 'LOCALRUN_DATAROOT' 環境變數|
 |-MessageOut| |將主控台上的訊息傾印成檔案|
 |-Parallel|1|使用指定的平行處理原則執行計畫|
 |-References| |列出程式碼後置額外的參考組件或資料檔案的路徑，以 ';' 分隔|
-|-UdoRedirect|False|產生 Udo 組件重新導向設定|
+|-UdoRedirect|否|產生 Udo 組件重新導向設定|
 |-UseDatabase|master|供程式碼後置暫時註冊組件使用的資料庫|
-|-Verbose|False|顯示詳細的執行階段輸出|
+|-Verbose|否|顯示詳細的執行階段輸出|
 |-WorkDir|目前的目錄|編譯器使用方式和輸出的目錄|
 |-RunScopeCEP|0|要使用的 ScopeCEP 模式|
 |-ScopeCEPTempPath|temp|用於串流資料的暫存路徑|
 |-OptFlags| |最佳化工具旗標的逗號分隔清單|
 
-以下是範例：
+以下為範例：
 
 `LocalRunHelper run -Script d:\test\test1.usql -WorkDir d:\test\bin -CodeBehind -References "d:\asm\ref1.dll;d:\asm\ref2.dll" -UseDatabase testDB –Parallel 5 -Verbose`
 
@@ -332,13 +331,13 @@ LocalRunHelper.exe 提供用於 U-SQL 本機編譯、執行等的程式設計介
 
 public LocalRunHelper([System.IO.TextWriter messageOutput = null])
 
-|參數|類型|描述|
+|參數|類型|說明|
 |---------|----|-----------|
 |messageOutput|System.IO.TextWriter|針對輸出訊息，請設為 null 以使用主控台|
 
 ### <a name="properties"></a>屬性
 
-|屬性|類型|描述|
+|屬性|類型|說明|
 |--------|----|-----------|
 |AlgebraPath|字串|代數檔案的路徑 (代數檔案是其中一個編譯結果)|
 |CodeBehindReferences|字串|如果指令碼具有其他程式碼後置參考，請指定路徑並以 ';' 分隔|
@@ -363,7 +362,7 @@ public LocalRunHelper([System.IO.TextWriter messageOutput = null])
 
 ### <a name="method"></a>方法
 
-|方法|描述|傳回|參數|
+|方法|說明|傳回|參數|
 |------|-----------|------|---------|
 |public bool DoCompile()|編譯 U-SQL 指令碼|成功時為 True| |
 |public bool DoExec()|執行編譯的結果|成功時為 True| |

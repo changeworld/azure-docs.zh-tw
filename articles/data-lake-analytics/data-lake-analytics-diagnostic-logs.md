@@ -3,16 +3,14 @@ title: 啟用及檢視 Azure Data Lake Analytics 的診斷記錄
 description: 了解如何設定及存取 Azure Data Lake Analytics 的診斷記錄
 services: data-lake-analytics
 ms.service: data-lake-analytics
-author: jasonwhowell
-ms.author: jasonh
 ms.topic: how-to
 ms.date: 02/12/2018
-ms.openlocfilehash: 9d389c433cb8a049671668cb58b3d80691ff0d16
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: c8c24134c4694a9a2df36ac278452a532a5125ad
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121430"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132597"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-analytics"></a>存取 Azure Data Lake Analytics 的診斷記錄
 
@@ -128,28 +126,28 @@ ms.locfileid: "86121430"
 
 #### <a name="request-log-schema"></a>要求記錄的結構描述
 
-| 名稱 | 類型 | 描述 |
+| 名稱 | 類型 | 說明 |
 | --- | --- | --- |
-| time |String |記錄的時間戳記 (UTC 時間) |
-| resourceId |String |執行作業所在資源的識別碼 |
-| category |String |記錄類別。 例如， **要求**。 |
-| operationName |String |記錄的作業名稱。 例如，GetAggregatedJobHistory。 |
-| resultType |String |作業的狀態。例如，200。 |
-| callerIpAddress |String |提出要求之用戶端的 IP 位址 |
-| correlationId |String |角色的識別碼。 此值可用來群組一組相關的記錄項目。 |
+| time |字串 |記錄的時間戳記 (UTC 時間) |
+| resourceId |字串 |執行作業所在資源的識別碼 |
+| category |字串 |記錄類別。 例如， **要求**。 |
+| operationName |字串 |記錄的作業名稱。 例如，GetAggregatedJobHistory。 |
+| resultType |字串 |作業的狀態。例如，200。 |
+| callerIpAddress |字串 |提出要求之用戶端的 IP 位址 |
+| correlationId |字串 |角色的識別碼。 此值可用來群組一組相關的記錄項目。 |
 | 身分識別 |Object |產生記錄的身分識別 |
 | properties |JSON |請參閱下一節 (要求記錄檔屬性結構描述) 以取得詳細資訊 |
 
 #### <a name="request-log-properties-schema"></a>要求記錄屬性結構描述
 
-| 名稱 | 類型 | 描述 |
+| 名稱 | 類型 | 說明 |
 | --- | --- | --- |
-| HttpMethod |String |作業使用的 HTTP 方法。 例如，GET。 |
-| 路徑 |String |執行作業的所在路徑 |
+| HttpMethod |字串 |作業使用的 HTTP 方法。 例如，GET。 |
+| 路徑 |字串 |執行作業的所在路徑 |
 | RequestContentLength |int |HTTP 要求的內容長度 |
-| ClientRequestId |String |可唯一識別此要求的識別碼 |
-| StartTime |String |伺服器接收到要求的時間 |
-| EndTime |String |伺服器傳送回應的時間 |
+| ClientRequestId |字串 |可唯一識別此要求的識別碼 |
+| StartTime |字串 |伺服器接收到要求的時間 |
+| EndTime |字串 |伺服器傳送回應的時間 |
 
 ### <a name="audit-logs"></a>稽核記錄
 
@@ -176,17 +174,17 @@ ms.locfileid: "86121430"
 }
 ```
 
-#### <a name="audit-log-schema"></a>稽核記錄的結構描述
+#### <a name="audit-log-schema"></a>稽核記錄檔結構描述
 
-| 名稱 | 類型 | 描述 |
+| 名稱 | 類型 | 說明 |
 | --- | --- | --- |
-| time |String |記錄的時間戳記 (UTC 時間) |
-| resourceId |String |執行作業所在資源的識別碼 |
-| category |String |記錄類別。 例如， **稽核**。 |
-| operationName |String |記錄的作業名稱。 例如，JobSubmitted。 |
-| resultType |String |作業狀態 (operationName) 的子狀態。 |
-| resultSignature |String |作業狀態 (operationName) 的其他詳細資料。 |
-| 身分識別 |String |要求作業的使用者。 例如： susan@contoso.com 。 |
+| time |字串 |記錄的時間戳記 (UTC 時間) |
+| resourceId |字串 |執行作業所在資源的識別碼 |
+| category |字串 |記錄類別。 例如， **稽核**。 |
+| operationName |字串 |記錄的作業名稱。 例如，JobSubmitted。 |
+| resultType |字串 |作業狀態 (operationName) 的子狀態。 |
+| resultSignature |字串 |作業狀態 (operationName) 的其他詳細資料。 |
+| 身分識別 |字串 |要求作業的使用者。 例如： susan@contoso.com 。 |
 | properties |JSON |請參閱下一節 (稽核記錄檔屬性結構描述) 以取得詳細資訊 |
 
 > [!NOTE]
@@ -196,15 +194,15 @@ ms.locfileid: "86121430"
 
 #### <a name="audit-log-properties-schema"></a>稽核記錄屬性結構描述
 
-| 名稱 | 類型 | 描述 |
+| 名稱 | 類型 | 說明 |
 | --- | --- | --- |
-| JobId |String |指派給作業的識別碼 |
-| JobName |String |為作業提供的名稱 |
-| JobRunTime |String |用來處理作業的執行階段 |
-| SubmitTime |String |作業提交時間 (UTC 格式) |
-| StartTime |String |作業在提交後開始執行的時間 (UTC 格式) |
-| EndTime |String |作業結束時間 |
-| 平行處理原則 |String |在提交期間為此作業要求的 Data Lake Analytics 單位數目 |
+| JobId |字串 |指派給作業的識別碼 |
+| JobName |字串 |為作業提供的名稱 |
+| JobRunTime |字串 |用來處理作業的執行階段 |
+| SubmitTime |字串 |作業提交時間 (UTC 格式) |
+| StartTime |字串 |作業在提交後開始執行的時間 (UTC 格式) |
+| EndTime |字串 |作業結束時間 |
+| 平行處理原則 |字串 |在提交期間為此作業要求的 Data Lake Analytics 單位數目 |
 
 > [!NOTE]
 > **SubmitTime**、**StartTime**、**EndTime** 和 **Parallelism** 提供作業的相關資訊。 這些項目只會在作業啟動或完成時才包含值。 例如，**SubmitTime** 只會在 **operationName** 具有 **JobSubmitted** 值之後包含值。

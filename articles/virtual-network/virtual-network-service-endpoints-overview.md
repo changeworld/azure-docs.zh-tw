@@ -13,11 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2019
 ms.author: sumi
 ms.custom: ''
-ms.openlocfilehash: 692d86fa27ea42df6fe1128b64e408a5d4a4d08b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6935ea505643f253daf4c0b7d818137f52583682
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85444449"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132818"
 ---
 # <a name="virtual-network-service-endpoints"></a>虛擬網路服務端點
 
@@ -118,11 +119,11 @@ ms.locfileid: "85444449"
 >[!NOTE]
 > 服務端點路由會覆寫 Azure 服務之位址前置詞相符項目的任何 BGP 或 UDR 路由。 如需詳細資訊，請參閱[使用有效路由進行疑難排解](diagnose-network-routing-problem.md)。
 
-## <a name="provisioning"></a>佈建
+## <a name="provisioning"></a>正在佈建
 
 服務端點可以在虛擬網路上，獨立于具有虛擬網路寫入權限的使用者來設定。 若要保護 VNet 的 Azure 服務資源，使用者必須擁有所新增子網的*virtualNetworks/subnet/joinViaServiceEndpoint/action*許可權。 根據預設，內建的服務管理員角色包含此許可權。 您可以藉由建立自訂角色來修改許可權。
 
-如需內建角色的詳細資訊，請參閱[Azure 資源的內建角色](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 如需將特定許可權指派給自訂角色的詳細資訊，請參閱[Azure 資源的自訂角色](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+如需內建角色的詳細資訊，請參閱[Azure 內建角色](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 如需將特定許可權指派給自訂角色的詳細資訊，請參閱[Azure 自訂角色](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
 虛擬網路和 Azure 服務資源可以位在相同或不同的訂用帳戶中。 如果虛擬網路和 Azure 服務資源位在不同的訂用帳戶中，資源必須位在相同的 Active Directory (AD) 租用戶下。 
 
@@ -151,4 +152,3 @@ VNet 服務端點原則可讓您篩選 Azure 服務的虛擬網路流量。 此�
 - [虛擬網路中的 Azure 服務整合](virtual-network-for-azure-services.md)
 - [虛擬網路服務端點原則](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview)
 - [Azure Resource Manager 範本](https://azure.microsoft.com/resources/templates/201-vnet-2subnets-service-endpoints-storage-integration)
-

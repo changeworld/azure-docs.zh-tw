@@ -1,19 +1,19 @@
 ---
 title: 地理編碼涵蓋範圍 |Microsoft Azure 對應
 description: 將位置位址轉換成緯度和經度座標的程式稱為地理編碼。 在本文中，您將瞭解 Microsoft Azure Maps 中具有地理編碼涵蓋範圍的區域。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 12/31/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 9836bd35b16c4c308b7c9d096b104c0cec68a34c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 52c6cda800b535109d906fd6e6ae1aa8c709f23f
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80335658"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132801"
 ---
 # <a name="azure-maps-geocoding-coverage"></a>Azure 地圖地理編碼涵蓋範圍
 

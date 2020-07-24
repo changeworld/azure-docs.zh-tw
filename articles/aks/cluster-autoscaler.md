@@ -4,12 +4,12 @@ description: 了解如何使用叢集自動調整程式，根據 Azure Kubernete
 services: container-service
 ms.topic: article
 ms.date: 07/18/2019
-ms.openlocfilehash: 9aa06ea2fbc3aff218a4940fa60da767fabca500
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: af09d594dd745b64901965499df4245fa2e6a85f
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252023"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87130829"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>自動調整叢集以符合 Azure Kubernetes Service (AKS) 的應用程式需求
 
@@ -44,7 +44,7 @@ ms.locfileid: "86252023"
 
 如需更多叢集自動調整程式可能無法縮小的相關資訊，請參閱[哪些類型的 Pod 可以防止叢集自動調整程式移除節點？][autoscaler-scaledown](英文)。
 
-叢集自動調整程式會使用啟動參數來處理調整事件和資源閾值之間的時間間隔。 如需叢集自動調整程式使用哪些參數的相關資訊，請參閱[什麼是叢集自動調整程式參數？][autoscaler-parameters](英文)。
+叢集自動調整程式會使用啟動參數來處理調整事件和資源閾值之間的時間間隔。 如需叢集自動調整程式所使用之參數的詳細資訊，請參閱[什麼是叢集自動調整程式參數？][autoscaler-parameters]
 
 叢集和水平 Pod 自動調整程式可以搭配運作，而且通常會同時部署在一個叢集中。 當兩者組合時，水平 Pod 自動調整程式著重於執行符合應用程式需求的 Pod 數目。 叢集自動調整程式著重於執行支援排程 Pod 所需的節點數目。
 
@@ -56,7 +56,7 @@ ms.locfileid: "86252023"
 如果您需要建立 AKS 叢集，請使用 [az aks create][az-aks-create] 命令。 若要在叢集的節點集區上啟用和設定叢集自動調整程式，請使用 --enable-cluster-autoscaler 參數，並指定節點 --min-count 和 --max-count。
 
 > [!IMPORTANT]
-> 叢集自動調整程式是一項 Kubernetes 元件。 雖然 AKS 叢集會將虛擬機器擴展集用於節點，但請勿手動在 Azure 入口網站中或使用 Azure CLI 啟用或編輯擴展集自動調整的設定。 請讓 Kubernetes 叢集自動調整程式管理所需的調整設定。 如需詳細資訊，請參閱[我可以在節點資源群組中修改 AKS 資源嗎？](faq.md#can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-node-resource-group)
+> 叢集自動調整程式是一項 Kubernetes 元件。 雖然 AKS 叢集會將虛擬機器擴展集用於節點，但請勿手動在 Azure 入口網站中或使用 Azure CLI 啟用或編輯擴展集自動調整的設定。 請讓 Kubernetes 叢集自動調整程式管理所需的調整設定。 如需詳細資訊，請參閱[我可以在節點資源群組中修改 AKS 資源嗎？][aks-faq-node-resource-group]
 
 下列範例會建立 AKS 叢集，其中包含虛擬機器擴展集所支援的單一節點集區。 範例中也會啟用叢集節點集區上的叢集自動調整程式，並設定最少 1 個、最多 3 個節點：
 
@@ -77,6 +77,26 @@ az aks create \
 ```
 
 建立叢集和設定叢集自動調整程式設定需要幾分鐘的時間。
+
+## <a name="update-an-existing-aks-cluster-to-enable-the-cluster-autoscaler"></a>更新現有的 AKS 叢集以啟用叢集自動調整程式
+
+使用[az aks update][az-aks-update]命令，在現有叢集的節點集區上啟用和設定叢集自動調整程式。 使用 *--enable-cluster-自動調整程式*參數，並指定節點 *--min-count*和 *--max 計數*。
+
+> [!IMPORTANT]
+> 叢集自動調整程式是一項 Kubernetes 元件。 雖然 AKS 叢集會將虛擬機器擴展集用於節點，但請勿手動在 Azure 入口網站中或使用 Azure CLI 啟用或編輯擴展集自動調整的設定。 請讓 Kubernetes 叢集自動調整程式管理所需的調整設定。 如需詳細資訊，請參閱[我可以在節點資源群組中修改 AKS 資源嗎？][aks-faq-node-resource-group]
+
+下列範例會更新現有的 AKS 叢集，以在叢集的節點集區上啟用叢集自動調整程式，並設定最少*1*個和最多*3*個節點：
+
+```azurecli-interactive
+az aks update \
+  --resource-group myResourceGroup \
+  --name myAKSCluster \
+  --enable-cluster-autoscaler \
+  --min-count 1 \
+  --max-count 3
+```
+
+需要幾分鐘的時間來更新叢集，並設定叢集自動調整程式設定。
 
 ## <a name="change-the-cluster-autoscaler-settings"></a>變更叢集自動調整程式設定
 
@@ -136,7 +156,7 @@ az extension update --name aks-preview
 
 ### <a name="set-the-cluster-autoscaler-profile-on-an-existing-aks-cluster"></a>在現有的 AKS 叢集上設定叢集自動調整程式設定檔
 
-請使用 [az aks update][az-aks-update] 命令搭配 cluster-autoscaler-profile 參數，在您的叢集上設定叢集自動調整程式設定檔。 下列範例會在設定檔中將掃描間隔設為 30 秒。
+請使用 [az aks update][az-aks-update-preview] 命令搭配 cluster-autoscaler-profile 參數，在您的叢集上設定叢集自動調整程式設定檔。 下列範例會在設定檔中將掃描間隔設為 30 秒。
 
 ```azurecli-interactive
 az aks update \
@@ -145,7 +165,7 @@ az aks update \
   --cluster-autoscaler-profile scan-interval=30s
 ```
 
-您在叢集中的節點集區上啟用叢集自動調整程式時，這些叢集也會使用叢集自動調整程式設定檔。 例如：
+您在叢集中的節點集區上啟用叢集自動調整程式時，這些叢集也會使用叢集自動調整程式設定檔。 例如:
 
 ```azurecli-interactive
 az aks nodepool update \
@@ -179,7 +199,7 @@ az aks create \
 
 ### <a name="reset-cluster-autoscaler-profile-to-default-values"></a>將叢集自動調整程式設定檔重設定為預設值
 
-請使用 [az aks update][az-aks-update] 命令，在叢集上重設叢集自動調整程式設定檔。
+請使用 [az aks update][az-aks-update-preview] 命令，在叢集上重設叢集自動調整程式設定檔。
 
 ```azurecli-interactive
 az aks update \
@@ -190,7 +210,7 @@ az aks update \
 
 ## <a name="disable-the-cluster-autoscaler"></a>停用叢集自動調整程式
 
-如果您不想繼續使用叢集自動調整程式，可以使用[az aks update][az-aks-update]命令來停用該程式，並指定 *--disable-cluster-autoscaler*參數。 當叢集自動調整程式停用時，不會移除節點。
+如果您不想繼續使用叢集自動調整程式，可以使用[az aks update][az-aks-update-preview]命令來停用該程式，並指定 *--disable-cluster-autoscaler*參數。 當叢集自動調整程式停用時，不會移除節點。
 
 ```azurecli-interactive
 az aks update \
@@ -203,7 +223,7 @@ az aks update \
 
 ## <a name="re-enable-a-disabled-cluster-autoscaler"></a>重新啟用已停用的叢集自動調整程式
 
-如果您想要在現有叢集上重新啟用叢集自動調整程式，您可以使用 [az aks update][az-aks-update] 命令重新啟用，並指定 --enable-cluster-autoscaler、--min-count 和 --max count 參數。
+如果您想要在現有叢集上重新啟用叢集自動調整程式，您可以使用 [az aks update][az-aks-update-preview] 命令重新啟用，並指定 --enable-cluster-autoscaler、--min-count 和 --max count 參數。
 
 ## <a name="retrieve-cluster-autoscaler-logs-and-status"></a>取出叢集自動調整程式記錄和狀態
 
@@ -213,7 +233,7 @@ AKS 會代表您管理叢集自動調整程式，並在受控控制平面中執�
 
 若要將記錄設為從叢集自動調整程式推送至 Log Analytics，請按下列步驟操作。
 
-1. 設定資源記錄規則，將叢集自動調整程式記錄推送至 Log Analytics。 [這裡提供了詳細說明](./view-master-logs.md#enable-resource-logs)，請務必在選取 [記錄] 選項時，勾選 `cluster-autoscaler` 的核取方塊。
+1. 設定資源記錄規則，將叢集自動調整程式記錄推送至 Log Analytics。 [這裡提供了詳細說明][aks-view-master-logs]，請務必在選取 [記錄] 選項時，勾選 `cluster-autoscaler` 的核取方塊。
 1. 透過 Azure 入口網站，按一下您叢集上的 [記錄] 區段。
 1. 將下列範例查詢輸入至 Log Analytics：
 
@@ -232,11 +252,11 @@ AzureDiagnostics
 kubectl get configmap -n kube-system cluster-autoscaler-status -o yaml
 ```
 
-若要深入瞭解自動調整程式中記錄的內容，請參閱 [Kubernetes/自動調整程式 GitHub 專案](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#ca-doesnt-work-but-it-used-to-work-yesterday-why)的常見問題集 (英文)。
+若要深入瞭解自動調整程式中記錄的內容，請參閱 [Kubernetes/自動調整程式 GitHub 專案][kubernetes-faq]的常見問題集 (英文)。
 
 ## <a name="use-the-cluster-autoscaler-with-multiple-node-pools-enabled"></a>使用已啟用多個節點集區的叢集自動調整程式
 
-可在啟用[多個節點集區](use-multiple-node-pools.md)的狀態下，搭配使用叢集自動調整程式。 繼續閱讀該文件可瞭解如何啟用多個節點集區，並將其他節點集區新增至現有的叢集。 同時使用這兩個功能時，需在叢集中各個節點集區上啟用叢集自動調整程式，而且能將唯一的自動調整規則傳遞給每個節點集區。
+可在啟用[多個節點集區][aks-multiple-node-pools]的狀態下，搭配使用叢集自動調整程式。 繼續閱讀該文件可瞭解如何啟用多個節點集區，並將其他節點集區新增至現有的叢集。 同時使用這兩個功能時，需在叢集中各個節點集區上啟用叢集自動調整程式，而且能將唯一的自動調整規則傳遞給每個節點集區。
 
 下列命令預設您已按照本文前段的[初始指示](#create-an-aks-cluster-and-enable-the-cluster-autoscaler)操作，而您想要將現有節點集區的最大計數從 3 更新為 5。 使用 [az aks nodepool update][az-aks-nodepool-update] 命令更新現有節點集區的設定。
 
@@ -268,22 +288,27 @@ az aks nodepool update \
 
 <!-- LINKS - internal -->
 [aks-faq]: faq.md
+[aks-faq-node-resource-group]: faq.md#can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-node-resource-group
+[aks-multiple-node-pools]: use-multiple-node-pools.md
 [aks-scale-apps]: tutorial-kubernetes-scale.md
 [aks-support-policies]: support-policies.md
 [aks-upgrade]: upgrade-cluster.md
+[aks-view-master-logs]: ./view-master-logs.md#enable-resource-logs
 [autoscaler-profile-properties]: #using-the-autoscaler-profile
 [azure-cli-install]: /cli/azure/install-azure-cli
 [az-aks-show]: /cli/azure/aks#az-aks-show
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
 [az-aks-create]: /cli/azure/aks#az-aks-create
+[az-aks-update]: /cli/azure/aks#az-aks-update
 [az-aks-scale]: /cli/azure/aks#az-aks-scale
 [az-feature-register]: /cli/azure/feature#az-feature-register
 [az-feature-list]: /cli/azure/feature#az-feature-list
 [az-provider-register]: /cli/azure/provider#az-provider-register
 
 <!-- LINKS - external -->
-[az-aks-update]: https://github.com/Azure/azure-cli-extensions/tree/master/src/aks-preview
+[az-aks-update-preview]: https://github.com/Azure/azure-cli-extensions/tree/master/src/aks-preview
 [az-aks-nodepool-update]: https://github.com/Azure/azure-cli-extensions/tree/master/src/aks-preview#enable-cluster-auto-scaler-for-a-node-pool
 [autoscaler-scaledown]: https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-types-of-pods-can-prevent-ca-from-removing-a-node
 [autoscaler-parameters]: https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-the-parameters-to-ca
+[kubernetes-faq]: https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#ca-doesnt-work-but-it-used-to-work-yesterday-why

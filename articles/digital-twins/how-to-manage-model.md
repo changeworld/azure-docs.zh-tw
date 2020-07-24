@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 01bb5f9ae6d8c7a6374a8b1392b061f31fdb63a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fec93169a8c49422c9e310cddc08ae3412b89166
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85390579"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132274"
 ---
 # <a name="manage-azure-digital-twins-models"></a>管理 Azure 數位 Twins 模型
 
@@ -66,7 +66,7 @@ Azure 數位 Twins 的模型是以 DTDL 撰寫，並儲存為*json*檔案。 另
 遵循此方法，您可以繼續為醫院的 wards、區域或醫院本身定義模型。
 
 > [!TIP]
-> 有一個用戶端程式庫可用來剖析和驗證 DTDL。 它會產生 DTDL 內容的 c # 物件模型，可用於模型驅動開發案例，例如產生 UI 元素。 您也可以使用此程式庫，確保您的模型在上傳之前不會有任何語法錯誤。 如需此程式庫的詳細資訊，以及針對 DTDL 驗證程式所建立之範例的存取權，請參閱[如何：剖析和驗證模型](how-to-use-parser.md)。
+> 有一個用戶端程式庫可用來剖析和驗證 DTDL。 它會產生 DTDL 內容的 c # 物件模型，可用於模型驅動開發案例，例如產生 UI 元素。 您也可以使用此程式庫，確保您的模型在上傳之前不會有任何語法錯誤。 如需此程式庫的詳細資訊，以及針對 DTDL 驗證程式所建立之範例的存取權，請參閱[*如何：剖析和驗證模型*](how-to-use-parser.md)。
 
 ## <a name="manage-models-with-apis"></a>使用 Api 管理模型。
 
@@ -109,7 +109,7 @@ foreach (string fileName in dtdlFiles)
 client.CreateModels(dtdlStrings);
 ```
 
-模型檔案可以包含多個單一模型。 在此情況下，模型必須放在 JSON 陣列中。 例如：
+模型檔案可以包含多個單一模型。 在此情況下，模型必須放在 JSON 陣列中。 例如:
 
 ```json
 [
@@ -190,7 +190,7 @@ client.DecommissionModel(dtmiOfPlanetInterface);
 
 您可以一次刪除實例中的所有模型，也可以個別執行此動作。
 
-如需如何刪除所有模型的範例，請下載[教學課程：使用範例用戶端應用程式探索基本概念](tutorial-command-line-app.md)中所使用的範例應用程式。 *CommandLoop.cs*檔案會在函式中執行這項 `CommandDeleteAllModels` 工作。
+如需如何刪除所有模型的範例，請下載[*教學課程：使用範例用戶端應用程式探索基本概念*](tutorial-command-line-app.md)中所使用的範例應用程式。 *CommandLoop.cs*檔案會在函式中執行這項 `CommandDeleteAllModels` 工作。
 
 本節的其餘部分會將模型刪除細分為更詳細的資料，並示範如何針對個別模型執行此作業。
 
@@ -247,9 +247,9 @@ Azure 數位 Twins 不會防止此狀態，因此請小心適當修補 Twins，�
 
 ## <a name="manage-models-with-cli"></a>使用 CLI 管理模型
 
-您也可以使用 Azure 數位 Twins CLI 來管理模型。 您可以在[如何：使用 Azure 數位 TWINS CLI](how-to-use-cli.md)中找到這些命令。
+您也可以使用 Azure 數位 Twins CLI 來管理模型。 您可以在[*如何：使用 Azure 數位 TWINS CLI*](how-to-use-cli.md)中找到這些命令。
 
 ## <a name="next-steps"></a>後續步驟
 
 請參閱如何根據您的模型建立和管理數位 twins：
-* [如何：管理數位 twins](how-to-manage-twin.md)
+* [*如何：管理數位 twins*](how-to-manage-twin.md)

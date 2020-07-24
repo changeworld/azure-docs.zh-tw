@@ -8,12 +8,12 @@ ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 0847f2360a3562f96454992470e3cc2000f66b11
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: fba16f9245c8d438268338329ebadad7a57ef206
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86502719"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131917"
 ---
 # <a name="server-side-encryption-of-azure-disk-storage"></a>Azure 磁碟儲存體的伺服器端加密
 
@@ -58,7 +58,7 @@ Azure 受控磁碟中的資料會使用 256 位元的 [AES 加密](https://en.wi
 
 [!INCLUDE [virtual-machines-disks-encryption-at-host-restrictions](../../../includes/virtual-machines-disks-encryption-at-host-restrictions.md)]
 
-#### <a name="supported-regions"></a>支援區域
+#### <a name="supported-regions"></a>支援的區域
 
 [!INCLUDE [virtual-machines-disks-encryption-at-host-regions](../../../includes/virtual-machines-disks-encryption-at-host-regions.md)]
 
@@ -70,7 +70,7 @@ Azure 受控磁碟中的資料會使用 256 位元的 [AES 加密](https://en.wi
 
 擔心與任何特定加密演算法、執行或金鑰相關聯之風險的高安全性敏感性客戶，現在可以選擇使用平臺管理的加密金鑰，在基礎結構層使用不同的加密演算法/模式來進行額外的加密層級。 這個新的層級可以套用到磁片、快照集和映射，這些都是使用雙重加密進行待用加密。
 
-### <a name="supported-regions"></a>支援區域
+### <a name="supported-regions"></a>支援的區域
 
 [!INCLUDE [virtual-machines-disks-double-encryption-at-rest-regions](../../../includes/virtual-machines-disks-double-encryption-at-rest-regions.md)]
 
@@ -80,8 +80,7 @@ Azure 受控磁碟中的資料會使用 256 位元的 [AES 加密](https://en.wi
 
 ## <a name="next-steps"></a>後續步驟
 
-- [使用主機上的加密啟用端對端加密-CLI](disks-enable-host-based-encryption-cli.md)
-- [針對受控磁片啟用雙重加密待用-CLI](disks-enable-double-encryption-at-rest-cli.md)
-- [啟用受控磁片的客戶管理金鑰-CLI](disks-enable-customer-managed-keys-cli.md)
-- [啟用受控磁片的客戶管理金鑰-入口網站](disks-enable-customer-managed-keys-portal.md)
+- 使用[CLI](disks-enable-host-based-encryption-cli.md)或[Azure 入口網站](disks-enable-host-based-encryption-portal.md)，在主機上啟用端對端加密。
+- 使用[CLI](disks-enable-double-encryption-at-rest-cli.md)或[Azure 入口網站](disks-enable-double-encryption-at-rest-portal.md)啟用適用于受控磁片的雙重加密。
+- 使用[CLI](disks-enable-customer-managed-keys-cli.md)或[Azure 入口網站](disks-enable-customer-managed-keys-portal.md)為受控磁片啟用客戶管理的金鑰。
 - [什麼是 Azure 金鑰保存庫？](../../key-vault/general/overview.md)

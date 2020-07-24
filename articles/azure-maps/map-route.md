@@ -1,19 +1,20 @@
 ---
 title: 在地圖上顯示路線指示 |Microsoft Azure 對應
 description: 在本文中，您將瞭解如何使用 Microsoft Azure Maps Web SDK，在地圖上顯示兩個位置之間的指示。
-author: Philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: codepen
-ms.openlocfilehash: 1cde1aaa7c9dba3e28407439a46b0e0a3326e4fc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ac2a3afaf1697d03a9484e7055a10447bb05ea3b
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83123967"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87130302"
 ---
 # <a name="show-directions-from-a-to-b"></a>顯示從甲地到乙地的指示
 

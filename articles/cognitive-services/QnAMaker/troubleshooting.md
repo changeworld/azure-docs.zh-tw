@@ -3,13 +3,12 @@ title: 疑難排解-QnA Maker
 description: 有關 QnA Maker 服務的常見問題策劃清單，可協助您更快速地採用服務，並獲得更好的結果。
 ms.topic: troubleshooting
 ms.date: 03/25/2020
-ms.author: diberry
-ms.openlocfilehash: 7847e21dbcf07f669d6802fffdd1e43623a72340
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ec994677b17ee21dbf4ee6091be3bdf943572b2e
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80804345"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131985"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>疑難排解 QnA Maker
 
@@ -30,7 +29,7 @@ ms.locfileid: "80804345"
 <details>
 <summary><b>如何取得 QnAMaker 服務端點</b></summary>
 
-**答**：當您聯繫 QnAMaker 支援或 UserVoice 時，QnAMaker 服務端點適用于偵錯工具。 端點是下列格式的 URL： `https://your-resource-name.azurewebsites.net`。
+**答**：當您聯繫 QnAMaker 支援或 UserVoice 時，QnAMaker 服務端點適用于偵錯工具。 端點是下列格式的 URL： `https://your-resource-name.azurewebsites.net` 。
 
 1. 在 [Azure 入口網站](https://portal.azure.com)中移至 QnAMaker 服務 (資源群組)
 
@@ -173,7 +172,7 @@ ms.locfileid: "80804345"
 </details>
 
 <details>
-<summary><b>我已在`testkb`搜尋服務中刪除我的索引。如何修正這種情況？</b></summary>
+<summary><b>我已 `testkb` 在搜尋服務中刪除我的索引。如何修正這種情況？</b></summary>
 
 **答**：您的舊資料無法復原。 建立新的 QnA Maker 資源，然後再次建立您的知識庫。
 
@@ -201,7 +200,7 @@ ms.locfileid: "80804345"
 </details>
 
 <details>
-<summary><b>當 QnA Maker 傳回`Runtime core is not initialized,`如何修正此問題？</b></summary>
+<summary><b>當 QnA Maker 傳回 `Runtime core is not initialized,` 如何修正此問題？</b></summary>
 
 **答**： app service 的磁碟空間可能已滿。 修復磁碟空間的步驟：
 
@@ -209,12 +208,12 @@ ms.locfileid: "80804345"
 1. 在仍在 App service 的情況下，依序選取 [**開發工具**]、[ **Advanced tools**] 和 [ **Go**]。 這會開啟新的瀏覽器視窗。
 1. 依序選取 [ **Debug console**] 和 [ **CMD** ] 以開啟命令列工具。
 1. 流覽至_site/wwwroot/Data/QnAMaker/_ 目錄。
-1. 移除名稱開頭為`rd`的所有資料夾。
+1. 移除名稱開頭為的所有資料夾 `rd` 。
 
     **請勿刪除**下列各項：
 
-    * KbIdToRankerMappings .txt 檔案
-    * EndpointSettings json 檔案
+    * KbIdToRankerMappings.txt 檔案
+    * 檔案上的 EndpointSettings.js
     * EndpointKeys 資料夾
 
 1. 啟動 App service。
@@ -244,12 +243,12 @@ ms.locfileid: "80804345"
 **答**：您需要有下列有關知識庫的資訊：
 
 * 知識庫識別碼。
-* 知識庫的已發佈端點自訂子功能變數名稱稱（稱為`host`），會在您發行後於 [**設定**] 頁面上找到。
+* 知識庫的已發佈端點自訂子功能變數名稱稱（稱為 `host` ），會在您發行後於 [**設定**] 頁面上找到。
 * 知識庫的已發佈端點金鑰-發行後，在 [**設定**] 頁面上找到。
 
 透過這項資訊，請移至 Azure 入口網站中 bot 的 app service。 在 [設定] 底下 > 設定] 下 **> [應用程式設定**]，變更這些值。
 
-知識庫的端點金鑰會標示`QnAAuthkey`在 ABS 服務中。
+知識庫的端點金鑰會標示 `QnAAuthkey` 在 ABS 服務中。
 
 </details>
 

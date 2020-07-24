@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 05/23/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 93b2cd3a2565b14ea07d6db6b14dd146e4223528
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1872d0dd56a0459988e65852340c36493ee53f9f
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "66236908"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132240"
 ---
 # <a name="role-based-access-control-rbac-for-media-services-accounts"></a>媒體服務帳戶的角色型存取控制（RBAC）
 
@@ -36,14 +36,14 @@ foreach (Microsoft.Azure.Management.Media.Models.Operation a in client.Operation
 }
 ```
 
-[內建角色定義一](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)文會告訴您角色授與的確切內容。 
+[內建角色定義一](../../role-based-access-control/built-in-roles.md)文會告訴您角色授與的確切內容。 
 
 如需詳細資訊，請參閱下列文章：
 
-- [傳統訂用帳戶管理員角色、Azure RBAC 角色和 Azure AD 管理員角色](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)
-- [什麼是適用于 Azure 資源的 RBAC？](https://docs.microsoft.com/azure/role-based-access-control/overview)
-- [使用 RBAC 來管理存取權](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-rest)
-- [媒體服務資源提供者作業](https://docs.microsoft.com/azure/role-based-access-control/resource-provider-operations#microsoftmedia)
+- [傳統訂用帳戶管理員角色、Azure RBAC 角色和 Azure AD 管理員角色](../../role-based-access-control/rbac-and-directory-admin-roles.md)
+- [什麼是 Azure 角色型存取控制 (Azure RBAC)？](../../role-based-access-control/overview.md)
+- [使用 RBAC 來管理存取權](../../role-based-access-control/role-assignments-rest.md)
+- [媒體服務資源提供者作業](../../role-based-access-control/resource-provider-operations.md#microsoftmedia)
 
 ## <a name="next-steps"></a>後續步驟
 

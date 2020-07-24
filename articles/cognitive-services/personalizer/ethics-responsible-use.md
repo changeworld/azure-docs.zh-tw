@@ -3,19 +3,17 @@ title: 道德和負責任的使用 - 個人化工具
 titleSuffix: Azure Cognitive Services
 description: 這些指導方針旨在協助您以有助於在公司和服務中建立信任的方式實作個人化。 請務必暫停研究、學習及刻意瞭解個人化生活的影響。 如有疑問，請尋求指引。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 06/12/2019
-ms.author: diberry
-ms.openlocfilehash: e422284b871214dbeca31b5dd17b9177a18ad3c8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 602da28f0c235fb0e797a493bc1160631c042a9d
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80478102"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132716"
 ---
 # <a name="guidelines-for-responsible-implementation-of-personalizer"></a>負責任地實作個人化工具的指導方針
 
@@ -50,7 +48,7 @@ Microsoft 會持續將心力投注於其工具和文件，以協助您善盡相�
 
 使用可經由學習將內容和使用者介面個人化的服務，確實很有幫助。 但若個人化的方式會在實際環境中產生不良副作用 (包括使用者不知道內容會個人化)，也可能會有誤用的情形。
 
-較有可能出現不良副作用或缺乏透明度的個人化工具使用案例，包括「回報」取決於許多長時間的複雜因素，而在過度簡化為立即的回報時可能對個人產生不利結果的案例。 這些可能會被視為「具衍生性」的選擇，或是牽涉到危害風險的選擇。 例如：
+較有可能出現不良副作用或缺乏透明度的個人化工具使用案例，包括「回報」取決於許多長時間的複雜因素，而在過度簡化為立即的回報時可能對個人產生不利結果的案例。 這些可能會被視為「具衍生性」的選擇，或是牽涉到危害風險的選擇。 例如:
 
 
 * **財務**：個人化貸款、財務和保險業產品的供應專案，其中的風險因素是以個人不知道、無法取得或無法爭議的資料為基礎。
@@ -121,7 +119,7 @@ Microsoft 會持續將心力投注於其工具和文件，以協助您善盡相�
 
 ![The Future Computed 中介紹的 AI 價值](media/ethics-and-responsible-use/ai-values-future-computed.png)
 
-### <a name="accountability"></a>責任
+### <a name="accountability"></a>權責
 *AI 系統的設計和部署人員必須對其系統的運作方式負責*。
 
 * 建立個人化工具實作方式的內部指導方針文件，並製成文件，將其傳達給您的小組成員、高層主管和供應商。

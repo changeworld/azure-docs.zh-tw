@@ -6,17 +6,17 @@ ms.author: govindk
 ms.reviewer: sngun
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 06/18/2019
-ms.openlocfilehash: 5428de23eb0e1b8c31f4576881526ec08ccc9698
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.date: 07/22/2020
+ms.openlocfilehash: b8cf0425a4a40c4692f4c0c7fcf11dbb23019b23
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027825"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132665"
 ---
 # <a name="monitor-and-debug-with-metrics-in-azure-cosmos-db"></a>使用 Azure Cosmos DB 中的計量進行監視及偵錯
 
-Azure Cosmos DB 為輸送量、儲存體、一致性、可用性和延遲提供計量。 Azure 入口網站會提供這些計量的彙總檢視。 您也可以從 Azure 監視器 API 檢視 Azure Cosmos DB 計量。 若要瞭解如何從 Azure 監視器中查看計量，請參閱[從 Azure 監視器取得計量](cosmos-db-azure-monitor-metrics.md)一文。 
+Azure Cosmos DB 為輸送量、儲存體、一致性、可用性和延遲提供計量。 Azure 入口網站會提供這些計量的彙總檢視。 您也可以從 Azure 監視器 API 檢視 Azure Cosmos DB 計量。 「容器名稱」等計量的維度值不區分大小寫。 因此，在對這些維度值進行字串比較時，您必須使用不區分大小寫比較。 若要瞭解如何從 Azure 監視器中查看計量，請參閱[從 Azure 監視器取得計量](cosmos-db-azure-monitor-metrics.md)一文。
 
 本文將逐步解說常見的使用案例，以及如何使用 Azure Cosmos DB 計量來分析和偵錯這些問題。 系統每隔五分鐘就會收集計量一次並保留七天。
 

@@ -3,12 +3,12 @@ title: 透過 Azure Active Directory 授與存取權
 description: 本文提供使用 Azure Active Directory 授權存取事件中樞資源的相關資訊。
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 734c95f6f26dbb646f641e4446287df52c86be6a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e529a1b72e364514d00c3b7ba84ba26490a9a0bb
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85317970"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131900"
 ---
 # <a name="authorize-access-to-event-hubs-resources-using-azure-active-directory"></a>使用 Azure Active Directory 授權事件中樞資源的存取權
 Azure 事件中樞支援使用 Azure Active Directory （Azure AD）來授權事件中樞資源的要求。 使用 Azure AD，您可以使用角色型存取控制（RBAC），將許可權授與安全性主體，這可能是使用者或應用程式服務主體。 若要深入瞭解角色和角色指派，請參閱[瞭解不同的角色](../role-based-access-control/overview.md)。
@@ -34,8 +34,8 @@ Azure Active Directory (Azure AD) 會透過[角色型存取控制 (RBAC)](../rol
 Azure 提供下列內建 RBAC 角色，以使用 Azure AD 和 OAuth 來授權事件中樞資料的存取：
 
 - [Azure 事件中樞資料擁有](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner)者：使用此角色可提供完整的事件中樞資源存取權。
-- [Azure 事件中樞資料](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver)傳送者：使用此角色可授與事件中樞資源的存取權。
-- [Azure 事件中樞資料接收器](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender)：使用此角色可提供事件中樞資源的取用/接收存取權。
+- [Azure 事件中樞資料](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender)傳送者：使用此角色可授與事件中樞資源的存取權。
+- [Azure 事件中樞資料接收器](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver)：使用此角色可提供事件中樞資源的取用/接收存取權。
 
 ## <a name="resource-scope"></a>資源範圍 
 將 RBAC 角色指派給安全性主體之前，請先決定安全性主體應該具備的存取範圍。 最佳做法規定，最好只授與最少的可能範圍。
@@ -53,7 +53,7 @@ Azure 提供下列內建 RBAC 角色，以使用 Azure AD 和 OAuth 來授權事
 > - 此內容適用于 Apache Kafka 的事件中樞和事件中樞。 如需 Kafka 支援之事件中樞的詳細資訊，請參閱[Kafka 的事件中樞-安全性和驗證](event-hubs-for-kafka-ecosystem-overview.md#security-and-authentication)。
 
 
-如需如何定義內建角色的詳細資訊，請參閱[瞭解角色定義](../role-based-access-control/role-definitions.md#management-and-data-operations)。 如需建立自訂 RBAC 角色的詳細資訊，請參閱[建立 Azure 角色型存取控制的自訂角色](../role-based-access-control/custom-roles.md)。
+如需如何定義內建角色的詳細資訊，請參閱[瞭解角色定義](../role-based-access-control/role-definitions.md#management-and-data-operations)。 如需建立 Azure 自訂角色的詳細資訊，請參閱[azure 自訂角色](../role-based-access-control/custom-roles.md)。
 
 
 

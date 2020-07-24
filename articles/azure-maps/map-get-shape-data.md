@@ -1,19 +1,19 @@
 ---
 title: 從地圖上的圖形取得資料 |Microsoft Azure 對應
 description: 在本文中，您將瞭解如何使用 Microsoft Azure Maps Web SDK 來取得地圖上繪製的圖形資料。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 09/04/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 88db018575f92e777223f383c65cd6db51ba515a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f1c333eb470b4093b1fa453f9a64d400bb9bc567
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80334402"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87130370"
 ---
 # <a name="get-shape-data"></a>取得圖形資料
 

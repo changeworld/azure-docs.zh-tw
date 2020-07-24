@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 0a1447e64b606170601e6df6a443f53e3132294d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ec681d0af132d11e18703dce6105352651a70180
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86522256"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131611"
 ---
 # <a name="secure-azure-digital-twins-with-role-based-access-control"></a>使用以角色為基礎的存取控制來保護 Azure 數位 Twins
 
@@ -35,7 +35,7 @@ RBAC 會透過與[Azure Active Directory](../active-directory/fundamentals/activ
 
 授權步驟需要將 RBAC 角色指派給安全性主體。 指派給安全性主體的角色會決定主體將擁有的許可權。 Azure 數位 Twins 提供 RBAC 角色，其中包含 Azure 數位 Twins 資源的許可權集。 本文稍後將說明這些角色。
 
-若要深入瞭解 Azure 中支援的角色和角色指派，請參閱瞭解 Azure RBAC 檔中[的不同角色](../role-based-access-control/rbac-and-directory-admin-roles.md)。
+若要深入瞭解 Azure 中支援的角色和角色指派，請參閱瞭解 Azure RBAC 檔中[*的不同角色*](../role-based-access-control/rbac-and-directory-admin-roles.md)。
 
 ### <a name="authentication-with-managed-identities"></a>使用受控識別執行驗證作業
 
@@ -46,19 +46,19 @@ RBAC 會透過與[Azure Active Directory](../active-directory/fundamentals/activ
 ### <a name="authorization-rbac-roles-for-azure-digital-twins"></a>授權： Azure 數位 Twins 的 RBAC 角色
 
 Azure 提供下列內建的 RBAC 角色，以授權 Azure 數位 Twins 資源的存取權：
-* Azure 數位 Twins 擁有者（預覽）-使用此角色可透過 Azure 數位 Twins 資源提供完整存取權。
-* Azure 數位 Twins 讀者（預覽）-使用此角色可提供 Azure 數位 Twins 資源的唯讀存取權。
+* *Azure 數位 Twins 擁有者（預覽）* -使用此角色可透過 Azure 數位 Twins 資源提供完整存取權。
+* *Azure 數位 Twins 讀者（預覽）* -使用此角色可提供 Azure 數位 Twins 資源的唯讀存取權。
 
 > [!TIP]
-> Azure 數位 Twins 讀者（預覽）角色現在也支援流覽關聯性。
+> *Azure 數位 Twins 讀者（預覽）* 角色現在也支援流覽關聯性。
 
-如需如何定義內建角色的詳細資訊，請參閱瞭解 Azure RBAC 檔中的[角色定義](../role-based-access-control/role-definitions.md)。 如需建立自訂 RBAC 角色的詳細資訊，請參閱[Azure 資源的自訂角色](../role-based-access-control/custom-roles.md)。
+如需如何定義內建角色的詳細資訊，請參閱瞭解 Azure RBAC 檔中的[*角色定義*](../role-based-access-control/role-definitions.md)。 如需建立 Azure 自訂角色的詳細資訊，請參閱[*azure 自訂角色*](../role-based-access-control/custom-roles.md)。
 
 您可以透過兩種方式來指派角色：
-* 透過 Azure 入口網站中 Azure 數位 Twins 的 [存取控制（IAM）] 窗格（請參閱[使用 AZURE RBAC 新增或移除角色指派和 Azure 入口網站](../role-based-access-control/role-assignments-portal.md)）
+* 透過 Azure 入口網站中 Azure 數位 Twins 的 [存取控制（IAM）] 窗格（請參閱[*使用 AZURE RBAC 新增或移除角色指派和 Azure 入口網站*](../role-based-access-control/role-assignments-portal.md)）
 * 透過 CLI 命令來新增或移除角色
 
-如需如何執行這項操作的詳細步驟，請在[Azure 數位 Twins 教學課程：*連接端對端解決方案*](tutorial-end-to-end.md)中試試看。
+如需如何執行這項操作的詳細步驟，請在 Azure 數位 Twins 教學課程[*：連接端對端解決方案*](tutorial-end-to-end.md)中試試看。
 
 ## <a name="permission-scopes"></a>權限範圍
 
@@ -71,8 +71,14 @@ Azure 提供下列內建的 RBAC 角色，以授權 Azure 數位 Twins 資源的
 * 數位對應項關聯性：此資源的動作會針對對應項圖形中的數位 twins 之間的[關聯](concepts-twins-graph.md)性定義 CRUD 作業的控制。
 * 事件路由：此資源的動作會決定將事件從 Azure 數位 Twins[路由傳送](concepts-route-events.md)至端點服務（例如[事件中樞](../event-hubs/event-hubs-about.md)、[事件方格](../event-grid/overview.md)或[服務匯流排](../service-bus-messaging/service-bus-messaging-overview.md)）的許可權。
 
+## <a name="troubleshooting"></a>疑難排解
+
+如果使用者嘗試執行其角色不允許的動作，他們可能會收到來自服務要求讀取的錯誤 `403 (Forbidden)` 。 如需詳細資訊和疑難排解步驟，請參閱[*疑難排解： Azure 數位 Twins 要求失敗，狀態為：403（禁止）*](troubleshoot-error-403.md)。
+
 ## <a name="next-steps"></a>後續步驟
 
-* 請參閱 how to [*：驗證用戶端應用程式*](how-to-authenticate-client.md)中的範例用戶端應用程式，以瞭解如何逐步執行這些步驟。
+* 如需瞭解這些概念，請參閱[*如何：設定實例和驗證*](how-to-set-up-instance-scripted.md)。
+
+* 請參閱 how to [*：撰寫應用程式驗證程式*](how-to-authenticate-client.md)代碼中的如何與這些概念互動。
 
 * 深入瞭解[適用于 Azure 的 RBAC](../role-based-access-control/overview.md)。

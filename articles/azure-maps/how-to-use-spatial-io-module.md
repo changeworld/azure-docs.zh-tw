@@ -1,18 +1,19 @@
 ---
 title: 如何使用 Azure 地圖服務空間 IO 模組 |Microsoft Azure 對應
 description: 瞭解如何使用 Azure 地圖服務 Web SDK 所提供的空間 IO 模組。 此模組提供強大的功能，可讓開發人員輕鬆地將空間資料與 Azure 地圖服務 web sdk 整合。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 02/28/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 1de9dd9721700418b1aa9ba661fc070db1dbedcc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0532b1548af9be04a53f3ba06147fdde4722f307
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80804634"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87130693"
 ---
 # <a name="how-to-use-the-azure-maps-spatial-io-module"></a>如何使用 Azure 地圖服務空間 IO 模組
 
@@ -38,7 +39,7 @@ Azure 地圖服務 Web SDK 提供**空間 IO 模組**，它會使用 JavaScript 
 
 ## <a name="prerequisites"></a>必要條件
 
-在您可以使用空間 IO 模組之前，您必須先[建立 Azure 地圖服務帳戶](https://docs.microsoft.com/azure/azure-maps/quick-demo-map-app#create-an-account-with-azure-maps)，並[取得帳戶的主要訂](https://docs.microsoft.com/azure/azure-maps/quick-demo-map-app#get-the-primary-key-for-your-account)用帳戶金鑰。
+在您可以使用空間 IO 模組之前，您必須先[建立 Azure 地圖服務帳戶](https://docs.microsoft.com/azure/azure-maps/quick-demo-map-app#create-an-azure-maps-account)，並[取得帳戶的主要訂](https://docs.microsoft.com/azure/azure-maps/quick-demo-map-app#get-the-primary-key-for-your-account)用帳戶金鑰。
 
 ## <a name="installing-the-spatial-io-module"></a>安裝空間 IO 模組
 

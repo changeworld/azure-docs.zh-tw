@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: e5c57ba56ce236bcf07478e1784eec6d4c632d1c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ca54cb44618da1ff92b12b3ad918da513ab2be2f
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82195242"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131815"
 ---
 # <a name="azure-security-baseline-for-cosmos-db"></a>適用于 Cosmos DB 的 Azure 安全性基準
 
@@ -78,7 +78,7 @@ Azure 私用連結總覽：https://docs.microsoft.com/azure/private-link/private
 
 在與您 Azure Cosmos DB 實例相關聯的虛擬網路上啟用 DDoS 保護標準，以防範 DDoS 攻擊。 使用 Azure 資訊安全中心的整合式威脅情報，以拒絕與已知為惡意或未使用的網際網路 IP 位址通訊。
 
-如何 configureAzure Cosmos DB 先進的威脅防護：https://docs.microsoft.com/azure/cosmos-db/cosmos-db-advanced-threat-protection
+如何設定 Azure Cosmos DB Advanced 威脅防護：https://docs.microsoft.com/azure/cosmos-db/cosmos-db-advanced-threat-protection
 
 如何設定 DDoS 保護： https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection
 
@@ -121,7 +121,7 @@ Azure 私用連結總覽：https://docs.microsoft.com/azure/private-link/private
 
 ### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1.8：將網路安全性規則的複雜性和系統管理負擔降至最低
 
-**指引**：對於需要存取 Azure Cosmos 帳戶的資源，請使用虛擬網路服務標籤來定義網路 SecuritygGroups 或 Azure 防火牆上的網路存取控制。 建立安全性規則時，您可以使用服務標籤取代特定的 IP 位址。 藉由在規則的適當 [來源] 或 [目的地] 欄位中指定服務標籤名稱（例如，AzureCosmosDB），您可以允許或拒絕對應服務的流量。 Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更自動更新服務標籤。
+**指引**：對於需要存取 Azure Cosmos 帳戶的資源，請使用虛擬網路服務標籤來定義網路安全性群組或 Azure 防火牆上的網路存取控制。 建立安全性規則時，您可以使用服務標籤取代特定的 IP 位址。 藉由在規則的適當 [來源] 或 [目的地] 欄位中指定服務標籤名稱（例如，AzureCosmosDB），您可以允許或拒絕對應服務的流量。 Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更自動更新服務標籤。
 
 使用服務標籤的詳細資訊： https://docs.microsoft.com/azure/virtual-network/service-tags-overview
 

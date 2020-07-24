@@ -1,20 +1,20 @@
 ---
 title: 將多邊形延伸圖層新增至地圖 |Microsoft Azure 對應
 description: 如何將多邊形的延伸圖層新增至 Microsoft Azure Maps Web SDK。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 10/08/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 7405098bd4924333aafcd1c285eb2f37bb1d4f75
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 11d4d9a6f9afee801b4f6bb4d764efe9365ae8e7
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80334548"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87130421"
 ---
 # <a name="add-a-polygon-extrusion-layer-to-the-map"></a>將多邊形延伸圖層新增至地圖
 
@@ -45,7 +45,7 @@ ms.locfileid: "80334548"
 
 ## <a name="add-a-circle-to-the-map"></a>將圓形新增至地圖
 
-Azure 地圖服務會使用 GeoJSON 架構的擴充版本，如[這裡](https://docs.microsoft.com/azure/azure-maps/extend-geojson#circle)所述，提供圓形的定義。 藉由建立 `point` 具有 `subType` 屬性的功能，並以量表 `Circle` `Radius` 表示半徑的編號屬性**meters**，即可在地圖上轉譯實心圓。 例如：
+Azure 地圖服務會使用 GeoJSON 架構的擴充版本，如[這裡](https://docs.microsoft.com/azure/azure-maps/extend-geojson#circle)所述，提供圓形的定義。 藉由建立 `point` 具有 `subType` 屬性的功能，並以量表 `Circle` `Radius` 表示半徑的編號屬性**meters**，即可在地圖上轉譯實心圓。 例如:
 
 ```Javascript
 {

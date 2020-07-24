@@ -2,18 +2,16 @@
 title: 建立 & 查詢 Azure Data Lake Analytics-Azure 入口網站
 description: 使用 Azure 入口網站來建立 Azure Data Lake Analytics 帳戶和提交 U-SQL 作業。
 ms.service: data-lake-analytics
-author: saveenr
-ms.author: saveenr
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.assetid: b1584d16-e0d2-4019-ad1f-f04be8c5b430
 ms.topic: conceptual
 ms.date: 03/21/2017
-ms.openlocfilehash: c78889c8d910edb5111c18b9cbb77387d2693f87
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d8f0a5697a128deb75537f3d48a3830dc7ba9df9
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85564773"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132529"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-the-azure-portal"></a>使用 Azure 入口網站開始使用 Azure Data Lake Analytics
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
@@ -65,7 +63,7 @@ OUTPUT @a
 4. 監視作業的 [狀態]****，並等候作業狀態變更為 [成功]****。
 5. 選取 [**資料**] 索引標籤，然後選取 [**輸出**] 索引標籤。選取名為的輸出檔 `data.csv` ，並查看輸出資料。
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
 * 若要開始開發 U-SQL 應用程式，請參閱 [使用適用於 Visual Studio 的 Data Lake 工具開發 U-SQL 指令碼](data-lake-analytics-data-lake-tools-get-started.md)。
 * 若要了解 U-SQL，請參閱 [開始使用 Azure Data Lake Analytics U-SQL 語言](data-lake-analytics-u-sql-get-started.md)。

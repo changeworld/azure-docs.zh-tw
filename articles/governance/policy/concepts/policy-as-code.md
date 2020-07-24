@@ -1,14 +1,14 @@
 ---
 title: 設計原則即程式碼工作流程
 description: 了解如何設計將您的 Azure 原則定義部署為程式碼並自動驗證資源的工作流程。
-ms.date: 05/20/2020
+ms.date: 07/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 17964459c6c06e6d7df09da4d3f0813350f209ec
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 02ff979feac1afb5f1664e6387e0abcde69b60eb
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970938"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131492"
 ---
 # <a name="design-policy-as-code-workflows"></a>設計原則即程式碼工作流程
 
@@ -20,6 +20,24 @@ ms.locfileid: "85970938"
 原則即程式碼是這些想法的組合。 基本上，請將原則定義保存在原始檔控制中，並在每次進行變更後測試並驗證該變更。 不過，基礎結構即程式碼或 DevOps 的相關原則並不在此範圍內。
 
 驗證步驟也應該是其他持續整合或持續部署工作流程的元件。 其範例包括部署應用程式環境或虛擬基礎結構。 藉由將 Azure 原則驗證做為組建和部署程式的初期元件，應用程式和作業小組會探索其變更是否不符合規範、是否在過晚之後，以及是否嘗試在生產環境中部署。
+
+## <a name="definitions-and-foundational-information"></a>定義和基礎資訊
+
+在進入原則的詳細資料作為程式碼工作流程之前，請先參閱下列定義和範例：
+
+- [原則定義](./definition-structure.md)
+- [計畫定義](./initiative-definition-structure.md)
+
+檔案名會與原則或計畫定義的部分一致：
+- `policy(set).json`-整個定義
+- `policy(set).parameters.json`- `properties.parameters` 定義的部分
+- `policy.rules.json`- `properties.policyRule` 定義的部分
+- `policyset.definitions.json`- `properties.policyDefinitions` 定義的部分
+
+[Azure 原則 GitHub](https://github.com/Azure/azure-policy/)存放庫中提供這些檔案格式的範例：
+
+- 原則定義：[將標記新增至資源](https://github.com/Azure/azure-policy/tree/master/samples/Tags/add-tag)
+- 計畫定義：[計費標記](https://github.com/Azure/azure-policy/tree/master/samples/PolicyInitiatives/multiple-billing-tags)
 
 ## <a name="workflow-overview"></a>工作流程概觀
 

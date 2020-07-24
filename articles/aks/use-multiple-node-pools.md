@@ -1,19 +1,19 @@
 ---
-title: '在 Azure Kubernetes Service (AKS 中使用多個節點集區) '
-description: '瞭解如何在 Azure Kubernetes Service (AKS 中建立和管理叢集的多個節點集區) '
+title: 在 Azure Kubernetes Service 中使用多個節點集區（AKS）
+description: 瞭解如何在 Azure Kubernetes Service （AKS）中建立及管理叢集的多個節點集區
 services: container-service
 ms.topic: article
 ms.date: 04/08/2020
-ms.openlocfilehash: c35b3cdbde79a771eccc42c7c3a60b0ab4e08e8a
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 400e595d51f08428b01337e63f6c6e8ba5836794
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86250850"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133090"
 ---
-# <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS 中建立和管理叢集的多個節點集區) 
+# <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中建立和管理叢集的多個節點集區 \(部分機器翻譯\)
 
-在 Azure Kubernetes Service (AKS) 中，相同設定的節點會群組在一起成為*節點*集區。 這些節點集區包含執行應用程式的基礎 Vm。 當您建立 AKS 叢集時，會定義初始節點數目及其大小 (SKU) 會建立[系統節點集][use-system-pool]區。 若要支援具有不同計算或儲存體需求的應用程式，您可以建立額外的*使用者節點*集區。 系統節點集區提供裝載重要系統 pod （例如 CoreDNS 和 tunnelfront）的主要目的。 使用者節點集區提供裝載應用程式 pod 的主要目的。 不過，如果您想要在 AKS 叢集中只有一個集區，可以在系統節點集區上排程應用程式 pod。 使用者節點集區是您放置應用程式特定 pod 的位置。 例如，您可以使用這些額外的使用者節點集區，為計算密集型應用程式提供 Gpu，或存取高效能 SSD 儲存體。
+在 Azure Kubernetes Service （AKS）中，相同設定的節點會群組在一起成為*節點*集區。 這些節點集區包含執行應用程式的基礎 Vm。 當您建立 AKS 叢集時，會定義初始節點數目及其大小（SKU），以建立[系統節點集][use-system-pool]區。 若要支援具有不同計算或儲存體需求的應用程式，您可以建立額外的*使用者節點*集區。 系統節點集區提供裝載重要系統 pod （例如 CoreDNS 和 tunnelfront）的主要目的。 使用者節點集區提供裝載應用程式 pod 的主要目的。 不過，如果您想要在 AKS 叢集中只有一個集區，可以在系統節點集區上排程應用程式 pod。 使用者節點集區是您放置應用程式特定 pod 的位置。 例如，您可以使用這些額外的使用者節點集區，為計算密集型應用程式提供 Gpu，或存取高效能 SSD 儲存體。
 
 > [!NOTE]
 > 這項功能可讓您更進一步控制如何建立和管理多個節點集區。 因此，建立/更新/刪除需要個別的命令。 先前的叢集作業會透過 `az aks create` 或 `az aks update` 使用 managedCluster API，而且是變更您的控制平面和單一節點集區的唯一選項。 這項功能會透過 agentPool API 公開代理程式組件區的個別作業集，並要求使用 `az aks nodepool` 命令集來執行個別節點集區上的作業。
@@ -28,7 +28,7 @@ ms.locfileid: "86250850"
 
 在建立和管理支援多個節點集區的 AKS 叢集時，需遵守下列限制：
 
-* 請參閱[Azure Kubernetes Service (AKS) 中的配額、虛擬機器大小限制和區域可用性][quotas-skus-regions]。
+* 請參閱[配額、虛擬機器大小限制，以及 Azure Kubernetes Service 中的區域可用性（AKS）][quotas-skus-regions]。
 * 您可以刪除系統節點集區，但前提是您有另一個系統節點集區，以將其放在 AKS 叢集中。
 * 系統集區必須包含至少一個節點，且使用者節點集區可能包含零個或多個節點。
 * AKS 叢集必須使用標準 SKU 負載平衡器來使用多個節點集區，但基本 SKU 負載平衡器不支援此功能。
@@ -64,7 +64,7 @@ az aks create \
 建立叢集需要幾分鐘的時間。
 
 > [!NOTE]
-> 為了確保您的叢集能夠可靠地運作，您應該在預設節點集區中至少執行2個 (兩個) 節點，因為基本的系統服務是在此節點集區上執行。
+> 若要確保您的叢集能夠可靠地運作，您應該在預設節點集區中至少執行2（兩個）節點，因為基本的系統服務在此節點集區上執行。
 
 當叢集準備就緒時，請使用[az aks get-認證][az-aks-get-credentials]命令來取得要搭配使用的叢集認證 `kubectl` ：
 
@@ -123,7 +123,7 @@ az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSCluste
 > [!TIP]
 > 當您新增節點集區時，如果未指定*VmSize* ，則 Windows 節點集區的預設大小為*Standard_D2s_v3* ，而 Linux 節點集區*Standard_DS2_v2*則為。 如果未指定*OrchestratorVersion* ，則會預設為與控制平面相同的版本。
 
-### <a name="add-a-node-pool-with-a-unique-subnet-preview"></a>新增具有唯一子網 (預覽的節點集區) 
+### <a name="add-a-node-pool-with-a-unique-subnet-preview"></a>新增具有唯一子網的節點集區（預覽）
 
 工作負載可能需要將叢集的節點分割成不同的集區，以進行邏輯隔離。 在叢集中每個節點集區專用的個別子網，都可支援此隔離。 這可解決需求，例如在節點集區中分割非連續的虛擬網路位址空間。
 
@@ -503,6 +503,9 @@ az aks nodepool add \
     --no-wait
 ```
 
+> [!NOTE]
+> 只有在建立節點集區時，才可以針對節點集區設定污點。
+
 下列來自[az aks nodepool list][az-aks-nodepool-list]命令的範例輸出顯示*taintnp*正在*建立*具有指定*nodeTaints*的節點：
 
 ```console
@@ -723,12 +726,12 @@ az group deployment create \
 
 視您在 Resource Manager 範本中定義的節點集區設定和作業而定，可能需要幾分鐘的時間來更新 AKS 叢集。
 
-## <a name="assign-a-public-ip-per-node-for-your-node-pools-preview"></a>為節點集區的每個節點指派一個公用 IP (預覽) 
+## <a name="assign-a-public-ip-per-node-for-your-node-pools-preview"></a>為節點集區指派每個節點的公用 IP （預覽）
 
 > [!WARNING]
 > 您必須安裝 CLI preview 延伸模組0.4.43 或更新版本，才能使用每個節點的公用 IP 功能。
 
-AKS 節點不需要自己的公用 IP 位址進行通訊。 不過，案例可能會要求節點集區中的節點接收其專屬的公用 IP 位址。 常見的案例是針對遊戲工作負載，其中主控台需要直接連線到雲端虛擬機器，以將躍點降到最低。 藉由註冊預覽功能、節點公用 IP (預覽) ，即可在 AKS 上達成此案例。
+AKS 節點不需要自己的公用 IP 位址進行通訊。 不過，案例可能會要求節點集區中的節點接收其專屬的公用 IP 位址。 常見的案例是針對遊戲工作負載，其中主控台需要直接連線到雲端虛擬機器，以將躍點降到最低。 藉由註冊預覽功能、節點公用 IP （預覽），即可在 AKS 上達成此案例。
 
 若要安裝並更新最新的 aks-preview 延伸模組，請使用下列 Azure CLI 命令：
 

@@ -2,19 +2,17 @@
 title: 使用 Azure Data Lake Analytics 來分析網站記錄
 description: 瞭解如何使用 Azure Data Lake Analytics 來分析網站記錄，以執行 U-SQL 函數和查詢。
 services: data-lake-analytics
-author: saveenr
-ms.author: saveenr
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.assetid: 3a196735-d0d9-4deb-ba68-c4b3f3be8403
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 12/05/2016
-ms.openlocfilehash: 25b84646bd6a95f0409184cccd40c6b7c9a0ef7f
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 5ad837c51fafd7df2b019c78ae4adaf4967f2df7
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86117435"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132631"
 ---
 # <a name="analyze-website-logs-using-azure-data-lake-analytics"></a>使用 Azure Data Lake Analytics 來分析網站記錄
 了解如何使用資料湖分析來分析網站記錄，特別是找出哪些訪客來源在嘗試瀏覽網站時遇到錯誤。
@@ -60,7 +58,7 @@ U-SQL 應用程式基本上是 U-SQL 指令碼。 若要深入了解 U-SQL，請
 
    ![新的 U-SQL Visual Studio 專案](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-new-project.png)
 
-3. 按一下 [確定]。 Visual Studio 會建立具有 Script.usql 檔案的方案。
+3. 按一下 [確定]  。 Visual Studio 會建立具有 Script.usql 檔案的方案。
 
 4. 在 Script.usql 檔案中輸入下列指令碼：
 

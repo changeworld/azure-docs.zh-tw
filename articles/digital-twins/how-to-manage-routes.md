@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 923ae652872246916b2a4c5e8be95871983dbe95
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bc22cf5a21709ccacafe068a60541cc9990d1131
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85559836"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132257"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins"></a>管理 Azure 數位 Twins 中的端點和路由
 
@@ -23,14 +23,9 @@ ms.locfileid: "85559836"
 * [Event Grid](../event-grid/overview.md)
 * [服務匯流排](../service-bus-messaging/service-bus-messaging-overview.md)
 
-如需不同端點的詳細資訊，請參閱在[Azure 訊息服務之間進行選擇](https://docs.microsoft.com/azure/event-grid/compare-messaging-services)。
+如需不同端點的詳細資訊，請參閱在[*Azure 訊息服務之間進行選擇*](https://docs.microsoft.com/azure/event-grid/compare-messaging-services)。
 
 端點和路由是使用[**EventRoutes api**](how-to-use-apis-sdks.md)、 [.Net （c #） SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)或[Azure 數位 Twins CLI](how-to-use-cli.md)來管理。 它們也可以透過[Azure 入口網站](https://portal.azure.com)來管理。
-
-> [!NOTE]
-> 透過 Azure 入口網站管理事件路由目前僅適用于公司網域帳戶上的 Azure 使用者。 
->
->如果您使用個人[Microsoft 帳戶（MSA）](https://account.microsoft.com/account/Account)（例如帳戶）， @outlook.com 請使用 Azure 數位 TWINS api 或 CLI 來管理事件路由，如這篇文章中所述。
 
 ## <a name="create-an-endpoint-for-azure-digital-twins"></a>建立 Azure 數位 Twins 的端點
 
@@ -70,7 +65,14 @@ az dt endpoint create eventhub --endpoint-name <Event-Hub-endpoint-name> --event
 
 ## <a name="manage-event-routes-with-apis"></a>使用 Api 管理事件路由
 
-若要實際將資料從 Azure 數位 Twins 傳送至端點，您必須定義事件路由。 Azure 數位 Twins **EventRoutes api**可讓開發人員連接整個系統和下游服務的事件流程。 如需深入瞭解事件路由，請參閱[概念：路由 Azure 數位 Twins 事件](concepts-route-events.md)。
+若要實際將資料從 Azure 數位 Twins 傳送至端點，您必須定義事件路由。 Azure 數位 Twins **EventRoutes api**可讓開發人員連接整個系統和下游服務的事件流程。 如需深入瞭解事件路由，請參閱[*概念：路由 Azure 數位 Twins 事件*](concepts-route-events.md)。
+
+當您的端點設定完成後，您可以繼續建立事件路由。
+
+>[!NOTE]
+>如果您最近已部署端點，請先確認它們已完成部署，**再**嘗試將它們用於新的事件路由。 如果路由部署因為端點尚未就緒而失敗，請等候幾分鐘，然後再試一次。
+>
+> 如果您要編寫此流程的腳本，您可能需要在等候時間2-3 分鐘內建立端點服務完成部署，再繼續進行路由設定。
 
 本文中的範例會使用 c # SDK。
 
@@ -145,7 +147,7 @@ catch (RequestFailedException e)
 
 以下是支援的路由篩選。
 
-| 篩選名稱 | Description | 篩選架構 | 支援的值 | 
+| 篩選名稱 | 說明 | 篩選架構 | 支援的值 | 
 | --- | --- | --- | --- |
 | 類型 | 流經數位對應項實例的[事件種類](./concepts-route-events.md#types-of-event-messages) | `"filter" : "type = '<eventType>'"` | `Microsoft.DigitalTwins.Twin.Create` <br> `Microsoft.DigitalTwins.Twin.Delete` <br> `Microsoft.DigitalTwins.Twin.Update`<br>`Microsoft.DigitalTwins.Relationship.Create`<br>`Microsoft.DigitalTwins.Relationship.Update`<br> `Microsoft.DigitalTwins.Relationship.Delete` <br> `microsoft.iot.telemetry`  |
 | 來源 | Azure 數位 Twins 實例的名稱 | `"filter" : "source = '<hostname>'"`|  **針對通知**：`<yourDigitalTwinInstance>.<yourRegion>.azuredigitaltwins.net` <br> **針對遙測**：`<yourDigitalTwinInstance>.<yourRegion>.azuredigitaltwins.net/digitaltwins/<twinId>`|
@@ -174,7 +176,7 @@ catch (RequestFailedException e)
 
 ## <a name="manage-endpoints-and-routes-with-cli"></a>使用 CLI 管理端點和路由
 
-您也可以使用 Azure 數位 Twins CLI 來管理端點和路由。 您可以在[如何：使用 Azure 數位 TWINS CLI](how-to-use-cli.md)中找到這些命令。
+您也可以使用 Azure 數位 Twins CLI 來管理端點和路由。 您可以在[*如何：使用 Azure 數位 TWINS CLI*](how-to-use-cli.md)中找到這些命令。
 
 ## <a name="monitor-event-routes"></a>監視事件路由
 
@@ -189,4 +191,4 @@ catch (RequestFailedException e)
 ## <a name="next-steps"></a>後續步驟
 
 閱讀您可以接收的不同事件訊息類型：
-* [如何：解讀事件資料](how-to-interpret-event-data.md)
+* [*如何：解讀事件資料*](how-to-interpret-event-data.md)

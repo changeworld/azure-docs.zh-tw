@@ -7,11 +7,12 @@ ms.service: dns
 ms.topic: how-to
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: a817cb0722bff721891cd290ea4a6552c778dddf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 550ed5791df821b1793755f5046da92adf6e3f3a
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84701842"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131543"
 ---
 # <a name="how-to-protect-private-dns-zones-and-records"></a>如何保護私人 DNS 區域和記錄
 
@@ -23,7 +24,7 @@ ms.locfileid: "84701842"
 
 ## <a name="role-based-access-control"></a>角色型存取控制
 
-Azure 角色型存取控制 (RBAC) 可以對 Azure 使用者、群組和資源進行更細緻的存取權管理。 使用 RBAC，您可以授與使用者所需的存取層級。 如需有關 RBAC 如何協助您管理存取權的詳細資訊，請參閱[什麼是角色型存取控制](../role-based-access-control/overview.md)。
+Azure 角色型存取控制（Azure RBAC）可讓您對 Azure 使用者、群組和資源進行更細緻的存取管理。 使用 RBAC，您可以授與使用者所需的存取層級。 如需有關 RBAC 如何協助您管理存取權的詳細資訊，請參閱[什麼是 azure 角色型存取控制（AZURE RBAC）](../role-based-access-control/overview.md)。
 
 ### <a name="the-private-dns-zone-contributor-role"></a>私人 DNS 區域參與者角色
 
@@ -167,7 +168,7 @@ Actions 屬性會定義下列 DNS 特定權限︰
 * `Microsoft.Network/privateDNSZones/read`授與讀取 DNS 私人區域的許可權，但無法修改它們，讓您可以查看正在建立 CNAME 的區域。
 
 > [!NOTE]
-> 使用自訂 RBAC 角色，以避免刪除記錄集，同時仍然允許更新它們不是有效的控制。 它會防止記錄集被刪除，但它不會防止它們被修改。  允許的修改包括從記錄集新增和移除記錄，包括移除所有記錄以保持空白記錄集。 這與從 DNS 解析觀點來刪除記錄集有相同的效果。
+> 使用 Azure 自訂角色來防止刪除記錄集，同時仍然允許更新它們，並不是有效的控制。 它會防止記錄集被刪除，但它不會防止它們被修改。  允許的修改包括從記錄集新增和移除記錄，包括移除所有記錄以保持空白記錄集。 這與從 DNS 解析觀點來刪除記錄集有相同的效果。
 
 自訂角色定義目前無法透過 Azure 入口網站定義。 可以使用 Azure PowerShell 建立根據此角色定義的自訂角色︰
 

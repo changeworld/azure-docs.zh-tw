@@ -1,19 +1,19 @@
 ---
 title: 新增簡單的資料層 |Microsoft Azure 對應
 description: 瞭解如何使用 Azure 地圖服務 Web SDK 所提供的空間 IO 模組來新增簡單的資料層。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 02/29/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 61272bee350fc7c7dd7d0e17adc55c436f4706ef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 622aa41975fdec015e4ca4964309c5c4bf274ef2
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84885952"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131441"
 ---
 # <a name="add-a-simple-data-layer"></a>新增簡單的資料圖層
 
@@ -113,7 +113,7 @@ Azure 地圖服務和 GitHub 樣式屬性是兩個主要的支援屬性名稱集
 
 群集也會使用反升層來轉譯。 根據預設，叢集的 radius 會設定為 `16` 。 叢集的色彩會根據叢集中的點數數目而有所不同，如下所示：
 
-| 點數 | Color    |
+| 點數 | 色彩    |
 |-------------|----------|
 | &gt;= 100   | `red`    |
 | &gt;= 10    | `yellow` |
