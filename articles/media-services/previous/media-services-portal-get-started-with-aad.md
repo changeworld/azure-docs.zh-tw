@@ -13,20 +13,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: ee04fa7120f5510d703d72e662036f4fe952cd66
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 208019bbc86b22443c7d012400d4e4324679aee9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78330663"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084461"
 ---
 # <a name="get-started-with-azure-ad-authentication-by-using-the-azure-portal"></a>利用 Azure 入口網站開始使用 Azure AD 驗證
 
 > [!NOTE]
-> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
+> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](../latest/index.yml)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
 
 了解如何使用 Azure 入口網站存取 Azure Active Directory (Azure AD) 驗證，以存取 Azure 媒體服務 API。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 一個 Azure 帳戶。 如果您沒有帳戶，請先從 [Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)開始。 
 - 媒體服務帳戶。 如需詳細資訊，請參閱[使用 Azure 入口網站建立 Azure 媒體服務帳戶](media-services-portal-create-account.md)。
@@ -52,7 +53,7 @@ ms.locfileid: "78330663"
 
 **管理您的 AAD 應用程式和祕密**區段可讓您選取或建立新的 Azure AD 應用程式，並產生秘密。 基於安全性考量，關閉刀鋒視窗後即無法顯示祕密。 應用程式會使用應用程式識別碼和祕密來進行驗證，以取得媒體服務的有效權杖。
 
-請確定您有足夠的權限，可以使用 Azure AD 租用戶註冊應用程式，並將應用程式指派至 Azure 訂用帳戶中的角色。 如需詳細資訊，請參閱[必要權限](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions)。
+請確定您有足夠的權限，可以使用 Azure AD 租用戶註冊應用程式，並將應用程式指派至 Azure 訂用帳戶中的角色。 如需詳細資訊，請參閱[必要權限](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)。
 
 ### <a name="connect-to-media-services-api"></a>連線到媒體服務 API
 

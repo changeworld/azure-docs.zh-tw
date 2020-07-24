@@ -6,11 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: cynthn
-ms.openlocfilehash: 1594c030839cccdd48c4b032c6ad92f746f78e26
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 78b11a4d900b8c9cf30a1d37a2b7e6380d6b989a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78970264"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082557"
 ---
 # <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>透過 REST API 建立使用 SSH 驗證的 Linux 虛擬機器
 
@@ -20,7 +21,7 @@ Azure 中的 Linux 虛擬機器 (VM) 包含各種資源，例如磁碟和網路�
 
 本文說明如何使用 REST API 建立 Linux VM，來執行使用受控磁碟和 SSH 驗證的 Ubuntu 18.04-LTS。
 
-## <a name="before-you-start"></a>在您開始使用 Intune 之前
+## <a name="before-you-start"></a>開始之前
 
 在建立及提交要求之前，您需要：
 
@@ -45,7 +46,7 @@ PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 | 要求標頭   | 描述 |
 |------------------|-----------------|
 | *Content-Type:*  | 必要。 設定為 `application/json`。 |
-| *Authorization:* | 必要。 設定為有效的 `Bearer` [存取權杖](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients)。 |
+| *Authorization:* | 必要。 設定為有效的 `Bearer` [存取權杖](/rest/api/azure/#authorization-code-grant-interactive-clients)。 |
 
 如需使用 REST API 要求的一般資訊，請參閱 [REST API 要求/回應的元件](/rest/api/azure/#components-of-a-rest-api-requestresponse)。
 
@@ -53,7 +54,7 @@ PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 
 以下是用來建立要求本文的常用定義：
 
-| 名稱                       | 必要 | 類型                                                                                | Description  |
+| 名稱                       | 必要 | 類型                                                                                | 說明  |
 |----------------------------|----------|-------------------------------------------------------------------------------------|--------------|
 | location                   | True     | 字串                                                                              | 資源位置。 |
 | NAME                       |          | 字串                                                                              | 虛擬機器的名稱。 |
@@ -121,13 +122,13 @@ PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 
 ## <a name="sending-the-request"></a>傳送要求
 
-您可以使用喜好的用戶端來傳送這個 HTTP 要求。 也可以按一下 [試用]**** 按鈕，使用[瀏覽器內工具](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate)。
+您可以使用喜好的用戶端來傳送這個 HTTP 要求。 也可以按一下 [試用]**** 按鈕，使用[瀏覽器內工具](/rest/api/compute/virtualmachines/createorupdate)。
 
 ### <a name="responses"></a>回應
 
 建立或更新虛擬機器的作業會有兩個成功的回應：
 
-| Name        | 類型                                                                              | Description |
+| 名稱        | 類型                                                                              | 說明 |
 |-------------|-----------------------------------------------------------------------------------|-------------|
 | 200 確定      | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | 確定          |
 | 201 Created | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | 建立時間     |
@@ -150,4 +151,4 @@ PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 - [Azure 計算提供者 REST API](/rest/api/compute/)
 - [Get started with Azure REST API](/rest/api/azure/) (開始使用 Azure REST API)
 - [Azure CLI](/cli/azure/)
-- [Azure PowerShell 模組](/powershell/azure/overview)
+- [Azure PowerShell 模組](/powershell/azure/)

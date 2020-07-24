@@ -8,14 +8,14 @@ ms.topic: troubleshooting
 ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 07857feb2e5552429c445b22c4c4b2f121f29a93
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1010f89057d83a11fb2e156f01509e909270b044
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84976484"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083567"
 ---
-# <a name="troubleshooting-overview-feedback-and-support"></a>疑難排解概觀、意見反應和支援
+# <a name="troubleshooting-overview-feedback-and-support-for-windows-virtual-desktop"></a>Windows 虛擬桌面的疑難排解總覽、意見反應和支援
 
 >[!IMPORTANT]
 >此內容適用於具有 Azure Resource Manager Windows 虛擬桌面物件的 2020 年春季更新版。 如果您使用不含 Azure Resource Manager 物件的 Windows 虛擬桌面 2019 年秋季版，請參閱[這篇文章](./virtual-desktop-fall-2019/troubleshoot-set-up-overview-2019.md)。

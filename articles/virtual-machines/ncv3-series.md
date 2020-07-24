@@ -7,16 +7,16 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: c553117aa02106e744150469dee533da3ddc0265
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1cd5cee2d452e7762d784b90e80f8b9e39cf2007
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84736980"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085345"
 ---
 # <a name="ncv3-series"></a>NCv3 系列
 
-NCv3 系列 VM 是由 [NVIDIA Tesla V100](https://www.nvidia.com/data-center/tesla-v100/) GPU 提供技術支援。 這些 GPU 可提供 NCv2 系列 1.5 倍的計算效能。 客戶可針對儲槽模型、DNA 定序、蛋白質分析、蒙地卡羅模擬等傳統 HPC 工作負載，善用這些更新過的 GPU。 NC24rs v3 組態提供低延遲且高輸送量網路介面，最適合用於緊密結合的平行計算工作負載。 除了 Gpu 以外，NCv3 系列 Vm 也是由 Intel 強式 E5-2690 v4 （Broadwell） Cpu 提供技術支援。
+NCv3 系列 VM 是由 NVIDIA Tesla V100 GPU 提供技術支援。 這些 GPU 可提供 NCv2 系列 1.5 倍的計算效能。 客戶可針對儲槽模型、DNA 定序、蛋白質分析、蒙地卡羅模擬等傳統 HPC 工作負載，善用這些更新過的 GPU。 NC24rs v3 組態提供低延遲且高輸送量網路介面，最適合用於緊密結合的平行計算工作負載。 除了 Gpu 以外，NCv3 系列 Vm 也是由 Intel 強式 E5-2690 v4 （Broadwell） Cpu 提供技術支援。
 
 進階儲存體：支援
 
@@ -27,7 +27,7 @@ NCv3 系列 VM 是由 [NVIDIA Tesla V100](https://www.nvidia.com/data-center/tes
 記憶體保留更新：不支援
 
 > [!IMPORTANT]
-> 針對此 VM 系列，您訂用帳戶中的 vCPU （核心）配額一開始會在每個區域中設定為0。 在[可用區域](https://azure.microsoft.com/regions/services/)中，為此系列[要求增加 vCPU 配額](../azure-supportability/resource-manager-core-quotas-request.md)。
+> 針對此 VM 系列，您訂用帳戶中的 vCPU （核心）配額一開始會在每個區域中設定為0。 在[可用區域](https://azure.microsoft.com/regions/services/)中，為此系列[要求增加 vCPU 配額](../azure-portal/supportability/resource-manager-core-quotas-request.md)。
 >
 | 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | GPU | GPU 記憶體：GiB | 最大資料磁碟 | 最大取消快取的磁碟輸送量：IOPS/MBps | 最大 NIC |
 |---|---|---|---|---|---|---|---|---|

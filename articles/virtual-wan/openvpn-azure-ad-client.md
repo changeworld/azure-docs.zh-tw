@@ -2,17 +2,17 @@
 title: VPN 閘道： OpenVPN 通訊協定 P2S 連線的 VPN 用戶端： Azure AD 驗證
 description: 您可以使用 P2S VPN，使用 Azure AD authentication 來連線到您的 VNet
 services: vpn-gateway
-author: anzaman
+author: kumudD
 ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 06/26/2020
 ms.author: alzam
-ms.openlocfilehash: bf507ff75d88ac4c549233e50a44ea60ab212886
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cf978f9551e5b2db885ca28d14f66586c029d913
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482984"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082217"
 ---
 # <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication"></a>設定 P2S OpenVPN 通訊協定連線的 VPN 用戶端：Azure AD 驗證
 
@@ -122,19 +122,19 @@ ms.locfileid: "85482984"
 
 1. 在 VPN 用戶端的首頁上，選取 [ **VPN 設定**]。
 
-    ![auto](./media/openvpn-azure-ad-client/auto/auto1.jpg)
+    ![自動](./media/openvpn-azure-ad-client/auto/auto1.jpg)
 
 2. 在 [切換應用程式] 對話方塊上選取 **[是]** 。
 
-    ![auto](./media/openvpn-azure-ad-client/auto/auto2.jpg)
+    ![自動](./media/openvpn-azure-ad-client/auto/auto2.jpg)
 
 3. 請確定您要設定的連線尚未連接，然後將設定檔反白顯示，並勾選 [**自動連接]** 核取方塊。
 
-    ![auto](./media/openvpn-azure-ad-client/auto/auto3.jpg)
+    ![自動](./media/openvpn-azure-ad-client/auto/auto3.jpg)
 
 4. 選取 **[連線]** 以起始 VPN 連線。
 
-    ![auto](./media/openvpn-azure-ad-client/auto/auto4.jpg)
+    ![自動](./media/openvpn-azure-ad-client/auto/auto4.jpg)
 
 ## <a name="diagnose-connection-issues"></a><a name="diagnose"></a>診斷連線問題
 

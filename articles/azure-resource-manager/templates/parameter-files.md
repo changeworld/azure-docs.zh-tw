@@ -3,12 +3,12 @@ title: 建立參數檔案
 description: 建立在 Azure Resource Manager 範本部署期間傳入值的參數檔案
 ms.topic: conceptual
 ms.date: 06/19/2020
-ms.openlocfilehash: 7c03e161c7b3a18020de6a06d356720f5e4c31fd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8039b63978e52b69b0f8ffb4dd4e052769f3c5e6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85117500"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082931"
 ---
 # <a name="create-resource-manager-parameter-file"></a>建立 Resource Manager 參數檔案
 
@@ -186,8 +186,8 @@ ms.locfileid: "85117500"
 
 請參閱：
 
-- [使用 ARM 範本和 Azure CLI 部署資源](./deploy-powershell.md#pass-parameter-values)
-- [使用 ARM 範本和 Azure PowerShell 部署資源](./deploy-cli.md#parameters)
+- [使用 ARM 範本與 Azure CLI 來部署資源](./deploy-cli.md#parameters)
+- [使用 ARM 範本與 Azure PowerShell 來部署資源](./deploy-powershell.md#pass-parameter-values)
 
 ## <a name="file-name"></a>檔案名稱
 

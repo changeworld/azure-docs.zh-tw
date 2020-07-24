@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
-ms.openlocfilehash: a5c5c80aaba083b0f65ac0dab41350765a8f5631
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3d9360a4b5c5f0ef080b3de2a9d425bcdf2b2e70
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85833752"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081894"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-timeouts"></a>針對 Azure Cache for Redis 逾時進行疑難排解
 
@@ -30,7 +30,7 @@ Azure Cache for Redis 會定期更新其伺服器軟體，做為它所提供的�
 
 ## <a name="stackexchangeredis-timeout-exceptions"></a>StackExchange.Redis 逾時例外狀況
 
-Stackexchange.redis： Redis 會使用名 `synctimeout` 為的設定來進行同步作業，預設值為1000毫秒。 如果同步呼叫未在這段時間內完成，則 Stackexchange.redis Redis 用戶端會擲回類似下列範例的逾時錯誤：
+Stackexchange.redis： Redis 會使用名 `synctimeout` 為的設定來進行同步作業，預設值為5000毫秒。 如果同步呼叫未在這段時間內完成，則 Stackexchange.redis Redis 用戶端會擲回類似下列範例的逾時錯誤：
 
 ```output
     System.TimeoutException: Timeout performing MGET 2728cc84-58ae-406b-8ec8-3f962419f641, inst: 1,mgr: Inactive, queue: 73, qu=6, qs=67, qc=0, wr=1/1, in=0/0 IOCP: (Busy=6, Free=999, Min=2,Max=1000), WORKER (Busy=7,Free=8184,Min=2,Max=8191)
@@ -73,7 +73,7 @@ Stackexchange.redis： Redis 會使用名 `synctimeout` 為的設定來進行同
 
 1. 請確定您的伺服器和用戶端應用程式位於相同的 Azure 區域中。 例如，當您的快取位於美國東部，但用戶端位於美國西部，而要求未在間隔內完成， `synctimeout` 或者您從本機開發電腦進行偵錯工具時，可能會收到超時。 
 
-    強烈建議您讓快取和用戶端位在相同的 Azure 區域中。 如果您有包含跨區域呼叫的案例，您應該將 `synctimeout` 間隔設定為大於預設值 1000 毫秒間隔的值，方法是在連接字串中加入 `synctimeout` 屬性。 下列範例顯示 Azure Cache for Redis 提供的 Stackexchange.redis 的連接字串程式碼片段（ `synctimeout` 2000 毫秒）。
+    強烈建議您讓快取和用戶端位在相同的 Azure 區域中。 如果您有包含跨區域呼叫的案例，您應該 `synctimeout` `synctimeout` 在連接字串中包含屬性，將間隔設定為高於預設 5000-ms 間隔的值。 下列範例顯示 Azure Cache for Redis 提供的 Stackexchange.redis 的連接字串程式碼片段（ `synctimeout` 2000 毫秒）。
 
     ```output
     synctimeout=2000,cachename.redis.cache.windows.net,abortConnect=false,ssl=true,password=...

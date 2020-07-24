@@ -6,11 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 10/02/2019
 ms.author: sngun
-ms.openlocfilehash: 57db2253cbffa8e16313c7613de6d2ddb2f2b0a2
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 1bda235e5f3f867762457d0dc8214bbadc88059e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027234"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084818"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>使用 BI 分析工具搭配 ODBC 驅動程式連線到 Azure Cosmos DB
 
@@ -127,7 +128,7 @@ Azure Cosmos DB 是無結構描述的資料庫，可以快速開發應用程式�
 
     例如，如果您包含「City」的**屬性**值，而您想要限制資料表只包含含有「New York」和「Dubai」之城市值的資料列，可在 [屬性] 方塊中輸入「City」，而在 [值]**** 方塊中輸入「New York」和「Dubai」。
 
-1. 按一下 [確定]。 
+1. 按一下 [確定]  。 
 
 1. 完成您想要取樣之容器的對應定義之後，請在 [**架構編輯器**] 視窗中，按一下 [**範例**]。
      針對每個資料行，您可以修改資料行「SQL 名稱」、「SQL 類型」、「SQL 長度」(如果適用的話)、「小數位數」(如果適用的話)、「精確度」(如果適用的話)，以及「可為 Null」。
@@ -235,9 +236,9 @@ Invalid use of schema or catalog for OLE DB provider "MSDASQL" for linked server
 
 1. 若要視覺化 Power BI Desktop 中的資料，請選取資料表名稱前的方塊，然後按一下 [載入]****。
 
-1. 在 Power BI Desktop 中最左側，選取 [資料] 索引標籤 ![Power BI Desktop 中的 [資料] 索引標籤](./media/odbc-driver/odbc-driver-data-tab.png) 以確認已匯入您的資料。
+1. 在 [Power BI Desktop] 中，選取最左邊的 [資料] 索引標籤， :::image type="icon" source="./media/odbc-driver/odbc-driver-data-tab.png"::: 確認已匯入您的資料。 
 
-1. 您現在可以使用 Power BI 建立視覺效果，方法是按一下 [報告] 索引標籤 (![Power BI Desktop 中的 [報告] 索引標籤](./media/odbc-driver/odbc-driver-report-tab.png))，按一下 [新增視覺效果]****，然後自訂您的磚。 如需有關在 Power BI Desktop 中建立視覺效果的詳細資訊，請參閱 [Power BI 中的視覺效果類型](https://powerbi.microsoft.com/documentation/powerbi-service-visualization-types-for-reports-and-q-and-a/)。
+1. 您現在可以在 [報表] 索引標籤上按一下 [ :::image type="icon" source="./media/odbc-driver/odbc-driver-report-tab.png"::: **新增視覺效果**]，然後自訂您的磚，以使用 Power BI 建立視覺效果。 如需有關在 Power BI Desktop 中建立視覺效果的詳細資訊，請參閱 [Power BI 中的視覺效果類型](https://powerbi.microsoft.com/documentation/powerbi-service-visualization-types-for-reports-and-q-and-a/)。 
 
 ## <a name="troubleshooting"></a>疑難排解
 

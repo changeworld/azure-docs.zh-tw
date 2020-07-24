@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/26/2020
 ms.author: radeltch
-ms.openlocfilehash: 4dce0a675f5841591da00a322b72718964d382ac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d522d66642abf55e478cea7579e36bdc64a8cf79
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80348865"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085158"
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>適用於 SUSE Linux Enterprise Server 之 Azure VM 上 NFS 的高可用性
 
@@ -78,7 +78,7 @@ ms.locfileid: "80348865"
 * [適用於 SAP Applications 12 SP3 的 SUSE Linux Enterprise Server 最佳做法指南][sles-for-sap-bp]
 * [SUSE 高可用性延伸模組 12 SP3 版本資訊][suse-ha-12sp3-relnotes]
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 為了實現高可用性，SAP NetWeaver 需要使用 NFS 伺服器。 NFS 伺服器會設定於不同叢集中，並可供多個 SAP 系統使用。
 
@@ -136,14 +136,14 @@ Azure Marketplace 包含 SUSE Linux Enterprise Server for SAP Applications 12 �
    SLES For SAP Applications 12 SP3 (BYOS)  
    選取稍早建立的「可用性設定組」  
 1. 在兩部虛擬機器上為每個 SAP 系統各新增一個資料磁碟。
-1. 建立 Load Balancer （內部）。 建議[標準負載平衡器](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)。  
+1. 建立 Load Balancer （內部）。 建議[標準負載平衡器](../../../load-balancer/load-balancer-overview.md)。  
    1. 請依照下列指示來建立標準負載平衡器：
       1. 建立前端 IP 位址
          1. NW1 的 IP 位址為 10.0.0.4
             1. 開啟負載平衡器，選取前端 IP 集區，然後按一下 [新增]
             1. 輸入新前端 IP 集區 的名稱 (例如 **nw1-frontend**)
             1. 將 [指派] 設定為 [靜態]，然後輸入 IP 位址 (例如 **10.0.0.4**)
-            1. Click OK
+            1. 按一下 [確定]
          1. NW2 的 IP 位址為 10.0.0.5
             * 針對 NW2 重複上述步驟
       1. 建立後端集區
@@ -159,7 +159,7 @@ Azure Marketplace 包含 SUSE Linux Enterprise Server for SAP Applications 12 �
             1. 開啟負載平衡器，選取健康情況探查，然後按一下 [新增]
             1. 輸入新健康狀態探查的名稱 (例如 **nw1-hp**)
             1. 選取 [TCP] 作為通訊協定、連接埠 610**00**，保留 [間隔] 5 和 [狀況不良閾值] 2
-            1. Click OK
+            1. 按一下 [確定]
          1. NW2 的連接埠為 61001
             * 重複上述步驟來為 NW2 建立健康狀態探查
       1. 負載平衡規則
@@ -177,7 +177,7 @@ Azure Marketplace 包含 SUSE Linux Enterprise Server for SAP Applications 12 �
             1. 開啟負載平衡器，選取前端 IP 集區，然後按一下 [新增]
             1. 輸入新前端 IP 集區 的名稱 (例如 **nw1-frontend**)
             1. 將 [指派] 設定為 [靜態]，然後輸入 IP 位址 (例如 **10.0.0.4**)
-            1. Click OK
+            1. 按一下 [確定]
          1. NW2 的 IP 位址為 10.0.0.5
             * 針對 NW2 重複上述步驟
       1. 建立後端集區
@@ -193,7 +193,7 @@ Azure Marketplace 包含 SUSE Linux Enterprise Server for SAP Applications 12 �
             1. 開啟負載平衡器，選取健康情況探查，然後按一下 [新增]
             1. 輸入新健康狀態探查的名稱 (例如 **nw1-hp**)
             1. 選取 [TCP] 作為通訊協定、連接埠 610**00**，保留 [間隔] 5 和 [狀況不良閾值] 2
-            1. Click OK
+            1. 按一下 [確定]
          1. NW2 的連接埠為 61001
             * 重複上述步驟來為 NW2 建立健康狀態探查
       1. 負載平衡規則
@@ -213,10 +213,10 @@ Azure Marketplace 包含 SUSE Linux Enterprise Server for SAP Applications 12 �
             * 重複上述步驟來為 NW2 設定連接埠 2049 和 UDP
 
 > [!Note]
-> 當不具公用 IP 位址的 VM 放在內部 (沒有公用 IP 位址) Standard Azure Load Balancer 的後端集區時，除非另外設定來允許路由傳送至公用端點，否則不會有輸出網際網路連線能力。 如需如何實現輸出連線能力的詳細資料，請參閱[在 SAP 高可用性案例中使用 Azure Standard Load Balancer 實現虛擬機器的公用端點連線能力](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)。  
+> 當不具公用 IP 位址的 VM 放在內部 (沒有公用 IP 位址) Standard Azure Load Balancer 的後端集區時，除非另外設定來允許路由傳送至公用端點，否則不會有輸出網際網路連線能力。 如需如何實現輸出連線能力的詳細資料，請參閱[在 SAP 高可用性案例中使用 Azure Standard Load Balancer 實現虛擬機器的公用端點連線能力](./high-availability-guide-standard-load-balancer-outbound-connections.md)。  
 
 > [!IMPORTANT]
-> 請勿在位於 Azure Load Balancer 後方的 Azure VM 上啟用 TCP 時間戳記。 啟用 TCP 時間戳記會導致健康狀態探查失敗。 將參數 **net.ipv4.tcp_timestamps** 設定為 **0**。 如需詳細資料，請參閱 [Load Balancer 健康狀態探查](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)。
+> 請勿在位於 Azure Load Balancer 後方的 Azure VM 上啟用 TCP 時間戳記。 啟用 TCP 時間戳記會導致健康狀態探查失敗。 將參數 **net.ipv4.tcp_timestamps** 設定為 **0**。 如需詳細資料，請參閱 [Load Balancer 健康狀態探查](../../../load-balancer/load-balancer-custom-probe-overview.md)。
 
 ### <a name="create-pacemaker-cluster"></a>建立 Pacemaker 叢集
 

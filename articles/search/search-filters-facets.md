@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 082575a67ea43d62f322e177cff087e5bd572c27
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 852d8f8f85536dc62dd792e5727dd7ec0571ba29
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72792887"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084206"
 ---
 # <a name="how-to-build-a-facet-filter-in-azure-cognitive-search"></a>如何在 Azure 認知搜尋中建立 facet 篩選 
 
@@ -28,7 +28,7 @@ ms.locfileid: "72792887"
 
 Facet 是動態且會在查詢中傳回。 搜尋回應會為它們提供用來瀏覽結果的 Facet 類別。 如果您不熟悉 Facet，下列範例是多面向導覽結構的說明。
 
-  ![](./media/search-filters-facets/facet-nav.png)
+  ![顯示搜尋對話方塊的影像，其中包含依商務標題分組的篩選搜尋結果。 箭號表示結果是顯示在 facet 導覽結構中的 facet。](./media/search-filters-facets/facet-nav.png)
 
 多面向導覽的新手，想要更詳細說明嗎？ 瞭解[如何在 Azure 認知搜尋中執行](search-faceted-navigation.md)多面向導覽。
 

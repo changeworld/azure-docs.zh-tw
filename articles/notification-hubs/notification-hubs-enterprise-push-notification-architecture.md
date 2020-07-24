@@ -16,12 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: e53e9599da3c12fdf01c8902a7275fc75ce86643
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 36d74a8819285c5eb5fb0367a2b32ae299ae6c8e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223596"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084308"
 ---
 # <a name="enterprise-push-architectural-guidance"></a>企業推送架構指引
 
@@ -39,7 +39,7 @@ ms.locfileid: "86223596"
 
 ![顯示透過事件、訂用帳戶和推播訊息之流程的企業架構圖表。][1]
 
-本架構圖中的關鍵是提供主題/訂用帳戶程式撰寫模型的 Azure 服務匯流排 (如需詳細資料，請參閱[服務匯流排發行/訂用帳戶程式撰寫])。 在此情況下，接收器是行動後端 (通常是[Azure 行動服務]，它會起始推送至行動應用程式) 不會直接從後端系統接收訊息，而是由[Azure 服務匯流排]提供的中繼抽象層，讓行動後端接收來自一或多個後端系統的訊息。 您需要為每個後端系統建立服務匯流排主題 (例如帳戶、HR、財務)，它們基本上是使用者感興趣的「主題」，能讓訊息以推播通知的形式傳送。 後端系統會將訊息傳送到這些主題。 藉由建立服務匯流排訂閱，行動後端能訂閱一或多個這類型的主題。 它能讓行動後端接收來自對應後端系統的通知。 行動後端會持續接聽與其訂閱相關的訊息，待訊息抵達後，它會立即轉向並以通知形式將訊息傳送到通知匯流排。 通知中樞接著會將訊息傳遞給行動應用程式。 以下是重要元件的清單：
+本架構圖中的關鍵是提供主題/訂用帳戶程式撰寫模型的 Azure 服務匯流排 (如需詳細資料，請參閱[服務匯流排發行/訂用帳戶程式撰寫])。 在此情況下，接收者是行動後端（通常是[Azure 行動服務]，它會起始推送至行動應用程式）不會直接從後端系統接收訊息，而是由[Azure 服務匯流排]所提供的中繼抽象層，讓行動後端接收來自一或多個後端系統的訊息。 您需要為每個後端系統建立服務匯流排主題 (例如帳戶、HR、財務)，它們基本上是使用者感興趣的「主題」，能讓訊息以推播通知的形式傳送。 後端系統會將訊息傳送到這些主題。 藉由建立服務匯流排訂閱，行動後端能訂閱一或多個這類型的主題。 它能讓行動後端接收來自對應後端系統的通知。 行動後端會持續接聽與其訂閱相關的訊息，待訊息抵達後，它會立即轉向並以通知形式將訊息傳送到通知匯流排。 通知中樞接著會將訊息傳遞給行動應用程式。 以下是重要元件的清單：
 
 1. 後端系統 (LoB/舊版系統)
    * 建立服務匯流排主題
@@ -236,7 +236,7 @@ ms.locfileid: "86223596"
     [發佈 Web] 對話方塊的螢幕擷取畫面，其中已選取 [Microsoft Azure 網站] 選項，並以綠色箭號指向 [選取現有網站] 對話方塊，其中包含以紅色概述的新選項，並以綠色箭號指向 [在 Microsoft Azure 上建立網站] 對話方塊，並以紅色概述的建立選項。
     :::image-end:::
 
-    如 將作業設定為 [連續執行]，如此一來，當您登入 [Azure 入口網站]時，應能看見與以下範例相似的內容：
+    g. 將作業設定為 [連續執行]，如此一來，當您登入 [Azure 入口網站]時，應能看見與以下範例相似的內容：
 
     ![Azure 入口網站的螢幕擷取畫面，其中顯示 enterprise push 後端 webjob，以及以紅色概述的名稱、排程和記錄值。][4]
 
@@ -289,8 +289,8 @@ ms.locfileid: "86223596"
 <!-- Links -->
 [通知中樞範例]: https://github.com/Azure/azure-notificationhubs-samples
 [Azure 行動服務]: https://azure.microsoft.com/documentation/services/mobile-services/
-[Azure 服務匯流排]: https://azure.microsoft.com/documentation/articles/fundamentals-service-bus-hybrid-solutions/
-[服務匯流排發行/訂用帳戶程式撰寫]: https://azure.microsoft.com/documentation/articles/service-bus-dotnet-how-to-use-topics-subscriptions/
+[Azure 服務匯流排]: ../service-bus-messaging/service-bus-messaging-overview.md
+[服務匯流排發行/訂用帳戶程式撰寫]: ../service-bus-messaging/service-bus-dotnet-how-to-use-topics-subscriptions.md
 [Azure WebJob]: ../app-service/webjobs-create.md
-[通知中樞 - Windows Universal 教學課程]: https://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
+[通知中樞 - Windows Universal 教學課程]: ./notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
 [Azure 入口網站]: https://portal.azure.com/

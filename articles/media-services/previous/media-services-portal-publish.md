@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: b258b0b5dba902e94e8d221e0d8f0292fdec9f67
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: faf0db31b458ed6b8dd4961fffbf2a810990574d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057393"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084478"
 ---
 # <a name="publish-content-in-the-azure-portal"></a>在 Azure 入口網站中發佈內容  
 > [!div class="op_single_selector"]
@@ -63,7 +63,7 @@ ms.locfileid: "86057393"
 > 
 > 
 
-若要更新定位器的到期日，您可以使用 [REST API](https://docs.microsoft.com/rest/api/media/operations/locator#update_a_locator) 或 [.NET API](https://go.microsoft.com/fwlink/?LinkID=533259)。 
+若要更新定位器的到期日，您可以使用 [REST API](/rest/api/media/operations/locator#update_a_locator) 或 [.NET API](https://go.microsoft.com/fwlink/?LinkID=533259)。 
 
 > [!NOTE]
 > 當您更新共用存取簽章定位器的到期日時，URL 也會隨之變更。
@@ -97,4 +97,3 @@ URL 便會加入 [已發佈的 URL] **** 清單中。
 
 ## <a name="next-steps"></a>後續步驟
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
-

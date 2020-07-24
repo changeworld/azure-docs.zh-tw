@@ -9,13 +9,14 @@ ms.subservice: imaging
 ms.date: 04/05/2019
 ms.reviewer: akjosh
 ms.custom: akjosh
-ms.openlocfilehash: 5b86335ab8bcc3af75dbd8af39e3d913f2461e58
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6dad6e161518ba1f6a4f6fccb21b0f2a53f8e3a4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83119836"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083526"
 ---
-# <a name="share-gallery-vm-images-across-azure-tenants"></a>跨 Azure 租使用者共用資源庫 VM 映射
+# <a name="share-gallery-vm-images-across-tenants-in-azure"></a>在 Azure 中跨租使用者共用資源庫 VM 映射
 
 [!INCLUDE [virtual-machines-share-images-across-tenants](../../includes/virtual-machines-share-images-across-tenants.md)]
 

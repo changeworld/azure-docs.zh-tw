@@ -7,16 +7,19 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 7/16/2020
 ms.author: surmb
-ms.openlocfilehash: 2e2925723ee07ee2215bdd82bb730e31cdcdadc9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 160d056447bd53ea01437acd372b5efeb15b4773
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531281"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083152"
 ---
 # <a name="rewrite-url-with-azure-application-gateway---azure-portal-preview"></a>以 Azure 應用程式閘道 Azure 入口網站重寫 URL （預覽）
 
 本文說明如何使用 Azure 入口網站來設定[應用程式閘道 V2 SKU](application-gateway-autoscaling-zone-redundant.md)實例以重寫 URL。
+
+>[!NOTE]
+> URL 重寫功能處於預覽狀態，僅適用于應用程式閘道的 Standard_v2 和 WAF_v2 SKU。 不建議在生產環境中使用。 若要深入瞭解預覽，請參閱[這裡的使用](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)規定。
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 

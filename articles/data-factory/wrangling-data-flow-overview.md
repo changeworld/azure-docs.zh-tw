@@ -7,11 +7,12 @@ ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: 203e5fcaa99f7aebeda34e6968f636ed72851ec8
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 5d0393ab5f2582efa2a4b727543bc799cdb1143e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921540"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082846"
 ---
 # <a name="what-are-wrangling-data-flows"></a>什麼是整頓的資料流程？
 
@@ -27,7 +28,7 @@ Azure Data Factory 中的整頓資料流程可讓您以雲端規模反復執行�
 整頓資料流程特別適用于資料工程師或「公民資料整合者」。
 
 > [!NOTE]
-> 整頓資料流程目前已供于公開預覽
+> 整頓資料流程目前提供公開預覽
 
 ## <a name="use-cases"></a>使用案例
 
@@ -45,7 +46,7 @@ Azure Data Factory 中的整頓資料流程可讓您以雲端規模反復執行�
 
 ## <a name="supported-sources"></a>支援的來源
 
-| 連接器 | 資料格式 | 驗證類型 |
+| 連接子 | 資料格式 | 驗證類型 |
 | -- | -- | --|
 | [Azure Blob 儲存體](connector-azure-blob-storage.md) | CSV、Parquet | 帳戶金鑰 |
 | [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) | CSV | 服務主體 |

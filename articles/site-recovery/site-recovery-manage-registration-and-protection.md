@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.author: rajanaki
-ms.openlocfilehash: a411fc9a95bef595a8fc49cad77189bb88fb7661
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 77dc21b4a04ec5de440b1a17da4747a3dcc711f9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84699629"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083713"
 ---
 # <a name="remove-servers-and-disable-protection"></a>移除伺服器並停用保護
 
@@ -168,11 +169,11 @@ ms.locfileid: "84699629"
    - **停用複寫並移除 (建議)** - 此選項會將複寫的項目從 Azure Site Recovery 移除，且機器的複寫會遭到停止。 系統將會清除內部部署虛擬機器上的複寫設定，並停止此受保護伺服器的 Site Recovery 計費。
    - **移除** - 只有在來源環境遭到刪除或無法存取 (未連線) 時，才使用此選項。 這會將複寫的項目從 Azure Site Recovery 移除 (停止計費)。 內部部署虛擬機器上的複寫設定**將不會**遭到清除。 
 
- > [!NOTE]
-     > 如果您選擇 [移除]**** 選項，則執行下列一組指令碼來清除內部部署 Hyper-V 伺服器上的複寫設定。
+    > [!NOTE]
+    > 如果您選擇 [移除]**** 選項，則執行下列一組指令碼來清除內部部署 Hyper-V 伺服器上的複寫設定。
 
-> [!NOTE]
-> 如果您已故障切換 VM，而且它正在 Azure 中執行，請注意停用保護不會移除/影響已故障的 VM。
+    > [!NOTE]
+    > 如果您已故障切換 VM，而且它正在 Azure 中執行，請注意停用保護不會移除/影響已故障的 VM。
 
 1. 在來源 Hyper-V 主機伺服器上，移除虛擬機器的複寫。 將 SQLVM1 取代為您虛擬機器的名稱，並從系統管理 PowerShell 執行指令碼
 
@@ -195,8 +196,11 @@ ms.locfileid: "84699629"
      > 如果您選擇 [移除]**** 選項，則執行下列指令碼來清除內部部署 VMM 伺服器上的複寫設定。
 3. 在來源 VMM 伺服器上，使用 VMM 主控台中的 PowerShell (需要系統管理員權限) 執行這個指令碼。 將預留位置 **SQLVM1** 取代為您虛擬機器的名稱。
 
-        $vm = get-scvirtualmachine -Name "SQLVM1"
-        Set-SCVirtualMachine -VM $vm -ClearDRProtection
+    ```powershell
+    $vm = get-scvirtualmachine -Name "SQLVM1"
+    Set-SCVirtualMachine -VM $vm -ClearDRProtection
+    ```
+
 4. 上述步驟會清除 VMM 伺服器上的複寫設定。 若要停止複寫在 Hyper-V 主機伺服器上執行的虛擬機器，請執行此指令碼。 將 SQLVM1 取代成您的虛擬機器的名稱，並將 host01.contoso.com 取代成 Hyper-V 主機伺服器的名稱。
 
 ```powershell
@@ -219,17 +223,21 @@ ms.locfileid: "84699629"
 
 3. 在來源 VMM 伺服器上，使用 VMM 主控台中的 PowerShell (需要系統管理員權限) 執行這個指令碼。 將預留位置 **SQLVM1** 取代為您虛擬機器的名稱。
 
-        $vm = get-scvirtualmachine -Name "SQLVM1"
-        Set-SCVirtualMachine -VM $vm -ClearDRProtection
+    ```powershell
+    $vm = get-scvirtualmachine -Name "SQLVM1"
+    Set-SCVirtualMachine -VM $vm -ClearDRProtection
+    ```
+
 4. 在次要 VMM 伺服器上，執行此指令碼來清除次要虛擬機器的設定：
 
-        $vm = get-scvirtualmachine -Name "SQLVM1"
-        Remove-SCVirtualMachine -VM $vm -Force
+    ```powershell
+    $vm = get-scvirtualmachine -Name "SQLVM1"
+    Remove-SCVirtualMachine -VM $vm -Force
+    ```
+
 5. 在次要 VMM 伺服器上，重新整理 Hyper-V 主機伺服器上的虛擬機器，以便再次於 VMM 主控台中偵測次要 VM。
 6. 上述步驟會清除 VMM 伺服器上的複寫設定。 如果您想要停止複寫虛擬機器，請在主要和次要 VM 上執行以下指令碼。 將 SQLVM1 取代成您的虛擬機器的名稱。
 
-        Remove-VMReplication –VMName “SQLVM1”
-
-
-
-
+    ```powershell
+    Remove-VMReplication –VMName "SQLVM1"
+    ```

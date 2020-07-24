@@ -4,11 +4,12 @@ description: 如何針對 Azure Functions 的 Durable Functions 擴充功能使�
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 1f42c6c9b0086d49e539040334c83cfc0c6feb42
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 899bc3fdc94b8232acd3edf3e0cbab3c481ff8f2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84698056"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081843"
 ---
 # <a name="bindings-for-durable-functions-azure-functions"></a>長期函式中的繫結 (Azure Functions)
 
@@ -18,7 +19,7 @@ ms.locfileid: "84698056"
 
 協調流程觸發程式可讓您撰寫[持久協調](durable-functions-types-features-overview.md#orchestrator-functions)器函式。 這個觸發程序支援啟動新的協調器函式執行個體，以及繼續使用「等候」工作的現有協調器函式執行個體。
 
-當您使用 Azure Functions 適用的 Visual Studio 工具時，協調流程觸發程序會使用 [OrchestrationTriggerAttribute](https://docs.microsoft.com/dotnet/api/Microsoft.Azure.WebJobs.Extensions.DurableTask.OrchestrationTriggerAttribute?view=azure-dotnet) .NET 屬性進行設定。
+當您使用 Azure Functions 適用的 Visual Studio 工具時，協調流程觸發程序會使用 [OrchestrationTriggerAttribute](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.orchestrationtriggerattribute?view=azure-dotnet) .NET 屬性進行設定。
 
 當您以指令碼語言 (例如，JavaScript 或 C# 指令碼處理) 撰寫協調器函式時，協調流程觸發程序會由 *function.json* 檔案之 `bindings` 陣列中的下列 JSON 物件所定義：
 
@@ -31,7 +32,7 @@ ms.locfileid: "84698056"
 }
 ```
 
-* `orchestration`這是當用戶端想要啟動此協調器函式的新實例時，必須使用的協調流程名稱。 這是選用屬性。 如果未指定，會使用函式的名稱。
+* `orchestration`這是當用戶端想要啟動此協調器函式的新實例時，必須使用的協調流程名稱。 這是選擇性屬性。 如果未指定，會使用函式的名稱。
 
 此觸發程序繫結會在內部輪詢函式應用程式之預設儲存體帳戶中的一系列佇列。 這些佇列是延伸模組的內部實作詳細資料，這就是為什麼它們未在繫結屬性中明確設定。
 
@@ -138,7 +139,7 @@ module.exports = df.orchestrator(function*(context) {
 }
 ```
 
-* `activity` 是活動的名稱。 此值是協調器函式用來叫用此活動函式的名稱。 這是選用屬性。 如果未指定，會使用函式的名稱。
+* `activity` 是活動的名稱。 此值是協調器函式用來叫用此活動函式的名稱。 這是選擇性屬性。 如果未指定，會使用函式的名稱。
 
 此觸發程序繫結會在內部輪詢函式應用程式之預設儲存體帳戶中的佇列。 這個佇列是延伸模組的內部實作詳細資料，這就是為什麼它未在繫結屬性中明確設定。
 

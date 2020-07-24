@@ -3,23 +3,27 @@ title: Azure Functions 的 JavaScript 開發人員參考
 description: 了解如何使用 JavaScript 開發函式。
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
-ms.date: 12/17/2019
-ms.openlocfilehash: d71301ef73cd94c13b12e17c923ec73abb8e4aae
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 07/17/2020
+ms.openlocfilehash: c0e5dd7e1869accd309656b69bd2a07d21b1a3ec
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252720"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082965"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript 開發人員指南
 
-本指南包含使用 JavaScript 撰寫 Azure Functions 的複雜性相關資訊。
+本指南包含可協助您使用 JavaScript 成功開發 Azure Functions 的詳細資訊。
 
-JavaScript 函式是匯出的 `function`，會在觸發時執行 ([觸發程序是在 function.json 中設定](functions-triggers-bindings.md))。 傳遞至每個函式的第一個引數是 `context` 物件，用來接收和傳送系結資料、記錄，以及與執行時間通訊。
+身為 Express.js、Node.js 或 JavaScript 開發人員，如果您不熟悉 Azure Functions，請考慮先閱讀下列其中一篇文章：
 
-本文假設您已經讀過 [Azure Functions 開發人員參考](functions-reference.md)。 完成函數快速入門，以使用[Visual Studio Code](functions-create-first-function-vs-code.md)或[在入口網站中](functions-create-first-azure-function.md)建立您的第一個函式。
+| 開始使用 | 概念| 引導式學習 |
+| -- | -- | -- | 
+| <ul><li>[使用 Visual Studio CodeNode.js 函數](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-javascript)</li><li>[使用終端機/命令提示字元的Node.js 函式](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-javascript)</li></ul> | <ul><li>[開發人員指南](functions-reference.md)</li><li>[主機選項](functions-scale.md)</li><li>[TypeScript 函數](#typescript)</li><li>[效能 &nbsp; 考慮](functions-best-practices.md)</li></ul> | <ul><li>[建立無伺服器應用程式](/learn/paths/create-serverless-applications/)</li><li>[將 Node.js 和 Express Api 重構至無伺服器 Api](/learn/modules/shift-nodejs-express-apis-serverless/)</li></ul> |
 
-本文也支援[TypeScript 應用程式開發](#typescript)。
+## <a name="javascript-function-basics"></a>JavaScript 函數基本概念
+
+JavaScript （Node.js）函數是匯出 `function` 的，會在觸發時執行（[觸發程式是在 function.js中設定](functions-triggers-bindings.md)）。 傳遞至每個函式的第一個引數是 `context` 物件，用來接收和傳送系結資料、記錄，以及與執行時間通訊。
 
 ## <a name="folder-structure"></a>資料夾結構
 
@@ -48,11 +52,11 @@ FunctionsProject
 
 ## <a name="exporting-a-function"></a>匯出函數
 
-JavaScript 函數必須透過 [`module.exports`](https://nodejs.org/api/modules.html#modules_module_exports) (或) 匯出 [`exports`](https://nodejs.org/api/modules.html#modules_exports) 。 您匯出的函式應該是可經觸發而執行的 JavaScript 函式。
+JavaScript 函數必須透過 [`module.exports`](https://nodejs.org/api/modules.html#modules_module_exports) （或）匯出 [`exports`](https://nodejs.org/api/modules.html#modules_exports) 。 您匯出的函式應該是可經觸發而執行的 JavaScript 函式。
 
 根據預設，Functions 執行階段會在 `index.js` 中尋找您的函式，其中 `index.js` 與對應的 `function.json` 會共用相同的父目錄。 在預設情況中，您匯出的函式應該是僅來自其檔案的匯出，或是名為 `run` 或 `index` 的匯出。 若要設定檔案位置，並匯出函式的名稱，請參閱以下的[設定您的函式進入點](functions-reference-node.md#configure-function-entry-point)。
 
-您匯出的函式在執行時，會傳入多個引數。 它所採用的第一個引數一律為 `context` 物件。 如果您的函式是同步 (不會傳回承諾) ，您必須傳遞 `context` 物件，因為 `context.done` 需要呼叫才可正確使用。
+您匯出的函式在執行時，會傳入多個引數。 它所採用的第一個引數一律為 `context` 物件。 如果您的函式是同步的（不會傳回承諾），您必須傳遞 `context` 物件，因為 `context.done` 需要呼叫才可正確使用。
 
 ```javascript
 // You should include context, other arguments are optional
@@ -118,7 +122,7 @@ module.exports = async function (context, req) {
    };
    ```
    
- - **使用 JavaScript [`arguments`](https://msdn.microsoft.com/library/87dw3w1k.aspx) 物件作為輸入。** 這基本上相當於將輸入傳入作為參數，但可讓您以動態方式處理輸入。
+ - **使用 JavaScript [`arguments`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments) 物件作為輸入。** 這基本上相當於將輸入傳入作為參數，但可讓您以動態方式處理輸入。
  
    ```javascript
    module.exports = async function(context) { 
@@ -131,7 +135,7 @@ module.exports = async function (context, req) {
 ### <a name="outputs"></a>輸出
 函式可透過數種方式寫入輸出 (`direction === "out"` 的繫結)。 在所有情況下，在 *function.json* 中為繫結定義的 `name` 屬性都會對應至在您的函式中寫入的物件成員名稱。 
 
-您可以利用下列其中一種方式將資料指派給輸出系結 (不要將這些方法結合) ：
+您可以用下列其中一種方式將資料指派給輸出系結（請勿結合這些方法）：
 
 - **_[建議用於多個輸出]_ 傳回物件。** 如果您使用的是非同步/承諾傳回函式，您可以傳回具有指派之輸出資料的物件。 在下列範例中，輸出繫結在 *function.json* 中會命名為 "httpResponse" 和 "queueOutput"。
 
@@ -147,7 +151,7 @@ module.exports = async function (context, req) {
   };
   ```
 
-  如果您使用同步函式，您可以使用傳回此物件 [`context.done`](#contextdone-method) (參閱範例) 。
+  如果您使用同步函式，您可以使用傳回此物件 [`context.done`](#contextdone-method) （請參閱範例）。
 - **_[建議用於單一輸出]_ 直接傳回值並使用 $return 繫結名稱。** 這僅適用於非同步/Promise 傳回函式。 請參閱[匯出非同步函式](#exporting-an-async-function)中的範例。 
 - **將值指派給 `context.bindings`** 您可以直接將值指派給 context.bindings。
 
@@ -267,7 +271,7 @@ context.log(message)
 
 | 方法                 | 描述                                |
 | ---------------------- | ------------------------------------------ |
-| ** (_訊息_) 時發生錯誤**   | 寫入錯誤層級或更低層級的記錄。   |
+| **錯誤（_訊息_）**   | 寫入錯誤層級或更低層級的記錄。   |
 | **warn(_message_)**    | 寫入警告層級或更低層級的記錄。 |
 | **info(_message_)**    | 寫入資訊層級或更低層級的記錄。    |
 | **verbose(_message_)** | 寫入詳細資訊層級記錄。           |
@@ -421,11 +425,11 @@ FUNCTIONS_WORKER_PROCESS_COUNT 適用於 Functions 在擴增應用程式以符�
 
 下錶針對每個主要版本的函式執行時間，依作業系統顯示目前支援的 Node.js 版本：
 
-| Functions 版本 |  (Windows) 的節點版本 |  (Linux) 的節點版本 |
+| Functions 版本 | 節點版本（Windows） | 節點版本（Linux） |
 |---|---| --- |
 | 1.x | 6.11.2 (由執行階段鎖定) | n/a |
-| 2.x  | ~ 8<br/>~ 10 (建議) <br/>~ 12<sup>*</sup> | ~ 8 (建議) <br/>~ 10  |
-| 3.x | ~ 10<br/>~ 12 (建議)   | ~ 10<br/>~ 12 (建議)  |
+| 2.x  | ~ 8<br/>~ 10 （建議）<br/>~ 12<sup>*</sup> | ~ 8 （建議）<br/>~ 10  |
+| 3.x | ~ 10<br/>~ 12 （建議）  | ~ 10<br/>~ 12 （建議） |
 
 <sup>*</sup>在2.x 版的函式執行時間中，目前允許節點 ~ 12。 不過，為了達到最佳效能，我們建議使用函數執行時間3.x 與節點 ~ 12。 
 
@@ -559,11 +563,11 @@ module.exports = myObj;
 
 以參數啟動時 `--inspect` ，Node.js 進程會在指定的埠上接聽偵錯工具用戶端。 在 Azure Functions 2.x 中，您可以藉由新增環境變數或應用程式設定，指定要傳遞至執行程式碼之 Node.js 進程的引數 `languageWorkers:node:arguments = <args>` 。 
 
-若要在本機進行調試，請在檔案的 `"languageWorkers:node:arguments": "--inspect=5858"` `Values` [local.settings.js](https://docs.microsoft.com/azure/azure-functions/functions-run-local#local-settings-file)中新增，並將偵錯工具附加至埠5858。
+若要在本機進行調試，請在檔案的 `"languageWorkers:node:arguments": "--inspect=5858"` `Values` [local.settings.js](./functions-run-local.md#local-settings-file)中新增，並將偵錯工具附加至埠5858。
 
 使用 VS Code 進行偵錯工具時，會 `--inspect` 使用專案的 launch.js檔案中的值，自動新增參數 `port` 。
 
-在1.x 版中，設定 `languageWorkers:node:arguments` 將無法使用。 您可以在 Azure Functions Core Tools 上，使用參數來選取 debug 埠 [`--nodeDebugPort`](https://docs.microsoft.com/azure/azure-functions/functions-run-local#start) 。
+在1.x 版中，設定 `languageWorkers:node:arguments` 將無法使用。 您可以在 Azure Functions Core Tools 上，使用參數來選取 debug 埠 [`--nodeDebugPort`](./functions-run-local.md#start) 。
 
 ## <a name="typescript"></a>TypeScript
 
@@ -571,7 +575,7 @@ module.exports = myObj;
 
 產生的檔案 `.funcignore` 是用來指出當專案發行至 Azure 時要排除的檔案。  
 
-在輸出目錄中，)  ( 的 TypeScript 檔案會轉換至 JavaScript 檔案 ( .js) 中。 `dist` TypeScript 範本使用中的[ `scriptFile` 參數](#using-scriptfile) `function.json` 來表示資料夾中對應 .js 檔案的位置 `dist` 。 輸出位置是由範本使用檔案中的參數來設定 `outDir` `tsconfig.json` 。 如果您變更此設定或資料夾的名稱，執行時間就無法找到要執行的程式碼。
+TypeScript 檔案（. ts）會轉換至輸出目錄中的 JavaScript 檔案（.js） `dist` 。 TypeScript 範本使用中的[ `scriptFile` 參數](#using-scriptfile) `function.json` 來表示資料夾中對應 .js 檔案的位置 `dist` 。 輸出位置是由範本使用檔案中的參數來設定 `outDir` `tsconfig.json` 。 如果您變更此設定或資料夾的名稱，執行時間就無法找到要執行的程式碼。
 
 您在本機開發和部署 TypeScript 專案的方式，取決於您的開發工具。
 
@@ -581,7 +585,7 @@ Visual Studio Code 擴充功能的[Azure Functions](https://marketplace.visualst
 
 若要在 Visual Studio Code 中建立 TypeScript 函數應用程式，請在 `TypeScript` 建立函數應用程式時選擇您的語言。
 
-當您按**F5**在本機執行應用程式時，轉譯會在主機 ( # A0) 初始化之前完成。 
+當您按**F5**在本機執行應用程式時，轉譯會在主機（func.exe）初始化之前完成。 
 
 當您使用 [**部署至函式應用程式 ...** ] 按鈕將函式應用程式部署到 Azure 時，Azure Functions 延伸模組會先從 TypeScript 來源檔案產生已準備好用於生產環境的 JavaScript 檔案組建。
 
@@ -632,7 +636,7 @@ func azure functionapp publish <APP_NAME>
 
 ### <a name="choose-single-vcpu-app-service-plans"></a>選擇單一 vCPU App Service 方案
 
-當您建立使用 App Service 方案的函數應用程式時，建議您選取單一 vCPU 方案，而非具有多個 vCPU 的方案。 目前 Functions 在單一 vCPU VM 上執行 JavaScript 函式會較有效率，而使用較大的 VM 並不會產生預期的效能改進。 必要時，您可以藉由新增更多單一 vCPU VM 實例來手動相應放大，或者您可以啟用自動調整。 如需詳細資訊，請參閱[手動或自動調整執行個體計數規模](../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service%2ftoc.json)。
+當您建立使用 App Service 方案的函數應用程式時，建議您選取單一 vCPU 方案，而非具有多個 vCPU 的方案。 目前 Functions 在單一 vCPU VM 上執行 JavaScript 函式會較有效率，而使用較大的 VM 並不會產生預期的效能改進。 必要時，您可以藉由新增更多單一 vCPU VM 實例來手動相應放大，或者您可以啟用自動調整。 如需詳細資訊，請參閱[手動或自動調整執行個體計數規模](../azure-monitor/platform/autoscale-get-started.md?toc=/azure/app-service/toc.json)。
 
 ### <a name="cold-start"></a>冷啟動
 
@@ -648,7 +652,7 @@ func azure functionapp publish <APP_NAME>
  - 擲回未攔截的例外狀況，導致[Node.js 進程損毀](https://nodejs.org/api/process.html#process_warning_using_uncaughtexception_correctly)，可能會影響其他函數的執行。
  - 非預期的行為，例如來自 coNtext .log 的遺漏記錄，因為未正確等待的非同步呼叫所造成。
 
-在下列範例中， `fs.readFile` 會叫用具有錯誤第一個回呼函式的非同步方法作為第二個參數。 這段程式碼會導致上述這兩個問題。 在正確的範圍中未明確攔截到的例外狀況會導致整個程式 (問題 #1) 。 在 `context.done()` 回呼函式範圍之外呼叫，表示函式呼叫可能會在讀取檔案之前結束 (問題 #2) 。 在此範例中，如果呼叫 `context.done()` 過早，會導致遺漏記錄專案，從開始 `Data from file:` 。
+在下列範例中， `fs.readFile` 會叫用具有錯誤第一個回呼函式的非同步方法作為第二個參數。 這段程式碼會導致上述這兩個問題。 在正確的範圍中未明確攔截到的例外狀況會損毀整個進程（問題 #1）。 在 `context.done()` 回呼函式範圍之外呼叫，表示函式呼叫可能會在讀取檔案之前結束（問題 #2）。 在此範例中，如果呼叫 `context.done()` 過早，會導致遺漏記錄專案，從開始 `Data from file:` 。
 
 ```javascript
 // NOT RECOMMENDED PATTERN

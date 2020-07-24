@@ -7,11 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: 77d5731738fbade97be08841428c3bc6b712a7a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 09693a09e35503a2a221f8de1903b4218b8766f4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84678727"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082438"
 ---
 # <a name="handling-planned-maintenance-notifications-using-the-portal"></a>使用入口網站處理預定的維護通知
 
@@ -31,7 +32,7 @@ ms.locfileid: "84678727"
 
    **維護狀態**：顯示 VM 的維護狀態。 以下是可能值：
       
-      | 值 | 說明 |
+      | 值 | 描述 |
       |-------|-------------|
       | 立即開始 | VM 處於自助式維護期間，可讓您在這裡自行起始維護。 請參閱下述，以了解如何在您的 VM 上開始維護。 | 
       | 已排程 | 已排定 VM 進行維護，沒有選項供您起始維護。 您可以在此檢視中選取 [維護 - 排程] 期間或按一下虛擬機器，來了解維護維護期間。 | 
@@ -49,7 +50,7 @@ ms.locfileid: "84678727"
 
 ## <a name="notification-and-alerts-in-the-portal"></a>入口網站中的通知和警示
 
-Azure 會將電子郵件傳送至訂用帳戶擁有者和共同擁有者群組，來傳達計劃性維護排程。 您可以建立 Azure 活動記錄警示，將其他收件者和通道新增到這個通訊。 如需詳細資訊，請參閱[建立服務通知的活動記錄警示](../azure-monitor/platform/alerts-activity-log-service-notifications.md)。
+Azure 會將電子郵件傳送至訂用帳戶擁有者和共同擁有者群組，來傳達計劃性維護排程。 您可以建立 Azure 活動記錄警示，將其他收件者和通道新增到這個通訊。 如需詳細資訊，請參閱[建立服務通知的活動記錄警示](../service-health/alerts-activity-log-service-notifications-portal.md)。
 
 請確定您將**事件種類**設定為 [**規劃的維護**]，並將 [**服務**] 設為**虛擬機器擴展集**和/或**虛擬機器**。
 

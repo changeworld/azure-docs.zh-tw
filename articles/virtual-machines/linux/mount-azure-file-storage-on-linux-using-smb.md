@@ -7,11 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 06/28/2018
 ms.author: cynthn
-ms.openlocfilehash: 7ab798ccbbbfc9cfc11ae85fd698ecedcb5e8e73
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a5d4f388d9e5f47a13812687489525590c520c3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84658150"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085481"
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>使用 SMB 在 Linux VM 上掛接 Azure 檔案儲存體
 
@@ -62,7 +63,7 @@ STORAGEKEY=$(az storage account keys list \
 
 使用 [az storage share create](/cli/azure/storage/share) 建立檔案儲存體共用。 
 
-共用名稱必須全部使用小寫字母、數字和單一連字號，但開頭不可以是連字號。 如需有關為檔案共用與檔案命名的完整詳細資料，請參閱 [命名和參考共用、目錄、檔案及中繼資料](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata)。
+共用名稱必須全部使用小寫字母、數字和單一連字號，但開頭不可以是連字號。 如需有關為檔案共用與檔案命名的完整詳細資料，請參閱 [命名和參考共用、目錄、檔案及中繼資料](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata)。
 
 此範例會建立名為 myshare** 的共用 (具有 10-GiB 配額)。 
 
@@ -110,4 +111,3 @@ sudo mount -t cifs //$STORAGEACCT.file.core.windows.net/myshare /mnt/MyAzureFile
 - [在建立期間使用 cloud-init 自訂 Linux VM](using-cloud-init.md)
 - [在 Linux VM 中新增磁碟](add-disk.md)
 - [適用於 Linux VM 的 Azure 磁碟加密](disk-encryption-overview.md)
-

@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
-ms.openlocfilehash: 9cb516b6d13b4b57a89bb276683857c62a758618
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0bcc67e80861df2827237298444175c3abdb6602
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84021869"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084038"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Azure 公用雲端中的隔離
 
@@ -63,9 +64,9 @@ Azure Active Directory 會透過租用戶單獨擁有且管理之容器內的原
 
 即使將來自多個 Azure Active Directory 租用戶的中繼資料儲存於同一個實體磁碟，在目錄服務所定義之容器以外的容器間還是不會有任何關聯性，而目錄服務是由租用戶管理員所決定。
 
-### <a name="azure-role-based-access-control-rbac"></a>Azure 角色型存取控制 (RBAC)
+### <a name="azure-role-based-access-control-azure-rbac"></a>Azure 角色型存取控制（Azure RBAC）
 
-[Azure 角色型存取控制 (RBAC)](../../role-based-access-control/overview.md) 可藉由提供適用於 Azure 的細部存取管理，來協助您在 Azure 訂用帳戶之間共用各種可用的元件。 Azure RBAC 可讓您隔離組織內的責任，並根據使用者需要哪些權限執行其工作來授與他們存取權。 您不需為每個人授與 Azure 訂用帳戶或資源中無限制的權限，而是只允許執行特定的動作。
+[Azure 角色型存取控制（AZURE RBAC）](../../role-based-access-control/overview.md)可為 azure 提供更細緻的存取權管理，協助您共用 azure 訂用帳戶內可用的各種元件。 Azure RBAC 可讓您隔離組織內的責任，並根據使用者需要哪些權限執行其工作來授與他們存取權。 您不需為每個人授與 Azure 訂用帳戶或資源中無限制的權限，而是只允許執行特定的動作。
 
 Azure RBAC 有適用於所有資源類型的三個基本角色：
 
@@ -144,7 +145,7 @@ Azure 網狀架構控制器會負責配置基礎結構資源給租用戶工作�
 
 Azure hypervisor 會強制執行虛擬機器之間的記憶體和程序區隔，並安全地將網路流量路由傳送至客體 OS 租用戶。 這會消除 VM 層級發生旁道攻擊的可能性。
 
-在 Azure 中，根 VM 是特殊的：它會執行稱為根 OS 的強化作業系統，其中裝載了網狀架構代理程式 (FA)。 接著會使用 FA 來管理客戶 VM 上客體 OS 內的客體代理程式 (GA)。 FA 也會管理儲存體節點。
+在 Azure 中，根 VM 是特殊的：它會執行稱為根 OS 的強化作業系統，其中裝載了網狀架構代理程式 (FA)。 FAs 是用來在客戶 Vm 上的客體作業系統中管理來賓代理程式（GA）。 FA 也會管理儲存體節點。
 
 Azure Hypervisor、根 OS/FA 和客戶 VM/GA 的集合會組成一個計算節點。 FA 是由網狀架構控制器 (FC) 管理的，其存在於計算和儲存體節點 (計算和儲存體叢集是由個別 FC 管理的) 以外的地方。 如果客戶於應用程式正在執行時更新其組態檔，FC 就會與 FA 通訊，然後連絡 GA，後者會通知應用程式組態變更。 發生硬體故障時，FC 將自動尋找可用的硬體，並在該處重新啟動 VM。
 
@@ -312,10 +313,10 @@ Azure 部署具有多層網路隔離。 下圖顯示 Azure 提供給客戶的各
 
 **流量隔離：**[虛擬網路](../../virtual-network/virtual-networks-overview.md)是 Azure 平臺上的流量隔離界限。 一個虛擬網路中的虛擬機器 (VM) 無法與不同虛擬網路中的 VM 直接通訊，即使兩個虛擬網路是由同一位客戶所建立也一樣。 隔離是很重要的屬性，可確保客戶 VM 和通訊仍然隱蔽於虛擬網路內。
 
-[子網路](../../virtual-network/virtual-networks-overview.md)使用以 IP 範圍為基礎的虛擬網路，來提供額外的隔離層級。 虛擬網路中的 IP 位址，您可以將虛擬網路分成多個子網路以便進行組織和獲得安全性。 部署至 VNet 內 (相同或不同) 子網路的 VM 和 PaaS 角色執行個體不需要進行額外設定就可以彼此通訊。 您也可以設定[網路安全性群組 (NSG)](../../virtual-network/virtual-networks-overview.md)，根據 NSG 之存取控制清單 (ACL) 中設定的規則，來允許或拒絕移至 VM 執行個體的網路流量。 NSG 可與子網路或該子網路內的個別 VM 執行個體相關聯。 當 NSG 與子網路相關聯時，ACL 規則便會套用至該子網路中的所有 VM 執行個體。
+[子網路](../../virtual-network/virtual-networks-overview.md)使用以 IP 範圍為基礎的虛擬網路，來提供額外的隔離層級。 虛擬網路中的 IP 位址，您可以將虛擬網路分成多個子網路以便進行組織和獲得安全性。 部署至 VNet 內 (相同或不同) 子網路的 VM 和 PaaS 角色執行個體不需要進行額外設定就可以彼此通訊。 您也可以設定[網路安全性群組 (NSG)](../../virtual-network/virtual-networks-overview.md)，根據 NSG 之存取控制清單 (ACL) 中設定的規則，來允許或拒絕移至 VM 執行個體的網路流量。 NSG 可與子網路或該子網路內的個別 VM 執行個體相關聯。 當 NSG 與子網路相關聯時，ACL 規則會套用到該子網路中的所有 VM 執行個體。
 
 ## <a name="next-steps"></a>後續步驟
 
 - 瞭解[Windows Azure 虛擬網路中電腦的網路隔離選項](https://azure.microsoft.com/blog/network-isolation-options-for-machines-in-windows-azure-virtual-networks/)。 這包括傳統的前端和後端案例，其中特定後端網路或子網中的機器可能只允許特定的用戶端或其他電腦根據允許的 IP 位址清單來連線到特定端點。
 
-- 瞭解[Azure 中的虛擬機器隔離](../../virtual-machines/windows/isolation.md)。 Azure 計算提供的虛擬機器大小會隔離到特定的硬體類型，並專供單一客戶使用。
+- 瞭解[Azure 中的虛擬機器隔離](../../virtual-machines/isolation.md)。 Azure 計算提供的虛擬機器大小會隔離到特定的硬體類型，並專供單一客戶使用。

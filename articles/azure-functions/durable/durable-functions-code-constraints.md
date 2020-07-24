@@ -5,11 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 4ed604302ca187ad4953e865d68dc73030a37c02
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 14e0b86f11c3eabf93e7d4f0ebf563e59c0c21e9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77562134"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081860"
 ---
 # <a name="orchestrator-function-code-constraints"></a>協調器函式程式碼條件約束
 
@@ -17,7 +18,7 @@ Durable Functions 是[Azure Functions](../functions-overview.md)的延伸模組�
 
 ## <a name="orchestrator-code-constraints"></a>協調器程式碼條件約束
 
-協調器函式會使用[事件來源](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing)來確保可靠的執行，並維護本機變數狀態。 Orchestrator 程式碼的重新執行[行為](durable-functions-orchestrations.md#reliability)會針對您可以在協調器函式中撰寫的程式碼類型建立條件約束。 例如，協調器函式必須*具有決定性*：協調器函數會多次重新執行，而且每次都必須產生相同的結果。
+協調器函式會使用[事件來源](/azure/architecture/patterns/event-sourcing)來確保可靠的執行，並維護本機變數狀態。 Orchestrator 程式碼的重新執行[行為](durable-functions-orchestrations.md#reliability)會針對您可以在協調器函式中撰寫的程式碼類型建立條件約束。 例如，協調器函式必須*具有決定性*：協調器函數會多次重新執行，而且每次都必須產生相同的結果。
 
 ### <a name="using-deterministic-apis"></a>使用決定性 Api
 

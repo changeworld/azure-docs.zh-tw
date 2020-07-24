@@ -7,16 +7,16 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: 78f02c07932c6a058ba4fa27289640b7efd56169
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e2242e8febad5d55813721266f1286250af47111
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85113665"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082880"
 ---
 # <a name="regional-presence-with-azure-cosmos-db"></a>Azure Cosmos DB 遍及各區的情形
 
-Azure Cosmos DB 是 Azure 中的基礎服務，而且根據預設，在 Azure 可供使用的所有區域中，一律都可使用。 Azure 目前已在全球 [54 個區域](https://azure.microsoft.com/global-infrastructure/regions/)中提供使用。 
+Azure Cosmos DB 是 Azure 中的基礎服務，而且根據預設，在[有 azure 可供使用的所有區域](https://azure.microsoft.com/global-infrastructure/services/?products=cosmos-db&regions=all)中，一律都可使用。
 
 :::image type="content" source="./media/regional-presence/regional-presence.png" alt-text="可使用 Azure Cosmos DB 的區域" lightbox="./media/regional-presence/regional-presence.png" border="false":::
 
@@ -26,7 +26,7 @@ Azure Cosmos DB 是 Azure 中的基礎服務，而且根據預設，在 Azure �
 
 * 您可以透過 Microsoft 和世紀間的獨特合作關係來取得**Azure 中國的世紀**，其中一個國家/地區在中國最大的網際網路提供者之一。
 
-* **Azure Germany** 在資料信任者模型下提供服務，以確保 Deutsche Telecom 子公司 T-Systems International GmbH 以德國資料信任者的形式，掌管留在德國的客戶資料。
+* **Azure 德國**提供資料信任者模型下的服務，可確保客戶資料會保留在德國的 GmbH （德國 Telekom 的子公司，擔任德國資料信任者）的控制之下。
 
 * **Azure Government** 在北美洲的四個區域中提供給 US Gov 機構和其合作夥伴使用。 
 
@@ -37,6 +37,8 @@ Azure Cosmos DB 是 Azure 中的基礎服務，而且根據預設，在 Azure �
 預設會在所有 Azure 區域中提供 Azure Cosmos DB 所公開的所有 Api （包括 SQL、MongoDB、Cassandra、Gremlin 和 Table）。 例如，您可以讓 MongoDB 和 Cassandra Api Azure Cosmos DB 只在所有全域 Azure 區域中公開，同時在主權雲端（例如中國、德國、政府和國防部（DoD）區域）中提供。
 
 Azure Cosmos DB 是[全域散發](distribute-data-globally.md)的資料庫服務。 您可以將任意數目的 Azure 區域與您的 Azure Cosmos 帳戶相關聯，而且您的資料會自動且透明地複寫。 您可以隨時在 Azure Cosmos 帳戶中新增或移除區域。 Azure Cosmos DB 具有周全的全球發佈功能和多重主要複寫通訊協定，可在第 99 個百分位數提供不到 10 毫秒的讀取和寫入延遲、具有 99.999 的讀取和寫入可用性，並可跨與您 Azure Cosmos 帳戶相關聯的所有區域，彈性調整針對其中的讀取和寫入所佈建的輸送量。 Azure Cosmos DB 也會提供五個具有完善定義的一致性模型，您可以選擇對資料套用特定的一致性模型。 最後，Azure Cosmos DB 是業界唯一的資料庫服務，可提供完整的[服務等級協定（SLA）](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/) ，涵蓋布建的輸送量、第99百分位數的延遲、高可用性和一致性。 上述功能適用于所有 Azure 雲端。
+
+全域複寫支援的範圍限於 Azure 雲端環境內。 例如， *azure 公用*中的 Azure Cosmos DB 帳戶可以複寫至*azure 公用*中的任何 azure 區域，但無法複寫到*Azure 中國世紀*的 azure 區域。
 
 ## <a name="next-steps"></a>後續步驟
 

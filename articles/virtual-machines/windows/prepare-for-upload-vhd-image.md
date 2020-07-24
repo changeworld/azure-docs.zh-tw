@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: troubleshooting
 ms.date: 04/28/2020
 ms.author: genli
-ms.openlocfilehash: 3aa0a0d31e70300814f35c337197b383877fe7be
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6010c67b531d0f1ebb0ed836062cd5e323e5474c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610212"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083509"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>準備 Windows VHD 或 VHDX 以上傳至 Azure
 
@@ -58,11 +58,11 @@ ms.locfileid: "85610212"
 1. 若要從 VHDX 轉換，請選取 [ **VHD**  >  **] [下一步]**。
 1. 若要從動態擴充磁片進行轉換，請選取 [**固定大小**  >  **] [下一步]**。
 1. 找出並選取路徑以儲存新的 VHD 檔案。
-1. 選取 [完成]。
+1. 選取 [完成] 。
 
 ### <a name="use-powershell-to-convert-the-disk"></a>使用 PowerShell 轉換磁片
 
-您可以使用 PowerShell 中的[轉換-VHD](/powershell/module/hyper-v/convert-vhd) Cmdlet 來轉換虛擬磁片。 如果您需要安裝此 Cmdlet 的相關資訊，請按一下[這裡](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server)。
+您可以使用 PowerShell 中的[轉換-VHD](/powershell/module/hyper-v/convert-vhd) Cmdlet 來轉換虛擬磁片。 如果您需要安裝此 Cmdlet 的相關資訊，請按一下[這裡](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server)。
 
 下列範例會將磁片從 VHDX 轉換為 VHD。 它也會將磁片從動態擴充磁片轉換成固定大小的磁片。
 
@@ -82,11 +82,11 @@ Convert-VHD -Path C:\test\MyVM.vhdx -DestinationPath C:\test\MyNewVM.vhd -VHDTyp
 1. 在 [**尋找虛擬硬碟**] 頁面上，選取您的虛擬磁片。
 1. 在 [**選擇動作**] 頁面上，選取 [**展開**  >  **下一步]**。
 1. 在 [**尋找虛擬硬碟**] 頁面上，于 [GiB] 中輸入新的大小 >**下一步]**。
-1. 選取 [完成]。
+1. 選取 [完成] 。
 
 ### <a name="use-powershell-to-resize-the-disk"></a>使用 PowerShell 來調整磁片大小
 
-您可以在 PowerShell 中使用重[設大小的 VHD](/powershell/module/hyper-v/resize-vhd) Cmdlet 來調整虛擬磁片的大小。 如果您需要安裝此 Cmdlet 的相關資訊，請按一下[這裡](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server)。
+您可以在 PowerShell 中使用重[設大小的 VHD](/powershell/module/hyper-v/resize-vhd) Cmdlet 來調整虛擬磁片的大小。 如果您需要安裝此 Cmdlet 的相關資訊，請按一下[這裡](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server)。
 
 下列範例會將磁片從 100.5 MiB 調整為 101 MiB，以符合 Azure 對齊需求。
 
@@ -138,7 +138,7 @@ Windows Resource Protection did not find any integrity violations.
    netsh.exe winhttp reset proxy
    ```
 
-    如果 VM 需要使用特定的 proxy，請新增 Azure IP 位址（[168.63.129.16](/azure/virtual-network/what-is-ip-address-168-63-129-16)）的 proxy 例外，讓 VM 可以連線到 azure：
+    如果 VM 需要使用特定的 proxy，請新增 Azure IP 位址（[168.63.129.16](../../virtual-network/what-is-ip-address-168-63-129-16.md)）的 proxy 例外，讓 VM 可以連線到 azure：
 
     ```
     $proxyAddress='<your proxy server>'
@@ -446,7 +446,7 @@ Get-Service -Name Netlogon, Netman, TermService |
 |                         | http.sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17285 - KB3042553                  | 6.3.9600.18574 - KB4022726          | 10.0.14393.251 - KB4022715                  | 10.0.15063.483             | -                                           | -                                           |
 |                         | vmswitch.sys   | 6.1.7601.23727 - KB4022719                | 6.2.9200.22117 - KB4022724                  | 6.3.9600.18654 - KB4022726          | 10.0.14393.1358 - KB4022715                 | 10.0.15063.138             | -                                           | -                                           |
 | 核心                    | ntoskrnl.exe   | 6.1.7601.23807 - KB4022719                | 6.2.9200.22170 - KB4022718                  | 6.3.9600.18696 - KB4022726          | 10.0.14393.1358 - KB4022715                 | 10.0.15063.483             | -                                           | -                                           |
-| 遠端桌面服務 | rdpcorets.dll  | 6.2.9200.21506 - KB4022719                | 6.2.9200.22104 - KB4022724                  | 6.3.9600.18619 - KB4022726          | 10.0.14393.1198 - KB4022715                 | 10.0.15063.0               | -                                           | -                                           |
+| 遠端桌面服務問題 | rdpcorets.dll  | 6.2.9200.21506 - KB4022719                | 6.2.9200.22104 - KB4022724                  | 6.3.9600.18619 - KB4022726          | 10.0.14393.1198 - KB4022715                 | 10.0.15063.0               | -                                           | -                                           |
 |                         | termsrv.dll    | 6.1.7601.23403 - KB3125574                | 6.2.9200.17048 - KB2973501                  | 6.3.9600.17415 - KB3000850          | 10.0.14393.0 - KB4022715                    | 10.0.15063.0               | -                                           | -                                           |
 |                         | termdd.sys     | 6.1.7601.23403 - KB3125574                | -                                           | -                                   | -                                           | -                          | -                                           | -                                           |
 |                         | win32k.sys     | 6.1.7601.23807 - KB4022719                | 6.2.9200.22168 - KB4022718                  | 6.3.9600.18698 - KB4022726          | 10.0.14393.594 - KB4022715                  | -                          | -                                           | -                                           |
@@ -472,7 +472,7 @@ Sysprep 藉由移除所有個人資料並重設數個元件來提供「現成」
 若只要從一個磁片建立一個 VM，您就不需要使用 Sysprep。 相反地，您可以從*特製化映射*建立 VM。 如需有關如何從特製化磁片建立 VM 的詳細資訊，請參閱：
 
 - [從特殊化磁碟建立 VM](create-vm-specialized.md)
-- [從特殊化 VHD 磁碟建立 VM](/azure/virtual-machines/windows/create-vm-specialized-portal)
+- [從特殊化 VHD 磁碟建立 VM](./create-vm-specialized-portal.md)
 
 若要建立一般化映射，您需要執行 Sysprep。 如需詳細資訊，請參閱[如何使用 Sysprep：簡介](/previous-versions/windows/it-pro/windows-xp/bb457073(v=technet.10))。
 
@@ -519,4 +519,4 @@ Sysprep 藉由移除所有個人資料並重設數個元件來提供「現成」
 ## <a name="next-steps"></a>後續步驟
 
 - [將 Windows VM 映像上傳至 Azure 供 Resource Manager 部署使用](upload-generalized-managed.md)
-- [針對 Azure Windows VM 啟用問題進行疑難排解](troubleshoot-activation-problems.md)
+- [針對 Azure Windows VM 啟用問題進行疑難排解](../troubleshooting/troubleshoot-activation-problems.md)

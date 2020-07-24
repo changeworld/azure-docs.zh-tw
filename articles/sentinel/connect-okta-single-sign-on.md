@@ -14,14 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: 37ade037b7f3c88f5ff33d7fc4640b19f366fe7a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 05a9b8009d896a2ee87df3e1c4493d249a887566
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531208"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083917"
 ---
 # <a name="connect-your-okta-single-sign-on-to-azure-sentinel-with-azure-function"></a>使用 Azure Function 將您的 Okta 單一登入連線至 Azure Sentinel
+
+> [!IMPORTANT]
+> Azure Sentinel 中的 Okta 單一登入資料連線器目前為公開預覽狀態。
+> 這項功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 Okta 單一登入（SSO）連接器可讓您輕鬆地連接所有使用 Azure Sentinel 的[Okta 單一登入（sso）](https://www.okta.com/products/single-sign-on/)安全性解決方案記錄，以查看儀表板、建立自訂警示及改善調查。 Okta 單一登入和 Azure Sentinel 之間的整合會利用 Azure Functions，使用 REST API 來提取記錄資料。
 

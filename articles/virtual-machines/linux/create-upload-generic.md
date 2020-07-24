@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: guybo
-ms.openlocfilehash: f700dec6486bad9e7024d7c908a70dd0ff2b342c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fc18c278754afd4bb08d564a2f82680fd94bf866
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80066768"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082574"
 ---
 # <a name="information-for-non-endorsed-distributions"></a>非背書的發行版本相關資訊
 
@@ -24,17 +24,18 @@ ms.locfileid: "80066768"
 
 建議您從其中一個 [Azure 上的 Linux 背書發行版本](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)開始。 下列文章將示範如何準備 Azure 上所支援之各種背書的 Linux 發行版本：
 
-* **[CentOS 型散發套件](create-upload-centos.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
-* **[Debian Linux](debian-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
-* **[Oracle Linux](oracle-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
-* **[Red Hat Enterprise Linux](redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
-* **[SLES 和 openSUSE](suse-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
-* **[Ubuntu](create-upload-ubuntu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
+- [CentOS 型發行版本](create-upload-centos.md)
+- [Debian Linux](debian-create-upload-vhd.md)
+- [Flatcar Container Linux](flatcar-create-upload-vhd.md)
+- [Oracle Linux](oracle-create-upload-vhd.md)
+- [Red Hat Enterprise Linux](redhat-create-upload-vhd.md)
+- [SLES 和 openSUSE](suse-create-upload-vhd.md)
+- [Ubuntu](create-upload-ubuntu.md)
 
 本文將著重於在 Azure 上執行 Linux 發行版本時的一般指導。
 
 ## <a name="general-linux-installation-notes"></a>一般 Linux 安裝注意事項
-* Azure 中不支援 Hyper-V 虛擬硬碟 (VHDX) 格式，只支援「固定 VHD」**。  您可以使用 Hyper-v 管理員或[轉換-vhd](https://docs.microsoft.com/powershell/module/hyper-v/convert-vhd) Cmdlet，將磁片轉換成 VHD 格式。 如果您使用的是 VirtualBox，即會在建立磁碟時選取 [固定大小]**** 而不是預設值 (動態配置的)。
+* Azure 中不支援 Hyper-V 虛擬硬碟 (VHDX) 格式，只支援「固定 VHD」**。  您可以使用 Hyper-v 管理員或[轉換-vhd](/powershell/module/hyper-v/convert-vhd) Cmdlet，將磁片轉換成 VHD 格式。 如果您使用的是 VirtualBox，即會在建立磁碟時選取 [固定大小]**** 而不是預設值 (動態配置的)。
 * Azure 支援 Gen1 （BIOS 開機） & Gen2 （UEFI 開機）虛擬機器。
 * 允許的 VHD 大小上限為 1023 GB。
 * 安裝 Linux 系統時，建議您使用標準磁碟分割而不是邏輯磁碟區管理員 (LVM)，此為許多安裝的預設值。 使用標準磁碟分割將可避免 LVM 名稱與複製的 VM 發生衝突，特別是為了疑難排解而一律要將 OS 磁碟連接至另一個相同的 VM 時。 如果願意，您可以在資料磁碟上使用 [LVM](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 或 [RAID](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
@@ -66,7 +67,7 @@ Azure 上的 VHD 映像必須具有與 1 MB 對齊的虛擬大小。  一般而�
 
 * VHD HTTP： \/ / \<mystorageaccount> . blob.core.windows.net/vhds/MyLinuxVM.vhd 具有不支援的虛擬大小21475270656個位元組。 大小必須是整數 (以 MB 為單位)。
 
-在此案例中，您可以使用 Hyper-V 管理員主控台或 [Resize-VHD](https://technet.microsoft.com/library/hh848535.aspx) \(英文\) PowerShell Cmdlet 來調整 VM 的大小。  如果您不是在 Windows 環境中執行，建議使用 `qemu-img` 來轉換 VHD (如果需要) 並調整其大小。
+在此案例中，您可以使用 Hyper-V 管理員主控台或 [Resize-VHD](/powershell/module/hyper-v/resize-vhd?view=win10-ps) \(英文\) PowerShell Cmdlet 來調整 VM 的大小。  如果您不是在 Windows 環境中執行，建議使用 `qemu-img` 來轉換 VHD (如果需要) 並調整其大小。
 
 > [!NOTE]
 > [qemu-img 版本 >=2.2.1 中已知的 Bug](https://bugs.launchpad.net/qemu/+bug/1490611) \(英文\) 會導致 VHD 的格式不正確。 此問題已在 QEMU 2.6 中修正。 我們建議使用 `qemu-img` 2.2.0 或更早版本，或是 2.6 或更新版本。
@@ -189,4 +190,3 @@ Azure 上的 VHD 映像必須具有與 1 MB 對齊的虛擬大小。  一般而�
    > 在 Virtualbox 上，您可能會在執行 `waagent -force -deprovision` 之後看到下列錯誤，指出 `[Errno 5] Input/output error`。 此錯誤訊息並不重要，您可以忽略。
 
 * 關閉虛擬機器，並將 VHD 上傳至 Azure。
-

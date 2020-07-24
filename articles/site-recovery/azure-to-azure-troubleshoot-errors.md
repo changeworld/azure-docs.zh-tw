@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/07/2020
 ms.author: rochakm
-ms.openlocfilehash: 91aaedba13dfd9c0a3ea06b3460beaa8ead20233
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: d3e70384a99e2dad3f19825cb85b83861e4647e9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86130460"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083815"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>針對 Azure 至 Azure VM 複寫錯誤進行疑難排解
 
@@ -475,7 +475,7 @@ Linux 的整合開機載入器（GRUB）設定檔案（_/boot/grub/menu.lst_、 
 
 將每個裝置名稱取代為對應的 UUID：
 
-1. 執行命令來尋找裝置的 UUID `blkid <device name>` 。 例如：
+1. 執行命令來尋找裝置的 UUID `blkid <device name>` 。 例如:
 
    ```shell
    blkid /dev/sda1
@@ -534,6 +534,44 @@ Site Recovery 行動服務有許多元件，其中一個稱為「篩選器」驅
 ### <a name="fix-the-problem"></a>修正問題
 
 刪除錯誤訊息中識別的複本磁片，然後重試失敗的保護工作。
+
+## <a name="enable-protection-failed-as-the-installer-is-unable-to-find-the-root-disk-error-code-151137"></a>啟用保護失敗，因為安裝程式找不到根磁片（錯誤碼151137）
+
+使用 Azure 磁碟加密（ADE）加密 OS 磁片的 Linux 電腦會發生此錯誤。 這是僅限代理程式版本9.35 中的有效問題。
+
+### <a name="possible-causes"></a>可能的原因
+
+安裝程式找不到裝載根檔案系統的根磁片。
+
+### <a name="fix-the-problem"></a>修正問題
+
+請遵循下列步驟來修正此問題-
+
+1. 使用下列命令，在 RHEL 和 CentOS 電腦的目錄 _/var/lib/waagent_中尋找代理程式位： <br>
+
+    `# find /var/lib/ -name Micro\*.gz`
+
+   預期輸出：
+
+    `/var/lib/waagent/Microsoft.Azure.RecoveryServices.SiteRecovery.LinuxRHEL7-1.0.0.9139/UnifiedAgent/Microsoft-ASR_UA_9.35.0.0_RHEL7-64_GA_30Jun2020_release.tar.gz`
+
+2. 建立新的目錄，並將目錄變更為這個新的目錄。
+3. 使用下列命令，將第一個步驟中找到的代理程式檔案解壓縮：
+
+    `tar -xf <Tar Ball File>`
+
+4. 開啟_prereq_check_installer.js_的檔案，並刪除下列幾行。 在該檔案之後儲存檔案。
+
+    ```
+       {
+          "CheckName": "SystemDiskAvailable",
+          "CheckType": "MobilityService"
+       },
+    ```
+5. 使用命令叫用安裝程式： <br>
+
+    `./install -d /usr/local/ASR -r MS -q -v Azure`
+6. 如果安裝程式成功，請重試啟用複寫作業。
 
 ## <a name="next-steps"></a>後續步驟
 

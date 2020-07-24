@@ -8,12 +8,12 @@ ms.custom: vs-azure
 ms.date: 02/18/2019
 ms.author: glenga
 ms.reviewer: david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: 971ab39ddf4b383f92f0cd81e5258ad357e76e99
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: cf2437443350cf9b21b6abc0d0dd1dbd5d22e41f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85857062"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083186"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio---azure-app-service"></a>使用 Visual Studio 開發和部署 WebJob - Azure App Service
 
@@ -79,7 +79,7 @@ ms.locfileid: "85857062"
 
 ![Diagram showing WebJob project linking to web project](./media/webjobs-dotnet-deploy-vs/link.png)
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>先決條件
 
 如果您是使用 Visual Studio 2015，請安裝 [Azure SDK for .NET (Visual Studio 2015)](https://azure.microsoft.com/downloads/)。
 
@@ -225,7 +225,7 @@ Webjob 會使用*設定作業*檔案來判斷 WebJob 的執行時間。 使用�
 
 ### <a name="cron-expressions"></a>CRON 運算式
 
-Webjob 會使用與 Azure Functions 中的計時器觸發程式相同的 CRON 運算式進行排程。 若要深入瞭解 CRON 支援，請參閱[計時器觸發程式參考文章](../azure-functions/functions-bindings-timer.md#ncrontab-expressions)。
+Webjob 會使用與 Azure Functions 中的計時器觸發程式相同的 CRON 運算式進行排程。 若要深入瞭解 CRON 支援，請參閱[Azure Functions 的計時器觸發程式](../azure-functions/functions-bindings-timer.md#ncrontab-expressions)。
 
 [!INCLUDE [webjobs-cron-timezone-note](../../includes/webjobs-cron-timezone-note.md)]
 

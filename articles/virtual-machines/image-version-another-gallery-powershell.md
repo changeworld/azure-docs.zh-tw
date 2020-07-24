@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 1fe26a880979a431e456d9a1819dfd1b18d25f77
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 48f0a247ed023583c8489994439a790944b90fdc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86221216"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082591"
 ---
 # <a name="copy-an-image-from-another-gallery-using-powershell"></a>使用 PowerShell 從另一個資源庫複製映射
 
@@ -100,7 +100,7 @@ Get-AzGalleryImageDefinition `
 }
 ```
 
-使用[AzGalleryImageDefinition](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion) Cmdlet 和上述輸出中的資訊，在您的目的地資源庫中建立新的映射定義。
+使用[AzGalleryImageDefinition](/powershell/module/az.compute/new-azgalleryimageversion) Cmdlet 和上述輸出中的資訊，在您的目的地資源庫中建立新的映射定義。
 
 
 在此範例中，映射定義在名為*myDestinationGallery*的資源庫中名為*myDestinationImgDef* 。
@@ -123,7 +123,7 @@ $destinationImgDef  = New-AzGalleryImageDefinition `
 
 ## <a name="create-the-image-version"></a>建立映像版本
 
-使用[new-azgalleryimageversion](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion)建立映射版本。 您必須在參數中傳入來源映射的識別碼，以在 `--managed-image` 目的地資源庫中建立映射版本。 
+使用[new-azgalleryimageversion](/powershell/module/az.compute/new-azgalleryimageversion)建立映射版本。 您必須在參數中傳入來源映射的識別碼，以在 `--managed-image` 目的地資源庫中建立映射版本。 
 
 映像版本允許的字元是數字及句點。 數字必須在 32 位元整數的範圍內。 格式：*MajorVersion*.*MinorVersion*.*Patch*。
 
@@ -156,7 +156,7 @@ $job.State
 > [!NOTE]
 > 您必須等候映像版本完全完成建立和複寫後，才能使用相同的受控映像來建立另一個映像版本。
 >
-> 建立映像版本時，您也可以藉由新增 `-StorageAccountType Premium_LRS`，將映像儲存在「進階」儲存體，或新增 `-StorageAccountType Standard_ZRS`，將映像儲存在[區域備援儲存體](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs)。
+> 建立映像版本時，您也可以藉由新增 `-StorageAccountType Premium_LRS`，將映像儲存在「進階」儲存體，或新增 `-StorageAccountType Standard_ZRS`，將映像儲存在[區域備援儲存體](../storage/common/storage-redundancy.md)。
 >
 
 
@@ -164,6 +164,6 @@ $job.State
 
 從[一般化](vm-generalized-image-version-powershell.md)或[特製](vm-specialized-image-version-powershell.md)化映射版本建立 VM。
 
-[Azure 映射產生器 (preview) ](./linux/image-builder-overview.md)可以協助自動建立映射版本，您甚至可以使用它來更新和[建立現有映射版本的新映射版本](./linux/image-builder-gallery-update-image-version.md)。 
+[Azure 映射產生器（預覽）](./linux/image-builder-overview.md)可協助自動建立映射版本，您甚至可以使用它來更新和[建立現有映射版本的新映射版本](./linux/image-builder-gallery-update-image-version.md)。 
 
 如需有關如何提供採購方案資訊的詳細資訊，請參閱[在建立映射時提供 Azure Marketplace 購買方案資訊](marketplace-images.md)。

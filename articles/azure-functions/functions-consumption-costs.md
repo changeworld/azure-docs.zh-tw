@@ -3,11 +3,12 @@ title: 估計 Azure Functions 中的耗用量方案成本
 description: 瞭解如何在 Azure 中的取用方案中執行函數應用程式時，更清楚地預估可能產生的成本。
 ms.date: 9/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: 0e3177d7c65eb1624441427f123e6f95095bdbbd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 880d1c20c75ce297b556ac203e309e446227e97a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76963983"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083033"
 ---
 # <a name="estimating-consumption-plan-costs"></a>估計取用方案成本
 
@@ -60,7 +61,7 @@ Durable Functions 也可以在取用量方案中執行。 若要深入瞭解使�
 
 ## <a name="view-execution-data"></a>查看執行資料
 
-在[您的發票](/azure/billing/billing-download-azure-invoice)中，您可以查看總執行的成本相關資料 **-函數**和**執行時間函數**，以及實際的計費成本。 不過，此發票資料是過去發票期間的每月匯總。 
+在[您的發票](../cost-management-billing/understand/download-azure-invoice.md)中，您可以查看總執行的成本相關資料 **-函數**和**執行時間函數**，以及實際的計費成本。 不過，此發票資料是過去發票期間的每月匯總。 
 
 若要進一步瞭解函數的成本影響，您可以使用 Azure 監視器來查看您的函式應用程式目前所產生的成本相關計量。 您可以使用[Azure 入口網站]或 REST api 中的[Azure 監視器計量瀏覽器](../azure-monitor/platform/metrics-getting-started.md)來取得此資料。
 
@@ -225,7 +226,7 @@ customMetrics
 | summarize averageDurationMilliseconds=avg(averageDuration) by name
 ```
 
-| NAME                       | averageDurationMilliseconds |
+| 名稱                       | averageDurationMilliseconds |
 |----------------------------|-----------------------------|
 | QueueTrigger AvgDurationMs | 16 \. 087                     |
 | QueueTrigger MaxDurationMs | 90 \. 249                     |

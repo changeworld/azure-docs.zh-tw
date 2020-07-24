@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/16/2020
 ms.author: radeltch
-ms.openlocfilehash: 9419ed320089ff85722e0d9c0582e92491377ab1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eca36a2c13fcdc232d4d06ca6e59598fe9a611f2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84907460"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082132"
 ---
 # <a name="public-endpoint-connectivity-for-virtual-machines-using-azure-standard-load-balancer-in-sap-high-availability-scenarios"></a>適用於 SAP 高可用性案例中使用 Azure Standard Load Balancer 之虛擬機器的公用端點連線能力
 
@@ -31,11 +31,11 @@ ms.locfileid: "84907460"
 
 ## <a name="overview"></a>概觀
 
-透過叢集為 SAP 解決方案實作高可用性時，其中一個必要的元件為 [Azure Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)。 Azure 提供兩種 Load Balancer SKU：Standard (標準) 和 Basic (基本)。
+透過叢集為 SAP 解決方案實作高可用性時，其中一個必要的元件為 [Azure Load Balancer](../../../load-balancer/load-balancer-overview.md)。 Azure 提供兩種 Load Balancer SKU：Standard (標準) 和 Basic (基本)。
 
 Standard Azure Load Balancer 能提供一些優於 Basic Load Balancer 的優點。 例如，其可以跨 Azure 可用性區域運作、具有較佳的監視和記錄功能來使疑難排解更加輕鬆，以及具有較低的延遲。 「HA 連接埠」功能會涵蓋所有連接埠，也就是說使用者不再需要列出所有個別的連接埠。  
 
-Azure Load Balancer 的 Basic 和 Standard SKU 之間還有一些重要差異。 其中一個是處理傳送到公用端點的連出流量。 如需 Basic 與 Standard SKU 負載平衡器之間的完整比較，請參閱 [Load Balancer SKU 的比較](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)。  
+Azure Load Balancer 的 Basic 和 Standard SKU 之間還有一些重要差異。 其中一個是處理傳送到公用端點的連出流量。 如需 Basic 與 Standard SKU 負載平衡器之間的完整比較，請參閱 [Load Balancer SKU 的比較](../../../load-balancer/load-balancer-overview.md)。  
  
 當不具公用 IP 位址的 VM 放在內部 (沒有公用 IP 位址) Standard Azure Load Balancer 的後端集區時，除非另行設定，否則將不會有對公用端點的輸出連線能力。  
 
@@ -60,20 +60,20 @@ SAP 系統通常會包含敏感性的商務資料。 此情況通常無法讓裝
 請先參閱下列文章：
 
 * Azure Standard Load Balancer
-  * [Azure Standard Load Balancer 概觀](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview) - Azure Standard Load Balancer、重要原則、概念及教學課程的完整概觀 
-  * [Azure 中的輸出連線](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#scenarios) \(部分機器翻譯\) - 如何在 Azure 中達成輸出連線能力的案例
-  * [Load Balancer 連出規則](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-rules-overview) \(部分機器翻譯\) - 說明 Load Balancer 連出規則的概念，以及如何建立連出規則
+  * [Azure Standard Load Balancer 概觀](../../../load-balancer/load-balancer-overview.md) - Azure Standard Load Balancer、重要原則、概念及教學課程的完整概觀 
+  * [Azure 中的輸出連線](../../../load-balancer/load-balancer-outbound-connections.md#scenarios) \(部分機器翻譯\) - 如何在 Azure 中達成輸出連線能力的案例
+  * [Load Balancer 連出規則](../../../load-balancer/load-balancer-outbound-connections.md#outboundrules) \(部分機器翻譯\) - 說明 Load Balancer 連出規則的概念，以及如何建立連出規則
 * Azure 防火牆
-  * [Azure 防火牆概觀](https://docs.microsoft.com/azure/firewall/overview) - Azure 防火牆的概觀
-  * [教學課程：部署和設定 Azure 防火牆](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal) - 如何透過 Azure 入口網站設定 Azure 防火牆的指示
-* [虛擬網路 - 使用者定義規則](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#user-defined) \(部分機器翻譯\) - Azure 路由概念和規則  
-* [安全性群組服務標籤](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) \(部分機器翻譯\) - 如何使用服務標籤來簡化網路安全性群組和防火牆設定
+  * [Azure 防火牆概觀](../../../firewall/overview.md) - Azure 防火牆的概觀
+  * [教學課程：部署和設定 Azure 防火牆](../../../firewall/tutorial-firewall-deploy-portal.md) - 如何透過 Azure 入口網站設定 Azure 防火牆的指示
+* [虛擬網路 - 使用者定義規則](../../../virtual-network/virtual-networks-udr-overview.md#user-defined) \(部分機器翻譯\) - Azure 路由概念和規則  
+* [安全性群組服務標籤](../../../virtual-network/security-overview.md#service-tags) \(部分機器翻譯\) - 如何使用服務標籤來簡化網路安全性群組和防火牆設定
 
 ## <a name="additional-external-azure-standard-load-balancer-for-outbound-connections-to-internet"></a>透過額外的外部 Azure Standard Load Balancer 來對網際網路進行輸出連線
 
-在不允許公用端點對 VM 之輸入連線能力的情況下，達成對公用端點之輸出連線能力的其中一個選項，便是建立具有公用 IP 位址的第二個 Load Balancer，將 VM 新增到第二個 Load Balancer 的後端集區，然後僅定義[連出規則](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-rules-overview) \(部分機器翻譯\)。  
-使用[網路安全性群組](https://docs.microsoft.com/azure/virtual-network/security-overview) \(部分機器翻譯\) 以控制來自 VM 的輸出呼叫可存取的公用端點。  
-如需詳細資訊，請參閱[輸出連線](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#scenarios) \(部分機器翻譯\) 文件中的案例 2。  
+在不允許公用端點對 VM 之輸入連線能力的情況下，達成對公用端點之輸出連線能力的其中一個選項，便是建立具有公用 IP 位址的第二個 Load Balancer，將 VM 新增到第二個 Load Balancer 的後端集區，然後僅定義[連出規則](../../../load-balancer/load-balancer-outbound-connections.md#outboundrules) \(部分機器翻譯\)。  
+使用[網路安全性群組](../../../virtual-network/security-overview.md) \(部分機器翻譯\) 以控制來自 VM 的輸出呼叫可存取的公用端點。  
+如需詳細資訊，請參閱[輸出連線](../../../load-balancer/load-balancer-outbound-connections.md#scenarios) \(部分機器翻譯\) 文件中的案例 2。  
 該設定看起來會像這樣：  
 
 ![使用網路安全性群組來控制對公用端點的連線能力](./media/high-availability-guide-standard-load-balancer/high-availability-guide-standard-load-balancer-public.png)
@@ -81,11 +81,11 @@ SAP 系統通常會包含敏感性的商務資料。 此情況通常無法讓裝
 ### <a name="important-considerations"></a>重要考量︰
 
 - 您可以針對位於相同子網路中的多部 VM，使用一個額外的公用 Load Balancer 來達成對公用端點的輸出連線能力，並將成本最佳化  
-- 使用[網路安全性群組](https://docs.microsoft.com/azure/virtual-network/security-overview) \(部分機器翻譯\) 以控制可以從 VM 存取的公用端點。 您可以將網路安全性群組指派到子網路，或是指派到每部 VM。 可能的話，請使用[服務標籤](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) \(部分機器翻譯\) 來減少安全性規則的複雜度。  
+- 使用[網路安全性群組](../../../virtual-network/security-overview.md) \(部分機器翻譯\) 以控制可以從 VM 存取的公用端點。 您可以將網路安全性群組指派到子網路，或是指派到每部 VM。 可能的話，請使用[服務標籤](../../../virtual-network/security-overview.md#service-tags) \(部分機器翻譯\) 來減少安全性規則的複雜度。  
 - 具有公用 IP 位址及連出規則的 Azure Standard Load Balancer，允許對公用端點進行直接存取。 如果您有公司安全性需求，必須讓所有連出流量通過集中式的公司解決方案以進行稽核和記錄，您可能無法使用此案例來滿足該需求。  
 
 >[!TIP]
->可能的話，請使用[服務標籤](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) \(部分機器翻譯\) 來減少網路安全性群組的複雜度。 
+>可能的話，請使用[服務標籤](../../../virtual-network/security-overview.md#service-tags) \(部分機器翻譯\) 來減少網路安全性群組的複雜度。 
 
 ### <a name="deployment-steps"></a>部署步驟
 
@@ -100,7 +100,7 @@ SAP 系統通常會包含敏感性的商務資料。 此情況通常無法讓裝
 2. 建立後端集區 **MyBackendPoolOfPublicILB** 並新增 VM。  
    1. 選取虛擬網路  
    1. 選取 VM 及其 IP 位址，並將其新增至後端集區  
-3. [建立連出規則](https://docs.microsoft.com/azure/load-balancer/configure-load-balancer-outbound-cli#create-outbound-rule) \(部分機器翻譯\)。 目前並無法從 Azure 入口網站建立連出規則。 您可以使用 [Azure CLI](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest) \(部分機器翻譯\) 來建立連出規則。  
+3. [建立連出規則](../../../load-balancer/configure-load-balancer-outbound-cli.md#create-outbound-rule) \(部分機器翻譯\)。 目前並無法從 Azure 入口網站建立連出規則。 您可以使用 [Azure CLI](../../../cloud-shell/overview.md?view=azure-cli-latest) \(部分機器翻譯\) 來建立連出規則。  
 
    ```azurecli
     az network lb outbound-rule create --address-pool MyBackendPoolOfPublicILB --frontend-ip-configs MyPublicILBFrondEndIP --idle-timeout 30 --lb-name MyPublicILB --name MyOutBoundRules  --outbound-ports 10000 --enable-tcp-reset true --protocol All --resource-group MyResourceGroup
@@ -117,13 +117,13 @@ SAP 系統通常會包含敏感性的商務資料。 此情況通常無法讓裝
 
    ![使用具有公用 IP 的第二個 Load Balancer 進行輸出連線](./media/high-availability-guide-standard-load-balancer/high-availability-guide-standard-load-balancer-network-security-groups.png)
 
-   如需 Azure 網路安全性群組的詳細資訊，請參閱[安全性群組](https://docs.microsoft.com/azure/virtual-network/security-overview) \(部分機器翻譯\)。 
+   如需 Azure 網路安全性群組的詳細資訊，請參閱[安全性群組](../../../virtual-network/security-overview.md) \(部分機器翻譯\)。 
 
 ## <a name="azure-firewall-for-outbound-connections-to-internet"></a>透過 Azure 防火牆來對網際網路進行輸出連線
 
 在不允許公用端點對 VM 之輸入連線能力的情況下，達成對公用端點之輸出連線能力的另一個選項，便是使用 Azure 防火牆。 Azure 防火牆是受管理的服務，其具有內建的高可用性，且可以橫跨多個可用性區域。  
-您也必須部署[使用者定義路由](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#custom-routes) \(部分機器翻譯\)，與 VM 和 Azure Load Balancer 部署所在的子網路建立關聯，並指向 Azure 防火牆，才能透過 Azure 防火牆路由流量。  
-如需如何部署 Azure 防火牆的詳細資料，請參閱[部署和設定 Azure 防火牆](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)。  
+您也必須部署[使用者定義路由](../../../virtual-network/virtual-networks-udr-overview.md#custom-routes) \(部分機器翻譯\)，與 VM 和 Azure Load Balancer 部署所在的子網路建立關聯，並指向 Azure 防火牆，才能透過 Azure 防火牆路由流量。  
+如需如何部署 Azure 防火牆的詳細資料，請參閱[部署和設定 Azure 防火牆](../../../firewall/tutorial-firewall-deploy-portal.md)。  
 
 架構如下所示：
 
@@ -137,7 +137,7 @@ SAP 系統通常會包含敏感性的商務資料。 此情況通常無法讓裝
 - 如果公司防火牆解決方案不是 Azure 防火牆，且您具有需要讓所有連出流量通過集中式公司解決方案的安全性需求，則此解決方案可能不實際。  
 
 >[!TIP]
->可能的話，請使用[服務標籤](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) \(部分機器翻譯\) 來減少 Azure 防火牆規則的複雜度。  
+>可能的話，請使用[服務標籤](../../../virtual-network/security-overview.md#service-tags) \(部分機器翻譯\) 來減少 Azure 防火牆規則的複雜度。  
 
 ### <a name="deployment-steps"></a>部署步驟
 
@@ -229,5 +229,5 @@ SAP 系統通常會包含敏感性的商務資料。 此情況通常無法讓裝
 
 ## <a name="next-steps"></a>後續步驟
 
-* [了解如何在 Azure 中於 SUSE 上設定 Pacemaker](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) \(部分機器翻譯\)
-* [了解如何在 Azure 中於 Red Hat 上設定 Pacemaker](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker) \(部分機器翻譯\)
+* [了解如何在 Azure 中於 SUSE 上設定 Pacemaker](./high-availability-guide-suse-pacemaker.md) \(部分機器翻譯\)
+* [了解如何在 Azure 中於 Red Hat 上設定 Pacemaker](./high-availability-guide-rhel-pacemaker.md) \(部分機器翻譯\)

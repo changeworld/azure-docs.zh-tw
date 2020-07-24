@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: ffbc850c580daee5890f9c75021cc518918d098e
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 073a92f07d17614cb386c5c33a8058af9b59aaea
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86145384"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084070"
 ---
 # <a name="set-up-a-connection-to-an-azure-storage-account-using-a-managed-identity-preview"></a>使用受控識別來設定與 Azure 儲存體帳戶的連線 (預覽)
 
@@ -53,17 +53,19 @@ ms.locfileid: "86145384"
     ![新增角色指派](./media/search-managed-identities/add-role-assignment-storage.png "新增角色指派")
 
 4. 根據您想要編制索引的儲存體帳戶類型，選取適當的角色：
-    1. Azure Blob 儲存體會要求您將搜尋服務新增至**讀者及資料存取**和**儲存體 Blob 資料讀者**角色。
-    1. Azure Data Lake Storage Gen2 會要求您將搜尋服務新增至**讀者及資料存取**和**儲存體 Blob 資料讀者**角色。
-    1. Azure 資料表儲存體會要求您只將搜尋服務新增至**讀者及資料存取**角色。
+    1. Azure Blob 儲存體會要求您將搜尋服務新增至**儲存體 Blob 資料讀取器**角色。
+    1. Azure Data Lake Storage Gen2 需要您將搜尋服務新增至**儲存體 Blob 資料讀取器**角色。
+    1. Azure 表格儲存體會要求您將搜尋服務新增至 [**讀取器] 和 [資料存取**] 角色。
 5.  將 [存取權指派對象為] 保留為 [Azure AD 使用者、群組或服務主體]
 6.  搜尋並選取您的搜尋服務，然後選取 [儲存]
 
+    Azure Blob 儲存體和 Azure Data Lake Storage Gen2 的範例：
+
+    ![新增儲存體 Blob 資料讀者角色指派](./media/search-managed-identities/add-role-assignment-storage-blob-data-reader.png "新增儲存體 Blob 資料讀者角色指派")
+
+    Azure 資料表儲存體的範例：
+
     ![新增讀者及資料存取角色指派](./media/search-managed-identities/add-role-assignment-reader-and-data-access.png "新增讀者及資料存取角色指派")
-
-請注意，當連線到 Azure Blob 儲存體和 Azure Data Lake Storage Gen2 時，您也必須新增**儲存體 Blob 資料讀者**角色指派。
-
-![新增儲存體 Blob 資料讀者角色指派](./media/search-managed-identities/add-role-assignment-storage-blob-data-reader.png "新增儲存體 Blob 資料讀者角色指派")
 
 ### <a name="3---create-the-data-source"></a>3 - 建立資料來源
 

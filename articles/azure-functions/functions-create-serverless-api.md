@@ -6,17 +6,18 @@ ms.topic: conceptual
 ms.date: 04/27/2020
 ms.author: mahender
 ms.custom: mvc
-ms.openlocfilehash: 5607a737fa4616d4eda3d174144c1717125f4181
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 440eb1f39284f8d99a8d6b9067b018c4a54fcd27
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83122763"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083016"
 ---
 # <a name="customize-an-http-endpoint-in-azure-functions"></a>在 Azure Functions 中自訂 HTTP 端點
 
 在本文中，您將瞭解 Azure Functions 如何讓您建立可高度擴充的 Api。 Azure Functions 隨附內建 HTTP 觸發程式和系結的集合，可讓您輕鬆地以各種語言（包括 Node.js、c # 等）撰寫端點。 在本文中，您將自訂 HTTP 觸發程式來處理 API 設計中的特定動作。 您也會將它與 Azure Functions Proxy 和設定模擬 Api 的整合，來準備增加您的 API。 這些工作是在無伺服器計算環境的最上層完成，因此您不必擔心調整資源，只需專注于您的 API 邏輯即可。
 
-## <a name="prerequisites"></a>必要條件 
+## <a name="prerequisites"></a>先決條件 
 
 [!INCLUDE [Previous quickstart note](../../includes/functions-quickstart-previous-topics.md)]
 
@@ -46,7 +47,7 @@ ms.locfileid: "83122763"
 
 1. 選取 [儲存]。
 
-如需自訂 HTTP 函數的詳細資訊，請參閱[AZURE FUNCTIONS HTTP](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook)系結。
+如需自訂 HTTP 函數的詳細資訊，請參閱[AZURE FUNCTIONS HTTP](./functions-bindings-http-webhook.md)系結。
 
 ### <a name="test-your-api"></a>測試您的 API
 
@@ -73,8 +74,8 @@ ms.locfileid: "83122763"
 
 Proxy 可以指向任何 HTTP 資源，例如︰
 - Azure Functions 
-- [Azure App Service](https://docs.microsoft.com/azure/app-service/overview) 中的 API 應用程式
-- [Linux 上的 App Service](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-intro) 中的 Docker 容器
+- [Azure App Service](../app-service/overview.md) 中的 API 應用程式
+- [Linux 上的 App Service](../app-service/containers/app-service-linux-intro.md) 中的 Docker 容器
 - 其他任何裝載 API
 
 若要深入了解 Proxy，請參閱[使用 Azure Functions Proxy]。
@@ -85,7 +86,7 @@ Proxy 可以指向任何 HTTP 資源，例如︰
 
 ### <a name="setting-up-the-frontend-environment"></a>設定前端環境
 
-重複[建立函式應用程式](https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function#create-a-function-app)的步驟建立新的函式應用程式，您將在其中建立您的 Proxy。 這個新應用程式的 URL 會作為我們 API 的前端，而您先前編輯的函式應用程式會作為後端。
+重複[建立函式應用程式](./functions-create-first-azure-function.md#create-a-function-app)的步驟建立新的函式應用程式，您將在其中建立您的 Proxy。 這個新應用程式的 URL 會作為我們 API 的前端，而您先前編輯的函式應用程式會作為後端。
 
 1. 在入口網站中瀏覽至新的前端函式應用程式。
 1. 選取 [平台功能]****，然後選擇 [應用程式設定]****。
@@ -106,7 +107,7 @@ Proxy 可以指向任何 HTTP 資源，例如︰
 
     | 欄位 | 範例值 | 描述 |
     |---|---|---|
-    | Name | HelloProxy | 僅用於管理的易記名稱 |
+    | 名稱 | HelloProxy | 僅用於管理的易記名稱 |
     | 路由範本 | /api/remotehello | 決定使用什麼路由來叫用此 Proxy |
     | 後端 URL | https://%HELLO_HOST%/api/hello | 指定端點，而其要求應該透過代理 |
 
@@ -125,7 +126,7 @@ Proxy 可以指向任何 HTTP 資源，例如︰
 
 為了建立此模擬 API，我們將建立新的 proxy，這次使用[App Service 編輯器](https://github.com/projectkudu/kudu/wiki/App-Service-Editor)。 若要開始，請在入口網站中瀏覽至您的函式應用程式。 選取 [**平臺功能**]，然後在 [**開發工具**] 下尋找**App Service 編輯器**]。 App Service 編輯器會在新的索引標籤中開啟。
 
-在左側導覽中，選取 `proxies.json`。 這個檔案會儲存所有 proxy 的設定。 如果您使用其中一個函式[部署方法](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment)，您可以在原始檔控制中維護這個檔案。 若要深入了解此檔案，請參閱 [Proxy 進階組態](https://docs.microsoft.com/azure/azure-functions/functions-proxies#advanced-configuration)。
+在左側導覽中，選取 `proxies.json`。 這個檔案會儲存所有 proxy 的設定。 如果您使用其中一個函式[部署方法](./functions-continuous-deployment.md)，您可以在原始檔控制中維護這個檔案。 若要深入了解此檔案，請參閱 [Proxy 進階組態](./functions-proxies.md#advanced-configuration)。
 
 如果您到目前為止已遵循，則您的 proxies.js應該如下所示：
 
@@ -179,7 +180,7 @@ Proxy 可以指向任何 HTTP 資源，例如︰
 }
 ```
 
-此程式碼 `GetUserByName` 會新增不含屬性的新 proxy `backendUri` 。 它會使用回應覆寫修改 Proxy 的預設回應，而不是呼叫另一個資源。 要求和回應覆寫也可以搭配後端 URL 一起使用。 當 proxy 處理舊版系統時，這項技術特別有用，因為您可能需要修改標頭、查詢參數等等。 若要深入了解要求和回應覆寫，請參閱[在 Proxy 中修改要求和回應](https://docs.microsoft.com/azure/azure-functions/functions-proxies)。
+此程式碼 `GetUserByName` 會新增不含屬性的新 proxy `backendUri` 。 它會使用回應覆寫修改 Proxy 的預設回應，而不是呼叫另一個資源。 要求和回應覆寫也可以搭配後端 URL 一起使用。 當 proxy 處理舊版系統時，這項技術特別有用，因為您可能需要修改標頭、查詢參數等等。 若要深入了解要求和回應覆寫，請參閱[在 Proxy 中修改要求和回應](./functions-proxies.md)。
 
 使用瀏覽器或您最愛的 REST 用戶端呼叫 `<YourProxyApp>.azurewebsites.net/api/users/{username}` 端點，以測試您的模擬 API。 請務必以代表使用者名稱的字串值取代 _{username}_。
 
@@ -189,10 +190,10 @@ Proxy 可以指向任何 HTTP 資源，例如︰
 
 進一步開發您的 API 時，下列參考可能很有幫助︰
 
-- [Azure Functions HTTP 繫結](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook)
+- [Azure Functions HTTP 繫結](./functions-bindings-http-webhook.md)
 - [使用 Azure Functions Proxy]
-- [定義 Azure Functions API (預覽)](https://docs.microsoft.com/azure/azure-functions/functions-api-definition-getting-started)
+- [定義 Azure Functions API (預覽)](./functions-openapi-definition.md)
 
 
-[Create your first function]: https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function
-[使用 Azure Functions Proxy]: https://docs.microsoft.com/azure/azure-functions/functions-proxies
+[Create your first function]: ./functions-create-first-azure-function.md
+[使用 Azure Functions Proxy]: ./functions-proxies.md

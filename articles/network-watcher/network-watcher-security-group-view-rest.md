@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 3bf3086d255a6aacfe4001879b3a3f00df2ba219
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 466879daae65b8c7fa896b0ead417c8d5eb51e28
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738717"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084325"
 ---
 # <a name="analyze-your-virtual-machine-security-with-security-group-view-using-rest-api"></a>使用 REST API，利用安全性群組檢視分析虛擬機器的安全性
 
@@ -25,6 +25,9 @@ ms.locfileid: "84738717"
 > - [PowerShell](network-watcher-security-group-view-powershell.md)
 > - [Azure CLI](network-watcher-security-group-view-cli.md)
 > - [REST API](network-watcher-security-group-view-rest.md)
+
+> [!NOTE]
+> 安全性群組視圖 API 已不再維護，即將淘汰。 請使用可提供相同功能的「[有效安全性規則」功能](https://docs.microsoft.com/azure/network-watcher/network-watcher-security-group-view-overview)。 
 
 安全性群組檢視會傳回套用至虛擬機器之已設定且有效的網路安全性規則。 這項功能可用來稽核及診斷 VM 所設定的網路安全性群組和規則，以確保會正確允許或拒絕流量。 在本文中，我們會說明如何使用 REST API 來擷取有效且已套用至虛擬機器的安全性規則
 
@@ -37,7 +40,7 @@ ms.locfileid: "84738717"
 
 此案例假設您已依照[建立網路監看員](network-watcher-create.md)中的步驟建立網路監看員。 此案例也假設已有具有有效虛擬機器的資源群組可供使用。
 
-## <a name="scenario"></a>狀況
+## <a name="scenario"></a>案例
 
 本文涵蓋的案例會擷取有效且已套用指定虛擬機器的安全性規則。
 

@@ -3,11 +3,12 @@ title: Azure 服務匯流排重複訊息偵測 | Microsoft 文件
 description: 本文說明如何偵測 Azure 服務匯流排訊息中的重複專案。 可以忽略和捨棄重複的訊息。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: c8935fa67dda28bb2fec663c5e714982933f0f22
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dbca1b4b4f894d35835e7d37e0b4e742a2d3b917
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85337899"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083883"
 ---
 # <a name="duplicate-detection"></a>重複偵測
 
@@ -32,7 +33,7 @@ ms.locfileid: "85337899"
 
 在入口網站中，於建立實體時勾選 [啟用重複偵測]**** 核取方塊可開啟該功能 (預設為關閉)。 建立新主題的設定也是如此。
 
-![][1]
+![[建立佇列] 對話方塊的螢幕擷取畫面，其中已選取 [啟用重複偵測] 選項，並以紅色概述。][1]
 
 > [!IMPORTANT]
 > 您無法在已建立佇列之後啟用/停用重複偵測。 您只能在佇列建立期間這麼做。 
@@ -41,7 +42,7 @@ ms.locfileid: "85337899"
 
 佇列和主題的重複偵測時間記錄預設為 30 秒，最大值為七天。 您可以在 Azure 入口網站的佇列和主題屬性視窗中變更這項設定。
 
-![][2]
+![已反白顯示 [屬性] 設定的 [服務匯流排] 功能的螢幕擷取畫面，而 [重複偵測記錄] 選項則以紅色概述。][2]
 
 從程式設計方面來說，您可以使用 [QueueDescription.DuplicateDetectionHistoryTimeWindow](/dotnet/api/microsoft.servicebus.messaging.queuedescription.duplicatedetectionhistorytimewindow#Microsoft_ServiceBus_Messaging_QueueDescription_DuplicateDetectionHistoryTimeWindow) 屬性搭配完整的 .NET Framework API，設定保留訊息識別碼之重複偵測時間範圍的大小。 透過 Azure Resource Manager API，您可以使用 [queueProperties.duplicateDetectionHistoryTimeWindow](/azure/templates/microsoft.servicebus/namespaces/queues#property-values) 屬性設定值。
 

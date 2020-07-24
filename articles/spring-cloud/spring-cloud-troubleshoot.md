@@ -6,11 +6,13 @@ ms.service: spring-cloud
 ms.topic: troubleshooting
 ms.date: 11/04/2019
 ms.author: brendm
-ms.openlocfilehash: db5363c5d8adaf29e2c460d9ce36afa2d29ae8e7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-java
+ms.openlocfilehash: b7b3236fe1e4052689657316df851753de7edbe5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791651"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083679"
 ---
 # <a name="troubleshoot-common-azure-spring-cloud-issues"></a>針對常見的 Azure 春季雲端問題進行疑難排解
 
@@ -106,7 +108,7 @@ ms.locfileid: "84791651"
 * 訂用帳戶是作用中狀態。
 * Azure 春季雲端[支援](spring-cloud-faq.md)此位置。
 * 已經建立執行個體的資源群組。
-* 資源名稱符合命名規則。 它必須只包含小寫字母、數位和連字號。 第一個字元必須是字母。 最後一個字元必須是字母或數字。 此值必須包含2到32個字元。
+* 資源名稱符合命名規則。 它必須只包含小寫字母、數位和連字號。 第一個字元必須是字母。 最後一個字元必須是字母或數位。 此值必須包含2到32個字元。
 
 如果您想要使用 Resource Manager 範本來設定 Azure 春季雲端服務實例，請先參閱[瞭解 Azure Resource Manager 範本的結構和語法](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates)。
 
@@ -157,7 +159,7 @@ Azure 春季雲端服務實例的名稱將用於要求底下的子功能變數�
 > [!WARNING]
 > 此程式會使用您的測試端點來公開您的環境變數。  如果您的測試端點可公開存取，或您已將網域名稱指派給您的應用程式，則請勿繼續執行該作業。
 
-1. 移至 `https://<your application test endpoint>/actuator/health`。  
+1. 前往 `https://<your application test endpoint>/actuator/health`。  
     - 類似於 `{"status":"UP"}` 的回應會指出端點已啟用。
     - 如果回應是負數，請在您的*POM.xml*檔案中包含下列相依性：
 
@@ -172,7 +174,7 @@ Azure 春季雲端服務實例的名稱將用於要求底下的子功能變數�
 
 1. 重新啟動您的應用程式。
 
-1. 移至 `https://<your application test endpoint>/actuator/env` 並檢查回應。  它看起來應該如下所示：
+1. 移至 `https://<your application test endpoint>/actuator/env` 並檢查回應。  它看起來應該像這樣：
 
     ```json
     {

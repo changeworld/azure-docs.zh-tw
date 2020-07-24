@@ -7,11 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 02/26/2020
 ms.author: yushwang
-ms.openlocfilehash: a8a4ba7ea3de9140d79856fad9d5d0bc42cf4c51
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7fb344e16ed672dfc6c88fbe2c4888c52c9b717d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84984618"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081979"
 ---
 # <a name="connect-azure-vpn-gateways-to-multiple-on-premises-policy-based-vpn-devices-using-powershell"></a>使用 PowerShell 將 Azure VPN 閘道連線至多個內部部署以原則為基礎的 VPN 裝置
 
@@ -21,8 +22,8 @@ ms.locfileid: "84984618"
 
 以原則為基礎*的路由式 VPN 裝置與在*連接上設定 IPsec 流量選取器的方式不同：
 
-* **以原則為基礎的** VPN 裝置使用這兩個網路的前置詞組合，定義如何透過 IPsec 通道來加密/解密流量。 它通常內建在執行封包篩選的防火牆裝置上。 IPsec 通道加密和解密會新增至封包篩選和處理引擎。
-* **以路由為基礎的** VPN 裝置使用任何對任何 (萬用字元) 流量選取器，並讓路由/轉接資料表將流量導向到不同 IPsec 通道。 它通常內建在路由器平台上，其中，每個 IPsec 通道都會建模為網路介面或 VTI (虛擬通道介面)。
+* 以**原則為基礎**VPN 裝置使用這兩個網路的前置片語合，定義如何透過 IPsec 通道來加密/解密流量。 它通常內建在執行封包篩選的防火牆裝置上。 IPsec 通道加密和解密會新增至封包篩選和處理引擎。
+* 以**路由為基礎**VPN 裝置使用任何對任何（萬用字元）流量選取器，並讓路由/轉送資料表將流量導向至不同的 IPsec 通道。 它通常內建在路由器平台上，其中，每個 IPsec 通道都會建模為網路介面或 VTI (虛擬通道介面)。
 
 下列各圖反白顯示兩個模型：
 
@@ -35,8 +36,8 @@ ms.locfileid: "84984618"
 ### <a name="azure-support-for-policy-based-vpn"></a>以原則為基礎的 VPN 的 Azure 支援
 Azure 目前支援兩種 VPN 閘道模式：以路由為基礎的 VPN 閘道和以原則為基礎的 VPN 閘道。 它們內建在不同內部平台上，因而導致不同的規格：
 
-|                          | **PolicyBased VPN 閘道** | **RouteBased VPN 閘道**       |**RouteBased VPN 閘道**                          |
-| ---                      | ---                         | ---                              |---                                                 |
+| 類別 | PolicyBased VPN 閘道 | RouteBased VPN 閘道 | RouteBased VPN 閘道 |
+| -------- | ----------------------- | ---------------------- | ---------------------- |---                                                 |
 | **Azure 閘道 SKU**    | 基本                       | 基本                            | VpnGw1、VpnGw2、VpnGw3、VpnGw4、VpnGw5  |
 | **IKE 版本**          | IKEv1                       | IKEv2                            | IKEv1 和 IKEv2                         |
 | **讀數.S2S 連線** | **1**                       | 10                               | 30                     |
@@ -204,6 +205,6 @@ Azure 目前支援兩種 VPN 閘道模式：以路由為基礎的 VPN 閘道和�
       ```
 
 ## <a name="next-steps"></a>後續步驟
-一旦完成您的連接，就可以將虛擬機器加入您的虛擬網路。 請參閱 [建立網站的虛擬機器](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 以取得相關步驟。
+一旦完成您的連接，就可以將虛擬機器加入您的虛擬網路。 請參閱 [建立網站的虛擬機器](../virtual-machines/windows/quick-create-portal.md) 以取得相關步驟。
 
 如需自訂 IPsec/IKE 原則的詳細資訊，也請檢閱[設定 S2S VPN 或 VNet 對 VNet 連線的 IPsec/IKE 原則](vpn-gateway-ipsecikepolicy-rm-powershell.md)。

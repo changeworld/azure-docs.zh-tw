@@ -3,11 +3,12 @@ title: 使用 Visual Studio Code 開發 Azure Functions
 description: 瞭解如何使用適用于 Visual Studio Code 的 Azure Functions 延伸模組來開發和測試 Azure Functions。
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 459162c277a9510297580a99acb8a88b0702a290
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d8ccb93013b16fc919630251aa02edf48e30ce6d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84732460"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083118"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>使用 Visual Studio Code 開發 Azure Functions
 
@@ -37,7 +38,7 @@ Azure Functions 延伸模組提供下列優點：
 > [!IMPORTANT]
 > 請勿混用單一函式應用程式的本機開發與入口網站開發。 當您從本機專案發佈至函式應用程式時，部署程序將會覆寫您在入口網站開發的任何函式。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 在您安裝並執行 Visual Studio Code 的[Azure Functions 延伸]模組[Azure Functions 延伸]模組之前，您必須符合下列需求：
 
@@ -185,11 +186,11 @@ Visual Studio Code 可讓您遵循一組方便的提示，將系結新增至檔�
 
 以下是定義新儲存體輸出系結的範例提示：
 
-| Prompt | 值 | 說明 |
+| 提示 | 值 | 描述 |
 | -------- | ----- | ----------- |
 | **選取繫結方向** | `out` | 此繫結為輸出繫結。 |
 | **選取具有方向的系結** | `Azure Queue Storage` | 此繫結是 Azure 儲存體佇列繫結。 |
-| **用來在程式碼中識別此繫結的名稱** | `msg` | 識別您的程式碼中參考之繫結參數的名稱。 |
+| **用來在程式碼中識別此系結的名稱** | `msg` | 識別您的程式碼中參考之繫結參數的名稱。 |
 | **要接收訊息的佇列** | `outqueue` | 作為繫結寫入目標的佇列名稱。 當 *queueName* 不存在，繫結會在第一次使用時加以建立。 |
 | **從 [local.settings.js開啟] 選取設定** | `MyStorageConnection` | 應用程式設定的名稱，其中包含儲存體帳戶的連接字串。 此 `AzureWebJobsStorage` 設定包含您使用函數應用程式所建立之儲存體帳戶的連接字串。 |
 
@@ -249,11 +250,11 @@ Visual Studio Code 可讓您將函式專案直接發行至 Azure。 在這過程
 
 1. 依照提示進行，提供下列資訊：
 
-    | Prompt | 值 | 說明 |
+    | 提示 | 值 | 描述 |
     | ------ | ----- | ----------- |
     | 選取 Azure 中的函數應用程式 | 在 Azure 中建立新的函數應用程式 | 在下一個提示中，輸入可識別新函數應用程式的全域唯一名稱，然後選取 Enter。 函式應用程式名稱的有效字元為 `a-z`、`0-9` 和 `-`。 |
     | 選取作業系統 | Windows | 函數應用程式會在 Windows 上執行。 |
-    | 選取主控方案 | 取用方案 | 使用「無伺服器取用[方案」裝載](functions-scale.md#consumption-plan)。 |
+    | 選取主控方案 | 使用情況方案 | 使用「無伺服器取用[方案」裝載](functions-scale.md#consumption-plan)。 |
     | 為新的應用程式選取執行時間 | 您的專案語言 | 執行時間必須符合您要發行的專案。 |
     | 為新資源選取資源群組 | 建立新的資源群組 | 在下一個提示中，輸入資源組名（例如 `myResourceGroup` ），然後選取 enter。 您也可以選取現有的資源群組。 |
     | 選取儲存體帳戶 | 建立新的儲存體帳戶 | 在下一個提示中，輸入函數應用程式所使用之新儲存體帳戶的全域唯一名稱，然後選取 Enter 鍵。 儲存體帳戶名稱的長度必須介於3到24個字元之間，而且只能包含數位和小寫字母。 您也可以選取現有的帳戶。 |
@@ -292,9 +293,9 @@ Azure Functions 擴充功能可讓您在本機開發電腦上執行函式專案�
 
 * 安裝所選語言的特定需求：
 
-    | 語言 | 需求 |
+    | Language | 需求 |
     | -------- | --------- |
-    | **C#** | [C# 擴充功能](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)<br/>[.NET Core CLI 工具](https://docs.microsoft.com/dotnet/core/tools/?tabs=netcore2x)   |
+    | **C#** | [C# 擴充功能](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)<br/>[.NET Core CLI 工具](/dotnet/core/tools/?tabs=netcore2x)   |
     | **Java** | [JAVA 擴充功能的偵錯工具](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug)<br/>[Java 8](https://aka.ms/azure-jdks)<br/>[Maven 3 或更新版本](https://maven.apache.org/) |
     | **JavaScript** | [Node.js](https://nodejs.org/)<sup>*</sup> |  
     | **Python** | [Python 延伸模組](https://marketplace.visualstudio.com/items?itemName=ms-python.python)<br/>建議使用[Python 3.6.8](https://www.python.org/downloads/)|
@@ -408,7 +409,7 @@ HTTP 觸發程式的要求 URL 會顯示在終端機的輸出中。 當專案在
 
 Azure Functions 延伸模組會在區域中提供有用的圖形化介面，以便與 Azure 中的函數應用程式互動。 相同的功能也可以在命令選擇區（F1）中做為命令。 這些 Azure Functions 命令可供使用：
 
-|Azure Functions 命令  | Description  |
+|Azure Functions 命令  | 描述  |
 |---------|---------|
 |**加入新的設定**  |  在 Azure 中建立新的應用程式設定。 若要深入瞭解，請參閱[發行應用程式設定](#publish-application-settings)。 您可能也需要將[此設定下載到本機設定](#download-settings-from-azure)。 |
 | **設定部署來源** | 將 Azure 中的函數應用程式連接至本機 Git 存放庫。 若要深入瞭解，請參閱[Azure Functions 的持續部署](functions-continuous-deployment.md)。 |
@@ -447,5 +448,5 @@ Azure Functions 延伸模組會在區域中提供有用的圖形化介面，以�
 
 若要深入了解如何將函式開發為 .NET 類別庫，請參閱 [Azure Functions C# 開發人員參考](functions-dotnet-class-library.md)。 本文也提供範例的連結，說明如何使用屬性來宣告 Azure Functions 所支援的各種系結類型。
 
-[Visual Studio Code 的 Azure Functions 延伸模組]: https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions
+[適用於 Visual Studio Code 的 Azure Functions 擴充功能]: https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions \(英文\)
 [Azure Functions Core Tools]: functions-run-local.md

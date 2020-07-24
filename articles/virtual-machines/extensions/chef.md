@@ -13,11 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 09/21/2018
 ms.author: akjosh
-ms.openlocfilehash: a21b8f2fea7433e9f65fd790321a28ea47a38c79
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9391bb4867717b6780b50cf90b998254227d2310
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76544713"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082608"
 ---
 # <a name="chef-vm-extension-for-linux-and-windows"></a>適用於 Linux 和 Windows 的 Chef VM Extension
 
@@ -75,7 +76,7 @@ Chef VM Extension 需要目標虛擬機器連線至網際網路，才能夠從�
 
 ### <a name="settings"></a>設定
 
-| 名稱 | 值 / 範例 | 資料類型 | 必要項？
+| 名稱 | 值 / 範例 | 資料類型 | 必要？
 | ---- | ---- | ---- | ----
 | settings/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | 字串 (url) | Y |
 | settings/bootstrap_options/validation_client_name | `myorg-validator` | 字串 | Y |
@@ -83,7 +84,7 @@ Chef VM Extension 需要目標虛擬機器連線至網際網路，才能夠從�
 
 ### <a name="protected-settings"></a>受保護的設定
 
-| Name | 範例 | 資料類型 | 必要項？
+| 名稱 | 範例 | 資料類型 | 必要？
 | ---- | ---- | ---- | ---- |
 | protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | 字串 | Y |
 
@@ -105,7 +106,7 @@ Chef VM Extension 需要目標虛擬機器連線至網際網路，才能夠從�
 
 您可以在[Azure 快速入門資源庫](https://github.com/Azure/azure-quickstart-templates/tree/master/chef-json-parameters-linux-vm)中找到包含 Chef VM 擴充功能的範例 Resource Manager 範本。
 
-虛擬機器擴充功能的 JSON 設定可以巢狀方式置於虛擬機器資源內部，或放在 Resource Manager JSON 範本的根目錄或最上層。 JSON 設定的放置會影響資源名稱和類型的值。 如需詳細資訊，請參閱[設定子資源的名稱和類型](../../azure-resource-manager/resource-manager-template-child-resource.md)。
+虛擬機器擴充功能的 JSON 設定可以巢狀方式置於虛擬機器資源內部，或放在 Resource Manager JSON 範本的根目錄或最上層。 JSON 設定的放置會影響資源名稱和類型的值。 如需詳細資訊，請參閱[設定子資源的名稱和類型](../../azure-resource-manager/templates/child-resource-name-type.md)。
 
 ## <a name="azure-cli-deployment"></a>Azure CLI 部署
 

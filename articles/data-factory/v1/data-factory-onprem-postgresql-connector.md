@@ -13,10 +13,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 37c83e77cadae002ff701a08c4b36a86f7cab9a0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79281232"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082829"
 ---
 # <a name="move-data-from-postgresql-using-azure-data-factory"></a>使用 Azure Data Factory 從 PostgreSQL 移動資料
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
@@ -31,7 +32,7 @@ ms.locfileid: "79281232"
 
 您可以將資料從內部部署的 PostgreSQL 資料存放區複製到任何支援的接收資料存放區。 如需複製活動所支援作為接收器的資料存放區清單，請參閱[支援的資料存放區](data-factory-data-movement-activities.md#supported-data-stores-and-formats)。 Data Factory 目前支援將資料從 PostgreSQL 資料庫移到其他資料存放區，而不支援將資料從其他資料存放區移到 PostgreSQL 資料庫。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 Data Factory 服務支援使用資料管理閘道器連接至內部部署 PostgreSQL 來源。 請參閱 [在內部部署位置與雲端之間移動資料](data-factory-move-data-between-onprem-and-cloud.md) 一文來了解資料管理閘道和設定閘道的逐步指示。
 
@@ -71,14 +72,14 @@ Data Factory 服務支援使用資料管理閘道器連接至內部部署 Postgr
 
 | 屬性 | 說明 | 必要 |
 | --- | --- | --- |
-| type |類型屬性必須設為： **OnPremisesPostgreSql** |Yes |
+| type |類型屬性必須設為： **OnPremisesPostgreSql** |是 |
 | 伺服器 |PostgreSQL 伺服器的名稱。 |是 |
-| [資料庫] |PostgreSQL 資料庫的名稱。 |Yes |
+| [資料庫] |PostgreSQL 資料庫的名稱。 |是 |
 | 結構描述 |在資料庫中的結構描述名稱。 結構描述名稱會區分大小寫。 |否 |
-| authenticationType |用來連接到 PostgreSQL 資料庫的驗證類型。 可能的值為：匿名、基本和 Windows。 |Yes |
-| username |如果您使用基本或 Windows 驗證，請指定使用者名稱。 |No |
-| 密碼 |指定您為使用者名稱所指定之使用者帳戶的密碼。 |No |
-| gatewayName |Data Factory 服務應該用來連接到內部部署 PostgreSQL 資料庫的閘道器名稱。 |Yes |
+| authenticationType |用來連接到 PostgreSQL 資料庫的驗證類型。 可能的值為：匿名、基本和 Windows。 |是 |
+| username |如果您使用基本或 Windows 驗證，請指定使用者名稱。 |否 |
+| 密碼 |指定您為使用者名稱所指定之使用者帳戶的密碼。 |否 |
+| gatewayName |Data Factory 服務應該用來連接到內部部署 PostgreSQL 資料庫的閘道器名稱。 |是 |
 
 ## <a name="dataset-properties"></a>資料集屬性
 如需定義資料集的區段和屬性完整清單，請參閱[建立資料集](data-factory-create-datasets.md)一文。 資料集 JSON 的結構、可用性和原則等區段類似於所有的資料集類型。
@@ -98,7 +99,7 @@ Data Factory 服務支援使用資料管理閘道器連接至內部部署 Postgr
 
 | 屬性 | 描述 | 允許的值 | 必要 |
 | --- | --- | --- | --- |
-| 查詢 |使用自訂查詢來讀取資料。 |SQL 查詢字串。 例如： `"query": "select * from \"MySchema\".\"MyTable\""` 。 |否 (如果已指定 **dataset** 的 **tableName**) |
+| 查詢 |使用自訂查詢來讀取資料。 |SQL 查詢字串。 例如：`"query": "select * from \"MySchema\".\"MyTable\""`。 |否 (如果已指定 **dataset** 的 **tableName**) |
 
 > [!NOTE]
 > 結構描述和資料表名稱會區分大小寫。 在查詢中以 `""` (雙引號) 括住它們。
@@ -308,33 +309,33 @@ Data Factory 服務支援使用資料管理閘道器連接至內部部署 Postgr
 | bigserial |serial8 |Int64 |
 | bit [(n)] | |Byte[]、String |
 | 位元不同 [ (n) ] |varbit |Byte[]、String |
-| boolean |bool |Boolean |
+| boolean |bool |布林值 |
 | 方塊 | |Byte[]、String |
 | bytea | |Byte[]、String |
-| character [(n)] |char [(n)] |String |
-| character varying [(n)] |varchar [(n)] |String |
-| cid | |String |
-| cidr | |String |
+| character [(n)] |char [(n)] |字串 |
+| character varying [(n)] |varchar [(n)] |字串 |
+| cid | |字串 |
+| cidr | |字串 |
 | 圓形 | |Byte[]、String |
 | date | |Datetime |
-| daterange | |String |
+| daterange | |字串 |
 | 雙精度 |float8 |Double |
 | inet | |Byte[]、String |
-| intarry | |String |
-| int4range | |String |
-| int8range | |String |
+| intarry | |字串 |
+| int4range | |字串 |
+| int8range | |字串 |
 | integer |int, int4 |Int32 |
 | interval [fields] [(p)] | |Timespan |
-| json | |String |
+| json | |字串 |
 | jsonb | |Byte[] |
 | line | |Byte[]、String |
 | lseg | |Byte[]、String |
 | macaddr | |Byte[]、String |
 | money | |Decimal |
 | numeric [(p, s)] |decimal [(p, s)] |Decimal |
-| numrange | |String |
+| numrange | |字串 |
 | oid | |Int32 |
-| 路徑 | |Byte[]、String |
+| path | |Byte[]、String |
 | pg_lsn | |Int64 |
 | 點 | |Byte[]、String |
 | 多邊形 | |Byte[]、String |
@@ -342,7 +343,7 @@ Data Factory 服務支援使用資料管理閘道器連接至內部部署 Postgr
 | SMALLINT |int2 |Int16 |
 | smallserial |serial2 |Int16 |
 | serial |serial4 |Int32 |
-| text | |String |
+| text | |字串 |
 
 ## <a name="map-source-to-sink-columns"></a>將來源對應到接收資料行
 若要了解如何將來源資料集內的資料行與接收資料集內的資料行對應，請參閱[在 Azure Data Factory 中對應資料集資料行](data-factory-map-columns.md)。

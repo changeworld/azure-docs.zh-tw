@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/01/2020
 ms.author: memildin
-ms.openlocfilehash: e8dc2edf19279aff05e5d5be6096505acf1b3438
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 66c8db580d0da29aa0be1193bf41b491f388e55a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519573"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083968"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure 資訊安全中心的新功能
 
@@ -33,8 +33,8 @@ Azure 安全性持續再開發改良。 為了讓您隨時掌握最新的開發�
 
 7月份的更新包括：
 - [Azure 儲存體的威脅防護已擴充為包含 Azure 檔案儲存體和 Azure Data Lake Storage Gen2 （預覽）](#threat-protection-for-azure-storage-expanded-to-include-azure-files-and-azure-data-lake-storage-gen2-preview)
+- [容器安全性改進-更快的登錄掃描和重新整理檔](#container-security-improvements---faster-registry-scanning-and-refreshed-documentation)
 - [適用于 SQL advanced data security 的六個原則已被取代](#six-policies-for-sql-advanced-data-security-deprecated)
-
 
 
 ### <a name="threat-protection-for-azure-storage-expanded-to-include-azure-files-and-azure-data-lake-storage-gen2-preview"></a>Azure 儲存體的威脅防護已擴充為包含 Azure 檔案儲存體和 Azure Data Lake Storage Gen2 （預覽）
@@ -44,6 +44,25 @@ Azure 儲存體的威脅防護會偵測 Azure 儲存體帳戶上可能有害的�
 您的資料可以受到保護，不論其儲存為 blob 容器、檔案共用或資料 lake。 
 
 深入瞭解[Azure 儲存體的威脅防護](threat-protection.md#threat-protection-for-azure-storage-)。
+
+
+### <a name="container-security-improvements---faster-registry-scanning-and-refreshed-documentation"></a>容器安全性改進-更快的登錄掃描和重新整理檔
+
+在容器安全性領域的持續投資中，我們很高興能在資訊安全中心的動態掃描 Azure Container Registry 儲存的容器映射方面，大幅改善效能。 掃描通常會在大約兩分鐘內完成。 在某些情況下，最多可能需要15分鐘的時間。
+
+為了改善 Azure 資訊安全中心的容器安全性功能的清楚和指導方針，我們也重新整理了容器安全性檔案頁面。 
+
+若要深入瞭解資訊安全中心的容器安全性，請閱讀下列文章：
+
+- [資訊安全中心的容器安全性功能總覽](https://docs.microsoft.com/azure/security-center/container-security)
+- [與 Azure Container Registry 整合的詳細資料](https://docs.microsoft.com/azure/security-center/azure-container-registry-integration)
+- [與 Azure Kubernetes Service 整合的詳細資料](https://docs.microsoft.com/azure/security-center/azure-kubernetes-service-integration)
+- [如何掃描您的登錄並強化 Docker 主機](https://docs.microsoft.com/azure/security-center/monitor-container-security)
+- [Azure Kubernetes Service 叢集威脅防護功能的安全性警示](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-akscluster)
+- [來自 Azure Kubernetes Service 主機威脅防護功能的安全性警示](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-containerhost)
+- [容器的安全性建議](https://docs.microsoft.com/azure/security-center/recommendations-reference#recs-containers)
+
+
 
 
 ### <a name="six-policies-for-sql-advanced-data-security-deprecated"></a>適用于 SQL advanced data security 的六個原則已被取代
@@ -230,14 +249,14 @@ Advanced data security 為您的 SQL 機器提供弱點評估和先進的威脅�
 
 - 建議您在 VM 上啟用 JIT 的建議已重新命名。 以前是「Just-In-Time 網路存取控制應套用在虛擬機器上」，現在是：「應使用 Just-In-Time 網路存取控制來保護虛擬機器的管理連接埠」。
 
-- 建議已設定為只有在有開啟的管理連接埠時才會觸發。
+- 只有在有開啟的管理埠時，才會觸發建議。
 
 深入瞭解 [JIT 存取功能](security-center-just-in-time.md)。
 
 
 ### <a name="custom-recommendations-have-been-moved-to-a-separate-security-control"></a>自訂建議已移至個別的安全性控制
 
-增強型安全分數所引進的其中一個安全性控制項是「實作安全性最佳做法」。 針對您的訂閱所建立的任何自訂建議都會自動放在該控制項中。 
+增強型安全分數所引進的一個安全性控制是「實施安全性最佳做法」。 針對您的訂閱所建立的任何自訂建議都會自動放在該控制項中。 
 
 為了讓您更輕鬆地找到您的自訂建議，我們已將其移至專用的安全性控制「自訂建議」。 此控制項不會影響您的安全分數。
 
@@ -260,7 +279,7 @@ Advanced data security 為您的 SQL 機器提供弱點評估和先進的威脅�
 
 ### <a name="expanded-security-control-implement-security-best-practices"></a>擴充的安全性控制「實作安全性最佳做法」 
 
-增強型安全分數所引進的其中一個安全性控制項是「實作安全性最佳做法」。 當此控制項中有建議時，不會影響到安全分數。 
+增強型安全分數所引進的一個安全性控制是「實施安全性最佳做法」。 當此控制項中有建議時，不會影響到安全分數。 
 
 在此更新中，有三個建議已移出原先放在其中的控制項，並新增至此最佳做法控制項。 我們已經採取此步驟，是因為我們判斷這三個建議的風險低於一開始所考慮的風險。
 

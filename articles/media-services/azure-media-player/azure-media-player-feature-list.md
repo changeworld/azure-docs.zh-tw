@@ -6,17 +6,18 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
-ms.openlocfilehash: e5595620a2f888b06ad5b35d2e8a008f23861463
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 41e090b9e1d4c091bd3972afd296c5751e6b8c58
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81727225"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082710"
 ---
 # <a name="feature-list"></a>功能清單 #
 以下是已測試的功能和不支援的功能清單：
 
-|                                         | 方 | 部分測試 | 經過 | 不支援 | 注意                                                                                                                |
-|:----------------------------------------|--------|------------------|----------|-------------|:---------------------------------------------------------------------------------------------------------------------|
+| 功能 | 方 | 部分測試 | 經過 | 不支援 | 注意 |
+| ------- | ------ | ---------------- | -------- | ----------- | ----- |
 | 播放                                |        |                  |          |             |                                                                                                                      |
 | 基本隨選播放                | X      |                  |          |             | 僅支援來自 Azure 媒體服務的資料流程                                                                      |
 | 基本即時播放                     | X      |                  |          |             | 僅支援來自 Azure 媒體服務的資料流程                                                                      |
@@ -30,7 +31,7 @@ ms.locfileid: "81727225"
 | Flash Fallback （FlashSS）                | X      |                  |          |             | 並非所有功能都可在此技術上取得。                                                                         |
 | Silverlight Fallback SilverlightSS      | X      |                  |          |             | 並非所有功能都可在此技術上取得。                                                                         |
 | 原生 HLS 傳遞（Html5）         |        | X                |          |             | 由於平臺限制，這種技術並非所有功能都可供使用。                                            |
-| 特性                                |        |                  |          |             |                                                                                                                      |
+| 功能                                |        |                  |          |             |                                                                                                                      |
 | API 支援                             | X      |                  |          |             | 查看已知問題清單                                                                                                |
 | 基本 UI                                | X      |                  |          |                                                                                                                                    |
 | 透過 JavaScript 初始化       | X      |                  |          |             |                                                                                                                      |

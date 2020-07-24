@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2020
 ms.author: memildin
-ms.openlocfilehash: 2ad817afd8f4e80e99055646dca34b9bb05d100f
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 1956090f1b927d9fd4e205eaa57bf1952cb1b070
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044306"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083985"
 ---
 # <a name="enhanced-secure-score-in-azure-security-center"></a>Azure 資訊安全中心中增強的安全分數
 
@@ -172,7 +172,7 @@ Azure 資訊安全中心有兩個主要目標：協助您瞭解目前的安全�
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">實作安全性最佳做法 (最高分數 0)</p></strong>現代的安全性最佳做法「假定」網路周邊有缺口。 基於這個理由，此控制項中的許多最佳做法都著重於管理身分識別。<br>遺失金鑰和認證是相當常見的問題。 <a href="https://docs.microsoft.com/azure/key-vault/key-vault-overview">Azure Key Vault</a> 藉由加密金鑰、.pfx 檔案、密碼來保護金鑰和秘密。<br>虛擬私人網路 (VPN) 是存取虛擬機器的安全方式。 如果沒有 VPN 可用 ，請使用複雜的密碼和雙重要素驗證，例如 <a href="https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks">Azure 多重要素驗證</a>。 雙重要素驗證可避免只依賴使用者名稱和密碼而固有的弱點。<br>使用增強式驗證和授權平台是另一個最佳做法。 使用同盟身分識別可讓組織將已授權身分的管理委派他人。 當員工離職，而必須撤銷他們的存取權時，這很重要。</td>
-    <td class="tg-lboi"; width=55%>- 應為您的訂用帳戶指定最多 3 位擁有者<br>- 應從您的訂用帳戶中移除具備讀取權限的外部帳戶<br>- 應為您的訂用帳戶中具有讀取權限的帳戶啟用 MFA<br>- 應限制存取具防火牆與虛擬網路設定的儲存體帳戶<br>- 除了 RootManageSharedAccessKey 外，應從事件中樞命名空間移除所有授權規則<br>- 應針為 SQL 伺服器佈建 Azure Active Directory 管理員<br>- 應定義事件中樞執行個體的授權規則<br>- 儲存體帳戶應移轉至新的 Azure Resource Manager 資源<br>- 虛擬機器應移轉至新的 Azure Resource Manager 資源<br>-SQL Database 的 Advanced data security 設定應該包含用來接收安全性警示的電子郵件地址<br>- 應啟用受控執行個體的進階資料安全性<br>-所有的先進威脅防護類型都應該在 SQL 受控執行個體 advanced data security 設定中啟用<br>- 在 SQL 伺服器的進階資料安全性設定中，應啟用傳給管理員和訂用帳戶擁有者的通知<br>- 在 SQL 伺服器的進階資料安全性設定中，進階威脅防護類型應設定為「全部」<br>- 子網路應該與網路安全性群組建立關聯<br>-您應在伺服器的 SQL Database advanced data security 設定中啟用所有的先進威脅防護類型<br>- [預覽] 應啟用 Windows 惡意探索防護 <br>- [預覽] 應安裝來賓設定代理程式<br>-非網際網路面向的虛擬機器應該使用網路安全性群組來保護</td>
+    <td class="tg-lboi"; width=55%>- 應為您的訂用帳戶指定最多 3 位擁有者<br>- 應從您的訂用帳戶中移除具備讀取權限的外部帳戶<br>- 應為您的訂用帳戶中具有讀取權限的帳戶啟用 MFA<br>- 應限制存取具防火牆與虛擬網路設定的儲存體帳戶<br>- 除了 RootManageSharedAccessKey 外，應從事件中樞命名空間移除所有授權規則<br>- 應針為 SQL 伺服器佈建 Azure Active Directory 管理員<br>- 應啟用受控執行個體的進階資料安全性<br>- 應定義事件中樞執行個體的授權規則<br>- 儲存體帳戶應移轉至新的 Azure Resource Manager 資源<br>- 虛擬機器應移轉至新的 Azure Resource Manager 資源<br>- 子網路應該與網路安全性群組建立關聯<br>- [預覽] 應啟用 Windows 惡意探索防護 <br>- [預覽] 應安裝來賓設定代理程式<br>-非網際網路面向的虛擬機器應該使用網路安全性群組來保護</td>
   </tr>
 </tbody>
 </table>
@@ -192,7 +192,7 @@ Azure 資訊安全中心有兩個主要目標：協助您瞭解目前的安全�
 否。 在您補救單一資源的所有建議之前，分數不會變更。 若要取得控制項的最高分數，您必須補救所有資源的所有建議。
 
 ### <a name="is-the-previous-experience-of-the-secure-score-still-available"></a>是否仍可看到先前的安全分數使用體驗？ 
-否。 一段時間，它們會並存執行，以減輕轉換的速度。 先前的模型現在已被取代。 
+不可以。 一段時間，它們會並存執行，以減輕轉換的速度。 先前的模型現在已被取代。 
 
 ### <a name="if-a-recommendation-isnt-applicable-to-me-and-i-disable-it-in-the-policy-will-my-security-control-be-fulfilled-and-my-secure-score-updated"></a>如果建議不適用於我，而我在原則中停用建議，我的安全性控制項是否會完成，而且我的安全分數也會更新？
 是。 建議您在建議不適合您的環境時予以停用。 如需有關如何停用特定建議的指示，請參閱[停用安全性原則](https://docs.microsoft.com/azure/security-center/tutorial-security-policy#disable-security-policies)。

@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 01/27/2020
 ms.author: cynthn
 ms.reviewer: zivr
-ms.openlocfilehash: 2401e8c160fd1c2ee3a734f374f1d4409c52ed16
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9ea986b338d977102d78e9c12bcbe5b2f2c510e7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82098521"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083441"
 ---
 # <a name="deploy-vms-to-proximity-placement-groups-using-powershell"></a>使用 PowerShell 將 Vm 部署至鄰近放置群組
 
@@ -24,7 +24,7 @@ ms.locfileid: "82098521"
 
 
 ## <a name="create-a-proximity-placement-group"></a>建立鄰近放置群組
-使用 [New-AzProximityPlacementGroup](https://docs.microsoft.com/powershell/module/az.compute/new-azproximityplacementgroup) \(英文\) Cmdlet 來建立鄰近放置群組。 
+使用 [New-AzProximityPlacementGroup](/powershell/module/az.compute/new-azproximityplacementgroup) \(英文\) Cmdlet 來建立鄰近放置群組。 
 
 ```azurepowershell-interactive
 $resourceGroup = "myPPGResourceGroup"
@@ -49,7 +49,7 @@ Get-AzProximityPlacementGroup
 
 ## <a name="create-a-vm"></a>建立 VM
 
-當您使用 Update-azvm 建立 VM 時，請使用在鄰近放置群組中建立 VM `-ProximityPlacementGroup $ppg.Id` ，以參考[New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm)鄰近放置群組識別碼。
+當您使用 Update-azvm 建立 VM 時，請使用在鄰近放置群組中建立 VM `-ProximityPlacementGroup $ppg.Id` ，以參考[New-AzVM](/powershell/module/az.compute/new-azvm)鄰近放置群組識別碼。
 
 ```azurepowershell-interactive
 $vmName = "myVM"
@@ -146,7 +146,7 @@ foreach ($vmId in $vmIDs){
 
 ## <a name="scale-sets"></a>擴展集
 
-您也可以在鄰近放置群組中建立擴展集。 使用 `-ProximityPlacementGroup` 與[get-azvmss](https://docs.microsoft.com/powershell/module/az.compute/new-azvmss)相同的參數來建立擴展集，而且所有實例將會在相同的鄰近放置群組中建立。
+您也可以在鄰近放置群組中建立擴展集。 使用 `-ProximityPlacementGroup` 與[get-azvmss](/powershell/module/az.compute/new-azvmss)相同的參數來建立擴展集，而且所有實例將會在相同的鄰近放置群組中建立。
 
 
 若要在鄰近放置群組中新增或移除現有的擴展集，您必須先停止擴展集。 

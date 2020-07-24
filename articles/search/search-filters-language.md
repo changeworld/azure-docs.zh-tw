@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/22/2020
-ms.openlocfilehash: b0ebbbb64e173e1501f08f8385b14c365759a804
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3bd0f01193b1e6579d60b581b43ad71ebb6001e3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82116276"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084189"
 ---
 # <a name="how-to-filter-by-language-in-azure-cognitive-search"></a>如何使用 Azure 認知搜尋中的語言進行篩選 
 
@@ -34,7 +34,7 @@ ms.locfileid: "82116276"
 
 下列範例來自于房地產[範例](search-get-started-portal.md)，其中有數個字串欄位包含不同語言的內容。 請注意此索引中欄位的語言分析器指派。 在與制訂來處理目標語言之語言規則的分析器配對時，包含字串的欄位在全文檢索搜尋中的執行效能較佳。
 
-  ![](./media/search-filters-language/lang-fields.png)
+  ![螢幕擷取畫面，顯示房地產範例的 [欄位] 畫面。 欄位群組會反白顯示，以指出語言分析器指派如何對應至反白顯示欄位的語言。](./media/search-filters-language/lang-fields.png)
 
 > [!Note]
 > 如需利用語言分析器顯示欄位定義的程式碼範例，請參閱[定義索引 (.NET)](https://docs.microsoft.com/azure/search/search-create-index-dotnet) 和[定義索引 (REST)](search-create-index-rest-api.md)。

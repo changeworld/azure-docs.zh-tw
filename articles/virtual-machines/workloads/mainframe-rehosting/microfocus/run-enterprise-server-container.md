@@ -12,12 +12,12 @@ ms.date: 06/29/2020
 tags: ''
 keywords: ''
 ms.service: multiple
-ms.openlocfilehash: 3cc561a7f7f6f58c439a70315eba857e63def09d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d266dbd0ee908c41a7d29ddbb6d9c73fcfdc7c9e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85561312"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083458"
 ---
 # <a name="run-micro-focus-enterprise-server-50-in-a-docker-container-on-azure"></a>在 Azure 上的 Docker 容器中執行微焦點企業伺服器5。0
 
@@ -27,7 +27,7 @@ Docker 為應用程式新增可攜性和隔離。 例如，您可以從一個 Wi
 
 本教學課程會從 Azure Marketplace 安裝**具有容器 VM 的 Windows 2016 Datacenter** 。 此 VM 包含**Docker 18.09.0**。 接下來的步驟會示範如何部署容器、加以執行，然後使用3270模擬器連接到它。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 在開始之前，請先參閱下列必要條件：
 
@@ -137,7 +137,7 @@ Docker 為應用程式新增可攜性和隔離。 例如，您可以從一個 Wi
     docker inspect \<containerID\> --format="{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}"
     ~~~
 
-    例如：
+    例如:
 
     ~~~
     docker inspect 22a0fe3159d0 --format="{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}"
@@ -171,6 +171,6 @@ Docker 為應用程式新增可攜性和隔離。 例如，您可以從一個 Wi
 
 ## <a name="next-steps"></a>後續步驟
 
--   [在 Azure 上安裝微焦點企業伺服器5.0 和企業開發人員5。0](https://docs.microsoft.com/azure/virtual-machines/workloads/mainframe-rehosting/microfocus/set-up-micro-focus-azure)
+-   [在 Azure 上安裝微焦點企業伺服器5.0 和企業開發人員5。0](./set-up-micro-focus-azure.md)
 
--   [大型主機應用程式移轉](https://docs.microsoft.com/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/application-strategies)
+-   [大型主機應用程式移轉](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/application-strategies)

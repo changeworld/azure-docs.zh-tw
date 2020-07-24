@@ -17,18 +17,18 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.custom: tracking-python
-ms.openlocfilehash: af03d0fc091c34bfef7f38b1a215832086de57c6
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 5688caa16faf4a9d83b6d23b24676d43ad16697b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86220060"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084291"
 ---
 # <a name="how-to-use-notification-hubs-from-python"></a>如何透過 Python 使用通知中樞
 
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
 
-您可以使用通知中樞 REST 介面，透過 Java/PHP/Python/Ruby 後端來存取所有通知中樞功能，如 MSDN 文章[通知中樞 REST API](https://msdn.microsoft.com/library/dn223264.aspx)所述。
+您可以使用通知中樞 REST 介面，透過 Java/PHP/Python/Ruby 後端來存取所有通知中樞功能，如 MSDN 文章[通知中樞 REST API](/previous-versions/azure/reference/dn223264(v=azure.100))所述。
 
 > [!NOTE]
 > 這是在 Python 實作通知傳送的範例參考實作，並非正式支援的通知中樞 Python SDK。 此範例是使用 Python 3.4 建立的。
@@ -68,7 +68,7 @@ hub.send_windows_notification(wns_payload)
 
 如果尚未這麼做，請遵循[開始使用教學課程]中的指示，一路進行到您必須實作後端的最後一節。
 
-您可以在 [MSDN](https://msdn.microsoft.com/library/dn530746.aspx)上找到所有實作完整 REST 包裝函式的詳細資料。 本節將針對存取通知中樞 REST 端點和傳送通知所需主要步驟的 Python 實作進行說明
+您可以在 [MSDN](/previous-versions/azure/reference/dn530746(v=azure.100))上找到所有實作完整 REST 包裝函式的詳細資料。 本節將針對存取通知中樞 REST 端點和傳送通知所需主要步驟的 Python 實作進行說明
 
 1. 解析連接字串
 2. 產生授權權杖
@@ -103,7 +103,7 @@ class NotificationHub:
 
 ### <a name="create-security-token"></a>建立安全性權杖
 
-您可以在 [此處](https://msdn.microsoft.com/library/dn495627.aspx)找到建立安全性權杖的詳細資料。
+您可以在 [此處](/previous-versions/azure/reference/dn495627(v=azure.100))找到建立安全性權杖的詳細資料。
 將下列方法新增至 `NotificationHub` 類別，以依據目前要求的 URI，以及從連接字串擷取的認證來建立權杖。
 
 ```python
@@ -164,7 +164,7 @@ class Notification:
 
 此類別是範本通知的原生通知主體或一組屬性的容器；為標頭集合，其包含格式 (原生平台或範本)，以及平台特定屬性 (如 Apple 到期屬性和 WNS 標頭)。
 
-請參閱[通知中樞 REST API 文件](https://msdn.microsoft.com/library/dn495827.aspx)及特定通知平台的格式，以取得所有可用選項。
+請參閱[通知中樞 REST API 文件](/previous-versions/azure/reference/dn495827(v=azure.100))及特定通知平台的格式，以取得所有可用選項。
 
 透過此類別，現在可以在 `NotificationHub` 類別內寫入傳送通知方法。
 
@@ -293,7 +293,7 @@ def send_template_notification(self, properties, tags=""):
 ### <a name="using-debug-property-to-enable-detailed-logging"></a>使用偵錯屬性啟用詳細的記錄
 
 在初始化通知中樞時啟用偵錯屬性會寫出關於 HTTP 要求和回應傾印的詳細記錄資訊，以及詳細的通知訊息傳送結果。
-[通知中樞 TestSend 屬性](https://docs.microsoft.com/previous-versions/azure/reference/dn495827(v=azure.100)) \(英文\) 會傳回關於通知傳送結果的詳細資訊。
+[通知中樞 TestSend 屬性](/previous-versions/azure/reference/dn495827(v=azure.100)) \(英文\) 會傳回關於通知傳送結果的詳細資訊。
 若要使用它，請使用下列程式碼來初始化：
 
 ```python
@@ -456,9 +456,9 @@ hub.send_template_notification(template_payload)
 
 <!-- URLs -->
 [Python REST 包裝函式範例]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/notificationhubs-rest-python
-[開始使用教學課程]: https://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
-[即時新聞教學課程]: https://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-send-breaking-news/
-[當地語系化新聞教學課程]: https://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-send-localized-breaking-news/
+[開始使用教學課程]: ./notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
+[即時新聞教學課程]: ./notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
+[當地語系化新聞教學課程]: ./notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md
 
 <!-- Images. -->
 [1]: ./media/notification-hubs-python-backend-how-to/DetailedLoggingInfo.png

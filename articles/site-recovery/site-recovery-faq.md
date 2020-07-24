@@ -2,14 +2,14 @@
 title: 關於 Azure Site Recovery 服務的一般問題
 description: 本文討論有關 Azure Site Recovery 的一般熱門問題。
 ms.topic: conceptual
-ms.date: 1/24/2020
+ms.date: 7/14/2020
 ms.author: raynew
-ms.openlocfilehash: b02d001d6fad905badaf17422bdd0554e3fc8493
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 89a5785811b4f4833a5a5ddcef827b258ce1775a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86133667"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083730"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>關於 Azure Site Recovery 的一般問題
 
@@ -39,7 +39,7 @@ Site Recovery 採取各種不同的措施，以確保資料的完整性。 使�
 是，Site Recovery 同時支援專用與共用的基礎結構模型。
 
 ### <a name="for-a-service-provider-is-the-identity-of-my-tenant-shared-with-the-site-recovery-service"></a>對服務提供者而言，租用戶的身分識別是否會與 Site Recovery 服務共用？
-否。 租用戶身分識別會保持匿名。 您的租用戶不需要存取 Site Recovery 入口網站。 只有服務提供者系統管理員會與入口網站互動。
+不可以。 租用戶身分識別會保持匿名。 您的租用戶不需要存取 Site Recovery 入口網站。 只有服務提供者系統管理員會與入口網站互動。
 
 ### <a name="will-tenant-application-data-ever-go-to-azure"></a>租用戶應用程式資料是否會傳送到 Azure？
 在服務提供者擁有的站台之間進行複寫時，永遠不會將應用程式資料傳送到 Azure。 資料會在傳輸中加密，並且會在服務提供者站台之間直接進行複寫。
@@ -116,6 +116,19 @@ Site Recovery 已通過 ISO 27001:2013、27018、HIPAA、DPA 認證，並且正�
 ### <a name="how-can-i-enforce-tls-12-on-hyperv-to-azure-site-recovery-scenarios"></a>如何在 HyperV 到 Azure Site Recovery 案例上強制執行 TLS 1.2？
 Azure Site Recovery 微服務之間的所有通訊都會在 TLS 1.2 通訊協定上發生。 Site Recovery 會使用系統 (OS) 中設定的安全性提供者，並使用最新可用的 TLS 通訊協定。 其中一個必須在登錄中明確啟用 TLS 1.2，然後 Site Recovery 就會開始使用 TLS 1.2 進行與服務的通訊。 
 
+### <a name="how-can-i-enforce-restricted-access-on-my-storage-accounts-which-are-accessed-by-site-recovery-service-for-readingwriting-replication-data"></a>如何在我的儲存體帳戶上強制執行限制存取，以 Site Recovery 服務存取來讀取/寫入複寫資料？
+您可以前往 [身分*識別*] 設定來切換復原服務保存庫的受控識別。 當保存庫向 Azure Active Directory 註冊後，您就可以移至您的儲存體帳戶，並將下列角色指派授與保存庫：
+
+- 以 Resource Manager 為基礎的儲存體帳戶（標準類型）：
+  - [參與者](../role-based-access-control/built-in-roles.md#contributor)
+  - [儲存體 Blob 資料參與者](../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)
+- 以 Resource Manager 為基礎的儲存體帳戶（Premium 類型）：
+  - [參與者](../role-based-access-control/built-in-roles.md#contributor)
+  - [儲存體 Blob 資料擁有者](../role-based-access-control/built-in-roles.md#storage-blob-data-owner)
+- 傳統儲存體帳戶：
+  - [傳統儲存體帳戶參與者](../role-based-access-control/built-in-roles.md#classic-storage-account-contributor)
+  - [傳統儲存體帳戶金鑰操作員服務角色](../role-based-access-control/built-in-roles.md#classic-storage-account-key-operator-service-role)
+
 ## <a name="disaster-recovery"></a>災害復原
 
 ### <a name="what-can-site-recovery-protect"></a>Site Recovery 可以保護什麼？
@@ -142,7 +155,7 @@ Azure Site Recovery 微服務之間的所有通訊都會在 TLS 1.2 通訊協定
 ### <a name="is-disaster-recovery-supported-for-hyper-v-vms"></a>是否支援 Hyper-V VM 的災害復原？
 是，Site Recovery 支援內部部署 Hyper-V VM 的災害復原。 檢閱 Hyper-V VM 災害復原的[常見問題](hyper-v-azure-common-questions.md)。
 
-## <a name="is-disaster-recovery-supported-for-physical-servers"></a>是否支援實體伺服器的災害復原？
+### <a name="is-disaster-recovery-supported-for-physical-servers"></a>是否支援實體伺服器的災害復原？
 是，Site Recovery 支援執行 Windows 和 Linux 的內部部署實體伺服器災害復原到 Azure 或次要站站。 了解 [Azure](vmware-physical-azure-support-matrix.md#replicated-machines) 和[次要站台](vmware-physical-secondary-support-matrix.md#replicated-vm-support)的災害復原需求。
 請注意，在容錯移轉之後，實體伺服器將會在 Azure 中以 VM 的形式執行。 目前不支援從 Azure 容錯回復至內部部署實體伺服器。 您只能容錯回復至 VMware 虛擬機器。
 

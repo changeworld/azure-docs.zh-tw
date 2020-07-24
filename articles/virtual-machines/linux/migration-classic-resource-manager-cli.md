@@ -8,19 +8,19 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: a5a9ace105e56d9db61470c35f665954812c3825
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 92543383ad530242eab59387e658e7b9d137f328
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134259"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085498"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-cli"></a>使用 Azure CLI 將 IaaS 資源從傳統移轉至 Azure Resource Manager
 
 > [!IMPORTANT]
-> 目前，大約有90% 的 IaaS Vm 正在使用[Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/)。 從2020年2月28日起，傳統 Vm 已淘汰，並將于2023年3月1日完全淘汰。 [深入瞭解]( https://aka.ms/classicvmretirement)此淘汰及其對[您的影響](https://docs.microsoft.com/azure/virtual-machines/classic-vm-deprecation#how-does-this-affect-me)。
+> 目前，大約有90% 的 IaaS Vm 正在使用[Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/)。 從2020年2月28日起，傳統 Vm 已淘汰，並將于2023年3月1日完全淘汰。 [深入瞭解]( https://aka.ms/classicvmretirement)此淘汰及其對[您的影響](../classic-vm-deprecation.md#how-does-this-affect-me)。
 
-以下步驟說明如何使用 Azure 命令列介面 (CLI) 命令，將基礎結構即服務 (IaaS) 資源從傳統部署模型移轉至 Azure Resource Manager 部署模型。 此文章需要 [Azure 傳統 CLI](../../cli-install-nodejs.md)。 Azure CLI 僅適用於 Azure Resource Manager 資源，不可用於此移轉。
+以下步驟說明如何使用 Azure 命令列介面 (CLI) 命令，將基礎結構即服務 (IaaS) 資源從傳統部署模型移轉至 Azure Resource Manager 部署模型。 此文章需要 [Azure 傳統 CLI](/cli/azure/install-classic-cli)。 Azure CLI 僅適用於 Azure Resource Manager 資源，不可用於此移轉。
 
 > [!NOTE]
 > 下述所有作業都是等冪的。 如果您有不支援的功能或組態錯誤以外的任何問題，建議您重新嘗試準備、中止或認可作業。 如此，平台就會重新嘗試該動作。
@@ -46,7 +46,7 @@ ms.locfileid: "86134259"
 > 
 
 ## <a name="step-2-set-your-subscription-and-register-the-provider"></a>步驟 2︰設定您的訂用帳戶並註冊提供者
-針對移轉案例，您必須為傳統和 Resource Manager 模型設定您的環境。 [安裝 Azure CLI](../../cli-install-nodejs.md) 並[選取您的訂用帳戶](/cli/azure/authenticate-azure-cli)。
+針對移轉案例，您必須為傳統和 Resource Manager 模型設定您的環境。 [安裝 Azure CLI](/cli/azure/install-classic-cli) 並[選取您的訂用帳戶](/cli/azure/authenticate-azure-cli)。
 
 登入您的帳戶。
 
@@ -164,7 +164,7 @@ azure service deployment commit-migration <serviceName> <deploymentName>
 azure network vnet list
 ```
 
-輸出會看起來類似這樣：
+輸出會如下所示：
 
 ![將整個虛擬網路名稱醒目提示的命令列螢幕擷取畫面。](../media/virtual-machines-linux-cli-migration-classic-resource-manager/vnet.png)
 

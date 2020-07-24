@@ -14,14 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: 51a5c5de7bce07aa6a54b9ff81e957c38cfffdd2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: fe49481357b542ce52de5fc9dab3059cb584c229
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531205"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083900"
 ---
 # <a name="connect-your-symantec-proxysg-to-azure-sentinel"></a>將您的 Symantec ProxySG 連線至 Azure Sentinel
+
+> [!IMPORTANT]
+> Azure Sentinel 中的 Symantec ProxySG 資料連線器目前為公開預覽狀態。
+> 這項功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 本文說明如何將您的[Symantec ProxySG](https://www.broadcom.com/products/cyber-security/network/gateway/proxy-sg-and-advanced-secure-gateway)應用裝置連線到 Azure Sentinel。 Symantec ProxySG 資料連線器可讓您輕鬆地將 Symantec ProxySG 記錄與 Azure Sentinel 連線、查看儀表板、建立自訂警示，以及改善調查。 Symantec ProxySG 和 Azure Sentinel 之間的整合會使用 Syslog。
 

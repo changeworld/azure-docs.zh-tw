@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: cshoe
-ms.openlocfilehash: 1f08d6b8a2ce2381c3bc85891a292ac05561cf34
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: be406744dc9752dd3c924c636e85f43e133c1cca
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85832554"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085073"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>在 Azure Functions 中測試程式碼的策略
 
@@ -40,13 +40,13 @@ ms.locfileid: "85832554"
 3. [從範本建立計時器](./functions-create-scheduled-function.md)函式，並將其命名為**MyTimerTrigger**。
 4. 在解決方案中[建立 XUnit 測試應用程式](https://xunit.github.io/docs/getting-started-dotnet-core)，並將其命名為 **。測試**。
 5. 使用 NuGet 將測試應用程式的參考新增至[AspNetCore](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/)
-6. [從函式中參考*函數*應用](https://docs.microsoft.com/visualstudio/ide/managing-references-in-a-project?view=vs-2017)程式。*測試*應用程式。
+6. [從函式中參考*函數*應用](/visualstudio/ide/managing-references-in-a-project?view=vs-2017)程式。*測試*應用程式。
 
 ### <a name="create-test-classes"></a>建立測試類別
 
 現在已建立專案，您可以建立用來執行自動化測試的類別。
 
-每個函式都可接受 [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) 的執行個體以處理訊息記錄。 有些測試不會記錄訊息，或是沒有考量如何實作記錄。 其他測試需要評估已記錄的訊息，來判斷是否通過測試。
+每個函式都可接受 [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger) 的執行個體以處理訊息記錄。 有些測試不會記錄訊息，或是沒有考量如何實作記錄。 其他測試需要評估已記錄的訊息，來判斷是否通過測試。
 
 您將建立名為的新類別 `ListLogger` ，其中包含要在測試期間評估的內部訊息清單。 若要執行必要的 `ILogger` 介面，類別需要一個範圍。 下列類別會模擬測試案例的範圍，以傳遞至 `ListLogger` 類別。
 
@@ -192,7 +192,7 @@ namespace Functions.Tests
 
 `TestFactory` 類別實作下列成員：
 
-- **Data**：此屬性會傳回範例資料的[IEnumerable](https://docs.microsoft.com/dotnet/api/system.collections.ienumerable)集合。 索引鍵值組代表傳入查詢字串的值。
+- **Data**：此屬性會傳回範例資料的[IEnumerable](/dotnet/api/system.collections.ienumerable)集合。 索引鍵值組代表傳入查詢字串的值。
 
 - **CreateDictionary**：這個方法會接受索引鍵/值組做為引數，並傳回 `Dictionary` 用來建立 `QueryCollection` 以代表查詢字串值的新。
 

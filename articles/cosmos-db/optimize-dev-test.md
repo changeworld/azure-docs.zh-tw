@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 3fe5ea98f8db633eed7ce4e2c0ac0cafa56408ef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ea5d975b73afcf03ad97bafd1c6f68f2b55263c2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82194511"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084716"
 ---
 # <a name="optimize-development-and-testing-cost-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中最佳化開發與測試成本
 
@@ -23,7 +23,9 @@ ms.locfileid: "82194511"
 
 ## <a name="azure-cosmos-db-free-tier"></a>Azure Cosmos DB 免費層
 
-Azure Cosmos DB 免費層可讓您輕鬆地開始使用、開發和測試您的應用程式，甚至免費執行小型生產工作負載。 在帳戶上啟用免費層時，您會在免費帳戶中取得前 400 RU/秒和 5 GB 的儲存體。 您也可以在資料庫層級建立一個共用輸送量資料庫，其中包含25個400共用/s 的容器，全都由免費層所涵蓋（在免費層帳戶中限制5個共用輸送量資料庫）。 免費層會無限期地持續在帳戶的存留期間內運作，並隨附一般 Azure Cosmos DB 帳戶的所有[優點和功能](introduction.md#key-benefits)，包括無限制的儲存體和輸送量（RU/秒）、sla、高可用性、所有 Azure 區域中的全域散發功能等等。 您的每個 Azure 訂用帳戶最多可以有一個免費層帳戶，而且在建立帳戶時必須加入宣告。 若要開始，請[在已啟用免費層的 Azure 入口網站中建立新帳戶](create-cosmosdb-resources-portal.md)，或使用[ARM 範本](manage-sql-with-resource-manager.md#free-tier)。 請參閱[定價頁面](https://azure.microsoft.com/pricing/details/cosmos-db/)，以取得詳細資料。
+Azure Cosmos DB 免費層可讓您輕鬆地開始使用、開發和測試您的應用程式，甚至免費執行小型生產工作負載。 在帳戶上啟用免費層時，您會在免費帳戶中取得前 400 RU/秒和 5 GB 的儲存體。 您也可以在資料庫層級建立一個共用輸送量資料庫，其中包含25個400共用/s 的容器，全都由免費層所涵蓋（在免費層帳戶中限制5個共用輸送量資料庫）。 使用免費層時，如果您布建的共用資料庫的最小輸送量為 400 RU/秒，則該資料庫內的所有容器都可以共用輸送量。 任何具有共用輸送量或具有專用輸送量之容器的新資料庫，都會以一般價格計費。
+
+免費層會無限期地持續在帳戶的存留期間內運作，並隨附一般 Azure Cosmos DB 帳戶的所有[優點和功能](introduction.md#key-benefits)，包括無限制的儲存體和輸送量（RU/秒）、sla、高可用性、所有 Azure 區域中的全域散發功能等等。 您的每個 Azure 訂用帳戶最多可以有一個免費層帳戶，而且在建立帳戶時必須加入宣告。 若要開始，請[在已啟用免費層的 Azure 入口網站中建立新帳戶](create-cosmosdb-resources-portal.md)，或使用[ARM 範本](manage-sql-with-resource-manager.md#free-tier)。 請參閱[定價頁面](https://azure.microsoft.com/pricing/details/cosmos-db/)，以取得詳細資料。
 
 ## <a name="try-azure-cosmos-db-for-free"></a>免費試用 Azure Cosmos DB
 

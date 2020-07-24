@@ -12,11 +12,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: amverma
-ms.openlocfilehash: 469e926932ffa11ef9f2a262b78a587ba435549e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3ca9a21d105be6f17c1aa40ae1a0ab7f01c38184
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77023985"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083407"
 ---
 # <a name="set-up-message-passing-interface-for-hpc"></a>設定 HPC 的訊息傳遞介面
 
@@ -62,7 +63,7 @@ make -j 8 && make install
 
 如先前所述，檢查您的分割區索引鍵。
 
-## <a name="mpich"></a>MPICH
+## <a name="mpich"></a>MPICH \(英文\)
 
 如先前所述安裝 UCX。
 
@@ -199,4 +200,4 @@ chmod 644 /home/$USER/.ssh/config
 
 ## <a name="next-steps"></a>後續步驟
 
-深入瞭解 Azure 上的[HPC](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/) 。
+深入瞭解 Azure 上的[HPC](/azure/architecture/topics/high-performance-computing/) 。

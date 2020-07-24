@@ -4,12 +4,12 @@ description: 了解如何安裝 Azure Functions 的 Durable Functions 擴充，�
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 7eee3c36620d0cc9f5906e355b76e7418c61b477
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b029fa246977dfe4210f6e8df242415f7e4103f1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807956"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081911"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>使用 Azure 入口網站建立 Durable Functions
 
@@ -58,8 +58,6 @@ NuGet 套件 [Microsoft.Azure.WebJobs.Extensions.DurableTask](https://www.nuget.
 
    ![Kudu run npm install](./media/durable-functions-create-portal/kudu-npm-install.png)
    
-5. 最後，藉由新增值為的應用程式設定來[啟用相容性模式](https://docs.microsoft.com/azure/azure-functions/durable/quickstart-js-vscode#enable-compatibility-mode-1) `FUNCTIONS_V2_COMPATIBILITY_MODE` `true` 。
-
 ## <a name="create-an-orchestrator-function"></a>建立協調器函式
 
 1. 在您的函式應用程式中，從左側窗格選取 [函式]，然後從頂端功能表選取 [新增]。 

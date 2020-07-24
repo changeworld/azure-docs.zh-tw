@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: aece41329d6481b8ad15090a834c8758f86abdc2
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 7a4408b54b663b2cd8abc22772ac1b799ea50de0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86131345"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083764"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>設定多層式 IIS 型 Web 應用程式的災害復原
 
@@ -26,7 +26,7 @@ ms.locfileid: "86131345"
 
 本文說明如何使用 [Azure Site Recovery](site-recovery-overview.md) 來保護以 Internet Information Services (IIS) 為基礎的 Web 應用程式。 本文涵蓋將三層式 IIS 型 Web 應用程式複寫至 Azure 的最佳做法、如何進行災害復原演練，以及如何將應用程式容錯移轉至 Azure。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 在開始之前，請確定您了解如何執行下列工作：
 
@@ -58,7 +58,7 @@ IIS 型 Web 應用程式通常會遵循下列其中一個部署模式︰
 
 ### <a name="source-and-target"></a>來源與目標
 
-狀況 | 至次要網站 | 至 Azure
+案例 | 至次要網站 | 至 Azure
 --- | --- | ---
 Hyper-V | 是 | 是
 VMware | 是 | 是
@@ -73,7 +73,7 @@ Azure|NA|是
 
 ![顯示如何在 Site Recovery 計算和網路窗格中設定目標 IP 的螢幕擷取畫面](./media/site-recovery-active-directory/dns-target-ip.png)
 
-## <a name="create-a-recovery-plan"></a>建立復原計畫
+## <a name="create-a-recovery-plan"></a>建立復原方案
 復原方案支援在容錯移轉期間對多層式應用程式中的各層進行排序。 排序有助於維持應用程式的一致性。 當您為多層式 Web 應用程式建立復原方案時，請完成[使用 Site Recovery 建立復原方案](site-recovery-create-recovery-plans.md)中所述的步驟。
 
 ### <a name="add-virtual-machines-to-failover-groups"></a>將虛擬機器新增至容錯移轉群組
@@ -102,12 +102,14 @@ Azure|NA|是
 
 如果連接字串使用 IP 位址來參考資料庫虛擬機器，則在容錯移轉後就必須更新連接字串。 例如，以下連接字串會指向 IP 位址為 127.0.1.2 的資料庫：
 
-        <?xml version="1.0" encoding="utf-8"?>
-        <configuration>
-        <connectionStrings>
-        <add name="ConnStringDb1" connectionString="Data Source= 127.0.1.2\SqlExpress; Initial Catalog=TestDB1;Integrated Security=False;" />
-        </connectionStrings>
-        </configuration>
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+<connectionStrings>
+<add name="ConnStringDb1" connectionString="Data Source= 127.0.1.2\SqlExpress; Initial Catalog=TestDB1;Integrated Security=False;" />
+</connectionStrings>
+</configuration>
+```
 
 若要更新 Web 層中的連接字串，請在復原方案中的群組 3 之後新增 [IIS 連線更新指令碼](https://gallery.technet.microsoft.com/Update-IIS-connection-2579aadc)。
 

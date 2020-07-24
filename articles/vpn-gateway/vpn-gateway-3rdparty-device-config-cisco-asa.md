@@ -7,28 +7,26 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/19/2018
 ms.author: yushwang
-ms.openlocfilehash: ec370ca3aa8d89111dcb4737701c7ea58cd48195
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f693f6a40b87d024430c7626736fab0d0a032238
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84986100"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081996"
 ---
 # <a name="sample-configuration-cisco-asa-device-ikev2no-bgp"></a>範例組態：Cisco ASA 裝置 (IKEv2/無 BGP)
 本文提供將 Cisco Adaptive Security Appliance (ASA) 裝置連線到 Azure VPN 閘道的範例設定。 此範例適用於執行 IKEv2 且不含邊界閘道協定 (BGP) 的 Cisco ASA 裝置。 
 
 ## <a name="device-at-a-glance"></a>裝置速覽
 
-|                        |                                   |
-| ---                    | ---                               |
-| 裝置廠商          | Cisco                             |
-| 裝置型號           | ASA                               |
-| 目標版本         | 8.4 和更新版本                     |
-| 測試的型號           | ASA 5505                          |
-| 測試的版本         | 9.2                               |
-| IKE 版本            | IKEv2                             |
-| BGP                    | No                                |
-| Azure VPN 閘道類型 | 路由式 VPN 閘道           |
-|                        |                                   |
+* 裝置廠商： **Cisco**
+* 裝置型號： **ASA**           
+* 目標版本： **8.4 和更新版本**
+* 測試的模型： **ASA 5505**
+* 測試的版本： **9.2**             
+* IKE 版本： **IKEv2**                  
+* BGP：**否**      
+* Azure VPN 閘道類型：**路由式 VPN 閘道**
 
 > [!NOTE]
 > 範例設定會將 Cisco ASA 裝置連線到 Azure **路由式** VPN 閘道。 連線會使用自訂 IPsec/IKE 原則與 **UsePolicyBasedTrafficSelectors** 選項，如[本文](vpn-gateway-connect-multiple-policybased-rm-ps.md)所述。
@@ -69,7 +67,7 @@ Azure VPN 閘道會使用標準的 IPsec/IKE 通訊協定組合來建立站對�
 ### <a name="ipsecike-policy-and-parameters"></a>IPsec/IKE 原則與參數
 下表列出範例中所使用的 IPsec/IKE 演算法與參數。 請參閱您的 VPN 裝置規格，以確認您的 VPN 裝置型號和軔體版本支援的演算法。
 
-| **IPsec/IKEv2**  | **ReplTest1**                            |
+| **IPsec/IKEv2**  | **值**                            |
 | ---              | ---                                  |
 | IKEv2 加密 | AES256                               |
 | IKEv2 完整性  | SHA384                               |

@@ -4,13 +4,14 @@ description: 瞭解如何使用適用於 PostgreSQL 的 Azure 資料庫單一伺
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
-ms.date: 5/6/2019
+ms.date: 07/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 46aa411826dd3ea578a2d98b0fe631ab0a12ef4a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4214b01f3f3651f8785f8644cf12326bf182bce7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74769875"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084172"
 ---
 # <a name="connecting-azure-kubernetes-service-and-azure-database-for-postgresql---single-server"></a>連接 Azure Kubernetes Service 和適用於 PostgreSQL 的 Azure 資料庫-單一伺服器
 
@@ -39,11 +40,6 @@ az aks show --resource-group myResourceGroup --name myAKSCluster --query "nodeRe
 ```azurecli
 az network nic list --resource-group nodeResourceGroup -o table
 ```
-
-## <a name="open-service-broker-for-azure"></a>Open Service Broker for Azure 
-[Open Service Broker for Azure](https://github.com/Azure/open-service-broker-azure/blob/master/README.md) (OSBA)，可讓您直接從 Kubernetes 或 Cloud Foundry 佈建 Azure 服務。 它是 Azure 的一項 [Open Service Broker API](https://www.openservicebrokerapi.org/) 實作。
-
-使用 OSBA 時，您可以建立適用於 PostgreSQL 的 Azure 資料庫伺服器，並使用 Kubernetes 的原生語言將它繫結至您的 AKS 叢集。 瞭解如何在[OSBA GitHub 頁面](https://github.com/Azure/open-service-broker-azure/blob/master/docs/modules/postgresql.md)上同時使用 OSBA 和適用於 PostgreSQL 的 Azure 資料庫。 
 
 
 ## <a name="connection-pooling"></a>連線共用

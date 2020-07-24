@@ -14,17 +14,17 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: willzhan; johndeu
-ms.openlocfilehash: 8b4980ee8ea252b4ce13601501e4bf1f7af97d1b
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: be7ac4073bb332a7595dcf211feb7087d0734854
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86166360"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082727"
 ---
 # <a name="use-azure-ad-authentication-to-access-the-media-services-api-with-rest"></a>使用 Azure AD 驗證搭配 REST 存取媒體服務 API
 
 > [!NOTE]
-> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
+> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](../latest/index.yml)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
 
 使用 Azure AD 驗證搭配 Azure 媒體服務時，您可以下列其中一種方式進行驗證：
 
@@ -58,7 +58,7 @@ ms.locfileid: "86166360"
 
 ## <a name="get-the-authentication-information-from-the-azure-portal"></a>從 Azure 入口網站取得驗證資訊
 
-### <a name="overview"></a>概觀
+### <a name="overview"></a>總覽
 
 若要存取 Media Services API，您必須收集下列資料點。
 
@@ -167,7 +167,7 @@ ms.locfileid: "86166360"
 本節示範如何使用 **Postman** 存取**資產** API。
 
 1. 開啟**Postman**。
-2. 選取 [GET] ****。
+2. 選取 [**取得**]。
 3. 貼上 REST API 端點 (例如 https://amshelloworld.restv2.westus.media.azure.net/api/Assets)
 4. 選取 [授權]**** 索引標籤。 
 5. 選取 [持有人權杖]****。

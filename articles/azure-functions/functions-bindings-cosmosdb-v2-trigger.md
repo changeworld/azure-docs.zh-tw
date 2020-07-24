@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
 ms.custom: tracking-python
-ms.openlocfilehash: 1ff8281a420eb1e967cb9f1d4db620d8f816794b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e30096e84c31f9e73e0ce02daa5765e98bdcd192
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85374231"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085090"
 ---
 # <a name="azure-cosmos-db-trigger-for-azure-functions-2x-and-higher"></a>Azure Functions 2.x 和更新版本的 Azure Cosmos DB 觸發程式
 
@@ -209,7 +209,7 @@ Python 指令碼不支援屬性。
 
 # <a name="java"></a>[Java](#tab/java)
 
-從 JAVA 函式執行時間連結[庫](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)， `@CosmosDBInput` 在從 Cosmos DB 讀取資料的參數上使用注釋。
+從 JAVA 函式執行時間連結[庫](/java/api/overview/azure/functions/runtime)， `@CosmosDBInput` 在從 Cosmos DB 讀取資料的參數上使用注釋。
 
 ---
 
@@ -228,7 +228,7 @@ Python 指令碼不支援屬性。
 |**leaseConnectionStringSetting** | **LeaseConnectionStringSetting** | 選擇性應用程式設定的名稱，其中包含保留租用集合的 Azure Cosmos DB 帳戶的連接字串。 如果未設定，會使用 `connectionStringSetting` 值。 在入口網站中建立繫結時，會自動設定此參數。 租用集合的連接字串必須具有寫入權限。|
 |**leaseDatabaseName** |**LeaseDatabaseName** | (選擇性) 保存用來儲存租用之集合的資料庫名稱。 如果未設定，會使用 `databaseName` 設定的值。 在入口網站中建立繫結時，會自動設定此參數。 |
 |**leaseCollectionName** | **LeaseCollectionName** | (選擇性) 用來儲存租用的集合名稱。 如果未設定，會使用 `leases` 值。 |
-|**createLeaseCollectionIfNotExists** | **CreateLeaseCollectionIfNotExists** | (選擇性) 設為 `true` 時，如果租用集合尚未存在，即會自動加以建立。 預設值為 `false`。 |
+|**createLeaseCollectionIfNotExists** | **CreateLeaseCollectionIfNotExists** | (選擇性) 設為 `true` 時，如果租用集合尚未存在，即會自動加以建立。 預設值是 `false`。 |
 |**leasesCollectionThroughput**| **LeasesCollectionThroughput**| 選擇性定義建立租用集合時要指派的要求單位數目。 只有當設定為時，才會使用此設定 `createLeaseCollectionIfNotExists` `true` 。 使用入口網站建立繫結時，會自動設定此參數。
 |**leaseCollectionPrefix**| **LeaseCollectionPrefix**| 選擇性設定時，會將值新增為此函式的租用集合中所建立租用的前置詞。 使用前置詞可讓兩個不同的 Azure Functions 使用不同的首碼來共用相同的租用集合。
 |**feedPollDelay**| **FeedPollDelay**| 選擇性在所有目前的變更清空之後，針對摘要上的新變更輪詢資料分割之間的延遲時間（以毫秒為單位）。 預設值為5000毫秒，或5秒。

@@ -8,13 +8,13 @@ ms.author: magottei
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 862b3056445bddb358e6485ce5fec4de4d53eace
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.date: 07/12/2020
+ms.openlocfilehash: 725ee57a06d3d547142fdd39ef03e1c7e7c296a8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86039274"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084138"
 ---
 # <a name="connect-to-and-index-azure-sql-content-using-an-azure-cognitive-search-indexer"></a>使用 Azure 認知搜尋索引子連接到 Azure SQL 內容並為其編制索引
 
@@ -176,7 +176,7 @@ Azure 認知搜尋會使用累加**式編制索引**，以避免每次執行索�
 ### <a name="sql-integrated-change-tracking-policy"></a>SQL 整合變更追蹤原則
 如果您的 SQL 資料庫支援[變更追蹤](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server)，我們建議使用**SQL 整合變更追蹤原則**。 這是最有效率的原則。 此外，它可讓 Azure 認知搜尋識別已刪除的資料列，而不需在資料表中加入明確的「虛刪除」資料行。
 
-#### <a name="requirements"></a>規格需求 
+#### <a name="requirements"></a>需求 
 
 + 資料庫版本需求：
   * SQL Server 2012 SP3 和更新版本 (若您在 Azure VM 上使用 SQL Server)。
@@ -212,7 +212,7 @@ Azure 認知搜尋會使用累加**式編制索引**，以避免每次執行索�
 
 這個變更偵測原則依賴在上次更新資料列時擷取版本或時間的「上限標準」資料行。 若您使用檢視，就必須使用上限標準原則。 上限標準資料行必須符合下列需求。
 
-#### <a name="requirements"></a>規格需求 
+#### <a name="requirements"></a>需求 
 
 * 所有插入都有指定資料行的值。
 * 所有項目更新變更資料行的值。
@@ -314,7 +314,7 @@ Azure 認知搜尋會使用累加**式編制索引**，以避免每次執行索�
 <a name="TypeMapping"></a>
 
 ## <a name="mapping-between-sql-and-azure-cognitive-search-data-types"></a>SQL 與 Azure 認知搜尋資料類型之間的對應
-| SQL 資料類型 | 允許的目標索引欄位類型 | 備註 |
+| SQL 資料類型 | 允許的目標索引欄位類型 | 附註 |
 | --- | --- | --- |
 | bit |Edm.Boolean、Edm.String | |
 | int、smallint、tinyint |Edm.Int32、Edm.Int64、Edm.String | |
@@ -325,8 +325,8 @@ Azure 認知搜尋會使用累加**式編制索引**，以避免每次執行索�
 | smalldatetime、datetime、datetime2、date、datetimeoffset |Edm.DateTimeOffset、Edm.String | |
 | uniqueidentifer |Edm.String | |
 | geography |Edm.GeographyPoint |僅支援使用 SRID 4326 (預設) 之 POINT 類型的 geography 執行個體。 |
-| rowversion |N/A |資料列版本的資料行無法儲存在搜尋索引中，但可用於追蹤變更。 |
-| time、timespan、binary、varbinary、image、xml、geometry、CLR 類型 |N/A |不支援 |
+| rowversion |不適用 |資料列版本的資料行無法儲存在搜尋索引中，但可用於追蹤變更。 |
+| time、timespan、binary、varbinary、image、xml、geometry、CLR 類型 |不適用 |不支援 |
 
 ## <a name="configuration-settings"></a>組態設定
 SQL 索引子公開數個組態設定︰
@@ -358,7 +358,7 @@ SQL 索引子公開數個組態設定︰
 
 **問：在 Azure 上的 IaaS 中執行的資料庫 SQL Server 以外，我可以使用 Azure SQL 索引子嗎？**
 
-否。 我們不支援這類案例，因為我們尚未使用 SQL Server 以外的資料庫來測試索引子。  
+不可以。 我們不支援這類案例，因為我們尚未使用 SQL Server 以外的資料庫來測試索引子。  
 
 **問：我可以建立多個依排程執行的索引子嗎？**
 

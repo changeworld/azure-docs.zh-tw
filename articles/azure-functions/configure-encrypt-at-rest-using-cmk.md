@@ -3,13 +3,14 @@ title: 加密待用應用程式來源
 description: 在 Azure 儲存體中加密您的應用程式資料，並將它部署為封裝檔案。
 ms.topic: article
 ms.date: 03/06/2020
-ms.openlocfilehash: 62179e900ace0d6d7b8b1f07e8f0ab685508f991
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6dfb56a5ef6b1ab3cfbd0762bf7816e37ce0aa39
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79408719"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081877"
 ---
-# <a name="encryption-at-rest-using-customer-managed-keys"></a>使用客戶管理的金鑰進行待用加密
+# <a name="encrypt-your-application-data-at-rest-using-customer-managed-keys"></a>使用客戶管理的金鑰將您的應用程式資料加密
 
 將您的函式應用程式待用資料加密需要 Azure 儲存體帳戶和 Azure Key Vault。 當您從部署套件執行應用程式時，會使用這些服務。
 
@@ -98,7 +99,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 您可以藉由停用函式應用程式對 Key Vault 的存取權，撤銷函數應用程式對網站資料的存取權。 若要這麼做，請移除函數應用程式身分識別的存取原則。 這是您稍早在設定金鑰保存庫參考時所建立的相同身分識別。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>總結
 
 您的應用程式檔現在會在您的儲存體帳戶中進行待用加密。 當您的函式應用程式啟動時，它會從您的金鑰保存庫抓取 SAS URL。 最後，函數應用程式會從儲存體帳戶載入應用程式檔。 
 

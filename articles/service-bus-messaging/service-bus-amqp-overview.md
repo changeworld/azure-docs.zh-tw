@@ -3,11 +3,12 @@ title: Azure 服務匯流排中的 AMQP 1.0 總覽
 description: 瞭解 Azure 服務匯流排如何支援先進訊息佇列通訊協定（AMQP），這是一種開放式標準通訊協定。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 8ddeadde85e3e0b574c93db0227dcba6ad746f64
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1113ffd268c991ba8a9c8f574b90d555a81ae840
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85338052"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083866"
 ---
 # <a name="amqp-10-support-in-service-bus"></a>服務匯流排中的 AMQP 1.0 支援
 Azure 服務匯流排雲端服務和內部部署 [Service Bus for Windows Server (Service Bus 1.1)](https://msdn.microsoft.com/library/dn282144.aspx) 兩者都支援進階訊息佇列通訊協定 (AMQP) 1.0。 透過開放式標準通訊協定，AMQP 可讓您打造一個跨平台的混合式應用程式。 您可以透過使用不同語言和架構所建立，且在不同作業系統上執行的元件來建構應用程式。 所有這些元件都可以連線到服務匯流排，並有效地且不失真地順暢交換結構化的商業訊息。
@@ -53,13 +54,13 @@ Azure 服務匯流排中的 AMQP 1.0 支援代表您現在能夠從一組平台�
 
 下圖說明的是一個部署範例，其中的 Java 用戶端是在 Linux 上執行並使用標準的 Java 訊息服務 (JMS) API 撰寫而成，而 .NET 用戶端則是在 Windows 上執行並使用 AMQP 1.0 透過服務匯流排來交換訊息。
 
-![][0]
+![此圖顯示一個服務匯流排交換包含兩個 Linux 環境和兩個 Windows 環境的訊息。][0]
 
 **圖 1：範例部署案例示範使用服務匯流排和 AMQP 1.0 的跨平台訊息服務**
 
 目前已知下列用戶端程式庫可以使用服務匯流排：
 
-| 語言 | 程式庫 |
+| Language | 程式庫 |
 | --- | --- |
 | Java |Apache Qpid Java 訊息服務 (JMS) 用戶端<br/>IIT Software SwiftMQ Java 用戶端 |
 | C |Apache Qpid Proton-C |
@@ -69,7 +70,7 @@ Azure 服務匯流排中的 AMQP 1.0 支援代表您現在能夠從一組平台�
 
 **圖 2：AMQP 1.0 用戶端程式庫的資料表**
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>總結
 * AMQP 1.0 是一個既開放又可靠的訊息通訊協定，可以用來建置跨平台的混合應用程式。 AMQP 1.0 是一項 OASIS 標準。
 * Azure 服務匯流排和 Service Bus for Windows Server (Service Bus 1.1) 中現可支援 AMQP 1.0。 價格與現有的通訊協定一樣。
 

@@ -9,12 +9,12 @@ metadata:
   author: sethmanheim
   ms.author: sethm
   ms.date: 03/11/2020
-  ms.openlocfilehash: f531b33043dde14c9158a15276b4b829c95e5ca2
-  ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+  ms.openlocfilehash: 7a1724428131cd47ed8bd5fffc779c07e077c2f0
+  ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 05/25/2020
-  ms.locfileid: "83834657"
+  ms.lasthandoff: 07/23/2020
+  ms.locfileid: "87084274"
 landingContent:
 - title: 關於 Azure 通知中樞
   linkLists:
@@ -49,7 +49,7 @@ landingContent:
     - text: 將推播通知傳送到所有已註冊的 Android 裝置
       url: notification-hubs-android-push-notification-google-fcm-get-started.md
     - text: 將推播通知傳送至 Swift iOS 應用程式
-      url: notification-hubs-ios-push-notifications-swift-apps-get-started.md
+      url: ./ios-sdk-get-started.md
   - linkListType: how-to-guide
     links:
     - text: 傳送跨平台通知
@@ -83,4 +83,4 @@ landingContent:
     - text: 支援選項
       url: https://azure.microsoft.com/support/options/
     - text: Microsoft 問與答頁面
-      url: https://docs.microsoft.com/answers/topics/azure-notification-hubs.html
+      url: /answers/topics/azure-notification-hubs.html

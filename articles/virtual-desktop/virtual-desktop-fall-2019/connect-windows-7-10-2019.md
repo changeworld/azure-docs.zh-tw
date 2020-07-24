@@ -5,24 +5,24 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: how-to
-ms.date: 07/10/2020
+ms.date: 07/16/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 78c400ffc6a84696a82c219294f133b729754259
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 3bddfe22f70c1044ca02fb41a1959884f41797bb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261803"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083543"
 ---
-# <a name="connect-with-the-windows-desktop-client"></a>與 Windows 桌面用戶端連線
+# <a name="connect-with-the-windows-desktop-client---fall-2019"></a>與 Windows 桌面用戶端連接-秋季2019
 
 > 適用于： Windows 7、Windows 10 和 Windows 10 IoT 企業版
 
 >[!IMPORTANT]
 >此內容適用於不支援 Azure Resource Manager Windows 虛擬桌面物件的 2019 年秋季版本。 如果您嘗試管理 2020 年春季版更新中引進的 Azure Resource Manager Windows 虛擬桌面物件，請參閱[這篇文章](../connect-windows-7-10.md)。
 
-您可以使用 Windows 桌面用戶端，存取 Windows 7、Windows 10 和 Windows 10 IoT 企業版裝置上的 Windows 虛擬桌面資源。
+您可以使用 Windows 桌面用戶端，存取 Windows 7、Windows 10 和 Windows 10 IoT 企業版裝置上的 Windows 虛擬桌面資源。 用戶端不支援 Windows 8 或 Windows 8.1。
 
 >[!NOTE]
 >Windows 用戶端會自動預設為 Windows 虛擬桌面秋季2019版。 不過，如果用戶端偵測到使用者也有 Azure Resource Manager 資源，它會自動新增資源，或通知使用者其可用。

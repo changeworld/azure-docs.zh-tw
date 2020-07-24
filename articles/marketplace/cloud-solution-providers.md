@@ -3,16 +3,16 @@ title: 雲端解決方案提供者 - Microsoft 商業市集
 description: 了解如何透過商業市集中的 Microsoft 雲端解決方案提供者 (CSP) 計畫合作夥伴通道來銷售您的供應項目。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: article
 author: keferna
 ms.author: keferna
-ms.date: 04/16/2020
-ms.openlocfilehash: d6c3af312717627a1719c5f1029ae638e7d4f827
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/14/2020
+ms.openlocfilehash: 8ac69d7d611aa75584955ed6ed83ab79c70ed73a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86104430"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082796"
 ---
 # <a name="cloud-solution-provider-program"></a>雲端解決方案提供者計畫
 
@@ -30,31 +30,31 @@ ms.locfileid: "86104430"
 - 受控應用程式
 
 > [!NOTE]
-> 根據預設，容器和自備授權 (BYOL) VM SKU 已選擇加入由 CSP 計畫的合作夥伴進行銷售的行列。
+> 根據預設，容器和自備授權（BYOL） VM 方案已加入宣告至 CSP 方案中的合作夥伴。
 
-## <a name="how-to-configure-an-offering"></a>如何設定供應項目
+## <a name="how-to-configure-an-offer"></a>如何設定供應專案
 
-CSP 計畫選擇加入設定會在合作夥伴中心或 Cloud Partner 入口網站的供應項目建立體驗中設定。 [深入了解如何變更發行者體驗](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/Cloud-Marketplace-In-Partner-Center/m-p/9738#M293)。
+當您在合作夥伴中心建立供應專案時，請設定 CSP 方案加入宣告。 [深入了解如何變更發行者體驗](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/Cloud-Marketplace-In-Partner-Center/m-p/9738#M293)。
 
 ### <a name="partner-center-opt-in"></a>合作夥伴中心選擇加入
 
-在合作夥伴中心，您可以在 CSP 轉銷商的對象模組底下找到選擇加入體驗。
+加入宣告體驗位於 CSP 轉銷商的物件模組底下：
 
 ![CSP 轉銷商對象](media/marketplace-publishers-guide/csp-reseller-audience.png)
 
-CSP 轉銷商的對象模組中有三個選項可供您選擇：
+有三個選項可以選擇：
 
-- 選項一：CSP 計畫中的任何合作夥伴
-- 選項二：CSP 計畫中我選定的特定合作夥伴
-- 選項三：不提供給 CSP 計畫中的任何合作夥伴
+1. CSP 計畫中的任何合作夥伴。
+2. 我選取 CSP 方案中的特定合作夥伴。
+3. CSP 計畫中沒有任何合作夥伴。
 
-#### <a name="option-one-any-partner-in-the-csp-program"></a>選項一：CSP 計畫中的任何合作夥伴
+#### <a name="option-1-any-partner-in-the-csp-program"></a>選項1： CSP 計畫中的任何合作夥伴
 
 ![CSP 計畫中的任何合作夥伴](media/marketplace-publishers-guide/csp-reseller-option-one.png)
 
  若選擇此選項，CSP 計畫中的所有合作夥伴都有資格將您的供應項目轉銷給其客戶。
 
-#### <a name="option-two-specific-partners-in-the-csp-program-i-select"></a>選項二：CSP 計畫中我選定的特定合作夥伴
+#### <a name="option-2-specific-partners-in-the-csp-program-i-select"></a>選項2：我選取的 CSP 方案中的特定合作夥伴
 
 ![CSP 計畫中我選定的特定合作夥伴](media/marketplace-publishers-guide/csp-reseller-option-two.png)
 
@@ -87,17 +87,11 @@ CSP 轉銷商的對象頁面上隨即會出現資料表，裡面會顯示您所�
 
 如果您的供應項目已有授權合作夥伴清單，而您想要讓其他供應項目使用同一份清單，請使用**匯入/匯出**。 瀏覽至具有 CSP 清單的供應項目，然後選取 [匯出 CSP]。 此功能會開發可供匯入至其他供應項目的 .csv 檔案。
 
-#### <a name="option-three-no-partners-in-the-csp-program"></a>選項三：不提供給 CSP 計畫中的任何合作夥伴
+#### <a name="option-3-no-partners-in-the-csp-program"></a>選項3： CSP 計畫中沒有任何合作夥伴
 
 ![不提供給 CSP 計畫中的任何合作夥伴](media/marketplace-publishers-guide/csp-reseller-option-three.png)
 
 若選擇此選項，即表示您選擇不要讓供應項目加入 CSP 計畫。 您可以隨時變更此選擇。
-
-### <a name="cloud-partner-portal-opt-in"></a>Cloud Partner 入口網站選擇加入
-
-在 Cloud Partner 入口網站中，可於 [市集] 或 [店面] 索引標籤上設定選擇加入。只有在合作夥伴中心才能選擇 CSP 計畫中的特定合作夥伴。
-
-![CPP 中的 CSP 選擇加入體驗](media/marketplace-publishers-guide/csp-opt-in.png)
 
 ## <a name="deauthorize-partners-in-the-csp-program"></a>將 CSP 計畫中的合作夥伴取消授權
 
@@ -115,9 +109,6 @@ CSP 轉銷商的對象頁面上隨即會出現資料表，裡面會顯示您所�
 4. 針對 [選取最能說明問題的問題]，請選取 [更新現有供應項目]。
 5. 選取 [下一步] 以導向至可供輸入更多問題詳細資料的 [問題詳細資料] 頁面。
 6. 使用 [將 CSP 取消授權] 作為問題的標題，並填寫其餘必要區段。
-
-
-
 
 ## <a name="navigate-between-options"></a>在選項之間瀏覽
 
@@ -175,19 +166,13 @@ CSP 轉銷商的對象頁面上隨即會出現資料表，裡面會顯示您所�
 
 ## <a name="sharing-sales-and-support-materials-with-partners-in-the-csp-program"></a>與 CSP 計畫合作夥伴共用銷售和支援材料
 
-為了協助雲端解決方案提供者計畫中的合作夥伴，使其能夠最有效地展現您的供應項目，並與您的組織合作，您必須提交可供轉銷商使用的銷售和支援材料。 這些資源不會向市集店面中的客戶公開。
+若要協助雲端解決方案提供者方案中的合作夥伴最有效地代表您的供應專案，並與您的組織互動，您必須提交可供轉銷商使用的銷售和支援材料。 這些資源不會向市集店面中的客戶公開。
 
 ### <a name="partner-center-csp-channel"></a>合作夥伴中心 CSP 通道
 
 如果您已選擇加入合作夥伴中心內的 CSP 通道，發行者必須在供應項目清單模組底下的 CSP 通道中，輸入裝載了相關行銷材料和通道連絡資訊的 URL：
 
 ![合作夥伴中心 CSP 宣傳材料資訊](media/marketplace-publishers-guide/pc-csp-channel.png)
-
-### <a name="cloud-partner-portal-csp-channel"></a>Cloud Partner 入口網站 CSP 通道
-
-如果您已選擇加入 Cloud Partner 入口網站內的 CSP 通道，發行者必須在 CSP 通道中輸入裝載了相關行銷材料和通道連絡資訊的 URL：
-
-![Cloud Partner 入口網站 CSP 宣傳材料資訊](media/marketplace-publishers-guide/cpp-csp-information.png)
 
 ## <a name="next-steps"></a>後續步驟
 

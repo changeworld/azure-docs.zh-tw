@@ -6,18 +6,18 @@ ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: bb9783b38185940f0e75e888c3bc69a1edcc6cbb
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 02cb862c5ec6f75d546aabcd6e8ac97a4de961a4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86249252"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082948"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>在 .NET Azure Functions 中使用相依性插入
 
-Azure Functions 支援相依性插入 (DI) 軟體設計模式，這是在類別及其相依性之間達成[控制反轉 (IoC)](https://docs.microsoft.com/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#dependency-inversion) 的技術。
+Azure Functions 支援相依性插入 (DI) 軟體設計模式，這是在類別及其相依性之間達成[控制反轉 (IoC)](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#dependency-inversion) 的技術。
 
-- Azure Functions 中的相依性插入是以 .NET Core 相依性插入功能為基礎。 建議熟悉 [.NET Core 相依性插入](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection) (機器翻譯)。 您覆寫相依性的方式，與在取用方案上使用 Azure Functions 讀取設定值的方式有所不同。
+- Azure Functions 中的相依性插入是以 .NET Core 相依性插入功能為基礎。 建議熟悉 [.NET Core 相依性插入](/aspnet/core/fundamentals/dependency-injection) (機器翻譯)。 您覆寫相依性的方式，與在取用方案上使用 Azure Functions 讀取設定值的方式有所不同。
 
 - 從 Azure Functions 2.x 開始支援相依性插入。
 
@@ -115,7 +115,7 @@ namespace MyNamespace
 
 ## <a name="service-lifetimes"></a>服務存留期
 
-Azure Functions 應用程式提供與 [ASP.NET 相依性插入](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection#service-lifetimes)相同的服務存留期。 針對 Functions 應用程式，不同服務存留期的行為如下所示：
+Azure Functions 應用程式提供與 [ASP.NET 相依性插入](/aspnet/core/fundamentals/dependency-injection#service-lifetimes)相同的服務存留期。 針對 Functions 應用程式，不同服務存留期的行為如下所示：
 
 - **暫時性**：暫時性服務會在每次要求服務時建立。
 - **限域**：限域服務存留期符合函式執行存留期。 限域服務會在每次執行後建立。 稍後在執行期間對該服務提出的要求會重複使用現有服務執行個體。
@@ -125,7 +125,7 @@ Azure Functions 應用程式提供與 [ASP.NET 相依性插入](https://docs.mic
 
 ## <a name="logging-services"></a>記錄服務
 
-如果您需要自己的記錄提供者，請將自訂類型註冊為的實例 [`ILoggerProvider`](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.iloggerfactory) ，這可透過[Microsoft Extensions. 記錄抽象](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Abstractions/)NuGet 封裝取得。
+如果您需要自己的記錄提供者，請將自訂類型註冊為的實例 [`ILoggerProvider`](/dotnet/api/microsoft.extensions.logging.iloggerfactory) ，這可透過[Microsoft Extensions. 記錄抽象](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Abstractions/)NuGet 封裝取得。
 
 Azure Functions 會自動新增 Application Insights。
 
@@ -250,7 +250,7 @@ public class HttpTrigger
 }
 ```
 
-如需使用選項的詳細資訊，請參閱 [ASP.NET Core 中的選項模式](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options)。
+如需使用選項的詳細資訊，請參閱 [ASP.NET Core 中的選項模式](/aspnet/core/fundamentals/configuration/options)。
 
 > [!WARNING]
 > 避免嘗試從取用方案上的 *local.settings.json* 或 *appsettings.{environment}.json* 等檔案讀取值。 從這些與觸發程式連線相關之檔案中讀取的值，無法在應用程式調整時提供，因為在調整控制器建立應用程式的新實例時，裝載基礎結構無法存取設定資訊。

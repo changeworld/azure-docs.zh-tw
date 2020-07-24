@@ -4,12 +4,12 @@ description: 在 Azure Service Fabric 上建立第一個 Linux 容器應用程�
 ms.topic: conceptual
 ms.date: 1/4/2019
 ms.custom: tracking-python
-ms.openlocfilehash: 783f6a06d57a447998710e2c8ff349b23ef751c5
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 547030b983dd02e7b65d404188dccdcc24d53a22
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86256404"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083832"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>在 Linux 建立第一個 Service Fabric 容器應用程式
 > [!div class="op_single_selector"]
@@ -21,11 +21,13 @@ ms.locfileid: "86256404"
 > [!NOTE]
 > 本文適用於 Linux 開發環境。  Service Fabric 叢集執行階段與 Docker 執行階段必須在相同的作業系統上執行。  您無法在 Windows 叢集上執行 Linux 容器。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 * 執行下列項目的開發電腦︰
   * [SERVICE FABRIC SDK 和工具](service-fabric-get-started-linux.md)。
   * [Docker CE for Linux](https://docs.docker.com/engine/installation/#prior-releases). 
   * [Service Fabric CLI](service-fabric-cli.md)
+
+* 具有三個或更多節點的 Linux 叢集。
 
 * Azure Container Registry 中的登錄 - 在 Azure 訂用帳戶中[建立容器登錄](../container-registry/container-registry-get-started-portal.md)。 
 
@@ -86,7 +88,7 @@ if __name__ == "__main__":
 ```
 
 ## <a name="build-the-image"></a>建立映像
-執行 `docker build` 命令來建立可執行 Web 應用程式的映像。 開啟 PowerShell 視窗並瀏覽至 *c:\temp\helloworldapp*。 執行下列命令：
+執行 `docker build` 命令來建立可執行 Web 應用程式的映像。 開啟 PowerShell 視窗並瀏覽至 *c:\temp\helloworldapp*。 執行以下命令：
 
 ```bash
 docker build -t helloworldapp .
@@ -257,7 +259,7 @@ sfctl cluster select --endpoint http://localhost:19080
 ./install.sh
 ```
 
-開啟瀏覽器並流覽至 Service Fabric Explorer，網址為 HTTP： \/ /localhost： 19080/Explorer (以 VM 的私人 IP 取代 localhost （如果在 Mac OS X) 上使用 Vagrant）。 展開 [應用程式] 節點，請注意，您的應用程式類型現在有一個項目，而另一個則是該類型的第一個執行個體。
+開啟瀏覽器並流覽至 Service Fabric Explorer，網址為 HTTP： \/ /localhost： 19080/Explorer （如果在 Mac OS X 上使用 Vagrant，請以 VM 的私人 IP 取代 localhost）。 展開 [應用程式] 節點，請注意，您的應用程式類型現在有一個項目，而另一個則是該類型的第一個執行個體。
 
 連線到執行中的容器。 開啟網頁瀏覽器，指向埠4000上傳回的 IP 位址，例如 "HTTP： \/ /localhost： 4000"。 您應該會看到 "Hello World!" 標題 顯示在瀏覽器中。
 
@@ -371,7 +373,7 @@ docker rmi myregistry.azurecr.io/samples/helloworldapp
 若要將其他容器服務新增至已使用 yeoman 建立的應用程式，請執行下列步驟︰
 
 1. 將目錄變更為現有應用程式的根目錄。 例如，如果 `MyApplication` 是 Yeoman 所建立的應用程式，則為 `cd ~/YeomanSamples/MyApplication`。
-2. `yo azuresfcontainer:AddService`執行
+2. 執行 `yo azuresfcontainer:AddService`
 
 <a id="manually"></a>
 

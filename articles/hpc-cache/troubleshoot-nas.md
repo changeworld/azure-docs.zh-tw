@@ -5,13 +5,13 @@ author: ekpgh
 ms.service: hpc-cache
 ms.topic: troubleshooting
 ms.date: 03/18/2020
-ms.author: rohogue
-ms.openlocfilehash: 8d576f8660d140a95eb67f7babf1c0af61f04278
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: v-erkel
+ms.openlocfilehash: efa163a2c10a7dc93bf5d26865a0e7eb43f11dea
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515452"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082761"
 ---
 # <a name="troubleshoot-nas-configuration-and-nfs-storage-target-issues"></a>針對 NAS 設定和 NFS 存放裝置目標問題進行疑難排解
 
@@ -20,7 +20,7 @@ ms.locfileid: "85515452"
 本文包含如何檢查埠以及如何啟用對 NAS 系統之根存取的詳細資料。 其中也包含較不常見的問題的詳細資訊，可能會導致建立 NFS 儲存體目標失敗。
 
 > [!TIP]
-> 使用本指南之前，請先閱讀[NFS 儲存體目標的必要條件](hpc-cache-prereqs.md#nfs-storage-requirements)。
+> 使用本指南之前，請先閱讀[NFS 儲存體目標的必要條件](hpc-cache-prerequisites.md#nfs-storage-requirements)。
 
 如果此處未包含您問題的解決方案，請[開啟支援票證](hpc-cache-support-ticket.md)，讓 Microsoft 服務和支援人員可以與您一起調查並解決問題。
 

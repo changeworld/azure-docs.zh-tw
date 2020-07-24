@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: e59a985f59da1b6a40a6b583d5e2a490611a702c
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: b73727e6bd824b80fbc3897055d71f6b9c632a61
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86043847"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084359"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>網路安全性群組流量記錄簡介
 
@@ -357,7 +357,7 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 
 **流量記錄成本**： NSG 流量記錄是根據所產生的記錄量來計費。 高流量可能會產生大量流量記錄和相關費用。 NSG 流量記錄價格不包括儲存體的基礎結構費用。 搭配 NSG 流量記錄使用保留原則功能，表示在一段時間內會產生個別的儲存成本。 如果您不需要保留原則功能，建議您將此值設為 0。 如需詳細資訊，請參閱[網路監看員定價](https://azure.microsoft.com/pricing/details/network-watcher/)和[Azure 儲存體定價](https://azure.microsoft.com/pricing/details/storage/)，以取得其他詳細資料。
 
-**輸入流量不正確的位元組和封包計數**：[網路安全性群組（nsg）](https://docs.microsoft.com/azure/virtual-network/security-overview)會實作為具[狀態防火牆](https://en.wikipedia.org/wiki/Stateful_firewall?oldformat=true)。 不過，由於平臺限制，控制輸入流量的規則會以無狀態的方式執行。 因為此位元組和封包計數不會針對這些流程進行記錄。 因此，在 NSG 流量記錄（和流量分析）中回報的位元組和封包數目可能與實際數位不同。 此外，輸入流程現在不會終止。 這項限制已排程于2020年12月修正。 
+**使用者定義的輸入 TCP 規則的問題**：[網路安全性群組（nsg）](https://docs.microsoft.com/azure/virtual-network/security-overview)會實作為具[狀態防火牆](https://en.wikipedia.org/wiki/Stateful_firewall?oldformat=true)。 不過，由於目前的平臺限制，會以無狀態的方式來執行影響輸入 TCP 流量的使用者定義規則。 因此，受使用者定義輸入規則影響的流程會變成非終止。 此外，不會記錄這些流程的位元組和封包計數。 因此，在 NSG 流量記錄（和流量分析）中回報的位元組和封包數目可能與實際數位不同。 修正這些問題的加入宣告旗標已排程于2020年12月的最新版本。 在過渡期間，客戶因此行為而面臨的嚴重問題，可能會要求透過支援人員進行選擇，請在網路監看員 > NSG 流量記錄下提出支援要求。  
 
 **從網際網路 ip 記錄到沒有公用 ip 的 vm 的輸入流量**：沒有公用 ip 位址的 vm 會透過與 NIC 相關聯的公用 ip 位址指派為實例層級的公用 ip，或屬於基本負載平衡器後端集區的一部分，請使用[預設 SNAT](../load-balancer/load-balancer-outbound-connections.md) ，並具有由 Azure 指派的 IP 位址，以加速輸出連線能力。 因此，如果流程是以指派給 SNAT 的埠範圍內的埠為目的地，您可能會看到來自網際網路 IP 位址之流量的流量記錄專案。 雖然 Azure 不允許這些流量進入 VM，但會記錄嘗試，並依設計出現在網路監看員的 NSG 流量記錄中。 我們建議使用 NSG 明確封鎖不想要的輸入網際網路流量。
 
@@ -419,7 +419,7 @@ NSG 流量記錄與服務端點相容，而不需要任何額外的設定。 請
 
 **流量記錄版本 1 & 2 之間的差異為何？**
 
-流量記錄第2版引進了_流程狀態_的概念，& 儲存傳輸位元組和封包的相關資訊。 [閱讀更多內容](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview#log-file)
+流量記錄第2版引進了_流程狀態_的概念，& 儲存傳輸位元組和封包的相關資訊。 [閱讀更多資訊](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview#log-file)
 
 ## <a name="pricing"></a>定價
 

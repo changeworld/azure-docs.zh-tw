@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 9b81d58bbb79b05ea54af8b3f06f29b4a45a6555
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 2be430fc032acd94f851072f80d14a43638c8863
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86058158"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084580"
 ---
 # <a name="configure-a-content-key-authorization-policy"></a>設定內容金鑰授權原則
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../../includes/media-services-selector-content-key-auth-policy.md)]
@@ -33,7 +33,7 @@ ms.locfileid: "86058158"
 
 當播放器要求設定為動態加密的串流時，媒體服務會使用設定的金鑰，以 AES 或 DRM 加密將您的內容動態加密。 為了將串流解密，播放程式將向金鑰傳遞服務要求金鑰。 為了決定使用者是否有權取得金鑰，服務會評估為金鑰指定的授權原則。
 
-如果您預計有多個內容金鑰，或需要指定金鑰/授權傳遞服務 URL，而非媒體服務金鑰傳遞服務，請使用媒體服務 .NET SDK 或 REST API。 如需詳細資訊，請參閱：
+如果您預計有多個內容金鑰，或需要指定金鑰/授權傳遞服務 URL，而非媒體服務金鑰傳遞服務，請使用媒體服務 .NET SDK 或 REST API。 如需詳細資訊，請參閱
 
 * [使用媒體服務 .NET SDK 設定內容金鑰授權原則](media-services-dotnet-configure-content-key-auth-policy.md)
 * [使用媒體服務 REST API 設定內容金鑰授權原則](media-services-rest-configure-content-key-auth-policy.md)
@@ -57,7 +57,7 @@ Open 限制表示系統會傳送金鑰給提出金鑰要求的任何人。 這�
 ### <a name="token-restriction"></a>權杖限制
 若要選擇權杖限制原則，請選取 [權杖]**** 按鈕。
 
-權杖限制原則必須伴隨 Security Token Service (STS) 所發出的權杖。 媒體服務支援簡單 web 權杖（[SWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)）和 JSON web 權杖（JWT）格式的權杖。 如需詳細資訊，請參閱 [JWT 驗證](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/)。
+權杖限制原則必須伴隨 Security Token Service (STS) 所發出的權杖。 媒體服務支援簡單 web 權杖（[SWT](/previous-versions/azure/azure-services/gg185950(v=azure.100)#BKMK_2)）和 JSON web 權杖（JWT）格式的權杖。 如需詳細資訊，請參閱 [JWT 驗證](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/)。
 
 媒體服務不提供 STS。 您可以建立自訂的 STS 來核發權杖。 STS 必須設定為建立使用指定的索引鍵和問題宣告您在權杖限制組態中指定簽署的權杖。 如果權杖有效，且權杖中的宣告符合為內容金鑰設定的宣告，媒體服務金鑰傳遞服務會將加密金鑰傳回給用戶端。
 
@@ -94,4 +94,3 @@ Open 限制表示系統會傳送金鑰給提出金鑰要求的任何人。 這�
 
 [open_policy]: ./media/media-services-portal-configure-content-key-auth-policy/media-services-protect-content-with-open-restriction.png
 [token_policy]: ./media/media-services-key-authorization-policy/media-services-protect-content-with-token-restriction.png
-

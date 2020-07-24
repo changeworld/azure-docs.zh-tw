@@ -6,11 +6,12 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: tyleonha
 ms.reviewer: glenga
-ms.openlocfilehash: 133e89bd9187ae5e48fa208b407678760d31adfd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 51edbc18a929f4f954fb1a582a417bc1600d1a6f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78163755"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082982"
 ---
 # <a name="debug-powershell-azure-functions-locally"></a>在本機上對 PowerShell Azure Functions 進行調試
 
@@ -37,7 +38,7 @@ PSFunctionApp
  | - profile.ps1
 ```
 
-此函式應用程式類似于您在完成[PowerShell 快速入門](functions-create-first-function-powershell.md)時所取得的功能。
+此函式應用程式類似于您在完成[PowerShell 快速入門](./functions-create-first-function-vs-code.md?pivots=programming-language-powershell)時所取得的功能。
 
 中的函式程式碼 `run.ps1` 看起來會像下面這樣的腳本：
 
@@ -91,10 +92,10 @@ if($name) {
 若要在 Visual Studio Code 中進行 PowerShell 函式的偵錯工具，您必須安裝下列各項：
 
 * [適用于 Visual Studio Code 的 PowerShell 擴充功能](/powershell/scripting/components/vscode/using-vscode)
-* [Visual Studio Code 的 Azure Functions 延伸模組](functions-create-first-function-vs-code.md)
+* [適用於 Visual Studio Code 的 Azure Functions 擴充功能](functions-create-first-function-vs-code.md) \(英文\)
 * [PowerShell Core 6.2 或更高版本](/powershell/scripting/install/installing-powershell-core-on-windows)
 
-安裝這些相依性之後，請載入現有的 PowerShell 函數專案，或[建立您的第一個 powershell](functions-create-first-function-powershell.md)函式專案。
+安裝這些相依性之後，請載入現有的 PowerShell 函數專案，或[建立您的第一個 powershell](./functions-create-first-function-vs-code.md?pivots=programming-language-powershell)函式專案。
 
 >[!NOTE]
 > 如果您的專案沒有所需的設定檔，系統會提示您加以新增。
@@ -128,7 +129,7 @@ PowerShell Core 會與 Windows PowerShell 並存安裝。 將 PowerShell Core �
 * 將 PowerShell 偵錯工具附加至函式執行時間內的 PowerShell 執行時間。
 
 >[!NOTE]
-> 您必須確保 PSWorkerInProcConcurrencyUpperBound 設定為1，以確保 Visual Studio Code 中的正確調試過程。 此為預設值。
+> 您必須確保 PSWorkerInProcConcurrencyUpperBound 設定為1，以確保 Visual Studio Code 中的正確調試過程。 這是預設值。
 
 在執行函數應用程式的情況下，您需要個別的 PowerShell 主控台來呼叫 HTTP 觸發的函式。
 

@@ -8,17 +8,18 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: af5e511cbf273bc4e4fa0a08d089a955426fe75c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: caa3717fdf915e205c1a4f82f4e199346ca29fcb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75454200"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082800"
 ---
 # <a name="use-the-opc-vault-certificate-management-service"></a>使用 OPC 保存庫憑證管理服務
 
 本文說明如何註冊應用程式，以及如何為您的 OPC UA 裝置發行已簽署的應用程式憑證。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 ### <a name="deploy-the-certificate-management-service"></a>部署憑證管理服務
 
@@ -37,7 +38,7 @@ ms.locfileid: "75454200"
 
 1. 在中開啟您的憑證服務 `https://myResourceGroup-app.azurewebsites.net` ，然後登入。
 2. 移至 [**註冊新**的]。 若為應用程式註冊，使用者至少必須指派寫入者角色。
-2. 輸入表單會遵循 OPC UA 中的命名慣例。 例如，在下列螢幕擷取畫面中，會顯示 OPC UA .NET Standard 堆疊中的[OPC Ua 參照伺服器](https://github.com/OPCFoundation/UA-.NETStandard/tree/master/SampleApplications/Workshop/Reference)範例設定：
+2. 輸入表單會遵循 OPC UA 中的命名慣例。 例如，在下列螢幕擷取畫面中，會顯示 OPC UA .NET Standard 堆疊中的[OPC Ua 參照伺服器](https://github.com/OPCFoundation/UA-.NETStandard/tree/master/Applications/ReferenceServer)範例設定：
 
    ![UA 參考伺服器註冊的螢幕擷取畫面](media/howto-opc-vault-secure/reference-server-registration.png "UA 參考伺服器註冊")
 

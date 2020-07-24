@@ -13,11 +13,12 @@ ms.workload: infrastructure
 ms.date: 05/25/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f7ac8e69c4e149fdd0f365e19f7a0282a547af43
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c7e8d4875a8bf3f53ac536ae95ac7499a74d45c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77617191"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082149"
 ---
 # <a name="connect-a-virtual-network-to-hana-large-instances"></a>將虛擬網路連線至 HANA 大型執行個體
 
@@ -95,7 +96,7 @@ New-AzVirtualNetworkGatewayConnection -Name $myConnectionName `
 ```
 
 > [!NOTE]
-> 命令 Get-azvirtualnetworkgatewayconnection， **ExpressRouteGatewayBypass**中的最後一個參數是啟用 ExpressRoute 快速路徑的新參數。 可減少您的 HANA 大型實例單位與 Azure Vm 之間的網路延遲的功能。 在5月2019中新增的功能。 如需詳細資訊，請參閱[SAP Hana （大型實例）網路架構](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture)一文。 請確定您執行的是最新版本的 PowerShell Cmdlet，然後再執行命令。
+> 命令 Get-azvirtualnetworkgatewayconnection， **ExpressRouteGatewayBypass**中的最後一個參數是啟用 ExpressRoute 快速路徑的新參數。 可減少您的 HANA 大型實例單位與 Azure Vm 之間的網路延遲的功能。 在5月2019中新增的功能。 如需詳細資訊，請參閱[SAP Hana （大型實例）網路架構](./hana-network-architecture.md)一文。 請確定您執行的是最新版本的 PowerShell Cmdlet，然後再執行命令。
 
 若要將閘道連線到與訂用帳戶關聯的多個 ExpressRoute 線路，可能需要執行此步驟多次。 例如，您可能要將相同的虛擬網路閘道連線到 ExpressRoute 線路，而此線路會將虛擬網路連線到內部部署網路。
 
@@ -138,7 +139,7 @@ New-AzVirtualNetworkGatewayConnection -Name $myConnectionName `
 - Asn （自發系統編號）有一項限制，可用來將您的內部部署路由公告至 HANA 大型實例。 您的內部部署不得以65000–65020或65515的範圍來公告具有私用 Asn 的任何路由。 
 - 針對將內部部署直接存取連接到 HANA 大型實例的案例，您需要計算連接到 Azure 的線路費用。 如需價格，請查看[全球接觸附加](https://azure.microsoft.com/pricing/details/expressroute/)元件的價格。
 
-若要取得套用至部署的一或兩個案例，請使用 Azure 開啟支援訊息，如[開啟 HANA 大型實例的支援要求](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-li-portal#open-a-support-request-for-hana-large-instances)中所述
+若要取得套用至部署的一或兩個案例，請使用 Azure 開啟支援訊息，如[開啟 HANA 大型實例的支援要求](./hana-li-portal.md#open-a-support-request-for-hana-large-instances)中所述
 
 需要使用的資料和關鍵字，讓 Microsoft 能夠在您的要求上路由及執行，如下所示：
 

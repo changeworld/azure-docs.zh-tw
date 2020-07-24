@@ -5,11 +5,12 @@ ms.assetid: 4444dbf7-363c-47e2-b24a-dbd45cb08491
 ms.topic: article
 ms.date: 07/06/2016
 ms.custom: seodec18
-ms.openlocfilehash: 1295080d0eec7a4e88029cdadd85863f5f40d034
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c1b0ce62905424032c2100a1a032fa43ba97578f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74689253"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084852"
 ---
 # <a name="restore-an-app-in-azure"></a>在 Azure 中還原應用程式
 本文說明如何在 [Azure App Service](../app-service/overview.md) 中還原您先前備份的應用程式 (請參閱[在 Azure 中備份應用程式](manage-backup.md))。 您可以依需求將應用程式及其連結的資料庫還原到先前的狀態，或是根據您的其中一個原始應用程式備份來建立新的應用程式。 Azure App Service 支援使用下列資料庫來進行備份與還原︰
@@ -28,14 +29,14 @@ ms.locfileid: "74689253"
     ![選擇立即還原][ChooseRestoreNow]
 2. 在 [還原]**** 頁面中，先選取備份來源。
    
-    ![](./media/web-sites-restore/021ChooseSource1.png)
+    ![顯示要在哪裡選取備份來源的螢幕擷取畫面。](./media/web-sites-restore/021ChooseSource1.png)
    
     [應用程式備份] **** 選項會顯示目前應用程式的所有現有備份，您可以輕鬆地選取其中一個。
     [儲存體] **** 選項可讓您從您訂用帳戶中任何現有 Azure 儲存體帳戶和容器中，選取任何備份 ZIP 檔案。
     如果您想要還原另一個應用程式的備份，請使用 [儲存體] **** 選項。
 3. 接著，在 [還原目的地] **** 中指定應用程式還原目的地。
    
-    ![](./media/web-sites-restore/022ChooseDestination1.png)
+    ![螢幕擷取畫面：顯示指定應用程式還原目的地的位置。](./media/web-sites-restore/022ChooseDestination1.png)
    
    > [!WARNING]
    > 如果您選擇 [覆寫]****，則目前應用程式中的所有現有資料都將被清除並覆寫。 按一下 [確定] **** 之前，請確定這確實是您想要執行的動作。
@@ -49,7 +50,7 @@ ms.locfileid: "74689253"
    
     您可以選取 [現有應用程式] **** ，將應用程式備份還原到相同資源群組中的另一個應用程式。 使用此選項之前，您應該已經在資源群組中，建立具有應用程式備份中所定義之資料庫組態的鏡像資料庫組態的另一個應用程式。 您也可以建立**新**應用程式作為還原內容的目標。
 
-4. 按一下 [確定]。
+4. 按一下 [確定]  。
 
 <a name="StorageAccount"></a>
 
@@ -76,7 +77,7 @@ ms.locfileid: "74689253"
 
 ## <a name="automate-with-scripts"></a>使用指令碼進行自動化
 
-您可以使用 [Azure CLI](/cli/azure/install-azure-cli) 或 [Azure PowerShell](/powershell/azure/overview)，透過指令碼將備份管理作業自動化。
+您可以使用 [Azure CLI](/cli/azure/install-azure-cli) 或 [Azure PowerShell](/powershell/azure/)，透過指令碼將備份管理作業自動化。
 
 例如，請參閱：
 

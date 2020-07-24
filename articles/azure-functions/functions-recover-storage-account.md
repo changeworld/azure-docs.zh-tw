@@ -5,11 +5,12 @@ author: alexkarcher-msft
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: alkarche
-ms.openlocfilehash: 8fcd0661e2c7cab505121cf0d4d7b4c1d29017f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d84e1269fecf3bd85538415b5790c22aaf6eb01e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77063776"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085107"
 ---
 # <a name="troubleshoot-error-azure-functions-runtime-is-unreachable"></a>疑難排解錯誤：「無法連線到 Azure Functions 執行階段」
 
@@ -17,7 +18,7 @@ ms.locfileid: "77063776"
 
 > 「錯誤：無法連線到 Azure Functions 執行階段。 如需存放裝置設定的詳細資訊，請按一下這裡。」
 
-當 Azure Functions 執行階段無法啟動時，就會發生此問題。 問題的最常見原因是函式應用程式已失去其儲存體帳戶的存取權。 如需詳細資訊，請參閱[儲存體帳戶需求](https://docs.microsoft.com/azure/azure-functions/functions-create-function-app-portal#storage-account-requirements)。
+當 Azure Functions 執行階段無法啟動時，就會發生此問題。 問題的最常見原因是函式應用程式已失去其儲存體帳戶的存取權。 如需詳細資訊，請參閱[儲存體帳戶需求](./functions-create-function-app-portal.md#storage-account-requirements)。
 
 本文的其餘部分可協助您針對此錯誤的下列原因進行疑難排解，包括如何識別和解決每個案例。
 
@@ -25,7 +26,7 @@ ms.locfileid: "77063776"
 
 每個函式應用程式都需要有儲存體帳戶才能運作。 如果刪除該帳戶，您的函式將無法運作。
 
-首先，在應用程式設定中查閱您的儲存體帳戶名稱。 `AzureWebJobsStorage`或 `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` 包含連接字串中所包裝之儲存體帳戶的名稱。 如需詳細資訊，請參閱[Azure Functions 的應用程式設定參考](https://docs.microsoft.com/azure/azure-functions/functions-app-settings#azurewebjobsstorage)。
+首先，在應用程式設定中查閱您的儲存體帳戶名稱。 `AzureWebJobsStorage`或 `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` 包含連接字串中所包裝之儲存體帳戶的名稱。 如需詳細資訊，請參閱[Azure Functions 的應用程式設定參考](./functions-app-settings.md#azurewebjobsstorage)。
 
 在 Azure 入口網站中搜尋您的儲存體帳戶，以查看它是否仍然存在。 如果已刪除，請重新建立儲存體帳戶，並取代您的儲存體連接字串。 您的函式程式碼會遺失，而且您需要重新部署它。
 
@@ -36,12 +37,12 @@ ms.locfileid: "77063776"
 ### <a name="required-application-settings"></a>必要的應用程式設定
 
 * 必要：
-    * [`AzureWebJobsStorage`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings#azurewebjobsstorage)
+    * [`AzureWebJobsStorage`](./functions-app-settings.md#azurewebjobsstorage)
 * 耗用量方案函式的必要事項：
-    * [`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
-    * [`WEBSITE_CONTENTSHARE`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
+    * [`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](./functions-app-settings.md)
+    * [`WEBSITE_CONTENTSHARE`](./functions-app-settings.md)
 
-如需詳細資訊，請參閱[Azure Functions 的應用程式設定參考](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)。
+如需詳細資訊，請參閱[Azure Functions 的應用程式設定參考](./functions-app-settings.md)。
 
 ### <a name="guidance"></a>指引
 
@@ -51,7 +52,7 @@ ms.locfileid: "77063776"
 
 ## <a name="storage-account-credentials-are-invalid"></a>儲存體帳號憑證無效
 
-如果您重新產生儲存體金鑰，則必須更新先前討論的儲存體帳戶連接字串。 如需儲存體金鑰管理的詳細資訊，請參閱[建立 Azure 儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account)。
+如果您重新產生儲存體金鑰，則必須更新先前討論的儲存體帳戶連接字串。 如需儲存體金鑰管理的詳細資訊，請參閱[建立 Azure 儲存體帳戶](../storage/common/storage-account-create.md)。
 
 ## <a name="storage-account-is-inaccessible"></a>無法存取儲存體帳戶
 
@@ -59,7 +60,7 @@ ms.locfileid: "77063776"
 
 * 函式應用程式會部署到您的 App Service 環境，而不會有正確的網路規則，以允許進出儲存體帳戶的流量。
 
-* 儲存體帳戶防火牆已啟用，且未設定為允許進出功能的流量。 如需詳細資訊，請參閱[設定 Azure 儲存體防火牆和虛擬網路](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
+* 儲存體帳戶防火牆已啟用，且未設定為允許進出功能的流量。 如需詳細資訊，請參閱[設定 Azure 儲存體防火牆和虛擬網路](../storage/common/storage-network-security.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
 
 ## <a name="daily-execution-quota-is-full"></a>每日執行配額已滿
 
@@ -87,7 +88,7 @@ Azure 入口網站會直接呼叫執行中的應用程式來提取函式清單�
    
 您也可以從連線至執行應用程式之虛擬網路的電腦，或在虛擬網路中執行的虛擬機器，使用入口網站。 
 
-如需輸入規則設定的詳細資訊，請參閱[App Service 環境的網路功能考慮](https://docs.microsoft.com/azure/app-service/environment/network-info#network-security-groups)的「網路安全性群組」一節。
+如需輸入規則設定的詳細資訊，請參閱[App Service 環境的網路功能考慮](../app-service/environment/network-info.md#network-security-groups)的「網路安全性群組」一節。
 
 ## <a name="next-steps"></a>後續步驟
 
