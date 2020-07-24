@@ -1,15 +1,15 @@
 ---
-title: 在 Azure Kubernetes Service (AKS) 叢集上建立 Windows Server 容器
+title: 使用 Azure CLI 在 AKS 叢集上建立 Windows Server 容器
 description: 瞭解如何快速建立 Kubernetes 叢集、使用 Azure CLI 在 Azure Kubernetes Service （AKS）的 Windows Server 容器中部署應用程式。
 services: container-service
 ms.topic: article
-ms.date: 05/06/2020
-ms.openlocfilehash: 29ee22cb4b28726b25ead6ff78d90de99847666b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/16/2020
+ms.openlocfilehash: 5baa4f807002cc39428eb46e5a86cf59bd022cb2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84886963"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015624"
 ---
 # <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>使用 Azure CLI 在 Azure Kubernetes Service （AKS）叢集上建立 Windows Server 容器
 
@@ -70,7 +70,7 @@ az group create --name myResourceGroup --location eastus
 若要執行支援 Windows Server 容器之節點集區的 AKS 叢集，您的叢集必須採用使用 [Azure CNI][azure-cni-about] (advanced) 網路外掛程式的網路原則。 如需協助方案必要子網路範圍和網路考慮的詳細資訊，請參閱[設定 Azure CNI 網路][use-advanced-networking]。 使用[az aks create][az-aks-create]命令來建立名為*myAKSCluster*的 aks 叢集。 此命令將會建立所需的網路資源（如果不存在）。
 
 * 叢集設定了兩個節點
-* *Windows-admin-password*和*windows-admin-username*參數會針對在叢集上建立的任何 windows Server 容器，設定系統管理員認證。
+* *Windows-admin-password*和*windows-admin-username*參數會針對在叢集上建立的任何 windows server 容器，設定系統管理員認證，而且必須符合[windows server 密碼需求][windows-server-password]。
 * 節點集區使用`VirtualMachineScaleSets`
 
 > [!NOTE]
@@ -294,3 +294,4 @@ az group delete --name myResourceGroup --yes --no-wait
 [aks-faq]: faq.md
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
+[windows-server-password]: /windows/security/threat-protection/security-policy-settings/password-must-meet-complexity-requirements#reference

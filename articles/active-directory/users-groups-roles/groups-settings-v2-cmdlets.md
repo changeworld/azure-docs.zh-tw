@@ -14,11 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 03c5e3fe7fe84b968b59d0668619b3feddacc4f1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ce3a97678dea7e7b26caa3b1b091b023eca1a555
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84727818"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015692"
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>適用於群組管理的 Azure Active Directory 第 2 版 Cmdlet
 
@@ -49,7 +50,7 @@ ms.locfileid: "84727818"
     Binary     2.0.0.115    azuread                      {Add-AzureADAdministrati...}
 ```
 
-現在您可以開始在模組中使用 Cmdlet。 如需有關 Azure AD 模組中各式 Cmdlet 的完整描述，請參閱 [Azure Active Directory PowerShell 第 2 版](/powershell/azure/install-adv2?view=azureadps-2.0)的線上參考文件。
+現在您可以開始在模組中使用 Cmdlet。 如需有關 Azure AD 模組中各式 Cmdlet 的完整描述，請參閱 [Azure Active Directory PowerShell 第 2 版](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)的線上參考文件。
 
 > [!NOTE]
 > Azure AD PowerShell Cmdlet 無法與新的 Powershell 7 搭配使用，因為它是以 .net Core 為基礎。 我們知道這是正在進行更新的過程中。 從現在開始，我們建議使用 Windows Powershell 5.x 模組，以用於 Azure AD Powershell 作業。 
@@ -321,7 +322,7 @@ Cmdlet 將會傳回所連線目錄中的所有群組。
 * postmaster
 * root
 * secure
-* security
+* 安全性
 * ssl-admin
 * webmaster
 
@@ -335,9 +336,9 @@ Office 365 群組會在雲端中建立和管理。 回寫功能可讓您將 Offi
 
 Office 365 群組回寫是 Azure Active Directory （Azure AD）的公開預覽功能，適用于任何付費 Azure AD 授權方案。 如需有關預覽的某些法律資訊，請參閱[Microsoft Azure 預覽的補充使用](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)規定。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-您可以在 [Azure Active Directory Cmdlet](/powershell/azure/install-adv2?view=azureadps-2.0)中找到更多 Azure Active Directory PowerShell 文件。
+您可以在 [Azure Active Directory Cmdlet](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)中找到更多 Azure Active Directory PowerShell 文件。
 
 * [使用 Azure Active Directory 群組來管理資源的存取權](../fundamentals/active-directory-manage-groups.md?context=azure/active-directory/users-groups-roles/context/ugr-context)
 * [整合內部部署身分識別與 Azure Active Directory](../hybrid/whatis-hybrid-identity.md?context=azure/active-directory/users-groups-roles/context/ugr-context)

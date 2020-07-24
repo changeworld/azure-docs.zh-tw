@@ -4,12 +4,12 @@ description: 了解叢集操作員在使用基本排程器功能 (例如，Azure
 services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.openlocfilehash: cccc476a944b28d24c53a947e434d465c94f94ee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 087c1d2efc93b8460a3683a4e66916d73fd4e885
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84704738"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015675"
 ---
 # <a name="best-practices-for-basic-scheduler-features-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Services (AKS) 中基本排程器功能的最佳做法
 
@@ -87,7 +87,7 @@ metadata:
 spec:
    minAvailable: 3
    selector:
-   matchLabels:
+    matchLabels:
       app: nginx-frontend
 ```
 
@@ -103,7 +103,7 @@ metadata:
 spec:
    maxUnavailable: 2
    selector:
-   matchLabels:
+    matchLabels:
       app: nginx-frontend
 ```
 
@@ -127,13 +127,13 @@ kube-advisor 工具可以報告適用於 Windows 應用程式和 Linux 應用程
 
 在裝載多個開發小組和應用程式的 AKS 叢集中，若沒有這些資源要求和限制集，就可能難以追蹤 Pod。 最佳做法是在您的 AKS 叢集上定期執行 `kube-advisor`，特別是如果您未對命名空間指派資源配額時。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 本文著重於 Kubernetes 排程器的基本功能。 如需 AKS 中叢集作業的相關詳細資訊，請參閱下列最佳作法：
 
 * [多租用戶和叢集隔離][aks-best-practices-cluster-isolation]
 * [Kubernetes 排程器的進階功能][aks-best-practices-advanced-scheduler]
-* [驗證與授權][aks-best-practices-identity]
+* [驗證和授權][aks-best-practices-identity]
 
 <!-- EXTERNAL LINKS -->
 [k8s-resource-quotas]: https://kubernetes.io/docs/concepts/policy/resource-quotas/

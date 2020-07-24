@@ -3,13 +3,13 @@ title: 在 Azure Kubernetes Service 中使用 pod 安全性原則（AKS）
 description: 瞭解如何在 Azure Kubernetes Service 中使用 PodSecurityPolicy 控制 pod 許可（AKS）
 services: container-service
 ms.topic: article
-ms.date: 06/30/2020
-ms.openlocfilehash: dd526b7825279d886c60fbb1820222a75abab03e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 07/21/2020
+ms.openlocfilehash: b5e9ec19392056115ae739d40c429d93d6ac810e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507075"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015573"
 ---
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>預覽-在 Azure Kubernetes Service 中使用 pod 安全性原則保護您的叢集（AKS）
 
@@ -348,7 +348,7 @@ kubectl apply -f psp-deny-privileged-clusterrole.yaml
 現在，請建立 ClusterRoleBinding 以使用在上一個步驟中建立的 ClusterRole。 建立名為的檔案 `psp-deny-privileged-clusterrolebinding.yaml` ，並貼上下列 YAML 資訊清單：
 
 ```yaml
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   name: psp-deny-privileged-clusterrolebinding
@@ -426,7 +426,7 @@ kubectl delete -f psp-deny-privileged.yaml
 kubectl delete namespace psp-aks
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 本文說明如何建立 pod 安全性原則，以防止使用特殊許可權存取。 原則可以強制執行許多功能，例如磁片區類型或 RunAs 使用者。 如需可用選項的詳細資訊，請參閱[Kubernetes pod 安全性原則參考][kubernetes-policy-reference]檔。
 
