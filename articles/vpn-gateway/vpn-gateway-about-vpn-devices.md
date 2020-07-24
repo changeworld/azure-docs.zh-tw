@@ -5,13 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 01/10/2020
+ms.date: 07/13/2020
 ms.author: yushwang
-ms.openlocfilehash: dd73c6a388cde55db5437442492d53768eb03866
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 86f040ab4735276e77d537f65130ae125c4757e6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84343144"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086943"
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>關於 VPN 裝置和站對站 VPN 閘道連線的 IPsec/IKE 參數
 
@@ -38,13 +39,14 @@ ms.locfileid: "84343144"
 | ---                | ---                  | ---                   | ---            | ---           |
 | A10 Networks, Inc. |Thunder CFW           |ACOS 4.1.1             |不相容  |[設定指南](https://www.a10networks.com/wp-content/uploads/A10-DG-16161-EN.pdf)|
 | Allied Telesis     |AR 系列 VPN 路由器 |AR 系列 5.4.7+               | [設定指南](https://www.alliedtelesis.com/documents/how-to/configure/site-to-site-vpn-between-azure-and-ar-series-router) |[設定指南](https://www.alliedtelesis.com/documents/how-to/configure/site-to-site-vpn-between-azure-and-ar-series-router)|
+| Arista | CloudEOS 路由器 | vEOS 4.24.0 FX | （未測試） | [設定指南](https://www.arista.com/en/cg-veos-router/veos-router-cloudeos-ipsec-connectivity-to-azure-virtual-network-gateway) |
 | Barracuda Networks, Inc. |Barracuda CloudGen Firewall |原則式︰5.4.3<br>路由式︰6.2.0 |[設定指南](https://campus.barracuda.com/product/cloudgenfirewall/doc/79462887/how-to-configure-an-ikev1-ipsec-site-to-site-vpn-to-the-static-microsoft-azure-vpn-gateway/) |[設定指南](https://campus.barracuda.com/product/cloudgenfirewall/doc/79462889/how-to-configure-bgp-over-ikev2-ipsec-site-to-site-vpn-to-an-azure-vpn-gateway/) |
 | Check Point |Security Gateway |R80.10 |[設定指南](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |[設定指南](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |
 | Cisco              |ASA       |8.3<br>8.4+ (IKEv2\*) |支援 |[設定指南 *](https://www.cisco.com/c/en/us/support/docs/security/adaptive-security-appliance-asa-software/214109-configure-asa-ipsec-vti-connection-to-az.html) |
 | Cisco |ASR |原則式：IOS 15.1<br>路由式：IOS 15.2 |支援 |支援 |
 | Cisco | CSR | RouteBased： IOS-XE 16.10 | （未測試） | [設定指令碼](vpn-gateway-download-vpndevicescript.md) |
 | Cisco |ISR |原則式：IOS 15.0<br>路由式\*：IOS 15.1 |支援 |支援 |
-| Cisco |Meraki |N/A |不相容 |不相容 |
+| Cisco |Meraki |不適用 |不相容 |不相容 |
 | Cisco | vEdge （Viptela OS） | 18.4.0 （主動/被動模式）<br><br>19.2 （主動/主動模式） | 不相容 |  [手動設定（主動/被動）](https://community.cisco.com/t5/networking-documents/how-to-configure-ipsec-vpn-connection-between-cisco-vedge-and/ta-p/3841454)<br><br>[雲端通往設定（主動/主動）](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/Network-Optimization-and-High-Availability/Network-Optimization-High-Availability-book/b_Network-Optimization-and-HA_chapter_00.html) |
 | Citrix |NetScaler MPX、SDX、VPX |10.1 和更新版本 |[設定指南](https://docs.citrix.com/en-us/netscaler/11-1/system/cloudbridge-connector-introduction/cloudbridge-connector-azure.html) |不相容 |
 | F5 |BIG-IP 系列 |12.0 |[設定指南](https://devcentral.f5.com/articles/connecting-to-windows-azure-with-the-big-ip) |[設定指南](https://devcentral.f5.com/articles/big-ip-to-azure-dynamic-ipsec-tunneling) |
@@ -57,7 +59,7 @@ ms.locfileid: "84343144"
 | Juniper |SSG |ScreenOS 6.2 |支援 |[設定指令碼](vpn-gateway-download-vpndevicescript.md) |
 | Juniper |MX |JunOS 12.x|支援 |[設定指令碼](vpn-gateway-download-vpndevicescript.md) |
 | Microsoft |路由及遠端存取服務 |Windows Server 2012 |不相容 |支援 |
-| 開啟系統 AG |任務控制安全性閘道 |N/A |[設定指南](https://www.open.ch/_pdf/Azure/AzureVPNSetup_Installation_Guide.pdf) |不相容 |
+| 開啟系統 AG |任務控制安全性閘道 |不適用 |[設定指南](https://www.open.ch/_pdf/Azure/AzureVPNSetup_Installation_Guide.pdf) |不相容 |
 | Palo Alto Networks |所有執行 PAN-OS 的裝置 |PAN-OS<br>原則式：6.1.5 或更新版本<br>路由式：7.1.4 |支援 |[設定指南](https://knowledgebase.paloaltonetworks.com/KCSArticleDetail?id=kA10g000000Cm6WCAS) |
 | Sentrium （開發人員） | VyOS | VyOS 1.2。2 | （未測試） | [設定指南](https://vyos.readthedocs.io/en/latest/appendix/examples/azure-vpn-bgp.html)|
 | ShareTech | 新一代 UTM (NU 系列) | 9.0.1.3 | 不相容 | [設定指南](http://www.sharetech.com.tw/images/file/Solution/NU_UTM/S2S_VPN_with_Azure_Route_Based_en.pdf) |
@@ -125,7 +127,7 @@ ms.locfileid: "84343144"
 
 ### <a name="ike-phase-1-main-mode-parameters"></a>IKE 階段 1 (主要模式) 參數
 
-| **屬性**          |**原則式**    | **RouteBased**    |
+| **屬性**          |**PolicyBased**    | **RouteBased**    |
 | ---                   | ---               | ---               |
 | IKE 版本           |IKEv1              |IKEv1 和 IKEv2    |
 | Diffie-Hellman 群組  |群組 2 (1024 位元) |群組 2 (1024 位元) |
@@ -135,13 +137,13 @@ ms.locfileid: "84343144"
 
 ### <a name="ike-phase-2-quick-mode-parameters"></a>IKE 階段 2 (快速模式) 參數
 
-| **屬性**                  |**原則式**| **RouteBased**                              |
+| **屬性**                  |**PolicyBased**| **RouteBased**                              |
 | ---                           | ---           | ---                                         |
 | IKE 版本                   |IKEv1          |IKEv1 和 IKEv2                              |
 | 加密與雜湊演算法 |1. AES256，SHA256<br>2. AES256，SHA1<br>3. AES128，SHA1<br>4. 3DES、SHA1 |[RouteBased QM SA 供應項目](#RouteBasedOffers) |
 | SA 存留期 (時間)            |3,600 秒  |27,000 秒                               |
 | SA 存留期 (位元組)           |102,400,000 KB |102,400,000 KB                               |
-| 完整轉寄密碼 (PFS) |No             |[RouteBased QM SA 供應項目](#RouteBasedOffers) |
+| 完整轉寄密碼 (PFS) |否             |[RouteBased QM SA 供應項目](#RouteBasedOffers) |
 | 停用的對等偵測 (DPD)     |不支援  |支援                                    |
 
 
@@ -153,24 +155,24 @@ ms.locfileid: "84343144"
 
 |-  |**加密**|**驗證**|**PFS 群組**|
 |---| ---          |---               |---          |
-| 1 |GCM AES256    |GCM (AES256)      |None         |
-| 2 |AES256        |SHA1              |None         |
-| 3 |3DES          |SHA1              |None         |
-| 4 |AES256        |SHA256            |None         |
+| 1 |GCM AES256    |GCM (AES256)      |無         |
+| 2 |AES256        |SHA1              |無         |
+| 3 |3DES          |SHA1              |無         |
+| 4 |AES256        |SHA256            |無         |
 | 5 |AES128        |SHA1              |None         |
-| 6 |3DES          |SHA256            |None         |
+| 6 |3DES          |SHA256            |無         |
 
 #### <a name="azure-gateway-as-responder"></a>Azure 閘道器為回應者
 
 |-  |**加密**|**驗證**|**PFS 群組**|
 |---| ---          | ---              |---          |
-| 1 |GCM AES256    |GCM (AES256)      |None         |
-| 2 |AES256        |SHA1              |None         |
-| 3 |3DES          |SHA1              |None         |
-| 4 |AES256        |SHA256            |None         |
+| 1 |GCM AES256    |GCM (AES256)      |無         |
+| 2 |AES256        |SHA1              |無         |
+| 3 |3DES          |SHA1              |無         |
+| 4 |AES256        |SHA256            |無         |
 | 5 |AES128        |SHA1              |None         |
-| 6 |3DES          |SHA256            |None         |
-| 7 |DES           |SHA1              |None         |
+| 6 |3DES          |SHA256            |無         |
+| 7 |DES           |SHA1              |無         |
 | 8 |AES256        |SHA1              |1            |
 | 9 |AES256        |SHA1              |2            |
 | 10|AES256        |SHA1              |14           |
@@ -185,7 +187,7 @@ ms.locfileid: "84343144"
 | 19|AES256        |SHA256            |14           |
 | 20|AES256        |SHA1              |24           |
 | 21|AES256        |SHA256            |24           |
-| 22|AES128        |SHA256            |None         |
+| 22|AES128        |SHA256            |無         |
 | 23|AES128        |SHA256            |1            |
 | 24|AES128        |SHA256            |2            |
 | 25|AES128        |SHA256            |14           |

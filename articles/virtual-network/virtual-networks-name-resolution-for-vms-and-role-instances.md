@@ -13,11 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 3/2/2020
 ms.author: rohink
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 32ef66c0a6d585e785fccb038a2b499c7f7f66db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cf630f6028248d799a3953d25db27a2150602586
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84204764"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087006"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Azure 虛擬網路中的資源名稱解析
 
@@ -59,7 +60,7 @@ Azure 提供的名稱解析只提供基本的授權 DNS 功能。 如果您使�
 > 使用雲端服務 Web 和背景工作角色時，您也可以使用 Azure 服務管理 REST API，存取角色執行個體的內部 IP 位址。 如需詳細資訊，請參閱[服務管理 REST API 參考](https://msdn.microsoft.com/library/azure/ee460799.aspx)。 此位址是以角色名稱和執行個體數目為基礎。 
 >
 
-### <a name="features"></a>特性
+### <a name="features"></a>功能
 
 Azure 提供的名稱解析包含下列功能：
 * 容易使用。 不需要組態。
@@ -176,7 +177,7 @@ DNS 轉送也會實現虛擬網路之間的 DNS 解析，並使內部部署電�
 如有需要，您可以使用 PowerShell 或 API 來判斷內部 DNS 尾碼︰
 
 * 針對 Azure Resource Manager 部署模型中的虛擬網路，可透過[網路介面 REST API](https://docs.microsoft.com/rest/api/virtualnetwork/networkinterfaces)、 [new-aznetworkinterface](/powershell/module/az.network/get-aznetworkinterface) PowerShell Cmdlet 和[az network nic show](/cli/azure/network/nic#az-network-nic-show) Azure CLI 命令取得尾碼。
-* 在傳統部署模型中，可以透過[取得部署 API](https://msdn.microsoft.com/library/azure/ee460804.aspx) 呼叫或 [Get-AzureVM -Debug](/powershell/module/servicemanagement/azure/get-azurevm) Cmdlet 來取得尾碼。
+* 在傳統部署模型中，可以透過[取得部署 API](https://msdn.microsoft.com/library/azure/ee460804.aspx) 呼叫或 [Get-AzureVM -Debug](/powershell/module/servicemanagement/azure.service/get-azurevm) Cmdlet 來取得尾碼。
 
 如果將查詢轉送到 Azure 不符合您的需求，您應提供專屬的 DNS 解決方案。 您的 DNS 解決方案需要：
 
@@ -214,7 +215,7 @@ DNS 轉送也會實現虛擬網路之間的 DNS 解析，並使內部部署電�
 > [!NOTE]
 > 如果您選擇使用虛擬網路的自訂 DNS 伺服器，則必須指定至少一個 DNS 伺服器 IP 位址；否則，虛擬網路會忽略組態並改為使用 Azure 提供的 DNS。
 
-當您使用傳統部署模型時，可以在 Azure 入口網站或[網路組態檔](https://msdn.microsoft.com/library/azure/jj157100)中指定虛擬網路的 DNS 伺服器。 針對雲端服務，您可以透過[服務組態檔](https://msdn.microsoft.com/library/azure/ee758710)或使用 PowerShell ([New-AzureVM](/powershell/module/servicemanagement/azure/new-azurevm)) 指定 DNS 伺服器。
+當您使用傳統部署模型時，可以在 Azure 入口網站或[網路組態檔](https://msdn.microsoft.com/library/azure/jj157100)中指定虛擬網路的 DNS 伺服器。 針對雲端服務，您可以透過[服務組態檔](https://msdn.microsoft.com/library/azure/ee758710)或使用 PowerShell ([New-AzureVM](/powershell/module/servicemanagement/azure.service/new-azurevm)) 指定 DNS 伺服器。
 
 > [!NOTE]
 > 如果您變更已部署之虛擬網路或虛擬機器的 DNS 設定，則要讓新的 DNS 設定生效，您必須在虛擬網路中所有受影響的 Vm 上執行 DHCP 租用更新。 對於執行 Windows OS 的 Vm，您可以 `ipconfig /renew` 直接在 VM 中輸入來完成這項操作。 這些步驟會根據 OS 而有所不同。 請參閱您 OS 類型的相關檔。

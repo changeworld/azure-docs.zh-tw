@@ -2,13 +2,13 @@
 title: 連結部署的範本
 description: 描述如何在「Azure 資源管理員」範本中使用連結的範本，以建立模組化範本方案。 示範如何傳遞參數值、指定參數檔案，以及動態建立 URL。
 ms.topic: conceptual
-ms.date: 06/26/2020
-ms.openlocfilehash: 6b28268a522dde4fe16ccf9d0d01738c3b6a9b5d
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.date: 07/21/2020
+ms.openlocfilehash: 40da2443828a07f2171922fcc6d8976d464d0ad4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170644"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086807"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>部署 Azure 資源時使用連結和巢狀的範本
 
@@ -163,9 +163,9 @@ ms.locfileid: "86170644"
 | `expressionEvaluationOptions`範圍 | 輸出 |
 | ----- | ------ |
 | inner | 從嵌套的範本 |
-| 外部 (或預設)  | 從父範本 |
+| 外部（或預設值） | 從父範本 |
 
-下列範例會部署 SQL server，並抓取金鑰保存庫秘密以用於密碼。 範圍會設定為， `inner` 因為它會以動態方式建立金鑰保存庫識別碼 (`adminPassword.reference.keyVault` 在外部範本) 中看到 `parameters` ，並將它當做參數傳遞至嵌套範本。
+下列範例會部署 SQL server，並抓取金鑰保存庫秘密以用於密碼。 範圍會設定為， `inner` 因為它會動態建立金鑰保存庫識別碼（請參閱 `adminPassword.reference.keyVault` 外部範本中的 `parameters` ），並將它當做參數傳遞給嵌套的範本。
 
 ```json
 {
@@ -315,6 +315,11 @@ ms.locfileid: "86170644"
 > 您可以使用最終解析成使用**HTTP**或**HTTPs**的參數來參考範本，例如使用參數，如下所 `_artifactsLocation` 示：`"uri": "[concat(parameters('_artifactsLocation'), '/shared/os-disk-parts-md.json', parameters('_artifactsLocationSasToken'))]",`
 
 Resource Manager 必須能夠存取範本。 有一個選項是將連結的範本放在儲存體帳戶中，並將 URI 用於該項目。
+
+[範本規格](./template-specs.md)（目前處於私人預覽狀態）可讓您與組織中的其他使用者共用 ARM 範本。 範本規格也可以用來封裝主要範本及其連結的範本。 如需詳細資訊，請參閱
+
+- [教學課程：使用連結的範本建立範本規格](./template-specs-create-linked.md)。
+- [教學課程：將範本規格部署為連結的範本](./template-specs-deploy-linked-template.md)。
 
 ### <a name="parameters-for-linked-template"></a>連結範本的參數
 

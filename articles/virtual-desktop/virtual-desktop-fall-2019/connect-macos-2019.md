@@ -1,5 +1,5 @@
 ---
-title: 從 macOS 連接到 Windows 虛擬桌面-Azure
+title: 從 macOS 連線至 Windows 虛擬桌面秋季 2019-Azure
 description: 如何使用 macOS 用戶端連接到 Windows 虛擬桌面。
 services: virtual-desktop
 author: heidilohr
@@ -8,11 +8,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 024a1ab1a7fef58bd5fd8f9e7e0fc743a4ecee71
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1d8f9e3a5f4c529e3574be7dbeae8bd385f85367
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213154"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087102"
 ---
 # <a name="connect-with-the-macos-client"></a>與 macOS 用戶端連線
 
