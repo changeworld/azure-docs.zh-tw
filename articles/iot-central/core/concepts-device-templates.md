@@ -7,11 +7,12 @@ ms.date: 05/21/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 2d5009086a24a54c9a2ec4734d3c4dcbebb04475
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e90a4e9ec88e074ec7b30d78bc99cfa8bf39ba2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84418638"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87002347"
 ---
 # <a name="what-are-device-templates"></a>什麼是裝置範本？
 
@@ -163,7 +164,7 @@ DCM 會定義裝置與您的 IoT Central 應用程式互動的方式。 裝置�
 
 選擇性欄位（例如 [顯示名稱] 和 [描述]）可讓您將更多詳細資料新增至介面和功能。
 
-### <a name="properties"></a>屬性
+### <a name="properties"></a>[內容]
 
 根據預設，屬性為唯讀。 唯讀屬性表示裝置會向您的 IoT Central 應用程式報告屬性值更新。 您的 IoT Central 應用程式無法設定唯讀屬性的值。
 
@@ -218,8 +219,8 @@ IoT Central 可讓您在儀表板和圖表上查看遙測，並在達到閾值�
 
 您可以新增至視圖的遙測、屬性和命令，是由 [裝置] 範本中的 DCM、雲端屬性和自訂所決定。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-身為裝置開發人員，現在您已瞭解裝置範本，建議的後續步驟是閱讀[連線至 Azure IoT Central](./concepts-get-connected.md) ，以深入瞭解如何向 IoT Central 註冊裝置，以及 IoT Central 如何保護裝置連線的安全。
+身為裝置開發人員，現在您已瞭解裝置範本，建議的後續步驟是閱讀[遙測、屬性和命令](./concepts-telemetry-properties-commands.md)承載，以深入瞭解裝置與 IoT Central 交換的資料。
 
 身為解決方案開發人員，建議的下一個步驟是閱讀[在 Azure IoT Central 應用程式中定義新的 IoT 裝置類型](./howto-set-up-template.md)，以深入瞭解如何建立裝置範本。

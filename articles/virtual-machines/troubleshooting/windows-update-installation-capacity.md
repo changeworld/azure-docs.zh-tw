@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: v-miegge
-ms.openlocfilehash: bb7b641a7169c6577320f07a964d278ac1727b1c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 596303223554589ef26938486ccfd2281ccd46f5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83663306"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86999100"
 ---
 # <a name="troubleshoot-os-start-up--windows-update-installation-capacity"></a>針對 OS 啟動進行疑難排解 - Windows Update 安裝容量
 
@@ -48,7 +49,7 @@ ms.locfileid: "83663306"
 
 ### <a name="create-and-access-a-repair-vm"></a>建立和存取修復 VM
 
-1. 使用 [VM 修復命令](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands)的步驟 1-3 準備修復 VM。
+1. 使用 [VM 修復命令](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md)的步驟 1-3 準備修復 VM。
 1. 使用遠端桌面連線，連線至修復 VM。
 
 ### <a name="free-up-space-on-the-disk"></a>釋放磁碟上的空間
@@ -59,10 +60,10 @@ ms.locfileid: "83663306"
 - 執行磁碟清理。
 - 對磁碟機進行磁碟重組。
 
-1. 檢查磁碟是否已滿。 如果磁碟大小低於 1 TB，請[使用 PowerShell](https://docs.microsoft.com/azure/virtual-machines/windows/expand-os-disk) 將其擴充至 1 TB 的上限。
+1. 檢查磁碟是否已滿。 如果磁碟大小低於 1 TB，請[使用 PowerShell](../windows/expand-os-disk.md) 將其擴充至 1 TB 的上限。
 1. 如果磁碟已經是 1 TB，您需要執行磁碟清理。
-   1. [從中斷的 VM](https://docs.microsoft.com/azure/virtual-machines/windows/detach-disk) 卸離資料磁碟。
-   1. 將資料磁碟連結[至運作中的 VM](https://docs.microsoft.com/azure/virtual-machines/windows/attach-disk-ps#attach-an-existing-data-disk-to-a-vm)。
+   1. [從中斷的 VM](../windows/detach-disk.md) 卸離資料磁碟。
+   1. 將資料磁碟連結[至運作中的 VM](../windows/attach-disk-ps.md#attach-an-existing-data-disk-to-a-vm)。
    1. 使用[磁碟清理工具](https://support.microsoft.com/help/4026616/windows-10-disk-cleanup)釋放空間。
 1. 調整大小和清除完成之後，請使用下列命令對磁碟機進行磁碟重組：
 
@@ -122,4 +123,4 @@ ms.locfileid: "83663306"
    
 ### <a name="rebuild-the-vm"></a>重建 VM
 
-使用 [VM 修復命令的步驟 5](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) 重建 VM。
+使用 [VM 修復命令的步驟 5](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) 重建 VM。

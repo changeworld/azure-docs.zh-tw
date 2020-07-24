@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewr: cenkdin
-ms.openlocfilehash: 8166a85d1c3421d95ac2b818e51b6b60e7663165
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 9bc351f72f5dac38ebfc1983a7b918d46f5fc8ea
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170661"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000307"
 ---
 # <a name="creating-filters-with-azure-media-services-rest-api"></a>使用 Azure 媒體服務 REST API 建立篩選器 
 > [!div class="op_single_selector"]
@@ -38,10 +38,10 @@ ms.locfileid: "86170661"
 ## <a name="types-used-to-create-filters"></a>用於建立篩選器的類型
 建立篩選器時會使用下列類型：  
 
-* [Filter](https://docs.microsoft.com/rest/api/media/operations/filter)
-* [AssetFilter](https://docs.microsoft.com/rest/api/media/operations/assetfilter)
-* [PresentationTimeRange](https://docs.microsoft.com/rest/api/media/operations/presentationtimerange)
-* [FilterTrackSelect 和 FilterTrackPropertyCondition](https://docs.microsoft.com/rest/api/media/operations/filtertrackselect)
+* [Filter](/rest/api/media/operations/filter)
+* [AssetFilter](/rest/api/media/operations/assetfilter)
+* [PresentationTimeRange](/rest/api/media/operations/presentationtimerange)
+* [FilterTrackSelect 和 FilterTrackPropertyCondition](/rest/api/media/operations/filtertrackselect)
 
 > [!NOTE]
 > 
@@ -217,7 +217,7 @@ x-ms-client-request-id: 00000000
 ```
 
 ## <a name="update-filters"></a>更新篩選器
-使用 PATCH、PUT 或 MERGE 以新的屬性值更新篩選器。  如需這些作業的詳細資訊，請參閱 [PATCH、PUT、MERGE](https://msdn.microsoft.com/library/dd541276.aspx)。
+使用 PATCH、PUT 或 MERGE 以新的屬性值更新篩選器。  如需這些作業的詳細資訊，請參閱 [PATCH、PUT、MERGE](/openspecs/windows_protocols/ms-odata/59d5abd3-7b12-490a-a0e2-9d9324b91893)。
 
 如果您更新篩選器，則資料流端點需要兩分鐘的時間來重新整理規則。 如果內容是使用此篩選器提供的 (並快取在 Proxy 與 CDN 快取中)，則更新此篩選器會造成播放程式失敗。 更新篩選器之後，請清除快取。 如果這個選項無法執行，請考慮使用不同的篩選器。  
 
@@ -371,4 +371,3 @@ Host: media.windows.net
 
 ## <a name="see-also"></a>另請參閱
 [動態資訊清單概觀](media-services-dynamic-manifest-overview.md)
-

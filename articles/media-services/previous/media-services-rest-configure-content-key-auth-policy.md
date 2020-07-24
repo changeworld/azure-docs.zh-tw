@@ -14,24 +14,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 8075de6690026a6d7ee08a581985744cf88ec6f4
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 71e336ffac557c33aa803cf0e9c123c3bae9427d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86056951"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000596"
 ---
 # <a name="dynamic-encryption-configure-a-content-key-authorization-policy"></a>動態加密：設定內容金鑰授權原則  
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../../includes/media-services-selector-content-key-auth-policy.md)]
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
  您可以使用 Azure 媒體服務傳遞使用進階加密標準 (AES) (使用 128 位元加密金鑰) 和 PlayReady 或 Widevine 數位版權管理 (DRM) 所動態加密的內容。 媒體服務也提供服務，可傳遞金鑰和 PlayReady/Widevine 授權給授權用戶端。
 
 如果您想要使用媒體服務加密資產，則需要建立加密金鑰 (CommonEncryption 或 EnvelopeEncryption) 與資產的關聯。 如需詳細資訊，請參閱[使用 REST 建立內容金鑰](media-services-rest-create-contentkey.md)。 您也需要為金鑰設定授權原則 (如本文所述)。
 
 播放程式要求串流時，媒體服務便會使用 AES 或 PlayReady，以指定的金鑰動態加密您的內容。 為了將串流解密，播放程式將向金鑰傳遞服務要求金鑰。 為了決定使用者是否有權取得金鑰，服務會評估為金鑰指定的授權原則。
 
-媒體服務支援多種方式來驗證提出金鑰要求的使用者。 內容金鑰授權原則可能有一個或多個授權限制，可能是使用 Open 或 Token 限制。 權杖限制原則必須伴隨 Security Token Service (STS) 所發出的權杖。 媒體服務支援簡單 web 權杖（[SWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)）和 JSON web 權杖（JWT）格式的權杖。
+媒體服務支援多種方式來驗證提出金鑰要求的使用者。 內容金鑰授權原則可能有一個或多個授權限制，可能是使用 Open 或 Token 限制。 權杖限制原則必須伴隨 Security Token Service (STS) 所發出的權杖。 媒體服務支援簡單 web 權杖（[SWT](/previous-versions/azure/azure-services/gg185950(v=azure.100)#BKMK_2)）和 JSON web 權杖（JWT）格式的權杖。
 
 媒體服務不提供 STS。 您可以建立自訂 STS，或使用 Azure Active Directory (Azure AD) 來發行權杖。 STS 必須設定為建立使用指定金鑰簽署的權杖，並發行在權杖限制組態中指定的宣告 (如本文中所述)。 如果權杖有效，且權杖中的宣告符合為內容金鑰設定的宣告，媒體服務金鑰傳遞服務會將加密金鑰傳回給用戶端。
 
@@ -488,6 +488,5 @@ public enum ContentKeyDeliveryType
 ## <a name="provide-feedback"></a>提供意見反應
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 現在，您已設定內容金鑰的授權原則，接著請參閱[如何設定資產傳遞原則](media-services-rest-configure-asset-delivery-policy.md)。
-

@@ -6,11 +6,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: 97f354d0a313d58c671366dd0e5f485504823e13
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9c5941ec88cd793961ad66245d0dc0b5e0d7772f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76288926"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86998930"
 ---
 # <a name="move-mainframe-compute-to-azure"></a>將大型主機計算移至 Azure
 
@@ -56,7 +57,7 @@ Azure 虛擬機器提供各種大小和類型的計算能力。 在 Azure 中，
 
 目前，Azure 虛擬機器大小的範圍提供1到128個 vcpu。 虛擬機器（VM）類型已針對特定工作負載優化。 例如，下列清單顯示 VM 類型（此撰寫的目前內容）和其建議用法：
 
-| 大小     | 類型和描述                                                                 |
+| Size     | 類型和描述                                                                 |
 |----------|--------------------------------------------------------------------------------------|
 | D 系列 | 使用 64 vCPU 的一般用途以及最高 3.5-GHz 的頻率速度                           |
 | E 系列 | 最多64個 vcpu 的記憶體優化                                                 |
@@ -93,13 +94,13 @@ M 系列 Vm 可以相應增加至128個 vcpu （在本文撰寫時）。 針對�
 
 以 Azure 為基礎的解決方案有一項優點，就是能夠相應放大。調整可讓應用程式有幾乎無限的計算容量。 Azure 支援多種方法來相應放大計算能力：
 
-- **叢集間的負載平衡。** 在此案例中，應用程式可以使用[負載平衡器](/azure/load-balancer/load-balancer-overview)或資源管理員，在叢集中的多個 vm 之間散佈工作負載。 如果需要更多計算容量，則會將其他 Vm 新增至叢集。
+- **叢集間的負載平衡。** 在此案例中，應用程式可以使用[負載平衡器](../../../../load-balancer/load-balancer-overview.md)或資源管理員，在叢集中的多個 vm 之間散佈工作負載。 如果需要更多計算容量，則會將其他 Vm 新增至叢集。
 
-- **虛擬機器擴展集。** 在此高載案例中，應用程式可以根據 VM 使用量調整為額外的[計算資源](/azure/virtual-machine-scale-sets/overview)。 當需求下降時，擴展集中的 Vm 數目也可以減少，以確保能有效率地使用計算能力。
+- **虛擬機器擴展集。** 在此高載案例中，應用程式可以根據 VM 使用量調整為額外的[計算資源](../../../../virtual-machine-scale-sets/overview.md)。 當需求下降時，擴展集中的 Vm 數目也可以減少，以確保能有效率地使用計算能力。
 
-- **PaaS 調整。** Azure PaaS 供應專案會調整計算資源。 例如， [Azure Service Fabric](/azure/service-fabric/service-fabric-overview)會配置計算資源，以符合要求量的增加。
+- **PaaS 調整。** Azure PaaS 供應專案會調整計算資源。 例如， [Azure Service Fabric](../../../../service-fabric/service-fabric-overview.md)會配置計算資源，以符合要求量的增加。
 
-- **Kubernetes 叢集。** Azure 上的應用程式可以針對指定的資源，使用適用于計算服務的[Kubernetes](/azure/aks/concepts-clusters-workloads)叢集。 Azure Kubernetes Service （AKS）是一種受控服務，可協調 Azure 上的 Kubernetes 節點、集區和叢集。
+- **Kubernetes 叢集。** Azure 上的應用程式可以針對指定的資源，使用適用于計算服務的[Kubernetes](../../../../aks/concepts-clusters-workloads.md)叢集。 Azure Kubernetes Service （AKS）是一種受控服務，可協調 Azure 上的 Kubernetes 節點、集區和叢集。
 
 若要選擇相應放大計算資源的正確方法，請務必瞭解 Azure 和主機的差異。 金鑰是指計算資源是否共用資料，或（如果）。 在 Azure 中，資料（預設）通常不會由多個 Vm 共用。 如果相應放大計算叢集中的多個 Vm 需要資料共用，共用資料必須位於支援這項功能的資源中。 在 Azure 上，資料共用牽涉到儲存體，如下節所討論。
 
@@ -111,10 +112,10 @@ M 系列 Vm 可以相應增加至128個 vcpu （在本文撰寫時）。 針對�
 
 ![支援嚴重損壞修復的高可用性部署](media/mainframe-compute-dr.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [大型主機遷移](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/overview)
-- [Azure 虛擬機器上的大型主機重新裝載](/azure/virtual-machines/workloads/mainframe-rehosting/overview)
+- [Azure 虛擬機器上的大型主機重新裝載](../overview.md)
 - [將大型主機儲存體移至 Azure](mainframe-storage-Azure.md)
 
 ### <a name="ibm-resources"></a>IBM 資源

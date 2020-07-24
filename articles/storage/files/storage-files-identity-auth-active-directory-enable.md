@@ -7,16 +7,16 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 07/12/2020
 ms.author: rogarana
-ms.openlocfilehash: 0f2f0def9a23437dff57dda2d1a57950cef86275
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1ea1bfdf2c3b2dcfd49f87a5a75597a464b07913
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496123"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86999576"
 ---
 # <a name="overview---on-premises-active-directory-domain-services-authentication-over-smb-for-azure-file-shares"></a>總覽-適用于 Azure 檔案共用的內部部署 Active Directory Domain Services 透過 SMB 進行驗證
 
-[Azure 檔案儲存體](storage-files-introduction.md)  支援透過兩種網域服務的伺服器訊息區（SMB）進行以身分識別為基礎的驗證： Azure Active Directory Domain Services （Azure AD DS）和內部部署 Active Directory Domain Services （AD DS）。 使用以身分識別為基礎的驗證方法，可讓您將存取 Azure 檔案共用的程式與現有身分識別型驗證程式整合，而不必個別管理。 這一系列的文章著重在啟用和設定內部部署 AD DS，以使用 Azure 檔案共用進行驗證。
+[Azure 檔案儲存體](storage-files-introduction.md)  支援透過兩種網域服務的伺服器訊息區（SMB）進行以身分識別為基礎的驗證：內部部署 Active Directory Domain Services （AD DS）和 Azure Active Directory Domain Services （Azure AD DS）。我們強烈建議您參閱[其運作方式一節](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-overview#how-it-works)，以選取正確的網域服務進行驗證。 安裝程式會有所不同，取決於您選擇的網域服務。 這一系列的文章著重在啟用和設定內部部署 AD DS，以使用 Azure 檔案共用進行驗證。
 
 如果您是 Azure 檔案共用的新手，建議您先閱讀我們的[規劃指南](storage-files-planning.md)，再閱讀下列系列文章。
 
@@ -83,7 +83,7 @@ ms.locfileid: "86496123"
 
 用來存取 Azure 檔案共用的身分識別必須同步至 Azure AD，才能透過[角色型存取控制（RBAC）](../../role-based-access-control/overview.md)模型來強制執行共用層級檔案許可權。 在從現有檔案伺服器上執行的檔案/目錄上， [Windows 樣式的 dacl](https://docs.microsoft.com/previous-versions/technet-magazine/cc161041(v=msdn.10)?redirectedfrom=MSDN)將會保留並強制執行。 這可與您的企業 AD DS 環境緊密整合。 當您使用 Azure 檔案共用來取代內部部署檔案伺服器時，現有的使用者可以透過單一登入體驗，從其目前的用戶端存取 Azure 檔案共用，而不需要變更使用中的認證。  
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 若要為您的 Azure 檔案共用啟用內部部署 AD DS 驗證，請繼續進行下一篇文章：
 

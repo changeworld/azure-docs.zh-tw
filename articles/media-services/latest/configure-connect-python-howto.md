@@ -14,22 +14,23 @@ ms.topic: article
 ms.date: 04/15/2019
 ms.author: juliako
 ms.custom: tracking-python
-ms.openlocfilehash: 3e6e421d346925f751595ce2fb2d0891e31dc108
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b283d04c7d9ddf7639c198625ea69ca958170210
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84559630"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001174"
 ---
 # <a name="connect-to-media-services-v3-api---python"></a>連接到媒體服務 v3 API-Python
 
 本文說明如何使用服務主體登入方法來連線到 Azure 媒體服務 v3 Python SDK。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 - 從[python.org](https://www.python.org/downloads/)下載 Python
 - 請務必設定 `PATH` 環境變數
-- [建立媒體服務帳戶](create-account-cli-how-to.md)。 請務必記住資源組名和媒體服務帳戶名稱。
-- 依照[存取 api](access-api-cli-how-to.md)主題中的步驟進行。 記錄訂用帳戶識別碼、應用程式識別碼（用戶端識別碼）、驗證金鑰（密碼），以及您在稍後步驟中需要的租使用者識別碼。
+- [建立媒體服務帳戶](./create-account-howto.md)。 請務必記住資源組名和媒體服務帳戶名稱。
+- 依照[存取 api](./access-api-howto.md)主題中的步驟進行。 記錄訂用帳戶識別碼、應用程式識別碼（用戶端識別碼）、驗證金鑰（密碼），以及您在稍後步驟中需要的租使用者識別碼。
 
 > [!IMPORTANT]
 > 檢查[命名慣例](media-services-apis-overview.md#naming-conventions)。
@@ -54,7 +55,7 @@ pip3 install azure-mgmt-media==1.1.1
 1. 在您慣用的編輯器中開啟檔案
 1. 將後面的程式碼新增至檔案。 程式碼會匯入必要的模組，並建立您連接至媒體服務所需的 Active Directory 認證物件。
 
-      將變數的值設定為您從[存取 api](access-api-cli-how-to.md)取得的值
+      將變數的值設定為您從[存取 api](./access-api-howto.md)取得的值
 
       ```
       import adal
@@ -101,7 +102,7 @@ pip3 install azure-mgmt-media==1.1.1
 
 1. 執行檔案
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 使用 [Python SDK](https://aka.ms/ams-v3-python-sdk)。
 - 檢閱媒體服務 [Python 參考](https://aka.ms/ams-v3-python-ref)文件。

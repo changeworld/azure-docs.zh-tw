@@ -7,13 +7,17 @@ ms.date: 05/14/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 664819b209aeb09093ce8711456b86ff4d3e8949
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d246adbf8e87d5503bc19bcd497dd00370c0a867
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84249473"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001896"
 ---
 # <a name="monitor-the-overall-health-of-the-devices-connected-to-an-iot-central-application"></a>監視連線到 IoT Central 應用程式之裝置的整體健全狀況
+
+> [!NOTE]
+> 計量僅適用于第3版 IoT Central 應用程式。 若要瞭解如何檢查您的應用程式版本，請參閱[關於您的應用程式](./howto-get-app-info.md)。
 
 *本文適用于操作員和系統管理員。*
 
@@ -34,25 +38,15 @@ ms.locfileid: "84249473"
 1. 在入口網站中流覽至您的 IoT Central 應用程式資源。 根據預設，IoT Central 資源會位於名為**iotc-explorer**的資源群組中。
 1. 若要從應用程式的計量建立圖表，請選取 [**監視**] 區段中的 [**計量**]。
 
+![Azure 計量](media/howto-monitor-application-health/metrics.png)
+
 ### <a name="azure-portal-permissions"></a>Azure 入口網站許可權
 
 Azure 入口網站中計量的存取權是由[Azure 角色型存取控制](../../role-based-access-control/overview.md)所管理。 使用 Azure 入口網站將使用者新增至 IoT Central 應用程式/資源群組/訂用帳戶，以授與他們存取權。 您必須在入口網站中新增使用者，即使他們已經新增至 IoT Central 應用程式也一樣。 使用[Azure 內建角色](../../role-based-access-control/built-in-roles.md)來進行更精細的存取控制。
 
 ## <a name="iot-central-metrics"></a>IoT Central 計量
 
-下表描述目前可用於 IoT Central 的度量：
-
-| 計量 | 度量顯示名稱 | 單位 | 彙總類型 | Description |
-|--------|---------------------|------|------------------|-------------|
-| connectedDeviceCount         | 已連線的裝置總數                              | Count  | 總計             | 連線到 IoT Central 的裝置數目                               |
-| c2d。屬性. 讀取. 成功    | 成功的裝置屬性從 IoT Central 讀取    | Count  | 總計             | 從 IoT Central 起始的所有成功屬性讀取計數    |
-| c2d. 屬性。讀取失敗    | 失敗的裝置屬性從 IoT Central 讀取        | Count  | 總計             | 從 IoT Central 起始的所有失敗屬性讀取計數        |
-| d2c。屬性. 讀取. 成功    | 裝置的成功屬性讀取        | Count  | 總計             | 從裝置起始的所有成功屬性讀取計數        |
-| d2c. 屬性。讀取失敗    | 裝置的裝置屬性讀取失敗            | Count  | 總計             | 從裝置起始的所有失敗屬性讀取計數            |
-| c2d。屬性. update. success  | 從 IoT Central 成功的裝置屬性更新  | Count  | 總計             | 從 IoT Central 起始的所有成功屬性更新計數  |
-| c2d. 屬性. update. 失敗  | IoT Central 的裝置屬性更新失敗      | Count  | 總計             | 從 IoT Central 起始的所有失敗屬性更新計數      |
-| d2c。屬性. update. success  | 裝置的成功屬性更新      | Count  | 總計             | 從裝置起始的所有成功屬性更新計數      |
-| d2c. 屬性. update. 失敗  | 裝置的裝置屬性更新失敗          | Count  | 總計             | 從裝置起始的所有失敗屬性更新計數          |
+如需目前可供 IoT Central 的計量清單，請參閱[支援的計量與 Azure 監視器](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftiotcentraliotapps)。
 
 ### <a name="metrics-and-invoices"></a>計量和發票
 
@@ -64,6 +58,6 @@ Azure 入口網站中計量的存取權是由[Azure 角色型存取控制](../..
 
 - 雖然計量可能會顯示裝置到雲端通訊的子集，裝置與雲端之間的所有通訊都會[計算為一則計費訊息](https://azure.microsoft.com/pricing/details/iot-central/)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 既然您已瞭解如何使用應用程式範本，建議的下一個步驟是瞭解如何[從 Azure 入口網站管理 IoT Central](howto-manage-iot-central-from-portal.md)

@@ -10,12 +10,12 @@ ms.topic: troubleshooting
 ms.date: 05/29/2019
 ms.author: radwiv
 ms.reviewer: chadmat;genli
-ms.openlocfilehash: dcf86deda32069bf9711dbeb733dc9361e22a771
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d19cc4a474324ff3e88ec0c5353a47c157ec715
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80631778"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86998471"
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>如何驗證傳輸到虛擬網路的 VPN 輸送量
 
@@ -43,11 +43,11 @@ VPN 閘道連線涉及下列元件：
 
 1. 判斷您應用程式的基準輸送量需求。
 1. 判斷您的 Azure VPN 閘道輸送量限制。 如需說明，請參閱[關於 VPN 閘道](vpn-gateway-about-vpngateways.md#gwsku)的「閘道 sku」一節。
-1. 判斷 VM 大小的 [Azure VM 輸送量指引](../virtual-machines/virtual-machines-windows-sizes.md)。
+1. 判斷 VM 大小的 [Azure VM 輸送量指引](../virtual-machines/sizes.md)。
 1. 決定您網際網路服務提供者 (ISP) 的頻寬。
 1. 藉由取得 VM、VPN 閘道或 ISP 的最小頻寬，來計算您的預期輸送量;這是以每秒百萬位元（/）除以八（8）來測量。
 
-如果您的計算輸送量不符合應用程式的基準輸送量需求，您必須增加識別為瓶頸之資源的頻寬。 如果要調整 Azure VPN 閘道的大小，請參閱 [變更閘道 SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku)。 如果調整虛擬機器的大小，請參閱 [調整 VM 的大小](../virtual-machines/virtual-machines-windows-resize-vm.md)。 如果您未遇到預期的網際網路頻寬，您也可以聯繫您的 ISP。
+如果您的計算輸送量不符合應用程式的基準輸送量需求，您必須增加識別為瓶頸之資源的頻寬。 如果要調整 Azure VPN 閘道的大小，請參閱 [變更閘道 SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku)。 如果調整虛擬機器的大小，請參閱 [調整 VM 的大小](../virtual-machines/windows/resize-vm.md)。 如果您未遇到預期的網際網路頻寬，您也可以聯繫您的 ISP。
 
 > [!NOTE]
 > VPN 閘道輸送量是所有 Site-to-Site\VNET-to-VNET 或點對站連接的匯總。
@@ -261,7 +261,7 @@ iPerf 是我們用於此測試的工作，分別在 Windows 與 Linux 上工作�
 
 如果從 "msn.net" 內的躍點發現大型、不尋常的延遲尖峰，請聯絡 MS 支援以進一步調查。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 如需詳細資訊或協助，請參閱下列連結：
 

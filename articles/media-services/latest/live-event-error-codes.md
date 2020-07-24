@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/4/2020
 ms.author: inhenkel
-ms.openlocfilehash: e039a240465478e86ce816890219e5dfaa07dfbf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8f86c157652f6219afdf1df1da9b8ad385f059aa
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82791046"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000946"
 ---
 # <a name="media-services-live-event-error-codes"></a>媒體服務即時事件錯誤代碼
 
@@ -26,7 +26,7 @@ ms.locfileid: "82791046"
 
 ## <a name="liveeventconnectionrejected"></a>LiveEventConnectionRejected
 
-當您訂閱即時事件的[事件方格](https://docs.microsoft.com/azure/event-grid/)事件時，您可能會在[LiveEventConnectionRejected](media-services-event-schemas.md#liveeventconnectionrejected)事件中看到下列其中一個錯誤。
+當您訂閱即時事件的[事件方格](../../event-grid/index.yml)事件時，您可能會在[LiveEventConnectionRejected](media-services-event-schemas.md#liveeventconnectionrejected)事件中看到下列其中一個錯誤。
 
 | 結果碼 | 描述 |
 | ----------- | ----------- |
@@ -58,6 +58,6 @@ ms.locfileid: "82791046"
 
 [串流端點（原點）錯誤碼](streaming-endpoint-error-codes.md)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 [教學課程：使用媒體服務即時串流](stream-live-tutorial-with-api.md)

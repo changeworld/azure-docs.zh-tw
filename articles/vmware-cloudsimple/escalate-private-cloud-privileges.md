@@ -9,17 +9,18 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 63dc18c522a1e2e3b03bdf806945e0be67774b18
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 628824a3d303184e199452b0974c7f99d99a4933
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81870463"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86998947"
 ---
 # <a name="escalate-private-cloud-vcenter-privileges-from-the-cloudsimple-portal"></a>從 CloudSimple 入口網站提升私用雲端 vCenter 許可權
 
 如需您私人雲端 vCenter 的系統管理存取權，您可以暫時提升 CloudSimple 許可權。  使用較高的許可權，您可以安裝 VMware 解決方案、新增身分識別來源，以及管理使用者。
 
-您可以在 vCenter SSO 網域上建立新的使用者，並取得 vCenter 的存取權。  當您建立新的使用者時，請將它們新增至 CloudSimple 的內建群組以存取 vCenter。  如需詳細資訊，請參閱[CloudSimple VMware vCenter 的私用雲端許可權模型](https://docs.microsoft.com/azure/vmware-cloudsimple/learn-private-cloud-permissions/)。
+您可以在 vCenter SSO 網域上建立新的使用者，並取得 vCenter 的存取權。  當您建立新的使用者時，請將它們新增至 CloudSimple 的內建群組以存取 vCenter。  如需詳細資訊，請參閱[CloudSimple VMware vCenter 的私用雲端許可權模型](./learn-private-cloud-permissions.md)。
 
 > [!CAUTION]
 > 請勿對管理元件進行任何設定變更。 在提高許可權的狀態期間採取的動作可能會對您的系統造成負面影響，或可能導致系統無法使用。
@@ -46,7 +47,7 @@ ms.locfileid: "81870463"
 
     ![呈報許可權對話方塊](media/escalate-private-cloud-privilege-dialog.png)
 
-7. 按一下 [確定]。
+7. 按一下 [確定]  。
 
 8. 擴大程式可能需要幾分鐘的時間。 完成時，按一下 **[確定]**。
 
@@ -80,12 +81,12 @@ ms.locfileid: "81870463"
 
 2. 按一下 [**取消呈報**]。
 
-3. 按一下 [確定]。
+3. 按一下 [確定]  。
 
 > [!IMPORTANT]
 > 若要避免發生任何錯誤，請登出 vCenter，並在取消升級許可權後重新登入。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-* [設定要使用的 vCenter 身分識別來源 Active Directory](https://docs.microsoft.com/azure/vmware-cloudsimple/set-vcenter-identity/)
-* 安裝備份解決方案以[備份工作負載虛擬機器](https://docs.microsoft.com/azure/vmware-cloudsimple/backup-workloads-veeam/)
+* [設定要使用的 vCenter 身分識別來源 Active Directory](./set-vcenter-identity.md)
+* 安裝備份解決方案以[備份工作負載虛擬機器](./backup-workloads-veeam.md)

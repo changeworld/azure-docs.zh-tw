@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 06/22/2020
 ms.author: rogarana
-ms.openlocfilehash: 9a8805666e1e162f76cf5fa6f7d828833c573bed
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 40d372eb5569f3a4079acda3ab1e43b3e86cc113
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85510438"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86999593"
 ---
 # <a name="part-four-mount-a-file-share-from-a-domain-joined-vm"></a>第四部分：從已加入網域的 VM 掛接檔案共用
 
@@ -33,16 +33,25 @@ ms.locfileid: "85510438"
 
 將預留位置值取代為您自己的值，然後使用下列命令來掛接 Azure 檔案共用：
 
-```cli
+```PSH
 # Always mount your share using.file.core.windows.net, even if you setup a private endpoint for your share.
-net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name>
+$connectTestResult = Test-NetConnection -ComputerName <storage-account-name>.file.core.windows.net -Port 445
+if ($connectTestResult.TcpTestSucceeded)
+{
+  net use <desired-drive letter>: \\<storage-account-name>.file.core.windows.net\<fileshare-name>
+} 
+else 
+{
+  Write-Error -Message "Unable to reach the Azure storage account via port 445. Check to make sure your organization or ISP is not blocking port 445, or use Azure P2S VPN, Azure S2S VPN, or Express Route to tunnel SMB traffic over a different port."
+}
+
 ```
 
 如果您遇到以 AD DS 認證掛接的問題，請參閱[無法使用 AD 認證來裝載 Azure 檔案儲存體](storage-troubleshoot-windows-file-connection-problems.md#unable-to-mount-azure-files-with-ad-credentials)以取得指導方針。
 
 如果掛接您的檔案共用成功，表示您已成功啟用並設定 Azure 檔案共用的內部部署 AD DS 驗證。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 如果您在 AD DS 中建立以代表儲存體帳戶的身分識別是在強制執行密碼輪替的網域或 OU 中，請繼續閱讀下一篇文章，以取得有關更新密碼的指示：
 

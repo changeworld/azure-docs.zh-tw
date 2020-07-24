@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 12/4/2019
 ms.author: vikancha
-ms.openlocfilehash: 4693ad8b168ce1ddd7c07afe650a89fc1888ccd7
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 74827e78017ad3540709fa0e671762a985976cda
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86183319"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86998998"
 ---
 # <a name="install-amd-gpu-drivers-on-n-series-vms-running-windows"></a>在執行 Windows 的 N 系列 VM 上安裝 AMD GPU 驅動程式
 
@@ -23,7 +23,7 @@ ms.locfileid: "86183319"
 
 NVv4 VM 只支援 Microsoft 所發佈的 GPU 驅動程式。 請「不要」從任何其他來源安裝 GPU 驅動程式。
 
-如需基本規格、儲存體容量與磁碟的詳細資料，請參閱 [GPU Windows VM 大小](sizes-gpu.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+如需基本規格、儲存體容量與磁碟的詳細資料，請參閱 [GPU Windows VM 大小](../sizes-gpu.md?toc=/azure/virtual-machines/windows/toc.json)。
 
 
 
@@ -57,5 +57,3 @@ NVv4 VM 只支援 Microsoft 所發佈的 GPU 驅動程式。 請「不要」從�
 如果您執行的是 Windows 10 組建 1903 或更新版本，則 dxdiag 不會在 [顯示] 索引標籤中顯示任何資訊。請使用底部的 [儲存所有資訊] 選項，輸出檔案將會顯示與 AMD MI25 GPU 相關的資訊。
 
 ![GPU 驅動程式屬性](./media/n-series-amd-driver-setup/dxdiag-details.png)
-
-

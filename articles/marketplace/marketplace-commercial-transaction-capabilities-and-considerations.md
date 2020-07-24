@@ -4,13 +4,13 @@ description: 此文章描述商業市集交易選項的定價、計費、發票�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 06/15/2020
-ms.openlocfilehash: 653c55fa7476fa5fed077002db226297a33dfef6
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/22/2020
+ms.openlocfilehash: 29fa4126d8d0b4f3419c729ee3a73ae315b13122
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119424"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001361"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>商業市集交易功能
 
@@ -134,7 +134,7 @@ BYOL 具有下列成本結構：
 |Microsoft 向您支付授權成本的 80% <br> \* Microsoft 針對任何符合資格的 SaaS 應用程式支付 90% 授權成本給您   |   每月 $80.00 <br> \* 每月 $90.00    |
 |Microsoft 保留授權成本的 20% <br> \* Microsoft 針對任何符合資格的 SaaS 應用程式保留 10% 授權成本。  |  每月 $20.00 <br> \* $10.00     |
 
-對於您在商業 marketplace 上發佈的特定 SaaS 產品，Microsoft 會將其**Marketplace 服務費用**從20% （如 Microsoft 發行者合約中所述）降到10%。 為了讓您的供應項目符合資格，至少其中一個供應項目必須由 Microsoft 指定為 IP 共同銷售準備就緒或 IP 共同銷售優先。 若要獲得當月份的優惠市集服務費用，必須至少在上一個行事曆月份結束前五個工作天符合資格。 降低的 Marketplace 服務費用不適用於 Vm、受管理的應用程式，或透過商業 Marketplace 提供的任何其他產品。 這項優惠費用將提供給符合資格的供應項目，由 Microsoft 在 2019 年 5 月 1 日到 2020 年 6 月 30 日之間收取授權費用。 在這段時間之後，費用就會回復到其正常金額。
+對於您在商業 marketplace 上發佈的特定供應專案，Microsoft 會將其 Marketplace 服務費用從20% （如 Microsoft 發行者合約中所述）降到10%。 若您的供應專案符合資格，Microsoft 必須將您的供應專案指定為 Azure IP 共同銷售 incetivized。 在每個日曆月份結束前，至少必須符合五（5）個工作天的資格，才能收到該月份的縮減 Marketplace 服務費用。 降低的 Marketplace 服務費用適用于 Azure IP 共同銷售受到激勵 SaaS、Vm、受管理的應用程式，以及透過商業 Marketplace 提供的任何其他合格 transactable IaaS 供應專案。
 
 ### <a name="customer-invoicing-payment-billing-and-collections"></a>客戶發票開立、付款和收帳
 
@@ -180,7 +180,7 @@ BYOL 具有下列成本結構：
 
 交易發行選項只能用來搭配下列市集供應項目類型：
 
-- **虛擬機器**–從免費、自備授權或隨用隨付定價模型中選取，並以供應專案層級所定義的 sku 形式呈現。 在客戶的 Azure 帳單上，Microsoft 會將發行者軟體授權費用與基礎 Azure 基礎結構費用分開呈現。 Azure 基礎結構費用是由使用發行者軟體而產生。
+- **虛擬機器**–從免費、自備授權或隨用隨付定價模型中選取，並以供應專案層級定義的方案形式呈現。 在客戶的 Azure 帳單上，Microsoft 會將發行者軟體授權費用與基礎 Azure 基礎結構費用分開呈現。 Azure 基礎結構費用是由使用發行者軟體而產生。
 
 - **Azure 應用程式：解決方案範本或受管理的應用**程式–必須布建一或多部虛擬機器，並提取虛擬機器定價的總和。 對於單一方案上的受控應用程式，可以選取一般費率的每月月租方案作為定價模型，而不是虛擬機器定價。 在某些情況下，Azure 基礎結構使用費用會與軟體授權費用分開傳遞給客戶，但是在相同的帳單上。 不過，如果您為 ISV 基礎結構費用設定受控應用程式供應專案，Azure 資源會向發行者收費，而客戶會收到包含基礎結構、軟體授權和管理服務成本的固定費用。
 

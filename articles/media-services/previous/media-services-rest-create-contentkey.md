@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 373b863441eb21b52a18bbaece10779260eaeb7a
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 76717c580136d23030565c5476f8b282897784a7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86166190"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000409"
 ---
 # <a name="create-content-keys-with-rest"></a>使用 REST 建立內容金鑰
 > [!div class="op_single_selector"]
@@ -41,7 +41,7 @@ ms.locfileid: "86166190"
 1. 隨機產生 16 位元組 AES 金鑰 (適用於一般加密以及信封加密) 或 32 位元組 AES 金鑰 (適用於儲存體加密)。 
    
     這是您資產的內容金鑰，這表示與該資產相關聯的所有檔案都必須在解密期間使用相同的內容金鑰。 
-2. 呼叫 [GetProtectionKeyId](https://docs.microsoft.com/rest/api/media/operations/rest-api-functions#getprotectionkeyid) 和 [GetProtectionKey](https://msdn.microsoft.com/library/azure/jj683097.aspx#getprotectionkey) 方法，以取得用來將內容金鑰加密時必須使用的正確 X.509 憑證。
+2. 呼叫 [GetProtectionKeyId](/rest/api/media/operations/rest-api-functions#getprotectionkeyid) 和 [GetProtectionKey](/rest/api/media/operations/rest-api-functions#getprotectionkey) 方法，以取得用來將內容金鑰加密時必須使用的正確 X.509 憑證。
 3. 使用 X.509 憑證的公開金鑰將您的內容金鑰加密。 
    
    媒體服務 .NET SDK 會使用 RSA 和 OAEP 來執行加密作業。  您可以在 [EncryptSymmetricKeyData 函式](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs)中查看範例。
@@ -185,7 +185,7 @@ public enum ContentKeyType
     }
 ```
 
-下列範例示範如何建立**ContentKey** ，其中具有**ContentKeyType**集的儲存體加密 ( "1" ) 而且**ProtectionKeyType**設定為 "0"，以表示保護金鑰識別碼是 x.509 憑證指紋。  
+下列範例示範如何建立**ContentKey** ，並將**ContentKeyType**設定為儲存加密（"1"），並將**ProtectionKeyType**設定為 "0"，以表示保護金鑰識別碼是 x.509 憑證指紋。  
 
 要求
 
@@ -268,4 +268,3 @@ HTTP/1.1 204 No Content
 
 ## <a name="provide-feedback"></a>提供意見反應
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

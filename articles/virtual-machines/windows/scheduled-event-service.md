@@ -7,12 +7,12 @@ ms.subservice: monitoring
 ms.date: 08/20/2019
 ms.author: sarn
 ms.topic: how-to
-ms.openlocfilehash: 3f3bf83d8155383757cc87749281c688bd281a4a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0806c6e0ed89c2c0f4712ec985599810119fcf89
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82099592"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86999015"
 ---
 # <a name="monitoring-scheduled-events"></a>監視 Scheduled Events
 
@@ -25,7 +25,7 @@ ms.locfileid: "82099592"
 
 Scheduled Events 是 [Azure Instance Metadata Service](instance-metadata-service.md) 的一部分，可在所有 Azure 虛擬機器上使用。 客戶可撰寫自動化來查詢虛擬機器的端點，以尋找已排程的維護通知並執行風險降低措施，例如儲存狀態並讓虛擬機器結束輪替。 建議建置自動化來記錄 Scheduled Events，如此即可取得 Azure 維護事件的稽核記錄。 
 
-在本文中，我們將逐步引導您了解如何將維護 Scheduled Events 擷取至 Log Analytics。 然後，我們會觸發一些基本的通知動作，例如傳送電子郵件給小組，以及取得所有影響虛擬機器的事件歷程記錄檢視。 針對事件彙總和自動化，我們會使用 [Log Analytics](/azure/azure-monitor/learn/quick-create-workspace)，但您可使用任何監視解決方案來收集這些記錄檔並觸發自動化。
+在本文中，我們將逐步引導您了解如何將維護 Scheduled Events 擷取至 Log Analytics。 然後，我們會觸發一些基本的通知動作，例如傳送電子郵件給小組，以及取得所有影響虛擬機器的事件歷程記錄檢視。 針對事件彙總和自動化，我們會使用 [Log Analytics](../../azure-monitor/learn/quick-create-workspace.md)，但您可使用任何監視解決方案來收集這些記錄檔並觸發自動化。
 
 ![顯示事件生命週期的圖表](./media/notifications/events.png)
 
@@ -35,7 +35,7 @@ Scheduled Events 是 [Azure Instance Metadata Service](instance-metadata-service
 
 請勿在教學課程結束時刪除群組資源群組。
 
-您也必須[建立 Log Analytics 工作區](/azure/azure-monitor/learn/quick-create-workspace)，其將用來彙總可用性設定組中 VM 的資訊。
+您也必須[建立 Log Analytics 工作區](../../azure-monitor/learn/quick-create-workspace.md)，其將用來彙總可用性設定組中 VM 的資訊。
 
 ## <a name="set-up-the-environment"></a>設定 Azure 環境
 
@@ -112,7 +112,7 @@ New-AzVm `
 1. 搜尋並選取 [myCollectorVM]。 
 1. 在 [myCollectorVM] 的新頁面上，選取 [連線]。
 
-此動作會在虛擬機器中安裝 [Microsoft Monitoring Agent](/azure/virtual-machines/extensions/oms-windows)。 將 VM 連線至工作區並安裝延伸模組需要幾分鐘的時間。 
+此動作會在虛擬機器中安裝 [Microsoft Monitoring Agent](../extensions/oms-windows.md)。 將 VM 連線至工作區並安裝延伸模組需要幾分鐘的時間。 
 
 ## <a name="configure-the-workspace"></a>設定工作區
 
@@ -132,7 +132,7 @@ New-AzVm `
 ## <a name="creating-an-alert-rule-with-azure-monitor"></a>使用 Azure 監視器建立警示規則 
 
 
-將事件推送至 Log Analytics 之後，即可執行下列[查詢](/azure/azure-monitor/log-query/get-started-portal)來尋找 Scheduled Events。
+將事件推送至 Log Analytics 之後，即可執行下列[查詢](../../azure-monitor/log-query/get-started-portal.md)來尋找 Scheduled Events。
 
 1. 在頁面頂端，選取 [記錄檔] 並將下列內容貼入文字方塊中：
 

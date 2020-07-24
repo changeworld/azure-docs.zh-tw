@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 06/17/2020
-ms.openlocfilehash: 621d657f527e5307ed3a0b583e4c9171005d4f8c
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 2c6c6b3fb4f863840b39de6f56fe473be693fe87
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121827"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001429"
 ---
 # <a name="create-a-dynamics-365-for-operations-offer"></a>建立 Dynamics 365 for Operations 供應項目
 
@@ -127,7 +127,7 @@ ms.locfileid: "86121827"
 
 1. 標誌
 2. 產品
-3. 類別
+3. Categories
 4. 產業
 5. 支援位址（連結）
 6. 使用規定
@@ -295,7 +295,7 @@ ms.locfileid: "86121827"
     - **尚未開始** – 此區段應該已完成卻尚未觸及。
     - **不完整** – 此區段中有需要修正的錯誤，或是需要您提供更多詳細資訊。 回到上一區段並加以更新。
     - **完成** – 此區段已完成，並已提供所有必要的資料且沒有任何錯誤。 供應項目的所有區段皆需為完成狀態，您才能提交供應項目。
-- 在 [認證注意事項] 區段中，請將測試指示提供給認證小組，以確保您的應用程式已正確測試，並加上有助於了解應用程式的任何補充注意事項。
+- 在 [認證注意事項] 區段中，請將測試指示提供給認證小組，以確保您的應用程式已正確測試，並加上有助於了解應用程式的任何補充注意事項。 如需測試指示和完成第一次發行的詳細資訊，請參閱[AppSource Dynamics 365 財務和作業功能驗證](https://docs.microsoft.com/azure/marketplace/dynamics-365-finance-operations-functional-validation)。
 - 若要提交供應項目以進行發佈，請選取 [提交]。 我們會向您傳送一封電子郵件，讓您知道供應項目的預覽版本何時可供檢閱及核准。 返回 [合作夥伴中心]，並選取供應專案的 [**上線**]，將您的供應專案發佈至 [公開]。
 
 ## <a name="next-step"></a>後續步驟

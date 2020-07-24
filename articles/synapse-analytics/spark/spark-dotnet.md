@@ -1,5 +1,5 @@
 ---
-title: 使用適用於 Apache Spark 的 .NET 搭配 Azure Synapse Analytics
+title: 使用適用于 Apache Spark 的 .NET
 description: 了解如何使用 .NET 和 Apache Spark 在 Azure Synapse Analytics 筆記本中進行批次處理、即時串流、機器學習及撰寫特定查詢。
 author: mamccrea
 services: synapse-analytics
@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 05/01/2020
 ms.author: mamccrea
 ms.reviewer: jrasnick
-ms.openlocfilehash: f71d231f01f2f19bd63fb9ec8c32b98fcb3e9aee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 677b54a09a446ef8af0b410faea9f94b71634712
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85194717"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86999032"
 ---
 # <a name="use-net-for-apache-spark-with-azure-synapse-analytics"></a>使用適用於 Apache Spark 的 .NET 搭配 Azure Synapse Analytics
 

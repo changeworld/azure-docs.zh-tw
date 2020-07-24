@@ -2,16 +2,17 @@
 title: 為 VPN 使用者啟用 MFA： Azure AD 驗證
 description: 為 VPN 使用者啟用多重要素驗證
 services: vpn-gateway
-author: anzaman
+author: kumudD
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 02/14/2020
 ms.author: alzam
-ms.openlocfilehash: 80a6b342990100b3e79cc8194722a6eb84080ef6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e6d3ff32d2daaf35ff00bd0ee1d8f42669683827
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987284"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86998590"
 ---
 # <a name="enable-azure-multi-factor-authentication-mfa-for-vpn-users"></a>為 VPN 使用者啟用 Azure 多重要素驗證（MFA）
 
@@ -33,6 +34,6 @@ ms.locfileid: "84987284"
 
 [!INCLUDE [conditional access](../../includes/vpn-gateway-vwan-openvpn-conditional.md)]
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 若要連線到您的虛擬網路，您必須建立並設定 VPN 用戶端設定檔。 請參閱[設定 vpn 用戶端以進行 P2S vpn](openvpn-azure-ad-client.md)連線。

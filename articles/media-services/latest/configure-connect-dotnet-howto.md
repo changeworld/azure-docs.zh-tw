@@ -14,11 +14,12 @@ ms.topic: article
 ms.date: 09/18/2019
 ms.author: juliako
 ms.custom: has-adal-ref
-ms.openlocfilehash: 6dc05f225e3585b83bd6a57ca47bd5adf97934ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 30c91b71b952bb68761015325a00ff6926c62dfe
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83201123"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001310"
 ---
 # <a name="connect-to-media-services-v3-api---net"></a>連接到媒體服務 v3 API-.NET
 
@@ -26,7 +27,7 @@ ms.locfileid: "83201123"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-- [建立媒體服務帳戶](create-account-cli-how-to.md)。 請務必記住資源組名和媒體服務帳戶名稱
+- [建立媒體服務帳戶](./create-account-howto.md)。 請務必記住資源組名和媒體服務帳戶名稱
 - 安裝您想要用於 .NET 開發的工具。 本文中的步驟示範如何使用[Visual Studio 2019 的社區版](https://www.visualstudio.com/downloads/)。 您可以使用 Visual Studio Code，請參閱使用[c #](https://code.visualstudio.com/docs/languages/csharp)。 或者，您可以使用不同的程式碼編輯器。
 
 > [!IMPORTANT]
@@ -38,7 +39,7 @@ ms.locfileid: "83201123"
 1. **在 [檔案**] 功能表上，按一下 [**新增**  >  **專案**]。 
 1. 建立 **.Net Core**主控台應用程式。
 
-本主題中的範例應用程式，目標為 `netcoreapp2.0` 。 程式碼會使用「非同步 main」，從 c # 7.1 開始提供。 如需詳細資訊，請參閱此[blog](https://blogs.msdn.microsoft.com/benwilli/2017/12/08/async-main-is-available-but-hidden/) 。
+本主題中的範例應用程式，目標為 `netcoreapp2.0` 。 程式碼會使用「非同步 main」，從 c # 7.1 開始提供。 如需詳細資訊，請參閱此[blog](/archive/blogs/benwilli/async-main-is-available-but-hidden) 。
 
 ## <a name="add-required-nuget-packages"></a>新增必要的 NuGet 封裝
 
@@ -63,7 +64,7 @@ ms.locfileid: "83201123"
 
 ### <a name="set-values-in-appsettingsjson"></a>設定 appsettings.js中的值
 
-執行 `az ams account sp create` 命令，如[存取 api](access-api-cli-how-to.md)中所述。 命令會傳回您應該複製到「appsettings.js開啟」的 json。
+執行 `az ams account sp create` 命令，如[存取 api](./access-api-howto.md)中所述。 命令會傳回您應該複製到「appsettings.js開啟」的 json。
  
 ## <a name="add-configuration-file"></a>新增組態檔
 
@@ -226,7 +227,7 @@ namespace ConsoleApp1
 }
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [教學課程：上傳、編碼和串流影片-.NET](stream-files-tutorial-with-api.md) 
 - [教學課程：使用媒體服務 v3 進行即時串流-.NET](stream-live-tutorial-with-api.md)
@@ -242,5 +243,5 @@ namespace ConsoleApp1
 
 ## <a name="see-also"></a>另請參閱
 
-* [.NET 參考](https://docs.microsoft.com/dotnet/api/overview/azure/mediaservices/management?view=azure-dotnet)
+* [.NET 參考](/dotnet/api/overview/azure/mediaservices/management?view=azure-dotnet)
 * 如需更多程式碼範例，請參閱[.NET SDK 範例](https://github.com/Azure-Samples/media-services-v3-dotnet)存放庫。

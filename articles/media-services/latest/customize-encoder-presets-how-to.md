@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 05/03/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 2bcd5f0e6229c4130dddb48c1a20de1c711c6fcf
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 28525c198bb6863e942f5ff33d17226769efdc21
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519876"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001140"
 ---
 # <a name="how-to-encode-with-a-custom-transform---net"></a>如何使用自訂轉換進行編碼-.NET
 
@@ -32,7 +32,7 @@ ms.locfileid: "86519876"
 
 ## <a name="prerequisites"></a>必要條件 
 
-[建立媒體服務帳戶](create-account-cli-how-to.md)
+[建立媒體服務帳戶](./create-account-howto.md)
 
 ## <a name="download-the-sample"></a>下載範例
 
@@ -46,9 +46,9 @@ ms.locfileid: "86519876"
 
 ## <a name="create-a-transform-with-a-custom-preset"></a>使用自訂預設建立轉換 
 
-建立新的[轉換](https://docs.microsoft.com/rest/api/media/transforms)時，您需要指定想要其產生的輸出是什麼。 必要的參數是 [TransformOutput](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#transformoutput) 物件，如下列程式碼所示。 每個 **TransformOutput** 都會包含 **Preset (預設)** 。 預設**會描述影片**和/或音訊處理作業的逐步指示，用來產生所需的**TransformOutput**。 下列 **TransformOutput** 會建立自訂轉碼器和圖層輸出設定。
+建立新的[轉換](/rest/api/media/transforms)時，您需要指定想要其產生的輸出是什麼。 必要的參數是 [TransformOutput](/rest/api/media/transforms/createorupdate#transformoutput) 物件，如下列程式碼所示。 每個 **TransformOutput** 都會包含 **Preset (預設)** 。 預設**會描述影片**和/或音訊處理作業的逐步指示，用來產生所需的**TransformOutput**。 下列 **TransformOutput** 會建立自訂轉碼器和圖層輸出設定。
 
-建立[轉換](https://docs.microsoft.com/rest/api/media/transforms)時，您應該先使用 **Get** 方法檢查是否已有轉換存在，如下列程式碼所示。 在媒體服務 v3 中，如果實體不存在，實體的**Get**方法會傳回**null** （不區分大小寫的名稱檢查）。
+建立[轉換](/rest/api/media/transforms)時，您應該先使用 **Get** 方法檢查是否已有轉換存在，如下列程式碼所示。 在媒體服務 v3 中，如果實體不存在，實體的**Get**方法會傳回**null** （不區分大小寫的名稱檢查）。
 
 ### <a name="example"></a>範例
 
@@ -56,6 +56,6 @@ ms.locfileid: "86519876"
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-core-tutorials/NETCore/EncodeCustomTransform/MediaV3ConsoleApp/Program.cs#EnsureTransformExists)]
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 [串流檔案](stream-files-tutorial-with-api.md) 

@@ -3,11 +3,12 @@ title: Azure 實驗室服務的範例課程類型 | Microsoft Docs
 description: 提供一些您可以使用 Azure 實驗室服務為其設定實驗室的課程類型。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 8564f5ece9d6df7db852c5ac16f00f1455d013ca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 21159aacfcd87bb929eaeaf9884b0275c7005e1a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85443752"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001618"
 ---
 # <a name="class-types-overview---azure-lab-services"></a>課程類型概觀 - Azure 實驗室服務
 
@@ -44,11 +45,6 @@ Azure 實驗室服務可讓您在雲端中快速設定教室實驗室環境。 �
 您可以在 Azure 實驗室服務中使用所需工具設定範本機器，以教授學生如何使用 [Jupyter Notebook](http://jupyter-notebook.readthedocs.io)。 Jupyter Notebook 是開放原始碼專案，可讓您輕鬆地在稱為筆記本的單一畫布上結合 RTF 和可執行的 [Python](https://www.python.org/) 原始程式碼。 執行筆記本會產生線性的輸入和輸出記錄。  這些輸出可以包含文字、資訊資料表、散佈圖等等。
 
 如需如何設定此類實驗室的詳細資訊，請參閱[使用 Python 和 Jupyter Notebook 設定實驗室來教授資料科學](class-type-jupyter-notebook.md)。
-
-## <a name="mobile-app-development-with-android-studio"></a>使用 Android Studio 進行行動應用程式開發
-您可以在 Azure 實驗室服務中設定實驗室，以教授入門的行動應用程式開發課程。 此課程著重於可發佈至 [Google Play 商店](https://play.google.com/store/apps)的 Android 行動應用程式。  學生會了解如何使用 [Android Studio](https://developer.android.com/studio) 來建置應用程式。  [Visual Studio 的 Android 模擬器](https://visualstudio.microsoft.com/vs/msft-android-emulator/)可用來在本機測試應用程式。
-
-如需如何設定此類實驗室的詳細資訊，請參閱[使用 Android Studio 設定實驗室來教授行動應用程式開發](class-type-mobile-dev-android-studio.md)。
 
 ## <a name="big-data-analytics"></a>巨量資料分析
 您可以設定 GPU 實驗室來教授 big data analytics 類別。 透過這種類型的類別，學員將瞭解如何處理大量資料，並套用機器和統計學習演算法來衍生資料見解。 學生的主要目標是瞭解如何使用資料分析工具，例如 Apache Hadoop 的開放原始碼軟體套件，其中提供儲存、管理及處理 big data 的工具。 

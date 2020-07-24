@@ -6,11 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/01/2019
-ms.openlocfilehash: 6240b0813132f4a14dbe94b870774ebe7a0663aa
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 0ac35fde59479ffc13c17f8e63d6fccf65c3be27
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714571"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001701"
 ---
 # <a name="call-azure-functions-from-azure-logic-apps"></a>從 Azure Logic Apps 呼叫 Azure 函式
 
@@ -256,7 +257,7 @@ function convertToDateString(request, response){
 
 * Azure Active Directory (Azure AD) 中租用戶的目錄識別碼
 
-  若要取得租用戶的目錄識別碼，您可以執行 [`Get-AzureAccount`](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureaccount) Powershell 命令。 或者，在 Azure 入口網站中執行下列步驟：
+  若要取得租用戶的目錄識別碼，您可以執行 [`Get-AzureAccount`](/powershell/module/servicemanagement/azure.service/get-azureaccount) Powershell 命令。 或者，在 Azure 入口網站中執行下列步驟：
 
   1. 在 [Azure 入口網站](https://portal.azure.com)中，尋找並選取您的函數應用程式。
 

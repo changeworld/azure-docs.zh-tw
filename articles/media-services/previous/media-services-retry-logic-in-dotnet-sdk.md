@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 63715f668438519131eba5bfff7aa38fc73267d0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 120b7e044452dc47126923449a3e1a6e55cfd6a8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "61094638"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000018"
 ---
 # <a name="retry-logic-in-the-media-services-sdk-for-net"></a>Media Services SDK for .NET 中的重試邏輯  
 
@@ -37,7 +37,7 @@ ms.locfileid: "61094638"
 ## <a name="exception-types"></a>例外狀況類型
 下表描述 Media Services SDK for .NET 處理或未處理可能導致暫時性失敗的某些作業。  
 
-| 例外狀況 | Web 要求 | 儲存體 | 查詢 | SaveChanges |
+| 例外狀況 | Web 要求 | 存放裝置 | 查詢 | SaveChanges |
 | --- | --- | --- | --- | --- |
 | WebException<br/>如需詳細資訊，請參閱 [WebException 狀態碼](media-services-retry-logic-in-dotnet-sdk.md#WebExceptionStatus)一節。 |是 |是 |是 |是 |
 | DataServiceClientException<br/> 如需詳細資訊，請參閱 [HTTP 錯誤狀態碼](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode)。 |否 |是 |是 |是 |
@@ -50,9 +50,9 @@ ms.locfileid: "61094638"
 | IOException |否 |是 |否 |否 |
 
 ### <a name="webexception-status-codes"></a><a name="WebExceptionStatus"></a> WebException 狀態碼
-下表顯示重試邏輯實作的 WebException 錯誤碼。 [WebExceptionStatus](https://msdn.microsoft.com/library/system.net.webexceptionstatus.aspx) 列舉定義狀態碼。  
+下表顯示重試邏輯實作的 WebException 錯誤碼。 [WebExceptionStatus](/dotnet/api/system.net.webexceptionstatus?view=netcore-3.1) 列舉定義狀態碼。  
 
-| 狀態 | Web 要求 | 儲存體 | 查詢 | SaveChanges |
+| 狀態 | Web 要求 | 存放裝置 | 查詢 | SaveChanges |
 | --- | --- | --- | --- | --- |
 | ConnectFailure |是 |是 |是 |是 |
 | NameResolutionFailure |是 |是 |是 |是 |
@@ -70,7 +70,7 @@ ms.locfileid: "61094638"
 ### <a name="http-error-status-codes"></a><a name="HTTPStatusCode"></a> HTTP 錯誤狀態碼
 當查詢和 SaveChanges 作業擲回 DataServiceClientException、DataServiceQueryException 或 DataServiceQueryException 時，StatusCode 屬性中會傳回 HTTP 錯誤狀態碼。  下表顯示重試邏輯實作的錯誤碼。  
 
-| 狀態 | Web 要求 | 儲存體 | 查詢 | SaveChanges |
+| 狀態 | Web 要求 | 存放裝置 | 查詢 | SaveChanges |
 | --- | --- | --- | --- | --- |
 | 401 |否 |是 |否 |否 |
 | 403 |否 |是<br/>處理重試等待較久。 |否 |否 |
@@ -83,9 +83,8 @@ ms.locfileid: "61094638"
 
 如果您想要看一下 Media Services SDK for .NET 重試邏輯的實際實作，請參閱 [azure-sdk-for-media-services](https://github.com/Azure/azure-sdk-for-media-services/tree/dev/src/net/Client/TransientFaultHandling)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>提供意見反應
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

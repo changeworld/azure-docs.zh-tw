@@ -13,20 +13,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: juliako
-ms.openlocfilehash: 0381a2e2b8fd2a8b60e7cb702e0336a5678df057
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1ac82687cb28344f682c58a132f04d71184d5d74
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74896105"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001191"
 ---
 # <a name="connect-to-media-services-v3-api---nodejs"></a>連接到媒體服務 v3 API-Node.js
 
 本文說明如何使用服務主體登入方法來連線到 Azure 媒體服務 v3 node.js SDK。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 - 安裝 [Node.js](https://nodejs.org/en/download/)。
-- [建立媒體服務帳戶](create-account-cli-how-to.md)。 請務必記住資源組名和媒體服務帳戶名稱。
+- [建立媒體服務帳戶](./create-account-howto.md)。 請務必記住資源組名和媒體服務帳戶名稱。
 
 > [!IMPORTANT]
 > 檢查[命名慣例](media-services-apis-overview.md#naming-conventions)。
@@ -69,7 +70,7 @@ npm install azure-arm-mediaservices
 
 1. 使用您慣用的編輯器建立 .js 檔案。
 1. 開啟該檔案，並貼上下列程式碼。
-1. 將 "endpoint config" 區段中的值設定為您從[存取 api](access-api-cli-how-to.md)取得的值。
+1. 將 "endpoint config" 區段中的值設定為您從[存取 api](./access-api-howto.md)取得的值。
 
 ```js
 'use strict';
@@ -113,7 +114,7 @@ msRestAzure.loginWithServicePrincipalSecret(aadClientId, aadSecret, aadTenantId,
 });
 ```
 
-## <a name="run-your-app"></a>執行您的應用程式
+## <a name="run-your-app"></a>執行應用程式
 
 開啟命令提示字元。 流覽至範例的目錄，然後執行下列命令：
 
@@ -127,7 +128,6 @@ node index.js
 - [媒體服務概念](concepts-overview.md)
 - [NPM 安裝 azure-arm-mediaservices](https://www.npmjs.com/package/azure-arm-mediaservices/)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 探索媒體服務 [Node.js 參考](/javascript/api/overview/azure/mediaservices/management)文件，並查看[範例](https://github.com/Azure-Samples/media-services-v3-node-tutorials)示範如何搭配使用媒體服務 API 與 Node.js。
-

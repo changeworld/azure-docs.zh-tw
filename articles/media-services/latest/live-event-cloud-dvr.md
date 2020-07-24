@@ -14,17 +14,18 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 05/07/2020
 ms.author: juliako
-ms.openlocfilehash: 231aeb210a7b97e8c0cfd0e21c48053c660b6128
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c5afe45ce864ba76d5d637df3534d426d39167a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82995812"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000987"
 ---
 # <a name="use-time-shifting-and-live-outputs-to-create-on-demand-video-playback"></a>使用時間轉移和即時輸出來建立隨選影片播放
 
-在 Azure 媒體服務中，[即時輸出](https://docs.microsoft.com/rest/api/media/liveoutputs)物件就像是數位錄影機，它會攔截您的即時串流，並將其記錄到您媒體服務帳戶中的資產。 記錄的內容會保存到[資產](https://docs.microsoft.com/rest/api/media/assets)資源所定義的容器中（容器位於附加至您帳戶的 Azure 儲存體帳戶中）。 即時輸出也可讓您控制傳出即時串流的某些屬性，像是封存記錄中保留的串流數（例如，雲端 DVR 的容量），或檢視器何時可以開始觀看即時串流。 磁片上的封存是「迴圈保存」的「視窗」，只會保存即時輸出的**archiveWindowLength**屬性中所指定的內容量。 超出此時段的內容會自動從儲存體容器中捨棄，且無法復原。 ArchiveWindowLength 值代表 ISO-8601 timespan 期間（例如，PTHH： MM： SS），可指定 DVR 的容量。 值最少可設定為一分鐘，最大為25小時。
+在 Azure 媒體服務中，[即時輸出](/rest/api/media/liveoutputs)物件就像是數位錄影機，它會攔截您的即時串流，並將其記錄到您媒體服務帳戶中的資產。 記錄的內容會保存到[資產](/rest/api/media/assets)資源所定義的容器中（容器位於附加至您帳戶的 Azure 儲存體帳戶中）。 即時輸出也可讓您控制傳出即時串流的某些屬性，像是封存記錄中保留的串流數（例如，雲端 DVR 的容量），或檢視器何時可以開始觀看即時串流。 磁片上的封存是「迴圈保存」的「視窗」，只會保存即時輸出的**archiveWindowLength**屬性中所指定的內容量。 超出此時段的內容會自動從儲存體容器中捨棄，且無法復原。 ArchiveWindowLength 值代表 ISO-8601 timespan 期間（例如，PTHH： MM： SS），可指定 DVR 的容量。 值最少可設定為一分鐘，最大為25小時。
 
-實況活動與其即時輸出之間的關聯性與傳統電視廣播類似，因為通道（即時事件）代表影片的常數資料流程，而錄製（即時輸出）的範圍是特定的時間區段（例如，從6：1:30 到7的夜晚新聞：00）。 當資料流程流入即時事件之後，您就可以藉由建立資產、即時輸出和串流定位器來開始串流事件。 「即時事件」會封存資料流，並透過[串流端點](https://docs.microsoft.com/rest/api/media/streamingendpoints)將它提供給檢視者。 您可以使用不同的封存長度和設定，在實況活動建立多個實況輸出 (最多三個)。 如需有關即時串流工作流程的詳細資訊，請參閱[一般步驟](live-streaming-overview.md#general-steps)一節。
+實況活動與其即時輸出之間的關聯性與傳統電視廣播類似，因為通道（即時事件）代表影片的常數資料流程，而錄製（即時輸出）的範圍是特定的時間區段（例如，從6：1:30 到7的夜晚新聞：00）。 當資料流程流入即時事件之後，您就可以藉由建立資產、即時輸出和串流定位器來開始串流事件。 「即時事件」會封存資料流，並透過[串流端點](/rest/api/media/streamingendpoints)將它提供給檢視者。 您可以使用不同的封存長度和設定，在實況活動建立多個實況輸出 (最多三個)。 如需有關即時串流工作流程的詳細資訊，請參閱[一般步驟](live-streaming-overview.md#general-steps)一節。
 
 ## <a name="using-a-dvr-during-an-event"></a>在事件期間使用 DVR
 
@@ -38,13 +39,13 @@ ms.locfileid: "82995812"
 
 ## <a name="creating-an-archive-for-on-demand-playback"></a>建立隨選播放的封存
 
-當即時輸出被刪除時，即時輸出所封存的資產會自動成為隨選資產。 您必須先刪除所有即時輸出，才能停止即時事件。 您可以使用選擇性的旗標[removeOutputsOnStop](https://docs.microsoft.com/rest/api/media/liveevents/stop#request-body) ，在停止時自動移除即時輸出。
+當即時輸出被刪除時，即時輸出所封存的資產會自動成為隨選資產。 您必須先刪除所有即時輸出，才能停止即時事件。 您可以使用選擇性的旗標[removeOutputsOnStop](/rest/api/media/liveevents/stop#request-body) ，在停止時自動移除即時輸出。
 
 即使在您停止並刪除事件之後，只要您未刪除資產，使用者就可以視需要將封存的內容串流為影片。 如果事件使用資產，則不應刪除該資產;必須先刪除事件。
 
 如果您已使用串流定位器來發佈實況輸出的資產，實況活動（最長可達 DVR 視窗長度）將繼續可見，直到串流定位器的到期或刪除為止（以先發生者為准）。
 
-如需詳細資訊，請參閱：
+如需詳細資訊，請參閱
 
 - [即時串流概觀](live-streaming-overview.md)
 - [即時串流教學課程](stream-live-tutorial-with-api.md)
@@ -52,7 +53,7 @@ ms.locfileid: "82995812"
 > [!NOTE]
 > 當您刪除即時輸出時，不會刪除資產中的基礎資產和內容。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * [子剪輯您的](subclip-video-rest-howto.md)影片。
 * [定義資產的篩選準則](filters-dynamic-manifest-rest-howto.md)。

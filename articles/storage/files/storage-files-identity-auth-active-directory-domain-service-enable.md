@@ -7,24 +7,24 @@ ms.topic: how-to
 ms.date: 04/21/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 2d9f7eccae6b87923b52119ded90ced5e4206d7b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fe2bbc1d6f42819354f48812a34371a49e5acbac
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85510395"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86999627"
 ---
 # <a name="enable-azure-active-directory-domain-services-authentication-on-azure-files"></a>啟用 Azure 檔案儲存體上的 Azure Active Directory Domain Services 驗證
 
-[!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
+[Azure 檔案儲存體](storage-files-introduction.md)  支援透過兩種網域服務的伺服器訊息區（SMB）進行以身分識別為基礎的驗證：內部部署 Active Directory Domain Services （AD DS）和 Azure Active Directory Domain Services （Azure AD DS）。我們強烈建議您參閱[其運作方式一節](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-overview#how-it-works)，以選取正確的網域服務進行驗證。 安裝程式會有所不同，取決於您選擇的網域服務。 這篇文章著重于啟用和設定 Azure AD DS，以使用 Azure 檔案共用進行驗證。
 
-如需 Azure 檔案共用的透過 SMB 進行 Azure AD 驗證的總覽，請參閱 Azure 檔案儲存體的透過[smb 進行 Azure Active Directory 驗證的總覽](storage-files-active-directory-overview.md)。 本文著重于如何使用 Azure 檔案儲存體上的 Azure Active Directory Domain Services （Azure AD DS）來啟用驗證。
+如果您是 Azure 檔案共用的新手，建議您先閱讀我們的[規劃指南](storage-files-planning.md)，再閱讀下列系列文章。
 
 > [!NOTE]
 > Azure 檔案儲存體支援使用具有 RC4-HMAC 加密的 Azure AD DS 來進行 Kerberos 驗證。 尚不支援 AES Kerberos 加密。
 > Azure 檔案儲存體支援與 Azure AD 進行完整同步處理 Azure AD DS 的驗證。 如果您已在 Azure AD DS 中啟用範圍同步處理，而這只會從 Azure AD 同步處理有限的身分識別集，則不支援驗證和授權。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 啟用 Azure 檔案共用的 SMB Azure AD 之前，請確定您已完成下列必要條件：
 
@@ -142,7 +142,7 @@ az storage account update -n <storage-account-name> -g <resource-group-name> --e
 
 您現在已成功啟用透過 SMB Azure AD DS 驗證，並已指派自訂角色，可讓您存取具有 Azure AD 身分識別的 Azure 檔案共用。 若要將檔案共用的存取權授與其他使用者，請遵循[指派存取權限](#2-assign-access-permissions-to-an-identity)以使用身分識別和透過[SMB 設定 NTFS 許可權一節](#3-configure-ntfs-permissions-over-smb)中的指示。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 如需 Azure 檔案儲存體以及如何透過 SMB 使用 Azure AD 的詳細資訊，請參閱下列資源：
 

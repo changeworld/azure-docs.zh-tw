@@ -9,11 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 539665c4756a7dc87078922421b45a88404f58f1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6ff057d99e29c7c6fe30e77f38a0bff265dbe7bf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81868149"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86998881"
 ---
 # <a name="accessing-your-cloudsimple-private-cloud-environment-and-applications-from-on-premises"></a>從內部部署存取您的 CloudSimple 私用雲端環境和應用程式
 
@@ -34,7 +35,7 @@ ms.locfileid: "81868149"
 
 ## <a name="ports-required-for-using-on-premises-active-directory-as-an-identity-source"></a>使用內部部署 active directory 做為身分識別來源所需的埠
 
-若要將內部部署 active directory 設定為私人雲端 vCenter 上的身分識別來源，必須開啟資料表中定義的埠。  如需設定步驟，請參閱[使用 Azure AD 做為 CloudSimple 私用雲端上的 vCenter 身分識別提供者](https://docs.microsoft.com/azure/vmware-cloudsimple/azure-ad/)。
+若要將內部部署 active directory 設定為私人雲端 vCenter 上的身分識別來源，必須開啟資料表中定義的埠。  如需設定步驟，請參閱[使用 Azure AD 做為 CloudSimple 私用雲端上的 vCenter 身分識別提供者](./azure-ad.md)。
 
 | Port         | 來源                           | Destination                                         | 目的                                                                                                                                          |
 |--------------|----------------------------------|-----------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -57,8 +58,8 @@ ms.locfileid: "81868149"
 | 389 (TCP/UDP) | 私人雲端工作負載網路 | 內部部署 active directory 網路 | 將 Windows 工作負載虛擬機器加入內部部署 active directory 網域。       |
 | 53（UDP）      | 私人雲端工作負載網路 | 內部部署網路                  | 對內部部署 DNS 伺服器進行工作負載虛擬機器的 DNS 服務存取。         |
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-* [建立和管理 Vlan 和子網](https://docs.microsoft.com/azure/vmware-cloudsimple/create-vlan-subnet/)
-* [使用 Azure ExpressRoute 連接到內部部署網路](https://docs.microsoft.com/azure/vmware-cloudsimple/on-premises-connection/)
-* [從內部部署環境設定站對站 VPN](https://docs.microsoft.com/azure/vmware-cloudsimple/vpn-gateway/)
+* [建立和管理 Vlan 和子網](./create-vlan-subnet.md)
+* [使用 Azure ExpressRoute 連接到內部部署網路](./on-premises-connection.md)
+* [從內部部署環境設定站對站 VPN](./vpn-gateway.md)

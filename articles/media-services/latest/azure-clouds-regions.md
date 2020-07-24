@@ -12,11 +12,12 @@ ms.topic: article
 ms.date: 5/28/2020
 ms.author: inhenkel
 ms.custom: references_regions
-ms.openlocfilehash: cefd366e29fe1c6f68ec38816247f78bb53cd6e6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6ecc8cad4480528477f6bb470c7bc32ee2a20e11
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84196247"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001344"
 ---
 # <a name="clouds-and-regions-in-which-azure-media-services-v3-exists"></a>存在 Azure 媒體服務 v3 的雲端和區域
 
@@ -52,7 +53,7 @@ Azure 媒體服務 v3 可透過 Azure Resource Manager 資訊清單在全域 Azu
 
 ### <a name="region-code-name"></a>區域碼名稱
 
-如果需要提供**位置**參數，則需要提供區域代碼名稱作為**位置**值。 若要取得您帳戶所在且應該路由傳送呼叫之區域的代碼名稱，您可以在 [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) 中執行下面這一行
+如果需要提供**位置**參數，則需要提供區域代碼名稱作為**位置**值。 若要取得您帳戶所在且應該路由傳送呼叫之區域的代碼名稱，您可以在 [Azure CLI](/cli/azure/?view=azure-cli-latest) 中執行下面這一行
 
 ```azurecli-interactive
 az account list-locations
@@ -79,32 +80,32 @@ az account list-locations
 
 ### <a name="global-azure"></a>全域 Azure
 
-|端點||
-| --- | --- |
+| 服務 | 端點 |
+| ------- | -------- |
 | Azure Resource Manager |  `https://management.azure.com/` |
 | 驗證 | `https://login.microsoftonline.com/` |
 | 權杖對象 | `https://management.core.windows.net/` |
 
 ### <a name="azure-government"></a>Azure Government
 
-|端點||
-| --- | --- |
+| 服務 | 端點 |
+| ------- | -------- |
 | Azure Resource Manager |  `https://management.usgovcloudapi.net/` |
 | 驗證 | `https://login.microsoftonline.us/` |
 | 權杖對象 | `https://management.core.usgovcloudapi.net/` |
 
 ### <a name="azure-germany"></a>Azure 德國
 
-| 端點 ||
-| --- | --- |  
+| 服務 | 端點 |
+| ------- | -------- |
 | Azure Resource Manager | `https://management.cloudapi.de/` |
 | 驗證 | `https://login.microsoftonline.de/` |
 | 權杖對象 | `https://management.core.cloudapi.de/`|
 
 ### <a name="azure-china-21vianet"></a>Azure 中國 21Vianet
 
-|端點||
-| --- | --- |
+| 服務 | 端點 |
+| ------- | -------- |
 | Azure Resource Manager | `https://management.chinacloudapi.cn/` |
 | 驗證 | `https://login.chinacloudapi.cn/` |
 | 權杖對象 |  `https://management.core.chinacloudapi.cn/` |
@@ -115,6 +116,6 @@ az account list-locations
 * [Azure 地理位置](https://azure.microsoft.com/global-infrastructure/geographies/)
 * [Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 [媒體服務 v3 概觀](media-services-overview.md)

@@ -7,11 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: 49c83fab54b7188c3a3838f3162e71d8495989dd
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: cb9c851ca33aa6eeb6d0fe0576f98ecb0693be02
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037506"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86999265"
 ---
 # <a name="azure-stream-analytics-solution-patterns"></a>Azure 串流分析解決方案模式
 
@@ -21,7 +22,7 @@ ms.locfileid: "86037506"
 
 使用 Azure 串流分析，您可以快速地建立即時儀表板和警示。 簡單的解決方案會從事件中樞或 IoT 中樞中內嵌事件，並[使用串流資料集將 Power BI 儀表板饋送](/power-bi/service-real-time-streaming)。 如需詳細資訊，請參閱[使用串流分析分析通話資料和在 Power BI 儀表板中將結果視覺化](stream-analytics-manage-job.md)的詳細教學課程。
 
-![ASA Power BI 儀表板](media/stream-analytics-solution-patterns/pbidashboard.png)
+![ASA Power BI 儀表板](media/stream-analytics-solution-patterns/power-bi-dashboard.png)
 
 這項解決方案只能在 Azure 入口網站的幾分鐘內建立。 不涉及任何延伸的編碼，而且會使用 SQL 語言來表達商務邏輯。
 
@@ -31,7 +32,7 @@ ms.locfileid: "86037506"
 
 [Power BI] 儀表板會提供低延遲，但不能用來產生完整的成熟 Power BI 報表。 常見的報告模式是先將您的資料輸出到 SQL Database。 然後使用 Power BI 的 SQL connector 查詢 SQL，以取得最新的資料。
 
-![ASA SQL 儀表板](media/stream-analytics-solution-patterns/sqldashboard.png)
+![ASA SQL 儀表板](media/stream-analytics-solution-patterns/sql-dashboard.png)
 
 使用 SQL Database 可為您提供更大的彈性，但代價是延遲稍微高一點。 對於延遲需求大於一秒的作業，此解決方案是最佳做法。 使用此方法，您可以最大化 Power BI 功能，以進一步切割和細分報表的資料，以及更多的視覺效果選項。 您也會獲得使用其他儀表板解決方案的彈性，例如 Tableau。
 
@@ -43,7 +44,7 @@ SQL 不是高輸送量資料存放區。 從 Azure 串流分析 SQL Database 的
 
 下游事件取用者邏輯必須執行，才能在您現有的商務工作流程中產生警示。 因為您可以在 Azure Functions 中執行自訂邏輯，所以 Azure Functions 是執行這項整合的最快方式。 如需使用 Azure Function 作為串流分析作業輸出的教學課程，請參閱[從 Azure 串流分析作業執行 Azure Functions](stream-analytics-with-azure-functions.md)。 Azure Functions 也支援各種類型的通知，包括文字和電子郵件。 邏輯應用程式也可以用於這類整合，串流分析和邏輯應用程式之間事件中樞。
 
-![ASA 事件訊息應用程式](media/stream-analytics-solution-patterns/eventmessagingapp.png)
+![ASA 事件訊息應用程式](media/stream-analytics-solution-patterns/event-messaging-app.png)
 
 另一方面，事件中樞則提供最具彈性的整合點。 許多其他服務（例如 Azure 資料總管和時間序列深入解析）都可以取用來自事件中樞的事件。 服務可以從 Azure 串流分析直接連線到事件中樞接收，以完成解決方案。 事件中樞也是 Azure 上提供的最高輸送量訊息代理程式，適用于這類整合案例。
 
@@ -51,7 +52,7 @@ SQL 不是高輸送量資料存放區。 從 Azure 串流分析 SQL Database 的
 
 您可以使用 Azure 串流分析和 Azure SignalR Service，建立自訂的即時視覺效果，例如儀表板或地圖視覺效果。 您可以使用 SignalR 來更新 web 用戶端，並即時顯示動態內容。
 
-![ASA 動態應用程式](media/stream-analytics-solution-patterns/dynamicapp.png)
+![ASA 動態應用程式](media/stream-analytics-solution-patterns/dynamic-app.png)
 
 ## <a name="incorporate-real-time-insights-into-your-application-through-data-stores"></a>透過資料存放區，將即時深入解析納入您的應用程式
 
@@ -59,13 +60,13 @@ SQL 不是高輸送量資料存放區。 從 Azure 串流分析 SQL Database 的
 
 高資料量通常會在 CRUD 型系統中建立效能瓶頸。 [事件來源解決方案模式](/azure/architecture/patterns/event-sourcing)是用來解決效能瓶頸。 從傳統資料存放區解壓縮時，時態性模式和深入解析也很容易且效率不佳。 現代化的大量資料驅動應用程式通常會採用以資料流程為基礎的架構。 Azure 串流分析做為移動中資料的計算引擎是該架構中的 linchpin。
 
-![ASA 事件來源應用程式](media/stream-analytics-solution-patterns/eventsourcingapp.png)
+![ASA 事件來源應用程式](media/stream-analytics-solution-patterns/event-sourcing-app.png)
 
 在此解決方案模式中，事件會由 Azure 串流分析處理並匯總至資料存放區。 應用層會使用傳統的要求/回應模式與資料存放區互動。 由於串流分析的即時處理大量事件的能力，因此應用程式具有高度擴充性，而不需要大量設定資料存放區層。 資料存放區層基本上是系統中的具體化視圖。 [Azure 串流分析輸出至 Azure Cosmos DB](stream-analytics-documentdb-output.md)描述 Cosmos DB 如何當做串流分析輸出使用。
 
 在實際的應用程式中，如果處理邏輯很複雜，而且需要獨立升級邏輯的特定部分，則可以將多個串流分析作業連同事件中樞組成，做為中繼事件代理人。
 
-![ASA 複雜事件來源應用程式](media/stream-analytics-solution-patterns/eventsourcingapp2.png)
+![ASA 複雜事件來源應用程式](media/stream-analytics-solution-patterns/event-sourcing-app-complex.png)
 
 此模式可以改善系統的復原能力和管理性。 不過，即使串流分析保證只處理一次，事件也有可能會落在媒介事件中樞中。 下游串流分析作業必須使用回顧視窗中的邏輯索引鍵來重複重複事件。 如需事件傳遞的詳細資訊，請參閱[事件傳遞保證](/stream-analytics-query/event-delivery-guarantees-azure-stream-analytics)參考。
 
@@ -75,7 +76,7 @@ Azure 串流分析參考資料功能是特別針對使用者自訂（例如警�
 
 此模式也可以用來執行規則引擎，其中規則的臨界值是從參考資料定義而來。 如需規則的詳細資訊，請參閱[在 Azure 串流分析中處理可設定的閾值型規則](stream-analytics-threshold-based-rules.md)。
 
-![ASA 參考資料應用程式](media/stream-analytics-solution-patterns/refdataapp.png)
+![ASA 參考資料應用程式](media/stream-analytics-solution-patterns/reference-data-app.png)
 
 ## <a name="add-machine-learning-to-your-real-time-insights"></a>將 Machine Learning 新增至您的即時深入解析
 
@@ -83,37 +84,39 @@ Azure 串流分析的內建[異常偵測模型](stream-analytics-machine-learnin
 
 對於想要將線上訓練和評分納入相同串流分析管線的 advanced 使用者，請參閱此範例，瞭解如何使用[線性回歸](stream-analytics-high-frequency-trading.md)。
 
-![ASA Machine Learning 應用程式](media/stream-analytics-solution-patterns/mlapp.png)
+![ASA Machine Learning 應用程式](media/stream-analytics-solution-patterns/machine-learning-app.png)
 
 ## <a name="near-real-time-data-warehousing"></a>近乎即時的資料倉儲
 
 另一個常見的模式是即時資料倉儲，也稱為「串流資料倉儲」。 除了抵達應用程式事件中樞和 IoT 中樞的事件之外，在[IoT Edge 上執行的 Azure 串流分析](stream-analytics-edge.md)可以用來滿足資料清理、資料縮減，以及資料存放區和轉送需求。 IoT Edge 上執行的串流分析可以適當地處理系統中的頻寬限制和連線問題。 SQL 輸出介面卡可以用來輸出至 SQL 資料倉儲;不過，最大輸送量限制為 10 MB/s。
 
-![ASA 資料倉儲](media/stream-analytics-solution-patterns/datawarehousing.png)
+![ASA 資料倉儲](media/stream-analytics-solution-patterns/data-warehousing.png)
 
 有一些延遲取捨來改善輸送量的其中一個方法，就是將事件封存到 Azure Blob 儲存體，然後[使用 Polybase 將它們匯入 SQL 資料倉儲](../synapse-analytics/sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md)。 您必須手動將串流分析的輸出結合到 blob 儲存體，並透過[時間戳記](stream-analytics-custom-path-patterns-blob-storage-output.md)和定期匯入來封存資料，從 blob 儲存體輸入到 SQL 資料倉儲。
 
 在此使用模式中，Azure 串流分析是用來做為近乎即時的 ETL 引擎。 針對下游分析服務的耗用量，會持續轉換並儲存新抵達的事件。
 
-![ASA 高輸送量資料倉儲](media/stream-analytics-solution-patterns/datawarehousing2.png)
+![ASA 高輸送量資料倉儲](media/stream-analytics-solution-patterns/data-warehousing-high-throughput.png)
 
 ## <a name="archiving-real-time-data-for-analytics"></a>封存即時資料以進行分析
 
 大部分的資料科學和分析活動仍然會離線。 Azure 串流分析可透過 Azure Data Lake 存放區 Gen2 輸出和 Parquet 輸出格式來封存資料。 這項功能可移除將資料直接送入 Azure Data Lake Analytics、Azure Databricks 和 Azure HDInsight 的摩擦。 在此解決方案中，Azure 串流分析是用來做為近乎即時的 ETL 引擎。 您可以使用各種計算引擎，在 Data Lake 中探索封存的資料。
 
-![ASA 離線分析](media/stream-analytics-solution-patterns/offlineanalytics.png)
+> [!div class="mx-imgBorder"]
+> ![ASA 離線分析](media/stream-analytics-solution-patterns/offline-analytics.png)
 
 ## <a name="use-reference-data-for-enrichment"></a>使用擴充的參考資料
 
 資料擴充通常是 ETL 引擎的需求。 Azure 串流分析支援使用來自 SQL Database 和 Azure Blob 儲存體的[參考資料](stream-analytics-use-reference-data.md)來進行資料擴充。 Azure Data Lake 和 SQL 資料倉儲中的資料登陸都可以進行資料擴充。
 
-![使用資料擴充的 ASA 離線分析](media/stream-analytics-solution-patterns/offlineanalytics.png)
+
+![使用資料擴充的 ASA 離線分析](media/stream-analytics-solution-patterns/offline-analytics-enriched.png)
 
 ## <a name="operationalize-insights-from-archived-data"></a>從封存的資料讓見解
 
 如果您將離線分析模式與近乎即時的應用程式模式結合，您就可以建立意見反應迴圈。 「意見反應」迴圈可讓應用程式針對資料中的變更模式自動調整。 此意見反應迴圈可以像變更警示的臨界值一樣簡單，或與重新定型 Machine Learning 模型一樣複雜。 相同的解決方案架構可以同時套用至在雲端和 IoT Edge 上執行的 ASA 作業。
 
-![ASA 深入解析運算化](media/stream-analytics-solution-patterns/insightsoperationalization.png)
+![ASA 深入解析運算化](media/stream-analytics-solution-patterns/insights-operationalization.png)
 
 ## <a name="how-to-monitor-asa-jobs"></a>如何監視 ASA 作業
 
@@ -162,7 +165,7 @@ Azure 串流分析作業可以執行24/7，即時處理傳入事件。 其執行
 
 幸好，先前的資料封存模式可用來適當地處理這些晚期事件。 其概念是，封存作業會處理抵達時間內送的事件，並將事件封存到 Azure Blob 中的正確時間值區，或使用其事件時間來封存 Azure Data Lake。 事件抵達的頻率並不重要，而且永遠不會被捨棄。 它一律會落在正確的時間值區中。 在復原期間，可以重新處理已封存的事件，並將結果回填到所選的存放區。 這類似于實作為 lambda 模式的方式。
 
-![ASA 回填](media/stream-analytics-solution-patterns/backfill.png)
+![ASA 回填](media/stream-analytics-solution-patterns/back-fill.png)
 
 回填程式必須使用離線批次處理系統來完成，這很可能會有不同于 Azure 串流分析的程式設計模型。 這表示您必須重新執行整個處理邏輯。
 
@@ -182,7 +185,7 @@ Azure 串流分析作業可以執行24/7，即時處理傳入事件。 其執行
 
 關鍵在於將您的系統設計成可組合的模式，以便每個子系統可以獨立建立、測試、升級和復原。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 您現在已看到使用 Azure 串流分析的各種解決方案模式。 接下來，您可以深入了解並建立您的第一個串流分析作業：
 

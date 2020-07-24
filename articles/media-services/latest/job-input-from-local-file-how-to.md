@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 03/26/2020
 ms.author: juliako
-ms.openlocfilehash: aba987ba232a29ffc240f72039b1e24bb87a2ed4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a635a75a64db59fc56c6890f79af967a58735853
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80345916"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001123"
 ---
 # <a name="create-a-job-input-from-a-local-file"></a>從本機檔案建立工作輸入
 
@@ -24,7 +24,7 @@ ms.locfileid: "80345916"
 
 ## <a name="prerequisites"></a>Prerequisites 
 
-* [建立媒體服務帳戶](create-account-cli-how-to.md)。
+* [建立媒體服務帳戶](./create-account-howto.md)。
 * 請參閱[管理資產](manage-asset-concept.md)。
 
 ## <a name="net-sample"></a>.NET 範例
@@ -32,7 +32,7 @@ ms.locfileid: "80345916"
 下列程式碼說明如何建立一個輸入資產，並將它當作工作的輸入。 CreateInputAsset 函式會執行下列動作：
 
 * 建立資產
-* 取得[儲存體中資產容器](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-dotnet#upload-blobs-to-a-container)的可寫入[SAS URL](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)
+* 取得[儲存體中資產容器](../../storage/blobs/storage-quickstart-blobs-dotnet.md#upload-blobs-to-a-container)的可寫入[SAS URL](../../storage/common/storage-sas-overview.md)
 * 使用 SAS URL，將檔案上傳至儲存體中的容器
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateInputAsset)]
@@ -47,8 +47,8 @@ ms.locfileid: "80345916"
 
 ## <a name="job-error-codes"></a>作業錯誤碼
 
-請參閱[錯誤碼](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode) \(英文\)。
+請參閱[錯誤碼](/rest/api/media/jobs/get#joberrorcode) \(英文\)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 [從 HTTPS URL 建立作業輸入](job-input-from-http-how-to.md)。

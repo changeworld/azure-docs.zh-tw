@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 6d86c90828c081a542fa5574493a46e8a2e44640
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7310c037511fdf1a7d6f3763fd61d292078ea83e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82187472"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86998882"
 ---
 # <a name="cloudsimple-security-overview"></a>CloudSimple 安全性總覽
 
@@ -29,7 +29,7 @@ Azure 基礎結構安全性考慮包括資料中心和設備位置。
 
 ### <a name="datacenter-security"></a>資料中心安全性
 
-Microsoft 有一整個部門專門用來設計、建立和操作支援 Azure 的實體設施。 這個團隊致力於維護最新的實體安全性。 如需實體安全性的詳細資訊，請參閱[Azure 設施、內部部署和實體安全性](../security/azure-physical-security.md)。
+Microsoft 有一整個部門專門用來設計、建立和操作支援 Azure 的實體設施。 這個團隊致力於維護最新的實體安全性。 如需實體安全性的詳細資訊，請參閱[Azure 設施、內部部署和實體安全性](../security/fundamentals/physical-security.md)。
 
 ### <a name="equipment-location"></a>設備位置
 

@@ -15,25 +15,25 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: johndeu
-ms.openlocfilehash: 288b7302b12d607c9090f699af83691b832256a3
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 83e945fccfbfbec207723d6c16f2a4dfc7290c52
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170814"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000035"
 ---
 # <a name="media-services-operations-rest-api-overview"></a>媒體服務作業 REST API 概觀 
 
 > [!NOTE]
-> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
+> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](../latest/index.yml)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
 
-**媒體服務作業 REST** API 用於在媒體服務帳戶中建立作業、資產、直播頻道和其他資源。 如需詳細資訊，請參閱[媒體服務作業 REST API 參考](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference)。
+**媒體服務作業 REST** API 用於在媒體服務帳戶中建立作業、資產、直播頻道和其他資源。 如需詳細資訊，請參閱[媒體服務作業 REST API 參考](/rest/api/media/operations/azure-media-services-rest-api-reference)。
 
 媒體服務提供的 REST API 可同時接受 JSON 或 atom+pub XML 格式。 媒體服務 REST API 需要每個用戶端連接到 媒體服務時必須傳送的特定 HTTP 標頭，以及一組選擇性標頭。 下列章節描述建立要求及接收來自媒體服務的回應時可以使用的標頭和 HTTP 指令動詞。
 
 對媒體服務 REST API 的驗證是透過 Azure Active Directory 驗證來進行，如[使用 Azure AD 驗證存取 Azure 媒體服務 REST API](media-services-rest-connect-with-aad.md) 文件中所述
 
-## <a name="considerations"></a>考量事項
+## <a name="considerations"></a>考量
 
 使用 REST 時須考量下列事項：
 
@@ -60,7 +60,7 @@ ms.locfileid: "86170814"
 ## <a name="standard-http-request-headers-supported-by-media-services"></a>媒體服務支援的標準 HTTP 要求標頭
 您對媒體服務每次呼叫，有一組必須在要求中包含的必要標頭，以及一組可能會想要包含的選擇性標頭。 下表列出必要的標頭：
 
-| 標頭 | 類型 | 值 |
+| 頁首 | 類型 | 值 |
 | --- | --- | --- |
 | 授權 |持有人 |Bearer 是唯一接受的授權機制。 此值也必須包含 Azure Active Directory 所提供的存取權杖。 |
 | x-ms-version |Decimal |2.17 (或最新版本)|
@@ -74,7 +74,7 @@ ms.locfileid: "86170814"
 
 以下是一組選擇性標頭：
 
-| 標頭 | 類型 | 值 |
+| 頁首 | 類型 | 值 |
 | --- | --- | --- |
 | 日期 |RFC 1123 日期 |要求的時間戳記 |
 | 接受 |內容類型 |如下所示的回應要求內容類型：<p> -application/json;odata=verbose<p> - application/atom+xml<p> 回應可能會有不同的內容類型，例如 Blob 擷取，成功的回應會在其中包含 Blob 資料流做為裝載。 |
@@ -83,15 +83,15 @@ ms.locfileid: "86170814"
 | Accept-Charset |字元集類型，如 "UTF-8" |預設值為 UTF-8。 |
 | X-HTTP-Method |HTTP 方法 |可讓不支援 PUT 或 DELETE 等 HTTP 方法的用戶端或防火牆，透過 GET 呼叫通道傳送使用這些方法。 |
 | Content-Type |內容類型 |PUT 或 POST 要求中的要求主體內容類型。 |
-| client-request-id |String |呼叫端定義的值，識別指定的要求。 如果指定，回應訊息中將包含此值以做為對應要求的方式。 <p><p>**重要事項**<p>值的上限應該為 2096b (2k)。 |
+| client-request-id |字串 |呼叫端定義的值，識別指定的要求。 如果指定，回應訊息中將包含此值以做為對應要求的方式。 <p><p>**重要事項**<p>值的上限應該為 2096b (2k)。 |
 
 ## <a name="standard-http-response-headers-supported-by-media-services"></a>媒體服務支援的標準 HTTP 回應標頭
 以下是一組可能會根據您所要求的資源，以及您要執行的動作而傳回給您的標頭。
 
-| 標頭 | 類型 | 值 |
+| 頁首 | 類型 | 值 |
 | --- | --- | --- |
-| request-id |String |目前作業的唯一識別碼，由服務產生。 |
-| client-request-id |String |在原始要求中，呼叫者所指定的識別碼 (如果有的話)。 |
+| request-id |字串 |目前作業的唯一識別碼，由服務產生。 |
+| client-request-id |字串 |在原始要求中，呼叫者所指定的識別碼 (如果有的話)。 |
 | 日期 |RFC 1123 日期 |處理要求的日期/時間。 |
 | Content-Type |不定 |回應主體的內容類型。 |
 | Content-Encoding |不定 |Gzip 或 deflate (視情況)。 |
@@ -122,7 +122,7 @@ REST API 上的驗證是透過 Azure Active Directory (AAD) 來進行。
 
 如需撰寫使用 Azure AD 驗證連接至 REST API 的程式碼的詳細資訊，請參閱文章[使用 Azure AD 驗證存取 Azure 媒體服務 REST API](media-services-rest-connect-with-aad.md)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 若要深入了解如何對媒體服務 REST API 使用 Azure AD 驗證，請參閱[使用 Azure AD 驗證存取 Azure 媒體服務 REST API](media-services-rest-connect-with-aad.md)。
 
 ## <a name="media-services-learning-paths"></a>媒體服務學習路徑
@@ -130,4 +130,3 @@ REST API 上的驗證是透過 Azure Active Directory (AAD) 來進行。
 
 ## <a name="provide-feedback"></a>提供意見反應
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

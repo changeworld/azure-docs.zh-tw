@@ -6,17 +6,18 @@ ms.suite: integration
 ms.reviewer: jehollan, klam, logicappspm
 ms.topic: article
 ms.date: 11/08/2019
-ms.openlocfilehash: afd2735bae2a79ad942c347219019ef200b61070
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ec2225633e5621c51067b64af2968a0dc0f5da87
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75428712"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001412"
 ---
 # <a name="call-or-trigger-logic-apps-by-using-azure-functions-and-azure-service-bus"></a>使用 Azure Functions 和 Azure 服務匯流排來呼叫或觸發邏輯應用程式
 
 當您需要部署長時間執行的接聽程式或工作時，您可以使用[Azure Functions](../azure-functions/functions-overview.md)來觸發邏輯應用程式。 例如，您可以建立 Azure 函式來接聽[Azure 服務匯流排](../service-bus-messaging/service-bus-messaging-overview.md)佇列，並立即引發邏輯應用程式做為推播觸發程式。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
@@ -118,11 +119,11 @@ ms.locfileid: "75428712"
 
    * 此範例會使用 `application/json` 訊息內容類型，但是您可以視需要變更此類型。
    
-   * 由於可能同時執行的函式、高磁片區或負載過重，請避免使用語句將[HTTPClient 類別](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient)具現化， `using` 並針對每個要求直接建立 HTTPClient 實例。 如需詳細資訊，請參閱[使用 HttpClientFactory 來執行可復原的 HTTP 要求](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#issues-with-the-original-httpclient-class-available-in-net-core)。
+   * 由於可能同時執行的函式、高磁片區或負載過重，請避免使用語句將[HTTPClient 類別](/dotnet/api/system.net.http.httpclient)具現化， `using` 並針對每個要求直接建立 HTTPClient 實例。 如需詳細資訊，請參閱[使用 HttpClientFactory 來執行可復原的 HTTP 要求](/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#issues-with-the-original-httpclient-class-available-in-net-core)。
    
    * 可能的話，請重複使用 HTTP 用戶端的實例。 如需詳細資訊，請參閱[管理 Azure Functions 中的連接](../azure-functions/manage-connections.md)。
 
-   這個範例會在[非同步](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/async)模式中使用[ `Task.Run` 方法](https://docs.microsoft.com/dotnet/api/system.threading.tasks.task.run)。 如需詳細資訊，請參閱[使用 async 和 await 進行非同步程式設計](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/)。
+   這個範例會在[非同步](/dotnet/csharp/language-reference/keywords/async)模式中使用[ `Task.Run` 方法](/dotnet/api/system.threading.tasks.task.run)。 如需詳細資訊，請參閱[使用 async 和 await 進行非同步程式設計](/dotnet/csharp/programming-guide/concepts/async/)。
 
    ```csharp
    using System;
@@ -147,6 +148,6 @@ ms.locfileid: "75428712"
 
    在函式收到訊息之後，邏輯應用程式會立即觸發。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * [使用 HTTP 端點呼叫、觸發或將工作流程加以嵌套](../logic-apps/logic-apps-http-endpoint.md)
