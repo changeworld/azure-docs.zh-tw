@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 07/08/2020
+ms.date: 07/16/2020
 ms.author: jgao
-ms.openlocfilehash: 8906ac7a00a349e2312eb80f5e25e32292a089ab
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: fcdcf563cd88cbf6604877636432a406c1960cff
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134567"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87117048"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>在範本中使用部署指令碼 (預覽)
 
@@ -138,7 +138,7 @@ ms.locfileid: "86134567"
 - **身分識別**：部署指令碼服務會使用使用者指派的受控識別來執行指令碼。 目前僅支援使用者指派的受控識別。
 - **kind**：指定指令碼的類型。 目前 Azure PowerShell 和 Azure CLI 指令碼皆受支援。 值為 **AzurePowerShell** 和 **AzureCLI**。
 - **forceUpdateTag**：在範本部署之間變更此值，會強制部署指令碼重新執行。 使用需要設定為參數之 defaultValue 的 newGuid() 或 utcNow() 函式。 若要深入了解，請參閱[執行指令碼多次](#run-script-more-than-once)。
-- **containerSettings**：指定自訂 Azure 容器執行個體的設定。  **containerGroupName** 是用來指定容器群組名稱。  如果未指定，則會自動產生群組名稱。
+- **containerSettings**：指定自訂 Azure 容器執行個體的設定。  **containerGroupName** 是用來指定容器群組名稱。  如果未指定，則會自動產生組名。
 - **storageAccountSettings**：指定要使用現有儲存體帳戶的設定。 如果未指定，則會自動建立儲存體帳戶。 請參閱[使用現有儲存體帳戶](#use-existing-storage-account)。
 - **azPowerShellVersion**/**azCliVersion**：指定要使用的模組版本。 如需支援的 PowerShell 和 CLI 版本清單，請參閱[必要條件](#prerequisites)。
 - **arguments**：指定參數值。 多個值應以空格分隔。
@@ -147,7 +147,7 @@ ms.locfileid: "86134567"
 
     如果引數包含逸出字元，請使用[JsonEscaper](https://www.jsonescaper.com/)來重複字元的轉義。 將原始的逸出字元串貼入工具中，然後選取 [ **Escape**]。  此工具會輸出雙重的逸出字元串。 例如，在前一個範例範本中，引數為 **-name \\ "John Dole \\ "**。  此轉義的字串為 **-name \\ \\ \\ "John dole \\ \\ \\ "**。
 
-    若要將類型為 object 的 ARM 範本參數當做引數傳遞，請使用[string （）](./template-functions-string.md#string)函式將物件轉換為字串，然後使用[replace （）](./template-functions-string.md#replace)函式來取代任何** \\ "** into ** \\ \\ \\ "**。 例如：
+    若要將類型為 object 的 ARM 範本參數當做引數傳遞，請使用[string （）](./template-functions-string.md#string)函式將物件轉換為字串，然後使用[replace （）](./template-functions-string.md#replace)函式來取代任何** \\ "** into ** \\ \\ \\ "**。 例如:
 
     ```json
     replace(string(parameters('tables')), '\"', '\\\"')
@@ -600,6 +600,34 @@ armclient get /subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourcegroups
     ![Resource Manager 範本部署指令碼 Docker cmd](./media/deployment-script-template/resource-manager-deployment-script-docker-cmd.png)
 
 成功測試腳本之後，您可以使用它做為範本中的部署腳本。
+
+## <a name="deployment-script-error-codes"></a>部署腳本錯誤碼
+
+| 錯誤碼 | 描述 |
+|------------|-------------|
+| DeploymentScriptInvalidOperation | 範本中的部署腳本資源定義包含不正確屬性名稱。 |
+| DeploymentScriptResourceConflict | 無法刪除處於非終止狀態的部署腳本資源，且執行未超過1小時。 或無法以相同的資源識別碼（相同的訂用帳戶、資源組名和資源名稱）重新執行相同的部署腳本，但同時有不同的腳本主體內容。 |
+| DeploymentScriptOperationFailed | 部署腳本作業在內部失敗。 請洽詢 Microsoft 支援服務。 |
+| DeploymentScriptStorageAccountAccessKeyNotSpecified | 尚未指定現有儲存體帳戶的存取金鑰。|
+| DeploymentScriptContainerGroupContainsInvalidContainers | 部署腳本服務所建立的容器群組已從外部修改，且已新增不正確容器。 |
+| DeploymentScriptContainerGroupInNonterminalState | 有兩個或多個部署腳本資源在相同的資源群組中使用相同的 Azure 容器實例名稱，其中一項尚未完成執行。 |
+| DeploymentScriptStorageAccountInvalidKind | BlobBlobStorage 或 BlobStorage 類型的現有儲存體帳戶不支援檔案共用，因此無法使用。 |
+| DeploymentScriptStorageAccountInvalidKindAndSku | 現有的儲存體帳戶不支援檔案共用。 如需支援的儲存體帳戶類型清單，請參閱[使用現有的儲存體帳戶](#use-existing-storage-account)。 |
+| DeploymentScriptStorageAccountNotFound | 儲存體帳戶不存在，或已被外部進程或工具刪除。 |
+| DeploymentScriptStorageAccountWithServiceEndpointEnabled | 指定的儲存體帳戶具有服務端點。 不支援具有服務端點的儲存體帳戶。 |
+| DeploymentScriptStorageAccountInvalidAccessKey | 為現有的儲存體帳戶指定了不正確存取金鑰。 |
+| DeploymentScriptStorageAccountInvalidAccessKeyFormat | 儲存體帳戶金鑰格式無效。 請參閱[管理儲存體帳戶存取金鑰](../../storage/common/storage-account-keys-manage.md)。 |
+| DeploymentScriptExceededMaxAllowedTime | 部署腳本執行時間超過部署腳本資源定義中指定的超時值。 |
+| DeploymentScriptInvalidOutputs | 部署腳本輸出不是有效的 JSON 物件。 |
+| DeploymentScriptContainerInstancesServiceLoginFailure | 使用者指派的受控識別在10次嘗試之後，將無法登入1分鐘的間隔。 |
+| DeploymentScriptContainerGroupNotFound | 外部工具或進程已刪除部署腳本服務所建立的容器群組。 |
+| DeploymentScriptDownloadFailure | 無法下載支援的腳本。 請參閱[使用支援的腳本](#use-supporting-scripts)。|
+| DeploymentScriptError | 使用者腳本擲回錯誤。 |
+| DeploymentScriptBootstrapScriptExecutionFailed | 啟動程式腳本擲回錯誤。 啟動程式腳本是協調部署腳本執行的系統腳本。 |
+| DeploymentScriptExecutionFailed | 部署腳本執行期間發生未知的錯誤。 |
+| DeploymentScriptContainerInstancesServiceUnavailable | 建立 Azure 容器實例（ACI）時，ACI 會擲回服務無法使用的錯誤。 |
+| DeploymentScriptContainerGroupInNonterminalState | 建立 Azure 容器實例（ACI）時，另一個部署腳本會在相同的範圍內使用相同的 ACI 名稱（相同的訂用帳戶、資源組名和資源名稱）。 |
+| DeploymentScriptContainerGroupNameInvalid | 指定的 Azure 容器實例名稱（ACI）不符合 ACI 需求。 請參閱針對[Azure 容器實例中常見的問題進行疑難排解](../../container-instances/container-instances-troubleshooting.md#issues-during-container-group-deployment)。|
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -6,14 +6,14 @@ manager: carmonm
 services: azure-monitor
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 07/23/2020
 ms.author: mbullwin
-ms.openlocfilehash: b06f39de9f977a9f777b21a53e93ca744fccdd93
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 044786d6a6aa4f9f3d163090c0edfa3832023b10
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85560155"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87116947"
 ---
 # <a name="azure-monitor-workbooks"></a>Azure 監視器活頁簿
 
@@ -42,7 +42,7 @@ ms.locfileid: "85560155"
 * [文字](workbooks-visualizations.md#text)
 * [圖表](workbooks-visualizations.md#charts)
 * [表格](workbooks-visualizations.md#grids)
-* [Tiles](workbooks-visualizations.md#tiles)
+* [瓷磚](workbooks-visualizations.md#tiles)
 * [樹木](workbooks-visualizations.md#trees)
 * [Graphs](workbooks-visualizations.md#graphs)
 
@@ -52,9 +52,9 @@ ms.locfileid: "85560155"
 
 若要探索活頁簿體驗，請先流覽至 Azure 監視器服務。 這可以藉由在 [Azure 入口網站] 的 [搜尋] 方塊中輸入**Monitor**來完成。
 
-然後選取 **[活頁簿（預覽）**]。
+然後選取 [活頁**簿**]。
 
-![紅色方塊中反白顯示之活頁簿預覽按鈕的螢幕擷取畫面](./media/workbooks-overview/workbooks-preview.png)
+![紅色方塊中反白顯示之活頁簿按鈕的螢幕擷取畫面](./media/workbooks-overview/workbooks.png)
 
 ### <a name="gallery"></a>主機庫
 
@@ -124,7 +124,7 @@ ms.locfileid: "85560155"
 
 當您開始建立自己的活頁簿範本時，您可能會想要將它與更廣大的社區分享。 若要深入瞭解並探索不屬於預設 Azure 監視器資源庫視圖的其他範本，請造訪我們的[GitHub 存放庫](https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/README.md)。 若要流覽現有的活頁簿，請造訪 GitHub 上的活頁[簿文件庫](https://github.com/microsoft/Application-Insights-Workbooks/tree/master/Workbooks)。
 
-## <a name="next-step"></a>下一步
+## <a name="next-step"></a>後續步驟
 
 * [開始深入](workbooks-visualizations.md)瞭解活頁簿許多豐富的視覺效果選項。
 * [控制](workbooks-access-control.md)和共用您的活頁簿資源的存取權。

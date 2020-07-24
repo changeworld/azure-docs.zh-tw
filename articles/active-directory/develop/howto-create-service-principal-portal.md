@@ -12,12 +12,12 @@ ms.date: 06/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: 12389484f63d35eb31b38d5067061dc99b7284f0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 479222cc9b67775d359182740dc78865da8cee38
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85505982"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87115925"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>操作說明：使用入口網站來建立可存取資源的 Azure AD 應用程式和服務主體
 
@@ -29,7 +29,7 @@ ms.locfileid: "85505982"
 > 若不要建立服務主體，可考慮使用 Azure 資源的受控識別作為應用程式識別碼。 如果您的程式碼在支援受控識別的服務上執行，並存取支援 Azure AD authentication 的資源，則受控識別會是較好的選項。 若要深入了解 Azure 資源的受控識別，包含目前哪些服務支援該功能，請參閱[什麼是適用於 Azure 資源的受控識別？](../managed-identities-azure-resources/overview.md)。
 
 ## <a name="app-registration-app-objects-and-service-principals"></a>應用程式註冊、應用程式物件和服務主體
-沒有任何方法可以使用 Azure 入口網站直接建立服務主體。  當您透過 Azure 入口網站註冊應用程式時，應用程式物件和服務主體會自動建立您的主目錄或租使用者。  如需應用程式註冊、應用程式物件和服務主體之間關聯性的詳細資訊，請參閱[Azure Active Directory 中的應用程式和服務主體物件](app-objects-and-service-principals.md)。
+沒有任何方法可以使用 Azure 入口網站直接建立服務主體。  當您透過 Azure 入口網站註冊應用程式時，會在您的主目錄或租使用者中自動建立應用程式物件和服務主體。  如需應用程式註冊、應用程式物件和服務主體之間關聯性的詳細資訊，請參閱[Azure Active Directory 中的應用程式和服務主體物件](app-objects-and-service-principals.md)。
 
 ## <a name="permissions-required-for-registering-an-app"></a>註冊應用程式所需的許可權
 
@@ -178,7 +178,7 @@ $cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocati
    ![複製秘密值，因為您之後無法取得此值](./media/howto-create-service-principal-portal/copy-secret.png)
 
 ## <a name="configure-access-policies-on-resources"></a>設定資源的存取原則
-請記住，您可能需要設定應用程式需要存取之資源的額外許可權。 例如，您也必須[更新金鑰保存庫的存取原則](/azure/key-vault/key-vault-secure-your-key-vault#data-plane-and-access-policies)，讓您的應用程式存取金鑰、秘密或憑證。  
+請記住，您可能需要設定應用程式需要存取之資源的其他許可權。 例如，您也必須[更新金鑰保存庫的存取原則](/azure/key-vault/key-vault-secure-your-key-vault#data-plane-and-access-policies)，讓您的應用程式存取金鑰、秘密或憑證。  
 
 1. 在 [ [Azure 入口網站](https://portal.azure.com)中，流覽至您的金鑰保存庫，然後選取 [**存取原則**]。  
 1. 選取 [**新增存取原則**]，然後選取您想要授與應用程式的金鑰、密碼和憑證許可權。  選取您先前建立的服務主體。

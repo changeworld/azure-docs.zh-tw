@@ -7,12 +7,12 @@ ms.date: 05/27/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
 ms.custom: tracking-python
-ms.openlocfilehash: 87e4d67086ea9f260becb2d63765e807e2b73546
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: e6965cef0257ee472c08b19e3a9b1c2ec2860128
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985747"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87116913"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>如何使用 App Service 和 Azure Functions 的受控身分識別
 
@@ -84,7 +84,7 @@ ms.locfileid: "85985747"
 
 #### <a name="using-azure-powershell-for-a-web-app"></a>使用 web 應用程式的 Azure PowerShell
 
-1. 您可以視需要使用 [Azure PowerShell 指南](/powershell/azure/overview)中的指示來安裝 Azure PowerShell，然後執行 `Login-AzAccount` 來建立與 Azure 的連線。
+1. 您可以視需要使用 [Azure PowerShell 指南](/powershell/azure/)中的指示來安裝 Azure PowerShell，然後執行 `Login-AzAccount` 來建立與 Azure 的連線。
 
 2. 使用 Azure PowerShell 建立 Web 應用程式。 如需更多如何使用 Azure PowerShell 搭配 App Service 的相關範例，請參閱 [App Service PowerShell 範例](../app-service/samples-powershell.md)：
 
@@ -107,7 +107,7 @@ ms.locfileid: "85985747"
 
 #### <a name="using-azure-powershell-for-a-function-app"></a>使用函數應用程式的 Azure PowerShell
 
-1. 您可以視需要使用 [Azure PowerShell 指南](/powershell/azure/overview)中的指示來安裝 Azure PowerShell，然後執行 `Login-AzAccount` 來建立與 Azure 的連線。
+1. 您可以視需要使用 [Azure PowerShell 指南](/powershell/azure/)中的指示來安裝 Azure PowerShell，然後執行 `Login-AzAccount` 來建立與 Azure 的連線。
 
 2. 使用 Azure PowerShell 建立函數應用程式。 如需如何搭配 Azure Functions 使用 Azure PowerShell 的更多範例，請參閱[Az. 函數參考](https://docs.microsoft.com/powershell/module/az.functions/?view=azps-4.1.0#functions)：
 
@@ -208,7 +208,7 @@ tenantId 屬性能辨識身分識別所隸屬的 Azure AD 租用戶。 principal
 > [!NOTE]
 > Azure App Service 的 Azure PowerShell commandlet 的目前版本不支援使用者指派的身分識別。 下列指示適用于 Azure Functions。
 
-1. 您可以視需要使用 [Azure PowerShell 指南](/powershell/azure/overview)中的指示來安裝 Azure PowerShell，然後執行 `Login-AzAccount` 來建立與 Azure 的連線。
+1. 您可以視需要使用 [Azure PowerShell 指南](/powershell/azure/)中的指示來安裝 Azure PowerShell，然後執行 `Login-AzAccount` 來建立與 Azure 的連線。
 
 2. 使用 Azure PowerShell 建立函數應用程式。 如需如何搭配 Azure Functions 使用 Azure PowerShell 的更多範例，請參閱[Az. 函數參考](https://docs.microsoft.com/powershell/module/az.functions/?view=azps-4.1.0#functions)。 下列腳本也會使用，您 `New-AzUserAssignedIdentity` 必須依據[Create、list 或 delete 使用者指派的受控識別，使用 Azure PowerShell](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)來個別安裝。
 
@@ -431,7 +431,7 @@ $accessToken = $tokenResponse.access_token
 
 ### <a name="using-the-microsoftazureservicesappauthentication-library-for-net"></a><a name="asal"></a>將 Microsoft.Azure.Services.AppAuthentication 程式庫運用在 .NET 上
 
-對於 .NET 應用程式和函式來說，採用受控身分識別最簡單的方法就是透過 Microsoft.Azure.Services.AppAuthentication 套件。 該程式庫還能讓您使用來自 Visual Studio、[Azure CLI](/cli/azure) 或 Active Directory 整合式驗證的使用者帳戶，在部署機器上以本機方式測試程式碼。 如需使用此程式庫之本機開發選項的詳細資訊，請參閱 [Microsoft.Azure.Services.AppAuthentication 參考]。 本節示範如何在您的程式碼中開始使用程式庫。
+對於 .NET 應用程式和函式來說，採用受控身分識別最簡單的方法就是透過 Microsoft.Azure.Services.AppAuthentication 套件。 該程式庫還能讓您使用來自 Visual Studio、[Azure CLI](/cli/azure) 或 Active Directory 整合式驗證的使用者帳戶，在部署機器上以本機方式測試程式碼。 裝載于雲端時，它會預設為使用系統指派的身分識別，但您可以使用連接字串環境變數（參考使用者指派之身分識別的用戶端識別碼）來自訂此行為。 如需有關此程式庫之開發選項的詳細資訊，請參閱[AppAuthentication 參考]。 本節示範如何在您的程式碼中開始使用程式庫。
 
 1. 將對 [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) 及任何其他必要 NuGet 套件的參考新增到您的應用程式。 以下範例也使用 [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault)。
 
@@ -447,7 +447,17 @@ $accessToken = $tokenResponse.access_token
     var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServiceTokenProvider.KeyVaultTokenCallback));
     ```
 
-若要深入了解 Microsoft.Azure.Services.AppAuthentication 和它公開的作業，請參閱 [Microsoft.Azure.Services.AppAuthentication 參考]與[採用 MSI 的 App Service 和 KeyVault .NET 範例](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet)。
+如果您想要使用使用者指派的受控識別，您可以將 `AzureServicesAuthConnectionString` 應用程式設定設為 `RunAs=App;AppId=<clientId-guid>` 。 將取代 `<clientId-guid>` 為您想要使用之身分識別的用戶端識別碼。 您可以使用自訂應用程式設定來定義多個這類連接字串，並將其值傳遞至 Azureservicetokenprovider 會的函式。
+
+```csharp
+    var identityConnectionString1 = Environment.GetEnvironmentVariable("UA1_ConnectionString");
+    var azureServiceTokenProvider1 = new AzureServiceTokenProvider(identityConnectionString1);
+    
+    var identityConnectionString2 = Environment.GetEnvironmentVariable("UA2_ConnectionString");
+    var azureServiceTokenProvider2 = new AzureServiceTokenProvider(identityConnectionString2);
+```
+
+若要深入瞭解如何設定 Azureservicetokenprovider 會和它所公開的作業，請參閱[AppAuthentication 參考]和[使用 MSI 的 App Service 和 KeyVault .net 範例](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet)。
 
 ### <a name="using-the-azure-sdk-for-java"></a>使用 Azure SDK for Java
 

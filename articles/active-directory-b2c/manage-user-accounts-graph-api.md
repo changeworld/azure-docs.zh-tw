@@ -9,14 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.date: 03/16/2020
+ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5b7eea37cbd926046c6b923b003cd47e0a0c2b0c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 54b4292c74f7737f1c392d601627eb3e0ff48812
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85387621"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87116201"
 ---
 # <a name="manage-azure-ad-b2c-user-accounts-with-microsoft-graph"></a>使用 Microsoft Graph 管理 Azure AD B2C 的使用者帳戶
 
@@ -59,7 +60,7 @@ Microsoft Graph 可讓您在 Microsoft Graph API 中提供 create、read、updat
 
 在 Microsoft Graph API 中，本機和同盟身分識別都會儲存在 user `identities` 屬性中，這是[objectIdentity][graph-objectIdentity]類型。 `identities`集合代表一組用來登入使用者帳戶的身分識別。 此集合可讓使用者使用其任何相關聯的身分識別登入使用者帳戶。
 
-| 屬性   | 類型 |Description|
+| 屬性   | 類型 |說明|
 |:---------------|:--------|:----------|
 |signInType|字串| 在您的目錄中指定使用者登入類型。 針對本機帳戶： `emailAddress` 、 `emailAddress1` 、 `emailAddress2` 、 `emailAddress3` 、 `userName` 或您喜歡的任何其他類型。 社交帳戶必須設定為 `federated` 。|
 |簽發者|字串|指定身分識別的簽發者。 若為本機帳戶（其中**signInType**不是 `federated` ），這個屬性就是本機 B2C 租使用者的預設功能變數名稱，例如 `contoso.onmicrosoft.com` 。 針對社交身分識別（其中**signInType**為 `federated` ），值為簽發者的名稱，例如`facebook.com`|

@@ -6,16 +6,16 @@ ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 07/03/2020
-ms.openlocfilehash: 902c48f2edcca6eb25958a9f22d6760faf1fcbc2
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 5b25c56591e64d66901dbcf79dc629f0beb2bbb0
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86248708"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87117017"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>在 Azure Logic Apps 中保護存取和資料
 
-Azure Logic Apps 依賴[Azure 儲存體](https://docs.microsoft.com/azure/storage/)來儲存及自動[加密待用資料](../security/fundamentals/encryption-atrest.md)。 此加密可保護您的資料，並協助您符合組織的安全性和合規性承諾。 根據預設，Azure 儲存體會使用 Microsoft 管理的金鑰來加密您的資料。 如需詳細資訊，請參閱[待用資料的 Azure 儲存體加密](../storage/common/storage-service-encryption.md)。
+Azure Logic Apps 依賴[Azure 儲存體](../storage/index.yml)來儲存及自動[加密待用資料](../security/fundamentals/encryption-atrest.md)。 此加密可保護您的資料，並協助您符合組織的安全性和合規性承諾。 根據預設，Azure 儲存體會使用 Microsoft 管理的金鑰來加密您的資料。 如需詳細資訊，請參閱[待用資料的 Azure 儲存體加密](../storage/common/storage-service-encryption.md)。
 
 若要在 Azure Logic Apps 中進一步控制存取和保護敏感性資料，您可以在這些區域中設定額外的安全性：
 
@@ -38,7 +38,7 @@ Azure Logic Apps 依賴[Azure 儲存體](https://docs.microsoft.com/azure/storag
 
 ## <a name="access-to-request-based-triggers"></a>存取以要求為基礎的觸發程序
 
-如果邏輯應用程式使用以要求為基礎的觸發程序，以接收輸入呼叫或要求 (例如[要求](../connectors/connectors-native-reqres.md)或 [Webhook](../connectors/connectors-native-webhook.md) 觸發程序)，您可以限制存取，只允許獲授權的用戶端呼叫邏輯應用程式。 邏輯應用程式收到的所有要求都會以傳輸層安全性加密並受到保護， (TLS) 通訊協定，先前稱為安全通訊端層 (SSL) 。
+如果邏輯應用程式使用以要求為基礎的觸發程序，以接收輸入呼叫或要求 (例如[要求](../connectors/connectors-native-reqres.md)或 [Webhook](../connectors/connectors-native-webhook.md) 觸發程序)，您可以限制存取，只允許獲授權的用戶端呼叫邏輯應用程式。 邏輯應用程式收到的所有要求都會以傳輸層安全性（TLS）通訊協定加密並受到保護，先前稱為安全通訊端層（SSL）。
 
 以下選項可協助您保護此觸發程序類型的存取安全性：
 
@@ -51,7 +51,7 @@ Azure Logic Apps 依賴[Azure 儲存體](https://docs.microsoft.com/azure/storag
 
 ### <a name="generate-shared-access-signatures-sas"></a>產生共用存取簽章 (SAS)
 
-邏輯應用程式上的每個要求端點在端點的 URL 中，都有[共用存取簽章 (SAS)](https://docs.microsoft.com/rest/api/storageservices/constructing-a-service-sas)，格式如下：
+邏輯應用程式上的每個要求端點在端點的 URL 中，都有[共用存取簽章 (SAS)](/rest/api/storageservices/constructing-a-service-sas)，格式如下：
 
 `https://<request-endpoint-URI>sp=<permissions>sv=<SAS-version>sig=<signature>`
 
@@ -86,7 +86,7 @@ Azure Logic Apps 依賴[Azure 儲存體](https://docs.microsoft.com/azure/storag
 
 #### <a name="create-expiring-callback-urls"></a>建立有期限的回呼 URL
 
-對於以要求為基礎的觸發程序，如果您要將端點 URL 分享給其他人，您可以產生使用特定金鑰且有到期日的回呼 URL。 如此一來，您可以根據特定的時間範圍，無縫輪替金鑰，或限制有無存取權來觸發邏輯應用程式。 若要指定 URL 的到期日，請使用 [Logic Apps REST API](https://docs.microsoft.com/rest/api/logic/workflowtriggers)，例如：
+對於以要求為基礎的觸發程序，如果您要將端點 URL 分享給其他人，您可以產生使用特定金鑰且有到期日的回呼 URL。 如此一來，您可以根據特定的時間範圍，無縫輪替金鑰，或限制有無存取權來觸發邏輯應用程式。 若要指定 URL 的到期日，請使用 [Logic Apps REST API](/rest/api/logic/workflowtriggers)，例如：
 
 ```http
 POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group-name>/providers/Microsoft.Logic/workflows/<workflow-name>/triggers/<trigger-name>/listCallbackUrl?api-version=2016-06-01
@@ -98,7 +98,7 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 #### <a name="create-urls-with-primary-or-secondary-secret-key"></a>使用主要或次要祕密金鑰建立 URL
 
-針對以要求為基礎的觸發程序，當您產生或列出回呼 URL 時，您可以指定用於簽署 URL 的金鑰。 若要產生以特定金鑰簽署的 URL，請使用 [Logic Apps REST API](https://docs.microsoft.com/rest/api/logic/workflowtriggers)，例如：
+針對以要求為基礎的觸發程序，當您產生或列出回呼 URL 時，您可以指定用於簽署 URL 的金鑰。 若要產生以特定金鑰簽署的 URL，請使用 [Logic Apps REST API](/rest/api/logic/workflowtriggers)，例如：
 
 ```http
 POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group-name>/providers/Microsoft.Logic/workflows/<workflow-name>/triggers/<trigger-name>/listCallbackUrl?api-version=2016-06-01
@@ -110,13 +110,13 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 ### <a name="enable-azure-active-directory-oauth"></a>啟用 Azure Active Directory OAuth
 
-如果您的邏輯應用程式是以[要求觸發](../connectors/connectors-native-reqres.md)程式開始，您可以藉由建立對要求觸發程式之輸入呼叫的授權原則，啟用[Azure Active Directory 開放式驗證](/azure/active-directory/develop/) (Azure AD OAuth) 。 啟用此驗證之前，請檢閱下列考量：
+如果您的邏輯應用程式是以[要求觸發](../connectors/connectors-native-reqres.md)程式開始，您可以藉由建立對要求觸發程式之輸入呼叫的授權原則，啟用[Azure Active Directory 開放式驗證](../active-directory/develop/index.yml)（Azure AD OAuth）。 啟用此驗證之前，請檢閱下列考量：
 
 * 輸入呼叫邏輯應用程式時只能使用一種授權配置：Azure AD OAuth 或[共用存取簽章 (SAS)](#sas)。 只有[持有者類型](../active-directory/develop/active-directory-v2-protocols.md#tokens)授權配置支援 OAuth 權杖，這僅支援要求觸發程式。
 
 * 邏輯應用程式受限於授權原則數目上限。 每個授權原則也有[宣告](../active-directory/develop/developer-glossary.md#claim)數目上限。 如需詳細資訊，請參閱 [Azure Logic Apps 的限制和設定](../logic-apps/logic-apps-limits-and-config.md#authentication-limits)。
 
-* 授權原則至少必須包含**簽發者**宣告，其具有以 `https://sts.windows.net/` 或 `https://login.microsoftonline.com/` (OAuth V2) 做為 Azure AD 簽發者識別碼的值。 如需存取權杖的詳細資訊，請參閱[Microsoft 身分識別平臺存取權杖](../active-directory/develop/access-tokens.md)。
+* 授權原則必須至少包含**簽發者**宣告，其值開頭為 `https://sts.windows.net/` 或 `https://login.microsoftonline.com/` （OAuth V2）做為 Azure AD 簽發者識別碼。 如需存取權杖的詳細資訊，請參閱[Microsoft 身分識別平臺存取權杖](../active-directory/develop/access-tokens.md)。
 
 若要啟用 Azure AD OAuth，請遵循下列步驟，將一或多個授權原則新增至邏輯應用程式。
 
@@ -130,7 +130,7 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
    ![提供授權原則的資訊](./media/logic-apps-securing-a-logic-app/set-up-authorization-policy.png)
 
-   | 屬性 | 必要 | 描述 |
+   | 屬性 | 必要 | 說明 |
    |----------|----------|-------------|
    | **原則名稱** | 是 | 您想要用於授權原則的名稱 |
    | **宣告** | 是 | 邏輯應用程式所接受來自輸入呼叫的宣告類型和值。 以下是可用的宣告類型： <p><p>- **簽發者** <br>- **對象** <br>- **主旨** <br>- **JWT 識別碼** (JSON Web 權杖識別碼) <p><p>**宣告**清單至少必須包含**簽發者**宣告，其具有以或開頭的值 `https://sts.windows.net/` `https://login.microsoftonline.com/` 做為 Azure AD 簽發者識別碼。 如需這些宣告類型的詳細資訊，請參閱 [Azure AD 安全性權杖中的宣告](../active-directory/azuread-dev/v1-authentication-scenarios.md#claims-in-azure-ad-security-tokens)。 您也可以指定自己的宣告類型和值。 |
@@ -212,7 +212,7 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 如果希望邏輯應用程式只以巢狀邏輯應用程式的形式觸發，請從 [允許的輸入 IP 位址] 清單中，選取 [只有其他 Logic Apps]。 此選項會將空陣列寫入邏輯應用程式資源。 如此一來，只有來自 Logic Apps 服務 (父代邏輯應用程式) 的呼叫，才能觸發巢狀邏輯應用程式。
 
 > [!NOTE]
-> 不論 IP 位址為何，您仍然可以使用 [ [Logic Apps REST API：工作流程觸發程式-執行](https://docs.microsoft.com/rest/api/logic/workflowtriggers/run)要求] 或 [API 管理]，來執行具有以要求為基礎之觸發程式的邏輯應用程式。 不過，此情況仍然需要經過 Azure REST API 來[驗證](../active-directory/develop/authentication-scenarios.md)。 所有事件都出現在 Azure 稽核記錄中。 請確定您已適當地設定存取控制原則。
+> 不論 IP 位址為何，您仍然可以使用 [ [Logic Apps REST API：工作流程觸發程式-執行](/rest/api/logic/workflowtriggers/run)要求] 或 [API 管理]，來執行具有以要求為基礎之觸發程式的邏輯應用程式。 不過，此情況仍然需要經過 Azure REST API 來[驗證](../active-directory/develop/authentication-vs-authorization.md)。 所有事件都出現在 Azure 稽核記錄中。 請確定您已適當地設定存取控制原則。
 
 #### <a name="restrict-inbound-ip-ranges-in-azure-resource-manager-template"></a>在 Azure Resource Manager 範本中限制輸入 IP 範圍
 
@@ -263,13 +263,13 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 ### <a name="add-azure-active-directory-open-authentication-or-other-security"></a>新增 Azure Active Directory 開放式驗證或其他安全性
 
-若要將更多[驗證](../active-directory/develop/authentication-scenarios.md)通訊協定新增至邏輯應用程式，請考慮使用 [Azure API 管理](../api-management/api-management-key-concepts.md)服務。 此服務協助您將邏輯應用程式公開為 API，並為任何端點提供豐富的監視、安全性、原則和文件。 API 管理可以公開邏輯應用程式的公用或私人端點。 若要授權存取此端點，您可以使用 [Azure Active Directory 開放式驗證](#azure-active-directory-oauth-authentication) (Azure AD OAuth)、[用戶端憑證](#client-certificate-authentication)，或其他可授權存取該端點的安全性標準。 當 API 管理收到要求時，服務會傳送要求至您的邏輯應用程式，也會在過程中進行任何必要的轉換或限制。 若只要讓 API 管理觸發邏輯應用程式，您可以使用邏輯應用程式的輸入 IP 範圍設定。
+若要將更多[驗證](../active-directory/develop/authentication-vs-authorization.md)通訊協定新增至邏輯應用程式，請考慮使用 [Azure API 管理](../api-management/api-management-key-concepts.md)服務。 此服務協助您將邏輯應用程式公開為 API，並為任何端點提供豐富的監視、安全性、原則和文件。 API 管理可以公開邏輯應用程式的公用或私人端點。 若要授權存取此端點，您可以使用 [Azure Active Directory 開放式驗證](#azure-active-directory-oauth-authentication) (Azure AD OAuth)、[用戶端憑證](#client-certificate-authentication)，或其他可授權存取該端點的安全性標準。 當 API 管理收到要求時，服務會傳送要求至您的邏輯應用程式，也會在過程中進行任何必要的轉換或限制。 若只要讓 API 管理觸發邏輯應用程式，您可以使用邏輯應用程式的輸入 IP 範圍設定。
 
 <a name="secure-operations"></a>
 
 ## <a name="access-to-logic-app-operations"></a>存取邏輯應用程式作業
 
-您可以只允許特定使用者或群組執行特定工作，例如管理、編輯和檢視邏輯應用程式。 若要控制其權限，請使用 [Azure 角色型存取控制 (RBAC)](../role-based-access-control/role-assignments-portal.md)，以將自訂或內建角色指派給 Azure 訂用帳戶中的成員：
+您可以只允許特定使用者或群組執行特定工作，例如管理、編輯和檢視邏輯應用程式。 若要控制其許可權，請使用[azure 角色型存取控制（AZURE RBAC）](../role-based-access-control/role-assignments-portal.md) ，讓您可以將自訂或內建角色指派給 Azure 訂用帳戶中的成員：
 
 * [邏輯應用程式參與者](../role-based-access-control/built-in-roles.md#logic-app-contributor)：可讓您管理邏輯應用程式，但無法變更對邏輯應用程式的存取。
 
@@ -427,7 +427,7 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 * 當您遮蔽觸發程序或動作的輸入或輸出時，Logic Apps 不會將受保護的資料傳送至 Azure Log Analytics。 此外，您無法將[追蹤的屬性](../logic-apps/monitor-logic-apps-log-analytics.md#extend-data)新增至該觸發程序或動作來監視。
 
-* [用於處理工作流程歷程記錄的 Logic Apps API](https://docs.microsoft.com/rest/api/logic/) 不會傳回受保護的輸出。
+* [用於處理工作流程歷程記錄的 Logic Apps API](/rest/api/logic/) 不會傳回受保護的輸出。
 
 * 若要保護動作的輸出，但該動作已遮蔽輸入或明確遮蔽輸出，請在該動作中手動開啟 [保護輸出]。
 
@@ -613,7 +613,7 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
          "apiVersion": "2016-06-01",
          "properties": {
             "definition": {
-               "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-0601/workflowdefinition.json#",
+               "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
                "actions": {
                   "HTTP": {
                      "type": "Http",
@@ -816,7 +816,7 @@ HTTP 和 HTTPS 端點支援各種類型的驗證。 在您用來將輸出呼叫�
 
 ### <a name="azure-active-directory-open-authentication"></a>Azure Active Directory 開放式驗證
 
-在要求觸發程序上，為您的邏輯應用程式[設定 Azure AD 授權原則](#enable-oauth)之後，您可以使用 [Azure Active Directory 開放式驗證](/azure/active-directory/develop/) (Azure AD OAuth) 來驗證傳入的呼叫。 對於有 **Active Directory OAuth** 驗證類型可供您選擇的其他所有觸發程序和動作，請指定下列屬性值：
+在要求觸發程序上，為您的邏輯應用程式[設定 Azure AD 授權原則](#enable-oauth)之後，您可以使用 [Azure Active Directory 開放式驗證](../active-directory/develop/index.yml) (Azure AD OAuth) 來驗證傳入的呼叫。 對於有 **Active Directory OAuth** 驗證類型可供您選擇的其他所有觸發程序和動作，請指定下列屬性值：
 
 | 屬性 (設計工具) | 屬性 (JSON) | 必要 | 值 | 描述 |
 |---------------------|-----------------|----------|-------|-------------|
@@ -899,7 +899,7 @@ Authorization: OAuth realm="Photos",
 
 ### <a name="managed-identity-authentication"></a>受控識別驗證
 
-如果 [[受控識別](../active-directory/managed-identities-azure-resources/overview.md)] 選項可用，則邏輯應用程式可以使用系統指派的身分識別或*單一*手動建立的使用者指派身分識別，來驗證受 Azure Active Directory 保護之其他資源的存取權 (Azure AD) 不登入。 Azure 會為您管理此身分識別，並協助保護您的認證，因為您不需要提供或輪替秘密。 深入了解[支援使用受控識別進行 Azure AD 驗證的 Azure 服務](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)。
+如果 [[受控識別](../active-directory/managed-identities-azure-resources/overview.md)] 選項可用，則邏輯應用程式可以使用系統指派的身分識別或*單一*手動建立的使用者指派身分識別，來驗證受 Azure Active Directory （Azure AD）保護之其他資源的存取權，而不需要登入。 Azure 會為您管理此身分識別，並協助保護您的認證，因為您不需要提供或輪替秘密。 深入了解[支援使用受控識別進行 Azure AD 驗證的 Azure 服務](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)。
 
 1. 若要讓邏輯應用程式使用受控識別，請遵循[在 Azure Logic Apps 中使用受控識別來驗證對 Azure 資源的存取](../logic-apps/create-managed-service-identity.md)中的步驟。 這些步驟會在邏輯應用程式上啟用受控識別，並設定該身分識別對目標 Azure 資源的存取權。
 
@@ -942,30 +942,30 @@ Authorization: OAuth realm="Photos",
 
 ## <a name="isolation-guidance-for-logic-apps"></a>邏輯應用程式的隔離指引
 
-您可以使用中的 Azure Logic Apps， [Azure Government](../azure-government/documentation-government-welcome.md)支援[Azure Government 影響層級5隔離指引](../azure-government/documentation-government-impact-level-5.md#azure-logic-apps)和[美國國防部雲端運算安全性需求指南 (SRG) ](https://dl.dod.cyber.mil/wp-content/uploads/cloud/SRG/index.html)中所述的所有影響層級。 為了符合這些需求，Logic Apps 支援可讓您在具有專用資源的環境中建立及執行工作流程的功能，讓您可以降低邏輯應用程式上的其他 Azure 租使用者對效能的影響，並避免與其他租使用者共用運算資源。
+您可以使用中的 Azure Logic Apps， [Azure Government](../azure-government/documentation-government-welcome.md)支援[Azure Government 影響層級5隔離指引](../azure-government/documentation-government-impact-level-5.md#azure-logic-apps)和[美國國防部雲端運算安全性需求指南（SRG）](https://dl.dod.cyber.mil/wp-content/uploads/cloud/SRG/index.html)中所述的所有影響層級。 為了符合這些需求，Logic Apps 支援可讓您在具有專用資源的環境中建立及執行工作流程的功能，讓您可以降低邏輯應用程式上的其他 Azure 租使用者對效能的影響，並避免與其他租使用者共用運算資源。
 
 * 若要執行您自己的程式碼或執行 XML 轉換，請[建立並呼叫 Azure 函式](../logic-apps/logic-apps-azure-functions.md)，而不是使用[內嵌程式碼功能](../logic-apps/logic-apps-add-run-inline-code.md)，或提供要分別當做[對應使用的元件](../logic-apps/logic-apps-enterprise-integration-maps.md)。 此外，設定函數應用程式的裝載環境，以符合您的隔離需求。
 
-  例如，若要符合影響層級5的需求，請使用[**隔離**的定價層](../app-service/overview-hosting-plans.md)，以及同時使用**隔離**定價層的[App Service 環境 (ASE) ](../app-service/environment/intro.md) ，透過[App Service 計畫](../azure-functions/functions-scale.md#app-service-plan)建立函數應用程式。 在此環境中，函式應用程式會在專用的 Azure 虛擬機器和專用的 Azure 虛擬網路上執行，並在應用程式的計算隔離和最大的向外延展功能上提供網路隔離。 如需詳細資訊，請參閱[Azure Government 影響層級5隔離指引-Azure Functions](../azure-government/documentation-government-impact-level-5.md#azure-functions)。
+  例如，若要符合影響層級5的需求，請使用[**隔離**定價層](../app-service/overview-hosting-plans.md)和同時使用**隔離**定價層的[App Service 環境（ASE）](../app-service/environment/intro.md)來建立具有[App Service 計畫](../azure-functions/functions-scale.md#app-service-plan)的函數應用程式。 在此環境中，函式應用程式會在專用的 Azure 虛擬機器和專用的 Azure 虛擬網路上執行，並在應用程式的計算隔離和最大的向外延展功能上提供網路隔離。 如需詳細資訊，請參閱[Azure Government 影響層級5隔離指引-Azure Functions](../azure-government/documentation-government-impact-level-5.md#azure-functions)。
 
   如需詳細資訊，請參閱下列主題：<p>
 
   * [Azure App Service 計畫](../app-service/overview-hosting-plans.md)
   * [Azure Functions 網路選項](../azure-functions/functions-networking-options.md)
   * [適用于虛擬機器的 Azure 專用主機](../virtual-machines/windows/dedicated-hosts.md)
-  * [Azure 中的虛擬機器隔離](../virtual-machines/windows/isolation.md)
+  * [Azure 中的虛擬機器隔離](../virtual-machines/isolation.md)
   * [將專用 Azure 服務部署至虛擬網路](../virtual-network/virtual-network-for-azure-services.md)
 
-* 若要建立在專用資源上執行的邏輯應用程式，並可存取由 Azure 虛擬網路保護的資源，您可以建立[ (ISE) 的整合服務環境](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)。
+* 若要建立在專用資源上執行的邏輯應用程式，並可存取由 Azure 虛擬網路保護的資源，您可以建立[整合服務環境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)。
 
-  * 某些 Azure 虛擬網路會使用私人端點 ([Azure 私人連結](../private-link/private-link-overview.md)) ，以提供 azure PaaS 服務的存取權，例如 Azure 儲存體、Azure Cosmos DB 或 Azure SQL Database、合作夥伴服務，或 azure 上託管的客戶服務。 如果您的邏輯應用程式需要存取使用私人端點的虛擬網路，您必須在 ISE 內建立、部署及執行這些邏輯應用程式。
+  * 某些 Azure 虛擬網路會使用私人端點（[Azure 私人連結](../private-link/private-link-overview.md)）來提供 azure PaaS 服務（例如 Azure 儲存體、Azure Cosmos DB 或 Azure SQL Database、合作夥伴服務，或 azure 上託管的客戶服務）的存取權。 如果您的邏輯應用程式需要存取使用私人端點的虛擬網路，您必須在 ISE 內建立、部署及執行這些邏輯應用程式。
 
-  * 若要更充分掌控 Azure 儲存體所使用的加密金鑰，您可以使用[Azure Key Vault](../key-vault/general/overview.md)來設定、使用及管理您自己的金鑰。 這項功能也稱為「攜帶您自己的金鑰」 (BYOK) ，而您的金鑰稱為「客戶管理的金鑰」。 如需詳細資訊，請參閱[設定客戶管理的金鑰以將整合服務環境的待用資料加密 (ise) Azure Logic Apps](../logic-apps/customer-managed-keys-integration-service-environment.md)。
+  * 若要更充分掌控 Azure 儲存體所使用的加密金鑰，您可以使用[Azure Key Vault](../key-vault/general/overview.md)來設定、使用及管理您自己的金鑰。 這項功能也稱為「攜帶您自己的金鑰」（BYOK），而您的金鑰稱為「客戶管理的金鑰」。 如需詳細資訊，請參閱[在 Azure Logic Apps 中設定客戶管理的金鑰，以加密整合服務環境的待用資料（ise）](../logic-apps/customer-managed-keys-integration-service-environment.md)。
 
 如需詳細資訊，請參閱下列主題：
 
 * [Azure 公用雲端中的隔離](../security/fundamentals/isolation-choices.md)
-* [Azure 中高度敏感 IaaS 應用程式的安全性](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/high-security-iaas)
+* [Azure 中高度敏感 IaaS 應用程式的安全性](/azure/architecture/reference-architectures/n-tier/high-security-iaas)
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -4,12 +4,12 @@ description: 本文說明如何設定容器記錄（stdout/stderr）和事件的
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: references_regions
-ms.openlocfilehash: cbd697f743d0d3369a8c35537ac2755ae5d3fc8c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ef3fd6ce2a5be4f3d06a37b135e0f9cf0851effb
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516459"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87116712"
 ---
 # <a name="how-to-set-up-the-live-data-preview-feature"></a>如何設定即時資料（預覽）功能
 
@@ -42,7 +42,7 @@ Azure 入口網站會提示您驗證 Azure Active Directory 叢集的登入認�
 >您叢集的授權是由 Kubernetes 和其設定所在的安全性模型所管理。 存取這項功能的使用者需要有下載 Kubernetes 設定（*kubeconfig*）的許可權，類似于執行 `az aks get-credentials -n {your cluster name} -g {your resource group}` 。 此設定檔包含**Azure Kubernetes Service 叢集使用者角色**的授權和驗證權杖，如果已啟用 Azure RBAC 的 AKS 叢集，而未啟用 rbac 授權。 其中包含使用 Azure Active Directory （AD） SAML 型單一登入啟用 AKS 時，Azure AD 和用戶端註冊詳細資料的相關資訊。
 
 >[!IMPORTANT]
->此功能的使用者需要叢集的[Azure Kubernetes 叢集使用者角色](../../azure/role-based-access-control/built-in-roles.md#azure-kubernetes-service-cluster-user-role permissions)，才能下載 `kubeconfig` 並使用此功能。 使用者**不**需要叢集的「參與者」存取權，就能利用這項功能。
+>此功能的使用者需要叢集的[Azure Kubernetes 叢集使用者角色](../../role-based-access-control/built-in-roles.md)，才能下載 `kubeconfig` 並使用此功能。 使用者**不**需要叢集的「參與者」存取權，就能利用這項功能。
 
 ## <a name="using-clustermonitoringuser-with-rbac-enabled-clusters"></a>使用 clusterMonitoringUser 搭配已啟用 RBAC 的叢集
 

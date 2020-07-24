@@ -8,14 +8,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.date: 08/13/2019
+ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: dd6e22052d2fab6d39382b21eec7a7bd379adb82
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d378e1526d5b253853fd306c8a1b7a8982436b8d
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85384068"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87115906"
 ---
 # <a name="language-customization-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的語言自訂
 
@@ -218,8 +219,8 @@ Azure AD B2C 包含下列語言的支援。 Azure AD B2C 提供使用者流程�
 | 芬蘭文               | fi            | ![可以](./media/user-flow-language-customization/yes.png) | ![是](./media/user-flow-language-customization/yes.png) |
 | 法文                | fr            | ![可以](./media/user-flow-language-customization/yes.png) | ![是](./media/user-flow-language-customization/yes.png) |
 | 加利西亞文              | gl            | ![不可以](./media/user-flow-language-customization/no.png) | ![是](./media/user-flow-language-customization/yes.png) |
-| 古吉拉特文              | gu            | ![是](./media/user-flow-language-customization/yes.png) | ![不可以](./media/user-flow-language-customization/no.png) |
-| Hebrew                | he            | ![不可以](./media/user-flow-language-customization/no.png) | ![是](./media/user-flow-language-customization/yes.png) |
+| 古吉拉特文              | gu            | ![是](./media/user-flow-language-customization/yes.png) | ![否](./media/user-flow-language-customization/no.png) |
+| Hebrew                | he            | ![否](./media/user-flow-language-customization/no.png) | ![是](./media/user-flow-language-customization/yes.png) |
 | Hindi                 | hi            | ![可以](./media/user-flow-language-customization/yes.png) | ![是](./media/user-flow-language-customization/yes.png) |
 | 克羅埃西亞文              | hr            | ![是](./media/user-flow-language-customization/yes.png) | ![是](./media/user-flow-language-customization/yes.png) |
 | 匈牙利文             | hu            | ![可以](./media/user-flow-language-customization/yes.png) | ![是](./media/user-flow-language-customization/yes.png) |
@@ -236,8 +237,8 @@ Azure AD B2C 包含下列語言的支援。 Azure AD B2C 提供使用者流程�
 | 馬來文                 | ms            | ![可以](./media/user-flow-language-customization/yes.png) | ![是](./media/user-flow-language-customization/yes.png) |
 | 挪威文 (巴克摩)      | nb            | ![是](./media/user-flow-language-customization/yes.png) | ![不可以](./media/user-flow-language-customization/no.png) |
 | 荷蘭文                 | nl            | ![可以](./media/user-flow-language-customization/yes.png) | ![是](./media/user-flow-language-customization/yes.png) |
-| 挪威文             | 不可以            | ![不可以](./media/user-flow-language-customization/no.png) | ![是](./media/user-flow-language-customization/yes.png) |
-| 旁遮普文               | pa            | ![是](./media/user-flow-language-customization/yes.png) | ![不可以](./media/user-flow-language-customization/no.png) |
+| 挪威文             | 否            | ![不可以](./media/user-flow-language-customization/no.png) | ![是](./media/user-flow-language-customization/yes.png) |
+| 旁遮普文               | pa            | ![是](./media/user-flow-language-customization/yes.png) | ![否](./media/user-flow-language-customization/no.png) |
 | 波蘭文                | pl            | ![可以](./media/user-flow-language-customization/yes.png) | ![是](./media/user-flow-language-customization/yes.png) |
 | 葡萄牙文 - 巴西   | pt-br         | ![可以](./media/user-flow-language-customization/yes.png) | ![是](./media/user-flow-language-customization/yes.png) |
 | 葡萄牙文 - 葡萄牙 | pt-pt         | ![可以](./media/user-flow-language-customization/yes.png) | ![是](./media/user-flow-language-customization/yes.png) |
@@ -246,13 +247,13 @@ Azure AD B2C 包含下列語言的支援。 Azure AD B2C 提供使用者流程�
 | 斯洛伐克文                | sk            | ![是](./media/user-flow-language-customization/yes.png) | ![是](./media/user-flow-language-customization/yes.png) |
 | 斯洛維尼亞文             | sl            | ![不可以](./media/user-flow-language-customization/no.png) | ![是](./media/user-flow-language-customization/yes.png) |
 | 塞爾維亞文 (斯拉夫)    | sr-cryl-cs    | ![不可以](./media/user-flow-language-customization/no.png) | ![是](./media/user-flow-language-customization/yes.png) |
-| 塞爾維亞文 (拉丁)       | sr-latn-cs    | ![不可以](./media/user-flow-language-customization/no.png) | ![是](./media/user-flow-language-customization/yes.png) |
+| 塞爾維亞文 (拉丁)       | sr-latn-cs    | ![否](./media/user-flow-language-customization/no.png) | ![是](./media/user-flow-language-customization/yes.png) |
 | 瑞典文               | sv            | ![可以](./media/user-flow-language-customization/yes.png) | ![是](./media/user-flow-language-customization/yes.png) |
 | 坦米爾文                 | ta            | ![是](./media/user-flow-language-customization/yes.png) | ![不可以](./media/user-flow-language-customization/no.png) |
-| 泰盧固文                | te            | ![是](./media/user-flow-language-customization/yes.png) | ![不可以](./media/user-flow-language-customization/no.png) |
+| 泰盧固文                | te            | ![是](./media/user-flow-language-customization/yes.png) | ![否](./media/user-flow-language-customization/no.png) |
 | 泰文                  | th            | ![可以](./media/user-flow-language-customization/yes.png) | ![是](./media/user-flow-language-customization/yes.png) |
 | 土耳其文               | tr            | ![可以](./media/user-flow-language-customization/yes.png) | ![是](./media/user-flow-language-customization/yes.png) |
 | 烏克蘭文             | uk            | ![不可以](./media/user-flow-language-customization/no.png) | ![是](./media/user-flow-language-customization/yes.png) |
-| 越南文            | vi            | ![不可以](./media/user-flow-language-customization/no.png) | ![是](./media/user-flow-language-customization/yes.png) |
+| 越南文            | vi            | ![否](./media/user-flow-language-customization/no.png) | ![是](./media/user-flow-language-customization/yes.png) |
 | 中文 - 簡體  | zh-hans       | ![可以](./media/user-flow-language-customization/yes.png) | ![是](./media/user-flow-language-customization/yes.png) |
 | 中文 - 繁體 | zh-hant       | ![是](./media/user-flow-language-customization/yes.png) | ![是](./media/user-flow-language-customization/yes.png) |

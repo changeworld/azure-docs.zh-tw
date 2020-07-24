@@ -8,13 +8,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 06/06/2019
+ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1a7cb964064e229ee29591ca14aa8ef33e393a7d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 043cf83d804803e1b5b47d3ac51bbccaa06e4e87
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84484176"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87116410"
 ---
 # <a name="custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的自訂原則
 
@@ -24,7 +26,7 @@ ms.locfileid: "84484176"
 
 ## <a name="comparing-user-flows-and-custom-policies"></a>比較使用者流程與自訂原則
 
-| Context | 使用者流程 | 自訂原則 |
+| 內容 | 使用者流程 | 自訂原則 |
 |-|-------------------|-----------------|
 | 目標使用者 | 所有具備或不具備身分識別專業知識的應用程式開發人員。 | 身分識別專業人員、系統整合人員、顧問和內部身分識別小組。 他們熟悉 OpenID Connect 流程，並瞭解身分識別提供者和以宣告為基礎的驗證。 |
 | 設定方法 | 有使用者介面 (UI) 方便使用的 Azure 入口網站。 | 直接編輯 XML 檔案，然後上傳至 Azure 入口網站。 |

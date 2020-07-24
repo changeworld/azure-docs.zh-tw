@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 4112555347ce1d718375fbab3f166c6f2f5deeaa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 338fdcb6ee2ebad98972bead7e16c9bc5944f2b3
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80333511"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87117071"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-windows"></a>如何針對 Log Analytics Windows 代理程式的問題進行疑難排解 
 
@@ -37,8 +37,9 @@ ms.locfileid: "80333511"
 |*.ods.opinsights.azure.com |連接埠 443 |輸出|是 |  
 |*.oms.opinsights.azure.com |連接埠 443 |輸出|是 |  
 |*.blob.core.windows.net |連接埠 443 |輸出|是 |  
+|*. agentsvc.azure-automation.net |連接埠 443 |輸出|是 |  
 
-如需 Azure Government 所需的防火牆資訊，請參閱 [Azure Government 管理](../../azure-government/documentation-government-services-monitoringandmanagement.md#azure-monitor-logs)。 如果您打算使用 Azure 自動化混合式 Runbook 背景工作角色連線到自動化服務並向其註冊，以便在您的環境中使用 Runbook 或管理解決方案，其必須具有[設定適用於混合式 Runbook 背景工作角色的網路](../../automation/automation-hybrid-runbook-worker.md#network-planning)中所述的連接埠號碼和 URL 存取權。 
+如需 Azure Government 所需的防火牆資訊，請參閱 [Azure Government 管理](../../azure-government/compare-azure-government-global-azure.md#azure-monitor-logs)。 如果您打算使用 Azure 自動化混合式 Runbook 背景工作角色連線到自動化服務並向其註冊，以便在您的環境中使用 Runbook 或管理解決方案，其必須具有[設定適用於混合式 Runbook 背景工作角色的網路](../../automation/automation-hybrid-runbook-worker.md#network-planning)中所述的連接埠號碼和 URL 存取權。 
 
 有數種方式可供您確認代理程式是否成功與 Azure 監視器通訊。
 
@@ -60,7 +61,7 @@ ms.locfileid: "80333511"
 
 - 依**事件來源**健全狀況服務模組]、[HealthService] 和 [服務連接器] 篩選*Operations Manager*事件記錄檔，  -  *Health Service Modules*並依**事件層級***警告*和*錯誤*篩選，以確認它是否已寫入下表中的事件。 *HealthService* *Service Connector* 如果是，請檢查每個可能事件所包含的解決步驟。
 
-    |事件識別碼 |來源 |描述 |解決方案 |
+    |事件識別碼 |來源 |說明 |解決方案 |
     |---------|-------|------------|-----------|
     |2133 & 2129 |健全狀況服務 |從代理程式到服務的連接失敗 |當代理程式無法直接或透過防火牆/proxy 伺服器與 Azure 監視器服務通訊時，就會發生此錯誤。 確認代理程式 proxy 設定，或網路防火牆/proxy 允許從電腦到服務的 TCP 流量。|
     |2138 |健全狀況服務模組 |Proxy 需要驗證 |設定代理程式 proxy 設定，並指定用來向 proxy 伺服器進行驗證所需的使用者名稱/密碼。 |
@@ -98,9 +99,8 @@ Heartbeat
 
 3. 在幾分鐘之後，如果您在查詢結果或視覺效果中看不到預期的資料，請根據您是從 [ *Operations Manager* ] 事件記錄檔中查看資料，搜尋 [**事件來源**] *HealthService*並*健全狀況服務模組*，並依**事件層級***警告*和*錯誤*進行篩選，確認它是否已寫入下表中的事件。
 
-    |事件識別碼 |來源 |描述 |解決方案 |
+    |事件識別碼 |來源 |說明 |解決方案 |
     |---------|-------|------------|
     |8000 |HealthService |這個事件會指定與所收集的效能、事件或其他資料類型相關的工作流程是否無法轉寄至服務，以供內嵌至工作區。 | 來源 HealthService 的事件識別碼2136會與此事件一併撰寫，而且可能會指出代理程式無法與服務通訊，可能是因為 proxy 和驗證設定不正確、網路中斷，或網路防火牆/proxy 不允許從電腦到服務的 TCP 流量。| 
     |10102和10103 |健全狀況服務模組 |工作流程無法解析資料來源。 |如果指定的效能計數器或實例不存在於電腦上，或工作區的資料設定不正確地定義，就可能發生這種情況。 如果這是使用者指定的[效能計數器](data-sources-performance-counters.md#configuring-performance-counters)，請確認指定的資訊是否遵循正確的格式，並存在於目的電腦上。 |
     |26002 |健全狀況服務模組 |工作流程無法解析資料來源。 |如果指定的 Windows 事件記錄檔不存在於電腦上，就會發生這種情況。 如果電腦不應該註冊此事件記錄檔，就可以放心忽略此錯誤，否則如果這是使用者指定的[事件記錄](data-sources-windows-events.md#configuring-windows-event-logs)檔，請確認指定的資訊是否正確。 |
-
