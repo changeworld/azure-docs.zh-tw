@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
 ms.openlocfilehash: 826e475eb71563b52d687903aeac4ec936e267f6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540293"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092995"
 ---
 # <a name="how-to-run-durable-functions-as-webjobs"></a>如何以 Webjob 的形式執行 Durable Functions
 
@@ -119,7 +119,7 @@ static void Main(string[] args)
 }
 ```
 
-## <a name="functions"></a>函式
+## <a name="functions"></a>函數
 
 Webjob 內容中的 Durable Functions 與 Azure Functions 內容中的 Durable Functions 有些不同。 當您撰寫程式碼時，請務必留意差異。
 

@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/18/2018
+ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: a5d34ac7eea50b67bd679d8cb8ddecf7ca277abd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a3acdbb93dd20f0b89e4f99d64f5f7a30ce40623
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76773368"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87102520"
 ---
 ## <a name="register-secrets-or-certificates"></a>註冊秘密或憑證
 
@@ -31,12 +31,10 @@ ms.locfileid: "76773368"
 
 ![[憑證 & 秘密] 頁面](../articles/active-directory/develop/media/quickstart-update-azure-ad-app-preview/credentials-certificates-secrets.png)
 
-- 應用程式密碼（也稱為用戶端密碼）是在機密用戶端應用程式註冊期間 Azure AD 產生的。 當您選取 [**新增用戶端密碼**] 時，就會發生此產生。 此時，您必須先將秘密字串複製到剪貼簿，以便在您的應用程式中使用，然後再選取 [**儲存**]。 這個字串將不會再顯示。
+- 若要建立*用戶端密碼*，請在 Azure 入口網站的應用程式註冊中選取 [**新增用戶端密碼**]。 當您建立用戶端密碼時，_必須_先記錄密碼的字串，然後才能離開 [**憑證 & 秘密**] 窗格。 秘密的字串一律不會再次顯示。
 - 在應用程式註冊期間，您可以使用 [**上傳憑證**] 按鈕來上傳憑證。 Azure AD 僅支援在應用程式上直接註冊，而不會遵循憑證鏈的憑證。
 
 如需詳細資訊，請參閱[快速入門：設定用戶端應用程式以存取 Web api |將認證新增至您的應用程式](../articles/active-directory/develop/quickstart-configure-app-access-web-apis.md#add-credentials-to-your-web-application)。
-
-
 
 ### <a name="register-client-secrets-by-using-powershell"></a>使用 PowerShell 註冊用戶端秘密
 

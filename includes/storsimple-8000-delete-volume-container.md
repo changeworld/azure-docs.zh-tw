@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/08/2018
 ms.author: alkohli
 ms.custom: include file
-ms.openlocfilehash: e683d17422321b780a1c01b3011292f2e2c631cb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 30bbd06e36ed1e03caa391165a8abc275f1899a7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67174026"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87102511"
 ---
 若要刪除磁碟區容器，您必須
  - 刪除磁碟區容器中的磁碟區。 如果磁碟區容器有相關聯的磁碟區，請先將那些磁碟區離線。 請遵循 [使磁碟區離線](../articles/storsimple/storsimple-8000-manage-volumes-u2.md#take-a-volume-offline)中的步驟進行。 磁碟機離線後，才可以刪除它們。 
@@ -36,6 +36,6 @@ ms.locfileid: "67174026"
 
 磁碟區容器清單會加以更新，來反映已刪除的磁碟區容器。
 
-![](./media/storsimple-8000-delete-volume-container/deletevolumecontainer5.png)
+![[磁片區容器] 頁面的螢幕擷取畫面。 磁片區容器的表格式清單不再包含已刪除的容器。](./media/storsimple-8000-delete-volume-container/deletevolumecontainer5.png)
 
 

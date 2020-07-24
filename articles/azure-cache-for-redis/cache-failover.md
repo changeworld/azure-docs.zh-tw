@@ -1,17 +1,17 @@
 ---
 title: 容錯移轉和修補 - Azure Cache for Redis
 description: 瞭解 Azure Cache for Redis 的容錯移轉、修補和更新程式。
-author: asasine
+author: yegu-ms
+ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
-ms.author: adsasine
-ms.openlocfilehash: d14e030898db364d6621933d0032fa9ce0cab676
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 7cfa7257e64421c30c359bb34044988bbb5af1dd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185019"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87093080"
 ---
 # <a name="failover-and-patching-for-azure-cache-for-redis"></a>Azure Cache for Redis 的容錯移轉和修補
 
@@ -28,7 +28,7 @@ ms.locfileid: "86185019"
 在基本快取中，單一節點一律為「主要」。 在標準或高階快取中，有兩個節點：選擇一個做為主要，另一個是複本。 因為 Standard 和 Premium 快取有多個節點，所以一個節點可能無法使用，而另一個則會繼續處理要求。 叢集快取是由許多分區組成，每個都有不同的主要和複本節點。 其中一個分區可能會關閉，而其他則維持可用狀態。
 
 > [!NOTE]
-> 基本快取沒有多個節點，且未提供服務等級協定 (SLA) 以供其可用性使用。 只有在開發和測試用途時，才建議使用基本快取。 針對多重節點部署使用標準或高階快取，以提高可用性。
+> 基本快取沒有多個節點，且不提供服務等級協定（SLA）的可用性。 只有在開發和測試用途時，才建議使用基本快取。 針對多重節點部署使用標準或高階快取，以提高可用性。
 
 ### <a name="explanation-of-a-failover"></a>容錯移轉的說明
 

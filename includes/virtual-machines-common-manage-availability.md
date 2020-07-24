@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: e0f9bbf4e0d8edd153798b39f880f0adb8be6587
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
-ms.translationtype: MT
+ms.openlocfilehash: 04a25b6b0b243744cc81c8b71a1f03e7c7375a68
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86502265"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87102518"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>了解 VM 重新開機 - 維護與停機時間
 有三種情況可能會導致 Azure 中的虛擬機器受到影響：未規劃的硬體維護、未預期的停機時間以及規劃的維護。
@@ -99,7 +99,7 @@ az vm list-skus --resource-type availabilitySets --query '[?name==`Aligned`].{Lo
 
 
 ## <a name="combine-a-load-balancer-with-availability-zones-or-sets"></a>將負載平衡器與可用性區域或可用性設定組結合
-將 [Azure Load Balancer](../articles/load-balancer/load-balancer-overview.md) 與可用性區域或可用性設定組結合，以獲得最多的應用程式備援能力。 Azure 負載平衡器會在多部虛擬機器之間分配流量。 我們的標準層虛擬機器中包含 Azure 負載平衡器。 並非所有的虛擬機器階層都包含 Azure Load Balancer。 如需關於負載平衡虛擬機器的詳細資訊，請參閱 [負載平衡虛擬機器](../articles/virtual-machines/virtual-machines-linux-load-balance.md)。
+將 [Azure Load Balancer](../articles/load-balancer/load-balancer-overview.md) 與可用性區域或可用性設定組結合，以獲得最多的應用程式備援能力。 Azure 負載平衡器會在多部虛擬機器之間分配流量。 我們的標準層虛擬機器中包含 Azure 負載平衡器。 並非所有的虛擬機器階層都包含 Azure Load Balancer。 如需關於負載平衡虛擬機器的詳細資訊，請參閱 [負載平衡虛擬機器](../articles/virtual-machines/linux/tutorial-load-balancer.md)。
 
 若負載平衡器沒有設定為平衡多部虛擬機器之間的流量，則所有計劃性維護事件都只會影響處理流量的虛擬機器，並導致應用程式層中斷。 將同一個層的多部虛擬機器放在相同的負載平衡器和可用性設定組下，可讓至少一個執行個體持續處理流量。
 

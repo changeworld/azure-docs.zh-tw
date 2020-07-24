@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: 8af8db6b6853d6b8cbd4ba1105f05ebb9bcf771b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c4ea8db464c7cae57b80837ced9f8886a8b3cf4a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84974835"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87093012"
 ---
 # <a name="prepay-for-azure-cache-for-redis-compute-resources-with-reserved-capacity"></a>預付 Azure Cache for Redis 使用保留容量的計算資源
 
@@ -32,7 +32,7 @@ ms.locfileid: "84974835"
 
 保留大小應根據特定區域內現有或即將部署的快取所使用的記憶體大小總計，並使用相同的服務層級。
 
-例如，假設您正在執行兩個快取，一個是 13 GB，另一個則是 26 GB。 您至少需要一年。 此外，假設您計畫將現有的 13 GB 快取調整為每月 26 GB，以符合您的季節性需求，然後再進行相應放大。 在此情況下，您可以在一年保留期購買1個 P1 快取和1個 P2 快取或3個 P1 快取，以達到最大的節省成本。 您會收到保留的快取記憶體總量的折扣，而不受您在快取中配置該數量的影響。
+例如，假設您正在執行兩個快取，一個是 13 GB，另一個則是 26 GB。 您至少需要一年。 此外，假設您計畫將現有的 13 GB 快取調整為每月 26 GB，以符合您的季節性需求，然後再進行相應放大。 在此情況下，您可以在一年保留期購買1個 P2 快取和1個 P3 快取或3個 P2 快取，以達到最大的節省成本。 您會收到保留的快取記憶體總量的折扣，而不受您在快取中配置該數量的影響。
 
 
 ## <a name="buy-azure-cache-for-redis-reserved-capacity"></a>購買 Azure Cache for Redis 保留容量
@@ -55,7 +55,7 @@ ms.locfileid: "84974835"
 | 區域 | Azure Cache for Redis 保留容量保留所涵蓋的 Azure 區域。
 | 定價層 | Azure Cache for Redis 伺服器的服務層級。
 | 詞彙 | 一年或三年
-| 數量 | 在 Azure Cache for Redis 保留容量保留內購買的計算資源量。 數量是所選 Azure 區域和服務層中，已保留的數個快取，將會取得帳單折扣。 例如，如果您正在執行或打算在美國東部區域中，以 26 GB 的總快取容量來執行 Azure Cache for Redis 伺服器，則您會將 quantity 指定為26，以將所有快取的權益最大化。
+| 數量 | 在 Azure Cache for Redis 保留容量保留內購買的計算資源量。 數量是所選 Azure 區域和服務層中，已保留的數個快取，將會取得帳單折扣。 例如，如果您正在執行或打算在美國東部區域中，以 26 GB 的總快取容量來執行 Azure Cache for Redis 伺服器，則您會指定數量，讓您的對等是 26 GB，以充分發揮所有快取的效益。 這可能是1個 P3 或2個 P2 快取。
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>取消、交換保留或進行退費
 

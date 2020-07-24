@@ -1,18 +1,19 @@
 ---
-title: 縮放層級和磚方格 |Microsoft Azure 對應
+title: Microsoft Azure 對應中的縮放層級和磚方格
 description: 在本文中，您將瞭解 Microsoft Azure 地圖中的縮放層級和圖格格線。
-author: Philmea
-ms.author: philmea
-ms.date: 01/22/2020
+author: anastasia-ms
+ms.author: v-stharr
+ms.date: 07/14/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: ''
-ms.openlocfilehash: b7dde6e1a77cebd1e88cc574d99e781ab55f0934
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+manager: philmea
+ms.openlocfilehash: 9493ad21847cca230606ff1641c9ac02c3355f53
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83123899"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87093046"
 ---
 # <a name="zoom-levels-and-tile-grid"></a>縮放層級和圖格格線
 
@@ -23,15 +24,11 @@ Azure 地圖服務使用麥卡托圓球投影座標系統 (EPSG：3857)。 投�
 
 為了優化對應抓取和顯示的效能，地圖會分割成正方形磚。 Azure 地圖服務 SDK 的使用磚，其大小為 512 x 512 圖元的道路地圖，而較小的 256 x 256 圖元用於衛星影像。 Azure 地圖服務提供23個縮放層級的點陣和向量圖格，編號為0到22。 在縮放層級 0，整個世界剛好放進單一圖格裡：
 
-<center>
-
-![全球地圖底圖](./media/zoom-levels-and-tile-grid/world0.png)</center>
+:::image type="content" source="./media/zoom-levels-and-tile-grid/world0.png" alt-text="全球地圖底圖":::
 
 縮放層級 1 使用四個圖格來呈現世界：2 x 2 個正方形
 
-<center>
-
-![2x2 地圖底圖版面配置](media/zoom-levels-and-tile-grid/map-2x2-tile-layout.png)</center>
+:::image type="content" source="./media/zoom-levels-and-tile-grid/map-2x2-tile-layout.png" alt-text="2x2 地圖底圖版面配置":::
 
 每個額外的縮放層級四除前一個的磚，並建立 2<sup>縮放比例</sup>x 2<sup>縮放</sup>的格線。 縮放層級 22 是 格線 2<sup>22</sup> x 2<sup>22</sup>，或 4,194,304 x 4,194,304 個圖格 (總計 17,592,186,044,416 個圖格)。
 
@@ -79,11 +76,7 @@ var mapHeight = mapWidth;
 
 因為地圖寬度和高度在每個縮放層級都不同，所以是圖元座標。 地圖左上角的圖元一律有圖元座標（0，0）。 地圖右下角的圖元具有圖元座標 *（寬度-1，高度-1）*，或參考上一節中的方程式 *（tileSize \* 2<sup>zoom</sup>–1，tileSize \* 2<sup>zoom</sup>–1）*。 例如，在層級2使用512正方形磚時，圖元座標的範圍從（0，0）到（2047，2047），如下所示：
 
-<center>
-
-![顯示圖元維度的地圖](media/zoom-levels-and-tile-grid/map-width-height.png)
-
-</center>
+:::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/map-width-height.png" alt-text="顯示圖元維度的地圖":::
 
 指定緯度和經度的角度，以及詳細程度，圖元 XY 座標的計算方式如下：
 
@@ -109,9 +102,7 @@ var numberOfTilesHigh = numberOfTilesWide;
 
 每個磚都有從左上角到（0，0）的 XY 座標，範圍介於右下方 *（2<sup>縮放</sup>–1，2<sup>縮放</sup>–1）* 。 例如，在縮放層級2，磚座標的範圍從（0，0）到（7，7），如下所示：
 
-<center>
-
-![磚座標的地圖](media/zoom-levels-and-tile-grid/map-tiles-x-y-coordinates-7x7.png)</center>
+:::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/map-tiles-x-y-coordinates-7x7.png" alt-text="磚座標的地圖":::
 
 假設有一對圖元的 XY 座標，您可以輕鬆地判斷包含該圖元之磚的 XY 座標磚：
 
@@ -125,17 +116,13 @@ var tileY = Math.floor(pixelY / tileSize);
 
 在決定要使用哪一個縮放層級時，請記住每個位置在其磚上的固定位置。 因此，顯示特定地區 expanse 所需的磚數，取決於全球地圖上的縮放方格特定位置。 例如，如果兩個點相距 900 公尺，「可能」** 只需要在縮放層級 17 用三個圖格來顯示這兩點之間的路線。 不過，如果西邊的點是在其圖格中的右邊，而東邊的點是在其圖格中的左邊，則可能需要四個圖格：
 
-<center>
-
-![縮放比例示範](media/zoom-levels-and-tile-grid/zoomdemo_scaled.png)</center>
+:::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/zoomdemo_scaled.png" alt-text="縮放比例示範":::
 
 一旦決定縮放層級，就可以計算 x 和 y 值。 每個縮放方格中左上方的磚是 x = 0、y = 0、右下方的磚是在 x = 2<sup>zoom-1</sup>，y = 2<sup>zoom-1</sup>。
 
 以下是縮放層級 1 的縮放格線：
 
-<center>
-
-![縮放層級 1 的縮放格線](media/zoom-levels-and-tile-grid/api_x_y.png)</center>
+:::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/api_x_y.png" alt-text="縮放層級 1 的縮放格線":::
 
 ## <a name="quadkey-indices"></a>Quadkey 索引
 
@@ -156,9 +143,7 @@ quadkey = 100111 (base 2) = 213 (base 4) = "213"
 
 `Qquadkeys`有幾個有趣的屬性。 首先，的長度 `quadkey` （數位數目）等於對應磚的縮放層級。 第二， `quadkey` 任何磚的會以 `quadkey` 其父磚的（在上一個層級的包含磚）開頭。 如下列範例所示，磚2是磚20到23的父系：
 
-<center>
-
-![Quadkey 磚金字塔圖](media/zoom-levels-and-tile-grid/quadkey-tile-pyramid.png)</center>
+:::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/quadkey-tile-pyramid.png" alt-text="Quadkey 磚金字塔圖":::
 
 最後， `quadkeys` 提供一維索引鍵，通常會在 XY 空間中保留磚的近條。 換句話說，附近具有鄰近 XY 座標的兩個磚，通常 `quadkeys` 會有相對較緊密的。 這對於優化資料庫效能非常重要，因為連續的磚通常會在群組中要求，而且最好將這些磚保留在相同的磁片區上，以便將磁片讀取的次數減至最少。
 

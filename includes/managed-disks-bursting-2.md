@@ -8,11 +8,12 @@ ms.topic: include
 ms.date: 04/27/2020
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: 0b278841fc3693d79821d25caf7c9a208341dea1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc0dd5e76227c0814659b74afc2ac46c8ca4de73
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85242148"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87102516"
 ---
 ## <a name="common-scenarios"></a>常見案例
 下列案例可大幅受益于負載平衡：
@@ -27,7 +28,7 @@ ms.locfileid: "85242148"
 
 ![高載 bucket 圖表](media/managed-disks-bursting/bucket-diagram.jpg)
 
-最多可讓您瞭解如何使用30分鐘的高載。 您可以在一天內連續30分鐘或偶爾使用它。 當產品部署完成時，就會備妥完整的點數，而當它 depletes 信用額度時，將會花費不到一天的時間，再次取得完整的點數。 您可以依自己的需求累積和支出其高載點數，而30分鐘的值區不需要再次填滿。 有關高載累積的一件事，就是每個資源都不同，因為它是以未使用的 IOPS 和低於其效能量的 MB/s 為基礎。 這表示較高的基準效能產品可以比執行較低基準的產品更快地累積其負載平衡。 例如，沒有活動的 P1 磁片閒置下來會每秒累積 120 IOPS，而 P20 磁片則會在閒置下來時每秒產生 2300 IOPS，而不會有任何活動。
+最多可讓您瞭解如何使用30分鐘的高載。 您可以在一天內連續30分鐘或偶爾使用它。 當產品部署完成時，它會備妥完整的信用額度，而當它 depletes 信用額度時，將會花費不到一天的時間，再次取得完整儲存的信用額度。 您可以依自己的需求累積和支出其高載點數，而30分鐘的值區不需要再次填滿。 有關高載累積的一件事，就是每個資源都不同，因為它是以未使用的 IOPS 和低於其效能量的 MB/s 為基礎。 這表示較高的基準效能產品可以比執行較低基準的產品更快地累積其負載平衡。 例如，沒有活動的 P1 磁片閒置下來會每秒累積 120 IOPS，而 P20 磁片則會在閒置下來時每秒產生 2300 IOPS，而不會有任何活動。
 
 ## <a name="bursting-states"></a>高載狀態
 有三種狀態：您的資源可以在啟用高載功能時使用。。
