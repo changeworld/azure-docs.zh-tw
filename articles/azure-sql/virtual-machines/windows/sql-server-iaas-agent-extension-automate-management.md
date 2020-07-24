@@ -16,12 +16,12 @@ ms.date: 08/30/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 67df782cf8044593859e7761278d93187d258d26
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 638a7fa96f4112f9805fd46618dc0acd1c2f382f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231925"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87063226"
 ---
 # <a name="automate-management-tasks-on-azure-virtual-machines-by-using-the-sql-server-iaas-agent-extension"></a>使用 SQL Server IaaS 代理程式延伸模組自動化 Azure 虛擬機器的管理工作
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -71,7 +71,7 @@ SQL Server IaaS 代理程式擴充功能支援下列管理工作︰
 
 **Azure PowerShell**：
 
-* [下載及設定最新的 Azure PowerShell 命令](/powershell/azure/overview)
+* [下載及設定最新的 Azure PowerShell 命令](/powershell/azure/)
 
 [!INCLUDE [updated-for-az.md](../../../../includes/updated-for-az.md)]
 

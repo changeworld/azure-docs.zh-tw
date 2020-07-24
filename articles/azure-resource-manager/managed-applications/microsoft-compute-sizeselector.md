@@ -5,11 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: d98ddbb09ac4f1f933237b3288db7a0cb78380b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d6408f8c08694ae681d302ae35f5778894091733
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75652043"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87063640"
 ---
 # <a name="microsoftcomputesizeselector-ui-element"></a>Microsoft.Compute.SizeSelector UI 元素
 
@@ -19,11 +20,11 @@ ms.locfileid: "75652043"
 
 使用者會看到一個選取器，其中包含來自元素定義的預設值。
 
-![Microsoft.Compute.SizeSelector](./media/managed-application-elements/microsoft.compute.sizeselector.png)
+![Microsoft.Compute.SizeSelector](./media/managed-application-elements/microsoft-compute-sizeselector.png)
 
 選取控制項之後，使用者會看到可用大小的已展開檢視。
 
-![展開的 Microsoft.Compute.SizeSelector](./media/managed-application-elements/microsoft.compute.sizeselector-expanded.png)
+![展開的 Microsoft.Compute.SizeSelector](./media/managed-application-elements/microsoft-compute-sizeselector-expanded.png)
 
 ## <a name="schema"></a>結構描述
 
@@ -75,7 +76,7 @@ ms.locfileid: "75652043"
 - `numAvailabilityZonesRequired` 可以是 1、2 或 3。
 - 根據預設，`hideDiskTypeFilter` 是 **false**。 磁碟類型篩選器可讓使用者查看所有的磁碟類型或僅限 SSD。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 如需建立 UI 定義的簡介，請參閱[開始使用 CreateUiDefinition](create-uidefinition-overview.md)。
 * 如需 UI 元素中通用屬性的說明，請參閱 [CreateUiDefinition 元素](create-uidefinition-elements.md)。

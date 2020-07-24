@@ -5,11 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/28/2018
 ms.author: tomfitz
-ms.openlocfilehash: 0393673663df8f3ca580ff34e16bee910b955f8d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5def6db9d551b3882204c9f997f164a0df7ac223
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75651913"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87063278"
 ---
 # <a name="microsoftnetworkpublicipaddresscombo-ui-element"></a>Microsoft.Network.PublicIpAddressCombo UI 元素
 
@@ -17,7 +18,7 @@ ms.locfileid: "75651913"
 
 ## <a name="ui-sample"></a>UI 範例
 
-![Microsoft.Network.PublicIpAddressCombo](./media/managed-application-elements/microsoft.network.publicipaddresscombo.png)
+![Microsoft.Network.PublicIpAddressCombo](./media/managed-application-elements/microsoft-network-publicipaddresscombo.png)
 
 - 如果使用者的公用 IP 位址選擇 [無]，網域名稱標籤文字方塊就會加以隱藏。
 - 如果使用者選擇現有的公用 IP 位址，網域名稱標籤文字方塊就會加以停用。 其值為所選取 IP 位址的網域名稱標籤。
@@ -90,7 +91,7 @@ ms.locfileid: "75651913"
 - 如果 `options.hideExisting` 為 true，使用者就無法選擇現有的公用 IP 位址。 預設值為 **false**。
 - 對於 `zone`，只能使用指定區域的公用 IP 位址或區域復原公用 IP 位址。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 如需建立 UI 定義的簡介，請參閱[開始使用 CreateUiDefinition](create-uidefinition-overview.md)。
 * 如需 UI 元素中通用屬性的說明，請參閱 [CreateUiDefinition 元素](create-uidefinition-elements.md)。

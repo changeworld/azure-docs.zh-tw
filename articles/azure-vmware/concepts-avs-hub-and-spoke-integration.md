@@ -3,16 +3,16 @@ title: 概念-整合中樞和輪輻架構中的 Azure VMware 解決方案（AVS�
 description: 深入瞭解在 Azure 上的現有或新的中樞和輪輻架構中整合 Azure VMware 解決方案（AVS）部署的建議。
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 82937e04fc0a5101c353702b92b6b068d027d7ad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0d95ed81c5188eab0dc508f5320549c4a402e151
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85374957"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87062931"
 ---
 # <a name="integrate-azure-vmware-solution-avs-in-a-hub-and-spoke-architecture"></a>整合中樞和輪輻架構中的 Azure VMware 解決方案（AVS）
 
-在本文中，我們會提供建議，讓您在 Azure 上的現有或新的[中樞和輪輻架構](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/shared-services)中整合 Azure VMware 解決方案（AVS）部署。 
+在本文中，我們會提供建議，讓您在 Azure 上的現有或新的[中樞和輪輻架構](/azure/architecture/reference-architectures/hybrid-networking/shared-services)中整合 Azure VMware 解決方案（AVS）部署。 
 
 中樞和輪輻案例假設混合式雲端環境的工作負載在：
 
@@ -24,7 +24,7 @@ ms.locfileid: "85374957"
 
 *中樞*是 Azure 虛擬網路，可作為內部部署和 AVS 私人雲端的連線中心點。 *輪輻*是與中樞對等互連的虛擬網路，可啟用跨虛擬網路通訊。
 
-內部部署資料中心、AVS 私人雲端和中樞之間的流量會透過 ExpressRoute 連線進行。 輪輻虛擬網路通常包含以 IaaS 為基礎的工作負載，但可以有 PaaS 服務（例如[App Service 環境](../app-service/environment/intro.md)），其與虛擬網路的直接整合，或已啟用[Azure 私人連結](https://docs.microsoft.com/azure/private-link/)的其他 paas 服務。 
+內部部署資料中心、AVS 私人雲端和中樞之間的流量會透過 ExpressRoute 連線進行。 輪輻虛擬網路通常包含以 IaaS 為基礎的工作負載，但可以有 PaaS 服務（例如[App Service 環境](../app-service/environment/intro.md)），其與虛擬網路的直接整合，或已啟用[Azure 私人連結](../private-link/index.yml)的其他 paas 服務。 
 
 此圖顯示 Azure 中透過 ExpressRoute 連線到內部部署和 AVS 的中樞和輪輻部署範例。
 
@@ -50,7 +50,7 @@ ms.locfileid: "85374957"
 
     -   **IaaS 輪輻：** IaaS 輪輻會裝載以 Azure IaaS 為基礎的工作負載，包括 VM 可用性設定組和虛擬機器擴展集，以及對應的網路元件。
 
-    -   **PaaS 輪輻：** 由於[私用端點](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)和[私人連結](https://docs.microsoft.com/azure/private-link/private-link-overview)，PaaS 輪輻會使用私人定址來裝載 Azure PaaS 服務。
+    -   **PaaS 輪輻：** 由於[私用端點](../private-link/private-endpoint-overview.md)和[私人連結](../private-link/private-link-overview.md)，PaaS 輪輻會使用私人定址來裝載 Azure PaaS 服務。
 
 -   **Azure 防火牆：** 做為分割輪輻、內部內部部署和 AVS 之間流量的主要部分。
 
@@ -58,7 +58,7 @@ ms.locfileid: "85374957"
 
 ## <a name="network-and-security-considerations"></a>網路和安全性考慮
 
-ExpressRoute 連線可讓流量在內部部署、AVS 和 Azure 網路網狀架構之間流動。 AVS 使用[ExpressRoute 全球](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach)觸達來實行此連線能力。
+ExpressRoute 連線可讓流量在內部部署、AVS 和 Azure 網路網狀架構之間流動。 AVS 使用[ExpressRoute 全球](../expressroute/expressroute-global-reach.md)觸達來實行此連線能力。
 
 內部部署連線能力可能也會使用 ExpressRoute 全球範圍，但並非必要。
 
@@ -72,11 +72,11 @@ ExpressRoute 連線可讓流量在內部部署、AVS 和 Azure 網路網狀架�
   :::image type="content" source="media/hub-spoke/avs-to-hub-vnet-traffic-flow.png" alt-text="AVS 至中樞虛擬網路流量流程":::
 
 
-您可以在[avs 產品檔](https://docs.microsoft.com/azure/azure-vmware/concepts-networking)中找到有關 avs 網路和互連能力概念的更多詳細資料。
+您可以在[avs 產品檔](./concepts-networking.md)中找到有關 avs 網路和互連能力概念的更多詳細資料。
 
 ### <a name="traffic-segmentation"></a>流量分割
 
-[Azure 防火牆](https://docs.microsoft.com/azure/firewall/)是中樞和輪輻拓撲的中央部分，部署在中樞虛擬網路上。 使用 Azure 防火牆或另一個 Azure 支援的網路虛擬裝置來建立流量規則，並將不同輪輻、內部部署和 AVS 工作負載之間的通訊分割。
+[Azure 防火牆](../firewall/index.yml)是中樞和輪輻拓撲的中央部分，部署在中樞虛擬網路上。 使用 Azure 防火牆或另一個 Azure 支援的網路虛擬裝置來建立流量規則，並將不同輪輻、內部部署和 AVS 工作負載之間的通訊分割。
 
 建立路由表以將流量導向至 Azure 防火牆。  針對輪輻虛擬網路，請建立路由來設定 Azure 防火牆內部介面的預設路由，如此一來，當虛擬網路中的工作負載需要連線到 AVS 位址空間時，防火牆就會進行評估，並將對應的流量規則套用至允許或拒絕它。  
 
@@ -104,7 +104,7 @@ Azure 應用程式閘道 V1 和 V2 已經過測試，並已使用在 AVS Vm 上�
 
 使用 Jumpbox 存取 AVS 環境，這是部署在中樞虛擬網路內共用服務子網中的 Windows 10 或 Windows Server VM。
 
-作為安全性最佳作法，請在中樞虛擬網路中部署[Microsoft Azure](https://docs.microsoft.com/azure/bastion/)防禦服務。 Azure 防禦提供無縫的 RDP 和 SSH 存取部署在 Azure 上的 Vm，而不需要為這些資源布建公用 IP 位址。 布建 Azure 防禦服務之後，您就可以從 [Azure 入口網站] 存取選取的 VM。 建立連線之後，新索引標籤隨即開啟，其中顯示 Jumpbox 桌面，而從該桌面，您可以存取 AVS 私用雲端管理平面。
+作為安全性最佳作法，請在中樞虛擬網路中部署[Microsoft Azure](../bastion/index.yml)防禦服務。 Azure 防禦提供無縫的 RDP 和 SSH 存取部署在 Azure 上的 Vm，而不需要為這些資源布建公用 IP 位址。 布建 Azure 防禦服務之後，您就可以從 [Azure 入口網站] 存取選取的 VM。 建立連線之後，新索引標籤隨即開啟，其中顯示 Jumpbox 桌面，而從該桌面，您可以存取 AVS 私用雲端管理平面。
 
 > [!IMPORTANT]
 > 請勿將公用 IP 位址提供給 Jumpbox VM，或將 3389/TCP 埠公開至公用網際網路。 
@@ -137,21 +137,19 @@ Azure DNS 私人區域有幾個考慮事項：
 
 ## <a name="identity-considerations"></a>身分識別考量
 
-基於身分識別目的，最好的方法是使用共用服務子網，在中樞上部署至少一個 AD 網域控制站，最好是以區域分散式方式或 VM 可用性設定組的其中兩個。 請參閱將內部部署 AD 網域擴充至 Azure 的[Azure 架構中心](https://docs.microsoft.com/azure/architecture/reference-architectures/identity/adds-extend-domain)。
+基於身分識別目的，最好的方法是使用共用服務子網，在中樞上部署至少一個 AD 網域控制站，最好是以區域分散式方式或 VM 可用性設定組的其中兩個。 請參閱將內部部署 AD 網域擴充至 Azure 的[Azure 架構中心](/azure/architecture/reference-architectures/identity/adds-extend-domain)。
 
 此外，在 AVS 端部署另一個網域控制站，以作為 vSphere 環境內的身分識別和 DNS 來源。
 
 針對 vCenter 和 SSO，請在 [**管理 \> 識別身分 \> 識別來源**] 上設定 Azure 入口網站中的身分識別來源。
 
-建議的最佳作法是整合[AD 網域與 Azure Active Directory](https://docs.microsoft.com/azure/architecture/reference-architectures/identity/azure-ad)。
+建議的最佳作法是整合[AD 網域與 Azure Active Directory](/azure/architecture/reference-architectures/identity/azure-ad)。
 
 <!-- LINKS - external -->
-[Azure Architecture Center]: https://docs.microsoft.com/azure/architecture/
+[Azure Architecture Center]: /azure/architecture/
 
-[Hub & Spoke topology]: https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke
+[Hub & Spoke topology]: /azure/architecture/reference-architectures/hybrid-networking/hub-spoke
 
-[Azure networking documentation]: https://docs.microsoft.com/azure/networking/
+[Azure networking documentation]: ../networking/index.yml
 
 <!-- LINKS - internal -->
-
-

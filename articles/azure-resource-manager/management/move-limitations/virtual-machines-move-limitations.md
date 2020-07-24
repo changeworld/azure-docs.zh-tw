@@ -2,13 +2,13 @@
 title: 將 Azure Vm 移至新的訂用帳戶或資源群組
 description: 使用 Azure Resource Manager 將虛擬機器移至新的資源群組或訂用帳戶。
 ms.topic: conceptual
-ms.date: 07/06/2020
-ms.openlocfilehash: c85ec175d802a29de7a8a87ee7a51c0916762a5a
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.date: 07/21/2020
+ms.openlocfilehash: e812f2cee44fc48dccbd8ab66a3343e087790803
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044544"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87063088"
 ---
 # <a name="move-guidance-for-virtual-machines"></a>適用于虛擬機器的移動指引
 
@@ -20,7 +20,7 @@ ms.locfileid: "86044544"
 
 * 可用性區域中的受控磁碟無法移至不同的訂用帳戶。
 * 不能移動標準 SKU Load Balancer 或標準 SKU 公用 IP 的虛擬機器擴展集。
-* 從 Marketplace 資源建立且附加方案的虛擬機器無法在資源群組或訂用帳戶之間移動。 取消布建目前訂用帳戶中的虛擬機器，然後在新的訂用帳戶中再次部署。
+* 從 Marketplace 資源建立且附加方案的虛擬機器無法跨訂用帳戶移動。 取消布建目前訂用帳戶中的虛擬機器，然後在新的訂用帳戶中再次部署。
 * 當您不移動虛擬網路中的所有資源時，無法將現有虛擬網路中的虛擬機器移至新的訂用帳戶。
 * 低優先順序的虛擬機器和低優先順序的虛擬機器擴展集無法在資源群組或訂用帳戶之間移動。
 * 無法個別移動可用性設定組中的虛擬機器。
