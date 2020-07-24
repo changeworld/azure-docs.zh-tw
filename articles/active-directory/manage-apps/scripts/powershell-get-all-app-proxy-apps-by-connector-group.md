@@ -1,5 +1,5 @@
 ---
-title: PowerShell 範例-列出所有應用程式 Proxy 連接器群組
+title: 列出應用程式 Azure AD 應用程式 Proxy 連接器群組
 description: PowerShell 範例，其中列出具有指派之應用程式的所有 Azure Active Directory （Azure AD）應用程式 Proxy 連接器群組。
 services: active-directory
 author: msmimart
@@ -12,11 +12,12 @@ ms.date: 12/05/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9dcf2eb6a1904e4a7223a19e598f0c06ddc36f71
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8f381d64e06d8b7abf67b08297baa616397cc439
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75482162"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019432"
 ---
 # <a name="get-all-application-proxy-apps-and-list-by-connector-group"></a>取得所有應用程式 Proxy 應用程式，並依連接器群組列出
 
@@ -44,7 +45,7 @@ ms.locfileid: "75482162"
 | [Get-AzureADApplicationProxyConnectorGroup](https://docs.microsoft.com/powershell/module/azuread/get-azureadapplicationproxyconnectorgroup?view=azureadps-2.0) | 抓取所有連接器群組的清單，如果已指定，則會抓取指定之連接器群組的詳細資料。 |
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 如需有關 Azure AD PowerShell 模組的詳細資訊，請參閱[Azure AD powershell 模組總覽](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-2.0)。
 

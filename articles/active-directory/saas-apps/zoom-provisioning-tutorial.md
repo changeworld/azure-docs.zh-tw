@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/3/2019
 ms.author: Zhchia
-ms.openlocfilehash: 94c261da0c935cb7a41dde768069099b4e5ed251
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fb5e51503fa20cd3ace6070cb1b51f5bf32d0e13
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80384070"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87016252"
 ---
 # <a name="tutorial-configure-zoom-for-automatic-user-provisioning"></a>教學課程：設定自動使用者布建的 Zoom
 
@@ -48,7 +48,7 @@ ms.locfileid: "80384070"
 2. 判斷誰會在[佈建範圍](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)內。
 3. 判斷要[在 Azure AD 和 Zoom 之間對應](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)的資料。 
 
-## <a name="step-2-configure-zoom-to-support-provisioning-with-azure-ad"></a>步驟 2： 設定 Zoom 以支援以 Azure AD 布建
+## <a name="step-2-configure-zoom-to-support-provisioning-with-azure-ad"></a>步驟 2. 設定 Zoom 以支援以 Azure AD 布建
 
 1. 登入您的[Zoom 管理主控台](https://zoom.us/signin)。 在左側流覽窗格中，流覽至 [**適用于開發人員的 Advanced > Zoom** ]。
 
@@ -70,7 +70,7 @@ ms.locfileid: "80384070"
 
     ![縮放安裝](media/zoom-provisioning-tutorial/zoom05.png)
 
-## <a name="step-3-add-zoom-from-the-azure-ad-application-gallery"></a>步驟 3： 從 Azure AD 應用程式庫新增 Zoom
+## <a name="step-3-add-zoom-from-the-azure-ad-application-gallery"></a>步驟 3. 從 Azure AD 應用程式庫新增 Zoom
 
 從 Azure AD 應用程式庫新增 Zoom，開始管理布建到縮放。 如果您先前已設定 [縮放為 SSO]，您可以使用相同的應用程式。 不過，建議您在一開始測試整合時，建立個別的應用程式。 [在此](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)深入了解從資源庫新增應用程式。 
 
@@ -121,11 +121,11 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
    |屬性|類型|
    |---|---|
-   |userName|String|
+   |userName|字串|
    |作用中|Boolean|
-   |name.givenName|String|
-   |name.familyName|String|
-   |電子郵件 [type eq "work"]|String|
+   |name.givenName|字串|
+   |name.familyName|字串|
+   |電子郵件 [type eq "work"]|字串|
    |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department|String|
 
 10. 若要設定範圍篩選，請參閱[範圍篩選教學課程](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)中提供的下列指示。
@@ -153,6 +153,9 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
 ## <a name="connector-limitations"></a>連接器限制
 * [縮放] 僅允許目前最多9999個基本使用者。
+
+## <a name="change-log"></a>變更記錄
+* 05/14/2020-已針對電子郵件 [type eq "work"] 屬性新增更新作業的支援。
 
 ## <a name="additional-resources"></a>其他資源
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/28/2019
 ms.author: juliako
-ms.openlocfilehash: d66347bc5510189b1d947b4c6b00345b0a56c3f7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ec057d86ea39afb7eabd4e8227646eaec11c5655
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80582226"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023002"
 ---
 # <a name="media-services-job-error-codes"></a>媒體服務作業錯誤代碼
 
@@ -26,7 +26,7 @@ ms.locfileid: "80582226"
 
 ## <a name="job-error-codes"></a>作業錯誤碼
 
-下列 REST 檔提供有關[作業錯誤代碼](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode)的詳細說明。
+下列 REST 檔提供有關[作業錯誤代碼](/rest/api/media/jobs/get#joberrorcode)的詳細說明。
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>提出問題、提供意見反應、取得更新
 
@@ -38,6 +38,6 @@ ms.locfileid: "80582226"
 - [Azure 媒體服務概念](concepts-overview.md)
 - [配額和限制](limits-quotas-constraints.md)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 [範例：使用 .NET 從 ApiException 存取 ErrorCode 和 Message](configure-connect-dotnet-howto.md#connect-to-the-net-client)

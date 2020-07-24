@@ -9,14 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 06/03/2020
+ms.date: 07/15/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 349ad3a1fbdf9340eb2b6c2ec92ba85b0357dd8c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e21edd662649238b16cf7e7df9d9904f3f17752
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84432525"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015896"
 ---
 # <a name="frequently-asked-questions-faq-about-the-microsoft-authenticator-app"></a>關於 Microsoft Authenticator 應用程式的常見問題（FAQ）
 
@@ -29,7 +30,7 @@ Microsoft Authenticator 應用程式取代了 Azure 驗證器應用程式，而�
 | 問題 | Answer |
 | -------- | ------ |
 | 註冊裝置是否即表示同意公司或服務存取我的裝置？ | 註冊裝置可讓您的裝置存取您組織的服務，但不允許您組織存取您的裝置。 |
-| 我有 Windows Mobile 裝置，而 Windows Mobile 上的 Microsoft Authenticator 已被取代。 我可以繼續使用應用程式進行驗證嗎？ | 在2020年7月15日之後，所有使用 Windows Mobile Microsoft Authenticator 的驗證都會淘汰。 我們強烈建議您使用替代的驗證方法，以避免您的帳戶遭到鎖定。<br>企業使用者的替代選項包括：<br><ul><li>設定 Android 或 iOS 的 Microsoft Authenticator。</li><li>設定 SMS 以接收驗證碼。</li><li>設定電話號碼以接收電話，以驗證其身分識別。</li></ul><br>個人 Microsoft 帳戶使用者的替代選項包括：<br><ul><li>設定適用于 Android 或 iOS 的 Microsoft Authenticator 應用程式。</li><li>藉由從[Microsoft 帳戶安全性頁面](https://account.microsoft.com/security/)更新您的安全性資訊，以設定替代的登入方法（SMS 或電子郵件）。</li></ul> |
+| 我有 Windows Mobile 裝置，而 Windows Mobile 上的 Microsoft Authenticator 已被取代。 我可以繼續使用應用程式進行驗證嗎？ | 在2020年7月15日之後，所有使用 Windows Mobile Microsoft Authenticator 的驗證都會淘汰。 我們強烈建議您使用替代的驗證方法，以避免您的帳戶遭到鎖定。<br>企業使用者的替代選項包括：<br><ul><li>設定[Android](https://play.google.com/store/apps/details?id=com.azure.authenticator)或[iOS](https://apps.apple.com/app/microsoft-authenticator/id983156458)的 Microsoft Authenticator。</li><li>[設定 SMS](multi-factor-authentication-setup-phone-number.md)以接收驗證碼。</li><li>設定電話號碼以接收[電話，以驗證其身分識別](multi-factor-authentication-setup-office-phone.md)。</li></ul><br>個人 Microsoft 帳戶使用者的替代選項包括：<br><ul><li>設定[Android](https://play.google.com/store/apps/details?id=com.azure.authenticator)或[iOS](https://apps.apple.com/app/microsoft-authenticator/id983156458)的 Microsoft Authenticator。</li><li>藉由從[Microsoft 帳戶安全性頁面](https://account.microsoft.com/security/)更新您的安全性資訊，以設定替代的登入方法（SMS 或電子郵件）。</li></ul> |
 | 我可以將我的一次性密碼（OTP）代碼的螢幕擷取畫面帶到 Android 驗證器嗎？ | 從驗證器 Android 的 release 6.2003.1704 開始，每當採取驗證器的螢幕擷取畫面時，預設都會隱藏所有的 OTP 程式碼。 如果您想要在螢幕擷取畫面中查看 OTP 代碼，或允許其他應用程式捕捉驗證器畫面，您可以。 只要在驗證器中開啟 [**螢幕**快照] 設定，然後重新開機應用程式即可。 |
 | Authenticator 會為我儲存何種資料，而我該如何刪除它？ | 驗證器應用程式會收集三種類型的資訊：<ul><li>您新增帳戶時提供的帳戶資訊。 這項資料可以藉由移除帳戶來移除。</li><li>在您選取應用程式之 [說明] 功能表中的 [傳送記錄]，將紀錄傳送給 Microsoft 之前，診斷記錄資料只會存留在應用程式中。 這些記錄檔可能包含個人資料，例如電子郵件地址、伺服器位址或 IP 位址。 它們也可以包含裝置資料，例如裝置名稱和作業系統版本。 收集的任何個人資料僅限於協助疑難排解應用程式問題所需的資訊。 您可以隨時在應用程式中流覽這些記錄檔，以查看所收集的資訊。 如果您傳送記錄檔，驗證應用程式工程師只會使用它們來疑難排解客戶回報的問題。</li><li>非個人的可識別使用量資料，例如「已啟動的新增帳戶流程/已成功新增的帳戶」或「已核准的通知。」 這項資料是我們工程決策不可或缺的一部分。 您的使用方式可協助我們判斷如何以對您而言很重要的方式來改善應用程式。 當您第一次使用應用程式時，您會看到此資料收集的通知。 它會通知您，您可以在應用程式的 [**設定**] 頁面上關閉它。 您可以隨時開啟或關閉此設定。</li></ul> |
 | 應用程式中的程式碼有什麼作用？ | 當您開啟驗證器時，您會看到新增的帳戶做為磚。 您的公司或學校帳戶和個人 Microsoft 帳戶會在帳戶的全螢幕視圖中看到六或8位數的數位（藉由點擊帳戶磚存取）。 對於其他帳戶，您會在應用程式的 [**帳戶**] 頁面中看到六或8位數的數位。<br>您會將這些代碼當做單一使用密碼來驗證您是否為您所說的人。 使用您的使用者名稱與密碼登入之後，您將鍵入與該帳戶相關聯的驗證碼。 例如，如果您要 Katy 登入您的 Contoso 帳戶，請按一下 [帳戶] 磚，然後使用驗證碼895823。 針對 Outlook 帳戶，您會遵循相同的步驟。<br>請按 [Contoso 帳戶] 磚。<br>![驗證器應用程式中的帳戶磚](media/user-help-auth-app-faq/katy-signin.png)<br>在您按下 [Contoso 帳戶] 磚之後，驗證碼就會顯示在全螢幕中。<br>![在驗證器的帳戶磚中的驗證碼](media/user-help-auth-app-faq/verification-code.png) |

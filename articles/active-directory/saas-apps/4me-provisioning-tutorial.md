@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/3/2019
 ms.author: jeedes
-ms.openlocfilehash: 423ba8c7aea9659a4c91f68a01392954c2ba6db2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0c83d43fe1a2068fa4c9f24a10c0975610142a84
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77059155"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87018684"
 ---
 # <a name="tutorial-configure-4me-for-automatic-user-provisioning"></a>教學課程：設定4me 來自動布建使用者
 
@@ -127,7 +128,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![4me 使用者對應](media/4me-provisioning-tutorial/4me-user-mapping.png)
     
-11. 在 [**屬性對應**] 區段中，檢查從 Azure AD 同步處理到4me 的使用者屬性。 選取為 [比對] 屬性**的屬性會**用來比對4me 中的使用者帳戶，以進行更新作業。 選取 [儲存] 按鈕以認可所有變更。
+11. 在 [**屬性對應**] 區段中，檢查從 Azure AD 同步處理到4me 的使用者屬性。 選取為 [比對] 屬性**的屬性會**用來比對4me 中的使用者帳戶，以進行更新作業。 請確定[4me 支援篩選](https://developer.4me.com/v1/scim/users/)您所選擇的相符屬性。 選取 [儲存] 按鈕以認可所有變更。
 
     ![4me 使用者對應](media/4me-provisioning-tutorial/4me-user-attributes.png)
     

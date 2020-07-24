@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2019
+ms.date: 05/06/2020
 ms.author: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8b7fa5aea835329be8f65a3bb1775ba5b0d97d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5ca536ddacb0f81459625b733eb79282e145afba
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85389850"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87016289"
 ---
 # <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>教學課程︰設定 Slack 來自動佈建使用者
 
@@ -50,11 +50,11 @@ ms.locfileid: "85389850"
 2. 判斷誰會在[佈建範圍](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)內。
 3. 決定要[在 Azure AD 和時差之間對應](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)的資料。 
 
-## <a name="step-2-add-slack-from-the-azure-ad-application-gallery"></a>步驟 2： 從 Azure AD 應用程式資源庫新增時差
+## <a name="step-2-add-slack-from-the-azure-ad-application-gallery"></a>步驟 2. 從 Azure AD 應用程式資源庫新增時差
 
 新增 Azure AD 應用程式庫的時差，開始管理布建到時差。 如果您先前已設定 SSO 的時差，則可以使用相同的應用程式。 不過，建議您在一開始測試整合時，建立個別的應用程式。 [在此](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)深入了解從資源庫新增應用程式。 
 
-## <a name="step-3-define-who-will-be-in-scope-for-provisioning"></a>步驟 3： 定義將在佈建範圍內的人員 
+## <a name="step-3-define-who-will-be-in-scope-for-provisioning"></a>步驟 3. 定義將在佈建範圍內的人員 
 
 Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/群組的屬性，界定將要佈建的人員。 如果您選擇根據指派來界定將佈建至應用程式的人員，您可以使用下列[步驟](../manage-apps/assign-user-or-group-access-portal.md)將使用者和群組指派給應用程式。 如果您選擇僅根據使用者或群組的屬性來界定將要佈建的人員，可以使用如[這裡](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)所述的範圍篩選條件。 
 
@@ -62,7 +62,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
 * 從小規模開始。 在推出給所有人之前，先使用一小部分的使用者和群組進行測試。 當佈建範圍設為已指派的使用者和群組時，您可將一或兩個使用者或群組指派給應用程式來控制這點。 當範圍設為所有使用者和群組時，您可指定[以屬性為基礎的範圍篩選條件](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)。
 
-## <a name="step-4-configure-automatic-user-provisioning-to-slack"></a>步驟 4： 設定自動使用者布建至時差 
+## <a name="step-4-configure-automatic-user-provisioning-to-slack"></a>步驟 4. 設定自動使用者布建至時差 
 
 本節會引導您將 Azure AD 連接至 Slack 的使用者帳戶佈建 API，以及根據 Azure AD 中的使用者和群組指派，設定佈建服務以在 Slack 中建立、更新和停用指派的使用者帳戶。
 
@@ -108,34 +108,34 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
    |屬性|類型|
    |---|---|
    |作用中|Boolean|
-   |externalId|String|
-   |displayName|String|
+   |externalId|字串|
+   |displayName|字串|
    |name.familyName|String|
    |name.givenName|String|
-   |title|String|
-   |emails[type eq "work"].value|String|
-   |userName|String|
-   |昵稱|String|
-   |位址 [類型 eq "不具類型]]。 streetAddress|String|
-   |位址 [類型 eq "不具類型]]。位置|String|
-   |位址 [type eq "不具類型"]. region|String|
-   |位址 [type eq "不具類型"]. 郵遞區號|String|
-   |位址 [type eq "不具類型"]. country|String|
-   |phoneNumbers[type eq "mobile"].value|String|
-   |phoneNumbers[type eq "work"].value|String|
-   |角色 [主要 eq "True"]。值|String|
-   |地區設定|String|
-   |名稱. honorificPrefix|String|
-   |相片 [輸入 eq "photo"]。值|String|
+   |title|字串|
+   |emails[type eq "work"].value|字串|
+   |userName|字串|
+   |昵稱|字串|
+   |位址 [類型 eq "不具類型]]。 streetAddress|字串|
+   |位址 [類型 eq "不具類型]]。位置|字串|
+   |位址 [type eq "不具類型"]. region|字串|
+   |位址 [type eq "不具類型"]. 郵遞區號|字串|
+   |位址 [type eq "不具類型"]. country|字串|
+   |phoneNumbers[type eq "mobile"].value|字串|
+   |phoneNumbers[type eq "work"].value|字串|
+   |角色 [主要 eq "True"]。值|字串|
+   |地區設定|字串|
+   |名稱. honorificPrefix|字串|
+   |相片 [輸入 eq "photo"]。值|字串|
    |profileUrl|String|
-   |timezone|String|
+   |timezone|字串|
    |userType|String|
-   |urn： scim：架構：延伸模組： enterprise： 1.0. 部門|String|
+   |urn： scim：架構：延伸模組： enterprise： 1.0. 部門|字串|
    |urn： scim：架構：延伸模組： enterprise： 1.0. manager|參考|
-   |urn： scim：架構：延伸模組： enterprise： 1.0. employeeNumber|String|
-   |urn： scim：架構：延伸模組： enterprise： 1.0. costCenter|String|
-   |urn： scim：架構：延伸模組： enterprise： 1.0. 組織|String|
-   |urn： scim：架構：延伸模組： enterprise： 1.0. 除法|String|
+   |urn： scim：架構：延伸模組： enterprise： 1.0. employeeNumber|字串|
+   |urn： scim：架構：延伸模組： enterprise： 1.0. costCenter|字串|
+   |urn： scim：架構：延伸模組： enterprise： 1.0. 組織|字串|
+   |urn： scim：架構：延伸模組： enterprise： 1.0. 除法|字串|
 
 12. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 群組至時差**]。
 
@@ -143,7 +143,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
       |屬性|類型|
       |---|---|
-      |displayName|String|
+      |displayName|字串|
       |members|參考|
 
 14. 若要設定範圍篩選，請參閱[範圍篩選教學課程](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)中提供的下列指示。
@@ -167,9 +167,9 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
 1. 使用[佈建記錄](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) \(部分機器翻譯\) 來判斷哪些使用者已佈建成功或失敗
 2. 檢查[進度列](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) \(部分機器翻譯\) 來查看佈建週期的狀態，以及其接近完成的程度
-3. 如果佈建設定似乎處於狀況不良的狀態，應用程式將會進入隔離狀態。 [在此](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status) \(部分機器翻譯\) 深入了解隔離狀態。
+3. 如果佈建設定似乎處於狀況不良的狀態，應用程式將會進入隔離狀態。 [在此](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)深入了解隔離狀態。
 
-## <a name="connector-limitations"></a>連接器限制
+## <a name="troubleshooting-tips"></a>疑難排解秘訣
 
 * 設定 Slack 的 **displayName** 屬性時，請留意下列行為：
 
@@ -179,11 +179,15 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
   
   * 允許的標點符號包括句號、底線、連字號、所有格號、括弧 (例如 **( [ { } ] )**) 和分隔符號 (例如 **, / ;**)。
   
+  * displayName 屬性不能有 ' @ ' 字元。 如果包含 ' @ '，您可能會在布建記錄中找到已略過的事件，其描述為 "AttributeValidationFailed"。
+
   * 只有在 Slack 的工作場所/組織中設定了下列這兩個設定時才會更新：**已啟用設定檔同步處理**及**使用者無法變更其顯示名稱**。
-  
+
 * Slack 的 **userName** 屬性必須少於 21 個字元且具備唯一值。
 
 * 時差只允許與屬性使用者**名稱**和**電子郵件**相符。  
+  
+* 一般的 erorr 碼記載于官方的時差檔中-https://api.slack.com/scim#errors
 
 ## <a name="change-log"></a>變更記錄
 

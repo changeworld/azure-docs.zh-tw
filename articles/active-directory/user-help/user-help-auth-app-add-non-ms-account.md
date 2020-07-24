@@ -11,11 +11,12 @@ ms.topic: end-user-help
 ms.date: 01/24/2019
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: b6bda6d35391543e416c377557e34de317e293eb
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 04076ed5b91f8e840a084b784477d07eea5adee7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83741577"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015965"
 ---
 # <a name="add-non-microsoft-accounts-to-the-microsoft-authenticator-app"></a>將非 Microsoft 帳戶新增至 Microsoft Authenticator 應用程式
 
@@ -49,7 +50,7 @@ ms.locfileid: "83741577"
 
 ### <a name="add-your-google-account-to-the-app"></a>將您的 Google 帳戶新增至應用程式
 
-1. 在電腦的 Google 頁面上移至 [設定替代的第二個步驟] 區段，並從 [Authenticator 應用程式] 區段中選擇 [設定]。
+1. 在您電腦上的 Google 帳戶安全性頁面上（ https://myaccount.google.com/security) ，移至 [**新增更多第二個步驟來驗證您的**身份] 區段，從 [**驗證器應用程式**] 區段中選擇 [**設定**]。
 
 2. 在 [從 Authenticator 應用程式取得驗證碼] 頁面上，根據您的電話類型選取 [Android] 或 [iPhone]，然後選取 [下一步]。
 

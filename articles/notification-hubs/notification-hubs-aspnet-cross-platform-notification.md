@@ -16,12 +16,12 @@ ms.date: 09/30/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 10/02/2019
-ms.openlocfilehash: fc3cec348517244c8a7f54d2d3d17298c58e4262
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 467664f4c102a81f6469765ea1742995f04c60e6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80127036"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87021999"
 ---
 # <a name="send-cross-platform-notifications-with-azure-notification-hubs"></a>使用 Azure 通知中樞傳送跨平臺通知
 
@@ -99,7 +99,7 @@ ms.locfileid: "80127036"
 
 1. （選擇性）將用戶端應用程式部署到第二個裝置，然後執行應用程式。 每個裝置上都會顯示通知。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 現在您已完成本教學課程，請在下列文章中深入瞭解通知中樞和範本：
 
@@ -119,4 +119,4 @@ ms.locfileid: "80127036"
 [Azure Notification Hubs]: https://go.microsoft.com/fwlink/p/?LinkId=314257
 [使用 Azure 通知中樞將通知傳送給特定使用者]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
 [Templates]: https://go.microsoft.com/fwlink/p/?LinkId=317339
-[Notification Hub How to for Windows Store]: https://msdn.microsoft.com/library/windowsazure/jj927172.aspx
+[Notification Hub How to for Windows Store]: /previous-versions/azure/azure-services/jj927170(v=azure.100)

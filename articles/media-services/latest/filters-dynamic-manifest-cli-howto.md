@@ -14,11 +14,12 @@ ms.topic: article
 ms.date: 06/13/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 74516aa921e45917f327a193a1c972b021c9c8ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2385171a501d00f91c58f3fde9b487505ec21c60
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74896062"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023206"
 ---
 # <a name="creating-filters-with-cli"></a>使用 CLI 建立篩選器 
 
@@ -26,14 +27,14 @@ ms.locfileid: "74896062"
 
 如需這項功能和使用方式的詳細描述，請參閱[動態資訊清單](filters-dynamic-manifest-overview.md)和[篩選](filters-concept.md)。
 
-此主題說明如何為點播視訊資產設定篩選器，以及如何使用適用於第三版媒體服務的 CLI 來建立[帳戶篩選器](https://docs.microsoft.com/cli/azure/ams/account-filter?view=azure-cli-latest)與[資產篩選器](https://docs.microsoft.com/cli/azure/ams/asset-filter?view=azure-cli-latest)。 
+此主題說明如何為點播視訊資產設定篩選器，以及如何使用適用於第三版媒體服務的 CLI 來建立[帳戶篩選器](/cli/azure/ams/account-filter?view=azure-cli-latest)與[資產篩選器](/cli/azure/ams/asset-filter?view=azure-cli-latest)。 
 
 > [!NOTE]
 > 請務必參閱[presentationTimeRange](filters-concept.md#presentationtimerange)。
 
 ## <a name="prerequisites"></a>Prerequisites 
 
-- [建立媒體服務帳戶](create-account-cli-how-to.md)。 請務必記住資源群組名稱和「媒體服務」帳戶名稱。 
+- [建立媒體服務帳戶](./create-account-howto.md)。 請務必記住資源群組名稱和「媒體服務」帳戶名稱。 
 
 [!INCLUDE [media-services-cli-instructions](../../../includes/media-services-cli-instructions.md)]
 
@@ -79,7 +80,7 @@ ms.locfileid: "74896062"
 
 ## <a name="create-account-filters"></a>建立帳戶篩選器
 
-下列 [az ams account-filter](https://docs.microsoft.com/cli/azure/ams/account-filter?view=azure-cli-latest) 命令可建立含[稍早定義](#define-a-filter)之曲目選取條件的帳戶篩選器。 
+下列 [az ams account-filter](/cli/azure/ams/account-filter?view=azure-cli-latest) 命令可建立含[稍早定義](#define-a-filter)之曲目選取條件的帳戶篩選器。 
 
 此命令可讓您傳遞包含代表軌道選取之 JSON 的選用 `--tracks` 參數。  使用 @{file} 從檔案載入 JSON。 若您在本機使用 Azure CLI，請指定完整檔案路徑：
 
@@ -87,17 +88,17 @@ ms.locfileid: "74896062"
 az ams account-filter create -a amsAccount -g resourceGroup -n filterName --tracks @tracks.json
 ```
 
-此外，也請參閱[篩選器的 JSON 範例](https://docs.microsoft.com/rest/api/media/accountfilters/createorupdate#create-an-account-filter)。
+此外，也請參閱[篩選器的 JSON 範例](/rest/api/media/accountfilters/createorupdate#create-an-account-filter)。
 
 ## <a name="create-asset-filters"></a>建立資產篩選器
 
-下列 [az ams asset-filter](https://docs.microsoft.com/cli/azure/ams/asset-filter?view=azure-cli-latest) 命令可建立含[稍早定義](#define-a-filter)之曲目選取條件的資產篩選器。 
+下列 [az ams asset-filter](/cli/azure/ams/asset-filter?view=azure-cli-latest) 命令可建立含[稍早定義](#define-a-filter)之曲目選取條件的資產篩選器。 
 
 ```azurecli
 az ams asset-filter create -a amsAccount -g resourceGroup -n filterName --asset-name assetName --tracks @tracks.json
 ```
 
-此外，也請參閱[篩選器的 JSON 範例](https://docs.microsoft.com/rest/api/media/assetfilters/createorupdate#create-an-asset-filter)。
+此外，也請參閱[篩選器的 JSON 範例](/rest/api/media/assetfilters/createorupdate#create-an-asset-filter)。
 
 ## <a name="associate-filters-with-streaming-locator"></a>將篩選器與串流定位器建立關聯
 
@@ -125,10 +126,10 @@ az ams streaming-locator create -a amsAccount -g resourceGroup -n streamingLocat
 |MPEG DASH|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=mpd-time-csf,filter=myAssetFilter)`|
 |Smooth Streaming|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(filter=myAssetFilter)`|
 
-## <a name="next-step"></a>下一步
+## <a name="next-step"></a>後續步驟
 
 [串流影片](stream-files-tutorial-with-api.md) 
 
 ## <a name="see-also"></a>另請參閱
 
-[Azure CLI](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)
+[Azure CLI](/cli/azure/ams?view=azure-cli-latest)

@@ -8,11 +8,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/18/2019
-ms.openlocfilehash: 78dde3f6706ecbc54daca162ac718911752fa0ca
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: c79d810979641d1dc128c741c2124d9b5887aa3d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83832957"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020741"
 ---
 # <a name="common-query-patterns-in-azure-stream-analytics"></a>Azure 串流分析中常見的查詢模式
 
@@ -83,7 +84,7 @@ FROM Input
 ```
 ## <a name="data-aggregation-over-time"></a>一段時間的資料彙總
 
-若要計算一段時間範圍的資訊，可以將資料彙總在一起。 在此範例中，會針對每部特定汽車 make，計算過去 10 分鐘的計數。
+若要計算一段時間範圍的資訊，可以將資料彙總在一起。 在此範例中，會針對每個特定汽車的時間，計算過去10秒內的計數。
 
 **輸入**：
 

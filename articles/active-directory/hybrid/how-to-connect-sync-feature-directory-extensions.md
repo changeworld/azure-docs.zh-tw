@@ -16,12 +16,12 @@ ms.date: 11/12/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3afec7c31488529af9ba15100c914899a0d1d808
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d64bfe66f5fb871ff9f85a5d58d128ac44643846
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357455"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019756"
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Azure AD Connect 同步處理：目錄擴充
 您可以使用目錄擴充功能，從內部部署 Active Directory 利用自己的屬性擴充 Azure Active Directory (Azure AD) 中的結構描述。 此功能可讓您建置 LOB 應用程式，方法是取用您在內部部署中持續進行管理的屬性。 這些屬性可以透過[擴充](https://docs.microsoft.com/graph/extensibility-overview
@@ -33,8 +33,8 @@ ms.locfileid: "85357455"
 
 您可以在安裝精靈的自訂設定路徑中，設定您想要同步處理的其他屬性。
 
->[!NOTE]
->[可用屬性] 方塊區分大小寫。
+> [!NOTE]
+> 在1.2.65.0 之前的 Azure AD Connect 版本中，**可用屬性**的 [搜尋] 方塊會區分大小寫。
 
 ![結構描述擴充功能精靈](./media/how-to-connect-sync-feature-directory-extensions/extension2.png)  
 
@@ -93,7 +93,7 @@ Azure AD 中的物件最多可有 100 個目錄擴充功能的屬性。 長度�
 
    ![具有動態群組中成員的螢幕擷取畫面](./media/how-to-connect-sync-feature-directory-extensions/dynamicgroup4.png)  
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 深入了解 [Azure AD Connect 同步](how-to-connect-sync-whatis.md) 組態。
 
 深入了解 [整合內部部署身分識別與 Azure Active Directory](whatis-hybrid-identity.md)。

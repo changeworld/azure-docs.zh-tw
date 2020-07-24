@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: a61f7ff69e648262eb721eb61a98b09dbbee924c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c0426872c29fa126514f22a5f4fb57f19903c967
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73961432"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87021659"
 ---
 # <a name="set-up-ip-addressing-to-connect-to-a-secondary-on-premises-site-after-failover"></a>設定在容錯移轉後用來連線至次要內部部署網站的 IP 定址
 
@@ -60,11 +61,11 @@ ms.locfileid: "73961432"
 下圖顯示容錯移轉前後的子網路。
 
 
-**容錯移轉之前**
+**容錯移轉前**
 
 ![容錯移轉前](./media/hyper-v-vmm-networking/network-design2.png)
 
-**容錯移轉之後**
+**容錯移轉後**
 
 ![容錯移轉後](./media/hyper-v-vmm-networking/network-design3.png)
 
@@ -78,12 +79,12 @@ ms.locfileid: "73961432"
 
 啟用 VM 保護之後，您可以使用下列範例指令碼來驗證指派給 VM 的位址。 此 IP 位址會設定為容錯移轉 IP 位址，並在容錯移轉時指派給 VM：
 
-    ```
-    $vm = Get-SCVirtualMachine -Name <VM_NAME>
-    $na = $vm[0].VirtualNetworkAdapters>
-    $ip = Get-SCIPAddress -GrantToObjectID $na[0].id
-    $ip.address 
-    ```
+```powershell
+$vm = Get-SCVirtualMachine -Name <VM_NAME>
+$na = $vm[0].VirtualNetworkAdapters>
+$ip = Get-SCIPAddress -GrantToObjectID $na[0].id
+$ip.address
+```
 
 ## <a name="use-a-different-ip-address"></a>使用不同的 IP 位址
 
@@ -92,7 +93,7 @@ ms.locfileid: "73961432"
 - 對內部網路應用程式使用低 TTL 值。
 - 在 Site Recovery 復原計劃中使用下列指令碼，讓 DNS 伺服器能及時更新。 如果您使用動態 DNS 登錄，則不需要這個指令碼。
 
-    ```
+    ```powershell
     param(
     string]$Zone,
     [string]$name,
@@ -115,16 +116,16 @@ ms.locfileid: "73961432"
 - 在此案例中，不需要容錯移轉整個子網路，而且不需任何變更，即可重新設定 VPN 或網路路由。 容錯移轉和某些 DNS 更新可確保應用程式可供存取。
 - 如果 DNS 設定為允許動態更新，則 VM 在容錯移轉後啟動時，就會使用新的 IP 位址自行註冊。
 
-**容錯移轉之前**
+**容錯移轉前**
 
 ![不同的 IP 位址 - 容錯移轉之前](./media/hyper-v-vmm-networking/network-design10.png)
 
-**容錯移轉之後**
+**容錯移轉後**
 
 ![不同的 IP 位址 - 容錯移轉之後](./media/hyper-v-vmm-networking/network-design11.png)
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 [執行容錯移轉](hyper-v-vmm-failover-failback.md)
 

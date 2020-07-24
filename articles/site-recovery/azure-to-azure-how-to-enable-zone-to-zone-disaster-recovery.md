@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/28/2020
 ms.author: sideeksh
-ms.openlocfilehash: 723329022d748ee18a07fcaeaecc2aff0e5f707b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a1952f6dccf12de4cb1571dacabecf78c65cd01b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86528973"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87021642"
 ---
 # <a name="enable-zone-to-zone-disaster-recovery-for-azure-virtual-machines"></a>針對 Azure 虛擬機器啟用區域的損毀修復
 
@@ -20,7 +20,6 @@ ms.locfileid: "86528973"
 
 >[!NOTE]
 >
->- Site Recovery 目前不支援透過入口網站進列區域到區域嚴重損壞修復的復原計畫。 請使用 PowerShell 或 REST API，利用區域的復原計畫來進列區域嚴重損壞修復。 
 >- 區域對區域嚴重損壞修復的支援目前限制為兩個區域：東南亞和英國南部。  
 >- Site Recovery 不會在客戶使用區域進行嚴重損壞修復時，將客戶資料從其部署所在的區域中移動或儲存。 如果客戶選擇復原服務保存庫，則可以從不同的區域中選取。 復原服務保存庫包含中繼資料，但沒有實際的客戶資料。
 

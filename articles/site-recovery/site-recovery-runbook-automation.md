@@ -7,18 +7,18 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: rajanaki
-ms.openlocfilehash: 25290a66da3d5c8325513b2bea6d27d12ca7da70
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 1df17ccb41c974c8939710850b5bb71ee3a5ef1b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134812"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87021574"
 ---
 # <a name="add-azure-automation-runbooks-to-recovery-plans"></a>將 Azure 自動化 Runbook 新增至復原方案
 
 本文說明如何整合 Azure 自動化 runbook，以擴充[Azure Site Recovery](site-recovery-overview.md)復原方案。 我們會向您示範如何將需要手動介入的基本工作自動化，以及如何將多步驟復原轉換成單鍵動作。
 
-## <a name="recovery-plans"></a>復原方案 
+## <a name="recovery-plans"></a>復原計畫 
 
 當您損毀修復內部部署機器或 Azure Vm 時，可以使用復原方案。 復原方案可協助您定義系統化復原程式，以定義機器如何容錯移轉，以及如何在容錯移轉之後啟動和復原。 
 
@@ -98,7 +98,7 @@ $vmMap = $RecoveryPlanContext.VmMap
 
 
 
-## <a name="before-you-start"></a>在您開始使用 Intune 之前
+## <a name="before-you-start"></a>開始之前
 
 - 如果您不熟悉 Azure 自動化，可以[註冊](https://azure.microsoft.com/services/automation/)並[下載範例腳本](https://azure.microsoft.com/documentation/scripts/)。
 - 確定自動化帳戶具有下列模組：
@@ -199,7 +199,7 @@ $vmMap = $RecoveryPlanContext.VmMap
 - 例如，SharePoint 復原有兩個前端。 基本企業營運 (LOB) 應用程式只有一個前端。
 - 在此案例中，您無法為每個復原方案建立個別變數。
 
-在下列範例中，我們會在 Azure 自動化帳戶中建立[複雜變數](/powershell/module/servicemanagement/azure/set-azureautomationvariable)。
+在下列範例中，我們會在 Azure 自動化帳戶中建立[複雜變數](/powershell/module/servicemanagement/azure.service/set-azureautomationvariable)。
 
 我們會使用 Azure PowerShell 來指定多個值來執行此動作。
 
@@ -262,7 +262,7 @@ $vmMap = $RecoveryPlanContext.VmMap
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/One-click-failover-of-a-2-tier-WordPress-application-using-Azure-Site-Recovery/player]
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 瞭解[Azure 自動化執行身分帳戶](../automation/manage-runas-account.md)
 - 請參閱[Azure 自動化範例腳本](https://gallery.technet.microsoft.com/scriptcenter/site/search?f%5B0%5D.Type=User&f%5B0%5D.Value=SC%20Automation%20Product%20Team&f%5B0%5D.Text=SC%20Automation%20Product%20Team)。

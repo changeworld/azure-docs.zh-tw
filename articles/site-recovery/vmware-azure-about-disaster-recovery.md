@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 6759b2c0f679a865d0bdcf8ea8cd39f258a9cf25
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: dfbdff01064b483085233ece47d1d3b635b68743
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86132126"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87021455"
 ---
 # <a name="about-disaster-recovery-of-vmware-vms-to-azure"></a>關於 VMware VM 至 Azure 的災害復原
 
@@ -23,6 +23,9 @@ ms.locfileid: "86132126"
 
 - [Azure 備份](../backup/backup-overview.md)會備份您的內部部署和 Azure VM 資料。 您可以備份檔案和資料夾、特定工作負載，或整個 VM。 
 - [Azure Site Recovery](site-recovery-overview.md) 可為在內部部署機器或 Azure IaaS VM 上執行的應用程式和工作負載，提供復原能力和災害復原。 Site Recovery 會發生中斷時協調複寫，以及處理容錯移轉至 Azure。 它也會處理從 Azure 至主要網站的復原。 
+
+> [!NOTE]
+> Site Recovery 不會在目的地區域中移動或儲存客戶資料，因為來源機器已設定嚴重損壞修復。 如果客戶選擇復原服務保存庫，則可以從不同的區域中選取。 復原服務保存庫包含中繼資料，但沒有實際的客戶資料。
 
 ## <a name="how-does-site-recovery-do-disaster-recovery"></a>Site Recovery 如何進行災害復原？
 
@@ -119,6 +122,6 @@ Site Recovery 可複寫在支援的 VMware VM 或實體伺服器上執行的任�
 
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 複寫到位後，您應該[執行災害復原演練](tutorial-dr-drill-azure.md)，確保容錯移轉能如預期般運作。 

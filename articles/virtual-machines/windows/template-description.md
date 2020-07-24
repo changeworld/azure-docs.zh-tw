@@ -7,16 +7,16 @@ ms.workload: infrastructure
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: cynthn
-ms.openlocfilehash: 04dba192488744d1b54b0a0e2d885c0b1766bdc6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1ac2e94e9c0213f14999d730027e118df6584519
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82100527"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020197"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Azure Resource Manager 範本中的虛擬機器
 
-本文描述套用至虛擬機器的 Azure Resource Manager 範本的各個部分。 本文不會說明建立虛擬機器的完整範本；您需要儲存體帳戶、網路介面、公用 IP 位址與虛擬網路的資源定義。 如需有關如何將這些資源一起定義的詳細資訊，請參閱 [Resource Manager 範本逐步解說](../../azure-resource-manager/resource-manager-template-walkthrough.md)。
+本文描述套用至虛擬機器的 Azure Resource Manager 範本的各個部分。 本文不會說明建立虛擬機器的完整範本；您需要儲存體帳戶、網路介面、公用 IP 位址與虛擬網路的資源定義。 如需有關如何將這些資源一起定義的詳細資訊，請參閱 [Resource Manager 範本逐步解說](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)。
 
 有許多[組件庫中的範本](https://azure.microsoft.com/documentation/templates/?term=VM)包含 VM 資源。 此處並未說明可以包含在範本中的所有項目。
 
@@ -156,14 +156,14 @@ ms.locfileid: "82100527"
 
 使用這些機會來取得最新的 API 版本︰
 
-- REST API - [列出所有資源提供者](https://docs.microsoft.com/rest/api/resources/providers)
-- PowerShell - [Get-AzResourceProvider](https://docs.microsoft.com/powershell/module/az.resources/get-azresourceprovider)
-- Azure CLI - [az provider show](https://docs.microsoft.com/cli/azure/provider)
+- REST API - [列出所有資源提供者](/rest/api/resources/providers)
+- PowerShell - [Get-AzResourceProvider](/powershell/module/az.resources/get-azresourceprovider)
+- Azure CLI - [az provider show](/cli/azure/provider)
 
 
 ## <a name="parameters-and-variables"></a>參數和變數
 
-[參數](../../resource-group-authoring-templates.md)方便您執行它時指定範本的值。 此參數章節用於範例中︰
+[參數](../../azure-resource-manager/templates/template-syntax.md)方便您執行它時指定範本的值。 此參數章節用於範例中︰
 
 ```json
 "parameters": {
@@ -175,7 +175,7 @@ ms.locfileid: "82100527"
 
 當您部署範例範本時，您要輸入每個 VM 上系統管理員帳戶的名稱和密碼值，以及要建立的 VM 數目。 您可以選擇指定使用範本管理之不同檔案中的參數值，或當系統提示時提供值。
 
-[變數](../../resource-group-authoring-templates.md)方便您設定範本中整個重複使用或會隨著時間而改變的值。 此變數章節用於範例中︰
+[變數](../../azure-resource-manager/templates/template-syntax.md)方便您設定範本中整個重複使用或會隨著時間而改變的值。 此變數章節用於範例中︰
 
 ```json
 "variables": { 
@@ -208,7 +208,7 @@ ms.locfileid: "82100527"
 }, 
 ```
 
-當您部署範例範本時，變數值會用於名稱與先前建立之儲存體帳戶的識別碼。 變數也用來提供診斷擴充功能的設定。 使用[建立 Azure Resource Manager 範本的最佳作法](../../resource-manager-template-best-practices.md)可協助您決定要如何組織您範本中的變數與參數。
+當您部署範例範本時，變數值會用於名稱與先前建立之儲存體帳戶的識別碼。 變數也用來提供診斷擴充功能的設定。 使用[建立 Azure Resource Manager 範本的最佳作法](../../azure-resource-manager/templates/template-best-practices.md)可協助您決定要如何組織您範本中的變數與參數。
 
 ## <a name="resource-loops"></a>資源迴圈
 
@@ -247,7 +247,7 @@ ms.locfileid: "82100527"
 
 ## <a name="dependencies"></a>相依性
 
-大部分的資源相依於其他資源才能正確地運作。 虛擬機器必須與虛擬網路相關聯，且需要網路介面才能執行它。 [ependsOn](../../resource-group-define-dependencies.md) 項目用來確定網路介面在 VM 建立之前已備妥可供使用：
+大部分的資源相依於其他資源才能正確地運作。 虛擬機器必須與虛擬網路相關聯，且需要網路介面才能執行它。 [ependsOn](../../azure-resource-manager/templates/define-resource-dependency.md) 項目用來確定網路介面在 VM 建立之前已備妥可供使用：
 
 ```json
 "dependsOn": [
@@ -277,7 +277,7 @@ Resource Manager 會以平行方式部署任何不依存於另一個要部署資
 - [size](sizes.md)
 - [名稱](/azure/architecture/best-practices/resource-naming)和認證
 - 磁碟和[作業系統設定](cli-ps-findimage.md)
-- [網路介面](../../virtual-network/virtual-network-deploy-multinic-classic-ps.md) 
+- [網路介面](/previous-versions/azure/virtual-network/virtual-network-deploy-multinic-classic-ps) 
 - 開機診斷
 
 ## <a name="disks-and-images"></a>磁碟和映像
@@ -369,7 +369,7 @@ Resource Manager 會以平行方式部署任何不依存於另一個要部署資
 
 ## <a name="extensions"></a>延伸模組
 
-雖然[擴充功能](extensions-features.md)是不同的資源，它們會緊密繫結至 VM。 擴充功能可新增為 VM 的子資源或不同的資源。 範例會示範要新增至 VM 的[診斷擴充功能](extensions-diagnostics-template.md)：
+雖然[擴充功能](../extensions/features-windows.md)是不同的資源，它們會緊密繫結至 VM。 擴充功能可新增為 VM 的子資源或不同的資源。 範例會示範要新增至 VM 的[診斷擴充功能](../extensions/diagnostics-template.md)：
 
 ```json
 { 
@@ -404,7 +404,7 @@ Resource Manager 會以平行方式部署任何不依存於另一個要部署資
 
 此擴充功能資源會使用 storageName 變數和診斷變數來提供值。 如果您想要變更此擴充功能所收集的資料，可以將更多效能計數器新增至 wadperfcounters 變數。 您也可以選擇將診斷資料放入與 VM 磁碟所儲存位置不同的儲存體帳戶。
 
-有許多您可以在 VM 上安裝的擴充功能，而最有用的可能是[自訂指令碼擴充功能](extensions-customscript.md)。 在範例中，名為 start.ps1 的 PowerShell 指令碼第一次啟動時會在每個 VM 上執行︰
+有許多您可以在 VM 上安裝的擴充功能，而最有用的可能是[自訂指令碼擴充功能](../extensions/custom-script-windows.md)。 在範例中，名為 start.ps1 的 PowerShell 指令碼第一次啟動時會在每個 VM 上執行︰
 
 ```json
 {
@@ -447,11 +447,11 @@ Start.ps1 指令碼可以完成許多組態工作。 例如，範例中新增至
 
 ![取得部署資訊](./media/template-description/virtual-machines-deployment-info.png)
     
-使用相同的範本來建立資源或更新現有的資源並不是問題。 當您使用命令來部署範本時，有機會說您想要使用的[模式](../../resource-group-template-deploy.md)。 模式可以設定為 [完成]**** 或 [累加]****。 預設值是執行累加式更新。 使用 [完成]**** 模式請小心，因為您可能會不小心刪除資源。 當您將模式設定為 [完成]**** 時，Resource Manager 就會刪除不在範本中的資源群組之任何資源。
+使用相同的範本來建立資源或更新現有的資源並不是問題。 當您使用命令來部署範本時，有機會說您想要使用的[模式](../../azure-resource-manager/templates/deploy-powershell.md)。 模式可以設定為 [完成]**** 或 [累加]****。 預設值是執行累加式更新。 使用 [完成]**** 模式請小心，因為您可能會不小心刪除資源。 當您將模式設定為 [完成]**** 時，Resource Manager 就會刪除不在範本中的資源群組之任何資源。
 
 ## <a name="next-steps"></a>後續步驟
 
-- 使用[編寫 Azure Resource Manager 範本](../../resource-group-authoring-templates.md)來建立專屬範本。
+- 使用[編寫 Azure Resource Manager 範本](../../azure-resource-manager/templates/template-syntax.md)來建立專屬範本。
 - 部署您使用[利用 Resource Manager 範本搭配 Azure PowerShell 建立 Windows 虛擬機器](ps-template.md)建立的範本。
 - 檢閱[使用 Azure PowerShell 模組來建立和管理 Windows VM](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)，以了解如何管理您建立的 VM。
 - 如需範本中資源類型的 JSON 語法和屬性，請參閱 [Azure Resource Manager 範本參考](/azure/templates/)。

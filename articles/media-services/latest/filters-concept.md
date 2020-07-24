@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 05/23/2019
 ms.author: juliako
-ms.openlocfilehash: fdf29924da31db0347938df89e698cb258c2336b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2e188a0e8ee8b5f2037c07c3f15fd78a42852ce9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708292"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023223"
 ---
 # <a name="filters"></a>篩選器
 
@@ -38,8 +38,8 @@ ms.locfileid: "84708292"
 
 篩選器有兩種類型： 
 
-* [帳戶篩選器](https://docs.microsoft.com/rest/api/media/accountfilters) (全域) - 可以套用到 Azure 媒體服務帳戶中的任何資產，存留期和帳戶的相同。
-* [資產篩選器](https://docs.microsoft.com/rest/api/media/assetfilters) (本機) - 只能套用篩選器建立時與其相關聯的資產，存留期和資產的相同。 
+* [帳戶篩選器](/rest/api/media/accountfilters) (全域) - 可以套用到 Azure 媒體服務帳戶中的任何資產，存留期和帳戶的相同。
+* [資產篩選器](/rest/api/media/assetfilters) (本機) - 只能套用篩選器建立時與其相關聯的資產，存留期和資產的相同。 
 
 **帳戶篩選器**和**資產篩選**器類型與定義/描述篩選器的屬性完全相同。 除了在建立**資產篩選器**的時候，因為您需要指定要與篩選器相關聯之資產的名稱。
 
@@ -47,7 +47,7 @@ ms.locfileid: "84708292"
 
 您可以使用下列屬性來描述篩選器。 
 
-|Name|說明|
+|名稱|描述|
 |---|---|
 |firstQuality|篩選器的首次品質位元速率。|
 |presentationTimeRange|簡報時間範圍。 此屬性用於篩選資訊清單起始/結束點、簡報視窗長度，以及即時起始位置。 <br/>如需詳細資訊，請參閱 [PresentationTimeRange](#presentationtimerange)。|
@@ -57,7 +57,7 @@ ms.locfileid: "84708292"
 
 將此屬性與**資產篩選器**搭配使用。 不建議搭配**帳戶篩選器**設定此屬性。
 
-|Name|說明|
+|名稱|描述|
 |---|---|
 |**endTimestamp**|適用於點播視訊 (VoD)。<br/>針對即時串流簡報，當簡報結束且資料流程變成 VoD 時，會以無訊息方式略過並套用。<br/>這是很長的值，表示簡報的絕對結束點，舍入到最接近的下一個 GOP 開始。 單位是時間刻度，因此1800000000的 endTimestamp 會是3分鐘。<br/>使用 startTimestamp 和 endTimestamp 修剪播放清單（資訊清單）中的片段。<br/>例如，startTimestamp = 40000000 和 endTimestamp = 100000000 使用預設的時間刻度，會產生一個播放清單，其中包含介於 VoD 簡報的4秒和10秒之間的片段。 如果片段跨越界限，則整個片段都會包含在資訊清單中。|
 |**forceEndTimestamp**|僅適用于即時串流。<br/>指出是否必須要有 endTimestamp 屬性。 若為 true，則必須指定 endTimestamp，否則會傳回不正確的要求碼。<br/>允許的值：false、true。|
@@ -72,13 +72,13 @@ ms.locfileid: "84708292"
 
 篩選器資料軌屬性條件描述資料軌類型、值 (下表中所述) 和運算 (Equal、NotEqual)。 
 
-|Name|說明|
+|名稱|描述|
 |---|---|
 |**Bitrate**|使用資料軌的位元速率來篩選。<br/><br/>建議的值是位元速率範圍 (以每秒位元數為單位)。 例如，"0-2427000"。<br/><br/>注意：雖然您可以使用特定的位元速率值，如 250000 (每秒位元數)，但不建議使用此方法，因為資產之間的確切位元速率可能會變動。|
 |**FourCC**|將資料軌的 FourCC 值用於篩選。<br/><br/>該值是轉碼器格式的第一個元素，如 [RFC 6381](https://tools.ietf.org/html/rfc6381) \(英文\) 中所指定。 目前支援下列轉碼器： <br/>視訊："avc1"、"hev1"、"hvc1"<br/>音訊："mp4a"、"ec-3"<br/><br/>若要判斷 Asset 中資料軌的 FourCC 值，請取得並檢查資訊清單檔案。|
 |**語言**|使用資料軌的語言來篩選。<br/><br/>此值是您要包含之語言的標籤，如 RFC 5646 中所指定。 例如，"en"。|
 |**名稱**|使用資料軌的名稱來篩選。|
-|**型別**|使用資料軌的類型來篩選。<br/><br/>允許下列值："video"、"audio" 或 "text"。|
+|**類型**|使用資料軌的類型來篩選。<br/><br/>允許下列值："video"、"audio" 或 "text"。|
 
 ### <a name="example"></a>範例
 
@@ -139,7 +139,7 @@ ms.locfileid: "84708292"
 
 ## <a name="associating-filters-with-streaming-locator"></a>建立篩選與串流定位器的關聯
 
-您可以在[串流定位器](https://docs.microsoft.com/rest/api/media/streaminglocators/create#request-body)上指定[資產或帳戶篩選器](filters-concept.md)的清單。 [動態](dynamic-packaging-overview.md)封裝程式會套用此篩選器清單，以及您的用戶端在 URL 中指定的篩選準則。 這個組合會產生[動態資訊清單](filters-dynamic-manifest-overview.md)，這是以 URL 中的篩選器，以及您在串流定位器上指定的篩選器為基礎。 
+您可以在[串流定位器](/rest/api/media/streaminglocators/create#request-body)上指定[資產或帳戶篩選器](filters-concept.md)的清單。 [動態](dynamic-packaging-overview.md)封裝程式會套用此篩選器清單，以及您的用戶端在 URL 中指定的篩選準則。 這個組合會產生[動態資訊清單](filters-dynamic-manifest-overview.md)，這是以 URL 中的篩選器，以及您在串流定位器上指定的篩選器為基礎。 
 
 請參閱下列範例：
 
@@ -154,11 +154,10 @@ ms.locfileid: "84708292"
 
 如果必須變更篩選定義，請考慮建立新的篩選器，並將它新增至**串流定位器**URL，或直接發行參考篩選器的新**串流定位器**。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 下列文章說明如何以程式設計方式建立篩選器。  
 
 - [使用 REST API 建立篩選器](filters-dynamic-manifest-rest-howto.md)
 - [使用 .NET 建立篩選器](filters-dynamic-manifest-dotnet-howto.md)
 - [使用 CLI 建立篩選器](filters-dynamic-manifest-cli-howto.md)
-

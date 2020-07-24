@@ -12,12 +12,12 @@ ms.date: 05/18/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b9ea9e756587af124ca94518d9f15271310ddee3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3baa659d454a24a132eda914d50acddbd5df8a90
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85389373"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020061"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>在 Azure AD B2C 中註冊 SAML 應用程式
 
@@ -353,6 +353,51 @@ Azure AD B2C 原則 IDP 中繼資料是 SAML 通訊協定中用來公開 SAML �
 * 指定此簽發者 URI：`https://contoso.onmicrosoft.com/app-name`
 
 選取 [登入]，您應該會看到使用者登入畫面。 登入時，SAML 判斷提示會回傳給範例應用程式。
+
+## <a name="enable-encypted-assertions"></a>啟用加密判斷提示
+若要加密傳回給服務提供者的 SAML 判斷提示，Azure AD B2C 將使用服務提供者公開金鑰憑證。 公用金鑰必須存在於上述["samlMetadataUrl"](#samlmetadataurl)中所述的 SAML 中繼資料中，做為使用 ' Encryption ' 的 KeyDescriptor。
+
+以下是使用設定為加密之 SAML 中繼資料 KeyDescriptor 的範例：
+
+```xml
+<KeyDescriptor use="encryption">
+  <KeyInfo xmlns="https://www.w3.org/2000/09/xmldsig#">
+    <X509Data>
+      <X509Certificate>valid certificate</X509Certificate>
+    </X509Data>
+  </KeyInfo>
+</KeyDescriptor>
+```
+
+若要讓 Azure AD B2C 傳送加密的判斷提示，請將信賴憑證者技術設定檔中的**WantsEncryptedAssertion**中繼資料專案設定為 true，如下所示：
+
+```xml
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<TrustFrameworkPolicy
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06"
+  PolicySchemaVersion="0.3.0.0"
+  TenantId="contoso.onmicrosoft.com"
+  PolicyId="B2C_1A_signup_signin_saml"
+  PublicPolicyUri="http://contoso.onmicrosoft.com/B2C_1A_signup_signin_saml">
+ ..
+ ..
+  <RelyingParty>
+    <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+    <TechnicalProfile Id="PolicyProfile">
+      <DisplayName>PolicyProfile</DisplayName>
+      <Protocol Name="SAML2"/>
+      <Metadata>
+          <Item Key="WantsEncryptedAssertions">true</Item>
+      </Metadata>
+     ..
+     ..
+     ..
+    </TechnicalProfile>
+  </RelyingParty>
+</TrustFrameworkPolicy>
+```
 
 ## <a name="sample-policy"></a>範例原則
 

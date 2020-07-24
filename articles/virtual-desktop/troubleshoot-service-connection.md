@@ -1,5 +1,5 @@
 ---
-title: 針對服務連線 Windows 虛擬桌面進行疑難排解 - Azure
+title: 針對服務連線 Windows 虛擬桌面春季2020進行疑難排解-Azure
 description: 如何解決在 Windows 虛擬桌面租用戶環境中設定用戶端連線時的問題。
 services: virtual-desktop
 author: Heidilohr
@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 06/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 56a31caeefb3589527fdbbac118fa3a544a0d1a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9aced0e420826cd73526a54da728c20d8d8e0142
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85208888"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020418"
 ---
 # <a name="windows-virtual-desktop-service-connections"></a>Windows 虛擬桌面服務連線
 

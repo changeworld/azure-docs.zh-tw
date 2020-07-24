@@ -14,11 +14,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: aa84ad9f48f79a77bad1445dadc8c5c965b13655
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d7dc3212007e9b9ec67d0d235135d4d46f20b950
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85248695"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87022118"
 ---
 # <a name="azure-notification-hubs-secure-push"></a>Azure 通知中心安全推播
 
@@ -27,7 +28,7 @@ ms.locfileid: "85248695"
 > * [iOS](notification-hubs-aspnet-backend-ios-push-apple-apns-secure-notification.md)
 > * [Android](notification-hubs-aspnet-backend-android-secure-google-gcm-push-notification.md)
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 Microsoft Azure 中的推播通知支援可讓您存取易於使用、多重平台的大規模推播基礎結構，因而可大幅簡化消費者和企業應用程式在行動平台上的推播通知實作。
 
@@ -121,7 +122,7 @@ Microsoft Azure 中的推播通知支援可讓您存取易於使用、多重平�
 4. 現在，我們必須處理內送通知，並使用上述方法擷取要顯示的內容。 首先，我們必須啟用您的 iOS 應用程式，可在接收推播通知時於背景中執行。 在 **XCode** 中，在左側面板中選取您的應用程式專案，然後在中央窗格的 [目標]**** 區段中，按一下您的主要應用程式目標。
 5. 接著按一下中央窗格頂端的 [功能]**** 索引標籤，並核取 [遠端通知]**** 核取方塊。
 
-    ![][IOS1]
+    ![XCode 的螢幕擷取畫面，其中已選取應用程式專案並開啟 [功能] 索引標籤。 [遠端通知] 核取方塊已選取。][IOS1]
 
 6. 在 `AppDelegate.m` 中，新增下列可處理推播通知的方法：
 

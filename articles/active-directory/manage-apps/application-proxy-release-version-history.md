@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/07/2020
+ms.date: 07/22/2020
 ms.subservice: app-mgmt
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83c41a357ebaf65cca8465bfc48dda3dd065c3e0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 042509240eb2b88446d3ac1956d9056d5c39dfc8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84759992"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019381"
 ---
 # <a name="azure-ad-application-proxy-version-release-history"></a>Azure AD 應用程式 Proxy：版本發行歷程記錄
 本文列出已發行的 Azure Active Directory （Azure AD）應用程式 Proxy 的版本和功能。 Azure AD 小組會定期以新的特性和功能更新應用程式 Proxy。 發行新版本時，會自動更新應用程式 Proxy 連接器。 
@@ -35,6 +35,31 @@ ms.locfileid: "84759992"
 如何啟用應用程式 Proxy | 本[教學](application-proxy-add-on-premises-application.md)課程會說明啟用應用程式 Proxy 以及安裝和註冊連接器的必要條件。
 了解 Azure AD 應用程式 Proxy 連接器 | 深入瞭解[連接器管理](application-proxy-connectors.md)，以及連接器如何[自動升級](application-proxy-connectors.md#automatic-updates)。
 Azure AD 應用程式 Proxy 連接器下載 |  [下載最新的連接器](https://download.msappproxy.net/subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/connector/download)。
+
+## <a name="1519750"></a>1.5.1975.0
+
+### <a name="release-status"></a>發行狀態
+
+2020年7月22日：已發行以供下載。此版本僅適用于透過下載頁面進行安裝。 此版本的自動升級版本將于稍後發行。
+
+### <a name="new-features-and-improvements"></a>新功能和改進
+-   改善對 Azure Government 雲端環境的支援。 如需如何正確安裝 connector for Azure Government cloud 的步驟，請參閱[必要條件和](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud#allow-access-to-urls)[安裝步驟](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud#install-the-agent-for-the-azure-government-cloud)。
+- 支援搭配使用遠端桌面服務 web 用戶端與應用程式 Proxy。 如需詳細資訊，請參閱[使用 Azure AD 應用程式 Proxy 發佈遠端桌面](application-proxy-integrate-with-remote-desktop-services.md)。
+- 改善 websocket 延伸模組的協商。 
+
+### <a name="fixed-issues"></a>已修正的問題
+- 已修正強制小寫字串的 websocket 問題。
+- 已修正導致連接器有時候沒有回應的問題。
+
+## <a name="1516260"></a>1.5.1626.0
+
+### <a name="release-status"></a>發行狀態
+
+2020年7月17日：已發行以供下載。 此版本僅適用于透過下載頁面進行安裝。 此版本的自動升級版本將于稍後發行。
+
+### <a name="fixed-issues"></a>已修正的問題
+- 先前版本中的已解決記憶體流失問題
+- Websocket 支援的一般改進
 
 ## <a name="1515260"></a>1.5.1526.0
 

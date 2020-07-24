@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: amverma
-ms.openlocfilehash: 1de7b1412a242e1b658128ba11f482a2d9dc3107
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 72178b61d7033167ed48a8ddbb661daad6081df7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82594792"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020103"
 ---
 # <a name="scaling-hpc-applications"></a>調整 HPC 應用程式
 
@@ -84,6 +84,6 @@ gcc $(OPTIMIZATIONS) $(OMP) $(STACK) $(STREAM_PARAMETERS) stream.c -o stream.gcc
 * 有些應用程式對記憶體頻寬有極大的敏感性，可能會因為每個 CCX 使用的核心數減少而受益。 針對這些應用程式，每個 CCX 使用3或2個核心可能會降低記憶體頻寬爭用，並產生更高的真實世界效能或更一致的擴充性。 特別是，MPI Allreduce 可能受益于此。
 * 針對大幅增加的規模執行，建議使用 UD 或混合式 RC + UD 傳輸。 許多 MPI 程式庫/執行時間程式庫會在內部執行此動作（例如 UCX 或 MVAPICH2）。 檢查大規模執行的傳輸設定。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-深入瞭解 Azure 上的[HPC](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/) 。
+深入瞭解 Azure 上的[HPC](/azure/architecture/topics/high-performance-computing/) 。

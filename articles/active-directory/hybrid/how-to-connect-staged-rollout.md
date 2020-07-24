@@ -10,16 +10,16 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 52684520aed8712aed40318f32a83194f7f86683
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2f547aa900c1b8dbea27eceff7ac7ebc86a83e33
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357846"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019823"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>使用分段推出移轉至雲端驗證 (預覽)
 
-藉由使用分段推出的方法，您可以避免轉換整個網域。  這可讓您選擇性地測試具有雲端驗證功能的使用者群組，例如 Azure 多重要素驗證（MFA）、條件式存取、洩漏認證的身分識別保護、身分識別管理等。  本文討論如何進行此切換。 不過，在開始分段推出前，如果下列一或多個條件成立，則您應思考其含意：
+分段推出可讓您選擇性地使用雲端驗證功能來測試使用者群組，例如 Azure 多重要素驗證（MFA）、條件式存取、洩漏認證的身分識別保護、身分識別管理等，然後再移至您的網域。  本文討論如何進行此切換。 不過，在開始分段推出前，如果下列一或多個條件成立，則您應思考其含意：
     
 -  您目前正在使用內部部署 Multi-Factor Authentication 伺服器。 
 -  您正在使用智慧卡進行驗證。 
@@ -45,7 +45,7 @@ ms.locfileid: "85357846"
 
 -   針對正在移轉至雲端驗證的使用者，您已為其設定了所需的所有適當租用戶商標和條件式存取原則。
 
--   如果打算使用 Azure Multi-Factor Authentication，建議使用[自助式密碼重設 (SSPR) 和 Multi-Factor Authentication 的聚合式註冊](../authentication/concept-registration-mfa-sspr-combined.md)，以供使用者一次註冊其驗證方法。
+-   如果您打算使用 Azure 多重要素驗證，建議您使用[結合註冊來進行自助式密碼重設（SSPR）和多重要素驗證](../authentication/concept-registration-mfa-sspr-combined.md)，讓您的使用者註冊其驗證方法一次。
 
 -   若要使用分段推出功能，則您必須是租用戶的全域管理員。
 
@@ -81,6 +81,8 @@ ms.locfileid: "85357846"
 
 
 - 在第一次新增安全性群組以進行分段推出時，會限制為 200 位使用者，以避免 UX 逾時。新增群組後，即可視需要將更多使用者直接新增至群組。
+
+- 當使用者在分段推出時，密碼到期原則會設定為90天，而且不會有自訂的選項。 
 
 
 ## <a name="get-started-with-staged-rollout"></a>開始使用分段推出
@@ -173,6 +175,7 @@ ms.locfileid: "85357846"
 
    >[!NOTE]
    >群組中的成員會自動啟用，以進行分段推出。 不支援巢狀和動態群組進行分段推出。
+   >新增群組時，群組中的使用者（最多200個新群組的使用者）將會更新為使用受控驗證 immidiatly。 編輯群組（新增或移除使用者）最多可能需要24小時的時間，變更才會生效。
 
 ## <a name="auditing"></a>稽核
 

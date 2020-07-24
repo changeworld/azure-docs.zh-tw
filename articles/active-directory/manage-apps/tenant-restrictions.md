@@ -2,25 +2,22 @@
 title: 使用租用戶限制來管理對 SaaS 應用程式的存取 - Azure AD
 description: 如何使用租用戶限制以根據使用者的 Azure AD 租用戶來管理可存取應用程式的使用者。
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: kenwith
-ms.reviewer: richagi
+ms.reviewer: hpsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd302791aa783f1a95d48f666366aa845fcaadbb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ae90a682ea2d1abb8159ec28ed02ed122494f512
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763018"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019245"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>使用租用戶限制來管理對 SaaS 雲端應用程式的存取
 
@@ -101,7 +98,7 @@ Azure Active Directory (Azure AD) 對此查問所提出的解決方案是稱為�
 
 2. 在左窗格中，選取 [Azure Active Directory]。 [Azure Active Directory 概觀] 頁面隨即顯示。
 
-3. 在 [其他功能] 標題中，選取 [租用戶限制]。
+3. 在 [總覽] 頁面上，選取 [**租使用者限制**]。
 
 如果將租用戶指定為 Restricted-Access-Context 租用戶，其管理員便可以使用此報表來查看因租用戶限制原則而遭封鎖的登入，包括所使用的身分識別及目標目錄識別碼。 如果設定限制的租用戶為登入的使用者租用戶或資源租用戶，則會包含登入。
 

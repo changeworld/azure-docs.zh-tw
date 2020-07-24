@@ -9,11 +9,12 @@ ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
 ms.custom: storage-accounts
-ms.openlocfilehash: 31b8200b63780388fb53db588c418951c500ac19
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 8077689bce988124da34428842df8fd2ef757bf0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84232912"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020180"
 ---
 # <a name="how-to-create-an-unmanaged-vm-image-from-an-azure-vm"></a>如何從 Azure VM 建立非受控 VM 映像
 
@@ -24,9 +25,9 @@ ms.locfileid: "84232912"
  
 
 ## <a name="generalize-the-vm"></a>一般化 VM 
-本節說明如何將 Windows 虛擬機器一般化以做為映像。 將 VM 一般化會移除您的所有個人帳戶資訊，以及其他項目，並準備電腦作為映像。 如需 Sysprep 的詳細資訊，請參閱[如何使用 Sysprep：簡介](https://technet.microsoft.com/library/bb457073.aspx) \(英文\)。
+本節說明如何將 Windows 虛擬機器一般化以做為映像。 將 VM 一般化會移除您的所有個人帳戶資訊，以及其他項目，並準備電腦作為映像。 如需 Sysprep 的詳細資訊，請參閱[如何使用 Sysprep：簡介](/previous-versions/windows/it-pro/windows-xp/bb457073(v=technet.10)) \(英文\)。
 
-請確定 Sysprep 支援電腦上執行的伺服器角色。 如需詳細資訊，請參閱 [Sysprep Support for Server Roles (伺服器角色的 Sysprep 支援)](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)
+請確定 Sysprep 支援電腦上執行的伺服器角色。 如需詳細資訊，請參閱 [Sysprep Support for Server Roles (伺服器角色的 Sysprep 支援)](/windows-hardware/manufacture/desktop/sysprep-support-for-server-roles)
 
 > [!IMPORTANT]
 > 如果您是第一次將 VHD 上傳至 Azure，請確定您已[準備好 VM](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 再執行 Sysprep。 
@@ -251,5 +252,3 @@ $vnet = Get-AzVirtualNetwork -ResourceGroupName $rgName -Name $vnetName
 
 ## <a name="next-steps"></a>後續步驟
 若要使用 Azure PowerShell 管理新的虛擬機器，請參閱 [使用 Azure Resource Manager 與 PowerShell 管理虛擬機器](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
-
-

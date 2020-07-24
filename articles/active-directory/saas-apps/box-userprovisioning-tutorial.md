@@ -12,14 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/26/2017
+ms.date: 07/20/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1397b4189a9c2c15e3878687ea8c67c1da7567f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0be9298e56cf2e5c816c45fcb7e84eb20c11ef4d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77058564"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87018174"
 ---
 # <a name="tutorial-configure-box-for-automatic-user-provisioning"></a>教學課程︰設定 Box 來自動佈建使用者
 
@@ -28,7 +29,7 @@ ms.locfileid: "77058564"
 > [!NOTE]
 > 本教學課程會說明建置在 Azure AD 使用者佈建服務之上的連接器。 如需此服務的用途、運作方式和常見問題等重要詳細資訊，請參閱[使用 Azure Active Directory 對 SaaS 應用程式自動佈建和取消佈建使用者](../app-provisioning/user-provisioning.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 若要設定 Azure AD 與 Box 整合，您需要下列項目：
 
@@ -37,6 +38,9 @@ ms.locfileid: "77058564"
 
 > [!NOTE]
 > 當您測試本教學課程中的步驟時，「不」** 建議您使用生產環境。
+
+> [!NOTE]
+> 應用程式必須先在 Box 應用程式中啟用。
 
 若要測試本教學課程中的步驟，請遵循下列建議：
 

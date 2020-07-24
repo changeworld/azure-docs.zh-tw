@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/06/2020
 ms.author: vinigam
-ms.openlocfilehash: 4fe981576e3f6e58b0886d9c0d2eb2915d8b7720
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 31d0de63185c56eafda8c42efbe44d8e7ffcaf1f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80396615"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87022458"
 ---
 # <a name="sample-queries-with-new-fields-in-the-traffic-analytics-schema-august-2019-schema-update"></a>流量分析架構中新欄位的範例查詢（2019年8月架構更新）
 
@@ -76,7 +76,7 @@ DestPublicIPsAggregated = iif(isnotempty(DestPublicIPs_s), DestPublicIPs_s, "N/A
 
 舊欄位使用的格式如下：
 
-<索引值0） >|<NSG_ RuleName>|<Flow Direction>|<Flow Status>|<FlowCount ProcessedByRule>
+`<Index value 0)>|<NSG_ RuleName>|<Flow Direction>|<Flow Status>|<FlowCount ProcessedByRule>`
 
 我們不會再透過網路安全性群組（NSG）來匯總資料。 在更新的架構中， **NSGList_s**只包含一個 NSG。 此外， **NSGRules**只包含一個規則。 我們已移除這裡和其他欄位中的複雜格式，如範例所示。
 
@@ -120,7 +120,7 @@ FlowCountProcessedByRule = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_
 
 根據條件而定，我們知道將會填入四個欄位中的哪一個。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 若要取得常見問題的解答，請參閱使用[分析常見問題](traffic-analytics-faq.md)。
 - 若要查看功能的詳細資料，請參閱使用[分析檔](traffic-analytics.md)。

@@ -15,12 +15,12 @@ ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97eef1f331d8e6965e378d6a76cfa7a0c50feb9a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d6c329b7de3e18989e7dbfa35aa6e9303c129654
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85317461"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019296"
 ---
 # <a name="unexpected-application-in-my-applications-list"></a>我的應用程式清單中有未預期的應用程式
 
@@ -28,7 +28,7 @@ ms.locfileid: "85317461"
 
 ## <a name="how-to-see-all-applications-in-your-tenant"></a>如何查看租用戶中的所有應用程式
 
-若要查看租用戶中的所有應用程式，您需要使用 [篩選]**** 控制項，以顯示 [所有應用程式]**** 清單下的 [所有應用程式]****。 請遵循下列步驟：
+若要查看租用戶中的所有應用程式，您需要使用 [篩選]**** 控制項，以顯示 [所有應用程式]**** 清單下的 [所有應用程式]****。 請遵循這些步驟：
 
 1.  開啟[**Azure 入口網站**](https://portal.azure.com/)，並以**全域管理員**或共同管理員身分登入 **。**
 
@@ -68,7 +68,7 @@ ms.locfileid: "85317461"
 
 6. 當您新增您使用 Visual Studio 的 [ASP.net 驗證方法](https://www.asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio#orgauthoptions)或[已連線服務](https://devblogs.microsoft.com/visualstudio/connecting-to-cloud-services/)所開發的應用程式時
 
-7. 當您使用 [Azure AD PowerShell 模組](/powershell/azure/install-adv2?view=azureadps-2.0)建立服務主體物件時
+7. 當您使用 [Azure AD PowerShell 模組](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)建立服務主體物件時
 
 8. 當您以系統管理員身分[同意應用程式](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview)使用您租用戶中的資料時
 
@@ -124,5 +124,5 @@ ms.locfileid: "85317461"
 
 6.  將 [使用者可以允許應用程式存取其資料]**** 切換開關設為 [否]****，並按一下 [儲存]**** 按鈕，以停用所有未來的使用者同意作業。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 [使用 Azure Active Directory 來管理應用程式](what-is-application-management.md)

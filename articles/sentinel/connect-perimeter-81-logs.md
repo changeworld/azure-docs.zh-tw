@@ -14,21 +14,25 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/21/2020
 ms.author: yelevin
-ms.openlocfilehash: a0eb234d9677c479d2cb404b065da408854168e3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c9a7a09d3085b1ec67bf29f142c6e7b205561ef
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85368369"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87021744"
 ---
 # <a name="connect-your-perimeter-81-activity-logs-to-azure-sentinel"></a>將您的周邊81活動記錄連接到 Azure Sentinel
+
+> [!IMPORTANT]
+> Azure Sentinel 中的周邊81資料連線器目前為公開預覽狀態。
+> 這項功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 本文說明如何將您的[周邊81活動記錄](https://www.perimeter81.com/)設備連線到 Azure Sentinel。 周邊81活動記錄連接器可讓您輕鬆地將周邊81資料帶入 Azure Sentinel，讓您可以在活頁簿中查看、使用它來建立自訂警示，並將其納入以改善調查。
 
 > [!NOTE]
 > 資料將會儲存在您執行 Azure Sentinel 之工作區的地理位置中。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 - 您必須擁有 [Azure Sentinel] 工作區的 [讀取] 和 [寫入] 許可權。
 
@@ -52,7 +56,7 @@ ms.locfileid: "85368369"
 
 這可能需要20分鐘的時間，直到您的記錄開始出現為止。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 在本檔中，您已瞭解如何將周邊81活動記錄連接到 Azure Sentinel。 若要充分利用此資料連線器內建的功能，請按一下 [資料連線器] 頁面上的 [**後續步驟**] 索引標籤。 您會在這裡找到現成的活頁簿和一些範例查詢，讓您可以開始尋找有用的資訊。
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8679f9a03fded546db68f058bca716ba053aa0fe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5884685f12c4697558a008287f446e52e5105d3b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73161204"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87016780"
 ---
 # <a name="atlassian-jira-and-confluence-admin-guide-for-azure-active-directory"></a>適用於 Azure Active Directory 的 Atlassian Jira 和 Confluence 管理員指南
 
@@ -54,7 +54,7 @@ Azure Active Directory (Azure AD) 單一登入 (SSO) 外掛程式可讓 Microsof
 * 從公司網路外部也可以使用 Jira 或 Confluence。
 * 外掛程式只能在內部部署版本的 Jira 和 Confluence 中運作。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 安裝外掛程式之前，請注意下列資訊：
 
@@ -147,7 +147,7 @@ Azure Active Directory (Azure AD) 單一登入 (SSO) 外掛程式可讓 Microsof
 
 * **您想要停用 WebSudo (停用安全的系統管理員工作階段)**：
 
-  * 針對 Jira，預設會啟用安全的系統管理員工作階段 (也就是確認密碼後才能存取管理功能)。 如果您想要在 Jira 執行個體中移除這個功能，在 jira-config.propertie 檔案中指定以下這一行：`ira.websudo.is.disabled = true`
+  * 針對 Jira，預設會啟用安全的系統管理員工作階段 (也就是確認密碼後才能存取管理功能)。 如果您想要在 Jira 執行個體中移除這個功能，在 jira-config.propertie 檔案中指定以下這一行：`jira.websudo.is.disabled = true`
 
   * 針對 Confluence，請遵循 [Confluence支援網站](https://confluence.atlassian.com/doc/configuring-secure-administrator-sessions-218269595.html)上的步驟。
 
@@ -181,7 +181,7 @@ Azure Active Directory (Azure AD) 單一登入 (SSO) 外掛程式可讓 Microsof
 
 ### <a name="does-the-plug-in-work-on-cloud-versions"></a>此外掛程式可否在雲端版本上運作？
 
-不會。 此外掛程式僅支援內部部署版本的 Jira 和 Confluence。
+不可以。 此外掛程式僅支援內部部署版本的 Jira 和 Confluence。
 
 ### <a name="which-versions-of-jira-and-confluence-does-the-plug-in-support"></a>此外掛程式支援哪些 Jira 和 Confluence 版本？
 
@@ -225,7 +225,7 @@ Azure Active Directory (Azure AD) 單一登入 (SSO) 外掛程式可讓 Microsof
 
 ### <a name="does-the-plug-in-work-with-idps-other-than-azure-ad"></a>此外掛程式是否可與 Azure AD 以外的 IdP 搭配運作？
 
-不會。 它只能與 Azure AD 搭配運作。
+不可以。 它只能與 Azure AD 搭配運作。
 
 ### <a name="what-version-of-saml-does-the-plug-in-work-with"></a>此外掛程式可以與哪個版本的 SAML 搭配運作？
 
@@ -233,12 +233,12 @@ Azure Active Directory (Azure AD) 單一登入 (SSO) 外掛程式可讓 Microsof
 
 ### <a name="does-the-plug-in-do-user-provisioning"></a>此外掛程式會進行使用者佈建嗎？
 
-不會。 此外掛程式只提供以 SAML 2.0 為基礎的 SSO。 必須在使用 SSO 登入之前，於應用程式中佈建使用者。
+不可以。 此外掛程式只提供以 SAML 2.0 為基礎的 SSO。 必須在使用 SSO 登入之前，於應用程式中佈建使用者。
 
 ### <a name="does-the-plug-in-support-cluster-versions-of-jira-and-confluence"></a>此外掛程式支援叢集版本的 Jira 和 Confluence 嗎？
 
-不會。 此外掛程式與內部部署版本的 Jira 和 Confluence 搭配使用。
+不可以。 此外掛程式與內部部署版本的 Jira 和 Confluence 搭配使用。
 
 ### <a name="does-the-plug-in-work-with-http-versions-of-jira-and-confluence"></a>此外掛程式能與 HTTP 版本的 Jira 和 Confluence 搭配使用嗎？
 
-不會。 此外掛程式只能與已啟用 HTTPS 的安裝搭配運作。
+不可以。 此外掛程式只能與已啟用 HTTPS 的安裝搭配運作。

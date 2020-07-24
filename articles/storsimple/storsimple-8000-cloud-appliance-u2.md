@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 01ce952ea774ba852c83d0d6aa3fe38d5dfd677e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 219e2b77a0f6f30307c43f006fcdd3828d3c8fbf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711845"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87021370"
 ---
 # <a name="deploy-and-manage-a-storsimple-cloud-appliance-in-azure-update-3-and-later"></a>部署和管理 Azure 中的 StorSimple 雲端設備 (Update 3 和更新版本)
 
@@ -84,7 +84,7 @@ StorSimple 雲端設備是純軟體的 StorSimple 版本，在 Microsoft Azure �
 * 針對雲端設備，[在 Azure 中設定虛擬網路](../virtual-network/manage-virtual-network.md#create-a-virtual-network)。 如果使用進階儲存體，您必須在支援進階儲存體的 Azure 區域中建立虛擬網路。 進階儲存體區域是對應到[依區域的 Azure 服務清單](https://azure.microsoft.com/regions/services/)中，磁碟儲存體資料列的區域。
 * 建議您使用 Azure 提供的預設 DNS 伺服器，而非指定您自己的 DNS 伺服器名稱。 如果您的 DNS 伺服器名稱無效，或者如果 DNS 伺服器無法正確解析 IP 位址，則建立雲端設備將會失敗。
 * 點對站及站對站都是選用的，但並非必要。 如有需要，您可以針對更進階的案例設定這些選項。
-* 您可以將 [Azure 虛擬機器](../virtual-machines/virtual-machines-windows-quick-create-portal.md) (主機伺服器) 建立在可使用由雲端設備公開之磁碟區的虛擬網路中。 這些伺服器必須符合下列需求：
+* 您可以將 [Azure 虛擬機器](../virtual-machines/windows/quick-create-portal.md) (主機伺服器) 建立在可使用由雲端設備公開之磁碟區的虛擬網路中。 這些伺服器必須符合下列需求：
 
   * 是已安裝 iSCSI 啟動器軟體的 Windows 或 Linux VM。
   * 正在與雲端設備相同的虛擬網路中執行。
@@ -195,7 +195,7 @@ StorSimple Snapshot Manager 軟體位於您的 Windows 主機上，而且可讓�
 
      ![選取您雲端應用裝置的虛擬機器](./media/storsimple-8000-cloud-appliance-u2/sca-vm.png)
 
-2. 移至 [設定 > 網路]****。 在右窗格中，您會看到雲端應用裝置的私人 IP 位址。 請將此記下。
+2. 移至 [設定 > 網路]****。 在右窗格中，您會看到雲端應用裝置的私人 IP 位址。 請記下此名稱。
 
     ![取得您雲端應用裝置的私人 IP 位址](./media/storsimple-8000-cloud-appliance-u2/sca-private-ip-vm-networking.png)
 
@@ -276,6 +276,6 @@ DR 的必要條件如下︰
 5. 如果 `nslookup` 失敗，網際網路連線失敗就會導致雲端設備無法註冊 StorSimple 裝置管理員服務。
 6. 對虛擬網路進行必要的變更，確保雲端設備能夠存取 Azure 網站，例如 _windows.net_。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 * 了解如何[使用 StorSimple 裝置管理員服務來管理雲端設備](storsimple-8000-manager-service-administration.md)。
 * 了解如何 [從備份組還原 StorSimple 磁碟區](storsimple-8000-restore-from-backup-set-u2.md)。

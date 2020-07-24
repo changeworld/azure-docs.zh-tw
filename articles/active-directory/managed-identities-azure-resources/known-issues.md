@@ -17,12 +17,12 @@ ms.date: 12/12/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 6f18c9fe43b0b714e5709b014c051520b3722138
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: d8aa6cc7894b13789fe196e32c401128572346bf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855131"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019058"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Azure 資源適用受控識別的常見問題集與已知問題
 
@@ -45,7 +45,7 @@ ms.locfileid: "85855131"
 
 ### <a name="do-managed-identities-have-a-backing-app-object"></a>受控識別是否有支援的應用程式物件？
 
-否。 受控識別和 Azure AD App 註冊在目錄中的情況並不相同。 
+不可以。 受控識別和 Azure AD App 註冊在目錄中的情況並不相同。 
 
 應用程式註冊有兩個元件：應用程式物件 + 服務主體物件。 適用于 Azure 資源的受控識別只有其中一個元件：服務主體物件。 
 
@@ -55,9 +55,12 @@ ms.locfileid: "85855131"
 
 否，目前沒有計劃讓 Azure 雲端服務支援 Azure 資源適用受控識別。
 
-### <a name="does-managed-identities-for-azure-resources-work-with-the-active-directory-authentication-library-adal-or-the-microsoft-authentication-library-msal"></a>Azure 資源適用受控識別是否可與 Active Directory 驗證程式庫 (ADAL) 或 Microsoft 驗證庫 (MSAL) 一起使用？
+### <a name="what-is-the-credential-associated-with-a-managed-identity-how-long-is-it-valid-and-how-often-is-it-rotated"></a>與受控識別相關聯的認證為何？ 它有效的時間長度，以及它輪替的頻率為何？
 
-否，Azure 資源適用受控識別尚未與 ADAL 或 MSAL 整合。 如需使用 REST 端點取得 Azure 資源適用受控識別權杖的詳細資訊，請參閱[如何在 Azure VM 上使用 Azure 資源適用受控識別取得存取權杖](how-to-use-vm-token.md)。
+> [!NOTE]
+> 受控識別的驗證方式是內部執行的詳細資料，如有變更恕不另行通知。
+
+受控識別會使用以憑證為基礎的驗證。 每個受控識別的認證都有90天的到期日，且會在45天后進行匯總。
 
 ### <a name="what-is-the-security-boundary-of-managed-identities-for-azure-resources"></a>什麼是 Azure 資源適用受控識別安全性界限？
 
@@ -73,7 +76,7 @@ ms.locfileid: "85855131"
 
 ### <a name="will-managed-identities-be-recreated-automatically-if-i-move-a-subscription-to-another-directory"></a>如果我將訂用帳戶移到另一個目錄，系統是否會自動重新建立受控識別？
 
-否。 如果您將訂用帳戶移到另一個目錄，則必須手動重新建立受控識別，並重新授與 Azure RBAC 角色指派。
+不可以。 如果您將訂用帳戶移到另一個目錄，則必須手動重新建立受控識別，並重新授與 Azure RBAC 角色指派。
 - 若為系統指派的受控識別：停用然後重新啟用。 
 - 若為使用者指派的受控識別：加以刪除、重新建立，然後重新連結至所需的資源 (例如虛擬機器)
 
@@ -133,7 +136,7 @@ az vm update -n <VM Name> -g <Resource Group> --remove tags.fixVM
  - 若為系統指派的受控識別：停用然後重新啟用。 
  - 若為使用者指派的受控識別：加以刪除、重新建立，然後重新連結至所需的資源 (例如虛擬機器)
 
-如需詳細資訊，請參閱將[Azure 訂用帳戶轉移至不同的 Azure AD 目錄（預覽）](../../role-based-access-control/transfer-subscription.md)。
+如需詳細資訊，請參閱[將 Azure 訂用帳戶轉移至不同的 Azure AD 目錄 (預覽)](../../role-based-access-control/transfer-subscription.md)。
 
 ### <a name="moving-a-user-assigned-managed-identity-to-a-different-resource-groupsubscription"></a>將使用者指派的受控識別移至不同的資源群組/訂用帳戶
 

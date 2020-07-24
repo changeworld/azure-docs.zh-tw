@@ -11,11 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: juliako
-ms.openlocfilehash: a3d4568dd237491f28ae2880bdd78dd236870c3f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1ff2bc6d4bb4f7b983787b287fbb27e1c33cc179
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74899833"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87022985"
 ---
 # <a name="create-a-job-input-from-an-https-url"></a>從 HTTPS URL 建立工作輸入
 
@@ -32,8 +33,8 @@ ms.locfileid: "74899833"
 
 ## <a name="job-error-codes"></a>作業錯誤碼
 
-請參閱[錯誤碼](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode) \(英文\)。
+請參閱[錯誤碼](/rest/api/media/jobs/get#joberrorcode) \(英文\)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 [從本機檔案建立工作輸入](job-input-from-local-file-how-to.md).

@@ -13,16 +13,16 @@ ms.topic: article
 ms.date: 03/26/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 9136fd702fad5c12a8ec97a68ff8a592a203d7d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6accd303ba11c4c1406c7a157fa8176972fc7a3a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80582205"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87022902"
 ---
 # <a name="manage-assets"></a>管理資產
 
-在 Azure 媒體服務中，[資產](https://docs.microsoft.com/rest/api/media/assets)是您在其中 
+在 Azure 媒體服務中，[資產](/rest/api/media/assets)是您在其中 
 
 * 將媒體檔案上傳到資產中，
 * 將即時串流內嵌並封存到資產中，
@@ -56,13 +56,13 @@ ms.locfileid: "80582205"
     ```
 2. 以讀寫權限取得 SAS URL，這將用來將數位檔案上傳到資產容器。
 
-    您可以使用媒體服務 API 來[列出資產容器 URL](https://docs.microsoft.com/rest/api/media/assets/listcontainersas)。
+    您可以使用媒體服務 API 來[列出資產容器 URL](/rest/api/media/assets/listcontainersas)。
 
-    **AssetContainerSas. listContainerSas**接受您設定的[ListContainerSasInput](https://docs.microsoft.com/rest/api/media/assets/listcontainersas#listcontainersasinput)參數 `expiryTime` 。 時間應設定為 < 24 小時。
+    **AssetContainerSas. listContainerSas**接受您設定的[ListContainerSasInput](/rest/api/media/assets/listcontainersas#listcontainersasinput)參數 `expiryTime` 。 時間應設定為 < 24 小時。
 
-    [ListContainerSasInput](https://docs.microsoft.com/rest/api/media/assets/listcontainersas#listcontainersasinput)會傳回多個 SAS url，因為每個儲存體帳戶都有兩個儲存體帳戶金鑰。 儲存體帳戶有兩個金鑰，因為它有助於容錯移轉和無縫輪替儲存體帳戶金鑰。 第一個 SAS URL 代表第一個儲存體帳戶金鑰，第二個 SAS URL 代表第二個金鑰。
+    [ListContainerSasInput](/rest/api/media/assets/listcontainersas#listcontainersasinput)會傳回多個 SAS url，因為每個儲存體帳戶都有兩個儲存體帳戶金鑰。 儲存體帳戶有兩個金鑰，因為它有助於容錯移轉和無縫輪替儲存體帳戶金鑰。 第一個 SAS URL 代表第一個儲存體帳戶金鑰，第二個 SAS URL 代表第二個金鑰。
 3. 使用 Azure 儲存體 Api 或 Sdk （例如[儲存體 REST API](../../storage/common/storage-rest-api-auth.md)或[.net SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)）將檔案上傳到資產容器中。
-4. 使用媒體服務 v3 API 建立可處理「輸入」資產的轉換和作業。 如需詳細資訊，請參閱[轉換和作業](transform-concept.md)。
+4. 使用媒體服務 v3 API 建立可處理「輸入」資產的轉換和作業。 如需詳細資訊，請參閱[轉換和作業](./transforms-jobs-concept.md)。
 5. 串流來自「輸出」資產的內容。
 
 ### <a name="create-a-new-asset"></a>建立新的資產
@@ -76,7 +76,7 @@ ms.locfileid: "80582205"
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Media/mediaServices/{amsAccountName}/assets/{assetName}?api-version=2018-07-01
 ```
 
-如需 REST 範例，請參閱[使用 REST 建立資產](https://docs.microsoft.com/rest/api/media/assets/createorupdate#examples)。
+如需 REST 範例，請參閱[使用 REST 建立資產](/rest/api/media/assets/createorupdate#examples)。
 
 此範例示範如何建立**要求**本文，您可以在其中指定描述、容器名稱、儲存體帳戶和其他有用的資訊。
 
@@ -107,9 +107,9 @@ curl -X PUT \
 
 ## <a name="ingest-and-archive-live-streams-into-an-asset"></a>將即時資料流內嵌並封存到資產中
 
-在媒體服務中，[即時輸出](https://docs.microsoft.com/rest/api/media/liveoutputs)物件就像是數位錄影機，它會攔截您的即時串流，並將其記錄到您媒體服務帳戶中的資產。 記錄的內容會保存到[資產](https://docs.microsoft.com/rest/api/media/assets)資源所定義的容器中。
+在媒體服務中，[即時輸出](/rest/api/media/liveoutputs)物件就像是數位錄影機，它會攔截您的即時串流，並將其記錄到您媒體服務帳戶中的資產。 記錄的內容會保存到[資產](/rest/api/media/assets)資源所定義的容器中。
 
-如需詳細資訊，請參閱：
+如需詳細資訊，請參閱
 
 * [使用雲端 DVR](live-event-cloud-dvr.md)
 * [即時串流教學課程](stream-live-tutorial-with-api.md)
@@ -118,7 +118,7 @@ curl -X PUT \
 
 在媒體服務中，處理您的影片時（例如，編碼或分析），您必須建立輸出[資產](assets-concept.md)來儲存[作業](transforms-jobs-concept.md)的結果。
 
-如需詳細資訊，請參閱：
+如需詳細資訊，請參閱
 
 * [編碼影片](encoding-concept.md)
 * [從本機檔案建立作業輸入](job-input-from-local-file-how-to.md)
@@ -127,9 +127,9 @@ curl -X PUT \
 
 若要發佈資產以進行串流處理，您必須建立[串流定位器](streaming-locators-concept.md)。 串流定位器必須知道您想要發佈的資產名稱。 
 
-如需詳細資訊，請參閱：
+如需詳細資訊，請參閱
 
-[教學課程：使用媒體服務 v3 上傳、編碼和串流影片](stream-files-tutorial-with-api.md)
+[教學課程：使用媒體服務 v3 上傳、編碼和串流處理影片](stream-files-tutorial-with-api.md)
 
 ## <a name="download-results-of-a-job-from-an-output-asset"></a>從輸出資產下載作業的結果
 
@@ -141,10 +141,10 @@ curl -X PUT \
 
 請參閱[媒體服務實體的篩選、排序、分頁](entities-overview.md)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 查看完整的程式碼範例，示範如何上傳、編碼、分析、即時串流和隨選： 
 
-* [JAVA](https://docs.microsoft.com/samples/azure-samples/media-services-v3-java/azure-media-services-v3-samples-using-java/)、 
-* [.Net](https://docs.microsoft.com/samples/azure-samples/media-services-v3-dotnet/azure-media-services-v3-samples-using-net/)、 
-* [REST](https://docs.microsoft.com/samples/azure-samples/media-services-v3-rest-postman/azure-media-services-postman-collection/)。
+* [JAVA](/samples/azure-samples/media-services-v3-java/azure-media-services-v3-samples-using-java/)、 
+* [.Net](/samples/azure-samples/media-services-v3-dotnet/azure-media-services-v3-samples-using-net/)、 
+* [REST](/samples/azure-samples/media-services-v3-rest-postman/azure-media-services-postman-collection/)。

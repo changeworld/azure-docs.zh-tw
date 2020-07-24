@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 01/24/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1ed86db85de8d4665c9eecfbde96b0909b12362
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e6ca5ec32e1f88572812b19cf08d4c6f9dc70af6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85608308"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87018565"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage-via-a-sas-credential"></a>教學課程：使用 Windows VM 系統指派的受控識別，透過 SAS 認證來存取 Azure 儲存體
 
@@ -83,7 +83,7 @@ Azure 儲存體原生並不支援 Azure AD 驗證。  不過，您可以使用�
 
 其餘課程要從稍早建立的 VM 繼續進行。
 
-在這部分的課程中，需要用到 Azure Resource Manager PowerShell Cmdlet。  如果您沒有安裝它，請[下載最新版本](https://docs.microsoft.com/powershell/azure/overview)之後再繼續。
+在這部分的課程中，需要用到 Azure Resource Manager PowerShell Cmdlet。  如果您沒有安裝它，請[下載最新版本](https://docs.microsoft.com/powershell/azure/)之後再繼續。
 
 1. 在 Azure 入口網站中，瀏覽至 [虛擬機器]，移至您的 Windows 虛擬機器，然後在 [概觀] 頁面中，按一下頂端的 [連線]。
 2. 輸入您建立 Windows VM 時新增的**使用者名稱**和**密碼**。 

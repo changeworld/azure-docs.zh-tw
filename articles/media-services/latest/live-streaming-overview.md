@@ -13,11 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2020
 ms.author: juliako
-ms.openlocfilehash: 23ee7ba7a5456916eb307e21aa2074924614cb4b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd592469a4435504f1eecf1f24e50faf23fad17a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84418138"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87022968"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>使用 Azure 媒體服務 v3 進行即時串流
 
@@ -34,7 +35,7 @@ Azure 媒體服務可讓您在 Azure 雲端上將實況活動傳遞給客戶。 
 本文提供使用媒體服務的即時串流總覽和指導方針，以及其他相關文章的連結。
  
 > [!NOTE]
-> 您可以使用[Azure 入口網站](https://portal.azure.com/)來管理 V3[即時事件](live-events-outputs-concept.md)、查看 v3[資產](assets-concept.md)、取得存取 api 的相關資訊。 針對所有其他管理工作 (例如，轉換和作業)，請使用 [REST API](https://docs.microsoft.com/rest/api/media/)、[CLI](https://aka.ms/ams-v3-cli-ref) 或其中一個支援的 [SDK](media-services-apis-overview.md#sdks)。
+> 您可以使用[Azure 入口網站](https://portal.azure.com/)來管理 V3[即時事件](live-events-outputs-concept.md)、查看 v3[資產](assets-concept.md)、取得存取 api 的相關資訊。 針對所有其他管理工作 (例如，轉換和作業)，請使用 [REST API](/rest/api/media/)、[CLI](https://aka.ms/ams-v3-cli-ref) 或其中一個支援的 [SDK](media-services-apis-overview.md#sdks)。
 
 ## <a name="dynamic-packaging-and-delivery"></a>動態封裝和傳遞
 
@@ -53,7 +54,7 @@ Azure 媒體服務可讓您在 Azure 雲端上將實況活動傳遞給客戶。 
 
 ## <a name="live-event-types"></a>即時事件類型
 
-[實況活動](https://docs.microsoft.com/rest/api/media/liveevents)會負責內嵌和處理即時影片摘要。 即時事件可設定為*傳遞* (內部部署即時編碼器會傳送多重位元速率串流) 或*即時編碼* (內部部署即時編碼器會傳送單一位元速率串流)。 如需媒體服務 v3 中即時串流的詳細資訊，請參閱[即時事件和即時輸出](live-events-outputs-concept.md)。
+[實況活動](/rest/api/media/liveevents)會負責內嵌和處理即時影片摘要。 即時事件可設定為*傳遞* (內部部署即時編碼器會傳送多重位元速率串流) 或*即時編碼* (內部部署即時編碼器會傳送單一位元速率串流)。 如需媒體服務 v3 中即時串流的詳細資訊，請參閱[即時事件和即時輸出](live-events-outputs-concept.md)。
 
 ### <a name="pass-through"></a>傳遞
 
@@ -107,7 +108,7 @@ Azure 媒體服務可讓您在 Azure 雲端上將實況活動傳遞給客戶。 
     * 停止即時事件。 實況活動一旦停止，就不會產生任何費用。 當您需要重新啟動它時，它會具有相同的內嵌 URL，因此您不需要重新設定編碼器。
     * 除非您想要繼續將即時事件封存為隨選串流，否則您可以停止串流端點。 如果即時事件處於 [已停止] 狀態，則不會產生任何費用。
 
-即時輸出所封存的資產，會在即時輸出刪除時自動成為隨選資產。 您必須先刪除所有即時輸出，才能停止即時事件。 您可以使用選擇性的旗標[removeOutputsOnStop](https://docs.microsoft.com/rest/api/media/liveevents/stop#request-body) ，在停止時自動移除即時輸出。 
+即時輸出所封存的資產，會在即時輸出刪除時自動成為隨選資產。 您必須先刪除所有即時輸出，才能停止即時事件。 您可以使用選擇性的旗標[removeOutputsOnStop](/rest/api/media/liveevents/stop#request-body) ，在停止時自動移除即時輸出。 
 
 > [!TIP]
 > 請參閱[即時串流教學](stream-live-tutorial-with-api.md)課程，這篇文章會檢查執行上述步驟的程式碼。
@@ -117,7 +118,7 @@ Azure 媒體服務可讓您在 Azure 雲端上將實況活動傳遞給客戶。 
 - [建議的即時編碼器](recommended-on-premises-live-encoders.md)
 - [使用雲端 DVR](live-event-cloud-dvr.md)
 - [即時事件種類功能比較](live-event-types-comparison.md)
-- [狀態與計費](live-event-states-billing.md)
+- [狀態和計費](live-event-states-billing.md)
 - [延遲](live-event-latency.md)
 
 ## <a name="frequently-asked-questions"></a>常見問題集

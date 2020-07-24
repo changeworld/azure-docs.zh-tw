@@ -14,11 +14,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0cd2de0929b22dda6e566316c4eda966d8d62e24
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d2ccf986f81ec3abed54c85640b8afb1c5cf7172
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84732645"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015879"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>如何以系統管理員身分接管 Azure Active Directory 中非受控目錄
 
@@ -143,12 +144,12 @@ Cmdlet | 使用方式
    ```powershell
    Get-MsolDomainVerificationDns –DomainName *your_domain_name* –Mode DnsTxtRecord
    ```
-    例如：
+    例如:
    ```
    Get-MsolDomainVerificationDns –DomainName contoso.com –Mode DnsTxtRecord
    ```
 
-4. 複製從此命令傳回的值 (挑戰)。 例如：
+4. 複製從此命令傳回的值 (挑戰)。 例如:
    ```powershell
    MS=32DD01B82C05D27151EA9AE93C5890787F0E65D9
    ```
@@ -159,7 +160,7 @@ Cmdlet | 使用方式
    Confirm-MsolDomain –DomainName *your_domain_name* –ForceTakeover Force
    ```
   
-   例如：
+   例如:
   
    ```powershell
    Confirm-MsolDomain –DomainName contoso.com –ForceTakeover Force
@@ -170,8 +171,8 @@ Cmdlet | 使用方式
 ## <a name="next-steps"></a>後續步驟
 
 * [將自訂網域名稱新增到 Azure AD](../fundamentals/add-custom-domain.md)
-* [如何安裝和設定 Azure PowerShell](/powershell/azure/overview)
-* [Azure PowerShell](/powershell/azure/overview)
+* [如何安裝和設定 Azure PowerShell](/powershell/azure/)
+* [Azure PowerShell](/powershell/azure/)
 * [Azure Cmdlet 參考](/powershell/azure/get-started-azureps)
 * [Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)
 

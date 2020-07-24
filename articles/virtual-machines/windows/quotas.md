@@ -8,22 +8,23 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/31/2018
 ms.author: cynthn
-ms.openlocfilehash: 6640640248854d91078203012a01d8865845702a
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: d7ba5f15b30e5515c9b5d8c5104f65d411b220a2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680929"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020265"
 ---
 # <a name="virtual-machine-vcpu-quotas"></a>虛擬機器 vCPU 配額
 
 虛擬機器和虛擬機器擴展集的 vCPU 配額依每個地區的每個訂用帳戶分兩層排列。 第一層是「區域 vCPU 總計」，第二層是不同的 VM 大小系列核心，例如「D 系列 vCPU」。 在每次部署新的 VM 時，VM 的 vCPU 皆不得超過 VM 大小系列的 vCPU 配額或區域 vCPU 總配額。 如果超過這些配額，將不允許 VM 部署。 另外還有區域中虛擬機器整體數目的配額。 在 [Azure 入口網站](https://portal.azure.com) [訂用帳戶] 頁面的 [使用量 + 配額] 區段中可以看到這些配額的詳細資料，或者您可以使用 PowerShell 查詢這些值。
 
 > [!NOTE]
-> 配額是根據已配置和已解除配置的核心總數來計算。 如果您需要額外的核心，[請要求增加配額](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request)，或刪除不再使用的虛擬機器。 
+> 配額是根據已配置和已解除配置的核心總數來計算。 如果您需要額外的核心，[請要求增加配額](../../azure-portal/supportability/resource-manager-core-quotas-request.md)，或刪除不再使用的虛擬機器。 
  
 ## <a name="check-usage"></a>檢查使用量
 
-您可以使用 [Get-AzVMUsage](https://docs.microsoft.com/powershell/module/az.compute/get-azvmusage) Cmdlet 來檢查您的配額使用量。
+您可以使用 [Get-AzVMUsage](/powershell/module/az.compute/get-azvmusage) Cmdlet 來檢查您的配額使用量。
 
 ```azurepowershell-interactive
 Get-AzVMUsage -Location "East US"
@@ -75,8 +76,8 @@ Premium Storage Managed Disks                1 10000 Count
 ## <a name="reserved-vm-instances"></a>保留的 VM 執行個體
 保留的 VM 執行個體 (僅限於單一訂用帳戶、沒有 VM 大小彈性) 將為 vCPU 配額新增新的層面。 這些值描述在訂用帳戶中必須是可部署的指定大小執行個體數目。 它們是配額系統中的預留位置，以確保該配額會保留起來，使保留的 VM 執行個體可於訂用帳戶中部署。 例如，如果特定訂用帳戶有 10 個 Standard_D1 保留的 VM 執行個體，則 Standard_D1 保留的 VM 執行個體使用量限制將為 10。 這可讓 Azure 確保「區域 vCPU 總計」配額中永遠至少有 10 個 vCPU 可用於 Standard_D1 執行個體，「標準 D 系列 vCPU」配額中有至少 10 個 vCPU 可用於 Standard_D1 執行個體。
 
-如果需要購買單一訂用帳戶 RI 來增加配額，您可以在訂用帳戶中[要求增加配額](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request)。
+如果需要購買單一訂用帳戶 RI 來增加配額，您可以在訂用帳戶中[要求增加配額](../../azure-portal/supportability/resource-manager-core-quotas-request.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
-如需有關帳單和配額的詳細資訊，請參閱 [Azure 訂用帳戶和服務限制、配額與限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits?toc=/azure/billing/TOC.json)。
+如需有關帳單和配額的詳細資訊，請參閱 [Azure 訂用帳戶和服務限制、配額與限制](../../azure-resource-manager/management/azure-subscription-service-limits.md?toc=/azure/billing/TOC.json)。

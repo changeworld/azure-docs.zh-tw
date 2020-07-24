@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: amverma
-ms.openlocfilehash: 10549abfbdacf1fc1ae6b99f4cab20a290c32a2d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 723419b97dc024a700d860dd3fe61ff48073a587
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67707814"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019993"
 ---
 # <a name="optimization-for-linux"></a>針對 Linux 進行最佳化
 
@@ -73,8 +73,8 @@ service cpupower stop
 sudo systemctl disable cpupower
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 深入瞭解如何[啟用](enable-infiniband.md)「未充分運用」和「優化 OS 映射」。
 
-* 深入瞭解 Azure 上的[HPC](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/) 。
+* 深入瞭解 Azure 上的[HPC](/azure/architecture/topics/high-performance-computing/) 。

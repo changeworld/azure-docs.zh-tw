@@ -1,5 +1,5 @@
 ---
-title: 教學課程：在 Azure Active Directory 中設定 SuccessFactors 輸入布建 |Microsoft Docs
+title: 教學課程：設定 AD 和 Azure AD 中的 SuccessFactors 輸入布建 |Microsoft Docs
 description: 瞭解如何設定來自 SuccessFactors 的輸入布建
 services: active-directory
 author: cmmdesai
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/05/2019
 ms.author: chmutali
-ms.openlocfilehash: d9317a68c8967fbe0728e8c47e59dd33367c6163
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 77b4336fd9430b523f4f9fa288b7451117f7e0c5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84702170"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87016967"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-active-directory-user-provisioning-preview"></a>教學課程：將 SAP SuccessFactors 設定為 Active Directory 使用者布建（預覽）
 本教學課程的目的是要示範將使用者從 SuccessFactors 員工中心布建到 Active Directory （AD）和 Azure AD 的必要步驟，並將電子郵件地址的選擇性回寫至 SuccessFactors。 這項整合處於公開預覽狀態，支援從 SuccessFactors Employee Central 抓取超過70個以上的[使用者屬性](../app-provisioning/sap-successfactors-attribute-reference.md)。
@@ -27,7 +28,7 @@ ms.locfileid: "84702170"
 >如果您想要從 SuccessFactors 布建的使用者需要內部部署 AD 帳戶，以及選擇性的 Azure AD 帳戶，請使用本教學課程。 如果來自 SuccessFactors 的使用者只需要 Azure AD 帳戶（僅限雲端的使用者），請參閱[設定 SAP SuccessFactors](sap-successfactors-inbound-provisioning-cloud-only-tutorial.md)的教學課程，以 Azure AD 使用者布建。 
 
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 [Azure Active Directory 的使用者](../app-provisioning/user-provisioning.md)布建服務會與[SuccessFactors 員工中心](https://www.successfactors.com/products-services/core-hr-payroll/employee-central.html)整合，以便管理使用者的身分識別生命週期。 
 
@@ -356,7 +357,7 @@ SuccessFactors 布建應用程式設定完成之後，您就可以在 Azure 入�
    > [!div class="mx-imgBorder"]
    > ![布建進度列](./media/sap-successfactors-inbound-provisioning/prov-progress-bar-stats.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * [深入瞭解輸入布建的支援 SuccessFactors 屬性](../app-provisioning/sap-successfactors-attribute-reference.md)
 * [瞭解如何設定電子郵件回寫至 SuccessFactors](sap-successfactors-writeback-tutorial.md)

@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/11/2019
-ms.openlocfilehash: 63c54369ecda6a4f242ca76730c48a414a9d4724
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 33d1e73523ca85a21c032729b6537ee3297ea23e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86040872"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020826"
 ---
 # <a name="azure-machine-learning-studio-classic-integration-in-stream-analytics-preview"></a>串流分析中的 Azure Machine Learning Studio (傳統版) 整合 (預覽)
 串流分析支援對外呼叫 Azure Machine Learning Studio (傳統版) 端點的使用者定義函式。 [串流分析 REST API 程式庫](https://msdn.microsoft.com/library/azure/dn835031.aspx)中會詳細說明此功能的 REST API 支援。 本文提供要在串流分析中成功實作這項功能所需的補充資訊。 您也可以在 [這裡](stream-analytics-machine-learning-integration-tutorial.md)取得已發佈的教學課程。
@@ -28,7 +28,7 @@ Microsoft Azure Machine Learning Studio (傳統版) 提供共同作業的拖放�
 每個端點都有適用於批次執行和同步執行的 API。 串流分析使用同步執行。 該特定服務在 Azure Machine Learning Studio (傳統版) 中的名稱為[要求/回應服務](../machine-learning/studio/consume-web-services.md)。
 
 ## <a name="machine-learning-resources-needed-for-stream-analytics-jobs"></a>串流分析作業所需的機器學習服務資源
-為了處理串流分析作業，必須要有要求/回應端點、 [apikey](../machine-learning/machine-learning-connect-to-azure-machine-learning-web-service.md)和 swagger 定義才能順利執行。 串流分析有其他端點可建構 swagger 端點的 URL、查閱介面，以及將預設 UDF 定義傳回給使用者。
+為了處理串流分析作業，必須要有要求/回應端點、 [apikey](https://docs.microsoft.com/azure/machine-learning/studio/consume-web-services)和 swagger 定義才能順利執行。 串流分析有其他端點可建構 swagger 端點的 URL、查閱介面，以及將預設 UDF 定義傳回給使用者。
 
 ## <a name="configure-a-stream-analytics-and-machine-learning-udf-via-rest-api"></a>透過 REST API 設定串流分析和機器學習服務 UDF
 透過使用 REST API，您可以設定作業來呼叫 Azure 機器語言函式。 步驟如下：
@@ -68,7 +68,7 @@ Microsoft Azure Machine Learning Studio (傳統版) 提供共同作業的拖放�
 ```
 
 ## <a name="call-retrievedefaultdefinition-endpoint-for-default-udf"></a>呼叫預設 UDF 的 RetrieveDefaultDefinition 端點
-一旦建立好基本架構 UDF，就需要 UDF 的完整定義。 RetrieveDefaultDefinition 端點可協助您取得繫結至 Azure Machine Learning Studio (傳統版) 端點之純量函式的預設定義。 下列內容會要求您取得繫結至 Azure Machine Learning 端點之純量函式的預設 UDF 定義。 因為已在 PUT 要求期間提供，因此它不會指定實際的端點。 串流分析會呼叫要求中提供的端點 (如果已明確提供)。 否則，它會使用原本參考的端點。 UDF 在這邊會採用單一字串參數 (一個句子)，並傳回指出該句子的「情緒」標籤的單一類型字串輸出。
+一旦建立好基本架構 UDF，就需要 UDF 的完整定義。 RetrieveDefaultDefinition 端點可協助您取得繫結至 Azure Machine Learning Studio (傳統版) 端點之純量函式的預設定義。 下列內容會要求您取得繫結至 Azure Machine Learning 端點之純量函式的預設 UDF 定義。 它不會指定實際的端點，因為它在 PUT 要求期間已提供。 串流分析會呼叫要求中提供的端點 (如果已明確提供)。 否則，它會使用原本參考的端點。 UDF 在這邊會採用單一字串參數 (一個句子)，並傳回指出該句子的「情緒」標籤的單一類型字串輸出。
 
 ```
 POST : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.StreamAnalytics/streamingjobs/<streamingjobName>/functions/<udfName>/RetrieveDefaultDefinition?api-version=<apiVersion>

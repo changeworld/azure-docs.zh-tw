@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
-ms.openlocfilehash: c230e1e950bb924631032940642a6202acf4ade8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5df104efb65152f5bcb71a86911e694611d8a742
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80382931"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87022866"
 ---
 # <a name="monitor-media-services-metrics"></a>監視媒體服務計量
 
@@ -28,7 +28,7 @@ Azure 監視器提供數種與計量互動的方式，包括在入口網站中�
 
 ## <a name="prerequisites"></a>必要條件
 
-- [建立媒體服務帳戶](create-account-cli-how-to.md)
+- [建立媒體服務帳戶](./create-account-howto.md)
 - 審查[監視器媒體服務計量和診斷記錄](media-services-metrics-diagnostic-logs.md)
 
 ## <a name="view-metrics-in-azure-portal"></a>查看 Azure 入口網站中的計量
@@ -72,6 +72,6 @@ az monitor metrics list --resource \
 * [Azure 監視器計量](../../azure-monitor/platform/data-platform.md)
 * [使用 Azure 監視器建立、查看及管理計量警示](../../azure-monitor/platform/alerts-metric.md)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 [診斷記錄](media-services-diagnostic-logs-howto.md)

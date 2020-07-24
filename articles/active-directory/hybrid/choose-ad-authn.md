@@ -10,11 +10,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 3abd93e1699a701140e8b3558dcdf0161110ff6f
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: d02800d39e918478243429971c0d48c4d0c59148
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758124"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020095"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>針對 Azure Active Directory 混合式身分識別解決方案選擇正確的驗證方法
 
@@ -29,7 +30,7 @@ ms.locfileid: "83758124"
 身分識別是 IT 安全性的新控制平面，因此驗證就能在組織存取新的雲端世界時提供防護。 組織需要能加強其安全性，並保護其雲端應用程式免於入侵者侵襲的身分識別控制平面。
 
 > [!NOTE]
-> 變更您的驗證方法需要規劃及測試，而且可能造成停機。 [分段推出](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-staged-rollout)是測試和逐步從同盟遷移至雲端驗證的絕佳方式。
+> 變更您的驗證方法需要規劃及測試，而且可能造成停機。 [分段推出](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-staged-rollout)是測試使用者從同盟遷移至雲端驗證的絕佳方式。
 
 ### <a name="out-of-scope"></a>超出範圍
 目前不含內部部署目錄使用量的組織不在本文的適用範圍內。 這類企業通常只需在雲端建立身分識別，不需要混合式身分識別解決方案。 僅限雲端的身分識別只存在雲端，不會與對應的內部部署身分識別相關聯。

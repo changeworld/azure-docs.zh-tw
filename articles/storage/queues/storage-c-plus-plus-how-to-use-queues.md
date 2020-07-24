@@ -3,24 +3,24 @@ title: 如何使用佇列儲存體（c + +）-Azure 儲存體
 description: 瞭解如何在 Azure 中使用佇列儲存體服務。 範例是以 C++ 撰寫的。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 05/11/2017
+ms.date: 07/16/2020
 ms.service: storage
 ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
-ms.openlocfilehash: 0ae099e74db3137be49d59d01c83807108bf370f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a4f8b99be564779b350bff2ab5b37f3c7ccc6f2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84809265"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020964"
 ---
 # <a name="how-to-use-queue-storage-from-c"></a>如何使用 C++ 的佇列儲存體
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
 
 [!INCLUDE [storage-try-azure-tools-queues](../../../includes/storage-try-azure-tools-queues.md)]
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 本指南將示範如何使用 Azure 佇列儲存體服務執行一般案例。 這些範例均以 C++ 撰寫，並使用 [Azure Storage Client Library for C++](https://github.com/Azure/azure-storage-cpp/blob/master/README.md)。 所涵蓋的案例包括「插入」****、「查看」****、「取得」**** 和「刪除」**** 佇列訊息，以及「建立和刪除佇列」****。
 
 > [!NOTE]
@@ -40,7 +40,7 @@ ms.locfileid: "84809265"
 若要安裝 Azure Storage Client Library for C++，您可以使用下列方法：
 
 * **Linux：** 請遵循[Azure 儲存體 Client Library For c + + 讀我檔案：在 Linux 上消費者入門](https://github.com/Azure/azure-storage-cpp#getting-started-on-linux)頁面中提供的指示。
-* **Windows：** 在 Windows 上，請使用[vcpkg](https://github.com/microsoft/vcpkg)做為相依性管理員。 請依照[快速入門](https://github.com/microsoft/vcpkg#quick-start)來初始化 vcpkg。 然後，使用下列命令安裝二進位檔：
+* **Windows：** 在 Windows 上，請使用[vcpkg](https://github.com/microsoft/vcpkg)做為相依性管理員。 遵循[快速入門](https://github.com/microsoft/vcpkg#quick-start)來初始化 vcpkg。 然後，使用下列命令安裝二進位檔：
 
 ```powershell
 .\vcpkg.exe install azure-storage-cpp
@@ -49,7 +49,7 @@ ms.locfileid: "84809265"
 您可以在[自述](https://github.com/Azure/azure-storage-cpp#download--install)檔中找到如何建立原始程式碼並匯出至 NuGet 的指南。
 
 ## <a name="configure-your-application-to-access-queue-storage"></a>設定您的應用程式以存取佇列儲存體
-在您要使用 Azure 儲存體 API 來存取佇列的 C++ 檔案頂端，加入下列 include 陳述式：  
+在您要使用 Azure 儲存體 API 來存取佇列的 C++ 檔案頂端，加入下列 include 陳述式：
 
 ```cpp
 #include <was/storage_account.h>
@@ -57,21 +57,21 @@ ms.locfileid: "84809265"
 ```
 
 ## <a name="set-up-an-azure-storage-connection-string"></a>設定 Azure 儲存體連接字串
-Azure 儲存體用戶端會使用儲存體連接字串來儲存存取資料管理服務時所用的端點與認證。 在用戶端應用程式中執行時，您必須以下列格式提供儲存體連接字串 (其中的 *AccountName* 和 *AccountKey* 值要使用您儲存體帳戶的名稱，以及在 [Azure 入口網站](https://portal.azure.com)中針對該儲存體帳戶而列出的儲存體存取金鑰)。 如需有關儲存體帳戶和存取金鑰的資訊，請參閱[關於 Azure 儲存體帳戶](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)。 本範例將示範如何宣告靜態欄位來存放連接字串：  
+Azure 儲存體用戶端會使用儲存體連接字串來儲存存取資料管理服務時所用的端點與認證。 在用戶端應用程式中執行時，您必須以下列格式提供儲存體連接字串，並使用您的儲存體帳戶名稱，以及[Azure 入口網站](https://portal.azure.com)中針對*AccountName*和*AccountKey*值列出之儲存體帳戶的儲存體存取金鑰。 如需有關儲存體帳戶和存取金鑰的資訊，請參閱[關於 Azure 儲存體帳戶](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)。 本範例將示範如何宣告靜態欄位來存放連接字串：
 
 ```cpp
 // Define the connection-string with your values.
 const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=https;AccountName=your_storage_account;AccountKey=your_storage_account_key"));
 ```
 
-若要在本機 Windows 電腦中測試您的應用程式，可以使用隨 [Azure SDK](https://azure.microsoft.com/downloads/) 一起安裝的 Microsoft Azure [儲存體模擬器](../common/storage-use-emulator.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)。 儲存體模擬器是一個公用程式，可在本機開發電腦上模擬 Azure 提供的 Blob、佇列和表格服務。 下列範例示範如何宣告靜態欄位以便將連接字串存放到本機儲存體模擬器中：  
+若要在本機 Windows 電腦中測試您的應用程式，您可以使用[Azurite 儲存體模擬器](../common/storage-use-azurite.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)。 Azurite 是一種公用程式，可在您的本機開發電腦上模擬 Azure 中可用的 Blob 和佇列服務。 下列範例示範如何宣告靜態欄位以便將連接字串存放到本機儲存體模擬器中：
 
 ```cpp
-// Define the connection-string with Azure Storage Emulator.
+// Define the connection-string with Azurite.
 const utility::string_t storage_connection_string(U("UseDevelopmentStorage=true;"));  
 ```
 
-若要啟動 Azure 儲存體模擬器，選取 [開始]**** 按鈕或按下 [Windows]**** 鍵。 開始輸入 **Azure 儲存體模擬器**，然後從應用程式清單選取 [Microsoft Azure 儲存體模擬器]****。
+若要開始 Azurite，請參閱[使用 Azurite 模擬器進行本機 Azure 儲存體開發](../common/storage-use-azurite.md)。
 
 下列範例假設您已經使用這兩個方法之一來取得儲存體連接字串。
 
@@ -260,7 +260,7 @@ azure::storage::cloud_queue queue = queue_client.get_queue_reference(U("my-sampl
 queue.delete_queue_if_exists();  
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 了解佇列儲存體的基礎概念之後，請依照下列連結深入了解 Azure 儲存體。
 
 * [如何使用 C++ 的 Blob 儲存體](../blobs/storage-c-plus-plus-how-to-use-blobs.md)

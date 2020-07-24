@@ -11,12 +11,12 @@ ms.date: 06/11/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2a41dcf9c224e9e4a9a280078432e0b57e16c2a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7992563bdfb318867e963ed4f371998bafbbbcdb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85359410"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019908"
 ---
 # <a name="azure-ad-connect-group-writeback"></a>Azure AD Connect 群組回寫
 
@@ -34,7 +34,7 @@ ms.locfileid: "85359410"
 
 1. 開啟 Azure AD Connect wizard，選取 [**設定**]，然後按 **[下一步]**。
 2. 選取 **[自訂同步處理選項**]，然後按 **[下一步]**。
-3. 在 [連線**至 Azure AD]** 頁面上，輸入您的認證。 按 [下一步] 。
+3. 在 [連線**至 Azure AD]** 頁面上，輸入您的認證。 按 [下一步]  。
 4. 在 [**選用功能**] 頁面上，確認您先前設定的選項仍為選取狀態。
 5. 選取 [**群組回寫**]，然後按 **[下一步]**。
 6. 在 [**回寫] 頁面**上，選取 Active Directory 的組織單位（OU），將從 Office 365 同步處理的物件儲存到您的內部部署組織，然後按 **[下一步]**。
@@ -48,7 +48,7 @@ Import-Module "C:\Program Files\Microsoft Azure Active Directory Connect\AdSyncC
 Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN $AzureADConnectSWritebackAccountDN
 ```
 
-如需設定 Office 365 群組的詳細資訊，請參閱[使用內部部署 Exchange 混合設定 Microsoft 365 群組](https://docs.microsoft.com/exchange/hybrid-deployment/set-up-office-365-groups#enable-group-writeback-in-azure-ad-connect)。
+如需設定 Office 365 群組的詳細資訊，請參閱[使用內部部署 Exchange 混合設定 Microsoft 365 群組](https://docs.microsoft.com/exchange/hybrid-deployment/set-up-microsoft-365-groups#enable-group-writeback-in-azure-ad-connect)。
 
 ## <a name="disabling-group-writeback"></a>停用群組回寫
 若要停用群組回寫，請使用下列步驟： 
@@ -61,7 +61,7 @@ Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN $AzureADConnect
 
    ![取消核取核取方塊](media/how-to-connect-group-writeback/group2.png)
   
-3. 按 [下一步] 。
+3. 按 [下一步]  。
 4. 按一下 [設定]****。
 
  >[!NOTE]

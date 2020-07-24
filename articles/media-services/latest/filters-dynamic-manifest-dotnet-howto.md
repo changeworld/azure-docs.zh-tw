@@ -13,11 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 06/03/2019
 ms.author: juliako
-ms.openlocfilehash: ef04b1b7b5030189482e89e26e4565397cbdd7c8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2226d7a769caf049af30bbca81ca3079d72970b4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75779241"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023121"
 ---
 # <a name="create-filters-with-media-services-net-sdk"></a>使用媒體服務 .NET SDK 建立篩選器
 
@@ -25,21 +26,21 @@ ms.locfileid: "75779241"
 
 如需這項功能和使用方式的詳細描述，請參閱[動態資訊清單](filters-dynamic-manifest-overview.md)和[篩選](filters-concept.md)。
 
-本主題說明如何使用媒體服務 .NET SDK 為點播視訊資產定義篩選器，以及如何建立[帳戶篩選器](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.accountfilter?view=azure-dotnet)與[資產篩選器](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.assetfilter?view=azure-dotnet)。 
+本主題說明如何使用媒體服務 .NET SDK 為點播視訊資產定義篩選器，以及如何建立[帳戶篩選器](/dotnet/api/microsoft.azure.management.media.models.accountfilter?view=azure-dotnet)與[資產篩選器](/dotnet/api/microsoft.azure.management.media.models.assetfilter?view=azure-dotnet)。 
 
 > [!NOTE]
 > 請務必參閱[presentationTimeRange](filters-concept.md#presentationtimerange)。
 
-## <a name="prerequisites"></a>必要條件 
+## <a name="prerequisites"></a>先決條件 
 
 - 檢閱[篩選器與動態資訊清單](filters-dynamic-manifest-overview.md)。
-- [建立媒體服務帳戶](create-account-cli-how-to.md)。 請務必記住資源群組名稱和「媒體服務」帳戶名稱。 
-- 取得所需資訊來[存取 API](access-api-cli-how-to.md)
+- [建立媒體服務帳戶](./create-account-howto.md)。 請務必記住資源群組名稱和「媒體服務」帳戶名稱。 
+- 取得所需資訊來[存取 API](./access-api-howto.md)
 - 檢閱[使用 Azure 媒體服務執行上傳、編碼和串流](stream-files-tutorial-with-api.md)，以了解如何[開始使用 .NET SDK](stream-files-tutorial-with-api.md#start_using_dotnet)
 
 ## <a name="define-a-filter"></a>定義篩選器  
 
-在 .NET 中，您可以使用 [FilterTrackSelection](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.filtertrackselection?view=azure-dotnet) 和 [FilterTrackPropertyCondition](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.filtertrackpropertycondition?view=azure-dotnet) 類別來設定曲目選取範圍。 
+在 .NET 中，您可以使用 [FilterTrackSelection](/dotnet/api/microsoft.azure.management.media.models.filtertrackselection?view=azure-dotnet) 和 [FilterTrackPropertyCondition](/dotnet/api/microsoft.azure.management.media.models.filtertrackpropertycondition?view=azure-dotnet) 類別來設定曲目選取範圍。 
 
 下列程式碼會定義篩選，其中包括具有 EC-3 的任何音訊曲目，以及位元速率介於 0-1000000 範圍之間的任何視訊曲目。
 
@@ -115,8 +116,6 @@ StreamingLocator locator = await client.StreamingLocators.CreateAsync(
 |MPEG DASH|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=mpd-time-csf,filter=myAssetFilter)`|
 |Smooth Streaming|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(filter=myAssetFilter)`|
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 [串流影片](stream-files-tutorial-with-api.md) 
-
-

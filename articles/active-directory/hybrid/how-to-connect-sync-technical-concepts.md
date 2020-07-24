@@ -16,31 +16,31 @@ ms.date: 01/15/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 251d156afbd367e83945397760a6afe98a1cfb98
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 01e53b30a4c27296e30e031ffb771697afa8e1e9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85356928"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019670"
 ---
 # <a name="azure-ad-connect-sync-technical-concepts"></a>Azure AD Connect 同步處理：技術概念
 本文是 [了解架構](how-to-connect-sync-technical-concepts.md)主題的摘要。
 
 Azure AD Connect 同步建置在一個穩固的中繼目錄同步處理平台上。
 下列各節介紹中繼目錄同步處理的概念。
-建置於 MIIS、ILM 以及 FIM 之上，Azure Active Directory 同步服務提供連接資料來源、在資料來源間同步處理資料，以及佈建和解除佈建身份識別的下一代平台。
+以 MIIS （Microsoft Identity Integration Server）、ILM （身分識別生命週期管理員）和 FIM （Forefront Identity Manager）為基礎，Azure Active Directory 同步處理服務提供連接到資料來源、在資料來源之間同步處理資料，以及布建和解除布建身分識別的下一個平臺。
 
 ![技術概念](./media/how-to-connect-sync-technical-concepts/scenario.png)
 
 下列章節提供有關 FIM 同步處理服務下列層面的詳細資訊：
 
-* 連接器
+* 連接子
 * 屬性流程
 * 連接器空間
 * Metaverse
 * 佈建
 
-## <a name="connector"></a>連接器
+## <a name="connector"></a>連接子
 用來與連接的目錄通訊之程式碼模組，稱為連接器 (之前稱為管理代理程式 (MA))。
 
 這些會安裝在執行 Azure AD Connect 同步的電腦上。連接器提供無代理程式的功能，可使用遠端系統通訊協定來進行反向操作，而不需依賴特殊化代理程式的部署。 這表示降低了風險與部署時間，特別是在處理重要的應用程式與系統時。
