@@ -16,11 +16,12 @@ ms.workload: na
 ms.date: 09/19/2018
 ms.author: terrylan
 Customer intent: As an IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
-ms.openlocfilehash: f61b6193a0d2082296a17128b41d7220f9b7e05f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d1440bf2b8af85b81355dbc43b695a85994e4b8d
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77565888"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124131"
 ---
 # <a name="azure-identity-management-security-overview"></a>Azure 身分識別管理安全性概觀
 
@@ -28,7 +29,7 @@ ms.locfileid: "77565888"
  
 善用 Azure Active Directory (Azure AD) 的安全性優點，您便可以：
 
-* 為您的混合式企業中的每位使用者建立和管理單一身分識別，讓使用者、群組和裝置保持同步。 
+* 為您的混合式企業中的每個使用者建立和管理單一身分識別，讓使用者、群組和裝置保持同步。 
 * 提供您的應用程式 (包括數千個預先整合的 SaaS 應用程式) 的 SSO 存取。
 * 藉由同時對內部部署和雲端應用程式強制以規則為基礎的 Multi-Factor Authentication，啟用應用程式存取安全性。
 * 透過 Azure AD 應用程式 Proxy 佈建對內部部署 Web 應用程式的安全遠端存取。
@@ -39,7 +40,7 @@ ms.locfileid: "77565888"
 
 * 單一登入
 * 反向 proxy
-* Multi-Factor Authentication
+* 多重要素驗證
 * 角色型存取控制 (RBAC)
 * 安全性監視、警示以及機器學習服務型報告
 * 消費者身分識別與存取管理
@@ -76,7 +77,7 @@ Azure AD 應用程式 Proxy 可讓您在私人網路內發佈內部部署應用�
 * [使用應用程式 Proxy 進行單一登入](../../active-directory/manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)
 * [使用條件式存取](../../active-directory/manage-apps/application-proxy-integrate-with-sharepoint-server.md)
 
-## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
+## <a name="multi-factor-authentication"></a>多重要素驗證
 
 Azure Multi-Factor Authentication 是需要使用多種驗證方法，並在使用者登入和交易中新增重要的第二層安全性的驗證方法。 Multi-Factor Authentication 有助於保護對資料與應用程式的存取，同時滿足使用者對簡單登入程序的需求。 它可以透過一些驗證選項：例如電話、文字訊息，或行動應用程式通知或驗證代碼，以及第三方 OAuth 權杖，來提供強大的驗證功能。
 
@@ -88,12 +89,17 @@ Azure Multi-Factor Authentication 是需要使用多種驗證方法，並在使�
 
 ## <a name="rbac"></a>RBAC
 
-RBAC 是建置於 Azure Resource Manager 上的授權系統，可提供更細緻的 Azure 資源存取管理。 RBAC 讓您能精確控制使用者擁有的存取範圍。 舉例來說，您可以限制讓一個使用者只能管理虛擬網路，而另一個使用者只能管理一個資源群組中的資源。 Azure 包含數個您可使用的內建角色。 以下列出四個基本內建角色。 前三個適用於所有資源類型。
+RBAC 是建置於 Azure Resource Manager 上的授權系統，可提供更細緻的 Azure 資源存取管理。 RBAC 讓您能精確控制使用者擁有的存取範圍。 舉例來說，您可以限制讓一個使用者只能管理虛擬網路，而另一個使用者只能管理一個資源群組中的資源。 Azure 包含數個供您使用的內建角色。 以下列出四個基本內建角色。 前三個適用於所有資源類型。
+
+- [擁有者](/azure/role-based-access-control/built-in-roles.md#owner) - 具有所有資源的完整存取權，包括將存取權委派給其他人的權限。 
+- [參與者](/azure/role-based-access-control/built-in-roles.md#contributor) - 可以建立和管理所有類型的 Azure 資源，但是不能將存取權授與其他人。
+- [讀者](/azure/role-based-access-control/built-in-roles.md#reader) - 可以檢視現有的 Azure 資源。
+- [使用者存取管理員](/azure/role-based-access-control/built-in-roles.md#administrator) - 讓您管理使用者對 Azure 資源的存取權。
 
 深入了解：
 
-* [什麼是角色型存取控制 (RBAC)？](/azure/role-based-access-control/overview)
-* [適用於 Azure 資源的內建角色](/azure/role-based-access-control/built-in-roles)
+* [什麼是 Azure 角色型存取控制 (Azure RBAC)？](/azure/role-based-access-control/overview)
+* [Azure 內建角色](/azure/role-based-access-control/built-in-roles) (機器翻譯)
 
 ## <a name="security-monitoring-alerts-and-machine-learning-based-reports"></a>安全性監視、警示以及機器學習服務型報告
 

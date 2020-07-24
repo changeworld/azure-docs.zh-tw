@@ -1,7 +1,7 @@
 ---
 title: 使用 PowerShell 來指派用於資料存取的 RBAC 角色
 titleSuffix: Azure Storage
-description: 瞭解如何使用 PowerShell，透過角色型存取控制（RBAC）將許可權指派給 Azure Active Directory 的安全性主體。 Azure 儲存體支援內建和自訂的 RBAC 角色，以透過 Azure AD 進行驗證。
+description: 瞭解如何使用 PowerShell，透過角色型存取控制（RBAC）將許可權指派給 Azure Active Directory 的安全性主體。 Azure 儲存體支援內建和 Azure 自訂角色，以透過 Azure AD 進行驗證。
 services: storage
 author: tamram
 ms.service: storage
@@ -10,12 +10,12 @@ ms.date: 07/16/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: a67981e2919854b80479ccc1c27ecf97469eebce
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: dab10c8d7c93e130c707f6020309e5dd2440a028
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518671"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124882"
 ---
 # <a name="use-powershell-to-assign-an-rbac-role-for-access-to-blob-and-queue-data"></a>使用 PowerShell 來指派用於存取 blob 和佇列資料的 RBAC 角色
 
@@ -23,7 +23,7 @@ Azure Active Directory (Azure AD) 會透過[角色型存取控制 (RBAC)](../../
 
 當 RBAC 角色指派給 Azure AD 安全性主體時，Azure 會為該安全性主體授與這些資源的存取權。 存取權的範圍可以包括訂用帳戶、資源群組、儲存體帳戶或個別的容器或佇列層級。 Azure AD 的安全性主體可以是使用者、群組、應用程式服務主體，或[適用于 Azure 資源的受控識別](../../active-directory/managed-identities-azure-resources/overview.md)。
 
-本文說明如何使用 Azure PowerShell 來列出內建的 RBAC 角色，並將其指派給使用者。 如需使用 Azure PowerShell 的詳細資訊，請參閱[Azure PowerShell 的總覽](https://docs.microsoft.com/powershell/azure/overview)。
+本文說明如何使用 Azure PowerShell 來列出內建的 RBAC 角色，並將其指派給使用者。 如需使用 Azure PowerShell 的詳細資訊，請參閱[Azure PowerShell 的總覽](https://docs.microsoft.com/powershell/azure/)。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

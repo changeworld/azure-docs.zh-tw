@@ -3,19 +3,17 @@ title: 中繼資料與 GenerateAnswer API - QnA Maker
 titleSuffix: Azure Cognitive Services
 description: QnA Maker 可讓您將中繼資料（以索引鍵/值組的形式）新增至您的問題/答案配對。 您可以將結果篩選為使用者查詢，並儲存可在後續交談中使用的其他資訊。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 03/31/2020
-ms.author: diberry
-ms.openlocfilehash: 171efd0e5750555130588f783c4a858def11afec
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.date: 07/16/2020
+ms.openlocfilehash: 863143cb2ec1085bf03b070c225f2be5e8e4393d
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83993502"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87126171"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>取得 GenerateAnswer API 和中繼資料的解答
 
@@ -146,7 +144,7 @@ var response = await _services.QnAServices[QnAMakerKey].GetAnswersAsync(turnCont
 
 先前的 JSON 只要求30% 或高於閾值分數的答案。
 
-## <a name="use-qna-maker-with-a-bot-in-nodejs"></a>使用 QnA Maker 搭配 node.js 中的 bot
+## <a name="use-qna-maker-with-a-bot-in-nodejs"></a>在 Node.js 中使用 bot 的 QnA Maker
 
 Bot framework 可讓您使用[GETANSWER API](https://docs.microsoft.com/javascript/api/botbuilder-ai/qnamaker?view=botbuilder-ts-latest#generateanswer-string---undefined--number--number-)來存取 QnA Maker 的屬性：
 
@@ -184,13 +182,40 @@ var qnaResults = await this.qnaMaker.getAnswers(stepContext.context, qnaMakerOpt
 {
     "question": "When does this hotel close?",
     "top": 1,
-    "strictFilters": [
-      {
-        "name": "restaurant",
-        "value": "paradise"
-      }]
+    "strictFilters": [ { "name": "restaurant", "value": "paradise"}]
 }
 ```
+
+### <a name="logical-and-by-default"></a>邏輯 AND （依預設）
+
+若要在查詢中結合數個中繼資料篩選準則，請將其他中繼資料篩選準則新增至屬性的陣列 `strictFilters` 。 根據預設，這些值會以邏輯方式結合（和）。 邏輯組合要求所有篩選準則必須符合 QnA 組，才能在答案中傳回配對。
+
+這相當於使用 `strictFiltersCompoundOperationType` 具有值的屬性 `AND` 。
+
+### <a name="logical-or-using-strictfilterscompoundoperationtype-property"></a>Logical 或 using strictFiltersCompoundOperationType 屬性
+
+結合數個中繼資料篩選器時，如果您只在意其中一個或一些篩選準則相符，請使用 `strictFiltersCompoundOperationType` 具有值的屬性 `OR` 。
+
+這可讓您的知識庫在任何篩選準則相符時傳回答案，但不會傳回沒有中繼資料的答案。
+
+```json
+{
+    "question": "When do facilities in this hotel close?",
+    "top": 1,
+    "strictFilters": [
+      { "name": "type","value": "restaurant"},
+      { "name": "type", "value": "bar"},
+      { "name": "type", "value": "poolbar"}
+    ],
+    "strictFiltersCompoundOperationType": "OR"
+}
+```
+
+### <a name="metadata-examples-in-quickstarts"></a>快速入門中的中繼資料範例
+
+在 QnA Maker 入口網站的中繼資料快速入門中深入瞭解中繼資料：
+* [撰寫-將中繼資料新增至 QnA 配對](../quickstarts/add-question-metadata-portal.md#add-metadata-to-filter-the-answers)
+* [查詢預測-依中繼資料篩選答案](../quickstarts/get-answer-from-knowledge-base-using-url-tool.md)
 
 <a name="keep-context"></a>
 

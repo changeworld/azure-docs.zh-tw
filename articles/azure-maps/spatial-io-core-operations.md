@@ -1,19 +1,19 @@
 ---
 title: 核心 IO 作業 |Microsoft Azure 對應
 description: 瞭解如何使用空間 IO 模組中的核心程式庫，有效率地讀取和寫入 XML 和分隔的資料。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 03/03/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 0b8fe1b319dc480879944d28f10645025a8cb38e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e142fe348a339e4903d692cad569015edb69f75
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80371449"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124471"
 ---
 # <a name="core-io-operations"></a>核心 IO 作業
 
@@ -30,7 +30,7 @@ ms.locfileid: "80371449"
 
 根據預設，讀取器會使用逗號字元做為分隔符號。 不過，分隔符號可以變更為任何單一字元，或設為 `'auto'` 。 當設定為時 `'auto'` ，讀取器會分析字串中的第一行文字。 然後，它會從下表中選取最常見的字元來當做分隔符號使用。
 
-| | |
+| 分隔符號 | 字元 |
 | :-- | :-- |
 | Comma (逗號) | `,` |
 | 索引標籤 | `\t` |

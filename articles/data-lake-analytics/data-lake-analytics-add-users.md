@@ -3,18 +3,16 @@ title: 將使用者新增至 Azure Data Lake Analytics 帳戶
 description: 瞭解如何使用 [新增使用者嚮導] 和 Azure PowerShell，正確地將使用者新增至您的 Data Lake Analytics 帳戶。
 services: data-lake-analytics
 ms.service: data-lake-analytics
-author: saveenr
-ms.author: saveenr
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.assetid: db35f16e-1565-4873-a851-bd987accdc58
 ms.topic: how-to
 ms.date: 05/24/2018
-ms.openlocfilehash: 16ec54bb2a41927a92d953586af59ae3653a29c0
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 09f866d7ed72e82770a7f3a0fe5da24bb864851f
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86117452"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87126069"
 ---
 # <a name="adding-a-user-in-the-azure-portal"></a>在 Azure 入口網站中新增使用者
 
@@ -24,7 +22,7 @@ ms.locfileid: "86117452"
 3. 在 [選取使用者]**** 步驟中，尋找您想要新增的使用者。 按一下 [選取]。
 4. 在 [選取角色]**** 步驟中，選取 [Data Lake Analytics 開發人員]****。 此角色具備提交/監視/管理 U-SQL 作業時所需的一組最基本權限。 如果不打算讓群組管理 Azure 服務，請將其指派給此角色。
 5. 在 [選取目錄權限]**** 步驟中，選取使用者將需要存取權的任何額外資料庫。 必須具備 master 資料庫的「讀取」和「寫入」存取權，才能提交作業。 完成之後，請按一下 [確定]****。
-6. 在名為 [指派選取的權限]**** 的最後一個步驟中，檢閱精靈將進行的變更。 按一下 [確定]。
+6. 在名為 [指派選取的權限]**** 的最後一個步驟中，檢閱精靈將進行的變更。 按一下 [確定]  。
 
 
 ## <a name="configure-acls-for-data-folders"></a>設定資料資料夾的 ACL
@@ -38,11 +36,11 @@ ms.locfileid: "86117452"
 4.  選取一個「Azure RBAC 角色」來指派給此群組。
 5.  指派給 [讀者] 角色。 這個角色有一組最低權限，可以瀏覽/管理儲存在 ADLSGen1 中的資料。 如果不打算讓群組管理 Azure 服務，請將其指派給此角色。
 6.  輸入群組的名稱。
-7.  按一下 [確定]。
+7.  按一下 [確定]  。
 
 ## <a name="adding-a-user-using-powershell"></a>使用 PowerShell 來新增使用者
 
-1. 依照下列指南中的指示進行操作：[如何安裝並設定 Azure PowerShell](https://azure.microsoft.com/documentation/articles/powershell-install-configure/) \(英文\)。
+1. 依照下列指南中的指示進行操作：[如何安裝並設定 Azure PowerShell](/powershell/azure/) \(英文\)。
 2. 下載 [Add-AdlaJobUser.ps1](https://github.com/Azure/AzureDataLake/blob/master/Samples/PowerShell/ADLAUsers/Add-AdlaJobUser.ps1) PowerShell 指令碼。
 3. 執行 PowerShell 指令碼。 
 

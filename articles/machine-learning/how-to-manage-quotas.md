@@ -11,11 +11,12 @@ author: nishankgu
 ms.author: nigup
 ms.date: 05/08/2020
 ms.custom: contperfq4
-ms.openlocfilehash: df636ce1200d8c3744681a60532b22c409dd81dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d8be4169a44b2ef57db8aa49b96f6c5fe85ded1c
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84430459"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87125083"
 ---
 # <a name="manage--increase-quotas-for-resources-with-azure-machine-learning"></a>管理及增加 Azure Machine Learning 資源的配額
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -71,7 +72,7 @@ ms.locfileid: "84430459"
 | 單一 Azure Machine Learning Compute (AmlCompute) 資源中的節點數上限 | 100 個節點 |
 | 每個節點的最大 GPU MPI 流程數 | 1 - 4 |
 | 每個節點的最大 GPU 背景工作角色數 | 1 - 4 |
-| 作業存留期上限 | 90 天<sup>1</sup> |
+| 作業存留期上限 | 21天<sup>1</sup> |
 | 低優先順序節點上的作業存留期上限 | 7 天<sup>2</sup> |
 | 每個節點的最大參數伺服器數 | 1 |
 

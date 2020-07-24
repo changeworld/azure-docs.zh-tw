@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 07/05/2020
-ms.openlocfilehash: ad2e6a05fa8459d8e5a53d9bb8b8e08790a7d8ec
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 3835046e50180e1d1091f5083f276c7c1ad56612
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539409"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87117376"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure 監視器客戶管理的金鑰 
 
@@ -194,7 +194,7 @@ CMK 功能會在專用的 Log Analytics 叢集上提供。若要確認您的區�
 
 此資源可作為 Key Vault 與 Log Analytics 工作區之間的中繼身分識別連線。 在您收到允許的訂用帳戶確認之後，請在您的工作區所在的區域建立*Log Analytics 叢集*資源。
 
-建立「叢集」資源時，您必須指定「容量保留」層級 (SKU)。 「容量保留」層級的範圍可介於每天 1,000 到 2,000 GB 之間，且可在稍後將其更新為 100 的間隔。 如果需要高於每天 2,000 GB 的容量保留層級，請透過 LAIngestionRate@microsoft.com 與我們連絡。 [深入了解](./manage-cost-storage.md#log-analytics-dedicated-clusters)
+建立「叢集」資源時，您必須指定「容量保留」層級 (SKU)。 *容量保留*層級的範圍可以是每日1000到 3000 GB，而您可以在100的步驟中加以更新。 如果您每天都需要超過 3000 GB 的容量保留層級，請與我們聯絡 LAIngestionRate@microsoft.com 。 [深入了解](./manage-cost-storage.md#log-analytics-dedicated-clusters)
 
 *billingType* 屬性可判斷「叢集」資源及其資料的計費屬性：
 - 叢集（預設值）--*叢集的容量*保留成本會針對叢集資源*進行分類。*
@@ -467,9 +467,9 @@ CMK 的輪替需要使用 Azure Key Vault 中新金鑰版本來明確更新「�
 Log Analytics 中使用的查詢語言是可表達的，而且可以包含您新增至查詢或查詢語法中的批註中的機密資訊。 有些組織要求這類資訊在 CMK 原則中會受到保護，而且您需要儲存以金鑰加密的查詢。 當連接到您的工作區時，Azure 監視器可讓您將*已儲存的搜尋*和*記錄警示*查詢，儲存在您自己的儲存體帳戶中，並以您的金鑰加密。 
 
 > [!NOTE]
-> 尚不支援用於活頁簿和 Azure 儀表板中的查詢 CMK。 這些查詢會使用 Microsoft 金鑰保持加密。  
+> Log Analytics 查詢可以儲存在不同的存放區，視使用的案例而定。 在下列案例中，查詢會使用 Microsoft 金鑰（MMK）保持加密，無論 CMK 設定： Azure 監視器、Azure 儀表板、Azure 邏輯應用程式、Azure Notebooks 和自動化 Runbook 中的活頁簿。
 
-當您[攜帶自己的儲存體](./private-storage.md)（BYOS）並將它與您的工作區產生關聯時，服務會將*已儲存的搜尋*和*記錄警示*查詢上傳至您的儲存體帳戶。 這表示您可以使用您用來加密 Log Analytics 叢集中資料的相同金鑰或不同的金鑰，來控制儲存體帳戶和待用[加密原則](../../storage/common/encryption-customer-managed-keys.md)。 不過，您會負責與該儲存體帳戶相關聯的成本。 
+當您攜帶自己的儲存體（BYOS）並將它與您的工作區產生關聯時，服務會將*已儲存的搜尋*和*記錄警示*查詢上傳至您的儲存體帳戶。 這表示您可以使用您用來加密 Log Analytics 叢集中資料的相同金鑰或不同的金鑰，來控制儲存體帳戶和待用[加密原則](../../storage/common/encryption-customer-managed-keys.md)。 不過，您會負責與該儲存體帳戶相關聯的成本。 
 
 **設定查詢的 CMK 之前的考慮**
 * 您必須對您的工作區和儲存體帳戶具有「寫入」許可權
@@ -599,7 +599,7 @@ Content-type: application/json
 
 - **更新「叢集」資源中的「容量保留」**
 
-  在相關聯的工作區資料量隨著時間變更，且想要適當地更新容量保留層級時發生。 請遵循[更新「叢集」資源](#update-cluster-resource-with-key-identifier-details)，並提供新的容量值。 其範圍可介於每天 1,000 到 2,000 GB 之間，且間隔為 100。 如需高於每天 2,000 GB 的層級，請連絡 Microsoft 連絡人將其啟用。 請注意，您不需要提供完整的 REST 要求本文，但應該包含 SKU：
+  在相關聯的工作區資料量隨著時間變更，且想要適當地更新容量保留層級時發生。 請遵循[更新「叢集」資源](#update-cluster-resource-with-key-identifier-details)，並提供新的容量值。 其可在1000到 3000 GB 的範圍內，並在100的步驟中。 針對高於每天 3000 GB 的層級，請聯繫您的 Microsoft 連絡人加以啟用。 請注意，您不需要提供完整的 REST 要求主體，但應包含 sku：
 
   ```powershell
   Update-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name" -SkuCapacity "daily-ingestion-gigabyte"

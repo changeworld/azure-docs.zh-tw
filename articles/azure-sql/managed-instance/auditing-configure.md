@@ -13,18 +13,19 @@ author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 05/26/2020
-ms.openlocfilehash: 6599963b216409103f72b4e46a30961c6d60e32c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 213a4fdb0e064e1c36a04f7190f14fab80cb4daa
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84695550"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87117345"
 ---
 # <a name="get-started-with-azure-sql-managed-instance-auditing"></a>開始使用 Azure SQL 受控執行個體的審核
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-[AZURE SQL 受控執行個體](sql-managed-instance-paas-overview.md)審核會追蹤資料庫事件，並將它們寫入您 Azure 儲存體帳戶中的 audit 記錄。 稽核也具備下列功能：
+[AZURE SQL 受控執行個體](sql-managed-instance-paas-overview.md)審核會追蹤資料庫事件，並將它們寫入您 Azure 儲存體帳戶中的 audit 記錄。 稽核也會：
 
-- 協助您保持法規遵循、了解資料庫活動，以及深入了解可指出商務考量或疑似安全違規的不一致和異常。
+- 協助您維護合規性、了解資料庫活動，以及獲取可能指出業務疑慮或可疑安全性違規之不一致及異常的見解。
 - 啟用及推動遵循法規標準，但不保證符合法規。 如需有關支援標準合規性之 Azure 程式的詳細資訊，請參閱[Azure 信任中心](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)，您可以在其中找到最新的合規性認證清單。
 
 ## <a name="set-up-auditing-for-your-server-to-azure-storage"></a>設定將伺服器的稽核儲存至 Azure 儲存體
@@ -113,7 +114,7 @@ ms.locfileid: "84695550"
 
         ```SQL
         CREATE SERVER AUDIT [<your_audit_name>]
-        TO URL ( PATH ='<container_url>' [, RETENTION_DAYS =  integer ])
+        TO URL ( PATH ='<container_url>' , RETENTION_DAYS =  integer )
         GO
         ```
 

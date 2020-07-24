@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
-ms.openlocfilehash: 51111d92e85c6ddbdfac85c333293c2af8b31fbe
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 68be8d08939464d200da588c481447f8206c9117
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86498954"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87117204"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Azure 中的網路效能監控解決方案
 
@@ -37,7 +37,7 @@ ms.locfileid: "86498954"
 ## <a name="supported-regions"></a>支援的區域
 NPM 可使用在下列其中一個區域裝載的工作區，監視世界各地的網路和應用程式之間的連線情形：
 * 北歐
-* 西歐
+* 歐洲西部
 * 法國中部
 * 加拿大中部
 * 美國西部
@@ -65,6 +65,9 @@ ExpressRoute 監視器的支援區域清單提供於[文件](../../expressroute/
 
 
 ## <a name="set-up-and-configure"></a>安裝及設定
+
+> [!NOTE]
+> 您也可能會看到稱為 Microsoft Monitoring Agent (MMA) 或 OMS Linux 代理程式的 Log Analytics 代理程式。
 
 ### <a name="install-and-configure-agents"></a>安裝及設定代理程式 
 

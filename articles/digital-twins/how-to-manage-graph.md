@@ -7,20 +7,20 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 6d51abab46cd8450dd3a09e5e5ef47e6267b990d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 7f7239e0c13478af712d8e8d9dad8fda23fe42c7
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258101"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87125527"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>使用關聯性管理數位 twins 的圖表
 
 Azure 數位 Twins 的核心是代表整個環境的對應項[圖形](concepts-twins-graph.md)。 對應項圖形是由透過**關聯**性連線的個別數位 twins 所組成。
 
-當您擁有運作中的[Azure 數位 Twins 實例](how-to-set-up-instance.md)並已設定用戶端應用程式的[驗證](how-to-authenticate-client.md)之後，您就可以使用[**選取 api**](how-to-use-apis-sdks.md)來建立、修改和刪除數位 Twins 及其在 Azure 數位 Twins 實例中的關聯性。 您也可以使用[.net (c # ) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)或[AZURE 數位 Twins CLI](how-to-use-cli.md)。
+當您擁有運作中的[Azure 數位 Twins 實例](how-to-set-up-instance-scripted.md)並在用戶端應用程式中設定[驗證](how-to-authenticate-client.md)碼之後，您就可以使用[**選取 api**](how-to-use-apis-sdks.md)來建立、修改和刪除數位 Twins 及其在 Azure 數位 Twins 實例中的關聯性。 您也可以使用[.net （c #） SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)或[AZURE 數位 Twins CLI](how-to-use-cli.md)。
 
-本文著重于整體管理關聯性和圖形;若要使用個別的數位 twins，請參閱[如何：管理數位 twins](how-to-manage-twin.md)。
+本文著重于整體管理關聯性和圖形;若要使用個別的數位 twins，請參閱[*如何：管理數位 twins*](how-to-manage-twin.md)。
 
 [!INCLUDE [visualizing with Azure Digital Twins explorer](../../includes/digital-twins-visualization.md)]
 
@@ -31,8 +31,8 @@ Azure 數位 Twins 的核心是代表整個環境的對應項[圖形](concepts-t
 關聯性是使用呼叫所建立 `CreateRelationship` 。 
 
 若要建立關聯性，您必須指定：
-* 來源對應項識別碼 (關聯性源自的對應項) 
-* 目標對應項識別碼 (關聯性抵達的對應項) 
+* 來源對應項識別碼（關聯性的來源對應項）
+* 目標對應項識別碼（關聯性到達的對應項）
 * 關聯性名稱
 * 關聯性識別碼
 
@@ -62,7 +62,7 @@ public async static Task CreateRelationship(DigitalTwinsClient client, string sr
 }
 ```
 
-如需協助程式類別的詳細資訊 `BasicRelationship` ，請參閱[如何：使用 Azure 數位 Twins Api 和 sdk](how-to-use-apis-sdks.md)。
+如需協助程式類別的詳細資訊 `BasicRelationship` ，請參閱[*如何：使用 Azure 數位 Twins Api 和 sdk*](how-to-use-apis-sdks.md)。
 
 ## <a name="list-relationships"></a>列出關聯性
 
@@ -108,7 +108,7 @@ Azure 數位 Twins 也有一個 API，可尋找給定對應項的所有連入關
 
 先前的程式碼範例著重于尋找連出關聯性。 下列範例類似，但會尋找連入關聯性。 它也會在找到之後將它們刪除。
 
-請注意，IncomingRelationship 呼叫不會傳回完整的
+請注意， `IncomingRelationship` 呼叫不會傳回關聯性的完整主體。
 
 ```csharp
 async Task<List<IncomingRelationship>> FindIncomingRelationshipsAsync(string dtId)
@@ -134,7 +134,7 @@ async Task<List<IncomingRelationship>> FindIncomingRelationshipsAsync(string dtI
 
 您可以使用刪除關聯性 `DeleteRelationship(source, relId);` 。
 
-第一個參數會指定來源對應項 (對應項在) 關聯性的對應項。 另一個參數是關聯性識別碼。 您需要對應項識別碼和關聯性識別碼，因為關聯性識別碼只在對應項的範圍內是唯一的。
+第一個參數指定來源對應項（關聯性的來源對應項）。 另一個參數是關聯性識別碼。 您需要對應項識別碼和關聯性識別碼，因為關聯性識別碼只在對應項的範圍內是唯一的。
 
 ## <a name="create-a-twin-graph"></a>建立對應項圖形 
 
@@ -229,7 +229,7 @@ static async Task<bool> CreateFloorOrBuilding(string id, bool makeFloor=true)
 
 請考慮下列資料表，其中描述要建立的一組數位 twins 和關聯性。
 
-| 型號    | 識別碼 | 父系 | 關聯性名稱 | 其他資料 |
+| 型號    | ID | 父系 | 關聯性名稱 | 其他資料 |
 | --- | --- | --- | --- | --- |
 | floor    | Floor01 | | | … |
 | 房間    | Room10 | Floor01 | contains | … |
@@ -301,10 +301,10 @@ foreach (JsonElement row in data.RootElement.EnumerateArray())
 ```
 ## <a name="manage-relationships-with-cli"></a>使用 CLI 管理關聯性
 
-您也可以使用 Azure 數位 Twins CLI 來管理 Twins 及其關聯性。 您可以在[如何：使用 Azure 數位 TWINS CLI](how-to-use-cli.md)中找到這些命令。
+您也可以使用 Azure 數位 Twins CLI 來管理 Twins 及其關聯性。 您可以在[*如何：使用 Azure 數位 TWINS CLI*](how-to-use-cli.md)中找到這些命令。
 
 ## <a name="next-steps"></a>後續步驟
 
 深入瞭解查詢 Azure 數位 Twins 對應項圖形：
-* [概念：查詢語言](concepts-query-language.md)
-* [如何：查詢對應項圖形](how-to-query-graph.md)
+* [*概念：查詢語言*](concepts-query-language.md)
+* [*如何：查詢對應項圖形*](how-to-query-graph.md)

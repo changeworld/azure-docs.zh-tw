@@ -1,5 +1,5 @@
 ---
-title: 適用于 Azure 安全性基準測試的 Linux 虛擬機器安全性基準
+title: 適用于 Linux 虛擬機器的 Azure 安全性基準
 description: Linux 虛擬機器的安全性基準提供程式指引和資源，可用於執行 Azure 安全性基準測試中所指定的安全性建議。
 author: msmbaldwin
 ms.service: virtual-machines-linux
@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 2d8c4d67ed9b268bae55711fae8c4def33b967fc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: bd6157f2775b2496e489cfbf03b35f49fb6f5442
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531197"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124709"
 ---
-# <a name="linux-virtual-machines-security-baseline-for-azure-security-benchmark"></a>適用于 Azure 安全性基準測試的 Linux 虛擬機器安全性基準
+# <a name="azure-security-baseline-for-linux-virtual-machines"></a>適用于 Linux 虛擬機器的 Azure 安全性基準
 
 適用于 Linux 虛擬機器的 Azure 安全性基準包含可協助您改善部署之安全性狀態的建議。
 
@@ -568,7 +568,7 @@ Microsoft 會使用傳輸層安全性（TLS）通訊協定來保護雲端服務�
 
 * [Azure 資源的角色型存取控制 (RBAC)](../../role-based-access-control/overview.md)
 
-* [適用於 Azure 資源的內建角色](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)
+* [Azure 內建角色](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) (機器翻譯)
 
 **Azure 資訊安全中心監視**：無法使用
 

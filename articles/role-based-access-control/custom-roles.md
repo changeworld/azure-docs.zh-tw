@@ -15,12 +15,12 @@ ms.date: 07/13/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d973cf47ed691914b22d62e1a99315c6ea9183d8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: fd737a22a37d6edc47c2769a470af00537d720eb
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86511597"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124148"
 ---
 # <a name="azure-custom-roles"></a>Azure 自訂角色 (機器翻譯)
 
@@ -115,7 +115,7 @@ ms.locfileid: "86511597"
 
 下表描述自訂角色屬性的意義。
 
-| 屬性 | 必要 | 類型 | 描述 |
+| 屬性 | 必要 | 類型 | 說明 |
 | --- | --- | --- | --- |
 | `Name`</br>`roleName` | 是 | 字串 | 自訂角色的顯示名稱。 當角色定義是管理群組或訂用帳戶層級資源時，角色定義可以用於多個共用相同 Azure AD 目錄的訂用帳戶。 此顯示名稱在 Azure AD 目錄範圍中必須是唯一的。 可以包含字母、數字、空格和特殊字元。 字元數目上限是 128。 |
 | `Id`</br>`name` | 是 | 字串 | 自訂角色的唯一識別碼。 針對 Azure PowerShell 和 Azure CLI，當您建立新角色時，會自動產生這個識別碼。 |
@@ -175,7 +175,7 @@ Microsoft.CostManagement/*/query/*
 
 就像內建角色一樣，`AssignableScopes` 屬性會指定角色可用於指派的範圍。 自訂角色的 `AssignableScopes` 屬性也會控制誰可以建立、刪除、更新或檢視自訂角色。
 
-| Task | 作業 | 描述 |
+| 工作 | 作業 | 描述 |
 | --- | --- | --- |
 | 建立/刪除自訂角色 | `Microsoft.Authorization/ roleDefinitions/write` | 獲得授權可對自訂角色的所有 `AssignableScopes` 執行此作業的使用者，可以建立 (或刪除) 用於這些範圍的自訂角色。 例如，管理群組、訂用帳戶和資源群組的[擁有](built-in-roles.md#owner)者和[使用者存取系統管理員](built-in-roles.md#user-access-administrator)。 |
 | 更新自訂角色 | `Microsoft.Authorization/ roleDefinitions/write` | 獲得授權可對自訂角色的所有 `AssignableScopes` 執行此作業的使用者，可以在這些範圍中更新自訂角色。 例如，管理群組、訂用帳戶和資源群組的[擁有](built-in-roles.md#owner)者和[使用者存取系統管理員](built-in-roles.md#user-access-administrator)。 |
@@ -192,7 +192,7 @@ Microsoft.CostManagement/*/query/*
 - `DataActions`無法在管理群組範圍指派具有的自訂角色。
 - Azure Resource Manager 不會驗證管理群組是否存在於角色定義的可指派範圍中。
 
-如需有關自訂角色和管理群組的詳細資訊，請參閱[使用 Azure 管理群組來組織資源](../governance/management-groups/overview.md#custom-rbac-role-definition-and-assignment)。
+如需有關自訂角色和管理群組的詳細資訊，請參閱[使用 Azure 管理群組來組織資源](../governance/management-groups/overview.md#azure-custom-role-definition-and-assignment)。
 
 ## <a name="input-and-output-formats"></a>輸入和輸出格式
 

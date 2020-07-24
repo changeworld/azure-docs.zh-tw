@@ -3,18 +3,16 @@ title: 使用 Azure Data Lake Tools for Visual Studio Code
 description: 了解如何使用 Azure Data Lake Tools for Visual Studio Code 來建立、測試和執行 U-SQL 指令碼。
 services: data-lake-analytics
 ms.service: data-lake-analytics
-author: Jejiang
-ms.author: jejiang
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.topic: how-to
 ms.date: 02/09/2018
-ms.openlocfilehash: 53e0628256ad37d87c260c762c2c5a5c824666b0
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: b554869864ff71fb31b6c4e2b891fd42c4a380b1
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86117656"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87126477"
 ---
 # <a name="use-azure-data-lake-tools-for-visual-studio-code"></a>使用 Azure Data Lake Tools for Visual Studio Code
 
@@ -26,7 +24,7 @@ ms.locfileid: "86117656"
 
 Azure Data Lake Tools for VS Code 支援 Windows、Linux 與 macOS。U-SQL 本機執行與本機偵錯僅適用於 Windows。
 
-- [Visual Studio Code](https://www.visualstudio.com/products/code-vs.aspx)
+- [Visual Studio Code](https://www.visualstudio.com/products/code-vs.aspx) \(英文\)
 
 若為 MacOS 和 Linux：
 
@@ -355,7 +353,7 @@ U-SQL 本機執行會先測試您的本機資料並在本機驗證您的指令�
 ### <a name="upload-a-file-or-folder"></a>上傳檔案或資料夾
 
 1. 以滑鼠右鍵按一下指令碼編輯器，然後選取 [上傳檔案]**** 或 [上傳資料夾]****。
-2. 如果您已選取 [上傳檔案]****，請選擇一或多個檔案。或者，如果您已選取 [上傳資料夾]****，則請選擇整個資料夾。 然後選取 [上傳]****。
+2. 如果您已選取 [上傳檔案]****，請選擇一或多個檔案。或者，如果您已選取 [上傳資料夾]****，則請選擇整個資料夾。 然後選取 [上傳]。
 3. 選擇清單中的儲存體資料夾，或是選取 [輸入路徑]**** 或 [從根路徑瀏覽]****。 (我們使用 [輸入路徑]**** 作為範例)。
 4. 選取您的 Data Lake Analytics 帳戶。
 5. 瀏覽或輸入儲存體資料夾路徑 (例如 /output/)。

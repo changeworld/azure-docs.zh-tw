@@ -7,11 +7,12 @@ ms.author: cschorm
 ms.date: 3/17/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 3b416e6ccb035ede06a360c2697a9b20ca417d98
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3e284bc76da9ca40341d72f772aa7ee947a11638
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84725897"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124301"
 ---
 # <a name="connect-azure-functions-apps-for-processing-data"></a>連接 Azure Functions 應用程式以處理資料
 
@@ -77,7 +78,7 @@ namespace FunctionSample
 
 您現在可以編譯並執行函數。 雖然 Azure 函式的最終目的是要在雲端中執行，但您也可以在本機執行 Azure 函式並對其進行調試。
 
-如需這方面的詳細資訊，請參閱在[本機偵錯工具事件方格觸發](../azure-functions/functions-debug-event-grid-trigger-local.md)程式。
+如需這方面的詳細資訊，請參閱在[*本機偵錯工具事件方格觸發*](../azure-functions/functions-debug-event-grid-trigger-local.md)程式。
 
 ### <a name="add-the-azure-digital-twins-sdk-to-your-azure-function-app"></a>將 Azure 數位 Twins SDK 新增至您的 Azure 函數應用程式
 
@@ -162,9 +163,9 @@ az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(fu
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Owner (Preview)"
 ```
 
-如需受控識別的詳細資訊，請參閱[如何使用適用于 App Service 和 Azure Functions 的受控](../app-service/overview-managed-identity.md)識別。
+如需受控識別的詳細資訊，請參閱[*如何使用適用于 App Service 和 Azure Functions 的受控*](../app-service/overview-managed-identity.md)識別。
 
-最後，您可以藉由設定環境變數，讓您的函式能夠存取您的 Azure 數位 Twins 實例 URL。 如需這種情況的詳細資訊，請參閱[環境變數](https://docs.microsoft.com/sandbox/functions-recipes/environment-variables)。
+最後，您可以藉由設定環境變數，讓您的函式能夠存取您的 Azure 數位 Twins 實例 URL。 如需這種情況的詳細資訊，請參閱[*環境變數*](https://docs.microsoft.com/sandbox/functions-recipes/environment-variables)。
 
 > [!TIP]
 > Azure 數位 Twins 實例的 URL 是藉由將*HTTPs://* 新增至 Azure 數位 Twins 實例*主機名稱*的開頭來建立。 若要查看主機名稱，以及實例的所有屬性，您可以執行 `az dt show --dt-name <your-Azure-Digital-Twins-instance>` 。
@@ -208,7 +209,7 @@ az functionapp config appsettings set -g <your-resource-group> -n <your-App-Serv
 
 ### <a name="assign-access-roles"></a>指派存取角色
 
-因為 Azure 數位 Twins 會使用角色型存取控制來管理存取權（如需有關此動作的詳細資訊，請參閱[概念： Azure 數位 Twins 解決方案的安全性](concepts-security.md)），您也需要為每個您想要允許存取 Azure 數位 Twins 的函式應用程式新增角色。
+因為 Azure 數位 Twins 會使用角色型存取控制來管理存取權（如需有關此動作的詳細資訊，請參閱[*概念： Azure 數位 Twins 解決方案的安全性*](concepts-security.md)），您也需要為每個您想要允許存取 Azure 數位 Twins 的函式應用程式新增角色。
 
 若要指派角色，您需要您所建立的 Azure 數位 Twins 實例的**資源識別碼**。 如果您稍早在建立實例時未記錄，您可以使用下列命令來抓取它：
 
@@ -231,4 +232,4 @@ az role assignment create --role "Azure Digital Twins Owner (Preview)" --assigne
 * 接收來自其他服務之訊息的事件方格端點
 
 接下來，請參閱如何在您的基本 Azure 函式上建立，以將 IoT 中樞資料內嵌至 Azure 數位 Twins：
-* [如何：從 IoT 中樞內嵌遙測](how-to-ingest-iot-hub-data.md)
+* [*如何：從 IoT 中樞內嵌遙測*](how-to-ingest-iot-hub-data.md)

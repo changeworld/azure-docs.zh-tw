@@ -2,18 +2,19 @@
 title: 如何使用非互動式登入來保護單一頁面應用程式
 titleSuffix: Azure Maps
 description: 如何使用非互動式 Azure AD 以角色為基礎的存取控制和 Azure 地圖服務 Web SDK 來設定單一頁面應用程式。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 06/12/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: d33fbdf2e95faaa82c13b4fc0d52ea3f188c3f86
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 96dd1cf6a5d6cea69899bf920c86018384ebbc3c
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84988334"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87126446"
 ---
 # <a name="how-to-secure-a-single-page-application-with-non-interactive-sign-in"></a>如何使用非互動式登入來保護單一頁面應用程式
 
@@ -107,7 +108,7 @@ ms.locfileid: "84988334"
     > [!div class="mx-imgBorder"]
     > ![授與 RBAC](./media/how-to-manage-authentication/how-to-grant-rbac.png)
 
-2. 在 [**角色指派**] 索引標籤的 [**角色**] 底下，選取內建 Azure 地圖服務角色定義，例如**Azure 地圖服務資料讀取器**或**Azure 地圖服務資料參與者**。 在 [**指派存取**權] 底下，選取 [**函數應用程式**]。 依名稱選取 [主體]。 接著，選取 [儲存]。
+2. 在 [**角色指派**] 索引標籤的 [**角色**] 底下，選取內建 Azure 地圖服務角色定義，例如**Azure 地圖服務資料讀取器**或**Azure 地圖服務資料參與者**。 在 [**指派存取**權] 底下，選取 [**函數應用程式**]。 依名稱選取 [主體]。 然後選取 [儲存]。
 
    * 請參閱[新增或移除角色指派](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)的詳細資料。
 

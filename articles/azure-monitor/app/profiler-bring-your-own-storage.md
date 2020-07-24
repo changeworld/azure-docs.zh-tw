@@ -6,12 +6,12 @@ author: renatosalas
 ms.author: regutier
 ms.date: 04/14/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 50dcd3f438645c99e0ed3cfdded7a101ee5f1852
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 719f0cfa0a1f80568acf3231ce3ffab441e5f6b7
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539851"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87117386"
 ---
 # <a name="configure-bring-your-own-storage-byos-for-application-insights-profiler-and-snapshot-debugger"></a>針對 Application Insights Profiler 和快照偵錯工具設定攜帶您自己的儲存體（BYOS）
 
@@ -30,7 +30,7 @@ ms.locfileid: "86539851"
 1. Application Insights Profiler 或快照偵錯工具服務會分析傳入的 blob，並將分析結果和記錄檔寫回 blob 儲存體。 視可用的計算容量而定，此程式可能會在上傳後的任何時間發生。
 1. 當您查看 profiler 追蹤或快照集偵錯工具分析時，服務會從 blob 儲存體提取分析結果。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 * 請務必在與您 Application Insights 資源相同的位置中建立您的儲存體帳戶。 例如 如果您的 Application Insights 資源在美國西部2中，則您的儲存體帳戶也必須在美國西部2中。 
 * 透過存取控制（IAM） UI，將「儲存體 Blob 資料參與者」角色授與儲存體帳戶中的 AAD 應用程式「診斷服務信任的儲存體存取」。
 * 如果已啟用私用連結，請設定其他設定，以允許從您的虛擬網路連線到受信任的 Microsoft 服務。 
@@ -63,7 +63,7 @@ _ ![ 圖 1.1](media/profiler-bring-your-own-storage/figure-11.png)_
 如果您也使用私人連結，則需要另外一項設定，以允許從您的虛擬網路連線到受信任的 Microsoft 服務。 請參閱[儲存體網路安全性檔案](../../storage/common/storage-network-security.md#trusted-microsoft-services)。
 
 ### <a name="link-your-storage-account-with-your-application-insights-resource"></a>將您的儲存體帳戶與您的 Application Insights 資源連結
-若要設定程式碼層級診斷（Profiler/偵錯工具）的 BYOS，有兩個選項：
+若要設定程式碼層級診斷（Profiler/偵錯工具）的 BYOS，有三個選項：
 
 * 使用 Azure PowerShell Cmdlet
 * 使用 Azure 命令列介面（CLI）
@@ -198,7 +198,7 @@ _ ![ 圖 1.1](media/profiler-bring-your-own-storage/figure-11.png)_
 
 1. 在 PowerShell 主控台中出現提示時，提供下列參數：
     
-    |           參數           |                                描述                               |
+    |           參數           |                                說明                               |
     |-------------------------------|--------------------------------------------------------------------------|
     | application_insights_name     | 要啟用 BYOS 的 Application Insights 資源名稱。            |
     | storage_account_name          | 您將用來做為 BYOS 的儲存體帳戶資源的名稱。 |

@@ -1,7 +1,7 @@
 ---
 title: 使用 Azure 入口網站來指派用於資料存取的 RBAC 角色
 titleSuffix: Azure Storage
-description: 瞭解如何使用 Azure 入口網站，以角色型存取控制（RBAC）將許可權指派給 Azure Active Directory 的安全性主體。 Azure 儲存體支援內建和自訂的 RBAC 角色，以透過 Azure AD 進行驗證。
+description: 瞭解如何使用 Azure 入口網站，以角色型存取控制（RBAC）將許可權指派給 Azure Active Directory 的安全性主體。 Azure 儲存體支援內建和 Azure 自訂角色，以透過 Azure AD 進行驗證。
 services: storage
 author: tamram
 ms.service: storage
@@ -10,12 +10,12 @@ ms.date: 07/16/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 77eb3ddfdbf2525aa031c462a38df5dcb8d31217
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e0278329ff6b6946c4107ea048367753eaccbfd8
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518753"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124981"
 ---
 # <a name="use-the-azure-portal-to-assign-an-rbac-role-for-access-to-blob-and-queue-data"></a>使用 Azure 入口網站來指派用於存取 blob 和佇列資料的 RBAC 角色
 
@@ -98,7 +98,7 @@ Azure Active Directory (Azure AD) 會透過[角色型存取控制 (RBAC)](../../
 ## <a name="next-steps"></a>後續步驟
 
 - 如需儲存體資源之 RBAC 角色的詳細資訊，請參閱[使用 Azure Active Directory 來驗證 Azure blob 和佇列的存取權](storage-auth-aad.md)。 
-- 若要深入了解 RBAC，請參閱[什麼是角色型存取控制 (RBAC)？](../../role-based-access-control/overview.md)。
+- 若要深入瞭解 RBAC，請參閱[什麼是 Azure 角色型存取控制（AZURE RBAC）？](../../role-based-access-control/overview.md)。
 - 若要了解如何使用 Azure PowerShell、Azure CLI 或 REST API 來指派和管理 RBAC 角色指派，請參閱下列文章：
     - [使用 Azure PowerShell 管理角色型存取控制 (RBAC)](../../role-based-access-control/role-assignments-powershell.md)
     - [使用 Azure CLI 管理角色型存取控制 (RBAC)](../../role-based-access-control/role-assignments-cli.md)

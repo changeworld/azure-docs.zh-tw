@@ -2,13 +2,13 @@
 title: 在 Application Insights 中使用 PowerShell 設定警示 | Microsoft Docs
 description: 自動化 Application Insights 的組態以取得有關度量變更的電子郵件。
 ms.topic: conceptual
-ms.date: 10/31/2016
-ms.openlocfilehash: 3a3d614ec57242a2ea4b29a86d6365a2efe56f94
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 07/23/2016
+ms.openlocfilehash: 00212aa8783a6bfc8e46d325a882781e33b7de51
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516952"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87117164"
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>在 Application Insights 中使用 PowerShell 設定警示
 
@@ -30,7 +30,7 @@ ms.locfileid: "86516952"
 * 使用該程式安裝 Microsoft Azure PowerShell
 
 ## <a name="connect-to-azure"></a>連線到 Azure
-啟動 Azure PowerShell 並 [連接至您的訂用帳戶](/powershell/azure/overview)：
+啟動 Azure PowerShell 並 [連接至您的訂用帳戶](/powershell/azure/)：
 
 ```azurepowershell
 Add-AzAccount
@@ -51,7 +51,7 @@ Get-AzAlertRule -ResourceGroup "Fabrikam" `
 Add-AzMetricAlertRule -Name "{ALERT NAME}" `
   -Description "{TEXT}" `
   -ResourceGroup "{GROUP NAME}" `
-  -ResourceId "/subscriptions/{SUBSCRIPTION ID}/resourcegroups/{GROUP NAME}/providers/microsoft.insights/components/{APP RESOURCE NAME}" `
+  -TargetResourceId "/subscriptions/{SUBSCRIPTION ID}/resourcegroups/{GROUP NAME}/providers/microsoft.insights/components/{APP RESOURCE NAME}" `
   -MetricName "{METRIC NAME}" `
   -Operator GreaterThan `
   -Threshold {NUMBER}  `
@@ -71,7 +71,7 @@ GUID 是該訂用帳戶的 ID (而非應用程式的檢測金鑰)。
 ```azurepowershell
 Add-AzMetricAlertRule -Name "slow responses" `
   -ResourceGroup "Fabrikam" `
-  -ResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/Fabrikam/providers/microsoft.insights/components/IceCreamWebApp" `
+  -TargetResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/Fabrikam/providers/microsoft.insights/components/IceCreamWebApp" `
   -MetricName "request.duration" `
   -Operator GreaterThan `
   -Threshold 1 `
@@ -88,7 +88,7 @@ Add-AzMetricAlertRule -Name "slow responses" `
 Add-AzMetricAlertRule -Name "poor sales" `
   -Description "slow sales alert" `
   -ResourceGroup "Fabrikam" `
-  -ResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/Fabrikam/providers/microsoft.insights/components/IceCreamWebApp" `
+  -TargetResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/Fabrikam/providers/microsoft.insights/components/IceCreamWebApp" `
   -MetricName "salesPerHour" `
   -Operator LessThan `
   -Threshold 100 `

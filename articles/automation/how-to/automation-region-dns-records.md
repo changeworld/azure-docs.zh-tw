@@ -3,14 +3,14 @@ title: Azure 自動化使用的 Azure 資料中心 DNS 記錄 |Microsoft Docs
 description: 本文提供在限制對裝載該自動化帳戶之特定 Azure 區域的通訊時，Azure 自動化功能所需的 DNS 記錄。
 services: automation
 ms.subservice: process-automation
-ms.date: 06/22/2020
+ms.date: 07/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 44d70db195850b3f87806c69755095b521078b2e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 17d0857a8979cfcc632ab8951fb255f97229a665
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85298305"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87117187"
 ---
 # <a name="dns-records-for-azure-regions-used-by-azure-automation"></a>Azure 自動化所使用之 Azure 區域的 DNS 記錄
 
@@ -64,7 +64,7 @@ ms.locfileid: "85298305"
 | 美國東部 2 |`https://<accountId>.webhook.eus2.azure-automation.net`<br>`https://<accountId>.agentsvc.eus2.azure-automation.net`<br>`https://<accountId>.jrds.eus2.azure-automation.net` |
 | 加拿大中部 |`https://<accountId>.webhook.cc.azure-automation.net`<br>`https://<accountId>.agentsvc.cc.azure-automation.net`<br>`https://<accountId>.jrds.cc.azure-automation.net` |
 | 西歐 |`https://<accountId>.webhook.we.azure-automation.net`<br>`https://<accountId>.agentsvc.we.azure-automation.net`<br>`https://<accountId>.jrds.we.azure-automation.net` |
-| 北歐 |`https://<accountId>.webhook.ne.azure-automation.net`<br>`https://<accountId>.agentsvc.ne.azure-automation.net`<br>`https://<accountId>.jrds.ne.azure-automation.net` |
+| 歐洲北部 |`https://<accountId>.webhook.ne.azure-automation.net`<br>`https://<accountId>.agentsvc.ne.azure-automation.net`<br>`https://<accountId>.jrds.ne.azure-automation.net` |
 | 東南亞 |`https://<accountId>.webhook.sea.azure-automation.net`<br>`https://<accountId>.agentsvc.sea.azure-automation.net`<br>`https://<accountId>.jrds.sea.azure-automation.net` |
 | 東亞 |`https://<accountId>.webhook.ea.azure-automation.net`<br>`https://<accountId>.agentsvc.ea.azure-automation.net`<br>`https://<accountId>.jrds.ea.azure-automation.net` |
 | 印度中部 |`https://<accountId>.webhook.cid.azure-automation.net`<br>`https://<accountId>.agentsvc.cid.azure-automation.net`<br>`https://<accountId>.jrds.cid.azure-automation.net` |
@@ -83,6 +83,12 @@ ms.locfileid: "85298305"
 | US Gov 維吉尼亞州 |`https://<accountId>.webhook.usge.azure-automation.us`<br>`https://<accountId>.agentsvc.usge.azure-automation.us`<br>`https://<accountId>.jrds.usge.azure-automation.us` |
 | US Gov 德克薩斯州 |`https://<accountId>.webhook.ussc.azure-automation.us`<br>`https://<accountId>.agentsvc.ussc.azure-automation.us`<br>`https://<accountId>.jrds.ussc.azure-automation.us` |
 | US Gov 亞利桑那州 |`https://<accountId>.webhook.phx.azure-automation.us`<br>`https://<accountId>.agentsvc.phx.azure-automation.us`<br>`https://<accountId>.jrds.phx.azure-automation.us` |
+
+在 `<accountId>` DNS 記錄中，以代表您的自動化帳戶識別碼的 GUID 取代為值**URL**。 您可以從 Azure 入口網站中 [**帳戶設定**] 下的 [**金鑰**] 取得識別碼。
+
+![自動化帳戶的主要金鑰頁面](./media/automation-region-dns-records/automation-account-keys.png)
+
+在 [帳戶] */* [ **URL** ] 欄位中複製值-`https://<GUID>.agentsvc.<region>.azure-automation.net/accounts/<GUID>`
 
 建議您使用定義[例外狀況](../automation-runbook-execution.md#exceptions)時所列出的位址。 如需區域 IP 位址的清單，而不是區功能變數名稱稱，請從 Microsoft 下載中心下載下列雲端環境的 JSON 檔案：
 

@@ -2,23 +2,21 @@
 title: Azure Data Lake Analytics 中的 U-SQL 認知功能
 description: 瞭解如何在 U-SQL 中使用認知功能的智慧。 此程式碼範例可協助您開始著手。
 services: data-lake-analytics
-author: saveenr
-ms.author: saveenr
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.assetid: 019c1d53-4e61-4cad-9b2c-7a60307cbe19
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 06/05/2018
-ms.openlocfilehash: c417004e4abeda12b444ea4143ef1262f480d348
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 35973f3453daf61ee18b04b68e2fee4dd2e52402
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119543"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87125474"
 ---
 # <a name="get-started-with-the-cognitive-capabilities-of-u-sql"></a>開始使用 U-SQL 的辨識功能
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 U-SQL 的辨識功能讓開發人員可以在其公司的巨量資料程式中使用 put 智慧。 
 
 下列使用認知功能的範例可供使用：

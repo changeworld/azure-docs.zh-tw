@@ -3,8 +3,8 @@ title: 建立適用於 PHP 的 Azure Web 和背景工作角色
 description: 在 Azure 雲端服務中建立 PHP Web 和背景工作角色及設定 PHP 執行階段的指南。
 services: ''
 documentationcenter: php
-author: msangapu
-manager: cfowler
+author: msangapu-msft
+manager: gwallace
 ms.assetid: 9f7ccda0-bd96-4f7b-a7af-fb279a9e975b
 ms.service: cloud-services
 ms.workload: tbd
@@ -13,12 +13,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: msangapu
-ms.openlocfilehash: 70d48ba9519c627addf58939866633cdcc43049e
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: fd04c6315a5a6915159c0cbb6a9640ae0695ed73
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85919826"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87117231"
 ---
 # <a name="create-php-web-and-worker-roles"></a>建立 PHP Web 和背景工作角色
 
@@ -32,7 +32,7 @@ Azure 提供三種運算模型來執行應用程式：Azure 應用程式服務�
 
 ## <a name="download-the-azure-sdk-for-php"></a>下載 Azure SDK for PHP
 
-[Azure SDK for PHP](https://github.com/Azure/azure-sdk-for-php) 由數個元件組成。 本文將使用下列兩個元件：Azure PowerShell 和 Azure 模擬器。 這兩個元件可透過 Microsoft Web Platform Installer 來安裝。 如需詳細資訊，請參閱[如何安裝和設定 Azure PowerShell](/powershell/azure/overview)。
+[Azure SDK for PHP](https://github.com/Azure/azure-sdk-for-php) 由數個元件組成。 本文將使用下列兩個元件：Azure PowerShell 和 Azure 模擬器。 這兩個元件可透過 Microsoft Web Platform Installer 來安裝。 如需詳細資訊，請參閱 [如何安裝及設定 Azure PowerShell](/powershell/azure/)。
 
 ## <a name="create-a-cloud-services-project"></a>建立雲端服務專案
 
@@ -182,7 +182,7 @@ PS C:\MyProject> Stop-AzureEmulator
 
 ## <a name="publish-your-application"></a>發佈您的應用程式
 
-若要發佈應用程式，您必須先使用 [Import-AzurePublishSettingsFile](https://docs.microsoft.com/powershell/module/servicemanagement/azure/import-azurepublishsettingsfile) Cmdlet 匯入您的發佈設定。 使用 [Publish-AzureServiceProject](https://docs.microsoft.com/powershell/module/servicemanagement/azure/publish-azureserviceproject) Cmdlet 發佈應用程式，如下所示。 如需登入的相關資訊，請參閱 [如何安裝和設定 Azure PowerShell](/powershell/azure/overview)。
+若要發佈應用程式，您必須先使用 [Import-AzurePublishSettingsFile](/powershell/module/servicemanagement/azure.service/import-azurepublishsettingsfile) Cmdlet 匯入您的發佈設定。 使用 [Publish-AzureServiceProject](/powershell/module/servicemanagement/azure.service/publish-azureserviceproject) Cmdlet 發佈應用程式，如下所示。 如需登入的相關資訊，請參閱 [如何安裝和設定 Azure PowerShell](/powershell/azure/)。
 
 ## <a name="next-steps"></a>後續步驟
 

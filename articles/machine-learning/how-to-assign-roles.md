@@ -11,12 +11,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 06/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: f289be1b3432d9c62b4841c513088afa16e0e447
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ff8d532bf1c19ded9567e8c1e4b63e674c01d0d8
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85609243"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87125168"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>管理 Azure Machine Learning 工作區的存取權
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -25,18 +25,18 @@ ms.locfileid: "85609243"
 
 ## <a name="default-roles"></a>預設角色
 
-Azure Machine Learning 工作區是一種 Azure 資源。 就像其他 Azure 資源一樣，建立新的 Azure Machine Learning 工作區時，它會隨附三個預設角色。 您可以將使用者新增至工作區，並將它們指派給這些內建角色的其中一個。
+Azure Machine Learning 工作區是一項 Azure 資源。 就像其他 Azure 資源一樣，新的 Azure Machine Learning 工作區建立時，會隨附三個預設角色。 您可以將使用者新增至工作區，並將它們指派給這些內建角色的其中一個。
 
 | 角色 | 存取層級 |
 | --- | --- |
 | **讀取者** | 工作區中的唯讀動作。 讀者可以在工作區中列出及查看資產（包括[資料](how-to-access-data.md)存放區認證），但無法建立或更新這些資產。 |
-| **參與者** | 在工作區中查看、建立、編輯或刪除（如果適用）資產。 例如，參與者可以建立實驗、建立或附加計算叢集、提交執行，以及部署 web 服務。 |
+| **參與者** | 在工作區中查看、建立、編輯或刪除（如果適用）資產。 例如，參與者可以建立實驗、建立或連結計算叢集、提交執行，以及部署 Web 服務。 |
 | **擁有者** | 工作區的完整存取權，包括能夠在工作區中查看、建立、編輯或刪除（如果適用）資產。 此外，您可以變更角色指派。 |
 
 > [!IMPORTANT]
 > 角色存取的範圍可以設定為 Azure 中的多個層級。 例如，具有工作區之擁有者存取權的人，可能不會擁有包含該工作區之資源群組的擁有者存取權。 如需詳細資訊，請參閱[RBAC 的運作方式](/azure/role-based-access-control/overview#how-rbac-works)。
 
-如需特定內建角色的詳細資訊，請參閱[Azure 的內建角色](/azure/role-based-access-control/built-in-roles)。
+如需特定內建角色的詳細資訊，請參閱[Azure 內建角色](/azure/role-based-access-control/built-in-roles)。
 
 ## <a name="manage-workspace-access"></a>管理工作區存取
 
@@ -117,7 +117,7 @@ az role definition create --role-definition data_scientist_role.json
 az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientist" --user jdoe@contoson.com
 ```
 
-如需自訂角色的詳細資訊，請參閱[適用于 Azure 資源的自訂角色](/azure/role-based-access-control/custom-roles)。
+如需自訂角色的詳細資訊，請參閱[Azure 自訂角色](/azure/role-based-access-control/custom-roles)。
 
 ## <a name="frequently-asked-questions"></a>常見問題集
 

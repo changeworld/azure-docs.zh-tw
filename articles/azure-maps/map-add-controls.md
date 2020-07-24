@@ -1,19 +1,19 @@
 ---
 title: 將控制項新增至地圖 |Microsoft Azure 對應
 description: 如何將縮放控制項、音調控制項、旋轉控制項和樣式選擇器新增至 Microsoft Azure 對應中的地圖。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 094dc9fd01ec71f378a173a2b4fa64cc672d7c97
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7fa9442deabe0022c267074880d6f21d7324ca6f
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80334571"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87126358"
 ---
 # <a name="add-controls-to-a-map"></a>將控制項新增至對應
 

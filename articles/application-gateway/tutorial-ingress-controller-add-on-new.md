@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 06/10/2020
 ms.author: caya
-ms.openlocfilehash: 439313f0f42adf0513ce490ab6569171cce7934b
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 4634421829cf71c0c5b9476f8ff3d08b9caa7dbd
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037897"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87117337"
 ---
 # <a name="tutorial-enable-the-ingress-controller-add-on-preview-for-a-new-aks-cluster-with-a-new-application-gateway-instance"></a>教學課程：使用新的應用程式閘道實例來啟用新 AKS 叢集的輸入控制器附加元件（預覽）
 
@@ -40,7 +40,7 @@ ms.locfileid: "86037897"
 
 使用[az feature register](https://docs.microsoft.com/cli/azure/feature#az-feature-register)命令來註冊*AKS-IngressApplicationGatewayAddon*功能旗標，如下列範例所示。 當附加元件仍處於預覽狀態時，您只需要針對每個訂用帳戶執行此動作一次。
 ```azurecli-interactive
-az feature register --name AKS-IngressApplicationGatewayAddon --namespace microsoft.containerservice
+az feature register --name AKS-IngressApplicationGatewayAddon --namespace Microsoft.ContainerService
 ```
 
 可能需要幾分鐘的時間才會顯示狀態 `Registered` 。 您可以使用 [az feature list](https://docs.microsoft.com/cli/azure/feature#az-feature-register) 命令檢查註冊狀態：

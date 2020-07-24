@@ -3,20 +3,18 @@ title: 在 QnA Maker 知識庫中新增閒聊
 titleSuffix: Azure Cognitive Services
 description: 當您建立 KB 時，將個人閒聊新增至您的 Bot，讓它變得更健談且吸引人。 QnA Maker 可讓您輕鬆地將預先填入的一組最常見閒聊，新增至您的 KB。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: e06cad8e8ca62330b09e173cf6058905b49f19e4
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 0aca072a9e659d242dec9dd45a12f9568d419599
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83992900"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124420"
 ---
 # <a name="add-chit-chat-to-a-knowledge-base"></a>在知識庫中新增閒聊
 
@@ -29,7 +27,7 @@ ms.locfileid: "83992900"
 對於的使用者查詢 `When is your birthday?` ，每個特性都有一個樣式的回應：
 
 <!-- added quotes so acrolinx doesn't score these sentences -->
-|風格|範例|
+|特質|範例|
 |--|--|
 |Professional|年齡並不是真的適用于我。|
 |易記|我的年齡並不太長。|
@@ -74,7 +72,7 @@ ms.locfileid: "83992900"
 ## <a name="add-additional-chit-chat-questions-and-answers"></a>新增其他閒聊問題和回答
 您可以新增不在預先定義之資料集中的閒聊-chat QnA 配對。 確保您不會複製閒聊集已經涵蓋的 QnA 配對。 當您新增任何新的閒聊 QnA 時，它會新增到您的**編輯**來源。 若要確保 ranker 瞭解這是閒聊交談，請新增中繼資料索引鍵/值組 "chitchat"，如下圖所示：
 
-![![新增閒聊-交談 Qna](../media/qnamaker-how-to-chit-chat/add-new-chit-chat.png)](../media/qnamaker-how-to-chit-chat/add-new-chit-chat.png#lightbox)
+![![新增閒聊-交談 Qna](../media/qnamaker-how-to-chit-chat/add-new-chit-chat.png）](../media/qnamaker-how-to-chit-chat/add-new-chit-chat.png#lightbox)
 
 ## <a name="delete-chit-chat-from-an-existing-kb"></a>從現有知識庫中刪除閒聊
 選取您的知識庫，並瀏覽至 [設定]**** 頁面。 您的特定閒聊來源會以檔案列示，內含選取的特質名稱。 您可以將此當作原始程式檔刪除。
@@ -86,6 +84,6 @@ ms.locfileid: "83992900"
 > [!div class="nextstepaction"]
 > [匯入知識庫](../Tutorials/migrate-knowledge-base.md)
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
 [QnA Maker 概觀](../Overview/overview.md)
