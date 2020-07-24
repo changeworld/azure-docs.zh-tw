@@ -9,12 +9,12 @@ ms.subservice: faq
 ms.date: 06/30/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: cf58b62001ce5d193e3a06973215d82138ad4b59
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 8170cfcbbf200c6ba5030aff5716f46b537d8c97
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855593"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080466"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure 虛擬機器擴展集常見問題集
 
@@ -64,22 +64,22 @@ ms.locfileid: "85855593"
 
 ### <a name="do-scale-sets-work-with-azure-availability-zones"></a>擴展集是否可與 Azure 可用性區域搭配使用？
 
-是的！ 如需詳細資訊，請參閱[擴展集區域文件](./virtual-machine-scale-sets-use-availability-zones.md)。
+是！ 如需詳細資訊，請參閱[擴展集區域文件](./virtual-machine-scale-sets-use-availability-zones.md)。
 
 
 ## <a name="autoscale"></a>Autoscale
 
 ### <a name="what-are-best-practices-for-azure-autoscale"></a>什麼是 Azure 自動調整的最佳做法？
 
-如需自動調整的最佳做法，請參閱[自動調整虛擬機器的最佳做法](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-autoscale-best-practices)。
+如需自動調整的最佳做法，請參閱[自動調整虛擬機器的最佳做法](../azure-monitor/platform/autoscale-best-practices.md)。
 
 ### <a name="where-do-i-find-metric-names-for-autoscaling-that-uses-host-based-metrics"></a>哪裡可以找到使用主機型計量自動調整的計量名稱？
 
-如需使用主機型計量之自動調整的計量名稱，請參閱[支援的 Azure 監視器度量](https://azure.microsoft.com/documentation/articles/monitoring-supported-metrics/)。
+如需使用主機型計量之自動調整的計量名稱，請參閱[支援的 Azure 監視器度量](../azure-monitor/platform/metrics-supported.md)。
 
 ### <a name="are-there-any-examples-of-autoscaling-based-on-an-azure-service-bus-topic-and-queue-length"></a>是否有任何根據 Azure 服務匯流排主題和佇列長度自動調整的範例？
 
-是。 如需根據 Azure 服務匯流排主題和佇列長度自動調整的範例，請參閱 [Azure 監視器的自動調整常用計量](https://azure.microsoft.com/documentation/articles/insights-autoscale-common-metrics/)。
+是。 如需根據 Azure 服務匯流排主題和佇列長度自動調整的範例，請參閱 [Azure 監視器的自動調整常用計量](../azure-monitor/platform/autoscale-common-metrics.md)。
 
 如需服務匯流排佇列，請使用下列 JSON：
 
@@ -104,9 +104,9 @@ ms.locfileid: "85855593"
 
 您可以在 VM 上建立自動調整設定，以使用主機層級計量或客體 OS 型計量。
 
-如需支援的計量資訊，請參閱 [Azure 監視器的自動調整常見計量](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-autoscale-common-metrics)。
+如需支援的計量資訊，請參閱 [Azure 監視器的自動調整常見計量](../azure-monitor/platform/autoscale-common-metrics.md)。
 
-如需虛擬機器擴展集的完整範例，請參閱[使用虛擬機器擴展集的 Resource Manager 範本進行進階自動調整設定](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-advanced-autoscale-virtual-machine-scale-sets)。
+如需虛擬機器擴展集的完整範例，請參閱[使用虛擬機器擴展集的 Resource Manager 範本進行進階自動調整設定](../azure-monitor/platform/autoscale-virtual-machine-scale-sets.md)。
 
 此範例使用主機層級 CPU 計量及訊息計數計量。
 
@@ -114,13 +114,13 @@ ms.locfileid: "85855593"
 
 ### <a name="how-do-i-set-alert-rules-on-a-virtual-machine-scale-set"></a>如何設定虛擬機器擴展集的警示規則？
 
-您可以透過 PowerShell 或 Azure CLI，建立虛擬機器擴展集計量的警示。 如需詳細資訊，請參閱 [Azure 監視器 PowerShell 快速入門範例](https://azure.microsoft.com/documentation/articles/insights-powershell-samples/#create-alert-rules)和 [Azure 監視器跨平台 CLI 快速入門範例](https://azure.microsoft.com/documentation/articles/insights-cli-samples/#work-with-alerts)。
+您可以透過 PowerShell 或 Azure CLI，建立虛擬機器擴展集計量的警示。 如需詳細資訊，請參閱 [Azure 監視器 PowerShell 快速入門範例](../azure-monitor/samples/powershell-samples.md#create-metric-alerts)和 [Azure 監視器跨平台 CLI 快速入門範例](../azure-monitor/samples/cli-samples.md#work-with-alerts)。
 
 虛擬機器擴展集的 TargetResourceId 如下所示：
 
 /subscriptions/yoursubscriptionid/resourceGroups/yourresourcegroup/providers/Microsoft.Compute/virtualMachineScaleSets/yourvmssname
 
-您可以選擇任何 VM 效能計數器做為要設定警示的計量。 如需詳細資訊，請參閱 [Azure 監視器的自動調整常用計量](https://azure.microsoft.com/documentation/articles/insights-autoscale-common-metrics/)一文中的 [Resource Manager 型 Windows VM 的客體 OS 計量](https://azure.microsoft.com/documentation/articles/insights-autoscale-common-metrics/#guest-os-metrics-resource-manager-based-windows-vms)和 [Linux VM 的客體 OS 計量](https://azure.microsoft.com/documentation/articles/insights-autoscale-common-metrics/#guest-os-metrics-linux-vms)。
+您可以選擇任何 VM 效能計數器做為要設定警示的計量。 如需詳細資訊，請參閱 [Azure 監視器的自動調整常用計量](../azure-monitor/platform/autoscale-common-metrics.md)一文中的 [Resource Manager 型 Windows VM 的客體 OS 計量](../azure-monitor/platform/autoscale-common-metrics.md#guest-os-metrics-for-resource-manager-based-windows-vms)和 [Linux VM 的客體 OS 計量](../azure-monitor/platform/autoscale-common-metrics.md#guest-os-metrics-linux-vms)。
 
 ### <a name="how-do-i-set-up-autoscale-on-a-virtual-machine-scale-set-by-using-powershell"></a>如何使用 PowerShell 在虛擬機器擴展集上設定自動調整？
 
@@ -129,7 +129,7 @@ ms.locfileid: "85855593"
 
 ### <a name="if-i-have-stopped-deallocated-a-vm-is-that-vm-started-as-part-of-an-autoscale-operation"></a>如果我已停止 (已取消配置) VM，該 VM 是否在自動調整作業中啟動？
 
-否。 如果自動調整規則需有額外的 VM 執行個體作為擴展集的一部分，則會建立新的 VM 執行個體。 已停止 (已取消配置) 的 VM 執行個體不會在自動調整事件中啟動。 不過，這些已停止 (已取消配置) 的 VM 可能會在執行個體數目相應縮小的自動調整事件中遭到刪除，同樣地系統可以根據 VM 執行個體識別碼的順序刪除任何 VM 執行個體。
+不可以。 如果自動調整規則需有額外的 VM 執行個體作為擴展集的一部分，則會建立新的 VM 執行個體。 已停止 (已取消配置) 的 VM 執行個體不會在自動調整事件中啟動。 不過，這些已停止 (已取消配置) 的 VM 可能會在執行個體數目相應縮小的自動調整事件中遭到刪除，同樣地系統可以根據 VM 執行個體識別碼的順序刪除任何 VM 執行個體。
 
 
 
@@ -159,7 +159,7 @@ ms.locfileid: "85855593"
 
 程式碼支援 Windows 和 Linux。
 
-如需詳細資訊，請參閱[建立或更新虛擬機器擴展集](https://msdn.microsoft.com/library/mt589035.aspx)。
+如需詳細資訊，請參閱[建立或更新虛擬機器擴展集](/rest/api/compute/virtualmachinescalesets/createorupdate)。
 
 
 ### <a name="how-do-i-use-self-signed-certificates-provisioned-for-azure-service-fabric-clusters"></a>如何? 使用為 Azure Service Fabric 叢集布建的自我簽署憑證？
@@ -169,7 +169,7 @@ ms.locfileid: "85855593"
 az sf cluster create -h
 ```
 
-自我簽署的憑證無法用於憑證授權單位提供的分散式信任，也不應該用於任何預期託管企業生產解決方案的 Service Fabric 叢集；如需其他 Service Fabric 安全性指引，請檢閱 [Azure Service Fabric 安全性最佳做法](https://docs.microsoft.com/azure/security/fundamentals/service-fabric-best-practices)和 [Service Fabric 叢集安全性案例](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/)。
+自我簽署的憑證無法用於憑證授權單位提供的分散式信任，也不應該用於任何預期託管企業生產解決方案的 Service Fabric 叢集；如需其他 Service Fabric 安全性指引，請檢閱 [Azure Service Fabric 安全性最佳做法](../security/fundamentals/service-fabric-best-practices.md)和 [Service Fabric 叢集安全性案例](../service-fabric/service-fabric-cluster-security.md)。
 
 ### <a name="can-i-specify-an-ssh-key-pair-to-use-for-ssh-authentication-with-a-linux-virtual-machine-scale-set-from-a-resource-manager-template"></a>是否可指定 SSH 金鑰組以便透過 Resource Manager 範本中的 Linux 虛擬機器擴展集來進行 SSH 驗證？
 
@@ -197,7 +197,7 @@ az sf cluster create -h
 
 此 JSON 區塊會在[此 Azure 快速入門範本](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-sshkey/azuredeploy.json)中使用。
 
-如需詳細資訊，請參閱[建立或更新虛擬機器擴展集](https://msdn.microsoft.com/library/azure/mt589035.aspx#linuxconfiguration)。
+如需詳細資訊，請參閱[建立或更新虛擬機器擴展集](/rest/api/compute/virtualmachinescalesets/createorupdate#linuxconfiguration)。
 
 ### <a name="how-do-i-remove-deprecated-certificates"></a>如何移除已被取代的憑證？
 
@@ -224,10 +224,10 @@ az sf cluster create -h
 }
 ```
 
-linuxConfiguration 元素名稱 | 必要 | 類型 | Description
+linuxConfiguration 元素名稱 | 必要 | 類型 | 描述
 --- | --- | --- | ---
-ssh | No | 集合 | 指定 Linux OS 的 SSH 金鑰組態
-路徑 | 是 | String | 指定 SSH 金鑰或憑證必須位於的 Linux 檔案路徑
+ssh | 否 | 集合 | 指定 Linux OS 的 SSH 金鑰組態
+path | 是 | String | 指定 SSH 金鑰或憑證必須位於的 Linux 檔案路徑
 keyData | 是 | String | 指定 base64 編碼的 SSH 公開金鑰
 
 如需範例，請參閱 [101-vm-sshkey GitHub 快速入門範本](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-sshkey/azuredeploy.json)。
@@ -240,7 +240,7 @@ keyData | 是 | String | 指定 base64 編碼的 SSH 公開金鑰
 
 若要從相同金鑰保存庫新增更多密碼，請更新 $vmss.properties.osProfile.secrets[0].vaultCertificates 清單。
 
-如需預期的輸入結構，請參閱[建立或更新虛擬機器擴展集](https://msdn.microsoft.com/library/azure/mt589035.aspx)。
+如需預期的輸入結構，請參閱[建立或更新虛擬機器擴展集](/rest/api/compute/virtualmachinescalesets/createorupdate)。
 
 在金鑰保存庫中的虛擬機器擴展集物件中尋找密碼。 然後，將憑證參考 (URL 及密碼存放區名稱) 新增至與保存庫相關聯的清單。
 
@@ -268,7 +268,7 @@ keyData | 是 | String | 指定 base64 編碼的 SSH 公開金鑰
 
 ### <a name="where-do-i-put-certificates-for-linux-vms"></a>將 Linux VM 的憑證放在哪裡？
 
-若要了解如何部署 Linux VM 的憑證，請參閱[將憑證從客戶管理的金鑰保存庫部署到 VM](https://blogs.technet.microsoft.com/kv/2015/07/14/deploy-certificates-to-vms-from-customer-managed-key-vault/)。
+若要了解如何部署 Linux VM 的憑證，請參閱[將憑證從客戶管理的金鑰保存庫部署到 VM](/archive/blogs/kv/deploy-certificates-to-vms-from-customer-managed-key-vault)。
 
 ### <a name="how-do-i-add-a-new-vault-certificate-to-a-new-certificate-object"></a>如何將新的保存庫憑證新增至新的憑證物件？
 
@@ -304,7 +304,7 @@ CRP 元件不會保存客戶密碼。 如果您對虛擬機器擴展集中的所
 
 若要將 .cer 公開金鑰部署至虛擬機器擴展集，您可以產生僅包含 .cer 檔案的 .pfx 檔案。 若要這樣做，請使用 `X509ContentType = Pfx`。 例如，載入 .cer 檔案做為 C# 或 PowerShell 中的 x509Certificate2 物件，然後呼叫此方法。
 
-如需詳細資訊，請參閱 [X509Certificate.Export 方法 (X509ContentType, String)](https://msdn.microsoft.com/library/24ww6yzk(v=vs.110.aspx))。
+如需詳細資訊，請參閱 [X509Certificate.Export 方法 (X509ContentType, String)](/dotnet/api/system.security.cryptography.x509certificates.x509certificate.export?view=netcore-3.1#system_security_cryptography_x509certificates_x509certificate_export_system_security_cryptography_x509certificates_x509contenttype_system_string_)。
 
 ### <a name="how-do-i-pass-in-certificates-as-base64-strings"></a>如何? 以 base64 字串傳入憑證嗎？
 
@@ -334,7 +334,7 @@ CRP 元件不會保存客戶密碼。 如果您對虛擬機器擴展集中的所
 
 如需詳細資訊，請參閱[Microsoft 信任中心](https://www.microsoft.com/TrustCenter/Compliance/PCI)。
 
-### <a name="does-managed-identities-for-azure-resources-work-with-virtual-machine-scale-sets"></a>[Azure 資源的受控識別](https://docs.microsoft.com/azure/active-directory/msi-overview)是否可以與虛擬機器擴展集搭配運作？
+### <a name="does-managed-identities-for-azure-resources-work-with-virtual-machine-scale-sets"></a>[Azure 資源的受控識別](../active-directory/managed-identities-azure-resources/overview.md)是否可以與虛擬機器擴展集搭配運作？
 
 是。 您可以在適用于[Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi)和[Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi)的 Azure 快速入門範本中看到一些範例 MSI 範本。
 
@@ -436,7 +436,7 @@ Update-AzVmss -ResourceGroupName $rgname -Name $vmssname -VirtualMachineScaleSet
 
 ### <a name="how-do-i-execute-a-custom-script-thats-hosted-in-a-private-storage-account"></a>如何? 執行裝載于私人儲存體帳戶的自訂腳本嗎？
 
-若要執行裝載於私人儲存體帳戶的自訂指令碼，請使用儲存體帳戶金鑰和名稱來進行受保護的設定。 如需詳細資訊，請參閱[自訂腳本延伸](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-extensions-customscript/#template-example-for-a-windows-vm-with-protected-settings)模組。
+若要執行裝載於私人儲存體帳戶的自訂指令碼，請使用儲存體帳戶金鑰和名稱來進行受保護的設定。 如需詳細資訊，請參閱[自訂腳本延伸](../virtual-machines/extensions/custom-script-windows.md?toc=/azure/virtual-machines/windows/toc.json#property-managedidentity)模組。
 
 ## <a name="passwords"></a>密碼
 
@@ -448,7 +448,7 @@ Update-AzVmss -ResourceGroupName $rgname -Name $vmssname -VirtualMachineScaleSet
 
     直接在擴展集模型中更新系統管理員認證 (例如，使用 Azure 資源總管、PowerShell 或 CLI)。 擴展集更新之後，所有的新虛擬機器就會有新的認證。 現有的虛擬機器則要在重新安裝映像後，才會擁有新的認證。
 
-- 使用虛擬機器存取延伸模組來重設密碼。 請務必遵循[這裡](https://docs.microsoft.com/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm)所述的密碼需求。
+- 使用虛擬機器存取延伸模組來重設密碼。 請務必遵循[這裡](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)所述的密碼需求。
 
     使用下列 PowerShell 範例：
 
@@ -523,7 +523,7 @@ Update-AzVmss -ResourceGroupName $rgname -Name $vmssname -VirtualMachineScaleSet
 
 ### <a name="can-i-use-scale-sets-with-accelerated-networking"></a>我可以搭配加速的網路使用擴展集嗎？
 
-是。 若要使用加速的網路，請在擴展集的 networkInterfaceConfigurations 設定中，將enableAcceleratedNetworking 設為 true。 例如
+是。 若要使用加速的網路，請在擴展集的 networkInterfaceConfigurations 設定中，將enableAcceleratedNetworking 設為 true。 例如：
 
 ```json
 "networkProfile": {
@@ -635,7 +635,7 @@ Update-AzVmss -ResourceGroupName $rgname -Name $vmssname -VirtualMachineScaleSet
 
 ### <a name="how-to-i-update-my-virtual-machine-scale-set-to-a-new-image-how-do-i-manage-patching"></a>如何將虛擬機器擴展集更新為新的映像？ 如何管理修補？
 
-若要將虛擬機器擴展集更新為新的映像，以及管理修補，請參閱[升級虛擬機器擴展集](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-upgrade-scale-set)。
+若要將虛擬機器擴展集更新為新的映像，以及管理修補，請參閱[升級虛擬機器擴展集](./virtual-machine-scale-sets-upgrade-scale-set.md)。
 
 ### <a name="can-i-use-the-reimage-operation-to-reset-a-vm-without-changing-the-image-that-is-i-want-reset-a-vm-to-factory-settings-rather-than-to-a-new-image"></a>是否可以使用重新安裝映像作業來重設 VM，而不變更映像？ (也就是，我想要將 VM 重設為原廠設定，而不是新的映像。)
 
@@ -671,7 +671,7 @@ az vmss extension set --name MicrosoftMonitoringAgent --publisher Microsoft.Ente
 }
 ```
 
-建立新的 VM 時，VM 的 InstanceView 會顯示螢幕擷取畫面等的詳細資料。 以下是範例：
+建立新的 VM 時，VM 的 InstanceView 會顯示螢幕擷取畫面等的詳細資料。 以下為範例：
 
 ```json
 "bootDiagnostics": {

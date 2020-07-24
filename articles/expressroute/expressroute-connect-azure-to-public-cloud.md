@@ -7,11 +7,12 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 07/24/2019
 ms.author: osamaz
-ms.openlocfilehash: b8a454c2a104dfe8545cf734bf0b020b8f749bb1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 80863b56334b0d2d76cdf505dcd15c5cc4c14c52
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73889635"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081095"
 ---
 # <a name="connecting-azure-with-public-clouds"></a>連接 Azure 與公用雲端
 
@@ -33,7 +34,7 @@ ExpressRoute 可讓客戶透過連線提供者所提供的私人連線，將其�
  
 透過層提供者連線時，Microsoft 會將客戶 VNET 路由通告給服務提供者的 BGP。 提供者可以有兩個不同的執行方式。
 
-![](media/expressroute-connect-azure-to-public-cloud/azure-to-public-clouds-l3.png)
+![顯示層提供者的圖表。](media/expressroute-connect-azure-to-public-cloud/azure-to-public-clouds-l3.png)
 
 提供者可能會在不同的 VRF 中登陸每個雲端提供者，如果來自所有雲端提供者的流量會到達客戶路由器。 如果客戶與服務提供者一起執行 BGP，則預設會將這些路由重新公告至其他雲端提供者。 
 
@@ -44,7 +45,7 @@ ExpressRoute 可讓客戶透過連線提供者所提供的私人連線，將其�
 ### <a name="layer2-provider-and-direct-connection"></a>L2 提供者和直接連接
 
 雖然這兩種模型中的實體連線不同，但在層 BGP 是直接在 MSEE 與客戶路由器之間建立。 針對 ExpressRoute Direct 客戶，會直接連線至 MSEE。 如果是 L2，服務提供者會將 VLAN 從客戶的內部部署擴充至雲端。 客戶在第2方網路上執行 BGP，以將其 Dc 連線到雲端。
-![](media/expressroute-connect-azure-to-public-cloud/azure-to-public-clouds-l2.png)
+![顯示 L2 提供者和直接連接的圖表。](media/expressroute-connect-azure-to-public-cloud/azure-to-public-clouds-l2.png)
 在這兩種情況下，客戶都會有每個公用雲端的點對點連線。 客戶會建立與每個公用雲端的個別 BGP 連線。 依預設，一個雲端提供者接收到的路由將會公告至其他雲端提供者。 每個雲端提供者都有不同的前置詞限制，因此在通告路由時，客戶應負責這些限制。 客戶可以使用一般 BGP 旋鈕與 Microsoft，同時從其他公用雲端公告路由。
 
 ## <a name="direct-connection-with-expressroute"></a>ExpressRoute 的直接連線

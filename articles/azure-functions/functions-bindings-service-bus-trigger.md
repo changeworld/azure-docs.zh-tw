@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
 ms.custom: tracking-python
-ms.openlocfilehash: ee4961c6c1bb8cafe25ec2c84affdf0f1789e9f2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aedf39f99ace6e1119dde7089a3c83b96ac41fb1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85603021"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079701"
 ---
 # <a name="azure-service-bus-trigger-for-azure-functions"></a>Azure Functions 的 Azure 服務匯流排觸發程式
 
@@ -297,7 +297,7 @@ Python 指令碼不支援屬性。
 |**queueName**|**QueueName**|要監視的佇列名稱。  只有在監視佇列時設定 (不適用於主題)。
 |**topicName**|**TopicName**|要監視的主題名稱。 只有在監視主題時設定 (不適用於佇列)。|
 |**subscriptionName**|**SubscriptionName**|要監視的訂用帳戶名稱。 只有在監視主題時設定 (不適用於佇列)。|
-|**connection**|**[連接]**|應用程式設定的名稱包含要用於此繫結的服務匯流排連接字串。 如果應用程式設定名稱是以 "AzureWebJobs" 開頭，您只能指定名稱的其餘部分。 例如，如果您將設定 `connection` 為 "MyServiceBus"，函數執行時間會尋找名為 "AzureWebJobsMyServiceBus" 的應用程式設定。 如果您將 `connection` 保留空白，則 Functions 執行階段會使用應用程式設定中名稱為 "AzureWebJobsServiceBus" 的預設服務匯流排連接字串。<br><br>若要取得連接字串，請遵循[取得管理認證](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string)所示的步驟。 連接字串必須是用於服務匯流排命名空間，而不限於特定佇列或主題。 |
+|**connection**|**連線**|應用程式設定的名稱包含要用於此繫結的服務匯流排連接字串。 如果應用程式設定名稱是以 "AzureWebJobs" 開頭，您只能指定名稱的其餘部分。 例如，如果您將設定 `connection` 為 "MyServiceBus"，函數執行時間會尋找名為 "AzureWebJobsMyServiceBus" 的應用程式設定。 如果您將 `connection` 保留空白，則 Functions 執行階段會使用應用程式設定中名稱為 "AzureWebJobsServiceBus" 的預設服務匯流排連接字串。<br><br>若要取得連接字串，請遵循[取得管理認證](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string)所示的步驟。 連接字串必須是用於服務匯流排命名空間，而不限於特定佇列或主題。 |
 |**accessRights**|**存取**|連接字串的存取權限。 可用值為 `manage` 和 `listen`。 預設值是 `manage`，這表示 `connection` 已具備**管理**權限。 如果您使用沒有**管理**權限的連接字串，請將 `accessRights` 設定為 "listen"。 否則，Functions 執行階段在嘗試執行需要管理權限的作業時可能會失敗。 在 Azure Functions 2.x 版和更新版本中，因為最新版的服務匯流排 SDK 不支援管理作業，所以無法使用這個屬性。|
 |**isSessionsEnabled**|**IsSessionsEnabled**|`true`如果連接到[會話感知](../service-bus-messaging/message-sessions.md)的佇列或訂用帳戶，則為。 `false`否則為預設值。|
 
@@ -312,10 +312,10 @@ Python 指令碼不支援屬性。
 * `string` - 如果訊息是文字。
 * `byte[]` - 適用於二進位資料。
 * 自訂類型 - 如果訊息包含 JSON，Azure Functions 會嘗試將 JSON 資料還原序列化。
-* `BrokeredMessage`-提供您使用[BrokeredMessage. GetBody \<T> （）](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1)方法還原序列化的訊息。
-* [`MessageReceiver`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.core.messagereceiver?view=azure-dotnet)-用來接收和認可來自訊息容器的訊息（當設定為時，此為必要 [`autoComplete`](functions-bindings-service-bus-output.md#hostjson-settings) `false` ）
+* `BrokeredMessage`-提供您使用[BrokeredMessage. GetBody \<T> （）](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1)方法還原序列化的訊息。
+* [`MessageReceiver`](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver?view=azure-dotnet)-用來接收和認可來自訊息容器的訊息（當設定為時，此為必要 [`autoComplete`](functions-bindings-service-bus-output.md#hostjson-settings) `false` ）
 
-這些參數類型適用于 Azure Functions 1.x 版;若為2.x 和更高版本，請使用， [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) 而不是 `BrokeredMessage` 。
+這些參數類型適用于 Azure Functions 1.x 版;若為2.x 和更高版本，請使用， [`Message`](/dotnet/api/microsoft.azure.servicebus.message) 而不是 `BrokeredMessage` 。
 
 # <a name="c-script"></a>[C# 指令碼](#tab/csharp-script)
 
@@ -324,9 +324,9 @@ Python 指令碼不支援屬性。
 * `string` - 如果訊息是文字。
 * `byte[]` - 適用於二進位資料。
 * 自訂類型 - 如果訊息包含 JSON，Azure Functions 會嘗試將 JSON 資料還原序列化。
-* `BrokeredMessage`-提供您使用[BrokeredMessage. GetBody \<T> （）](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1)方法還原序列化的訊息。
+* `BrokeredMessage`-提供您使用[BrokeredMessage. GetBody \<T> （）](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1)方法還原序列化的訊息。
 
-這些參數適用于 Azure Functions 1.x 版;若為2.x 和更高版本，請使用， [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) 而不是 `BrokeredMessage` 。
+這些參數適用于 Azure Functions 1.x 版;若為2.x 和更高版本，請使用， [`Message`](/dotnet/api/microsoft.azure.servicebus.message) 而不是 `BrokeredMessage` 。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -352,13 +352,13 @@ Python 指令碼不支援屬性。
 
 Functions 執行階段會在 [PeekLock 模式](../service-bus-messaging/service-bus-performance-improvements.md#receive-mode)中收到訊息。 它會在函數成功完成時，於訊息中呼叫 `Complete`，或是在函數失敗時呼叫 `Abandon`。 如果函式執行時間較 `PeekLock` 逾時還長，只要函式正在執行中，就會自動更新鎖定。 
 
-`maxAutoRenewDuration` 在 *host.json* 中是可設定的，其對應至 [OnMessageOptions.MaxAutoRenewDuration](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.messagehandleroptions.maxautorenewduration?view=azure-dotnet)。 根據服務匯流排文件，此設定允許的上限為 5 分鐘，而您可以將 Functions 時間限制從預設的 5 分鐘增加至 10 分鐘。 您不會想對服務匯流排函式這麼做，因為您會超過服務匯流排更新限制。
+`maxAutoRenewDuration` 在 *host.json* 中是可設定的，其對應至 [OnMessageOptions.MaxAutoRenewDuration](/dotnet/api/microsoft.azure.servicebus.messagehandleroptions.maxautorenewduration?view=azure-dotnet)。 根據服務匯流排文件，此設定允許的上限為 5 分鐘，而您可以將 Functions 時間限制從預設的 5 分鐘增加至 10 分鐘。 您不會想對服務匯流排函式這麼做，因為您會超過服務匯流排更新限制。
 
 ## <a name="message-metadata"></a>訊息中繼資料
 
 服務匯流排觸發程序提供數個[中繼資料屬性](./functions-bindings-expressions-patterns.md#trigger-metadata)。 這些屬性可作為其他繫結中繫結運算式的一部分或程式碼中的參數使用。 這些屬性是[Message](/dotnet/api/microsoft.azure.servicebus.message?view=azure-dotnet)類別的成員。
 
-|屬性|類型|Description|
+|屬性|類型|描述|
 |--------|----|-----------|
 |`ContentType`|`string`|傳送者和接收者針對應用程式特定邏輯使用的內容類型識別碼。|
 |`CorrelationId`|`string`|相互關連識別碼。|

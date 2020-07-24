@@ -71,13 +71,13 @@
     - name: Azure 區塊鏈開發套件
       href: 'https://github.com/Microsoft/vscode-azure-blockchain-ethereum/wiki'
     - name: 區塊鏈 REST API
-      href: 'https://docs.microsoft.com/rest/api/blockchain/'
+      href: /rest/api/blockchain/
     - name: 程式碼範例
       href: 'https://github.com/Azure-Samples/blockchain'
     - name: 部落格
       href: 'https://azure.microsoft.com/blog/topics/blockchain/'
     - name: Microsoft 問與答頁面
-      href: 'https://docs.microsoft.com/answers/topics/azure-blockchain-service.html'
+      href: /answers/topics/azure-blockchain-service.html
     - name: 社群支援
       href: 'https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain'
     - name: 堆疊溢位支援

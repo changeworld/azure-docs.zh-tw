@@ -7,11 +7,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 04/22/2020
 ms.author: cynthn
-ms.openlocfilehash: 950f4cfda73b40db0de8ba035868573cda1a5017
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c3e914b904b0f6f1d3a4fae6c43c81cdf4eae819
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84675787"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080007"
 ---
 # <a name="managing-platform-updates-with-maintenance-control"></a>使用維護控制來管理平臺更新 
 
@@ -22,12 +23,12 @@ ms.locfileid: "84675787"
 有了維護控制，您可以：
 - 批次更新為一個更新套件。
 - 請等候35天以套用更新。 
-- 使用 Azure Functions 自動進行維護視窗的平臺更新。
+- 使用[Azure Functions](https://github.com/Azure/azure-docs-powershell-samples/tree/master/maintenance-auto-scheduler)自動進行維護視窗的平臺更新。
 - 維護設定適用于訂用帳戶和資源群組。 
 
 ## <a name="limitations"></a>限制
 
-- Vm 必須位於[專用主機](./linux/dedicated-hosts.md)上，或使用[隔離的 VM 大小](./linux/isolation.md)建立。
+- Vm 必須位於[專用主機](./linux/dedicated-hosts.md)上，或使用[隔離的 VM 大小](isolation.md)建立。
 - 35天后，將會自動套用更新。
 - 使用者必須擁有**資源參與者**存取權。
 
@@ -38,6 +39,8 @@ ms.locfileid: "84675787"
 - [Azure CLI](maintenance-control-cli.md)
 - [Azure PowerShell](maintenance-control-powershell.md)
 - [Azure 入口網站](maintenance-control-portal.md)
+
+如需 Azure Functions 範例，請參閱[使用維護控制排程維護更新和 Azure Functions](https://github.com/Azure/azure-docs-powershell-samples/tree/master/maintenance-auto-scheduler)。
 
 ## <a name="next-steps"></a>後續步驟
 

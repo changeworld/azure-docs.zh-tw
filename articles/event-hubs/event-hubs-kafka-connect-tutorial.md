@@ -3,12 +3,12 @@ title: 與 Apache Kafka Connect 整合 - Azure 事件中樞 | Microsoft Docs
 description: 本文提供有關如何將 Apache Spark 與「適用於 Kafka 的 Azure 事件中樞」搭配使用的資訊。
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: 2e7a6b406b6d33c94c6fddea2f73b70c24f45f86
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4c63d27549df40120a90b2594ab54337c11168b6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85320167"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079090"
 ---
 # <a name="integrate-apache-kafka-connect-support-on-azure-event-hubs-preview"></a>在 Azure 事件中樞上整合 Apache Kafka Connect 支援 (預覽)
 隨著擷取商務需求的情況增加，對於擷取各種外部來源和接收的需求也隨之增加。 [Apache Kafka Connect](https://kafka.apache.org/documentation/#connect) 會提供這類架構，以便在任何外部系統 (例如，MySQL、HDFS 以及透過 Kafka 叢集的檔案系統) 往返連線和匯入/匯出資料。 本教學課程會逐步引導您使用 Kafka Connect framework 與事件中樞。
@@ -34,7 +34,7 @@ ms.locfileid: "85320167"
 - [Git](https://www.git-scm.com/downloads)
 - Linux/MacOS
 - Kafka 版本 (1.1.1 版，Scala 2.11 版)，取得來源為 [kafka.apache.org](https://kafka.apache.org/downloads#1.1.1)
-- 請參閱[適用於 Apache Kafka 的事件中樞](https://docs.microsoft.com/azure/event-hubs/event-hubs-for-kafka-ecosystem-overview)簡介文章
+- 請參閱[適用於 Apache Kafka 的事件中樞](./event-hubs-for-kafka-ecosystem-overview.md)簡介文章
 
 ## <a name="create-an-event-hubs-namespace"></a>建立事件中樞命名空間
 您需要事件中樞命名空間，才能從任何事件中樞服務傳送和接收。 如需建立命名空間和事件中樞的指示，請參閱[建立事件中樞](event-hubs-create.md)。 請取得事件中樞連接字串和完整網域名稱 (FQDN) 以供稍後使用。 如需相關指示，請參閱[取得事件中樞連接字串](event-hubs-get-connection-string.md)。 

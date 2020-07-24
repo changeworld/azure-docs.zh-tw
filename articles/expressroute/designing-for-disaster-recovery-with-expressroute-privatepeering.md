@@ -7,17 +7,22 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 05/25/2019
 ms.author: rambala
-ms.openlocfilehash: 726a014983c0da959d72b7976fef2ebb2c6e9b9e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8adfb0ef0d9aa79d1b14127453f76223f035d62a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74076695"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081163"
 ---
 # <a name="designing-for-disaster-recovery-with-expressroute-private-peering"></a>使用 ExpressRoute 私用對等互連設計災難復原
 
 ExpressRoute 是專為高可用性所設計，可提供與 Microsoft 資源的電訊公司私人網路連線能力。 換句話說，在 Microsoft network 內的 ExpressRoute 路徑中，沒有單一失敗點。 如需將 ExpressRoute 線路的可用性最大化的設計考慮，請參閱[使用 ExpressRoute 設計高可用性][HA]。
 
 不過，採取 Murphy 的熱門」古訓--*如果發生任何問題，請將其*納入考慮，在本文中，我們將著重于超越無法使用單一 ExpressRoute 線路解決之失敗的解決方案。 換句話說，在本文中，我們將探討使用異地多餘的 ExpressRoute 線路，針對嚴重損壞修復建立穩固的後端網路連線能力的網路架構考慮。
+
+>[!NOTE]
+>這篇文章中所述的概念同樣適用于在虛擬 WAN 或其外部建立 ExpressRoute 線路時。
+>
 
 ## <a name="need-for-redundant-connectivity-solution"></a>需要重複的連接解決方案
 
@@ -71,11 +76,11 @@ ExpressRoute 是專為高可用性所設計，可提供與 Microsoft 資源的�
 
 下列螢幕擷取畫面說明如何透過 Azure 入口網站來設定 ExpressRoute 連接的權數。
 
-[![3]][3]
+[![第]][3]
 
 下圖說明使用連接權數影響 ExpressRoute 路徑選取範圍。 預設連接權數為0。 在下列範例中，ExpressRoute 1 的連線權數設定為100。 當 VNet 收到透過多個 ExpressRoute 線路所公告的路由前置詞時，VNet 會偏好具有最高權數的連接。
 
-[![4]][4]
+[![4gb]][4]
 
 如果 ExpressRoute 1 的兩個連線都已關閉，則 VNet 只會透過 ExpressRoute 2 查看 10.1.11.0/24 路由通告;因此，待命電路會在此失敗狀態下使用。
 
@@ -109,7 +114,7 @@ ExpressRoute 是專為高可用性所設計，可提供與 Microsoft 資源的�
 
 下圖說明案例1。 在圖表中，綠色線條表示 VNet1 與內部部署網路之間流量的路徑。 藍色線表示 VNet2 與內部部署網路之間流量的路徑。 實線表示在穩定狀態中所需的路徑，而虛線表示在具有穩定狀態流量流量的對應 ExpressRoute 電路失敗時的流量路徑。 
 
-[![utf-7]][7]
+[![7]][7]
 
 您可以使用連線權數來架構案例，以影響 Vnet，以將內部部署網路系結流量連線到本機對等互連位置 ExpressRoute。 若要完成此解決方案，您必須確定對稱的反向流量流程。 您可以將本機喜好設定用於 BGP 路由器（在內部部署端上已終止 ExpressRoute 線路）上的 iBGP 會話，以偏好使用 ExpressRoute 線路。 下圖說明此解決方案。 
 

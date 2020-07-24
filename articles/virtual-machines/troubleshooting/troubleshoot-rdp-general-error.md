@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: f996ffa864fb4178ddedecde7c5511d5d9cf39a1
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: df318fea4960601dcbfa84149fdc47bedc9104a2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985801"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079820"
 ---
 # <a name="troubleshoot-an-rdp-general-error-in-azure-vm"></a>在 Azure VM 中對 RDP 一般錯誤進行疑難排解
 
@@ -183,7 +183,7 @@ RDP 接聽程式的設定不正確。
 
 #### <a name="step-1-turn-on-remote-desktop"></a>步驟 1：開啟遠端桌面
 
-1. [將 OS 磁片連結至復原 VM](../windows/troubleshoot-recovery-disks-portal.md)。
+1. [將 OS 磁片連結至復原 VM](./troubleshoot-recovery-disks-portal-windows.md)。
 2. 啟動復原 VM 的遠端桌面連線。
 3. 請確定磁片在 [磁片管理] 主控台中標示為 [**線上**]。 記下指派給已連結 OS 磁碟的磁碟機代號。
 4. 啟動復原 VM 的遠端桌面連線。

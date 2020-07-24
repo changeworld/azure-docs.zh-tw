@@ -1,29 +1,29 @@
 ---
-title: '使用 c # 程式碼從 GA 環境查詢資料-Azure 時間序列深入解析 |Microsoft Docs'
-description: '瞭解如何使用以 c # 撰寫的自訂應用程式來查詢 Azure 時間序列深入解析環境中的資料。'
+title: '使用 c # 程式碼從 Gen1 環境查詢資料-Azure 時間序列深入解析 Gen1 |Microsoft Docs'
+description: '瞭解如何使用以 c # 撰寫的自訂應用程式來查詢 Azure 時間序列深入解析 Gen1 環境中的資料。'
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 07/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: 754d1b80236d138693987cccee7a218ccd96b16b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c794cfb5f0d652e25007131d9ca39fb73e2218e2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81383877"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080670"
 ---
-# <a name="query-data-from-the-azure-time-series-insights-ga-environment-using-c"></a>使用 C 從 Azure 時間序列深入解析 GA 環境查詢資料#
+# <a name="query-data-from-the-azure-time-series-insights-gen1-environment-using-c"></a>使用 C 從 Azure 時間序列深入解析 Gen1 環境查詢資料#
 
-此 c # 範例示範如何使用[Ga 查詢 api](https://docs.microsoft.com/rest/api/time-series-insights/ga-query)來查詢 Azure 時間序列深入解析 ga 環境中的資料。
+此 c # 範例示範如何使用[Gen1 查詢 api](https://docs.microsoft.com/rest/api/time-series-insights/ga-query)來查詢來自 Azure 時間序列深入解析 Gen1 環境的資料。
 
 > [!TIP]
-> 在 [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample) 檢視 GA C# 程式碼範例。
+> View Gen1 c # 程式碼範例，網址為 [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample) 。
 
 ## <a name="summary"></a>摘要
 
@@ -33,14 +33,14 @@ ms.locfileid: "81383877"
 
 * 如何在 `Authorization` 後續的查詢 API 要求的標頭中傳遞該取得的存取權杖。 
 
-* 此範例會呼叫每個 GA 查詢 Api，以示範如何對進行 HTTP 要求：
+* 此範例會呼叫每個 Gen1 查詢 Api，以示範如何對進行 HTTP 要求：
     * [取得環境 API](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environments-api)以傳回使用者可存取的環境
     * [取得環境可用性 API](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-availability-api)
     * [取得環境中繼資料 API](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-metadata-api)以取出環境中繼資料
     * [取得環境事件 API](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-events-api)
     * [取得環境匯總 API](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-aggregates-api)
     
-* 如何使用 WSS 與 GA 查詢 Api 互動，以訊息：
+* 如何使用 WSS 與 Gen1 查詢 Api 互動，以訊息：
 
    * [取得環境事件資料流程 API](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-events-streamed-api)
    * [取得環境匯總資料流程 API](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-aggregates-streamed-api)
@@ -49,7 +49,7 @@ ms.locfileid: "81383877"
 
 編譯及執行範例程式碼之前，您必須先完成下列步驟：
 
-1. [佈建 GA Azure 時間序列見解](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started)環境。
+1. 布建[Gen1 Azure 時間序列深入解析](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started)環境。
 1. 針對 Azure Active Directory 設定 Azure 時間序列見解環境，如[驗證和授權](time-series-insights-authentication-and-authorization.md)中所述。 
 1. 安裝必要的專案相依性。
 1. 以適當的環境識別碼取代每個 **#DUMMY #** ，以編輯下面的範例程式碼。

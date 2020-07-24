@@ -7,18 +7,18 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.date: 02/27/2020
-ms.openlocfilehash: 545c1720ef379ec74bd2e7c0bc68f6a2fcbba789
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/24/2020
+ms.openlocfilehash: e47cd89b2f0a5de4e0fc7663f37a2960e2ada971
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82115494"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078628"
 ---
 # <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>在採用 Enterprise Integration Pack 的 Azure Logic Apps 中交換適用於 B2B 企業整合的 AS2 訊息
 
 > [!IMPORTANT]
-> 原始的 AS2 連接器即將淘汰，因此請確定您改用**AS2 （v2）** 連接器。 這個版本提供的功能與原始版本相同，是 Logic Apps 執行時間的原生，而且可在輸送量和訊息大小方面提供顯著的效能改進。 此外，原生 v2 連接器不會要求您建立與整合帳戶的連線。 相反地，如必要條件中所述，請務必將整合帳戶連結至您打算使用連接器的邏輯應用程式。
+> 原始的 AS2 連接器即將淘汰，因此除非您需要追蹤功能，否則請改用**AS2 （v2）** 連接器。 除了追蹤以外，v2 連接器提供與原始版本相同的功能，是 Logic Apps 執行時間的原生，而且在訊息大小、輸送量和延遲方面有顯著的效能改進。 此外，v2 連接器不會要求您建立與整合帳戶的連線。 相反地，如必要條件中所述，請務必將整合帳戶連結至您打算使用連接器的邏輯應用程式。
 
 若要使用 Azure Logic Apps 中的 AS2 訊息，您可使用 AS2 連接器，其提供用來管理 AS2 通訊的觸發程序和動作。 例如，若要在傳輸訊息時建立安全性和可靠性，您可以使用下列動作：
 
@@ -75,20 +75,20 @@ ms.locfileid: "82115494"
 
 1. 在設計工具中，將新動作新增至您的邏輯應用程式。
 
-1. 在 [選擇動作]**** 和搜尋方塊中，選取 [全部]****。 在搜尋方塊中，輸入「as2 編碼」，並確定您選取的是 AS2 （v2）動作： **As2 編碼**
+1. 在 [選擇動作] 和搜尋方塊中，選取 [全部]。 在搜尋方塊中，輸入「as2 編碼」，並確定您選取的是 AS2 （v2）動作： **As2 編碼**
 
    ![選取 [AS2 編碼]](./media/logic-apps-enterprise-integration-as2/select-as2-encode.png)
 
 1. 現在提供這些屬性的資訊：
 
-   | 屬性 | 描述 |
+   | 屬性 | 說明 |
    |----------|-------------|
    | **要編碼的訊息** | 訊息承載 |
    | **AS2 來源** | AS2 合約所指定之訊息寄件者的識別碼 |
    | **AS2 至** | AS2 合約所指定的訊息接收器識別碼 |
    |||
 
-   例如：
+   例如:
 
    ![訊息編碼屬性](./media/logic-apps-enterprise-integration-as2/as2-message-encoding-details.png)
 
@@ -103,7 +103,7 @@ ms.locfileid: "82115494"
 
 1. 在設計工具中，將新動作新增至您的邏輯應用程式。
 
-1. 在 [選擇動作]**** 和搜尋方塊中，選取 [全部]****。 在搜尋方塊中，輸入「as2 解碼」，並確定您選取的是 AS2 （v2）動作： **as2**解碼
+1. 在 [選擇動作] 和搜尋方塊中，選取 [全部]。 在搜尋方塊中，輸入「as2 解碼」，並確定您選取的是 AS2 （v2）動作： **as2**解碼
 
    ![選取 [AS2 解碼]](media/logic-apps-enterprise-integration-as2/select-as2-decode.png)
 
@@ -119,7 +119,7 @@ ms.locfileid: "82115494"
 
 ## <a name="connector-reference"></a>連接器參考
 
-如需此連接器的更多技術詳細資料，例如連接器的 Swagger 檔案所述的動作和限制，請參閱[連接器的參考頁面](https://docs.microsoft.com/connectors/as2/)。 
+如需此連接器的更多技術詳細資料，例如連接器的 Swagger 檔案所述的動作和限制，請參閱[連接器的參考頁面](/connectors/as2/)。 
 
 > [!NOTE]
 > 針對[整合服務環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 中的邏輯應用程式，此連接器其 ISE 標籤版本使用 [ISE 的 B2B 訊息限制](../logic-apps/logic-apps-limits-and-config.md#b2b-protocol-limits)。

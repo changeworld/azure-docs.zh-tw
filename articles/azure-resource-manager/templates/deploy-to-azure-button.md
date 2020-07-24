@@ -2,13 +2,13 @@
 title: 部署至 Azure 按鈕
 description: 使用按鈕，從 GitHub 存放庫部署 Azure Resource Manager 範本。
 ms.topic: conceptual
-ms.date: 05/04/2020
-ms.openlocfilehash: e403d095f7419ed13742dcfa8e8407a92ad10be0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/20/2020
+ms.openlocfilehash: 9fe69eba2a91bf19e0662ae071c222905c348666
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82744100"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079445"
 ---
 # <a name="use-a-deployment-button-to-deploy-templates-from-github-repository"></a>使用 [部署] 按鈕來部署 GitHub 存放庫中的範本
 
@@ -28,7 +28,11 @@ ms.locfileid: "82744100"
 
 ## <a name="create-url-for-deploying-template"></a>建立用來部署範本的 URL
 
-若要建立範本的 URL，請從存放庫中範本的原始 URL 開始：
+若要建立範本的 URL，請從存放庫中範本的原始 URL 開始。 若要查看原始 URL，請選取 [ **raw**]。
+
+:::image type="content" source="./media/deploy-to-azure-button/select-raw.png" alt-text="選取原始":::
+
+URL 的格式為：
 
 ```html
 https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json

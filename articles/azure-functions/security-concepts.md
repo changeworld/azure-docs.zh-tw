@@ -3,19 +3,20 @@ title: 保護 Azure Functions
 description: 了解如何讓您的函式程式碼更安全地在 Azure 中執行，以免遭受常見的攻擊。
 ms.date: 4/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: 692e8420bda1e7baa8521dd6caaf5eef183823fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bdb012c3f379b1e0314364f79ccc4aa49eba4bd3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84259417"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079684"
 ---
 # <a name="securing-azure-functions"></a>保護 Azure Functions
 
-在許多方面，對無伺服器函式進行安全開發、部署和作業的規劃，與任何 Web 架構或雲端裝載的應用程式非常相似。 [Azure App Service](/azure/app-service/) 提供適用於函式應用程式的裝載基礎結構。 此文章可為您提供執行函式程式碼的安全性策略，以及 App Service 如何協助保護您的函式。 
+在許多方面，對無伺服器函式進行安全開發、部署和作業的規劃，與任何 Web 架構或雲端裝載的應用程式非常相似。 [Azure App Service](../app-service/index.yml) 提供適用於函式應用程式的裝載基礎結構。 此文章可為您提供執行函式程式碼的安全性策略，以及 App Service 如何協助保護您的函式。 
 
 [!INCLUDE [app-service-security-intro](../../includes/app-service-security-intro.md)]
 
-如需遵循 [Azure 安全性基準測試](/azure/security/benchmarks/overview)的一組安全性建議，請參閱[適用於 Azure Functions 的 Azure 安全性基準](security-baseline.md)。
+如需遵循 [Azure 安全性基準測試](../security/benchmarks/overview.md)的一組安全性建議，請參閱[適用於 Azure Functions 的 Azure 安全性基準](security-baseline.md)。
 
 ## <a name="secure-operation"></a>安全作業 
 

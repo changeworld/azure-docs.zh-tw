@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: MeirMen
 ms.author: meirm
 ms.date: 02/03/2020
-ms.openlocfilehash: 3adb94709d089e2f1d106680acc00c08d2203a4d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e49f9caaeb1b16daa49fabb217b6fc40fff17f53
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340881"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081469"
 ---
 # <a name="azure-monitor-logs-for-service-providers"></a>服務提供者的 Azure 監視器記錄
 
@@ -20,7 +21,7 @@ Azure 監視器中的 Log Analytics 工作區可協助受管理的服務提供�
 
 針對屬於[雲端解決方案提供者（CSP）](https://partner.microsoft.com/en-US/membership/cloud-solution-provider)方案一部分的合作夥伴和服務提供者，Azure 監視器中的 Log Analytics 是 azure CSP 訂用帳戶中可用的其中一個 azure 服務。
 
-服務提供者也可以使用 Azure 監視器中的 Log Analytics，透過[Azure 燈塔](https://docs.microsoft.com/azure/lighthouse/overview)中的 azure 委派資源管理功能來管理客戶資源。
+服務提供者也可以使用 Azure 監視器中的 Log Analytics，透過[Azure 燈塔](../../lighthouse/overview.md)中的 azure 委派資源管理功能來管理客戶資源。
 
 ## <a name="architectures-for-service-providers"></a>服務提供者的架構
 
@@ -34,12 +35,12 @@ Log Analytics 工作區提供了一種方法，可讓系統管理員控制[記�
 
 有兩種方式可讓服務提供者系統管理員取得客戶租使用者中 Log Analytics 工作區的存取權：
 
-- 客戶可以將個別使用者從服務提供者新增為[Azure Active Directory 來賓使用者（B2B）](https://docs.microsoft.com/azure/active-directory/b2b/what-is-b2b)。 服務提供者系統管理員必須登入 Azure 入口網站中的每個客戶目錄，才能夠存取這些工作區。 這也需要客戶管理每個服務提供者系統管理員的個別存取權。
-- 為了達到更高的擴充性和彈性，服務提供者可以使用[Azure 燈塔](https://docs.microsoft.com/azure/lighthouse/overview)的[azure 委派資源管理](https://docs.microsoft.com/azure/lighthouse/concepts/azure-delegated-resource-management)功能來存取客戶的租使用者。 使用此方法時，服務提供者系統管理員會包含在服務提供者租使用者的 Azure AD 使用者群組中，而且會在每個客戶的上架程式期間授與此群組存取權。 然後，這些系統管理員可以從自己的服務提供者租使用者記憶體取每個客戶的工作區，而不需要個別登入每個客戶的租使用者。 以這種方式存取客戶的 Log Analytics 工作區資源，可以減少用戶端所需的工作，並可讓您更輕鬆地透過[Azure 監視器活頁簿](https://docs.microsoft.com/azure//azure-monitor/platform/workbooks-overview)之類的工具，跨相同服務提供者所管理的多個客戶來收集和分析資料。 如需詳細資訊，請參閱[大規模監視客戶資源](https://docs.microsoft.com/azure/lighthouse/how-to/monitor-at-scale)。
+- 客戶可以將個別使用者從服務提供者新增為[Azure Active Directory 來賓使用者（B2B）](../../active-directory/b2b/what-is-b2b.md)。 服務提供者系統管理員必須登入 Azure 入口網站中的每個客戶目錄，才能夠存取這些工作區。 這也需要客戶管理每個服務提供者系統管理員的個別存取權。
+- 為了達到更高的擴充性和彈性，服務提供者可以使用[Azure 燈塔](../../lighthouse/overview.md)的[azure 委派資源管理](../../lighthouse/concepts/azure-delegated-resource-management.md)功能來存取客戶的租使用者。 使用此方法時，服務提供者系統管理員會包含在服務提供者租使用者的 Azure AD 使用者群組中，而且會在每個客戶的上架程式期間授與此群組存取權。 然後，這些系統管理員可以從自己的服務提供者租使用者記憶體取每個客戶的工作區，而不需要個別登入每個客戶的租使用者。 以這種方式存取客戶的 Log Analytics 工作區資源，可以減少用戶端所需的工作，並可讓您更輕鬆地透過[Azure 監視器活頁簿](../..//azure-monitor/platform/workbooks-overview.md)之類的工具，跨相同服務提供者所管理的多個客戶來收集和分析資料。 如需詳細資訊，請參閱[大規模監視客戶資源](../../lighthouse/how-to/monitor-at-scale.md)。
 
 分散式架構的優點如下：
 
-* 客戶可以透過[Azure 委派的資源管理](https://docs.microsoft.com/azure/lighthouse/concepts/azure-delegated-resource-management)來確認特定層級的許可權，或可以使用自己的[角色型存取](https://docs.microsoft.com/azure/role-based-access-control/overview)來記錄管理的存取權。
+* 客戶可以透過[Azure 委派的資源管理](../../lighthouse/concepts/azure-delegated-resource-management.md)來確認特定層級的許可權，或可以使用自己的[角色型存取](../../role-based-access-control/overview.md)來記錄管理的存取權。
 * 記錄可以從所有類型的資源收集，而不只是以代理程式為基礎的 VM 資料。 例如，Azure 稽核記錄。
 * 每個客戶對於其工作區都可以有不同的設定，例如保留和資料限定。
 * 基於法規和合規性而隔離客戶。
@@ -74,7 +75,7 @@ Log Analytics 工作區提供了一種方法，可讓系統管理員控制[記�
 
 有兩個選項可在中央位置中執行記錄：
 
-1. 集中式工作區：服務提供者可以在其租用戶中建立工作區，並使用可搭配[資料收集 API](../../azure-monitor/platform/data-collector-api.md) 使用[查詢 API](https://dev.loganalytics.io/) 的指令碼，將不同工作區的資料帶到這個集中位置。 指令碼以外的另一個選項是使用 [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview)。
+1. 集中式工作區：服務提供者可以在其租用戶中建立工作區，並使用可搭配[資料收集 API](../../azure-monitor/platform/data-collector-api.md) 使用[查詢 API](https://dev.loganalytics.io/) 的指令碼，將不同工作區的資料帶到這個集中位置。 指令碼以外的另一個選項是使用 [Azure Logic Apps](../../logic-apps/logic-apps-overview.md)。
 
 2. Power BI 為中央位置：當各種工作區使用 Log Analytics 工作區與[Power BI](../../azure-monitor/platform/powerbi.md)之間的整合，將資料匯出至其中時，Power BI 可以做為中央位置。
 
@@ -88,4 +89,4 @@ Log Analytics 工作區提供了一種方法，可讓系統管理員控制[記�
 
 * 使用 [Power BI](../../azure-monitor/platform/powerbi.md) 來產生摘要報告
 
-* 將客戶上架至[Azure 委派的資源管理](https://docs.microsoft.com/azure/lighthouse/concepts/azure-delegated-resource-management)。
+* 將客戶上架至[Azure 委派的資源管理](../../lighthouse/concepts/azure-delegated-resource-management.md)。

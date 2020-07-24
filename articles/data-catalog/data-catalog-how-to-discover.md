@@ -4,13 +4,14 @@ description: 本文著重在說明如何探索已註冊 Azure 資料目錄的資
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: b12cb94832a1ea977fb13f5f2271984dc8780cee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4eb689b17df8236a00b5914912d1927804944f25
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68736366"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081197"
 ---
 # <a name="how-to-discover-data-sources-in-azure-data-catalog"></a>如何探索 Azure 資料目錄中的資料資產
 
@@ -55,7 +56,7 @@ Azure 資料目錄是完全受控的雲端服務，可作為企業資料來源�
 
  ![在 Azure 資料目錄入口網站顯示結果醒目提示並搜尋相符項目](./media/data-catalog-how-to-discover/search-matches.png)
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>總結
 
 因為在資料目錄註冊資料來源，可讓您透過將結構化和描述性中繼資料從資料來源複製到目錄服務，所以更容易地探索及了解資料來源。 註冊資料來源之後，您可以使用篩選來探索資料來源，並且在資料目錄入口網站搜尋。
 

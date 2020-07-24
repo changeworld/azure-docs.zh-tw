@@ -8,12 +8,12 @@ ms.author: jonfan
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 06/25/2020
-ms.openlocfilehash: 9ce807238e1e373701305f8b6bb03451e0202633
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: a5511d7cd4b5bb0f3fe901a735535f8db9036ee7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964629"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078157"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Azure Logic Apps 的定價模式
 
@@ -77,27 +77,27 @@ ms.locfileid: "85964629"
 
 ## <a name="connectors"></a>連接器
 
-Azure Logic Apps 連接器藉由提供[觸發](#triggers)程式、[動作](#actions)或兩者，協助邏輯應用程式存取雲端或內部部署中的應用程式、服務和系統。 連接器會分類為 [標準] 或 [企業]。 如需這些連接器的總覽，請參閱[Azure Logic Apps 的連接器](../connectors/apis-list.md)。 如果您想要在邏輯應用程式中使用的 REST Api 沒有預先建立的連接器可用，您可以建立[自訂連接器](https://docs.microsoft.com/connectors/custom-connectors)，這只是那些 rest api 的包裝函式。 自訂連接器會以標準連接器計費。 下列各節提供有關觸發程式和動作如何計費的詳細資訊。
+Azure Logic Apps 連接器藉由提供[觸發](#triggers)程式、[動作](#actions)或兩者，協助邏輯應用程式存取雲端或內部部署中的應用程式、服務和系統。 連接器會分類為 [標準] 或 [企業]。 如需這些連接器的總覽，請參閱[Azure Logic Apps 的連接器](../connectors/apis-list.md)。 如果您想要在邏輯應用程式中使用的 REST Api 沒有預先建立的連接器可用，您可以建立[自訂連接器](/connectors/custom-connectors)，這只是那些 rest api 的包裝函式。 自訂連接器會以標準連接器計費。 下列各節提供有關觸發程式和動作如何計費的詳細資訊。
 
 <a name="triggers"></a>
 
 ## <a name="triggers"></a>觸發程序
 
-觸發程序是在特定事件發生時建立邏輯應用程式執行個體的特殊動作。 觸發程序會以不同動作影響邏輯應用程式計量方式。 以下是 Azure Logic Apps 中存在的各種觸發程式：
+觸發程式一律是邏輯應用程式工作流程中的第一個步驟，而且是特殊動作，可在符合特定準則或發生特定事件時，建立並執行邏輯應用程式實例。 觸發程序會以不同動作影響邏輯應用程式計量方式。 以下是 Azure Logic Apps 中存在的各種觸發程式：
 
-* **輪詢觸發**程式：此觸發程式會持續檢查端點，尋找符合建立邏輯應用程式實例和啟動工作流程之準則的訊息。 即使未建立任何邏輯應用程式執行個體，Logic Apps 也會將每個輪詢要求當作一個執行來計量。 您可以透過邏輯應用程式設計工具來設定觸發程序，以指定輪詢間隔。
+* **週期觸發**程式：您可以使用不是任何服務或系統特有的一般觸發程式來啟動任何邏輯應用程式工作流程，並根據您在觸發程式中設定的迴圈間隔建立執行的邏輯應用程式實例。 例如，您可以設定每隔三天執行一次的週期觸發程式，或按較複雜的排程。
+
+* **輪詢觸發**程式：您可以使用這個更特殊化的迴圈觸發程式，這通常與特定服務或系統的受控連接器相關聯，以根據您在觸發程式中設定的週期間隔，檢查符合用來建立和執行邏輯應用程式實例之準則的事件或訊息。 即使在未建立任何邏輯應用程式實例的情況下（例如，略過觸發程式），Logic Apps 服務還是會將每個輪詢要求計量為執行。 您可以透過邏輯應用程式設計工具來設定觸發程序，以指定輪詢間隔。
 
   [!INCLUDE [logic-apps-polling-trigger-non-standard-metering](../../includes/logic-apps-polling-trigger-non-standard-metering.md)]
 
-* **Webhook 觸發**程式：此觸發程式會等候用戶端將要求傳送至特定端點。 每個傳送至 Webhook 端點的要求都會計算為一個動作執行。 例如，要求和 HTTP Webhook 觸發程序都是 Webhook 觸發程序。
-
-* **週期觸發**程式：此觸發程式會根據您在觸發程式中設定的週期間隔，建立邏輯應用程式實例。 例如，您可以設定每隔三天執行一次的週期觸發程式，或按較複雜的排程。
+* **Webhook 觸發**程式：您可以使用 webhook 觸發程式來等待用戶端將要求傳送至特定端點 URL 的邏輯應用程式，而不是使用輪詢觸發程式。 傳送至 webhook 端點的每個要求都會計算為動作執行。 例如，要求和 HTTP Webhook 觸發程式都是一般 Webhook 觸發程式。 某些服務或系統的連接器也具有 webhook 觸發程式。
 
 <a name="actions"></a>
 
 ## <a name="actions"></a>動作
 
-Azure Logic Apps 計量「內建」動作（例如 HTTP）做為原生動作。 例如，內建動作包括 HTTP 呼叫、來自 Azure Functions 或 API 管理的呼叫，以及控制流程步驟（例如條件、迴圈和 switch 語句）。 每個動作都有自己的動作類型。 例如，呼叫[連接器](https://docs.microsoft.com/connectors)的動作會有 "ApiConnection" 類型。 這些連接器會分類為標準或企業連接器，並根據其各自的[定價](https://azure.microsoft.com/pricing/details/logic-apps)計量。 *預覽*中的企業連接器是以標準連接器收費。
+Azure Logic Apps 計量「內建」動作（例如 HTTP）做為原生動作。 例如，內建動作包括 HTTP 呼叫、來自 Azure Functions 或 API 管理的呼叫，以及控制流程步驟（例如條件、迴圈和 switch 語句）。 每個動作都有自己的動作類型。 例如，呼叫[連接器](/connectors)的動作會有 "ApiConnection" 類型。 這些連接器會分類為標準或企業連接器，並根據其各自的[定價](https://azure.microsoft.com/pricing/details/logic-apps)計量。 *預覽*中的企業連接器是以標準連接器收費。
 
 Azure Logic Apps 將所有成功和失敗的動作當做執行計量。 不過，Logic Apps 不會計量這些動作：
 
@@ -122,7 +122,7 @@ Azure Logic Apps 提供免費、基本和標準整合帳戶。 「基本」和�
 
 若要在免費、基本或標準整合帳戶之間進行選擇，請參閱下列使用案例描述：
 
-* **免費**：當您想要嘗試探索案例，而不是生產案例時。 這一層僅適用于 Azure 中的公用區域（例如美國西部或東南亞），但不適用於[Azure 中國的世紀](https://docs.microsoft.com/azure/china/overview-operations)或[Azure Government](../azure-government/documentation-government-welcome.md)。
+* **免費**：當您想要嘗試探索案例，而不是生產案例時。 這一層僅適用于 Azure 中的公用區域（例如美國西部或東南亞），但不適用於[Azure 中國的世紀](/azure/china/overview-operations)或[Azure Government](../azure-government/documentation-government-welcome.md)。
 
 * **基本**：當您只想要處理訊息，或做為與較大商務實體有交易夥伴關係的小型企業夥伴時
 

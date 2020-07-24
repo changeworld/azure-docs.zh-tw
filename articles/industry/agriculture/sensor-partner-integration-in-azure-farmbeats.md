@@ -5,11 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 37a387b93f1c6b3796b66993405787cf43990bc4
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 88a8dcb53ab2f845f52121b11c96c23ad0a3e791
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684011"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078919"
 ---
 # <a name="sensor-partner-integration"></a>感應器合作夥伴整合
 
@@ -100,7 +101,7 @@ Accept | 回應格式。 FarmBeats Datahub API 的格式為 JSON。 Accept: appl
 
 **API 要求**
 
-若要提出 REST API 要求，您可結合 HTTP (GET、POST 或 PUT)方法；API 服務的 URL；用以查詢、提交資料、更新或刪除的資源其統一資源識別項 (URI)；以及一或多個 HTTP 要求標頭。 API 服務的 URL 是所提供的 API 端點。 以下是範例： https://\<資料中樞網站名稱>.azurewebsites.net
+若要提出 REST API 要求，您可結合 HTTP (GET、POST 或 PUT)方法；API 服務的 URL；用以查詢、提交資料、更新或刪除的資源其統一資源識別項 (URI)；以及一或多個 HTTP 要求標頭。 API 服務的 URL 是所提供的 API 端點。 以下是範例： HTTPs:// \<yourdatahub-website-name> . azurewebsites.net
 
 您可選擇性地在 GET 呼叫上包含查詢參數來篩選回應中的資料、限制其大小及進行排序。
 
@@ -130,16 +131,16 @@ FarmBeats Datahub 具有下列 API，其可讓裝置合作夥伴建立和管理�
 - /**SensorModel**：SensorModel 會對應至感應器的中繼資料，例如製造商、感應器類型 (類比或數位)，以及感應器量值 (例如環境溫度和壓力)。
 - /**Sensor**：Sensor 會對應至記錄值的實體感應器。 感應器通常會使用裝置識別碼連線到裝置。
 
-  **DeviceModel** |  |
+  DeviceModel | 說明 |
   --- | ---
   Type (Node、Gateway)  | 裝置的類型 - 節點或閘道 |
   製造商  | 製造商的名稱 |
   ProductCode  | 裝置產品代碼，或是型號名稱或號碼。 例如，EnviroMonitor#6800。 |
   連接埠  | 連接埠名稱和類型 (數位或類比)。  |
   名稱  | 用於識別資源的名稱。 例如，型號名稱或產品名稱。 |
-  描述  | 提供有意義的型號描述。 |
+  說明  | 提供有意義的型號描述。 |
   屬性  | 製造商的其他屬性。 |
-  **裝置** |  |
+  **裝置** | **描述** |
   DeviceModelId  |相關裝置型號的識別碼。 |
   HardwareId   |裝置的唯一識別碼，例如 MAC 位址。  |
   ReportingInterval |報告間隔 (秒)。 |
@@ -148,7 +149,7 @@ FarmBeats Datahub 具有下列 API，其可讓裝置合作夥伴建立和管理�
   名稱  | 用於識別資源的名稱。 裝置合作夥伴必須傳送與裝置合作夥伴端其裝置名稱一致的名稱。 如果裝置名稱是裝置合作夥伴端的使用者定義名稱，則應該將相同的使用者定義名稱傳播至 FarmBeats。  |
   描述  | 提供有意義的描述。  |
   屬性  |製造商的其他屬性。  |
-  **SensorModel** |  |
+  **SensorModel** | **描述** |
   Type (Analog、Digital)  |提及類比或數位感應器。|
   製造商  | 製造商的名稱。 |
   ProductCode  | 產品代碼，或型號名稱或號碼。 例如，RS-CO2-N01。  |
@@ -160,9 +161,9 @@ FarmBeats Datahub 具有下列 API，其可讓裝置合作夥伴建立和管理�
   SensorMeasures > Depth  | 感應器的深度 (公分)。 例如，地下 10 公分的濕度度量。
   SensorMeasures > Description  | 提供有意義的度量描述。
   名稱  | 用於識別資源的名稱。 例如，型號名稱或產品名稱。
-  描述  | 提供有意義的型號描述。
+  說明  | 提供有意義的型號描述。
   屬性  | 製造商的其他屬性。
-  **Sensor**  |  |
+  **Sensor**  | **描述** |
   HardwareId  | 製造商所設定感應器的唯一識別碼。
   SensorModelId  | 相關感應器型號的識別碼。
   Location  | 感應器緯度 (-90 到 +90)、經度 (-180 到 180) 和高度 (公尺)。

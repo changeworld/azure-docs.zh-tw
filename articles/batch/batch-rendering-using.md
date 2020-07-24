@@ -5,12 +5,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 03/05/2020
 ms.topic: how-to
-ms.openlocfilehash: 262431cfcc906b6df1054aaa7dc2b9573c3b8833
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: e4f33f0974462197382ea6ac5d2b68d61909f73b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965241"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079255"
 ---
 # <a name="using-azure-batch-rendering"></a>使用 Azure Batch 轉譯
 
@@ -19,7 +19,7 @@ ms.locfileid: "85965241"
 * API：
   * 使用任何 Batch API 撰寫程式碼。  開發人員可將 Azure Batch 功能整合到其現有的應用程式或工作流程中，無論在雲端還是內部部署皆可。
 * 命令列工具：
-  * [Azure 命令列](/cli/azure/)或 [PowerShell](/powershell/azure/overview) 可用來編寫 Batch 適用的指令碼。
+  * [Azure 命令列](/cli/azure/)或 [PowerShell](/powershell/azure/) 可用來編寫 Batch 適用的指令碼。
   * 特別是，[Batch CLI 範本](./batch-cli-templates.md)支援大幅簡化了建立集區和提交作業的程序。
 * Batch Explorer UI：
   * [Batch Explorer](https://github.com/Azure/BatchLabs) 是一種也可讓 Batch 帳戶受到管理及監視的跨平台用戶端工具。

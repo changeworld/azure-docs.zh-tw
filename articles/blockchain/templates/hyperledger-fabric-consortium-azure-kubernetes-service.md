@@ -4,12 +4,12 @@ description: 如何在 Azure Kubernetes Service 上部署和設定 Hyperledger F
 ms.date: 07/07/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: e1cbfa56f1e4ea9f8cbaa0ad973d06e8b8d486ca
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 1e90eeccb015b4d5ef78b79297565ddde9cfa305
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085794"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081267"
 ---
 # <a name="hyperledger-fabric-consortium-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service （AKS）上的 Hyperledger 網狀架構聯盟
 
@@ -28,9 +28,9 @@ ms.locfileid: "86085794"
 
 選項 | 服務模型 | 一般使用案例
 -------|---------------|-----------------
-解決方案範本 | IaaS | 解決方案範本是 Azure Resource Manager 範本，可用來布建完整設定的區塊鏈網路拓撲。 這些範本會針對指定的區塊鏈網路類型，部署和設定 Microsoft Azure 計算、網路和儲存體服務。 解決方案範本是在沒有服務等級協定的情況下提供。 使用[Microsoft Q&支援的問題頁面](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html)。
+解決方案範本 | IaaS | 解決方案範本是 Azure Resource Manager 範本，可用來布建完整設定的區塊鏈網路拓撲。 這些範本會針對指定的區塊鏈網路類型，部署和設定 Microsoft Azure 計算、網路和儲存體服務。 解決方案範本是在沒有服務等級協定的情況下提供。 使用[Microsoft Q&支援的問題頁面](/answers/topics/azure-blockchain-workbench.html)。
 [Azure 區塊鏈服務](../service/overview.md) | PaaS | Azure 區塊鏈 Service Preview 簡化了聯盟區塊鏈網路的構成、管理和治理。 針對需要 PaaS、聯盟管理或合約和交易隱私權的解決方案，使用 Azure 區塊鏈 Service。
-[Azure Blockchain Workbench](../workbench/overview.md) | IaaS 和 PaaS | Azure Blockchain Workbench 預覽是 Azure 服務和功能的集合，目的是要協助您建立及部署區塊鏈應用程式，以與其他組織共用商務程序和資料。 使用 Azure Blockchain Workbench 來建立區塊鏈解決方案的原型或區塊鏈應用程式概念證明。 Azure Blockchain Workbench 目前沒有服務等級合約。 使用[Microsoft Q&支援的問題頁面](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html)。
+[Azure Blockchain Workbench](../workbench/overview.md) | IaaS 和 PaaS | Azure Blockchain Workbench 預覽是 Azure 服務和功能的集合，目的是要協助您建立及部署區塊鏈應用程式，以與其他組織共用商務程序和資料。 使用 Azure Blockchain Workbench 來建立區塊鏈解決方案的原型或區塊鏈應用程式概念證明。 Azure Blockchain Workbench 目前沒有服務等級合約。 使用[Microsoft Q&支援的問題頁面](/answers/topics/azure-blockchain-workbench.html)。
 
 ## <a name="hyperledger-fabric-consortium-architecture"></a>Hyperledger Fabric 聯盟架構
 
@@ -113,7 +113,7 @@ ms.locfileid: "86085794"
     - **DNS 首碼**： AKS 叢集的網域名稱系統（DNS）名稱前置詞。 在建立叢集之後，您將使用 DNS 來連線至 Kubernetes API。
     - **節點大小**： Kubernetes 節點的大小，您可以從 Azure 上提供的 VM 庫存單位（sku）清單中選擇。 為了達到最佳效能，我們建議採用標準 DS3 v2。
     - **節點計數**：要在叢集中部署的 Kubernetes 節點數目計數。 我們建議讓此節點計數至少等於或大於 [網狀架構設定] 中指定的 HLF 節點數目。
-    - **服務主體用戶端識別碼**：輸入現有服務主體的用戶端識別碼，或建立新的，這是 AKS authentication 的必要項。 請參閱[建立服務主體](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps?view=azps-3.2.0#create-a-service-principal)的步驟。
+    - **服務主體用戶端識別碼**：輸入現有服務主體的用戶端識別碼，或建立新的，這是 AKS authentication 的必要項。 請參閱[建立服務主體](/powershell/azure/create-azure-service-principal-azureps?view=azps-3.2.0#create-a-service-principal)的步驟。
     - **服務主體用戶端密碼**：輸入服務主體用戶端識別碼中提供之服務主體的用戶端密碼。
     - **確認用戶端密碼**：確認服務主體用戶端密碼中提供的用戶端密碼。
     - **啟用容器監視**：選擇啟用 AKS 監視，可讓 AKS 記錄推送至指定的 Log Analytics 工作區。
@@ -138,7 +138,7 @@ ms.locfileid: "86085794"
 
 所有執行 Azure HLF 腳本的命令都可以透過 Azure Bash 命令列來執行。 介面（CLI）。 您可以透過登入 Azure shell web 版本  ![Azure Kubernetes Service 範本上的 Hyperledger 網狀架構](./media/hyperledger-fabric-consortium-azure-kubernetes-service/arrow.png) 選項，位於 Azure 入口網站的右上角。 在命令提示字元中，輸入 bash，然後輸入以切換至 bash CLI。
 
-如需詳細資訊，請參閱[Azure shell](https://docs.microsoft.com/azure/cloud-shell/overview) 。
+如需詳細資訊，請參閱[Azure shell](../../cloud-shell/overview.md) 。
 
 ![Azure Kubernetes Service 範本上的 Hyperledger 網狀架構](./media/hyperledger-fabric-consortium-azure-kubernetes-service/hyperledger-powershell.png)
 
@@ -285,7 +285,7 @@ AZURE_FILE_CONNECTION_STRING=https://$STORAGE_ACCOUNT.file.core.windows.net/$STO
 ./azhlf channel setAnchorPeers -c $CHANNEL_NAME -p <anchorPeersList> -o $PEER_ORG_NAME -u $PEER_ADMIN_IDENTITY
 ```
 
-`<anchorPeersList>`這是要設定為錨點對等節點的空格分隔清單。 例如，
+`<anchorPeersList>`這是要設定為錨點對等節點的空格分隔清單。 例如
 
   - `<anchorPeersList>`如果您只想要將 peer1 節點設定為錨點對等，請設定為 "peer1"。
   - `<anchorPeersList>`如果您想要將 peer1 和 peer3 節點設定為錨點對等，請設定為 "peer1" "peer3"。
@@ -441,6 +441,6 @@ kubectl describe pod fabric-tools -n tools | grep "Image:" | cut -d ":" -f 3
 
 洽詢 Microsoft 工程師和 Azure 區塊鏈服務社群專家。
 
-- [Microsoft Q&問題頁面](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html)。 區塊鏈範本的工程支援僅限於部署問題。
+- [Microsoft Q&問題頁面](/answers/topics/azure-blockchain-workbench.html)。 區塊鏈範本的工程支援僅限於部署問題。
 - [Microsoft 技術社群](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
 - [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-blockchain-workbench)

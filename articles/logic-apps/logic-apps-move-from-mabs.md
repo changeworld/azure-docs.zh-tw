@@ -8,11 +8,12 @@ ms.author: jonfan
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/30/2017
-ms.openlocfilehash: 97399635399c12022006ac95e60c5828bf2a9dc5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 975dcc357e244469f33385f84f2e15a89997597b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76905430"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078210"
 ---
 # <a name="migrate-your-apps-and-solutions-from-biztalk-services-to-azure-logic-apps"></a>將您的應用程式和解決方案從 BizTalk 服務遷移至 Azure Logic Apps
 
@@ -33,7 +34,7 @@ BizTalk 服務包含兩個子服務：
 
 | BizTalk 服務   | Logic Apps            | 目的                      |
 | ------------------ | --------------------- | ---------------------------- |
-| 連接器          | 連接器             | 傳送及接收資料   |
+| 連接子          | 連接子             | 傳送及接收資料   |
 | 橋接器             | 邏輯應用程式             | 管線處理器           |
 | 驗證階段     | XML 驗證動作 | 驗證 XML 文件的結構描述 | 
 | 擴充階段       | 資料權杖           | 將屬性升級為訊息或針對路由決策升級屬性 |
@@ -52,13 +53,13 @@ BizTalk 服務有數種構件。
 
 BizTalk 服務連接器可協助橋接器傳送及接收資料，包括啟用 HTTP 要求/回應互動的雙向橋接器。 Logic Apps 使用相同的術語，而且有數百個連接器可透過連接到各種不同的技術和服務來提供相同的用途。 舉例來說，連接器可用於雲端 SaaS 和 PaaS 服務 (例如 OneDrive、Office365、Dynamics CRM 等等)，並可透過內部部署資料閘道 (其取代了 BizTalk 服務的 BizTalk 配接器服務) 在內部部署系統中使用。 BizTalk 服務中的來源限制在 FTP、SFTP 和服務匯流排佇列或主題訂閱。
 
-![](media/logic-apps-move-from-mabs/sources.png)
+![顯示 BizTalk 服務流程的圖表。](media/logic-apps-move-from-mabs/sources.png)
 
 根據預設，每個橋接器預設有一個 HTTP 端點，並以橋接器的「執行階段位址」和「相對位址」屬性設定。 若要使用 Logic Apps 達成相同結果，請使用[要求和回應](../connectors/connectors-native-reqres.md)動作。
 
 ## <a name="xml-processing-and-bridges"></a>XML 處理和橋接器
 
-在 BizTalk 服務中，橋接器類似於處理管線。 橋接器可以擷取從連接器收到的資料，使用該資料執行一些工作，再將結果傳送至另一個系統。 Logic Apps 會藉由支援與 BizTalk 服務相同的管線互動模式來執行相同的作業，此外還提供其他整合模式。 BizTalk 服務中的 [XML 要求-回覆橋接器](https://msdn.microsoft.com/library/azure/hh689781.aspx)也稱為 VETER 管線，組成此管線的階段可以執行以下工作：
+在 BizTalk 服務中，橋接器類似於處理管線。 橋接器可以擷取從連接器收到的資料，使用該資料執行一些工作，再將結果傳送至另一個系統。 Logic Apps 會藉由支援與 BizTalk 服務相同的管線互動模式來執行相同的作業，此外還提供其他整合模式。 BizTalk 服務中的 [XML 要求-回覆橋接器](/previous-versions/azure/hh689781(v=azure.100))也稱為 VETER 管線，組成此管線的階段可以執行以下工作：
 
 * (V) 驗證
 * (E) 擴充
@@ -68,7 +69,7 @@ BizTalk 服務連接器可協助橋接器傳送及接收資料，包括啟用 HT
 
 下圖顯示要求與回覆之間會如何分割處理，以分開控制要求與回覆路徑 (例如，藉由對每個路徑使用不同對應)：
 
-![](media/logic-apps-move-from-mabs/xml-request-reply.png)
+![顯示如何在要求和回復之間分割處理的螢幕擷取畫面。](media/logic-apps-move-from-mabs/xml-request-reply.png)
 
 此外，XML 單向橋接器會在處理開頭和結尾新增解碼和編碼階段。 傳遞橋接器則包含單一擴充階段。
 
@@ -90,7 +91,7 @@ Logic Apps 提供類似的功能。 您可以使用不同的連接器觸發程�
 
 BizTalk 服務會做出由哪一個端點或連接器來傳送傳入訊息或資料的路由決策。 使用路由篩選選項，即可從預先設定的端點中選取：
 
-![](media/logic-apps-move-from-mabs/route-filter.png)
+![顯示路由篩選選項的螢幕擷取畫面。](media/logic-apps-move-from-mabs/route-filter.png)
 
 在 BizTalk 服務中，如果只有兩個選項，使用「條件」** 會是在 BizTalk 服務中轉換路由篩選的最佳方法。 如果有兩個以上的選項，則使用 **switch**。
 
@@ -102,7 +103,7 @@ Logic Apps 提供複雜的邏輯功能，以及具有[條件式陳述式](../log
 
 ### <a name="run-custom-code"></a>執行自訂程式碼
 
-BizTalk 服務讓您能夠在自己的組件中[執行上傳的自訂程式碼](https://msdn.microsoft.com/library/azure/dn232389.aspx)。 此功能會由 [IMessageInspector](https://msdn.microsoft.com/library/microsoft.biztalk.services.imessageinspector) 介面來實作。 橋接器中的每個階段包含兩個屬性 (On Enter Inspector 和 On Exit Inspector)，提供您建立來實作此介面的 .NET 類型。 自訂程式碼可讓您對資料執行更複雜的處理，以及在執行通用商務邏輯的組件中重複使用現有的程式碼。 
+BizTalk 服務讓您能夠在自己的組件中[執行上傳的自訂程式碼](/previous-versions/azure/dn232389(v=azure.100))。 此功能會由 [IMessageInspector](/azure/logic-apps/logic-apps-move-from-mabs) 介面來實作。 橋接器中的每個階段包含兩個屬性 (On Enter Inspector 和 On Exit Inspector)，提供您建立來實作此介面的 .NET 類型。 自訂程式碼可讓您對資料執行更複雜的處理，以及在執行通用商務邏輯的組件中重複使用現有的程式碼。 
 
 Logic Apps 提供兩個執行自訂程式碼的主要方法：Azure Functions 和 API Apps。 您可以建立 Azure Functions，並從 Logic Apps 呼叫。 請參閱[透過 Azure Functions 新增並執行適用於 Logic Apps 的自訂程式碼](../logic-apps/logic-apps-azure-functions.md)。 使用 Azure App Service 一部分的 API Apps，可建立您自己的觸發程序和動作。 深入了解[建立自訂 API 來與 Logic Apps 搭配使用](../logic-apps/logic-apps-create-api-app.md)。 
 
@@ -134,6 +135,6 @@ BizTalk 服務和 Logic Apps 包含 EDI 和 B2B 處理，並支援 AS2 (Applicab
 
 ## <a name="next-steps"></a>後續步驟
 
-* [Logic Apps 是什麼？](../logic-apps/logic-apps-overview.md)
+* [什麼是 Logic Apps？](../logic-apps/logic-apps-overview.md)
 * [建立第一個邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)，或使用[預先建置的範本](../logic-apps/logic-apps-create-logic-apps-from-templates.md)來快速上手  
 * [檢視所有可用的連接器](../connectors/apis-list.md)，您可以在邏輯應用程式中使用這些連接器

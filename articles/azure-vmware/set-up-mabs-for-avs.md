@@ -3,12 +3,12 @@ title: 設定 Azure VMware 解決方案的 Azure 備份伺服器
 description: 設定您的 Azure VMware 解決方案環境，以使用 Azure 備份伺服器來備份虛擬機器。
 ms.topic: how-to
 ms.date: 06/09/2020
-ms.openlocfilehash: c56ebaff6b08f3d6586dfe025fdb2a5bfc708fa4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c45d2030e282057c487d142669ab634cd81f6929
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84816865"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079531"
 ---
 # <a name="set-up-azure-backup-server-for-azure-vmware-solution"></a>設定 Azure VMware 解決方案的 Azure 備份伺服器
 
@@ -198,7 +198,7 @@ Azure 備份伺服器的 VM 必須加入網域，且在 VM 上具有系統管理
 
    1. 在資源清單中，輸入**復原服務**。
 
-   1. 當您開始輸入時，清單會根據您輸入的文字進行篩選。 當您看到 [復原服務保存庫] **** 時，請選取它。
+   1. 當您開始輸入時，清單會根據您的輸入來篩選。 當您看到 [復原服務保存庫] **** 時，請選取它。
 
    ![建立復原服務保存庫步驟1](../backup/media/backup-azure-microsoft-azure-backup/open-recovery-services-vault.png)
 
@@ -280,7 +280,7 @@ Azure 備份伺服器的 VM 必須加入網域，且在 VM 上具有系統管理
    ![Azure 備份伺服器 SQL Server 檢查](../backup/media/backup-azure-microsoft-azure-backup/sql/01.png)
 
    > [!NOTE]
-   > 如果您想要使用自己的 SQL Server 實例，支援的 SQL Server 版本為 SQL Server 2014 SP1 或更高版本、2016和2017。 所有 SQL Server 版本都應該是 Standard 或 Enterprise 64 位元。 Azure 備份伺服器無法與遠端 SQL Server 實例搭配使用。 Azure 備份伺服器所使用的執行個體必須位於本機。 如果您針對 Azure 備份伺服器使用現有的 SQL Server 實例，則安裝程式只支援使用 SQL Server 的*已命名實例*。
+   > 如果您想要使用自己的 SQL Server 實例，支援的 SQL Server 版本為 SQL Server 2014 SP1 或更高版本、2016和2017。 所有 SQL Server 版本都應為 Standard 或 Enterprise 64-bit。 Azure 備份伺服器無法與遠端 SQL Server 實例搭配使用。 Azure 備份伺服器所使用的執行個體必須位於本機。 如果您針對 Azure 備份伺服器使用現有的 SQL Server 實例，則安裝程式只支援使用 SQL Server 的*已命名實例*。
 
    如果發生失敗且建議您重新開機電腦，請執行這項操作，然後再次選取 [**檢查**]。 如果有任何 SQL Server 設定問題，請根據 SQL Server 方針重新設定 SQL Server。 然後，使用現有的 SQL Server 實例重試安裝或升級 Azure 備份伺服器。
 
@@ -309,7 +309,7 @@ Azure 備份伺服器的 VM 必須加入網域，且在 VM 上具有系統管理
    * **資料庫**： **DatabaseName**應該是**ReportServer $ \<SQLInstanceName> **。
    * **入口網站 URL**：**虛擬目錄**應**Reports_ \<SQLInstanceName> **。
 
-   [深入了解](https://docs.microsoft.com/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode?view=sql-server-2017) SSRS 設定。
+   [深入了解](/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode?view=sql-server-2017) SSRS 設定。
 
    > [!NOTE]
    > [Microsoft 線上服務條款](https://www.microsoft.com/licensing/product-licensing/products)（OST）會管理用來做為 Azure 備份伺服器資料庫之 SQL Server 的授權。 根據 OST，與 Azure 備份伺服器配套的 SQL Server 只能用來作為 Azure 備份伺服器的資料庫。
@@ -319,7 +319,7 @@ Azure 備份伺服器的 VM 必須加入網域，且在 VM 上具有系統管理
 1. 提供安裝 Microsoft Azure 備份伺服器檔案的位置，然後選取 **[下一步]**。
 
    > [!NOTE]
-   > 需要暫存位置才能備份至 Azure。 請確保暫存位置至少為打算備份至雲端的資料的 5%。 針對磁片保護，必須在安裝完成之後設定不同的磁片。 如需存放集區的詳細資訊，請參閱[設定存放集區和磁片儲存體](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh758075(v=sc.12))。
+   > 需要暫存位置才能備份至 Azure。 請確保暫存位置至少為打算備份至雲端的資料的 5%。 針對磁片保護，必須在安裝完成之後設定不同的磁片。 如需存放集區的詳細資訊，請參閱[設定存放集區和磁片儲存體](/previous-versions/system-center/system-center-2012-r2/hh758075(v=sc.12))。
 
    ![Microsoft Azure 備份安裝程式安裝設定](../backup/media/backup-azure-microsoft-azure-backup/space-screen.png)
 
@@ -393,4 +393,3 @@ Azure 備份伺服器 v3 只接受存放磁片區。 當您新增磁片區時，
 
 > [!div class="nextstepaction"]
 > [設定 Azure VMware 解決方案 Vm 的備份](backup-avs-vms-with-mabs.md)
-

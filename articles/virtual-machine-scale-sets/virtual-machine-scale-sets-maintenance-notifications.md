@@ -9,11 +9,12 @@ ms.subservice: management
 ms.date: 08/20/2019
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: c4b0cb8204891538ef9c4eef3fa0ff5fd9686536
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: db6a8965b6a0d03c3de95644d3d455ce3c950960
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83200093"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080432"
 ---
 # <a name="planned-maintenance-notifications-for-virtual-machine-scale-sets"></a>虛擬機器擴展集的計劃性維護通知
 
@@ -80,10 +81,10 @@ ms.locfileid: "83200093"
 
 此時，[自助維護]**** 資料行就會出現在虛擬機器擴展集的清單中。 每個虛擬機器擴展集可以具備下列自助式維護資料行的其中一個值：
 
-| 值 | 說明 |
+| 值 | 描述 |
 |-------|-------------|
-| Yes | 虛擬機器擴展集中至少有一個 VM 處於自助服務時段內。 您可以在此自助服務期間隨時開始維護。 | 
-| No | 受影響之虛擬機器擴展集中沒有任何 VM 處於自助服務時段內。 | 
+| 是 | 虛擬機器擴展集中至少有一個 VM 處於自助服務時段內。 您可以在此自助服務期間隨時開始維護。 | 
+| 否 | 受影響之虛擬機器擴展集中沒有任何 VM 處於自助服務時段內。 | 
 | - | 您的虛擬機器擴展集不在這一波計劃性維護中。| 
 
 ## <a name="notification-and-alerts-in-the-portal"></a>入口網站中的通知和警示
@@ -111,7 +112,7 @@ Azure 會將電子郵件傳送至訂用帳戶擁有者和共同擁有者群組�
  
 ## <a name="check-maintenance-status-by-using-powershell"></a>使用 PowerShell 來檢查維護狀態
 
-您可以使用 Azure Powershell 來查看虛擬機器擴展集中的 VM 已排定在何時進行維護。 藉由使用 [Get-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/get-azvmss) Cmdlet，只要使用 `-InstanceView` 參數，即可取得計劃性維護資訊。
+您可以使用 Azure Powershell 來查看虛擬機器擴展集中的 VM 已排定在何時進行維護。 藉由使用 [Get-AzVmss](/powershell/module/az.compute/get-azvmss) Cmdlet，只要使用 `-InstanceView` 參數，即可取得計劃性維護資訊。
  
 只有在已計劃進行維護的情況下，才會傳回維護資訊。 如果未排定任何會影響 VM 執行個體的維護，此 Cmdlet 就不會傳回任何維護資訊。 
 
@@ -121,7 +122,7 @@ Get-AzVmss -ResourceGroupName rgName -VMScaleSetName vmssName -InstanceId id -In
 
 下列屬性會在**以下是 maintenanceredeploystatus**下傳回： 
 
-| 值 | 說明   |
+| 值 | 描述   |
 |-------|---------------|
 | IsCustomerInitiatedMaintenanceAllowed | 指出您此時是否可以在 VM 上啟動維護。 |
 | PreMaintenanceWindowStartTime         | 您可以在 VM 上起始維護作業的維護自助時段開始時間。 |
@@ -152,7 +153,7 @@ az vmss list-instances -g rgName -n vmssName --expand instanceView
 
 以下是針對每個 VM 執行個體在 **MaintenanceRedeployStatus** 下傳回的屬性： 
 
-| 值 | 說明   |
+| 值 | 描述   |
 |-------|---------------|
 | IsCustomerInitiatedMaintenanceAllowed | 指出您此時是否可以在 VM 上啟動維護。 |
 | PreMaintenanceWindowStartTime         | 您可以在 VM 上起始維護作業的維護自助時段開始時間。 |

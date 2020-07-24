@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/28/2020
-ms.openlocfilehash: a4811bcb47120ba37337c73604e33826d9affcbb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d8fe945b028b574e71ae24b1483ad8e7fd67b01d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85830021"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078723"
 ---
 # <a name="add-resources-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>在 Azure Logic Apps 中將資源新增至您的整合服務環境（ISE）
 
@@ -44,13 +44,13 @@ ms.locfileid: "85830021"
 
    | 屬性 | 必要 | 描述 |
    |----------|----------|-------------|
-   | **名稱** | Yes | 要建立之邏輯應用程式的名稱 |
-   | **訂用帳戶** | Yes | 要使用的 Azure 訂用帳戶的名稱 |
-   | **資源群組** | Yes | 要使用的 Azure 資源群組（新的或現有的）名稱 |
+   | **名稱** | 是 | 要建立之邏輯應用程式的名稱 |
+   | **訂用帳戶** | 是 | 要使用的 Azure 訂用帳戶的名稱 |
+   | **資源群組** | 是 | 要使用的 Azure 資源群組（新的或現有的）名稱 |
    | **位置** | 是 | 在 [**整合服務環境**] 底下，選取要使用的 ISE （如果尚未選取）。 <p><p> **重要**：若要將邏輯應用程式與整合帳戶搭配使用，兩者都必須使用相同的 ISE。 |
    ||||
 
-1. 當您完成時，請選取 [建立]。
+1. 當您完成時，選取 [建立]。
 
 1. 繼續[以一般方式建立邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
@@ -76,14 +76,14 @@ ms.locfileid: "85830021"
 
    | 屬性 | 必要 | 描述 |
    |----------|----------|-------------|
-   | **名稱** | Yes | 您想要建立之整合帳戶的名稱 |
-   | **訂用帳戶** | Yes | 您想要使用之 Azure 訂用帳戶的名稱 |
-   | **資源群組** | Yes | 要使用的 Azure 資源群組（新的或現有的）名稱 |
-   | **定價層** | Yes | 要用於整合帳戶的定價層 |
+   | **名稱** | 是 | 您想要建立之整合帳戶的名稱 |
+   | **訂用帳戶** | 是 | 您想要使用之 Azure 訂用帳戶的名稱 |
+   | **資源群組** | 是 | 要使用的 Azure 資源群組（新的或現有的）名稱 |
+   | **定價層** | 是 | 要用於整合帳戶的定價層 |
    | **位置** | 是 | 在 [**整合服務環境**] 底下，選取您的邏輯應用程式所使用的相同 ISE （如果尚未選取）。 <p><p> **重要**：若要將整合帳戶與邏輯應用程式搭配使用，兩者都必須使用相同的 ISE。 |
    ||||
 
-1. 當您完成時，請選取 [建立]。
+1. 當您完成時，選取 [建立]。
 
 1. [以一般方式將邏輯應用程式連結到您的整合帳戶](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account)。
 
@@ -127,7 +127,7 @@ ms.locfileid: "85830021"
 
    ![選取並編輯自訂連接器](./media/add-artifacts-integration-service-environment-ise/edit-custom-connectors.png)
 
-1. 繼續以一般的方式從[OpenAPI 定義](https://docs.microsoft.com/connectors/custom-connectors/define-openapi-definition#import-the-openapi-definition)或[SOAP](https://docs.microsoft.com/connectors/custom-connectors/create-register-logic-apps-soap-connector#2-define-your-connector)建立連接器。
+1. 繼續以一般的方式從[OpenAPI 定義](/connectors/custom-connectors/define-openapi-definition#import-the-openapi-definition)或[SOAP](/connectors/custom-connectors/create-register-logic-apps-soap-connector#2-define-your-connector)建立連接器。
 
 1. 若要管理 ISE 中的自訂連接器，請參閱[管理您的整合服務環境](../logic-apps/ise-manage-integration-service-environment.md)。
 

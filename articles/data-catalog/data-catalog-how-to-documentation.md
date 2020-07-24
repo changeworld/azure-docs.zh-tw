@@ -4,13 +4,14 @@ description: 專門說明如何在 Azure 資料目錄中記載資料資產的操
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: e9e9013d354585d04f205feb93a84d94c0f05905
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3674c316e34b1e54ed8282ac7d2c228a2b774c06
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68950193"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081214"
 ---
 # <a name="how-to-document-data-sources-in-azure-data-catalog"></a>如何記載 Azure 資料目錄中的資料來源
 
@@ -40,5 +41,5 @@ ms.locfileid: "68950193"
 * 只記載資料表︰內容專用於該物件，但使用者會將文件放在多個地方。
 * 記載容器和資料表︰最全面的方法，但可能需要花更多時間維護文件。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>總結
 在 **Azure 資料目錄** 中記載資料來源可依所需詳細程度建立資料資產的相關敘述。  藉由使用連結，您可以連結至現有內容儲存機制中儲存的內容，以結合您現有的文件和資料資產。 一旦使用者找到合適的資料資產，就能取得一組完整的說明文件。

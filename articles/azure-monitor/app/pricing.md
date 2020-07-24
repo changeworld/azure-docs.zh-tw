@@ -6,21 +6,21 @@ author: DaleKoetke
 ms.author: dalek
 ms.date: 5/7/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: ac1129db05c7b492e209478446f69fe48ea9fffd
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: ff7d088a80ceaf01e9434ef62beb0e771cdf6b55
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86111111"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081656"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>管理 Application Insights 的使用量和成本
 
 > [!NOTE]
-> 本文說明如何了解和控制 Application Insights 的成本。  [監視使用量和估計成本](https://docs.microsoft.com/azure/azure-monitor/platform/usage-estimated-costs)這篇相關文章會說明如何針對不同的定價模型，檢視多項 Azure 監視功能的使用量和估計成本。
+> 本文說明如何了解和控制 Application Insights 的成本。  [監視使用量和估計成本](../platform/usage-estimated-costs.md)這篇相關文章會說明如何針對不同的定價模型，檢視多項 Azure 監視功能的使用量和估計成本。
 
 Application Insights 設計的目的在取得您所需的各項資源，以監視 Web 應用程式的可用性、效能及使用情況 (不論應用程式是裝載在雲端還是內部部署環境)。 Application Insights 支援熱門的語言和架構，例如 .NET、Java 以及 Node.js，並與 DevOps 流程與工具整合，例如 Azure DevOps、Jira 和 PagerDuty。 了解何種因素決定了應用程式的監視成本非常重要。 在本文中，我們會複習驅動應用程式監視成本的因素，以及如何主動監視及控制成本。
 
-如果您有關於 Application Insights 定價方式的疑問，請在我們的 [Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-monitor.html)中張貼問題。
+如果您有關於 Application Insights 定價方式的疑問，請在我們的 [Microsoft 問與答頁面](/answers/topics/azure-monitor.html)中張貼問題。
 
 ## <a name="pricing-model"></a>定價模式
 
@@ -28,11 +28,11 @@ Application Insights 設計的目的在取得您所需的各項資源，以監�
 
 [多重步驟 Web 測試](../../azure-monitor/app/availability-multistep.md)會產生額外費用。 多重步驟 Web 測試係指執行一系列動作的 Web 測試。 單一頁面的「Ping 測試」不另外收費。 針對來自 Ping 測試和多重步驟測試的遙測，收費方式與來自您應用程式的其他遙測一樣。
 
-Application Insights 選項 [[啟用自訂計量維度的警示]](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics#custom-metrics-dimensions-and-pre-aggregation) 也會產生額外的成本，因為這會額外建立預先彙總指標。 [深入了解](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics) Application Insights 中以記錄為基礎和預先彙總的計量，以及關於 Azure 監視器自訂計量的[價格](https://azure.microsoft.com/pricing/details/monitor/)。
+Application Insights 選項 [[啟用自訂計量維度的警示]](./pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation) 也會產生額外的成本，因為這會額外建立預先彙總指標。 [深入了解](./pre-aggregated-metrics-log-metrics.md) Application Insights 中以記錄為基礎和預先彙總的計量，以及關於 Azure 監視器自訂計量的[價格](https://azure.microsoft.com/pricing/details/monitor/)。
 
 ### <a name="workspace-based-application-insights"></a>工作區型 Application Insights
 
-對於將資料傳送至 Log Analytics 工作區的 Application Insights 資源 (稱為[工作區型 Application Insights 資源](create-workspace-resource.md))，資料擷取和保留的計費是由 Application Insights 資料所在的工作區來完成。 這可讓客戶利用 Log Analytics [定價模式](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#pricing-model)的所有選項，除了「隨用隨付」以外，還包括「容量保留」。 Log Analytics 也有更多的資料保留選項，包括[依資料類型的保留期](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#retention-by-data-type)。 工作區中的 Application Insights 資料類型會有 90 天的保留期，而不會產生任何費用。 Web 測試的使用情況與啟用自訂計量維度的警示仍會透過 Application Insights 回報。 了解如何使用[使用量和估計成本](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understand-your-usage-and-estimate-costs)、[Azure 成本管理 + 計費](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#viewing-log-analytics-usage-on-your-azure-bill)和 [Log Analytics 查詢](#data-volume-for-workspace-based-application-insights-resources)，追蹤 Log Analytics 中的資料擷取和保留成本。 
+對於將資料傳送至 Log Analytics 工作區的 Application Insights 資源 (稱為[工作區型 Application Insights 資源](create-workspace-resource.md))，資料擷取和保留的計費是由 Application Insights 資料所在的工作區來完成。 這可讓客戶利用 Log Analytics [定價模式](../platform/manage-cost-storage.md#pricing-model)的所有選項，除了「隨用隨付」以外，還包括「容量保留」。 Log Analytics 也有更多的資料保留選項，包括[依資料類型的保留期](../platform/manage-cost-storage.md#retention-by-data-type)。 工作區中的 Application Insights 資料類型會有 90 天的保留期，而不會產生任何費用。 Web 測試的使用情況與啟用自訂計量維度的警示仍會透過 Application Insights 回報。 了解如何使用[使用量和估計成本](../platform/manage-cost-storage.md#understand-your-usage-and-estimate-costs)、[Azure 成本管理 + 計費](../platform/manage-cost-storage.md#viewing-log-analytics-usage-on-your-azure-bill)和 [Log Analytics 查詢](#data-volume-for-workspace-based-application-insights-resources)，追蹤 Log Analytics 中的資料擷取和保留成本。 
 
 ## <a name="estimating-the-costs-to-manage-your-application"></a>估算應用程式的管理成本
 
@@ -44,7 +44,7 @@ Application Insights 選項 [[啟用自訂計量維度的警示]](https://docs.m
 
 使用 ASP.NET SDK 的[調適型取樣](sampling.md#adaptive-sampling)，會自動調整資料量，使其保持在預設 Application Insights 監視的指定最大流量速率內。 如果應用程式產生的遙測量很低 (例如，在偵錯時或由於低使用量的緣故)，只要數量低於設定的每秒事件數目層級，取樣處理器就不會捨棄項目。 對於大量應用程式，預設閾值為每秒五個事件，調適型取樣會將每日事件數目限制為 432,000。 使用一般的平均事件大小 1 KB，這相當於每個託管您應用程式的節點，每 31 天的月份遙測量為 13.4 GB (因為取樣是在每個節點的本機執行。) 
 
-對於不支援調適型取樣的軟體開發套件，您可以採用[擷取取樣](https://docs.microsoft.com/azure/azure-monitor/app/sampling#ingestion-sampling)，當 Application Insights 收到資料時，根據要保留的資料百分比，或[適用於 ASP.NET、ASP.NET Core 和 Java 網站的固定取樣率](sampling.md#fixed-rate-sampling)，來進行取樣，藉此減少從網頁伺服器和網頁瀏覽器傳送的流量
+對於不支援調適型取樣的軟體開發套件，您可以採用[擷取取樣](./sampling.md#ingestion-sampling)，當 Application Insights 收到資料時，根據要保留的資料百分比，或[適用於 ASP.NET、ASP.NET Core 和 Java 網站的固定取樣率](sampling.md#fixed-rate-sampling)，來進行取樣，藉此減少從網頁伺服器和網頁瀏覽器傳送的流量
 
 ### <a name="learn-from-what-similar-customers-collect"></a>從類似客戶收集內容中了解
 
@@ -66,7 +66,7 @@ E. 設定每日資料量上限。
 
 若要更深入調查 Application Insights 的使用量，請開啟 [計量] 頁面，新增名為「資料點量」的計量，然後選取 [套用分割] 選項，以根據「遙測項目類型」拆分資料。
 
-Application Insights 費用會加到您的 Azure 帳單中。 您可以在 Azure 入口網站的 [成本管理 + 計費] 區段中，或在 [Azure 計費入口網站](https://account.windowsazure.com/Subscriptions)中，查看您的 Azure 帳單詳細資料。  如需使用 Application Insights 的詳細資料，[請參閱下列內容](https://docs.microsoft.com/azure/azure-monitor/app/pricing#viewing-application-insights-usage-on-your-azure-bill)。 
+Application Insights 費用會加到您的 Azure 帳單中。 您可以在 Azure 入口網站的 [成本管理 + 計費] 區段中，或在 [Azure 計費入口網站](https://account.windowsazure.com/Subscriptions)中，查看您的 Azure 帳單詳細資料。  如需使用 Application Insights 的詳細資料，[請參閱下列內容](#viewing-application-insights-usage-on-your-azure-bill)。 
 
 ![在左側功能表中，選取 [帳務]](./media/pricing/02-billing.png)
 
@@ -105,7 +105,7 @@ systemEvents
 | summarize sum(BillingTelemetrySizeInBytes) by BillingTelemetryType, bin(timestamp, 1d) | render barchart  
 ```
 
-請注意，您可以在 [Azure 記錄警示](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log)中使用此查詢，以設定資料量的警示。  
+請注意，您可以在 [Azure 記錄警示](../platform/alerts-unified-log.md)中使用此查詢，以設定資料量的警示。  
 
 若要深入了解您的遙測資料變更，我們可以使用查詢，依類型取得事件計數：
 
@@ -174,10 +174,10 @@ union (AppAvailabilityResults),
 
 ## <a name="viewing-application-insights-usage-on-your-azure-bill"></a>在您的 Azure 帳單上查看 Application Insights 使用量
 
-Azure 在 [Azure 成本管理 + 計費](https://docs.microsoft.com/azure/cost-management/quick-acm-cost-analysis?toc=/azure/billing/TOC.json)中樞內提供了許多實用的功能。 例如，「成本分析」功能可讓您檢視 Azure 資源的花費。 依資源類型新增篩選條件 (新增至 Application Insights 的 microsoft.insights/components) 可讓您追蹤費用。 然後在 [群組依據] 中選取 [計量類別] 或 [計量]。  對於目前價格方案中的 Application Insights 資源，由於所有 Azure 監視器元件都有單一記錄後端，因此大部分使用量會顯示為「計量」類別的 Log Analytics。 
+Azure 在 [Azure 成本管理 + 計費](../../cost-management-billing/costs/quick-acm-cost-analysis.md?toc=/azure/billing/TOC.json)中樞內提供了許多實用的功能。 例如，「成本分析」功能可讓您檢視 Azure 資源的花費。 依資源類型新增篩選條件 (新增至 Application Insights 的 microsoft.insights/components) 可讓您追蹤費用。 然後在 [群組依據] 中選取 [計量類別] 或 [計量]。  對於目前價格方案中的 Application Insights 資源，由於所有 Azure 監視器元件都有單一記錄後端，因此大部分使用量會顯示為「計量」類別的 Log Analytics。 
 
-若要更加了解您的使用量，請[從 Azure 入口網站下載使用量](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-in-azure-portal)。
-在下載的試算表中，您可以看到每天每個 Azure 資源的使用量。 在此 Excel 試算表中，您可以藉由先篩選「計量類別」資料行來顯示「Application Insights」和「Log Analytics」，然後在「包含 microsoft.insights/components」的「執行個體識別碼」資料行上新增篩選條件，來找到您的 Application Insights 資源使用量。  由於所有 Azure 監視器元件都有單一記錄後端，因此，大部分 Application Insights 使用量都會以 Log Analytics 計量類別的計量報告。  只有舊版定價層和多重步驟 Web 測試的 Application Insights 資源，會以 Application Insights 的計量類別來報告。  使用量會顯示在 [已取用的數量] 資料行，每個項目的單位則會顯示在 [測量單位] 資料行。  有更多詳細資料可協助您[了解 Microsoft Azure 帳單](https://docs.microsoft.com/azure/billing/billing-understand-your-bill)。
+若要更加了解您的使用量，請[從 Azure 入口網站下載使用量](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md#download-usage-in-azure-portal)。
+在下載的試算表中，您可以看到每天每個 Azure 資源的使用量。 在此 Excel 試算表中，您可以藉由先篩選「計量類別」資料行來顯示「Application Insights」和「Log Analytics」，然後在「包含 microsoft.insights/components」的「執行個體識別碼」資料行上新增篩選條件，來找到您的 Application Insights 資源使用量。  由於所有 Azure 監視器元件都有單一記錄後端，因此，大部分 Application Insights 使用量都會以 Log Analytics 計量類別的計量報告。  只有舊版定價層和多重步驟 Web 測試的 Application Insights 資源，會以 Application Insights 的計量類別來報告。  使用量會顯示在 [已取用的數量] 資料行，每個項目的單位則會顯示在 [測量單位] 資料行。  有更多詳細資料可協助您[了解 Microsoft Azure 帳單](../../cost-management-billing/understand/review-individual-bill.md)。
 
 ## <a name="managing-your-data-volume"></a>管理您的資料量
 
@@ -223,7 +223,7 @@ Azure 在 [Azure 成本管理 + 計費](https://docs.microsoft.com/azure/cost-ma
 
 ### <a name="create-alerts-for-the-daily-cap"></a>建立每日上限的警示
 
-當內嵌資料量達到警告層級或每日上限層級時，Application Insights 每日上限會在 Azure 活動記錄中建立事件。  您可以[根據活動記錄事件建立警示](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log#create-with-the-azure-portal)。 這些事件的訊號名稱包括：
+當內嵌資料量達到警告層級或每日上限層級時，Application Insights 每日上限會在 Azure 活動記錄中建立事件。  您可以[根據活動記錄事件建立警示](../platform/alerts-activity-log.md#create-with-the-azure-portal)。 這些事件的訊號名稱包括：
 
 * 已達到 Application Insights 元件每日上限警告閾值
 
@@ -247,7 +247,7 @@ Azure 在 [Azure 成本管理 + 計費](https://docs.microsoft.com/azure/cost-ma
 > [資料取樣] 窗格只會控制擷取取樣的值。 它不會反映應用程式中 Application Insights SDK 所套用的取樣率。 如果已在 SDK 中對連入遙測進行取樣，就不會套用擷取取樣。
 >
 
-若要探索實際的取樣率，而不論其套用位置是哪裡，請使用[分析查詢](analytics.md)。 此查詢看起來像這樣：
+若要探索實際的取樣率，而不論其套用位置是哪裡，請使用[分析查詢](../log-query/log-query-overview.md)。 此查詢看起來像這樣：
 
 ```kusto
 requests | where timestamp > ago(1d)
@@ -271,7 +271,7 @@ Application Insights 資源的預設保留期為 90 天。 可以為每個 Appli
 
 ## <a name="data-transfer-charges-using-application-insights"></a>使用 Application Insights 的資料傳輸費用
 
-將資料傳送至 Application Insights 可能會產生資料頻寬費用。 如 [Azure 頻寬定價頁面](https://azure.microsoft.com/pricing/details/bandwidth/)所述，在位於兩個區域的 Azure 服務之間資料傳輸時，會依正常費率向輸出資料傳輸收費。 輸入資料傳輸則是免費的。 不過，相較於 Application Insights 的資料擷取成本，這項費用很低 (幾 %)。 因此，若要控制 Log Analytics 的成本就必須專注在已擷取的資料量上，為了協助您了解這方面的內容，[這裡](https://docs.microsoft.com/azure/azure-monitor/app/pricing#managing-your-data-volume)有指導方針。
+將資料傳送至 Application Insights 可能會產生資料頻寬費用。 如 [Azure 頻寬定價頁面](https://azure.microsoft.com/pricing/details/bandwidth/)所述，在位於兩個區域的 Azure 服務之間資料傳輸時，會依正常費率向輸出資料傳輸收費。 輸入資料傳輸則是免費的。 不過，相較於 Application Insights 的資料擷取成本，這項費用很低 (幾 %)。 因此，若要控制 Log Analytics 的成本就必須專注在已擷取的資料量上，為了協助您了解這方面的內容，[這裡](#managing-your-data-volume)有指導方針。
 
 ## <a name="limits-summary"></a>限制摘要
 
@@ -293,11 +293,11 @@ Application Insights 資源的預設保留期為 90 天。 可以為每個 Appli
 如需屬於您貨幣與區域的目前定價，請參閱 [Application Insights 定價](https://azure.microsoft.com/pricing/details/application-insights/)。
 
 > [!NOTE]
-> 我們在 2018 年 4 月[推出](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/)新的 Azure 監視定價模型。 這個模型在完整的監視服務組合之間採用簡單的「隨用隨付」模型。 深入了解[新的定價模型](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs)、如何根據您的使用模式[評估移到這個模型的影響](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#understanding-your-azure-monitor-costs)，以及[如何加入新的模型](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#azure-monitor-pricing-model)
+> 我們在 2018 年 4 月[推出](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/)新的 Azure 監視定價模型。 這個模型在完整的監視服務組合之間採用簡單的「隨用隨付」模型。 深入了解[新的定價模型](../platform/usage-estimated-costs.md)、如何根據您的使用模式[評估移到這個模型的影響](../platform/usage-estimated-costs.md#understanding-your-azure-monitor-costs)，以及[如何加入新的模型](../platform/usage-estimated-costs.md#azure-monitor-pricing-model)
 
 ### <a name="per-node-tier-and-operations-management-suite-subscription-entitlements"></a>「每節點」層和 Operations Management Suite 訂閱的權利
 
-如[先前所宣布](https://blogs.technet.microsoft.com/msoms/2017/05/19/azure-application-insights-enterprise-as-part-of-operations-management-suite-subscription/)，購買 Operations Management Suite E1 和 E2 的客戶可以取得 Application Insights「每節點」做為額外的元件，無須額外付費。 具體來說，Operations Management Suite E1 和 E2 的每個單位皆包含一個 Application Insights「每節點」層節點的權利。 每個 Application Insights 節點包含每天最多 200 MB 擷取的資料 (與 Log Analytics 資料擷取分開計算)，資料可保留 90 天而無須額外付費。 本文稍後會更詳細說明此階層。
+如[先前所宣布](/archive/blogs/msoms/azure-application-insights-enterprise-as-part-of-operations-management-suite-subscription)，購買 Operations Management Suite E1 和 E2 的客戶可以取得 Application Insights「每節點」做為額外的元件，無須額外付費。 具體來說，Operations Management Suite E1 和 E2 的每個單位皆包含一個 Application Insights「每節點」層節點的權利。 每個 Application Insights 節點包含每天最多 200 MB 擷取的資料 (與 Log Analytics 資料擷取分開計算)，資料可保留 90 天而無須額外付費。 本文稍後會更詳細說明此階層。
 
 由於此階層僅適用於具有 Operations Management Suite 訂閱的客戶，因此沒有 Operations Management Suite 訂閱的客戶不會看到可選取此階層的選項。
 

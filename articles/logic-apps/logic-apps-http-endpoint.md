@@ -6,11 +6,12 @@ ms.workload: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 05/28/2020
-ms.openlocfilehash: b5c4005c95a88a40a836b9c0f6d1fd01e0417ed0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d8211127d7c886b86f97e83a61b3b3ebb055851e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84170268"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078662"
 ---
 # <a name="call-trigger-or-nest-logic-apps-by-using-https-endpoints-in-azure-logic-apps"></a>在 Azure Logic Apps 中使用 HTTPS 端點來呼叫、觸發或嵌套邏輯應用程式
 
@@ -387,7 +388,7 @@ ms.locfileid: "84170268"
 
 #### <a name="q-what-about-url-security"></a>問︰URL 安全性如何？
 
-**答**： Azure 會使用[共用存取簽章（SAS）](https://docs.microsoft.com/rest/api/storageservices/delegate-access-with-shared-access-signature)安全地產生邏輯應用程式回呼 url。 此簽章會傳遞做為查詢參數，而且必須在邏輯應用程式可以執行之前進行驗證。 Azure 會使用每個邏輯應用程式、觸發程序名稱以及要執行作業之秘密金鑰的唯一組合來產生簽章。 因此，除非某人具有邏輯應用程式秘密金鑰的存取權，否則他們無法產生有效的簽章。
+**答**： Azure 會使用[共用存取簽章（SAS）](/rest/api/storageservices/delegate-access-with-shared-access-signature)安全地產生邏輯應用程式回呼 url。 此簽章會傳遞做為查詢參數，而且必須在邏輯應用程式可以執行之前進行驗證。 Azure 會使用每個邏輯應用程式、觸發程序名稱以及要執行作業之秘密金鑰的唯一組合來產生簽章。 因此，除非某人具有邏輯應用程式秘密金鑰的存取權，否則他們無法產生有效的簽章。
 
 > [!IMPORTANT]
 > 對於生產和較高的安全性系統，我們強烈建議您不要直接從瀏覽器呼叫邏輯應用程式，原因如下：

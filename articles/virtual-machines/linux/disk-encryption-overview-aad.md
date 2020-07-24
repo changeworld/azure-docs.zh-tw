@@ -8,14 +8,14 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: dbd44c5a90a656b804ff4e3bb9984a059ec3a89a
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 30edd5b8e9fbfdce9fb3061c1891ff0a68a50cc8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135415"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080245"
 ---
-# <a name="azure-disk-encryption-with-azure-ad-previous-release"></a>Azure AD 的 Azure 磁碟加密（上一個版本）
+# <a name="azure-disk-encryption-with-azure-active-directory-ad-previous-release"></a>使用 Azure Active Directory （AD） Azure 磁碟加密（上一個版本）
 
 新版本的 Azure 磁碟加密不需要提供 Azure Active Directory （Azure AD）應用程式參數，就能啟用 VM 磁片加密。 若使用新版本，您就不再需要在啟用加密步驟期間提供 Azure AD 認證。 所有新的 Vm 都必須使用新版本，在沒有 Azure AD 應用程式參數的情況下進行加密。 如需如何使用新版本來啟用 VM 磁片加密的指示，請參閱[Linux vm 的 Azure 磁碟加密](disk-encryption-overview.md)。 已經使用 Azure AD 應用程式參數進行加密的 VM 仍然受支援，應該繼續使用 AAD 語法進行維護。
 
@@ -47,9 +47,9 @@ ms.locfileid: "86135415"
   ```
 
 ### <a name="group-policy"></a>群組原則
- - Azure 磁碟加密解決方案對 Windows IaaS VM 使用 BitLocker 外部金鑰保護裝置。 針對已加入網域的 Vm，請勿推送任何會強制使用 TPM 保護裝置的群組原則。 如**需 [允許不含相容 TPM 的 bitlocker**] 選項群組原則的詳細資訊，請參閱[BitLocker 群組原則參考](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings#bkmk-unlockpol1)。
+ - Azure 磁碟加密解決方案對 Windows IaaS VM 使用 BitLocker 外部金鑰保護裝置。 針對已加入網域的 Vm，請勿推送任何會強制使用 TPM 保護裝置的群組原則。 如**需 [允許不含相容 TPM 的 bitlocker**] 選項群組原則的詳細資訊，請參閱[BitLocker 群組原則參考](/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings#bkmk-unlockpol1)。
 
-- 已加入網域之虛擬機器上具有自訂群組原則的 BitLocker 原則必須包括下列設定：設定[BitLocker 修復資訊的使用者儲存體-> 允許256位的修復金鑰](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings)。 當 BitLocker 的自訂群組原則設定不相容時，Azure 磁碟加密會失敗。 在沒有正確原則設定的電腦上，套用新的原則，強制新的原則更新（gpupdate.exe/force），然後視需要重新開機。 
+- 已加入網域之虛擬機器上具有自訂群組原則的 BitLocker 原則必須包括下列設定：設定[BitLocker 修復資訊的使用者儲存體-> 允許256位的修復金鑰](/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings)。 當 BitLocker 的自訂群組原則設定不相容時，Azure 磁碟加密會失敗。 在沒有正確原則設定的電腦上，套用新的原則，強制新的原則更新（gpupdate.exe/force），然後視需要重新開機。 
 
 ## <a name="encryption-key-storage-requirements"></a>加密金鑰儲存體需求 
 

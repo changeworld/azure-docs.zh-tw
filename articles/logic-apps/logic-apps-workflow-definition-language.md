@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: f9eefc40f7bca3f0bc21510a2d8a3d3fe76711b0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 71929cd449f4a00b91cc6c8620b33b0e0c6d506c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82611410"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078135"
 ---
 # <a name="schema-reference-guide-for-the-workflow-definition-language-in-azure-logic-apps"></a>Azure Logic Apps 中工作流程定義語言的架構參考指南
 
@@ -178,7 +178,7 @@ HTTP 動作會傳回內部定義中的輸出 `HTTP0` `staticResults` 。 在此�
 "rainbowColorsCount": 7
 ```
 
-您也可以擁有在執行階段才存在的值。 若要表示這些值，您可以使用會在執行階段評估的「運算式」**。 運算式是一個序列，可以包含一或多個[函數](#functions)、[運算子](#operators)、[變數](https://docs.microsoft.com/azure/logic-apps/logic-apps-create-variables-store-values)、明確值或常數。 在工作流程定義中，您可以在運算式前面加上 (\@) 符號，以便在 JSON 字串值中的任何地方使用運算式。 在評估代表 JSON 值的運算式時，移除 \@ 字元即可擷取運算式主體，而且一律會產生其他 JSON 值。
+您也可以擁有在執行階段才存在的值。 若要表示這些值，您可以使用會在執行階段評估的「運算式」**。 運算式是一個序列，可以包含一或多個[函數](#functions)、[運算子](#operators)、[變數](./logic-apps-create-variables-store-values.md)、明確值或常數。 在工作流程定義中，您可以在運算式前面加上 (\@) 符號，以便在 JSON 字串值中的任何地方使用運算式。 在評估代表 JSON 值的運算式時，移除 \@ 字元即可擷取運算式主體，而且一律會產生其他 JSON 值。
 
 例如，對於先前定義的 `customerName` 屬性，您可以在運算式中使用 [parameters()](../logic-apps/workflow-definition-language-functions-reference.md#parameters) 函式來取得此屬性值，並將該值指派給 `accountName` 屬性：
 
@@ -275,14 +275,14 @@ HTTP 動作會傳回內部定義中的輸出 `HTTP0` `staticResults` 。 在此�
 }
 ```
 
-| 屬性 | 必要 | 類型 | 描述 |
+| 屬性 | 必要 | 類型 | 說明 |
 |-----------|----------|------|-------------|
 | <*索引鍵名稱*> | 是 | String | 輸出傳回值的索引鍵名稱 |
 | <*金鑰類型*> | 是 | int、float、string、securestring、bool、array、JSON 物件 | 輸出傳回值的類型 |
 | <*key-value*> | 是 | 與 <*的索引鍵類型*相同> | 輸出傳回值 |
 |||||
 
-若要從工作流程執行取得輸出，請在 Azure 入口網站中檢查邏輯應用程式的執行歷程記錄和詳細資料，或使用[工作流程 REST API](https://docs.microsoft.com/rest/api/logic/workflows)。 您也可以將輸出傳遞至外部系統 (例如 PowerBI)，以便建立儀表板。
+若要從工作流程執行取得輸出，請在 Azure 入口網站中檢查邏輯應用程式的執行歷程記錄和詳細資料，或使用[工作流程 REST API](/rest/api/logic/workflows)。 您也可以將輸出傳遞至外部系統 (例如 PowerBI)，以便建立儀表板。
 
 <a name="operators"></a>
 
@@ -290,9 +290,9 @@ HTTP 動作會傳回內部定義中的輸出 `HTTP0` `staticResults` 。 在此�
 
 在[運算式](#expressions)和[函式](#functions)中，運算子會執行特定工作，例如參考屬性或陣列中的值。
 
-| 運算子 | Task |
+| 運算子 | 工作 |
 |----------|------|
-| ' | 若要將字串常值作為輸入或使用於運算式和函式中，只用單引號圍住此字串，例如 `'<myString>'`。 請勿使用雙引號 ("")，這會與整個運算式的 JSON 格式設定發生衝突。 例如： <p>**是**：length('Hello') </br>**否**：length("Hello") <p>當您傳遞陣列或數字時，您不需要包圍標點符號。 例如： <p>**是**：length([1, 2, 3]) </br>**否**：length("[1, 2, 3]") |
+| ' | 若要將字串常值作為輸入或使用於運算式和函式中，只用單引號圍住此字串，例如 `'<myString>'`。 請勿使用雙引號 ("")，這會與整個運算式的 JSON 格式設定發生衝突。 例如: <p>**是**：length('Hello') </br>**否**：length("Hello") <p>當您傳遞陣列或數字時，您不需要包圍標點符號。 例如: <p>**是**：length([1, 2, 3]) </br>**否**：length("[1, 2, 3]") |
 | [] | 若要參考陣列中特定位置 (索引) 的值，請使用方括號。 例如，若要取得陣列中的第二個項目： <p>`myArray[1]` |
 | . | 若要參考物件中的屬性，請使用點運算子。 例如，若要取得 `customer` JSON 物件的 `name` 屬性： <p>`"@parameters('customer').name"` |
 | ? | 若要在不會發生執行階段錯誤的情況下，參考物件中的 null 屬性，請使用問號運算子。 例如，若要處理來自觸發程序的 null 輸出，您可以使用此運算式︰ <p>`@coalesce(trigger().outputs?.body?.<someProperty>, '<property-default-value>')` |
@@ -307,4 +307,4 @@ HTTP 動作會傳回內部定義中的輸出 `HTTP0` `staticResults` 。 在此�
 ## <a name="next-steps"></a>後續步驟
 
 * 深入了解[工作流程定義語言動作和觸發程序](../logic-apps/logic-apps-workflow-actions-triggers.md)
-* 深入了解如何透過 [Workflow REST API](https://docs.microsoft.com/rest/api/logic/workflows) 以程式設計方式建立及管理邏輯應用程式
+* 深入了解如何透過 [Workflow REST API](/rest/api/logic/workflows) 以程式設計方式建立及管理邏輯應用程式

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 05/04/2020
-ms.openlocfilehash: 69d018db26a42c331ff41d242eae54d6fcc43990
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 66796a819c0ca7e114d82210a988fc7e13003941
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536244"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078199"
 ---
 # <a name="monitor-run-status-review-trigger-history-and-set-up-alerts-for-azure-logic-apps"></a>監視執行狀態、查看觸發程式歷程記錄，以及設定 Azure Logic Apps 的警示
 
@@ -86,7 +86,7 @@ ms.locfileid: "86536244"
      您現在可以查看該步驟的輸入和輸出之類的資訊，例如：
 
    > [!NOTE]
-   > 在 Logic Apps 服務內，會加密所有執行階段詳細資料和事件。 只有在使用者要求檢視該資料時，才對其進行解密。 您可以[隱藏執行歷程記錄中的輸入和輸出，](../logic-apps/logic-apps-securing-a-logic-app.md#obfuscate)或使用[Azure 角色型存取控制（RBAC）](../role-based-access-control/overview.md)來控制使用者對此資訊的存取權。
+   > 在 Logic Apps 服務內，會加密所有執行階段詳細資料和事件。 只有在使用者要求檢視該資料時，才對其進行解密。 您可以[隱藏執行歷程記錄中的輸入和輸出，](../logic-apps/logic-apps-securing-a-logic-app.md#obfuscate)或使用[azure 角色型存取控制（azure RBAC）](../role-based-access-control/overview.md)來控制使用者對此資訊的存取權。
 
 <a name="review-trigger-history"></a>
 

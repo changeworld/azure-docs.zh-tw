@@ -6,11 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: b8bf409d759b74e6a5ef0d840aebbe807a04448a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b2a45218118282f4f1cadb29c9022fc05b30f907
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84324801"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078739"
 ---
 # <a name="export-flows-from-power-automate-and-deploy-to-azure-logic-apps"></a>從 Power Automate 匯出流程，並部署至 Azure Logic Apps
 
@@ -19,9 +20,9 @@ ms.locfileid: "84324801"
 > [!NOTE]
 > 並非所有電源自動連接器都可在 Azure Logic Apps 中使用。 在 Azure Logic Apps 中，您只能遷移具有對等連接器的電源自動化流程。 例如，[按鈕觸發程式]、[核准連接器] 和 [通知連接器] 專用於電源自動化。 目前，電源自動化中以 OpenAPI 為基礎的流程不支援以邏輯應用程式範本的形式匯出和部署。
 >
-> * 若要找出哪些電源自動連接器沒有 Logic Apps 對等專案，請參閱[電源自動化連接器](https://docs.microsoft.com/connectors/connector-reference/connector-reference-powerautomate-connectors)。
+> * 若要找出哪些電源自動連接器沒有 Logic Apps 對等專案，請參閱[電源自動化連接器](/connectors/connector-reference/connector-reference-powerautomate-connectors)。
 >
-> * 若要找出哪些 Logic Apps 連接器沒有電源自動化對等專案，請參閱[Logic Apps 連接器](https://docs.microsoft.com/connectors/connector-reference/connector-reference-powerautomate-connectors)。
+> * 若要找出哪些 Logic Apps 連接器沒有電源自動化對等專案，請參閱[Logic Apps 連接器](/connectors/connector-reference/connector-reference-powerautomate-connectors)。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -75,7 +76,7 @@ ms.locfileid: "84324801"
       | <*連接名稱*> | 邏輯應用程式可以重複使用的任何先前建立之連線的一或多個名稱 <p><p>**注意**：如果此邏輯應用程式是您的第一個，則所有連線都會建立為新的，因此您可以接受預設名稱。 否則，您可以為先前建立的連線指定名稱，以便在多個邏輯應用程式中使用。 |
       |||
 
-      例如：
+      例如:
 
       ![指定範本的輸入參數](./media/export-from-microsoft-flow-logic-app-template/template-input-parameters.png)
 
@@ -155,7 +156,7 @@ ms.locfileid: "84324801"
 
    ![編輯部署參數](./media/export-from-microsoft-flow-logic-app-template/edit-parameters-deployment.png)
 
-   開始部署時，您應用程式的部署狀態會顯示在 Visual Studio 的 [輸出]**** 視窗中。 如果狀態並未出現，請開啟 [顯示輸出來源]**** 清單，然後選取您的 Azure 資源群組。 例如：
+   開始部署時，您應用程式的部署狀態會顯示在 Visual Studio 的 [輸出]**** 視窗中。 如果狀態並未出現，請開啟 [顯示輸出來源]**** 清單，然後選取您的 Azure 資源群組。 例如:
 
    ![輸出視窗](./media/export-from-microsoft-flow-logic-app-template/output-window.png)
 

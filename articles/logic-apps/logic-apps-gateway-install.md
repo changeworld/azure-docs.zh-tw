@@ -6,11 +6,12 @@ ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 05/15/2020
-ms.openlocfilehash: 6624cd0ff70ab359f4af36ca2f1f107d8f0b5fd9
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 7c52e8dfa3cda40cc663b5d7f27b67c7d2ad0b60
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83659265"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078659"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>安裝 Azure Logic Apps 的內部部署資料閘道
 
@@ -21,7 +22,7 @@ ms.locfileid: "83659265"
 * [Microsoft Power Apps 內部部署的資料閘道](/powerapps/maker/canvas-apps/gateway-reference)
 * [Azure Analysis Services 內部部署資料閘道](../analysis-services/analysis-services-gateway.md)
 
-此文章顯示如何下載、安裝及設定您的內部部署的資料閘道，讓您可以從 Azure Logic Apps 存取內部部署資料來源。 稍後在此主題中，您也可以深入了解[資料閘道的運作方式](#gateway-cloud-service)。 如需有關閘道的詳細資訊，請參閱[什麼是內部部署閘道？](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem)\(部分機器翻譯\) 若要自動執行閘道安裝及管理工作，請瀏覽 PowerShell 資源庫以取得 [DataGateway PowerShell Cmdlet](https://www.powershellgallery.com/packages/DataGateway/3000.15.15) \(英文\)。
+此文章顯示如何下載、安裝及設定您的內部部署的資料閘道，讓您可以從 Azure Logic Apps 存取內部部署資料來源。 稍後在此主題中，您也可以深入了解[資料閘道的運作方式](#gateway-cloud-service)。 如需有關閘道的詳細資訊，請參閱[什麼是內部部署閘道？](/data-integration/gateway/service-gateway-onprem)\(部分機器翻譯\) 若要自動執行閘道安裝及管理工作，請瀏覽 PowerShell 資源庫以取得 [DataGateway PowerShell Cmdlet](https://www.powershellgallery.com/packages/DataGateway/3000.15.15) \(英文\)。
 
 <a name="requirements"></a>
 
@@ -79,7 +80,7 @@ ms.locfileid: "83659265"
 
   * 閘道有兩種模式：標準模式與個人模式 (僅適用於 Power BI)。 同一部電腦上不能有一個以上的閘道以相同模式執行。
 
-  * Azure Logic Apps 支援透過閘道進行讀取及寫入作業。 不過，這些作業的[承載大小有限制](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem#considerations) \(部分機器翻譯\)。
+  * Azure Logic Apps 支援透過閘道進行讀取及寫入作業。 不過，這些作業的[承載大小有限制](/data-integration/gateway/service-gateway-onprem#considerations) \(部分機器翻譯\)。
 
 <a name="install-gateway"></a>
 
@@ -142,8 +143,8 @@ ms.locfileid: "83659265"
 
 內部部署的資料閘道依賴 [Azure 服務匯流排](../service-bus-messaging/service-bus-messaging-overview.md)來使用雲端連線，以及建立與閘道相關聯 Azure 區域對應的連出連線。 如果您的工作環境要求流量經由 Proxy 或防火牆存取網際網路，此限制可能會使內部部署的資料閘道無法連線到閘道雲端服務與 Azure 服務匯流排。 閘道有數個通訊設定可供您調整。 如需詳細資訊，請參閱下列主題：
 
-* [調整內部部署的資料閘道的通訊設定](https://docs.microsoft.com/data-integration/gateway/service-gateway-communication) \(部分機器翻譯\)
-* [設定內部部署的資料閘道的 Proxy 設定](https://docs.microsoft.com/data-integration/gateway/service-gateway-proxy)
+* [調整內部部署的資料閘道的通訊設定](/data-integration/gateway/service-gateway-communication) \(部分機器翻譯\)
+* [設定內部部署的資料閘道的 Proxy 設定](/data-integration/gateway/service-gateway-proxy)
 
 <a name="high-availability"></a>
 
@@ -155,7 +156,7 @@ ms.locfileid: "83659265"
 
 * 主要閘道必須執行 2017 年 11 月或更新版本的閘道更新。
 
-設定主要閘道之後，當要安裝另一個閘道時，請選取 [新增到現有的閘道叢集]、選取主要閘道 (您安裝的第一個閘道)，並提供該閘道的修復金鑰。 如需詳細資訊，請參閱[適用於內部部署資料閘道的高可用性叢集](https://docs.microsoft.com/data-integration/gateway/service-gateway-install#add-another-gateway-to-create-a-cluster)。
+設定主要閘道之後，當要安裝另一個閘道時，請選取 [新增到現有的閘道叢集]、選取主要閘道 (您安裝的第一個閘道)，並提供該閘道的修復金鑰。 如需詳細資訊，請參閱[適用於內部部署資料閘道的高可用性叢集](/data-integration/gateway/service-gateway-install#add-another-gateway-to-create-a-cluster)。
 
 <a name="update-gateway-installation"></a>
 
@@ -185,7 +186,7 @@ ms.locfileid: "83659265"
 
 ## <a name="tenant-level-administration"></a>租用戶層級管理
 
-若要了解 Azure AD 租用戶中所有內部部署的資料閘道，該租用戶中的全域管理員可以使用租用戶系統管理員的身分登入 [Power Platform 系統管理中心](https://powerplatform.microsoft.com)，然後選取 [資料閘道] 選項。 如需詳細資訊，請參閱[內部部署的資料閘道的租用戶層級管理](https://docs.microsoft.com/data-integration/gateway/service-gateway-tenant-level-admin)。
+若要了解 Azure AD 租用戶中所有內部部署的資料閘道，該租用戶中的全域管理員可以使用租用戶系統管理員的身分登入 [Power Platform 系統管理中心](https://powerplatform.microsoft.com)，然後選取 [資料閘道] 選項。 如需詳細資訊，請參閱[內部部署的資料閘道的租用戶層級管理](/data-integration/gateway/service-gateway-tenant-level-admin)。
 
 <a name="restart-gateway"></a>
 
@@ -196,7 +197,7 @@ ms.locfileid: "83659265"
 > [!NOTE]
 > 您的 Windows 服務帳戶與用來連線至內部部署資料來源的帳戶不同，也與您用來登入雲端服務的 Azure 帳戶不同。
 
-和其他任何 Windows 服務一樣，您可以透過各種方式來啟動和停止閘道。 如需詳細資訊，請參閱[重新啟動內部部署的資料閘道](https://docs.microsoft.com/data-integration/gateway/service-gateway-restart) \(部分機器翻譯\)。
+和其他任何 Windows 服務一樣，您可以透過各種方式來啟動和停止閘道。 如需詳細資訊，請參閱[重新啟動內部部署的資料閘道](/data-integration/gateway/service-gateway-restart) \(部分機器翻譯\)。
 
 <a name="gateway-cloud-service"></a>
 
@@ -260,9 +261,9 @@ Microsoft 雲端服務使用 [Azure AD](../active-directory/fundamentals/active-
 
 ## <a name="faq-and-troubleshooting"></a>常見問題集和疑難排解
 
-* [內部部署資料閘道常見問題集](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem-faq)
-* [針對內部部署的資料閘道進行疑難排解](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot) \(部分機器翻譯\)
-* [監視及最佳化閘道效能](https://docs.microsoft.com/data-integration/gateway/service-gateway-performance) \(部分機器翻譯\)
+* [內部部署資料閘道常見問題集](/data-integration/gateway/service-gateway-onprem-faq)
+* [針對內部部署的資料閘道進行疑難排解](/data-integration/gateway/service-gateway-tshoot) \(部分機器翻譯\)
+* [監視及最佳化閘道效能](/data-integration/gateway/service-gateway-performance) \(部分機器翻譯\)
 
 ## <a name="next-steps"></a>後續步驟
 

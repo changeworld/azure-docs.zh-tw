@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
-ms.openlocfilehash: 77bba9433052c00df671caf73198ff75356b1c9a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0f43d1f780f838fdc49eb055536204026edcc729
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81400161"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079237"
 ---
 # <a name="text-to-speech-rest-api"></a>文字轉換語音 REST API
 
@@ -55,7 +55,7 @@ ms.locfileid: "81400161"
 | 日本東部 | `https://japaneast.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 南韓中部 | `https://koreacentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 美國中北部 | `https://northcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| 北歐 | `https://northeurope.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| 歐洲北部 | `https://northeurope.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 美國中南部 | `https://southcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 東南亞 | `https://southeastasia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 英國南部 | `https://uksouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
@@ -67,13 +67,13 @@ ms.locfileid: "81400161"
 
 下表列出文字轉換語音要求的必要和選擇性標頭。
 
-| 頁首 | 描述 | 必要/選用 |
+| 頁首 | 說明 | 必要/選用 |
 |--------|-------------|---------------------|
 | `Authorization` | 前面加入 `Bearer` 這個字的授權權杖。 如需詳細資訊，請參閱[驗證](#authentication)。 | 必要 |
 
-### <a name="request-body"></a>要求本文
+### <a name="request-body"></a>Request body
 
-對於`GET`此端點的要求，不需要主體。
+對於此端點的要求，不需要主體 `GET` 。
 
 ### <a name="sample-request"></a>範例要求
 
@@ -167,7 +167,7 @@ Authorization: Bearer [Base64 access_token]
 
 下表列出文字轉換語音要求的必要和選擇性標頭。
 
-| 頁首 | 描述 | 必要/選用 |
+| 頁首 | 說明 | 必要/選用 |
 |--------|-------------|---------------------|
 | `Authorization` | 前面加入 `Bearer` 這個字的授權權杖。 如需詳細資訊，請參閱[驗證](#authentication)。 | 必要 |
 | `Content-Type` | 指定所提供文字的內容類型。 接受的值為 `application/ssml+xml`。 | 必要 |
@@ -178,20 +178,20 @@ Authorization: Bearer [Base64 access_token]
 
 此清單列出了每個要求中系統做為 `X-Microsoft-OutputFormat` 標頭的傳送的支援音訊格式。 每個格式皆包含位元速率和編碼類型。 語音服務支援 24 kHz、16 kHz 和 8 kHz 音訊輸出。
 
-|||
-|-|-|
-| `raw-16khz-16bit-mono-pcm` | `raw-8khz-8bit-mono-mulaw` |
-| `riff-8khz-8bit-mono-alaw` | `riff-8khz-8bit-mono-mulaw` |
-| `riff-16khz-16bit-mono-pcm` | `audio-16khz-128kbitrate-mono-mp3` |
-| `audio-16khz-64kbitrate-mono-mp3` | `audio-16khz-32kbitrate-mono-mp3` |
-| `raw-24khz-16bit-mono-pcm` | `riff-24khz-16bit-mono-pcm` |
-| `audio-24khz-160kbitrate-mono-mp3` | `audio-24khz-96kbitrate-mono-mp3` |
-| `audio-24khz-48kbitrate-mono-mp3` | |
+```output
+raw-16khz-16bit-mono-pcm            raw-8khz-8bit-mono-mulaw
+riff-8khz-8bit-mono-alaw            riff-8khz-8bit-mono-mulaw
+riff-16khz-16bit-mono-pcm           audio-16khz-128kbitrate-mono-mp3
+audio-16khz-64kbitrate-mono-mp3     audio-16khz-32kbitrate-mono-mp3
+raw-24khz-16bit-mono-pcm            riff-24khz-16bit-mono-pcm
+audio-24khz-160kbitrate-mono-mp3    audio-24khz-96kbitrate-mono-mp3
+audio-24khz-48kbitrate-mono-mp3     ogg-24khz-16bit-mono-opus
+```
 
 > [!NOTE]
-> 如果您選取的語音和輸出格式具有不同的位元速率，則會視需要重新進行音訊取樣。 不過，24 kHz 語音不支援`audio-16khz-16kbps-mono-siren`和`riff-16khz-16kbps-mono-siren`輸出格式。
+> 如果您選取的語音和輸出格式具有不同的位元速率，則會視需要重新進行音訊取樣。 ogg-24khz-dxil 16 位-mono-opus 可以使用[opus 編解碼器](https://opus-codec.org/downloads/)進行解碼
 
-### <a name="request-body"></a>要求本文
+### <a name="request-body"></a>Request body
 
 每個 `POST` 要求的本文都會以[語音合成標記語言 (SSML)](speech-synthesis-markup.md) 形式傳送。 SSML 可讓您選擇文字轉換語音服務所傳回合成語音的語音和語言。 如需支援的完整語音清單，請參閱[語言支援](language-support.md#text-to-speech)。
 
@@ -233,7 +233,7 @@ Authorization: Bearer [Base64 access_token]
 | 400 | 不正確的要求 | 必要的參數遺失、為空白或 Null。 或者，傳遞至必要或選用參數的值無效。 常見的問題是標頭太長。 |
 | 401 | 未經授權 | 要求未經授權。 請檢查以確定您的訂用帳戶金鑰或權杖有效，並且位於正確的區域。 |
 | 413 | 要求實體太大 | SSML 輸入的長度大於 1024 個字元。 |
-| 415 | 不支援的媒體類型 | 可能是提供了錯誤`Content-Type`的。 `Content-Type`應設定為`application/ssml+xml`。 |
+| 415 | 不支援的媒體類型 | 可能是提供了錯誤的 `Content-Type` 。 `Content-Type`應設定為 `application/ssml+xml` 。 |
 | 429 | 太多要求 | 您已超出訂用帳戶允許的配額或要求率。 |
 | 502 | 錯誤的閘道    | 網路或伺服器端問題。 也可能表示標頭無效。 |
 

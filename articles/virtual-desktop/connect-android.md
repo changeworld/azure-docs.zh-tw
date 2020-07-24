@@ -8,14 +8,14 @@ ms.topic: how-to
 ms.date: 03/25/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a7ca15a301de3c54195c0978aa31121c3624a98a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 39df24380917c51f3b492bb62c98024d3d090458
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85209448"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080653"
 ---
-# <a name="connect-with-the-android-client"></a>與 Android 用戶端連線
+# <a name="connect-to-windows-virtual-desktop-with-the-android-client"></a>使用 Android 用戶端連接到 Windows 虛擬桌面
 
 > 適用于： Android 4.1 和更新版本，使用 ChromeOS 53 和更新版本 Chromebook。
 
@@ -40,7 +40,7 @@ ms.locfileid: "85209448"
 
 若要訂閱摘要：
 
-1. 在 [連線中心] 上，點選 **+** ，然後點選 [遠端資源摘要]  。
+1. 在 [連線中心] 上，點選 **+** ，然後點選 [遠端資源摘要]。
 2. 在 [摘要**url** ] 欄位中輸入摘要 url。 摘要 URL 可以是 URL 或電子郵件地址。
    - 如果您使用 URL，通常會使用您系統管理員提供給您的帳戶 <https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery> 。
    - 若要使用電子郵件，請輸入您的電子郵件地址。 如果您的系統管理員以這種方式設定伺服器，用戶端將會搜尋與您的電子郵件地址相關聯的 URL。

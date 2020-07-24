@@ -8,11 +8,12 @@ ms.author: deli
 ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/18/2016
-ms.openlocfilehash: 577e2128cf7e4e9f914ec5504917053acb3c19d5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5b82dba923db16e96cc0884b629723c4e8496c3a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78898490"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080894"
 ---
 # <a name="powershell-cmdlets-reference-for-azure-scheduler"></a>Azure 排程器 PowerShell Cmdlet 參考
 
@@ -21,7 +22,7 @@ ms.locfileid: "78898490"
 >
 > Azure 入口網站中已不再提供排程器，但目前仍然提供 [REST API](/rest/api/scheduler) 和 [Azure 排程器 PowerShell Cmdlets](scheduler-powershell-reference.md)，以便您管理作業和作業集合。
 
-若要撰寫用於建立及管理排程器作業與作業集合的指令碼，您可以使用 PowerShell Cmdlet。 此文章列出主要 Azure 排程器的 PowerShell Cmdlet，並提供其參考文章的連結。 若要為 Azure 訂用帳戶安裝 Azure PowerShell，請參閱 [如何安裝和設定 Azure PowerShell](/powershell/azure/overview)。 如需[Azure Resource Manager Cmdlet](/powershell/azure/overview)的詳細資訊，請參閱搭配[使用 Azure PowerShell 與 Azure Resource Manager](../powershell-azure-resource-manager.md)。
+若要撰寫用於建立及管理排程器作業與作業集合的指令碼，您可以使用 PowerShell Cmdlet。 此文章列出主要 Azure 排程器的 PowerShell Cmdlet，並提供其參考文章的連結。 若要為 Azure 訂用帳戶安裝 Azure PowerShell，請參閱 [如何安裝和設定 Azure PowerShell](/powershell/azure/)。 如需[Azure Resource Manager Cmdlet](/powershell/azure/)的詳細資訊，請參閱搭配[使用 Azure PowerShell 與 Azure Resource Manager](../powershell-azure-resource-manager.md)。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

@@ -1,5 +1,5 @@
 ---
-title: 保護您的 Azure App Service web 應用程式和 Api
+title: 保護您的 Azure App Service Web 應用程式和 API
 description: 本文可協助您開始在 Azure 資訊安全中心中保護您的 Azure App Service web 應用程式和 Api。
 services: security-center
 documentationcenter: na
@@ -10,13 +10,14 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 01/27/2019
 ms.author: memildin
-ms.openlocfilehash: 2d81e1a1218add504e1e35015276b6924da0e3e3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 35b91aab8c228fc7dced5dfe06e33f939f4634f5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77616474"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080789"
 ---
-# <a name="protect-your-azure-app-service-web-apps-and-apis"></a>保護您的 Azure App Service web 應用程式和 Api
+# <a name="protect-your-azure-app-service-web-apps-and-apis"></a>保護您的 Azure App Service Web 應用程式和 API
 
 Azure App Service 是完全受控的平臺，可用於建立及裝載您的 web 應用程式和 Api，而不必擔心管理基礎結構的問題。 它提供管理、監視和營運見解，以符合企業級的效能、安全性和合規性需求。 如需詳細資訊，請參閱[Azure App Service](https://azure.microsoft.com/services/app-service/)。
 

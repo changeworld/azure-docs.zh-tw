@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/02/2018
 ms.author: memildin
-ms.openlocfilehash: 0ca5cdcb0410d52f40e28c66a839bddcb34cc8a8
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: e6dfc0eb704b0b35ab4e181076d8f97fd3e8c9d7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963354"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080742"
 ---
 # <a name="automate-onboarding-of-azure-security-center-using-powershell"></a>使用 PowerShell 自動化上架 Azure 資訊安全中心
 
@@ -29,7 +29,7 @@ ms.locfileid: "85963354"
 
 此文章提供了一個範例 PowerShell 指令碼，可以在您的環境中對其進行修改並使用，以在您的訂用帳戶之間推出資訊安全中心。 
 
-在此範例中，我們將在識別碼為 d07c0080-170c-4c24-861d-9c817742786c 的訂用帳戶上啟用資訊安全中心，並藉由實作資訊安全中心的標準層提供進階威脅防護和偵測功能，來套用提供高層級保護的建議設定：
+在此範例中，我們將在識別碼為 d07c0080-170c-4c24-861d-9c817742786c 的訂用帳戶上啟用資訊安全中心，並藉由執行資訊安全中心的標準層，以提供先進的威脅防護和偵測功能，來套用提供高層級保護的建議設定：
 
 1. 設定[資訊安全中心標準保護層級](https://azure.microsoft.com/pricing/details/security-center/)。 
  
@@ -41,7 +41,7 @@ ms.locfileid: "85963354"
 
 6. 指派資訊安全中心的[預設安全性原則](tutorial-security-policy.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 在執行資訊安全中心 Cmdlet 之前，應該執行這些步驟：
 

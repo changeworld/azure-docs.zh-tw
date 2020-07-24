@@ -14,16 +14,16 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
-ms.openlocfilehash: 5d0eee6b89ec3e0be944f17c361aafa598724069
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: bc29a62f469b0b9d091fcdef2488afba764a09fe
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042113"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080347"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>適用於 Linux 的虛擬機器擴充功能和功能
 
-Azure 虛擬機器 (VM) 擴充功能是小型的應用程式，可在 Azure 虛擬機器上提供部署後設定及自動化工作。 例如，如果虛擬機器要求安裝軟體、防毒保護，或要求執行其中的指令碼，便可使用虛擬機器擴充功能。 您可以使用 Azure CLI、PowerShell、Azure Resource Manager 範本及 Azure 入口網站來執行 Azure 虛擬機器擴充功能。 擴充功能可以與新的虛擬機器部署搭配，或是在任何現有的系統上執行。
+Azure 虛擬機器 (VM) 擴充功能是小型的應用程式，可在 Azure 虛擬機器上提供部署後設定及自動化工作。 例如，如果虛擬機器需要軟體安裝、防毒保護，或是要在其中執行指令碼，您可以使用 VM 延伸模組。 您可以使用 Azure CLI、PowerShell、Azure Resource Manager 範本與 Azure 入口網站來執行 Azure VM 延伸模組。 擴充功能可以與新的虛擬機器部署搭配，或是在任何現有的系統上執行。
 
 本文提供虛擬機器擴充功能概觀、使用 Azure 虛擬機器擴充功能的必要條件，以及如何偵測、管理和移除虛擬機器擴充功能的指引。 因為有許多可用的虛擬機器擴充功能，且每項功能的設定可能都盡不相同，因此本文所提供的是通用資訊。 可以在每份個別擴充功能專用的文件中找到擴充功能特定的詳細資料。
 
@@ -32,12 +32,12 @@ Azure 虛擬機器 (VM) 擴充功能是小型的應用程式，可在 Azure 虛�
 有數個不同的 Azure VM 擴充功能可供使用，各有特定使用案例。 部分範例包括：
 
 - 使用適用於 Linux 的 DSC 擴充將 PowerShell 預期狀態設定套用至虛擬機器。 如需詳細資訊，請參閱 [Azure 期望狀態組態擴充功能簡介](https://github.com/Azure/azure-linux-extensions/tree/master/DSC)。
-- 使用 Microsoft 監視代理程式虛擬機器擴充功能來設定虛擬機器的監視。 如需詳細資訊，請參閱[如何監視 Linux 虛擬機器](../linux/tutorial-monitoring.md)。
+- 使用 Microsoft 監視代理程式虛擬機器擴充功能來設定虛擬機器的監視。 如需詳細資訊，請參閱[如何監視 Linux 虛擬機器](../linux/tutorial-monitor.md)。
 - 使用 Chef 或 Datadog 擴充設定 Azure 基礎結構的監視。 如需詳細資訊，請參閱 [Chef 文件](https://docs.chef.io/azure_portal.html)或 [Datadog 部落格](https://www.datadoghq.com/blog/introducing-azure-monitoring-with-one-click-datadog-deployment/)。
 
 除了處理序特定擴充功能，自訂指令碼延伸模組適用於 Windows 和 Linux 虛擬機器。 適用於 Linux 的自訂指令碼擴充可讓任何 Bash 指令碼在虛擬機器上執行。 自訂指令碼對於設計需要超過原生 Azure 工具可提供之設定的 Azure 部署很有用。 如需詳細資訊，請參閱 [Linux VM 自訂指令碼延伸模組](custom-script-linux.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 若要處理虛擬機器上的擴充，您需要安裝 Azure Linux 代理程式。 某些個別的擴充會有先決條件，例如可存取資源或相依性。
 
@@ -65,7 +65,7 @@ Linux 代理程式可在多種作業系統上執行，但擴充功能作業系�
 > [!IMPORTANT]
 > 如果您已使用客體防火牆封鎖對 168.63.129.16** 的存取，則無論前述條件為何，擴充功能都會故障。
 
-代理程式只能用來下載擴充功能套件和報告狀態。 例如，如果需要從 GitHub 下載指令碼 (自訂指令碼)，或需要存取 Azure 儲存體 (Azure 備份) 才能安裝擴充功能，則必須開啟其他防火牆/網路安全性群組連接埠。 不同的擴充功能有不同需求，因為它們是自成一格的應用程式。 對於需要存取 Azure 儲存體的擴充功能，您可以使用[儲存體](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)適用的 Azure NSG 服務標記來允許存取。
+代理程式只能用來下載擴充功能套件和報告狀態。 例如，如果需要從 GitHub 下載指令碼 (自訂指令碼)，或需要存取 Azure 儲存體 (Azure 備份) 才能安裝擴充功能，則必須開啟其他防火牆/網路安全性群組連接埠。 不同的擴充功能有不同需求，因為它們是自成一格的應用程式。 對於需要存取 Azure 儲存體的擴充功能，您可以使用[儲存體](../../virtual-network/security-overview.md#service-tags)適用的 Azure NSG 服務標記來允許存取。
 
 Linux 代理程式必須有 Proxy 伺服器支援，才能重新導向代理程式流量要求。 不過，此 Proxy 伺服器支援不會套用擴充功能。 您必須個別設定每個擴充功能，才能與 Proxy 搭配使用。
 
@@ -259,7 +259,7 @@ Goal state agent: 2.2.18
 
 「目標狀態代理程式」是自動更新版本。
 
-強烈建議您一律讓代理程式自動更新，[AutoUpdate.Enabled=y](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent)。 未啟用這個項目即表示您必須保持手動更新代理程式，而且無法修正 Bug 和安全性。
+強烈建議您一律讓代理程式自動更新，[AutoUpdate.Enabled=y](./update-linux-agent.md)。 未啟用這個項目即表示您必須保持手動更新代理程式，而且無法修正 Bug 和安全性。
 
 #### <a name="extension-updates"></a>擴充功能更新
 
@@ -403,7 +403,7 @@ az vm extension delete \
 
 ## <a name="common-vm-extension-reference"></a>常見的 VM 擴充功能參考
 
-| 擴充功能名稱 | 說明 | 更多資訊 |
+| 擴充功能名稱 | 描述 | 詳細資訊 |
 | --- | --- | --- |
 | Linux 的自訂指令碼擴充功能 |對「Azure 虛擬機器」執行指令碼 |[適用于 Linux 的自訂腳本擴充功能](custom-script-linux.md) |
 | VM 存取擴充功能 |重新取得對「Azure 虛擬機器」的存取權 |[VM 存取擴充功能](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess) |

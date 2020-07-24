@@ -10,34 +10,34 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 06/18/2020
+ms.date: 06/30/2020
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: 9668307047771304c2d3785dc7ff3f760171a43f
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 3441a540cb00dc9b85de54543484b1723fa4226e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86181993"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080743"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Azure Time Series Insights API 的驗證和授權
 
-本文件描述如何使用新的 Azure Active Directory 刀鋒視窗，在 Azure Active Directory 中註冊應用程式。 在 Azure Active Directory 中註冊的應用程式，可讓使用者針對與時間序列見解環境建立關聯的 Azure 時間序列見解 API 進行驗證並獲授權使用。
+本文件描述如何使用新的 Azure Active Directory 刀鋒視窗，在 Azure Active Directory 中註冊應用程式。 在 Azure Active Directory 中註冊的應用程式可讓使用者對與 Azure 時間序列深入解析環境相關聯的 Azure 時間序列深入解析 API 進行驗證及授權使用。
 
 ## <a name="service-principal"></a>服務主體
 
-下列各節描述如何設定應用程式，以代表應用程式存取時間序列見解 API。 此應用程式接著可透過 Azure Active Directory 使用自己的應用程式認證，以在時間序列見解環境中查詢或發佈參考資料。
+下列各節說明如何設定應用程式，以代表應用程式存取 Azure 時間序列深入解析 API。 然後，應用程式可以透過 Azure Active Directory 使用自己的應用程式認證，在 Azure 時間序列深入解析環境中查詢或發佈參考資料。
 
 ## <a name="summary-and-best-practices"></a>總結和最佳做法
 
 Azure Active Directory 應用程式註冊流程包含三個主要步驟。
 
 1. 在 Azure Active Directory 中[註冊應用程式](#azure-active-directory-app-registration)。
-1. 授權此應用程式使其擁有[時間序列見解環境的資料存取權](#granting-data-access)。
-1. 使用 [應用程式識別碼] 和 [用戶端祕密]，從[用戶端應用程式](#client-app-initialization)中的 `https://api.timeseries.azure.com/` 取得權杖。 此權杖可用來呼叫 Time Series Insights API。
+1. 授權應用程式擁有[Azure 時間序列深入解析環境的資料存取權](#granting-data-access)。
+1. 使用 [應用程式識別碼] 和 [用戶端祕密]，從[用戶端應用程式](#client-app-initialization)中的 `https://api.timeseries.azure.com/` 取得權杖。 然後，您可以使用此權杖來呼叫 Azure 時間序列深入解析 API。
 
 根據**步驟 3**，將應用程式與使用者認證隔開，其可供：
 
-* 將權限指派給不同於自有權限的應用程式身分識別。 一般而言，這些權限只會限制為 App 所需的權限。 例如，您可允許應用程式只能從特定時間序列見解環境中讀取資料。
+* 將權限指派給不同於自有權限的應用程式身分識別。 一般而言，這些權限只會限制為 App 所需的權限。 例如，您可以允許應用程式只從特定的 Azure 時間序列深入解析環境中讀取資料。
 * 使用**用戶端祕密**或安全性憑證，將應用程式的安全性與使用者的驗證認證建立作業隔離。 因此，應用程式其認證不會相依於特定使用者的認證。 如果使用者的角色變更，則應用程式不一定需要新認證或進一步的設定。 如果使用者變更其密碼，則對應用程式的所有存取都不需要新認證或金鑰。
 * 使用**用戶端祕密**或安全性憑證而非特定使用者的認證 (需要有這些認證) 來執行自動指令碼。
 * 使用安全性憑證而非密碼來保護 Azure 時間序列見解 API 的存取。
@@ -57,9 +57,9 @@ Azure Active Directory 應用程式註冊流程包含三個主要步驟。
 
 ### <a name="granting-data-access"></a>授與資料存取權
 
-1. 針對時間序列見解環境，選取 [資料存取原則]，然後選取 [新增]。
+1. 針對 Azure 時間序列深入解析環境，選取 [**資料存取原則**]，然後選取 [**新增**]。
 
-   [![將新的資料存取原則新增至時間序列見解環境](media/authentication-and-authorization/time-series-insights-data-access-policies-add.png)](media/authentication-and-authorization/time-series-insights-data-access-policies-add.png#lightbox)
+   [![將新的資料存取原則新增至 Azure 時間序列深入解析環境](media/authentication-and-authorization/time-series-insights-data-access-policies-add.png)](media/authentication-and-authorization/time-series-insights-data-access-policies-add.png#lightbox)
 
 1. 在 [選取使用者] 對話方塊中，貼上 Azure Active Directory 應用程式註冊區段中的 [應用程式名稱] 或 [應用程式識別碼]。
 
@@ -76,36 +76,34 @@ Azure Active Directory 應用程式註冊流程包含三個主要步驟。
 
 ### <a name="client-app-initialization"></a>用戶端應用程式初始化
 
-* 開發人員可以使用 [Microsoft Authentication Library (MSAL) 向 Azure 時間序列深入解析進行驗證。
+* 開發人員可以使用 [Microsoft 驗證程式庫（MSAL）來驗證 Azure 時間序列深入解析。
 
-* 若要使用 ADAL 進行驗證：
+* 若要使用 MSAL 進行驗證：
 
    1. 使用 Azure Active Directory 應用程式註冊區段中的 [應用程式識別碼] 和 [用戶端祕密] (應用程式金鑰)，以代表應用程式取得權杖。
 
-   1. 在 C# 中，下列程式碼可代表應用程式來取得權杖。 如需完整範例，請參閱[使用 C# 查詢資料](time-series-insights-query-data-csharp.md)。
+   1. 在 C# 中，下列程式碼可代表應用程式來取得權杖。 如需如何從 Gen1 環境查詢資料的完整範例，請參閱[使用 c # 查詢資料](time-series-insights-query-data-csharp.md)。
 
         [!code-csharp[csharpquery-example](~/samples-tsi/csharp-tsi-ga-sample/Program.cs?range=170-199)]
 
-   1. 當應用程式呼叫 Time Series Insights API 時，此權杖即可傳入 `Authorization` 標頭。
+   1. 然後， `Authorization` 當應用程式呼叫 AZURE 時間序列深入解析 API 時，就可以在標頭中傳遞權杖。
 
 > [!IMPORTANT]
-> 如果您使用[Azure Active Directory Authentication Library (ADAL) ](https://docs.microsoft.com/azure/active-directory/azuread-dev/active-directory-authentication-libraries)閱讀[遷移至 MSAL](https://docs.microsoft.com/azure/active-directory/develop/msal-net-migration)的相關資訊。
-
-   若要深入瞭解，請參閱[使用 c # 管理 Azure 時間序列深入解析環境的 GA 參考資料一](time-series-insights-manage-reference-data-csharp.md)文。
+> 如果您使用[Azure Active Directory Authentication Library （ADAL）](https://docs.microsoft.com/azure/active-directory/azuread-dev/active-directory-authentication-libraries) ，請參閱[遷移至 MSAL](https://docs.microsoft.com/azure/active-directory/develop/msal-net-migration)。
 
 ## <a name="common-headers-and-parameters"></a>一般標頭和參數
 
-本節描述用來對時間序列見解 GA 和預覽 API 進行查詢的一般 HTTP 要求標頭和參數。 [時間序列見解 REST API 參考文件](https://docs.microsoft.com/rest/api/time-series-insights/)中更詳細地說明了 API 特定需求。
+本節說明用來對 Azure 時間序列深入解析 Gen1 和 Gen2 Api 進行查詢的一般 HTTP 要求標頭和參數。 [Azure 時間序列深入解析 REST API 參考檔](https://docs.microsoft.com/rest/api/time-series-insights/)中會更詳細地涵蓋 API 特定需求。
 
 > [!TIP]
 > 請閱讀 [Azure REST API 參考](https://docs.microsoft.com/rest/api/azure/) (英文)，以深入了解如何使用 REST API、提出 HTTP 要求，以及處理 HTTP 回應。
 
 ### <a name="authentication"></a>驗證
 
-若要對[時間序列見解 REST API](https://docs.microsoft.com/rest/api/time-series-insights/) 執行已驗證的查詢，則必須使用所選的 REST 用戶端 (Postman、JavaScript、C#)，以在[授權標頭](/rest/api/apimanagement/2019-12-01/authorizationserver/createorupdate)中傳遞有效的 OAuth 2.0 持有人權杖。
+若要對[AZURE 時間序列深入解析 REST api](https://docs.microsoft.com/rest/api/time-series-insights/)執行已驗證的查詢，必須使用您選擇的 REST 用戶端（Postman、JavaScript、c #），在[授權標頭](/rest/api/apimanagement/2019-12-01/authorizationserver/createorupdate)中傳遞有效的 OAuth 2.0 持有人權杖。
 
 > [!TIP]
-> 請閱讀所裝載 Azure 時間序列見解的[用戶端 SDK 範例視覺效果](https://tsiclientsample.azurewebsites.net/)，以了解如何使用 [JavaScript 用戶端 SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md) 搭配圖表與圖形，以程式設計方式透過時間序列見解 API 進行驗證。
+> 閱讀裝載的 Azure 時間序列深入解析[用戶端 sdk 範例視覺效果](https://tsiclientsample.azurewebsites.net/)，以瞭解如何使用[JAVASCRIPT 用戶端 SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md)搭配圖表和圖形，以程式設計方式驗證 Azure 時間序列深入解析 api。
 
 ### <a name="http-headers"></a>HTTP 標頭
 
@@ -113,7 +111,7 @@ Azure Active Directory 應用程式註冊流程包含三個主要步驟。
 
 | 必要的要求標頭 | 描述 |
 | --- | --- |
-| 授權 | 若要透過時間序列見解進行驗證，則必須在**授權**標頭中傳遞有效的 OAuth 2.0 持有人權杖。 |
+| 授權 | 若要使用 Azure 時間序列深入解析進行驗證，必須在**Authorization**標頭中傳遞有效的 OAuth 2.0 持有人權杖。 |
 
 > [!IMPORTANT]
 > 此權杖必須確切核發給 `https://api.timeseries.azure.com/` 資源 (也稱為權杖的「對象」)。
@@ -146,22 +144,25 @@ Azure Active Directory 應用程式註冊流程包含三個主要步驟。
 
 | 版本 | 可能的 API 版本值 |
 | --- |  --- |
-| 正式運作 | `api-version=2016-12-12`|
-| 預覽 | `api-version=2018-11-01-preview` |
-| 預覽 | `api-version=2018-08-15-preview` |
+| Gen1 | `api-version=2016-12-12`|
+| Gen2 | `api-version=2020-07-31` 和 `api-version=2018-11-01-preview`|
+
+> [!IMPORTANT]
+>
+> `api-version=2018-11-01-preview`版本即將淘汰。 我們建議使用者切換至較新的版本。
 
 選擇性 URL 查詢字串參數包括設定 HTTP 要求執行時間的逾時。
 
 | 選擇性的查詢參數 | 描述 | 版本 |
 | --- |  --- | --- |
-| `timeout=<timeout>` | HTTP 要求執行的伺服器端逾時。 僅適用於[取得環境事件](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-events-api)和[取得環境彙總](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-aggregates-api) API。 逾時值應採用 ISO 8601 持續期間格式 (例如 `"PT20S"`)，且應在 `1-30 s`範圍內。 預設值為 `30 s`。 | GA |
-| `storeType=<storeType>` | 針對已啟用暖存放區的預覽環境，可在 `WarmStore` 或 `ColdStore` 上執行查詢。 這個查詢中參數會定義應執行查詢的存放區。 如果未定義，則會在冷存放區上執行查詢。 若要查詢暖存放區，**storeType** 必須設定為 `WarmStore`。 如果未定義，則會針對冷存放區執行查詢。 | 預覽 |
+| `timeout=<timeout>` | HTTP 要求執行的伺服器端逾時。 僅適用於[取得環境事件](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-events-api)和[取得環境彙總](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-aggregates-api) API。 逾時值應採用 ISO 8601 持續期間格式 (例如 `"PT20S"`)，且應在 `1-30 s`範圍內。 預設值為 `30 s`。 | Gen1 |
+| `storeType=<storeType>` | 對於已啟用暖存放區的 Gen2 環境，可以在或上執行查詢 `WarmStore` `ColdStore` 。 這個查詢中參數會定義應執行查詢的存放區。 如果未定義，則會在冷存放區上執行查詢。 若要查詢暖存放區，**storeType** 必須設定為 `WarmStore`。 如果未定義，則會針對冷存放區執行查詢。 | Gen2 |
 
 ## <a name="next-steps"></a>後續步驟
 
-* 如需呼叫 GA 時間序列見解 API 的範例程式碼，請參閱[使用 C# 查詢資料](./time-series-insights-query-data-csharp.md)。
+* 如需呼叫 Gen1 Azure 時間序列深入解析 API 的範例程式碼，請參閱[使用 c # 的查詢 Gen1 資料](./time-series-insights-query-data-csharp.md)。
 
-* 如需預覽時間序列見解 API 的程式碼範例，請參閱[使用 C# 查詢預覽資料](./time-series-insights-update-query-data-csharp.md)。
+* 如需呼叫 Gen2 Azure 時間序列深入解析 API 程式碼範例的程式碼範例，請參閱[使用 c # 的查詢 Gen2 資料](./time-series-insights-update-query-data-csharp.md)。
 
 * 如需 API 參考資訊，請參閱[查詢 API 參考](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api)。
 

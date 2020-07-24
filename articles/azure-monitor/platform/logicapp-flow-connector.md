@@ -7,14 +7,15 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/13/2020
-ms.openlocfilehash: 193aa168cff436512dc2044d0986df508fd6bfa9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6048b5f0a3702e95cef9175933041fe36f2f07bb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84248731"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081554"
 ---
 # <a name="azure-monitor-logs-connector-for-logic-apps-and-flow"></a>適用于 Logic Apps 和流程的 Azure 監視器記錄連接器
-[Azure Logic Apps](/azure/logic-apps/)和[電源自動化](https://ms.flow.microsoft.com)可讓您針對各種服務，使用數百個動作來建立自動化工作流程。 Azure 監視器 Logs 連接器可讓您建立工作流程，以從 Log Analytics 工作區或 Azure 監視器中的 Application Insights 應用程式抓取資料。 本文說明連接器所包含的動作，並提供使用此資料來建立工作流程的逐步解說。
+[Azure Logic Apps](../../logic-apps/index.yml)和[電源自動化](https://ms.flow.microsoft.com)可讓您針對各種服務，使用數百個動作來建立自動化工作流程。 Azure 監視器 Logs 連接器可讓您建立工作流程，以從 Log Analytics 工作區或 Azure 監視器中的 Application Insights 應用程式抓取資料。 本文說明連接器所包含的動作，並提供使用此資料來建立工作流程的逐步解說。
 
 例如，您可以建立邏輯應用程式，以在 Office 365 的電子郵件通知中使用 Azure 監視器記錄資料、在 Azure DevOps 中建立 bug，或張貼時差訊息。  您可以使用簡易排程或從連接的服務中的某個動作觸發工作流程，例如收到郵件或推文時。 
 
@@ -31,16 +32,16 @@ Azure 監視器記錄連接器具有下列限制：
 下表描述 Azure 監視器 Logs 連接器中包含的動作。 兩者都可讓您對 Log Analytics 工作區或 Application Insights 應用程式執行記錄查詢。 其差異在於傳回資料的方式。
 
 > [!NOTE]
-> Azure 監視器 Logs 連接器會取代[Azure Log Analytics 連接器](https://docs.microsoft.com/connectors/azureloganalytics/)和[Azure 應用程式 Insights 連接器](https://docs.microsoft.com/connectors/applicationinsights/)。 此連接器提供與其他專案相同的功能，而且是針對 Log Analytics 工作區或 Application Insights 應用程式執行查詢的慣用方法。
+> Azure 監視器 Logs 連接器會取代[Azure Log Analytics 連接器](/connectors/azureloganalytics/)和[Azure 應用程式 Insights 連接器](/connectors/applicationinsights/)。 此連接器提供與其他專案相同的功能，而且是針對 Log Analytics 工作區或 Application Insights 應用程式執行查詢的慣用方法。
 
 
 | 動作 | 描述 |
 |:---|:---|
-| [執行查詢和列出結果](https://docs.microsoft.com/connectors/azuremonitorlogs/#run-query-and-list-results) | 傳回每個資料列做為它自己的物件。 當您想要在工作流程的其餘部分分別處理每個資料列時，請使用此動作。 動作通常會在[每個活動](../../logic-apps/logic-apps-control-flow-loops.md#foreach-loop)後面加上。 |
-| [執行查詢並將結果視覺化](https://docs.microsoft.com/connectors/azuremonitorlogs/#run-query-and-visualize-results) | 以單一格式化物件的形式傳回結果集中的所有資料列。 當您想要在工作流程的其餘部分一起使用結果集，例如在郵件中傳送結果時，請使用此動作。  |
+| [執行查詢和列出結果](/connectors/azuremonitorlogs/#run-query-and-list-results) | 傳回每個資料列做為它自己的物件。 當您想要在工作流程的其餘部分分別處理每個資料列時，請使用此動作。 動作通常會在[每個活動](../../logic-apps/logic-apps-control-flow-loops.md#foreach-loop)後面加上。 |
+| [執行查詢並將結果視覺化](/connectors/azuremonitorlogs/#run-query-and-visualize-results) | 以單一格式化物件的形式傳回結果集中的所有資料列。 當您想要在工作流程的其餘部分一起使用結果集，例如在郵件中傳送結果時，請使用此動作。  |
 
 ## <a name="walkthroughs"></a>逐步解說
-下列教學課程說明如何在 Azure Logic Apps 中使用 Azure 監視器連接器。 您可以使用電源自動化來執行這些相同的範例，唯一的差別在於如何建立初始工作流程，並在完成時加以執行。 工作流程和動作的設定在兩者之間都相同。 請參閱[從電源自動化中的範本建立流程](https://docs.microsoft.com/power-automate/get-started-logic-template)，以開始使用。
+下列教學課程說明如何在 Azure Logic Apps 中使用 Azure 監視器連接器。 您可以使用電源自動化來執行這些相同的範例，唯一的差別在於如何建立初始工作流程，並在完成時加以執行。 工作流程和動作的設定在兩者之間都相同。 請參閱[從電源自動化中的範本建立流程](/power-automate/get-started-logic-template)，以開始使用。
 
 
 ### <a name="create-a-logic-app"></a>建立邏輯應用程式
@@ -124,6 +125,5 @@ Event
 ## <a name="next-steps"></a>後續步驟
 
 - 深入了解 [Azure 監視器中的記錄查詢](../log-query/log-query-overview.md)。
-- 深入瞭解[Logic Apps](/azure/logic-apps/)
+- 深入瞭解[Logic Apps](../../logic-apps/index.yml)
 - 深入了解 [Microsoft Flow](https://ms.flow.microsoft.com)。
-

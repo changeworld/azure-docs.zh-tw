@@ -3,11 +3,12 @@ title: Azure Functions 的儲存考量事項
 description: 了解 Azure Functions 的儲存體需求，以及加密儲存資料的相關資訊。
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: 324516240d09a5443908cbffec514e4caba2b604
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 2efd583b319e3f3b1fa3db307ea4a3cf53710165
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648785"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079599"
 ---
 # <a name="storage-considerations-for-azure-functions"></a>Azure Functions 的儲存考量事項
 
@@ -40,7 +41,7 @@ ms.locfileid: "83648785"
 
 儲存體帳戶連線會在 [AzureWebJobsStorage application setting](./functions-app-settings.md#azurewebjobsstorage) 中維護。 
 
-當您重新產生儲存體金鑰時，必須更新儲存體帳戶連接字串。 [在此深入了解儲存體金鑰管理](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account)。
+當您重新產生儲存體金鑰時，必須更新儲存體帳戶連接字串。 [在此深入了解儲存體金鑰管理](../storage/common/storage-account-create.md)。
 
 ### <a name="shared-storage-accounts"></a>共用的儲存體帳戶
 
@@ -79,5 +80,3 @@ files_in_share = os.listdir("/path/to/mount")
 
 > [!div class="nextstepaction"]
 > [Azure Functions 的級別和裝載](functions-scale.md)
-
-

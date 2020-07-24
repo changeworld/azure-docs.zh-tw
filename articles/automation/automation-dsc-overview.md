@@ -10,12 +10,12 @@ ms.author: magoedte
 ms.date: 06/22/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6a1c6bb39e743a96ad110a60e41cc59306e7a2ae
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 437a917e0f9b6e7a7370e828c8e3ee95218cea3f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186379"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079735"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Azure Automation State Configuration 概觀
 
@@ -73,7 +73,7 @@ Azure Automation State Configuration 為 [PowerShell Desired State Configuration
 >[!NOTE]
 >[Microsoft Hyper-v Server](/windows-server/virtualization/hyper-v/hyper-v-server-2016) 獨立產品 SKU 並未包含 DSC 的實作。 因此，其無法由 PowerShell DSC 或 Azure Automation State Configuration 管理。
 
-若為執行 Linux 的節點，DSC Linux 延伸模組支援所有在[支援的 Linux 發行版本](https://github.com/Azure/azure-linux-extensions/tree/master/DSC#4-supported-linux-distributions)底下列出的 Linux 發行版本。
+針對執行 Linux 的節點，DSC Linux 擴充功能支援[POWERSHELL DSC 檔](/powershell/scripting/dsc/getting-started/lnxgettingstarted)中列出的所有 Linux 發行版本。
 
 ### <a name="dsc-requirements"></a>DSC 需求
 

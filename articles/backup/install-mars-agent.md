@@ -3,12 +3,12 @@ title: 安裝 Microsoft Azure 復原服務（MARS）代理程式
 description: 瞭解如何安裝 Microsoft Azure 復原服務（MARS）代理程式來備份 Windows 電腦。
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: 7a43f585e978b7d6974ac89fbb5d93f15aebb1d7
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: b9842f6b07621301a0a8a32f5eb7fae5ece153bc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855230"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079361"
 ---
 # <a name="install-the-azure-backup-mars-agent"></a>安裝 Azure 備份 MARS 代理程式
 
@@ -29,7 +29,7 @@ Azure 備份使用 MARS 代理程式，從內部部署機器和 Azure Vm 備份�
 
 ![備份程序步驟](./media/backup-configure-vault/initial-backup-process.png)
 
-## <a name="before-you-start"></a>在您開始使用 Intune 之前
+## <a name="before-you-start"></a>開始之前
 
 * 瞭解[Azure 備份如何使用 MARS 代理程式來備份 Windows 電腦](backup-architecture.md#architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders)。
 * 瞭解在次要 MABS 或 Data Protection Manager 伺服器上執行 MARS 代理程式的[備份架構](backup-architecture.md#architecture-back-up-to-dpmmabs)。
@@ -42,10 +42,10 @@ Azure 備份使用 MARS 代理程式，從內部部署機器和 Azure Vm 備份�
 
 ## <a name="modify-storage-replication"></a>修改儲存體複寫
 
-根據預設，保存庫會使用[異地備援儲存體 (GRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs)。
+根據預設，保存庫會使用[異地備援儲存體 (GRS)](../storage/common/storage-redundancy.md)。
 
 * 如果保存庫是您的主要備份機制，我們建議您使用 GRS。
-* 您可以使用[本機多餘的儲存體（LRS）](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)來降低 Azure 儲存體成本。
+* 您可以使用[本機多餘的儲存體（LRS）](../storage/common/storage-redundancy.md?toc=/azure/storage/blobs/toc.json)來降低 Azure 儲存體成本。
 
 若要修改儲存體複寫類型：
 
@@ -95,7 +95,7 @@ Azure 備份使用 MARS 代理程式，從內部部署機器和 Azure Vm 備份�
 * Azure 區域（根據復原服務保存庫的位置）
 * 根據復原服務保存庫的位置 Azure 儲存體
 
-如需詳細資訊，請參閱[ExpressRoute 路由需求](https://docs.microsoft.com/azure/expressroute/expressroute-routing)。
+如需詳細資訊，請參閱[ExpressRoute 路由需求](../expressroute/expressroute-routing.md)。
 
 > [!NOTE]
 > 新線路的公用對等互連已被取代。
@@ -160,7 +160,7 @@ Azure 備份使用 MARS 代理程式，從內部部署機器和 Azure Vm 備份�
     * 將複雜密碼儲存在安全的位置。 您需要它來還原備份。
     * 如果您遺失或忘記複雜密碼，Microsoft 將無法協助您復原備份資料。
 
-1. 選取 [完成]。 現在已安裝代理程式，且您的電腦已註冊到保存庫。 您已準備好可以設定及排程備份。
+1. 選取 [完成] 。 現在已安裝代理程式，且您的電腦已註冊到保存庫。 您已準備好可以設定及排程備份。
 
 ## <a name="next-steps"></a>後續步驟
 

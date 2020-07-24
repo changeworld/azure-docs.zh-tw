@@ -5,12 +5,12 @@ ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 5560d24601b8aef0d8a4058cc2c04e27e9c86362
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: c3d43bc20c31475a00a0ea81e4abdeb5405162a7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170406"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081792"
 ---
 # <a name="monitor-azure-functions"></a>監視 Azure Functions
 
@@ -58,7 +58,7 @@ ms.locfileid: "86170406"
 
 ![從函式應用程式的 [概觀] 頁面開啟 Application Insights](media/functions-monitoring/ai-link.png)
 
-如需如何使用 Application Insights 的相關資訊，請參閱 [Application Insights 文件](https://docs.microsoft.com/azure/application-insights/)。 本節示範一些如何在 Application Insights 中檢視資料的範例。 如果您已經熟悉 Application Insights，即可直接前往[關於如何設定和自訂遙測資料的小節](#configure-categories-and-log-levels)。
+如需如何使用 Application Insights 的相關資訊，請參閱 [Application Insights 文件](/azure/application-insights/)。 本節示範一些如何在 Application Insights 中檢視資料的範例。 如果您已經熟悉 Application Insights，即可直接前往[關於如何設定和自訂遙測資料的小節](#configure-categories-and-log-levels)。
 
 ![Application Insights 的 [概觀] 索引標籤](media/functions-monitoring/metrics-explorer.png)
 
@@ -68,12 +68,12 @@ ms.locfileid: "86170406"
 | ---- | ----------- |
 | **[失敗](../azure-monitor/app/asp-net-exceptions.md)** |  根據函式失敗和伺服器例外狀況，建立圖表和警示。 **作業名稱**是函式名稱。 除非您實作自訂遙測來取得相依性，否則不會顯示相依性中的失敗。 |
 | **[效能](../azure-monitor/app/performance-counters.md)** | 藉由檢視每個**雲端角色執行個體**的資源使用率和輸送量，來分析效能問題。 如果要對函式拖累基礎資源的案例進行偵錯，此資料非常有用。 |
-| **[計量](../azure-monitor/app/metrics-explorer.md)** | 建立以計量為基礎的圖表和警示。 計量包括函式引動過程的數目、執行時間和成功率。 |
+| **[計量](../azure-monitor/platform/metrics-charts.md)** | 建立以計量為基礎的圖表和警示。 計量包括函式引動過程的數目、執行時間和成功率。 |
 | **[即時計量    ](../azure-monitor/app/live-stream.md)** | 檢視以近乎即時方式建立的計量資料。 |
 
 ## <a name="query-telemetry-data"></a>查詢遙測資料
 
-[Application Insights 分析](../azure-monitor/app/analytics.md)可讓您在資料庫中，以資料表形式存取所有遙測資料。 分析會提供用於擷取、操作和視覺化資料的查詢語言。 
+[Application Insights 分析](../azure-monitor/log-query/log-query-overview.md)可讓您在資料庫中，以資料表形式存取所有遙測資料。 分析會提供用於擷取、操作和視覺化資料的查詢語言。 
 
 選擇 [記錄] 以探索或查詢記錄的事件。
 
@@ -153,7 +153,7 @@ Azure Functions 記錄器也包含具有每個記錄的「記錄層級」。 [Lo
 
 ### <a name="version-2x-and-higher"></a>2\.x 版和更新版本
 
-v2.x 版和更新版本的 Functions 執行階段會使用 [.NET Core 記錄篩選階層](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) \(部分機器翻譯\)。 
+v2.x 版和更新版本的 Functions 執行階段會使用 [.NET Core 記錄篩選階層](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) \(部分機器翻譯\)。 
 
 ```json
 {
@@ -246,7 +246,7 @@ v2.x 版和更新版本的 Functions 執行階段會使用 [.NET Core 記錄篩�
 
 ## <a name="configure-sampling"></a>設定取樣
 
-Application Insights 具有[取樣](../azure-monitor/app/sampling.md)功能，可以提供保護，以避免在尖峰負載期間完成的執行中產生過多的遙測資料。 當傳入執行速率超過指定的閾值時，Application Insights 就會開始隨機忽略某些傳入執行。 每秒執行次數上限的預設值為 20 (在 1.x 版中為五)。 您可以在 [host.json](https://docs.microsoft.com/azure/azure-functions/functions-host-json#applicationinsights) 中設定取樣。  以下是範例：
+Application Insights 具有[取樣](../azure-monitor/app/sampling.md)功能，可以提供保護，以避免在尖峰負載期間完成的執行中產生過多的遙測資料。 當傳入執行速率超過指定的閾值時，Application Insights 就會開始隨機忽略某些傳入執行。 每秒執行次數上限的預設值為 20 (在 1.x 版中為五)。 您可以在 [host.json](./functions-host-json.md#applicationinsights) 中設定取樣。  以下是範例：
 
 ### <a name="version-2x-and-later"></a>2\.x 版和更新版本
 
@@ -264,7 +264,7 @@ Application Insights 具有[取樣](../azure-monitor/app/sampling.md)功能，�
 }
 ```
 
-在2.x 版中，您可以從取樣中排除特定類型的遙測。 在上述範例中， `Request` 會從取樣中排除類型的資料。 這可確保會記錄*所有*的函式執行 (要求) ，而其他類型的遙測仍會受到取樣。
+在2.x 版中，您可以從取樣中排除特定類型的遙測。 在上述範例中， `Request` 會從取樣中排除類型的資料。 這可確保記錄*所有*的函式執行（要求），而其他類型的遙測仍會受到取樣。
 
 ### <a name="version-1x"></a>1\.x 版 
 
@@ -285,9 +285,9 @@ Application Insights 具有[取樣](../azure-monitor/app/sampling.md)功能，�
 
 ### <a name="ilogger"></a>ILogger
 
-在您的函式中使用 [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) 參數而不是 `TraceWriter` 參數。 使用 `TraceWriter` 建立的記錄會移至 Application Insights，但 `ILogger` 可讓您進行[結構化記錄](https://softwareengineering.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging) \(英文\)。
+在您的函式中使用 [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger) 參數而不是 `TraceWriter` 參數。 使用 `TraceWriter` 建立的記錄會移至 Application Insights，但 `ILogger` 可讓您進行[結構化記錄](https://softwareengineering.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging) \(英文\)。
 
-利用 `ILogger` 物件，您可以呼叫 `Log<level>` [擴充方法 (位於 ILogger)](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.loggerextensions#methods) \(英文\) 來建立記錄。 下列程式碼會寫入 `Information` 記錄且類別為 "Function.<YOUR_FUNCTION_NAME>.User"。
+利用 `ILogger` 物件，您可以呼叫 `Log<level>` [擴充方法 (位於 ILogger)](/dotnet/api/microsoft.extensions.logging.loggerextensions#methods) \(英文\) 來建立記錄。 下列程式碼會寫入 `Information` 記錄且類別為 "Function.<YOUR_FUNCTION_NAME>.User"。
 
 ```cs
 public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogger logger)
@@ -553,7 +553,7 @@ module.exports = function (context, req) {
     var operationIdOverride = {"ai.operation.id":context.traceContext.traceparent};
 
     client.trackEvent({name: "my custom event", tagOverrides:operationIdOverride, properties: {customProperty2: "custom property value"}});
-    client.trackException({exception: new Error("handled exceptions can be logged with this method"), tagOverrides:operationIdOverride);
+    client.trackException({exception: new Error("handled exceptions can be logged with this method"), tagOverrides:operationIdOverride});
     client.trackMetric({name: "custom metric", value: 3, tagOverrides:operationIdOverride});
     client.trackTrace({message: "trace message", tagOverrides:operationIdOverride});
     client.trackDependency({target:"http://dbname", name:"select customers proc", data:"SELECT * FROM Customers", duration:231, resultCode:0, success: true, dependencyTypeName: "ZSQL", tagOverrides:operationIdOverride});
@@ -577,7 +577,7 @@ module.exports = function (context, req) {
     var operationIdOverride = {"ai.operation.id":context.operationId};
 
     client.trackEvent({name: "my custom event", tagOverrides:operationIdOverride, properties: {customProperty2: "custom property value"}});
-    client.trackException({exception: new Error("handled exceptions can be logged with this method"), tagOverrides:operationIdOverride);
+    client.trackException({exception: new Error("handled exceptions can be logged with this method"), tagOverrides:operationIdOverride});
     client.trackMetric({name: "custom metric", value: 3, tagOverrides:operationIdOverride});
     client.trackTrace({message: "trace message", tagOverrides:operationIdOverride});
     client.trackDependency({target:"http://dbname", name:"select customers proc", data:"SELECT * FROM Customers", duration:231, resultCode:0, success: true, dependencyTypeName: "ZSQL", tagOverrides:operationIdOverride});
@@ -679,16 +679,13 @@ az webapp log tail --resource-group <RESOURCE_GROUP_NAME> --name <FUNCTION_APP_N
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-您可以使用 [Azure PowerShell](/powershell/azure/overview) 來啟用資料流記錄。 針對 PowerShell，使用下列命令來新增 Azure 帳戶、選擇訂用帳戶，以及串流處理記錄檔：
+您可以使用 [Azure PowerShell](/powershell/azure/) 來啟用資料流記錄。 針對 PowerShell，請使用[new-azwebapp](/powershell/module/az.websites/set-azwebapp)命令在函式應用程式上啟用記錄功能，如下列程式碼片段所示： 
 
-```powershell
-Add-AzAccount
-Get-AzSubscription
-Get-AzSubscription -SubscriptionName "<subscription name>" | Select-AzSubscription
-Get-AzWebSiteLog -Name <FUNCTION_APP_NAME> -Tail
-```
+:::code language="powershell" source="~/powershell_scripts/app-service/monitor-with-logs/monitor-with-logs.ps1" range="19-20":::
 
-## <a name="scale-controller-logs-preview"></a>調整控制器記錄 (預覽) 
+如需詳細資訊，請參閱完整的程式[代碼範例](../app-service/scripts/powershell-monitor.md#sample-script)。 
+
+## <a name="scale-controller-logs-preview"></a>調整控制器記錄（預覽）
 
 這項功能處於預覽狀態。 
 

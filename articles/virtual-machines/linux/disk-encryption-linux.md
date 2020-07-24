@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: b55707612c34cb3c95eafd95780955bf991c409c
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 7664cebbd12e075e9b9ea7ea75021b61569a80cf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206150"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080279"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Linux VM 上的 Azure 磁碟加密案例
 
@@ -205,13 +205,13 @@ key-encryption-key 參數值的語法為 KEK 的完整 URI： https://[keyvault-
 | forceUpdateTag | 每次需要強制執行作業時傳入唯一的值，例如 GUID。 |
 | location | 所有資源的位置。 |
 
-如需如何設定 Linux VM 磁碟加密範本的詳細資訊，請參閱[適用於 Linux 的 Azure 磁碟加密](https://docs.microsoft.com/azure/virtual-machines/extensions/azure-disk-enc-linux)。
+如需如何設定 Linux VM 磁碟加密範本的詳細資訊，請參閱[適用於 Linux 的 Azure 磁碟加密](../extensions/azure-disk-enc-linux.md)。
 
 ## <a name="use-encryptformatall-feature-for-data-disks-on-linux-vms"></a>將 EncryptFormatAll 功能使用於 Linux VM 上的資料磁碟
 
 **EncryptFormatAll** 參數會減少加密 Linux 資料磁碟的時間。 符合特定準則的分割區 (連同其目前的檔案系統) 將會格式化，然後重新掛接回執行命令之前的所在位置。 如果想要排除符合準則的資料磁碟，您可以在執行命令前將它取消掛接。
 
- 執行此命令之後，先前掛接的任何磁碟機都會格式化，而加密層則會在現在的空白磁碟機之上啟動。 選取此選項後，也會加密連結至 VM 的暫存磁碟。 如果重設暫存磁碟，則 Azure 磁碟加密解決方案會為 VM 將其重新格式化並重新加密。 當資源磁碟進行加密後，[Microsoft Azure Linux 代理程式](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux)就無法管理資源磁碟和啟用分頁檔，但您可以手動設定分頁檔。
+ 執行此命令之後，先前掛接的任何磁碟機都會格式化，而加密層則會在現在的空白磁碟機之上啟動。 選取此選項後，也會加密連結至 VM 的暫存磁碟。 如果重設暫存磁碟，則 Azure 磁碟加密解決方案會為 VM 將其重新格式化並重新加密。 當資源磁碟進行加密後，[Microsoft Azure Linux 代理程式](../extensions/agent-linux.md)就無法管理資源磁碟和啟用分頁檔，但您可以手動設定分頁檔。
 
 >[!WARNING]
 > VM 的資料磁碟區有所需的資料時，不應該使用 EncryptFormatAll。 您可將磁碟取消掛接，將它們排除在加密之外。 您應該先在測試 VM 上試用 EncryptFormatAll，了解功能參數和其含意，然後在生產 VM 上試用。 EncryptFormatAll 選項會將資料磁碟格式化，而其上的所有資料都將遺失。 繼續之前，確認您想要排除的磁碟已正確卸載。 </br></br>
@@ -262,7 +262,7 @@ Set-AzVMDiskEncryptionExtension -ResourceGroupName $VMRGName -VMName $vmName -Di
 
 1. 格式化、掛接這些磁碟，並將其新增至 fstab 檔案。
 
-1. 選擇分割區標準、建立跨越整個磁碟機的分割區，然後將分割區格式化。 我們會 Azure 在此產生的符號連結。 使用符號連結，可避免裝置名稱變更的相關問題。 如需詳細資訊，請參閱[針對裝置名稱問題進行疑難排解](troubleshoot-device-names-problems.md)一文。
+1. 選擇分割區標準、建立跨越整個磁碟機的分割區，然後將分割區格式化。 我們會 Azure 在此產生的符號連結。 使用符號連結，可避免裝置名稱變更的相關問題。 如需詳細資訊，請參閱[針對裝置名稱問題進行疑難排解](../troubleshooting/troubleshoot-device-names-problems.md)一文。
     
     ```bash
     parted /dev/disk/azure/scsi1/lun0 mklabel gpt
@@ -332,7 +332,7 @@ New-AzVM -VM $VirtualMachine -ResourceGroupName "MyVirtualMachineResourceGroup"
 
 ### <a name="enable-encryption-on-a-newly-added-disk-with-azure-cli"></a>透過 Azure CLI 在新增的磁碟上啟用加密
 
- 若虛擬機器先前以「All」加密，則 --磁碟區類型參數也應該保留為「All」。 全部包含作業系統與資料磁碟。 若虛擬機器先前以「OS」磁碟類別加密，則應變更 --磁碟區類型參數為「All」，確保作業系統和新的資料磁碟都包含在其中。 若虛擬機器僅使用「Data」磁碟區類型加密，則可以如下所示，保留參數值為「Data」。 要準備進行加密，僅是新增及附加新資料磁碟至虛擬機器是不夠的。 啟用加密之前，新附加的磁碟必須經過格式化，並正確裝載於虛擬機器中。 在 Linux 上磁碟必須裝載於 /etc/fstab，且必須有[一致的區塊裝置名稱](troubleshoot-device-names-problems.md)。  
+ 若虛擬機器先前以「All」加密，則 --磁碟區類型參數也應該保留為「All」。 全部包含作業系統與資料磁碟。 若虛擬機器先前以「OS」磁碟類別加密，則應變更 --磁碟區類型參數為「All」，確保作業系統和新的資料磁碟都包含在其中。 若虛擬機器僅使用「Data」磁碟區類型加密，則可以如下所示，保留參數值為「Data」。 要準備進行加密，僅是新增及附加新資料磁碟至虛擬機器是不夠的。 啟用加密之前，新附加的磁碟必須經過格式化，並正確裝載於虛擬機器中。 在 Linux 上磁碟必須裝載於 /etc/fstab，且必須有[一致的區塊裝置名稱](../troubleshooting/troubleshoot-device-names-problems.md)。  
 
 在啟用加密時，與 PowerShell 語法不同，CLI 不需要使用者提供唯一的序列版本。 CLI 為自動產生並使用其唯一序列版本的值。
 
@@ -413,7 +413,7 @@ Azure 磁碟加密不適用於下列 Linux 案例、功能和技術：
 - 具有「巢狀掛接點」的 VM；也就是在單一路徑中有多個掛接點 (例如 "/1stmountpoint/data/2stmountpoint")。
 - 將資料磁片磁碟機掛接在 OS 資料夾頂端的 VM。
 - 具有寫入加速器磁片的 M 系列 Vm。
-- 將[具有客戶管理金鑰的伺服器端加密](disk-encryption.md)套用至 ADE 所加密的 vm，反之亦然。
+- 將 ADE 套用至具有以[客戶管理的金鑰](disk-encryption.md)（SSE + CMK）加密之資料磁片的 vm，或將 SSE + CMK 套用至以 ADE 加密之 VM 上的資料磁片。
 - 將使用 ADE 加密的 VM 遷移至[使用客戶管理金鑰的伺服器端加密](disk-encryption.md)。
 
 ## <a name="next-steps"></a>後續步驟

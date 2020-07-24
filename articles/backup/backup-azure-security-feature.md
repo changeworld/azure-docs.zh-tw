@@ -4,12 +4,12 @@ description: 了解如何使用 Azure 備份的安全性功能，讓備份更安
 ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 06/08/2017
-ms.openlocfilehash: 24dc108ce4d9c991b1e062c0435b38a63899a249
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9d8f8d6937cd93a9da9c82b2ed501c9fbb815b11
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82186765"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079344"
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>利用安全性功能協助保護使用 Azure 備份的混合式備份
 
@@ -48,7 +48,7 @@ ms.locfileid: "82186765"
     ![復原服務保存庫屬性的螢幕擷取畫面](./media/backup-azure-security-feature/security-settings-update.png)
 
     更新連結會開啟 [安全性設定]**** 刀鋒視窗，其中提供功能的摘要並讓您啟用它們。
-5. 從 [是否已設定 Azure Multi-Factor Authentication?]**** 下拉式清單中，選取一個值以確認您是否已啟用 [Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md)。 如果已啟用，當您登入 Azure 入口網站時，系統會要求您從另一個裝置 (例如行動電話) 進行驗證。
+5. 從 [是否已設定 Azure Multi-Factor Authentication?]**** 下拉式清單中，選取一個值以確認您是否已啟用 [Azure Multi-Factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md)。 如果已啟用，當您登入 Azure 入口網站時，系統會要求您從另一個裝置 (例如行動電話) 進行驗證。
 
    當您在備份中執行重要作業時，您必須輸入安全 PIN 碼 (可在 Azure 入口網站上取得)。 啟用 Multi-Factor Authentication 可多一道安全性。 只有具備有效 Azure 認證且從第二個裝置驗證的授權使用者，才能存取 Azure 入口網站。
 6. 若要儲存安全性設定，請選取 [啟用]****，然後按一下 [儲存]****。 只有當您在上一個步驟從 [是否已設定 Azure Multi-Factor Authentication?]**** 清單中選取一個值之後，才能選取 [啟用]****。

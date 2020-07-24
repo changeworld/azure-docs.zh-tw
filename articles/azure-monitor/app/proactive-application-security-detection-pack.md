@@ -3,17 +3,18 @@ title: 具有 Azure 應用程式深入解析的安全性偵測套件
 description: 針對潛在的安全性問題，使用 Azure 應用程式的深入解析和智慧偵測來監視應用程式。
 ms.topic: conceptual
 ms.date: 12/12/2017
-ms.openlocfilehash: b23ada6fe4596a2eee242cc9145789521caf697f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1ed304e903bb50591e61e294b6701f8268f9d8e1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77669721"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081622"
 ---
 # <a name="application-security-detection-pack-preview"></a>應用程式安全性偵測套件 (預覽)
 
 Application Insights 會自動分析由您的應用程式所產生的遙測，並且偵測潛在的安全性問題。 這項功能可讓您識別潛在的安全性問題，並且藉由修正應用程式或採取必要的安全性措施來處理它們。
 
-這項功能不需要任何特殊的設定，除了[設定您的應用程式傳送遙測](https://docs.microsoft.com/azure/application-insights/app-insights-usage-overview)以外。
+這項功能不需要任何特殊的設定，除了[設定您的應用程式傳送遙測](./usage-overview.md)以外。
 
 ## <a name="when-would-i-get-this-type-of-smart-detection-notification"></a>何時會取得這個類型的智慧偵測通知？
 會偵測三種類型的安全性問題：

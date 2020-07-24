@@ -3,11 +3,12 @@ title: Azure Functions 執行階段版本概觀
 description: Azure Functions 支援多個執行階段版本。 了解其間的差異以及如何選擇最適合您的版本。
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: 0989795d802b21e07ad9fea3bd417f0408df706c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 29dd4a1ea60c463655c5b9a17fedcf6d51eee927
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83996715"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081673"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Azure Functions 執行階段版本概觀
 
@@ -90,7 +91,7 @@ Azure Functions 版本3.x 與2.x 版具有高度回溯相容性。  許多應用
 
 #### <a name="net"></a>.NET
 
-* [同步伺服器作業預設為停用](https://docs.microsoft.com/dotnet/core/compatibility/2.2-3.0#http-synchronous-io-disabled-in-all-servers)。
+* [同步伺服器作業預設為停用](/dotnet/core/compatibility/2.2-3.0#http-synchronous-io-disabled-in-all-servers)。
 
 ### <a name="changing-version-of-apps-in-azure"></a>在 Azure 中變更應用程式版本
 

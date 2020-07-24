@@ -1,5 +1,5 @@
 ---
-title: 連線 Windows 虛擬桌面 Web 用戶端 - Azure
+title: 使用 web 用戶端連接到 Windows 虛擬桌面-Azure
 description: 如何使用 Web 用戶端連線至 Windows 虛擬桌面。
 services: virtual-desktop
 author: Heidilohr
@@ -8,13 +8,14 @@ ms.topic: how-to
 ms.date: 09/24/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: bb3a73566cd2477e493ca8621336fb3a51f3b3b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4bb54db8a18baa237f1c32c223b5f609638c7523
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85212457"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080619"
 ---
-# <a name="connect-with-the-web-client"></a>與 Web 用戶端連線
+# <a name="connect-to-windows-virtual-desktop-with-the-web-client"></a>使用 web 用戶端連接到 Windows 虛擬桌面
 
 >[!IMPORTANT]
 >此內容適用於具有 Azure Resource Manager Windows 虛擬桌面物件的 2020 年春季更新版。 如果您使用不含 Azure Resource Manager 物件的 Windows 虛擬桌面 2019 年秋季版，請參閱[這篇文章](./virtual-desktop-fall-2019/connect-web-2019.md)。

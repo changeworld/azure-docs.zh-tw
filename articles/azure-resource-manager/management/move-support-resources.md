@@ -3,12 +3,12 @@ title: 依資源類型區分的移動作業支援
 description: 列出可移至新資源群組或訂用帳戶的 Azure 資源類型。
 ms.topic: conceptual
 ms.date: 07/13/2020
-ms.openlocfilehash: 7b7f6f05c9cae80cffb64245a3fc8a6b0890d577
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 16197210326d73284a4a83edc7876e4faddded86
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539222"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079503"
 ---
 # <a name="move-operation-support-for-resources"></a>資源的移動作業支援
 
@@ -288,6 +288,9 @@ ms.locfileid: "86539222"
 
 ## <a name="microsoftapimanagement"></a>Microsoft.ApiManagement
 
+> [!IMPORTANT]
+> 無法移動設定為取用 SKU 的 API 管理服務。
+
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 資源群組 | 訂用帳戶 |
 > | ------------- | ----------- | ---------- |
@@ -298,9 +301,6 @@ ms.locfileid: "86539222"
 > | reportfeedback | 否 | 否 |
 > | 服務 | 是 | 是 |
 > | validateservicename | 否 | 否 |
-
-> [!IMPORTANT]
-> 無法移動設定為取用 SKU 的 API 管理服務。
 
 ## <a name="microsoftappconfiguration"></a>Microsoft.AppConfiguration
 
@@ -330,15 +330,15 @@ ms.locfileid: "86539222"
 
 ## <a name="microsoftappservice"></a>Microsoft.AppService
 
+> [!IMPORTANT]
+> 請參閱 [App Service 移動指引](./move-limitations/app-service-move-limitations.md)。
+
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 資源群組 | 訂用帳戶 |
 > | ------------- | ----------- | ---------- |
 > | apiapps | 否 | 否 |
 > | appidentities | 否 | 否 |
 > | gateways | 否 | 否 |
-
-> [!IMPORTANT]
-> 請參閱 [App Service 移動指引](./move-limitations/app-service-move-limitations.md)。
 
 ## <a name="microsoftattestation"></a>Microsoft.Attestation
 
@@ -375,6 +375,11 @@ ms.locfileid: "86539222"
 
 ## <a name="microsoftautomation"></a>Microsoft.Automation
 
+> [!IMPORTANT]
+> Runbook 必須存在於和自動化帳戶相同的資源群組中。
+>
+> 如需相關資訊，請參閱[將您的 Azure 自動化帳戶移至另一個訂用帳戶](../../automation/how-to/move-account.md?toc=/azure/azure-resource-manager/toc.json)。
+
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 資源群組 | 訂用帳戶 |
 > | ------------- | ----------- | ---------- |
@@ -388,11 +393,6 @@ ms.locfileid: "86539222"
 > | automationaccounts / softwareupdateconfigurations | 否 | 否 |
 > | automationaccounts / webhooks | 否 | 否 |
 > | 作業 | 否 | 否 |
-
-> [!IMPORTANT]
-> Runbook 必須存在於和自動化帳戶相同的資源群組中。
->
-> 如需相關資訊，請參閱[將您的 Azure 自動化帳戶移至另一個訂用帳戶](../../automation/how-to/move-account.md?toc=/azure/azure-resource-manager/toc.json)。
 
 ## <a name="microsoftavs"></a>Microsoft.AVS
 
@@ -626,6 +626,9 @@ ms.locfileid: "86539222"
 
 ## <a name="microsoftcache"></a>Microsoft.Cache
 
+> [!IMPORTANT]
+> 如果 Azure Cache for Redis 執行個體是使用虛擬網路設定的，該執行個體便無法移至不同的訂用帳戶。 請參閱[網路移動限制](./move-limitations/networking-move-limitations.md)。
+
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 資源群組 | 訂用帳戶 |
 > | ------------- | ----------- | ---------- |
@@ -638,9 +641,6 @@ ms.locfileid: "86539222"
 > | redis/eventgridfilters | 否 | 否 |
 > | redis / privatelinkresources | 否 | 否 |
 > | redisenterprise | 否 | 否 |
-
-> [!IMPORTANT]
-> 如果 Azure Cache for Redis 執行個體是使用虛擬網路設定的，該執行個體便無法移至不同的訂用帳戶。 請參閱[網路移動限制](./move-limitations/networking-move-limitations.md)。
 
 ## <a name="microsoftcapacity"></a>Microsoft.Capacity
 
@@ -700,6 +700,9 @@ ms.locfileid: "86539222"
 
 ## <a name="microsoftcertificateregistration"></a>Microsoft.CertificateRegistration
 
+> [!IMPORTANT]
+> 請參閱 [App Service 移動指引](./move-limitations/app-service-move-limitations.md)。
+
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 資源群組 | 訂用帳戶 |
 > | ------------- | ----------- | ---------- |
@@ -707,9 +710,6 @@ ms.locfileid: "86539222"
 > | certificateorders / certificates | 否 | 否 |
 > | 作業 | 否 | 否 |
 > | validatecertificateregistrationinformation | 否 | 否 |
-
-> [!IMPORTANT]
-> 請參閱 [App Service 移動指引](./move-limitations/app-service-move-limitations.md)。
 
 ## <a name="microsoftchangeanalysis"></a>Microsoft.ChangeAnalysis
 
@@ -719,6 +719,9 @@ ms.locfileid: "86539222"
 > | 作業 | 否 | 否 |
 
 ## <a name="microsoftclassiccompute"></a>Microsoft.ClassicCompute
+
+> [!IMPORTANT]
+> 請參閱[傳統部署移動指引](./move-limitations/classic-model-move-limitations.md)。 傳統部署資源可以透過該案例專屬的作業，跨訂用帳戶移動。
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 資源群組 | 訂用帳戶 |
@@ -746,20 +749,20 @@ ms.locfileid: "86539222"
 > | virtualmachines / metricdefinitions | 否 | 否 |
 > | virtualmachines / metrics | 否 | 否 |
 
+## <a name="microsoftclassicinfrastructuremigrate"></a>Microsoft.ClassicInfrastructureMigrate
+
 > [!IMPORTANT]
 > 請參閱[傳統部署移動指引](./move-limitations/classic-model-move-limitations.md)。 傳統部署資源可以透過該案例專屬的作業，跨訂用帳戶移動。
-
-## <a name="microsoftclassicinfrastructuremigrate"></a>Microsoft.ClassicInfrastructureMigrate
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 資源群組 | 訂用帳戶 |
 > | ------------- | ----------- | ---------- |
 > | classicinfrastructureresources | 否 | 否 |
 
+## <a name="microsoftclassicnetwork"></a>Microsoft.ClassicNetwork
+
 > [!IMPORTANT]
 > 請參閱[傳統部署移動指引](./move-limitations/classic-model-move-limitations.md)。 傳統部署資源可以透過該案例專屬的作業，跨訂用帳戶移動。
-
-## <a name="microsoftclassicnetwork"></a>Microsoft.ClassicNetwork
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 資源群組 | 訂用帳戶 |
@@ -776,10 +779,10 @@ ms.locfileid: "86539222"
 > | virtualnetworks / remotevirtualnetworkpeeringproxies | 否 | 否 |
 > | virtualnetworks / virtualnetworkpeerings | 否 | 否 |
 
+## <a name="microsoftclassicstorage"></a>Microsoft.ClassicStorage
+
 > [!IMPORTANT]
 > 請參閱[傳統部署移動指引](./move-limitations/classic-model-move-limitations.md)。 傳統部署資源可以透過該案例專屬的作業，跨訂用帳戶移動。
-
-## <a name="microsoftclassicstorage"></a>Microsoft.ClassicStorage
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 資源群組 | 訂用帳戶 |
@@ -807,18 +810,15 @@ ms.locfileid: "86539222"
 > | storageaccounts / vmimages | 否 | 否 |
 > | vmimages | 否 | 否 |
 
+## <a name="microsoftclassicsubscription"></a>Microsoft.ClassicSubscription
+
 > [!IMPORTANT]
 > 請參閱[傳統部署移動指引](./move-limitations/classic-model-move-limitations.md)。 傳統部署資源可以透過該案例專屬的作業，跨訂用帳戶移動。
-
-## <a name="microsoftclassicsubscription"></a>Microsoft.ClassicSubscription
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 資源群組 | 訂用帳戶 |
 > | ------------- | ----------- | ---------- |
 > | 作業 | 否 | 否 |
-
-> [!IMPORTANT]
-> 請參閱[傳統部署移動指引](./move-limitations/classic-model-move-limitations.md)。 傳統部署資源可以透過該案例專屬的作業，跨訂用帳戶移動。
 
 ## <a name="microsoftcognitiveservices"></a>Microsoft.CognitiveServices
 
@@ -843,6 +843,9 @@ ms.locfileid: "86539222"
 > | usageaggregates | 否 | 否 |
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
+
+> [!IMPORTANT]
+> 請參閱[虛擬機器移動指引](./move-limitations/virtual-machines-move-limitations.md)。
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 資源群組 | 訂用帳戶 |
@@ -888,9 +891,6 @@ ms.locfileid: "86539222"
 > | virtualmachinescalesets / publicipaddresses | 否 | 否 |
 > | virtualmachinescalesets / virtualmachines | 否 | 否 |
 > | virtualmachinescalesets / virtualmachines / networkinterfaces | 否 | 否 |
-
-> [!IMPORTANT]
-> 請參閱[虛擬機器移動指引](./move-limitations/virtual-machines-move-limitations.md)。
 
 ## <a name="microsoftconsumption"></a>Microsoft.Consumption
 
@@ -1613,6 +1613,11 @@ ms.locfileid: "86539222"
 
 ## <a name="microsofthdinsight"></a>Microsoft.HDInsight
 
+> [!IMPORTANT]
+> 您可以將 HDInsight 叢集移至新的訂用帳戶或資源群組。 不過，您無法跨訂用帳戶來移動連結至 HDInsight 叢集的網路資源 (例如虛擬網路、NIC 或負載平衡器)。 此外，您無法將已連結至叢集虛擬機器的 NIC 移至新的資源群組。
+>
+> 將 HDInsight 叢集移至新的訂用帳戶時，請先移動其他資源 (例如儲存體帳戶)。 然後，移動 HDInsight 叢集本身。
+
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 資源群組 | 訂用帳戶 |
 > | ------------- | ----------- | ---------- |
@@ -1627,11 +1632,6 @@ ms.locfileid: "86539222"
 > | locations / usages | 否 | 否 |
 > | locations / validatecreaterequest | 否 | 否 |
 > | 作業 | 否 | 否 |
-
-> [!IMPORTANT]
-> 您可以將 HDInsight 叢集移至新的訂用帳戶或資源群組。 不過，您無法跨訂用帳戶來移動連結至 HDInsight 叢集的網路資源 (例如虛擬網路、NIC 或負載平衡器)。 此外，您無法將已連結至叢集虛擬機器的 NIC 移至新的資源群組。
->
-> 將 HDInsight 叢集移至新的訂用帳戶時，請先移動其他資源 (例如儲存體帳戶)。 然後，移動 HDInsight 叢集本身。
 
 ## <a name="microsofthealthcareapis"></a>Microsoft.HealthcareApis
 
@@ -1699,6 +1699,9 @@ ms.locfileid: "86539222"
 
 ## <a name="microsoftinsights"></a>microsoft.insights
 
+> [!IMPORTANT]
+> 確定移至新的訂用帳戶不會超過[訂用帳戶配額](azure-subscription-service-limits.md#azure-monitor-limits)。
+
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 資源群組 | 訂用帳戶 |
 > | ------------- | ----------- | ---------- |
@@ -1754,9 +1757,6 @@ ms.locfileid: "86539222"
 > | workbooks | 是 | 是 |
 > | workbooktemplates | 是 | 是 |
 
-> [!IMPORTANT]
-> 確定移至新的訂用帳戶不會超過[訂用帳戶配額](azure-subscription-service-limits.md#azure-monitor-limits)。
-
 ## <a name="microsoftiotcentral"></a>Microsoft.IoTCentral
 
 > [!div class="mx-tableFixed"]
@@ -1779,6 +1779,9 @@ ms.locfileid: "86539222"
 
 ## <a name="microsoftkeyvault"></a>Microsoft.KeyVault
 
+> [!IMPORTANT]
+> 用於磁碟加密的 Key Vault 無法移至相同訂用帳戶中或跨訂用帳戶的資源群組。
+
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 資源群組 | 訂用帳戶 |
 > | ------------- | ----------- | ---------- |
@@ -1795,9 +1798,6 @@ ms.locfileid: "86539222"
 > | vaults / accesspolicies | 否 | 否 |
 > | vaults / eventgridfilters | 否 | 否 |
 > | vaults / secrets | 否 | 否 |
-
-> [!IMPORTANT]
-> 用於磁碟加密的 Key Vault 無法移至相同訂用帳戶中或跨訂用帳戶的資源群組。
 
 ## <a name="microsoftkubernetes"></a>Microsoft.Kubernetes
 
@@ -2115,6 +2115,9 @@ ms.locfileid: "86539222"
 
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
+> [!IMPORTANT]
+> 請參閱[網路移動指引](./move-limitations/networking-move-limitations.md)。
+
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 資源群組 | 訂用帳戶 |
 > | ------------- | ----------- | ---------- |
@@ -2237,9 +2240,6 @@ ms.locfileid: "86539222"
 > | vpnserverconfigurations | 否 | 否 |
 > | vpnsites (虛擬 WAN) | 否 | 否 |
 
-> [!IMPORTANT]
-> 請參閱[網路移動指引](./move-limitations/networking-move-limitations.md)。
-
 ## <a name="microsoftnotificationhubs"></a>Microsoft.NotificationHubs
 
 > [!div class="mx-tableFixed"]
@@ -2272,6 +2272,11 @@ ms.locfileid: "86539222"
 
 ## <a name="microsoftoperationalinsights"></a>Microsoft.OperationalInsights
 
+> [!IMPORTANT]
+> 確定移至新的訂用帳戶不會超過[訂用帳戶配額](azure-subscription-service-limits.md#azure-monitor-limits)。
+>
+> 無法移動具有連結自動化帳戶的工作區。 開始移動作業之前，請務必將任何自動化帳戶取消連結。
+
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 資源群組 | 訂用帳戶 |
 > | ------------- | ----------- | ---------- |
@@ -2289,11 +2294,6 @@ ms.locfileid: "86539222"
 > | workspaces / metadata | 否 | 否 |
 > | workspaces / query | 否 | 否 |
 > | workspaces / scopedprivatelinkproxies | 否 | 否 |
-
-> [!IMPORTANT]
-> 確定移至新的訂用帳戶不會超過[訂用帳戶配額](azure-subscription-service-limits.md#azure-monitor-limits)。
->
-> 無法移動具有連結自動化帳戶的工作區。 開始移動作業之前，請務必將任何自動化帳戶取消連結。
 
 ## <a name="microsoftoperationsmanagement"></a>Microsoft.OperationsManagement
 
@@ -2406,6 +2406,9 @@ ms.locfileid: "86539222"
 
 ## <a name="microsoftrecoveryservices"></a>Microsoft.RecoveryServices
 
+> [!IMPORTANT]
+> 請參閱[復原服務移動指引](../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json)。
+
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 資源群組 | 訂用帳戶 |
 > | ------------- | ----------- | ---------- |
@@ -2426,9 +2429,6 @@ ms.locfileid: "86539222"
 > | 作業 | 否 | 否 |
 > | replicationeligibilityresults | 否 | 否 |
 > | vaults | 是 | 是 |
-
-> [!IMPORTANT]
-> 請參閱[復原服務移動指引](../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json)。
 
 ## <a name="microsoftredhatopenshift"></a>Microsoft.RedHatOpenShift
 
@@ -2532,6 +2532,9 @@ ms.locfileid: "86539222"
 
 ## <a name="microsoftsearch"></a>Microsoft.Search
 
+> [!IMPORTANT]
+> 您無法在一個作業中移動不同區域中的數個搜尋資源， 而是要在不同作業中移動它們。
+
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 資源群組 | 訂用帳戶 |
 > | ------------- | ----------- | ---------- |
@@ -2540,9 +2543,6 @@ ms.locfileid: "86539222"
 > | 作業 | 否 | 否 |
 > | resourcehealthmetadata | 否 | 否 |
 > | searchservices | 是 | 是 |
-
-> [!IMPORTANT]
-> 您無法在一個作業中移動不同區域中的數個搜尋資源， 而是要在不同作業中移動它們。
 
 ## <a name="microsoftsecurity"></a>Microsoft.Security
 
@@ -2748,6 +2748,9 @@ ms.locfileid: "86539222"
 
 ## <a name="microsoftsql"></a>Microsoft.Sql
 
+> [!IMPORTANT]
+> 資料庫和伺服器必須位於相同的資源群組。 當您移動 SQL 伺服器時，其所有資料庫也會跟著移動。 此行為適用于 Azure SQL Database 和 Azure Synapse 分析資料庫。
+
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 資源群組 | 訂用帳戶 |
 > | ------------- | ----------- | ---------- |
@@ -2922,9 +2925,6 @@ ms.locfileid: "86539222"
 > | servers / vulnerabilityassessments | 否 | 否 |
 > | virtualclusters | 是 | 是 |
 
-> [!IMPORTANT]
-> 資料庫和伺服器必須位於相同的資源群組。 當您移動 SQL 伺服器時，其所有資料庫也會跟著移動。 此行為適用于 Azure SQL Database 和 Azure Synapse 分析資料庫。
-
 ## <a name="microsoftsqlvirtualmachine"></a>Microsoft.SqlVirtualMachine
 
 > [!div class="mx-tableFixed"]
@@ -3012,6 +3012,9 @@ ms.locfileid: "86539222"
 
 ## <a name="microsoftstreamanalytics"></a>Microsoft.StreamAnalytics
 
+> [!IMPORTANT]
+> 無法移動執行中狀態的串流分析作業。
+
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 資源群組 | 訂用帳戶 |
 > | ------------- | ----------- | ---------- |
@@ -3020,9 +3023,6 @@ ms.locfileid: "86539222"
 > | locations / quotas | 否 | 否 |
 > | 作業 | 否 | 否 |
 > | streamingjobs | 是 | 是 |
-
-> [!IMPORTANT]
-> 無法移動執行中狀態的串流分析作業。
 
 ## <a name="microsoftstreamanalyticsexplorer"></a>Microsoft.StreamAnalyticsExplorer
 
@@ -3110,6 +3110,9 @@ ms.locfileid: "86539222"
 
 ## <a name="microsoftvisualstudio"></a>microsoft.visualstudio
 
+> [!IMPORTANT]
+> 若要變更 Azure DevOps 的訂用帳戶，請參閱[變更用於計費的 Azure 訂用帳戶](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json)。
+
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 資源群組 | 訂用帳戶 |
 > | ------------- | ----------- | ---------- |
@@ -3118,9 +3121,6 @@ ms.locfileid: "86539222"
 > | account / project | 否 | 否 |
 > | checknameavailability | 否 | 否 |
 > | 作業 | 否 | 否 |
-
-> [!IMPORTANT]
-> 若要變更 Azure DevOps 的訂用帳戶，請參閱[變更用於計費的 Azure 訂用帳戶](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json)。
 
 ## <a name="microsoftvmware"></a>Microsoft.VMware
 
@@ -3178,6 +3178,9 @@ ms.locfileid: "86539222"
 
 ## <a name="microsoftweb"></a>Microsoft.Web
 
+> [!IMPORTANT]
+> 請參閱 [App Service 移動指引](./move-limitations/app-service-move-limitations.md)。
+
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 資源群組 | 訂用帳戶 |
 > | ------------- | ----------- | ---------- |
@@ -3232,9 +3235,6 @@ ms.locfileid: "86539222"
 > | staticsites | 否 | 否 |
 > | validate | 否 | 否 |
 > | verifyhostingenvironmentvnet | 否 | 否 |
-
-> [!IMPORTANT]
-> 請參閱 [App Service 移動指引](./move-limitations/app-service-move-limitations.md)。
 
 ## <a name="microsoftwindowsesu"></a>Microsoft.WindowsESU
 

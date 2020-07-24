@@ -10,15 +10,15 @@ ms.subservice: management
 ms.date: 06/25/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: d2160f2c014e1bf7c486c29a48c756936df12788
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5aad73db2f01cec8c1c8b0144d29c105b6e8ae0e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85373976"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080500"
 ---
 # <a name="design-considerations-for-scale-sets"></a>擴展集的設計考量
-本文會討論虛擬機器擴展集的設計考量。 如需虛擬機器擴展集的相關資訊，請參閱 [虛擬機器擴展集概觀](virtual-machine-scale-sets-overview.md)。
+本文會討論虛擬機器擴展集的設計考量。 如需虛擬機器擴展集的相關資訊，請參閱 [虛擬機器擴展集概觀](./overview.md)。
 
 ## <a name="when-to-use-scale-sets-instead-of-virtual-machines"></a>何時應使用擴展集而非虛擬機器？
 一般而言，擴展集適用於部署高可用性的基礎結構，其中會有一組機器具備類似的設定。 不過，部分功能僅適用於擴展集，而其他功能僅適用於 VM。 為了在使用每種技術時做出明智的決策，您應該先看一下部分只能在擴展集而非 VM 中使用的常用功能：
@@ -27,8 +27,8 @@ ms.locfileid: "85373976"
 
 - 指定擴展集設定後，您可以更新*容量*屬性，以平行方式部署更多 vm。 比起撰寫指令碼，此程序更適合用來協調同時部署許多個別 VM 的作業。
 - 您可以[使用 Azure 自動調整規模自動調整擴展集](./virtual-machine-scale-sets-autoscale-overview.md)，但無法針對個別 VM 執行。
-- 您可以[重新安裝擴展集 VM 的映像](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/reimage)，但[無法針對個別 VM](https://docs.microsoft.com/rest/api/compute/virtualmachines) 執行。
-- 您可以[過度佈建](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-design-overview#overprovisioning)擴展集 VM，以提高可靠性並加快部署速度。 除非您撰寫自訂程式碼來執行這個動作，否則無法過度佈建個別 VM。
+- 您可以[重新安裝擴展集 VM 的映像](/rest/api/compute/virtualmachinescalesets/reimage)，但[無法針對個別 VM](/rest/api/compute/virtualmachines) 執行。
+- 您可以[過度佈建](#overprovisioning)擴展集 VM，以提高可靠性並加快部署速度。 除非您撰寫自訂程式碼來執行這個動作，否則無法過度佈建個別 VM。
 - 您可以指定[升級原則](./virtual-machine-scale-sets-upgrade-scale-set.md)，以便輕鬆地在擴展集的 VM 之間進行升級。 使用個別的 VM，您必須自行協調更新。
 
 ### <a name="vm-specific-features"></a>VM 特定的功能
@@ -68,4 +68,3 @@ ms.locfileid: "85373976"
 若以 Azure 受控磁碟進行設定，以自訂映像 (由您建立的映像) 為建置基礎的擴展集可以有多達 600 部 VM。 如果以使用者管理的儲存體帳戶設定擴展集，它必須在一個儲存體帳戶內建立所有的 OS 磁碟 VHD。 因此，在以自訂映像和使用者管理的儲存體為建置基礎的擴展集中建議 VM 數上限為 20。 如果關閉過度佈建，數目上限為 40。
 
 如果超出這些限制允許的 VM，您必須部署多個擴展集，如 [這個範本](https://github.com/Azure/azure-quickstart-templates/tree/master/301-custom-images-at-scale)中所示。
-

@@ -7,11 +7,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: e6ff33b6a23cb85649a8811a8bef27ab455ab9e6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e554fe48c3cbf8b744bf2f435f7b51e424d28808
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82980893"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079548"
 ---
 # <a name="advanced-features-of-azure-metrics-explorer"></a>Azure 計量瀏覽器的進階功能
 
@@ -20,7 +21,7 @@ ms.locfileid: "82980893"
 
 ## <a name="metrics-in-azure"></a>Azure 中的計量
 
-[Azure 監視器](data-platform-metrics.md)中的計量是隨時間收集並儲存的一系列度量與計數值。 計量包括標準 (或稱為「平台」) 計量與自訂計量。 標準計量是由 Azure 平台本身提供給您使用。 標準計量反映您 Azure 資源的健康情況與使用情形統計資料。 而自訂計量會由您的應用程式使用[適用于自訂事件和計量的 APPLICATION INSIGHTS API](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics)、 [WINDOWS Azure 診斷（WAD）擴充](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-overview)功能，或[Azure 監視器 REST API](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-store-custom-rest-api)傳送至 Azure。
+[Azure 監視器](data-platform-metrics.md)中的計量是隨時間收集並儲存的一系列度量與計數值。 計量包括標準 (或稱為「平台」) 計量與自訂計量。 標準計量是由 Azure 平台本身提供給您使用。 標準計量反映您 Azure 資源的健康情況與使用情形統計資料。 而自訂計量會由您的應用程式使用[適用于自訂事件和計量的 APPLICATION INSIGHTS API](../app/api-custom-events-metrics.md)、 [WINDOWS Azure 診斷（WAD）擴充](./diagnostics-extension-overview.md)功能，或[Azure 監視器 REST API](./metrics-store-custom-rest-api.md)傳送至 Azure。
 
 ## <a name="create-views-with-multiple-metrics-and-charts"></a>建立具有多個計量和圖表的視圖
 
@@ -175,5 +176,4 @@ ms.locfileid: "82980893"
 
 ## <a name="next-steps"></a>後續步驟
 
-  閱讀[建立自訂 KPI 儀表板](https://docs.microsoft.com/azure/application-insights/app-insights-tutorial-dashboards)以了解使用計量建立可採取動作之儀表板的最佳做法。
-
+  閱讀[建立自訂 KPI 儀表板](../learn/tutorial-app-dashboards.md)以了解使用計量建立可採取動作之儀表板的最佳做法。

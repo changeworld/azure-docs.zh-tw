@@ -8,13 +8,13 @@ ms.author: ladolan
 ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: article
 ms.custom: mvc
-ms.date: 04/29/2020
-ms.openlocfilehash: d80972cd200b8f85e14d316c4c06a38f88ac81b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/20/2020
+ms.openlocfilehash: d50f577a7170982be004cc8957114f79675fbc6e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82598159"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078616"
 ---
 # <a name="manage-logic-apps-in-the-azure-portal"></a>管理 Azure 入口網站中的邏輯應用程式
 
@@ -36,7 +36,7 @@ ms.locfileid: "82598159"
 
 1. 在 Azure 搜尋服務列中，輸入 `logic apps` ，然後選取 [ **Logic Apps**]。
 
-   ![尋找並選取「邏輯應用程式」](./media/manage-logic-apps-with-azure-portal/find-select-logic-apps.png)
+   ![[Azure 入口網站] 功能表的螢幕擷取畫面，並在搜尋列中搜尋並選取 Logic Apps。](./media/manage-logic-apps-with-azure-portal/find-select-logic-apps.png)
 
 1. 在 [ **Logic Apps** ] 頁面上，尋找並選取您要管理的邏輯應用程式。
 
@@ -58,7 +58,7 @@ ms.locfileid: "82598159"
    * **資源識別碼**
    * **資源群組**
    * **位置**
-   * **型別** 
+   * **類型** 
    * **訂用帳戶名稱**
    * **訂用帳戶識別碼**
    * **存取端點**
@@ -100,19 +100,19 @@ ms.locfileid: "82598159"
 
    * 在工具列上，選取 [停用]****。
 
-     ![停用 Azure 入口網站中的單一邏輯應用程式](./media/manage-logic-apps-with-azure-portal/disable-single-logic-app.png)
+     ![邏輯應用程式工具列的螢幕擷取畫面，其中顯示已選取 [停用] 按鈕。](./media/manage-logic-apps-with-azure-portal/disable-single-logic-app.png)
 
      如果您的邏輯應用程式已停用，則只會看到 [**啟用**] 選項。
 
    * 在工具列上，選取 [**啟用**]。
 
-     ![在 Azure 入口網站中啟用單一邏輯應用程式](./media/manage-logic-apps-with-azure-portal/enable-single-logic-app.png)
+     ![邏輯應用程式工具列的螢幕擷取畫面，顯示已選取 [啟用] 按鈕。](./media/manage-logic-apps-with-azure-portal/enable-single-logic-app.png)
 
      如果您的邏輯應用程式已啟用，您只會看到 [**停**用] 選項。 
 
    Azure 入口網站會在主要 Azure 工具列上顯示通知，以確認您的作業是否成功或失敗。
 
-   ![確認操作狀態的通知](./media/manage-logic-apps-with-azure-portal/operation-confirmation-notification.png)
+   ![Azure 入口網站的螢幕擷取畫面，其中顯示確認操作狀態的通知](./media/manage-logic-apps-with-azure-portal/operation-confirmation-notification.png)
 
 <a name="disable-or-enable-multiple-logic-apps"></a>
 
@@ -122,15 +122,15 @@ ms.locfileid: "82598159"
 
 1. 若要檢查邏輯應用程式目前是否已啟用或已停用，請在 [ **Logic Apps** ] 頁面上，檢查該邏輯應用程式的 [**狀態**] 資料行。 
 
-   ![Logic Apps 狀態] 資料行](./media/manage-logic-apps-with-azure-portal/view-logic-app-status.png)
+   ![Azure 入口網站 Logic Apps] 頁面的螢幕擷取畫面，其中顯示依狀態資料行排序的邏輯應用程式清單。](./media/manage-logic-apps-with-azure-portal/view-logic-app-status.png)
 
    如果 [**狀態**] 欄位不可見，請在 [ **Logic Apps** ] 工具列上，選取 [**嘗試預覽**]。
 
-   ![開啟預覽](./media/manage-logic-apps-with-azure-portal/select-try-preview.png)
+   ![Azure 入口網站 Logic Apps] 頁面的螢幕擷取畫面，顯示已選取 [嘗試預覽] 按鈕。](./media/manage-logic-apps-with-azure-portal/select-try-preview.png)
 
 1. 在 [checkbox] 資料行中，選取您想要停用或啟用的邏輯應用程式。 在工具列上，選取 [**停**用] 或 [**啟用**]。
 
-   ![啟用或停用 Azure 入口網站中的多個邏輯應用程式](./media/manage-logic-apps-with-azure-portal/enable-disable-multiple-logic-apps.png)
+   ![Azure 入口網站 Logic Apps] 頁面的螢幕擷取畫面，顯示多個邏輯應用程式的 [啟用] 和 [停用] 按鈕。](./media/manage-logic-apps-with-azure-portal/enable-disable-multiple-logic-apps.png)
 
 1. 當確認方塊出現時，選取 **[是]** 以繼續。
 
@@ -158,11 +158,11 @@ ms.locfileid: "82598159"
 
 1. 在邏輯應用程式的功能表中，選取 **[總覽**]。 在邏輯應用程式的工具列上，選取 [**刪除**]。
 
-   ![在邏輯應用程式工具列上，選取 [刪除]](./media/manage-logic-apps-with-azure-portal/delete-single-logic-app.png)
+   ![邏輯應用程式工具列的螢幕擷取畫面，其中顯示已選取的 [刪除] 按鈕。](./media/manage-logic-apps-with-azure-portal/delete-single-logic-app.png)
 
 1. 當確認方塊出現時，請輸入邏輯應用程式的名稱，然後選取 [**刪除**]。
 
-   ![確認刪除您的邏輯應用程式](./media/manage-logic-apps-with-azure-portal/delete-confirmation-single-logic-app.png)
+   ![確認刪除單一邏輯應用程式的 Logic Apps 提示的螢幕擷取畫面。](./media/manage-logic-apps-with-azure-portal/delete-confirmation-single-logic-app.png)
 
    Azure 入口網站會在主要 Azure 工具列上顯示通知，以確認您的作業是否成功或失敗。
 
@@ -174,11 +174,11 @@ ms.locfileid: "82598159"
 
 1. 在 [checkbox] 資料行中，選取您想要刪除的邏輯應用程式。 在工具列上，選取 [刪除]****。
 
-   ![刪除多個邏輯應用程式](./media/manage-logic-apps-with-azure-portal/delete-multiple-logic-apps.png)
+   ![[Logic Apps] 頁面的螢幕擷取畫面，其中顯示已選取要刪除的清單中的多個邏輯應用程式。](./media/manage-logic-apps-with-azure-portal/delete-multiple-logic-apps.png)
 
 1. 當確認方塊出現時，請輸入 `yes` ，然後選取 [**刪除**]。
 
-   ![確認刪除您的邏輯應用程式](./media/manage-logic-apps-with-azure-portal/delete-confirmation-multiple-logic-apps.png)
+   ![確認刪除多個邏輯應用程式的 Logic Apps 提示的螢幕擷取畫面。](./media/manage-logic-apps-with-azure-portal/delete-confirmation-multiple-logic-apps.png)
 
    Azure 入口網站會在主要 Azure 工具列上顯示通知，以確認您的作業是否成功或失敗。
 
@@ -196,13 +196,13 @@ ms.locfileid: "82598159"
 
 1. 在邏輯應用程式功能表的 [**開發工具**] 底下，選取 [**版本**]。
 
-   ![在邏輯應用程式的功能表上，選取 [開發工具] 底下的 [版本]](./media/manage-logic-apps-with-azure-portal/logic-apps-menu-versions.png)
+   ![Azure 入口網站中邏輯應用程式的螢幕擷取畫面，顯示 [開發工具] 底下的 [版本] 頁面。](./media/manage-logic-apps-with-azure-portal/logic-apps-menu-versions.png)
 
 1. 從清單中選取您要管理的邏輯應用程式**版本**。 您可以在搜尋列中輸入**版本**識別碼，以篩選清單。
 
 1. 在 [歷程**記錄版本**] 頁面上，您會在唯讀模式中看到先前版本的詳細資料。 您可以在 Logic Apps**設計**工具和程式**代碼視圖**模式之間進行選取。
 
-   ![使用程式碼視圖和邏輯應用程式設計工具查看邏輯應用程式的歷程記錄版本頁面](./media/manage-logic-apps-with-azure-portal/history-version.png)
+   ![Logic Apps 歷程記錄版本] 頁面的螢幕擷取畫面，其中顯示程式碼視圖和設計工具的視圖選項。](./media/manage-logic-apps-with-azure-portal/history-version.png)
 
 <a name="promote-previous-versions"></a>
 
@@ -212,11 +212,11 @@ ms.locfileid: "82598159"
 
 1. 在 [歷程**記錄版本**] 頁面上，選取 [**升級**]。
 
-   ![邏輯應用程式版本歷程記錄中的 [升級] 按鈕](./media/manage-logic-apps-with-azure-portal/promote-button.png)
+   ![邏輯應用程式版本歷程記錄的螢幕擷取畫面，顯示升級先前版本的按鈕。](./media/manage-logic-apps-with-azure-portal/promote-button.png)
 
 1. 在開啟的 [ **Logic Apps 設計**工具] 頁面上，視需要編輯您要升級的版本。 您可以在**設計**工具和程式**代碼視圖**模式之間切換。 您也可以更新**參數**、**範本**和**連接器**。
 
-   ![升級先前版本的 Logic Apps 設計工具頁面](./media/manage-logic-apps-with-azure-portal/promote-page.png)
+   ![Logic Apps 設計工具的螢幕擷取畫面，顯示用來提升先前版本邏輯應用程式的按鈕。](./media/manage-logic-apps-with-azure-portal/promote-page.png)
 
 1. 若要儲存任何更新並完成升級先前的版本，請選取 [**儲存**]。 （或者，若要取消您的變更，請選取 [**捨棄**]。） 
 

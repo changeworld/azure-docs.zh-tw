@@ -7,16 +7,16 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.subservice: metrics
-ms.openlocfilehash: 930e32cfc57cb5b48180c7695b7b6c7d11df8caa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9581bb17e29a25b618a90aece5675d132c14a97c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85506968"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081486"
 ---
 # <a name="custom-metrics-in-azure-monitor-preview"></a>Azure 監視器中的自訂計量（預覽）
 
-在 Azure 中部署資源與應用程式時，您會想要開始收集遙測，以取得其效能與健康情況的深入解析。 Azure 會提供一些現成的計量。 這些計量稱為「[標準」或「平臺](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported)」。 不過，這些計量本質上有限制。 
+在 Azure 中部署資源與應用程式時，您會想要開始收集遙測，以取得其效能與健康情況的深入解析。 Azure 會提供一些現成的計量。 這些計量稱為「[標準」或「平臺](./metrics-supported.md)」。 不過，這些計量本質上有限制。 
 
 您可能想要收集一些自訂的效能指標或特定的商務計量，以提供更深入的見解。 您可以透過應用程式遙測、在 Azure 資源上執行的代理程式，或甚至是由外到內的監視系統，收集這些**自訂**計量，然後直接提交給 Azure 監視器。 發佈至 Azure 監視器之後，您可以和 Azure 所發出的標準計量並排瀏覽、查詢 Azure 資源與應用程式的自訂計量，以及對其發出警示。
 
@@ -37,7 +37,7 @@ Azure 監視器自訂計量目前處於公開預覽狀態。
 自訂計量會保留為與[平臺計量相同的時間量](data-platform-metrics.md#retention-of-metrics)。 
 
 > [!NOTE]  
-> 透過 Application Insights SDK 傳送至 Azure 監視器的計量會以內嵌記錄資料的形式計費。 只有在已選取 [Application Insights] 功能[啟用自訂計量維度的警示](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics#custom-metrics-dimensions-and-pre-aggregation)時，才會產生額外的度量費用。 此核取方塊會使用自訂計量 API 將資料傳送至 Azure 監視器計量資料庫，以允許更複雜的警示。  深入瞭解[您所在地區](https://azure.microsoft.com/pricing/details/monitor/)的[Application Insights 計價模式](https://docs.microsoft.com/azure/azure-monitor/app/pricing#pricing-model)和價格。
+> 透過 Application Insights SDK 傳送至 Azure 監視器的計量會以內嵌記錄資料的形式計費。 只有在已選取 [Application Insights] 功能[啟用自訂計量維度的警示](../app/pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation)時，才會產生額外的度量費用。 此核取方塊會使用自訂計量 API 將資料傳送至 Azure 監視器計量資料庫，以允許更複雜的警示。  深入瞭解[您所在地區](https://azure.microsoft.com/pricing/details/monitor/)的[Application Insights 計價模式](../app/pricing.md#pricing-model)和價格。
 
 
 ## <a name="how-to-send-custom-metrics"></a>如何傳送自訂計量
@@ -46,8 +46,8 @@ Azure 監視器自訂計量目前處於公開預覽狀態。
 
 ### <a name="authentication"></a>驗證
 若要將自訂計量提交至 Azure 監視器，提交計量的實體在要求的 **Bearer** 標頭中需要有效的 Azure Active Directory (Azure AD) 權杖。 支援取得有效持有人權杖的方式有好幾種：
-1. [適用于 Azure 資源的受控](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)識別。 對 Azure 資源本身 (例如 VM) 提供身分識別。 受控服務識別 (MSI) 的設計訴求是要提供資源執行特定作業的權限。 例如，允許資源發出本身相關的計量。 也可以在其他資源上授與資源 (或其 MSI) 的「監視計量發行者」**** 權限。 透過此權限，MSI 也可以發出其他資源的計量。
-2. [Azure AD 服務主體](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)。 在此案例中，可以將權限指派給 Azure AD 應用程式或服務，以發出 Azure 資源的相關計量。
+1. [適用于 Azure 資源的受控](../../active-directory/managed-identities-azure-resources/overview.md)識別。 對 Azure 資源本身 (例如 VM) 提供身分識別。 受控服務識別 (MSI) 的設計訴求是要提供資源執行特定作業的權限。 例如，允許資源發出本身相關的計量。 也可以在其他資源上授與資源 (或其 MSI) 的「監視計量發行者」**** 權限。 透過此權限，MSI 也可以發出其他資源的計量。
+2. [Azure AD 服務主體](../../active-directory/develop/app-objects-and-service-principals.md)。 在此案例中，可以將權限指派給 Azure AD 應用程式或服務，以發出 Azure 資源的相關計量。
 若要驗證要求，Azure 監視器會使用 Azure AD 公開金鑰驗證應用程式權杖。 現有的「監視計量發行者」**** 角色已經有這個權限。 其可在 Azure 入口網站提供。 可根據要為其發出自訂計量的資源，在所需的範圍將「監視計量發行者」**** 角色指定給服務主體。 範例包括訂用帳戶、資源群組或特定資源。
 
 > [!TIP]  
@@ -68,13 +68,13 @@ Azure 監視器自訂計量目前處於公開預覽狀態。
 >
 >
 
-### <a name="timestamp"></a>時間戳記
+### <a name="timestamp"></a>Timestamp
 傳送至 Azure 監視器每個資料點都必須以時間戳記標記。 此時間戳記會擷取該計量值的測量或收集日期時間。 Azure 監視器接受時間戳記為過去 20 分鐘內和未來 5 分鐘內的計量資料。 時間戳記必須是 ISO 8601 格式。
 
 ### <a name="namespace"></a>命名空間
 命名空間是將類似計量分類或分組的方法。 您可以使用命名空間，將收集不同見解或效能指標的計量群組隔離。 例如，您可能會有一個名為**contosomemorymetrics**的命名空間，它會追蹤用來分析應用程式的記憶體使用計量。 另一個名為**contosoapptransaction**的命名空間可能會追蹤應用程式中有關使用者交易的所有計量。
 
-### <a name="name"></a>Name
+### <a name="name"></a>名稱
 **名稱**是要報告的計量名稱。 通常名稱的描述就足以協助識別所測量的項目。 舉例來說，可測量指定 VM 上所用記憶體位元組數目的計量。 其計量名稱可能為「使用中的記憶體位元組」****。
 
 ### <a name="dimension-keys"></a>維度索引鍵
@@ -92,7 +92,7 @@ Azure 監視器自訂計量目前處於公開預覽狀態。
 維度是選擇性的，並非所有計量都可能具有維度。 如果計量 post 定義維度索引鍵，則對應的維度值是必要的。
 
 ### <a name="metric-values"></a>計量值
-Azure 監視器會儲存一分鐘資料粒度間隔內的所有計量。 我們了解在指定的分鐘內，計量可能需要取樣數次。 例如，CPU 使用率。 或者可能需要針對許多不連續的事件進行測量。 例如，登入交易延遲。 若要限制您在 Azure 監視器中必須發出和支付未經處理的值數目，您可以在本機預先彙總，然後再將值發出：
+Azure 監視器會儲存一分鐘資料粒度間隔內的所有計量。 我們了解在指定的分鐘內，計量可能需要取樣數次。 例如根據 CPU 使用率。 或者可能需要針對許多不連續的事件進行測量。 例如，登入交易延遲。 若要限制您在 Azure 監視器中必須發出和支付未經處理的值數目，您可以在本機預先彙總，然後再將值發出：
 
 * **最小值**︰在該分鐘期間的所有樣本及測量中觀察到的最小值。
 * **最大值**︰在該分鐘期間的所有樣本及測量中觀察到的最大值。
@@ -178,12 +178,12 @@ Azure 監視器會儲存一分鐘資料粒度間隔內的所有計量。 我們�
 ### <a name="browse-your-custom-metrics-via-the-azure-portal"></a>透過 Azure 入口網站瀏覽自訂計量
 1.    移至 [Azure 入口網站](https://portal.azure.com)。
 2.    選取 [監視]**** 窗格。
-3.    選取 [**計量**]。
+3.    選取 [計量]。
 4.    選取您已對其發出自訂計量的資源。
 5.    選取自訂計量的計量命名空間。
 6.    選取自訂計量。
 
-## <a name="supported-regions"></a>支援區域
+## <a name="supported-regions"></a>支援的區域
 在公開預覽期間，發佈自訂計量的功能只能在 Azure 區域的子集中使用。 此限制表示只能針對其中一個支援區域的資源發佈計量。 下表列出支援自訂計量的 Azure 區域集合。 其中也會列出這些區域中資源計量應發佈至的對應端點：
 
 |Azure 區域 |區域端點前置詞|
@@ -198,8 +198,8 @@ Azure 監視器會儲存一分鐘資料粒度間隔內的所有計量。 我們�
 |美國東部| HTTPs： \/ /eastus.monitoring.azure.com |
 |美國東部 2 | HTTPs： \/ /eastus2.monitoring.azure.com |
 | **歐洲** | |
-|北歐    | HTTPs： \/ /northeurope.monitoring.azure.com |
-|西歐     | HTTPs： \/ /westeurope.monitoring.azure.com |
+|歐洲北部    | HTTPs： \/ /northeurope.monitoring.azure.com |
+|歐洲西部     | HTTPs： \/ /westeurope.monitoring.azure.com |
 |英國南部 | HTTPs： \/ /uksouth.monitoring.azure.com
 |法國中部 | HTTPs： \/ /francecentral.monitoring.azure.com |
 | **非洲** | |

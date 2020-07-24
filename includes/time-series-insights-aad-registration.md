@@ -9,12 +9,12 @@ author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.date: 02/03/2020
-ms.openlocfilehash: 5be6e7937a6e1f710b8e2576a9058963413fb6c2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b2e86a92c253bc1926386269e289cdb7ae578746
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76984519"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080747"
 ---
 1. 在 [Azure 入口網站](https://ms.portal.azure.com/)中，選取 [Azure Active Directory] > [應用程式註冊] > [新增註冊]。
 
@@ -66,7 +66,7 @@ ms.locfileid: "76984519"
    > [!NOTE]
    > 您可以改用匯入憑證的功能。 為了增強安全性，建議使用憑證。 若要使用憑證，請選取 [上傳憑證]。
 
-1. 讓 Azure Active Directory 應用程式與 Azure 時間序列深入解析建立關聯。 選取 [API 權限] > [新增權限] > [組織使用的 API]。 
+1. 建立 Azure Active Directory 應用程式 Azure 時間序列深入解析的關聯。 選取 [API 權限] > [新增權限] > [組織使用的 API]。 
 
     [![讓 API 與 Azure Active Directory 應用程式建立關聯](media/time-series-insights-aad-registration/active-directory-app-api-permission.png)](media/time-series-insights-aad-registration/active-directory-app-api-permission.png#lightbox)
 

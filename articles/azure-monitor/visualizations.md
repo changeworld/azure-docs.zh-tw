@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/17/2020
-ms.openlocfilehash: 0176454b38dfa88480e63fedfae175a63192eaee
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4c5290d9f5ec47969ae43e5986d31484927a0ac5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86498588"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081350"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>將來自 Azure 監視器的資料視覺化
 本文會概要介紹用以將儲存在 Azure 監視器中的記錄和計量資料視覺化的可用方法。
@@ -40,6 +40,8 @@ ms.locfileid: "86498588"
 [Azure 儀表板](../azure-portal/azure-portal-dashboards.md)是 Azure 的主要儀表板設計技術。 儀表板特別適合用來提供 Azure 基礎結構和服務的單一管理平台，以利使用者迅速找出重要問題所在。
 
 ![儀表板](media/visualizations/dashboard.png)
+
+以下是建立儀表板的影片逐步解說。
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4AslH]
 

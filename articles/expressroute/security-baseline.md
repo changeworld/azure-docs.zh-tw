@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: e539e2a26e53ded8a2c42491c1e1e596a2180ed7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f5c81897f74163191de4b167ffa56225ca0698ca
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85268666"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079036"
 ---
 # <a name="azure-security-baseline-for-expressroute"></a>ExpressRoute 的 Azure 安全性基準
 
@@ -116,7 +116,7 @@ ms.locfileid: "85268666"
 
 您可以使用 Azure PowerShell 或 Azure CLI，根據其標記來查閱或執行資源的動作。
 
-* [使用標記來組織 Azure 資源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [使用標籤來組織資源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags) \(部分機器翻譯\)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -246,7 +246,7 @@ ms.locfileid: "85268666"
 
 * [瞭解 Azure 中的 RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
-* [利用 ExpressRoute 合作夥伴 Resource Manager API 中的 RBAC](https://docs.microsoft.com/azure/expressroute/cross-connections-api-developmentment)
+* [利用 ExpressRoute 合作夥伴 Resource Manager API 中的 RBAC](https://docs.microsoft.com/azure/expressroute/cross-connections-api-development)
 
 **Azure 資訊安全中心監視**：是
 
@@ -931,7 +931,7 @@ Azure ExpressRoute 也具有線路擁有者和線路使用者角色。 線路使
 
 ### <a name="103-test-security-response-procedures"></a>10.3：測試安全性回應程序
 
-**指引**：進行練習以定期測試系統的事件回應功能。 找出弱點和落差，並視需要修訂計畫。
+**指導**方針：執行練習以定期測試系統的事件回應功能。 找出弱點和落差，並視需要修訂計畫。
 
 * [請參閱 NIST 的發行集：Guide to Test, Training, and Exercise Programs for IT Plans and Capabilities](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf)
 
@@ -979,7 +979,7 @@ Azure ExpressRoute 也具有線路擁有者和線路使用者角色。 線路使
 
 **指引**： * [遵循 Microsoft 參與規則，確保您的滲透測試不會違反 Microsoft 原則](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 
-* [對於 Microsoft 管理的雲端基礎結構、服務和應用程式，您可在此找到 Microsoft 對於 Red Teaming 和即時網站滲透測試的策略與執行詳細資訊：](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
+* [您可以在這裡找到有關 Microsoft 管理的雲端基礎結構、服務和應用程式的 Microsoft 策略及執行的 Red 小組和即時網站滲透測試的詳細資訊](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
 **Azure 資訊安全中心監視**：不適用
 

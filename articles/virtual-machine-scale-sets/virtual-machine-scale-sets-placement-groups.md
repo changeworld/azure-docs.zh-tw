@@ -9,15 +9,15 @@ ms.subservice: management
 ms.date: 06/25/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 0848d092c342b29c1839a4dd4cebd0bad62ea3ca
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 001b5d803dedad8de407480e668c9ec40a004ace
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86023001"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080381"
 ---
 # <a name="working-with-large-virtual-machine-scale-sets"></a>使用大型的虛擬機器擴展集
-您現在可以建立容量多達 1,000 個 VM 的 Azure [虛擬機器擴展集](/azure/virtual-machine-scale-sets/)。 本文件將_大型虛擬機器擴展集_定義為能夠調整到 100 個 VM 以上的擴展集。 此容量是由擴展集屬性 (_singlePlacementGroup=False_) 所設定。 
+您現在可以建立容量多達 1,000 個 VM 的 Azure [虛擬機器擴展集](./index.yml)。 本文件將_大型虛擬機器擴展集_定義為能夠調整到 100 個 VM 以上的擴展集。 此容量是由擴展集屬性 (_singlePlacementGroup=False_) 所設定。 
 
 大型擴展集在某些方面 (例如負載平衡和容錯網域) 的行為不同於標準擴展集。 本文件說明大型擴展集的特性，並描述要在應用程式中成功使用這種擴展集的須知事項。 
 
@@ -34,10 +34,10 @@ ms.locfileid: "86023001"
 - 從自訂映像 (您自己建立並上傳的 VM 映像) 所建立的擴展集目前可以擴大到 600 個 VM。
 - 大型擴展集需要 Azure 受控磁碟。 所建立的擴展集若非使用受控磁碟，則需要多個儲存體帳戶 (每 20 個 VM 一個)。 大型擴展集的設計用途是為了獨佔使用受控磁碟，以減少儲存體管理負荷，並避免達到儲存體帳戶之訂用帳戶限制的風險。 
 - 大規模（SPG = false）不支援不會的網路
-- 使用由多個放置群組所組成之擴展集的第 4 層負載平衡需要 [Azure Load Balancer 標準 SKU](../load-balancer/load-balancer-standard-overview.md)。 Load Balancer 標準 SKU 可提供額外的好處，例如平衡多個擴展集之間負載的能力。 標準 SKU 也要求擴展集具有相關聯的網路安全性群組，否則 NAT 集區無法正常運作。 如果您需要使用 Azure Load Balancer 基本 SKU，請確定擴展集是設定為使用單一放置群組 (預設設定)。
+- 使用由多個放置群組所組成之擴展集的第 4 層負載平衡需要 [Azure Load Balancer 標準 SKU](../load-balancer/load-balancer-overview.md)。 Load Balancer 標準 SKU 可提供額外的好處，例如平衡多個擴展集之間負載的能力。 標準 SKU 也要求擴展集具有相關聯的網路安全性群組，否則 NAT 集區無法正常運作。 如果您需要使用 Azure Load Balancer 基本 SKU，請確定擴展集是設定為使用單一放置群組 (預設設定)。
 - 所有擴展集皆支援使用 Azure 應用程式閘道的第 7 層負載平衡。
 - 擴展集會使用單一子網路來定義，請確定子網路的位址空間夠大，足以放置您需要的所有 VM。 根據預設，擴展集會過度佈建 (在部署或相應放大時建立額外的 VM，而無須付費) 以提升部署可靠性和效能。 請讓位址空間比您計劃調整成的 VM 數目大 20%。
-- 容錯網域和升級網域只會在放置群組內保持一致。 此架構不會改變擴展集的整體可用性，因為 VM 會平均分散到不同的實體硬體，但的確表示如果您需要保證兩個 VM 位於不同硬體上，請確定它們位於相同放置群組中的不同容錯網域。 請參閱[可用性選項](/azure/virtual-machines/windows/availability)這個連結。 
+- 容錯網域和升級網域只會在放置群組內保持一致。 此架構不會改變擴展集的整體可用性，因為 VM 會平均分散到不同的實體硬體，但的確表示如果您需要保證兩個 VM 位於不同硬體上，請確定它們位於相同放置群組中的不同容錯網域。 請參閱[可用性選項](../virtual-machines/windows/availability.md)這個連結。 
 - 容錯網域和放置群組識別碼會在擴展集 VM 的「執行個體檢視」中顯示。 您可以在 [Azure 資源總管](https://resources.azure.com/)中檢視擴展集 VM 的執行個體檢視。
 
 ## <a name="creating-a-large-scale-set"></a>建立大型擴展集
@@ -84,5 +84,3 @@ az vmss create --help
 
 > [!NOTE]
 > 您只能將擴展集從支援單一放置群組 (預設行為) 變更為支援多個放置群組，而無法進行相反方向的轉換。 因此在轉換之前，請確定您已了解大型擴展集的屬性。
-
-

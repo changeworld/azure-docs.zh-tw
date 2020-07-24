@@ -6,11 +6,12 @@ ms.topic: troubleshooting
 ms.date: 4/11/2019
 ms.author: alkarche
 ms.reviewer: glenga
-ms.openlocfilehash: acb1e942c1f342ce6fee7d8aeacafcc1d7b6fd91
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d3493cc76dfb05cca3c89114b279b99ab49bac2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75409535"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081639"
 ---
 # <a name="frequently-asked-questions-about-networking-in-azure-functions"></a>有關 Azure Functions 網路功能的常見問題
 
@@ -54,7 +55,7 @@ ms.locfileid: "75409535"
 
 ## <a name="how-can-i-deploy-my-function-app-in-a-virtual-network"></a>如何在虛擬網路中部署函數應用程式？
 
-部署到 App Service 環境是建立完全位於虛擬網路內之函式應用程式的唯一方法。 如需將內部負載平衡器與 App Service 環境搭配使用的詳細資訊，請從[建立和使用內部負載平衡器和 App Service 環境一](https://docs.microsoft.com/azure/app-service/environment/create-ilb-ase)文開始。
+部署到 App Service 環境是建立完全位於虛擬網路內之函式應用程式的唯一方法。 如需將內部負載平衡器與 App Service 環境搭配使用的詳細資訊，請從[建立和使用內部負載平衡器和 App Service 環境一](../app-service/environment/create-ilb-ase.md)文開始。
 
 對於只需要單向存取虛擬網路資源，或較不全面的網路隔離的情況，請參閱函式[網路功能總覽](functions-networking-options.md)。
 

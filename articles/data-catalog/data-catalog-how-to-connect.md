@@ -4,13 +4,14 @@ description: 操作說明文章著重在說明如何連接到使用 Azure 資料
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: 1190a0f34206004b72730a6af85bbe5db7d9961a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 53a861761f819c2127228e7ef688f04d91744d25
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68976777"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081248"
 ---
 # <a name="how-to-connect-to-data-sources"></a>如何連接到資料來源
 ## <a name="introduction"></a>簡介
@@ -55,7 +56,7 @@ ms.locfileid: "68976777"
 
  ![具有所提供之要求存取指示的連接資訊](./media/data-catalog-how-to-connect/data-catalog-how-to-connect4.png)
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>總結
 使用 **Azure 資料目錄**註冊資料來源，即可藉由將資料來源的結構性和描述性中繼資料複製到目錄服務內，使其變成可探索的資料。 資料來源一經註冊且變成可探索之後，使用者就能從 **Azure 資料目錄**入口網站的 [開啟於...] 功能表，或使用他們選擇的資料工具，連接到資料來源。
 
 ## <a name="see-also"></a>另請參閱

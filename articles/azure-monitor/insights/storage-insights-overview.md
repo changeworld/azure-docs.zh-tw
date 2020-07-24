@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/11/2020
-ms.openlocfilehash: 7ab7071f504231290f72646e59a30fa855cff6cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d71201da0c4af35720a309fe0dfa068cd2c69630
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84944486"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081605"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage"></a>使用適用於儲存體的 Azure 監視器監視儲存體服務
 
@@ -31,7 +31,7 @@ ms.locfileid: "84944486"
 
 * **可自訂的**，讓您能夠變更想要查看的計量、修改或設定符合限制的閾值，並另存為自己的活頁簿。 活頁簿中的圖表均可釘選到 Azure 儀表板。  
 
-此功能不會要求您啟用或設定任何項目，預設會從您的儲存體帳戶收集儲存體計量。 如果您不熟悉 Azure 儲存體上可用的計量，請藉由檢閱 [Azure 儲存體計量](../../storage/common/storage-metrics-in-azure-monitor.md)來檢視 Azure 儲存體計量中的描述和定義。
+此功能不會要求您啟用或設定任何項目，預設會從您的儲存體帳戶收集儲存體計量。 如果您不熟悉 Azure 儲存體上可用的計量，請藉由檢閱 [Azure 儲存體計量](../../storage/common/monitor-storage.md)來檢視 Azure 儲存體計量中的描述和定義。
 
 >[!NOTE]
 >存取此功能不需要付費，您只需要支付所設定或啟用的 Azure 監視器基本功能的費用，如 [Azure 監視器定價詳細資料](https://azure.microsoft.com/pricing/details/monitor/)頁面上所述。
@@ -198,7 +198,7 @@ ms.locfileid: "84944486"
 
 1. 在計量方格中，選取 [資料行設定]。
 
-2. 在 [編輯資料行設定] 窗格中，選取 [資料行] 區段底下的 **microsoft.storage/storageaccounts-Capacity-UsedCapacity$|microsoft.storage/storageaccounts/blobservices-Capacity-BlobCapacity$|microsoft.storage/storageaccounts/fileservices-Capacity-FileCapacity$|microsoft.storage/storageaccounts/queueservices-Capacity-QueueCapacity$|microsoft.storage/storageaccounts/tableservices-Capacity-TableCapacity$** 。 在 [調色盤] 下拉式清單中，選取 [綠色]。
+2. 在 [**編輯資料行設定**] 窗格中，選取 [ **microsoft. storage/storageaccounts-UsedCapacity $ `|` Storageaccounts/Blobservices-容量-BlobCapacity $ microsoft. storage/storageaccounts `|` /fileservices- `|` `|` **容量-FileCapacity $ microsoft. storage/storageaccounts/queueservices-容量-QueueCapacity $ microsoft. storage/storageaccounts/Tableservices-容量-TableCapacity $] 資料**行**。 在 [調色盤] 下拉式清單中，選取 [綠色]。
 
 3. 選取 [儲存後關閉] 以認可變更。
 
@@ -246,7 +246,7 @@ ms.locfileid: "84944486"
 
 ### <a name="how-to-analyze-and-troubleshoot-the-data-shown-in-azure-monitor-for-storage"></a>如何分析適用於儲存體的 Azure 監視器中所顯示的資料並進行疑難排解？
 
- 如需如何分析適用於儲存體的 Azure 監視器中所顯示的 Azure 儲存體資料並進行疑難排解的詳細資訊，請參閱[監視、診斷與疑難排解 Microsoft Azure 儲存體](https://docs.microsoft.com/azure/storage/common/storage-monitoring-diagnosing-troubleshooting)一文。
+ 如需如何分析適用於儲存體的 Azure 監視器中所顯示的 Azure 儲存體資料並進行疑難排解的詳細資訊，請參閱[監視、診斷與疑難排解 Microsoft Azure 儲存體](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md)一文。
 
 ### <a name="why-dont-i-see-all-the-types-of-errors-in-metrics"></a>為什麼我在計量中看不到所有類型的錯誤？
 
@@ -269,7 +269,7 @@ ms.locfileid: "84944486"
 
 ## <a name="next-steps"></a>後續步驟
 
-* 設定[計量警示](../platform/alerts-metric.md)和[服務健康情況通知](../../service-health/alerts-activity-log-service-notifications.md)，以設定自動化警示來協助偵測問題。
+* 設定[計量警示](../platform/alerts-metric.md)和[服務健康情況通知](../../service-health/alerts-activity-log-service-notifications-portal.md)，以設定自動化警示來協助偵測問題。
 
 * 檢閱[使用 Azure 監視器活頁簿建立互動式報表](../platform/workbooks-overview.md)，以了解設計活頁簿以提供支援、如何撰寫新報表和自訂現有報表等等的案例。
 

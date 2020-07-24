@@ -1,5 +1,5 @@
 ---
-title: 從基本公用升級至標準公用 Azure Load Balancer
+title: 從基本內部升級至標準公用 Azure Load Balancer
 description: 本文說明如何將 Azure 基本內部 Load Balancer 升級至標準公用 Load Balancer
 services: load-balancer
 author: irenehua
@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: 6b4d2a5cf441eb702bc33fc862fec9cc28a998b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 225252f2cd47c36de2c7eed4ed1e5dae3ebd81b2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84809358"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078751"
 ---
 # <a name="upgrade-azure-internal-load-balancer---outbound-connection-required"></a>升級 Azure 內部 Load Balancer-需要輸出連線
 [Azure Standard Load Balancer](load-balancer-overview.md)透過區域冗余提供了一組豐富的功能和高可用性。 若要深入瞭解 Load Balancer SKU，請參閱[比較表](https://docs.microsoft.com/azure/load-balancer/skus#skus)。 由於 Standard Internal Load Balancer 並不提供輸出連線，因此我們提供了一個解決方案，改為建立標準的公用 Load Balancer。
@@ -128,7 +128,7 @@ ms.locfileid: "84809358"
 
 ### <a name="does-the-azure-powershell-script-also-switch-over-the-traffic-from-my-basic-load-balancer-to-the-newly-created-standard-load-balancer"></a>Azure PowerShell 腳本是否也會將來自我的基本 Load Balancer 的流量切換到新建立的 Standard Load Balancer？
 
-否。 Azure PowerShell 腳本只會遷移設定。 實際的流量遷移是您在控制中的責任。
+不可以。 Azure PowerShell 腳本只會遷移設定。 實際的流量遷移是您在控制中的責任。
 
 ### <a name="i-ran-into-some-issues-with-using-this-script-how-can-i-get-help"></a>我在使用此腳本時遇到一些問題。 如何取得協助？
   

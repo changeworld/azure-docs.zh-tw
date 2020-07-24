@@ -5,11 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 4cb832f8fe11ac2581e97d9cdcc777eaff702ee9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fcd92f1f134b79d23da6848cbb04894b242fcec0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84697997"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081809"
 ---
 # <a name="diagnostics-in-durable-functions-in-azure"></a>在 Azure 中診斷 Durable Functions
 
@@ -19,7 +20,7 @@ ms.locfileid: "84697997"
 
 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 是在 Azure Functions 中診斷和監視的建議方式。 一樣適用於長期函式。 如需如何在您的函式應用程式中利用 Application Insights 的概觀，請參閱[監視 Azure Functions](../functions-monitoring.md)。
 
-Azure Functions 長期延伸模組也會發出「追蹤事件」**，可讓您追蹤協調流程的端對端執行。 您可以使用 Azure 入口網站中的[Application Insights 分析](../../azure-monitor/app/analytics.md)工具來尋找及查詢這些追蹤事件。
+Azure Functions 長期延伸模組也會發出「追蹤事件」**，可讓您追蹤協調流程的端對端執行。 您可以使用 Azure 入口網站中的[Application Insights 分析](../../azure-monitor/log-query/log-query-overview.md)工具來尋找及查詢這些追蹤事件。
 
 ### <a name="tracking-data"></a>追蹤資料
 
@@ -382,7 +383,7 @@ Azure Functions 支援直接偵錯函式程式碼，相同支援適用於長期�
 
 ## <a name="storage"></a>儲存體
 
-根據預設，長期函式會將狀態儲存在 Azure 儲存體。 此行為表示您可以使用[Microsoft Azure 儲存體總管](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)之類的工具來檢查協調流程的狀態。
+根據預設，長期函式會將狀態儲存在 Azure 儲存體。 此行為表示您可以使用[Microsoft Azure 儲存體總管](../../vs-azure-tools-storage-manage-with-storage-explorer.md)之類的工具來檢查協調流程的狀態。
 
 ![Azure 儲存體總管螢幕擷取畫面](./media/durable-functions-diagnostics/storage-explorer.png)
 

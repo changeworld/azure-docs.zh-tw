@@ -7,15 +7,16 @@ ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 00935762a5e19ec47074021aff59992fd3b801bf
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 762264cfe7e0441671411e2c277a0796cd527399
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83797454"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081520"
 ---
 # <a name="metric-chart-examples"></a>計量圖表範例 
 
-Azure 平台提供[超過一千個計量](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported)，且許多都有維度。 藉由使用[維度篩選](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts)、套用[分割](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts)、控制圖表類型，以及調整圖表設定，您將可建立功能強大的診斷檢視和儀表板，以提供基礎結構和應用程式健康情況的深入解析。 本文提供可使用[計量瀏覽器](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts)來建置的一些圖表範例，並說明設定各個圖表所需的步驟。
+Azure 平台提供[超過一千個計量](./metrics-supported.md)，且許多都有維度。 藉由使用[維度篩選](./metrics-charts.md)、套用[分割](./metrics-charts.md)、控制圖表類型，以及調整圖表設定，您將可建立功能強大的診斷檢視和儀表板，以提供基礎結構和應用程式健康情況的深入解析。 本文提供可使用[計量瀏覽器](./metrics-charts.md)來建置的一些圖表範例，並說明設定各個圖表所需的步驟。
 
 要與全世界分享您絕佳的圖表範例嗎？ 請在 GitHub 上共同撰寫此頁面，並在此處分享您自己的圖表範例！
 
@@ -37,7 +38,7 @@ Azure 平台提供[超過一千個計量](https://docs.microsoft.com/azure/azure
 
 ### <a name="how-to-configure-this-chart"></a>如何設定此圖表？
 
-您必須先為網站開啟 [Application Insights 可用性](https://docs.microsoft.com/azure/azure-monitor/app/monitor-web-app-availability)監視。 接著，選擇您的 Application Insights 資源，並選取 [可用性] 計量。 在 [執行位置] 維度上套用分割。
+您必須先為網站開啟 [Application Insights 可用性](../app/monitor-web-app-availability.md)監視。 接著，選擇您的 Application Insights 資源，並選取 [可用性] 計量。 在 [執行位置] 維度上套用分割。
 
 ## <a name="volume-of-storage-account-transactions-by-api-name"></a>依 API 名稱顯示的儲存體帳戶交易量
 

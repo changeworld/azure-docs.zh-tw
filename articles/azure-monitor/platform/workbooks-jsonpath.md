@@ -9,15 +9,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: lagayhar
-ms.openlocfilehash: 58a2657f6b9aee101384146c4ebb43023953bfcb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: efa54933ac7d57ec0dcff9ae11b6fb5c2c87a897
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82892208"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081384"
 ---
 # <a name="how-to-use-jsonpath-to-transform-json-data-in-workbooks"></a>如何使用 JSONPath 轉換活頁簿中的 JSON 資料
 
-活頁簿能夠查詢許多來源的資料。 某些端點（例如[Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/management/overview)或自訂端點）可能會以 JSON 格式傳回結果。 如果所查詢端點所傳回的 JSON 資料未以您想要的格式設定，您可以使用 JSONPath 來轉換結果。
+活頁簿能夠查詢許多來源的資料。 某些端點（例如[Azure Resource Manager](../../azure-resource-manager/management/overview.md)或自訂端點）可能會以 JSON 格式傳回結果。 如果所查詢端點所傳回的 JSON 資料未以您想要的格式設定，您可以使用 JSONPath 來轉換結果。
 
 JSONPath 是 JSON 的查詢語言，類似于 XML 的 XPath。 如同 XPath，JSONPath 允許從 JSON 結構提取和篩選資料。
 
@@ -74,7 +75,7 @@ JSONPath 是 JSON 的查詢語言，類似于 XML 的 XPath。 如同 XPath，JS
    |:-----------|:-----------------|
    | 標題      | `$.title`        |
    | 作者     | `$.author`       |
-   | Price      | `$.price`        |
+   | 價格      | `$.price`        |
 
     資料行識別碼會是資料行標頭。 資料行 JSON 路徑欄位代表從資料表根到資料行值的路徑。
 

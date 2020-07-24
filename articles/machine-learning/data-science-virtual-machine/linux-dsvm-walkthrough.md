@@ -9,11 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 04/02/2020
-ms.openlocfilehash: dec9d7d6f4676c3550bb6c0be79e25d907e5b3da
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: ed552a57e51ce9249f84bab6bb72bfe783e43edb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682489"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078105"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-in-azure"></a>在 Azure 中搭配 Linux 資料科學虛擬機器的資料科學
 
@@ -29,7 +30,7 @@ ms.locfileid: "83682489"
 
 * **Azure 訂用帳戶**。 若要取得 Azure 訂用帳戶，請參閱[立即建立您的免費 Azure 帳戶](https://azure.microsoft.com/free/)。
 * [**Linux 資料科學虛擬機器**](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804)。 如需佈建虛擬機器的相關資訊，請參閱[佈建 Linux 資料科學虛擬機器](linux-dsvm-intro.md)。
-* [**X2Go**](https://wiki.x2go.org/doku.php)，已安裝在電腦上並已開啟 XFCE 工作階段。 如需詳細資訊，請參閱[安裝與設定 X2Go 用戶端](linux-dsvm-intro.md#x2go)。
+* [**X2Go**](https://wiki.x2go.org/doku.php)，已安裝在電腦上並已開啟 XFCE 工作階段。 如需詳細資訊，請參閱[安裝與設定 X2Go 用戶端](dsvm-ubuntu-intro.md#x2go)。
 * 如需更流暢的捲動體驗，請在 DSVM 的 Firefox 網頁瀏覽器中，切換 `about:config` 中的 `gfx.xrender.enabled` 旗標。 [深入了解](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/)。 也請考慮將 `mousewheel.enable_pixel_scrolling` 設定為 `False`。 [深入了解](https://support.mozilla.org/questions/981140)。
 * **Azure Machine Learning 帳戶**。 如果您還沒有帳戶，請在 [Azure Machine Learning 首頁](https://azure.microsoft.com/free/services/machine-learning//)上註冊新的帳戶。
 
@@ -312,7 +313,7 @@ predictSpam.service(1, 1, 1)
 
 ### <a name="jupyterhub"></a>JupyterHub
 
-DSVM 中的 Anaconda 散發套件隨附 Jupyter Notebook，此跨平台環境可用於共用 Python、R 或 Julia 程式碼和分析。 Jupyter Notebook 是透過 JupyterHub 來存取。 您可以在 https://\<DSVM DNS 名稱或 IP 位址\>:8000/ 使用本機 Linux 使用者名稱和密碼來登入。 JupyterHub 的所有組態檔可在 eg /etc/ jupyterhub 中找到。
+DSVM 中的 Anaconda 散發套件隨附 Jupyter Notebook，此跨平台環境可用於共用 Python、R 或 Julia 程式碼和分析。 Jupyter Notebook 是透過 JupyterHub 來存取。 您可以在 HTTPs://： 8000/使用本機 Linux 使用者名稱和密碼登入 \<DSVM DNS name or IP address\> 。 JupyterHub 的所有組態檔可在 eg /etc/ jupyterhub 中找到。
 
 > [!NOTE]
 > 若要從目前核心中的 Jupyter Notebook 使用 Python 套件管理員 (透過 `pip` 命令)，請在程式碼資料格中使用下列命令：

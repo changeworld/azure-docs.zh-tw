@@ -9,11 +9,12 @@ ms.subservice: management
 ms.date: 05/29/2018
 ms.reviewer: avverma
 ms.custom: avverma
-ms.openlocfilehash: 7c39088890680b6cfc903083283ed09cb7618d16
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 90cda1e8d48e6c7f9e925d6d1b9e11b5d2514e93
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124919"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080517"
 ---
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>在虛擬機器擴展集上部署您的應用程式
 
@@ -112,4 +113,4 @@ az vmss create \
 
 
 ## <a name="next-steps"></a>後續步驟
-當您建置應用程式並將其部署到擴展集時，您可以檢閱[擴展集設計概觀](virtual-machine-scale-sets-design-overview.md)。 如需如何管理擴展集的詳細資訊，請參閱[使用 PowerShell 管理您的擴展集](virtual-machine-scale-sets-windows-manage.md)。
+當您建置應用程式並將其部署到擴展集時，您可以檢閱[擴展集設計概觀](virtual-machine-scale-sets-design-overview.md)。 如需如何管理擴展集的詳細資訊，請參閱[使用 PowerShell 管理您的擴展集](./virtual-machine-scale-sets-manage-powershell.md)。

@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 10/28/2019
-ms.openlocfilehash: 21ecf33291924097f076aa28088eb4eac652ce67
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: f97b4877d87acec923812fd0289d5161529dbe7a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85849663"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081027"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>HDInsight 中 Apache Hadoop 叢集的可用性和可靠性
 
@@ -97,7 +97,7 @@ curl -u admin:$password "https://$clusterName.azurehdinsight.net/api/v1/clusters
 
 您可以使用下列方法，連接到無法直接透過網際網路存取的節點：
 
-|方法 |Description |
+|方法 |說明 |
 |---|---|
 |SSH|使用 SSH 連線到前端節點之後，您便可以接著從前端節點使用 SSH 來連線到叢集中的其他節點。 如需詳細資訊，請參閱[搭配 HDInsight 使用 SSH](hdinsight-hadoop-linux-use-ssh-unix.md) 文件。|
 |SSH 通道|如果您需要存取裝載在其中一個節點上的 web 服務，但未公開到網際網路，您必須使用 SSH 通道。 如需詳細資訊，請參閱[搭配 HDInsight 使用 SSH 通道](hdinsight-linux-ambari-ssh-tunnel.md)文件。|
@@ -119,7 +119,7 @@ curl -u admin:$password "https://$clusterName.azurehdinsight.net/api/v1/clusters
 
 下列警示可協助監視叢集的可用性：
 
-| 警示名稱                               | Description                                                                                                                                                                                  |
+| 警示名稱                               | 描述                                                                                                                                                                                  |
 |------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 度量監視狀態                    | 此警示會指出計量監視器進程的狀態，由監視狀態腳本決定。                                                                                   |
 | Ambari 代理程式的心跳                   | 如果伺服器已失去與代理程式的連線，就會觸發此警示。                                                                                                                        |
@@ -268,7 +268,7 @@ get *
 
 只能在叢集建立期間選取節點的大小。 您可以在 [HDInsight 價格頁面](https://azure.microsoft.com/pricing/details/hdinsight/)找到 HDInsight 可用之不同 VM 大小的清單。
 
-建立叢集時，您可以指定節點的大小。 下列資訊提供如何使用 [ [Azure 入口網站](https://portal.azure.com/)]、[ [Azure PowerShell 模組 Az](/powershell/azureps-cmdlets-docs)] 和 [ [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)] 來指定大小的指引：
+建立叢集時，您可以指定節點的大小。 下列資訊提供如何使用 [ [Azure 入口網站](https://portal.azure.com/)]、[ [Azure PowerShell 模組 Az](/powershell/azure/)] 和 [ [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)] 來指定大小的指引：
 
 * **Azure 入口網站**：建立叢集時，您可以設定叢集所使用的節點大小：
 
@@ -284,6 +284,6 @@ get *
 
 * [Apache Ambari REST 參考](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)
 * [安裝和設定 Azure CLI](https://docs.microsoft.com//cli/azure/install-azure-cli?view=azure-cli-latest)
-* [安裝和設定 Azure PowerShell 模組 Az](/powershell/azure/overview)
+* [安裝和設定 Azure PowerShell 模組 Az](/powershell/azure/)
 * [使用 Apache Ambari 來管理 HDInsight](hdinsight-hadoop-manage-ambari.md)
 * [佈建以 Linux 為基礎的 HDInsight 叢集](hdinsight-hadoop-provision-linux-clusters.md)

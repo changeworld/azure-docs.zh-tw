@@ -7,15 +7,16 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 04/30/2019
+ms.date: 07/20/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 60f2e3f949a4f627839a07137ebaf77518db87a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d19f59635920951b506e41884f4ab79be78e247d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213970"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080721"
 ---
 # <a name="using-identity-to-create-surrogate-keys-in-synapse-sql-pool"></a>使用身分識別在 Synapse SQL 集區中建立代理金鑰
 
@@ -23,7 +24,7 @@ ms.locfileid: "85213970"
 
 ## <a name="what-is-a-surrogate-key"></a>什麼是代理鍵
 
-資料表上的 Surrogate 索引鍵是每個資料列都有唯一識別碼的資料行。 索引鍵並非從資料表資料產生。 資料製造模型者在設計資料倉儲模型時，都喜歡在其資料表上建立 Surrogate 索引鍵。 您可以使用 IDENTITY 屬性，在不影響載入效能的情況下，以簡單又有效的方式達成此目標。  
+資料表上的 Surrogate 索引鍵是每個資料列都有唯一識別碼的資料行。 索引鍵並非從資料表資料產生。 資料製造模型者在設計資料倉儲模型時，都喜歡在其資料表上建立 Surrogate 索引鍵。 您可以使用 IDENTITY 屬性，在不影響載入效能的情況下，以簡單又有效的方式達成此目標。 IDENTITY 屬性確實有一些限制，如[CREATE TABLE （transact-sql） IDENTITY （屬性）](/sql/t-sql/statements/create-table-transact-sql-identity-property?view=azure-sqldw-latest)中所述。 身分識別的其中一個限制是不保證它是唯一的。 將 IDENTITY INSERT 和 not 重新植入設定為識別值會導致更多唯一值，但在所有情況下可能不保證唯一性。 如果您因為識別的限制而無法使用識別值，請建立另一個包含目前值的資料表，並使用您的應用程式來管理對資料表和編號指派的存取權。 
 
 ## <a name="creating-a-table-with-an-identity-column"></a>建立具有 IDENTITY 資料行的資料表
 
@@ -49,7 +50,7 @@ WITH
 
 ### <a name="allocation-of-values"></a>值的配置
 
-IDENTITY 屬性並不會保證 Surrogate 值的配置順序，這會反映出 SQL Server 和 Azure SQL Database 行為。 不過，在 Synapse SQL 集區中，缺少保證會比較明顯。
+IDENTITY 屬性不保證由於資料倉儲的分散式架構而配置代理值的順序。 IDENTITY 屬性是設計用來在 Synapse SQL 集區中的所有散發中相應放大，而不會影響載入效能。 
 
 下列範例將做出說明：
 

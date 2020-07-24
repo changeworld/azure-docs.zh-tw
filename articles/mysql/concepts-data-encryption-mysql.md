@@ -6,11 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: e2f732a8cf51c51de1b6125717eafb672d7fff74
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 90ca46ace5f774e288b40a969f8f7e9802e79857
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027404"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080874"
 ---
 # <a name="azure-database-for-mysql-data-encryption-with-a-customer-managed-key"></a>適用於 MySQL 的 Azure 資料庫資料加密 (使用客戶管理的金鑰)
 
@@ -51,7 +52,7 @@ Key Vault 是雲端式外部金鑰管理系統。 其具有高可用性，並為
 * **wrapKey**：可以加密 DEK。
 * **unwrapKey**：可以解密 DEK。
 
-金鑰保存庫管理員也可以[啟用 Key Vault 稽核事件的記錄](../azure-monitor/insights/azure-key-vault.md)，以便稍後再進行稽核。
+金鑰保存庫管理員也可以[啟用 Key Vault 稽核事件的記錄](../azure-monitor/insights/key-vault-insights-overview.md)，以便稍後再進行稽核。
 
 當伺服器設定為使用儲存在金鑰保存庫中的客戶管理金鑰時，伺服器會將 DEK 傳送至金鑰保存庫以加密。 Key Vault 會傳回加密的 DEK，並將其儲存在使用者資料庫中。 同樣地，在有需要時，伺服器會將受保護的 DEK 傳送至金鑰保存庫以解密。 如果已啟用記錄，則稽核員可以使用 Azure 監視器檢閱 Key Vault 稽核事件記錄檔。
 

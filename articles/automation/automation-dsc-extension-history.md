@@ -1,20 +1,17 @@
 ---
 title: 使用 Azure Desired State Configuration 延伸模組版本歷程記錄
 description: 本文說明如何在 Azure 中使用 Desired State Configuration (DSC) 延伸模組版本歷程記錄。
-ms.date: 06/21/2018
+ms.date: 07/22/2020
 keywords: dsc, powershell, azure, 延伸模組
-author: mgoedtel
-ms.author: magoedte
 services: automation
-ms.service: automation
 ms.subservice: dsc
 ms.topic: conceptual
-ms.openlocfilehash: 0bb82ce92a151bd8e955c136751d8e7f307bbf1b
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: b45512faf09cfe745023d29d32f89a4432cc3b2b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186413"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079752"
 ---
 # <a name="work-with-azure-desired-state-configuration-extension-version-history"></a>使用 Azure Desired State Configuration 延伸模組版本歷程記錄
 
@@ -23,6 +20,29 @@ Azure Desired State Configuration (DSC) VM 延伸模組會視需求進行更新�
 本文提供有關各 Azure DSC VM 延伸模組版本的資訊、其所支援的環境，以及對新功能或變更的註解。
 
 ## <a name="latest-version"></a>最新版本
+
+### <a name="version-280"></a>版本2.80
+
+- **發行日期：**
+  - 9月26日-2019 （Azure） |2020年7月6日（Azure 中國 Vianet 21） |2020年7月20日（Azure Government）
+- **OS 支援：**
+  - Windows Server 2019
+  - Windows Server 2016
+  - Windows Server 2012 R2
+  - Windows Server 2012
+  - Windows Server 2008 R2 SP1
+  - Windows 用戶端 7/8.1/10
+  - Nano Server
+- **WMF 支援：**
+  - WMF 5.1
+  - WMF 5.0 RTM
+  - WMF 4.0 Update
+  - WMF 4.0
+- **環境：**
+  - Azure
+  - Azure 中國 Vianet 21
+  - Azure Government
+- **備註：** 此版本中未包含任何新功能。
 
 ### <a name="version-276"></a>版本 2.76
 

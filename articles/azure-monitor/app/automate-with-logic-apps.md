@@ -3,11 +3,12 @@ title: 使用 Logic Apps 自動化 Azure 應用程式 Insights 進程
 description: 了解如何透過將 Application Insights Connector 新增到您的邏輯應用程式，快速自動執行重複程序。
 ms.topic: conceptual
 ms.date: 03/11/2019
-ms.openlocfilehash: 4a0944e661932d86fac75f78c4faf5be751806c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 76a199023ef37fbda27be59fdf70f6ca5d8481bc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79473161"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079616"
 ---
 # <a name="automate-application-insights-processes-by-using-logic-apps"></a>使用 Logic Apps 自動執行 Application Insights 程序
 
@@ -18,7 +19,7 @@ ms.locfileid: "79473161"
 
 有了此整合，您就能自動執行許多流程，而不需撰寫任何一行程式碼。 您可以使用 Application Insights Connector 建立邏輯應用程式，以快速自動執行任何 Application Insights 程序。 
 
-您也可以新增額外的動作。 Azure App Service 的 Logic Apps 功能可讓您提供數百個動作。 例如，藉由使用邏輯應用程式，您可以自動傳送電子郵件通知，或在 Azure DevOps 中建立 Bug。 您也可以使用其中一個可用的[範本](https://docs.microsoft.com/azure/logic-apps/logic-apps-use-logic-app-templates)，加快建立邏輯應用程式的程序。 
+您也可以新增額外的動作。 Azure App Service 的 Logic Apps 功能可讓您提供數百個動作。 例如，藉由使用邏輯應用程式，您可以自動傳送電子郵件通知，或在 Azure DevOps 中建立 Bug。 您也可以使用其中一個可用的[範本](../../logic-apps/logic-apps-create-logic-apps-from-templates.md)，加快建立邏輯應用程式的程序。 
 
 ## <a name="create-a-logic-app-for-application-insights"></a>建立 Application Insights 的邏輯應用程式
 
@@ -117,7 +118,7 @@ ms.locfileid: "79473161"
       ![Office 365 電子郵件設定畫面](./media/automate-with-logic-apps/12emailattachment.png)
 
 ### <a name="step-7-save-and-test-your-logic-app"></a>步驟 7：儲存並測試邏輯應用程式
-* 按一下 [確定] 儲存變更。
+* 按一下 [儲存] 以儲存變更。
 
 您可以等待觸發程式執行邏輯應用程式，也可以選取 [執行]**** 來立即執行邏輯應用程式。
 
@@ -130,13 +131,8 @@ ms.locfileid: "79473161"
 ## <a name="next-steps"></a>後續步驟
 
 - 深入了解建立 [Analytics 查詢](../../azure-monitor/log-query/get-started-queries.md)。
-- 深入瞭解[Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-what-are-logic-apps)。
+- 深入瞭解[Logic Apps](../../logic-apps/logic-apps-overview.md)。
 
 
 
 <!--Link references-->
-
-
-
-
-

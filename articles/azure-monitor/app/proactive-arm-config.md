@@ -6,12 +6,12 @@ author: harelbr
 ms.author: harelbr
 ms.date: 06/26/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 7ca4df620739b2ab55b8ba986031cc48fe87f1fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5a4cb788a24252a2de7b9d669b166b25ed48be1c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80294909"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081588"
 ---
 # <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>使用 Azure Resource Manager 範本來管理 Application Insights 智慧偵測規則
 
@@ -22,7 +22,7 @@ ms.locfileid: "80294909"
 
 您可以設定智慧偵測規則的下列設定：
 - 是否啟用規則 (預設值是 **true**)。
-- 如果在找到偵測時，應該將電子郵件傳送給與訂用帳戶的[監視讀取器](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader)和[監視參與者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor)角色相關聯的使用者（預設值為**true**）。
+- 如果在找到偵測時，應該將電子郵件傳送給與訂用帳戶的[監視讀取器](../../role-based-access-control/built-in-roles.md#monitoring-reader)和[監視參與者](../../role-based-access-control/built-in-roles.md#monitoring-contributor)角色相關聯的使用者（預設值為**true**）。
 - 應該在找到偵測時收到通知的任何其他電子郵件收件者。
     -  電子郵件設定不適用於標示為_預覽_的智慧偵測規則。
 

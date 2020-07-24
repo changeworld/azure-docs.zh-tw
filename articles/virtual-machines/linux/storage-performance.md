@@ -10,11 +10,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/05/2019
 ms.author: joelpell
-ms.openlocfilehash: 7a0d5e29097bc9a672e142fcffb0ebe879fe2475
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2068682ced09c8683ad7aae37366fcff443ae761
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81757695"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080109"
 ---
 # <a name="optimize-performance-on-the-lsv2-series-virtual-machines"></a>將 Lsv2 系列虛擬機器上的效能最佳化
 
@@ -109,4 +110,4 @@ Lsv2 系列 VM 會使用以 Zen 微架構為基礎的 AMD EYPC™ 伺服器處�
    
 ## <a name="next-steps"></a>後續步驟
 
-* 請參閱針對 Azure 上所有的[儲存體效能進行最佳化的 VM](sizes-storage.md) 規格
+* 請參閱針對 Azure 上所有的[儲存體效能進行最佳化的 VM](../sizes-storage.md) 規格

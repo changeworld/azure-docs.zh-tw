@@ -10,12 +10,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: mbullwin
-ms.openlocfilehash: 897e615234e17cfe36790778d00cd56371afd91f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f27771291d95770a693fa56041f7dce3de459d13
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85560146"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081418"
 ---
 # <a name="azure-monitor-workbooks-data-sources"></a>Azure 監視器活頁簿資料來源
 
@@ -61,7 +61,7 @@ Azure 資源會發出可透過活頁簿存取的[計量](data-platform-metrics.m
 
 ## <a name="azure-data-explorer"></a>Azure 資料總管
 
-活頁簿現在支援使用強大的[Kusto](https://docs.microsoft.com/azure/kusto/query/index)查詢語言，從[Azure 資料總管](https://docs.microsoft.com/azure/data-explorer/)叢集進行查詢。   
+活頁簿現在支援使用強大的[Kusto](/azure/kusto/query/index)查詢語言，從[Azure 資料總管](/azure/data-explorer/)叢集進行查詢。   
 
 ![Kusto 查詢視窗的螢幕擷取畫面](./media/workbooks-overview/data-explorer.png)
 
@@ -90,7 +90,7 @@ JSON 提供者可讓您從靜態 JSON 內容建立查詢結果。 它最常用�
 > [!NOTE]
 > 若要查詢 Azure 警示資訊，建議的方式是藉由查詢資料表來使用[Azure Resource Graph](#azure-resource-graph)資料來源 `AlertsManagementResources` 。
 >
-> 如需範例，請參閱[Azure Resource Graph 資料表參考](https://docs.microsoft.com/azure/governance/resource-graph/reference/supported-tables-resources)或[警示範本](https://github.com/microsoft/Application-Insights-Workbooks/blob/master/Workbooks/Azure%20Resources/Alerts/Alerts.workbook)。
+> 如需範例，請參閱[Azure Resource Graph 資料表參考](../../governance/resource-graph/reference/supported-tables-resources.md)或[警示範本](https://github.com/microsoft/Application-Insights-Workbooks/blob/master/Workbooks/Azure%20Resources/Alerts/Alerts.workbook)。
 >
 > 當作者轉換成使用 ARG 時，警示資料來源會持續提供一段時間。 不鼓勵在範本中使用這個資料來源。 
 
@@ -113,5 +113,5 @@ JSON 提供者可讓您從靜態 JSON 內容建立查詢結果。 它最常用�
 
 * [開始深入](workbooks-visualizations.md)瞭解活頁簿許多豐富的視覺效果選項。
 * [控制](workbooks-access-control.md)和共用您的活頁簿資源的存取權。
-* [Log Analytics 查詢優化秘訣](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization)
+* [Log Analytics 查詢優化秘訣](../log-query/query-optimization.md)
 * 

@@ -2,16 +2,17 @@
 title: 使用 PowerShell 和範本部署資源
 description: 使用 Azure Resource Manager 和 Azure PowerShell，將資源部署至 Azure。 資源會定義在 Resource Manager 範本中。
 ms.topic: conceptual
-ms.date: 06/04/2020
-ms.openlocfilehash: af255e0248c029f42c9c2999ae7c0389d60c58fc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/21/2020
+ms.openlocfilehash: 64993b526b67430266a8b3e85e3bcc233a3e28a3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84431831"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079514"
 ---
-# <a name="deploy-resources-with-arm-templates-and-azure-powershell"></a>使用 ARM 範本和 Azure PowerShell 部署資源
+# <a name="deploy-resources-with-arm-templates-and-azure-powershell"></a>使用 ARM 範本與 Azure PowerShell 來部署資源
 
-瞭解如何使用 Azure PowerShell 搭配 Azure Resource Manager （ARM）範本，將您的資源部署至 Azure。 如需部署和管理 Azure 解決方案之概念的詳細資訊，請參閱[範本部署總覽](overview.md)。
+本文說明如何使用 Azure PowerShell 搭配 Azure Resource Manager 範本（ARM 範本）將您的資源部署至 Azure。 如果您不熟悉部署和管理 Azure 解決方案的概念，請參閱[範本部署總覽](overview.md)。
 
 ## <a name="deployment-scope"></a>部署範圍
 
@@ -51,7 +52,7 @@ ms.locfileid: "84431831"
 
 本文中的範例會使用資源群組部署。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 您需要一個要部署的範本。 如果您還沒有帳戶，請從 Azure 快速入門範本存放庫下載並儲存[範例範本](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json)。 本文所使用的本機檔案名稱是 **c:\MyTemplates\azuredeploy.json**。
 
@@ -69,11 +70,40 @@ $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
 $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
 
 New-AzResourceGroup -Name $resourceGroupName -Location $location
-New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
+New-AzResourceGroupDeployment -Name ExampleDeployment `
+  -ResourceGroupName $resourceGroupName `
   -TemplateFile c:\MyTemplates\azuredeploy.json
 ```
 
 部署需要幾分鐘的時間才能完成。
+
+## <a name="deployment-name"></a>部署名稱
+
+在上述範例中，您已將部署命名為 `ExampleDeployment` 。 如果您未提供部署的名稱，則會使用範本檔案的名稱。 例如，如果您部署名為的範本， `azuredeploy.json` 但未指定部署名稱，則會將部署命名為 `azuredeploy` 。
+
+每次執行部署時，會使用部署名稱將專案新增至資源群組的部署歷程記錄。 如果您執行另一個部署並指定相同的名稱，則會將先前的專案取代為目前的部署。 如果您想要在部署歷程記錄中維護唯一的專案，請為每個部署提供一個唯一的名稱。
+
+若要建立唯一的名稱，您可以指派一個亂數字。
+
+```azurepowershell-interactive
+$suffix = Get-Random -Maximum 1000
+$deploymentName = "ExampleDeployment" + $suffix
+```
+
+或者，加入日期值。
+
+```azurepowershell-interactive
+$today=Get-Date -Format "MM-dd-yyyy"
+$deploymentName="ExampleDeployment"+"$today"
+```
+
+如果您使用相同的部署名稱對相同的資源群組執行並行部署，則只會完成最後一個部署。 任何名稱不會完成的部署都會取代為最後一個部署。 例如，如果您執行名為的部署， `newStorage` 並部署名為的儲存體帳戶 `storage1` ，而且同時執行名為的另一個部署，並部署 `newStorage` 名為的儲存體帳戶 `storage2` ，則您只會部署一個儲存體帳戶。 產生的儲存體帳戶名稱為 `storage2` 。
+
+不過，如果您執行名為 `newStorage` 的部署來部署名為的儲存體帳戶 `storage1` ，而且在它完成後立即執行另一個名為的部署，並部署 `newStorage` 名為的儲存體帳戶 `storage2` ，則您有兩個儲存體帳戶。 其中一個名為 `storage1` ，另一個名為 `storage2` 。 但是，在部署歷程記錄中，您只會有一個專案。
+
+當您為每個部署指定唯一的名稱時，您可以同時執行它們，而不會發生衝突。 如果您執行名為的部署， `newStorage1` 並部署名為的儲存體帳戶 `storage1` ，而且同時執行名為的另一個部署 `newStorage2` 來部署名為的儲存體帳戶 `storage2` ，則您在部署歷程記錄中會有兩個儲存體帳戶和兩個專案。
+
+若要避免與並行部署發生衝突，並確保部署歷程記錄中的唯一專案，請為每個部署提供唯一的名稱。
 
 ## <a name="deploy-remote-template"></a>部署遠端範本
 

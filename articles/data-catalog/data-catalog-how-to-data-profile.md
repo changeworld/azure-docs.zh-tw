@@ -4,13 +4,14 @@ description: 專門說明如何在 Azure 資料目錄中註冊資料來源時包
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: 698da509be2f375925459bbdd4a35d21c6ff4407
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0d0f3a45842638915947f5df04e06e2c81a7f5f1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84171220"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081180"
 ---
 # <a name="how-to-data-profile-data-sources-in-azure-data-catalog"></a>如何在 Azure 資料目錄中分析資料源的資料
 
@@ -83,7 +84,7 @@ ms.locfileid: "84171220"
 * 具有 NULL 值的資料列數目
 * 資料行的最小值、最大值、平均值和標準差值
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>總結
 
 資料分析可提供關於註冊資料資產的統計資料和資訊，以協助您判斷資料是否適合用來解決商務問題。 加上註解和記載資料來源後，資料設定檔可以讓使用者更深入了解資料。
 

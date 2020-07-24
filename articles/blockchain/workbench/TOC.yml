@@ -52,7 +52,7 @@
     - name: 傳訊 API
       href: messages-overview.md
     - name: REST API
-      href: 'https://docs.microsoft.com/rest/api/azure-blockchain-workbench'
+      href: /rest/api/azure-blockchain-workbench
 - name: 資源
   items:
     - name: 程式碼範例
@@ -60,7 +60,7 @@
     - name: 部落格
       href: 'https://azure.microsoft.com/blog/topics/blockchain/'
     - name: Microsoft 問與答頁面
-      href: 'https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html'
+      href: /answers/topics/azure-blockchain-workbench.html
     - name: 社群支援
       href: 'https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain'
     - name: 堆疊溢位支援

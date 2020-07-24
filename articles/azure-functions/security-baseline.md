@@ -7,32 +7,32 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 040eeda3edc8aa1165915a157cb7e1bdd1594740
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b8e6797d1dbbe4260f7a5b701ada887f68a88a7c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82796495"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079667"
 ---
 # <a name="azure-security-baseline-for-azure-functions"></a>適用于 Azure Functions 的 Azure 安全性基準
 
 適用于 Azure Functions 的 Azure 安全性基準包含可協助您改善部署之安全性狀態的建議。
 
-此服務的基準取自 [Azure 安全性效能評定 1.0 版](https://docs.microsoft.com/azure/security/benchmarks/overview)，其會提供如何在 Azure 上使用最佳做法指引來保護雲端解決方案的建議。
+此服務的基準取自 [Azure 安全性效能評定 1.0 版](../security/benchmarks/overview.md)，其會提供如何在 Azure 上使用最佳做法指引來保護雲端解決方案的建議。
 
-如需詳細資訊，請參閱 [Azure 安全性基準概觀](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)。
+如需詳細資訊，請參閱 [Azure 安全性基準概觀](../security/benchmarks/security-baselines-overview.md)。
 
 ## <a name="network-security"></a>網路安全性
 
-*如需詳細資訊，請參閱[安全性控制：網路安全性](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security)。*
+*如需詳細資訊，請參閱[安全性控制：網路安全性](../security/benchmarks/security-control-network-security.md)。*
 
 ### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1.1：在虛擬網路上使用網路安全性群組或 Azure 防火牆來保護資源
 
 **指引**：將您的 Azure Functions 應用程式與 Azure 虛擬網路整合。 在高階方案中執行的函式應用程式與 Azure App Service 中的 web 應用程式具有相同的裝載功能，其中包括「VNet 整合」功能。  Azure 虛擬網路可讓您將許多 Azure 資源（例如 Azure Functions）放在非網際網路可路由網路中。
 
-- [如何整合函式與 Azure 虛擬網路](https://docs.microsoft.com/azure/azure-functions/functions-create-vnet)
+- [如何整合函式與 Azure 虛擬網路](./functions-create-vnet.md)
 
-- [瞭解 Azure Functions 和 Azure App Service 的 Vnet 整合](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet)
+- [瞭解 Azure Functions 和 Azure App Service 的 Vnet 整合](../app-service/web-sites-integrate-with-vnet.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -44,11 +44,11 @@ ms.locfileid: "82796495"
 
 如果搭配使用網路安全性群組（Nsg）與 Azure Functions 的執行，請啟用 NSG 流量記錄，並將記錄傳送到 Azure 儲存體帳戶以進行流量審核。 您也可將 NSG 流量記錄傳送到 Log Analytics 工作區，並使用流量分析來提供對 Azure 雲端流量的見解。 流量分析的優點包括能將網路活動視覺化並找出作用點、識別安全性威脅、了解流量模式並找到錯誤的網路設定。
 
-- [瞭解 Azure 資訊安全中心所提供的網路安全性](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)
+- [瞭解 Azure 資訊安全中心所提供的網路安全性](../security-center/security-center-network-recommendations.md)
 
-- [如何啟用 NSG 流量記錄](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+- [如何啟用 NSG 流量記錄](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-- [如何啟用及使用流量分析](https://docs.microsoft.com/azure/network-watcher/traffic-analytics)
+- [如何啟用及使用流量分析](../network-watcher/traffic-analytics.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -65,9 +65,9 @@ ms.locfileid: "82796495"
 
 請考慮將 Azure Web 應用程式防火牆（WAF）部署為網路設定的一部分，以額外檢查傳入流量。 啟用診斷設定以進行 WAF，並將記錄內嵌至儲存體帳戶、事件中樞或 Log Analytics 工作區。 
 
-- [如何保護生產環境中的 Azure 函數端點](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook-trigger?tabs=csharp#secure-an-http-endpoint-in-production)
+- [如何保護生產環境中的 Azure 函數端點](./functions-bindings-http-webhook-trigger.md?tabs=csharp#secure-an-http-endpoint-in-production)
 
-- [如何部署 Azure WAF](https://docs.microsoft.com/azure/web-application-firewall/ag/create-waf-policy-ag)
+- [如何部署 Azure WAF](../web-application-firewall/ag/create-waf-policy-ag.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -78,25 +78,25 @@ ms.locfileid: "82796495"
 **指引**：在與您的函式應用程式相關聯的虛擬網路上啟用 Ddos 保護標準，以防範 ddos 攻擊。 使用 Azure 資訊安全中心的整合式威脅情報來拒絕與已知惡意或未使用的公開 IP 位址通訊。
 此外，設定前端閘道（例如 Azure Web 應用程式防火牆），以驗證所有傳入要求並篩選出惡意流量。 Azure Web 應用程式防火牆可以藉由檢查輸入的 Web 流量來封鎖 SQL 插入、跨網站腳本、惡意程式碼上傳和 DDoS 攻擊，協助保護您的 Azure 函數應用程式。 引進 WAF 需要 App Service 環境或使用私用端點（預覽）。 在搭配生產工作負載使用之前，請確定私人端點已不再處於（預覽）狀態。
 
-- [Azure Functions 網路選項](https://docs.microsoft.com/azure/azure-functions/functions-networking-options)
+- [Azure Functions 網路選項](./functions-networking-options.md)
 
-- [Azure Functions Premium 方案](https://docs.microsoft.com/azure/azure-functions/functions-scale#premium-plan)
+- [Azure Functions Premium 方案](./functions-scale.md#premium-plan)
 
-- [App Service 環境簡介](https://docs.microsoft.com/azure/app-service/environment/intro)
+- [App Service 環境簡介](../app-service/environment/intro.md)
 
-- [App Service 環境的網路考量](https://docs.microsoft.com/azure/app-service/environment/network-info)
+- [App Service 環境的網路考量](../app-service/environment/network-info.md)
 
-- [如何設定 DDoS 保護](https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection)
+- [如何設定 DDoS 保護](../virtual-network/manage-ddos-protection.md)
 
-- [如何部署 Azure 防火牆](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
+- [如何部署 Azure 防火牆](../firewall/tutorial-firewall-deploy-portal.md)
 
-- [了解 Azure 資訊安全中心的整合式威脅情報](https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer)
+- [了解 Azure 資訊安全中心的整合式威脅情報](../security-center/threat-protection.md)
 
-- [瞭解 Azure 資訊安全中心的彈性網路強化](https://docs.microsoft.com/azure/security-center/security-center-adaptive-network-hardening)
+- [瞭解 Azure 資訊安全中心的彈性網路強化](../security-center/security-center-adaptive-network-hardening.md)
 
-- [瞭解 Azure 資訊安全中心及時網路存取控制](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)
+- [瞭解 Azure 資訊安全中心及時網路存取控制](../security-center/security-center-just-in-time.md)
 
-- [使用 Azure Functions 的私用端點](https://docs.microsoft.com/azure/app-service/networking/private-endpoint)
+- [使用 Azure Functions 的私用端點](../app-service/networking/private-endpoint.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -106,11 +106,11 @@ ms.locfileid: "82796495"
 
 **指導**方針：如果搭配使用網路安全性群組（nsg）與 Azure Functions 的執行，請啟用網路安全性群組流量記錄，並將記錄傳送到儲存體帳戶以進行流量審核。 您也可以將流量記錄傳送到 Log Analytics 工作區，並使用「流量分析」來提供 Azure 雲端流量的見解。 流量分析的優點包括能將網路活動視覺化並找出作用點、識別安全性威脅、了解流量模式，並且找到網路設定的錯誤。
 
-- [如何啟用 NSG 流量記錄](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+- [如何啟用 NSG 流量記錄](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-- [如何啟用及使用流量分析](https://docs.microsoft.com/azure/network-watcher/traffic-analytics)
+- [如何啟用及使用流量分析](../network-watcher/traffic-analytics.md)
 
-- [如何啟用網路監看員](https://docs.microsoft.com/azure/network-watcher/network-watcher-create)
+- [如何啟用網路監看員](../network-watcher/network-watcher-create.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -122,19 +122,19 @@ ms.locfileid: "82796495"
 
 或者，有多個 marketplace 選項，如 Barracuda WAF for Azure，其可在包含 IDS/IPS 功能的 Azure Marketplace 上取得。
 
-- [Azure Functions 網路選項](https://docs.microsoft.com/azure/azure-functions/functions-networking-options)
+- [Azure Functions 網路選項](./functions-networking-options.md)
 
-- [Azure Functions Premium 方案](https://docs.microsoft.com/azure/azure-functions/functions-scale#premium-plan)
+- [Azure Functions Premium 方案](./functions-scale.md#premium-plan)
 
-- [App Service 環境簡介](https://docs.microsoft.com/azure/app-service/environment/intro)
+- [App Service 環境簡介](../app-service/environment/intro.md)
 
-- [App Service 環境的網路考量](https://docs.microsoft.com/azure/app-service/environment/network-info)
+- [App Service 環境的網路考量](../app-service/environment/network-info.md)
 
-- [瞭解 Azure Web 應用程式防火牆](https://docs.microsoft.com/azure/application-gateway/overview#web-application-firewall)
+- [瞭解 Azure Web 應用程式防火牆](../web-application-firewall/index.yml)
 
-- [使用 Azure Functions 的私用端點](https://docs.microsoft.com/azure/app-service/networking/private-endpoint)
+- [使用 Azure Functions 的私用端點](../app-service/networking/private-endpoint.md)
 
-- [瞭解 Barracuda WAF 雲端服務](https://docs.microsoft.com/azure/app-service/environment/app-service-app-service-environment-web-application-firewall#configuring-your-barracuda-waf-cloud-service)
+- [瞭解 Barracuda WAF 雲端服務](../app-service/environment/app-service-app-service-environment-web-application-firewall.md#configuring-your-barracuda-waf-cloud-service)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -144,19 +144,19 @@ ms.locfileid: "82796495"
 
 **指導**方針：為您的網路設定前端閘道，例如具有端對端 TLS 加密的 Azure Web 應用程式防火牆。 引進 WAF 需要 App Service 環境或使用私用端點（預覽）。 在搭配生產工作負載使用之前，請確定私人端點已不再處於（預覽）狀態。
 
-- [Azure Functions 網路選項](https://docs.microsoft.com/azure/azure-functions/functions-networking-options)
+- [Azure Functions 網路選項](./functions-networking-options.md)
 
-- [Azure Functions Premium 方案](https://docs.microsoft.com/azure/azure-functions/functions-scale#premium-plan)
+- [Azure Functions Premium 方案](./functions-scale.md#premium-plan)
 
-- [App Service 環境簡介](https://docs.microsoft.com/azure/app-service/environment/intro)
+- [App Service 環境簡介](../app-service/environment/intro.md)
 
-- [App Service 環境的網路考量](https://docs.microsoft.com/azure/app-service/environment/network-info)
+- [App Service 環境的網路考量](../app-service/environment/network-info.md)
 
-- [瞭解 Azure Web 應用程式防火牆](https://docs.microsoft.com/azure/application-gateway/overview#web-application-firewall)
+- [瞭解 Azure Web 應用程式防火牆](../web-application-firewall/index.yml)
 
-- [如何透過入口網站使用應用程式閘道設定端對端 TLS](https://docs.microsoft.com/azure/application-gateway/end-to-end-ssl-portal)
+- [如何透過入口網站使用應用程式閘道設定端對端 TLS](../application-gateway/end-to-end-ssl-portal.md)
 
-- [使用 Azure Functions 的私用端點](https://docs.microsoft.com/azure/app-service/networking/private-endpoint)
+- [使用 Azure Functions 的私用端點](../app-service/networking/private-endpoint.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -166,7 +166,7 @@ ms.locfileid: "82796495"
 
 **指引**：使用虛擬網路服務標籤來定義網路安全性群組或 Azure 防火牆上的網路存取控制。 建立安全性規則時，您可以使用服務標籤取代特定的 IP 位址。 藉由在規則的適當 [來源] 或 [目的地] 欄位中指定服務標籤名稱（例如，AzureAppService），您可以允許或拒絕對應服務的流量。 Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更自動更新服務標籤。
 
-- [如需使用服務標記的詳細資訊](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)
+- [如需使用服務標記的詳細資訊](../virtual-network/service-tags-overview.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -181,9 +181,9 @@ ms.locfileid: "82796495"
 
 您也可以使用 Azure 藍圖，在單一藍圖定義中封裝金鑰環境成品 (例如 Azure Resource Manager 範本、角色型存取控制 (RBAC) 和原則)，以簡化大規模的 Azure 部署。 您可以輕鬆地將藍圖套用至新的訂用帳戶、環境，以及透過版本控制來微調控制和管理。
 
-- [如何設定和管理 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
-- [如何建立 Azure 藍圖](https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal)
+- [如何建立 Azure 藍圖](../governance/blueprints/create-blueprint-portal.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -197,7 +197,7 @@ ms.locfileid: "82796495"
 
 您可使用 Azure PowerShell 或 Azure CLI，根以據資源的標籤對資源進行查詢或執行動作。
 
-- [如何建立和使用標籤](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -207,9 +207,9 @@ ms.locfileid: "82796495"
 
 **指引**：使用 Azure 活動記錄來監視網路資源設定，以及偵測與您的 Azure Functions 部署相關之網路設定和資源的變更。 在 Azure 監視器中建立警示，以在重大網路設定或資源的變更發生時觸發。 
 
-- [如何檢視及擷取 Azure 活動記錄事件](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)
+- [如何檢視及擷取 Azure 活動記錄事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
-- [如何在 Azure 監視器中建立警示](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+- [如何在 Azure 監視器中建立警示](../azure-monitor/platform/alerts-activity-log.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -217,7 +217,7 @@ ms.locfileid: "82796495"
 
 ## <a name="logging-and-monitoring"></a>記錄和監視
 
-*如需詳細資訊，請參閱[安全性控制：記錄和監視](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring)。*
+*如需詳細資訊，請參閱[安全性控制：記錄和監視](../security/benchmarks/security-control-logging-monitoring.md)。*
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2.1：使用已核准的時間同步處理來源
 
@@ -237,13 +237,13 @@ Azure Functions 也提供與 Azure 應用程式 Insights 的內建整合，以�
 
 (選擇性) 您可啟用 Azure Sentinel 或第三方 SIEM，並且讓資料上線。 
 
-- [如何啟用 Azure 活動記錄的診斷設定](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy)
+- [如何啟用 Azure 活動記錄的診斷設定](../azure-monitor/platform/activity-log.md)
 
-- [如何使用 Azure 應用程式 Insights 設定 Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-monitoring)
+- [如何使用 Azure 應用程式 Insights 設定 Azure Functions](./functions-monitoring.md)
 
-- [如何啟用 Azure Functions 的診斷設定（使用者產生的記錄）](https://docs.microsoft.com/azure/azure-functions/functions-monitor-log-analytics)
+- [如何啟用 Azure Functions 的診斷設定（使用者產生的記錄）](./functions-monitor-log-analytics.md)
 
-- [如何使 Azure Sentinel 上線](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+- [如何使 Azure Sentinel 上線](../sentinel/quickstart-onboard.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -255,9 +255,9 @@ Azure Functions 也提供與 Azure 應用程式 Insights 的內建整合，以�
 
 如果您在 Azure 函數應用程式中有內建的自訂安全性/審核記錄，請啟用診斷設定 "FunctionAppLogs"，並將記錄傳送到 Log Analytics 工作區、Azure 事件中樞或 Azure 儲存體帳戶進行封存。 
 
-- [如何啟用 Azure 活動記錄的診斷設定](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy)
+- [如何啟用 Azure 活動記錄的診斷設定](../azure-monitor/platform/activity-log.md)
 
-- [如何啟用 Azure Functions 的診斷設定（使用者產生的記錄）](https://docs.microsoft.com/azure/azure-functions/functions-monitor-log-analytics)
+- [如何啟用 Azure Functions 的診斷設定（使用者產生的記錄）](./functions-monitor-log-analytics.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -275,7 +275,7 @@ Azure Functions 也提供與 Azure 應用程式 Insights 的內建整合，以�
 
 **指引**：在 Azure 監視器中，根據貴組織的合規性規定，設定與您的 Azure Functions 應用程式相關聯之 log Analytics 工作區的記錄保留週期。
 
-- [如何設定記錄檔保留參數](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [如何設定記錄檔保留參數](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -291,13 +291,13 @@ Azure Functions 也提供與 Azure 應用程式 Insights 的內建整合，以�
 
 (選擇性) 您可啟用 Azure Sentinel 或第三方 SIEM，並且讓資料上線。 
 
-- [如何啟用 Azure 活動記錄的診斷設定](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy)
+- [如何啟用 Azure 活動記錄的診斷設定](../azure-monitor/platform/activity-log.md)
 
-- [如何啟用 Azure Functions 的診斷設定](https://docs.microsoft.com/azure/azure-functions/functions-monitor-log-analytics)
+- [如何啟用 Azure Functions 的診斷設定](./functions-monitor-log-analytics.md)
 
-- [如何使用 Azure 應用程式 Insights 設定 Azure Functions 並查看遙測資料](https://docs.microsoft.com/azure/azure-functions/functions-monitoring)
+- [如何使用 Azure 應用程式 Insights 設定 Azure Functions 並查看遙測資料](./functions-monitoring.md)
 
-- [如何讓 Azure Sentinel 上線](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+- [如何讓 Azure Sentinel 上線](../sentinel/quickstart-onboard.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -311,15 +311,15 @@ Azure Functions 也提供與 Azure 應用程式 Insights 的內建整合，以�
 
 (選擇性) 您可啟用 Azure Sentinel 或第三方 SIEM，並且讓資料上線。 
 
-- [如何啟用 Azure 活動記錄的診斷設定](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy)
+- [如何啟用 Azure 活動記錄的診斷設定](../azure-monitor/platform/activity-log.md)
 
-- [如何啟用 Azure Functions 的診斷設定](https://docs.microsoft.com/azure/azure-functions/functions-monitor-log-analytics)
+- [如何啟用 Azure Functions 的診斷設定](./functions-monitor-log-analytics.md)
 
-- [如何啟用 Azure Functions 的 Application Insights](https://docs.microsoft.com/azure/azure-functions/functions-monitoring#enable-application-insights-integration)
+- [如何啟用 Azure Functions 的 Application Insights](./functions-monitoring.md#enable-application-insights-integration)
 
-- [如何在 Azure 中建立警示](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response)
+- [如何在 Azure 中建立警示](../azure-monitor/learn/tutorial-response.md)
 
-- [如何讓 Azure Sentinel 上線](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+- [如何讓 Azure Sentinel 上線](../sentinel/quickstart-onboard.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -351,15 +351,15 @@ Azure Functions 也提供與 Azure 應用程式 Insights 的內建整合，以�
 
 ## <a name="identity-and-access-control"></a>身分識別與存取控制
 
-*如需詳細資訊，請參閱[安全性控制：身分識別與存取控制](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control)。*
+*如需詳細資訊，請參閱[安全性控制：身分識別與存取控制](../security/benchmarks/security-control-identity-access-control.md)。*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1：維護系統管理帳戶的詳細目錄
 
 **指導**方針： AZURE ACTIVE DIRECTORY （AD）具有必須明確指派且可查詢的內建角色。 使用 Azure AD PowerShell 模組來執行臨機操作查詢，以探索屬於系統管理群組成員的帳戶。 
 
-- [如何使用 PowerShell 取得 Azure AD 中的目錄角色](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+- [如何使用 PowerShell 取得 Azure AD 中的目錄角色](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
-- [如何使用 PowerShell 在 Azure AD 中取得目錄角色的成員](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+- [如何使用 PowerShell 在 Azure AD 中取得目錄角色的成員](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
 **Azure 資訊安全中心監視**：是
 
@@ -373,11 +373,11 @@ Azure Functions 也提供與 Azure 應用程式 Insights 的內建整合，以�
 
 函式應用程式可使用多個部署方法，其中一些可以利用一組產生的認證。 檢查將用於您應用程式的部署方法。
 
-- [保護 HTTP 端點](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook-trigger?tabs=csharp#secure-an-http-endpoint-in-production)
+- [保護 HTTP 端點](./functions-bindings-http-webhook-trigger.md?tabs=csharp#secure-an-http-endpoint-in-production)
 
-- [如何取得及重新產生授權金鑰](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook-trigger?tabs=csharp#obtaining-keys)
+- [如何取得及重新產生授權金鑰](./functions-bindings-http-webhook-trigger.md?tabs=csharp#obtaining-keys)
 
-- [Azure Functions 中的部署技術](https://docs.microsoft.com/azure/azure-functions/functions-deployment-technologies)
+- [Azure Functions 中的部署技術](./functions-deployment-technologies.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -389,9 +389,9 @@ Azure Functions 也提供與 Azure 應用程式 Insights 的內建整合，以�
 
 此外，為了協助您追蹤專用的系統管理帳戶，您可以使用來自 Azure 資訊安全中心或內建 Azure 原則的建議，例如：應該從您的訂用帳戶移除具有擁有者許可權之已淘汰帳戶的多個擁有者
 
-- [如何使用 Azure 資訊安全中心來監視身分識別和存取 (預覽)](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+- [如何使用 Azure 資訊安全中心來監視身分識別和存取 (預覽)](../security-center/security-center-identity-access.md)
 
-- [如何使用 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [如何使用 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -401,9 +401,9 @@ Azure Functions 也提供與 Azure 應用程式 Insights 的內建整合，以�
 
 **指導**方針：盡可能使用 Azure Active Directory SSO，而不是設定個別的獨立認證來存取函數應用程式的資料。 使用 Azure 資訊安全中心身分識別和存取管理建議。 使用 App Service 驗證/授權功能，為您的 Azure Functions 應用程式執行單一登入。
 
-- [瞭解 Azure Functions 中的驗證和授權](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization#identity-providers)
+- [瞭解 Azure Functions 中的驗證和授權](../app-service/overview-authentication-authorization.md#identity-providers)
 
-- [瞭解使用 Azure AD 的 SSO](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [瞭解使用 Azure AD 的 SSO](../active-directory/manage-apps/what-is-single-sign-on.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -413,9 +413,9 @@ Azure Functions 也提供與 Azure 應用程式 Insights 的內建整合，以�
 
 **指引**：啟用 Azure Active Directory (AD) 多重要素驗證 (MFA)，並遵循 Azure 資訊安全中心的身分識別與存取管理建議。
 
-- [如何在 Azure 中啟用 MFA](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+- [如何在 Azure 中啟用 MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 
-- [如何在 Azure 資訊安全中心監視身分識別和存取](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+- [如何在 Azure 資訊安全中心監視身分識別和存取](../security-center/security-center-identity-access.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -425,9 +425,9 @@ Azure Functions 也提供與 Azure 應用程式 Insights 的內建整合，以�
 
 **指引**：使用已設定多重要素驗證 (MFA) 的特殊權限存取工作站 (PAW) 來登入和設定 Azure 資源。
 
-- [了解特殊權限存取工作站](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+- [了解特殊權限存取工作站](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
 
-- [如何在 Azure 中啟用 MFA](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+- [如何在 Azure 中啟用 MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -439,9 +439,9 @@ Azure Functions 也提供與 Azure 應用程式 Insights 的內建整合，以�
 
 此外，使用 Azure AD 風險偵測來檢視有風險的使用者行為相關警示和報告。
 
-- [如何部署 Privileged Identity Management (PIM)](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan)
+- [如何部署 Privileged Identity Management (PIM)](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-- [了解 Azure AD 風險偵測](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events)
+- [了解 Azure AD 風險偵測](../active-directory/identity-protection/overview-identity-protection.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -451,7 +451,7 @@ Azure Functions 也提供與 Azure 應用程式 Insights 的內建整合，以�
 
 **指引**：使用條件式存取具名位置，只允許從 IP 位址範圍或國家/區域的特定邏輯群組存取 Azure 入口網站。
 
-- [如何在 Azure 中設定具名位置](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
+- [如何在 Azure 中設定具名位置](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -461,9 +461,9 @@ Azure Functions 也提供與 Azure 應用程式 Insights 的內建整合，以�
 
 **指引**：使用 AZURE ACTIVE DIRECTORY （AD）做為您 Azure Functions 應用程式的集中驗證和授權系統。 Azure AD 會對待用資料和傳輸中資料使用增強式加密，以保護資料安全。 Azure AD 也會對使用者認證進行 Salt 處理、雜湊處理並安全儲存資料。
 
-- [如何設定 Azure Functions 應用程式以使用 Azure AD 登入](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-aad)
+- [如何設定 Azure Functions 應用程式以使用 Azure AD 登入](../app-service/configure-authentication-provider-aad.md)
 
-- [如何建立和設定 AAD 執行個體](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
+- [如何建立和設定 AAD 執行個體](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -473,9 +473,9 @@ Azure Functions 也提供與 Azure 應用程式 Insights 的內建整合，以�
 
 **指引**： AZURE ACTIVE DIRECTORY （AD）提供可協助您探索過時帳戶的記錄檔。 此外，您可以使用 Azure 身分識別存取審查來有效率地管理群組成員資格、企業應用程式的存取權，以及角色指派。 您可以定期檢閱使用者的存取權，以確定只有適當的使用者具有持續存取權。 
 
-- [瞭解 Azure AD 報告](https://docs.microsoft.com/azure/active-directory/reports-monitoring/)
+- [瞭解 Azure AD 報告](../active-directory/reports-monitoring/index.yml)
 
-- [如何使用 Azure 身分識別存取權檢閱](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
+- [如何使用 Azure 身分識別存取權檢閱](../active-directory/governance/access-reviews-overview.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -489,11 +489,11 @@ Azure Functions 也提供與 Azure 應用程式 Insights 的內建整合，以�
 
 若要簡化此程式，您可以建立 Azure AD 使用者帳戶的診斷設定，並將 audit 記錄和登入記錄傳送到 Log Analytics 工作區。 您可以在 Log Analytics 中設定所需的記錄警示。
 
-- [如何設定 Azure Functions 應用程式以使用 Azure AD 登入](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-aad)
+- [如何設定 Azure Functions 應用程式以使用 Azure AD 登入](../app-service/configure-authentication-provider-aad.md)
 
-- [如何將 Azure 活動記錄整合到 Azure 監視器中](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [如何將 Azure 活動記錄整合到 Azure 監視器中](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-- [如何讓 Azure Sentinel 上線](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+- [如何讓 Azure Sentinel 上線](../sentinel/quickstart-onboard.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -503,11 +503,11 @@ Azure Functions 也提供與 Azure 應用程式 Insights 的內建整合，以�
 
 **指引**：使用 AZURE ACTIVE DIRECTORY （AD）做為您 Azure Functions 應用程式的集中驗證和授權系統。 如需控制平面（Azure 入口網站）上的帳戶登入行為偏差，請使用 Azure Active Directory （AD） Identity Protection 和風險偵測功能，為偵測到與使用者身分識別相關的可疑動作設定自動回應。 您也可將資料內嵌到 Azure Sentinel 中，以便進一步調查。
 
-- [如何檢視有風險的 Azure AD 登入](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [如何檢視有風險的 Azure AD 登入](../active-directory/identity-protection/overview-identity-protection.md)
 
-- [如何設定和啟用身分識別保護風險原則](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies)
+- [如何設定和啟用身分識別保護風險原則](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
-- [如何使 Azure Sentinel 上線](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+- [如何使 Azure Sentinel 上線](../sentinel/quickstart-onboard.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -517,7 +517,7 @@ Azure Functions 也提供與 Azure 應用程式 Insights 的內建整合，以�
 
 **指導**方針：目前無法使用;客戶加密箱目前不支援 Azure Functions。
 
-- [客戶加密箱支援的服務清單](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
+- [客戶加密箱支援的服務清單](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -525,13 +525,13 @@ Azure Functions 也提供與 Azure 應用程式 Insights 的內建整合，以�
 
 ## <a name="data-protection"></a>資料保護
 
-*如需詳細資訊，請參閱[安全性控制：資料保護](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)。*
+*如需詳細資訊，請參閱[安全性控制：資料保護](../security/benchmarks/security-control-data-protection.md)。*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1：維護敏感性資訊的詳細目錄
 
 **指引**：使用標籤協助追蹤可儲存或處理敏感性資訊的 Azure 資源。
 
-- [如何建立和使用標籤](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -543,19 +543,19 @@ Azure Functions 也提供與 Azure 應用程式 Insights 的內建整合，以�
 
 您也可以使用私人端點來執行網路隔離。 Azure 私用端點是一種網路介面，可讓您私下且安全地連線至 Azure 私用連結所支援的服務（例如： Azure Functions 應用程式 HTTPs 端點）。 私人端點會使用您 VNet 中的私人 IP 位址，有效地將服務帶入您的 VNet 中。 在高階方案中執行的函式應用程式的私人端點處於（預覽）狀態。 在搭配生產工作負載使用之前，請確定私人端點已不再處於（預覽）狀態。
 
-- [如何建立額外的 Azure 訂閱](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+- [如何建立額外的 Azure 訂閱](../cost-management-billing/manage/create-subscription.md)
 
-- [如何建立管理群組](https://docs.microsoft.com/azure/governance/management-groups/create)
+- [如何建立管理群組](../governance/management-groups/create.md)
 
-- [如何建立和使用標籤](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
-- [Azure Functions 網路選項](https://docs.microsoft.com/azure/azure-functions/functions-networking-options)
+- [Azure Functions 網路選項](./functions-networking-options.md)
 
-- [Azure Functions Premium 方案](https://docs.microsoft.com/azure/azure-functions/functions-scale#premium-plan)
+- [Azure Functions Premium 方案](./functions-scale.md#premium-plan)
 
-- [瞭解私用端點](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)
+- [瞭解私用端點](../private-link/private-endpoint-overview.md)
 
-- [使用 Azure Functions 的私用端點](https://docs.microsoft.com/azure/app-service/networking/private-endpoint)
+- [使用 Azure Functions 的私用端點](../app-service/networking/private-endpoint.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -567,7 +567,7 @@ Azure Functions 也提供與 Azure 應用程式 Insights 的內建整合，以�
 
 Microsoft 會管理 Azure Functions 的基礎結構，並已實行嚴格的控制，以避免遺失或公開客戶資料。
 
-- [瞭解 Azure 中的客戶資料保護](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+- [瞭解 Azure 中的客戶資料保護](../security/fundamentals/protection-customer-data.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -587,7 +587,7 @@ Microsoft 會管理 Azure Functions 的基礎結構，並已實行嚴格的控�
 
 針對 Microsoft 管理的基礎平台，Microsoft 會將所有客戶內容視為敏感性資訊，並竭盡全力防範客戶資料外洩和暴露。 為了確保 Azure 中的客戶資料安全無虞，Microsoft 已實作並維護一套強大的資料保護控制項和功能。
 
-- [瞭解 Azure 中的客戶資料保護](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+- [瞭解 Azure 中的客戶資料保護](../security/fundamentals/protection-customer-data.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -597,7 +597,7 @@ Microsoft 會管理 Azure Functions 的基礎結構，並已實行嚴格的控�
 
 **指引**：使用 AZURE ACTIVE DIRECTORY （AD）角色型存取控制（RBAC）來控制 Azure Function 控制平面（Azure 入口網站）的存取權。 
 
-- [如何在 Azure 中設定 RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+- [如何在 Azure 中設定 RBAC](../role-based-access-control/role-assignments-portal.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -609,7 +609,7 @@ Microsoft 會管理 Azure Functions 的基礎結構，並已實行嚴格的控�
 
 Microsoft 會管理 Azure Functions 的基礎結構，並已實行嚴格的控制，以避免遺失或公開客戶資料。
 
-- [瞭解 Azure 中的客戶資料保護](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+- [瞭解 Azure 中的客戶資料保護](../security/fundamentals/protection-customer-data.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -619,9 +619,9 @@ Microsoft 會管理 Azure Functions 的基礎結構，並已實行嚴格的控�
 
 **指引**：建立函數應用程式時，您必須建立或連結至支援 Blob、佇列和資料表儲存體的一般用途 Azure 儲存體帳戶。 這是因為 Functions 依賴「Azure 儲存體」來進行作業，例如管理觸發程序和記錄函數執行。 Azure 儲存體會加密待用儲存體帳戶中的所有資料。 根據預設，資料是以使用 Microsoft 管理的金鑰加密。 若要進一步控制加密金鑰，您可以提供客戶管理的金鑰來加密 blob 和檔案資料。 這些金鑰必須存在於 Azure Key Vault 中，函數應用程式才能存取儲存體帳戶。
 
-- [瞭解 Azure Functions 的儲存體考慮](https://docs.microsoft.com/azure/azure-functions/storage-considerations)
+- [瞭解 Azure Functions 的儲存體考慮](./storage-considerations.md)
 
-- [瞭解待用資料的 Azure 儲存體加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)
+- [瞭解待用資料的 Azure 儲存體加密](../storage/common/storage-service-encryption.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -631,7 +631,7 @@ Microsoft 會管理 Azure Functions 的基礎結構，並已實行嚴格的控�
 
 **指引**：使用 Azure 監視器搭配 Azure 活動記錄，以針對生產 Azure 函式應用程式以及其他重要或相關資源進行變更時，建立警示。
 
-- [如何建立 Azure 活動記錄事件的警示](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+- [如何建立 Azure 活動記錄事件的警示](../azure-monitor/platform/alerts-activity-log.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -639,7 +639,7 @@ Microsoft 會管理 Azure Functions 的基礎結構，並已實行嚴格的控�
 
 ## <a name="vulnerability-management"></a>弱點管理
 
-*如需詳細資訊，請參閱[安全性控制：弱點管理](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management)。*
+*如需詳細資訊，請參閱[安全性控制：弱點管理](../security/benchmarks/security-control-vulnerability-management.md)。*
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1：執行自動化弱點掃描工具
 
@@ -647,9 +647,9 @@ Microsoft 會管理 Azure Functions 的基礎結構，並已實行嚴格的控�
 
 此外，請遵循 Azure 資訊安全中心的建議，以協助保護您的 Azure 函數應用程式。
 
-- [如何將連續安全性驗證新增至您的 CI/CD 管線](https://docs.microsoft.com/azure/devops/migrate/security-validation-cicd-pipeline?view=azure-devops)
+- [如何將連續安全性驗證新增至您的 CI/CD 管線](/azure/devops/migrate/security-validation-cicd-pipeline?view=azure-devops)
 
-- [如何實行 Azure 資訊安全中心弱點評估建議](https://docs.microsoft.com/azure/security-center/security-center-vulnerability-assessment-recommendations)
+- [如何實行 Azure 資訊安全中心弱點評估建議](../security-center/security-center-vulnerability-assessment-recommendations.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -683,7 +683,7 @@ Microsoft 會管理 Azure Functions 的基礎結構，並已實行嚴格的控�
 
 **指導**方針： Microsoft 會在支援 Azure Functions 的基礎系統上執行弱點管理，不過，您可以使用 Azure 資訊安全中心內的建議嚴重性，以及在您的環境內測量風險的安全分數。 您的安全分數是根據您已緩和的資訊安全中心建議數而定。 若要優先處理建議以解決問題，請考慮每一個的嚴重性。
 
-- [安全性建議參考指南](https://docs.microsoft.com/azure/security-center/recommendations-reference)
+- [安全性建議參考指南](../security-center/recommendations-reference.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -691,7 +691,7 @@ Microsoft 會管理 Azure Functions 的基礎結構，並已實行嚴格的控�
 
 ## <a name="inventory-and-asset-management"></a>清查和資產管理
 
-*如需詳細資訊，請參閱[安全性控制：清查和資產管理](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management)。*
+*如需詳細資訊，請參閱[安全性控制：清查和資產管理](../security/benchmarks/security-control-inventory-asset-management.md)。*
 
 ### <a name="61-use-azure-asset-discovery"></a>6.1：使用 Azure 資產探索
 
@@ -699,11 +699,11 @@ Microsoft 會管理 Azure Functions 的基礎結構，並已實行嚴格的控�
 
 雖然可透過 Resource Graph 探索傳統 Azure 資源，但強烈建議您從現在開始建立並使用 Azure Resource Manager 資源。
 
-- [如何使用 Azure Resource Graph 建立查詢](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+- [如何使用 Azure Resource Graph 建立查詢](../governance/resource-graph/first-query-portal.md)
 
-- [如何檢視您的 Azure 訂用帳戶](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+- [如何檢視您的 Azure 訂用帳戶](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
-- [了解 Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
+- [了解 Azure RBAC](../role-based-access-control/overview.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -713,7 +713,7 @@ Microsoft 會管理 Azure Functions 的基礎結構，並已實行嚴格的控�
 
 **指引**：將標籤套用至提供中繼資料的 Azure 資源，以邏輯方式依分類組織這些資源。
 
-- [如何建立和使用標籤](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -725,11 +725,11 @@ Microsoft 會管理 Azure Functions 的基礎結構，並已實行嚴格的控�
 
 此外，您也可以使用 Azure 原則，對使用下列內建原則定義在客戶訂用帳戶中建立的資源類型施加限制：不允許的資源類型允許的資源類型
 
-- [如何建立額外的 Azure 訂閱](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+- [如何建立額外的 Azure 訂閱](../cost-management-billing/manage/create-subscription.md)
 
-- [如何建立管理群組](https://docs.microsoft.com/azure/governance/management-groups/create)
+- [如何建立管理群組](../governance/management-groups/create.md)
 
-- [如何建立和使用標籤](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -749,9 +749,9 @@ Microsoft 會管理 Azure Functions 的基礎結構，並已實行嚴格的控�
 
 使用 Azure Resource Graph 來查詢/探索其訂閱內的資源。  確保已核准環境中的所有 Azure 資源。 
 
-- [如何設定和管理 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
-- [如何使用 Azure Graph 建立查詢](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+- [如何使用 Azure Graph 建立查詢](../governance/resource-graph/first-query-portal.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -785,9 +785,9 @@ Microsoft 會管理 Azure Functions 的基礎結構，並已實行嚴格的控�
 
 **指引**：使用 Azure 原則來對可使用下列內建原則定義在客戶訂用帳戶中建立的資源類型施加限制：不允許的資源類型允許的資源類型
 
-- [如何設定和管理 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
-- [如何使用 Azure 原則拒絕特定的資源類型](https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types)
+- [如何使用 Azure 原則拒絕特定的資源類型](/azure/governance/policy/samples/not-allowed-resource-types)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -805,7 +805,7 @@ Microsoft 會管理 Azure Functions 的基礎結構，並已實行嚴格的控�
 
 **指引**：設定 Azure 條件式存取，以藉由對「Microsoft Azure 管理」應用程式設定「封鎖存取」，限制使用者與 Azure Resource Manager 互動的能力。
 
-- [如何設定條件式存取以封鎖 Azure Resource Manager 的存取](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
+- [如何設定條件式存取以封鎖 Azure Resource Manager 的存取](../role-based-access-control/conditional-access-azure-management.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -825,19 +825,19 @@ Microsoft 會管理 Azure Functions 的基礎結構，並已實行嚴格的控�
 
 將高風險的 Azure 函式應用程式部署至自己的虛擬網路（VNet）。 Azure Functions 中的周邊安全性是透過 Vnet 來達成。 高階計畫或 App Service 環境（ASE）中執行的函式可以與 Vnet 整合。 為您的使用案例選擇最佳的架構。
 
-- [Azure Functions 網路選項](https://docs.microsoft.com/azure/azure-functions/functions-networking-options)
+- [Azure Functions 網路選項](./functions-networking-options.md)
 
-- [Azure Functions Premium 方案](https://docs.microsoft.com/azure/azure-functions/functions-scale#premium-plan)
+- [Azure Functions Premium 方案](./functions-scale.md#premium-plan)
 
-- [App Service 環境的網路考量](https://docs.microsoft.com/azure/app-service/environment/network-info)
+- [App Service 環境的網路考量](../app-service/environment/network-info.md)
 
-- [如何建立外部 ASE](https://docs.microsoft.com/azure/app-service/environment/create-external-ase)
+- [如何建立外部 ASE](../app-service/environment/create-external-ase.md)
 
 如何建立內部 ASE：
 
-- [https://docs.microsoft.com/azure/app-service/environment/create-ilb-as](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+- [https://docs.microsoft.com/azure/app-service/environment/create-ilb-as](../virtual-network/quick-create-portal.md)
 
-- [如何建立具有安全性設定的 NSG](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+- [如何建立具有安全性設定的 NSG](../virtual-network/tutorial-filter-network-traffic.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -845,7 +845,7 @@ Microsoft 會管理 Azure Functions 的基礎結構，並已實行嚴格的控�
 
 ## <a name="secure-configuration"></a>安全設定
 
-*如需詳細資訊，請參閱[安全性控制：安全設定](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration)。*
+*如需詳細資訊，請參閱[安全性控制：安全設定](../security/benchmarks/security-control-secure-configuration.md)。*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1：為所有 Azure 資源建立安全設定
 
@@ -854,9 +854,9 @@ Microsoft 會管理 Azure Functions 的基礎結構，並已實行嚴格的控�
 - 函式應用程式的遠端偵錯應關閉
 - 函式應用程式應只可經由 HTTPS 存取
 
-- [如何檢視可用的 Azure 原則別名](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+- [如何檢視可用的 Azure 原則別名](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
-- [如何設定和管理 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -874,9 +874,9 @@ Microsoft 會管理 Azure Functions 的基礎結構，並已實行嚴格的控�
 
 **指引**：使用 azure 原則 [拒絕] 和 [不存在時部署]，在您的 Azure 資源上強制執行安全設定。
 
-- [如何設定和管理 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
-- [瞭解 Azure 原則效果](https://docs.microsoft.com/azure/governance/policy/concepts/effects)
+- [瞭解 Azure 原則效果](../governance/policy/concepts/effects.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -886,7 +886,7 @@ Microsoft 會管理 Azure Functions 的基礎結構，並已實行嚴格的控�
 
 **指導**方針：不適用;雖然可以部署內部部署函式，但這是適用于 IaaS 計算資源的指導方針。 部署內部部署功能時，您必須負責環境的安全設定。
 
-- [瞭解內部部署函數](https://docs.microsoft.com/azure/azure-functions/functions-runtime-install)
+- [瞭解內部部署函數](./functions-runtime-install.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -896,13 +896,13 @@ Microsoft 會管理 Azure Functions 的基礎結構，並已實行嚴格的控�
 
 **指引**：在原始檔控制中安全地儲存及管理 ARM 範本和自訂 Azure 原則定義。
 
-- [什麼是基礎結構即程式碼](https://docs.microsoft.com/azure/devops/learn/what-is-infrastructure-as-code)
+- [什麼是基礎結構即程式碼](/azure/devops/learn/what-is-infrastructure-as-code)
 
-- [設計原則作為程式碼工作流程](https://docs.microsoft.com/azure/governance/policy/concepts/policy-as-code)
+- [設計原則作為程式碼工作流程](../governance/policy/concepts/policy-as-code.md)
 
-- [如何在 Azure DevOps 中儲存程式碼](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+- [如何在 Azure DevOps 中儲存程式碼](/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
-- [Azure Repos 文件](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)
+- [Azure Repos 文件](/azure/devops/repos/index?view=azure-devops)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -920,7 +920,7 @@ Microsoft 會管理 Azure Functions 的基礎結構，並已實行嚴格的控�
 
 **指導**方針：使用內建的 Azure 原則定義以及 "system.web" 命名空間中 Azure 原則別名，以建立自訂原則來警示、審查和強制執行系統組態。 此外，開發流程和管線以管理原則例外狀況。
 
-- [如何設定和管理 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -938,7 +938,7 @@ Microsoft 會管理 Azure Functions 的基礎結構，並已實行嚴格的控�
 
 **指導**方針：使用內建的 Azure 原則定義以及 "system.web" 命名空間中 Azure 原則別名，以建立自訂原則來警示、審查和強制執行系統組態。 使用 Azure 原則 [audit]、[deny] 和 [deploy if not 存在] 自動強制執行 Azure 資源的設定。
 
-- [如何設定和管理 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -956,13 +956,13 @@ Microsoft 會管理 Azure Functions 的基礎結構，並已實行嚴格的控�
 
 **指引**：搭配使用受控識別與 Azure Key Vault，以簡化及保護雲端應用程式的秘密管理。 受控識別可讓您的函數應用程式向任何支援 Azure AD 驗證的服務進行驗證，包括 Key Vault，而不需要在程式碼中提供任何認證。
 
-- [如何建立 Key Vault](https://docs.microsoft.com/azure/key-vault/quick-create-portal)
+- [如何建立 Key Vault](../key-vault/secrets/quick-create-portal.md)
 
-- [如何使用 App Service 和 Azure Functions 的受控身分識別](https://docs.microsoft.com/azure/app-service/overview-managed-identity)
+- [如何使用 App Service 和 Azure Functions 的受控身分識別](../app-service/overview-managed-identity.md)
 
-- [如何使用受控識別提供 Key Vault 驗證](https://docs.microsoft.com/azure/key-vault/managed-identity)
+- [如何使用受控識別提供 Key Vault 驗證](../key-vault/general/managed-identity.md)
 
-- [使用 App Service 和 Azure Functions 的 Key Vault 參考](https://docs.microsoft.com/azure/app-service/app-service-key-vault-references)
+- [使用 App Service 和 Azure Functions 的 Key Vault 參考](../app-service/app-service-key-vault-references.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -972,7 +972,7 @@ Microsoft 會管理 Azure Functions 的基礎結構，並已實行嚴格的控�
 
 **指引**：在 Azure AD 中使用受控識別，為您的 Azure 函式應用程式提供自動管理的身分識別。 受控識別可供對支援 Azure AD 驗證的任何服務進行驗證 (包括 Key Vault)，不需要程式碼中的任何認證。
 
-- [如何使用 App Service 和 Azure Functions 的受控身分識別](https://docs.microsoft.com/azure/app-service/overview-managed-identity)
+- [如何使用 App Service 和 Azure Functions 的受控身分識別](../app-service/overview-managed-identity.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -990,7 +990,7 @@ Microsoft 會管理 Azure Functions 的基礎結構，並已實行嚴格的控�
 
 ## <a name="malware-defense"></a>惡意程式碼防禦
 
-*如需詳細資訊，請參閱[安全性控制：惡意程式碼防禦](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense)。*
+*如需詳細資訊，請參閱[安全性控制：惡意程式碼防禦](../security/benchmarks/security-control-malware-defense.md)。*
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8.1：使用集中管理的反惡意程式碼軟體
 
@@ -1023,7 +1023,7 @@ Microsoft 會管理 Azure Functions 的基礎結構，並已實行嚴格的控�
 
 ## <a name="data-recovery"></a>資料復原
 
-*如需詳細資訊，請參閱[安全性控制：資料復原](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery)。*
+*如需詳細資訊，請參閱[安全性控制：資料復原](../security/benchmarks/security-control-data-recovery.md)。*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9.1：確保會定期自動備份
 
@@ -1031,13 +1031,13 @@ Microsoft 會管理 Azure Functions 的基礎結構，並已實行嚴格的控�
 
 也利用原始檔控制解決方案（例如 Azure Repos 和 Azure DevOps）來安全地儲存和管理您的程式碼。 Azure DevOps Services 利用許多 Azure 儲存體功能，確保發生硬體故障、服務中斷或區域嚴重損壞時的資料可用性。 此外，Azure DevOps 小組會遵循程式來防止資料遭到意外或惡意刪除。
 
-- [在 Azure 中備份應用程式](https://docs.microsoft.com/azure/app-service/manage-backup)
+- [在 Azure 中備份應用程式](../app-service/manage-backup.md)
 
-- [瞭解 Azure DevOps 中的資料可用性](https://docs.microsoft.com/azure/devops/organizations/security/data-protection?view=azure-devops#data-availability)
+- [瞭解 Azure DevOps 中的資料可用性](/azure/devops/organizations/security/data-protection?view=azure-devops#data-availability)
 
-- [如何在 Azure DevOps 中儲存程式碼](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+- [如何在 Azure DevOps 中儲存程式碼](/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
-- [Azure Repos 文件](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)
+- [Azure Repos 文件](/azure/devops/repos/index?view=azure-devops)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -1049,15 +1049,15 @@ Microsoft 會管理 Azure Functions 的基礎結構，並已實行嚴格的控�
 
 也利用原始檔控制解決方案（例如 Azure Repos 和 Azure DevOps）來安全地儲存和管理您的程式碼。 Azure DevOps Services 利用許多 Azure 儲存體功能，確保發生硬體故障、服務中斷或區域嚴重損壞時的資料可用性。 此外，Azure DevOps 小組會遵循程式來防止資料遭到意外或惡意刪除。
 
-- [在 Azure 中備份應用程式](https://docs.microsoft.com/azure/app-service/manage-backup)
+- [在 Azure 中備份應用程式](../app-service/manage-backup.md)
 
-- [如何在 Azure 中備份金鑰保存庫金鑰](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
+- [如何在 Azure 中備份金鑰保存庫金鑰](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 
-- [瞭解 Azure DevOps 中的資料可用性](https://docs.microsoft.com/azure/devops/organizations/security/data-protection?view=azure-devops#data-availability)
+- [瞭解 Azure DevOps 中的資料可用性](/azure/devops/organizations/security/data-protection?view=azure-devops#data-availability)
 
-- [如何在 Azure DevOps 中儲存程式碼](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+- [如何在 Azure DevOps 中儲存程式碼](/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
-- [Azure Repos 文件](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)
+- [Azure Repos 文件](/azure/devops/repos/index?view=azure-devops)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -1067,11 +1067,11 @@ Microsoft 會管理 Azure Functions 的基礎結構，並已實行嚴格的控�
 
 **指導**方針：確保能夠從備份和還原功能定期執行還原。 如果使用其他離線位置來備份您的程式碼，請定期確認能夠執行完整還原。 已備份客戶管理金鑰的測試還原。
 
-- [從備份還原 Azure 中的應用程式](https://docs.microsoft.com/azure/app-service/web-sites-restore)
+- [從備份還原 Azure 中的應用程式](../app-service/web-sites-restore.md)
 
-- [在 Azure 中透過快照集還原應用程式](https://docs.microsoft.com/azure/app-service/app-service-web-restore-snapshots)
+- [在 Azure 中透過快照集還原應用程式](../app-service/app-service-web-restore-snapshots.md)
 
-- [如何在 Azure 中還原金鑰保存庫金鑰](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+- [如何在 Azure 中還原金鑰保存庫金鑰](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -1083,9 +1083,9 @@ Microsoft 會管理 Azure Functions 的基礎結構，並已實行嚴格的控�
 
 如果您使用客戶管理的金鑰，請確定已啟用 Key Vault 中的虛刪除，以防止意外或惡意刪除的金鑰。
 
-- [Azure 儲存體待用加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)
+- [Azure 儲存體待用加密](../storage/common/storage-service-encryption.md)
 
-- [如何金鑰保存庫中啟用虛刪除](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [如何金鑰保存庫中啟用虛刪除](../storage/blobs/soft-delete-overview.md?tabs=azure-portal)
 
 **Azure 資訊安全中心監視**：是
 
@@ -1093,13 +1093,13 @@ Microsoft 會管理 Azure Functions 的基礎結構，並已實行嚴格的控�
 
 ## <a name="incident-response"></a>事件回應
 
-*如需詳細資訊，請參閱[安全性控制：事件回應](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response)。*
+*如需詳細資訊，請參閱[安全性控制：事件回應](../security/benchmarks/security-control-incident-response.md)。*
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1：建立事件回應指南
 
 **指引**：為組織製作事件回應指南。 請確定有書面的事件回應計畫，其中定義人員的所有角色，以及從偵測到事件後檢討的事件處理/管理階段。
 
-- [如何設定 Azure 資訊安全中心內的工作流程自動化](https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide)
+- [如何設定 Azure 資訊安全中心內的工作流程自動化](../security-center/security-center-planning-and-operations-guide.md)
 
 - [建立自有安全性事件回應程序的指引](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/)
 
@@ -1135,7 +1135,7 @@ Microsoft 會管理 Azure Functions 的基礎結構，並已實行嚴格的控�
 
 **指引**：如果 Microsoft 安全性回應中心 (MSRC) 發現客戶的資料遭到非法或未經授權的對象存取，Microsoft 將使用安全性事件連絡人資訊來連絡您。  事後檢討事件，確保問題已解決。
 
-- [如何設定 Azure 資訊安全中心的安全性連絡人](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)
+- [如何設定 Azure 資訊安全中心的安全性連絡人](../security-center/security-center-provide-security-contact-details.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -1145,9 +1145,9 @@ Microsoft 會管理 Azure Functions 的基礎結構，並已實行嚴格的控�
 
 **指引**：使用「連續匯出」功能來匯出 Azure 資訊安全中心的警示和建議。 「連續匯出」可讓您以手動或持續不斷的方式來匯出警示和建議。 您可使用 Azure 資訊安全中心的資料連接器，將警示串流至 Azure Sentinel。
 
-- [如何設定連續匯出](https://docs.microsoft.com/azure/security-center/continuous-export)
+- [如何設定連續匯出](../security-center/continuous-export.md)
 
-- [如何將警示串流至 Azure Sentinel](https://docs.microsoft.com/azure/sentinel/connect-azure-security-center)
+- [如何將警示串流至 Azure Sentinel](../sentinel/connect-azure-security-center.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -1157,7 +1157,7 @@ Microsoft 會管理 Azure Functions 的基礎結構，並已實行嚴格的控�
 
 **指導**方針：使用 Azure 資訊安全中心中的工作流程自動化功能，自動觸發 Logic Apps 的安全性警示和建議的回應。
 
-- [如何設定工作流程自動化和 Logic Apps](https://docs.microsoft.com/azure/security-center/workflow-automation)
+- [如何設定工作流程自動化和 Logic Apps](../security-center/workflow-automation.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -1165,7 +1165,7 @@ Microsoft 會管理 Azure Functions 的基礎結構，並已實行嚴格的控�
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>滲透測試和 Red Team 練習
 
-*如需詳細資訊，請參閱[安全性控制：滲透測試和 Red Team 練習](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises)。*
+*如需詳細資訊，請參閱[安全性控制：滲透測試和 Red Team 練習](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md)。*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1：定期滲透測試您的 Azure 資源，並確保修復所有重要的安全性結果
 
@@ -1181,5 +1181,5 @@ Microsoft 會管理 Azure Functions 的基礎結構，並已實行嚴格的控�
 
 ## <a name="next-steps"></a>後續步驟
 
-- 請參閱 [Azure 安全性效能評定](https://docs.microsoft.com/azure/security/benchmarks/overview)
-- 深入了解 [Azure 資訊安全性基準](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)
+- 請參閱 [Azure 安全性效能評定](../security/benchmarks/overview.md)
+- 深入了解 [Azure 資訊安全性基準](../security/benchmarks/security-baselines-overview.md)

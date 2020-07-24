@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
-ms.openlocfilehash: fa7464c70593c83c708aba49235ecdde1be0cc9f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8a06435d4b5a4c11f74073e67e3f48fd2ed0779d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84807766"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079565"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure 詞彙︰Azure 平台上的雲端術語字典
 
@@ -51,7 +51,7 @@ Microsoft Azure 詞彙是 Azure 平台上簡短的雲端術語字典。 另請�
 
 ## <a name="azure-powershell"></a><a name="powershell"></a>Azure PowerShell
 命令列介面，可透過命令列從 Windows 電腦管理 Azure 服務。 某些服務或服務功能可以只透過 PowerShell 或 CLI 進行管理。
-請參閱[如何安裝和設定 Azure PowerShell](/powershell/azure/overview)
+請參閱[如何安裝和設定 Azure PowerShell](/powershell/azure/)
 
 ## <a name="azure-resource-manager-deployment-model"></a><a name="arm-model"></a>Azure Resource Manager 部署模型
 您可以使用兩個 [部署模型](resource-manager-deployment-model.md) 之一來部署 Microsoft Azure 中的資源 (另一個是傳統部署模型)。 有些 Azure 服務僅支援 Resource Manager 部署模型、有些僅支援傳統部署模型，而有些則可支援兩個模型。 每個 Azure 服務的文件指定其支援的模型。

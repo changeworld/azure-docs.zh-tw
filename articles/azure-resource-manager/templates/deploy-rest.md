@@ -2,12 +2,13 @@
 title: 使用 REST API 和範本部署資源
 description: 使用 Azure Resource Manager 和 Resource Manager REST API 將資源部署到 Azure。 資源會定義在 Resource Manager 範本中。
 ms.topic: conceptual
-ms.date: 06/04/2020
-ms.openlocfilehash: a2280d3bb406fd7e5c41558478363de68cbd44b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/21/2020
+ms.openlocfilehash: 17ea7da3e0b581ed60d2db97d350a70d5250ef28
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84678404"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079479"
 ---
 # <a name="deploy-resources-with-arm-templates-and-resource-manager-rest-api"></a>使用 ARM 範本和 Resource Manager REST API 部署資源
 
@@ -100,7 +101,7 @@ ms.locfileid: "84678404"
    }
    ```
 
-    如果您想要記錄回應內容及/或要求內容，可在要求中包括 **debugSetting** 。
+    如果您想要記錄回應內容、要求內容或兩者，請 `debugSetting` 在要求中包含。
 
    ```json
    {
@@ -193,6 +194,22 @@ ms.locfileid: "84678404"
    ```HTTP
    GET https://management.azure.com/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2019-10-01
    ```
+
+## <a name="deployment-name"></a>部署名稱
+
+您可以提供部署的名稱，例如 `ExampleDeployment` 。
+
+每次執行部署時，會使用部署名稱將專案新增至資源群組的部署歷程記錄。 如果您執行另一個部署並指定相同的名稱，則會將先前的專案取代為目前的部署。 如果您想要在部署歷程記錄中維護唯一的專案，請為每個部署提供一個唯一的名稱。
+
+若要建立唯一的名稱，您可以指派一個亂數字。 或者，加入日期值。
+
+如果您使用相同的部署名稱對相同的資源群組執行並行部署，則只會完成最後一個部署。 任何名稱不會完成的部署都會取代為最後一個部署。 例如，如果您執行名為的部署， `newStorage` 並部署名為的儲存體帳戶 `storage1` ，而且同時執行名為的另一個部署，並部署 `newStorage` 名為的儲存體帳戶 `storage2` ，則您只會部署一個儲存體帳戶。 產生的儲存體帳戶名稱為 `storage2` 。
+
+不過，如果您執行名為 `newStorage` 的部署來部署名為的儲存體帳戶 `storage1` ，而且在它完成後立即執行另一個名為的部署，並部署 `newStorage` 名為的儲存體帳戶 `storage2` ，則您有兩個儲存體帳戶。 其中一個名為 `storage1` ，另一個名為 `storage2` 。 但是，在部署歷程記錄中，您只會有一個專案。
+
+當您為每個部署指定唯一的名稱時，您可以同時執行它們，而不會發生衝突。 如果您執行名為的部署， `newStorage1` 並部署名為的儲存體帳戶 `storage1` ，而且同時執行名為的另一個部署 `newStorage2` 來部署名為的儲存體帳戶 `storage2` ，則您在部署歷程記錄中會有兩個儲存體帳戶和兩個專案。
+
+若要避免與並行部署發生衝突，並確保部署歷程記錄中的唯一專案，請為每個部署提供唯一的名稱。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -1,22 +1,22 @@
 ---
-title: 將 Azure 監視資料串流至事件中樞
+title: 將 Azure 監視資料串流至事件中樞和外部夥伴
 description: 瞭解如何將 Azure 監視資料串流至事件中樞，以將資料帶入合作夥伴 SIEM 或分析工具。
-author: bwren
 services: azure-monitor
-ms.topic: conceptual
-ms.date: 11/15/2019
+author: bwren
 ms.author: bwren
+ms.topic: conceptual
+ms.date: 07/15/2020
 ms.subservice: ''
-ms.openlocfilehash: 8bfec756c365c451a4e2b8236814454980d1d563
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4299c647a8fb454d5096eaa0444d5f4f1d2240e9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539307"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081452"
 ---
-# <a name="stream-azure-monitoring-data-to-an-event-hub"></a>將 Azure 監視資料串流至事件中樞
-Azure 監視器為 Azure、其他雲端和內部部署中的應用程式和服務，提供完整的完整堆疊監視解決方案。 除了使用 Azure 監視器來分析該資料，並將它運用在不同的監視案例中，您可能需要將它傳送至環境中的其他監視工具。 在大部分情況下，將監視資料串流至外部工具的最有效方法是使用[Azure 事件中樞](../../event-hubs/index.yml)。 本文提供如何將來自不同來源的監視資料串流至事件中樞的簡短描述，以及詳細指引的連結。
+# <a name="stream-azure-monitoring-data-to-an-event-hub-or-external-partner"></a>將 Azure 監視資料串流至事件中樞或外部夥伴
 
+Azure 監視器為 Azure、其他雲端和內部部署中的應用程式和服務，提供完整的完整堆疊監視解決方案。 除了使用 Azure 監視器來分析該資料，並將它運用在不同的監視案例中，您可能需要將它傳送至環境中的其他監視工具。 在大部分情況下，將監視資料串流至外部工具的最有效方法是使用[Azure 事件中樞](/azure/event-hubs/)。 本文提供如何執行此動作的簡短描述，然後列出您可以傳送資料的一些合作夥伴。 有些與 Azure 監視器有特殊的整合，而且可能裝載在 Azure 上。  
 
 ## <a name="create-an-event-hubs-namespace"></a>建立事件中樞命名空間
 
@@ -58,6 +58,7 @@ Azure 監視器為 Azure、其他雲端和內部部署中的應用程式和服�
 | LogRhythm | 否| [這裡](https://logrhythm.com/six-tips-for-securing-your-azure-cloud-environment/)提供設定 LogRhythm 以從事件中樞收集記錄的指示。 
 |Logz.io | 是 | 如需詳細資訊，請參閱[針對在 Azure 上執行的 JAVA 應用程式使用 Logz.io 開始進行監視和記錄](/azure/developer/java/fundamentals/java-get-started-with-logzio)
 
+其他合作夥伴也可以使用。 如需所有 Azure 監視器合作夥伴及其功能的完整清單，請參閱[Azure 監視器合作夥伴](partners.md)整合。
 
 ## <a name="next-steps"></a>後續步驟
 * [將活動記錄檔封存至儲存體帳戶](./activity-log.md#legacy-collection-methods)

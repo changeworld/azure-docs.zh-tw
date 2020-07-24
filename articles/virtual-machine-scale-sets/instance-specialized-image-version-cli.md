@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.date: 05/01/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: e1b260b1249af25ac5a8364798c532dcb3885cb9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e47ed9b5505966973644bee0578d5b13d1659766
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887884"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080551"
 ---
 # <a name="create-a-scale-set-using-a-specialized-image-version-with-the-azure-cli"></a>使用具有 Azure CLI 的特製化映射版本來建立擴展集
 
-從儲存在共用映射資源庫中的[特製化映射版本](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#generalized-and-specialized-images)建立擴展集。 如果您想要使用一般化映射版本來建立擴展集，請參閱[從一般化映射建立擴展集](instance-generalized-image-version-cli.md)。
+從儲存在共用映射資源庫中的[特製化映射版本](../virtual-machines/linux/shared-image-galleries.md#generalized-and-specialized-images)建立擴展集。 如果您想要使用一般化映射版本來建立擴展集，請參閱[從一般化映射建立擴展集](instance-generalized-image-version-cli.md)。
 
 如果您選擇在本機安裝和使用 CLI，本教學課程會要求您執行 Azure CLI 2.4.0 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。
 
@@ -60,6 +60,3 @@ az vmss create \
 - [建立共用映像資源庫](https://azure.microsoft.com/resources/templates/101-sig-create/)
 - [在共用映像資源庫中建立映像定義](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
 - [在共用映像資源庫中建立映像版本](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
-
-
-

@@ -8,11 +8,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 08/09/2018
 ms.author: vashan
-ms.openlocfilehash: c1452252e6cbd7b741c14c2ea52728ba144c65a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6cce718c22c591210dd31eb7c0b983d7a7322d7f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81757866"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080160"
 ---
 # <a name="virtual-machines-lifecycle-and-states"></a>虛擬機器的生命週期和狀態
 
@@ -20,4 +21,4 @@ ms.locfileid: "81757866"
 
 ## <a name="next-steps"></a>後續步驟
 
-若要深入了解如何監視您的 VM，請參閱[如何在 Azure 中監視虛擬機器](monitor.md)。
+若要深入瞭解如何監視您的 VM，請參閱[在 Azure 中監視虛擬機器](../../azure-monitor/insights/monitor-vm-azure.md)。

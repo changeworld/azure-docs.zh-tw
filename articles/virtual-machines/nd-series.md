@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 6b29125087bd60041f85b1b5023646b039bd6a4a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 243e5eafd38a35b5afd89e765c3196efbfe5362f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84736946"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079990"
 ---
 # <a name="nd-series"></a>ND 系列
 
@@ -27,7 +27,7 @@ ND 系列的虛擬機器是 GPU 系列的新成員，專為 AI 和深度學習�
 記憶體保留更新：不支援
 
 > [!IMPORTANT]
-> 針對此 VM 系列，您訂用帳戶中每個區域的 vCPU （核心）配額最初會設定為0。 在[可用區域](https://azure.microsoft.com/regions/services/)中，為此系列[要求增加 vCPU 配額](../azure-supportability/resource-manager-core-quotas-request.md)。
+> 針對此 VM 系列，您訂用帳戶中每個區域的 vCPU （核心）配額最初會設定為0。 在[可用區域](https://azure.microsoft.com/regions/services/)中，為此系列[要求增加 vCPU 配額](../azure-portal/supportability/resource-manager-core-quotas-request.md)。
 >
 | 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | GPU | GPU 記憶體：GiB | 最大資料磁碟 | 最大取消快取的磁碟輸送量：IOPS/MBps | 最大 NIC |
 |---|---|---|---|---|---|---|---|---|
