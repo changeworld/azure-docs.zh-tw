@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 03/04/2020
-ms.openlocfilehash: 0d76bf29efeb40f9f29f80b6e3e6414f5e9b6fc8
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 3ab706b9cdf3c071fd5d3ceca732cff6b660db6b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203259"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086552"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>將 HDInsight 連線至內部部署網路
 
@@ -24,7 +24,7 @@ ms.locfileid: "86203259"
 * 設定網路安全性群組來限制網際網路存取 HDInsight。
 * HDInsight 在虛擬網路上提供的連接埠。
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 若要允許聯結網路中的 HDInsight 和資源依名稱進行通訊，您必須執行下列動作：
 
@@ -45,7 +45,7 @@ ms.locfileid: "86203259"
 ## <a name="prerequisites"></a>Prerequisites
 
 * SSH 用戶端。 如需詳細資訊，請參閱[使用 SSH 連線至 HDInsight (Apache Hadoop)](./hdinsight-hadoop-linux-use-ssh-unix.md)。
-* 如果使用 PowerShell，您將需要[AZ 模組](https://docs.microsoft.com/powershell/azure/overview)。
+* 如果使用 PowerShell，您將需要[AZ 模組](https://docs.microsoft.com/powershell/azure/)。
 * 如果您想要使用 Azure CLI，但尚未安裝，請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 
 ## <a name="create-virtual-network-configuration"></a>建立虛擬網路設定
@@ -84,7 +84,7 @@ ms.locfileid: "86203259"
     |驗證類型 | __密碼__或__SSH 公開金鑰__： ssh 帳戶的驗證方法。 我們建議使用公開金鑰，因為這些金鑰較安全。 這個範例會使用**Password**。  如需詳細資訊，請參閱[建立及使用適用於 Linux VM 的 SSH 金鑰](../virtual-machines/linux/mac-create-ssh-keys.md)文件。|
     |使用者名稱 |輸入虛擬機器的系統管理員使用者名稱。  此範例使用 **sshuser**。|
     |密碼或 SSH 公開金鑰 | 可用的欄位取決於您選擇的**驗證類型**而定。  輸入適當的值。|
-    |公用輸入連接埠|選取 [允許選取的連接埠]。 然後從 [**選取輸入埠**] 下拉式清單中選取 [ **SSH (22) ** 。|
+    |公用輸入連接埠|選取 [允許選取的連接埠]。 然後從 [**選取輸入埠**] 下拉式清單中選取 [ **SSH （22）** ]。|
 
     ![虛擬機器基本設定](./media/connect-on-premises-network/virtual-machine-basics.png)
 
@@ -246,7 +246,7 @@ ms.locfileid: "86203259"
 
 4. 選取 [自訂]____，並輸入自訂 DNS 伺服器的**私人 IP 位址**。
 
-5. 選取 [Save] \(儲存\)。  <br />  
+5. 選取 [儲存]。  <br />  
 
     ![設定網路的自訂 DNS 伺服器](./media/connect-on-premises-network/configure-custom-dns.png)
 

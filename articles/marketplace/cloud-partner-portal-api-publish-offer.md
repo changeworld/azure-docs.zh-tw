@@ -4,18 +4,20 @@ description: 用來發佈指定供應項目的 API。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 04/08/2020
-ms.openlocfilehash: e3bc420a60c514e704a6caa38acee155b4981552
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: dsindona
+ms.author: dsindona
+ms.date: 07/14/2020
+ms.openlocfilehash: 1dede788242f858468c00e9f30f70ebdbe60cd1b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86115582"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086399"
 ---
 # <a name="publish-an-offer"></a>發佈供應項目
 
 > [!NOTE]
-> Cloud Partner 入口網站 API 已和合作夥伴中心整合，並會在將供應項目移轉到合作夥伴中心後繼續運作。 該整合會引進些微的變更。 請參閱[CLOUD PARTNER 入口網站 API 參考](./cloud-partner-portal-api-overview.md)中所列的變更，以確保您的程式碼會在遷移至合作夥伴中心後繼續運作。
+> Cloud Partner 入口網站 Api 會與整合，並會繼續在合作夥伴中心運作。 轉換會引進微小的變更。 請參閱[CLOUD PARTNER 入口網站 API 參考](./cloud-partner-portal-api-overview.md)中所列的變更，以確保您的程式碼在轉換至合作夥伴中心後繼續運作。 只有在轉換至合作夥伴中心之前已整合的現有產品，才應該使用 CPP Api;新產品應使用合作夥伴中心提交 Api。
 
 啟動指定供應項目的發佈程序。 此呼叫是會長時間執行的作業。
 
@@ -26,12 +28,12 @@ ms.locfileid: "86115582"
 
 |  **名稱**      |    **描述**                               |  **Data type** |
 |  ------------- |  ------------------------------------            |   -----------  |
-|  publisherId   | 發行者識別碼，例如 `contoso`      |   String       |
-|  offerId       | 供應項目識別碼                                 |   String       |
+|  publisherId   | 發行者識別碼，例如 `contoso`      |   字串       |
+|  offerId       | 供應項目識別碼                                 |   字串       |
 |  api-version   | API 的最新版本                        |   日期         |
 |  |  |
 
-## <a name="header"></a>Header
+## <a name="header"></a>頁首
 ------
 
 |  **名稱**        |    **ReplTest1**          |
@@ -62,7 +64,6 @@ ms.locfileid: "86115582"
 |  notification-emails    | 以逗號分隔的電子郵件地址清單；系統會向這些地址傳送發佈作業進度通知。 |
 |  |  |
 
-
 ### <a name="response"></a>回應
 
 #### <a name="migrated-offers"></a>已移轉的供應項目
@@ -73,7 +74,6 @@ ms.locfileid: "86115582"
 
 `Location: /api/operations/contoso$contoso-offer$2$preview?api-version=2017-10-31`
 
-
 ### <a name="response-header"></a>回應標頭
 
 |  **名稱**             |    **ReplTest1**                                                                 |
@@ -81,10 +81,9 @@ ms.locfileid: "86115582"
 | Location    | 要取出此作業狀態的相對路徑     |
 |  |  |
 
-
 ### <a name="response-status-codes"></a>回應狀態碼
 
-| **程式碼** |  **描述**                                                                                                                           |
+| **Code** |  **描述**                                                                                                                           |
 | ------   |  ----------------------------------------------------------------------------------------------------------------------------------------- |
 | 202   | `Accepted`：已順利接受要求。 回應包含可用來追蹤已啟動之作業的位置。 |
 | 400   | `Bad/Malformed request`：錯誤回應本文可能會提供更多資訊。                                                               |

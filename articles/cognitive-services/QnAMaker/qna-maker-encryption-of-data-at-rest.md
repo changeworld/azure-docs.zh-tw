@@ -1,20 +1,20 @@
 ---
 title: 待用資料的加密 QnA Maker
 titleSuffix: Azure Cognitive Services
-description: 待用資料的加密 QnA Maker。
+description: Microsoft 提供 Microsoft 管理的加密金鑰，也可讓您使用自己的金鑰管理您的認知服務訂用帳戶，稱為客戶管理的金鑰（CMK）。 本文涵蓋 QnA Maker 的待用資料加密，以及如何啟用和管理 CMK。
 author: erindormier
 manager: venkyv
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 03/13/2020
+ms.date: 07/10/2020
 ms.author: egeaney
-ms.openlocfilehash: 99c21ece202f8d9867045d506574dd7718bd455e
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 1ca0dda046329e95c649540fd42f96ca43838c85
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653656"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086700"
 ---
 # <a name="qna-maker-encryption-of-data-at-rest"></a>待用資料的加密 QnA Maker
 

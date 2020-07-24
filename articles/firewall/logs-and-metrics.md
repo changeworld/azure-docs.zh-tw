@@ -5,13 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 01/22/2020
+ms.date: 07/21/2020
 ms.author: victorh
-ms.openlocfilehash: 89c6700d5df3bcef1332121c3cf7d8f720fe054c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9d0a46135e5f763e6253540fe62d63cb59026ccb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76315026"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086586"
 ---
 # <a name="azure-firewall-logs-and-metrics"></a>Azure 防火牆記錄和計量
 
@@ -98,9 +99,13 @@ Azure 監視器中的計量是數值，可描述系統在特定時間的某些�
 
     單位：計數
 
-- 已**處理的資料**-遍歷防火牆的資料量。
+- 已**處理的資料**-在指定的時間範圍內，資料的總和。
 
     單位：位元組
+
+- **輸送量**-每秒穿越防火牆的資料速率。
+
+    單位：每秒位數
 
 - **防火牆健全狀況狀態**-根據 SNAT 埠可用性指出防火牆的健全狀況。
 

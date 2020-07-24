@@ -1,6 +1,6 @@
 ---
-title: Windows 虛擬桌面 PowerShell-Azure
-description: 當您設定 Windows 虛擬桌面租使用者環境時，如何針對 PowerShell 問題進行疑難排解。
+title: Windows 虛擬桌面 PowerShell （秋季2019）-Azure
+description: 當您設定 Windows 虛擬桌面（秋季2019版）租使用者環境時，如何針對 PowerShell 問題進行疑難排解。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,14 +8,14 @@ ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: de3933b1686b433a720e78d89bd3e50c0ce5e5dd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3171cc54de57b70a18a3f1b9ee3317cf29f79d4b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82615496"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085804"
 ---
-# <a name="windows-virtual-desktop-powershell"></a>Windows 虛擬桌面 PowerShell
+# <a name="windows-virtual-desktop-powershell-fall-2019-release"></a>Windows 虛擬桌面 PowerShell （2019版）
 
 >[!IMPORTANT]
 >此內容適用於不支援 Azure Resource Manager Windows 虛擬桌面物件的 2019 年秋季版本。 如果您嘗試管理 2020 年春季版更新中引進的 Azure Resource Manager Windows 虛擬桌面物件，請參閱[這篇文章](../troubleshoot-powershell.md)。

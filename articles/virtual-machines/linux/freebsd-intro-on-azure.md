@@ -7,11 +7,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 09/13/2017
 ms.author: mimckitt
-ms.openlocfilehash: 0825a29b45ea701315a57ff5248731e64e29de32
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c7ca47e0fbb9acbac67f2cc9af6e1e7555690046
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81261630"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085600"
 ---
 # <a name="introduction-to-freebsd-on-azure"></a>Azure 上的 FreeBSD 簡介
 本文提供在 Azure 中執行 FreeBSD 虛擬機器的概觀。
@@ -30,7 +31,7 @@ Microsoft Corporation 目前在 Azure 上提供已預先設定 [Azure VM 客體�
 至於未來的 FreeBSD 版本，策略是維持最新狀態，在 FreeBSD 版本工程小組發佈最新版本後不久，便立即提供最新版本。
 
 ### <a name="create-a-freebsd-vm-through-azure-cli-on-freebsd"></a>透過 Azure CLI 在 FreeBSD 上建立 FreeBSD VM
-首先，您必須透過下列命令在 FreeBSD 電腦上安裝 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)。
+首先，您必須透過下列命令在 FreeBSD 電腦上安裝 [Azure CLI](/cli/azure/get-started-with-azure-cli)。
 
 ```bash 
 curl -L https://aka.ms/InstallAzureCli | bash

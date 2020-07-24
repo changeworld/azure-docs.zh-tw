@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: c1ba173f97353a5ffdd4a9b58f99f6f817f963ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 67b6d77afc431e7e79cd1d4c7ad4d50c0e9eecab
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74895902"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086246"
 ---
 # <a name="h264-single-bitrate-4k"></a>H264 單一位元速率 4K
 `Media Encoder Standard` 定義一組編碼預設，供您在建立編碼作業時使用。 您可以使用 `preset name` 來指定您想要將媒體檔案編碼成哪一種格式。 或者，您可以建立自己的 JSON 或 XML 型預設 (使用 UTF-8 或 UTF-16 編碼)。 然後，您要將自訂預設傳遞給編碼器。 如需這個 `Media Encoder Standard` 編碼器支援的所有預設名稱清單，請參閱[媒體編碼器標準的工作預設](media-services-mes-presets-overview.md)。  
@@ -28,7 +29,7 @@ ms.locfileid: "74895902"
  此預設會產生位元速率為 18000 kbps 的單一 MP4 檔案，而且是立體聲 AAC 音訊。 如需此預設的設定檔、位元速率、取樣率等的詳細資訊，請檢查以下定義的 XML 或 JSON。 如需這些預設中每個元素的意義說明，請參閱[媒體編碼器標準結構描述](media-services-mes-schema.md)主題。  
   
 > [!NOTE]
->  您應該會取得具有 4K 編碼的進階保留單元類型。 如需詳細資訊，請參閱 [如何調整編碼](https://azure.microsoft.com/documentation/articles/media-services-portal-encoding-units)。  
+>  您應該會取得具有 4K 編碼的進階保留單元類型。 如需詳細資訊，請參閱 [如何調整編碼](./media-services-scale-media-processing-overview.md)。  
   
  XML  
   

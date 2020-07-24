@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: JnHs
 ms.author: jenhayes
 ms.date: 07/07/2020
-ms.openlocfilehash: 70f0dbff2530b11e92bd0b0cc55ad92a8679ebe9
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 3bb663dcdf007bf77d1b9f2b46af532774af22e1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121787"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086382"
 ---
 # <a name="create-a-managed-service-offer"></a>建立受控服務供應項目
 
@@ -85,8 +85,8 @@ ms.locfileid: "86121787"
 
 #### <a name="call-out-descriptions"></a>向外撥說明
 
-1. Title
-2. 描述
+1. 標題
+2. 說明
 3. 實用的連結
 4. 螢幕擷取畫面
 
@@ -177,7 +177,7 @@ ms.locfileid: "86121787"
 
 ## <a name="plan-overview"></a>方案概觀
 
-每個供應項目都必須有一或多個方案 (有時稱為 SKU)。 您可以新增多個方案來支援設定為不同價格的不同功能，或為特定客戶的限定對象自訂特定方案。 客戶可以檢視父代供應項目下可供他們使用的方案。
+每個供應專案都必須有一或多個方案（先前稱為 Sku）。 您可以新增多個方案來支援設定為不同價格的不同功能，或為特定客戶的限定對象自訂特定方案。 客戶可以檢視父代供應項目下可供他們使用的方案。
 
 在 [方案概觀] 頁面上，選取 [+ 建立新方案]。 然後，輸入**方案識別碼**和**方案名稱**。 這兩個值都只能包含小寫英數字元、連字號與底線，且最多 50 個字元。 這些值可能會向客戶顯示，而且在您發佈供應項目之後，即無法變更。
 

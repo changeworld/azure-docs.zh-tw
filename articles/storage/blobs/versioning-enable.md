@@ -6,14 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 05/05/2020
+ms.date: 07/15/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 0e24bcb54fd26d4a3d983681b3348ef736b277cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7ff0bb6d593a199bd249441cf484d1f0580774ac
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82884341"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086042"
 ---
 # <a name="enable-and-manage-blob-versioning"></a>啟用和管理 Blob 版本設定
 
@@ -67,7 +68,7 @@ ms.locfileid: "82884341"
 
 ## <a name="modify-a-blob-to-trigger-a-new-version"></a>修改 blob 以觸發新版本
 
-下列程式碼範例示範如何使用適用于 .NET 第12版的 Azure 儲存體用戶端程式庫，觸發新版本的建立。 執行此範例之前，請確定您已針對儲存體帳戶啟用版本設定。
+下列程式碼範例示範如何使用適用于 .NET 的 Azure 儲存體用戶端程式庫（版本[12.5.0-preview 5](https://www.nuget.org/packages/Azure.Storage.Blobs/12.5.0-preview.5)或更新版本）來觸發新版本的建立。 執行此範例之前，請確定您已針對儲存體帳戶啟用版本設定。
 
 此範例會建立區塊 blob，然後更新 blob 的中繼資料。 更新 blob 的中繼資料會觸發新版本的建立。 此範例會抓取初始版本和目前的版本，並顯示只有目前的版本包含中繼資料。
 

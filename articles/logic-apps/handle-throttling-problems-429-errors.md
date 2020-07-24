@@ -6,11 +6,12 @@ ms.suite: integration
 ms.reviewer: deli, logicappspm
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.openlocfilehash: fbfd52065bc0522668488492de2181f252f86a4e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 495847d31682aff64fed3c81b1d5d68cf67dfd38
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81272673"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086433"
 ---
 # <a name="handle-throttling-problems-429---too-many-requests-errors-in-azure-logic-apps"></a>處理 Azure Logic Apps 中的節流問題（429-「要求太多」錯誤）
 
@@ -21,7 +22,7 @@ ms.locfileid: "81272673"
 以下是您的邏輯應用程式可能會遇到的一些常見節流類型：
 
 * [邏輯應用程式](#logic-app-throttling)
-* [連接器](#connector-throttling)
+* [連接子](#connector-throttling)
 * [目的地服務或系統](#destination-throttling)
 
 <a name="logic-app-throttling"></a>
@@ -76,7 +77,7 @@ Azure Logic Apps 服務有自己的[輸送量限制](../logic-apps/logic-apps-li
 
 ## <a name="connector-throttling"></a>連接器節流
 
-每個連接器都有自己的節流限制，您可以在連接器的技術參考頁面上找到它。 例如， [Azure 服務匯流排連接器](https://docs.microsoft.com/connectors/servicebus/)的節流限制允許每分鐘最多6000個呼叫，而 SQL Server 連接器具有[根據作業類型而有所不同的節流限制](https://docs.microsoft.com/connectors/sql/)。
+每個連接器都有自己的節流限制，您可以在連接器的技術參考頁面上找到它。 例如， [Azure 服務匯流排連接器](/connectors/servicebus/)的節流限制允許每分鐘最多6000個呼叫，而 SQL Server 連接器具有[根據作業類型而有所不同的節流限制](/connectors/sql/)。
 
 有些觸發程式和動作（例如 HTTP）具有「[重試原則](../logic-apps/logic-apps-exception-handling.md#retry-policies)」，您可以根據[重試原則限制](../logic-apps/logic-apps-limits-and-config.md#retry-policy-limits)來進行自訂，以執行例外狀況處理。 此原則會指定當原始要求失敗時，觸發程式或動作重試要求的頻率，以及產生408、429或5xx 回應的時間。 因此，當節流啟動並傳回429錯誤時，Logic Apps 會遵循支援的重試原則。
 
@@ -163,7 +164,7 @@ Azure Logic Apps 服務有自己的[輸送量限制](../logic-apps/logic-apps-li
 
 * 使用適用于觸發程式和動作的 webhook 版本，而不是輪詢版本。
 
-  為什麼？ 輪詢觸發程式會繼續以特定的間隔檢查目的地服務或系統。 非常頻繁的間隔（例如每秒）可能會建立節流問題。 不過，webhook 觸發程式或動作（例如[HTTP webhook](../connectors/connectors-native-webhook.md)）只會建立對目的地服務或系統的單一呼叫，這會在訂用帳戶期間發生，並要求目的地只有在發生事件時才會通知觸發程式或動作。 如此一來，觸發程式或動作就不需要持續檢查目的地。
+  原因為何？ 輪詢觸發程式會繼續以特定的間隔檢查目的地服務或系統。 非常頻繁的間隔（例如每秒）可能會建立節流問題。 不過，webhook 觸發程式或動作（例如[HTTP webhook](../connectors/connectors-native-webhook.md)）只會建立對目的地服務或系統的單一呼叫，這會在訂用帳戶期間發生，並要求目的地只有在發生事件時才會通知觸發程式或動作。 如此一來，觸發程式或動作就不需要持續檢查目的地。
   
   因此，如果目的地服務或系統支援 webhook，或提供具有 webhook 版本的連接器，則此選項比使用輪詢版本更好。 若要識別 webhook 觸發程式和動作，請確認它們的類型為， `ApiConnectionWebhook` 或不需要您指定週期。 如需詳細資訊，請參閱[APIConnectionWebhook 觸發](../logic-apps/logic-apps-workflow-actions-triggers.md#apiconnectionwebhook-trigger)程式和[APIConnectionWebhook 動作](../logic-apps/logic-apps-workflow-actions-triggers.md#apiconnectionwebhook-action)。
 

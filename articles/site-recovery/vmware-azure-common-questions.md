@@ -3,12 +3,12 @@ title: 使用 Azure Site Recovery 進行 VMware 嚴重損壞修復的常見問�
 description: 使用 Azure Site Recovery，取得內部部署 VMware Vm 到 Azure 的嚴重損壞修復常見問題的解答。
 ms.date: 11/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: a523df21caca2a6def4274542979e9963345384b
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 603dc77e6f2a53abb1d65688ced77e58297b8ab5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135167"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086144"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>VMware 到 Azure 的複寫常見問題
 
@@ -112,7 +112,7 @@ Site Recovery 會將內部部署 VMware Vm 和實體伺服器複寫至 Azure 中
 
 ### <a name="can-i-replicate-new-machines-to-storage-accounts"></a>我可以將新機器複寫到儲存體帳戶嗎？
 
-否。 自2019年3月起，在 Azure 入口網站中，您只能複寫至 Azure 受控磁片。
+不可以。 自2019年3月起，在 Azure 入口網站中，您只能複寫至 Azure 受控磁片。
 
 只有使用 PowerShell 或 REST API （版本2018-01-10 或2016-08-10），才可以將新 Vm 複寫到儲存體帳戶。
 
@@ -131,7 +131,7 @@ Site Recovery 會將內部部署 VMware Vm 和實體伺服器複寫至 Azure 中
 
 ### <a name="can-i-switch-replication-from-managed-disks-to-unmanaged-disks"></a>我可以將複寫從受控磁片切換到非受控磁片嗎？
 
-否。 不支援從受控切換至非受控。
+不可以。 不支援從受控切換至非受控。
 
 ## <a name="replication"></a>複寫
 
@@ -176,11 +176,15 @@ Site Recovery 會將內部部署 VMware Vm 和實體伺服器複寫至 Azure 中
 
 ### <a name="can-i-migrate-on-premises-machines-to-a-new-vcenter-server-without-impacting-ongoing-replication"></a>我可以將內部部署機器遷移到新的 vCenter Server，而不會影響進行中的複寫嗎？
 
-否。 VMware Vcenter 或遷移的變更會影響進行中的複寫。 使用新的 vCenter Server 設定 Site Recovery，並再次啟用機器的複寫。
+不可以。 VMware Vcenter 或遷移的變更會影響進行中的複寫。 使用新的 vCenter Server 設定 Site Recovery，並再次啟用機器的複寫。
 
 ### <a name="can-i-replicate-to-a-cache-or-target-storage-account-that-has-a-virtual-network-with-azure-firewalls-configured-on-it"></a>我可以複寫至已設定虛擬網路（具有 Azure 防火牆）的快取或目標儲存體帳戶嗎？
 
 否，Site Recovery 不支援複寫至虛擬網路上的 Azure 儲存體。
+
+### <a name="what-is-the-frequency-of-generation-of-crash-consistent-recovery-points"></a>損毀一致復原點產生的頻率為何？
+
+Site Recovery 每5分鐘會產生損毀一致復原點。
 
 ## <a name="component-upgrade"></a>元件升級
 
@@ -230,7 +234,7 @@ Site Recovery 遵循 N-4 支援模型。 [深入瞭解](https://aka.ms/asr_suppo
 
 ### <a name="can-a-configuration-server-replicate-to-more-than-one-region"></a>組態伺服器是否可複寫到多個區域？
 
-否。 若要複寫到多個區域，您必須在每個區域中都有設定伺服器。
+不可以。 若要複寫到多個區域，您必須在每個區域中都有設定伺服器。
 
 ### <a name="can-i-host-a-configuration-server-in-azure"></a>是否可將組態伺服器裝載在 Azure 中？
 
@@ -262,15 +266,15 @@ Site Recovery 遵循 N-4 支援模型。 [深入瞭解](https://aka.ms/asr_suppo
 
 ### <a name="can-i-use-the-configuration-server-vm-for-anything-else"></a>組態伺服器 VM 是否可用於任何其他位置？
 
-否。 僅針對設定伺服器使用 VM。
+不可以。 僅針對設定伺服器使用 VM。
 
 ### <a name="can-i-clone-a-configuration-server-and-use-it-for-orchestration"></a>是否可以複製組態伺服器並將它用於協調流程？
 
-否。 設定全新的設定伺服器，以避免註冊問題。
+不可以。 設定全新的設定伺服器，以避免註冊問題。
 
 ### <a name="can-i-change-the-vault-in-which-the-configuration-server-is-registered"></a>我可以變更設定伺服器註冊所在的保存庫嗎？
 
-否。 保存庫與設定伺服器相關聯之後，即無法變更。 [瞭解](vmware-azure-manage-configuration-server.md#register-a-configuration-server-with-a-different-vault)如何向不同的保存庫註冊設定伺服器。
+不可以。 保存庫與設定伺服器相關聯之後，即無法變更。 [瞭解](vmware-azure-manage-configuration-server.md#register-a-configuration-server-with-a-different-vault)如何向不同的保存庫註冊設定伺服器。
 
 ### <a name="can-i-use-the-same-configuration-server-for-disaster-recovery-of-both-vmware-vms-and-physical-servers"></a>是否可以將相同的設定伺服器用於 VMware Vm 和實體伺服器的嚴重損壞修復？
 

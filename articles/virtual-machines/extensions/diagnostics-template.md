@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 05/31/2017
 ms.author: mimckitt
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d100f054da5f82bc4dea51e054a28cca07f5de7b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9d14ddf297afc68fd4e17795c4106271bc026c5a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81258825"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085668"
 ---
 # <a name="use-monitoring-and-diagnostics-with-a-windows-vm-and-azure-resource-manager-templates"></a>使用 Windows VM 和 Azure Resource Manager 範本的監視和診斷
 Azure 診斷擴充功能會在以 Windows 為基礎的 Azure 虛擬機器上提供監視和診斷功能。 您可以將擴充功能納入為 Azure Resource Manager 範本的一部分，在虛擬機器上啟用這些功能。 請參閱 [使用 VM 延伸模組編寫 Azure 資源管理員範本](../windows/template-description.md#extensions) ，以取得將任何延伸模組納入為虛擬機器範本一部分的詳細資訊。 本文描述如何將 Azure 診斷延伸模組新增至 Windows 虛擬機器範本。  
@@ -78,7 +79,7 @@ Azure 診斷擴充功能會在以 Windows 為基礎的 Azure 虛擬機器上提�
 
 *TypeHandlerVersion* 會指定您想要使用的延伸模組的版本。 將 autoUpgradeMinorVersion 次要版本設為 **true** 可確保您獲得可用的最新擴充功能次要版本。 強烈建議您一律將 *autoUpgradeMinorVersion* 設為永遠為 **true** ，讓您永遠可以使用具有所有新功能和錯誤修正的可用最新診斷延伸模組。 
 
-*settings* 元素包含延伸模組的組態屬性，可以從延伸模組 (有時稱為公用組態) 設定和讀取。 xmlcfg 屬性包含以 xml 為基礎之組態的診斷記錄、效能計數器等等，這些項目是由診斷代理程式收集。 如需 xml 結構描述本身的詳細資訊，請參閱 [診斷組態結構描述](https://msdn.microsoft.com/library/azure/dn782207.aspx) 。 常見的作法是將實際的 xml 組態儲存為 Azure 資源管理員範本中的變數，然後再進行串連和 base64 編碼，以設定 *xmlcfg*的值。 請參閱 [診斷組態變數](#diagnostics-configuration-variables) 以深入了解如何在變數中儲存 xml。 StorageAccount 屬性會指定要向其傳輸診斷資料的儲存體帳戶名稱。 
+*settings* 元素包含延伸模組的組態屬性，可以從延伸模組 (有時稱為公用組態) 設定和讀取。 xmlcfg 屬性包含以 xml 為基礎之組態的診斷記錄、效能計數器等等，這些項目是由診斷代理程式收集。 如需 xml 結構描述本身的詳細資訊，請參閱 [診斷組態結構描述](/azure/azure-monitor/platform/diagnostics-extension-schema-windows) 。 常見的作法是將實際的 xml 組態儲存為 Azure 資源管理員範本中的變數，然後再進行串連和 base64 編碼，以設定 *xmlcfg*的值。 請參閱 [診斷組態變數](#diagnostics-configuration-variables) 以深入了解如何在變數中儲存 xml。 StorageAccount 屬性會指定要向其傳輸診斷資料的儲存體帳戶名稱。 
 
 *protectedSettings* (有時稱為私用組態) 中的屬性可以設定，但是無法在設定之後讀取。 protectedSettings 的唯寫本質讓它對於儲存像是儲存體帳戶 (寫入診斷資料的位置) 金鑰的密碼相當有用。    
 
@@ -116,7 +117,7 @@ Azure 診斷擴充功能會在以 Windows 為基礎的 Azure 虛擬機器上提�
 
 診斷延伸模組的 *xmlcfg* 屬性是使用串連在一起的多個變數進行定義。 這些變數值的格式為 xml，因此必須在設定 json 變數時正確逸出。
 
-以下範例說明診斷組態 xml，它會收集標準系統層級效能計數器以及一些 Windows 事件記錄和診斷基礎結構記錄。 已正確逸出和格式化，因此組態可以直接貼到您的範本的變數區段。 請參閱 [診斷組態結構描述](https://msdn.microsoft.com/library/azure/dn782207.aspx) 以取得人類可讀取的組態 xml 的範例。
+以下範例說明診斷組態 xml，它會收集標準系統層級效能計數器以及一些 Windows 事件記錄和診斷基礎結構記錄。 已正確逸出和格式化，因此組態可以直接貼到您的範本的變數區段。 請參閱 [診斷組態結構描述](/azure/azure-monitor/platform/diagnostics-extension-schema-windows) 以取得人類可讀取的組態 xml 的範例。
 
 ```json
 "wadlogs": "<WadCfg> <DiagnosticMonitorConfiguration overallQuotaInMB=\"4096\" xmlns=\"http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration\"> <DiagnosticInfrastructureLogs scheduledTransferLogLevelFilter=\"Error\"/> <WindowsEventLog scheduledTransferPeriod=\"PT1M\" > <DataSource name=\"Application!*[System[(Level = 1 or Level = 2)]]\" /> <DataSource name=\"Security!*[System[(Level = 1 or Level = 2)]]\" /> <DataSource name=\"System!*[System[(Level = 1 or Level = 2)]]\" /></WindowsEventLog>",
@@ -178,4 +179,4 @@ PT1M 及 PT1H 的 MetricAggregation 值分別表示超過一分鐘的彙總及�
 ## <a name="next-steps"></a>後續步驟
 * 如需具有診斷擴充功能之 Windows 虛擬機器的完整範例範本，請參閱 [201-vm-monitoring-diagnostics-extension](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-monitoring-diagnostics-extension)   
 * 使用 [Azure PowerShell](../windows/ps-template.md) 或 [Azure 命令列](../linux/create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)部署 Azure Resource Manager 範本
-* 深入了解 [編寫 Azure 資源管理員範本](../../resource-group-authoring-templates.md)
+* 深入了解 [編寫 Azure 資源管理員範本](../../azure-resource-manager/templates/template-syntax.md)

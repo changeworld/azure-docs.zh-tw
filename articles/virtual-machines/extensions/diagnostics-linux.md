@@ -9,19 +9,19 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
-ms.openlocfilehash: 824ba9e1f9b4325c1e0974ed1c22b465ec4b85a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ddbd64049307dcfd9b27cde1418eef2378b4f6b4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85298951"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085685"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>使用 Linux 診斷擴充功能監視計量與記錄
 
 本文件說明 3.0 版與更新版本的 Linux 診斷擴充功能。
 
 > [!IMPORTANT]
-> 如需 2.3 版與更舊版本的資訊，請參閱[本文件](../linux/classic/diagnostic-extension-v2.md)。
+> 如需 2.3 版與更舊版本的資訊，請參閱[本文件](/previous-versions/azure/virtual-machines/linux/classic/diagnostic-extension-v2)。
 
 ## <a name="introduction"></a>簡介
 
@@ -67,8 +67,8 @@ Linux 診斷擴充功能支援下列散發套件和版本。 散發套件和版�
 
 ### <a name="prerequisites"></a>必要條件
 
-* **Azure Linux Agent 2.2.0 版或更新版本**。 大部分的 Azure VM Linux 資源庫映像包含版本 2.2.7 或更新版本。 執行 `/usr/sbin/waagent -version` 以確認安裝在 VM 上的版本。 如果 VM 執行的是舊版客體代理程式，請依照[這些指示](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent)更新。
-* **Azure CLI**。 在您的電腦上[設定 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 環境。
+* **Azure Linux Agent 2.2.0 版或更新版本**。 大部分的 Azure VM Linux 資源庫映像包含版本 2.2.7 或更新版本。 執行 `/usr/sbin/waagent -version` 以確認安裝在 VM 上的版本。 如果 VM 執行的是舊版客體代理程式，請依照[這些指示](./update-linux-agent.md)更新。
+* **Azure CLI**。 在您的電腦上[設定 Azure CLI](/cli/azure/install-azure-cli) 環境。
 * Wget 命令，如果您沒有：執行 `sudo apt-get install wget`。
 * 現有的 Azure 訂用帳戶與其中現有的儲存體帳戶以儲存資料。
 
@@ -243,7 +243,7 @@ type | 正在定義的接收類型。 決定此類型執行個體中的其他值
 https://contosohub.servicebus.windows.net/syslogmsgs?sr=contosohub.servicebus.windows.net%2fsyslogmsgs&sig=xxxxxxxxxxxxxxxxxxxxxxxxx&se=1514764800&skn=writer
 ```
 
-如需如何在事件中樞的 SAS 權杖上產生和擷取資訊的詳細資訊，請參閱[此網頁](https://docs.microsoft.com/rest/api/eventhub/generate-sas-token#powershell)。
+如需如何在事件中樞的 SAS 權杖上產生和擷取資訊的詳細資訊，請參閱[此網頁](/rest/api/eventhub/generate-sas-token#powershell)。
 
 #### <a name="the-jsonblob-sink"></a>JsonBlob 接收
 
@@ -580,7 +580,7 @@ WriteBytesPerSecond | 每秒寫入的位元組數
 az vm extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnostic --version 3.0 --resource-group <resource_group_name> --vm-name <vm_name> --protected-settings ProtectedSettings.json --settings PublicSettings.json
 ```
 
-此命令假設您使用 Azure CLI 的 Azure 資源管理（ARM）模式。 若要為傳統部署模型 (ASM) VM 設定 LAD，請切換成 "asm" 模式 (`azure config mode asm`)，並省略命令中的資源群組名稱。 如需詳細資訊，請參閱[跨平台 CLI 文件](https://docs.microsoft.com/azure/xplat-cli-connect)。
+此命令假設您使用 Azure CLI 的 Azure 資源管理（ARM）模式。 若要為傳統部署模型 (ASM) VM 設定 LAD，請切換成 "asm" 模式 (`azure config mode asm`)，並省略命令中的資源群組名稱。 如需詳細資訊，請參閱[跨平台 CLI 文件](/azure/xplat-cli-connect)。
 
 ### <a name="powershell"></a>PowerShell
 
@@ -763,10 +763,10 @@ Microsoft Azure 儲存體總管工作階段的這個快照顯示從測試 VM 上
 
 ![image](./media/diagnostics-linux/stg_explorer.png)
 
-請參閱相關的 [EventHubs 資訊](../../event-hubs/event-hubs-what-is-event-hubs.md)，以了解如何取用發佈至 EventHubs 端點的訊息。
+請參閱相關的 [EventHubs 資訊](../../event-hubs/event-hubs-about.md)，以了解如何取用發佈至 EventHubs 端點的訊息。
 
 ## <a name="next-steps"></a>後續步驟
 
-* 在 [Azure 監視器](../../monitoring-and-diagnostics/insights-alerts-portal.md)中為您收集的計量建立計量警示。
-* 為您的計量建立[監視圖表](../../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)。
+* 在 [Azure 監視器](../../azure-monitor/platform/alerts-classic-portal.md)中為您收集的計量建立計量警示。
+* 為您的計量建立[監視圖表](../../azure-monitor/platform/data-platform.md)。
 * 了解如何使用計量[建立虛擬機器擴展集](../linux/tutorial-create-vmss.md)以控制自動調整。

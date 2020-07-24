@@ -5,29 +5,31 @@ services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 01/18/2019
-ms.openlocfilehash: e393b6a499ad2b84f25ca1a1c062ca4ef2eec21c
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: MaggiePucciEvans
+ms.author: evansma
+ms.date: 07/14/2020
+ms.openlocfilehash: 853aeb03dc1a19c1960709aedf09e71164ed62d4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120733"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086365"
 ---
 # <a name="marketplace-rewards"></a>Marketplace Rewards
 
-Marketplace Rewards 設計是為了在特定成長階段為您提供支援，先從建立知名度開始，協助您獲得第一位客戶的青睞。 隨著您在市集成長，會逐漸解鎖用於協助您轉換客戶和業務成交的新權益。 
+Marketplace 獎勵支援您在特定的成長階段，從認知活動開始，協助您取得第一位客戶。 當您透過商業 marketplace 成長時，會將新的權益解除鎖定，以協助您轉換客戶和關閉交易。
 
-此方案會建立正向的意見反應循環：每個業務成長階段的權益都是為了讓您邁入下一個階段而設計，讓您利用商業市集作為平台，將業務拓展至 Microsoft 的客戶，配合 Microsoft 擅長領域及 Microsoft 的通路。 
+此程式會建立正面的意見反應迴圈：每個成長階段的權益可協助您進行下一個階段，讓您可以將企業拓展到 Microsoft 的客戶、Microsoft 的領域，以及利用商業 marketplace 作為您的平臺，透過 Microsoft 的管道。
 
 您的權益會根據您的供應專案為[清單、試用版或交易](../determine-your-listing-type.md#choose-a-publishing-option)而有所不同。
 
-當供應項目上線時，我們會根據您符合的資格，請 Rewards 小組成員與您聯繫。 
+當供應項目上線時，我們會根據您符合的資格，請 Rewards 小組成員與您聯繫。
 
-若為交易合作夥伴，當您透過市集平台拓展開單銷售，就能在每一層級解鎖更多權益。 
+若為交易合作夥伴，當您透過市集平台拓展開單銷售，就能在每一層級解鎖更多權益。
 
-在店面中發佈的最低需求是 MPNID，因此無論 MPN 專長認證狀態或合作夥伴類型為何，所有合作夥伴都可使用這些權益。 每位合作夥伴都能以平台的形式，透過市集拓展業務。 
+在店面中發佈的最低需求是 MPNID，因此無論 MPN 專長認證狀態或合作夥伴類型為何，所有合作夥伴都可使用這些權益。 每位合作夥伴都能以平台的形式，透過市集拓展業務。
 
-我們會協助您了解可供使用的資源及如何執行最佳做法，您也可以[自我檢查](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/)。 
+我們會協助您了解可供使用的資源及如何執行最佳做法，您也可以[自我檢查](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/)。
 
 請在[這裡](https://partner.microsoft.com/dashboard/mpn/program/commercialmarketplace)檢查您的 Marketplace 獎勵方案資格。
 
@@ -43,15 +45,12 @@ Marketplace Rewards 設計是為了在特定成長階段為您提供支援，先
     1. 提供此行銷連絡人的連絡電話和慣用語言。 在您完成輸入此資訊之後，請選取 [指派使用者]。
     1. 更新行銷連絡人之後，請選取 [啟用]，以取得您想要開始使用的權益。 一旦您啟用權益，Rewards 小組成員會在一週內與您的行銷連絡人連絡。
 
-**技術權益**
+## <a name="technical-benefits"></a>技術權益
 
-1. 在雲端解決方案和混合式解決方案的售前、設計、部署及應用程式開發階段，都可以使用您的技術權益來請求技術協助。 若要請求協助，請填寫要求表單，然後選取 [提交要求]。
+1. 您可以在雲端和混合式解決方案的售前、設計、部署和應用程式開發階段中，使用您的技術優勢來要求技術協助。 若要請求協助，請填寫要求表單，然後選取 [提交要求]。
 2. 當您解鎖這些權益時，我們會透過電子郵件分享如何利用 Azure 贊助權益。
 
->[!Note]
->如果您的供應專案已上線超過四周，而且您未收到訊息，請查看 Cloud Partner 入口網站或在合作夥伴中心，檢查您的組織中是否有問題的擁有者。 對方應已收到通知和後續步驟。
-
->[!Note] 
->如果您無法判斷擁有者，或擁有者已離開您的公司，您可以在上提出支援票證 https://aka.ms/marketplacepublishersupport 。
+>[!NOTE]
+>如果您的供應專案已上線超過四周，而且您未收到訊息，請檢查合作夥伴中心，以尋找貴組織擁有該供應專案的人員。 對方應已收到通知和後續步驟。 如果您無法判斷擁有者，或擁有者已離開貴公司，請在上開啟支援票證 https://aka.ms/marketplacepublishersupport 。
 
 隨著您在市集中增加供應項目，您可以使用的活動範圍也會擴展。 所有上市項目都會收到基本等級的最佳化建議和推廣，屬於資源和最佳做法自助電子郵件的一環。

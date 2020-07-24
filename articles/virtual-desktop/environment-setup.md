@@ -1,6 +1,6 @@
 ---
 title: Windows 虛擬桌面環境-Azure
-description: Windows 虛擬桌面環境的基本元素。
+description: 瞭解 Windows 虛擬桌面環境的基本元素，例如主機集區和應用程式群組。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d189d5febe54a83cde4fe6cd6aa51e728aa882e6
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 802369112d99d5828024a16936dc7458795f22e8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259892"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085889"
 ---
 # <a name="windows-virtual-desktop-environment"></a>Windows 虛擬桌面環境
 
@@ -43,7 +43,7 @@ Windows 虛擬桌面是一種服務，可讓使用者輕鬆且安全地存取其
 - RemoteApp，使用者可在其中存取您個別選取併發布至應用程式群組的 Remoteapp
 - 桌面，使用者在其中存取完整桌面
 
-根據預設，每當您建立主機集區時，就會自動建立名為「桌面應用程式群組」 ) 的桌面應用程式群組 (。 您可以隨時移除此應用程式群組。 不過，當桌面應用程式群組存在時，您無法在主機集區中建立另一個桌面應用程式群組。 若要發佈 Remoteapp，您必須建立 RemoteApp 應用程式群組。 您可以建立多個 RemoteApp 應用程式群組來配合不同的背景工作案例。 不同的 RemoteApp 應用程式群組也可以包含重迭的 Remoteapp。
+根據預設，每當您建立主機集區時，就會自動建立桌面應用程式群組（名為「桌面應用程式群組」）。 您可以隨時移除此應用程式群組。 不過，當桌面應用程式群組存在時，您無法在主機集區中建立另一個桌面應用程式群組。 若要發佈 Remoteapp，您必須建立 RemoteApp 應用程式群組。 您可以建立多個 RemoteApp 應用程式群組來配合不同的背景工作案例。 不同的 RemoteApp 應用程式群組也可以包含重迭的 Remoteapp。
 
 若要將資源發佈給使用者，您必須將它們指派給應用程式群組。 將使用者指派給應用程式群組時，請考慮下列事項：
 

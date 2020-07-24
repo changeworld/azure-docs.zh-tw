@@ -7,12 +7,12 @@ manager: rochakm
 ms.topic: article
 ms.date: 1/10/2020
 ms.author: sutalasi
-ms.openlocfilehash: d7a2d21dcd8c9474bdf068d7940e497333f35115
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: a4f7d330db9a4a0d9b435ebe7527e55e37c254e2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86130207"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086212"
 ---
 # <a name="set-up-disaster-recovery-of-hyper-v-vms-to-a-secondary-site-by-using-powershell-resource-manager"></a>使用 PowerShell (Resource Manager) 將 Hyper-V VM 的災害復原設定至次要網站
 
@@ -20,7 +20,7 @@ ms.locfileid: "86130207"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 - 檢閱[案例架構和元件](hyper-v-vmm-architecture.md)。
 - 請參閱所有元件的[支援需求](./vmware-physical-secondary-support-matrix.md)。
@@ -47,8 +47,8 @@ ms.locfileid: "86130207"
 
 確定 Azure PowerShell 已經準備就緒：
 
-- 如果您已經使用 PowerShell，請升級至 0.8.10 版或更新版本。 [深入了解](/powershell/azureps-cmdlets-docs)如何設定 PowerShell。
-- 在您安裝並設定 PowerShell 後，請檢閱[服務 Cmdlet](/powershell/azure/overview)。
+- 如果您已經使用 PowerShell，請升級至 0.8.10 版或更新版本。 [深入了解](/powershell/azure/)如何設定 PowerShell。
+- 在您安裝並設定 PowerShell 後，請檢閱[服務 Cmdlet](/powershell/azure/)。
 - 若要深入了解如何在 PowerShell 中使用參數值、輸入和輸出，請閱讀[開始使用](/powershell/azure/get-started-azureps)指南。
 
 ## <a name="set-up-a-subscription"></a>設定訂用帳戶

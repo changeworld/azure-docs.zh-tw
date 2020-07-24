@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 7a138308b48a24a78c55bdc0105379e31482456d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9ceb58182b34a4eccbed0dc1cdd1c351ae7868da
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85209380"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085906"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature"></a>針對診斷功能使用 Log Analytics
 
@@ -133,52 +133,16 @@ Log Analytics 只會報告下列連接活動的中繼狀態：
 
 ## <a name="example-queries"></a>查詢範例
 
-下列查詢範例顯示診斷功能如何為系統中最常用的活動產生報告。
+透過 Azure 監視器 Log Analytics UI 來存取範例查詢：
+1. 移至您的 Log Analytics 工作區，然後選取 [**記錄**]。 範例查詢 UI 會自動顯示。
+1. 將篩選變更為 [**分類**]。
+1. 選取 [ **Windows 虛擬桌面**] 以查看可用的查詢。
+1. 選取 [**執行**] 以執行選取的查詢。 
 
-若要取得使用者所建立的連線清單，請執行此 Cmdlet：
+在[Azure 監視器 Log Analytics 中的已儲存查詢](../azure-monitor/log-query/saved-queries.md)中深入瞭解範例查詢介面。
 
-```kusto
-WVDConnections
-| project-away TenantId,SourceSystem
-| summarize arg_max(TimeGenerated, *), StartTime =  min(iff(State== 'Started', TimeGenerated , datetime(null) )), ConnectTime = min(iff(State== 'Connected', TimeGenerated , datetime(null) ))   by CorrelationId
-| join kind=leftouter (
-    WVDErrors
-    |summarize Errors=makelist(pack('Code', Code, 'CodeSymbolic', CodeSymbolic, 'Time', TimeGenerated, 'Message', Message ,'ServiceError', ServiceError, 'Source', Source)) by CorrelationId
-    ) on CorrelationId
-| join kind=leftouter (
-   WVDCheckpoints
-   | summarize Checkpoints=makelist(pack('Time', TimeGenerated, 'Name', Name, 'Parameters', Parameters, 'Source', Source)) by CorrelationId
-   | mv-apply Checkpoints on
-    (
-        order by todatetime(Checkpoints['Time']) asc
-        | summarize Checkpoints=makelist(Checkpoints)
-    )
-   ) on CorrelationId
-| project-away CorrelationId1, CorrelationId2
-| order by  TimeGenerated desc
-```
+下列查詢清單可讓您查看單一使用者的連接資訊或問題。 您可以在[Log Analytics 查詢編輯器](../azure-monitor/log-query/get-started-portal.md#write-and-run-basic-queries)中執行這些查詢。 針對每個查詢，將取代為 `userupn` 您想要查閱之使用者的 UPN。
 
-若要查看使用者的摘要活動：
-
-```kusto
-WVDFeeds
-| project-away TenantId,SourceSystem
-| join kind=leftouter (
-    WVDErrors
-    |summarize Errors=makelist(pack('Code', Code, 'CodeSymbolic', CodeSymbolic, 'Time', TimeGenerated, 'Message', Message ,'ServiceError', ServiceError, 'Source', Source)) by CorrelationId
-    ) on CorrelationId
-| join kind=leftouter (
-   WVDCheckpoints
-   | summarize Checkpoints=makelist(pack('Time', TimeGenerated, 'Name', Name, 'Parameters', Parameters, 'Source', Source)) by CorrelationId
-   | mv-apply Checkpoints on
-    (
-        order by todatetime(Checkpoints['Time']) asc
-        | summarize Checkpoints=makelist(Checkpoints)
-    )
-   ) on CorrelationId
-| project-away CorrelationId1, CorrelationId2
-| order by  TimeGenerated desc
-```
 
 若要尋找單一使用者的所有連接：
 
@@ -199,7 +163,6 @@ WVDConnections
 |sort by TimeGenerated asc, CorrelationId
 |summarize dcount(CorrelationId) by bin(TimeGenerated, 1d)
 ```
-
 
 若要依使用者尋找會話持續時間：
 
@@ -224,7 +187,7 @@ WVDErrors
 |take 100
 ```
 
-若要找出是否發生特定的錯誤：
+若要找出是否有其他使用者發生特定的錯誤：
 
 ```kusto
 WVDErrors
@@ -232,27 +195,7 @@ WVDErrors
 | summarize count(UserName) by CodeSymbolic
 ```
 
-若要尋找所有使用者的錯誤發生：
 
-```kusto
-WVDErrors
-| where ServiceError =="false"
-| summarize usercount = count(UserName) by CodeSymbolic
-| sort by usercount desc
-| render barchart
-```
-
-若要查詢使用者已開啟的應用程式，請執行此查詢：
-
-```kusto
-WVDCheckpoints
-| where TimeGenerated > ago(7d)
-| where Name == "LaunchExecutable"
-| extend App = parse_json(Parameters).filename
-| summarize Usage=count(UserName) by tostring(App)
-| sort by Usage desc
-| render columnchart
-```
 >[!NOTE]
 >- 當使用者開啟完整桌面時，其在會話中的應用程式使用量不會在 WVDCheckpoints 資料表中追蹤為檢查點。
 >- [WVDConnections] 資料表中的 [ResourcesAlias] 資料行會顯示使用者是否已連線至完整桌面或已發佈的應用程式。 此資料行只會顯示其在連線期間開啟的第一個應用程式。 使用者開啟的任何已發佈應用程式都會在 WVDCheckpoints 中進行追蹤。

@@ -1,5 +1,5 @@
 ---
-title: 針對服務連線 Windows 虛擬桌面進行疑難排解 - Azure
+title: 針對服務連線 Windows 虛擬桌面秋季 2019-Azure 進行疑難排解
 description: 如何解決在 Windows 虛擬桌面租用戶環境中設定用戶端連線時的問題。
 services: virtual-desktop
 author: Heidilohr
@@ -8,13 +8,14 @@ ms.topic: troubleshooting
 ms.date: 05/20/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 356506224a0273eeea65f0f901fbc79c338498d2
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: ad5e740a2874d398f3947fe755024bedc897ec73
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743609"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085787"
 ---
-# <a name="windows-virtual-desktop-service-connections"></a>Windows 虛擬桌面服務連線
+# <a name="troubleshoot-windows-virtual-desktop-service-connections"></a>針對 Windows 虛擬桌面服務連線進行疑難排解
 
 >[!IMPORTANT]
 >此內容適用於不支援 Azure Resource Manager Windows 虛擬桌面物件的 2019 年秋季版本。 如果您嘗試管理 2020 年春季版更新中引進的 Azure Resource Manager Windows 虛擬桌面物件，請參閱[這篇文章](../troubleshoot-service-connection.md)。

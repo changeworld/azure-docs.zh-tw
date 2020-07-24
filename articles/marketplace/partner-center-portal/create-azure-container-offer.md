@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mingshen
 ms.author: mingshen
 ms.date: 06/17/2020
-ms.openlocfilehash: cea4a43724629793123098084098299e3915be7c
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: c659bbe3e5f5645bb42b3a9c94a5e5fb7ebe75f0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86109641"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086467"
 ---
 # <a name="create-an-azure-container-offer-in-azure-marketplace"></a>在 Azure Marketplace 中建立 Azure 容器供應專案
 
@@ -250,13 +250,13 @@ ms.locfileid: "86109641"
 
 ### <a name="plan-overview"></a>方案概觀
 
-此索引標籤可讓您在相同供應項目中提供不同的方案選項。 這些方案先前稱為 SKU 或庫存單位。 方案可能會因可用的雲端而有所不同，例如全域雲端、Government 雲端，以及方案所參考的映像。 若要在商業市集中列出您的供應項目，至少必須設定一個方案。
+此索引標籤可讓您在相同供應項目中提供不同的方案選項。 方案（先前稱為 Sku）的不同之處在于有哪些雲端可供使用，例如全域雲端、政府雲端，以及方案所參考的映射。 若要在商業市集中列出您的供應項目，至少必須設定一個方案。
 
 建立方案之後，隨即顯示 [方案概觀] 索引標籤：
 
 - 方案名稱
 - 定價模式
-- 雲端可用性 (全域或 Government)
+- Azure 區域（全球或政府）
 - 目前的發佈狀態
 - 任何可用的動作
 
@@ -293,7 +293,7 @@ Azure 容器供應專案的所有方案都會自動在**Azure 全域**提供。 
 
 #### <a name="azure-government-certifications"></a>Azure Government 認證
 
-只有在 [**雲端可用性**] 下選取 [ **Azure Government** ] 時，才會看到此選項。
+只有在 [ **Azure 區域**] 底下選取 [ **Azure Government** ] 時，才會看到此選項。
 
 Azure Government 服務會處理受限於特定政府法規和需求的資料。 例如，FedRAMP、NIST 800.171 (DIB)、ITAR、IRS 1075、DoD L4 和 CJIS。
 

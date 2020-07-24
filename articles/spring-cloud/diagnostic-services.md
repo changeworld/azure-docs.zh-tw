@@ -6,11 +6,13 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: brendm
-ms.openlocfilehash: 57850b45820ec259337a8ad5b67bfebfd6762c24
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-java
+ms.openlocfilehash: 56f392210aac6045a9dc8cc3522d36092162f26c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84790580"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086110"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>使用診斷設定來分析記錄和計量
 
@@ -27,7 +29,7 @@ ms.locfileid: "84790580"
 
 ## <a name="logs"></a>記錄
 
-|記錄檔 | 說明 |
+|Log | 描述 |
 |----|----|
 | **ApplicationConsole** | 所有客戶應用程式的主控台記錄。 |
 | **SystemLogs** | 目前，只有此類別中的[春季 Cloud Config Server](https://cloud.spring.io/spring-cloud-config/reference/html/#_spring_cloud_config_server)記錄。 |

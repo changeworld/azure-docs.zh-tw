@@ -3,17 +3,17 @@ title: 建立 Azure Image Builder 範本 (預覽)
 description: 了解如何建立範本以搭配 Azure Image Builder 使用。
 author: danielsollondon
 ms.author: danis
-ms.date: 06/23/2020
+ms.date: 07/09/2020
 ms.topic: article
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: cynthn
-ms.openlocfilehash: 191f0468a01c98ec60b85ea7aca6333807bf4b80
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: d48153fa747ed9757eb8467eaf1d7c17cde3630e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86221199"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085583"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>預覽：建立 Azure Image Builder 範本 
 
@@ -24,7 +24,7 @@ Azure Image Builder 會使用 .json 檔案，將資訊傳遞至 Image Builder �
 ```json
  { 
     "type": "Microsoft.VirtualMachineImages/imageTemplates", 
-    "apiVersion": "2019-05-01-preview", 
+    "apiVersion": "2020-02-14", 
     "location": "<region>", 
     "tags": {
         "<name": "<value>",
@@ -39,9 +39,8 @@ Azure Image Builder 會使用 .json 檔案，將資訊傳遞至 Image Builder �
             "vmSize": "<vmSize>",
             "osDiskSizeGB": <sizeInGB>,
             "vnetConfig": {
-                "name": "<vnetName>",
-                "subnetName": "<subnetName>",
-                "resourceGroupName": "<vnetRgName>"
+                "subnetId": "/subscriptions/<subscriptionID>/resourceGroups/<vnetRgName>/providers/Microsoft.Network/virtualNetworks/<vnetName>/subnets/<subnetName>"
+                }
             },
         "source": {}, 
         "customize": {}, 
@@ -54,11 +53,11 @@ Azure Image Builder 會使用 .json 檔案，將資訊傳遞至 Image Builder �
 
 ## <a name="type-and-api-version"></a>類型和 API 版本
 
-`type` 是資源類型，其必須為 `"Microsoft.VirtualMachineImages/imageTemplates"`。 當 API 變更時，`apiVersion` 會隨著時間變更，但應該是 `"2019-05-01-preview"` 以供預覽。
+`type` 是資源類型，其必須為 `"Microsoft.VirtualMachineImages/imageTemplates"`。 當 API 變更時，`apiVersion` 會隨著時間變更，但應該是 `"2020-02-14"` 以供預覽。
 
 ```json
     "type": "Microsoft.VirtualMachineImages/imageTemplates",
-    "apiVersion": "2019-05-01-preview",
+    "apiVersion": "2020-02-14",
 ```
 
 ## <a name="location"></a>Location
@@ -88,7 +87,7 @@ Azure Image Builder 會使用 .json 檔案，將資訊傳遞至 Image Builder �
 
 ## <a name="osdisksizegb"></a>osDiskSizeGB
 
-根據預設，Image Builder 不會變更映像的大小，其會使用來源映像的大小。 您**只能**增加 OS 磁片的大小 (Win 和 Linux) ，這是選擇性的，值為0表示保留與來源映射相同的大小。 您無法將 OS 磁片大小減少為小於來源映射的大小。
+根據預設，Image Builder 不會變更映像的大小，其會使用來源映像的大小。 您**只能**增加 OS 磁片（Win 和 Linux）的大小，這是選擇性的，值為0表示保留與來源映射相同的大小。 您無法將 OS 磁片大小減少為小於來源映射的大小。
 
 ```json
  {
@@ -101,9 +100,8 @@ Azure Image Builder 會使用 .json 檔案，將資訊傳遞至 Image Builder �
 
 ```json
     "vnetConfig": {
-        "name": "<vnetName>",
-        "subnetName": "<subnetName>",
-        "resourceGroupName": "<vnetRgName>"
+        "subnetId": "/subscriptions/<subscriptionID>/resourceGroups/<vnetRgName>/providers/Microsoft.Network/virtualNetworks/<vnetName>/subnets/<subnetName>"
+        }
     }
 ```
 ## <a name="tags"></a>Tags
@@ -121,9 +119,8 @@ Azure Image Builder 會使用 .json 檔案，將資訊傳遞至 Image Builder �
 如需詳細資訊，請參閱[定義資源相依性](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-define-dependencies#dependson)。
 
 ## <a name="identity"></a>身分識別
-根據預設，Image Builder 支援使用指令碼，或從多個位置複製檔案，例如 GitHub 和 Azure 儲存體。 這些項目必須可公開存取，才得以使用。
 
-您也可以使用您所定義的 Azure 使用者指派的受控識別，只要至少將 Azure 儲存體帳戶的「儲存體 Blob 資料讀取者」授予該身分識別，即可允許 Image Builder 存取 Azure 儲存體。 這表示您不需要讓儲存體 Blob 可供外部存取，或設定 SAS 權杖。
+必要-若要讓映射產生器擁有讀取/寫入映射的許可權，請從 Azure 儲存體讀取腳本，您必須建立具有個別資源許可權的 Azure 使用者指派身分識別。 如需有關「映射產生器」許可權的工作方式和相關步驟的詳細資訊，請參閱[檔](https://github.com/danielsollondon/azvmimagebuilder/blob/master/aibPermissions.md#azure-vm-image-builder-permissions-explained-and-requirements)。
 
 
 ```json
@@ -135,9 +132,10 @@ Azure Image Builder 會使用 .json 檔案，將資訊傳遞至 Image Builder �
         },
 ```
 
-如需完整範例，請參閱[使用 Azure 使用者指派的受控識別來存取 Azure 儲存體中的檔案](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage)。
 
-Image Builder 支援使用者指派的身分識別：•   僅支援單一身分識別•   不支援自訂網域名稱
+影像產生器支援使用者指派的身分識別：
+* 僅支援單一身分識別
+* 不支援自訂功能變數名稱
 
 若要深入了解，請參閱[什麼是 Azure 資源的受控識別？](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。
 如需部署此功能的詳細資訊，請參閱[使用 Azure CLI 在 Azure VM 上設定 Azure 資源的受控識別](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity)。
@@ -153,11 +151,6 @@ API 需要可定義映像建置來源的 'SourceType'，目前有三種類型：
 
 > [!NOTE]
 > 使用現有的 Windows 自訂映射時，您可以在單一 Windows 映像上執行 Sysprep 命令最多8次，如需詳細資訊，請參閱[Sysprep](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep)檔。
-
-### <a name="iso-source"></a>ISO 來源
-我們正要從 Image Builder 中淘汰這項功能，因為現在有 [RHEL 自備訂用帳戶映像](https://docs.microsoft.com/azure/virtual-machines/workloads/redhat/byos)，請檢閱下列時間軸：
-    * 2020 年 3 月 31 日 - 資源提供者現在不再接受含有 RHEL ISO 來源的映像範本。
-    * 2020 年 4 月 30 日 - 不再處理含有 RHEL ISO 來源的映像範本。
 
 ### <a name="platformimage-source"></a>PlatformImage 來源 
 Azure Image Builder 支援 Windows Server 和用戶端，以及 Linux Azure Marketplace 映像，請參閱[這裡](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview#os-support)以取得完整清單。 
@@ -181,6 +174,21 @@ az vm image list -l westus -f UbuntuServer -p Canonical --output table –-all
 
 您可以使用「最新」版本，系統會在進行映像建置時評估版本，而不是在提交範本時評估。 如果您使用此功能搭配共享映像庫目的地，則可避免重新提交範本，而且定期重新執行映像建置，以便從最新的映像重建您的映像。
 
+#### <a name="support-for-market-place-plan-information"></a>支援市場計畫資訊
+您也可以指定方案資訊，例如：
+```json
+    "source": {
+        "type": "PlatformImage",
+        "publisher": "RedHat",
+        "offer": "rhel-byos",
+        "sku": "rhel-lvm75",
+        "version": "latest",
+        "planInfo": {
+            "planName": "rhel-lvm75",
+            "planProduct": "rhel-byos",
+            "planPublisher": "redhat"
+       }
+```
 ### <a name="managedimage-source"></a>ManagedImage 來源
 
 將來源映像設定為一般化 VHD 或 VM 的現有受控映像。 來源受控映像必須屬於受支援的 OS，且位於與 Azure Image Builder 範本相同的區域中。 
@@ -206,6 +214,7 @@ az vm image list -l westus -f UbuntuServer -p Canonical --output table –-all
 ```
 
 `imageVersionId` 應該是映像版本的 ResourceId。 使用 [az sig image-version list](/cli/azure/sig/image-version#az-sig-image-version-list) 來列出映像版本。
+
 
 ## <a name="properties-buildtimeoutinminutes"></a>屬性：buildTimeoutInMinutes
 
@@ -254,7 +263,9 @@ Image Builder 支援多個「自訂工具」。 自訂工具是用來自訂映�
 
  
 customize 區段是一個陣列。 Azure Image Builder 將會循序執行自訂工具。 任何自訂工具中的任何失敗都將導致建置程序失敗。 
- 
+
+> [!NOTE]
+> 可以在影像範本定義中查看內嵌命令，並在協助支援案例時 Microsoft 支援服務。 如果您有機密資訊，則應該將它移到 Azure 儲存體中的腳本，其中的存取需要驗證。
  
 ### <a name="shell-customizer"></a>Shell 自訂工具
 
@@ -293,7 +304,7 @@ Customize 屬性：
 對於要以超級使用者權限執行的命令，必須在其前面加上 `sudo`。
 
 > [!NOTE]
-> 以 RHEL ISO 來源執行 Shell 自訂工具時，您必須確保第一個自訂 Shell 會在進行任何自訂之前，先處理 Red Hat 權利伺服器的註冊。 完成自訂後，指令碼應會向權利伺服器取消註冊。
+> 內嵌命令會儲存為映射範本定義的一部分，您可以在傾印映射定義時看到這些專案，而且在進行疑難排解時，Microsoft 支援服務也會看到這些事件。 如果您有敏感性的命令或值，強烈建議將它們移到腳本中，然後使用使用者身分識別向 Azure 儲存體進行驗證。
 
 ### <a name="windows-restart-customizer"></a>Windows 重新啟動自訂工具 
 重新啟動自訂工具可讓您重新啟動 Windows VM，並等候其重新上線，這可讓您安裝需要重新啟動的軟體。  
@@ -485,7 +496,7 @@ runOutputName=<runOutputName>
 
 az resource show \
         --ids "/subscriptions/$subscriptionID/resourcegroups/$imageResourceGroup/providers/Microsoft.VirtualMachineImages/imageTemplates/ImageTemplateLinuxRHEL77/runOutputs/$runOutputName"  \
-        --api-version=2019-05-01-preview
+        --api-version=2020-02-14
 ```
 
 輸出：
@@ -569,13 +580,22 @@ Azure 共用映像庫是新的映像管理服務，可讓您管理映像區域�
 共用映像庫的 Distribute 屬性：
 
 - **type** - sharedImage  
-- **galleryImageId** – 共用映像庫的識別碼。 格式為：/subscriptions/ \<subscriptionId> /ResourceGroups/ \<resourceGroupName> /providers/Microsoft.Compute/galleries/ \<sharedImageGalleryName> /images/ \<imageGalleryName> 。
+- **galleryImageId** –共用映射資源庫的識別碼，可以用兩種格式來指定：
+    * 自動版本設定-影像產生器會為您產生單純版本號碼，這適用于當您想要從相同的範本中重建映射時：格式為： `/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Compute/galleries/<sharedImageGalleryName>/images/<imageGalleryName>` 。
+    * 明確版本控制-您可以傳入想要讓「映射產生器」使用的版本號碼。 格式為：`/subscriptions/<subscriptionID>/resourceGroups/<rgName>/providers/Microsoft.Compute/galleries/<sharedImageGalName>/images/<imageDefName>/versions/<version e.g. 1.1.1>`
+
 - **runOutputName**– 用於識別散發的唯一名稱。  
 - **artifactTags** - 選擇性使用者指定的索引鍵/值組標記。
-- **replicationRegions** - 用於複寫的區域陣列。 其中一個區域必須是映像庫部署所在的區域。
- 
+- **replicationRegions** - 用於複寫的區域陣列。 其中一個區域必須是映像庫部署所在的區域。 新增區域將會增加組建時間，因為在複寫完成之前，組建不會完成。
+- **excludeFromLatest** （選擇性）：這可讓您將所建立的映射版本標示為 SIG 定義中的最新版本，預設值為 ' false '。
+- **storageAccountType** （選擇性） AIB 支援針對要建立的映射版本指定這些類型的儲存體：
+    * "Standard_LRS"
+    * "Standard_ZRS"
+
+
 > [!NOTE]
-> 您可以在與映像庫不同的區域中使用 Azure Image Builder，但 Azure Image Builder 服務必須在資料中心之間傳輸映像，這會花費較長的時間。 Image Builder 會根據單調整數自動設定映像版本，您目前無法加以指定。 
+> 如果影像範本和參考的 `image definition` 位置不相同，您會看到建立影像的額外時間。 映射產生器目前沒有 `location` 映射版本資源的參數，我們將它從其父系中取得 `image definition` 。 例如，如果映射定義在 westus 中，而您想要將映射版本複寫至 eastus，則會將 blob 複製到 westus，從這種情況下，會建立 westus 中的映射版本資源，然後再複寫到 eastus。 若要避免額外的複寫時間，請確定 `image definition` 和影像範本位於相同的位置。
+
 
 ### <a name="distribute-vhd"></a>Distribute：VHD  
 您可以輸出至 VHD。 接著可以複製 VHD，並使用其發佈至 Azure MarketPlace，或搭配 Azure Stack 使用。  
@@ -608,8 +628,45 @@ az resource show \
 
 > [!NOTE]
 > 建立 VHD 後，請儘快將其複製到不同的位置。 VHD 會儲存在映像範本提交至 Azure Image Builder 服務時所建立的暫存資源群組的儲存體帳戶中。 如果您刪除映像範本，則會遺失 VHD。 
- 
+
+## <a name="image-template-operations"></a>影像範本作業
+
+### <a name="starting-an-image-build"></a>啟動映射組建
+若要啟動組建，您必須在映射範本資源上叫用 ' Run '，命令的範例 `run` 如下：
+
+```PowerShell
+Invoke-AzResourceAction -ResourceName $imageTemplateName -ResourceGroupName $imageResourceGroup -ResourceType Microsoft.VirtualMachineImages/imageTemplates -ApiVersion "2020-02-14" -Action Run -Force
+```
+
+
+```bash
+az resource invoke-action \
+     --resource-group $imageResourceGroup \
+     --resource-type  Microsoft.VirtualMachineImages/imageTemplates \
+     -n helloImageTemplateLinux01 \
+     --action Run 
+```
+
+### <a name="cancelling-an-image-build"></a>取消映射組建
+如果您執行的是您認為不正確的映射組建、等待使用者輸入，或您覺得無法成功完成，則可以取消組建。
+
+您可以隨時取消組建。 如果發佈階段已啟動，您仍然可以取消，但您將需要清除任何可能未完成的映射。 [取消] 命令不會等待 [取消] 完成，請 `lastrunstatus.runstate` 使用這些狀態[命令](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#get-statuserror-of-the-template-submission-or-template-build-status)來監視是否有取消進度。
+
+
+命令範例 `cancel` ：
+
+```powerShell
+Invoke-AzResourceAction -ResourceName $imageTemplateName -ResourceGroupName $imageResourceGroup -ResourceType Microsoft.VirtualMachineImages/imageTemplates -ApiVersion "2020-02-14" -Action Cancel -Force
+```
+
+```bash
+az resource invoke-action \
+     --resource-group $imageResourceGroup \
+     --resource-type  Microsoft.VirtualMachineImages/imageTemplates \
+     -n helloImageTemplateLinux01 \
+     --action Cancel 
+```
+
 ## <a name="next-steps"></a>後續步驟
 
 [Azure Image Builder GitHub](https://github.com/danielsollondon/azvmimagebuilder) 中有不同案例的範例 .json 檔案。
- 

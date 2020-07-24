@@ -7,11 +7,12 @@ ms.subservice: sizes
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 7dbc1f111225ecbe40329594479a8469f8bd8418
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 12c6246af59172b303cebd2d3344469f88ce1966
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84694703"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085736"
 ---
 # <a name="memory-optimized-dv2-and-dsv2-series"></a>記憶體優化 Dv2 和 Dsv2 系列
 
@@ -26,6 +27,10 @@ ACU：210 - 250
 進階儲存體：不支援
 
 進階儲存體快取：不支援
+
+即時移轉：支援
+
+記憶體保留更新：支援
 
 | 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大暫存儲存體輸送量： IOPS/讀取 MBps/寫入 MBps | 最大資料磁片/輸送量： IOPS | 最大 Nic/預期的網路頻寬（Mbps） |
 |---|---|---|---|---|---|---|
@@ -47,6 +52,10 @@ ACU：210 - 250 <sup>1</sup>
 進階儲存體：支援
 
 進階儲存體快取：支援
+
+即時移轉：支援
+
+記憶體保留更新：支援
 
 | 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大快取和暫存儲存體輸送量： IOPS/MBps （GiB 中的快取大小） | 最大取消快取的磁碟輸送量：IOPS/MBps | 最大 Nic/預期的網路頻寬（Mbps） |
 | --- | --- | --- | --- | --- | --- | --- | --- |

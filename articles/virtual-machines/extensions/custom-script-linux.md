@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 中的 Linux Vm 上執行自訂腳本
+title: 在 Azure 中的 Linux Vm 上執行自訂腳本擴充功能
 description: 使用自訂指令碼延伸模組 v2，將 Linux VM 設定工作自動化
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: mimckitt
-ms.openlocfilehash: 92bb254873669ae7c0894d633f17b5701b7ddc97
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 367116948034fd4bedbeec15e655a09b179865d6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82594724"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085719"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>搭配 Linux 虛擬機器使用 Azure 自訂指令碼擴充功能第 1 版
 自訂指令碼擴充功能第 2 版會在 Azure 虛擬機器上下載並執行指令碼。 此擴充功能適用於部署後設定、軟體安裝或其他任何設定/管理工作。 您可以從 Azure 儲存體或其他可存取的網際網路位置下載指令碼，或是將指令碼提供給擴充功能執行階段。 
@@ -38,14 +38,14 @@ Linux 自訂指令碼擴充功能有兩個：
 
 ### <a name="operating-system"></a>作業系統
 
-適用于 Linux 的自訂腳本擴充功能將在擴充功能支援的擴充功能 OS 上執行。如需詳細資訊，請參閱這[篇文章](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)。
+適用于 Linux 的自訂腳本擴充功能將在擴充功能支援的擴充功能 OS 上執行。如需詳細資訊，請參閱這[篇文章](../linux/endorsed-distros.md)。
 
 ### <a name="script-location"></a>指令碼位置
 
 您可以利用擴充功能來使用 Azure Blob 儲存體認證，以存取 Azure Blob 儲存體。 或者，指令碼可以位於任何位置，前提是 VM 可以路由傳送至該端點，例如 GitHub、內部檔案伺服器等。
 
 ### <a name="internet-connectivity"></a>網際網路連線
-如果您需要在外部下載指令碼 (例如 GitHub 或 Azure 儲存體)，則必須開放額外的防火牆/網路安全性群組連接埠。 例如，如果您的腳本位於 Azure 儲存體中，您可以使用 Azure NSG 服務標記來允許存取[儲存體](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)。
+如果您需要在外部下載指令碼 (例如 GitHub 或 Azure 儲存體)，則必須開放額外的防火牆/網路安全性群組連接埠。 例如，如果您的腳本位於 Azure 儲存體中，您可以使用 Azure NSG 服務標記來允許存取[儲存體](../../virtual-network/security-overview.md#service-tags)。
 
 如果您的指令碼是在本機伺服器上，則仍然可能需要開放額外的防火牆/網路安全性群組連接埠。
 
@@ -56,7 +56,8 @@ Linux 自訂指令碼擴充功能有兩個：
 * 指令碼可執行的時間為 90 分鐘。若超過這個時間，將會導致擴充功能佈建失敗。
 * 請不要在指令碼內放置重新開機指令，這會造成正在安裝的其他擴充功能發生問題。也不要放置後續重新開機指令，因為擴充功能在重新啟動後不會繼續執行。 
 * 如果您的腳本將會造成重新開機，則請安裝應用程式並執行腳本等。您應該使用 Cron 作業，或使用 DSC、Chef、Puppet 擴充功能之類的工具來排程重新開機。
-* 擴充功能只會執行指令碼一次。如果您想要在每次開機時執行指令碼，則可以使用 [cloud-init image](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init)，並使用 [Scripts Per Boot](https://cloudinit.readthedocs.io/en/latest/topics/modules.html#scripts-per-boot) 模組。 或者，您可以使用腳本來建立 SystemD 服務單位。
+* 擴充功能只會執行指令碼一次。如果您想要在每次開機時執行指令碼，則可以使用 [cloud-init image](../linux/using-cloud-init.md)，並使用 [Scripts Per Boot](https://cloudinit.readthedocs.io/en/latest/topics/modules.html#scripts-per-boot) 模組。 或者，您可以使用腳本來建立 SystemD 服務單位。
+* 您只能將一個版本的擴充功能套用至 VM。 若要執行第二個自訂腳本，您必須移除自訂腳本延伸模組，並使用更新後的腳本重新套用它。 
 * 如果您想要排程指令碼的執行時間，則應該使用擴充功能來建立 Cron 作業。 
 * 當指令碼正在執行時，只能從 Azure 入口網站或 CLI 看到「正在轉換」擴充功能狀態。 如果您需要執行中指令碼更頻繁的狀態更新，便必須建立自己的解決方案。
 * 自訂腳本擴充功能原本就不支援 proxy 伺服器，不過您可以使用檔案傳輸工具，在您的腳本中支援 proxy 伺服器，例如*捲曲*。 
@@ -134,7 +135,7 @@ Linux 自訂指令碼擴充功能有兩個：
 * `fileUris`：(選擇性，字串陣列) 要下載之檔案的 URL。
 * `storageAccountName`：(選用，字串) 儲存體帳戶的名稱。 如果您指定儲存體證明資料，則所有 `fileUris` 都必須是 Azure Blob 的 URL。
 * `storageAccountKey`：(選用，字串) 儲存體帳戶的存取金鑰
-* `managedIdentity`：(選用，JSON 物件) 用來下載檔案的[受控識別](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
+* `managedIdentity`：(選用，JSON 物件) 用來下載檔案的[受控識別](../../active-directory/managed-identities-azure-resources/overview.md)
   * `clientId`：(選用，字串) 受控識別的用戶端識別碼
   * `objectId`：(選用，字串) 受控識別的物件識別碼
 
@@ -212,9 +213,9 @@ CustomScript 會使用下列演算法來執行指令碼。
 > [!NOTE]
 > **必須**在受保護的設定中，才能指定此屬性。
 
-CustomScript （版本2.1 後）支援從 "fileUris" 設定中提供的 Url 下載檔案的[受控識別](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。 其可讓 CustomScript 存取 Azure 儲存體私人 Blob 或容器，而不需要使用者傳遞 SAS 權杖或儲存體帳戶金鑰之類的秘密。
+CustomScript （版本2.1 後）支援從 "fileUris" 設定中提供的 Url 下載檔案的[受控識別](../../active-directory/managed-identities-azure-resources/overview.md)。 其可讓 CustomScript 存取 Azure 儲存體私人 Blob 或容器，而不需要使用者傳遞 SAS 權杖或儲存體帳戶金鑰之類的秘密。
 
-若要使用這項功能，使用者必須將[系統指派的](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-system-assigned-identity)或[使用者指派的](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-user-assigned-identity)身分識別新增至應執行 CustomScript 的 VM 或 VMSS，並[向受控識別授與 Azure 儲存體容器或 Blob 的存取權](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/tutorial-vm-windows-access-storage#grant-access)。
+若要使用這項功能，使用者必須將[系統指派的](../../app-service/overview-managed-identity.md?tabs=dotnet#add-a-system-assigned-identity)或[使用者指派的](../../app-service/overview-managed-identity.md?tabs=dotnet#add-a-user-assigned-identity)身分識別新增至應執行 CustomScript 的 VM 或 VMSS，並[向受控識別授與 Azure 儲存體容器或 Blob 的存取權](../../active-directory/managed-identities-azure-resources/tutorial-vm-windows-access-storage.md#grant-access)。
 
 若要在目標 VM/VMSS 上使用系統指派的身分識別，請將 [managedidentity] 欄位設定為空的 JSON 物件。 
 

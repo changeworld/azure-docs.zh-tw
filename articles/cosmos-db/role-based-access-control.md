@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/03/2020
 ms.author: mjbrown
-ms.openlocfilehash: cbb97dd260e5aee53595afc24e577ce08334e2b2
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 858e185a0e4fa406fb4645475673acc13a0d37f3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027013"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086668"
 ---
 # <a name="role-based-access-control-in-azure-cosmos-db"></a>Azure Cosmos DB 中的角色型存取控制
 
@@ -41,14 +41,14 @@ Azure 入口網站中的 [**存取控制（IAM）** ] 窗格用來設定 Azure C
 
 除了內建角色以外，使用者也可以在 Azure 中建立[自訂角色](../role-based-access-control/custom-roles.md)，並將這些角色套用至其 Active Directory 租使用者中所有訂用帳戶的服務主體。 自訂角色可讓使用者以一組自訂的資源提供者作業來建立 RBAC 角色定義。 若要瞭解哪些作業可用來建立的自訂角色 Azure Cosmos DB 參閱[Azure Cosmos DB 資源提供者作業](../role-based-access-control/resource-provider-operations.md#microsoftdocumentdb)
 
-## <a name="preventing-changes-from-cosmos-sdk"></a>防止來自 Cosmos SDK 的變更
+## <a name="preventing-changes-from-the-azure-cosmos-db-sdks"></a><a id="prevent-sdk-changes"></a>防止 Azure Cosmos DB Sdk 的變更
+
+Azure Cosmos DB 資源提供者可以鎖定，以防止用戶端使用帳戶金鑰（也就是透過 Azure Cosmos SDK 連線的應用程式）所進行的資源變更。 這也包括從 Azure 入口網站進行的變更。 對於需要更高程度控制和管理生產環境的使用者而言，這項功能可能是理想的做法。 防止 SDK 的變更也會啟用控制平面作業的資源鎖定和診斷記錄等功能。 從 Azure Cosmos DB SDK 連接的用戶端將無法變更 Azure Cosmos 帳戶、資料庫、容器和輸送量的任何屬性。 涉及讀取和寫入資料至 Cosmos 容器本身的作業不會受到影響。
+
+啟用這項功能時，任何資源的變更都只能從具有正確 RBAC 角色的使用者進行，並 Azure Active Directory 認證，包括受控服務識別。
 
 > [!WARNING]
-> 啟用此功能可能會對您的應用程式造成危險的影響。 請先徹底閱讀，再啟用此功能。
-
-您可以鎖定 Azure Cosmos DB 資源提供者，以防止任何使用帳戶金鑰（也就是透過 Cosmos SDK 連線的應用程式）連線的任何用戶端所做的資源變更。 這也包括從 Azure 入口網站進行的變更。 對於想要在生產環境中使用更高控制和治理的使用者，以及啟用資源鎖定之類的功能，以及啟用控制平面作業的診斷記錄，這可能是很好的做法。 透過 Cosmos DB SDK 連接的用戶端將無法變更 Cosmos 帳戶、資料庫、容器和輸送量的任何屬性。 包含讀取和寫入資料至 Cosmos 容器本身的作業不會受到影響。
-
-設定時，您只能從具有適當 RBAC 角色的使用者，以及包含受控服務識別的 Azure Active Directory 認證，對任何資源進行變更。
+> 啟用此功能可能會對您的應用程式造成影響。 啟用之前，請確定您瞭解其影響。
 
 ### <a name="check-list-before-enabling"></a>啟用前檢查清單
 
@@ -56,7 +56,7 @@ Azure 入口網站中的 [**存取控制（IAM）** ] 窗格用來設定 Azure C
 
 - Cosmos 帳戶的任何變更，包括任何屬性或新增或移除區域。
 
-- 建立、刪除子資源（例如資料庫和容器）。 這包括其他 API 的資源，例如 Cassandra、MongoDB、Gremlin 和資料表資源。
+- 建立、刪除子資源（例如資料庫和容器）。 這包括適用于其他 Api 的資源，例如 Cassandra、MongoDB、Gremlin 和資料表資源。
 
 - 正在更新資料庫或容器層級資源的輸送量。
 
@@ -64,11 +64,11 @@ Azure 入口網站中的 [**存取控制（IAM）** ] 窗格用來設定 Azure C
 
 - 修改預存程式、觸發程式或使用者定義函數。
 
-如果您的應用程式（或透過 Azure 入口網站的使用者）執行上述任何動作，則必須將其遷移至透過[ARM 範本](manage-sql-with-resource-manager.md)、 [PowerShell](manage-with-powershell.md)、 [Azure CLI](manage-with-cli.md)、 [REST](/rest/api/cosmos-db-resource-provider/)或[Azure 管理程式庫](https://github.com/Azure-Samples/cosmos-management-net)執行。 請注意，Azure 管理有[多種語言](https://docs.microsoft.com/azure/?product=featured#languages-and-tools)版本。
+如果您的應用程式（或透過 Azure 入口網站的使用者）執行上述任何動作，則必須將其遷移至透過[ARM 範本](manage-sql-with-resource-manager.md)、 [PowerShell](manage-with-powershell.md)、 [Azure CLI](manage-with-cli.md)、REST 或[Azure 管理程式庫](https://github.com/Azure-Samples/cosmos-management-net)執行。 請注意，Azure 管理有[多種語言](https://docs.microsoft.com/azure/?product=featured#languages-and-tools)版本。
 
 ### <a name="set-via-arm-template"></a>透過 ARM 範本設定
 
-若要使用 ARM 範本來設定此屬性，請更新現有的範本，或為您目前的部署匯出新範本，然後將加入 `"disableKeyBasedMetadataWriteAccess": true` 至 databaseAccounts 資源的屬性。 以下是使用此屬性設定之 Azure Resource Manager 範本的基本範例。
+若要使用 ARM 範本設定此屬性，請更新現有的範本，或為您目前的部署匯出新的範本，然後將加入 `"disableKeyBasedMetadataWriteAccess": true` 至資源的屬性 `databaseAccounts` 。 以下是使用此屬性設定之 Azure Resource Manager 範本的基本範例。
 
 ```json
 {
@@ -93,7 +93,7 @@ Azure 入口網站中的 [**存取控制（IAM）** ] 窗格用來設定 Azure C
 
 ### <a name="set-via-azure-cli"></a>設定 via Azure CLI
 
-若要使用 Azure CLI，請使用下列命令：
+若要使用 Azure CLI 來啟用，請使用下列命令：
 
 ```azurecli-interactive
 az cosmosdb update  --name [CosmosDBAccountName] --resource-group [ResourceGroupName]  --disable-key-based-metadata-write-access true
@@ -111,5 +111,5 @@ Update-AzCosmosDBAccount -ResourceGroupName [ResourceGroupName] -Name [CosmosDBA
 ## <a name="next-steps"></a>後續步驟
 
 - [什麼是 Azure 角色型存取控制（Azure RBAC）](../role-based-access-control/overview.md)
-- [適用於 Azure 資源的自訂角色](../role-based-access-control/custom-roles.md)
+- [Azure 自訂角色](../role-based-access-control/custom-roles.md) (機器翻譯)
 - [Azure Cosmos DB 資源提供者作業](../role-based-access-control/resource-provider-operations.md#microsoftdocumentdb)

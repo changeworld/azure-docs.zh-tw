@@ -6,12 +6,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 01/30/2019
-ms.openlocfilehash: a0084c3e8185f615e7ac2a2b8c212f1ebf022c08
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.date: 07/17/2020
+ms.openlocfilehash: e098182c000cbe05df533434a41c55b797ef876f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683293"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086654"
 ---
 # <a name="pivot-transformation-in-mapping-data-flow"></a>對應資料流中的樞紐轉換
 
@@ -19,6 +20,8 @@ ms.locfileid: "83683293"
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 使用樞紐轉換，從單一資料行的唯一資料列值建立多個資料行。 樞紐是匯總轉換，您可以在其中選取群組依據資料行，並使用[彙總函式](data-flow-expression-functions.md#aggregate-functions)產生樞紐分析表。
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4C4YN]
 
 ## <a name="configuration"></a>組態
 
