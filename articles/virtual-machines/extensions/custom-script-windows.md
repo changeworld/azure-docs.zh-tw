@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/02/2019
 ms.author: robreed
-ms.openlocfilehash: b85aab2491f4186cf4d6ee73144bc235a40cdeac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5ab8d45c12d7b2c408328e306b1a6961cbe5272a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85478479"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87010932"
 ---
 # <a name="custom-script-extension-for-windows"></a>Windows 的自訂指令碼延伸模組
 
@@ -144,7 +144,7 @@ ms.locfileid: "85478479"
 * `timestamp` (選擇性，32 位元整數) 只有在透過變更此欄位的值來觸發指令碼的重新執行時，才需使用此欄位。  任何整數值都是可接受的；只要與先前的值不同即可。
 * `storageAccountName`：(選用，字串) 儲存體帳戶的名稱。 如果您指定儲存體證明資料，則所有 `fileUris` 都必須是 Azure Blob 的 URL。
 * `storageAccountKey`：(選用，字串) 儲存體帳戶的存取金鑰
-* `managedIdentity`：(選用，JSON 物件) 用來下載檔案的[受控識別](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
+* `managedIdentity`：(選用，JSON 物件) 用來下載檔案的[受控識別](../../active-directory/managed-identities-azure-resources/overview.md)
   * `clientId`：(選用，字串) 受控識別的用戶端識別碼
   * `objectId`：(選用，字串) 受控識別的物件識別碼
 
@@ -160,9 +160,9 @@ ms.locfileid: "85478479"
 > [!NOTE]
 > **必須**在受保護的設定中，才能指定此屬性。
 
-CustomScript (1.10 版之後) 支援使用[受控識別](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)來從「fileUris」設定中提供的 URL 下載檔案。 其可讓 CustomScript 存取 Azure 儲存體私人 Blob 或容器，而不需要使用者傳遞 SAS 權杖或儲存體帳戶金鑰之類的秘密。
+CustomScript (1.10 版之後) 支援使用[受控識別](../../active-directory/managed-identities-azure-resources/overview.md)來從「fileUris」設定中提供的 URL 下載檔案。 其可讓 CustomScript 存取 Azure 儲存體私人 Blob 或容器，而不需要使用者傳遞 SAS 權杖或儲存體帳戶金鑰之類的秘密。
 
-若要使用這項功能，使用者必須將[系統指派的](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-system-assigned-identity)或[使用者指派的](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-user-assigned-identity)身分識別新增至應執行 CustomScript 的 VM 或 VMSS，並[向受控識別授與 Azure 儲存體容器或 Blob 的存取權](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/tutorial-vm-windows-access-storage#grant-access)。
+若要使用這項功能，使用者必須將[系統指派的](../../app-service/overview-managed-identity.md?tabs=dotnet#add-a-system-assigned-identity)或[使用者指派的](../../app-service/overview-managed-identity.md?tabs=dotnet#add-a-user-assigned-identity)身分識別新增至應執行 CustomScript 的 VM 或 VMSS，並[向受控識別授與 Azure 儲存體容器或 Blob 的存取權](../../active-directory/managed-identities-azure-resources/tutorial-vm-windows-access-storage.md#grant-access)。
 
 若要在目標 VM/VMSS 上使用系統指派的身分識別，請將 [managedidentity] 欄位設定為空的 JSON 物件。 
 
@@ -283,7 +283,7 @@ The response content cannot be parsed because the Internet Explorer engine is no
 ```
 ## <a name="virtual-machine-scale-sets"></a>虛擬機器擴展集
 
-若要在擴展集上部署自訂指令碼擴充功能，請參閱 [Add-AzVmssExtension](https://docs.microsoft.com/powershell/module/az.compute/add-azvmssextension?view=azps-3.3.0)
+若要在擴展集上部署自訂指令碼擴充功能，請參閱 [Add-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension?view=azps-3.3.0)
 
 ## <a name="classic-vms"></a>傳統 VM
 
@@ -301,7 +301,7 @@ The response content cannot be parsed because the Internet Explorer engine is no
 
 ### <a name="powershell"></a>PowerShell
 
-您可以使用 [Set-AzureVMCustomScriptExtension](/powershell/module/servicemanagement/azure/set-azurevmcustomscriptextension) Cmdlet，將自訂指令碼擴充功能新增至現有虛擬機器。
+您可以使用 [Set-AzureVMCustomScriptExtension](/powershell/module/servicemanagement/azure.service/set-azurevmcustomscriptextension) Cmdlet，將自訂指令碼擴充功能新增至現有虛擬機器。
 
 ```powershell
 # define your file URI

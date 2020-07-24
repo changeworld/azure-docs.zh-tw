@@ -7,12 +7,12 @@ ms.subservice: diagnostic-extension
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: bwren
-ms.openlocfilehash: 10d4c2d6650502510bd160cc452ac2289130263b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a3e9a14edf9235baff2955c9f8419dc78e45755c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85549492"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87007974"
 ---
 # <a name="install-and-configure-windows-azure-diagnostics-extension-wad"></a>安裝和設定 Windows Azure 診斷擴充功能 (WAD)
 [Azure 診斷擴充功能](diagnostics-extension-overview.md)是 Azure 監視器中的代理程式，可收集來自客體作業系統的監視資料，以及 Azure 虛擬機器和其他計算資源的工作負載。 本文提供有關安裝和設定 Windows 診斷擴充功能的詳細資訊，以及說明如何在 Azure 儲存體帳戶中儲存資料。
@@ -77,7 +77,7 @@ ms.locfileid: "85549492"
 如需使用 Azure Resource Manager 範本佈署診斷擴充功能的相關資訊，請參閱[使用 Windows VM 和 Azure Resource Manager 範本進行監視和診斷](../../virtual-machines/extensions/diagnostics-template.md)。 
 
 ## <a name="azure-cli-deployment"></a>Azure CLI 部署
-Azure CLI 可使用 [az vm extension set](https://docs.microsoft.com/cli/azure/vm/extension?view=azure-cli-latest#az-vm-extension-set) 將Azure 診斷擴充功能部署至現有的虛擬機器，如下列範例所示。 
+Azure CLI 可使用 [az vm extension set](/cli/azure/vm/extension?view=azure-cli-latest#az-vm-extension-set) 將Azure 診斷擴充功能部署至現有的虛擬機器，如下列範例所示。 
 
 ```azurecli
 az vm extension set \
@@ -133,7 +133,7 @@ az vm extension set \
 
 
 ## <a name="powershell-deployment"></a>PowerShell 部署
-PowerShell 可使用 [Set-AzVMDiagnosticsExtension](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azurevmdiagnosticsextension) 將 Azure 診斷擴充功能部署至現有的虛擬機器，如下列範例所示。 
+PowerShell 可使用 [Set-AzVMDiagnosticsExtension](/powershell/module/servicemanagement/azure.service/set-azurevmdiagnosticsextension) 將 Azure 診斷擴充功能部署至現有的虛擬機器，如下列範例所示。 
 
 ```powershell
 Set-AzVMDiagnosticsExtension -ResourceGroupName "myvmresourcegroup" `

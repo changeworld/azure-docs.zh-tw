@@ -11,11 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 04/07/2020
 ms.author: juliako
-ms.openlocfilehash: e54944c0c10fb773a4a3141c0d3fb6524f288ae2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 70499ad354e2fafaac99fe46c1838a0be2813943
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987235"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011680"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>媒體服務 v3 常見問題
 
@@ -45,7 +46,7 @@ ms.locfileid: "84987235"
 
 ### <a name="what-is-the-recommended-method-to-process-videos"></a>建議用來處理影片的方法為何？
 
-使用[轉換](https://docs.microsoft.com/rest/api/media/transforms)可設定視訊編碼或分析的一般工作。 每個轉換都會描述配方或工作流程，以便處理您的視訊或音訊檔案。 「[作業](https://docs.microsoft.com/rest/api/media/jobs)」（Job）是媒體服務將轉換套用到輸入影片或音訊內容的實際要求。 建立轉換之後，您可以使用媒體服務 Api 或任何已發佈的 Sdk 提交作業。 如需詳細資訊，請參閱[轉換和作業](transforms-jobs-concept.md)。
+使用[轉換](/rest/api/media/transforms)可設定視訊編碼或分析的一般工作。 每個轉換都會描述配方或工作流程，以便處理您的視訊或音訊檔案。 「[作業](/rest/api/media/jobs)」（Job）是媒體服務將轉換套用到輸入影片或音訊內容的實際要求。 建立轉換之後，您可以使用媒體服務 Api 或任何已發佈的 Sdk 提交作業。 如需詳細資訊，請參閱[轉換和作業](transforms-jobs-concept.md)。
 
 ### <a name="i-uploaded-encoded-and-published-a-video-why-wont-the-video-play-when-i-try-to-stream-it"></a>我已上傳、編碼以及發佈視訊。 當我嘗試串流時，影片為什麼不會播放？
 
@@ -118,7 +119,7 @@ PlayReady、Widevine 和 FairPlay 等 DRM 系統都會針對用來解密內容�
 
 使用 Azure 媒體服務 Api 來設定授權/金鑰傳遞和加密您的資產（如[本範例](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs)所示）。
 
-如需詳細資訊，請參閱：
+如需詳細資訊，請參閱
 
 - [內容保護概觀](content-protection-overview.md)
 - [設計具有存取控制的多重 DRM 內容保護系統](design-multi-drm-system-with-access-control.md)
@@ -158,9 +159,9 @@ ASP.NET 播放器應用程式的最佳做法是使用 HTTPS，因此媒體播放
 
 * 在媒體服務 v3 中管理[實況活動](live-events-outputs-concept.md)。 
 * View （不管理） v3[資產](assets-concept.md)。 
-* [取得存取 api 的相關資訊](access-api-portal.md)。 
+* [取得存取 api 的相關資訊](./access-api-howto.md)。 
 
-針對所有其他管理工作（例如，[轉換和作業](transforms-jobs-concept.md)和[內容保護](content-protection-overview.md)），請使用[REST API](https://docs.microsoft.com/rest/api/media/)、 [Azure CLI](https://aka.ms/ams-v3-cli-ref)或其中一個支援的[sdk](media-services-apis-overview.md#sdks)。
+針對所有其他管理工作（例如，[轉換和作業](transforms-jobs-concept.md)和[內容保護](content-protection-overview.md)），請使用[REST API](/rest/api/media/)、 [Azure CLI](https://aka.ms/ams-v3-cli-ref)或其中一個支援的[sdk](media-services-apis-overview.md#sdks)。
 
 ### <a name="is-there-an-assetfile-concept-in-v3"></a>v3 中是否有 AssetFile 概念？
 
@@ -170,7 +171,7 @@ ASP.NET 播放器應用程式的最佳做法是使用 HTTPS，因此媒體播放
 
 ### <a name="where-did-client-side-storage-encryption-go"></a>用戶端儲存體加密怎麼不見了？
 
-我們現在建議您使用伺服器端儲存體加密（預設為開啟）。 如需詳細資訊，請參閱待用[資料的 Azure 儲存體服務加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)。
+我們現在建議您使用伺服器端儲存體加密（預設為開啟）。 如需詳細資訊，請參閱待用[資料的 Azure 儲存體服務加密](../../storage/common/storage-service-encryption.md)。
 
 ## <a name="offline-streaming"></a>離線串流
 
@@ -266,6 +267,6 @@ Google 的「Widevine DRM 架構總覽」定義了三個安全性層級。 不�
   * 由用戶端控制：播放機應用程式會自動選取或使用者選取 [視頻品質] 圖層和 [音訊播放軌] 來下載。
   * 服務控制：您可以使用 Azure 媒體服務中的動態資訊清單功能來建立（全域）篩選器，將 HLS 播放清單或虛線 MPD 限制為單一視頻品質層和選取的音軌。 然後，呈現給使用者的下載 URL 將包含此篩選準則。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 [媒體服務 v3 概觀](media-services-overview.md)

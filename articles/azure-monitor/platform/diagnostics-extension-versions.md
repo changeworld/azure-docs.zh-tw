@@ -6,11 +6,12 @@ ms.topic: reference
 author: bwren
 ms.author: bwren
 ms.date: 01/29/2020
-ms.openlocfilehash: 4dd91363cdebf18e6303238816e8269065a6a317
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 42924b4ac5493fc910079ca1f89a6195ccba55e1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77672237"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87007906"
 ---
 # <a name="windows-azure-diagnostics-extension-wad-configuration-schema-versions-and-history"></a>Windows Azure 診斷延伸模組（WAD）設定架構版本和歷程記錄
 本文提供隨附于 Microsoft Azure SDK 的[Windows Azure 診斷擴充功能（WAD）](diagnostics-extension-overview.md)架構版本的版本歷程記錄。  
@@ -45,7 +46,7 @@ ms.locfileid: "77672237"
 
 ### <a name="diagnostics-extension-111"></a>診斷擴充功能 1.11 版
 已新增 Azure 監視器接收的支援。 這個接收只適用於效能計數器。 能夠將在 VM、VMSS 或雲端服務上收集的效能計數器，傳送到 Azure 監視器作為自訂計量。 Azure 監視器接收支援：
-* 擷取透過 [Azure 監視器計量 API](https://docs.microsoft.com/rest/api/monitor/metrics/list) 傳送到 Azure 監視器的所有效能計數器。
+* 擷取透過 [Azure 監視器計量 API](/rest/api/monitor/metrics/list) 傳送到 Azure 監視器的所有效能計數器。
 * 透過 Azure 監視器中新的[統一的警示體驗](../../azure-monitor/platform/alerts-overview.md)，對傳送到 Azure 監視器的所有效能計數器設定警示
 * 將效能計數器中的萬用字元運算子視為計量上的「執行個體」維度。 例如，如果您收集了 "LogicalDisk(\*)/DiskWrites/sec" 計數器，就能夠為每個邏輯磁碟 (C:、D: 等等)，針對 Disk Writes/sec 在「執行個體」維度上進行繪製或建立警示。
 
@@ -189,4 +190,3 @@ ms.locfileid: "77672237"
 * **雲端服務應用程式的診斷只能在角色層級設定，而不是在執行個體層級。**
 * **每次部署您的應用程式時，都會更新診斷組態** – 如果您從 [伺服器總管] 變更診斷組態並重新部署您的應用程式，會導致同位檢查的問題。
 * **在 Azure SDK 2.5 和更新版本，損毀傾印是在診斷組態檔中設定，而不是在程式碼中** – 如果您在程式碼中設定損毀傾印，您必須手動將組態從程式碼移轉至組態檔，因為在移轉至 Azure SDK 2.6 期間不會移轉損毀傾印。
-

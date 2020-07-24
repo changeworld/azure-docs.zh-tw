@@ -4,11 +4,12 @@ description: 使用應用程式對應監視複雜的應用程式拓撲
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 7c5c9173704535b1e34ffde5867bd512e3e02ed8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1f9f19ea9370b9da3e69d871e8b53ccf7f64a6a5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80989522"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87008501"
 ---
 # <a name="application-map-triage-distributed-applications"></a>應用程式對應：對分散式應用程式進行分級
 
@@ -156,7 +157,7 @@ ASP.NET Web 應用程式的替代方法是在程式碼中具現化初始化運�
 
 **JAVA 代理程式**
 
-針對[JAVA 代理程式 3.0](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent) ，雲端角色名稱設定如下：
+針對[JAVA 代理程式 3.0](./java-in-process-agent.md) ，雲端角色名稱設定如下：
 
 ```json
 {
@@ -258,15 +259,15 @@ appInsights.addTelemetryInitializer((envelope) => {
 
 1. 請確定您使用的是正式支援的 SDK。 不支援的 SDK 或社群 SDK 可能不支援相互關聯。
 
-    如需支援的 Sdk 清單，請參閱這[篇文章](https://docs.microsoft.com/azure/application-insights/app-insights-platforms)。
+    支援的 SDK 清單請參閱[此文章](./platforms.md)。
 
 2. 請將所有元件都升級為最新的 SDK 版本。
 
-3. 如果您使用的是 c # 的 Azure Functions，請升級至[函數 V2](https://docs.microsoft.com/azure/azure-functions/functions-versions)。
+3. 如果您使用的是 c # 的 Azure Functions，請升級至[函數 V2](../../azure-functions/functions-versions.md)。
 
 4. 確認已正確設定[雲端角色名稱](#set-cloud-role-name)。
 
-5. 如果缺少相依性，請確定相依性是否列在這份[自動收集的相依性](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies) (英文) 清單中。 如果不在此清單中，仍可以使用[追蹤相依性呼叫](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackdependency) (英文)，以手動方式進行追蹤。
+5. 如果缺少相依性，請確定相依性是否列在這份[自動收集的相依性](./auto-collect-dependencies.md) (英文) 清單中。 如果不在此清單中，仍可以使用[追蹤相依性呼叫](./api-custom-events-metrics.md#trackdependency) (英文)，以手動方式進行追蹤。
 
 ### <a name="too-many-nodes-on-the-map"></a>對應上有太多節點
 
@@ -280,7 +281,7 @@ appInsights.addTelemetryInitializer((envelope) => {
 
 * 相依性類型應代表相依性的邏輯類型。 例如，HTTP、SQL 或 Azure Blob 都是典型的相依性類型。 它不應該包含唯一的識別碼。
 
-* [上一節](https://docs.microsoft.com/azure/azure-monitor/app/app-map#set-cloud-role-name)將說明雲端角色名稱的用途。
+* [上一節](#set-cloud-role-name)將說明雲端角色名稱的用途。
 
 ## <a name="portal-feedback"></a>入口網站意見反應
 
@@ -288,7 +289,7 @@ appInsights.addTelemetryInitializer((envelope) => {
 
 ![MapLink-1 影像](./media/app-map/14-updated.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 若要深入瞭解相互關聯的運作方式 Application Insights 參閱[遙測相互關聯一文](correlation.md)。
 * [端對端交易診斷體驗](transaction-diagnostics.md)會將伺服器端的遙測資料從您的所有 Application Insights 監視元件，相互關聯至單一視圖。

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
-ms.openlocfilehash: f051d02ac06163cf1861ab6bfc6afd0dcbb0ad8a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7058160819c9b6ccc3f63511f86e930fcbfc413b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82559537"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011646"
 ---
 # <a name="monitor-media-services-metrics-and-diagnostic-logs-via-azure-monitor"></a>透過 Azure 監視器監視媒體服務計量和診斷記錄
 
@@ -58,7 +58,7 @@ ms.locfileid: "82559537"
 
 ### <a name="streaming-endpoint"></a>串流端點
 
-支援下列媒體服務[串流端點](https://docs.microsoft.com/rest/api/media/streamingendpoints)計量：
+支援下列媒體服務[串流端點](/rest/api/media/streamingendpoints)計量：
 
 |度量名稱|顯示名稱|描述|
 |---|---|---|

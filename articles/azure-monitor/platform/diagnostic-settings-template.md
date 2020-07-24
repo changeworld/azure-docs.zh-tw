@@ -7,11 +7,12 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: a2569ca3f998030680bd7dbd872d71ccd372a25d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 73f2b3ea90cc94fa3411552c7b812fe53eb4dbbb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77672424"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87008093"
 ---
 # <a name="create-diagnostic-setting-in-azure-using-a-resource-manager-template"></a>使用 Resource Manager 範本在 Azure 中建立診斷設定
 Azure 監視器中的[診斷設定](diagnostic-settings.md)會指定 azure 資源所收集的[平臺記錄](platform-logs-overview.md)檔，以及它們所依賴的 azure 平臺。 本文提供詳細資料和範例，說明如何使用[Azure Resource Manager 範本](../../azure-resource-manager/templates/template-syntax.md)來建立和設定診斷設定，以將平臺記錄檔收集到不同的目的地。
@@ -29,7 +30,7 @@ Azure 監視器中的[診斷設定](diagnostic-settings.md)會指定 azure 資�
 
 
 ## <a name="resource-logs"></a>資源記錄
-針對資源記錄，請將類型的資源新增 `<resource namespace>/providers/diagnosticSettings` 至範本。 [屬性] 區段會遵循 [[診斷設定-建立或更新](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate)] 中所述的格式。 `category` `logs` 針對您想要收集的資源，在區段中為每個適用的類別提供。 新增 `metrics` 屬性，以在[資源支援計量](metrics-supported.md)時，將資源計量收集到相同的目的地。
+針對資源記錄，請將類型的資源新增 `<resource namespace>/providers/diagnosticSettings` 至範本。 [屬性] 區段會遵循 [[診斷設定-建立或更新](/rest/api/monitor/diagnosticsettings/createorupdate)] 中所述的格式。 `category` `logs` 針對您想要收集的資源，在區段中為每個適用的類別提供。 新增 `metrics` 屬性，以在[資源支援計量](metrics-supported.md)時，將資源計量收集到相同的目的地。
 
 以下範本會將特定資源的資源記錄類別收集到 Log Analytics 工作區、儲存體帳戶和事件中樞。
 
@@ -143,7 +144,7 @@ Azure 監視器中的[診斷設定](diagnostic-settings.md)會指定 azure 資�
 ```
 
 ## <a name="activity-log"></a>活動記錄檔
-針對 [Azure 活動記錄檔]，新增類型為的資源 `Microsoft.Insights/diagnosticSettings` 。 可用的類別會列在[[活動記錄](activity-log-view.md#categories-in-the-activity-log)] 的 [類別] 中。 以下範本會將所有活動記錄類別收集到 Log Analytics 工作區、儲存體帳戶和事件中樞。
+針對 [Azure 活動記錄檔]，新增類型為的資源 `Microsoft.Insights/diagnosticSettings` 。 可用的類別會列在[[活動記錄](./activity-log.md#view-the-activity-log)] 的 [類別] 中。 以下範本會將所有活動記錄類別收集到 Log Analytics 工作區、儲存體帳戶和事件中樞。
 
 
 ```json
@@ -235,6 +236,6 @@ Azure 監視器中的[診斷設定](diagnostic-settings.md)會指定 azure 資�
 ```
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 * 深入瞭解[Azure 中的平臺記錄](platform-logs-overview.md)。
 * 深入瞭解[診斷設定](diagnostic-settings.md)。

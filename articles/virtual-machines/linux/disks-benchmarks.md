@@ -7,13 +7,14 @@ ms.date: 01/11/2019
 ms.topic: how-to
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: a658bfc0815a03d0f6944d1c42eacdd04397458d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c1dfcad5a4fb6611543e6421e82889f239f14951
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84660901"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87010816"
 ---
-# <a name="benchmarking-a-disk"></a>對磁碟進行效能評定
+# <a name="benchmark-your-application-on-azure-disk-storage"></a>在 Azure 磁碟儲存體上對應用程式進行基準測試
 
 效能評定的過程中會在應用程式上模擬不同工作負載，並測量應用程式在每個工作負載上達到的效能。 使用[為高效能而設計](premium-storage-performance.md)一文中描述的步驟。 您可以在裝載應用程式的 VM 上執行效能評定工具，以判斷應用程式利用進階儲存體可達成的效能層級。 在本文中，我們針對以 Azure 進階儲存體磁碟佈建的標準 DS14 VM，提供效能評定範例。
 
@@ -23,7 +24,7 @@ ms.locfileid: "84660901"
 
 [!INCLUDE [virtual-machines-disks-benchmarking](../../../includes/virtual-machines-managed-disks-benchmarking.md)]
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 請繼續閱讀我們[針對高效能設計的](premium-storage-performance.md)文章。
 

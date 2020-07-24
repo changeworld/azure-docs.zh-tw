@@ -13,11 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/20/2019
 ms.author: akjosh
-ms.openlocfilehash: a002479375d835f7fafe031517e5b2fe61b77b5b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6ff5825f3272f0dadc74147d36e8c5fd8e7838d7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84608684"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87010949"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Azure 虛擬機器代理程式概觀
 Microsoft Azure 虛擬機器代理程式 (VM 代理程式) 是一個安全的輕量型處理程序，可管理虛擬機器 (VM) 與 Azure 網狀架構控制器的互動。 VM 代理程式已啟用主要角色並執行 Azure 虛擬機器擴充功能。 VM 擴充功能可啟用 VM 的部署後組態，例如安裝和設定軟體。 VM 擴充功能也會啟用復原功能，例如重設 VM 的系統管理密碼。 若沒有 Azure VM 代理程式，便無法執行 VM 擴充功能。
@@ -67,16 +68,16 @@ $vm.OSProfile.AllowExtensionOperations = $true
 $vm | Update-AzVM
 ```
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>先決條件
 - Windows VM 代理程式至少需要 Windows Server 2008 （64位）才能執行 .Net Framework 4.0。 請參閱[Azure 中虛擬機器代理程式的最低版本支援](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)
 
-- 請確定您的 VM 可存取 IP 位址168.63.129.16。 如需詳細資訊[，請參閱什麼是 IP 位址 168.63.129.16](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16)。
+- 請確定您的 VM 可存取 IP 位址168.63.129.16。 如需詳細資訊[，請參閱什麼是 IP 位址 168.63.129.16](../../virtual-network/what-is-ip-address-168-63-129-16.md)。
 
 ## <a name="detect-the-vm-agent"></a>偵測 VM 代理程式
 
 ### <a name="powershell"></a>PowerShell
 
-Azure Resource Manager PowerShell 模組可以用來擷取 Azure VM 的相關資訊。 若要查看 VM 的相關資訊，例如 Azure VM 代理程式的佈建狀態，請使用 [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm):
+Azure Resource Manager PowerShell 模組可以用來擷取 Azure VM 的相關資訊。 若要查看 VM 的相關資訊，例如 Azure VM 代理程式的佈建狀態，請使用 [Get-AzVM](/powershell/module/az.compute/get-azvm):
 
 ```powershell
 Get-AzVM
@@ -115,5 +116,5 @@ foreach ($vm in $vms) {
 ## <a name="windows-guest-agent-automatic-logs-collection"></a>Windows 來賓代理程式自動記錄收集
 Windows 來賓代理程式具有自動收集一些記錄檔的功能。 這項功能是由 CollectGuestLogs.exe 程式所控制。 PaaS 雲端服務和 IaaS 虛擬機器都有其用途，其目標是要快速 & 從 VM 自動收集一些診斷記錄，讓它們可用於離線分析。 收集的記錄檔包括事件記錄檔、OS 記錄檔、Azure 記錄檔和一些登錄機碼。 它會產生轉送至 VM 主機的 ZIP 檔案。 然後，工程小組和支援專業人員可以查看此 ZIP 檔案，以調查擁有該 VM 之客戶要求的問題。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 如需關於虛擬機器擴充功能的詳細資訊，請參閱 [Azure 虛擬機器擴充功能和功能概觀](overview.md)。

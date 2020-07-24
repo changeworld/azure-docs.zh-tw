@@ -6,11 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: joncole
-ms.openlocfilehash: 6a1dddfbcdbf2bd49586238872db15f1da5d7ce1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0ed0009bce18e2b0970b425c31d2f38cef387187
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84457298"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87008314"
 ---
 # <a name="best-practices-for-azure-cache-for-redis"></a>Azure Cache for Redis 的最佳做法 
 藉由遵循這些最佳作法，您可以協助最大化 Azure Cache for Redis 實例的效能和符合成本效益的使用。
@@ -82,10 +83,10 @@ ms.locfileid: "84457298"
  
 ### <a name="redis-benchmark-examples"></a>Redis-基準測試範例
 **測試前設定**：準備快取實例，並提供以下所列延遲和輸送量測試命令所需的資料。
-> redis-benchmark.exe-h yourcache.redis.cache.windows.net-a yourAccesskey-t SET-n 10-d 1024 
+> redis-基準測試-h yourcache.redis.cache.windows.net-yourAccesskey-t 設定-n 10-d 1024 
 
 **測試延遲**：使用1k 承載測試 GET 要求。
-> redis-benchmark.exe-h yourcache.redis.cache.windows.net-a yourAccesskey-t d 1024-P 50-c 4
+> redis-基準測試-h yourcache.redis.cache.windows.net-yourAccesskey-t d 1024-P 50-c 4
 
 **若要測試輸送量：** 使用1k 承載的管線 GET 要求。
-> redis-benchmark.exe-h yourcache.redis.cache.windows.net-a yourAccesskey-t GET-n 1000000-d 1024-P 50-c 50
+> redis-基準測試-h yourcache.redis.cache.windows.net-yourAccesskey-t GET-n 1000000-d 1024-P 50-c 50

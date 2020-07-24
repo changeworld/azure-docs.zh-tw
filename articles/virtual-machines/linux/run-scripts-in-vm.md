@@ -7,11 +7,12 @@ author: bobbytreed
 ms.author: robreed
 ms.date: 05/02/2018
 ms.topic: article
-ms.openlocfilehash: 9dbfb3e76fe1c0e80dd8020b79f4edd6d32a24a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d40352d2110fa54ab699e41fa6d161d5c9ea4f4e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81758592"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87010507"
 ---
 # <a name="run-scripts-in-your-linux-vm"></a>在 Linux 虛擬機器中執行指令碼
 
@@ -32,7 +33,7 @@ ms.locfileid: "81758592"
 [執行命令](run-command.md)功能可使用指令碼進行虛擬機器和應用程式管理以及疑難排解，即使無法觸達電腦也可進行 (例如在客體防火牆未開啟 RDP 或 SSH 連接埠時)。
 
 * 在 Azure 虛擬機器中執行指令碼。
-* 可使用 [Azure 入口網站](run-command.md)、[REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand)、[Azure CLI](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke) 或 [PowerShell](https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand) 執行
+* 可使用 [Azure 入口網站](run-command.md)、[REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand)、[Azure CLI](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke) 或 [PowerShell](/powershell/module/az.compute/invoke-azvmruncommand) 執行
 * 快速執行指令碼和檢視輸出，並視需要在 Azure 入口網站中重複進行。
 * 您可以直接輸入指令碼，或是執行其中一個內建的指令碼。
 * 在 Windows 機器中執行 PowerShell 指令碼，並在 Linux 機器中執行 Bash 指令碼。
@@ -55,18 +56,18 @@ ms.locfileid: "81758592"
 
 ## <a name="serial-console"></a>序列主控台
 
-[序列主控台](serial-console.md)可直接存取虛擬機器，類似於鍵盤連接到虛擬機器。
+[序列主控台](../troubleshooting/serial-console-linux.md)可直接存取虛擬機器，類似於鍵盤連接到虛擬機器。
 
 * 在 Azure 虛擬機器中執行命令。
 * 可以在 Azure 入口網站中使用以文字為基礎的機器主控台執行。
 * 以本機使用者帳戶登入機器。
 * 無論機器的網路或作業系統狀態為何，需要存取虛擬機器時均可使用。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 深入了解可在虛擬機器中執行指令碼和命令的不同功能。
 
 * [自訂指令碼擴充功能](../extensions/custom-script-linux.md)
 * [執行命令](run-command.md)
 * [Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md)
-* [序列主控台](serial-console.md)
+* [序列主控台](../troubleshooting/serial-console-linux.md)

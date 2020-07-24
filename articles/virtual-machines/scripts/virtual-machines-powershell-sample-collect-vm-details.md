@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/01/2019
 ms.author: v-miegge
 ms.custom: mvc
-ms.openlocfilehash: a45f0a882c58c7035badcc1270c66bd9c6fb252a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6b48334f1e7f2032216e1b058950c7ffc3cef70b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86526906"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87010150"
 ---
 # <a name="collect-details-about-all-vms-in-a-subscription-with-powershell"></a>使用 PowerShell 收集訂用帳戶中所有 VM 的詳細資料
 
@@ -82,6 +82,6 @@ $report | Export-CSV "$home/$reportName"
 
 ## <a name="next-steps"></a>後續步驟
 
-如需有關 Azure PowerShell 模組的詳細資訊，請參閱 [Azure PowerShell 文件](/powershell/azure/overview)。
+如需有關 Azure PowerShell 模組的詳細資訊，請參閱 [Azure PowerShell 文件](/powershell/azure/)。
 
 您可以在 [Azure Windows VM 文件](../windows/powershell-samples.md?toc=/azure/virtual-machines/windows/toc.json)中找到其他的虛擬機器 PowerShell 指令碼範例。

@@ -15,11 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: ea448b87f9e6954abecead2934bfb7f4ed04a9c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91f15e32866cca008553286f7585247909d9a4ba
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77920139"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87009861"
 ---
 # <a name="detailed-troubleshooting-steps-for-remote-desktop-connection-issues-to-windows-vms-in-azure"></a>Azure 中 Windows VM 之遠端桌面連線問題的詳細疑難排解步驟
 本文章提供診斷和修正複雜的以 Windows 為基礎的 Azure 虛擬機器的遠端桌面錯誤的詳細疑難排解步驟。
@@ -35,7 +36,7 @@ ms.locfileid: "77920139"
 ## <a name="components-of-a-remote-desktop-connection"></a>遠端桌面連線的元件
 以下是 RDP 連線相關的元件：
 
-![](./media/detailed-troubleshoot-rdp/tshootrdp_0.png)
+![圖表，顯示與遠端桌面（RDP）連線相關的元件。](./media/detailed-troubleshoot-rdp/tshootrdp_0.png)
 
 在繼續之前，在心裡檢閱最後一個成功的遠端桌面連線至 VM 以來的變更可能有幫助。 例如：
 
@@ -64,7 +65,7 @@ ms.locfileid: "77920139"
 ## <a name="source-1-remote-desktop-client-computer"></a>來源 1：遠端桌面用戶端電腦
 請確認您的電腦能夠建立「遠端桌面」連線，來連接到另一部內部部署且以 Windows 為基礎的電腦。
 
-![](./media/detailed-troubleshoot-rdp/tshootrdp_1.png)
+![已反白顯示 RDP 用戶端的遠端桌面（RDP）連線中的元件圖表，以及指向另一個表示連線的內部部署電腦的箭號。](./media/detailed-troubleshoot-rdp/tshootrdp_1.png)
 
 如果不能，請檢查您電腦上的下列設定：
 
@@ -78,9 +79,9 @@ ms.locfileid: "77920139"
 ## <a name="source-2-organization-intranet-edge-device"></a>來源 2：組織內部網路的邊緣裝置
 請確認直接連接到網際網路的電腦能遠端連線到您的 Azure 虛擬機器。
 
-![](./media/detailed-troubleshoot-rdp/tshootrdp_2.png)
+![遠端桌面（RDP）連線中的元件圖表，其中已反白顯示連接到網際網路的 RDP 用戶端，並有一個箭號指向指出連接的 Azure 虛擬機器。](./media/detailed-troubleshoot-rdp/tshootrdp_2.png)
 
-如果您沒有直接連線到網際網路的電腦，則在資源群組或雲端服務中建立和測試新的 Azure 虛擬機器。 如需詳細資訊，請參閱 [在 Azure 中建立執行 Windows 的虛擬機器](../virtual-machines-windows-hero-tutorial.md)。 測試完成之後，您可以刪除虛擬機器和資源群組或雲端服務。
+如果您沒有直接連線到網際網路的電腦，則在資源群組或雲端服務中建立和測試新的 Azure 虛擬機器。 如需詳細資訊，請參閱 [在 Azure 中建立執行 Windows 的虛擬機器](../windows/quick-create-portal.md)。 測試完成之後，您可以刪除虛擬機器和資源群組或雲端服務。
 
 如果您可以對直接連線到網際網路的電腦建立遠端桌面連線，請檢查組織內部網路的邊緣裝置之下列項目：
 
@@ -96,29 +97,29 @@ ms.locfileid: "77920139"
 
 對於使用傳統部署模型建立的 VM，請確認另一部位於相同雲端服務或虛擬網路中的 Azure VM 能夠對您的 Azure VM 進行「遠端桌面」連線。
 
-![](./media/detailed-troubleshoot-rdp/tshootrdp_3.png)
+![在遠端桌面（RDP）連線中，反白顯示一個 Azure VM 的元件圖表，還有一個箭號指向同一個雲端服務中的另一個 Azure VM，以指示連接。](./media/detailed-troubleshoot-rdp/tshootrdp_3.png)
 
 > [!NOTE]
 > 如果是在資源管理員中建立的虛擬機器，請跳到 [來源 4：網路安全性群組](#source-4-network-security-groups)。
 
-如果您沒有另一部虛擬機器位於相同的雲端服務或虛擬網路中，請建立一部。 依照 [在 Azure 中建立執行 Windows 的虛擬機器](../virtual-machines-windows-hero-tutorial.md)中的步驟操作。 測試完成之後，請刪除測試虛擬機器。
+如果您沒有另一部虛擬機器位於相同的雲端服務或虛擬網路中，請建立一部。 依照 [在 Azure 中建立執行 Windows 的虛擬機器](../windows/quick-create-portal.md)中的步驟操作。 測試完成之後，請刪除測試虛擬機器。
 
 如果您可以透過「遠端桌面」連線到位於相同雲端服務或虛擬網路中的虛擬機器，請檢查下列設定：
 
 * 目標 VM 上的遠端桌面流量端點組態：端點的私用 TCP 連接埠必須符合 VM 的遠端桌面服務所接聽的 TCP 連接埠 (預設值為 3389)。
-* 目標 VM 上的遠端桌面流量端點的 ACL：ACL 讓您可指定要根據來源 IP 位址允許或拒絕來自網際網路的連入流量。 設定錯誤的 ACL 會阻止送至端點的連入遠端桌面流量。 檢查您的 ACL，以確保允許來自您的 Proxy 或其他邊緣伺服器的公用 IP 位址之連入流量。 如需詳細資訊，請參閱[什麼是網路存取控制清單（ACL）？](../../virtual-network/virtual-networks-acl.md)
+* 目標 VM 上的遠端桌面流量端點的 ACL：ACL 讓您可指定要根據來源 IP 位址允許或拒絕來自網際網路的連入流量。 設定錯誤的 ACL 會阻止送至端點的連入遠端桌面流量。 檢查您的 ACL，以確保允許來自您的 Proxy 或其他邊緣伺服器的公用 IP 位址之連入流量。 如需詳細資訊，請參閱[什麼是網路存取控制清單（ACL）？](/previous-versions/azure/virtual-network/virtual-networks-acl)
 
-若要檢查端點是否為問題來源，請移除目前的端點，再選擇外部連接埠號碼介於 49152 到 65535 的隨機連接埠來建立新的端點。 如需詳細資訊，請參閱[如何設定虛擬機器的端點](../windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
+若要檢查端點是否為問題來源，請移除目前的端點，再選擇外部連接埠號碼介於 49152 到 65535 的隨機連接埠來建立新的端點。 如需詳細資訊，請參閱[如何設定虛擬機器的端點](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints?toc=/azure/virtual-machines/windows/classic/toc.json)。
 
 ## <a name="source-4-network-security-groups"></a>來源 4：網路安全性群組
 網路安全性群組能夠更精確地控制受允許的輸入和輸出流量。 您可以在 Azure 虛擬網路中建立跨越子網路和雲端服務的規則。
 
-使用 [IP 流量驗證](../../network-watcher/network-watcher-check-ip-flow-verify-portal.md)來確認網路安全性群組中的規則是否會封鎖虛擬機器的輸入或輸出流量。 您也可以檢閱有效的安全性群組規則，以確保輸入「允許」NSG 規則存在並已針對 RDP 連接埠 (預設值 3389) 設定優先順序。 如需詳細資訊，請參閱[使用有效安全性規則對 VM 流量流程進行疑難排解](../../virtual-network/diagnose-network-traffic-filter-problem.md)。
+使用 [IP 流量驗證](../../network-watcher/diagnose-vm-network-traffic-filtering-problem.md)來確認網路安全性群組中的規則是否會封鎖虛擬機器的輸入或輸出流量。 您也可以檢閱有效的安全性群組規則，以確保輸入「允許」NSG 規則存在並已針對 RDP 連接埠 (預設值 3389) 設定優先順序。 如需詳細資訊，請參閱[使用有效安全性規則對 VM 流量流程進行疑難排解](../../virtual-network/diagnose-network-traffic-filter-problem.md)。
 
 ## <a name="source-5-windows-based-azure-vm"></a>來源 5：以 Windows 為基礎的 Azure VM
-![](./media/detailed-troubleshoot-rdp/tshootrdp_5.png)
+![遠端桌面（RDP）連線中的元件圖表，其中包含在雲端服務中反白顯示的 Azure VM，以及可能是「可能發生的問題來源」的訊息。 藍線表示網路安全性群組規則可能會封鎖進出 Azure VM 的流量。](./media/detailed-troubleshoot-rdp/tshootrdp_5.png)
 
-請依照[本文](../windows/reset-rdp.md)的指示。 這篇文章會重設虛擬機器上的「遠端桌面」服務：
+請依照[本文](./reset-rdp.md)的指示。 這篇文章會重設虛擬機器上的「遠端桌面」服務：
 
 * 啟用「遠端桌面」 Windows 防火牆預設規則 (TCP 連接埠 3389)。
 * 藉由將 HKLM\System\CurrentControlSet\Control\Terminal Server\fDenyTSConnections 登錄值設為 0 ，啟用遠端桌面連線。
@@ -132,9 +133,9 @@ ms.locfileid: "77920139"
 
 對於使用傳統部署模型所建立的 VM，您可以使用關於 Azure 虛擬機器的遠端 Azure PowerShell 工作階段。 首先，您需要為虛擬機器的代管雲端服務安裝憑證。 移至 [設定對 Azure 虛擬機器的安全遠端 PowerShell 存取](https://gallery.technet.microsoft.com/scriptcenter/Configures-Secure-Remote-b137f2fe) ，然後將 **InstallWinRMCertAzureVM.ps1** 指令檔下載到您的本機電腦。
 
-接下來，如果尚未安裝 Azure PowerShell，則請先安裝。 請參閱 [如何安裝和設定 Azure PowerShell](/powershell/azure/overview)。
+接下來，如果尚未安裝 Azure PowerShell，則請先安裝。 請參閱 [如何安裝和設定 Azure PowerShell](/powershell/azure/)。
 
-接下來，開啟 Azure PowerShell 命令提示字元，並將目前資料夾變更為 **InstallWinRMCertAzureVM.ps1** 指令碼檔案的位置。 若要執行 Azure PowerShell 指令碼，您必須設定正確的執行原則。 請執行 **Get-ExecutionPolicy** 命令來判斷您目前的原則層級。 如需設定適當層級的相關資訊，請參閱 [Set-ExecutionPolicy](https://technet.microsoft.com/library/hh849812.aspx)。
+接下來，開啟 Azure PowerShell 命令提示字元，並將目前資料夾變更為 **InstallWinRMCertAzureVM.ps1** 指令碼檔案的位置。 若要執行 Azure PowerShell 指令碼，您必須設定正確的執行原則。 請執行 **Get-ExecutionPolicy** 命令來判斷您目前的原則層級。 如需設定適當層級的相關資訊，請參閱 [Set-ExecutionPolicy](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-5.1)。
 
 接下來，請填入您的 Azure 訂用帳戶名稱、雲端服務名稱以及虛擬機器名稱 (移除 "<" 和 ">" 字元)，然後再執行這些命令。
 
@@ -193,11 +194,10 @@ Exit-PSSession
 確認 Azure VM 的遠端桌面端點也正在使用 TCP 連接埠 3398 做為其內部連接埠。 重新啟動 Azure VM，然後再試一次遠端桌面連線。
 
 ## <a name="additional-resources"></a>其他資源
-[如何重設 Windows 虛擬機器的密碼或遠端桌面服務](../windows/reset-rdp.md)
+[如何重設 Windows 虛擬機器的密碼或遠端桌面服務](./reset-rdp.md)
 
-[如何安裝和設定 Azure PowerShell](/powershell/azure/overview)
+[如何安裝和設定 Azure PowerShell](/powershell/azure/)
 
-[疑難排解以 Linux 為基礎之 Azure 虛擬機器的安全殼層 (SSH) 連線](../linux/troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+[疑難排解以 Linux 為基礎之 Azure 虛擬機器的安全殼層 (SSH) 連線](./troubleshoot-ssh-connection.md?toc=/azure/virtual-machines/linux/toc.json)
 
-[針對在 Azure 虛擬機器上執行的應用程式存取進行疑難排解](../linux/troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
+[針對在 Azure 虛擬機器上執行的應用程式存取進行疑難排解](./troubleshoot-app-connection.md?toc=/azure/virtual-machines/linux/toc.json)

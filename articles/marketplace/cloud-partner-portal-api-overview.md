@@ -3,19 +3,21 @@ title: Cloud Partner 入口網站 API 參考-Microsoft 商業 marketplace
 description: Marketplace API 作業的描述、使用先決條件及清單。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 04/08/2020
-ms.openlocfilehash: 56594b41bd0b771d0cb9a2f49611d9b6c6d393db
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.topic: reference
+author: dsindona
+ms.author: dsindona
+ms.date: 07/14/2020
+ms.openlocfilehash: 51c8b91ccf85087f965d632dee9296076aba0d86
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86113576"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011953"
 ---
 # <a name="cloud-partner-portal-api-reference"></a>Cloud Partner 入口網站 API 參考
 
 > [!NOTE]
-> Cloud Partner 入口網站 API 已和合作夥伴中心整合，並會在將供應項目移轉到合作夥伴中心後繼續運作。 該整合會引進些微的變更。 請參閱本檔中所列之[CPP api 的變更](#changes-to-cpp-apis-after-the-migration-to-partner-center)，以確保您的程式碼在遷移至合作夥伴中心後仍可繼續運作。
+> Cloud Partner 入口網站 Api 會與整合，並會繼續在合作夥伴中心運作。 轉換會引進微小的變更。 請參閱本檔中所列之[CPP api 的變更](#changes-to-cpp-apis-after-the-migration-to-partner-center)，以確保您的程式碼在轉換至合作夥伴中心後仍可繼續運作。 只有在轉換至合作夥伴中心之前已整合的現有產品，才應該使用 CPP Api;新產品應使用合作夥伴中心提交 Api。
 
 Cloud Partner 入口網站 REST API 允許對工作負載、供應項目及發行設定檔進行以程式設計方式達成的擷取和操作。 這些 API 會使用角色型存取控制 (RBAC) 來在處理期間強制執行正確的權限。
 
@@ -48,7 +50,7 @@ Cloud Partner 入口網站 REST API 允許對工作負載、供應項目及發�
 - [建立供應項目](./cloud-partner-portal-api-creating-offer.md)
 - [發佈供應項目](./cloud-partner-portal-api-publish-offer.md)
 
-### <a name="operations"></a>Operations
+### <a name="operations"></a>作業
 
 - [擷取作業](./cloud-partner-portal-api-retrieve-operations.md)
 - [取消作業](./cloud-partner-portal-api-cancel-operations.md)

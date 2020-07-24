@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.date: 07/01/2019
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: fb9a77a63351e87e20b9e92e09133aa46db80880
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b86f18af5ff16373d0639331604ece950a475d8d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81869703"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87009572"
 ---
 # <a name="ephemeral-os-disks-for-azure-vms"></a>Azure Vm 的暫時 OS 磁片
 
 [!INCLUDE [virtual-machines-common-ephemeral](../../../includes/virtual-machines-common-ephemeral.md)]
  
-## <a name="next-steps"></a>後續步驟
-您可以使用[Azure PowerShell](https://docs.microsoft.com/powershell/module/az.compute/new-azvm)來建立具有暫時 OS 磁片的 VM。
-
+## <a name="next-steps"></a>接下來的步驟
+您可以使用[Azure PowerShell](/powershell/module/az.compute/new-azvm)來建立具有暫時 OS 磁片的 VM。

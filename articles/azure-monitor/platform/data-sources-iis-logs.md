@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: 1b3ae6295a639c3d59643b106b920cb606572e0a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0bca809d6c25594c1c614f694e71e39a4f61e2a4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77670571"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87008178"
 ---
 # <a name="collect-iis-logs-in-azure-monitor"></a>在 Azure 監視器中收集 IIS 記錄
 Internet Information Services (IIS) 會將使用者活動儲存在記錄檔中，並可由 Azure 監視器進行收集並儲存為[記錄資料](data-platform.md)。
@@ -18,7 +19,7 @@ Internet Information Services (IIS) 會將使用者活動儲存在記錄檔中�
 ![IIS 記錄](media/data-sources-iis-logs/overview.png)
 
 ## <a name="configuring-iis-logs"></a>設定 IIS 記錄
-Azure 監視器會從 IIS 建立的記錄檔收集項目，因此您必須[設定 IIS 記錄](https://technet.microsoft.com/library/hh831775.aspx) \(英文\)。
+Azure 監視器會從 IIS 建立的記錄檔收集項目，因此您必須[設定 IIS 記錄](/previous-versions/orphan-topics/ws.11/hh831775(v=ws.11)) \(英文\)。
 
 Azure 監視器只支援以 W3C 格式儲存的 IIS 記錄檔，不支援自訂欄位或 IIS 進階記錄。 它不會收集 NCSA 或 IIS 原生格式的記錄。
 
@@ -32,7 +33,7 @@ Azure 監視器會在每次記錄時間戳記變更時，從每個代理程式�
 ## <a name="iis-log-record-properties"></a>IIS 記錄檔記錄屬性
 IIS 記錄檔記錄都具有 **W3CIISLog** 類型以及下表中的屬性：
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |:--- |:--- |
 | 電腦 |收集事件的來源電腦名稱。 |
 | cIP |用戶端的 IP 位址。 |
@@ -67,6 +68,6 @@ IIS 記錄檔記錄都具有 **W3CIISLog** 類型以及下表中的屬性：
 | W3CIISLog &#124; where csHost = = "www \. contoso.com" &#124; 摘要 count （） By csUriStem |主機 www contoso.com 的 IIS 記錄專案計數（依 URL） \. 。 |
 | W3CIISLog &#124; summarize sum(csBytes) by Computer &#124; take 500000 |每部 IIS 電腦所接收的位元組總數。 |
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 * 將 Azure 監視器設定成收集其他[資料來源](agent-data-sources.md)，以進行分析。
 * 了解[記錄查詢](../log-query/log-query-overview.md)，以分析從資料來源和解決方案收集到的資料。

@@ -9,11 +9,12 @@ ms.topic: article
 ms.workload: infrastructure
 ms.date: 05/7/2019
 ms.author: haroldw
-ms.openlocfilehash: c338e9a6a793d1c2d0557d70242996175d5a85ed
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e254c0c87465b79a37d9a849cc966e34eed01474
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81759464"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87010558"
 ---
 # <a name="openshift-in-azure"></a>Azure 中的 OpenShift
 
@@ -29,7 +30,7 @@ OpenShift 包含容器協調流程與管理的 Kubernetes。 它新增以開發�
 
 ## <a name="azure-red-hat-openshift"></a>Azure Red Hat OpenShift
 
-Microsoft Azure Red Hat OpenShift 是在 Azure 中執行之 OpenShift 的完全受控供應專案。 這項服務是由 Microsoft 與 Red Hat 共同管理和支援。 如需詳細資訊，請參閱[Azure Red Hat OpenShift 服務](https://docs.microsoft.com/azure/openshift/)檔。
+Microsoft Azure Red Hat OpenShift 是在 Azure 中執行之 OpenShift 的完全受控供應專案。 這項服務是由 Microsoft 與 Red Hat 共同管理和支援。 如需詳細資訊，請參閱[Azure Red Hat OpenShift 服務](../../openshift/index.yml)檔。
 
 ## <a name="openshift-container-platform"></a>Red Hat OpenShift 容器平台
 
@@ -41,7 +42,7 @@ Microsoft Azure Red Hat OpenShift 是在 Azure 中執行之 OpenShift 的完全�
 
 OKD 是由社群支援的 OpenShift [開放原始碼](https://www.okd.io/)上游專案。 OKD 可以安裝在 CentOS 或 Red Hat Enterprise Linux (RHEL) 上。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [在 Azure 中設定 OpenShift 的一般必要條件](./openshift-container-platform-3x-prerequisites.md)
 - [在 Azure 中部署 OpenShift 容器平臺](./openshift-container-platform-3x.md)

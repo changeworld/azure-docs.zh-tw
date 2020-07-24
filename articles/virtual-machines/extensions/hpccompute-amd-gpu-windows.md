@@ -11,18 +11,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/10/2020
 ms.author: vikancha
-ms.openlocfilehash: cbba0401815f6754939cdaeb6e7343cf085dff68
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bc7bfecbcb387fa0da0809a9a2287b243e861c49
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84736963"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87010864"
 ---
 # <a name="amd-gpu-driver-extension-for-windows"></a>適用于 Windows 的 AMD GPU 驅動程式擴充功能
 
-本文概要說明在 Windows [NVv4 系列](https://docs.microsoft.com/azure/virtual-machines/nvv4-series)vm 上部署 AMD GPU 驅動程式的 VM 擴充功能。 當您使用此延伸模組安裝 AMD 驅動程式時，即表示您接受並同意[AMD 使用者授權合約](https://amd.com/radeonsoftwarems)的條款。 在安裝過程中，VM 可能會重新開機以便完成驅動程式設定。
+本文概要說明在 Windows [NVv4 系列](../nvv4-series.md)vm 上部署 AMD GPU 驅動程式的 VM 擴充功能。 當您使用此延伸模組安裝 AMD 驅動程式時，即表示您接受並同意[AMD 使用者授權合約](https://amd.com/radeonsoftwarems)的條款。 在安裝過程中，VM 可能會重新開機以便完成驅動程式設定。
 
-如需手動安裝驅動程式的指示和目前支援的版本，請參閱[這裡](https://docs.microsoft.com/azure/virtual-machines/windows/n-series-amd-driver-setup)。
+如需手動安裝驅動程式的指示和目前支援的版本，請參閱[這裡](../windows/n-series-amd-driver-setup.md)。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -81,7 +81,7 @@ ms.locfileid: "84736963"
 
 也可以使用 Azure Resource Manager 範本部署 Azure VM 擴充功能。 部署一或多部需要部署後設定的虛擬機器時，很適合使用範本。
 
-虛擬機器擴充功能的 JSON 設定可以巢狀方式置於虛擬機器資源內部，或放在 Resource Manager JSON 範本的根目錄或最上層。 JSON 設定的放置會影響資源名稱和類型的值。 如需詳細資訊，請參閱[設定子資源的名稱和類型](../../azure-resource-manager/resource-manager-template-child-resource.md)。 
+虛擬機器擴充功能的 JSON 設定可以巢狀方式置於虛擬機器資源內部，或放在 Resource Manager JSON 範本的根目錄或最上層。 JSON 設定的放置會影響資源名稱和類型的值。 如需詳細資訊，請參閱[設定子資源的名稱和類型](../../azure-resource-manager/templates/child-resource-name-type.md)。 
 
 下列範例假設擴充功能以巢狀方式置於虛擬機器資源內部。 在巢狀處理擴充資源時，JSON 會放在虛擬機器的 `"resources": []` 物件中。
 
@@ -172,4 +172,4 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.HpcCompute.NvidiaGpuDriverMicrosoft\
 ## <a name="next-steps"></a>後續步驟
 如需擴充功能的詳細資訊，請參閱[虛擬機器擴充功能和 Windows 功能](features-windows.md)。
 
-如需 N 系列虛擬機器的詳細資訊，請參閱 [GPU 最佳化的虛擬機器大小](../windows/sizes-gpu.md)。
+如需 N 系列虛擬機器的詳細資訊，請參閱 [GPU 最佳化的虛擬機器大小](../sizes-gpu.md)。

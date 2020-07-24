@@ -1,20 +1,20 @@
 ---
-title: 在 Microsoft 商業市集中建立 Power BI 應用程式供應項目
+title: 在 Microsoft AppSource 中建立 Power BI 應用程式供應專案
 description: 了解如何針對 Microsoft AppSource 建立並發佈 Power BI 應用程式供應項目。
 author: anbene
 ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 06/17/2020
-ms.openlocfilehash: 8a4ff5c5bce7774f805130f68d7418a73cb751f8
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.date: 07/22/2020
+ms.openlocfilehash: fa8c08f5d6f49b12306ea1f4bb82c07747622f48
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85980337"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011935"
 ---
-# <a name="create-a-power-bi-app-for-microsoft-appsource"></a>針對 Microsoft AppSource 建立 Power BI 應用程式
+# <a name="create-a-power-bi-app-offer"></a>建立 Power BI 應用程式供應專案
 
 此文章描述如何針對 Microsoft [AppSource](https://appsource.microsoft.com/) 建立並發佈 Power BI 應用程式供應項目。
 
@@ -136,14 +136,14 @@ ms.locfileid: "85980337"
 
 1. 標誌
 2. 產品
-3. 類別
+3. Categories
 4. 產業
 5. 支援位址（連結）
 6. 使用規定
 7. 隱私權原則
 8. 供應項目名稱
 9. 摘要
-10. Description
+10. 描述
 11. 螢幕擷取畫面/影片
 
 ### <a name="name"></a>名稱

@@ -8,12 +8,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: f209a8b1d7ba5ab4fc213e43d56c04aebc3bd410
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: d2deb59b5a10177b1a6e57046c013ec9dac0fb06
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224259"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87010796"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>適用於 Linux 的金鑰保存庫虛擬機器擴充功能
 
@@ -71,7 +71,7 @@ Key Vault VM 擴充功能支援下列 Linux 發行版本：
 > [!NOTE]
 > 您觀察到的憑證 URL 格式應該是 `https://myVaultName.vault.azure.net/secrets/myCertName`。
 > 
-> 這是因為 `/secrets` 路徑會傳回完整憑證，私密金鑰也包括在內，`/certificates` 路徑則不會。 可以在這裡找到憑證的詳細資訊：[Key Vault 憑證](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-certificates)
+> 這是因為 `/secrets` 路徑會傳回完整憑證，私密金鑰也包括在內，`/certificates` 路徑則不會。 可以在這裡找到憑證的詳細資訊：[Key Vault 憑證](../../key-vault/general/about-keys-secrets-certificates.md)
 
 > [!NOTE]
 > 當 VM 具有多個指派的身分識別時，' Authenticationsettings.instance.setsecretkey ' 屬性是選擇性的。
@@ -204,7 +204,7 @@ Azure CLI 可以用來將金鑰保存庫 VM 擴充功能部署到現有的虛擬
 請留意下列限制/需求：
 - 金鑰保存庫限制：
   - 部署時必須存在 
-  - 必須使用受控識別設定 VM/VMSS 身分識別的金鑰保存庫存取原則。 請參閱[提供受控識別的 Key Vault 驗證](../../key-vault/managed-identity.md)
+  - 必須使用受控識別設定 VM/VMSS 身分識別的金鑰保存庫存取原則。 請參閱[提供受控識別的 Key Vault 驗證](../../key-vault/general/managed-identity.md)
 
 
 ## <a name="troubleshoot-and-support"></a>疑難排解與支援

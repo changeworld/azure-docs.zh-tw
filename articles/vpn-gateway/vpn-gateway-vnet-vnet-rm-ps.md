@@ -7,11 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 02/15/2019
 ms.author: cherylmc
-ms.openlocfilehash: 5477eea12ee41bae42365555e38aa95ca0faeb3a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 318656a779aa5ba2279f075fcc44589fe2039682
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987103"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87009487"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>使用 PowerShell 設定 VNet 對 VNet 的 VPN 閘道連線
 
@@ -80,7 +81,7 @@ VNet 的連線方法有很多種。 下列各節說明不同的虛擬網路連�
 
 * 由於建立閘道需要 45 分鐘的時間，因此 Azure Cloud Shell 在本練習期間會定期逾時。 您可以按一下終端機的左上角，重新啟動 Cloud Shell。 當您重新啟動終端機時，務必重新宣告所有的變數。
 
-* 如果您偏好在本機安裝最新版的 Azure PowerShell 模組，請參閱[如何安裝與設定 Azure PowerShell](/powershell/azure/overview)。
+* 如果您偏好在本機安裝最新版的 Azure PowerShell 模組，請參閱[如何安裝與設定 Azure PowerShell](/powershell/azure/)。
 
 ### <a name="step-1---plan-your-ip-address-ranges"></a><a name="Step1"></a>步驟 1 - 規劃 IP 位址範圍
 
@@ -480,7 +481,7 @@ VNet 的連線方法有很多種。 下列各節說明不同的虛擬網路連�
 
 [!INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-faq-vnet-vnet-include.md)]
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 一旦完成您的連接，就可以將虛擬機器加入您的虛擬網路。 如需詳細資訊，請參閱 [虛擬機器文件](https://docs.microsoft.com/azure/) 。
 * 如需 BGP 的相關資訊，請參閱 [BGP 概觀](vpn-gateway-bgp-overview.md)和[如何設定 BGP](vpn-gateway-bgp-resource-manager-ps.md)。

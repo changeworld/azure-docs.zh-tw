@@ -3,8 +3,8 @@ title: Azure 的預期狀態設定概觀
 description: 了解如何將 Microsoft Azure 延伸模組處理常式用於 PowerShell 預期狀態設定 (DSC)。 本文包含先決條件、架構及 Cmdlet。
 services: virtual-machines-windows
 documentationcenter: ''
-author: bobbytreed
-manager: carmonm
+author: mgoedtel
+manager: evansma
 editor: ''
 tags: azure-resource-manager
 keywords: dsc
@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: na
-ms.date: 05/02/2018
-ms.author: robreed
-ms.openlocfilehash: 82d268eedd73b8de670da93ad3a601b5e75e6444
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/13/2020
+ms.author: magoedte
+ms.openlocfilehash: edf1fce488bf3bb8aa107a295cf3488243775192
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82188530"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87010915"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Azure 預期狀態設定延伸模組處理常式簡介
 
@@ -36,7 +36,7 @@ Azure Desired State Configuration （DSC）延伸模組的主要使用案例是�
 
 本文提供兩種案例的相關資訊：使用 DSC 延伸模組來進行「自動化」上線，以及藉由使用 Azure SDK 來使用 DSC 延伸模組作為工具，以將設定指派給 VM。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 - **本機電腦**：若要與 Azure VM 延伸模組互動，您必須使用 Azure 入口網站或 Azure PowerShell SDK。
 - **客體代理程式**：DSC 設定所設定的 Azure VM 必須是支援 Windows Management Framework (WMF) 4.0 或更新版本的 OS。 如需所支援 OS 版本的完整清單，請參閱 [DSC 延伸模組版本歷程記錄](../../automation/automation-dsc-extension-history.md) \(英文\)。
@@ -59,7 +59,7 @@ Azure DSC 延伸模組會使用「Azure VM 代理程式」架構來傳遞、套�
 - 如果已指定 **wmfVersion** 屬性，就會安裝該版本的 WMF，除非該版本與 VM 的 OS 不相容。
 - 如果未指定任何 **wmfVersion** 屬性，則會安裝 WMF 的最新適用版本。
 
-安裝 WMF 需要重新啟動。 重新啟動之後，延伸模組會下載 **modulesUrl** 屬性 (如有提供) 中所指定的 .zip 檔案。 如果此位置在 Azure Blob 儲存體中，您可以在 **sasToken** 屬性中指定 SAS 權杖來存取檔案。 下載並解壓縮 .zip 之後，在**configurationFunction**中定義的設定函式會執行以產生一個 mof （[受控物件格式](https://docs.microsoft.com/windows/win32/wmisdk/managed-object-format--mof-)）檔案。 接著，擴充功能就會使用產生的 .mof 檔來執行 `Start-DscConfiguration -Force`。 延伸模組會擷取輸出並將其寫入至 Azure 狀態通道。
+安裝 WMF 需要重新啟動。 重新啟動之後，延伸模組會下載 **modulesUrl** 屬性 (如有提供) 中所指定的 .zip 檔案。 如果此位置在 Azure Blob 儲存體中，您可以在 **sasToken** 屬性中指定 SAS 權杖來存取檔案。 下載並解壓縮 .zip 之後，在**configurationFunction**中定義的設定函式會執行以產生一個 mof （[受控物件格式](/windows/win32/wmisdk/managed-object-format--mof-)）檔案。 接著，擴充功能就會使用產生的 .mof 檔來執行 `Start-DscConfiguration -Force`。 延伸模組會擷取輸出並將其寫入至 Azure 狀態通道。
 
 ### <a name="default-configuration-script"></a>預設設定指令碼
 
@@ -81,7 +81,7 @@ Azure DSC 延伸模組包含預設設定指令碼，可在將 VM 上線至 Azure
 ```
 
 針對節點設定名稱，請確定 Azure 狀態設定中有節點設定。  如果不存在，延伸模組部署將會傳回失敗。  也請確定您使用的是*節點*設定的名稱，而不是設定。
-設定會定義在用[來編譯節點設定（MOF 檔案）](https://docs.microsoft.com/azure/automation/automation-dsc-compile)的腳本中。
+設定會定義在用[來編譯節點設定（MOF 檔案）](../../automation/automation-dsc-compile.md)的腳本中。
 名稱一律會是設定，後面接著句點 `.` 和 `localhost` 或特定電腦名稱稱。
 
 ## <a name="dsc-extension-in-resource-manager-templates"></a>Resource Manager 範本中的 DSC 延伸模組
@@ -188,11 +188,11 @@ az vm extension set \
 
 - **設定引數**︰如果設定函式接受引數，請以 **argumentName1=value1,argumentName2=value2** 格式在這裡輸入引數。 此格式與 PowerShell Cmdlet 或 Resource Manager 範本中接受設定引數時所採用的格式不同。
 
-- 設定**資料 .psd1**檔：您的設定需要 .psd1 中的設定資料檔案。請使用此欄位來選取資料檔案，並將它上傳至您的使用者 blob 儲存體。 此設定資料檔在 Blob 儲存體中會受到 SAS 權杖保護。
+- 設定**資料 .psd1**檔：如果您的設定需要中的設定資料檔案 `.psd1` ，請使用此欄位來選取資料檔案，並將它上傳至您的使用者 blob 儲存體。 此設定資料檔在 Blob 儲存體中會受到 SAS 權杖保護。
 
 - **WMF 版本**指定應該安裝在您虛擬機器上的 Windows Management Framework (WMF) 版本。 將此屬性設定為 latest 會安裝最新版的 WMF。 此屬性目前只有下列可能值：4.0、5.0、5.1 及 latest。 這些可能的值可能會更新。 預設值為 **latest**。
 
-- **資料收集**：決定延伸模組是否會收集遙測資料。 如需詳細資訊，請參閱 [Azure DSC 延伸模組集合](https://blogs.msdn.microsoft.com/powershell/2016/02/02/azure-dsc-extension-data-collection-2/) \(英文\)。
+- **資料收集**：決定延伸模組是否會收集遙測資料。 如需詳細資訊，請參閱 [Azure DSC 延伸模組集合](https://devblogs.microsoft.com/powershell/azure-dsc-extension-data-collection-2/) \(英文\)。
 
 - **版本**：指定要安裝的 DSC 延伸模組版本。 如需版本的相關資訊，請參閱 [DSC 延伸模組版本歷程記錄](/powershell/scripting/dsc/getting-started/azuredscexthistory) (英文)。
 
@@ -202,7 +202,7 @@ az vm extension set \
 
 延伸模組的記錄會儲存在下列位置：`C:\WindowsAzure\Logs\Plugins\Microsoft.Powershell.DSC\<version number>`
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 如需有關 PowerShell DSC 的詳細資訊，請移至 [PowerShell 文件中心](/powershell/scripting/dsc/overview/overview)。
 - 查看[適用於 DSC 延伸模組的 Resource Manager 範本](dsc-template.md)。

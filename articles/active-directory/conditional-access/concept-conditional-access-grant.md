@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d1d30a32a58dd2385a214d813307c645c56afdc8
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 85beb04e39c5c47b9ee71ee96c2dff8910766ea3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024439"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87009046"
 ---
 # <a name="conditional-access-grant"></a>條件式存取：授與
 
@@ -81,7 +81,6 @@ Intune （適用于任何裝置作業系統）或協力廠商 MDM 系統（適�
 - Microsoft Edge
 - Microsoft Excel
 - Microsoft Flow
-- Microsoft Intune 受控瀏覽器
 - Microsoft Invoicing
 - Microsoft Kaizala
 - Microsoft Launcher
@@ -123,9 +122,22 @@ Intune （適用于任何裝置作業系統）或協力廠商 MDM 系統（適�
 此設定適用於下列用戶端應用程式：
 
 - Microsoft Cortana
+- Microsoft Edge
+- Microsoft Excel
+- Microsoft Office
 - Microsoft OneDrive
+- Microsoft OneNote
 - Microsoft Outlook
 - Microsoft Planner
+- Microsoft Power BI
+- Microsoft PowerPoint
+- Microsoft SharePoint
+- Microsoft Word
+- 適用于 Intune 的多行
+- 9封電子郵件 & 行事曆
+
+> [!NOTE]
+> Microsoft Kaizala、Microsoft 商務用 Skype 和 Microsoft Visio 不支援「**需要應用程式保護原則**」授與。 如果您需要這些應用程式才能正常執行，請使用 [僅**要求核准的應用程式**授與]。 這三個應用程式在兩個授與之間使用或子句並不適用。
 
 **備註**
 
@@ -155,7 +167,7 @@ Intune （適用于任何裝置作業系統）或協力廠商 MDM 系統（適�
 
 如果您的組織已建立使用規定，則在 [授與控制] 底下可能會顯示其他選項。 這些選項可讓系統管理員要求使用規定，做為存取原則所保護之資源的條件。 如需使用條款的詳細資訊，請參閱[Azure Active Directory 使用規定一](terms-of-use.md)文。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [條件式存取：會話控制項](concept-conditional-access-session.md)
 

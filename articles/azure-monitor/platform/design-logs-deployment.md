@@ -6,14 +6,14 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: ed525230315781eeca41956047a173f27b1447e1
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 939a2e67d6d2c215f7a575b6b9bd08660fc03b27
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201291"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87008194"
 ---
-# <a name="designing-your-azure-monitor-logs-deployment"></a>設計您的 Azure 監視器記錄部署
+# <a name="designing-your-azure-monitor-logs-deployment"></a>設計 Azure 監視器記錄部署
 
 Azure 監視器會將[記錄](data-platform-logs.md)資料儲存在 log Analytics 工作區中，這是一種 Azure 資源，也是資料收集、匯總並作為系統管理界限的容器。 雖然您可以在 Azure 訂用帳戶中部署一或多個工作區，但您應該瞭解幾個考慮，以確保您的初始部署遵循我們的指導方針，為您提供符合成本效益、可管理和可擴充的部署，符合您組織的需求。
 
@@ -25,7 +25,7 @@ Log Analytics 工作區提供：
 
 * 資料儲存體的地理位置。
 * 藉由授與不同的使用者存取權限，遵循其中一個建議的設計策略來進行資料隔離。
-* 設定的範圍，例如[定價層](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#changing-pricing-tier)、[保留期](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)和[資料上限](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#manage-your-maximum-daily-data-volume)。
+* 設定的範圍，例如[定價層](./manage-cost-storage.md#changing-pricing-tier)、[保留期](./manage-cost-storage.md#change-the-data-retention-period)和[資料上限](./manage-cost-storage.md#manage-your-maximum-daily-data-volume)。
 
 這篇文章提供設計和遷移考慮、存取控制總覽，以及瞭解我們建議您的 IT 組織所採用的設計整合的詳細總覽。
 
@@ -58,11 +58,11 @@ Log Analytics 工作區提供：
 
 ## <a name="access-control-overview"></a>存取控制概觀
 
-使用角色型存取控制 (RBAC) ，您可以只授與使用者和群組在工作區中使用監視資料所需的存取權。 這可讓您使用單一工作區，將收集到的資料儲存在所有資源上，以配合您的 IT 組織作業模型。 例如，您將存取權授與負責裝載于 Azure 虛擬機器上的基礎結構服務 (Vm) 的許可權，因此他們只能存取 Vm 所產生的記錄。 這會遵循我們的新資源內容記錄模型。 此模型的基礎是針對 Azure 資源所發出的每個記錄檔記錄，它會自動與此資源相關聯。 記錄會轉送到中央工作區，以根據資源來遵循範圍和 RBAC。
+使用角色型存取控制（RBAC），您可以只授與使用者和群組使用工作區中的監視資料所需的存取權數量。 這可讓您使用單一工作區，將收集到的資料儲存在所有資源上，以配合您的 IT 組織作業模型。 例如，您將存取權授與您負責裝載于 Azure 虛擬機器（Vm）上之基礎結構服務的小組，因此他們只能存取 Vm 所產生的記錄。 這會遵循我們的新資源內容記錄模型。 此模型的基礎是針對 Azure 資源所發出的每個記錄檔記錄，它會自動與此資源相關聯。 記錄會轉送到中央工作區，以根據資源來遵循範圍和 RBAC。
 
 使用者可以存取的資料是由下表所列的因素組合所決定。 以下各節將說明每個步驟。
 
-| 因素 | 描述 |
+| 因數 | 描述 |
 |:---|:---|
 | [存取模式](#access-mode) | 使用者用來存取工作區的方法。  定義可用資料的範圍，以及套用的存取控制模式。 |
 | [存取控制模式](#access-control-mode) | 在工作區上設定，以定義是否要在工作區或資源層級套用許可權。 |
@@ -100,7 +100,7 @@ Azure 監視器會根據您執行記錄搜尋的內容，自動決定正確的�
 | 問題 | 工作區-內容 | 資源內容 |
 |:---|:---|:---|
 | 每個模型的用途為何？ | 管理中心。 需要設定資料收集的系統管理員，以及需要存取各種資源的使用者。 目前也需要存取 Azure 外部資源的記錄。 | 應用程式小組。 受監視的 Azure 資源系統管理員。 |
-| 使用者需要什麼才能查看記錄？ | 工作區的許可權。 請參閱[使用工作區許可權來管理存取權](manage-access.md#manage-access-using-workspace-permissions)中的**工作區許可權**。 | 資源的讀取權限。 請參閱[使用 Azure 許可權來管理存取權](manage-access.md#manage-access-using-azure-permissions)中的**資源許可權**。 許可權可以繼承 (例如，從包含的資源群組) 或直接指派給資源。 系統將會自動指派資源的記錄許可權。 |
+| 使用者需要什麼才能查看記錄？ | 工作區的許可權。 請參閱[使用工作區許可權來管理存取權](manage-access.md#manage-access-using-workspace-permissions)中的**工作區許可權**。 | 資源的讀取權限。 請參閱[使用 Azure 許可權來管理存取權](manage-access.md#manage-access-using-azure-permissions)中的**資源許可權**。 許可權可以是繼承的（例如，從包含的資源群組），或直接指派給資源。 系統將會自動指派資源的記錄許可權。 |
 | 許可權的範圍為何？ | 區域. 具有工作區存取權的使用者可以從他們有許可權的資料表查詢工作區中的所有記錄。 請參閱[資料表存取控制](manage-access.md#table-level-rbac) | Azure 資源。 使用者可以從任何工作區查詢可存取的特定資源、資源群組或訂用帳戶的記錄，但無法查詢其他資源的記錄。 |
 | 使用者存取記錄的方式為何？ | <ul><li>從**Azure 監視器**] 功能表啟動**記錄**。</li></ul> <ul><li>從**Log Analytics 工作區**啟動**記錄**。</li></ul> <ul><li>從 Azure 監視器活頁[簿](../visualizations.md#workbooks)。</li></ul> | <ul><li>從 Azure 資源的功能表啟動**記錄**</li></ul> <ul><li>從**Azure 監視器**] 功能表啟動**記錄**。</li></ul> <ul><li>從**Log Analytics 工作區**啟動**記錄**。</li></ul> <ul><li>從 Azure 監視器活頁[簿](../visualizations.md#workbooks)。</li></ul> |
 
@@ -161,8 +161,8 @@ Operation
 * 識別授與應用程式小組資源的存取權，並在開發環境中進行測試，然後才在生產環境中執行。
 * 設定工作區以啟用 [**使用資源] 或 [工作區] 許可權**。
 * 移除應用程式小組讀取和查詢工作區的許可權。
-* 啟用和設定任何監視解決方案，例如容器和/或適用於 VM 的 Azure 監視器的 Azure 監視器、您的自動化帳戶 () ，以及部署在原始工作區中的管理解決方案（例如更新管理、啟動/停止 Vm 等）。
+* 啟用和設定任何監視解決方案，例如容器和/或適用於 VM 的 Azure 監視器的 Azure 監視器、您的自動化帳戶，以及部署在原始工作區中的管理解決方案（例如更新管理、啟動/停止 Vm 等）。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 若要執行本指南中建議的安全性許可權和控制項，請參閱[管理對記錄的存取權](manage-access.md)。

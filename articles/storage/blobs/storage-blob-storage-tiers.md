@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: 14e8b3e28115fb191760382ed2a9fbd5c5a04114
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: dc9e4e0a896677fd22baf33e7776e8158bd0bee6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85919910"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011340"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob 儲存體︰經常性存取、非經常性存取和封存存取層
 
@@ -118,10 +118,10 @@ Blob 儲存體生命週期管理提供豐富、以規則為基礎的原則，可
 |                                           | **Premium 效能**   | **經常性存取層** | **非經常性存取層**       | **封存層**  |
 | ----------------------------------------- | ------------------------- | ------------ | ------------------- | ----------------- |
 | **可用性**                          | 99.9%                     | 99.9%        | 99%                 | 離線           |
-| **可用性** <br> **(RA-GRS 讀取)**  | N/A                       | 99.99%       | 99.9%               | 離線           |
+| **可用性** <br> **(RA-GRS 讀取)**  | 不適用                       | 99.99%       | 99.9%               | 離線           |
 | **使用費用**                         | 較高的儲存體成本、較低的存取和交易成本 | 儲存成本較高，存取和交易成本較低 | 儲存成本較低，存取和交易成本較高 | 儲存成本最低，存取和交易成本最高 |
-| **最小物件大小**                   | N/A                       | N/A          | N/A                 | N/A               |
-| **最小儲存持續時間**              | N/A                       | N/A          | 30天<sup>1</sup> | 180 天
+| **最小物件大小**                   | 不適用                       | 不適用          | 不適用                 | 不適用               |
+| **最小儲存持續時間**              | 不適用                       | 不適用          | 30天<sup>1</sup> | 180 天
 | **延遲** <br> **(距第一位元組時間)** | 單一位數的毫秒數 | 毫秒 | 毫秒        | 時數<sup>2</sup> |
 
 在 GPv2 帳戶的非經常性存取層中，有<sup>1</sup>個物件的保留期間至少為30天。 Blob 儲存體帳戶不會有非經常性存取層的最小保留期間。
@@ -151,7 +151,7 @@ Blob 儲存體生命週期管理提供豐富、以規則為基礎的原則，可
 
 1. 依據您的需求選取正確的存取層：將**存取層**設定為 [非經常性 **] 或 [** **熱**]。
 
-1. 按一下頂端的 [儲存] **** 。
+1. 按一下頂端的 [**儲存**]。
 
 ![變更儲存體帳戶層](media/storage-tiers/account-tier.png)
 
@@ -238,7 +238,7 @@ GPv1 與 GPv2 帳戶之間的價格結構不同，客戶在決定使用 GPv2 帳
 
 **我可以將我的預設帳戶存取層設定為封存嗎？**
 
-否。 只有經常性存取和非經常性存取層可以設定為預設帳戶存取層。 封存只能設定於物件層級。 在 blob 上傳時，不論預設帳戶層為何，您都可以將選擇的存取層指定為經常性、非經常性或封存。 這項功能可讓您直接將資料寫入封存層，以在您于 blob 儲存體中建立資料的時間，實現節省成本。
+不可以。 只有經常性存取和非經常性存取層可以設定為預設帳戶存取層。 封存只能設定於物件層級。 在 blob 上傳時，不論預設帳戶層為何，您都可以將選擇的存取層指定為經常性、非經常性或封存。 這項功能可讓您直接將資料寫入封存層，以在您于 blob 儲存體中建立資料的時間，實現節省成本。
 
 **在哪些區域中可以使用經常性、非經常性和封存存取層？**
 
@@ -248,7 +248,7 @@ GPv1 與 GPv2 帳戶之間的價格結構不同，客戶在決定使用 GPv2 帳
 
 經常性存取層中的 blob 與 GPv1、GPv2 和 Blob 儲存體帳戶中的 blob 具有相同的延遲。 非經常性存取層中的 blob 與 GPv1、GPv2 和 Blob 儲存體帳戶中的 blob 有類似的延遲（以毫秒為單位）。 封存存取層中的 blob 在 GPv1、GPv2 和 Blob 儲存體帳戶中有數小時的延遲。
 
-非經常性存取層中的 blob 與儲存在經常性存取層中的 blob 有稍微較低的可用性服務等級（SLA）。 如需詳細資訊，請參閱[儲存體 SLA](https://azure.microsoft.com/support/legal/sla/storage/v1_2/)。
+非經常性存取層中的 blob 與儲存在經常性存取層中的 blob 有稍微較低的可用性服務等級（SLA）。 如需詳細資訊，請參閱[儲存體 SLA](https://azure.microsoft.com/support/legal/sla/storage/v1_5/)。
 
 **經常性存取、非經常性存取和封存層之間的作業是否相同？**
 
@@ -274,7 +274,7 @@ Azure 入口網站、PowerShell 和 CLI 工具，以及 .NET、Java、Python 和
 
 資料儲存體與其他限制會設定于帳戶層級，而不是每個存取層。 您可以選擇在一層或所有三個層級中使用您的所有限制。 如需詳細資訊，請參閱[標準儲存體帳戶的擴充性和效能目標](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 評估 GPv2 和 Blob 儲存體帳戶中的經常性存取、非經常性存取和封存
 

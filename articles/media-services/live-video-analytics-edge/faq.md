@@ -3,11 +3,12 @@ title: IoT Edge 常見問題的即時影片分析-Azure
 description: 本主題提供有關 IoT Edge 常見問題的即時影片分析解答。
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 0a6c1c0f26116227454fa0968264644ea7a43178
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 705c74b1ba6d3a28911185b82a558099e87dc18d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84260731"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011510"
 ---
 # <a name="frequently-asked-questions-faqs"></a>常見問題集 (FAQ)
 
@@ -19,21 +20,21 @@ ms.locfileid: "84260731"
 
 |變數   |描述|
 |---|---|
-|[System.DateTime](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/linq/system-datetime-methods)|表示時間的瞬間，通常以一天的日期和時間表示。|
+|[System.DateTime](/dotnet/framework/data/adonet/sql/linq/system-datetime-methods)|表示時間的瞬間，通常以一天的日期和時間表示。|
 |GraphTopologyName   |代表 media graph 拓撲，包含圖形的藍圖。|
 |GraphInstanceName|  代表 media graph 實例，保留參數值並參考拓撲。|
 
 ## <a name="configuration-and-deployment"></a>設定和部署
 
 我可以將媒體邊緣模組部署到 Windows 10 裝置嗎？
-    * 是。 請參閱[Windows 10 上的 Linux 容器](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/linux-containers)文章。
+    * 是。 請參閱[Windows 10 上的 Linux 容器](/virtualization/windowscontainers/deploy-containers/linux-containers)文章。
 
 ## <a name="capture-from-ip-camera-and-rtsp-settings"></a>從 IP 攝影機和 RTSP 設定進行捕獲
 
 * 我需要在裝置上使用特殊的 SDK 才能傳送影片串流嗎？
-    * 否。 IoT Edge 上的即時影片分析支援使用 RTSP 影片串流通訊協定（在大部分的 IP 攝影機上都支援）來捕獲媒體。
+    * 不可以。 IoT Edge 上的即時影片分析支援使用 RTSP 影片串流通訊協定（在大部分的 IP 攝影機上都支援）來捕獲媒體。
 * 我可以使用 RTMP 或平滑方式（例如媒體服務實況活動），在 IoT Edge 上推送媒體到即時影片分析嗎？
-    * 否。 LVA 只支援從 IP 攝影機捕捉影片的 RTSP。
+    * 不可以。 LVA 只支援從 IP 攝影機捕捉影片的 RTSP。
     * 任何支援透過 TCP/HTTP 之 RTSP 串流的相機都應該能正常執行。 
 * 我可以在圖形執行個體上重設或更新 RTSP 來源 URL 嗎？
     * 是，當圖形實例處於非作用中狀態時。  
@@ -69,9 +70,9 @@ ms.locfileid: "84260731"
 ## <a name="monitoring-and-metrics"></a>監視和計量
 
 * 我可以使用事件方格來監視邊緣上的媒體圖形嗎？
-    * 否。 目前不支援事件方格。
+    * 不可以。 目前不支援事件方格。
 * 我是否可以使用 Azure 監視器來查看雲端或邊緣上媒體圖形的健全狀況、計量和效能？
-    * 否。
+    * 不可以。
 * 是否有任何工具可讓您更輕鬆地監視媒體服務 IoT Edge 模組？
     * Visual Studio Code 支援「Azure IoT Tools」延伸模組，可讓您輕鬆地監視 LVAEdge 模組端點。 您可以使用此工具快速開始監視「事件」的 IoT 中樞內建端點，並查看從 edge 裝置路由至雲端的推斷訊息。 
 
@@ -84,6 +85,6 @@ ms.locfileid: "84260731"
 * IoT Edge 上的 LiveVideo 分析如何計費？
     * 如需詳細資訊，請參閱[定價頁面](https://azure.microsoft.com/pricing/details/media-services/)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 [快速入門：開始使用 - IoT Edge 上的 Live Video Analytics](get-started-detect-motion-emit-events-quickstart.md)

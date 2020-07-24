@@ -6,17 +6,18 @@ ms.author: dukek
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.subservice: alerts
-ms.openlocfilehash: 655a3acc44a1418778b37fbef85e5df75d042317
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f592c42bc06c6bcd33ce6e10c506f8af0d8e0cf2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78206231"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87008382"
 ---
 # <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>如何透過「Azure 監視器」警示觸發複雜動作
 
 本文示範如何設定及觸發邏輯應用程式，以在引發警示時於 Microsoft Teams 中建立交談。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 Azure 監視器警示會在觸發時呼叫[動作群組](../../azure-monitor/platform/action-groups.md)。 動作群組可讓您觸發一個或多個動作，以通知他人發生警示並一併進行修復。
 
@@ -127,7 +128,7 @@ Azure 監視器警示會在觸發時呼叫[動作群組](../../azure-monitor/pla
 
 14. 在 [Logic Apps 設計工具]**** 頂端，選取 [儲存]**** 以儲存邏輯應用程式。
 
-15. 開啟現有的動作群組，然後新增要參考邏輯應用程式的動作。 如果您沒有現有的動作群組，請參閱[建立和管理 Azure 入口網站中的動作群組](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups)來建立一個。 請記得儲存變更。
+15. 開啟現有的動作群組，然後新增要參考邏輯應用程式的動作。 如果您沒有現有的動作群組，請參閱[建立和管理 Azure 入口網站中的動作群組](./action-groups.md)來建立一個。 請記得儲存變更。
 
     ![更新動作群組](media/action-groups-logic-app/update-action-group.png "更新動作群組")
 
@@ -292,8 +293,7 @@ Azure 監視器警示會在觸發時呼叫[動作群組](../../azure-monitor/pla
 ## <a name="calling-other-applications-besides-microsoft-teams"></a>呼叫 Microsoft Teams 以外的其他應用程式
 Logic Apps 有許多不同的連接器，可讓您在各種應用程式和資料庫中觸發動作。 Slack、SQL Server、Oracle、Salesforce 都只是一部分的範例。 如需有關連接器的詳細資訊，請參閱 [Logic App 連接器](../../connectors/apis-list.md)。  
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 * 取得 [Azure 活動記錄警示的概觀](../../azure-monitor/platform/alerts-overview.md)，並了解如何接收警示。  
-* 了解如何[設定 Azure 服務健康狀態通知公佈時的警示](../../azure-monitor/platform/alerts-activity-log-service-notifications.md)。
+* 了解如何[設定 Azure 服務健康狀態通知公佈時的警示](../../service-health/alerts-activity-log-service-notifications-portal.md)。
 * 深入了解[動作群組](../../azure-monitor/platform/action-groups.md)。
-

@@ -8,13 +8,14 @@ ms.topic: how-to
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: danis
-ms.openlocfilehash: 2b65dee27bf31a3cf49b59ddf982834b86dca4de
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f233a6fc557d9dbb62585e8cca85f175b3bc3e26
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82872122"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87010592"
 ---
-# <a name="preview-create-a-new-vm-image-version-from-an-existing-image-version-using-azure-image-builder"></a>預覽：使用 Azure 映射產生器從現有的映射版本建立新的 VM 映射版本
+# <a name="preview-create-a-new-vm-image-version-from-an-existing-image-version-using-azure-image-builder-in-linux"></a>預覽：在 Linux 中使用 Azure 映射產生器從現有的映射版本建立新的 VM 映射版本
 
 本文說明如何在[共用映射資源庫](shared-image-galleries.md)中建立現有的映射版本、更新它，並將其發佈為新的映射版本至資源庫。
 
@@ -182,6 +183,6 @@ az sig image-version list -g $sigResourceGroup -r $sigName -i $imageDefName -o t
 ```
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 若要深入瞭解本文中所使用之 json 檔案的元件，請參閱影像產生器[範本參考](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。

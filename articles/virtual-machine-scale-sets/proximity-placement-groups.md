@@ -9,11 +9,12 @@ ms.subservice: availability
 ms.date: 07/01/2019
 ms.reviewer: zivr
 ms.custom: mimckitt
-ms.openlocfilehash: 8e455d4d016f97a466838c07fc7af2422f72cc00
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 1525ef7c1e19aa9821df3f111fdce3518d37afd5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83727092"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011051"
 ---
 # <a name="preview-creating-and-using-proximity-placement-groups-using-powershell"></a>預覽：使用 PowerShell 建立及使用鄰近放置群組
 
@@ -29,7 +30,7 @@ ms.locfileid: "83727092"
 
 
 ## <a name="create-a-proximity-placement-group"></a>建立鄰近放置群組
-使用 [New-AzProximityPlacementGroup](https://docs.microsoft.com/powershell/module/az.compute/new-azproximityplacementgroup) \(英文\) Cmdlet 來建立鄰近放置群組。 
+使用 [New-AzProximityPlacementGroup](/powershell/module/az.compute/new-azproximityplacementgroup) \(英文\) Cmdlet 來建立鄰近放置群組。 
 
 ```azurepowershell-interactive
 $resourceGroup = "myPPGResourceGroup"
@@ -54,7 +55,7 @@ Get-AzProximityPlacementGroup
 
 ## <a name="create-a-scale-set"></a>建立擴展集
 
-在使用 [New-AzVMSS](https://docs.microsoft.com/powershell/module/az.compute/new-azvmss) \(英文\) 來建立擴展集時，請使用 `-ProximityPlacementGroup $ppg.Id` 來參考鄰近放置群組識別碼，以在鄰近放置群組中建立擴展。
+在使用 [New-AzVMSS](/powershell/module/az.compute/new-azvmss) \(英文\) 來建立擴展集時，請使用 `-ProximityPlacementGroup $ppg.Id` 來參考鄰近放置群組識別碼，以在鄰近放置群組中建立擴展。
 
 ```azurepowershell-interactive
 $scalesetName = "myVM"

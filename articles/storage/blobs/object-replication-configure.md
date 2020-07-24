@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 06/16/2020
+ms.date: 07/16/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 9cb9f1a33c37487f4bfb1419d45d4e42a862d815
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ddf9a1309cb4f9156cec3aeb5d2ddd9d22cde485
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84888123"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011443"
 ---
 # <a name="configure-object-replication-for-block-blobs-preview"></a>設定區塊 Blob 的物件複寫 (預覽)
 
@@ -52,7 +52,7 @@ ms.locfileid: "84888123"
 
     :::image type="content" source="media/object-replication-configure/configure-replication-policy.png" alt-text="顯示 Azure 入口網站中複寫規則的螢幕擷取畫面":::
 
-1. 如有需要，請指定一或多個篩選，以便僅複製符合前置詞模式的 Blob。 例如，如果指定前置詞 `b`，則只會複寫名稱開頭為該字母的 Blob。 您可指定虛擬目錄作為前置詞的一部分。
+1. 如有需要，請指定一或多個篩選，以便僅複製符合前置詞模式的 Blob。 例如，如果指定前置詞 `b`，則只會複寫名稱開頭為該字母的 Blob。 您可指定虛擬目錄作為前置詞的一部分。 前置字元字串不支援萬用字元。
 
     下圖顯示篩選會限制哪些 Blob 符合複寫規則並接受複製。
 
@@ -68,7 +68,7 @@ ms.locfileid: "84888123"
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-若要使用 PowerShell 建立複寫原則，請先安裝版本 [2.0.1-preview](https://www.powershellgallery.com/packages/Az.Storage/2.0.1-preview) 的 Az.Storage PowerShell 模組。 請遵循下列步驟安裝此預覽模組：
+若要使用 PowerShell 建立複寫原則，請先安裝「 [2.0.1 版-預覽](https://www.powershellgallery.com/packages/Az.Storage/2.0.1-preview)」或「更新版本」的 Az PowerShell 模組。 請遵循下列步驟安裝此預覽模組：
 
 1. 使用 [設定] 下的 [應用程式與功能]，從 Windows 解除任何先前安裝的 Azure PowerShell。
 

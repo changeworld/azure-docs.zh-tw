@@ -1,18 +1,18 @@
 ---
 title: 在 Azure Marketplace 上建立 Azure 虛擬機器供應項目
-description: 了解如何使用所需的 SKU，在 Azure Marketplace 上建立虛擬機器供應項目。
+description: 瞭解如何使用所需的方案，在 Azure Marketplace 上建立虛擬機器供應專案。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: article
 author: emuench
 ms.author: mingshen
-ms.date: 06/17/2020
-ms.openlocfilehash: fe53de2c81f9e9df5fd9270951f943b0b3505f1e
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/17/2020
+ms.openlocfilehash: 6df1620f2d1097ac23e5dfa3903fefc74d13fa65
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110974"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012020"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>在 Azure Marketplace 上建立 Azure 虛擬機器供應項目
 
@@ -286,7 +286,7 @@ ms.locfileid: "86110974"
 
 ## <a name="plan-overview"></a>方案概觀
 
-您可以在合作夥伴中心的相同供應項目中提供各種方案選項。 這些方案先前稱為 SKU。 一個供應項目至少需要一個方案，這可能會因為營收對象、Azure 區域、功能或 VM 映像而異。
+您可以在合作夥伴中心的相同供應項目中提供各種方案選項。 供應專案至少需要一個方案（先前稱為 SKU），這可能會因營收物件、Azure 區域、功能或 VM 映射而異。
 
 建立方案之後，選取 [方案概觀] 索引標籤以顯示：
 
@@ -413,7 +413,6 @@ Azure Government 服務會處理受限於特定政府法規和需求的資料。
 >[!Note]
 >透過雲端解決方案提供者方案（CSP）的轉銷商所建立的 Azure 訂用帳戶，不支援私用供應專案。
 
-
 #### <a name="hide-a-plan"></a>隱藏方案
 
 如果您的虛擬機器只會在透過另一個解決方案範本或受控應用程式參考時間接使用，請選取此核取方塊以發佈虛擬機器，但對可能直接加以搜尋或瀏覽的客戶則隱藏。
@@ -516,10 +515,10 @@ Microsoft 將會傳送一封電子郵件訊息，讓您知道供應項目的預�
 
 此頁面也包含可協助您處理供應項目的連結，端視其狀態而定：
 
-- 如果供應專案為草稿：[刪除草稿供應](update-existing-offer.md#delete-a-draft-offer)專案）
-- 如果供應專案已上線：[停止銷售供應](update-existing-offer.md#stop-selling-an-offer-or-plan)專案）
-- 如果供應專案處於預覽[狀態：上線](publishing-status.md#publisher-approval)）
-- 如果您尚未完成發行者登出：[取消](update-existing-offer.md#cancel-publishing)發行）
+- 如果供應項目為草稿：[刪除草稿供應項目](update-existing-offer.md#delete-a-draft-offer) \(部分機器翻譯\)
+- 如果供應項目已上線：[停止銷售供應項目](update-existing-offer.md#stop-selling-an-offer-or-plan) \(部分機器翻譯\)
+- 如果供應項目處於預覽階段：[上線](publishing-status.md#publisher-approval) \(部分機器翻譯\)
+- 如果您尚未完成發行者登出：[取消發佈](update-existing-offer.md#cancel-publishing) \(部分機器翻譯\)
 
 ## <a name="marketplace-examples"></a>Marketplace 範例
 
@@ -530,8 +529,8 @@ Microsoft 將會傳送一封電子郵件訊息，讓您知道供應項目的預�
 #### <a name="call-out-descriptions"></a>向外撥說明
 
 1. 大型標誌
-2. Price
-3. 類別
+2. 價格
+3. Categories
 4. 條款及條件
 5. 隱私權原則位址（連結）
 6. 供應項目名稱

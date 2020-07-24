@@ -5,17 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 05/08/2020
+ms.date: 07/20/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol, rosssmi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dae584bdfa97b2c30cab5f15881323c26366592c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c5326fd6adf12d53d836594c8e53bda14e0871e5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253353"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87009113"
 ---
 # <a name="how-to-require-app-protection-policy-and-an-approved-client-app-for-cloud-app-access-with-conditional-access"></a>如何：透過條件式存取需要應用程式防護原則和已核准的用戶端應用程式，才能存取雲端應用程式
 
@@ -29,10 +30,11 @@ ms.locfileid: "85253353"
 
 在條件式存取中，這些用戶端應用程式已知會受到應用程式防護原則的保護。 如需應用程式保護原則的詳細資訊，請參閱[應用程式保護原則概觀](/intune/apps/app-protection-policy)一文
 
-如需合格用戶端應用程式的清單，請參閱[應用程式防護原則需求](concept-conditional-access-grant.md)。
+> [!WARNING]
+> 並非所有應用程式都受到核准的應用程式支援，或支援應用程式保護原則。 如需合格用戶端應用程式的清單，請參閱[應用程式防護原則需求](concept-conditional-access-grant.md#require-app-protection-policy)。
 
 > [!NOTE]
->    在原則中使用 or 子句，讓使用者能夠利用支援**需要應用程式防護原則的應用程式**或**需要核准的用戶端應用程式**授與控制。 如需哪些應用程式支援**需要應用程式防護原則**授與控制的詳細資訊，請參閱[應用程式防護原則需求](concept-conditional-access-grant.md)。
+> [授與控制項] 底下的 [需要其中一個選取的控制項] 就像或子句。 這會在原則中使用，讓使用者能夠利用支援「**需要應用程式保護原則**」或「**需要核准的用戶端應用程式**授與控制」的應用程式。 如果這兩個原則都支援應用程式，則會強制執行 [**需要應用程式保護原則**]。 如需哪些應用程式支援**需要應用程式防護原則**授與控制的詳細資訊，請參閱[應用程式防護原則需求](concept-conditional-access-grant.md#require-app-protection-policy)。
 
 ## <a name="scenario-1-office-365-apps-require-approved-apps-with-app-protection-policies"></a>案例 1：Office 365 應用程式需要具有應用程式保護原則的已核准應用程式
 

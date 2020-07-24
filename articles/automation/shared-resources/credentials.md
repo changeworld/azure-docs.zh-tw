@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 23f12278d02715bd94f1ea26abf2bd4b2b03caf1
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 6b95eeaf7dd72c85c3940e3cdc2a71c193c35ff5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187399"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87008603"
 ---
 # <a name="manage-credentials-in-azure-automation"></a>管理 Azure 自動化中的認證
 
@@ -44,7 +44,7 @@ ms.locfileid: "86187399"
 |:--- |:--- |
 | `Get-AutomationPSCredential` |取得要在 Runbook 或 DSC 組態中使用的 `PSCredential` 物件。 最常見的情況是，您應該使用此[內部 Cmdlet](modules.md#internal-cmdlets) 而不是 `Get-AzAutomationCredential` Cmdlet，因為後者只會擷取認證資訊。 這項資訊傳遞給另一個 Cmdlet 通常沒有幫助。 |
 | [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-7) |取得具有使用者名稱和密碼提示的認證。 此 Cmdlet 是預設 Microsoft.PowerShell.Security 模組的一部分。 請參閱[預設模組](modules.md#default-modules)。|
-| [New-AzureAutomationCredential](/powershell/module/servicemanagement/azure/new-azureautomationcredential?view=azuresmps-4.0.0) | 建立認證資產。 此 Cmdlet 是預設 Azure 模組的一部分。 請參閱[預設模組](modules.md#default-modules)。|
+| [New-AzureAutomationCredential](/powershell/module/servicemanagement/azure.service/new-azureautomationcredential?view=azuresmps-4.0.0) | 建立認證資產。 此 Cmdlet 是預設 Azure 模組的一部分。 請參閱[預設模組](modules.md#default-modules)。|
 
 若要在程式碼中擷取 `PSCredential` 物件，您必須匯入 `Orchestrator.AssetManagement.Cmdlets` 模組。 如需詳細資訊，請參閱[在 Azure 自動化中管理模組](modules.md)。
 

@@ -1,5 +1,5 @@
 ---
-title: 為 Windows 虛擬桌面使用者自訂摘要-Azure
+title: 自訂 Windows 虛擬桌面秋季2019使用者的摘要-Azure
 description: 如何使用 PowerShell Cmdlet 為 Windows 虛擬桌面使用者自訂摘要。
 services: virtual-desktop
 author: Heidilohr
@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 248156c403e7e74665ec1c856588d8a2ca76e208
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 9c573fc1aa220b9301e51ef0ccb1190d9243250e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86244560"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011221"
 ---
 # <a name="customize-feed-for-windows-virtual-desktop-users"></a>適用於 Windows 虛擬桌面使用者的自訂摘要
 
@@ -72,7 +72,7 @@ Set-RdsRemoteDesktop -TenantName <tenantname> -HostPoolName <hostpoolname> -AppG
 > [!div class="mx-imgBorder"]
 > ![已反白顯示 [名稱] 和 [新增 FriendlyName] 的 PowerShell Cmdlet 集 RDSRemoteApp 螢幕擷取畫面。](../media/set-rdsremotedesktop.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 既然您已自訂使用者的摘要，您可以登入 Windows 虛擬桌面的用戶端來進行測試。若要這麼做，請繼續進行連線至 Windows 虛擬桌面的作法：
 

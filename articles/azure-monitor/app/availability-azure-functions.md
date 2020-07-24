@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/04/2020
-ms.openlocfilehash: 81040adf6cfbb8820ec7f306c7d614830e3a2613
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1808623821d71169ec35beab1d33d4eb2c32c189
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82791099"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87008399"
 ---
 # <a name="create-and-run-custom-availability-tests-using-azure-functions"></a>使用 Azure Functions 建立及執行自訂可用性測試
 
@@ -23,7 +23,7 @@ ms.locfileid: "82791099"
 
 - 如果您有 Application Insights 資源：
     - 根據預設，Azure Functions 會建立 Application Insights 資源，但如果您想要使用其中一個已建立的資源，則必須在建立期間指定它。
-    - 請遵循如何[建立 Azure Functions 資源和計時器觸發函式](https://docs.microsoft.com/azure/azure-functions/functions-create-scheduled-function)（在清除前停止）的指示，並使用下列選項。
+    - 請遵循如何[建立 Azure Functions 資源和計時器觸發函式](../../azure-functions/functions-create-scheduled-function.md)（在清除前停止）的指示，並使用下列選項。
         -  選取靠近頂端的 [**監視**] 索引標籤。
 
             ![ 使用您自己的 App Insights 資源建立 Azure Functions 應用程式](media/availability-azure-functions/create-function-app.png)
@@ -35,7 +35,7 @@ ms.locfileid: "82791099"
         - 選取 [**審核] + [建立**]
 - 如果您還沒有為計時器觸發的函式建立 Application Insights 資源：
     - 根據預設，當您建立 Azure Functions 應用程式時，它會為您建立 Application Insights 資源。
-    - 請遵循如何[建立 Azure Functions 資源和計時器觸發](https://docs.microsoft.com/azure/azure-functions/functions-create-scheduled-function)函式（在清除前停止）的指示。
+    - 請遵循如何[建立 Azure Functions 資源和計時器觸發](../../azure-functions/functions-create-scheduled-function.md)函式（在清除前停止）的指示。
 
 ## <a name="sample-code"></a>範例程式碼
 
@@ -45,7 +45,7 @@ ms.locfileid: "82791099"
 >![Azure 入口網站中的 Azure 函式 .csx](media/availability-azure-functions/runcsx.png)
 
 > [!NOTE]
-> 針對您要使用的端點位址： `EndpointAddress= https://dc.services.visualstudio.com/v2/track` 。 除非您的資源位於 Azure Government 或 Azure 中國之類的區域，否則請參閱這篇文章，以瞭解如何覆[寫預設端點](https://docs.microsoft.com/azure/azure-monitor/app/custom-endpoints#regions-that-require-endpoint-modification)，並為您的區域選取適當的遙測通道端點。
+> 針對您要使用的端點位址： `EndpointAddress= https://dc.services.visualstudio.com/v2/track` 。 除非您的資源位於 Azure Government 或 Azure 中國之類的區域，否則請參閱這篇文章，以瞭解如何覆[寫預設端點](./custom-endpoints.md#regions-that-require-endpoint-modification)，並為您的區域選取適當的遙測通道端點。
 
 ```C#
 #load "runAvailabilityTest.csx"
@@ -185,7 +185,7 @@ public async static Task RunAvailbiltyTestAsync(ILogger log)
 >[!div class="mx-imgBorder"]
 >![Dependencies](media/availability-azure-functions/dependencies.png) (相依性)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [應用程式對應](../../azure-monitor/app/app-map.md)
 - [交易診斷](../../azure-monitor/app/transaction-diagnostics.md)

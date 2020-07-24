@@ -8,15 +8,16 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 04/06/2018
 ms.author: johnkem
-ms.openlocfilehash: 1d38a3cac5525de6835bbb0f9873cbd0636d44a9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3fe4a70d2cf59f003c785740b55634d44863dc9c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81869664"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87009521"
 ---
 # <a name="azure-diagnostics-extension-for-windows-vms"></a>適用於 Windows VM 的 Azure 診斷延伸模組
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 「Azure 診斷」VM 延伸模組可讓您從 Windows VM 收集監視資料，例如效能計數器和事件記錄。 您可以細微地指定您想要收集的資料，以及要將資料移至何處，例如 Azure 儲存體帳戶或 Azure 事件中樞。 您也可以在 Azure 入口網站中使用此資料建立圖表，或建立度量警示。
 
@@ -36,7 +37,7 @@ ms.locfileid: "81869664"
 
 ## <a name="template-deployment"></a>範本部署
 
-也可以使用 Azure Resource Manager 範本部署 Azure VM 擴充功能。 上一節詳述的 JSON 結構描述可以用於 Azure Resource Manager 範本，以在 Azure Resource Manager 範本部署期間執行「Azure 診斷」延伸模組。 請參閱[使用 Windows VM 和 Azure Resource Manager 範本的監視和診斷](extensions-diagnostics-template.md)。
+也可以使用 Azure Resource Manager 範本部署 Azure VM 擴充功能。 上一節詳述的 JSON 結構描述可以用於 Azure Resource Manager 範本，以在 Azure Resource Manager 範本部署期間執行「Azure 診斷」延伸模組。 請參閱[使用 Windows VM 和 Azure Resource Manager 範本的監視和診斷](../extensions/diagnostics-template.md)。
 
 ## <a name="azure-cli-deployment"></a>Azure CLI 部署
 
@@ -54,7 +55,7 @@ az vm extension set \
 
 ## <a name="powershell-deployment"></a>PowerShell 部署
 
-`Set-AzVMDiagnosticsExtension` 命令可用來將「Azure 診斷」延伸模組新增到現有的虛擬機器。 另請參閱[使用 PowerShell 在執行 Windows 的虛擬機器中啟用 Azure 診斷](ps-extensions-diagnostics.md)。
+`Set-AzVMDiagnosticsExtension` 命令可用來將「Azure 診斷」延伸模組新增到現有的虛擬機器。 另請參閱[使用 PowerShell 在執行 Windows 的虛擬機器中啟用 Azure 診斷](../extensions/diagnostics-windows.md)。
 
  
 

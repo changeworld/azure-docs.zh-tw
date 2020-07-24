@@ -8,18 +8,18 @@ ms.topic: how-to
 ms.service: virtual-machines
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: d03e911b88e6a7729b0519e74941b47d85a97901
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4cc00ecb3810b1499f52ea9f3a0c110e92c75dff
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84944622"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87009607"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-powershell"></a>將 VHD 上傳至 Azure，或將受控磁碟複製到另一個區域-Azure PowerShell
 
 [!INCLUDE [disks-upload-vhd-to-disk-intro](../../../includes/disks-upload-vhd-to-disk-intro.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 - 下載最新[版本的 AzCopy v10](../../storage/common/storage-use-azcopy-v10.md#download-and-install-azcopy)。
 - [安裝 Azure PowerShell 模組](/powershell/azure/install-Az-ps)。
@@ -34,7 +34,7 @@ ms.locfileid: "84944622"
 
 這種受控磁片有兩種獨特的狀態：
 
-- ReadToUpload，這表示磁片已準備好接收上傳，但未產生任何[安全存取](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)簽章（SAS）。
+- ReadToUpload，這表示磁片已準備好接收上傳，但未產生任何[安全存取](../../storage/common/storage-sas-overview.md)簽章（SAS）。
 - ActiveUpload，這表示磁片已準備好接收上傳，並已產生 SAS。
 
 > [!NOTE]
@@ -44,7 +44,7 @@ ms.locfileid: "84944622"
 
 在您可以建立空的標準 HDD 以進行上傳之前，您需要上傳的 VHD 檔案大小（以位元組為單位）。 範例程式碼會為您取得，但是您也可以使用來執行此動作： `$vhdSizeBytes = (Get-Item "<fullFilePathHere>").length` 。 指定 **-UploadSizeInBytes**參數時，會使用這個值。
 
-現在，在您的本機 shell 上，藉由在 **-CreateOption**參數中指定**上傳**設定，並在[new-azdiskconfig](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig?view=azps-1.8.0)指令程式中指定 **-UploadSizeInBytes**參數，來建立要上傳的空標準 HDD。 然後呼叫[new-azdisk](https://docs.microsoft.com/powershell/module/az.compute/new-azdisk?view=azps-1.8.0)以建立磁片。
+現在，在您的本機 shell 上，藉由在 **-CreateOption**參數中指定**上傳**設定，並在[new-azdiskconfig](/powershell/module/az.compute/new-azdiskconfig?view=azps-1.8.0)指令程式中指定 **-UploadSizeInBytes**參數，來建立要上傳的空標準 HDD。 然後呼叫[new-azdisk](/powershell/module/az.compute/new-azdisk?view=azps-1.8.0)以建立磁片。
 
 取代 `<yourdiskname>` 、 `<yourresourcegroupname>` ， `<yourregion>` 然後執行下列命令：
 
@@ -133,7 +133,7 @@ Revoke-AzDiskAccess -ResourceGroupName $sourceRG -DiskName $sourceDiskName
 Revoke-AzDiskAccess -ResourceGroupName $targetRG -DiskName $targetDiskName 
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 既然您已成功將 VHD 上傳至受控磁片，您可以將磁片連結至 VM 並開始使用它。
 

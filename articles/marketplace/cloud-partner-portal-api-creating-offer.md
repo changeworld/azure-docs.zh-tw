@@ -4,19 +4,21 @@ description: API 來建立新的或更新現有的供應專案。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 06/19/2020
-ms.openlocfilehash: 5104d11c1eaf9641f1d631db97dcca036308cd45
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: dsindona
+ms.author: dsindona
+ms.date: 07/14/2020
+ms.openlocfilehash: 249eb982ee701ea0a442121c02e55ad98e1f6fb9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86115718"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011986"
 ---
 <a name="create-or-modify-an-offer"></a>建立或修改供應項目
 =========================
 
 > [!NOTE]
-> Cloud Partner 入口網站 API 已和合作夥伴中心整合，並會在將供應項目移轉到合作夥伴中心後繼續運作。 該整合會引進些微的變更。 請參閱[CLOUD PARTNER 入口網站 API 參考](./cloud-partner-portal-api-overview.md)中所列的變更，以確保您的程式碼會在遷移至合作夥伴中心後繼續運作。
+> Cloud Partner 入口網站 Api 會與整合，並會繼續在合作夥伴中心運作。 轉換會引進微小的變更。 請參閱[CLOUD PARTNER 入口網站 API 參考](./cloud-partner-portal-api-overview.md)中所列的變更，以確保您的程式碼在轉換至合作夥伴中心後繼續運作。 只有在轉換至合作夥伴中心之前已整合的現有產品，才應該使用 CPP Api;新產品應使用合作夥伴中心提交 Api。
 
 此呼叫會更新發行者命名空間內的特定供應項目，或建立新的供應項目。
 
@@ -28,12 +30,12 @@ ms.locfileid: "86115718"
 
 |  **名稱**         |  **描述**                      |  **Data type**  |
 |  --------         |  ----------------                     |  -------------  |
-| publisherId       |  發行者識別碼，例如 `contoso` |   String |
-| offerId           |  供應項目識別碼                     |   String        |
+| publisherId       |  發行者識別碼，例如 `contoso` |   字串 |
+| offerId           |  供應項目識別碼                     |   字串        |
 | api-version       |  API 的最新版本            |   日期           |
 |  |  |  |
 
-<a name="header"></a>Header
+<a name="header"></a>頁首
 ------
 
 |  **名稱**        |  **ReplTest1**               |
@@ -269,7 +271,7 @@ ms.locfileid: "86115718"
 
 ### <a name="response-status-codes"></a>回應狀態碼
 
-| **程式碼**  |  **描述**                                                                            |
+| **Code**  |  **描述**                                                                            |
 | --------  |  ---------------                                                                            |
 |  200      | `OK`. 已成功處理要求，並已成功修改供應項目。           |
 |  201      | `Created`. 已成功處理要求，並已成功建立供應項目。   |
@@ -283,4 +285,4 @@ ms.locfileid: "86115718"
 <a name="uploading-artifacts"></a>正在上傳成品
 -------------------
 
-成品 (例如影像和標誌) 應該透過將它們上傳至 Web 上可存取的位置來共用，然後將每個成品包含在 PUT 要求中作為 URI，如上述範例所示。 系統會偵測 Azure Marketplace 儲存空間中不存在這些檔案，並將這些檔案下載到儲存體中。  因此，您會發現未來的 GET 要求會傳回這些檔案的 Azure Marketplace 服務 URL。
+成品 (例如影像和標誌) 應該透過將它們上傳至 Web 上可存取的位置來共用，然後將每個成品包含在 PUT 要求中作為 URI，如上述範例所示。 系統會偵測到這些檔案不存在 Azure Marketplace 儲存體中，並將這些檔案下載到儲存體中。  因此，您會發現未來的 GET 要求將會傳回這些檔案的 Azure Marketplace 服務 URL。

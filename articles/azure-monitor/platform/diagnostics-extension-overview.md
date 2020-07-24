@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
-ms.openlocfilehash: 5dcdfba6e8dd00c8ba09e5e98293a30d19e51c99
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 6201a4e0551f0f75dde65b2bc4b8b560a0f5ea20
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83635962"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87007991"
 ---
 # <a name="azure-diagnostics-extension-overview"></a>Azure 診斷延伸模組概觀
 Azure 診斷延伸模組是 [Azure 監視器中的代理程式](agents-overview.md)，可從 Azure 計算資源 (包括虛擬機器) 的客體作業系統收集監視資料。 本文提供 Azure 診斷延伸模組的概觀，包括支援的特定功能，以及安裝與設定的選項。 
@@ -33,7 +34,7 @@ Azure 監視器中 Log Analytics 代理程式也可用來從虛擬機器的客�
 
 - Azure 診斷延伸模組只能與 Azure 虛擬機器搭配使用。 Log Analytics 代理程式可與 Azure、其他雲端和內部部署中的虛擬機器搭配使用。
 - Azure 診斷延伸模組會將資料傳送至 Azure 儲存體、[Azure 監視器計量](data-platform-metrics.md) (僅限 Windows) 和事件中樞。 Log Analytics 代理程式則會將資料收集到 [Azure 監視器記錄](data-platform-logs.md)。
-- [解決方案](../monitor-reference.md#insights-and-core-solutions)、[適用於 VM 的 Azure 監視器](../insights/vminsights-overview.md)以及其他服務 (例如 [Azure 資訊安全中心](/azure/security-center/)) 都需要 Log Analytics 代理程式。
+- [解決方案](../monitor-reference.md#insights-and-core-solutions)、[適用於 VM 的 Azure 監視器](../insights/vminsights-overview.md)以及其他服務 (例如 [Azure 資訊安全中心](../../security-center/index.yml)) 都需要 Log Analytics 代理程式。
 
 ## <a name="costs"></a>費用
 Azure 診斷延伸模組無須付費，但內嵌資料可能會產生費用。 針對將要收集資料的目的地，請查看 [Azure 監視器定價](https://azure.microsoft.com/pricing/details/monitor/)。
@@ -49,8 +50,8 @@ Azure 診斷延伸模組無須付費，但內嵌資料可能會產生費用。 �
 | 效能計數器 | 測量作業系統和工作負載不同層面效能的數值。 |
 | IIS 記錄             | 在客體作業系統上執行的 IIS 網站其使用量資訊。 |
 | 應用程式記錄     | 追蹤應用程式所寫入的訊息。 |
-| .NET EventSource 記錄 |使用 .NET [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) 類別的程式碼編寫事件 |
-| [以資訊清單為基礎的 ETW 記錄](https://docs.microsoft.com/windows/desktop/etw/about-event-tracing) \(英文\) |事件追蹤 (適用於任何程序所產生的 Windows 事件)。 |
+| .NET EventSource 記錄 |使用 .NET [EventSource](/dotnet/api/system.diagnostics.tracing.eventsource?view=netcore-3.1) 類別的程式碼編寫事件 |
+| [以資訊清單為基礎的 ETW 記錄](/windows/desktop/etw/about-event-tracing) \(英文\) |事件追蹤 (適用於任何程序所產生的 Windows 事件)。 |
 | 損毀傾印 (記錄)   | 應用程式損毀時的程序狀態資訊。 |
 | 檔案型記錄    | 您的應用程式或服務所建立的記錄。 |
 | 代理程式診斷記錄 | Azure 診斷本身的資訊。 |
@@ -116,4 +117,3 @@ LAD 會將資料寫入 Azure 儲存體中的資料表。 其支援下表中的�
 
 * 了解如何[在 Azure 診斷中使用效能計數器](../../cloud-services/diagnostics-performance-counters.md)。
 * 如果您在開始診斷，或是在 Azure 儲存體資料表中尋找資料時遇到問題，請參閱[針對 Azure 診斷進行疑難排解](diagnostics-extension-troubleshooting.md)
-

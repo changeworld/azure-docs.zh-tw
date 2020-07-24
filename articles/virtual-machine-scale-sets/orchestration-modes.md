@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 10/23/2019
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 54515b347a95b9315ca9ba87568fb2104c3b2b45
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eb7d4d8a6f1c1ee55601cdd839e330147e60bcc7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84736997"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011068"
 ---
 # <a name="orchestration-modes-preview"></a>協調流程模式（預覽）
 
@@ -42,9 +42,9 @@ ms.locfileid: "84736997"
 
 ## <a name="orchestration-modes"></a>協調流程模式
 
-|                             | "orchestrationMode"： "VM" （VirtualMachine） | "orchestrationMode": "ScaleSetVM" (VirtualMachineScaleSetVM) |
+| 功能                     | "orchestrationMode"： "VM" （VirtualMachine） | "orchestrationMode": "ScaleSetVM" (VirtualMachineScaleSetVM) |
 |-----------------------------|--------------------------------------------|--------------------------------------------------------------|
-| VM 設定模型      | None                                       | 必要 |
+| VM 設定模型      | 無                                       | 必要 |
 | 正在將新的 VM 新增至擴展集  | 建立 VM 時，會將 Vm 明確新增至擴展集。 | Vm 會根據 VM 設定模型、實例計數和自動調整規則，以隱含方式建立並新增至擴展集 | |
 | 刪除 VM                   | Vm 必須個別刪除，如果擴展集內有任何 Vm，則不會刪除它。 | 您可以個別刪除 Vm，而刪除擴展集將會刪除所有的 VM 實例。  |
 | 附加/卸離 Vm           | 不受支援                              | 不支援 |
@@ -62,6 +62,6 @@ ms.locfileid: "84736997"
 | 單一放置群組 = = false | 不支援                          | 支援 |
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-如需詳細資訊，請參閱[可用性選項的總覽](availability.md)。
+如需詳細資訊，請參閱[可用性選項的總覽](../virtual-machines/availability.md?toc=%2fazure%2fvirtual-machine-scale-sets%2ftoc.json)。

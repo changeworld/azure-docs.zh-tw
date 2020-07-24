@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: 5d8aa456a6454dd511b7dcda5d3f74a739033356
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: c0426c5359e4d82d0316613586b9298596d82605
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83774345"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87009759"
 ---
 # <a name="disable-the-guest-os-firewall-in-azure-vm"></a>停用 Azure VM 中的客體 OS 防火牆
 
@@ -73,7 +74,7 @@ ms.locfileid: "83774345"
 
 #### <a name="mitigation-3-pstools-commands"></a>降低風險 3：PSTools 命令
 
-1.  在要對其進行疑難排解的 VM 上，下載 [PSTools](https://docs.microsoft.com/sysinternals/downloads/pstools)。
+1.  在要對其進行疑難排解的 VM 上，下載 [PSTools](/sysinternals/downloads/pstools)。
 
 2.  開啟 CMD 執行個體，然後透過其 DIP 存取 VM。
 

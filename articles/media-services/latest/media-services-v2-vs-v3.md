@@ -15,11 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 03/09/2020
 ms.author: juliako
-ms.openlocfilehash: fd094e35ceaa718ec1b258d74106b39744cbd16f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 091a5d33e49e2abe811bf3cc250d04d69506165d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79087820"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011629"
 ---
 # <a name="media-services-v2-vs-v3"></a>媒體服務 v2 與 v3
 
@@ -27,7 +28,7 @@ ms.locfileid: "79087820"
 
 ## <a name="general-changes-from-v2"></a>V2 的一般變更
 
-* 對於使用 v3 建立的資產，媒體服務只支援[Azure 儲存體伺服器端儲存體加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)。
+* 對於使用 v3 建立的資產，媒體服務只支援[Azure 儲存體伺服器端儲存體加密](../../storage/common/storage-service-encryption.md)。
     * 您可以使用 v3 API 搭配以 v2 API 建立的 Asset，後者的[儲存體加密](../previous/media-services-rest-storage-encryption.md) (AES 256) 是由媒體服務所提供。
     * 您無法使用 v3 API 建立具有舊版 AES 256 [儲存體加密](../previous/media-services-rest-storage-encryption.md)的新 Asset。
 * V3 中的[資產](assets-concept.md)屬性與第2版不同，請參閱[屬性的對應方式](#map-v3-asset-properties-to-v2)。
@@ -87,11 +88,11 @@ v3 API 與 v2 API 具有下列功能差距。 縮小差距是刻不容緩的工�
 
 ### <a name="map-v3-asset-properties-to-v2"></a>將 v3 資產屬性對應至 v2
 
-下表顯示[資產](https://docs.microsoft.com/rest/api/media/assets/createorupdate#asset)在 v3 中的屬性如何對應至第2版中的資產屬性。
+下表顯示[資產](/rest/api/media/assets/createorupdate#asset)在 v3 中的屬性如何對應至第2版中的資產屬性。
 
 |v3 屬性|v2 屬性|
 |---|---|
-|`id`-（唯一）完整 Azure Resource Manager 路徑，請參閱[資產](https://docs.microsoft.com/rest/api/media/assets/createorupdate)中的範例||
+|`id`-（唯一）完整 Azure Resource Manager 路徑，請參閱[資產](/rest/api/media/assets/createorupdate)中的範例||
 |`name`-（唯一）請參閱[命名慣例](media-services-apis-overview.md#naming-conventions) ||
 |`alternateId`|`AlternateId`|
 |`assetId`|`Id`-（唯一）值的開頭為 `nb:cid:UUID:` 前置詞。|
@@ -106,11 +107,11 @@ v3 API 與 v2 API 具有下列功能差距。 縮小差距是刻不容緩的工�
 
 若要保護待用資產，資產應該透過儲存端加密來進行加密。 下表顯示儲存端加密在媒體服務中的運作方式：
 
-|加密選項|Description|媒體服務 v2|媒體服務 v3|
+|加密選項|描述|媒體服務 v2|媒體服務 v3|
 |---|---|---|---|
 |媒體服務的儲存體加密|AES-256 加密，媒體服務管理的金鑰。|支援<sup>(1)</sup>|不支援<sup>(2)</sup>|
-|[待用資料的儲存體服務加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|Azure 儲存體提供的伺服器端加密、由 Azure 或客戶管理的金鑰。|支援|支援|
-|[儲存體用戶端加密](https://docs.microsoft.com/azure/storage/common/storage-client-side-encryption)|Azure 儲存體所提供的用戶端加密、由客戶在 Key Vault 中管理的金鑰。|不支援|不支援|
+|[待用資料的儲存體服務加密](../../storage/common/storage-service-encryption.md)|Azure 儲存體提供的伺服器端加密、由 Azure 或客戶管理的金鑰。|支援|支援|
+|[儲存體用戶端加密](../../storage/common/storage-client-side-encryption.md)|Azure 儲存體所提供的用戶端加密、由客戶在 Key Vault 中管理的金鑰。|不支援|不支援|
 
 <sup>1</sup>雖然媒體服務支援以清除/不使用任何形式的加密來處理內容，但並不建議這麼做。
 
@@ -120,7 +121,7 @@ v3 API 與 v2 API 具有下列功能差距。 縮小差距是刻不容緩的工�
 
 下表顯示 v2 和 v3 常見案例的程式碼差異。
 
-|狀況|V2 API|V3 API|
+|案例|V2 API|V3 API|
 |---|---|---|
 |建立資產並上傳檔案 |[v2 .NET 範例](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L113)|[v3 .NET 範例](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L169)|
 |提交作業|[v2 .NET 範例](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L146)|[v3 .NET 範例](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L298)<br/><br/>示範如何先建立 Transform，然後再提交 Job。|

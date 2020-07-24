@@ -7,11 +7,12 @@ ms.subservice: sizes
 ms.topic: article
 ms.date: 04/07/2020
 ms.author: jushiman
-ms.openlocfilehash: 4576a8bdcb6077a9d5de20c52f99325fdcacc0f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 21c28f3b6b498b162cbff276755b098c5ebba7c1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84673693"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87010473"
 ---
 # <a name="mv2-series"></a>Mv2 系列
 
@@ -27,7 +28,7 @@ Mv2 系列 VM 的功能 Intel®超執行緒技術
 
 記憶體保留更新：不支援
 
-寫入加速器：[支援](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)
+寫入加速器：[支援](./windows/how-to-enable-write-accelerator.md)
 
 |大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大快取和暫存儲存體輸送量IOPS / MBps (快取大小，以 GiB 為單位) | 最大取消快取的磁碟輸送量︰IOPS / MBps | 最大 NIC/預期的網路頻寬 (Mbps) |
 |---|---|---|---|---|---|---|---|
