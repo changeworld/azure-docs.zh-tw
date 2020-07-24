@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogardle
-ms.openlocfilehash: 6705d4d1edebe88a577c71b3e48cd837fa7882c6
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: ca40fcb6a2e483e656058835f187dc50bf7bc9ab
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86222984"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074067"
 ---
 # <a name="create-an-oracle-database-in-an-azure-vm"></a>在 Azure VM 中建立 Oracle 資料庫
 
@@ -325,6 +325,6 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>後續步驟
 
-深入了解 [Azure 上的其他 Oracle 解決方案](oracle-considerations.md)。 
+深入了解 [Azure 上的其他 Oracle 解決方案](./oracle-overview.md)。 
 
 嘗試[安裝和設定 Oracle Automated Storage Management](configure-oracle-asm.md) 教學課程。

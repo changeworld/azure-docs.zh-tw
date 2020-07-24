@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: cd9a196e5f957782de91cff69c01fbfa5716369a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1717ebd5709c05e33e658d3798494324a702b1d9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82100493"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074049"
 ---
 # <a name="time-sync-for-windows-vms-in-azure"></a>Azure 中 Windows VM 的時間同步
 
@@ -24,7 +24,7 @@ Azure 現在支援採用 Windows Server 2016 的基礎結構。 Windows Server 2
 >[!NOTE]
 >如需 Windows Time 服務的快速概觀，請參閱此[整體概觀影片](https://aka.ms/WS2016TimeVideo)。
 >
-> 如需詳細資訊，請參閱 [Windows Server 2016 的準確時間](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time)。 
+> 如需詳細資訊，請參閱 [Windows Server 2016 的準確時間](/windows-server/networking/windows-time-service/accurate-time)。 
 
 ## <a name="overview"></a>概觀
 
@@ -172,9 +172,7 @@ w32tm /dumpreg /subkey:Parameters | findstr /i "ntpserver"
 
 以下是時間同步的更多詳細資訊：
 
-- [Windows 時間服務工具和設定](https://docs.microsoft.com/windows-server/networking/windows-time-service/Windows-Time-Service-Tools-and-Settings)
-- [Windows Server 2016 改良功能](https://docs.microsoft.com/windows-server/networking/windows-time-service/windows-server-2016-improvements)
-- [Windows Server 2016 的準確時間](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time)
-- [可為高準確度環境設定 Windows Time 服務的支援界限](https://docs.microsoft.com/windows-server/networking/windows-time-service/support-boundary)
-
-
+- [Windows 時間服務工具和設定](/windows-server/networking/windows-time-service/windows-time-service-tools-and-settings)
+- [Windows Server 2016 改良功能](/windows-server/networking/windows-time-service/windows-server-2016-improvements)
+- [Windows Server 2016 的準確時間](/windows-server/networking/windows-time-service/accurate-time)
+- [可為高準確度環境設定 Windows Time 服務的支援界限](/windows-server/networking/windows-time-service/support-boundary)
