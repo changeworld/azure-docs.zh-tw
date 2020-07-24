@@ -12,15 +12,16 @@ ms.workload: ''
 ms.topic: article
 ms.date: 08/19/2019
 ms.author: juliako
-ms.openlocfilehash: ab99b974aed6f8cd5e1da2ee9b427f593b405889
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3e01d5c8d57752c11b2890c1d109b58a223d260f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73571228"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091923"
 ---
 # <a name="transforms-and-jobs-in-media-services"></a>媒體服務中的轉換和作業
 
-本主題提供有關[轉換](https://docs.microsoft.com/rest/api/media/transforms)和[作業](https://docs.microsoft.com/rest/api/media/jobs)的詳細資料，並說明這些實體之間的關聯性。
+本主題提供有關[轉換](/rest/api/media/transforms)和[作業](/rest/api/media/jobs)的詳細資料，並說明這些實體之間的關聯性。
 
 ## <a name="overview"></a>總覽
 
@@ -57,7 +58,7 @@ ms.locfileid: "73571228"
 
 ### <a name="viewing-schema"></a>正在查看架構
 
-在媒體服務 v3 中，預設為 API 本身的強型別實體。 您可以在[OPEN API 規格（或 Swagger）](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01)中找到這些物件的「架構」定義。 您也可以在[REST API](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset)、 [.net SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset?view=azure-dotnet)或其他媒體服務 v3 SDK 參考檔中，查看預設的定義（例如**StandardEncoderPreset**）。
+在媒體服務 v3 中，預設為 API 本身的強型別實體。 您可以在[OPEN API 規格（或 Swagger）](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01)中找到這些物件的「架構」定義。 您也可以在[REST API](/rest/api/media/transforms/createorupdate#standardencoderpreset)、 [.net SDK](/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset?view=azure-dotnet)或其他媒體服務 v3 SDK 參考檔中，查看預設的定義（例如**StandardEncoderPreset**）。
 
 ### <a name="creating-transforms"></a>建立轉換
 
@@ -65,7 +66,7 @@ ms.locfileid: "73571228"
 
 ### <a name="updating-transforms"></a>正在更新轉換
 
-如果您需要更新[轉換](https://docs.microsoft.com/rest/api/media/transforms)，請使用**更新**作業。 其目的是要變更描述或基礎 Transformoutputs 優先順序的優先順序。 當所有進行中的工作都完成時，建議您進行這類更新。 如果您想要重寫配方，您必須建立新的轉換。
+如果您需要更新[轉換](/rest/api/media/transforms)，請使用**更新**作業。 其目的是要變更描述或基礎 Transformoutputs 優先順序的優先順序。 當所有進行中的工作都完成時，建議您進行這類更新。 如果您想要重寫配方，您必須建立新的轉換。
 
 ### <a name="transform-object-diagram"></a>轉換物件圖表
 
@@ -77,7 +78,7 @@ ms.locfileid: "73571228"
 
 ## <a name="jobs"></a>工作
 
-「**作業**」（Job）是媒體服務將**轉換**套用到指定輸入影片或音訊內容的實際要求。 一旦建立轉換，您就可以使用媒體服務 API 或使用任何已發佈的 SDK 提交作業。 **作業**會指定輸入影片的位置、輸出的位置等資訊。 您可以使用下列程式來指定輸入影片的位置： HTTPS Url、SAS Url 或[資產](https://docs.microsoft.com/rest/api/media/assets)。  
+「**作業**」（Job）是媒體服務將**轉換**套用到指定輸入影片或音訊內容的實際要求。 一旦建立轉換，您就可以使用媒體服務 API 或使用任何已發佈的 SDK 提交作業。 **作業**會指定輸入影片的位置、輸出的位置等資訊。 您可以使用下列程式來指定輸入影片的位置： HTTPS Url、SAS Url 或[資產](/rest/api/media/assets)。  
 
 ### <a name="job-input-from-https"></a>來自 HTTPS 的作業輸入
 
@@ -93,7 +94,7 @@ ms.locfileid: "73571228"
 
 ### <a name="updating-jobs"></a>正在更新作業
 
-在工作提交之後，您可以使用工作實體上的更新[作業](https://docs.microsoft.com/rest/api/media/jobs)來修改*描述*和*優先順序*屬性。 只有在作業仍處於排入佇列的狀態時，才能有效變更「優先順序」** 屬性。 如果作業已開始處理，或已經處理完成，則變更優先順序不會有任何作用。
+在工作提交之後，您可以使用工作實體上的更新[作業](/rest/api/media/jobs)來修改*描述*和*優先順序*屬性。 只有在作業仍處於排入佇列的狀態時，才能有效變更「優先順序」** 屬性。 如果作業已開始處理，或已經處理完成，則變更優先順序不會有任何作用。
 
 ### <a name="job-object-diagram"></a>工作物件圖表
 
@@ -115,7 +116,7 @@ ms.locfileid: "73571228"
 
 ## <a name="see-also"></a>另請參閱
 
-* [錯誤碼](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode)
+* [錯誤碼](/rest/api/media/jobs/get#joberrorcode)
 * [媒體服務實體的篩選、排序、分頁](entities-overview.md)
 
 ## <a name="next-steps"></a>後續步驟

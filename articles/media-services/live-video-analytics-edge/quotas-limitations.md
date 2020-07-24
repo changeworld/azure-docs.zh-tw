@@ -3,11 +3,12 @@ title: IoT Edge 配額的即時影片分析-Azure
 description: 本文說明有關 IoT Edge 配額和限制的即時影片分析。
 ms.topic: conceptual
 ms.date: 05/22/2020
-ms.openlocfilehash: 9b01db8f1120174806f4b687f7e9ebc4e2386f3d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 90141fa850c9ab3e3abbea15001249da0736ac45
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84260341"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091805"
 ---
 # <a name="quotas-and-limitations"></a>配額和限制
 
@@ -46,11 +47,8 @@ ms.locfileid: "84260341"
 * 信號閘道處理器
    * 必須立即從 RTSP 來源進行下游。
 * 資產接收 
-   * 每個圖形拓撲最多隻能有一個此類節點。
-      * 如果使用了資產接收，則不能有 file 接收，反之亦然。
    * 必須立即從 RTSP 來源或信號閘道處理器下游。
 * 檔接收
-   * 每個圖形拓撲最多隻能有一個此類節點（請參閱關於資產接收的相關注意事項）。
    * 必須是來自信號閘道處理器的立即下游。
    * 無法立即成為 HTTP 延伸模組處理器或動作偵測處理器的下游
 * IoT 中樞接收

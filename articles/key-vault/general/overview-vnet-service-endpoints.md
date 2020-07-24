@@ -9,12 +9,12 @@ ms.date: 01/02/2019
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: eff74fca5ac21a7df431b55cd5c307d3e994010b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 34e1b7e58a3ceb6c1c2d2b6bc4efd34ee93e9e4e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84792127"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090479"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Azure Key Vault 的虛擬網路服務端點
 
@@ -39,7 +39,7 @@ Azure Key Vault 的虛擬網路服務端點可讓您將存取權限制為指定�
 
 以下是設定防火牆和虛擬網路所需的步驟。 不論您是使用 PowerShell、Azure CLI 或 Azure 入口網站，都適用這些步驟。
 
-1. 啟用[Key Vault 記錄](logging.md)），以查看詳細的存取記錄。 當防火牆和虛擬網路規則防止存取金鑰保存庫時，這有助於進行診斷。 (此步驟為選擇性步驟，但強烈建議執行。)
+1. 啟用[金鑰保存庫記錄](logging.md)，以查看詳細的存取記錄。 當防火牆和虛擬網路規則防止存取金鑰保存庫時，這有助於進行診斷。 (此步驟為選擇性步驟，但強烈建議執行。)
 2. 針對目標虛擬網路和子網路中啟用 [金鑰保存庫的服務端點]****。
 3. 設定金鑰保存庫的防火牆和虛擬網路規則，以限制從特定的虛擬網路、子網路和 IPv4 位址範圍存取該金鑰保存庫。
 4. 如果有任何信任的 Microsoft 服務必須存取此金鑰保存庫，啟用此選項，讓 [信任的 Azure 服務]**** 連線能夠至 Key Vault。
@@ -80,7 +80,7 @@ Azure Key Vault 的虛擬網路服務端點可讓您將存取權限制為指定�
 |Azure 事件中心|[針對客戶管理的金鑰案例，允許存取金鑰保存庫](https://docs.microsoft.com/azure/event-hubs/configure-customer-managed-key)|
 |Azure 服務匯流排|[針對客戶管理的金鑰案例，允許存取金鑰保存庫](https://docs.microsoft.com/azure/service-bus-messaging/configure-customer-managed-key)|
 |Azure 匯入/匯出| [在匯入/匯出服務的 Azure Key Vault 中使用客戶管理的金鑰](https://docs.microsoft.com/azure/storage/common/storage-import-export-encryption-key-portal)
-|Azure Container Registry|[使用客戶管理的金鑰進行登錄加密](../../container-registry/container-registry-customer-managed-keys.md)
+|Azure Container Registry|[使用客戶管理的金鑰進行登錄加密](../../container-registry/container-registry-customer-managed-keys.md)<br><br/>[將成品傳輸至另一個登錄](../../container-registry/container-registry-transfer-images.md)
 
 > [!NOTE]
 > 您必須將相關 Key Vault 存取原則設定為允許對應的服務取得 Key Vault 的存取權。

@@ -3,12 +3,12 @@ title: 如何停止監視您的 Azure 和 Red Hat OpenShift v4 叢集 |Microsoft
 description: 本文說明如何使用適用于容器的 Azure 監視器來停止監視您的 Azure Red Hat OpenShift 和 Red Hat OpenShift 第4版叢集。
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: 768c4db8d72778b555a4f343cf2e23b8fa861991
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bf61457b9c8cff40eb3fee2c93c7184fbaae6db5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82196435"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091142"
 ---
 # <a name="how-to-stop-monitoring-your-azure-and-red-hat-openshift-v4-cluster"></a>如何停止監視您的 Azure 和 Red Hat OpenShift v4 叢集
 
@@ -49,4 +49,4 @@ ms.locfileid: "82196435"
 
 ## <a name="next-steps"></a>後續步驟
 
-如果 Log Analytics 工作區是為了支援監視叢集而建立的，而且不再需要，您必須手動將其刪除。 如果您不熟悉如何刪除工作區，請參閱[刪除 Azure Log Analytics 工作區](../../log-analytics/log-analytics-manage-del-workspace.md)。
+如果 Log Analytics 工作區是為了支援監視叢集而建立的，而且不再需要，您必須手動將其刪除。 如果您不熟悉如何刪除工作區，請參閱[刪除 Azure Log Analytics 工作區](../platform/delete-workspace.md)。

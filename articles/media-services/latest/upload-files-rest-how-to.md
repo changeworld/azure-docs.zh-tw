@@ -13,15 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 38d46978e37ead59deb17a86f643df041452e497
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 57839c82af71f7cedfe1b3c77095210d273be4a1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76705763"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091839"
 ---
 # <a name="upload-files-into-a-media-services-v3-account-using-rest"></a>使用 REST 將檔案上傳到媒體服務 v3 帳戶
 
-在媒體服務中，您會將數位檔案上傳到與資產相關聯的 Blob 容器。 [資產](https://docs.microsoft.com/rest/api/media/operations/asset)實體可以包含影片、音訊、影像、縮圖集合、文字播放軌和隱藏式輔助字幕檔案（以及這些檔案的相關中繼資料）。 一旦檔案會上傳到資產的容器，您的內容會安全地儲存在雲端，以便進行進一步的處理和串流。
+在媒體服務中，您會將數位檔案上傳到與資產相關聯的 Blob 容器。 [資產](/rest/api/media/operations/asset)實體可以包含影片、音訊、影像、縮圖集合、文字播放軌和隱藏式輔助字幕檔案（以及這些檔案的相關中繼資料）。 一旦檔案會上傳到資產的容器，您的內容會安全地儲存在雲端，以便進行進一步的處理和串流。
 
 本文說明如何使用 REST 上傳本機檔案。
 
@@ -62,4 +63,4 @@ ms.locfileid: "76705763"
 
 ## <a name="next-steps"></a>後續步驟
 
-[教學課程：根據 URL 編碼遠端檔案和串流影片-REST](stream-files-tutorial-with-rest.md)
+[教學課程：編碼以 URL 為基礎的遠端檔案及串流處理影片 - REST](stream-files-tutorial-with-rest.md)

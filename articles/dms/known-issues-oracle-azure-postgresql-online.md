@@ -3,8 +3,8 @@ title: 已知問題：從 Oracle 遷移至適用於 PostgreSQL 的 Azure 資料�
 titleSuffix: Azure Database Migration Service
 description: 了解如何使用 Azure 資料庫移轉服務從 Oracle 線上移轉到適用於 PostgreSQL 的 Azure 資料庫單一伺服器的已知問題和移轉限制。
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: arunkumarthiags
+ms.author: arthiaga
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 05/20/2020
-ms.openlocfilehash: 2cf8ff446fe3441fc039ef3c2afef6308224666f
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 06e96e970705801203c0469d5b87d1304d67a4f6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701213"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090683"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-from-oracle-to-azure-db-for-postgresql-single-server"></a>從 Oracle 線上移轉到適用於 PostgreSQL 的 Azure 資料庫單一伺服器的已知問題/移轉限制
 

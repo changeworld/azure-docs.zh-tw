@@ -14,22 +14,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/11/2020
 ms.author: juliako
-ms.openlocfilehash: 75ba2ad87eabd7ff6b0625ad95ab24a8ae58dd0f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cb3b319c583422b32798fce9cef4c73a4aa1f8de
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79461039"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090037"
 ---
 # <a name="manage-streaming-endpoints-with--media-services-v3"></a>使用媒體服務 v3 管理串流端點
 
 建立媒體服務帳戶時，**預設**[串流端點](streaming-endpoint-concept.md)會新增至您的帳戶處於 [**已停止**] 狀態。 若要開始串流處理您的內容，並利用[動態封裝](dynamic-packaging-overview.md)和[動態加密](content-protection-overview.md)功能，您想要串流內容的串流端點必須**處於 [執行**中] 狀態。
 
-本文說明如何使用不同的技術，在您的串流端點上執行 [[啟動](https://docs.microsoft.com/rest/api/media/streamingendpoints/start)] 命令。 
+本文說明如何使用不同的技術，在您的串流端點上執行 [[啟動](/rest/api/media/streamingendpoints/start)] 命令。 
  
 > [!NOTE]
 > 只有當串流端點處於執行中狀態時，才會向您收取費用。
     
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 檢閱： 
 
@@ -43,9 +44,9 @@ ms.locfileid: "79461039"
 POST https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaservices/slitestmedia10/streamingEndpoints/myStreamingEndpoint1/start?api-version=2018-07-01
 ```
 
-如需詳細資訊，請參閱： 
+如需詳細資訊，請參閱 
 
-* [開始 StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints/start)參考檔。
+* [開始 StreamingEndpoint](/rest/api/media/streamingendpoints/start)參考檔。
 * 啟動串流端點是非同步作業。 
 
     如需有關如何監視長時間執行作業的詳細資訊，請參閱[長時間執行的作業](media-services-apis-overview.md)。
@@ -69,7 +70,7 @@ az ams streaming-endpoint start [--account-name]
                                 [--subscription]
 ```
 
-如需詳細資訊，請參閱[az ams 串流-端點啟動](https://docs.microsoft.com/cli/azure/ams/streaming-endpoint?view=azure-cli-latest#az-ams-streaming-endpoint-start)。
+如需詳細資訊，請參閱[az ams 串流-端點啟動](/cli/azure/ams/streaming-endpoint?view=azure-cli-latest#az-ams-streaming-endpoint-start)。
 
 ## <a name="use-sdks"></a>使用 SDK
 
@@ -105,4 +106,4 @@ if (streamingEndpoint != null)
 ## <a name="next-steps"></a>後續步驟
 
 * [媒體服務 v3 OpenAPI 規格（Swagger）](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01)
-* [串流端點作業](https://docs.microsoft.com/rest/api/media/streamingendpoints)
+* [串流端點作業](/rest/api/media/streamingendpoints)

@@ -4,11 +4,12 @@ description: 您可以用來管理 Batch 資源的 Azure PowerShell Cmdlet 快�
 ms.topic: how-to
 ms.date: 01/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6108ac9c9f5f10de69369d7aed31cd0ce317044e
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 2c80da92c7acad5180c763d259357f5369f225f7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83779614"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092774"
 ---
 # <a name="manage-batch-resources-with-powershell-cmdlets"></a>使用 PowerShell Cmdlet 管理 Batch 資源
 
@@ -20,7 +21,7 @@ ms.locfileid: "83779614"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-* [安裝及設定 Azure PowerShell 模組](/powershell/azure/overview)。 若要安裝特定的 Azure Batch 模組 (例如發行前版本模組)，請參閱 [PowerShell 資源庫](https://www.powershellgallery.com/packages/Az.Batch/1.0.0)。
+* [安裝及設定 Azure PowerShell 模組](/powershell/azure/)。 若要安裝特定的 Azure Batch 模組 (例如發行前版本模組)，請參閱 [PowerShell 資源庫](https://www.powershellgallery.com/packages/Az.Batch/1.0.0)。
 
 * 執行 **Connect-AzAccount** Cmdlet 以連線到訂用帳戶 (Azure Batch Cmdlet 隨附在 Azure Resource Manager 模組中)：
 

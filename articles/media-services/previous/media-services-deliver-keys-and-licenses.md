@@ -14,16 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: b1f8b158c511919a72e72629d72b0e5ff73ff7db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 58657ca604e7bd0fc081d6a5bb6ef18a8b7b5b48
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78268119"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091703"
 ---
 # <a name="use-media-services-to-deliver-drm-licenses-or-aes-keys"></a>使用媒體服務傳遞 DRM 授權或 AES 金鑰 
 
 > [!NOTE]
-> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
+> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](../latest/index.yml)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
 
 Azure 媒體服務可讓您內嵌、編碼、新增內容保護，以及串流您的內容。 如需詳細資訊，請參閱[使用 PlayReady 和/或 Widevine 動態一般加密](media-services-protect-with-playready-widevine.md)。 有些客戶只想使用媒體服務來傳遞授權和/或金鑰，並使用他們的內部部署伺服器來進行編碼、加密和串流。 本文章說明如何使用媒體服務來傳遞 PlayReady 和/或 Widevine 授權，但使用您的內部部署伺服器來完成其餘部分。 
 
@@ -354,6 +355,6 @@ namespace DeliverDRMLicenses
 ## <a name="provide-feedback"></a>提供意見反應
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 * [使用 PlayReady 和/或 Widevine 動態一般加密](media-services-protect-with-playready-widevine.md)
 * [使用 AES-128 動態加密和金鑰傳遞服務](media-services-protect-with-aes128.md)

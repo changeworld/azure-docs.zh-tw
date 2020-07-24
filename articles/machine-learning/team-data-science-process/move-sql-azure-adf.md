@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: aed35ec583af83e6ee6cb81c4e59e694cef493e1
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 18ded2713ec89a9a0666cd00221d437c1c9ef090
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086648"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092417"
 ---
 # <a name="move-data-from-a-sql-server-database-to-sql-database-with-azure-data-factory"></a>使用 Azure Data Factory 將資料從 SQL Server 資料庫移至 SQL Database
 
@@ -53,7 +53,7 @@ ADF 允許使用定期管理資料移動的簡易 JSON 指令碼，來進行排�
 * **Azure 訂用帳戶**。 如果您沒有訂用帳戶，可以註冊[免費試用](https://azure.microsoft.com/pricing/free-trial/)。
 * **Azure 儲存體帳戶**。 在本教學課程中，您會使用 Azure 儲存體帳戶來儲存資料。 如果您沒有 Azure 儲存體帳戶，請參閱 [建立儲存體帳戶](../../storage/common/storage-account-create.md) 一文。 建立儲存體帳戶之後，您必須取得用來存取儲存體的帳戶金鑰。 請參閱[管理儲存體帳戶存取金鑰](../../storage/common/storage-account-keys-manage.md)。
 * 存取 **Azure SQL Database**。 如果您必須設定 Azure SQL Database，[與 Microsoft Azure SQL Database 消費者入門](../../sql-database/sql-database-get-started.md)的主題會提供如何布建 Azure SQL Database 之新實例的相關資訊。
-* 已在本機上安裝和設定 **Azure PowerShell** 。 如需指示，請參閱 [如何安裝和設定 Azure PowerShell](/powershell/azure/overview)。
+* 已在本機上安裝和設定 **Azure PowerShell** 。 如需指示，請參閱 [如何安裝和設定 Azure PowerShell](/powershell/azure/)。
 
 > [!NOTE]
 > 此程序會使用 [Azure 入口網站](https://portal.azure.com/)。
@@ -87,7 +87,7 @@ Integration Runtime 是客戶管理的資料整合基礎結構，Azure Data Fact
 使用下列指令碼型程序，建立指定資料集結構、位置及可用性的資料表。 JSON 檔案可用來定義資料表。 如需這些檔案結構的詳細資訊，請參閱 [資料集](../../data-factory/concepts-datasets-linked-services.md)。
 
 > [!NOTE]
-> 您應該先執行 `Add-AzureAccount` Cmdlet，再執行 [New-AzureDataFactoryTable](https://msdn.microsoft.com/library/azure/dn835096.aspx) Cmdlet，以確認已選取正確的 Azure 訂用帳戶來執行命令。 如需此 Cmdlet 的文件，請參閱 [Add-AzureAccount](/powershell/module/servicemanagement/azure/add-azureaccount?view=azuresmps-3.7.0)。
+> 您應該先執行 `Add-AzureAccount` Cmdlet，再執行 [New-AzureDataFactoryTable](https://msdn.microsoft.com/library/azure/dn835096.aspx) Cmdlet，以確認已選取正確的 Azure 訂用帳戶來執行命令。 如需此 Cmdlet 的文件，請參閱 [Add-AzureAccount](/powershell/module/servicemanagement/azure.service/add-azureaccount?view=azuresmps-3.7.0)。
 >
 >
 

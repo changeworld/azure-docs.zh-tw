@@ -10,11 +10,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: tagore
-ms.openlocfilehash: 1e49a0935a70a2470267e5458fa1f55e3059e965
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7522df94a0055af398f1fdbf2050e132f5519eb5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77469760"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092689"
 ---
 # <a name="enabling-azure-diagnostics-in-azure-cloud-services"></a>在 Azure 雲端服務中啟用 Azure 診斷
 如需有關 Azure 診斷的背景資訊，請參閱 [Azure 診斷概觀](../azure-diagnostics.md) 。
@@ -26,7 +27,7 @@ ms.locfileid: "77469760"
 本文假設您擁有 Azure 訂用帳戶，並且搭配 Azure SDK 使用 Visual Studio。 如果您沒有 Azure 訂用帳戶，可以註冊 [免費試用版][Free Trial]。 請務必[安裝並設定 Azure PowerShell 0.8.7 版或更新版本][Install and configure Azure PowerShell version 0.8.7 or later]。
 
 ### <a name="step-1-create-a-worker-role"></a>步驟 1：建立背景工作角色
-1. 啟動**Visual Studio**。
+1. 啟動 **Visual Studio**。
 2. 從以 .NET Framework 4.5 為目標的**雲端**範本，建立 **Azure 雲端服務**專案。  將專案命名為 "WadExample" 並按一下 [確定]。
 3. 選取 [ **背景工作角色** ] 並按一下 [確定]。 將會建立專案。
 4. 在**方案總管**中，按兩下 [WorkerRole1]**** 屬性檔。
@@ -138,7 +139,7 @@ namespace WorkerRole1
 2. 以滑鼠右鍵按一下 **WorkerRole1** 專案，然後選取 [新增]**** ->  [新增項目]****，將 XML 檔新增至您的 **WorkerRole1** 專案 -> **Visual c # 專案**  -> **資料**  -> **XML**檔案。 將檔案命名為 "WadExample.xml"。
 
    ![CloudServices_diag_add_xml](./media/cloud-services-dotnet-diagnostics/AddXmlFile.png)
-3. 將 WadConfig.xsd 與組態檔產生關聯。 確定 WadExample.xml 編輯器視窗是使用中視窗。 按 **F4** 鍵開啟 [屬性]**** 視窗。 在 [屬性]**** 視窗中，按一下 [結構描述]**** 屬性。 按一下 [ **...** ] 在 [結構描述]**** 屬性中。 按一下 [**新增 ...** ] 按鈕並瀏覽至您儲存 XSD 檔的位置，然後選取檔案 WadConfig.xsd。 按一下 [確定]。
+3. 將 WadConfig.xsd 與組態檔產生關聯。 確定 WadExample.xml 編輯器視窗是使用中視窗。 按**F4**開啟 [**屬性**] 視窗。 在 [屬性]**** 視窗中，按一下 [結構描述]**** 屬性。 按一下 [ **...** ] 在 [結構描述]**** 屬性中。 按一下 [**新增 ...** ] 按鈕並瀏覽至您儲存 XSD 檔的位置，然後選取檔案 WadConfig.xsd。 按一下 [確定]  。
 
 4. 以下列 XML 取代 WadExample.xml 組態檔的內容，然後儲存檔案。 此組態檔可定義兩個要收集的效能計數器：一個用於 CPU 使用率，一個用於記憶體使用率。 組態會接著定義四個事件，分別對應至 SampleEventSourceWriter 類別中的方法。
 
@@ -199,7 +200,7 @@ Set-AzureServiceDiagnosticsExtension -StorageContext $storageContext -Diagnostic
 [Debugging an Azure Application]: https://msdn.microsoft.com/library/windowsazure/ee405479.aspx   
 [Collect Logging Data by Using Azure Diagnostics]: https://msdn.microsoft.com/library/windowsazure/gg433048.aspx
 [Free Trial]: https://azure.microsoft.com/pricing/free-trial/
-[Install and configure Azure PowerShell version 0.8.7 or later]: https://azure.microsoft.com/documentation/articles/install-configure-powershell/
+[Install and configure Azure PowerShell version 0.8.7 or later]: /powershell/azure/
 
 
 

@@ -3,19 +3,20 @@ title: Microsoft Business Applications 獨立軟體廠商 (ISV) Connect 計畫�
 description: 以下說明如何上架至 Business Applications ISV Connect 計畫。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 6/25/2020
+ms.topic: article
+author: qianw211
 ms.author: dsindona
-ms.openlocfilehash: 37d8c26bd41f06a39d4404c142aef5faa0bf199c
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.date: 7/14/2020
+ms.openlocfilehash: 65d18bca4f8f7b5d655d91ece1c9d966311b701b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170236"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092213"
 ---
 # <a name="microsoft-business-applications-independent-software-vendor-isv-connect-program-onboarding-guide"></a>Microsoft Business Applications 獨立軟體廠商 (ISV) Connect 計畫上線指南
 
-[BUSINESS APPLICATIONS Isv Connect 計畫](https://partner.microsoft.com/solutions/business-applications/isv-overview)的目標，是要加速獨立軟體廠商的成長和整體成功， (isv) 利用 Dynamics 365 Customer Engagement 和 PowerApps) dynamics CE 應用程式 (或 Dynamics 365 財務和營運) dynamics Ops 應用程式 (，來建立現代化、雲端式、企業營運 (LOB) 解決方案。 
+[BUSINESS APPLICATIONS ISV Connect 計畫](https://partner.microsoft.com/solutions/business-applications/isv-overview)旨在加速獨立軟體廠商（isv）建立現代化、雲端式、企業營運（LOB）解決方案的成長和整體成功，並提供 Dynamics 365 客戶參與和 PowerApps （dynamics CE 應用程式）或 Dynamics 365 財務和營運（dynamics Ops applications）。 
 
 若要註冊並利用 Business Applications ISV Connect 計畫的所有技術、行銷和銷售啟用權益，請完成本文中的下列各節。 
 
@@ -37,8 +38,8 @@ ms.locfileid: "86170236"
 > 此步驟需要合作夥伴中心內的*擁有**者或管理員*角色，您的帳戶才能簽署法律合約。 
 
 1.  登入[合作夥伴中心](https://partner.microsoft.com/dashboard)。
-2.  選取 [**設定**] (齒輪圖示) 然後選取 [**開發人員設定**]。
-3.  選取 **[** 合約]。 
+2.  選取 [**設定**] （齒輪圖示），然後選取 [**開發人員設定**]。
+3.  選取 **[** 合約]。
 4.  選取 [版本] 連結，並查看合約。
 5.  若要同意並接受合約，請選取 [**接受合約**]。
 
@@ -50,7 +51,7 @@ ms.locfileid: "86170236"
 > 此步驟需要合作夥伴中心內的*擁有**者或管理員*角色，您的帳戶才能更新帳單資訊。
 
 1.  登入[合作夥伴中心](https://partner.microsoft.com/dashboard)。
-2.  選取 [**設定**] (齒輪圖示) 然後選取 [**開發人員設定**]。
+2.  選取 [**設定**] （齒輪圖示），然後選取 [**開發人員設定**]。
 3.  在 [**帳戶**] 底下，選取 [**帳單設定檔**]。
 4.  查看從您的法律實體填入的主要連絡人和帳單資訊，並進行任何必要的更新。
 5.  如果適用的話，請提供稅務識別碼/加值稅 ID 設定。
@@ -69,15 +70,14 @@ ms.locfileid: "86170236"
 - [適用于財務和營運的 Dynamics 365](https://docs.microsoft.com/dynamics365/fin-ops-core/dev-itpro/lcs-solutions/lcs-solutions-app-source)
 
 > [!IMPORTANT]
-> 您需要每隔6個月重新認證您的應用程式，使其存留在 AppSource。 如需詳細資訊，請參閱 marketplace 原則[商業 Marketplace 認證原則](https://docs.microsoft.com/legal/marketplace/certification-policies)。 
+> 您需要每隔6個月重新認證您的應用程式，使其存留在 AppSource 上。 如需詳細資訊，請參閱 marketplace 原則[商業 Marketplace 認證原則](https://docs.microsoft.com/legal/marketplace/certification-policies)。 
 
 ## <a name="next-steps"></a>後續步驟
 
 請洽詢您的客戶經理或聯絡[Microsoft 合作夥伴支援](https://aka.ms/marketplacepublishersupport)，以取得您帳戶的協助。 如需 Business Applications ISV Connect 方案的一般資訊，請參閱：
 
-- **[適用于 Isv (線上文章的 Business Applications) ](https://aka.ms/bizappsisvweb)**
-
-- **[概述 Business Applications Isv (PDF 的新程式) ](https://aka.ms/bizappsisvprogram)**
-
-- **[ISV Connect 方案原則](https://aka.ms/bizappsisvpolicies)**
-
+- [適用于 isv 的 Business Applications](https://partner.microsoft.com/solutions/business-applications/isv-overview) （線上文章）
+- [Business Applications isv 的新程式總覽](https://aka.ms/BizAppsISVProgram)（PDF）
+- [BUSINESS APPLICATIONS ISV Connect 方案常見問題](https://assetsprod.microsoft.com/business-applications-partner-faq.pdf)（PDF）
+- [Business Applications Isv 即將推出的計畫](https://cloudblogs.microsoft.com/dynamics365/bdm/2019/04/17/upcoming-program-for-business-applications-isvs/)（blog 文章）
+- [ISV Connect 方案原則](https://aka.ms/bizappsisvpolicies)（PDF）

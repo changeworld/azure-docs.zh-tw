@@ -8,11 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: aa2af4302613aad23bfd78b4883bbb46c5e5ddbb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3571455db6ecc600bf0948087b40c281d72512ce
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76961123"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091244"
 ---
 # <a name="enable-cloudsimple-private-cloud-dns-servers-to-forward-dns-lookup-of-on-premises-resources-to-your-dns-servers"></a>啟用 CloudSimple 私人雲端 DNS 伺服器，以將內部部署資源的 DNS 查閱轉送至您的 DNS 伺服器
 
@@ -31,7 +32,7 @@ ms.locfileid: "76961123"
 從您的私人雲端網路到內部部署網路必須有網路連線，DNS 轉送才能正常執行。  您可以使用下列內容設定網路連接：
 
 * [使用 ExpressRoute 從內部部署連接到 CloudSimple](on-premises-connection.md)
-* [設定站對站 VPN 閘道](https://docs.microsoft.com/azure/vmware-cloudsimple/vpn-gateway#set-up-a-site-to-site-vpn-gateway)
+* [設定站對站 VPN 閘道](./vpn-gateway.md#set-up-a-site-to-site-vpn-gateway)
 
 必須在此連線上開啟防火牆埠，DNS 轉送才能正常執行。  使用的埠是 TCP 通訊埠53或 UDP 埠53。
 

@@ -13,16 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 11c9c26e7c0f36e1e3dba732e90a6aef95e6ee14
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 21eb3d9862c8fa2b840117d5f0e9fbd0ad2214c9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76694985"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091720"
 ---
 # <a name="configure-postman-for-media-services-v2-rest-api-calls"></a>設定媒體服務 v2 REST API 呼叫的 Postman  
 
 > [!NOTE]
-> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
+> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](../latest/index.yml)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
 
 本教學課程說明如何設定 **Postman**，以便用來呼叫 Azure 媒體服務 (AMS) REST API。 本教學課程說明如何將環境和集合檔案匯入 **Postman**。 集合包含呼叫 Azure 媒體服務 (AMS) REST API 之 HTTP 要求的分組定義。 環境檔案包含集合所使用的變數。
 

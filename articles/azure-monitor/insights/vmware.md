@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/04/2018
-ms.openlocfilehash: c1622ef16155206d779c6d703fc7da568d233e7e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bda1acde914aa068fe3a87d307a29583f87af34f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77664774"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091176"
 ---
 # <a name="vmware-monitoring-deprecated-solution-in-azure-monitor"></a>Azure 監視器中的 VMware 監控（已淘汰）解決方案
 
@@ -49,14 +50,14 @@ vSphere ESXi 主機 5.5、6.0 和 6.5
     ![vspherefwproperties](./media/vmware/vsphere3.png)  
 1. 檢查 vSphere 主控台，確認 syslog 設定正確。 確認 ESXI 主機上已設定連接埠 **1514**。
 1. 在 Linux 伺服器上下載並安裝 Log Analytics Linux 代理程式。 如需詳細資訊，請參閱 [Log Analytics Linux 代理程式的文件](https://github.com/Microsoft/OMS-Agent-for-Linux)。
-1. 安裝 Log Analytics Linux 代理程式後，移至 /etc/opt/microsoft/omsagent/sysconf/omsagent.d 目錄，將 vmware_esxi.conf 檔複製到 /etc/opt/microsoft/omsagent/conf/omsagent.d directory 目錄，並變更檔案的擁有者/群組和權限。 例如：
+1. 安裝 Log Analytics Linux 代理程式後，移至 /etc/opt/microsoft/omsagent/sysconf/omsagent.d 目錄，將 vmware_esxi.conf 檔複製到 /etc/opt/microsoft/omsagent/conf/omsagent.d directory 目錄，並變更檔案的擁有者/群組和權限。 例如:
 
     ```
     sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/vmware_esxi.conf /etc/opt/microsoft/omsagent/conf/omsagent.d
    sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/conf/omsagent.d/vmware_esxi.conf
     ```
 1. 執行 `sudo /opt/microsoft/omsagent/bin/service_control restart` 啟動 Log Analytics Linux 代理程式。
-1. 在 ESXi 主機上使用 `nc`命令測試 Linux 伺服器和 ESXi 主機之間的連線。 例如：
+1. 在 ESXi 主機上使用 `nc`命令測試 Linux 伺服器和 ESXi 主機之間的連線。 例如:
 
     ```
     [root@ESXiHost:~] nc -z 123.456.789.101 1514
@@ -155,14 +156,14 @@ VMware 監視解決方案會使用您已啟用的 Log Analytics Linux 代理程�
 ![DockerDashboardView](./media/vmware/dockerdashboardview.png)
 
 #### <a name="create-alerts-from-queries"></a>從查詢建立警示
-建立您的查詢後，您可能想要使用該查詢在特定事件發生時發出警示。 如需有關如何建立警示的資訊，請參閱 [Log Analytics 中的警示](../platform/alerts-overview.md)。 如需警示查詢和其他查詢的範例，請參閱部落格文章[使用 Log Analytics 監視 VMware](https://blogs.technet.microsoft.com/msoms/2016/06/15/monitor-vmware-using-oms-log-analytics)。
+建立您的查詢後，您可能想要使用該查詢在特定事件發生時發出警示。 如需有關如何建立警示的資訊，請參閱 [Log Analytics 中的警示](../platform/alerts-overview.md)。 如需警示查詢和其他查詢的範例，請參閱部落格文章[使用 Log Analytics 監視 VMware](/archive/blogs/msoms/monitor-vmware-using-oms-log-analytics)。
 
 ## <a name="frequently-asked-questions"></a>常見問題集
 ### <a name="what-do-i-need-to-do-on-the-esxi-host-setting-what-impact-will-it-have-on-my-current-environment"></a>我需要在 ESXi 主機設定上做什麼設定？ 它會對我目前的環境造成什麼影響？
 解決方案會使用原生 ESXi 主機 Syslog 轉送機制。 您在 ESXi 主機上不需要任何額外的 Microsoft 軟體就可以擷取記錄。 它對您現有的環境影響不大。 但是，您需要設定 syslog 轉送，這是 ESXI 功能。
 
 ### <a name="do-i-need-to-restart-my-esxi-host"></a>我需要重新啟動 ESXi 主機嗎？
-否。 此處理序不需要重新啟動。 有時候，vSphere 不會正確更新 syslog。 在這種情況下，請登入 ESXi 主機並重新載入 syslog。 同樣地，您不需要重新啟動主機，所以此處理序不會干擾到您的環境。
+不可以。 此處理序不需要重新啟動。 有時候，vSphere 不會正確更新 syslog。 在這種情況下，請登入 ESXi 主機並重新載入 syslog。 同樣地，您不需要重新啟動主機，所以此處理序不會干擾到您的環境。
 
 ### <a name="can-i-increase-or-decrease-the-volume-of-log-data-sent-to-log-analytics"></a>可以增加或減少傳送至 Log Analytics 的記錄資料量嗎？
 是，您可以這麼做。 您可以使用 vSphere 中的 ESXi 主機記錄層級設定。 記錄集合是以 *info* 層級為基礎。 所以，如果您想要稽核 VM 建立或刪除，您需要在 Hostd 上維持 *info* 層級。 如需詳細資訊，請參閱 [VMware 知識庫](https://kb.vmware.com/selfservice/microsites/search.do?&cmd=displayKC&externalId=1017658)。

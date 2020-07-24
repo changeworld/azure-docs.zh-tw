@@ -3,8 +3,8 @@ title: 已知問題：線上遷移至適用於 MySQL 的 Azure 資料庫
 titleSuffix: Azure Database Migration Service
 description: 瞭解使用 Azure 資料庫移轉服務時，線上遷移至適用於 MySQL 的 Azure 資料庫的已知問題和遷移限制。
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: arunkumarthiags
+ms.author: arthiaga
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -14,12 +14,12 @@ ms.custom:
 - seo-dt-2019
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: 8c3de28ea934302086a5b14e61482e6a4ab9a7ca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9a2e28439efaa1983c4deeff4c6746108fc28e4e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80235284"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090700"
 ---
 # <a name="online-migration-issues--limitations-to-azure-db-for-mysql-with-azure-database-migration-service"></a>線上遷移會使用 Azure 資料庫移轉服務，針對適用于 MySQL 的 Azure DB & 限制問題
 
@@ -135,6 +135,8 @@ ms.locfileid: "80235284"
     ```
 
 - 在 Azure 資料庫移轉服務中，單一遷移活動中要遷移的資料庫限制為四個。
+
+- Azure DMS 不支援 CASCADE 引用動作，這有助於在父資料表中刪除或更新資料列時，自動刪除或更新子資料工作表中相符的資料列。 如需詳細資訊，請參閱 MySQL 檔中的「[外鍵條件約束](https://dev.mysql.com/doc/refman/8.0/en/create-table-foreign-keys.html)」一文中所述的「參考動作」一節。 Azure DMS 會要求您在初始資料載入期間，將 foreign key 條件約束放在目標資料庫伺服器中，而且您不能使用參考動作。 如果您的工作負載相依于透過此參照動作來更新相關的子資料工作表，建議您改為執行傾印[和還原](https://docs.microsoft.com/azure/mysql/concepts-migrate-dump-restore)。 
 
 - **錯誤：** 資料列大小太大（> 8126）。 將某些資料行變更為文字或 BLOB 可能會有説明。 在目前的資料列格式中，會以內嵌方式儲存0個位元組的 BLOB 前置詞。
 

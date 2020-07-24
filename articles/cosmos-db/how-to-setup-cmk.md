@@ -4,13 +4,14 @@ description: 了解如何使用 Azure Key Vault 為您的 Azure Cosmos DB 帳戶
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 05/19/2020
+ms.date: 07/16/2020
 ms.author: thweiss
-ms.openlocfilehash: 443e037f89508b0fc3b01ba90f884c139f4c64be
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 989fbb123e39f85aeeb8eba9961f9aeab1e76c84
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027766"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092592"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>使用 Azure Key Vault 為您的 Azure Cosmos 帳戶設定客戶管理的金鑰
 
@@ -227,7 +228,15 @@ az cosmosdb show \
 
   :::image type="content" source="./media/how-to-setup-cmk/portal-akv-rot.png" alt-text="建立新的金鑰版本":::
 
-- 藉由更新您帳戶的屬性，交換目前使用的金鑰與完全不同的金鑰 `keyVaultKeyUri` 。 以下是在 PowerShell 中執行此動作的方法：
+- 藉由更新您帳戶上的金鑰 URI，交換目前使用的金鑰與完全不同的金鑰。 從 Azure 入口網站，移至您的 Azure Cosmos 帳戶，然後從左側功能表中選取 [**資料加密**]：
+
+    :::image type="content" source="./media/how-to-setup-cmk/portal-data-encryption.png" alt-text="[資料加密] 功能表項目":::
+
+    然後，以您要使用的新金鑰取代**金鑰 URI** ，然後選取 [**儲存**]：
+
+    :::image type="content" source="./media/how-to-setup-cmk/portal-key-swap.png" alt-text="更新金鑰 URI":::
+
+    以下是在 PowerShell 中達成相同結果的方法：
 
     ```powershell
     $resourceGroupName = "myResourceGroup"
@@ -286,7 +295,11 @@ az cosmosdb show \
 
 ### <a name="how-can-i-tell-if-customer-managed-keys-are-enabled-on-my-azure-cosmos-account"></a>如何判斷我的 Azure Cosmos 帳戶是否已啟用客戶管理的金鑰？
 
-您可以透過程式設計方式擷取 Azure Cosmos 帳戶的詳細資料，並確認 `keyVaultKeyUri` 屬性是否存在。 如需[在 PowerShell 中](#using-powershell)以及[使用 Azure CLI](#using-azure-cli) 執行該作業的方式，請參閱前述資訊。
+從 [Azure 入口網站] 移至您的 Azure Cosmos 帳戶，並在左側功能表中監看 [**資料加密**] 專案。如果此專案存在，則會在您的帳戶上啟用客戶管理的金鑰：
+
+:::image type="content" source="./media/how-to-setup-cmk/portal-data-encryption.png" alt-text="[資料加密] 功能表項目":::
+
+您也可以透過程式設計方式提取 Azure Cosmos 帳戶的詳細資料，並尋找屬性是否存在 `keyVaultKeyUri` 。 如需[在 PowerShell 中](#using-powershell)以及[使用 Azure CLI](#using-azure-cli) 執行該作業的方式，請參閱前述資訊。
 
 ### <a name="how-do-customer-managed-keys-affect-a-backup"></a>客戶管理的金鑰對備份有何影響？
 

@@ -3,12 +3,12 @@ title: Azure 中支援的叢集版本 Service Fabric
 description: 瞭解 Azure Service Fabric 中的叢集版本，包括來自 Service Fabric team blog 的最新發行連結。
 ms.topic: troubleshooting
 ms.date: 06/15/2020
-ms.openlocfilehash: 88c91558360f6be8343c955f8e6185366cd3279a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 211197ced52ca094d375d3ae212957fa25a523fc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84808921"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091635"
 ---
 # <a name="supported-service-fabric-versions"></a>支援的 Service Fabric 版本
 
@@ -41,8 +41,9 @@ ms.locfileid: "84808921"
 | 7.0.466.* | 6.5. * |小於或等於版本4。0|2020年8月1日 |
 | 7.0.470.* | 7.0.466.* |小於或等於版本4。0 |2020年8月1日  |
 | 7.0.472.* | 7.0.466.* |小於或等於版本4。0 |2020年8月1日  |
-| 7.1.409.* | 7.0.466.* |小於或等於版本4。0 |目前的版本，因此沒有結束日期 |
-| 7.1.417.* | 7.0.466.* |小於或等於版本4。0 |目前的版本，因此沒有結束日期 |
+| 7.1.409.* | 7.0.466.* |小於或等於版本4。1 |目前的版本，因此沒有結束日期 |
+| 7.1.417.* | 7.0.466.* |小於或等於版本4。1 |目前的版本，因此沒有結束日期 |
+| 7.1.428.* | 7.0.466.* |小於或等於版本4。1 |目前的版本，因此沒有結束日期 |
 
 ## <a name="supported-operating-systems"></a>支援的作業系統
 
@@ -113,3 +114,4 @@ ms.locfileid: "84808921"
 | 7.0 CU6 | 7.0.472.9590 | 7.0.471.1 |
 | 7.1 RTO | 7.1.409.9590 | 7.1.410.1 |
 | 7.1 CU1 | 7.1.417.9590 | 7.1.418.1 |
+| 7.1 CU2 | 7.1.428.9590 | 7.1.428.1 |

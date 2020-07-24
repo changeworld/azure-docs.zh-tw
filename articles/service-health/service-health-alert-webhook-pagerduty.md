@@ -3,11 +3,12 @@ title: 使用 PagerDuty 傳送 Azure 服務健康狀態警示
 description: 取得關於 PagerDuty 執行個體服務健康情況事件的個人化通知。
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: bb449a5279f3cea55e6aec2f72edfd11fb26227a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5c70af2ad2ded919cda0b174705d1d3245eac627
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77654064"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091533"
 ---
 # <a name="send-azure-service-health-alerts-with-pagerduty-using-webhooks"></a>使用 webhook 透過 PagerDuty 傳送 Azure 服務健康狀態警示
 
@@ -38,7 +39,7 @@ ms.locfileid: "77654064"
 
 ## <a name="create-an-alert-using-pagerduty-in-the-azure-portal"></a>在 Azure 入口網站使用 PagerDuty 建立警示
 ### <a name="for-a-new-action-group"></a>新的動作群組：
-1. 遵循[使用 Azure 入口網站為新動作群組建立服務健康情況通知的警示](../azure-monitor/platform/alerts-activity-log-service-notifications.md)中的步驟 1 到步驟 8。
+1. 遵循[使用 Azure 入口網站為新動作群組建立服務健康情況通知的警示](./alerts-activity-log-service-notifications-portal.md)中的步驟 1 到步驟 8。
 
 1. 在**動作**清單中定義：
 
@@ -86,5 +87,5 @@ ms.locfileid: "77654064"
 ## <a name="next-steps"></a>後續步驟
 - 瞭解如何[設定現有問題管理系統的 webhook 通知](service-health-alert-webhook-guide.md)。
 - 檢查[活動記錄警示 webhook 架構](../azure-monitor/platform/activity-log-alerts-webhook.md)。 
-- 深入了解[服務健康狀態通知](../azure-monitor/platform/service-notifications.md)。
+- 深入了解[服務健康狀態通知](./service-notifications.md)。
 - 深入了解[動作群組](../azure-monitor/platform/action-groups.md)。

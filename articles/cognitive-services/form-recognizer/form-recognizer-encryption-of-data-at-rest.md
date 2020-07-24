@@ -1,20 +1,20 @@
 ---
 title: 表單辨識器服務待用資料加密
 titleSuffix: Azure Cognitive Services
-description: 待用資料的表單辨識器加密。
+description: Microsoft 提供 Microsoft 管理的加密金鑰，也可讓您使用自己的金鑰管理您的認知服務訂用帳戶，稱為客戶管理的金鑰（CMK）。 本文涵蓋表單辨識器的待用資料加密，以及如何啟用和管理 CMK。
 author: erindormier
 manager: venkyv
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 05/11/2020
+ms.date: 07/10/2020
 ms.author: egeaney
-ms.openlocfilehash: b897de94ad8cdb628520f9386b076f762a5cc230
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: cf2a6a96517d1c3d63989bc511957019f078cd42
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537947"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090870"
 ---
 # <a name="form-recognizer-encryption-of-data-at-rest"></a>待用資料的表單辨識器加密
 
@@ -31,5 +31,3 @@ Azure 表單辨識器會在將您的資料保存到雲端時，自動將其加�
 
 * [表單辨識器客戶管理的金鑰要求表單](https://aka.ms/cogsvc-cmk)
 * [深入瞭解 Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
-
-

@@ -8,11 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 4ac818cfd267b781366c0e32c9f93cc885dff99c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 000e30f2656b88c068654fd8099cdff0ce0a4b37
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77566143"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091261"
 ---
 # <a name="create-vmware-virtual-machines-on-your-private-cloud"></a>在您的私人雲端上建立 VMware 虛擬機器
 
@@ -24,7 +25,7 @@ ms.locfileid: "77566143"
 
 ## <a name="access-the-cloudsimple-portal"></a>存取 CloudSimple 入口網站
 
-1. 選取 [所有服務]  。
+1. 選取 [所有服務]。
 2. 搜尋**CloudSimple Services**。
 3. 選取您要在其上建立私人雲端的 CloudSimple 服務。
 4. 在 [**總覽**] 頁面上，按一下 [**移至 CloudSimple 入口網站**] 以開啟 CloudSimple 入口網站的新瀏覽器索引標籤。  若出現提示，請使用您的 Azure 登入認證登入。  
@@ -101,7 +102,7 @@ CloudSimple 會指派具有使用者名稱的預設 vCenter 使用者帳戶 `clo
 
 在私人雲端環境中執行的應用程式和工作負載需要名稱解析和 DHCP 服務，才能進行查閱和 IP 位址指派。 必須要有適當的 DHCP 和 DNS 基礎結構，才能提供這些服務。 您可以在 vCenter 中設定虛擬機器，以在您的私用雲端環境中提供這些服務。
 
-必要條件
+先決條件
 
 * 已設定 VLAN 的分散式通訊埠群組
 
@@ -121,9 +122,9 @@ Linux 提供各種封裝來設定 DNS 伺服器。  以下是設定開放原始�
 
 這些 Microsoft 主題說明如何將 Windows server 設定為 DNS 伺服器和 DHCP 伺服器。
 
-[Windows Server 做為 DNS 伺服器](https://docs.microsoft.com/windows-server/networking/dns/dns-top)
+[Windows Server 做為 DNS 伺服器](/windows-server/networking/dns/dns-top)
 
-[做為 DHCP 伺服器的 Windows Server](https://docs.microsoft.com/windows-server/networking/technologies/dhcp/dhcp-top)
+[做為 DHCP 伺服器的 Windows Server](/windows-server/networking/technologies/dhcp/dhcp-top)
 
 ## <a name="customize-networking-configuration-optional"></a>自訂網路設定（選擇性）
 

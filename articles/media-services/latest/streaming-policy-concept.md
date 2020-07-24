@@ -11,16 +11,16 @@ ms.workload: ''
 ms.topic: article
 ms.date: 05/28/2019
 ms.author: juliako
-ms.openlocfilehash: 9c80056fd62173ff1e5a6ed3979adba71b7706cc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 01972ab02aa901af6144c02171efd36314e2f514
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80582766"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091941"
 ---
 # <a name="streaming-policies"></a>串流原則
 
-Azure 媒體服務 v3 中，[串流原則](https://docs.microsoft.com/rest/api/media/streamingpolicies)可讓您設定[串流定位器](streaming-locators-concept.md)的串流通訊協定和加密選項。 媒體服務 v3 提供一些預先定義的串流原則，讓您可以直接將它們用於試用或生產環境。 
+Azure 媒體服務 v3 中，[串流原則](/rest/api/media/streamingpolicies)可讓您設定[串流定位器](streaming-locators-concept.md)的串流通訊協定和加密選項。 媒體服務 v3 提供一些預先定義的串流原則，讓您可以直接將它們用於試用或生產環境。 
 
 目前可用的預先定義串流原則：<br/>
 * ' Predefined_DownloadOnly '
@@ -44,11 +44,11 @@ Azure 媒體服務 v3 中，[串流原則](https://docs.microsoft.com/rest/api/m
 
 若要加密您的內容，您需要建立[內容金鑰原則](content-key-policy-concept.md)，而不需要**內容金鑰原則**來進行清除串流或下載。 
 
-如果您有特殊需求（例如，如果您想要指定不同的通訊協定，需要使用自訂金鑰傳遞服務，或需要使用清楚的音訊播放軌），您可以[建立](https://docs.microsoft.com/rest/api/media/streamingpolicies/create)自訂串流原則。 
+如果您有特殊需求（例如，如果您想要指定不同的通訊協定，需要使用自訂金鑰傳遞服務，或需要使用清楚的音訊播放軌），您可以[建立](/rest/api/media/streamingpolicies/create)自訂串流原則。 
 
 ## <a name="get-a-streaming-policy-definition"></a>取得串流原則定義  
 
-如果您想要查看串流原則的定義，請使用[Get](https://docs.microsoft.com/rest/api/media/streamingpolicies/get)並指定原則名稱。 例如：
+如果您想要查看串流原則的定義，請使用[Get](/rest/api/media/streamingpolicies/get)並指定原則名稱。 例如:
 
 ### <a name="rest"></a>REST
 

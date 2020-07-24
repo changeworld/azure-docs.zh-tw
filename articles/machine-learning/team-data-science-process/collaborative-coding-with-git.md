@@ -10,11 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 0708e395eff90ff5b889c05f0fd5e7a98205c5bc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 739be373992fcd994f085f8571675779e450bfee
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76721892"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090207"
 ---
 # <a name="collaborative-coding-with-git"></a>使用 Git 共同撰寫程式碼
 
@@ -28,7 +29,7 @@ Azure DevOps 提供一個便利的方式，可將 Azure Boards 的使用者故�
 
 ![1](./media/collaborative-coding-with-git/1-sprint-board-view.png)
 
-在 [**建立分支**] 對話方塊中，提供新的分支名稱和基底 Azure Repos Git 存放庫和分支。 基底存放庫必須與工作專案位於相同的 Azure DevOps 專案。 基底分支可以是主要分支或另一個現有分支。 選取 [**建立分支**]。 
+在 [**建立分支**] 對話方塊中，提供新的分支名稱和基底 Azure Repos Git 存放庫和分支。 基底存放庫必須與工作專案位於相同的 Azure DevOps 專案。 基底分支可以是任何現有的分支。 選取 [**建立分支**]。 
 
 ![2](./media/collaborative-coding-with-git/2-create-a-branch.png)
 

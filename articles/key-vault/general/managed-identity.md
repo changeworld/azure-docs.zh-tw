@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: bb5288d043ab5638bb33c357cea55c64b03fcf1d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d2d4af5086e3cf4099013969cd359f8e11873c6d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81432121"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090615"
 ---
 # <a name="provide-key-vault-authentication-with-a-managed-identity"></a>提供受控識別的 Key Vault 驗證
 
@@ -35,7 +35,7 @@ Azure Active Directory 的受控識別可讓您的應用程式輕鬆地存取其
    - [使用 Azure PowerShell 建立金鑰保存庫](../secrets/quick-create-powershell.md)
    - [使用 Azure 入口網站建立金鑰保存庫](../secrets/quick-create-portal.md)。
 - 要對其授與金鑰保存庫存取權的現有 App Service 應用程式。 您可以遵循[App Service 檔](../../app-service/overview.md)中的步驟來快速建立一個。
-- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)或[Azure PowerShell](/powershell/azure/overview)。 或者，您可以使用 [Azure 入口網站](https://portal.azure.com)。
+- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)或[Azure PowerShell](/powershell/azure/)。 或者，您可以使用 [Azure 入口網站](https://portal.azure.com)。
 
 
 ## <a name="adding-a-system-assigned-identity"></a>新增系統指派的身分識別 
@@ -52,7 +52,7 @@ Azure Active Directory 的受控識別可讓您的應用程式輕鬆地存取其
 
 1. 在 [系統指派] 索引標籤內，將 [狀態] 切換為 [開啟]。 按一下 [檔案] 。 
 
-    ![](../media/managed-identity-system-assigned.png)
+   ![顯示儲存系統指派之身分識別的螢幕擷取畫面。](../media/managed-identity-system-assigned.png)
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -100,7 +100,7 @@ az functionapp identity assign --name myApp --resource-group myResourceGroup
 
 1.  按一下 **[新增]** 完成新增存取原則的作業。
 
-    ![](../media/managed-identity-access-policy.png)
+    ![螢幕擷取畫面：顯示如何在 Azure 入口網站中新增存取原則。](../media/managed-identity-access-policy.png)
 
 ### <a name="azure-cli"></a>Azure CLI
 

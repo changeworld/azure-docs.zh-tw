@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 2b5c28fccc411a8372ebd6015f796c8309146dfa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2edf1574784ec93448495086fdd05c988a3e55a7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85476762"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090530"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure 金鑰保存庫開發人員指南
 
@@ -40,7 +40,7 @@ Azure Key Vault 可安全地儲存認證和其他金鑰及密碼，但是您的�
 
 - [使用 CLI 建立和管理金鑰保存庫](../secrets/quick-create-cli.md)
 - [使用 PowerShell 建立和管理金鑰保存庫](../secrets/quick-create-powershell.md)
-- [使用 Azure 埠來建立和管理金鑰保存庫](../secrets/quick-create-portal.md)
+- [使用 Azure 入口網站建立及管理金鑰保存庫](../secrets/quick-create-portal.md)
 - [使用 Python 建立和管理金鑰保存庫](../secrets/quick-create-python.md)
 - [使用 JAVA 建立和管理金鑰保存庫](../secrets/quick-create-java.md)
 - [使用 Node.js建立及管理金鑰保存庫](../secrets/quick-create-node.md)
@@ -75,11 +75,11 @@ Azure Key Vault 可安全地儲存認證和其他金鑰及密碼，但是您的�
 
 在 Node.js 中，Key Vault 管理 API 和 Key Vault 物件 API 是分開的。 以下概觀文件說明如何使用它們。 
 
-[適用於 Node.js 的 Azure Key Vault 模組](/javascript/api/overview/azure/key-vault?view=azure-node-latest)
+[適用於 Node.js 的 Azure Key Vault 模組](https://docs.microsoft.com/javascript/api/overview/azure/key-vault-index?view=azure-node-latest)
 
 #### <a name="python"></a>Python
 
-[適用於 Python 的 Azure Key Vault 程式庫](/python/api/overview/azure/key-vault?view=azure-python)
+[適用於 Python 的 Azure Key Vault 程式庫](https://docs.microsoft.com/python/api/overview/azure/key-vault-index?view=azure-python)
 
 #### <a name="azure-cli"></a>Azure CLI
 
@@ -100,7 +100,7 @@ Azure Key Vault 可安全地儲存認證和其他金鑰及密碼，但是您的�
 
 下列文章和案例提供使用 Azure Key Vault 的工作特定指引：
 
-- [訂用帳戶動作之後變更金鑰保存庫租用戶識別碼](subscription-move-fix.md) - 當您將 Azure 訂用帳戶從租用戶 A 移動至租用戶 B 時，租用戶 B 中的實體 (使用者和應用程式) 將無法存取您現有的金鑰保存庫。請利用本指南來解決此問題。
+- [訂用帳戶動作之後變更金鑰保存庫租用戶識別碼](move-subscription.md) - 當您將 Azure 訂用帳戶從租用戶 A 移動至租用戶 B 時，租用戶 B 中的實體 (使用者和應用程式) 將無法存取您現有的金鑰保存庫。請利用本指南來解決此問題。
 - [存取防火牆後面的金鑰保存庫](access-behind-firewall.md)若要存取金鑰保存庫，您的金鑰保存庫用戶端應用程式必須能夠存取多個端點，才能使用各種功能。
 - [如何為 Azure 金鑰保存庫產生並傳輸受 HSM 保護的金鑰](../keys/hsm-protected-keys.md) - 這將協助您規劃、產生並傳輸專屬受 HSM 保護的金鑰，以搭配 Azure 金鑰保存庫使用。
 - [如何在部署期間傳遞安全值 (例如密碼)](../../azure-resource-manager/templates/key-vault-parameter.md) - 當您需要在部署期間傳遞安全值 (例如密碼) 作為參數時，可以將該值儲存為 Azure 金鑰保存庫中的密碼，並在其他資源管理員範本中參考該值。

@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: juliako
-ms.openlocfilehash: 7d3a85e6fcc5b9d1c5ca1511cd7edd05ff5d9ae4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1fc201cc1f3d4d26ca7b9e949d2917688e6fea8c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80582691"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091975"
 ---
-# <a name="streaming-endpoint-origin-errors"></a>串流端點（原點）錯誤 
+# <a name="streaming-endpoint-origin-errors"></a>串流端點 (原點) 錯誤 
 
 本主題說明您可能會從 Azure 媒體服務[串流端點服務](streaming-endpoint-concept.md)收到的錯誤。
 
@@ -163,7 +163,7 @@ ms.locfileid: "80582691"
 - [概念：即時事件和即時輸出](live-events-outputs-concept.md)
 - [範例：即時串流教學課程](stream-live-tutorial-with-api.md)
 
-## <a name="416-range-not-satisfiable"></a>416範圍未達成
+## <a name="416-range-not-satisfiable"></a>416 無法滿足的範圍
 
 |錯誤碼|十六進位值 |錯誤描述|
 |---|---|---|
@@ -200,7 +200,7 @@ ms.locfileid: "80582691"
 
 ## <a name="see-also"></a>另請參閱
 
-- [編碼錯誤碼](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode)
+- [編碼錯誤碼](/rest/api/media/jobs/get#joberrorcode)
 - [Azure 媒體服務概念](concepts-overview.md)
 - [配額和限制](limits-quotas-constraints.md)
 

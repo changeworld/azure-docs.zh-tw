@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/27/2020
 ms.author: juliako
-ms.openlocfilehash: 94a70a1234d902787f248890f0cb538a4ba9c2f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d8d961ab58e900a6d619ec64297c783abdb7b6ce
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77921074"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091686"
 ---
 # <a name="azure-media-services-legacy-components"></a>Azure 媒體服務舊版元件
 
@@ -34,13 +35,13 @@ ms.locfileid: "77921074"
  
 |媒體處理器名稱|停用日期|其他注意事項|
 |---|---|
-|[Azure 媒體索引器 2](media-services-process-content-with-indexer2.md)|2020年1月1日|[Azure 媒體服務影片索引子](https://docs.microsoft.com/azure/media-services/video-indexer/)會取代此媒體處理器。 如需詳細資訊，請參閱[從 Azure 媒體索引子2遷移至 Azure 媒體服務影片索引子](migrate-indexer-v1-v2.md)。|
-|[Azure Media Indexer](media-services-index-content.md)|2023年3月1日|[Azure 媒體服務影片索引子](https://docs.microsoft.com/azure/media-services/video-indexer/)會取代此媒體處理器。 如需詳細資訊，請參閱[從 Azure 媒體索引子遷移至 Azure 媒體服務影片索引子](migrate-indexer-v1-v2.md)|
+|[Azure 媒體索引器 2](media-services-process-content-with-indexer2.md)|2020年1月1日|[Azure 媒體服務影片索引子](../video-indexer/index.yml)會取代此媒體處理器。 如需詳細資訊，請參閱[從 Azure 媒體索引子2遷移至 Azure 媒體服務影片索引子](migrate-indexer-v1-v2.md)。|
+|[Azure Media Indexer](media-services-index-content.md)|2023年3月1日|[Azure 媒體服務影片索引子](../video-indexer/index.yml)會取代此媒體處理器。 如需詳細資訊，請參閱[從 Azure 媒體索引子遷移至 Azure 媒體服務影片索引子](migrate-indexer-v1-v2.md)|
 |[動作偵測](media-services-motion-detection.md)|2020年6月1日|目前沒有任何取代計畫。|
 |[影片摘要](media-services-video-summarization.md)|2020年6月1日|目前沒有任何取代計畫。|
-|[影片光學字元辨識](media-services-video-optical-character-recognition.md)|2020年6月1日|[Azure 媒體服務影片索引子](https://docs.microsoft.com/azure/media-services/video-indexer/)會取代此媒體處理器。 此外，請考慮使用[Azure 媒體服務 V3 API](https://docs.microsoft.com/azure/media-services/latest/analyzing-video-audio-files-concept)。 <br/>請參閱[比較 Azure 媒體服務 v3 預設值和影片索引子](https://docs.microsoft.com/azure/media-services/video-indexer/compare-video-indexer-with-media-services-presets)|
-|[臉部偵測](media-services-face-and-emotion-detection.md)|2020年6月1日|[Azure 媒體服務影片索引子](https://docs.microsoft.com/azure/media-services/video-indexer/)會取代此媒體處理器。 此外，請考慮使用[Azure 媒體服務 V3 API](https://docs.microsoft.com/azure/media-services/latest/analyzing-video-audio-files-concept)。 <br/>請參閱[比較 Azure 媒體服務 v3 預設值和影片索引子](https://docs.microsoft.com/azure/media-services/video-indexer/compare-video-indexer-with-media-services-presets)|
-|[內容仲裁](media-services-content-moderation.md)|2020年6月1日|[Azure 媒體服務影片索引子](https://docs.microsoft.com/azure/media-services/video-indexer/)會取代此媒體處理器。 此外，請考慮使用[Azure 媒體服務 V3 API](https://docs.microsoft.com/azure/media-services/latest/analyzing-video-audio-files-concept)。 <br/>請參閱[比較 Azure 媒體服務 v3 預設值和影片索引子](https://docs.microsoft.com/azure/media-services/video-indexer/compare-video-indexer-with-media-services-presets)|
+|[影片光學字元辨識](media-services-video-optical-character-recognition.md)|2020年6月1日|[Azure 媒體服務影片索引子](../video-indexer/index.yml)會取代此媒體處理器。 此外，請考慮使用[Azure 媒體服務 V3 API](../latest/analyzing-video-audio-files-concept.md)。 <br/>請參閱[比較 Azure 媒體服務 v3 預設值和影片索引子](../video-indexer/compare-video-indexer-with-media-services-presets.md)|
+|[臉部偵測](media-services-face-and-emotion-detection.md)|2020年6月1日|[Azure 媒體服務影片索引子](../video-indexer/index.yml)會取代此媒體處理器。 此外，請考慮使用[Azure 媒體服務 V3 API](../latest/analyzing-video-audio-files-concept.md)。 <br/>請參閱[比較 Azure 媒體服務 v3 預設值和影片索引子](../video-indexer/compare-video-indexer-with-media-services-presets.md)|
+|[內容仲裁](media-services-content-moderation.md)|2020年6月1日|[Azure 媒體服務影片索引子](../video-indexer/index.yml)會取代此媒體處理器。 此外，請考慮使用[Azure 媒體服務 V3 API](../latest/analyzing-video-audio-files-concept.md)。 <br/>請參閱[比較 Azure 媒體服務 v3 預設值和影片索引子](../video-indexer/compare-video-indexer-with-media-services-presets.md)|
 
 ## <a name="next-steps"></a>後續步驟
 

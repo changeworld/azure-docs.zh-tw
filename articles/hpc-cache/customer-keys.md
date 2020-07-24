@@ -4,13 +4,14 @@ description: 如何使用 Azure Key Vault 搭配 Azure HPC 快取來控制加密
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 04/29/2020
+ms.date: 07/20/2020
 ms.author: v-erkel
-ms.openlocfilehash: b7b9e9e6858d709e80642603e77bfb36f2e4c0c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2cd97e205d88fe7ead02889f5ae9ad9df0985f07
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512909"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092519"
 ---
 # <a name="use-customer-managed-encryption-keys-for-azure-hpc-cache"></a>針對 Azure HPC 快取使用客戶管理的加密金鑰
 
@@ -18,6 +19,8 @@ ms.locfileid: "85512909"
 
 > [!NOTE]
 > 儲存在 Azure 中的所有資料（包括在快取磁片上）預設都會使用 Microsoft 管理的金鑰進行待用加密。 如果您想要管理用來加密資料的金鑰，您只需要遵循本文中的步驟。
+
+即使您新增快取磁片的客戶金鑰，Azure HPC 快取也會在保存快取資料的受控磁片上受到[VM 主機加密](../virtual-machines/linux/disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data)的保護。 針對具有高安全性需求的客戶，新增客戶管理的金鑰以進行雙重加密，可提供額外的安全性等級。 如需詳細資訊，請參閱[Azure 磁片儲存體的伺服器端加密](../virtual-machines/linux/disk-encryption.md)。
 
 這項功能僅適用于可使用 Azure HPC 快取的部分 Azure 區域。 如需詳細資訊，請參閱[區域可用性](hpc-cache-overview.md#region-availability)清單。
 

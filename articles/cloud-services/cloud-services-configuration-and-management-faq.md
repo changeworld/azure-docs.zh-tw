@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: c418ed87bd74471ce8c2e8186bd6244eaf6f21de
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 477f38e18f1bee881e4a9df23dd37048f39549be
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921588"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092740"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure 雲端服務之設定和管理問題：常見問題集 (FAQ)
 
@@ -127,7 +128,7 @@ $cert = New-SelfSignedCertificate -DnsName yourdomain.cloudapp.net -CertStoreLoc
 $password = ConvertTo-SecureString -String "your-password" -Force -AsPlainText
 Export-PfxCertificate -Cert $cert -FilePath ".\my-cert-file.pfx" -Password $password
 ```
-即將推出可針對您的 csdef 和 cscfg 上傳位置選擇 Blob 或本機的功能。 使用 [New-AzureDeployment](/powershell/module/servicemanagement/azure/new-azuredeployment?view=azuresmps-4.0.0)，您可以設定每個位置的值。
+即將推出可針對您的 csdef 和 cscfg 上傳位置選擇 Blob 或本機的功能。 使用 [New-AzureDeployment](/powershell/module/servicemanagement/azure.service/new-azuredeployment?view=azuresmps-4.0.0)，您可以設定每個位置的值。
 
 監視執行個體層級計量的功能。 [如何監視雲端服務](cloud-services-how-to-monitor.md)中還有更多其他監視功能。
 
@@ -197,7 +198,7 @@ Windows 10 和 Windows Server 2016 隨附用戶端和伺服器端上的 HTTP/2 �
 5. 重新啟動您的伺服器。
 6. 移至**預設網站**，並在 [繫結]**** 下方 使用剛才建立的自我簽署憑證來建立新的 TLS 繫結。 
 
-如需詳細資訊，請參閱：
+如需詳細資訊，請參閱
 
 - [IIS 上的 HTTP/2](https://blogs.iis.net/davidso/http2)
 - [影片：Windows 10 中的 HTTP/2：瀏覽器、應用程式和 Web 伺服器](https://channel9.msdn.com/Events/Build/2015/3-88)
@@ -296,7 +297,7 @@ Azure 不會將任何內容寫入 %approot% 磁碟機。 一旦從 .cspkg 建立
 您可以在「啟動工作」中使用 PowerShell 指令碼來啟用反惡意程式碼擴充功能。 請遵循下列這些文章中的步驟加以實作： 
  
 - [建立 PowerShell 啟動工作](cloud-services-startup-tasks-common.md#create-a-powershell-startup-task)
-- [Set-AzureServiceAntimalwareExtension](https://docs.microsoft.com/powershell/module/servicemanagement/azure/Set-AzureServiceAntimalwareExtension?view=azuresmps-4.0.0 )
+- [Set-AzureServiceAntimalwareExtension](/powershell/module/servicemanagement/azure.service/Set-AzureServiceAntimalwareExtension?view=azuresmps-4.0.0 )
 
 如需反惡意程式碼部署情節及如何從入口網站加以啟用的詳細資訊，請參閱[反惡意程式碼部署情節](../security/fundamentals/antimalware.md#antimalware-deployment-scenarios)。
 

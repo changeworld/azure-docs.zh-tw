@@ -3,21 +3,24 @@ title: 在合作夥伴中心建立商業 marketplace 帳戶
 description: 瞭解如何在合作夥伴中心建立 Microsoft 商業 marketplace 帳戶。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: guide
-ms.date: 04/14/2020
-ms.openlocfilehash: 4a178feb4bdf0bc361185e21e47ccdceac3a7f21
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.topic: article
+ms.date: 07/01/2020
+ms.openlocfilehash: 5a55d66bfed19f6d88d4ff13a9f59d7e791664cc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110005"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092179"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>在合作夥伴中心建立商業 marketplace 帳戶
 
 若要將您的供應專案發佈至[Azure Marketplace](https://azuremarketplace.microsoft.com/)或[Microsoft AppSource](https://appsource.microsoft.com/)，您必須在合作夥伴中心的商業 Marketplace 方案中建立帳戶。 本文涵蓋如何建立合作夥伴中心帳戶，以及如何將新的發行者加入至商業 marketplace 方案。
 
 >[!IMPORTANT]
->如果您在[Cloud Partner 入口網站](https://cloudpartner.azure.com)中有已移至合作夥伴中心的帳戶，則不需要建立新的帳戶。 如需詳細資訊，請參閱[中從 Cloud Partner 入口網站移動的發行者](#for-publishers-who-are-moving-from-the-cloud-partner-portal)。
+>若要在商用 marketplace 中發佈供應專案，您必須使用與公司或組織相關聯的工作帳戶。 不支援個人帳戶。
+
+>[!IMPORTANT]
+>如果您在 Cloud Partner 入口網站（CPP）中有帳戶，我們將它移到合作夥伴中心;您不需要建立新的帳戶。 如需詳細資訊，請參閱[適用于從 Cloud Partner 入口網站移動的發行者](#for-publishers-who-moved-from-the-cloud-partner-portal)。
 
 ## <a name="before-you-begin"></a>開始之前
 
@@ -43,7 +46,7 @@ ms.locfileid: "86110005"
 - [提供您的發行者設定檔](#provide-your-publisher-profile)
 
 >[!IMPORTANT]
->如果您有已移至合作夥伴中心的[Cloud Partner 入口網站](https://cloudpartner.azure.com)帳戶，則不需要建立新的帳戶。 如需詳細資訊，請參閱[中從 Cloud Partner 入口網站移動的發行者](#for-publishers-who-are-moving-from-the-cloud-partner-portal)。
+>如果您在 Cloud Partner 入口網站中有帳戶，我們已將它移到合作夥伴中心;您不需要建立新的帳戶。 如需詳細資訊，請參閱[適用于從 Cloud Partner 入口網站移動的發行者](#for-publishers-who-moved-from-the-cloud-partner-portal)。
 
 ### <a name="register-on-the-partner-center-enrollment-page"></a>在合作夥伴中心註冊頁面上註冊
 
@@ -94,7 +97,7 @@ ms.locfileid: "86110005"
 請務必備妥您的帳戶資訊。
 
 >[!IMPORTANT]
->如果您在[Cloud Partner 入口網站](https://cloudpartner.azure.com/)中有已移至合作夥伴中心的帳戶，則不需要建立新的帳戶。 如需詳細資訊，請參閱[中從 Cloud Partner 入口網站移動的發行者](#for-publishers-who-are-moving-from-the-cloud-partner-portal)。
+>如果您在 Cloud Partner 入口網站中有帳戶，我們已將它移到合作夥伴中心;您不需要建立新的帳戶。 如需詳細資訊，請參閱[適用于從 Cloud Partner 入口網站移動的發行者](#for-publishers-who-moved-from-the-cloud-partner-portal)。
 
 ### <a name="what-if-im-already-enrolled-in-the-microsoft-partner-network"></a>如果我已在 Microsoft 合作夥伴網路中註冊，該怎麼辦？
 
@@ -154,15 +157,13 @@ ms.locfileid: "86110005"
 
 您現在已在合作夥伴中心建立商業 marketplace 帳戶。 如需詳細資訊，請參閱[商業 marketplace 總覽](./commercial-marketplace-overview.md)。 如需加入發行者的說明，請參閱[將新的發行者加入至商業 marketplace](#add-new-publishers-to-the-commercial-marketplace-program)。
 
-## <a name="for-publishers-who-are-moving-from-the-cloud-partner-portal"></a>針對從 Cloud Partner 入口網站移動的發行者
+## <a name="for-publishers-who-moved-from-the-cloud-partner-portal"></a>針對從 Cloud Partner 入口網站移動的發行者
 
-如果您的帳戶已從[Cloud Partner 入口網站](https://cloudpartner.azure.com)遷移，則不需要建立新的合作夥伴中心帳戶。 在您登入現有的 Cloud Partner 入口網站帳戶之後，您應該會在電子郵件中收到新合作夥伴中心帳戶的自訂連結，並在橫幅通知中接收。
+如果您有 Cloud Partner 入口網站帳戶，我們已將其移至合作夥伴中心。 您不需要建立新的合作夥伴中心帳戶。 在您登入現有的 Cloud Partner 入口網站帳戶之後，您應該會在電子郵件中收到新合作夥伴中心帳戶的自訂連結，並在橫幅通知中接收。
 
 選取自訂連結並啟用新的合作夥伴中心帳戶之後，您可以前往合作夥伴中心的 [[商業 marketplace] 儀表板](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)，返回您的帳戶。
 
-發佈合約和公司設定檔資訊會遷移至新的合作夥伴中心帳戶，以及任何先前設定的帳戶付款設定檔資訊、使用者帳戶和許可權，以及與您的 Cloud Partner 入口網站帳戶相關聯的有效供應專案。
-
-當您的帳戶資訊從 Cloud Partner 入口網站移至合作夥伴中心之後，您將無法再使用此 Cloud Partner 入口網站進行帳戶更新，或管理使用者、許可權和計費。 在有限的時間內，您在「合作夥伴中心」中進行的任何帳戶更新都會在您的唯讀 Cloud Partner 入口網站帳戶中自動更新，直到最後淘汰為止。
+發佈合約和公司設定檔資訊會轉換成您的新合作夥伴中心帳戶，以及任何先前設定的帳戶付款設定檔資訊、使用者帳戶和許可權，以及與您 Cloud Partner 入口網站帳戶相關聯的使用中供應專案。
 
 ## <a name="add-new-publishers-to-the-commercial-marketplace-program"></a>將新的發行者新增至商業 marketplace 方案
 

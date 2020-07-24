@@ -7,18 +7,19 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
-ms.openlocfilehash: d40e392984d2675c748bda00c61cdaeb1c0932da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fa918a3a6894205ed36c4b576608e7a71e523a92
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75387015"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092706"
 ---
 # <a name="connecting-azure-cloud-services-roles-to-a-custom-ad-domain-controller-hosted-in-azure"></a>將 Azure 雲端服務角色連接到裝載於 Azure 中的自訂 AD 網域控制站
 我們會先在 Azure 中設定虛擬網路 (VNet)。 接著再將 Active Directory 網域控制站 (裝載於 Azure 虛擬機器上) 加入 VNet。 下一步是將現有雲端服務角色加入預先建立的 VNet，然後將它們連接到網域控制站。
 
 在開始之前，請將以下幾件事牢記在心：
 
-1. 本教學課程使用 PowerShell，因此請確認您已安裝 Azure PowerShell 且已準備就緒。 如需設定 Azure PowerShell 的說明，請參閱 [如何安裝及設定 Azure PowerShell](/powershell/azure/overview)。
+1. 本教學課程使用 PowerShell，因此請確認您已安裝 Azure PowerShell 且已準備就緒。 如需設定 Azure PowerShell 的說明，請參閱 [如何安裝及設定 Azure PowerShell](/powershell/azure/)。
 2. AD 網域控制站和 Web/背景工作角色執行個體必須位在 VNet 中。
 
 請依本逐步指南作業，如果遇到任何問題，請在本文結尾處留言。 我們將會回覆您 (沒錯，我們真的會閱讀留言)。
@@ -140,7 +141,7 @@ $dmcred = New-Object System.Management.Automation.PSCredential ($dmuser, $dmspwd
 Set-AzureServiceADDomainExtension -Service <your-cloud-service-hosted-service-name> -Role <your-role-name> -Slot <staging-or-production> -DomainName $domain -Credential $dmcred -JoinOption 35
 ```
 
-就這麼簡單。
+就是這麼容易！
 
 您的雲端服務應該已加入自訂網域控制站。 如果您想要深入了解設定 AD 網域延伸時可用的其他選項，請使用 PowerShell 說明。 以下是一些範例：
 

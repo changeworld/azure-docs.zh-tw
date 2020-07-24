@@ -3,11 +3,13 @@ title: Azure 備份支援矩陣
 description: 摘要說明 Azure 備份服務的支援設定和限制。
 ms.topic: conceptual
 ms.date: 02/17/2019
-ms.openlocfilehash: 4946a4627d037053e441152182278c26b4f693fe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: references_regions
+ms.openlocfilehash: f84be4082eb6bc845459b6d88cb3157b2330f23d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84655616"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091006"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure 備份的支援矩陣
 
@@ -31,10 +33,10 @@ Azure 備份會使用復原服務保存庫來協調和管理備份。 其也會�
 --- | ---
 **訂用帳戶中的保存庫** | 一個訂用帳戶中最多可以有 500 個復原服務保存庫。
 **保存庫中的機器** | 一個保存庫中最多可以有 1,000 個 Azure VM。<br/><br/> 可在單一保存庫中註冊最多 50 個 MABS 伺服器。
-**資料來源** | 個別[資料來源](https://docs.microsoft.com/azure/backup/backup-azure-backup-faq#how-is-the-data-source-size-determined)的大小上限是 54,400 GB。 此限制不適用於 Azure VM 備份。 您可以備份至保存庫的資料總量不會有任何限制。
+**資料來源** | 個別[資料來源](./backup-azure-backup-faq.md#how-is-the-data-source-size-determined)的大小上限是 54,400 GB。 此限制不適用於 Azure VM 備份。 您可以備份至保存庫的資料總量不會有任何限制。
 **備份至保存庫** | **Azure VM：** 一天一次。<br/><br/>**受 DPM/MABS 保護的電腦：** 一天兩次。<br/><br/> **使用 MARS 代理程式直接備份的電腦：** 一天三次。
 **保存庫之間的備份** | 在區域內備份。<br/><br/> 您在每個 Azure 區域中都必須有一個保存庫包含您想要備份的 VM。 您無法備份至不同的區域。
-**移動保存庫** | 您可以在訂用帳戶之間[移動保存庫](https://docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault)，或在相同訂用帳戶的資源群組之間移動。 不過，不支援跨區域移動保存庫。
+**移動保存庫** | 您可以在訂用帳戶之間[移動保存庫](./backup-azure-move-recovery-services-vault.md)，或在相同訂用帳戶的資源群組之間移動。 不過，不支援跨區域移動保存庫。
 **在保存庫之間移動資料** | 不支援在保存庫之間移動已備份的資料。
 **修改保存庫儲存體類型** | 您可以在儲存備份之前，修改保存庫的儲存體複寫類型 (異地備援儲存體或本地備援儲存體)。 開始在保存庫中進行備份後，即無法修改複寫類型。
 
@@ -55,7 +57,7 @@ Azure 備份會使用復原服務保存庫來協調和管理備份。 其也會�
 
 **限制** | **詳細資料**
 --- | ---
-**Azure VM 資料磁碟** | 請參閱 [Azure VM 備份的支援矩陣](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas#vm-storage-support)。
+**Azure VM 資料磁碟** | 請參閱 [Azure VM 備份的支援矩陣](./backup-support-matrix-iaas.md#vm-storage-support)。
 **Azure VM 資料磁碟大小** | 個別磁碟大小最高可達 32 TB，單一 VM 中所有磁碟大小最高可達 256 TB。
 
 ### <a name="azure-vm-backup-options"></a>Azure VM 備份選項

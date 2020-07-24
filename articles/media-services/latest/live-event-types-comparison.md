@@ -13,21 +13,22 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 06/13/2019
 ms.author: juliako
-ms.openlocfilehash: a28d4d96f643c12eeb6aa542db2c6af06f4fd954
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 793ddb8c99a4e21c176374f7cb3445d1a7d8fca0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78244650"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090054"
 ---
 # <a name="live-event-types-comparison"></a>實況活動類型比較
 
-在 Azure 媒體服務中，[即時事件](https://docs.microsoft.com/rest/api/media/liveevents)可以設定為傳遞（內部部署即時編碼器會傳送多位元率串流）或*即時編碼*（內部部署即時編碼器會*傳送*單一位元速率串流）。 
+在 Azure 媒體服務中，[即時事件](/rest/api/media/liveevents)可以設定為傳遞（內部部署即時編碼器會傳送多位元率串流）或*即時編碼*（內部部署即時編碼器會*傳送*單一位元速率串流）。 
 
 這篇文章會比較即時事件種類的功能。
 
 ## <a name="types-comparison"></a>類型比較 
 
-下表比較即時事件種類的功能。 在建立期間，會使用[LiveEventEncodingType](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventencodingtype)來設定類型：
+下表比較即時事件種類的功能。 在建立期間，會使用[LiveEventEncodingType](/rest/api/media/liveevents/create#liveeventencodingtype)來設定類型：
 
 * **LiveEventEncodingType。 None** -內部部署即時編碼器會傳送多位元率串流。 內嵌串流會通過即時事件，而不需要進行任何進一步的處理。 也稱為傳遞實況活動。
 * **LiveEventEncodingType** -內部部署即時編碼器會將單一位元速率串流傳送至即時事件，媒體服務會建立多位元率串流。 如果「貢獻摘要」是720p 或更高解析度，則**Default720p**預設會將一組6個解析/位元速率配對（詳細資料會在本文稍後所述）進行編碼。
@@ -39,9 +40,9 @@ ms.locfileid: "78244650"
 | 發佈摘要的影片最大解析度 |4K (4096x2160，每秒 60 格畫面) |1080p (1920x1088，每秒 30 格畫面)|
 | 發佈摘要中層級數的建議上限|最多 12 個|一個音訊|
 | 輸出中的層級數上限| 與輸入相同|最多6個（請參閱下方的系統預設值）|
-| 發佈摘要的彙總頻寬上限|60 Mbps|N/A|
+| 發佈摘要的彙總頻寬上限|60 Mbps|不適用|
 | 發佈中單一層級的最大位元速率 |20 Mbps|20 Mbps|
-| 支援多種語言音訊播放軌|Yes|否|
+| 支援多種語言音訊播放軌|是|否|
 | 支援的輸入視訊轉碼器 |H.264/AVC 和 H.265/HEVC|H.264/AVC|
 | 支援的輸出視訊轉碼器|與輸入相同|H.264/AVC|
 | 支援的視訊位元深度、輸入及輸出|最多 10 位元，包括 HDR 10/HLG|8 位元|
@@ -50,21 +51,21 @@ ms.locfileid: "78244650"
 | 輸出影片的影片解析度上限|與輸入相同|標準-720p、Premium1080p-1080p|
 | 輸入影片的最大畫面播放速率|60框架/秒|Standard 或 Premium1080p-每秒30個畫面|
 | 輸入通訊協定|RTMP，分散式 MP4 (Smooth Streaming)|RTMP，分散式 MP4 (Smooth Streaming)|
-| Price|請參閱 [定價頁面](https://azure.microsoft.com/pricing/details/media-services/) 並按一下 [即時影片] 索引標籤|請參閱 [定價頁面](https://azure.microsoft.com/pricing/details/media-services/) 並按一下 [即時影片] 索引標籤|
+| 價格|請參閱 [定價頁面](https://azure.microsoft.com/pricing/details/media-services/) 並按一下 [即時影片] 索引標籤|請參閱 [定價頁面](https://azure.microsoft.com/pricing/details/media-services/) 並按一下 [即時影片] 索引標籤|
 | 最長執行時間| 24 小時 x 365 天，即時線性 | 24小時 x 365 天，即時線性（預覽）|
-| 能夠透過內嵌的 CEA 608/708 字幕資料傳遞|Yes|Yes|
-| 開啟即時轉譯的能力|Yes|Yes|
+| 能夠透過內嵌的 CEA 608/708 字幕資料傳遞|是|是|
+| 開啟即時轉譯的能力|是|是|
 | 插入靜態圖像支援|否|否|
 | 支援透過 API 發出廣告訊號| 否|否|
-| 支援透過 SCTE-35 頻內訊息發出廣告訊號|Yes|Yes|
+| 支援透過 SCTE-35 頻內訊息發出廣告訊號|是|是|
 | 在比重摘要內能從短暫延遲中復原的能力|是|部分|
-| 支援未統一輸入的 GOP|Yes|否 – 輸入必須有固定的 GOP 持續期間|
-| 支援變動畫面播放速率輸入|Yes|否 – 輸入必須為固定畫面播放速率。 輕微的差異可以接受，例如：處於高速動態場景的情況。 但是，貢獻摘要無法捨棄畫面播放速率（例如，到15個畫面）。|
-| 在遺失輸入摘要時自動關閉實況活動|No|經過 12 個小時，如果沒有 LiveOutput 仍在執行|
+| 支援未統一輸入的 GOP|是|否 – 輸入必須有固定的 GOP 持續期間|
+| 支援變動畫面播放速率輸入|是|否 – 輸入必須為固定畫面播放速率。 輕微的差異可以接受，例如：處於高速動態場景的情況。 但是，貢獻摘要無法捨棄畫面播放速率（例如，到15個畫面）。|
+| 在遺失輸入摘要時自動關閉實況活動|否|經過 12 個小時，如果沒有 LiveOutput 仍在執行|
 
 ## <a name="system-presets"></a>系統預設
 
-即時編碼器的輸出中所包含的解決方式和位元速率是由[presetName](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventencoding)所決定。 如果使用**標準**即時編碼器（LiveEventEncodingType），則*Default720p*預設值會指定一組6個解析度/位元速率配對，如下所述。 否則，如果使用**Premium1080p**即時編碼器（LiveEventEncodingType. Premium1080p），則*Default1080p*預設值會指定解析/位元速率配對的輸出集。
+即時編碼器的輸出中所包含的解決方式和位元速率是由[presetName](/rest/api/media/liveevents/create#liveeventencoding)所決定。 如果使用**標準**即時編碼器（LiveEventEncodingType），則*Default720p*預設值會指定一組6個解析度/位元速率配對，如下所述。 否則，如果使用**Premium1080p**即時編碼器（LiveEventEncodingType. Premium1080p），則*Default1080p*預設值會指定解析/位元速率配對的輸出集。
 
 > [!NOTE]
 > 如果已針對標準即時編碼進行設定，您無法將 Default1080p 預設值套用至即時事件-您會收到錯誤。 如果您嘗試將 Default720p 預設值套用至 Premium1080p 即時編碼器，您也會收到錯誤。

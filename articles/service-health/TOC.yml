@@ -24,7 +24,7 @@
 - name: 作法
   items:
     - name: 設定適用於服務健康狀態事件的警示
-      href: alerts-activity-log-service-notifications.md
+      href: ./alerts-activity-log-service-notifications-portal.md
     - name: 使用 Azure 入口網站檢視服務健康情況通知
       href: service-notifications.md
     - name: 透過 Webhook 將警示傳送至外部系統

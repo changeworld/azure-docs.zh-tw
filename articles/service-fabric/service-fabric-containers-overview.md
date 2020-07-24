@@ -2,13 +2,13 @@
 title: Service Fabric 和容器的概觀
 description: Service Fabric 及使用容器來部署微服務應用程式的概觀。 本文提供如何使用容器及 Service Fabric 所提供之功能的概觀。
 ms.topic: conceptual
-ms.date: 8/8/2018
-ms.openlocfilehash: 7c92910a92c8fa3061a1a0d53611734cf681484f
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 7/9/2020
+ms.openlocfilehash: cd0ec7dd2247fdd791df362fa34542178c17df4d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259222"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091652"
 ---
 # <a name="service-fabric-and-containers"></a>Service Fabric 和容器
 
@@ -53,7 +53,7 @@ Docker 提供 API 來建立和管理 Linux 核心容器頂端的容器。 Docker
 
 #### <a name="windows-server-containers"></a>Windows Server 容器
 
-Windows Server 2016 提供兩種不同的容器，其隔離程度有所不同。 Windows Server 容器類似於 Docker 容器，因為都有命名空間和檔案系統隔離，然而與它們執行所在的主機共用核心。 在 Linux 上，傳統上由控制群組和命名空間提供這種隔離，而 Windows Server 容器具有類似的行為。
+Windows Server 2016 和更新版本提供兩種不同的容器類型，不同之處在于隔離層級。 Windows Server 容器類似於 Docker 容器，因為都有命名空間和檔案系統隔離，然而與它們執行所在的主機共用核心。 在 Linux 上，傳統上由控制群組和命名空間提供這種隔離，而 Windows Server 容器具有類似的行為。
 
 含 Hyper-V 支援的 Windows 容器提供更高程度的隔離和安全性，因為容器彼此之間或與主機之間不會共用作業系統核心。 由於有如此高程度的安全性隔離，已啟用 Hyper-V 的容器在潛在惡意多租用戶的情況下是重點目標。
 如需以 Windows 為基礎的教學課程，請參閱[在 Windows 建立第一個 Service Fabric 容器應用程式](service-fabric-get-started-containers.md)。
@@ -73,7 +73,10 @@ Windows Server 2016 提供兩種不同的容器，其隔離程度有所不同。
 
 ## <a name="service-fabric-support-for-containers"></a>Service Fabric 的容器支援
 
-Service Fabric 支援將 Docker 容器部署至 Linux，也支援將 Windows Server 容器部署至 Windows Server 2016，並支援 Hyper-V 隔離模式。 
+Service Fabric 支援在 Linux 上部署 Docker 容器，以及 Windows Server 2016 和更新版本上的 Windows Server 容器，以及 Hyper-v 隔離模式的支援。
+
+> [!NOTE]
+> 本機單一節點上不支援容器 Service Fabric 叢集（OneBox 上的 Linux 叢集，或本機 Service Fabric 安裝上的 Windows 叢集）。
 
 Service Fabric 會提供[應用程式模型](service-fabric-application-model.md)，其中的容器代表多個服務複本所在的應用程式主機。 Service Fabric 也支援[來賓可執行案例](service-fabric-guest-executables-introduction.md)，這此案例中，您不會使用內建 Service Fabric 程式設計模型，但是會封裝容器內使用任何語言或架構撰寫的現有應用程式。 此案例是容器常見的使用案例。
 

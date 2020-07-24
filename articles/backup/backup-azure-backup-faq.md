@@ -3,12 +3,12 @@ title: 常見問題的解答
 description: '有關以下常見問題的解答：包括復原服務保存庫、可以備份的項目、其運作方式、加密和限制等 Azure 備份功能。 '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: 96733ffaae101bb2cf716fda7500a8269ce8e357
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 6d05c06b1d27cd9d1bc396bddad49fcc89ba3ec3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970479"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091074"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure 備份 - 常見問題集
 
@@ -43,7 +43,7 @@ ms.locfileid: "85970479"
 
 ### <a name="can-i-move-backup-data-to-another-vault"></a>我是否可以將備份資料移至另一個保存庫？
 
-否。 儲存在保存庫中的備份資料無法移至不同的保存庫。
+不可以。 儲存在保存庫中的備份資料無法移至不同的保存庫。
 
 ### <a name="can-i-change-from-grs-to-lrs-after-a-backup"></a>是否可以在備份之後從 GRS 變更為 LRS？
 
@@ -79,7 +79,7 @@ ms.locfileid: "85970479"
 
 「Azure 備份」支援使用下列作業系統來備份檔案和資料夾，以及受「Azure 備份伺服器」和 DPM 保護的應用程式。
 
-**作業系統** | **SKU** | **詳細資料**
+**OS** | **SKU** | **詳細資料**
 --- | --- | ---
 工作站 | |
 Windows 10 64 位元 | 企業版、專業版、家用版 | 機器應該執行最新的服務套件和更新。
@@ -111,7 +111,7 @@ Windows 8 或更新版本 | 54,400 GB
 Windows 7 |1700 GB
 Windows Server 2012 或更新版本 | 54,400 GB
 Windows Server 2008、Windows Server 2008 R2 | 1700 GB
-Azure VM | 請參閱[AZURE VM 備份的支援矩陣](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas#vm-storage-support)
+Azure VM | 請參閱[AZURE VM 備份的支援矩陣](./backup-support-matrix-iaas.md#vm-storage-support)
 
 ### <a name="how-is-the-data-source-size-determined"></a>如何判斷資料來源大小？
 
@@ -127,7 +127,7 @@ BMR/系統狀態 |所要備份之機器的 BMR 或系統狀態的每個個別複
 
 ### <a name="is-there-a-limit-on-the-amount-of-data-backed-up-using-a-recovery-services-vault"></a>使用「復原服務保存庫」來備份的資料量是否有限制？
 
-您可以使用復原服務保存庫來備份的總數據量沒有限制。 個別資料來源（不是 Azure Vm）的大小上限可以是 54400 GB。 如需有關限制的詳細資訊，請參閱[支援矩陣中的保存庫限制一節](https://docs.microsoft.com/azure/backup/backup-support-matrix#vault-support)。
+您可以使用復原服務保存庫來備份的總數據量沒有限制。 個別資料來源（不是 Azure Vm）的大小上限可以是 54400 GB。 如需有關限制的詳細資訊，請參閱[支援矩陣中的保存庫限制一節](./backup-support-matrix.md#vault-support)。
 
 ### <a name="why-is-the-size-of-the-data-transferred-to-the-recovery-services-vault-smaller-than-the-data-selected-for-backup"></a>為何傳輸到「復原服務保存庫」的資料大小會小於所選取要備份的資料？
 
@@ -139,7 +139,7 @@ BMR/系統狀態 |所要備份之機器的 BMR 或系統狀態的每個個別複
 
 ### <a name="if-i-cancel-a-backup-job-after-it-starts-is-the-transferred-backup-data-deleted"></a>如果我在備份作業開始後取消作業，是否會刪除已傳輸的備份資料？
 
-否。 所有在備份作業取消前傳輸到保存庫的資料都會保留在保存庫中。
+不可以。 所有在備份作業取消前傳輸到保存庫的資料都會保留在保存庫中。
 
 - Azure 備份會使用檢查點機制，在備份期間偶爾將檢查點加入至備份資料。
 - 因為備份資料中有檢查點，所以下一個備份程序才可驗證檔案的完整性。
@@ -159,13 +159,13 @@ BMR/系統狀態 |所要備份之機器的 BMR 或系統狀態的每個個別複
 
 ### <a name="can-i-use-different-times-for-backup-scheduling-and-retention-policies"></a>我是否可以針對備份排程和保留原則使用不同的時間？
 
-否。 保留原則僅能套用在復原點上。 例如，下圖顯示在上午 12:00 和下午 6:00 進行之備份的保留原則。
+不可以。 保留原則僅能套用在復原點上。 例如，下圖顯示在上午 12:00 和下午 6:00 進行之備份的保留原則。
 
 ![排程備份和保留](./media/backup-azure-backup-faq/Schedule.png)
 
 ### <a name="if-a-backup-is-kept-for-a-long-time-does-it-take-more-time-to-recover-an-older-data-point"></a>如果備份保留了很長一段時間，是否需要較多時間才能復原較舊的資料點？
 
-否。 復原最舊或最新時間點所需的時間都相同。 每個復原點的功能就像一個完整的復原點。
+不可以。 復原最舊或最新時間點所需的時間都相同。 每個復原點的功能就像一個完整的復原點。
 
 ### <a name="if-each-recovery-point-is-like-a-full-point-does-it-impact-the-total-billable-backup-storage"></a>若每個復原點就像一個完整的復原點，則其是否會影響可計費的備份儲存體總數？
 
@@ -188,7 +188,7 @@ Azure 備份的儲存體架構透過最佳化儲存資料以進行快速還原�
 
 ### <a name="when-restoring-data-do-i-pay-for-the-egress-traffic-from-azure"></a>還原資料時，我需要支付來自 Azure 的輸出流量嗎？
 
-否。 復原是免費的，不會向您收取輸出流量的費用。
+不可以。 復原是免費的，不會向您收取輸出流量的費用。
 
 ### <a name="what-happens-when-i-change-my-backup-policy"></a>變更我的備份原則時會發生什麼狀況？
 

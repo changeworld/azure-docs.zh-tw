@@ -5,11 +5,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: e66ae6aa0b9b7e309fbd6fcc3699cb873a266bbe
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 18d3460804528d736cfc74c1c2d358eb08013513
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647888"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092961"
 ---
 # <a name="workspace-based-application-insights-resources-preview"></a>工作區型 Application Insights 資源 (預覽)
 
@@ -24,7 +25,7 @@ ms.locfileid: "83647888"
 
 ![工作區型 Application Insights 資源](./media/create-workspace-resource/create-workspace-based.png)
 
-如果您還沒有現有的 Log Analytics 工作區，請[參閱 Log Analytics 工作區建立文件](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)。
+如果您還沒有現有的 Log Analytics 工作區，請[參閱 Log Analytics 工作區建立文件](../learn/quick-create-workspace.md)。
 
 公開預覽的**工作區型資源目前僅限於美國西部 2、美國東部、美國中南部。**
 
@@ -39,7 +40,7 @@ ms.locfileid: "83647888"
 
 ## <a name="copy-the-connection-string"></a>複製連接字串
 
-[連接字串](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net)可識別您想要與遙測資料建立關聯的資源。 它也可讓您修改您的資源將用來做為遙測目的地的端點。 您必須複製連接字串，並將它加入應用程式的程式碼或加入環境變數。
+[連接字串](./sdk-connection-string.md?tabs=net)可識別您想要與遙測資料建立關聯的資源。 它也可讓您修改您的資源將用來做為遙測目的地的端點。 您必須複製連接字串，並將它加入應用程式的程式碼或加入環境變數。
 
 ## <a name="monitoring-configuration"></a>監視設定
 
@@ -51,14 +52,14 @@ ms.locfileid: "83647888"
 
 如需如何為程式碼型監視設定 Application Insights SDK 的詳細文件，請參閱語言/架構的專門文件：
 
-- [ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net)
-- [ASP.NET Core ](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)
-- [背景工作與現代化主控台應用程式 (.NET/.NET Core)](https://docs.microsoft.com/azure/azure-monitor/app/worker-service)
-- [傳統主控台應用程式 (.NET)](https://docs.microsoft.com/azure/azure-monitor/app/console) 
-- [Java ](https://docs.microsoft.com/azure/azure-monitor/app/java-get-started?tabs=maven)
-- [JavaScript](https://docs.microsoft.com/azure/azure-monitor/app/javascript)
-- [Node.js](https://docs.microsoft.com/azure/azure-monitor/app/nodejs)
-- [Python](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python)
+- [ASP.NET](./asp-net.md)
+- [ASP.NET Core ](./asp-net-core.md)
+- [背景工作與現代化主控台應用程式 (.NET/.NET Core)](./worker-service.md)
+- [傳統主控台應用程式 (.NET)](./console.md) 
+- [Java ](./java-get-started.md?tabs=maven)
+- [JavaScript](./javascript.md)
+- [Node.js](./nodejs.md)
+- [Python](./opencensus-python.md)
 
 ### <a name="codeless-monitoring-and-visual-studio-resource-creation"></a>無程式碼監視與 Visual Studio 資源建立
 
@@ -101,7 +102,7 @@ az monitor app-insights component create --app
 az monitor app-insights component create --app demoApp --location eastus --kind web -g my_resource_group --workspace "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test1234/providers/microsoft.operationalinsights/workspaces/test1234555"
 ```
 
-如需此命令的完整 Azure CLI 文件，請參閱 [Azure CLI 文件](https://docs.microsoft.com/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest#ext-application-insights-az-monitor-app-insights-component-create)。
+如需此命令的完整 Azure CLI 文件，請參閱 [Azure CLI 文件](/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest#ext-application-insights-az-monitor-app-insights-component-create)。
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -197,7 +198,7 @@ az monitor app-insights component create --app demoApp --location eastus --kind 
 ## <a name="next-steps"></a>後續步驟
 
 * [探索度量](../../azure-monitor/platform/metrics-charts.md)
-* [撰寫分析查詢](../../azure-monitor/app/analytics.md)
+* [撰寫分析查詢](../log-query/log-query-overview.md)
 
 [api]: ../../azure-monitor/app/api-custom-events-metrics.md
 [diagnostic]: ../../azure-monitor/app/diagnostic-search.md

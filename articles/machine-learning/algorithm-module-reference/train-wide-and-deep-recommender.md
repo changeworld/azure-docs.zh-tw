@@ -1,5 +1,5 @@
 ---
-title: 映像計分模型
+title: 使用訓練寬 & Deep 推薦模組
 titleSuffix: Azure Machine Learning
 description: 瞭解如何使用「整個訓練 & 深度推薦」模組來定型建議模型。
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 06/12/2020
-ms.openlocfilehash: 2ac5e5874ebb34b68cbfe8be1986852c67b97c21
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 234217b6571307db04941cc0b9989d3438cde1b7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84739789"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090173"
 ---
 # <a name="train-wide--deep-recommender"></a>& 深度推薦訓練寬
 本文說明如何使用 Azure Machine Learning 設計工具（預覽）中的 [**定型寬 & Deep 推薦**] 模組來定型建議模型。 此課程模組是以 Google 所提議的寬 & 深度學習為基礎。
@@ -39,7 +39,7 @@ Recommender 系統有兩種主要方法。
 ## <a name="how-to-configure-train-wide--deep-recommender"></a>如何設定 & 深度推薦的整部訓練  
 
 + [準備定型資料](#prepare-data)
-+ [將模型定型](#train-the-model)
++ [訓練模型](#train-the-model)
 
 ### <a name="prepare-data"></a>準備資料
 
@@ -66,10 +66,10 @@ Recommender 系統有兩種主要方法。
 
 例如，典型的一組使用者功能看起來可能像這樣： 
 
-|UserId|Age|性別|Interest|位置|
+|UserId|年齡|性別|Interest|Location|
 |------------|--------------|-----------------------|---------------|------------|
 |1|25|male| 戲劇    |歐洲|
-|223|40|female|羅馬|亞洲|
+|223|40|female|羅馬|Asia|
 
 #### <a name="item-features-dataset-optional"></a>專案功能資料集（選擇性）
 

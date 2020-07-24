@@ -12,12 +12,12 @@ ms.topic: article
 ms.custom: ''
 ms.date: 05/14/2019
 ms.author: juliako
-ms.openlocfilehash: 7c1b446ccf04199449f012e738f6a03660735f50
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3b718a0a67381e2b1eb19d2397ecf86e4a9c196d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80382948"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090122"
 ---
 # <a name="how-to-encode-with-a-custom-transform---azure-cli"></a>如何使用自訂轉換進行編碼-Azure CLI
 
@@ -32,7 +32,7 @@ ms.locfileid: "80382948"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-[建立媒體服務帳戶](create-account-cli-how-to.md)。
+[建立媒體服務帳戶](./create-account-howto.md)。
 
 請務必記住資源群組名稱和「媒體服務」帳戶名稱。
 

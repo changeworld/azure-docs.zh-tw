@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 06/11/2020
-ms.openlocfilehash: 48d9990115a0e786d12915acf1eaadc196a00b0b
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: c9ece4860f8babba110da8536e5028f337fbc772
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170032"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092944"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>適用於 Azure Logic Apps 的連接器
 
@@ -38,11 +38,11 @@ ms.locfileid: "86170032"
 
   * 接收並回應要求。
 
-  * 呼叫 Azure 函式、Azure API Apps (Web Apps) 、您自己使用 Azure API 管理來管理及發佈的 Api，以及可接收要求的嵌套邏輯應用程式。
+  * 呼叫 Azure 函式、Azure API Apps （Web Apps）、您自己使用 Azure API 管理來管理及發佈的 Api，以及可接收要求的嵌套邏輯應用程式。
 
 <a name="managed-connectors"></a>
 
-* [**受控連接器**](#managed-api-connectors)：由 Microsoft 部署及管理，這些連接器提供用於存取雲端服務、內部部署系統或兩者（包括 Office 365、Azure Blob 儲存體、SQL Server、Dynamics、Salesforce、SharePoint 等等）的觸發程式和動作。 某些連接器特別支援 B2B) 通訊案例的企業對企業 (，而且需要連結至邏輯應用程式的[整合帳戶](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)。 使用特定連接器之前，您可能必須先建立由 Azure Logic Apps 管理的連接。
+* [**受控連接器**](#managed-api-connectors)：由 Microsoft 部署及管理，這些連接器提供用於存取雲端服務、內部部署系統或兩者（包括 Office 365、Azure Blob 儲存體、SQL Server、Dynamics、Salesforce、SharePoint 等等）的觸發程式和動作。 某些連接器特別支援企業對企業（B2B）通訊案例，而且需要連結至邏輯應用程式的[整合帳戶](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)。 使用特定連接器之前，您可能必須先建立由 Azure Logic Apps 管理的連接。
 
   例如，如果您使用 Microsoft BizTalk Server，則邏輯應用程式可以使用[Biztalk server 內部部署連接器](#on-premises-connectors)連接到您的 biztalk server 並與之通訊。 您可以使用[整合帳戶連接器](#integration-account-connectors)，接著在邏輯應用程式中擴充或執行類似 BizTalk 的作業。
 
@@ -64,7 +64,7 @@ ms.locfileid: "86170032"
 
 ### <a name="connect-from-an-integration-service-environment"></a>從整合服務環境連接
 
-對於需要直接存取 Azure 虛擬網路中資源的邏輯應用程式，您可以建立隔離的[整合服務環境 (ISE) ](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) ，以便在專用資源上建立、部署和執行邏輯應用程式。 在邏輯應用程式設計工具中，當您在 ISE 中流覽要用於邏輯應用程式的連接器時，[**核心**] 標籤會出現在內建的觸發程式和動作上，而**ISE**標籤會出現在某些連接器上：
+對於需要直接存取 Azure 虛擬網路中資源的邏輯應用程式，您可以建立隔離的[整合服務環境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) ，以便在專用資源上建立、部署和執行邏輯應用程式。 在邏輯應用程式設計工具中，當您在 ISE 中流覽要用於邏輯應用程式的連接器時，[**核心**] 標籤會出現在內建的觸發程式和動作上，而**ISE**標籤會出現在某些連接器上：
 
 * **核心**：具有此標籤的內建觸發程式和動作，會在與邏輯應用程式相同的 ISE 中執行，例如：
 
@@ -235,7 +235,7 @@ Logic Apps 提供這些常用的標準連接器，可讓您使用這些服務或
 
 連接到 SharePoint Online，讓您可以管理檔案、附件、資料夾等等。
 
-[![API 圖示 ][dynamics-365-icon]<br> **Dynamics 365 <br> **][dynamics-365-doc]
+[![API 圖示][dynamics-365-icon]<br>**Dynamics 365 <br> **][dynamics-365-doc]
 
 連接到您的 Dynamics 365 帳戶，以便建立和記錄管理、專案等等。
 
@@ -259,14 +259,9 @@ Logic Apps 提供這些常用的標準連接器，可讓您使用這些服務或
 
 當 Azure 資源或第三方資源變更時，監視 Event Grid 所發佈的事件。
 
-
 [![API 圖示 ][salesforce-icon]<br> **Salesforce**][salesforce-doc]
 
 連接到您的 Salesforce 帳戶，以便建立和記錄管理、作業、物件等專案。
-
-[![API 圖示 ][twitter-icon]<br> **Twitter**][twitter-doc]
-
-連接到您的 Twitter 帳戶，以便管理推文、關注者、時程表等。 將您的推文儲存到 SQL、Excel 或 SharePoint。
 
 <a name="on-premises-connectors"></a>
 
@@ -298,7 +293,7 @@ Logic Apps 提供這些常用的標準連接器，可讓您使用這些服務或
 
 ## <a name="integration-account-connectors"></a>整合帳戶連接器
 
-Logic Apps 提供標準連接器，可在您建立並支付[整合帳戶](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)時，使用您的邏輯應用程式建立企業對企業 (B2B) 解決方案，這可透過 Azure 中的「企業整合套件」 (EIP) 取得。 使用此帳戶，您可以建立並儲存一些 B2B 構件，例如交易夥伴、合約、地圖、結構描述、憑證等等。 若要使用這些構件，請建立您的邏輯應用程式與整合帳戶的關聯。 如果您目前使用 BizTalk Server，可能已經熟悉這些連接器。
+當您建立並支付[整合帳戶](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)（可透過 Azure 中的企業整合套件（EIP）取得）時，Logic Apps 提供標準連接器來建立企業對企業（B2B）解決方案與邏輯應用程式。 使用此帳戶，您可以建立並儲存一些 B2B 構件，例如交易夥伴、合約、地圖、結構描述、憑證等等。 若要使用這些構件，請建立您的邏輯應用程式與整合帳戶的關聯。 如果您目前使用 BizTalk Server，可能已經熟悉這些連接器。
 
 [![API 圖示 ][as2-icon]<br> **AS2 <br> 解碼**][as2-doc]
 
@@ -340,7 +335,7 @@ Logic Apps 提供這些企業連接器來存取企業系統，例如 SAP 和 IBM
 
 ## <a name="ise-connectors"></a>ISE 連接器
 
-對於您建立和執行隔離的[整合服務環境 (ISE) ](#integration-service-environment)的邏輯應用程式，邏輯應用程式設計工具會使用**核心**標籤來識別在您 ISE 中執行的內建觸發程式和動作。 在 ISE 中執行的受控連接器會顯示**ISE**標籤，而在全域、多租使用者 Logic Apps 服務中執行的連接器則不會顯示任何一個標籤。 此清單會顯示目前有 ISE 版本的連接器：
+對於您建立並執行隔離式[整合服務環境（ISE）](#integration-service-environment)的邏輯應用程式，邏輯應用程式設計工具會使用**核心**標籤來識別在您 ISE 中執行的內建觸發程式和動作。 在 ISE 中執行的受控連接器會顯示**ISE**標籤，而在全域、多租使用者 Logic Apps 服務中執行的連接器則不會顯示任何一個標籤。 此清單會顯示目前有 ISE 版本的連接器：
 
 [![API 圖示 ][as2-icon]<br> **AS2**][as2-doc]
 
@@ -400,7 +395,7 @@ Logic Apps 提供這些企業連接器來存取企業系統，例如 SAP 和 IBM
 
 ## <a name="triggers-and-action-types"></a>觸發程式和動作類型
 
-連接器可以提供*觸發*程式、*動作*或兩者。 *觸發*程式是任何邏輯應用程式中的第一個步驟，通常會指定引發觸發程式的事件，並開始執行邏輯應用程式。 例如，FTP 連接器有一個觸發程式，可在新增或修改檔案時啟動邏輯應用程式。 有些觸發程式會定期檢查指定的事件或資料，並在偵測到指定的事件或資料時引發。 其他觸發程式會等候，但會在特定事件發生或有新資料可用時立即引發。 觸發程式也會將任何必要的資料傳遞至邏輯應用程式。 您的邏輯應用程式可以在整個工作流程中讀取和使用該資料。 例如，Twitter 連接器有一個觸發程式：「張貼新推文時」，這會將推文的內容傳遞至邏輯應用程式的工作流程。
+連接器可以提供*觸發*程式、*動作*或兩者。 *觸發*程式是任何邏輯應用程式中的第一個步驟，通常會指定引發觸發程式的事件，並開始執行邏輯應用程式。 例如，FTP 連接器有一個觸發程式，可在新增或修改檔案時啟動邏輯應用程式。 有些觸發程式會定期檢查指定的事件或資料，並在偵測到指定的事件或資料時引發。 其他觸發程式會等候，但會在特定事件發生或有新資料可用時立即引發。 觸發程式也會將任何必要的資料傳遞至邏輯應用程式。 您的邏輯應用程式可以在整個工作流程中讀取和使用該資料。 例如，Office 365 Outlook 連接器有一個觸發程式：「新的電子郵件送達時」，可將該電子郵件中的內容傳遞至邏輯應用程式的工作流程。
 
 引發觸發程式之後，Azure Logic Apps 會建立邏輯應用程式的實例，並開始在邏輯應用程式的工作流程中執行*動作*。 動作是在邏輯應用程式的工作流程中，接下來觸發並執行工作的步驟。 例如，您可以建立邏輯應用程式，從 SQL 資料庫取得客戶資料，並在後續動作中處理該資料。
 
@@ -416,9 +411,9 @@ Logic Apps 提供這些企業連接器來存取企業系統，例如 SAP 和 IBM
 
 ## <a name="connector-configuration"></a>連接器設定
 
-每個連接器的觸發程式和動作都會提供自己的屬性供您設定。 許多連接器也會要求您先建立目標服務或*系統的連線*，然後提供驗證認證或其他設定詳細資料，才能在邏輯應用程式中使用觸發程式或動作。 例如，您必須授權與 Twitter 帳戶的連線，以存取資料或代表您張貼。
+每個連接器的觸發程式和動作都會提供自己的屬性供您設定。 許多連接器也會要求您先建立目標服務或*系統的連線*，然後提供驗證認證或其他設定詳細資料，才能在邏輯應用程式中使用觸發程式或動作。 例如，您必須先授權該帳戶的連線，才可以存取和使用 Office 365 Outlook 電子郵件帳戶。
 
-針對使用 Azure Active Directory (Azure AD) OAuth 的連接器，建立連線表示登入服務（例如 Office 365、Salesforce 或 GitHub），而您的存取權杖會[加密](../security/fundamentals/encryption-overview.md)並安全地儲存在 Azure 秘密存放區中。 其他連接器（例如 FTP 和 SQL）則需要有設定詳細資料的連線，例如伺服器位址、使用者名稱和密碼。 這些連線的組態詳細資料也會加密並安全地儲存。 深入瞭解[Azure 中的加密](../security/fundamentals/encryption-overview.md)。
+針對使用 Azure Active Directory （Azure AD） OAuth 的連接器，建立連線表示登入服務（例如 Office 365、Salesforce 或 GitHub），其中您的存取權杖會[加密](../security/fundamentals/encryption-overview.md)並安全地儲存在 Azure 秘密存放區中。 其他連接器（例如 FTP 和 SQL）則需要有設定詳細資料的連線，例如伺服器位址、使用者名稱和密碼。 這些連線的組態詳細資料也會加密並安全地儲存。 深入瞭解[Azure 中的加密](../security/fundamentals/encryption-overview.md)。
 
 只要該服務或系統允許，連接就可以存取目標服務或系統。 針對使用 Azure AD OAuth 連線的服務（例如 Office 365 和 Dynamics），Azure Logic Apps 會無限期地重新整理存取權杖。 其他服務可能會限制 Azure Logic Apps 可以使用權杖而不需要重新整理的時間長度。 一般來說，某些動作會使所有存取權杖失效，例如變更您的密碼。
 
@@ -429,7 +424,7 @@ Logic Apps 提供這些企業連接器來存取企業系統，例如 SAP 和 IBM
 若要呼叫可執行自訂程式碼或不可作為連接器的 API，您可[建立自訂 API Apps](../logic-apps/logic-apps-create-api-app.md)，以擴充 Logic Apps 平台。 您也可以針對「任何」** 以 REST 或 SOAP 為基礎的 API [建立自訂連接器](../logic-apps/custom-connector-overview.md)，以便將這些 API 提供給 Azure 訂用帳戶中的任何邏輯應用程式使用。 若要對任何人公開自訂 API Apps 或連接器以使用於 Azure，您可以[提交連接器進行 Microsoft 認證](../logic-apps/custom-connector-submit-certification.md)。
 
 > [!NOTE]
-> 您在整合服務環境中部署和執行的邏輯應用程式[ (ISE) ](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)可以直接存取 Azure 虛擬網路中的資源。 如果您有需要內部部署資料閘道的自訂連接器，而且您在 ISE 外建立了這些連接器，ISE 中的邏輯應用程式也可以使用這些連接器。
+> 您在[整合服務環境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中部署和執行的邏輯應用程式可以直接存取 Azure 虛擬網路中的資源。 如果您有需要內部部署資料閘道的自訂連接器，而且您在 ISE 外建立了這些連接器，ISE 中的邏輯應用程式也可以使用這些連接器。
 >
 > 在 ISE 中建立的自訂連接器無法與內部部署資料閘道搭配使用。 不過，這些連接器可以直接存取連線到裝載 ISE 之 Azure 虛擬網路的內部部署資料來源。 因此，ISE 中的邏輯應用程式在與這些資源通訊時，很可能不需要資料閘道。
 >
@@ -479,6 +474,7 @@ Logic Apps 提供這些企業連接器來存取企業系統，例如 SAP 和 IBM
 [azure-cognitive-services-text-analytics-icon]: ./media/apis-list/azure-cognitive-services-text-analytics.png
 [azure-cosmos-db-icon]: ./media/apis-list/azure-cosmos-db.png
 [azure-data-lake-icon]: ./media/apis-list/azure-data-lake.png
+[azure-devops-icon]: ./media/apis-list/azure-devops.png
 [azure-document-db-icon]: ./media/apis-list/azure-document-db.png
 [azure-event-grid-icon]: ./media/apis-list/azure-event-grid.png
 [azure-event-grid-publish-icon]: ./media/apis-list/azure-event-grid-publish.png
@@ -497,15 +493,11 @@ Logic Apps 提供這些企業連接器來存取企業系統，例如 SAP 和 IBM
 [bitly-icon]: ./media/apis-list/bitly.png
 [biztalk-server-icon]: ./media/apis-list/biztalk.png
 [blogger-icon]: ./media/apis-list/blogger.png
-[box-icon]: ./media/apis-list/box.png
 [campfire-icon]: ./media/apis-list/campfire.png
 [common-data-service-icon]: ./media/apis-list/common-data-service.png
-[dropbox-icon]: ./media/apis-list/dropbox.png
-[dynamics-365-icon]: ./media/apis-list/dynamics-crm-online.png
 [dynamics-365-financials-icon]: ./media/apis-list/dynamics-365-financials.png
 [dynamics-365-operations-icon]: ./media/apis-list/dynamics-365-operations.png
 [easy-redmine-icon]: ./media/apis-list/easyredmine.png
-[facebook-icon]: ./media/apis-list/facebook.png
 [file-system-icon]: ./media/apis-list/file-system.png
 [ftp-icon]: ./media/apis-list/ftp.png
 [github-icon]: ./media/apis-list/github.png
@@ -522,11 +514,9 @@ Logic Apps 提供這些企業連接器來存取企業系統，例如 SAP 和 IBM
 [instagram-icon]: ./media/apis-list/instagram.png
 [instapaper-icon]: ./media/apis-list/instapaper.png
 [jira-icon]: ./media/apis-list/jira.png
-[mailchimp-icon]: ./media/apis-list/mailchimp.png
 [mandrill-icon]: ./media/apis-list/mandrill.png
 [mysql-icon]: ./media/apis-list/mysql.png
 [office-365-outlook-icon]: ./media/apis-list/office-365.png
-[office-365-users-icon]: ./media/apis-list/office-365-users.png
 [onedrive-icon]: ./media/apis-list/onedrive.png
 [onedrive-for-business-icon]: ./media/apis-list/onedrive-business.png
 [oracle-db-icon]: ./media/apis-list/oracle-db.png
@@ -536,7 +526,6 @@ Logic Apps 提供這些企業連接器來存取企業系統，例如 SAP 和 IBM
 [postgre-sql-icon]: ./media/apis-list/postgre-sql.png
 [project-online-icon]: ./media/apis-list/projecton-line.png
 [redmine-icon]: ./media/apis-list/redmine.png
-[rss-icon]: ./media/apis-list/rss.png
 [salesforce-icon]: ./media/apis-list/salesforce.png
 [sap-icon]: ./media/apis-list/sap.png
 [send-grid-icon]: ./media/apis-list/sendgrid.png
@@ -550,13 +539,9 @@ Logic Apps 提供這些企業連接器來存取企業系統，例如 SAP 和 IBM
 [sql-server-icon]: ./media/apis-list/sql.png
 [teradata-icon]: ./media/apis-list/teradata.png
 [todoist-icon]: ./media/apis-list/todoist.png
-[trello-icon]: ./media/apis-list/trello.png
 [twilio-icon]: ./media/apis-list/twilio.png
-[twitter-icon]: ./media/apis-list/twitter.png
 [vimeo-icon]: ./media/apis-list/vimeo.png
-[visual-studio-team-services-icon]: ./media/apis-list/visual-studio-team-services.png
 [wordpress-icon]: ./media/apis-list/wordpress.png
-[yammer-icon]: ./media/apis-list/yammer.png
 [youtube-icon]: ./media/apis-list/youtube.png
 
 <!-- Enterprise Integration Pack icons -->
@@ -614,15 +599,10 @@ Logic Apps 提供這些企業連接器來存取企業系統，例如 SAP 和 IBM
 [azure-sql-data-warehouse-doc]: https://docs.microsoft.com/connectors/sqldw/ "連接到 Azure SQL 資料倉儲，讓您可以查看您的資料"
 [azure-table-storage-doc]: https://docs.microsoft.com/connectors/azuretables/ "連接到您的 Azure 儲存體帳戶，讓您可以建立、更新及查詢資料表等"
 [biztalk-server-doc]: https://docs.microsoft.com/connectors/biztalk/ "連接到您的 BizTalk Server，讓您可以並存執行 BizTalk 應用程式與 Azure Logic Apps"
-[box-doc]: ./connectors-create-api-box.md "[連接到 Box]。上傳、取得、刪除、列出您的檔案等等"
-[dropbox-doc]: ./connectors-create-api-dropbox.md "連接到 Dropbox。上傳、取得、刪除、列出您的檔案等等"
-[dynamics-365-doc]: ./connectors-create-api-crmonline.md "連接至 Dynamics CRM Online，讓您可以使用 CRM Online 資料"
-[facebook-doc]: ./connectors-create-api-facebook.md "連接到 Facebook。張貼至時間軸、取得頁面摘要等等"
 [file-system-doc]: ../logic-apps/logic-apps-using-file-connector.md "連線至內部部署檔案系統"
 [ftp-doc]: ./connectors-create-api-ftp.md "連線至 FTP / FTPS 伺服器以便執行 FTP 工作，像是上傳、取得、刪除檔案等等"
 [github-doc]: ./connectors-create-api-github.md "連線至 GitHub 並追蹤問題"
 [google-calendar-doc]: ./connectors-create-api-googlecalendar.md "連接到 Google Calendar 並可管理行事曆"
-[google-drive-doc]: ./connectors-create-api-googledrive.md "連接到 GoogleDrive，讓您可以使用資料"
 [google-sheets-doc]: ./connectors-create-api-googlesheet.md "連線至 Google 試算表，讓您可以修改您的工作表"
 [google-tasks-doc]: ./connectors-create-api-googletasks.md "連接到 Google 工作，讓您可以管理您的作業"
 [ibm-3270-doc]: ./connectors-run-3270-apps-ibm-mainframe-create-api-3270.md "連接到 IBM 大型主機上的3270應用程式"
@@ -630,18 +610,14 @@ Logic Apps 提供這些企業連接器來存取企業系統，例如 SAP 和 IBM
 [ibm-informix-doc]: ./connectors-create-api-informix.md "連接到雲端或內部部署中的 Informix。讀取資料列、列出資料表等等"
 [ibm-mq-doc]: ./connectors-create-api-mq.md "連線到 IBM MQ 內部部署或 Azure 以傳送及接收訊息"
 [instagram-doc]: ./connectors-create-api-instagram.md "連接到 Instagram。觸發事件或採取動作"
-[mailchimp-doc]: ./connectors-create-api-mailchimp.md "連接到您的 MailChimp 帳戶。管理和自動化郵件"
 [mandrill-doc]: ./connectors-create-api-mandrill.md "連線至 Mandrill 進行通訊"
 [mysql-doc]: https://docs.microsoft.com/connectors/mysql/ "連接到您的內部部署 MySQL 資料庫，以便您可以讀取和寫入資料"
 [office-365-outlook-doc]: ./connectors-create-api-office365-outlook.md "連接到您的 Office 365 帳戶，讓您可以傳送和接收電子郵件、管理您的行事曆和連絡人等等"
-[office-365-users-doc]: ./connectors-create-api-office365-users.md
 [onedrive-doc]: ./connectors-create-api-onedrive.md "連接到您的個人 Microsoft OneDrive，讓您可以上傳、刪除、列出檔案等等"
 [onedrive-for-business-doc]: ./connectors-create-api-onedriveforbusiness.md "連接到您的商務 Microsoft OneDrive，讓您可以上傳、刪除、列出您的檔案等等"
 [oracle-db-doc]: ./connectors-create-api-oracledatabase.md "連接到 Oracle 資料庫，讓您可以加入、插入、刪除資料列等"
 [outlook.com-doc]: ./connectors-create-api-outlook.md "連接到您的 Outlook 信箱，讓您可以管理您的電子郵件、行事曆、連絡人等等"
 [postgre-sql-doc]: https://docs.microsoft.com/connectors/postgresql/ "連接到您的于 postgresql 資料庫，讓您可以從資料表讀取資料"
-[project-online-doc]: ./connectors-create-api-projectonline.md "連接到 Microsoft Project Online，讓您可以管理您的專案、工作、資源和其他作業"
-[rss-doc]: ./connectors-create-api-rss.md "發行和抓取摘要專案，將新的專案發行至 RSS 摘要時觸發作業"
 [salesforce-doc]: ./connectors-create-api-salesforce.md "連接到您的 Salesforce 帳戶。管理帳戶、潛在客戶、機會等等"
 [sap-connector-doc]: ../logic-apps/logic-apps-using-sap-connector.md "連線至內部部署 SAP 系統"
 [sendgrid-doc]: ./connectors-create-api-sendgrid.md "連接到 SendGrid。傳送電子郵件及管理收件者清單"
@@ -653,10 +629,7 @@ Logic Apps 提供這些企業連接器來存取企業系統，例如 SAP 和 IBM
 [sparkpost-doc]: ./connectors-create-api-sparkpost.md "連線至 SparkPost 進行通訊"
 [sql-server-doc]: ./connectors-create-api-sqlazure.md "連接到 Azure SQL Database 或 SQL Server。建立、更新、取得和刪除 SQL 資料庫資料表中的專案"
 [teradata-doc]: https://docs.microsoft.com/connectors/teradata/ "連接到您的 Teradata 資料庫以從資料表讀取資料"
-[trello-doc]: ./connectors-create-api-trello.md "連接到 Trello。管理您的專案，並與任何人一起組織"
 [twilio-doc]: ./connectors-create-api-twilio.md "連接到 Twilio。傳送及取得訊息、取得可用的號碼、管理撥入電話號碼等等"
-[twitter-doc]: ./connectors-create-api-twitter.md "連接到 Twitter。取得時間軸、張貼推文等等"
-[yammer-doc]: ./connectors-create-api-yammer.md "連接至 Yammer。張貼訊息、取得新訊息等等"
 [youtube-doc]: ./connectors-create-api-youtube.md "連接到 YouTube。管理您的影片和頻道"
 
 <!--Enterprise Intregation Pack doc links-->

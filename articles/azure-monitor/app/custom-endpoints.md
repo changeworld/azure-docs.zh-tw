@@ -4,18 +4,19 @@ description: 針對 Azure Government 之類的區域，修改預設 Azure 監視
 ms.topic: conceptual
 ms.date: 07/26/2019
 ms.custom: references_regions
-ms.openlocfilehash: d0c9467497a8bd108d37a340d2cdbb887061e3a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 50a072cd7e509642c36c783e3cc0fd78e4d5adc0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84194825"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092859"
 ---
 # <a name="application-insights-overriding-default-endpoints"></a>覆寫預設端點 Application Insights
 
 若要從 Application Insights 將資料傳送到特定區域，您必須覆寫預設端點位址。 每個 SDK 都需要稍微不同的修改，這全都會在本文中說明。 這些變更需要調整範例程式碼，並將、和的預留位置值取代為 `QuickPulse_Endpoint_Address` `TelemetryChannel_Endpoint_Address` `Profile_Query_Endpoint_address` 您特定區域的實際端點位址。 本文結尾包含需要此設定之區域的端點位址連結。
 
 > [!NOTE]
-> [連接字串](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net)是在 Application Insights 內設定自訂端點的新慣用方法。
+> [連接字串](./sdk-connection-string.md?tabs=net)是在 Application Insights 內設定自訂端點的新慣用方法。
 
 ---
 
@@ -76,7 +77,7 @@ using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPuls
 
 # <a name="azure-functions"></a>[Azure Functions](#tab/functions)
 
-針對 Azure Functions，現在建議使用在函式的應用程式設定中設定的[連接字串](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net)。 若要從 [函式] 窗格記憶體取函式的應用程式設定，請選取 [**設定**] [  >  **Configuration**  >  **應用程式設定**] 
+針對 Azure Functions，現在建議使用在函式的應用程式設定中設定的[連接字串](./sdk-connection-string.md?tabs=net)。 若要從 [函式] 窗格記憶體取函式的應用程式設定，請選取 [**設定**] [  >  **Configuration**  >  **應用程式設定**] 
 
 名稱： `APPLICATIONINSIGHTS_CONNECTION_STRING` 值：`Connection String Value`
 
@@ -155,7 +156,7 @@ Live Metrics Endpoint: "QuickPulse_Endpoint_Address"
 
 ## <a name="regions-that-require-endpoint-modification"></a>需要修改端點的區域
 
-目前只有要求端點修改的區域會[Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights)和[Azure 中國](https://docs.microsoft.com/azure/china/resources-developer-guide)。
+目前只有要求端點修改的區域會[Azure Government](../../azure-government/compare-azure-government-global-azure.md#application-insights)和[Azure 中國](/azure/china/resources-developer-guide)。
 
 |區域 |  端點名稱 | 值 |
 |-----------------|:------------|:-------------|
@@ -179,5 +180,5 @@ Live Metrics Endpoint: "QuickPulse_Endpoint_Address"
 
 ## <a name="next-steps"></a>後續步驟
 
-- 若要深入瞭解 Azure Government 的自訂修改，請參閱[Azure 監視和管理](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights)的詳細指導方針。
-- 若要深入瞭解 Azure 中國，請參閱[Azure 中國](https://docs.microsoft.com/azure/china/)腳本。
+- 若要深入瞭解 Azure Government 的自訂修改，請參閱[Azure 監視和管理](../../azure-government/compare-azure-government-global-azure.md#application-insights)的詳細指導方針。
+- 若要深入瞭解 Azure 中國，請參閱[Azure 中國](/azure/china/)腳本。

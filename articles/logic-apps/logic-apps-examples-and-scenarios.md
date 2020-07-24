@@ -6,11 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/28/2020
-ms.openlocfilehash: 786655f8e8ee7e21f2615361b0bb1ea336ccb479
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 207b597bc865c8234d447759ab8b0f53dc35413c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84190727"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090275"
 ---
 # <a name="common-scenarios-examples-tutorials-and-walkthroughs-for-azure-logic-apps"></a>Azure Logic Apps 的常見情節、範例、教學課程和逐步解說
 
@@ -35,10 +36,10 @@ ms.locfileid: "84190727"
     * [使用 Azure Logic Apps 排程和執行週期性自動化工作、流程和工作流程](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md)
     * [教學課程：使用 Azure Logic Apps 建立自動化、以排程為基礎的週期性工作流程](../logic-apps/tutorial-build-schedule-recurring-logic-app-workflow.md)
 
-  * [**收到電子郵件時**] 觸發程式可讓您的邏輯應用程式檢查來自 Logic Apps 支援的任何電子郵件提供者的新電子郵件，例如[Office 365 Outlook](../connectors/connectors-create-api-office365-outlook.md)、 [Gmail](https://docs.microsoft.com/connectors/gmail/)、 [Outlook.com](https://docs.microsoft.com/connectors/outlook/)等等。
+  * [**收到電子郵件時**] 觸發程式可讓您的邏輯應用程式檢查來自 Logic Apps 支援的任何電子郵件提供者的新電子郵件，例如[Office 365 Outlook](../connectors/connectors-create-api-office365-outlook.md)、 [Gmail](/connectors/gmail/)、 [Outlook.com](/connectors/outlook/)等等。
 
     > [!IMPORTANT]
-    > 如果您想要使用 Gmail 連接器，只有 G-Suite 商務帳戶可以在邏輯應用程式中使用此連接器，而不受限制。 如果您有 Gmail 取用者帳戶，您只能使用此連接器搭配特定的 Google 核准服務，或者您可以[建立 Google 用戶端應用程式，以用來向 Gmail 連接器進行驗證](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application)。 如需詳細資訊，請參閱 [Azure Logic Apps 中 Google 連接器的資料安全性和隱私權原則](../connectors/connectors-google-data-security-privacy-policy.md)。
+    > 如果您想要使用 Gmail 連接器，只有 G-Suite 商務帳戶可以在邏輯應用程式中使用此連接器，而不受限制。 如果您有 Gmail 取用者帳戶，您只能使用此連接器搭配特定的 Google 核准服務，或者您可以[建立 Google 用戶端應用程式，以用來向 Gmail 連接器進行驗證](/connectors/gmail/#authentication-and-bring-your-own-application)。 如需詳細資訊，請參閱 [Azure Logic Apps 中 Google 連接器的資料安全性和隱私權原則](../connectors/connectors-google-data-security-privacy-policy.md)。
 
     如需詳細資訊，請參閱下列主題：<p>
 
@@ -104,11 +105,11 @@ ms.locfileid: "84190727"
 * [總覽：自動化邏輯應用程式部署](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
 * [建立 Azure Resource Manager 範本以自動部署 Azure Logic Apps](../logic-apps/logic-apps-create-azure-resource-manager-templates.md)
 * [部署 Azure Logic Apps 的 Azure Resource Manager 範本](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md)
-* [範例：從 Azure Logic Apps 連接到 Azure 服務匯流排佇列，並使用 Azure Pipelines 在 Azure DevOps 中進行部署](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
-* [範例：從 Azure Logic Apps 連接到 Azure 儲存體帳戶，並使用 Azure Pipelines 在 Azure DevOps 中進行部署](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
-* [範例：為 Azure Logic Apps 設定函式應用程式動作，並在 Azure DevOps 中使用 Azure Pipelines 進行部署](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/set-up-an-azure-function-app-action-for-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
-* [範例：從 Azure Logic Apps 連接到整合帳戶，並使用中的 Azure Pipelines 進行部署 Azure DevOps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-an-integration-account-from-azure-logic-apps-and-deploy-by-using-azure-devops-pipelines/)
-* [範例：使用 Azure Logic Apps 協調 Azure Pipelines](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-pipeline-orchestration/azure-devops-orchestration-with-logic-apps/)
+* [範例：從 Azure Logic Apps 連接到 Azure 服務匯流排佇列，並使用 Azure Pipelines 在 Azure DevOps 中進行部署](/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [範例：從 Azure Logic Apps 連接到 Azure 儲存體帳戶，並使用 Azure Pipelines 在 Azure DevOps 中進行部署](/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [範例：為 Azure Logic Apps 設定函式應用程式動作，並在 Azure DevOps 中使用 Azure Pipelines 進行部署](/samples/azure-samples/azure-logic-apps-deployment-samples/set-up-an-azure-function-app-action-for-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [範例：從 Azure Logic Apps 連接到整合帳戶，並使用中的 Azure Pipelines 進行部署 Azure DevOps](/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-an-integration-account-from-azure-logic-apps-and-deploy-by-using-azure-devops-pipelines/)
+* [範例：使用 Azure Logic Apps 協調 Azure Pipelines](/samples/azure-samples/azure-logic-apps-pipeline-orchestration/azure-devops-orchestration-with-logic-apps/)
 
 ### <a name="manage"></a>管理
 
@@ -142,7 +143,7 @@ Azure Logic Apps 與許多服務（例如 Azure Functions、Azure API 管理、A
 * [教學課程：使用 Power BI 和 Azure Logic Apps 建立 AI 供電的社交儀表板](https://aka.ms/logicappsdemo)
 * [教學課程：使用 Azure 事件方格和 Logic Apps 監視虛擬機器的變更](../event-grid/monitor-virtual-machine-changes-event-grid-logic-app.md)
 * [教學課程：搭配連線 IoT 中樞和信箱的 Azure Logic Apps 進行 IoT 遠端監視和通知](../iot-hub/iot-hub-monitoring-notifications-with-azure-logic-apps.md)
-* [Blog：使用 Azure Logic Apps 呼叫 SOAP 服務](https://blogs.msdn.microsoft.com/logicapps/2016/04/07/using-soap-services-with-logic-apps/)
+* [Blog：使用 Azure Logic Apps 呼叫 SOAP 服務](/archive/blogs/logicapps/using-soap-services-with-logic-apps)
 
 ## <a name="end-to-end-scenarios"></a>端對端案例
 

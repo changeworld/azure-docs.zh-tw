@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/17/2018
-ms.openlocfilehash: 19a1883685193e80da5f1365ec2a30db0b8754f6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d57536eee62c415058dd454f3da6ee5f3d04898
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81450135"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090320"
 ---
 # <a name="improve-security-for-b2b-messages-by-using-certificates"></a>使用憑證來改善 B2B 訊息的安全性
 
@@ -59,7 +59,7 @@ ms.locfileid: "81450135"
 
 ## <a name="upload-a-private-certificate"></a>上傳私人憑證
 
-若要在具備 B2B 功能的 Logic Apps 中使用「私人憑證」**，您必須先將憑證上傳到整合帳戶。 您也必須要有先加入至 [Azure Key Vault](../key-vault/key-vault-get-started.md) 的私密金鑰。 
+若要在具備 B2B 功能的 Logic Apps 中使用「私人憑證」**，您必須先將憑證上傳到整合帳戶。 您也必須要有先加入至 [Azure Key Vault](../key-vault/general/overview.md) 的私密金鑰。 
 
 當您在自己建立的[合約](logic-apps-enterprise-integration-agreements.md)中定義屬性之後，就能使用憑證來幫助您保護 B2B 訊息。
 
@@ -68,7 +68,7 @@ ms.locfileid: "81450135"
 
 1. [將私密金鑰新增至 Key Vault](../key-vault/certificates/certificate-scenarios.md#import-a-certificate) 並提供 [金鑰名稱]****。
    
-2. 授權 Azure Logic Apps 以便對 Azure Key Vault 執行作業。 若要對 Logic Apps 服務主體授與存取權，請使用 [Set-AzKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) PowerShell 命令，例如：
+2. 授權 Azure Logic Apps 以便對 Azure Key Vault 執行作業。 若要對 Logic Apps 服務主體授與存取權，請使用 [Set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) PowerShell 命令，例如：
 
    `Set-AzKeyVaultAccessPolicy -VaultName 'TestcertKeyVault' -ServicePrincipalName 
    '7cd684f4-8a78-49b0-91ec-6a35d38739ba' -PermissionsToKeys decrypt, sign, get, list`
@@ -86,11 +86,11 @@ ms.locfileid: "81450135"
    | 屬性 | 值 | 描述 | 
    |----------|-------|-------------|
    | **名稱** | <*憑證名稱*> | 您的憑證名稱，在本例中為 "privateCert" | 
-   | **憑證類型** | Private | 您的憑證類型 |
+   | **憑證類型** | 私人 | 您的憑證類型 |
    | **[MSSQLSERVER 的通訊協定內容]** | <*憑證-檔案名*> | 若要尋找及選取要上傳的憑證檔案，請選擇 [憑證]**** 方塊旁的資料夾圖示。 使用金鑰保存庫作為私密金鑰時，上傳的檔案將會是公開憑證。 | 
    | **資源群組** | <*整合-帳戶-資源群組*> | 整合帳戶的資源群組，在本例中為 "MyResourceGroup" | 
    | **金鑰保存庫** | <*金鑰-保存庫-名稱*> | Azure 金鑰保存庫的名稱 |
-   | **機碼名稱** | <*索引鍵名稱*> | 金鑰名稱 |
+   | **索引鍵名稱** | <*索引鍵名稱*> | 金鑰名稱 |
    ||||
 
    ![選擇 [新增]，並提供憑證的詳細資料](media/logic-apps-enterprise-integration-certificates/private-certificate-details.png)

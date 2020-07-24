@@ -8,12 +8,12 @@ ms.author: memildin
 ms.date: 05/04/2020
 ms.service: security-center
 ms.topic: conceptual
-ms.openlocfilehash: 18b1b4cb959603f5898e7c725102f35d7abc90cf
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 2dce179365b2640ade3675f19dbacf6fc27b26c2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85849010"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089935"
 ---
 # <a name="suppress-alerts-from-azure-security-centers-threat-protection"></a>隱藏來自 Azure 資訊安全中心威脅防護的警示
 
@@ -23,9 +23,7 @@ ms.locfileid: "85849010"
 
 - 版本狀態：**預覽**
 - 必要角色：**安全性管理員**和**擁有者**可以建立/刪除規則。 **安全性讀取者**和**讀者**可以檢視規則。
-- 雲端： 
-    - ✔ 商用雲端
-    - ✔ 國家/地區/主權 (US Gov、中國 Gov、其他 Gov)
+- 雲端：✔全國/主權的✔商用雲端（US Gov、中國 Gov、其他 Gov）
 
 
 ## <a name="what-are-suppression-rules"></a>什麼是隱藏的規則？

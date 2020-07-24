@@ -5,20 +5,20 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 11/26/2019
+ms.date: 07/20/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: f6f4978ef2b6ddc487f60e6a1193164ec07e5548
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3f4ab13c893ec7125ae720cae63b0c1e45f6f3de
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84809108"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091278"
 ---
 # <a name="specify-a-customer-provided-key-on-a-request-to-blob-storage-with-net"></a>使用 .NET 在 Blob 儲存體的要求上指定客戶提供的金鑰
 
-對 Azure Blob 儲存體提出要求的用戶端，可以選擇在個別要求上提供加密金鑰。 在要求中包含加密金鑰，可讓您更精確地控制 Blob 儲存體作業的加密設定。 客戶提供的金鑰（預覽）可以儲存在 Azure Key Vault 或另一個金鑰存放區中。
+對 Azure Blob 儲存體提出要求的用戶端，可以選擇在個別要求上提供加密金鑰。 在要求中包含加密金鑰，可讓您更精確地控制 Blob 儲存體作業的加密設定。 客戶提供的金鑰可以儲存在 Azure Key Vault 或另一個金鑰存放區中。
 
 本文說明如何在使用 .NET 的要求上指定客戶提供的金鑰。
 

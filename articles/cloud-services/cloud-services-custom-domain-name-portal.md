@@ -8,11 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
-ms.openlocfilehash: e764e6a474b9843d43f9e8af9cf3b6a8ddf37189
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 37189df6b1c9bf3f9fca185226f2ee3eeb3ddd7d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80811641"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092723"
 ---
 # <a name="configuring-a-custom-domain-name-for-an-azure-cloud-service"></a>設定 Azure 雲端服務的自訂網域名稱
 當您建立雲端服務時，Azure 會將它指派給 **cloudapp.net**的子網域。 例如，如果您的雲端服務的名稱為 "contoso"，您的使用者可以透過 URL (如 `http://contoso.cloudapp.net`) 存取應用程式。 Azure 也會指派虛擬 IP 位址。
@@ -42,7 +43,7 @@ CNAME 記錄會將*特定*的網域（例如**contoso.com**或**www \. contoso.c
 > [!NOTE]
 > 某些網域註冊機構只允許您在使用 CNAME 記錄（例如 www \. contoso.com，而不是根名稱，例如 contoso.com）時對應子域。 如需 CNAME 記錄的詳細資訊，請參閱註冊機構提供的文件、[維基百科 CNAME 記錄條目](https://en.wikipedia.org/wiki/CNAME_record)，或 [IETF 網域名稱 - 實作與規格](https://tools.ietf.org/html/rfc1035)文件。
 
-### <a name="a-record"></a>A 記錄
+### <a name="a-record"></a>記錄
 *A*記錄將網域（例如**contoso.com**或**www \. contoso.com**）*或萬用字元網域*（例如** \* . contoso.com**）對應到 IP 位址。 以 Azure 雲端服務而言，就是指服務的虛擬 IP。 因此，A 記錄對 CNAME 記錄的主要優點是您可以有一個使用萬用字元的專案，例如 \* **. contoso.com**，這會處理多個子域的要求，例如**mail.contoso.com**、 **login.contoso.com**或**www \. contso.com**。
 
 > [!NOTE]
@@ -62,7 +63,7 @@ CNAME 記錄會將*特定*的網域（例如**contoso.com**或**www \. contoso.c
        ![快速瀏覽區段，其中顯示網站 URL][csurl]
 
        **OR**
-   * 安裝並設定 [Azure Powershell](/powershell/azure/overview)，然後使用下列命令：
+   * 安裝並設定 [Azure Powershell](/powershell/azure/)，然後使用下列命令：
 
        ```powershell
        Get-AzureDeployment -ServiceName yourservicename | Select Url
@@ -95,7 +96,7 @@ CNAME 記錄會將*特定*的網域（例如**contoso.com**或**www \. contoso.c
        ![快速瀏覽區段，其中顯示 VIP][vip]
 
        **OR**
-   * 安裝並設定 [Azure Powershell](/powershell/azure/overview)，然後使用下列命令：
+   * 安裝並設定 [Azure Powershell](/powershell/azure/)，然後使用下列命令：
 
        ```powershell
        get-azurevm -servicename yourservicename | get-azureendpoint -VM {$_.VM} | select Vip

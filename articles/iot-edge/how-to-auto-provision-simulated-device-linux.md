@@ -8,16 +8,16 @@ ms.date: 6/30/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d6e60329f3c61811aa8a42528244b2883ff4b685
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cb1511736b993032df8ca52fac01243f1feafdf4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85834092"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092382"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-tpm-on-linux"></a>在 Linux 上使用 TPM 建立和布建 IoT Edge 裝置
 
-本文說明如何使用可信賴平臺模組（TPM）在 Linux IoT Edge 裝置上測試自動布建。 您可以自動布建裝置布建[服務](../iot-dps/index.yml)Azure IoT Edge 裝置。 如果您不熟悉自動布建程式，請先參閱自動布[建概念](../iot-dps/concepts-auto-provisioning.md)，再繼續進行。
+本文說明如何使用可信賴平臺模組（TPM）在 Linux IoT Edge 裝置上測試自動布建。 您可以使用裝置布建[服務](../iot-dps/index.yml)來自動布建 Azure IoT Edge 裝置。 如果您不熟悉自動布建程式，請先參閱自動布[建概念](../iot-dps/concepts-auto-provisioning.md)，再繼續進行。
 
 工作如下所示：
 
@@ -55,7 +55,7 @@ ms.locfileid: "85834092"
 
 4. 為新的虛擬交換器指定名稱，例如 **EdgeSwitch**。 確定連線類型設定為 [外部網路]****，然後選取 [確定]****。
 
-5. 快顯視窗會警告您網路連線可能會中斷。 選取 **[是]** 以繼續。
+5. 快顯視窗會警告您網路連線可能會中斷。 選取 [是] 以繼續。
 
 如果您在建立新的虛擬交換器時看到錯誤，請確定沒有其他交換器正在使用乙太網路配接器，且沒有其他參數使用相同的名稱。
 
@@ -87,7 +87,7 @@ ms.locfileid: "85834092"
 
 4. 核取 [啟用信賴平台模組]****。
 
-5. 按一下 [確定]。  
+5. 按一下 [確定]  。  
 
 ### <a name="start-the-virtual-machine-and-collect-tpm-data"></a>啟動虛擬機器，並收集 TPM 資料
 

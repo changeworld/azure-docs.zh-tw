@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/02/2020
 ms.author: allensu
-ms.openlocfilehash: dcf54e5a9bee5f7dc6cba9e3cb178027f53ed5fb
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 7e962b87b1bd7ef200aa276d8dbecffd5d3fed04
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85961246"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090428"
 ---
 # <a name="create-an-internal-load-balancer-by-using-the-azure-powershell-module"></a>使用 Azure PowerShell 模組建立內部負載平衡器
 
@@ -250,7 +250,7 @@ Primary              : False
 
 使用 `Add-AzVMNetworkInterface` 命令將 NIC 指派給虛擬機器。
 
-如需建立虛擬機器並指派 NIC 的逐步指示，請參閱[使用 PowerShell 建立 Azure VM](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json)。
+如需建立虛擬機器並指派 NIC 的逐步指示，請參閱[使用 PowerShell 建立 Azure VM](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fazure%2fload-balancer%2ftoc.json)。
 
 ## <a name="add-the-network-interface"></a>加入網路介面
 

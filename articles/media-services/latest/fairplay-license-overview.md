@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/08/2018
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 4a3516d96e397944adcd31628a561a243e178c2d
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 433768ddea6e250c66483ec3da4c7737b3538a1d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86183030"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092043"
 ---
 # <a name="apple-fairplay-license-requirements-and-configuration"></a>Apple FairPlay 授權需求和設定 
 
@@ -84,7 +84,7 @@ spc=<Base64 encoded SPC>
 > [!NOTE]
 > 您通常只想要設定一次 FairPlay 原則選項，因為您只會有一組憑證和 ASK。
 
-下列範例使用[媒體服務 .NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models?view=azure-dotnet) 設定授權。
+下列範例使用[媒體服務 .NET SDK](/dotnet/api/microsoft.azure.management.media.models?view=azure-dotnet) 設定授權。
 
 ```csharp
 private static ContentKeyPolicyFairPlayConfiguration ConfigureFairPlayPolicyOptions()

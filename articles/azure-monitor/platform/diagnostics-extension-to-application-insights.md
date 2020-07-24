@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/19/2016
-ms.openlocfilehash: 80d971abd248ca8253a374b488c693ea9aa2ea3b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 39f564bea8d300d2966afe27ff0239c527f038cf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77672322"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092808"
 ---
 # <a name="send-cloud-service-virtual-machine-or-service-fabric-diagnostic-data-to-application-insights"></a>將雲端服務、虛擬機器或 Service Fabric 診斷資料傳送至 Application Insights
 雲端服務、虛擬機器、虛擬機器擴展集和 Service Fabric 全都使用 Azure 診斷擴充功能來收集資料。  Azure 診斷會將資料傳送至 Azure 儲存體資料表。  不過，您也可以使用 Azure 診斷擴充功能 1.5 或更新版本，將所有資料或一部分資料傳送至其他位置。
@@ -212,7 +213,6 @@ Application Insights 的接收器組態範例：
 - **您無法將 Azure 診斷擴充功能收集的 blob 資料傳送至 Application Insights。** 例如，在 [*目錄*] 節點下指定的任何專案。 針對損毀傾印，實際損毀傾印會傳送至 blob 儲存體，並只會將損毀傾印所產生的通知傳送至 Application Insights。
 
 ## <a name="next-steps"></a>後續步驟
-* 了解如何在 Application Insights 中[檢視您的 Azure 診斷資訊](https://docs.microsoft.com/azure/application-insights/app-insights-cloudservices)。
+* 了解如何在 Application Insights 中[檢視您的 Azure 診斷資訊](../app/cloudservices.md)。
 * 使用 [PowerShell](../../cloud-services/cloud-services-diagnostics-powershell.md) 來為您的應用程式啟用 Azure 診斷擴充。
 * 使用 [Visual Studio](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines) 來為您的應用程式啟用 Azure 診斷擴充
-

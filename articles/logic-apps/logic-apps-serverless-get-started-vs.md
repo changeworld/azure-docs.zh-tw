@@ -6,11 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 06/20/2019
-ms.openlocfilehash: 2e27958dd9379a26ca7e7f4d7e427e5afa216e29
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 86ee81f3802b7ec7f8189123192c20143a08cf3d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75981155"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090241"
 ---
 # <a name="build-your-first-serverless-app-by-using-azure-logic-apps-and-azure-functions-in-visual-studio"></a>使用中的 Azure Logic Apps 和 Azure Functions，建立您的第一個無伺服器應用程式 Visual Studio
 
@@ -31,7 +32,7 @@ ms.locfileid: "75981155"
     > 當您安裝 Visual Studio 2019 或 2017 時，請務必選取 **Azure 開發**工作負載。
 
   * [Microsoft Azure SDK for .NET （2.9.1 或更新版本）](https://azure.microsoft.com/downloads/)。 
-  深入了解 [Azure SDK for .NET](https://docs.microsoft.com/dotnet/azure/dotnet-tools?view=azure-dotnet)。
+  深入了解 [Azure SDK for .NET](/dotnet/azure/dotnet-tools?view=azure-dotnet)。
 
   * [Azure PowerShell](https://github.com/Azure/azure-powershell#installation)(英文)。
 
@@ -43,7 +44,7 @@ ms.locfileid: "75981155"
 
     * [Visual Studio 2015](https://aka.ms/download-azure-logic-apps-tools-visual-studio-2015)
   
-    您可以直接從 Visual Studio Marketplace 下載並安裝 Azure Logic Apps 工具，或瞭解[如何從 Visual Studio 內部安裝此延伸](https://docs.microsoft.com/visualstudio/ide/finding-and-using-visual-studio-extensions)模組。 
+    您可以直接從 Visual Studio Marketplace 下載並安裝 Azure Logic Apps 工具，或瞭解[如何從 Visual Studio 內部安裝此延伸](/visualstudio/ide/finding-and-using-visual-studio-extensions)模組。 
     請務必在完成安裝之後重新啟動 Visual Studio。
 
   * 本機偵錯工具的[Azure Functions Core Tools](https://www.npmjs.com/package/azure-functions-core-tools) 。
@@ -72,7 +73,7 @@ ms.locfileid: "75981155"
 
    1. 在 [**建立新專案**] 方塊中，選取 [Visual c #] 或 [Visual Basic] 的 [ **Azure 資源群組**] 專案範本，然後選取 **[下一步]**。
 
-   1. 提供您想要用於 Azure 資源群組的名稱和其他專案資訊。 當您完成時，請選取 [建立]。
+   1. 提供您想要用於 Azure 資源群組的名稱和其他專案資訊。 當您完成時，選取 [建立]。
 
 1. 指定您的專案名稱和位置，然後選取 **[確定]**。
 
@@ -135,7 +136,7 @@ ms.locfileid: "75981155"
 
 ## <a name="create-your-azure-functions-project"></a>建立您的 Azure Functions 專案
 
-若要使用 JavaScript、Python、F #、PowerShell、Batch 或 Bash 來建立函式專案和函式，請遵循使用[Azure Functions Core Tools](../azure-functions/functions-run-local.md)中的步驟。 若要在您的方案中使用 c # 來開發 Azure 函式，請遵循將[.net 類別庫當做函數應用程式發行](https://blogs.msdn.microsoft.com/appserviceteam/2017/03/16/publishing-a-net-class-library-as-a-function-app/)中的步驟來使用 c # 類別庫。
+若要使用 JavaScript、Python、F #、PowerShell、Batch 或 Bash 來建立函式專案和函式，請遵循使用[Azure Functions Core Tools](../azure-functions/functions-run-local.md)中的步驟。 若要在您的方案中使用 c # 來開發 Azure 函式，請遵循將[.net 類別庫當做函數應用程式發行](https://azure.microsoft.com/blog/)中的步驟來使用 c # 類別庫。
 
 ## <a name="deploy-functions-from-visual-studio"></a>從 Visual Studio 部署函式
 

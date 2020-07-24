@@ -3,12 +3,12 @@ title: 使用 Azure 入口網站建立資源健康狀態警示
 description: 使用 Azure 入口網站建立警示，以在您的 Azure 資源無法使用時通知您。
 ms.topic: conceptual
 ms.date: 6/23/2020
-ms.openlocfilehash: b44df4f63fa2ae2bde9be431e2df268144a036fa
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 3a0f4704880d040106a2e4112d621b6d8ffbede6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86529211"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091567"
 ---
 # <a name="configure-resource-health-alerts-using-azure-portal"></a>使用 Azure 入口網站設定資源健康情況警示
 
@@ -45,7 +45,7 @@ Azure 資源健康狀態會隨時通知您 Azure 資源目前和過去的健康�
 1. 在 Azure[入口網站](https://portal.azure.com/)中，選取 [**服務健康狀態**]。
 
     ![服務健康狀態選取專案](./media/resource-health-alert-monitor-guide/service-health-selection.png)
-2. 在 [**資源健康狀態**] 區段中，選取 [**資源健康狀態**]。
+2. 在 [**資源健康狀態**] 區段中，選取 [**服務健康狀態**]。
 3. 選取 [**新增資源健康狀態警示**]，並填寫欄位。
 4. 在 [警示目標] 底下，選取您想要收到警示的**訂**用帳戶、**資源類型**、**資源群組**和**資源**。
 

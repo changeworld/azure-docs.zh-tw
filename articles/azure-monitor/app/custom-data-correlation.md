@@ -6,11 +6,12 @@ author: eternovsky
 ms.author: evternov
 ms.date: 08/08/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 121e4699bd6a72f6865d3a6ffdef58c1b3806047
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 17de697686485d695586ffa798196efb4a34c251
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79082756"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092910"
 ---
 # <a name="correlating-application-insights-data-with-custom-data-sources"></a>使自訂資料來源與 Application Insights 資料相互關聯
 
@@ -34,15 +35,15 @@ Application Insights 會收集數個不同的資料類型：例外狀況、追�
 
 若要開始將記錄資料傳送至 Azure 監視器。 有幾種選項可用：
 
-- 針對同步機制，您可以直接呼叫[資料收集器 API](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-collector-api) ，或使用我們的邏輯應用程式連接器–只需尋找「Azure Log Analytics」並挑選「傳送資料」選項：
+- 針對同步機制，您可以直接呼叫[資料收集器 API](../platform/data-collector-api.md) ，或使用我們的邏輯應用程式連接器–只需尋找「Azure Log Analytics」並挑選「傳送資料」選項：
 
   ![選擇和動作的螢幕擷取畫面](./media/custom-data-correlation/01-logic-app-connector.png)  
 
-- 若要使用非同步選項，請使用「資料收集器 API」來建置處理管線。 如需詳細資訊，請參閱[這篇文章](https://docs.microsoft.com/azure/log-analytics/log-analytics-create-pipeline-datacollector-api)。
+- 若要使用非同步選項，請使用「資料收集器 API」來建置處理管線。 如需詳細資訊，請參閱[這篇文章](../platform/create-pipeline-datacollector-api.md)。
 
 ## <a name="correlating-data"></a>使資料相互關聯
 
-Application Insights 會以 Azure 監視器記錄平台作為基礎。 因此我們可以使用[跨資源聯結](https://docs.microsoft.com/azure/log-analytics/log-analytics-cross-workspace-search)，讓內嵌至 Azure 監視器的所有資料與 Application Insights 資料相互關聯。
+Application Insights 會以 Azure 監視器記錄平台作為基礎。 因此我們可以使用[跨資源聯結](../log-query/cross-workspace-query.md)，讓內嵌至 Azure 監視器的所有資料與 Application Insights 資料相互關聯。
 
 例如，我們可以在名為 "myLA" 的 Log Analytics 工作區中，將實驗室清查和位置內嵌至名為 "LabLocations_CL" 的資料表。 如果我們接著想要檢查在名為 "myAI" 的 Application Insights 應用程式中追蹤的要求，並將提供要求的電腦名稱稱與先前提到的自訂資料表中儲存的這些機器位置相互關聯，我們可以從 Application Insights 或 Azure 監視器內容執行下列查詢：
 
@@ -56,5 +57,5 @@ app('myAI').requests
 
 ## <a name="next-steps"></a>後續步驟
 
-- 請參閱[資料收集器 API](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-collector-api) 參考。
-- 取得[跨資源聯結](https://docs.microsoft.com/azure/log-analytics/log-analytics-cross-workspace-search)的詳細資訊。
+- 請參閱[資料收集器 API](../platform/data-collector-api.md) 參考。
+- 取得[跨資源聯結](../log-query/cross-workspace-query.md)的詳細資訊。

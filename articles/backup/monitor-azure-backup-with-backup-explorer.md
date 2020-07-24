@@ -4,11 +4,12 @@ description: 本文說明如何使用備份總管執行跨保存庫、訂用帳�
 ms.reviewer: dcurwin
 ms.topic: conceptual
 ms.date: 02/03/2020
-ms.openlocfilehash: e891ee1ccfbe929aaa8ac35518b40f5514da714f
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: f514f899f2db70ecb2924c2e627f3bed28e3dcad
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715200"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092791"
 ---
 # <a name="monitor-your-backups-with-backup-explorer"></a>使用備份總管監視您的備份
 
@@ -93,8 +94,8 @@ ms.locfileid: "83715200"
 
 ## <a name="cross-tenant-views"></a>跨租用戶檢視
 
-如果您是 Azure Lighthouse 使用者，且具有委派的權限可存取多個租用戶環境間的訂用帳戶，您可以使用預設的訂用帳戶篩選器。 您可以選取 Azure 入口網站右上方的「篩選器」圖示，以顯示您要查看資料的訂用帳戶。 當您使用這項功能時，備份總管會彙總您所選訂用帳戶間所有保存庫的相關資訊。 若要深入了解，請參閱[什麼是 Azure Lighthouse？](https://docs.microsoft.com/azure/lighthouse/overview)。
+如果您是 Azure Lighthouse 使用者，且具有委派的權限可存取多個租用戶環境間的訂用帳戶，您可以使用預設的訂用帳戶篩選器。 您可以選取 Azure 入口網站右上方的「篩選器」圖示，以顯示您要查看資料的訂用帳戶。 當您使用這項功能時，備份總管會彙總您所選訂用帳戶間所有保存庫的相關資訊。 若要深入了解，請參閱[什麼是 Azure Lighthouse？](../lighthouse/overview.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
-[了解如何使用 Azure 監視器取得備份資料的深入解析](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-use-azuremonitor)
+[了解如何使用 Azure 監視器取得備份資料的深入解析](./backup-azure-monitoring-use-azuremonitor.md)

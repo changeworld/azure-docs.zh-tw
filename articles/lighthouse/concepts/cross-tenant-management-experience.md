@@ -3,12 +3,12 @@ title: 跨租用戶管理體驗
 description: Azure 委派的資源管理能提供跨租用戶管理體驗。
 ms.date: 07/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1b3aa15dd968b4cded831934103a02420d020b9a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: be4f9581e8a276b4296faedb65691232dee2ea95
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86521032"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090411"
 ---
 # <a name="cross-tenant-management-experiences"></a>跨租用戶管理體驗
 
@@ -53,7 +53,7 @@ Azure PowerShell [get-azsubscription 指令程式](/powershell/module/Az.Account
   - 使用 Azure 結構管理已連線的電腦，例如 Azure 原則和標記
   - 確保在客戶的混合式環境中套用相同的一組原則
   - 使用 Azure 資訊安全中心來監視客戶的混合式環境中的合規性
-- 大規模管理混合式 Kubernetes 叢集-[適用于 Kubernetes 的 Azure Arc （預覽）](../../azure-arc/kubernetes/overview.md)：
+- 大規模管理混合式 Kubernetes 叢集-[啟用 Azure Arc 的 Kubernetes （預覽）](../../azure-arc/kubernetes/overview.md)：
   - [將 Kubernetes](../../azure-arc/kubernetes/connect-cluster.md)叢集連線到 azure 中的委派訂用帳戶和（或）資源群組
   - 針對已連線的叢集[使用 GitOps](../../azure-arc/kubernetes/use-gitops-connected-cluster.md)
   - 跨已連線的叢集強制執行原則

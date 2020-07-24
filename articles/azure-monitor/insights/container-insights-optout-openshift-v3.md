@@ -3,12 +3,12 @@ title: 如何停止監視您的 Azure Red Hat OpenShift v3 叢集 |Microsoft Doc
 description: 本文說明如何使用適用于容器的 Azure 監視器來停止監視您的 Azure Red Hat OpenShift 叢集。
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: e1d3200af62ad185fa942fa2c8f7f3b4e6bfd89b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 26c8a574894e117694545508174d0ce7d0f0f5ed
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82196188"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091210"
 ---
 # <a name="how-to-stop-monitoring-your-azure-red-hat-openshift-v3-cluster"></a>如何停止監視您的 Azure Red Hat OpenShift v3 叢集
 
@@ -22,7 +22,7 @@ ms.locfileid: "82196188"
 * [使用 Resource Manager 範本與 Azure PowerShell 來部署資源](../../azure-resource-manager/templates/deploy-powershell.md)
 * [使用 Resource Manager 範本與 Azure CLI 部署資源](../../azure-resource-manager/templates/deploy-cli.md)
 
-如果您選擇使用 Azure CLI，必須先在本機安裝並使用 CLI。 您必須執行 Azure CLI 版2.0.65 或更新版本。 若要知道您使用的版本，請執行 `az --version`。 如果您需要安裝或升級 Azure CLI，請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+如果您選擇使用 Azure CLI，必須先在本機安裝並使用 CLI。 您必須執行 Azure CLI 版2.0.65 或更新版本。 若要知道您使用的版本，請執行 `az --version`。 如果您需要安裝或升級 Azure CLI，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
 ### <a name="create-template"></a>建立範本
 
@@ -128,4 +128,4 @@ ProvisioningState       : Succeeded
 
 ## <a name="next-steps"></a>後續步驟
 
-如果建立工作區只為了支援監視叢集，當您不再需要時，可以手動予以刪除。 如果您不熟悉如何刪除工作區，請參閱[刪除 Azure Log Analytics 工作區](../../log-analytics/log-analytics-manage-del-workspace.md)。
+如果建立工作區只為了支援監視叢集，當您不再需要時，可以手動予以刪除。 如果您不熟悉如何刪除工作區，請參閱[刪除 Azure Log Analytics 工作區](../platform/delete-workspace.md)。

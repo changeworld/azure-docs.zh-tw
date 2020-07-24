@@ -13,15 +13,16 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 06/10/2019
 ms.author: juliako
-ms.openlocfilehash: c39aded55fe36cb130459a4f6f119f872b1adbc4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b112b3844ddb3758b79a086b624a227127e65ce2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76514318"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091873"
 ---
 # <a name="subclip-a-video-when-encoding-with-media-services---rest"></a>使用媒體服務 REST 編碼時子剪輯影片
 
-使用[作業](https://docs.microsoft.com/rest/api/media/jobs)進行編碼時，您可以修剪或子剪輯影片。 這項功能適用於使用 [BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) 預設或 [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) 預設所建立的任何[轉換](https://docs.microsoft.com/rest/api/media/transforms)。 
+使用[作業](/rest/api/media/jobs)進行編碼時，您可以修剪或子剪輯影片。 這項功能適用於使用 [BuiltInStandardEncoderPreset](/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) 預設或 [StandardEncoderPreset](/rest/api/media/transforms/createorupdate#standardencoderpreset) 預設所建立的任何[轉換](/rest/api/media/transforms)。 
 
 本主題中的 REST 範例會建立一項作業，以在提交編碼工作時修剪影片。 
 
@@ -29,7 +30,7 @@ ms.locfileid: "76514318"
 
 若要完成此主題中所述的步驟，您必須：
 
-- [建立 Azure 媒體服務帳戶](create-account-cli-how-to.md)。
+- [建立 Azure 媒體服務帳戶](./create-account-howto.md)。
 - [設定 Postman 以進行 Azure 媒體服務 REST API 呼叫](media-rest-apis-with-postman.md)。
     
     請務必遵循本[取得 Azure AD 權杖](media-rest-apis-with-postman.md#get-azure-ad-token)主題的最後一個步驟。 

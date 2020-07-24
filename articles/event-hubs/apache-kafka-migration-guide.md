@@ -3,11 +3,12 @@ title: 遷移至適用于 Apache Kafka 的 Azure 事件中樞
 description: 本文將說明使用不同通訊協定 (AMQP、Apache Kafka 及 HTTPS) 的取用者和產生者如何在使用 Azure 事件中樞時交換事件。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 8f6c4cbdcbbc1d589b0803f36305f9a9fe6eebfa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cf585cdc0a43c595ec013ba78a2e3ae191c40b8d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85322743"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090649"
 ---
 # <a name="migrate-to-azure-event-hubs-for-apache-kafka-ecosystems"></a>遷移到 Apache Kafka 生態系統的 Azure 事件中樞
 Azure 事件中樞公開 Apache Kafka 端點，可讓您使用 Kafka 通訊協定連接到事件中樞。 藉由對現有的 Kafka 應用程式進行最少的變更，您可以連接到 Azure 事件中樞，並獲得 Azure 生態系統的優點。 適用于 Kafka 的事件中樞支援[Apache Kafka 1.0 版](https://kafka.apache.org/10/documentation.html)和更新版本。
@@ -30,7 +31,7 @@ Azure 事件中樞公開 Apache Kafka 端點，可讓您使用 Kafka 通訊協�
 
 如果您的事件中樞命名空間部署在非公用雲端上，您的功能變數名稱可能會有所不同（例如， \* . servicebus.chinacloudapi.cn、 \* . servicebus.usgovcloudapi.net 或 \* servicebus.cloudapi.de）。
 
-## <a name="migration"></a>移轉 
+## <a name="migration"></a>遷移 
 
 ### <a name="update-your-kafka-client-configuration"></a>更新您的 Kafka 用戶端設定
 
@@ -60,4 +61,4 @@ sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule require
 - [適用于事件中樞的 Apache Kafka 疑難排解指南](apache-kafka-troubleshooting-guide.md)
 - [常見問題-適用于 Apache Kafka 的事件中樞](apache-kafka-frequently-asked-questions.md)
 - [適用于 Azure 事件中樞的 Apache Kafka 開發人員指南](apache-kafka-developer-guide.md)
-- [建議設定](https://github.com/Azure/azure-event-hubs-for-kafka/blob/master/CONFIGURATION.md)
+- [建議設定](apache-kafka-configurations.md)

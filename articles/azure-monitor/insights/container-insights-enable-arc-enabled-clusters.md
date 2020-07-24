@@ -3,12 +3,12 @@ title: 使用適用于容器的 Azure 監視器來設定啟用 Azure Arc 的 Kub
 description: 本文說明如何使用已啟用 Azure Arc Kubernetes 叢集上的容器 Azure 監視器來設定監視。
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: b1adbd5c1f9f0710a814c91872d3f8a9f1afb50f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f8002b20f37ca5149c58ca3e29402916ebbc1333
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261047"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092876"
 ---
 # <a name="enable-monitoring-of-azure-arc-enabled-kubernetes-cluster"></a>啟用已啟用 Azure Arc 的 Kubernetes 叢集監視
 
@@ -63,7 +63,7 @@ ms.locfileid: "85261047"
     >[!IMPORTANT]
     >監視啟用 Arc 的 Kubernetes 叢集所支援的最低代理程式版本是 ciprod04162020 或更新版本。
 
-- 如果您使用 PowerShell 腳本方法來啟用監視，則需要[Powershell Core](https://docs.microsoft.com/powershell/scripting/install/installing-powershell?view=powershell-6) 。
+- 如果您使用 PowerShell 腳本方法來啟用監視，則需要[Powershell Core](/powershell/scripting/install/installing-powershell?view=powershell-6) 。
 
 - 如果您使用 Bash 腳本方法來啟用監視，則需要[Bash 第4版](https://www.gnu.org/software/bash/)。
 
@@ -218,7 +218,7 @@ Proxy 設定值具有下列語法：`[protocol://][user:password@]proxyhost[:por
 
 ### <a name="configure-using-powershell"></a>使用 PowerShell 進行設定
 
-指定 [使用者名稱] 和 [密碼]、[IP 位址] 或 [FQDN]，以及 proxy 伺服器的 [埠號碼]。 例如：
+指定 [使用者名稱] 和 [密碼]、[IP 位址] 或 [FQDN]，以及 proxy 伺服器的 [埠號碼]。 例如:
 
 ```powershell
 $proxyEndpoint = https://<user>:<password>@<proxyhost>:<port>

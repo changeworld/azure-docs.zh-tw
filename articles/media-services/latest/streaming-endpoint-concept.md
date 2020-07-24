@@ -12,16 +12,16 @@ ms.workload: ''
 ms.topic: article
 ms.date: 02/13/2020
 ms.author: juliako
-ms.openlocfilehash: 72cfdf172e4524e302ef2e22826d4f78ce32daf0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 030a10e9138af32ee848009a14216c37567d9d2d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80582736"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091992"
 ---
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Azure 媒體服務中的串流端點（原點）
 
-在 Microsoft Azure 媒體服務中，[串流端點](https://docs.microsoft.com/rest/api/media/streamingendpoints)代表動態（即時）封裝和原始服務，可以使用其中一種常見的串流處理媒體通訊協定（HLS 或破折號），將您的即時和隨選內容直接傳遞至用戶端播放機應用程式。 此外，**串流端點**也提供動態（及時）加密給領先業界的 drm。 
+在 Microsoft Azure 媒體服務中，[串流端點](/rest/api/media/streamingendpoints)代表動態（即時）封裝和原始服務，可以使用其中一種常見的串流處理媒體通訊協定（HLS 或破折號），將您的即時和隨選內容直接傳遞至用戶端播放機應用程式。 此外，**串流端點**也提供動態（及時）加密給領先業界的 drm。 
 
 當您建立媒體服務帳戶時，系統會為您建立**預設**串流端點 (處於已停止狀態)。 您無法刪除**預設**的串流端點。 您可以在帳戶下建立更多串流端點（請參閱[配額和限制](limits-quotas-constraints.md)）。
 
@@ -41,7 +41,7 @@ ms.locfileid: "80582736"
 ### <a name="limitations"></a>限制
 
 * 串流端點名稱的最大值為24個字元。
-* 名稱應遵循此[RegEx](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference)模式： `^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$` 。
+* 名稱應遵循此[RegEx](/dotnet/standard/base-types/regular-expression-language-quick-reference)模式： `^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$` 。
 
 ## <a name="types"></a>類型
 
@@ -63,7 +63,7 @@ ms.locfileid: "80582736"
 
 功能|標準|Premium
 ---|---|---
-Throughput |在使用 CDN 時，最高可達 600 Mbps，並可提供更高的有效輸送量。|每個串流單位 (SU) 200 Mbps。 使用 CDN 時，可以提供更高的有效輸送量。
+輸送量 |在使用 CDN 時，最高可達 600 Mbps，並可提供更高的有效輸送量。|每個串流單位 (SU) 200 Mbps。 使用 CDN 時，可以提供更高的有效輸送量。
 CDN|Azure CDN、協力廠商 CDN 或沒有 CDN。|Azure CDN、協力廠商 CDN 或沒有 CDN。
 按比例計費| 每日|每日
 動態加密|是|是
@@ -77,7 +77,7 @@ IP 篩選/G20/自訂主機<sup>1</sup>|是|是
 
 ## <a name="streaming-endpoint-properties"></a>串流端點屬性
 
-本節提供一些串流端點屬性的詳細資料。 如需如何建立新串流端點的範例及所有屬性的說明，請參閱[串流端點](https://docs.microsoft.com/rest/api/media/streamingendpoints/create)。
+本節提供一些串流端點屬性的詳細資料。 如需如何建立新串流端點的範例及所有屬性的說明，請參閱[串流端點](/rest/api/media/streamingendpoints/create)。
 
 - `accessControl`：用來設定此串流端點的下列安全性設定： Akamai 簽章標頭驗證金鑰，以及允許連接到此端點的 IP 位址。 只有當設定為 false 時，才能設定這個屬性 `cdnEnabled` 。
 
@@ -92,7 +92,7 @@ IP 篩選/G20/自訂主機<sup>1</sup>|是|是
 
 - `cdnProfile`：當 `cdnEnabled` 設定為 true 時，您也可以傳遞 `cdnProfile` 值。 `cdnProfile` 是 CDN 設定檔的名稱，而該設定檔就是要建立 CDN 端點的位置。 您可以提供現有的 cdnProfile，或使用新的。 如果值為 NULL，而且 `cdnEnabled` 是 True，則會使用預設值 "AzureMediaStreamingPlatformCdnProfile"。 如果提供的 `cdnProfile` 已經存在，則會在其下方建立端點。 如果設定檔不存在，則會自動建立新的設定檔。
 - `cdnProvider`：啟用 CDN 時，您也可以傳遞 `cdnProvider` 值。 `cdnProvider` 會控制將使用哪一個提供者。 目前支援三個值："StandardVerizon"、"PremiumVerizon" 和 "StandardAkamai"。 如果未提供任何值，且 `cdnEnabled` 為 true，則會使用 "StandardVerizon" （這是預設值）。
-- `crossSiteAccessPolicies`：用來指定不同用戶端的跨網站存取原則。 如需詳細資訊，請參閱[跨網域原則檔案規格](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html)和[使服務可跨網域界限使用](https://msdn.microsoft.com/library/cc197955\(v=vs.95\).aspx)。 這些設定僅適用于 Smooth Streaming。
+- `crossSiteAccessPolicies`：用來指定不同用戶端的跨網站存取原則。 如需詳細資訊，請參閱[跨網域原則檔案規格](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html)和[使服務可跨網域界限使用](/previous-versions/azure/azure-services/gg185950(v=azure.100))。 這些設定僅適用于 Smooth Streaming。
 - `customHostNames`：用來設定串流端點，以接受導向至自訂主機名稱的流量。 此屬性適用于 Standard 和 Premium 串流端點，而且可以在下列情況設定 `cdnEnabled` ： false。
 
     功能變數名稱的擁有權必須由媒體服務確認。 媒體服務藉由要求 `CName` 記錄包含媒體服務帳戶識別碼，做為要新增至使用中網域的元件，來驗證功能變數名稱擁有權。 例如，若要將 "sports.contoso.com" 作為串流端點的自訂主機名稱，`<accountId>.contoso.com` 的記錄就必須設定為指向其中一個媒體服務驗證名稱。 驗證主機名稱是由 verifydns.<mediaservices-dns-zone> 所組成 \<mediaservices-dns-zone> 。

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 07/10/2020
+ms.date: 07/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 9e54b9add52e484a95cf5a8291dec90a6bb258b8
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 3024c79b6295762636518e3f77d506ad45f73682
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206999"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090751"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure 資料箱：常見問題集
 
@@ -44,7 +44,9 @@ A. Azure 資料箱可讓您快速、實惠且安全地將數 TB 的資料輸入 
 A. 如果您有 40-500 TB 的資料，而您想要在 Azure 中進行傳輸，您可以使用資料箱受益。 若資料大小 < 40 TB，請使用資料箱磁碟；若資料大小 > 500 TB，請註冊 [Data Box Heavy](data-box-heavy-overview.md)。
 
 ### <a name="q-what-is-the-price-of-data-box"></a>Q. 資料箱的價格為何？
-A. 資料箱僅收取少許費用，提供 10 天使用。 當您在 Azure 入口網站中建立訂單時，選取產品型號會顯示該裝置的費用。 此服務不需要運費，但會套用 Azure 儲存體費用。 如需詳細資訊，請移至 [Azure 資料箱定價](https://azure.microsoft.com/pricing/details/storage/databox/)。 
+A. 資料箱僅收取少許費用，提供 10 天使用。 當您在 Azure 入口網站中建立訂單時，選取產品型號會顯示該裝置的費用。 Azure 儲存體的標準運送費用和費用也適用。 匯出訂單會遵循類似于匯入訂單的價格模型，但可能會有額外的輸出費用。 
+
+如需詳細資訊，請移至[Azure 資料箱定價](https://azure.microsoft.com/pricing/details/storage/databox/)和輸出[費用](https://azure.microsoft.com/pricing/details/bandwidth/)。 
 
 ### <a name="q-what-is-the-maximum-amount-of-data-i-can-transfer-with-data-box-in-one-instance"></a>Q. 使用資料箱一次最多可以傳輸多少資料量？
 A. 資料箱擁有 100 TB 的原始容量，而可用容量則為 80 TB。 您可以使用資料箱傳輸最多 80 TB 的資料。 若要傳輸更多資料，您必須訂購更多裝置。
@@ -242,7 +244,7 @@ A.  下列報表類型可用來支援監管鏈：
 
 - UPS 的運輸物流。
 - 開啟電源和使用者共用存取的記錄。
-- 具有64位迴圈冗余檢查的 BOM 或資訊清單檔案 (CRC-64) 或內嵌成功進入資料箱的每個檔案的 checksum。
+- 具有64位迴圈冗余檢查（CRC-64）的 BOM 或資訊清單檔，或每個檔案內嵌成功進入資料箱的總和檢查碼。
 - 無法上傳到 Azure 儲存體帳戶的檔案報表。
 - 在資料複製到 Azure 儲存體帳戶後，對資料箱裝置的清理 (根據 NIST 800 88R1 標準)。
 
@@ -250,7 +252,7 @@ A.  下列報表類型可用來支援監管鏈：
 A.  貨運公司追蹤記錄可從資料箱訂單記錄中擷取。 當您的裝置送回到 Azure 資料中心，並清除裝置上的資料之後，就會將此報表提供給您。 若立即需要，您也可以直接移至貨運公司的網站，使用訂單追蹤號碼來取得追蹤資訊。
 
 ### <a name="can-i-transport-the-data-box-to-azure-datacenter"></a>我是否可以親自將資料箱送到 Azure 資料中心？ 
-A.  否。 如果您已選擇 Microsoft 管理的出貨，就無法傳輸日期。 目前 Azure 資料中心不接受由客戶或是 UPS 以外的貨運公司寄送資料箱。
+A.  否。 如果您已選擇 Microsoft 管理的出貨，就無法傳輸資料。 目前 Azure 資料中心不接受由客戶或是 UPS 以外的貨運公司寄送資料箱。
 
 如果您選擇 [自我管理] [運送]，則可以從 Azure 資料中心收取或捨棄您的資料箱。
 

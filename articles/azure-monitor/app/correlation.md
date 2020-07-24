@@ -7,11 +7,12 @@ ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.custom: tracking-python
-ms.openlocfilehash: ca186fa62605953bfb90c1a4669fc8283eb78469
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 432ff655ef072d491227d297e620612203f73d3f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84559786"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092978"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights 中的遙測相互關聯
 
@@ -33,7 +34,7 @@ Application Insights 會定義分散遙測相互關聯的[資料模型](../../az
 
 ## <a name="example"></a>範例
 
-讓我們來看看範例。 名為「股票價格」的應用程式會使用稱為「庫存」的外部 API 來顯示股票的目前市場價格。 股票價格應用程式有一個名為 [Stock] 頁面的頁面，而用戶端網頁瀏覽器會使用它開啟 `GET /Home/Stock` 。 應用程式會使用 HTTP 呼叫來查詢股票 API `GET /api/stock/value` 。
+以下舉例說明。 名為「股票價格」的應用程式會使用稱為「庫存」的外部 API 來顯示股票的目前市場價格。 股票價格應用程式有一個名為 [Stock] 頁面的頁面，而用戶端網頁瀏覽器會使用它開啟 `GET /Home/Stock` 。 應用程式會使用 HTTP 呼叫來查詢股票 API `GET /api/stock/value` 。
 
 您可以執行查詢來分析產生的遙測︰
 
@@ -45,7 +46,7 @@ Application Insights 會定義分散遙測相互關聯的[資料模型](../../az
 
 在結果中，請注意，所有遙測項目都共用 `operation_Id` 這個根。 從頁面進行 Ajax 呼叫時，會將新的唯一識別碼（ `qJSXU` ）指派給相依性遙測，並使用 pageView 的識別碼作為 `operation_ParentId` 。 接著，伺服器要求會使用 Ajax 識別碼作為 `operation_ParentId`。
 
-| itemType   | NAME                      | 識別碼           | operation_ParentId | operation_Id |
+| itemType   | name                      | ID           | operation_ParentId | operation_Id |
 |------------|---------------------------|--------------|--------------------|--------------|
 | pageView   | Stock 頁面                |              | STYz               | STYz         |
 | 相依性 | GET /Home/Stock           | qJSXU        | STYz               | STYz         |
@@ -301,15 +302,15 @@ logger.warning('After the span')
 ```
 請注意， `spanId` 範圍內有記錄訊息的存在。 這與 `spanId` 屬於名為的範圍相同 `hello` 。
 
-您可以使用來匯出記錄檔資料 `AzureLogHandler` 。 如需詳細資訊，請參閱[這篇文章](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python#logs)。
+您可以使用來匯出記錄檔資料 `AzureLogHandler` 。 如需詳細資訊，請參閱[這篇文章](./opencensus-python.md#logs)。
 
 ## <a name="telemetry-correlation-in-net"></a>.NET 中的遙測相互關聯
 
 經過一段時間，.NET 已經定義了數種相互關聯遙測和診斷記錄的方式：
 
-- `System.Diagnostics.CorrelationManager`允許追蹤[LogicalOperationStack 和 ActivityId](https://msdn.microsoft.com/library/system.diagnostics.correlationmanager.aspx)。
-- `System.Diagnostics.Tracing.EventSource` 與 Windows 事件追蹤 (ETW) 會定義 [SetCurrentThreadActivityId](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.setcurrentthreadactivityid.aspx) 方法。
-- `ILogger`使用[記錄範圍](https://docs.microsoft.com/aspnet/core/fundamentals/logging#log-scopes)。
+- `System.Diagnostics.CorrelationManager`允許追蹤[LogicalOperationStack 和 ActivityId](/dotnet/api/system.diagnostics.correlationmanager?view=netcore-3.1)。
+- `System.Diagnostics.Tracing.EventSource` 與 Windows 事件追蹤 (ETW) 會定義 [SetCurrentThreadActivityId](/dotnet/api/system.diagnostics.tracing.eventsource.setcurrentthreadactivityid?view=netcore-3.1#overloads) 方法。
+- `ILogger`使用[記錄範圍](/aspnet/core/fundamentals/logging#log-scopes)。
 - Windows Communication Foundation (WCF) 與 HTTP 連接起了「目前」的內容傳播。
 
 但這些方法並未啟用自動分散式追蹤支援。 `DiagnosticSource`支援自動跨電腦相互關聯。 .NET 程式庫支援 `DiagnosticSource` 並允許透過傳輸（例如 HTTP）自動跨電腦傳播相互關聯內容。
@@ -327,7 +328,7 @@ Application Insights SDK 從 2.4.0-beta1 版開始，會使用 `DiagnosticSource
 <a name="java-correlation"></a>
 ## <a name="telemetry-correlation-in-java"></a>JAVA 中的遙測相互關聯
 
-[JAVA 代理程式](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)以及[java SDK](../../azure-monitor/app/java-get-started.md) version 2.0.0 或更新版本都支援遙測的自動相互關聯。 它會自動填入在 `operation_id` 要求範圍內發出的所有遙測（例如追蹤、例外狀況和自訂事件）。 如果已設定[JAVA SDK 代理程式](../../azure-monitor/app/java-agent.md)，它也會透過 HTTP 傳播服務對服務呼叫的相互關聯標頭（如前文所述）。
+[JAVA 代理程式](./java-in-process-agent.md)以及[java SDK](../../azure-monitor/app/java-get-started.md) version 2.0.0 或更新版本都支援遙測的自動相互關聯。 它會自動填入在 `operation_id` 要求範圍內發出的所有遙測（例如追蹤、例外狀況和自訂事件）。 如果已設定[JAVA SDK 代理程式](../../azure-monitor/app/java-agent.md)，它也會透過 HTTP 傳播服務對服務呼叫的相互關聯標頭（如前文所述）。
 
 > [!NOTE]
 > Application Insights JAVA 代理程式會自動收集 JMS、Kafka、Netty/Webflux 等等的要求和相依性。 針對 JAVA SDK，相互關聯功能僅支援透過 Apache HttpClient 所提出的呼叫。 SDK 不支援跨訊息技術（例如 Kafka、RabbitMQ 和 Azure 服務匯流排）的自動內容傳播。 

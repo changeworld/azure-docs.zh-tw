@@ -17,18 +17,18 @@ ms.date: 04/29/2020
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: cb984a944067ddb1449f58b464e596fd138dc7c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2921fb2895b8e42c0564c6e815a08da1d7e9d12d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82592004"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089969"
 ---
 # <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>使用 Azure 通知中樞和 Node.js 傳送推播通知
 
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 > [!IMPORTANT]
 > 若要完成此教學課程，您必須具備有效的 Azure 帳戶。 如果沒有帳戶，您可以透過 [Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A643EE910&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fnotification-hubs-nodejs-how-to-use-notification-hubs)，在幾分鐘內建立一個免費試用帳戶。
@@ -44,7 +44,7 @@ ms.locfileid: "82592004"
 
 ## <a name="notification-hubs"></a>通知中樞
 
-Azure 通知中樞提供易用、多平台、可調整的基礎結構，用以將推播通知傳送至行動裝置。 如需服務基礎結構的詳細資訊，請參閱 [Azure 通知中樞](https://msdn.microsoft.com/library/windowsazure/jj927170.aspx) 頁面。
+Azure 通知中樞提供易用、多平台、可調整的基礎結構，用以將推播通知傳送至行動裝置。 如需服務基礎結構的詳細資訊，請參閱 [Azure 通知中樞](/previous-versions/azure/azure-services/jj927170(v=azure.100)) 頁面。
 
 ## <a name="create-a-nodejs-application"></a>建立 Node.js 應用程式
 
@@ -89,7 +89,7 @@ var notificationHubService = azure.createNotificationHubService('hubname','conne
 ![Azure 入口網站 - 通知中樞](./media/notification-hubs-nodejs-how-to-use-notification-hubs/notification-hubs-portal.png)
 
 > [!NOTE]
-> 您也可以使用 [Azure PowerShell](/powershell/azureps-cmdlets-docs) 所提供的 **Get-AzureSbNamespace** Cmdlet，或搭配 [Azure 命令列介面 (Azure CLI)](../cli-install-nodejs.md) 使用 **azure sb namespace show** 命令，來擷取連接字串。
+> 您也可以使用 [Azure PowerShell](/powershell/azure/) 所提供的 **Get-AzureSbNamespace** Cmdlet，或搭配 [Azure 命令列介面 (Azure CLI)](/cli/azure/install-classic-cli) 使用 **azure sb namespace show** 命令，來擷取連接字串。
 
 ## <a name="general-architecture"></a>一般架構
 
@@ -155,11 +155,11 @@ notificationHubService.apns.send(null, payload, function(error){
 - **Tags** - 標籤識別碼。 若未提供標籤，通知會傳送至所有用戶端。
 - **Payload** - 訊息的 XML 承載。
 - **TargetName**  -  TargetName `toast`用於快顯通知。 `token` 代表磚通知。
-- **NotificationClass** - 通知的優先順序。 如需有效值，請參閱[來自伺服器的推播通知](https://msdn.microsoft.com/library/hh221551.aspx)文件的＜HTTP 標頭元素＞**** 一節。
+- **NotificationClass** - 通知的優先順序。 如需有效值，請參閱[來自伺服器的推播通知](/previous-versions/windows/xna/bb200104(v=xnagamestudio.41))文件的＜HTTP 標頭元素＞**** 一節。
 - **Options** - 選用的要求標頭。
 - **Callback** - 回呼函數。
 
-如需有效 `TargetName`、`NotificationClass` 和標頭選項的清單，請查看[來自伺服器的推播通知](https://msdn.microsoft.com/library/hh221551.aspx)頁面。
+如需有效 `TargetName`、`NotificationClass` 和標頭選項的清單，請查看[來自伺服器的推播通知](/previous-versions/windows/xna/bb200104(v=xnagamestudio.41))頁面。
 
 下列範例程式碼使用 `NotificationHubService` 所公開的 `MpnsService` 執行個體傳送快顯推播通知：
 
@@ -182,7 +182,7 @@ notificationHubService.mpns.send(null, payload, 'toast', 22, function(error){
 - **Options** - 選用的要求標頭。
 - **Callback** - 回呼函數。
 
-如需有效類型和要求標頭的清單，請參閱 [推播通知服務要求和回應標頭](https://msdn.microsoft.com/library/windows/apps/hh465435.aspx)。
+如需有效類型和要求標頭的清單，請參閱 [推播通知服務要求和回應標頭](/previous-versions/windows/apps/hh465435(v=win.10))。
 
 下列程式碼使用 `NotificationHubService` 所公開的 `WnsService` 執行個體傳送快顯推播通知至 UWP 應用程式：
 
@@ -199,7 +199,7 @@ notificationHubService.wns.send(null, payload , 'wns/toast', function(error){
 
 上述的範例程式碼片段可讓您輕鬆地建置服務基礎結構，將推播通知傳遞到各種裝置。 了解基本的透過 node.js 的通知中樞使用方式之後，請參考下列連結以了解如何進一步延伸這些功能。
 
-- 請參閱 [Azure 通知中樞](https://msdn.microsoft.com/library/azure/jj927170.aspx)的 MSDN 參考。
+- 請參閱 [Azure 通知中樞](/previous-versions/azure/azure-services/jj927170(v=azure.100))的 MSDN 參考。
 - 造訪 GitHub 上的 [Azure SDK for Node] 儲存機制，以取得更多範例和實作詳細資料。
 
 [Azure SDK for Node]: https://github.com/WindowsAzure/azure-sdk-for-node
@@ -222,14 +222,14 @@ notificationHubService.wns.send(null, payload , 'wns/toast', function(error){
 [3]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/sb-queues-05.png
 [4]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/sb-queues-06.png
 [5]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/sb-queues-07.png
-[SqlFilter.SqlExpression]: https://msdn.microsoft.com/library/windowsazure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx
-[Azure Service Bus Notification Hubs]: https://msdn.microsoft.com/library/windowsazure/jj927170.aspx
-[SqlFilter]: https://msdn.microsoft.com/library/windowsazure/microsoft.servicebus.messaging.sqlfilter.aspx
+[SqlFilter.SqlExpression]: /dotnet/api/microsoft.servicebus.messaging.sqlfilter?view=azure-dotnet#microsoft_servicebus_messaging_sqlfilter_sqlexpression
+[Azure Service Bus Notification Hubs]: /previous-versions/azure/azure-services/jj927170(v=azure.100)
+[SqlFilter]: /dotnet/api/microsoft.servicebus.messaging.sqlfilter?view=azure-dotnet#microsoft_servicebus_messaging_sqlfilter
 [Web Site with WebMatrix]: /develop/nodejs/tutorials/web-site-with-webmatrix/
 [Node.js Cloud Service]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
 [Previous Management Portal]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/previous-portal.png
-[nodejswebsite]: https://docs.microsoft.com/azure/app-service/app-service-web-get-started-nodejs
-[webmatrix]: https://docs.microsoft.com/aspnet/web-pages/videos/introduction/create-a-website-using-webmatrix
+[nodejswebsite]: ../app-service/app-service-web-get-started-nodejs.md
+[webmatrix]: /aspnet/web-pages/videos/introduction/create-a-website-using-webmatrix
 [Node.js Cloud Service with Storage]: /develop/nodejs/tutorials/web-app-with-storage/
 [Node.js Web Application with Storage]: /develop/nodejs/tutorials/web-site-with-storage/
 [Azure 入口網站]: https://portal.azure.com

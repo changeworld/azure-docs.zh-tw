@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: 8e0927ccd8c94f589adf6eb11004b728f697b6e1
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 6552d13ab68d8028cd95b18f2d0895d53bba462c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362402"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090955"
 ---
 # <a name="create-application-with-simple-commands"></a>使用簡單的命令建立應用程式
 
@@ -44,7 +44,7 @@ ms.locfileid: "85362402"
 
 1. 選取左窗格頂端的 [**新增命令**] 來建立新的命令。 [**新增命令**] 視窗隨即開啟。
 1. 提供 [**名稱**] 欄位的值做為**homeautomation.turnon**。
-1. 選取 [建立]****。
+1. 選取 [建立]。
 
 中間窗格會列出命令的不同屬性。 您可以設定命令的下列屬性。 如需命令所有設定屬性的說明，請移至 [[參考](./custom-commands-references.md)]。
 
@@ -96,11 +96,10 @@ ms.locfileid: "85362402"
 1. 選取 [**儲存**] 以儲存動作。
 1. 回到 [**完成規則**] 區段中，選取 [**儲存**] 以儲存所有變更。 
 
-
- > [!NOTE]
+    > [!NOTE]
     > 不需要使用命令隨附的預設完成規則。 如有需要，您可以刪除現有的預設完成規則，並新增您自己的規則。
 
-### <a name="try-it-out"></a>試試看
+### <a name="try-it-out"></a>試做
 
 使用測試聊天面板測試行為
 1. 選取右窗格頂端的 [**定型**] 圖示。
@@ -125,7 +124,7 @@ ms.locfileid: "85362402"
 
 | 設定    | 建議的值                          |
 | ---------- | ---------------------------------------- |
-| Name  | ConfirmationResponse                  |
+| 名稱  | ConfirmationResponse                  |
 | 條件 | 無                                     |
 | 動作    | 傳送語音回應 > 簡單編輯器 > 第一次變化 >`Ok, setting temperature to 40 degrees` |
 
@@ -142,7 +141,7 @@ ms.locfileid: "85362402"
 
 選取 [**儲存**] 以儲存對命令所做的所有變更。
 
-## <a name="try-it-out"></a>試試看
+## <a name="try-it-out"></a>試做
 
 使用測試聊天面板測試行為
 1. 選取 [訓練]。 定型成功之後，請選取 [**測試**] 並試用：

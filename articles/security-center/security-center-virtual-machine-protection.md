@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2020
 ms.author: memildin
-ms.openlocfilehash: 8faff37e127e80447e0f066ef17e2885d4bcb597
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d79d1bf846cc023b86c3e33b17c91cce77ffe9ee
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85799729"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089867"
 ---
 # <a name="protect-your-machines-and-applications"></a>保護您的機器和應用程式
 當 Azure 資訊安全中心識別潛在的安全性弱點時，它會建立建議，引導您完成設定所需控制項來強化和保護資源的程式。

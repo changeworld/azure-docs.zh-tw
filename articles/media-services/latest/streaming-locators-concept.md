@@ -11,22 +11,22 @@ ms.workload: ''
 ms.topic: article
 ms.date: 03/04/2020
 ms.author: juliako
-ms.openlocfilehash: 41b2d0ad1e072fb2bf5860ae80f8f25f886b37f7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ed58919c47da13a8a0707a344a389126c6feb6c3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80582682"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091958"
 ---
 # <a name="streaming-locators"></a>串流定位器
 
-若要讓輸出資產中的影片可供用戶端播放，您必須建立[串流定位器](https://docs.microsoft.com/rest/api/media/streaminglocators)，然後建置串流 URL。 若要建置 URL，您需要串連串流端點主機名稱和串流定位器路徑。 如需 .NET 範例，請參閱[取得串流定位器](stream-files-tutorial-with-api.md#get-a-streaming-locator)。
+若要讓輸出資產中的影片可供用戶端播放，您必須建立[串流定位器](/rest/api/media/streaminglocators)，然後建置串流 URL。 若要建置 URL，您需要串連串流端點主機名稱和串流定位器路徑。 如需 .NET 範例，請參閱[取得串流定位器](stream-files-tutorial-with-api.md#get-a-streaming-locator)。
 
-建立 [串流定位器]  的程序稱為發佈。 根據預設，在您進行 API 呼叫之後，**串流定位器**會立即生效，除非您設定選擇性的開始和結束時間，否則會一直持續到刪除為止。 
+建立 [串流定位器] 的程序稱為發佈。 根據預設，在您進行 API 呼叫之後，**串流定位器**會立即生效，除非您設定選擇性的開始和結束時間，否則會一直持續到刪除為止。 
 
 建立**串流定位器**時，您必須指定**資產**名稱和**串流原則**名稱。 如需詳細資訊，請參閱下列主題：
 
-* [Assets](assets-concept.md)
+* [資產](assets-concept.md)
 * [串流原則](streaming-policy-concept.md)
 * [內容金鑰原則](content-key-policy-concept.md)
 
@@ -92,15 +92,15 @@ StreamingLocator locator = await client.StreamingLocators.CreateAsync(
 
 |Language|API|
 |---|---|
-|REST|[liststreaminglocators](https://docs.microsoft.com/rest/api/media/assets/liststreaminglocators)|
-|CLI|[az ams 資產清單-串流-定位器](https://docs.microsoft.com/cli/azure/ams/asset?view=azure-cli-latest#az-ams-asset-list-streaming-locators)|
-|.NET|[ListStreamingLocators](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.assetsoperationsextensions.liststreaminglocators?view=azure-dotnet#Microsoft_Azure_Management_Media_AssetsOperationsExtensions_ListStreamingLocators_Microsoft_Azure_Management_Media_IAssetsOperations_System_String_System_String_System_String_)|
-|Java|[AssetStreamingLocator](https://docs.microsoft.com/rest/api/media/assets/liststreaminglocators#assetstreaminglocator)|
-|Node.js|[listStreamingLocators](https://docs.microsoft.com/javascript/api/@azure/arm-mediaservices/assets#liststreaminglocators-string--string--string--msrest-requestoptionsbase-)|
+|REST|[liststreaminglocators](/rest/api/media/assets/liststreaminglocators)|
+|CLI|[az ams 資產清單-串流-定位器](/cli/azure/ams/asset?view=azure-cli-latest#az-ams-asset-list-streaming-locators)|
+|.NET|[ListStreamingLocators](/dotnet/api/microsoft.azure.management.media.assetsoperationsextensions.liststreaminglocators?view=azure-dotnet#Microsoft_Azure_Management_Media_AssetsOperationsExtensions_ListStreamingLocators_Microsoft_Azure_Management_Media_IAssetsOperations_System_String_System_String_System_String_)|
+|Java|[AssetStreamingLocator](/rest/api/media/assets/liststreaminglocators#assetstreaminglocator)|
+|Node.js|[listStreamingLocators](/javascript/api/@azure/arm-mediaservices/assets#liststreaminglocators-string--string--string--msrest-requestoptionsbase-)|
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
-* [Assets](assets-concept.md)
+* [資產](assets-concept.md)
 * [串流原則](streaming-policy-concept.md)
 * [內容金鑰原則](content-key-policy-concept.md)
 * [教學課程：使用 .NET 上傳、編碼和串流影片](stream-files-tutorial-with-api.md)

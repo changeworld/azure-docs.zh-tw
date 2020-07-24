@@ -11,11 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=weig, previous-ms.author=weig
-ms.openlocfilehash: 9612114bb368898ccf31b2c8692869b84544b652
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fc837405e03ffac41d216a5ba18384208b07aaf1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76721949"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090292"
 ---
 # <a name="data-science-code-testing-on-azure-with-the-team-data-science-process-and-azure-devops-services"></a>使用 Team Data Science Process 和 Azure DevOps Services，在 Azure 上進行資料科學程式碼測試
 本文提供在資料科學工作流程中測試程式碼的初步指導方針。 這類測試可提供資料科學家一個系統化且有效率的方式，來檢查其程式碼的品質和預期的結果。 我們會使用 Team Data Science Process (TDSP) [專案 (使用先前發佈的 UCI 成人收入資料集)](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) 來示範如何進行程式碼測試。 
@@ -137,11 +138,11 @@ ms.locfileid: "76721949"
     
     ![PowerShell 詳細資料](./media/code-test/powershell_scripts.PNG)
 
-    如 選取 [**儲存 & 佇列**] 以完成組建管線進程。
+    g. 選取 [**儲存 & 佇列**] 以完成組建管線進程。
 
     ![[儲存並排入佇列] 按鈕](./media/code-test/save_and_queue_build_definition.PNG)
 
-現在，每當將新認可推送至程式碼存放庫時，都會自動啟動建置流程。 （這裡我們使用 master 做為存放庫，但您可以定義任何分支）。該進程會在代理程式電腦中執行**test1.py**檔案，以確保程式碼中定義的所有專案都能正確執行。 
+現在，每當將新認可推送至程式碼存放庫時，都會自動啟動建置流程。 您可以定義任何分支。 此流程會在代理程式電腦中執行 **test1.py** 檔案，以確保程式碼中定義的所有項目都正確執行。 
 
 如果已正確設定警示，當建置完成時，您將會收到電子郵件通知。 您也可以在 Azure DevOps 中檢查組建狀態。 如果建置失敗，您可以查看建置詳細資料並找出哪個部分發生問題。
 

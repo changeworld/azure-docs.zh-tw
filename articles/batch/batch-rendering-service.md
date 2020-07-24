@@ -5,12 +5,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: how-to
-ms.openlocfilehash: 850f4e3754af790e6b9bab5c68c9bd10849bba37
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 9fac5d3efabc5d9f796c91d688f35e01aeefdca3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965275"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092757"
 ---
 # <a name="rendering-using-azure"></a>使用 Azure 進行轉譯
 
@@ -79,7 +79,7 @@ Azure Batch 可用於許多工作負載，但下列功能是專為簡化和加�
 * API：
   * 使用 [REST](/rest/api/batchservice)、[.NET](/dotnet/api/overview/azure/batch)、[Python](/python/api/overview/azure/batch)、[Java](/java/api/overview/azure/batch) 或其他支援的 API 撰寫程式碼。  開發人員可將 Azure Batch 功能整合到其現有的應用程式或工作流程中，無論在雲端還是內部部署皆可。  例如，[Autodesk Maya 外掛程式](https://github.com/Azure/azure-batch-maya)可利用 Batch Python API 來叫用 Batch、建立和管理集區、提交作業和工作，以及監視狀態。
 * 命令列工具：
-  * [Azure 命令列](/cli/azure/)或 [Azure PowerShell](/powershell/azure/overview) 可用來編寫 Batch 適用的指令碼。
+  * [Azure 命令列](/cli/azure/)或 [Azure PowerShell](/powershell/azure/) 可用來編寫 Batch 適用的指令碼。
   * 特別是，Batch CLI 範本支援大幅簡化了建立集區和提交作業的程序。
 * UI：
   * [Batch Explorer](https://github.com/Azure/BatchExplorer) 是一種跨平台的用戶端工具，不僅也可讓 Batch 帳戶受到管理及監視，還提供比 Azure 入口網站 UI 更豐富的功能。  我們提供了針對各種支援的應用程式而設計的集區和作業範本集，可用來輕鬆建立集區及提交作業。

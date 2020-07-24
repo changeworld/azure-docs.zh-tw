@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/15/2019
-ms.openlocfilehash: 734f61c2e96002516e9e15af88d2c6b0fce00e98
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 013515e0608bf790ceef8dc13d9d547496306610
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79480737"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092842"
 ---
 # <a name="enable-azure-monitor-for-vms-for-a-hybrid-environment"></a>針對混合式環境啟用適用於 VM 的 Azure 監視器
 
@@ -18,7 +19,7 @@ ms.locfileid: "79480737"
 
 本文說明如何針對您資料中心或其他雲端環境中裝載的虛擬機器或實體電腦啟用適用於 VM 的 Azure 監視器。 在此程式結束時，您將已成功開始監視環境中的虛擬機器，並瞭解它們是否遇到任何效能或可用性問題。
 
-開始之前，請務必檢閱[必要條件](vminsights-enable-overview.md)並確認訂用帳戶和資源已符合需求。 檢閱適用於 [Log Analytics Linux 和 Windows 代理程式](../../log-analytics/log-analytics-agent-overview.md)的需求和部署方法。
+開始之前，請務必檢閱[必要條件](vminsights-enable-overview.md)並確認訂用帳戶和資源已符合需求。 檢閱適用於 [Log Analytics Linux 和 Windows 代理程式](../platform/log-analytics-agent.md)的需求和部署方法。
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
@@ -78,7 +79,7 @@ Windows Dependency Agent 的檔案預設安裝在 *C:\Program Files\Microsoft De
 
 Dependency Agent 的檔案位於下列目錄：
 
-| 檔案儲存體 | 位置 |
+| 檔案儲存體 | Location |
 |:--|:--|
 | 核心檔案 | /opt/microsoft/dependency-agent |
 | 記錄檔 | /var/opt/microsoft/dependency-agent/log |
@@ -155,7 +156,7 @@ configuration VMInsights {
 * [使用 Resource Manager 範本與 Azure PowerShell 來部署資源](../../azure-resource-manager/templates/deploy-powershell.md)
 * [使用 Resource Manager 範本與 Azure CLI 部署資源](../../azure-resource-manager/templates/deploy-cli.md)
 
-若要使用 Azure CLI，您必須先在本機安裝和使用 CLI。 您必須執行 Azure CLI 2.0.27 版或更新版本。 若要知道您使用的版本，請執行 `az --version`。 若要安裝或升級 Azure CLI，請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+若要使用 Azure CLI，您必須先在本機安裝和使用 CLI。 您必須執行 Azure CLI 2.0.27 版或更新版本。 若要知道您使用的版本，請執行 `az --version`。 若要安裝或升級 Azure CLI，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
 ### <a name="create-and-execute-a-template"></a>建立並執行範本
 
@@ -234,7 +235,7 @@ configuration VMInsights {
 
     **Linux**：尋找執行中的進程「microsoft dependency 代理程式」。
 
-2. 您在[Log Analytics 的免費定價層](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions)嗎？ 免費方案最多允許五部唯一的電腦。 任何後續的電腦都不會顯示在地圖上，即使先前的五個已不再傳送資料也一樣。
+2. 您在[Log Analytics 的免費定價層](./solutions.md)嗎？ 免費方案最多允許五部唯一的電腦。 任何後續的電腦都不會顯示在地圖上，即使先前的五個已不再傳送資料也一樣。
 
 3. 電腦會將記錄檔和效能資料傳送給 Azure 監視器記錄嗎？ 針對您的電腦執行下列查詢：
 

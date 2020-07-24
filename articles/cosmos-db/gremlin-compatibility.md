@@ -7,11 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: reference
 ms.date: 09/10/2019
 ms.author: sngun
-ms.openlocfilehash: 1db7937cb574ce62986f25e0bfa688dc54b5c606
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7257246f618e3028534f3ebd60eaf6f94a3a4720
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84700594"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092502"
 ---
 # <a name="azure-cosmos-db-gremlin-compatibility"></a>Azure Cosmos DB Gremlin 相容性
 Azure Cosmos DB 圖形引擎會密切遵循[Apache TinkerPop](https://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps)的「遍歷」步驟規格，但在執行方面，特定的 Azure Cosmos DB 有差異。 若要瞭解支援的 Gremlin 步驟清單，請參閱[GREMLIN API 線路通訊協定支援](gremlin-support.md)一文。
@@ -44,7 +45,7 @@ Azure Cosmos DB 圖形引擎會密切遵循[Apache TinkerPop](https://tinkerpop.
 
 * **使用中間遍歷 `.V()` 步驟 Gremlin 查詢的索引使用率**：目前，只有第一次呼叫時，才 `.V()` 會使用索引來解析附加的任何篩選或述詞。 後續的呼叫將不會查閱索引，這可能會增加查詢的延遲和成本。
     
-    假設是預設的索引編制，從步驟開始的一般 read Gremlin 查詢 `.V()` 會使用其附加篩選步驟中的參數，例如 `.has()` 或， `.where()` 以優化查詢的成本和效能。 例如：
+    假設是預設的索引編制，從步驟開始的一般 read Gremlin 查詢 `.V()` 會使用其附加篩選步驟中的參數，例如 `.has()` 或， `.where()` 以優化查詢的成本和效能。 例如:
 
     ```java
     g.V().has('category', 'A')
@@ -68,7 +69,7 @@ Azure Cosmos DB 圖形引擎會密切遵循[Apache TinkerPop](https://tinkerpop.
     g.V().has('category', 'A').fold().union(unfold(), __.V().has('category', 'B'))
     ```
 
-    您可以使用 [Gremlin `executionProfile()` 步驟] （圖形-執行-profile.md 來檢查查詢的效能。
+    您可以使用[Gremlin `executionProfile()` 步驟](graph-execution-profile.md)來檢查查詢的效能。
 
 ## <a name="next-steps"></a>後續步驟
 * 請造訪[Cosmos DB user voice](https://feedback.azure.com/forums/263030-azure-cosmos-db)頁面來分享意見反應，並協助團隊專注于對您很重要的功能。

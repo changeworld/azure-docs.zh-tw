@@ -3,15 +3,16 @@ title: 關於 Azure VM 備份
 description: 在本文中，您將瞭解 Azure 備份服務如何備份 Azure 虛擬機器，以及如何遵循最佳作法。
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 9838f4993e71f2991500af0e152abee36f996050
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3c73b489404d1e8198fbd984b5188a7a2ccb973f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84322904"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091040"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Azure VM 備份總覽
 
-本文說明[Azure 備份服務](backup-introduction-to-azure-backup.md)如何備份 Azure 虛擬機器（vm）。
+本文說明[Azure 備份服務](./backup-overview.md)如何備份 Azure 虛擬機器（vm）。
 
 Azure 備份提供獨立和隔離的備份，以防止非預期的資料在您的 Vm 上損毀。 備份會儲存在復原服務保存庫中，並進行內建的復原點管理。 設定和調整很簡單，備份已優化，您可以視需要輕鬆地還原。
 
@@ -25,8 +26,8 @@ Azure 備份也有適用于資料庫工作負載的特製化供應專案，例�
 
 1. 針對選取要備份的 Azure Vm，Azure 備份根據您指定的備份排程來啟動備份作業。
 1. 第一次備份時，如果 VM 正在執行，則會在 VM 上安裝備份擴充功能。
-    - 針對 Windows Vm，會安裝[VMSnapshot 擴充](https://docs.microsoft.com/azure/virtual-machines/extensions/vmsnapshot-windows)功能。
-    - 針對 Linux Vm，會安裝[VMSnapshotLinux 擴充](https://docs.microsoft.com/azure/virtual-machines/extensions/vmsnapshot-linux)功能。
+    - 針對 Windows Vm，會安裝[VMSnapshot 擴充](../virtual-machines/extensions/vmsnapshot-windows.md)功能。
+    - 針對 Linux Vm，會安裝[VMSnapshotLinux 擴充](../virtual-machines/extensions/vmsnapshot-linux.md)功能。
 1. 針對執行的 Windows Vm，備份會與 Windows 磁碟區陰影複製服務（VSS）協調，以取得 VM 的應用程式一致快照集。
     - 根據預設，備份會進行完整的 VSS 備份。
     - 如果備份無法取得應用程式一致的快照集，則會取得基礎儲存體的檔案一致快照集（因為 VM 停止時不會進行任何應用程式寫入）。
@@ -63,7 +64,7 @@ Bek 也會一併備份。 因此，如果 Bek 遺失，授權的使用者就可�
 
 Azure 備份會根據備份排程來取得快照集。
 
-- **Windows vm：** 對於 Windows Vm，備份服務會與 VSS 協調，以取得 VM 磁片的應用程式一致快照集。  根據預設，Azure 備份會進行完整的 VSS 備份（它會截斷應用程式的記錄，例如備份時的 SQL Server，以取得應用層級一致的備份）。  如果您在 Azure VM 備份上使用 SQL Server 資料庫，則可以修改設定以進行 VSS 複本備份（以保留記錄）。 如需詳細資訊，請參閱[這篇文章](https://docs.microsoft.com/azure/backup/backup-azure-vms-troubleshoot#troubleshoot-vm-snapshot-issues)。
+- **Windows vm：** 對於 Windows Vm，備份服務會與 VSS 協調，以取得 VM 磁片的應用程式一致快照集。  根據預設，Azure 備份會進行完整的 VSS 備份（它會截斷應用程式的記錄，例如備份時的 SQL Server，以取得應用層級一致的備份）。  如果您在 Azure VM 備份上使用 SQL Server 資料庫，則可以修改設定以進行 VSS 複本備份（以保留記錄）。 如需詳細資訊，請參閱[這篇文章](./backup-azure-vms-troubleshoot.md#troubleshoot-vm-snapshot-issues)。
 
 - **Linux vm：** 若要採用 Linux Vm 的應用程式一致快照集，請使用 Linux 前置腳本和後置腳本架構來撰寫您自己的自訂腳本，以確保一致性。
 
@@ -80,6 +81,9 @@ Azure 備份會根據備份排程來取得快照集。
 **應用程式一致** | 應用程式一致的備份會擷取記憶體內容和擱置 I/O 作業。 應用程式一致快照集會使用 VSS 寫入器（或適用于 Linux 的前置/後置腳本）來確保應用程式資料的一致性，然後才進行備份。 | 當您使用應用程式一致的快照集復原 VM 時，VM 會啟動。 沒有任何資料損毀或遺失。 應用程式會以一致的狀態開始。 | Windows：所有 VSS 寫入器都成功<br/><br/> Linux：已設定且成功的前置/後置腳本
 **檔案系統一致** | 檔案系統一致備份會同時取得所有檔案的快照集，以提供一致性。<br/><br/> | 當您使用檔案系統一致快照集復原 VM 時，VM 就會開機。 沒有任何資料損毀或遺失。 應用程式必須實作自己的「修正」機制，以確保還原的資料一致。 | Windows：部分 VSS 寫入器失敗 <br/><br/> Linux：預設值（如果未設定或失敗的前置/後置腳本）
 **絕對一致** | 當 Azure VM 在備份時關閉時，通常會發生損毀一致快照集。 只會擷取備份時已存在磁碟上的資料，並加以備份。 | 從 VM 開機程式開始，然後再進行磁片檢查，以修正損毀錯誤。 在損毀之前未傳輸到磁片的任何記憶體中資料或寫入作業都會遺失。 應用程式會實作本身的資料驗證。 例如，資料庫應用程式可以使用其交易記錄來進行驗證。 如果交易記錄中有不在資料庫中的專案，則資料庫軟體會將交易向前復原，直到資料一致為止。 | VM 處於關機（已停止/已解除配置）狀態。
+
+>[!NOTE]
+> 如果布建狀態為 [**成功**]，Azure 備份會採用檔案系統一致備份。 如果布建狀態為 [**無法使用**] 或 [**失敗**]，則會執行損毀一致備份。 如果布建狀態為 [正在**建立**] 或 [**正在刪除**]，這表示 Azure 備份正在重試作業。
 
 ## <a name="backup-and-restore-considerations"></a>備份和還原考量
 
@@ -107,8 +111,8 @@ Azure 備份會根據備份排程來取得快照集。
 當您設定 VM 備份時，我們建議下列做法：
 
 - 修改原則中設定的預設排程時間。 例如，如果原則中的預設時間是凌晨 12:00，請增加幾分鐘，以最佳化資源的使用。
-- 如果您要從單一保存庫還原 Vm，強烈建議您使用不同[的一般用途 v2 儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)，以確保目標儲存體帳戶不會受到節流。 例如，每個 VM 都必須有不同的儲存體帳戶。 例如，如果還原10個 Vm，請使用10個不同的儲存體帳戶。
-- 若要備份使用高階儲存體的 Vm，請使用立即還原，建議您配置*50%* 的可用空間（已配置的儲存空間總計，只有在第一次備份時**才**需要）。 第一次備份完成之後，備份不一定需要 50% 的可用空間
+- 如果您要從單一保存庫還原 Vm，強烈建議您使用不同[的一般用途 v2 儲存體帳戶](../storage/common/storage-account-upgrade.md)，以確保目標儲存體帳戶不會受到節流。 例如，每個 VM 都必須有不同的儲存體帳戶。 例如，如果還原10個 Vm，請使用10個不同的儲存體帳戶。
+- 對於使用 premium storage 搭配立即還原的 Vm 備份，我們建議您配置*50%* 的可用空間（配置的儲存空間總計），只有在第一次備份時**才**需要。 第一次備份完成後，備份不需要50% 的可用空間
 - 對每一儲存體帳戶的磁碟數目限制，與在基礎結構即服務 (IaaS) VM 上執行的應用程式對磁碟的存取次數多寡有關。 一般做法是，如果單一儲存體帳戶上有 5 到 10 個磁碟或更多磁碟，請將部分磁碟移至個別的儲存體帳戶來平衡負載。
 
 ## <a name="backup-costs"></a>備份成本
@@ -127,7 +131,7 @@ Azure 備份會根據備份排程來取得快照集。
 
 **磁碟** | **大小上限** | **實際儲存的資料**
 --- | --- | ---
-作業系統磁碟 | 32 TB | 17 GB
+OS 磁碟 | 32 TB | 17 GB
 本機/暫存磁碟 | 135 GB | 5 GB (未包含備份)
 資料磁碟 1 | 32 TB| 30 GB
 資料磁碟 2 | 32 TB | 0 GB

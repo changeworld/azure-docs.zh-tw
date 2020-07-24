@@ -11,11 +11,12 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: mbaldwin
 Customer intent: As a key vault administrator, I want to learn the options available to secure my vaults
-ms.openlocfilehash: cd8557a33971be9fd0913bfdf84397d344901581
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 8d6dd38c3d1802c3b5bec82edbda4f9d344fa28b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834373"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090513"
 ---
 # <a name="azure-key-vault-security"></a>Azure Key Vault 安全性
 
@@ -64,7 +65,7 @@ Key Vault 存取原則可分別授與金鑰、祕密或憑證的權限。 您只
 > [!IMPORTANT]
 > Key Vault 存取原則不支援細微物件層級的權限，例如特定金鑰、祕密或憑證。 對使用者授與金鑰的建立和刪除權限時，其便可對該金鑰保存庫的所有金鑰執行這些作業。
 
-若要設定金鑰保存庫的存取原則，請使用 [Azure 入口網站](https://portal.azure.com/)、[Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)、[Azure PowerShell](/powershell/azureps-cmdlets-docs) 或 [Key Vault 管理 REST API](/rest/api/keyvault/)。
+若要設定金鑰保存庫的存取原則，請使用 [Azure 入口網站](https://portal.azure.com/)、[Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)、[Azure PowerShell](/powershell/azure/) 或 [Key Vault 管理 REST API](/rest/api/keyvault/)。
 
 您可以使用 [Azure Key Vault 的虛擬網路服務端點](overview-vnet-service-endpoints.md)來限制資料平面的存取)。 您可以設定[防火牆和虛擬網路規則](network-security.md)來額外加上一層安全性。
 

@@ -3,15 +3,16 @@ title: 在 IoT Edge 上使用即時影片分析中的直接方法-Azure
 description: IoT Edge 上的即時影片分析會公開數個直接方法。 直接方法是以本主題中所述的慣例為基礎。
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: b87452de6b12b0335afca5e28abb3ef6adb29157
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ed7cec7b8513044c2bf9b24600b8d9f42a485aae
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84260801"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091822"
 ---
 # <a name="direct-methods"></a>直接方法
 
-IoT Edge 上的即時影片分析會公開數個可從 IoT 中樞叫用的直接方法。 直接方法代表與裝置的要求-回覆互動，類似於 HTTP 呼叫，因為會立即成功或失敗 (在使用者指定的逾時之後)。 針對立即動作的進展取決於裝置是否能夠回應的案例，此方法會相當有用。 如需詳細資訊，請參閱[瞭解和叫用來自 IoT 中樞的直接方法](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-direct-methods)。
+IoT Edge 上的即時影片分析會公開數個可從 IoT 中樞叫用的直接方法。 直接方法代表與裝置的要求-回覆互動，類似於 HTTP 呼叫，因為會立即成功或失敗 (在使用者指定的逾時之後)。 針對立即動作的進展取決於裝置是否能夠回應的案例，此方法會相當有用。 如需詳細資訊，請參閱[瞭解和叫用來自 IoT 中樞的直接方法](../../iot-hub/iot-hub-devguide-direct-methods.md)。
 
 本主題描述這些方法和慣例。
 
@@ -97,7 +98,7 @@ IoT Edge 上的即時影片分析會公開數個可從 IoT 中樞叫用的直接
 }
 ```
 
-|狀態|    詳細程式碼   |Description|
+|狀態|    詳細程式碼   |描述|
 |---|---|---|
 |400|   GraphValidationError|   一般圖形錯誤，例如迴圈或資料分割等等。|
 |400|   ModuleValidationError|  模組特定驗證錯誤。|
@@ -193,7 +194,7 @@ IoT Edge 上的即時影片分析會公開數個可從 IoT 中樞叫用的直接
 |條件  |狀態碼    |詳細錯誤碼|
 |---|---|---|
 已更新現有實體 |200|   N/A|
-已建立新實體  |201|   N/A|
+已建立新實體  |201|   不適用|
 一般使用者錯誤 |400範圍  ||
 圖形驗證錯誤 |400    |GraphValidationError|
 模組驗證錯誤|   400 |ModuleValidationError|
@@ -229,7 +230,7 @@ IoT Edge 上的即時影片分析會公開數個可從 IoT 中樞叫用的直接
 |條件  |狀態碼    |詳細錯誤碼|
 |---|---|---|
 |已刪除實體|    200|    N/A|
-|找不到實體|  204|    N/A|
+|找不到實體|  204|    不適用|
 |一般使用者錯誤|   400範圍   ||
 |一或多個圖形實例正在參考圖形拓撲| 409 |GraphTopologyInUse|
 |一般伺服器錯誤| 500範圍   ||
@@ -277,9 +278,9 @@ IoT Edge 上的即時影片分析會公開數個可從 IoT 中樞叫用的直接
 
 #### <a name="filter-support"></a>篩選支援
 
-|操作      |欄位   |操作員|
+|操作      |欄位   |運算子|
 |---|---|---|
-|$orderby|NAME  |asc|
+|$orderby|名稱  |asc|
 
 
 #### <a name="status-codes"></a>狀態碼
@@ -375,7 +376,7 @@ IoT Edge 上的即時影片分析會公開數個可從 IoT 中樞叫用的直接
 |條件  |狀態碼    |詳細錯誤碼|
 |---|---|---|
 |已更新現有實體    |200    |N/A|
-|已建立新實體|    201 |N/A|
+|已建立新實體|    201 |不適用|
 |一般使用者錯誤|   400範圍   ||
 |圖形驗證錯誤    |400|   GraphValidationError|
 |模組驗證錯誤|  400 |ModuleValidationError|
@@ -416,7 +417,7 @@ IoT Edge 上的即時影片分析會公開數個可從 IoT 中樞叫用的直接
 |條件  |狀態碼    |詳細錯誤碼|
 |---|---|---|
 |已成功刪除圖形|    200|    N/A|
-|找不到圖形|   204|    N/A|
+|找不到圖形|   204|    不適用|
 |一般使用者錯誤    |400範圍  ||
 |圖形不是處於「已停止」狀態    |409    |OperationNotAllowedInState|
 |一般伺服器錯誤| 500範圍   ||
@@ -465,9 +466,9 @@ IoT Edge 上的即時影片分析會公開數個可從 IoT 中樞叫用的直接
 
 #### <a name="filter-support"></a>篩選支援
 
-|操作  |   欄位|   操作員|
+|操作  |   欄位|   運算子|
 |---|---|---|
-|$orderby|  NAME|   asc|
+|$orderby|  名稱|   asc|
 
 #### <a name="status-codes"></a>狀態碼
 
@@ -518,7 +519,7 @@ IoT Edge 上的即時影片分析會公開數個可從 IoT 中樞叫用的直接
 |條件  |狀態碼    |詳細錯誤碼|
 |---|---|---|
 |已成功啟用圖形   |200    |N/A|
-|已建立新實體 |201|   N/A|
+|已建立新實體 |201|   不適用|
 |一般使用者錯誤    |400範圍  ||
 |模組驗證錯誤   |400|   ModuleValidationError|
 |資源驗證錯誤|    409|    ResourceValidationError|
@@ -567,7 +568,7 @@ IoT Edge 上的即時影片分析會公開數個可從 IoT 中樞叫用的直接
 |條件  |狀態碼    |詳細錯誤碼|
 |---|---|---|
 |已成功啟用圖形   |200|   N/A|
-|已建立新實體 |201|   N/A|
+|已建立新實體 |201|   不適用|
 |一般使用者錯誤    |400範圍  ||
 |圖形處於啟用狀態   |409|   OperationNotAllowedInState|
 |一般伺服器錯誤  |500範圍  ||

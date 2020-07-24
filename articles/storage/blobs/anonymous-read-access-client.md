@@ -6,21 +6,21 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 06/29/2020
+ms.date: 07/22/2020
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: f4263d372b82779fe68a6a15cc7db61a31359e14
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: ac5fad935e5c37df3a8bd64189a59612eaf097aa
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86209391"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091363"
 ---
 # <a name="access-public-containers-and-blobs-anonymously-with-net"></a>以匿名方式使用 .NET 存取公用容器和 blob
 
-Azure 儲存體支援容器和 blob 的匿名、公用讀取權限。 用戶端可以使用 Azure 儲存體的用戶端程式庫，以及使用其他支援 Azure 儲存體資料存取的工具和公用程式，以匿名方式存取公用容器和 blob。
+Azure 儲存體支援對容器和 blob 進行選擇性的公用讀取權限。 用戶端可以使用 Azure 儲存體的用戶端程式庫，以及使用其他支援 Azure 儲存體資料存取的工具和公用程式，以匿名方式存取公用容器和 blob。
 
-本文說明如何從 .NET 存取公用容器或 blob。 如需有關在容器上設定匿名讀取權限的詳細資訊，請參閱。 如需防止所有匿名存取儲存體帳戶的相關資訊，請參閱。
+本文說明如何從 .NET 存取公用容器或 blob。 如需有關在容器上設定匿名讀取權限的詳細資訊，請參閱[設定容器和 blob 的匿名公用讀取權限](anonymous-read-access-configure.md)。 如需防止所有匿名存取儲存體帳戶的相關資訊，請參閱[防止對容器和 blob 的匿名公用讀取權限](anonymous-read-access-prevent.md)。
 
 匿名存取容器與 Blob 的用戶端可使用不需要認證的建構函式。 下列範例示範以匿名方式參考容器和 blob 的幾種不同方法。
 

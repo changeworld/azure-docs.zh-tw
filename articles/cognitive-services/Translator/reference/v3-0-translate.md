@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 04/17/2020
 ms.author: swmachan
-ms.openlocfilehash: 563f4693c358c570caa2566f58002ddfe6c7bc69
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 512632faae453ebdf7cb7b279fe2d29b25d23d6b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83584632"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090853"
 ---
 # <a name="translator-30-translate"></a>翻譯工具3.0：轉譯
 
@@ -40,11 +40,11 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   <th>描述</th>
   <tr>
     <td>api-version</td>
-    <td>必要參數<em></em>。<br/>用戶端要求的 API 版本。 值必須為 <code>3.0</code>。</td>
+    <td><em>必要參數</em>。<br/>用戶端要求的 API 版本。 值必須為 <code>3.0</code>。</td>
   </tr>
   <tr>
     <td>to</td>
-    <td>必要參數<em></em>。<br/>指定輸出文字的語言。 目標語言必須是 <code>translation</code> 範圍內包含的<a href="./v3-0-languages.md">支援語言</a>之一。 例如，使用 <code>to=de</code> 翻譯為德文。<br/>在查詢字串中重複參數，可能會同時翻譯為多種語言。 例如，使用 <code>to=de&to=it</code> 翻譯為德文和義大利文。</td>
+    <td><em>必要參數</em>。<br/>指定輸出文字的語言。 目標語言必須是 <code>translation</code> 範圍內包含的<a href="./v3-0-languages.md">支援語言</a>之一。 例如，使用 <code>to=de</code> 翻譯為德文。<br/>在查詢字串中重複參數，可能會同時翻譯為多種語言。 例如，使用 <code>to=de&to=it</code> 翻譯為德文和義大利文。</td>
   </tr>
 </table>
 
@@ -59,7 +59,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   </tr>  
   <tr>
     <td>textType</td>
-    <td><em>選擇性參數</em>。<br/>定義要翻譯的文字是純文字還是 HTML 文字。 任何 HTML 都需要是格式正確的完整項目。 可能的值為：<code>plain</code> (預設) 或 <code>html</code>。</td>
+    <td><em>選擇性參數</em>。<br/>定義要翻譯的文字是純文字還是 HTML 文字。 任何 HTML 都需要是格式正確的完整項目。 可能的值為： <code>plain</code> （預設）或 <code>html</code>.</td>
   </tr>
   <tr>
     <td>category</td>
@@ -107,15 +107,15 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   <th>描述</th>
   <tr>
     <td>驗證標頭</td>
-    <td>必要的要求標頭<em></em>。<br/>請參閱<a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">可用的驗證選項</a>。</td>
+    <td><em>必要的要求標頭</em>。<br/>請參閱<a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">可用的驗證選項</a>。</td>
   </tr>
   <tr>
     <td>Content-Type</td>
-    <td>必要的要求標頭<em></em>。<br/>指定承載的內容類型。<br/> 接受的值為 <code>application/json; charset=UTF-8</code> 。</td>
+    <td><em>必要的要求標頭</em>。<br/>指定承載的內容類型。<br/> 接受的值為 <code>application/json; charset=UTF-8</code> 。</td>
   </tr>
   <tr>
     <td>Content-Length</td>
-    <td>必要的要求標頭<em></em>。<br/>要求本文的長度。</td>
+    <td><em>必要的要求標頭</em>。<br/>要求本文的長度。</td>
   </tr>
   <tr>
     <td>X-ClientTraceId</td>
@@ -123,7 +123,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   </tr>
 </table> 
 
-## <a name="request-body"></a>要求本文
+## <a name="request-body"></a>Request body
 
 要求的本文是 JSON 陣列。 每個陣列項目都是字串屬性名為 `Text` 的 JSON 物件，其代表要翻譯的字串。
 
@@ -133,7 +133,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
 ]
 ```
 
-套用下列限制：
+適用下列限制：
 
 * 陣列最多可以有 100 個項目。
 * 要求中包含的完整文字不能超過 5,000 個字元，包括空格。
@@ -317,6 +317,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'Hello, what is your name?'}, {'Text':'I am fine, thank you.'}]"
 ```
 
+回應包含所有文字片段的轉譯，其順序與要求中完全相同。
 回應本文如下：
 
 ```
@@ -390,7 +391,7 @@ Translator 服務通常會在翻譯中保留存在於來源的粗話。 粗話�
   </tr>
 </table> 
 
-例如：
+例如:
 
 ```curl
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de&profanityAction=Marked" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'This is a freaking good idea.'}]"

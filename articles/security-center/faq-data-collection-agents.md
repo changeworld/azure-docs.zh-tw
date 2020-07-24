@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 79b6d7f84cd54979421357efa94c5c6de38fb4f1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a143752a5a6cbd32bf18fc5544831bb860097d3a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261387"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089850"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>常見問題集 - 資料收集、代理程式和工作區的相關問題
 
@@ -164,7 +164,7 @@ ms.locfileid: "85261387"
 
 您可以在安全性原則中關閉訂用帳戶的自動佈建，但不建議您這麼做。 關閉自動佈建會限制資訊安全中心的建議和警示。 若要停用自動佈建：
 
-1. 如果您的訂用帳戶設定為標準層，請開啟該訂用帳戶的安全性原則，並選取**免費**層。
+1. 如果您的訂用帳戶已針對標準層進行設定，請開啟該訂用帳戶的安全性原則，並選取**免費**層。
 
    ![定價層][1]
 

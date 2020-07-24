@@ -3,11 +3,12 @@ title: 使用適用于容器的 Azure 監視器來設定 Azure Red Hat OpenShift
 description: 本文說明如何使用裝載于 Azure Red Hat OpenShift 第3版和更高版本上的 Azure 監視器來設定監視 Kubernetes 叢集。
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: e04ef42971756cffe0906e1ddfb8406e876588bc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 438a0513b6aceb876df4f9e3d0f4510c7cf8235e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85800506"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092893"
 ---
 # <a name="configure-azure-red-hat-openshift-v3-with-azure-monitor-for-containers"></a>使用適用于容器的 Azure 監視器來設定 Azure Red Hat OpenShift v3
 
@@ -20,7 +21,7 @@ ms.locfileid: "85800506"
 您可以使用下列支援的方法，針對新的或 Azure Red Hat OpenShift 的一或多個現有部署啟用容器的 Azure 監視器：
 
 - 適用于 Azure 入口網站的現有叢集，或使用 Azure Resource Manager 範本。
-- 針對使用 Azure Resource Manager 範本的新叢集，或使用[Azure CLI](https://docs.microsoft.com/cli/azure/openshift?view=azure-cli-latest#az-openshift-create)建立新的叢集。
+- 針對使用 Azure Resource Manager 範本的新叢集，或使用[Azure CLI](/cli/azure/openshift?view=azure-cli-latest#az-openshift-create)建立新的叢集。
 
 ## <a name="supported-and-unsupported-features"></a>支援和不支援的功能
 
@@ -29,7 +30,7 @@ ms.locfileid: "85800506"
 - 即時資料（預覽）
 - 從叢集節點和 pod[收集計量](container-insights-update-metrics.md)，並將其儲存在 Azure 監視器計量資料庫中
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 - [Log Analytics 工作區](../platform/design-logs-deployment.md)。
 
@@ -105,7 +106,7 @@ ms.locfileid: "85800506"
 
 - [使用 Resource Manager 範本與 Azure CLI 部署資源](../../azure-resource-manager/templates/deploy-cli.md)
 
-如果您選擇使用 Azure CLI，必須先在本機安裝並使用 CLI。 您必須執行 Azure CLI 版2.0.65 或更新版本。 若要知道您使用的版本，請執行 `az --version`。 如果您需要安裝或升級 Azure CLI，請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+如果您選擇使用 Azure CLI，必須先在本機安裝並使用 CLI。 您必須執行 Azure CLI 版2.0.65 或更新版本。 若要知道您使用的版本，請執行 `az --version`。 如果您需要安裝或升級 Azure CLI，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
 1. 下載並儲存到本機資料夾（Azure Resource Manager 範本和參數檔案），以使用下列命令來建立具有監視附加元件的叢集：
 
@@ -192,7 +193,7 @@ ms.locfileid: "85800506"
 
 - [使用 Resource Manager 範本與 Azure CLI 部署資源](../../azure-resource-manager/templates/deploy-cli.md)
 
-如果您選擇使用 Azure CLI，必須先在本機安裝並使用 CLI。 您必須執行 Azure CLI 版2.0.65 或更新版本。 若要知道您使用的版本，請執行 `az --version`。 如果您需要安裝或升級 Azure CLI，請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+如果您選擇使用 Azure CLI，必須先在本機安裝並使用 CLI。 您必須執行 Azure CLI 版2.0.65 或更新版本。 若要知道您使用的版本，請執行 `az --version`。 如果您需要安裝或升級 Azure CLI，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
 1. 使用下列命令，下載範本和參數檔案，以使用監視附加元件更新您的叢集：
 
@@ -242,4 +243,4 @@ ms.locfileid: "85800506"
 
 - 若要從您的叢集中抓取和分析 Prometheus 計量，請參閱[設定 Prometheus 計量抓取](container-insights-prometheus-integration.md)
 
-- 若要瞭解如何使用容器的 Azure 監視器來停止監視您的叢集，請參閱[如何停止監視您的 Azure Red Hat OpenShift](container-insights-optout-openshift.md)叢集。
+- 若要瞭解如何使用容器的 Azure 監視器來停止監視您的叢集，請參閱[如何停止監視您的 Azure Red Hat OpenShift](./container-insights-optout-openshift-v3.md)叢集。

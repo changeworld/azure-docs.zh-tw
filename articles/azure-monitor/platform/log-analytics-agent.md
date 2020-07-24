@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/04/2020
-ms.openlocfilehash: c6bd45324313ebc44bd4c59cd6f09e2eaab28d32
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9f8850b83b2af7f0d3007cd716f9e077361a02e2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505137"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091108"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics 代理程式概觀
 開發 Azure Log Analytics 代理程式是為了能夠全面管理任何雲端中的虛擬機器、內部部署機器，以及 [System Center Operations Manager](/system-center/scom/) 所監視的機器。 Windows 和 Linux 代理程式會將從不同來源收集而來的資料傳送至 Azure 監視器中的 Log Analytics 工作區，以及監視解決方案中所定義的任何唯一記錄或計量。 Log Analytics 代理程式也支援 Azure 監視器中的深入解析和其他服務，例如[適用於 VM 的 Azure 監視器](../insights/vminsights-enable-overview.md)、[Azure 資訊安全中心](../../security-center/index.yml)和 [Azure 自動化](../../automation/automation-intro.md)。
@@ -153,6 +153,7 @@ Linux 代理程式正式支援下列 Linux 作業系統版本：
 |Glibc |    GNU C 程式庫 | 2.5-12 
 |Openssl    | OpenSSL 程式庫 | 1.0.x 或 1.1.x |
 |Curl | cURL Web 用戶端 | 7.15.5 |
+|Python | | 2.6 + 或 3.3 +
 |Python-ctypes | | 
 |PAM | 插入式驗證模組 | | 
 

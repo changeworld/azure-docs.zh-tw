@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
-ms.date: 05/08/2020
-ms.openlocfilehash: ad4e80c98097955703e4a6fb3c64e93a338f2720
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/22/2020
+ms.openlocfilehash: 93366bf963350bf9cbdbda15ec4070c21a1dc975
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121158"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090139"
 ---
 # <a name="common-questions-about-microsoft-commercial-marketplace"></a>Microsoft 商業市集的常見問題
 
@@ -46,7 +46,7 @@ Azure Marketplace 包括建置在 Azure 或在 Azure 訂用帳戶內使用的 IT
 
 ### <a name="is-there-a-listing-fee-for-the-microsoft-commercial-marketplace"></a>Microsoft 商業市集是否有清單費用嗎？
 
-否，可以免費在我們的商業市集中發佈供應項目。 我們會以交易費用的形式保留少量的銷售百分比，並將其投資在市集獎勵計畫、平台創新和商業市集作業中。
+否，可以免費在我們的商業市集中發佈供應項目。 我們會以交易費用的形式保留少量的銷售百分比，並將其投資在市集獎勵計畫、平台創新和商業市集作業中。 [AZURE IP 共同銷售](https://docs.microsoft.com/azure/marketplace/marketplace-co-sell)受到激勵供應專案的交易費用已降低。
 
 ### <a name="how-do-i-sign-up-to-be-a-publisher-in-the-microsoft-commercial-marketplace"></a>如何註冊為 Microsoft 商業市集中的發行者？
 

@@ -3,12 +3,12 @@ title: Azure Migrate 常見問題
 description: 取得有關 Azure Migrate 服務常見問題的解答。
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 9b71888b284fd9cc125def4758d1e3800a92acf2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 307a1d417b54ad9546c6e409ad8b105ea443da0e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81530312"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090003"
 ---
 # <a name="azure-migrate-common-questions"></a>Azure Migrate：常見的問題
 
@@ -32,6 +32,10 @@ Azure Migrate 提供中央中樞來追蹤內部部署應用程式和工作負載
 [Azure Site Recovery](../site-recovery/site-recovery-overview.md)是一種嚴重損壞修復解決方案。 
 
 Azure Migrate：伺服器遷移工具會使用一些後端 Site Recovery 功能，以進行部分內部部署機器的隨即轉移。
+
+## <a name="i-have-a-project-with-the-previous-classic-experience-of-azure-migrate-how-do-i-start-using-the-new-version"></a>我有一個專案具有舊版 Azure Migrate 的傳統體驗。 如何? 開始使用新版本嗎？
+
+您無法將舊版中的專案或元件升級至新版本。 您需要[建立新的 Azure Migrate 專案](create-manage-projects.md)，並在其中新增[評估和遷移工具](how-to-add-tool-first-time.md)。 使用教學課程來瞭解如何使用可用的評估和遷移工具。 如果您已將 Log Analytics 工作區附加至傳統專案，您可以在刪除傳統專案之後，將它附加至目前版本的專案。
 
 ## <a name="whats-the-difference-between-azure-migrate-server-assessment-and-the-map-toolkit"></a>Azure Migrate 之間的差異為何：伺服器評估和地圖工具組？
 

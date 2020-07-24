@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 05/21/2020
 ms.author: juliako
-ms.openlocfilehash: 9788c4663908497b51fbaaf7f824125d857e7c81
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 33c762e2f2a9bed90991f7b85e0fb83fbb43765c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83774403"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090156"
 ---
 # <a name="get-credentials-to-access-media-services-api"></a>取得認證以存取媒體服務 API  
 
@@ -55,7 +56,7 @@ ms.locfileid: "83774403"
 
 **管理您的 AAD 應用程式和祕密**區段可讓您選取或建立新的 Azure AD 應用程式，並產生秘密。 基於安全性考量，關閉刀鋒視窗後即無法顯示祕密。 應用程式會使用應用程式識別碼和祕密來進行驗證，以取得媒體服務的有效權杖。
 
-請確定您有足夠的權限，可以使用 Azure AD 租用戶註冊應用程式，並將應用程式指派至 Azure 訂用帳戶中的角色。 如需詳細資訊，請參閱[必要權限](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions)。
+請確定您有足夠的權限，可以使用 Azure AD 租用戶註冊應用程式，並將應用程式指派至 Azure 訂用帳戶中的角色。 如需詳細資訊，請參閱[必要權限](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)。
 
 #### <a name="connect-to-media-services-api"></a>連線到媒體服務 API
 

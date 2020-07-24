@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 06/21/2020
 ms.author: rajosh
-ms.openlocfilehash: e80ec71bef8c34331fac076b7b08be48a9571c2e
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: db1de363856fd560fea97f8f9cdf542717c4cca3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86107694"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090088"
 ---
 # <a name="build-migration-plan-with-azure-migrate"></a>使用 Azure Migrate 建立移轉計劃
 
@@ -151,7 +151,7 @@ ms.locfileid: "86107694"
 
 - 如有需要，請取得您的執行支援。 許多組織都選擇可支援其雲端遷移的外部協助。 若要透過個人化協助快速且自信地移至 Azure，請考慮 [Azure 專家管理的服務提供者](https://www.microsoft.com/solution-providers/search?cacheId=9c2fed4f-f9e2-42fb-8966-4c565f08f11e&ocid=CM_Discovery_Checklist_PDF)   或 [FastTrack for Azure](https://azure.microsoft.com/programs/azure-fasttrack/?ocid=CM_Discovery_Checklist_PDF)。  
 
-建立有效的雲端遷移計畫，其中包含您想要遷移之應用程式清單/群組的詳細資訊、應用程式和資料庫可用性與停機時間限制，以及所需的遷移里程碑。 您的遷移計畫也應該納入資料複製所需的時間，並包含用於遷移後測試和轉換活動的明智緩衝區。 遷移後測試必須包含功能、整合、安全性和效能測試使用案例，以確保遷移的應用程式如預期般運作，而且所有資料庫物件和資料關聯性都已成功轉移到雲端。 遷移後測試必須包含功能、整合、安全性和效能測試使用案例，以確保遷移的應用程式如預期般運作，而且所有資料庫物件和資料關聯性都已成功轉移到雲端。  
+建立有效的雲端遷移計畫，其中包含您想要遷移之應用程式清單/群組的詳細資訊、應用程式和資料庫可用性與停機時間限制，以及所需的遷移里程碑。 您的遷移計畫也應該納入資料複製所需的時間，並包含用於遷移後測試和轉換活動的明智緩衝區。 遷移後測試必須包含功能、整合、安全性和效能測試使用案例，以確保遷移的應用程式如預期般運作，而且所有資料庫物件和資料關聯性都已成功轉移到雲端。  
 
 使用此分析來建立遷移藍圖，並宣告維護期間，以最少的停機時間遷移您的應用程式和資料庫，並在遷移期間限制潛在的營運/業務影響。  
 

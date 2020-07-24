@@ -8,11 +8,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 4f5be29dd42b03e86abb2be392ea42f875536fb5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5d478723af7d13cc3480f6c2a80bf9b76ba4b84f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84193526"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091346"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 中的存取控制
 
@@ -64,9 +65,9 @@ SAS 權杖會在其權杖中包含允許的權限。 SAS 權杖中包含的權�
 
 若要設定檔案和目錄層級許可權，請參閱下列任何一篇文章：
 
-|||
+| 環境 | 發行項 |
 |--------|-----------|
-|Azure 儲存體總管 |[使用 Azure 儲存體總管來管理中的目錄、檔案和 Acl Azure Data Lake Storage Gen2](data-lake-storage-explorer.md#managing-access)|
+|Azure 儲存體總管 |[使用 Azure 儲存體總管來管理 Azure Data Lake Storage Gen2 中的目錄、檔案和 ACL](data-lake-storage-explorer.md#managing-access) (機器翻譯)|
 |.NET |[使用 .NET 管理 Azure Data Lake Storage Gen2 中的目錄、檔案和 Acl](data-lake-storage-directory-file-acl-dotnet.md)|
 |Java|[使用 JAVA 來管理 Azure Data Lake Storage Gen2 中的目錄、檔案和 Acl](data-lake-storage-directory-file-acl-java.md)|
 |Python|[使用 Python 來管理 Azure Data Lake Storage Gen2 中的目錄、檔案和 Acl](data-lake-storage-directory-file-acl-python.md)|
@@ -280,7 +281,7 @@ def set_default_acls_for_new_child(parent, child):
 
 ### <a name="do-i-have-to-enable-support-for-acls"></a>我必須啟用 ACL 的支援嗎？
 
-否。 只要開啟階層命名空間（HNS）功能，就會為儲存體帳戶啟用透過 Acl 的存取控制。
+不可以。 只要開啟階層命名空間（HNS）功能，就會為儲存體帳戶啟用透過 Acl 的存取控制。
 
 如果 HNS 關閉，Azure RBAC 授權規則仍適用。
 
@@ -292,7 +293,7 @@ def set_default_acls_for_new_child(parent, child):
 
 - 呼叫端具有「超級使用者」許可權，
 
-Or
+或者
 
 - 父目錄必須具有 [寫入 + 執行] 權限。
 - 要刪除的目錄及其中的每個目錄，都需要 [讀取 + 寫入 + 執行] 權限。
@@ -347,6 +348,6 @@ ACL 則不會繼承。 但預設 ACL 可以用來為父目錄下建立的子目�
 * [Ubuntu 上的 POSIX ACL](https://help.ubuntu.com/community/FilePermissionsACLs)
 * [Linux 上使用存取控制清單的 ACL](https://bencane.com/2012/05/27/acl-using-access-control-lists-on-linux/)
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
 * [Azure Data Lake Storage Gen2 概觀](../blobs/data-lake-storage-introduction.md)

@@ -3,12 +3,12 @@ title: 使用 Azure 資料箱的離線備份
 description: 瞭解如何使用 Azure 資料箱，從 MARS 代理程式離線將大型初始備份資料植入復原服務保存庫。
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: a60d749f270c9efab0649b49b5c0c41945faddf5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e377ccde714c1486ff731d24d5a0cd64364bca37
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513688"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091023"
 ---
 # <a name="azure-backup-offline-backup-by-using-azure-data-box"></a>使用 Azure 資料箱進行 Azure 備份離線備份
 
@@ -56,7 +56,7 @@ ms.locfileid: "86513688"
 >[!IMPORTANT]
 >單一伺服器的初始備份資料必須包含在單一 Azure 資料箱實例或 Azure 資料箱磁片中，而且不能在相同或不同 Sku 的多個裝置之間共用。 但是 Azure 資料箱裝置可以包含來自多部伺服器的初始備份。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 ### <a name="azure-subscription-and-required-permissions"></a>Azure 訂用帳戶和必要許可權
 
@@ -153,7 +153,7 @@ MARS 代理程式會在本機系統內容中運作，因此需要將相同層級
 若要確保您可以使用 NFS 通訊協定，將您的資料箱裝置掛接為本機系統：
 
 1. 在安裝 MARS 代理程式的 Windows 伺服器上，啟用 [NFS] 功能的用戶端。 指定替代來源*WIM： D： \Sources\Install.wim： 4*。
-1. 將 PSExec 從下載 <https://download.sysinternals.com/files/PSTools.zip> 到已安裝 MARS 代理程式的伺服器。
+1. 將 PsExec 從[Sysinternals](/sysinternals/downloads/psexec)頁面下載到已安裝 MARS 代理程式的伺服器。
 1. 開啟提升許可權的命令提示字元，然後使用包含*PSExec.exe*做為目前的目錄的目錄執行下列命令。
 
     ```cmd
@@ -195,7 +195,7 @@ MARS 代理程式會在本機系統內容中運作，因此需要將相同層級
 
     ![提取訂用帳戶識別碼資料箱作業](./media/offline-backup-azure-data-box/fetching-databox-jobs.png)
 
-1. 選取您已解除封裝、連線，並將資料箱磁片解除鎖定的正確資料箱順序。 選取 [下一步] 。
+1. 選取您已解除封裝、連線，並將資料箱磁片解除鎖定的正確資料箱順序。 選取 [下一步]。
 
     ![選取資料箱訂單](./media/offline-backup-azure-data-box/select-databox-order.png)
 

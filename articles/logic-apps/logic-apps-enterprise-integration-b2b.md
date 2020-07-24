@@ -8,11 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/10/2020
-ms.openlocfilehash: b576fc99e2f203bb3d690a8135ee76cee26b3de8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2fd96777a5fe74d44aeed5f6de82e54b2663a024
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82792355"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090377"
 ---
 # <a name="receive-and-confirm--b2b-as2-messages-by-using-azure-logic-apps-and-enterprise-integration-pack"></a>使用 Azure Logic Apps 和企業整合套件來接收和確認 B2B AS2 訊息
 
@@ -20,7 +21,7 @@ ms.locfileid: "82792355"
 
 本文說明如何建立邏輯應用程式，以使用要求觸發程式來接收 HTTP 要求、使用 AS2 和 X12 動作來解碼訊息內容，然後使用回應動作來傳迴響應。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 * Azure 訂用帳戶。 如果您還沒有訂用帳戶，請[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
@@ -34,7 +35,7 @@ ms.locfileid: "82792355"
 
   如果您不熟悉邏輯應用程式，請參閱[什麼是 Azure Logic Apps？](../logic-apps/logic-apps-overview.md)和[快速入門：建立您的第一個邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
-* 與您的 Azure 訂用帳戶相關聯，並連結至邏輯應用程式的[整合帳戶](../logic-apps/logic-apps-enterprise-integration-accounts.md)。 邏輯應用程式與整合帳戶必須位於相同位置或相同的 Azure 區域中。
+* 與您的 Azure 訂用帳戶相關聯，並連結至邏輯應用程式的[整合帳戶](./logic-apps-enterprise-integration-create-integration-account.md)。 邏輯應用程式與整合帳戶必須位於相同位置或相同的 Azure 區域中。
 
 * 至少有兩個您已在整合帳戶中定義的[交易夥伴](../logic-apps/logic-apps-enterprise-integration-partners.md)，以及這些合作夥伴的[AS2 和 X12 協定](logic-apps-enterprise-integration-agreements.md)。
 
@@ -104,7 +105,7 @@ ms.locfileid: "82792355"
 
 1. 在 [ **AS2**解碼] 動作底下，選取 [**新增步驟**]。
 
-1. 在 [**選擇動作**] 底下的 [搜尋] 方塊中，選取 [**內建**]。 在搜尋方塊中，輸入 `condition`。 從 [**動作**] 清單中，選取 [**條件**]。
+1. 在 [**選擇動作**] 底下的 [搜尋] 方塊中，選取 [**內建**]。 在搜尋方塊中，輸入 `condition`。 從 [動作] 清單中選取 [條件]。
 
    ![新增「條件」動作](./media/logic-apps-enterprise-integration-b2b/add-condition-action.png)
 

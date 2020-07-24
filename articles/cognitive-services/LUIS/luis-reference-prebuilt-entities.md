@@ -11,18 +11,18 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 10/03/2019
 ms.author: diberry
-ms.openlocfilehash: a49452653f8ac4bcc62758d801a235be0929d314
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 831e766fbb10d616b3fbaf8f878228a9a51ece37
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84686625"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090938"
 ---
 # <a name="entities-per-culture-in-your-luis-model"></a>在您 LUIS 模型中，每個文化特性的實體
 
 Language Understanding (LUIS) 提供預先建置的實體。 當您的應用程式中包含預先建置的實體時，LUIS 就會在端點回應中包含對應的實體預測。 所有範例語句也都會標示該實體。 預先建置實體的行為**無法**修改。 除非另有註明，否則預先建置的實體在所有 LUIS 應用程式地區設定 (文化特性) 中均適用。 下表列出支援各種文化特性的預先建置實體。
 
-|文化特性|次文化特性|注意|
+|文化特性|次文化特性|附註|
 |--|--|--|
 |中文|[zh-CN](#chinese-entity-support)||
 |荷蘭文|[nl-NL](#dutch-entity-support)||
@@ -44,8 +44,8 @@ Language Understanding (LUIS) 提供預先建置的實體。 當您的應用程�
 
 支援下列實體：
 
-|預建實體|```zh-CN``` |
-------|:------:|
+| 預建實體 | zh-CN |
+| --------------- | :---: |
 [年齡](luis-reference-prebuilt-age.md)：<br>year<br>月<br>week<br>day   |    V2、V3   |
 [貨幣 (錢幣)](luis-reference-prebuilt-currency.md)：<br>貨幣單位<br>小數單位 (例如：貨幣單位)  |    V2、V3   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md)：<br>date<br>daterange<br>time<br>時間範圍   |    V2、V3   |
@@ -66,8 +66,8 @@ Language Understanding (LUIS) 提供預先建置的實體。 當您的應用程�
 
 支援下列實體：
 
-|預建實體|```nl-NL``` |
-------|:------:|
+| 預建實體 | nl-NL |
+| --------------- | :---: |
 [年齡](luis-reference-prebuilt-age.md)：<br>year<br>月<br>week<br>day   |    V2、V3   |
 [貨幣 (錢幣)](luis-reference-prebuilt-currency.md)：<br>貨幣單位<br>小數單位 (例如：貨幣單位)  |    V2、V3   |
 [從中](luis-reference-prebuilt-deprecated.md)   |    -   |
@@ -88,8 +88,8 @@ Language Understanding (LUIS) 提供預先建置的實體。 當您的應用程�
 
 支援下列實體：
 
-|預建實體|```en-US``` |
-------|:------:|
+| 預建實體 | en-US |
+| --------------- | :---: |
 [年齡](luis-reference-prebuilt-age.md)：<br>year<br>月<br>week<br>day   |    V2、V3   |
 [貨幣 (錢幣)](luis-reference-prebuilt-currency.md)：<br>貨幣單位<br>小數單位 (例如：貨幣單位)  |    V2、V3   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md)：<br>date<br>daterange<br>time<br>時間範圍   |    V2、V3   |
@@ -110,8 +110,8 @@ Language Understanding (LUIS) 提供預先建置的實體。 當您的應用程�
 
 支援下列實體：
 
-|預建實體|```fr-FR``` |
-------|:------:|
+| 預建實體 | fr-FR |
+| --------------- | :---: |
 [年齡](luis-reference-prebuilt-age.md)：<br>year<br>月<br>week<br>day   |    V2、V3   |
 [貨幣 (錢幣)](luis-reference-prebuilt-currency.md)：<br>貨幣單位<br>小數單位 (例如：貨幣單位)  |    V2、V3   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md)：<br>date<br>daterange<br>time<br>時間範圍   |    V2、V3   |
@@ -132,8 +132,8 @@ Language Understanding (LUIS) 提供預先建置的實體。 當您的應用程�
 
 支援下列實體：
 
-|預建實體|```fr-CA``` |
-------|:------:|
+| 預建實體 | fr-CA |
+| --------------- | :---: |
 [年齡](luis-reference-prebuilt-age.md)：<br>year<br>月<br>week<br>day   |    V2、V3   |
 [貨幣 (錢幣)](luis-reference-prebuilt-currency.md)：<br>貨幣單位<br>小數單位 (例如：貨幣單位)  |    V2、V3   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md)：<br>date<br>daterange<br>time<br>時間範圍   |    V2、V3   |
@@ -154,8 +154,8 @@ Language Understanding (LUIS) 提供預先建置的實體。 當您的應用程�
 
 支援下列實體：
 
-|預建實體|```de-DE``` |
-------|:------:|
+|預建實體 | de-DE |
+| -------------- | :---: |
 [年齡](luis-reference-prebuilt-age.md)：<br>year<br>月<br>week<br>day   |    V2、V3   |
 [貨幣 (錢幣)](luis-reference-prebuilt-currency.md)：<br>貨幣單位<br>小數單位 (例如：貨幣單位)  |    V2、V3   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md)：<br>date<br>daterange<br>time<br>時間範圍   |    V2、V3   |
@@ -178,8 +178,8 @@ Language Understanding (LUIS) 提供預先建置的實體。 當您的應用程�
 
 支援下列實體：
 
-|預建實體|```it-IT``` |
-------|:------:|
+| 預建實體 | it-IT |
+| --------------- | :---: |
 [年齡](luis-reference-prebuilt-age.md)：<br>year<br>月<br>week<br>day   |    V2、V3   |
 [貨幣 (錢幣)](luis-reference-prebuilt-currency.md)：<br>貨幣單位<br>小數單位 (例如：貨幣單位)  |    V2、V3   |
 [從中](luis-reference-prebuilt-deprecated.md)   |    -   |
@@ -200,8 +200,8 @@ Language Understanding (LUIS) 提供預先建置的實體。 當您的應用程�
 
 支援下列實體：
 
-|預建實體|```ja-JP``` |
-------|:------:|
+|預建實體 | ja-JP |
+| -------------- | :---: |
 [年齡](luis-reference-prebuilt-age.md)：<br>year<br>月<br>week<br>day   |    V2、-   |
 [貨幣 (錢幣)](luis-reference-prebuilt-currency.md)：<br>貨幣單位<br>小數單位 (例如：貨幣單位)  |    V2、-   |
 [從中](luis-reference-prebuilt-deprecated.md)   |    -   |
@@ -222,8 +222,8 @@ Language Understanding (LUIS) 提供預先建置的實體。 當您的應用程�
 
 支援下列實體：
 
-|預建實體|```ko-KR``` |
-------|:------:|
+| 預建實體 | ko-KR |
+| --------------- | :---: |
 [年齡](luis-reference-prebuilt-age.md)：<br>year<br>月<br>week<br>day   |    -   |
 [貨幣 (錢幣)](luis-reference-prebuilt-currency.md)：<br>貨幣單位<br>小數單位 (例如：貨幣單位)  |    -   |
 [從中](luis-reference-prebuilt-deprecated.md)   |    -   |
@@ -244,8 +244,8 @@ Language Understanding (LUIS) 提供預先建置的實體。 當您的應用程�
 
 支援下列實體：
 
-|預建實體|```pt-BR``` |
-------|:------:|
+| 預建實體 | pt-BR |
+| --------------- | :---: |
 [年齡](luis-reference-prebuilt-age.md)：<br>year<br>月<br>week<br>day   |    V2、V3   |
 [貨幣 (錢幣)](luis-reference-prebuilt-currency.md)：<br>貨幣單位<br>小數單位 (例如：貨幣單位)  |    V2、V3   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md)：<br>date<br>daterange<br>time<br>時間範圍   |    V2、V3   |
@@ -266,8 +266,8 @@ Language Understanding (LUIS) 提供預先建置的實體。 當您的應用程�
 
 支援下列實體：
 
-|預建實體|```es-ES``` |
-------|:------:|
+| 預建實體 | es-ES |
+| --------------- | :---: |
 [年齡](luis-reference-prebuilt-age.md)：<br>year<br>月<br>week<br>day   |    V2、V3   |
 [貨幣 (錢幣)](luis-reference-prebuilt-currency.md)：<br>貨幣單位<br>小數單位 (例如：貨幣單位)  |    V2、V3   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md)：<br>date<br>daterange<br>time<br>時間範圍   |    V2、V3   |
@@ -288,8 +288,8 @@ Language Understanding (LUIS) 提供預先建置的實體。 當您的應用程�
 
 支援下列實體：
 
-|預建實體|```es-MX``` |
-------|:------:|
+| 預建實體 | es-MX |
+| --------------- | :---: |
 [年齡](luis-reference-prebuilt-age.md)：<br>year<br>月<br>week<br>day   |    -   |
 [貨幣 (錢幣)](luis-reference-prebuilt-currency.md)：<br>貨幣單位<br>小數單位 (例如：貨幣單位)  |    -   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md)：<br>date<br>daterange<br>time<br>時間範圍   |    -   |
@@ -316,8 +316,8 @@ KeyPhrase 不適用於葡萄牙文 (巴西) 的所有子文化特性 - ```pt-BR`
 
 <!--
 
-|Prebuilt entity|```tr-tr``` |
-------|:------:|
+| Prebuilt entity | tr-tr |
+| --------------- | :---: |
 [Age](luis-reference-prebuilt-age.md):<br>year<br>month<br>week<br>day   |    -   |
 [Currency (money)](luis-reference-prebuilt-currency.md):<br>dollar<br>fractional unit (ex: penny)  |    -   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>time<br>timerange   |    -   |

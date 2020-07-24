@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/28/2020
+ms.date: 07/19/2020
 ms.author: memildin
-ms.openlocfilehash: f3ef633ff0271d74eea7320faadf17685976d3b6
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 2f995f3f6defd73575d9e1bf19326a828f1e6038
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970462"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089901"
 ---
 # <a name="azure-container-registry-integration-with-security-center"></a>Azure Container Registry 與資訊安全中心整合
 
@@ -30,6 +30,11 @@ Azure Container Registry （ACR）是受控的私用 Docker Registry 服務，�
 
 - 發行狀態：**公開上市**
 - 必要角色：**安全性讀取者**和[Azure Container Registry 讀者角色](https://docs.microsoft.com/azure/container-registry/container-registry-roles)
+- 支援的登錄：
+    - ✔可從公用網際網路存取並提供 shell 存取的 Linux 託管 ACR 登錄。
+    - ✘ Windows 託管的 ACR 登錄。
+    - ✘「私用」登錄-資訊安全中心需要可從公用網際網路存取您的登錄。 如果您使用防火牆、服務端點或私用端點（例如 Azure 私人連結）來限制登錄的存取權，資訊安全中心目前無法連線到您的登錄，或將其掃描。
+    - ✘超級極簡映射（例如[Docker 待用](https://hub.docker.com/_/scratch/)映射），或只包含應用程式及其執行時間相依性（不含套件管理員、SHELL 或 OS）的 "Distroless" 映射。
 - 雲端： 
     - ✔ 商用雲端
     - ✘美國政府雲端
@@ -40,7 +45,7 @@ Azure Container Registry （ACR）是受控的私用 Docker Registry 服務，�
 
 當映射推送至您的登錄時，資訊安全中心會自動掃描該映射。 若要觸發映射掃描，請將其推送至您的存放庫。
 
-當掃描完成時（通常是大約10分鐘，但最多可達40分鐘），結果會以資訊安全中心建議的形式提供，如下所示：
+當掃描完成時（通常是大約2分鐘，但最長可達15分鐘），結果會以資訊安全中心建議的形式提供，如下所示：
 
 [![Azure Container Registry （ACR）主控映射中探索到之弱點的範例 Azure 資訊安全中心建議](media/azure-container-registry-integration/container-security-acr-page.png)](media/azure-container-registry-integration/container-security-acr-page.png#lightbox)
 
@@ -58,11 +63,6 @@ Azure Container Registry （ACR）是受控的私用 Docker Registry 服務，�
 
 
 ## <a name="acr-with-security-center-faq"></a>具有資訊安全中心常見問題的 ACR
-
-### <a name="what-types-of-images-can-azure-security-center-scan"></a>哪些映射類型可以 Azure 資訊安全中心掃描？
-資訊安全中心會掃描以 Linux OS 為基礎的映射，以提供 shell 存取。 
-
-Qualys 掃描器不支援極簡映射（例如[Docker 待用](https://hub.docker.com/_/scratch/)映射），或只包含您應用程式及其執行時間相依性（不含套件管理員、SHELL 或 OS）的 "Distroless" 映射。
 
 ### <a name="how-does-azure-security-center-scan-an-image"></a>Azure 資訊安全中心掃描影像的方式為何？
 映射會從登錄提取。 然後，它會在隔離的沙箱中執行，並在其中解壓縮已知弱點清單的 Qualys 掃描器。

@@ -6,17 +6,18 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 05/13/2020
-ms.openlocfilehash: 2aadc5806f0c5c610dc28b32039ca944af87ab13
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.custom: devx-track-java
+ms.openlocfilehash: 1b9d7326ec13176fbe65ba430a8a33bb93a48f74
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231721"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091448"
 ---
-# <a name="how-to-enable-system-assigned-managed-identity-for-azure-spring-cloud-application"></a>如何為 Azure 春季雲端應用程式啟用系統指派的受控識別
+# <a name="how-to-enable-system-assigned-managed-identity-for-azure-spring-cloud-application"></a>如何針對 Azure Spring Cloud 應用程式啟用系統指派的受控識別
 適用于 Azure 資源的受控識別會在 Azure 資源（例如您的 Azure 春季雲端應用程式）的 Azure Active Directory 中，提供自動受控識別。 您可以使用此身分識別來向任何支援 Azure AD 驗證的服務進行驗證，不需要任何您程式碼中的認證。
 
-本文說明如何使用版本 0.2.4) 提供的 Azure 入口網站和 CLI (，為 Azure 春季雲端應用程式啟用和停用系統指派的受控識別。
+本文說明如何使用 Azure 入口網站和 CLI （可從版本0.2.4 取得），為 Azure 春季雲端應用程式啟用和停用系統指派的受控識別。
 
 ## <a name="prerequisites"></a>先決條件
 如果您不熟悉 Azure 資源的受控識別，請參閱[總覽一節](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。
@@ -82,5 +83,5 @@ az spring-cloud app identity remove -n app_name -s service_name -g resource_grou
 ## <a name="next-steps"></a>後續步驟
 * [如何搭配使用受控識別與 JAVA SDK](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples)
 * [在春季開機 starter 中使用受控識別存取 Azure Key Vault](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/spring/azure-spring-boot-starter-keyvault-secrets/README.md#use-msi--managed-identities)
-* [深入瞭解適用于 Azure 資源的受控識別](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/active-directory/managed-identities-azure-resources/overview.md)
+* [深入了解 Azure 資源受控識別](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/active-directory/managed-identities-azure-resources/overview.md)
 

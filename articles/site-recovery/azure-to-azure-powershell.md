@@ -7,11 +7,12 @@ manager: rochakm
 ms.topic: article
 ms.date: 3/29/2019
 ms.author: sutalasi
-ms.openlocfilehash: 583511194fb100add1d5fc4ea9c06a869cf652b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 182b4f262361db001dcb6d47bf3e8f2aac6bc9b3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77212288"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091516"
 ---
 # <a name="set-up-disaster-recovery-for-azure-virtual-machines-using-azure-powershell"></a>使用 Azure PowerShell 來設定 Azure 虛擬機器的災害復原
 
@@ -35,7 +36,7 @@ ms.locfileid: "77212288"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 在開始之前：
 - 請確定您了解[情節架構和元件](azure-to-azure-architecture.md)。
@@ -50,7 +51,7 @@ ms.locfileid: "77212288"
 Connect-AzAccount
 ```
 
-選取 Azure 訂用帳戶。 使用 `Get-AzSubscription` Cmdlet 來取得您有權存取的 Azure 訂用帳戶清單。 使用 Cmdlet 來選取要使用的 Azure 訂用帳戶 `Set-AzContext` 。
+選取您的 Azure 訂用帳戶。 使用 `Get-AzSubscription` Cmdlet 來取得您有權存取的 Azure 訂用帳戶清單。 使用 Cmdlet 來選取要使用的 Azure 訂用帳戶 `Set-AzContext` 。
 
 ```azurepowershell
 Set-AzContext -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
@@ -417,7 +418,7 @@ $datadiskId1 = $vm.StorageProfile.DataDisks[0].ManagedDisk.Id
 $RecoveryReplicaDiskAccountType = $vm.StorageProfile.DataDisks[0].ManagedDisk.StorageAccountType
 $RecoveryTargetDiskAccountType = $vm.StorageProfile.DataDisks[0].ManagedDisk.StorageAccountType
 
-$DataDisk1ReplicationConfig  = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStorageAccountId $CacheStorageAccount.Id `
+$DataDisk1ReplicationConfig  = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStorageAccountId $EastUSCacheStorageAccount.Id `
          -DiskId $datadiskId1 -RecoveryResourceGroupId $RecoveryRG.ResourceId -RecoveryReplicaDiskAccountType $RecoveryReplicaDiskAccountType `
          -RecoveryTargetDiskAccountType $RecoveryTargetDiskAccountType
 

@@ -4,11 +4,12 @@ description: 尋找有關使用 Azure 備份在 Azure Vm 上備份 SQL Server �
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 11657a5dda79fc550f4c07d4020d75c671335da4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2781646e548f4f530b26ca41466f158597e817d9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84248255"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090972"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>有關在 Azure VM 備份上執行之 SQL Server 資料庫的常見問題
 
@@ -48,7 +49,7 @@ DefaultBackupTasksThreshold 的預設值為**20**。
 
 3. 儲存變更並關閉該檔案。
 4. 在 SQL Server 執行個體上，開啟 [工作管理員]****。 重新啟動 **AzureWLBackupCoordinatorSvc** 服務。<br/> <br/>
- 雖然此方法有助於備份應用程式耗用大量資源，但是 SQL Server [Resource Governor](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor?view=sql-server-2017)是更通用的方法，可指定連入應用程式要求所能使用的 CPU、實體 IO 和記憶體數量限制。
+ 雖然此方法有助於備份應用程式耗用大量資源，但是 SQL Server [Resource Governor](/sql/relational-databases/resource-governor/resource-governor)是更通用的方法，可指定連入應用程式要求所能使用的 CPU、實體 IO 和記憶體數量限制。
 
 > [!NOTE]
 > 在 UX 中，您仍然可以在任何指定的時間排程多個備份，不過，它們會在根據上述範例的滑動視窗中進行處理，例如5。
@@ -59,7 +60,7 @@ DefaultBackupTasksThreshold 的預設值為**20**。
 
 ## <a name="can-i-protect-availability-groups-on-premises"></a>我可以保護內部部署的可用性群組嗎？
 
-否。 Azure 備份保護在 Azure 中執行 SQL Server 資料庫。 如果可用性群組（AG）分散在 Azure 和內部部署機器之間，只有在主要複本在 Azure 中執行時，才可以保護 AG。 此外，Azure 備份只會保護在與復原服務保存庫相同的 Azure 區域中執行的節點。
+不可以。 Azure 備份保護在 Azure 中執行 SQL Server 資料庫。 如果可用性群組（AG）分散在 Azure 和內部部署機器之間，只有在主要複本在 Azure 中執行時，才可以保護 AG。 此外，Azure 備份只會保護在與復原服務保存庫相同的 Azure 區域中執行的節點。
 
 ## <a name="can-i-protect-availability-groups-across-regions"></a>我可以跨區域保護可用性群組嗎？
 

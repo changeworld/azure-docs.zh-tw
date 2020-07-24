@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/20/2019
 ms.author: juliako
-ms.openlocfilehash: 37baed076ca074c1d558af36649e90959a0034c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2bc688a61235a31c3d6b6e88cbb90c0d14cca179
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75750885"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092009"
 ---
 # <a name="diagnostic-logs-schemas"></a>診斷記錄結構描述
 
@@ -29,15 +30,15 @@ ms.locfileid: "75750885"
 
 ## <a name="top-level-diagnostic-logs-schema"></a>最上層診斷記錄結構描述
 
-如需最上層診斷記錄架構的詳細描述，請參閱[支援的服務、架構和 Azure 診斷記錄的類別](../../azure-monitor/platform/tutorial-dashboards.md)。
+如需最上層診斷記錄架構的詳細描述，請參閱[支援的服務、架構和 Azure 診斷記錄的類別](../../azure-monitor/platform/resource-logs-schema.md)。
 
 ## <a name="key-delivery-log-schema"></a>金鑰傳遞記錄架構
 
-### <a name="properties"></a>屬性
+### <a name="properties"></a>[內容]
 
 這些是金鑰傳遞記錄架構特有的屬性。
 
-|Name|說明|
+|名稱|說明|
 |---|---|
 |keyId|所要求之金鑰的識別碼。|
 |keyType|可能是下列其中一個值： "Clear" （無加密）、"FairPlay"、"PlayReady" 或 "Widevine"。|

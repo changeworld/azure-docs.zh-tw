@@ -1,21 +1,21 @@
 ---
-title: 安全性
+title: Azure 認知服務安全性
 titleSuffix: Azure Cognitive Services
 description: 深入瞭解認知服務使用方式的各種安全性考慮。
 services: cognitive-services
-author: aahill
+author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 06/30/2020
-ms.author: aahi
+ms.date: 07/10/2020
+ms.author: erhopf
 ms.custom: tracking-python
-ms.openlocfilehash: d97b944d5d18a39d6eaf84b55363f487a2c17dbf
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 51a9829a7ea19665e1081a48207f176b1a8e68c0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85611402"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090836"
 ---
 # <a name="azure-cognitive-services-security"></a>Azure 認知服務安全性
 
@@ -203,9 +203,19 @@ NSString* value =
 
 * Translator
 
-針對 Language Understanding，Microsoft 工程師將不會存取 E0 SKU 中的任何客戶資料。 若要要求能夠使用 E0 SKU，請填寫並提交 [LUIS 服務要求表單](https://aka.ms/cogsvc-cmk)。 大約需要3-5 個工作天的時間，才會收到要求的狀態。 視需求而定，您可能會放在佇列中，並已核准為可用空間。 一旦核准搭配 LUIS 使用 E0 SKU，您就必須從 Azure 入口網站建立新的 Language Understanding 資源，然後選取 [E0] 作為 [定價層]。 使用者將無法從 F0 升級至新的 E0 SKU。
+對於下列服務，Microsoft 工程師不會存取 E0 層中的任何客戶資料： 
 
-語音服務目前不支援客戶加密箱。 不過，您可以使用 BYOS （「攜帶您自己的儲存體」）來儲存客戶資料，讓您可以達到類似的資料控制[客戶加密箱](../security/fundamentals/customer-lockbox-overview.md)。 請記住，語音服務資料會保留，並在語音資源建立所在的區域中進行處理。 這適用于待用資料和傳輸中的資料。 當您使用自訂功能（例如自訂語音和自訂語音）時，所有客戶資料都會在您的 BYOS （如果使用）和語音服務資源所在的相同區域中進行傳輸、儲存及處理。
+* Language Understanding
+* 臉部
+* 內容仲裁
+* 個人化工具
+
+> [!IMPORTANT]
+> 對於**表單辨識器**，Microsoft 工程師將不會存取2020年7月10日之後所建立之資源中的任何客戶資料。
+
+若要要求能夠使用 E0 SKU，請填寫並提交此 [要求表單](https://aka.ms/cogsvc-cmk)。 大約需要3-5 個工作天的時間，才會收到要求的狀態。 視需求而定，您可能會放在佇列中，並已核准為可用空間。 一旦核准搭配 LUIS 使用 E0 SKU，您就必須從 Azure 入口網站建立新的資源，然後選取 [E0] 作為 [定價層]。 使用者將無法從 F0 升級至新的 E0 SKU。
+
+語音服務目前不支援客戶加密箱。 不過，您可以使用「攜帶您自己的儲存體」（BYOS）來儲存客戶資料，讓您可以達到類似的資料控制客戶加密箱。 請記住，語音服務資料會保留，並在語音資源建立所在的區域中進行處理。 這適用于待用資料和傳輸中的資料。 當您使用自訂功能（例如自訂語音和自訂語音）時，所有客戶資料都會在您的 BYOS （如果使用）和語音服務資源所在的相同區域中進行傳輸、儲存及處理。
 
 > [!IMPORTANT]
 > Microsoft 不**會**使用客戶資料來改善其語音模型。 此外，如果已停用端點記錄且未使用任何自訂專案，則不會儲存任何客戶資料。 
