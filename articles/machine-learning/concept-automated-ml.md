@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 04/22/2020
-ms.openlocfilehash: 5f4b48dfbef7362a0b49e53a17b080e127701c94
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 8a951a4920f2f80a4b9738317bdb2da96c613d53
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86199875"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87013040"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>什麼是自動化機器學習 (AutoML)？
 
@@ -114,7 +114,7 @@ ms.locfileid: "86199875"
 > [!NOTE]
 > 自動化機器學習特徵化步驟 (功能標準化、處理遺漏的資料、將文字轉換為數值等等) 會成為基礎模型的一部分。 使用模型進行預測時，定型期間所套用的相同特徵化步驟會自動套用至您的輸入資料。
 
-### <a name="automatic-featurization-standard"></a> (標準) 的自動特徵化
+### <a name="automatic-featurization-standard"></a>自動特徵化（標準）
 
 在每個自動化機器學習實驗中，您的資料都會自動調整或正規化，以協助演算法執行良好。 在模型定型期間，下列其中一個調整或正規化技術將會套用至每個模型。 瞭解 AutoML 如何協助[防止過度調整和不平衡](concept-manage-ml-pitfalls.md)模型中的資料。
 
@@ -136,7 +136,7 @@ ms.locfileid: "86199875"
 
 + Azure Machine Learning Studio：[透過這些步驟](how-to-use-automated-ml-for-ml-models.md#customize-featurization)，在 [檢視其他設定] 區段中啟用 [自動特徵化]。
 
-+ Python SDK： `"feauturization": 'auto' / 'off' / 'FeaturizationConfig'` 在您的[AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)物件中指定。 深入瞭解 [啟用特徵化] ( # B1 how-to-configure-auto-features.md) 。 
++ Python SDK： `"feauturization": 'auto' / 'off' / 'FeaturizationConfig'` 在您的[AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)物件中指定。 深入瞭解 [啟用特徵化] （（如何設定-自動 features.md）。 
 
 ## <a name="ensemble-models"></a><a name="ensemble"></a> 集團模型
 
@@ -279,7 +279,7 @@ ONNX 執行階段也支援 C#，因此您可以使用在 C# 應用程式中自�
 
  + **如需低或無程式碼的體驗**，請參閱[教學課程：使用 Azure Machine Learning STUDIO 建立自動化 ML 分類模型](tutorial-first-experiment-automated-ml.md)。
 
-如何文章提供 AutoML 所提供功能的其他詳細資料。 例如， 
+如何文章提供 AutoML 所提供功能的其他詳細資料。 例如 
 
 + 設定自動訓練實驗的設定
     + 在 Azure Machine Learning Studio 中，[使用這些步驟](how-to-use-automated-ml-for-ml-models.md)。 
@@ -289,7 +289,7 @@ ONNX 執行階段也支援 C#，因此您可以使用在 C# 應用程式中自�
 
 ### <a name="jupyter-notebook-samples"></a>Jupyter 筆記本範例 
 
-[如需自動化機器學習範例](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/)，請參閱 Github 筆記本存放庫中的詳細程式碼範例和使用案例。
+[如需自動化機器學習範例](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/)，請參閱 GitHub 筆記本存放庫中的詳細程式碼範例和使用案例。
 
 ### <a name="python-sdk-reference"></a>Python SDK 參考 
 

@@ -3,13 +3,14 @@ title: Durable Functions Azure Functions 中的 HTTP 功能
 description: 瞭解 Azure Functions 的 Durable Functions 延伸模組中的整合式 HTTP 功能。
 author: cgillum
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 07/14/2020
 ms.author: azfuncdf
-ms.openlocfilehash: 1ffa116f6877b58d54c22f918b4e83574b85860c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16a133205b13a3d0a4aa76f75c8ce316f6c09199
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82800714"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014893"
 ---
 # <a name="http-features"></a>HTTP 功能
 
@@ -53,6 +54,57 @@ Durable Functions 延伸模組會自動將一組 HTTP Api 新增至 Azure Functi
 **function.json**
 
 [!code-json[Main](~/samples-durable-functions/samples/javascript/HttpStart/function.json)]
+
+# <a name="python"></a>[Python](#tab/python)
+
+**__ __.py**
+
+```python
+import logging
+import azure.functions as func
+import azure.durable_functions as df
+
+async def main(req: func.HttpRequest, starter: str) -> func.HttpResponse:
+    client = df.DurableOrchestrationClient(starter)
+    function_name = req.route_params['functionName']
+    event_data = req.get_body()
+
+    instance_id = await client.start_new(function_name, instance_id, event_data)
+    
+    logging.info(f"Started orchestration with ID = '{instance_id}'.")
+    return client.create_check_status_response(req, instance_id)
+```
+
+**function.json**
+
+```json
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "authLevel": "function",
+      "name": "req",
+      "type": "httpTrigger",
+      "direction": "in",
+      "route": "orchestrators/{functionName}",
+      "methods": [
+        "post",
+        "get"
+      ]
+    },
+    {
+      "name": "$return",
+      "type": "http",
+      "direction": "out"
+    },
+    {
+      "name": "starter",
+      "type": "orchestrationClient",
+      "direction": "in"
+    }
+  ]
+}
+```
 
 ---
 
@@ -147,6 +199,22 @@ module.exports = df.orchestrator(function*(context){
     }
 });
 ```
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+from datetime import datetime, timedelta
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    url = context.get_input()
+    response = yield context.call_http('GET', url)
+    
+    if response["statusCode"] >= 400:
+        # handling of error codes goes here
+
+main = df.Orchestrator.create(orchestrator_function)
+```
 
 ---
 
@@ -165,11 +233,11 @@ module.exports = df.orchestrator(function*(context){
 > [!NOTE]
 > 協調器函式也原本就支援伺服器端輪詢取用者模式，如[非同步作業追蹤](#async-operation-tracking)中所述。 這項支援表示一個函式應用程式中的協調流程可以輕鬆地協調其他函數應用程式中的協調器函式。 這類似于[子協調流程](durable-functions-sub-orchestrations.md)概念，但支援跨應用程式通訊。 這種支援特別適用于微服務樣式的應用程式開發。
 
-### <a name="managed-identities"></a>受控身分識別
+### <a name="managed-identities"></a>受控識別
 
 Durable Functions 原本就支援對接受 Azure Active Directory （Azure AD）權杖以進行授權的 Api 呼叫。 這項支援使用[Azure 受控](../../active-directory/managed-identities-azure-resources/overview.md)識別來取得這些權杖。
 
-下列程式碼是 .NET 協調器函式的範例。 此函式會使用 Azure Resource Manager[虛擬機器 REST API](https://docs.microsoft.com/rest/api/compute/virtualmachines)，進行已驗證的呼叫以重新開機虛擬機器。
+下列程式碼是 .NET 協調器函式的範例。 此函式會使用 Azure Resource Manager[虛擬機器 REST API](/rest/api/compute/virtualmachines)，進行已驗證的呼叫以重新開機虛擬機器。
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -221,6 +289,30 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    subscription_id = "mySubId"
+    resource_group = "myRg"
+    vm_name = "myVM"
+    api_version = "2019-03-01"
+    token_source = df.ManagedIdentityTokenSource("https://management.core.windows.net")
+
+    # get a list of the Azure subscriptions that I have access to
+    restart_response = yield context.call_http("POST", 
+        f"https://management.azure.com/subscriptions/${subscription_id}/resourceGroups/${resource_group}/providers/Microsoft.Compute/virtualMachines/${vm_name}/restart?api-version=${api_version}",
+        None,
+        None,
+        token_source)
+    return restart_response
+
+main = df.Orchestrator.create(orchestrator_function)
+```
+
 ---
 
 在上述範例中， `tokenSource` 參數設定為取得[Azure Resource Manager](../../azure-resource-manager/management/overview.md)的 Azure AD token。 權杖是由資源 URI 所識別 `https://management.core.windows.net` 。 此範例假設目前的函式應用程式正在本機執行，或已部署為具有受控識別的函式應用程式。 本機身分識別或受控識別會假設有許可權可管理所指定資源群組中的 Vm `myRG` 。
@@ -255,7 +347,7 @@ module.exports = df.orchestrator(function*(context) {
 
 ### <a name="extensibility-net-only"></a>擴充性（僅限 .NET）
 
-您可以使用[Azure Functions .net](https://docs.microsoft.com/azure/azure-functions/functions-dotnet-dependency-injection)相依性插入，自訂協調流程內部 HTTP 用戶端的行為。 這種功能對於進行小型行為變更很有用。 它也適用于透過插入模擬物件來對 HTTP 用戶端進行單元測試。
+您可以使用[Azure Functions .net](../functions-dotnet-dependency-injection.md)相依性插入，自訂協調流程內部 HTTP 用戶端的行為。 這種功能對於進行小型行為變更很有用。 它也適用于透過插入模擬物件來對 HTTP 用戶端進行單元測試。
 
 下列範例示範如何使用相依性插入，針對呼叫外部 HTTP 端點的協調器函式停用 TLS/SSL 憑證驗證。
 
@@ -285,7 +377,7 @@ public class MyDurableHttpMessageHandlerFactory : IDurableHttpMessageHandlerFact
 }
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 > [!div class="nextstepaction"]
 > [瞭解持久性實體](durable-functions-entities.md)

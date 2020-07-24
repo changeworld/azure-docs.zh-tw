@@ -3,12 +3,12 @@ title: 我如何在 Azure Application Insights 中... | Microsoft Docs
 description: Application Insights 中的常見問題集。
 ms.topic: conceptual
 ms.date: 04/04/2017
-ms.openlocfilehash: bda0091fe06c93150d5b3cae27f278f3fd9a91ea
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 63a958e1d3fb784651043181bff0428666fad6db
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224463"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014588"
 ---
 # <a name="how-do-i--in-application-insights"></a>我如何在 Application Insights 中...？
 ## <a name="get-an-email-when-"></a>... 時收到電子郵件
@@ -74,7 +74,7 @@ telemetry.TrackMetric("Alarm", 0.5);
 [使用 PowerShell 建立新的警示](../../azure-monitor/platform/alerts-log.md)
 
 ## <a name="use-powershell-to-manage-application-insights"></a>使用 PowerShell 管理 Application Insights
-* [建立新的資源](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#creating-a-resource-automatically)
+* [建立新的資源](./create-new-resource.md#creating-a-resource-automatically)
 * [建立新的警示](../../azure-monitor/platform/alerts-log.md)
 
 ## <a name="separate-telemetry-from-different-versions"></a>區分不同版本的遙測

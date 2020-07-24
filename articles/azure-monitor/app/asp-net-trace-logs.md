@@ -3,12 +3,12 @@ title: 在 Application Insights 中探索 .NET 追蹤記錄
 description: 搜尋 Trace、NLog 或 Log4Net 產生的記錄。
 ms.topic: conceptual
 ms.date: 05/08/2019
-ms.openlocfilehash: d010fe4389e22c9909800f5329911b6b5619d7b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aad81855b58ee96789d097fbfbd3e7f9b17f6900
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85829528"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014570"
 ---
 # <a name="explore-netnet-core-and-python-trace-logs-in-application-insights"></a>在 Application Insights 中探索 .NET/.NET Core 和 Python 追蹤記錄
 
@@ -84,7 +84,7 @@ System.Diagnostics.Trace.TraceWarning("Slow response - database01");
 ```
 
 ## <a name="use-eventsource-events"></a>使用 EventSource 事件
-您可以將 [System.Diagnostics.Tracing.EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) 設定為要傳送至 Application Insights 作為追蹤的事件。 首先，安裝 `Microsoft.ApplicationInsights.EventSourceListener` NuGet 套件。 然後編輯 [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) 檔案的 `TelemetryModules` 區段。
+您可以將 [System.Diagnostics.Tracing.EventSource](/dotnet/api/system.diagnostics.tracing.eventsource?view=netcore-3.1) 設定為要傳送至 Application Insights 作為追蹤的事件。 首先，安裝 `Microsoft.ApplicationInsights.EventSourceListener` NuGet 套件。 然後編輯 [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) 檔案的 `TelemetryModules` 區段。
 
 ```xml
     <Add Type="Microsoft.ApplicationInsights.EventSourceListener.EventSourceTelemetryModule, Microsoft.ApplicationInsights.EventSourceListener">
@@ -190,7 +190,7 @@ logger.warning('Hello, World!')
 
 ## <a name="troubleshooting"></a>疑難排解
 ### <a name="how-do-i-do-this-for-java"></a>如果是 Java，我要怎麼做？
-在收集現成記錄的 Java 無程式碼檢測 (建議動作) 中，請使用 [Java 3.0 代理程式](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)。
+在收集現成記錄的 Java 無程式碼檢測 (建議動作) 中，請使用 [Java 3.0 代理程式](./java-in-process-agent.md)。
 
 如果您使用 Java SDK，請使用 [Java 記錄配接器](../../azure-monitor/app/java-trace-logs.md)。
 
@@ -200,7 +200,7 @@ logger.warning('Hello, World!')
 
 ### <a name="theres-no-log-adapter-option-in-the-configuration-tool"></a>組態工具中沒有記錄配接器選項
 * 請先安裝記錄架構。
-* 如果您使用 System.Diagnostics.Trace，請確定已將其[設定在 *web.config* 中](https://msdn.microsoft.com/library/system.diagnostics.eventlogtracelistener.aspx)。
+* 如果您使用 System.Diagnostics.Trace，請確定已將其[設定在 *web.config* 中](/dotnet/api/system.diagnostics.eventlogtracelistener?view=dotnet-plat-ext-3.1)。
 * 確定您有最新版的 Application Insights。 在 Visual Studio 中，移至 [工具] > [擴充功能和更新]，然後開啟 [更新] 索引標籤。如果發現 **Developer Analytics Tools**，請選取以進行更新。
 
 ### <a name="i-get-the-instrumentation-key-cannot-be-empty-error-message"></a><a name="emptykey"></a>我收到「檢測金鑰不能是空白」的錯誤訊息
@@ -228,5 +228,5 @@ logger.warning('Hello, World!')
 [diagnostic]: ../../azure-monitor/app/diagnostic-search.md
 [exceptions]: asp-net-exceptions.md
 [portal]: https://portal.azure.com/
-[qna]: ../../azure-monitor/app/troubleshoot-faq.md
+[qna]: ../faq.md
 [start]: ../../azure-monitor/app/app-insights-overview.md

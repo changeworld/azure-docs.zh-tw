@@ -3,12 +3,12 @@ title: 在 Azure DevTest Labs 中，將成品存放庫新增至您的實驗室 |
 description: 瞭解如何在 Azure DevTest labs 中將成品存放庫新增至您的實驗室。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 0c2c1b5f93e2b4dcaae818b3f529dc16440c3c75
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d823f437cddef0a33c7d7ea3b4c4fbdaad90fb8e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483902"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87013415"
 ---
 # <a name="add-an-artifact-repository-to-your-lab-in-devtest-labs"></a>在 DevTest Labs 中將成品存放庫新增至您的實驗室
 DevTest Labs 可讓您在建立 VM 時或在建立 VM 之後，指定要新增至 VM 的成品。 此成品可能是您想要在 VM 上安裝的工具或應用程式。 成品定義于從 GitHub 或 Azure DevOps Git 存放庫載入的 JSON 檔案中。
@@ -19,7 +19,7 @@ DevTest Labs 所維護的公用構件存放[庫](https://github.com/Azure/azure-
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 若要將存放庫新增至實驗室，請取得存放庫中的重要資訊。 下列各節說明如何取得**GitHub**或**Azure DevOps**上主控之存放庫的必要資訊。
 
 ### <a name="get-the-github-repository-clone-url-and-personal-access-token"></a>取得 GitHub 儲存機制複製 URL 和個人存取權杖
@@ -64,7 +64,7 @@ DevTest Labs 所維護的公用構件存放[庫](https://github.com/Azure/azure-
 
     ![[新增存放庫] 按鈕](./media/devtest-lab-add-repo/devtestlab-add-repo.png)
 5. 在 [**存放庫**] 頁面上，指定下列資訊：
-   1. [名稱]。 輸入存放庫的名稱。
+   1. **名稱**。 輸入存放庫的名稱。
    2. **Git Clone URL**。 輸入您先前從 GitHub 或 Azure DevOps Services 複製的 Git HTTPS 複製 URL。
    3. **分支**。 若要取得您的定義，請輸入分支。
    4. **個人存取權杖**。 輸入您先前從 GitHub 或 Azure DevOps Services 取得的個人存取權杖。
@@ -78,7 +78,7 @@ Azure 資源管理（Azure Resource Manager）範本是 JSON 檔案，可描述�
 
 本節提供使用 Azure Resource Manager 範本將成品存放庫新增至實驗室的步驟。  範本會建立實驗室（如果尚未存在）。
 
-### <a name="template"></a>[範本]
+### <a name="template"></a>範本
 本文中使用的範例範本會透過參數來收集下列資訊。 大部分的參數都有智慧型預設值，但有幾個必須指定的值。 您必須指定實驗室名稱、成品存放庫的 URI，以及存放庫的安全性權杖。
 
 - 實驗室名稱。
@@ -183,7 +183,7 @@ New-AzResourceGroupDeployment `
 New-azresourcegroupdeployment 成功執行之後，命令會輸出重要資訊，例如布建狀態（應該成功）和範本的任何輸出。
 
 ## <a name="use-azure-powershell"></a>使用 Azure PowerShell
-本節提供範例 PowerShell 腳本，可用來將成品存放庫新增至實驗室。 如果您沒有 Azure PowerShell，請參閱[如何安裝和設定 Azure PowerShell](/powershell/azure/overview?view=azps-1.2.0)以取得安裝的詳細指示。
+本節提供範例 PowerShell 腳本，可用來將成品存放庫新增至實驗室。 如果您沒有 Azure PowerShell，請參閱[如何安裝和設定 Azure PowerShell](/powershell/azure/?view=azps-1.2.0)以取得安裝的詳細指示。
 
 ### <a name="full-script"></a>完整指令碼
 以下是完整的腳本，包括一些詳細訊息和批註：
@@ -338,7 +338,7 @@ Set-AzContext -SubscriptionId <Your Azure subscription ID>
 ### <a name="parameters"></a>參數
 本文中的範例 PowerShell 腳本會採用下列參數：
 
-| 參數 | 說明 |
+| 參數 | 描述 |
 | --------- | ----------- |
 | LabName | 實驗室的名稱。 |
 | ArtifactRepositoryName | 新成品存放庫的名稱。 如果未指定存放庫的隨機名稱，腳本就會為它建立。 |
@@ -360,7 +360,7 @@ if ($ArtifactRepositoryName -eq $null){
 
 ### <a name="powershell-commands-used-in-the-script"></a>腳本中使用的 PowerShell 命令
 
-| PowerShell 命令 | 備註 |
+| PowerShell 命令 | 附註 |
 | ------------------ | ----- |
 | [Get-AzResource](/powershell/module/az.resources/get-azresource) | 此命令可用來取得實驗室的詳細資料，例如其位置。 |
 | [New-AzResource](/powershell/module/az.resources/new-azresource) | 沒有用於新增成品存放庫的特定命令。 一般的[get-azresource](/powershell/module/az.resources/new-azresource) Cmdlet 會執行作業。 此 Cmdlet 需要**ResourceId**或資源**組和** **ResourceType** ，才能知道要建立的資源類型。 此範例腳本會使用資源名稱和資源類型配對。 <br/><br/>請注意，您會在與實驗室相同的資源群組下，建立成品存放庫來源。|

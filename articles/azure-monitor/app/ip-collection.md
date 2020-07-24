@@ -3,11 +3,12 @@ title: Azure 應用程式 Insights IP 位址集合 |Microsoft Docs
 description: 瞭解如何使用 Azure 應用程式 Insights 處理 IP 位址和地理位置
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: c7a4506c6a4246edc007a5ea2158998b472ec316
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1576207eb267166a33b84009407ec119de471e6e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807123"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014434"
 ---
 # <a name="geolocation-and-ip-address-handling"></a>地理位置和 IP 位址處理
 
@@ -26,7 +27,7 @@ IP 位址會傳送至 Application Insights 作為遙測資料的一部分。 到
 
 ## <a name="overriding-default-behavior"></a>覆寫預設行為
 
-雖然預設行為是將個人資料的收集降到最低，但我們仍提供收集和儲存 IP 位址資料的彈性。 在選擇儲存任何個人資料（例如 IP 位址）之前，我們強烈建議您確認這不會違反任何可能受限於的合規性需求或當地法規。 若要深入瞭解 Application Insights 中的個人資料處理，請參閱[個人資料的指引](https://docs.microsoft.com/azure/azure-monitor/platform/personal-data-mgmt)。
+雖然預設行為是將個人資料的收集降到最低，但我們仍提供收集和儲存 IP 位址資料的彈性。 在選擇儲存任何個人資料（例如 IP 位址）之前，我們強烈建議您確認這不會違反任何可能受限於的合規性需求或當地法規。 若要深入瞭解 Application Insights 中的個人資料處理，請參閱[個人資料的指引](../platform/personal-data-mgmt.md)。
 
 ## <a name="storing-ip-address-data"></a>儲存 IP 位址資料
 
@@ -98,7 +99,7 @@ IP 位址會傳送至 Application Insights 作為遙測資料的一部分。 到
 
 ### <a name="rest-api"></a>Rest API
 
-要進行相同修改的[REST API](https://docs.microsoft.com/rest/api/azure/)承載如下所示：
+要進行相同修改的[REST API](/rest/api/azure/)承載如下所示：
 
 ```
 PATCH https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<rg-name>/providers/microsoft.insights/components/<resource-name>?api-version=2018-05-01-preview HTTP/1.1
@@ -119,7 +120,7 @@ Content-Length: 54
 
 ## <a name="telemetry-initializer"></a>遙測初始設定式
 
-如果您需要比 `DisableIpMasking` 記錄所有或部分 ip 位址更有彈性的替代方案，您可以使用[遙測初始化運算式](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#addmodify-properties-itelemetryinitializer)，將所有或部分 ip 複製到自訂欄位。 
+如果您需要比 `DisableIpMasking` 記錄所有或部分 ip 位址更有彈性的替代方案，您可以使用[遙測初始化運算式](./api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)，將所有或部分 ip 複製到自訂欄位。 
 
 ### <a name="aspnet--aspnet-core"></a>ASP.NET/ASP.NET Core
 
@@ -232,6 +233,6 @@ requests
 
 ## <a name="next-steps"></a>後續步驟
 
-* 深入瞭解 Application Insights 中的[個人資料收集](https://docs.microsoft.com/azure/azure-monitor/platform/personal-data-mgmt)。
+* 深入瞭解 Application Insights 中的[個人資料收集](../platform/personal-data-mgmt.md)。
 
 * 深入瞭解 Application Insights 中的[IP 位址集合](https://apmtips.com/posts/2016-07-05-client-ip-address/)如何運作。 （這是我們的其中一位工程師撰寫的舊版外部 blog 文章。 它會比較舊目前的預設行為，其中會將 IP 位址記錄為 `0.0.0.0` ，但會在內建的機制上更深入瞭解 `ClientIpHeaderTelemetryInitializer` ）。

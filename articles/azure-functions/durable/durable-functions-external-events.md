@@ -2,14 +2,14 @@
 title: 在 Durable Functions 中處理外部事件 - Azure
 description: 了解如何在 Azure Functions 的 Durable Functions 擴充中處理外部事件。
 ms.topic: conceptual
-ms.date: 11/02/2019
+ms.date: 07/13/2020
 ms.author: azfuncdf
-ms.openlocfilehash: 387b5d920de4a295366cc7e948862a12cea901d3
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 3cd04c93d508bd06c4ddd2e05074084202b9fc60
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86165544"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014934"
 ---
 # <a name="handling-external-events-in-durable-functions-azure-functions"></a>在 Durable Functions (Azure Functions) 中處理外部事件
 
@@ -20,7 +20,7 @@ ms.locfileid: "86165544"
 
 ## <a name="wait-for-events"></a>等候事件
 
-協調流程觸發程式系結的[WaitForExternalEvent](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_WaitForExternalEvent_) ( .net) 和 `waitForExternalEvent` (JavaScript) 方法，可讓協調器函式以非同步方式等候並接聽外來事件。 [orchestration trigger binding](durable-functions-bindings.md#orchestration-trigger) 接聽協調器函式會宣告事件的「名稱」** 和預期收到的「資料形式」**。
+協調流程觸發程式系結的[WaitForExternalEvent](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_WaitForExternalEvent_) （.net）、 `waitForExternalEvent` （JavaScript）和 `wait_for_external_event` （ [orchestration trigger binding](durable-functions-bindings.md#orchestration-trigger) Python）方法可讓協調器函式以非同步方式等候並接聽外來事件。 接聽協調器函式會宣告事件的「名稱」** 和預期收到的「資料形式」**。
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -57,6 +57,22 @@ module.exports = df.orchestrator(function*(context) {
         // approval denied - send a notification
     }
 });
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    approved = context.wait_for_external_event('Approval')
+    if approved:
+        # approval granted - do the approved action
+    else:
+        # approval denied - send a notification
+
+main = df.Orchestrator.create(orchestrator_function)
 ```
 
 ---
@@ -116,6 +132,28 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    event1 = context.wait_for_external_event('Event1')
+    event2 = context.wait_for_external_event('Event2')
+    event3 = context.wait_for_external_event('Event3')
+
+    winner = context.task_any([event1, event2, event3])
+    if winner == event1:
+        # ...
+    elif winner == event2:
+        # ...
+    elif winner == event3:
+        # ...
+
+main = df.Orchestrator.create(orchestrator_function)
+```
+
 ---
 
 前一個範例會接聽多個事件中的「任何」** 事件。 也可以等候「所有」** 事件。
@@ -164,18 +202,37 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    application_id = context.get_input()
+    
+    gate1 = context.wait_for_external_event('CityPlanningApproval')
+    gate2 = context.wait_for_external_event('FireDeptApproval')
+    gate3 = context.wait_for_external_event('BuildingDeptApproval')
+
+    yield context.task_all([gate1, gate2, gate3])
+    yield context.call_activity('IssueBuildingPermit', application_id)
+
+main = df.Orchestrator.create(orchestrator_function)
+```
+
 ---
 
 `WaitForExternalEvent`會無限期地等候某些輸入。  等候時可以安心卸載函式應用程式。 當此協調流程執行個體有事件抵達時，就會自動甦醒並立即處理事件。
 
 > [!NOTE]
-> 如果函數應用程式使用使用情況方案，則協調器函式等候來自 `WaitForExternalEvent` (.NET) 或 `waitForExternalEvent` (JavaScript) 的工作時，不論等多久都不會產生費用。
+> 如果您的函式應用程式使用取用方案，則協調器函式從 `WaitForExternalEvent` （.net）、（JavaScript）或（Python）等候工作時，不會產生任何計費費用 `waitForExternalEvent` `wait_for_external_event` ，無論它等待多久。
 
 ## <a name="send-events"></a>傳送事件
 
-您可以使用[RaiseEventAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RaiseEventAsync_) ( .net) 或 `raiseEventAsync` (JavaScript) 方法，將外來事件傳送至協調流程。 這些方法是由[協調流程用戶端](durable-functions-bindings.md#orchestration-client)系結所公開。 您也可以使用內建的「[引發事件」 HTTP API](durable-functions-http-api.md#raise-event) ，將外來事件傳送至協調流程。
+您可以使用[RaiseEventAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RaiseEventAsync_) （.net）或 `raiseEventAsync` （JavaScript）方法，將外來事件傳送至協調流程。 這些方法是由[協調流程用戶端](durable-functions-bindings.md#orchestration-client)系結所公開。 您也可以使用內建的「[引發事件」 HTTP API](durable-functions-http-api.md#raise-event) ，將外來事件傳送至協調流程。
 
-引發的事件包括*實例識別碼*、*事件名稱*和*eventData*做為參數。 協調器函式會使用 `WaitForExternalEvent` ( .net) 或 `waitForExternalEvent` (JavaScript) api 來處理這些事件。 事件*名稱*在傳送和接收端上必須相符，才能處理事件。 事件資料也必須是可序列化的 JSON。
+引發的事件包括*實例識別碼*、*事件名稱*和*eventData*做為參數。 協調器函式會使用 `WaitForExternalEvent` （.net）或 `waitForExternalEvent` （JavaScript） api 來處理這些事件。 事件*名稱*在傳送和接收端上必須相符，才能處理事件。 事件資料也必須是可序列化的 JSON。
 
 就內部而言，「引發事件」機制會將等候協調器函式所挑選的訊息排入佇列。 如果執行個體不是在等候指定的「事件名稱」**，事件訊息就會新增至記憶體內部佇列。 如果協調流程執行個體稍後開始接聽該「事件名稱」**，它將會檢查佇列是否有事件訊息。
 
@@ -210,9 +267,20 @@ module.exports = async function(context, instanceId) {
 };
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+async def main(instance_id:str, starter: str) -> func.HttpResponse:
+    client = df.DurableOrchestrationClient(starter)
+    await client.raise_event(instance_id, 'Approval', True)
+```
+
 ---
 
-在內部，`RaiseEventAsync` (.NET) 或 `raiseEvent` (JavaScript) 會將訊息加入佇列，供等候協調器函式取用。 如果執行個體不是在等候指定的「事件名稱」**，事件訊息就會新增至記憶體內部佇列。 如果協調流程執行個體稍後開始接聽該「事件名稱」**，它將會檢查佇列是否有事件訊息。
+在內部， `RaiseEventAsync` （.net）、 `raiseEvent` （JavaScript）或 `raise_event` （Python）會將等候協調器函式所挑選的訊息。 如果執行個體不是在等候指定的「事件名稱」**，事件訊息就會新增至記憶體內部佇列。 如果協調流程執行個體稍後開始接聽該「事件名稱」**，它將會檢查佇列是否有事件訊息。
 
 > [!NOTE]
 > 如果沒有具有指定「執行個體識別碼」** 的協調流程執行個體，則會捨棄事件訊息。
@@ -230,7 +298,7 @@ Content-Type: application/json
 
 在此情況下，實例識別碼會硬式編碼為*MyInstanceId*。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 > [!div class="nextstepaction"]
 > [瞭解如何執行錯誤處理](durable-functions-error-handling.md)

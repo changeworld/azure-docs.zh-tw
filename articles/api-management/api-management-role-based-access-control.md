@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: 8be8ffa1b569c365c8fa9b985d2b8319b7c0731b
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: faef2721b48ffab12264c585d2dec55ab9334016
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86249830"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015284"
 ---
 # <a name="how-to-use-role-based-access-control-in-azure-api-management"></a>如何在 Azure API 管理中使用角色型存取控制
 
-Azure API 管理需要 Azure 角色型存取控制 (RBAC)，才能針對 API 管理服務及實體 (例如 API 和原則) 啟用更細緻的存取管理。 本文章將為您提供 API 管理中內建角色和自訂角色的概觀。 如需有關 Azure 入口網站中的存取管理的詳細資訊，請參閱[開始在 Azure 入口網站中使用存取管理](../role-based-access-control/overview.md)。
+Azure API 管理依賴 Azure 角色型存取控制（Azure RBAC）來為 API 管理服務和實體（例如 Api 和原則）啟用更細緻的存取管理。 本文章將為您提供 API 管理中內建角色和自訂角色的概觀。 如需有關 Azure 入口網站中的存取管理的詳細資訊，請參閱[開始在 Azure 入口網站中使用存取管理](../role-based-access-control/overview.md)。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

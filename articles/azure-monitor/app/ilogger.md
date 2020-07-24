@@ -4,17 +4,17 @@ description: 搭配 ASP.NET Core 和主控台應用程式使用 Azure 應用程�
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 33effe9cfec6d766d573617ff03b58564e5b34d1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 419813eba371def9eeeb43e45b51b38d1f20c607
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81313664"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014468"
 ---
 # <a name="applicationinsightsloggerprovider-for-net-core-ilogger-logs"></a>適用于 .NET Core ILogger 記錄的 ApplicationInsightsLoggerProvider
 
 ASP.NET Core 支援記錄 API，其適用于不同類型的內建和協力廠商記錄提供者。 記錄是透過在*ILogger*實例上呼叫**Log （）** 或它的 variant 來完成。 本文示範如何使用*ApplicationInsightsLoggerProvider* ，在主控台和 ASP.NET Core 應用程式中捕獲 ILogger 記錄。 本文也說明 ApplicationInsightsLoggerProvider 如何與其他 Application Insights 遙測整合。
-若要深入了解，請參閱 [ASP.NET Core 中的記錄](https://docs.microsoft.com/aspnet/core/fundamentals/logging)。
+若要深入了解，請參閱 [ASP.NET Core 中的記錄](/aspnet/core/fundamentals/logging)。
 
 ## <a name="aspnet-core-applications"></a>ASP.NET Core 應用程式
 
@@ -25,7 +25,7 @@ ASP.NET Core 支援記錄 API，其適用于不同類型的內建和協力廠商
 
 ApplicationInsightsLoggerProvider 捕捉的 ILogger 記錄會受到所收集之任何其他遙測的相同設定。 它們具有一組相同的 TelemetryInitializers 和 TelemetryProcessors、使用相同的 TelemetryChannel，而且相互關聯和取樣的方式與其他遙測相同。 如果您使用2.7.1 或更新版本，則不需要採取任何動作來捕捉 ILogger 記錄。
 
-根據預設，只有*警告*或更高的 ILogger 記錄（來自所有[類別](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-3.1#log-category)）才會傳送至 Application Insights。 但是，您可以套用[篩選來修改此行為](#control-logging-level)。 需要額外的步驟，才能從**Program.cs**或**Startup.cs**捕獲 ILogger 記錄。 （請參閱[在 ASP.NET Core 應用程式中從 Startup.cs 和 Program.cs 捕獲 ILogger 記錄](#capture-ilogger-logs-from-startupcs-and-programcs-in-aspnet-core-apps)）。
+根據預設，只有*警告*或更高的 ILogger 記錄（來自所有[類別](/aspnet/core/fundamentals/logging/?view=aspnetcore-3.1#log-category)）才會傳送至 Application Insights。 但是，您可以套用[篩選來修改此行為](#control-logging-level)。 需要額外的步驟，才能從**Program.cs**或**Startup.cs**捕獲 ILogger 記錄。 （請參閱[在 ASP.NET Core 應用程式中從 Startup.cs 和 Program.cs 捕獲 ILogger 記錄](#capture-ilogger-logs-from-startupcs-and-programcs-in-aspnet-core-apps)）。
 
 如果您使用較早版本的 ApplicationInsights，或只想要使用 ApplicationInsightsLoggerProvider 而不需要任何其他 Application Insights 監視，請使用下列程式：
 
@@ -207,7 +207,7 @@ public class Startup
 
 您仍然可以使用舊的提供者。 （只有在主要版本變更為3時，才會將它移除。*xx*）但基於下列原因，建議您遷移至新的提供者：
 
-- 先前的提供者缺少[記錄範圍](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.2#log-scopes)的支援。 在新的提供者中，範圍的屬性會自動新增為所收集遙測的自訂屬性。
+- 先前的提供者缺少[記錄範圍](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.2#log-scopes)的支援。 在新的提供者中，範圍的屬性會自動新增為所收集遙測的自訂屬性。
 - 現在可以在應用程式啟動管線中更早地捕捉記錄。 現在可以捕捉來自**程式**和**啟動**類別的記錄。
 - 有了新的提供者，篩選就會在架構層級本身完成。 您可以用與其他提供者相同的方式，將記錄篩選 Application Insights 提供者，包括主控台、Debug 之類的內建提供者。 您也可以將相同的篩選準則套用至多個提供者。
 - 在 ASP.NET Core （2.0 和更新版本）中，[啟用記錄提供者](https://github.com/aspnet/Announcements/issues/255)的建議方式是在**Program.cs**本身的 ILoggingBuilder 上使用擴充方法。
@@ -319,7 +319,7 @@ class Program
 
 ## <a name="control-logging-level"></a>控制記錄層級
 
-*ILogger*基礎的 ASP.NET Core 具有內建機制，可套用[記錄篩選](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.2#log-filtering)。 這可讓您控制傳送給每個已註冊提供者的記錄，包括 Application Insights 提供者。 篩選可以在設定中完成（通常是使用檔案中的*appsettings.js* ）或在程式碼中進行。 這項功能是由架構本身所提供。 這不是 Application Insights 提供者特有的。
+*ILogger*基礎的 ASP.NET Core 具有內建機制，可套用[記錄篩選](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.2#log-filtering)。 這可讓您控制傳送給每個已註冊提供者的記錄，包括 Application Insights 提供者。 篩選可以在設定中完成（通常是使用檔案中的*appsettings.js* ）或在程式碼中進行。 這項功能是由架構本身所提供。 這不是 Application Insights 提供者特有的。
 
 下列範例會將篩選規則套用至 ApplicationInsightsLoggerProvider。
 
@@ -437,7 +437,7 @@ public class MyController : ApiController
 ```
 
 > [!NOTE]
-> 如果您使用 ApplicationInsights AspNetCore 套件來啟用 Application Insights，請修改此程式碼， `TelemetryClient` 直接在此函式中取得。 如需範例，請參閱[此常見問題](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core#frequently-asked-questions)。
+> 如果您使用 ApplicationInsights AspNetCore 套件來啟用 Application Insights，請修改此程式碼， `TelemetryClient` 直接在此函式中取得。 如需範例，請參閱[此常見問題](./asp-net-core.md#frequently-asked-questions)。
 
 
 ### <a name="what-application-insights-telemetry-type-is-produced-from-ilogger-logs-or-where-can-i-see-ilogger-logs-in-application-insights"></a>ILogger 記錄會產生哪些 Application Insights 遙測類型？ 或者，我可以在 Application Insights 中看到 ILogger 記錄的位置？
@@ -498,5 +498,5 @@ Azure Web Apps 中的 Application Insights 延伸模組會使用新的提供者�
 
 深入了解：
 
-* [ASP.NET Core 中的記錄](https://docs.microsoft.com/aspnet/core/fundamentals/logging)
+* [ASP.NET Core 中的記錄](/aspnet/core/fundamentals/logging)
 * [Application Insights 中的 .NET 追蹤記錄](../../azure-monitor/app/asp-net-trace-logs.md)

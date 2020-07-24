@@ -3,12 +3,12 @@ title: Application Insights SDK 中的篩選和前置處理 |Microsoft Docs
 description: 撰寫 SDK 的遙測處理器和遙測初始化運算式，以在遙測傳送至 Application Insights 入口網站之前，篩選或將屬性新增至資料。
 ms.topic: conceptual
 ms.date: 11/23/2016
-ms.openlocfilehash: d33aeebfb374f081b4ae5dee7f83ccd04d0835ee
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: adaada3589fd0db1c7d47b788ad50d570defe780
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86075785"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014621"
 ---
 # <a name="filter-and-preprocess-telemetry-in-the-application-insights-sdk"></a>在 Application Insights SDK 中篩選及前置處理遙測
 
@@ -498,7 +498,7 @@ public void Initialize(ITelemetry telemetry)
 
 #### <a name="add-information-from-httpcontext"></a>從 HttpCoNtext 新增資訊
 
-下列範例初始化運算式會從讀取資料 [`HttpContext`](https://docs.microsoft.com/aspnet/core/fundamentals/http-context?view=aspnetcore-3.1) ，並將其附加至 `RequestTelemetry` 實例。 會透過函式相依性 `IHttpContextAccessor` 插入自動提供。
+下列範例初始化運算式會從讀取資料 [`HttpContext`](/aspnet/core/fundamentals/http-context?view=aspnetcore-3.1) ，並將其附加至 `RequestTelemetry` 實例。 會透過函式相依性 `IHttpContextAccessor` 插入自動提供。
 
 ```csharp
 public class HttpContextRequestTelemetryInitializer : ITelemetryInitializer
@@ -543,7 +543,7 @@ public class HttpContextRequestTelemetryInitializer : ITelemetryInitializer
 ## <a name="reference-docs"></a>參考文件
 
 * [API 概觀](../../azure-monitor/app/api-custom-events-metrics.md)
-* [ASP.NET 參考](https://msdn.microsoft.com/library/dn817570.aspx)
+* [ASP.NET 參考](/previous-versions/azure/dn817570(v=azure.100))
 
 ## <a name="sdk-code"></a>SDK 程式碼
 
@@ -554,4 +554,4 @@ public class HttpContextRequestTelemetryInitializer : ITelemetryInitializer
 ## <a name="next-steps"></a><a name="next"></a>後續步驟
 * [搜尋事件和記錄](../../azure-monitor/app/diagnostic-search.md)
 * [取樣](../../azure-monitor/app/sampling.md)
-* [疑難排解](../../azure-monitor/app/troubleshoot-faq.md)
+* [疑難排解](../faq.md)

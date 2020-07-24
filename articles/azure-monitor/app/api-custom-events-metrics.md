@@ -3,11 +3,12 @@ title: 自訂事件和度量的 Application Insights API | Microsoft Docs
 description: 在您的裝置或桌面應用程式、網頁或服務中插入幾行程式碼，來追蹤使用狀況及診斷問題。
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: ae96609446818802b70cab9c31f6527264046eb9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 43951a415256577144b93c7deea168e30e7a13ba
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83115654"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014723"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>自訂事件和度量的 Application Insights API
 
@@ -30,7 +31,7 @@ ms.locfileid: "83115654"
 
 您可以 [附加屬性和度量](#properties) 至這裡大部分的遙測呼叫。
 
-## <a name="before-you-start"></a><a name="prep"></a>在您開始使用 Intune 之前
+## <a name="before-you-start"></a><a name="prep"></a>開始之前
 
 如果您還沒有 Application Insights SDK 的參考：
 
@@ -144,7 +145,7 @@ telemetry.trackEvent({name: "WinGame"});
 
 ### <a name="custom-events-in-analytics"></a>分析中的自訂事件
 
-[Application Insights 分析](analytics.md)的 `customEvents` 資料表中有提供遙測資料。 每個資料列各代表應用程式中的一個 `trackEvent(..)` 呼叫。
+[Application Insights 分析](../log-query/log-query-overview.md)的 `customEvents` 資料表中有提供遙測資料。 每個資料列各代表應用程式中的一個 `trackEvent(..)` 呼叫。
 
 如果[取樣](../../azure-monitor/app/sampling.md)運作中，itemCount 屬性會顯示大於 1 的值。 例如，itemCount==10 表示在 trackEvent() 的 10 個呼叫中，取樣處理序只會傳輸其中一個。 若要取得自訂事件的正確計數，您應該使用之類的程式碼 `customEvents | summarize sum(itemCount)` 。
 
@@ -192,7 +193,7 @@ telemetryClient.TrackMetric(sample);
 telemetry.trackMetric("queueLength", 42.0);
 ```
 
-*Node.js*
+*Node.js* \(英文\)
 
  ```javascript
 telemetry.trackMetric({name: "queueLength", value: 42.0});
@@ -200,7 +201,7 @@ telemetry.trackMetric({name: "queueLength", value: 42.0});
 
 ### <a name="custom-metrics-in-analytics"></a>Analytics 中的自訂計量
 
-[Application Insights 分析](analytics.md)的 `customMetrics` 資料表中有提供遙測資料。 每個資料列各代表應用程式中的一個 `trackMetric(..)` 呼叫。
+[Application Insights 分析](../log-query/log-query-overview.md)的 `customMetrics` 資料表中有提供遙測資料。 每個資料列各代表應用程式中的一個 `trackMetric(..)` 呼叫。
 
 * `valueSum` - 這是測量結果的總和。 若要取得平均值，請將它除以 `valueCount`。
 * `valueCount` - 彙總到這個 `trackMetric(..)` 呼叫的測量數目。
@@ -270,7 +271,7 @@ appInsights.stopTrackPage("Page1", url, properties, measurements);
 
 ### <a name="page-telemetry-in-analytics"></a>分析中的頁面遙測
 
-在[分析](analytics.md)中，有兩個資料表顯示瀏覽器作業的資料：
+在[分析](../log-query/log-query-overview.md)中，有兩個資料表顯示瀏覽器作業的資料：
 
 * `pageViews` 資料表包含 URL 和網頁標題的相關資料
 * `browserTimings` 資料表包含用戶端效能的相關資料，例如處理傳入資料所花費的時間
@@ -306,7 +307,7 @@ pageViews
 
 ## <a name="operation-context"></a>作業內容
 
-您可以使遙測項目和作業內容產生關聯，藉此讓遙測項目相互關聯。 標準的要求追蹤模組會針對在處理 HTTP 要求時傳送的例外狀況和其他事件執行此動作。 在[搜尋](../../azure-monitor/app/diagnostic-search.md)和[分析](analytics.md)中，您可以使用要求的作業識別碼，輕易地找出任何與要求相關聯的事件。
+您可以使遙測項目和作業內容產生關聯，藉此讓遙測項目相互關聯。 標準的要求追蹤模組會針對在處理 HTTP 要求時傳送的例外狀況和其他事件執行此動作。 在[搜尋](../../azure-monitor/app/diagnostic-search.md)和[分析](../log-query/log-query-overview.md)中，您可以使用要求的作業識別碼，輕易地找出任何與要求相關聯的事件。
 
 如需相互關聯的詳細資訊，請參閱 [Application Insights 中的遙測相互關聯](../../azure-monitor/app/correlation.md)。
 
@@ -344,7 +345,7 @@ using (var operation = telemetryClient.StartOperation<RequestTelemetry>("operati
 
 ### <a name="requests-in-analytics"></a>分析中的要求
 
-在 [Application Insights 分析](analytics.md)中，要求會顯示在 `requests` 資料表中。
+在 [Application Insights 分析](../log-query/log-query-overview.md)中，要求會顯示在 `requests` 資料表中。
 
 如果[取樣](../../azure-monitor/app/sampling.md)運作中，itemCount 屬性將會顯示大於 1 的值。 例如，itemCount==10 表示在 trackRequest() 的 10 個呼叫中，取樣處理序只會傳輸其中一個。 若要取得依要求名稱分割的正確要求計數和平均持續時間，請使用類似如下的程式碼：
 
@@ -426,7 +427,7 @@ SDK 將自動攔截許多例外狀況，所以您不一定需要明確呼叫 Tra
 
 ### <a name="exceptions-in-analytics"></a>分析中的例外狀況
 
-在 [Application Insights 分析](analytics.md)中，例外狀況會顯示在 `exceptions` 資料表中。
+在 [Application Insights 分析](../log-query/log-query-overview.md)中，例外狀況會顯示在 `exceptions` 資料表中。
 
 如果[取樣](../../azure-monitor/app/sampling.md)運作中，`itemCount` 屬性會顯示大於 1 的值。 例如，itemCount==10 表示在 trackException() 的 10 個呼叫中，取樣處理序只會傳輸其中一個。 若要取得依例外狀況類型分割的正確例外狀況計數，請使用類似如下的程式碼：
 
@@ -469,7 +470,7 @@ telemetry.TrackTrace(message, SeverityLevel.Warning, properties);
 telemetry.trackTrace(message, SeverityLevel.Warning, properties);
 ```
 
-*Node.js*
+*Node.js* \(英文\)
 
 ```javascript
 telemetry.trackTrace({
@@ -487,10 +488,10 @@ trackTrace(message: string, properties?: {[string]:string}, severityLevel?: Seve
 
 記錄診斷事件，例如進入或離開某個方法。
 
- 參數 | 說明
+ 參數 | 描述
 ---|---
 `message` | 診斷資料。 可以比名稱長很多。
-`properties` | 字串與字串的對應：用來在入口網站中[篩選例外](https://azure.microsoft.com/documentation/articles/app-insights-api-custom-events-metrics/#properties)狀況的其他資料。 預設為空白。
+`properties` | 字串與字串的對應：用來在入口網站中[篩選例外](#properties)狀況的其他資料。 預設為空白。
 `severityLevel` | 支援的值： [SeverityLevel. ts](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/shared/AppInsightsCommon/src/Interfaces/Contracts/Generated/SeverityLevel.ts)
 
 您可以搜尋訊息內容，但是 (不同於屬性值) 您無法在其中進行篩選。
@@ -521,7 +522,7 @@ telemetry.trackTrace("Slow Database response", SeverityLevel.Warning, properties
 
 ### <a name="traces-in-analytics"></a>分析中的追蹤
 
-在 [Application Insights 分析](analytics.md)中，TrackTrace 的呼叫會顯示在 `traces` 資料表中。
+在 [Application Insights 分析](../log-query/log-query-overview.md)中，TrackTrace 的呼叫會顯示在 `traces` 資料表中。
 
 如果[取樣](../../azure-monitor/app/sampling.md)運作中，itemCount 屬性會顯示大於 1 的值。 例如，itemCount==10 表示在 `trackTrace()` 的 10 個呼叫中，取樣處理序只會傳輸其中一個。 若要取得正確的追蹤呼叫計數，您應該使用程式碼，例如 `traces | summarize sum(itemCount)`。
 
@@ -600,7 +601,7 @@ finally
 
 ### <a name="dependencies-in-analytics"></a>分析中的相依性
 
-在 [Application Insights 分析](analytics.md)中，trackDependency 呼叫會顯示在 `dependencies` 資料表中。
+在 [Application Insights 分析](../log-query/log-query-overview.md)中，trackDependency 呼叫會顯示在 `dependencies` 資料表中。
 
 如果[取樣](../../azure-monitor/app/sampling.md)運作中，itemCount 屬性會顯示大於 1 的值。 例如，itemCount==10 表示在 trackDependency() 的 10 個呼叫中，取樣處理序只會傳輸其中一個。 若要取得依目標元件分割的正確相依性計數，請使用類似如下的程式碼：
 
@@ -809,7 +810,7 @@ telemetry.TrackEvent(event);
 
 ### <a name="custom-measurements-and-properties-in-analytics"></a>分析中的自訂測量和屬性
 
-在[分析](analytics.md)中，自訂計量和屬性會顯示在每個遙測記錄的 `customMeasurements` 和 `customDimensions` 屬性中。
+在[分析](../log-query/log-query-overview.md)中，自訂計量和屬性會顯示在每個遙測記錄的 `customMeasurements` 和 `customDimensions` 屬性中。
 
 例如，如果您將一個名為 "game" 的屬性新增至您的要求遙測，此查詢將會計算不同 "game" 值出現的次數，並顯示自訂計量 "score" 的平均值：
 
@@ -1091,8 +1092,8 @@ telemetry.Context.Operation.Name = "MyOperationName";
 
 ## <a name="reference-docs"></a>參考文件
 
-* [ASP.NET 參考](https://docs.microsoft.com/dotnet/api/overview/azure/insights?view=azure-dotnet)
-* [JAVA 參考](https://docs.microsoft.com/java/api/overview/azure/appinsights?view=azure-java-stable/)
+* [ASP.NET 參考](/dotnet/api/overview/azure/insights?view=azure-dotnet)
+* [JAVA 參考](/java/api/overview/azure/appinsights?view=azure-java-stable/)
 * [JavaScript 參考](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)
 
 ## <a name="sdk-code"></a>SDK 程式碼
@@ -1116,4 +1117,4 @@ telemetry.Context.Operation.Name = "MyOperationName";
 ## <a name="next-steps"></a><a name="next"></a>後續步驟
 
 * [搜尋事件和記錄](../../azure-monitor/app/diagnostic-search.md)
-* [疑難排解](../../azure-monitor/app/troubleshoot-faq.md)
+* [疑難排解](../faq.md)

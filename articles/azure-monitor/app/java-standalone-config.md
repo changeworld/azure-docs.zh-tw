@@ -3,12 +3,12 @@ title: 隨時隨地監視 JAVA 應用程式-Azure 監視器 Application Insights
 description: 無程式碼應用程式效能監視，適用于在任何環境中執行的 JAVA 應用程式，而不需要檢測應用程式。 使用分散式追蹤和應用程式對應，找出問題 d 的根本原因。
 ms.topic: conceptual
 ms.date: 04/16/2020
-ms.openlocfilehash: 0c66ad01f265dde7da2f48b17b3ad4438d59a0ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3a01f2e9339f3ba4f8f50fc41617fabf9da9d8cd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85319681"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014196"
 ---
 # <a name="configuration-options---java-standalone-agent-for-azure-monitor-application-insights"></a>設定選項-適用于 Azure 監視器的 JAVA 獨立代理程式 Application Insights
 
@@ -172,7 +172,7 @@ Application Insights JAVA 3.0 Preview 會自動透過 Log4j、Logback 和 util �
 }
 ```
 
-## <a name="heartbeat"></a>Heartbeat
+## <a name="heartbeat"></a>活動訊號
 
 根據預設，Application Insights JAVA 3.0 Preview 每隔15分鐘就會傳送一次「心跳標準」。 如果您使用 [心跳標準] 來觸發警示，您可以增加此信號的頻率：
 
@@ -216,7 +216,7 @@ Application Insights JAVA 3.0 Preview 會自動透過 Log4j、Logback 和 util �
 
 ## <a name="http-proxy"></a>HTTP Proxy
 
-如果您的應用程式位於防火牆後方，而且無法直接連線到 Application Insights （請參閱[Application Insights 所使用的 IP 位址](https://docs.microsoft.com/azure/azure-monitor/app/ip-addresses)），您可以將 Application Insights JAVA 3.0 Preview 設定為使用 HTTP proxy：
+如果您的應用程式位於防火牆後方，而且無法直接連線到 Application Insights （請參閱[Application Insights 所使用的 IP 位址](./ip-addresses.md)），您可以將 Application Insights JAVA 3.0 Preview 設定為使用 HTTP proxy：
 
 ```json
 {

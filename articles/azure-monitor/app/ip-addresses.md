@@ -5,11 +5,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/18/2020
-ms.openlocfilehash: ae3179f388fa6aa2cc8f98899f525a3b3e7251ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dc1aef1f25be8d65dbd4f34bfc728335dc7a90f5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85079169"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014451"
 ---
 # <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>Application Insights 和 Log Analytics 使用的 IP 位址
 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) 服務會使用一些 IP 位址。 如果您所監視的應用程式裝載於防火牆後面，您可能需要知道這些位址。
@@ -18,8 +19,7 @@ ms.locfileid: "85079169"
 > 雖然這些位址是靜態的，但可能隨時需要變更。 除了可用性監視和需要輸入防火牆規則的 Webhook 之外，Application Insights 的所有流量都表示輸出流量。
 
 > [!TIP]
-> 如果您使用 Azure 網路安全性群組，則可以使用 Azure [網路服務標籤](https://docs.microsoft.com/azure/virtual-network/service-tags-overview
-)來管理存取。 如果您管理混合式/內部部署資源的存取，則可以將對等 IP 位址清單下載為 [JSON 檔案](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files)，每週都會更新： 若要涵蓋本文中的所有例外狀況，您必須使用服務標籤：'ActionGroup'、'ApplicationInsightsAvailability'、'AzureMonitor'。
+> 如果您使用 Azure 網路安全性群組，則可以使用 Azure [網路服務標籤](../../virtual-network/service-tags-overview.md)來管理存取。 如果您管理混合式/內部部署資源的存取，則可以將對等 IP 位址清單下載為 [JSON 檔案](../../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)，每週都會更新： 若要涵蓋本文中的所有例外狀況，您必須使用服務標籤：'ActionGroup'、'ApplicationInsightsAvailability'、'AzureMonitor'。
 
 或者，您可以將 https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/azure-monitor/app/ip-addresses.md.atom 新增至您慣用的 RSS/ATOM 讀取器，以訂閱此頁面的 RSS 摘要，而在最新變更可用時收取通知。
 
@@ -32,10 +32,6 @@ ms.locfileid: "85079169"
 | 遙測 |dc.applicationinsights.azure.com<br/>dc.applicationinsights.microsoft.com<br/>dc.services.visualstudio.com |40.114.241.141<br/>104.45.136.42<br/>40.84.189.107<br/>168.63.242.221<br/>52.167.221.184<br/>52.169.64.244<br/>40.85.218.175<br/>104.211.92.54<br/>52.175.198.74<br/>51.140.6.23<br/>40.71.12.231<br/>13.69.65.22<br/>13.78.108.165<br/>13.70.72.233<br/>20.44.8.7<br/>13.86.218.248<br/>40.79.138.41<br/>52.231.18.241<br/>13.75.38.7<br/>102.133.155.50<br/>52.162.110.67<br/>191.233.204.248<br/>13.69.66.140<br/>13.77.52.29<br/>51.107.59.180<br/>40.71.12.235<br/>20.44.8.10<br/>40.71.13.169<br/>13.66.141.156<br/>40.71.13.170<br/>13.69.65.23<br/>20.44.17.0<br/>20.36.114.207 <br/>51.116.155.246 <br/>51.107.155.178 <br/>51.140.212.64  | 443 |
 | 即時計量資料流 (美國東部) |use.rt.prod.applicationinsights.trafficmanager.net |23.96.28.38<br/>13.92.40.198<br/>40.112.49.101<br/>40.117.80.207 |443 |
 | 即時計量資料流 (美國中南部) |ussc.rt.prod.applicationinsights.trafficmanager.net |157.55.177.6<br/>104.44.140.84<br/>104.215.81.124<br/>23.100.122.113 |443 |
-| 即時計量資料流 (北歐) |eun.rt.prod.applicationinsights.trafficmanager.net |40.115.103.168<br/>40.115.104.31<br/>40.87.140.215<br/>40.87.138.220 |443 |
-| 即時計量資料流 (西歐) |euw.rt.prod.applicationinsights.trafficmanager.net |13.80.134.255<br/>40.68.61.229<br/>23.101.69.223<br/>52.232.106.242 |443 |
-| 即時計量資料流 (東亞) |ase.rt.prod.applicationinsights.trafficmanager.net |23.100.90.7<br/>23.101.13.65<br/>23.101.0.142<br/>23.101.9.4 |443 |
-| 即時計量資料流 (東南亞) |asse.rt.prod.applicationinsights.trafficmanager.net |207.46.224.101<br/>207.46.236.191<br/>137.116.151.139<br/>13.76.87.86 |443 |
 
 ## <a name="status-monitor"></a>狀態監視器
 狀態監視器組態 - 只有在進行變更時才需要。
@@ -224,7 +220,6 @@ Azure US Government (Not needed if you are an Azure Public cloud customer)
 | 目的 | URI | IP | 連接埠 |
 | --- | --- | --- | --- |
 | Application Insights JS SDK CDN | az416426.vo.msecnd.net | 動態 | 80,443 |
-| Application Insights Java SDK | aijavasdk.blob.core.windows.net | 動態 | 80,443 |
 
 ## <a name="action-group-webhooks"></a>動作群組 Webhook
 

@@ -11,12 +11,12 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 3d785edb82e62363dd96d9fd67447f1be7ffe8f5
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: b90acafb9146ec6cd796a0916ad46bf880398b22
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85982594"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87013975"
 ---
 # <a name="manage-databases-in-azure-sql-database-by-using-azure-automation"></a>使用 Azure 自動化管理 Azure SQL Database 中的資料庫
 
@@ -34,7 +34,7 @@ Azure 自動化提供高可靠性且高可用性的工作流程執行引擎，�
 
 ## <a name="how-azure-automation-can-help-manage-your-databases"></a>Azure 自動化如何協助管理您的資料庫
 
-使用 Azure 自動化，您可以使用[Azure PowerShell 工具](/powershell/azure/overview)中提供的[PowerShell Cmdlet](https://docs.microsoft.com/powershell/module/servicemanagement/azure/#sql)來管理 Azure SQL Database 中的資料庫。 Azure 自動化提供這些 Azure SQL Database 的 PowerShell Cmdlet，讓您可以在服務內執行所有 SQL Database 管理工作。 您也可以在 Azure 自動化中將這些 Cmdlet 與其他 Azure 服務的 Cmdlet 配對，將跨 Azure 服務和協力廠商系統的複雜工作自動化。
+使用 Azure 自動化，您可以使用[Azure PowerShell 工具](/powershell/azure/)中提供的[PowerShell Cmdlet](/powershell/module/servicemanagement/azure.service/#sql)來管理 Azure SQL Database 中的資料庫。 Azure 自動化提供這些 Azure SQL Database 的 PowerShell Cmdlet，讓您可以在服務內執行所有 SQL Database 管理工作。 您也可以在 Azure 自動化中將這些 Cmdlet 與其他 Azure 服務的 Cmdlet 配對，將跨 Azure 服務和協力廠商系統的複雜工作自動化。
 
 Azure 自動化也可直接與 SQL 伺服器通訊，只要使用 PowerShell 發出 SQL 命令即可。
 

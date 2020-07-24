@@ -5,12 +5,12 @@ author: ofirmanor
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 03/14/2019
-ms.openlocfilehash: 951894bcd047d93809b41f47213ad670823a27e0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fff1aac5df50550e43ae3e87c63c2130c6b39644
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445367"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87013958"
 ---
 # <a name="common-alert-schema-definitions"></a>常見的警示結構描述定義
 
@@ -149,7 +149,7 @@ ms.locfileid: "85445367"
 ### <a name="log-alerts"></a>記錄警示
 
 > [!NOTE]
-> 針對已定義自訂電子郵件主旨和/或 JSON 承載的記錄警示，啟用通用結構描述可將電子郵件主旨和/或承載結構描述還原成如下所述的結構描述。 已啟用通用結構描述的警示，其大小上限為每個警示 256 KB。 如果搜尋結果導致警示大小超過此閾值，則不會在記錄警示承載中內嵌搜尋結果。 您可藉由檢查旗標 `IncludeSearchResults` 來判斷這一點。 如果不包含搜尋結果，您應該使用搜尋查詢搭配 [Log Analytics API](https://docs.microsoft.com/rest/api/loganalytics/dataaccess/query/get)。 
+> 針對已定義自訂電子郵件主旨和/或 JSON 承載的記錄警示，啟用通用結構描述可將電子郵件主旨和/或承載結構描述還原成如下所述的結構描述。 已啟用通用結構描述的警示，其大小上限為每個警示 256 KB。 如果搜尋結果導致警示大小超過此閾值，則不會在記錄警示承載中內嵌搜尋結果。 您可藉由檢查旗標 `IncludeSearchResults` 來判斷這一點。 如果不包含搜尋結果，您應該使用搜尋查詢搭配 [Log Analytics API](/rest/api/loganalytics/dataaccess/query/get)。 
 
 #### <a name="monitoringservice--log-analytics"></a>`monitoringService` = `Log Analytics`
 
@@ -220,7 +220,7 @@ ms.locfileid: "85445367"
                     "Heartbeat"
                 ]
             }
-        ]
+        ],
     "IncludeSearchResults": "True",
     "AlertType": "Metric measurement"
     }
@@ -500,5 +500,4 @@ ms.locfileid: "85445367"
 ## <a name="next-steps"></a>後續步驟
 
 - 深入了解[通用警示結構描述](https://aka.ms/commonAlertSchemaDocs)。
-- 了解[如何建立邏輯應用程式，以使用通用警示結構描述來處理所有警示](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-integrations)。 
-
+- 了解[如何建立邏輯應用程式，以使用通用警示結構描述來處理所有警示](./alerts-common-schema-integrations.md)。 

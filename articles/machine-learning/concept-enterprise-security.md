@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 05/19/2020
-ms.openlocfilehash: 5afa6b9127317fcd1a683651be86cdfe078cfcd6
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 94724ea44b52ae885594fe55b67d74a03e339dab
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259431"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012851"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Azure Machine Learning 的企業安全性
 
@@ -34,7 +34,7 @@ ms.locfileid: "86259431"
 1. 用戶端會將權杖提供給 Azure Resource Manager 和所有 Azure Machine Learning。
 1. Machine Learning 服務會為使用者計算目標 (例如，Machine Learning Compute) 提供 Machine Learning 服務權杖。 在執行完成之後，使用者計算目標會使用此權杖來回呼 Machine Learning 服務。 範圍僅限於工作區。
 
-[![Azure Machine Learning 中的驗證](media/concept-enterprise-security/authentication.png)](media/concept-enterprise-security/authentication-expanded.png#lightbox)
+[![Azure Machine Learning 中的驗證](media/concept-enterprise-security/authentication.png)](media/concept-enterprise-security/authentication.png#lightbox)
 
 如需詳細資訊，請參閱[設定 Azure Machine Learning 資源和工作流程的驗證](how-to-setup-authentication.md)。 此文章提供驗證的相關資訊與範例，包括使用服務主體與自動化工作流程。
 
@@ -128,6 +128,8 @@ Azure Machine Learning 仰賴其他 Azure 服務來處理計算資源。 計算�
 * 使用您的金鑰保存庫，將您的儲存體帳戶、容器登錄和 SSH 帳戶的認證，從執行層安全地傳遞至您的計算叢集
 * 啟用 IP 篩選以確保底層批次集區無法由 AzureMachineLearningService 以外的任何外部服務呼叫
 
+> [!WARNING]
+> 只有在建立 `hbi_workspace` 工作區時，才能設定旗標。 無法針對現有的工作區進行變更。
 
 如需 Azure 中待用加密運作方式的詳細資訊，請參閱[待用 Azure 資料加密](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest) \(部分機器翻譯\)。
 
@@ -317,7 +319,7 @@ Microsoft 也建議您不要將敏感性資訊 (例如帳戶金鑰祕密) 儲存
 
 使用者也可以視需要佈建連結至工作區 (例如 Azure Kubernetes Service 或 VM) 的其他計算目標。
 
-[![建立工作區工作流程](media/concept-enterprise-security/create-workspace.png)](media/concept-enterprise-security/create-workspace-expanded.png#lightbox)
+[![建立工作區工作流程](media/concept-enterprise-security/create-workspace.png)](media/concept-enterprise-security/create-workspace.png#lightbox)
 
 ### <a name="save-source-code-training-scripts"></a>儲存原始碼 (將指令碼定型)
 
@@ -325,7 +327,7 @@ Microsoft 也建議您不要將敏感性資訊 (例如帳戶金鑰祕密) 儲存
 
 與 Azure Machine Learning 工作區相關聯的是包含原始程式碼 (定型指令碼) 的目錄 (實驗)。 這些指令碼會儲存在您的本機電腦和雲端 (在您訂用帳戶的 Azure Blob 儲存體中)。 程式碼快照集會用來執行或檢查歷程稽核。
 
-[![程式碼快照集工作流程](media/concept-enterprise-security/code-snapshot.png)](media/concept-enterprise-security/code-snapshot-expanded.png#lightbox)
+[![程式碼快照集工作流程](media/concept-enterprise-security/code-snapshot.png)](media/concept-enterprise-security/code-snapshot.png#lightbox)
 
 ### <a name="training"></a>訓練
 
@@ -352,7 +354,7 @@ Microsoft 也建議您不要將敏感性資訊 (例如帳戶金鑰祕密) 儲存
 
 在下面的流程圖中，當定型計算目標將執行計量從 Cosmos DB 資料庫中的儲存體寫回 Azure Machine Learning 時，就會發生此步驟。 用戶端可以呼叫 Azure Machine Learning。 Machine Learning 接著會從 Cosmos DB 資料庫中提取計量，並將其傳回用戶端。
 
-[![定型工作流程](media/concept-enterprise-security/training-and-metrics.png)](media/concept-enterprise-security/training-and-metrics-expanded.png#lightbox)
+[![定型工作流程](media/concept-enterprise-security/training-and-metrics.png)](media/concept-enterprise-security/training-and-metrics.png#lightbox)
 
 ### <a name="creating-web-services"></a>建立 Web 服務
 
@@ -367,7 +369,7 @@ Microsoft 也建議您不要將敏感性資訊 (例如帳戶金鑰祕密) 儲存
 * 評分要求詳細資料會儲存在使用者訂用帳戶中的 Application Insights,。
 * 遙測也會推送至 Microsoft/Azure 訂用帳戶。
 
-[![推斷工作流程](media/concept-enterprise-security/inferencing.png)](media/concept-enterprise-security/inferencing-expanded.png#lightbox)
+[![推斷工作流程](media/concept-enterprise-security/inferencing.png)](media/concept-enterprise-security/inferencing.png#lightbox)
 
 ## <a name="next-steps"></a>後續步驟
 

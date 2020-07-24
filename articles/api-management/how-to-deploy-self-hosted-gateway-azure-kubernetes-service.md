@@ -10,26 +10,26 @@ ms.service: api-management
 ms.topic: article
 ms.date: 04/26/2020
 ms.author: apimpm
-ms.openlocfilehash: 7321331adcfc81e26b40e7a3c4869b8b1e50fc0e
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 02962e9c5be2c4b73d121a53a7b595c573ad6cd0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86254379"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015216"
 ---
 # <a name="deploy-to-azure-kubernetes-service"></a>部署到 Azure Kubernetes Service
 
 本文提供將 Azure API 管理的自我裝載閘道元件部署至[Azure Kubernetes Service](https://azure.microsoft.com/services/kubernetes-service/)的步驟。 若要將自我裝載閘道部署到 Kubernetes 叢集，請參閱這[份檔](how-to-deploy-self-hosted-gateway-kubernetes.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
-- [建立 Azure API 管理執行個體](get-started-create-service-instance.md)
+- [建立 Azure API 管理實例](get-started-create-service-instance.md)
 - [建立 Azure Kubernetes 叢集](../aks/kubernetes-walkthrough-portal.md)
 - [在您的 API 管理實例中布建閘道資源](api-management-howto-provision-self-hosted-gateway.md)。
 
 ## <a name="deploy-the-self-hosted-gateway-to-aks"></a>將自我裝載閘道部署至 AKS
 
-1. 從 [**設定**] 底下選取 [**閘道**]。
+1. 從 [**部署和基礎結構**] 底下選取 [**閘道**]。
 2. 選取您想要部署的自我裝載閘道資源。
 3. 選取 [**部署**]。
 4. 請注意，[**權杖**] 文字方塊中的新權杖會使用預設的**到期**和**秘密金鑰**值自動產生。 如有需要，請調整任一或兩者，然後選取 [**產生**] 以建立新的權杖。
@@ -38,11 +38,11 @@ ms.locfileid: "86254379"
 7. 視需要調整 yml 檔案中的埠對應和容器名稱。
 8. 視您的案例而定，您可能需要變更[服務類型](../aks/concepts-network.md#services)。 預設值是 `NodePort`。
 9. 選取位於 [**部署**] 文字方塊右邊的**複製**圖示，將 `kubectl` 命令儲存到剪貼簿。
-10. 將命令貼到終端機 (或命令) 視窗。 請注意，此命令會預期所下載的環境檔案會出現在目前的目錄中。
+10. 將命令貼到 [終端機] （或命令）視窗。 請注意，此命令會預期所下載的環境檔案會出現在目前的目錄中。
 ```console
     kubectl apply -f <gateway-name>.yaml
 ```
-11. 執行命令。 命令會指示您的 AKS 叢集執行容器，使用從 Microsoft Container Registry 下載的自我裝載閘道映射，並將容器設定為公開 HTTP (8080) 和 HTTPS (443) 埠。
+11. 執行命令。 命令會指示您的 AKS 叢集執行容器，使用從 Microsoft Container Registry 下載的自我裝載閘道映射，並將容器設定為公開 HTTP （8080）和 HTTPS （443）埠。
 12. 執行下列命令，以檢查閘道 pod 是否正在執行。 請注意，您的 pod 名稱會不同。
 ```console
 kubectl get pods
@@ -60,7 +60,7 @@ contosogateway   NodePort    10.110.230.87   <none>        80:32504/TCP,443:3004
 > [!TIP]
 > 使用 <code>kubectl logs <gateway-pod-name></code> 命令來查看自我裝載閘道記錄的快照集。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 若要深入瞭解自我裝載閘道，請參閱[AZURE API 管理自我裝載閘道總覽](self-hosted-gateway-overview.md)
 * 深入瞭解[Azure Kubernetes Service](../aks/intro-kubernetes.md)

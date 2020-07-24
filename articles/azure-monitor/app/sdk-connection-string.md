@@ -6,16 +6,16 @@ author: timothymothra
 ms.author: tilee
 ms.date: 01/17/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: d9906e43bad296cc850942c01c83c6bfee2651fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 81e27c0f62e921eb468c78521e426c8917da250a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482117"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014133"
 ---
 # <a name="connection-strings"></a>連接字串
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 連接字串可讓應用程式深入解析使用者使用單一設定，而不需要多個 proxy 設定。 對於想要將資料傳送到監視服務的內部網路 web 伺服器、主權或混合式雲端環境而言，非常有用。
 
@@ -31,12 +31,12 @@ ms.locfileid: "85482117"
 
 - 防火牆例外或 proxy 重新導向 
 
-    在需要監視內部網路 web 伺服器的情況下，我們先前的解決方案會要求客戶將個別的服務端點新增至您的設定。 如需詳細資訊，請參閱[這裡](https://docs.microsoft.com/azure/azure-monitor/app/troubleshoot-faq#can-i-monitor-an-intranet-web-server)。 
+    在需要監視內部網路 web 伺服器的情況下，我們先前的解決方案會要求客戶將個別的服務端點新增至您的設定。 如需詳細資訊，請參閱[這裡](../faq.md#can-i-monitor-an-intranet-web-server)。 
     連接字串藉由將這項工作縮減為單一設定，提供更好的替代方式。 一個簡單的前置詞，後置詞修訂可讓所有端點自動填入和重新導向至正確的服務。 
 
 - 主權或混合式雲端環境
 
-    使用者可以將資料傳送至已定義的[Azure Government 區域](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights)。
+    使用者可以將資料傳送至已定義的[Azure Government 區域](../../azure-government/compare-azure-government-global-azure.md#application-insights)。
     連接字串可讓您定義內部網路伺服器或混合式雲端設定的端點設定。 
 
 ## <a name="getting-started"></a>開始使用
@@ -53,7 +53,7 @@ ms.locfileid: "85482117"
 
 連接的支援長度上限為4096個字元。
 
-#### <a name="key-value-pairs"></a>索引鍵/值組
+#### <a name="key-value-pairs"></a>機碼值組
 
 連接字串是由以分號分隔的索引鍵/值組來表示的設定清單所組成：`key1=value1;key2=value2;key3=value3`
 

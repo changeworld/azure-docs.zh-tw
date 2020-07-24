@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6913ae8cbd8c73bd2763bd89172280feee9df973
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 31c769039009889559b6aa05bb76139d63c42feb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185614"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015012"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>部署 Windows 混合式 Runbook 背景工作角色
 
@@ -58,7 +58,7 @@ Windows 混合式 Runbook 背景工作角色已正式支援下列版本的 Windo
 * Windows 8 企業版和專業版
 * Windows 7 SP1
 
-### <a name="minimum-requirements"></a>最低要求條件
+### <a name="minimum-requirements"></a>最低需求
 
 「Windows 混合式 Runbook 背景工作角色」的最低需求如下：
 
@@ -84,7 +84,7 @@ Windows 混合式 Runbook 背景工作角色已正式支援下列版本的 Windo
 如需有關啟用電腦以 Azure 自動化狀態設定進行管理的詳細資訊，請參閱[Azure 自動化狀態設定啟用電腦以進行管理](automation-dsc-onboarding.md)。
 
 > [!NOTE]
-> 若要使用 Desired State Configuration (DSC) 來管理支援混合式 Runbook 背景工作角色的電腦設定，您必須將電腦新增為 DSC 節點。
+> 若要使用 Desired State Configuration （DSC）來管理支援混合式 Runbook 背景工作角色的電腦設定，您必須將電腦新增為 DSC 節點。
 
 ## <a name="windows-hybrid-runbook-worker-installation-options"></a>Windows 混合式 Runbook 背景工作安裝選項
 
@@ -173,7 +173,7 @@ Heartbeat
 
 2. 若要確認混合式 Runbook 背景工作角色的版本，請流覽 `C:\Program Files\Microsoft Monitoring Agent\Agent\AzureAutomation\` 並記下**version**子資料夾。
 
-### <a name="step-3---install-the-runbook-environment-and-connect-to-azure-automation"></a>步驟 3-安裝 runbook 環境並連接到 Azure 自動化
+### <a name="step-2---install-the-runbook-environment-and-connect-to-azure-automation"></a>步驟 2-安裝 runbook 環境並連接到 Azure 自動化
 
 當您將代理程式設定為向 Log Analytics 工作區報告時，Azure 自動化功能會向下推送 `HybridRegistration` PowerShell 模組，其中包含 `Add-HybridRunbookWorker` Cmdlet。 使用此 Cmdlet 在電腦上安裝 runbook 環境，並向 Azure 自動化註冊。
 
@@ -202,7 +202,7 @@ Add-HybridRunbookWorker –GroupName <String> -Url <Url> -Key <String>
 
 * 如有需要，請設定 `Verbose` 參數，以接收有關安裝的詳細資料。
 
-### <a name="step-4----install-powershell-modules"></a>步驟 4-安裝 PowerShell 模組
+### <a name="step-3----install-powershell-modules"></a>步驟 3-安裝 PowerShell 模組
 
 Runbook 可以使用 Azure 自動化環境中安裝的模組中定義的任何活動和 Cmdlet。 因為這些模組不會自動部署至內部部署機器，所以您必須手動安裝它們。 但 Azure 模組例外。 此模組預設為安裝，可讓您存取 Cmdlet 以執行 Azure 自動化的所有 Azure 服務和活動。
 

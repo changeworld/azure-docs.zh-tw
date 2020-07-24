@@ -3,12 +3,12 @@ title: 監視在任何環境中執行的 JAVA 應用程式-Azure 監視器 Appli
 description: 應用程式效能監視，適用于使用 JAVA 獨立代理程式在任何環境上執行的 JAVA 應用程式，不需檢測應用程式。 分散式追蹤和應用程式對應。
 ms.topic: conceptual
 ms.date: 04/16/2020
-ms.openlocfilehash: 527f1eaf04be7b5e8c89c12912a06d2f5d50321f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6499fbc62a78cb333c623dbea8269144e623921c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82508032"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014236"
 ---
 # <a name="configuring-jvm-args-java-standalone-agent-for-azure-monitor-application-insights"></a>設定適用于 Azure 監視器 Application Insights 的 JVM args JAVA 獨立代理程式
 
@@ -16,7 +16,7 @@ ms.locfileid: "82508032"
 
 ## <a name="azure-environments"></a>Azure 環境
 
-設定[應用程式服務](https://docs.microsoft.com/azure/app-service/configure-language-java#set-java-runtime-options)。
+設定[應用程式服務](../../app-service/configure-language-java.md#set-java-runtime-options)。
 
 ## <a name="spring-boot"></a>Spring Boot
 

@@ -3,11 +3,12 @@ title: 使用 Azure Application Insights 進行使用量分析 | Microsoft Docs
 description: 了解您的使用者，以及他們如何運用您的應用程式。
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: 7f4f46f183291684fa59e5aa35b65c8ac3352563
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 1acc803d66bef29a77266d4e38e1605ffd75f36f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83797783"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014060"
 ---
 # <a name="usage-analysis-with-application-insights"></a>使用 Application Insights 進行使用量分析
 
@@ -33,7 +34,7 @@ Web 或行動應用程式的哪些功能最受歡迎？ 您的使用者是否利
     </script>
     ```
 
-    若要深入了解用於監視網站的進階組態，請參閱 [JavaScript SDK 參考](https://docs.microsoft.com/azure/azure-monitor/app/javascript) \(部分機器翻譯\) 一文。
+    若要深入了解用於監視網站的進階組態，請參閱 [JavaScript SDK 參考](./javascript.md) \(部分機器翻譯\) 一文。
 
 3. **行動應用程式程式碼：** 使用 App Center SDK 從應用程式收集事件，然後將這些事件的複本傳送至 Application Insights，[按照此指南](../../azure-monitor/learn/mobile-center-quickstart.md)的指示進行分析。
 
@@ -44,7 +45,7 @@ Web 或行動應用程式的哪些功能最受歡迎？ 您的使用者是否利
 ## <a name="include-user-and-session-id-in-your-telemetry"></a>將使用者與工作階段識別碼加入您的遙測
 若要追蹤使用者一段時間，Application Insights 需要識別他們的方式。 「事件工具」是唯一不需要使用者識別碼或工作階段識別碼的「使用量工具」。
 
-使用[此流程](https://docs.microsoft.com/azure/application-insights/app-insights-usage-send-user-context)開始傳送使用者與工作階段識別碼。
+使用[此流程](./usage-send-user-context.md)開始傳送使用者與工作階段識別碼。
 
 ## <a name="explore-usage-demographics-and-statistics"></a>探索使用量人口統計和統計資料
 了解人們在使用您的應用程式時，他們最感興趣的網頁、使用者的所在位置，以及他們使用何種瀏覽器與作業系統。 

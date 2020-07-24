@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2d73b87248fff2e99f05d2d6d6263f2bb3abba57
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 4338bc4a11b785b27f6316748f9cbc4eeaaddbea
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185631"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015097"
 ---
 # <a name="start-a-runbook-from-a-webhook"></a>從 Webhook 啟動 Runbook
 
@@ -133,7 +133,7 @@ http://<Webhook Server>/token?=<Token Value>
 {"JobIds":["<JobId>"]}
 ```
 
-用戶端無法從 Webhook 判斷 Runbook 的工作何時完成或完成狀態。 其可使用作業識別碼搭配其他機制 (例如 [Windows PowerShell](/powershell/module/servicemanagement/azure/get-azureautomationjob) \(英文\) 或 [Azure 自動化 API](/rest/api/automation/job)) 來找出此資訊。
+用戶端無法從 Webhook 判斷 Runbook 的工作何時完成或完成狀態。 其可使用作業識別碼搭配其他機制 (例如 [Windows PowerShell](/powershell/module/servicemanagement/azure.service/get-azureautomationjob) \(英文\) 或 [Azure 自動化 API](/rest/api/automation/job)) 來找出此資訊。
 
 ## <a name="renew-a-webhook"></a>更新 Webhook
 

@@ -3,12 +3,12 @@ title: 監視任何環境上的 JAVA 應用程式-Azure 監視器 Application In
 description: 應用程式效能監視，適用于在任何環境中執行的 JAVA 應用程式，不需檢測應用程式。 分散式追蹤和應用程式對應。
 ms.topic: conceptual
 ms.date: 03/29/2020
-ms.openlocfilehash: 3e3d108603ad6210143deea58049ff7b230bb6fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3ca6e7050b1c7649298d2417f9f7f66ef8898816
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85319698"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014332"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights---public-preview"></a>JAVA 無程式碼應用程式監視 Azure 監視器 Application Insights-公開預覽
 
@@ -32,11 +32,11 @@ ms.locfileid: "85319698"
 
 一般 JVM 引數包括 `-Xmx512m` 和 `-XX:+UseG1GC` 。 因此，如果您知道要將這些新增到何處，您就已經知道要將它加入何處。
 
-如需設定應用程式 JVM 引數的其他協助，請參閱[3.0 Preview：更新 JVM 引數的秘訣](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-arguments)。
+如需設定應用程式 JVM 引數的其他協助，請參閱[3.0 Preview：更新 JVM 引數的秘訣](./java-standalone-arguments.md)。
 
 **3. 將代理程式指向您的 Application Insights 資源**
 
-如果您還沒有 Application Insights 資源，您可以遵循[資源建立指南](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)中的步驟來建立新的資源。
+如果您還沒有 Application Insights 資源，您可以遵循[資源建立指南](./create-new-resource.md)中的步驟來建立新的資源。
 
 藉由設定環境變數，將代理程式指向您的 Application Insights 資源：
 
@@ -75,12 +75,12 @@ APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=00000000-0000-0000-0000
 * 應用程式記錄檔捕獲
 * JMX 計量
 * Micrometer
-* Heartbeat
+* 活動訊號
 * 取樣
 * HTTP Proxy
 * 自我診斷
 
-請參閱[3.0 公開預覽：設定選項](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-config)的詳細資料。
+請參閱[3.0 公開預覽：設定選項](./java-standalone-config.md)的詳細資料。
 
 ## <a name="autocollected-requests-dependencies-logs-and-metrics"></a>實驗自動收集要求、相依性、記錄和計量
 

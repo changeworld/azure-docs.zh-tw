@@ -8,12 +8,12 @@ ms.date: 07/07/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 4ce23e9da84d01a288c1c37c6a6d884db2ed3969
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: ce8f7347e4813e72ede426ab17f09221ab859136
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077553"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015403"
 ---
 # <a name="add-a-service-principal-to-the-server-administrator-role"></a>將服務主體新增至伺服器管理員角色 
 
@@ -44,7 +44,7 @@ ms.locfileid: "86077553"
 
 ## <a name="using-a-resource-manager-template"></a>使用 Resource Manager 範本
 
-您也可以使用 Azure Resource Manager 範本來部署 Analysis Services 伺服器以設定伺服器管理員。 執行部署的身分識別必須屬於 [Azure 角色型存取控制 (RBAC)](../role-based-access-control/overview.md) 資源的**參與者**角色。
+您也可以使用 Azure Resource Manager 範本來部署 Analysis Services 伺服器以設定伺服器管理員。 執行部署的身分識別必須屬於[azure 角色型存取控制（AZURE RBAC）](../role-based-access-control/overview.md)中資源的「**參與者**」角色。
 
 > [!IMPORTANT]
 > 服務主體必須使用 `app:{service-principal-client-id}@{azure-ad-tenant-id}` 格式來新增。
@@ -119,5 +119,3 @@ az ad sp show --id <ManagedIdentityServicePrincipalObjectId> --query appId -o ts
 
 * [下載 SQL Server PowerShell 模組](https://docs.microsoft.com/sql/ssms/download-sql-server-ps-module)   
 * [下載 SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)   
-
-

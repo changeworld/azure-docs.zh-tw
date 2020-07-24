@@ -4,11 +4,12 @@ description: 如何向 PowerApps 和 Microsoft Flow 公開 App Service 中裝載
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.reviewer: sunayv
-ms.openlocfilehash: 8ded1c5fba902adeaeb883894452c00c4ae1d617
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d968c62afbfc92952f747e1e7627c98fe07436d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83115810"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015080"
 ---
 # <a name="exporting-an-azure-hosted-api-to-powerapps-and-microsoft-flow"></a>將 Azure 裝載 API 匯出至 PowerApps 和 Microsoft Flow
 
@@ -57,7 +58,7 @@ ms.locfileid: "83115810"
 
 2. 使用表格中所指定的設定。
 
-    |設定|說明|
+    |設定|描述|
     |--------|------------|
     |**環境**|選取應該儲存自訂連接器的目標環境。 如需詳細資訊，請參閱[環境概觀](https://powerapps.microsoft.com/tutorials/environments-overview/)。|
     |**自訂 API 名稱**|輸入名稱，也就是 PowerApps 和 Microsoft Flow 建置者在連接器清單中看到的名稱。|
@@ -65,7 +66,7 @@ ms.locfileid: "83115810"
  
     ![快速匯出至 PowerApps 和 Microsoft Flow](media/app-service-export-api-to-powerapps-and-flow/export-express.png)
 
-3. 按一下 [確定]。 自訂連接現已建置並新增至您指定的環境。
+3. 按一下 [確定]  。 自訂連接現已建置並新增至您指定的環境。
 
 <a name="manual"></a>
 ## <a name="use-manual-export"></a>使用手動匯出
@@ -145,9 +146,9 @@ PowerApps 和 Microsoft Flow 支援一系列提供自訂連接器驗證的識別
 
 - 若要設定 API 的註冊，請使用 [App Service 驗證/授權](../app-service/configure-authentication-provider-aad.md)功能。
 
-- 若要設定連接器的註冊，請依照[新增 Azure AD 應用程式](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)中的步驟執行。 註冊必須具有 API 和 `https://msmanaged-na.consent.azure-apim.net/redirect` 之回覆 URL 的委派存取權。 
+- 若要設定連接器的註冊，請依照[新增 Azure AD 應用程式](../active-directory/develop/quickstart-register-app.md)中的步驟執行。 註冊必須具有 API 和 `https://msmanaged-na.consent.azure-apim.net/redirect` 之回覆 URL 的委派存取權。 
 
-如需詳細資訊，請參閱 [PowerApps](https://powerapps.microsoft.com/tutorials/customapi-azure-resource-manager-tutorial/) 和 [Microsoft Flow](https://docs.microsoft.com/connectors/custom-connectors/azure-active-directory-authentication) 中的 Azure AD 註冊範例。 這些範例將 Azure Resource Manager 當作 API。如果您遵循這些步驟，請替換 API。
+如需詳細資訊，請參閱 [PowerApps](https://powerapps.microsoft.com/tutorials/customapi-azure-resource-manager-tutorial/) 和 [Microsoft Flow](/connectors/custom-connectors/azure-active-directory-authentication) 中的 Azure AD 註冊範例。 這些範例將 Azure Resource Manager 當作 API。如果您遵循這些步驟，請替換 API。
 
 下列設定值是必要的：
 - **用戶端識別碼**：連接器 Azure AD 註冊的用戶端識別碼
@@ -168,5 +169,3 @@ PowerApps 和 Microsoft Flow 支援一系列提供自訂連接器驗證的識別
 - **授權 URL**：OAuth 2.0 授權 URL
 - **權杖 URL**：OAuth 2.0 權杖 URL
 - **重新整理 URL**：OAuth 2.0 重新整理 URL
-
-

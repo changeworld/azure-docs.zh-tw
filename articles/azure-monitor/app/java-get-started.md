@@ -5,11 +5,12 @@ ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 05/24/2019
-ms.openlocfilehash: e56ba304d197984110de5127a0f163ac0accf1aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d3835f88eb581693d10f68a9a495329466a657a2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81537503"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014485"
 ---
 # <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>快速入門：在 JAVA Web 專案中開始使用 Application Insights
 
@@ -171,7 +172,7 @@ Application Insights SDK 會依此順序尋找此金鑰︰
 ![向下切入到特定的範例視圖](./media/java-get-started/007-instance.png)
 
 ### <a name="analytics-powerful-query-language"></a>分析︰功能強大的查詢語言
-當您累積更多資料時，您就可以執行查詢以彙總資料並找出個別執行個體。  [分析](../../azure-monitor/app/analytics.md) 是一項強大的工具，既可了解效能和使用情況，也可進行診斷。
+當您累積更多資料時，您就可以執行查詢以彙總資料並找出個別執行個體。  [分析](../log-query/log-query-overview.md) 是一項強大的工具，既可了解效能和使用情況，也可進行診斷。
 
 ![分析的範例](./media/java-get-started/0025.png)
 
@@ -263,7 +264,7 @@ Application Insights Java SDK 現在支援 [W3C 分散式追蹤](https://w3c.git
   * `tabular`：效能計數器資料的格式為資料表列
 
 #### <a name="windows-performance-counters"></a>Windows 效能計數器
-每個 [Windows 效能計數器](https://msdn.microsoft.com/library/windows/desktop/aa373083.aspx) 是類別的成員 (以欄位是類別成員的相同方式)。 類別可以是全域，或可以有一定數量或指定的執行個體。
+每個 [Windows 效能計數器](/windows/win32/perfctrs/performance-counters-portal) 是類別的成員 (以欄位是類別成員的相同方式)。 類別可以是全域，或可以有一定數量或指定的執行個體。
 
 ```XML
     <PerformanceCounters>
@@ -299,15 +300,15 @@ Application Insights 可讓您定期測試網站，以檢查網站運作中且�
 
 [深入瞭解如何設定可用性 web 測試。][availability]
 
-## <a name="questions-problems"></a>有問題嗎？ 有問題嗎？
+## <a name="questions-problems"></a>有任何問題嗎？ 有問題嗎？
 [疑難排解 Java](java-troubleshoot.md)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 * [監視相依性呼叫](java-agent.md)
 * [監視 Unix 效能計數器](java-collectd.md)
 * 新增[對網頁的監視](javascript.md)，以監視頁面載入時間、AJAX 呼叫、瀏覽器例外狀況。
 * 撰寫[自訂遙測](../../azure-monitor/app/api-custom-events-metrics.md)，以追蹤瀏覽器中或在伺服器上的使用情況。
-* 透過應用程式的遙測，使用[分析](../../azure-monitor/app/analytics.md)進行強大的查詢
+* 透過應用程式的遙測，使用[分析](../log-query/log-query-overview.md)進行強大的查詢
 * 如需詳細資訊，請瀏覽[適用於 Java 開發人員的 Azure](/java/azure)。
 
 <!--Link references-->

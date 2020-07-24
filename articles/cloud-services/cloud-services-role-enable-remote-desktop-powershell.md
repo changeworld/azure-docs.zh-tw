@@ -9,11 +9,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
-ms.openlocfilehash: e4e8dca6c5359e865e6a17fc47fe47802b0ee9e6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 13d5be5b1e0bcdf84001f21a45364296d67a5da4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75386114"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87013892"
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-using-powershell"></a>使用 PowerShell 啟用 Azure 雲端服務中角色的遠端桌面連線
 
@@ -24,10 +25,10 @@ ms.locfileid: "75386114"
 
 遠端桌面可讓您存取 Azure 內執行中角色的桌面。 您可以使用遠端桌面連線來疑難排解和診斷執行中應用程式的問題。
 
-這篇文章描述如何使用 PowerShell 在雲端服務角色上啟用遠端桌面。 如需這篇文章所需要的必要條件，請參閱 [如何安裝和設定 Azure PowerShell](/powershell/azure/overview) 。 PowerShell 會利用遠端桌面延伸模組，因此在應用程式部署之後，您也可以啟用遠端桌面。
+這篇文章描述如何使用 PowerShell 在雲端服務角色上啟用遠端桌面。 如需這篇文章所需要的必要條件，請參閱 [如何安裝和設定 Azure PowerShell](/powershell/azure/) 。 PowerShell 會利用遠端桌面延伸模組，因此在應用程式部署之後，您也可以啟用遠端桌面。
 
 ## <a name="configure-remote-desktop-from-powershell"></a>從 PowerShell 設定遠端桌面
-[Set-AzureServiceRemoteDesktopExtension](/powershell/module/servicemanagement/azure/set-azureserviceremotedesktopextension?view=azuresmps-3.7.0) Cmdlet 可讓您在雲端服務部署的指定角色或所有角色上啟用遠端桌面。 此 Cmdlet 可讓您透過可接受 PSCredential 物件的 *Credential* 參數，指定遠端桌面使用者的使用者名稱和密碼。
+[Set-AzureServiceRemoteDesktopExtension](/powershell/module/servicemanagement/azure.service/set-azureserviceremotedesktopextension?view=azuresmps-3.7.0) Cmdlet 可讓您在雲端服務部署的指定角色或所有角色上啟用遠端桌面。 此 Cmdlet 可讓您透過可接受 PSCredential 物件的 *Credential* 參數，指定遠端桌面使用者的使用者名稱和密碼。
 
 如果您以互動方式使用 PowerShell，您可以呼叫 [Get-Credentials](https://technet.microsoft.com/library/hh849815.aspx) Cmdlet，輕鬆地設定 PSCredential 物件。
 
@@ -50,7 +51,7 @@ ConvertTo-SecureString -String "Password123" -AsPlainText -Force | ConvertFrom-S
 
 若要從安全的密碼檔案建立認證物件，您必須讀取檔案內容，並使用 [ConvertTo-SecureString](https://technet.microsoft.com/library/hh849818.aspx)將它們轉換回安全字串。
 
-[Set-AzureServiceRemoteDesktopExtension](/powershell/module/servicemanagement/azure/set-azureserviceremotedesktopextension?view=azuresmps-3.7.0) Cmdlet 也接受 *Expiration* 參數，它可指定使用者帳戶到期的 **日期時間** 。 例如，您可以設定帳戶在目前日期和時間的幾天後到期。
+[Set-AzureServiceRemoteDesktopExtension](/powershell/module/servicemanagement/azure.service/set-azureserviceremotedesktopextension?view=azuresmps-3.7.0) Cmdlet 也接受 *Expiration* 參數，它可指定使用者帳戶到期的 **日期時間** 。 例如，您可以設定帳戶在目前日期和時間的幾天後到期。
 
 這個 PowerShell 範例示範如何在雲端服務上設定遠端桌面延伸模組：
 
@@ -68,7 +69,7 @@ Set-AzureServiceRemoteDesktopExtension -ServiceName $servicename -Credential $cr
 
 ## <a name="remote-desktop-into-a-role-instance"></a>從遠端桌面連接到角色執行個體
 
-[Get-AzureRemoteDesktopFile](/powershell/module/servicemanagement/azure/get-azureremotedesktopfile?view=azuresmps-3.7.0) Cmdlet 用於從遠端桌面連接到雲端服務的特定角色執行個體。 您可以使用 *LocalPath* 參數將 RDP 檔案下載到本機。 或您可以使用 *Launch* 參數，直接啟動 [遠端桌面連線] 對話方塊來存取雲端服務角色執行個體。
+[Get-AzureRemoteDesktopFile](/powershell/module/servicemanagement/azure.service/get-azureremotedesktopfile?view=azuresmps-3.7.0) Cmdlet 用於從遠端桌面連接到雲端服務的特定角色執行個體。 您可以使用 *LocalPath* 參數將 RDP 檔案下載到本機。 或您可以使用 *Launch* 參數，直接啟動 [遠端桌面連線] 對話方塊來存取雲端服務角色執行個體。
 
 ```powershell
 Get-AzureRemoteDesktopFile -ServiceName $servicename -Name "WorkerRole1_IN_0" -Launch
@@ -76,7 +77,7 @@ Get-AzureRemoteDesktopFile -ServiceName $servicename -Name "WorkerRole1_IN_0" -L
 
 ## <a name="check-if-remote-desktop-extension-is-enabled-on-a-service"></a>檢查服務上是否已啟用遠端桌面延伸模組
 
-[Get-AzureServiceRemoteDesktopExtension](/powershell/module/servicemanagement/azure/get-azureremotedesktopfile?view=azuresmps-3.7.0) Cmdlet 會顯示服務部署上的遠端桌面為啟用或停用。 此 Cmdlet 會傳回遠端桌面使用者的使用者名稱，以及已啟用遠端桌面延伸模組的角色。 根據預設，這會發生在部署位置上，而您可以選擇改為使用預備位置。
+[Get-AzureServiceRemoteDesktopExtension](/powershell/module/servicemanagement/azure.service/get-azureremotedesktopfile?view=azuresmps-3.7.0) Cmdlet 會顯示服務部署上的遠端桌面為啟用或停用。 此 Cmdlet 會傳回遠端桌面使用者的使用者名稱，以及已啟用遠端桌面延伸模組的角色。 根據預設，這會發生在部署位置上，而您可以選擇改為使用預備位置。
 
 ```powershell
 Get-AzureServiceRemoteDesktopExtension -ServiceName $servicename
@@ -86,7 +87,7 @@ Get-AzureServiceRemoteDesktopExtension -ServiceName $servicename
 
 如果您已在部署上啟用遠端桌面延伸模組，且需要更新遠端桌面設定，則必須先移除延伸模組。 然後使用新的設定將它再次啟用。 例如，如果您想為遠端使用者帳戶或是已到期的帳戶設定新密碼。 必須在已啟用遠端桌面延伸模組的現有部署上執行此動作。 對於新部署，您可以直接套用延伸模組。
 
-若要從部署移除遠端桌面延伸模組，您可以使用 [Remove-AzureServiceRemoteDesktopExtension](/powershell/module/servicemanagement/azure/remove-azureserviceremotedesktopextension?view=azuresmps-3.7.0) Cmdlet。 您也可以選擇性地指定您想要移除遠端桌面延伸模組的部署位置和角色。
+若要從部署移除遠端桌面延伸模組，您可以使用 [Remove-AzureServiceRemoteDesktopExtension](/powershell/module/servicemanagement/azure.service/remove-azureserviceremotedesktopextension?view=azuresmps-3.7.0) Cmdlet。 您也可以選擇性地指定您想要移除遠端桌面延伸模組的部署位置和角色。
 
 ```powershell
 Remove-AzureServiceRemoteDesktopExtension -ServiceName $servicename -UninstallConfiguration

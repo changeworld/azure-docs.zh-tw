@@ -3,28 +3,28 @@ title: 從 Application Insights 連續匯出遙測 | Microsoft Docs
 description: 匯出診斷和使用量資料至 Microsoft Azure 中的儲存體，並從那裡下載。
 ms.topic: conceptual
 ms.date: 05/26/2020
-ms.openlocfilehash: 8ca2dc30b6e0681b5ee10fa3c77fab15ffb18b1d
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 54cd6db6de4aa9c1b8f8894c03a8803ee4aa2b00
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110210"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014519"
 ---
 # <a name="export-telemetry-from-application-insights"></a>從 Application Insights 匯出遙測
 想要讓遙測保留比標準保留期限還久的時間？ 或以某些特殊方式處理它？ 連續匯出很適合此用途。 在 Application Insights 入口網站中看見的事件，可以使用 JSON 格式匯出到 Microsoft Azure 中的儲存體。 從那裡，您可以下載資料並編寫處理所需的任何程式碼。  
 
 > [!NOTE]
-> 只有傳統 Application Insights 資源支援連續匯出。 [以工作區為基礎的 Application Insights 資源](https://docs.microsoft.com/azure/azure-monitor/app/create-workspace-resource)必須使用[診斷設定](https://docs.microsoft.com/azure/azure-monitor/app/create-workspace-resource#export-telemetry)。
+> 只有傳統 Application Insights 資源支援連續匯出。 [以工作區為基礎的 Application Insights 資源](./create-workspace-resource.md)必須使用[診斷設定](./create-workspace-resource.md#export-telemetry)。
 >
 
 在設定連續匯出之前，您可能要考慮某些替代作法︰
 
 * 計量或搜尋索引標籤頂端的 [匯出] 按鈕，可讓您傳送資料表和圖表到 Excel 試算表。
 
-* [分析](../../azure-monitor/app/analytics.md) 可提供功能強大的遙測查詢語言。 它也可以匯出結果。
+* [分析](../log-query/log-query-overview.md) 可提供功能強大的遙測查詢語言。 它也可以匯出結果。
 * 如果您想要 [在 Power BI 中探索資料](../../azure-monitor/app/export-power-bi.md )，不需要用到「連續匯出」也可以這麼做。
 * [資料存取 REST API](https://dev.applicationinsights.io/) 可讓您以程式設計方式存取您的遙測。
-* 您也可以透過 PowerShell 存取設定[連續匯出](https://docs.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsightscontinuousexport)。
+* 您也可以透過 PowerShell 存取設定[連續匯出](/powershell/module/az.applicationinsights/new-azapplicationinsightscontinuousexport)。
 
 在「連續匯出」將您的資料複製到儲存體 (資料可在此依您喜好的時間長短存放) 之後，資料仍然會在 Application Insights 中依一般的[保留期間](../../azure-monitor/app/data-retention-privacy.md)可供使用。
 
@@ -32,9 +32,9 @@ ms.locfileid: "86110210"
 
 連續匯出**不支援**下列 Azure 儲存體功能/設定：
 
-* 使用 [VNET/Azure 儲存體防火牆](https://docs.microsoft.com/azure/storage/common/storage-network-security)搭配 Azure Blob 儲存體。
+* 使用 [VNET/Azure 儲存體防火牆](../../storage/common/storage-network-security.md)搭配 Azure Blob 儲存體。
 
-* [Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction)。
+* [Azure Data Lake Storage Gen2](../../storage/blobs/data-lake-storage-introduction.md)。
 
 ## <a name="create-a-continuous-export"></a><a name="setup"></a> 建立連續匯出
 

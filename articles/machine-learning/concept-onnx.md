@@ -11,12 +11,12 @@ ms.author: prasantp
 author: prasanthpul
 ms.date: 06/18/2020
 ms.custom: seodec18
-ms.openlocfilehash: 09b1fa31ff8f93ea86a80092b43d071df6cd74e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: acaab8aaa12a107f4d0f8a8aac0baf7d5ebb8e4c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85211777"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012753"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-accelerate-ml-models"></a>ONNX 和 Azure Machine Learning：建立並加速 ML 模型
 
@@ -87,7 +87,7 @@ results = session.run([], {"input1": indata1, "input2": indata2})
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
 
-如需其他語言的用法範例，請參閱[ONNX Runtime Github](https://github.com/microsoft/onnxruntime/tree/master/samples)。
+如需其他語言的用法範例，請參閱[ONNX Runtime GitHub](https://github.com/microsoft/onnxruntime/tree/master/samples)。
 
 ## <a name="more-info"></a>其他資訊
 

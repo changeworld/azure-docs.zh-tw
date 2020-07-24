@@ -6,11 +6,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: d2b9f705c73e667f34e46fdeed3c80af1e65fb12
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 61aec3936ffef488b989f54894568d206c759b12
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83830101"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014978"
 ---
 # <a name="automation-account-authentication-overview"></a>自動化帳戶驗證總覽
 
@@ -47,5 +48,5 @@ Azure Resource Manager 提供了角色型存取控制來對 Azure AD 使用者�
 ## <a name="next-steps"></a>後續步驟
 
 * 若要從 Azure 入口網站建立自動化帳戶，請參閱[建立獨立 Azure 自動化帳戶](automation-create-standalone-account.md)。
-* 如果您想要使用範本來建立帳戶，請參閱[使用 Azure Resource Manager 範本建立自動化帳戶](automation-create-account-template.md)。
+* 如果您想要使用範本來建立帳戶，請參閱[使用 Azure Resource Manager 範本建立自動化帳戶](quickstart-create-automation-account-template.md)。
 * 如需使用 Amazon Web Services 的驗證，請參閱[使用 Amazon Web Services 驗證 Runbook](automation-config-aws-account.md)。

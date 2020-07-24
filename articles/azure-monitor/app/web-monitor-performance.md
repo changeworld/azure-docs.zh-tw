@@ -4,11 +4,12 @@ description: 開始使用 Application Insights。 分析內部部署或 Microsof
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.reviewer: sdash
-ms.openlocfilehash: 873fc41585c387246d83008a8f97d6c4d9a32c3b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2b93e7f0fdb909a40667b001fa99929b3cfe27ad
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80985060"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014160"
 ---
 # <a name="monitor-performance-in-web-applications"></a>監視 Web 應用程式的效能
 
@@ -25,7 +26,7 @@ Application Insights 可以監視 Java 和 ASP.NET Web 應用程式與服務、W
 * [ASP.NET Web 應用程式](../../azure-monitor/app/asp-net.md)
   * [加入例外狀況監視](../../azure-monitor/app/asp-net-exceptions.md)
   * [加入相依性監視](../../azure-monitor/app/monitor-performance-live-website-now.md)
-* [Java EE Web 應用程式](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)
+* [Java EE Web 應用程式](./java-in-process-agent.md)
 
 ## <a name="exploring-performance-metrics"></a><a name="view"></a>探索效能度量
 在 [Azure 入口網站](https://portal.azure.com)中，瀏覽至您為應用程式設定的 Application Insights 資源。 概觀刀鋒視窗會顯示基本的效能資料：
@@ -60,15 +61,15 @@ HTTP 要求包括分頁、資料及映像的所有 GET 或 POST 要求。
 
 按一下圖格可取得特定 URL 的時間。
 
-![](./media/web-monitor-performance/appinsights-42reqs.png)
+![[應用程式健全狀況] 窗格的螢幕擷取畫面，其中會顯示一段時間的移動要求和回應時間平均值的線條圖形。](./media/web-monitor-performance/appinsights-42reqs.png)
 
 ### <a name="slowest-requests"></a>最慢的要求
-![](./media/web-monitor-performance/appinsights-44slowest.png)
+![最慢的要求清單和其回應時間的螢幕擷取畫面。](./media/web-monitor-performance/appinsights-44slowest.png)
 
 顯示可能需要進行效能調整的要求。
 
 ### <a name="failed-requests"></a>失敗的要求
-![](./media/web-monitor-performance/appinsights-46failed.png)
+![一段時間內失敗的要求數之折線圖的螢幕擷取畫面;也就是擲回未攔截例外狀況的要求。](./media/web-monitor-performance/appinsights-46failed.png)
 
 丟出無法攔截之例外狀況的要求計數。
 
@@ -86,7 +87,7 @@ HTTP 要求包括分頁、資料及映像的所有 GET 或 POST 要求。
 ## <a name="set-alerts"></a>設定警示
 若要在任何度量有不尋常的值時收到電子郵件通知，請加入警示。 您可以選擇將電子郵件傳送給帳戶管理員，或傳送給特定的電子郵件地址。
 
-![](./media/web-monitor-performance/appinsights-413setMetricAlert.png)
+![[新增警示規則] 對話方塊的螢幕擷取畫面，其中包含以箭號連接的螢幕擷取畫面，顯示如何從計量瀏覽器連線至對話方塊。](./media/web-monitor-performance/appinsights-413setMetricAlert.png)
 
 設定其他屬性之前的資源。 如果您想要設定效能或使用度量的相關警示，請勿選擇 webtest 資源。
 
@@ -144,12 +145,9 @@ HTTP 要求包括分頁、資料及映像的所有 GET 或 POST 要求。
 [availability]: ../../azure-monitor/app/monitor-web-app-availability.md
 [diagnostic]: ../../azure-monitor/app/diagnostic-search.md
 [greenbrown]: ../../azure-monitor/app/asp-net.md
-[qna]: ../../azure-monitor/app/troubleshoot-faq.md
+[qna]: ../faq.md
 [redfield]: ../../azure-monitor/app/monitor-performance-live-website-now.md
 [start]: ../../azure-monitor/app/app-insights-overview.md
 [usage]: usage-overview.md
 [livestream]: ../../azure-monitor/app/live-stream.md
 [snapshot]: ../../azure-monitor/app/snapshot-debugger.md
-
-
-

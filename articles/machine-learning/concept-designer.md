@@ -1,5 +1,5 @@
 ---
-title: '使用設計工具建立 ML 模型 (預覽) '
+title: 使用設計工具建立 ML 模型（預覽）
 titleSuffix: Azure Machine Learning
 description: 了解構成 Azure Machine Learning 設計工具的術語、概念和工作流程。
 services: machine-learning
@@ -10,12 +10,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: a2074b1ecd37fd18a9a0ac9091f05e734765e40b
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 181f0d62f160a6644e0423be052012521752525f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86199975"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012938"
 ---
 # <a name="what-is-azure-machine-learning-designer-preview"></a>什麼是 Azure Machine Learning 設計工具 (預覽)？ 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -115,25 +115,6 @@ Azure Machine Learning 設計工具可讓您以視覺化方式連結[資料集](
 已發佈的管線會在每個模組管線草稿中所定義的計算資源上執行。
 
 設計工具會建立與 SDK 相同的 [PublishedPipeline](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.publishedpipeline?view=azure-ml-py) 物件。
-
-
-## <a name="moving-from-the-visual-interface-to-the-designer"></a>從視覺化介面移至設計工具
-
-視覺化介面 (預覽) 已更新，現在是 Azure Machine Learning 設計工具 (預覽)。 設計工具已重新建構為使用管線型後端，可完全與 Azure Machine Learning 的其他功能整合。 
-
-因為這些更新的結果，視覺化介面的一些概念和詞彙已變更或重新命名。 請參閱下表，以了解最重要的概念變更。 
-
-| 設計工具中的概念 | 先前在視覺化介面中的項目 |
-| ---- |:----:|
-| 管線草稿 | 實驗 |
-| 即時端點 | Web 服務 |
-
-### <a name="migrating-to-the-designer"></a>遷移至設計工具
-
-您可以在設計工具中，將現有的視覺化介面實驗和 Web 服務轉換成管線和即時端點。 使用下列步驟來遷移您的視覺化介面資產：
-
-[!INCLUDE [migrate from the visual interface](../../includes/aml-vi-designer-migration.md)]
-
 
 ## <a name="next-steps"></a>後續步驟
 

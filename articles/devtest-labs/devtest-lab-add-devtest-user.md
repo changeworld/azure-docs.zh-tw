@@ -3,19 +3,19 @@ title: 在 Azure DevTest Labs 中新增擁有者和使用者 | Microsoft Docs
 description: 使用 Azure 入口網站或 PowerShell 在 Azure DevTest Labs 中新增擁有者和使用者
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: d5e7a166f9b79e2ff46f5874d53a40ed16750100
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: b54e372a9b85b76737c0780be4bce9362765301b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855687"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87013456"
 ---
 # <a name="add-owners-and-users-in-azure-devtest-labs"></a>在 Azure DevTest Labs 中新增擁有者和使用者
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/How-to-set-security-in-your-DevTest-Lab/player]
 > 
 > 
 
-Azure DevTest Labs 的存取權是由 [Azure 角色型存取控制 (RBAC)](../role-based-access-control/overview.md)所控制。 RBAC 可讓您將小組內的職責區隔為「角色」 ** ，而僅授與使用者執行作業所需的存取權數量。 這些 RBAC 角色的其中三個分別是*擁有者*、*DevTest Labs 使用者*和*參與者*。 在本文中，您會了解三個主要 RBAC 角色中各自可執行哪些動作。 從中您將會了解如何透過入口網站和透過 PowerShell 指令碼將使用者新增至實驗室，以及如何在訂用帳戶層級新增使用者。
+Azure DevTest Labs 中的存取是由[azure 角色型存取控制（AZURE RBAC）](../role-based-access-control/overview.md)所控制。 RBAC 可讓您將小組內的職責區隔為「角色」 ** ，而僅授與使用者執行作業所需的存取權數量。 這些 RBAC 角色的其中三個分別是*擁有者*、*DevTest Labs 使用者*和*參與者*。 在本文中，您會了解三個主要 RBAC 角色中各自可執行哪些動作。 從中您將會了解如何透過入口網站和透過 PowerShell 指令碼將使用者新增至實驗室，以及如何在訂用帳戶層級新增使用者。
 
 ## <a name="actions-that-can-be-performed-in-each-role"></a>可在每個角色執行的動作
 您可以對使用者指派三個主要角色︰
@@ -127,4 +127,3 @@ New-AzRoleAssignment -ObjectId $adObject.Id -RoleDefinitionName 'DevTest Labs Us
 11. 當您返回 [使用者] **** 刀鋒視窗時，該使用者已新增為擁有者。 此使用者現在是在此訂用帳戶下所建立全部實驗室的擁有者，因而能夠執行擁有者工作。 
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
-

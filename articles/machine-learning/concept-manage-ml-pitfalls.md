@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
 ms.date: 04/09/2020
-ms.openlocfilehash: 171b355f40939efb31e96a4bf8b2d77e97d19f25
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 77b5b52153c552008406b4b85083bcba5542cebe
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147100"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012717"
 ---
 # <a name="prevent-overfitting-and-imbalanced-data-with-automated-machine-learning"></a>使用自動化機器學習來防止過度學習與不平衡資料
 
@@ -101,7 +101,7 @@ ms.locfileid: "86147100"
 
 - 重新取樣以平衡類別 (將較少類別向上取樣或將較多類別向下取樣)。 這些方法需要專業知識來處理和分析。
 
-- 檢查不平衡資料的效能計量。 例如，F1 分數是精確度與重新叫用率的加權平均值。 精確度會測量分類器的精確程度 (低精確度表示具有大量誤判)，而重新叫用率則會測量分類器的完整性 (低重新叫用率表示具有大量漏判)。
+- 檢查不平衡資料的效能計量。 例如，F1 分數是精確度和召回率的調和平均數。 精確度測量分類器的 exactness，其中較高的精確度表示較少的誤報，而召回則是測量分類器的完整性，其中較高的召回表示較少的假否定。
 
 ## <a name="next-steps"></a>後續步驟
 

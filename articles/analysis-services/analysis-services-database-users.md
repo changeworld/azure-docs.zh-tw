@@ -7,12 +7,13 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b7e3cc2b9d35eafcb875efa167821a8e9ad80146
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: references_regions
+ms.openlocfilehash: 8ccd9120937148043590d30232acd6b556b09dc6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81454198"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015267"
 ---
 # <a name="manage-database-roles-and-users"></a>管理資料庫角色和使用者
 
@@ -136,7 +137,7 @@ ms.locfileid: "81454198"
   
 資料列篩選條件會套用至指定的資料列和相關資料列。 當資料表具有多個關聯性時，篩選會對作用中關聯性套用安全性。 資料列篩選條件會與針對相關資料表定義的其他資料列篩選條件產生交集，例如：  
   
-|資料表|DAX 運算式|  
+|Table|DAX 運算式|  
 |-----------|--------------------|  
 |區域|=Region[Country]="USA"|  
 |ProductCategory|=ProductCategory[Name]="Bicycles"|  
@@ -146,7 +147,7 @@ ms.locfileid: "81454198"
   
  您可以使用 =FALSE()** 篩選條件，拒絕存取整個資料表的所有資料列。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
   [管理伺服器管理員](analysis-services-server-admins.md)   
   [使用 PowerShell 管理 Azure Analysis Services](analysis-services-powershell.md)  

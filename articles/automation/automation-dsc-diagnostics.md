@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0560d9a5156f06f7ae7473f63359d9d17926b7ab
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 425a7ff0553ddeac502c59e240f5ab152d6e0d79
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186447"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015148"
 ---
 # <a name="integrate-with-azure-monitor-logs"></a>與 Azure 監視器記錄整合
 
@@ -34,7 +34,7 @@ Azure 監視器記錄讓您在「自動化狀態設定」資料上有更高的�
 
 若要開始將「自動化狀態設定」報告傳送至 Azure 監視器記錄，您需要：
 
-- 2016 年 11 月或更新版本的 [Azure PowerShell](/powershell/azure/overview) (v2.3.0)。
+- 2016 年 11 月或更新版本的 [Azure PowerShell](/powershell/azure/) (v2.3.0)。
 - Azure 自動化帳戶。 如需詳細資訊，請參閱 [Azure 自動化簡介](automation-intro.md)。
 - Log Analytics 工作區搭配 [自動化與控制] 服務供應項目。 如需詳細資訊，請參閱[開始使用 Azure 監視器中的 Log Analytics](../azure-monitor/log-query/get-started-portal.md)。
 - 至少一個 Azure Automation State Configuration 節點。 如需詳細資訊，請參閱[讓機器上線交由「Azure 自動化狀態設定」來管理](automation-dsc-onboarding.md)。
