@@ -3,15 +3,16 @@ title: 如何保護您的資源階層 - Azure 治理
 description: 了解如何使用包含設定預設管理群組的階層設定來保護您的資源階層。
 ms.date: 05/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 60c184d176ae62c1af525db656c56a83422cb94a
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 50b5ba1bccf3d603b6d273892d0c903d433786f3
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83837347"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87127991"
 ---
 # <a name="how-to-protect-your-resource-hierarchy"></a>如何保護您的資源階層
 
-您的資源、資源群組、訂用帳戶、管理群組和租用戶共同組成您的資源階層。 根管理群組中的設定 (例如自訂 RBAC 角色或「Azure 原則」原則指派) 可能會影響您資源階層中的每個資源。 請務必保護資源階層，避免受到可能對所有資源造成負面影響的變更。
+您的資源、資源群組、訂用帳戶、管理群組和租用戶共同組成您的資源階層。 根管理群組中的設定（例如 Azure 自訂角色或 Azure 原則原則指派）可能會影響您資源階層中的每個資源。 請務必保護資源階層，避免受到可能對所有資源造成負面影響的變更。
 
 管理群組現在具有階層設定，可讓租用戶系統管理員控制這些行為。 本文涵蓋每一個可用的階層設定，以及如何加以設定。
 

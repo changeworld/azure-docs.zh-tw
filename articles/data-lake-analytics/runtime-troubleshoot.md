@@ -2,18 +2,17 @@
 title: 如何針對 Azure Data Lake Analytics 的 U-SQL 執行時間失敗進行疑難排解
 description: 瞭解如何針對 U-SQL 執行時間失敗進行疑難排解。
 services: data-lake-analytics
-author: guyhay
-ms.author: guyhay
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.service: data-lake-analytics
 ms.topic: troubleshooting
 ms.workload: big-data
 ms.date: 10/10/2019
-ms.openlocfilehash: 1e3fb218e6cda5619bfa1a0936e07d6731a9cc93
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 54524b0528f94ca9386c2d0d45ba4393c965fa88
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73648450"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87128806"
 ---
 # <a name="learn-how-to-troubleshoot-u-sql-runtime-failures-due-to-runtime-changes"></a>瞭解如何針對因為執行時間變更而發生的 U-SQL 執行時間失敗進行疑難排解
 
@@ -61,7 +60,7 @@ release_YYYYMMDD_adl_buildno [_modifier]
 
 2. 當您已將非預設的執行時間釘選到您的帳戶時，您已明確或隱含地使用它，而且該執行時間已在一段時間後移除。 如果您遇到遺失的執行時間，請升級您的腳本，以使用目前的預設執行時間來執行。 如果您需要額外的時間，請聯絡 Microsoft 支援服務
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
 - [Azure 資料湖分析概觀](data-lake-analytics-overview.md)
 - [使用 Azure 入口網站管理 Azure Data Lake Analytics](data-lake-analytics-manage-use-portal.md)

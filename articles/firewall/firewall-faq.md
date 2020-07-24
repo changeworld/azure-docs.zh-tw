@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 07/17/2020
+ms.date: 07/23/2020
 ms.author: victorh
-ms.openlocfilehash: b984bb581df54cba79a551dc870786ed228eaa43
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: bd849a413d718ba5a25839c50c63ec2ad39be440
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536964"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87128092"
 ---
 # <a name="azure-firewall-faq"></a>Azure 防火牆常見問題集
 
@@ -160,7 +160,7 @@ Azure 防火牆必須在調整規模時佈建更多虛擬機器執行個體。 /
 
 ## <a name="does-the-firewall-subnet-size-need-to-change-as-the-service-scales"></a>當服務調整時，防火牆子網路大小是否需要變更？
 
-否。 Azure 防火牆不需要大於 /26 的子網路。
+不可以。 Azure 防火牆不需要大於 /26 的子網路。
 
 ## <a name="how-can-i-increase-my-firewall-throughput"></a>如何增加防火牆輸送量？
 
@@ -189,9 +189,10 @@ $fw.ThreatIntelWhitelist = New-AzFirewallThreatIntelWhitelist `
 
 ## Or Update FQDNs and IpAddresses separately
 
-$fw = Get-AzFirewall -Name "Name_of_Firewall" -ResourceGroupName "Name_of_ResourceGroup"
-$fw.ThreatIntelWhitelist.FQDNs = @("fqdn1", "fqdn2", …)
-$fw.ThreatIntelWhitelist.IpAddress = @("ip1", "ip2", …)
+$fw = Get-AzFirewall -Name $firewallname -ResourceGroupName $RG
+$fw.ThreatIntelWhitelist.IpAddresses = @($fw.ThreatIntelWhitelist.IpAddresses + $ipaddresses )
+$fw.ThreatIntelWhitelist.fqdns = @($fw.ThreatIntelWhitelist.fqdns + $fqdns)
+
 
 Set-AzFirewall -AzureFirewall $fw
 ```

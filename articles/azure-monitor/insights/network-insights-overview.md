@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/07/2019
-ms.openlocfilehash: 0f5b2fbd13cb9658e255fde727e115df748aaed9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ccc5578944dc6eea9a62360045272896d78e2fac
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77654863"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87128670"
 ---
 # <a name="azure-monitor-for-networks-preview"></a>網路的 Azure 監視器（預覽）
 網路的 Azure 監視器針對所有已部署的網路資源提供健全狀況和計量的全面觀點，而不需要任何設定。 先進的搜尋功能有助於識別資源相依性，並藉由直接搜尋主控的網站名稱來識別裝載您網站的資源等案例。
@@ -47,7 +48,7 @@ ms.locfileid: "77654863"
 右側的 [**警示**] 方格提供所有訂用帳戶中所選資源所產生的所有警示的視圖。 按一下 [警示計數] 以流覽至 [詳細警示] 頁面。
 
 ## <a name="dependency-view"></a>相依性視圖
-[相依性 **] 視圖有助於**視覺化資源的設定方式。 目前只有應用程式閘道支援相依性視圖。 按一下 [計量] 方格視圖中的 [應用程式閘道資源名稱，即可存取相依性視圖。
+[相依性 **] 視圖有助於**視覺化資源的設定方式。 目前應用程式閘道、虛擬 WAN 和 Load Balancer 都支援相依性視圖。 例如，在應用程式閘道的情況下，您可以按一下 [計量] 方格視圖中的 [應用程式閘道資源名稱來存取相依性視圖]。 這也適用于虛擬 WAN 和 Load Balancer。 
 
 ![應用程式閘道視圖](media/network-insights-overview/application-gateway.png)
 
@@ -69,4 +70,4 @@ ms.locfileid: "77654863"
 
 ## <a name="next-steps"></a>後續步驟 
 
-- 若要深入瞭解網路監視功能，請閱讀什麼是[Azure 網路監看員？](/azure/network-watcher/network-watcher-monitoring-overview)。
+- 若要深入瞭解網路監視功能，請閱讀什麼是[Azure 網路監看員？](../../network-watcher/network-watcher-monitoring-overview.md)。

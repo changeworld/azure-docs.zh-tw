@@ -1,19 +1,19 @@
 ---
 title: 支援的資料格式詳細資料 |Microsoft Azure 對應
 description: 瞭解如何在空間 IO 模組中剖析分隔的空間資料。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 03/03/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 3353620f1751e939a04543115fe704555fb3bc21
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4b7c82e4650c7680709e809d9f563d79f068601f
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80334089"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87127922"
 ---
 # <a name="supported-data-format-details"></a>支援的資料格式詳細資料
 
@@ -23,7 +23,7 @@ ms.locfileid: "80334089"
 
 空間 IO 模組支援來自下列命名空間的 XML 標記。
 
-| 命名空間前置詞 | 命名空間 URI   | 備忘稿                                                                    |
+| 命名空間前置詞 | 命名空間 URI   | 附註                                                                    |
 |:------------------|:-----------------|:----------------------------------------|
 | `atom`           | `http://www.w3.org/2005/Atom`   |                                         |
 | `geo`            | `http://www.w3.org/2003/01/geo/wgs84_pos#`  | GeoRSS 檔中的唯讀支援。           |
@@ -45,23 +45,23 @@ ms.locfileid: "80334089"
 
 空間 IO 模組支援下列 KML 元素。
 
-| 元素名稱         | 讀取    | 寫入   | 備忘稿                                                                                                                      |
+| 元素名稱         | 讀取    | 寫入   | 附註                                                                                                                      |
 |----------------------|---------|---------|----------------------------------------------------------------------------------------------------------------------------|
 | `address`            | partial | 是     | 物件已剖析，但未用於定點陣圖形。                                                                    |
-| `AddressDetails`     | partial | 不可以      | 物件已剖析，但未用於定點陣圖形。                                                                    |
+| `AddressDetails`     | partial | 否      | 物件已剖析，但未用於定點陣圖形。                                                                    |
 | `atom:author`        | 可以     | 可以     |                                                                                                                            |
 | `atom:link`          | 可以     | 可以     |                                                                                                                            |
 | `atom:name`          | 可以     | 是     |                                                                                                                            |
 | `BalloonStyle`       | partial | partial | 不支援 `displayMode`。 已轉換成 `PopupTemplate` 。 若要寫入，請將 `popupTemplate` 屬性新增為您想要為其撰寫之功能的屬性。 |
 | `begin`              | 可以     | 可以     |                                                                                                                            |
 | `color`              | 可以     | 是     | 包含 `#AABBGGRR` 和 `#BBGGRR` 。 剖析成 CSS 色彩字串                                                           |
-| `colorMode`          | 是     | 不可以      |                                                                                                                            |
+| `colorMode`          | 是     | 否      |                                                                                                                            |
 | `coordinates`        | 是     | 可以     |                                                                                                                            |
 | `Data`               | 可以     | 可以     |                                                                                                                            |
 | `description`        | 可以     | 可以     |                                                                                                                            |
 | `displayName`        | 可以     | 可以     |                                                                                                                            |
 | `Document`           | 可以     | 是     |                                                                                                                            |
-| `drawOrder`          | partial | 不可以      | 閱讀地面重迭並用來排序。 
+| `drawOrder`          | partial | 否      | 閱讀地面重迭並用來排序。 
 | `east`               | 可以     | 可以     |                                                                                                                            |
 | `end`                | 可以     | 可以     |                                                                                                                            |
 | `ExtendedData`       | 可以     | 是     | 支援表單的不具類型 `Data` 、 `SimpleData` 或 `Schema` 和實體取代 `$[dataName]` 。                      |
@@ -69,7 +69,7 @@ ms.locfileid: "80334089"
 | `fill`               | 可以     | 可以     |                                                                                                                            |
 | `Folder`             | 可以     | 可以     |                                                                                                                            |
 | `GroundOverlay`      | 可以     | 是     | `color`不支援                                                                                                   |
-| `heading`            | partial | 不可以      | 已剖析，但不是由呈現 `SimpleDataLayer` 。 只有在將資料儲存在圖形的屬性中時，才會寫入。                 |
+| `heading`            | partial | 否      | 已剖析，但不是由呈現 `SimpleDataLayer` 。 只有在將資料儲存在圖形的屬性中時，才會寫入。                 |
 | `hotSpot`            | 是     | partial | 只有在將資料儲存在圖形的屬性中時，才會寫入。 單位只會輸出為「圖元」。                         |
 | `href`               | 可以     | 是     |                                                                                                                            |
 | `Icon`               | partial | partial | 已剖析，但不是由呈現 `SimpleDataLayer` 。 只有在包含 URI 資料時，才寫入圖形的 icon 屬性。 只支援 `href`。 |
@@ -86,13 +86,13 @@ ms.locfileid: "80334089"
 | `MultiGeometry`      | partial | partial | 可能會在讀取時細分為個別功能。                                                                     |
 | `name`               | 可以     | 可以     |                                                                                                                            |
 | `NetworkLink`        | 是     | 不可以      | 連結必須與檔位於相同的網域。                                                                  |
-| `NetworkLinkControl` | 不可以      | 否      |                                                                                                                            |
+| `NetworkLinkControl` | 否      | 否      |                                                                                                                            |
 | `north`              | 是     | 可以     |                                                                                                                            |
 | `open`               | 可以     | 可以     |                                                                                                                            |
 | `outerBoundaryIs`    | 可以     | 可以     |                                                                                                                            |
 | `outline`            | 可以     | 是     |                                                                                                                            |
 | `overlayXY`          | 不可以      | 否      |                                                                                                                            |
-| `Pair`               | partial | 不可以      | 僅 `normal` 支援中的樣式 `StyleMap` 。 不支援 `highlight`。                                   |
+| `Pair`               | partial | 否      | 僅 `normal` 支援中的樣式 `StyleMap` 。 不支援 `highlight`。                                   |
 | `phoneNumber`        | 可以     | 是     |                                                                                                                            |
 | `PhotoOverlay`       | 不可以      | 否      |                                                                                                                            |
 | `Placemark`          | 是     | 可以     |                                                                                                                            |
@@ -100,13 +100,13 @@ ms.locfileid: "80334089"
 | `Polygon`            | 可以     | 可以     |                                                                                                                            |
 | `PolyStyle`          | 可以     | 是     |                                                                                                                            |
 | `Region`             | partial | partial | `LatLongBox`檔層級支援。                                                                      |
-| `rotation`           | 不可以      | 否      |                                                                                                                            |
+| `rotation`           | 否      | 否      |                                                                                                                            |
 | `rotationXY`         | 否      | 否      |                                                                                                                            |
 | `scale`              | 否      | 否      |                                                                                                                            |
 | `Schema`             | 是     | 可以     |                                                                                                                            |
 | `SchemaData`         | 可以     | 是     |                                                                                                                            |
 | `schemaUrl`          | partial | 是     | 不支援從不包含在 KMZ 中的外部檔載入樣式。                             |
-| `ScreenOverlay`      | 不可以      | 否      |                                                                                                                            |
+| `ScreenOverlay`      | 否      | 否      |                                                                                                                            |
 | `screenXY`           | 否      | 否      |                                                                                                                            |
 | `SimpleData`         | 是     | 可以     |                                                                                                                            |
 | `SimpleField`        | 可以     | 是     |                                                                                                                            |
@@ -114,14 +114,14 @@ ms.locfileid: "80334089"
 | `Snippet`            | partial | partial | `maxLines`已忽略屬性。                                                                                  |
 | `south`              | 可以     | 可以     |                                                                                                                            |
 | `Style`              | 可以     | 是     |                                                                                                                            |
-| `StyleMap`           | partial | 不可以      | 僅支援中的一般樣式 `StyleMap` 。                                                                        |
+| `StyleMap`           | partial | 否      | 僅支援中的一般樣式 `StyleMap` 。                                                                        |
 | `styleUrl`           | partial | 是     | 不支援外部樣式 Url。                                                                         |
 | `text`               | 可以     | 是     | `$[geDirections]`不支援取代                                                                          |
 | `textColor`          | 可以     | 是     |                                                                                                                            |
 | `TimeSpan`           | 是     | 是     |                                                                                                                            |
 | `TimeStamp`          | 是     | 是     |                                                                                                                            |
 | `value`              | 是     | 是     |                                                                                                                            |
-| `viewRefreshMode`    | partial | 不可以      |  如果指向 WMS 服務，則只 `onStop` 支援基礎重迭。 會 `BBOX=[bboxWest],[bboxSouth],[bboxEast],[bboxNorth]` 在地圖移動時附加至 URL 和更新。  |
+| `viewRefreshMode`    | partial | 否      |  如果指向 WMS 服務，則只 `onStop` 支援基礎重迭。 會 `BBOX=[bboxWest],[bboxSouth],[bboxEast],[bboxNorth]` 在地圖移動時附加至 URL 和更新。  |
 | `visibility`         | 可以     | 是     |                                                                                                                            |
 | `west`               | 是     | 是     |                                                                                                                            |
 | `when`               | 是     | 是     |                                                                                                                            |
@@ -131,7 +131,7 @@ ms.locfileid: "80334089"
 
 空間 IO 模組支援下列 GeoRSS 元素。
 
-| 元素名稱             | 讀取    | 寫入 | 備忘稿                                                                                          |
+| 元素名稱             | 讀取    | 寫入 | 附註                                                                                          |
 |--------------------------|---------|-------|------------------------------------------------------------------------------------------------|
 | `atom:author`            | 可以     | 是   |                                                                                                |
 | `atom:category`          | 是     | 是   |                                                                                                |
@@ -153,10 +153,10 @@ ms.locfileid: "80334089"
 | `atom:title`             | 是     | 是   |                                                                                                |
 | `atom:updated`           | 是     | 是   |                                                                                                |
 | `atom:uri`               | 是     | 是   |                                                                                                |
-| `geo:lat`                | 是     | 不可以    | 撰寫為 `georss:point` 。                                                                   |
-| `geo:lon`                | 是     | 不可以    | 撰寫為 `georss:point` 。                                                                   |
-| `geo:long`               | 是     | 不可以    | 撰寫為 `georss:point` 。                                                                   |
-| `georss:box`             | 是     | 不可以    | 讀取為多邊形，並指定「 `subType` 矩形」的屬性                                |
+| `geo:lat`                | 是     | 否    | 撰寫為 `georss:point` 。                                                                   |
+| `geo:lon`                | 是     | 否    | 撰寫為 `georss:point` 。                                                                   |
+| `geo:long`               | 是     | 否    | 撰寫為 `georss:point` 。                                                                   |
+| `georss:box`             | 是     | 否    | 讀取為多邊形，並指定「 `subType` 矩形」的屬性                                |
 | `georss:circle`          | 可以     | 是   |                                                                                                |
 | `georss:elev`            | 是     | 是   |                                                                                                |
 | `georss:featurename`     | 是     | 是   |                                                                                                |
@@ -168,77 +168,77 @@ ms.locfileid: "80334089"
 | `georss:radius`          | 是     | 可以   |                                                                                                |
 | `georss:relationshiptag` | 可以     | 可以   |                                                                                                |
 | `georss:where`           | 可以     | 可以   |                                                                                                |
-| `geourl:latitude`        | 是     | 不可以    | 撰寫為 `georss:point` 。                                                                   |
-| `geourl:longitude`       | 是     | 不可以    | 撰寫為 `georss:point` 。                                                                   |
-| `position`               | 是     | 不可以    | 有些 XML 摘要會將 GML 包裝成位置標記，而不是使用標記來包裝它 `georss:where` 。 將會讀取此標記，但會使用 `georss:where` 標記寫入。 |
-| `rss`                    | 是     | 不可以    | 以 ATOM 格式撰寫的 GeoRSS。                                                                 |
+| `geourl:latitude`        | 是     | 否    | 撰寫為 `georss:point` 。                                                                   |
+| `geourl:longitude`       | 是     | 否    | 撰寫為 `georss:point` 。                                                                   |
+| `position`               | 是     | 否    | 有些 XML 摘要會將 GML 包裝成位置標記，而不是使用標記來包裝它 `georss:where` 。 將會讀取此標記，但會使用 `georss:where` 標記寫入。 |
+| `rss`                    | 是     | 否    | 以 ATOM 格式撰寫的 GeoRSS。                                                                 |
 | `rss:author`             | 是     | partial | 撰寫為 `atom:author` 。                                                                 |
 | `rss:category`           | 是     | partial | 撰寫為 `atom:category` 。                                                               |
-| `rss:channel`            | 是     | 不可以    |                                                                                                |
-| `rss:cloud`              | 是     | 不可以    |                                                                                                |
-| `rss:comments`           | 是     | 不可以    |                                                                                                |
+| `rss:channel`            | 是     | 否    |                                                                                                |
+| `rss:cloud`              | 是     | 否    |                                                                                                |
+| `rss:comments`           | 是     | 否    |                                                                                                |
 | `rss:copyright`          | 是     | partial | 以 `atom:rights` if 圖形撰寫的 `rights` `properties` 尚未擁有屬性。       |
 | `rss:description`        | 是     | partial | 以 `atom:content` if 圖形撰寫的 `content` `properties` 尚未擁有屬性。      |
-| `rss:docs`               | 是     | 不可以    |                                                                                                |
-| `rss:enclosure`          | 是     | 不可以    |                                                                                                |
-| `rss:generator`          | 是     | 不可以    |                                                                                                |
+| `rss:docs`               | 是     | 否    |                                                                                                |
+| `rss:enclosure`          | 是     | 否    |                                                                                                |
+| `rss:generator`          | 是     | 否    |                                                                                                |
 | `rss:guid`               | 是     | partial | 以 `atom:id` if 圖形撰寫的 `id` `properties` 尚未擁有屬性。         |
 | `rss:image`              | 是     | partial | 以 `atom:logo` if 圖形撰寫的 `logo` `properties` 尚未擁有屬性。      |
 | `rss:item`               | 是     | partial | 撰寫為 `atom:entry` 。                                                                  |
-| `rss:language`           | 是     | 不可以    |                                                                                                |
+| `rss:language`           | 是     | 否    |                                                                                                |
 | `rss:lastBuildDate`      | 是     | partial | 以 `atom:updated` if 圖形撰寫的 `updated` `properties` 尚未擁有屬性。     |
 | `rss:link`               | 是     | partial | 撰寫為 `atom:link` 。                                                                   |
 | `rss:managingEditor`     | 是     | partial | 撰寫為 `atom:contributor` 。                                                            |
 | `rss:pubDate`            | 是     | partial | 以 `atom:published` if 圖形撰寫的 `published` `properties` 尚未擁有屬性。  |
-| `rss:rating`             | 是     | 不可以    |                                                                                                |
-| `rss:skipDays`           | 是     | 不可以    |                                                                                                |
-| `rss:skipHours`          | 是     | 不可以    |                                                                                                |
+| `rss:rating`             | 是     | 否    |                                                                                                |
+| `rss:skipDays`           | 是     | 否    |                                                                                                |
+| `rss:skipHours`          | 是     | 否    |                                                                                                |
 | `rss:source`             | 是     | partial | 撰寫為 `atom:source` 包含的 `atom:link` 。                                       |
-| `rss:textInput`          | 是     | 不可以    |                                                                                                |
+| `rss:textInput`          | 是     | 否    |                                                                                                |
 | `rss:title`              | 是     | partial | 撰寫為 `atom:title` 。                                                                  |
-| `rss:ttl`                | 是     | 不可以    |                                                                                                |
-| `rss:webMaster`          | 是     | 不可以    |                                                                                                |
+| `rss:ttl`                | 是     | 否    |                                                                                                |
+| `rss:webMaster`          | 是     | 否    |                                                                                                |
 
 ### <a name="gml-elements"></a>GML 元素
 
 空間 IO 模組支援下列 GML 元素。 
 
-| 元素名稱            | 讀取 | 寫入 | 備忘稿                                                                                  |
+| 元素名稱            | 讀取 | 寫入 | 附註                                                                                  |
 |-------------------------|------|-------|----------------------------------------------------------------------------------------|
-| `gml:coordinates`       | 是  | 不可以    | 撰寫為 `gml:posList` 。                                                              |
-| `gml:curveMember`       | 是  | 不可以    |                                                                                        |
-| `gml:curveMembers`      | 是  | 不可以    |                                                                                        |
-| `gml:Box`               | 是  | 不可以    | 撰寫為 `gml:Envelope` 。                                                             |
+| `gml:coordinates`       | 是  | 否    | 撰寫為 `gml:posList` 。                                                              |
+| `gml:curveMember`       | 是  | 否    |                                                                                        |
+| `gml:curveMembers`      | 是  | 否    |                                                                                        |
+| `gml:Box`               | 是  | 否    | 撰寫為 `gml:Envelope` 。                                                             |
 | `gml:description`       | 可以  | 可以   |                                                                                        |
 | `gml:Envelope`          | 可以  | 可以   |                                                                                        |
 | `gml:exterior`          | 可以  | 可以   |                                                                                        |
-| `gml:Feature`           | 是  | 不可以    | 撰寫成圖形。                                                                    |
-| `gml:FeatureCollection` | 是  | 不可以    | 寫成 geometry 集合。                                                      |
-| `gml:featureMember`     | 是  | 不可以    | 寫成 geometry 集合。                                                      |
-| `gml:geometry`          | 是  | 不可以    | 撰寫成圖形。                                                                    |
+| `gml:Feature`           | 是  | 否    | 撰寫成圖形。                                                                    |
+| `gml:FeatureCollection` | 是  | 否    | 寫成 geometry 集合。                                                      |
+| `gml:featureMember`     | 是  | 否    | 寫成 geometry 集合。                                                      |
+| `gml:geometry`          | 是  | 否    | 撰寫成圖形。                                                                    |
 | `gml:geometryMember`    | 可以  | 可以   |                                                                                        |
 | `gml:geometryMembers`   | 可以  | 可以   |                                                                                        |
 | `gml:identifier`        | 可以  | 可以   |                                                                                        |
-| `gml:innerBoundaryIs`   | 是  | 不可以    | 使用寫入 `gml.interior` 。                                                          |
+| `gml:innerBoundaryIs`   | 是  | 否    | 使用寫入 `gml.interior` 。                                                          |
 | `gml:interior`          | 可以  | 可以   |                                                                                        |
 | `gml:LinearRing`        | 可以  | 可以   |                                                                                        |
 | `gml:LineString`        | 可以  | 可以   |                                                                                        |
 | `gml:lineStringMember`  | 可以  | 可以   |                                                                                        |
-| `gml:lineStringMembers` | 是  | 不可以    |                                                                                        |
-| `gml:MultiCurve`        | 是  | 不可以    | 只會讀取 `gml:LineString` 成員。 撰寫為`gml.MultiLineString`                  |
+| `gml:lineStringMembers` | 是  | 否    |                                                                                        |
+| `gml:MultiCurve`        | 是  | 否    | 只會讀取 `gml:LineString` 成員。 撰寫為`gml.MultiLineString`                  |
 | `gml:MultiGeometry`     | partial  | partial   | 僅讀取為 FeatureCollection。                                              |
 | `gml:MultiLineString`   | 可以  | 可以   |                                                                                        |
 | `gml:MultiPoint`        | 可以  | 可以   |                                                                                        |
 | `gml:MultiPolygon`      | 可以  | 可以   |                                                                                        |
-| `gml:MultiSurface`      | 是  | 不可以    | 只會讀取 `gml:Polygon` 成員。 撰寫為`gml.MultiPolygon`                        |
+| `gml:MultiSurface`      | 是  | 否    | 只會讀取 `gml:Polygon` 成員。 撰寫為`gml.MultiPolygon`                        |
 | `gml:name`              | 可以  | 可以   |                                                                                        |
-| `gml:outerBoundaryIs`   | 是  | 不可以    | 使用寫入 `gml.exterior` 。                                                          |
+| `gml:outerBoundaryIs`   | 是  | 否    | 使用寫入 `gml.exterior` 。                                                          |
 | `gml:Point`             | 可以  | 可以   |                                                                                        |
 | `gml:pointMember`       | 可以  | 可以   |                                                                                        |
-| `gml:pointMembers`      | 是  | 不可以    |                                                                                        |
+| `gml:pointMembers`      | 是  | 否    |                                                                                        |
 | `gml:Polygon`           | 是  | 可以   |                                                                                        |
 | `gml:polygonMember`     | 可以  | 可以   |                                                                                        |
-| `gml:polygonMembers`    | 是  | 不可以    |                                                                                        |
+| `gml:polygonMembers`    | 是  | 否    |                                                                                        |
 | `gml:pos`               | 是  | 可以   |                                                                                        |
 | `gml:posList`           | 可以  | 可以   |                                                                                        |
 | `gml:surfaceMember`     | 可以  | 是   |                                                                                        |
@@ -254,7 +254,7 @@ ms.locfileid: "80334089"
 
 空間 IO 模組支援下列 .GPX 元素。
 
-| 元素名稱             | 讀取    | 寫入   | 備忘稿                                                                                       |
+| 元素名稱             | 讀取    | 寫入   | 附註                                                                                       |
 |--------------------------|---------|---------|---------------------------------------------------------------------------------------------|
 | `gpx:ageofdgpsdata`      | 可以     | 可以     |                                                                                             |
 | `gpx:author`             | 可以     | 可以     |                                                                                             |
@@ -290,10 +290,10 @@ ms.locfileid: "80334089"
 | `gpx_style:line`         | partial | partial | `color``opacity`支援、、、 `width` `lineCap` 。                                           |
 | `gpx_style:opacity`      | 可以     | 是     |                                                                                             |
 | `gpx_style:width`        | 是     | 是     |                                                                                             |
-| `gpxx:DisplayColor`      | 是     | 不可以      | 用來指定圖形的色彩。 撰寫時， `gpx_style:line` 將改用色彩。  |
-| `gpxx:RouteExtension`    | partial | 不可以      | 所有屬性都會讀入 `properties` 。 僅使用 `DisplayColor`。                     |
-| `gpxx:TrackExtension`    | partial | 不可以      | 所有屬性都會讀入 `properties` 。 僅使用 `DisplayColor`。                     |
-| `gpxx:WaypointExtension` | partial | 不可以      | 所有屬性都會讀入 `properties` 。 僅使用 `DisplayColor`。                     |
+| `gpxx:DisplayColor`      | 是     | 否      | 用來指定圖形的色彩。 撰寫時， `gpx_style:line` 將改用色彩。  |
+| `gpxx:RouteExtension`    | partial | 否      | 所有屬性都會讀入 `properties` 。 僅使用 `DisplayColor`。                     |
+| `gpxx:TrackExtension`    | partial | 否      | 所有屬性都會讀入 `properties` 。 僅使用 `DisplayColor`。                     |
+| `gpxx:WaypointExtension` | partial | 否      | 所有屬性都會讀入 `properties` 。 僅使用 `DisplayColor`。                     |
 | `gpx:keywords`           | 可以     | 是     |                                                                                             |
 | `gpx:fix`                | 是     | 是     |                                                                                             |
 

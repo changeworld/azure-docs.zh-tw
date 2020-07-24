@@ -5,16 +5,16 @@ services: data-lake-analytics
 ms.service: data-lake-analytics
 author: omidm1
 ms.author: omidm
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.assetid: 49416f38-fcc7-476f-a55e-d67f3f9c1d34
 ms.topic: how-to
 ms.date: 03/15/2018
-ms.openlocfilehash: b51fbfc15183fe5c8defafa6523835f938c1cf49
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 0025e35f516543c8fe703daa647ca29ed3fb87e6
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121243"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87127582"
 ---
 # <a name="adjust-quotas-and-limits-in-azure-data-lake-analytics"></a>調整 Azure Data Lake Analytics 中的配額和限制
 
@@ -34,7 +34,7 @@ ms.locfileid: "86121243"
 
 **每個帳戶的分析單位（au）數目上限：** 250，預設32
 
-這是可以同時在您的帳戶中執行的 AU 的最大數目。 如果您的所有作業加起來的執行中 AU 總數超過此限制，系統會自動將較新的工作排入佇列。 例如：
+這是可以同時在您的帳戶中執行的 AU 的最大數目。 如果您的所有作業加起來的執行中 AU 總數超過此限制，系統會自動將較新的工作排入佇列。 例如:
 
 * 如果您只有一個作業使用 32 個 AU 在執行，當您提交第二個作業時，在第一個作業完成之前，第二個作業會在作業佇列中等待。
 * 如果您已經有四個執行中的作業，而每個都使用 8 AU，當您送出第五個需要 8 AU 的作業時，它會在作業佇列中等到有 8 AU 可使用。

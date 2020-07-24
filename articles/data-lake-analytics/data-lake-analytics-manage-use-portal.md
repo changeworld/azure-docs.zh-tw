@@ -3,18 +3,16 @@ title: 使用 Azure 入口網站管理 Azure Data Lake Analytics
 description: 本文說明如何使用 Azure 入口網站來管理 Data Lake Analytics 帳戶、資料來源、使用者和作業。
 services: data-lake-analytics
 ms.service: data-lake-analytics
-author: saveenr
-ms.author: saveenr
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.assetid: a0e045f1-73d6-427f-868d-7b55c10f811b
 ms.topic: how-to
 ms.date: 12/05/2016
-ms.openlocfilehash: e9709f8ee700958b310b2fa94a546bb3ea4fc511
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 7761da75c16e2f89ae145bad3b04cc179f415751
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121311"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87127531"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-portal"></a>使用 Azure 入口網站來管理 Azure Data Lake Analytics
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -114,7 +112,7 @@ Data Lake Analytics 支援下列資料來源：
 2. 按一下 **[存取控制（IAM）] [**  >  **新增角色指派**]。
 3. 選取角色。
 4. 新增使用者。
-5. 按一下 [確定]。
+5. 按一下 [確定]  。
 
 >[!NOTE]
 >如果使用者或安全性群組需要提交作業，他們也需要有存放區帳戶的權限。 如需詳細資訊，請參閱[保護儲存在 Data Lake Store 中的資料](../data-lake-store/data-lake-store-secure-data.md)。

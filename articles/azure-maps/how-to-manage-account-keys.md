@@ -1,31 +1,31 @@
 ---
 title: 在 Azure 入口網站中管理您的 Azure 地圖服務帳戶 |Microsoft Azure 對應
 description: 在本文中，您將瞭解如何使用 Azure 入口網站來管理您的 Microsoft Azure Maps 帳戶。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 01/27/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 42247cc576e55c7c504e9832017af336439b11b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3317b063b5b05a57f08bbd15be827cd83075de34
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80335541"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87126953"
 ---
 # <a name="manage-your-azure-maps-account"></a>管理 Azure 地圖服務帳戶
 
 您可以透過 Azure 入口網站管理 Azure 地圖服務帳戶。 在取得帳戶後，您即可在網站或行動裝置應用程式中實作 API。
 
-如果您沒有 Azure 訂用帳戶，請先建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)，再開始進行。
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="create-a-new-account"></a>建立新帳戶
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
-2. 選取 Azure 入口網站中左上角的 [建立資源]****。
+2. 選取 Azure 入口網站中左上角的 [建立資源]。
 
 3. 搜尋並選取 [地圖服務]****。 然後選取 [建立]。
 

@@ -2,19 +2,19 @@
 title: 管理驗證
 titleSuffix: Azure Maps
 description: 使用 Azure 入口網站來管理 Microsoft Azure 對應中的驗證。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 06/12/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 174606b4b070b69aba94f438a3f7177f0d5897f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 69dda537beda1d1bec4f019e1d5cadd16bdd5b39
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84981707"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87126851"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>管理 Azure 地圖服務中的驗證
 
@@ -43,14 +43,14 @@ ms.locfileid: "84981707"
 > [!IMPORTANT]
 > Microsoft 建議使用生產應用程式的角色型存取控制（RBAC），來執行 Azure Active Directory （Azure AD）。
 
-| 狀況                                                                                    | 驗證 | 授權 | 開發成果 | 營運工作 |
+| 案例                                                                                    | 驗證 | 授權 | 開發成果 | 營運工作 |
 | ------------------------------------------------------------------------------------------- | -------------- | ------------- | ------------------ | ------------------ |
-| [受信任的 daemon/非互動式用戶端應用程式](./how-to-secure-daemon-app.md)        | 共用金鑰     | N/A           | 中             | 高               |
-| [受信任的 daemon/非互動式用戶端應用程式](./how-to-secure-daemon-app.md)        | Azure AD       | 高          | 低                | 中             |
-| [具有互動式單一登入的 Web 單一頁面應用程式](./how-to-secure-spa-users.md) | Azure AD       | 高          | 中             | 中             |
-| [具有非互動式登入的 Web 單一頁面應用程式](./how-to-secure-spa-app.md)      | Azure AD       | 高          | 中             | 中             |
+| [受信任的 daemon/非互動式用戶端應用程式](./how-to-secure-daemon-app.md)        | 共用金鑰     | 不適用           | 中             | 高               |
+| [受信任的 daemon/非互動式用戶端應用程式](./how-to-secure-daemon-app.md)        | Azure AD       | 高          | 低度                | 中             |
+| [具有互動式單一登入的 Web 單一頁面應用程式](./how-to-secure-spa-users.md) | Azure AD       | 高          | 中             | 適中             |
+| [具有非互動式登入的 Web 單一頁面應用程式](./how-to-secure-spa-app.md)      | Azure AD       | 高          | 中             | 適中             |
 | [具有互動式單一登入的 Web 應用程式](./how-to-secure-webapp-users.md)          | Azure AD       | 高          | 高               | 中             |
-| [IoT 裝置/輸入限制裝置](./how-to-secure-device-code.md)                     | Azure AD       | 高          | 中             | 中             |
+| [IoT 裝置/輸入限制裝置](./how-to-secure-device-code.md)                     | Azure AD       | 高          | 中             | 適中             |
 
 資料表中的連結會帶您前往每個案例的詳細設定資訊。
 

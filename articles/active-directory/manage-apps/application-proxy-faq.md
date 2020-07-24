@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 10/03/2019
+ms.date: 07/23/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 839ce418fa8ad72e18537cf673c8af0479409ba7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5b95ae3c7fcf52a732304bb835f91c52b015801e
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85386278"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87128925"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Active Directory （Azure AD）應用程式 Proxy 的常見問題
 
@@ -52,6 +52,9 @@ ms.locfileid: "85386278"
 ### <a name="is-tls-termination-tlshttps-inspection-or-acceleration-on-traffic-from-the-connector-servers-to-azure-supported"></a>支援從連接器伺服器到 Azure 的流量進行 TLS 終止（TLS/HTTPS 檢查或加速）嗎？
 
 應用程式 Proxy 連接器會對 Azure 執行以憑證為基礎的驗證。 TLS 終止（TLS/HTTPS 檢查或加速）會中斷此驗證方法，且不受支援。 從連接器到 Azure 的流量必須略過任何正在執行 TLS 終止的裝置。  
+
+### <a name="is-tls-12-required-for-all-connections"></a>所有連接都需要 TLS 1.2 嗎？
+是。 為了將頂級的加密提供給客戶，應用程式 Proxy 服務會限制僅接受 TLS 1.2 通訊協定的存取。 這些變更已逐漸推出，並於 2019 年 8 月 31 日起生效。 請確定所有用戶端-伺服器和瀏覽器-伺服器組合都已更新為使用 TLS 1.2，以保持與應用程式 Proxy 服務的連線。 其中包括使用者存取透過應用程式 Proxy 發佈的應用程式時，所使用的用戶端。 請參閱準備 [Office 365 中的 TLS 1.2](https://docs.microsoft.com/microsoft-365/compliance/prepare-tls-1.2-in-office-365)，以取得實用的參考和資源。
 
 ### <a name="can-i-place-a-forward-proxy-device-between-the-connector-servers-and-the-back-end-application-server"></a>我可以在連接器伺服器和後端應用程式伺服器之間放置正向 proxy 裝置嗎？
 是，從連接器版本1.5.1526.0 開始支援此案例。 請參閱使用[現有的內部部署 proxy 伺服器](application-proxy-configure-connectors-with-proxy-servers.md)。
@@ -93,6 +96,9 @@ ms.locfileid: "85386278"
 
 否，發行的應用程式不需要 IIS。 您可以發行在 Windows Server 以外的伺服器上執行的 web 應用程式。 不過，視 web 伺服器是否支援 Negotiate （Kerberos 驗證）而定，您可能無法使用非 Windows 伺服器的預先驗證。 在安裝連接器的伺服器上，不需要 IIS。
 
+### <a name="can-i-configure-application-proxy-to-add-the-hsts-header"></a>我可以設定應用程式 Proxy 來新增 HSTS 標頭嗎？
+應用程式 Proxy 不會自動將 HTTP 嚴格傳輸安全性標頭新增至 HTTPS 回應，但如果它是在已發行應用程式所傳送的原始回應中，就會保留標頭。 證明啟用此功能的設定已在藍圖中。 如果您對可將此新增至回應的預覽感興趣，請前往以 aadapfeedback@microsoft.com 取得詳細資料。
+
 ## <a name="integrated-windows-authentication"></a>整合式 Windows 驗證
 
 ### <a name="when-should-i-use-the-principalsallowedtodelegatetoaccount-method-when-setting-up-kerberos-constrained-delegation-kcd"></a>何時應該在設定 Kerberos 限制委派（KCD）時使用 PrincipalsAllowedToDelegateToAccount 方法？
@@ -133,7 +139,7 @@ NTLM 驗證無法用來做為預先驗證或單一登入方法。 NTLM 驗證只
 
 ### <a name="is-the-remote-desktop-web-client-html5-supported"></a>是否支援遠端桌面 Web 用戶端（HTML5）？
 
-否，目前不支援此案例。 請遵循我們的[UserVoice](https://aka.ms/aadapuservoice)意見反應論壇，取得這項功能的更新。
+是，此案例目前處於公開預覽狀態。 請參閱[使用 Azure AD 應用程式 Proxy 發佈遠端桌面](application-proxy-integrate-with-remote-desktop-services.md)。
 
 ### <a name="after-i-configured-the-pre-authentication-scenario-i-realized-that-the-user-has-to-authenticate-twice-first-on-the-azure-ad-sign-in-form-and-then-on-the-rdweb-sign-in-form-is-this-expected-how-can-i-reduce-this-to-one-sign-in"></a>在設定預先驗證案例之後，我發現使用者必須驗證兩次：先在 Azure AD 登入表單上，然後在 RDWeb 登入表單上。 這是預期行為嗎？ 如何將此專案減少為一次登入？
 
@@ -153,7 +159,7 @@ SharePoint 行動裝置[應用程式](https://docs.microsoft.com/sharepoint/admi
 
 ### <a name="can-i-use-azure-ad-application-proxy-as-ad-fs-proxy-like-web-application-proxy"></a>我可以使用 Azure AD 應用程式 Proxy 做為 AD FS Proxy （例如 Web 應用程式 Proxy）嗎？
 
-否。 Azure AD 應用程式 Proxy 是設計用來與 Azure AD 搭配運作，並不符合作為 AD FS Proxy 的需求。
+不可以。 Azure AD 應用程式 Proxy 是設計用來與 Azure AD 搭配運作，並不符合作為 AD FS Proxy 的需求。
 
 ## <a name="websocket"></a>WebSocket
 

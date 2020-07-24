@@ -1,19 +1,19 @@
 ---
 title: 繪圖工具模組 |Microsoft Azure 對應
 description: 在本文中，您將瞭解如何使用 Microsoft Azure Maps Web SDK 來設定繪圖選項資料
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 01/29/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 711609f9382e2153cbc738d544933796dbbe2e99
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 261202173a0692c66a24091b2173f5d4fe271058
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80334300"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87129503"
 ---
 # <a name="use-the-drawing-tools-module"></a>使用繪圖工具模組
 
@@ -30,7 +30,7 @@ Azure 地圖服務 Web SDK 提供*繪圖工具模組*。 此模組可讓您輕�
         <script src="https://atlas.microsoft.com/sdk/javascript/drawing/0/atlas-drawing.min.js"></script>
         ```
 
-    - 或者，您可以使用 npm，在本機載入適用于 Azure 地圖服務 Web SDK 原始程式碼的繪圖工具模組，然後將它裝載在[您的應用](https://www.npmjs.com/package/azure-maps-drawing-tools)程式中。 此套件也包含 TypeScript 定義。 使用此命令：
+    - 或者，您可以使用 npm，在本機載入適用于 Azure 地圖服務 Web SDK 原始程式碼的繪圖工具模組，然後將它裝載在[您的應用](https://www.npmjs.com/package/azure-maps-drawing-tools)程式中。 此套件也包含 TypeScript 定義。 請使用此命令：
     
         > **npm 安裝 azure-maps-繪圖-工具**
     

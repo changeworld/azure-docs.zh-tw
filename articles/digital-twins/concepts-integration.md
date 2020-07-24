@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/16/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: ba4188445f9bdf791ef760936bd27ac0f507fb4c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d82289366d79f44460b96d75781cac4fa50de53a
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737167"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87129724"
 ---
 # <a name="integrate-azure-digital-twins-with-other-services"></a>將 Azure 數位 Twins 與其他服務整合
 
@@ -24,7 +24,7 @@ Azure 數位 Twins 可透過 IoT 中樞的資料來驅動。 這可讓您從環�
 
 Azure 數位 Twins 沒有內建的 IoT 中樞。 您可以使用目前在生產環境中現有的 IoT 中樞，或部署新的。 這可讓您完整存取 IoT 中樞的所有裝置管理功能。
 
-若要將 IoT 中樞中的資料內嵌至 Azure 數位 Twins，請使用[azure](../azure-functions/functions-overview.md)函式。 若要深入瞭解此模式，請前往[如何：從 IoT 中樞內嵌遙測](how-to-ingest-iot-hub-data.md)，或在[Azure 數位 Twins 教學課程中自行嘗試：連接端對端解決方案](tutorial-end-to-end.md)。
+若要將 IoT 中樞中的資料內嵌至 Azure 數位 Twins，請使用[azure](../azure-functions/functions-overview.md)函式。 若要深入瞭解此模式，請前往[*如何：從 IoT 中樞內嵌遙測*](how-to-ingest-iot-hub-data.md)，或在 Azure 數位 Twins 教學課程中自行嘗試[*：連接端對端解決方案*](tutorial-end-to-end.md)。
 
 ## <a name="data-egress-services"></a>資料輸出服務
 
@@ -33,7 +33,7 @@ Azure 數位 Twins 可將資料傳送至已連線的**端點**。 支援的端�
 * [Event Grid](../event-grid/overview.md)
 * [服務匯流排](../service-bus-messaging/service-bus-messaging-overview.md)
 
-端點會使用管理 Api 或 Azure 入口網站附加至 Azure 數位 Twins。 若要深入瞭解如何將端點連結至 Azure 數位 Twins，請前往[如何：管理端點和路由](how-to-manage-routes.md)。
+端點會使用管理 Api 或 Azure 入口網站附加至 Azure 數位 Twins。 若要深入瞭解如何將端點連結至 Azure 數位 Twins，請前往[*如何：管理端點和路由*](how-to-manage-routes.md)。
 
 還有許多其他的服務，您可能會想要將資料導向其中，例如[Azure 儲存體](../storage/common/storage-introduction.md)或[時間序列深入解析](../time-series-insights/time-series-insights-update-overview.md)。 若要將您的資料傳送到這類服務，請將目的地服務附加至端點。
 
@@ -42,7 +42,7 @@ Azure 數位 Twins 可將資料傳送至已連線的**端點**。 支援的端�
 ## <a name="next-steps"></a>後續步驟
 
 深入瞭解端點和將事件路由至外部服務：
-* [概念：路由 Azure 數位 Twins 事件](concepts-route-events.md)
+* [*概念：路由 Azure 數位 Twins 事件*](concepts-route-events.md)
 
 請參閱如何設定 Azure 數位 Twins，以內嵌來自 IoT 中樞的資料：
-* [如何：從 IoT 中樞內嵌遙測](how-to-ingest-iot-hub-data.md)
+* [*如何：從 IoT 中樞內嵌遙測*](how-to-ingest-iot-hub-data.md)

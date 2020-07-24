@@ -15,12 +15,12 @@ ms.date: 07/01/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 985342b19baad8b9210e985c9c7dfb9482708a0c
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 32b678058e2d24d277eaf56a1aadec3678e25a5b
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86023699"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87128160"
 ---
 # <a name="assign-azure-resource-roles-in-privileged-identity-management"></a>在 Privileged Identity Management 中指派 Azure 資源角色
 
@@ -33,7 +33,7 @@ Azure Active Directory （Azure AD） Privileged Identity Management （PIM）�
 - 安全性管理員
 
 > [!NOTE]
-> 指派給擁有者或使用者存取系統管理員訂閱角色之群組的使用者或成員，以及在 Azure AD 中啟用訂閱管理的 Azure AD 全域管理員，預設具有資源管理員許可權。 這些系統管理員可以指派角色、設定角色設定，並使用適用于 Azure 資源的 Privileged Identity Management 來檢查存取權。 如果沒有資源管理員許可權，使用者就無法管理資源的 Privileged Identity Management。 請檢視[Azure 資源的內建角色](../../role-based-access-control/built-in-roles.md)清單。
+> 指派給擁有者或使用者存取系統管理員訂閱角色之群組的使用者或成員，以及在 Azure AD 中啟用訂閱管理的 Azure AD 全域管理員，預設具有資源管理員許可權。 這些系統管理員可以指派角色、設定角色設定，並使用適用于 Azure 資源的 Privileged Identity Management 來檢查存取權。 如果沒有資源管理員許可權，使用者就無法管理資源的 Privileged Identity Management。 查看[Azure 內建角色](../../role-based-access-control/built-in-roles.md)的清單。
 
 ## <a name="assign-a-role"></a>指派角色
 

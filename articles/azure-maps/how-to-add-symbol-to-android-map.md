@@ -1,19 +1,19 @@
 ---
 title: 將符號圖層新增至 Android 地圖 |Microsoft Azure 對應
 description: 在本文中，您將瞭解如何在地圖上轉譯點資料，方法是使用 [Microsoft Azure 對應] Android SDK 將符號圖層新增至其中。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: b6b73fef368dc8dec5d8c042cdac1d3cea899450
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 528c5a5ba4314e44334548334e312d1111768cf5
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86242435"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87127072"
 ---
 # <a name="add-a-symbol-layer-to-a-map-using-azure-maps-android-sdk"></a>使用 Azure 地圖服務 Android SDK 將符號圖層新增至地圖
 
@@ -50,7 +50,7 @@ ms.locfileid: "86242435"
     </FrameLayout>
     ```
 
-2. 將下列程式碼片段複製到您類別的**onCreate ( # B1**方法中 `MainActivity.java` 。
+2. 將下列程式碼片段複製到您類別的**onCreate （）** 方法中 `MainActivity.java` 。
 
     ```Java
     mapControl.onReady(map -> {
@@ -72,7 +72,7 @@ ms.locfileid: "86242435"
     
     ```
     
-    上述程式碼片段會先使用**onReady ( # B1**回呼方法來取得 Azure 地圖服務的地圖控制項實例。 然後，它會使用**DataSource**類別來建立資料來源物件，並將它加入至對應。 然後，它會將包含點幾何的**功能**新增至其中。 然後會將紅色標記影像設定為符號的圖示。 **符號圖層**會使用文字或圖示，將資料來源中包裝的點式資料轉譯為地圖上的符號。 接著會建立符號圖層，並將資料來源傳遞給它以轉譯，然後再新增至地圖的圖層。
+    上述程式碼片段會先使用**onReady （）** 回呼方法來取得 Azure 地圖服務的地圖控制項實例。 然後，它會使用**DataSource**類別來建立資料來源物件，並將它加入至對應。 然後，它會將包含點幾何的**功能**新增至其中。 然後會將紅色標記影像設定為符號的圖示。 **符號圖層**會使用文字或圖示，將資料來源中包裝的點式資料轉譯為地圖上的符號。 接著會建立符號圖層，並將資料來源傳遞給它以轉譯，然後再新增至地圖的圖層。
     
     新增上述程式碼片段之後，您 `MainActivity.java` 的看起來應該如下所示：
     

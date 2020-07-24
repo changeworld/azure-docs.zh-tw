@@ -15,11 +15,12 @@ ms.date: 05/01/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: ac5c19866a164bbc927d23495e9d6ec9a1ef6bfe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8d6c9ab2bacf94b3a27bfd1de0189d8b89b5efaf
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84790699"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87129435"
 ---
 # <a name="troubleshoot-azure-rbac"></a>針對 Azure RBAC 進行疑難排解
 
@@ -65,7 +66,7 @@ $ras.Count
 - 您只能在自訂角色中定義一個管理群組 `AssignableScopes` 。 將管理群組新增至 `AssignableScopes` 目前為預覽狀態。
 - `DataActions`無法在管理群組範圍指派具有的自訂角色。
 - Azure Resource Manager 不會驗證管理群組是否存在於角色定義的可指派範圍中。
-- 如需有關自訂角色和管理群組的詳細資訊，請參閱[使用 Azure 管理群組來組織資源](../governance/management-groups/overview.md#custom-rbac-role-definition-and-assignment)。
+- 如需有關自訂角色和管理群組的詳細資訊，請參閱[使用 Azure 管理群組來組織資源](../governance/management-groups/overview.md#azure-custom-role-definition-and-assignment)。
 
 ## <a name="transferring-a-subscription-to-a-different-directory"></a>將訂用帳戶轉移至不同的目錄
 
@@ -204,7 +205,7 @@ Web 應用程式因為幾個互有關聯的資源而顯得複雜。 以下是具
 * 端點  
 * IP 位址  
 * 磁碟  
-* 延伸模組  
+* Extensions  
 
 這些項目都需要同時具備「虛擬機器」**** 與所屬之「資源群組」****(連同網域名稱) 的**寫入**權：  
 

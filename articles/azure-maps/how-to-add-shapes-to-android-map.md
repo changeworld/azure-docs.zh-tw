@@ -1,19 +1,19 @@
 ---
 title: 將圖形新增至 Android 地圖 |Microsoft Azure 對應
 description: 在本文中，您將瞭解如何使用 Microsoft Azure Maps Android SDK，在地圖上轉譯不同的圖案。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 7a793ff35675c876dc429976ebee96887b12735a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 855a05bd228a3bf903b79522549ed519b4745e17
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80335598"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87127089"
 ---
 # <a name="add-a-shape-to-a-map-using-azure-maps-android-sdk"></a>使用 Azure 地圖服務 Android SDK 將圖形新增至地圖
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/28/2018
 ms.author: tomsh
-ms.openlocfilehash: 675e10101d01d831aad7652c70cbfcf320085a3c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: da59c0d54fa08194f9d77fc79754cbfbaca1a1e8
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "70999175"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87128398"
 ---
 # <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-storage"></a>使用 Azure 儲存體保護 PaaS Web 與行動應用程式的最佳做法
 在此文章中，我們將討論用來保護平台即服務 (PaaS) Web 與行動應用程式的 Azure 儲存體安全性最佳做法。 這些最佳做法衍生自我們的 Azure 經驗和客戶 (例如您自己) 的經驗。
@@ -65,7 +65,7 @@ SAS 可讓您以您想要的方式來共用內容，而不必交出儲存體帳�
 若要深入了解 RBAC，請參閱：
 
 - [使用 RBAC 和 Azure 入口網站來管理存取權](/azure/role-based-access-control/role-assignments-portal)
-- [適用於 Azure 資源的內建角色](/azure/role-based-access-control/built-in-roles)
+- [Azure 內建角色](/azure/role-based-access-control/built-in-roles) (機器翻譯)
 - [Azure 儲存體安全性指南](/azure/storage/common/storage-security-guide) 
 
 ## <a name="use-client-side-encryption-for-high-value-data"></a>對高價值的資料使用用戶端加密

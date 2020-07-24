@@ -3,24 +3,22 @@ title: Azure Data Lake 的 U-SQL 可程式性指南
 description: 深入了解在 Azure Data Lake Analytics 可讓您建立雲端型巨量資料平台的服務集。
 services: data-lake-analytics
 ms.service: data-lake-analytics
-author: saveenr
-ms.author: saveenr
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.assetid: 63be271e-7c44-4d19-9897-c2913ee9599d
 ms.topic: how-to
 ms.date: 06/30/2017
-ms.openlocfilehash: 2fb54c821c50ff8e1364a125cc5db181aedf0437
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 80edafb9cffa43f7163c1b75c9faaaefbb97c616
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110584"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87127412"
 ---
 # <a name="u-sql-programmability-guide"></a>U-SQL 可程式性指南
 
 U-SQL 是為巨量資料類型的工作負載所設計的查詢語言。 U-SQL 的其中一項獨特功能是，可將類 SQL 的宣告式語言與 C# 所提供的擴充性和可程式性結合在一起。 在本指南中，我們將著重於介紹由 C# 所實現的 U-SQL 語言之擴充性和可程式性。
 
-## <a name="requirements"></a>規格需求
+## <a name="requirements"></a>需求
 
 下載及安裝 [Azure Data Lake Tools for Visual Studio](https://www.microsoft.com/download/details.aspx?id=49504)。
 
@@ -494,7 +492,7 @@ using System.IO;
 
 * 使用 SqlUserDefinedType 屬性來定義使用者定義類型。
 
-**SqlUserDefinedType** 可用來將組件中的類型定義標示為 U-SQL 中的使用者定義類型 (UDT)。 屬性 (attribute) 上的屬性 (property) 會反映 UDT 的實際特性。 這個類別無法被繼承。
+**SqlUserDefinedType** 可用來將組件中的類型定義標示為 U-SQL 中的使用者定義類型 (UDT)。 屬性 (attribute) 上的屬性 (property) 會反映 UDT 的實際特性。 此類別無法獲得繼承。
 
 SqlUserDefinedType 是 UDT 定義的必要屬性 (attribute)。
 
@@ -789,11 +787,7 @@ namespace USQL_Programmability
             }
 
             return new FiscalPeriod(FiscalQuarter, FiscalMonth);
-        }
-
-
-
-        [SqlUserDefinedType(typeof(FiscalPeriodFormatter))]
+        }        [SqlUserDefinedType(typeof(FiscalPeriodFormatter))]
         public struct FiscalPeriod
         {
             public int Quarter { get; private set; }
@@ -910,7 +904,7 @@ var result = new FiscalPeriod(binaryReader.ReadInt16(), binaryReader.ReadInt16()
     }
 ```
 
-**SqlUserDefinedAggregate** 表示類型應該註冊為使用者定義彙總。 這個類別無法被繼承。
+**SqlUserDefinedAggregate** 表示類型應該註冊為使用者定義彙總。 此類別無法獲得繼承。
 
 UDAGG 定義的 SqlUserDefinedType 屬性是**選擇性**的。
 
@@ -1091,7 +1085,7 @@ public class SampleExtractor : IExtractor
 }
 ```
 
-**SqlUserDefinedExtractor** 表示類型應該註冊為使用者定義擷取器。 這個類別無法被繼承。
+**SqlUserDefinedExtractor** 表示類型應該註冊為使用者定義擷取器。 此類別無法獲得繼承。
 
 SqlUserDefinedExtractor 是 UDE 定義的選擇性屬性。 它可用來定義 UDE 物件的 AtomicFileProcessing 屬性。
 
@@ -1269,7 +1263,7 @@ public class MyOutputter : IOutputter
 * 建構函式類別可用來將參數傳遞至使用者定義輸出器。
 * `Close` 可選擇性地覆寫，以釋出耗費資源的狀態或判斷最後一個資料列的寫入時間。
 
-**SqlUserDefinedOutputter** 表示類型應該註冊為使用者定義輸出器。 這個類別無法被繼承。
+**SqlUserDefinedOutputter** 表示類型應該註冊為使用者定義輸出器。 此類別無法獲得繼承。
 
 SqlUserDefinedOutputter 是使用者定義輸出器之定義的選擇性屬性。 它可用來定義 AtomicFileProcessing 屬性。
 
@@ -1512,7 +1506,7 @@ public override IRow Process(IRow input, IUpdatableRow output)
 }
 ```
 
-**SqlUserDefinedProcessor** 表示類型應該註冊為使用者定義處理器。 這個類別無法被繼承。
+**SqlUserDefinedProcessor** 表示類型應該註冊為使用者定義處理器。 此類別無法獲得繼承。
 
 SqlUserDefinedProcessor 是 UDP 定義的**選擇性**屬性。
 
@@ -1633,7 +1627,7 @@ public class ParserApplier : IApplier
 * 會針對外部資料表的每個資料列呼叫 Apply。 它會傳回 `IUpdatableRow` 輸出資料列集。
 * 建構函式類別可用來將參數傳遞至使用者定義套用器。
 
-**SqlUserDefinedApplier** 表示類型應該註冊為使用者定義套用器。 這個類別無法被繼承。
+**SqlUserDefinedApplier** 表示類型應該註冊為使用者定義套用器。 此類別無法獲得繼承。
 
 **SqlUserDefinedApplier** 是使用者定義套用器定義的**選擇性**。
 
@@ -1847,7 +1841,7 @@ public override IEnumerable<IRow> Combine(IRowset left, IRowset right,
 }
 ```
 
-**SqlUserDefinedCombiner** 表示類型應該註冊為使用者定義結合器。 這個類別無法被繼承。
+**SqlUserDefinedCombiner** 表示類型應該註冊為使用者定義結合器。 此類別無法獲得繼承。
 
 **SqlUserDefinedCombiner** 用來定義合併程式模式屬性。 它是使用者定義結合器定義的選擇性屬性。
 
@@ -2107,7 +2101,7 @@ public class EmptyUserReducer : IReducer
 }
 ```
 
-**SqlUserDefinedReducer** 表示類型應該註冊為使用者定義歸納器。 這個類別無法被繼承。
+**SqlUserDefinedReducer** 表示類型應該註冊為使用者定義歸納器。 此類別無法獲得繼承。
 **SqlUserDefinedReducer** 是使用者定義歸納器之定義的選擇性屬性。 它可用來定義 IsRecursive 屬性。
 
 * bool     IsRecursive    

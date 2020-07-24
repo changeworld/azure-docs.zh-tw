@@ -1,20 +1,20 @@
 ---
-title: Marketplace 見解 - Microsoft 商業市集
+title: Marketplace 深入解析-Microsoft 商業 marketplace、Microsoft AppSource 和 Azure Marketplace
 description: 存取市集 Web 分析的摘要，其可供測量 Microsoft AppSource 和 Azure Marketplace 中的客戶參與度。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 12/16/2019
-ms.openlocfilehash: 8b5f90449f27007febe93f1193c6d2245b076e7e
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.topic: article
+ms.date: 07/22/2019
+ms.openlocfilehash: c72f3c9cce19896557fa9f4114b935fcc5ca8dc2
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120393"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87128942"
 ---
 # <a name="marketplace-insights-dashboard-in-partner-center"></a>合作夥伴中心的 [Marketplace 見解] 儀表板
 
-本文提供合作夥伴中心內 [Marketplace 見解] 儀表板的相關資訊。 此儀表板會顯示市集 Web 分析的摘要，讓發行者能夠針對市集店面上列出的個別產品詳細資料頁面，測量客戶參與度：Microsoft AppSource 和 Azure Marketplace。
+本文提供合作夥伴中心內 [Marketplace 見解] 儀表板的相關資訊。 此儀表板會顯示 marketplace web 分析的摘要，可讓發行者針對其在商業 marketplace 店面上列出的產品詳細資料頁面，測量客戶參與： Microsoft AppSource 和 Azure Marketplace。
 
 ## <a name="marketplace-insights-dashboard"></a>Marketplace 見解儀表板
 
@@ -25,18 +25,20 @@ ms.locfileid: "86120393"
 - [Marketplace 見解的摘要](#marketplace-insights-summary)
 - [頁面瀏覽數 (依地理位置)](#page-visits-by-geography)  
 - [頁面瀏覽數與非重複訪客數趨勢](#page-visits-versus-unique-visitors-trend)
-- [動作呼叫與具有 CTA 的非重複訪客數](#call-to-action-versus-unique-visitors-with-ctas)
+- [使用 CTAs 的呼叫動作（CTA）與唯一的訪客](#call-to-action-versus-unique-visitors-with-ctas)
 - [頁面瀏覽數與動作呼叫 (依供應項目)](#page-visits-and-calls-to-action-by-offers)
 - [動作呼叫百分比趨勢](#call-to-action-percentage-trend)
 - [頁面瀏覽數與動作呼叫數 (依轉介網域)](#page-visits-and-calls-to-action-by-referral-domains)
 - [Marketplace 見解的詳細資料資料表](#marketplace-insights-details-table)
+
+在合作夥伴中心流覽 Azure Marketplace 或 AppSource 和報告供應專案的使用者之間的最大延遲為48小時。
 
 >[!NOTE]
 > 如需分析術語的詳細定義，請參閱[商業市集分析的常見問題集與術語](./faq-terminology.md)。
 
 ### <a name="insights-dashboard-layout"></a>[見解] 儀表板版面配置
 
-您可透過各種不同的方式來檢視 Marketplace 計量：
+以各種不同的方式來觀看商業 marketplace 計量：
 
 - 店面索引標籤
 - 頁面篩選
@@ -74,7 +76,7 @@ ms.locfileid: "86120393"
 
 ### <a name="call-to-action"></a>對動作的呼叫
 
-此數字代表在供應專案頁面 (產品詳細資料頁面) 上，已完成 [動作呼叫] 按鈕點選的計數。 選取了 [立即取得]、[免費試用]、[與我連絡] 和 [試用產品] 按鈕時，即會計入 [動作呼叫數]。
+此數字代表在供應專案頁面 (產品詳細資料頁面) 上，已完成 [動作呼叫] 按鈕點選的計數。 當使用者選取 [**立即取得**]、[**免費試用**]、[**聯絡我**] 或 [**試用**產品] 按鈕時，會計算**動作的呼叫**。
 
 ![合作夥伴中心見解的動作呼叫摘要](./media/insights-summary.png)
 
@@ -128,7 +130,7 @@ ms.locfileid: "86120393"
 
 - 如果記錄計數小於 1000，則可將資料擷取至 CSV 檔案。
 - 如果記錄計數超過 1000，則匯出的資料會在接下來 30 天內以非同步方式放置在下載頁面中。
-- 您可套用篩選來顯示感興趣的資料。 資料可依供應項目名稱和行銷活動名稱進行篩選。  
+- 依據供應專案名稱和行銷活動名稱來篩選資料，以顯示您感興趣的資料。
 
 ## <a name="next-steps"></a>後續步驟
 

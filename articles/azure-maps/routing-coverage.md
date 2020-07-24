@@ -1,18 +1,19 @@
 ---
 title: 路由涵蓋範圍 |Microsoft Azure 對應
 description: 在本文中，您將瞭解具有 Microsoft Azure 對應之路由涵蓋範圍的區域。
-author: Philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 04/04/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: e04f3d2f5ed575e9401c53faebd91b3bde004601
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d581380bed3cb0cbc50a0b763a1dc7fe7ee1d04e
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83123882"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87129520"
 ---
 # <a name="azure-maps-routing-coverage"></a>Azure 地圖服務路線規劃涵蓋範圍
 

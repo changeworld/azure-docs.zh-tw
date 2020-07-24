@@ -1,19 +1,19 @@
 ---
 title: 新增開放地理空間協會（OGC）地圖圖層 |Microsoft Azure 對應
 description: 瞭解如何在地圖上覆迭 OGC 地圖圖層，以及如何在 OgcMapLayer 類別中使用不同的選項。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: b753ecfc07cfb3806838f8a05dbe33ef0bb92730
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6efc6b27090ecc7171bb66deb303a4764d9b6f04
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80334289"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87128551"
 ---
 # <a name="add-a-map-layer-from-the-open-geospatial-consortium-ogc"></a>從開放地理空間協會（OGC）新增地圖圖層
 
@@ -28,7 +28,7 @@ ms.locfileid: "80334289"
 - GetFeatureInfo 需要服務支援 `EPSG:4326` 或處理 reprojections。 
 - 支援的作業：
 
-    | | |
+    | 作業 | 描述 |
     | :-- | :-- |
     | GetCapabilities | 使用支援的功能來抓取服務的相關中繼資料 |
     | GetMap | 抓取指定區域的地圖影像 |
@@ -42,7 +42,7 @@ ms.locfileid: "80334289"
 - TileMatrix 識別碼必須是對應至地圖上縮放層級的整數值。 在 azure 地圖上，縮放層級是介於和之間的值 `"0"` `"22"` 。 因此， `"0"` 支援，但 `"00"` 不支援。
 - 支援的作業：
 
-    | | |
+    | 作業 | 描述 |
     | :-- | :-- |
     | GetCapabilities | 抓取支援的作業和功能 |
     | GetTile | 抓取特定磚的影像 |

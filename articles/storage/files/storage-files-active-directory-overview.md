@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: rogarana
-ms.openlocfilehash: db256c8361af740ac536e059969a5085e57df485
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cb57606259fe674519015fd2de741d6c1d08c5e9
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84263331"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87127191"
 ---
 # <a name="overview-of-azure-files-identity-based-authentication-options-for-smb-access"></a>瞭解 SMB 存取的 Azure 檔案儲存體身分識別型驗證選項
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -21,7 +21,7 @@ ms.locfileid: "84263331"
 
 若要瞭解如何為 Azure 檔案共用啟用 Azure AD DS 驗證，請參閱[在 Azure 檔案儲存體上啟用 Azure Active Directory Domain Services 驗證](storage-files-identity-auth-active-directory-domain-service-enable.md)。
 
-## <a name="glossary"></a>詞彙 
+## <a name="glossary"></a>字彙表 
 瞭解 Azure 檔案共用的透過 SMB Azure AD 網域服務驗證的一些重要詞彙，會很有説明：
 
 -   **Kerberos 驗證**
@@ -32,7 +32,7 @@ ms.locfileid: "84263331"
 
     SMB 是業界標準網路檔案共用通訊協定。 SMB 亦稱為 Common Internet File System 或 CIFS。 如需有關 SMB 的詳細資訊，請參閱 [Microsoft SMB 通訊協定和 CIFS 通訊協定概觀](https://docs.microsoft.com/windows/desktop/FileIO/microsoft-smb-protocol-and-cifs-protocol-overview)。
 
--   **Azure Active Directory （Azure AD）**
+-   **Azure Active Directory (Azure AD)**
 
     Azure Active Directory （Azure AD）是 Microsoft 的多租使用者雲端式目錄和身分識別管理服務。 Azure AD 將核心目錄服務、應用程式存取管理及身分識別保護結合到單個解決方案。 已加入 Azure AD 的 Windows 虛擬機器（Vm）可以使用您的 Azure AD 認證來存取 Azure 檔案共用。 如需詳細資訊，請參閱[什麼是 Azure Active Directory？](../../active-directory/fundamentals/active-directory-whatis.md)
 
@@ -46,7 +46,7 @@ ms.locfileid: "84263331"
 
 -   **Azure 角色型存取控制 (RBAC)**
 
-    Azure 角色型存取控制 (RBAC) 可以對 Azure 進行更細緻的存取權管理。 使用 RBAC，您可以對使用者授權執行其執行工作所需的最少權限，以便管理對資源的存取權。 如需 RBAC 的詳細資訊，請參閱[什麼是 Azure 中的角色型存取控制（RBAC）？](../../role-based-access-control/overview.md)。
+    Azure 角色型存取控制（Azure RBAC）可為 Azure 提供更細緻的存取權管理。 使用 RBAC，您可以對使用者授權執行其執行工作所需的最少權限，以便管理對資源的存取權。 如需 RBAC 的詳細資訊，請參閱[什麼是 azure 中的 azure 角色型存取控制（AZURE RBAC）？](../../role-based-access-control/overview.md)。
 
 ## <a name="common-use-cases"></a>一般使用案例
 
@@ -146,7 +146,7 @@ Azure 檔案儲存體在將資料複製到 Azure 檔案共用時，支援保留�
 ## <a name="next-steps"></a>後續步驟
 如需有關透過 SMB 進行 Azure 檔案儲存體和以身分識別為基礎之驗證的詳細資訊，請參閱下列資源：
 
-- [規劃 Azure 檔案部署](storage-files-planning.md)
+- [規劃 Azure 檔案服務部署](storage-files-planning.md) (機器翻譯)
 - [針對 Azure 檔案共用啟用透過 SMB 的內部部署 Active Directory Domain Services 驗證](storage-files-identity-auth-active-directory-enable.md)
 - [啟用 Azure 檔案儲存體上的 Azure Active Directory Domain Services 驗證](storage-files-identity-auth-active-directory-domain-service-enable.md)
 - [常見問題集](storage-files-faq.md)

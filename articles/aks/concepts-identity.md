@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: b7739320fa23bf4469548f61486da1a5ee6110da
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 075837d0c382f5bc6f436a63dfe227c17f0a57a3
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507145"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87128653"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 的存取與身分識別選項
 
@@ -105,7 +105,7 @@ Azure RBAC 是建置於 [Azure Resource Manager](../azure-resource-manager/manag
 
 透過 Azure RBAC，您可以建立「角色定義」** 來概述要套用的權限。 接著，使用者或群組會透過特定*範圍*的*角色指派*（可能是個別資源、資源群組或訂用帳戶）指派此角色定義。
 
-如需詳細資訊，請參閱[何謂 Azure RBAC？][azure-rbac]
+如需詳細資訊，請參閱[什麼是 azure 角色型存取控制（AZURE RBAC）？][azure-rbac]
 
 完全操作 AKS 叢集所需的存取層級有兩種： 
 1. [存取 Azure 訂用帳戶中的 AKS 資源](#azure-rbac-to-authorize-access-to-the-aks-resource)。 此程式可讓您使用 AKS Api 來控制要調整或升級叢集的專案，以及提取您的 kubeconfig。

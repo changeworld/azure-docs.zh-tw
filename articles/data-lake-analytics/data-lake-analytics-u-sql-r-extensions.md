@@ -3,17 +3,15 @@ title: 在 Azure Data Lake Analytics 中使用 R 擴充 U-SQL 指令碼
 description: 瞭解如何使用 Azure Data Lake Analytics 在 U-SQL 腳本中執行 R 程式碼。 從檔案內嵌 R 程式碼內嵌或參考。
 services: data-lake-analytics
 ms.service: data-lake-analytics
-author: saveenr
-ms.author: saveenr
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 06/20/2017
-ms.openlocfilehash: 40e79202f68a377597fbe144843edbbf38fd77c7
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 1c054dcfe12ad1d2098fc5352183839704e39330
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110499"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87127395"
 ---
 # <a name="extend-u-sql-scripts-with-r-code-in-azure-data-lake-analytics"></a>在 Azure Data Lake Analytics 中使用 R 程式碼擴充 U-SQL 指令碼
 

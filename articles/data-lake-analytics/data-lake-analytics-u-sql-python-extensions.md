@@ -3,18 +3,16 @@ title: 在 Azure Data Lake Analytics 中使用 Python 擴充 U-SQL 指令碼
 description: 了解如何使用 Azure Data Lake Analytics 以 U-SQL 指令碼執行 Python 程式碼
 services: data-lake-analytics
 ms.service: data-lake-analytics
-author: saveenr
-ms.author: saveenr
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 06/20/2017
 ms.custom: tracking-python
-ms.openlocfilehash: 31a9a12d6c252c60f3000c2a15a5f382734597a2
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 89c974f6a2a6374370ff33940515b2a9f7904ce7
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110516"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87129758"
 ---
 # <a name="extend-u-sql-scripts-with-python-code-in-azure-data-lake-analytics"></a>在 Azure Data Lake Analytics 中使用 Python 程式碼擴充 U-SQL 指令碼
 
@@ -26,7 +24,7 @@ ms.locfileid: "86110516"
 * 在左窗格中，於 [入門]**** 中按一下 [範例指令碼]****
 * 按一下 [安裝 U-SQL 擴充程式]****，然後按一下 [確定]****
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 U-SQL 的 Python 擴充可讓開發人員進行大量的 Python 程式碼平行執行。 以下範例說明基本概念：
 

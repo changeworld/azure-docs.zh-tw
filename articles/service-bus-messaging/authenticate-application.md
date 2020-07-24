@@ -3,11 +3,12 @@ title: 驗證應用程式以存取 Azure 服務匯流排實體
 description: 本文提供的資訊說明如何使用 Azure Active Directory 來驗證應用程式，以存取 Azure 服務匯流排實體（佇列、主題等）
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 707fbec4317b4c34349e04895f9c6a0bdf4f1b47
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 371fa42420c2cc90a581b05ac47d7a65f28fc473
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341508"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87128483"
 ---
 # <a name="authenticate-and-authorize-an-application-with-azure-active-directory-to-access-azure-service-bus-entities"></a>使用 Azure Active Directory 來驗證和授權應用程式，以存取 Azure 服務匯流排實體
 Azure 服務匯流排支援使用 Azure Active Directory （Azure AD）來授權服務匯流排實體（佇列、主題、訂用帳戶或篩選器）的要求。 使用 Azure AD，您可以使用角色型存取控制（RBAC），將許可權授與安全性主體，這可能是使用者、群組或應用程式服務主體。 若要深入瞭解角色和角色指派，請參閱[瞭解不同的角色](../role-based-access-control/overview.md)。
@@ -50,7 +51,7 @@ Azure Active Directory (Azure AD) 會透過[角色型存取控制 (RBAC)](../rol
 > [!NOTE]
 > 請記住，RBAC 角色指派最多可能需要五分鐘的時間來傳播。 
 
-如需如何定義內建角色的詳細資訊，請參閱[瞭解角色定義](../role-based-access-control/role-definitions.md#management-and-data-operations)。 如需建立自訂 RBAC 角色的詳細資訊，請參閱[建立 Azure 角色型存取控制的自訂角色](../role-based-access-control/custom-roles.md)。
+如需如何定義內建角色的詳細資訊，請參閱[瞭解角色定義](../role-based-access-control/role-definitions.md#management-and-data-operations)。 如需建立 Azure 自訂角色的詳細資訊，請參閱[azure 自訂角色](../role-based-access-control/custom-roles.md)。
 
 
 ## <a name="assign-rbac-roles-using-the-azure-portal"></a>使用 Azure 入口網站指派 RBAC 角色  
@@ -64,7 +65,7 @@ Azure Active Directory (Azure AD) 會透過[角色型存取控制 (RBAC)](../rol
 1. 在 [ [Azure 入口網站](https://portal.azure.com/)中，流覽至您的服務匯流排命名空間。 選取左側功能表上的 **[存取控制（IAM）** ]，以顯示命名空間的存取控制設定。 如果您需要建立服務匯流排命名空間，請遵循這篇文章中的指示：[建立服務匯流排訊息命名空間](service-bus-create-namespace-portal.md)。
 
     ![選取左側功能表上的 [存取控制]](./media/authenticate-application/select-access-control-menu.png)
-1. 選取 [角色指派]  索引標籤，以查看角色指派的清單。 選取工具列上的 [**新增**] 按鈕，然後選取 [**新增角色指派**]。 
+1. 選取 [角色指派] 索引標籤，以查看角色指派的清單。 選取工具列上的 [**新增**] 按鈕，然後選取 [**新增角色指派**]。 
 
     ![工具列上的 [新增] 按鈕](./media/authenticate-application/role-assignments-add-button.png)
 1. 在 [**新增角色指派**] 頁面上，執行下列步驟：
@@ -149,7 +150,7 @@ Azure Active Directory (Azure AD) 會透過[角色型存取控制 (RBAC)](../rol
 
 
 ## <a name="next-steps"></a>後續步驟
-- 若要深入瞭解 RBAC，請參閱[什麼是角色型存取控制（RBAC）](../role-based-access-control/overview.md)？
+- 若要深入瞭解 RBAC，請參閱[什麼是 azure 角色型存取控制（AZURE RBAC）](../role-based-access-control/overview.md)？
 - 若要了解如何使用 Azure PowerShell、Azure CLI 或 REST API 來指派和管理 RBAC 角色指派，請參閱下列文章：
     - [使用 Azure PowerShell 管理角色型存取控制 (RBAC)](../role-based-access-control/role-assignments-powershell.md)  
     - [使用 Azure CLI 管理角色型存取控制 (RBAC)](../role-based-access-control/role-assignments-cli.md)

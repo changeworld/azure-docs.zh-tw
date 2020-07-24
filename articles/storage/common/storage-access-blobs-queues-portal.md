@@ -10,12 +10,12 @@ ms.date: 04/14/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 9b2de4f320801b20de5bcc9687a723dadb182ef8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: db65ba904cdce7bec83b851c6b50316c89fcedfd
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84807713"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87128721"
 ---
 # <a name="use-the-azure-portal-to-access-blob-or-queue-data"></a>使用 Azure 入口網站來存取 blob 或佇列資料
 
@@ -25,7 +25,7 @@ ms.locfileid: "84807713"
 
 ## <a name="permissions-needed-to-access-blob-or-queue-data"></a>存取 blob 或佇列資料所需的許可權
 
-根據您要如何授權存取 Azure 入口網站中的 blob 或佇列資料，您將需要特定的許可權。 在大部分情況下，會透過角色型存取控制（RBAC）來提供這些許可權。 如需 RBAC 的詳細資訊，請參閱[什麼是角色型存取控制（RBAC）？](../../role-based-access-control/overview.md)。
+根據您要如何授權存取 Azure 入口網站中的 blob 或佇列資料，您將需要特定的許可權。 在大部分情況下，會透過角色型存取控制（RBAC）來提供這些許可權。 如需 RBAC 的詳細資訊，請參閱[什麼是 Azure 角色型存取控制（AZURE RBAC）？](../../role-based-access-control/overview.md)。
 
 ### <a name="use-the-account-access-key"></a>使用帳戶存取金鑰
 
@@ -57,7 +57,7 @@ ms.locfileid: "84807713"
 - [儲存體佇列資料參與者](../../role-based-access-control/built-in-roles.md#storage-queue-data-contributor)：佇列的讀取/寫入/刪除許可權。
 - [儲存體佇列資料讀取器](../../role-based-access-control/built-in-roles.md#storage-queue-data-reader)：佇列的唯讀許可權。
 
-自訂角色可支援內建角色所提供之相同許可權的不同組合。 如需建立自訂 RBAC 角色的詳細資訊，請參閱[適用于 azure 資源的自訂角色](../../role-based-access-control/custom-roles.md)和[瞭解 azure 資源的角色定義](../../role-based-access-control/role-definitions.md)。
+自訂角色可支援內建角色所提供之相同許可權的不同組合。 如需建立 Azure 自訂角色的詳細資訊，請參閱[azure 自訂角色](../../role-based-access-control/custom-roles.md)和[瞭解 azure 資源的角色定義](../../role-based-access-control/role-definitions.md)。
 
 不支援列出具有傳統訂用帳戶管理員角色的佇列。 若要列出佇列，使用者必須已指派給他們 Azure Resource Manager 的**讀者**角色、**儲存體佇列資料讀取**者角色或**儲存體佇列資料參與者**角色。
 
@@ -107,7 +107,7 @@ ms.locfileid: "84807713"
 若要指定如何授權 blob 上傳作業，請遵循下列步驟：
 
 1. 在 [Azure 入口網站中，流覽至您想要上傳 blob 的容器。
-1. 選取 [上傳]**** 按鈕。
+1. 選取 [上傳] 按鈕。
 1. 展開 [ **advanced** ] 區段以顯示 blob 的 [advanced] 屬性。
 1. 在 [**驗證類型**] 欄位中，指出您是否要使用 Azure AD 帳戶或帳戶存取金鑰來授權上傳作業，如下圖所示：
 

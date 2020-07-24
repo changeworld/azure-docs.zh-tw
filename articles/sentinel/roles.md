@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/28/2020
 ms.author: yelevin
-ms.openlocfilehash: a43b2282974e30cfcf9fa6950e32008c06da98d2
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 9f9a84726b54569d612a94f183531567b2242ff5
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85956792"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87127157"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Azure Sentinel 中的許可權
 
@@ -85,7 +85,7 @@ Azure Sentinel 使用以 [角色為基礎的存取控制（RBAC）](../role-bas
 
 ## <a name="custom-roles-and-advanced-rbac"></a>自訂角色和 advanced RBAC
 
-- 除了使用內建 RBAC 角色以外，您還可以建立 Azure Sentinel 的自訂 RBAC 角色。 Azure Sentinel 的自訂 RBAC 角色的建立方式，與您建立其他[自訂 AZURE RBAC](../role-based-access-control/custom-roles-rest.md#create-a-custom-role)角色時所依據的 Azure Sentinel 和[Azure Log Analytics 資源](../role-based-access-control/resource-provider-operations.md#microsoftoperationalinsights)的[特定許可權](../role-based-access-control/resource-provider-operations.md#microsoftsecurityinsights)相同。
+- 除了使用內建 RBAC 角色以外，您還可以建立用於 Azure Sentinel 的 Azure 自訂角色。 根據 Azure Sentinel 和[Azure Log Analytics 資源](../role-based-access-control/resource-provider-operations.md#microsoftoperationalinsights)的[特定許可權](../role-based-access-control/resource-provider-operations.md#microsoftsecurityinsights)，建立適用于 Azure Sentinel 的 Azure 自訂角色與建立其他[自訂 Azure RBAC](../role-based-access-control/custom-roles-rest.md#create-a-custom-role)角色的方式相同。
 
 - 您可以在 Azure Sentinel 工作區中的資料上使用 Log Analytics 先進角色型存取控制。 這包括以資料類型為基礎的 RBAC 和以資源為中心的 RBAC。 如需 Log Analytics 角色的詳細資訊，請參閱 [管理 Azure 監視器中的記錄資料和工作區](../azure-monitor/platform/manage-access.md#manage-access-using-workspace-permissions)。
 

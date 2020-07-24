@@ -3,14 +3,16 @@ title: 建立 Azure 應用程式供應項目 - Microsoft 商業 Marketplace
 description: 了解在合作夥伴中心的商業 Marketplace 入口網站中建立新 Azure 應用程式供應項目的步驟和考量。 您可以在 Azure Marketplace 中或透過雲端解決方案提供者 (CSP) 計畫，列出或銷售您的 Azure 應用程式供應項目。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 06/17/2020
-ms.openlocfilehash: c5371b2d9379ca861addac07de50d7cdf9c34c8b
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.topic: article
+author: qianw211
+ms.author: dsindona
+ms.date: 07/14/2020
+ms.openlocfilehash: 6789e32cbbb1257a668e7be87a8b73a0511b6fb0
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121960"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87127429"
 ---
 # <a name="create-an-azure-application-offer"></a>建立 Azure 應用程式供應項目
 
@@ -65,7 +67,7 @@ ms.locfileid: "86121960"
 
 選擇下列其中一種指令碼環境，或兩者均使用，以協助管理 Azure 應用程式：
 
-* [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)
+* [Azure PowerShell](https://docs.microsoft.com/powershell/azure/)
 * [Azure CLI](https://docs.microsoft.com/cli/azure)
 
 建議您將下列工具新增至開發環境：
@@ -180,13 +182,13 @@ Azure 應用程式方法有兩種：解決方案範本和受控應用程式。
 #### <a name="call-out-descriptions"></a>向外撥說明
 
 1. 標誌
-2. 類別
+2. Categories
 3. 支援位址（連結）
 4. 使用規定
 5. 隱私權原則位址（連結）
 6. 供應項目名稱
-7. 摘要
-8. 描述
+7. 總結
+8. 說明
 9. 螢幕擷取畫面/影片
 
 <br>以下是如何在 Azure 入口網站中顯示供應專案資訊的範例：
@@ -195,8 +197,8 @@ Azure 應用程式方法有兩種：解決方案範本和受控應用程式。
 
 #### <a name="call-out-descriptions"></a>向外撥說明
 
-1. Title
-2. 描述
+1. 標題
+2. 說明
 3. 實用的連結
 4. 螢幕擷取畫面
 
@@ -308,7 +310,7 @@ Azure 應用程式方法有兩種：解決方案範本和受控應用程式。
 
 ## <a name="plan-overview"></a>方案概觀
 
-此索引標籤可讓您在相同供應項目中提供不同的方案選項。 這些方案 (在 Cloud Partner 入口網站中稱為 SKU) 在方案類型 (解決方案範本與受控應用程式)、營收或對象方面可能有所不同。  請至少設定一個方案，才能在 Marketplace 中列出您的供應項目。
+此索引標籤可讓您在相同供應項目中提供不同的方案選項。 這些方案（先前稱為 Sku）在計畫類型（解決方案範本與受控應用程式）、營收或物件方面可能有所不同。 請至少設定一個方案，才能在 Marketplace 中列出您的供應項目。
 
 建立之後，您將會在此索引標籤上看到您的方案名稱、識別碼、方案類型、可用性 (公用或私人)、目前發佈狀態，以及任何可用的動作。
 
@@ -510,7 +512,7 @@ Azure Government 服務會處理受限於特定政府法規和需求的資料。
 
 **授權** – 針對您要對其授與權限的使用者、群組或應用程式，將其 Azure Active Directory 物件識別碼新增至受控資源群組。 依使用者的主體識別碼 (可在 [Azure 入口網站上的 Azure Active Directory 使用者刀鋒視窗](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers)中找到) 識別使用者。
 
-針對每個主體，從清單中選取其中一個 Azure AD 內建角色 ([擁有者] 或 [參與者])。 您選取的角色將會描述主體對客戶訂用帳戶中的資源所擁有的權限。 如需詳細資訊，請參閱 [Azure 資源的內建角色](../../role-based-access-control/built-in-roles.md)。 如需有關角色型存取控制 (RBAC) 的詳細資訊，請參閱[在 Azure 入口網站中開始使用 RBAC](../../role-based-access-control/overview.md)。
+針對每個主體，從清單中選取其中一個 Azure AD 內建角色 ([擁有者] 或 [參與者])。 您選取的角色將會描述主體對客戶訂用帳戶中的資源所擁有的權限。 如需詳細資訊，請參閱[Azure 內建角色](../../role-based-access-control/built-in-roles.md)。 如需有關角色型存取控制 (RBAC) 的詳細資訊，請參閱[在 Azure 入口網站中開始使用 RBAC](../../role-based-access-control/overview.md)。
 
 >[!Note]
 >雖然您最多可以在每個雲端新增 100 個授權，但建立 Active Directory 使用者群組並在「主體識別碼」中指定其識別碼通常會比較容易。 這可讓您在部署方案之後，將更多使用者新增至管理群組，並減少更新方案的需求，僅新增更多授權。
