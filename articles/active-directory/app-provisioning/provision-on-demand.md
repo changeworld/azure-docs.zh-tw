@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/23/2020
 ms.author: mimart
 ms.reviewer: arvinh
-ms.openlocfilehash: 78a56b6a848139c47d7934a47decb126afe00b7a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7799e873afb117481cebafd982df59a3267f4405
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85297523"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87051560"
 ---
 # <a name="on-demand-provisioning"></a>隨選布建
 隨選布建可讓您在幾秒內將使用者布建到應用程式中。 您可以使用此功能快速針對設定問題進行疑難排解、驗證您已定義的運算式、測試範圍篩選器，以及其他更多功能。 
@@ -31,13 +31,15 @@ ms.locfileid: "85297523"
 6. 依名字、姓氏、顯示名稱、使用者主體名稱或電子郵件來搜尋使用者。
 7. 選取頁面底部的 [布建]。
 
+:::image type="content" source="media/provision-on-demand/on-demand-provision-user.jpg" alt-text="隨選布建使用者。":::
+
 ## <a name="understanding-the-provisioning-steps"></a>瞭解布建步驟
 隨選布建功能會嘗試顯示布建服務布建使用者時所採取的步驟。 布建使用者通常有五個步驟，而且下列一個或多個步驟將會顯示在隨選布建體驗中。
 
 ### <a name="step-1-test-connection"></a>步驟1：測試連接
 布建服務會嘗試對「測試使用者」提出要求，以授權存取目標應用程式。 布建服務預期會有回應，指出它已獲授權可以繼續布建步驟。 只有當步驟失敗時，才會顯示此步驟。 當步驟成功時，它不會顯示在隨選布建體驗中。 
 
-**疑難排解秘訣**
+**疑難排解提示**
 * 請確定您已為目標應用程式提供有效的認證，例如秘密權杖和租使用者 URL。 所需的認證會因應用程式而異。 您可以在這裡找到詳細的設定教學[課程](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)。 
 * 確定目標應用程式支援篩選 [屬性對應] 分頁中所定義的比對屬性。 您可能需要查看應用程式開發人員所提供的 API 檔，以瞭解它們所支援的篩選器。  
 * 針對 SCIM 應用程式，您可以使用 postman 之類的工具，以確保應用程式會回應 Azure AD 布建服務所預期的授權要求。 您可以在[這裡](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#request-3)找到範例要求。
@@ -49,7 +51,7 @@ ms.locfileid: "85297523"
 
 [View details] 區段會顯示從來源系統匯入之使用者的屬性（例如 Azure AD）。
 
-**疑難排解秘訣**
+**疑難排解提示**
 * 當來源系統中的使用者物件上遺漏相符的屬性時，匯入使用者可能會失敗。 您可以使用相符屬性的值來更新使用者物件，或變更布建設定中的比對屬性，以解決此失敗。  
 * 如果匯入的清單中遺漏您預期的屬性，請確定該屬性在來源系統中的使用者物件上具有值。 布建服務目前不支援提供 null 屬性。 
 * 確定您的 [布建設定屬性對應] 頁面包含您預期的屬性。 
@@ -66,7 +68,7 @@ ms.locfileid: "85297523"
 * [**使用者具有必要角色**] 表示使用者擁有要布建到應用程式的必要角色。 
 * 如果您已定義應用程式的範圍篩選器，也會顯示**範圍篩選器**。 此篩選器會以下列格式顯示： {範圍篩選標題} {範圍篩選屬性} {範圍篩選運算子} {範圍篩選值}。 
 
-**疑難排解秘訣**
+**疑難排解提示**
 * 請確定您已定義有效的範圍角色。 例如，請避免使用「[大於](https://docs.microsoft.com/azure/active-directory/app-provisioning/define-conditional-rules-for-provisioning-user-accounts#create-a-scoping-filter)」運算子搭配非整數值。 
 * 如果使用者沒有必要的角色，請參閱[這裡](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-config-problem-no-users-provisioned#provisioning-users-assigned-to-the-default-access-role)所述的秘訣。 
 
@@ -88,11 +90,13 @@ ms.locfileid: "85297523"
 ### <a name="step-5-perform-action"></a>步驟5：執行動作
 最後，布建服務會採取動作，例如建立、更新、刪除或略過使用者。 
 
+:::image type="content" source="media/provision-on-demand/success-on-demand-provision.jpg" alt-text="已成功布建使用者。":::
+
 **檢視詳細資料**
 
 [View details] 區段會顯示已在目標應用程式中修改的屬性。 這代表布建服務活動的最終輸出，以及已匯出的屬性。 如果此步驟失敗，顯示的屬性代表布建服務嘗試修改的屬性。  
 
-**疑難排解秘訣**
+**疑難排解提示**
 * 匯出變更的失敗可能會有很大的差異。 如需常見的失敗，請參閱布建記錄[檔](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs#error-codes)。
 
 
@@ -102,11 +106,11 @@ ms.locfileid: "85297523"
 **隨選布建需要多久的時間？** 通常不到30秒的時間。 
 
 ## <a name="known-limitations"></a>已知限制
-今天有幾個已知的限制。 請張貼在[UserVoice](https://aka.ms/appprovisioningfeaturerequest)上，讓我們能夠更妥善設定下一個改進功能的優先順序。 請注意，這些限制適用于隨選布建功能。 如需有關應用程式是否支援布建群組、刪除等的詳細資訊，請參閱應用程式教學課程。 
+今天有幾個已知的限制。 請在[使用者心聲](https://aka.ms/appprovisioningfeaturerequest)張貼，讓我們能夠更妥善設定下一個改進功能的優先順序。 請注意，這些限制適用于隨選布建功能。 如需有關應用程式是否支援布建群組、刪除等的詳細資訊，請參閱應用程式教學課程。 
 
 * 應用程式 Workday、AWS 和 SuccessFactors 不支援隨選布建。
 * 不支援隨選布建群組和角色。
-* 不支援停用或刪除使用者和群組。
+* 隨選布建支援停用已從應用程式取消指派的使用者，但不支援停用或刪除已從 Azure Active Directory 停用或刪除的使用者（搜尋使用者時不會出現這些使用者）。
 
 ## <a name="next-steps"></a>後續步驟
 

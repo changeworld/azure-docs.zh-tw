@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: ca19ccb925721126f7e7d8495addd0794766f376
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 94955e27dcadb3acbea03926d6d1ed73e9c5c9ed
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202871"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87051344"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>開始在 Azure Active Directory 中使用憑證式驗證
 
@@ -37,7 +37,7 @@ ms.locfileid: "86202871"
 
 若要設定憑證式驗證，必須符合下列陳述：
 
-- 以憑證為基礎的驗證 (CBA) 僅支援瀏覽器應用程式的同盟環境、使用新式驗證 (ADAL) 或 MSAL 程式庫的原生用戶端。 唯一的例外狀況是適用於 Exchange Online (EXO) 的 Exchange Active Sync (EAS)，可以用於同盟和受控兩種帳戶。
+- 僅針對瀏覽器應用程式、使用新式驗證（ADAL）的原生用戶端，或 MSAL 程式庫的同盟環境，才支援以憑證為基礎的驗證（CBA）。 唯一的例外狀況是適用於 Exchange Online (EXO) 的 Exchange Active Sync (EAS)，可以用於同盟和受控兩種帳戶。
 - 務必要在 Azure Active Directory 中設定根憑證授權單位和任何中繼憑證授權單位。
 - 每個憑證授權單位都必須有一份可透過網際網路對應 URL 來參考的憑證撤銷清單 (CRL)。
 - 您至少必須在 Azure Active Directory 中設定一個憑證授權單位。 您可以在[設定憑證授權單位](#step-2-configure-the-certificate-authorities)一節中找到相關步驟。
@@ -93,7 +93,7 @@ ms.locfileid: "86202871"
     }
 ```
 
-設定時，您可以使用 [Azure Active Directory PowerShell 第 2 版](/powershell/azure/install-adv2?view=azureadps-2.0)：
+設定時，您可以使用 [Azure Active Directory PowerShell 第 2 版](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)：
 
 1. 以系統管理員權限啟動 Windows PowerShell。
 2. 安裝 Azure AD 模組 [2.0.0.33](https://www.powershellgallery.com/packages/AzureAD/2.0.0.33) 版或更新版本。
@@ -122,7 +122,7 @@ ms.locfileid: "86202871"
 
 ### <a name="add"></a>新增
 
-若要建立受信任的憑證授權單位，使用 [New-AzureADTrustedCertificateAuthority](/azurepowershell/module/azuread/new-azureadtrustedcertificateauthority?view=azureadps-2.0) Cmdlet 並將 **crlDistributionPoint** 屬性設為正確值：
+若要建立受信任的憑證授權單位，使用 [New-AzureADTrustedCertificateAuthority](/powershell/module/azuread/new-azureadtrustedcertificateauthority?view=azureadps-2.0) Cmdlet 並將 **crlDistributionPoint** 屬性設為正確值：
 
 ```azurepowershell
     $cert=Get-Content -Encoding byte "[LOCATION OF THE CER FILE]"

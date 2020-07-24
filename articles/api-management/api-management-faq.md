@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 72f9381a320dc0fb946dbf6f48c5bcab5390aed5
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: c49e92cda89cfc1d72a0550c2a53430f3e6f2844
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86243574"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050336"
 ---
 # <a name="azure-api-management-faqs"></a>Azure API 管理常見問題集
 得到 Azure API 管理常見問題、模式和最佳作法的答案。
@@ -77,7 +77,7 @@ ms.locfileid: "86243574"
 2. 移至包含您要更新之 API 管理執行個體的資源群組。
 3. 在 [API 管理] 中，將 [ **Api 管理] 服務參與者**角色指派給使用者。
 
-新增的參與者現在即可使用 Azure PowerShell [Cmdlet](/powershell/azure/overview)。 以系統管理員身分登入的步驟如下︰
+新增的參與者現在即可使用 Azure PowerShell [Cmdlet](/powershell/azure/)。 以系統管理員身分登入的步驟如下︰
 
 1. 使用 `Connect-AzAccount` Cmdlet 進行登入。
 2. 使用 `Set-AzContext -SubscriptionID <subscriptionGUID>` 將內容設定為具有服務的訂用帳戶。
@@ -109,7 +109,7 @@ API 管理會在部署到多個地理位置時，使用[效能流量路由方法
 是。 這可以透過 PowerShell 或直接提交至 API 來完成。 這將會停用信任鏈結驗證，在從 API 管理對後端服務進行通訊時，還可讓您使用自我簽署或私人簽署的憑證。
 
 #### <a name="powershell-method"></a>Powershell 方法 ####
-[`New-AzApiManagementBackend`](/powershell/module/az.apimanagement/new-azapimanagementbackend)針對新的後端) 使用 ([`Set-AzApiManagementBackend`](/powershell/module/az.apimanagement/set-azapimanagementbackend) ，或針對現有的後端) PowerShell Cmdlet 使用 (，並將 `-SkipCertificateChainValidation` 參數設定為 `True` 。
+使用 [`New-AzApiManagementBackend`](/powershell/module/az.apimanagement/new-azapimanagementbackend) （適用于新的後端）或 [`Set-AzApiManagementBackend`](/powershell/module/az.apimanagement/set-azapimanagementbackend) （適用于現有的後端） PowerShell Cmdlet，並將 `-SkipCertificateChainValidation` 參數設定為 `True` 。
 
 ```powershell
 $context = New-AzApiManagementContext -resourcegroup 'ContosoResourceGroup' -servicename 'ContosoAPIMService'

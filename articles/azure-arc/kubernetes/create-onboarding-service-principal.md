@@ -8,11 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: '建立已啟用 Azure Arc 的上線服務主體 '
 keywords: Kubernetes, Arc, Azure, 容器
-ms.openlocfilehash: 3c95c6bb85c7c1bc097b7751a560a658863c0afd
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 02689dba32c8cc91e4a4a4de4dee98bc990b4dd6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83725596"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050077"
 ---
 # <a name="create-an-azure-arc-enabled-onboarding-service-principal-preview"></a>建立已啟用 Azure Arc 的上線服務主體 (預覽)
 
@@ -44,7 +45,7 @@ az ad sp create-for-RBAC --skip-assignment --name "https://azure-arc-for-k8s-onb
 
 ## <a name="assign-permissions"></a>指派權限
 
-建立新的服務主體之後，將「適用於 Kubernetes 上線的 Azure Arc」角色指派給新建立的主體。 這是權限有限的內建 Azure 角色，只允許該主體向 Azure 註冊叢集。 該主體無法更新、刪除或修改訂用帳戶內的任何其他叢集或資源。
+建立新的服務主體之後，請將 "Kubernetes Cluster-Azure Arc 上線" 角色指派給新建立的主體。 這是權限有限的內建 Azure 角色，只允許該主體向 Azure 註冊叢集。 該主體無法更新、刪除或修改訂用帳戶內的任何其他叢集或資源。
 
 透過有限的功能，客戶可以輕鬆地重複使用此主體來將多個叢集上線。
 

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: how-to
 ms.date: 07/08/2020
 ms.custom: seodec18, tracking-python
-ms.openlocfilehash: c87812e665617f3ccfe48db3a0cca2ceac67f0bc
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 0f3682338c9373f3ba30c8b32ea5cf4132c18949
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147433"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87048269"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>設定及使用計算目標來將模型定型 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -98,12 +98,11 @@ Azure Machine Learning 計算叢集是受控計算基礎結構，可讓您輕鬆
 
 您可以使用 Azure Machine Learning Compute 在雲端中的 CPU 或 GPU 計算節點叢集散發定型程序。 如需包含 GPU 的 VM 大小有關的詳細資訊，請參閱 [GPU 最佳化虛擬機器大小](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu)。 
 
-Azure Machine Learning Compute 有預設限制，例如可配置的核心數目。 如需詳細資訊，請參閱[管理和要求 Azure 資源的配額](https://docs.microsoft.com/azure/machine-learning/how-to-manage-quotas)。
+Azure Machine Learning Compute 有預設限制，例如可配置的核心數目。 如需詳細資訊，請參閱[管理和要求 Azure 資源的配額](/how-to-manage-quotas.md)。
 
-您也可以選擇使用低優先順序的 VM 來執行部分或所有的工作負載。 這些 VM 沒有保證可用性，可能會在使用時被佔用。 被佔用的作業會重新開機，不會繼續。  相較於一般 VM，低優先順序 VM 有費率折扣，請參閱[計畫和管理成本](https://docs.microsoft.com/azure/machine-learning/concept-plan-manage-cost)。
 
 > [!TIP]
-> 只要有足夠的配額可滿足所需的核心數目，叢集一般可以擴大為 100 個節點。 例如，叢集預設會設定為已在叢集節點之間啟用節點間通訊，以便支援 MPI 作業。 不過，您也可以將叢集擴大為數千個節點，只要[提出支援票證](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)，並要求將訂用帳戶 (或工作區) 列入白名單，或要求特定叢集以停用節點間通訊即可。 
+> 只要有足夠的配額可滿足所需的核心數目，叢集一般可以擴大為 100 個節點。 例如，叢集預設會設定為已在叢集節點之間啟用節點間通訊，以便支援 MPI 作業。 不過，您可以直接[提出支援票證](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)，並要求允許列出您的訂用帳戶或工作區，或用來停用節點間通訊的特定叢集，將叢集調整為數千個的節點。 
 
 Azure Machine Learning Compute 可以跨回合重複使用。 計算可與工作區中的其他使用者共用，並在回合之間保留，且會根據所提交的回合數目以及叢集上設定的 max_nodes 自動擴大或縮小節點。 min_nodes 設定可以控制可用的節點數目下限。
 
@@ -118,14 +117,38 @@ Azure Machine Learning Compute 可以跨回合重複使用。 計算可與工作
 
    建立 Azure Machine Learning Compute 時，您也可以設定多個進階屬性。 這些屬性可讓您建立固定大小的持續性叢集，也可以在您訂用帳戶中現有的 Azure 虛擬網路內建立。  如需詳細資料，請參閱 [AmlCompute 類別](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py
     )。
-    
-   或者，您也可以在 [Azure Machine Learning Studio](#portal-create) 中建立並連結持續性 Azure Machine Learning Compute 資源。
 
+    或者，您也可以在 [Azure Machine Learning Studio](#portal-create) 中建立並連結持續性 Azure Machine Learning Compute 資源。
+
+   
 1. **設定**：為持續性計算目標建立回合組態。
 
    [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=run_amlcompute)]
 
 現在您已連結計算並設定執行，下一步是[提交定型回合](#submit)。
+
+ ### <a name="lower-your-compute-cluster-cost"></a><a id="low-pri-vm"></a>降低您的計算叢集成本
+
+您也可以選擇使用[低優先順序的 vm](concept-plan-manage-cost.md#low-pri-vm)來執行部分或所有的工作負載。 這些 VM 沒有保證可用性，可能會在使用時被佔用。 被佔用的作業會重新開機，不會繼續。 
+
+使用下列任何一種方式來指定低優先順序的 VM：
+    
+* 在 studio 中，當您建立 VM 時，請選擇 [**低優先順序**]。
+    
+* 使用 Python SDK，在您的布建 `vm_priority` 配置中設定屬性。  
+    
+    ```python
+    compute_config = AmlCompute.provisioning_configuration(vm_size='STANDARD_D2_V2',
+                                                                vm_priority='lowpriority',
+                                                                max_nodes=4)
+    ```
+    
+* 使用 CLI，設定 `vm-priority` ：
+    
+    ```azurecli-interactive
+    az ml computetarget create amlcompute --name lowpriocluster --vm-size Standard_NC6 --max-nodes 5 --vm-priority lowpriority
+    ```
+
 
 
 ### <a name="azure-machine-learning-compute-instance"></a><a id="instance"></a>Azure Machine Learning 計算執行個體
@@ -138,7 +161,7 @@ Azure Machine Learning Compute 可以跨回合重複使用。 計算可與工作
 
 1. **建立並連結**： 
     
-    [！筆記本-python [] (~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-computeinstance/train-on-computeinstance.ipynb？ name = create_instance) ]
+    [！筆記本-python [] （~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-computeinstance/train-on-computeinstance.ipynb？ name = create_instance）]
 
 1. **設定**：建立執行設定。
     
@@ -169,7 +192,7 @@ Azure Machine Learning 也支援提供您自己的計算資源，並將其附加
 
 您可以使用系統建立的 Conda 環境、現有的 Python 環境或 Docker 容器。 若要在 Docker 容器上執行，您必須在虛擬機器上執行的 Docker 引擎。 您想要比本機電腦的更有彈性、以雲端為基礎的開發/測試環境時，這項功能特別有用。
 
-使用 Azure 資料科學虛擬機器 (DSVM) 作為此案例選擇的 Azure VM。 此虛擬機器是 Azure 中預先設定的資料科學和 AI 開發環境。 VM 會針對整個生命週期的機器學習開發，提供精心選擇的工具和架構。 如需有關如何使用 DSVM 搭配 Azure Machine Learning 的詳細資訊，請參閱[設定開發環境](https://docs.microsoft.com/azure/machine-learning/how-to-configure-environment#dsvm)。
+使用 Azure 資料科學虛擬機器（DSVM）作為此案例的選擇 Azure VM。 此虛擬機器是 Azure 中預先設定的資料科學和 AI 開發環境。 VM 會針對整個生命週期的機器學習開發，提供精心選擇的工具和架構。 如需有關如何使用 DSVM 搭配 Azure Machine Learning 的詳細資訊，請參閱[設定開發環境](https://docs.microsoft.com/azure/machine-learning/how-to-configure-environment#dsvm)。
 
 1. **建立**：先建立 DSVM，才能使用它定型模型。 若要建立此資源，請參閱[佈建適用於 Linux (Ubuntu) 的資料科學虛擬機器](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro)。
 

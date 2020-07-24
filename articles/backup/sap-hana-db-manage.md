@@ -3,17 +3,18 @@ title: 在 Azure VM 上管理備份的 SAP HANA 資料庫
 description: 在本文中，可了解在 Azure 虛擬機器上執行的 SAP HANA 資料庫的一般管理和監視工作。
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: e3705750e32b8b34ed397b8f68f22b0728129266
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 98dd67668d1b88a25dfa3b91174cd96730c435e1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701116"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87049465"
 ---
 # <a name="manage-and-monitor-backed-up-sap-hana-databases"></a>管理和監視已備份的 SAP Hana 資料庫
 
-本文會介紹 SAP HANA 資料庫的常見管理和監視工作，包括在 Azure 虛擬機器 (VM) 上執行的資料庫，以及透過 [Azure 備份](https://docs.microsoft.com/azure/backup/backup-overview)服務備份至 Azure 備份復原服務保存庫的資料庫。 您會瞭解到如何監視作業和警示、觸發隨選備份、編輯原則、停止和繼續資料庫保護，以及從備份取消註冊 VM。
+本文會介紹 SAP HANA 資料庫的常見管理和監視工作，包括在 Azure 虛擬機器 (VM) 上執行的資料庫，以及透過 [Azure 備份](./backup-overview.md)服務備份至 Azure 備份復原服務保存庫的資料庫。 您會瞭解到如何監視作業和警示、觸發隨選備份、編輯原則、停止和繼續資料庫保護，以及從備份取消註冊 VM。
 
-如果您尚未為 SAP HANA 資料庫設定備份，請參閱[在 Azure Vm 上備份 SAP HANA 資料庫](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database)。
+如果您尚未為 SAP HANA 資料庫設定備份，請參閱[在 Azure Vm 上備份 SAP HANA 資料庫](./backup-azure-sap-hana-database.md)。
 
 ## <a name="monitor-manual-backup-jobs-in-the-portal"></a>在入口網站中監視手動備份作業
 
@@ -25,7 +26,7 @@ Azure 備份會在 Azure 入口網站的 [備份作業] 區段中顯示所有手
 
 ![備份作業清單](./media/sap-hana-db-manage/backup-jobs-list.png)
 
-若要深入瞭解監視，請參閱 [Azure 入口網站中的監視](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-built-in-monitor)和[使用 Azure 監視器進行監視](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-use-azuremonitor)。
+若要深入瞭解監視，請參閱 [Azure 入口網站中的監視](./backup-azure-monitoring-built-in-monitor.md)和[使用 Azure 監視器進行監視](./backup-azure-monitoring-use-azuremonitor.md)。
 
 ## <a name="view-backup-alerts"></a>檢視備份警示
 
@@ -36,7 +37,7 @@ Azure 備份會在 Azure 入口網站的 [備份作業] 區段中顯示所有手
 
   ![保存庫儀表板上的備份警示](./media/sap-hana-db-manage/backup-alerts-dashboard.png)
 
-* 您能看到警示：
+* 您將能夠看到警示：
 
   ![備份警示清單](./media/sap-hana-db-manage/backup-alerts-list.png)
 
@@ -50,7 +51,7 @@ Azure 備份會在 Azure 入口網站的 [備份作業] 區段中顯示所有手
 * 在資料庫層級依錯誤碼合併的警示。
 * 在資料庫第一次備份失敗時才會傳送的警示。
 
-若要深入瞭解監視，請參閱 [Azure 入口網站中的監視](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-built-in-monitor)和[使用 Azure 監視器進行監視](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-use-azuremonitor)。
+若要深入瞭解監視，請參閱 [Azure 入口網站中的監視](./backup-azure-monitoring-built-in-monitor.md)和[使用 Azure 監視器進行監視](./backup-azure-monitoring-use-azuremonitor.md)。
 
 ## <a name="management-operations"></a>管理作業
 
@@ -61,8 +62,8 @@ Azure 備份利用其支援的豐富管理作業，輕鬆管理已備份的 SAP 
 備份會根據原則排程執行。 您可以視需要執行備份，如下所示：
 
 1. 在保存庫功能表中，按一下 [備份項目]。
-2. 在 [備份項目] 中，選取執行 SAP HANA 資料庫的 VM，然後按一下 [立即備份]。
-3. 在 [立即備份] 中，使用行事曆控制項來選取復原點應該保留的最後一天。 然後按一下 [確定] 。
+2. 在 [備份項目] 中，選取執行 SAP Hana 資料庫的 VM，然後按一下 [立即備份]。
+3. 在 [**立即備份**] 中，選擇您想要執行的備份類型。 然後按一下 [確定] 。 系統會根據與此備份專案相關聯的原則來保留此備份。
 4. 監視入口網站通知。 您可以在保存庫儀表板中監視作業進度 > [備份作業] > [進行中]。 根據您的資料庫大小，建立初始備份可能需要花一點時間。
 
 ### <a name="hana-native-client-integration"></a>HANA 原生用戶端整合
@@ -73,7 +74,7 @@ Azure 備份利用其支援的豐富管理作業，輕鬆管理已備份的 SAP 
 
 ![上次備份執行](./media/sap-hana-db-manage/last-backups.png)
 
-您也可以從 [[備份作業]](https://docs.microsoft.com/azure/backup/sap-hana-db-manage#monitor-manual-backup-jobs-in-the-portal) 頁面**監視這些備份**。
+您也可以從 [[備份作業]](#monitor-manual-backup-jobs-in-the-portal) 頁面**監視這些備份**。
 
 這些隨選備份也會顯示在還原點的清單中，以供還原。
 
@@ -81,7 +82,7 @@ Azure 備份利用其支援的豐富管理作業，輕鬆管理已備份的 SAP 
 
 #### <a name="restore"></a>還原
 
-從 HANA 原生用戶端 (使用 **Backint**) 觸發的還原，可以從 [[備份作業]](https://docs.microsoft.com/azure/backup/sap-hana-db-manage#monitor-manual-backup-jobs-in-the-portal) 頁面**監視**。
+從 HANA 原生用戶端 (使用 **Backint**) 觸發的還原，可以從 [[備份作業]](#monitor-manual-backup-jobs-in-the-portal) 頁面**監視**。
 
 ### <a name="run-sap-hana-native-client-backup-on-a-database-with-azure-backup-enabled"></a>在已啟用 Azure 備份的資料庫上執行 SAP HANA 原生用戶端備份
 
@@ -115,7 +116,7 @@ Azure 備份利用其支援的豐富管理作業，輕鬆管理已備份的 SAP 
 
   ![選取現有的備份原則](./media/sap-hana-db-manage/existing-backup-policy.png)
 
-* 變更原則，並從清單中選擇。 視需要[建立新的備份原則](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database#create-a-backup-policy)。
+* 變更原則，並從清單中選擇。 視需要[建立新的備份原則](./backup-azure-sap-hana-database.md#create-a-backup-policy)。
 
   ![從下拉式清單中選擇原則](./media/sap-hana-db-manage/choose-backup-policy.png)
 
@@ -197,7 +198,7 @@ Azure 備份利用其支援的豐富管理作業，輕鬆管理已備份的 SAP 
 
 ### <a name="resume-protection-for-an-sap-hana-database"></a>繼續 SAP HANA 資料庫的保護
 
-您停止保護 SAP HANA 資料庫時，如果您選取 [保留備份資料] 選項，您可以在稍後恢復保護。 如果您沒有保留備份的資料，就無法恢復保護。
+您停止保護 SAP HANA 資料庫時，如果您選取 [保留備份資料] 選項，您可以在稍後恢復保護。 如果您沒有保留已備份的資料，就無法繼續保護。
 
 若要繼續 SAP HANA 資料庫的保護：
 
@@ -213,7 +214,7 @@ Azure 備份利用其支援的豐富管理作業，輕鬆管理已備份的 SAP 
 
 ### <a name="upgrading-from-sdc-to-mdc-without-a-sid-change"></a>在沒有 SID 變更的情況下從 SDC 升級至 MDC
 
-瞭解如何繼續備份[從 SDC 升級至 MDC 之後 SID 並未變更](backup-azure-sap-hana-database-troubleshoot.md#sdc-to-mdc-upgrade-with-no-change-in-sid)的 SAP HANA 資料庫。
+瞭解如何在[從 SDC 升級至 MDC 之後](backup-azure-sap-hana-database-troubleshoot.md#sdc-to-mdc-upgrade-with-no-change-in-sid)，繼續備份其 SID 尚未變更的 SAP Hana 資料庫。
 
 ### <a name="unregister-an-sap-hana-instance"></a>取消註冊 SAP HANA 執行個體
 
@@ -241,4 +242,4 @@ Azure 備份利用其支援的豐富管理作業，輕鬆管理已備份的 SAP 
 
 ## <a name="next-steps"></a>後續步驟
 
-* 瞭解如何[對 SAP HANA 資料庫備份時的常見問題進行疑難排解](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database-troubleshoot)。
+* 瞭解如何[對 SAP HANA 資料庫備份時的常見問題進行疑難排解](./backup-azure-sap-hana-database-troubleshoot.md)。

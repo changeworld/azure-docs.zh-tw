@@ -4,12 +4,13 @@ description: 瞭解如何在 Azure Kubernetes Service （AKS）上使用 Azure �
 services: container-service
 ms.topic: article
 ms.date: 07/06/2020
-ms.openlocfilehash: 8a5107b9ba3c05c92a06753b2cb30bcfc2896d91
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+author: jluk
+ms.openlocfilehash: 8be0b05c260037bbe8afc92726d81668e1391d4a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86090881"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050463"
 ---
 # <a name="secure-pods-with-azure-policy-preview"></a>使用 Azure 原則保護 pod （預覽）
 
@@ -63,7 +64,7 @@ ms.locfileid: "86090881"
 
 安裝 Azure 原則附加元件之後，預設不會套用任何原則。
 
-有十四個（14）個內建的個別 Azure 原則和兩個（2）個內建計畫，專門保護 AKS 叢集中的 pod。
+有11（11）個內建的個別 Azure 原則和兩個（2）個內建計畫，專門保護 AKS 叢集中的 pod。
 每個原則都可以自訂效果。 [這裡列出 AKS 原則及其支援的效果][policy-samples]的完整清單。 閱讀更多[Azure 原則效果](../governance/policy/concepts/effects.md)的相關資訊。
 
 Azure 原則可以套用於管理群組、訂用帳戶或資源群組層級。 在資源群組層級指派原則時，請確定已在原則的範圍內選取目標 AKS 叢集的資源群組。 已安裝 Azure 原則附加元件之已指派範圍中的每個叢集都會在原則的範圍內。
@@ -78,24 +79,41 @@ Azure 原則 for Kubernetes 提供兩個內建的計畫，可保護 pod、[基�
 
 這兩種內建的計畫都是從[Kubernetes 的 pod 安全性原則](https://github.com/kubernetes/website/blob/master/content/en/examples/policy/baseline-psp.yaml)中所使用的定義來建立。
 
-|[Pod 安全性原則控制](https://kubernetes.io/docs/concepts/policy/pod-security-policy/#what-is-a-pod-security-policy)| Azure 原則定義連結| 基準計畫 | 受限制的方案 |
+|[Pod 安全性原則控制](https://kubernetes.io/docs/concepts/policy/pod-security-policy/#what-is-a-pod-security-policy)| Azure 原則定義連結| [基準計畫](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicySetDefinitions%2Fa8640138-9b0a-4a28-b8cb-1666c838647d) | [受限制的方案](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicySetDefinitions%2F42b8ef37-b724-4e24-bbc8-7a7708edfe00) |
 |---|---|---|---|
 |不允許執行具特殊許可權的容器|[公用雲端](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F95edb821-ddaf-4404-9732-666045e056b4)| 是 | 是
 |不允許主機命名空間的共用使用方式|[公用雲端](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F47a1ee2f-2a2a-4576-bf2a-e0e36709c2b8)| 是 | 是
-|限制使用主機網路和埠至已知清單|[公用雲端](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F82985f06-dc18-4a48-bc1c-b9f4f0098cfe)| 是 | 是
-|限制主機檔案系統的使用方式|[公用雲端](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F098fc59e-46c7-4d99-9b16-64990e543d75)| 是 | 是
-|新增超過[預設集合](https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities)的 Linux 功能|[公用雲端](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc26596ff-4d70-4e6a-9a30-c2506bd2f80c) | 是 | 是
-|限制使用已定義的磁片區類型|[公用雲端](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F16697877-1118-4fb1-9b65-9898ec2509ec)| - | 是
+|限制主機網路和埠的所有使用|[公用雲端](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F82985f06-dc18-4a48-bc1c-b9f4f0098cfe)| 是 | 是
+|限制主機檔案系統的任何使用方式|[公用雲端](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F098fc59e-46c7-4d99-9b16-64990e543d75)| 是 | 是
+|將 Linux 功能限制為[預設集合](https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities)|[公用雲端](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc26596ff-4d70-4e6a-9a30-c2506bd2f80c) | 是 | 是
+|限制使用已定義的磁片區類型|[公用雲端](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F16697877-1118-4fb1-9b65-9898ec2509ec)| - | 是-允許的磁片區類型為 `configMap` 、 `emptyDir` 、 `projected` 、 `downwardAPI` 、`persistentVolumeClaim`|
 |許可權提升至根|[公用雲端](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1c6e92c9-99f0-4e55-9cf2-0c234dc48f99) | - | 是 |
-|限制容器的使用者和群組識別碼|[公用雲端](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff06ddb64-5fa3-4b77-b166-acb36f7f6042) | - | 是 |
-|限制配置擁有 pod 磁片區的 FSGroup|[公用雲端](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff06ddb64-5fa3-4b77-b166-acb36f7f6042) | - | 是 |
-|需要使用 seccomp 設定檔|[公用雲端](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F975ce327-682c-4f2e-aa46-b9598289b86c) | - | - |
-|限制容器所使用的 sysctl 設定檔|[公用雲端](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F56d0a13f-712f-466b-8416-56fb354fb823) | - | - |
-|已定義預設的處理器掛接類型來減少受攻擊面|[公用雲端](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff85eb0dd-92ee-40e9-8a76-db25a507d6d3) | - | - |
-|限制特定的 FlexVolume 驅動程式|[公用雲端](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff4a8fce0-2dd5-4c21-9a36-8f0ec809d663) | - | - |
-|允許非唯讀的裝載|[公用雲端](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fdf49d893-a74c-421d-bc95-c663042e5b80) | - | - |
-|定義容器的自訂 SELinux 內容|[公用雲端](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe1e6c427-07d9-46ab-9689-bfa85431e636) | - | - |
-|定義容器所使用的 AppArmor 設定檔|[公用雲端](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F511f5417-5d12-434d-ab2e-816901e72a5e) | - | - |
+|限制容器的使用者和群組識別碼|[公用雲端](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff06ddb64-5fa3-4b77-b166-acb36f7f6042) | - | 是|
+|限制配置擁有 pod 磁片區的 FSGroup|[公用雲端](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff06ddb64-5fa3-4b77-b166-acb36f7f6042) | - | 是-允許的規則為 `runAsUser: mustRunAsNonRoot` 、 `supplementalGroup: mustRunAs 1:65536` 、 `fsGroup: mustRunAs 1:65535` 、 `runAsGroup: mustRunAs 1:65535` 。  |
+|需要 seccomp 設定檔|[公用雲端](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F975ce327-682c-4f2e-aa46-b9598289b86c) | - | 是，allowedProfiles 是 * `docker/default` 或`runtime/default` |
+
+\*docker/default 在 Kubernetes 後已被取代，自 v 1.11 起
+
+### <a name="additional-optional-policies"></a>其他選用原則
+
+還有額外的 Azure 原則，可以在套用方案之外單獨套用。 如果內建計畫不符合您的需求，請考慮在計畫以外附加這些原則。
+
+|[Pod 安全性原則控制](https://kubernetes.io/docs/concepts/policy/pod-security-policy/#what-is-a-pod-security-policy)| Azure 原則定義連結| 除了基準計畫之外，也適用 | 除了受限制的方案之外，也適用 |
+|---|---|---|---|
+|定義容器所使用的 AppArmor 設定檔|[公用雲端](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F511f5417-5d12-434d-ab2e-816901e72a5e) | 選用 | 選用 |
+|允許非唯讀的裝載|[公用雲端](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fdf49d893-a74c-421d-bc95-c663042e5b80) | 選用 | 選用 |
+|限制特定的 FlexVolume 驅動程式|[公用雲端](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff4a8fce0-2dd5-4c21-9a36-8f0ec809d663) | 選擇性：如果您只想要限制 FlexVolume 驅動程式，而不是其他「限制使用已定義的磁片區類型」設定，請使用 | 不適用-受限制的方案包含「限制使用已定義的磁片區類型」，但不允許所有的 FlexVolume 驅動程式 |
+
+### <a name="unsupported-built-in-policies-for-managed-aks-clusters"></a>受控 AKS 叢集不支援的內建原則
+
+> [!NOTE]
+> 下列3個原則**在 AKS 中不受支援**，因為自訂受 AKS 管理和保護的層面做為受控服務。 這些原則是專為具有非受控控制平面的 Azure Arc 連線叢集所建立。
+
+|[Pod 安全性原則控制](https://kubernetes.io/docs/concepts/policy/pod-security-policy/#what-is-a-pod-security-policy)|
+|---|
+|定義容器的自訂 SELinux 內容|
+|限制容器所使用的 sysctl 設定檔|
+|已定義預設的處理器掛接類型來減少受攻擊面|
 
 <!---
 # Removing until custom initiatives are supported the week after preview
@@ -260,7 +278,7 @@ az aks disable-addons --addons azure-policy --name MyAKSCluster --resource-group
 
 以下摘要說明 pod 安全性原則和 Azure 原則之間的行為變更。
 
-|狀況| Pod 安全性原則 | Azure 原則 |
+|案例| Pod 安全性原則 | Azure 原則 |
 |---|---|---|
 |安裝|啟用 pod 安全性原則功能 |啟用 Azure 原則附加元件
 |部署原則| 部署 pod 安全性原則資源| 將 Azure 原則指派給訂用帳戶或資源群組範圍。 Kubernetes 資源應用程式需要 Azure 原則附加元件。

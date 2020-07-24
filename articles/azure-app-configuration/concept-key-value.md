@@ -6,12 +6,12 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/19/2020
-ms.openlocfilehash: b8f8bda52be63a4176411855dd9ff9919e9e31f5
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 14ff1a00b40d956f369b1978f15f01f113c50270
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856677"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050150"
 ---
 # <a name="keys-and-values"></a>索引鍵和值
 
@@ -77,7 +77,7 @@ Azure 應用程式設定會將設定資料儲存為索引鍵/值組。 索引鍵
 
 透過索引鍵和標籤 (可以是 `null`)，即可識別每個唯一的索引鍵值。 您可以藉由指定模式來查詢應用程式組態存放區的索引鍵值。 應用程式組態存放區會傳回符合模式的索引鍵值，以及其對應的值和屬性。 在對應用程式設定發出的 REST API 呼叫中，請使用下列索引鍵模式：
 
-| 答案 | |
+| Key | 說明 |
 |---|---|
 | 省略 `key` 或使用 `key=*` | 符合所有索引鍵 |
 | `key=abc` | 完全符合索引鍵名稱 **abc** |
@@ -86,7 +86,7 @@ Azure 應用程式設定會將設定資料儲存為索引鍵/值組。 索引鍵
 
 您也可以包含下列標籤模式：
 
-| 標籤 | |
+| 標籤 | 描述 |
 |---|---|
 | 省略 `label` 或使用 `label=*` | 符合任何標籤，包括 `null` 在內 |
 | `label=%00` | 符合 `null` 標籤 |

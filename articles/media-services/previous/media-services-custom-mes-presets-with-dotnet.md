@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/26/2019
 ms.author: juliako
-ms.openlocfilehash: 9509a38dbe9655cd7f70096bc5f3283f35c190f0
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 085a186ffd98220257ad912ede93f43d339707f2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85956705"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87052931"
 ---
 # <a name="customizing-media-encoder-standard-presets"></a>自訂媒體編碼器標準預設  
 
@@ -30,7 +30,7 @@ ms.locfileid: "85956705"
 本文章說明如何採取 [H264 多重位元速率 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) 預設值來自訂預設，並減少圖層數目。 [自訂媒體編碼器標準預設](media-services-advanced-encoding-with-mes.md)文章示範可用於執行進階編碼工作的自訂預設。
 
 > [!NOTE]
-> 本文中所述的自訂預設值無法用於[媒體服務 V3](https://docs.microsoft.com/azure/media-services/latest/)轉換或 CLI 命令。 如需詳細資訊，請參閱[從 v2 到 v3 的遷移指引](../latest/migrate-from-v2-to-v3.md)。
+> 本文中所述的自訂預設值無法用於[媒體服務 V3](../latest/index.yml)轉換或 CLI 命令。 如需詳細資訊，請參閱[從 v2 到 v3 的遷移指引](../latest/migrate-from-v2-to-v3.md)。
 
 ## <a name="customizing-a-mes-preset"></a><a id="customizing_presets"></a> 自訂 MES 預設值
 

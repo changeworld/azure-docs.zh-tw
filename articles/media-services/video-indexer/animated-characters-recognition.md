@@ -10,13 +10,14 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: juliako
-ms.openlocfilehash: af608dcfbb5d98cf3116de4e14dc12bf6facb97b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3b449f68b25fce19dc034d2a0db0ae5ce8a28ec7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76989904"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87047491"
 ---
-# <a name="animated-character-detection-preview"></a>動畫字元偵測（預覽）
+# <a name="animated-character-detection-preview"></a>動畫角色偵測 (預覽)
 
 Azure 媒體服務影片索引子可透過與[認知服務自訂視覺](https://azure.microsoft.com/services/cognitive-services/custom-vision-service/)的整合，支援在動畫內容中偵測、分組和辨識字元。 這項功能可透過入口網站和 API 取得。
 
@@ -133,7 +134,7 @@ Azure 媒體服務影片索引子可透過與[認知服務自訂視覺](https://
         ![內容模型自訂](./media/animated-characters-recognition/content-model-customization-tab.png)
 
      1. 定型之後，任何會使用該模型編制索引或重新建立索引的影片都會辨識已定型的字元。 
-    可存取其自訂視覺帳戶的付費帳戶，可以在該處看到模型和已標記的影像。 深入瞭解如何[在自訂視覺中改善您的分類器](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-improving-your-classifier)。
+    可存取其自訂視覺帳戶的付費帳戶，可以在該處看到模型和已標記的影像。 深入瞭解如何[在自訂視覺中改善您的分類器](../../cognitive-services/custom-vision-service/getting-started-improving-your-classifier.md)。
 
 1. 刪除動畫字元。
 
@@ -159,7 +160,7 @@ Azure 媒體服務影片索引子可透過與[認知服務自訂視覺](https://
 1. 連接自訂視覺帳戶。
 
     如果您擁有影片索引子付費帳戶，您必須先連接自訂視覺帳戶。 <br/>
-    如果您還沒有自訂視覺帳戶，請建立一個。 如需詳細資訊，請參閱[自訂視覺](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/home)。
+    如果您還沒有自訂視覺帳戶，請建立一個。 如需詳細資訊，請參閱[自訂視覺](../../cognitive-services/custom-vision-service/home.md)。
 
     [使用 API 連接您的自訂視覺帳戶](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Connect-Custom-Vision-Account?tags=&pattern=&groupBy=tag)。
 1. 建立動畫字元模型。

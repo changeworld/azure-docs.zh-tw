@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/22/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: 83f7f16d8406744a10451e8d488b7719845c525d
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: b2509539551b3991690e6d0313e069ae015eb892
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135951"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87052408"
 ---
 # <a name="set-up-an-application-developers-controlled-distribution-adcd-in-ibm-zdt-v1"></a>在 IBM zD&T v1 中設定由應用程式開發人員控制的散發（ADCD）
 
@@ -72,7 +72,7 @@ ms.locfileid: "86135951"
 
 2. 選取 [ **ssh** ] 索引標籤，然後將 ssh 命令複製到剪貼簿。
 
-3. 使用您的認證和所選擇的[SSH 用戶端](/azure/virtual-machines/linux/use-remote-desktop)登入您的 VM。 本示範使用適用于 Windows 10 的 Linux 擴充功能，它會將 bash shell 新增至 Windows 命令提示字元。 PuTTY 也同樣可行。
+3. 使用您的認證和所選擇的[SSH 用戶端](../../../linux/use-remote-desktop.md)登入您的 VM。 本示範使用適用于 Windows 10 的 Linux 擴充功能，它會將 bash shell 新增至 Windows 命令提示字元。 PuTTY 也同樣可行。
 
 4. 登入時，建立目錄來上傳 IBM 套件。 請記住，Linux 會區分大小寫。 例如，此示範會假設封裝已上傳至：
 
@@ -188,9 +188,9 @@ ms.locfileid: "86135951"
 
 ## <a name="learn-more"></a>深入了解
 
-- [大型主機遷移：誤解和事實](https://docs.microsoft.com/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/myths-and-facts)
-- [Azure 上的 IBM DB2 pureScale](https://docs.microsoft.com/azure/virtual-machines/linux/ibm-db2-purescale-azure)
-- [疑難排解](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/)
+- [大型主機遷移：誤解和事實](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/myths-and-facts)
+- [Azure 上的 IBM DB2 pureScale](../../../linux/ibm-db2-purescale-azure.md)
+- [疑難排解](../../../troubleshooting/index.yml)
 - [揭密大型主機到 Azure 的遷移](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/)
 
 <!-- INTERNAL LINKS -->

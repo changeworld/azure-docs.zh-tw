@@ -1,7 +1,7 @@
 ---
-title: " (預覽) 訓練和部署增強式學習模型。"
+title: 定型和部署增強式學習模型（預覽）。
 titleSuffix: Azure Machine Learning
-description: 瞭解如何使用 Azure Machine Learning 增強式 Learning (preview) 訓練 RL 代理程式來玩。
+description: 瞭解如何使用 Azure Machine Learning 增強式 Learning （預覽）將 RL 代理程式定型以進行 play。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 05/05/2020
 ms.custom: tracking-python
-ms.openlocfilehash: b918369f68c3b0047213c24f1d4666fd0593cf30
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 95a404fd71c79842976bf5f01994f06c04856476
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203285"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87047933"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>具有 Azure Machine Learning 的增強式學習 (預覽)
 
@@ -168,6 +168,8 @@ else:
      # For a more detailed view of current AmlCompute status, use get_status()
     print(head_compute_target.get_status().serialize())
 ```
+
+[!INCLUDE [low-pri-note](../../includes/machine-learning-low-pri-vm.md)]
 
 ### <a name="worker-computing-cluster"></a>背景工作計算叢集
 

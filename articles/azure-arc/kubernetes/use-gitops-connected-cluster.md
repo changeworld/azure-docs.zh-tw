@@ -1,5 +1,5 @@
 ---
-title: 針對已啟用 Azure Arc 的叢集設定使用 GitOps (預覽)
+title: 在啟用 Arc 的 Kubernetes 叢集上使用 GitOps 部署設定（預覽）
 services: azure-arc
 ms.service: azure-arc
 ms.date: 05/19/2020
@@ -8,24 +8,24 @@ author: mlearned
 ms.author: mlearned
 description: 針對已啟用 Azure Arc 的叢集設定使用 GitOps (預覽)
 keywords: GitOps, Kubernetes, K8s, Azure, Arc, Azure Kubernetes Service, 容器
-ms.openlocfilehash: 890b35aac33a6fa207a71d76143997a1b93116bf
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: e25fdf3a51b3e9264c85707df31d3a4d107b25ea
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856977"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87049971"
 ---
-# <a name="use-gitops-for-an-azure-arc-enabled--configuration-preview"></a>針對已啟用 Azure Arc 的設定使用 GitOps (預覽)
+# <a name="deploy-configurations-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>在啟用 Arc 的 Kubernetes 叢集上使用 GitOps 部署設定（預覽）
 
-此架構會使用 GitOps 工作流程，來設定叢集和部署應用程式。 設定會在 .yaml 檔案中以宣告方式描述並儲存於 Git 中。 代理程式會監看 Git 存放庫的變更並加以套用。  相同的代理程式也會定期確認叢集狀態是否符合 Git 存放庫中所宣告的狀態，並在發生任何非受控的變更時，讓叢集返回所需的狀態。
+GitOps 是在 Git 存放庫中宣告 Kubernetes 設定（部署、命名空間等）所需狀態的作法，後面接著使用運算子將這些設定的輪詢和提取部署到叢集。 本檔涵蓋在啟用 Azure Arc 的 Kubernetes 叢集上進行這類工作流程的設定。
 
-在您的叢集與一或多個 Git 存放庫之間的連線，會在 Azure Resource Manager 中當成 `sourceControlConfiguration` 延伸模組資源進行追蹤。 `sourceControlConfiguration` 資源屬性代表 Kubernetes 資源應該從 Git 流向您叢集的位置和方式。 `sourceControlConfiguration` 資料會以待用加密方式儲存於 CosmosDb 資料庫中，以確保資料機密性。
+在您的叢集與一或多個 Git 存放庫之間的連線，會在 Azure Resource Manager 中當成 `sourceControlConfiguration` 延伸模組資源進行追蹤。 `sourceControlConfiguration` 資源屬性代表 Kubernetes 資源應該從 Git 流向您叢集的位置和方式。 `sourceControlConfiguration`資料會以加密的方式儲存在 Azure Cosmos DB 資料庫中，以確保資料機密性。
 
-已啟用 Azure Arc 的 Kubernetes `config-agent` 會在您的叢集中執行，其負責監看新的或更新的 `sourceControlConfiguration` 資源，並自動協調新增、更新或移除 Git 存放庫連結。
-
-相同模式可用來管理一組較大型叢集，而且可能會跨異質環境部署這些叢集。 例如，您可能有一個存放庫會定義貴組織的基準設定，並一次將該設定套用至數十個 Kubernetes 叢集。
+在您的叢集中執行的 `config-agent` 會負責 `sourceControlConfiguration` 監看 Azure Arc 已啟用 Kubernetes 資源上的新的或更新的延伸模組資源、部署 flux 操作員以監看 Git 存放庫，以及傳播對所做的任何更新 `sourceControlConfiguration` 。 您甚至可以 `sourceControlConfiguration` `namespace` 在已啟用相同 Azure Arc 的 Kubernetes 叢集上建立多個具有範圍的資源，以達到多租使用者。 在這種情況下，每個運算子只能將設定部署到其各自的命名空間。
 
 Git 存放庫可以包含任何有效的 Kubernetes 資源，包括命名空間、ConfigMaps、部署、Daemonset 等。其也可能包含用來部署應用程式的 Helm 圖表。 一組常見的案例包括為貴組織定義基準設定，其可能包含一般 RBAC 角色，以及繫結、監視或記錄代理程式，或整個叢集的服務。
+
+相同的模式可以用來管理較大的叢集集合，這些叢集可能會部署在不同的環境中。 例如，您可能有一個存放庫會定義貴組織的基準設定，並一次將該設定套用至數十個 Kubernetes 叢集。 [Azure 原則可以](use-azure-policy.md)在 `sourceControlConfiguration` 範圍（訂用帳戶或資源群組）下所有啟用 Azure Arc 的 Kubernetes 資源上，自動建立具有一組特定參數的。
 
 此快速入門手冊將逐步引導您在叢集管理範圍內套用一組設定。
 
@@ -39,12 +39,12 @@ Git 存放庫可以包含任何有效的 Kubernetes 資源，包括命名空間�
 **部署：** `cluster-config/azure-vote`
 **ConfigMap：** `team-a/endpoints`
 
-`config-agent` 每隔 30 秒就會輪詢 Azure 一次，以取得新的或更新的 `sourceControlConfiguration`。  這是 `config-agent` 揀選新設定或更新設定所需的最長時間。
-如果您要關聯私人存放庫，請確保您也會完成[從私人 Git 存放庫套用設定](#apply-configuration-from-a-private-git-repository)中的步驟
+`config-agent` `sourceControlConfiguration` 會每隔30秒輪詢一次 Azure 的新或更新，這是取得新的或更新設定的最長時間 `config-agent` 。
+如果您要將私人存放庫與建立關聯 `sourceControlConfiguration` ，請確定您也已完成[從私人 git 存放庫](#apply-configuration-from-a-private-git-repository)套用設定中的步驟。
 
 ### <a name="using-azure-cli"></a>使用 Azure CLI
 
-使用適用於 `k8sconfiguration` 的 Azure CLI 延伸模組，即可將已連線的叢集連結至[範例 Git 存放庫](https://github.com/Azure/arc-k8s-demo) \(英文\)。 我們會將此設定命名為 `cluster-config`、指示代理程式在 `cluster-config` 命名空間中部署操作員，並為該操作員授與 `cluster-admin` 權限。
+使用的 Azure CLI 擴充功能 `k8sconfiguration` ，讓我們將已連線的叢集連結至[範例 git 存放庫](https://github.com/Azure/arc-k8s-demo)。 我們會將此設定命名為 `cluster-config`、指示代理程式在 `cluster-config` 命名空間中部署操作員，並為該操作員授與 `cluster-admin` 權限。
 
 ```console
 az k8sconfiguration create \
@@ -117,7 +117,7 @@ Flux 支援這些案例，但 sourceControlConfiguration 尚未支援。
 
 若要自訂設定的建立，以下是一些額外參數：
 
-`--enable-helm-operator`：「選擇性」參數，可啟用對 Helm 圖表部署的支援。 此組態預設為停用狀態。
+`--enable-helm-operator`：「選擇性」參數，可啟用對 Helm 圖表部署的支援。
 
 `--helm-operator-chart-values`：適用於 Helm 操作員 (如果已啟用) 的「選擇性」圖表值。  例如，'--set helm.versions=v3'。
 
@@ -125,7 +125,7 @@ Flux 支援這些案例，但 sourceControlConfiguration 尚未支援。
 
 `--operator-namespace`：操作員命名空間的「選擇性」名稱。 預設值：'default'
 
-`--operator-params`：適用於操作員的「選擇性」參數。 必須在單引號中提供。 例如， ```--operator-params='--git-readonly --git-path=releases/prod' ```
+`--operator-params`：適用於操作員的「選擇性」參數。 必須在單引號中提供。 例如， ```--operator-params='--git-readonly --git-path=releases' ```
 
 --operator-params 中支援的選項
 
@@ -143,13 +143,16 @@ Flux 支援這些案例，但 sourceControlConfiguration 尚未支援。
 
 * 如果未設定 '--git-user' 或 '--git-email' (這表示您不希望 Flux 寫入至存放庫)，將會自動設定 --git-readonly (如果您尚未設定)。
 
-* 如果 enableHelmOperator 為 True，則 operatorInstanceName + operatorNamespace 字串組合不能超過 47 個字元。  如果您無法遵守此限制，則將收到下列錯誤：
+* 如果 enableHelmOperator 為 True，則 operatorInstanceName + operatorNamespace 字串組合不能超過 47 個字元。  如果您無法遵守此限制，將會收到下列錯誤：
 
    ```console
    {"OperatorMessage":"Error: {failed to install chart from path [helm-operator] for release [<operatorInstanceName>-helm-<operatorNamespace>]: err [release name \"<operatorInstanceName>-helm-<operatorNamespace>\" exceeds max length of 53]} occurred while doing the operation : {Installing the operator} on the config","ClusterState":"Installing the operator"}
    ```
 
-如需詳細資訊，請參閱 [Flux 文件](https://aka.ms/FluxcdReadme) \(英文\)。
+如需詳細資訊，請參閱[Flux 檔](https://aka.ms/FluxcdReadme)。
+
+> [!TIP]
+> 您也可以在 Azure 入口網站的 [設定] 索引標籤下，于已啟用 Azure Arc 的 Kubernetes 資源**分頁的 [** 設定] 索引標籤底下建立 sourceControlConfiguration。
 
 ## <a name="validate-the-sourcecontrolconfiguration"></a>驗證 sourceControlConfiguration
 
@@ -195,7 +198,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
     * `config-agent` 會建立目的地命名空間
     * `config-agent` 會準備一個具有適當權限 (`cluster` 或 `namespace` 範圍) 的 Kubernetes Service 帳戶
     * `config-agent` 會部署 `flux` 的執行個體
-    * `flux` 會產生 SSH 金鑰並記錄公開金鑰
+    * `flux`產生 SSH 金鑰並記錄公開金鑰
 1. `config-agent` 會向 `sourceControlConfiguration` 回報狀態
 
 當佈建程序發生時，`sourceControlConfiguration` 將歷經數個狀態變更。 使用上述 `az k8sconfiguration show ...` 命令來監視進度：
@@ -206,7 +209,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 ## <a name="apply-configuration-from-a-private-git-repository"></a>套用來自私人 Git 存放庫的設定
 
-如果您使用的是私人 Git 存放庫，則需執行另一個工作來關閉迴圈：您必須將 `flux` 所產生的公開金鑰新增為存放庫中的**部署金鑰**。
+如果您使用的是私用 git 存放庫，則需要執行另一個工作來關閉迴圈：將所產生的公開金鑰新增為存放庫 `flux` 中的**部署金鑰**。
 
 **使用 Azure CLI 取得公開金鑰**
 
@@ -232,7 +235,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 5. 貼上公開金鑰 (不包括周圍的所有引號)
 6. 按一下 [新增金鑰]
 
-如需如何管理部署金鑰的詳細資訊，請參閱 GitHub 文件。
+如需如何管理這些金鑰的詳細資訊，請參閱 GitHub 檔。
 
 **如果您使用 Azure DevOps 存放庫，請將金鑰新增至您的 SSH 金鑰**
 
@@ -292,9 +295,11 @@ kubectl -n itops get all
 
 ## <a name="delete-a-configuration"></a>刪除設定
 
-您可以使用 Azure CLI 或 Azure 入口網站來刪除 `sourceControlConfiguration`。  在您起始刪除命令之後，將在 Azure 中立即刪除 `sourceControlConfiguration` 資源，但最多可能需要 1 小時，才能從叢集中完整刪除相關聯的物件 (我們有待辦項目可縮短這段時間)。 如果 `sourceControlConfiguration` 是使用命名空間範圍建立的，則不會從叢集中刪除該命名空間 (以避免中斷可能已在該命名空間中建立的任何其他資源)。
+`sourceControlConfiguration`使用 Azure CLI 或 Azure 入口網站刪除。  在您起始 [刪除] 命令之後， `sourceControlConfiguration` 資源會立即在 Azure 中刪除，但最多可能需要1小時的時間，才能從叢集完整刪除相關聯的物件（我們有待處理專案可減少這段時間延遲）。
 
-請注意，刪除 `sourceControlConfiguration` 時，不會刪除任何因為追蹤的 Git 存放庫進行部署而產生的叢集變更。
+> [!NOTE]
+> 建立命名空間範圍的 sourceControlConfiguration 之後，在命名空間上具有角色系結的使用者可能會在 `edit` 此命名空間上部署工作負載。 `sourceControlConfiguration`刪除具有命名空間範圍的這個時，命名空間會保持不變，而且不會刪除以避免中斷其他工作負載。
+> 當刪除時，不會刪除任何因追蹤的 git 存放庫部署而產生的叢集變更 `sourceControlConfiguration` 。
 
 ```console
 az k8sconfiguration delete --name '<config name>' -g '<resource group name>' --cluster-name '<cluster name>' --cluster-type connectedClusters
@@ -308,5 +313,5 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 ## <a name="next-steps"></a>後續步驟
 
-- [使用 GitOps 搭配 Helm 進行叢集設定](./use-gitops-with-helm.md)
+- [搭配使用 Helm 與原始檔控制設定](./use-gitops-with-helm.md)
 - [使用 Azure 原則來控管叢集設定](./use-azure-policy.md)

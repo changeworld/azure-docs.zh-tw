@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2019
 ms.author: johndeu
-ms.openlocfilehash: 30ca3bb86426b144fa6cbf5c63888d9546919ebf
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 6454bc863cb5fd628d581fff380c5ab61354f762
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85954684"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053047"
 ---
 # <a name="smooth-streaming-protocol-ms-sstr-amendment-for-hevc"></a>HEVC 的 Smooth Streaming 通訊協定 (MS-SSTR) 增修條款 
 
@@ -64,7 +64,7 @@ ms.locfileid: "85954684"
 
 ### <a name="121-normative-references"></a>1.2.1 標準參考 
 
->  [MS-MS-SSTR]Smooth Streaming 通訊協定*v20140502*[https://msdn.microsoft.com/library/ff469518.aspx](https://msdn.microsoft.com/library/ff469518.aspx)
+>  [MS-MS-SSTR]Smooth Streaming 通訊協定*v20140502*[https://msdn.microsoft.com/library/ff469518.aspx](/openspecs/windows_protocols/ms-sstr/8383f27f-7efe-4c60-832a-387274457251)
 > 
 >   [ISO/IEC 14496-12] 國際標準化組織，「資訊技術 -- 音訊-視覺化物件的編碼 -- 第 12 部分：ISO Base Media 檔案格式」，ISO/IEC 14496-12:2014，第4 版，Plus Corrigendum 1，修訂文件 1 和 2。
 >   <https://standards.iso.org/ittf/PubliclyAvailableStandards/c061988_ISO_IEC_14496-12_2012.zip>

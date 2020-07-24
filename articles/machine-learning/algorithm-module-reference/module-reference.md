@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/19/2020
-ms.openlocfilehash: 1996f607d05cb84a80acbb105504ce0b5d3bb0c1
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: a588c58c74ab9632f3c3c61e223dd37704103714
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856903"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87048094"
 ---
 # <a name="algorithm--module-reference-for-azure-machine-learning-designer-preview"></a>Azure Machine Learning 設計工具 (預覽) 的演算法和模組參考
 
@@ -43,7 +43,7 @@ ms.locfileid: "85856903"
 
 | 功能 | 描述 | 模組 |
 | --- |--- | --- |
-| 迴歸 | 預測值。 | [促進式決策樹迴歸](boosted-decision-tree-regression.md) <br/> [決策樹系迴歸](decision-forest-regression.md) <br/> [線性迴歸](linear-regression.md)  <br/> [類神經網路迴歸](neural-network-regression.md)  <br/> |
+| 迴歸 | 預測值。 | [促進式決策樹迴歸](boosted-decision-tree-regression.md) <br/> [決策樹系迴歸](decision-forest-regression.md) <br/> [快速樹系分量迴歸](fast-forest-quantile-regression.md)  <br/> [線性迴歸](linear-regression.md)  <br/> [類神經網路迴歸](neural-network-regression.md)  <br/> [波氏迴歸](poisson-regression.md)  <br/>|
 | 叢集 | 將資料群組在一起。| [K-Means 群集](k-means-clustering.md)
 | 分類 | 預測類別。  選擇二進位 (二元) 或多元演算法。| [多元促進式決策樹](multiclass-boosted-decision-tree.md) <br/> [多元決策樹系](multiclass-decision-forest.md) <br/> [多元羅吉斯迴歸](multiclass-logistic-regression.md)  <br/> [多元神經網路](multiclass-neural-network.md) <br/> [「一對多」多元分類](one-vs-all-multiclass.md) <br/> [二元平均感知器](two-class-averaged-perceptron.md) <br/>  [二元促進式決策樹](two-class-boosted-decision-tree.md)  <br/> [二元決策樹系](two-class-decision-forest.md) <br/>  [二元羅吉斯迴歸](two-class-logistic-regression.md) <br/> [二元神經網路](two-class-neural-network.md) <br/> [二元支援向量機器](two-class-support-vector-machine.md) | 
 
@@ -51,7 +51,7 @@ ms.locfileid: "85856903"
 
 | 功能 | 描述 | 模組 |
 | --- |--- | --- |
-| 模型定型 | 透過演算法執行資料。 |  [將群集模型定型](train-clustering-model.md) <br/> [訓練模型](train-model.md) <br/> [將 PyTorch 模型定型](train-pytorch-model.md) <br/> [微調模型超參數](tune-model-hyperparameters.md) |
+| 模型定型 | 透過演算法執行資料。 |  [將群集模型定型](train-clustering-model.md) <br/> [訓練模型](train-model.md) <br/> [定型 Pytorch 模型](train-pytorch-model.md) <br/> [微調模型超參數](tune-model-hyperparameters.md) |
 | 模型評分和評估 | 測量已定型模型的精確度。 | [套用轉換](apply-transformation.md) <br/> [將資料指派給叢集](assign-data-to-clusters.md) <br/> [交叉驗證模型](cross-validate-model.md) <br/> [評估模型](evaluate-model.md) <br/> [映像計分模型](score-image-model.md) <br/> [為模型評分](score-model.md) |
 | Python 語言 | 撰寫程式碼並內嵌倒模組中，以整合 Python 與您的管線。 | [建立 Python 模型](create-python-model.md) <br/> [執行 Python 指令碼](execute-python-script.md) |
 | R 語言 | 撰寫程式碼並內嵌倒模組中，以整合 R 與您的管線。 | [執行 R 指令碼](execute-r-script.md) |

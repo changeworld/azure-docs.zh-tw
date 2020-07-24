@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2019
 ms.author: juliako
-ms.openlocfilehash: 872dad95fc5b536c51e251612f40439da020a059
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16c74e10e88d3f8eacd8f59222adbdb19be813ef
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75779632"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053203"
 ---
 # <a name="configure-postman-for-media-services-v3-rest-api-calls"></a>設定媒體服務 v3 REST API 呼叫的 Postman
 
@@ -27,8 +28,8 @@ ms.locfileid: "75779632"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-- [建立媒體服務帳戶](create-account-cli-how-to.md)。 請務必記住資源群組名稱和「媒體服務」帳戶名稱。 
-- 取得所需資訊來[存取 API](access-api-cli-how-to.md)
+- [建立媒體服務帳戶](./create-account-howto.md)。 請務必記住資源群組名稱和「媒體服務」帳戶名稱。 
+- 取得所需資訊來[存取 API](./access-api-howto.md)
 - 安裝 [Postman](https://www.getpostman.com/) \(英文\) REST 用戶端，來執行在某些 AMS REST 教學課程中所示範的 REST API。 
 
     我們使用的是 **Postman**，但任何 REST 工具都適用。 其他替代方案為：搭配 REST 外掛程式的 **Visual Studio Code**，或 **Telerik Fiddler**。 
@@ -96,7 +97,7 @@ ms.locfileid: "75779632"
 * 如果您的應用程式因「HTTP 504：閘道超時」而失敗，請確定 location 變數尚未明確設定為媒體服務帳戶的預期位置以外的值。 
 * 如果您收到「找不到帳戶」錯誤，也請檢查並確定主體 JSON 訊息中的 location 屬性已設定為媒體服務帳戶所在的位置。 
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
 - [將檔案上傳至媒體服務帳戶 - REST](upload-files-rest-how-to.md)
 - [使用媒體服務建立篩選 - REST](filters-dynamic-manifest-rest-howto.md)
@@ -105,4 +106,4 @@ ms.locfileid: "75779632"
 ## <a name="next-steps"></a>後續步驟
 
 - [使用 REST 串流檔案](stream-files-tutorial-with-rest.md)。  
-- [教學課程：根據 URL 編碼遠端檔案和串流影片-REST](stream-files-tutorial-with-rest.md)
+- [教學課程：編碼以 URL 為基礎的遠端檔案及串流處理影片 - REST](stream-files-tutorial-with-rest.md)

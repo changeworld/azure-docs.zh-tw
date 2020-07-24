@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 01/21/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 7e4f1141a9d4bd58451782e8412063a22565556d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a9f9463cd1cac49e36ea52cafaf4d07f4e709ca7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80584524"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053256"
 ---
 # <a name="filtering-ordering-and-paging-of-media-services-entities"></a>媒體服務實體的篩選、排序和分頁
 
@@ -64,13 +64,13 @@ var firstPage = await MediaServicesArmClient.Assets.ListAsync(CustomerResourceGr
 
 ## <a name="order-by"></a>排序依據
 
-使用 `$orderby` ，依指定的參數排序傳回的物件。 例如：  
+使用 `$orderby` ，依指定的參數排序傳回的物件。 例如:  
 
 ```
 GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01$orderby=properties/created%20gt%202018-05-11T17:39:08.387Z
 ```
 
-若要以遞增或遞減順序排序結果，請將 `asc` 或附加 `desc` 至功能變數名稱，並以空格分隔。 例如： `$orderby properties/created desc` 。
+若要以遞增或遞減順序排序結果，請將 `asc` 或附加 `desc` 至功能變數名稱，並以空格分隔。 例如：`$orderby properties/created desc`。
 
 ## <a name="skip-token"></a>略過權杖
 
@@ -158,34 +158,34 @@ client.Jobs.List(config.ResourceGroup, config.AccountName, VideoAnalyzerTransfor
 
 |實體名稱|屬性名稱|篩選|單|
 |---|---|---|---|
-|[Assets](https://docs.microsoft.com/rest/api/media/assets/)|NAME|`eq`, `gt`, `lt`, `ge`, `le`|`asc` 和 `desc`|
+|[資產](/rest/api/media/assets/)|name|`eq`, `gt`, `lt`, `ge`, `le`|`asc` 和 `desc`|
 ||properties.alternateId |`eq`||
 ||properties.assetId |`eq`||
 ||properties.created| `eq`, `gt`, `lt`| `asc` 和 `desc`|
-|[內容金鑰原則](https://docs.microsoft.com/rest/api/media/contentkeypolicies)|NAME|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` 和 `desc`|
+|[內容金鑰原則](/rest/api/media/contentkeypolicies)|name|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` 和 `desc`|
 ||properties.created    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` 和 `desc`|
 ||properties.description    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`||
 ||properties.lastModified|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` 和 `desc`|
 ||properties.policyId|`eq`, `ne`||
-|[作業](https://docs.microsoft.com/rest/api/media/jobs)| NAME  | `eq`            | `asc` 和 `desc`|
+|[作業](/rest/api/media/jobs)| name  | `eq`            | `asc` 和 `desc`|
 ||properties.state        | `eq`, `ne`        |                         |
 ||properties.created      | `gt`, `ge`, `lt`, `le`| `asc` 和 `desc`|
 ||properties.lastModified | `gt`, `ge`, `lt`, `le` | `asc` 和 `desc`| 
-|[串流定位器](https://docs.microsoft.com/rest/api/media/streaminglocators)|NAME|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` 和 `desc`|
+|[串流定位器](/rest/api/media/streaminglocators)|name|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` 和 `desc`|
 ||properties.created    |`eq`, `ne`, `ge`, `le`,  `gt`, `lt`|`asc` 和 `desc`|
 ||properties.endTime    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` 和 `desc`|
-|[串流原則](https://docs.microsoft.com/rest/api/media/streamingpolicies)|NAME|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` 和 `desc`|
+|[串流原則](/rest/api/media/streamingpolicies)|name|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` 和 `desc`|
 ||properties.created    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` 和 `desc`|
-|[轉換](https://docs.microsoft.com/rest/api/media/transforms)| NAME | `eq`            | `asc` 和 `desc`|
+|[轉換](/rest/api/media/transforms)| name | `eq`            | `asc` 和 `desc`|
 || properties.created      | `gt`, `ge`, `lt`, `le`| `asc` 和 `desc`|
 || properties.lastModified | `gt`, `ge`, `lt`, `le`| `asc` 和 `desc`|
 
 ## <a name="next-steps"></a>後續步驟
 
-* [列出資產](https://docs.microsoft.com/rest/api/media/assets/list)
-* [列出內容金鑰原則](https://docs.microsoft.com/rest/api/media/contentkeypolicies/list)
-* [列出作業](https://docs.microsoft.com/rest/api/media/jobs/list)
-* [列出串流原則](https://docs.microsoft.com/rest/api/media/streamingpolicies/list)
-* [列出串流定位器](https://docs.microsoft.com/rest/api/media/streaminglocators/list)
+* [列出資產](/rest/api/media/assets/list)
+* [列出內容金鑰原則](/rest/api/media/contentkeypolicies/list)
+* [列出作業](/rest/api/media/jobs/list)
+* [列出串流原則](/rest/api/media/streamingpolicies/list)
+* [列出串流定位器](/rest/api/media/streaminglocators/list)
 * [串流處理檔案](stream-files-dotnet-quickstart.md)
 * [配額和限制](limits-quotas-constraints.md)

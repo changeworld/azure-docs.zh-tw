@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/27/2020
-ms.openlocfilehash: 71e1a43728cf923207d209848b26627aeb7bd680
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3559ae5c246129aa369cb49e7749e499002f1dc6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84751752"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87048190"
 ---
 # <a name="execute-r-script-module"></a>執行 R 腳本模組
 
@@ -320,9 +320,8 @@ azureml_main <- function(dataframe1, dataframe2){
 
 下列預先安裝的 R 套件目前可供使用：
 
-|              |            | 
-|--------------|------------| 
 | 套件      | 版本    | 
+|--------------|------------| 
 | askpass      | 1.1        | 
 | assertthat   | 0.2.1      | 
 | backports    | 1.1.4      | 
@@ -338,7 +337,7 @@ azureml_main <- function(dataframe1, dataframe2){
 | caret        | 6.0-84     | 
 | caTools      | 1.17.1.2   | 
 | cellranger   | 1.1.0      | 
-| class        | 7.3-15     | 
+| Class - 類別        | 7.3-15     | 
 | cli          | 1.1.0      | 
 | clipr        | 0.6.0      | 
 | 叢集      | 2.0.7-1    | 

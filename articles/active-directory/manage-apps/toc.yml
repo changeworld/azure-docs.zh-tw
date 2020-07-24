@@ -38,48 +38,44 @@
       href: application-management-fundamentals.md
     - name: 應用程式管理常見案例
       href: common-scenarios.md
-    - name: 雲端應用程式和單一登入
+    - name: 規劃雲端應用程式整合
       items:
-        - name: 規劃雲端應用程式整合
-          items:
-            - name: 開始使用應用程式整合
-              href: plan-an-application-integration.md
-            - name: 規劃存取面板部署
-              href: access-panel-deployment-plan.md
-            - name: 開發人員指導方針
-              href: developer-guidance-for-integrating-applications.md
-        - name: 單一登入
-          items:
-            - name: 為多租用戶應用程式啟用 SSO
-              href: isv-sso-content.md
-            - name: 為多租用戶應用程式建立 Azure 租用戶
-              href: isv-tenant-multi-tenant-app.md
-            - name: 選擇多租用戶同盟
-              href: isv-choose-multi-tenant-federation.md
-            - name: 為多租用戶應用程式建立文件
-              href: isv-create-sso-documentation.md
-            - name: 規劃單一登入部署
-              href: plan-sso-deployment.md
-        - name: One Click SSO
-          items:
-            - name: 什麼是 One Click SSO
-              href: one-click-sso-tutorial.md
-        - name: 應用程式安全性
-          items:
-            - name: 應用程式存取選項
-              href: what-is-access-management.md
-            - name: 憑證簽署選項
-              href: certificate-signing-options.md
-            - name: 管理憑證
-              href: manage-certificates-for-federated-single-sign-on.md
-            - name: 租用戶限制
-              href: tenant-restrictions.md
-            - name: 設定 SAML 權杖加密
-              href: howto-saml-token-encryption.md
-            - name: 使用者入口網站
-              href: end-user-experiences.md
-    - name: 雲端應用程式的可見性和控制
-      href: cloud-app-security.md
+        - name: 開始使用應用程式整合
+          href: plan-an-application-integration.md
+        - name: 規劃存取面板部署
+          href: access-panel-deployment-plan.md
+        - name: 開發人員指導方針
+          href: developer-guidance-for-integrating-applications.md
+    - name: 單一登入
+      items:
+        - name: 為多租用戶應用程式啟用 SSO
+          href: isv-sso-content.md
+        - name: 為多租用戶應用程式建立 Azure 租用戶
+          href: isv-tenant-multi-tenant-app.md
+        - name: 選擇多租用戶同盟
+          href: isv-choose-multi-tenant-federation.md
+        - name: 為多租用戶應用程式建立文件
+          href: isv-create-sso-documentation.md
+        - name: 規劃單一登入部署
+          href: plan-sso-deployment.md
+        - name: 單鍵 SSO
+          href: one-click-sso-tutorial.md
+    - name: 應用程式安全性
+      items:
+        - name: 應用程式存取選項
+          href: what-is-access-management.md
+        - name: 憑證簽署選項
+          href: certificate-signing-options.md
+        - name: 管理憑證
+          href: manage-certificates-for-federated-single-sign-on.md
+        - name: 租用戶限制
+          href: tenant-restrictions.md
+        - name: 設定 SAML 權杖加密
+          href: howto-saml-token-encryption.md
+        - name: 使用者入口網站
+          href: end-user-experiences.md
+        - name: 雲端應用程式的可見性和控制
+          href: cloud-app-security.md
     - name: 適用於內部部屬應用程式的 Application Proxy
       items:
         - name: 應用程式 Proxy

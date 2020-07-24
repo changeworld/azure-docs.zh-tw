@@ -5,12 +5,12 @@ author: btardif
 ms.author: byvinyal
 ms.date: 9/23/2019
 ms.topic: article
-ms.openlocfilehash: 94a5fd3ae1de0708f0e5550547f7ab2fc9f881cb
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: c3c79944aa4add0a32dbb584b13606e32e146a1a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146235"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050299"
 ---
 # <a name="restore-deleted-app-service-app-using-powershell"></a>使用 PowerShell 還原已刪除的 App Service 應用程式
 
@@ -58,7 +58,7 @@ Get-AzDeletedWebApp -Name <your_deleted_app> -Location <your_deleted_app_locatio
 一旦識別出您想要還原的應用程式之後，您就可以使用 `Restore-AzDeletedWebApp` 進行還原。
 
 ```powershell
-Restore-AzDeletedWebApp -ResourceGroupName <my_rg> -Name <my_app> -TargetAppServicePlanName <my_asp>
+Restore-AzDeletedWebApp -TargetResourceGroupName <my_rg> -Name <my_app> -TargetAppServicePlanName <my_asp>
 ```
 > [!NOTE]
 > 部署位置不會還原為應用程式的一部分。 如果您需要還原預備位置，請使用 `-Slot <slot-name>` 旗標。
@@ -66,7 +66,7 @@ Restore-AzDeletedWebApp -ResourceGroupName <my_rg> -Name <my_app> -TargetAppServ
 
 命令的輸入如下：
 
-- **資源群組**：將還原應用程式的目標資源群組
+- **目標資源群組**：將會還原應用程式的目標資源群組
 - **Name**：應用程式的名稱，必須是全域唯一的。
 - **TargetAppServicePlanName**：連結至應用程式的 App Service 方案
 

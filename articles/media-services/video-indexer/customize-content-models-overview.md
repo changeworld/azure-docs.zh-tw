@@ -9,16 +9,17 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
 ms.date: 06/26/2019
-ms.author: anzaman
-ms.openlocfilehash: 09e6fd8530ddb1745a92c6f31f4d5a5843a2ac10
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: kumud
+ms.openlocfilehash: 937a73847e867e826b3a577adf0c85184d7a93d0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76513162"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87047230"
 ---
 # <a name="customizing-content-models-in-video-indexer"></a>在影片索引子中自訂內容模型
 
-影片索引子可讓您自訂其部分模型，以適應您的特定使用案例。 這些模型包括[品牌](customize-brands-model-overview.md)、[語言](customize-language-model-overview.md)和[人員](customize-person-model-overview.md)。 您可以使用影片索引子網站或 API，輕鬆地自訂這些模型。
+影片索引器可讓您自訂其部分模型，以套用到您的特定使用案例。 這些模型包括[品牌](customize-brands-model-overview.md)、[語言](customize-language-model-overview.md)和[人員](customize-person-model-overview.md)。 您可以使用影片索引器網站或 API，輕鬆地自訂這些模型。
 
 本文提供文章的連結，說明每一種自訂類型的優點。 本文也會連結至操作指南，示範如何執行每個模型的自訂。
 

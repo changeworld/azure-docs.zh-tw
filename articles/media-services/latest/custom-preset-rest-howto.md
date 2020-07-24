@@ -12,12 +12,12 @@ ms.topic: article
 ms.custom: ''
 ms.date: 05/14/2019
 ms.author: juliako
-ms.openlocfilehash: 30e22cb786e5dc2a667fe41ca8edf398cf0b7613
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4bd092dbee09a783dcbd6e36c82a70ff5decaf83
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "65761802"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053319"
 ---
 # <a name="how-to-encode-with-a-custom-transform---rest"></a>如何使用自訂轉換進行編碼-REST
 
@@ -32,7 +32,7 @@ ms.locfileid: "65761802"
 
 ## <a name="prerequisites"></a>Prerequisites 
 
-- [建立媒體服務帳戶](create-account-cli-how-to.md)。 <br/>請務必記住資源群組名稱和「媒體服務」帳戶名稱。 
+- [建立媒體服務帳戶](./create-account-howto.md)。 <br/>請務必記住資源群組名稱和「媒體服務」帳戶名稱。 
 - [設定 Postman 以進行 Azure 媒體服務 REST API 呼叫](media-rest-apis-with-postman.md)。<br/>請務必遵循本[取得 Azure AD 權杖](media-rest-apis-with-postman.md#get-azure-ad-token)主題的最後一個步驟。 
 
 ## <a name="define-a-custom-preset"></a>定義自訂預設值
@@ -133,7 +133,7 @@ ms.locfileid: "65761802"
 
 ## <a name="create-a-new-transform"></a>建立新的轉換  
 
-在此範例中，我們建立的**轉換**是以先前定義的自訂預設值為基礎。 建立轉換時，您應該先使用[Get](https://docs.microsoft.com/rest/api/media/transforms/get)來檢查其中一個是否已存在。 如果轉換存在，請重複使用它。 
+在此範例中，我們建立的**轉換**是以先前定義的自訂預設值為基礎。 建立轉換時，您應該先使用[Get](/rest/api/media/transforms/get)來檢查其中一個是否已存在。 如果轉換存在，請重複使用它。 
 
 在您下載的 Postman 集合中，選取 [**轉換和作業**] [ -> **建立或更新轉換**]。
 
@@ -151,4 +151,4 @@ PUT https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:r
 
 ## <a name="next-steps"></a>後續步驟
 
-查看[其他 REST 作業](https://docs.microsoft.com/rest/api/media/)
+查看[其他 REST 作業](/rest/api/media/)

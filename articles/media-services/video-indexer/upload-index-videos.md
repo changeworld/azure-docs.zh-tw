@@ -10,11 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 02/18/2020
 ms.author: juliako
-ms.openlocfilehash: 245eabdf4d77682c87062c2581239a554112d748
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 011f94cf24c6148ee01275541b090ba28d697018
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77468757"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87052480"
 ---
 # <a name="upload-and-index-your-videos"></a>上傳影片及編製影片索引  
 
@@ -22,31 +23,31 @@ ms.locfileid: "77468757"
 
 * 從 URL 上傳您的影片 (首選)、
 * 將影片檔案當作要求本文中的位元組陣列傳送、
-* 藉由提供[資產識別碼](https://docs.microsoft.com/azure/media-services/latest/assets-concept)（僅在付費帳戶中支援）來使用現有的 Azure 媒體服務資產。
+* 藉由提供[資產識別碼](../latest/assets-concept.md)來使用現有的 Azure 媒體服務資產 (僅支援付費帳戶)。
 
 當您的影片上傳之後，影片索引子（選擇性）會對影片進行編碼（在本文中討論）。 建立影片索引器帳戶時，您可以選擇免費試用帳戶 (您可取得特定的免費編製索引分鐘數) 或付費選項 (您不會受限於配額)。 使用免費試用時，影片索引器最多可為網站使用者提供 600 分鐘的免費編製索引，以及為 API 使用者提供 2400 分鐘的免費索引編製。 使用付費選項時，您建立的影片索引器帳戶會[連線到您的 Azure 訂用帳戶和 Azure 媒體服務帳戶](connect-to-azure.md)。 您需支付已編製索引的分鐘數，以及媒體帳戶相關費用。 
 
 本文說明如何使用下列選項來上傳和編制影片的索引：
 
-* [影片索引子網站](#website) 
-* [影片索引子 Api](#apis)
+* [使用影片索引子網站](#website) 
+* [影片索引子 API](#apis)
 
-## <a name="uploading-considerations-and-limitations"></a>上傳考慮和限制
+## <a name="uploading-considerations-and-limitations"></a>上傳考量與限制
  
 - 影片名稱不得超過 80 個字元。
-- 根據 URL 上傳您的影片時（慣用），端點必須使用 TLS 1.2 （或更高版本）來保護。
-- [使用 URL 的上傳大小] 選項限制為 [30GB]。
-- 要求 URL 長度限制為6144個字元，其中查詢字串 URL 長度限制為4096個字元。
-- 使用位元組陣列選項的上傳大小限制為 2 GB。
-- 位元組陣列選項在30分鐘後就會超時。
+- 若根據 URL 上傳影片 (首選)，則必須使用 TLS 1.2 (或更高版本) 來保護端點。
+- 具有 URL 選項的上傳大小限制為 30GB。
+- 要求 URL 長度限制為 6144 個字元，其中查詢字串 URL 長度限制為 4096 個字元。
+- 具有位元組陣列選項的上傳大小限制為 2GB。
+- 位元組陣列選項會在 30 分鐘後逾時。
 - 參數中提供的 URL `videoURL` 必須進行編碼。
-- 編制索引媒體服務資產與從 URL 編制索引的限制相同。
-- 影片索引子的最大持續時間限制為單一檔案4小時。
-- URL 必須可供存取（例如公用 URL）。 
+- 編製索引媒體服務資產與從 URL 編製索引的限制相同。
+- 影片索引子的最大持續時間限制為單一檔案 4 小時。
+- URL 必須可供存取 (例如公用 URL)。 
 
-    如果它是私人 URL，必須在要求中提供存取權杖。
+    如果是私人 URL，必須在要求中提供存取權杖。
 - URL 必須指向有效的媒體檔案，而不是網頁的連結，例如頁面的連結 `www.youtube.com` 。
-- 在付費帳戶中，每分鐘最多可以上傳50個電影，而且在試用帳戶中，每分鐘最多可有5個電影。
+- 在付費帳戶中，每分鐘最多可以上傳 50 部電影，在試用帳戶中，每分鐘最多可以上傳 5 部電影。
 
 > [!Tip]
 > 建議使用 .NET Framework 4.6.2 版。 或更高版本，因為舊版 .NET Framework 不會預設使用 TLS 1.2。
@@ -57,7 +58,7 @@ ms.locfileid: "77468757"
 
 如需可與影片索引子搭配使用的檔案格式清單，請參閱[輸入容器/檔案格式](../latest/media-encoder-standard-formats.md#input-containerfile-formats)一文。
 
-## <a name="upload-and-index-a-video-using-the-video-indexer-website"></a><a id="website"/>使用影片索引子網站上傳影片並為其編制索引
+## <a name="upload-and-index-a-video-using-the-video-indexer-website"></a><a name="website"></a>使用影片索引子網站上傳影片並為其編制索引
 
 > [!NOTE]
 > 影片名稱不得超過 80 個字元。
@@ -73,7 +74,7 @@ ms.locfileid: "77468757"
 
     Video Indexer 完成分析後，您會收到通知，內含您的影片連結以及在影片中找到的簡短描述。 例如：人員、主題、OCR。
 
-## <a name="upload-and-index-with-api"></a><a id="apis"/>使用 API 上傳和編制索引
+## <a name="upload-and-index-with-api"></a><a name="apis"></a>使用 API 上傳和編制索引
 
 使用 [[上傳影片](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?)API]，根據 URL 上傳並編制您的影片索引。 後面的程式碼範例包含批註化的程式碼，說明如何上傳位元組陣列。 
 
@@ -90,15 +91,15 @@ ms.locfileid: "77468757"
 用來通知客戶下列事件的 URL (使用 POST 要求)：
 
 - 索引狀態變更： 
-    - 內容：    
+    - 屬性：    
     
-        |Name|描述|
+        |名稱|描述|
         |---|---|
         |id|影片識別碼|
         |state|影片狀態|  
     - 範例： HTTPs： \/ /test.com/notifyme?projectName=MyProject&識別碼 = 1234abcd&狀態 = 已處理
 - 在影片中識別到的人員：
-  - 屬性
+  - [內容]
     
       |名稱|描述|
       |---|---|
@@ -109,7 +110,7 @@ ms.locfileid: "77468757"
         
     - 範例： HTTPs： \/ /test.com/notifyme?projectName=MyProject&識別碼 = 1234abcd&faceid = 12&knownPersonId = CCA84350-89B7-4262-861C-3CAC796542A5&personName = Inigo_Montoya 
 
-##### <a name="notes"></a>備註
+##### <a name="notes"></a>附註
 
 - 影片索引器會傳回原始 URL 中提供的任何現有參數。
 - 提供的 URL 必須進行編碼。
@@ -141,7 +142,7 @@ ms.locfileid: "77468757"
 
 使用[上傳影片](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?)或[重新編製影片索引](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?) API 時，其中一個選擇性參數為 `streamingPreset`。 如果您將 `streamingPreset` 設定為 `Default`、`SingleBitrate` 或 `AdaptiveBitrate`，就會觸發編碼程序。 完成編製索引及編碼工作後，影片就會發佈，因此您也可以對影片進行串流處理。 您想要串流影片的串流端點必須處於 [執行中]**** 狀態。
 
-若要執行編製索引及編碼工作，[連線至您影片索引器帳戶的 Azure 媒體服務帳戶](connect-to-azure.md)需要保留單元。 如需詳細資訊，請參閱[調整媒體處理](https://docs.microsoft.com/azure/media-services/previous/media-services-scale-media-processing-overview)。 由於這些都是計算密集的作業，強烈建議使用 S3 單元類型。 RU 數量會定義可以平行執行的作業數目上限。 基準建議是 10 個 S3 RU。 
+若要執行編製索引及編碼工作，[連線至您影片索引器帳戶的 Azure 媒體服務帳戶](connect-to-azure.md)需要保留單元。 如需詳細資訊，請參閱[調整媒體處理](../previous/media-services-scale-media-processing-overview.md)。 由於這些都是計算密集的作業，強烈建議使用 S3 單元類型。 RU 數量會定義可以平行執行的作業數目上限。 基準建議是 10 個 S3 RU。 
 
 如果您只想要編製影片索引，但不要對影片進行編碼，請將 `streamingPreset` 設定為 `NoStreaming`。
 
@@ -347,7 +348,7 @@ public class AccountContractSlim
 
 下表列出上傳作業可能會傳回的狀態碼。
 
-|狀態碼|ErrorType (在回應本文中)|Description|
+|狀態碼|ErrorType (在回應本文中)|說明|
 |---|---|---|
 |409|VIDEO_INDEXING_IN_PROGRESS|指定帳戶中已有正在處理的相同影片。|
 |400|VIDEO_ALREADY_FAILED|不到 2 小時前，指定帳戶中有相同的影片處理失敗。 API 用戶端應該等待至少 2 小時，才能重新上傳影片。|

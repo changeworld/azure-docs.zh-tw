@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/09/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 79f2df0f94b212ea45c01c825b23f1dbb4cc40db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6715014485b227713447ce5d552cf7ba79737845
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80582280"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053211"
 ---
 # <a name="scaling-media-processing"></a>調整媒體處理
 
@@ -49,7 +49,7 @@ Azure 媒體服務可讓您藉由管理媒體保留單元 (MRU)，在帳戶中�
 
 ## <a name="prerequisites"></a>Prerequisites 
 
-[建立媒體服務帳戶](create-account-cli-how-to.md)。
+[建立媒體服務帳戶](./create-account-howto.md)。
 
 [!INCLUDE [media-services-cli-instructions](../../../includes/media-services-cli-instructions.md)]
 
@@ -57,7 +57,7 @@ Azure 媒體服務可讓您藉由管理媒體保留單元 (MRU)，在帳戶中�
 
 執行 `mru` 命令。
 
-下列 [az ams account mru](https://docs.microsoft.com/cli/azure/ams/account/mru?view=azure-cli-latest) 命令會使用**計數**和**類型**參數在 "amsaccount" 帳戶上設定媒體保留單元。
+下列 [az ams account mru](/cli/azure/ams/account/mru?view=azure-cli-latest) 命令會使用**計數**和**類型**參數在 "amsaccount" 帳戶上設定媒體保留單元。
 
 ```azurecli
 az ams account mru set -n amsaccount -g amsResourceGroup --count 10 --type S3
@@ -67,11 +67,11 @@ az ams account mru set -n amsaccount -g amsResourceGroup --count 10 --type S3
 
 系統會根據您帳戶中布建媒體保留單元的分鐘數向您收費。 這會與您的帳戶中是否有任何執行中的作業無關。 如需詳細說明，請參閱[媒體服務定價](https://azure.microsoft.com/pricing/details/media-services/)頁面的＜常見問題集＞一節。   
 
-## <a name="next-step"></a>下一步
+## <a name="next-step"></a>後續步驟
 
 [分析影片](analyze-videos-tutorial-with-api.md) 
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
 * [配額和限制](limits-quotas-constraints.md)
-* [Azure CLI](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)
+* [Azure CLI](/cli/azure/ams?view=azure-cli-latest)

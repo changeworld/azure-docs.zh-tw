@@ -9,11 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 807771fd4018c9666f059c965370ebc36d0105df
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 279ba2ca5b82d7bad5b55736179f92a0146bdc84
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79456296"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87048159"
 ---
 # <a name="export-data-module"></a>匯出資料模組
 
@@ -27,6 +28,7 @@ ms.locfileid: "79456296"
 - Azure 檔案共用
 - Azure Data Lake
 - Azure Data Lake Gen2
+- Azure SQL 資料庫
 
 在匯出資料之前，您必須先在 Azure Machine Learning 工作區中註冊資料存放區。 如需詳細資訊，請參閱[存取 Azure 儲存體服務中的資料](../how-to-access-data.md)。
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: d27abfda789a9bb1bd5479b059355703388333f8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1e547cf3f08e49ce707cd079778588fb6be5acb5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520641"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87048417"
 ---
 # <a name="azure-security-baseline-for-logic-apps"></a>適用于 Logic Apps 的 Azure 安全性基準
 
@@ -643,7 +643,7 @@ Microsoft 會管理 Azure Logic Apps 的基礎結構，並已實行嚴格的控�
 
 ### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6：使用以角色為基礎的存取控制來控制對資源的存取
 
-**指導**方針：您只能允許特定的使用者或群組執行特定工作，例如管理、編輯和觀看邏輯應用程式。 若要控制其權限，請使用 Azure 角色型存取控制 (RBAC)，以將自訂或內建角色指派給 Azure 訂用帳戶中的成員：
+**指導**方針：您只能允許特定的使用者或群組執行特定工作，例如管理、編輯和觀看邏輯應用程式。 若要控制其許可權，請使用 Azure 角色型存取控制（Azure RBAC），讓您可以將自訂或內建角色指派給 Azure 訂用帳戶中的成員：
 - 邏輯應用程式參與者：可讓您管理邏輯應用程式，但無法變更對邏輯應用程式的存取。
 - 邏輯應用程式操作員：可讓您讀取、啟用及停用邏輯應用程式，但無法編輯或更新邏輯應用程式。
 

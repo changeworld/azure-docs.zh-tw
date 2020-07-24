@@ -9,11 +9,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 08/17/2017
 ms.author: tagore
-ms.openlocfilehash: 774d2bb58fd7dd75825be8f433f078d70c13fe8c
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 25cde21d72de49c5a4f51121f2aa4295319899ac
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85919991"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87049199"
 ---
 # <a name="build-and-deploy-a-nodejs-application-to-an-azure-cloud-service"></a>建立 Node.js 應用程式並部署到 Azure 雲端服務
 
@@ -177,9 +178,9 @@ Publish-AzureServiceProject -ServiceName $ServiceName  -Location "East US" -Laun
 
 [Azure 網站、雲端服務與虛擬機器的比較]: /azure/architecture/guide/technology-choices/compute-decision-tree
 [使用輕量型 Web 應用程式]: ../app-service/app-service-web-get-started-nodejs.md
-[Azure PowerShell]: /powershell/azureps-cmdlets-docs
+[Azure PowerShell]: /powershell/azure/
 [Azure SDK for .NET 2.7]: https://www.microsoft.com/en-us/download/details.aspx?id=48178
-[連線 PowerShell]: /powershell/azureps-cmdlets-docs
+[連線 PowerShell]: /powershell/azure/
 [nodejs.org]: https://nodejs.org/
 [雲端服務]: https://azure.microsoft.com/documentation/services/cloud-services/
 [Node.js 開發人員中心]: https://azure.microsoft.com/develop/nodejs/

@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/10/2020
 ms.author: alsin
-ms.openlocfilehash: af541faaf9529cec81c60cb1a879161d66e34a7e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 54d703b8a493610174f00844cd0736f65f3ee541
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84694377"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87052167"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Red Hat Enterprise Linux 在 Azure 中攜帶自己的訂用帳戶黃金映射
 
@@ -68,7 +69,7 @@ Red Hat Enterprise Linux （RHEL）映射可透過隨用隨付或自備訂用帳
 
 ## <a name="use-the-red-hat-gold-images-from-the-azure-cli"></a>使用來自 Azure CLI 的 Red Hat 黃金映射
 
-下列指示會逐步引導您使用 Azure CLI 來完成 RHEL VM 的初始部署程式。 這些指示假設您已[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+下列指示會逐步引導您使用 Azure CLI 來完成 RHEL VM 的初始部署程式。 這些指示假設您已[安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
 >[!IMPORTANT]
 >請務必在所有下列命令的發行者、供應專案、計畫和映射參考中使用所有小寫字母。
@@ -199,7 +200,7 @@ Red Hat Enterprise Linux BYOS 黃金映射可以透過使用[Azure 磁碟加密]
 
     在此情況下，請聯絡 Microsoft 或 Red Hat 以啟用您的訂用帳戶。
 
-- 如果您從 RHEL BYOS 映射修改快照，並嘗試將該自訂映射發佈到[共用映射資源庫](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries)，則必須提供符合快照集原始來源的計畫資訊。 例如，命令看起來可能像這樣：
+- 如果您從 RHEL BYOS 映射修改快照，並嘗試將該自訂映射發佈到[共用映射資源庫](../../linux/shared-image-galleries.md)，則必須提供符合快照集原始來源的計畫資訊。 例如，命令看起來可能像這樣：
 
     ```azurecli
     az vm create –image \

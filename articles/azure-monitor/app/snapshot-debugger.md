@@ -4,11 +4,12 @@ description: 在生產環境 .NET 應用程式中擲回例外狀況時，會自�
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.reviewer: cweining
-ms.openlocfilehash: 18f43ba90157d71ec9488b6858fa9f41b2ee42a5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c920ab019d5d802ea862ab923297670da766a456
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84692014"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87049686"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>.NET 應用程式中的例外狀況偵錯快照集
 發生例外狀況時，您可以自動從即時 Web 應用程式收集偵錯快照集。 快照集會顯示擲回例外狀況時原始程式碼和變數的狀態。 [Azure 應用程式 Insights](../../azure-monitor/app/app-insights-overview.md)中的快照偵錯工具會監視來自 web 應用程式的例外狀況遙測。 它會收集前幾個擲回例外狀況的快照集，讓您取得診斷生產環境中問題所需的資訊。 在您的應用程式中包含[快照集收集器 NuGet 套件](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector)，並選擇性地在[ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md)中設定集合參數。快照集會出現在 Application Insights 入口網站的[例外](../../azure-monitor/app/asp-net-exceptions.md)狀況中。
@@ -88,7 +89,7 @@ ms.locfileid: "84692014"
 每次應用程式呼叫 [TrackException](../../azure-monitor/app/asp-net-exceptions.md#exceptions) 時，快照集收集器會根據所擲回例外狀況的類型和擲回方法計算問題識別碼。
 每次應用程式呼叫 TrackException 時，適當問題識別碼的計數器即會遞增。 當計數器達到 `ThresholdForSnapshotting` 值時，問題識別碼就會新增至收集計畫。
 
-快照集收集器還會藉由訂閱 [AppDomain.CurrentDomain.FirstChanceException](https://docs.microsoft.com/dotnet/api/system.appdomain.firstchanceexception) 事件來監視擲回的例外狀況。 當該事件引發時，系統會計算例外狀況的問題識別碼，並將其與收集計畫中的問題識別碼進行比較。
+快照集收集器還會藉由訂閱 [AppDomain.CurrentDomain.FirstChanceException](/dotnet/api/system.appdomain.firstchanceexception) 事件來監視擲回的例外狀況。 當該事件引發時，系統會計算例外狀況的問題識別碼，並將其與收集計畫中的問題識別碼進行比較。
 如果沒有相符項目，則會建立執行中處理序的快照集。 快照集獲指派一個唯一的識別碼，而例外狀況則標有該識別碼的戳記。 FirstChanceException 處理常式返回之後，所擲回的例外狀況會以正常方式處理。 最後，例外狀況會再次到達 TrackException 方法，它將在其中與快照集識別碼一起回報給 Application Insights。
 
 主要處理序會繼續執行，並在很少中斷的情況下提供流量給使用者。 同時，快照集會遞交給快照集上傳程式處理序。 接著，快照集上傳程式會建立小型傾印，並將其與任何相關符號檔 (.pdb) 一起上傳至 Application Insights。
@@ -116,7 +117,7 @@ Visual Studio 2017 的 15.2 版 (或更新版本) 在發佈至 App Service 時�
 針對 Azure Compute 和其他類型，請確定符號檔案與主要應用程式 .dll 位於相同資料夾 (通常為 `wwwroot/bin`)，或可在目前的路徑使用。
 
 > [!NOTE]
-> 如需有關可用之不同符號選項的詳細資訊，請參閱[Visual Studio 檔](https://docs.microsoft.com/visualstudio/ide/reference/advanced-build-settings-dialog-box-csharp?view=vs-2019#output
+> 如需有關可用之不同符號選項的詳細資訊，請參閱[Visual Studio 檔](/visualstudio/ide/reference/advanced-build-settings-dialog-box-csharp?view=vs-2019#output
 )。 為獲得最佳結果，建議使用「完整」、「可攜」或「內嵌」。
 
 ### <a name="optimized-builds"></a>最佳化的組建
@@ -137,6 +138,6 @@ Visual Studio 2017 的 15.2 版 (或更新版本) 在發佈至 App Service 時�
 
 除了 Application Insights 快照偵錯工具：
  
-* [在您的程式碼中設定 Snappoint](https://docs.microsoft.com/visualstudio/debugger/debug-live-azure-applications) 以取得快照集，而不需等待例外狀況。
+* [在您的程式碼中設定 Snappoint](/visualstudio/debugger/debug-live-azure-applications) 以取得快照集，而不需等待例外狀況。
 * [診斷 Web Apps 中的例外狀況](../../azure-monitor/app/asp-net-exceptions.md)說明如何讓 Application Insights 看見更多的例外狀況。
 * [智慧型偵測](../../azure-monitor/app/proactive-diagnostics.md)會自動探索效能異常。

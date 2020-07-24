@@ -10,11 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/12/2020
 ms.author: juliako
-ms.openlocfilehash: bb57af37308badcd3123af3348178aaac061f376
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: d533735af340b23e8a79b6c5953df748a548609c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652175"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046964"
 ---
 # <a name="video-indexer-frequently-asked-questions"></a>影片索引器常見問題集
 
@@ -58,13 +59,13 @@ Video Indexer 可以對媒體檔案執行的一些作業包括：
 
 ### <a name="what-media-formats-does-video-indexer-support"></a>影片索引器支援哪些媒體格式？
 
-影片索引器支援最常見的媒體格式。 如需詳細資料，請參閱 [Azure 媒體編碼器的標準格式](https://docs.microsoft.com/azure/media-services/latest/media-encoder-standard-formats)清單。
+影片索引器支援最常見的媒體格式。 如需詳細資料，請參閱 [Azure 媒體編碼器的標準格式](../latest/media-encoder-standard-formats.md)清單。
 
 ### <a name="how-do-i-upload-a-media-file-into-video-indexer-and-what-are-the-limitations"></a>如何將媒體檔案上傳到影片索引器，以及有哪些限制？
 
 在影片索引器 Web 入口網站中，您可以使用 [檔案上傳] 對話方塊來上傳媒體檔案，或透過指向直接裝載來源檔案的 URL 來上傳 (請參閱[範例](https://nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/Ignite-short.mp4))。 所有使用 iFrame 或內嵌程式碼裝載媒體內容的 URL 都將無法運作 (請參閱[範例](https://www.videoindexer.ai/accounts/7e1282e8-083c-46ab-8c20-84cae3dc289d/videos/5cfa29e152/?t=4.11) \(英文\))。 
 
-如需詳細資訊，請參閱此[操作指南](https://docs.microsoft.com/azure/media-services/video-indexer/upload-index-videos)。
+如需詳細資訊，請參閱此[操作指南](./upload-index-videos.md)。
 
 #### <a name="limitations"></a>限制
 
@@ -75,7 +76,7 @@ Video Indexer 可以對媒體檔案執行的一些作業包括：
 
 ### <a name="how-long-does-it-take-video-indexer-to-extract-insights-from-media"></a>影片索引器從媒體擷取見解需要多長的時間？
 
-使用影片索引器 API 和影片索引器 Web 型介面，編製視訊或音訊檔案索引所需的時間量會取決於多個參數，例如檔案的長度與品質、在檔案中找到的見解數目、可用的[保留單元](https://docs.microsoft.com/azure/media-services/previous/media-services-scale-media-processing-overview)數目，以及是否已啟用[串流端點](https://docs.microsoft.com/azure/media-services/previous/media-services-streaming-endpoints-overview)。 我們建議您以自己的內容來執行數個測試檔案，並採用平均值以進一步了解。
+使用影片索引器 API 和影片索引器 Web 型介面，編製視訊或音訊檔案索引所需的時間量會取決於多個參數，例如檔案的長度與品質、在檔案中找到的見解數目、可用的[保留單元](../previous/media-services-scale-media-processing-overview.md)數目，以及是否已啟用[串流端點](../previous/media-services-streaming-endpoints-overview.md)。 我們建議您以自己的內容來執行數個測試檔案，並採用平均值以進一步了解。
 
 ### <a name="can-i-create-customized-workflows-to-automate-processes-with-video-indexer"></a>是否可以建立自訂工作流程以將影片索引器的程序自動化？
 

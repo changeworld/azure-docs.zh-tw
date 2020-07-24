@@ -10,12 +10,12 @@ metadata:
   author: cynthn
   ms.author: cynthn
   ms.date: 09/09/2019
-  ms.openlocfilehash: 8ff93dc3071a442f28878baa958d3583bc046b44
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: c6d3c26e59610e98e0c1fe037a51cb75236ac199
+  ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "77115570"
+  ms.lasthandoff: 07/23/2020
+  ms.locfileid: "87009504"
 landingContent:
 - title: 最新功能
   linkLists:
@@ -32,28 +32,28 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: Azure 入口網站
-      url: https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-quick-create-portal
+      url: ./quick-create-portal.md
     - text: Azure PowerShell
-      url: https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-quick-create-powershell
+      url: ./quick-create-powershell.md
     - text: Azure CLI
-      url: https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-quick-create-cli
+      url: ./quick-create-cli.md
 - title: 逐步指南
   linkLists:
   - linkListType: tutorial
     links:
     - text: 建立並管理 Windows VM
-      url: /azure/virtual-machines/windows/tutorial-manage-vm
+      url: ./tutorial-manage-vm.md
     - text: VM 磁碟
-      url: /azure/virtual-machines/windows/tutorial-manage-data-disk
+      url: ./tutorial-manage-data-disk.md
     - text: 自動設定 VM
-      url: /azure/virtual-machines/windows/tutorial-automate-vm-deployment
+      url: ./tutorial-automate-vm-deployment.md
     - text: 建立自訂的 VM 映像
-      url: /azure/virtual-machines/windows/tutorial-custom-images
+      url: ./tutorial-custom-images.md
     - text: 透過虛擬網路管理 VM
-      url: /azure/virtual-machines/windows/tutorial-virtual-network
+      url: ./tutorial-virtual-network.md
 - title: 自學型訓練
   linkLists:
   - linkListType: learn
     links:
     - text: " 如何在 Azure 中建立 Windows 虛擬機器"
-      url: https://docs.microsoft.com/learn/modules/create-windows-virtual-machine-in-azure/
+      url: /learn/modules/create-windows-virtual-machine-in-azure/

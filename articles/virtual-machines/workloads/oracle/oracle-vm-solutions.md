@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/12/2020
 ms.author: rogardle
-ms.openlocfilehash: 363d26391c8ee40fb95a0b8fd92c4d94f1082b8d
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 2201cae66aae8c2d9d106871db0d4ebbd003f361
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86221522"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87052140"
 ---
 # <a name="oracle-vm-images-and-their-deployment-on-microsoft-azure"></a>Microsoft Azure 上的 Oracle VM 映像及其部署
 
@@ -107,12 +107,12 @@ Azure NetApp Files 的設計訴求是為了符合執行高效能工作負載 (�
 - 高可用性、高持久性和大規模管理，通常是由任務關鍵性企業工作負載 (例如 SAP 和 Oracle) 所要求
 - 快速且有效率的備份和復原，以達到最積極的 RTO 和 RPO SLA
 
-這些功能是可行的，因為 Azure NetApp Files 是以在 Azure 資料中心環境中執行的 NetApp® ONTAP® 全快閃系統為基礎 – 作為 Azure 原生服務。 結果是可以像其他 Azure 儲存體選項一樣佈建和取用的理想資料庫儲存體技術。 如需如何部署和存取 Azure NetApp Files NFS 磁碟區的詳細資訊，請參閱 [Azure NetApp Files 文件](https://docs.microsoft.com/azure/azure-netapp-files/)。 如需在 Azure NetApp Files 上操作 Oracle 資料庫的最佳做法建議，請參閱 [Oracle on Azure Deployment Best Practice Guide Using Azure NetApp Files](https://www.netapp.com/us/media/tr-4780.pdf)。
+這些功能是可行的，因為 Azure NetApp Files 是以在 Azure 資料中心環境中執行的 NetApp® ONTAP® 全快閃系統為基礎 – 作為 Azure 原生服務。 結果是可以像其他 Azure 儲存體選項一樣佈建和取用的理想資料庫儲存體技術。 如需如何部署和存取 Azure NetApp Files NFS 磁碟區的詳細資訊，請參閱 [Azure NetApp Files 文件](../../../azure-netapp-files/index.yml)。 如需在 Azure NetApp Files 上操作 Oracle 資料庫的最佳做法建議，請參閱 [Oracle on Azure Deployment Best Practice Guide Using Azure NetApp Files](https://www.netapp.com/us/media/tr-4780.pdf)。
 
 ## <a name="licensing-oracle-database--software-on-azure"></a>Azure 上的授權 Oracle Database 和軟體
 
 Microsoft Azure 是執行 Oracle Database 的授權雲端環境。 在雲端授權 Oracle 資料庫時，不適用 Oracle Core Factor 資料表。 相反地，使用已針對 Enterprise Edition 資料庫啟用超執行緒技術的 VM 時，如果已啟用超執行緒，請將兩個虛擬 CPU 計算為等同於一個 Oracle Processor 授權 (如原則文件所述)。 在[這裡](http://www.oracle.com/us/corporate/pricing/cloud-licensing-070579.pdf)可以找到原則詳細資料。
-Oracle 資料庫通常需要較高的記憶體和 IO。 基於這個理由，建議針對這些工作負載使用[記憶體最佳化 VM](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory)。 若要將您的工作負載進一步最佳化，建議針對需要高記憶體、儲存體和 I/O 頻寬，但不是高核心計數的 Oracle Database 工作負載使用[限制核心虛擬 CPU](https://docs.microsoft.com/azure/virtual-machines/linux/constrained-vcpu)。
+Oracle 資料庫通常需要較高的記憶體和 IO。 基於這個理由，建議針對這些工作負載使用[記憶體最佳化 VM](../../sizes-memory.md)。 若要將您的工作負載進一步最佳化，建議針對需要高記憶體、儲存體和 I/O 頻寬，但不是高核心計數的 Oracle Database 工作負載使用[限制核心虛擬 CPU](../../linux/constrained-vcpu.md)。
 
 將 Oracle 軟體和工作負載從內部部署遷移至 Microsoft Azure 時，Oracle 會提供如 [Oracle on Azure FAQ](https://www.oracle.com/cloud/technologies/oracle-azure-faq.html) 所述的授權行動性。
 

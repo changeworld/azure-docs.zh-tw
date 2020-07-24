@@ -14,11 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 618acae10b874eb5ebd5b6da7fe081368528dbd8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 43e16d15c48471d75a7ab5ce23898f1161a60153
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84712491"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87052820"
 ---
 # <a name="develop-azure-functions-with-media-services"></a>開發具有媒體服務的 Azure Functions
 
@@ -327,7 +328,7 @@ public static async Task<IAsset> CreateAssetFromBlobAsync(CloudBlockBlob blob, s
 }
 ```
 
-## <a name="test-your-function"></a>測試您的函式
+## <a name="test-your-function"></a>測試您的函數
 
 若要測試您的函式，您需要將 MP4 檔案上傳到您在連接字串中指定之儲存體帳戶的 **input** 容器。  
 
@@ -337,7 +338,7 @@ public static async Task<IAsset> CreateAssetFromBlobAsync(CloudBlockBlob blob, s
 4. 按 [上傳]**** 並瀏覽至要上傳的 .mp4 檔案。
 
 >[!NOTE]
-> 當您在使用情況方案中使用 blob 觸發程序時，函數應用程式進入閒置狀態之後，處理新 blob 最多會有 10 分鐘的延遲。 在函數應用程式開始執行之後，會立即處理 blob。 如需詳細資訊，請參閱 [Blob 儲存體觸發程序與繫結](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-blob)。
+> 當您在使用情況方案中使用 blob 觸發程序時，函數應用程式進入閒置狀態之後，處理新 blob 最多會有 10 分鐘的延遲。 在函數應用程式開始執行之後，會立即處理 blob。 如需詳細資訊，請參閱 [Blob 儲存體觸發程序與繫結](../../azure-functions/functions-bindings-storage-blob.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -349,4 +350,3 @@ public static async Task<IAsset> CreateAssetFromBlobAsync(CloudBlockBlob blob, s
 
 ## <a name="provide-feedback"></a>提供意見反應
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

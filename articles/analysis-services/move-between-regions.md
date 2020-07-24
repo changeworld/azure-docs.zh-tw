@@ -7,11 +7,13 @@ ms.topic: how-to
 ms.date: 06/09/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ff012dc78f3981b6fb5fdbd8a5bde45083dd997b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: references_regions
+ms.openlocfilehash: 4844f3e34a6b49559affbb4d4ed7bc5b5e38e538
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84699425"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050356"
 ---
 # <a name="move-analysis-services-to-a-different-region"></a>將 Analysis Services 移至不同的區域
 
@@ -195,7 +197,7 @@ ms.locfileid: "84699425"
 
 4. 選取 [建立]。
 
-5. **在編輯器中選取 [建立您自己的範本**]。
+5. 選取 [在編輯器中組建您自己的範本]。
 
 6. 選取 [**載入**檔案]，然後依照指示在您匯出和修改的檔案**上載入template.js** 。
 
@@ -264,7 +266,7 @@ ms.locfileid: "84699425"
 
 2. 展開 [**資料表]**，以滑鼠右鍵按一下資料表。 在 **[處理資料表**] 中，選取 [所有資料表]，然後選取 **[確定]**。
 
-## <a name="verify"></a>確認
+## <a name="verify"></a>驗證
 
 1. 在入口網站中，移至新的目標伺服器。
 

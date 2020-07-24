@@ -12,18 +12,18 @@ ms.workload: ''
 ms.topic: article
 ms.date: 01/30/2020
 ms.author: juliako
-ms.openlocfilehash: 1d28fc37b98493322b9e201ac899b7911dd1d705
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4c0eb626b827656a478e02a43b98ed15e7469f92
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708955"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053466"
 ---
 # <a name="analyze-video-and-audio-files-with-azure-media-services"></a>使用 Azure 媒體服務分析影片和音訊檔案
 
 Azure 媒體服務 v3 可讓您使用影片索引子，從您的影片和音訊檔案中摘錄見解。 本文說明用來解壓縮這些深入解析的媒體服務 v3 分析器預設值。 若您希望獲得更多詳細深入解析，請直接使用影片索引器。 若要瞭解使用影片索引子與媒體服務分析器預設值的時機，請參閱[比較檔](../video-indexer/compare-video-indexer-with-media-services-presets.md)。
 
-若要使用媒體服務 v3 預設值來分析您的內容，請建立**轉換**，並提交使用下列其中一個預設值的**作業**： [VideoAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#videoanalyzerpreset)或**AudioAnalyzerPreset**。 如需示範如何使用**VideoAnalyzerPreset**的教學課程，請參閱[使用 Azure 媒體服務分析](analyze-videos-tutorial-with-api.md)影片。
+若要使用媒體服務 v3 預設值來分析您的內容，請建立**轉換**，並提交使用下列其中一個預設值的**作業**： [VideoAnalyzerPreset](/rest/api/media/transforms/createorupdate#videoanalyzerpreset)或**AudioAnalyzerPreset**。 如需示範如何使用**VideoAnalyzerPreset**的教學課程，請參閱[使用 Azure 媒體服務分析](analyze-videos-tutorial-with-api.md)影片。
 
 > [!NOTE]
 > 使用視訊或音訊分析程式的預設時，可使用 Azure 入口網站將帳戶設定為擁有 10 個 S3 編碼保留單元。 如需詳細資訊，請參閱[調整媒體處理](media-reserved-units-cli-how-to.md)。
@@ -38,9 +38,9 @@ Azure 媒體服務 v3 可讓您使用影片索引子，從您的影片和音訊�
 
 |**預設名稱**|**案例**|**詳細資料**|
 |---|---|---|
-|[AudioAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#audioanalyzerpreset)|分析音訊|此預設會套用一組預先定義的 AI 型分析作業，包括語音轉譯。 此預設目前支援處理具有單一音訊播放軌 (包含單一語言的語音) 的內容。 您可以使用「語言標記-區域」的 BCP-47 格式，為輸入中的音訊承載指定語言。 支援的語言為英文（' en-us ' 和 ' en-GB '）、西班牙文（' es ' 和 ' es '）、法文（' fr-fr '）、義大利文（' it-IT '）、日文（' ja-jp '）、葡萄牙文（' pt-BR '）、中文（' zh-CN '）、德文（' de '）、阿拉伯文（' ar-例如 ' 和 ' ar-SY '）、俄文（' ru-RU '）、印度文（' hi '）和韓文（' ko-KR '）。<br/><br/> 如果語言未指定或設為 null，自動語言偵測會選擇偵測到的第一個語言，並在檔案持續期間繼續使用選取的語言。 自動語言偵測功能目前支援英文、簡體中文、法文、德文、義大利文、日文、西班牙文、俄文和葡萄牙文。 它不支援在偵測到第一個語言之後，以動態方式切換語言。 搭配語音清晰的錄音時，自動語言偵測功能的效果最好。 如果自動語言偵測找不到語言，則轉譯會回復成英文。|
-|[VideoAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#videoanalyzerpreset)|分析音訊和視訊|從音訊和視訊擷取見解 (豐富的中繼資料)，並輸出 JSON 格式檔案。 您可以指定在處理視訊檔案時，是否只想擷取音訊見解。 如需詳細資訊，請參閱[分析視訊](analyze-videos-tutorial-with-api.md)。|
-|[FaceDetectorPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#facedetectorpreset)|偵測出現在影片中的人臉|說明分析影片以偵測所有表面時所要使用的設定。|
+|[AudioAnalyzerPreset](/rest/api/media/transforms/createorupdate#audioanalyzerpreset)|分析音訊|此預設會套用一組預先定義的 AI 型分析作業，包括語音轉譯。 此預設目前支援處理具有單一音訊播放軌 (包含單一語言的語音) 的內容。 您可以使用「語言標記-區域」的 BCP-47 格式，為輸入中的音訊承載指定語言。 支援的語言為英文（' en-us ' 和 ' en-GB '）、西班牙文（' es ' 和 ' es '）、法文（' fr-fr '）、義大利文（' it-IT '）、日文（' ja-jp '）、葡萄牙文（' pt-BR '）、中文（' zh-CN '）、德文（' de '）、阿拉伯文（' ar-例如 ' 和 ' ar-SY '）、俄文（' ru-RU '）、印度文（' hi '）和韓文（' ko-KR '）。<br/><br/> 如果語言未指定或設為 null，自動語言偵測會選擇偵測到的第一個語言，並在檔案持續期間繼續使用選取的語言。 自動語言偵測功能目前支援英文、簡體中文、法文、德文、義大利文、日文、西班牙文、俄文和葡萄牙文。 它不支援在偵測到第一個語言之後，以動態方式切換語言。 搭配語音清晰的錄音時，自動語言偵測功能的效果最好。 如果自動語言偵測找不到語言，則轉譯會回復成英文。|
+|[VideoAnalyzerPreset](/rest/api/media/transforms/createorupdate#videoanalyzerpreset)|分析音訊和視訊|從音訊和視訊擷取見解 (豐富的中繼資料)，並輸出 JSON 格式檔案。 您可以指定在處理視訊檔案時，是否只想擷取音訊見解。 如需詳細資訊，請參閱[分析視訊](analyze-videos-tutorial-with-api.md)。|
+|[FaceDetectorPreset](/rest/api/media/transforms/createorupdate#facedetectorpreset)|偵測出現在影片中的人臉|說明分析影片以偵測所有表面時所要使用的設定。|
 
 ### <a name="audioanalyzerpreset"></a>AudioAnalyzerPreset
 
@@ -67,10 +67,10 @@ Azure 媒體服務 v3 可讓您使用影片索引子，從您的影片和音訊�
 
 ### <a name="transcript"></a>文字記錄
 
-|Name|描述|
+|名稱|描述|
 |---|---|
 |id|行識別碼。|
-|text|文字記錄本身。|
+|文字|文字記錄本身。|
 |語言|文字記錄語言。 用於支援文字記錄，其中每一行可以有不同的語言。|
 |執行個體|這一行曾出現的時間範圍清單。 如果執行個體是文字記錄，它只能有 1 個執行個體。|
 
@@ -105,10 +105,10 @@ Azure 媒體服務 v3 可讓您使用影片索引子，從您的影片和音訊�
 
 ### <a name="ocr"></a>ocr
 
-|Name|描述|
+|名稱|描述|
 |---|---|
 |id|OCR 行識別碼。|
-|text|OCR 文字。|
+|文字|OCR 文字。|
 |信賴度|辨識信賴。|
 |語言|OCR 語言。|
 |執行個體|此 OCR 曾出現的時間範圍清單 (相同的 OCR 可以出現多次)。|
@@ -148,10 +148,10 @@ Azure 媒體服務 v3 可讓您使用影片索引子，從您的影片和音訊�
 
 ### <a name="faces"></a>臉部
 
-|Name|描述|
+|名稱|描述|
 |---|---|
 |id|臉部識別碼。|
-|NAME|臉部名稱。 它可以是「未知的 #0」、已識別的名人或客戶訓練的人員。|
+|name|臉部名稱。 它可以是「未知的 #0」、已識別的名人或客戶訓練的人員。|
 |信賴度|臉部識別信賴。|
 |description|名人的描述。 |
 |thumbnailId|該臉部的縮圖識別碼。|
@@ -193,7 +193,7 @@ Azure 媒體服務 v3 可讓您使用影片索引子，從您的影片和音訊�
 
 ### <a name="shots"></a>擷取畫面
 
-|Name|描述|
+|名稱|描述|
 |---|---|
 |id|擷取畫面識別碼。|
 |keyFrames|擷取畫面的主要畫面清單 (每個主要畫面都有一個識別碼和執行個體的時間範圍清單)。 主要畫面格執行個體中有縮圖識別碼欄位，其中包含主要畫面格的縮圖識別碼。|
@@ -250,7 +250,7 @@ Azure 媒體服務 v3 可讓您使用影片索引子，從您的影片和音訊�
 
 ### <a name="statistics"></a>統計資料
 
-|Name|說明|
+|名稱|說明|
 |---|---|
 |CorrespondenceCount|影片中的對應數目。|
 |WordCount|每個說話者的字數。|
@@ -263,7 +263,7 @@ Azure 媒體服務 v3 可讓您使用影片索引子，從您的影片和音訊�
 
 人氣會依據其 sentimentType 欄位 (Positive/Neutral/Negative) 加以彙總。 例如：0-0.1、0.1-0.2。
 
-|Name|描述|
+|名稱|描述|
 |---|---|
 |id|人氣識別碼。|
 |averageScore |所有該人氣類型執行個體的總分平均值 - Positive/Neutral/Negative|
@@ -298,10 +298,10 @@ Azure 媒體服務 v3 可讓您使用影片索引子，從您的影片和音訊�
 
 ### <a name="labels"></a>標籤
 
-|Name|描述|
+|名稱|描述|
 |---|---|
 |id|標籤識別碼。|
-|NAME|標籤名稱 (例如，電腦、電視)。|
+|name|標籤名稱 (例如，電腦、電視)。|
 |語言|標籤名稱語言 (轉譯時)。 BCP-47|
 |執行個體|此標籤曾出現的時間範圍清單 (同一個標籤可以出現多次)。 每個執行個體都有一個信賴度欄位。 |
 
@@ -356,10 +356,10 @@ Azure 媒體服務 v3 可讓您使用影片索引子，從您的影片和音訊�
 
 ### <a name="keywords"></a>關鍵字
 
-|Name|描述|
+|名稱|描述|
 |---|---|
 |id|關鍵字識別碼。|
-|text|關鍵字。|
+|文字|關鍵字。|
 |信賴度|關鍵字的辨識信賴。|
 |語言|關鍵字語言 (轉譯時)。|
 |執行個體|此關鍵字曾出現的時間範圍清單 (同一個關鍵字可以出現多次)。|
@@ -407,7 +407,7 @@ visualContentModeration 區塊包含影片索引器偵測到可能含有成人�
 
 經發現含有成人或猥褻內容的影片，只能供私人檢視。 使用者可以提交內容的人工審核要求，在此情況下， `IsAdult` 屬性會包含人工審核的結果。
 
-|Name|描述|
+|名稱|描述|
 |---|---|
 |id|視覺內容仲裁識別碼。|
 |adultScore|成人分數 (由內容仲裁提供)。|
@@ -442,4 +442,4 @@ visualContentModeration 區塊包含影片索引器偵測到可能含有成人�
 ```
 ## <a name="next-steps"></a>後續步驟
 
-[教學課程：使用 Azure 媒體服務分析視訊](analyze-videos-tutorial-with-api.md)
+[教學課程：使用 Azure 媒體服務分析影片](analyze-videos-tutorial-with-api.md)

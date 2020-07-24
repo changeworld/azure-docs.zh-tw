@@ -343,8 +343,6 @@
               href: msal-js-use-ie-browser.md
             - name: 已知問題 - IE 和 Microsoft Edge
               href: msal-js-known-issues-ie-edge-browsers.md
-            - name: 已知問題 - Safari
-              href: msal-js-known-issues-safari-browser.md
             - name: 處理錯誤和例外狀況
               href: msal-handling-exceptions.md?tabs=javascript
             - name: 記錄

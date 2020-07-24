@@ -5,11 +5,12 @@ description: 了解如何在 Azure Kubernetes Service (AKS) 中使用 Kubernetes
 services: container-service
 ms.topic: article
 ms.date: 05/06/2019
-ms.openlocfilehash: 7e494c6ac89289a9b271d16b871b8a22e1ca9e6a
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 598747c0d64db2ae62f740dca4c3e4141f2562f2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683201"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050490"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中使用網路原則來保護 Pod 之間的流量
 
@@ -157,13 +158,13 @@ kubectl label namespace/development purpose=development
 建立可執行 NGINX 的範例後端 Pod。 這個後端 Pod 可用於模擬範例後端 Web 應用程式。 在 *development* 命名空間中建立這個 Pod，然後開啟連接埠 *80* 來處理 Web 流量。 替 Pod 加上 *app=webapp,role=backend* 標籤，以便我們在下一節中使用網路原則以其作為目標：
 
 ```console
-kubectl run backend --image=nginx --labels app=webapp,role=backend --namespace development --expose --port 80 --generator=run-pod/v1
+kubectl run backend --image=nginx --labels app=webapp,role=backend --namespace development --expose --port 80
 ```
 
 建立另一個 Pod，然後連結終端機工作階段，來測試您是否可以成功觸達預設 NGINX 網頁：
 
 ```console
-kubectl run --rm -it --image=alpine network-policy --namespace development --generator=run-pod/v1
+kubectl run --rm -it --image=alpine network-policy --namespace development
 ```
 
 在殼層提示字元，使用 `wget` 來確認您可以存取預設 NGINX 網頁：
@@ -219,7 +220,7 @@ kubectl apply -f backend-policy.yaml
 讓我們看看您是否可以在後端 Pod 上再次使用 NGINX 網頁。 建立另一個測試 Pod 並連結終端機工作階段：
 
 ```console
-kubectl run --rm -it --image=alpine network-policy --namespace development --generator=run-pod/v1
+kubectl run --rm -it --image=alpine network-policy --namespace development
 ```
 
 在殼層提示字元，使用 `wget` 來查看您是否可以存取預設 NGINX 網頁。 此時，將逾時值設定為 2 秒。 網路原則現在會封鎖所有輸入流量，因此無法載入此頁面，如下列範例所示：
@@ -276,7 +277,7 @@ kubectl apply -f backend-policy.yaml
 排程標籤為 *app=webapp,role=frontend* 的 Pod 並連結終端機工作階段：
 
 ```console
-kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace development --generator=run-pod/v1
+kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace development
 ```
 
 在殼層提示字元，使用 `wget` 來查看您是否可以存取預設 NGINX 網頁：
@@ -306,7 +307,7 @@ exit
 網路原則允許來自標籤為 *app: webapp,role: frontend* 的 Pod 流量，但應該拒絕所有其他流量。 讓我們測試以查看另一個沒有這些標籤的 Pod 是否可以存取後端 NGINX Pod。 建立另一個測試 Pod 並連結終端機工作階段：
 
 ```console
-kubectl run --rm -it --image=alpine network-policy --namespace development --generator=run-pod/v1
+kubectl run --rm -it --image=alpine network-policy --namespace development
 ```
 
 在殼層提示字元，使用 `wget` 來查看您是否可以存取預設 NGINX 網頁。 網路原則會封鎖輸入流量，因此無法載入此頁面，如下列範例所示：
@@ -339,7 +340,7 @@ kubectl label namespace/production purpose=production
 在標籤為 *app=webapp,role=frontend* 的 *production* 命名空間中排程測試 Pod。 連結終端機工作階段：
 
 ```console
-kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace production --generator=run-pod/v1
+kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace production
 ```
 
 在殼層提示字元，使用 `wget` 來確認您可以存取預設 NGINX 網頁：
@@ -403,7 +404,7 @@ kubectl apply -f backend-policy.yaml
 在 *production* 命名空間中排程另一個 Pod，然後連結終端機工作階段：
 
 ```console
-kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace production --generator=run-pod/v1
+kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace production
 ```
 
 在殼層提示字元，使用 `wget` 來查看網路原則現在是否會拒絕流量：
@@ -425,7 +426,7 @@ exit
 拒絕了來自 *production* 命名空間的流量，回到 *development* 命名空間中排程測試 Pod，然後連結終端機工作階段：
 
 ```console
-kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace development --generator=run-pod/v1
+kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace development
 ```
 
 在殼層提示字元，使用 `wget` 來查看網路原則是否允許流量：

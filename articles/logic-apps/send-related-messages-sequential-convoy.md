@@ -6,15 +6,16 @@ ms.suite: integration
 ms.reviewer: apseth, divswa, logicappspm
 ms.topic: conceptual
 ms.date: 05/29/2020
-ms.openlocfilehash: bd6b05489d13f835de4dce2aa3d885132285efca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c00d2e4f622bcfad7b2468013336f0d936e318c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987614"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87048671"
 ---
 # <a name="send-related-messages-in-order-by-using-a-sequential-convoy-in-azure-logic-apps-with-azure-service-bus"></a>在 Azure Logic Apps 中使用順序群組，以 Azure 服務匯流排的方式傳送相關訊息
 
-當您需要以特定順序傳送相互關聯的訊息時，您可以在使用[Azure Logic Apps](../logic-apps/logic-apps-overview.md)時，使用[Azure 服務匯流排連接器](../connectors/connectors-create-api-servicebus.md)來遵循[*順序*群組模式](https://docs.microsoft.com/azure/architecture/patterns/sequential-convoy)。 相互關聯的訊息具有屬性，可定義這些訊息之間的關聯性，例如服務匯流排中的[會話](../service-bus-messaging/message-sessions.md)識別碼。
+當您需要以特定順序傳送相互關聯的訊息時，您可以在使用[Azure Logic Apps](../logic-apps/logic-apps-overview.md)時，使用[Azure 服務匯流排連接器](../connectors/connectors-create-api-servicebus.md)來遵循[*順序*群組模式](/azure/architecture/patterns/sequential-convoy)。 相互關聯的訊息具有屬性，可定義這些訊息之間的關聯性，例如服務匯流排中的[會話](../service-bus-messaging/message-sessions.md)識別碼。
 
 例如，假設您有10個名為 "Session 1" 的訊息，而且有5則訊息代表名為「會話2」的會話全部都傳送至相同的[服務匯流排佇列](../service-bus-messaging/service-bus-queues-topics-subscriptions.md)。 您可以建立一個邏輯應用程式，以處理來自佇列的訊息，使「會話1」中的所有訊息都是由單一觸發程式執行處理，而「會話2」的所有訊息則是由下一個觸發程式執行處理。
 
@@ -28,7 +29,7 @@ ms.locfileid: "84987614"
 
 若要檢查此範本的 JSON 檔案，請參閱[GitHub：上的 service-bus-sessions.js](https://github.com/Azure/logicapps/blob/master/templates/service-bus-sessions.json)。
 
-如需詳細資訊，請參閱[順序群組模式-Azure 架構雲端設計模式](https://docs.microsoft.com/azure/architecture/patterns/sequential-convoy)。
+如需詳細資訊，請參閱[順序群組模式-Azure 架構雲端設計模式](/azure/architecture/patterns/sequential-convoy)。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -116,7 +117,7 @@ ms.locfileid: "84987614"
 
 ![範本的最上層工作流程](./media/send-related-messages-sequential-convoy/template-top-level-flow.png)
 
-| Name | 說明 |
+| 名稱 | 說明 |
 |------|-------------|
 | **`When a message is received in a queue (peek-lock)`** | 根據指定的週期，此服務匯流排觸發程式會檢查指定的服務匯流排佇列中是否有任何訊息。 如果訊息存在於佇列中，則會引發觸發程式，以建立和執行工作流程實例。 <p><p>「*查看鎖定*」一詞表示觸發程式會傳送要求，以從佇列中取出訊息。 如果訊息存在，則觸發程式會抓取並鎖定訊息，直到鎖定期限到期為止，該訊息上不會進行其他處理。 如需詳細資訊，請[初始化會話](#initialize-session)。 |
 | **`Init isDone`** | 這個 [ [**初始化變數**] 動作](../logic-apps/logic-apps-create-variables-store-values.md#initialize-variable)會建立設定為的布林值變數 `false` ，並指出下列條件是否成立： <p><p>-會話中沒有其他訊息可供讀取。 <br>-不再需要更新會話鎖定，即可完成目前的工作流程實例。 <p><p>如需詳細資訊，請參閱[初始化會話](#initialize-session)。 |
@@ -132,7 +133,7 @@ ms.locfileid: "84987614"
 
 ![「嘗試」範圍動作工作流程](./media/send-related-messages-sequential-convoy/try-scope-action.png)
 
-| Name | 說明 |
+| 名稱 | 說明 |
 |------|-------------|
 | **`Send initial message to topic`** | 您可以使用您想要處理佇列中會話第一個訊息的任何動作來取代此動作。 會話識別碼會指定會話。 <p><p>針對此範本，服務匯流排動作會將第一個訊息傳送至服務匯流排主題。 如需詳細資訊，請參閱[處理初始訊息](#handle-initial-message)。 |
 | （平行分支） | 這個[平行分支動作](../logic-apps/logic-apps-control-flow-branches.md)會建立兩個路徑： <p><p>-Branch #1：繼續處理訊息。 如需詳細資訊，請參閱[Branch #1：完成佇列中的初始訊息](#complete-initial-message)。 <p><p>-Branch #2：如果發生錯誤，則會放棄訊息，另一個觸發程式執行則會發行 pickup。 如需詳細資訊，請參閱[Branch #2：放棄佇列中的初始訊息](#abandon-initial-message)。 <p><p>這兩個路徑稍後會在**佇列中加入關閉會話，並**在下一個資料列中說明成功動作。 |
@@ -143,7 +144,7 @@ ms.locfileid: "84987614"
 
 #### <a name="branch-1-complete-initial-message-in-queue"></a>分支 #1：在佇列中完成初始訊息
 
-| Name | 說明 |
+| 名稱 | 說明 |
 |------|-------------|
 | `Complete initial message in queue` | 此服務匯流排動作會將成功抓取的訊息標示為已完成，並將訊息從佇列中移除，以避免重新處理。 如需詳細資訊，請參閱[處理初始訊息](#handle-initial-message)。 |
 | `While there are more messages for the session in the queue` | 在訊息存在或一小時過後， [ **Until**迴圈](../logic-apps/logic-apps-control-flow-loops.md#until-loop)會繼續取得訊息。 如需此迴圈中動作的詳細資訊，請參閱[佇列中的會話有更多訊息](#while-more-messages-for-session)。 |
@@ -167,7 +168,7 @@ ms.locfileid: "84987614"
 
 ![「Catch」範圍動作工作流程](./media/send-related-messages-sequential-convoy/catch-scope-action.png)
 
-| Name | 說明 |
+| 名稱 | 說明 |
 |------|-------------|
 | **`Close a session in a queue and fail`** | 此服務匯流排動作會關閉佇列中的會話，讓會話鎖定不會保持開啟狀態。 如需詳細資訊，請參閱[關閉佇列中的會話並失敗](#close-session-fail)。 |
 | **`Find failure msg from 'Try' block`** | 此[**篩選陣列**動作](../logic-apps/logic-apps-perform-data-operations.md#filter-array-action)會 `Try` 根據指定的準則，從範圍內的所有動作中建立陣列。 在此情況下，此動作會傳回產生狀態之動作的輸出 `Failed` 。 如需詳細資訊，請參閱[從 ' Try ' 區塊尋找失敗](#find-failure-message)訊息。 |
@@ -192,16 +193,16 @@ ms.locfileid: "84987614"
   > [!NOTE]
   > 一開始，輪詢間隔會設定為3分鐘，讓邏輯應用程式的執行頻率不會超過預期，並導致無法預測的計費費用。 在理想的情況下，請將間隔和頻率設定為30秒，讓邏輯應用程式在訊息抵達時立即觸發。
 
-  | 屬性 | 此案例的必要 | 值 | Description |
+  | 屬性 | 此案例的必要 | 值 | 說明 |
   |----------|----------------------------|-------|-------------|
-  | **佇列名稱** | Yes | <*佇列-名稱*> | 您先前建立服務匯流排佇列的名稱。 這個範例會使用「Fabrikam-服務匯流排-佇列」。 |
-  | **佇列類型** | Yes | **主要** | 您的主要服務匯流排佇列 |
-  | **會話識別碼** | Yes | **下一個可用** | 此選項會根據服務匯流排佇列中訊息的會話識別碼，取得每個觸發程式執行的會話。 會話也會鎖定，讓其他邏輯應用程式或其他用戶端無法處理與此會話相關的訊息。 工作流程的後續動作會處理與該會話相關聯的所有訊息，如本文稍後所述。 <p><p>以下是其他**會話識別碼**選項的詳細資訊： <p>- **None**：預設選項，這會導致沒有會話，而且無法用來執行連續的群組模式。 <p>- **輸入自訂值**：當您知道想要使用的會話識別碼，而且您一律想要執行該會話識別碼的觸發程式時，請使用此選項。 <p>**注意**：服務匯流排連接器可以一次儲存有限數目的唯一會話，從 Azure 服務匯流排到連接器快取。 如果會話計數超過此限制，則會從快取中移除舊的會話。 如需詳細資訊，請參閱[使用 Azure Logic Apps 和 Azure 服務匯流排在雲端中交換訊息](../connectors/connectors-create-api-servicebus.md#connector-reference)。 |
-  | **間隔** | Yes | <*間隔數*> | 檢查訊息之前，週期之間的時間單位數。 |
-  | **頻率** | Yes | **秒**、**分鐘**、**小時**、**天**、**週**或**月** | 檢查是否有訊息時，所要使用之週期的時間單位。 <p>**提示**：若要新增**時區**或**開始時間**，請從 [**加入新的參數**] 清單中選取這些屬性。 |
+  | **佇列名稱** | 是 | <*佇列-名稱*> | 您先前建立服務匯流排佇列的名稱。 這個範例會使用「Fabrikam-服務匯流排-佇列」。 |
+  | **佇列類型** | 是 | **主要** | 您的主要服務匯流排佇列 |
+  | **會話識別碼** | 是 | **下一個可用** | 此選項會根據服務匯流排佇列中訊息的會話識別碼，取得每個觸發程式執行的會話。 會話也會鎖定，讓其他邏輯應用程式或其他用戶端無法處理與此會話相關的訊息。 工作流程的後續動作會處理與該會話相關聯的所有訊息，如本文稍後所述。 <p><p>以下是其他**會話識別碼**選項的詳細資訊： <p>- **None**：預設選項，這會導致沒有會話，而且無法用來執行連續的群組模式。 <p>- **輸入自訂值**：當您知道想要使用的會話識別碼，而且您一律想要執行該會話識別碼的觸發程式時，請使用此選項。 <p>**注意**：服務匯流排連接器可以一次儲存有限數目的唯一會話，從 Azure 服務匯流排到連接器快取。 如果會話計數超過此限制，則會從快取中移除舊的會話。 如需詳細資訊，請參閱[使用 Azure Logic Apps 和 Azure 服務匯流排在雲端中交換訊息](../connectors/connectors-create-api-servicebus.md#connector-reference)。 |
+  | **間隔** | 是 | <*間隔數*> | 檢查訊息之前，週期之間的時間單位數。 |
+  | **頻率** | 是 | **秒**、**分鐘**、**小時**、**天**、**週**或**月** | 檢查是否有訊息時，所要使用之週期的時間單位。 <p>**提示**：若要新增**時區**或**開始時間**，請從 [**加入新的參數**] 清單中選取這些屬性。 |
   |||||
 
-  如需詳細的觸發程式資訊，請參閱[服務匯流排-在佇列中收到訊息時（查看鎖定）](https://docs.microsoft.com/connectors/servicebus/#when-a-message-is-received-in-a-queue-(peek-lock))。 觸發程式會輸出[ServiceBusMessage](https://docs.microsoft.com/connectors/servicebus/#servicebusmessage)。
+  如需詳細的觸發程式資訊，請參閱[服務匯流排-在佇列中收到訊息時（查看鎖定）](/connectors/servicebus/#when-a-message-is-received-in-a-queue-(peek-lock))。 觸發程式會輸出[ServiceBusMessage](/connectors/servicebus/#servicebusmessage)。
 
 初始化會話之後，工作流程會使用 [**初始化變數**] 動作來建立一個初始設定為的布林值變數， `false` 並指出下列條件是否成立： 
 
@@ -415,10 +416,10 @@ ms.locfileid: "84987614"
 
 ## <a name="save-and-run-logic-app"></a>儲存並執行邏輯應用程式
 
-完成範本之後，您現在可以儲存邏輯應用程式。 在設計工具的工具列上，選取 [儲存]****。
+完成範本之後，您現在可以儲存邏輯應用程式。 在設計工具的工具列上，選取 [儲存]。
 
 若要測試您的邏輯應用程式，請將訊息傳送至服務匯流排的佇列。 
 
 ## <a name="next-steps"></a>後續步驟
 
-* 深入瞭解[服務匯流排連接器的觸發程式和動作](https://docs.microsoft.com/connectors/servicebus/)
+* 深入瞭解[服務匯流排連接器的觸發程式和動作](/connectors/servicebus/)

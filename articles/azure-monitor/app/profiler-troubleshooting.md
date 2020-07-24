@@ -6,17 +6,17 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 7c9dd20aea410aecb34811ca6e08e0f641be292b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aa9b186e74ed3b8fe5496afd5b21c54f50537d5f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84148339"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87049783"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>針對啟用或檢視 Application Insights Profiler 的問題進行疑難排解
 
-## <a name="active-issues"></a>作用中問題
-
-* Azure App 服務現在支援 ASP.NET Core 3.x 應用程式的分析。
+> [!CAUTION]
+> Azure App Service 上執行 ASP.NET Core 應用程式的 profiler 時發生錯誤。 我們有修正程式，但需要幾周的時間來部署全球。 您可以使用[這裡](./asp-net-core.md#enable-application-insights-server-side-telemetry-visual-studio)的指示，將 Application Insights SDK 新增至您的應用程式，以解決 bug。
 
 ## <a name="general-troubleshooting"></a><a id="troubleshooting"></a>一般疑難排解
 
@@ -75,7 +75,7 @@ Profiler 會將追蹤訊息和自訂事件寫入至您的 Application Insights �
 
 
 * **ApplicationInsightsProfiler3** WebJob 必須正在執行。 若要檢查 WebJob：
-   1. 移至 [Kudu](https://blogs.msdn.microsoft.com/cdndevs/2015/04/01/the-kudu-debug-console-azure-websites-best-kept-secret/)。
+   1. 移至 [Kudu](/archive/blogs/cdndevs/the-kudu-debug-console-azure-websites-best-kept-secret)。
    1. 在 [工具]**** 功能表中，選取 [WebJob 儀表板]****。  
       [WebJob]**** 窗格隨即開啟。 
    
@@ -193,11 +193,3 @@ Profiler 會在 Web 應用程式中以連續 WebJob 的形式執行。 您可以
 [profiler-search-telemetry]:./media/profiler-troubleshooting/Profiler-Search-Telemetry.png
 [profiler-webjob]:./media/profiler-troubleshooting/Profiler-webjob.png
 [profiler-webjob-log]:./media/profiler-troubleshooting/Profiler-webjob-log.png
-
-
-
-
-
-
-
-

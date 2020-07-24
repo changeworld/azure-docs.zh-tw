@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/06/2020
 ms.author: juergent
-ms.openlocfilehash: a9041b373c215ac226764b737ee3bf35b008e5db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d453fba37e62e8528ae7b4ea86d1604973b84a1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82978377"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87051988"
 ---
 # <a name="high-availability-of-ibm-db2-luw-on-azure-vms-on-suse-linux-enterprise-server-with-pacemaker"></a>使用 Pacemaker SUSE Linux Enterprise Server 上的 Azure Vm 上的 IBM Db2 LUW 高可用性
 
@@ -32,7 +33,7 @@ ms.locfileid: "82978377"
 
 在開始安裝之前，請參閱下列 SAP 附注和檔：
 
-| SAP 附注 | Description |
+| SAP 附注 | 說明 |
 | --- | --- |
 | [1928533] | Azure 上的 SAP 應用程式：支援的產品和 Azure VM 類型 |
 | [2015553] | Azure 上的 SAP：支援必要條件 |
@@ -59,7 +60,7 @@ ms.locfileid: "82978377"
 | [IBM Db2 HADR R 10。5][db2-hadr-10.5] |
 
 ## <a name="overview"></a>總覽
-為了達到高可用性，IBM Db2 LUW with HADR 會安裝在至少兩個 Azure 虛擬機器上，它們會部署在[azure 可用性設定組](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets)或跨[Azure 可用性區域](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ha-availability-zones)。 
+為了達到高可用性，IBM Db2 LUW with HADR 會安裝在至少兩個 Azure 虛擬機器上，它們會部署在[azure 可用性設定組](../../windows/tutorial-availability-sets.md)或跨[Azure 可用性區域](./sap-ha-availability-zones.md)。 
 
 下列圖形顯示兩個資料庫伺服器 Azure Vm 的設定。 這兩個資料庫伺服器 Azure Vm 都有自己的儲存體，且已啟動並執行。 在 HADR 中，其中一個 Azure Vm 中的一個資料庫實例具有主要實例的角色。 所有用戶端都已連線到此主要實例。 資料庫交易中的所有變更都會保存在 Db2 交易記錄檔的本機。 當交易記錄檔記錄在本機保存時，記錄會透過 TCP/IP 傳輸到第二個資料庫伺服器、待命伺服器或待命實例上的資料庫實例。 待命實例會藉由向前復原已傳送的交易記錄檔記錄來更新本機資料庫。 如此一來，待命伺服器就會與主伺服器保持同步。
 
@@ -109,7 +110,7 @@ HADR 只是一種複寫功能。 它沒有任何失敗偵測，也沒有自動�
 | Azure Load Balancer | 使用基本或標準（建議），適用于 Db2 資料庫的探查埠（我們的建議62500）**探查-埠**。 |
 | 名稱解析| 名稱解析在環境中的運作方式。 強烈建議使用 DNS 服務。 可以使用本機主機檔案。 |
     
-如需 Azure 中 Linux Pacemaker 的詳細資訊，請參閱在[azure 中的 SUSE Linux Enterprise Server 上設定 Pacemaker](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker)。
+如需 Azure 中 Linux Pacemaker 的詳細資訊，請參閱在[azure 中的 SUSE Linux Enterprise Server 上設定 Pacemaker](./high-availability-guide-suse-pacemaker.md)。
 
 ## <a name="deployment-on-suse-linux"></a>在 SUSE Linux 上部署
 
@@ -395,10 +396,10 @@ sudo crm configure property maintenance-mode=false</pre></code>
 
 
 ### <a name="configure-azure-load-balancer"></a>設定 Azure 負載平衡器
-若要設定 Azure Load Balancer，建議使用[Azure STANDARD LOAD BALANCER SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview) ，然後執行下列動作：
+若要設定 Azure Load Balancer，建議使用[Azure STANDARD LOAD BALANCER SKU](../../../load-balancer/load-balancer-overview.md) ，然後執行下列動作：
 
 > [!NOTE]
-> Standard Load Balancer SKU 有從 Load Balancer 之下的節點存取公用 IP 位址的限制。 在[SAP 高可用性案例中使用 Azure Standard Load Balancer 虛擬機器的公用端點](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)連線一文說明如何讓這些節點存取公用 IP 位址的方式
+> Standard Load Balancer SKU 有從 Load Balancer 之下的節點存取公用 IP 位址的限制。 在[SAP 高可用性案例中使用 Azure Standard Load Balancer 虛擬機器的公用端點](./high-availability-guide-standard-load-balancer-outbound-connections.md)連線一文說明如何讓這些節點存取公用 IP 位址的方式
 
 1. 建立前端 IP 集區：
 
@@ -494,11 +495,11 @@ j2ee/dbhost = db-virt-hostname
 
 我們建議您設定一個通用 NFS 共用，其中記錄是從兩個節點寫入。 NFS 共用必須具有高度可用性。 
 
-您可以使用現有的高可用性 NFS 共用來進行傳輸或設定檔目錄。 如需詳細資訊，請參閱：
+您可以使用現有的高可用性 NFS 共用來進行傳輸或設定檔目錄。 如需詳細資訊，請參閱
 
 - [SUSE Linux Enterprise Server 上 Azure VM 的 NFS 高可用性][nfs-ha] 
-- [SUSE Linux Enterprise Server 上的 Azure Vm 上的 SAP NetWeaver 高可用性與適用于 SAP 應用程式的 Azure NetApp Files](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files)
-- [Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-introduction) （用來建立 NFS 共用）
+- [SUSE Linux Enterprise Server 上的 Azure Vm 上的 SAP NetWeaver 高可用性與適用于 SAP 應用程式的 Azure NetApp Files](./high-availability-guide-suse-netapp-files.md)
+- [Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-introduction.md) （用來建立 NFS 共用）
 
 
 ## <a name="test-the-cluster-setup"></a>測試叢集設定
@@ -878,8 +879,8 @@ stonith-sbd     (stonith:external/sbd): Started azibmdb02
      Slaves: [ azibmdb01 ]</code></pre>
 
 ## <a name="next-steps"></a>後續步驟
-- [SAP NetWeaver 的高可用性架構和案例](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-architecture-scenarios)
-- [在 Azure 中的 SUSE Linux Enterprise Server 上設定 Pacemaker](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker)
+- [SAP NetWeaver 的高可用性架構和案例](./sap-high-availability-architecture-scenarios.md)
+- [在 Azure 中的 SUSE Linux Enterprise Server 上設定 Pacemaker](./high-availability-guide-suse-pacemaker.md)
 
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [2015553]:https://launchpad.support.sap.com/#/notes/2015553

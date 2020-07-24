@@ -5,21 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 04/15/2020
+ms.date: 07/20/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
-ms.reviewer: sahenry
+ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7997359fb29afc876b184b811e0409cfdbeb265a
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 2eff16e0d1aa242ed4ca8b427c7af8e8defa7804
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83826463"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87051299"
 ---
-# <a name="password-management-frequently-asked-questions"></a>密碼管理常見問題集
+# <a name="self-service-password-reset-frequently-asked-questions"></a>自助式密碼重設常見問題
 
-以下是與密碼重設相關之所有事項的一些常見問題 (FAQ)。
+以下是與自助密碼重設相關之所有事項的一些常見問題（FAQ）。
 
 如果您有關於 Azure Active Directory (Azure AD) 和自助式密碼重設 (SSPR) 的一般問題，但在這裡找不到答案，則可以在 [Microsoft 的 Azure Active Directory 問與答頁面](https://docs.microsoft.com/answers/topics/azure-active-directory.html)向社群尋求協助。 社群的成員包括工程師、產品經理、MVP 和夥伴 IT 專業人員。
 
@@ -37,7 +38,7 @@ ms.locfileid: "83826463"
 
   > **答：** 是。 只要已啟用密碼重設功能且使用者已獲得授權，他們就可以前往密碼重設註冊入口網站 (https://aka.ms/ssprsetup) ) 註冊其驗證資訊。 使用者也可以透過「存取面板」(https://myapps.microsoft.com) ) 進行註冊。 若要透過「存取面板」註冊，使用者必須選取其個人資料圖片，請選取 [設定檔]，然後選取 [註冊密碼重設] 選項。
   >
-  >
+  > 如果您啟用[合併註冊](concept-registration-mfa-sspr-combined.md)，使用者可以同時註冊 SSPR 和 Azure 多重要素驗證。
 * **問：如果針對群組啟用密碼重設，之後又決定針對所有人啟用，我的使用者需要重新註冊嗎？**
 
   > **答：** 否。 已填入驗證資料的使用者不需要重新註冊。

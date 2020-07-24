@@ -1,5 +1,5 @@
 ---
-title: Azure Synapse SQL 架構
+title: Synapse SQL 架構
 description: 了解 Azure Synapse SQL 如何將大量平行處理 (MPP) 與 Azure 儲存體結合，以達到高效能和延展性。
 services: synapse-analytics
 author: mlee3gsd
@@ -10,11 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: d073bc82b3a9e42e443caa5d3e7855fd4eb5b98b
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 9f2f3eee12bb8741f6d079f6f081a08f4e2db9b5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658908"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046868"
 ---
 # <a name="azure-synapse-sql-architecture"></a>Azure Synapse SQL 架構 
 

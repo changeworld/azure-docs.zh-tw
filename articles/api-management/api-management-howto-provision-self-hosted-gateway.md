@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: apimpm
-ms.openlocfilehash: 2870a654faad4e760a9d022488cb2c4c406cbeab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e79248e16ca21ae84022f8ac7f280d93f489c6a4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82203126"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050353"
 ---
 # <a name="provision-a-self-hosted-gateway-in-azure-api-management"></a>在 Azure API 管理中布建自我裝載閘道
 
@@ -31,7 +31,7 @@ ms.locfileid: "82203126"
 
 ## <a name="provision-a-self-hosted-gateway"></a>佈建自我裝載閘道
 
-1. 從 [**設定**] 底下選取**閘道**。
+1. 從 [**部署和基礎結構**] 底下選取**閘道**。
 2. 按一下 [+ 新增]。
 3. 輸入閘道的 [**名稱**] 和 [**區域**]。
 > [!TIP]
@@ -42,7 +42,7 @@ ms.locfileid: "82203126"
 > [!IMPORTANT]
 > 根據預設，不會有任何現有的 Api 與新的閘道資源相關聯。 因此，會透過新的閘道嘗試叫用它們，將會產生 `404 Resource Not Found` 回應。
 
-6. 按一下 **[新增]** 。
+6. 按一下 [新增] 。
 
 閘道資源現在已布建在您的 API 管理實例中。 您可以繼續部署閘道。
 

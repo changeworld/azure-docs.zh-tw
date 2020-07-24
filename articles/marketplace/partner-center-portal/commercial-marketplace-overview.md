@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 05/19/2020
-ms.openlocfilehash: 676a0471ad4321f37cf6dd854d6d98083723f5de
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 8f827d3e983a50589975eca59808bd1471fe4810
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86116687"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87047599"
 ---
 # <a name="overview-of-the-commercial-marketplace-portal-in-partner-center"></a>合作夥伴中心的商業市集入口網站概觀
 
@@ -28,9 +28,9 @@ ms.locfileid: "86116687"
 
 ## <a name="migration-from-the-cloud-partner-portal"></a>從 Cloud Partner 入口網站移轉
 
-合作夥伴中心正在持續演進，以更佳整合我們與軟體發行者在所有層面上的關係。 作為此演進的一部分，我們已將所有商業市集供應項目的管理從 [Cloud Partner 入口網站](https://cloudpartner.azure.com/)移轉到合作夥伴中心。
+合作夥伴中心正在持續演進，以更佳整合我們與軟體發行者在所有層面上的關係。 在此演進過程中，我們已將所有商業 marketplace 供應專案管理從 Cloud Partner 入口網站（CPP）遷移至合作夥伴中心。
 
-先前使用 Cloud Partner 入口網站的現有發行者，將能在合作夥伴中心感受到熟悉但改善的直覺使用者體驗。 系統會順暢地將使用者引導到適當的位置。 客戶將不會受到此合作夥伴體驗升級的影響。
+先前使用 CPP 的現有發行者會發現熟悉但改良且直覺的合作夥伴中心使用者體驗。 系統會順暢地將使用者引導到適當的位置。 客戶將不會受到此合作夥伴體驗升級的影響。
 
 ### <a name="improvements-on-publishing-and-offer-management-user-experience"></a>針對發佈及供應項目管理使用者體驗的改善
 

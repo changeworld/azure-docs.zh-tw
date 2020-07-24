@@ -73,8 +73,6 @@
               href: how-dev-spaces-works-routing.md
             - name: 遠端偵錯
               href: how-dev-spaces-works-remote-debugging.md
-            - name: 將 Kubernetes 與本機處理序搭配使用
-              href: how-dev-spaces-works-local-process-kubernetes.md
         - name: VS Code 如可與 Dev Spaces 搭配使用
           href: how-vs-code-works-with-dev-spaces.md
         - name: 不同網路拓撲中的網路設定
@@ -111,10 +109,6 @@
           href: how-to/ingress-https-traefik.md
         - name: 針對自訂輸入和 HTTPS 使用 NGINX
           href: how-to/ingress-https-nginx.md
-        - name: 將 Visual Studio Code 和 Kubernetes 與本機處理序搭配使用 (預覽)
-          href: how-to/local-process-kubernetes-vs-code.md
-        - name: 將 Visual Studio 和 Kubernetes 與本機處理序搭配使用 (預覽)
-          href: how-to/local-process-kubernetes-visual-studio.md
     - name: 疑難排解
       href: troubleshooting.md
     - name: 常見問題集

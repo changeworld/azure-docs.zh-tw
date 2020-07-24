@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: 使用 Azure 原則大規模套用叢集設定
 keywords: Kubernetes, Arc, Azure, K8s, 容器
-ms.openlocfilehash: 26b291e2a957047361d4f52eeff58cbe8aa8c633
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: e4279f3d89376320116067bf191e3196271918ce
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86111264"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050040"
 ---
 # <a name="use-azure-policy-to-apply-cluster-configurations-at-scale-preview"></a>使用 Azure 原則大規模套用叢集設定 (預覽)
 
@@ -23,6 +23,10 @@ ms.locfileid: "86111264"
 
 如果您使用多個 Git 存放庫作為每個叢集的真實來源 (例如，一個適用於中央 IT/叢集操作員的存放庫，以及其他適用於應用程式小組的存放庫)，您可以使用多個原則指派來啟用此項，並將每個原則指派設定為使用不同的 Git 存放庫。
 
+## <a name="prerequisite"></a>必要條件
+
+請確定您在 `Microsoft.Authorization/policyAssignments/write` 要建立此原則指派的範圍（訂用帳戶或資源群組）上具有許可權。
+
 ## <a name="create-a-policy-assignment"></a>建立原則指派
 
 1. 在 Azure 入口網站中，瀏覽至 [原則]，然後在提要欄位的 [製作] 區段中，選取 [定義]。
@@ -31,7 +35,7 @@ ms.locfileid: "86111264"
 4. 如果您想要從原則範圍中排除任何資源，則設定**排除**。
 5. 為原則指派賦予**名稱**和**描述**，讓您能夠輕鬆識別該原則。
 6. 確定已將 [原則強制執行] 設定為 [已啟用]。
-7. 選取 [下一步] 。
+7. 選取 [下一步]。
 8. 設定將在 `sourceControlConfiguration` 建立期間使用的參數值。
 9. 選取 [下一步] 。
 10. 啟用 [建立補救工作]。
@@ -42,7 +46,7 @@ ms.locfileid: "86111264"
 
 ## <a name="verify-a-policy-assignment"></a>驗證原則指派
 
-1. 在 Azure 入口網站中，瀏覽至您的其中一個 `connectedCluster` 資源，然後在提要欄位的 [設定] 區段中，選取 [原則] (尚未實作 AKS 受控叢集的 UX，但即將推出)。
+1. 在 Azure 入口網站中，瀏覽至您的其中一個 `connectedCluster` 資源，然後在提要欄位的 [設定] 區段中，選取 [原則] （AKS 叢集的 UX 尚未實行，但即將推出）。
 2. 在清單中，您應該會看到您先前所建立的原則指派，而且**合規性狀態**應該「符合規範」。
 3. 在提要欄位的 [設定] 區段中，選取 [設定]。
 4. 在清單中，您應該會看到原則指派所建立的 `sourceControlConfiguration`。
