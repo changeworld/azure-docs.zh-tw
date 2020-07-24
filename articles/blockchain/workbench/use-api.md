@@ -4,12 +4,12 @@ description: 如何使用 Azure Blockchain Workbench 預覽 REST API 的案例
 ms.date: 03/05/2020
 ms.topic: how-to
 ms.reviewer: brendal
-ms.openlocfilehash: 7c96e45c8bcc9834df7ef2a0b2a59f53fd8315cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 696f1f2f96034f7a044f6a39182774c02804518f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85210057"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87003061"
 ---
 # <a name="using-the-azure-blockchain-workbench-preview-rest-api"></a>使用 Azure Blockchain Workbench 預覽 REST API
 
@@ -32,7 +32,7 @@ Blockchain Workbench Api 是透過部署的端點來存取。 若要取得部署
 
 Blockchain Workbench REST API 的要求會使用 Azure Active Directory （Azure AD）來保護。
 
-若要向 REST Api 提出已驗證的要求，用戶端程式代碼必須先使用有效的認證進行驗證，然後才能呼叫 API。 驗證會在各種動作專案之間進行協調，Azure AD，並為您的用戶端提供[存取權杖](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#access-token)，做為驗證的證明。 然後，權杖會在 REST API 要求的 HTTP 授權標頭中傳送。 若要深入瞭解 Azure AD 驗證，請參閱[適用于開發人員的 Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)。
+若要向 REST Api 提出已驗證的要求，用戶端程式代碼必須先使用有效的認證進行驗證，然後才能呼叫 API。 驗證會在各種動作專案之間進行協調，Azure AD，並為您的用戶端提供[存取權杖](../../active-directory/develop/developer-glossary.md#access-token)，做為驗證的證明。 然後，權杖會在 REST API 要求的 HTTP 授權標頭中傳送。 若要深入瞭解 Azure AD 驗證，請參閱[適用于開發人員的 Azure Active Directory](../../active-directory/develop/index.yml)。
 
 如需如何驗證的範例，請參閱[REST API 範例](https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/rest-api-samples)。
 
@@ -44,7 +44,7 @@ Blockchain Workbench REST API 的要求會使用 Azure Active Directory （Azure
 
 您會使用兩個 API 呼叫來建立 Blockchain Workbench 應用程式。 只有身為工作臺系統管理員的使用者才能執行此方法。
 
-使用[應用程式 POST API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/applicationspost)來上傳應用程式的 JSON 檔案，並取得應用程式識別碼。
+使用[應用程式 POST API](/rest/api/azure-blockchain-workbench/applications/applicationspost)來上傳應用程式的 JSON 檔案，並取得應用程式識別碼。
 
 ### <a name="applications-post-request"></a>應用程式 POST 要求
 
@@ -70,7 +70,7 @@ Content-Type: "application/json"
 
 ### <a name="contract-code-post-request"></a>合約程式碼 POST 要求
 
-藉由傳遞應用程式識別碼來上傳應用程式的密度程式碼檔案，以使用[應用程式合約代碼 POST API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/contractcodepost) 。 裝載可以是單一的密度檔案或包含密度檔案的 zip 壓縮檔案。
+藉由傳遞應用程式識別碼來上傳應用程式的密度程式碼檔案，以使用[應用程式合約代碼 POST API](/rest/api/azure-blockchain-workbench/applications/contractcodepost) 。 裝載可以是單一的密度檔案或包含密度檔案的 zip 壓縮檔案。
 
 取代下列值：
 
@@ -98,7 +98,7 @@ Content-Type: "application/json"
 
 ## <a name="assign-roles-to-users"></a>將角色指派給使用者
 
-藉由傳遞應用程式識別碼、使用者識別碼和應用程式角色識別碼，在指定的區塊鏈應用程式中建立使用者對角色的對應，以使用[應用程式角色指派 POST API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/roleassignmentspost) 。 只有身為工作臺系統管理員的使用者才能執行此方法。
+藉由傳遞應用程式識別碼、使用者識別碼和應用程式角色識別碼，在指定的區塊鏈應用程式中建立使用者對角色的對應，以使用[應用程式角色指派 POST API](/rest/api/azure-blockchain-workbench/applications/roleassignmentspost) 。 只有身為工作臺系統管理員的使用者才能執行此方法。
 
 ### <a name="role-assignments-post-request"></a>角色指派張貼要求
 
@@ -132,7 +132,7 @@ HTTP/1.1 200
 
 ## <a name="list-applications"></a>列出應用程式
 
-使用[應用程式取得 API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/applicationsget)來抓取使用者的所有 Blockchain Workbench 應用程式。 在此範例中，已登入的使用者可存取兩個應用程式：
+使用[應用程式取得 API](/rest/api/azure-blockchain-workbench/applications/applicationsget)來抓取使用者的所有 Blockchain Workbench 應用程式。 在此範例中，已登入的使用者可存取兩個應用程式：
 
 - [資產轉送](https://github.com/Azure-Samples/blockchain/blob/master/blockchain-workbench/application-and-smart-contract-samples/asset-transfer/readme.md)
 - [冷藏運輸](https://github.com/Azure-Samples/blockchain/blob/master/blockchain-workbench/application-and-smart-contract-samples/refrigerated-transportation/readme.md)
@@ -180,7 +180,7 @@ Content-type: application/json
 
 ## <a name="list-workflows-for-an-application"></a>列出應用程式的工作流程
 
-使用[應用程式工作流程取得 API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/workflowsget) ，列出使用者在 Blockchain Workbench 中可存取之指定區塊鏈應用程式的所有工作流程。 每個區塊鏈應用程式都有一或多個工作流程，每個工作流程都會有零個執行個體或有智慧合約執行個體。 如果區塊鏈用戶端應用程式只有一個工作流程，則建議略過可讓使用者選取適用工作流程的使用者體驗流程。
+使用[應用程式工作流程取得 API](/rest/api/azure-blockchain-workbench/applications/workflowsget) ，列出使用者在 Blockchain Workbench 中可存取之指定區塊鏈應用程式的所有工作流程。 每個區塊鏈應用程式都有一或多個工作流程，每個工作流程都會有零個執行個體或有智慧合約執行個體。 如果區塊鏈用戶端應用程式只有一個工作流程，則建議略過可讓使用者選取適用工作流程的使用者體驗流程。
 
 ### <a name="application-workflows-request"></a>應用程式工作流程要求
 
@@ -214,7 +214,7 @@ Content-type: application/json
 
 ## <a name="create-a-contract-instance"></a>建立合約實例
 
-使用[合約 V2 POST API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/contractsv2/contractpost)為工作流程建立新的智慧合約實例。 使用者只有在使用者與應用程式角色相關聯時，才能夠建立新的智慧合約實例，這可以起始工作流程的智慧合約實例。
+使用[合約 V2 POST API](/rest/api/azure-blockchain-workbench/contractsv2/contractpost)為工作流程建立新的智慧合約實例。 使用者只有在使用者與應用程式角色相關聯時，才能夠建立新的智慧合約實例，這可以起始工作流程的智慧合約實例。
 
 > [!NOTE]
 > 在此範例中，會使用 API 的第2版。 第2版合約 Api 為相關聯的 ProvisioningStatus 欄位提供更多的資料細微性。
@@ -475,6 +475,6 @@ HTTP/1.1 200 OK
 Content-type: application/json
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-如需 Blockchain Workbench Api 的參考資訊，請參閱[Azure Blockchain Workbench REST API 參考](https://docs.microsoft.com/rest/api/azure-blockchain-workbench)。
+如需 Blockchain Workbench Api 的參考資訊，請參閱[Azure Blockchain Workbench REST API 參考](/rest/api/azure-blockchain-workbench)。

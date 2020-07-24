@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/27/2019
 ms.author: mlottner
-ms.openlocfilehash: fe117cf8d05ba3392b71858acf94d1fc88c1a527
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 98afd1eb1f8a73c2d6dd3f293a07cdb70780d238
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81311570"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87004761"
 ---
 # <a name="pricing-and-associated-costs"></a>定價和相關成本
 
@@ -50,11 +50,11 @@ IoT 的 Azure 資訊安全中心有相關聯的成本，而這不是直接定價
 
 1. 在 [**安全性**] 底下，按一下 **[總覽**]。
 
-1. 按一下 [設定]。
+1. 按一下 [設定] 。
 
 下表提供每個選項的相關費用和含意的摘要。
 
-|     | 使用方式 | 註解 |
+| 選項 | 使用方式 | 註解 |
 | --- | --- | --- |
 | **Log Analytics 儲存體** |  |
 | 裝置建議和警示| 服務產生的安全性建議和警示 | 非選擇性 |

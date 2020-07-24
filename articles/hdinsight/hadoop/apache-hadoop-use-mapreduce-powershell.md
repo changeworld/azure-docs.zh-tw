@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/08/2020
-ms.openlocfilehash: bd6d02ce1cd60a6d54047139f06fa59f359f9da9
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: ff0c7001184af58432a7915b3a7df29f900bedec
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202418"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006597"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-powershell"></a>使用 PowerShell 搭配執行 MapReduce 工作與 HDInsight 上的 Apache Hadoop
 
@@ -25,7 +25,7 @@ ms.locfileid: "86202418"
 
 * HDInsight 上的 Apache Hadoop 叢集。 請參閱[使用 Azure 入口網站建立 Apache Hadoop](../hdinsight-hadoop-create-linux-clusters-portal.md)叢集。
 
-* 安裝 PowerShell [Az 模組](https://docs.microsoft.com/powershell/azure/overview)。
+* 安裝 PowerShell [Az 模組](https://docs.microsoft.com/powershell/azure/)。
 
 ## <a name="run-a-mapreduce-job"></a>執行 MapReduce 作業
 
@@ -99,7 +99,7 @@ Get-AzHDInsightJobOutput `
 
 這個 Cmdlet 會傳回作業執行時寫入到 STDERR 的資訊。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 如您所見，Azure PowerShell 提供簡單的方法，在 HDInsight 叢集上執行 MapReduce 工作、監視工作狀態，以及擷取輸出。 如需您可以在 HDInsight 上使用 Hadoop 之其他方式的詳細資訊：
 

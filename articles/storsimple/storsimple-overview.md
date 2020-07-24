@@ -14,17 +14,18 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/10/2017
 ms.author: timlt
-ms.openlocfilehash: 2a6650cac975c575415a329361da00d4fbfcaa9d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 64f91263154f7e65238acdcef9d97e5f2d09aad5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68965125"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006011"
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>StorSimple 8000 系列：混合式雲端存放解決方案
 
 [!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 歡迎使用 Microsoft Azure StorSimple，StorSimple 是一個整合式儲存體解決方案，可管理內部部署裝置與 Microsoft Azure 雲端儲存體之間的儲存體工作。 StorSimple 是一個有效率、符合成本效益且易於管理的存放區域網路 (SAN) 解決方案，可減少許多與企業儲存體和資料保護相關聯的問題和支出。 它使用專屬的 StorSimple 8000 系列裝置、與雲端服務整合以及提供一組管理工具，提供所有企業儲存體 (包括雲端儲存體) 的整體檢視。 (發佈於 Microsoft Azure 網站上的 StorSimple 部署資訊僅適用於 StorSimple 8000 系列裝置。 如果您使用 StorSimple 5000/7000 系列裝置，請至 [StorSimple 說明](http://onlinehelp.storsimple.com/))。
 
 StorSimple 使用 [儲存體分層](#automatic-storage-tiering) 管理各種儲存媒體中儲存的資料。 目前的工作集是以內部部署的方式儲存在固態硬碟 (SSD) 中，較不常使用的資料會儲存於硬碟機 (HDD)，而封存資料則會推送到雲端。 此外，StorSimple 使用重複資料刪除和壓縮來減少資料使用的儲存體數量。 如需詳細資訊，請至 [重複資料刪除和壓縮](#deduplication-and-compression)。 如需 StorSimple 8000 系列文件中使用的其他主要詞彙和概念定義，請至這篇文章的結尾的 [StorSimple 詞彙](#storsimple-terminology) 。
@@ -59,7 +60,7 @@ Microsoft Azure StorSimple 解決方案包括下列元件：
 * **StorSimple 雲端設備** – 也稱為 StorSimple 虛擬設備，這是 StorSimple 裝置的軟體版本，可複寫實體混合式存放裝置的架構和大部分功能。 StorSimple 雲端設備會在 Azure 虛擬機器中的單一節點上執行。 可利用 Azure 進階儲存體帳戶的高階虛擬裝置可在 Update 2 及更新版本中使用。
 * **StorSimple 裝置管理員服務** – Azure 入口網站的延伸模組，可讓您透過單一 Web 介面管理 StorSimple 裝置或 StorSimple 雲端設備。 您可以使用 StorSimple 裝置管理員服務來建立和管理服務、檢視和管理裝置、檢視警示、管理磁碟區，以及檢視和管理備份原則與備份目錄。
 * **Windows PowerShell for StorSimple** – 可讓您管理 StorSimple 裝置的命令列介面。 Windows PowerShell for StorSimple 的功能包括：可讓您註冊您的 StorSimple 裝置、在您的裝置上設定網路介面、安裝特定類型的更新，以及透過存取支援工作階段及變更裝置狀態來疑難排解您的裝置。 藉由連接至序列主控台或使用 Windows PowerShell 遠端處理，您可以存取 Windows PowerShell for StorSimple。
-* **Azure PowerShell StorSimple Cmdlet** – 一組 Windows PowerShell Cmdlet，可讓您從命令列將服務層級和移轉工作自動化。 如需適用於 StorSimple 的 Azure PowerShell Cmdlet 的詳細資訊，請移至 [Cmdlet 參考](/powershell/module/servicemanagement/azure/?view=azuresmps-3.7.0#azure)。
+* **Azure PowerShell StorSimple Cmdlet** – 一組 Windows PowerShell Cmdlet，可讓您從命令列將服務層級和移轉工作自動化。 如需適用於 StorSimple 的 Azure PowerShell Cmdlet 的詳細資訊，請移至 [Cmdlet 參考](/powershell/module/servicemanagement/azure.service/?view=azuresmps-3.7.0#azure)。
 * **StorSimple Snapshot Manager** – MMC 嵌入式管理單元，可使用磁碟區群組和 Windows 磁碟區陰影複製服務產生應用程式一致備份。 此外，您可以使用 StorSimple Snapshot Manager 建立備份排程及複製或還原磁碟區。
 * **StorSimple Adapter for SharePoint** – 此工具可將 Microsoft Azure StorSimple 儲存體和資料保護明確延伸至 SharePoint 伺服器陣列，並可讓您從 SharePoint 管理中心入口網站檢視和管理 StorSimple 儲存體。
 
@@ -128,7 +129,7 @@ Windows PowerShell for StorSimple 提供了可用來建立和管理 Microsoft Az
 如需詳細資訊，請移至 [使用 Windows PowerShell for StorSimple 管理您的裝置](storsimple-8000-windows-powershell-administration.md)。
 
 ## <a name="azure-powershell-storsimple-cmdlets"></a>Azure PowerShell StorSimple Cmdlet
-Azure PowerShell StorSimple Cmdlet 是一組 Windows PowerShell Cmdlet 集合，可讓您從命令列將服務層級和移轉工作自動化。 如需適用於 StorSimple 的 Azure PowerShell Cmdlet 的詳細資訊，請移至 [Cmdlet 參考](/powershell/module/servicemanagement/azure/?view=azuresmps-3.7.0)。
+Azure PowerShell StorSimple Cmdlet 是一組 Windows PowerShell Cmdlet 集合，可讓您從命令列將服務層級和移轉工作自動化。 如需適用於 StorSimple 的 Azure PowerShell Cmdlet 的詳細資訊，請移至 [Cmdlet 參考](/powershell/module/servicemanagement/azure.service/?view=azuresmps-3.7.0)。
 
 ## <a name="storsimple-snapshot-manager"></a>StorSimple Snapshot Manager
 StorSimple Snapshot Manager 是 Microsoft Management Console (MMC) 嵌入式管理單元，可用來建立本機和雲端資料的一致時間點備份複本。 嵌入式管理單元會在 Windows Server 型的主機上執行。 您可以使用 StorSimple Snapshot Manager 進行下列作業：
@@ -207,12 +208,12 @@ Microsoft Azure StorSimple 會使用重複資料刪除和資料壓縮，來進�
 ## <a name="storsimple-workload-summary"></a>StorSimple 工作負載摘要
 下表顯示所支援 StorSimple 工作負載的摘要。
 
-| 狀況 | 工作負載 | 支援 | 限制 | 版本 |
+| 案例 | 工作負載 | 支援 | 限制 | 版本 |
 | --- | --- | --- | --- | --- |
-| 共同作業 |檔案共用 |Yes | |所有版本 |
-| 共同作業 |分散式檔案共用 |Yes | |所有版本 |
+| 共同作業 |檔案共用 |是 | |所有版本 |
+| 共同作業 |分散式檔案共用 |是 | |所有版本 |
 | 共同作業 |SharePoint |是* |只有使用固定在本機的磁碟區時才支援 |Update 2 和更新版本 |
-| 封存 |簡易檔案封存 |Yes | |所有版本 |
+| 封存 |簡易檔案封存 |是 | |所有版本 |
 | 虛擬化 |虛擬機器 |是* |只有使用固定在本機的磁碟區時才支援 |Update 2 和更新版本 |
 | 資料庫 |SQL |是* |只有使用固定在本機的磁碟區時才支援 |Update 2 和更新版本 |
 | 視訊監視 |視訊監視 |是* |當 StorSimple 僅供此工作負載專用時才支援 |Update 2 和更新版本 |
@@ -234,9 +235,9 @@ StorSimple 8000 系列裝置不支援下列工作負載。 如果部署於 StorS
 
 以下是 StorSimple 支援的基礎結構元件清單。
 
-| 狀況 | 工作負載 | 支援 | 限制 | 版本 |
+| 案例 | 工作負載 | 支援 | 限制 | 版本 |
 | --- | --- | --- | --- | --- |
-| 一般 |ExpressRoute |Yes | |所有版本 |
+| 一般 |ExpressRoute |是 | |所有版本 |
 | 一般 |DataCore FC |是* |使用 DataCore SANsymphony 時支援 |所有版本 |
 | 一般 |DFSR |是* |只有使用固定在本機的磁碟區時才支援 |所有版本 |
 | 一般 |編製索引 |是* |階層式磁碟區，僅支援中繼資料索引 (無資料)。<br>針對固定在本機的磁碟區，支援完整索引。 |所有版本 |
@@ -257,7 +258,7 @@ StorSimple 8000 系列裝置不支援下列工作負載。 如果部署於 StorS
 在部署 Microsoft Azure StorSimple 解決方案，我們建議您檢閱下列詞彙和定義。
 
 ### <a name="key-terms-and-definitions"></a>重要詞彙和定義
-| 術語 (首字母縮寫或縮寫) | Description |
+| 術語 (首字母縮寫或縮寫) | 描述 |
 | --- | --- |
 | 存取控制記錄 (ACR) |與 Microsoft Azure StorSimple 裝置上的磁碟區相關聯的記錄，決定哪些主機可連接到其中。 此決定根據連接到 StorSimple 裝置之主機 (包含在 ACR 中) 的 iSCSI 合格名稱 (IQN)。 |
 | AES 256 |256 位元進階加密標準 (AES) 演算法，用於加密移入和移出雲端的資料。 |
@@ -268,7 +269,7 @@ StorSimple 8000 系列裝置不支援下列工作負載。 如果部署於 StorS
 | 備份原則 |選取磁碟區、備份類型，以及可讓您根據預先定義的排程建立備份的時間資料表。 |
 | 二進位大型物件 (BLOB) |二進位資料的集合，而這些二進位資料會在資料庫管理系統中儲存為單一實體。 BLOB 通常是影像、音訊或其他多媒體物件，但是有時二進位可執行程式碼會儲存為 BLOB。 |
 | Challenge Handshake 驗證通訊協定 (CHAP) |一種通訊協定，用來根據共用密碼的對等節點驗證連接的對等節點。 CHAP 可以是單向或雙向。 使用單向 CHAP 時，目標會驗證啟動器。 雙向 CHAP 會要求目標與啟動器相互驗證。 |
-| 複製 |磁碟區的重複複本。 |
+| clone |磁碟區的重複複本。 |
 | 雲端即層次 (CaaT) |雲端儲存體會整合成儲存體架構內的一層，以便所有儲存體形同企業儲存體網路的一部分。 |
 | 雲端服務提供者 (CSP) |雲端運算服務的提供者。 |
 | 雲端快照 |雲端中儲存之磁碟區資料的時間點複本。 雲端快照相當於在不同的異地儲存體系統上複寫的快照。 雲端快照在災害復原案例中特別有用。 |
@@ -312,6 +313,6 @@ StorSimple 8000 系列裝置不支援下列工作負載。 如果部署於 StorS
 | 磁碟區陰影複製服務 (VSS) |一種 Windows Server 作業系統服務，可藉由與 VSS 感知應用程式通訊，來協調建立增量快照，以促進應用程式一致性。 VSS 確保取得快照時應用程式會暫時停用。 |
 | Windows PowerShell for StorSimple |用來操作和管理 StorSimple 裝置的 Windows PowerShell 型命令列介面。 這個介面具備 Windows PowerShell 的一些基本功能，同時又具有額外的專用 Cmdlet，相互搭配來管理 StorSimple 裝置。 |
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 深入了解 [StorSimple 安全性](storsimple-8000-security.md)。
 

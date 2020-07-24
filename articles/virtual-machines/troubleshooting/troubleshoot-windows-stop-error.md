@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 06/26/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 67064cf694445acf8472b958660133c2f2d31db9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 33b4c59e14301e496d0eddafa7bdfdf201b7aa29
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85660782"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005900"
 ---
 # <a name="windows-stop-error---status-no-memory"></a>Windows 停止錯誤 - 狀態無記憶體
 
@@ -26,7 +27,7 @@ ms.locfileid: "85660782"
 
 ## <a name="symptom"></a>徵狀
 
-當您使用 [[開機診斷](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics)] 來查看虛擬機器（VM）的螢幕擷取畫面時，您會看到螢幕擷取畫面顯示錯誤碼： `0xC0000017` 。 視您執行的 Windows 版本而定，您可能會看到此程式碼顯示在**Windows 開機管理**程式或**修復畫面**中。
+當您使用 [[開機診斷](./boot-diagnostics.md)] 來查看虛擬機器（VM）的螢幕擷取畫面時，您會看到螢幕擷取畫面顯示錯誤碼： `0xC0000017` 。 視您執行的 Windows 版本而定，您可能會看到此程式碼顯示在**Windows 開機管理**程式或**修復畫面**中。
 
    **Windows 開機管理程式**
 
@@ -56,7 +57,7 @@ ms.locfileid: "85660782"
 
 ### <a name="create-and-access-a-repair-vm"></a>建立及存取修復 VM
 
-1. 使用 [VM 修復命令的步驟 1-3](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) 準備修復 VM。
+1. 使用 [VM 修復命令的步驟 1-3](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) 準備修復 VM。
 1. 使用遠端桌面連線連線至修復 VM。
 
 ### <a name="for-generation-2-vms-assign-a-letter-to-the-extensible-firmware-interface-efi-partition"></a>針對第2代 Vm，請將字母指派給可延伸韌體介面（EFI）磁碟分割：
@@ -93,7 +94,7 @@ ms.locfileid: "85660782"
 既然中斷的磁片已連接到修復 VM，您應該確認該磁片上的作業系統有足夠的空間可正常運作。 
 
 1. 以滑鼠右鍵按一下連接的磁片磁碟機，然後選取 [**屬性**]，檢查磁片是否已滿。
-1. 如果磁片的**可用空間少於 300 Mb**，請[使用 PowerShell 將其最多擴充為 1 Tb](https://docs.microsoft.com/azure/virtual-machines/windows/expand-os-disk)。
+1. 如果磁片的**可用空間少於 300 Mb**，請[使用 PowerShell 將其最多擴充為 1 Tb](../windows/expand-os-disk.md)。
 1. 一旦磁片大小為**1 Tb**，您就必須執行磁片清理。 您可以使用 [[磁片清理] 工具](https://support.microsoft.com/help/4026616/windows-10-disk-cleanup)來釋出空間。
 1. 開啟提升許可權的命令提示字元（以系統管理員身分執行）實例，並在磁片磁碟機上執行刪除磁碟重組：
 
@@ -222,4 +223,4 @@ ms.locfileid: "85660782"
    
 ### <a name="rebuild-the-vm"></a>重建 VM
 
-使用 [VM 修復命令的步驟 5](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example)\(部分機器翻譯\)重建 VM。
+使用 [VM 修復命令的步驟 5](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example)\(部分機器翻譯\)重建 VM。

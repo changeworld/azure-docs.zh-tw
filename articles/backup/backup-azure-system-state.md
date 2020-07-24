@@ -3,12 +3,12 @@ title: 將 Windows 系統狀態備份至 Azure
 description: 了解如何將 Windows Server 和/或 Windows 電腦的系統狀態備份至 Azure。
 ms.topic: conceptual
 ms.date: 05/23/2018
-ms.openlocfilehash: 4319e03f9673baa2be01c1650ac1929204741087
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ea38b76d9a8b7b8ccc1898ed9450177da2cb2458
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85611436"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87003714"
 ---
 # <a name="back-up-windows-system-state-to-azure"></a>將 Windows 系統狀態備份至 Azure
 
@@ -40,7 +40,7 @@ ms.locfileid: "85611436"
 
     ![儲存體組態選項](./media/backup-try-azure-backup-in-10-mins/choose-storage-configuration.png)
 
-    根據預設，保存庫具有異地備援儲存體。 如果您使用 Azure 做為主要的備份儲存體端點，請繼續使用 [異地備援]****。 如果您未使用 Azure 做為主要的備份儲存體端點，則選擇 [本地備援]****，以減少 Azure 儲存體成本。 在此[儲存體備援概觀](../storage/common/storage-redundancy.md)中，深入了解[異地備援](../storage/common/storage-redundancy-grs.md)和[本地備援](../storage/common/storage-redundancy-lrs.md)儲存體選項。
+    根據預設，保存庫具有異地備援儲存體。 如果您使用 Azure 做為主要的備份儲存體端點，請繼續使用 [異地備援]****。 如果您未使用 Azure 做為主要的備份儲存體端點，則選擇 [本地備援]****，以減少 Azure 儲存體成本。 在此[儲存體備援概觀](../storage/common/storage-redundancy.md)中，深入了解[異地備援](../storage/common/storage-redundancy.md)和[本地備援](../storage/common/storage-redundancy.md)儲存體選項。
 
 您已建立了保存庫，接著請設定它來備份 Windows 系統狀態。
 
@@ -152,7 +152,7 @@ ms.locfileid: "85611436"
 
 5. 選取 [系統狀態]****，然後按一下 [確定]****。
 
-6. 按 [下一步] 。
+6. 按 [下一步]  。
 
 7. 在後續頁面中針對系統狀態備份選取所需的備份頻率和保留原則。
 
@@ -174,14 +174,14 @@ ms.locfileid: "85611436"
 
 5. 按一下 [關閉]**** 以關閉精靈。 如果您在備份程序完成之前關閉精靈，精靈會繼續在背景中執行。
     > [!NOTE]
-    > MARS 代理程式會在每個系統狀態備份之前，觸發 SFC/verifyonly 作為前置檢查的一部分。 這是為了確保在系統狀態中備份的檔案具有對應于 Windows 版本的正確版本。 如需深入瞭解系統檔案檢查程式（SFC），請參閱[這篇文章](https://docs.microsoft.com/windows-server/administration/windows-commands/sfc)。
+    > MARS 代理程式會在每個系統狀態備份之前，觸發 SFC/verifyonly 作為前置檢查的一部分。 這是為了確保在系統狀態中備份的檔案具有對應于 Windows 版本的正確版本。 如需深入瞭解系統檔案檢查程式（SFC），請參閱[這篇文章](/windows-server/administration/windows-commands/sfc)。
     >
 
 完成初始備份之後，備份主控台中會顯示 [作業已完成] **** 狀態。
 
   ![IR 已完成](./media/backup-try-azure-backup-in-10-mins/ircomplete.png)
 
-## <a name="questions"></a>有問題嗎？
+## <a name="questions"></a>有任何問題嗎？
 
 如果您有問題，或希望我們加入任何功能，請 [傳送意見反應給我們](https://feedback.azure.com/forums/258995-azure-backup)。
 

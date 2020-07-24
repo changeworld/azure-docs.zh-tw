@@ -3,14 +3,14 @@ title: 術語-個人化工具
 description: 個人化工具使用增強式學習的術語。 這些詞彙會用於 Azure 入口網站和 Api 中。
 ms.topic: conceptual
 ms.date: 04/23/2020
-ms.openlocfilehash: 3f819ff3305a7c7302eb56c83b98340946613a92
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 8177606ac6e968bd287a23554be7b9dd06d880a8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83586298"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87002857"
 ---
-# <a name="terminology"></a>詞彙
+# <a name="personalizer-terminology"></a>個人化工具術語
 
 個人化工具使用增強式學習的術語。 這些詞彙會用於 Azure 入口網站和 Api 中。
 
@@ -87,6 +87,6 @@ ms.locfileid: "83586298"
 * **個人化工具–平均**報酬：個人化工具可能達到的總報酬數平均值。
 * **平均**輪流報酬：基準和個人化工具報酬的比率–正規化于最近的1000事件。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 瞭解[道德和責任使用](ethics-responsible-use.md)

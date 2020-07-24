@@ -3,12 +3,12 @@ title: 使用事件處理器主機接收事件 - Azure 事件中樞 | Microsoft 
 description: 本文將說明 Azure 事件中樞內的事件處理器主機；此主機可簡化檢查點、租用和平行事件讀取的管理。
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 338b4e890d61aca0d48287db6f042f9dc088754b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dd11e3ef77ff665a0207a2cf7e63b1b9f2df0e08
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85320633"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87002517"
 ---
 # <a name="event-processor-host"></a>事件處理器主機
 > [!NOTE]
@@ -22,7 +22,7 @@ ms.locfileid: "85320633"
 
 Azure 事件中樞是能以低成本串流數百萬個事件的強大遙測擷取服務。 本文將說明如何使用「事件處理器主機」**(EPH) 來取用內嵌事件；事件處理器主機是智慧型取用者代理程式，可簡化檢查點、租用和平行事件讀取器的管理。  
 
-分割取用者概念是針對事件中樞調整大小的關鍵。 與[競爭取用者](https://msdn.microsoft.com/library/dn568101.aspx)模式相比，分割取用者模式可藉由消除爭奪瓶頸，以及加速端對端平行處理原則來具有高度縮放能力。
+分割取用者概念是針對事件中樞調整大小的關鍵。 與[競爭取用者](/previous-versions/msp-n-p/dn568101(v=pandp.10))模式相比，分割取用者模式可藉由消除爭奪瓶頸，以及加速端對端平行處理原則來具有高度縮放能力。
 
 ## <a name="home-security-scenario"></a>住家安全案例
 
@@ -126,7 +126,7 @@ EPH 執行個體 (或取用者) 的分割區擁有權可透過 Azure 儲存體�
 
 在處理期間的某個時間點，您可能會想追蹤已讀取並完成的事項。 如果您必須重新啟動讀取作業，追蹤就很重要，這可讓您不用回到串流的開頭。 [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) 會使用「檢查點」** 來簡化此追蹤。 檢查點是指定取用者群組中指定分割區的一個位置或位移，而且您確信您已處理該點上的訊息。 在 **EventProcessorHost** 中標記檢查點會透過 [PartitionContext](/dotnet/api/microsoft.azure.eventhubs.processor.partitioncontext) 物件上的 [CheckpointAsync](/dotnet/api/microsoft.azure.eventhubs.processor.partitioncontext.checkpointasync) 方法來完成。 這項作業通常會在 [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync) 方法內完成，但也可以在 [CloseAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.closeasync) 中完成。
 
-## <a name="checkpointing"></a>檢查點
+## <a name="checkpointing"></a>檢查點檢查
 
 [CheckpointAsync](/dotnet/api/microsoft.azure.eventhubs.processor.partitioncontext.checkpointasync) 方法有兩個多載：第一個沒有任何參數，會在 [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync) 傳回的集合內，對最高的事件位移設立檢查點。 此位移是「高水位」標記；它會假設您在呼叫此方法時已處理了所有最近事件。 如果您是以此情況來使用此方法，請注意，您應在其他事件處理程式碼傳回後再呼叫它。 第二個多載可讓您對檢查點指定 [EventData](/dotnet/api/microsoft.azure.eventhubs.eventdata) 執行個體。 此方法可讓您對檢查點使用不同類型的水位線。 透過此水位線，您可以實作「低水位」標記：您確定已處理的最低順序事件。 此多載可使位移管理具有彈性。
 
@@ -162,7 +162,7 @@ EPH 執行個體 (或取用者) 的分割區擁有權可透過 Azure 儲存體�
 以下是 receive epoch 的運作方式：
 
 ### <a name="with-epoch"></a>使用 Epoch
-Epoch 是服務所使用的唯一識別碼（epoch 值），用以強制執行分割/租用擁有權。 您可以使用[CreateEpochReceiver](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createepochreceiver?view=azure-dotnet)方法來建立 Epoch 型接收者。 這個方法會建立以 Epoch 為基礎的接收者。 會針對指定取用者群組中的特定事件中樞分割區建立接收器。
+Epoch 是服務所使用的唯一識別碼（epoch 值），用以強制執行分割/租用擁有權。 您可以使用[CreateEpochReceiver](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createepochreceiver?view=azure-dotnet)方法來建立 Epoch 型接收者。 這個方法會建立以 Epoch 為基礎的接收者。 會針對指定取用者群組中的特定事件中樞分割區建立接收器。
 
 Epoch 功能可讓使用者在任何時間點，確保取用者群組上只有一個接收者，並具有下列規則：
 
@@ -171,7 +171,7 @@ Epoch 功能可讓使用者在任何時間點，確保取用者群組上只有�
 - 如果有一個具有 epoch 值 e1 的接收器，而且建立了一個具有 epoch 值 e2 的新接收者，其中 e1 > e2，則建立 e2 的會失敗並出現錯誤：具有 epoch e1 的接收者已經存在。
 
 ### <a name="no-epoch"></a>無 Epoch
-您可以使用[CreateReceiver](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createreceiver?view=azure-dotnet)方法來建立非 Epoch 的接收者。 
+您可以使用[CreateReceiver](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createreceiver?view=azure-dotnet)方法來建立非 Epoch 的接收者。 
 
 在某些情況下，串流處理中的使用者會想要在單一取用者群組上建立多個接收者。 為了支援這類案例，我們確實能夠建立不含 epoch 的接收者，在此情況下，我們允許取用者群組最多5個並行接收者。
 
@@ -187,7 +187,7 @@ Epoch 功能可讓使用者在任何時間點，確保取用者群組上只有�
 > 對於使用 epoch 的應用程式，建議使用不同的取用者群組，並針對不使用 epoch 來避免錯誤。 
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 現在您已熟悉事件處理器主機，請參閱下列文章以深入了解事件中樞：
 

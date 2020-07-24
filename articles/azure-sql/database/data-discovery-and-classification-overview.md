@@ -1,5 +1,5 @@
 ---
-title: 資料探索與分類
+title: '[資料探索與分類]'
 description: 適用于 Azure SQL Database、Azure SQL 受控執行個體和 Azure Synapse 分析的資料探索 & 分類
 services: sql-database
 ms.service: sql-db-mi
@@ -13,19 +13,19 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/28/2020
 tags: azure-synapse
-ms.openlocfilehash: 8e04cb87895f00e1ee992745c43a884596bd8398
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 3f1f284255d1c0e77779c175951eaf33d3e56067
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85987260"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87004098"
 ---
-# <a name="data-discovery--classification"></a>資料探索與分類
+# <a name="data-discovery--classification"></a>[資料探索與分類]
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 資料探索 & 分類內建于 Azure SQL Database、Azure SQL 受控執行個體和 Azure Synapse Analytics 中。 它提供先進的功能來探索、分類、標記和報告您資料庫中的敏感性資料。
 
-您最敏感的資料可能包括商務、財務、醫療保健或個人資訊。 探索和分類這項資料可以在貴組織的資訊保護方法中扮演 pivotal 角色。 它可以作為下列的基礎結構：
+您最敏感的資料可能包括商務、財務、醫療保健或個人資訊。 探索和分類這項資料可以在貴組織的資訊保護方法中扮演 pivotal 角色。 它可以作為以下的基礎結構：
 
 - 協助符合法規合規性的資料隱私權和需求的標準。
 - 各種安全性案例，例如針對敏感性資料異常存取的監視 (稽核) 及警示。
@@ -117,16 +117,16 @@ ms.locfileid: "85987260"
 
 ## <a name="audit-access-to-sensitive-data"></a><a id="audit-sensitive-data"></a>對敏感性資料的審核存取
 
-資訊保護範例的一個重要層面是能夠監視機密資料的存取權。 [AZURE SQL 審核](../../azure-sql/database/auditing-overview.md)功能已增強，可在名為的 audit 記錄檔中加入新的欄位 `data_sensitivity_information` 。 這個欄位會記錄查詢所傳回之資料的敏感度分類（標籤）。 以下是範例：
+資訊保護範例的一個重要層面是能夠監視機密資料的存取權。 [AZURE SQL 審核](../../azure-sql/database/auditing-overview.md)功能已增強，可在名為的 audit 記錄檔中加入新的欄位 `data_sensitivity_information` 。 這個欄位會記錄查詢所傳回之資料的敏感度分類（標籤）。 以下為範例：
 
-![稽核記錄](./media/data-discovery-and-classification-overview/11_data_classification_audit_log.png)
+![稽核記錄檔](./media/data-discovery-and-classification-overview/11_data_classification_audit_log.png)
 
 ## <a name="permissions"></a><a id="permissions"></a>Permissions
 
 這些內建角色可以讀取資料庫的資料分類：
 
 - 擁有者
-- 讀取者
+- 讀者
 - 參與者
 - SQL 安全性管理員
 - 使用者存取系統管理員
@@ -137,7 +137,7 @@ ms.locfileid: "85987260"
 - 參與者
 - SQL 安全性管理員
 
-深入瞭解[適用于 Azure 資源的 RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)中以角色為基礎的許可權。
+深入瞭解[AZURE RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)中以角色為基礎的許可權。
 
 ## <a name="manage-classifications"></a><a id="manage-classification"></a>管理分類
 

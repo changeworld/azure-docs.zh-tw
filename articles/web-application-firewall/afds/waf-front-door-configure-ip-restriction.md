@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: article
 ms.date: 03/26/2020
 ms.author: tyao
-ms.openlocfilehash: 077f127648688b25d45b433fa2bc94ee011b3f2d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f41dc688996b2431060a3cde209ca1ed4a21fe8c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80336087"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005611"
 ---
 # <a name="configure-an-ip-restriction-rule-with-a-web-application-firewall-for-azure-front-door"></a>使用適用于 Azure Front 的 Web 應用程式防火牆來設定 IP 限制規則
 
@@ -24,7 +24,7 @@ ms.locfileid: "80336087"
 
 ## <a name="configure-a-waf-policy-with-the-azure-portal"></a>使用 Azure 入口網站設定 WAF 原則
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>先決條件
 
 遵循[快速入門：建立高可用性全域 web 應用程式的 Front 門](../../frontdoor/quickstart-create-front-door.md)中所述的指示，建立 Azure Front 門板設定檔。
 
@@ -40,7 +40,7 @@ ms.locfileid: "80336087"
    |訂用帳戶     |選取您的訂用帳戶|
    |資源群組     |選取您的前門所在的資源群組。|
    |原則名稱     |輸入原則的名稱|
-   |原則狀態     |已啟用|
+   |原則狀態     |啟用|
 
    選取**下一步：原則設定**
 
@@ -53,7 +53,7 @@ ms.locfileid: "80336087"
    |設定  |值  |
    |---------|---------|
    |自訂規則名稱     |FdWafCustRule|
-   |狀態     |已啟用|
+   |狀態     |啟用|
    |規則型別     |比對|
    |優先順序    |100|
    |相符類型     |IP 位址|
@@ -83,7 +83,7 @@ ms.locfileid: "80336087"
 
 ## <a name="configure-a-waf-policy-with-the-azure-cli"></a>使用 Azure CLI 設定 WAF 原則
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>先決條件
 在您開始設定 IP 限制原則之前，請先設定您的 CLI 環境，並建立 Azure Front profile。
 
 #### <a name="set-up-the-azure-cli-environment"></a>設定 Azure CLI 環境
@@ -162,13 +162,13 @@ az network front-door waf-policy rule match-condition add \
 
 ## <a name="configure-a-waf-policy-with-azure-powershell"></a>使用 Azure PowerShell 設定 WAF 原則
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>先決條件
 在您開始設定 IP 限制原則之前，請先設定您的 PowerShell 環境，並建立 Azure Front 門板設定檔。
 
 #### <a name="set-up-your-powershell-environment"></a>設定 PowerShell 環境
 Azure PowerShell 提供一組 Cmdlet，可使用[Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)模型來管理 Azure 資源。
 
-您可以在本機電腦上安裝 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)，並將其用於任何 PowerShell 工作階段。 依照頁面上的指示，使用您的 Azure 認證登入 PowerShell，然後安裝 Az 模組。
+您可以在本機電腦上安裝 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/)，並將其用於任何 PowerShell 工作階段。 依照頁面上的指示，使用您的 Azure 認證登入 PowerShell，然後安裝 Az 模組。
 
 1. 使用下列命令連線至 Azure，然後使用互動式對話方塊來登入。
     ```
@@ -243,6 +243,6 @@ $IPAllowRule = New-AzFrontDoorWafCustomRuleObject `
 若要查看建立 Azure Front policy 原則的範本，以及具有自訂 IP 限制規則的 WAF 原則，請移至[GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-waf-clientip)。
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 瞭解如何[建立 Azure Front 門板設定檔](../../frontdoor/quickstart-create-front-door.md)。

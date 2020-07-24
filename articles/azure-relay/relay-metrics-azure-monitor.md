@@ -4,12 +4,12 @@ description: 本文提供有關如何使用 Azure 監視器來監視 Azure 轉�
 services: service-bus-relay
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 0383d99aaca487bb89ab198c42d0ce189ad20249
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 42de5205be9a611957a6e340b5eaa55c5b7f52c0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85314377"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87004557"
 ---
 # <a name="azure-relay-metrics-in-azure-monitor"></a>Azure 轉送 Azure 監視器中的計量 
 Azure 轉送計量會提供您 Azure 訂用帳戶中的資源狀態。 您可以使用豐富的計量資料集，評估轉送資源的整體健康狀態，不只在命名空間層級，還有實體層級。 這些統計資料相當重要，因為它們可協助您監視 Azure 轉送的狀態。 計量也可協助針對問題的根本原因進行疑難排解，而不需要連絡 Azure 支援。
@@ -29,7 +29,7 @@ Azure 監視器提供了多種方法供您存取計量。 您可以透過 [Azure
 
 您可以在 [Azure 入口網站](https://portal.azure.com)中監視一段時間的計量。 下列範例示範如何檢視帳戶層級的成功要求及連入要求：
 
-![][1]
+![標題為「監視-計量（預覽）」的頁面會顯示過去30天內的記憶體使用量折線圖。][1]
 
 您也可以直接透過命名空間來存取計量。 若要這樣做，請選取您的命名空間，然後按一下 [計量]。 
 
@@ -65,7 +65,7 @@ Azure 監視器提供了多種方法供您存取計量。 您可以透過 [Azure
 
 ## <a name="memory-usage-metrics"></a>記憶體使用量計量
 
-| 標準名稱 | Description |
+| 標準名稱 | 描述 |
 | ------------------- | ----------------- |
 |BytesTransferred |在指定時段內，傳輸的位元組數目。<br/><br/> 單位：位元組 <br/> 彙總類型：總計 <br/> 維度：EntityName|
 
@@ -77,7 +77,7 @@ Azure 轉送支援下列的 Azure 監視器計量維度。 將維度新增至計
 | ------------------- | ----------------- |
 |EntityName| Azure 轉送支援命名空間下的訊息實體。|
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 請參閱 [Azure 監視概觀](../monitoring-and-diagnostics/monitoring-overview.md)。
 

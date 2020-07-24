@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 11/16/2018
 ms.author: genli
-ms.openlocfilehash: b9a4cf8b9bbf88ae792f345d330503cb4698c430
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6c4e507df0f112934979d4e59778b667743cf623
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86509215"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005951"
 ---
 # <a name="how-to-reset-network-interface-for-azure-windows-vm"></a>如何重設 Azure Windows VM 的網路介面 
 
@@ -47,7 +47,7 @@ ms.locfileid: "86509215"
 
 #### <a name="use-azure-powershell"></a>使用 Azure PowerShell
 
-1. 確定您已安裝[最新的 Azure PowerShell](/powershell/azure/overview)。
+1. 確定您已安裝[最新的 Azure PowerShell](/powershell/azure/)。
 2. 開啟已提高權限的 Azure PowerShell 工作階段 (以系統管理員的身分執行)。 執行下列命令：
 
     ```powershell
@@ -90,7 +90,7 @@ ms.locfileid: "86509215"
 
 #### <a name="use-azure-powershell"></a>使用 Azure PowerShell
 
-1. 請確定您已安裝[最新的 Azure PowerShell](/powershell/azure/overview) 。
+1. 請確定您已安裝[最新的 Azure PowerShell](/powershell/azure/) 。
 2. 開啟已提高權限的 Azure PowerShell 工作階段 (以系統管理員的身分執行)。 執行下列命令：
 
     ```powershell

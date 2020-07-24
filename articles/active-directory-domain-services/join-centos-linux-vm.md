@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/23/2020
+ms.date: 07/13/2020
 ms.author: iainfou
-ms.openlocfilehash: 062150c5d19a97a13fdd5567c2875bc69c839639
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9eb6a43557da43e8f792bcc3858e7123f2b6c607
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84734753"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005152"
 ---
 # <a name="join-a-centos-linux-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>將 CentOS Linux 虛擬機器加入 Azure Active Directory Domain Services 受控網域
 
@@ -106,7 +106,7 @@ sudo yum install realmd sssd krb5-workstation krb5-libs oddjob oddjob-mkhomedir 
     kinit contosoadmin@AADDSCONTOSO.COM
     ```
 
-1. 最後，使用命令將機器加入受控網域 `realm join` 。 使用與您在上一個命令中指定的受控網域之一部分相同的使用者帳戶 `kinit` ，例如 `contosoadmin@AADDSCONTOSO.COM` ：
+1. 最後，使用命令將 VM 加入受控網域 `realm join` 。 使用與您在上一個命令中指定的受控網域之一部分相同的使用者帳戶 `kinit` ，例如 `contosoadmin@AADDSCONTOSO.COM` ：
 
     ```console
     sudo realm join --verbose AADDSCONTOSO.COM -U 'contosoadmin@AADDSCONTOSO.COM'
@@ -195,7 +195,7 @@ Successfully enrolled machine in realm
     sudo yum update
     ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 如果您在將 VM 連線到受控網域或使用網域帳戶登入時發生問題，請參閱針對[網域加入問題進行疑難排解](join-windows-vm.md#troubleshoot-domain-join-issues)。
 

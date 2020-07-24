@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/26/2020
 ms.author: mathoma
-ms.openlocfilehash: 4e704a25e0c9700afbe4fa85031d7ff4d6a8d0c1
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: e1a4a366b3e4fa045df69683d6e72b157ccf0a1f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965457"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87003622"
 ---
 # <a name="create-an-fci-with-azure-shared-disks-sql-server-on-azure-vms"></a>使用 Azure 共用磁片建立 FCI （在 Azure Vm 上 SQL Server）
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -28,7 +28,7 @@ ms.locfileid: "85965457"
 若要深入瞭解，請參閱[FCI 與 Azure vm 上的 SQL Server](failover-cluster-instance-overview.md)和叢集[最佳做法](hadr-cluster-best-practices.md)。 
 
 
-## <a name="prerequisites"></a>必要條件 
+## <a name="prerequisites"></a>先決條件 
 
 在您完成本文中的指示之前，您應該已經具備：
 
@@ -157,7 +157,7 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 1. 在 [選取伺服器或叢集] 下，輸入這兩部虛擬機器的名稱。
 1. 在 [測試選項] 下，選取 [僅執行我選取的測試]。 
 1. 選取 [下一步] 。
-1. 在 [**測試選取範圍**] 底下，選取 [**儲存空間直接存取***以外*的所有測試。
+1. 在 [**測試選取範圍**] 底下，選取 [**儲存體**]*以外*的所有測試
 
 ## <a name="test-cluster-failover"></a>測試叢集容錯移轉
 
@@ -181,9 +181,7 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
 1. 選取 [安裝新的 SQL Server 容錯移轉叢集]。 請遵循精靈內的指示安裝 SQL Server FCI。
 
-   FCI 資料目錄必須位於叢集儲存體中。 與儲存空間直接存取搭配使用時，FCI 會作為每部伺服器上的磁碟區掛接點，而非共用磁碟。 儲存空間直接存取會在節點之間同步磁碟區。 磁片區會以叢集共用磁碟區（CSV）的形式呈現給叢集。 在資料目錄上使用 CSV 掛接點。
-
-   ![資料目錄](./media/failover-cluster-instance-storage-spaces-direct-manually-configure/20-data-dicrectories.png)
+FCI 資料目錄必須位於 Azure 共用磁片上。 
 
 1. 完成精靈中的指示後，安裝程式會在第一個節點上安裝 SQL Server FCI。
 
@@ -222,7 +220,7 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 - 僅支援 Windows Server 2019 上的 SQL Server 2019。 
 - 僅支援以[輕量管理模式](sql-vm-resource-provider-register.md#management-modes)向 SQL VM 資源提供者註冊。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 如果您尚未這麼做，請使用[虛擬網路名稱和 Azure 負載平衡器](hadr-vnn-azure-load-balancer-configure.md)或[分散式網路名稱（DNN）](hadr-distributed-network-name-dnn-configure.md)，設定與您的 FCI 的連線能力。 
 

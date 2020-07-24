@@ -2,13 +2,13 @@
 title: 從 Apache Kafka 應用程式使用事件中樞 - Azure 事件中樞 | Microsoft Docs
 description: 本文提供與 Azure 事件中樞所支援的 Apache Kafka 有關的資訊。
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 733623895176bb3b573c2efcbda8a40b9e2d87c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/20/2020
+ms.openlocfilehash: 6dad797f6769e9804cce7d47ed74794fdddcfb0b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85320523"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87002473"
 ---
 # <a name="use-azure-event-hubs-from-apache-kafka-applications"></a>從 Apache Kafka 應用程式使用 Azure 事件中樞
 事件中樞提供的 Kafka 端點可讓您現有的 Kafka 型應用程式使用，作為執行您本身的 Kafka 叢集以外的另一項選擇。 事件中樞支援 [Apache Kafka 通訊協定 1.0 和更新版本](https://kafka.apache.org/documentation/)，並且可與您現有的 Kafka 應用程式搭配使用，包括 MirrorMaker。  
@@ -27,7 +27,7 @@ ms.locfileid: "85320523"
 | --- | --- |
 | 叢集 | 命名空間 |
 | 主題 | 事件中樞 |
-| 分割區 | 分割區|
+| 資料分割 | 資料分割|
 | 取用者群組 | 取用者群組 |
 | Offset | Offset|
 
@@ -79,16 +79,14 @@ sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule require
 
 以下是尚不支援的 Kafka 功能清單：
 
-*   等冪產生者
 *   交易
 *   壓縮
 *   以大小為基礎的保留期
 *   記錄壓縮
-*   將分割區新增至現有主題
 *   HTTP Kafka API 支援
 *   Kafka Streams
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 本文概略介紹了適用於 Kafka 的事件中樞。 若要深入了解，請參閱[適用於 Azure 事件中樞的 Apache Kafka 開發人員指南](apache-kafka-developer-guide.md)。
 
 

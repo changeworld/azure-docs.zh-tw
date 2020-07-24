@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/17/2020
-ms.openlocfilehash: 37e6b2986f76529b5f3b2edc69f50259485df0b4
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: f87c3665f558b3185e95b0ad0aa18a883439a221
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087005"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006512"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall"></a>使用防火牆設定 Azure HDInsight 叢集的輸出網路流量
 
@@ -75,7 +75,7 @@ HDInsight 輸出流量相依性幾乎完全是以 FQDN 進行定義。 其後面
 
     **目標 FQDN 區段**
 
-    | 名稱 | 來源位址 | `Protocol:Port` | 目標 FQDN | 注意 |
+    | 名稱 | 來源位址 | 通訊協定：埠 | 目標 FQDN | 附註 |
     | --- | --- | --- | --- | --- |
     | Rule_2 | * | https:443 | login.windows.net | 允許 Windows 登入活動 |
     | Rule_3 | * | https:443 | login.microsoftonline.com | 允許 Windows 登入活動 |
@@ -103,7 +103,7 @@ HDInsight 輸出流量相依性幾乎完全是以 FQDN 進行定義。 其後面
 
     **IP 位址區段**
 
-    | 名稱 | 通訊協定 | 來源位址 | 目的地位址 | 目的地連接埠 | 注意 |
+    | 名稱 | 通訊協定 | 來源位址 | 目的地位址 | 目的地連接埠 | 附註 |
     | --- | --- | --- | --- | --- | --- |
     | Rule_1 | UDP | * | * | 123 | 時間服務 |
     | Rule_2 | 任意 | * | DC_IP_Address_1、DC_IP_Address_2 | * | 如果您使用企業安全性套件 (ESP)，請在 [IP 位址] 區段中新增網路規則，以允許 ESP 叢集與 AAD-DS 通訊。 您可以在入口網站的 [AAD-DS] 區段中找到網域控制站的 IP 位址 |

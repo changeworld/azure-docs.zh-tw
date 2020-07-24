@@ -7,14 +7,14 @@ ms.service: web-application-firewall
 ms.topic: article
 ms.date: 09/06/2019
 ms.author: victorh
-ms.openlocfilehash: 4d6b984fd451a835afaa51482f0158e9f315f8fc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 22273cf23e48de62d99a8c149ae3e2b1c05db3af
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82130920"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005424"
 ---
-# <a name="use-log-analytics-to-examine-application-gateway-web-application-firewall-logs"></a>使用 Log Analytics 檢查應用程式閘道 Web 應用程式防火牆記錄
+# <a name="use-log-analytics-to-examine-application-gateway-web-application-firewall-waf-logs"></a>使用 Log Analytics 來檢查應用程式閘道 Web 應用程式防火牆（WAF）記錄檔
 
 一旦您的應用程式閘道 WAF 可運作，您就可以啟用記錄來檢查每個要求所發生的情況。 防火牆記錄可讓您深入瞭解 WAF 的評估、比對和封鎖。 透過 Azure 監視器 Log Analytics，您可以檢查防火牆記錄內的資料，以提供更多深入資訊。 如需有關建立 Log Analytics 工作區的詳細資訊，請參閱[Azure 入口網站中的建立 Log analytics 工作區](../../azure-monitor/learn/quick-create-workspace.md)。 如需記錄查詢的詳細資訊，請參閱[Azure 監視器中的記錄查詢總覽](../../azure-monitor/log-query/log-query-overview.md)。
 
@@ -81,6 +81,6 @@ AzureDiagnostics
 
 ![儀表板](../media/log-analytics/dashboard.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 [應用程式閘道的後端健康情況、資源記錄和計量](../../application-gateway/application-gateway-diagnostics.md)

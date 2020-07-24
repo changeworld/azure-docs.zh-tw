@@ -3,12 +3,12 @@ title: 在 Azure 事件中樞以動態方式將分割區新增至事件中樞
 description: 本文說明如何在 Azure 事件中樞以動態方式將分割區新增至事件中樞。
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: ea0477dcc695c7a2fb936daadc3679c94bfac12f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4a729147eaa11497c66f82a9764dfee9492786b9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85317942"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87002534"
 ---
 # <a name="dynamically-add-partitions-to-an-event-hub-apache-kafka-topic-in-azure-event-hubs"></a>在 Azure 事件中樞以動態方式將分割區新增至事件中樞 (Apache Kafka 主題)
 事件中樞透過分割取用者模式來提供訊息串流，每位取用者只會讀取訊息串流的特定子集 (即資料分割)。 此模式能水平擴充事件處理規模，並提供佇列和主題缺少的其他串流導向功能。 資料分割是經過排序且保存在事件中樞內的事件序列。 當較新的事件送達時，系統會將其新增至序列的結尾。 如需關於分割區的一般詳細資訊，請參閱[分割區](event-hubs-scalability.md#partitions)
@@ -33,7 +33,7 @@ Set-AzureRmEventHub -ResourceGroupName MyResourceGroupName -Namespace MyNamespac
 ```
 
 ### <a name="cli"></a>CLI
-使用 [az eventhubs eventhub update](/cli/azure/eventhubs/eventhub?view=azure-cli-latest#az-eventhubs-eventhub-update) CLI 命令更新事件中樞內的分割區。 
+使用 [`az eventhubs eventhub update`](/cli/azure/eventhubs/eventhub?view=azure-cli-latest#az-eventhubs-eventhub-update) CLI 命令來更新事件中樞內的磁碟分割。 
 
 ```azurecli-interactive
 az eventhubs eventhub update --resource-group MyResourceGroupName --namespace-name MyNamespaceName --name MyEventHubName --partition-count 12
@@ -64,13 +64,13 @@ az eventhubs eventhub update --resource-group MyResourceGroupName --namespace-na
 ## <a name="event-hubs-clients"></a>事件中樞用戶端
 我們來看看事件中樞用戶端在事件中樞上的分割區計數更新時會有何行為。 
 
-當您將分割區新增至現有的事件中樞時，事件中樞用戶端會收到服務傳送的 "MessagingException"，向用戶端指出實體中繼資料 (實體是您的事件中樞，中繼資料是分割區資訊) 已改變。 用戶端會自動重新開啟 AMQP 連結，而該連結將會收取已變更的中繼資料資訊。 此時用戶端就會正常運作。
+當您將資料分割新增至現有的偶數中樞時，事件中樞用戶端會 `MessagingException` 從服務接收，通知用戶端實體中繼資料（實體是您的事件中樞，中繼資料是分割區資訊）已改變。 用戶端會自動重新開啟 AMQP 連結，而該連結將會收取已變更的中繼資料資訊。 此時用戶端就會正常運作。
 
 ### <a name="senderproducer-clients"></a>傳送者/生產者用戶端
 事件中樞提供三個傳送者選項：
 
 - **分割區傳送者** – 在此案例中，用戶端會將事件直接傳送至分割區。 雖然分割區是可識別的，且事件可以直接傳送至該處，但我們不建議採用此模式。 在此案例中，新增分割區並不會有影響。 建議您重新啟動應用程式，使其能夠偵測到新增的分割區。 
-- **分割區索引鍵傳送者** – 在此案例中，用戶端會以索引鍵傳送事件，讓所有屬於該索引鍵的事件最終都會在相同的分割區中。 在此情況下，服務會對索引鍵進行雜湊，並路由到對應的分割區。 分割區計數更新有可能因雜湊變更而導致順序錯誤的問題。 因此，如果您在意排序，請在應用程式用完現有分割區中的所有事件後，再增加分割區計數。
+- **分割區索引鍵傳送者** – 在此案例中，用戶端會以索引鍵傳送事件，讓所有屬於該索引鍵的事件最終都會在相同的分割區中。 在此情況下，服務會對索引鍵進行雜湊，並路由到對應的分割區。 因為雜湊變更，分割區計數更新可能會導致順序不好的問題。 因此，如果您在意排序，請在應用程式用完現有分割區中的所有事件後，再增加分割區計數。
 - **循環配置資源傳送者 (預設)** – 在此案例中，事件中樞服務會為各個分割區的事件循環配置資源。 事件中樞服務可感知分割區計數變更，並會在分割區計數改變後的幾秒內傳送至新的分割區。
 
 ### <a name="receiverconsumer-clients"></a>接收者/取用者用戶端
@@ -84,7 +84,7 @@ az eventhubs eventhub update --resource-group MyResourceGroupName --namespace-na
 ## <a name="apache-kafka-clients"></a>Apache Kafka 用戶端
 本節說明在事件中樞的分割區計數更新時，使用 Azure 事件中樞之 Kafka 端點的 Apache Kafka 用戶端將有何行為。 
 
-使用事件中樞與 Apache Kafka 通訊協定的 Kafka 用戶端，在行為上與使用 AMQP 通訊協定的事件中樞用戶端並不相同。 Kafka 用戶端每隔 `metadata.max.age.ms` 毫秒會更新其中繼資料一次。 您可在用戶端設定中指定此值。 `librdkafka` 程式庫也使用相同的設定。 中繼資料更新會在服務有所變更時通知用戶端，包括分割區計數增加。 如需設定的清單，請參閱 [Apache Kafka 的事件中樞設定](https://github.com/Azure/azure-event-hubs-for-kafka/blob/master/CONFIGURATION.md)
+使用事件中樞與 Apache Kafka 通訊協定的 Kafka 用戶端，在行為上與使用 AMQP 通訊協定的事件中樞用戶端並不相同。 Kafka 用戶端每隔 `metadata.max.age.ms` 毫秒會更新其中繼資料一次。 您可在用戶端設定中指定此值。 `librdkafka` 程式庫也使用相同的設定。 中繼資料更新會在服務有所變更時通知用戶端，包括分割區計數增加。 如需設定的清單，請參閱[事件中樞的 Apache Kafka](apache-kafka-configurations.md)設定。
 
 ### <a name="senderproducer-clients"></a>傳送者/生產者用戶端
 生產者一律會指定傳送要求須包含每一組產生記錄的分割區目的地。 因此，所有產生分割都會在用戶端上透過生產者的訊息代理程式中繼資料檢視來完成。 新的分割區新增至生產者的中繼資料檢視後，即可供產生者要求使用。
@@ -100,7 +100,7 @@ az eventhubs eventhub update --resource-group MyResourceGroupName --namespace-na
     > 雖然現有的資料會保留排序，但對於在分割區計數變更後進行雜湊處理的訊息，分割區雜湊將會因分割區的增加而遭到破壞。
 - 在下列情況下，建議您將分割區新增至現有主題或事件中樞執行個體：
     - 當您使用循環配置資源 (預設) 方法傳送事件時
-     - Kafka 預設分割策略，例如 StickyAssignor 策略
+     - Kafka 預設資料分割策略，範例-粘滯 Assignor 策略
 
 
 ## <a name="next-steps"></a>後續步驟

@@ -7,11 +7,12 @@ ms.service: web-application-firewall
 ms.topic: article
 ms.date: 09/05/2019
 ms.author: victorh
-ms.openlocfilehash: 493ed1a31a23366a90b80d3ab510218c8dce0e9c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 40f0195ced375da09891eb577bd81f36b2f37cba
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74186641"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005543"
 ---
 # <a name="configure-a-web-application-firewall-policy-using-azure-powershell"></a>使用 Azure PowerShell 設定 Web 應用程式防火牆原則
 
@@ -28,7 +29,7 @@ Azure Web 應用程式防火牆（WAF）原則會定義當要求到達 Front 時
 
 Azure PowerShell 提供了一組 Cmdlet，它們會使用 [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) 模型來管理 Azure 資源。 
 
-您可以在本機電腦上安裝 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)，並將其用於任何 PowerShell 工作階段。 依照頁面上的指示，使用您的 Azure 認證登入，並安裝 Az PowerShell module。
+您可以在本機電腦上安裝 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/)，並將其用於任何 PowerShell 工作階段。 依照頁面上的指示，使用您的 Azure 認證登入，並安裝 Az PowerShell module。
 
 #### <a name="sign-in-to-azure"></a>登入 Azure
 
@@ -109,7 +110,7 @@ $myWAFPolicy=New-AzFrontDoorWafPolicy -Name $policyName -ResourceGroupName $reso
 > [!NOTE]
 > 您只需要設定*WebApplicationFirewallPolicyLink*屬性一次，即可將安全性原則連結到 front 前端。 後續的原則更新會自動套用至前端。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 深入瞭解[Front](../../frontdoor/front-door-overview.md) 
 - 深入瞭解[WAF 與 Front 門](afds-overview.md)

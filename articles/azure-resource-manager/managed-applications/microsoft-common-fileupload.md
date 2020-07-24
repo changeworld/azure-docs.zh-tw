@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: tomfitz
-ms.openlocfilehash: 31e9e88bc37dc19d1d81dc55d52786de60706313
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: c4eb3972be85ac7e291380f64127c20424b0d0f0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134554"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87004270"
 ---
 # <a name="microsoftcommonfileupload-ui-element"></a>Microsoft.Common.FileUpload UI 元素
 
@@ -18,7 +18,7 @@ ms.locfileid: "86134554"
 
 ## <a name="ui-sample"></a>UI 範例
 
-![Microsoft.Common.FileUpload](./media/managed-application-elements/microsoft.common.fileupload.png)
+![Microsoft.Common.FileUpload](./media/managed-application-elements/microsoft-common-fileupload.png)
 
 ## <a name="schema"></a>結構描述
 
@@ -88,7 +88,7 @@ ms.locfileid: "86134554"
 - 如果將 `options.uploadMode` 設為 **file**，且將 `options.openMode` 設為 **binary**，輸出就會是 base64 編碼。
 - `options.encoding` 會指定讀取檔案時要使用的編碼方式。 預設值為 **UTF-8**，且僅在 `options.openMode` 設為 **text** 時才會使用。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * 如需建立 UI 定義的簡介，請參閱[開始使用 CreateUiDefinition](create-uidefinition-overview.md)。
 * 如需 UI 元素中通用屬性的說明，請參閱 [CreateUiDefinition 元素](create-uidefinition-elements.md)。

@@ -8,11 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
-ms.openlocfilehash: 80481bc11933b0404079221f23b5054024f00acb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 471aa6e5297f8b68f08567a66e3f07e9688ca57e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80811361"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87002925"
 ---
 # <a name="manage-cloud-services-in-the-azure-portal"></a>在 Azure 入口網站中管理雲端服務
 在 Azure 入口網站的 [雲端服務]**** 區域中，您可以：
@@ -76,7 +77,7 @@ ms.locfileid: "80811361"
 
 - 如果您想要讓生產環境位置使用靜態 IP 位址，就必須為您的預備位置也保留一個靜態 IP 位址。 否則，交換會失敗。
 
-- 您的所有角色執行個體必須都處於執行中狀態，您才能執行交換。 您可以在 Azure 入口網站的 [概觀]**** 刀鋒視窗上檢查您的執行個體狀態。 或者，也可以使用 Windows PowerShell 的 [Get-AzureRole](/powershell/module/servicemanagement/azure/get-azurerole?view=azuresmps-3.7.0) 命令。
+- 您的所有角色執行個體必須都處於執行中狀態，您才能執行交換。 您可以在 Azure 入口網站的 [概觀]**** 刀鋒視窗上檢查您的執行個體狀態。 或者，也可以使用 Windows PowerShell 的 [Get-AzureRole](/powershell/module/servicemanagement/azure.service/get-azurerole?view=azuresmps-3.7.0) 命令。
 
 請注意，客體 OS 更新和服務修復作業也可能導致部署交換失敗。 如需詳細資訊，請參閱[對雲端服務部署問題進行疑難排解](cloud-services-troubleshoot-deployment-problems.md)。
 
@@ -118,7 +119,7 @@ ms.locfileid: "80811361"
 
 [Azure portal]: https://portal.azure.com
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 * [雲端服務的一般設定](cloud-services-how-to-configure-portal.md)。
 * 了解如何 [部署雲端服務](cloud-services-how-to-create-deploy-portal.md)。
 * 設定[自訂功能變數名稱](cloud-services-custom-domain-name-portal.md)。

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 05/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0c8863615446f8b14043cd7bd13e529b7efa1e46
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 2fe6cbdbcb0cf5b5c28d34f2059a2b070b059566
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186192"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87004744"
 ---
 # <a name="forward-azure-automation-job-data-to-azure-monitor-logs"></a>將 Azure 自動化作業資料轉送至 Azure 監視器記錄
 
@@ -28,7 +28,7 @@ Azure 自動化可以將 Runebook 作業狀態和作業資料流傳送到您的 
 
 若要開始將自動化記錄傳送到 Azure 監視器記錄，您需要：
 
-* 最新版的 [Azure PowerShell](/powershell/azureps-cmdlets-docs/)。
+* 最新版的 [Azure PowerShell](/powershell/azure/)。
 * Log Analytics 工作區。 如需詳細資訊，請參閱[開始使用 Azure 監視器記錄](../azure-monitor/overview.md)。
 * 您「Azure 自動化」帳戶的資源識別碼。
 

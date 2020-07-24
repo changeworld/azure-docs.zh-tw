@@ -11,11 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 923502132fdbe0b4a56c0fc23c19475e9074b8ff
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 19b7962462e5cdb03bad0c6004b8c19f781ccc69
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86040243"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005271"
 ---
 # <a name="create-a-group-managed-service-account-gmsa-in-azure-active-directory-domain-services"></a>在 Azure Active Directory Domain Services 中建立群組受管理的服務帳戶（gMSA）
 
@@ -34,7 +35,7 @@ ms.locfileid: "86040243"
 * 與您的訂用帳戶相關聯的 Azure Active Directory 租用戶，可與內部部署目錄或僅限雲端的目錄同步。
     * 如果需要，請[建立 Azure Active Directory 租用戶][create-azure-ad-tenant]或[將 Azure 訂用帳戶與您的帳戶建立關聯][associate-azure-ad-tenant]。
 * 已在您的 Azure AD 租用戶中啟用並設定 Azure Active Directory Domain Services 受控網域。
-    * 如有需要，請完成教學課程，以[建立和設定 Azure Active Directory Domain Services 受控網域][create-azure-ad-ds-instance]。
+    * 如有需要，請完成教學課程，以[建立及設定 Azure Active Directory Domain Services 受控網域][create-azure-ad-ds-instance]。
 * 已加入 Azure AD DS 受控網域的 Windows Server 管理 VM。
     * 如有需要，請完成教學課程以[建立管理 VM][tutorial-create-management-vm]。
 
@@ -94,7 +95,7 @@ New-ADServiceAccount -Name WebFarmSvc `
 
 應用程式和服務現在可以設定為視需要使用 gMSA。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 如需 Gmsa 的詳細資訊，請參閱[開始使用群組受管理的服務帳戶][gmsa-start]。
 

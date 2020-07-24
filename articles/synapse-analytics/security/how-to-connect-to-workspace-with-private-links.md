@@ -1,5 +1,5 @@
 ---
-title: 使用私人連結連線到 Azure Synapse 工作區
+title: 使用私人連結連接到 Synapse 工作區
 description: 此文章將告訴您如何使用私人連結連線到您的 Azure Synapse 工作區
 author: RonyMSFT
 ms.service: synapse-analytics
@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0f2e01390a1ddd179e50523a8b5748994524a52e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 17636bf993df5105093ca690e36db22493a2472e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85193867"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005968"
 ---
 # <a name="connect-to-your-azure-synapse-workspace-using-private-links-preview"></a>使用私人連結連線到您的 Azure Synapse 工作區 (預覽)
 
@@ -47,7 +47,7 @@ ms.locfileid: "85193867"
 
 在 [設定] 索引標籤中，選取要在其中建立私人端點的 [虛擬網路] 和 [子網路]。 您也需要建立對應至私人端點的 DNS 記錄。
 
-若要將您的私人端點與私人 DNS 區域整合，請針對 [與私人 DNS 區域整合] 選取 [是]。 如果您沒有與 VNet 相關聯的私人 DNS 區域，則會建立新的私人 DNS 區域。 完成時，請選取 [檢閱+建立]。
+若要將您的私人端點與私人 DNS 區域整合，請針對 [與私人 DNS 區域整合] 選取 [是]。 如果您沒有與 Microsoft Azure 虛擬網路相關聯的私人 DNS 區域，則會建立新的私人 DNS 區域。 完成時，請選取 [檢閱+建立]。
 
 ![選取訂用帳戶和區域詳細資料](./media/how-to-connect-to-workspace-with-private-links/private-endpoint-4.png)
 
@@ -57,7 +57,7 @@ ms.locfileid: "85193867"
 
 ## <a name="next-steps"></a>後續步驟
 
-深入了解[受控工作區 VNet](./synapse-workspace-managed-vnet.md)
+深入瞭解[受控工作區虛擬網路](./synapse-workspace-managed-vnet.md)
 
 深入了解[受控私人端點](./synapse-workspace-managed-private-endpoints.md)
 

@@ -8,11 +8,12 @@ ms.topic: article
 ms.date: 06/10/2020
 ms.author: victorh
 ms.reviewer: tyao
-ms.openlocfilehash: 14e4ccdf17647823dc9e1005c1c68a9f1f217b9e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a995460793686d8293d77965e74e2cbf916925a0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84726360"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005594"
 ---
 # <a name="configure-a-custom-response-for-azure-web-application-firewall-waf"></a>設定 Azure Web 應用程式防火牆（WAF）的自訂回應
 
@@ -36,7 +37,7 @@ ms.locfileid: "84726360"
 
 Azure PowerShell 提供了一組 Cmdlet，它們會使用 [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) 模型來管理 Azure 資源。 
 
-您可以在本機電腦上安裝 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)，並將其用於任何 PowerShell 工作階段。 請遵循頁面上的指示，使用 Azure 認證進行登入，並安裝 Az PowerShell 模組。
+您可以在本機電腦上安裝 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/)，並將其用於任何 PowerShell 工作階段。 請遵循頁面上的指示，使用 Azure 認證進行登入，並安裝 Az PowerShell 模組。
 
 ### <a name="connect-to-azure-with-an-interactive-dialog-for-sign-in"></a>使用互動式登入對話方塊連線至 Azure
 
@@ -98,5 +99,5 @@ Update-AzFrontDoorFireWallPolicy `
 -CustomBlockResponseBody "<html><head><title>Forbidden</title></head><body>{{azure-ref}}</body></html>"
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 - 深入瞭解[使用 Azure Front 的 Web 應用程式防火牆](../afds/afds-overview.md)

@@ -7,18 +7,18 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: cynthn
-ms.openlocfilehash: 59d1bf08c0680d222710b55c6d6bdb4d5745da56
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 843a51ca04ae4256ed21912268443595a5f36083
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82084510"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005713"
 ---
 # <a name="move-a-windows-vm-from-amazon-web-services-aws-to-an-azure-virtual-machine"></a>將 Windows VM 從 Amazon Web Services (AWS) 移至 Azure 虛擬機器
 
 如果您正在評估 Azure 虛擬機器來裝載您的工作負載，您可以匯出現有的 Amazon Web Services (AWS) EC2 Windows VM 執行個體，然後將虛擬硬碟 (VHD) 上傳至 Azure。 上傳 VHD 後，您可以從 VHD 在 Azure 中建立新的 VM。 
 
-本文涵蓋將單一虛擬機器從 AWS 移至 Azure 的說明。 如果您想要將 VM 大規模從 AWS 移至 Azure，[使用 Azure Site Recovery 將 Amazon Web Services (AWS) 中的虛擬機器移轉至 Azure](../../site-recovery/site-recovery-migrate-aws-to-azure.md)。
+本文涵蓋將單一虛擬機器從 AWS 移至 Azure 的說明。 如果您想要將 VM 大規模從 AWS 移至 Azure，[使用 Azure Site Recovery 將 Amazon Web Services (AWS) 中的虛擬機器移轉至 Azure](../../site-recovery/migrate-tutorial-aws-azure.md)。
 
 ## <a name="prepare-the-vm"></a>準備 VM 
  
@@ -53,7 +53,7 @@ aws ec2 create-instance-export-task --instance-id <instanceID> --target-environm
 > AWS 會酌收下載 VHD 的資料傳輸費用。 如需詳細資訊，請參閱 [Amazon S3 價格](https://aws.amazon.com/s3/pricing/)。
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 現在您可以將 VHD 上傳至 Azure 並建立新的 VM。 
 

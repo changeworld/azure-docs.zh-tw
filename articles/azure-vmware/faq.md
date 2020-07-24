@@ -4,11 +4,12 @@ description: 提供一些關於 Azure VMware 解決方案 (AVS) 常見問題的�
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: dikamath
-ms.openlocfilehash: 1649b5649bd18b7ab53f3cc0196d7dff0f6f5b2c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f160e617163f11c02e4d661cbf1c14f63a6772f8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84112692"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87003418"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution-avs-preview"></a>Azure VMware 解決方案 (AVS) 預覽的常見問題
 
@@ -84,15 +85,15 @@ CloudSimple 不會對現有的 Azure VMware 解決方案進行任何變更。 �
 
 **每台主機的儲存容量是多少？**
 
-每個 ESXi 主機有兩個 VSAN 磁碟群組，其容量層級為 15.2 TB 和 3.2 TB NVMe 快取層 (每個磁碟群組 1.6 TB)。
+每個 ESXi 主機有兩個 vSAN diskgroups，其容量層級為 15.2 TB，而 3.2 TB NVMe 快取層（每個 diskgroup 中 1.6 TB）。
 
 **每部 ESXi 主機有多少網路頻寬可用？**
 
 ESXi 主機支援最多 25 Gbps 的連線頻寬。
 
-**資料是否儲存在待用時加密的 VSAN 資料存放區上？**
+**資料是否儲存在待用時加密的 vSAN 資料存放區上？**
 
-是，所有 VSAN 資料預設都會使用儲存在 Azure Key Vault 中的金鑰進行加密。
+是，所有 vSAN 資料預設都會使用儲存在 Azure Key Vault 中的金鑰進行加密。
 
 ## <a name="hosts-clusters-and-private-clouds"></a>主機、叢集和私人雲端
 
@@ -114,7 +115,7 @@ ESXi 主機支援最多 25 Gbps 的連線頻寬。
 
 **我是否可以針對試用叢集使用高階主機？**
 
-否。 高階 ESXi 主機已保留供生產叢集使用。
+不可以。 高階 ESXi 主機已保留供生產叢集使用。
 
 ## <a name="avs-and-vmware-software"></a>AVS 和 VMware 軟體
 
@@ -136,7 +137,7 @@ ESXi 主機支援最多 25 Gbps 的連線頻寬。
 
 **在私人雲端中，VMware 軟體的升級和更新排程為何？**
 
-私用雲端軟體配套升級的目的，是為了將軟體保留在 VMware 的最新版本軟體組合的一版中。 私人雲端軟體版本可能與個別軟體元件的最新版本 (ESXi、NSX-T、vCenter、VSAN) 不同。
+私用雲端軟體配套升級的目的，是為了將軟體保留在 VMware 的最新版本軟體組合的一版中。 私人雲端軟體版本可能與個別軟體元件的最新版本（ESXi、NSX-T、vCenter、vSAN）不同。
 
 **私人雲端軟體堆疊的更新頻率為何？**
 
@@ -215,7 +216,7 @@ Azure 訂閱需要 Azure 帳戶。
 > ```azurecli-interactive
 > az provider register -n Microsoft.AVS --subscription <your subscription ID>
 > ```
-> 如需註冊資源提供者的其他方式，請參閱 [Azure 資源提供者和類型](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types)。
+> 如需註冊資源提供者的其他方式，請參閱 [Azure 資源提供者和類型](../azure-resource-manager/management/resource-providers-and-types.md)。
 
 1. 在您的 Azure 入口網站中，[說明 + 支援] 底下，建立**新的支援要求**並提供票證的下列資訊：
    - **問題類型：** 技術需求

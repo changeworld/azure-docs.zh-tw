@@ -8,18 +8,18 @@ ms.author: dobett
 ms.date: 03/27/2020
 ms.topic: how-to
 manager: philmea
-ms.openlocfilehash: 9ca1c8f4a8e92babf65ec049b3784882bd3af689
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7638b44dc3e727e2530e656541272ddad292d1fc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82744983"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87002466"
 ---
 # <a name="manage-iot-central-from-azure-powershell"></a>從 Azure PowerShell 管理 IoT Central
 
 [!INCLUDE [iot-central-selector-manage](../../../includes/iot-central-selector-manage.md)]
 
-您可以使用[Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)來管理應用程式，而不是在[Azure IoT Central 應用程式管理員](https://aka.ms/iotcentral)網站上建立和管理 IoT Central 應用程式。
+您可以使用[Azure PowerShell](https://docs.microsoft.com/powershell/azure/)來管理應用程式，而不是在[Azure IoT Central 應用程式管理員](https://aka.ms/iotcentral)網站上建立和管理 IoT Central 應用程式。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -73,7 +73,7 @@ New-AzIotCentralApp -ResourceGroupName "MyIoTCentralResourceGroup" `
 |名稱              |應用程式在 Azure 入口網站中的名稱。 |
 |子網域         |應用程式 URL 中的子網域。 在範例中，應用程式 URL 是 `https://mysubdomain.azureiotcentral.com`。 |
 |SKU               |目前，您可以使用**ST1**或**ST2**。 請參閱 [Azure IoT Central 價格](https://azure.microsoft.com/pricing/details/iot-central/)。 |
-|[範本]          | 要使用的應用程式範本。 如需詳細資訊，請參閱下列表格。 |
+|範本          | 要使用的應用程式範本。 如需詳細資訊，請參閱下列表格。 |
 |DisplayName       |在 UI 中顯示的應用程式名稱。 |
 
 [!INCLUDE [iot-central-template-list](../../../includes/iot-central-template-list.md)]

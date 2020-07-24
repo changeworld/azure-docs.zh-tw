@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: 4f02d92e6264a05ed2cb4021adb5ae6312f58a85
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 4778ea7781d181a89e7a6b2d6c4ad5d474e9b5c9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146648"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005934"
 ---
 # <a name="azure-serial-console-for-windows"></a>適用於 Windows 的 Azure 序列主控台
 
@@ -38,7 +38,7 @@ Azure 入口網站上的序列主控台可供針對 Windows 虛擬機器 (VM) �
 
 - 使用序列主控台的帳戶必須具有 VM 的[虛擬機器參與者角色](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)和[開機診斷](boot-diagnostics.md)儲存體帳戶
 
-- VM 或虛擬機器擴展集執行個體必須有以密碼為基礎的使用者。 您可以使用 VM 存取擴充的[重設密碼](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password)功能來建立一個帳戶。 然後，選取 [支援與疑難排解] 區段中的 [重設密碼]。
+- VM 或虛擬機器擴展集執行個體必須有以密碼為基礎的使用者。 您可以使用 VM 存取擴充的[重設密碼](../extensions/vmaccess.md#reset-password)功能來建立一個帳戶。 然後，選取 [支援與疑難排解] 區段中的 [重設密碼]。
 
 * 虛擬機器擴展集執行個體的 VM 必須啟用[開機診斷](boot-diagnostics.md)功能。
 
@@ -50,7 +50,7 @@ Azure 入口網站上的序列主控台可供針對 Windows 虛擬機器 (VM) �
 > 如果在序列主控台中沒有看到任何項目，請確定 VM 或虛擬機器擴展集上已啟用開機診斷功能。
 
 ### <a name="enable-the-serial-console-in-custom-or-older-images"></a>在自訂或舊版的映像中啟用序列主控台
-Azure 上的新版 Windows Server 映像預設會啟用[特別系統管理主控台](https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) (SAC)。 在伺服器版本的 Windows 上可支援 SAC，但在用戶端版本 (例如 Windows 10、Windows 8 或 Windows 7) 上則不支援。
+Azure 上的新版 Windows Server 映像預設會啟用[特別系統管理主控台](/previous-versions/windows/it-pro/windows-server-2003/cc787940(v=ws.10)) (SAC)。 在伺服器版本的 Windows 上可支援 SAC，但在用戶端版本 (例如 Windows 10、Windows 8 或 Windows 7) 上則不支援。
 
 至於舊版 Windows Server 映像 (在 2018 年 2 月前建立的映像)，您可以透過 Azure 入口網站的執行命令功能自動啟用序列主控台。 在 Azure 入口網站中，選取 [執行命令]，然後從清單中選取名為 **EnableEMS** 的命令。
 
@@ -76,11 +76,11 @@ Azure 上的新版 Windows Server 映像預設會啟用[特別系統管理主控
 
 #### <a name="how-do-i-know-if-sac-is-enabled"></a>如何得知 SAC 是否已啟用？
 
-如果未啟用 [SAC](https://technet.microsoft.com/library/cc787940(v=ws.10).aspx)，序列主控台將不會顯示 SAC 提示。 在某些情況下會顯示 VM 健康情況資訊，在其他情況下則會空白。 如果您使用在 2018 年 2 月之前建立的 Windows Server 映像，SAC 可能不會啟用。
+如果未啟用 [SAC](/previous-versions/windows/it-pro/windows-server-2003/cc787940(v=ws.10))，序列主控台將不會顯示 SAC 提示。 在某些情況下會顯示 VM 健康情況資訊，在其他情況下則會空白。 如果您使用在 2018 年 2 月之前建立的 Windows Server 映像，SAC 可能不會啟用。
 
 ### <a name="enable-the-windows-boot-menu-in-the-serial-console"></a>在序列主控台中啟用 Windows 開機功能表
 
-如果您需要讓 Windows 開機載入器提示顯示在序列主控台中，您可以將下列額外選項新增至開機組態資料。 如需詳細資訊，請參閱 [bcdedit](https://docs.microsoft.com/windows-hardware/drivers/devtest/bcdedit--set)。
+如果您需要讓 Windows 開機載入器提示顯示在序列主控台中，您可以將下列額外選項新增至開機組態資料。 如需詳細資訊，請參閱 [bcdedit](/windows-hardware/drivers/devtest/bcdedit--set)。
 
 1. 透過使用「遠端桌面」連線至 Windows VM 或虛擬機器擴展集執行個體。
 
@@ -126,7 +126,7 @@ Azure 上的新版 Windows Server 映像預設會啟用[特別系統管理主控
 系統會啟用功能鍵供 Windows VM 中的序列主控台使用。 序列主控台下拉式清單中的 F8 提供方便進入 [進階開機設定] 功能表的簡單方式，但序列主控台與所有其他功能鍵相容。 因此視使用序列主控台的電腦而定，可能需要按鍵盤上的 **Fn** + **F1** (或 F2、F3 等) 鍵。
 
 ### <a name="use-wsl-in-serial-console"></a>在序列主控台中使用 WSL
-Windows Server 2019 或更新版本已支援適用於 Linux 的 Windows 子系統 (WSL)，所以如果您是執行 Windows Server 2019 或更新版本，也可以啟用 WSL 以在序列主控台內使用。 這對已經熟悉 Linux 命令使用者來說可能有許多好處。 若要啟用 Windows Server 的 WSL，請參閱[安裝指南](https://docs.microsoft.com/windows/wsl/install-on-server)。
+Windows Server 2019 或更新版本已支援適用於 Linux 的 Windows 子系統 (WSL)，所以如果您是執行 Windows Server 2019 或更新版本，也可以啟用 WSL 以在序列主控台內使用。 這對已經熟悉 Linux 命令使用者來說可能有許多好處。 若要啟用 Windows Server 的 WSL，請參閱[安裝指南](/windows/wsl/install-on-server)。
 
 ### <a name="restart-your-windows-vmvirtual-machine-scale-set-instance-within-serial-console"></a>在序列主控台內重新啟動 Windows VM/虛擬機器擴展集執行個體
 您可在序列主控台內巡覽至 [電源] 按鈕，然後按一下 [重新啟動 VM] 來起始重新啟動。 這將會起始 VM 重新啟動，而且您會在 Azure 入口網站內看到與重新啟動有關的通知。
@@ -147,7 +147,7 @@ Windows Server 2019 或更新版本已支援適用於 Linux 的 Windows 子系�
 在網路上來回傳送的所有資料都會經過加密。
 
 ### <a name="audit-logs"></a>稽核記錄
-目前對序列主控台進行的所有存取都會記錄在虛擬機器的[開機診斷](https://docs.microsoft.com/azure/virtual-machines/linux/boot-diagnostics)記錄中。 這些記錄的存取權均由 Azure 虛擬機器系統管理員所擁有和控制。
+目前對序列主控台進行的所有存取都會記錄在虛擬機器的[開機診斷](./boot-diagnostics.md)記錄中。 這些記錄的存取權均由 Azure 虛擬機器系統管理員所擁有和控制。
 
 > [!CAUTION]
 > 不會記錄主控台的存取密碼。 但是，如果在主控台內執行的命令包含或輸出密碼、祕密、使用者名稱，或任何其他形式的個人識別資訊 (PII)，則這些命令將會寫入至 VM 開機診斷記錄。 它們將與所有其他可見文字一起寫入，作為序列主控台回滾函式實作的一部分。 這些記錄是循環的，只有具有診斷儲存體帳戶讀取權限的個人才能存取它們。 但是，我們建議遵循使用遠端桌面的最佳作法，以取得可能涉及祕密和/或 PII 的任何項目。
@@ -173,7 +173,7 @@ Windows Server 2019 或更新版本已支援適用於 Linux 的 Windows 子系�
 :------------------|:-----------------------------------------
 不正確的防火牆規則 | 存取序列主控台，然後修正 Windows 防火牆規則。
 檔案系統損毀/檢查 | 存取序列主控台，然後復原檔案系統。
-RDP 設定問題 | 存取序列主控台，然後變更設定。 如需詳細資訊，請參閱 [RDP 文件](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-allow-access) \(機器翻譯\)。
+RDP 設定問題 | 存取序列主控台，然後變更設定。 如需詳細資訊，請參閱 [RDP 文件](/windows-server/remote/remote-desktop-services/clients/remote-desktop-allow-access) \(機器翻譯\)。
 網路鎖定系統 | 從 Azure 入口網站存取序列主控台以管理系統。 某些網路命令列在 [Windows 命令：CMD 和 PowerShell](serial-console-cmd-ps-commands.md)。
 與開機載入器互動 | 透過序列主控台存取 BCD。 如需資訊，請參閱[啟用序列主控台中的 Windows 開機功能表](#enable-the-windows-boot-menu-in-the-serial-console)。
 

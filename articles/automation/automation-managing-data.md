@@ -3,14 +3,14 @@ title: Azure 自動化資料安全性
 description: 本文可協助您瞭解 Azure 自動化如何保護您的隱私權及保護您的資料。
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 06/03/2020
+ms.date: 07/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: cc96f2dd81b618b4170acd4b415a09248adbb7d5
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 610c2050150a533e246bc74ed7750ce87f7cf617
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186158"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87004642"
 ---
 # <a name="management-of-azure-automation-data"></a>管理 Azure 自動化資料
 
@@ -18,7 +18,7 @@ ms.locfileid: "86186158"
 
 ## <a name="tls-12-enforcement-for-azure-automation"></a>Azure 自動化的 TLS 1.2 強制
 
-若要確保傳輸中的資料安全性以 Azure 自動化，我們強烈建議您設定傳輸層安全性 (TLS) 1.2 的使用。 以下是透過 HTTPS 與 Automation 服務通訊的方法或用戶端清單：
+若要確保傳輸中的資料安全性以 Azure 自動化，我們強烈建議您設定傳輸層安全性（TLS）1.2 的使用。 以下是透過 HTTPS 與 Automation 服務通訊的方法或用戶端清單：
 
 * Webhook 呼叫
 
@@ -50,7 +50,7 @@ ms.locfileid: "86186158"
 | 資料 | 原則 |
 |:--- |:--- |
 | 帳戶 |帳戶會在使用者刪除的 30 天後永久移除。 |
-| Assets |資產會在使用者刪除該資產，或刪除持有該資產的帳戶 30 天後永久移除。 |
+| Assets |資產會在使用者刪除該資產，或刪除持有該資產的帳戶 30 天後永久移除。 資產包括變數、排程、認證、憑證、Python 2 套件和連線。 |
 | DSC 節點 |當使用 Azure 入口網站或在 Windows PowerShell 中使用 [Unregister-AzAutomationDscNode](/powershell/module/az.automation/unregister-azautomationdscnode?view=azps-3.7.0) Cmdlet 從自動化帳戶取消註冊 DSC 節點後，該節點會在此動作的 30 天後永久移除。 節點也會在使用者刪除持有該節點的帳戶 30 天後永久移除。 |
 | 工作 |工作會在經過修改 (例如工作完成、停止或暫停) 的 30 天後刪除並永久移除。 |
 | 模組 |模組會在使用者刪除該模組，或刪除持有該模組的帳戶 30 天後永久移除。 |
@@ -66,7 +66,7 @@ ms.locfileid: "86186158"
 
 ### <a name="runbooks"></a>Runbook
 
-您可以使用 Azure 入口網站或 Windows PowerShell 中的 [Get-AzureAutomationRunbookDefinition](/powershell/module/servicemanagement/azure/get-azureautomationrunbookdefinition)Cmdlet，將您的 Runbook 匯出為指令碼檔案。 您可將這些指令碼檔案匯入至另一個自動化帳戶，如[在 Azure 自動化中管理 Runbook](manage-runbooks.md) 所述。
+您可以使用 Azure 入口網站或 Windows PowerShell 中的 [Get-AzureAutomationRunbookDefinition](/powershell/module/servicemanagement/azure.service/get-azureautomationrunbookdefinition)Cmdlet，將您的 Runbook 匯出為指令碼檔案。 您可將這些指令碼檔案匯入至另一個自動化帳戶，如[在 Azure 自動化中管理 Runbook](manage-runbooks.md) 所述。
 
 ### <a name="integration-modules"></a>整合模組
 

@@ -9,13 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/22/2020
+ms.date: 07/13/2020
 ms.author: iainfou
-ms.openlocfilehash: 7cbd9250ecfb05e52204e1754046e02e4045fa6b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7eaf8b6b5cddc8a01b59cda0cafc819e06a5ec7c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84734702"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87004999"
 ---
 # <a name="join-an-ubuntu-linux-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>將 Ubuntu Linux 虛擬機器加入 Azure Active Directory Domain Services 受控網域
 
@@ -140,7 +141,7 @@ sudo apt-get install krb5-user samba sssd sssd-tools libnss-sss libpam-sss ntp n
     kinit contosoadmin@AADDSCONTOSO.COM
     ```
 
-1. 最後，使用命令將機器加入受控網域 `realm join` 。 使用與您在上一個命令中指定的受控網域之一部分相同的使用者帳戶 `kinit` ，例如 `contosoadmin@AADDSCONTOSO.COM` ：
+1. 最後，使用命令將 VM 加入受控網域 `realm join` 。 使用與您在上一個命令中指定的受控網域之一部分相同的使用者帳戶 `kinit` ，例如 `contosoadmin@AADDSCONTOSO.COM` ：
 
     ```console
     sudo realm join --verbose AADDSCONTOSO.COM -U 'contosoadmin@AADDSCONTOSO.COM' --install=/
@@ -281,7 +282,7 @@ rdns=false
     sudo apt-get update
     ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 如果您在將 VM 連線到受控網域或使用網域帳戶登入時發生問題，請參閱針對[網域加入問題進行疑難排解](join-windows-vm.md#troubleshoot-domain-join-issues)。
 

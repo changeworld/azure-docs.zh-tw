@@ -3,12 +3,12 @@ title: Azure 事件中樞-使用不同通訊協定的交換事件
 description: 本文將說明使用不同通訊協定 (AMQP、Apache Kafka 及 HTTPS) 的取用者和產生者如何在使用 Azure 事件中樞時交換事件。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: ec3122dcf151fe3e7b7b9578725e810ddca22bdf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6cdc4b9040f314b4ec41f84cc7436f0f2e3d6af6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85320599"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87002500"
 ---
 # <a name="exchange-events-between-consumers-and-producers-that-use-different-protocols-amqp-kafka-and-https"></a>在使用不同通訊協定的取用者和產生者之間交換事件：AMQP、Kafka 及 HTTPS
 Azure 事件中樞支援三種適用於取用者和產生者的通訊協定：AMQP、Kafka 及 HTTPS。 這些通訊協定中的每一個都有自己用來表示訊息的方式，因此自然會浮現下列問題：如果應用程式使用某種通訊協定來將事件傳送到事件中樞，並使用不同的通訊協定來取用它們，則事件的各種組件和值在送達取用者時看起來如何？ 本文將討論適用於產生者和取用者的最佳做法，以確保取用應用程式能夠正確解譯事件內的值。
@@ -331,7 +331,7 @@ String myStringProperty = new String(rawbytes, StandardCharsets.UTF_8);
 ## <a name="next-steps"></a>後續步驟
 在本文中，您已了解如何串流至事件中樞，而不需要變更通訊協定用戶端或執行您自己的叢集。 若要深入了解事件中樞和適用於 Kafka 的事件中樞，請參閱下列文章：  
 
-* [了解事件中樞](event-hubs-what-is-event-hubs.md)
+* [了解事件中樞](./event-hubs-about.md)
 * [了解適用於 Kafka 的事件中樞](event-hubs-for-kafka-ecosystem-overview.md)
 * [在適用於 Kafka 的事件中樞上探索更多範例 (GitHub)](https://github.com/Azure/azure-event-hubs-for-kafka)
 * 使用[MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) ，將[事件從內部部署 Kafka 串流至雲端上的事件中樞。](event-hubs-kafka-mirror-maker-tutorial.md)

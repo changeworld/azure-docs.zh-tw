@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 2c5ef71059fd3ba96299624818a13ebe1ae0929b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2a25625e085ee07a2dc036fd40f70e6b0376b42a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737847"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87003877"
 ---
 # <a name="how-to-use-azure-powershell-to-provision-sql-server-on-azure-virtual-machines"></a>如何使用 Azure PowerShell 在 Azure 上布建 SQL Server 虛擬機器
 
@@ -152,7 +152,7 @@ New-AzResourceGroup -Name $ResourceGroupName -Location $Location
 
 ## <a name="create-a-storage-account"></a>建立儲存體帳戶
 
-虛擬機器需要作業系統磁碟和 SQL Server 資料和記錄檔的儲存體資源。 為了簡單起見，您會針對兩者建立單一磁碟。 您可以在之後使用 [Add-Azure Disk](https://docs.microsoft.com/powershell/module/servicemanagement/azure/add-azuredisk) Cmdlet 來附加額外的磁碟，以將您的 SQL Server 資料和記錄檔放在專用的磁碟上。 使用 [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount) \(英文\) Cmdlet，在新的資源群組中建立標準儲存體帳戶。 針對 [儲存體帳戶名稱]、[儲存體 SKU 名稱] 和 [位置]，指定您先前已初始化的變數。
+虛擬機器需要作業系統磁碟和 SQL Server 資料和記錄檔的儲存體資源。 為了簡單起見，您會針對兩者建立單一磁碟。 您可以在之後使用 [Add-Azure Disk](/powershell/module/servicemanagement/azure.service/add-azuredisk) Cmdlet 來附加額外的磁碟，以將您的 SQL Server 資料和記錄檔放在專用的磁碟上。 使用 [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount) \(英文\) Cmdlet，在新的資源群組中建立標準儲存體帳戶。 針對 [儲存體帳戶名稱]、[儲存體 SKU 名稱] 和 [位置]，指定您先前已初始化的變數。
 
 執行此 Cmdlet 來建立新的儲存體帳戶。
 

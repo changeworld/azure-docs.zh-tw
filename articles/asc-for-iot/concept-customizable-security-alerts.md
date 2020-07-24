@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/04/2020
 ms.author: mlottner
-ms.openlocfilehash: 3b39d70c60a4c9701d0a8bafde17b241fe01cc46
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f676c4129b79499eb9ed524821a336b3859dbb3c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81311628"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87004846"
 ---
-# <a name="azure-security-center-for-iot-security-alerts"></a>適用於 IoT 的 Azure 資訊安全中心的安全性警示
+# <a name="azure-security-center-for-iot-customizable-security-alerts"></a>IoT 可自訂安全性警示的 Azure 資訊安全中心
 
 IoT 的 Azure 資訊安全中心會使用先進的分析與威脅情報，持續分析您的 IoT 解決方案，以向您發出惡意活動的警示。
 
@@ -31,7 +31,7 @@ IoT 的 Azure 資訊安全中心會使用先進的分析與威脅情報，持續
 
 ## <a name="iot-hub-alerts-available-for-customization"></a>可供自訂的 IoT 中樞警示
 
-| Severity | 警示名稱 | 資料來源 | 描述 | 建議的補救措施|
+| 嚴重性 | 警示名稱 | 資料來源 | 描述 | 建議的補救措施|
 |---|---|---|---|---|
 | 低      | 自訂警示 - AMQP 通訊協定中的雲端到裝置訊息數目超出允許的範圍          | IoT 中樞     | 特定時間範圍內的雲端到裝置訊息數目 (AMQP 通訊協定) 超出目前設定和允許的範圍。||
 | 低      | 自訂警示 - AMQP 通訊協定中遭到拒絕的雲端到裝置訊息數目超出允許的範圍 | IoT 中樞     | 特定時間範圍內裝置所拒絕的雲端到裝置訊息數目 (AMQP 通訊協定) 超出目前設定和允許的範圍。||
@@ -51,7 +51,7 @@ IoT 的 Azure 資訊安全中心會使用先進的分析與威脅情報，持續
 
 ## <a name="agent-alerts-available-for-customization"></a>可供自訂的代理程式警示
 
-| Severity | 警示名稱 | 資料來源 | 描述 | 建議的補救措施|
+| 嚴重性 | 警示名稱 | 資料來源 | 描述 | 建議的補救措施|
 |---|---|---|---|---|
 | 低      | 自訂警示 - 作用中連線數目超出允許的範圍  | 代理程式       | 特定時間範圍內的作用中連線數目超出目前設定和允許的範圍。|  調查裝置記錄。 了解連線的來源，並判斷其為良性或惡意。 若為惡意，請移除可能的惡意程式碼並了解來源。 若為良性，請將來源新增至允許的連線清單。  |
 | 低      | 自訂警示 - 對某個 IP 建立了不允許的輸出連線                             | 代理程式       | 已建立連至允許的 IP 清單以外 IP 的輸出連線。 |調查裝置記錄。 了解連線的來源，並判斷其為良性或惡意。 若為惡意，請移除可能的惡意程式碼並了解來源。 若為良性，請將來源新增至允許的 IP 清單。                        |
@@ -60,7 +60,7 @@ IoT 的 Azure 資訊安全中心會使用先進的分析與威脅情報，持續
 | 低      | 自訂警示 - 執行了不允許的程序 | 代理程式       | 在裝置上執行了不允許的程序。 |如果您要儲存未經處理的資料，請瀏覽至您的記錄分析帳戶，並使用該資料來調查裝置、識別來源，然後修正這些設定的允許/封鎖清單。 如果您目前不要儲存未經處理的資料，請移至裝置並修正這些設定的允許/封鎖清單。  |
 |
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 瞭解如何[自訂警示](quickstart-create-custom-alerts.md)
 - IoT 服務的 Azure 資訊安全中心[總覽](overview.md)

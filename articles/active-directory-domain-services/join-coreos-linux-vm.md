@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/23/2020
+ms.date: 07/13/2020
 ms.author: iainfou
-ms.openlocfilehash: 845b48d84040343f829648f9c7fda2372e3413dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 93f16629b74ab76d7b46603d84d52cff4bf1ca13
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84734736"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005101"
 ---
 # <a name="join-a-coreos-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>將 CoreOS 虛擬機器加入 Azure Active Directory Domain Services 受控網域
 
@@ -85,7 +85,7 @@ sudo vi /etc/sssd/sssd.conf
 為下列參數指定您自己的受控功能變數名稱：
 
 * 全大寫的*網域*
-* *[domain/AADDS]* ，其中 AADDS 為全大寫
+* *[domain/AADDSCONTOSO]* ，其中 AADDSCONTOSO 為全大寫
 * *ldap_uri*
 * *ldap_search_base*
 * *krb5_server*
@@ -97,7 +97,7 @@ config_file_version = 2
 services = nss, pam
 domains = AADDSCONTOSO.COM
 
-[domain/AADDSCONTOSO.COM]
+[domain/AADDSCONTOSO]
 id_provider = ad
 auth_provider = ad
 chpass_provider = ad
@@ -168,7 +168,7 @@ krb5_realm = AADDSCONTOSO.COM
 
     您應該會看到來自受控網域的群組成員資格。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 如果您在將 VM 連線到受控網域或使用網域帳戶登入時發生問題，請參閱針對[網域加入問題進行疑難排解](join-windows-vm.md#troubleshoot-domain-join-issues)。
 

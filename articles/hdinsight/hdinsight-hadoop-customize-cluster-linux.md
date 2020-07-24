@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: 36aaee030dd5267a391dd9a235dd5f8dc0932fa0
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 383c64c585f05869e1d01b5c99693fcf560cdedc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087086"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006666"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>使用指令碼動作來自訂 Azure HDInsight 叢集
 
@@ -131,7 +131,7 @@ Status            : Succeeded
 
 HDInsight 提供一些指令碼以在 HDInsight 叢集上安裝下列元件：
 
-| Name | 指令碼 |
+| 名稱 | 指令碼 |
 | --- | --- |
 | 新增 Azure 儲存體帳戶 |`https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh`. 請參閱[將其他儲存體帳戶新增至 HDInsight](hdinsight-hadoop-add-storage.md)。 |
 | 安裝 Hue |`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh`. 請參閱[在 HDInsight Hadoop 叢集上安裝和使用 Hue](hdinsight-hadoop-hue-linux.md)。 |
@@ -156,7 +156,7 @@ HDInsight 提供一些指令碼以在 HDInsight 叢集上安裝下列元件：
     | 屬性 | 值 |
     | --- | --- |
     | 選取指令碼 | 若要使用自己的指令碼，請選取 [自訂]____。 或是選取其中一個提供的指令碼。 |
-    | Name |指定指令碼動作的名稱。 |
+    | 名稱 |指定指令碼動作的名稱。 |
     | Bash 指令碼 URI |指定指令碼的 URI。 |
     | Head/Worker/ZooKeeper |指定執行腳本的節點： [ **Head**]、[ **Worker**] 或 [ **ZooKeeper**]。 |
     | 參數 |如果指令碼要求，請指定參數。 |
@@ -195,7 +195,7 @@ HDInsight 提供一些指令碼以在 HDInsight 叢集上安裝下列元件：
 
 ### <a name="use-a-script-action-during-cluster-creation-from-azure-powershell"></a>在建立叢集期間從 Azure PowerShell 使用指令碼動作
 
-在本節中，您會使用[AzHDInsightScriptAction](https://docs.microsoft.com/powershell/module/az.hdinsight/add-azhdinsightscriptaction) Cmdlet 來叫用腳本以自訂叢集。 在您開始之前，請務必先安裝和設定 Azure PowerShell。 若要使用這些 PowerShell 命令，您需要[AZ 模組](https://docs.microsoft.com/powershell/azure/overview)。
+在本節中，您會使用[AzHDInsightScriptAction](https://docs.microsoft.com/powershell/module/az.hdinsight/add-azhdinsightscriptaction) Cmdlet 來叫用腳本以自訂叢集。 在您開始之前，請務必先安裝和設定 Azure PowerShell。 若要使用這些 PowerShell 命令，您需要[AZ 模組](https://docs.microsoft.com/powershell/azure/)。
 
 下列指令碼示範如何使用 PowerShell 在建立叢集時套用指令碼動作：
 
@@ -230,7 +230,7 @@ HDInsight .NET SDK 提供用戶端程式庫，可讓您更輕鬆地從 .NET 應�
     | 屬性 | 值 |
     | --- | --- |
     | 選取指令碼 | 若要使用您自己的腳本，請選取 [__自訂__]。 否則，請選取提供的指令碼。 |
-    | Name |指定指令碼動作的名稱。 |
+    | 名稱 |指定指令碼動作的名稱。 |
     | Bash 指令碼 URI |指定指令碼的 URI。 |
     | Head/Worker/Zookeeper |指定執行腳本的節點： [ **Head**]、[ **Worker**] 或 [ **ZooKeeper**]。 |
     | 參數 |如果指令碼要求，請指定參數。 |
@@ -241,7 +241,7 @@ HDInsight .NET SDK 提供用戶端程式庫，可讓您更輕鬆地從 .NET 應�
 
 ### <a name="apply-a-script-action-to-a-running-cluster-from-azure-powershell"></a>從 Azure PowerShell 將指令碼動作套用到執行中的叢集
 
-若要使用這些 PowerShell 命令，您需要[AZ 模組](https://docs.microsoft.com/powershell/azure/overview)。 下列範例示範如何將指令碼動作套用至執行中的叢集：
+若要使用這些 PowerShell 命令，您需要[AZ 模組](https://docs.microsoft.com/powershell/azure/)。 下列範例示範如何將指令碼動作套用至執行中的叢集：
 
 [!code-powershell[main](../../powershell_scripts/hdinsight/use-script-action/use-script-action.ps1?range=105-117)]
 
@@ -319,7 +319,7 @@ NodeTypes       : {HeadNode, WorkerNode}
 
 ### <a name="azure-cli"></a>Azure CLI
 
-| Command | 說明 |
+| 命令 | 描述 |
 | --- | --- |
 | [`az hdinsight script-action delete`](https://docs.microsoft.com/cli/azure/hdinsight/script-action?view=azure-cli-latest#az-hdinsight-script-action-delete) |刪除叢集的指定持續性腳本動作。 此命令不會復原腳本所執行的動作，它只會移除保存的旗標。|
 |[`az hdinsight script-action execute`](https://docs.microsoft.com/cli/azure/hdinsight/script-action?view=azure-cli-latest#az-hdinsight-script-action-execute)|在指定的 HDInsight 叢集上執行指令碼動作。|
@@ -335,7 +335,7 @@ NodeTypes       : {HeadNode, WorkerNode}
 > [!NOTE]  
 > 這個範例也示範如何使用 .NET SDK 來安裝 HDInsight 應用程式。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>接下來的步驟
 
 * [開發 HDInsight 的指令碼動作指令碼](hdinsight-hadoop-script-actions-linux.md)
 * [在 HDInsight 叢集新增儲存體](hdinsight-hadoop-add-storage.md)

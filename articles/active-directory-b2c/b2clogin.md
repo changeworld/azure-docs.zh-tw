@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/04/2019
+ms.date: 07/17/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4297ee64742b81e86eb8b85c0a6c405fac07d67f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 79807e8e0f798a73063576a00b8d0c32cdfe5a4b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85386159"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005339"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>將 Azure Active Directory B2C 的重新導向 URL 設定為 b2clogin.com
 
@@ -58,7 +58,7 @@ Login.microsoftonline.com 的淘汰會在2020年12月4日 Azure AD B2C 生效，
 https://{your-tenant-name}.b2clogin.com/{your-tenant-id}/oauth2/authresp
 ```
 
-第二個選項會以形式使用您的租使用者功能變數名稱 `your-tenant-name.onmicrosoft.com` 。 例如：
+第二個選項會以形式使用您的租使用者功能變數名稱 `your-tenant-name.onmicrosoft.com` 。 例如:
 
 ```
 https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/oauth2/authresp
@@ -89,29 +89,47 @@ https://contosob2c.b2clogin.com/00000000-0000-0000-0000-000000000000/B2C_1_signu
 
 ## <a name="microsoft-authentication-library-msal"></a>Microsoft Authentication Library (MSAL)
 
-### <a name="validateauthority-property"></a>ValidateAuthority 屬性
+### <a name="msalnet-validateauthority-property"></a>MSAL.NET ValidateAuthority 屬性
 
-如果您使用的是[MSAL.NET][msal-dotnet] v2 或更早版本，請將用戶端具現化上的**ValidateAuthority**屬性設定為， `false` 以允許重新導向至*b2clogin.com*。 MSAL.NET v3 和更新版本不需要此設定。
+如果您使用的是[MSAL.NET][msal-dotnet] v2 或更早版本，請將用戶端具現化上的**ValidateAuthority**屬性設定為， `false` 以允許重新導向至*b2clogin.com*。 MSAL.NET v3 和更新版本不需要將此值設定為 `false` 。
 
 ```csharp
 ConfidentialClientApplication client = new ConfidentialClientApplication(...); // Can also be PublicClientApplication
 client.ValidateAuthority = false; // MSAL.NET v2 and earlier **ONLY**
 ```
 
-如果您是使用[JavaScript 的 MSAL][msal-js]：
+### <a name="msal-for-javascript-validateauthority-property"></a>MSAL for JavaScript validateAuthority 屬性
+
+如果您使用[MSAL For JavaScript][msal-js] v 1.2.2 或更早的版本，請將**validateAuthority**屬性設定為 `false` 。
 
 ```JavaScript
+// MSAL.js v1.2.2 and earlier
 this.clientApplication = new UserAgentApplication(
   env.auth.clientId,
   env.auth.loginAuthority,
   this.authCallback.bind(this),
   {
-    validateAuthority: false
+    validateAuthority: false // Required in MSAL.js v1.2.2 and earlier **ONLY**
   }
 );
 ```
 
-## <a name="next-steps"></a>後續步驟
+如果您 `validateAuthority: true` 在 MSAL.js 1.3.0 + （預設值）中設定，您也必須使用指定有效的權杖簽發者 `knownAuthorities` ：
+
+```JavaScript
+// MSAL.js v1.3.0+
+this.clientApplication = new UserAgentApplication(
+  env.auth.clientId,
+  env.auth.loginAuthority,
+  this.authCallback.bind(this),
+  {
+    validateAuthority: true, // Supported in MSAL.js v1.3.0+
+    knownAuthorities: ['tenant-name.b2clogin.com'] // Required if validateAuthority: true
+  }
+);
+```
+
+## <a name="next-steps"></a>接下來的步驟
 
 如需將以 OWIN 為基礎的 web 應用程式遷移至 b2clogin.com 的詳細資訊，請參閱將[OWIN 型 Web API 遷移至 b2clogin.com](multiple-token-endpoints.md)。
 

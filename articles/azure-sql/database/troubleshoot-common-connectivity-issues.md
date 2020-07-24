@@ -12,12 +12,12 @@ author: dalechen
 ms.author: ninarn
 ms.reviewer: carlrab, vanto
 ms.date: 01/14/2020
-ms.openlocfilehash: acc61cefbc9d89f11eae5b6549add57871035ddb
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 0b28fa788e7b35e94482104d807c228db21f49b4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86078964"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87003911"
 ---
 # <a name="troubleshoot-transient-connection-errors-in-sql-database-and-sql-managed-instance"></a>針對 SQL Database 和 SQL 受控執行個體中的暫時性連接錯誤進行疑難排解
 
@@ -148,8 +148,8 @@ ms.locfileid: "86078964"
 
 **ConnectRetryCount** 和 **ConnectRetryInterval** 參數讓您的 **SqlConnection** 物件可重試連接作業，而不需告知或中斷您的程式，例如將控制權傳回您的程式。 可能會在以下情況中發生重試：
 
-- mySqlConnection.Open 方法呼叫
-- mySqlConnection.Execute 方法呼叫
+- SqlConnection. Open 方法呼叫
+- SqlConnection.Exe的刻意方法呼叫
 
 有一些微妙的差異。 若在執行「查詢」** 時發生暫時性錯誤，您的 **SqlConnection** 物件並不會重試連線作業。 而且絕對不會重試查詢。 不過，在傳送您的查詢以供執行之前， **SqlConnection** 會先快速檢查連接。 如果快速檢查偵測到連接問題， **SqlConnection** 會重試連接作業。 如果重試成功，就會傳送您的查詢以供執行。
 
@@ -443,7 +443,7 @@ public bool IsTransient(Exception ex)
 }
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - [SQL Database 和 SQL Server 的連線庫](connect-query-content-reference-guide.md#libraries)
 - [連接共用（ADO.NET）](https://docs.microsoft.com/dotnet/framework/data/adonet/sql-server-connection-pooling)

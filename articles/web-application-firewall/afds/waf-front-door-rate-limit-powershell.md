@@ -7,11 +7,12 @@ ms.topic: article
 services: web-application-firewall
 ms.date: 02/26/2020
 ms.author: victorh
-ms.openlocfilehash: b034159c3d12927f6425b3dc3c5b5609af9b0b76
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 29f50b2cf9523b9266de2f73607b0099f32852e1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77649359"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005407"
 ---
 # <a name="configure-a-web-application-firewall-rate-limit-rule-using-azure-powershell"></a>使用 Azure PowerShell 設定 Web 應用程式防火牆速率限制規則
 Azure Front 門板的 Azure Web 應用程式防火牆（WAF）速率限制規則會控制用戶端在一分鐘內允許的要求數。
@@ -24,7 +25,7 @@ Azure Front 門板的 Azure Web 應用程式防火牆（WAF）速率限制規則
 ### <a name="set-up-your-powershell-environment"></a>設定 PowerShell 環境
 Azure PowerShell 提供了一組 Cmdlet，它們會使用 [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) 模型來管理 Azure 資源。 
 
-您可以在本機電腦上安裝 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)，並將其用於任何 PowerShell 工作階段。 依照頁面上的指示，使用您的 Azure 認證登入，並安裝 Az PowerShell module。
+您可以在本機電腦上安裝 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/)，並將其用於任何 PowerShell 工作階段。 依照頁面上的指示，使用您的 Azure 認證登入，並安裝 Az PowerShell module。
 
 #### <a name="connect-to-azure-with-an-interactive-dialog-for-sign-in"></a>使用互動式登入對話方塊連線至 Azure
 ```
@@ -101,7 +102,7 @@ Install-Module -Name Az.FrontDoor
 > [!NOTE]
 > 您只需要設定*WebApplicationFirewallPolicyLink*屬性一次，即可將安全性原則連結到 front 前端。 後續的原則更新會自動套用至前端。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 深入瞭解[Front](../../frontdoor/front-door-overview.md)。 
 

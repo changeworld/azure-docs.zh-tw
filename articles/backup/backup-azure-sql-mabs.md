@@ -3,11 +3,12 @@ title: 使用 Azure 備份伺服器備份 SQL Server
 description: 在本文中，您將瞭解如何使用 Microsoft Azure 備份 Server （MABS）來備份 SQL Server 資料庫的設定。
 ms.topic: conceptual
 ms.date: 03/24/2017
-ms.openlocfilehash: 2bb172ca36f3f932fdaaf5b71e8fa183c04d1510
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d682e63424ca247161e9784a8a05b91186da54b7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84194190"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87003639"
 ---
 # <a name="back-up-sql-server-to-azure-by-using-azure-backup-server"></a>使用 Azure 備份伺服器將 SQL Server 備份至 Azure
 
@@ -19,7 +20,35 @@ ms.locfileid: "84194190"
 1. 在 Azure 中建立隨選備份複本。
 1. 復原 Azure 中的資料庫。
 
-## <a name="before-you-start"></a>在您開始使用 Intune 之前
+## <a name="prerequisites-and-limitations"></a>必要條件和限制
+
+* 如果您有一個資料庫上其檔案位於遠端的檔案共用，則保護將會失敗，錯誤識別碼為 104。 MABS 不支援保護遠端檔案共用上的 SQL Server 資料。
+* MABS 無法保護儲存在遠端 SMB 共用上的資料庫。
+* 請確定[可用性群組複本已設定為唯讀](/sql/database-engine/availability-groups/windows/configure-read-only-access-on-an-availability-replica-sql-server?view=sql-server-ver15)。
+* 您必須明確地將系統帳戶**NTAuthority\System**新增至 SQL Server 上的 Sysadmin 群組。
+* 當您執行部分自主資料庫的替代位置復原時，您必須確定目標 SQL 實例已啟用「自主[資料庫](/sql/relational-databases/databases/migrate-to-a-partially-contained-database?view=sql-server-ver15#enable)」功能。
+* 當您針對檔案資料流程資料庫執行替代位置復原時，必須確定目標 SQL 實例已啟用「檔案[資料流程資料庫](/sql/relational-databases/blob/enable-and-configure-filestream?view=sql-server-ver15)」功能。
+* 保護 SQL Server AlwaysOn：
+  * 在保護群組建立時執行查詢時，MABS 會偵測可用性群組。
+  * MABS 會偵測容錯移轉並繼續保護資料庫。
+  * MABS 支援 SQL Server 實例的多網站叢集設定。
+* 當您保護使用 AlwaysOn 功能的資料庫時，MABS 有下列限制：
+  * MABS 將會根據備份喜好設定，接受 SQL Server 中設定之可用性群組的備份原則，如下所示：
+    * 慣用次要：除非主要複本是唯一的線上複本，否則應在次要複本上執行備份。 如果有多個次要複本可用，則會選取具有最高備份優先權的節點進行備份。 如果只有主要複本可用，則應該在主要複本上進行備份。
+    * 僅次要：不應在主要複本上執行備份。 如果主要複本是唯一的線上複本，則不應進行備份。
+    * 主要備份：您應該一律在主要複本上進行備份。
+    * 任何複本：備份可以在可用性群組中的任何可用性複本上執行。 作為備份來源的節點將依據每個節點的備份優先順序而定。
+  * 請注意：
+    * 備份可能會從任何可讀取的複本（也就是主要、同步次要、非同步次要）進行。
+    * 如果從備份中排除任何複本，例如 [**排除複本**] 已啟用或標示為 [無法讀取]，則不會在任何選項下選取該複本進行備份。
+    * 如果有多個複本可用且可讀取，則會選取備份優先順序最高的節點進行備份。
+    * 如果在選取的節點上備份失敗，則備份作業會失敗。
+    * 不支援復原到原始位置。
+* SQL Server 2014 或以上的備份問題：
+  * SQL server 2014 新增了新功能，可為[Windows Azure Blob 儲存體中的內部部署 SQL Server 建立資料庫](/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure?view=sql-server-ver15)。 MABS 無法用來保護此設定。
+  * SQL AlwaysOn 選項的「偏好次要」備份喜好設定有一些已知問題。 MABS 一律會從次要複本進行備份。 如果找不到次要複本，則備份會失敗。
+
+## <a name="before-you-start"></a>開始之前
 
 開始之前，請確定您已[安裝並備妥 Azure 備份伺服器](backup-azure-microsoft-azure-backup.md)。
 

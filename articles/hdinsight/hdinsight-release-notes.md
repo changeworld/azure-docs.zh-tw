@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: 0481f92666c8ca547dc427e117f9917afb257629
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ef243d5b151f95a00e22ac7636a46b93090ccce3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86511869"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006529"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Azure HDInsight 版本資訊
 
@@ -62,4 +62,4 @@ HDInsight 會持續改善叢集的可靠性和效能。
 Zeppelin 不正確地截斷資料表輸出中的前置零，以取得字串格式。 我們已在此版本中修正此問題。
 
 ## <a name="component-version-change"></a>元件版本變更
-此發行版本沒有任何元件版本變更。 您可以在[本](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions)檔中找到 hdinsight 4.0 ad hdinsight 3.6 的目前元件版本。
+此發行版本沒有任何元件版本變更。 您可以在[本](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions)檔中找到 hdinsight 4.0 和 hdinsight 3.6 的目前元件版本。

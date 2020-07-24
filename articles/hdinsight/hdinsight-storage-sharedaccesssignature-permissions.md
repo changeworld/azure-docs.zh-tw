@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: 3756e7d1f58c37038347888a21d98326cd4eb71f
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 8ab181eb72b5a3ab54ad8dba19d23288926b8969
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087447"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006308"
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>使用 Azure 儲存體共用存取簽章來限制 HDInsight 對資料的存取
 
@@ -31,7 +31,7 @@ HDInsight 對於與叢集建立關聯之 Azure 儲存體帳戶中的資料具有
 
 * 現有的[儲存體容器](../storage/blobs/storage-quickstart-blobs-portal.md)。  
 
-* 如果使用 PowerShell，您將需要 [Az 模組](https://docs.microsoft.com/powershell/azure/overview) \(部分機器翻譯\)。
+* 如果使用 PowerShell，您將需要 [Az 模組](https://docs.microsoft.com/powershell/azure/) \(部分機器翻譯\)。
 
 * 如果您想要使用 Azure CLI，但尚未安裝，請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 
@@ -211,7 +211,7 @@ Set-AzStorageblobcontent `
 
 3. 選取 [設定] **** ，並新增下列項目的值：
 
-    |項目 |說明 |
+    |項目 |描述 |
     |---|---|
     |StorageConnectionString|您想要為其建立預存原則和 SAS 的儲存體帳戶的連接字串。 其格式應為 `DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey`，其中 `myaccount` 是儲存體帳戶名稱，而 `mykey` 是儲存體帳戶金鑰。|
     |ContainerName|您想要限制存取的儲存體帳戶中的容器。|
@@ -433,7 +433,7 @@ Remove-AzResourceGroup `
 
     此時，作業應該已順利完成。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>接下來的步驟
 
 既然您已瞭解如何將有限存取儲存體新增至您的 HDInsight 叢集，請瞭解在叢集上使用資料的其他方式：
 

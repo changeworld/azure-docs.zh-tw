@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: fc14c3bd069162c390c09fddbfe9169b90bf66ce
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: a9d419052f000b220c993109e45d371398607275
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086002"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006445"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>調整 Azure HDInsight 叢集
 
 HDInsight 提供彈性選項，以相應增加和相應減少叢集中的背景工作節點數目。 此彈性可讓您在數小時或週末時縮減叢集。 並在業務需求尖峰期間進行擴充。
 
-在定期批次處理之前相應增加您的叢集，讓叢集擁有足夠的資源。 處理完成且使用量下降時，請將 HDInsight 叢集相應減少至較少的背景工作節點。
+在定期批次處理之前相應增加您的叢集，讓叢集擁有足夠的資源。  處理完成且使用量下降時，請將 HDInsight 叢集相應減少至較少的背景工作節點。
 
 您可以使用以下所述的其中一種方法來手動調整叢集。 您也[可以使用 [自動調整](hdinsight-autoscale-clusters.md)] 選項，自動相應增加和減少，以回應特定計量。
 
@@ -60,7 +60,7 @@ Microsoft 提供下列公用程式來調整叢集：
 
     當 Hadoop 叢集以較少的資料節點相應減少時，部分服務會重新開機。 此行為會導致所有執行中和擱置的工作在調整作業完成時失敗。 但您可以在作業完成後重新提交這些工作。
 
-* Apache HBase (英文)
+* Apache HBase
 
     當您的 HBase 叢集正在執行時，您可以順暢地新增或移除節點。 區域伺服器會在完成調整作業的數分鐘之內自動取得平衡。 不過，您可以手動平衡區域伺服器。 登入叢集前端節點，然後執行下列命令：
 
@@ -107,6 +107,14 @@ Microsoft 提供下列公用程式來調整叢集：
 
     您應該在調整作業完成後重新平衡磁碟分割複本。 如需詳細資訊，請參閱[使用 HDInsight 上的 Apache Kafka 確保資料的高可用性](./kafka/apache-kafka-high-availability.md)文件。
 
+* Apache Hive LLAP
+
+    調整為背景 `N` 工作節點之後，HDInsight 會自動設定下列設定並重新啟動 Hive。
+
+  * 並行查詢總數上限：`hive.server2.tez.sessions.per.default.queue = min(N, 32)`
+  * Hive 的 LLAP 所使用的節點數目：`num_llap_nodes  = N`
+  * 執行 Hive LLAP daemon 的節點數目：`num_llap_nodes_for_llap_daemons = N`
+
 ## <a name="how-to-safely-scale-down-a-cluster"></a>如何安全地向下調整叢集
 
 ### <a name="scale-down-a-cluster-with-running-jobs"></a>使用執行中的作業向下擴充叢集
@@ -138,7 +146,7 @@ Microsoft 提供下列公用程式來調整叢集：
 yarn application -kill <application_id>
 ```
 
-例如：
+例如:
 
 ```bash
 yarn application -kill "application_1499348398273_0003"
@@ -260,7 +268,7 @@ hdfs dfsadmin -D 'fs.default.name=hdfs://mycluster/' -safemode leave
     balancer
     ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * [自動調整 Azure HDInsight 叢集規模](hdinsight-autoscale-clusters.md)
 
