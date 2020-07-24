@@ -5,17 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 04/13/2020
+ms.date: 07/20/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 295738ee5943a6cf54bc7e1e3ce4bba621dbe29f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9861e8e8be39781ad1b256b9939df3ab03e74be6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84658677"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027524"
 ---
 # <a name="manage-user-settings-for-azure-multi-factor-authentication"></a>管理 Azure 多重要素驗證的使用者設定
 
@@ -26,7 +27,7 @@ ms.locfileid: "84658677"
 如果您已獲指派「*驗證系統管理員*」角色，您可以要求使用者重設其密碼、重新註冊 MFA，或從使用者物件撤銷現有的 MFA 會話。 若要管理使用者設定，請完成下列步驟：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-1. 在左側，選取 [ **Azure Active Directory**  >  **使用者**] [  >  **所有使用者**]。
+1. 選取左邊的 [Azure Active Directory] > [使用者] > [所有使用者]。
 1. 選擇您想要對其執行動作的使用者，然後選取 [**驗證方法**]。 在視窗頂端，為使用者選擇下列其中一個選項：
    - [**重設密碼**] 會重設使用者的密碼，並指派必須在下次登入時變更的暫時密碼。
    - [**需要重新註冊 MFA** ] 會讓使用者在下一次登入時，要求他們設定新的 MFA 驗證方法。
@@ -51,8 +52,8 @@ ms.locfileid: "84658677"
 1. 選取 [**管理使用者設定**]，然後核取 [**刪除選取的使用者產生的所有現有應用程式密碼**] 方塊，如下列範例所示： ![ 刪除所有現有的應用程式密碼](./media/howto-mfa-userdevicesettings/deleteapppasswords.png)
 1. 選取 [**儲存**]，然後按一下 [**關閉**]。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-這篇文章有助於設定個別使用者設定。 若要設定 Azure 多因素驗證服務設定，請參閱[設定 Azure 多因素驗證設定](howto-mfa-mfasettings.md)
+本文說明如何設定個別使用者設定。 若要設定整體 Azure 多因素驗證服務設定，請參閱[設定 Azure 多因素驗證設定](howto-mfa-mfasettings.md)。
 
-如果您的使用者需要協助，請參閱[Azure 多重要素驗證的使用者指南](../user-help/multi-factor-authentication-end-user.md)。
+如果您的使用者需要協助，請參閱[Azure 多重要素驗證的使用者指南](../user-help/multi-factor-authentication-end-user-first-time.md)。

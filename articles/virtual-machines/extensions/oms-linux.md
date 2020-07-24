@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: akjosh
-ms.openlocfilehash: 905a42c5a9bc297e2c27408a58a5b3019755fdef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d7ebb23cfc0ffdcfcac7ecb4ecbd9b9a665e6130
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84736648"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029088"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-linux"></a>適用於 Linux 的 Log Analytics 虛擬機器擴充功能
 
@@ -204,7 +204,7 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 
 | 錯誤碼 | 意義 | 可能的動作 |
 | :---: | --- | --- |
-| 9 | 啟用提前呼叫 | [將 Azure Linux 代理程式更新](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent)為最新的可用版本。 |
+| 9 | 啟用提前呼叫 | [將 Azure Linux 代理程式更新](./update-linux-agent.md)為最新的可用版本。 |
 | 10 | VM 已經連線到 Log Analytics 工作區 | 若要將 VM 連線到擴充功能結構描述中所指定的工作區，請在公用設定中將 stopOnMultipleConnections 設定為 false，或是移除此屬性。 針對此 VM 所連線的每個工作區都會向此 VM 計費一次。 |
 | 11 | 提供給擴充功能的組態無效 | 依照上述範例來設定部署所需的所有屬性值。 |
 | 17 | Log Analytics 套件安裝失敗 | 

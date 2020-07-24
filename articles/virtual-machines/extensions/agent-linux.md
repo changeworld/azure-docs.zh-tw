@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/17/2016
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4143e049f0a89d1218d9442eaebc1c5ebaf4cc77
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 560ae8d837cf57e471a9f39d5ccdcf152a156b1e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186821"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029071"
 ---
 # <a name="understanding-and-using-the-azure-linux-agent"></a>了解與使用 Azure Linux 代理程式
 
@@ -68,7 +68,7 @@ Microsoft Azure Linux 代理程式 (waagent) 管理 Linux 與 FreeBSD 佈建，�
 * 在 IaaS 部署中，開機時連接的 DVD。 此 DVD 包含 OVF 相容組態檔，內含實際 SSH 金鑰組以外的所有佈建資訊。
 * TCP 端點，公開可用來取得部署和拓撲組態的 REST API。
 
-## <a name="requirements"></a>規格需求
+## <a name="requirements"></a>需求
 下列系統已經過測試，且已知可與 Azure Linux 代理程式一同運作：
 
 > [!NOTE]
@@ -344,5 +344,4 @@ Ubuntu 雲端映像會利用 [cloud-init](https://launchpad.net/ubuntu/+source/c
 * 如需詳細資訊，請參閱下列資源，以便在佈建期間，於 Ubuntu 雲端映像上設定資源磁碟掛接點和交換空間：
   
   * [Ubuntu Wiki：設定交換資料分割](https://go.microsoft.com/fwlink/?LinkID=532955&clcid=0x409)
-  * [將自訂資料插入 Azure 虛擬機器](../windows/classic/inject-custom-data.md)
-
+  * [將自訂資料插入 Azure 虛擬機器](../windows/tutorial-automate-vm-deployment.md)

@@ -16,12 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: ecfd6bf9d20309619155bf35c87bdb4c08665f73
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 3b2684122e7de97282b1054fa9ad0390469b0f0e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169539"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87030261"
 ---
 # <a name="how-to-use-notification-hubs-from-java"></a>如何從 Java 使用通知中樞
 
@@ -30,7 +30,7 @@ ms.locfileid: "86169539"
 本主題說明最新完整支援的官方 Azure 通知中樞 Java SDK 有哪些主要功能。
 此專案為開放原始碼專案，您可以在 [Java SDK] 中檢視完整的 SDK 程式碼。
 
-一般而言，您可以使用通知中樞 REST 介面，來存取 Java/PHP/Python/Ruby 後端的所有通知中樞功能，如 MSDN 主題 [通知中樞 REST API](https://msdn.microsoft.com/library/dn223264.aspx)中所述。 此 Java SDK 透過 Java 中的這些 REST 介面提供了精簡型包裝函式。
+一般而言，您可以使用通知中樞 REST 介面，來存取 Java/PHP/Python/Ruby 後端的所有通知中樞功能，如 MSDN 主題 [通知中樞 REST API](/previous-versions/azure/reference/dn223264(v=azure.100))中所述。 此 Java SDK 透過 Java 中的這些 REST 介面提供了精簡型包裝函式。
 
 SDK 目前支援：
 
@@ -41,7 +41,7 @@ SDK 目前支援：
 * 定期傳送
 * 排程的傳送
 * 透過 Java NIO 的非同步作業
-* 支援的平臺： APNS (iOS) 、FCM (Android) 、WNS (Windows Store 應用程式) 、MPNS (Windows Phone) 、ADM (Amazon Kindle 火災) 、百度 (Android （不含 Google 服務）) 
+* 支援的平臺： APNS （iOS）、FCM （Android）、WNS （Windows Store 應用程式）、MPNS （Windows Phone）、ADM （Amazon Kindle 火災）、百度（不含 Google 服務的 Android）
 
 ## <a name="sdk-usage"></a>SDK 的使用方式
 
@@ -387,7 +387,7 @@ hub.sendNotification(n);
   * [傳送跨平台通知給已驗證的使用者]
 
 [Java SDK]: https://github.com/Azure/azure-notificationhubs-java-backend
-[Get started tutorial]: notification-hubs-ios-apple-push-notification-apns-get-started.md
+[Get started tutorial]: ./notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
 [開始使用通知中心]: notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
 [傳送即時新聞]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
 [傳送當地語系化的即時新聞]: notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md

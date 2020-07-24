@@ -13,17 +13,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 493340764f507c4fa364a5000f65cc232630b243
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 571df9c07e71682e2be51a73e3837c79cb074c3a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77167035"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028459"
 ---
 # <a name="windows-commands---cmd-and-powershell"></a>Windows 命令 - CMD 和 PowerShell
 
 本節包含範例命令，用以執行您在可能需要使用 SAC 來存取 Windows VM 的情況下 (例如，當您需要對 RDP 連線失敗進行疑難排解時) 常會進行的工作。
 
-自 Windows Server 2003 起的所有 Windows 版本均已包含 SAC，但預設為停用。 SAC 須依賴 `sacdrv.sys` 核心驅動程式、`Special Administration Console Helper` 服務 (`sacsvr`) 和 `sacsess.exe` 程序。 如需詳細資訊，請參閱 [Emergency Management Services 工具和設定](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2003/cc787940(v%3dws.10))。
+自 Windows Server 2003 起的所有 Windows 版本均已包含 SAC，但預設為停用。 SAC 須依賴 `sacdrv.sys` 核心驅動程式、`Special Administration Console Helper` 服務 (`sacsvr`) 和 `sacsess.exe` 程序。 如需詳細資訊，請參閱 [Emergency Management Services 工具和設定](/previous-versions/windows/it-pro/windows-server-2003/cc787940(v%3dws.10))。
 
 SAC 可讓您透過序列埠連線至執行中的作業系統。 當您從 SAC 啟動 CMD 時，`sacsess.exe` 會在您執行中的作業系統內啟動 `cmd.exe`。 如果您在透過序列主控台功能連線至 SAC 的同時透過 RDP 連線至 VM，您可以在工作管理員中看到此情形。 您透過 SAC 存取的 CMD，即為您透過 RDP 進行連線時所使用的相同 `cmd.exe`。 可用的命令和工具完全相同，包括從該 CMD 執行個體啟動 PowerShell 的能力。 這是 SAC 與 Windows 修復環境 (WinRE) 之間的主要差異：SAC 可讓您管理執行中的作業系統，而 WinRE 則會開機並進入不同的最低作業系統。 雖然 Azure VM 不支援存取 WinRE 的功能，但在使用序列主控台功能時，可以透過 SAC 來管理 Azure VM。
 
@@ -90,7 +91,7 @@ SAC 可讓您透過序列埠連線至執行中的作業系統。 當您從 SAC �
 ### <a name="set-nic-to-use-dhcp"></a>設定 NIC 以使用 DHCP
 `netsh interface ip set address name="<interface name>" source=dhcp`
 
-如需 `netsh` 的詳細資訊，請[按一下這裡](https://docs.microsoft.com/windows-server/networking/technologies/netsh/netsh-contexts) (機器翻譯)。
+如需 `netsh` 的詳細資訊，請[按一下這裡](/windows-server/networking/technologies/netsh/netsh-contexts) (機器翻譯)。
 
 Azure VM 在客體作業系統中應一律設定為使用 DHCP 來取得 IP 位址。 Azure 靜態 IP 設定仍會使用 DHCP 將靜態 IP 提供給 VM。
 ### <a name="ping"></a>Ping
@@ -182,11 +183,11 @@ Azure VM 在客體作業系統中應一律設定為使用 DHCP 來取得 IP 位�
 ### <a name="scan-for-system-file-corruption"></a>掃描系統檔案損毀
 `sfc /scannow`
 
-另請參閱[修復 Windows 映像](https://docs.microsoft.com/windows-hardware/manufacture/desktop/repair-a-windows-image)。
+另請參閱[修復 Windows 映像](/windows-hardware/manufacture/desktop/repair-a-windows-image)。
 ### <a name="scan-for-system-file-corruption"></a>掃描系統檔案損毀
 `dism /online /cleanup-image /scanhealth`
 
-另請參閱[修復 Windows 映像](https://docs.microsoft.com/windows-hardware/manufacture/desktop/repair-a-windows-image)。
+另請參閱[修復 Windows 映像](/windows-hardware/manufacture/desktop/repair-a-windows-image)。
 ### <a name="export-file-permissions-to-text-file"></a>將檔案權限匯出至文字檔
 `icacls %programdata%\Microsoft\Crypto\RSA\MachineKeys /t /c > %temp%\MachineKeys_permissions_before.txt`
 ### <a name="save-file-permissions-to-acl-file"></a>將檔案權限儲存至 ACL 檔案
@@ -435,7 +436,7 @@ Azure VM 在客體作業系統中應一律設定為使用 DHCP 來取得 IP 位�
 
 要查詢執行個體中繼資料必須要有狀況良好的客體網路連線，因為此作業會透過 Azure 主機對執行個體中繼資料服務發出 REST 呼叫。 因此，如果您能夠查詢執行個體中繼資料，即表示客體能夠透過網路與 Azure 託管的服務進行通訊。
 
-如需詳細資訊，請參閱 [Azure 執行個體中繼資料服務](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)。
+如需詳細資訊，請參閱 [Azure 執行個體中繼資料服務](../windows/instance-metadata-service.md)。
 
 ### <a name="instance-metadata"></a>執行個體中繼資料
 `$im = invoke-restmethod -headers @{"metadata"="true"} -uri http://169.254.169.254/metadata/instance?api-version=2017-08-01 -method get`
@@ -476,7 +477,7 @@ Azure VM 在客體作業系統中應一律設定為使用 DHCP 來取得 IP 位�
 ### <a name="mac-address-instance-metadata"></a>Mac 位址 (執行個體中繼資料)
 `$im.network.interface.macAddress`
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 * 主要序列主控台 Windows 文件頁面位於[這裡](serial-console-windows.md)。
 * 序列主控台也適用於 [Linux](serial-console-linux.md) VM。
 * 深入了解[開機診斷](boot-diagnostics.md)。

@@ -8,12 +8,12 @@ ms.author: ramero
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/06/2020
-ms.openlocfilehash: 4bc5897401a62d45e8b1c987d7ef50e0c8a6de08
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ae41cc620960bd49603e6712759585796e76fe67
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565359"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029938"
 ---
 # <a name="add-scoring-profiles-to-an-azure-cognitive-search-index"></a>將評分設定檔新增至 Azure 認知搜尋服務索引
 
@@ -82,7 +82,7 @@ GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentL
 
  此外也會透過評分設定檔實作以相關性為基礎的排序。 請考量您過去曾經使用、讓您依價格、日期、評等或相關性排序的搜尋結果頁面。 在「Azure 認知搜尋」中，評分設定檔會驅動「相關性」選項。 相關性的定義由您控制，取決於商業目標和您要提供的搜尋經驗類型。  
 
-##  <a name="example"></a><a name="bkmk_ex"></a>實例  
+##  <a name="example"></a><a name="bkmk_ex"></a> 範例  
  如前所述，自訂評分是透過索引結構描述中定義的一或多個評分設定檔而實作的。  
 
  此範例說明具有兩個評分設定檔 (`boostGenre`、`newAndHighlyRated`) 的索引結構描述。 任何以其中一個設定檔做為查詢參數而對此索引所做的查詢，都將使用該設定檔為結果集評分。  
@@ -254,7 +254,7 @@ GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentL
 ##  <a name="set-interpolations"></a><a name="bkmk_interpolation"></a>設定插補  
  插補可讓您設定用於評分的斜率圖形。 因為評分會由高至低排序，因此斜率一律為遞減，但插補可決定向下斜率的曲線。 可用的內插補點如下：  
 
-|||  
+| 幀 | 說明 |  
 |-|-|  
 |`linear`|對於在最大和最小範圍內的項目，套用至項目的提升將會已持續遞減的量執行。 線性是評分設定檔的預設插補。|  
 |`constant`|對於在開始和結束範圍內的項目，將會對排名結果套用常數提升。|  
@@ -279,7 +279,7 @@ GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentL
 
  如需更多範例，請參閱 [XML 結構描述：資料類型 (W3.org 網站)](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration)。  
 
-## <a name="see-also"></a>另請參閱  
+## <a name="see-also"></a>請參閱  
 
 + [REST API 參考](https://docs.microsoft.com/rest/api/searchservice/)   
 + [建立索引 API](https://docs.microsoft.com/rest/api/searchservice/create-index)   

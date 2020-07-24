@@ -1,5 +1,5 @@
 ---
-title: 遷移條件式存取原則 - Azure Active Directory
+title: 使用多重要素驗證來遷移條件式存取原則-Azure Active Directory
 description: 本文示範在 Azure 入口網站中移轉要求多重要素驗證的傳統原則。
 services: active-directory
 ms.service: active-directory
@@ -11,11 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d1dc7b7227dbaee488726a75fe7120bd26614dbf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5cc99241f5fa7c09c69db13dcb3f6c3aaa75e376
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83993723"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027388"
 ---
 # <a name="migrate-a-classic-policy-in-the-azure-portal"></a>在 Azure 入口網站中遷移傳統原則
 
@@ -50,12 +51,12 @@ ms.locfileid: "83993723"
    1. 選取 [完成] 
 1. 在 [**指派**] 區段中，按一下 [**雲端應用程式] 或 [動作**]。
 1. 在 [**雲端應用程式] 或 [動作**] 頁面上，執行下列步驟：
-   1. 按一下 [選取應用程式]****。
+   1. 按一下 [選取應用程式]。
    1. 按一下 [選取]。
    1. 在 [選取]**** 頁面上，選取您的雲端應用程式，然後按一下 [選取]****。
-   1. 在 [**雲端應用程式**] 頁面上，按一下 [**完成**]。
+   1. 在 [雲端應用程式] 頁面上，按一下 [完成]。
 1. 如已選取 [需要多重要素驗證]****：
-   1. 在 [存取控制]**** 區段中，按一下 [授與]****。
+   1. 在 [存取控制] 區段中，按一下 [授與]。
    1. 在 [授與]**** 頁面上，按一下 [授與存取權]****，然後按一下 [需要多重要素驗證]****。
    1. 按一下 [選取]。
 1. 按一下 [**開啟**] 以啟用您的原則，然後選取 [**儲存**]。
@@ -68,7 +69,7 @@ ms.locfileid: "83993723"
 
 ![停用傳統原則](./media/policy-migration-mfa/14.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 如需傳統原則移轉的詳細資訊，請參閱[在 Azure 入口網站中移轉傳統原則](policy-migration.md)。
 - [使用僅限報告模式來進行條件式存取，以判斷新原則決策的影響。](concept-conditional-access-report-only.md)

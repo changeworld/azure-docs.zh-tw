@@ -6,12 +6,12 @@ ms.service: analysis-services
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: chlound
-ms.openlocfilehash: c3c9827814b7d638745761dbb5f3c7d2e581491b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5314c933b01a1fb9c4ea9902a6fbb698c104d195
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85389967"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87025399"
 ---
 # <a name="refresh-with-azure-automation"></a>使用 Azure 自動化重新整理
 
@@ -40,7 +40,7 @@ ms.locfileid: "85389967"
  
     ![匯入模組](./media/analysis-services-refresh-azure-automation/2.png)
 
-4. 按一下 [確定]。
+4. 按一下 [確定]  。
  
 ### <a name="create-a-service-principal-spn"></a>建立服務主體（SPN）
 
@@ -64,11 +64,14 @@ ms.locfileid: "85389967"
 
     ![Import Runbook](./media/analysis-services-refresh-azure-automation/8.png)
 
-4. 流覽**Refresh-Model.ps1**檔案、提供**名稱**和**描述**，然後按一下 [**建立**]。
+4. 流覽[Refresh-Model.ps1](#sample-powershell-runbook)檔案、提供**名稱**和**描述**，然後按一下 [**建立**]。
+
+    > [!NOTE]
+    > 使用本檔底部[範例 Powershell Runbook](#sample-powershell-runbook)一節中的腳本，建立名為 Refresh-Model.ps1 的檔案，並儲存到本機電腦以匯入 Runbook。
 
     ![Import Runbook](./media/analysis-services-refresh-azure-automation/9.png)
 
-5. 建立 Runbook 之後，它會自動進入編輯模式。  選取 [發佈] 。
+5. 建立 Runbook 之後，它會自動進入編輯模式。  選取 [發佈]。
 
     ![發佈 Runbook](./media/analysis-services-refresh-azure-automation/10.png)
 
@@ -107,7 +110,7 @@ Runbook 可以設定為根據排程觸發 Azure Analysis Services 模型重新�
 
     ![設定參數](./media/analysis-services-refresh-azure-automation/16.png)
 
-5. 按一下 [確定]。
+5. 按一下 [確定]  。
 
 ## <a name="consume-with-data-factory"></a>使用 Data Factory
 

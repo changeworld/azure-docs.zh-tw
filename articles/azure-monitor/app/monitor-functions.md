@@ -5,20 +5,20 @@ ms.topic: conceptual
 author: MS-jgol
 ms.author: jgol
 ms.date: 06/26/2020
-ms.openlocfilehash: 093448ad0280ada039f1d4e5abd0e83e4be19b03
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6d790a6f02fdc07609e374639c6e452b9088262e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482100"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87024566"
 ---
 # <a name="monitoring-azure-functions-with-azure-monitor-application-insights"></a>使用 Azure 監視器的 Application Insights 監視 Azure Functions
 
-[Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) 提供與 Azure Application Insights 的內建整合來監視函式。 
+[Azure Functions](../../azure-functions/functions-overview.md) 提供與 Azure Application Insights 的內建整合來監視函式。 
 
 Application Insights 會收集記錄、效能和錯誤資料，並自動偵測效能異常。 Application Insights 隨附強大的分析工具，以協助您診斷問題，以及了解如何使用您的函式。 當您了解應用程式資料時，便可以持續改善效能和可用性。 您甚至可以在本機函式應用程式專案開發期間使用 Application Insights。 
 
-所需的 Application Insights 檢測已內建於 Azure Functions 中。 您唯一需要的是有效的檢測金鑰，以將您的函式應用程式連線至 Application Insights 資源。 當您在 Azure 中建立函式應用程式資源時，應該將檢測金鑰新增至應用程式設定。 如果您的函式應用程式還沒有這個金鑰，您可以手動設定。 如需詳細資訊，請深入了解[監視 Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-monitoring?tabs=cmd)。
+所需的 Application Insights 檢測已內建於 Azure Functions 中。 您唯一需要的是有效的檢測金鑰，以將您的函式應用程式連線至 Application Insights 資源。 當您在 Azure 中建立函式應用程式資源時，應該將檢測金鑰新增至應用程式設定。 如果您的函式應用程式還沒有這個金鑰，您可以手動設定。 如需詳細資訊，請深入了解[監視 Azure Functions](../../azure-functions/functions-monitoring.md?tabs=cmd)。
 
 ## <a name="distributed-tracing-for-java-applications-on-windows-public-preview"></a>Windows 上 JAVA 應用程式的分散式追蹤（公開預覽）
 
@@ -40,8 +40,8 @@ ApplicationInsightsAgent_EXTENSION_VERSION -> ~2
 
 ## <a name="next-steps"></a>後續步驟
 
-* 深入了解[監視 Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-monitoring)中有關監視的指示與資訊
-* 了解[分散式追蹤](https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing)概況
-* 了解[應用程式對應](https://docs.microsoft.com/azure/azure-monitor/app/app-map?tabs=net)對您的業務有何幫助
-* 閱讀 [JAVA 應用程式的要求和相依性](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)
-* 深入了解 [Azure 監視器](https://docs.microsoft.com/azure/azure-monitor/overview) 與 [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview)
+* 深入了解[監視 Azure Functions](../../azure-functions/functions-monitoring.md)中有關監視的指示與資訊
+* 了解[分散式追蹤](./distributed-tracing.md)概況
+* 了解[應用程式對應](./app-map.md?tabs=net)對您的業務有何幫助
+* 閱讀 [JAVA 應用程式的要求和相依性](./java-in-process-agent.md)
+* 深入了解 [Azure 監視器](../overview.md) 與 [Application Insights](./app-insights-overview.md)

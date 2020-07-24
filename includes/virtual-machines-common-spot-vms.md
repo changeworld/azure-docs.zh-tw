@@ -4,15 +4,15 @@ description: 包含檔案
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 06/26/2020
+ms.date: 07/20/2020
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 8ee5973afb9312688178abd9a186c5319032c493
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: df78133f602466681da64d2666a311e1649c598f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85506035"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028785"
 ---
 使用「點 Vm」可讓您以可觀的成本節約，利用我們未使用的容量。 Azure 基礎結構會在任何時間點回復，以找出虛擬機器的功能。 因此，針對可處理中斷的工作負載（例如批次處理作業、開發/測試環境、大型計算工作負載等），找出 Vm 很棒。
 
@@ -26,10 +26,6 @@ Vm 可以根據容量或您設定的最大價格來收回。 建立點 VM 時，
 *解除配置*原則會將您的 VM 移至已停止（已解除配置）狀態，讓您可以在稍後重新部署它。 不過，不保證配置會成功。 已解除配置的 Vm 將會計入您的配額，而您將會收取基礎磁片的儲存體成本。 
 
 如果您想要在收回 VM 時予以刪除，您可以將收回原則設定為 [*刪除*]。 已收回的 Vm 會連同其基礎磁片一起刪除，因此不會繼續向您收取儲存體費用。 
-
-> [!NOTE]
->
-> 入口網站目前不支援 `Delete` 作為收回選項，您只能 `Delete` 使用 POWERSHELL、CLI 和範本來設定。
 
 您可以選擇透過[Azure Scheduled Events](../articles/virtual-machines/linux/scheduled-events.md)接收 VM 內通知。 這會在您的 Vm 被收回時通知您，而且您將有30秒的時間完成任何作業，並在收回前執行關閉工作。 
 
@@ -54,19 +50,14 @@ Vm 可以根據容量或您設定的最大價格來收回。 建立點 VM 時，
 
 找出 Vm 可以部署到任何區域，但 Microsoft Azure 中國的世紀除外。
 
-不支援部分訂用帳戶通道：
-
 <a name="channel"></a>
 
-| Azure 頻道               | Azure 點 Vm 可用性       |
-|------------------------------|-----------------------------------|
-| Enterprise 合約         | Yes                               |
-| 隨用隨付                | Yes                               |
-| 雲端服務提供者 (CSP) | [聯絡您的合作夥伴](https://docs.microsoft.com/partner-center/azure-plan-get-started) |
-| 優點                     | 無法使用                     |
-| 商                    | Yes                               |
-| 免費試用                   | 無法使用                     |
+目前支援下列[供應專案類型](https://azure.microsoft.com/support/legal/offer-details/)：
 
+-   Enterprise 合約
+-   隨用隨付
+-   商
+- 針對雲端服務提供者（CSP），請洽詢您的合作夥伴
 
 
 ## <a name="pricing"></a>定價

@@ -5,20 +5,46 @@ services: data-factory
 author: nabhishek
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 06/24/2020
+ms.date: 07/19/2020
 ms.author: abnarain
-ms.openlocfilehash: e77d621d5699c434e691de0a523e58e49166d8d6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 521756081db938e749849e6f3630dbd60700d24f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85314995"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023809"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>針對自我裝載整合執行階段進行疑難排解
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文將探討在 Azure Data Factory 中自我裝載整合執行階段的常見疑難排解方法。
+
+## <a name="gather-self-hosted-integration-runtime-logs-from-azure-data-factory"></a>從 Azure Data Factory 收集自我裝載整合執行時間記錄
+
+針對在自我裝載 IR/共用 IR 上執行的失敗活動，Azure Data Factory 支援「查看」和「上傳錯誤記錄」。 您可以遵循下列步驟來取得錯誤報表識別碼，然後輸入報告識別碼來找出相關的已知問題。
+
+1. 移至 [**活動執行**] 頁面。
+
+1. 在 [**錯誤**] 資料行底下，按一下 [下方] 按鈕。
+
+    ![[活動執行] 頁面](media/self-hosted-integration-runtime-troubleshoot-guide/activity-runs-page.png)
+
+1. 您會看到失敗活動執行的相關記錄檔。 按一下 [**傳送記錄**檔] 按鈕以取得進一步的協助。
+
+    ![傳送記錄檔](media/self-hosted-integration-runtime-troubleshoot-guide/send-logs.png)
+
+1. 您可以選擇您想要傳送的記錄檔。 對於*自我裝載 ir*，您可以上傳與 [失敗的活動] 或自我裝載 ir 節點上的所有記錄相關的記錄。 針對*共用 IR*，您只能上傳與失敗活動相關的記錄檔。
+
+    ![選擇記錄](media/self-hosted-integration-runtime-troubleshoot-guide/choose-logs.png)
+
+1. 當記錄上傳時，如果您需要進一步協助來解決問題，請保留報告識別碼的記錄。
+
+    ![上傳記錄檔](media/self-hosted-integration-runtime-troubleshoot-guide/upload-logs.png)
+
+> [!NOTE]
+> 記錄檔的查看和上傳要求將會在所有線上的自我裝載 IR 實例上執行。 請確定所有自我裝載 IR 實例都在線上，以防任何遺失的記錄檔。 
+
 
 ## <a name="common-errors-and-resolutions"></a>常見錯誤和解決方案
 
@@ -275,7 +301,7 @@ ms.locfileid: "85314995"
     ![TCP 4 交握工作流程](media/self-hosted-integration-runtime-troubleshoot-guide/tcp-4-handshake-workflow.png) 
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 如需疑難排解的詳細協助，請嘗試下列資源：
 

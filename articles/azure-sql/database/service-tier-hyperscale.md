@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/03/2020
-ms.openlocfilehash: 3c4252f926163b00d3b4f4bf4a26373988017ac1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d74e3f196e58e522eb9377ca9f18fd05ec8460ae
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85255000"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023988"
 ---
 # <a name="hyperscale-service-tier"></a>超大規模資料庫服務層級
 
@@ -208,7 +208,7 @@ Azure SQL Database 超大規模資料庫層適用于所有區域，但預設為�
 - Us Govt 亞利桑那州
 - US Govt 德克薩斯州
 - 美國中西部
-- 西歐
+- 歐洲西部
 - 美國西部
 - 美國西部 2
 
@@ -218,7 +218,7 @@ Azure SQL Database 超大規模資料庫層適用于所有區域，但預設為�
 
 | 問題 | 描述 |
 | :---- | :--------- |
-| 伺服器的 [管理備份] 窗格不會顯示超大規模資料庫資料庫。 這些會從視圖進行篩選。  | 超大規模資料庫有不同的方法可管理備份，因此長期保留和時間點備份保留設定並不適用。 因此，超大規模資料庫資料庫不會出現在 [管理備份] 窗格中。|
+| 伺服器的 [管理備份] 窗格不會顯示超大規模資料庫資料庫。 這些會從視圖進行篩選。  | 超大規模資料庫有不同的方法可管理備份，因此長期保留和時間點備份保留設定並不適用。 因此，超大規模資料庫資料庫不會出現在 [管理備份] 窗格中。<br><br>針對從其他 Azure SQL Database 服務層級遷移至超大規模資料庫的資料庫，預先遷移備份會保留在源資料庫的[備份保留](automated-backups-overview.md#backup-retention)期間內。 這些備份可以用來將源資料庫[還原](recovery-using-backups.md#programmatic-recovery-using-automated-backups)到遷移前的某個時間點。|
 | 時間點還原 | 非超大規模資料庫資料庫無法還原為超大規模資料庫資料庫，而且超大規模資料庫資料庫無法還原為非超大規模資料庫資料庫。 針對已藉由變更其服務層級遷移至超大規模資料庫的非超大規模資料庫資料庫，請先還原到遷移前的時間點，然後才能以程式設計[方式](recovery-using-backups.md#programmatic-recovery-using-automated-backups)在資料庫的備份保留期限內。 還原的資料庫將不會超大規模資料庫。 |
 | 如果資料庫的一個或多個資料檔案大於 1 TB，則遷移會失敗 | 在某些情況下，您可以將大型檔案壓縮為小於 1 TB，藉此解決此問題。 如果在遷移程式期間遷移正在使用的資料庫，請確定沒有任何檔案大於 1 TB。 使用下列查詢來判斷資料庫檔案的大小。 `SELECT *, name AS file_name, size * 8. / 1024 / 1024 AS file_size_GB FROM sys.database_files WHERE type_desc = 'ROWS'`;|
 | SQL 受控執行個體 | 超大規模資料庫資料庫目前不支援 Azure SQL 受控執行個體。 |
@@ -233,7 +233,7 @@ Azure SQL Database 超大規模資料庫層適用于所有區域，但預設為�
 | 壓縮資料庫 | 超大規模資料庫資料庫目前不支援 DBCC SHRINKDATABASE 或 DBCC SHRINKFILE。 |
 | 資料庫完整性檢查 | 超大規模資料庫資料庫目前不支援 DBCC CHECKDB。 DBCC CHECKFILEGROUP 和 DBCC CHECKTABLE 可用來做為因應措施。 如需 Azure SQL Database 中資料完整性管理的詳細資訊，請參閱[Azure SQL Database 中的資料完整性](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/)。 |
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 如需超大規模資料庫的常見問題集，請參閱[關於超大規模資料庫的常見問題集](service-tier-hyperscale-frequently-asked-questions-faq.md)。
 - 如需服務層級的詳細資訊，請參閱[服務層級](purchasing-models.md)

@@ -7,17 +7,18 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 03/06/2020
 ms.author: mimckitt
-ms.openlocfilehash: 444c3afefcf4cfdafc817af3b7bc6ce4463853c1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1dcba7da09cff3b7123521a4daf1028ab17e199a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84678353"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029139"
 ---
 # <a name="custom-data-and-cloud-init-on-azure-virtual-machines"></a>在 Azure 虛擬機器上的自訂資料和 cloud-init
 
 在布建時間，您可能需要將腳本或其他中繼資料插入 Microsoft Azure 的虛擬機器中。  在其他雲端中，此概念通常稱為使用者資料。  在 Microsoft Azure 中，我們有一個類似的功能，稱為「自訂資料」。 
 
-VM 只有在第一次開機/初始設定期間才可使用自訂資料，我們稱之為「佈建」。 佈建是指將「VM 建立參數」(例如主機名稱、使用者名稱、密碼、憑證、自訂資料、金鑰等) 提供給 VM 使用，並由佈建代理程式 (例如 [Linux 代理程式](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux)和 [cloud-init](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init#troubleshooting-cloud-init)) 來處理這些參數的流程。 
+VM 只有在第一次開機/初始設定期間才可使用自訂資料，我們稱之為「佈建」。 佈建是指將「VM 建立參數」(例如主機名稱、使用者名稱、密碼、憑證、自訂資料、金鑰等) 提供給 VM 使用，並由佈建代理程式 (例如 [Linux 代理程式](./extensions/agent-linux.md)和 [cloud-init](./linux/using-cloud-init.md#troubleshooting-cloud-init)) 來處理這些參數的流程。 
 
 
 ## <a name="passing-custom-data-to-the-vm"></a>將自訂資料傳遞至 VM
@@ -33,7 +34,7 @@ az vm create \
   --generate-ssh-keys
 ```
 
-在 Azure Resource Manager (ARM) 中，有一個 [base64 函數](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-functions-string#base64)。
+在 Azure Resource Manager (ARM) 中，有一個 [base64 函數](../azure-resource-manager/templates/template-functions-string.md#base64)。
 
 ```json
 "name": "[parameters('virtualMachineName')]",
@@ -73,21 +74,21 @@ Azure 目前支援兩個佈建代理程式：
 
 若要針對自訂資料執行進行疑難排解，請參閱 */var/log/waagent.log*
 
-* cloud-init - 依預設會處理自訂資料，因此可接受[多種格式](https://cloudinit.readthedocs.io/en/latest/topics/format.html)的自訂資料，例如 cloud-init 組態、指令碼等。當 cloud-init 處理自訂資料時，類似於 Linux 代理程式。 如果在設定處理或指令碼執行期間發生錯誤，則不會被視為嚴重的佈建失敗，您需要建立通知路徑，以提醒您指令碼的完成狀態。 不過，與 Linux 代理程式不同的是，cloud-init 不會等待使用者自訂資料設定完成，然後才向平台回報 VM 已準備就緒。 如需有關 Azure 上 cloud-init 的詳細資訊，請參閱[文件](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init)。
+* cloud-init - 依預設會處理自訂資料，因此可接受[多種格式](https://cloudinit.readthedocs.io/en/latest/topics/format.html)的自訂資料，例如 cloud-init 組態、指令碼等。當 cloud-init 處理自訂資料時，類似於 Linux 代理程式。 如果在設定處理或指令碼執行期間發生錯誤，則不會被視為嚴重的佈建失敗，您需要建立通知路徑，以提醒您指令碼的完成狀態。 不過，與 Linux 代理程式不同的是，cloud-init 不會等待使用者自訂資料設定完成，然後才向平台回報 VM 已準備就緒。 如需有關 Azure 上 cloud-init 的詳細資訊，請參閱[文件](./linux/using-cloud-init.md)。
 
 
-如需對自訂資料執行進行疑難排解，請參閱疑難排解[文件](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init#troubleshooting-cloud-init)。
+如需對自訂資料執行進行疑難排解，請參閱疑難排解[文件](./linux/using-cloud-init.md#troubleshooting-cloud-init)。
 
 
 ## <a name="faq"></a>常見問題集
 ### <a name="can-i-update-custom-data-after-the-vm-has-been-created"></a>我可以在建立 VM 後更新自訂資料嗎？
-針對單一 VM，無法更新 VM 模型中的自訂資料，但針對 VMSS，您可以透過 [REST API](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/update) 來更新 VMSS 自訂資料 (不適用於 PS 或 AZ CLI 用戶端)。 當您更新 VMSS 模型中的自訂資料時：
+針對單一 VM，無法更新 VM 模型中的自訂資料，但針對 VMSS，您可以透過 [REST API](/rest/api/compute/virtualmachinescalesets/update) 來更新 VMSS 自訂資料 (不適用於 PS 或 AZ CLI 用戶端)。 當您更新 VMSS 模型中的自訂資料時：
 * VMSS 中的現有執行個體在重新安裝映像之前無法取得更新的自訂資料。
 * VMSS 中已升級的現有執行個體將無法取得更新的自訂資料。
 * 新的執行個體將會收到新的自訂資料。
 
 ### <a name="can-i-place-sensitive-values-in-custom-data"></a>我可以將機密值放置在自訂資料中嗎？
-建議您**不要**將敏感性資料儲存在自訂資料中。 如需詳細資訊，請參閱 [Azure 安全性和加密最佳作法](https://docs.microsoft.com/azure/security/fundamentals/data-encryption-best-practices)。
+建議您**不要**將敏感性資料儲存在自訂資料中。 如需詳細資訊，請參閱 [Azure 安全性和加密最佳作法](../security/fundamentals/data-encryption-best-practices.md)。
 
 
 ### <a name="is-custom-data-made-available-in-imds"></a>在 IMDS 中是否提供自訂資料功能？

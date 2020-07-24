@@ -7,17 +7,18 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: 79ef649502af8962253121ea18804966b1fa043e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4858a2e448955877107f6928b0aa01726e5db082
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84677928"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028580"
 ---
 # <a name="handling-planned-maintenance-using-powershell"></a>使用 PowerShell 處理預定的維護
 
 **本文適用于同時執行 Linux 和 Windows 的虛擬機器。**
 
-您可以使用 Azure PowerShell 來查看 Vm 何時排程進行[維護](maintenance-notifications.md)。 使用 `-status` 參數時，可從 [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) Cmdlet 取得預定進行的維修作業的相關資訊。
+您可以使用 Azure PowerShell 來查看 Vm 何時排程進行[維護](maintenance-notifications.md)。 使用 `-status` 參數時，可從 [Get-AzVM](/powershell/module/az.compute/get-azvm) Cmdlet 取得預定進行的維修作業的相關資訊。
   
 只在有預定進行的維修作業時，才會傳回維修資訊。 如果沒有排定會影響 VM 的維護，則 Cmdlet 不會傳回任何維護資訊。 
 
@@ -28,7 +29,7 @@ Get-AzVM -ResourceGroupName myResourceGroup -Name myVM -Status
 
 下列是 MaintenanceRedeployStatus 下傳回的內容： 
 
-| 值 | 說明   |
+| 值 | 描述   |
 |-------|---------------|
 | IsCustomerInitiatedMaintenanceAllowed | 指出您目前是否可以在 VM 上開始維修 |
 | PreMaintenanceWindowStartTime         | 維修自助期間的開始，此時您可以在 VM 上起始維修 |
@@ -39,7 +40,7 @@ Get-AzVM -ResourceGroupName myResourceGroup -Name myVM -Status
 
 
 
-您也可以使用 [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) 而不指定 VM 來取得資源群組中所有 VM 的維修狀態。
+您也可以使用 [Get-AzVM](/powershell/module/az.compute/get-azvm) 而不指定 VM 來取得資源群組中所有 VM 的維修狀態。
  
 ```powershell
 Get-AzVM -ResourceGroupName myResourceGroup -Status
@@ -99,6 +100,6 @@ Get-AzureVM -ServiceName <Service name> -Name <VM name>
 Restart-AzureVM -InitiateMaintenance -ServiceName <service name> -Name <VM name>
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 您也可以使用[Azure CLI](maintenance-notifications-cli.md)或[入口網站](maintenance-notifications-portal.md)來處理預定的維護。

@@ -2,16 +2,17 @@
 title: 教學課程 - 刪除 Azure Red Hat OpenShift 叢集
 description: 在本教學課程中，請了解如何使用 Azure CLI 刪除 Azure Red Hat OpenShift 叢集
 author: sakthi-vetrivel
+ms.custom: fasttrack-edit
 ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: 2de60b90eb6fb75ef013a2fd8785f1b8b616fba6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6fdc36dbf270be61457dcd00dd1988808a80d062
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82232133"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87030091"
 ---
 # <a name="tutorial-delete-an-azure-red-hat-openshift-4-cluster"></a>教學課程：刪除 Azure Red Hat OpenShift 4 叢集
 
@@ -49,7 +50,7 @@ RESOURCE_GROUP=yourresourcegroup
 使用這些值來刪除您的叢集：
 
 ```bash
-az aro delete --resource-group $RESOURCEGROUP --name $CLUSTER
+az aro delete --resource-group $RESOURCE_GROUP --name $CLUSTER
 ```
 
 系統會詢問您是否要刪除叢集。 在您以 `y` 進行確認後，系統會以數分鐘的時間刪除叢集。 命令完成後，整個資源群組及其包含的所有資源都會刪除，包括叢集在內。

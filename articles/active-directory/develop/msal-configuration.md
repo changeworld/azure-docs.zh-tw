@@ -13,12 +13,12 @@ ms.date: 09/12/2019
 ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
-ms.openlocfilehash: f6816da35aad51e88449361d2a80542c4349ffac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3de252b22d7b33e45c3b45e2b6c05e4b33df663d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85479414"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027048"
 ---
 # <a name="android-microsoft-authentication-library-configuration-file"></a>Android Microsoft 驗證程式庫設定檔
 
@@ -34,10 +34,10 @@ Android Microsoft 驗證程式庫（MSAL）隨附預設的設定[JSON](https://g
 |-----------|------------|-------------|-------|
 | `client_id` | String | 是 | [應用程式註冊頁面](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)中的應用程式用戶端識別碼 |
 | `redirect_uri`   | String | 是 | [應用程式註冊頁面](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)中的應用程式重新導向 URI |
-| `authorities` | 名單\<Authority> | No | 您的應用程式所需的授權清單 |
-| `authorization_user_agent` | AuthorizationAgent （列舉） | No | 可能的值： `DEFAULT` 、 `BROWSER` 、`WEBVIEW` |
-| `http` | HttpConfiguration | No | 設定 `HttpUrlConnection` `connect_timeout` 和`read_timeout` |
-| `logging` | LoggingConfiguration | No | 指定記錄詳細資料的層級。 選擇性設定包括： `pii_enabled` （接受布林值）和 `log_level` （採用 `ERROR` 、 `WARNING` 、 `INFO` 或） `VERBOSE` 。 |
+| `authorities` | 清單\<Authority> | 否 | 您的應用程式所需的授權清單 |
+| `authorization_user_agent` | AuthorizationAgent （列舉） | 否 | 可能的值： `DEFAULT` 、 `BROWSER` 、`WEBVIEW` |
+| `http` | HttpConfiguration | 否 | 設定 `HttpUrlConnection` `connect_timeout` 和`read_timeout` |
+| `logging` | LoggingConfiguration | 否 | 指定記錄詳細資料的層級。 選擇性設定包括： `pii_enabled` （接受布林值）和 `log_level` （採用 `ERROR` 、 `WARNING` 、 `INFO` 或） `VERBOSE` 。 |
 
 ### <a name="client_id"></a>client_id
 
@@ -65,7 +65,7 @@ Android Microsoft 驗證程式庫（MSAL）隨附預設的設定[JSON](https://g
     "type": "AAD",
     "audience": {
         "type": "AzureADMyOrg",
-        "tenantId": "contoso.com" // Provide your specific tenant ID here
+        "tenant_id": "contoso.com" // Provide your specific tenant ID here
     }
 },
 // Example AzureAD Multiple Organizations
@@ -86,7 +86,7 @@ Android Microsoft 驗證程式庫（MSAL）隨附預設的設定[JSON](https://g
 
 #### <a name="map-aad-authority--audience-to-microsoft-identity-platform-endpoints"></a>將 AAD 授權單位 & 物件對應至 Microsoft 身分識別平臺端點
 
-| 類型 | 對象 | 租用戶識別碼 | Authority_Url | 產生的端點 | 備註 |
+| 類型 | 對象 | 租用戶識別碼 | Authority_Url | 產生的端點 | 附註 |
 |------|------------|------------|----------------|----------------------|---------|
 | AAD | AzureADandPersonalMicrosoftAccount | | | `https://login.microsoftonline.com/common` | `common`這是帳戶所在的租使用者別名。 例如，特定 Azure Active Directory 租使用者或 Microsoft 帳戶系統。 |
 | AAD | AzureADMyOrg | contoso.com | | `https://login.microsoftonline.com/contoso.com` | 只有存在於 contoso.com 的帳戶可以取得權杖。 任何已驗證的網域（或租使用者 GUID）都可用來做為租使用者識別碼。 |
@@ -104,9 +104,9 @@ Android Microsoft 驗證程式庫（MSAL）隨附預設的設定[JSON](https://g
 | 屬性 | 資料類型  | 必要 | 注意 |
 |-----------|-------------|-----------|--------|
 | `type` | String | 是 | 鏡像應用程式的目標物件或帳戶類型。 可能的值： `AAD` 、`B2C` |
-| `audience` | Object | No | 只有在 type = 時才適用 `AAD` 。 指定應用程式的目標身分識別。 使用應用程式註冊的值 |
+| `audience` | Object | 否 | 只有在 type = 時才適用 `AAD` 。 指定應用程式的目標身分識別。 使用應用程式註冊的值 |
 | `authority_url` | String | 是 | 只有在 type = 時才需要 `B2C` 。 指定您的應用程式應使用的授權單位 URL 或原則  |
-| `default` | boolean | Yes | `"default":true`當指定一個或多個授權單位時，就需要單一。 |
+| `default` | boolean | 是 | `"default":true`當指定一個或多個授權單位時，就需要單一。 |
 
 #### <a name="audience-properties"></a>物件屬性
 
@@ -138,7 +138,7 @@ Android Microsoft 驗證程式庫（MSAL）隨附預設的設定[JSON](https://g
 
 設定 HTTP 超時的全域設定，例如：
 
-| 屬性 | 資料類型 | 必要 | 備註 |
+| 屬性 | 資料類型 | 必要 | 附註 |
 | ---------|-----------|------------|--------|
 | `connect_timeout` | int | 否 | 時間（毫秒） |
 | `read_timeout` | int | 否 | 時間（毫秒） |
@@ -147,11 +147,11 @@ Android Microsoft 驗證程式庫（MSAL）隨附預設的設定[JSON](https://g
 
 下列是用於記錄的全域設定：
 
-| 屬性 | 資料類型  | 必要 | 備註 |
+| 屬性 | 資料類型  | 必要 | 附註 |
 | ----------|-------------|-----------|---------|
-| `pii_enabled`  | boolean | No | 是否要發出個人資料 |
+| `pii_enabled`  | boolean | 否 | 是否要發出個人資料 |
 | `log_level`   | 字串 | No | 要輸出的記錄訊息。 支援的記錄層級包括 `ERROR` 、 `WARNING` 、 `INFO` 和 `VERBOSE` 。 |
-| `logcat_enabled` | boolean | No | 是否除了記錄介面外，輸出至記錄 cat |
+| `logcat_enabled` | boolean | 否 | 是否除了記錄介面外，輸出至記錄 cat |
 
 ### <a name="account_mode"></a>account_mode
 

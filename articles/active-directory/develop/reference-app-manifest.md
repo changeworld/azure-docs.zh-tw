@@ -1,5 +1,6 @@
 ---
 title: 了解 Azure Active Directory 應用程式資訊清單
+titleSuffix: Microsoft identity platform
 description: 詳細說明 Azure Active Directory 應用程式資訊清單；此資訊清單代表應用程式在 Azure AD 租用戶中的身分識別組態，可用來協助進行 OAuth 授權、同意體驗等等。
 services: active-directory
 author: rwike77
@@ -12,18 +13,18 @@ ms.date: 04/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: e31c2c69e36b97f5584ee32e6c452525389f7f42
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ba490a1e88a242f19daf1a74fe38f02e659571da
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85479244"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87026742"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory 應用程式資訊清單
 
-應用程式資訊清單包含 Microsoft 身分識別平台中應用程式物件的所有屬性定義。 它也可作為更新應用程式物件的機制。 如需應用程式實體和其結構描述的詳細資訊，請參閱[圖形 API 應用程式實體文件](https://docs.microsoft.com/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#application-entity)。
+應用程式資訊清單包含 Microsoft 身分識別平台中應用程式物件的所有屬性定義。 它也可作為更新應用程式物件的機制。 如需應用程式實體和其結構描述的詳細資訊，請參閱[圖形 API 應用程式實體文件](/graph/api/resources/application)。
 
-您可以透過 Azure 入口網站或以程式設計方式使用 [REST API](https://docs.microsoft.com/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#application-entity) 或 [PowerShell](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#applications) 來設定應用程式的屬性。 不過，在某些情況下，您需要編輯應用程式資訊清單，以設定應用程式的屬性。 這些案例包括：
+您可以透過 Azure 入口網站或以程式設計方式使用 [REST API](/graph/api/resources/application) 或 [PowerShell](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#applications) 來設定應用程式的屬性。 不過，在某些情況下，您需要編輯應用程式資訊清單，以設定應用程式的屬性。 這些案例包括：
 
 * 如果您將應用程式註冊為 Azure AD 多租用戶和個人 Microsoft 帳戶，則無法在 UI 中變更支援的 Microsoft 帳戶。 相反地，您必須使用應用程式資訊清單編輯器來變更支援的帳戶類型。
 * 如果您需要定義應用程式支援的權限和角色，則必須修改應用程式資訊清單。
@@ -433,7 +434,7 @@ ms.locfileid: "85479244"
 | parentalControlSettings | String |
 
 - `countriesBlockedForMinors` 指定會對未成年人封鎖此應用程式的國家/區域。
-- `legalAgeGroupRule` 指定會套用到應用程式使用者的法定年齡群組規則。 可以設定為 `Allow`、`RequireConsentForPrivacyServices`、`RequireConsentForMinors`、`RequireConsentForKids` 或 `BlockMinors`。  
+- `legalAgeGroupRule` 指定會套用到應用程式使用者的法定年齡群組規則。 可以設定為 `Allow`、`RequireConsentForPrivacyServices`、`RequireConsentForMinors`、`RequireConsentForKids` 或 `BlockMinors`。
 
 範例：
 
@@ -493,7 +494,7 @@ ms.locfileid: "85479244"
 | :--- | :--- |
 | publicClient | Boolean|
 
-指定此應用程式是否為公開用戶端 (例如行動裝置上執行的已安裝應用程式)。 
+指定此應用程式是否為公開用戶端 (例如行動裝置上執行的已安裝應用程式)。
 
 此屬性僅適用於**應用程式註冊 (舊版)** 體驗。 已由[應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)體驗中的 `allowPublicClient` 取代。
 
@@ -669,7 +670,7 @@ ms.locfileid: "85479244"
 
 當您看到其中一個錯誤時，我們建議採取下列動作：
 
-1. 在資訊清單編輯器中個別地編輯屬性，而不是上傳先前下載的資訊清單。 使用[資訊清單參考](#manifest-reference)資料表來了解舊屬性和新屬性的語法和語義，讓您可成功編輯您感興趣的屬性。 
+1. 在資訊清單編輯器中個別地編輯屬性，而不是上傳先前下載的資訊清單。 使用[資訊清單參考](#manifest-reference)資料表來了解舊屬性和新屬性的語法和語義，讓您可成功編輯您感興趣的屬性。
 1. 如果您的工作流程要求您在來源存放庫中儲存資訊清單以供稍後使用，建議以您在**應用程式註冊**體驗中看到的資訊清單，將存放庫中儲存的資訊清單重訂基底。
 
 ## <a name="next-steps"></a>後續步驟

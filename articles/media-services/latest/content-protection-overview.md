@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 03/17/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: c1c9440f7ec70cea98f270f04c3030c800dd0fde
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0be481d90562ca611b021e2f05d9109eb51958c8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79461107"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023257"
 ---
 # <a name="protect-your-content-with-media-services-dynamic-encryption"></a>使用媒體服務動態加密來保護您的內容
 
@@ -243,7 +244,7 @@ streamingPolicy.EnvelopEncryption.customKeyAcquisitionUrlTemplate = "https://myk
 
 `ContentKeyId`具有所要求金鑰的值。 `AlternativeMediaId`如果您想要將要求對應至您端的實體，可以使用。 例如， `AlternativeMediaId` 可以用來協助您查閱許可權。
 
-如需使用自訂授權/金鑰取得 Url 的 REST 範例，請參閱[串流原則-建立](https://docs.microsoft.com/rest/api/media/streamingpolicies/create)。
+如需使用自訂授權/金鑰取得 Url 的 REST 範例，請參閱[串流原則-建立](/rest/api/media/streamingpolicies/create)。
 
 > [!NOTE]
 > Widevine 是 Google Inc. 所提供的服務，並受到 Google Inc. 的服務條款和隱私權原則所約束。
@@ -265,4 +266,4 @@ streamingPolicy.EnvelopEncryption.customKeyAcquisitionUrlTemplate = "https://myk
 * [設計具有存取控制的多重 DRM 內容保護系統](design-multi-drm-system-with-access-control.md)
 * [儲存端加密](storage-account-concept.md#storage-side-encryption)
 * [常見問題集](frequently-asked-questions.md)
-* [JSON Web 語彙基元處理常式](https://docs.microsoft.com/dotnet/framework/security/json-web-token-handler)
+* [JSON Web 語彙基元處理常式](/dotnet/framework/security/json-web-token-handler)

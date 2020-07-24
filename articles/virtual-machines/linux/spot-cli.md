@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/26/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: d6560f11d26200bdd9f39c4cbae643022872d362
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 653106c54644749174fd8530fccf30329c7751ff
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85506067"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028765"
 ---
 # <a name="deploy-spot-vms-using-the-azure-cli"></a>使用 Azure CLI 部署點 Vm
 
@@ -23,7 +23,7 @@ ms.locfileid: "85506067"
 
 您可以選擇為 VM 設定您願意支付的最大價格（每小時）。 您可以使用最多5個小數位數，以美元（USD）來設定點 VM 的最大價格。 例如，此值 `0.98765` 是每小時 $0.98765 美元的最大價格。 如果您將最大價格設為 `-1` ，則不會根據價格來收回 VM。 VM 的價格將會是標準 VM 的目前價格或價格（這是較少的），只要有可用的容量和配額。 如需設定最大價格的詳細資訊，請參閱[找出 vm-定價](spot-vms.md#pricing)。
 
-使用 Azure CLI 來建立具有位置之 VM 的程式，與[快速入門文章](/azure/virtual-machines/linux/quick-create-cli)中所述的步驟相同。 只要新增 '--priority 位置 ' 參數，將設定 `--eviction-policy` 為解除配置（這是預設值）或 `Delete` ，並提供最大價格或 `-1` 。 
+使用 Azure CLI 來建立具有位置之 VM 的程式，與[快速入門文章](./quick-create-cli.md)中所述的步驟相同。 只要新增 '--priority 位置 ' 參數，將設定 `--eviction-policy` 為解除配置（這是預設值）或 `Delete` ，並提供最大價格或 `-1` 。 
 
 
 ## <a name="install-azure-cli"></a>安裝 Azure CLI

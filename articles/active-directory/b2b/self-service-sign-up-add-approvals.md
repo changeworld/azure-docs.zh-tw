@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c4b40c284c8d034d92f29eb25d754d9294ac2e3d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6d1a4495b1d637b1cf8592f8c17e63ad456ea3c4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85386771"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027456"
 ---
 # <a name="add-a-custom-approval-workflow-to-self-service-sign-up"></a>新增自訂核准工作流程以進行自助式註冊
 
@@ -61,11 +61,11 @@ ms.locfileid: "85386771"
 
 接下來，您將為自助註冊使用者流程[建立 API 連接器](self-service-sign-up-add-api-connector.md#create-an-api-connector)。 您的核准系統 API 需要兩個連接器和對應的端點，如下列範例所示。 這些 API 連接器會執行下列動作：
 
-- **檢查核准狀態**。 在使用者登入身分識別提供者之後，立即傳送對核准系統的呼叫，以檢查使用者是否有現有的核准要求，或是否已遭到拒絕。 如果您的核准系統僅執行自動核准決策，可能就不需要此 API 連接器。 以下是「檢查核准狀態」 API 連接器的範例。
+- **檢查核准狀態**。 在使用者登入身分識別提供者之後，立即傳送對核准系統的呼叫，以檢查使用者是否有現有的核准要求，或是否已遭到拒絕。 如果您的核准系統僅執行自動核准決策，可能就不需要此 API 連接器。 「檢查核准狀態」 API 連接器的範例。
 
   ![檢查核准狀態 API 連接器設定](./media/self-service-sign-up-add-approvals/check-approval-status-api-connector-config-alt.png)
 
-- **要求核准**-在使用者完成 [屬性集合] 頁面後，但在建立使用者帳戶之前，傳送對核准系統的呼叫，以要求核准。 核准要求可以自動授與或手動審核。 以下是「要求核准」 API 連接器的範例。 選取**要傳送**核准系統所需的任何宣告，以做出核准決策。
+- **要求核准**-在使用者完成 [屬性集合] 頁面後，但在建立使用者帳戶之前，傳送對核准系統的呼叫，以要求核准。 核准要求可以自動授與或手動審核。 「要求核准」 API 連接器的範例。 選取**要傳送**核准系統所需的任何宣告，以做出核准決策。
 
   ![要求核准 API 連接器設定](./media/self-service-sign-up-add-approvals/create-approval-request-api-connector-config-alt.png)
 
@@ -94,14 +94,14 @@ ms.locfileid: "85386771"
 
 ### <a name="request-and-responses-for-the-check-approval-status-api-connector"></a>「檢查核准狀態」 API 連接器的要求和回應
 
-以下是 API 從「檢查核准狀態」 API 連接器收到的要求範例：
+API 從「檢查核准狀態」 API 連接器收到的要求範例：
 
 ```http
 POST <Approvals-API-endpoint>
 Content-type: application/json
 
 {
- "email_address": "johnsmith@outlook.com",
+ "email": "johnsmith@outlook.com",
  "identities": [
      {
      "signInType":"federated",
@@ -119,7 +119,7 @@ Content-type: application/json
 
 - 使用者先前尚未要求核准。
 
-以下是接續回應的範例：
+接續回應的範例：
 
 ```http
 HTTP/1.1 200 OK
@@ -166,14 +166,14 @@ Content-type: application/json
 
 ### <a name="request-and-responses-for-the-request-approval-api-connector"></a>「要求核准」 API 連接器的要求和回應
 
-以下是 API 從「要求核准」 API 連接器收到的 HTTP 要求範例：
+API 從「要求核准」 API 連接器收到的 HTTP 要求範例：
 
 ```http
 POST <Approvals-API-endpoint>
 Content-type: application/json
 
 {
- "email_address": "johnsmith@outlook.com",
+ "email": "johnsmith@outlook.com",
  "identities": [
      {
      "signInType":"federated",
@@ -194,7 +194,7 @@ Content-type: application/json
 
 - 使用者可以**_自動核准_**。
 
-以下是接續回應的範例：
+接續回應的範例：
 
 ```http
 HTTP/1.1 200 OK
@@ -257,14 +257,14 @@ Content-type: application/json
 
 如果您的使用者已使用 Google 或 Facebook 帳戶登入，您可以使用[使用者建立 API](https://docs.microsoft.com/graph/api/user-post-users?view=graph-rest-1.0&tabs=http)。
 
-1. 核准系統會使用接收來自使用者流程的 HTTP 要求。
+1. 核准系統會接收來自使用者流程的 HTTP 要求。
 
 ```http
 POST <Approvals-API-endpoint>
 Content-type: application/json
 
 {
- "email_address": "johnsmith@outlook.com",
+ "email": "johnsmith@outlook.com",
  "identities": [
      {
      "signInType":"federated",
@@ -303,15 +303,15 @@ Content-type: application/json
 }
 ```
 
-| 參數                                           | 必要 | 說明                                                                                                                                                            |
+| 參數                                           | 必要 | 描述                                                                                                                                                            |
 | --------------------------------------------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| userPrincipalName                                   | Yes      | 可以藉由接受 `email_address` 傳送至 API 的宣告、將字元取代為 `@` `_` ，並將它預先擱置到，來產生 `#EXT@<tenant-name>.onmicrosoft.com` 。 |
-| accountEnabled                                      | Yes      | 必須設為 `true`。                                                                                                                                                 |
-| mail                                                | Yes      | 相當於 `email_address` 傳送至 API 的宣告。                                                                                                               |
-| userType                                            | Yes      | 必須是 `Guest`。 將此使用者指定為來賓使用者。                                                                                                                 |
-| 身分識別                                          | Yes      | 同盟身分識別資訊。                                                                                                                                    |
-| \<otherBuiltInAttribute>                            | No       | 其他內建屬性，例如 `displayName` 、 `city` 和其他屬性。 參數名稱與 API 連接器所傳送的參數相同。                            |
-| \<extension\_\{extensions-app-id}\_CustomAttribute> | No       | 使用者的自訂屬性。 參數名稱與 API 連接器所傳送的參數相同。                                                            |
+| userPrincipalName                                   | 是      | 可以藉由接受 `email` 傳送至 API 的宣告、將字元取代為 `@` `_` ，並將它預先擱置到，來產生 `#EXT@<tenant-name>.onmicrosoft.com` 。 |
+| accountEnabled                                      | 是      | 必須設為 `true`。                                                                                                                                                 |
+| mail                                                | 是      | 相當於 `email` 傳送至 API 的宣告。                                                                                                               |
+| userType                                            | 是      | 必須是 `Guest`。 將此使用者指定為來賓使用者。                                                                                                                 |
+| 身分識別                                          | 是      | 同盟身分識別資訊。                                                                                                                                    |
+| \<otherBuiltInAttribute>                            | 否       | 其他內建屬性，例如 `displayName` 、 `city` 和其他屬性。 參數名稱與 API 連接器所傳送的參數相同。                            |
+| \<extension\_\{extensions-app-id}\_CustomAttribute> | 否       | 使用者的自訂屬性。 參數名稱與 API 連接器所傳送的參數相同。                                                            |
 
 ### <a name="for-a-federated-azure-active-directory-user"></a>針對同盟 Azure Active Directory 使用者
 
@@ -324,7 +324,7 @@ POST <Approvals-API-endpoint>
 Content-type: application/json
 
 {
- "email_address": "johnsmith@fabrikam.onmicrosoft.com",
+ "email": "johnsmith@fabrikam.onmicrosoft.com",
  "displayName": "John Smith",
  "city": "Redmond",
  "extension_<extensions-app-id>_CustomAttribute": "custom attribute value",
@@ -332,7 +332,7 @@ Content-type: application/json
 }
 ```
 
-2. 核准系統會使用 `email_address` API 連接器所提供的來建立邀請。
+2. 核准系統會使用 `email` API 連接器所提供的來建立邀請。
 
 ```http
 POST https://graph.microsoft.com/v1.0/invitations
@@ -344,7 +344,7 @@ Content-type: application/json
 }
 ```
 
-以下是回應的範例：
+回應的範例：
 
 ```http
 HTTP/1.1 201 OK
@@ -371,7 +371,7 @@ Content-type: application/json
 }
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 開始使用我們的[Azure 函數快速入門範例](code-samples-self-service-sign-up.md#api-connector-azure-function-quickstarts)。
 - [使用手動核准範例來簽出來賓使用者的自助式註冊](code-samples-self-service-sign-up.md#custom-approval-workflows)。 

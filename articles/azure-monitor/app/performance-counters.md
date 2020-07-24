@@ -3,15 +3,16 @@ title: Application Insights 中的效能計數器 | Microsoft Docs
 description: 監視 Application Insights 中的系統和自訂 .NET 效能計數器。
 ms.topic: conceptual
 ms.date: 12/13/2018
-ms.openlocfilehash: 274e02c484c091cbb13ac2cf69bf99672f579f33
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: e60663d9e767db020fc93eba1f4c1c6babb32294
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701474"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87024413"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Application Insights 中的系統效能計數器
 
-Windows 提供多種[效能計數器](https://docs.microsoft.com/windows/desktop/PerfCtrs/about-performance-counters) (例如 CPU 使用、記憶體、磁碟和網路使用量)。 您也可以定義自己的效能計數器。 只要應用程式是在您具有系統管理存取權的內部部署主機或虛擬機器上於 IIS 下執行，則支援效能計數器集合。 雖然以 Azure Web Apps 執行的應用程式無法直接存取效能計數器，但 Application Insights 會收集可用計數器的子集。
+Windows 提供多種[效能計數器](/windows/desktop/perfctrs/about-performance-counters) (例如 CPU 使用、記憶體、磁碟和網路使用量)。 您也可以定義自己的效能計數器。 只要應用程式是在您具有系統管理存取權的內部部署主機或虛擬機器上於 IIS 下執行，則支援效能計數器集合。 雖然以 Azure Web Apps 執行的應用程式無法直接存取效能計數器，但 Application Insights 會收集可用計數器的子集。
 
 ## <a name="view-counters"></a>檢視計數器
 
@@ -39,7 +40,7 @@ Windows 提供多種[效能計數器](https://docs.microsoft.com/windows/desktop
 
     `Get-Counter -ListSet *`
 
-    (請參閱 [`Get-Counter`](https://technet.microsoft.com/library/hh849685.aspx)。)
+    (請參閱 [`Get-Counter`](/powershell/module/microsoft.powershell.diagnostics/get-counter?view=powershell-5.1)。)
 2. 開啟 ApplicationInsights.config。
 
    * 如果您已在開發期間將 Application Insights 新增至應用程式，請編輯專案中的 ApplicationInsights.config，然後將它重新部署至伺服器。
@@ -108,7 +109,7 @@ using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector;
 ```
 
 ## <a name="performance-counters-in-analytics"></a>Analytics 中的效能計數器
-您可以搜尋並顯示 [Analytics](../../azure-monitor/app/analytics.md) 中的效能計數器報告。
+您可以搜尋並顯示 [Analytics](../log-query/log-query-overview.md) 中的效能計數器報告。
 
 **PerformanceCounters** 結構描述會公開每個效能計數器的 `category`、`counter` 名稱和 `instance` 名稱。  在每個應用程式的遙測中，您將只會看到該應用程式的計數器。 例如，若要查看哪些計數器可用︰ 
 
@@ -152,4 +153,3 @@ ASP.NET Core 效能計數器的支援受限制：
 
 * [相依性追蹤](../../azure-monitor/app/asp-net-dependencies.md)
 * [例外狀況追蹤](../../azure-monitor/app/asp-net-exceptions.md)
-

@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18, contperfq4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc81cca10bacc581e72c7caa70a0b74b7ae99f9a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 347232d452b5d309da7cdb7c8fe34f0e41abde00
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85604211"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87025333"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>將 Azure 訂用帳戶關聯或新增至您的 Azure Active Directory 租用戶
 
@@ -85,13 +85,13 @@ Azure 訂用帳戶與 Azure Active Directory （Azure AD）之間具有信任關
 
 將訂用帳戶與不同的目錄建立關聯之後，您可能需要執行下列工作，才能繼續執行作業：
 
-- 如果您有任何金鑰保存庫，您必須變更金鑰保存庫租使用者識別碼。 如需詳細資訊，請參閱在[訂用帳戶移動之後變更金鑰保存庫租使用者識別碼](../../key-vault/general/subscription-move-fix.md)。
+- 如果您有任何金鑰保存庫，您必須變更金鑰保存庫租使用者識別碼。 如需詳細資訊，請參閱在[訂用帳戶移動之後變更金鑰保存庫租使用者識別碼](../../key-vault/general/move-subscription.md)。
 
 - 如果您針對資源使用系統指派的受控識別，則必須重新啟用這些身分識別。 如果您使用使用者指派的受控識別，您必須重新建立這些身分識別。 重新啟用或重建受控識別之後，您必須重新建立指派給這些身分識別的許可權。 如需詳細資訊，請參閱[什麼是適用於 Azure 資源的受控識別？](../managed-identities-azure-resources/overview.md)。
 
 - 如果您已使用此訂用帳戶註冊 Azure Stack，則必須重新註冊。 如需詳細資訊，請參閱[向 Azure 註冊 Azure Stack](/azure-stack/operator/azure-stack-registration)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 - 若要建立新的 Azure AD 租使用者，請參閱[快速入門：在 Azure Active Directory 中建立新的租](active-directory-access-create-new-tenant.md)使用者。
 

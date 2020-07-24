@@ -4,12 +4,12 @@ description: 使用 Azure CLI 建立和管理 Azure 區塊鏈服務的區塊鏈�
 ms.date: 03/30/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: b7b897f35cb864e2a1fa904bbb3ec13b56986598
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f067f4413f6ad8541cd36a7581f9243bed4e195f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85200455"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023733"
 ---
 # <a name="configure-blockchain-data-manager-using-azure-cli"></a>使用 Azure CLI 設定區塊鏈資料管理員
 
@@ -23,9 +23,9 @@ ms.locfileid: "85200455"
 * 新增區塊鏈應用程式
 * 啟動實例
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
-* 安裝最新的[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)並使用登入 `az login` 。
+* 安裝最新的[Azure CLI](/cli/azure/install-azure-cli)並使用登入 `az login` 。
 * 完成[快速入門：使用 Visual Studio Code 連接到 Azure 區塊鏈 Service 聯盟網路](connect-vscode.md)。 使用區塊鏈資料管理員時，建議您使用 Azure 區塊鏈 Service*標準*層。
 * 建立[事件方格主題](../../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic)
 * 了解 [Azure 事件方格中的事件處理常式](../../event-grid/event-handlers.md)
@@ -34,13 +34,13 @@ ms.locfileid: "85200455"
 
 Azure Cloud Shell 是免費的互動式 Shell，可讓您用來執行本文中的步驟。 它具有預先安裝和設定的共用 Azure 工具，可與您的帳戶搭配使用。
 
-若要開啟 Cloud Shell，只要選取程式碼區塊右上角的 [試試看] 即可。 您也可以移至 [https://shell.azure.com/bash](https://shell.azure.com/bash)，從另一個瀏覽器索引標籤啟動 Cloud Shell。 選取 [複製]  即可複製程式碼區塊，將它貼到 Cloud Shell 中，然後按 enter 鍵加以執行。
+若要開啟 Cloud Shell，只要選取程式碼區塊右上角的 [試試看]  即可。 您也可以移至 [https://shell.azure.com/bash](https://shell.azure.com/bash)，從另一個瀏覽器索引標籤啟動 Cloud Shell。 選取 [複製]  即可複製程式碼區塊，將它貼到 Cloud Shell 中，然後按 enter 鍵加以執行。
 
-如果您偏好在本機安裝和使用 CLI，本快速入門需要有 Azure CLI 2.0.51 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+如果您偏好在本機安裝和使用 CLI，本快速入門需要有 Azure CLI 2.0.51 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 
-使用 [az group create](https://docs.microsoft.com/cli/azure/group) 命令來建立資源群組。 Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 下列範例會在 eastus 位置建立名為 myResourceGroup 的資源群組：
+使用 [az group create](/cli/azure/group) 命令來建立資源群組。 Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 下列範例會在 eastus 位置建立名為 myResourceGroup 的資源群組：
 
 ```azurecli-interactive
 az group create --name myRG --location eastus
@@ -59,10 +59,10 @@ az resource create \
                    --properties <watcher resource properties>
 ```
 
-| 參數 | 說明 |
+| 參數 | 描述 |
 |-----------|-------------|
 | resource-group | 要在其中建立區塊鏈資料管理員實例的資源組名。 |
-| NAME | 區塊鏈資料管理員實例的名稱。 |
+| 名稱 | 區塊鏈資料管理員實例的名稱。 |
 | 資源類型 | 區塊鏈資料管理員實例的資源類型為**區塊鏈/** 監看員。 |
 | is-full-object | 指出屬性包含監看員資源的選項。 |
 | properties | JSON 格式的字串，包含監看員資源的屬性。 可以當做字串或檔案來傳遞。  |
@@ -121,11 +121,11 @@ az resource create \
                    --properties <input resource properties>
 ```
 
-| 參數 | 說明 |
+| 參數 | 描述 |
 |-----------|-------------|
 | resource-group | 要在其中建立輸入資源的資源組名。 |
-| NAME | 輸入的名稱。 |
-| 命名空間 | 使用**區塊鏈**提供者命名空間。 |
+| 名稱 | 輸入的名稱。 |
+| namespace | 使用**區塊鏈**提供者命名空間。 |
 | 資源類型 | 區塊鏈**資料管理員輸入的資源類型是輸入**。 |
 | 父系 (parent) | 與輸入相關聯之監看員的路徑。 例如，監看員 **/mywatcher**。 |
 | is-full-object | 指出屬性包含輸入資源的選項。 |
@@ -193,11 +193,11 @@ az resource create \
                    --properties <output resource properties>
 ```
 
-| 參數 | 說明 |
+| 參數 | 描述 |
 |-----------|-------------|
 | resource-group | 要在其中建立輸出資源的資源組名。 |
-| NAME | 輸出的名稱。 |
-| 命名空間 | 使用**區塊鏈**提供者命名空間。 |
+| 名稱 | 輸出的名稱。 |
+| namespace | 使用**區塊鏈**提供者命名空間。 |
 | 資源類型 | 輸出的區塊鏈資料管理員的資源**類型。** |
 | 父系 (parent) | 與輸出相關聯之監看員的路徑。 例如，監看員 **/mywatcher**。 |
 | is-full-object | 指出屬性包含輸出資源的選項。 |
@@ -270,11 +270,11 @@ az resource create \
                    --properties <Application resource properties>
 ```
 
-| 參數 | 說明 |
+| 參數 | 描述 |
 |-----------|-------------|
 | resource-group | 要在其中建立應用程式資源的資源組名。 |
-| NAME | 應用程式的名稱。 |
-| 命名空間 | 使用**區塊鏈**提供者命名空間。 |
+| 名稱 | 應用程式的名稱。 |
+| namespace | 使用**區塊鏈**提供者命名空間。 |
 | 資源類型 | 區塊鏈資料管理員應用程式的資源**類型是成品**。 |
 | 父系 (parent) | 與應用程式相關聯之監看員的路徑。 例如，監看員 **/mywatcher**。 |
 | is-full-object | 指出屬性包含應用程式資源的選項。 |
@@ -399,7 +399,7 @@ az resource delete \
 | 參數 | 描述 |
 |-----------|-------------|
 | resource-group | 要刪除之監看員的資源組名。 |
-| NAME | 要刪除的監看員名稱。 |
+| 名稱 | 要刪除的監看員名稱。 |
 | 資源類型 | 區塊鏈資料管理員監看員的資源類型為**區塊鏈/** 監看員。 |
 
 ### <a name="delete-instance-example"></a>刪除實例範例
@@ -413,7 +413,7 @@ az resource delete \
                    --resource-type Microsoft.blockchain/watchers
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 請嘗試下一個教學課程使用區塊鏈資料管理員和 Azure Cosmos DB 建立區塊鏈交易訊息瀏覽器。
 

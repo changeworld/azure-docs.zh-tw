@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf21f2ea5aacb36f3a76034e99b748bf4c6c363b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16203ab972f6117cec41e43ee5dd89cda7e95ede
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85554761"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87025689"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>How To:規劃混合式 Azure Active Directory Join 實作
 
@@ -30,7 +30,7 @@ ms.locfileid: "85554761"
 
 如果您有內部部署 Active Directory （AD）環境，而且想要將已加入 AD 網域的電腦加入 Azure AD，您可以執行混合式 Azure AD 聯結來完成這項作業。 本文提供在您的環境中實作混合式 Azure AD Join 的相關步驟。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 本文假設您已熟悉[Azure Active Directory 中的裝置身分識別管理簡介](../device-management-introduction.md)。
 
@@ -92,12 +92,12 @@ ms.locfileid: "85554761"
 ### <a name="handling-devices-with-azure-ad-registered-state"></a>處理具有 Azure AD 註冊狀態的裝置
 如果您已加入 Windows 10 網域的裝置 Azure AD 向您的租使用者[註冊](overview.md#getting-devices-in-azure-ad)，則可能會導致混合式 Azure AD 已加入的雙重狀態並 Azure AD 已註冊的裝置。 建議您升級至 Windows 10 1803 （已套用 KB4489894）或更新版本，以自動解決這種情況。 在1803之前的版本中，您必須先手動移除 Azure AD 註冊狀態，才能啟用混合式 Azure AD 聯結。 在1803和更新版本中，已進行下列變更以避免這種雙重狀態：
 
-- <i>當裝置已加入混合式 Azure AD，而且使用者登入之後</i>，系統會自動移除任何現有的 Azure AD 註冊狀態。 例如，如果使用者 A 在裝置上有 Azure AD 註冊的狀態，則只有在使用者 A 登入裝置時，才會清除使用者 A 的雙重狀態。 如果相同的裝置上有多個使用者，當這些使用者登入時，會個別清除雙重狀態。
+- <i>當裝置已加入混合式 Azure AD，而且使用者登入之後</i>，系統會自動移除任何現有的 Azure AD 註冊狀態。 例如，如果使用者 A 在裝置上有 Azure AD 註冊的狀態，則只有在使用者 A 登入裝置時，才會清除使用者 A 的雙重狀態。 如果相同的裝置上有多個使用者，當這些使用者登入時，會個別清除雙重狀態。 除了移除 Azure AD 註冊狀態以外，如果註冊是透過自動註冊的 Azure AD 註冊，Windows 10 也會將裝置從 Intune 或其他 MDM 取消註冊。
 - 您可以將下列登錄值新增至 HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin，以防止加入網域的裝置 Azure AD 註冊： "BlockAADWorkplaceJoin" = dword：00000001。
 - 在 Windows 10 1803 中，如果您已設定 Windows Hello 企業版，則使用者必須在雙重狀態清除之後重新設定 Windows Hello 企業版。KB4512509 已解決此問題
 
 > [!NOTE]
-> 如果 Azure AD 已註冊的裝置受 Intune 管理，則不會自動移除。
+> 即使 Windows 10 會在本機自動移除 Azure AD 註冊的狀態，Azure AD 中的裝置物件如果是由 Intune 所管理，則不會立即遭到刪除。 您可以藉由執行 dsregcmd.exe/status 來驗證移除 Azure AD 已註冊狀態，並考慮不要根據該裝置 Azure AD 註冊。
 
 ### <a name="additional-considerations"></a>其他考量
 - 如果您的環境使用虛擬桌面基礎結構（VDI），請參閱[裝置身分識別和桌面虛擬化](/azure/active-directory/devices/howto-device-identity-virtual-desktop-infrastructure)。
@@ -159,12 +159,12 @@ ms.locfileid: "85554761"
 
 下表提供有關在 Windows 10 混合式 Azure AD Join 中支援這些內部部署 AD UPN 的詳細資料
 
-| 內部部署 AD UPN 的類型 | 網域類型 | Windows 10 版本 | Description |
+| 內部部署 AD UPN 的類型 | 網域類型 | Windows 10 版本 | 描述 |
 | ----- | ----- | ----- | ----- |
 | 路由式 | 同盟 | 自 1703 版起 | 正式推出 |
 | 非可路由傳送 | 同盟 | 自 1803 版起 | 正式推出 |
-| 路由式 | 受控 | 自 1803 版起 | 已正式推出，不支援 Windows 鎖屏上的 Azure AD SSPR |
-| 非可路由傳送 | 受控 | 不支援 | |
+| 路由式 | 受管理 | 自 1803 版起 | 已正式推出，不支援 Windows 鎖屏上的 Azure AD SSPR |
+| 非可路由傳送 | 受管理 | 不支援 | |
 
 ## <a name="next-steps"></a>後續步驟
 

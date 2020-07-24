@@ -11,13 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf3f6455be992502182fb942f0e6db089051ab1a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eb9bc0adeaff8fa6e0f0298782d6f3fca35058cf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253149"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87025960"
 ---
-# <a name="manage-device-identities-using-the-azure-portal"></a>使用 Azure 入口網站管理裝置身分識別
+# <a name="manage-device-identities-using-the-azure-portal"></a>使用 Azure 入口網站管理裝置身分識別 (機器翻譯)
 
 透過 Azure Active Directory （Azure AD）中的裝置身分識別管理，您可以確保使用者會從符合安全性與合規性標準的裝置存取您的資源。
 
@@ -52,12 +53,12 @@ Azure AD 入口網站可讓您集中管理您的裝置身分識別。 您可以�
 
 - **使用者可以將裝置加入至 Azure AD** -此設定可讓您選取可以將其裝置註冊為 Azure AD 已加入裝置的使用者。 預設為 **All**。
 
-> [!NOTE]
+> [!TIP]
 > **使用者可以將裝置加入 Azure AD**設定僅適用于 Windows 10 上的 Azure AD 加入。
 
 - **加入 Azure AD 的裝置上其他本機系統管理員** - 您可以選取哪些使用者會授與裝置的本機系統管理員權限。 新增至此處的使用者將會新增至 Azure AD 中的「裝置系統管理員」** 角色。 Azure AD 中的全域管理員和裝置擁有者預設會授與本機系統管理員權限。 此選項是可透過 Azure AD Premium 或 Enterprise Mobility Suite (EMS) 等產品使用的進階編輯功能。
 - **使用者可以向 Azure AD 註冊其裝置**-您需要設定此設定，以允許 Azure AD 註冊 Windows 10 個人版、IOS、Android 和 macOS 裝置。 如果您選取 [**無**]，則不允許裝置向 Azure AD 註冊。 需要先註冊 (registration)，才可註冊 (enrollment) Microsoft Intune 或適用於 Office 365 的行動裝置管理 (MDM)。 如果您已設定任一服務，則會選取 [全部]**** 且無法使用 [無]****。
-- **需要多重要素驗證才能加入裝置**-您可以選擇使用者是否需要提供額外的驗證因素，才能將其裝置加入 Azure AD。 預設值為 [**否**]。 建議在註冊裝置時要求 Multi-Factor Authentication。 啟用此服務的 Multi-Factor Authentication 之前，您必須確定已為註冊其裝置的使用者設定 Multi-Factor Authentication。 如需不同 Azure Multi-Factor Authentication 服務的詳細資訊，請參閱[開始使用 Azure Multi-Factor Authentication](../authentication/concept-mfa-whichversion.md)。 
+- **需要多重要素驗證才能加入裝置**-您可以選擇使用者是否需要提供額外的驗證因素，才能將其裝置加入 Azure AD。 預設值為 [**否**]。 建議在註冊裝置時要求 Multi-Factor Authentication。 啟用此服務的 Multi-Factor Authentication 之前，您必須確定已為註冊其裝置的使用者設定 Multi-Factor Authentication。 如需有關不同 Azure 多因素驗證服務的詳細資訊，請參閱[開始使用 Azure 多重要素驗證](../authentication/concept-mfa-whichversion.md)。 
 
 > [!NOTE]
 > [**需要多因素驗證才能加入裝置**] 設定會套用至已加入 Azure AD 或 Azure AD 註冊的裝置。 此設定不適用於已加入混合式 Azure AD 的裝置。
@@ -225,6 +226,6 @@ Audit 記錄檔具有預設清單視圖，顯示：
 
 ![稽核記錄](./media/device-management-azure-portal/65.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 [如何管理 Azure AD 中的過時裝置](manage-stale-devices.md)

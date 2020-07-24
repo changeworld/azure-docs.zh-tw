@@ -6,13 +6,13 @@ author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
 ms.date: 03/24/2020
-ms.author: anzaman
-ms.openlocfilehash: 4821f2eb694a36cf0570008b3e62ce39999c58d1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: kumud
+ms.openlocfilehash: 536e1e57af16a87fba85323e9448bfb904d56384
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80239757"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027864"
 ---
 # <a name="about-point-to-site-vpn-routing"></a>關於點對站 VPN 路由
 
@@ -249,6 +249,6 @@ Windows 用戶端可以存取 VNet 和分公司 (Site1)，但必須手動將 Sit
 
 * 非 Windows 用戶端可以存取 VNet1、VNet2、VNet3 及 Site1。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 請參閱[使用 Azure 入口網站來建立 P2S VPN](vpn-gateway-howto-point-to-site-resource-manager-portal.md) 以開始建立 P2S VPN。

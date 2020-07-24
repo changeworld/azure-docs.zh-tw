@@ -8,14 +8,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 10/30/2019
+ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, tracking-python
-ms.openlocfilehash: 72168c54bd7968ce9c0315d3f3e47bae09e45004
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6cc846d8d330459587745795edf21c5ac04f2291
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85052233"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87026334"
 ---
 # <a name="web-app-that-signs-in-users-code-configuration"></a>登入使用者的 Web 應用程式：程式碼設定
 
@@ -28,7 +29,7 @@ ms.locfileid: "85052233"
 
 | 平台 | 程式庫 | 描述 |
 |----------|---------|-------------|
-| ![.NET](media/sample-v2-code/logo_NET.png) | [適用于 .NET 的識別模型延伸模組](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) | 適用于 .NET 的 Microsoft 身分識別模型延伸模組是由 ASP.NET 和 ASP.NET Core 直接使用，它會建議一組在 .NET Framework 和 .NET Core 上執行的 Dll。 從 ASP.NET 或 ASP.NET Core web 應用程式，您可以使用**TokenValidationParameters**類別（特別是在某些合作夥伴案例中）來控制權杖驗證。 |
+| ![.NET](media/sample-v2-code/logo_NET.png) | [適用于 .NET 的識別模型延伸模組](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) | 適用于 .NET 的 Microsoft 身分識別模型延伸模組是由 ASP.NET 和 ASP.NET Core 直接使用，它會建議一組在 .NET Framework 和 .NET Core 上執行的 Dll。 從 ASP.NET 或 ASP.NET Core web 應用程式，您可以使用**TokenValidationParameters**類別（特別是在某些合作夥伴案例中）來控制權杖驗證。 實際上，複雜度會封裝在[Microsoft. Identity. Web](https://aka.ms/ms-identity-web) library 中 |
 | ![Java](media/sample-v2-code/small_logo_java.png) | [MSAL Java](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki) | JAVA web 應用程式的支援 |
 | ![Python](media/sample-v2-code/small_logo_python.png) | [MSAL Python](https://github.com/AzureAD/microsoft-authentication-library-for-python/wiki) | Python web 應用程式的支援 |
 
@@ -62,7 +63,7 @@ ms.locfileid: "85052233"
 
 ## <a name="configuration-files"></a>組態檔
 
-使用 Microsoft 身分識別平臺登入使用者的 Web 應用程式，通常是透過設定檔來設定。 您需要填寫的設定如下：
+使用 Microsoft 身分識別平臺登入使用者的 Web 應用程式，是透過設定檔來設定。 您需要填寫的設定如下：
 
 - 雲端實例（ `Instance` ），如果您想要讓應用程式在國家雲端中執行，例如
 - 租使用者識別碼中的物件（ `TenantId` ）
@@ -210,13 +211,21 @@ SESSION_TYPE = "filesystem"  # So the token cache will be stored in a server-sid
 若要使用 Microsoft 身分識別平臺（先前為 Azure AD v2.0）來新增驗證，您需要新增下列程式碼。 程式碼中的批註應該一目了然。
 
 > [!NOTE]
-> 如果您使用 Visual Studio 中的預設 ASP.NET Core Web 專案啟動專案，或使用 `dotnet new mvc --auth SingleAuth` 或 `dotnet new webapp --auth SingleAuth` ，您會看到如下所示的程式碼： `services.AddAuthentication(AzureADDefaults.AuthenticationScheme).AddAzureAD(options => Configuration.Bind("AzureAd", options));` 。
-> 
+> 如果您想要直接開始使用 Microsoft 身分識別平臺的新 ASP.NET Core 範本，利用 Microsoft 身分識別 Web，您可以下載包含 .NET Core 3.1 和 .NET 5.0 之專案範本的預覽 NuGet 套件。 然後，在安裝之後，您就可以直接具現化 ASP.NET Core web 應用程式（MVC 或 Blazor）。 如需詳細資訊，請參閱[Microsoft web 應用程式專案範本](https://aka.ms/ms-id-web/webapp-project-templates)。 這是最簡單的方法，因為它會為您執行下列所有步驟。
+>
+> 如果您想要在 Visual Studio 內或使用或的情況下，使用目前的預設 ASP.NET Core Web 專案啟動專案 `dotnet new mvc --auth SingleAuth` `dotnet new webapp --auth SingleAuth` ，您會看到如下所示的程式碼：
+>
+>```c#
+>  services.AddAuthentication(AzureADDefaults.AuthenticationScheme)
+>          .AddAzureAD(options => Configuration.Bind("AzureAd", options));
+> ```
+>
 > 這段程式碼會使用舊版的**AspNetCore. AzureAD. UI** NuGet 封裝，此套件可用來建立 Azure AD v1.0 應用程式。 本文說明如何建立 Microsoft 身分識別平臺（Azure AD v2.0）應用程式，以取代該程式碼。
+>
 
 1. 在您的專案中新增[Microsoft. identity.](https://www.nuget.org/packages/Microsoft.Identity.Web) [web 和 node.js NuGet 套件。](https://www.nuget.org/packages/Microsoft.Identity.Web.UI) 移除 AspNetCore AzureAD. UI NuGet 套件（如果有的話）。
 
-2. 更新中的程式碼， `ConfigureServices` 使其使用 `AddSignIn` 和 `AddMicrosoftIdentityUI` 方法。
+2. 更新中的程式碼， `ConfigureServices` 使其使用 `AddMicrosoftWebAppAuthentication` 和 `AddMicrosoftIdentityUI` 方法。
 
    ```c#
    public class Startup
@@ -225,7 +234,7 @@ SESSION_TYPE = "filesystem"  # So the token cache will be stored in a server-sid
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
     {
-     services.AddSignIn(Configuration, "AzureAd");
+     services.AddMicrosoftWebAppAuthentication(Configuration, "AzureAd");
 
      services.AddRazorPages().AddMvcOptions(options =>
      {
@@ -250,18 +259,23 @@ SESSION_TYPE = "filesystem"  # So the token cache will be stored in a server-sid
    ```
 
 在上述程式碼中：
-- `AddSignIn`擴充方法是在**Microsoft. Identity. Web**中定義。 這樣
+- `AddMicrosoftWebAppAuthentication`擴充方法是在**Microsoft. Identity. Web**中定義。 這樣
   - 新增驗證服務。
   - 設定選項以讀取設定檔案（這裡的 "AzureAD" 區段）
   - 設定 OpenID Connect 選項，讓授權單位是 Microsoft 身分識別平臺端點。
   - 驗證權杖的簽發者。
   - 確保對應至名稱的宣告會從識別碼權杖中的宣告進行對應 `preferred_username` 。
 
-- 除了設定物件之外，您還可以在呼叫時指定 configuration 區段的名稱 `AddSignIn` 。 根據預設，它是 `AzureAd` 。
+- 除了設定物件之外，您還可以在呼叫時指定 configuration 區段的名稱 `AddMicrosoftWebAppAuthentication` 。 根據預設，它是 `AzureAd` 。
 
-- `AddSignIn`具有 advanced 案例的其他參數。 例如，追蹤 OpenID Connect 中介軟體事件可協助您針對 web 應用程式進行疑難排解（如果驗證無法使用）。 將選擇性參數設定 `subscribeToOpenIdConnectMiddlewareDiagnosticsEvents` 為， `true` 會向您示範當 ASP.NET Core 中介軟體從 HTTP 回應進行到中的使用者身分識別時，資訊的處理方式 `HttpContext.User` 。
+- `AddMicrosoftWebAppAuthentication`具有 advanced 案例的其他參數。 例如，追蹤 OpenID Connect 中介軟體事件可協助您針對 web 應用程式進行疑難排解（如果驗證無法使用）。 將選擇性參數設定 `subscribeToOpenIdConnectMiddlewareDiagnosticsEvents` 為， `true` 會向您示範當 ASP.NET Core 中介軟體從 HTTP 回應進行到中的使用者身分識別時，資訊的處理方式 `HttpContext.User` 。
 
-- `AddMicrosoftIdentityUI`擴充方法會定義在**Microsoft. Identity. Web UI**中。 它會提供預設控制器來處理登出。
+- `AddMicrosoftIdentityUI`擴充方法會定義在**Microsoft. Identity. Web UI**中。 它會提供預設控制器來處理登入和登出。
+
+您可以在中找到更多關於如何讓您建立 web 應用程式的詳細資料。<https://aka.ms/ms-id-web/webapp>
+
+> [!WARNING]
+> 目前，使用 Azure AD 做為和外部登入提供者時，Microsoft Identity. Web 不支援**個別使用者帳戶**的案例（在應用程式中儲存使用者帳戶）。 如需詳細資訊，請參閱： [AzureAD/microsoft-身分識別-web # 133](https://github.com/AzureAD/microsoft-identity-web/issues/133)
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
@@ -324,7 +338,7 @@ Session(app)
 
 ---
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 在下一篇文章中，您將瞭解如何觸發登入和登出。
 

@@ -9,14 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 79f8eb9e804502a7c0e61c18e4998fa05db10278
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e0701cc5a9bb14800a48e2281dba1eb6ea0cf72
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80885135"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87026453"
 ---
 # <a name="a-web-api-that-calls-web-apis-acquire-a-token-for-the-app"></a>呼叫 web Api 的 Web API：取得應用程式的權杖
 
@@ -26,46 +27,38 @@ ms.locfileid: "80885135"
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-以下是在 API 控制器的動作中呼叫的程式碼範例。 它會呼叫名為*todolist*的下游 API。
+以下是使用在 API 控制器的動作中呼叫的 Microsoft 程式碼範例。 它會呼叫名為*todolist*的下游 API。 若要取得權杖以呼叫下游 API，您可以在控制器的函式中，透過相依性 `ITokenAcquisition` 插入來插入服務（如果您使用 Blazor，則會使用您的頁面處理常式），並將它用於控制器動作中，取得使用者的權杖（ `GetAccessTokenForUserAsync` ），或在背景工作案例的情況下，為應用程式本身（ `GetAccessTokenForAppAsync` ）。
 
 ```csharp
-private async Task GetTodoList(bool isAppStarting)
+[Authorize]
+public class MyApiController : Controller
 {
- ...
- //
- // Get an access token to call the To Do service.
- //
- AuthenticationResult result = null;
- try
- {
-  app = BuildConfidentialClient(HttpContext, HttpContext.User);
-  result = await app.AcquireTokenSilent(Scopes, account)
-                     .ExecuteAsync()
-                     .ConfigureAwait(false);
- }
-...
+    /// <summary>
+    /// The web API will accept only tokens 1) for users, 2) that have the `access_as_user` scope for
+    /// this API.
+    /// </summary>
+    static readonly string[] scopeRequiredByApi = new string[] { "access_as_user" };
+
+     static readonly string[] scopesToAccessDownstreamApi = new string[] { "api://MyTodolistService/access_as_user" };
+
+    private readonly ITokenAcquisition _tokenAcquisition;
+
+    public MyApiController(ITokenAcquisition tokenAcquisition)
+    {
+        _tokenAcquisition = tokenAcquisition;
+    }
+
+    public IActionResult Index()
+    {
+        HttpContext.VerifyUserHasAnyAcceptedScope(scopeRequiredByApi);
+
+        string accessToken = _tokenAcquisition.GetAccessTokenForUserAsync(scopesToAccessDownstreamApi);
+        return await callTodoListService(accessToken);
+    }
 }
 ```
 
-`BuildConfidentialClient()`類似于[呼叫 Web api 的 Web API 案例：應用程式](scenario-web-api-call-api-app-configuration.md)設定。 `BuildConfidentialClient()``IConfidentialClientApplication`以僅包含一個帳戶資訊的快取具現化。 此帳戶是由方法提供 `GetAccountIdentifier` 。
-
-`GetAccountIdentifier`方法會使用與使用者身分識別相關聯的宣告，其 Web API 收到 JSON Web Token （JWT）：
-
-```csharp
-public static string GetMsalAccountId(this ClaimsPrincipal claimsPrincipal)
-{
- string userObjectId = GetObjectId(claimsPrincipal);
- string tenantId = GetTenantId(claimsPrincipal);
-
- if (    !string.IsNullOrWhiteSpace(userObjectId)
-      && !string.IsNullOrWhiteSpace(tenantId))
- {
-  return $"{userObjectId}.{tenantId}";
- }
-
- return null;
-}
-```
+如需方法的詳細資訊 `callTodoListService` ，請參閱[呼叫 web api 的 Web API：呼叫 API](scenario-web-api-call-api-call-api.md)。
 
 # <a name="java"></a>[Java](#tab/java)
 以下是在 API 控制器的動作中呼叫的程式碼範例。 它會呼叫下游 API Microsoft Graph。
@@ -94,7 +87,7 @@ Python Web API 必須使用一些中介軟體來驗證從用戶端收到的持�
 
 ---
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 > [!div class="nextstepaction"]
 > [呼叫 web Api 的 Web API：呼叫 API](scenario-web-api-call-api-call-api.md)

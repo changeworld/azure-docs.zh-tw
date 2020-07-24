@@ -15,11 +15,12 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: daberry
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 78db1ba0eaff0dce83ed13e9f20c3c5a5b96bf9c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2b2f21cab4740013eb2de1d69f558c95461c493e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83120958"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028391"
 ---
 # <a name="troubleshoot-deployment-issues-when-creating-a-new-windows-vm-in-azure"></a>針對在 Azure 中建立新 Windows VM 時的部署問題進行疑難排解
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
@@ -36,7 +37,7 @@ ms.locfileid: "83120958"
 
 [檢視部署作業](../../azure-resource-manager/templates/deployment-history.md)
 
-[檢視活動記錄以管理 Azure 資源](../../resource-group-audit.md)
+[檢視活動記錄以管理 Azure 資源](../../azure-resource-manager/management/view-activity-logs.md)
 
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-issue1](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-issue1-include.md)]
 
@@ -52,7 +53,7 @@ ms.locfileid: "83120958"
 
 **解決方案**
 
-若要解決這兩個錯誤，請使用 [Add-AzVhd ](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd) \(英文\) 搭配與 OS 相同的設定 (一般化/特殊化)，來上傳原始的 VHD (適用於內部部署)。 若要以一般化形式上傳，請務必先執行 sysprep。
+若要解決這兩個錯誤，請使用 [Add-AzVhd ](/powershell/module/az.compute/add-azvhd) \(英文\) 搭配與 OS 相同的設定 (一般化/特殊化)，來上傳原始的 VHD (適用於內部部署)。 若要以一般化形式上傳，請務必先執行 sysprep。
 
 **擷取錯誤：**
 
@@ -87,7 +88,5 @@ ms.locfileid: "83120958"
   * 在不同的可用性設定組 (位於相同區域) 中建立新的 VM。
   * 將新的 VM 加入相同的虛擬網路。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 如果您在啟動已停止的 Windows VM，或重新調整 Azure 中現有 Windows VM 的大小時遇到問題，請參閱 [Troubleshoot Resource Manager deployment issues with restarting or resizing an existing Windows Virtual Machine in Azure (針對在 Azure 中重新啟動或調整現有 Windows 虛擬機器的 Resource Manager 部署問題進行疑難排解)](restart-resize-error-troubleshooting.md)。
-
-

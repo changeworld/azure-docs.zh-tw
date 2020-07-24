@@ -14,15 +14,16 @@ ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d0d83d3b981968949d558cb7ee5672094b00555
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eb464f758aca33e0b6547f69e2a9cc842582ea3f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84727325"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87025212"
 ---
 # <a name="powershell-and-graph-examples-for-group-based-licensing-in-azure-ad"></a>Azure AD 中以群組為基礎之授權的 PowerShell 和圖形範例
 
-以群組為基礎之授權的完整功能可透過[Azure 入口網站](https://portal.azure.com)取得，而目前的 PowerShell 和 Microsoft Graph 支援僅限於唯讀作業。 不過，還是有一些工作可以使用現有的 [MSOnline PowerShell Cmdlet](https://docs.microsoft.com/powershell/msonline/v1/azureactivedirectory) 和 Microsoft Graph 來執行。 本文件會提供可行功能的範例。
+以群組為基礎之授權的完整功能可透過[Azure 入口網站](https://portal.azure.com)取得，而目前的 PowerShell 和 Microsoft Graph 支援僅限於唯讀作業。 不過，還是有一些工作可以使用現有的 [MSOnline PowerShell Cmdlet](/powershell/module/msonline) 和 Microsoft Graph 來執行。 本文件會提供可行功能的範例。
 
 > [!NOTE]
 > 開始執行 Cmdlet 之前，請先確定您已先連線到您的組織，方法是執行 `Connect-MsolService`   Cmdlet。
@@ -618,7 +619,7 @@ aadbe4da-c4b5-4d84-800a-9400f31d7371 User has no direct license to remove. Skipp
 > [!NOTE]
 > 在 `$skuId` 執行上述腳本之前，請先針對您的測試環境更新變數的值，並將其設為 `$groupId`   目標以移除直接授權。 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 若要深入了解透過群組管理授權的功能集，請參閱下列文章：
 

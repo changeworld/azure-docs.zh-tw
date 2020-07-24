@@ -9,11 +9,12 @@ ms.subservice: availability
 ms.date: 08/08/2018
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: daa469bef999f33feb44983e3b5a7073b4df655e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e1c91bf9138e37c6de381ab34ab80413d3040981
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83197361"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029309"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>建立使用可用性區域的虛擬機器擴展集
 
@@ -91,7 +92,7 @@ az vmss create \
 
 ### <a name="zone-redundant-scale-set"></a>區域備援擴展集
 
-若要建立區域備援擴展集，請使用標準** SKU 公用 IP 位址和負載平衡器。 為了增強備援能力，標準** SKU 會建立區域備援網路資源。 如需詳細資訊，請參閱 [Azure Load Balancer Standard 概觀](../load-balancer/load-balancer-standard-overview.md)和[標準 Load Balancer 和可用性區域](../load-balancer/load-balancer-standard-availability-zones.md)。
+若要建立區域備援擴展集，請使用標準** SKU 公用 IP 位址和負載平衡器。 為了增強備援能力，標準** SKU 會建立區域備援網路資源。 如需詳細資訊，請參閱 [Azure Load Balancer Standard 概觀](../load-balancer/load-balancer-overview.md)和[標準 Load Balancer 和可用性區域](../load-balancer/load-balancer-standard-availability-zones.md)。
 
 若要建立區域備援擴展集，請使用 `--zones` 參數來指定多個區域。 下列範例會跨區域 1、2、3** 建立名為 myScaleSet** 的區域備援擴展集：
 
@@ -208,10 +209,10 @@ New-AzVmss `
 }
 ```
 
-如果您建立的是公用 IP 位址或負載平衡器，請指定「"sku": { "name": "Standard" }"」** 屬性，以建立區域備援網路資源。 您還必須建立網路安全性群組和規則，以便允許所有流量。 如需詳細資訊，請參閱 [Azure Load Balancer Standard 概觀](../load-balancer/load-balancer-standard-overview.md)和[標準 Load Balancer 和可用性區域](../load-balancer/load-balancer-standard-availability-zones.md)。
+如果您建立的是公用 IP 位址或負載平衡器，請指定「"sku": { "name": "Standard" }"」** 屬性，以建立區域備援網路資源。 您還必須建立網路安全性群組和規則，以便允許所有流量。 如需詳細資訊，請參閱 [Azure Load Balancer Standard 概觀](../load-balancer/load-balancer-overview.md)和[標準 Load Balancer 和可用性區域](../load-balancer/load-balancer-standard-availability-zones.md)。
 
 如需區域備援擴展集和網路資源的完整範例，請參閱[這個 Resource Manager 範本範例](https://github.com/Azure/vm-scale-sets/blob/master/preview/zones/multizone.json)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 現在您已在可用性區域中建立擴展集，接下來您可以了解如何[在虛擬機器擴展集上部署應用程式](tutorial-install-apps-cli.md)或[搭配虛擬機器擴展集使用自動調整](tutorial-autoscale-cli.md)。

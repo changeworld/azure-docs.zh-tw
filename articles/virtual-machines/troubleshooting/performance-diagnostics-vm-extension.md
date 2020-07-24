@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 763e948f58dfc76c3aa7ba67f461438fc752c689
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 62a30fada32a23546323dae34f875ab9c7da228c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135282"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028544"
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>適用於 Windows 的 Azure 效能診斷 VM 擴充功能
 
@@ -27,7 +27,7 @@ Azure 效能診斷 VM 擴充功能可協助從 Windows VM 收集效能診斷資�
 > [!NOTE]
 > 如果您想要從 Azure 入口網站在您的 VM 上針對非傳統 VM 執行診斷，建議使用新體驗。 如需詳細資訊，請參閱 [Azure 虛擬機器的效能診斷](performance-diagnostics.md) 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 此擴充功能可安裝於 Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2 及 Windows Server 2016。 它也可以安裝於 Windows 8.1 和 Windows 10。
 
@@ -233,7 +233,7 @@ PerfInsights 工具會根據所選取的案例，收集各種記錄、組態和�
 
 ## <a name="view-and-share-the-results"></a>檢視並共用結果
 
-在上傳到安裝期間指定的儲存體帳戶及使用[共用存取簽章 (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) 共用 30 天的 zip 檔案中，可找到延伸模組的輸出。 這個 zip 檔案包含診斷記錄及具有結果和建議的報告。 輸出 zip 檔案的 SAS 連結可以在名為*zipfilename*的文字檔中找到，_saslink.txt 在**C:\Packages\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics \\ \<version> **資料夾底下。 任何具有此連結的人員都能夠下載該 zip 檔案。
+在上傳到安裝期間指定的儲存體帳戶及使用[共用存取簽章 (SAS)](../../storage/common/storage-sas-overview.md) 共用 30 天的 zip 檔案中，可找到延伸模組的輸出。 這個 zip 檔案包含診斷記錄及具有結果和建議的報告。 輸出 zip 檔案的 SAS 連結可以在名為*zipfilename*的文字檔中找到，_saslink.txt 在**C:\Packages\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics \\ \<version> **資料夾底下。 任何具有此連結的人員都能夠下載該 zip 檔案。
 
 若要協助支援工程師處理支援票證，Microsoft 可能會使用此 SAS 連結來下載診斷資料。
 

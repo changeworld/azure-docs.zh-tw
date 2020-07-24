@@ -3,15 +3,16 @@ title: 監視 Azure Vm 上的效能-Azure 應用程式深入資訊
 description: Azure VM 和 Azure 虛擬機器擴展集的應用程式效能監視。 圖表載入和回應時間、相依性資訊，以及設定效能警示。
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: d75e14dccef565f0029d06583e74d5693726dd99
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8b025c5196d65234a632bd1f939bc1116b72dce0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77661323"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87024627"
 ---
 # <a name="deploy-the-azure-monitor-application-insights-agent-on-azure-virtual-machines-and-azure-virtual-machine-scale-sets"></a>在 Azure 虛擬機器和 Azure 虛擬機器擴展集上部署 Azure 監視器 Application Insights 代理程式
 
-現在，在[azure 虛擬機器](https://azure.microsoft.com/services/virtual-machines/)和[azure 虛擬機器擴展集](https://docs.microsoft.com/azure/virtual-machine-scale-sets/)上執行的 .net web 應用程式上啟用監視比以往更容易。 取得使用 Application Insights 而不修改程式碼的所有優點。
+現在，在[azure 虛擬機器](https://azure.microsoft.com/services/virtual-machines/)和[azure 虛擬機器擴展集](../../virtual-machine-scale-sets/index.yml)上執行的 .net web 應用程式上啟用監視比以往更容易。 取得使用 Application Insights 而不修改程式碼的所有優點。
 
 本文會逐步引導您使用 Application Insights 代理程式來啟用 Application Insights 監視，並提供將大規模部署程式自動化的初步指引。
 
@@ -29,15 +30,15 @@ ms.locfileid: "77661323"
 
     * 針對 Azure 虛擬機器和 Azure 虛擬機器擴展集，我們建議您至少啟用此層級的監視。 之後，根據您的特定案例，您可以評估是否需要手動檢測。
 
-    * Application Insights 代理程式會自動收集與 .NET SDK 相同的預設相依性信號。 若要深入瞭解，請參閱相依性[自動收集](https://docs.microsoft.com/azure/azure-monitor/app/auto-collect-dependencies#net)。
+    * Application Insights 代理程式會自動收集與 .NET SDK 相同的預設相依性信號。 若要深入瞭解，請參閱相依性[自動收集](./auto-collect-dependencies.md#net)。
         > [!NOTE]
         > 目前僅支援 .Net IIS 裝載的應用程式。 使用 SDK 來檢測裝載于 Azure 虛擬機器和虛擬機器擴展集上的 ASP.NET Core、JAVA 和 Node.js 應用程式。
 
 * 以**程式碼為基礎的**via SDK
 
-    * 這種方法更容易自訂，但需要[在 APPLICATION INSIGHTS SDK NuGet 套件上新增](https://docs.microsoft.com/azure/azure-monitor/app/asp-net)相依性。 這種方法也表示您必須自行管理最新版本套件的更新。
+    * 這種方法更容易自訂，但需要[在 APPLICATION INSIGHTS SDK NuGet 套件上新增](./asp-net.md)相依性。 這種方法也表示您必須自行管理最新版本套件的更新。
 
-    * 如果您需要進行自訂 API 呼叫來追蹤預設不是以代理程式為基礎所捕捉的事件/相依性，則必須使用此方法。 若要深入瞭解，請參閱[自訂事件和計量的 API 一文](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics)。
+    * 如果您需要進行自訂 API 呼叫來追蹤預設不是以代理程式為基礎所捕捉的事件/相依性，則必須使用此方法。 若要深入瞭解，請參閱[自訂事件和計量的 API 一文](./api-custom-events-metrics.md)。
 
 > [!NOTE]
 > 如果偵測到以代理程式為基礎的監視和以手動 SDK 為基礎的檢測，則只會接受手動檢測設定。 這是為了防止傳送重複的資料。 若要深入瞭解，請參閱下面的[疑難排解一節](#troubleshooting)。
@@ -45,10 +46,10 @@ ms.locfileid: "77661323"
 ## <a name="manage-application-insights-agent-for-net-applications-on-azure-virtual-machines-using-powershell"></a>使用 PowerShell 管理 Azure 虛擬機器上的 .NET 應用程式 Application Insights 代理程式
 
 > [!NOTE]
-> 在安裝 Application Insights 代理程式之前，您需要連接字串。 [建立新的 Application Insights 資源](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)，或從現有的 application Insights 資源複製連接字串。
+> 在安裝 Application Insights 代理程式之前，您需要連接字串。 [建立新的 Application Insights 資源](./create-new-resource.md)，或從現有的 application Insights 資源複製連接字串。
 
 > [!NOTE]
-> 不熟悉 powershell 嗎？ 請參閱開始使用[指南](https://docs.microsoft.com/powershell/azure/get-started-azureps?view=azps-2.5.0)。
+> 不熟悉 powershell 嗎？ 請參閱開始使用[指南](/powershell/azure/get-started-azureps?view=azps-2.5.0)。
 
 安裝或更新 Application Insights 代理程式做為 Azure 虛擬機器的擴充功能
 ```powershell
@@ -98,7 +99,7 @@ Get-AzResource -ResourceId "/subscriptions/<mySubscriptionId>/resourceGroups/<my
 # Location          : southcentralus
 # ResourceId        : /subscriptions/<mySubscriptionId>/resourceGroups/<myVmResourceGroup>/providers/Microsoft.Compute/virtualMachines/<myVmName>/extensions/ApplicationMonitoring
 ```
-您也可以在入口網站的 [ [Azure 虛擬機器](https://docs.microsoft.com/azure/virtual-machines/extensions/overview)] 分頁中，看到已安裝的延伸模組。
+您也可以在入口網站的 [ [Azure 虛擬機器](../../virtual-machines/extensions/overview.md)] 分頁中，看到已安裝的延伸模組。
 
 > [!NOTE]
 > 在與您用來部署 Application Insights 代理程式擴充功能的連接字串相關聯的 Application Insights 資源中，按一下即時計量資料流，以確認安裝。 如果您從多個虛擬機器傳送資料，請選取 [伺服器名稱] 下的 [目標 Azure 虛擬機器]。 最多可能需要一分鐘的時間，資料才會開始流動。
@@ -174,6 +175,6 @@ Get-AzResource -ResourceId /subscriptions/<mySubscriptionId>/resourceGroups/<myR
 C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.ApplicationMonitoringWindows\<version>\
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 * 瞭解如何將[應用程式部署至 Azure 虛擬機器擴展集](../../virtual-machine-scale-sets/virtual-machine-scale-sets-deploy-app.md)。
 * [設定可用性 web 測試](monitor-web-app-availability.md)，以在您的端點關閉時收到警示。

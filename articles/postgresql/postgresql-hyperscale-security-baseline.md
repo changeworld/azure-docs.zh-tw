@@ -1,20 +1,20 @@
 ---
-title: 適用于 Azure 安全性基準測試的適用於 PostgreSQL 的 Azure 資料庫超大規模資料庫安全性基準
+title: 適用于適用於 PostgreSQL 的 Azure 資料庫的 Azure 安全性基準-超大規模資料庫
 description: 適用於 PostgreSQL 的 Azure 資料庫超大規模資料庫的安全性基準提供程式指引和資源，可用於執行 Azure 安全性基準測試中所指定的安全性建議。
 author: msmbaldwin
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 07/13/2020
+ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: ca08ac30c5d8e925197a0df1d327bf9a0923b046
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: dd6d3ef6f610dcbdc511297e459cc5856bebe033
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531224"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87030040"
 ---
-# <a name="azure-database-for-postgresql---hyperscale-security-baseline-for-azure-security-benchmark"></a>適用于 Azure 安全性基準測試的適用於 PostgreSQL 的 Azure 資料庫超大規模資料庫安全性基準
+# <a name="azure-security-baseline-for-azure-database-for-postgresql---hyperscale"></a>適用于適用於 PostgreSQL 的 Azure 資料庫的 Azure 安全性基準-超大規模資料庫
 
 適用于適用於 PostgreSQL 的 Azure 資料庫超大規模資料庫的 Azure 安全性基準包含可協助您改善部署之安全性狀態的建議。
 

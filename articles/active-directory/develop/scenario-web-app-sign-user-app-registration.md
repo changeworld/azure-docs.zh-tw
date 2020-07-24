@@ -8,14 +8,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 10/30/2019
+ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 7d2eb5356b1abc54508fd6bf8d35fd9fc39d02ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1adff446e6d41e30db109d0871811dc651f1f4f5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80881574"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87026236"
 ---
 # <a name="web-app-that-signs-in-users-app-registration"></a>登入使用者的 Web 應用程式：應用程式註冊
 
@@ -40,9 +41,9 @@ ms.locfileid: "80881574"
 > 要使用的入口網站會根據您的應用程式是在 Microsoft Azure 公用雲端或全國或主權雲端執行而有所不同。 如需詳細資訊，請參閱[國家/地區](./authentication-national-cloud.md#app-registration-endpoints)雲端。
 
 
-1. 使用公司或學校帳戶或個人 Microsoft 帳戶登入 [Azure 入口網站](https://portal.azure.com)。 或者，登入國家雲端的選擇 Azure 入口網站。
-1. 如果您的帳戶可讓您存取多個租使用者，請在右上角選取您的帳戶。 然後，將您的入口網站會話設定為所需的 Azure Active Directory （Azure AD）租使用者。
-1. 在左窗格中選取 [ **Azure Active Directory** ] 服務，然後選取 [**應用程式註冊**  >  **新增註冊**]。
+1. 使用公司或學校帳戶或個人 Microsoft 帳戶登入 [Azure 入口網站](https://portal.azure.com)。 或者，登入國家雲端的[選擇 Azure 入口網站](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud#app-registration-endpoints)。
+2. 如果您的帳戶可讓您存取多個租使用者，請在右上角選取您的帳戶。 然後，將您的入口網站會話設定為所需的 Azure Active Directory （Azure AD）租使用者。
+3. 在左窗格中選取 [ **Azure Active Directory** ] 服務，然後選取 [**應用程式註冊**  >  **新增註冊**]。
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
@@ -50,15 +51,17 @@ ms.locfileid: "80881574"
    1. 為您的應用程式選擇支援的帳戶類型。 （請參閱[支援的帳戶類型](./v2-supported-account-types.md)。）
    1. 在 [名稱] 區段中，輸入將對應用程式使用者顯示、且有意義的應用程式名稱。 例如，輸入**AspNetCore-WebApp**。
    1. 針對 [重新**導向 URI**]，新增應用程式類型和 URI 目的地，以在成功驗證後接受傳回的權杖回應。 例如，輸入 **https://localhost:44321** 。 然後選取 [**註冊**]。
-1. 選取 [驗證]  功能表，然後新增下列資訊：
+   ![registration](media/scenario-webapp/scenario-webapp-app-registration-1.png)
+1. 選取 [驗證] 功能表，然後新增下列資訊：
    1. 針對 [**回復 URL**]，新增類型為 [ **https://localhost:44321/signin-oidc** **Web**]。
    1. 在 [進階設定] 區段中，將 [登出 URL] 設定為 **https://localhost:44321/signout-oidc** 。
-   1. 在 [隱含授與]**** 底下，選取 [識別碼權杖]****。
+   1. 在 [隱含授與] 底下，選取 [識別碼權杖]。
    1. 選取 [儲存]。
-
+  ![registration](media/scenario-webapp/scenario-webapp-app-registration-2.png)
+ 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
-1. 當 [註冊應用程式]  頁面出現時，輸入您應用程式的註冊資訊：
+1. 當 [註冊應用程式] 頁面出現時，輸入您應用程式的註冊資訊：
    1. 為您的應用程式選擇支援的帳戶類型。 （請參閱[支援的帳戶類型](./v2-supported-account-types.md)。）
    1. 在 [名稱] 區段中，輸入將對應用程式使用者顯示、且有意義的應用程式名稱。 例如，輸入**MailApp-openidconnect-v2**。
    1. 在 [重新**導向 URI （選擇性）** ] 區段中，選取下拉式方塊中的 [ **Web** ]，然後輸入下列重新導向 URI： **https://localhost:44326/** 。
@@ -93,7 +96,7 @@ ms.locfileid: "80881574"
 
 # <a name="python"></a>[Python](#tab/python)
 
-1. 當 [註冊應用程式]  頁面出現時，輸入您應用程式的註冊資訊：
+1. 當 [註冊應用程式] 頁面出現時，輸入您應用程式的註冊資訊：
    1. 在 [名稱] 區段中，輸入將對應用程式使用者顯示、且有意義的應用程式名稱。 例如，輸入**python-webapp**。
    1. 將**支援的帳戶類型**變更為**任何組織目錄中的帳戶和個人 Microsoft 帳戶（例如 Skype、Xbox、Outlook.com）**。
    1. 在 [重新**導向 URI （選擇性）** ] 區段中，選取下拉式方塊中的 [ **Web** ]，然後輸入下列重新導向 URI： **http://localhost:5000/getAToken** 。
@@ -116,9 +119,9 @@ ms.locfileid: "80881574"
 > - MyOrg （僅限此組織目錄中的帳戶）
 > - AnyOrg （任何組織目錄中的帳戶）
 >
-> 您可以建立應用程式，以使用其個人 Microsoft 帳戶（例如 Skype、Xbox 或 Outlook.com）來登入使用者。 首先，建立多租使用者應用程式。 支援的帳戶類型是任何組織目錄中的帳戶。 然後， `signInAudience` 從 Azure 入口網站變更應用程式資訊清單中的屬性。 如需詳細資訊，請參閱 ASP.NET Core 教學課程中的[步驟 1.3](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-3-AnyOrgOrPersonal#step-1-register-the-sample-with-your-azure-ad-tenant) 。 您可以將此步驟一般化為任何語言的 web 應用程式。
+> 您可以建立應用程式，以使用其個人 Microsoft 帳戶（例如 Skype、Xbox 或 Outlook.com）來登入使用者。 首先，建立多租使用者應用程式。 支援的帳戶類型是任何組織目錄中的帳戶。 然後， [`accessTokenAcceptedVersion`](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest#accesstokenacceptedversion-attribute) **2** [`signInAudience`](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest#signinaudience-attribute) `AzureADandPersonalMicrosoftAccount` 在 Azure 入口網站的[應用程式資訊清單](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)中，將屬性變更為2，並將屬性變更為。 如需詳細資訊，請參閱 ASP.NET Core 教學課程中的[步驟 1.3](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-3-AnyOrgOrPersonal#step-1-register-the-sample-with-your-azure-ad-tenant) 。 您可以將此步驟一般化為任何語言的 web 應用程式。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 > [!div class="nextstepaction"]
 > [應用程式的程式碼設定](scenario-web-app-sign-user-app-configuration.md)

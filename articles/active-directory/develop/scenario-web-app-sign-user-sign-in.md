@@ -8,14 +8,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 10/30/2019
+ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, tracking-python
-ms.openlocfilehash: 41124e7237c2c16034fe8cce1fa89fa0132d09b7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b7393b0f3d3004c28e0d6befe2fdbbeda7f9a592
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84558928"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87026147"
 ---
 # <a name="web-app-that-signs-in-users-sign-in-and-sign-out"></a>登入使用者的 Web 應用程式：登入和登出
 
@@ -32,7 +33,7 @@ ms.locfileid: "84558928"
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-在 ASP.NET Core 中，針對 Microsoft 身分識別平臺應用程式，[登**入**] 按鈕會公開于 `Views\Shared\_LoginPartial.cshtml` （適用于 MVC 應用程式）或 `Pages\Shared\_LoginPartial.cshtm` （適用于 Razor 應用程式）。 只有在使用者未經過驗證時才會顯示。 也就是說，當使用者尚未登入或登出時，就會顯示它。相反地，當使用者已登入時，就會顯示 [**登出**] 按鈕。 請注意，帳戶控制器定義于名為**MicrosoftIdentity**的區域中的**Microsoft. IDENTITY. Web UI** NuGet 套件中。
+在 ASP.NET Core 中，針對 Microsoft 身分識別平臺應用程式，[登**入**] 按鈕會公開于 `Views\Shared\_LoginPartial.cshtml` （適用于 MVC 應用程式）或 `Pages\Shared\_LoginPartial.cshtm` （適用于 Razor 應用程式）。 只有在未驗證使用者時才會顯示。 也就是說，當使用者尚未登入或登出時，就會顯示它。相反地，當使用者已登入時，就會顯示 [**登出**] 按鈕。 請注意，帳戶控制器定義于名為**MicrosoftIdentity**的區域中的**Microsoft. IDENTITY. Web UI** NuGet 套件中。
 
 ```html
 <ul class="navbar-nav">
@@ -334,7 +335,7 @@ else
 - 呼叫 `Signout()` ，可讓 OpenID connect 中介軟體與 Microsoft 身分識別平臺 `logout` 端點聯繫。 然後，端點會：
 
   - 從瀏覽器清除會話 cookie。
-  - 回撥登出 URL。 [登出 URL] 預設會顯示 [已登出] 視圖頁面[SignedOut.html](https://github.com/aspnet/AspNetCore/blob/master/src/Azure/AzureAD/Authentication.AzureAD.UI/src/Areas/AzureAD/Pages/Account/SignedOut.cshtml)。 此頁面也會提供做為 MIcrosoft. Identity. Web 的一部分。
+  - 回撥登出 URL。 根據預設，[登出 URL] 會顯示 [已登出] 視圖頁面[SignedOut.cshtml.cs](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.UI/Areas/MicrosoftIdentity/Pages/Account/SignedOut.cshtml.cs)。 此頁面也會提供做為 MIcrosoft. Identity. Web 的一部分。
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 

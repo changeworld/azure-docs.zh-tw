@@ -6,11 +6,13 @@ ms.service: analysis-services
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: chlound
-ms.openlocfilehash: 78bc629598c0635b7760285d0507b7a85a4ab551
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: references_regions
+ms.openlocfilehash: 9d8c3c7668da939227b3e8aaef002b4292c7d962
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79126970"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87025314"
 ---
 # <a name="refresh-with-logic-apps"></a>使用 Logic Apps 重新整理
 
@@ -27,7 +29,7 @@ ms.locfileid: "79126970"
 > [!IMPORTANT]
 > 下列範例假設 Azure Analysis Services 防火牆已停用。 如果已啟用防火牆，則必須在 Azure Analysis Services 防火牆中將要求啟動器的公用 IP 位址列入允許清單。 若要深入瞭解每個區域 Azure Logic Apps IP 範圍，請參閱[Azure Logic Apps 的限制和設定資訊](../logic-apps/logic-apps-limits-and-config.md#configuration)。
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>先決條件
 
 #### <a name="create-a-service-principal-spn"></a>建立服務主體（SPN）
 
@@ -65,7 +67,7 @@ ms.locfileid: "79126970"
 |---------|---------|
 |**方法**     |POST         |
 |**URI**     | HTTPs://*您的伺服器區域*/servers/*.aas 伺服器名稱*/models/*您的資料庫名稱*對/refreshes <br /> <br /> 例如： HTTPs： \/ /westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refreshes|
-|**標頭**     |   內容類型、應用程式/json <br /> <br />  ![headers](./media/analysis-services-async-refresh-logic-app/6.png)    |
+|**標頭**     |   內容類型、應用程式/json <br /> <br />  ![標題](./media/analysis-services-async-refresh-logic-app/6.png)    |
 |**本文**     |   若要深入瞭解如何形成要求主體，請參閱[使用 REST API 張貼對/refreshes 的非同步](analysis-services-async-refresh.md#post-refreshes)重新整理。 |
 |**驗證**     |Active Directory OAuth         |
 |**租用戶**     |填入您的 Azure Active Directory TenantId         |
@@ -112,7 +114,7 @@ ms.locfileid: "79126970"
 
 儲存邏輯應用程式。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 [範例](analysis-services-samples.md)  
 [REST API](https://docs.microsoft.com/rest/api/analysisservices/servers)

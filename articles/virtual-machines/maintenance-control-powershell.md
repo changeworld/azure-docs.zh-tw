@@ -7,11 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: cynthn
-ms.openlocfilehash: e0bb3586d637c9399db057b7cd3225bf8cd36e2f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3204de6ea497666108ce63b1a3cfa77c6faa6b59
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84675837"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028646"
 ---
 # <a name="control-updates-with-maintenance-control-and-azure-powershell"></a>控制維護控制和 Azure PowerShell 的更新
 
@@ -46,7 +47,7 @@ New-AzResourceGroup `
    -Name myMaintenanceRG
 ```
 
-使用[AzMaintenanceConfiguration](https://docs.microsoft.com/powershell/module/az.maintenance/new-azmaintenanceconfiguration)來建立維護設定。 這個範例會建立名為*myconfig.xml*的維護設定，範圍限定于主機。 
+使用[AzMaintenanceConfiguration](/powershell/module/az.maintenance/new-azmaintenanceconfiguration)來建立維護設定。 這個範例會建立名為*myconfig.xml*的維護設定，範圍限定于主機。 
 
 ```azurepowershell-interactive
 $config = New-AzMaintenanceConfiguration `
@@ -60,7 +61,7 @@ $config = New-AzMaintenanceConfiguration `
 
 如果您嘗試使用相同的名稱建立設定，但在不同的位置，您會收到錯誤。 設定名稱在您的訂用帳戶中必須是唯一的。
 
-您可以使用[AzMaintenanceConfiguration](https://docs.microsoft.com/powershell/module/az.maintenance/get-azmaintenanceconfiguration)來查詢可用的維護設定。
+您可以使用[AzMaintenanceConfiguration](/powershell/module/az.maintenance/get-azmaintenanceconfiguration)來查詢可用的維護設定。
 
 ```azurepowershell-interactive
 Get-AzMaintenanceConfiguration | Format-Table -Property Name,Id
@@ -68,7 +69,7 @@ Get-AzMaintenanceConfiguration | Format-Table -Property Name,Id
 
 ## <a name="assign-the-configuration"></a>指派設定
 
-使用[AzConfigurationAssignment](https://docs.microsoft.com/powershell/module/az.maintenance/new-azconfigurationassignment)將設定指派給隔離的 VM 或 Azure 專用主機。
+使用[AzConfigurationAssignment](/powershell/module/az.maintenance/new-azconfigurationassignment)將設定指派給隔離的 VM 或 Azure 專用主機。
 
 ### <a name="isolated-vm"></a>隔離的 VM
 
@@ -105,7 +106,7 @@ New-AzConfigurationAssignment `
 
 ## <a name="check-for-pending-updates"></a>檢查暫止的更新
 
-使用[AzMaintenanceUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/get-azmaintenanceupdate)查看是否有擱置中的更新。 `-subscription`如果 VM 的 Azure 訂用帳戶與您登入的帳戶不同，請使用來指定它。
+使用[AzMaintenanceUpdate](/powershell/module/az.maintenance/get-azmaintenanceupdate)查看是否有擱置中的更新。 `-subscription`如果 VM 的 Azure 訂用帳戶與您登入的帳戶不同，請使用來指定它。
 
 如果沒有要顯示的更新，此命令將不會傳回任何內容。 否則，它會傳回 PSApplyUpdate 物件：
 
@@ -151,7 +152,7 @@ Get-AzMaintenanceUpdate `
 
 ## <a name="apply-updates"></a>套用更新
 
-使用[AzApplyUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/new-azapplyupdate)來套用擱置中的更新。
+使用[AzApplyUpdate](/powershell/module/az.maintenance/new-azapplyupdate)來套用擱置中的更新。
 
 ### <a name="isolated-vm"></a>隔離的 VM
 
@@ -182,7 +183,7 @@ New-AzApplyUpdate `
 ```
 
 ## <a name="check-update-status"></a>檢查更新狀態
-使用[AzApplyUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/get-azapplyupdate)來檢查更新的狀態。 下面顯示的命令會使用的參數來顯示最新更新的狀態 `default` `-ApplyUpdateName` 。 您可以替代更新的名稱（由[AzApplyUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/new-azapplyupdate)命令傳回）來取得特定更新的狀態。
+使用[AzApplyUpdate](/powershell/module/az.maintenance/get-azapplyupdate)來檢查更新的狀態。 下面顯示的命令會使用的參數來顯示最新更新的狀態 `default` `-ApplyUpdateName` 。 您可以替代更新的名稱（由[AzApplyUpdate](/powershell/module/az.maintenance/new-azapplyupdate)命令傳回）來取得特定更新的狀態。
 
 ```text
 Status         : Completed
@@ -226,7 +227,7 @@ Get-AzApplyUpdate `
 
 ## <a name="remove-a-maintenance-configuration"></a>移除維護設定
 
-使用[AzMaintenanceConfiguration](https://docs.microsoft.com/powershell/module/az.maintenance/remove-azmaintenanceconfiguration)刪除維護設定。
+使用[AzMaintenanceConfiguration](/powershell/module/az.maintenance/remove-azmaintenanceconfiguration)刪除維護設定。
 
 ```azurepowershell-interactive
 Remove-AzMaintenanceConfiguration `
@@ -234,5 +235,5 @@ Remove-AzMaintenanceConfiguration `
    -Name $config.Name
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 若要深入瞭解，請參閱[維護和更新](maintenance-and-updates.md)。

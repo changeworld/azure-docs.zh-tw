@@ -1,25 +1,25 @@
 ---
 title: 針對 Blob 儲存體的要求提供加密金鑰
 titleSuffix: Azure Storage
-description: 對 Azure Blob 儲存體提出要求的用戶端，可以選擇以每個要求為基礎（預覽）提供加密金鑰。 在要求中包含加密金鑰，可讓您更精確地控制 Blob 儲存體作業的加密設定。
+description: 對 Azure Blob 儲存體提出要求的用戶端，可以選擇以每個要求為基礎提供加密金鑰。 在要求中包含加密金鑰，可讓您更精確地控制 Blob 儲存體作業的加密設定。
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 03/12/2020
+ms.date: 07/20/2020
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 0e5a85bcc4ded3b4bf3fcbcaf095d7c8ef01c458
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fec3d760450fb5cc20deed14dac03f58f23c2b4b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84805308"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029734"
 ---
-# <a name="provide-an-encryption-key-on-a-request-to-blob-storage-preview"></a>在 Blob 儲存體的要求上提供加密金鑰（預覽）
+# <a name="provide-an-encryption-key-on-a-request-to-blob-storage"></a>針對 Blob 儲存體的要求提供加密金鑰
 
-對 Azure Blob 儲存體提出要求的用戶端，可以選擇以每個要求為基礎（預覽）提供加密金鑰。 在要求中包含加密金鑰，可讓您更精確地控制 Blob 儲存體作業的加密設定。 客戶提供的金鑰可以儲存在 Azure Key Vault 或另一個金鑰存放區中。
+對 Azure Blob 儲存體提出要求的用戶端，可以選擇以每個要求為基礎提供加密金鑰。 在要求中包含加密金鑰，可讓您更精確地控制 Blob 儲存體作業的加密設定。 客戶提供的金鑰可以儲存在 Azure Key Vault 或另一個金鑰存放區中。
 
 ## <a name="encrypting-read-and-write-operations"></a>加密讀取和寫入作業
 
@@ -39,7 +39,7 @@ Azure 儲存體不會儲存或管理用戶端與要求一起傳送的加密金�
 
 針對 REST 呼叫，用戶端可以使用下列標頭，安全地將要求的加密金鑰資訊傳遞至 Blob 儲存體：
 
-|要求標頭 | Description |
+|要求標頭 | 說明 |
 |---------------|-------------|
 |`x-ms-encryption-key` |寫入和讀取要求都需要。 Base64 編碼的 AES-256 加密金鑰值。 |
 |`x-ms-encryption-key-sha256`| 寫入和讀取要求都需要。 加密金鑰的 Base64 編碼 SHA256。 |
@@ -61,7 +61,7 @@ Azure 儲存體不會儲存或管理用戶端與要求一起傳送的加密金�
 - [設定 Blob 屬性](/rest/api/storageservices/set-blob-properties)
 - [設定 Blob 中繼資料](/rest/api/storageservices/set-blob-metadata)
 - [取得 Blob](/rest/api/storageservices/get-blob)
-- [取得 Blob 屬性](/rest/api/storageservices/get-blob-properties)
+- [Get Blob Properties](/rest/api/storageservices/get-blob-properties)
 - [取得 Blob 中繼資料](/rest/api/storageservices/get-blob-metadata)
 - [快照 Blob](/rest/api/storageservices/snapshot-blob)
 

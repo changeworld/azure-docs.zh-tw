@@ -11,11 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 292ba1d52b107acd164408767747e5a33cb0c67d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 94a4b2a44902dde798f760f970ccff2c1e8f15c5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85252690"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87025622"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>如何：管理 Azure AD 中的過時裝置
 
@@ -56,7 +57,7 @@ Azure AD 中若有過時裝置，可能會干擾您組織中裝置的一般生�
 
     ![活動時間戳記](./media/manage-stale-devices/01.png)
 
-- [Get-MsolDevice](/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) Cmdlet
+- [Get-azureaddevice](/powershell/module/azuread/Get-AzureADDevice) Cmdlet
 
     ![活動時間戳記](./media/manage-stale-devices/02.png)
 
@@ -88,7 +89,7 @@ Azure AD 中若有過時裝置，可能會干擾您組織中裝置的一般生�
 
 ### <a name="system-managed-devices"></a>由系統管理的裝置
 
-請勿刪除由系統管理的裝置。 這些通常是 Autopilot 之類的裝置。 一旦刪除，就無法重新布建這些裝置。 新的 `get-msoldevice` Cmdlet 會根據預設排除由系統管理的裝置。 
+請勿刪除由系統管理的裝置。 這些通常是 Autopilot 之類的裝置。 一旦刪除，就無法重新布建這些裝置。 新的 `Get-AzureADDevice` Cmdlet 會根據預設排除由系統管理的裝置。 
 
 ### <a name="hybrid-azure-ad-joined-devices"></a>混合式 Azure AD 已加入裝置
 
@@ -128,26 +129,25 @@ Azure AD 中若有過時裝置，可能會干擾您組織中裝置的一般生�
 
 典型的執行階段包含下列步驟：
 
-1. 使用 [Connect-MsolService](/powershell/module/msonline/connect-msolservice?view=azureadps-1.0) Cmdlet來連線到 Azure Active Directory
+1. 使用[AzureAD](/powershell/module/azuread/connect-azuread) Cmdlet 連接到 Azure Active Directory
 1. 取得裝置清單
-1. 使用 [Disable-MsolDevice](/powershell/module/msonline/disable-msoldevice?view=azureadps-1.0) Cmdlet 停用裝置。 
+1. 使用[get-azureaddevice](/powershell/module/azuread/Set-AzureADDevice)指令程式停用裝置（使用-AccountEnabled 選項停用）。 
 1. 須等到您選擇的寬限期 (無論多久) 結束，才能刪除裝置。
-1. 使用 [Remove-MsolDevice](/powershell/module/msonline/remove-msoldevice?view=azureadps-1.0) Cmdlet 移除裝置。
+1. 使用[get-azureaddevice](/powershell/module/azuread/Remove-AzureADDevice) Cmdlet 來移除裝置。
 
 ### <a name="get-the-list-of-devices"></a>取得裝置清單
 
 若要取得所有裝置，並將傳回的資料儲存在 CSV 檔案：
 
 ```PowerShell
-Get-MsolDevice -all | select-object -Property Enabled, DeviceId, DisplayName, DeviceTrustType, Approxi
-mateLastLogonTimestamp | export-csv devicelist-summary.csv
+Get-AzureADDevice -All:$true | select-object -Property Enabled, DeviceId, DisplayName, DeviceTrustType, ApproximateLastLogonTimestamp | export-csv devicelist-summary.csv
 ```
 
 如果您的目錄中有大量的裝置，請使用時間戳篩選器來縮小傳回的裝置數目。 若要取得時間戳記晚於特定日期的所有裝置，並將傳回的資料儲存在 CSV 檔案： 
 
 ```PowerShell
 $dt = [datetime]’2017/01/01’
-Get-MsolDevice -all -LogonTimeBefore $dt | select-object -Property Enabled, DeviceId, DisplayName, DeviceTrustType, ApproximateLastLogonTimestamp | export-csv devicelist-olderthan-Jan-1-2017-summary.csv
+Get-AzureADDevice | Where {$_.ApproximateLastLogonTimeStamp -le $dt} | select-object -Property Enabled, DeviceId, DisplayName, DeviceTrustType, ApproximateLastLogonTimestamp | export-csv devicelist-olderthan-Jan-1-2017-summary.csv
 ```
 
 ## <a name="what-you-should-know"></a>您應該知道的事情
@@ -179,6 +179,6 @@ Get-MsolDevice -all -LogonTimeBefore $dt | select-object -Property Enabled, Devi
 - **加入 Azure AD 的裝置** - 使用者不能使用裝置來登入。 
 - **行動裝置** - 使用者無法存取 Azure AD 資源，例如 Office 365。 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 若要取得在 Azure 入口網站中管理裝置的概觀，請參閱[使用 Azure 入口網站來管理裝置](device-management-azure-portal.md)

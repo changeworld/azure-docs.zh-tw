@@ -12,11 +12,12 @@ ms.workload: identity
 ms.date: 06/08/2020
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 15d2b029937c58d45a2c1148c568cd396cea336a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ec20a1bda8021e61f5147142a8e6bddd6cf5d166
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84634637"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027609"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>使用 Azure Active Directory 來建立具彈性的存取控制管理策略
 
@@ -220,7 +221,7 @@ EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions
 -   判斷 VPN 的主要驗證是否成功。
 
 一旦服務復原，而且您已準備好在您的使用者上強制執行 MFA，請啟用 NPS 擴充功能： 
--   重要：備份 HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Services\AuthSrv\Parameters 的登錄機碼 
+-   從備份匯入登錄機碼 HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Services\AuthSrv\Parameters 
 -   重新開機網路原則服務（IAS）服務，讓變更生效 
 -   判斷 VPN 的主要驗證和次要驗證是否成功。
 -   檢查 NPS 伺服器和 VPN 記錄檔，以判斷哪些使用者已在緊急時段登入。

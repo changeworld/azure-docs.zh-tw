@@ -6,11 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/25/2020
 ms.author: sngun
-ms.openlocfilehash: 4c9f02784507ee893b6396fef4ed34a87610166d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ae1d2743934c5ae8df9f2a1514bdda9b34262b9d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85414163"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023682"
 ---
 # <a name="how-to-audit-azure-cosmos-db-control-plane-operations"></a>如何 audit Azure Cosmos DB 控制平面作業
 
@@ -26,9 +27,9 @@ Azure Cosmos DB 中的控制平面是 RESTful 服務，可讓您對 Azure Cosmos
 
 ## <a name="disable-key-based-metadata-write-access"></a>停用以金鑰為基礎的中繼資料寫入存取
 
-在 Azure Cosmos DB 中，您必須先停用帳戶的以金鑰為基礎的中繼資料寫入存取權，才能在中審核控制平面作業。 停用金鑰型中繼資料寫入權限時，會防止透過帳戶金鑰連接到 Azure Cosmos 帳戶的用戶端存取帳戶。 您可以藉由將屬性設定為 true 來停用寫入存取 `disableKeyBasedMetadataWriteAccess` 。 設定此屬性之後，任何資源的變更都可以從具有適當角色型存取控制（RBAC）角色和認證的使用者發生。 若要深入瞭解如何設定此屬性，請參閱[防止來自 sdk 的變更](role-based-access-control.md#preventing-changes-from-cosmos-sdk)一文。 
+在 Azure Cosmos DB 中，您必須先停用帳戶的以金鑰為基礎的中繼資料寫入存取權，才能在中審核控制平面作業。 停用金鑰型中繼資料寫入權限時，會防止透過帳戶金鑰連接到 Azure Cosmos 帳戶的用戶端存取帳戶。 您可以藉由將屬性設定為 true 來停用寫入存取 `disableKeyBasedMetadataWriteAccess` 。 設定此屬性之後，任何資源的變更都可以從具有適當角色型存取控制（RBAC）角色和認證的使用者發生。 若要深入瞭解如何設定此屬性，請參閱[防止來自 sdk 的變更](role-based-access-control.md#prevent-sdk-changes)一文。 
 
-開啟之後 `disableKeyBasedMetadataWriteAccess` ，如果以 SDK 為基礎的用戶端執行建立或更新作業，*則會傳回 Azure Cosmos DB 端點，而不允許資源 ' ContainerNameorDatabaseName ' 上的作業 ' POST '* 錯誤。 您必須為您的帳戶開啟這類作業的存取權，或透過 Azure Resource Manager、Azure CLI 或 Azure PowerShell 執行建立/更新作業。 若要切換回，請使用 Azure CLI （如[防止 COSMOS SDK 中的變更](role-based-access-control.md#preventing-changes-from-cosmos-sdk)一文所述），將 disableKeyBasedMetadataWriteAccess 設定為**false** 。 請務必將的值變更 `disableKeyBasedMetadataWriteAccess` 為 false，而不是 true。
+開啟之後 `disableKeyBasedMetadataWriteAccess` ，如果以 SDK 為基礎的用戶端執行建立或更新作業，*則會傳回 Azure Cosmos DB 端點，而不允許資源 ' ContainerNameorDatabaseName ' 上的作業 ' POST '* 錯誤。 您必須為您的帳戶開啟這類作業的存取權，或透過 Azure Resource Manager、Azure CLI 或 Azure PowerShell 執行建立/更新作業。 若要切換回，請使用 Azure CLI （如[防止 COSMOS SDK 中的變更](role-based-access-control.md#prevent-sdk-changes)一文所述），將 disableKeyBasedMetadataWriteAccess 設定為**false** 。 請務必將的值變更 `disableKeyBasedMetadataWriteAccess` 為 false，而不是 true。
 
 關閉中繼資料寫入權限時，請考慮下列幾點：
 
@@ -194,7 +195,7 @@ AzureDiagnostics 
 | where  OperationName startswith "SqlContainersThroughputUpdate"
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * [探索適用於 Azure Cosmos DB 的 Azure 監視器](../azure-monitor/insights/cosmosdb-insights-overview.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json)
 * [使用 Azure Cosmos DB 中的計量進行監視及偵錯](use-metrics.md)

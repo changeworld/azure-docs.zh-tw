@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/05/2020
 ms.author: v-miegge
-ms.openlocfilehash: 118c81dd52951729bfbbb97a510e693861666ee6
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 909481964f8aa3272715e235fa011562225a9422
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83663936"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028357"
 ---
 # <a name="troubleshoot-windows-stop-error--directory-service-initialization-failure"></a>對 Windows 停止錯誤進行疑難排解 – 目錄服務初始化失敗
 
@@ -26,7 +27,7 @@ ms.locfileid: "83663936"
 
 ## <a name="symptom"></a>徵狀
 
-當您使用[開機診斷](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics)檢視 VM 的螢幕擷取畫面時，螢幕擷取畫面顯示 VM 因錯誤而需要重新啟動，並顯示停止代碼 **0xC00002E1** (Windows Server 2008 R2) 或 **0xC00002E2** (Windows Server 2012 或更新版本)。
+當您使用[開機診斷](./boot-diagnostics.md)檢視 VM 的螢幕擷取畫面時，螢幕擷取畫面顯示 VM 因錯誤而需要重新啟動，並顯示停止代碼 **0xC00002E1** (Windows Server 2008 R2) 或 **0xC00002E2** (Windows Server 2012 或更新版本)。
 
 ![Windows Server 2012 啟動螢幕指出「您的電腦發生問題，需要重新啟動。 我們只會收集一些錯誤資訊，然後會為您重新啟動。」](./media/troubleshoot-directory-service-initialization-failure/1.png)
 
@@ -61,7 +62,7 @@ ms.locfileid: "83663936"
 
 ### <a name="create-and-access-a-repair-vm"></a>建立和存取修復 VM
 
-1. 使用 [VM 修復命令的步驟 1-3](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) 準備修復 VM。
+1. 使用 [VM 修復命令的步驟 1-3](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) 準備修復 VM。
 1. 使用遠端桌面連線連線至修復 VM。
 
 ### <a name="free-up-space-on-disk"></a>釋放磁碟上的空間
@@ -69,11 +70,11 @@ ms.locfileid: "83663936"
 磁碟現在已連結至修復 VM，請確認存放 Active Directory 內部資料庫的磁碟有足夠的空間可正確執行。
 
 1. 在磁碟機上按一下滑鼠右鍵並選取 [屬性]，以檢查磁碟是否已滿。
-1. 如果磁碟的可用空間低於 300 MB，請[使用 PowerShell 將其擴充為最大值 1 TB](https://docs.microsoft.com/azure/virtual-machines/windows/expand-os-disk)。
+1. 如果磁碟的可用空間低於 300 MB，請[使用 PowerShell 將其擴充為最大值 1 TB](../windows/expand-os-disk.md)。
 1. 如果磁碟已使用的空間已達到 1 TB，請執行磁碟清理。
 
-   1. 使用 PowerShell 從中斷的 VM [將資料磁碟中斷連結](https://docs.microsoft.com/azure/virtual-machines/windows/detach-disk#detach-a-data-disk-using-powershell)。
-   1. 將中斷的 VM 中斷連結後，請[將資料磁碟連結至](https://docs.microsoft.com/azure/virtual-machines/windows/attach-disk-ps#attach-an-existing-data-disk-to-a-vm)正常運作的 VM。
+   1. 使用 PowerShell 從中斷的 VM [將資料磁碟中斷連結](../windows/detach-disk.md#detach-a-data-disk-using-powershell)。
+   1. 將中斷的 VM 中斷連結後，請[將資料磁碟連結至](../windows/attach-disk-ps.md#attach-an-existing-data-disk-to-a-vm)正常運作的 VM。
    1. 使用[磁碟清理工具](https://support.microsoft.com/help/4026616/windows-10-disk-cleanup)釋放額外的空間。
 
 1. **選擇性** - 如果需要更多空間，請開啟 CMD 執行個體，並輸入 `defrag <LETTER ASSIGNED TO THE OS DISK>: /u /x /g` 命令，以在磁碟機上執行磁碟重組：
@@ -182,7 +183,7 @@ ms.locfileid: "83663936"
 
 ### <a name="rebuild-the-vm"></a>重建 VM
 
-1. 使用 [VM 修復命令的步驟 5](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) 重新組裝 VM。
+1. 使用 [VM 修復命令的步驟 5](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) 重新組裝 VM。
 
 ### <a name="reconfigure-the-storage-area-network-policy"></a>重新設定存放區域網路原則
 

@@ -3,14 +3,14 @@ title: Azure 自動化混合式 Runbook 背景工作角色概觀
 description: 此文章概述混合式 Runbook 背景工作角色，可供您用來在本機資料中心或雲端提供者的機器上執行 Runbook。
 services: automation
 ms.subservice: process-automation
-ms.date: 06/24/2020
+ms.date: 07/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0960dfe067e5092f3d64f66cad1d49c2bea28ae6
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 69680fbb442b4e636b72f480ed21f36924362a13
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186243"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87024821"
 ---
 # <a name="hybrid-runbook-worker-overview"></a>混合式 Runbook 背景工作概觀
 
@@ -77,6 +77,17 @@ Azure 自動化服務的服務標記只會提供用於下列案例的 Ip：
 >[!NOTE]
 >服務標籤**GuestAndHybridManagement**目前不支援在 Azure 沙箱中執行 runbook 作業，只能直接在混合式 Runbook 背景工作角色上執行。
 
+## <a name="support-for-impact-level-5-il5"></a>影響等級5的支援（IL5）
+
+Azure 自動化混合式 Runbook 背景工作角色可用於 Azure Government 中，以支援下列兩個設定之一的影響層級5工作負載：
+
+* [隔離的虛擬機器](../azure-government/documentation-government-impact-level-5.md#isolated-virtual-machines)。 部署時，會使用該 VM 的整個實體主機，以提供支援 IL5 工作負載所需的必要隔離層級。
+
+* [Azure 專用主機](../azure-government/documentation-government-impact-level-5.md#azure-dedicated-hosts)，可提供能夠裝載一或多個虛擬機器（專門用於一個 Azure 訂用帳戶）的實體伺服器。
+
+>[!NOTE]
+>透過混合式 Runbook 背景工作角色的計算隔離適用于 Azure 商業和美國政府雲端。 
+
 ## <a name="update-management-on-hybrid-runbook-worker"></a>混合式 Runbook 背景工作角色上的更新管理
 
 啟用 Azure 自動化[更新管理](automation-update-management.md)時，任何連線到 Log Analytics 工作區的電腦都會自動設定為混合式 Runbook 背景工作角色。 每個背景工作角色都可以支援以更新管理為目標的 Runbook。
@@ -85,13 +96,7 @@ Azure 自動化服務的服務標記只會提供用於下列案例的 Ip：
 
 ### <a name="update-management-addresses-for-hybrid-runbook-worker"></a>混合式 Runbook 背景工作角色的更新管理位址
 
-在混合式 Runbook 背景工作角色所需的標準位址和連接埠之上，更新管理需要下一個表格中的位址。 對這些位址的通訊會使用連接埠 443。
-
-|Azure 公用  |Azure Government  |
-|---------|---------|
-|`*.ods.opinsights.azure.com`     | `*.ods.opinsights.azure.us`         |
-|`*.oms.opinsights.azure.com`     | `*.oms.opinsights.azure.us`        |
-|`*.blob.core.windows.net` | `*.blob.core.usgovcloudapi.net`|
+在混合式 Runbook 背景工作角色所需的標準位址和埠上方，更新管理具有[網路規劃](automation-update-management.md#ports)一節中所述的其他網路設定需求。
 
 ## <a name="azure-automation-state-configuration-on-a-hybrid-runbook-worker"></a>混合式 Runbook 背景工作角色上的 Azure 自動化狀態設定
 
@@ -114,4 +119,5 @@ Azure 自動化服務的服務標記只會提供用於下列案例的 Ip：
 ## <a name="next-steps"></a>後續步驟
 
 * 若要了解如何設定您的 Runbook，將您在內部部署資料中心或其他雲端環境中的程序自動化，請參閱[在混合式 Runbook 背景工作角色上執行 Runbook](automation-hrw-run-runbooks.md)。
+
 * 若要了解如何對混合式 Runbook 背景工作角色進行疑難排解，請參閱[對混合式 Runbook 背景工作角色問題進行疑難排解](troubleshoot/hybrid-runbook-worker.md#general)。

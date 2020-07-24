@@ -7,11 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 10/10/2019
 ms.author: cynthn
-ms.openlocfilehash: 7d378f111104feb678d3d89f4a4c51998c67f2e1
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 49554c053af0ceecf2b7f0b1162b7212694239db
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84234540"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028085"
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>使用 PowerShell 從特製化磁碟建立 Windows VM
 
@@ -32,7 +33,7 @@ ms.locfileid: "84234540"
 
 ## <a name="option-1-use-an-existing-disk"></a>選項 1：使用現有的磁碟
 
-如果您已刪除虛擬機器，而想要重複使用 OS 磁碟建立新的虛擬機器，請使用 [Get-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/get-azdisk)。
+如果您已刪除虛擬機器，而想要重複使用 OS 磁碟建立新的虛擬機器，請使用 [Get-AzDisk](/powershell/module/az.compute/get-azdisk)。
 
 ```powershell
 $resourceGroupName = 'myResourceGroup'
@@ -67,7 +68,7 @@ $osDisk = Get-AzDisk `
 
 ### <a name="take-a-snapshot-of-the-os-disk"></a>製作 OS 磁碟的快照集
 
-您可以建立整個 VM (包含所有磁碟) 的快照集或僅包含單一磁碟的快照集。 下列步驟說明如何使用 [New-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot) Cmdlet 來建立僅包含您 VM 之 OS 磁碟的快照集。 
+您可以建立整個 VM (包含所有磁碟) 的快照集或僅包含單一磁碟的快照集。 下列步驟說明如何使用 [New-AzSnapshot](/powershell/module/az.compute/new-azsnapshot) Cmdlet 來建立僅包含您 VM 之 OS 磁碟的快照集。 
 
 首先，設定一些參數。 
 
@@ -115,7 +116,7 @@ $snapShot = New-AzSnapshot `
 
 ### <a name="create-a-new-disk-from-the-snapshot"></a>從快照集建立新的磁碟
 
-請使用 [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-azdisk)，從快照集建立受控磁碟。 這個範例會使用 *myOSDisk* 作為磁碟名稱。
+請使用 [New-AzDisk](/powershell/module/az.compute/new-azdisk)，從快照集建立受控磁碟。 這個範例會使用 *myOSDisk* 作為磁碟名稱。
 
 建立新 VM 的新資源群組。
 
@@ -235,7 +236,7 @@ $vm = Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id
 
 ### <a name="add-the-os-disk"></a>新增 OS 磁碟 
 
-請使用 [Set-AzVMOSDisk](https://docs.microsoft.com/powershell/module/az.compute/set-azvmosdisk) 將 OS 磁碟新增至組態。 這個範例將磁碟大小設定為 *128GB*，並附加受控磁碟作為 *Windows* OS 磁碟。
+請使用 [Set-AzVMOSDisk](/powershell/module/az.compute/set-azvmosdisk) 將 OS 磁碟新增至組態。 這個範例將磁碟大小設定為 *128GB*，並附加受控磁碟作為 *Windows* OS 磁碟。
  
 ```powershell
 $vm = Set-AzVMOSDisk -VM $vm -ManagedDiskId $osDisk.Id -StorageAccountType Standard_LRS `
@@ -244,7 +245,7 @@ $vm = Set-AzVMOSDisk -VM $vm -ManagedDiskId $osDisk.Id -StorageAccountType Stand
 
 ### <a name="complete-the-vm"></a>完成 VM 
 
-請使用 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) 搭配剛才建立的組態來建立 VM。
+請使用 [New-AzVM](/powershell/module/az.compute/new-azvm) 搭配剛才建立的組態來建立 VM。
 
 ```powershell
 New-AzVM -ResourceGroupName $destinationResourceGroup -Location $location -VM $vm
@@ -269,4 +270,3 @@ $vmList.Name
 
 ## <a name="next-steps"></a>後續步驟
 登入至新的虛擬機器。 如需詳細資訊，請參閱 [如何連接和登入執行 Windows 的 Azure 虛擬機器](connect-logon.md)。
-

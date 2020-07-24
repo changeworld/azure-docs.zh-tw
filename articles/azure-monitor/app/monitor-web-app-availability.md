@@ -4,11 +4,12 @@ description: 在 Application Insights 中設定 Web 測試。 如果網站無法
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 61358051a8ddc32bc01ec5e231f4c28ebfa18ee0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6daa2e4abb1b6580fd70f104e85f3a917f47dcdc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77670027"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87024583"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>監視任何網站的可用性
 
@@ -22,7 +23,7 @@ ms.locfileid: "77670027"
 
 * [URL Ping 測試](#create-a-url-ping-test)：您可以在 Azure 入口網站中建立的簡單測試。
 * [多步驟 web 測試](availability-multistep.md)：一系列 web 要求的記錄，可以回頭播放以測試更複雜的案例。 多步驟 web 測試會在 Visual Studio Enterprise 中建立，並上傳至入口網站進行執行。
-* [自訂追蹤可用性測試](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability?view=azure-dotnet)：如果您決定要建立自訂應用程式來執行可用性測試，則 `TrackAvailability()` 可以使用方法，將結果傳送至 Application Insights。
+* [自訂追蹤可用性測試](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability?view=azure-dotnet)：如果您決定要建立自訂應用程式來執行可用性測試，則 `TrackAvailability()` 可以使用方法，將結果傳送至 Application Insights。
 
 **您最多可以為每個 Application Insights 資源建立100可用性測試。**
 
@@ -50,7 +51,7 @@ ms.locfileid: "77670027"
 |**測試頻率**| 設定從每個測試位置執行測試的頻率。 預設頻率為 5 分鐘且有五個測試位置，則您的網站平均每一分鐘會執行測試。|
 |**測試位置**| 是我們的伺服器將 Web 要求傳送至您的 URL 的位置。 **建議的測試位置數目下限為五個**，以確保您可以區分網站問題與網路問題。 您最多可以選取 16 個位置。
 
-**如果您的 URL 在公用網際網路中看不到，您可以選擇選擇性地開啟防火牆，只允許透過的測試交易**。 若要深入瞭解可用性測試代理程式的防火牆例外狀況，請參閱[IP 位址指南](https://docs.microsoft.com/azure/azure-monitor/app/ip-addresses#availability-tests)。
+**如果您的 URL 在公用網際網路中看不到，您可以選擇選擇性地開啟防火牆，只允許透過的測試交易**。 若要深入瞭解可用性測試代理程式的防火牆例外狀況，請參閱[IP 位址指南](./ip-addresses.md#availability-tests)。
 
 > [!NOTE]
 > 我們強烈建議您從**最少五個位置**的多個位置進行測試。 這樣做可避免因特定位置發生暫時性問題，而造成誤判。 此外，我們也發現最佳設定是讓**測試位置的數目等於警示位置閾值 + 2**。
@@ -112,7 +113,7 @@ ms.locfileid: "77670027"
 
 ![伺服器端診斷](./media/monitor-web-app-availability/open-instance-4.png)
 
-除了原始的結果，您也可以在[計量瀏覽器](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started)中查看兩個主要可用性計量：
+除了原始的結果，您也可以在[計量瀏覽器](../platform/metrics-getting-started.md)中查看兩個主要可用性計量：
 
 1. 可用性︰所有測試執行中測試成功的百分比。
 2. 測試持續期間︰所有測試執行中的平均測試持續期間。
@@ -130,5 +131,3 @@ ms.locfileid: "77670027"
 
 * [可用性警示](availability-alerts.md)
 * [多重步驟 Web 測試](availability-multistep.md)
-
-

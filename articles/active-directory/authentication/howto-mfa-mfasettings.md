@@ -12,19 +12,20 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 3c16724dc3eb99549b692df93ee6cd5f1fc0bf30
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8b695bad791388dc51123a118344b8fda0f54ca8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84484058"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027694"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>設定 Azure Multi-Factor Authentication 設定
 
-若要自訂 Azure 多重要素驗證的使用者體驗，您可以設定帳戶鎖定閾值或詐騙警示和通知等設定的選項。 某些設定是直接在 Azure Active Directory （Azure AD）的 Azure 入口網站中，有些則是在不同的 Azure 多因素驗證入口網站中。]
+若要自訂 Azure 多重要素驗證的使用者體驗，您可以設定帳戶鎖定閾值或詐騙警示和通知等設定的選項。 某些設定是直接在 Azure Active Directory （Azure AD）的 Azure 入口網站中，有些則是在不同的 Azure 多因素驗證入口網站中。
 
 Azure 入口網站提供下列 Azure 多重要素驗證設定：
 
-| 功能 | 說明 |
+| 功能 | 描述 |
 | ------- | ----------- |
 | [帳戶鎖定](#account-lockout) | 如果資料列中有太多拒絕的驗證嘗試，則會暫時鎖定帳戶，避免使用 Azure 多重要素驗證。 這項功能僅適用於輸入 PIN 以進行驗證的使用者。 (MFA 伺服器) |
 | [封鎖/解除封鎖使用者](#block-and-unblock-users) | 封鎖特定使用者無法接收 Azure 多因素驗證要求。 系統會自動拒絕已封鎖使用者的任何驗證嘗試。 使用者會在封鎖或手動解除封鎖時，持續封鎖90天。 |
@@ -373,6 +374,6 @@ Azure 多因素驗證的「_信任的 ip_ 」功能會略過從已定義的 IP �
 
 啟用 [記住多重要素驗證] 功能之後，使用者可以選取 [**不要再詢問**] 選項，將裝置標示為受信任。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 若要深入瞭解在 Azure 多因素驗證中使用的可用方法，請參閱[Azure Active Directory 中可用的驗證和驗證方法？](concept-authentication-methods.md)

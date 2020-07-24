@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 07/16/2020
 author: dlepow
 ms.author: danlep
-ms.openlocfilehash: e2498e2c20e171f113c8e3ec9eff70685df92c7f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d748e3e6239ba913afc5b8aadd7e85dcd1027c04
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531372"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023699"
 ---
 # <a name="configure-a-single-public-ip-address-for-outbound-and-inbound-traffic-to-a-container-group"></a>為容器群組的輸出和輸入流量設定單一公用 IP 位址
 
@@ -33,7 +33,7 @@ ms.locfileid: "86531372"
 
 容器群組會從映射執行小型的 web 應用程式 `aci-helloworld` 。 如檔中的其他文章所示，此映射會封裝以 Node.js 撰寫並提供靜態 HTML 網頁的小型 web 應用程式。
 
-如果您需要的話，請先使用[az group create][az-group-create]命令來建立 Azure 資源群組。 例如：
+如果您需要的話，請先使用[az group create][az-group-create]命令來建立 Azure 資源群組。 例如:
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
@@ -280,7 +280,7 @@ az container logs \
 <html><head><title>Current IP Check</title></head><body>Current IP Address: 52.142.18.133</body></html>
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 在本文中，您會在 Azure 防火牆後方的虛擬網路中設定容器群組。 您已在防火牆上設定使用者定義的路由和 NAT 和應用程式規則。 藉由使用此設定，您可以針對來自 Azure 容器實例的輸入和輸出設定單一靜態 IP 位址。
 
@@ -292,18 +292,18 @@ az container logs \
 [az-container-create]: /cli/azure/container#az-container-create
 [az-network-vnet-subnet-create]: /cli/azure/network/vnet/subnet#az-network-vnet-subnet-create
 [az-extension-add]: /cli/azure/extension#az-extension-add
-[az-network-firewall-update]: /cli/azure/network/firewall#az-network-firewall-update
+[az-network-firewall-update]: /cli/azure/ext/azure-firewall/network/firewall#ext-azure-firewall-az-network-firewall-update
 [az-network-public-ip-show]: /cli/azure/network/public-ip/#az-network-public-ip-show
 [az-network-route-table-create]:/cli/azure/network/route-table/#az-network-route-table-create
 [az-network-route-table-route-create]: /cli/azure/network/route-table/route#az-network-route-table-route-create
-[az-network-firewall-ip-config-list]: /cli/azure/network/firewall/ip-config#[]az-network-firewall-ip-config-list
+[az-network-firewall-ip-config-list]: /cli/azure/ext/azure-firewall/network/firewall/ip-config#ext-azure-firewall-az-network-firewall-ip-config-list
 [az-network-vnet-subnet-update]: /cli/azure/network/vnet/subnet#az-network-vnet-subnet-update
 [az-container-exec]: /cli/azure/container#az-container-exec
 [az-vm-create]: /cli/azure/vm#az-vm-create
 [az-vm-open-port]: /cli/azure/vm#az-vm-open-port
 [az-vm-list-ip-addresses]: /cli/azure/vm#az-vm-list-ip-addresses
-[az-network-firewall-application-rule-create]: /cli/azure/network/firewall/application-rule#az-network-firewall-application-rule-create
-[az-network-firewall-nat-rule-create]: /cli/azure/ext/azure-firewall/network/firewall/nat-rule
+[az-network-firewall-application-rule-create]: /cli/azure/ext/azure-firewall/network/firewall/application-rule#ext-azure-firewall-az-network-firewall-application-rule-create
+[az-network-firewall-nat-rule-create]: /cli/azure/ext/azure-firewall/network/firewall/nat-rule#ext-azure-firewall-az-network-firewall-nat-rule-create
 
 
 

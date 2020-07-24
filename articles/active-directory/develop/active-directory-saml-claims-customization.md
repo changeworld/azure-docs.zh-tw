@@ -13,12 +13,12 @@ ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 0b0efc7e5dd4a60e33ddd61c19283a048cf4ab78
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f56427dabdee715412596557fa075c5eb4df500
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85478292"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027303"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>如何：針對企業應用程式自訂 SAML 權杖中發出的宣告
 
@@ -164,7 +164,7 @@ ms.locfileid: "85478292"
 
 1. 在 [管理宣告] 中，展開 [宣告條件]。
 2. 選取使用者類型。
-3. 選取該使用者應隸屬的群組。 針對指定應用程式，您在所有宣告上最多可以選取 10 個唯一群組。 
+3. 選取該使用者應隸屬的群組。 您最多可以在指定應用程式的所有宣告中選取50個唯一群組。 
 4. 選取宣告要擷取其值的 [來源]。 您可以從來源屬性下拉式清單選取使用者屬性，或在將使用者屬性發出為宣告之前對其套用轉換。
 
 您新增條件的順序很重要。 Azure AD 會從上到下評估條件，以決定要在宣告中發出哪一個值。 

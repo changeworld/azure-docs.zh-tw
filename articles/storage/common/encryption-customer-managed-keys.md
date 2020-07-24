@@ -5,16 +5,17 @@ description: 您可以使用自己的加密金鑰來保護儲存體帳戶中的�
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 03/12/2020
+ms.date: 07/20/2020
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 5dedd70b51361936808724ef70b96cdf9cfa13f5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d53818c91d32bc7435d1328c2ae73a8eb3172cd4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515398"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029785"
 ---
 # <a name="use-customer-managed-keys-with-azure-key-vault-to-manage-azure-storage-encryption"></a>搭配 Azure Key Vault 使用客戶管理的金鑰來管理 Azure 儲存體加密
 
@@ -46,13 +47,13 @@ ms.locfileid: "85515398"
 
 ## <a name="enable-customer-managed-keys-for-a-storage-account"></a>為儲存體帳戶啟用客戶管理的金鑰
 
-客戶管理的金鑰只能在現有的儲存體帳戶上啟用。 金鑰保存庫必須布建存取原則，以將金鑰許可權授與儲存體帳戶相關聯的受控識別。 只有在建立儲存體帳戶之後，才可使用受控識別。
-
 當您設定客戶管理的金鑰時，Azure 儲存體會將帳戶的根資料加密金鑰包裝在相關聯的金鑰保存庫中，並使用客戶管理的金鑰。 啟用客戶管理的金鑰並不會影響效能，而且會立即生效。
 
-當您透過啟用或停用客戶管理的金鑰、更新金鑰版本或指定不同的金鑰來修改用於 Azure 儲存體加密的金鑰時，根金鑰的加密會變更，但您的 Azure 儲存體帳戶中的資料不需要重新加密。
-
 當您啟用或停用客戶管理的金鑰，或修改金鑰或金鑰版本時，根加密金鑰的保護會變更，但您的 Azure 儲存體帳戶中的資料不需要重新加密。
+
+客戶管理的金鑰只能在現有的儲存體帳戶上啟用。 金鑰保存庫必須設定存取原則，以將許可權授與儲存體帳戶相關聯的受控識別。 只有在建立儲存體帳戶之後，才可使用受控識別。
+
+您可以隨時在客戶管理的金鑰與 Microsoft 管理的金鑰之間切換。 如需 Microsoft 管理之金鑰的詳細資訊，請參閱[關於加密金鑰管理](storage-service-encryption.md#about-encryption-key-management)。
 
 若要瞭解如何使用客戶管理的金鑰搭配 Azure Key Vault 來 Azure 儲存體加密，請參閱下列其中一篇文章：
 
@@ -65,15 +66,22 @@ ms.locfileid: "85515398"
 
 ## <a name="store-customer-managed-keys-in-azure-key-vault"></a>將客戶管理的金鑰儲存在 Azure Key Vault
 
-若要在儲存體帳戶上啟用客戶管理的金鑰，您必須使用 Azure Key Vault 來儲存您的金鑰。 您必須同時啟用「虛**刪除**」和「不要**清除**」金鑰保存庫的屬性。
+若要在儲存體帳戶上啟用客戶管理的金鑰，您必須使用 Azure 金鑰保存庫來儲存金鑰。 您必須同時啟用「虛**刪除**」和「不要**清除**」金鑰保存庫的屬性。
 
 Azure 儲存體加密支援 RSA 和 RSA-大小為2048、3072和4096的 HSM 金鑰。 如需金鑰的詳細資訊，請參閱[關於 Azure Key Vault 金鑰、秘密和憑證](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys)中的**Key Vault 金鑰**。
 
+使用 Azure Key Vault 具有相關聯的成本。 如需詳細資訊，請參閱[Key Vault 定價](/pricing/details/key-vault/)。
+
 ## <a name="rotate-customer-managed-keys"></a>輪替客戶管理的金鑰
 
-您可以根據您的合規性原則，在 Azure Key Vault 中輪替客戶管理的金鑰。 輪替金鑰時，您必須更新儲存體帳戶以使用新的金鑰版本 URI。 若要瞭解如何更新儲存體帳戶以在 Azure 入口網站中使用新版本的金鑰，請參閱[使用 Azure 入口網站來設定 Azure 儲存體的客戶管理金鑰](storage-encryption-keys-portal.md)中的「**更新金鑰版本**」一節。
+您可以根據您的合規性原則，在 Azure Key Vault 中輪替客戶管理的金鑰。 您有兩個選項可以輪替客戶管理的金鑰：
 
-輪替金鑰並不會觸發儲存體帳戶中的資料重新加密。 使用者不需要採取進一步的動作。
+- **自動輪替：** 若要設定客戶管理金鑰的自動輪替，請在您使用儲存體帳戶的客戶管理金鑰來啟用加密時，省略金鑰版本。 如果省略金鑰版本，則 Azure 儲存體會每天檢查 Azure Key Vault 的新版本客戶管理金鑰。 如果有可用的金鑰新版本，Azure 儲存體會自動使用最新版本的金鑰。
+- **手動旋轉：** 若要使用特定金鑰版本進行 Azure 儲存體加密，請在使用儲存體帳戶的客戶管理金鑰啟用加密時，指定該金鑰版本。 如果您指定金鑰版本，則 Azure 儲存體會使用該版本進行加密，直到您手動更新金鑰版本。
+
+    手動輪替金鑰時，您必須將儲存體帳戶更新為使用新的金鑰版本 URI。 若要瞭解如何更新儲存體帳戶以在 Azure 入口網站中使用新版本的金鑰，請參閱[手動更新金鑰版本](storage-encryption-keys-portal.md#manually-update-the-key-version)。
+
+輪替客戶管理的金鑰並不會觸發儲存體帳戶中的資料重新加密。 使用者不需要採取進一步的動作。
 
 ## <a name="revoke-access-to-customer-managed-keys"></a>撤銷對客戶管理的金鑰的存取權
 
@@ -81,13 +89,13 @@ Azure 儲存體加密支援 RSA 和 RSA-大小為2048、3072和4096的 HSM 金�
 
 - 在要求 URI 上以參數呼叫時，[列出 blob](/rest/api/storageservices/list-blobs) `include=metadata`
 - [取得 Blob](/rest/api/storageservices/get-blob)
-- [取得 Blob 屬性](/rest/api/storageservices/get-blob-properties)
+- [Get Blob Properties](/rest/api/storageservices/get-blob-properties)
 - [取得 Blob 中繼資料](/rest/api/storageservices/get-blob-metadata)
 - [設定 Blob 中繼資料](/rest/api/storageservices/set-blob-metadata)
 - [Snapshot Blob](/rest/api/storageservices/snapshot-blob)使用 `x-ms-meta-name` 要求標頭呼叫時的快照集 Blob
 - [複製 Blob](/rest/api/storageservices/copy-blob)
 - [從 URL 複製 Blob](/rest/api/storageservices/copy-blob-from-url)
-- [設定 Blob 層](/rest/api/storageservices/set-blob-tier)
+- [Set Blob Tier](/rest/api/storageservices/set-blob-tier)
 - [放置區塊](/rest/api/storageservices/put-block)
 - [將區塊從 URL 放入](/rest/api/storageservices/put-block-from-url)
 - [附加區塊](/rest/api/storageservices/append-block)

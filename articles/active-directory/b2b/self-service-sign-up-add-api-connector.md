@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0498a2015b75221763ab5fdd4f6e94428922bd6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e6238e89b3941668f831f3128bb0e723a4097e48
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85386737"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027507"
 ---
 # <a name="add-an-api-connector-to-a-user-flow"></a>將 API 連接器新增至使用者流程
 
@@ -76,7 +76,7 @@ POST <API-endpoint>
 Content-type: application/json
 
 {
- "email_address": "johnsmith@fabrikam.onmicrosoft.com",
+ "email": "johnsmith@fabrikam.onmicrosoft.com",
  "identities": [ //Sent for Google and Facebook identity providers
      {
      "signInType":"federated",
@@ -99,7 +99,7 @@ Content-type: application/json
 您可以使用**extension_ \<extensions-app-id> _AttributeName**格式，為使用者建立自訂屬性。 您的 API 應該會收到此相同序列化格式的宣告。 您的 API 可以傳回具有或不含的宣告 `<extensions-app-id>` 。 如需自訂屬性的詳細資訊，請參閱[定義自助式註冊流程的自訂屬性](user-flow-add-custom-attributes.md)。
 
 > [!TIP] 
-> 身分識別（「身分識別」 [**）**](https://docs.microsoft.com/graph/api/resources/objectidentity?view=graph-rest-1.0)和**電子郵件地址（' email_address '）** 宣告可用來在您的租使用者中擁有帳戶之前，先找出使用者。 當使用者使用 Google 或 Facebook 進行驗證，且一律傳送 ' email_address ' 時，就會傳送「身分識別」宣告。
+> 身分識別（「身分識別」 [**）**](https://docs.microsoft.com/graph/api/resources/objectidentity?view=graph-rest-1.0)和**電子郵件地址（「電子郵件」）** 宣告可用來在您的租使用者中擁有帳戶之前，先找出使用者。 當使用者使用 Google 或 Facebook 進行驗證，且一律傳送「電子郵件」時，會傳送「身分識別」宣告。
 
 ## <a name="expected-response-types-from-the-web-api"></a>來自 Web API 的預期回應類型
 
@@ -133,18 +133,18 @@ Content-type: application/json
 }
 ```
 
-| 參數                                          | 類型              | 必要 | 說明                                                                                                                                                                                                                                                                            |
+| 參數                                          | 類型              | 必要 | 描述                                                                                                                                                                                                                                                                            |
 | -------------------------------------------------- | ----------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | version                                            | String            | 是      | API 的版本。                                                                                                                                                                                                                                                                |
 | 動作                                             | String            | 是      | 值必須為 `Continue`。                                                                                                                                                                                                                                                              |
-| \<builtInUserAttribute>                            | \<attribute-type> | No       | 如果這些值選取為要在 API 連接器設定中**接收**的宣告，以及使用者流程的**使用者屬性**，則可以儲存在目錄中。 如果選取做為**應用程式**宣告，則會在權杖中傳回值。                                              |
-| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | No       | 傳回的宣告可以選擇性地不包含 `_<extensions-app-id>_` 。 如果這些值選取為要在 API 連接器設定中**接收**的宣告，以及使用者流程的**使用者屬性**，則會儲存在目錄中。 無法在權杖中傳回自訂屬性。 |
+| \<builtInUserAttribute>                            | \<attribute-type> | 否       | 如果這些值選取為要在 API 連接器設定中**接收**的宣告，以及使用者流程的**使用者屬性**，則可以儲存在目錄中。 如果選取做為**應用程式**宣告，則會在權杖中傳回值。                                              |
+| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | 否       | 傳回的宣告不需要包含 `_<extensions-app-id>_` 。 如果這些值選取為要在 API 連接器設定中**接收**的宣告，以及使用者流程的**使用者屬性**，則會儲存在目錄中。 無法在權杖中傳回自訂屬性。 |
 
 ### <a name="blocking-response"></a>封鎖回應
 
 封鎖回應會結束使用者流程。 API 可以刻意發行，藉由向使用者顯示區塊頁面來停止使用者流程的接續。 [封鎖] 頁面會顯示 `userMessage` API 所提供的。
 
-以下是封鎖回應的範例：
+封鎖回應的範例：
 
 ```http
 HTTP/1.1 200 OK
@@ -159,12 +159,12 @@ Content-type: application/json
 
 ```
 
-| 參數   | 類型   | 必要 | 說明                                                                |
+| 參數   | 類型   | 必要 | 描述                                                                |
 | ----------- | ------ | -------- | -------------------------------------------------------------------------- |
 | version     | String | 是      | API 的版本。                                                    |
 | 動作      | String | 是      | 值必須是`ShowBlockPage`                                              |
 | userMessage | String | 是      | 要向使用者顯示的訊息。                                            |
-| 代碼        | String | No       | 錯誤碼。 可以用於偵錯工具。 不向使用者顯示。 |
+| 代碼        | 字串 | 否       | 錯誤碼。 可以用於偵錯工具。 不向使用者顯示。 |
 
 #### <a name="end-user-experience-with-a-blocking-response"></a>具有封鎖回應的終端使用者體驗
 
@@ -189,22 +189,22 @@ Content-type: application/json
 }
 ```
 
-| 參數   | 類型    | 必要 | 說明                                                                |
+| 參數   | 類型    | 必要 | 描述                                                                |
 | ----------- | ------- | -------- | -------------------------------------------------------------------------- |
 | version     | String  | 是      | API 的版本。                                                    |
 | 動作      | String  | 是      | 值必須為 `ValidationError`。                                           |
-| status      | 整數 | Yes      | 必須是 `400` ValidationError 回應的值。                        |
+| status      | 整數 | 是      | 必須是 `400` ValidationError 回應的值。                        |
 | userMessage | String  | 是      | 要向使用者顯示的訊息。                                            |
-| 代碼        | String  | No       | 錯誤碼。 可以用於偵錯工具。 不向使用者顯示。 |
+| 代碼        | 字串  | 否       | 錯誤碼。 可以用於偵錯工具。 不向使用者顯示。 |
 
-#### <a name="end-user-experience-with-a-validation-error-response"></a>使用驗證-錯誤回應的使用者體驗
+#### <a name="end-user-experience-with-a-validation-error-response"></a>具有驗證錯誤回應的終端使用者體驗
 
 ![範例驗證頁面](./media/api-connectors-overview/validation-error-postal-code.png)
 
 ### <a name="integration-with-azure-functions"></a>與 Azure Functions 整合
 您可以使用 Azure Functions 中的 HTTP 觸發程式，做為建立 API 以搭配 API 連接器使用的簡單方式。 [例如](code-samples-self-service-sign-up.md#api-connector-azure-function-quickstarts)，您可以使用 Azure 函式來執行驗證邏輯，並限制對特定網域的登入。 您也可以呼叫和叫用其他 web Api、使用者存放區和其他雲端服務。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 <!-- - Learn [where you can enable an API connector](api-connectors-overview.md#where-you-can-enable-an-api-connector-in-a-user-flow) -->
 - 瞭解如何[將自訂核准工作流程新增至自助式註冊](self-service-sign-up-add-approvals.md)

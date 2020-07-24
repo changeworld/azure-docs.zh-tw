@@ -9,11 +9,12 @@ ms.subservice: management
 ms.date: 03/10/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 9498babd9605c46d752c5fe1eb1b077f6d911351
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f7a61ed039a3d8ed643e3b1b3d79384e35847986
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83121009"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029292"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>修改虛擬機器擴展集
 
@@ -319,13 +320,13 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet -
     POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/reimage?api-version={apiVersion}
     ```
 
-- Azure PowerShell 搭配 [Set-AzVmssVm](https://docs.microsoft.com/powershell/module/az.compute/set-azvmssvm)：
+- Azure PowerShell 搭配 [Set-AzVmssVm](/powershell/module/az.compute/set-azvmssvm)：
 
     ```powershell
     Set-AzVmssVM -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId instanceId -Reimage
     ```
 
-- Azure CLI 執行 [az vmss reimage](https://docs.microsoft.com/cli/azure/vmss)：
+- Azure CLI 執行 [az vmss reimage](/cli/azure/vmss)：
 
     ```azurecli
     az vmss reimage --resource-group myResourceGroup --name myScaleSet --instance-id instanceId
@@ -368,12 +369,12 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet -
 透過自訂映像來部署應用程式也是常見的做法。 在下一節中將會探討此案例。
 
 ### <a name="os-updates"></a>OS 更新
-如果您使用 Azure 平台映像，您可以修改 imageReference** (如需詳細資訊，請參閱 [REST API 文件](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate)) 來更新映像。
+如果您使用 Azure 平台映像，您可以修改 imageReference** (如需詳細資訊，請參閱 [REST API 文件](/rest/api/compute/virtualmachinescalesets/createorupdate)) 來更新映像。
 
 >[!NOTE]
 > 使用平台映像時，通常會指定 "latest" 作為映像參考版本。 當您建立、相應放大及重新安裝映像時，會使用最新可用版本來建立虛擬機器。 不過，這**並不**意謂著作業系統映像會隨著時間在新映像版本發行時自動更新。 獨立的功能目前為預覽狀態，可提供自動的作業系統升級。 如需詳細資訊，請參閱 [自動作業系統升級文件](virtual-machine-scale-sets-automatic-upgrade.md)。
 
-如果您使用自訂映像，您可以更新 imageReference** 識別碼 (如需詳細資訊，請參閱 [REST API 文件](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate)) 來更新映像。
+如果您使用自訂映像，您可以更新 imageReference** 識別碼 (如需詳細資訊，請參閱 [REST API 文件](/rest/api/compute/virtualmachinescalesets/createorupdate)) 來更新映像。
 
 ## <a name="examples"></a>範例
 
@@ -449,5 +450,5 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet -
 > 這些命令會假設擴展集上只有一個 IP 設定和負載平衡器。 如果有多個，您可能需要使用*0*以外的清單索引。
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 您也可以使用 [Azure CLI](virtual-machine-scale-sets-manage-cli.md) 或 [Azure PowerShell](virtual-machine-scale-sets-manage-powershell.md)，在擴展集上執行常見管理工作。

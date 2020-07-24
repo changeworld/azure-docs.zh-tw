@@ -7,11 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: d6417b3632e1aad0b942844a1470772e8f0197e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e4e83ec1fc64dd78e3b03ddf1b58733ce2588c81
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85081091"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87030057"
 ---
 # <a name="azure-private-endpoint-dns-configuration"></a>Azure 私人端點 DNS 設定
 
@@ -72,6 +73,7 @@ Azure 服務會在公用 DNS 服務上建立正式名稱 DNS 記錄（CNAME）�
 | SignalR （Microsoft.signalrservice/SignalR）/signalR | privatelink.service.signalr.net | service.signalr.net |
 | Azure 監視器（Microsoft Insights/privateLinkScopes）/azuremonitor | privatelink.monitor.azure.com | monitor.azure.com |
 | 認知服務（CognitiveServices/帳戶）/帳戶 | privatelink.cognitiveservices.azure.com  | cognitiveservices.azure.com  |
+| Azure 檔案同步（Microsoft.storagesync/storageSyncServices）/afs |  privatelink.afs.azure.net  |  afs.azure.net  |
 
  
 ## <a name="dns-configuration-scenarios"></a>DNS 設定案例

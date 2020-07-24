@@ -4,16 +4,17 @@ description: 使用 Azure 應用程式 Insights 設定效能和負載測試
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 0bfb60b876add70be6cbcd3d726fb3317a8dfcf9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8885a2e511c11317f593706255437e52819adcae
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77669857"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87024345"
 ---
 # <a name="performance-testing"></a>效能測試
 
 > [!NOTE]
-> 雲端負載測試服務已淘汰。 您可以在[這裡](https://docs.microsoft.com/azure/devops/test/load-test/overview?view=azure-devops)找到有關淘汰、服務可用性和替代服務的詳細資訊。
+> 雲端負載測試服務已淘汰。 您可以在[這裡](/azure/devops/test/load-test/overview?view=azure-devops)找到有關淘汰、服務可用性和替代服務的詳細資訊。
 
 Application Insights 可讓您產生網站的負載測試。 如同[可用性測試](monitor-web-app-availability.md)，您可以從世界各地的 Azure 測試代理程式傳送基本要求或[多步驟要求](availability-multistep.md)。 效能測試可讓您模擬最多20000個同時使用者，最多可達60分鐘。
 
@@ -50,7 +51,7 @@ Application Insights 先進的效能測試功能是建置於 Visual Studio 效�
 
 ![Visual Studio ](./media/performance-testing/visual-studio-test.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * [多重步驟 Web 測試](availability-multistep.md)
 * [Url ping 測試](monitor-web-app-availability.md)

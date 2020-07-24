@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 06/25/2020
 ms.reviwer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: 915b6430378cfff2a847e31de26950fcb9de6ff5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1ee4c8a52098bfa7c012e85f25371c306b106b86
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85374588"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029428"
 ---
 # <a name="troubleshooting-autoscale-with-virtual-machine-scale-sets"></a>針對使用虛擬機器擴展集的自動調整進行疑難排解
 **問題** - 您已使用虛擬機器擴展集在 Azure Resource Manager 中建立自動調整基礎結構，例如藉由部署範本，如下所示︰ https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale - 您有已定義的調整規則，並且運作良好，美中不足的是無論您在 VM 上放置多少負載，它都不會自動調整。
@@ -73,7 +73,7 @@ ms.locfileid: "85374588"
     如果資料不存在，則表示問題是出在 VM 中執行的診斷擴充。 如果有資料，則表示您的調整規則或 Insights 服務有問題。 檢查 [Azure 狀態](https://azure.microsoft.com/status/)。
     
     完成這些步驟之後，如果您仍有自動調整規模問題，可以嘗試下列資源： 
-    * 閱讀 [Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-virtual-machines.html)或 [Stack overflow](https://stackoverflow.com/questions/tagged/azure) 上的論壇 
+    * 閱讀 [Microsoft 問與答頁面](/answers/topics/azure-virtual-machines.html)或 [Stack overflow](https://stackoverflow.com/questions/tagged/azure) 上的論壇 
     * 記錄支援通話。 請準備共用範本和效能資料的檢視。
 
 [audit]: ./media/virtual-machine-scale-sets-troubleshoot/image3.png

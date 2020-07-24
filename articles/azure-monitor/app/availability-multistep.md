@@ -3,11 +3,12 @@ title: 使用多步驟 Web 測試進行監視 - Azure Application Insights
 description: 使用 Azure Application Insights 設定多步驟 Web 測試，以監視您的 Web 應用程式
 ms.topic: conceptual
 ms.date: 05/26/2020
-ms.openlocfilehash: 04361f7b3306c5f7c164a849d8b05d7cf4756999
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 2df8b7450423c901665090608da83f68b43b30e5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873339"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87024768"
 ---
 # <a name="multi-step-web-tests"></a>多重步驟 Web 測試
 
@@ -16,7 +17,7 @@ ms.locfileid: "83873339"
 > [!NOTE]
 > 多步驟 Web 測試取決於 Visual Studio Webtest 檔案。 已[宣佈](https://devblogs.microsoft.com/devops/cloud-based-load-testing-service-eol/) Visual Studio 2019 會是具有 Webtest 功能的最後一個版本。 請務必瞭解，雖然不會新增任何新功能，但目前仍支援 Visual Studio 2019 中的 Webtest 功能，並且會在產品的支援生命週期中繼續受到支援。 Azure 監視器產品小組已解決多步驟可用性測試的相關問題，如[這裡](https://github.com/MicrosoftDocs/azure-docs/issues/26050#issuecomment-468814101)所示。  
 > </br>
-> [Azure Government](https://docs.microsoft.com/azure/azure-government/) 雲端中**不支援**多步驟 Web 測試。
+> [Azure Government](../../azure-government/index.yml) 雲端中**不支援**多步驟 Web 測試。
 
 
 ## <a name="pre-requisites"></a>必要條件
@@ -36,7 +37,7 @@ ms.locfileid: "83873339"
 > [!WARNING]
 > 我們不再建議使用多步驟錄製器。 錄製器是針對具有基本互動的靜態 HTML 網頁所開發，並不提供現代化網頁的功能體驗。
 
-如需建立 Visual Studio Web 測試的指引，請參閱[官方 Visual Studio 2019 文件](https://docs.microsoft.com/visualstudio/test/how-to-create-a-web-service-test?view=vs-2019)。
+如需建立 Visual Studio Web 測試的指引，請參閱[官方 Visual Studio 2019 文件](/visualstudio/test/how-to-create-a-web-service-test?view=vs-2019)。
 
 ## <a name="upload-the-web-test"></a>上傳 Web 測試
 

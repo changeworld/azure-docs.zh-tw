@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: bcc94b62812f1668bf8c5e5abb268fddf3da1fa5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 22bc3d6efca24a88b28217b2e06ac79d33f16b2e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82515439"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87030074"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---hyperscale-citus"></a>適用於 PostgreSQL 的 Azure 資料庫中的備份和還原-超大規模資料庫（Citus）
 
@@ -32,7 +32,11 @@ ms.locfileid: "82515439"
 
 ## <a name="restore"></a>還原
 
-在適用於 PostgreSQL 的 Azure 資料庫中，還原超大規模資料庫（Citus）叢集會從原始節點的備份建立新的叢集。
+在適用於 PostgreSQL 的 Azure 資料庫中，還原超大規模資料庫（Citus）叢集會從原始節點的備份建立新的叢集。 
+
+> [!IMPORTANT]
+>您只能在相同的訂用帳戶和資源群組中，以及使用不同的叢集名稱來還原超大規模資料庫叢集。
+
 
 > [!IMPORTANT]
 > 無法還原已刪除的超大規模資料庫（Citus）叢集。 如果您刪除叢集，屬於該叢集的所有節點都會被刪除，而且無法復原。 若要保護叢集資源，部署後不受意外刪除或非預期的變更，系統管理員可以利用[管理鎖定](/azure/azure-resource-manager/management/lock-resources)。

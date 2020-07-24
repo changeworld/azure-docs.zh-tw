@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 03/15/2020
+ms.date: 07/15/2020
 ms.author: apimpm
-ms.openlocfilehash: ecbd4d97bb092ccbdb286e4865bf04e770ca9473
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d479f18e8764a69cdc81f99d723534e4895b0e4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85207884"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87025076"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Azure API 管理開發人員入口網站概觀
 
@@ -29,6 +29,9 @@ ms.locfileid: "85207884"
 ![API Management developer portal](media/api-management-howto-developer-portal/cover.png)
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
+
+> [!NOTE]
+> <a name="migrate-from-legacy"></a>新的開發人員入口網站與舊版開發人員入口網站不相容，因此無法進行自動化遷移。 您必須手動重新建立內容（頁面、文字、媒體檔案），並自訂新入口網站的外觀。 如需指引，請參閱[開發人員入口網站教學](api-management-howto-developer-portal-customize.md)課程。
 
 ## <a name="managed-and-self-hosted-versions"></a><a name="managed-vs-self-hosted"></a>受控和自我裝載版本
 
@@ -82,19 +85,13 @@ ms.locfileid: "85207884"
 
 如果您的入口網站是在公開上市後公告之後布建，則它應該已有新的預設內容功能。 您的端不需要採取任何動作。
 
-### <a name="how-can-i-migrate-from-the-old-developer-portal-to-the-developer-portal"></a>我要如何從舊的開發人員入口網站遷移到開發人員入口網站？
-
-入口網站不相容，您必須手動遷移內容。
-
-### <a name="does-the-portal-have-all-the-features-of-the-old-portal"></a>入口網站是否具有舊版入口網站的所有功能？
+### <a name="does-the-portal-have-all-the-features-of-the-legacy-portal"></a>入口網站是否具有舊版入口網站的所有功能？
 
 開發人員入口網站不再支援*應用程式*和*問題*。
 
-尚不支援在互動式開發人員主控台中使用 OAuth 進行驗證。 您可以透過[GitHub 問題](https://github.com/Azure/api-management-developer-portal/issues/208)來追蹤進度。
+### <a name="has-the-legacy-portal-been-deprecated"></a>舊版入口網站已被取代嗎？
 
-### <a name="has-the-old-portal-been-deprecated"></a>舊的入口網站已被取代嗎？
-
-舊的開發人員和發行者入口網站現在是*舊版*的功能-他們只會接收安全性更新。 新功能只會在新的開發人員入口網站中執行。
+舊版開發人員和發行者入口網站現在是*舊版*的功能-他們只會接收安全性更新。 新功能只會在新的開發人員入口網站中執行。
 
 舊版入口網站的淘汰將會分開宣告。 如果您有任何疑問、疑慮或意見，請[在專屬的 GitHub 問題中](https://github.com/Azure/api-management-developer-portal/issues/121)提出。
 
@@ -110,7 +107,7 @@ ms.locfileid: "85207884"
 
 ### <a name="does-the-portal-support-azure-resource-manager-templates-andor-is-it-compatible-with-api-management-devops-resource-kit"></a>入口網站是否支援 Azure Resource Manager 範本和（或）是否與 API 管理 DevOps 資源套件相容？
 
-否。
+不可以。
 
 ### <a name="do-i-need-to-enable-additional-vnet-connectivity-for-the-managed-portal-dependencies"></a>我是否需要針對受管理的入口網站相依性啟用額外的 VNet 連線？
 
@@ -208,12 +205,12 @@ New-AzRoleAssignment -SignInName "user1@contoso.com" -RoleDefinitionName "APIM N
 | Apple Safari                | 是<sup>1</sup> |
 | Google Chrome               | 是<sup>1</sup> |
 | Microsoft Edge              | 是<sup>1</sup> |
-| Microsoft Internet Explorer | No              |
+| Microsoft Internet Explorer | 否              |
 | Mozilla Firefox             | 是<sup>1</sup> |
 
  <small><sup>1</sup>在兩個最新的生產版本中都有支援。</small>
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 深入瞭解新的開發人員入口網站：
 

@@ -7,11 +7,12 @@ ms.topic: article
 ms.author: jofrance
 ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: 4e342ff44af38b8e79dc8695c1270b1f5c68e0a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3be8863d86fd1525e6f64b46ddf5ca3c702ecdea
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80657434"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029224"
 ---
 # <a name="configure-lvm-and-raid-on-encrypted-devices"></a>在加密的裝置上設定 LVM 和 RAID
 
@@ -44,11 +45,11 @@ ms.locfileid: "80657434"
 
 我們建議您使用 crypt 上的 LVM。 當 LVM 因特定應用程式或環境的限制而無法使用時，可選擇 RAID。
 
-您將使用**EncryptFormatAll**選項。 如需此選項的詳細資訊，請參閱[在 Linux vm 上使用資料磁片的 EncryptFormatAll 功能](https://docs.microsoft.com/azure/virtual-machines/linux/disk-encryption-linux#use-encryptformatall-feature-for-data-disks-on-linux-vms)。
+您將使用**EncryptFormatAll**選項。 如需此選項的詳細資訊，請參閱[在 Linux vm 上使用資料磁片的 EncryptFormatAll 功能](./disk-encryption-linux.md#use-encryptformatall-feature-for-data-disks-on-linux-vms)。
 
 雖然您也可以在加密作業系統時使用這個方法，但我們只是在這裡加密資料磁片磁碟機。
 
-這些程式假設您已在[Linux vm](https://docs.microsoft.com/azure/virtual-machines/linux/disk-encryption-linux)和[快速入門：使用 Azure CLI 建立和加密 linux vm](https://docs.microsoft.com/azure/virtual-machines/linux/disk-encryption-cli-quickstart)中的 Azure 磁碟加密案例中，審查了必要條件。
+這些程式假設您已在[Linux vm](./disk-encryption-linux.md)和[快速入門：使用 Azure CLI 建立和加密 linux vm](./disk-encryption-cli-quickstart.md)中的 Azure 磁碟加密案例中，審查了必要條件。
 
 Azure 磁碟加密的雙通路版本是在取代路徑上，不應再用於新的加密。
 
@@ -459,4 +460,3 @@ df -h
 ## <a name="next-steps"></a>後續步驟
 
 - [Azure 磁碟加密的疑難排解](disk-encryption-troubleshooting.md)
-

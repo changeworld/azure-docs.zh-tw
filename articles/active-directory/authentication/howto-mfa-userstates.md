@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 04/13/2020
+ms.date: 07/20/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e8ef25df8fdb11715ebba954e31a97939d6ac0e1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 860616cbea598e40494155e250254b3c607c1173
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85476830"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027490"
 ---
 # <a name="enable-per-user-azure-multi-factor-authentication-to-secure-sign-in-events"></a>啟用個別使用者的 Azure Multi-Factor Authentication 以保護登入事件
 
@@ -78,7 +78,7 @@ Azure Multi-Factor Authentication 中的使用者帳戶具有下列三種不同�
 
 ## <a name="change-state-using-powershell"></a>使用 PowerShell 變更狀態
 
-若要使用 [Azure AD PowerShell](/powershell/azure/overview) 來變更使用者狀態，您可變更使用者帳戶的 `$st.State` 參數。 使用者帳戶有三個可能的狀態：
+若要使用 [Azure AD PowerShell](/powershell/azure/) 來變更使用者狀態，您可變更使用者帳戶的 `$st.State` 參數。 使用者帳戶有三個可能的狀態：
 
 * *已啟用*
 * 已強制
@@ -177,12 +177,12 @@ Get-MsolUser -All | Set-MfaState -State Disabled
 ```
 
 > [!NOTE]
-> 我們最近變更了此行為和 PowerShell 指令碼。 先前指令碼會儲存 MFA 方法並停用 MFA，且會將方法還原。 現在已不再需要，因為停用的預設行為並不會清除方法。
->
 > 如果在已有註冊詳細資料 (例如電話號碼或電子郵件) 的使用者物件上重新啟用 MFA，則系統管理員必須讓該使用者透過 Azure 入口網站或 PowerShell 來重新註冊 MFA。 如果使用者未重新註冊，則在 MFA 管理 UI 中，其 MFA 狀態不會從「已啟用」轉換為「已強制」。
 
 ## <a name="next-steps"></a>後續步驟
 
-若要設定信任的 IP、自訂語音訊息及詐騙警示等 Azure Multi-Factor Authentication 設定，請參閱[設定 Azure Multi-Factor Authentication 設定](howto-mfa-mfasettings.md)。 若要管理 Azure Multi-Factor Authentication 的使用者設定，請參閱[使用 Azure Multi-Factor Authentication 管理使用者設定](howto-mfa-userdevicesettings.md)。
+若要設定 Azure 多因素驗證設定，請參閱[設定 Azure 多因素驗證設定](howto-mfa-mfasettings.md)。
+
+若要管理 Azure Multi-Factor Authentication 的使用者設定，請參閱[使用 Azure Multi-Factor Authentication 管理使用者設定](howto-mfa-userdevicesettings.md)。
 
 若要了解系統提示或不提示使用者執行 MFA 的原因，請參閱 [Azure Multi-Factor Authentication 報告](howto-mfa-reporting.md)。

@@ -5,23 +5,23 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: how-to
-ms.date: 10/29/2019
+ms.date: 07/20/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 152f7ab6ccb9f01c7fe70553501c8cf8afa1c650
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c8c9fbf2d86c2e066566bab11b1701909be64a37
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85554885"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87025841"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>使用 Azure Active Directory authentication （預覽）登入 Azure 中的 Windows 虛擬機器
 
-組織現在可以針對執行**Windows Server 2019 Datacenter edition**或**windows 10 1809**及更新版本的 Azure 虛擬機器（vm），使用 Azure Active Directory （AD）驗證。 使用 Azure AD 向 Vm 進行驗證，可讓您集中控制及強制執行原則。 Azure 角色型存取控制（RBAC）和 Azure AD 條件式存取之類的工具，可讓您控制誰可以存取 VM。 本文說明如何建立和設定 Windows Server 2019 VM，以使用 Azure AD 驗證。
+組織現在可以針對執行**Windows Server 2019 Datacenter edition**或**windows 10 1809**及更新版本的 Azure 虛擬機器（vm），使用 Azure Active Directory （AD）驗證。 使用 Azure AD 向 Vm 進行驗證，可讓您集中控制及強制執行原則。 Azure 角色型存取控制（Azure RBAC）和 Azure AD 的條件式存取之類的工具，可讓您控制誰可以存取 VM。 本文說明如何建立和設定 Windows Server 2019 VM，以使用 Azure AD 驗證。
 
 > [!NOTE]
 > 適用于 Azure Windows Vm 的 Azure AD 登入是 Azure Active Directory 的公開預覽功能。 如需有關預覽的詳細資訊，請參閱[Microsoft Azure 預覽的補充使用](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)規定。
@@ -39,7 +39,7 @@ ms.locfileid: "85554885"
 > [!NOTE]
 > 一旦您啟用此功能，您在 Azure 中的 Windows Vm 將會 Azure AD 聯結。 您不能將它加入其他網域，例如內部部署 AD 或 Azure AD DS。 如果您需要這樣做，您必須卸載擴充功能，將 VM 從您的 Azure AD 租使用者中斷連線。
 
-## <a name="requirements"></a>規格需求
+## <a name="requirements"></a>需求
 
 ### <a name="supported-azure-regions-and-windows-distributions"></a>支援的 Azure 區域和 Windows 發行版本
 
@@ -200,7 +200,10 @@ az role assignment create \
 您可以先強制執行條件式存取原則（例如多重要素驗證或使用者登入風險檢查），再授權存取 Azure 中啟用 Azure AD 登入的 Windows Vm。 若要套用條件式存取原則，您必須從 [雲端應用程式] 或 [動作] 指派選項中選取 [Azure Windows VM 登入] 應用程式，然後使用 [登入風險] 作為條件，並（或）要求多重要素驗證做為 [授與存取控制]。 
 
 > [!NOTE]
-> 如果您使用「需要多重要素驗證」做為要求存取「Azure Windows VM 登入」應用程式的授與存取控制，則必須在用戶端中提供多重要素驗證宣告，以起始對 Azure 中目標 Windows VM 的 RDP 會話。 在 Windows 10 用戶端上達成此目標的唯一方法，就是使用 Windows Hello 企業版 PIN 或搭配 RDP 用戶端的生物識別驗證。 對生物識別驗證的支援已新增至 Windows 10 1809 版中的 RDP 用戶端。 使用 Windows Hello 企業版驗證的遠端桌面僅適用于使用憑證信任模型的部署，而且目前不適用於金鑰信任模型。
+> 如果您使用「需要多重要素驗證」做為要求存取「Azure Windows VM 登入」應用程式的授與存取控制，則必須在用戶端中提供多重要素驗證宣告，以起始對 Azure 中目標 Windows VM 的 RDP 會話。 在 Windows 10 用戶端上達成此目標的唯一方法，就是使用 Windows Hello 企業版 PIN 或透過 RDP 用戶端的生物識別驗證。 對生物識別驗證的支援已新增至 Windows 10 1809 版中的 RDP 用戶端。 使用 Windows Hello 企業版驗證的遠端桌面僅適用于使用憑證信任模型的部署，而且目前不適用於金鑰信任模型。
+
+> [!WARNING]
+> VM 登入不支援每位使用者啟用/強制執行的 Azure 多因素驗證。
 
 ## <a name="log-in-using-azure-ad-credentials-to-a-windows-vm"></a>使用 Azure AD 認證登入 Windows VM
 
@@ -362,6 +365,6 @@ AADLoginForWindows 擴充功能必須成功安裝，VM 才能完成 Azure AD 聯
 
 請在[Azure AD 意見反應論壇](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032)上，分享您對這項預覽功能的意見反應，或報告問題。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 如需有關 Azure Active Directory 的詳細資訊，請參閱[什麼是 Azure Active Directory](/azure/active-directory/fundamentals/active-directory-whatis)

@@ -1,6 +1,6 @@
 ---
-title: '將 Azure 訂用帳戶轉移至不同的 Azure AD 目錄 (預覽) '
-description: 瞭解如何將 Azure 訂用帳戶和已知的相關資源轉移至不同的 Azure Active Directory (Azure AD) 目錄。
+title: 將 Azure 訂用帳戶轉移至不同的 Azure AD 目錄（預覽）
+description: 瞭解如何將 Azure 訂用帳戶和已知的相關資源轉移至不同的 Azure Active Directory （Azure AD）目錄。
 services: active-directory
 author: rolyon
 manager: mtillman
@@ -10,27 +10,27 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 07/01/2020
 ms.author: rolyon
-ms.openlocfilehash: db1b030aed34498ade91a195d5ca68725b579ba3
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 664687d096a3a9c6ce9a6c7de0025604e046b0a1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86230837"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029972"
 ---
-# <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory-preview"></a>將 Azure 訂用帳戶轉移至不同的 Azure AD 目錄 (預覽) 
+# <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory-preview"></a>將 Azure 訂用帳戶轉移至不同的 Azure AD 目錄（預覽）
 
 > [!IMPORTANT]
 > 遵循這些步驟，將訂用帳戶轉移至不同的 Azure AD 目錄，目前處於公開預覽狀態。
 > 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。
 > 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-組織可能會有數個 Azure 訂用帳戶。 每個訂用帳戶都會與特定的 Azure Active Directory (Azure AD) 目錄相關聯。 為了簡化管理，您可能會想要將訂用帳戶轉移至不同的 Azure AD 目錄。 當您將訂用帳戶轉移至不同的 Azure AD 目錄時，某些資源不會傳送至目標目錄。 例如，Azure 角色型存取控制中的所有角色指派和自訂角色 (Azure RBAC) 會從來原始目錄中**永久**刪除，而且不會傳輸至目標目錄。
+組織可能會有數個 Azure 訂用帳戶。 每個訂用帳戶都會與特定的 Azure Active Directory （Azure AD）目錄相關聯。 為了簡化管理，您可能會想要將訂用帳戶轉移至不同的 Azure AD 目錄。 當您將訂用帳戶轉移至不同的 Azure AD 目錄時，某些資源不會傳送至目標目錄。 例如，Azure 角色型存取控制（Azure RBAC）中的所有角色指派和自訂角色都會從來原始目錄中**永久**刪除，而且不會傳輸到目標目錄。
 
 本文說明您可以遵循的基本步驟，將訂用帳戶轉移至不同的 Azure AD 目錄，並在傳輸後重新建立部分資源。
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
-將 Azure 訂用帳戶轉移至不同的 Azure AD 目錄，是必須仔細規劃和執行的複雜程式。 許多 Azure 服務都需要 (身分識別的安全性主體) ，才能正常運作或甚至管理其他 Azure 資源。 本文會嘗試涵蓋大部分依賴安全性主體的 Azure 服務，但並不完整。
+將 Azure 訂用帳戶轉移至不同的 Azure AD 目錄，是必須仔細規劃和執行的複雜程式。 許多 Azure 服務都需要安全性主體（身分識別）才能正常運作，甚至是管理其他 Azure 資源。 本文會嘗試涵蓋大部分依賴安全性主體的 Azure 服務，但並不完整。
 
 > [!IMPORTANT]
 > 轉移訂用帳戶需要停機時間才能完成程式。
@@ -74,7 +74,7 @@ ms.locfileid: "86230837"
 | 具有 Azure AD 驗證的 Azure SQL 資料庫 | 是 | 否 | [使用 Azure AD authentication 檢查 Azure SQL 資料庫](#list-other-known-resources) |  |  |
 | Azure 儲存體和 Azure Data Lake Storage Gen2 | 是 | 是 |  | 您必須重新建立任何 Acl。 |
 | Azure Data Lake Storage Gen1 | 是 |  |  | 您必須重新建立任何 Acl。 |
-| Azure 檔案儲存體 | 是 | 是 |  | 您必須重新建立任何 Acl。 |
+| Azure 檔案 | 是 | 是 |  | 您必須重新建立任何 Acl。 |
 | Azure 檔案同步 | 是 | 是 |  |  |
 | Azure 受控磁碟 | 是 | N/A |  |  |
 | 適用于 Kubernetes 的 Azure Container Service | 是 | 是 |  |  |
@@ -127,7 +127,7 @@ ms.locfileid: "86230837"
 
 ### <a name="save-all-role-assignments"></a>儲存所有角色指派
 
-1. 使用[az role 指派 list](https://docs.microsoft.com/cli/azure/role/assignment#az-role-assignment-list)來列出所有角色指派 (包括) 繼承的角色指派。
+1. 使用[az role 指派 list](https://docs.microsoft.com/cli/azure/role/assignment#az-role-assignment-list)來列出所有角色指派（包括繼承的角色指派）。
 
     為了讓您更輕鬆地查看清單，您可以將輸出匯出為 JSON、TSV 或資料表。 如需詳細資訊，請參閱[使用 AZURE RBAC 和 Azure CLI 列出角色指派](role-assignments-list-cli.md)。
 
@@ -145,7 +145,7 @@ ms.locfileid: "86230837"
 
 ### <a name="save-custom-roles"></a>儲存自訂角色
 
-1. 使用[az role definition list](https://docs.microsoft.com/cli/azure/role/definition#az-role-definition-list)來列出您的自訂角色。 如需詳細資訊，請參閱[使用 Azure CLI 建立或更新 Azure 資源的自訂角色](custom-roles-cli.md)。
+1. 使用[az role definition list](https://docs.microsoft.com/cli/azure/role/definition#az-role-definition-list)來列出您的自訂角色。 如需詳細資訊，請參閱[使用 Azure CLI 建立或更新 Azure 自訂角色](custom-roles-cli.md)。
 
     ```azurecli
     az role definition list --custom-role-only true --output json --query '[].{roleName:roleName, roleType:roleType}'
@@ -215,7 +215,7 @@ ms.locfileid: "86230837"
 
 ### <a name="list-key-vaults"></a>列出金鑰保存庫
 
-當您建立金鑰保存庫時，它會自動系結至其建立所在之訂用帳戶的預設 Azure Active Directory 租使用者識別碼。 所有存取原則項目也會繫結到此租用戶識別碼。 如需詳細資訊，請參閱將[Azure Key Vault 移至另一個訂](../key-vault/general/keyvault-move-subscription.md)用帳戶。
+當您建立金鑰保存庫時，它會自動系結至其建立所在之訂用帳戶的預設 Azure Active Directory 租使用者識別碼。 所有存取原則項目也會繫結到此租用戶識別碼。 如需詳細資訊，請參閱將[Azure Key Vault 移至另一個訂](../key-vault/general/move-subscription.md)用帳戶。
 
 > [!WARNING]
 > 如果您針對資源（例如儲存體帳戶或 SQL 資料庫）使用靜態加密，而該資源相依于不在所傳輸之相同訂用帳戶中的金鑰保存庫，可能會導致無法復原的案例。 如果您有這種情況，您應該採取步驟來使用不同的金鑰保存庫，或暫時停用客戶管理的金鑰，以避免此無法復原的情況。
@@ -291,7 +291,7 @@ ms.locfileid: "86230837"
 
 ### <a name="create-custom-roles"></a>建立自訂角色
         
-- 使用[az role definition create](https://docs.microsoft.com/cli/azure/role/definition#az-role-definition-create) ，從您稍早建立的檔案中建立每個自訂角色。 如需詳細資訊，請參閱[使用 Azure CLI 建立或更新 Azure 資源的自訂角色](custom-roles-cli.md)。
+- 使用[az role definition create](https://docs.microsoft.com/cli/azure/role/definition#az-role-definition-create) ，從您稍早建立的檔案中建立每個自訂角色。 如需詳細資訊，請參閱[使用 Azure CLI 建立或更新 Azure 自訂角色](custom-roles-cli.md)。
 
     ```azurecli
     az role definition create --role-definition <role_definition>
@@ -309,7 +309,7 @@ ms.locfileid: "86230837"
 
 1. 停用並重新啟用系統指派的受控識別。
 
-    | Azure 服務 | 更多資訊 | 
+    | Azure 服務 | 詳細資訊 | 
     | --- | --- |
     | 虛擬機器 | [使用 Azure CLI 在 Azure VM 上設定 Azure 資源的受控識別](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md#system-assigned-managed-identity) |
     | 虛擬機器擴展集 | [使用 Azure CLI 在虛擬機器擴展集上設定 Azure 資源受控識別](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vmss.md#system-assigned-managed-identity) |
@@ -325,7 +325,7 @@ ms.locfileid: "86230837"
 
 1. 刪除、重新建立及附加使用者指派的受控識別。
 
-    | Azure 服務 | 更多資訊 | 
+    | Azure 服務 | 詳細資訊 | 
     | --- | --- |
     | 虛擬機器 | [使用 Azure CLI 在 Azure VM 上設定 Azure 資源的受控識別](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md#user-assigned-managed-identity) |
     | 虛擬機器擴展集 | [使用 Azure CLI 在虛擬機器擴展集上設定 Azure 資源受控識別](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vmss.md#user-assigned-managed-identity) |
@@ -339,7 +339,7 @@ ms.locfileid: "86230837"
 
 ### <a name="update-key-vaults"></a>更新金鑰保存庫
 
-本節說明更新金鑰保存庫的基本步驟。 如需詳細資訊，請參閱將[Azure Key Vault 移至另一個訂](../key-vault/general/keyvault-move-subscription.md)用帳戶。
+本節說明更新金鑰保存庫的基本步驟。 如需詳細資訊，請參閱將[Azure Key Vault 移至另一個訂](../key-vault/general/move-subscription.md)用帳戶。
 
 1. 將訂用帳戶中所有現有金鑰保存庫相關聯的租使用者識別碼，更新為目標目錄。
 

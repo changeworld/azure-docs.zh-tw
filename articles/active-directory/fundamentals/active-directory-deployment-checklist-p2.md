@@ -3,19 +3,20 @@ title: Azure AD 部署檢查清單
 description: Azure Active Directory 功能部署檢查清單
 services: active-directory
 ms.service: active-directory
-ms.subservice: ''
+ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 07/20/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f84226a631014b51338d47887fe3bafc969dc571
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 082e4a35582e9fe643aefc13c0c46a1c75f443e5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77063640"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87025382"
 ---
 # <a name="azure-active-directory-feature-deployment-guide"></a>Azure Active Directory 功能部署指南
 
@@ -25,7 +26,7 @@ ms.locfileid: "77063640"
 
 此外，客戶可以檢查其[身分識別安全分數](identity-secure-score.md)，以了解他們符合 Microsoft 最佳做法的程度。 在實作這些建議前後檢查您的安全分數，以了解相較於您產業中的其他人和規模與您相同的其他組織，您的表現如何。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 本指南中的許多建議都可以 Azure AD Free 或完全沒有授權的方式來執行。 若需要授權，我們會陳述至少需要哪一個授權才能完成工作。
 
@@ -33,14 +34,14 @@ ms.locfileid: "77063640"
 
 * [Azure AD 授權](https://azure.microsoft.com/pricing/details/active-directory/)
 * [Microsoft 365 企業版 ](https://www.microsoft.com/en-us/licensing/product-licensing/microsoft-365-enterprise)
-* [企業行動力 + 安全性](https://www.microsoft.com/en-us/licensing/product-licensing/enterprise-mobility-security)
+* [Enterprise Mobility + Security](https://www.microsoft.com/en-us/licensing/product-licensing/enterprise-mobility-security)
 * [Azure AD B2B 授權指導方針](../b2b/licensing-guidance.md)
 
 ## <a name="phase-1-build-a-foundation-of-security"></a>第1階段：建立安全性的基礎
 
 在這個階段，系統管理員會啟用基準安全性功能，以在我們匯入或建立一般使用者帳戶之前，在 Azure AD 中建立更安全且容易使用的基礎。 此基本階段可確保您一開始就處於更安全的狀態，而且只需要向一般使用者介紹新概念一次。
 
-| Task | 詳細資料 | 必要授權 |
+| 工作 | 詳細資料 | 必要授權 |
 | ---- | ------ | ---------------- |
 | [指定超過一個全域管理員](../users-groups-roles/directory-emergency-access.md) | 在發生緊急狀況時，請指定至少兩個僅限雲端的永久全域管理員帳戶。 這些帳戶並非每天使用，而且應該有複雜的長密碼。 | Azure AD Free |
 | [可能的話，請使用非全域系統管理角色](../users-groups-roles/directory-assign-admin-roles.md) | 僅賦予您的系統管理員存取其所需存取區域的權限。 並非所有系統管理員都必須是全域管理員。 | Azure AD Free |
@@ -52,16 +53,17 @@ ms.locfileid: "77063640"
 | [停用雲端式使用者帳戶的定期密碼重設](../authentication/concept-sspr-policy.md#set-a-password-to-never-expire) | 定期密碼重設會鼓勵使用者遞增其現有的密碼。 使用 Microsoft 的密碼指引文件中的指導方針，將您的內部部署原則反映至僅限雲端的使用者。 | Azure AD Free |
 | [自訂 Azure Active Directory 智慧鎖定](../authentication/howto-password-smart-lockout.md) | 讓來自雲端式使用者的鎖定停止複寫至內部部署 Active Directory 使用者 | |
 | [啟用 AD FS 的外部網路智慧鎖定](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection) | AD FS 外部網路鎖定可防禦暴力密碼猜測破解攻擊，同時讓有效的 AD FS 使用者繼續使用其帳戶。 | |
+| [使用條件式存取封鎖舊版驗證 Azure AD](../conditional-access/block-legacy-authentication.md) | 封鎖無法強制執行多重要素驗證的舊版驗證通訊協定，例如 POP、SMTP、IMAP 和 MAPI，使其成為敵人的慣用進入點。 | Azure AD Premium P1 |
 | [使用條件式存取原則部署 Azure AD 多重要素驗證](../authentication/howto-mfa-getstarted.md) | 要求使用者在使用條件式存取原則存取敏感性應用程式時執行雙步驟驗證。 | Azure AD Premium P1 |
 | [啟用 Azure Active Directory Identity Protection](../identity-protection/overview-identity-protection.md) | 能夠追蹤有風險的登入以及貴組織中使用者遭入侵的認證。 | Azure AD Premium P2 |
 | [使用風險偵測來觸發多重要素驗證和密碼變更](../authentication/tutorial-risk-based-sspr-mfa.md) | 啟用可觸發以下事件的自動化功能：例如多重要素驗證、密碼重設，以及根據風險封鎖登入。 | Azure AD Premium P2 |
-| [啟用自助密碼重設和 Azure AD Multi-Factor Authentication 的融合式註冊 (預覽)](../authentication/concept-registration-mfa-sspr-converged.md) | 可讓使用者在單一常見體驗中註冊 Azure Multi-Factor Authentication 和自助密碼重設。 | Azure AD Premium P1 |
+| [啟用自助式密碼重設和 Azure AD 多重要素驗證的合併註冊](../authentication/concept-registration-mfa-sspr-combined.md) | 可讓使用者在單一常見體驗中註冊 Azure Multi-Factor Authentication 和自助密碼重設。 | Azure AD Premium P1 |
 
 ## <a name="phase-2-import-users-enable-synchronization-and-manage-devices"></a>第2階段：匯入使用者、啟用同步處理，以及管理裝置
 
 接著，我們會匯入使用者，以及啟用同步處理、規劃來賓存取及準備支援額外功能，藉此擴建增階段 1 所設置的基礎。
 
-| Task | 詳細資料 | 必要授權 |
+| 工作 | 詳細資料 | 必要授權 |
 | ---- | ------ | ---------------- |
 | [安裝 Azure AD Connect](../connect/active-directory-aadconnect-select-installation.md) | 準備讓使用者從現有的內部部署目錄同步至雲端。 | Azure AD Free |
 | [實作密碼雜湊同步處理](../connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md) | 同步密碼雜湊，以允許複寫變更密碼、偵測和補救不正確的密碼，以及回報外洩的認證。 | Azure AD Free |
@@ -77,7 +79,7 @@ ms.locfileid: "77063640"
 
 當我們繼續以先前的階段為根基，我們會找出可供移轉以及與 Azure AD 整合的候選應用程式，並完成這些應用程式的設定。
 
-| Task | 詳細資料 | 必要授權 |
+| 工作 | 詳細資料 | 必要授權 |
 | ---- | ------ | ---------------- |
 | 識別您的應用程式 | 識別貴組織中使用的應用程式：內部部署應用程式、雲端中的 SaaS 應用程式，以及其他企業營運應用程式。 判斷這些應用程式是否可以且應該透過 Azure AD 管理。 | 不需要授權 |
 | [整合資源庫中支援的 SaaS 應用程式](../manage-apps/add-application-portal.md) | Azure AD 有一個資源庫，其中包含數千個預先整合的應用程式。 您組織使用的某些應用程式可能就在可從 Azure 入口網站直接存取的資源庫中。 | Azure AD Free |
@@ -87,7 +89,7 @@ ms.locfileid: "77063640"
 
 階段 4 可看見系統管理員強制執行系統管理的最低權限準則、完成其第一次存取權檢閱，以及讓一般使用者生命週期工作自動化。
 
-| Task | 詳細資料 | 必要授權 |
+| 工作 | 詳細資料 | 必要授權 |
 | ---- | ------ | ---------------- |
 | [強制使用 Privileged Identity Management](../privileged-identity-management/pim-security-wizard.md) | 從一般日常使用者帳戶中移除系統管理角色。 在成功執行多重要素驗證檢查、提供業務理由，或是向指定的核准者要求核准之後，讓系統管理使用者有資格使用其角色。 | Azure AD Premium P2 |
 | [在 PIM 中完成 Azure AD 目錄角色的存取權檢閱](../privileged-identity-management/pim-how-to-start-security-review.md) | 與您的安全性和領導小組合作，一起建立存取權檢閱原則，以根據貴組織原則來檢閱系統管理存取權。 | Azure AD Premium P2 |
@@ -95,7 +97,7 @@ ms.locfileid: "77063640"
 | [實作群組型應用程式佈建](../manage-apps/what-is-access-management.md) | 使用群組型存取管理佈建，為 SaaS 應用程式自動佈建使用者。 |  |
 | [自動化使用者佈建和解除佈建](../app-provisioning/user-provisioning.md) | 從您員工帳戶的生命週期移除手動步驟，以防止未經授權的存取。 將真實來源 (HR系統) 中的身分識別同步至 Azure AD。 |  |
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 [Azure AD 授權和定價詳細資料](https://azure.microsoft.com/pricing/details/active-directory/)
 

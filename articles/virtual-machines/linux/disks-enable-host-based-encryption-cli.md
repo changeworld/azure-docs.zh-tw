@@ -8,12 +8,12 @@ ms.date: 07/10/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: e0773515809ffdc50167a3cba1f767ac8635bcee
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9f61835887c26e41b3338286065df4ca9d05f513
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86502566"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029003"
 ---
 # <a name="enable-end-to-end-encryption-using-encryption-at-host---azure-cli"></a>在主機上使用加密來啟用端對端加密-Azure CLI
 
@@ -23,7 +23,7 @@ ms.locfileid: "86502566"
 
 [!INCLUDE [virtual-machines-disks-encryption-at-host-restrictions](../../../includes/virtual-machines-disks-encryption-at-host-restrictions.md)]
 
-### <a name="supported-regions"></a>支援區域
+### <a name="supported-regions"></a>支援的區域
 
 [!INCLUDE [virtual-machines-disks-encryption-at-host-regions](../../../includes/virtual-machines-disks-encryption-at-host-regions.md)]
 
@@ -43,34 +43,144 @@ ms.locfileid: "86502566"
 
 [!INCLUDE [virtual-machines-disks-encryption-create-key-vault-cli](../../../includes/virtual-machines-disks-encryption-create-key-vault-cli.md)]
 
-## <a name="enable-encryption-at-host-for-disks-attached-to-vm-and-virtual-machine-scale-sets"></a>為連接至 VM 和虛擬機器擴展集的磁片啟用主機加密
+## <a name="examples"></a>範例
 
-您可以使用 API **2020-06-01**和更新版本，在 vm 或虛擬機器擴展集的 securityProfile 下設定新的屬性 EncryptionAtHost，以在主機上啟用加密。
+### <a name="create-a-vm-with-encryption-at-host-enabled-with-customer-managed-keys"></a>使用客戶管理的金鑰，在主機上建立具有加密功能的 VM。 
 
-`"securityProfile": { "encryptionAtHost": "true" }`
-
-## <a name="example-scripts"></a>範例指令碼
-
-### <a name="enable-encryption-at-host-for-disks-attached-to-a-vm-with-customer-managed-keys"></a>針對使用客戶管理的金鑰連接至 VM 的磁片，在主機上啟用加密
-
-使用稍早建立的 DiskEncryptionSet 資源 URI，建立具有受控磁片的 VM。
-
-取代 `<yourPassword>` 、 `<yourVMName>` 、 `<yourVMSize>` 、、、 `<yourDESName>` `<yoursubscriptionID>` `<yourResourceGroupName>` 和 `<yourRegion>` ，然後執行腳本。
+使用稍早建立的 DiskEncryptionSet 的資源 URI，建立具有受控磁片的 VM，以透過客戶管理的金鑰來加密作業系統和資料磁片的快取。 暫存磁片會以平臺管理的金鑰進行加密。 
 
 ```azurecli
-az group deployment create -g <yourResourceGroupName> \
---template-uri "https://raw.githubusercontent.com/Azure-Samples/managed-disks-powershell-getting-started/master/EncryptionAtHost/CreateVMWithDisksEncryptedAtHostWithCMK.json" \
---parameters "virtualMachineName=<yourVMName>" "adminPassword=<yourPassword>" "vmSize=<yourVMSize>" "diskEncryptionSetId=/subscriptions/<yoursubscriptionID>/resourceGroups/<yourResourceGroupName>/providers/Microsoft.Compute/diskEncryptionSets/<yourDESName>" "region=<yourRegion>"
+rgName=yourRGName
+vmName=yourVMName
+location=eastus
+vmSize=Standard_DS2_v2
+image=UbuntuLTS 
+diskEncryptionSetName=yourDiskEncryptionSetName
+
+diskEncryptionSetId=$(az disk-encryption-set show -n $diskEncryptionSetName -g $rgName --query [id] -o tsv)
+
+az vm create -g $rgName \
+-n $vmName \
+-l $location \
+--encryption-at-host \
+--image $image \
+--size $vmSize \
+--generate-ssh-keys \
+--os-disk-encryption-set $diskEncryptionSetId \
+--data-disk-sizes-gb 128 128 \
+--data-disk-encryption-sets $diskEncryptionSetId $diskEncryptionSetId
 ```
 
-### <a name="enable-encryption-at-host-for-disks-attached-to-a-vm-with-platform-managed-keys"></a>針對使用平臺管理的金鑰連接至 VM 的磁片，在主機上啟用加密
+### <a name="create-a-vm-with-encryption-at-host-enabled-with-platform-managed-keys"></a>使用平臺管理的金鑰，在主機上建立具有加密功能的 VM。 
 
-取代 `<yourPassword>` 、 `<yourVMName>` 、 `<yourVMSize>` 、 `<yourResourceGroupName>` 和 `<yourRegion>` ，然後執行腳本。
+建立已啟用 [在主機加密] 的 VM，以使用平臺管理的金鑰來加密 OS/資料磁片和暫存磁片的快取。 
 
 ```azurecli
-az group deployment create -g <yourResourceGroupName> \
---template-uri "https://raw.githubusercontent.com/Azure-Samples/managed-disks-powershell-getting-started/master/EncryptionAtHost/CreateVMWithDisksEncryptedAtHostWithPMK.json" \
---parameters "virtualMachineName=<yourVMName>" "adminPassword=<yourPassword>" "vmSize=<yourVMSize>" "region=<yourRegion>"
+rgName=yourRGName
+vmName=yourVMName
+location=eastus
+vmSize=Standard_DS2_v2
+image=UbuntuLTS 
+
+az vm create -g $rgName \
+-n $vmName \
+-l $location \
+--encryption-at-host \
+--image $image \
+--size $vmSize \
+--generate-ssh-keys \
+--data-disk-sizes-gb 128 128 \
+```
+
+### <a name="update-a-vm-to-enable-encryption-at-host"></a>更新 VM 以在主機上啟用加密。 
+
+```azurecli
+rgName=yourRGName
+vmName=yourVMName
+
+az vm update -n $vmName \
+-g $rgName \
+--set securityProfile.encryptionAtHost=true
+```
+
+### <a name="check-the-status-of-encryption-at-host-for-a-vm"></a>在主機上檢查 VM 的加密狀態
+
+```azurecli
+rgName=yourRGName
+vmName=yourVMName
+
+az vm show -n $vmName \
+-g $rgName \
+--query [securityProfile.encryptionAtHost] -o tsv
+```
+
+### <a name="create-a-virtual-machine-scale-set-with-encryption-at-host-enabled-with-customer-managed-keys"></a>使用客戶管理的金鑰，在主機上建立具有加密功能的虛擬機器擴展集。 
+
+使用稍早建立的 DiskEncryptionSet 的資源 URI，建立具有受控磁片的虛擬機器擴展集，以透過客戶管理的金鑰來加密作業系統和資料磁片的快取。 暫存磁片會以平臺管理的金鑰進行加密。 
+
+```azurecli
+rgName=yourRGName
+vmssName=yourVMSSName
+location=westus2
+vmSize=Standard_DS3_V2
+image=UbuntuLTS 
+diskEncryptionSetName=yourDiskEncryptionSetName
+
+diskEncryptionSetId=$(az disk-encryption-set show -n $diskEncryptionSetName -g $rgName --query [id] -o tsv)
+
+az vmss create -g $rgName \
+-n $vmssName \
+--encryption-at-host \
+--image UbuntuLTS \
+--upgrade-policy automatic \
+--admin-username azureuser \
+--generate-ssh-keys \
+--os-disk-encryption-set $diskEncryptionSetId \
+--data-disk-sizes-gb 64 128 \
+--data-disk-encryption-sets $diskEncryptionSetId $diskEncryptionSetId
+```
+
+### <a name="create-a-virtual-machine-scale-set-with-encryption-at-host-enabled-with-platform-managed-keys"></a>使用平臺管理的金鑰，在主機上建立具有加密功能的虛擬機器擴展集。 
+
+建立虛擬機器擴展集並啟用 [在主機加密]，以使用平臺管理的金鑰來加密 OS/資料磁片和暫存磁片的快取。 
+
+```azurecli
+rgName=yourRGName
+vmssName=yourVMSSName
+location=westus2
+vmSize=Standard_DS3_V2
+image=UbuntuLTS 
+
+az vmss create -g $rgName \
+-n $vmssName \
+--encryption-at-host \
+--image UbuntuLTS \
+--upgrade-policy automatic \
+--admin-username azureuser \
+--generate-ssh-keys \
+--data-disk-sizes-gb 64 128 \
+```
+
+### <a name="update-a-virtual-machine-scale-set-to-enable-encryption-at-host"></a>更新虛擬機器擴展集，以在主機上啟用加密。 
+
+```azurecli
+rgName=yourRGName
+vmssName=yourVMName
+
+az vmss update -n $vmssName \
+-g $rgName \
+--set virtualMachineProfile.securityProfile.encryptionAtHost=true
+```
+
+### <a name="check-the-status-of-encryption-at-host-for-a-virtual-machine-scale-set"></a>在主機上檢查虛擬機器擴展集的加密狀態
+
+```azurecli
+rgName=yourRGName
+vmssName=yourVMName
+
+az vmss show -n $vmssName \
+-g $rgName \
+--query [virtualMachineProfile.securityProfile.encryptionAtHost] -o tsv
 ```
 
 ## <a name="finding-supported-vm-sizes"></a>尋找支援的 VM 大小
@@ -117,7 +227,7 @@ foreach($vmSize in $vmSizes)
 }
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 既然您已建立並設定這些資源，您可以使用它們來保護您的受控磁片。 下列連結包含範例腳本，每個都有個別的案例，可讓您用來保護受控磁片。
 

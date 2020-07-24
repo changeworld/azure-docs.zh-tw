@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: apimpm
-ms.openlocfilehash: f594d4467e64ead40ff3c26aaf3e3a44cb673a98
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: e2bf63558b4bbd55262aa16f70bfba934a42c3ac
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86250289"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87024957"
 ---
 # <a name="how-to-log-events-to-azure-event-hubs-in-azure-api-management"></a>如何將事件記錄到 Azure API 管理中的 Azure 事件中樞
 事件中樞是可高度調整的資料輸入服務，每秒可擷取數百萬個事件，可讓您處理和分析連接的裝置和應用程式所產生的大量資料。 事件中樞能做為事件管線的「大門」，一旦收集的資料進入事件中樞，它可以使用任何即時分析提供者或批次/儲存配接器轉換及儲存資料。 事件中樞能分隔事件串流的生產與這些事件的使用，讓事件消費者依照自己的排程存取事件。
@@ -67,6 +67,9 @@ ms.locfileid: "86250289"
 
 按一下 [儲存] **** ，儲存更新的原則組態。 儲存完成後，原則便會啟用，事件會記錄至指定的事件中樞。
 
+> [!NOTE]
+> 此 API 管理原則可以傳送至事件中樞的最大支援訊息大小為 200 kb。 如果傳送到事件中樞的訊息大於 200 KB，則會自動截斷，而截斷的訊息會傳送到事件中樞。
+
 ## <a name="preview-the-log-in-event-hubs-by-using-azure-stream-analytics"></a>使用 Azure 串流分析預覽登入事件中樞
 
 您可以使用[Azure 串流分析查詢](../event-hubs/process-data-azure-stream-analytics.md)，在事件中樞中預覽登入。 
@@ -76,7 +79,7 @@ ms.locfileid: "86250289"
 3. 在 [**啟用事件的即時深入**解析] 卡片上，選取 [**流覽**]。
 4. 您應該能夠在 [**輸入預覽**] 索引標籤上預覽記錄檔。如果顯示的資料不是最新的，**請選取 [** 重新整理] 以查看最新的事件。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 * 深入了解 Azure 事件中樞
   * [開始使用 Azure 事件中樞](../event-hubs/event-hubs-c-getstarted-send.md)
   * [使用 EventProcessorHost 接收訊息](../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)

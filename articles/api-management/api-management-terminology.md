@@ -11,14 +11,14 @@ ms.workload: integration
 ms.topic: article
 ms.date: 10/11/2017
 ms.author: apimpm
-ms.openlocfilehash: b99ca444532799d21850058eae0e3f40ed871135
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5bc76d2526c5585071a240af36b8a31e3de5708f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "61074049"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87024923"
 ---
-# <a name="terminology"></a>詞彙
+# <a name="azure-api-management-terminology"></a>Azure API 管理術語
 
 本文提供 API 管理專用的詞彙定義 (APIM)。
 
@@ -32,7 +32,7 @@ ms.locfileid: "61074049"
 * **修訂** - 當您的 API 已準備就緒，而且開發人員也已準備好使用時，對該 API 的變更通常需要特別小心，同時避免中斷 API 的呼叫者作業。 這對於讓開發人員了解您所做的更改也相當有用。 如需詳細資訊，請參閱[使用修訂](api-management-get-started-revise-api.md)。
 * **開發人員入口網站**您的客戶 (開發人員) 應使用開發人員入口網站來存取您的 API。 您可以自訂開發人員入口網站。 如需詳細資訊，請參閱[自訂開發人員入口網站](api-management-customize-styles.md)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 > [!div class="nextstepaction"]
 > [建立執行個體](get-started-create-service-instance.md)

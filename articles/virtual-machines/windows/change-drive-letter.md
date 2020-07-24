@@ -9,19 +9,19 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 01/02/2018
 ms.author: cynthn
-ms.openlocfilehash: 15df3178f2860fa066a82cb1429e0c1a6e5c2b08
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 511c3aa65bf0a10e42d7a54c98662cc388a5d711
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82083417"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028219"
 ---
 # <a name="use-the-d-drive-as-a-data-drive-on-a-windows-vm"></a>使用 D: 磁碟機作為 Windows VM 上的資料磁碟機
 如果您的應用程式需要使用 D 磁碟機來儲存資料，請遵循下列指示，使用不同的磁碟機代號來代表暫存磁碟。 切勿使用暫存磁碟儲存需要保留的資料。
 
 如果您調整虛擬機器大小或 **停止 (解除配置)** 虛擬機器，這可能會導致虛擬機器置於新的 Hypervisor。 已規劃或未規劃的維護事件也可能會觸發這個放置動作。 在此案例中，暫存磁碟會重新指派給第一個可用的磁碟機代號。 如果您的應用程式特別需要 D: 磁碟機，必須依照這些步驟，暫時移動 pagefile.sys、連接新的資料磁碟並為其指派代號 D，然後將 pagefile.sys 移回暫存磁碟機。 一旦完成後，如果 VM 移到不同的 Hypervisor，Azure 將不會收回 D:。
 
-如需有關 Azure 如何使用暫存磁碟的詳細資訊，請參閱 [了解 Microsoft Azure 虛擬機器上的暫存磁碟機](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/)
+如需有關 Azure 如何使用暫存磁碟的詳細資訊，請參閱 [了解 Microsoft Azure 虛擬機器上的暫存磁碟機](/archive/blogs/mast/understanding-the-temporary-drive-on-windows-azure-virtual-machines)
 
 ## <a name="attach-the-data-disk"></a>連接資料磁碟
 首先，您需要將資料磁碟連接到虛擬機器。 若要使用入口網站來執行此操作，請參閱[如何在 Azure 入口網站連接受控資料磁碟](attach-managed-disk-portal.md)。
@@ -54,9 +54,8 @@ ms.locfileid: "82083417"
 5. 在 [虛擬記憶體]**** 區段中，選取 [變更]****。
 6. 選取作業系統磁碟機 **C**，然後依序按一下 [沒有分頁檔]**** 和 [設定]****。
 7. 選取暫存磁碟機 **T**，然後依序按一下 [系統管理大小]**** 和 [設定]****。
-8. 按一下 [套用] 。 您將會收到一則警告，表示電腦必須重新啟動，才能讓變更生效。
+8. 按一下 [套用]。 您將會收到一則警告，表示電腦必須重新啟動，才能讓變更生效。
 9. 重新啟動虛擬機器。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 * 您可以藉由[附加額外的資料磁片](attach-managed-disk-portal.md)來增加虛擬機器可用的存放裝置。
-

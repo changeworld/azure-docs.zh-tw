@@ -7,12 +7,12 @@ ms.date: 06/17/2020
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.subservice: imaging
-ms.openlocfilehash: c8a5e1b1324ca49d8b540998a82ebf125b3c5364
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5be21eea9dbb9ea0925ac014fce6272ce8c32a0d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84975855"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028136"
 ---
 # <a name="preview-create-a-windows-vm-with-azure-image-builder-using-powershell"></a>預覽：使用 PowerShell 建立具有 Azure 映射產生器的 Windows VM
 
@@ -25,7 +25,7 @@ ms.locfileid: "84975855"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
-如果您選擇在本機使用 PowerShell，本文會要求您安裝 Az PowerShell 模組，並使用 [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) Cmdlet 連線到您的 Azure 帳戶。 如需安裝 Az PowerShell 模組的詳細資訊，請參閱[安裝 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps)。
+如果您選擇在本機使用 PowerShell，本文會要求您安裝 Az PowerShell 模組，並使用 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) Cmdlet 連線到您的 Azure 帳戶。 如需安裝 Az PowerShell 模組的詳細資訊，請參閱[安裝 Azure PowerShell](/powershell/azure/install-az-ps)。
 
 > [!IMPORTANT]
 > 雖然**ImageBuilder**和**az. ManagedServiceIdentity** PowerShell 模組處於預覽狀態，您必須使用 Cmdlet 搭配參數來個別安裝它們 `Install-Module` `AllowPrerelease` 。 這些 PowerShell 模組一旦正式運作之後，就會成為未來 Az PowerShell 模組版本的一部分，並在 Azure Cloud Shell 內以原生方式提供。
@@ -36,7 +36,7 @@ ms.locfileid: "84975855"
 
 [!INCLUDE [cloud-shell-try-it](../../../includes/cloud-shell-try-it.md)]
 
-如果您有多個 Azure 訂用帳戶，請選擇資源計費的適當訂用帳戶。 使用[set-azcoNtext](https://docs.microsoft.com/powershell/module/az.accounts/set-azcontext) Cmdlet 來選取特定的訂用帳戶。
+如果您有多個 Azure 訂用帳戶，請選擇資源計費的適當訂用帳戶。 使用[set-azcoNtext](/powershell/module/az.accounts/set-azcontext) Cmdlet 來選取特定的訂用帳戶。
 
 ```azurepowershell-interactive
 Set-AzContext -SubscriptionId 00000000-0000-0000-0000-000000000000
@@ -100,7 +100,7 @@ Write-Output $subscriptionID
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 
-使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) Cmdlet 來建立 [Azure 資源群組](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)。 資源群組是一個邏輯容器，Azure 資源會在其中以群組方式部署及管理。
+使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) Cmdlet 來建立 [Azure 資源群組](../../azure-resource-manager/management/overview.md)。 資源群組是一個邏輯容器，Azure 資源會在其中以群組方式部署及管理。
 
 下列範例會根據變數所指定區域中的變數名稱，建立資源群組 `$imageResourceGroup` `$location` 。 此資源群組用來儲存映射設定範本成品和映射。
 
@@ -168,7 +168,7 @@ New-AzRoleAssignment @RoleAssignParams
 ```
 
 > [!NOTE]
-> 如果您收到錯誤：「已_超過 get-azroledefinition：角色定義限制」。無法建立更多角色定義。_」，請參閱針對[Azure RBAC 進行疑難排解](https://docs.microsoft.com/azure/role-based-access-control/troubleshooting)。
+> 如果您收到錯誤：「已_超過 get-azroledefinition：角色定義限制」。無法建立更多角色定義。_」，請參閱針對[Azure RBAC 進行疑難排解](../../role-based-access-control/troubleshooting.md)。
 
 ## <a name="create-a-shared-image-gallery"></a>建立共用映像庫
 
@@ -198,9 +198,9 @@ $GalleryParams = @{
 New-AzGalleryImageDefinition @GalleryParams
 ```
 
-## <a name="create-an-image"></a>建立映像
+## <a name="create-an-image"></a>建立影像
 
-建立 Azure 映射產生器來源物件。 如需有效參數值的 Azure PowerShell，請參閱在[Azure Marketplace 中尋找 WINDOWS VM 映射](https://docs.microsoft.com/azure/virtual-machines/windows/cli-ps-findimage)。
+建立 Azure 映射產生器來源物件。 如需有效參數值的 Azure PowerShell，請參閱在[Azure Marketplace 中尋找 WINDOWS VM 映射](./cli-ps-findimage.md)。
 
 ```azurepowershell-interactive
 $SrcObjParams = @{
@@ -339,6 +339,6 @@ Remove-AzImageBuilderTemplate -ResourceGroupName $imageResourceGroup -Name $imag
 Remove-AzResourceGroup -Name $imageResourceGroup
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 若要深入瞭解本文中所使用之 json 檔案的元件，請參閱影像產生器[範本參考](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。

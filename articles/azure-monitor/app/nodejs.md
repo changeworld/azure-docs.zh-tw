@@ -3,11 +3,12 @@ title: 使用 Azure Application Insights 監視 Node.js 服務 | Microsoft Docs
 description: 使用 Application Insights 監視 Node.js 服務的效能和診斷問題。
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: bb6ef87c99cbeeed4e8f3e5f98b8c57ce8667a71
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 80b4c4336a3e253e38790520a7eb4458ca36ff30
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84309759"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87024379"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>使用 Application Insights 監視 Node.js 服務和應用程式
 
@@ -23,12 +24,12 @@ Node.js SDK 可以自動監視傳入和傳出 HTTP 要求、例外狀況、和�
 
 完成下列工作來設定應用程式或服務的監視。
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>先決條件
 
 開始之前，請確定您有 Azure 訂用帳戶或[免費取得一個新訂用帳戶][azure-free-offer]。 如果您的組織已經有 Azure 訂用帳戶，系統管理員可以依照 [這些指示][add-aad-user] 將您新增至該訂用帳戶。
 
 [azure-free-offer]: https://azure.microsoft.com/free/
-[add-aad-user]: https://docs.microsoft.com/azure/active-directory/active-directory-users-create-azure-portal
+[add-aad-user]: ../../active-directory/fundamentals/add-users-azure-active-directory.md
 
 ### <a name="set-up-an-application-insights-resource"></a><a name="resource"></a>設定 Application Insights 資源
 
@@ -395,7 +396,7 @@ client.config.PROPERTYNAME = VALUE;
 
 這些屬性是用戶端特定的，因此您可以 `appInsights.defaultClient` 與使用建立的用戶端分開設定 `new appInsights.TelemetryClient()` 。
 
-| 屬性                        | 說明                                                                                                |
+| 屬性                        | 描述                                                                                                |
 | ------------------------------- |------------------------------------------------------------------------------------------------------------|
 | instrumentationKey              | Application Insights 資源的識別碼。                                                      |
 | endpointUrl                     | 要用來傳送遙測承載的內嵌端點。                                                      |
@@ -411,7 +412,7 @@ client.config.PROPERTYNAME = VALUE;
 | correlationIdRetryIntervalMs    | 重試取得跨元件相互關聯的識別碼之前，所要等待的時間（預設值 `30000` ）。     |
 | correlationHeaderExcludedDomains| 要從跨元件相互關聯標頭插入排除的網域清單（預設請參閱[Config. ts](https://github.com/Microsoft/ApplicationInsights-node.js/blob/develop/Library/Config.ts)）。|
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * [在入口網站中監視遙測](../../azure-monitor/app/overview-dashboard.md)
 * [[寫您的遙測的分析查詢](../../azure-monitor/log-query/get-started-portal.md)
@@ -419,4 +420,4 @@ client.config.PROPERTYNAME = VALUE;
 <!--references-->
 
 [portal]: https://portal.azure.com/
-[FAQ]: ../../azure-monitor/app/troubleshoot-faq.md
+[FAQ]: ../faq.md
