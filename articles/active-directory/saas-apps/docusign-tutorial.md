@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 04/21/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b827c2e949502ad8bd19378a84ea89947929459d
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: 00c2825b78d0774d3c428978ba66c957130d3737
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509358"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499948"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-docusign"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 DocuSign 整合
 
@@ -39,6 +39,9 @@ ms.locfileid: "82509358"
 * Azure AD 訂用帳戶。 如果沒有訂用帳戶，您可以取得[免費帳戶](https://azure.microsoft.com/free/)。
 * 已啟用單一登入 (SSO) 的 DocuSign 訂用帳戶。
 
+> [!NOTE]
+> 也可以在 Azure AD 美國政府雲端環境中使用此整合。 您可以在 Azure AD 美國政府雲端應用程式庫中找到此應用程式，並以與公用雲端相同的方式進行設定。
+
 ## <a name="scenario-description"></a>案例描述
 
 在本教學課程中，您將在測試環境中設定和測試 Azure AD SSO，以確認：
@@ -55,11 +58,11 @@ ms.locfileid: "82509358"
 若要設定將 DocuSign 整合到 Azure AD 中，您必須從資源庫將 DocuSign 新增到受控 SaaS 應用程式清單：
 
 1. 使用公司或學校帳戶或個人 Microsoft 帳戶登入 [Azure 入口網站](https://portal.azure.com)。
-1. 在左側導覽窗格中，選取 [Azure Active Directory]  服務。
+1. 在左側導覽窗格中，選取 [Azure Active Directory] 服務。
 1. 移至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增新的應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **DocuSign**。
-1. 從結果面板選取 [DocuSign]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
+1. 在 [從資源庫新增] 區段的搜尋方塊中輸入 **DocuSign**。
+1. 從結果面板選取 [DocuSign]，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-docusign"></a>設定及測試 DocuSign 的 Azure AD 單一登入
@@ -79,34 +82,34 @@ ms.locfileid: "82509358"
 
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO：
 
-1. 在 [Azure 入口網站](https://portal.azure.com/)的 [DocuSign]  應用程式整合頁面上，尋找 [管理]  區段，然後選取 [單一登入]  。
+1. 在 [Azure 入口網站](https://portal.azure.com/)的 [DocuSign] 應用程式整合頁面上，尋找 [管理] 區段，然後選取 [單一登入]。
 1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
 1. 在 [以 SAML 設定單一登入]  頁面上，選取 [基本 SAML 組態]  的畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
 
-1. 在 [基本 SAML 組態]  區段中，遵循下列步驟：
+1. 在 [基本 SAML 組態] 區段中，遵循下列步驟：
 
-    a. 在 [登入 URL]  文字方塊中，使用下列模式輸入 URL：
+    a. 在 [登入 URL] 文字方塊中，使用下列模式輸入 URL：
 
     `https://<subdomain>.docusign.com/organizations/<OrganizationID>/saml2/login/sp/<IDPID>`
 
-    b. 在 [識別碼 (實體識別碼)]  文字方塊中，使用下列模式輸入 URL：
+    b. 在 [識別碼 (實體識別碼)] 文字方塊中，使用下列模式輸入 URL：
 
     `https://<subdomain>.docusign.com/organizations/<OrganizationID>/saml2`
 
-    c. 在 [回覆 URL]  文字方塊中，以下列模式輸入 URL：
+    c. 在 [回覆 URL] 文字方塊中，以下列模式輸入 URL：
     
     `https://<subdomain>.docusign.com/organizations/<OrganizationID>/saml2/login`
 
     > [!NOTE]
     > 這些加上括弧的值都是預留位置。 使用實際登入 URL、識別碼及回覆 URL 的值來取代這些值。 本教學課程稍後的「檢視 SAML 2.0 端點」一節會說明這些詳細資料。
 
-1. 在 [以 SAML 設定單一登入]  頁面上的 [SAML 簽署憑證]  區段中，尋找 [憑證 (Base64)]  。 選取 [下載]  以下載憑證，並將其儲存在您的電腦上。
+1. 在 [以 SAML 設定單一登入] 頁面上的 [SAML 簽署憑證] 區段中，尋找 [憑證 (Base64)]。 選取 [下載]  以下載憑證，並將其儲存在您的電腦上。
 
     ![憑證下載連結](common/certificatebase64.png)
 
-1. 在 [設定 DocuSign]  區段中，依據您的需求複製適當的 URL。
+1. 在 [設定 DocuSign] 區段中，依據您的需求複製適當的 URL。
 
     ![複製組態 URL](common/copy-configuration-urls.png)
 
@@ -114,65 +117,65 @@ ms.locfileid: "82509358"
 
 在本節中，您會在 Azure 入口網站中建立名為 B.Simon 的測試使用者。
 
-1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]  、[使用者]  和 [所有使用者]  。
-1. 在畫面頂端選取 [新增使用者]  。
-1. 在 [使用者]  屬性中，執行下列步驟：
-   1. 在 [名稱]  欄位中，輸入 **B.Simon**。  
-   1. 在 [使用者名稱]  欄位中，輸入 `<username>@<companydomain>.<extension>`。 例如： `B.Simon@contoso.com` 。
-   1. 選取 [顯示密碼]  核取方塊，然後記下 [密碼]  方塊中顯示的值。
-   1. 選取 [建立]  。
+1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]、[使用者] 和 [所有使用者]。
+1. 在畫面頂端選取 [新增使用者]。
+1. 在 [使用者] 屬性中，執行下列步驟：
+   1. 在 [名稱] 欄位中，輸入 **B.Simon**。  
+   1. 在 [使用者名稱] 欄位中，輸入 `<username>@<companydomain>.<extension>`。 例如： `B.Simon@contoso.com` 。
+   1. 選取 [顯示密碼] 核取方塊，然後記下 [密碼] 方塊中顯示的值。
+   1. 選取 [建立]。
 
 ### <a name="assign-the-azure-ad-test-user"></a>指派 Azure AD 測試使用者
 
 在這一節中，您會將 DocuSign 的存取權授與 B.Simon，此使用者便能使用 Azure 單一登入。
 
-1. 在 Azure 入口網站中，選取 [企業應用程式]  ，然後選取 [所有應用程式]  。
-1. 在應用程式清單中，選取 [DocuSign]  。
-1. 在應用程式的概觀頁面上，尋找 [管理]  區段，然後選取 [使用者和群組]  。
+1. 在 Azure 入口網站中，選取 [企業應用程式]，然後選取 [所有應用程式]。
+1. 在應用程式清單中，選取 [DocuSign]。
+1. 在應用程式的概觀頁面上，尋找 [管理] 區段，然後選取 [使用者和群組]。
 
    ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-1. 選取 [新增使用者]  ，然後在 [新增指派]  對話方塊中，選取 [使用者和群組]  。
+1. 選取 [新增使用者]，然後在 [新增指派] 對話方塊中，選取 [使用者和群組]。
 
     ![[新增使用者] 連結](common/add-assign-user.png)
 
-1. 在 [使用者和群組]  對話方塊中，從 [使用者]  清單選取 [B.Simon]  ，然後按畫面底部的 [選取]  按鈕。
-1. 如果您在 SAML 判斷提示中需要任何角色值，請在 [選取角色]  對話方塊的清單中為使用者選取適當的角色，然後按畫面底部的 [選取]  按鈕。
-1. 在 [新增指派]  對話方塊中，選取 [指派]  按鈕。
+1. 在 [使用者和群組] 對話方塊中，從 [使用者] 清單選取 [B.Simon]，然後按畫面底部的 [選取] 按鈕。
+1. 如果您在 SAML 判斷提示中需要任何角色值，請在 [選取角色] 對話方塊的清單中為使用者選取適當的角色，然後按畫面底部的 [選取] 按鈕。
+1. 在 [新增指派] 對話方塊中，選取 [指派] 按鈕。
 
 ## <a name="configure-docusign-sso"></a>設定 DocuSign SSO
 
-1. 若要在 DocuSign 中自動進行設定，您必須選取 [安裝擴充功能]  以安裝「我的應用程式安全登入」瀏覽器擴充功能。
+1. 若要在 DocuSign 中自動進行設定，您必須選取 [安裝擴充功能] 以安裝「我的應用程式安全登入」瀏覽器擴充功能。
 
     ![我的應用程式擴充功能](common/install-myappssecure-extension.png)
 
-2. 將擴充功能新增至瀏覽器之後，請選取 [設定 DocuSign]  。 系統會將您導向至 DocuSign 應用程式。 請從該處提供用以登入 DocuSign 的管理員認證。 瀏覽器擴充功能會自動設定應用程式，並自動執行步驟 3 到 5。
+2. 將擴充功能新增至瀏覽器之後，請選取 [設定 DocuSign]。 系統會將您導向至 DocuSign 應用程式。 請從該處提供用以登入 DocuSign 的管理員認證。 瀏覽器擴充功能會自動設定應用程式，並自動執行步驟 3 到 5。
 
     ![設定組態](common/setup-sso.png)
 
 3. 如果您想要手動設定 DocuSign，請開啟新的網頁瀏覽器視窗，並以系統管理員身分登入 DocuSign 公司網站。
 
-4. 在頁面的右上角，選取設定檔標誌，然後選取 [移至管理]  。
+4. 在頁面的右上角，選取設定檔標誌，然後選取 [移至管理]。
   
     ![設定檔之下的移至管理][51]
 
-5. 在您的網域解決方案頁面上，選取 [網域]  。
+5. 在您的網域解決方案頁面上，選取 [網域]。
 
     ![網域解決方案/網域][50]
 
-6. 在 [網域]  區段中，選取 [宣告網域]  。
+6. 在 [網域] 區段中，選取 [宣告網域]。
 
     ![宣告網域選項][52]
 
-7. 在 [宣告網域]  對話方塊中，於 [網域名稱]  方塊內鍵入您的公司網域，然後選取 [宣告]  。 請務必驗證網域，且其狀態為作用中。
+7. 在 [宣告網域] 對話方塊中，於 [網域名稱] 方塊內鍵入您的公司網域，然後選取 [宣告]。 請務必驗證網域，且其狀態為作用中。
 
     ![宣告網域/功能變數名稱對話方塊][53]
 
-8. 在網域解決方案頁面上，選取 [識別提供者]  。
+8. 在網域解決方案頁面上，選取 [識別提供者]。
   
     ![識別提供者選項][54]
 
-9. 在 [識別提供者]  區段中，選取 [新增識別提供者]  。
+9. 在 [識別提供者] 區段中，選取 [新增識別提供者]。
 
     ![新增識別提供者選項][55]
 
@@ -180,50 +183,50 @@ ms.locfileid: "82509358"
 
     ![識別提供者設定欄位][56]
 
-    a. 在 [名稱]  方塊中，鍵入組態的唯一名稱。 請勿使用空格。
+    a. 在 [名稱] 方塊中，鍵入組態的唯一名稱。 請勿使用空格。
 
-    b. 在 [識別提供者簽發者]  方塊中，貼上您從 Azure 入口網站複製的 [Azure AD 識別碼]  值。
+    b. 在 [識別提供者簽發者] 方塊中，貼上您從 Azure 入口網站複製的 [Azure AD 識別碼] 值。
 
-    c. 在 [識別提供者登入 URL]  方塊中，貼上您從 Azure 入口網站複製的 [登入 URL]  值。
+    c. 在 [識別提供者登入 URL] 方塊中，貼上您從 Azure 入口網站複製的 [登入 URL] 值。
 
-    d. 在 [識別提供者登出 URL]  方塊中，貼上您從 Azure 入口網站複製的 [登出 URL]  值。
+    d. 在 [識別提供者登出 URL] 方塊中，貼上您從 Azure 入口網站複製的 [登出 URL] 值。
 
-    e. 選取 [簽署驗證要求]  。
+    e. 選取 [簽署驗證要求]。
 
-    f. 選取 [POST]  作為 [驗證要求傳送方式]  。
+    f. 選取 [POST] 作為 [驗證要求傳送方式]。
 
-    g. 選取 [GET]  作為 [登出要求傳送方式]  。
+    g. 選取 [GET] 作為 [登出要求傳送方式]。
 
-    h. 在 [自訂屬性對應]  區段中，選取 [新增對應]  。
+    h. 在 [自訂屬性對應] 區段中，選取 [新增對應]。
 
        ![自訂屬性對應 UI][62]
 
-    i. 選擇要對應至 Azure AD 宣告的欄位。 在此範例中，**emailaddress** 宣告的對應值是 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`。 這是 Azure AD 針對電子郵件宣告所提供的預設宣告名稱。 選取 [儲存]  。
+    i. 選擇要對應至 Azure AD 宣告的欄位。 在此範例中，**emailaddress** 宣告的對應值是 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`。 這是 Azure AD 針對電子郵件宣告所提供的預設宣告名稱。 選取 [儲存]。
 
        ![自訂屬性對應欄位][57]
 
        > [!NOTE]
        > 請使用適當的 **使用者識別碼**，將使用者從 Azure AD 對應到 DocuSign 使用者對應。 選取適當的欄位，並根據組織的設定輸入適當的值。
 
-    j. 在 [識別提供者憑證]  區段中選取 [新增憑證]  ，上傳您從 Azure AD 入口網站下載的憑證，然後選取 [儲存]  。
+    j. 在 [識別提供者憑證] 區段中選取 [新增憑證]，上傳您從 Azure AD 入口網站下載的憑證，然後選取 [儲存]。
 
        ![識別提供者憑證/新增憑證][58]
 
-    k. 在 [識別提供者]  區段中，選取 [動作]  ，然後選取 [端點]  。
+    k. 在 [識別提供者] 區段中，選取 [動作]，然後選取 [端點]。
 
        ![識別提供者/端點][59]
 
-    l. 在 DocuSign 系統管理入口網站的 [檢視 SAML 2.0 端點]  區段中，執行下列步驟：
+    l. 在 DocuSign 系統管理入口網站的 [檢視 SAML 2.0 端點] 區段中，執行下列步驟：
 
        ![檢視 SAML 2.0 端點][60]
        
-       1. 複製 [服務提供者簽發者 URL]  ，並將其貼到 Azure 入口網站上的 [基本 SAML 設定]  區段的 [識別碼]  方塊中。
+       1. 複製 [服務提供者簽發者 URL]，並將其貼到 Azure 入口網站上的 [基本 SAML 設定] 區段的 [識別碼] 方塊中。
        
-       1. 複製 [服務提供者判斷提示取用者服務 URL]  ，並將其貼到 Azure 入口網站上 [基本 SAML 設定]  區段的 [回覆 URL]  方塊中。
+       1. 複製 [服務提供者判斷提示取用者服務 URL]，並將其貼到 Azure 入口網站上 [基本 SAML 設定] 區段的 [回覆 URL] 方塊中。
        
-       1. 複製 [服務提供者登入 URL]  ，並將其貼到 Azure 入口網站上的 [基本 SAML 設定]  區段的 [登入 URL]  方塊中。 您會在**服務提供者登入 URL**取得 IDPID 值。
+       1. 複製 [服務提供者登入 URL]，並將其貼到 Azure 入口網站上的 [基本 SAML 設定] 區段的 [登入 URL] 方塊中。 您會在**服務提供者登入 URL**取得 IDPID 值。
 
-       1. 選取 [關閉]  。
+       1. 選取 [關閉]。
 
 ### <a name="create-docusign-test-user"></a>建立 DocuSign 測試使用者
 

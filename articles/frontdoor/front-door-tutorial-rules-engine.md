@@ -1,5 +1,5 @@
 ---
-title: Azure Front Door
+title: 教學課程：設定規則引擎 - Azure Front Door
 description: 本文提供如何在 Azure 入口網站和 CLI 中設定規則引擎的教學課程。
 services: frontdoor
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 4/30/2020
 ms.author: mebeatty
-ms.openlocfilehash: a931a12889cec67baf6ef2db09091c8ec581ef08
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b40bb0e426571acc66d4f5f1b992fb4c6b67494a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85321557"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536947"
 ---
 # <a name="configure-your-rules-engine"></a>設定規則引擎
 
-本文提供在 Azure 入口網站和 CLI 中建立規則引擎設定和第一個規則的步驟。 
+本文提供在 Azure 入口網站和 CLI 中建立規則引擎組態和第一個規則的步驟。 
 
 ## <a name="configure-rules-engine-in-azure-portal"></a>在 Azure 入口網站中設定規則引擎
 1. 建立規則引擎組態之前，[建立 Front Door](quickstart-create-front-door.md)。
@@ -35,7 +35,7 @@ ms.locfileid: "85321557"
     > [!NOTE]
     >- 若要從規則中刪除條件或動作，請使用特定條件或動作右手邊的垃圾桶。
     > - 若要建立適用於所有連入流量的規則，請勿指定任何條件。
-    > - 若要在符合第一個符合條件時停止評估規則，請核取 [**停止評估剩餘的規則**]。 如果已核取此選項，且符合特定規則的所有相符條件，則不會執行設定中的其餘規則。  
+    > - 若要在符合第一個比對條件時停止評估規則，請勾選 [停止評估剩餘規則]。 若已選取，且滿足特定規則的所有比對條件，則不會執行組態中的剩餘規則。  
 
     ![尋找規則引擎](./media/front-door-rules-engine/rules-engine-tutorial-4.png) 
 

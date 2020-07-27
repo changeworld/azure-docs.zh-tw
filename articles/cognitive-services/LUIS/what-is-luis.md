@@ -3,12 +3,12 @@ title: 何謂 Language Understanding Intelligent Service (LUIS)？
 description: Language Understanding Intelligent Service (LUIS) 是一種 API 雲端式服務，可將自訂機器學習智慧套用至使用者的對話、自然語言文字中，以預測整體意義，並找出相關的詳細資訊。
 ms.topic: overview
 ms.date: 05/05/2020
-ms.openlocfilehash: 26e1dfd5a610be9470d05080ca1559eec47196ab
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 231a6580a6776b82173865744e9e8757c2fa08f1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83675989"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538032"
 ---
 # <a name="what-is-language-understanding-luis"></a>何謂 Language Understanding Intelligent Service (LUIS)？
 
@@ -61,7 +61,7 @@ LUIS 模型的首要組件是使用者意向的類別，名為 **[意圖](luis-c
 
 ## <a name="query-prediction-endpoint"></a>查詢預測端點
 
-在已訓練應用程式並發佈至端點後，用戶端應用程式會將語句傳送至預測[端點](https://go.microsoft.com/fwlink/?linkid=2092356) API。 API 會將應用程式套用至語句進行分析，並以 JSON 格式回應預測結果。
+在已訓練應用程式並發佈至端點後，用戶端應用程式會將語句傳送至預測[端點](https://go.microsoft.com/fwlink/?linkid=2092356) API。 API 會將模型套用至語句進行分析，並以 JSON 格式回應預測結果。
 
 JSON 最基本的端點回應包含查詢語句和評分最高的意圖。 它也可以擷取下列**連絡人類型**實體和整體情感之類的資料。
 

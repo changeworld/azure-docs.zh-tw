@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: a5829057aed913ea824cbd2fd6b52369b5e70d88
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: fada393dcab61cf00a0a3befcf4af3660bf625dc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85801832"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536516"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-linux-device"></a>快速入門：將您的第一個 IoT Edge 模組部署至虛擬 Linux 裝置
 
@@ -63,7 +63,7 @@ ms.locfileid: "85801832"
 
 此快速入門適用於 IoT 中樞的免費層級。 如果您在過去已使用過 IoT 中樞，並已建立中樞，您可以使用該 IoT 中樞。
 
-下列程式碼會在資源群組 **IoTEdgeResources** 中建立免費的 **F1** 中樞。 以 IoT 中樞的唯一名稱取代 `{hub_name}`。
+下列程式碼會在資源群組 **IoTEdgeResources** 中建立免費的 **F1** 中樞。 以 IoT 中樞的唯一名稱取代 `{hub_name}`。 建立 IoT 中樞可能需要幾分鐘的時間。
 
    ```azurecli-interactive
    az iot hub create --resource-group IoTEdgeResources --name {hub_name} --sku F1 --partition-count 2
@@ -233,10 +233,19 @@ IoT Edge 裝置現已設定完成。 並已準備好執行雲端部署的模組�
 
 如果您是在新的資源群組中建立虛擬機器和 IoT 中樞，您可以刪除該群組和所有相關聯的資源。 再次檢查資源群組的內容，確定沒有您想要保留的內容。 如果您不想刪除整個群組，可改為刪除個別資源。
 
-移除 **IoTEdgeResources** 群組。
+> [!IMPORTANT]
+> 刪除資源群組是無法回復的動作。
+
+移除 **IoTEdgeResources** 群組。 可能需要幾分鐘才能刪除資源群組。
 
 ```azurecli-interactive
 az group delete --name IoTEdgeResources
+```
+
+您可以檢視資源群組清單來確認已移除資源群組。
+
+```azurecli-interactive
+az group list
 ```
 
 ## <a name="next-steps"></a>後續步驟

@@ -6,12 +6,12 @@ ms.topic: quickstart
 description: 本快速入門說明如何使用 Azure Dev Spaces 和 Visual Studio Code 對 Azure Kubernetes Service 上的 .NET Core 應用程式進行偵錯和快速反覆運算
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, 容器, Helm, 服務網格, 服務網格路由傳送, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: b38562879fa67d7ee82e3251ea2fcaa57a2075d6
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: b8ddf2e484b3d1525825f8df3b738091564b0a78
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80240217"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512447"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-visual-studio-code-and-net-core---azure-dev-spaces"></a>快速入門：在 Kubernetes 上偵錯和逐一查看：Visual Studio Code 和 .NET Core - Azure Dev Spaces
 
@@ -102,25 +102,25 @@ git clone https://github.com/Azure/dev-spaces
 
 按一下左側的 [偵錯]  圖示，然後按一下頂端的 [.NET Core 啟動 (AZDS)]  。
 
-![](media/get-started-netcore/debug-configuration.png)
+![螢幕擷取畫面出現的是 Visual Studio Code 視窗的左上角。 偵錯圖示會反白顯示，左側面板的標題為「DEBUG」，而標題右側的下拉式清單會顯示「.NET Core Launch (A Z D S)」。](media/get-started-netcore/debug-configuration.png)
 
-此命令會在 Azure Dev Spaces 中以偵錯模式建置和執行您的服務。 底部的 [終端機]  視窗會顯示您在 Azure Dev Spaces 中所執行服務的建置輸出和 URL。 [偵錯主控台]  會顯示記錄輸出。
+此命令會在 Azure Dev Spaces 中以偵錯模式建置和執行您的服務。 底部的 [終端機] 視窗會顯示您在 Azure Dev Spaces 中所執行服務的建置輸出和 URL。 [偵錯主控台] 會顯示記錄輸出。
 
 > [!Note]
-> 如果您未在 [命令選擇區]  中看到任何 Azure Dev Spaces 命令，請確定您已安裝[適用於 Azure Dev Spaces 的 Visual Studio Code 擴充功能](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds)。 也請確認您已在 Visual Studio Code 中開啟 dev-spaces/samples/dotnetcore/getting-started/webfrontend  目錄。
+> 如果您未在 [命令選擇區] 中看到任何 Azure Dev Spaces 命令，請確定您已安裝[適用於 Azure Dev Spaces 的 Visual Studio Code 擴充功能](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds)。 也請確認您已在 Visual Studio Code 中開啟 dev-spaces/samples/dotnetcore/getting-started/webfrontend 目錄。
 
 您可以開啟公用 URL，查看執行的服務。
 
 > [!Note]
-> 一開始，公用 URL 可能會顯示「不正確的閘道」  錯誤。 請稍候幾秒，再重新整理網頁，您應該會看到服務正在執行。
+> 一開始，公用 URL 可能會顯示「不正確的閘道」錯誤。 請稍候幾秒，再重新整理網頁，您應該會看到服務正在執行。
 
-依序按一下 [偵錯]  和 [停止偵錯]  來停止偵錯工具。
+依序按一下 [偵錯] 和 [停止偵錯] 來停止偵錯工具。
 
 ## <a name="update-code"></a>更新程式碼
 
-若要部署更新過的服務版本，您可以在專案中更新任何檔案，然後重新執行 .NET Core Launch (AZDS)  。 例如：
+若要部署更新過的服務版本，您可以在專案中更新任何檔案，然後重新執行 .NET Core Launch (AZDS)。 例如：
 
-1. 如果您的應用程式仍在執行中，請按一下 [偵錯]  ，然後按遺下 [停止偵錯]  來停止它。
+1. 如果您的應用程式仍在執行中，請按一下 [偵錯]，然後按遺下 [停止偵錯] 來停止它。
 1. 將 [`Controllers/HomeController.cs` 中的第 22 行](https://github.com/Azure/dev-spaces/blob/master/samples/dotnetcore/getting-started/webfrontend/Controllers/HomeController.cs#L22) \(英文\) 更新為：
     
     ```csharp
@@ -128,18 +128,18 @@ git clone https://github.com/Azure/dev-spaces
     ```
 
 1. 儲存您的變更。
-1. 重新執行 .NET Core Launch (AZDS)  。
-1. 瀏覽至執行中的服務，然後按一下 [關於]  。
+1. 重新執行 .NET Core Launch (AZDS)。
+1. 瀏覽至執行中的服務，然後按一下 [關於]。
 1. 觀察您的變更。
-1. 依序按一下 [偵錯]  和 [停止偵錯]  來停止您的應用程式。
+1. 依序按一下 [偵錯] 和 [停止偵錯] 來停止您的應用程式。
 
 ## <a name="setting-and-using-breakpoints-for-debugging"></a>設定和使用偵錯的中斷點
 
-使用 [.NET Core 啟動 (AZDS)]  以偵錯模式啟動您的服務。
+使用 [.NET Core 啟動 (AZDS)] 以偵錯模式啟動您的服務。
 
-依序按一下 [檢視]  和 [總管]  ，來瀏覽回到 [總管]  檢視。 開啟 `Controllers/HomeController.cs`，然後在第 22 行的某處按一下來將游標放在該處。 若要設定中斷點，請按 F9  ，或依序按一下 [偵錯]  和 [切換中斷點]  。
+依序按一下 [檢視] 和 [總管]，來瀏覽回到 [總管] 檢視。 開啟 `Controllers/HomeController.cs`，然後在第 22 行的某處按一下來將游標放在該處。 若要設定中斷點，請按 F9，或依序按一下 [偵錯] 和 [切換中斷點]。
 
-在瀏覽器中開啟您的服務，並注意其中並未顯示任何訊息。 返回 Visual Studio Code，您會看到第 20 行已醒目提示。 您所設定的中斷點已讓服務在第 20 行暫停。 若要讓服務繼續，請按 F5  ，或依序按一下 [偵錯]  和 [繼續]  。 返回您的瀏覽器，並注意現在會顯示訊息。
+在瀏覽器中開啟您的服務，並注意其中並未顯示任何訊息。 返回 Visual Studio Code，您會看到第 20 行已醒目提示。 您所設定的中斷點已讓服務在第 20 行暫停。 若要讓服務繼續，請按 F5，或依序按一下 [偵錯] 和 [繼續]。 返回您的瀏覽器，並注意現在會顯示訊息。
 
 在連結了偵錯工具的 Kubernetes 中執行您的服務時，您可以完整地存取偵錯資訊，例如呼叫堆疊、區域變數和例外狀況資訊。
 
@@ -153,9 +153,9 @@ git clone https://github.com/Azure/dev-spaces
 ViewData["Message"] = "Your application description page in Azure while debugging!";
 ```
 
-儲存檔案。 依序按一下 [偵錯]  和 [重新啟動偵錯]  ，或在 [偵錯工具列]  中按一下 [重新啟動偵錯]  按鈕。
+儲存檔案。 依序按一下 [偵錯] 和 [重新啟動偵錯]，或在 [偵錯工具列] 中按一下 [重新啟動偵錯] 按鈕。
 
-![](media/common/debug-action-refresh.png)
+![偵錯工具列是位於頁面頂端中央的小窗格 (在網頁標題正下方)。 重新開機按鈕會顯示圓形箭號，並反白顯示。 按鈕的暫留影像為「重新開機 (Ctrl+Shift+F5)」。](media/common/debug-action-refresh.png)
 
 在瀏覽器中開啟您的服務，並注意您已更新的訊息會顯示出來。
 

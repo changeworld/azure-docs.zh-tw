@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 06/24/2020
+ms.date: 07/15/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 151e7d286dac91ddd0e988027968f2e44a83e35e
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 8b4d58163c28e00c30c5b0f9db3a6ff259fbf5ae
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362640"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536915"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站部署和設定 Azure 防火牆
 
@@ -26,15 +26,14 @@ ms.locfileid: "85362640"
 
 當您將網路流量路由傳送到防火牆作為子網路預設閘道時，網路流量必須遵守設定的防火牆規則。
 
-在本教學課程中，您會建立包含三個子網路的簡易單一 VNet，以進行簡單的部署。
+在本教學課程中，您會建立包含二個子網路的簡易單一 VNet，以進行簡單的部署。
 
 對於生產環境部署，建議您使用[中樞和支點模型](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)，其中防火牆會位於自己的 VNet 中。 工作負載伺服器位於相同區域中的對等互連 VNet，其中包含一個或多個子網路。
 
 * **AzureFirewallSubnet** - 防火牆位於此子網路。
 * **Workload-SN** - 工作負載伺服器位於此子網路。 此子網路的網路流量會通過防火牆。
-* **Jump-SN** - 跳板機位於此子網路。 跳板機具有公用 IP 位址，您可以使用遠端桌面與其連線。 接著，您可以從此處 (使用其他的遠端桌面) 連線到工作負載伺服器。
 
-![教學課程網路基礎結構](media/tutorial-firewall-rules-portal/Tutorial_network.png)
+![教學課程網路基礎結構](media/tutorial-firewall-deploy-portal/tutorial-network.png)
 
 在本教學課程中，您會了解如何：
 
@@ -44,6 +43,7 @@ ms.locfileid: "85362640"
 > * 建立預設路由
 > * 設定允許存取 www.google.com 的應用程式規則
 > * 設定允許存取外部 DNS 伺服器的網路規則
+> * 設定 NAT 規則以允許遠端桌面連線至測試伺服器
 > * 測試防火牆
 
 您可以使用 [Azure PowerShell](deploy-ps.md) 完成本教學課程。
@@ -74,62 +74,52 @@ ms.locfileid: "85362640"
 
 1. 從 Azure 入口網站功能表或 **[首頁]** 頁面，選取 [建立資源]。
 1. 選取 [網路] > [虛擬網路]。
-1. 在 [名稱] 中，鍵入 **Test-FW-VN**。
-1. 在 [位址空間] 中，鍵入 **10.0.0.0/16**。
-1. 在 [訂用帳戶] 中，選取您的訂用帳戶。
-1. 在 [資源群組] 中，選取 [Test-FW-RG]。
-1. 在 [位置] 中，選取您先前使用的相同位置。
-1. 在 [子網路] 底下的 [名稱] 中，鍵入 **AzureFirewallSubnet**。 防火牆會在此子網路中，且子網路名稱**必須**是 AzureFirewallSubnet。
-1. 在 [位址範圍] 中，輸入 **10.0.1.0/26**。
-1. 接受其他預設設定，然後選取 [建立]。
+2. 在 [訂用帳戶] 中，選取您的訂用帳戶。
+3. 在 [資源群組] 中，選取 [Test-FW-RG]。
+4. 在 [名稱] 中，鍵入 **Test-FW-VN**。
+5. 針對 [區域]，選取您先前使用的相同位置。
+6. 完成時，選取 下一步:**IP 位址**。
+7. 針對 [IPv4 位址空間]，輸入 **10.0.0.0/16**。
+8. 在 [子網路] 下，選取 [預設]。
+9. 針對 [子網路名稱]，輸入 **AzureFirewallSubnet**。 防火牆會在此子網路中，且子網路名稱**必須**是 AzureFirewallSubnet。
+10. 在 [位址範圍] 中，輸入 **10.0.1.0/26**。
+11. 選取 [儲存]。
 
-### <a name="create-additional-subnets"></a>建立其他子網路
+   接下來，建立工作負載伺服器的子網路。
 
-接下來，建立跳板機的子網路，以及工作負載伺服器的子網路。
+1. 選取 [新增子網路]。
+4. 在 [子網路名稱] 中，輸入 **Workload-SN**。
+5. 針對 [子網路位址範圍]，輸入 **10.0.2.0/24**。
+6. 選取 [新增]。
+7. 選取 [檢閱 + 建立]  。
+8. 選取 [建立]  。
 
-1. 在 Azure 入口網站功能表上，選取 [資源群組]，或從任何頁面搜尋並選取 [資源群組]。 然後選取 **Test-FW-RG**。
-2. 選取 **Test-FW-VN** 虛擬網路。
-3. 選取 [子網路] > [+子網路]。
-4. 在 [名稱] 中，鍵入 **Workload-SN**。
-5. 在 [位址範圍] 中，鍵入 **10.0.2.0/24**。
-6. 選取 [確定]。
+### <a name="create-a-virtual-machine"></a>建立虛擬機器
 
-建立另一個名為 **Jump-SN** 的子網路，位址範圍 **10.0.3.0/24**。
-
-### <a name="create-virtual-machines"></a>建立虛擬機器
-
-現在建立跳板和工作負載虛擬機器，並將它們放在適當的子網路中。
+現在，建立工作負載虛擬機器並放在 **Workload-SN** 子網路中。
 
 1. 從 Azure 入口網站功能表或 **[首頁]** 頁面，選取 [建立資源]。
-2. 選取 [計算]，然後選取 [精選] 清單中的 [Windows Server 2016 Datacenter]。
-3. 依虛擬機器輸入這些值：
+2. 選取 [計算]，然後選取 [虛擬機器]。
+3. 熱門清單中的 **Windows Server 2016 Datacenter**。
+4. 依虛擬機器輸入這些值：
 
    |設定  |值  |
    |---------|---------|
    |資源群組     |**Test-FW-RG**|
-   |虛擬機器名稱     |**Srv-Jump**|
+   |虛擬機器名稱     |**Srv-Work**|
    |區域     |同前|
-   |系統管理員使用者名稱     |**azureuser**|
-   |密碼     |**Azure123456!**|
+   |映像|Windows Server 2019 Datacenter|
+   |系統管理員使用者名稱     |輸入使用者名稱|
+   |密碼     |輸入密碼|
 
-4. 在 [輸入連接埠規則] 底下，針對 [公用輸入連接埠] 選取 [允許選取的連接埠]。
-5. 在 [選取輸入連接埠] 中，選取 [RDP (3389)]。
-
+4. 在 [輸入連接埠規則] 下，針對 [公用輸入連接埠] 選取 [無]。
 6. 接受其他預設值，然後選取 [下一步：磁碟]。
 7. 接受磁碟預設值，然後選取 [下一步：網路]。
-8. 確定您已選取 [Test-FW-VN] 作為虛擬網路，而且子網路是 [Jump-SN]。
-9. 針對 [公用 IP]，接受預設新的公用 IP 位址名稱 (Srv-Jump-ip)。
+8. 確定您已選取 [Test-FW-VN] 作為虛擬網路，而且子網路是 [Workload-SN]。
+9. 在 [公用 IP] 中，選取 [無]。
 11. 接受其他預設值，然後選取 [下一步：管理]。
 12. 選取 [關閉] 來停用開機診斷。 接受其他預設值，然後選取 [檢閱 + 建立]。
 13. 檢閱摘要頁面上的設定，然後選取 [建立]。
-
-使用下表中的資訊來設定另一個名為 **Srv-Work** 的虛擬機器。 其餘的組態與 Srv-Jump 虛擬機器相同。
-
-|設定  |值  |
-|---------|---------|
-|子網路|**Workload-SN**|
-|公用 IP|**None**|
-|公用輸入連接埠|**None**|
 
 ## <a name="deploy-the-firewall"></a>部署防火牆
 
@@ -147,14 +137,14 @@ ms.locfileid: "85362640"
    |名稱     |**Test-FW01**|
    |Location     |選取您先前使用的相同位置|
    |選擇虛擬網路     |**使用現有項目**︰**Test-FW-VN**|
-   |公用 IP 位址     |**新增**。 公用 IP 位址必須是標準 SKU 類型。|
+   |公用 IP 位址     |**新增**<br>**名稱**：**fw-pip**|
 
 5. 選取 [檢閱 + 建立]。
 6. 檢閱摘要，然後選取 [建立] 來建立防火牆。
 
    這需要幾分鐘才能部署。
 7. 部署完成之後，請前往 **Test-FW-RG** 資源群組，然後選取 **Test-FW01** 防火牆。
-8. 請記下私人 IP 位址。 稍後當您建立預設路由時將使用到它。
+8. 請注意防火牆的私人和公用 IP 位址。 您稍後將會用到這些位址資訊。
 
 ## <a name="create-a-default-route"></a>建立預設路由
 
@@ -185,7 +175,7 @@ ms.locfileid: "85362640"
 
 ## <a name="configure-an-application-rule"></a>設定應用程式規則
 
-此應用程式規則允許對 www.google.com 進行輸出存取。
+此應用程式規則允許對 `www.google.com` 進行輸出存取。
 
 1. 開啟 **Test-FW-RG**，然後選取 **Test-FW01** 防火牆。
 2. 在 [Test-FW01] 頁面的 [設定] 底下，選取 [規則]。
@@ -198,7 +188,7 @@ ms.locfileid: "85362640"
 9. 針對 [來源類型]，選取 [IP 位址]。
 10. 針對 [來源]，輸入 **10.0.2.0/24**。
 11. 在 [通訊協定:連接埠] 中，鍵入 **http、https**。
-12. 在 [目標 FQDN] 中，鍵入 **www.google.com**
+12. 在 [目標 FQDN] 中，輸入 **`www.google.com`**
 13. 選取 [新增]。
 
 Azure 防火牆包含內建的規則集合，適用於依預設允許的基礎結構 FQDN。 這些 FQDN 是平台特定的，且無法用於其他用途。 如需詳細資訊，請參閱[基礎結構 FQDN](infrastructure-fqdns.md)。
@@ -216,11 +206,31 @@ Azure 防火牆包含內建的規則集合，適用於依預設允許的基礎�
 7. 在 [通訊協定] 中，選取 [UDP]。
 9. 針對 [來源類型]，選取 [IP 位址]。
 1. 針對 [來源]，輸入 **10.0.2.0/24**。
-2. 針對 [目的地位址]，輸入 **209.244.0.3,209.244.0.4**
+2. 針對 [目的地類型]，選取 [IP 位址]。
+3. 針對 [目的地位址]，輸入 **209.244.0.3,209.244.0.4**
 
    這些是由 CenturyLink 運作的公用 DNS 伺服器。
 1. 在 [目的地連接埠] 中，鍵入 **53**。
 2. 選取 [新增]。
+
+## <a name="configure-a-dnat-rule"></a>設定 DNAT 規則
+
+此規則可讓您透過防火牆將遠端桌面連線至 Srv-Work 虛擬機器。
+
+1. 選取 [NAT 規則集合] 索引標籤。
+2. 選取 [新增 NAT 規則集合]。
+3. 針對 [名稱] 輸入 **rdp**。
+4. 在 [優先順序] 中，鍵入 **200**。
+5. 在 [規則] 下的 [名稱] 中，輸入 **rdp-nat**。
+6. 在 [通訊協定] 中，選取 [TCP]。
+7. 針對 [來源類型]，選取 [IP 位址]。
+8. 針對 [來源]，輸入 **\*** 。
+9. 在 [目的地位址] 中，輸入防火牆的公用 IP 位址。
+10. 在 [目的地連接埠] 中，輸入 **3389**。
+11. 在 [轉譯的位址] 中，輸入 **Srv-work** 私人 IP 位址。
+12. 在 [轉譯的連接埠] 中，輸入 **3389**。
+13. 選取 [新增]。
+
 
 ### <a name="change-the-primary-and-secondary-dns-address-for-the-srv-work-network-interface"></a>變更 **Srv-Work** 網路介面的主要和次要 DNS 位址
 
@@ -238,14 +248,13 @@ Azure 防火牆包含內建的規則集合，適用於依預設允許的基礎�
 
 現在請測試防火牆，以確認其運作符合預期。
 
-1. 從 Azure 入口網站中，檢閱 **Srv-Work** 虛擬機器的網路設定，並記下私人 IP 位址。
-2. 將遠端桌面連線到 **Srv-Jump** 虛擬機器，然後登入。 登入之後，開啟對 **Srv-Work** 私人 IP 位址的遠端桌面連線。
-3. 開啟 Internet Explorer 並瀏覽至 https://www.google.com 。
+1. 將遠端桌面連線至防火牆公用 IP 位址，並登入 **Srv-Work** 虛擬機器。 
+3. 開啟 Internet Explorer 並瀏覽至 `https://www.google.com`。
 4. 在 Internet Explorer 安全性警示上，選取 [確認] > [關閉]。
 
    您應該會看到 Google 首頁。
 
-5. 瀏覽至 https://www.microsoft.com 。
+5. 瀏覽至 `https://www.microsoft.com` 。
 
    您應該會遭到防火牆封鎖。
 

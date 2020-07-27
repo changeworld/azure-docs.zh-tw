@@ -1,5 +1,5 @@
 ---
-title: Azure Front Door
+title: Azure Front Door 規則引擎動作
 description: 本文提供您可以使用 Azure Front Door 規則引擎執行的各種動作清單。
 services: frontdoor
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 4/30/2020
 ms.author: mebeatty
-ms.openlocfilehash: e11555e883a323bcb5b0be1c62b2825bce77524e
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 74c0a2617a01e8c24cd93a015b667081250657ad
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85313997"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521491"
 ---
 # <a name="azure-front-door-rules-engine-actions"></a>Azure Front Door 規則引擎動作
 

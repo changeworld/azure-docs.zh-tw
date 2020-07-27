@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74cf0c1e055570df7702465df79dcdfbd8ea9e9f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 20b1de1b643a3cc0b3dbcf9d33c21924a7fe50e6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74232099"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86500035"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arcgis-online"></a>教學課程：Azure Active Directory 與 ArcGIS Online 整合
 
@@ -42,6 +42,9 @@ ms.locfileid: "74232099"
 * Azure AD 訂用帳戶。 如果您沒有 Azure AD 環境，您可以在[這裡](https://azure.microsoft.com/pricing/free-trial/)取得一個月的試用帳戶
 * 已啟用 ArcGIS Online 單一登入的訂用帳戶
 
+> [!NOTE]
+> 也可以在 Azure AD 美國政府雲端環境中使用此整合。 您可以在 Azure AD 美國政府雲端應用程式庫中找到此應用程式，並以與公用雲端相同的方式進行設定。
+
 ## <a name="scenario-description"></a>案例描述
 
 在本教學課程中，您會在測試環境中設定和測試 Azure AD 單一登入。
@@ -54,19 +57,19 @@ ms.locfileid: "74232099"
 
 **若要從資源庫新增 ArcGIS Online，請執行下列步驟：**
 
-1. 在 **[Azure 入口網站](https://portal.azure.com)** 的左方瀏覽窗格中，按一下 [Azure Active Directory]  圖示。
+1. 在 **[Azure 入口網站](https://portal.azure.com)** 的左方瀏覽窗格中，按一下 [Azure Active Directory] 圖示。
 
     ![Azure Active Directory 按鈕](common/select-azuread.png)
 
-2. 瀏覽至 [企業應用程式]  ，然後選取 [所有應用程式]  選項。
+2. 瀏覽至 [企業應用程式]，然後選取 [所有應用程式] 選項。
 
     ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
-3. 若要新增新的應用程式，請按一下對話方塊頂端的 [新增應用程式]  按鈕。
+3. 若要新增新的應用程式，請按一下對話方塊頂端的 [新增應用程式] 按鈕。
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **ArcGIS Online**，從結果面板中選取 [ArcGIS Online]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **ArcGIS Online**，從結果面板中選取 [ArcGIS Online]，然後按一下 [新增] 按鈕以新增應用程式。
 
      ![結果清單中的 ArcGIS Online](common/search-new-app.png)
 
@@ -90,30 +93,30 @@ ms.locfileid: "74232099"
 
 若要設定與 ArcGIS Online 搭配運作的 Azure AD 單一登入，請執行下列步驟：
 
-1. 在 [Azure 入口網站](https://portal.azure.com/)的 [ArcGIS Online]  應用程式整合頁面上，選取 [單一登入]  。
+1. 在 [Azure 入口網站](https://portal.azure.com/)的 [ArcGIS Online] 應用程式整合頁面上，選取 [單一登入]。
 
     ![設定單一登入連結](common/select-sso.png)
 
-2. 在 [選取單一登入方法]  對話方塊中，選取 [SAML/WS-Fed]  模式以啟用單一登入。
+2. 在 [選取單一登入方法] 對話方塊中，選取 [SAML/WS-Fed] 模式以啟用單一登入。
 
     ![單一登入選取模式](common/select-saml-option.png)
 
-3. 在 [以 SAML 設定單一登入] 頁面上，按一下 [編輯] 圖示以開啟 [基本 SAML 設定] 對話方塊。   
+3. 在 [以 SAML 設定單一登入] 頁面上，按一下 [編輯] 圖示以開啟 [基本 SAML 設定] 對話方塊。
 
     ![編輯基本 SAML 組態](common/edit-urls.png)
 
-4. 在 [基本 SAML 組態]  區段上，執行下列步驟：
+4. 在 [基本 SAML 組態] 區段上，執行下列步驟：
 
     ![ArcGIS Online 網域及 URL 單一登入資訊](common/sp-identifier.png)
 
-    a. 在 [登入 URL]  文字方塊中，使用下列模式輸入 URL：`https://<companyname>.maps.arcgis.com`
+    a. 在 [登入 URL] 文字方塊中，使用下列模式輸入 URL：`https://<companyname>.maps.arcgis.com`
 
-    b. 在 [識別碼 (實體識別碼)]  文字方塊中，使用下列模式輸入 URL：`<companyname>.maps.arcgis.com`
+    b. 在 [識別碼 (實體識別碼)] 文字方塊中，使用下列模式輸入 URL：`<companyname>.maps.arcgis.com`
 
     > [!NOTE]
     > 這些都不是真正的值。 請使用實際的「登入 URL」及「識別碼」來更新這些值。 請連絡 [ArcGIS Online 用戶端支援小組](https://support.esri.com/en/)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
 
-5. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載**同盟中繼資料 XML**，並儲存在您的電腦上。
+5. 在 [以 SAML 設定單一登入] 頁面的 [SAML 簽署憑證] 區段中按一下 [下載]，以依據您的需求從指定選項下載**同盟中繼資料 XML**，並儲存在您的電腦上。
 
     ![憑證下載連結](common/metadataxml.png)
 
@@ -121,13 +124,13 @@ ms.locfileid: "74232099"
 
     ![image](./media/arcgis-tutorial/install_extension.png)
 
-7. 將延伸模組新增至瀏覽器之後，按一下 [安裝 ArcGIS Online]  便會將您導向到 ArcGIS Online 應用程式。 請從該處提供用以登入 ArcGIS Online 的管理員認證。 瀏覽器延伸模組將會自動為您設定應用程式，並自動執行**設定 ArcGIS Online 單一登入**一節中的步驟。
+7. 將延伸模組新增至瀏覽器之後，按一下 [安裝 ArcGIS Online] 便會將您導向到 ArcGIS Online 應用程式。 請從該處提供用以登入 ArcGIS Online 的管理員認證。 瀏覽器延伸模組將會自動為您設定應用程式，並自動執行**設定 ArcGIS Online 單一登入**一節中的步驟。
 
 ### <a name="configure-arcgis-online-single-sign-on"></a>設定 ArcGIS Online 單一登入
 
 1. 如果您想要手動設定 ArcGIS Online，請開啟新的網頁瀏覽器視窗，並以系統管理員身分登入 ArcGIS Online 公司網站，然後執行下列步驟：
 
-2. 按一下 [編輯設定]  。
+2. 按一下 [編輯設定]。
 
     ![編輯設定](./media/arcgis-tutorial/ic784742.png "編輯設定")
 
@@ -135,7 +138,7 @@ ms.locfileid: "74232099"
 
     ![安全性](./media/arcgis-tutorial/ic784743.png "安全性")
 
-4. 在 [企業登入]  下方，按一下 [設定識別提供者]  。
+4. 在 [企業登入] 下方，按一下 [設定識別提供者]。
 
     ![企業登入](./media/arcgis-tutorial/ic784744.png "企業登入")
 
@@ -143,23 +146,23 @@ ms.locfileid: "74232099"
 
     ![設定識別提供者](./media/arcgis-tutorial/ic784745.png "設定識別提供者")
 
-    a. 在 [名稱]  文字方塊中，輸入您的組織名稱。
+    a. 在 [名稱] 文字方塊中，輸入您的組織名稱。
 
-    b. 針對 [用來提供企業識別提供者之中繼資料的方法]  ，選取 [檔案]  。
+    b. 針對 [用來提供企業識別提供者之中繼資料的方法]，選取 [檔案]。
 
-    c. 若要上傳您下載的中繼資料檔，請按一下 [選擇檔案]  。
+    c. 若要上傳您下載的中繼資料檔，請按一下 [選擇檔案] 。
 
-    d. 按一下 [設定識別提供者]  。
+    d. 按一下 [設定識別提供者]。
 
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者 
 
 本節的目標是要在 Azure 入口網站中建立一個名為 Britta Simon 的測試使用者。
 
-1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]  、[使用者]  和 [所有使用者]  。
+1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]、[使用者] 和 [所有使用者]。
 
     ![[使用者和群組] 與 [所有使用者] 連結](common/users.png)
 
-2. 在畫面頂端選取 [新增使用者]  。
+2. 在畫面頂端選取 [新增使用者]。
 
     ![[新增使用者] 按鈕](common/new-user.png)
 
@@ -167,28 +170,28 @@ ms.locfileid: "74232099"
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+    a. 在 [名稱] 欄位中，輸入 **BrittaSimon**。
   
-    b. 在 [使用者名稱]  欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
+    b. 在 [使用者名稱] 欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
 
-    c. 選取 [顯示密碼]  核取方塊，然後記下 [密碼] 方塊中顯示的值。
+    c. 選取 [顯示密碼] 核取方塊，然後記下 [密碼] 方塊中顯示的值。
 
-    d. 按一下頁面底部的 [新增]  。
+    d. 按一下 [建立]。
 
 ### <a name="assign-the-azure-ad-test-user"></a>指派 Azure AD 測試使用者
 
 在本節中，您會將 ArcGIS Online 的存取權授與 Britta Simon，讓她能夠使用 Azure 單一登入。
 
-1. 在 Azure 入口網站中，依序選取 [企業應用程式]  、[所有應用程式]  及 [ArcGIS Online]  。
+1. 在 Azure 入口網站中，依序選取 [企業應用程式]、[所有應用程式] 及 [ArcGIS Online]。
 
     ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
-2. 在應用程式清單中，輸入並選取 [ArcGIS Online]  。
+2. 在應用程式清單中，輸入並選取 [ArcGIS Online]。
 
     ![應用程式清單中的 [ArcGIS Online] 連結](common/all-applications.png)
 
-3. 在左側功能表中，選取 [使用者和群組]  。
+3. 在左側功能表中，選取 [使用者和群組]。
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
@@ -196,11 +199,11 @@ ms.locfileid: "74232099"
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 
-5. 在 [使用者和群組]  對話方塊的 [使用者] 清單中，選取 [Britta Simon]  ，然後按一下畫面底部的 [選取]  按鈕。
+5. 在 [使用者和群組] 對話方塊的 [使用者] 清單中，選取 [Britta Simon]，然後按一下畫面底部的 [選取] 按鈕。
 
-6. 如果您預期使用 SAML 判斷提示中的任何角色值，請在 [選取角色]  對話方塊的清單中選取適當使用者角色，然後按一下畫面底部的 [選取]  按鈕。
+6. 如果您預期使用 SAML 判斷提示中的任何角色值，請在 [選取角色] 對話方塊的清單中選取適當使用者角色，然後按一下畫面底部的 [選取] 按鈕。
 
-7. 在 [新增指派]  對話方塊中，按一下 [指派]  按鈕。
+7. 在 [新增指派] 對話方塊中，按一下 [指派] 按鈕。
 
 ### <a name="create-arcgis-online-test-user"></a>建立 ArcGIS Online 測試使用者
 
@@ -211,11 +214,11 @@ ms.locfileid: "74232099"
 
 1. 登入您的 **ArcGIS** 租用戶。
 
-2. 按一下 [邀請成員]  。
+2. 按一下 [邀請成員]。
    
     ![邀請成員](./media/arcgis-tutorial/ic784747.png "邀請成員")
 
-3. 選取 [自動新增成員而不傳送電子郵件]  ，然後按 [下一步]  。
+3. 選取 [自動新增成員而不傳送電子郵件]，然後按 [下一步]。
    
     ![自動加入成員](./media/arcgis-tutorial/ic784748.png "自動加入成員")
 
@@ -225,8 +228,8 @@ ms.locfileid: "74232099"
     
      a. 輸入您想要佈建的有效 Azure AD 帳戶的**電子郵件**、**名字**和**姓氏**。
   
-     b. 按一下 [新增並檢閱]  。
-5. 檢閱您已輸入的資料，然後按一下 [新增成員]  。
+     b. 按一下 [新增並檢閱]。
+5. 檢閱您已輸入的資料，然後按一下 [新增成員]。
    
     ![新增成員](./media/arcgis-tutorial/ic784750.png "加入成員")
         

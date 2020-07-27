@@ -3,24 +3,27 @@ title: 使用 Power BI 應用程式分析 Azure 成本
 description: 本文將說明如何安裝及使用 Azure 成本管理 Power BI 應用程式。
 author: bandersmsft
 ms.author: banders
-ms.date: 06/16/2020
+ms.date: 07/13/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: benshy
-ms.openlocfilehash: 53340c72a6456b24b52cff6d7eda9d4a34db6564
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: bd5e2c999df180c80c58711a6428678b2bb4fefa
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84888195"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537913"
 ---
 # <a name="analyze-cost-with-the-azure-cost-management-power-bi-app-for-enterprise-agreements-ea"></a>使用適用於 Enterprise 合約 (EA) 的 Azure 成本管理 Power BI 應用程式來分析成本
 
 本文將說明如何安裝及使用 Azure 成本管理 Power BI 應用程式。 此應用程式可協助您在 Power BI 中分析和管理 Azure 成本。 您可以使用應用程式來監視成本和使用量趨勢，並找出成本最佳化選項來減少支出。
 
-您會將應用程式下載到 Power BI Desktop。 您可以直接使用應用程式，也可以加以修改來擴充預設的篩選、檢視和視覺效果，以符合您的需求。 然後，使用其來聯結額外資料，以建立自訂報表來取得整體商務成本的完整觀點。
+您可以直接使用應用程式，也可以加以修改來擴充預設的篩選、檢視和視覺效果，以符合您的需求。 然後，使用其來聯結額外資料，以建立自訂報表來取得整體商務成本的完整觀點。
 
 Azure 成本管理 Power BI 應用程式目前僅支援具有 [Enterprise 合約](https://azure.microsoft.com/pricing/enterprise-agreement/)的客戶。
+
+> [!NOTE]
+> Power BI 範本應用程式不支援下載 PBIX 檔案。
 
 ## <a name="prerequisites"></a>必要條件
 

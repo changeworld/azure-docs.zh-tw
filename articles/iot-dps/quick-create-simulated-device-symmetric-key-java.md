@@ -9,14 +9,14 @@ ms.service: iot-dps
 services: iot-dps
 manager: eliotgra
 ms.custom: mvc
-ms.openlocfilehash: aaa1a4423363255536db7d53a1f8f8fa9ba686ff
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 8b54f216850b77473ea8c272311e3f135f256518
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76961185"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536499"
 ---
-# <a name="quickstart-provision-a-simulated-device-with-symmetric-keys"></a>快速入門：使用對稱金鑰佈建模擬的裝置
+# <a name="quickstart-provision-a-simulated-device-to-iot-hub-with-symmetric-keys"></a>快速入門：使用對稱金鑰將模擬裝置佈建至 IoT 中樞
 
 在此快速入門中，您將了解如何在 Windows 開發機器上建立並執行裝置模擬器。 您將設定此模擬裝置，以使用對稱金鑰來搭配裝置佈建服務 (DPS) 執行個體進行驗證並指派給 IoT 中樞。 來自[適用於 Java 的 Microsoft Azure IoT SDK](https://github.com/Azure/azure-iot-sdk-java)的程式碼範例將用來模擬起始佈建之裝置的開機順序。 將根據 DPS 服務執行個體並指派給 IoT 中樞的個別註冊來識別裝置。
 

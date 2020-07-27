@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/23/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: ac23912b12bc6c7fcd40d7433cb4e2d257eeb5d0
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: bc94f31887526f387413f78fe3270784a4e3bd88
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85563019"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525144"
 ---
 1. 在虛擬 WAN 的入口網站頁面的 [連線] 區段中，選取 [VPN 網站]，以開啟 [VPN 網站] 頁面。
 2. 在 [VPN 網站] 頁面上，按一下 [+ 建立網站]。
@@ -24,7 +24,7 @@ ms.locfileid: "85563019"
     * **區域** - 先前稱為位置。 這是您要在其中建立此網站資源的位置。
     * **名稱** - 您要用來參考內部部署網站的名稱。
     * **裝置廠商** - VPN 裝置廠商的名稱 (例如：Citrix、Cisco、Barracuda)。 這樣做可協助 Azure 小組深入了解您的環境，以便在未來增加額外最佳化的可能性，或協助您進行疑難排解。
-    * **邊界閘道協定** - 啟用此選項表示來自該網站的所有連線將啟用 BGP。 最後，您會在 [連結] 區段中，為 VPN 網站的每個連結設定 BGP 資訊。 在虛擬 WAN 上設定 BGP 就等同於在 Azure 虛擬網路閘道 VPN 上設定 BGP。 內部部署 BGP 同儕節點位址不得與 VPN 到裝置的公用 IP 位址或 VPN 網站的 VNet 位址空間相同。 在 VPN 裝置上，請針對 BGP 對等互連 IP 使用不同的 IP 位址。 它可以是指派給裝置上的回送介面的位址。 但是，不能是 APIPA (169.254.x.x) 位址。 在代表位置的對應 VPN 網站中指定這個位址。 如需 BGP 必要條件，請參閱[關於 BGP 與 Azure VPN 閘道](../articles/vpn-gateway/vpn-gateway-bgp-overview.md)。 一旦已啟用 VPN 網站 BGP 設定，您可以隨時編輯 VPN 連線，以更新其 BGP 參數 (連結上的同儕節點 IP 與 AS #)。
+    * **邊界閘道協定** - 啟用此選項表示來自該網站的所有連線將啟用 BGP。 最後，您會在 [連結] 區段中，為 VPN 網站的每個連結設定 BGP 資訊。 在虛擬 WAN 上設定 BGP 就等同於在 Azure 虛擬網路閘道 VPN 上設定 BGP。 內部部署 BGP 同儕節點位址不得與 VPN 到裝置的公用 IP 位址或 VPN 網站的 VNet 位址空間相同。 在 VPN 裝置上，請針對 BGP 對等互連 IP 使用不同的 IP 位址。 這個位址可以是指派給裝置上回送介面的位址。在代表位置的對應 VPN 網站中指定此位址。 如需 BGP 必要條件，請參閱[關於 BGP 與 Azure VPN 閘道](../articles/vpn-gateway/vpn-gateway-bgp-overview.md)。 一旦已啟用 VPN 網站 BGP 設定，您可以隨時編輯 VPN 連線，以更新其 BGP 參數 (連結上的同儕節點 IP 與 AS #)。
     * **私人位址空間** - 位於內部部署網站上的 IP 位址空間。 流向此位址空間的流量會路由至您本機網站。 當網站未啟用 BGP 時，這是必要項目。
     * **中樞** - 要讓網站連線到的中樞。 網站只能連線到具有 VPN 閘道的中樞。 如果您沒有看到中樞，請先在該中樞內建立 VPN 閘道。
 4. 請選取 [連結]，以新增分支上實體連結的相關資訊。 如果您有虛擬 WAN 夥伴 CPE 裝置，請查看這些裝置是否與 Azure 交換該資訊，作為從其系統設定之分支資訊上傳的一部分。

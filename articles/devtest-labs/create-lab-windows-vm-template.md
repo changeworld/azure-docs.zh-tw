@@ -1,21 +1,22 @@
 ---
-title: 使用 Azure DevTest Labs 和 Resource Manager 範本建立實驗室
-description: 在本教學課程中，您會使用 Azure Resource Manager 範本在 Azure DevTest Labs 中建立實驗室。 實驗室管理員會設定實驗室，在實驗室中建立 VM，然後設定原則。
-ms.topic: tutorial
+title: 使用 Azure DevTest Labs 和 Azure Resource Manager 範本建立實驗室
+description: 在本快速入門中，您會使用 Azure Resource Manager 範本 (ARM 範本) 在 Azure DevTest Labs 中建立實驗室。 實驗室管理員會設定實驗室，在實驗室中建立 VM，然後設定原則。
+ms.topic: quickstart
+ms.custom: subject-armqs
 ms.date: 06/26/2020
-ms.openlocfilehash: 22ba4ffeec22a45c07b096b0a754d08c8230dd8f
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: 8688b8265a8ca00a36a569ff4e067c9f36834c6d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85476201"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537542"
 ---
-# <a name="tutorial-set-up-a-lab-by-using-azure-devtest-labs-resource-manager-template"></a>教學課程：使用 Azure DevTest Labs (Resource Manager 範本) 設定實驗室
-在本教學課程中，您會使用 Azure Resource Manager 範本，以 Windows Server 2019 Datacenter VM 建立實驗室。 
+# <a name="quickstart-set-up-a-lab-by-using-azure-devtest-labs-arm-template"></a>快速入門：使用 Azure DevTest Labs ARM 範本設定實驗室
+在本快速入門中，您會使用 Azure Resource Manager (ARM) 範本，以 Windows Server 2019 Datacenter VM 建立實驗室。 
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-在本教學課程中，您會執行下列動作：
+在本快速入門中，您會執行下列動作：
 
 > [!div class="checklist"]
 > * 檢閱範本 
@@ -23,11 +24,13 @@ ms.locfileid: "85476201"
 > * 確認範本
 > * 清除資源
 
-如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
+如果您的環境符合必要條件，而且您很熟悉 ARM 範本，請選取 [部署至 Azure] 按鈕。 範本會在 Azure 入口網站中開啟。
+
+[![部署至 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-dtl-create-lab-windows-vm%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>必要條件
 
-無。
+如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="review-the-template"></a>檢閱範本
 
@@ -46,7 +49,7 @@ ms.locfileid: "85476201"
 ## <a name="deploy-the-template"></a>部署範本
 若要自動執行部署，請按一下下列按鈕。 
 
-[![部署至 Azure](./media/create-lab-windows-vm-template/deploy-button.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-dtl-create-lab-windows-vm%2Fazuredeploy.json)
+[![部署至 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-dtl-create-lab-windows-vm%2Fazuredeploy.json)
 
 1. 建立**新的資源群組**，以便稍後可以輕鬆清除。
 1. 選取資源群組的**位置**。 
@@ -59,7 +62,7 @@ ms.locfileid: "85476201"
 
     :::image type="content" source="./media/create-lab-windows-vm-template/deploy-template-page.png" alt-text="部署範本頁面":::
 
-## <a name="verify-the-deployment"></a>驗證部署
+## <a name="validate-the-deployment"></a>驗證部署
 1. 選取頂端的 [通知]，查看部署狀態，再按一下**部署進行中**連結。
 
     :::image type="content" source="./media/create-lab-windows-vm-template/deployment-notification.png" alt-text="部署通知":::
@@ -76,7 +79,7 @@ ms.locfileid: "85476201"
     > [!IMPORTANT] 
     > 讓此頁面保持開啟，並遵循下一節中的指示來清除資源，以避免在 Azure 上執行實驗室和 VM 可能產生的成本。 如果要進行下一個教學課程來測試實驗室中 VM 的存取權，請在完成該教學課程之後清除資源。 
 
-## <a name="cleanup-resources"></a>清除資源
+## <a name="clean-up-resources"></a>清除資源
 
 1. 首先請刪除實驗室，以便刪除資源群組。 您無法刪除具有實驗室的資源群組。 若要刪除實驗室，請選取工具列上的 [刪除]。 
 
@@ -90,8 +93,7 @@ ms.locfileid: "85476201"
     :::image type="content" source="./media/create-lab-windows-vm-template/delete-resource-group-button.png" alt-text="刪除資源群組按鈕":::
 
 ## <a name="next-steps"></a>後續步驟
-您已在本教學課程中建立 VM 實驗室。 若要了解如何存取實驗室，請前進到下一個教學課程：
+在本快速入門中，您已建立具有 VM 的實驗室。 若要了解如何存取實驗室，請前進到下一個教學課程：
 
 > [!div class="nextstepaction"]
 > [教學課程：存取實驗室](tutorial-use-custom-lab.md)
-

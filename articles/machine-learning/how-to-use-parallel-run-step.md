@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.reviewer: trbye, jmartens, larryfr
+ms.reviewer: jmartens, larryfr
 ms.author: tracych
 author: tracychms
-ms.date: 06/23/2020
+ms.date: 07/16/2020
 ms.custom: Build2020, tracking-python
-ms.openlocfilehash: e5665bd5ad2baa35b497c8b4fe19b0cb93bdb2a7
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: bf0aa51c64eea0aa58e679c4f9f44686ce7b9ffb
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86023358"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520624"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>使用 Azure Machine Learning 對大量資料執行批次推斷
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -33,6 +33,7 @@ ms.locfileid: "86023358"
 > * 撰寫推斷指令碼。
 > * 建立包含 ParallelRunStep 的[機器學習管線](concept-ml-pipelines.md)，並在 MNIST 測試映像上執行批次推斷。 
 > * 重新提交具有新資料輸入和參數的批次推斷執行。 
+> * 檢視結果。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -159,9 +160,7 @@ input_mnist_ds_consumption = DatasetConsumptionConfig("minist_param_config", pip
 ```python
 from azureml.pipeline.core import Pipeline, PipelineData
 
-output_dir = PipelineData(name="inferences", 
-                          datastore=def_data_store, 
-                          output_path_on_compute="mnist/results")
+output_dir = PipelineData(name="inferences", datastore=def_data_store)
 ```
 
 ## <a name="prepare-the-model"></a>準備模型
@@ -266,17 +265,17 @@ file_path = os.path.join(script_dir, "<file_name>")
 
 ### <a name="prepare-the-environment"></a>準備環境
 
-首先，為指令碼指定相依性。 這麼做可讓您安裝 pip 套件，以及設定環境。 一律包含 **azureml-core** 和 **azureml-dataprep[pandas, fuse]** 套件。
+首先，為指令碼指定相依性。 這麼做可讓您安裝 pip 套件，以及設定環境。
 
-如果您使用自訂 Docker 映像 (user_managed_dependencies=True)，也應該安裝 Conda。
+一律在 pip 套件清單中包含 **azureml-core** 和 **azureml-dataset-runtime[pandas, fuse]** 。 如果您使用自訂 Docker 映像 (user_managed_dependencies=True)，也應該安裝 Conda。
 
 ```python
 from azureml.core.environment import Environment
 from azureml.core.conda_dependencies import CondaDependencies
 from azureml.core.runconfig import DEFAULT_GPU_IMAGE
 
-batch_conda_deps = CondaDependencies.create(pip_packages=["tensorflow==1.13.1", "pillow",
-                                                          "azureml-core", "azureml-dataprep[pandas, fuse]"])
+batch_conda_deps = CondaDependencies.create(pip_packages=["tensorflow==1.15.2", "pillow", 
+                                                          "azureml-core", "azureml-dataset-runtime[pandas, fuse]"])
 
 batch_env = Environment(name="batch_environment")
 batch_env.python.conda_dependencies = batch_conda_deps
@@ -392,6 +391,28 @@ pipeline_run_2 = experiment.submit(pipeline,
 )
 
 pipeline_run_2.wait_for_completion(show_output=True)
+```
+## <a name="view-the-results"></a>View the results
+
+上述執行的結果會寫入 PipelineData 物件中指定的資料存放區作為輸出資料，在此案例中稱為「推斷」。 結果會儲存在預設的 Blob 容器中，您可以瀏覽至您的儲存體帳戶，並透過儲存體總管檢視，檔案路徑為 azureml-blobstore-*GUID*/azureml/*RunId*/*output_dir*。
+
+您也可以下載此資料以檢視結果。 以下是用來查看前 10 個資料列的範例程式碼。
+
+```python
+import pandas as pd
+import tempfile
+
+batch_run = pipeline_run.find_step_run(parallelrun_step.name)[0]
+batch_output = batch_run.get_output_data(output_dir.name)
+
+target_dir = tempfile.mkdtemp()
+batch_output.download(local_path=target_dir)
+result_file = os.path.join(target_dir, batch_output.path_on_datastore, parallel_run_config.append_row_file_name)
+
+df = pd.read_csv(result_file, delimiter=":", header=None)
+df.columns = ["Filename", "Prediction"]
+print("Prediction has ", df.shape[0], " rows")
+df.head(10) 
 ```
 
 ## <a name="next-steps"></a>後續步驟

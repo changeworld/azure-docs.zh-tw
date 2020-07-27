@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/19/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 41f42b053181f4115770cd9973621706b248baab
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: a09cc83259a6fbb07b8c88e1d8f82b720400c0d1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86168298"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507704"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-servicenow"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 ServiceNow 整合
 
@@ -43,6 +43,9 @@ ms.locfileid: "86168298"
 * ServiceNow 租用戶必須啟用[多個提供者單一登入外掛程式](https://wiki.servicenow.com/index.php?title=Multiple_Provider_Single_Sign-On#gsc.tab=0)。 您可以藉由[提交服務要求](https://hi.service-now.com)來完成這項工作。
 * 若要進行自動設定，請為 ServiceNow 啟用多重提供者外掛程式。
 * 若要安裝 ServiceNow Classic (行動) 應用程式，請移至適當的存放區，並搜尋 ServiceNow Classic 應用程式。 然後，加以下載。
+
+> [!NOTE]
+> 也可以在 Azure AD 美國政府雲端環境中使用此整合。 您可以在 Azure AD 美國政府雲端應用程式庫中找到此應用程式，並以與公用雲端相同的方式進行設定。
 
 ## <a name="scenario-description"></a>案例描述
 
@@ -101,8 +104,10 @@ ms.locfileid: "86168298"
 
     c. 針對 [回覆 URL]  ，輸入下列其中一個 URL：
 
-    - `https://instancename.service-now.com/navpage.do`
-    - `https://instancename.service-now.com/customer.do`
+    | 回覆 URL|
+    |----------|
+    | `https://instancename.service-now.com/navpage.do` |
+    | `https://instancename.service-now.com/customer.do` | 
 
     > [!NOTE]
     > 這些都不是真正的值。 您必須使用實際的登入 URL 及識別碼來更新這些值 (本教學課程稍後會說明)。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
@@ -124,10 +129,10 @@ ms.locfileid: "86168298"
 在本節中，您將在 Azure 入口網站中建立名為 B.Simon 的測試使用者。
 
 1. 在 Azure 入口網站的左窗格中，選取 [Azure Active Directory]   > [使用者]   > [所有使用者]  。
-1. 在畫面頂端選取 [新增使用者]  。
-1. 在 [使用者]  屬性中，執行下列步驟：
-   1. 針對 [名稱]  輸入 `B.Simon`。  
-   1. 針對 [使用者名稱]  ，輸入 username@companydomain.extension。 例如： `B.Simon@contoso.com` 。
+1. 在畫面頂端選取 [新增使用者]。
+1. 在 [使用者] 屬性中，執行下列步驟：
+   1. 針對 [名稱] 輸入 `B.Simon`。  
+   1. 針對 [使用者名稱]，輸入 username@companydomain.extension。 例如： `B.Simon@contoso.com` 。
    1. 選取 [顯示密碼]  ，然後記下 [密碼]  方塊中顯示的值。
    1. 選取 [建立]  。
 
@@ -171,8 +176,10 @@ ms.locfileid: "86168298"
 
     c. 針對 [回覆 URL]  ，輸入下列其中一個 URL：
 
-    - `https://instancename.service-now.com/navpage.do`
-    - `https://instancename.service-now.com/customer.do`
+    | 回覆 URL |
+    |-----------|
+    | `https://instancename.service-now.com/navpage.do` |
+    | `https://instancename.service-now.com/customer.do` |
 
     > [!NOTE]
     > 這些都不是真正的值。 您必須使用實際的登入 URL 及識別碼來更新這些值 (本教學課程稍後會說明)。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
@@ -227,7 +234,7 @@ ms.locfileid: "86168298"
 
     * 針對 [使用者資料表上的欄位...]  ，輸入**電子郵件**。
   
-    * 選取 [儲存]  。
+    * 選取 [儲存]。
 
 1. 您可以自動或手動設定 ServiceNow。 若要自動設定 ServiceNow，請依照下列步驟操作：
 
@@ -257,7 +264,7 @@ ms.locfileid: "86168298"
 
              ![[識別提供者] 區段的螢幕擷取畫面](./media/servicenow-tutorial/automatic_config.png "設定單一登入")
 
-               * 針對 [名稱]  ，輸入您的組態名稱 (例如 **Microsoft Azure Federated Single Sign-On**)。
+               * 針對 [名稱]，輸入您的組態名稱 (例如 **Microsoft Azure Federated Single Sign-On**)。
 
                * 從文字方塊中移除已填入的 [識別提供者的 SingleLogoutRequest]  值。
 
@@ -393,7 +400,7 @@ ms.locfileid: "86168298"
 
     e. 在 [記事本] 中開啟您從 Azure 入口網站下載的 Base64 編碼憑證。 將其內容複製到剪貼簿，然後貼到 [IdP 憑證]  文字方塊中。
 
-    f. 選取 [更新] 
+    f. 選取 [更新]
 
 6. 在 [單一登入]  對話方塊中，選取 [新增 IdP]  。
 

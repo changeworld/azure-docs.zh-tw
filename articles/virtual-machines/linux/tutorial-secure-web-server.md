@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 04/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: ac581b45f3aefe7a386f25c978bfc09adda4e39f
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 7964f96afc59464c28cabb9e1d5c7961fc765a3d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81460472"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86501767"
 ---
 # <a name="tutorial-secure-a-web-server-on-a-linux-virtual-machine-in-azure-with-tlsssl-certificates-stored-in-key-vault"></a>教學課程：在 Azure 中使用 Key Vault 內儲存的 TLS/SSL 憑證，來保護 Linux 虛擬機器上的網頁伺服器
 若要保護 Web 伺服器，您可以使用傳輸層安全性 (TLS) (先前稱為安全通訊端層 (SSL)) 憑證來加密網路流量。 這些 TLS/SSL 憑證可儲存在 Azure Key Vault，並且能夠讓您將憑證安全地部署到 Azure 中的 Linux 虛擬機器 (VM)。 在本教學課程中，您將了解如何：
@@ -30,7 +30,7 @@ ms.locfileid: "81460472"
 > * 建立 VM 並安裝 NGINX 網頁伺服器
 > * 將憑證插入 VM 並使用 TLS 繫結來設定 NGINX
 
-本教學課程會使用 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) 內的 CLI，這會不斷更新至最新版本。 若要開啟 Cloud Shell，請選取任何程式碼區塊頂端的 [試試看]  。
+本教學課程會使用 [Azure Cloud Shell](../../cloud-shell/overview.md) 內的 CLI，這會不斷更新至最新版本。 若要開啟 Cloud Shell，請選取任何程式碼區塊頂端的 [試試看]。
 
 如果您選擇在本機安裝和使用 CLI，本教學課程會要求您執行 Azure CLI 2.0.30 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。
 
@@ -135,7 +135,7 @@ az vm open-port \
 
 
 ### <a name="test-the-secure-web-app"></a>測試安全的 Web 應用程式
-現在，您可以開啟 Web 瀏覽器，並在網址列輸入 *https:\/\/\<publicIpAddress>* 。 提供您自己從 VM 建立程序中取得的公用 IP 位址。 如果您使用自我簽署憑證，請接受安全性警告：
+現在，您可以開啟 Web 瀏覽器，並在網址列輸入 https:\/\/\<publicIpAddress>。 提供您自己從 VM 建立程序中取得的公用 IP 位址。 如果您使用自我簽署憑證，請接受安全性警告：
 
 ![接受 Web 瀏覽器安全性警告](./media/tutorial-secure-web-server/browser-warning.png)
 

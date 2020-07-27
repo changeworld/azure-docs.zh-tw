@@ -7,13 +7,13 @@ author: tchristiani
 ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 06/24/2020
-ms.openlocfilehash: f802ec10410d0a412e29d9ad51bb409a5d099f31
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.date: 07/14/2020
+ms.openlocfilehash: 18204777a8e61b577b257b67cdd12bed1a5534fa
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85562542"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529619"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>快速入門：在入口網站中建立 Azure 認知搜尋服務
 
@@ -27,11 +27,11 @@ Azure 認知搜尋是一項可用來在自訂應用程式中插入搜尋體驗�
 
 ## <a name="before-you-start"></a>開始之前
 
-下列服務屬性已針對服務的存留期進行修正，而將其變更需要新的服務。 當您建立服務時，請考慮您將如何使用服務：
+下列服務屬性已針對服務的存留期進行修正，需要新的服務才能變更。 因為這些服務屬性是固定的，所以在填寫每個屬性時，請將屬性使用方式的含意納入考慮：
 
-* 名稱 (針對服務名稱請參閱[這些建議](#name-the-service))
-* 層級 (免費、基本、標準會[影響帳單](search-sku-tier.md)並設定容量上限)
-* 區域 (選擇具有相關服務的位置。 若要與認知服務或 Azure Machine Learning 整合，必須將服務共置在相同區域中)
+* 服務名稱會成為 URL 端點的一部分 ([檢閱秘訣](#name-the-service)了解實用的服務名稱)。
+* 服務層級會[影響帳單](search-sku-tier.md)並設定容量上限。
+* 服務區域可決定特定案例的可用性。 如果您對知識挖掘和 AI 擴充有興趣，則可能需要將認知服務和 Azure Machine Learning 放在相同的區域中 。
 
 ## <a name="subscribe-free-or-paid"></a>訂閱 (免費或付費)
 

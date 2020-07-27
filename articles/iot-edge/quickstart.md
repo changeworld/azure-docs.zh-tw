@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: c0476c7190dcf2ac42dafc9896540be83a938016
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 73d7c129a63e4d63ad5cc05d8dac47720c7955e4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85801679"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511903"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-windows-device"></a>快速入門：將您的第一個 IoT Edge 模組部署至虛擬 Windows 裝置
 
@@ -84,7 +84,7 @@ IoT Edge 裝置：
 
 此快速入門適用於 IoT 中樞的免費層級。 如果您在過去已使用過 IoT 中樞，並已建立中樞，您可以使用該 IoT 中樞。
 
-下列程式碼會在資源群組 `IoTEdgeResources` 中建立免費的 **F1** 中樞。 以 IoT 中樞的唯一名稱取代 `{hub_name}`。
+下列程式碼會在資源群組 `IoTEdgeResources` 中建立免費的 **F1** 中樞。 以 IoT 中樞的唯一名稱取代 `{hub_name}`。 建立 IoT 中樞可能需要幾分鐘的時間。
 
    ```azurecli-interactive
    az iot hub create --resource-group IoTEdgeResources --name {hub_name} --sku F1 --partition-count 2
@@ -124,7 +124,7 @@ IoT Edge 裝置：
 在 IoT Edge 裝置上安裝 Azure IoT Edge 執行階段，並使用裝置連接字串進行設定。
 ![圖表 - 在裝置上啟動執行階段](./media/quickstart/start-runtime.png)
 
-IoT Edge 執行階段會在所有 IoT Edge 裝置上部署。 它有三個元件。 **IoT Edge 安全性精靈**會在每次 IoT Edge 裝置開機時啟動，並藉由啟動 IoT Edge 代理程式來啟動該裝置。 **IoT Edge 代理程式**可管理模組在 IoT Edge 裝置 (包括 IoT Edge 中樞) 上的部署和監視。 **IoT Edge 中樞**可處理 IoT Edge 裝置上的模組通訊，以及裝置與 IoT 中樞之間的通訊。
+IoT Edge 執行階段會在所有 IoT Edge 裝置上部署。 它有三個元件。 *IoT Edge 安全性精靈*會在每次 IoT Edge 裝置開機時啟動，並藉由啟動 IoT Edge 代理程式來啟動該裝置。 *IoT Edge 代理程式*可管理模組在 IoT Edge 裝置 (包括 IoT Edge 中樞) 上的部署和監視。 *IoT Edge 中樞*可處理 IoT Edge 裝置上的模組通訊，以及裝置與 IoT 中樞之間的通訊。
 
 安裝指令碼也包含名為 Moby 的容器引擎，可用來管理 IoT Edge 裝置上的容器映像。
 
@@ -236,10 +236,19 @@ iotedge logs SimulatedTemperatureSensor -f
 
 如果您是在新的資源群組中建立虛擬機器和 IoT 中樞，您可以刪除該群組和所有相關聯的資源。 再次檢查資源群組的內容，確定沒有您想要保留的內容。 如果您不想刪除整個群組，可改為刪除個別資源。
 
-移除 **IoTEdgeResources** 群組。
+> [!IMPORTANT]
+> 刪除資源群組是無法回復的動作。
+
+移除 **IoTEdgeResources** 群組。 可能需要幾分鐘才能刪除資源群組。
 
 ```azurecli-interactive
 az group delete --name IoTEdgeResources
+```
+
+您可以檢視資源群組清單來確認已移除資源群組。
+
+```azurecli-interactive
+az group list
 ```
 
 ## <a name="next-steps"></a>後續步驟

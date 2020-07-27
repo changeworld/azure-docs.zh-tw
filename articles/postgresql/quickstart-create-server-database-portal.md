@@ -6,13 +6,13 @@ ms.author: raagyema
 ms.service: postgresql
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 06/25/2019
-ms.openlocfilehash: 6611c394d6aff92a62a7ecd9a7656d3408fb9da6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/27/2020
+ms.openlocfilehash: 9741e00cdcc4907c547ebfcc6f8e7df7a3b32891
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82146615"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529659"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-server-in-the-azure-portal"></a>快速入門：在 Azure 入口網站中建立 Azure Database for PostgreSQL 伺服器
 
@@ -32,192 +32,113 @@ Azure Database for PostgreSQL 是一種受控服務，您用來在雲端執行�
 
 2. 選取 [資料庫]   > [Azure Database for PostgreSQL]  。
 
-    ![功能表中的 [適用於 PostgreSQL 的 Azure 資料庫]](./media/quickstart-create-database-portal/1-create-database.png)
+   > [!div class="mx-imgBorder"]
+   > ![選單中的「適用於 PostgreSQL 的 Azure 資料庫」](./media/quickstart-create-database-portal/1-create-database.png)
 
 3. 選取 [單一伺服器]  部署選項。
 
-   ![選取 [適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器] 部署選項](./media/quickstart-create-database-portal/select-deployment-option.png)
+   > [!div class="mx-imgBorder"]
+   > ![選取 [適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器] 部署選項](./media/quickstart-create-database-portal/select-deployment-option.png)
 
 4. 在 [基本資料]  表單中填寫下列資訊：
 
-    ![建立伺服器](./media/quickstart-create-database-portal/create-basics.png)
+   > [!div class="mx-imgBorder"]
+   > ![建立伺服器](./media/quickstart-create-database-portal/create-basics.png)
 
-    設定|建議的值|描述
-    ---|---|---
-    訂用帳戶|您的訂用帳戶名稱|您要用於伺服器的 Azure 訂用帳戶。 如果您有多個訂用帳戶，請選擇資源計費的訂用帳戶。
-    資源群組|*myresourcegroup*| 新的資源群組名稱，或您訂用帳戶中現有的資源群組名稱。
-    伺服器名稱 |*mydemoserver*|可識別 Azure Database for PostgreSQL 伺服器的唯一名稱。 網域名稱 postgres.database.azure.com  已附加至您提供的伺服器名稱。 伺服器只能包含小寫字母、數字及連字號 (-) 字元。 它必須包含至少 3 到 63 個字元。
-    資料來源 | *None* | 選取 [無]  從頭建立新的伺服器。 (如果您要從現有「適用於 PostgreSQL 的 Azure 資料庫」伺服器的異地備份建立伺服器，可以選取 [備份]  )。
-    系統管理員使用者名稱 |myadmin | 連線至伺服器時所要使用之自己的登入帳戶。 管理員登入名稱不能是 **azure_superuser**、**azure_pg_admin** **admin** **administrator** **root** **guest** 或 **public**。 它不能以 **pg_** 開頭。
-    密碼 |您的密碼| 伺服器管理帳戶的新密碼。 其必須包含 8 到 128 個字元。 您的密碼必須包含下列類別中三種類別的字元：英文大寫字母、英文小寫字母、數字 (0 到 9) 及非英數字元 (!、$、#、% 等等)。
-    Location|最接近使用者的區域| 最靠近您使用者的位置。
-    版本|最新的主要版本| 最新 PostgreSQL 主要版本 (除非您有其他特定需求)。
-    計算 + 儲存體 | **一般用途**、**Gen 5**、**2 個虛擬核心**、**5 GB**、**7 天**、**異地備援** | 新伺服器的計算、儲存體和備份組態。 選取 [設定伺服器]  。 接下來，選取 [一般用途]  索引標籤。Gen 5  、4 個虛擬核心  、100 GB  和 7 天  是 [計算世代]  、[虛擬核心]  、[儲存體]  和 [備份保留期限]  的預設值。 您可以讓這些滑桿保持原狀或加以調整。 若要啟用異地備援儲存體中的伺服器備份，請從 [備份備援選項]  中選取 [異地備援]  。 若要儲存此定價層選取項目，請選取 [確定]  。 下方螢幕擷取畫面會擷取這些選取項目。
+   設定|建議的值|描述
+   ---|---|---
+   訂用帳戶|您的訂用帳戶名稱|您要用於伺服器的 Azure 訂用帳戶。 如果您有多個訂用帳戶，請選擇資源計費的訂用帳戶。
+   資源群組|*myresourcegroup*| 新的資源群組名稱，或您訂用帳戶中現有的資源群組名稱。
+   伺服器名稱 |*mydemoserver*|可識別 Azure Database for PostgreSQL 伺服器的唯一名稱。 網域名稱 postgres.database.azure.com  已附加至您提供的伺服器名稱。 伺服器只能包含小寫字母、數字及連字號 (-) 字元。 它必須包含至少 3 到 63 個字元。
+   資料來源 | *None* | 選取 [無]  從頭建立新的伺服器。 (如果您要從現有「適用於 PostgreSQL 的 Azure 資料庫」伺服器的異地備份建立伺服器，可以選取 [備份]  )。
+   系統管理員使用者名稱 |myadmin| 連線至伺服器時所要使用之自己的登入帳戶。 管理員登入名稱不能是 **azure_superuser**、**azure_pg_admin** **admin** **administrator** **root** **guest** 或 **public**。 它不能以 **pg_** 開頭。
+   密碼 |您的密碼| 伺服器管理帳戶的新密碼。 其必須包含 8 到 128 個字元。 您的密碼必須包含下列類別中三種類別的字元：英文大寫字母、英文小寫字母、數字 (0 到 9) 及非英數字元 (!、$、#、% 等等)。
+   Location|最接近使用者的區域| 最靠近您使用者的位置。
+   版本|最新的主要版本| 最新 PostgreSQL 主要版本 (除非您有其他特定需求)。
+   計算 + 儲存體 | **一般用途**、**Gen 5**、**2 個虛擬核心**、**5 GB**、**7 天**、**異地備援** | 新伺服器的計算、儲存體和備份組態。 選取 [設定伺服器]  。 接下來，選取適當的定價層。如需詳細資訊，請參閱[定價詳細資料](https://azure.microsoft.com/pricing/details/postgresql/server/)。 若要啟用異地備援儲存體中的伺服器備份，請從 [備份備援選項] 中選取 [異地備援]。 選取 [確定]。
 
    > [!NOTE]
-   > 如果您的工作負載只需要輕量計算和 I/O，請考慮使用基本定價層。 請注意，在基本定價層中建立的伺服器後續無法調整為「一般用途」或「記憶體最佳化」。 如需詳細資訊，請參閱[定價頁面](https://azure.microsoft.com/pricing/details/postgresql/)。
-   > 
-
-    ![[定價層] 窗格](./media/quickstart-create-database-portal/2-pricing-tier.png)
-
-5. 選取 [檢閱 + 建立]  以檢閱您的選項。 選取 [建立]  以佈建伺服器。 這項作業可能需要幾分鐘的時間。
-
-6. 在工具列上，選取 [通知]  圖示 (鈴鐺) 以監視部署程序。 完成部署後，您可以選取 [釘選到儀表板]  ，在 Azure 入口網站儀表板上建立此伺服器的圖格，以作為伺服器 [概觀]  頁面的捷徑。 選取 [移至資源]  會開啟伺服器的 [概觀]  頁面。
-
-    ![[通知] 窗格](./media/quickstart-create-database-portal/3-notifications.png)
+   > 如果您的工作負載只需要輕量計算和 I/O，請考慮使用基本定價層。 請注意，在基本定價層中建立的伺服器後續無法調整為「一般用途」或「記憶體最佳化」。 
    
-   根據預設，**postgres** 資料庫會建立在您的伺服器底下。 [postgres](https://www.postgresql.org/docs/9.6/static/app-initdb.html) 資料庫是要供使用者、公用程式及第三方應用程式使用的預設資料庫。 (其他預設資料庫是 **azure_maintenance**。 其功能是分隔受控服務處理程序和使用者動作。 您無法存取此資料庫。)
+5. 選取 [檢閱 + 建立] 以檢閱您的選項。 選取 [建立] 以佈建伺服器。 這項作業可能需要幾分鐘的時間。
+
+6. 在工具列上，選取 [通知] 圖示 (鈴鐺) 以監視部署程序。 部署完成後，請選取 [移至資源] 並開啟伺服器的**概觀**頁面。
+
+系統會建立空的資料庫 **postgres**。 您也會發現用來分隔受管理的服務處理常式與使用者動作的 **azure_maintenance** 資料庫。您無法存取 **azure_maintenance** 資料庫。
 
 ## <a name="configure-a-server-level-firewall-rule"></a>設定伺服器層級防火牆規則
+根據預設，建立的伺服器不是可公開存取的，您必須將權限授與 IP。 若要授與 IP 存取權，請移至 Azure 入口網站中的伺服器資源，然後從伺服器資源的左側功能表選取 [連線安全性]。 如果您不確定如何尋找資源，請參閱[如何開啟資源](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resources-portal#open-resources)。
 
-Azure Database for PostgreSQL 會在伺服器層級建立防火牆。 它會防止外部應用程式和工具連線到伺服器及伺服器上的任何資料庫，除非您建立規則以針對特定 IP 位址開啟防火牆。 
-
-1. 在部署完成之後，找出您的伺服器。 如有需要，您可以搜尋它。 例如，在左側功能表上選取 [所有資源]  。 輸入您的伺服器名稱 (例如範例中的 **mydemoserver**)，以搜尋新建立的伺服器。 從搜尋結果清單中選取伺服器名稱。 伺服器的 [概觀]  頁面隨即開啟，並提供可進行進一步設定的選項。
- 
-    ![伺服器名稱搜尋](./media/quickstart-create-database-portal/4-locate.png)
-
-2. 在伺服器頁面上，選取 [連線安全性]  。
-
-3. 在 [防火牆規則]  之下，選取 [規則名稱]  欄中的空白文字方塊，開始建立防火牆規則。 
-
-   在文字方塊中填寫名稱，以及將存取您伺服器之用戶端 IP 範圍的起點與終點。 如果是單一 IP，則起始 IP 與結尾 IP 使用相同的值。
-
-   ![設定防火牆規則](./media/quickstart-create-database-portal/5-firewall-2.png)
-     
-
-4. 在 [連線安全性]  頁面的工具列上，選取 [儲存]  。 等到陳述連線安全性更新已成功完成的通知出現，您才能繼續進行。
-
-    > [!NOTE]
-    > 您的 Azure Database for PostgreSQL 伺服器連線會透過連接埠 5432 通訊。 如果您嘗試從公司網路內進行連線，您網路的防火牆可能不允許透過連接埠 5432 的輸出流量。 若是如此，除非 IT 部門開啟連接埠 5432，否則您無法連線到您的伺服器。
-    >
-
-## <a name="get-the-connection-information"></a>取得連線資訊
-
-當您建立 Azure Database for PostgreSQL 伺服器時，系統會建立名為 **postgres** 的預設資料庫。 若要連線到您的資料庫伺服器，您需要完整伺服器名稱和系統管理員登入認證。 您稍早可能已在快速入門文章中記下這些值。 若未這麼做，您可以在 Azure 入口網站的伺服器 [概觀]  頁面輕鬆尋找伺服器名稱和登入資訊。
-
-開啟伺服器的 [概觀]  頁面。 記下 [伺服器名稱]  和 [伺服器管理員登入名稱]  。 將您的游標停留在每個欄位上，複製符號就會出現在文字右邊。 視需要選取複製符號來複製值。
-
- ![伺服器 [概觀] 頁面](./media/quickstart-create-database-portal/6-server-name.png)
-
-## <a name="connect-to-the-postgresql-database-using-psql"></a>使用 psql 連線至 PostgreSQL 資料庫
-
-您可以使用一些應用程式來連線到您的 Azure Database for PostgreSQL 伺服器。 如果您的用戶端電腦已安裝 PostgreSQL，您可以使用 [psql](https://www.postgresql.org/docs/current/static/app-psql.html) 的本機執行個體來連線到 Azure PostgreSQL 伺服器。 現在我們將使用 psql 命令列公用程式來連線到 Azure PostgreSQL 伺服器。
-
-1. 執行下列 psql 命令以連線到「適用於 PostgreSQL 的 Azure 資料庫」伺服器
-   ```bash
-   psql --host=<servername> --port=<port> --username=<user@servername> --dbname=<dbname>
-   ```
-
-   例如，下列命令會使用存取認證，連線到 PostgreSQL 伺服器 **mydemoserver.postgres.database.azure.com** 上名為 **postgres** 的預設資料庫。 系統提示輸入密碼時，請輸入您選擇的 `<server_admin_password>`。
+> [!div class="mx-imgBorder"]
+> ![連線安全性 - 防火牆規則](./media/quickstart-create-database-portal/add-current-ip-firewall.png)
   
-   ```bash
+現在，選取 [新增目前的用戶端 IP 位址]，然後選取 [儲存]。 您可以新增其他 IP 或提供 IP 範圍，以從這些 IP 連線到您的伺服器。 如需詳細資訊，請參閱[如何管理防火牆規則](./concepts-firewall-rules.md)
+   
+> [!NOTE]
+> 檢查您的網路是否允許連接埠 5432 的輸出流量，以供適用於 PostgreSQL 的 Azure 資料庫使用以避免連線問題。  
+
+## <a name="connect-to-azure-database-for-postgresql-server-using-psql"></a>使用 psql 連線到適用於 PostgreSQL 資料庫的 Azure 資料庫
+
+您可以使用 [psql](http://postgresguide.com/utilities/psql.html) 或 [pgAdmin](https://www.pgadmin.org/docs/pgadmin4/latest/connecting.html)，這些都是熱門的 PostgreSQL 用戶端。 在本快速入門中，我們將使用 Azure 入口網站內 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) 中的 psql 進行連線。
+
+1. 請記下您伺服器的**概觀**區段中新建立之伺服器的伺服器名稱、伺服器管理員登入名稱、密碼以及訂用帳戶識別碼，如下圖所示。
+
+2. 選取左上方的圖示，在入口網站中啟動 Azure Cloud Shell，如下圖中反白顯示。
+
+   > [!NOTE]
+   > 如果您是第一次啟動 Cloud Shell，會看到建立資源群組、儲存體帳戶的提示。 這是一次性的步驟，而且會針對所有工作階段自動連接。 
+
+   > [!div class="mx-imgBorder"]
+   > ![開啟 Azure Cloud Shell](media/quickstart-create-database-portal/use-in-cloud-shell.png)
+
+3. 在 Azure Cloud Shell 終端機上執行此命令。 將值取代為實際的伺服器名稱和管理員使用者登入名稱。 對於適用於 PostgreSQL 的 Azure 資料庫，使用空白資料庫 **postgres** 搭配使用 '<admin-username>@<servername> 格式的管理員使用者，如下所示。
+
+   ```azurecli-interactive
    psql --host=mydemoserver.postgres.database.azure.com --port=5432 --username=myadmin@mydemoserver --dbname=postgres
    ```
-
-   > [!TIP]
-   > 如果您想要使用 URL 路徑來連線到 Postgres，在進行 URL 編碼時，請將使用者名稱中的 @ 符號編碼為 `%40`。 例如，psql 的連接字串會是 
-   > ```
-   > psql postgresql://myadmin%40mydemoserver@mydemoserver.postgres.database.azure.com:5432/postgres
-   > ```
-
-   連線之後，psql 公用程式會顯示 postgres 提示字元，供您鍵入 sql 命令。 在初始連線輸出中，可能會因為您所使用的 psql 版本與適用於 PostgreSQL 的 Azure 資料庫伺服器版本不同，而顯示警告。 
-
-   psql 輸出範例：
+ 
+   以下是 Cloud Shell 終端機中體驗顯示的樣子
+   
    ```bash
-   psql (9.5.7, server 9.6.2)
-   WARNING: psql major version 9.5, server major version 9.6.
-    Some psql features might not work.
-    SSL connection (protocol: TLSv1.2, cipher: ECDHE-RSA-AES256-SHA384, bits: 256, compression: off)
-   Type "help" for help.
+    Requesting a Cloud Shell.Succeeded.
+    Connecting terminal...
 
-   postgres=> 
+    Welcome to Azure Cloud Shell
+ 
+    Type "az" to use Azure CLI
+    Type "help" to learn about Cloud Shell
+
+    user@Azure:~$psql --host=mydemoserver.postgres.database.azure.com --port=5432 --username=myadmin@mydemoserver --dbname=postgres
+    Password for user myadmin@mydemoserver.postgres.database.azure.com:
+    psql (12.2 (Ubuntu 12.2-2.pgdg16.04+1), server 11.6)
+    SSL connection (protocol: TLSv1.2, cipher: ECDHE-RSA-AES256-GCM-SHA384, bits: 256, compression: off)
+    Type "help" for help.
+
+    postgres=>
+    ```
+4. 在相同的 Azure Cloud Shell 終端機中，建立資料庫**客體**
+   ```bash
+   postgres=> CREATE DATABASE guest;
    ```
 
-   > [!TIP]
-   > 如果未將防火牆設定為允許用戶端的 IP 位址，就會發生下列錯誤：
-   > 
-   > "psql:FATAL: no pg_hba.conf entry for host `<IP address>`, user "myadmin", database "postgres", SSL on FATAL：需要 SSL 連線。 指定 SSL 選項，然後再試一次。
-   > 
-   > 請確認上述防火牆規則步驟中允許您用戶端的 IP。
+5. 現在，將連線切換至新建立的資料庫**客體**
 
-2. 在提示字元輸入下列命令以建立名為 "mypgsqldb" 的空白資料庫︰
-    ```bash
-    CREATE DATABASE mypgsqldb;
-    ```
-
-3. 在提示字元，執行下列命令將連線切換到新建立的資料庫 **mypgsqldb**：
-    ```bash
-    \c mypgsqldb
-    ```
-
-4. 輸入 `\q`，然後選取 Enter 鍵結束 psql。 
-
-您已透過 psql 連線至適用於 PostgreSQL 的 Azure 資料庫伺服器，並已建立空的使用者資料庫。 繼續進行下一節，以使用另一個常見工具 pgAdmin 連線。
-
-## <a name="connect-to-the-postgresql-server-using-pgadmin"></a>使用 pgAdmin 連線到 PostgreSQL 伺服器
-
-pgAdmin 是搭配 PostgreSQL 使用的開放原始碼工具。 您可以從 [pgAdmin 網站](https://www.pgadmin.org/)安裝 pgAdmin。 您使用的 pgAdmin 版本可能不同於本快速入門中使用的版本。 如果您需要其他指引，請閱讀 pgAdmin 文件。
-
-1. 在您的用戶端電腦上開啟 pgAdmin 應用程式。
-
-2. 移至工具列中的 [物件]  ，將滑鼠停留在 [建立]  上方，然後選取 [伺服器]  。
-
-3. 在 [建立 - 伺服器]  對話方塊的 [一般]  索引標籤上，輸入伺服器的唯一易記名稱，例如 **mydemoserver**。
-
-    ![[一般] 索引標籤](./media/quickstart-create-database-portal/9-pgadmin-create-server.png)
-
-4. 在 [建立 - 伺服器]  對話方塊的 [連線]  索引標籤上，填寫設定資料表。
-
-   ![[連線] 索引標籤](./media/quickstart-create-database-portal/10-pgadmin-create-server.png)
-
-    pgAdmin 參數 |值|描述
-    ---|---|---
-    主機名稱/位址 | 伺服器名稱 | 您稍早建立 Azure Database for PostgreSQL 伺服器時所用的伺服器名稱值。 我們的範例伺服器是 **mydemoserver.postgres.database.azure.com**。 使用如範例所示的完整網域名稱 ( **\*.postgres.database.azure.com**)。 如果您不記得您的伺服器名稱，請依照上一節中的步驟執行，以取得連線資訊。 
-    連接埠 | 5432 | 當您連線至 Azure Database for PostgreSQL 伺服器時所要使用的連接埠。 
-    維護資料庫 | *postgres* | 系統產生的預設資料庫名稱。
-    使用者名稱 | 伺服器管理員登入名稱 | 您稍早建立 Azure Database for PostgreSQL 時所提供的伺服器管理員登入使用者名稱。 如果您不記得使用者名稱，請依照上一節中的步驟執行，以取得連線資訊。 格式是 *username\@servername*。
-    密碼 | 您的系統管理員密碼 | 您在本快速入門稍早建立伺服器時所選擇的密碼。
-    角色 | 保留空白 | 此時不需要提供角色名稱。 將欄位保留空白。
-    SSL 模式 | *必要* | 您可以在 pgAdmin 的 [SSL] 索引標籤中設定 TLS/SSL 模式。根據預設，所有適用於 PostgreSQL 的 Azure 資料庫伺服器建立時都會開啟強制執行 TLS。 若要關閉強制執行 TLS，請參閱[設定 TLS 的強制執行](./concepts-ssl-connection-security.md#configure-enforcement-of-tls)。
-    
-5. 選取 [儲存]  。
-
-6. 在左側的 [瀏覽器]  窗格中，展開 [伺服器]  節點。 選取伺服器以便與其連線，例如 **mydemoserver**。
-
-7. 展開伺服器節點，然後展開其下的 [資料庫]  。 此清單應包含現有 postgres  資料庫和其他您已建立的資料庫。 您可以使用適用於 PostgreSQL 的 Azure 資料庫，為每一部伺服器建立多個資料庫。
-
-8. 以滑鼠右鍵按一下 [資料庫]  ，選取 [建立]  功能表，然後選取 [資料庫]  。
-
-9. 在 [資料庫]  欄位中輸入您選擇的資料庫名稱，例如 **mypgsqldb2**。
-
-10. 從清單方塊中選取資料庫的 [擁有者]  。 選取您的伺服器管理員登入名稱，例如範例中的 **my admin**。
-
-    ![在 pgadmin 中建立資料庫](./media/quickstart-create-database-portal/11-pgadmin-database.png)
-
-11. 選取 [儲存]  以建立新的空白資料庫。
-
-12. 在 [瀏覽器]  窗格中，您可以在伺服器名稱之下的 [資料庫] 清單中看到您所建立的資料庫。
-
+   ```bash
+   \c guest
+   ```
+6. 輸入 `\q`，然後選取 Enter 鍵結束 psql。 
 
 ## <a name="clean-up-resources"></a>清除資源
-您有兩種方式可以清除您在本快速入門中建立的資源。 您可以刪除 [Azure 資源群組](../azure-resource-manager/management/overview.md)，其中包括資源群組中的所有資源。 如果您想要讓其他資源保持不變，則只刪除該伺服器資源。
+您已成功在資源群組中建立適用於 PostgreSQL 的 Azure 資料庫伺服器。  如果您覺得未來不需要這些資源，可以刪除資源群組，或刪除 PostgreSQL 伺服器。 若要移除資源群組，請依照這些步驟操作：
 
-> [!TIP]
-> 此集合中的其他快速入門會以本快速入門為基礎。 如果您打算繼續進行快速入門，請勿清除您在此快速入門中建立的資源。 如果您不打算繼續，請遵循下列步驟，在入口網站中刪除本快速入門所建立的資源。
+1. 在 Azure 入口網站中，搜尋並選取 [資源群組]。 
+2. 在 [資源群組] 清單中，選擇資源群組的名稱。
+3. 在資源群組的 [概觀]頁面中，選取 [刪除資源群組]。
+4. 在確認對話方塊凹輸入您的資源群組名稱，然後選取 [刪除]。
 
-若要刪除整個資源群組 (包括新建立的伺服器)：
-1. 在入口網站中找出您的資源群組。 在左側功能表中，選取 [資源群組]  。 然後選取您的資源群組名稱，例如範例中的 **myresourcegroup**。
-
-2. 在資源群組頁面上，選取 [刪除]  。 在文字方塊中輸入您的資源群組名稱 (例如範例中的 **myresourcegroup**)，以確認刪除。 選取 [刪除]  。
-
-若要刪除新建立的伺服器：
-1. 請在入口網站中找出您的伺服器 (如果您未將它開啟)。 在左側功能表上選取 [所有資源]  。 然後搜尋您所建立的伺服器。
-
-2. 在 [概觀]  頁面上，按一下 [刪除]  。
-
-    ![[刪除] 按鈕](./media/quickstart-create-database-portal/12-delete.png)
-
-3. 確認您要刪除的伺服器名稱，並且會檢視其下受影響的資料庫。 在文字方塊中輸入您的伺服器名稱，例如範例中的 **mydemoserver**。 選取 [刪除]  。
+若要刪除伺服器，您可以在伺服器的 [概觀] 頁面上按一下 [刪除] 按鈕，如下所示：
+> [!div class="mx-imgBorder"]
+> ![刪除資源](media/quickstart-create-database-portal/12-delete.png)
 
 ## <a name="next-steps"></a>後續步驟
 > [!div class="nextstepaction"]

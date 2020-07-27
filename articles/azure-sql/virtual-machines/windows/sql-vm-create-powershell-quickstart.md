@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: e821c650bae7694070624aeebe7fcc3482f7a3b9
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: eafbf102c092b180a1f3c882f5ae626e60b80f30
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84667381"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514606"
 ---
 # <a name="quickstart-create-sql-server-on-a-windows-virtual-machine-with-azure-powershell"></a>快速入門：在 Windows 虛擬機器上使用 Azure PowerShell 建立 SQL Server
 
@@ -147,13 +147,34 @@ ms.locfileid: "84667381"
    > [!TIP]
    > 建立 VM 需要幾分鐘的時間。
 
-## <a name="install-the-sql-iaas-agent"></a>安裝 SQL IaaS 代理程式
+## <a name="register-with-sql-vm-rp"></a>使用 SQL VM RP 進行註冊 
 
-若要取得入口網站整合與 SQL VM 的功能，您必須先安裝 [SQL Server IaaS 代理程式延伸模組](sql-server-iaas-agent-extension-automate-management.md)。 若要在新的 VM 上安裝代理程式，請在 VM 建立後執行下列命令。
+若要取得入口網站整合與 SQL VM 功能，您必須先註冊 [SQL VM 資源提供者](sql-vm-resource-provider-register.md)。
 
-   ```powershell
-   Set-AzVMSqlServerExtension -ResourceGroupName $ResourceGroupName -VMName $VMName -name "SQLIaasExtension" -version "2.0" -Location $Location
-   ```
+若要取得完整的功能，您必須以完整模式註冊資源提供者。 不過，這麼做會重新啟動 SQL Server 服務，因此建議您以輕量模式註冊，然後在維護期間升級為完整模式。 
+
+首先，以輕量模式註冊 SQL Server VM： 
+
+```powershell-interactive
+# Get the existing compute VM
+$vm = Get-AzVM -Name <vm_name> -ResourceGroupName <resource_group_name>
+        
+# Register SQL VM with 'Lightweight' SQL IaaS agent
+New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $vm.Location `
+  -LicenseType PAYG -SqlManagementType LightWeight
+```
+
+然後在維護期間，升級至完整模式： 
+
+```powershell-interactive
+# Get the existing Compute VM
+$vm = Get-AzVM -Name <vm_name> -ResourceGroupName <resource_group_name>
+      
+# Register with SQL VM resource provider in full mode
+New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -SqlManagementType Full
+```
+
+
 
 ## <a name="remote-desktop-into-the-vm"></a>從遠端桌面連接到 VM
 

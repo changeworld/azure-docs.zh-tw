@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.author: banders
-ms.openlocfilehash: cd6e075448c68b6d2c65832d128e14c016c69c7c
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 28080517a33f1bbf9bee3436493f178b60c0d161
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85601406"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523599"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-to-your-mpa-account"></a>將 Azure 訂用帳戶的帳單擁有權交給您的 MPA 帳戶
 
@@ -155,6 +155,12 @@ SaaS 產品不會隨著訂用帳戶一起轉移。 請要求使用者[連絡 Azu
 所移轉 Azure 訂用帳戶的目錄必須符合在建立 CSP 關聯性時所選取的客戶目錄。
 
 如果這兩個目錄不相符，就無法移轉訂用帳戶。 您必須藉由選取 Azure 訂用帳戶的目錄來與客戶建立新的 CSP 轉銷商關係，或變更 Azure 訂用帳戶的目錄以符合客戶 CSP 關聯性目錄。 如需詳細資訊，請參閱[將現有的訂用帳戶關聯至您的 Azure AD 目錄](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-how-subscriptions-associated-directory#to-associate-an-existing-subscription-to-your-azure-ad-directory)。
+
+### <a name="ea-subscription-in-the-non-orgnization-directory"></a>非組織目錄中的 EA 訂用帳戶
+
+只要目錄與 CSP 有轉銷商關係，就可以傳送非組織目錄中的 EA 訂用帳戶。 如果目錄沒有轉銷商關聯性，您必須確定目錄中的組織使用者為可以接受合作夥伴關係的「全域管理員」。 使用者名稱的網域名稱部分必須是初始預設網域名稱 "[domain name]. onmicrosoft.com" 或已驗證的非同盟自訂網域名稱，例如 "contoso.com"。  
+
+若要將新的使用者新增至目錄，請參閱[快速入門：將新的使用者新增至 Azure Active Directory 以將新的使用者新增至 AAD 目錄](https://docs.microsoft.com/azure/active-directory/add-users-azure-active-directory)。
 
 ## <a name="check-access-to-a-microsoft-partner-agreement"></a>檢查 Microsoft 合作夥伴合約的存取權
 

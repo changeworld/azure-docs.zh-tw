@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/03/2018
 ms.author: memildin
-ms.openlocfilehash: 0b28de7af16053093cd0108224188cdd615fce55
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 3e4404589e180be730579b8cbbfadd132502585a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80435512"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529313"
 ---
 # <a name="tutorial-protect-your-resources-with-azure-security-center"></a>教學課程：使用 Azure 資訊安全中心保護您的資源
 資訊安全中心使用存取和應用程式控制原則來阻擋惡意活動，以限制您暴露於威脅的風險。 Just-in-Time (JIT) 虛擬機器 (VM) 存取透過讓您拒絕對 VM 的持續存取，進而減少您暴露於攻擊的風險。 不過，您可以只在需要的時候，提供對 VM 的受控制及稽核的存取。 自適性應用程式控制透過控制可在 VM 上執行的應用程式，進而協助強化 VM 以抵禦惡意軟體。 資訊安全中心會利用機器學習服務來分析在 VM 中執行的程序，並協助您利用此情報來套用列入允許清單規則。
@@ -99,7 +99,7 @@ JIT VM 存取可用於鎖定 Azure VM 的連入流量，進而降低暴露於攻
 1. 返回 [資訊安全中心] 主功能表，並選取 [安全性原則]  。
 2. 選取您需要返回免費層的訂用帳戶或原則。 [安全性原則]  隨即開啟。
 3. 在 [原則元件]  下，選取 [定價層]  。
-4. 選取 [免費]  以將訂用帳戶從標準層變更為免費層。
+4. 選取 [免費] 以將訂用帳戶從標準層變更為免費層。
 5. 選取 [儲存]  。
 
 如果您需要停用自動佈建：

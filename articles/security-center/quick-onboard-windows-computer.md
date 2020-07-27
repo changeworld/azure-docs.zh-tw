@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/3/2018
 ms.author: memildin
-ms.openlocfilehash: 2840b6636c2b511ab57a8bae8adf411f4d8a27d2
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: ecbdb6dc73082fc0fab04c8802c43219cabb6a79
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80435933"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519757"
 ---
 # <a name="quickstart-onboard-windows-computers-to-azure-security-center"></a>快速入門：將 Windows 電腦上架到 Azure 資訊安全中心
 將 Azure 訂用帳戶上架之後，您可以透過佈建 Log Analytics 代理程式，為在 Azure 外 (例如，內部部署或其他雲端服務) 執行的資源啟用資訊安全中心。
@@ -70,7 +70,7 @@ ms.locfileid: "80435933"
    ![安裝代理程式][5]
 
 9. 在 [安裝準備就緒]  頁面上，檢閱您的選擇，然後選取 [安裝]  。
-10. 在 [設定成功完成]  頁面上，選取 [完成] 
+10. 在 [設定成功完成]  頁面上，選取 [完成]
 
 完成時，[Log Analytics 代理程式]  會出現在 [控制台]  中。 您可以在該處檢閱您的設定，並確認代理程式已連線。
 

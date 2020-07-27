@@ -10,12 +10,12 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: f9ce90a64ca038c99fe4ba63e66f7e5abbd196f6
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: a796ae32033dbc09b1f5b888ded9ea5e1f4c457e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85119166"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523480"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---create-a-nodejs-express-app"></a>使用適用於 MongoDB 的 Azure Cosmos DB API 建立 Angular 應用程式 - 建立 Node.js Express 應用程式
 
@@ -147,11 +147,11 @@ ms.locfileid: "85119166"
 
 7. 儲存所有已修改的檔案。 
 
-8. 在 Visual Studio Code 中，按一下 [偵錯] 按鈕![Visual Studio Code 中的偵錯圖示](./media/tutorial-develop-mongodb-nodejs-part2/debug-button.png)，按一下齒輪按鈕![Visual Studio Code 中的齒輪按鈕](./media/tutorial-develop-mongodb-nodejs-part2/gear-button.png)。 新的 launch.json 檔案隨即在 Visual Studio Code 中開啟。
+8. 在 Visual Studio Code 中，按一下 [偵錯] 按鈕 :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part2/debug-button.png":::，然後按一下齒輪按鈕 :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part2/gear-button.png":::。 新的 launch.json 檔案隨即在 Visual Studio Code 中開啟。 
 
 8. 在 launch.json 檔案的第 11 行，將 `"${workspaceFolder}\\server"` 變更為 `"program": "${workspaceRoot}/src/server/index.js"` 並儲存檔案。
 
-9. 按一下 [開始偵錯] 按鈕![Visual Studio 程式碼中的偵錯圖示](./media/tutorial-develop-mongodb-nodejs-part2/start-debugging-button.png)以執行應用程式。
+9. 按一下 [開始偵錯] 按鈕 :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part2/start-debugging-button.png"::: 以執行應用程式。
 
     應用程式應會執行且沒有任何錯誤。
 

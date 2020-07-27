@@ -7,16 +7,19 @@ ms.date: 07/20/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: d52877129fe256253410f1d38011fa0343dd433d
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: 5205506e3e7a32423dd9b438b648ff4af5136caa
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84455938"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86528548"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v11-for-net"></a>快速入門：適用於 .NET 的 Azure Blob 儲存體用戶端程式庫 v11
 
 開始使用適用於 .NET 的 Azure Blob 儲存體用戶端程式庫 v11。 Azure Blob 儲存體是 Microsoft 針對雲端推出的物件儲存體解決方案。 請依照下列步驟來安裝套件，並試用基本工作的範例程式碼。 Blob 儲存體經過最佳化，已能妥善儲存大量的非結構化資料。
+
+> [!NOTE]
+> 本快速入門會使用舊版的 Azure Blob 儲存體用戶端程式庫。 若要開始使用最新版本，請參閱[快速入門：適用於 .NET 的 Azure Blob 儲存體用戶端程式庫](storage-quickstart-blobs-dotnet.md)。
 
 使用適用於 .NET 的 Azure Blob 儲存體用戶端程式庫：
 
@@ -27,11 +30,16 @@ ms.locfileid: "84455938"
 * 列出容器中的所有 Blob
 * 刪除容器
 
-[API 參考文件](https://docs.microsoft.com/dotnet/api/overview/azure/storage?view=azure-dotnet) | [程式庫來源程式碼](https://github.com/Azure/azure-storage-net/tree/master/Blob) | [套件 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/) | [範例](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=blob)
+其他資源：
+
+* [API 參考文件](https://docs.microsoft.com/dotnet/api/overview/azure/storage?view=azure-dotnet)
+* [程式庫原始程式碼](https://github.com/Azure/azure-storage-net/tree/master/Blob)
+* [套件 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/)
+* [範例](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=blob)
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)
 * Azure 儲存體帳戶 - [建立儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
@@ -90,7 +98,7 @@ dotnet add package Microsoft.Azure.Storage.Blob
 
 從專案目錄：
 
-1. 在編輯器中開啟 Program.cs  檔案
+1. 在編輯器中開啟 Program.cs 檔案
 2. 移除 `Console.WriteLine` 陳述式
 3. 新增 `using` 指示詞
 4. 建立範例主要程式碼所在的 `ProcessAsync` 方法
@@ -132,8 +140,8 @@ namespace blob_quickstart
 
 1. 瀏覽至 [Azure 入口網站](https://portal.azure.com)。
 2. 找出您的儲存體帳戶。
-3. 在儲存體帳戶概觀的 [設定]  區段中，選取 [存取金鑰]  。 在此處，您可以檢視帳戶存取金鑰，和每個金鑰的完整連接字串。
-4. 尋找 [金鑰 1]  下方的 [連接字串]  值，然後選取 [複製]  按鈕以複製連接字串。 在下一個步驟中，您會將連接字串值新增至環境變數。
+3. 在儲存體帳戶概觀的 [設定] 區段中，選取 [存取金鑰]。 在此處，您可以檢視帳戶存取金鑰，和每個金鑰的完整連接字串。
+4. 尋找 [金鑰 1] 下方的 [連接字串] 值，然後選取 [複製] 按鈕以複製連接字串。 在下一個步驟中，您會將連接字串值新增至環境變數。
 
     ![顯示如何從 Azure 入口網站複製連接字串的螢幕擷取畫面](../../../includes/media/storage-copy-connection-string-portal/portal-connection-string.png)
 
