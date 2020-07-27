@@ -1,5 +1,5 @@
 ---
-title: Azure Front Door
+title: 使用規則引擎新增安全性標頭 - Azure Front Door
 description: 本文會教您如何透過 Azure Front Door 上的規則引擎來設定安全性標頭
 services: frontdoor
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 6/22/2020
 ms.author: mebeatty
-ms.openlocfilehash: d489186dc1c012fe8c181f17e00bcdb999e230dd
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 5f07a57e0d41a5e7c546bc89ca7a0b5ac5fce5de
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232129"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512226"
 ---
 # <a name="add-security-headers-with-rules-engine"></a>使用規則引擎新增安全性標頭
 
