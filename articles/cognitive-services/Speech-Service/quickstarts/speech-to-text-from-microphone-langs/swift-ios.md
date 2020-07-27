@@ -1,7 +1,7 @@
 ---
-title: 快速入門：從麥克風辨識語音，Swift - 語音服務
+title: 快速入門：辨識語音 (Swift) - 語音服務 (iOS)
 titleSuffix: Azure Cognitive Services
-description: 了解如何使用語音 SDK 在 iOS 上以 Swift 辨識語音
+description: 了解如何使用認知服務語音 SDK，建立應用程式以在 iOS 裝置上以 Swift 辨識語音。
 services: cognitive-services
 author: chlandsi
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 06/25/2020
 ms.author: chlandsi
-ms.openlocfilehash: 95c69aad24ff10b49bdc09411553e6ed43bfdccd
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: c4a66b1581049b90a419a1b62ba837fc832fd748
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391429"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512710"
 ---
 # <a name="quickstart-recognize-speech-in-swift-on-ios-by-using-the-speech-sdk"></a>快速入門：使用語音 SDK 在 iOS 上以 Swift 辨識語音
 

@@ -2,18 +2,16 @@
 title: 使用 Azure Resource Manager 範本建立 Azure 區塊鏈服務成員
 description: 了解如何使用 Azure Resource Manager 範本來建立 Azure 區塊鏈服務成員。
 services: azure-resource-manager
-author: PatAltimore
 ms.service: azure-resource-manager
 ms.topic: quickstart
-ms.custom: subject-armqs
-ms.author: patricka
-ms.date: 06/04/2020
-ms.openlocfilehash: 8eabb6806dee96871648ea419ba36d768d32a2ab
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.custom: subject-armqs, references_regions
+ms.date: 07/16/2020
+ms.openlocfilehash: fb7f91a0670d99170656c0c3a2c1b73d96095762
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86078161"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513008"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-member-using-an-arm-template"></a>快速入門：使用 ARM 範本建立 Azure 區塊鏈服務成員
 
@@ -51,7 +49,7 @@ ms.locfileid: "86078161"
     --------|------------
     訂用帳戶 | 選取您要用於服務的 Azure 訂用帳戶。 如果您有多個訂用帳戶，請選擇資源計費的訂用帳戶。
     資源群組 | 建立新的資源群組名稱，或選擇您訂用帳戶中現有的資源群組名稱。
-    Location | 選擇要建立成員的位置。 聯盟的所有成員都必須位於相同的位置。 可供部署的位置有 *westeurope、eastus、southeastasia、westeurope、northeurope、westus2* 和 *japaneast*。
+    Location | 選擇要建立成員的位置。 聯盟的所有成員都必須位於相同的位置。 可供部署的位置有 *westeurope、eastus、southeastasia、westeurope、northeurope、westus2* 和 *japaneast*。 某些區域可能無法使用這些功能。 下列 Azure 區域提供 Azure 區塊鏈資料管理員服務：美國東部和西歐。
     成員名稱 | 選擇 Azure 區塊鏈服務成員的唯一名稱。 區塊鏈成員的名稱只能包含小寫字母和數字。 第一個字元必須是字母。 此值長度必須介於 2 至 20 個字元之間。
     聯盟名稱 | 輸入唯一名稱。 如需聯盟的詳細資訊，請參閱 [Azure 區塊鏈服務聯盟](consortium.md)。
     成員密碼 | 成員帳戶密碼可用來對為您的成員建立的 Ethereum 帳戶進行私密金鑰加密。 您可以使用帳戶成員和成員帳戶密碼進行聯盟管理。
