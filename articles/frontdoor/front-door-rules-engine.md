@@ -1,5 +1,5 @@
 ---
-title: Azure Front Door
+title: Azure Front Door 規則引擎的架構和術語
 description: 本文提供 Azure Front Door 規則引擎功能的概觀。
 services: frontdoor
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 4/30/2020
 ms.author: mebeatty
-ms.openlocfilehash: ee981d08e53765003e88870d35b291a5802e6848
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 1332f4b21f971d23055c158c2aebdd3316f1bd39
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85322017"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512209"
 ---
 # <a name="what-is-rules-engine-for-azure-front-door"></a>Azure Front Door 的規則引擎是什麼？ 
 

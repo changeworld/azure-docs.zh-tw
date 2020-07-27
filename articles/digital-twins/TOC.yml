@@ -40,9 +40,11 @@
       items:
         - name: 使用 Azure Digital Twins CLI
           href: how-to-use-cli.md
-        - name: 建立 Azure Digital Twins 執行個體
-          href: how-to-set-up-instance.md
-        - name: 驗證用戶端應用程式
+        - name: 設定執行個體和驗證 (已編寫指令碼)
+          href: how-to-set-up-instance-scripted.md
+        - name: 設定執行個體和驗證 (手動)
+          href: how-to-set-up-instance-manual.md
+        - name: 撰寫應用程式驗證碼
           href: how-to-authenticate-client.md
     - name: 設計模型
       items:
@@ -50,6 +52,8 @@
           href: how-to-manage-model.md
         - name: 剖析和驗證模型
           href: how-to-use-parser.md
+        - name: 新增標記
+          href: how-to-use-tags.md
     - name: 使用即時執行環境
       items:
         - name: 管理 Digital Twins
@@ -72,10 +76,16 @@
           href: how-to-manage-routes.md
         - name: 與 Azure 地圖服務整合
           href: how-to-integrate-maps.md
+        - name: 與 Azure 時間序列深入解析整合
+          href: how-to-integrate-time-series-insights.md
     - name: 疑難排解
       items:
         - name: 已知問題
           href: troubleshoot-known-issues.md
+        - name: 解決問題
+          items:
+            - name: 403 (禁止)
+              href: troubleshoot-error-403.md
 - name: 參考
   items:
     - name: Digital Twins 服務限制
@@ -145,7 +155,7 @@
         - name: Azure Digital Twins 範例
           href: 'https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples/'
         - name: Azure Digital Twins 總管 (範例)
-          href: 'https://github.com/Azure-Samples/digital-twins-explorer'
+          href: 'https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/'
         - name: DTDL 驗證程式 (範例)
           href: 'https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator/'
     - name: Azure 工具

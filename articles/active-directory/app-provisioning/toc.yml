@@ -83,10 +83,10 @@
       href: application-provisioning-config-problem-scim-compatibility.md
     - name: SCIM 和圖形案例
       href: scim-graph-scenarios.md
-    - name: 選擇佈建方法
-      href: isv-automatic-provisioning-multi-tenant-apps.md
     - name: 雲端 HR 佈建
       items:
+        - name: SuccessFactors 整合
+          href: sap-successfactors-integration-reference.md
         - name: SuccessFactors 屬性參考
           href: sap-successfactors-attribute-reference.md
         - name: Workday 索引屬性参考

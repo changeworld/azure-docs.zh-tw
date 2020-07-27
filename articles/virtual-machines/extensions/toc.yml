@@ -12,7 +12,7 @@
   expanded: true
   items:
     - name: 使用自訂指令碼擴充功能
-      href: /azure/virtual-machines/windows/tutorial-automate-vm-deployment
+      href: ../windows/tutorial-automate-vm-deployment.md
       maintainContext: true
 - name: 概念
   items:
@@ -58,6 +58,12 @@
           href: network-watcher-linux.md
         - name: Windows
           href: network-watcher-windows.md
+    - name: InfiniBand 驅動程式
+      items:
+        - name: Linux
+          href: hpc-compute-infiniband-linux.md
+        - name: Windows
+          href: hpc-compute-infiniband-windows.md
     - name: NVIDIA GPU 驅動程式
       items:
         - name: Linux

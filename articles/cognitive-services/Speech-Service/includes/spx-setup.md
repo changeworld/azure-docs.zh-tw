@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2020
 ms.author: v-demjoh
-ms.openlocfilehash: b0f70fccf3f7f4a6856ae64d0946c2c473fed93c
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: abfb4f6ba9452581811db1f462089cbafc771266
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86050342"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86544608"
 ---
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -27,6 +27,11 @@ ms.locfileid: "86050342"
 3. 移至您從下載解壓縮的根目錄 `spx-zips`，並解壓縮您需要的子目錄 (.NET Framework 4.7 為 `spx-net471`，或在 x64 CPU 上的 .NET Core 3.0 為 `spx-netcore-win-x64`)。
 
 在命令提示字元中，將目錄變更至此位置，然後輸入 `spx` 以查看語音 CLI 的說明。
+
+> [!NOTE]
+> 在 Windows 上，語音 CLI 只能顯示本機電腦上的命令提示字元可用的字型。
+> [Windows 終端機](https://www.microsoft.com/en-us/p/windows-terminal/9n0dx20hk701) 支援語音 CLI 以互動方式產生的所有字型。
+> 如果您輸出至檔案，像是記事本或網頁瀏覽器 (例如 Microsoft Edge) 的文字編輯器也可以顯示所有字型。
 
 > [!NOTE]
 > 在尋找命令時，Powershell 不會檢查本機目錄。 在 Powershell 中，將目錄變更為 `spx` 的位置，然後輸入 `.\spx` 來呼叫工具。

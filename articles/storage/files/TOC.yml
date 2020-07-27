@@ -33,6 +33,8 @@
           href: storage-files-networking-overview.md
         - name: 防止資料意外刪除
           href: storage-files-prevent-file-share-deletion.md
+        - name: 備份檔案共用
+          href: ../../backup/azure-file-share-backup-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: 待用加密
           href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: 使用客戶管理的金鑰加密待用資料
@@ -83,6 +85,54 @@
           href: storage-files-how-to-create-large-file-share.md
         - name: 建立進階檔案共用
           href: storage-how-to-create-premium-fileshare.md
+    - name: 資料保護
+      items:
+        - name: 啟用虛刪除
+          href: storage-files-enable-soft-delete.md
+        - name: 變更資料複寫的方式
+          href: ../common/redundancy-migration.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: 管理資料備援
+          items:
+            - name: 變更資料複寫的方式
+              href: ../common/redundancy-migration.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+            - name: 設計可用性高的應用程式
+              href: ../common/geo-redundant-design.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: 管理災害復原
+          items:
+            - name: 檢查上次同步時間屬性
+              href: ../common/last-sync-time-get.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+            - name: 初始化帳戶容錯移轉
+              href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: 備份檔案共用
+          items:
+            - name: 入口網站
+              href: ../../backup/backup-afs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+            - name: CLI
+              href: ../../backup/backup-afs-cli.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+            - name: PowerShell
+              href: ../../backup/backup-azure-afs-automation.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+            - name: REST API
+              href: ../../backup/backup-azure-file-share-rest-api.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: 還原檔案共用
+          items:
+            - name: 入口網站
+              href: ../../backup/restore-afs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+            - name: CLI
+              href: ../../backup/restore-afs-cli.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+            - name: PowerShell
+              href: ../../backup/restore-afs-powershell.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+            - name: REST API
+              href: ../../backup/restore-azure-file-share-rest-api.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: 管理檔案共用
+          items:
+            - name: 入口網站
+              href: ../../backup/manage-afs-backup.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+            - name: CLI
+              href: ../../backup/manage-afs-backup-cli.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+            - name: PowerShell
+              href: ../../backup/manage-afs-powershell.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+            - name: REST API
+              href: ../../backup/manage-azure-file-share-rest-api.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: 部署
       items:
         - name: 部署 Azure 檔案
@@ -125,26 +175,10 @@
           href: storage-sync-files-server-registration.md
         - name: 新增 Azure 檔案同步伺服器端點
           href: storage-sync-files-server-endpoint.md
-        - name: 啟用虛刪除
-          href: storage-files-enable-soft-delete.md
         - name: 管理 Azure 獨立雲端中的儲存體
           href: ../common/storage-powershell-independent-clouds.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: 變更資料複寫的方式
-          href: ../common/redundancy-migration.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: 初始化帳戶容錯移轉
           href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: 管理資料備援
-          items:
-            - name: 變更資料複寫的方式
-              href: ../common/redundancy-migration.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-            - name: 設計可用性高的應用程式
-              href: ../common/geo-redundant-design.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: 管理災害復原
-          items:
-            - name: 檢查上次同步時間屬性
-              href: ../common/last-sync-time-get.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-            - name: 初始化帳戶容錯移轉
-              href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Authenticate
       items:
         - name: 啟用內部部署 AD DS 驗證和授權
@@ -173,7 +207,7 @@
           href: storage-files-migration-overview.md
         - name: 以混合式部署為目標
           items:
-            - name: 使用 Azure DataBox 將大量資料遷移至 Azure 檔案同步
+            - name: 使用 Azure 資料箱將大量資料遷移至 Azure 檔案同步
               href: storage-sync-offline-data-transfer.md
             - name: 使用 Azure 檔案同步從 Linux 遷移至混合式檔案伺服器
               href: storage-files-migration-linux-hybrid.md
@@ -243,9 +277,11 @@
           href: storage-sync-files-troubleshoot.md
         - name: 針對 刪除 Azure 檔案儲存體進行疑難排解
           href: storage-troubleshoot-cannot-delete-files-azure-file-share.md
+        - name: 針對備份檔案共用進行疑難排解
+          href: ../../backup/troubleshoot-azure-files.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
 - name: 參考
   items:
-    - name: Azure 檔案共用儲存體參考
+    - name: Azure 檔案儲存體參考
       href: ../files/reference.md
     - name: Resource Manager 範本
       displayName: arm

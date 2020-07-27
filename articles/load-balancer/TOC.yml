@@ -18,17 +18,19 @@
       href: quickstart-create-standard-load-balancer-powershell.md
     - name: 建立 Load Balancer - ARM 範本
       href: quickstart-load-balancer-standard-public-template.md
-    - name: 建立內部 Load Balancer - 入口網站
-      href: tutorial-load-balancer-standard-internal-portal.md
-    - name: 建立內部 Load Balancer - Azure CLI
-      href: load-balancer-get-started-ilb-arm-cli.md
-    - name: 建立內部 Load Balancer - Azure PowerShell
-      href: load-balancer-get-started-ilb-arm-ps.md
-    - name: 建立內部 Load Balancer - ARM 範本
-      href: load-balancer-get-started-ilb-arm-template.md
   expanded: true
 - name: 教學課程
   items:
+    - name: 內部負載平衡器
+      items:
+        - name: 建立內部 Load Balancer - 入口網站
+          href: tutorial-load-balancer-standard-internal-portal.md
+        - name: 建立內部 Load Balancer - Azure CLI
+          href: load-balancer-get-started-ilb-arm-cli.md
+        - name: 建立內部 Load Balancer - Azure PowerShell
+          href: load-balancer-get-started-ilb-arm-ps.md
+        - name: 建立內部 Load Balancer - ARM 範本
+          href: load-balancer-get-started-ilb-arm-template.md
     - name: 跨越多個可用性區域為虛擬機器進行負載平衡
       href: tutorial-load-balancer-standard-public-zone-redundant-portal.md
     - name: 在特定可用性區域內為虛擬機器進行負載平衡
@@ -73,6 +75,8 @@
       href: load-balancer-security-controls.md
     - name: 後端集區管理
       href: backend-pool-management.md
+    - name: Standard Load Balancer 和虛擬機器擴展集
+      href: load-balancer-standard-virtual-machine-scale-sets.md
 - name: 如何
   items:
     - name: 虛擬機器擴展集

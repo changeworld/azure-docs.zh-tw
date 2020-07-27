@@ -939,8 +939,6 @@
           href: ./control-network-traffic.md
         - name: NSG 和 UDR 必要的 IP 位址
           href: ./hdinsight-management-ip-addresses.md
-        - name: Azure 防火牆服務標籤
-          href: ./hdinsight-service-tags.md
         - name: 客戶管理金鑰磁碟加密
           href: ./disk-encryption.md
         - name: Ranger 和 Apache Ambari 中的 LDAP 同步處理
@@ -967,8 +965,12 @@
           href: ./hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
         - name: 使用防火牆限制輸出流量
           href: ./hdinsight-restrict-outbound-traffic.md
+        - name: 建立服務端點原則
+          href: ./service-endpoint-policies.md
         - name: 設定網路虛擬設備
           href: ./network-virtual-appliance.md
+        - name: Azure 防火牆服務標籤
+          href: ./hdinsight-service-tags.md
         - name: 疑難排解
           items:
             - name: ESP 驗證問題

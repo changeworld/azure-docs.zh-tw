@@ -68,8 +68,8 @@
           href: url-route-overview.md
         - name: 重新導向
           href: redirect-overview.md
-        - name: 重新撰寫 HTTP 標頭
-          href: rewrite-http-headers.md
+        - name: 重新撰寫 HTTP 標頭和 URL
+          href: rewrite-http-headers-url.md
     - name: SSL
       items:
         - name: SSL 終止和端對端 SSL
@@ -198,14 +198,20 @@
               href: redirect-internal-site-cli.md
         - name: 使用 Azure PowerShell 重新導向網路流量
           href: tutorial-url-redirect-powershell.md
-    - name: 重新撰寫 HTTP 標頭
+    - name: 重寫 HTTP 標頭和 URL
       items:
-        - name: Azure 入口網站
-          href: rewrite-http-headers-portal.md
-        - name: Azure PowerShell
-          href: add-http-header-rewrite-rule-powershell.md
-        - name: 建立和重新撰寫 HTTP 標頭
-          href: tutorial-http-header-rewrite-powershell.md
+        - name: 標頭重寫
+          items:
+            - name: Azure 入口網站
+              href: rewrite-http-headers-portal.md
+            - name: Azure PowerShell
+              href: add-http-header-rewrite-rule-powershell.md
+            - name: 建立和重新撰寫 HTTP 標頭
+              href: tutorial-http-header-rewrite-powershell.md
+        - name: URL 重寫
+          items:
+            - name: Azure 入口網站
+              href: rewrite-url-portal.md
     - name: 設定應用程式服務 Webapp 和多租用戶服務
       items:
         - name: 入口網站
@@ -249,7 +255,7 @@
     - name: Azure CLI
       href: /cli/azure/network/application-gateway
     - name: Azure PowerShell
-      href: /powershell/azure/overview
+      href: /powershell/azure/
     - name: .NET
       href: /dotnet/api
     - name: Java

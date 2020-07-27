@@ -6,6 +6,24 @@
   items:
     - name: 什麼是 Azure Synapse Analytics？
       href: overview-what-is.md
+    - name: 開始使用
+      items:
+        - name: 簡介
+          href: get-started.md
+        - name: 步驟 1 建立 Synapse 工作區
+          href: get-started-create-workspace.md
+        - name: 步驟 2 使用 SQL 集區進行分析
+          href: get-started-analyze-sql-pool.md
+        - name: 步驟 3 使用 Spark 進行分析
+          href: get-started-analyze-spark.md
+        - name: 步驟 4 使用隨選 SQL 進行分析
+          href: get-started-analyze-sql-on-demand.md
+        - name: 步驟 5 分析儲存體帳戶中的資料
+          href: get-started-analyze-storage.md
+        - name: 步驟 6 - 使用管線進行協調
+          href: get-started-pipelines.md
+        - name: 步驟 7 - 使用 Power BI 進行視覺化
+          href: get-started-visualize-power-bi.md
     - name: 功能提要
       href: overview-cheat-sheet.md
     - name: 常見問題集
@@ -46,8 +64,6 @@
       href: quickstart-connect-synapse-link-cosmos-db.md
 - name: 教學課程
   items:
-    - name: 開始使用
-      href: get-started.md
     - name: 執行適用於 Spark 集區的 Apache Spark 應用程式
       href: ./spark/intellij-tool-synapse.md
     - name: Spark 作業定義
@@ -224,7 +240,7 @@
               href: sql/best-practices-sql-pool.md
         - name: 載入資料
           items:
-            - name: 概觀
+            - name: 總覽
               href: ./sql-data-warehouse/design-elt-data-loading.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: 最佳作法
               href: sql/data-loading-best-practices.md
@@ -234,7 +250,7 @@
               href: sql/load-data-overview.md
         - name: 部署
           items:
-            - name: 概觀
+            - name: 總覽
               href: sql/develop-overview.md
             - name: 最佳作法
               href: sql/develop-best-practices.md
@@ -698,6 +714,8 @@
               href: ../data-factory/connector-web-table.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Xero
               href: ../data-factory/connector-xero.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: XML 格式
+              href: ../data-factory/format-xml.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Zoho
               href: ../data-factory/connector-zoho.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: 移動資料
@@ -755,9 +773,11 @@
               href: ../data-factory/transform-data-using-spark.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: HDInsight 串流活動
               href: ../data-factory/transform-data-using-hadoop-streaming.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: ML Batch 執行活動
+            - name: Machine Learning 執行管線活動
+              href: ../data-factory/transform-data-machine-learning-service.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Machine Learning Studio (傳統版) 批次執行活動
               href: ../data-factory/transform-data-using-machine-learning.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: ML 更新資源活動
+            - name: Machine Learning Studio (傳統版) 更新資源活動
               href: ../data-factory/update-machine-learning-models.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: 預存程序活動
               href: ../data-factory/transform-data-using-stored-procedure.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
@@ -856,7 +876,7 @@
     - name: PowerShell
       href: /powershell/module/az.synapse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
     - name: REST API
-      href: ./sql-data-warehouse/sql-data-warehouse-manage-compute-rest-api.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+      href: /rest/api/synapse/
     - name: 系統檢視表
       href: sql/reference-tsql-system-views.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
     - name: T-SQL

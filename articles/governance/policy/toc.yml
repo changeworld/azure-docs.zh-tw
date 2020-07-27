@@ -93,9 +93,14 @@
     - name: 設計原則即程式碼工作流程
       displayName: 'devops, infrastructure as code, iac, release, continuous, delivery, deploy'
       href: ./concepts/policy-as-code.md
-    - name: 適用於 Kubernetes 的 Azure 原則 (預覽)
-      displayName: 'aks, engine, k8s, rego, opa, open policy agent, gatekeeper, v3, crd, constraints, arc'
-      href: ./concepts/policy-for-kubernetes.md
+    - name: Kubernetes 整合
+      items:
+        - name: 適用於 Kubernetes 的 Azure 原則 (預覽)
+          displayName: 'aks, engine, k8s, rego, opa, open policy agent, gatekeeper, v3, crd, constraints, arc'
+          href: ./concepts/policy-for-kubernetes.md
+        - name: 使用 Azure 原則保護 Pod (預覽)
+          displayName: 'aks, psp, rego, opa'
+          href: ../../aks/use-pod-security-on-azure-policy.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
     - name: 使用來賓設定稽核 VM
       displayName: 'provider, tools, definition'
       href: ./concepts/guest-configuration.md

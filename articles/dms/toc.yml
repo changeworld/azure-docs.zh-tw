@@ -59,6 +59,10 @@
           href: tutorial-postgresql-azure-postgresql-online-portal.md
         - name: 至適用於 PostgreSQL 的 Azure DB (Az CLI)
           href: tutorial-postgresql-azure-postgresql-online.md
+    - name: 遷移適用於 PostgreSQL 的 Azure DB - 單一伺服器
+      items:
+        - name: 至適用於 PostgreSQL 的 Azure DB (入口網站)
+          href: tutorial-azure-postgresql-to-azure-postgresql-online-portal.md
     - name: 將 RDS PostgreSQL 遷移
       items:
         - name: 至適用於 PostgreSQL 的 Azure DB

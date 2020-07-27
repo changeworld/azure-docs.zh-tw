@@ -84,6 +84,8 @@
           href: troubleshoot-missing-data-download.md
         - name: 無法存取報告的圖形 API
           href: troubleshoot-graph-api.md
+        - name: 於已驗證的網域變更時稽核資料
+          href: troubleshoot-audit-data-verified-domain.md
 - name: 參考
   expanded: true
   items:

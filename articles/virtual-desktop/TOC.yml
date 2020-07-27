@@ -46,6 +46,8 @@
           href: expand-existing-host-pool.md
         - name: 使用 PowerShell 管理應用程式群組
           href: manage-app-groups-powershell.md
+    - name: 刪除主機集區
+      href: delete-host-pool.md
     - name: 建立設定檔容器
       items:
         - name: 使用 VM 型檔案共用
@@ -72,6 +74,8 @@
           href: set-up-customize-master-image.md
         - name: 在主要 VHD 映像上安裝 Office
           href: install-office-on-wvd-master-image.md
+    - name: 自動調整工作階段主機
+      href: set-up-scaling-script.md
     - name: 自訂摘要
       href: customize-feed-for-virtual-desktop-users.md
     - name: 使用服務診斷
@@ -108,6 +112,8 @@
       href: store-fslogix-profile.md
     - name: 合作夥伴整合
       href: partners.md
+    - name: Windows 虛擬桌面常見問題集
+      href: faq.md
     - name: Windows 10 企業版的多重工作階段常見問題集
       href: windows-10-multisession-faq.md
     - name: 資料地點

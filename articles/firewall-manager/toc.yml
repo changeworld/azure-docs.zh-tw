@@ -44,7 +44,7 @@
       href: migrate-to-policy.md
     - name: DNS 設定
       href: dns-settings.md
-    - name: 部署多個公用 IP
+    - name: 部署多個公用 IP - PowerShell
       href: multiple-public-ip-powershell.md
 - name: 參考
   items:

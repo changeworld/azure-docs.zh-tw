@@ -1,6 +1,6 @@
 ---
-title: Azure Front Door
-description: 本文提供最近對 Azure Front 的變更清單。
+title: Azure Front Door 近期變更
+description: 本文提供 Azure Front Door 近期的變更項目清單。
 services: frontdoor
 documentationcenter: ''
 author: megan-beatty
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 4/30/2020
 ms.author: mebeatty
-ms.openlocfilehash: d00ed607322205daefd80c111b83483524c4a742
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 26e3e242a5085e228e426ad2cba51b1f1982ad74
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85321515"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521474"
 ---
 # <a name="whats-new-in-azure-front-door"></a>Azure Front Door 的新功能
 

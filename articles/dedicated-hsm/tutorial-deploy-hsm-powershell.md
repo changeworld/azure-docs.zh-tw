@@ -11,14 +11,14 @@ ms.topic: tutorial
 ms.custom: mvc, seodec18
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/11/2019
-ms.author: mbaldwin
-ms.openlocfilehash: c1a847a315a264591c0d003ff691d9938c2bf0f5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 07/14/2020
+ms.author: johndaw
+ms.openlocfilehash: e7958a722f7010d63794cacc072289030a72ed99
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79474419"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512498"
 ---
 # <a name="tutorial--deploying-hsms-into-an-existing-virtual-network-using-powershell"></a>教學課程 – 使用 PowerShell 將 HSM 部署至現有的虛擬網路
 
@@ -62,13 +62,7 @@ Azure 入口網站目前不提供 Azure 專用 HSM ，因此與服務的所有�
 Get-AzProviderFeature -ProviderNamespace Microsoft.HardwareSecurityModules -FeatureName AzureDedicatedHsm
 ```
 
-下列命令會驗證專用 HSM 服務所需的網路功能。
-
-```powershell
-Get-AzProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowBaremetalServers
-```
-
-在您繼續進行前，兩個命令都應該會傳回 “Registered” 狀態 (如下所示)。  如果您需要註冊此服務，請連絡您的 Microsoft 帳戶代表。
+在您繼續進行前，命令應該會傳回 “Registered” 狀態 (如下所示)。  如果您尚未註冊此服務，請連絡您的 Microsoft 帳戶代表。
 
 ![訂用帳戶狀態](media/tutorial-deploy-hsm-powershell/subscription-status.png)
 
@@ -190,7 +184,7 @@ New-AzResourceGroupDeployment -ResourceGroupName myRG `
 
 ![佈建狀態](media/tutorial-deploy-hsm-powershell/progress-status.png)
 
-順利完成時 (顯示 “provisioningState”:“Succeeded”)，您可以登入現有的虛擬機器，並使用 SSH 來確保 HSM 裝置的可用性。
+“provisioningState”: “Succeeded” 表示順利完成時，您可以連線到現有的虛擬機器，並使用 SSH 來確保 HSM 裝置的可用性。
 
 ## <a name="verifying-the-deployment"></a>確認部署
 

@@ -157,6 +157,11 @@
       href: visualizations.md
     - name: 合作夥伴整合
       href: platform/partners.md
+    - name: 安全性
+      items:
+        - name: Azure 原則的安全性控制
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./platform/security-controls-policy.md
 - name: 操作指南
   items:
     - name: 案例
@@ -207,7 +212,7 @@
               href: platform/manage-access.md
         - name: 虛擬機器代理程式
           items:
-            - name: 概觀
+            - name: 總覽
               href: platform/agents-overview.md
             - name: 常見問題集
               href: faq.md#agents
@@ -244,14 +249,12 @@
                       href: platform/diagnostics-extension-to-application-insights.md
                     - name: 版本歷程記錄
                       href: platform/diagnostics-extension-versions.md
-                    - name: JSON 行資源記錄格式
-                      href: platform/resource-logs-append-blobs.md
                     - name: 疑難排解
                       href: platform/diagnostics-extension-troubleshooting.md
                 - name: Linux
                   displayname: diagnostics extension
                   items:
-                    - name: 概觀
+                    - name: 總覽
                       href: ../virtual-machines/extensions/diagnostics-linux.md?toc=/azure/azure-monitor/toc.json
                     - name: 使用 Telegraf 收集計量
                       href: platform/collect-custom-metrics-linux-telegraf.md
@@ -264,9 +267,9 @@
                 - name: Linux 代理程式
                   href: platform/agent-linux.md
                 - name: Windows 的 VM 延伸模組
-                  href: ../virtual-machines/windows/extensions-oms.md?toc=/azure/azure-monitor/toc.json
+                  href: ../virtual-machines/extensions/oms-windows.md?toc=/azure/azure-monitor/toc.json
                 - name: Linux 的 VM 延伸模組
-                  href: ../virtual-machines/linux/extensions-oms.md?toc=/azure/azure-monitor/toc.json
+                  href: ../virtual-machines/extensions/oms-linux.md?toc=/azure/azure-monitor/toc.json
                 - name: Log Analytics 閘道
                   href: platform/gateway.md
                 - name: 代理程式管理
@@ -430,7 +433,7 @@
         - name: 依自訂計量縮放
           href: platform/autoscale-custom-metric.md
         - name: 自動調整虛擬機器擴展集
-          href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md?toc=/azure/azure-monitor/toc.json
+          href: ../virtual-machine-scale-sets/tutorial-autoscale-powershell.md?toc=/azure/azure-monitor/toc.json
         - name: 使用 Resource Manager 範本自動調整虛擬機器擴展集
           href: platform/autoscale-virtual-machine-scale-sets.md
         - name: 使用 Webhook 與電子郵件通知
@@ -446,7 +449,7 @@
             - name: 可用性
               href: app/monitor-web-app-availability.md
             - name: 度量警示
-              href: app/alerts.md
+              href: ./platform/alerts-log.md
         - name: 計量警示規則
           items:
             - name: 管理計量警示
@@ -474,19 +477,20 @@
             - name: 活動記錄事件警示
               href: platform/alerts-activity-log.md
             - name: 將管理事件遷移至活動記錄警示
-              href: platform/migrate-management-alerts.md
+              href: ./platform/activity-log-alerts.md
             - name: Webhook 結構描述
               href: platform/activity-log-alerts-webhook.md
         - name: 服務健康情況警示
           items:
             - name: 檢視通知
-              href: platform/service-notifications.md
+              href: ../service-health/service-notifications.md
             - name: 設定通知事件警示
               href: platform/alerts-activity-log-service-notifications.md
         - name: 通知和動作
           items:
             - name: 動作規則 (預覽)
               href: platform/alerts-action-rules.md
+              displayName: 'Azure CLI, az monitor action rule'
             - name: 建立動作群組
               href: platform/action-groups.md
             - name: 一般警示結構描述
@@ -556,7 +560,7 @@
         - name: Application Insights 概觀
           href: app/app-insights-overview.md
         - name: 常見問題集
-          href: app/troubleshoot-faq.md
+          href: ./faq.md
         - name: 以程式碼為基礎的監視
           items:
             - name: ASP.NET Core
@@ -929,7 +933,7 @@
           href: insights/vminsights-optout.md
     - name: 適用於容器的 Azure 監視器
       items:
-        - name: 概觀
+        - name: 總覽
           href: insights/container-insights-overview.md
         - name: 常見問題集
           href: faq.md#azure-monitor-for-containers
@@ -970,7 +974,11 @@
         - name: 使用日誌查詢分析資料
           href: insights/container-insights-log-search.md
         - name: 警示
-          href: insights/container-insights-alerts.md
+          items:
+            - name: 建立記錄警示規則
+              href: insights/container-insights-log-alerts.md
+            - name: 建立計量警示規則
+              href: insights/container-insights-metric-alerts.md
         - name: 代理程式管理
           href: insights/container-insights-manage-agent.md
         - name: 設定 Prometheus 計量抓取
@@ -1016,6 +1024,7 @@
       items:
         - name: 概觀
           href: insights/solutions.md
+          displayName: 'Azure CLI, az monitor log-analytics'
         - name: 目標解決方案
           href: insights/solution-targeting.md
         - name: 可用的解決方案
@@ -1028,8 +1037,6 @@
               href: insights/capacity-performance.md
             - name: Docker 和 Windows 容器監視
               href: insights/containers.md
-            - name: 金鑰保存庫分析
-              href: insights/azure-key-vault.md
             - name: 網路
               items:
                 - name: 網路分析
@@ -1173,7 +1180,7 @@
     - name: 術語變更
       href: terminology.md
     - name: 資料參考
-      href: 'https://docs.microsoft.com/azure/azure-monitor/reference/'
+      href: /azure/azure-monitor/reference/
     - name: 支援的計量
       items:
         - name: 平台計量
@@ -1288,6 +1295,8 @@
         - name: 變更為 Blob 儲存體格式
           displayname: Diagnostic settings
           href: platform/resource-logs-blob-format.md
+        - name: 金鑰保存庫分析 (已遭到取代)
+          href: insights/azure-key-vault-deprecated.md
 - name: 資源
   items:
     - name: Azure 藍圖

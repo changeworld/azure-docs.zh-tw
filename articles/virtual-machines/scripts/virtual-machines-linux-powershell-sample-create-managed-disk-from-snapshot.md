@@ -1,5 +1,5 @@
 ---
-title: 從快照集建立受控磁碟 - PowerShell 範例
+title: 從快照集建立受控磁碟 (Linux) - PowerShell 範例
 description: Azure PowerShell 指令碼範例 - 從快照集建立受控磁碟
 services: virtual-machines-linux
 documentationcenter: storage
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/05/2017
 ms.author: ramankum
-ms.openlocfilehash: 89ab1a388aa6497e559a1746ee8165ccd8cae1ef
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2faa98ec21d260e6a7cbdf9eceba24baf4b13c61
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81459877"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86501122"
 ---
-# <a name="create-a-managed-disk-from-a-snapshot-with-powershell"></a>使用 PowerShell 從快照集建立受控磁碟
+# <a name="create-a-managed-disk-from-a-snapshot-with-powershell-linux"></a>使用 PowerShell 從快照集建立受控磁碟 (Linux)
 
 此指令碼會從快照集建立受控磁碟。 使用它從 OS 和資料磁碟的快照集還原虛擬機器。 從個別的快照集建立 OS 和資料受控磁碟，再連結受控磁碟以建立新的虛擬機器。 您也可以連結從快照集建立的資料磁碟，以還原現有 VM 的資料磁碟。
 
@@ -38,9 +38,9 @@ ms.locfileid: "81459877"
 
 | Command | 注意 |
 |---|---|
-| [Get-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/Get-AzSnapshot) | 取得快照集屬性。  |
-| [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/New-AzDiskConfig) | 建立用於磁碟建立的磁碟組態。 其中包含父代快照集的資源識別碼、與父代快照集位置相同的位置和儲存體類型。  |
-| [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/New-AzDisk) | 使用當作參數傳遞的磁碟組態、磁碟名稱和資源群組名稱來建立磁碟。 |
+| [Get-AzSnapshot](/powershell/module/az.compute/get-azsnapshot) | 取得快照集屬性。  |
+| [New-AzDiskConfig](/powershell/module/az.compute/new-azdiskconfig) | 建立用於磁碟建立的磁碟組態。 其中包含父代快照集的資源識別碼、與父代快照集位置相同的位置和儲存體類型。  |
+| [New-AzDisk](/powershell/module/az.compute/new-azdisk) | 使用當作參數傳遞的磁碟組態、磁碟名稱和資源群組名稱來建立磁碟。 |
 
 ## <a name="next-steps"></a>後續步驟
 

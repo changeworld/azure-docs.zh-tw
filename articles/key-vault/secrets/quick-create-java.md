@@ -7,12 +7,12 @@ ms.date: 10/20/2019
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: 16248cd276b63e9570221626ec32d1d4723c4ebd
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: 2da208c7c85dd001502a88f00bc7c1e090bbc3ef
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85125595"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536431"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-java"></a>快速入門：適用於 Java 的 Azure Key Vault 用戶端程式庫
 
@@ -26,7 +26,12 @@ Azure 金鑰保存庫可協助保護雲端應用程式和服務所使用的密�
 - 簡化 TLS/SSL 憑證的工作並將其自動化。
 - 使用經 FIPS 140-2 Level 2 驗證的 HSM。
 
-[原始程式碼](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault) | [API 參考文件](https://azure.github.io/azure-sdk-for-java) | [產品文件](index.yml) | [範例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault/azure-security-keyvault-secrets/src/samples/java/com/azure/security/keyvault/secrets)
+其他資源：
+
+* [原始程式碼](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault) \(英文\)
+* [API 參考文件](https://azure.github.io/azure-sdk-for-java)
+* [產品文件](index.yml)
+* [範例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault/azure-security-keyvault-secrets/src/samples/java/com/azure/security/keyvault/secrets)
 
 ## <a name="prerequisites"></a>必要條件
 

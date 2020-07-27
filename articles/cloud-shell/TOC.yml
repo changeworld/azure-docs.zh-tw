@@ -1,4 +1,4 @@
-- name: 概觀
+- name: 總覽
   href: overview.md
 - name: 快速入門
   items:
@@ -32,6 +32,8 @@
       href: msi-authorization.md
     - name: 內嵌 Cloud Shell
       href: embed-cloud-shell.md
+    - name: Azure 虛擬網路中的 Cloud Shell
+      href: private-vnet.md
 - name: 使用 Cloud Shell 編輯器
   href: using-cloud-shell-editor.md
 - name: 疑難排解和限制

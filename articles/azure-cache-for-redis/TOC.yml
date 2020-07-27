@@ -59,13 +59,15 @@
     - name: 計畫
       items:
         - name: 選擇快取層
-          href: 'cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use'
+          href: cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use
         - name: 利用叢集來散發您的快取
           href: cache-how-to-premium-clustering.md
         - name: 利用 Redis 資料永續性來留存您的快取
           href: cache-how-to-premium-persistence.md
         - name: 使用虛擬網路保護快取
           href: cache-how-to-premium-vnet.md
+        - name: 私下連線至快取
+          href: cache-private-link.md
         - name: 設定異地複寫
           href: cache-how-to-geo-replication.md
         - name: 使用保留容量來儲存
@@ -101,9 +103,9 @@
         - name: 匯入/匯出資料
           href: cache-how-to-import-export-data.md
         - name: 重新啟動
-          href: 'cache-administration.md#reboot'
+          href: cache-administration.md#reboot
         - name: 更新排程
-          href: 'cache-administration.md#schedule-updates'
+          href: cache-administration.md#schedule-updates
         - name: 設定 redis-cli.exe 存取
           href: cache-how-to-redis-cli-tool.md
         - name: 移除 TLS 1.0 和 1.1
@@ -113,7 +115,7 @@
         - name: 在 Azure 入口網站中監視
           href: cache-how-to-monitor.md
         - name: 為例外狀況設定警示
-          href: 'cache-how-to-monitor.md#operations-and-alerts'
+          href: cache-how-to-monitor.md#operations-and-alerts
     - name: 診斷和疑難排解
       items:
         - name: Redis 伺服器疑難排解

@@ -2,32 +2,58 @@
   href: index.yml
 - name: 概觀
   items:
-    - name: 關於時間序列深入解析
-      href: time-series-insights-update-overview.md
+    - name: 什麼是時間序列深入解析 Gen2
+      href: overview-what-is-tsi.md
+    - name: 使用案例
+      href: overview-use-cases.md
 - name: 快速入門
   expanded: true
   items:
-    - name: Azure 時間序列深入解析 GA
-      items:
-        - name: 探索時間序列深入解析
-          href: time-series-quickstart.md
-    - name: Azure 時間序列深入解析預覽
-      items:
-        - name: 探索時間序列深入解析預覽
-          href: time-series-insights-update-quickstart.md
+    - name: 探索時間序列深入解析 Gen2
+      href: quickstart-explore-tsi.md
 - name: 教學課程
   items:
-    - name: Azure 時間序列深入解析 GA
-      items:
-        - name: 建立時間序列深入解析環境
-          href: tutorial-create-populate-tsi-environment.md
-    - name: Azure 時間序列深入解析預覽
-      items:
-        - name: 設定預覽環境
-          href: time-series-insights-update-create-environment.md
+    - name: 設定時間序列深入解析 Gen2 環境
+      href: tutorials-set-up-tsi-environment.md
 - name: 概念
   items:
-    - name: Azure 時間序列深入解析 GA
+    - name: Azure 時間序列深入解析 Gen2
+      items:
+        - name: 輸入和儲存體
+          items:
+            - name: 擷取概觀
+              href: concepts-ingestion-overview.md
+            - name: 支援的資料類型
+              href: concepts-supported-data-types.md
+            - name: 串流擷取事件來源
+              href: concepts-streaming-ingestion-event-sources.md
+            - name: JSON 簡維和逸出規則
+              href: concepts-json-flattening-escaping-rules.md
+            - name: 串流輸入輸送量限制
+              href: concepts-streaming-ingress-throughput-limits.md
+            - name: 儲存體
+              href: concepts-storage.md
+        - name: 模型
+          items:
+            - name: 模型概觀
+              href: concepts-model-overview.md
+            - name: 變數
+              href: concepts-variables.md
+        - name: 查詢
+          items:
+            - name: 查詢概觀
+              href: concepts-query-overview.md
+        - name: 在總管中視覺化
+          items:
+            - name: UX 面板
+              href: concepts-ux-panels.md
+        - name: 重大變更
+          items:
+            - name: 為 Long 資料類型新增支援
+              href: breaking-changes-long-data-type.md
+            - name: JSON 簡維和儲存體的變更
+              href: ingestion-rules-update.md
+    - name: Azure 時間序列深入解析 Gen1
       items:
         - name: 關於時間序列深入解析
           href: time-series-insights-overview.md
@@ -37,61 +63,61 @@
           href: time-series-insights-explorer.md
         - name: 了解資料保留
           href: time-series-insights-concepts-retention.md
-        - name: 開發
-          items:
-            - name: 驗證和授權
-              href: time-series-insights-authentication-and-authorization.md
-            - name: 使用 C# 查詢資料
-              href: time-series-insights-query-data-csharp.md
-            - name: 使用 C# 管理參考資料
-              href: time-series-insights-manage-reference-data-csharp.md
-            - name: 共用自訂檢視
-              href: time-series-insights-parameterized-urls.md
-    - name: Azure 時間序列深入解析預覽
+    - name: 開發
       items:
-        - name: 使用案例
-          href: time-series-insights-update-use-cases.md
-        - name: 規劃您的環境
-          href: time-series-insights-update-plan.md
-        - name: 擷取概觀
-          href: concepts-ingestion-overview.md
-        - name: 支援的資料類型
-          href: concepts-supported-data-types.md
-        - name: 串流擷取事件來源
-          href: concepts-streaming-ingestion-event-sources.md
-        - name: JSON 簡維和逸出規則
-          href: concepts-json-flattening-escaping-rules.md
-        - name: 串流輸入輸送量限制
-          href: concepts-streaming-throughput-limitations.md
-        - name: 儲存體
-          href: concepts-storage.md
-        - name: 時間序列模型
-          href: concepts-model-overview.md
-        - name: 時間序列查詢
-          href: concepts-query-overview.md
-        - name: 在總管中將資料視覺化 (預覽)
-          href: time-series-insights-update-explorer.md
-        - name: 開發
-          items:
-            - name: 驗證和授權
-              href: time-series-insights-authentication-and-authorization.md
-            - name: 使用 C# 查詢資料
-              href: time-series-insights-update-query-data-csharp.md
-            - name: Power BI 整合
-              href: concepts-power-bi.md
+        - name: 驗證和授權
+          href: time-series-insights-authentication-and-authorization.md
+        - name: 使用 C# 查詢資料
+          href: time-series-insights-query-data-csharp.md
+        - name: 使用 C# 管理參考資料
+          href: time-series-insights-manage-reference-data-csharp.md
+        - name: 共用自訂檢視
+          href: time-series-insights-parameterized-urls.md
 - name: 操作指南
   items:
     - name: 授與資料存取
-      href: time-series-insights-data-access.md
+      href: concepts-access-policies.md
     - name: 連線至事件中樞
       href: time-series-insights-how-to-add-an-event-source-eventhub.md
     - name: 連線至 IoT 中樞
       href: time-series-insights-how-to-add-an-event-source-iothub.md
     - name: 使用範本管理資源
       href: time-series-insights-manage-resources-using-azure-resource-manager-template.md
-    - name: Azure 時間序列深入解析 GA
+    - name: Azure 時間序列深入解析 Gen2
       items:
-        - name: 建立環境
+        - name: 最佳作法
+          items:
+            - name: 規劃您的環境
+              href: how-to-plan-your-environment.md
+        - name: 環境管理
+          items:
+            - name: 如何佈建和管理
+              href: how-to-provision-manage.md
+            - name: 如何診斷和疑難排解
+              href: how-to-diagnose-troubleshoot.md
+        - name: 輸入和儲存體
+          items:
+            - name: 如何選取 TSID
+              href: how-to-select-tsid.md
+        - name: 模型
+          items:
+            - name: 如何編輯您的模型
+              href: how-to-edit-your-model.md
+        - name: 連接器
+          items:
+            - name: 如何連線至 Power BI
+              href: how-to-connect-power-bi.md
+        - name: 移轉
+          items:
+            - name: 如何遷移至新的 API 版本
+              href: how-to-api-migration.md
+    - name: Azure 時間序列深入解析 Gen1
+      items:
+        - name: 探索時間序列深入解析
+          href: time-series-quickstart.md
+        - name: 建立和填入環境
+          href: tutorial-create-populate-tsi-environment.md
+        - name: 在 Azure 入口網站中建立環境
           href: time-series-insights-get-started.md
         - name: 設定資料保留期
           href: time-series-insights-how-to-configure-retention.md
@@ -107,60 +133,86 @@
           href: time-series-insights-environment-mitigate-latency.md
         - name: 診斷和疑難排解
           href: time-series-insights-diagnose-and-solve-problems.md
-    - name: Azure 時間序列深入解析預覽
-      items:
-        - name: 佈建和管理
-          href: time-series-insights-update-how-to-manage.md
-        - name: 選擇時間序列識別碼
-          href: time-series-insights-update-how-to-id.md
-        - name: 診斷和疑難排解
-          href: time-series-insights-update-how-to-troubleshoot.md
-        - name: 資料模型化
-          href: time-series-insights-update-how-to-tsm.md
-        - name: 用於輸入和查詢的 Shape JSON
-          href: time-series-insights-update-how-to-shape-events.md
-        - name: 連線至 Power BI
-          href: how-to-connect-power-bi.md
-- name: 重大變更
-  items:
-    - name: Azure 時間序列深入解析預覽
-      items:
-        - name: 為 Long 資料類型新增支援
-          href: time-series-insights-long-data-type.md
-        - name: JSON 簡維和儲存體的變更
-          href: ingestion-rules-update.md
 - name: 參考
   items:
     - name: 時間序列深入解析
       items:
-        - name: Azure Time Series Insights
-          href: /rest/api/time-series-insights/index
-        - name: 資料存取 GA
-          href: /rest/api/time-series-insights/ga
+        - name: REST API 概觀
+          href: 'https://docs.microsoft.com/rest/api/time-series-insights/'
+        - name: 資料存取 Gen2
           items:
-            - name: 查詢
-              href: /rest/api/time-series-insights/ga-query
+            - name: 概觀
+              href: 'https://docs.microsoft.com/rest/api/time-series-insights/preview'
+            - name: 模型設定
               items:
+                - name: 概觀
+                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/modelsettings'
+                - name: Get
+                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/modelsettings/get'
+                - name: 更新
+                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/modelsettings/update'
+            - name: 查詢
+              items:
+                - name: 總覽
+                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query'
+                - name: 執行
+                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute'
+                - name: 取得可用性
+                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/getavailability'
+                - name: 取得事件結構描述
+                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/geteventschema'
+            - name: 時間序列階層
+              items:
+                - name: 概觀
+                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies'
+                - name: 執行批次
+                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies/executebatch'
+                - name: Get
+                  href: 'https://docs.microsoft.com/en-us/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies/list'
+            - name: 時間序列執行個體
+              items:
+                - name: 概觀
+                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances'
+                - name: 執行批次
+                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/executebatch'
+                - name: Get
+                  href: 'https://docs.microsoft.com/en-us/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies/list'
+                - name: 搜尋
+                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/search'
+                - name: 建議
+                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/suggest'
+            - name: 時間序列類型
+              items:
+                - name: 概觀
+                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes'
+                - name: 執行批次
+                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch'
+                - name: Get
+                  href: 'https://docs.microsoft.com/en-us/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/list'
+        - name: 資料存取 Gen1
+          items:
+            - name: 概觀
+              href: 'https://docs.microsoft.com/rest/api/time-series-insights/ga'
+            - name: 查詢
+              items:
+                - name: 查詢
+                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/ga-query'
                 - name: API
-                  href: /rest/api/time-series-insights/ga-query-api
+                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api'
                 - name: 語法
-                  href: /rest/api/time-series-insights/ga-query-syntax
+                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/ga-query-syntax'
             - name: 參考資料 API
-              href: /rest/api/time-series-insights/ga-reference-data-api
-        - name: 資料存取概念預覽
-          href: /rest/api/time-series-insights/preview
+              href: 'https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api'
     - name: 用戶端 SDK
       items:
         - name: JavaScript 用戶端 SDK
           href: 'https://github.com/microsoft/tsiclient/blob/master/docs/API.md'
     - name: Azure CLI
-      href: /cli/azure/ext/timeseriesinsights/timeseriesinsights
-      displayName: az iot
+      href: 'https://docs.microsoft.com/cli/azure/ext/timeseriesinsights/timeseriesinsights?view=azure-cli-latest'
 - name: 資源
-  expanded: true
   items:
     - name: 支援和協助選項
-      href: /azure/iot-fundamentals/iot-support-help
+      href: 'https://docs.microsoft.com/azure/iot-fundamentals/iot-support-help'
     - name: 客戶資料要求
       href: time-series-insights-customer-data-requests.md
     - name: 開發人員資源
@@ -181,6 +233,22 @@
           href: 'https://azure.microsoft.com/pricing/calculator/'
         - name: 區域可用性
           href: 'https://azure.microsoft.com/regions/services/'
+    - name: 支援和協助選項
+      items:
+        - name: Azure 支援選項
+          href: 'https://azure.microsoft.com/support/options/'
+        - name: Azure IoT 支援和協助選項
+          href: 'https://docs.microsoft.com/azure/iot-fundamentals/iot-support-help'
+        - name: Stack Overflow
+          href: 'https://stackoverflow.com/questions/tagged/azure-timeseries-insights'
+        - name: MSDN 論壇
+          href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureTimeSeriesInsights'
+    - name: 意見反應及論壇
+      items:
+        - name: MSDN 論壇
+          href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureTimeSeriesInsights'
+        - name: 產品要求和建議
+          href: 'https://feedback.azure.com/forums/906859-azure-time-series-insights'
     - name: Azure 影片
       href: 'https://azure.microsoft.com/resources/videos/index/?services=time-series-insights'
     - name: Channel 9 影片

@@ -1,18 +1,18 @@
 ---
-title: 使用 Resource Manager 範本建立度量警示
-description: 了解如何使用 Resource Manager 範本建立計量警示。
+title: 計量警示的 Resource Manager 範本範例
+description: 本文提供 Azure Resource Manager 範本範例，可用來在 Azure 監視器中建立計量警示。
 author: bwren
 ms.author: bwren
 services: azure-monitor
 ms.topic: sample
 ms.date: 05/18/2020
 ms.subservice: alerts
-ms.openlocfilehash: 27d592a2702f9e2e8fda9094796cf2e37400621b
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 793a4b3e8ea0dde2e4ad755cbff5a07a36c44cb9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83853300"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515371"
 ---
 # <a name="resource-manager-template-samples-for-metric-alert-rules-in-azure-monitor"></a>在 Azure 監視器中建立計量警示規則的 Resource Manager 範本範例
 
@@ -20,7 +20,7 @@ ms.locfileid: "83853300"
 
 [!INCLUDE [azure-monitor-samples](../../../includes/azure-monitor-resource-manager-samples.md)]
 
-如需可用於計量警示規則的資源清單，請參閱 [Azure 監視器中計量警示所支援的資源](../platform/alerts-metric-near-real-time.md)。 您可以在[計量警示 - 建立或更新](https://docs.microsoft.com/rest/api/monitor/metricalerts/createorupdate)中取得警示規則的結構描述和屬性說明。
+如需可用於計量警示規則的資源清單，請參閱 [Azure 監視器中計量警示所支援的資源](../platform/alerts-metric-near-real-time.md)。 您可以在[計量警示 - 建立或更新](/rest/api/monitor/metricalerts/createorupdate)中取得警示規則的結構描述和屬性說明。
 
 > [!NOTE]
 > 建立資源類型之計量警示的資源範本：Azure Log Analytics 工作區 (例如 `Microsoft.OperationalInsights/workspaces`)，需要其他步驟。 如需詳細資訊，請參閱[記錄的計量警示 - 資源範本](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs)。
@@ -1094,7 +1094,7 @@ ms.locfileid: "83853300"
 
 您可以使用下列範本，針對自訂計量建立更進階的靜態閾值計量警示規則。
 
-若要深入了解 Azure 監視器中的自訂計量，請參閱 [Azure 監視器中的自訂計量](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview)。
+若要深入了解 Azure 監視器中的自訂計量，請參閱 [Azure 監視器中的自訂計量](../platform/metrics-custom-overview.md)。
 
 在為自訂計量建立警示規則時，您必須指定計量名稱和計量命名空間。 應確定自訂計量已回報，因為若自訂計量不存在，您就無法建立警示規則。
 
@@ -1325,7 +1325,7 @@ ms.locfileid: "83853300"
 
 >[!NOTE]
 >
-> 您可以[透過 Azure 入口網站瀏覽自訂計量](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview#browse-your-custom-metrics-via-the-azure-portal)，來找到特定自訂計量的計量命名空間
+> 您可以[透過 Azure 入口網站瀏覽自訂計量](../platform/metrics-custom-overview.md#browse-your-custom-metrics-via-the-azure-portal)，來找到特定自訂計量的計量命名空間
 
 
 ## <a name="multiple-resources"></a>多個資源

@@ -1,5 +1,5 @@
 ---
-title: 將受控磁碟的快照集複製到訂用帳戶 - PowerShell 範例
+title: 訂用帳戶受控磁碟的快照集 (Windows) - PowerShell
 description: Azure PowerShell 指令碼範例 - 將受控磁碟快照集複製 (移動) 到相同或不同的訂用帳戶
 services: virtual-machines-windows
 documentationcenter: storage
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 02/28/2019
 ms.author: ramankum
-ms.openlocfilehash: d5f110d8cf3324fa02a5b2e2500f743c57b1d229
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0dadb4102a16d63b028e7202e2d7a94f135d06bb
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81452276"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86501053"
 ---
-# <a name="copy-snapshot-of-a-managed-disk-in-same-subscription-or-different-subscription-with-powershell"></a>使用 PowerShell 複製相同訂用帳戶或不同訂用帳戶中的受控磁碟快照集
+# <a name="copy-snapshot-of-a-managed-disk-in-same-subscription-or-different-subscription-with-powershell-windows"></a>使用 PowerShell 複製相同訂用帳戶或不同訂用帳戶中的受控磁碟快照集 (Windows)
 
 此指令碼會將受控磁碟的快照集複製到相同或不同的訂用帳戶。 請對下列案例使用此指令碼：
 
@@ -44,8 +44,8 @@ ms.locfileid: "81452276"
 
 | Command | 注意 |
 |---|---|
-| [New-AzSnapshotConfig](https://docs.microsoft.com/powershell/module/az.compute/New-AzSnapshotConfig) | 建立用於建立快照集的快照集組態。 其中包含父代快照集的資源識別碼以及與父代快照集位置相同的位置。  |
-| [New-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot) | 使用當作參數傳遞的快照集組態、快照集名稱和資源群組名稱來建立快照集。 |
+| [New-AzSnapshotConfig](/powershell/module/az.compute/new-azsnapshotconfig) | 建立用於建立快照集的快照集組態。 其中包含父代快照集的資源識別碼以及與父代快照集位置相同的位置。  |
+| [New-AzSnapshot](/powershell/module/az.compute/new-azsnapshot) | 使用當作參數傳遞的快照集組態、快照集名稱和資源群組名稱來建立快照集。 |
 
 ## <a name="next-steps"></a>後續步驟
 

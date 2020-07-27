@@ -89,6 +89,8 @@
           href: backup-azure-monitor-alert-faq.md
     - name: 備份架構
       href: backup-architecture.md
+    - name: 指導方針和最佳做法
+      href: guidance-best-practices.md
 - name: 使用說明指南
   items:
     - name: 復原服務保存庫
@@ -375,6 +377,9 @@
           href: encryption-at-rest-with-cmk.md
         - name: 內建安全性控制
           href: backup-security-controls.md
+        - name: Azure 原則的安全性控制
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
         - name: 安全性基準
           href: security-baseline.md
     - name: 疑難排解

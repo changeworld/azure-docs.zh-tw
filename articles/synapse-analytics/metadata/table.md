@@ -1,5 +1,5 @@
 ---
-title: Azure Synapse Analytics 的共用中繼資料資料表
+title: 共用中繼資料表
 description: Azure Synapse Analytics 會提供共用中繼資料模型，您在 Apache Spark 中建立的資料表，將能夠透過其 SQL 隨選 (預覽) 和 SQL 集區引擎存取，而不需要複製資料。
 services: sql-data-warehouse
 author: MikeRys
@@ -9,12 +9,12 @@ ms.subservice: metadata
 ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
-ms.openlocfilehash: 257847a34821ad48d0491472cf7365932f7740c0
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: d9efafdbc3545bebb3b90b3f64c14f45d8be82e6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85080786"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496021"
 ---
 # <a name="azure-synapse-analytics-shared-metadata-tables"></a>Azure Synapse Analytics 共用中繼資料資料表
 

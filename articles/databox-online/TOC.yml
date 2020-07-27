@@ -123,8 +123,10 @@
           href: azure-stack-edge-contact-microsoft-support.md
         - name: 監視
           href: azure-stack-edge-monitor.md
-        - name: 退回或更換裝置
+        - name: 傳回裝置
           href: azure-stack-edge-return-device.md
+        - name: 更換裝置
+          href: azure-stack-edge-replace-device.md
     - name: 版本資訊
       items:
         - name: 2007 - 目前
@@ -137,6 +139,14 @@
           href: data-box-gateway-1905-release-notes.md
         - name: 公開上市 (GA)
           href: data-box-gateway-release-notes.md
+    - name: 參考
+      items:
+        - name: Azure PowerShell
+          href: 'https://docs.microsoft.com/powershell/module/az.stackedge/?view=azps-4.4.0#stack_edge'
+        - name: REST API
+          href: 'https://docs.microsoft.com/rest/api/databoxedgegateway'
+        - name: .NET SDK
+          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/databoxedge/databoxgateway?view=azure-dotnet'
 - name: 資源
   items:
     - name: Azure Stack Edge C# 模組範例 (.NET)

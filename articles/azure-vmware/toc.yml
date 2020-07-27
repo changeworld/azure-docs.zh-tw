@@ -16,7 +16,11 @@
       href: tutorial-access-private-cloud.md
     - name: 5 - 擴充私人雲端
       href: tutorial-scale-private-cloud.md
-    - name: 6 - 建立內容庫
+    - name: 6 - 建立 NSX-T 網路區段
+      href: tutorial-nsx-t-network-segment.md
+    - name: 7 - 將內部部署環境對等互連至私人雲端
+      href: tutorial-expressroute-global-reach-private-cloud.md
+    - name: 8 - 透過內容庫部署 VM
       href: tutorial-deploy-vm-content-library.md
 - name: 概念
   items:
@@ -34,6 +38,8 @@
       href: concepts-upgrades.md
 - name: 操作指南
   items:
+    - name: AVS 移轉評估
+      href: ../migrate/how-to-create-azure-vmware-solution-assessment.md?context=/azure/migrate/context/migrate-context.json
     - name: 設定 HCX
       href: hybrid-cloud-extension-installation.md
     - name: 管理 DHCP

@@ -1,5 +1,5 @@
 ---
-title: Azure Synapse Analytics 共用中繼資料模型
+title: 共用中繼資料模型
 description: Azure Synapse Analytics 可讓不同的工作區計算引擎在其 Spark 集區 (預覽)、SQL 隨選 (預覽) 引擎和 SQL 集區之間共用資料庫和資料表。
 services: synapse-analytics
 author: MikeRys
@@ -9,12 +9,12 @@ ms.subservice: metadata
 ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
-ms.openlocfilehash: 26a65aef0d7524bf73c6dc2981bd71539e59ed76
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: c41c3346d04dd1fc00a7ddb9e7fea66f619995e6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85080157"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496040"
 ---
 # <a name="azure-synapse-analytics-shared-metadata"></a>Azure Synapse Analytics 共用中繼資料
 

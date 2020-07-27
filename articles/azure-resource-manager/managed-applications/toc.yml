@@ -81,24 +81,44 @@
     - name: REST
       href: /rest/api/resources/
     - name: 使用者介面功能
-      href: create-uidefinition-functions.md
+      items:
+        - name: 所有函式
+          href: create-uidefinition-functions.md
+        - name: 集合函式
+          href: create-ui-definition-collection-functions.md
+        - name: 轉換函數
+          href: create-ui-definition-conversion-functions.md
+        - name: 日期函式
+          href: create-ui-definition-date-functions.md
+        - name: 邏輯函式
+          href: create-ui-definition-logical-functions.md
+        - name: 數學函數
+          href: create-ui-definition-math-functions.md
+        - name: 參考函式
+          href: create-ui-definition-referencing-functions.md
+        - name: 字串函數
+          href: create-ui-definition-string-functions.md
     - name: 使用者介面元素
       href: create-uidefinition-elements.md
       items:
         - name: 通用
           items:
+            - name: CheckBox
+              href: microsoft-common-checkbox.md
             - name: DropDown
               href: microsoft-common-dropdown.md
             - name: FileUpload
               href: microsoft-common-fileupload.md
             - name: InfoBox
               href: microsoft-common-infobox.md
-            - name: OptionsGroup
+            - name: OptionsGroup (選項按鈕)
               href: microsoft-common-optionsgroup.md
             - name: PasswordBox
               href: microsoft-common-passwordbox.md
             - name: 區段
               href: microsoft-common-section.md
+            - name: 滑桿
+              href: microsoft-common-slider.md
             - name: TagsByResource
               href: microsoft-common-tagsbyresource.md
             - name: TextBlock
@@ -123,6 +143,12 @@
               href: microsoft-network-publicipaddresscombo.md
             - name: VirtualNetworkCombo
               href: microsoft-network-virtualnetworkcombo.md
+        - name: 方案
+          items:
+            - name: ArmApiControl
+              href: microsoft-solutions-armapicontrol.md
+            - name: ResourceSelector
+              href: microsoft-solutions-resourceselector.md
         - name: 儲存體
           items:
             - name: MultiStorageAccountCombo

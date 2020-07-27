@@ -110,6 +110,9 @@
                   href: authenticate-application.md
         - name: 內建安全性控制
           href: service-bus-messaging-security-controls.md
+        - name: Azure 原則的安全性控制
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
         - name: 網路安全性
           href: network-security.md
 - name: 操作指南

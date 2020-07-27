@@ -11,7 +11,7 @@
 - name: 操作指南
   items:
     - name: Prerequisites
-      href: hpc-cache-prereqs.md
+      href: hpc-cache-prerequisites.md
     - name: 建立快取
       href: hpc-cache-create.md
     - name: 新增儲存體
@@ -46,6 +46,8 @@
   items:
     - name: 開啟支援票證
       href: hpc-cache-support-ticket.md
+    - name: 設定適用於 Azure HPC Cache 的 Azure CLI
+      href: az-cli-prerequisites.md
     - name: 解決 Blob 儲存體帳戶防火牆設定問題
       href: hpc-cache-blob-firewall-fix.md
     - name: 針對 NFS 儲存目標的建立進行疑難排解

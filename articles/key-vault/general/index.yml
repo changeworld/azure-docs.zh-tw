@@ -11,12 +11,12 @@ metadata:
   ms.author: mbaldwin
   manager: rkarlin
   ms.date: 09/19/2019
-  ms.openlocfilehash: 5be853f9e1f9778eb767aa93497c546cb35fa0df
-  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+  ms.openlocfilehash: f1e519c99bf55abb8a72ada83d59fa1e4c063998
+  ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 04/16/2020
-  ms.locfileid: "81422399"
+  ms.lasthandoff: 07/23/2020
+  ms.locfileid: "87078897"
 landingContent:
 - title: 關於 Azure Key Vault
   linkLists:
@@ -38,10 +38,10 @@ landingContent:
     links:
     - text: 從 Web 應用程式使用 Key Vault
       url: tutorial-net-create-vault-azure-web-app.md
-    - text: 搭配使用 Key Vault 與 Azure Windows 虛擬機器
-      url: tutorial-net-windows-virtual-machine.md
-    - text: 搭配使用 Key Vault 與 Python - Windows
-      url: tutorial-python-windows-virtual-machine.md
+    - text: 在 .NET 中搭配使用 Key Vault 與虛擬機器
+      url: tutorial-net-virtual-machine.md
+    - text: 在 Python 中搭配使用 Key Vault 與虛擬機器
+      url: tutorial-python-virtual-machine.md
 - title: 安全性
   linkLists:
   - linkListType: overview

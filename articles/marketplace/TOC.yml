@@ -60,6 +60,8 @@
         - name: 您的 Marketplace 權益
           href: ./gtm-your-marketplace-benefits.md
           items:
+            - name: Azure 使用量承諾權益
+              href: ./azure-consumption-commitment-benefit.md
             - name: 共同銷售合作夥伴參與
               href: ./marketplace-co-sell.md
             - name: 慣用的解決方案

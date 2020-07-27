@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: Azure Machine Learning 文件
-summary: 了解如何使用 Azure Machine Learning 大規模地訓練、部署及管理機器學習模型、AutoML 實驗和管線。 教學課程、程式碼範例、API 參考等項目會示範操作方法。
+summary: 了解如何使用 Azure Machine Learning 大規模地定型、部署及管理機器學習模型、使用 AutoML 以及執行管線。  教學課程、程式碼範例、API 參考等項目會示範操作方法。
 metadata:
   title: Azure Machine Learning 文件
-  description: 了解如何使用 Azure Machine Learning 大規模地訓練、部署及管理機器學習模型、AutoML 實驗和管線。 教學課程、程式碼範例、API 參考等項目會示範操作方法。
+  description: 了解如何使用 Azure Machine Learning 大規模地定型、部署及管理機器學習模型、使用 AutoML 以及執行管線。 教學課程、程式碼範例、API 參考等項目會示範操作方法。
   services: machine-learning
   ms.service: machine-learning
   ms.subservice: core
@@ -11,13 +11,13 @@ metadata:
   ms.collection: collection
   author: j-martens
   ms.author: jmartens
-  ms.date: 04/30/2020
-  ms.openlocfilehash: 57a16ca35699f11c55e12c494a4cbb93bac8a334
-  ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+  ms.date: 07/30/2020
+  ms.openlocfilehash: 1006874272fa4798d9e56cbc76d7b039e697c413
+  ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 05/19/2020
-  ms.locfileid: "83592996"
+  ms.lasthandoff: 07/23/2020
+  ms.locfileid: "87047800"
 landingContent:
 - title: 開始使用機器學習
   linkLists:
@@ -31,14 +31,14 @@ landingContent:
       url: tutorial-first-experiment-automated-ml.md
     - text: RStudio
       url: tutorial-1st-r-experiment.md
-- title: 使用 studio web 體驗
+- title: 在 Studio 中使用設計工具和 AutoML
   linkLists:
   - linkListType: overview
     links:
+    - text: 什麼是自動化機器學習 (AutoML)？
+      url: concept-automated-ml.md
     - text: 什麼是設計工具 (拖放)？
       url: concept-designer.md
-    - text: 什麼是自動化機器學習服務？
-      url: concept-automated-ml.md
     - text: 如何選擇演算法
       url: how-to-select-algorithms.md
   - linkListType: tutorial
@@ -51,7 +51,7 @@ landingContent:
       url: tutorial-designer-automobile-price-train-score.md
     - text: 建立映像標籤專案
       url: tutorial-labeling.md
-- title: 使用 Python SDK
+- title: 使用 Python SDK 進行定型
   linkLists:
   - linkListType: tutorial
     links:
@@ -71,19 +71,19 @@ landingContent:
       url: how-to-machine-learning-interpretability.md
     - text: 深度學習與 ML
       url: concept-deep-learning-vs-machine-learning.md
-    - text: 使用 Scikit-learn 定型
+    - text: 定型和註冊 Scikit-learn 模型
       url: how-to-train-scikit-learn.md
-    - text: 使用 TensorFlow 定型
+    - text: 定型和註冊 TensorFlow 模型
       url: how-to-train-tensorflow.md
-    - text: 使用 PyTorch 定型
+    - text: 定型和註冊 PyTorch 模型
       url: how-to-train-pytorch.md
-    - text: 使用 Keras 定型
+    - text: 定型和註冊 Keras 模型
       url: how-to-train-keras.md
     - text: 增強式學習
       url: how-to-use-reinforcement-learning.md
     - text: 什麼是 ML 管線？
       url: concept-ml-pipelines.md
-- title: 部署和管理模型 (MLOps)
+- title: MLOps：部署和管理模型
   linkLists:
   - linkListType: how-to-guide
     links:

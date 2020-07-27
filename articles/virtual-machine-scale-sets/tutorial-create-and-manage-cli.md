@@ -1,5 +1,5 @@
 ---
-title: 教學課程 - 建立及管理 Azure 虛擬機器擴展集
+title: 教學課程：建立與管理 Azure VM 擴展集 - Azure CLI
 description: 了解如何使用 Azure CLI 建立虛擬機器擴展集，以及一些常見的管理工作，例如如何啟動和停止執行個體，或變更擴展集容量。
 author: ju-shim
 ms.author: jushiman
@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 03/27/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: ff4a2b9cb66013900b5b9969a4281d1a20d9c122
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 57b24c7703ac8c0095fa4aaf24b9fbebdac33533
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84736436"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503093"
 ---
 # <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>教學課程：使用 Azure CLI 建立及管理虛擬機器擴展集
 虛擬機器擴展集可讓您部署和管理一組相同、自動調整的虛擬機器。 在虛擬機器擴展集生命週期期間，您可能需要執行一或多個管理工作。 在本教學課程中，您將了解如何：
@@ -34,7 +34,7 @@ ms.locfileid: "84736436"
 
 
 ## <a name="create-a-resource-group"></a>建立資源群組
-Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 資源群組必須在虛擬機器擴展集之前建立。 使用 [az group create](/cli/azure/group) 命令來建立資源群組。 在此範例中，會在 eastus** 區域中建立名為 myResourceGroup** 的資源群組。 
+Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 資源群組必須在虛擬機器擴展集之前建立。 使用 [az group create](/cli/azure/group) 命令來建立資源群組。 在此範例中，會在 eastus 區域中建立名為 myResourceGroup 的資源群組。 
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -44,7 +44,7 @@ az group create --name myResourceGroup --location eastus
 
 
 ## <a name="create-a-scale-set"></a>建立擴展集
-您可以使用 [az vmss create](/cli/azure/vmss) 命令建立虛擬機器擴展集。 下列範例會建立名為 myScaleSet** 的擴展集，以及產生 SSH 金鑰 (如果不存在)︰
+您可以使用 [az vmss create](/cli/azure/vmss) 命令建立虛擬機器擴展集。 下列範例會建立名為 myScaleSet 的擴展集，以及產生 SSH 金鑰 (如果不存在)︰
 
 ```azurecli-interactive
 az vmss create \
@@ -168,7 +168,7 @@ CentOS   OpenLogic   7.3   OpenLogic:CentOS:7.3:7.3.20170925   7.3.20170925
 若要部署使用特定映像的擴展集，請使用 *Urn* 資料行中的值。 指定映像時，可以使用 *latest* 來取代映像版本號碼，這會選取最新的散發版本。 在下列範例中，會使用 `--image` 引數來指定最新版的 CentOS 7.3 映像。
 
 > [!IMPORTANT]
-> 我們建議使用「最新」** 的映像版本。 指定「最新」以使用部署階段可用的最新映像版本。 請注意，即使您使用「最新」辦本，VM 映像也不會在部署階段後自動更新，即使有新版本可供使用也一樣。
+> 我們建議使用「最新」的映像版本。 指定「最新」以使用部署階段可用的最新映像版本。 請注意，即使您使用「最新」辦本，VM 映像也不會在部署階段後自動更新，即使有新版本可供使用也一樣。
 
 建立及設定所有擴展集資源和 VM 執行個體需要幾分鐘的時間，而您並不需要部署下列擴展集：
 
@@ -190,12 +190,12 @@ VM 執行個體大小 (或 *SKU*) 會決定可供 VM 執行個體使用的計算
 
 | 類型                     | 一般大小           |    描述       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
-| [一般用途](../virtual-machines/linux/sizes-general.md)         |Dsv3、Dv3、DSv2、Dv2、DS、D、Av2、A0-7| 平衡的 CPU 對記憶體。 適用於開發/測試及小型到中型應用程式和資料解決方案。  |
-| [計算最佳化](../virtual-machines/linux/sizes-compute.md)   | Fs、F             | CPU 與記憶體的比例高。 適用於中流量應用程式、網路設備，以及批次處理。        |
-| [記憶體最佳化](../virtual-machines/linux/sizes-memory.md)    | Esv3、Ev3、M、GS、G、DSv2、DS、Dv2、D   | 記憶體與核心的比例高。 適用於關聯式資料庫、中型到大型快取，以及記憶體內分析。                 |
-| [儲存體最佳化](../virtual-machines/linux/sizes-storage.md)      | Ls                | 高磁碟輸送量及 IO。 適用於巨量資料、SQL 及 NoSQL 資料庫。                                                         |
-| [GPU](../virtual-machines/linux/sizes-gpu.md)          | NV、NC            | 以大量圖形轉譯和視訊編輯為目標的特製化 VM。       |
-| [高效能](../virtual-machines/linux/sizes-hpc.md) | H、A8-11          | 我們的最強大 CPU VM，可搭配選用的高輸送量網路介面 (RDMA)。 
+| [一般用途](../virtual-machines/sizes-general.md)         |Dsv3、Dv3、DSv2、Dv2、DS、D、Av2、A0-7| 平衡的 CPU 對記憶體。 適用於開發/測試及小型到中型應用程式和資料解決方案。  |
+| [計算最佳化](../virtual-machines/sizes-compute.md)   | Fs、F             | CPU 與記憶體的比例高。 適用於中流量應用程式、網路設備，以及批次處理。        |
+| [記憶體最佳化](../virtual-machines/sizes-memory.md)    | Esv3、Ev3、M、GS、G、DSv2、DS、Dv2、D   | 記憶體與核心的比例高。 適用於關聯式資料庫、中型到大型快取，以及記憶體內分析。                 |
+| [儲存體最佳化](../virtual-machines/sizes-storage.md)      | Ls                | 高磁碟輸送量及 IO。 適用於巨量資料、SQL 及 NoSQL 資料庫。                                                         |
+| [GPU](../virtual-machines/sizes-gpu.md)          | NV、NC            | 以大量圖形轉譯和視訊編輯為目標的特製化 VM。       |
+| [高效能](../virtual-machines/sizes-hpc.md) | H、A8-11          | 我們的最強大 CPU VM，可搭配選用的高輸送量網路介面 (RDMA)。 
 
 ### <a name="find-available-vm-instance-sizes"></a>尋找可用的 VM 執行個體大小
 若要查看特定區域中可用的 VM 執行個體大小清單，請使用 [az vm list-sizes](/cli/azure/vm) 命令。

@@ -11,14 +11,14 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 1f6c178c1f8813300d3473ad3b788ecd7e7b573e
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: bf4e2b04c540ee5672bea6e097496ced5a0d622a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84115390"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86528871"
 ---
-# <a name="use-cli-to-add-an-azure-sql-managed-instance-to-a-failover-group"></a>使用 CLI 將 Azure SQL 受控執行個體新增至容錯移轉群組
+# <a name="use-cli-to-create-an-azure-sql-managed-instance-to-a-failover-group"></a>使用 CLI 在容錯移轉群組中建立 Azure SQL 受控執行個體
 
 此 Azure CLI 範例會建立兩個受控執行個體，並將其新增至容錯移轉群組，然後測試是否能從主要受控執行個體容錯移轉至次要受控執行個體。
 
@@ -46,7 +46,7 @@ az group delete --name $resource
 
 此指令碼會使用下列命令。 下表中的每個命令都會連結至命令特定的文件。
 
-| | |
+| Command | 說明 |
 |---|---|
 | [az network vnet](/cli/azure/network/vnet) | 虛擬網路命令。  |
 | [az network vnet subnet](/cli/azure/network/vnet/subnet) | 虛擬網路子網路命令。 |

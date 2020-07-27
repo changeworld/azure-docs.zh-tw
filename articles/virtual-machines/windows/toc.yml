@@ -154,7 +154,7 @@
         - name: Resource Manager 範本
           href: template-description.md
     - name: 區域
-      href: regions.md
+      href: ../regions.md
       items:
         - name: 關於 Azure 擴充功能
           href: ../extensions/overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
@@ -165,7 +165,7 @@
     - name: 可用性和效能
       items:
         - name: 可用性
-          href: availability.md
+          href: ../availability.md
         - name: 位於相同位置
           href: co-location.md
         - name: 網路效能
@@ -234,7 +234,7 @@
         - name: GPU - 加速計算
           items:
             - name: 概觀
-              href: sizes-gpu.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+              href: ../sizes-gpu.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json
             - name: NC 系列
               href: ../nc-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: NCv2 系列
@@ -275,7 +275,7 @@
             - name: 專用主機預付
               href: ../prepay-dedicated-hosts-reserved-instances.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
             - name: 什麼是 Azure 保留？
-              href: ../../billing/billing-save-compute-costs-reservations.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+              href: ../../cost-management-billing/reservations/save-compute-costs-reservations.md?toc=/azure/virtual-machines/windows/toc.json
             - name: VM 執行個體大小彈性
               href: reserved-vm-instance-size-flexibility.md
         - name: Spot VM
@@ -283,11 +283,13 @@
           displayName: 'pre-empt, preempt'
         - name: 沒有暫存磁碟的 Azure VM
           href: ../azure-vms-no-temp-disk.md
+        - name: Azure VM 大小命名慣例
+          href: ../vm-naming-conventions.md
         - name: 上一代
           href: ../sizes-previous-gen.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
           displayName: D-series Ds-series A-series Basic
         - name: 隔離大小
-          href: isolation.md
+          href: ../isolation.md
         - name: Azure 計算單位 (ACU)
           href: ../acu.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: 基準測試分數
@@ -299,7 +301,7 @@
             - name: VM 預付
               href: prepay-reserved-vm-instances.md
             - name: 什麼是 Azure 保留？
-              href: ../../billing/billing-save-compute-costs-reservations.md
+              href: ../../cost-management-billing/reservations/save-compute-costs-reservations.md
             - name: VM 執行個體大小彈性
               href: reserved-vm-instance-size-flexibility.md
     - name: 專用主機
@@ -329,17 +331,22 @@
         - name: 暫時性 OS 磁碟
           href: ephemeral-os-disks.md
     - name: 網路功能
-      href: network-overview.md
+      href: ../network-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: 擴展集
       href: ../../virtual-machine-scale-sets/overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: 基礎結構自動化
-      href: infrastructure-automation.md
+      href: ../infrastructure-automation.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: 安全性
       items:
         - name: 安全性與原則
           href: security-policy.md
         - name: Azure 磁碟加密
           href: disk-encryption-overview.md
+        - name: Azure 原則的安全性控制
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ../security-controls-policy.md
+        - name: Azure 安全性效能評定的安全性基準
+          href: security-baseline.md
         - name: 內建安全性控制
           href: virtual-machines-windows-security-controls.md
         - name: Bastion
@@ -351,9 +358,9 @@
     - name: 備份與復原
       href: backup-recovery.md
     - name: 雲端採用架構
-      href: 'https://docs.microsoft.com/azure/cloud-adoption-framework/get-started/?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json'
+      href: /azure/cloud-adoption-framework/get-started/?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: 架構中心
-      href: 'https://docs.microsoft.com/azure/architecture/'
+      href: /azure/architecture/
     - name: 基礎結構範例
       href: infrastructure-example.md
 - name: 操作指南
@@ -385,9 +392,6 @@
               href: create-vm-specialized-portal.md
             - name: PowerShell
               href: create-vm-specialized.md
-        - name: 使用 ARM 範本與 C#
-          href: csharp-template.md
-          displayName: Azure Resource Manager
         - name: 使用 Chef 建立 VM
           href: ../../chef/chef-automation.md
         - name: 使用 Java
@@ -451,7 +455,7 @@
             - name: CLI
               items:
                 - name: 建立資源庫
-                  href: ../linux/shared-images.md
+                  href: ../shared-images-cli.md
                 - name: 建立映像
                   items:
                     - name: 從 VM
@@ -587,7 +591,7 @@
         - name: 災害復原
           href: ../virtual-machines-disaster-recovery-guidance.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: 備份 VM
-          href: ../../backup/backup-introduction-to-azure-backup.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+          href: ../../backup/backup-overview.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json
           items:
             - name: 備份單一 VM
               href: ../../backup/quick-backup-vm-cli.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
@@ -646,7 +650,7 @@
       items:
         - name: 維修通知
           items:
-            - name: 概觀
+            - name: 總覽
               href: ../maintenance-notifications.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: CLI
               href: ../maintenance-notifications-cli.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
@@ -656,7 +660,7 @@
               href: ../maintenance-notifications-powershell.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: 維修控制
           items:
-            - name: 概觀
+            - name: 總覽
               href: ../maintenance-control.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: CLI
               href: ../maintenance-control-cli.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
@@ -670,8 +674,6 @@
           href: scheduled-event-service.md
     - name: 監視 VM
       items:
-        - name: 監視 Azure 虛擬機器
-          href: ../../azure-monitor/insights/monitor-vm-azure.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: 代理程式
           items:
             - name: 代理程式概觀
@@ -698,7 +700,7 @@
                     - name: 版本歷程記錄
                       href: ../../azure-monitor/platform/diagnostics-extension-versions.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
                     - name: JSON 行資源記錄格式
-                      href: ../../azure-monitor/platform/diagnostic-logs-append-blobs.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                      href: ../../azure-monitor/platform/resource-logs-append-blobs.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json
                     - name: 疑難排解
                       href: ../../azure-monitor/platform/diagnostics-extension-troubleshooting.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Log Analytics 代理程式
@@ -708,7 +710,7 @@
                 - name: Windows 代理程式
                   href: ../../azure-monitor/platform/agent-windows.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
                 - name: Windows 的 VM 延伸模組
-                  href: ../../azure-monitor/../virtual-machines/windows/extensions-oms.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json?toc=/azure/azure-monitor/toc.json
+                  href: ../extensions/oms-windows.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json?toc=/azure/azure-monitor/toc.json&toc=/azure/virtual-machines/windows/toc.json
                 - name: Log Analytics 閘道
                   href: ../../azure-monitor/platform/gateway.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
                 - name: 代理程式管理
@@ -780,7 +782,7 @@
     - name: 可用性和級別
       items:
         - name: 虛擬機器擴展集
-          href: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+          href: ../../virtual-machine-scale-sets/overview.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json
         - name: 高可用性
           href: manage-availability.md
         - name: 建立鄰近放置群組
@@ -806,7 +808,7 @@
     - name: 執行應用程式
       items:
         - name: SQL Server
-          href: sql/virtual-machines-windows-sql-server-iaas-overview.md
+          href: ../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md
         - name: MongoDB
           href: install-mongodb.md
         - name: SAP on Azure
@@ -816,18 +818,18 @@
         - name: Visual Studio
           href: using-visual-studio-vm.md
         - name: 高效能運算 (HPC)
-          href: hpcpack-cluster-options.md
+          href: /powershell/high-performance-computing/overview
           items:
             - name: HPC Pack 2016 叢集
-              href: hpcpack-2016-cluster.md
+              href: /powershell/high-performance-computing/overview
             - name: HPC Pack 2016 Azure Active Directory 整合
-              href: hpcpack-cluster-active-directory.md
+              href: /powershell/high-performance-computing/hpcpack-cluster-active-directory
             - name: HPC Pack 2012 R2 前端節點
-              href: hpcpack-cluster-headnode.md
+              href: /powershell/high-performance-computing/deploy-an-hpc-pack-2016-cluster-in-azure
             - name: 將內部部署作業提交至 HPC Pack 2012 R2
-              href: hpcpack-cluster-submit-jobs.md
+              href: /powershell/high-performance-computing/hpcpack-cluster-submit-jobs-in-azure
             - name: HPC Pack 上的 Excel
-              href: excel-cluster-hpcpack.md
+              href: /powershell/high-performance-computing/excel-2016-offloading-to-azure-cluster
     - name: 管理儲存體
       items:
         - name: 新增磁碟
@@ -845,6 +847,8 @@
           href: disks-shared-enable.md
         - name: 將 VHD 上傳到磁碟 - PowerShell
           href: disks-upload-vhd-to-managed-disk-powershell.md
+        - name: 安全地匯入/匯出磁碟 - 入口網站
+          href: ../disks-enable-private-links-for-import-export-portal.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: 調整磁碟大小
           href: expand-os-disk.md
         - name: 使用儲存體總管管理磁碟
@@ -861,14 +865,18 @@
           href: incremental-snapshots.md
         - name: 加密
           items:
-            - name: 啟用主機型加密 - PowerShell
+            - name: 在主機上啟用加密 - PowerShell
               href: disks-enable-host-based-encryption-powershell.md
+            - name: 在主機上啟用加密 - 入口網站
+              href: disks-enable-host-based-encryption-portal.md
             - name: 啟用客戶管理的金鑰 - PowerShell
               href: disks-enable-customer-managed-keys-powershell.md
             - name: 啟用客戶管理的金鑰 - 入口網站
               href: disks-enable-customer-managed-keys-portal.md
             - name: 啟用雙重待用加密
               href: disks-enable-double-encryption-at-rest-powershell.md
+            - name: 啟用雙重待用加密 - 入口網站
+              href: disks-enable-double-encryption-at-rest-portal.md
         - name: 移轉和轉換
           items:
             - name: 在標準和進階間轉換磁碟
@@ -897,7 +905,7 @@
       href: ps-common-network-ref.md
       items:
         - name: 建立虛擬網路
-          href: ../../virtual-network/virtual-networks-create-vnet-arm-pportal.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+          href: ../../virtual-network/quick-create-portal.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json
         - name: 開啟 VM 連接埠
           items:
             - name: Azure 入口網站
@@ -917,18 +925,18 @@
     - name: 設定受控識別
       items:
         - name: 入口網站
-          href: /azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+          href: ../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: CLI
-          href: /azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+          href: ../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: PowerShell
-          href: /azure/active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+          href: ../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Azure Resource Manager 範本
           displayName: ARM
-          href: /azure/active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+          href: ../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: REST
-          href: /azure/active-directory/managed-identities-azure-resources/qs-configure-rest-vm?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+          href: ../../active-directory/managed-identities-azure-resources/qs-configure-rest-vm.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Azure SDK
-          href: /azure/active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+          href: ../../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: 使用延伸模組
       items:
         - name: 限制延伸模組安裝
@@ -1002,7 +1010,7 @@
             - name: 來自 Amazon Web Services (AWS)
               href: aws-to-azure.md
             - name: 使用 Azure Site Recovery
-              href: ../../site-recovery/site-recovery-migrate-to-azure.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+              href: ../../site-recovery/migrate-overview.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json
 - name: 疑難排解
   href: ../troubleshooting/index.yml
 - name: 參考
@@ -1010,7 +1018,7 @@
     - name: Azure CLI
       href: /cli/azure/vm
     - name: Azure PowerShell
-      href: /powershell/azureps-cmdlets-docs
+      href: /powershell/azure/
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.compute
     - name: Java
@@ -1029,7 +1037,7 @@
 - name: 資源
   items:
     - name: 問答集
-      href: 'https://docs.microsoft.com/answers/topics/azure-virtual-machines.html'
+      href: /answers/topics/azure-virtual-machines.html
     - name: 作者 ARM 範本
       displayName: Azure Resource Manager
       href: ../../azure-resource-manager/templates/template-syntax.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json

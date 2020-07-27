@@ -10,6 +10,8 @@
       href: quickstart-create-templates-use-the-portal.md
     - name: 建立範本 - VS Code
       href: quickstart-create-templates-use-visual-studio-code.md
+    - name: 建立和部署範本規格
+      href: quickstart-create-template-specs.md
     - name: Azure 服務
       items:
         - name: AI + 機器學習服務
@@ -28,6 +30,8 @@
               href: ../../analysis-services/analysis-services-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Databricks
               href: /azure/databricks/scenarios/quickstart-create-databricks-workspace-resource-manager-template?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Data Factory
+              href: ../../data-factory/quickstart-create-data-factory-resource-manager-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: 事件中樞
               href: ../../event-hubs/event-hubs-resource-manager-namespace-event-hub.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: HDInsight - Hadoop
@@ -114,6 +118,8 @@
           items:
             - name: 建議程式
               href: ../../advisor/advisor-alerts-arm.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: 自動化
+              href: ../../automation/quickstart-create-automation-account-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Backup
               href: ../../backup/quick-backup-vm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: 成本管理 + 帳單
@@ -201,6 +207,12 @@
         - name: 3 - 建立管線
           displayName: Devop
           href: deployment-tutorial-pipeline.md
+    - name: 範本規格
+      items:
+        - name: 使用連結的範本來建立
+          href: template-specs-create-linked.md
+        - name: 部署為連結的範本
+          href: template-specs-deploy-linked-template.md
     - name: 進階範本
       items:
         - name: 使用範本參考
@@ -240,6 +252,8 @@
       href: template-best-practices.md
     - name: 常見問題集
       href: frequently-asked-questions.md
+    - name: 範本規格
+      href: template-specs.md
     - name: 雲端一致性範本
       href: templates-cloud-consistency.md
     - name: 部署模式

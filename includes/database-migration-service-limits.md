@@ -4,15 +4,15 @@ ms.service: sql-database
 ms.topic: include
 ms.date: 11/25/2018
 ms.author: douglasl
-ms.openlocfilehash: bf8d0992cd25b52955ac90cecc00750d93343da6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: 5f92b0a237bb25684f14edbd7cdd5d9f92ff9cb3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80334636"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87102535"
 ---
-Azure 資料庫移轉服務是完全受控的服務，其設計目的是要在停機時間最短的情況之下，從多個資料庫來源順暢地遷移至 Azure 資料平臺。
+Azure 資料庫移轉服務是一個完全受控的服務，能夠從多個資料庫來源無縫移轉到 Azure 資料平台，將停機時間降到最低。
 
 | **Resource** | **限制** | **註解** |
 | --- | --- | --- |
-| 每個區域的每個訂用帳戶服務數目上限 |2 | 若要要求增加此限制，請聯絡支援人員。 |
+| 每個區域的每個訂用帳戶服務數目上限 |10 | 若要要求提高此限制，請連絡支援人員。 |

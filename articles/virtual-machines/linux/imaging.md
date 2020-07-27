@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/22/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 40d028ade5429c89ce40b718c90c601dfcb0e470
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: aa372d4e1b377ecdcbeb49b47f0f9a3a217ee7ad
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307057"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502175"
 ---
 # <a name="bringing-and-creating-linux-images-in-azure"></a>在 Azure 中帶入並建立 Linux 映像
 
@@ -25,7 +25,7 @@ ms.locfileid: "85307057"
 ## <a name="difference-between-managed-disks-and-images"></a>受控磁碟與映像之間的差異
 
 
-Azure 可讓您將 VHD 帶入平台，作為[受控磁碟](https://docs.microsoft.com/azure/virtual-machines/windows/faq-for-disks#managed-disks)或作為映像的來源使用。 
+Azure 可讓您將 VHD 帶入平台，作為[受控磁碟](../windows/faq-for-disks.md#managed-disks)或作為映像的來源使用。 
 
 Azure 受控磁碟是單一 VHD。 您可以使用現有的 VHD 並從中建立受控磁碟，或從頭開始建立空的受控磁碟。 您可以藉由將磁碟連結至 VM，從受控磁碟建立 VM，但是一個 VHD 只能與一個 VM 搭配使用。 您無法修改任何 OS 屬性，Azure 只會嘗試開啟 VM，並使用該磁碟啟動。 
 
@@ -49,16 +49,16 @@ Azure 提供兩種主要映像類型：一般化和特殊化。 一般化和特�
 一般化映像是一種映像，需要在第一次開機時完成設定。 例如，在第一次開機時，您會設定主機名稱、管理使用者和其他 VM 特定設定。 當您想要多次重複使用映像，以及當您想要在建立期間傳入參數時，這會很有用。 如果一般化映像包含 Azure 代理程式，代理程式將會處理參數，並且將初始設定已完成的訊號傳回平台。 這個程序稱為**佈建**。 
 
 佈建需要映像中包含佈建程式。 有兩個佈建程式：
-- [Azure Linux 代理程式](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux)
-- [cloud-init](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init)
+- [Azure Linux 代理程式](../extensions/agent-linux.md)
+- [cloud-init](./using-cloud-init.md)
 
-這些是建立映像的[必要條件](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic)。
+這些是建立映像的[必要條件](./create-upload-generic.md)。
 
 
 ### <a name="specialized-images"></a>特殊化映像
 這些是已完全設定且不需要 VM 和特殊參數的映像，平台只會開啟 VM，您需要在 VM 中處理唯一性，例如設定主機名稱，以避免在相同的 VNET 上發生 DNS 衝突。 
 
-這些映像不需要佈建代理程式，不過，您可能會想要有擴充功能處理功能。 您可以安裝 Linux 代理程式，但是停用佈建選項。 雖然您不需要佈建代理程式，但是映像必須滿足 Azure 映像的[必要條件](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic)。
+這些映像不需要佈建代理程式，不過，您可能會想要有擴充功能處理功能。 您可以安裝 Linux 代理程式，但是停用佈建選項。 雖然您不需要佈建代理程式，但是映像必須滿足 Azure 映像的[必要條件](./create-upload-generic.md)。
 
 
 ## <a name="image-storage-options"></a>映像儲存體選項
@@ -94,13 +94,14 @@ Azure 提供兩種主要映像類型：一般化和特殊化。 一般化和特�
 
 ## <a name="hyper-v-generation"></a>Hyper-V 世代
 
-Azure 支援 Hyper-V 第 1 代 (Gen1) 和第 2 代 (Gen2)，Gen2 是最新的世代，提供超越 Gen1 的額外功能。 例如：記憶體增加、Intel Software Guard Extensions (Intel SGX) 和虛擬化的持續性記憶體 (vPMEM)。 在內部部署環境執行的第 2 代 VM 擁有一些 Azure 尚未支援的功能。 如需詳細資訊，請參閱「功能」一節。 如需詳細資訊，請參閱[本篇文章](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2)。 如果您需要額外的功能，請建立 Gen2 映像。
+Azure 支援 Hyper-V 第 1 代 (Gen1) 和第 2 代 (Gen2)，Gen2 是最新的世代，提供超越 Gen1 的額外功能。 例如：記憶體增加、Intel Software Guard Extensions (Intel SGX) 和虛擬化的持續性記憶體 (vPMEM)。 在內部部署環境執行的第 2 代 VM 擁有一些 Azure 尚未支援的功能。 如需詳細資訊，請參閱「功能」一節。 如需詳細資訊，請參閱[本篇文章](../windows/generation-2.md)。 如果您需要額外的功能，請建立 Gen2 映像。
 
-如果您仍然需要建立自己的映像，請確定其符合[映像必要條件](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic)，並上傳至 Azure。 發行版本特定需求：
+如果您仍然需要建立自己的映像，請確定其符合[映像必要條件](./create-upload-generic.md)，並上傳至 Azure。 發行版本特定需求：
 
 
 - [CentOS 型發行版本](create-upload-centos.md)
 - [Debian Linux](debian-create-upload-vhd.md)
+- [Flatcar Container Linux](flatcar-create-upload-vhd.md)
 - [Oracle Linux](oracle-create-upload-vhd.md)
 - [Red Hat Enterprise Linux](redhat-create-upload-vhd.md)
 - [SLES 和 openSUSE](suse-create-upload-vhd.md)
@@ -110,6 +111,3 @@ Azure 支援 Hyper-V 第 1 代 (Gen1) 和第 2 代 (Gen2)，Gen2 是最新的世
 ## <a name="next-steps"></a>後續步驟
 
 了解如何建立[共用映像庫](tutorial-custom-images.md)。
-
-
-

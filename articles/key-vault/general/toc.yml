@@ -1,20 +1,28 @@
 - name: 一般
   href: index.yml
 - name: 概觀
-  expanded: true
   items:
     - name: 關於 Azure Key Vault
       href: overview.md
     - name: 關於金鑰、祕密與憑證
       href: about-keys-secrets-certificates.md
+- name: 快速入門
+  expanded: true
+  items:
+    - name: CLI
+      href: quick-create-cli.md
+    - name: PowerShell
+      href: quick-create-powershell.md
+    - name: 入口網站
+      href: quick-create-portal.md
 - name: 教學課程
   items:
     - name: Azure 虛擬機器
       items:
-        - name: 在 .NET 中搭配使用 Azure Key Vault 與 Windows 虛擬機器
-          href: tutorial-net-windows-virtual-machine.md
-        - name: 在 Python 中搭配使用 Azure Key Vault 與 Windows 虛擬機器
-          href: tutorial-python-windows-virtual-machine.md
+        - name: 在 .NET 中搭配使用 Azure Key Vault 與虛擬機器
+          href: tutorial-net-virtual-machine.md
+        - name: 在 Python 中搭配使用 Azure Key Vault 與虛擬機器
+          href: tutorial-python-virtual-machine.md
     - name: Azure Kubernetes Service
       items:
         - name: 整合 Azure Key Vault 與 Kubernetes
@@ -117,15 +125,11 @@
     - name: 移動金鑰保存庫
       items:
         - name: 將金鑰保存庫移至另一個資源群組
-          href: keyvault-moveresourcegroup.md
+          href: move-resourcegroup.md
         - name: 將金鑰保存庫移至另一個訂用帳戶
-          href: keyvault-move-subscription.md
+          href: move-subscription.md
         - name: 將金鑰保存庫移至另一個區域
-          href: keyvault-moveregion.md
-    - name: 疑難排解
-      items:
-        - name: 在訂用帳戶移動之後變更金鑰保存庫租用戶識別碼
-          href: subscription-move-fix.md
+          href: move-region.md
 - name: 參考
   items:
     - name: REST API 錯誤碼 - Azure Key Vault

@@ -9,49 +9,49 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 06/10/2020
 ms.author: dylankil
-ms.openlocfilehash: d4d811d782acdd75550f05a8be28711be41ad343
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 7db367222d96d7bc9dae48242992ee76a89c849d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86038193"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86544492"
 ---
 [沈浸式閱讀程式](https://www.onenote.com/learningtools)是經過全面設計的工具，可實作經實證的技術以改善閱讀理解程度。
 
-在本快速入門中，您將從頭開始建置 Android 應用程式，並且整合沈浸式閱讀程式。 本快速入門的完整工作範例可以在[這裡](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-kotlin)取得。
+在本快速入門中，您將從頭開始建置 Android 應用程式，並且整合沈浸式閱讀程式。 本快速入門的完整工作範例可以在 [GitHub](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-kotlin) 取得。
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="prerequisites"></a>必要條件
 
-* 為 Azure Active Directory 驗證所設定的沈浸式閱讀程式資源。 遵循[這些指引](../../how-to-create-immersive-reader.md)來設定。 設定環境屬性時，您需要這裡建立的一些值。 將工作階段的輸出儲存到文字檔中，以供日後參考。
-* [Git](https://git-scm.com/)
-* [沈浸式閱讀程式 SDK](https://github.com/microsoft/immersive-reader-sdk)
-* [Android Studio](https://developer.android.com/studio)
+* 為 Azure Active Directory 驗證所設定的沈浸式閱讀程式資源。 遵循[這些指引](../../how-to-create-immersive-reader.md)來設定。 設定環境屬性時，您需要用到在這裡建立的一些值。 將工作階段的輸出儲存到文字檔中，以供日後參考。
+* [Git](https://git-scm.com/)。
+* [沈浸式閱讀程式 SDK](https://github.com/microsoft/immersive-reader-sdk)。
+* [Android Studio](https://developer.android.com/studio).
 
 ## <a name="create-an-android-project"></a>建立 Android 專案
 
-在 Android Studio 中開始新專案。 此範例的原始程式碼可作為[沈浸式閱讀程式 SDK](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-kotlin) 的一部分
+在 Android Studio 中開始新專案。 此範例的原始程式碼可作為[沈浸式閱讀程式 SDK](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-kotlin) 的一部分。
 
 ![新增專案](../../media/android/kotlin/android-studio-create-project.png)
 
-在 [選擇您的專案] 視窗上，選取 [空的活動]，然後按 [下一步]。
+在 [選擇您的專案] 視窗凹，選取 [空的活動]，然後選取 [下一步]。
 
 ![空的活動專案](../../media/android/kotlin/android-studio-empty-activity.png)
 
 ## <a name="configure-the-project"></a>設定專案
 
-將專案命名為 'QuickstartKotlin'，選取儲存位置，選擇 'Kotlin' 作為程式設計語言，然後按一下 [完成]。
+將專案命名為 **QuickstartKotlin**，然後選取要儲存的位置。 選取 **Kotlin** 作為程式設計語言，然後選取 [完成]。
 
 ![設定專案](../../media/android/kotlin/android-studio-configure-project.png)
 
 ## <a name="set-up-assets-and-authentication"></a>設定資產和驗證
 
-建立新的 **/assets** 資料夾
+建立新的 **/assets** 資料夾。
 
 ![建立新的資產資料夾](../../media/android/kotlin/android-studio-assets-folder.png)
 
- 在資產資料夾內建立名為 **env** 的檔案。 新增下列各項，並視需要提供值。 請勿將此 env 檔案認可到原始檔控制，因為該檔案包含不應公開的機密資料。
+ 在資產資料夾內建立名為 **env** 的檔案。 新增下列名稱和值，並提供適當的值。 請勿將此 env 檔案認可到原始檔控制，因為其中包含不應公開的機密資料。
 
 ![建立新的 env 檔案](../../media/android/kotlin/android-studio-create-env-file.png)
 
@@ -106,7 +106,7 @@ dependencies {
 </resources>
 ```
 
-將 **res/layout/activity_main.xml** 中的內容取代為要在應用程式中使用的下列 XML。 這是應用程式的 UI 版面配置。
+將 **res/layout/activity_main.xml** 中的內容取代為要在應用程式中使用的下列 XML。 此 XML 是應用程式的 UI 版面配置。
 
 ![應用程式 activity_main.xml](../../media/android/kotlin/android-studio-activity-main-xml.png)
 
@@ -207,7 +207,7 @@ dependencies {
 
 ## <a name="set-up-the-app-kotlin-code-javascript-interface"></a>設定應用程式 Kotlin 程式碼 JavaScript 介面
 
-在 **/Java/com.example.quickstartkotlin** 資料夾中建立新的 Kotlin 類別，並且將其命名為 **WebAppInterface**，然後將下列程式碼新增至其中。 這可讓應用程式與 HTML (在稍後的步驟中新增) 中的 JavaScript 函式連結。
+在 **/Java/com.example.quickstartkotlin** 資料夾中建立新的 Kotlin 類別，並且將其命名為 **WebAppInterface**， 然後將下列程式碼新增至其中。 此程式碼可讓應用程式與 HTML (會在稍後的步驟中新增) 中的 JavaScript 函式連結。
 
 ![com.example.quickstartkotlin 資料夾](../../media/android/kotlin/android-studio-com-folder.png)
 
@@ -262,7 +262,7 @@ class WebAppInterface(private val mContext: Context, var parentLayout: LinearLay
 
 ## <a name="set-up-the-app-kotlin-code-main-activity"></a>設定應用程式 Kotlin 程式碼主要活動
 
-在 **/Java/com.example.quickstartkotlin** 資料夾中，您將會看到現有的 **MainActivity.kt** Kotlin 類別檔案。 這是撰寫應用程式邏輯的位置。 以下列程式碼取代其內容。
+在 **/Java/com.example.quickstartkotlin** 資料夾中，您將會看到現有的 **MainActivity.kt** Kotlin 類別檔案。 此檔案是撰寫應用程式邏輯的位置。 以下列程式碼取代其內容：
 
 ```MainActivity.kt
 // Copyright (c) Microsoft Corporation. All rights reserved.
@@ -290,10 +290,10 @@ import kotlinx.coroutines.*
 import org.json.JSONObject
 import java.util.*
 
-// This sample app uses the Dotenv is a module that loads environment variables from a .env file to better manage secrets.
+// This sample app uses the Dotenv. It's a module that loads environment variables from a .env file to better manage secrets.
 // https://github.com/cdimascio/java-dotenv
-// Be sure to add a "env" file to the /assets folder
-// instead of '.env', use 'env'
+// Be sure to add a "env" file to the /assets folder.
+// Instead of '.env', use 'env'.
 
 class MainActivity : AppCompatActivity() {
     private val dotEnv = dotenv {
@@ -313,10 +313,10 @@ class MainActivity : AppCompatActivity() {
         immersiveReaderButton.setOnClickListener { GlobalScope.launch { handleLoadImmersiveReaderWebView() } }
     }
 
-    // Assigns values to the objects sent to the Immersive Reader SDK
+    // Assigns values to the objects sent to the Immersive Reader SDK,
     // acquires the token and authorizes the app, then launches
     // the Web View to get the response and load the Immersive Reader
-    // When the button is clicked in HTML.
+    // when the button is clicked in HTML.
     private suspend fun handleLoadImmersiveReaderWebView() {
         val exampleActivity = this
         val subdomain = dotEnv["SUBDOMAIN"]
@@ -358,7 +358,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     // The next two functions get the token from the Immersive Reader SDK
-    // and authorizes the app.
+    // and authorize the app.
     private suspend fun getImmersiveReaderTokenAsync(): String {
         return getToken()
     }
@@ -416,7 +416,7 @@ class MainActivity : AppCompatActivity() {
                   var options: Options? = null)
 
     // Only includes Immersive Reader options relevant to Android apps.
-    // For a complete list visit https://docs.microsoft.com/azure/cognitive-services/immersive-reader/reference
+    // For a complete list, visit https://docs.microsoft.com/azure/cognitive-services/immersive-reader/reference
     class Options(var uiLang: String? = null, // Language of the UI, e.g. en, es-ES (optional). Defaults to browser language if not specified.
                   var timeout: Int? = null, // Duration (in milliseconds) before launchAsync fails with a timeout error (default is 15000 ms).
                   var uiZIndex: Int? = null, // Z-index of the iframe that will be created (default is 1000)
@@ -507,9 +507,9 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
 
-                // This is where the WebAppInterface Class is used
+                // This is where the WebAppInterface Class is used.
                 // Affords a way for JavaScript to work with the app directly from
-                // the Web View's HTML
+                // the Web View's HTML.
                 val jsInterface = WebAppInterface(exampleActivity, parentLayout, contextualWebView)
                 contextualWebView.addJavascriptInterface(jsInterface, "Android")
                 contextualWebView.loadUrl("file:///android_asset/immersiveReader.html")
@@ -521,13 +521,13 @@ class MainActivity : AppCompatActivity() {
 
 ## <a name="add-the-app-html-to-the-web-view"></a>將應用程式 HTML 新增至 Web 檢視
 
-Web 檢視實作需要 HTML 才能正常操作。 以滑鼠右鍵按一下 **/assets** 資料夾，建立新檔案並將其命名為 **immersiveReader.html**。
+Web 檢視實作需要 HTML 才能正常運作。 以滑鼠右鍵按一下 **/assets** 資料夾，建立新檔案並將其命名為 **immersiveReader.html**。
 
 ![建立新的 HTML 檔案](../../media/android/kotlin/android-studio-immersive-reader-html.png)
 
 ![HTML 資產位置](../../media/android/kotlin/android-studio-immersive-reader-html-assets.png)
 
-新增下列 HTML 和 JavaScript。 這樣會將沈浸式閱讀程式 SDK 新增至應用程式，並將其用來透過我們所撰寫的應用程式程式碼來啟動沈浸式閱讀程式。
+新增下列 HTML 和 JavaScript。 此程式碼會將沈浸式閱讀程式 SDK 新增至應用程式，並將其用來透過我們所撰寫的應用程式程式碼來啟動沈浸式閱讀程式。
 
 ```immersiveReader.html
 <!-- Copyright (c) Microsoft Corporation. All rights reserved.
@@ -576,7 +576,7 @@ Licensed under the MIT License. -->
 
 ![AndroidManifest](../../media/android/kotlin/android-studio-android-manifest-xml.png)
 
-因為應用程式需要對沈浸式閱讀程式 SDK 進行網路呼叫才能運作，所以我們必須確保應用程式權限已設定為允許網路存取。 將 **/manifests/AndroidManifest.xml** 的內容取代為下列 XML。
+因為應用程式需要對沈浸式閱讀程式 SDK 進行網路呼叫才能運作，所以我們必須確保應用程式權限已設定為允許網路存取。 將 **/manifests/AndroidManifest.xml** 的內容取代為下列 XML：
 
 ```AndroidManifest.xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -604,12 +604,12 @@ Licensed under the MIT License. -->
 </manifest>
 ```
 
-## <a name="running-the-app"></a>執行應用程式
+## <a name="run-the-app"></a>執行應用程式
 
-使用 Android Studio 在裝置模擬器上執行應用程式。 當您按一下 [沈浸式閱讀程式] 按鈕時，您會看到沈浸式閱讀程式啟動，並顯示應用程式上的內容。
+使用 Android Studio 在裝置模擬器上執行應用程式。 當您選取 [沈浸式閱讀程式] 時，會開啟具有應用程式內容的沈浸式閱讀程式。
 
 ![沈浸式閱讀程式](../../media/android/kotlin/android-studio-device-emulator.png)
 
 ## <a name="next-steps"></a>後續步驟
 
-* 探索[沈浸式閱讀程式 SDK](https://github.com/microsoft/immersive-reader-sdk) 和[沈浸式閱讀程式 SDK 參考](../../reference.md)
+探索[沈浸式閱讀程式 SDK](https://github.com/microsoft/immersive-reader-sdk) 和[沈浸式閱讀程式 SDK 參考](../../reference.md)。

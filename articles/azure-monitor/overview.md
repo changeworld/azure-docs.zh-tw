@@ -6,12 +6,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 10/07/2019
-ms.openlocfilehash: 9a5c03664205676d53c083bddcfa6833ace641d2
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: 21d980bcaa73af6367908b2f24c0c856d6a6c8ad
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84457145"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505817"
 ---
 # <a name="azure-monitor-overview"></a>Azure 監視器概觀
 
@@ -44,7 +44,7 @@ Azure 監視器所收集的所有資料均符合下列兩個基本類型之一�
 
 ![計量](media/overview/metrics.png)
 
-可以使用[查詢](log-query/log-query-overview.md)分析 Azure 監視器收集的記錄資料，以快速擷取、彙總和分析收集的資料。  您可以在 Azure 入口網站中使用 [Log Analytics](log-query/portals.md) 來建立和測試查詢，然後使用這些工具直接分析資料，或儲存查詢以便搭配[視覺效果](visualizations.md)或[警示規則](platform/alerts-overview.md)使用。
+可以使用[查詢](log-query/log-query-overview.md)分析 Azure 監視器收集的記錄資料，以快速擷取、彙總和分析收集的資料。  您可以在 Azure 入口網站中使用 [Log Analytics](./log-query/log-query-overview.md) 來建立和測試查詢，然後使用不同的工具直接分析資料，或儲存查詢以便搭配[視覺效果](visualizations.md)或[警示規則](platform/alerts-overview.md)使用。
 
 Azure 監視器使用 Azure 資料總管使用的 [Kusto 查詢語言](/azure/kusto/query/)版本，適合用於簡單的記錄查詢，但也包含進階的功能，例如彙總、聯結和智慧分析。 您可以使用[多個課程](log-query/get-started-queries.md)，快速了解查詢語言。  我們會為已經熟悉 [SQL](log-query/sql-cheatsheet.md) 和 [Splunk](log-query/splunk-cheatsheet.md) 的使用者提供特別指引。
 
@@ -90,7 +90,7 @@ Azure 監視器可以使用[資料收集器 API](platform/data-collector-api.md)
 ![VM Insights](media/overview/vm-insights.png)
 
 ### <a name="monitoring-solutions"></a>監視解決方案
-Azure 監視器中的[監視解決方案](insights/solutions.md)是幾組封裝的邏輯，可提供特定應用程式或服務的深入解析。 其中包括了用來為應用程式或服務收集監視資料的[查詢](log-query/log-query-overview.md)，以及可用於視覺化的[檢視](../log-analytics/log-analytics-view-designer.md) 您可以從 [Microsoft](insights/solutions-inventory.md) 及合作夥伴取得監視解決方案，為各種 Azure 服務和其他應用程式提供監視功能。
+Azure 監視器中的[監視解決方案](insights/solutions.md)是幾組封裝的邏輯，可提供特定應用程式或服務的深入解析。 其中包括了用來為應用程式或服務收集監視資料的[查詢](log-query/log-query-overview.md)，以及可用於視覺化的[檢視](./platform/view-designer.md) 您可以從 [Microsoft](./monitor-reference.md) 及合作夥伴取得監視解決方案，為各種 Azure 服務和其他應用程式提供監視功能。
 
 ![監視解決方案](media/overview/solutions-overview.png)
 
@@ -119,12 +119,12 @@ Azure 監視器中的警示規則會使用[動作群組](platform/action-groups.
 ![儀表板](media/overview/dashboard.png)
 
 ### <a name="views"></a>檢視
-[[檢視]](../log-analytics/log-analytics-view-designer.md) 會以視覺化方式在 Azure 監視器中呈現記錄資料。  每個檢視都包含單一圖格，該圖格可向下切入至視覺效果的組合，例如長條圖和折線圖 (摘要重要資料的清單除外)。  監視解決方案包含可摘要特定應用程式資料的檢視，而且您可以建立自己的檢視，以呈現來自任何記錄查詢的資料。 如何 Azure 監視器中的其他元素，可以將檢視新增至 Azure 儀表板。
+[[檢視]](./platform/view-designer.md) 會以視覺化方式在 Azure 監視器中呈現記錄資料。  每個檢視都包含單一圖格，該圖格可向下切入至視覺效果的組合，例如長條圖和折線圖 (摘要重要資料的清單除外)。  監視解決方案包含可摘要特定應用程式資料的檢視，而且您可以建立自己的檢視，以呈現來自任何記錄查詢的資料。 如何 Azure 監視器中的其他元素，可以將檢視新增至 Azure 儀表板。
 
 ![檢視](media/overview/view.png)
 
 ### <a name="power-bi"></a>Power BI
-[Power BI](https://powerbi.microsoft.com) 是一項商務分析服務，可提供橫跨各種資料來源的互動式視覺效果，而且是將資料提供給貴組織內外的其他人使用的有效方法。 您可以將 Power BI 設定為[從 Azure 監視器自動匯入記錄資料](../log-analytics/log-analytics-powerbi.md)，以便利用這些額外的視覺效果。
+[Power BI](https://powerbi.microsoft.com) 是一項商務分析服務，可提供橫跨各種資料來源的互動式視覺效果，而且是將資料提供給貴組織內外的其他人使用的有效方法。 您可以將 Power BI 設定為[從 Azure 監視器自動匯入記錄資料](./platform/powerbi.md)，以便利用這些額外的視覺效果。
 
 
 ![Power BI](media/overview/power-bi.png)
@@ -134,7 +134,7 @@ Azure 監視器中的警示規則會使用[動作群組](platform/action-groups.
 您通常需要整合 Azure 監視器與其他系統，以及建置自訂解決方案來使用您的監視資料。 其他 Azure 服務會與 Azure 監視器搭配運作來提供這項整合。
 
 ### <a name="event-hub"></a>事件中樞
-[Azure 事件中樞](https://docs.microsoft.com/azure/event-hubs)是一個串流平台和事件擷取服務，可使用任何即時分析提供者或批次/儲存配接器來轉換和儲存資料。 使用事件中樞[將 Azure 監視器資料串流處理](platform/stream-monitoring-data-event-hubs.md)至合作夥伴 SIEM 和監視工具。
+[Azure 事件中樞](../event-hubs/index.yml)是一個串流平台和事件擷取服務，可使用任何即時分析提供者或批次/儲存配接器來轉換和儲存資料。 使用事件中樞[將 Azure 監視器資料串流處理](platform/stream-monitoring-data-event-hubs.md)至合作夥伴 SIEM 和監視工具。
 
 
 ### <a name="logic-apps"></a>Logic Apps
@@ -150,4 +150,4 @@ Azure 監視器中的警示規則會使用[動作群組](platform/action-groups.
 * Azure 監視器所收集資料的[計量和記錄](platform/data-platform.md)。
 * [資料來源](platform/data-sources.md)，以了解應用程式的不同元件如何傳送遙測。
 * [記錄查詢](log-query/log-query-overview.md)，以分析所收集的資料。
-* 用於監視雲端應用程式與服務的[最佳做法](https://docs.microsoft.com/azure/architecture/best-practices/monitoring) \(部分機器翻譯\)。
+* 用於監視雲端應用程式與服務的[最佳做法](/azure/architecture/best-practices/monitoring) \(部分機器翻譯\)。

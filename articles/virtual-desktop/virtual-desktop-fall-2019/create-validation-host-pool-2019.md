@@ -1,6 +1,6 @@
 ---
-title: Windows 虛擬桌面主機集區服務更新 - Azure
-description: 將更新推展到生產環境之前，如何建立驗證主機集區來監視服務更新。
+title: Windows Virtual Desktop 主機集區服務更新 (2019 年秋季) - Azure
+description: 了解將更新推展到生產環境之前，如何建立驗證主機集區來監視服務更新。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: fe6b047d10b8aef8faf81365cae940b05b3d798c
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 806c3396d9188ea6abc5f779a26d99247d802ebe
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117732"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527574"
 ---
-# <a name="tutorial-create-a-host-pool-to-validate-service-updates"></a>教學課程：建立主機集區以驗證服務更新
+# <a name="tutorial-create-a-host-pool-to-validate-service-updates-fall-2019-release"></a>教學課程：建立主機集區以驗證服務更新 (2019 年秋季版本)
 
 >[!IMPORTANT]
 >此內容適用於不支援 Azure Resource Manager Windows 虛擬桌面物件的 2019 年秋季版本。 如果您嘗試管理 2020 年春季版更新中引進的 Azure Resource Manager Windows 虛擬桌面物件，請參閱[這篇文章](../create-validation-host-pool.md)。

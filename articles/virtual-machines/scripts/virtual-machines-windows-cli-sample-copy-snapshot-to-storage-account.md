@@ -1,5 +1,5 @@
 ---
-title: 將快照集複製到另一個區域中的儲存體帳戶 - CLI 範例
+title: 將快照集複製到另一個區域中的儲存體帳戶 - Windows CLI 範例
 description: Azure CLI 指令碼範例 - 將快照集匯出/複製成相同或不同區域中儲存體帳戶的 VHD。
 services: virtual-machines-windows
 documentationcenter: storage
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc,seodec18
-ms.openlocfilehash: d470c20718b007b05360ad539973cbc2a9d7ad98
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2bad4f5f3bb85f062d4c17eb2d9e77cb51ab2779
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81459571"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86501104"
 ---
 # <a name="exportcopy-a-snapshot-to-a-storage-account-in-different-region-with-cli"></a>使用 CLI 將快照集匯出/複製到不同區域中的儲存體帳戶
 
@@ -40,13 +40,13 @@ ms.locfileid: "81459571"
 
 | Command | 注意 |
 |---|---|
-| [az snapshot grant-access](https://docs.microsoft.com/cli/azure/snapshot) | 產生唯讀 SAS，用來將基礎 VHD 檔案複製到儲存體帳戶，或將它下載到內部部署。  |
-| [az storage blob copy start](https://docs.microsoft.com/cli/azure/storage/blob/copy) | 以非同步方式在儲存體帳戶間複製 blob |
+| [az snapshot grant-access](/cli/azure/snapshot) | 產生唯讀 SAS，用來將基礎 VHD 檔案複製到儲存體帳戶，或將它下載到內部部署。  |
+| [az storage blob copy start](/cli/azure/storage/blob/copy) | 以非同步方式在儲存體帳戶間複製 blob |
 
 ## <a name="next-steps"></a>後續步驟
 
 [從 VHD 建立受控磁碟](virtual-machines-windows-cli-sample-create-managed-disk-from-vhd.md?toc=%2fcli%2fmodule%2ftoc.json)
 
-如需 Azure CLI 的詳細資訊，請參閱 [Azure CLI 文件](https://docs.microsoft.com/cli/azure)。
+如需 Azure CLI 的詳細資訊，請參閱 [Azure CLI 文件](/cli/azure)。
 
 您可以在 [Azure Windows VM 文件](../windows/cli-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)中找到其他的虛擬機器和受控磁碟 CLI 指令碼範例。

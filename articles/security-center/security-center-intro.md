@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2019
 ms.author: memildin
-ms.openlocfilehash: e9ed36971e157e67ede6573b9fdf9ff1fc6e05a0
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: bb75405a1cd1e282023936673aa73be25556e0af
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044272"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529347"
 ---
 # <a name="what-is-azure-security-center"></a>什麼是 Azure 資訊安全中心？
 
@@ -53,7 +53,7 @@ Azure 資訊安全中心可解決三項最急迫的安全性挑戰：
 
 從代理程式和從 Azure 收集的事件會在安全性分析引擎中相互關聯，為您提供可據以確保工作負載安全的個人化建議 (強化工作)，以及安全性警示。 您應該儘速調查這類警示，確保您的工作負載並未遭受惡意攻擊。
 
-當您啟用資訊安全中心時，內建到資訊安全中心的安全性原則會反映在 Azure 原則中，並作為資訊安全中心類別下的內建方案。 內建方案會自動指派給所有註冊資訊安全中心的訂用帳戶 (免費或標準層)。 內建方案僅包含稽核原則。 如需有關 Azure 原則中資訊安全中心原則的詳細資訊，請參閱[搭配使用安全性原則](tutorial-security-policy.md)。
+當您啟用資訊安全中心時，內建到資訊安全中心的安全性原則會反映在 Azure 原則中，並作為資訊安全中心類別下的內建方案。 內建方案會自動指派給所有註冊資訊安全中心的訂用帳戶 (免費或標準定價層)。 內建方案僅包含稽核原則。 如需有關 Azure 原則中資訊安全中心原則的詳細資訊，請參閱[搭配使用安全性原則](tutorial-security-policy.md)。
 
 ## <a name="strengthen-security-posture"></a>鞏固安全性現況
 

@@ -1104,6 +1104,8 @@
       items:
         - name: 從備份還原資料
           href: how-to-backup-and-restore.md
+        - name: 申請加大配額
+          href: create-support-request-quota-increase.md
     - name: 監視
       items:
         - name: 監視 Cosmos DB
@@ -1112,6 +1114,8 @@
           items:
             - name: 適用於 Cosmos 的 Azure 監視器 (預覽)
               href: ../azure-monitor/insights/cosmosdb-insights-overview.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+            - name: 要監視的案例
+              href: use-metrics.md
             - name: 監視伺服器端延遲
               href: monitor-server-side-latency.md
             - name: 監視要求單位使用量
@@ -1124,8 +1128,8 @@
               href: cosmosdb-monitor-resource-logs.md
             - name: 稽核控制平面記錄
               href: audit-control-plane-logs.md
-        - name: 從 Cosmos DB 帳戶檢視計量
-          href: use-metrics.md
+        - name: 設定警示
+          href: create-alerts.md
         - name: 監視資料參考
           href: monitor-cosmos-db-reference.md
         - name: 使用 Logic Apps 進行應用程式記錄

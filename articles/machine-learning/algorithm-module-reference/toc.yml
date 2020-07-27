@@ -68,10 +68,14 @@
           href: boosted-decision-tree-regression.md
         - name: 決策樹系迴歸
           href: decision-forest-regression.md
+        - name: 快速樹系分量迴歸
+          href: fast-forest-quantile-regression.md
         - name: 線性迴歸
           href: linear-regression.md
         - name: 類神經網路迴歸
           href: neural-network-regression.md
+        - name: 波氏迴歸
+          href: poisson-regression.md
     - name: 叢集
       items:
         - name: K-Means 叢集

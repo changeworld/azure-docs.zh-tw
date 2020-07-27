@@ -210,6 +210,8 @@
           href: vpn-gateway-3rdparty-device-config-cisco-asa.md
     - name: 監視和警示
       items:
+        - name: 檢視 VPN 閘道計量
+          href: vpn-gateway-howto-view-virtual-network-gateway-metrics.md
         - name: 依計量設定警示
           href: vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric.md
         - name: 依資源記錄設定警示
@@ -260,9 +262,9 @@
 - name: 參考
   items:
     - name: Azure PowerShell
-      href: '/powershell/module/az.network#vpn'
+      href: /powershell/module/az.network#vpn
     - name: Azure PowerShell (傳統)
-      href: '/powershell/module/servicemanagement/azure/?view=azuresmps-4.0.0#azure'
+      href: /powershell/module/servicemanagement/azure.service/?view=azuresmps-4.0.0#azure
     - name: REST
       href: /rest/api/network/virtualnetworkgateways
     - name: REST (傳統)

@@ -12,14 +12,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/15/2017
 ms.author: apimpm
-ms.openlocfilehash: 7cd4810059199ddfc88261e27bc910331abe096d
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: f42a68d066898869574cb6ccf5099ccdd451e5fe
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "66730623"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506878"
 ---
-# <a name="create-a-new-azure-api-management-service-instance"></a>建立新的 Azure API 管理服務執行個體
+# <a name="create-a-new-azure-api-management-service-instance-by-using-powershell"></a>使用 PowerShell 建立新的 Azure API 管理服務執行個體
 
 「Azure API 管理 (APIM)」可協助組織將 API 發佈給外部、合作夥伴及內部開發人員，以發揮其資料與服務的潛力。 「API 管理」提供的核心專長認證，透過開發人員參與、商務洞察力、分析、安全性和保護，可確保 API 程式獲致成功。 APIM 可讓您為裝載於任何位置的現有後端服務，建立和管理新式 API 閘道。 如需詳細資訊，請參閱[概觀](api-management-key-concepts.md)主題。
 

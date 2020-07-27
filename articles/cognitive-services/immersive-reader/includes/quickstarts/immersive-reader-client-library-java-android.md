@@ -9,49 +9,49 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 06/10/2020
 ms.author: dylankil
-ms.openlocfilehash: f1d5a5cf6fb23ce3ccf92faf75d80cbe760b9bdc
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: d7b027ead90c0bde8611fc08f19f261c934de2e8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86038199"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86544657"
 ---
 [沈浸式閱讀程式](https://www.onenote.com/learningtools)是經過全面設計的工具，可實作經實證的技術以改善閱讀理解程度。
 
-在本快速入門中，您將從頭開始建置 Android 應用程式，並且整合沈浸式閱讀程式。 本快速入門的完整工作範例可以在[這裡](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-java-android)取得。
+在本快速入門中，您將從頭開始建置 Android 應用程式，並且整合沈浸式閱讀程式。 本快速入門的完整工作範例可以在 [GitHub](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-java-android) 取得。
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="prerequisites"></a>必要條件
 
-* 為 Azure Active Directory 驗證所設定的沈浸式閱讀程式資源。 遵循[這些指引](../../how-to-create-immersive-reader.md)來設定。 設定環境屬性時，您需要這裡建立的一些值。 將工作階段的輸出儲存到文字檔中，以供日後參考。
-* [Git](https://git-scm.com/)
-* [沈浸式閱讀程式 SDK](https://github.com/microsoft/immersive-reader-sdk)
-* [Android Studio](https://developer.android.com/studio)
+* 為 Azure Active Directory 驗證所設定的沈浸式閱讀程式資源。 遵循[這些指引](../../how-to-create-immersive-reader.md)來設定。 設定環境屬性時，您需要用到在這裡建立的一些值。 將工作階段的輸出儲存到文字檔中，以供日後參考。
+* [Git](https://git-scm.com/)。
+* [沈浸式閱讀程式 SDK](https://github.com/microsoft/immersive-reader-sdk)。
+* [Android Studio](https://developer.android.com/studio).
 
 ## <a name="create-an-android-project"></a>建立 Android 專案
 
-在 Android Studio 中開始新專案。 此範例的原始程式碼可作為[沈浸式閱讀程式 SDK](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-java-android) 的一部分
+在 Android Studio 中開始新專案。 此範例的原始程式碼可作為[沈浸式閱讀程式 SDK](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-java-android) 的一部分。
 
 ![新增專案](../../media/android/java/android-studio-create-project.png)
 
-在 [選擇您的專案] 視窗上，選取 [空的活動]，然後按 [下一步]。
+在 [選擇您的專案] 視窗凹，選取 [空的活動]，然後選取 [下一步]。
 
 ![空的活動專案](../../media/android/java/android-studio-empty-activity.png)
 
 ## <a name="configure-the-project"></a>設定專案
 
-將專案命名為 'QuickstartJava'，選取儲存位置，選擇 'Java' 作為程式設計語言，然後按一下 [完成]。
+將專案命名為 **QuickstartJava**，然後選取要儲存的位置。 選取 **Java** 作為程式設計語言，然後選取 [完成]。
 
 ![設定專案](../../media/android/java/android-studio-configure-project.png)
 
 ## <a name="set-up-assets-and-authentication"></a>設定資產和驗證
 
-建立新的 **/assets** 資料夾
+建立新的 **/assets** 資料夾。
 
 ![建立新的資產資料夾](../../media/android/java/android-studio-assets-folder.png)
 
- 在資產資料夾內建立名為 **env** 的檔案。 新增下列各項，並視需要提供值。 請勿將此 env 檔案認可到原始檔控制，因為該檔案包含不應公開的機密資料。
+ 在資產資料夾內建立名為 **env** 的檔案。 新增下列名稱和值，並提供適當的值。 請勿將此 env 檔案認可到原始檔控制，因為其中包含不應公開的機密資料。
 
 ![建立新的 env 檔案](../../media/android/java/android-studio-create-env-file.png)
 
@@ -65,7 +65,7 @@ SUBDOMAIN=<YOUR_SUBDOMAIN>
 
 ## <a name="add-dependencies"></a>新增相依性
 
-將 **build.gradle** 檔案中的現有相依性取代為下列實作，讓 gson (JSON 剖析和序列化) 和 dotenv 可以參考在 env 檔案中定義的變數。 在本快速入門稍後實作活動時，您可能需要同步處理專案。
+將 **build.gradle** 檔案中的現有相依性取代為下列實作，讓 gson (JSON 剖析和序列化) 和 dotenv 可以參考在 env 檔案中定義的變數。 稍後在本快速入門實作活動時，您可能需要同步處理專案。
 
 ```build.gradle
 dependencies {
@@ -102,7 +102,7 @@ dependencies {
 </resources>
 ```
 
-將 **res/layout/activity_main.xml** 中的內容取代為要在應用程式中使用的下列 XML。 這是應用程式的 UI 版面配置。
+將 **res/layout/activity_main.xml** 中的內容取代為要在應用程式中使用的下列 XML。 此 XML 是應用程式的 UI 版面配置。
 
 ![應用程式 activity_main.xml](../../media/android/java/android-studio-activity-main-xml.png)
 
@@ -203,7 +203,7 @@ dependencies {
 
 ## <a name="add-the-web-view-layout"></a>新增 Web 檢視版面配置
 
-在 **res/layout/** 資料夾中建立新的版面配置資源檔並將其命名為 **activity_immersive_reader**，然後將其內容取代為下列 XML。 這會新增供 IRActivity JAVA 程式碼 (在稍後的步驟中建立) 使用的 WebView 元件，現在未定義且會造成錯誤。
+在 **res/layout/** 資料夾中建立新的版面配置資源檔並將其命名為 **activity_immersive_reader**， 然後使用下列 XML 來取代其內容。 這會新增供 IRActivity Java 程式碼 (在稍後的步驟中建立) 使用的 WebView 元件， 現在未定義且會造成錯誤。
 
 ![建立新的版面配置資源檔](../../media/android/java/android-studio-new-layout-resource.png)
 
@@ -232,7 +232,7 @@ dependencies {
 
 ## <a name="set-up-the-app-java-code"></a>設定應用程式 JAVA 程式碼
 
-在 **/Java/com.example.quickstartjava** 資料夾中，您會看到現有的 **MainActivity.java** JAVA 類別檔案。 此資料夾是撰寫應用程式邏輯的位置。
+在 **/Java/com.example.quickstartjava** 資料夾中，您會看到現有的 **MainActivity.java** Java 類別檔案。 此資料夾是撰寫應用程式邏輯的位置。
 
 ![MainActivity](../../media/android/java/android-studio-main-activity-java.png)
 
@@ -256,9 +256,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Creates a new activity, finds its content and the Immersive Reader button
- * when clicked the app sends the content to the Immersive Reader SDK and
- * Launches the Immersive Reader
+ * Creates a new activity, finds its content and the Immersive Reader button.
+ * When clicked, the app sends the content to the Immersive Reader SDK and
+ * launches the Immersive Reader.
  */
 public class MainActivity extends Activity {
 
@@ -287,13 +287,13 @@ public class MainActivity extends Activity {
 }
 ```
 
-我們將會在 **/Java/com.example.quickstartjava** 資料夾中再建立另外 16 個 JAVA 類別檔案。 這些類別將會由應用程式用來整合沈浸式閱讀程式 SDK。 每個新檔案在程式碼中都會有參考的一些類別尚未存在，將會在稍後建立。 建立所有類別之後，就不應該有 Null 參考錯誤。
+我們將會在 **/Java/com.example.quickstartjava** 資料夾中再建立另外 16 個 Java 類別檔案。 這些類別將會由應用程式用來整合沈浸式閱讀程式 SDK。 每個新檔案在程式碼中都會有參考的一些類別尚未存在，將會在稍後建立。 建立所有類別之後，就不應該有 Null 參考錯誤。
 
-藉由以滑鼠右鍵按一下 Android Studio 中的資料夾，然後選取 [新增]，接著選取 [JAVA 類別]，建立新的 **ImmersiveReader.java** JAVA 類別。 針對每個建立的新 JAVA 類別檔案，您使用這個與建立 JAVA 類別檔案相同的方法。
+以滑鼠右鍵按一下 Android Studio 中的資料夾，然後選取 [新增]，接著選取 [Java 類別]，以建立新的 **ImmersiveReader.java** Java 類別。 對於每個建立的新 JAVA 類別檔案，您都會使用這個與建立 JAVA 類別檔案相同的方法。
 
 ![ImmersiveReader](../../media/android/java/android-studio-immersivereader-java.png)
 
-以下列程式碼取代 **ImmersiveReader.java** 內容。
+以下列程式碼取代 **ImmersiveReader.java** 內容：
 
 ```ImmersiveReader.java
 /**
@@ -347,7 +347,7 @@ public class ImmersiveReader {
      * @param dataToRead - Content to be read
      * @return IRError - IRError, with following error codes:
      * a) Error.NONE in case of successful launch of Immersive Reader
-     * b) Error.INVALID_ACCESS_TOKEN in case of empty access token.
+     * b) Error.INVALID_ACCESS_TOKEN in case of empty access token
      * c) Error.INVALID_STATE in case of empty activity
      * d) Error.INVALID_CONTENT in case of empty list of text chunks
      */
@@ -373,11 +373,11 @@ public class ImmersiveReader {
 }
 ```
 
-建立新的 **IRActivity.java** JAVA 類別檔案。
+建立新的 **IRActivity.java** Java 類別檔案。
 
 ![IRActivity](../../media/android/java/android-studio-iractivity-java.png)
 
-以下列程式碼取代 **IRActivity.java** 內容。
+以下列程式碼取代 **IRActivity.java** 內容：
 
 ```IRActivity.java
 /**
@@ -408,8 +408,8 @@ public class ImmersiveReader {
 
     /**
      * Interface to accept access token from client app.
-     * Note that it is client's responsibility to give a valid Access Token whenever getAccessToken() is requested.
-     * In favor of latency perf, there would be no further validation by Immersive Reader module except to ensure that the provided access token is non-empty string
+     * Note that it is the client's responsibility to give a valid Access Token whenever getAccessToken() is requested.
+     * In favor of latency perf, there would be no further validation by Immersive Reader module except to ensure that the provided access token is non-empty string.
      */
     @Keep
     public interface IAuthenticator {
@@ -457,11 +457,11 @@ public class ImmersiveReader {
 }
 ```
 
-建立新的 **IRError.java** JAVA 類別檔案。
+建立新的 **IRError.java** Java 類別檔案。
 
 ![IRError](../../media/android/java/android-studio-irerror-java.png)
 
-以下列程式碼取代 **IRError.java** 內容。
+以下列程式碼取代 **IRError.java** 內容：
 
 ```IRError.java
 /**
@@ -540,7 +540,7 @@ public class IRError implements Parcelable {
 
 ![錯誤](../../media/android/java/android-studio-error-java.png)
 
-以下列程式碼取代 **Error.java** 內容。
+以下列程式碼取代 **Error.java** 內容：
 
 ```Error.java
 /**
@@ -571,7 +571,7 @@ public class Error {
 
 ![ReadableContent](../../media/android/java/android-studio-readablecontent-java.png)
 
-以下列程式碼取代 **ReadableContent.java** 內容。
+以下列程式碼取代 **ReadableContent.java** 內容：
 
 ```ReadableContent.java
 /**
@@ -615,7 +615,7 @@ public class ReadableContent {
 
 ![ReadableTextChunk](../../media/android/java/android-studio-readabletextchunk-java.png)
 
-以下列程式碼取代 **ReadableTextChunk.java** 內容。
+以下列程式碼取代 **ReadableTextChunk.java** 內容：
 
 ```ReadableTextChunk.java
 /**
@@ -647,7 +647,7 @@ public class ReadableTextChunk {
 
 ![IRDataHolder](../../media/android/java/android-studio-irdataholder-java.png)
 
-以下列程式碼取代 **IRDataHolder.java** 內容。
+以下列程式碼取代 **IRDataHolder.java** 內容：
 
 ```IRDataHolder.java
 /**
@@ -663,7 +663,7 @@ import androidx.annotation.Keep;
  * A thin singleton class that is used to hold the Client's IAuthenticator's implementation and the Content to be read.
  * This is required for two reasons:
  * 1) As per Android guidelines, data being passed via intent should be limited to a few KBs. Alternative is to use Singleton holder classes like this one.
- * 2) We need a way to make callbacks survive app configuration changes and killed in background scenarios
+ * 2) We need a way to make callbacks survive app configuration changes and killed in background scenarios.
  */
 
 @Keep
@@ -712,7 +712,7 @@ public class IRDataHolder {
 
 ![IRAuthenticator](../../media/android/java/android-studio-irauthenticator-java.png)
 
-以下列程式碼取代 **IRAuthenticator.java** 內容。
+以下列程式碼取代 **IRAuthenticator.java** 內容：
 
 ```IRAuthenticator.java
 /**
@@ -739,10 +739,10 @@ import java.net.URL;
 
 import static java.net.HttpURLConnection.HTTP_OK;
 
-// This sample app uses the Dotenv is a module that loads environment variables from a .env file to better manage secrets.
+// This sample app uses the Dotenv. It's a module that loads environment variables from a .env file to better manage secrets.
 // https://github.com/cdimascio/java-dotenv
-// Be sure to add a "env" file to the /assets folder
-// instead of '.env', use 'env'
+// Be sure to add a "env" file to the /assets folder.
+// Instead of '.env', use 'env'.
 
 public class IRAuthenticator implements ImmersiveReader.IAuthenticator {
     private static final String LOG_TAG = "IRAuthenticator";
@@ -823,7 +823,7 @@ public class IRAuthenticator implements ImmersiveReader.IAuthenticator {
 
 ![IRLauncher](../../media/android/java/android-studio-irlauncher-java.png)
 
-以下列程式碼取代 **IRLauncher.java** 內容。
+以下列程式碼取代 **IRLauncher.java** 內容：
 
 ```IRLauncher.java
 /**
@@ -853,7 +853,7 @@ import java.util.concurrent.Callable;
 import io.github.cdimascio.dotenv.Dotenv;
 
 /**
- * Responsible for setting up the web view with appropriate bridging between JS and Java to launch the Immersive reader url for reading the content
+ * Responsible for setting up the web view with appropriate bridging between JavaScript and Java to launch the Immersive Reader url for reading the content.
  */
 
 public class IRLauncher {
@@ -876,7 +876,7 @@ public class IRLauncher {
         // Invoked in case of empty access token or empty content request to be read
         void onFailure(IRError error);
 
-        // Invoked when Immersive reader is exiting (e.g.) user pressed back in the immersive reader experience
+        // Invoked when Immersive Reader is exiting (e.g.) user pressed back in the Immersive Reader experience
         void onExit();
     }
 
@@ -981,7 +981,7 @@ public class IRLauncher {
             }
         });
 
-        // Prepare and set the WebAppInterface to hear back from the JS
+        // Prepare and set the WebAppInterface to hear back from the JavaScript
         WebAppInterface jsInterface = new WebAppInterface(new WebAppInterface.WebAppListener() {
             @Override
             public void onShowToast(String toast) {
@@ -1016,7 +1016,7 @@ public class IRLauncher {
 
 ![IRStore](../../media/android/java/android-studio-irstore-java.png)
 
-以下列程式碼取代 **IRStore.java** 內容。
+以下列程式碼取代 **IRStore.java** 內容：
 
 ```IRStore.java
 /**
@@ -1041,7 +1041,7 @@ public final class IRStore {
 
 ![AuthenticationTask](../../media/android/java/android-studio-authenticationtask-java.png)
 
-以下列程式碼取代 **AuthenticationTask.java** 內容。
+以下列程式碼取代 **AuthenticationTask.java** 內容：
 
 ```AuthenticationTask.java
 /**
@@ -1098,7 +1098,7 @@ public class AuthenticationTask extends AsyncTask<Void, Void, String> {
 
 ![區塊](../../media/android/java/android-studio-chunk-java.png)
 
-以下列程式碼取代 **Chunk.java** 內容。
+以下列程式碼取代 **Chunk.java** 內容：
 
 ```Chunk.java
 /**
@@ -1112,8 +1112,8 @@ import androidx.annotation.Keep;
 
 /**
  * The chunk object that will be sent to the Immersive Reader SDK.
- * The content is a string of text, the lang is a string, e.g. 'll-cc'
- * and the mimeType is also a string, e.g. 'text/plain'
+ * The content is a string of text, the lang is a string, e.g. 'll-cc',
+ * and the mimeType is also a string, e.g. 'text/plain'.
  */
 
 @Keep
@@ -1135,7 +1135,7 @@ public class Chunk {
 
 ![內容](../../media/android/java/android-studio-content-java.png)
 
-以下列程式碼取代 **Content.java** 內容。
+以下列程式碼取代 **Content.java** 內容：
 
 ```Content.java
 /**
@@ -1171,7 +1171,7 @@ public class Content {
 
 ![選項。](../../media/android/java/android-studio-options-java.png)
 
-以下列程式碼取代 **Options.java** 內容。
+以下列程式碼取代 **Options.java** 內容：
 
 ```Options.java
 /**
@@ -1205,7 +1205,7 @@ public class Options {
 
 ![訊息](../../media/android/java/android-studio-message-java.png)
 
-以下列程式碼取代 **Message.java** 內容。
+以下列程式碼取代 **Message.java** 內容：
 
 ```Message.java
 /**
@@ -1217,7 +1217,7 @@ import androidx.annotation.Keep;
 
 /**
  * The message object that will be sent to the Immersive Reader SDK.
- * This object contains the access token, sub domain, Content and Options.
+ * This object contains the access token, sub domain, Content, and Options.
  */
 
 @Keep
@@ -1243,7 +1243,7 @@ public class Message {
 
 ![WebAppInterface](../../media/android/java/android-studio-webappinterface-java.png)
 
-以下列程式碼取代 **WebAppInterface.java** 內容。
+以下列程式碼取代 **WebAppInterface.java** 內容：
 
 ```WebAppInterface.java
 /**
@@ -1257,7 +1257,7 @@ import androidx.annotation.Keep;
 import android.webkit.JavascriptInterface;
 
 /**
- * JavaScript interface implementation passed to the WebView to enable talking between JS and Java
+ * JavaScript interface implementation passed to the WebView to enable talking between JavaScript and Java.
  */
 
 @Keep
@@ -1290,13 +1290,13 @@ public class WebAppInterface {
 
 ## <a name="add-the-app-html-to-the-web-view"></a>將應用程式 HTML 新增至 Web 檢視
 
-Web 檢視實作需要 HTML 才能正常操作。 以滑鼠右鍵按一下 **/assets** 資料夾，建立新檔案並將其命名為 **immersiveReader.html**。
+Web 檢視實作需要 HTML 才能正常運作。 以滑鼠右鍵按一下 **/assets** 資料夾，建立新檔案並將其命名為 **immersiveReader.html**。
 
 ![建立新的 HTML 檔案](../../media/android/java/android-studio-immersive-reader-html.png)
 
 ![HTML 資產位置](../../media/android/java/android-studio-immersive-reader-html-assets.png)
 
-新增下列 HTML 和 JavaScript。 這樣會將沈浸式閱讀程式 SDK 新增至應用程式，並將其用來透過我們所撰寫的應用程式程式碼來啟動沈浸式閱讀程式。
+新增下列 HTML 和 JavaScript。 此程式碼會將沈浸式閱讀程式 SDK 新增至應用程式，並將其用來透過我們所撰寫的應用程式程式碼來啟動沈浸式閱讀程式。
 
 ```immersiveReader.html
 <!-- Copyright (c) Microsoft Corporation. All rights reserved.
@@ -1353,7 +1353,7 @@ Licensed under the MIT License. -->
 
 ![AndroidManifest](../../media/android/java/android-studio-android-manifest-xml.png)
 
-因為應用程式需要對沈浸式閱讀程式 SDK 進行網路呼叫才能運作，所以我們必須確保應用程式權限已設定為允許網路存取。 將 **/manifests/AndroidManifest.xml** 的內容取代為下列 XML。
+因為應用程式需要對沈浸式閱讀程式 SDK 進行網路呼叫才能運作，所以我們必須確保應用程式權限已設定為允許網路存取。 將 **/manifests/AndroidManifest.xml** 的內容取代為下列 XML：
 
 ```AndroidManifest.xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -1384,12 +1384,12 @@ Licensed under the MIT License. -->
 </manifest>
 ```
 
-## <a name="running-the-app"></a>執行應用程式
+## <a name="run-the-app"></a>執行應用程式
 
-使用 Android Studio 在裝置模擬器上執行應用程式。 當您按一下 [沈浸式閱讀程式] 按鈕時，您會看到沈浸式閱讀程式啟動，並顯示應用程式上的內容。
+使用 Android Studio 在裝置模擬器上執行應用程式。 當您選取 [沈浸式閱讀程式] 時，會開啟具有應用程式內容的沈浸式閱讀程式。
 
 ![沈浸式閱讀程式](../../media/android/java/android-studio-device-emulator.png)
 
 ## <a name="next-steps"></a>後續步驟
 
-* 探索[沈浸式閱讀程式 SDK](https://github.com/microsoft/immersive-reader-sdk) 和[沈浸式閱讀程式 SDK 參考](../../reference.md)
+探索[沈浸式閱讀程式 SDK](https://github.com/microsoft/immersive-reader-sdk) 和[沈浸式閱讀程式 SDK 參考](../../reference.md)。

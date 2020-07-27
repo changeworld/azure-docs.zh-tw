@@ -5,6 +5,8 @@
   items:
     - name: 方案架構
       href: architecture.md
+    - name: Azure RTOS 的安全性解決方案
+      href: iot-security-azure-rtos.md
     - name: 安全性代理程式
       href: security-agent-architecture.md
     - name: Edge 安全性模組
@@ -53,9 +55,9 @@
       items:
         - name: 選取要部署的代理程式
           href: how-to-deploy-agent.md
-        - name: '在 Windows 裝置上部署以 C# 為基礎的安全性代理程式'
+        - name: 在 Windows 裝置上部署以 C# 為基礎的安全性代理程式
           href: how-to-deploy-windows-cs.md
-        - name: '在 Linux 裝置上部署以 C# 為基礎的安全性代理程式'
+        - name: 在 Linux 裝置上部署以 C# 為基礎的安全性代理程式
           href: how-to-deploy-linux-cs.md
         - name: 在 Linux 裝置上部署以 C 為基礎的安全性代理程式
           href: how-to-deploy-linux-c.md
@@ -65,7 +67,7 @@
           href: troubleshoot-agent.md
         - name: 本機組態 C
           href: azure-iot-security-local-configuration-c.md
-        - name: '本機組態 C#'
+        - name: 本機組態 C#
           href: azure-iot-security-local-configuration-csharp.md
     - name: 部署 Edge 安全性模組
       href: how-to-deploy-edge.md

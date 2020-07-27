@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 04/15/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 96bb624472aa2053599765d5bfedeb96339d0973
-ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
+ms.openlocfilehash: be124bdde4427113d56f44f0c1fa19c600bd768e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85808041"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496041"
 ---
 # <a name="what-is-azure-synapse-analytics-workspaces-preview"></a>什麼是 Azure Synapse Analytics (工作區預覽)？
 
@@ -40,7 +40,7 @@ Azure Synapse 為企業提供最簡單且最快速的方式，讓他們能夠使
 
 * Synapse SQL 提供**無伺服器**和**已佈建**的資源模型，能根據您的需求提供耗用量和計費選項。 針對可預測的效能和成本，請佈建集區來為 SQL 資料表中所儲存的資料保留處理效能。 針對非計畫或暴增的工作負載，請使用無伺服器且永遠可用的 SQL 端點。
 * 請使用內建的**串流**功能，將雲端資料來源中的資料放入 SQL 資料表
-* 若要整合 AI 與 SQL，請使用**機器學習**模型，以利用 T-SQL PREDICT 函式來為資料評分
+* 若要整合 AI 與 SQL，請使用**機器學習**模型，以利用 [T-SQL PREDICT 函式來為資料評分](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest)
 
 ### <a name="industry-standard-apache-spark"></a>業界標準的 Apache Spark
 

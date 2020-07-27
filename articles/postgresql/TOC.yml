@@ -351,6 +351,8 @@
           items:
             - name: 建立計量警示
               href: howto-hyperscale-alert-on-metric.md
+            - name: 存取資料庫記錄
+              href: howto-hyperscale-logging.md
         - name: 疑難排解
           items:
             - name: 針對連線問題進行疑難排解
