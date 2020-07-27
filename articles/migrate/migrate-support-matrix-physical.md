@@ -3,12 +3,12 @@ title: Azure Migrate 中的實體伺服器評量支援
 description: 瞭解 Azure Migrate Server 評估的實體伺服器評量支援
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: 226f49dc2a1603aba5eaa2f03ead32b815ac34b5
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: e28c1fd3dd117491360a1671955a6ec028033c01
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86101685"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171624"
 ---
 # <a name="support-matrix-for-physical-server-assessment"></a>實體伺服器評估的支援矩陣 
 
@@ -34,7 +34,7 @@ ms.locfileid: "86101685"
 | **支援**                | **詳細資料**               
 | :-------------------       | :------------------- |
 | **實體伺服器部署**       | 實體伺服器可以是獨立的，或部署在叢集中。 |
-| **權限**           | **Windows：** 您必須是您想要探索的所有 Windows 伺服器上的網域系統管理員。 使用者帳戶應新增至下列群組：遠端管理使用者、效能監視器使用者，以及效能記錄使用者。 <br/><br/> **Linux：** 您在要探索的 Linux 伺服器上必須要有根帳戶。 |
+| **權限**           | **Windows：** 針對加入網域的電腦使用網域帳戶，並針對已加入網域的電腦使用本機帳戶。 使用者帳戶應新增至下列群組：遠端管理使用者、效能監視器使用者，以及效能記錄使用者。 <br/><br/> **Linux：** 您在要探索的 Linux 伺服器上必須要有根帳戶。 |
 | **作業系統** | 除了 Windows Server 2003 和 SUSE Linux 以外的所有作業系統都可以進行評估以進行遷移。 |
 
 

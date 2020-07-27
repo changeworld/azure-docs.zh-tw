@@ -3,12 +3,12 @@ title: 使用 Azure Migrate 評定大量的 VMware Vm 以遷移至 Azure
 description: 說明如何使用 Azure Migrate 服務，評估大量的 VMware Vm 以遷移至 Azure。
 ms.topic: how-to
 ms.date: 03/23/2020
-ms.openlocfilehash: d404583b1bad474a5e24e8c7cf060aeb80d610bc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6490a5448bb68dcccd61784d149e9765107400c2
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80336862"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171912"
 ---
 # <a name="assess-large-numbers-of-vmware-vms-for-migration-to-azure"></a>評估大量的 VMware Vm 以遷移至 Azure
 
@@ -34,8 +34,10 @@ ms.locfileid: "80336862"
 
 - **規劃 Azure Migrate 專案**：瞭解如何部署 Azure Migrate 專案。 例如，如果您的資料中心位於不同的地理位置，或是您需要將探索、評定或遷移相關的中繼資料儲存在不同的地理位置，您可能需要多個專案。 
 - **規劃設備**： Azure Migrate 使用部署為 VMware VM 的內部部署 Azure Migrate 設備，持續探索 vm。 設備會監視環境變更，例如新增 Vm、磁片或網路介面卡。 它也會將其相關的中繼資料和效能資料傳送至 Azure。 您必須找出需要部署的應用裝置數量。
-- **規劃探索的帳戶**： Azure Migrate 設備使用可存取 vCenter Server 的帳戶，以探索用於評估和遷移的 vm。 如果您要探索的 Vm 超過10000個，請設定多個帳戶。
+- **規劃探索的帳戶**： Azure Migrate 設備使用可存取 vCenter Server 的帳戶，以探索用於評估和遷移的 vm。 如果您要探索的 Vm 超過10000個，請設定多個帳戶，因為從專案中的任兩個設備探索到的 Vm 之間不會重迭。 
 
+> [!NOTE]
+> 如果您要設定多個應用裝置，請確定提供的 vCenter 帳戶上的 Vm 之間沒有重迭。 具有這類重迭的探索是不支援的案例。 如果 VM 是由一個以上的應用裝置探索，這會導致探索和問題中的重複，同時使用伺服器遷移中的 Azure 入口網站為 VM 啟用複寫。
 
 ## <a name="planning-limits"></a>規劃限制
  
@@ -52,11 +54,12 @@ ms.locfileid: "80336862"
 
 
 **vCenter server** | **伺服器上的 Vm** | **建議** | **動作**
----|---|---
+---|---|---|---
 一個 | < 10000 | 一個 Azure Migrate 專案。<br/> 一個設備。<br/> 一個用於探索的 vCenter 帳戶。 | 設定設備，使用帳戶連接到 vCenter Server。
-一個 | > 10000 | 一個 Azure Migrate 專案。<br/> 多個設備。<br/> 多個 vCenter 帳戶。 | 為每個 10000 Vm 設定設備。<br/><br/> 設定 vCenter 帳戶，並劃分清查以將帳戶的存取許可權制為少於10000個 Vm。<br/> 使用帳戶將每個設備連接到 vCenter server。<br/> 您可以分析使用不同設備探索到的機器之間的相依性。
+一個 | > 10000 | 一個 Azure Migrate 專案。<br/> 多個設備。<br/> 多個 vCenter 帳戶。 | 為每個 10000 Vm 設定設備。<br/><br/> 設定 vCenter 帳戶，並劃分清查以將帳戶的存取許可權制為少於10000個 Vm。<br/> 使用帳戶將每個設備連接到 vCenter server。<br/> 您可以分析使用不同設備探索到的機器之間的相依性。 <br/> <br/> 確定提供的 vCenter 帳戶上的 Vm 之間沒有重迭。 具有這類重迭的探索是不支援的案例。 如果 VM 是由一個以上的應用裝置探索，這會導致探索和問題中的重複，同時使用伺服器遷移中的 Azure 入口網站為 VM 啟用複寫。
 多個 | < 10000 |  一個 Azure Migrate 專案。<br/> 多個設備。<br/> 一個用於探索的 vCenter 帳戶。 | 設定設備，使用帳戶連接到 vCenter Server。<br/> 您可以分析使用不同設備探索到的機器之間的相依性。
-多個 | > 10000 | 一個 Azure Migrate 專案。<br/> 多個設備。<br/> 多個 vCenter 帳戶。 | 如果 vCenter Server 探索 < 10000 Vm，請為每個 vCenter Server 設定設備。<br/><br/> 如果 vCenter Server 探索 > 10000 Vm，請為每個 10000 Vm 設定設備。<br/> 設定 vCenter 帳戶，並劃分清查以將帳戶的存取許可權制為少於10000個 Vm。<br/> 使用帳戶將每個設備連接到 vCenter server。<br/> 您可以分析使用不同設備探索到的機器之間的相依性。
+多個 | > 10000 | 一個 Azure Migrate 專案。<br/> 多個設備。<br/> 多個 vCenter 帳戶。 | 如果 vCenter Server 探索 < 10000 Vm，請為每個 vCenter Server 設定設備。<br/><br/> 如果 vCenter Server 探索 > 10000 Vm，請為每個 10000 Vm 設定設備。<br/> 設定 vCenter 帳戶，並劃分清查以將帳戶的存取許可權制為少於10000個 Vm。<br/> 使用帳戶將每個設備連接到 vCenter server。<br/> 您可以分析使用不同設備探索到的機器之間的相依性。 <br/><br/> 確定提供的 vCenter 帳戶上的 Vm 之間沒有重迭。 具有這類重迭的探索是不支援的案例。 如果 VM 是由一個以上的應用裝置探索，這會導致探索和問題中的重複，同時使用伺服器遷移中的 Azure 入口網站為 VM 啟用複寫。
+
 
 
 ## <a name="plan-discovery-in-a-multi-tenant-environment"></a>在多租使用者環境中規劃探索

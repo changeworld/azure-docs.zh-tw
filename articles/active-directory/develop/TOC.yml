@@ -618,6 +618,14 @@
           href: vs-active-directory-webapi-what-happened.md
         - name: 診斷驗證期間的錯誤
           href: vs-active-directory-error.md
+    - name: 將應用程式帶到市場
+      items:
+        - name: 發行到 App Source
+          href: v2-howto-get-appsource-certified.md
+        - name: 發行到 Azure AD App 資源庫
+          href: v2-howto-app-gallery-listing.md
+        - name: 發行到 Office 365 賣方儀表板
+          href: 'https://docs.microsoft.com/office/dev/store/use-the-seller-dashboard-to-submit-to-the-office-store'
 - name: 參考
   items:
     - name: 應用程式資訊清單

@@ -4,16 +4,16 @@ description: 了解如何將受控快取服務和 In-Role Cache 應用程式移�
 author: yegu-ms
 ms.service: cache
 ms.topic: conceptual
-ms.date: 05/30/2017
+ms.date: 07/23/2020
 ms.author: yegu
-ms.openlocfilehash: 909329a4326354a890c3c4645002f7248f30e8fa
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 3f5cfccd1f85f68c619192496c62bf80ea8d4785
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86184781"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87170170"
 ---
-# <a name="migrate-from-managed-cache-service-to-azure-cache-for-redis"></a>從受控快取服務移轉至 Azure Cache for Redis
+# <a name="migrate-from-managed-cache-service-to-azure-cache-for-redis-deprecated"></a>從受控快取服務遷移至 Azure Cache for Redis （已淘汰）
 若想將使用 Azure 受控快取服務的應用程式移轉至 Azure Cache for Redis，您幾乎不需要變更應用程式就可達成，詳細情形取決於快取應用程式所使用的受控快取服務功能。 API 雖非完全相同，但卻極為類似，而且您現有使用受控快取服務來存取快取的程式碼，大多只需要略做變更即可重複使用。 本文說明如何對設定和應用程式進行必要的變更，以將受控快取服務應用程式移轉為使用 Azure Cache for Redis，並說明如何使用 Azure Cache for Redis 的某些功能，來實作受控快取服務快取的功能。
 
 >[!NOTE]

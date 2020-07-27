@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 05/29/2020
+ms.date: 07/24/2020
 ms.author: b-juche
-ms.openlocfilehash: 6bd6ddc8b75b83355f6761ef0567ea949c86b61a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 848a5779538f4754ef038a1e88be63c33177bc82
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483698"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87169981"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>建立適用於 Azure NetApp Files 的 SMB 磁碟區
 
@@ -215,6 +215,12 @@ Azure NetApp Files 支援 NFS 和 SMBv3 磁碟區。 磁碟區的容量耗用量
         ![建立磁碟區](../media/azure-netapp-files/azure-netapp-files-new-volume.png)
     
         ![建立子網路](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
+
+    * 如果您想要將現有的快照集原則套用到磁片區，請按一下 [**顯示 advanced] 區段**將它展開，然後選取下拉式功能表中的快照集原則。 
+
+        如需建立快照集原則的相關資訊，請參閱[管理快照](azure-netapp-files-manage-snapshots.md)集。
+
+        ![顯示先進的選擇](../media/azure-netapp-files/volume-create-advanced-selection.png)
 
 4. 按一下 [通訊協定]，然後完成下列資訊：  
     * 選取 [SMB] 做為磁碟區的通訊協定類型。 

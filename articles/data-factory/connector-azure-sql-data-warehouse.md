@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/15/2020
-ms.openlocfilehash: 5810f9b08d914522f1304e238567c06e87872715
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8d7171bafb292b0520b8873bad0ce8f55ab4040d
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537726"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171503"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-formerly-azure-sql-data-warehouse-by-using-azure-data-factory"></a>使用 Azure Data Factory 在 Azure Synapse Analytics (先前稱為 Azure SQL 資料倉儲) 中複製和轉換資料
 
@@ -263,7 +263,7 @@ ms.locfileid: "86537726"
 | sqlReaderQuery               | 使用自訂 SQL 查詢來讀取資料。 範例： `select * from MyTable`. | 否       |
 | sqlReaderStoredProcedureName | 從來源資料表讀取資料的預存程序名稱。 最後一個 SQL 陳述式必須是預存程序中的 SELECT 陳述式。 | 否       |
 | storedProcedureParameters    | 預存程序的參數。<br/>允許的值為名稱或值組。 參數的名稱和大小寫必須符合預存程序參數的名稱和大小寫。 | 否       |
-| isolationLevel | 指定 SQL 來源的異動鎖定行為。 允許的值有：**ReadCommitted** (預設值)、**ReadUncommitted**、**RepeatableRead**、**Serializable**、**Snapshot**。 如需詳細資訊，請參閱[這篇文件](https://docs.microsoft.com/dotnet/api/system.data.isolationlevel)。 | 否 |
+| isolationLevel | 指定 SQL 來源的異動鎖定行為。 允許的值為： **ReadCommitted**、 **ReadUncommitted**、 **RepeatableRead**、 **Serializable**、 **Snapshot**。 如果未指定，則會使用資料庫的預設隔離等級。 如需詳細資訊，請參閱[這篇文件](https://docs.microsoft.com/dotnet/api/system.data.isolationlevel)。 | 否 |
 
 **範例：使用 SQL 查詢**
 
@@ -369,10 +369,10 @@ Azure Data Factory 支援將資料載入 SQL 資料倉儲的三種方式。
 | 屬性          | 描述                                                  | 必要                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
 | type              | 複製活動接收端的**類型**屬性必須設定為 **SqlDWSink**。 | 是                                           |
-| allowPolyBase     | 指出是否使用 PolyBase 將資料載入 SQL 資料倉儲。 `allowCopyCommand` 和 `allowPolyBase` 不可同時為 true。 <br/><br/>請參閱 [使用 PolyBase 將資料載入 Azure SQL 資料倉儲](#use-polybase-to-load-data-into-azure-sql-data-warehouse) 一節中的條件約束和詳細資料。<br/><br/>允許的值為 **True** 和 **False** (預設值)。 | 否。<br/>使用 PolyBase 時套用。     |
-| polyBaseSettings  | 可以在 `allowPolybase` 屬性設定為 **true** 時指定的一組屬性。 | 否。<br/>使用 PolyBase 時套用。 |
-| allowCopyCommand | 指出是否使用 [COPY 陳述式](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)(預覽) 將資料載入 SQL 資料倉儲。 `allowCopyCommand` 和 `allowPolyBase` 不可同時為 true。 <br/><br/>請參閱 [使用 COPY 陳述式將資料載入 Azure SQL 資料倉儲](#use-copy-statement)一節中的條件約束和詳細資料。<br/><br/>允許的值為 **True** 和 **False** (預設值)。 | 否。<br>使用 COPY 時套用。 |
-| copyCommandSettings | 可以在 `allowCopyCommand` 屬性設定為 TRUE 時指定的一組屬性。 | 否。<br/>使用 COPY 時套用。 |
+| allowPolyBase     | 指出是否使用 PolyBase 將資料載入 SQL 資料倉儲。 `allowCopyCommand` 和 `allowPolyBase` 不可同時為 true。 <br/><br/>請參閱 [使用 PolyBase 將資料載入 Azure SQL 資料倉儲](#use-polybase-to-load-data-into-azure-sql-data-warehouse) 一節中的條件約束和詳細資料。<br/><br/>允許的值為 **True** 和 **False** (預設值)。 | 不會。<br/>使用 PolyBase 時套用。     |
+| polyBaseSettings  | 可以在 `allowPolybase` 屬性設定為 **true** 時指定的一組屬性。 | 不會。<br/>使用 PolyBase 時套用。 |
+| allowCopyCommand | 指出是否使用 [COPY 陳述式](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)(預覽) 將資料載入 SQL 資料倉儲。 `allowCopyCommand` 和 `allowPolyBase` 不可同時為 true。 <br/><br/>請參閱 [使用 COPY 陳述式將資料載入 Azure SQL 資料倉儲](#use-copy-statement)一節中的條件約束和詳細資料。<br/><br/>允許的值為 **True** 和 **False** (預設值)。 | 不會。<br>使用 COPY 時套用。 |
+| copyCommandSettings | 可以在 `allowCopyCommand` 屬性設定為 TRUE 時指定的一組屬性。 | 不會。<br/>使用 COPY 時套用。 |
 | writeBatchSize    | 對於**每個批次**要插入 SQL 資料表中的資料列數。<br/><br/>允許的值為**整數** (資料列數目)。 根據預設，Data Factory 會依據資料列大小動態決定適當的批次大小。 | 否。<br/>使用 bulk insert 時套用。     |
 | writeBatchTimeout | 在逾時前等待批次插入作業完成的時間。<br/><br/>允許的值為**時間範圍**。 範例：「00:30:00」(30 分鐘)。 | 否。<br/>使用 bulk insert 時套用。        |
 | preCopyScript     | 指定一個供「複製活動」在每次執行時將資料寫入到「Azure SQL 資料倉儲」前執行的 SQL 查詢。 使用此屬性來清除預先載入的資料。 | 否                                            |

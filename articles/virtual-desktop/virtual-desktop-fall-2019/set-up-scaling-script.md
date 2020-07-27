@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 442dfc1667027bd39b138d59a28542138cc4a1ca
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 690f59c643f1fe8c8cfc74758a0f8f13b129f78a
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085931"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87172062"
 ---
 # <a name="scale-session-hosts-using-azure-automation"></a>使用 Azure 自動化調整工作階段主機
 
@@ -60,10 +60,10 @@ ms.locfileid: "87085931"
 
 - 此解決方案只適用于集區多會話工作階段主機 Vm。
 - 此解決方案會管理任何區域中的 Vm，但只能用在與您的 Azure 自動化帳戶和 Azure 邏輯應用程式相同的訂用帳戶中。
-- Runbook 中作業的最大執行時間為3小時。 如果啟動或停止主機集區中的 Vm 所花費的時間超過該數量，作業將會失敗。 如需詳細資訊，請參閱[共用資源](../../automation/automation-runbook-execution.md#fair-share)
+- Runbook 中作業的最大執行時間為3小時。 如果啟動或停止主機集區中的 Vm 所花費的時間超過該數量，作業將會失敗。 如需詳細資訊，請參閱[共用資源](../../automation/automation-runbook-execution.md#fair-share)。
 
 >[!NOTE]
->調整工具可控制調整中主機集區的負載平衡模式。 它會針對尖峰和離峰時間將該模式設定為廣度優先負載平衡。
+>調整工具會控制目前正在調整的主機集區的負載平衡模式。 此工具會針對尖峰和離峰時段使用廣度優先的負載平衡模式。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -140,7 +140,7 @@ ms.locfileid: "87085931"
 
 [Azure 自動化執行身分帳戶](../../automation/manage-runas-account.md)會提供使用 azure Cmdlet 來管理 azure 中資源的驗證。 當您建立執行身分帳戶時，它會在 Azure Active Directory 中建立新的服務主體使用者，並將參與者角色指派給訂用帳戶層級的服務主體使用者。 Azure 執行身分帳戶是安全地使用憑證和服務主體名稱進行驗證的絕佳方式，而不需要將使用者名稱和密碼儲存在認證物件中。 若要深入瞭解執行身分帳戶驗證，請參閱[限制執行身分帳戶許可權](../../automation/manage-runas-account.md#limit-run-as-account-permissions)。
 
-任何身為訂閱管理員角色成員和訂閱共同管理員的使用者，都可以遵循下一節的指示來建立執行身分帳戶。
+身為訂用帳戶管理員角色成員和訂閱共同管理員的任何使用者，都可以建立執行身分帳戶。
 
 若要在您的 Azure 自動化帳戶中建立執行身分帳戶：
 

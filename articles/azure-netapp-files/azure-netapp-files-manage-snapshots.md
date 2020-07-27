@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure NetApp Files 管理快照集 | Microsoft Docs
-description: 說明如何使用 Azure NetApp Files 建立磁碟區的快照集，或從快照集還原至新的磁碟區。
+description: 說明如何使用 Azure NetApp Files 來建立和管理快照集。
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -12,24 +12,24 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 03/03/2020
+ms.date: 07/24/2020
 ms.author: b-juche
-ms.openlocfilehash: ed13c61646bd2a6672b613964507d291a69a6821
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ebbf83e1abe6140614a45bfa89570cdf19283f8f
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483596"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87169756"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>使用 Azure NetApp Files 管理快照集
 
-您可以使用 Azure NetApp Files 手動建立磁片區的隨選快照集，或從快照集還原至新的磁片區。 Azure NetApp Files 服務不會自動建立磁片區快照集。  
+Azure NetApp Files 支援建立隨選快照集，並使用快照集原則來排程自動建立快照集。  您也可以將快照集還原至新的磁片區。  
 
 ## <a name="create-an-on-demand-snapshot-for-a-volume"></a>建立磁碟區的隨選快照集
 
-您只能以隨選的方式建立快照集。 目前不支援快照集原則。
+您可以視需要建立磁片區快照集。 
 
-1.  從 [磁碟區] 刀鋒視窗，按一下 [快照集]****。
+1.  移至您想要建立快照集的磁片區。 按一下 [**快照**集]。
 
     ![瀏覽快照集](../media/azure-netapp-files/azure-netapp-files-navigate-to-snapshots.png)
 
@@ -43,47 +43,109 @@ ms.locfileid: "85483596"
 
 4. 按一下 [確定]。 
 
+## <a name="manage-snapshot-policies"></a>管理快照集原則
+
+您可以使用快照集原則，將磁片區快照集排程為自動執行。 您也可以視需要修改快照集原則，或刪除不再需要的快照集原則。  
+
+### <a name="create-a-snapshot-policy"></a>建立快照集原則 
+
+快照集原則可讓您指定每小時、每日、每週或每月迴圈的快照集建立頻率。 您也需要指定磁片區要保留的快照集數目上限。  
+
+1.  從 [NetApp 帳戶] 視圖中，按一下 [**快照集原則**]。
+
+    ![快照集原則導覽](../media/azure-netapp-files/snapshot-policy-navigation.png)
+
+2.  在 [快照集原則] 視窗中，將 [原則狀態] 設定為 [**啟用**]。 
+
+3.  按一下 [**每小時**]、[**每天**]、[**每週**] 或 [**每月**] 索引標籤，以建立每小時、每天、每週或每月 指定**要保留的快照集數目**。  
+
+    如需磁片區允許的快照集數目上限，請參閱[Azure NetApp Files 的資源限制](azure-netapp-files-resource-limits.md)。 
+
+    下列範例會顯示每小時快照集原則設定。 
+
+    ![每小時快照集原則](../media/azure-netapp-files/snapshot-policy-hourly.png)
+
+    下列範例會顯示每日快照集原則設定。
+
+    ![每日快照集原則](../media/azure-netapp-files/snapshot-policy-daily.png)
+
+    下列範例會顯示每週的快照集原則設定。
+
+    ![每週快照集原則](../media/azure-netapp-files/snapshot-policy-weekly.png)
+
+    下列範例會顯示每月快照集原則設定。
+
+    ![每月快照集原則](../media/azure-netapp-files/snapshot-policy-monthly.png) 
+
+4.  按一下 [檔案] 。  
+
+如果您需要建立其他快照集原則，請重複步驟3。
+您所建立的原則會顯示在 [快照集原則] 頁面中。
+
+如果您想要讓磁片區使用快照集原則，則必須[將該原則套用至磁片](azure-netapp-files-manage-snapshots.md#apply-a-snapshot-policy-to-a-volume)區。 
+
+### <a name="apply-a-snapshot-policy-to-a-volume"></a>將快照集原則套用至磁片區
+
+如果您想要讓磁片區使用您所建立的快照集原則，則必須將該原則套用至磁片區。 
+
+1.  移至 [**磁片**區] 頁面，以滑鼠右鍵按一下您想要套用快照集原則的磁片區，然後選取 [**編輯**]。
+
+    ![磁片區滑鼠右鍵功能表](../media/azure-netapp-files/volume-right-cick-menu.png) 
+
+2.  在 [編輯] 視窗的 [**快照集原則**] 底下，選取要用於磁片區的原則。  按一下 **[確定]** 以套用原則。  
+
+    ![快照集原則編輯](../media/azure-netapp-files/snapshot-policy-edit.png) 
+
+### <a name="modify-a-snapshot-policy"></a>修改快照集原則 
+
+您可以修改現有的快照集原則，以變更原則狀態、快照集頻率（每小時、每日、每週或每月），或要保留的快照集數目。  
+ 
+1.  從 [NetApp 帳戶] 視圖中，按一下 [**快照集原則**]。
+
+2.  以滑鼠右鍵按一下您要修改的快照集原則，然後選取 [**編輯**]。
+
+    ![快照集原則右鍵功能表](../media/azure-netapp-files/snapshot-policy-right-click-menu.png) 
+
+3.  在出現的 [快照集原則] 視窗中進行變更，然後按一下 [**儲存**]。 
+
+### <a name="delete-a-snapshot-policy"></a>刪除快照集原則 
+
+您可以刪除不再需要保留的快照集原則。   
+
+1.  從 [NetApp 帳戶] 視圖中，按一下 [**快照集原則**]。
+
+2.  以滑鼠右鍵按一下您想要修改的快照集原則，然後選取 [**刪除**]。
+
+    ![快照集原則右鍵功能表](../media/azure-netapp-files/snapshot-policy-right-click-menu.png) 
+
+3.  按一下 **[是]** ，確認您想要刪除快照集原則。   
+
+    ![快照集原則刪除確認](../media/azure-netapp-files/snapshot-policy-delete-confirm.png) 
+
 ## <a name="restore-a-snapshot-to-a-new-volume"></a>將快照集還原至新磁碟區
 
 目前，您只能將快照集還原至新的磁碟區。 
-1. 從 [磁碟區] 刀鋒視窗移至 [管理快照集]**** 刀鋒視窗，以顯示快照集清單。 
-2. 選取要還原的快照集。  
-3. 以滑鼠右鍵按一下快照集名稱，然後從功能表選項中選取 [還原至新磁碟區]****。  
+1. 從 [磁片區] 分頁選取 [**快照**集]，以顯示快照清單。 
+2. 在要還原的快照集上按一下滑鼠右鍵，然後從功能表選項中選取 [**還原至新的磁片**區]。  
 
     ![將快照集還原至新磁碟區](../media/azure-netapp-files/azure-netapp-files-snapshot-restore-to-new-volume.png)
 
-4. 在 [新增磁碟區] 視窗中，提供新磁碟區的資訊：  
+3. 在 [建立磁片區] 視窗中，提供新磁片區的資訊：  
     * **檔案名**   
         為您要建立的磁碟區指定名稱。  
         
         名稱在資源群組內必須是唯一的。 長度至少必須有三個字元。  可以使用任何英數字元。
 
-    * **檔案路徑**     
-        指定要用來建立新磁碟區匯出路徑的檔案路徑。 匯出路徑會用來掛接和存取磁碟區。   
-        
-        掛接目標是 NFS 服務 IP 位址的端點。 這是自動產生的。   
-        
-        檔案路徑名稱只能包含字母、數字和連字號 ("-")。 長度必須介於 16 到 40 個字元之間。 
-
     * **配額**  
-        指定配置給磁碟區的邏輯儲存體大小。  
+        指定您要配置給磁片區的邏輯儲存體數量。  
 
-        [可用配額] 欄位會顯示所選容量集區中可用來建立新磁碟區的未使用空間量。 新磁碟區的大小不可超過可用配額。
+    ![還原到新的磁片區](../media/azure-netapp-files/snapshot-restore-new-volume.png) 
 
-    *   **虛擬網路**  
-        指定您要從中存取磁碟區的 Azure 虛擬網路 (Vnet)。  
-        您指定的 Vnet 必須有委派給 Azure NetApp Files 的子網路。 Azure NetApp Files 服務只能從相同的 Vnet 存取，或透過 Vnet 對等互連從與磁碟區位於相同區域的 Vnet 存取。 您可以透過 Express Route 從內部部署網路存取磁片區。 
-
-    * **子網路**  
-        指定要用於磁碟區的子網路。  
-        您指定的子網路必須委派給 Azure NetApp Files 服務。 您可以透過選取子網路欄位下的 [新建]**** 來建立新的子網路。  
-   <!--
-    ![Restored new volume](../media/azure-netapp-files/azure-netapp-files-snapshot-new-volume.png) 
-   -->
-
-5. 按一下 [確定]。   
+4. 按一下 [**檢查 + 建立**]。  按一下 [建立]。   
+    新的磁片區會使用快照集所使用的相同通訊協定。   
     快照集還原到的新磁碟區會出現在 [磁碟區] 刀鋒視窗中。
 
 ## <a name="next-steps"></a>後續步驟
 
-[了解 Azure NetApp Files 的儲存體階層](azure-netapp-files-understand-storage-hierarchy.md)
+* [了解 Azure NetApp Files 的儲存體階層](azure-netapp-files-understand-storage-hierarchy.md)
+* [Azure NetApp Files 的資源限制](azure-netapp-files-resource-limits.md)

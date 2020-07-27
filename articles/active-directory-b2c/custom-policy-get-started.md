@@ -12,12 +12,12 @@ ms.date: 02/28/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 65ff0ab03abdbd3b403d37700dc8df4fa5eee73a
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: cb3bb363b1d6be72fe8941cad509b4c3525cfa15
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87116596"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87169424"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中開始使用自訂原則
 
@@ -87,7 +87,7 @@ Azure AD B2C 會要求註冊兩個用來以本機帳戶註冊和登入使用者�
 
 接下來，藉由新增範圍來公開 API：
 
-1. 在 [管理] 底下，選取 [公開 API]。
+1. 在左側功能表的 [**管理**] 底下，選取 [**公開 API**]。
 1. 依序選取 [新增範圍]、[儲存並繼續]，接受預設的應用程式識別碼 URI。
 1. 輸入下列值，以建立允許在 Azure AD B2C 租用戶中執行自訂原則的範圍：
     * **範圍名稱**：`user_impersonation`
@@ -110,13 +110,13 @@ Azure AD B2C 會要求註冊兩個用來以本機帳戶註冊和登入使用者�
 
 接下來，指定應將應用程式視為公用用戶端：
 
-1. 在 [管理] 底下，選取 [驗證]。
+1. 在左側功能表的 [管理]下，選取 [驗證]。
 1. 在 [進階設定] 下，啟用 [將應用程式視為公用用戶端] (選取 [是])。 確定已在應用程式資訊清單中設定 **"allowPublicClient": true**。 
 1. 選取 [儲存]。
 
 現在，將權限授與稍早在 *IdentityExperienceFramework* 註冊中公開的 API 範圍：
 
-1. 在 [管理] 之下選取 [API 權限]。
+1. 在左側功能表的 [**管理**] 底下，選取 [ **API 許可權**]。
 1. 在 [已設定的權限] 底下，選取 [新增權限]。
 1. 選取 [我的 API] 索引標籤，然後選取 [IdentityExperienceFramework] 應用程式。
 1. 在 [權限] 下，選取稍早定義的 [user_impersonation] 範圍。

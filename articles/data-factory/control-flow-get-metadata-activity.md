@@ -10,13 +10,14 @@ ms.assetid: 1c46ed69-4049-44ec-9b46-e90e964a4a8e
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 04/15/2020
+ms.date: 07/24/2020
 ms.author: jingwang
-ms.openlocfilehash: a59d9291d1eaa4aa87d40914679e39c9cbf29cee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a5d203664520aebadefd16c19813d7957dd37fc4
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84112646"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171250"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>取得 Azure Data Factory 中的中繼資料活動
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -59,6 +60,7 @@ ms.locfileid: "84112646"
 - 針對 Azure Blob 儲存體， `lastModified` 會套用至容器和 Blob，但不適用於虛擬資料夾。
 - `lastModified`篩選目前適用于篩選子專案，而不是指定的資料夾/檔案本身。
 - 取得中繼資料活動不支援資料夾/檔案上的萬用字元篩選。
+- `structure``columnCount`從二進位、JSON 或 XML 檔案取得中繼資料時，不支援和。
 
 **關聯式資料庫**
 
@@ -73,7 +75,7 @@ ms.locfileid: "84112646"
 
 您可以在 [取得中繼資料作用欄位] 清單中指定下列元資料類型，以取得對應的資訊：
 
-| 中繼資料類型 | Description |
+| 中繼資料類型 | 描述 |
 |:--- |:--- |
 | itemName | 檔案或資料夾的名稱。 |
 | itemType | 檔案或資料夾的類型。 傳回的值為 `File` 或 `Folder` 。 |
@@ -92,7 +94,7 @@ ms.locfileid: "84112646"
 >[!NOTE]
 >當您從檔案存放區取得中繼資料，並設定 `modifiedDatetimeStart` 或時 `modifiedDatetimeEnd` ， `childItems` 在輸出中只會包含指定之路徑中的檔案，該檔案中的最後修改時間是在指定的範圍內。 中的不會包含子資料夾中的專案。
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>語法
 
 **取得中繼資料活動**
 
@@ -136,12 +138,12 @@ ms.locfileid: "84112646"
 
 目前，取得中繼資料活動可能會傳回下列類型的中繼資料資訊：
 
-屬性 | 說明 | 必要
+屬性 | 描述 | 必要
 -------- | ----------- | --------
-欄位清單 | 所需的中繼資料資訊類型。 如需所支援中繼資料的詳細資訊，請參閱本文的[中繼資料選項](#metadata-options)一節。 | Yes 
-資料集 | 要由「取得中繼資料」活動抓取其中繼資料的參考資料集。 如需所支援連接器的詳細資訊，請參閱[功能](#capabilities)一節。 如需資料集語法的詳細資訊，請參閱特定的連接器主題。 | Yes
-formatSettings | 適用于使用格式類型資料集時。 | No
-storeSettings | 適用于使用格式類型資料集時。 | No
+欄位清單 | 所需的中繼資料資訊類型。 如需所支援中繼資料的詳細資訊，請參閱本文的[中繼資料選項](#metadata-options)一節。 | 是 
+資料集 | 要由「取得中繼資料」活動抓取其中繼資料的參考資料集。 如需所支援連接器的詳細資訊，請參閱[功能](#capabilities)一節。 如需資料集語法的詳細資訊，請參閱特定的連接器主題。 | 是
+formatSettings | 適用于使用格式類型資料集時。 | 否
+storeSettings | 適用于使用格式類型資料集時。 | 否
 
 ## <a name="sample-output"></a>範例輸出
 

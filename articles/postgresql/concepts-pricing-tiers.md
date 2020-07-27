@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.openlocfilehash: caa5c0178cda563650928be40d02716868255fb1
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: b99e5f7d079e580ad8fcd30a311c24a55ef7fc5b
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121617"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171155"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>適用於 PostgreSQL 的 Azure 資料庫定價層 - 單一伺服器
 
@@ -85,9 +85,9 @@ ms.locfileid: "86121617"
 
 請記住，儲存體只能相應增加，而不能相應縮小。
 
-## <a name="backup"></a>備份
+## <a name="backup-storage"></a>備份儲存體
 
-服務會自動採用伺服器的備份。 您可以選取介於7到35天的保留期間。 一般用途和記憶體優化伺服器可以選擇使用異地多餘的儲存空間來進行備份。 若要深入瞭解備份，請參閱[概念文章](concepts-backup.md)。
+適用於 PostgreSQL 的 Azure 資料庫可提供高達 100% 的已佈建伺服器儲存體作為備份儲存體，且不須支付額外費用。 您所使用的任何備份儲存體若超過此數量，將以每月 GB 為單位收費。 例如，如果您布建的伺服器具有 250 GB 的儲存空間，您將有 250 GB 的額外儲存體可供伺服器備份免費使用。 超過 250 GB 的備份儲存體會依[定價模式](https://azure.microsoft.com/pricing/details/postgresql/)收費。 若要瞭解影響備份存放裝置使用量、監視和控制備份儲存體成本的因素，您可以參閱[備份檔案](concepts-backup.md)。
 
 ## <a name="scale-resources"></a>調整資源
 

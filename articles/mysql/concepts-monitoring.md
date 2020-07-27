@@ -6,11 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 06/25/2020
-ms.openlocfilehash: 803437cc45fce9ab850682cf4725c0bf0d21bed6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e9bb4a6c0f37ceaf1e9fc6c28f08b98bb4449e65
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85414108"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171292"
 ---
 # <a name="monitoring-in-azure-database-for-mysql"></a>在適用於 MySQL 的 Azure 資料庫中監視
 監視伺服器的相關資料，可協助您疑難排解並最佳化您的工作負載。 適用於 MySQL 的 Azure 資料庫提供多種計量，可讓您深入了解您伺服器的行為。
@@ -21,7 +22,7 @@ ms.locfileid: "85414108"
 ### <a name="list-of-metrics"></a>計量清單
 這些計量可供適用於 MySQL 的 Azure 資料庫使用：
 
-|計量|計量顯示名稱|單位|Description|
+|計量|計量顯示名稱|單位|描述|
 |---|---|---|---|
 |cpu_percent|CPU 百分比|百分比|使用中的 CPU 百分比。|
 |memory_percent|記憶體百分比|百分比|使用中記憶體的百分比。|
@@ -32,12 +33,12 @@ ms.locfileid: "85414108"
 |serverlog_storage_usage|使用的伺服器記錄儲存體|位元組|使用中的伺服器記錄儲存體數量。|
 |serverlog_storage_limit|伺服器記錄儲存體限制|位元組|此伺服器的伺服器記錄儲存體上限。|
 |storage_limit|儲存體限制|位元組|此伺服器的儲存體上限。|
-|active_connections|作用中的連線|Count|伺服器的使用中連線數量。|
-|connections_failed|失敗的連線|Count|伺服器的失敗連線數量。|
+|active_connections|作用中的連線|計數|伺服器的使用中連線數量。|
+|connections_failed|失敗的連線|計數|伺服器的失敗連線數量。|
 |seconds_behind_master|複寫延遲 (秒)|Count|複本伺服器與主要伺服器相較下延遲的秒數。|
 |network_bytes_egress|Network Out|位元組|跨作用中連線的網路輸出。|
 |network_bytes_ingress|Network In|位元組|跨作用中連線的網路輸入。|
-|backup_storage_used|已使用的備份儲存體|位元組|已使用的備份儲存體數量。|
+|backup_storage_used|已使用的備份儲存體|位元組|已使用的備份儲存體數量。 此標準代表根據為伺服器設定的備份保留期限，保留的所有完整資料庫備份、差異備份和記錄備份所耗用的儲存體總和。 備份的頻率是服務管理的，並且會在[概念一文](concepts-backup.md)中說明。 針對異地多餘儲存體，備份儲存體的使用量會與本機冗余儲存體的兩倍相同。|
 
 ## <a name="server-logs"></a>伺服器記錄
 您可以在伺服器上啟用慢速查詢和審核記錄。 您也可以透過 Azure 監視器記錄、事件中樞和儲存體帳戶中的 Azure 診斷記錄來取得這些記錄。 若要深入瞭解記錄，請造訪 [audit logs](concepts-audit-logs.md)和[緩慢查詢記錄](concepts-server-logs.md)文章。

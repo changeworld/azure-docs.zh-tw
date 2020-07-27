@@ -25,6 +25,11 @@
       href: extension-resource-types.md
     - name: 資源SQL Server 執行個體限制
       href: resources-without-resource-group-limit.md
+    - name: 安全性
+      items:
+        - name: Azure 原則的安全性控制
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
 - name: 如何
   items:
     - name: 移動 - 資源群組/訂用帳戶

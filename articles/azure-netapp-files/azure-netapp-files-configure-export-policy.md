@@ -7,21 +7,25 @@ ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: how-to
-ms.date: 10/18/2019
-ms.openlocfilehash: e59648ee76b6715029c690329cbf8f4f1eee7243
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/24/2020
+ms.openlocfilehash: 6d990b94210383ba4b30569693f4471f43306ed2
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483647"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87169813"
 ---
 # <a name="configure-export-policy-for-an-nfs-volume"></a>設定 NFS 磁碟區的匯出原則
 
-您可以選擇性地設定匯出原則，以控制 Azure NetApp Files 磁碟區的存取權。 Azure NetApp Files 匯出原則僅支援 NFS 磁片區。  同時支援 NFSv3 和 NFSv4。 
+您可以設定匯出原則來控制對 Azure NetApp Files 磁片區的存取。 Azure NetApp Files 匯出原則支援使用 NFS 通訊協定的磁片區（NFSv3 和 NFSv 4.1）和雙重通訊協定（NFSv3 和 SMB）。 
+
+您最多可以建立五個匯出原則規則。
 
 ## <a name="steps"></a>步驟 
 
-1.  按一下 [Azure NetApp Files] 流覽窗格中的 [**匯出原則**]。 
+1.  從 [磁片區] 頁面中，選取您要設定匯出原則的磁片區，然後按一下 [**匯出原則**]。 
+
+    您也可以在建立磁片區期間設定匯出原則。
 
 2.  指定下列欄位的資訊以建立匯出原則規則：   
     *  **指數**   
@@ -39,7 +43,11 @@ ms.locfileid: "85483647"
         * 讀取和寫入
         * 唯讀
 
-    ![匯出原則](../media/azure-netapp-files/azure-netapp-files-export-policy.png) 
+    * **根存取**  
+        指定帳戶是否 `root` 可以存取磁片區。  根據預設，[根存取] 設定為 [**開啟**]，且 `root` 帳戶具有磁片區的存取權。
+
+        ![匯出原則](../media/azure-netapp-files/azure-netapp-files-export-policy.png) 
+
 
 
 ## <a name="next-steps"></a>後續步驟 

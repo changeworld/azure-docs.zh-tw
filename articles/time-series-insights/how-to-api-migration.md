@@ -8,45 +8,45 @@ ms.author: shresha
 manager: dpalled
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 07/22/2020
+ms.date: 07/23/2020
 ms.custom: shresha
-ms.openlocfilehash: 6cd06c31b56ce89a13af9bae8c77dc73efd69ef7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a5721748f023ea5f098b71d8d43dbda53721c54d
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87097293"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171769"
 ---
 # <a name="migrating-to-new-azure-time-series-insights-gen2-api-versions"></a>遷移至新的 Azure 時間序列深入解析 Gen2 API 版本
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 如果您已在公開預覽（2020年7月16日之前）建立 Azure 時間序列深入解析 Gen2 環境，請遵循本文中所述的步驟，更新 TSI 環境以使用新的正式運作版 Api。
 
-新的 API 版本為 `2020-07-31` ，並使用更新的[時間序列運算式語法](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)。 
+新的 API 版本為 `2020-07-31` ，並使用更新的[時間序列運算式語法](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)。
 
 使用者必須遷移其環境的[時間序列模型變數](./concepts-variables.md)、儲存的查詢、Power BI 查詢，以及任何對 API 端點進行呼叫的自訂工具。 如果您有任何關於遷移程式的問題或疑慮，請透過 Azure 入口網站提交支援票證，並提及這份檔。
 
 > [!IMPORTANT]
-> 預覽 API 版本 `2018-11-01-preview` 將繼續支援到2020年10月31日為止。 請先完成此遷移的所有適用步驟，然後再避免服務中斷。 
+> 預覽 API 版本 `2018-11-01-preview` 將繼續支援到2020年10月31日為止。 請先完成此遷移的所有適用步驟，然後再避免服務中斷。
 
 ## <a name="migrate-time-series-model-and-saved-queries"></a>遷移時間序列模型和已儲存的查詢
 
-為了協助使用者遷移其[時間序列模型變數](./concepts-variables.md)和已儲存的查詢，有一個可透過[Azure 時間序列深入解析 Explorer](https://insights.timeseries.azure.com)取得的內建工具。 流覽至您想要遷移的環境，並遵循下列步驟。 **您可以完成部分的遷移，稍後再回來完成，不過，您無法還原任何更新。** 
+為了協助使用者遷移其[時間序列模型變數](./concepts-variables.md)和已儲存的查詢，有一個可透過[Azure 時間序列深入解析 Explorer](https://insights.timeseries.azure.com)取得的內建工具。 流覽至您想要遷移的環境，並遵循下列步驟。 **您可以完成部分的遷移，稍後再回來完成，不過，您無法還原任何更新。**
 
 > [!NOTE]
 > 您必須是環境的參與者，才能對時間序列模型和已儲存的查詢進行更新。 如果您不是參與者，將只能遷移您個人儲存的查詢。 請先參閱[環境存取原則](./concepts-access-policies.md)和您的存取層級，再繼續進行。
 
-1. Explorer 會提示您更新您的時間序列模型變數與儲存的查詢所使用的語法。 
-   
+1. Explorer 會提示您更新您的時間序列模型變數與儲存的查詢所使用的語法。
+
     [![提示](media/api-migration/ux-prompt.png)](media/v2-update-overview/overview-one.png#lightbox)
-    
-    如果您不小心關閉通知，它可以在通知面板中找到。 
+
+    如果您不小心關閉通知，它可以在通知面板中找到。
 
 1. 按一下 [**顯示更新**] 以開啟 [遷移] 工具。
-    
-1. 按一下 [**下載類型**]。 由於遷移會覆寫您目前的類型來改變變數語法，因此您將需要儲存目前類型的複本。 當類型已下載時，此工具會通知您。 
-   
+
+1. 按一下 [**下載類型**]。 由於遷移會覆寫您目前的類型來改變變數語法，因此您將需要儲存目前類型的複本。 當類型已下載時，此工具會通知您。
+
     [![下載類型](media/api-migration/ux-migration-tool.png)](media/v2-update-overview/overview-one.png#lightbox)
 
 1. 按一下 [**更新變數**]。 當變數已更新時，此工具將會通知您。
@@ -56,35 +56,34 @@ ms.locfileid: "87097293"
 
     [![更新變數](media/api-migration/ux-migration-tool-downloaded-types.png)](media/v2-update-overview/overview-one.png#lightbox)
 
-2. 按一下 [**更新已儲存的查詢**]。 當變數已更新時，此工具將會通知您。
-   
+1. 按一下 [**更新已儲存的查詢**]。 當變數已更新時，此工具將會通知您。
+
     [![更新已儲存的查詢](media/api-migration/ux-migration-tool-updated-variables.png)](media/v2-update-overview/overview-one.png#lightbox)
 
-3. 按一下 [完成] 。
+1. 按一下 [完成] 。
 
     [![已完成遷移](media/api-migration/ux-migration-tool-updated-saved-queries.png)](media/v2-update-overview/overview-one.png#lightbox)
 
-
-藉由繪製一些新建立的變數和已儲存的查詢，來審查您更新的環境。 如果您在製作圖表時看到任何非預期的行為，請使用 Explorer 中的意見反應工具，將意見反應傳送給我們。 
+藉由繪製一些新建立的變數和已儲存的查詢，來審查您更新的環境。 如果您在製作圖表時看到任何非預期的行為，請使用 Explorer 中的意見反應工具，將意見反應傳送給我們。
 
 ## <a name="migrate-power-bi-queries"></a>遷移 Power BI 查詢
 
-如果您已使用 Power BI 連接器產生查詢，則會使用預覽 API 版本和舊的時間序列運算式語法來呼叫 Azure 時間序列深入解析。 這些查詢會繼續成功地抓取資料，直到預覽 API 淘汰為止。 
+如果您已使用 Power BI 連接器產生查詢，則會使用預覽 API 版本和舊的時間序列運算式語法來呼叫 Azure 時間序列深入解析。 這些查詢會繼續成功地抓取資料，直到預覽 API 淘汰為止。
 
-若要將查詢更新為使用新的 API 版本和新的時間序列運算式語法，必須從 Explorer 重新產生查詢。 閱讀更多有關如何[使用 Power BI 連接器建立查詢的](./how-to-connect-power-bi.md)資訊。 
+若要將查詢更新為使用新的 API 版本和新的時間序列運算式語法，必須從 Explorer 重新產生查詢。 閱讀更多有關如何[使用 Power BI 連接器建立查詢的](./how-to-connect-power-bi.md)資訊。
 
 > [!NOTE]
-> 您必須使用2020年7月版本的 Power BI Desktop。 如果不是，您可能會看到[不正確查詢裝載版本錯誤](./how-to-diagnose-troubleshoot.md#problem-power-bi-connector-shows-unable-to-connect)。 
+> 您必須使用2020年7月版本的 Power BI Desktop。 如果不是，您可能會看到[不正確查詢裝載版本錯誤](./how-to-diagnose-troubleshoot.md#problem-power-bi-connector-shows-unable-to-connect)。
 
 ## <a name="migrate-custom-applications"></a>遷移自訂應用程式
 
-如果您的自訂應用程式正在對下列 REST 端點進行呼叫，則在 URI 中將 API 版本更新為時就已足夠 `2020-07-31` ： 
+如果您的自訂應用程式正在對下列 REST 端點進行呼叫，則在 URI 中將 API 版本更新為時就已足夠 `2020-07-31` ：
 
 - 時間序列模型 API (機器翻譯)
   - 模型設定 Api
-    - [獲取](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/modelsettings/get)
+    - [Get](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/modelsettings/get)
     - [更新](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/modelsettings/update)
-  - 執行個體 API 
+  - 執行個體 API
     - [所有批次作業](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/executebatch)
     - [清單](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/list)
     - [搜尋](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/search)
@@ -96,8 +95,7 @@ ms.locfileid: "87097293"
     - [Delete、Get 作業](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch)
     - [清單](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/list)
 
-
-針對下列 REST 端點，您必須將 URI 中的 API 版本更新為， `2020-07-31` 並確定所有出現的屬性都 `tsx` 使用更新的[時間序列運算式語法](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)。 
+針對下列 REST 端點，您必須將 URI 中的 API 版本更新為， `2020-07-31` 並確定所有出現的屬性都 `tsx` 使用更新的[時間序列運算式語法](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)。
 
 - 類型 Api
   - [Put 作業](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch#typesbatchput)
@@ -106,12 +104,12 @@ ms.locfileid: "87097293"
   - [GetSeries](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getseries)
   - [GetAggregateSeries](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#aggregateseries)
 
-
 ### <a name="examples"></a>範例
 
 #### <a name="typesbatchput"></a>TypesBatchPut
 
-舊的要求主體（由使用 `2018-11-01-preview` ）： 
+舊的要求主體（由使用 `2018-11-01-preview` ）：
+
 ```JSON
 {
   "put": [
@@ -139,6 +137,7 @@ ms.locfileid: "87097293"
 ```
 
 已更新要求主體（由使用 `2020-07-31` ）：
+
 ```JSON
 {
   "put": [
@@ -169,7 +168,8 @@ ms.locfileid: "87097293"
 
 #### <a name="getevents"></a>GetEvents
 
-舊的要求主體（由使用 `2018-11-01-preview` ）： 
+舊的要求主體（由使用 `2018-11-01-preview` ）：
+
 ```JSON
 {
   "getEvents": {
@@ -195,6 +195,7 @@ ms.locfileid: "87097293"
 ```
 
 已更新要求主體（由使用 `2020-07-31` ）：
+
 ```JSON
 {
   "getEvents": {
@@ -219,10 +220,12 @@ ms.locfileid: "87097293"
 }
 ```
 
-或者， `filter` 也可以是 `($event['Value'].Double != null) OR ($event['Status'].String = 'Good')` 。 
+或者， `filter` 也可以是 `($event['Value'].Double != null) OR ($event['Status'].String = 'Good')` 。
 
 #### <a name="getseries"></a>GetSeries
-舊的要求主體（由使用 `2018-11-01-preview` ）： 
+
+舊的要求主體（由使用 `2018-11-01-preview` ）：
+
 ```JSON
 {
   "getSeries": {
@@ -252,6 +255,7 @@ ms.locfileid: "87097293"
 ```
 
 已更新要求主體（由使用 `2020-07-31` ）：
+
 ```JSON
 {
   "getSeries": {
@@ -280,10 +284,12 @@ ms.locfileid: "87097293"
 }
 ```
 
-或者， `value` 也可以是 `$event['Bar-Pressure-Offset'].Double` 。 如果未指定任何資料類型，則資料類型一律會假設為 Double。 括弧標記法必須用來將特殊字元（）換用 `-` 。 
+或者， `value` 也可以是 `$event['Bar-Pressure-Offset'].Double` 。 如果未指定任何資料類型，則資料類型一律會假設為 Double。 括弧標記法必須用來將特殊字元（）換用 `-` 。
 
 #### <a name="getaggregateseries"></a>GetAggregateSeries
-舊的要求主體（由使用 `2018-11-01-preview` ）： 
+
+舊的要求主體（由使用 `2018-11-01-preview` ）：
+
 ```JSON
 {
   "aggregateSeries": {
@@ -314,6 +320,7 @@ ms.locfileid: "87097293"
 ```
 
 已更新要求主體（由使用 `2020-07-31` ）：
+
 ```JSON
   "aggregateSeries": {
     "timeSeriesId": [

@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: deli, logicappspm
 ms.topic: conceptual
-ms.date: 06/19/2020
-ms.openlocfilehash: 0ba95969d8bb6987d2e3685f937170f97e1af68f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 07/23/2020
+ms.openlocfilehash: cccc45f182f3ae826440df8bc163080b82226c9f
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078698"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87172089"
 ---
 # <a name="block-connections-created-by-connectors-in-azure-logic-apps"></a>封鎖 Azure Logic Apps 中連接器所建立的連接
 
@@ -35,8 +35,8 @@ ms.locfileid: "87078698"
 
 1. 尋找您要封鎖之連接器的參考頁面。
 
-   例如，如果您想要封鎖 Instagram 連接器，請移至此頁面： 
-   
+   例如，如果您想要封鎖 Instagram 連接器（已被取代），請移至此頁面：
+
    `https://docs.microsoft.com/connectors/instagram/`
 
 1. 從頁面的 URL 複製並儲存結尾處的連接器參考識別碼，而不含正斜線（ `/` ），例如 `instagram` 。
@@ -123,11 +123,11 @@ ms.locfileid: "87078698"
 
    ![原則定義屬性](./media/block-connections-connectors/policy-definition-create-connections-1.png)
 
-   | 屬性 | 必要 | 值 | 說明 |
+   | 屬性 | 必要 | 值 | 描述 |
    |----------|----------|-------|-------------|
    | **定義位置** | 是 | <*Azure-subscription-name*> | 要用於原則定義的 Azure 訂用帳戶 <p><p>1. 若要尋找您的訂用帳戶，請選取省略號（**...**）按鈕。 <br>2. 從 [**訂**用帳戶] 清單中，尋找並選取您的訂用帳戶。 <br>3. 當您完成時，選取 [**選取**]。 |
    | **名稱** | 是 | <*原則-定義-名稱*> | 要用於原則定義的名稱 |
-   | **描述** | 否 | <*原則-定義-名稱*> | 原則定義的描述 |
+   | **說明** | 否 | <*原則-定義-名稱*> | 原則定義的描述 |
    | **類別** | 是 | **邏輯應用程式** | 原則定義的現有分類或新類別的名稱 |
    | **原則強制執行** | 是 | **已啟用** | 此設定指定當您儲存工作時，是否要啟用或停用原則定義。 |
    ||||
@@ -150,7 +150,7 @@ ms.locfileid: "87078698"
     }
     ```
 
-   | 屬性 | 值 | 說明 |
+   | 屬性 | 值 | 描述 |
    |----------|-------|-------------|
    | `mode` | `All` | 決定原則所評估之資源類型的模式。 <p><p>此案例會將設定 `mode` 為 `All` ，這會將原則套用至 Azure 資源群組、訂用帳戶和所有資源類型。 <p><p>如需詳細資訊，請參閱[原則定義結構模式](../governance/policy/concepts/definition-structure.md#mode)。 |
    | `if` | `{condition-to-evaluate}` | 判斷何時強制執行原則規則的條件 <p><p>在此案例中，會 `{condition-to-evaluate}` 判斷 `api.id` 中的值是否 `Microsoft.Web/connections/api.id` 符合 `*managedApis/{connector-name}` （指定萬用字元（*）值）。 <p><p>如需詳細資訊，請參閱[原則定義結構-原則規則](../governance/policy/concepts/definition-structure.md#policy-rule)。 |
@@ -244,11 +244,11 @@ ms.locfileid: "87078698"
 
    ![原則定義屬性](./media/block-connections-connectors/policy-definition-using-connections-1.png)
 
-   | 屬性 | 必要 | 值 | 說明 |
+   | 屬性 | 必要 | 值 | 描述 |
    |----------|----------|-------|-------------|
    | **定義位置** | 是 | <*Azure-subscription-name*> | 要用於原則定義的 Azure 訂用帳戶 <p><p>1. 若要尋找您的訂用帳戶，請選取省略號（**...**）按鈕。 <br>2. 從 [**訂**用帳戶] 清單中，尋找並選取您的訂用帳戶。 <br>3. 當您完成時，選取 [**選取**]。 |
    | **名稱** | 是 | <*原則-定義-名稱*> | 要用於原則定義的名稱 |
-   | **描述** | 否 | <*原則-定義-名稱*> | 原則定義的描述 |
+   | **說明** | 否 | <*原則-定義-名稱*> | 原則定義的描述 |
    | **類別** | 是 | **邏輯應用程式** | 原則定義的現有分類或新類別的名稱 |
    | **原則強制執行** | 是 | **已啟用** | 此設定指定當您儲存工作時，是否要啟用或停用原則定義。 |
    ||||
@@ -271,7 +271,7 @@ ms.locfileid: "87078698"
     }
     ```
 
-   | 屬性 | 值 | 說明 |
+   | 屬性 | 值 | 描述 |
    |----------|-------|-------------|
    | `mode` | `All` | 決定原則所評估之資源類型的模式。 <p><p>此案例會將設定 `mode` 為 `All` ，這會將原則套用至 Azure 資源群組、訂用帳戶和所有資源類型。 <p><p>如需詳細資訊，請參閱[原則定義結構模式](../governance/policy/concepts/definition-structure.md#mode)。 |
    | `if` | `{condition-to-evaluate}` | 判斷何時強制執行原則規則的條件 <p><p>在此案例中，會 `{condition-to-evaluate}` 判斷的字串輸出是否 `[string(field('Microsoft.Logic/workflows/parameters'))]` 包含字串 `{connector-name}` 。 <p><p>如需詳細資訊，請參閱[原則定義結構-原則規則](../governance/policy/concepts/definition-structure.md#policy-rule)。 |
@@ -336,7 +336,7 @@ ms.locfileid: "87078698"
    | **原則定義** | 是 | 您想要指派和強制執行的原則定義名稱。 此範例會繼續進行範例 Instagram 原則「封鎖 Instagram 連接」。 <p><p>1. 在 [**原則定義**] 方塊旁，選取省略號（**...**）按鈕。 <br>2. 使用 [**類型**篩選] 或 [**搜尋**] 方塊，尋找並選取原則定義。 <br>3. 當您完成時，選取 [**選取**]。 |
    | **指派名稱** | 是 | 原則指派所要使用的名稱（如果與原則定義不同） |
    | **指派識別碼** | 是 | 自動產生的原則指派識別碼 |
-   | **描述** | 否 | 原則指派的描述 |
+   | **說明** | 否 | 原則指派的描述 |
    | **原則強制執行** | 是 | 啟用或停用原則指派的設定 |
    | **指派者** | 否 | 建立和套用原則指派的人員名稱 |
    ||||
@@ -364,7 +364,7 @@ ms.locfileid: "87078698"
 此訊息包含下列資訊：
 
 | 描述 | 內容 |
-|---|---|
+|-------------|---------|
 | 失敗的原因 | `"Resource 'instagram' was disallowed by policy."` |
 | 指派名稱 | `"Block Instagram connections"` |
 | 指派識別碼 | `"/subscriptions/xxxxxXXXXXxxxxxXXXXXxxxxxXXXXX/resourceGroups/MyLogicApp-RG/providers/Microsoft.Authorization/policyAssignments/4231890fc3bd4352acb0b673"` |

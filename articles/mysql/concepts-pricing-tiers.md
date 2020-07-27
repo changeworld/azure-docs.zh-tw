@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.openlocfilehash: b9cf070e1431c04a7e899a3b8875c8db796608d3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 163f440c9f98a1d53793fddab2590f7345944fda
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119883"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171008"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>適用於 MySQL 的 Azure 資料庫定價層
 
@@ -83,9 +83,9 @@ ms.locfileid: "86119883"
 
 請記住，儲存體只能相應增加，而不能相應縮小。
 
-## <a name="backup"></a>備份
+## <a name="backup-storage"></a>備份儲存體 
 
-服務會自動採用伺服器的備份。 您可以選取介於7到35天的保留期間。 一般用途和記憶體優化伺服器可以選擇使用異地多餘的儲存空間來進行備份。 若要深入瞭解備份，請參閱[概念文章](concepts-backup.md)。
+適用於 MySQL 的 Azure 資料庫可提供高達 100% 的已佈建伺服器儲存體作為備份儲存體，且不須支付額外費用。 您所使用的任何備份儲存體若超過此數量，將以每月 GB 為單位收費。 例如，如果您布建的伺服器具有 250 GB 的儲存空間，您將有 250 GB 的額外儲存體可供伺服器備份免費使用。 超過 250 GB 的備份儲存體會依[定價模式](https://azure.microsoft.com/pricing/details/mysql/)收費。 若要瞭解影響備份存放裝置使用量、監視和控制備份儲存體成本的因素，您可以參閱[備份檔案](concepts-backup.md)。
 
 ## <a name="scale-resources"></a>調整資源
 

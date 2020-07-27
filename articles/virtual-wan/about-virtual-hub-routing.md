@@ -8,16 +8,17 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: 4949d5f2621957d6830625fe798601db4472a75d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 8c52b2141d2f29303939facf89d4a59fb3d333fd
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87064920"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171870"
 ---
 # <a name="about-virtual-hub-routing"></a>關於虛擬中樞路由
 
-「虛擬中樞」中的路由功能是由路由器所提供，用來管理使用邊界閘道協定（BGP）的閘道之間的所有路由。 虛擬中樞可以包含多個閘道，例如站對站 VPN 閘道、ExpressRoute 閘道、點對站閘道、Azure 防火牆。 此路由器也會在連線到虛擬中樞的虛擬網路之間提供傳輸連線能力，並可支援高達 50 Gbps 的匯總輸送量。 這些路由功能適用于標準虛擬 WAN 客戶。
+「虛擬中樞」中的路由功能是由路由器所提供，用來管理使用邊界閘道協定（BGP）的閘道之間的所有路由。 虛擬中樞可以包含多個閘道，例如站對站 VPN 閘道、ExpressRoute 閘道、點對站閘道、Azure 防火牆。 此路由器也會在連線到虛擬中樞的虛擬網路之間提供傳輸連線能力，並可支援高達 50 Gbps 的匯總輸送量。 這些路由功能適用于標準虛擬 WAN 客戶。 
 
 若要設定路由，請參閱[如何設定虛擬中樞路由](how-to-virtual-hub-routing.md)。
 
@@ -80,7 +81,16 @@ ms.locfileid: "87064920"
 
 * **虛擬中樞內存在既有路由的基本虛擬 WAN 客戶**：若要使用新的路由表功能，請等候至 8 月 3 日這週會在 Azure 中推出。 如果您在 Azure 入口網站中樞的 [路由] 區段中已存在路由，則需要先將這些路由刪除，然後將基本虛擬 WAN **升級**為標準虛擬 WAN。 請參閱[將虛擬 WAN 從基本升級至標準](upgrade-virtual-wan.md)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="virtual-wan-routing-considerations"></a><a name="considerations"></a>虛擬 WAN 路由考慮
+
+設定虛擬 WAN 路由時，請考慮下列事項：
+
+* 所有分支連線（點對站、站對站和 ExpressRoute）都必須與預設路由表建立關聯。 如此一來，所有分支都將學習相同的首碼。
+* 所有分支連接都必須將其路由傳播到相同的一組路由表。 例如，如果您決定分支應該傳播至預設路由表，則此設定在所有分支中應該都是一致的。 如此一來，與預設路由表相關聯的所有連線都將能夠連接到所有分支。
+* 目前不支援透過 Azure 防火牆進行分支到分支。
+* 在多個區域中使用 Azure 防火牆時，所有輪輻虛擬網路都必須與相同的路由表相關聯。 例如，Vnet 的子集會通過 Azure 防火牆，而其他 Vnet 會略過相同虛擬中樞中的 Azure 防火牆。
+
+## <a name="next-steps"></a>後續步驟
 
 若要設定路由，請參閱[如何設定虛擬中樞路由](how-to-virtual-hub-routing.md)。
 

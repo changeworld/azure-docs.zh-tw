@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/10/2020
-ms.openlocfilehash: fc41b76fa14d464b2e4ddcca7e98997011a51cd4
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: f6a042dfee000dd6341368b46db32fe36060cc72
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86276629"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171583"
 ---
 # <a name="monitor-and-tune-azure-database-for-postgresql---single-server"></a>監視和調整「適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器」
 監視伺服器的相關資料，可協助您疑難排解並最佳化您的工作負載。 「適用於 PostgreSQL 的 Azure 資料庫」提供各種監視選項，可讓您深入了解伺服器的行為。
@@ -26,18 +26,18 @@ ms.locfileid: "86276629"
 |---|---|---|---|
 |cpu_percent|CPU 百分比|百分比|使用中的 CPU 百分比。|
 |memory_percent|記憶體百分比|百分比|使用中記憶體的百分比。|
-|io_consumption_percent|IO 百分比|百分比|使用中 IO 的百分比。  (不適用於基本層伺服器。 ) |
+|io_consumption_percent|IO 百分比|百分比|使用中 IO 的百分比。 （不適用於基本層伺服器）。|
 |storage_percent|儲存體百分比|百分比|使用的儲存體佔伺服器最大值的百分比。|
 |storage_used|已使用儲存體|位元組|使用中的儲存體數量。 此服務所使用的儲存體可能包括資料庫檔案、交易記錄和伺服器記錄。|
 |storage_limit|儲存體限制|位元組|此伺服器的儲存體上限。|
 |serverlog_storage_percent|伺服器記錄儲存體百分比|百分比|使用的伺服器記錄儲存體佔伺服器記錄儲存體上限的百分比。|
 |serverlog_storage_usage|使用的伺服器記錄儲存體|位元組|使用中的伺服器記錄儲存體數量。|
 |serverlog_storage_limit|伺服器記錄儲存體限制|位元組|此伺服器的伺服器記錄儲存體上限。|
-|active_connections|作用中的連線|Count|伺服器的使用中連線數量。|
+|active_connections|作用中的連線|計數|伺服器的使用中連線數量。|
 |connections_failed|失敗的連線|Count|失敗的已建立連接數目。|
 |network_bytes_egress|Network Out|位元組|跨作用中連線的網路輸出。|
 |network_bytes_ingress|Network In|位元組|跨作用中連線的網路輸入。|
-|backup_storage_used|已使用的備份儲存體|位元組|已使用的備份儲存體數量。|
+|backup_storage_used|已使用的備份儲存體|位元組|已使用的備份儲存體數量。 此標準代表根據為伺服器設定的備份保留期限，保留的所有完整資料庫備份、差異備份和記錄備份所耗用的儲存體總和。 備份的頻率是服務管理的，並且會在[概念一文](concepts-backup.md)中說明。 針對異地多餘儲存體，備份儲存體的使用量會與本機冗余儲存體的兩倍相同。|
 |pg_replica_log_delay_in_bytes|複本之間的最大延隔時間|位元組|主要和最延遲複本之間的延遲（以位元組為單位）。 此計量僅適用於主要伺服器。|
 |pg_replica_log_delay_in_seconds|複本延隔時間|秒|上次重新執行交易之後的時間。 此度量僅適用于複本伺服器。|
 
@@ -67,7 +67,7 @@ ms.locfileid: "86276629"
 3. 選取 [ **+ 新增服務健康情況警示**]，並填寫欄位。
 4. 填寫必要欄位。 
 5. 選擇 [**事件種類**]，選取 [**預定的維護**] 或 [全**選**]
-6. 在 [**動作群組**] 中，定義您想要如何接收警示 (取得電子郵件、觸發邏輯應用程式等等 )   
+6. 在 [**動作群組**] 中，定義您想要如何接收警示（取得電子郵件、觸發邏輯應用程式等）。  
 7. 確定 [在建立時啟用規則] 設定為 [是]。
 8. 選取 [**建立警示規則**] 以完成警示
 

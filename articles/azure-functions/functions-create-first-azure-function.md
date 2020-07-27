@@ -5,19 +5,25 @@ ms.assetid: 96cf87b9-8db6-41a8-863a-abb828e3d06d
 ms.topic: how-to
 ms.date: 03/26/2020
 ms.custom: mvc, devcenter, cc996988-fb4f-47
-ms.openlocfilehash: 030af8a289daaf03d17f8402e8d603e893657853
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cd4ddc5b6b685813740aed63cc6f446bc66e8169
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83123599"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87170087"
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>在 Azure 入口網站中建立您的第一個函式
 
 Azure Functions 可讓您在無伺服器環境中執行程式碼，而不需要先建立虛擬機器 (VM) 或發佈 Web 應用程式。 在本文中，您將瞭解如何使用 Azure Functions 來建立 Azure 入口網站中的 "hello world" HTTP 觸發程式函數。
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+我們建議您在[本機開發您](functions-develop-local.md)的函式，併發布至 Azure 中的函數應用程式。  
+使用下列其中一個連結來開始使用您選擇的本機開發環境和語言：
 
-如果您是 C# 開發人員，請考慮[在 Visual Studio 2019 中建立第一個函式](functions-create-your-first-function-visual-studio.md)，而不是在入口網站中建立。 
+| Visual Studio Code | 終端機/命令提示字元 | Visual Studio |
+| --- | --- | --- |
+|  &bull;&nbsp;[開始使用 C#](./functions-create-first-function-vs-code.md?pivots=programming-language-csharp)<br/>&bull;&nbsp;[開始使用 JAVA](./functions-create-first-function-vs-code.md?pivots=programming-language-java)<br/>&bull;&nbsp;[開始使用 JavaScript](./functions-create-first-function-vs-code.md?pivots=programming-language-javascript)<br/>&bull;&nbsp;[開始使用 PowerShell](./functions-create-first-function-vs-code.md?pivots=programming-language-powershell)<br/>&bull;&nbsp;[開始使用 Python](./functions-create-first-function-vs-code.md?pivots=programming-language-python) |&bull;&nbsp;[開始使用 C#](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-csharp)<br/>&bull;&nbsp;[開始使用 JAVA](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java)<br/>&bull;&nbsp;[開始使用 JavaScript](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-javascript)<br/>&bull;&nbsp;[開始使用 PowerShell](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-powershell)<br/>&bull;&nbsp;[開始使用 Python](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-python) | [開始使用 C#](functions-create-your-first-function-visual-studio.md) |
+
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
 
@@ -29,7 +35,7 @@ Azure Functions 可讓您在無伺服器環境中執行程式碼，而不需要�
 
 [!INCLUDE [Create function app Azure portal](../../includes/functions-create-function-app-portal.md)]
 
-接下來，您要在新的函式應用程式中建立函式。
+接下來，在新的函數應用程式中建立函式。
 
 ## <a name="create-an-http-trigger-function"></a><a name="create-function"></a>建立 HTTP 觸發程序函式
 
