@@ -49,8 +49,13 @@
       href: connect-virtual-network-vnet-isolated-environment-overview.md
     - name: 商務持續性和災害復原
       href: business-continuity-disaster-recovery-guidance.md
-    - name: 安全性基準
-      href: security-baseline.md
+    - name: 安全性
+      items:
+        - name: Azure 原則的安全性控制
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
+        - name: 安全性基準
+          href: security-baseline.md
 - name: 操作指南
   items:
     - name: 開發

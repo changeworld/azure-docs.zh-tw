@@ -12,12 +12,12 @@ ms.date: 04/10/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b7164aa71495100d7be4f1c0f6ef6de90644831b
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: 0f3ecb918aa1f830edeafbe57b365441e1e534f4
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87115972"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87169323"
 ---
 # <a name="tutorial-register-a-web-application-in-azure-active-directory-b2c"></a>教學課程：在 Azure Active Directory B2C 中註冊 Web 應用程式
 
@@ -63,7 +63,7 @@ ms.locfileid: "87115972"
 
 應用程式註冊完成後，請啟用隱含授與流程：
 
-1. 在 [管理] 底下，選取 [驗證]。
+1. 在左側功能表的 [管理]下，選取 [驗證]。
 1. 在 [隱含授與] 底下，同時選取 [存取權杖] 和 [識別碼權杖] 核取方塊。
 1. 選取 [儲存]。
 
@@ -96,7 +96,7 @@ ms.locfileid: "87115972"
 #### <a name="app-registrations"></a>[應用程式註冊](#tab/app-reg-ga/)
 
 1. 在 [Azure AD B2C - 應用程式註冊] 頁面中，選取您建立的應用程式，例如 *webapp1*。
-1. 在 [管理] 下，選取 [憑證和密碼]。
+1. 在左側功能表的 [管理] 下，選取 [驗證和密碼]。
 1. 選取 [新增用戶端密碼]。
 1. 在 [描述] 方塊中，輸入用戶端密碼的描述。 例如，*clientsecret1*。
 1. 在 [到期] 下，選取密碼有效的持續時間，然後選取 [新增]。

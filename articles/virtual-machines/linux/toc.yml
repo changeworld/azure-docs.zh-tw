@@ -345,7 +345,7 @@
         - name: 共用磁碟
           href: disks-shared.md
         - name: 暫時性 OS 磁碟
-          href: ephemeral-os-disks.md
+          href: ../ephemeral-os-disks.md
     - name: 網路功能
       href: ../network-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: 擴展集
@@ -714,7 +714,7 @@
       items:
         - name: 維修通知
           items:
-            - name: 總覽
+            - name: 概觀
               href: ../maintenance-notifications.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: CLI
               href: ../maintenance-notifications-cli.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json

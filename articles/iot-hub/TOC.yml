@@ -422,7 +422,7 @@
     - name: Azure CLI
       href: /cli/azure/azure-cli-reference-for-IoT
     - name: Azure PowerShell
-      href: /powershell/module/az.iothub#iot
+      href: /powershell/module/az.iothub#iothub
     - name: .NET (裝置)
       href: /dotnet/api/microsoft.azure.devices.client
     - name: .NET (服務)

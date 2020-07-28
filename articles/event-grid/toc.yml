@@ -8,6 +8,8 @@
       href: overview.md
     - name: 比較訊息服務
       href: compare-messaging-services.md
+    - name: 版本資訊
+      href: whats-new.md
 - name: 快速入門
   expanded: true
   items:
@@ -236,7 +238,7 @@
           href: configure-private-endpoints.md
         - name: 設定 IP 防火牆 (預覽)
           href: configure-firewall.md
-        - name: 使用 AAD 保護 WebHook
+        - name: 使用 AAD 保護 Webhook
           href: secure-webhook-delivery.md
         - name: 使用受控識別進行事件傳遞
           href: managed-service-identity.md

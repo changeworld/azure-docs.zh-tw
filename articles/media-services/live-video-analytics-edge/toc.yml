@@ -64,6 +64,8 @@
       href: manage-recording-policy-how-to.md
     - name: 使用您選擇的 AI 分析即時影片
       href: analyze-with-ai-your-choice-how-to.md
+    - name: 使用入口網站叫用直接方法
+      href: use-azure-portal-to-invoke-direct-methods.md
     - name: 疑難排解
       href: troubleshoot-how-to.md
 - name: 參考

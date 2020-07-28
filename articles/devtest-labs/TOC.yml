@@ -291,7 +291,7 @@
     - name: PowerShell - 範例 Az.DevTestLabs2 模組
       href: 'https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Modules/Library'
     - name: REST API
-      href: 'https://docs.microsoft.com/rest/api/dtl/'
+      href: /rest/api/dtl/
     - name: Resource Manager 範本
       href: /azure/templates/microsoft.devtestlab/allversions
 - name: 資源
@@ -301,7 +301,7 @@
     - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/devtest-lab/'
     - name: Microsoft 問與答頁面
-      href: 'https://docs.microsoft.com/answers/topics/azure-devtestlabs.html'
+      href: /answers/topics/azure-devtestlabs.html
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-devtest-labs'
     - name: 影片

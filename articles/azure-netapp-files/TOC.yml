@@ -71,6 +71,8 @@
       href: azure-netapp-files-manage-snapshots.md
     - name: 調整容量集區或磁碟區的大小
       href: azure-netapp-files-resize-capacity-pools-or-volumes.md
+    - name: 動態變更磁碟區的服務等級
+      href: dynamic-change-volume-service-level.md
     - name: 開發
       items:
         - name: REST API

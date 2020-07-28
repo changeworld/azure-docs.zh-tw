@@ -95,14 +95,6 @@
           href: upgrade-basicInternal-standard.md
         - name: 升級內部 Load Balancer - 需要輸出連線
           href: upgrade-InternalBasic-To-PublicStandard.md
-    - name: 設定輸出規則
-      items:
-        - name: 入口網站
-          href: configure-load-balancer-outbound-portal.md
-        - name: Azure CLI
-          href: configure-load-balancer-outbound-cli.md
-        - name: Azure PowerShell
-          href: configure-load-balancer-outbound-powershell.md
     - name: 以 IPv6 建立公用 Load Balancer
       items:
         - name: Azure CLI
