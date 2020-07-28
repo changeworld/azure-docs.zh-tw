@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 04/24/2020
+ms.date: 07/17/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: c37c5a125bce23f8f2a813b5df4516323c2a2c12
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 2ef1fab7a6f32f45ee3047a24610085a2133a339
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83343441"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87102517"
 ---
 ## <a name="benefits-of-managed-disks"></a>受控磁碟的好處
 
@@ -45,22 +45,30 @@ ms.locfileid: "83343441"
 
 ### <a name="upload-your-vhd"></a>上傳您的 vhd
 
- 直接上傳可讓您輕鬆地將 vhd 轉送至 Azure 受控磁碟。 之前，您必須遵循涉入更深的程序，其中包含將您的資料暫存在儲存體帳戶中。 現在，步驟比較少。 您可以更輕鬆地將內部部署 VM 上傳至 Azure、上傳至大型受控磁碟，以及簡化備份和還原程序。 它也可讓您直接將資料上傳至受控磁碟，而不需將其附加至 VM，藉此降低成本。 您可使用直接上傳來上傳大小高達 32 TiB 的 vhd。
+直接上傳可讓您輕鬆地將 vhd 轉送至 Azure 受控磁碟。 之前，您必須遵循涉入更深的程序，其中包含將您的資料暫存在儲存體帳戶中。 現在，步驟比較少。 您可以更輕鬆地將內部部署 VM 上傳至 Azure、上傳至大型受控磁碟，以及簡化備份和還原程序。 它也可讓您直接將資料上傳至受控磁碟，而不需將其附加至 VM，藉此降低成本。 您可使用直接上傳來上傳大小高達 32 TiB 的 vhd。
 
- 若要了解如何將您的 vhd 轉送至 Azure，請參閱 [CLI](../articles/virtual-machines/linux/disks-upload-vhd-to-managed-disk-cli.md) 或 [PowerShell](../articles/virtual-machines/windows/disks-upload-vhd-to-managed-disk-powershell.md)文章。
+若要了解如何將您的 vhd 轉送至 Azure，請參閱 [CLI](../articles/virtual-machines/linux/disks-upload-vhd-to-managed-disk-cli.md) 或 [PowerShell](../articles/virtual-machines/windows/disks-upload-vhd-to-managed-disk-powershell.md)文章。
 
-## <a name="encryption"></a>加密
+## <a name="security"></a>安全性
+
+### <a name="private-links"></a>Private Link
+
+受控磁碟支援使用 Private Link 來匯入或匯出網路內部的受控磁碟。 Private Link 可讓您為未連結的受控磁碟和快照集產生時間繫結的共用存取簽章 (SAS) URI，以供您用來將資料匯出至其他區域進行區域擴充、災害復原和鑑識分析。 您也可以使用 SAS URI，直接將 VHD 從內部部署環境上傳至空白磁碟。 現在您可以利用 [Private Link](../articles/private-link/private-link-overview.md) 來限制受控磁碟的匯出和匯入，使其只能在您的 Azure 虛擬網路內進行。 Private Link 可讓您確保資料只會在安全的 Microsoft 骨幹網路內移動。
+
+若要了解如何啟用 Private Link 以便匯入或匯出受控磁碟，請參閱 [CLI](../articles/virtual-machines/linux/disks-export-import-private-links-cli.md) 或[入口網站](../articles/virtual-machines/disks-enable-private-links-for-import-export-portal.md)文章。
+
+### <a name="encryption"></a>加密
 
 受控磁片提供兩種不同的加密。 第一種是「伺服器端加密」(SSE)，這會由儲存體服務執行。 第二種是 Azure 磁碟加密 (ADE)，您可以在您 VM 的作業系統和資料磁碟上啟用它。
 
-### <a name="server-side-encryption"></a>伺服器端加密
+#### <a name="server-side-encryption"></a>伺服器端加密
 
-[Azure 伺服器端加密](../articles/virtual-machines/windows/disk-encryption.md)提供待用加密，並保護資料安全，以符合組織安全性和合規性承諾。 在所有受控磁碟可供使用的區域中，所有受控磁碟、快照集和映像依預設都會啟用伺服器端加密。 (另一方面，「儲存體服務加密」並不會加密暫存磁碟；請參閱[磁碟角色：暫存磁碟](#temporary-disk))。
+伺服器端加密提供待用加密並保護資料安全，以符合組織的安全性和合規性承諾。 在所有受控磁碟可供使用的區域中，所有受控磁碟、快照集和映像依預設都會啟用伺服器端加密。 (另一方面，暫存磁碟不會由伺服器端加密來加密，除非您在主機上啟用加密；請參閱[磁碟角色：暫存磁碟](#temporary-disk))。
 
-您可以允許 Azure 為您管理金鑰 (這些屬於平台管理的金鑰)，您也可以自行管理金鑰 (這些屬於客戶管理的金鑰)。 如需詳細資訊，請造訪[受控磁碟常見問題頁面](../articles/virtual-machines/windows/faq-for-disks.md#managed-disks-and-storage-service-encryption)。
+您可以允許 Azure 為您管理金鑰 (這些屬於平台管理的金鑰)，您也可以自行管理金鑰 (這些屬於客戶管理的金鑰)。 如需詳細資訊，請造訪 [Azure 磁碟儲存體的伺服器端加密](../articles/virtual-machines/windows/disk-encryption.md)一文。
 
 
-### <a name="azure-disk-encryption"></a>Azure 磁碟加密
+#### <a name="azure-disk-encryption"></a>Azure 磁碟加密
 
 Azure 磁碟加密可讓您加密由 IaaS 虛擬機器所使用的作業系統和資料磁碟。 此加密包含受控磁碟。 對於 Windows，磁碟機是使用業界標準的 BitLocker 加密技術來加密。 對於 Linux，磁碟是使用 DM-Crypt 技術來加密。 加密程序會與 Azure Key Vault 整合，可讓您控制和管理磁碟加密金鑰。 如需詳細資訊，請參閱[適用於 Linux VM 的 Azure 磁碟加密](../articles/virtual-machines/linux/disk-encryption-overview.md)或[適用於 Windows VM 的 Azure 磁碟加密](../articles/virtual-machines/windows/disk-encryption-overview.md)。
 
@@ -82,9 +90,9 @@ Azure 中有三個主要磁碟角色：資料磁碟、OS 磁碟和暫存磁碟�
 
 ### <a name="temporary-disk"></a>暫存磁碟
 
-每個虛擬機器皆包含一個暫存磁碟，此非受控磁碟。 暫存磁碟為應用程式和處理程序提供短期的儲存空間，且僅供用來儲存分頁檔之類的資料。 暫存磁碟上的資料可能會在[維護事件](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime)期間或當您[重新佈署虛擬機器](../articles/virtual-machines/troubleshooting/redeploy-to-new-node-windows.md?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json)時遺失。 在 VM 的成功標準重新開機期間，暫存磁碟上的資料將保留。  
+每個虛擬機器皆包含一個暫存磁碟，此非受控磁碟。 暫存磁碟為應用程式和處理程序提供短期的儲存空間，且僅供用來儲存分頁檔之類的資料。 暫存磁碟上的資料可能會在[維護事件](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime)期間或當您[重新佈署 VM](../articles/virtual-machines/troubleshooting/redeploy-to-new-node-windows.md?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json) 時遺失。 在 VM 的成功標準重新開機期間，暫存磁碟上的資料將保留。  
 
-在 Azure Linux VM 上，暫存磁碟通常是 /dev/sdb，而 Windows VM 上的暫存磁碟則預設為 D:。 「伺服器端加密」不會加密暫存磁碟 (請參閱[加密](#encryption))。
+在 Azure Linux VM 上，暫存磁碟通常是 /dev/sdb，而 Windows VM 上的暫存磁碟則預設為 D:。 除非您在主機上啟用加密，否則暫存磁碟不會由伺服器端加密來加密。
 
 ## <a name="managed-disk-snapshots"></a>受控磁碟快照集
 

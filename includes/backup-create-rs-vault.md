@@ -9,16 +9,16 @@ ms.topic: include
 ms.date: 10/18/2018
 ms.author: dacurwin
 ms.custom: include file
-ms.openlocfilehash: c0f717e26534151585a51badf4bb1fe1ba58eb00
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
-ms.translationtype: MT
+ms.openlocfilehash: 8586d90631e8d38fa020ff9dab3f626aaedb2760
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970515"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87003713"
 ---
 ## <a name="create-a-recovery-services-vault"></a>建立復原服務保存庫
 
-復原服務保存庫是一種管理實體，可儲存一段時間內建立的復原點，並提供介面來執行備份相關作業。 其中包括採取隨選備份、執行還原，以及建立備份原則。
+復原服務保存庫是一個管理實體，可儲存一段時間內所建立的復原點，並提供介面以供執行備份相關作業。 這些作業包括製作隨選備份、執行還原，以及建立備份原則。
 
 若要建立復原服務保存庫，請依照下列步驟。
 
@@ -52,13 +52,17 @@ ms.locfileid: "85970515"
       >
       >
 
-1. 當您準備好建立復原服務保存庫時，選取 [建立]  。
+1. 提供值之後，選取 [檢閱 + 建立]。
+
+    ![建立復原服務保存庫](./media/backup-create-rs-vault/review-and-create.png)
+
+1. 當您準備好建立復原服務保存庫時，選取 [建立]。
 
     ![建立復原服務保存庫](./media/backup-create-rs-vault/click-create-button.png)
 
-    建立復原服務保存庫可能需要一些時間。 請監視入口網站右上角 [通知]  區域中的狀態通知。 保存庫建立之後，就可以在 [復原服務保存庫] 的清單中看到。 如果您沒有看到保存庫，請選取 [重新整理]  。
+    建立復原服務保存庫可能需要一些時間。 請監視入口網站右上角 [通知] 區域中的狀態通知。 保存庫建立之後，就可以在 [復原服務保存庫] 的清單中看到。 如果您沒有看到保存庫，請選取 [重新整理]。
 
      ![重新整理備份保存庫的清單](./media/backup-create-rs-vault/refresh-button.png)
 
 >[!IMPORTANT]
-> 我們強烈建議您在保存庫中設定備份之前，先檢查**儲存體複寫類型**和**安全性設定**的預設值。 如需詳細資訊，請參閱[設定儲存體冗余](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-storage-redundancy)一節。
+> 強烈建議您先檢閱 [儲存體複寫類型] 和 [安全性設定] 的預設設定，再於保存庫中設定備份。 如需詳細資訊，請參閱[設定儲存體備援](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-storage-redundancy)一節。
