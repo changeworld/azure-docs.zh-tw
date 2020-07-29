@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/07/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: c5ea31217bd3088ec123281b36f8578b08ea25b2
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: f0a706cc51027bc503da9ee3bc637216e9e52853
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 07/24/2020
-ms.locfileid: "87136134"
+ms.locfileid: "87171374"
 ---
 ## <a name="restrictions"></a>限制
 
@@ -50,12 +50,12 @@ ms.locfileid: "87136134"
 1. 建立新的虛擬機器，選取適當的區域和支援的 VM 大小。
 1. 視需要在 [**基本**] 分頁上填入其他值，然後繼續進行 [**磁片**] 分頁。
 
-    :::image type="content" source="media/virtual-machines-disks-encryption-at-host-portal/disks-encryption-at-host-basic-blade.png" alt-text="範例文字":::
+    :::image type="content" source="media/virtual-machines-disks-encryption-at-host-portal/disks-encryption-at-host-basic-blade.png" alt-text="已反白顯示虛擬機器建立基本功能分頁、區域和 V M 大小的螢幕擷取畫面。":::
 
 1. 在 [**磁片**] 分頁上，針對 [**在主機加密** **] 選取 [是]** 。
 1. 依您的需要進行其餘的選擇。
 
-    :::image type="content" source="media/virtual-machines-disks-encryption-at-host-portal/disks-encryption-at-host-disk-blade.png" alt-text="範例文字":::
+    :::image type="content" source="media/virtual-machines-disks-encryption-at-host-portal/disks-encryption-at-host-disk-blade.png" alt-text="[虛擬機器建立磁片] 分頁的螢幕擷取畫面，已反白顯示 [在主機上加密]。":::
 
 1. 完成 VM 部署程式，並選擇符合您環境的選項。
 

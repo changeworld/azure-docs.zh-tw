@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/06/2020
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: c305a2513a5ace241fe697766b851cd2851e8b78
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 029883ea1ac85bdd1ea256caaa711d6537c06a76
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536018"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287886"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>您的商業市集權益
 
@@ -41,7 +41,7 @@ Marketplace Rewards 設計是為了在特定成長階段為您提供支援，先
 開始使用很簡單：
 
 1. 在 Microsoft AppSource 或 Azure Marketplace 中發佈供應項目。
-2. 前往合作夥伴中心的[Marketplace](https://partner.microsoft.com/en-us/dashboard/mpn/program/commercialmarketplace)報酬，然後選取 [**註冊 marketplace 獎勵方案**]。
+2. 前往合作夥伴中心的[Marketplace](https://partner.microsoft.com/dashboard/mpn/program/commercialmarketplace)報酬，然後選取 [**註冊 marketplace 獎勵方案**]。
 3. 若要啟用銷售和行銷優勢，請指派公司行銷連絡人。 此連絡人會收到您作用中 Marketplace Rewards 的後續相關通知。
 4. 若要新增或更新您的行銷連絡人資訊，請移至 Marketplace Rewards 頁面上 [銷售和行銷權益] 索引標籤的頂端，然後選取 [新增]、[更新] 或 [變更]。  接下來，執行下列作業：
 

@@ -4,15 +4,15 @@ description: M 系列 Vm 的規格。
 author: ayshakeen
 ms.service: virtual-machines
 ms.subservice: sizes
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: jushiman
-ms.openlocfilehash: e9b227dc6812b62b525991fc84b045c9610df63a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f3876ad98bd937c4e0fcbd55ca2a2c0a5b497542
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87028714"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288370"
 ---
 # <a name="m-series"></a>M 系列
 
@@ -32,22 +32,22 @@ ACU：160-180
 
 寫入加速器：[支援](./windows/how-to-enable-write-accelerator.md)
 
-| 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大快取和暫存儲存體輸送量： IOPS/MBps （GiB 中的快取大小） | 最大取消快取的磁碟輸送量：IOPS/MBps | 最大 Nic/預期的網路頻寬（Mbps） |
-|---|---|---|---|---|---|---|---|
-| Standard_M8ms                    | 8   | 218.75 | 256   | 8  | 10000/100 （793）     | 5000/125   | 4/2000  |
-| Standard_M16ms                   | 16  | 437.5  | 512   | 16 | 20000/200 （1587）    | 10000/250  | 8/4000  |
-| Standard_M32ts                   | 32  | 192    | 1024  | 32 | 40000/400 （3174）    | 20000/500  | 8/8000  |
-| Standard_M32ls                   | 32  | 256    | 1024  | 32 | 40000/400 （3174）    | 20000/500  | 8/8000  |
-| Standard_M32ms                   | 32  | 875    | 1024  | 32 | 40000/400 （3174）    | 20000/500  | 8/8000  |
-| Standard_M64s <sup>1</sup>       | 64  | 1024   | 2048  | 64 | 80000/800 （6348）    | 40000/1000 | 8/16000 |
-| Standard_M64ls <sup>1</sup>      | 64  | 512    | 2048  | 64 | 80000/800 （6348）    | 40000/1000 | 8/16000 |
-| Standard_M64ms <sup>1</sup>      | 64  | 1792   | 2048  | 64 | 80000/800 （6348）    | 40000/1000 | 8/16000 |
-| Standard_M128s <sup>1</sup>    | 128 | 2048   | 4096  | 64 | 160000/1600 （12696） | 80000/2000 | 8/30000 |
-| Standard_M128ms <sup>1、2</sup>   | 128 | 3892   | 4096  | 64 | 160000/1600 （12696） | 80000/2000 | 8/30000 |
-| Standard_M64 <sup>1</sup>        | 64  | 1024   | 7168  | 64 | 80000/800 （1228）    | 40000/1000 | 8/16000 |
-| Standard_M64m <sup>1</sup>       | 64  | 1792   | 7168  | 64 | 80000/800 （1228）    | 40000/1000 | 8/16000 |
-| Standard_M128 <sup>1</sup>     | 128 | 2048   | 14336 | 64 | 250000/1600 （2456）  | 80000/2000 | 8/32000 |
-| Standard_M128m <sup>1</sup>    | 128 | 3892   | 14336 | 64 | 250000/1600 （2456）  | 80000/2000 | 8/32000 |
+| 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大快取和暫存儲存體輸送量： IOPS/MBps （GiB 中的快取大小） | 最大取消快取的磁碟輸送量：IOPS/MBps | 最大 NIC|預期的網路頻寬（Mbps） |
+|---|---|---|---|---|---|---|---|---|
+| Standard_M8ms                    | 8   | 218.75 | 256   | 8  | 10000/100 （793）     | 5000/125   | 4|2000  |
+| Standard_M16ms                   | 16  | 437.5  | 512   | 16 | 20000/200 （1587）    | 10000/250  | 8|4000  |
+| Standard_M32ts                   | 32  | 192    | 1024  | 32 | 40000/400 （3174）    | 20000/500  | 8|8000  |
+| Standard_M32ls                   | 32  | 256    | 1024  | 32 | 40000/400 （3174）    | 20000/500  | 8|8000  |
+| Standard_M32ms                   | 32  | 875    | 1024  | 32 | 40000/400 （3174）    | 20000/500  | 8|8000  |
+| Standard_M64s <sup>1</sup>       | 64  | 1024   | 2048  | 64 | 80000/800 （6348）    | 40000/1000 | 8|16000 |
+| Standard_M64ls <sup>1</sup>      | 64  | 512    | 2048  | 64 | 80000/800 （6348）    | 40000/1000 | 8|16000 |
+| Standard_M64ms <sup>1</sup>      | 64  | 1792   | 2048  | 64 | 80000/800 （6348）    | 40000/1000 | 8|16000 |
+| Standard_M128s <sup>1</sup>    | 128 | 2048   | 4096  | 64 | 160000/1600 （12696） | 80000/2000 | 8|30000 |
+| Standard_M128ms <sup>1、2</sup>   | 128 | 3892   | 4096  | 64 | 160000/1600 （12696） | 80000/2000 | 8|30000 |
+| Standard_M64 <sup>1</sup>        | 64  | 1024   | 7168  | 64 | 80000/800 （1228）    | 40000/1000 | 8|16000 |
+| Standard_M64m <sup>1</sup>       | 64  | 1792   | 7168  | 64 | 80000/800 （1228）    | 40000/1000 | 8|16000 |
+| Standard_M128 <sup>1</sup>     | 128 | 2048   | 14336 | 64 | 250000/1600 （2456）  | 80000/2000 | 8|32000 |
+| Standard_M128m <sup>1</sup>    | 128 | 3892   | 14336 | 64 | 250000/1600 （2456）  | 80000/2000 | 8|32000 |
 
 <sup>1</sup> 64 以上的 vCPU 需要下列其中一個支援的客體作業系統： Windows Server 2016、UBUNTU 16.04 LTS、SLES 12 SP2 和 Red Hat Enterprise Linux、CentOS 7.3 或 Oracle Linux 7.3 with .lis 4.2.1。
 
@@ -55,7 +55,7 @@ ACU：160-180
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 
-## <a name="other-sizes"></a>其他大小
+## <a name="other-sizes-and-information"></a>其他大小和資訊
 
 - [一般用途](sizes-general.md)
 - [記憶體最佳化](sizes-memory.md)
@@ -63,6 +63,11 @@ ACU：160-180
 - [GPU 最佳化](sizes-gpu.md)
 - [高效能計算](sizes-hpc.md)
 - [前幾代](sizes-previous-gen.md)
+
+定價計算機：[定價計算機](https://azure.microsoft.com/pricing/calculator/)
+
+磁片類型的詳細資訊：[磁片類型](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types#ultra-ssd-preview/)
+
 
 ## <a name="next-steps"></a>後續步驟
 

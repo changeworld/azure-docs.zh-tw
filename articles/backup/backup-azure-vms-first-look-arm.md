@@ -3,12 +3,12 @@ title: 從 VM 設定備份 Azure VM
 description: 在本文中，您將瞭解如何使用 Azure 備份服務來備份單一 Azure VM 或多個 Azure Vm。
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: 580cb1ad5f611991212bc8cdb48c66339f14d8e8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 722c24ce87edc692156a86338521aa3b2f9c7562
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538882"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286706"
 ---
 # <a name="back-up-an-azure-vm-from-the-vm-settings"></a>從 VM 設定備份 Azure VM
 
@@ -17,14 +17,14 @@ ms.locfileid: "86538882"
 - 單一 Azure VM：本文中的指示會說明如何直接從 VM 設定來備份 Azure VM。
 - 多個 Azure Vm：您可以設定復原服務保存庫，並為多個 Azure Vm 設定備份。 針對此案例，請依照[本文](backup-azure-arm-vms-prepare.md)中的指示。
 
-## <a name="before-you-start"></a>開始之前
+## <a name="before-you-start"></a>在您開始使用 Intune 之前
 
 1. [了解](backup-architecture.md#how-does-azure-backup-work)備份的運作方式，以及[確認](backup-support-matrix.md#azure-vm-backup-support)支援需求。
 2. [取得 Azure VM 備份的概觀](backup-azure-vms-introduction.md)。
 
 ### <a name="azure-vm-agent-installation"></a>Azure VM 代理程式安裝
 
-為備份 Azure VM，Azure 備份會在執行於機器上的 VM 代理程式上安裝擴充功能。 如果您是從 Azure 市集映像建立 VM，則代理程式會執行。 在某些情況下，例如，您建立自訂的 VM，或是從內部部署遷移機器。 您可能需要手動安裝代理程式。
+為備份 Azure VM，Azure 備份會在執行於機器上的 VM 代理程式上安裝擴充功能。 如果您的 VM 是從 Azure Marketplace 映射建立的，代理程式將會執行。 在某些情況下，例如，您建立自訂的 VM，或是從內部部署遷移機器。 您可能需要手動安裝代理程式。
 
 - 如果您需要以手動方式安裝 VM 代理程式，請依照適用於 [Windows](../virtual-machines/extensions/agent-windows.md) 或 [Linux](../virtual-machines/extensions/agent-linux.md) VM 的指示。
 - 安裝代理程式之後，當您啟用備份時，Azure 備份就會將備份擴充功能安裝到代理程式。 Azure 備份會更新及修補擴充功能，無須使用者介入。
@@ -39,15 +39,15 @@ ms.locfileid: "86538882"
    - 如果您已經有保存庫，請按一下 [選取現有項目]****，然後選取保存庫。
    - 如果您沒有保存庫，請按一下 [新建]****。 指定保存庫名稱。 保存庫會建立在與 VM 相同的區域和資源群組中。 若您直接從 VM 設定啟用備份，則無法修改這些設定。
 
-   ![啟用備份精靈](./media/backup-azure-vms-first-look-arm/vm-menu-enable-backup-small.png)
+        ![啟用備份精靈](./media/backup-azure-vms-first-look-arm/vm-menu-enable-backup-small.png)
 
-6. 在 [選擇備份原則]**** 中，執行下列動作：
+6. 在 **[選擇備份原則**] 中，執行下列其中一項：
 
    - 保留預設原則。 此原則會每天一次地在指定時間備份 VM，並讓備份在保存庫中保留 30 天。
    - 如果您已有備份原則，請選取現有的原則。
    - 建立新的原則，並定義原則設定。  
 
-   ![選取備份原則](./media/backup-azure-vms-first-look-arm/set-backup-policy.png)
+       ![選取備份原則](./media/backup-azure-vms-first-look-arm/set-backup-policy.png)
 
 7. 按一下 [**啟用備份**]。 這會使備份原則與 VM 相關聯。
 

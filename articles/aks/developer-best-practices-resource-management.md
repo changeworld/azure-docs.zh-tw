@@ -7,12 +7,12 @@ author: zr-msft
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zarhoads
-ms.openlocfilehash: d3fab2515bb15cce35070de9326cd6afcc034b20
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9f5fcbda93e4a31b4d328bffe4689a47a4eb89ff
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517736"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281560"
 ---
 # <a name="best-practices-for-application-developers-to-manage-resources-in-azure-kubernetes-service-aks"></a>應用程式開發人員在 Azure Kubernetes Services (AKS) 中管理資源的最佳做法
 
@@ -35,7 +35,7 @@ ms.locfileid: "86517736"
     * 當 Kubernetes 排程器嘗試將 pod 放在節點上時，pod 要求會用來判斷哪一個節點有足夠的資源可供排程。
     * 未設定 pod 要求時，會將其預設為已定義的限制。
     * 請務必監視應用程式的效能，以調整這些要求。 如果提出不足的要求，您的應用程式可能會因為過度排程節點而收到效能降低的情況。 如果要求非常重要，您的應用程式可能會增加排程的難度。
-* **POD cpu/記憶體限制**是 pod 可以使用的 cpu 和記憶體數量上限。 這些限制可協助定義因資源不足而造成節點不穩定的情況時，應終止哪些 pod。 若未設定適當的限制，將會終止，直到資源壓力提升為止。
+* **POD cpu/記憶體限制**是 pod 可以使用的 cpu 和記憶體數量上限。 記憶體限制可協助定義因資源不足而發生節點不穩定的情況時，應終止哪些 pod。 若未設定適當的限制，將會終止，直到資源壓力提升為止。 Pod 不一定可以超過 CPU 限制一段時間，但不會針對超過 CPU 限制而終止 pod。 
     * Pod 限制可協助定義 pod 何時失去資源耗用量的控制權。 超過限制時，會將 pod 的優先順序設定為 [終止] 以維持節點健全狀況，並將對共用節點之 pod 的影響降至最低。
     * 未設定 pod 限制會預設為指定節點上最高的可用值。
     * 您設定的 Pod 限制不應高於節點所能支援的數量。 每個 AKS 節點都會保留一定數量的 CPU 和記憶體供核心 Kubernetes 元件使用。 您的應用程式可能會耗用太多節點上的資源，而使其他 Pod 無法成功執行。

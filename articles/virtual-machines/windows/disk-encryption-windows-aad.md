@@ -4,16 +4,16 @@ description: 本文提供啟用 Windows IaaS VM 適用的 Microsoft Azure 磁碟
 author: msmbaldwin
 ms.service: virtual-machines
 ms.subservice: security
-ms.topic: article
+ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8677fa2620c1edc646dcffe120938f03fd13a0e5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f3265e70159cd4c27f698d00d85dce7d4cb49b95
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82085616"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286150"
 ---
 # <a name="azure-disk-encryption-with-azure-ad-for-windows-vms-previous-release"></a>Windows Vm 的 Azure AD Azure 磁碟加密（舊版）
 
@@ -53,7 +53,7 @@ ms.locfileid: "82085616"
 
 針對透過 Marketplace 案例使用 Azure AD 用戶端識別碼的新 VM，以下資料表列出其 Resource Manager 範本參數︰
 
-| 參數 | 描述 | 
+| 參數 | 說明 | 
 | --- | --- |
 | adminUserName | 虛擬機器的系統管理使用者名稱。 |
 | adminPassword | 虛擬機器的系統管理使用者密碼。 |
@@ -162,7 +162,7 @@ ms.locfileid: "82085616"
 
 針對使用 Azure AD 用戶端識別碼的現有或執行中 VM，以下資料表列出其 Resource Manager 範本參數︰
 
-| 參數 | 描述 |
+| 參數 | 說明 |
 | --- | --- |
 | AADClientID | 具有權限可將密碼寫入金鑰保存庫之 Azure AD 應用程式的用戶端識別碼。 |
 | AADClientSecret | 具有權限可將密碼寫入金鑰保存庫之 Azure AD 應用程式的用戶端密碼。 |
