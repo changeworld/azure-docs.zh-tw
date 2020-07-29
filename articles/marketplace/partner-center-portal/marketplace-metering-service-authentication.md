@@ -5,12 +5,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/21/2020
-ms.openlocfilehash: e24dcdc2de94fe73f6bb83dcc03bbd1139503784
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: mingshen-ms
+ms.author: mingshen
+ms.openlocfilehash: 42a76a2cf583a57ae5b38fe051ee48d16d705dd2
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120750"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319961"
 ---
 # <a name="marketplace-metering-service-authentication-strategies"></a>Marketplace 計量服務驗證策略
 
@@ -50,21 +52,21 @@ Marketplace 計量服務支援兩種驗證策略：
 
 #### <a name="uri-parameter"></a>*URI 參數*
 
-|  **參數名稱** |  **必要**  |  **描述**          |
+|  **參數名稱** |  **必要**  |  **說明**          |
 |  ------------------ |--------------- | ------------------------  |
 |  `tenantId`         |   True         | 已註冊的 Azure AD 應用程式租用戶識別碼。   |
 | | | |
 
 #### <a name="request-header"></a>*要求標頭*
 
-|  **標頭名稱**    |  **必要**  |  **描述**          |
+|  **標頭名稱**    |  **必要**  |  **說明**          |
 |  ------------------ |--------------- | ------------------------  |
 |  `Content-Type`     |   True         | 與要求相關聯的內容類型。 預設值是 `application/x-www-form-urlencoded`。  |
 | | | |
 
 #### <a name="request-body"></a>*要求本文*
 
-|  **屬性名稱**  |  **必要**  |  **描述**          |
+|  **屬性名稱**  |  **必要**  |  **說明**          |
 |  ------------------ |--------------- | ------------------------  |
 |  `Grant_type`       |   True         | 授與類型。 使用 `client_credentials`。 |
 |  `Client_id`        |   True         | 與 Azure AD 應用程式相關聯的用戶端/應用程式識別碼。|

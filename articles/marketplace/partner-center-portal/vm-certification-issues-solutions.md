@@ -4,15 +4,15 @@ description: 本文說明 VM 映射的常見錯誤訊息。 它也會討論相�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: troubleshooting
-author: v-miegge
-ms.author: v-krmall
+author: iqshahmicrosoft
+ms.author: iqshah
 ms.date: 06/16/2020
-ms.openlocfilehash: e73ff612aa07016f69c717a74678d5d1923e87b8
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 594a47f397ca78476ed987ac0e06a3cacc79ec3b
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120648"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319893"
 ---
 # <a name="issues-and-solutions-during-virtual-machine-certification"></a>虛擬機器認證期間的問題和解決方案 
 
@@ -63,7 +63,7 @@ ms.locfileid: "86120648"
 
 布建問題可能包括下列失敗案例：
 
-|狀況|錯誤|原因|解決方案|
+|狀況|錯誤|原因|解決方法|
 |---|---|---|---|
 |1|不正確虛擬硬碟（VHD）|如果 VHD 頁尾中的指定 cookie 值不正確，VHD 將會被視為無效。|重新建立映射並提交要求。|
 |2|不正確 blob 類型|VM 布建失敗，因為使用的區塊是 blob 類型，而不是頁面類型。|重新建立映射並提交要求。|
@@ -94,7 +94,7 @@ Microsoft 認證工具組可協助您執行測試案例，並確認您的 VHD �
 
 下表列出工具組將會執行的 Linux 測試案例。 [描述] 中會指出測試驗證。
 
-|狀況|測試案例|描述|
+|狀況|測試案例|說明|
 |---|---|---|
 |1|Bash 歷程記錄|在您建立 VM 映射之前，應該先清除 Bash 歷程記錄檔案。|
 |2|Linux 代理程式版本|應該安裝 Azure Linux 代理程式2.2.41 或更新版本。|
@@ -122,7 +122,7 @@ Microsoft 認證工具組可協助您執行測試案例，並確認您的 VHD �
 
 下表列出工具組將會執行的 Windows 測試案例，以及測試驗證的描述：
 
-|狀況 |測試案例|描述|
+|狀況 |測試案例|說明|
 |---|---|---|---|
 |1|OS 架構|Azure 僅支援64位的作業系統。|
 |2|使用者帳戶相關性|應用程式執行不應與系統管理員帳戶相依。|
@@ -161,7 +161,7 @@ Microsoft 認證工具組可協助您執行測試案例，並確認您的 VHD �
 
 當 Vm 允許存取基礎作業系統時，請確定 VHD 大小夠大。 因為無法在沒有停機時間的情況下擴展磁片，所以請使用從 30 GB 到 50 GB 的磁片大小。
 
-|VHD 大小|實際佔用的大小|解決方案|
+|VHD 大小|實際佔用的大小|解決方法|
 |---|---|---|
 |>500 tib （TiB）|n/a|請洽詢支援小組以取得例外狀況核准。|
 |250-500 TiB|>200 gib （GiB）與 blob 大小的差異|請洽詢支援小組以取得例外狀況核准。|
@@ -261,7 +261,7 @@ Azure 上的所有 Vhd 都必須將虛擬大小調整為 1 mb 的倍數。 如�
     
 請參閱下表，以瞭解當您使用共用存取簽章（SAS） URL 下載 VM 映射時所發生的任何問題。
 
-|狀況|錯誤|原因|解決方案|
+|狀況|錯誤|原因|解決方法|
 |---|---|---|---|
 |1|找不到 Blob|VHD 可能會從指定的位置刪除或移動。|| 
 |2|使用中的 Blob|VHD 是由另一個內部進程所使用。|當您使用 SAS URL 進行下載時，VHD 應處於使用中狀態。|
@@ -304,7 +304,7 @@ Azure 上的所有 Vhd 都必須將虛擬大小調整為 1 mb 的倍數。 如�
 
 如需與資料磁片相關之錯誤的解決方案，請使用下表：
 
-|錯誤|原因|解決方案|
+|錯誤|原因|解決方法|
 |---|---|---|
 |`DataDisk- InvalidUrl:`|提交供應專案時，為邏輯單元編號（LUN）指定的號碼無效，可能會發生此錯誤。|確認資料磁片的 LUN 編號順序位於 [合作夥伴中心]。|
 |`DataDisk- NotFound:`|發生此錯誤的原因可能是資料磁片不在指定的 SAS URL。|確認資料磁片位於要求中指定的 SAS URL。|

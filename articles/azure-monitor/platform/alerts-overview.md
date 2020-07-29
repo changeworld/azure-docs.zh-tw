@@ -4,12 +4,12 @@ description: Azure 中的警示概觀。 警示、傳統警示和警示介面。
 ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 01/28/2018
-ms.openlocfilehash: 37980f3cebdee2754a9741a8a45ec6932e7e98ce
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e0741a23d7e5ece0898d83c53782afc353d9a7e5
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327118"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371595"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Microsoft Azure 中的警示概觀 
 
@@ -178,7 +178,7 @@ ms.locfileid: "87327118"
 
 ## <a name="role-based-access-control-rbac-for-your-alert-instances"></a>警示實例的角色型存取控制（RBAC）
 
-警示實例的耗用量和管理需要使用者具備[監視參與者](../../role-based-access-control/built-in-roles.md#monitoring-contributor)或[監視讀取](../../role-based-access-control/built-in-roles.md#monitoring-reader)者的內建 RBAC 角色。 在任何 Azure Resource Manager 範圍（從訂用帳戶層級到資源層級的細微指派）都支援這些角色。 例如，如果使用者僅有虛擬機器的「監視參與者」存取權 `ContosoVM1` ，該使用者就只能取用和管理在上產生的警示 `ContosoVM1` 。
+警示實例的耗用量和管理需要使用者具備[監視參與者](../../role-based-access-control/built-in-roles.md#monitoring-contributor)或[監視讀取](../../role-based-access-control/built-in-roles.md#monitoring-reader)者的 Azure 內建角色。 在任何 Azure Resource Manager 範圍（從訂用帳戶層級到資源層級的細微指派）都支援這些角色。 例如，如果使用者僅有虛擬機器的「監視參與者」存取權 `ContosoVM1` ，該使用者就只能取用和管理在上產生的警示 `ContosoVM1` 。
 
 ## <a name="manage-your-alert-instances-programmatically"></a>以程式設計方式管理您的警示實例
 
@@ -212,4 +212,3 @@ ms.locfileid: "87327118"
 - [在 Azure 中管理警示](https://aka.ms/managing-alert-instances)
 - [管理智慧群組](https://aka.ms/managing-smart-groups)
 - [深入瞭解 Azure 警示定價](https://azure.microsoft.com/pricing/details/monitor/)
-

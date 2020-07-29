@@ -8,18 +8,18 @@ ms.subservice: iomt
 ms.topic: conceptual
 ms.date: 07/16/2020
 ms.author: jasteppe
-ms.openlocfilehash: e74e3475256858955a5ab0dc99e7b858548e2485
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: eff1272318413da7855134b0a8a44dd0a0711a6c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87097473"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285572"
 ---
-# <a name="iot-connector-preview-troubleshooting-guide-and-how-to"></a>IoT 連接器（預覽）疑難排解指南和操作說明
+# <a name="iot-connector-preview-troubleshooting-guide"></a>IoT 連接器（預覽）疑難排解指南
 
-在本文中，您將瞭解如何針對常見的 IoT 連接器（預覽）錯誤訊息和條件進行疑難排解。
+本文提供針對常見 IoT 連接器（預覽）錯誤訊息和條件進行疑難排解的步驟。  
 
-您也將瞭解如何建立 IoT 連接器（預覽） JSON 對應的複本。
+您也將瞭解如何建立 IoT 連接器（預覽） JSON 對應檔案的複本，以在 Azure 入口網站之外進行編輯和封存。
 
 ## <a name="error-messages-and-fixes"></a>錯誤訊息和修正
 
@@ -59,11 +59,11 @@ ms.locfileid: "87097473"
 > [!NOTE]
 > 這個程式也可以用來複製/儲存「**設定 FHIR 對應**」 JSON 的內容。
 
-4. 選取 JSON 的內容並執行複製作業（例如：選取 Ctrl + c）。 
+4. 選取 JSON 的內容並進行複製作業（例如：選取 Ctrl + c）。 
 
    :::image type="content" source="media/iot-troubleshoot/map-files-select-device-json-with-box.png" alt-text="IoT 連接器" lightbox="media/iot-troubleshoot/map-files-select-device-json-with-box.png":::
 
-5. 執行貼上作業（例如：選取 Ctrl + v）至編輯器中的新檔案（例如： [Visual Studio Code]、[記事本]），然後使用 *. json 副檔名來儲存檔案。
+5. 執行貼上作業（例如：選取 Ctrl + v）至編輯器中的新檔案（例如： [Visual Studio Code]、[記事本]），並使用 *. json 副檔名儲存檔案。
 
 > [!TIP]
 > 如果您要開啟 IoT 連接器的[Azure 技術支援](https://azure.microsoft.com/support/create-ticket/)票證，請務必包含對應檔案的複本，以協助進行疑難排解程式。

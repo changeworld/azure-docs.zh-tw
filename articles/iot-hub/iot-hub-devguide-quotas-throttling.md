@@ -11,12 +11,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Operations'
 - 'Role: Technical Support'
-ms.openlocfilehash: 675391a92c991f80faadf8b75abc79dcb4cd19d7
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: bee22391664250888816dc2b4bbb93622cab7942
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322953"
+ms.locfileid: "87335557"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>參考 - IoT 中樞配額和節流
 
@@ -30,9 +30,9 @@ ms.locfileid: "87322953"
 
 層級也會決定「IoT 中樞」在所有作業上強制執行的節流限制。
 
-### <a name="iot-plug-and-play"></a>IoT 隨插即用
+## <a name="iot-plug-and-play"></a>IoT 隨插即用
 
-在公開預覽期間，IoT 隨插即用裝置會針對每個介面傳送個別的訊息，這可能會增加計入訊息配額的訊息數目。
+IoT 隨插即用裝置會為每個介面傳送至少一個遙測訊息，包括根，這可能會增加計入訊息配額的訊息數目。
 
 ## <a name="operation-throttles"></a>作業節流
 
