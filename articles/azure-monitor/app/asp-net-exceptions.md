@@ -3,24 +3,24 @@ title: 使用 Azure 應用程式 Insights 來診斷失敗和例外狀況
 description: 擷取從 ASP.NET 應用程式與所要求遙測的例外狀況。
 ms.topic: conceptual
 ms.date: 07/11/2019
-ms.openlocfilehash: 4d298b3b8541590387995898b0b9f067e8130c3d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c91ab4bcf8a0d2172c89fa04bd7a3b4999b2217e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517207"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321355"
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>使用 Application Insights 在 Web 應用程式中診斷例外狀況
-[Application Insights](../../azure-monitor/app/app-insights-overview.md) 會回報您即時 Web 應用程式中的例外狀況。 您可以在用戶端和伺服器端讓失敗的要求與例外狀況及其他事件相互關聯，以便快速地診斷原因。
+[Application Insights](./app-insights-overview.md) 會回報您即時 Web 應用程式中的例外狀況。 您可以在用戶端和伺服器端讓失敗的要求與例外狀況及其他事件相互關聯，以便快速地診斷原因。
 
 ## <a name="set-up-exception-reporting"></a>設定例外狀況報告
 * 讓伺服器應用程式回報例外狀況︰
-  * Azure Web 應用程式：新增 [Application Insights 擴充功能](../../azure-monitor/app/azure-web-apps.md)
-  * Azure VM 和 Azure 虛擬機器擴展集 IIS 裝載的應用程式：新增[應用程式監視擴充](../../azure-monitor/app/azure-vm-vmss-apps.md)功能
-  * 在應用程式程式碼中安裝 [Application Insights SDK](../../azure-monitor/app/asp-net.md)，或
-  * IIS Web 伺服器：執行 [Application Insights 代理程式](../../azure-monitor/app/monitor-performance-live-website-now.md)；或
+  * Azure Web 應用程式：新增 [Application Insights 擴充功能](./azure-web-apps.md)
+  * Azure VM 和 Azure 虛擬機器擴展集 IIS 裝載的應用程式：新增[應用程式監視擴充](./azure-vm-vmss-apps.md)功能
+  * 在應用程式程式碼中安裝 [Application Insights SDK](./asp-net.md)，或
+  * IIS Web 伺服器：執行 [Application Insights 代理程式](./monitor-performance-live-website-now.md)；或
   * JAVA web 應用程式：啟用[java 代理程式](./java-in-process-agent.md)
-* 在您的網頁中安裝 [JavaScript 程式碼片段](../../azure-monitor/app/javascript.md)來攔截瀏覽器例外狀況。
+* 在您的網頁中安裝 [JavaScript 程式碼片段](./javascript.md)來攔截瀏覽器例外狀況。
 * 在某些應用程式架構中或搭配某些設定時，您必須採取一些額外的步驟，才能攔截較多的例外狀況：
   * [Web 表單](#web-forms)
   * [MVC](#mvc)
@@ -70,29 +70,29 @@ Application Insights 隨附策劃的 APM 體驗，可協助您診斷受監視應
 
 您有幾種選項：
 
-* [TrackEvent()](../../azure-monitor/app/api-custom-events-metrics.md#trackevent) 通常用來監視使用模式，但它傳送的資料也會出現在診斷搜尋的 [自訂事件] 下。 事件具有名稱，並且可以包含字串屬性和數值度量，您可以對其[篩選診斷搜尋](../../azure-monitor/app/diagnostic-search.md)。
-* [TrackTrace()](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace) 可讓您傳送較長的資料，例如 POST 資訊。
+* [TrackEvent()](./api-custom-events-metrics.md#trackevent) 通常用來監視使用模式，但它傳送的資料也會出現在診斷搜尋的 [自訂事件] 下。 事件具有名稱，並且可以包含字串屬性和數值度量，您可以對其[篩選診斷搜尋](./diagnostic-search.md)。
+* [TrackTrace()](./api-custom-events-metrics.md#tracktrace) 可讓您傳送較長的資料，例如 POST 資訊。
 * [TrackException()](#exceptions) 會傳送堆疊追蹤。 [深入了解例外狀況](#exceptions)。
 * 如果您已經使用 Log4Net 或 NLog 等記錄架構，您可以[擷取這些記錄](asp-net-trace-logs.md)，然後在診斷搜尋中將它們連同要求和例外狀況資料一起檢視。
 
-若要查看這些事件，請開啟左側功能表中的 [[搜尋](../../azure-monitor/app/diagnostic-search.md)]，選取下拉式功能表 [**事件種類**]，然後選擇 [自訂事件]、[追蹤] 或 [例外狀況]。
+若要查看這些事件，請開啟左側功能表中的 [[搜尋](./diagnostic-search.md)]，選取下拉式功能表 [**事件種類**]，然後選擇 [自訂事件]、[追蹤] 或 [例外狀況]。
 
 ![鑽研](./media/asp-net-exceptions/customevents.png)
 
 > [!NOTE]
-> 如果您的應用程式會產生大量遙測，調適性取樣模型會自動藉由僅傳送事件代表性片段，減少傳送到入口網站的量。 為相同作業之一部分的事件會選取或取消選取為群組，讓您可以在相關事件之間瀏覽。 [深入瞭解取樣。](../../azure-monitor/app/sampling.md)
+> 如果您的應用程式會產生大量遙測，調適性取樣模型會自動藉由僅傳送事件代表性片段，減少傳送到入口網站的量。 為相同作業之一部分的事件會選取或取消選取為群組，讓您可以在相關事件之間瀏覽。 [深入瞭解取樣。](./sampling.md)
 >
 >
 
 ### <a name="how-to-see-request-post-data"></a>如何查看要求 POST 資料
 要求詳細資料不包括在 POST 呼叫中傳送至您的應用程式的資料。 若要報告此資料：
 
-* 在您的應用程式專案中[安裝 SDK](../../azure-monitor/app/asp-net.md)。
-* 在您的應用程式中插入程式碼來呼叫 [Microsoft.ApplicationInsights.TrackTrace()](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace)。 在訊息參數中傳送 POST 資料。 允許的大小有限制，所以您應該嘗試只傳送基本的資料。
+* 在您的應用程式專案中[安裝 SDK](./asp-net.md)。
+* 在您的應用程式中插入程式碼來呼叫 [Microsoft.ApplicationInsights.TrackTrace()](./api-custom-events-metrics.md#tracktrace)。 在訊息參數中傳送 POST 資料。 允許的大小有限制，所以您應該嘗試只傳送基本的資料。
 * 當您調查失敗的要求時，會發現相關聯的追蹤。
 
 ## <a name="capturing-exceptions-and-related-diagnostic-data"></a><a name="exceptions"></a> 擷取例外狀況和相關的診斷資料
-一開始，您不會在入口網站看到應用程式中造成失敗的所有例外狀況。 您會看到任何瀏覽器例外狀況 (如果您在網頁中使用 [JavaScript SDK](../../azure-monitor/app/javascript.md))。 但是 IIS 會攔截大部分的伺服器例外狀況，而且您必須撰寫一段程式碼才能查看它們。
+一開始，您不會在入口網站看到應用程式中造成失敗的所有例外狀況。 您會看到任何瀏覽器例外狀況 (如果您在網頁中使用 [JavaScript SDK](./javascript.md))。 但是 IIS 會攔截大部分的伺服器例外狀況，而且您必須撰寫一段程式碼才能查看它們。
 
 您可以：
 
@@ -152,7 +152,7 @@ Application Insights 隨附策劃的 APM 體驗，可協助您診斷受監視應
     End Try
 ```
 
-屬性和度量參數是選用的，但對於[篩選和新增](../../azure-monitor/app/diagnostic-search.md)額外資訊來說，相當有用。 比方說，如果您有一個應用程式可以執行數個遊戲，則您可以找到與特定遊戲相關的所有例外狀況報告。 您可以將許多項目加入至每個字典，且項目數量不限。
+屬性和度量參數是選用的，但對於[篩選和新增](./diagnostic-search.md)額外資訊來說，相當有用。 比方說，如果您有一個應用程式可以執行數個遊戲，則您可以找到與特定遊戲相關的所有例外狀況報告。 您可以將許多項目加入至每個字典，且項目數量不限。
 
 ## <a name="browser-exceptions"></a>瀏覽器例外狀況
 大部分的瀏覽器例外狀況都會報告。
@@ -482,7 +482,7 @@ Add the attribute to the service implementations:
 [範例](https://github.com/AppInsightsSamples/WCFUnhandledExceptions)
 
 ## <a name="exception-performance-counters"></a>例外狀況效能計數器
-如果您已在伺服器上[安裝 Application Insights代理程式](../../azure-monitor/app/monitor-performance-live-website-now.md)，您便可取得由 .NET 測量的例外狀況比率圖表。 這包括已處理和未處理的 .NET 例外狀況。
+如果您已在伺服器上[安裝 Application Insights代理程式](./monitor-performance-live-website-now.md)，您便可取得由 .NET 測量的例外狀況比率圖表。 這包括已處理和未處理的 .NET 例外狀況。
 
 開啟 [計量瀏覽器] 索引標籤、新增圖表，然後選取 [**例外狀況速率**] （列在 [效能計數器] 底下）。
 
@@ -491,6 +491,7 @@ Add the attribute to the service implementations:
 這與 Application Insights 入口網站執行 TrackException 報告計數算得的「例外狀況」計數不同。 取樣間隔不同，且 SDK 不會針對所有已處理與未處理的例外狀況傳送 TrackException 報告。
 
 ## <a name="next-steps"></a>後續步驟
-* [監視 REST、SQL 及其他對相依性的呼叫](../../azure-monitor/app/asp-net-dependencies.md)
-* [監視頁面載入時間、瀏覽器例外狀況及 AJAX 呼叫](../../azure-monitor/app/javascript.md)
-* [監視效能計數器](../../azure-monitor/app/performance-counters.md)
+* [監視 REST、SQL 及其他對相依性的呼叫](./asp-net-dependencies.md)
+* [監視頁面載入時間、瀏覽器例外狀況及 AJAX 呼叫](./javascript.md)
+* [監視效能計數器](./performance-counters.md)
+

@@ -4,11 +4,12 @@ description: Application Insights 遙測內容資料模型
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: 8a2e3296643b13a54c4fceb11f044a2808cf2877
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 25ff7d92da5ea0a6aba84aad1cfc98e5295e151e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77671858"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322664"
 ---
 # <a name="telemetry-context-application-insights-data-model"></a>遙測內容：Application Insights 資料模型
 
@@ -38,14 +39,14 @@ ms.locfileid: "77671858"
 
 ## <a name="operation-id"></a>作業 id
 
-根作業的唯一識別碼。 此識別碼可讓群組遙測跨越多個元件。 如需詳細資訊，請參閱[遙測相互關聯](../../azure-monitor/app/correlation.md)。 作業識別碼會由要求或頁面檢視所建立。 所有其他遙測會將此欄位設定為包含要求或頁面檢視的值。 
+根作業的唯一識別碼。 此識別碼可讓群組遙測跨越多個元件。 如需詳細資訊，請參閱[遙測相互關聯](./correlation.md)。 作業識別碼會由要求或頁面檢視所建立。 所有其他遙測會將此欄位設定為包含要求或頁面檢視的值。 
 
 最大長度：128
 
 
 ## <a name="parent-operation-id"></a>父作業識別碼
 
-遙測項目直屬父代的唯一識別碼。 如需詳細資訊，請參閱[遙測相互關聯](../../azure-monitor/app/correlation.md)。
+遙測項目直屬父代的唯一識別碼。 如需詳細資訊，請參閱[遙測相互關聯](./correlation.md)。
 
 最大長度：128
 
@@ -75,7 +76,7 @@ ms.locfileid: "77671858"
 
 匿名使用者識別碼。代表應用程式的終端使用者。 從服務傳送遙測時，使用者內容與服務中起始作業的使用者相關。
 
-[取樣](../../azure-monitor/app/sampling.md)是將收集的遙測量降到最低的其中一個方法。 取樣演算法會嘗試取樣輸入或輸出所有相互關聯的遙測。 匿名使用者識別碼可用於產生取樣分數。 因此匿名使用者識別碼應該為足夠隨機的值。 
+[取樣](./sampling.md)是將收集的遙測量降到最低的其中一個方法。 取樣演算法會嘗試取樣輸入或輸出所有相互關聯的遙測。 匿名使用者識別碼可用於產生取樣分數。 因此匿名使用者識別碼應該為足夠隨機的值。 
 
 使用匿名使用者識別碼儲存使用者名稱是濫用欄位的做法。 使用已驗證的使用者識別碼。
 
@@ -126,6 +127,7 @@ SDK 版本。 如需相關資訊，請參閱[這篇文章](https://github.com/mi
 
 ## <a name="next-steps"></a>後續步驟
 
-- 了解如何[擴充和篩選遙測](../../azure-monitor/app/api-filtering-sampling.md)。
+- 了解如何[擴充和篩選遙測](./api-filtering-sampling.md)。
 - 如需 Application Insights 類型和資料模型，請參閱[資料模型](data-model.md)。
-- 請查看標準內容屬性集合[組態](../../azure-monitor/app/configuration-with-applicationinsights-config.md#telemetry-initializers-aspnet)。
+- 請查看標準內容屬性集合[組態](./configuration-with-applicationinsights-config.md#telemetry-initializers-aspnet)。
+

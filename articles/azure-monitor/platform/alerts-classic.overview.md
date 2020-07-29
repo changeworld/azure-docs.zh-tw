@@ -4,17 +4,17 @@ description: 傳統警示即將淘汰。 警示可讓您監視 Azure 資源度�
 ms.topic: conceptual
 ms.date: 05/19/2018
 ms.subservice: alerts
-ms.openlocfilehash: 7d120550d17dcac7410a259e131ad81feb0afdf9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 56dd601e8d961d65ec21eefcc2dd5fed5c75f9fe
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86515949"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322358"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>什麼是 Microsoft Azure 中的傳統警示？
 
 > [!NOTE]
-> 本文說明如何建立舊版傳統計量警示。 Azure 監視器現在支援[較新的近乎即時計量警示和新的警示體驗](../../azure-monitor/platform/alerts-overview.md)。 傳統警示已[淘汰](./monitoring-classic-retirement.md)，但仍受限於僅適用于尚未支援新警示的資源。 
+> 本文說明如何建立舊版傳統計量警示。 Azure 監視器現在支援[較新的近乎即時計量警示和新的警示體驗](./alerts-overview.md)。 傳統警示已[淘汰](./monitoring-classic-retirement.md)，但仍受限於僅適用于尚未支援新警示的資源。 
 >
 
 警示可讓您對資料設定條件，並在最近的監視資料符合條件時收到通知。
@@ -40,8 +40,8 @@ ms.locfileid: "86515949"
 - **支援多維度計量**：您可以針對維度計量發出警示，以便監視計量中某個您感興趣的區段。
 - **對計量條件有更多的控制**：您可以定義更豐富的警示規則。 新版警示支援監視計量的最大值、最小值、平均及總計值。
 - **可合併監視多個計量**：您可以使用單一規則來監視多個計量 (目前最多兩個計量)。 若兩個計量在指定的期間內都超出其個別閾值，就會觸發警示。
-- **更好的通知系統**：所有新版警示都使用[動作群組](../../azure-monitor/platform/action-groups.md)，這些是可在多個警示中重複使用的具名通知及動作群組。  傳統計量警示及舊版 Log Analytics 警示並不使用動作群組。 
-- **來自記錄的計量** (公開預覽)：現在可將進入 Log Analytics 的記錄資料擷取並轉換成「Azure 監視器」計量，然後針對這些計量發出警示，就像任何其他計量一樣。 如需傳統警示專用的術語，請參閱[警示 (傳統)](alerts-classic.overview.md)。 
+- **更好的通知系統**：所有新版警示都使用[動作群組](./action-groups.md)，這些是可在多個警示中重複使用的具名通知及動作群組。  傳統計量警示及舊版 Log Analytics 警示並不使用動作群組。 
+- **來自記錄的計量** (公開預覽)：現在可將進入 Log Analytics 的記錄資料擷取並轉換成「Azure 監視器」計量，然後針對這些計量發出警示，就像任何其他計量一樣。 如需傳統警示專用的術語，請參閱[警示 (傳統)]()。 
 
 
 ## <a name="classic-alerts-on-azure-monitor-data"></a>Azure 監視器資料的傳統警示
@@ -51,7 +51,7 @@ ms.locfileid: "86515949"
 
 * **傳統活動記錄警示** - 因符合篩選準則，而由活動記錄項目觸發的串流記錄警示。 這些警示只有一個狀態：「已啟動」。 警示引擎會將篩選準則直接套用至任何新事件。 並不會搜尋以找出較舊的項目。 當新的服務健康狀態事件發生時，或當使用者或應用程式在您的訂用帳戶中執行諸如「刪除虛擬機器」作業時，這些警示可以通知您。
 
-對於可透過 Azure 監視器取得的資源記錄資料，請將資料路由傳送至 Log Analytics，並使用記錄查詢警示。 Log Analytics 現在使用[新的警示方法](../../azure-monitor/platform/alerts-overview.md) 
+對於可透過 Azure 監視器取得的資源記錄資料，請將資料路由傳送至 Log Analytics，並使用記錄查詢警示。 Log Analytics 現在使用[新的警示方法](./alerts-overview.md) 
 
 下圖摘要說明 Azure 監視器中的資料來源，以及就概念而言如何發出該資料的警示。
 
@@ -68,7 +68,7 @@ Azure 使用下列詞彙來描述傳統警示及其功能：
 ## <a name="how-do-i-receive-a-notification-from-an-azure-monitor-classic-alert"></a>如何收到 Azure 監視器傳統警示傳來的通知？
 在過去，Azure 的警示來自不同的服務，各自使用其專屬的內建通知方法。 
 
-Azure 監視器會建立可重複使用的通知群組，稱為*動作群組*。 動作群組可指定一組通知接受者。 每次參考動作群組的警示啟動時，所有接收者都會接收到該通知。 動作群組可讓您在許多警示物件之間重複使用一組接收者 (例如您隨時待命的工程師清單)。 除了電子郵件地址、簡訊號碼和一些其他動作，動作群組的通知支援還包括張貼到 Webhook URL。  如需詳細資訊，請參閱[動作群組](../../azure-monitor/platform/action-groups.md)。 
+Azure 監視器會建立可重複使用的通知群組，稱為*動作群組*。 動作群組可指定一組通知接受者。 每次參考動作群組的警示啟動時，所有接收者都會接收到該通知。 動作群組可讓您在許多警示物件之間重複使用一組接收者 (例如您隨時待命的工程師清單)。 除了電子郵件地址、簡訊號碼和一些其他動作，動作群組的通知支援還包括張貼到 Webhook URL。  如需詳細資訊，請參閱[動作群組](./action-groups.md)。 
 
 舊版傳統活動記錄警示會使用動作群組。
 
@@ -96,3 +96,4 @@ Webhook 可啟用自動化和修復，例如使用：
 * 檢閱[活動記錄警示 webhook 結構描述](activity-log-alerts-webhook.md)
 * 深入瞭解[動作群組](action-groups.md)
 * 設定[較新的警示](alerts-metric.md)
+

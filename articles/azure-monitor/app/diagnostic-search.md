@@ -3,18 +3,18 @@ title: 在 Azure Application Insights 中使用搜尋服務 | Microsoft Docs
 description: 搜尋和篩選 Web 應用程式傳送的原始遙測。
 ms.topic: conceptual
 ms.date: 07/30/2019
-ms.openlocfilehash: 7a264f25f92bed1b93848c323fd59eafd7b09215
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f88e0fb8fbd7e9605635ede1e8f71b57de84b74e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87033610"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324449"
 ---
 # <a name="using-search-in-application-insights"></a>在 Application Insights 中使用搜尋
 
-「搜尋」是 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 的一項功能，可用來尋找及探索個別遙測項目，例如頁面檢視、例外狀況或 Web 要求。 而您可以檢視所編寫的記錄追蹤和事件。
+「搜尋」是 [Application Insights](./app-insights-overview.md) 的一項功能，可用來尋找及探索個別遙測項目，例如頁面檢視、例外狀況或 Web 要求。 而您可以檢視所編寫的記錄追蹤和事件。
 
-(若要對您的資料執行更複雜的查詢，請使用[分析](../../azure-monitor/log-query/get-started-portal.md)。)
+(若要對您的資料執行更複雜的查詢，請使用[分析](../log-query/get-started-portal.md)。)
 
 ## <a name="where-do-you-see-search"></a>「搜尋」在哪裡？
 
@@ -56,13 +56,13 @@ ms.locfileid: "87033610"
 
 事件類型包括：
 
-* **追蹤**  - [診斷記錄](../../azure-monitor/app/asp-net-trace-logs.md)，包括 TrackTrace、Log4Net、NLog 和呼叫。
+* **追蹤**  - [診斷記錄](./asp-net-trace-logs.md)，包括 TrackTrace、Log4Net、NLog 和呼叫。
 * **要求** - 伺服器應用程式收到的 HTTP 要求，包括頁面、指令碼、影像、樣式檔案和資料。 這些事件是用來建立要求和回應概觀圖表。
-* **網頁檢視**  - [由 web 用戶端傳送的遙測](../../azure-monitor/app/javascript.md)資料，用來建立頁面流覽報表。
-* **自訂事件** - 如果您插入 TrackEvent() 呼叫來[監視使用量](../../azure-monitor/app/api-custom-events-metrics.md)，則可以在這裡搜尋它們。
-* **例外**狀況-伺服器中未攔截到[的例外](../../azure-monitor/app/asp-net-exceptions.md)狀況，以及您使用 TrackException （）來記錄的例外狀況。
-* 相依性**Dependency**  - [從您的伺服器應用程式呼叫](../../azure-monitor/app/asp-net-dependencies.md)其他服務（例如 REST api 或資料庫），以及來自[用戶端程式代碼](../../azure-monitor/app/javascript.md)的 AJAX 呼叫。
-* **可用性** - [可用性測試](../../azure-monitor/app/monitor-web-app-availability.md)的結果。
+* **網頁檢視**  - [由 web 用戶端傳送的遙測](./javascript.md)資料，用來建立頁面流覽報表。
+* **自訂事件** - 如果您插入 TrackEvent() 呼叫來[監視使用量](./api-custom-events-metrics.md)，則可以在這裡搜尋它們。
+* **例外**狀況-伺服器中未攔截到[的例外](./asp-net-exceptions.md)狀況，以及您使用 TrackException （）來記錄的例外狀況。
+* 相依性**Dependency**  - [從您的伺服器應用程式呼叫](./asp-net-dependencies.md)其他服務（例如 REST api 或資料庫），以及來自[用戶端程式代碼](./javascript.md)的 AJAX 呼叫。
+* **可用性** - [可用性測試](./monitor-web-app-availability.md)的結果。
 
 ## <a name="filter-on-property-values"></a>依據屬性值篩選
 
@@ -81,10 +81,10 @@ ms.locfileid: "87033610"
 ## <a name="search-the-data"></a>搜尋資料
 
 > [!NOTE]
-> 若要撰寫更複雜的查詢，請從 [搜尋] 分頁頂端開啟 [[**記錄（分析）**](../../azure-monitor/log-query/get-started-portal.md) ]。
+> 若要撰寫更複雜的查詢，請從 [搜尋] 分頁頂端開啟 [[**記錄（分析）**](../log-query/get-started-portal.md) ]。
 >
 
-您可以搜尋任何屬性值中的字詞。 如果您已撰寫具有屬性值的[自訂事件](../../azure-monitor/app/api-custom-events-metrics.md)，這就很有用。
+您可以搜尋任何屬性值中的字詞。 如果您已撰寫具有屬性值的[自訂事件](./api-custom-events-metrics.md)，這就很有用。
 
 您可能想要設定時間範圍，因為對一小段時間範圍進行的搜尋較快速。
 
@@ -92,7 +92,7 @@ ms.locfileid: "87033610"
 
 請搜尋完整單字，而不是子字串。 使用引號來括住的特殊字元。
 
-| 字串 | 找*不*到 | 已找到 |
+| String | 找*不*到 | 已找到 |
 | --- | --- | --- |
 | HomeController.About |`home`<br/>`controller`<br/>`out` | `homecontroller`<br/>`about`<br/>`"homecontroller.about"`|
 |美國|`Uni`<br/>`ted`|`united`<br/>`states`<br/>`united AND states`<br/>`"united states"`
@@ -110,7 +110,7 @@ ms.locfileid: "87033610"
 
 如果您的應用程式會產生大量的遙測（而且您使用 ASP.NET SDK 版本 2.0.0-Beta3 或更新版本），調適型取樣模組會自動只傳送代表性的事件數，以減少傳送至入口網站的磁片區。 不過，同一個要求相關的事件是以整組方式來選取或取消選取，方便您切換瀏覽相關事件。
 
-[了解取樣](../../azure-monitor/app/sampling.md)。
+[了解取樣](./sampling.md)。
 
 ## <a name="create-work-item"></a>建立工作項目
 
@@ -128,24 +128,25 @@ ms.locfileid: "87033610"
 
 除了 Application Insights SDK 傳送的內建遙測，您可以：
 
-* 在 [.NET](../../azure-monitor/app/asp-net-trace-logs.md) 或 [Java](../../azure-monitor/app/java-trace-logs.md) 中，從您最喜愛的紀錄架構擷取記錄追蹤。 這表示您可以搜尋您的記錄追蹤，並將它們與頁面檢視、例外狀況和其他事件相互關聯。
-* [編寫程式碼](../../azure-monitor/app/api-custom-events-metrics.md)以傳送自訂事件、頁面檢視和例外狀況。
+* 在 [.NET](./asp-net-trace-logs.md) 或 [Java](./java-trace-logs.md) 中，從您最喜愛的紀錄架構擷取記錄追蹤。 這表示您可以搜尋您的記錄追蹤，並將它們與頁面檢視、例外狀況和其他事件相互關聯。
+* [編寫程式碼](./api-custom-events-metrics.md)以傳送自訂事件、頁面檢視和例外狀況。
 
-[了解如何將記錄和自訂遙測傳送至 Application Insights](../../azure-monitor/app/asp-net-trace-logs.md)。
+[了解如何將記錄和自訂遙測傳送至 Application Insights](./asp-net-trace-logs.md)。
 
 ## <a name="q--a"></a><a name="questions"></a>問與答
 
 ### <a name="how-much-data-is-retained"></a><a name="limits"></a>保留多少資料？
 
-請參閱[限制摘要](../../azure-monitor/app/pricing.md#limits-summary)。
+請參閱[限制摘要](./pricing.md#limits-summary)。
 
 ### <a name="how-can-i-see-post-data-in-my-server-requests"></a>我如何查看我的伺服器要求中的 POST 資料？
 
-我們不會自動記錄 POST 資料，但您可以使用 [TrackTrace 或記錄呼叫](../../azure-monitor/app/asp-net-trace-logs.md)。 將 POST 資料放在訊息參數中。 您無法像篩選屬性一樣來篩選訊息，但大小限制比較長。
+我們不會自動記錄 POST 資料，但您可以使用 [TrackTrace 或記錄呼叫](./asp-net-trace-logs.md)。 將 POST 資料放在訊息參數中。 您無法像篩選屬性一樣來篩選訊息，但大小限制比較長。
 
 ## <a name="next-steps"></a><a name="add"></a>後續步驟
 
-* [在分析中撰寫複雜的查詢](../../azure-monitor/log-query/get-started-portal.md)
-* [將記錄和自訂遙測傳送至 Application Insights](../../azure-monitor/app/asp-net-trace-logs.md)
-* [設定可用性和回應性測試](../../azure-monitor/app/monitor-web-app-availability.md)
+* [在分析中撰寫複雜的查詢](../log-query/get-started-portal.md)
+* [將記錄和自訂遙測傳送至 Application Insights](./asp-net-trace-logs.md)
+* [設定可用性和回應性測試](./monitor-web-app-availability.md)
 * [疑難排解](../faq.md)
+

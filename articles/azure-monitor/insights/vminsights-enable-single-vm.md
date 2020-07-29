@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2020
-ms.openlocfilehash: 4cdb9390b3146df74f2cbe8eba7b170a5d11fb2c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d4f14280f38a2389809477b84461eb3174909316
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85507053"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323888"
 ---
 # <a name="enable-azure-monitor-for-single-vm-or-vmss-in-the-azure-portal"></a>為 Azure 入口網站中的單一 VM 或 VMSS 啟用 Azure 監視器
 本文說明如何使用 Azure 入口網站來啟用單一虛擬機器或虛擬機器擴展集的適用於 VM 的 Azure 監視器。 此程式可用於下列各項：
@@ -34,7 +34,7 @@ ms.locfileid: "85507053"
 
     ![為 VM 啟用適用於 VM 的 Azure 監視器](media/vminsights-enable-single-vm/enable-vminsights-vm-portal.png)
 
-1. 如果 VM 尚未連線到 Log Analytics 工作區，系統會提示您選取一個。 如果您先前尚未[建立工作區](../../azure-monitor/learn/quick-create-workspace.md)，則可以為訂用帳戶中部署 VM 或 VMSS 的位置選取預設值。 將會建立並設定此工作區（如果尚未存在的話）。
+1. 如果 VM 尚未連線到 Log Analytics 工作區，系統會提示您選取一個。 如果您先前尚未[建立工作區](../learn/quick-create-workspace.md)，則可以為訂用帳戶中部署 VM 或 VMSS 的位置選取預設值。 將會建立並設定此工作區（如果尚未存在的話）。
 
 2. 在執行設定時，您將會收到狀態訊息。
 
@@ -49,3 +49,4 @@ ms.locfileid: "85507053"
 
 * 若要查看探索到的應用程式相依性，請參閱[使用適用於 VM 的 Azure 監視器對應](vminsights-maps.md)。 
 * 若要找出瓶頸、整體使用率和 VM 的效能，請參閱[查看 AZURE VM 效能](vminsights-performance.md)。
+

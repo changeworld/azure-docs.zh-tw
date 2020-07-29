@@ -3,12 +3,12 @@ title: Application Insights SDK 中的篩選和前置處理 |Microsoft Docs
 description: 撰寫 SDK 的遙測處理器和遙測初始化運算式，以在遙測傳送至 Application Insights 入口網站之前，篩選或將屬性新增至資料。
 ms.topic: conceptual
 ms.date: 11/23/2016
-ms.openlocfilehash: adaada3589fd0db1c7d47b788ad50d570defe780
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a16dc7bc9f6f3c49640d320fbfbffaa7acbed6b9
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87014621"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323208"
 ---
 # <a name="filter-and-preprocess-telemetry-in-the-application-insights-sdk"></a>在 Application Insights SDK 中篩選及前置處理遙測
 
@@ -17,7 +17,7 @@ ms.locfileid: "87014621"
 * [取樣](sampling.md) 可減少遙測的量而不會影響統計資料。 它會將相關的資料點保持在一起，讓您可以在診斷問題時，于兩者之間流覽。 在入口網站中將乘以總計數，以補償取樣。
 * 使用遙測處理器進行篩選，可讓您在 SDK 傳送至伺服器之前，先篩選出其中的遙測。 例如，您可以從傀儡程式中排除要求來減少遙測量。 篩選是比取樣更能減少流量的基本方法。 它可讓您更充分掌控所傳輸的內容，但它會影響您的統計資料。 例如，您可能會篩選出所有成功的要求。
 * [遙測初始化運算式會新增或修改](#add-properties)從您的應用程式傳送的任何遙測資料，其中包括來自標準模組的遙測。 例如，您可以在入口網站中加入用來篩選資料的計算值或版本號碼。
-* [SDK API](../../azure-monitor/app/api-custom-events-metrics.md) 可用來傳送自訂事件和計量。
+* [SDK API](./api-custom-events-metrics.md) 可用來傳送自訂事件和計量。
 
 在開始之前：
 
@@ -34,7 +34,7 @@ ms.locfileid: "87014621"
 > [!WARNING]
 > 使用處理器篩選從 SDK 傳送的遙測，可以扭曲您在入口網站中看到的統計資料，並使其難以遵循相關專案。
 >
-> 請考慮改用 [取樣](../../azure-monitor/app/sampling.md)。
+> 請考慮改用 [取樣](./sampling.md)。
 >
 >
 
@@ -352,7 +352,7 @@ ASP.NET**核心/背景工作服務應用程式：載入您的初始化運算式*
 </script>
 ```
 
-如需遙測專案上可用的 noncustom 屬性摘要，請參閱[Application Insights 匯出資料模型](../../azure-monitor/app/export-data-model.md)。
+如需遙測專案上可用的 noncustom 屬性摘要，請參閱[Application Insights 匯出資料模型](./export-data-model.md)。
 
 您可以依需要加入多個初始設定式。 系統會依其新增順序來呼叫它們。
 
@@ -542,7 +542,7 @@ public class HttpContextRequestTelemetryInitializer : ITelemetryInitializer
 
 ## <a name="reference-docs"></a>參考文件
 
-* [API 概觀](../../azure-monitor/app/api-custom-events-metrics.md)
+* [API 概觀](./api-custom-events-metrics.md)
 * [ASP.NET 參考](/previous-versions/azure/dn817570(v=azure.100))
 
 ## <a name="sdk-code"></a>SDK 程式碼
@@ -552,6 +552,7 @@ public class HttpContextRequestTelemetryInitializer : ITelemetryInitializer
 * [JavaScript SDK](https://github.com/Microsoft/ApplicationInsights-JS)
 
 ## <a name="next-steps"></a><a name="next"></a>後續步驟
-* [搜尋事件和記錄](../../azure-monitor/app/diagnostic-search.md)
-* [取樣](../../azure-monitor/app/sampling.md)
+* [搜尋事件和記錄](./diagnostic-search.md)
+* [抽樣](./sampling.md)
 * [疑難排解](../faq.md)
+

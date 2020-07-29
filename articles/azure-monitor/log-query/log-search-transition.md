@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/16/2019
-ms.openlocfilehash: f34389785c0f4a43bfcab3e50f2dcd132b2cb629
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8abd9d7f33a07141418ad67cc2128af40ad0bd51
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505800"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324755"
 ---
 # <a name="transition-from-log-analytics-log-search-to-azure-monitor-logs"></a>從 Log Analytics 記錄搜尋轉換至 Azure 監視器記錄
 最近以新的體驗取代了 Log Analytics 中的記錄搜尋，以便分析 Azure 監視器記錄。 [記錄搜尋] 頁面目前仍可在 Azure 入口網站中透過 **Log Analytics 工作區** 中的 [記錄 (傳統)]**** 功能表項目存取，但是該頁面將於 2019 年 2 月 15 日移除。 本文說明兩種體驗之間的差異以協助您從記錄搜尋轉換。 
@@ -44,7 +44,7 @@ ms.locfileid: "86505800"
 ![儲存記錄查詢](media/log-search-transition/save-query-logs.png)
 
 ## <a name="saved-queries"></a>儲存的查詢
-在記錄搜尋中，可透過 [已儲存的搜尋]**** 動作列項目取得已儲存的查詢。 在 Azure 監視器記錄中，從 [查詢總管](../log-query/get-started-portal.md#save-queries) 存取已儲存的查詢。
+在記錄搜尋中，可透過 [已儲存的搜尋]**** 動作列項目取得已儲存的查詢。 在 Azure 監視器記錄中，從 [查詢總管](./get-started-portal.md#save-queries) 存取已儲存的查詢。
 
 ![查詢總管](media/log-search-transition/query-explorer.png)
 
@@ -69,3 +69,4 @@ ms.locfileid: "86505800"
 ## <a name="next-steps"></a>後續步驟
 
 - 深入了解新的 [Azure 監視器記錄體驗](get-started-portal.md)。
+

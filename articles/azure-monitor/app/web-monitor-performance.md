@@ -4,12 +4,12 @@ description: 開始使用 Application Insights。 分析內部部署或 Microsof
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.reviewer: sdash
-ms.openlocfilehash: 2b93e7f0fdb909a40667b001fa99929b3cfe27ad
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d624286d214a86364fe85192bf5ede885d4b6a78
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87014160"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323446"
 ---
 # <a name="monitor-performance-in-web-applications"></a>監視 Web 應用程式的效能
 
@@ -23,9 +23,9 @@ Application Insights 可以監視 Java 和 ASP.NET Web 應用程式與服務、W
 ## <a name="set-up-performance-monitoring"></a><a name="setup"></a>設定效能監視
 如果您尚未將 Application Insights 新增至專案中 (亦即專案沒有 ApplicationInsights.config)，請選擇以下任一種方法來開始使用：
 
-* [ASP.NET Web 應用程式](../../azure-monitor/app/asp-net.md)
-  * [加入例外狀況監視](../../azure-monitor/app/asp-net-exceptions.md)
-  * [加入相依性監視](../../azure-monitor/app/monitor-performance-live-website-now.md)
+* [ASP.NET Web 應用程式](./asp-net.md)
+  * [加入例外狀況監視](./asp-net-exceptions.md)
+  * [加入相依性監視](./monitor-performance-live-website-now.md)
 * [Java EE Web 應用程式](./java-in-process-agent.md)
 
 ## <a name="exploring-performance-metrics"></a><a name="view"></a>探索效能度量
@@ -106,7 +106,7 @@ HTTP 要求包括分頁、資料及映像的所有 GET 或 POST 要求。
 
 ## <a name="find-and-fix-performance-bottlenecks-with-performance-investigation-experience"></a>使用效能調查體驗尋找及修正效能瓶頸
 
-您可以使用效能調查體驗來檢閱 Web 應用程式中緩慢執行的作業。 您可以快速地選取特定的緩慢作業，並使用[分析工具](../../azure-monitor/app/profiler.md)來查詢程式碼中使作業緩慢的根本原因。 使用所選取作業的新持續時間分佈，您可以快速地一眼看出該體驗對客戶的不良影響程度。 可以查看每個緩慢作業影響的使用者互動數量。 在下列範例中，我們已決定要詳細看看「取得客戶/詳細資料」作業的體驗。 在分佈持續時間中，我們可以看到有三個高峰。 最左邊的高峰大約在 400 毫秒，代表良好的回應體驗。 中間的高峰大約在 1.2 秒，代表中等體驗。 最後在 3.6 秒有另一個小型高峰，代表第 99 百分位數的體驗，它可能導致我們的客戶離開時並不滿意。 該體驗較相同作業的良好體驗低十倍。 
+您可以使用效能調查體驗來檢閱 Web 應用程式中緩慢執行的作業。 您可以快速地選取特定的緩慢作業，並使用[分析工具](./profiler.md)來查詢程式碼中使作業緩慢的根本原因。 使用所選取作業的新持續時間分佈，您可以快速地一眼看出該體驗對客戶的不良影響程度。 可以查看每個緩慢作業影響的使用者互動數量。 在下列範例中，我們已決定要詳細看看「取得客戶/詳細資料」作業的體驗。 在分佈持續時間中，我們可以看到有三個高峰。 最左邊的高峰大約在 400 毫秒，代表良好的回應體驗。 中間的高峰大約在 1.2 秒，代表中等體驗。 最後在 3.6 秒有另一個小型高峰，代表第 99 百分位數的體驗，它可能導致我們的客戶離開時並不滿意。 該體驗較相同作業的良好體驗低十倍。 
 
 ![取得客戶/詳細資料，三個持續時間高峰](./media/web-monitor-performance/PerformanceTriageViewZoomedDistribution.png)
 
@@ -142,12 +142,13 @@ HTTP 要求包括分頁、資料及映像的所有 GET 或 POST 要求。
 
 <!--Link references-->
 
-[availability]: ../../azure-monitor/app/monitor-web-app-availability.md
-[diagnostic]: ../../azure-monitor/app/diagnostic-search.md
-[greenbrown]: ../../azure-monitor/app/asp-net.md
+[availability]: ./monitor-web-app-availability.md
+[diagnostic]: ./diagnostic-search.md
+[greenbrown]: ./asp-net.md
 [qna]: ../faq.md
-[redfield]: ../../azure-monitor/app/monitor-performance-live-website-now.md
-[start]: ../../azure-monitor/app/app-insights-overview.md
+[redfield]: ./monitor-performance-live-website-now.md
+[start]: ./app-insights-overview.md
 [usage]: usage-overview.md
-[livestream]: ../../azure-monitor/app/live-stream.md
-[snapshot]: ../../azure-monitor/app/snapshot-debugger.md
+[livestream]: ./live-stream.md
+[snapshot]: ./snapshot-debugger.md
+

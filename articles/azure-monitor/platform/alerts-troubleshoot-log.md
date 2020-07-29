@@ -6,35 +6,35 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 10/29/2018
-ms.openlocfilehash: b8edbbc397a56f4fcf5b3ae070f04ca61659d98d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a66cb190309fb9e966392f57a251eff746bfa315
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87045354"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321100"
 ---
 # <a name="troubleshoot-log-alerts-in-azure-monitor"></a>針對 Azure 監視器中的記錄警示進行疑難排解  
 
 本文說明如何解決 Azure 監視器中記錄警示的常見問題。 它也提供記錄警示功能和設定的常見問題解決方案。
 
-「*記錄警示*」一詞描述根據[Azure log Analytics 工作區](../log-query/get-started-portal.md)中的記錄查詢或[Azure 應用程式 Insights](../log-query/log-query-overview.md)中引發的規則。 在 Azure 監視器中，深入瞭解[記錄警示](../platform/alerts-unified-log.md)中的功能、術語和類型。
+「*記錄警示*」一詞描述根據[Azure log Analytics 工作區](../log-query/get-started-portal.md)中的記錄查詢或[Azure 應用程式 Insights](../log-query/log-query-overview.md)中引發的規則。 在 Azure 監視器中，深入瞭解[記錄警示](./alerts-unified-log.md)中的功能、術語和類型。
 
 > [!NOTE]
-> 本文並不考慮到 Azure 入口網站會顯示觸發的警示規則，而且相關聯的動作群組不會執行通知。 如需這類情況，請參閱在[Azure 入口網站中建立和管理動作群組中](../platform/action-groups.md)的詳細資料。
+> 本文並不考慮到 Azure 入口網站會顯示觸發的警示規則，而且相關聯的動作群組不會執行通知。 如需這類情況，請參閱在[Azure 入口網站中建立和管理動作群組中](./action-groups.md)的詳細資料。
 
 ## <a name="log-alert-didnt-fire"></a>記錄警示未引發
 
-以下是一些[在 Azure 監視器中設定的記錄警示規則](../platform/alerts-log.md)狀態不會[如預期般顯示為已*引發*](../platform/alerts-managing-alert-states.md)的常見原因。
+以下是一些[在 Azure 監視器中設定的記錄警示規則](./alerts-log.md)狀態不會[如預期般顯示為已*引發*](./alerts-managing-alert-states.md)的常見原因。
 
 ### <a name="data-ingestion-time-for-logs"></a>記錄的資料內嵌時間
 
-記錄警示會根據[Log Analytics](../log-query/get-started-portal.md)或[Application Insights](../log-query/log-query-overview.md)定期執行查詢。 由於 Azure 監視器會處理來自全球各地不同來源的數千個客戶的數 tb 資料，因此服務容易受到不同時間延遲的影響。 如需詳細資訊，請參閱[Azure 監視器記錄中的資料內嵌時間](../platform/data-ingestion-time.md)。
+記錄警示會根據[Log Analytics](../log-query/get-started-portal.md)或[Application Insights](../log-query/log-query-overview.md)定期執行查詢。 由於 Azure 監視器會處理來自全球各地不同來源的數千個客戶的數 tb 資料，因此服務容易受到不同時間延遲的影響。 如需詳細資訊，請參閱[Azure 監視器記錄中的資料內嵌時間](./data-ingestion-time.md)。
 
 為了減輕延遲，系統會等待並多次嘗試警示查詢，以找出所需的資料尚未內嵌。 系統已設定以指數方式增加等候時間。 只有在資料可供使用之後，才會觸發記錄警示，因此延遲可能是因為記錄資料的內嵌緩慢所造成。
 
 ### <a name="incorrect-time-period-configured"></a>設定的時間週期不正確
 
-如[記錄警示的術語](../platform/alerts-unified-log.md#log-search-alert-rule---definition-and-types)一文所述，設定中所述的時間週期會指定查詢的時間範圍。 此查詢只會傳回在此範圍內建立的記錄。
+如[記錄警示的術語](./alerts-unified-log.md#log-search-alert-rule---definition-and-types)一文所述，設定中所述的時間週期會指定查詢的時間範圍。 此查詢只會傳回在此範圍內建立的記錄。
 
 時間週期會限制針對記錄檔查詢所提取的資料，以防止濫用，並規避記錄查詢中所使用的任何時間命令（例如**前**）。 例如，如果時間週期設定為 60 分鐘，且查詢會在下午 1:15 執行，則只有在下午 12:15 與下午 1:15 之間所建立的記錄會用於記錄查詢。 如果記錄查詢使用如**前（1d）** 之類的時間命令，則查詢仍然只會使用 12:15 pm 到 1:15 pm 之間的資料，因為時間週期設定為該間隔。
 
@@ -44,7 +44,7 @@ ms.locfileid: "87045354"
 
 ### <a name="suppress-alerts-option-is-set"></a>已設定隱藏警示選項
 
-如在[Azure 入口網站中建立記錄警示規則](../platform/alerts-log.md#create-a-log-alert-rule-with-the-azure-portal)一文的步驟8所述，記錄警示會提供**隱藏警示**選項，以隱藏設定的一段時間內的觸發和通知動作。 因此，您可能會認為警示未引發。 事實上，它已引發但已隱藏。  
+如在[Azure 入口網站中建立記錄警示規則](./alerts-log.md#create-a-log-alert-rule-with-the-azure-portal)一文的步驟8所述，記錄警示會提供**隱藏警示**選項，以隱藏設定的一段時間內的觸發和通知動作。 因此，您可能會認為警示未引發。 事實上，它已引發但已隱藏。  
 
 ![隱藏警示](media/alert-log-troubleshoot/LogAlertSuppress.png)
 
@@ -83,11 +83,11 @@ ms.locfileid: "87045354"
 
 ## <a name="log-alert-fired-unnecessarily"></a>記錄警示被不必要地引發
 
-當您在[Azure 警示](../platform/alerts-managing-alert-states.md)中進行查看時，可能會意外觸發 Azure 監視器中已設定的[記錄警示規則](../platform/alerts-log.md)。 下列各節將說明一些常見的原因。
+當您在[Azure 警示](./alerts-managing-alert-states.md)中進行查看時，可能會意外觸發 Azure 監視器中已設定的[記錄警示規則](./alerts-log.md)。 下列各節將說明一些常見的原因。
 
 ### <a name="alert-triggered-by-partial-data"></a>警示被部分資料觸發
 
-Log Analytics 和 Application Insights 會受限於內嵌延遲和處理。 當您執行記錄警示查詢時，可能會發現沒有可用的資料，或只有部分資料可以使用。 如需詳細資訊，請參閱[Azure 監視器中的記錄資料內建時間](../platform/data-ingestion-time.md)。
+Log Analytics 和 Application Insights 會受限於內嵌延遲和處理。 當您執行記錄警示查詢時，可能會發現沒有可用的資料，或只有部分資料可以使用。 如需詳細資訊，請參閱[Azure 監視器中的記錄資料內建時間](./data-ingestion-time.md)。
 
 根據您設定警示規則的方式而定，如果在警示執行時，記錄中沒有資料或部分資料，就可能會發生 misfiring。 在這種情況下，建議您變更警示查詢或設定。
 
@@ -103,7 +103,7 @@ Log Analytics 和 Application Insights 會受限於內嵌延遲和處理。 當�
 
 ## <a name="log-alert-was-disabled"></a>記錄警示已停用
 
-下列各節列出 Azure 監視器可能停用[記錄警示規則](../platform/alerts-log.md)的一些原因。
+下列各節列出 Azure 監視器可能停用[記錄警示規則](./alerts-log.md)的一些原因。
 
 ### <a name="resource-where-the-alert-was-created-no-longer-exists"></a>已建立警示的資源已不存在
 
@@ -179,7 +179,7 @@ Azure 活動記錄中的下列範例事件適用于因為連續失敗而停用�
 在 Azure 監視器中建立的每個記錄警示規則，都必須指定要定期執行警示服務的分析查詢。 在建立或更新規則時，分析查詢可能會有正確的語法。 但有時候，在一段時間內，記錄警示規則中提供的查詢可能會開發語法問題，並導致規則執行失敗。 記錄警示規則中提供的分析查詢可能會產生錯誤的一些常見原因如下：
 
 - 此查詢會撰寫成[跨多個資源執行](../log-query/cross-workspace-query.md)。 一或多個指定的資源已不存在。
-- [計量測量類型記錄警示](../../azure-monitor/platform/alerts-unified-log.md#metric-measurement-alert-rules)已設定的警示查詢不符合語法規范
+- [計量測量類型記錄警示](./alerts-unified-log.md#metric-measurement-alert-rules)已設定的警示查詢不符合語法規范
 - 沒有分析平臺的資料流程。 [查詢執行會產生錯誤](https://dev.loganalytics.io/documentation/Using-the-API/Errors)，因為提供的查詢沒有任何資料。
 - [查詢語言](/azure/kusto/query/)的變更包括針對命令和函式修改後的格式。 因此，先前在警示規則中提供的查詢已不再有效。
 
@@ -218,11 +218,12 @@ Azure 活動記錄中的下列範例事件適用于因為連續失敗而停用�
 
 #### <a name="from-api"></a>從 API
 
-- PowerShell- [AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/get-azscheduledqueryrule?view=azps-3.7.0)
-- REST API - [依訂用帳戶列出](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/listbysubscription)
+- PowerShell- [AzScheduledQueryRule](/powershell/module/az.monitor/get-azscheduledqueryrule?view=azps-3.7.0)
+- REST API - [依訂用帳戶列出](/rest/api/monitor/scheduledqueryrules/listbysubscription)
 
 ## <a name="next-steps"></a>後續步驟
 
-- 了解 [Azure 中的記錄警示](../platform/alerts-unified-log.md)。
+- 了解 [Azure 中的記錄警示](./alerts-unified-log.md)。
 - 深入了解 [Application Insights](../log-query/log-query-overview.md)。
 - 深入瞭解[記錄查詢](../log-query/log-query-overview.md)。
+

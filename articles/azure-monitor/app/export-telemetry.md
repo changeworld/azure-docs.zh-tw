@@ -3,12 +3,12 @@ title: 從 Application Insights 連續匯出遙測 | Microsoft Docs
 description: 匯出診斷和使用量資料至 Microsoft Azure 中的儲存體，並從那裡下載。
 ms.topic: conceptual
 ms.date: 05/26/2020
-ms.openlocfilehash: 54cd6db6de4aa9c1b8f8894c03a8803ee4aa2b00
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f67a5c555c438298cee701ca065aaf8c01c6406e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87014519"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324330"
 ---
 # <a name="export-telemetry-from-application-insights"></a>從 Application Insights 匯出遙測
 想要讓遙測保留比標準保留期限還久的時間？ 或以某些特殊方式處理它？ 連續匯出很適合此用途。 在 Application Insights 入口網站中看見的事件，可以使用 JSON 格式匯出到 Microsoft Azure 中的儲存體。 從那裡，您可以下載資料並編寫處理所需的任何程式碼。  
@@ -22,11 +22,11 @@ ms.locfileid: "87014519"
 * 計量或搜尋索引標籤頂端的 [匯出] 按鈕，可讓您傳送資料表和圖表到 Excel 試算表。
 
 * [分析](../log-query/log-query-overview.md) 可提供功能強大的遙測查詢語言。 它也可以匯出結果。
-* 如果您想要 [在 Power BI 中探索資料](../../azure-monitor/app/export-power-bi.md )，不需要用到「連續匯出」也可以這麼做。
+* 如果您想要 [在 Power BI 中探索資料](./export-power-bi.md)，不需要用到「連續匯出」也可以這麼做。
 * [資料存取 REST API](https://dev.applicationinsights.io/) 可讓您以程式設計方式存取您的遙測。
 * 您也可以透過 PowerShell 存取設定[連續匯出](/powershell/module/az.applicationinsights/new-azapplicationinsightscontinuousexport)。
 
-在「連續匯出」將您的資料複製到儲存體 (資料可在此依您喜好的時間長短存放) 之後，資料仍然會在 Application Insights 中依一般的[保留期間](../../azure-monitor/app/data-retention-privacy.md)可供使用。
+在「連續匯出」將您的資料複製到儲存體 (資料可在此依您喜好的時間長短存放) 之後，資料仍然會在 Application Insights 中依一般的[保留期間](./data-retention-privacy.md)可供使用。
 
 ## <a name="continuous-export-advanced-storage-configuration"></a>連續匯出進階儲存體設定
 
@@ -52,7 +52,7 @@ ms.locfileid: "87014519"
 4. 建立或選取儲存體中的容器。
 
 > [!NOTE]
-> 建立匯出之後，新內嵌的資料會開始流向 Azure Blob 儲存體。 連續匯出只會傳輸啟用連續匯出之後所建立/內嵌的新遙測。 在啟用連續匯出之前已存在的所有資料都不會匯出，也不支援使用連續匯出來追溯匯出先前建立的資料。
+> 建立匯出之後，新內嵌的資料會開始流向 Azure Blob 儲存體。 連續匯出只會傳輸啟用連續匯出之後所建立/內嵌的新遙測。 在啟用連續匯出前已存在的所有資料都不會匯出，也不支援使用連續匯出功能來追溯匯出先前建立的資料。
 
 資料出現在儲存體中之前可能有大約一小時的延遲。
 
@@ -60,13 +60,13 @@ ms.locfileid: "87014519"
 
 |名稱 | 描述 |
 |:----|:------|
-| [可用性](export-data-model.md#availability) | 回報 [可用性 Web 測試](../../azure-monitor/app/monitor-web-app-availability.md)。  |
-| [事件](export-data-model.md#events) | [TrackEvent()](../../azure-monitor/app/api-custom-events-metrics.md#trackevent)產生的自訂事件。 
-| [例外狀況](export-data-model.md#exceptions) |回報在伺服器和瀏覽器中的 [例外狀況](../../azure-monitor/app/asp-net-exceptions.md) 。
-| [訊息](export-data-model.md#trace-messages) | 由 [TrackTrace](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace) 及[記錄配接器](../../azure-monitor/app/asp-net-trace-logs.md)傳送。
+| [可用性](export-data-model.md#availability) | 回報 [可用性 Web 測試](./monitor-web-app-availability.md)。  |
+| [事件](export-data-model.md#events) | [TrackEvent()](./api-custom-events-metrics.md#trackevent)產生的自訂事件。 
+| [例外狀況](export-data-model.md#exceptions) |回報在伺服器和瀏覽器中的 [例外狀況](./asp-net-exceptions.md) 。
+| [訊息](export-data-model.md#trace-messages) | 由 [TrackTrace](./api-custom-events-metrics.md#tracktrace) 及[記錄配接器](./asp-net-trace-logs.md)傳送。
 | [計量](export-data-model.md#metrics) | 由計量 API 呼叫所產生。
 | [PerformanceCounters](export-data-model.md) | Application Insights 所收集的效能計數器。
-| [要求](export-data-model.md#requests)| 由 [TrackRequest](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest)傳送。 標準模組使用它回報在伺服器上測量的伺服器回應時間。| 
+| [要求](export-data-model.md#requests)| 由 [TrackRequest](./api-custom-events-metrics.md#trackrequest)傳送。 標準模組使用它回報在伺服器上測量的伺服器回應時間。| 
 
 ### <a name="to-edit-continuous-export"></a>若要編輯連續匯出
 
@@ -84,14 +84,14 @@ ms.locfileid: "87014519"
 ## <a name="what-events-do-you-get"></a><a name="analyze"></a> 您取得什麼事件？
 匯出的資料是我們從您的應用程式接收的原始遙測，只不過我們新增了從用戶端 IP 位址計算的位置資料。
 
-[取樣](../../azure-monitor/app/sampling.md) 已捨棄的資料不會包含在匯出的資料中。
+[取樣](./sampling.md) 已捨棄的資料不會包含在匯出的資料中。
 
 未包含其他計算的度量。 例如，我們不會匯出平均 CPU 使用率，但我們會匯出用以計算平均的原始遙測。
 
-該資料也包含您曾設定之 [可用性 Web 測試](../../azure-monitor/app/monitor-web-app-availability.md) 的任何結果。
+該資料也包含您曾設定之 [可用性 Web 測試](./monitor-web-app-availability.md) 的任何結果。
 
 > [!NOTE]
-> **取樣** 如果應用程式會傳送大量資料，取樣功能或許會運作，並只傳送一小部分產生的遙測。 [深入了解取樣。](../../azure-monitor/app/sampling.md)
+> **取樣** 如果應用程式會傳送大量資料，取樣功能或許會運作，並只傳送一小部分產生的遙測。 [深入了解取樣。](./sampling.md)
 >
 >
 
@@ -210,5 +210,6 @@ private IEnumerable<T> DeserializeMany<T>(string folderName)
 
 <!--Link references-->
 
-[exportasa]: ../../azure-monitor/app/code-sample-export-sql-stream-analytics.md
-[roles]: ../../azure-monitor/app/resources-roles-access-control.md
+[exportasa]: ./code-sample-export-sql-stream-analytics.md
+[roles]: ./resources-roles-access-control.md
+

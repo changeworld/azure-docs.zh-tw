@@ -11,11 +11,14 @@ ms.date: 01/29/2018
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 433e4160972a06ee3652410e062f6602e9ca6767
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+- 'Role: Cloud Development'
+- 'Role: IoT Device'
+ms.openlocfilehash: 619bc7cec2f8a79a656cf3a7ad1f86d1e5786abb
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82996911"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322987"
 ---
 # <a name="reference---choose-a-communication-protocol"></a>參考 - 選擇通訊協定
 
@@ -56,7 +59,7 @@ ms.locfileid: "82996911"
 
 裝置可以在 Azure 中使用各種通訊協定來與 IoT 中樞通訊。 一般而言，選擇的通訊協定是根據方案的特定需求而定。 下表列出必須要為裝置開啟的輸出連接埠，以使用特定的通訊協定：
 
-| 通訊協定 | Port |
+| 通訊協定 | 連接埠 |
 | --- | --- |
 | MQTT |8883 |
 | 透過 WebSocket 的 MQTT |443 |

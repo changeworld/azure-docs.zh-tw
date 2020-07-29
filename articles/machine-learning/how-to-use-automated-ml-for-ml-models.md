@@ -5,18 +5,18 @@ description: 使用 Azure Machine Learning 建立、檢閱和部署自動化機�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.author: nibaccam
 author: aniththa
-manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/10/2020
-ms.openlocfilehash: ac5357d0f8ba03943af14d7dd4ce6928b20db128
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.topic: conceptual
+ms.custom: how-to
+ms.openlocfilehash: 1e87eec4384887ebd82d5f70c0897add250f31fb
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074588"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320794"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>使用 Azure Machine Learning 建立、檢閱和部署自動化機器學習模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -75,7 +75,7 @@ ms.locfileid: "87074588"
 
     1. 檢閱 [設定和預覽] 表單以進行確認。 表單會根據檔案類型以智慧方式填入。 
 
-        欄位| 描述
+        欄位| 說明
         ----|----
         檔案格式| 定義檔案中所儲存資料的版面配置和類型。
         分隔符號| 一或多個字元，其用來指定純文字或其他資料流中個別獨立區域之間的界限。
@@ -83,7 +83,7 @@ ms.locfileid: "87074588"
         資料行標題| 指出資料集標題 (如果有的話) 的處理方式。
         Skip rows (略過資料列) | 指出資料集內略過多少資料列 (如果有的話)。
     
-        選取 [下一步]。
+        選取 [下一步] 。
 
     1. [結構描述] 表單會根據在 [設定與預覽] 表單中選取的項目以智慧方式填入。 請在此處設定每個資料行的資料類型、檢閱資料行名稱，以及選取針對實驗**不要包含**哪些資料行。 
             
@@ -91,7 +91,7 @@ ms.locfileid: "87074588"
 
     1. [確認詳細資料] 表單上會顯示先前在 [基本資訊] 和 [設定與預覽] 表單中填入的資訊摘要。 您也可以選擇使用啟用分析的計算，為資料集建立資料設定檔。 深入了解[資料分析](#profile)。
 
-        選取 [下一步]。
+        選取 [下一步] 。
 1. 在新建立的資料集出現後選取該資料集。 您也可以檢視資料集的預覽和範例統計資料。 
 
 1. 在 [設定執行] 表單上，輸入唯一的實驗名稱。
@@ -132,7 +132,7 @@ ms.locfileid: "87074588"
 
 1. (選擇性) 檢視其他組態設定：可用來更進一步控制訓練作業的其他設定。 否則會根據實驗選取範圍和資料來套用預設值。 
 
-    其他組態|描述
+    其他組態|說明
     ------|------
     主要計量| 用來評分模型的主要計量。 [深入了解模型計量](how-to-configure-auto-train.md#explore-model-metrics)。
     解釋最佳模型 | 選取以啟用或停用，以便顯示建議最佳模型的可解釋性。

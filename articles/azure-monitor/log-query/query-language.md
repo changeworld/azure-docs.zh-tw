@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/11/2019
-ms.openlocfilehash: 1dda2df64dc116a950498aaf581ec39a86db72bb
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 080af271870362e6e0633aaf590820f2fadb6144
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505732"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325384"
 ---
 # <a name="azure-monitor-log-queries"></a>Azure 監視器記錄查詢
 
@@ -26,15 +26,15 @@ Azure 監視器記錄以 Azure 資料總管為基礎建置，且 Azure 監視器
 
 ## <a name="concepts"></a>概念
 
-- [分析 Azure 監視器中的記錄資料](../../azure-monitor/log-query/log-query-overview.md)提供記錄查詢的簡短概觀，並說明建置 Azure 監視器記錄資料結構的方式。
+- [分析 Azure 監視器中的記錄資料](./log-query-overview.md)提供記錄查詢的簡短概觀，並說明建置 Azure 監視器記錄資料結構的方式。
 - [在 Azure 監視器中檢視及分析記錄資料](./log-query-overview.md)說明您要在其中建立和執行記錄查詢的入口網站。
 
 ## <a name="reference"></a>參考
 
 - [查詢語言參考](/azure/kusto/query)是適用於 Kusto 查詢語言的完整語言參考。
 - [Azure 監視器記錄查詢語言差異](data-explorer-difference.md)說明 Kusto 查詢語言版本間的差異。
-- [Azure 監視器記錄記錄中的標準屬性](../../azure-monitor/platform/log-standard-properties.md)說明所有 Azure 監視器記錄資料的標準屬性。
-- [在 Azure 監視器中執行跨資源記錄搜尋](../../azure-monitor/log-query/cross-workspace-query.md)說明如何撰寫記錄查詢，這類查詢會使用來自多個 Log Analytics 工作區與 Application Insights 應用程式的資料。
+- [Azure 監視器記錄記錄中的標準屬性](../platform/log-standard-properties.md)說明所有 Azure 監視器記錄資料的標準屬性。
+- [在 Azure 監視器中執行跨資源記錄搜尋](./cross-workspace-query.md)說明如何撰寫記錄查詢，這類查詢會使用來自多個 Log Analytics 工作區與 Application Insights 應用程式的資料。
 
 ## <a name="examples"></a>範例
 
@@ -58,3 +58,4 @@ Azure 監視器記錄以 Azure 資料總管為基礎建置，且 Azure 監視器
 ## <a name="next-steps"></a>後續步驟
 
 - 存取完整的[資料總管查詢語言的參考文件](/azure/kusto/query/)。
+

@@ -7,11 +7,16 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
-ms.openlocfilehash: 71a5737434e78bc39bccdfeb950e0dbc32ed0052
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom:
+- 'Role: Cloud Development'
+- 'Role: Operations'
+- 'Role: Technical Support'
+ms.openlocfilehash: 675391a92c991f80faadf8b75abc79dcb4cd19d7
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84688971"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322953"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>參考 - IoT 中樞配額和節流
 
@@ -92,7 +97,7 @@ ms.locfileid: "84688971"
 
 IoT 中樞會強制執行其他操作限制：
 
-| 操作 | 限制 |
+| 作業 | 限制 |
 | --------- | ----- |
 | 裝置 | 裝置總數加上可向單一 IoT 中樞註冊的模組，其上限為1000000。 增加此限制的唯一方式是聯絡[Microsoft 支援服務](https://azure.microsoft.com/support/options/)。|
 | 檔案上傳 | 每個裝置10個並行檔案上傳。 |

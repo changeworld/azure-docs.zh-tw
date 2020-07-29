@@ -11,18 +11,18 @@ ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 03/05/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 68c328bde853bbf4e48ab7ab1a6e2c7b51198f59
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 47daf331c717ebb9752644deac826330681bb31a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87030686"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320811"
 ---
 # <a name="troubleshoot-docker-deployment-of-models-with-azure-kubernetes-service-and-azure-container-instances"></a>針對使用 Azure Kubernetes Service 和 Azure 容器實例的模型進行 Docker 部署進行疑難排解 
 
 瞭解如何使用 Azure Machine Learning，針對 Azure 容器實例（ACI）和 Azure Kubernetes Service （AKS）的常見 Docker 部署錯誤進行疑難排解和解決或解決。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * **Azure 訂用帳戶**。 如果您沒有訂用帳戶，則可[試用免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
 * [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。
@@ -184,7 +184,9 @@ print(service.get_logs())
 # if you only know the name of the service (note there might be multiple services with the same name but different version number)
 print(ws.webservices['mysvc'].get_logs())
 ```
-
+如果您在 `Booting worker with pid: <pid>` 記錄中看到出現多次的行，則表示沒有足夠的記憶體可啟動背景工作。
+您可以藉由增加中的值來解決此錯誤 `memory_gb``deployment_config`
+ 
 ## <a name="container-cannot-be-scheduled"></a>無法排程容器
 
 將服務部署至 Azure Kubernetes Service 計算目標時，Azure Machine Learning 會嘗試使用要求的資源量來排程服務。 如果在5分鐘之後，叢集中沒有可用的適當資源量的節點，部署將會失敗並顯示訊息 `Couldn't Schedule because the kubernetes cluster didn't have available resources after trying for 00:05:00` 。 您可以藉由新增更多節點、變更節點的 SKU 或變更服務的資源需求，來解決這個錯誤。 

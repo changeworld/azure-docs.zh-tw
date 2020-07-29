@@ -1,6 +1,6 @@
 ---
-title: 連接到 Windows 虛擬桌面秋季 2019 Windows 10 或 7-Azure
-description: 如何使用 Windows 桌面用戶端連接到 Windows 虛擬桌面。
+title: 連接到 Windows 虛擬桌面（傳統） Windows 10 或 7-Azure
+description: 如何使用 Windows 桌面用戶端連接到 Windows 虛擬桌面（傳統）。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,24 +8,24 @@ ms.topic: how-to
 ms.date: 07/16/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3bddfe22f70c1044ca02fb41a1959884f41797bb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d420927727c2d2209c00f4852188c4a2d8e4342d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083543"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87270323"
 ---
-# <a name="connect-with-the-windows-desktop-client---fall-2019"></a>與 Windows 桌面用戶端連接-秋季2019
+# <a name="connect-with-the-windows-desktop-classic-client"></a>與 Windows 桌面（傳統）用戶端連接
 
 > 適用于： Windows 7、Windows 10 和 Windows 10 IoT 企業版
 
 >[!IMPORTANT]
->此內容適用於不支援 Azure Resource Manager Windows 虛擬桌面物件的 2019 年秋季版本。 如果您嘗試管理 2020 年春季版更新中引進的 Azure Resource Manager Windows 虛擬桌面物件，請參閱[這篇文章](../connect-windows-7-10.md)。
+>此內容適用于 Windows 虛擬桌面（傳統），不支援 Azure Resource Manager Windows 虛擬桌面物件。 如果您正嘗試管理 Azure Resource Manager Windows 虛擬桌面物件，請參閱[這篇文章](../connect-windows-7-10.md)。
 
 您可以使用 Windows 桌面用戶端，存取 Windows 7、Windows 10 和 Windows 10 IoT 企業版裝置上的 Windows 虛擬桌面資源。 用戶端不支援 Windows 8 或 Windows 8.1。
 
 >[!NOTE]
->Windows 用戶端會自動預設為 Windows 虛擬桌面秋季2019版。 不過，如果用戶端偵測到使用者也有 Azure Resource Manager 資源，它會自動新增資源，或通知使用者其可用。
+>Windows 用戶端會自動預設為 Windows 虛擬桌面（傳統）。 不過，如果用戶端偵測到使用者也有 Azure Resource Manager 資源，它會自動新增資源，或通知使用者其可用。
 
 > [!IMPORTANT]
 > Windows 虛擬桌面不支援 RemoteApp 和桌面連線 (RADC) 用戶端或遠端桌面連線 (MSTSC) 用戶端。
@@ -63,10 +63,10 @@ ms.locfileid: "87083543"
 1. 從用戶端的主頁面中，選取 [**訂閱 URL**]。
 2. 輸入工作區 URL 或您的電子郵件地址：
    - 如果您使用**工作區 URL**，請使用系統管理員提供的帳戶。 如果從 Windows 虛擬桌面存取資源，您可以使用下列其中一個 URL：
-     - Windows 虛擬桌面 2019 年秋季版：`https://rdweb.wvd.microsoft.com/api/feeddiscovery/webfeeddiscovery.aspx`
-     - Windows 虛擬桌面 2020 年春季版：`https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery`
+     - Windows 虛擬桌面（傳統）：`https://rdweb.wvd.microsoft.com/api/feeddiscovery/webfeeddiscovery.aspx`
+     - Windows 虛擬桌面：`https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery`
    - 如果您要改為使用 [**電子郵件**] 欄位，請輸入您的電子郵件地址。 如果您的系統管理員已設定[電子郵件探索](/windows-server/remote/remote-desktop-services/rds-email-discovery)，這會告訴用戶端搜尋與您的電子郵件地址相關聯的 URL。
-3. 選取 [下一步]。
+3. 選取 [下一步] 。
 4. 出現提示時，使用您的使用者帳戶登入。
 5. 資源應會出現在 [連線中心] 中（依工作區分組）。
 

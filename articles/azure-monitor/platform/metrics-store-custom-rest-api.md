@@ -7,18 +7,19 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 84709c022631543101889f784231158ebb96b6f3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c315cc8c9dfcfa66999ff263fab95f414061e54e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77662259"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321253"
 ---
 # <a name="send-custom-metrics-for-an-azure-resource-to-the-azure-monitor-metric-store-by-using-a-rest-api"></a>使用 REST API 將 Azure 資源的自訂計量傳送至 Azure 監視器計量的存放區
 
 本文將說明如何透過 REST API 將 Azure 資源的自訂計量傳送至 Azure 監視器計量存放區。 在計量位於 Azure 監視器之後，您可以執行使用標準計量執行的所有作業。 例如製作圖表、警示，以及將它們路由傳送至其他外部工具。  
 
 >[!NOTE]  
->REST API 僅允許傳送 Azure 資源的自訂計量。 若要傳送不同環境或內部部署的資源的計量，您可以使用 [Application Insights](../../azure-monitor/app/api-custom-events-metrics.md)。    
+>REST API 僅允許傳送 Azure 資源的自訂計量。 若要傳送不同環境或內部部署的資源的計量，您可以使用 [Application Insights](../app/api-custom-events-metrics.md)。    
 
 
 ## <a name="create-and-authorize-a-service-principal-to-emit-metrics"></a>建立及授權服務主體以發出計量 
@@ -92,7 +93,7 @@ curl -X POST https://login.microsoftonline.com/<yourtenantid>/oauth2/token -F "g
 1. 您不能發出訂用帳戶或資源群組的計量作為您的 Azure 資源。 
 1. 您不能將計量放入超過 20 分鐘的存放區。 計量存放區已針對警示與即時圖表而最佳化。 
 2. 維度名稱的數目應該符合值，反之亦然。 檢查值。 
-2. 您所發出的計量，其區域不支援自訂計量。 請參閱[支援的區域](../../azure-monitor/platform/metrics-custom-overview.md#supported-regions)。 
+2. 您所發出的計量，其區域不支援自訂計量。 請參閱[支援的區域](./metrics-custom-overview.md#supported-regions)。 
 
 
 
@@ -116,5 +117,5 @@ curl -X POST https://login.microsoftonline.com/<yourtenantid>/oauth2/token -F "g
 
  
 ## <a name="next-steps"></a>後續步驟
-- 深入了解[自訂計量](../../azure-monitor/platform/metrics-custom-overview.md)。
+- 深入了解[自訂計量](./metrics-custom-overview.md)。
 

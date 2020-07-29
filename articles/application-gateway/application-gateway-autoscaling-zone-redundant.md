@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 06/06/2020
 ms.author: victorh
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 0a82a35f1736aa7908928cbca3397cbe9c705e5b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f10bb1f4065f3bdb517fcad4f3eb6caa331c5233
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87088101"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87273196"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>自動調整規模和區域備援應用程式閘道 v2 
 
-應用程式閘道和 Web 應用程式防火牆 (WAF) 也適用於 Standard_v2 和 WAF_v2 SKU。 v2 SKU 提供效能增強功能，並新增自動調整、區域備援和靜態 VIP 支援等重要新功能的支援。 除了＜[比較](#differences-from-v1-sku)＞一節中所列的幾個例外項目之外，新 v2 SKU 會繼續支援標準和 WAF SKU 下的現有功能。
+應用程式閘道可在 Standard_v2 SKU 下取得。 Web 應用程式防火牆（WAF）可在 WAF_v2 SKU 下取得。 v2 SKU 提供效能增強功能，並新增自動調整、區域備援和靜態 VIP 支援等重要新功能的支援。 除了＜[比較](#differences-from-v1-sku)＞一節中所列的幾個例外項目之外，新 v2 SKU 會繼續支援標準和 WAF SKU 下的現有功能。
 
 新的 v2 SKU 包含下列增強功能：
 

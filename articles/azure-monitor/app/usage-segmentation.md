@@ -6,16 +6,16 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/24/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 0d605286df70988852d1650be58cfb2c395de814
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d11b12ba37d543ec21985c52c4ffb3399bfc56d1
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539800"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323514"
 ---
 # <a name="users-sessions-and-events-analysis-in-application-insights"></a>Application Insights 中的使用者、工作階段和事件分析
 
-了解人們在使用您的 Web 應用程式時，他們最感興趣的網頁、使用者的所在位置，以及他們使用何種瀏覽器與作業系統。 使用 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) 來分析商務和使用量遙測。
+了解人們在使用您的 Web 應用程式時，他們最感興趣的網頁、使用者的所在位置，以及他們使用何種瀏覽器與作業系統。 使用 [Azure Application Insights](./app-insights-overview.md) 來分析商務和使用量遙測。
 
 ![Application Insights 使用者的螢幕擷取畫面](./media/usage-segmentation/0001-users.png)
 
@@ -29,9 +29,9 @@ ms.locfileid: "86539800"
 
 * **使用者工具**︰使用您應用程式的使用者數目和應用程式的功能。  會使用儲存在瀏覽器 Cookie 中的匿名識別碼來計算使用者。 使用不同瀏覽器或電腦的單一使用者將會計算為多個使用者。
 * **工作階段工具**︰已包含應用程式的特定頁面和功能之使用者活動的工作階段數目。 在使用者閒置半小時或連續使用 24 小時之後，系統就會計算工作階段。
-* **事件工具**︰您應用程式的特定頁面與功能之使用頻率。 當瀏覽器從您的應用程式載入頁面時 (假如您已[將它進行檢測](../../azure-monitor/app/javascript.md)) 就會計算頁面檢視。 
+* **事件工具**︰您應用程式的特定頁面與功能之使用頻率。 當瀏覽器從您的應用程式載入頁面時 (假如您已[將它進行檢測](./javascript.md)) 就會計算頁面檢視。 
 
-    自訂事件代表您應用程式中的事情發生一次，通常是諸如按一下按鈕或完成某些工作等使用者互動。 將程式碼插入您的應用程式可[產生自訂事件](../../azure-monitor/app/api-custom-events-metrics.md#trackevent)。
+    自訂事件代表您應用程式中的事情發生一次，通常是諸如按一下按鈕或完成某些工作等使用者互動。 將程式碼插入您的應用程式可[產生自訂事件](./api-custom-events-metrics.md#trackevent)。
 
 ## <a name="querying-for-certain-users"></a>查詢特定使用者
 
@@ -62,5 +62,6 @@ ms.locfileid: "86539800"
     - [漏斗圖](usage-funnels.md)
     - [保留](usage-retention.md)
     - [使用者流程](usage-flows.md)
-    - [活頁簿](../../azure-monitor/platform/workbooks-overview.md)
+    - [活頁簿](../platform/workbooks-overview.md)
     - [新增使用者內容](usage-send-user-context.md)
+

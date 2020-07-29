@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/09/2019
-ms.openlocfilehash: 5d31c829487400f8eb239c0b837e53eecafeb900
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7cb8073d048118e704dafb0c70fe7cdb6774344a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83201111"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324534"
 ---
 # <a name="app-expression-in-azure-monitor-query"></a>Azure 監視器查詢中的 app() 運算式
 
@@ -19,7 +20,7 @@ ms.locfileid: "83201111"
 > [!IMPORTANT]
 > 如果您使用以[工作區為基礎的 Application Insights 資源](../app/create-workspace-resource.md)，則不會使用應用程式（）運算式，因為記錄資料儲存在 log Analytics 工作區中。 使用 log （）運算式來撰寫查詢，其中包含多個工作區中的應用程式。 針對同一個工作區中的多個應用程式，您不需要跨工作區查詢。
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>語法
 
 `app(`*標識*`)`
 
@@ -36,7 +37,7 @@ ms.locfileid: "83201111"
 | Azure 資源識別碼 | Azure 資源的識別碼 |app("/subscriptions/7293b69-db12-44fc-9a66-9c2005c3051d/resourcegroups/Fabrikam/providers/microsoft.insights/components/fabrikamapp") |
 
 
-## <a name="notes"></a>備註
+## <a name="notes"></a>注意
 
 * 您必須有應用程式的讀取權限。
 * 以應用程式名稱來識別應用程式時，會假設該名稱在所有可存取的訂用帳戶中是唯一的。 如果您有多個應用程式具有該指定名稱，查詢將會因為語意模糊而失敗。 在此情況下，您必須使用其中一種其他識別碼。
@@ -72,5 +73,6 @@ union
 ## <a name="next-steps"></a>後續步驟
 
 - 請參閱 [workspace 運算式](workspace-expression.md)，以參考 Log Analytics 工作區。
-- 了解 [Azure 監視器資料](../../azure-monitor/log-query/log-query-overview.md)的儲存方式。
+- 了解 [Azure 監視器資料](./log-query-overview.md)的儲存方式。
 - 存取 [Kusto 查詢語言](/azure/kusto/query/)的完整文件。
+

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: tokaplan
 ms.author: alkaplan
 ms.date: 04/25/2019
-ms.openlocfilehash: 4bb1af6ca2126b7ae58a6c836624ec78a071a5a5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3cd43963175594fcdc1c3c67d6b2493ce1ccd313
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075289"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321916"
 ---
 # <a name="zero-instrumentation-application-monitoring-for-kubernetes-hosted-applications-with-istio---deprecated"></a>使用 Istio 針對 Kubernetes 裝載的應用程式進行的零檢測設備應用程式監視 - 已過時
 
@@ -18,10 +18,10 @@ ms.locfileid: "87075289"
 > 此功能目前即將淘汰，將於 2020 年 8 月 1 日之後不再支援。
 > 目前，只有[透過獨立代理程式的 Java](./java-in-process-agent.md) \(部分機器翻譯\)，才能啟用無程式碼監視。 針對其他語言，請使用 SDK 來監視 AKS 上的應用程式：[ASP.Net Core](./asp-net-core.md) \(部分機器翻譯\)、[ASP.Net](./asp-net.md)、[Node.js](./nodejs.md) \(部分機器翻譯\)、[JavaScript](./javascript.md) \(部分機器翻譯\) 及 [Python](./opencensus-python.md) \(部分機器翻譯\)。
 
-Azure 監視器現在會在您的 Kubernetes 叢集上運用服務網格技術 Istio，為任何 Kubernetes 裝載的應用程式提供全新的應用程式監視。 使用預設的 Application Insight 功能，例如，使用[應用程式對應](../../azure-monitor/app/app-map.md)來建立相依性模型、使用[即時計量資料流](../../azure-monitor/app/live-stream.md)進行即時監視，以及利用[預設儀表板](../../azure-monitor/app/overview-dashboard.md)、[計量瀏覽器](../../azure-monitor/platform/metrics-getting-started.md)和[活頁簿](../../azure-monitor/platform/workbooks-overview.md)來產生功能強大的視覺效果。 此功能將協助使用者，在選取的 Kubernetes 命名空間中，找出其所有 Kubernetes 工作負載之間的效能瓶頸和失敗作用區。 藉由使用 Istio 之類的技術來讓您的現有服務網格投資發揮最大效益，Azure 監視器就能夠自動檢測應用程式監視，而不需對您應用程式的程式碼進行任何修改。
+Azure 監視器現在會在您的 Kubernetes 叢集上運用服務網格技術 Istio，為任何 Kubernetes 裝載的應用程式提供全新的應用程式監視。 使用預設的 Application Insight 功能，例如，使用[應用程式對應](./app-map.md)來建立相依性模型、使用[即時計量資料流](./live-stream.md)進行即時監視，以及利用[預設儀表板](./overview-dashboard.md)、[計量瀏覽器](../platform/metrics-getting-started.md)和[活頁簿](../platform/workbooks-overview.md)來產生功能強大的視覺效果。 此功能將協助使用者，在選取的 Kubernetes 命名空間中，找出其所有 Kubernetes 工作負載之間的效能瓶頸和失敗作用區。 藉由使用 Istio 之類的技術來讓您的現有服務網格投資發揮最大效益，Azure 監視器就能夠自動檢測應用程式監視，而不需對您應用程式的程式碼進行任何修改。
 
 > [!NOTE]
-> 這是在 Kubernetes 上執行應用程式監視的眾多方式之一。 您也可以使用 [Application Insights SDK](../../azure-monitor/azure-monitor-app-hub.yml) 來檢測裝載於 Kubernetes 的任何應用程式，而不需使用服務網格。 若要在不使用 SDK 檢測應用程式的情況下監視 Kubernetes，您可以使用下列方法。
+> 這是在 Kubernetes 上執行應用程式監視的眾多方式之一。 您也可以使用 [Application Insights SDK](../azure-monitor-app-hub.yml) 來檢測裝載於 Kubernetes 的任何應用程式，而不需使用服務網格。 若要在不使用 SDK 檢測應用程式的情況下監視 Kubernetes，您可以使用下列方法。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -34,12 +34,12 @@ Azure 監視器現在會在您的 Kubernetes 叢集上運用服務網格技術 I
 
 針對 Kubernetes 裝載的應用程式使用零檢測設備應用程式監視，您將能夠使用：
 
-- [應用程式對應](../../azure-monitor/app/app-map.md)
-- [即時資料流計量](../../azure-monitor/app/live-stream.md)
-- [儀表板](../../azure-monitor/app/overview-dashboard.md)
-- [計量瀏覽器](../../azure-monitor/platform/metrics-getting-started.md)
-- [分散式追蹤](../../azure-monitor/app/distributed-tracing.md)
-- [端對端交易監視](../../azure-monitor/learn/tutorial-performance.md#identify-slow-server-operations)
+- [應用程式對應](./app-map.md)
+- [即時資料流計量](./live-stream.md)
+- [儀表板](./overview-dashboard.md)
+- [計量瀏覽器](../platform/metrics-getting-started.md)
+- [分散式追蹤](./distributed-tracing.md)
+- [端對端交易監視](../learn/tutorial-performance.md#identify-slow-server-operations)
 
 ## <a name="installation-steps"></a>安裝步驟
 
@@ -141,4 +141,5 @@ kubectl delete -f <filename.yaml>
 
 ## <a name="next-steps"></a>後續步驟
 
-若要深入了解 Azure 監視器和容器如何搭配使用，請瀏覽[適用於容器的 Azure 監視器概觀](../../azure-monitor/insights/container-insights-overview.md)
+若要深入了解 Azure 監視器和容器如何搭配使用，請瀏覽[適用於容器的 Azure 監視器概觀](../insights/container-insights-overview.md)
+

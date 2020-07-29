@@ -8,15 +8,15 @@ ms.author: roastala
 ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: larryfr
-ms.topic: how-to
 ms.date: 12/27/2019
-ms.custom: seodec18, tracking-python
-ms.openlocfilehash: 0d8f6069193607d19e10c013f3d9cb1cf00a7de6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.topic: conceptual
+ms.custom: how-to, tracking-python
+ms.openlocfilehash: f0ac64fa184382f3939530565caa93f87da0fbf6
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84816728"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321474"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>設定 Azure Machine Learning 的開發環境
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -136,7 +136,7 @@ Azure Machine Learning SDK 適用於 Ubuntu 或 Windows版本的 DSVM。 但如�
 
 ## <a name="local-computer"></a><a id="local"></a>本機電腦
 
-當您使用本機電腦（也可能是遠端虛擬機器）時，請建立 Anaconda 環境並安裝 SDK。 以下是範例：
+當您使用本機電腦（也可能是遠端虛擬機器）時，請建立 Anaconda 環境並安裝 SDK。 以下為範例：
 
 1. 如果您還沒有[Anaconda](https://www.anaconda.com/distribution/#download-section) （Python 3.7 版本），請下載並安裝。
 

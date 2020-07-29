@@ -3,11 +3,12 @@ title: Azure Application Insights 概觀儀表板 | Microsoft Docs
 description: 使用 Azure Application Insights 和概觀儀表板的功能監控應用程式。
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: e5188972d9058b85a9765c7d33f6209b37245d7e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c8aa4460a545f032eaa60560de00efff27ae1ef
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77669891"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322528"
 ---
 # <a name="application-insights-overview-dashboard"></a>Azure Application Insights 概觀儀表板
 
@@ -56,6 +57,7 @@ Application Insights 一直以來都在提供摘要概覽窗格，以便一眼�
 
 ## <a name="next-steps"></a>後續步驟
 
-- [漏斗圖](../../azure-monitor/app/usage-funnels.md)
-- [保留](../../azure-monitor/app/usage-retention.md)
-- [使用者流程](../../azure-monitor/app/usage-flows.md)
+- [漏斗圖](./usage-funnels.md)
+- [保留](./usage-retention.md)
+- [使用者流程](./usage-flows.md)
+

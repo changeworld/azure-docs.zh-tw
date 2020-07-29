@@ -4,15 +4,15 @@ description: 瞭解如何使用所需的方案，在 Azure Marketplace 上建立
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-author: emuench
-ms.author: mingshen
+author: iqshahmicrosoft
+ms.author: iqshah
 ms.date: 07/17/2020
-ms.openlocfilehash: 6df1620f2d1097ac23e5dfa3903fefc74d13fa65
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8da76650f9cc3da0ff8f79a9d3df7a00cdd01a24
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87012020"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324687"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>在 Azure Marketplace 上建立 Azure 虛擬機器供應項目
 
@@ -530,11 +530,11 @@ Microsoft 將會傳送一封電子郵件訊息，讓您知道供應項目的預�
 
 1. 大型標誌
 2. 價格
-3. Categories
+3. 類別
 4. 條款及條件
 5. 隱私權原則位址（連結）
 6. 供應項目名稱
-7. 描述
+7. 說明
 8. 實用的連結
 9. 螢幕擷取畫面/影片
 
@@ -566,7 +566,7 @@ Microsoft 將會傳送一封電子郵件訊息，讓您知道供應項目的預�
 #### <a name="call-out-descriptions"></a>向外撥說明
 
 1. 名稱
-2. 描述
+2. 說明
 3. 實用的連結
 4. 螢幕擷取畫面/影片
 

@@ -4,17 +4,17 @@ description: 列出 Azure 中適用于高效能運算虛擬機器的不同大小
 author: vermagit
 ms.service: virtual-machines
 ms.subservice: sizes
-ms.topic: article
+ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: 041300efd9d756f2ef8145adb23d745b2345c7eb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ffbe61cd84d2c543f0db97a5d70ad13193f2a68d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87058777"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87267110"
 ---
 # <a name="high-performance-computing-vm-sizes"></a>高效能計算 VM 大小
 
@@ -96,7 +96,7 @@ Azure 提供數個選項來建立 Windows HPC VM 的叢集，而這些 VM 可以
 
 - **MICROSOFT HPC Pack**  - [HPC Pack](/powershell/high-performance-computing/overview)包含適用于 ms-chap 的執行時間環境，它會在部署于支援 RDMA 的 Linux vm 上時使用 Azure RDMA 網路。 如需部署的範例，請參閱[使用 HPC Pack 設定 LINUX RDMA 叢集以執行 MPI 應用程式](/powershell/high-performance-computing/hpcpack-linux-openfoam)。
 
-## <a name="deployment-considerations"></a>部署考量
+## <a name="deployment-considerations"></a>部署考量因素
 
 - **Azure 訂用帳戶** – 若要部署的不只是少數的計算密集執行個體，請考慮隨用隨付訂用帳戶或其他購買選項。 如果您使用 [Azure 免費帳戶](https://azure.microsoft.com/free/)，您只能使用有限數目的 Azure 計算核心。
 

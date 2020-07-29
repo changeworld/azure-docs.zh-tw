@@ -1,7 +1,7 @@
 ---
 title: 建立、變更或刪除 Azure 虛擬網路
 titlesuffix: Azure Virtual Network
-description: 了解如何在 Azure 中建立、變更或刪除虛擬網路。
+description: 建立和刪除虛擬網路，以及變更現有虛擬網路的設定，例如 DNS 伺服器和 IP 位址空間。
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -12,11 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: kumud
-ms.openlocfilehash: 3f0060944a2733c31c3bef67aa005e5476778ce2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0a35576435780ee43d9f2aa99167b736f90799ab
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710026"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87265240"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>建立、變更或刪除虛擬網路
 
@@ -158,7 +159,7 @@ ms.locfileid: "84710026"
 1. 在入口網站頂端的搜尋方塊中輸入「虛擬網路」**。 當搜尋結果中出現**虛擬網路**時加以選取。
 2. 從虛擬網路清單中，選取您要刪除的虛擬網路。
 3. 請在 [設定]**** 底下，選取 [連接的裝置]****，確認沒有任何裝置連線到虛擬網路。 如果有已連線的裝置，您必須先將其刪除，才能刪除虛擬網路。 如果沒有連接的裝置，請選取 [概觀]****。
-4. 選取 [刪除] 。
+4. 選取 [刪除]。
 5. 若要確認刪除虛擬網路，請選取 [是]****。
 
 **命令**
@@ -170,7 +171,7 @@ ms.locfileid: "84710026"
 
 若要針對虛擬網路執行工作，您的帳戶必須指派為[網路參與者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)角色，或為已指派下表中所列適當動作的[自訂](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)角色：
 
-| 動作                                  |   Name                                |
+| 動作                                  |   名稱                                |
 |---------------------------------------- |   --------------------------------    |
 |Microsoft.Network/virtualNetworks/read   |   讀取虛擬網路              |
 |Microsoft.Network/virtualNetworks/write  |   建立或更新虛擬網路  |

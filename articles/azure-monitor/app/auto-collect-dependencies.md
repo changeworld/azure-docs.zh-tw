@@ -5,12 +5,12 @@ ms.topic: reference
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/06/2020
-ms.openlocfilehash: ba7830cc1c0a3e6a563b4343b37ec07f7d508af4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2227facfcf469bc22034da0da504b390cc0deee1
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087980"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324177"
 ---
 # <a name="dependency-auto-collection"></a>相依性自動收集
 
@@ -88,9 +88,10 @@ ms.locfileid: "87087980"
 
 ## <a name="next-steps"></a>後續步驟
 
-- 設定 [.NET](../../azure-monitor/app/asp-net-dependencies.md) 的自訂相依性追蹤。
-- 設定 [Java](../../azure-monitor/app/java-agent.md) 的自訂相依性追蹤。
-- 設定[OpenCensus Python](../../azure-monitor/app/opencensus-python-dependency.md)的自訂相依性追蹤。
-- [撰寫自訂相依性遙測](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency)
-- 如需 Application Insights 類型和資料模型，請參閱[資料模型](../../azure-monitor/app/data-model.md)。
-- 查看 Application Insights 支援的[平台](../../azure-monitor/app/platforms.md)。
+- 設定 [.NET](./asp-net-dependencies.md) 的自訂相依性追蹤。
+- 設定 [Java](./java-agent.md) 的自訂相依性追蹤。
+- 設定[OpenCensus Python](./opencensus-python-dependency.md)的自訂相依性追蹤。
+- [撰寫自訂相依性遙測](./api-custom-events-metrics.md#trackdependency)
+- 如需 Application Insights 類型和資料模型，請參閱[資料模型](./data-model.md)。
+- 查看 Application Insights 支援的[平台](./platforms.md)。
+

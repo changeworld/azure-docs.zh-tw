@@ -4,15 +4,15 @@ description: API，用來抓取供應專案上的所有作業，或取得指定�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-author: dsindona
-ms.author: dsindona
+author: mingshen-ms
+ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 90ff7c4a85fd9e48ac3aa49ace99f43eb0244603
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: cb44d977407a7e854603e6bbacf3591752b109c2
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520284"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87271938"
 ---
 # <a name="retrieve-operations"></a>擷取作業
 
@@ -33,10 +33,10 @@ ms.locfileid: "86520284"
 
 |  **名稱**          |      **說明**                                                                                           | **Data type** |
 |  ----------------  |     --------------------------------------------------------------------------------------------------------   |  -----------  |
-|  publisherId       |  發行者識別碼，例如 `Contoso`                                                                   |  字串       |
-|  offerId           |  供應項目識別碼                                                                                              |  字串       |
+|  publisherId       |  發行者識別碼，例如 `Contoso`                                                                   |  String       |
+|  offerId           |  供應項目識別碼                                                                                              |  String       |
 |  operationId       |  可唯一識別供應項目作業的 GUID。 您可以使用此 API 擷取 operationId，並針對任何長時間執行的作業 (例如[發佈供應項目](./cloud-partner-portal-api-publish-offer.md) API)，在回應的 HTTP 標頭中傳回。  |   Guid   |
-|  api-version       | API 的最新版本 |    日期      |
+|  api-version       | API 的最新版本 |    Date      |
 |  |  |  |
 
 ## <a name="header"></a>頁首

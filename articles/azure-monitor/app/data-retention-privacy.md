@@ -3,12 +3,12 @@ title: Azure Application Insights 中的資料保留和儲存 | Microsoft Docs
 description: 保留和隱私權原則聲明
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 16483c9417c08ea60853d7e70b7121cd0af9db71
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 039e86f964649441967dff82270a3a6c460612f0
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540055"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324466"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Application Insights 中的資料收集、保留和儲存
 
@@ -38,24 +38,24 @@ Application Insights SDK 可用於多種應用程式類型：裝載於您自己�
 ## <a name="what-data-does-it-collect"></a>它會收集哪些資料？
 來源資料共有三種：
 
-* SDK - 可在[開發](../../azure-monitor/app/asp-net.md)或[執行階段](../../azure-monitor/app/monitor-performance-live-website-now.md)與您的應用程式整合。 不同的應用程式類型有不同的 SDK。 此外，還有[網頁的 SDK](../../azure-monitor/app/javascript.md)，會連同頁面載入至使用者的瀏覽器。
+* SDK - 可在[開發](./asp-net.md)或[執行階段](./monitor-performance-live-website-now.md)與您的應用程式整合。 不同的應用程式類型有不同的 SDK。 此外，還有[網頁的 SDK](./javascript.md)，會連同頁面載入至使用者的瀏覽器。
   
-  * 每個 SDK 各有多種 [模組](../../azure-monitor/app/configuration-with-applicationinsights-config.md)，可使用不同的技術來收集不同類型的遙測。
+  * 每個 SDK 各有多種 [模組](./configuration-with-applicationinsights-config.md)，可使用不同的技術來收集不同類型的遙測。
   * 如果您在開發環境中安裝 SDK，則您可以使用其 API，在標準模組以外傳送您自己的遙測。 此自訂遙測可包含您想要傳送的任何資料。
-* 在某些網頁伺服器中，也有與應用程式一起執行，並傳送關於 CPU、記憶體和網路佔用量之遙測的代理程式。 例如，Azure VM、Docker 主機和 [Java EE 伺服器](../../azure-monitor/app/java-agent.md) 都可能有這類代理程式。
-* [可用性測試](../../azure-monitor/app/monitor-web-app-availability.md) 是 Microsoft 所執行程序，會定期將要求傳送至您的 Web 應用程式。 結果會傳送至 Application Insights 服務。
+* 在某些網頁伺服器中，也有與應用程式一起執行，並傳送關於 CPU、記憶體和網路佔用量之遙測的代理程式。 例如，Azure VM、Docker 主機和 [Java EE 伺服器](./java-agent.md) 都可能有這類代理程式。
+* [可用性測試](./monitor-web-app-availability.md) 是 Microsoft 所執行程序，會定期將要求傳送至您的 Web 應用程式。 結果會傳送至 Application Insights 服務。
 
 ### <a name="what-kinds-of-data-are-collected"></a>會收集哪些類型的資料？
 主要類別如下：
 
-* [Web 伺服器遙測](../../azure-monitor/app/asp-net.md) - HTTP 要求。  URI、處理要求所花費的時間、回應碼、用戶端 IP 位址。 `Session id`.
-* [網頁](../../azure-monitor/app/javascript.md) - 頁面、使用者和工作階段計數。 頁面載入時間。 例外狀況。 Ajax 呼叫。
+* [Web 伺服器遙測](./asp-net.md) - HTTP 要求。  URI、處理要求所花費的時間、回應碼、用戶端 IP 位址。 `Session id`.
+* [網頁](./javascript.md) - 頁面、使用者和工作階段計數。 頁面載入時間。 例外狀況。 Ajax 呼叫。
 * 效能計數器 - 記憶體、CPU、IO、網路佔用量。
 * 用戶端和伺服器內容 - OS、地區設定、裝置類型、瀏覽器和螢幕解析度。
-* [例外](../../azure-monitor/app/asp-net-exceptions.md)狀況和損毀-**堆疊**傾印、 `build id` 、CPU 類型。 
-* [相依性](../../azure-monitor/app/asp-net-dependencies.md) - 對外部服務的呼叫，例如 REST、SQL、AJAX。 URI 或連接字串、持續時間、成功、命令。
-* [可用性測試](../../azure-monitor/app/monitor-web-app-availability.md) - 測試的持續時間、步驟、回應。
-* [追蹤記錄](../../azure-monitor/app/asp-net-trace-logs.md)和[自訂遙測](../../azure-monitor/app/api-custom-events-metrics.md) - **任何您以程式碼撰寫到記錄或遙測中的項目**。
+* [例外](./asp-net-exceptions.md)狀況和損毀-**堆疊**傾印、 `build id` 、CPU 類型。 
+* [相依性](./asp-net-dependencies.md) - 對外部服務的呼叫，例如 REST、SQL、AJAX。 URI 或連接字串、持續時間、成功、命令。
+* [可用性測試](./monitor-web-app-availability.md) - 測試的持續時間、步驟、回應。
+* [追蹤記錄](./asp-net-trace-logs.md)和[自訂遙測](./api-custom-events-metrics.md) - **任何您以程式碼撰寫到記錄或遙測中的項目**。
 
 [詳細資訊](#data-sent-by-application-insights)。
 
@@ -71,16 +71,16 @@ Application Insights SDK 可用於多種應用程式類型：裝載於您自己�
 ![按 F12 鍵，然後開啟 [網路] 索引標籤。](./media/data-retention-privacy/08-browser.png)
 
 ### <a name="can-i-write-code-to-filter-the-telemetry-before-it-is-sent"></a>是否可以撰寫程式碼來篩選遙測，然後才傳送出去?
-這可以藉由撰寫 [遙測處理器外掛程式](../../azure-monitor/app/api-filtering-sampling.md)來達成。
+這可以藉由撰寫 [遙測處理器外掛程式](./api-filtering-sampling.md)來達成。
 
 ## <a name="how-long-is-the-data-kept"></a>資料保留多久？
-原始資料點（也就是您可以在 Analytics 中查詢並在搜尋中檢查的專案）會保留最多730天。 您可以選取30、60、90、120、180、270、365、550或730天的[保留期間](./pricing.md#change-the-data-retention-period)。 如果您需要保留超過730天的資料，您可以使用[連續匯出](../../azure-monitor/app/export-telemetry.md)，在資料內嵌期間將它複製到儲存體帳戶。 
+原始資料點（也就是您可以在 Analytics 中查詢並在搜尋中檢查的專案）會保留最多730天。 您可以選取30、60、90、120、180、270、365、550或730天的[保留期間](./pricing.md#change-the-data-retention-period)。 如果您需要保留超過730天的資料，您可以使用[連續匯出](./export-telemetry.md)，在資料內嵌期間將它複製到儲存體帳戶。 
 
 保留時間超過90天的資料會產生額外費用。 若要深入瞭解 Application Insights 定價，請到[Azure 監視器定價頁面](https://azure.microsoft.com/pricing/details/monitor/)。
 
 彙總的資料 (也就是您在計量瀏覽器中看到的計數、平均和其他統計資料) 在 1 分鐘的資料粒度中保存 90 天。
 
-「[偵錯工具快照](../../azure-monitor/app/snapshot-debugger.md)集」會儲存15天。 此保留原則會就個別的應用程式而設定。 如果您需要增加此值，您可以在 Azure 入口網站中建立支援案例，以提出增加的要求。
+「[偵錯工具快照](./snapshot-debugger.md)集」會儲存15天。 此保留原則會就個別的應用程式而設定。 如果您需要增加此值，您可以在 Azure 入口網站中建立支援案例，以提出增加的要求。
 
 ## <a name="who-can-access-the-data"></a>誰可以存取資料？
 您和您的小組成員 (如果您有組織帳戶) 可以看到資料。 
@@ -94,7 +94,7 @@ Microsoft 只會使用這項資料，以將服務提供給您。
 * 建立新的 Application Insights 時，您可以選取位置。 請[在這裡](https://azure.microsoft.com/global-infrastructure/services/?products=all)深入瞭解每個區域的 Application Insights 可用性。
 
 #### <a name="does-that-mean-my-app-has-to-be-hosted-in-the-usa-europe-or-southeast-asia"></a>這是否表示我的應用程式必須裝載在美國、歐洲或東南亞？
-* 否。 您的應用程式可以在任何地方執行，在您自己的內部部署主機上或雲端中皆可。
+* 不可以。 您的應用程式可以在任何地方執行，在您自己的內部部署主機上或雲端中皆可。
 
 ## <a name="how-secure-is-my-data"></a>我的資料有多安全？
 Application Insights 是一項 Azure 服務。 如需安全性原則的相關說明，請參閱[ Azure 安全性、隱私權及法規遵循白皮書](https://go.microsoft.com/fwlink/?linkid=392408)。
@@ -233,7 +233,7 @@ openssl s_client -connect bing.com:443 -tls1_2
 
 ## <a name="personal-data-stored-in-application-insights"></a>儲存在 Application Insights 中的個人資料
 
-我們的 [Application Insights 個人資料文章](../../azure-monitor/platform/personal-data-mgmt.md)會深入討論此議題。
+我們的 [Application Insights 個人資料文章](../platform/personal-data-mgmt.md)會深入討論此議題。
 
 #### <a name="can-my-users-turn-off-application-insights"></a>我的使用者是否可以關閉 Application Insights？
 無法直接進行。 我們不提供您的使用者可以操作來關閉 Application Insights 的參數。
@@ -286,7 +286,7 @@ openssl s_client -connect bing.com:443 -tls1_2
 您可以[編輯 ApplicationInsights.config 來關閉某些資料][config]
 
 > [!NOTE]
-> 用戶端 IP 會用來推斷地理位置，但預設不會再儲存 IP 資料，而且所有的零會寫入相關聯的欄位。 若要深入了解個人資料的處理，建議您閱讀這篇[文章](../../azure-monitor/platform/personal-data-mgmt.md#application-data)。 如果您需要儲存 IP 位址資料，我們的[ip 位址集合文章](./ip-collection.md)會引導您完成選項。
+> 用戶端 IP 會用來推斷地理位置，但預設不會再儲存 IP 資料，而且所有的零會寫入相關聯的欄位。 若要深入了解個人資料的處理，建議您閱讀這篇[文章](../platform/personal-data-mgmt.md#application-data)。 如果您需要儲存 IP 位址資料，我們的[ip 位址集合文章](./ip-collection.md)會引導您完成選項。
 
 ## <a name="credits"></a>學分
 本產品包含 MaxMind 所建立的 GeoLite2 資料（可從取得） [https://www.maxmind.com](https://www.maxmind.com) 。
@@ -295,13 +295,14 @@ openssl s_client -connect bing.com:443 -tls1_2
 
 <!--Link references-->
 
-[api]: ../../azure-monitor/app/api-custom-events-metrics.md
-[apiproperties]: ../../azure-monitor/app/api-custom-events-metrics.md#properties
-[client]: ../../azure-monitor/app/javascript.md
-[config]: ../../azure-monitor/app/configuration-with-applicationinsights-config.md
-[greenbrown]: ../../azure-monitor/app/asp-net.md
-[java]: ../../azure-monitor/app/java-get-started.md
-[platforms]: ../../azure-monitor/app/platforms.md
+[api]: ./api-custom-events-metrics.md
+[apiproperties]: ./api-custom-events-metrics.md#properties
+[client]: ./javascript.md
+[config]: ./configuration-with-applicationinsights-config.md
+[greenbrown]: ./asp-net.md
+[java]: ./java-get-started.md
+[platforms]: ./platforms.md
 [pricing]: https://azure.microsoft.com/pricing/details/application-insights/
-[redfield]: ../../azure-monitor/app/monitor-performance-live-website-now.md
-[start]: ../../azure-monitor/app/app-insights-overview.md
+[redfield]: ./monitor-performance-live-website-now.md
+[start]: ./app-insights-overview.md
+

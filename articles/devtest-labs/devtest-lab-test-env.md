@@ -3,12 +3,12 @@ title: 為 VM 和 PaaS 測試環境使用 Azure DevTest Labs | Microsoft Docs
 description: 了解如何為 VM 和 PaaS 測試環境案例使用 Azure DevTest Labs。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: f364c227c1b53b7887b34c8a3c92ad9045526328
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9207c070c13c5e276a6ab95e3bcf1bb8671dc382
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85484157"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87272890"
 ---
 # <a name="use-azure-devtest-labs-for-vm-and-paas-test-environments"></a>為 VM 和 PaaS 測試環境使用 Azure DevTest Labs
 
@@ -17,7 +17,7 @@ ms.locfileid: "85484157"
 在此案例中，DevTest Labs 提供以下優點：
 
 - 測試人員可以利用可重複使用的範本和構件，快速佈建 Windows 和 Linux 環境，來測試其最新版的應用程式。
-- 測試人員可以佈建多個測試代理程式，相應增加其負載測試。
+- 測試人員可以佈建多個測試代理程式，擴大其負載測試。
 - 系統管理員可以確定下列事項以控制成本：
   - 測試人員無法取得超過所需的 VM。
   - VM 不使用時會關閉。
@@ -48,7 +48,7 @@ ms.locfileid: "85484157"
    | --- | --- |
    | [設定 Azure Marketplace 映像](devtest-lab-configure-marketplace-images.md) |了解如何將 Azure Marketplace 映像加入允許清單；只開放選取您想讓測試人員使用的映像。|
    | [建立自訂映像](devtest-lab-create-template.md) |預先安裝所需軟體以建立自訂映像，讓測試人員可以使用自訂映像快速建立 VM。|
-   | [了解映像處理站](https://blogs.msdn.microsoft.com/devtestlab/2017/04/17/video-custom-image-factory-with-azure-devtest-labs/) |觀看如何設定及使用映像處理站的說明影片。|
+   | [了解映像處理站](./devtest-lab-faq.md#blog-post) |觀看如何設定及使用映像處理站的說明影片。|
 
 3. **建立測試電腦可重複使用的範本** 
    
@@ -139,4 +139,3 @@ ms.locfileid: "85484157"
    | [使用 Resource Manager 範本建立實驗室](devtest-lab-faq.md#how-do-i-create-a-lab-from-a-resource-manager-template) |在 Azure DevTest Labs 中使用 Resource Manager 範本建立實驗室。 |
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
-

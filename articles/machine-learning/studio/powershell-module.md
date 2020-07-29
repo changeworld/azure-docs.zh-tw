@@ -1,6 +1,5 @@
 ---
-title: PowerShell 模組
-titleSuffix: ML Studio (classic) - Azure
+title: ML Studio （傳統）： PowerShell 模組-Azure
 description: 使用 PowerShell 來建立和管理 Azure Machine Learning Studio （傳統）工作區、實驗、web 服務等。
 services: machine-learning
 ms.service: machine-learning
@@ -9,14 +8,17 @@ ms.topic: conceptual
 author: likebupt
 ms.author: keli19
 ms.date: 04/25/2019
-ms.openlocfilehash: 3977bd13d0d3300126e06626e33fde753acc964f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 46f51a09a82d544a5940dfad69dc8e36d99a2f7a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87065777"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324976"
 ---
 # <a name="powershell-modules-for-azure-machine-learning-studio-classic"></a>適用于 Azure Machine Learning Studio 的 PowerShell 模組（傳統）
+
+**適用物件：** ![否](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![ 是 ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio （傳統） 
+
 
 您可以使用 PowerShell 模組，以程式設計方式管理您的 Studio （傳統）資源和資產，例如工作區、資料集和 web 服務。
 
@@ -63,7 +65,7 @@ PowerShell 傳統可以與 Az 或 AzureRM 一起安裝，以同時涵蓋「新�
 | 管理自訂模組 | | [New-AmlCustomModule](https://github.com/hning86/azuremlps#manage-custom-module) |
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 如要完整的檔，請參閱下列 PowerShell 模組：
 * [PowerShell 傳統](https://aka.ms/amlps)
 * [Azure PowerShell Az](https://docs.microsoft.com/powershell/module/az.machinelearning/#machine_learning)

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/16/2018
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: a97fd56f1dc3409666ad86e81a7ac74fee076fa1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5c02812d4c97b94667fcddcb275243e7a9b36b29
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505681"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321899"
 ---
 # <a name="create-an-action-group-with-a-resource-manager-template"></a>使用 Resource Manager 範本建立動作群組
 本文章將說明如何使用 [Azure Resource Manager 範本](../../azure-resource-manager/templates/template-syntax.md)設定動作群組。 您可以使用範本自動設定可在特定類型的警示中重複使用的動作群組。 這些動作群組能確定觸發警示時，所有正確的對象都會收到通知。
@@ -163,6 +163,7 @@ ms.locfileid: "86505681"
 
 
 ## <a name="next-steps"></a>後續步驟
-* 深入了解[動作群組](../../azure-monitor/platform/action-groups.md)。
+* 深入了解[動作群組](./action-groups.md)。
 * 深入瞭解[警示](alerts-overview.md)。
-* 了解如何[使用 Resource Manager 範本新增警示](../../azure-monitor/platform/alerts-activity-log.md)。
+* 了解如何[使用 Resource Manager 範本新增警示](./alerts-activity-log.md)。
+

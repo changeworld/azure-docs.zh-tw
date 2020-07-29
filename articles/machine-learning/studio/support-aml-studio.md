@@ -1,6 +1,5 @@
 ---
-title: 取得支援和訓練
-titleSuffix: ML Studio (classic) - Azure
+title: ML Studio （傳統）教學課程支援 & 訓練-Azure
 description: 取得 Azure Machine Learning Studio 的支援和訓練並提供意見反應（傳統）
 services: machine-learning
 ms.service: machine-learning
@@ -9,13 +8,17 @@ ms.topic: troubleshooting
 author: peterclu
 ms.author: peterlu
 ms.date: 01/18/2019
-ms.openlocfilehash: 708f337ebc627f863f632a677a2186a9d7fe99f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 84aff48ad1313939761ad23b14c41d31313ebd36
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213171"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324908"
 ---
 # <a name="get-support-and-training-for-azure-machine-learning-studio-classic"></a>取得 Azure Machine Learning Studio 的支援和訓練（傳統）
+
+**適用物件：** ![否](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![ 是 ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio （傳統） 
+
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 

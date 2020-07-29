@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 02/25/2020
 ms.custom: mvc
-ms.openlocfilehash: 70ffe0bb98e89babe2f5998ee66666dd5368f7f2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9371feb527bbb2d94d43072bb8a44a6705b45055
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518040"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87280217"
 ---
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>遷移至 Azure Kubernetes Service （AKS）
 
@@ -23,6 +23,7 @@ ms.locfileid: "86518040"
 * 從[Azure Container Service （ACS）遷移-從2020年1月31日淘汰](https://azure.microsoft.com/updates/azure-container-service-will-retire-on-january-31-2020/)至 AKS
 * 從[AKS 引擎](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908)遷移至 AKS
 * 從非以 Azure 為基礎的 Kubernetes 叢集遷移至 AKS
+* 將現有的資源移到不同的區域
 
 在遷移時，請確定您的目標 Kubernetes 版本位於支援的 AKS 視窗內。 如果使用較舊的版本，它可能不在支援的範圍內，而且需要升級 AKS 支援的版本。 如需詳細資訊，請參閱[AKS 支援的 Kubernetes 版本](./supported-kubernetes-versions.md)。
 

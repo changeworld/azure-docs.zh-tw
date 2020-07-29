@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 85beb04e39c5c47b9ee71ee96c2dff8910766ea3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a59939fc7988e1a94bdfb9fac2d77011422e4983
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87009046"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87274675"
 ---
 # <a name="conditional-access-grant"></a>條件式存取：授與
 
@@ -80,7 +80,7 @@ Intune （適用于任何裝置作業系統）或協力廠商 MDM 系統（適�
 - Microsoft Dynamics 365
 - Microsoft Edge
 - Microsoft Excel
-- Microsoft Flow
+- Microsoft Power Automate
 - Microsoft Invoicing
 - Microsoft Kaizala
 - Microsoft Launcher
@@ -167,7 +167,7 @@ Intune （適用于任何裝置作業系統）或協力廠商 MDM 系統（適�
 
 如果您的組織已建立使用規定，則在 [授與控制] 底下可能會顯示其他選項。 這些選項可讓系統管理員要求使用規定，做為存取原則所保護之資源的條件。 如需使用條款的詳細資訊，請參閱[Azure Active Directory 使用規定一](terms-of-use.md)文。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [條件式存取：會話控制項](concept-conditional-access-session.md)
 

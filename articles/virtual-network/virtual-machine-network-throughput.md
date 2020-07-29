@@ -1,6 +1,6 @@
 ---
 title: Azure 虛擬機器網路輸送量 | Microsoft Docs
-description: 了解 Azure 虛擬機器網路輸送量。
+description: 瞭解 Azure 虛擬機器的網路輸送量，包括如何將頻寬配置給虛擬機器。
 services: virtual-network
 documentationcenter: na
 author: steveesp
@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 4/26/2019
 ms.author: steveesp
 ms.reviewer: kumud, mareat
-ms.openlocfilehash: 1cbec961f6249ebd59324dca1745bfd9e77f5388
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4fed883c8fa92df77af432e1e4a4b3acca72a0d2
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87088167"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87265109"
 ---
 # <a name="virtual-machine-network-bandwidth"></a>虛擬機器網路頻寬
 

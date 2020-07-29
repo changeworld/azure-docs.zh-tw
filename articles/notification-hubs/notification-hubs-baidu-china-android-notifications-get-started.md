@@ -14,12 +14,13 @@ ms.date: 03/18/2020
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 06/19/2019
-ms.openlocfilehash: a605a11b1effd5d272dc8123f7e9c5c44262a3e8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-java
+ms.openlocfilehash: bace9130f87300585d1e7d90c6c1a30041171f4b
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86530197"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324653"
 ---
 # <a name="get-started-with-notification-hubs-using-baidu"></a>透過百度開始使用通知中樞
 
@@ -29,7 +30,7 @@ ms.locfileid: "86530197"
 
 由於中國無法使用 Google Play 和 FCM (Firebase Cloud Messaging)，因此必須使用不同的應用程式市集和推送服務。 百度是其中一種方法，且目前由通知中樞所使用。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 本教學課程需要：
 
@@ -472,7 +473,7 @@ ms.locfileid: "86530197"
     Console.ReadLine();
     ```
 
-## <a name="test-your-app"></a>測試您的應用程式
+## <a name="test-your-app"></a>測試應用程式
 
 若要使用真正的手機來測試應用程式，您只需要使用 USB 纜線將其連接到電腦即可。 此動作會將應用程式載入連結的手機。
 

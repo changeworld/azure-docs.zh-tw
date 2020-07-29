@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 121b3ced2e021f3907983623ea60185286797670
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: a74fe2bf6b326dac782ac75418a7f4960e66501a
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024436"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87274998"
 ---
 # <a name="conditional-access-conditions"></a>條件式存取：條件
 
@@ -63,6 +63,9 @@ Azure AD 條件式存取支援下列裝置平臺：
 ## <a name="client-apps-preview"></a>用戶端應用程式 (預覽)
 
 條件式存取原則預設適用于使用新式驗證通訊協定的瀏覽器型應用程式和應用程式。 除了這些應用程式之外，系統管理員還可以選擇包含 Exchange ActiveSync 用戶端，以及其他使用舊版通訊協定的用戶端。
+
+> [!NOTE]
+> 已移除用戶端應用程式條件中的 [設定為]/[否] 切換，讓您更輕鬆地查看選取的用戶端應用程式。 這不會影響現有原則適用的用戶端應用程式。
 
 - 瀏覽器
    - 其中包括使用 SAML、WS-同盟、OpenID Connect 等通訊協定的 web 應用程式，或註冊為 OAuth 機密用戶端的服務。

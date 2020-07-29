@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.subservice: alerts
-ms.openlocfilehash: b535cda8fe7d98748eb0657a599a61ed1f8549d2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c040958d9518485bc5d583fc01aedd50d5c6e57a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87045357"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321117"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>使用 Azure 監視器建立、檢視及管理計量警示
 
@@ -32,7 +32,7 @@ Azure 監視器中的計量警示可讓您在其中一個度量超出臨界值�
 
 3. 在載入的內容窗格中，按一下 [選取目標]****，選取您要發出警示的目標資源。 使用 [訂用帳戶]**** 與 [資源類型]**** 下拉式清單尋找您要監視的資源。 您也可以使用搜尋列來尋找您的資源。
 
-4. 如果選取的資源有可對其建立警示的計量，位於右下方的 [可用訊號]**** 會包含計量。 您可以檢視此[文章](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)中的計量警示所支援資源類型的完整清單。
+4. 如果選取的資源有可對其建立警示的計量，位於右下方的 [可用訊號]**** 會包含計量。 您可以檢視此[文章](./alerts-metric-near-real-time.md#metrics-and-dimensions-supported)中的計量警示所支援資源類型的完整清單。
 
 5. 選取目標資源之後，請按一下 [新增準則]****。
 
@@ -136,7 +136,8 @@ Azure 監視器中的計量警示可讓您在其中一個度量超出臨界值�
 
 ## <a name="next-steps"></a>後續步驟
 
-- [使用 Azure Resource Manager 範本建立計量警示](../../azure-monitor/platform/alerts-metric-create-templates.md)。
+- [使用 Azure Resource Manager 範本建立計量警示](./alerts-metric-create-templates.md)。
 - [了解計量警示的運作方式](alerts-metric-overview.md)。
 - [了解計量警示如何搭配動態閾值條件運作](alerts-dynamic-thresholds.md)。
-- [了解計量警示的 Webhook 結構描述](../../azure-monitor/platform/alerts-metric-near-real-time.md#payload-schema)
+- [了解計量警示的 Webhook 結構描述](./alerts-metric-near-real-time.md#payload-schema)
+

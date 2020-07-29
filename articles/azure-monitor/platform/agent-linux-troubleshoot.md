@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 2343de97d06abdefed2c2977a7341aa411429319
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 98ef2b416c809789307f946ed90fb3138d9a20c1
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80520748"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325367"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>如何針對 Log Analytics Linux 代理程式的問題進行疑難排解 
 
@@ -27,7 +27,7 @@ ms.locfileid: "80520748"
 
 ## <a name="important-log-locations-and-log-collector-tool"></a>重要記錄位置和記錄收集器工具
 
- 檔案 | 路徑
+ 檔案 | Path
  ---- | -----
  Log Analytics Linux 代理程式記錄檔 | `/var/opt/microsoft/omsagent/<workspace id>/log/omsagent.log`
  Log Analytics 代理程式組態記錄檔 | `/var/opt/microsoft/omsconfig/omsconfig.log`
@@ -43,7 +43,7 @@ ms.locfileid: "80520748"
  其他組態 | `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/*.conf`
 
  >[!NOTE]
- >如果您是從 Azure 入口網站中的[資料功能表 Log Analytics [進階設定]](../../azure-monitor/platform/agent-data-sources.md#configuring-data-sources) 為工作區設定了集合，則為效能計數器和 Syslog 編輯組態檔會遭到覆寫。 若要停用所有代理程式的組態，請從 Log Analytics [進階設定]**** 停用集合，若是單一代理程式，則請執行下列命令：  
+ >如果您是從 Azure 入口網站中的[資料功能表 Log Analytics [進階設定]](./agent-data-sources.md#configuring-data-sources) 為工作區設定了集合，則為效能計數器和 Syslog 編輯組態檔會遭到覆寫。 若要停用所有代理程式的組態，請從 Log Analytics [進階設定]**** 停用集合，若是單一代理程式，則請執行下列命令：  
 > `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/OMS_MetaConfigHelper.py --disable'`
 
 ## <a name="installation-error-codes"></a>安裝錯誤碼
@@ -53,7 +53,7 @@ ms.locfileid: "80520748"
 | NOT_DEFINED | 未安裝必要的相依性，所以不會安裝 auoms auditd 外掛程式 | auoms 安裝失敗，安裝套件 auditd。 |
 | 2 | 提供給殼層組合的選項無效。 請執行 `sudo sh ./omsagent-*.universal*.sh --help` 以了解使用方式 |
 | 3 | 未提供任何選項給殼層組合。 請執行 `sudo sh ./omsagent-*.universal*.sh --help` 以了解使用方式。 |
-| 4 | 套件類型無效或 Proxy 設定無效；omsagent-rpm**.sh 套件只能安裝在以 RPM 為基礎的系統上，至於 omsagent-deb**.sh 套件，則只能安裝在以 Debian 為基礎的系統上。 建議您使用來自[最新版本](../../azure-monitor/learn/quick-collect-linux-computer.md#install-the-agent-for-linux)的通用安裝程式。 也請進行檢閱，以驗證 Proxy 設定。 |
+| 4 | 套件類型無效或 Proxy 設定無效；omsagent-rpm**.sh 套件只能安裝在以 RPM 為基礎的系統上，至於 omsagent-deb**.sh 套件，則只能安裝在以 Debian 為基礎的系統上。 建議您使用來自[最新版本](../learn/quick-collect-linux-computer.md#install-the-agent-for-linux)的通用安裝程式。 也請進行檢閱，以驗證 Proxy 設定。 |
 | 5 | 必須以 root 身分執行殼層組合，否則上架期間會傳回 403 錯誤。 請使用 `sudo` 執行命令。 |
 | 6 | 套件架構無效，或是在上架期間傳回錯誤 200 錯誤；omsagent-x64.sh 套件只能安裝在 64 位元系統上，而 omsagent-** x86.sh 套件則只能安裝在 32 位元系統上。 從[最新版本](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/latest)下載架構的正確套件。 |
 | 17 | OMS 套件安裝失敗。 查看命令的輸出中是否有 root 失敗。 |
@@ -228,7 +228,7 @@ Nss-pem 套件[v 1.0.3-5](https://centos.pkgs.org/7/centos-x86_64/nss-pem-1.0.3-
 * 每秒所轉送的訊息數目太大，以致無法處理 Log Analytics Linux 代理程式的基本組態
 
 ### <a name="resolution"></a>解決方案
-* 確認 Log Analytics 工作區 (適用於 Syslog) 中的組態具有所有設備和正確的記錄檔層級。 檢閱[在 Azure 入口網站中設定 Syslog 集合](../../azure-monitor/platform/data-sources-syslog.md#configure-syslog-in-the-azure-portal)
+* 確認 Log Analytics 工作區 (適用於 Syslog) 中的組態具有所有設備和正確的記錄檔層級。 檢閱[在 Azure 入口網站中設定 Syslog 集合](./data-sources-syslog.md#configure-syslog-in-the-azure-portal)
 * 確認原生 syslog 傳訊精靈 (`rsyslog`、`syslog-ng`) 能夠接收轉送的訊息
 * 檢查 Syslog 伺服器上的防火牆設定，確定不會封鎖訊息
 * 使用 `logger` 命令模擬給 Log Analytics 的 Syslog 訊息
@@ -405,7 +405,7 @@ Nss-pem 套件[v 1.0.3-5](https://centos.pkgs.org/7/centos-x86_64/nss-pem-1.0.3-
 ```
 sudo sh ./omsagent-*.universal.x64.sh --purge
 ```
-Or
+或者
 
 ```
 sudo sh ./onboard_agent.sh --purge
@@ -422,7 +422,7 @@ sudo sh ./onboard_agent.sh --purge
 ### <a name="resolution"></a>解決方案 
 請執行下列步驟來解決此問題。
 1. 從 Azure 入口網站移除擴充功能。
-2. 遵循[指示](../../azure-monitor/learn/quick-collect-linux-computer.md)來安裝代理程式。
+2. 遵循[指示](../learn/quick-collect-linux-computer.md)來安裝代理程式。
 3. 執行下列命令來重新啟動代理程式：`sudo /opt/microsoft/omsagent/bin/service_control restart`。
 * 等候幾分鐘的時間，然後佈建狀態就會變為**佈建成功**。
 
@@ -444,3 +444,4 @@ sudo sh ./onboard_agent.sh --purge
     ```
 
 3. 執行 `sudo sh ./omsagent-*.universal.x64.sh --upgrade` 來升級套件。
+

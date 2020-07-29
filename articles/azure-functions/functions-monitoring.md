@@ -5,12 +5,12 @@ ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: c3d43bc20c31475a00a0ea81e4abdeb5405162a7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a1e72fba4ece24afffba573d954c7627af46a6cd
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081792"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87273368"
 ---
 # <a name="monitor-azure-functions"></a>監視 Azure Functions
 
@@ -596,6 +596,9 @@ Functions v2 會自動收集 HTTP 要求、服務匯流排、事件中樞及 SQL
 您可以撰寫自訂程式碼來顯示相依性。 例如，查看 [C# 自訂遙測區段](#log-custom-telemetry-in-c-functions)中的範例程式碼。 範例程式碼會在 Application Insights 中產生看起來類似下圖的「應用程式對應」：
 
 ![應用程式對應](./media/functions-monitoring/app-map.png)
+
+> [!NOTE]
+> 相依性會在資訊層級寫入。 如果您篩選警告或以上的版本，就不會看到這項資料。 此外，自動收集相依性會發生在非使用者範圍。 因此，請確定層級至少設定為您 host.js中使用者範圍以外的**資訊**（亦即在函式之外）。 <YOUR_FUNCTION_NAME>。使用者金鑰）] （如果您想要捕獲這些相依性）。
 
 ## <a name="enable-application-insights-integration"></a>啟用 Application Insights 整合
 

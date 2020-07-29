@@ -1,6 +1,6 @@
 ---
-title: 從 Android 連線至 Windows 虛擬桌面秋季 2019-Azure
-description: 如何使用 Android 用戶端連接到 Windows 虛擬桌面。
+title: 從 Android 連接到 Windows 虛擬桌面（傳統）-Azure
+description: 如何使用 Android 用戶端連接到 Windows 虛擬桌面（傳統）。
 services: virtual-desktop
 author: heidilohr
 ms.service: virtual-desktop
@@ -8,19 +8,19 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ccea4e39146500cb9d3796c4ca99725e2e2ac429
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fd319c7a6b356052f91e779e2f2a67eff4c4b6de
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087147"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87270748"
 ---
-# <a name="connect-with-the-android-client"></a>與 Android 用戶端連線
+# <a name="connect-to-windows-virtual-desktop-classic-with-the-android-client"></a>使用 Android 用戶端連接到 Windows 虛擬桌面（傳統）
 
 > 適用于： Android 4.1 和更新版本，使用 ChromeOS 53 和更新版本 Chromebook。
 
 >[!IMPORTANT]
->此內容適用於不支援 Azure Resource Manager Windows 虛擬桌面物件的 2019 年秋季版本。 如果您嘗試管理 2020 年春季版更新中引進的 Azure Resource Manager Windows 虛擬桌面物件，請參閱[這篇文章](../connect-android.md)。
+>此內容適用于 Windows 虛擬桌面（傳統），不支援 Azure Resource Manager Windows 虛擬桌面物件。 如果您正嘗試管理 Azure Resource Manager Windows 虛擬桌面物件，請參閱[這篇文章](../connect-android.md)。
 
 >[!NOTE]
 > 從 Android 用戶端存取 Windows 虛擬桌面資源的能力目前已提供預覽。
