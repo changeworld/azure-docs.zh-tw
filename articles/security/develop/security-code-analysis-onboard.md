@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: a7fab9515051180fdb1b894602478768a60177ef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd0057c5f5e365d6c91ae221a7add813855bb1ec
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85362052"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323582"
 ---
 # <a name="onboarding-and-installing"></a>上線和安裝
 
@@ -50,7 +50,7 @@ ms.locfileid: "85362052"
 
 - 區域–連絡人詳細資料：cloudsupport@zones.com
 - Wortell –連絡人詳細資料：info@wortell.nl
-- Logicalis –連絡人詳細資料：Matthew.Curtis@us.logicalis.com 
+- Logicalis –連絡人詳細資料：logicalisleads@us.logicalis.com
 
 ### <a name="become-a-partner"></a>成為合作夥伴
 

@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 4e5d4af74ab54479a49963369cb99dbc19fca848
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 413616034dfe7d1f13612ba12ba86014af62c704
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505271"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325622"
 ---
 # <a name="logs-in-azure-monitor"></a>Azure 監視器中的記錄
 
@@ -39,17 +39,17 @@ Azure 監視器中的記錄包含不同類型的資料，而資料會針對每�
 下表列出您可在 Azure 監視器中使用記錄的各種方式。
 
 
-|  | 描述 |
+|  | 說明 |
 |:---|:---|
 | **分析** | 在 Azure 入口網站中使用 [Log Analytics](../log-query/get-started-portal.md) 來撰寫 [記錄查詢](../log-query/log-query-overview.md)，並使用強大的資料總管分析引擎以互動方式分析記錄資料。<br>在 Azure 入口網站中使用 [Application Insights 分析主控台](../log-query/log-query-overview.md)來撰寫記錄查詢，並以互動方式分析來自 Application Insights 的記錄資料。 |
-| **視覺化** | 將轉譯為表格或圖表的查詢結果釘選到 [Azure 儀表板](../../azure-portal/azure-portal-dashboards.md)。<br>建立[活頁簿](../platform/workbooks-overview.md)，以在互動式報告中與多組資料結合。 <br>將查詢的結果匯出到 [Power BI](powerbi.md) 以使用不同的視覺效果，並與 Azure 外部的使用者共用。<br>將查詢的結果匯出至 [Grafana](grafana-plugin.md) 以利用其儀表板功能，並與其他資料來源結合。|
+| **視覺化** | 將轉譯為表格或圖表的查詢結果釘選到 [Azure 儀表板](../../azure-portal/azure-portal-dashboards.md)。<br>建立[活頁簿](./workbooks-overview.md)，以在互動式報告中與多組資料結合。 <br>將查詢的結果匯出到 [Power BI](powerbi.md) 以使用不同的視覺效果，並與 Azure 外部的使用者共用。<br>將查詢的結果匯出至 [Grafana](grafana-plugin.md) 以利用其儀表板功能，並與其他資料來源結合。|
 | **警示** | 設定[記錄警示規則](alerts-log.md)，在查詢結果符合特定結果時，傳送通知或採取[自動化動作](action-groups.md)。<br>針對擷取為計量的某些記錄資料記錄，設定[計量警示規則](alerts-metric-logs.md)。 |
 | **擷取** | 使用 [Azure CLI](/cli/azure/ext/log-analytics/monitor/log-analytics)，從命令列存取記錄查詢結果。<br>使用 [PowerShell Cmdlet](/powershell/module/az.operationalinsights)，從命令列存取記錄查詢結果。<br>使用 [REST API](https://dev.loganalytics.io/)，從自訂應用程式存取記錄查詢結果。 |
-| **匯出** | 建立工作流程來擷取記錄資料，並使用 [Logic Apps](~/articles/logic-apps/index.yml) 將其複製到外部位置。 |
+| **匯出** | 建立工作流程來擷取記錄資料，並使用 [Logic Apps](../../logic-apps/index.yml) 將其複製到外部位置。 |
 
 
 ## <a name="how-is-data-in-azure-monitor-logs-structured"></a>如何在 Azure 監視器記錄中將資料結構化？
-Azure 監視器記錄收集的資料都會儲存於 [Log Analytics 工作區](../platform/design-logs-deployment.md)中。 每個工作區都包含多個資料表，而每個資料表會儲存來自特定來源的資料。 雖然所有資料表會共用[一些通用屬性](log-standard-properties.md)，但每個資料表都有一組獨特的屬性 (視其儲存的資料類型而定)。 新工作區會有一組標準的資料表，而寫入工作區的各種監視解決方案和其他服務將會新增更多資料表。
+Azure 監視器記錄收集的資料都會儲存於 [Log Analytics 工作區](./design-logs-deployment.md)中。 每個工作區都包含多個資料表，而每個資料表會儲存來自特定來源的資料。 雖然所有資料表會共用[一些通用屬性](log-standard-properties.md)，但每個資料表都有一組獨特的屬性 (視其儲存的資料類型而定)。 新工作區會有一組標準的資料表，而寫入工作區的各種監視解決方案和其他服務將會新增更多資料表。
 
 來自 Application Insights 的記錄資料會使用與工作區相同的 Log Analytics 引擎，但該資料會針對每個受監視的應用程式分開儲存。 每個應用程式都有一組標準的資料表可保存資料，例如應用程式要求、例外狀況和頁面檢視。
 
@@ -133,3 +133,4 @@ Azure 監視器可以在 Azure 中及內部部署資源的各種來源收集資�
 - 深入了解 [Azure 監視器資料平台](data-platform.md)。
 - 了解 [Azure 監視器中的計量](data-platform-metrics.md)。
 - 深入了解可用於 Azure 中不同資源的[監視資料](data-sources.md)。
+

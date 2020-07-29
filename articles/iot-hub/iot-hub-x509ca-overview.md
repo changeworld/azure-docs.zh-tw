@@ -8,12 +8,16 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/18/2017
 ms.author: eustacea
-ms.openlocfilehash: cce3a0e6993ea91236a3ce8c8b14eb6c66f72ad1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom:
+- 'Role: Cloud Development'
+- 'Role: IoT Device'
+- 'Role: System Architecture'
+ms.openlocfilehash: 33c878b2af64a72212a8aac060e9ccac83b79a53
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84717795"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326506"
 ---
 # <a name="device-authentication-using-x509-ca-certificates"></a>使用 X.509 CA 憑證進行裝置驗證
 
@@ -24,7 +28,7 @@ ms.locfileid: "84717795"
 * 如何使用 X.509 CA 憑證來簽署裝置
 * 以 X.509 CA 簽署之裝置的驗證方式為何
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 X.509 CA 功能可讓您使用「憑證授權單位」(CA) 向「IoT 中樞」進行裝置驗證。 這大幅簡化了初始裝置註冊程序，以及裝置製造期間的供應鏈物流。 如需了解裝置驗證，請[從這篇有關使用 X.509 CA 憑證之價值的案例文章進行深入了解](iot-hub-x509ca-concept.md)。  建議您先閱讀這篇案例文章再繼續操作，因為此文章會說明為什麼會有後續這些步驟。
 

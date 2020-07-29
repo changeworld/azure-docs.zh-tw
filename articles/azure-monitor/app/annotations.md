@@ -3,12 +3,12 @@ title: Application Insights 的發行註解 | Microsoft Docs
 description: 在 Application Insights 中對計量瀏覽器新增部署或建置標記。
 ms.topic: conceptual
 ms.date: 07/01/2019
-ms.openlocfilehash: 8f6ffed8ae2039ec36ec8bd86518e6b359da65ec
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8e9e0cb49343524e8a45831566cf802b1c8c5d9b
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87093029"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320658"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Application Insights 中度量圖表上的註解
 
@@ -34,7 +34,7 @@ ms.locfileid: "87093029"
 
 為每個 Azure Pipelines 版本範本建立個別的 API 金鑰。
 
-1. 登入[Azure 入口網站](https://portal.azure.com)，然後開啟監視您應用程式的 Application Insights 資源。 或者，如果您沒有，請[建立新的 Application Insights 資源](../../azure-monitor/app/app-insights-overview.md)。
+1. 登入[Azure 入口網站](https://portal.azure.com)，然後開啟監視您應用程式的 Application Insights 資源。 或者，如果您沒有，請[建立新的 Application Insights 資源](./app-insights-overview.md)。
    
 1. 開啟 [ **API 存取**] 索引標籤，並複製**Application Insights 識別碼**。
    
@@ -115,5 +115,6 @@ ms.locfileid: "87093029"
 
 ## <a name="next-steps"></a>後續步驟
 
-* [建立工作項目](../../azure-monitor/app/diagnostic-search.md#create-work-item)
-* [使用 PowerShell 進行自動化](../../azure-monitor/app/powershell.md)
+* [建立工作項目](./diagnostic-search.md#create-work-item)
+* [使用 PowerShell 進行自動化](./powershell.md)
+

@@ -3,19 +3,19 @@ title: 在 Application Insights 中探索 .NET 追蹤記錄
 description: 搜尋 Trace、NLog 或 Log4Net 產生的記錄。
 ms.topic: conceptual
 ms.date: 05/08/2019
-ms.openlocfilehash: aad81855b58ee96789d097fbfbd3e7f9b17f6900
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c192ae8fad6cf463af892018fcac385b3bdcd345
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87014570"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321321"
 ---
 # <a name="explore-netnet-core-and-python-trace-logs-in-application-insights"></a>在 Application Insights 中探索 .NET/.NET Core 和 Python 追蹤記錄
 
 將 ASP.NET/ASP.NET Core 應用程式的診斷追蹤記錄從 ILogger、NLog、log4Net 或 System.Diagnostics.Trace 傳送至 [Azure Application Insights][start]。 若為 Python 應用程式，請在 OpenCensus Python for Azure Monitor 中使用 AzureLogHandler 傳送診斷追蹤記錄。 然後，您可以探索並搜尋這些記錄。 這些記錄會與來自應用程式的其他記錄檔合併，讓您可以識別與每個使用者要求相關聯的追蹤，並將這些追蹤與其他事件和例外狀況報告相互關聯。
 
 > [!NOTE]
-> 您需要記錄擷取模組嗎？ 對於第三方記錄器來說，其是一個有用的配接器。 但是，如果您還沒使用 NLog、log4Net 或 System.Diagnostics.Trace，請考慮直接呼叫 [**Application Insights TrackTrace()** ](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace)。
+> 您需要記錄擷取模組嗎？ 對於第三方記錄器來說，其是一個有用的配接器。 但是，如果您還沒使用 NLog、log4Net 或 System.Diagnostics.Trace，請考慮直接呼叫 [**Application Insights TrackTrace()** ](./api-custom-events-metrics.md#tracktrace)。
 >
 >
 ## <a name="install-logging-on-your-app"></a>在您的 app 上安裝記錄
@@ -34,7 +34,7 @@ ms.locfileid: "87014570"
 ```
 
 ## <a name="configure-application-insights-to-collect-logs"></a>設定 Application Insights 收集記錄
-如果您尚未這麼做，請[將 Application Insights 新增至您的專案](../../azure-monitor/app/asp-net.md)。 您將會看見包含記錄收集器的選項。
+如果您尚未這麼做，請[將 Application Insights 新增至您的專案](./asp-net.md)。 您將會看見包含記錄收集器的選項。
 
 或者，在 [方案總管] 中以滑鼠右鍵按一下您的專案，來**設定 Application Insights**。 選取 [設定追蹤集合] 選項。
 
@@ -84,7 +84,7 @@ System.Diagnostics.Trace.TraceWarning("Slow response - database01");
 ```
 
 ## <a name="use-eventsource-events"></a>使用 EventSource 事件
-您可以將 [System.Diagnostics.Tracing.EventSource](/dotnet/api/system.diagnostics.tracing.eventsource?view=netcore-3.1) 設定為要傳送至 Application Insights 作為追蹤的事件。 首先，安裝 `Microsoft.ApplicationInsights.EventSourceListener` NuGet 套件。 然後編輯 [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) 檔案的 `TelemetryModules` 區段。
+您可以將 [System.Diagnostics.Tracing.EventSource](/dotnet/api/system.diagnostics.tracing.eventsource?view=netcore-3.1) 設定為要傳送至 Application Insights 作為追蹤的事件。 首先，安裝 `Microsoft.ApplicationInsights.EventSourceListener` NuGet 套件。 然後編輯 [ApplicationInsights.config](./configuration-with-applicationinsights-config.md) 檔案的 `TelemetryModules` 區段。
 
 ```xml
     <Add Type="Microsoft.ApplicationInsights.EventSourceListener.EventSourceTelemetryModule, Microsoft.ApplicationInsights.EventSourceListener">
@@ -100,7 +100,7 @@ System.Diagnostics.Trace.TraceWarning("Slow response - database01");
  * **Keywords** (選擇性) 指定要使用的關鍵字組合整數值。
 
 ## <a name="use-diagnosticsource-events"></a>使用 DiagnosticSource 事件
-您可以將 [System.Diagnostics.DiagnosticSource](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md) 設定為要傳送至 Application Insights 作為追蹤的事件。 首先，安裝 [`Microsoft.ApplicationInsights.DiagnosticSourceListener`](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DiagnosticSourceListener) NuGet 套件。 然後編輯 [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) 檔案的 "TelemetryModules" 區段。
+您可以將 [System.Diagnostics.DiagnosticSource](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md) 設定為要傳送至 Application Insights 作為追蹤的事件。 首先，安裝 [`Microsoft.ApplicationInsights.DiagnosticSourceListener`](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DiagnosticSourceListener) NuGet 套件。 然後編輯 [ApplicationInsights.config](./configuration-with-applicationinsights-config.md) 檔案的 "TelemetryModules" 區段。
 
 ```xml
     <Add Type="Microsoft.ApplicationInsights.DiagnosticSourceListener.DiagnosticSourceTelemetryModule, Microsoft.ApplicationInsights.DiagnosticSourceListener">
@@ -113,7 +113,7 @@ System.Diagnostics.Trace.TraceWarning("Slow response - database01");
 針對您想要追蹤的每個 DiagnosticSource，新增項目並將其 **Name** 屬性設定為 DiagnosticSource 的名稱。
 
 ## <a name="use-etw-events"></a>使用 ETW 事件
-您可以設定要傳送至 Application Insights 作為追蹤的 Windows 事件追蹤 (ETW) 事件。 首先，安裝 `Microsoft.ApplicationInsights.EtwCollector` NuGet 套件。 然後編輯 [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) 檔案的 "TelemetryModules" 區段。
+您可以設定要傳送至 Application Insights 作為追蹤的 Windows 事件追蹤 (ETW) 事件。 首先，安裝 `Microsoft.ApplicationInsights.EtwCollector` NuGet 套件。 然後編輯 [ApplicationInsights.config](./configuration-with-applicationinsights-config.md) 檔案的 "TelemetryModules" 區段。
 
 > [!NOTE] 
 > 僅在裝載 SDK 的處理序是以效能記錄使用者或系統管理員成員的身分識別執行時，才可收集 ETW 事件。
@@ -158,7 +158,7 @@ TrackTrace 的優點在於您可以將較長的資料放在訊息中。 例如�
 ## <a name="azureloghandler-for-opencensus-python"></a>適用於 OpenCensus Python 的 AzureLogHandler
 Azure 監視器記錄處理常式可讓您將 Python 記錄匯出至 Azure 監視器。
 
-使用適用於 Azure 監視器的 [OpenCensus Python SDK](../../azure-monitor/app/opencensus-python.md) 檢測您的應用程式。
+使用適用於 Azure 監視器的 [OpenCensus Python SDK](./opencensus-python.md) 檢測您的應用程式。
 
 這個範例示範如何將警告層級的記錄檔傳送至 Azure 監視器。
 
@@ -185,14 +185,14 @@ logger.warning('Hello, World!')
 * 將頁面的組態儲存為我的最愛。
 
 > [!NOTE]
->如果您的應用程式傳送大量資料，且您是使用 Application Insights SDK for ASP.NET 版本 2.0.0-beta3 或更新版本，則調*適性取樣功能*可能會運作，並只傳送一部分的遙測資料。 [深入了解取樣。](../../azure-monitor/app/sampling.md)
+>如果您的應用程式傳送大量資料，且您是使用 Application Insights SDK for ASP.NET 版本 2.0.0-beta3 或更新版本，則調*適性取樣功能*可能會運作，並只傳送一部分的遙測資料。 [深入了解取樣。](./sampling.md)
 >
 
 ## <a name="troubleshooting"></a>疑難排解
 ### <a name="how-do-i-do-this-for-java"></a>如果是 Java，我要怎麼做？
 在收集現成記錄的 Java 無程式碼檢測 (建議動作) 中，請使用 [Java 3.0 代理程式](./java-in-process-agent.md)。
 
-如果您使用 Java SDK，請使用 [Java 記錄配接器](../../azure-monitor/app/java-trace-logs.md)。
+如果您使用 Java SDK，請使用 [Java 記錄配接器](./java-trace-logs.md)。
 
 ### <a name="theres-no-application-insights-option-on-the-project-context-menu"></a>專案內容功能表上沒有 Application Insights 選項
 * 確定已在開發電腦上安裝 Developer Analytics Tools。 在 Visual Studio 的 [工具] > [擴充功能和更新] 中，尋找 [Developer Analytics Tools]。 如果其不在 [已安裝] 索引標籤上，請開啟 [線上] 索引標籤並加以安裝。
@@ -210,10 +210,10 @@ logger.warning('Hello, World!')
 可能需要一段時間，所有事件和要求才會通過管線。
 
 ### <a name="how-much-data-is-retained"></a><a name="limits"></a>保留多少資料？
-有好幾個因素會影響保留的資料量。 如需詳細資訊，請參閱客戶事件計量頁面的[限制](../../azure-monitor/app/api-custom-events-metrics.md#limits)區段。
+有好幾個因素會影響保留的資料量。 如需詳細資訊，請參閱客戶事件計量頁面的[限制](./api-custom-events-metrics.md#limits)區段。
 
 ### <a name="i-dont-see-some-log-entries-that-i-expected"></a>我看不到我預期的一些記錄項目
-如果您的應用程式傳送大量資料，且您是使用 Application Insights SDK for ASP.NET 版本 2.0.0-beta3 或更新版本，則調適性取樣功能可能會運作，並只傳送一部分的遙測資料。 [深入了解取樣。](../../azure-monitor/app/sampling.md)
+如果您的應用程式傳送大量資料，且您是使用 Application Insights SDK for ASP.NET 版本 2.0.0-beta3 或更新版本，則調適性取樣功能可能會運作，並只傳送一部分的遙測資料。 [深入了解取樣。](./sampling.md)
 
 ## <a name="next-steps"></a><a name="add"></a>後續步驟
 
@@ -224,9 +224,10 @@ logger.warning('Hello, World!')
 
 <!--Link references-->
 
-[availability]: ../../azure-monitor/app/monitor-web-app-availability.md
-[diagnostic]: ../../azure-monitor/app/diagnostic-search.md
+[availability]: ./monitor-web-app-availability.md
+[diagnostic]: ./diagnostic-search.md
 [exceptions]: asp-net-exceptions.md
 [portal]: https://portal.azure.com/
 [qna]: ../faq.md
-[start]: ../../azure-monitor/app/app-insights-overview.md
+[start]: ./app-insights-overview.md
+

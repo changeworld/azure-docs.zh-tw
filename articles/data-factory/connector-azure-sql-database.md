@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/15/2020
-ms.openlocfilehash: 424f858fff0ad050286122fcbbd03fdef78c11f6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0d11e320db5e037f855c01738de592a2d21d60e8
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497704"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171482"
 ---
 # <a name="copy-and-transform-data-in-azure-sql-database-by-using-azure-data-factory"></a>使用 Azure Data Factory 複製和轉換 Azure SQL Database 中的資料
 
@@ -61,7 +61,7 @@ ms.locfileid: "86497704"
 
 以下是支援 Azure SQL Database 已連結服務的屬性：
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
 | type | **Type**屬性必須設定為**AzureSqlDatabase**。 | 是 |
 | connectionString | 指定連接到**connectionString**屬性的 Azure SQL Database 實例所需的資訊。 <br/>您也可以將密碼或服務主體金鑰放在 Azure Key Vault 中。 如果是 SQL 驗證，請 `password` 從連接字串中提取設定。 如需詳細資訊，請參閱資料表後面的 JSON 範例，並[將認證儲存在 Azure Key Vault 中](store-credentials-in-key-vault.md)。 | 是 |
@@ -221,7 +221,7 @@ ms.locfileid: "86497704"
 
 Azure SQL Database 資料集支援下列屬性：
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
 | type | 資料集的**類型**屬性必須設定為**AzureSqlTable**。 | 是 |
 | 結構描述 | 結構描述的名稱。 |否 (來源)；是 (接收)  |
@@ -257,13 +257,13 @@ Azure SQL Database 資料集支援下列屬性：
 
 若要從 Azure SQL Database 複製資料，複製活動的 [**來源**] 區段中支援下列屬性：
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
 | type | 複製活動來源的**類型**屬性必須設定為**AzureSqlSource**。 "SqlSource" 類型仍然支援回溯相容性。 | 是 |
 | sqlReaderQuery | 此屬性使用自訂 SQL 查詢來讀取資料。 例如 `select * from MyTable`。 | 否 |
 | sqlReaderStoredProcedureName | 從來源資料表讀取資料的預存程序名稱。 最後一個 SQL 陳述式必須是預存程序中的 SELECT 陳述式。 | 否 |
 | storedProcedureParameters | 預存程序的參數。<br/>允許的值為名稱或值組。 參數的名稱和大小寫必須符合預存程式參數的名稱和大小寫。 | 否 |
-| isolationLevel | 指定 SQL 來源的異動鎖定行為。 允許的值有：**ReadCommitted** (預設值)、**ReadUncommitted**、**RepeatableRead**、**Serializable**、**Snapshot**。 如需詳細資訊，請參閱[這篇文件](https://docs.microsoft.com/dotnet/api/system.data.isolationlevel)。 | 否 |
+| isolationLevel | 指定 SQL 來源的異動鎖定行為。 允許的值為： **ReadCommitted**、 **ReadUncommitted**、 **RepeatableRead**、 **Serializable**、 **Snapshot**。 如果未指定，則會使用資料庫的預設隔離等級。 如需詳細資訊，請參閱[這篇文件](https://docs.microsoft.com/dotnet/api/system.data.isolationlevel)。 | 否 |
 
 **注意事項：**
 
@@ -364,7 +364,7 @@ GO
 
 若要將資料複製到 Azure SQL Database，複製活動的 [**接收**] 區段中支援下列屬性：
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
 | type | 複製活動接收器的**type**屬性必須設定為**AzureSqlSink**。 "SqlSink" 類型仍然支援回溯相容性。 | 是 |
 | preCopyScript | 指定要在將資料寫入 Azure SQL Database 之前，要執行之複製活動的 SQL 查詢。 每一複製回合只會叫用此查詢一次。 使用此屬性來清除預先載入的資料。 | 否 |
@@ -634,7 +634,7 @@ ADF 會使用您在此處挑選為金鑰的資料行名稱，做為後續更新�
 | SMALLINT |Int16 |
 | SMALLMONEY |Decimal |
 | sql_variant |Object |
-| text |String, Char[] |
+| 文字 |String, Char[] |
 | time |TimeSpan |
 | timestamp |Byte[] |
 | TINYINT |Byte |

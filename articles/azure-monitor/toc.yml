@@ -212,7 +212,7 @@
               href: platform/manage-access.md
         - name: 虛擬機器代理程式
           items:
-            - name: 總覽
+            - name: 概觀
               href: platform/agents-overview.md
             - name: 常見問題集
               href: faq.md#agents
@@ -1020,6 +1020,10 @@
           href: insights/resource-group-insights.md
         - name: 疑難排解深入解析
           href: insights/troubleshoot-workbooks.md
+    - name: 變更分析
+      items:
+        - name: 變更分析
+          href: app/change-analysis.md
     - name: 方案
       items:
         - name: 概觀
@@ -1073,30 +1077,6 @@
               href: insights/vmware.md
             - name: Wire Data 解決方案
               href: insights/wire-data.md
-        - name: 檢視
-          items:
-            - name: 將檢視轉換為活頁簿
-              items:
-                - name: 轉換概觀
-                  href: platform/view-designer-conversion-overview.md
-                - name: 轉換選項
-                  href: platform/view-designer-conversion-options.md
-                - name: 概觀和存取
-                  href: platform/view-designer-conversion-access.md
-                - name: 常見工作
-                  href: platform/view-designer-conversion-tasks.md
-                - name: 圖格轉換
-                  href: platform/view-designer-conversion-tiles.md
-                - name: 範例
-                  href: platform/view-designer-conversion-examples.md
-            - name: 檢視設計工具
-              href: platform/view-designer.md
-            - name: 圖格參考
-              href: platform/view-designer-tiles.md
-            - name: 視覺效果組件參考
-              href: platform/view-designer-parts.md
-            - name: 篩選器
-              href: platform/view-designer-filters.md
     - name: 活頁簿
       items:
         - name: 概觀
@@ -1124,6 +1104,20 @@
                   href: platform/workbooks-time.md
                 - name: 文字參數
                   href: platform/workbooks-text.md
+        - name: 將檢視轉換為活頁簿
+          items:
+            - name: 轉換概觀
+              href: platform/view-designer-conversion-overview.md
+            - name: 轉換選項
+              href: platform/view-designer-conversion-options.md
+            - name: 概觀和存取
+              href: platform/view-designer-conversion-access.md
+            - name: 常見工作
+              href: platform/view-designer-conversion-tasks.md
+            - name: 圖格轉換
+              href: platform/view-designer-conversion-tiles.md
+            - name: 範例
+              href: platform/view-designer-conversion-examples.md
     - name: 其他視覺效果
       items:
         - name: Power BI
@@ -1217,6 +1211,8 @@
           href: app/azure-functions-supported-features.md
         - name: 版本資訊
           items:
+            - name: 以程式碼為基礎的監視 SDK
+              href: app/release-notes.md
             - name: Web 應用程式擴充功能
               href: app/web-app-extension-release-notes.md
         - name: 資料模型
@@ -1297,6 +1293,16 @@
           href: platform/resource-logs-blob-format.md
         - name: 金鑰保存庫分析 (已遭到取代)
           href: insights/azure-key-vault-deprecated.md
+        - name: 檢視
+          items:
+            - name: 檢視設計工具
+              href: platform/view-designer.md
+            - name: 圖格參考
+              href: platform/view-designer-tiles.md
+            - name: 視覺效果組件參考
+              href: platform/view-designer-parts.md
+            - name: 篩選器
+              href: platform/view-designer-filters.md
 - name: 資源
   items:
     - name: Azure 藍圖

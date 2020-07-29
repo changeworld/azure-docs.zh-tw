@@ -11,11 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ad76835b0c72b691e1ef8810f2c58dedb8f597d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 35669a7d80907e2335c68b1da9010f5879aa6c7c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78672383"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87274080"
 ---
 # <a name="settings-and-data-roaming-faq"></a>設定和資料漫遊常見問題集
 
@@ -23,20 +24,20 @@ ms.locfileid: "78672383"
 
 ## <a name="what-data-roams"></a>哪些資料會漫遊？
 
-**Windows 設定**：Windows 作業系統內建的電腦設定。 一般而言，這些是將您電腦個人化的設定，這些設定包含下列廣泛的類別：
+**Windows 設定**： windows 作業系統內建的電腦設定。 一般而言，這些是將您電腦個人化的設定，這些設定包含下列廣泛的類別：
 
-* *佈景主題*- 包括桌面主題和工作列設定之類的功能。
-* *Internet Explorer 設定*- 包括最近開啟的索引標籤和我的最愛。
+* 佈景主題，包括桌面佈景主題和工作列設定等功能。
+* Internet Explorer 設定，包括最近所開啟索引標籤和我的最愛。
 * *Microsoft Edge 瀏覽器設定*- 例如我的最愛和閱讀清單。
-* *密碼*- 包括網際網路密碼、Wi-Fi 設定檔等。
-* *語言喜好*設定，包括鍵盤配置、系統語言、日期和時間等的設定。
-* *輕鬆存取功能*- 例如高對比佈景主題、朗讀程式及放大鏡。
-* *其他 Windows 設定*，例如滑鼠設定。
+* *密碼*，包括網際網路密碼、wi-fi 設定檔及其他。
+* 語言喜好設定，包括鍵盤配置、系統語言、日期和時間等設定。
+* 輕鬆存取功能，例如高對比主題、朗讀程式和放大鏡。
+* 其他 Windows 設定，例如滑鼠設定。
 
 > [!NOTE]
 > 本文適用于2015年7月以 Windows 10 啟動的 Microsoft Edge 舊版 HTML 型瀏覽器。 本文不適用於2020年1月15日發行的新 Microsoft Edge Chromium 型瀏覽器。 如需新 Microsoft Edge 同步處理行為的詳細資訊，請參閱[Microsoft Edge 同步](/deployedge/microsoft-edge-enterprise-sync)處理一文。
 
-**應用程式資料**：通用 Windows 應用程式可以將設定資料寫入漫遊資料夾中，而系統會對寫入這個資料夾中的任何資料自動進行同步處理。 由個別應用程式開發人員設計應用程式以充分利用這項功能。 如需如何開發使用漫遊之通用 Windows 應用程式的詳細資訊，請參閱[appdata 儲存體 API](https://msdn.microsoft.com/library/windows/apps/mt299098.aspx)和[Windows 8 appdata 漫遊開發人員的 blog](https://blogs.msdn.com/b/windowsappdev/archive/2012/07/17/roaming-your-app-data.aspx)。
+**應用程式資料**：通用 Windows 應用程式可以將設定資料寫入漫遊資料夾中，而系統會對寫入這個資料夾中的任何資料自動進行同步處理。 由個別應用程式開發人員設計應用程式以充分利用這項功能。 如需如何開發使用漫遊之通用 Windows 應用程式的詳細資訊，請參閱[appdata 儲存體 API](https://msdn.microsoft.com/library/windows/apps/mt299098.aspx)和[Windows 8 appdata 漫遊開發人員的 blog](https://blogs.windows.com/windowsdeveloper/2016/05/04/roaming-app-data-and-the-user-experience/)。
 
 ## <a name="what-account-is-used-for-settings-sync"></a>哪些帳戶用於設定同步處理？
 

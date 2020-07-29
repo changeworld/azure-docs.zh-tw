@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/17/2020
-ms.openlocfilehash: 4c5290d9f5ec47969ae43e5986d31484927a0ac5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 195e606a66b1b49821fc1b46381fdc551f142a6a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081350"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325520"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>將來自 Azure 監視器的資料視覺化
 本文會概要介紹用以將儲存在 Azure 監視器中的記錄和計量資料視覺化的可用方法。
@@ -19,7 +19,7 @@ ms.locfileid: "87081350"
 圖表影像等視覺效果可協助分析監視資料，以深入鑽研問題，並找出其中的模式。 根據您所使用的工具，還可以選擇是否要與組織內外的其他使用者共用視覺效果。
 
 ## <a name="workbooks"></a>活頁簿
-[活頁簿](../azure-monitor/platform/workbooks-overview.md)是互動式的文件，可以提供對團隊內部的資料、調查和共同作業的深入解析。 顯見活頁簿實用性的具體範例，在於疑難排解指南和事件事後分析。
+[活頁簿](./platform/workbooks-overview.md)是互動式的文件，可以提供對團隊內部的資料、調查和共同作業的深入解析。 顯見活頁簿實用性的具體範例，在於疑難排解指南和事件事後分析。
 
 ![活頁簿](media/visualizations/workbook.png)
 
@@ -141,7 +141,7 @@ ms.locfileid: "87081350"
 - 了解 [ Azure 監視器收集的資料](platform/data-platform.md)。
 - 了解 [Azure 儀表板](../azure-portal/azure-portal-dashboards.md)。
 - 了解 [Azure 監視器中的檢視](platform/view-designer.md)。
-- 了解[活頁簿](../azure-monitor/platform/workbooks-overview.md)。
-- 了解[將記錄資料匯入 Power BI](../azure-monitor/platform/powerbi.md)。
-- 了解 [Grafana Azure 監視器資料來源外掛程式](../azure-monitor/platform/grafana-plugin.md)。
+- 了解[活頁簿](./platform/workbooks-overview.md)。
+- 了解[將記錄資料匯入 Power BI](./platform/powerbi.md)。
+- 了解 [Grafana Azure 監視器資料來源外掛程式](./platform/grafana-plugin.md)。
 

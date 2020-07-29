@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive,seodec18
+ms.custom: hdinsightactive,seodec18, devx-track-java
 ms.date: 12/24/2019
-ms.openlocfilehash: b0d1476a6386569a09ee4b14d31403408d741ef7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7cd368df1f2a94c8f49454530e7f5997f2659a32
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087453"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323769"
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>建置 Apache HBase 的 Java 應用程式
 
@@ -21,7 +21,7 @@ ms.locfileid: "87087453"
 
 此文件中的步驟使用 [Apache Maven](https://maven.apache.org/) \(英文\) 來建立及建置專案。 Maven是軟體專案管理和理解工具，可讓您建置 Java 專案的軟體、文件及報告。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * HDInsight 上的 Apache HBase 叢集。 請參閱[開始使用 Apache HBase](./apache-hbase-tutorial-get-started-linux.md)。
 

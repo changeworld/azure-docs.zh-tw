@@ -3,19 +3,19 @@ title: 監視 Windows 傳統型應用程式的使用情況和效能
 description: 使用 Application Insights 分析 Windows 傳統型應用程式的使用情况和效能。
 ms.topic: conceptual
 ms.date: 06/11/2020
-ms.openlocfilehash: ddb602536e1b8bbc987c4ba366e2007163c814ec
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 17613fc6cea24643c2b88182e7e56a1d216b2da8
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499183"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323412"
 ---
 # <a name="monitoring-usage-and-performance-in-classic-windows-desktop-apps"></a>監視傳統型 Windows 桌面應用程式的使用情況和效能
 
-裝載於內部部署、Azure 中和其他雲端中的應用程式，全都可使用 Application Insights。 唯一限制是需要[允許](../../azure-monitor/app/ip-addresses.md)與 Application Insights 服務進行通訊。 若要監視通用 Windows 平台 (UWP) 應用程式，建議您使用 [Visual Studio App Center](../../azure-monitor/learn/mobile-center-quickstart.md)。
+裝載於內部部署、Azure 中和其他雲端中的應用程式，全都可使用 Application Insights。 唯一限制是需要[允許](./ip-addresses.md)與 Application Insights 服務進行通訊。 若要監視通用 Windows 平台 (UWP) 應用程式，建議您使用 [Visual Studio App Center](../learn/mobile-center-quickstart.md)。
 
 ## <a name="to-send-telemetry-to-application-insights-from-a-classic-windows-application"></a>將遙測資料從傳統型 Windows 應用程式傳送至 Application Insights
-1. 在 [Azure 入口網站](https://portal.azure.com)中，建立 [Application Insights 資源](../../azure-monitor/app/create-new-resource.md )。 
+1. 在 [Azure 入口網站](https://portal.azure.com)中，建立 [Application Insights 資源](./create-new-resource.md)。 
 2. 取得檢測金鑰的副本。
 3. 在 Visual Studio 中，編輯應用程式專案的 NuGet 封裝，並新增 Microsoft.ApplicationInsights.WindowsServer。 （或者，如果您只想要基底 API，請選擇 ApplicationInsights，而不需要標準遙測收集模組）。
 4. 在程式碼中設定檢測金鑰︰
@@ -27,7 +27,7 @@ ms.locfileid: "86499183"
     `<InstrumentationKey>`*您的金鑰*`</InstrumentationKey>` 
    
     如果使用 ApplicationInsights.config，請確定其在方案總管中的屬性已設定為 [建置動作] = [內容]、[複製到輸出目錄] = [複製] ****。
-5. [使用 API](../../azure-monitor/app/api-custom-events-metrics.md) 傳送遙測。
+5. [使用 API](./api-custom-events-metrics.md) 傳送遙測。
 6. 執行您的應用程式，並查看您在 Azure 入口網站中建立之資源的遙測。
 
 ## <a name="example-code"></a><a name="telemetry"></a>範例程式碼
@@ -175,7 +175,8 @@ namespace WindowsFormsApp2
 > 雖然在技術上您可以使用上述的遙測處理器，即使您是在[舊版企業（每個節點）的定價層](./pricing.md#legacy-enterprise-per-node-pricing-tier)，這會導致過度計費的可能性，因為無法適當地區別每個節點定價的節點。
 
 ## <a name="next-steps"></a>後續步驟
-* [建立儀表板](../../azure-monitor/app/overview-dashboard.md)
-* [診斷搜尋](../../azure-monitor/app/diagnostic-search.md)
-* [探索度量](../../azure-monitor/platform/metrics-charts.md)
+* [建立儀表板](./overview-dashboard.md)
+* [診斷搜尋](./diagnostic-search.md)
+* [探索度量](../platform/metrics-charts.md)
 * [撰寫分析查詢](../log-query/log-query-overview.md)
+

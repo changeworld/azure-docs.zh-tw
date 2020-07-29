@@ -5,13 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 05/21/2019
+ms.date: 07/27/2020
 ms.author: cherylmc
-ms.openlocfilehash: 133a586612f8a5b864c84400ece63d9ba6ccb150
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3d51409baf9d5ca6ce90f1367ac128d7d47a9757
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84729237"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325248"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-cli"></a>使用 CLI 將虛擬網路連線到 ExpressRoute 線路
 
@@ -152,7 +153,7 @@ az network vpn-connection update --name ERConnection --resource-group ExpressRou
 *RoutingWeight* 的範圍是從 0 到 32000。 預設值為 0。
 
 ## <a name="configure-expressroute-fastpath"></a>設定 ExpressRoute FastPath 
-如果您的 ExpressRoute 線路位於[Expressroute Direct](expressroute-erdirect-about.md) ，而您的虛擬網路閘道是 Ultra 效能或 ErGw3AZ，您可以啟用[expressroute FastPath](expressroute-about-virtual-network-gateways.md) 。 FastPath 可改善資料路徑效能，例如每秒封包數和內部部署網路與虛擬網路之間的每秒連線數。 
+如果您的虛擬網路閘道是 Ultra 效能或 ErGw3AZ，您可以啟用[ExpressRoute FastPath](expressroute-about-virtual-network-gateways.md) 。 FastPath 可改善資料路徑效能，例如每秒封包數和內部部署網路與虛擬網路之間的每秒連線數。 
 
 **在新連接上設定 FastPath**
 

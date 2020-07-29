@@ -3,12 +3,12 @@ title: Azure Migrate Server 遷移的常見問題
 description: 取得有關使用 Azure Migrate 伺服器遷移來遷移電腦的常見問題的解答。
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 282f7ab27eead59fc87a95ea7d397268177f4f2c
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: af40aecaa1614542074cf87ce95eb81492233bdc
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224123"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321219"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Azure Migrate Server 遷移：常見的問題
 
@@ -25,11 +25,11 @@ ms.locfileid: "86224123"
 
 ## <a name="how-does-agentless-vmware-replication-work"></a>無代理程式 VMware 複寫如何運作？
 
-適用于 VMware 的無代理程式複寫方法會使用 VMware 快照集和 VMware 變更的區塊追蹤 (CBT) 。
+適用于 VMware 的無代理程式複寫方法會使用 VMware 快照集和 VMware 變更封鎖追蹤（CBT）。
 
-程序如下：
+程序如下︰
 
-1. 當您啟動複寫時，會排定初始複寫迴圈。 在初始迴圈中，會採用 VM 的快照集。 快照集會用來複寫 Vmdk (磁片) 的 Vm。 
+1. 當您啟動複寫時，會排定初始複寫迴圈。 在初始迴圈中，會採用 VM 的快照集。 快照集會用來複寫 Vm Vmdk （磁片）。 
 2. 在初始複寫週期完成後，會定期排程差異複寫週期。
     - 在差異複寫期間，會建立快照集，並複寫自先前複寫週期之後變更的資料區塊。
     - VMware CBT 是用來判斷自上一個週期以來已變更的區塊。
@@ -47,7 +47,7 @@ ms.locfileid: "86224123"
 
 ## <a name="how-frequently-is-a-replication-cycle-scheduled"></a>複寫週期排程的頻率為何？
 
-排定下一個複寫週期的公式是 (上一個週期時間/2) 或一小時（以較高者為准）。
+排定下一個複寫週期的公式為（上一個週期時間/2）或一小時（以較高者為准）。
 
 例如，如果 VM 需要四個小時來進行差異迴圈，則下一個週期會排程為兩個小時，而不是在下一個小時。 當第一個差異週期立即排程時，此程式會在初始複寫之後立即有所不同。
 
@@ -57,18 +57,18 @@ ms.locfileid: "86224123"
 
 ## <a name="can-i-do-agentless-migration-of-uefi-vms-to-azure-gen-2"></a>我可以對 Azure Gen 2 進行無代理程式的 UEFI Vm 遷移嗎？
 
-不正確。 使用 Azure Site Recovery 將這些 Vm 遷移至 Gen 2 Azure Vm。 
+不可以。 使用 Azure Site Recovery 將這些 Vm 遷移至 Gen 2 Azure Vm。 
 
 ## <a name="can-i-pin-vms-to-azure-availability-zones-when-i-migrate"></a>我可以在遷移時將 Vm 釘選到 Azure 可用性區域嗎？
 
-不正確。 Azure 可用性區域不支援 Azure Migrate 遷移。
+不可以。 Azure 可用性區域不支援 Azure Migrate 遷移。
 
 ## <a name="what-transport-protocol-does-azure-migrate-use-during-replication"></a>Azure Migrate 在複寫期間使用哪種傳輸通訊協定？
 
-Azure Migrate 使用網路封鎖裝置 (具有 TLS 加密的 NBD) 通訊協定。
+Azure Migrate 使用網路封鎖裝置（NBD）通訊協定搭配 TLS 加密。
 
 ## <a name="how-is-the-data-transmitted-from-on-prem-environment-to-azure-is-it-encrypted-before-transmission"></a>如何將資料從內部內部部署環境傳輸到 Azure？ 它會在傳輸前加密嗎？ 
-無代理程式複寫案例中的 Azure Migrate 設備會壓縮資料，並在上傳之前加密。 資料會透過 HTTPs 的安全通道傳輸，並使用 TLS 1.2 或更新版本。 此外，當您將資料保存到雲端 (待用加密) 時，Azure 儲存體會自動將您的資料加密。  
+無代理程式複寫案例中的 Azure Migrate 設備會壓縮資料，並在上傳之前加密。 資料會透過 HTTPs 的安全通道傳輸，並使用 TLS 1.2 或更新版本。 此外，Azure 儲存體會在將資料保存到雲端（待用加密）時，自動將您的資料加密。  
 
 ## <a name="what-is-the-minimum-vcenter-server-version-required-for-migration"></a>遷移所需的最小 vCenter Server 版本為何？
 
@@ -76,11 +76,11 @@ Azure Migrate 使用網路封鎖裝置 (具有 TLS 加密的 NBD) 通訊協定�
 
 ## <a name="can-customers-migrate-their-vms-to-unmanaged-disks"></a>客戶可以將其 Vm 遷移至非受控磁片嗎？
 
-不正確。 Azure Migrate 僅支援 (標準 HDD、進階 SSD) 遷移至受控磁片。
+不可以。 Azure Migrate 僅支援將遷移至受控磁片（標準 HDD、進階 SSD）。
 
 ## <a name="how-many-vms-can-i-replicate-at-one-time-by-using-agentless-migration"></a>我可以使用無代理程式遷移一次複寫多少部 Vm？
 
-目前，您可以同時遷移每個 vCenter Server 實例的 100 Vm。 以10個 Vm 的批次進行遷移。
+目前，您可以同時遷移每個 vCenter Server 實例的 300 Vm。 以10個 Vm 的批次進行遷移。
 
 ## <a name="how-do-i-throttle-replication-in-using-azure-migrate-appliance-for-agentless-vmware-replication"></a>使用 Azure Migrate 設備來進行無代理程式 VMware 複寫的如何? 節流複寫？  
 
@@ -102,11 +102,11 @@ New-netqospolicy-Name "ThrottleReplication"-AppPathNameMatchCondition "GatewayWi
 - 如果您要遷移由像是 Xen、KVM 等平臺虛擬化的 Vm。
 - 若要遷移 Hyper-v 或 VMware Vm，如果基於某些原因而無法使用[hyper-v](tutorial-migrate-hyper-v.md)或[vmware](server-migrate-overview.md)遷移的標準遷移程式。 例如，如果您不是執行 VMware vCenter，而且只使用 ESXi 主機。
 - 將目前正在私人雲端中執行的 Vm 遷移至 Azure
-- 如果您想要將在公用雲端中執行的 Vm （例如 Amazon Web Services (AWS) 或 Google Cloud Platform (GCP) ）遷移至 Azure。
+- 如果您想要將在公用雲端中執行的 Vm （例如 Amazon Web Services （AWS）或 Google Cloud Platform （GCP））遷移至 Azure。
 
-## <a name="i-deployed-two-or-more-appliances-to-discover-vms-in-my-vcenter-server-however-when-i-try-to-migrate-the-vms-i-only-see-vms-corresponding-to-one-of-the-appliance"></a>我部署了兩個 (或多個) 設備，以探索我 vCenter Server 中的 Vm。 不過，當我嘗試遷移 Vm 時，只會看到對應到其中一個設備的 Vm。
+## <a name="i-deployed-two-or-more-appliances-to-discover-vms-in-my-vcenter-server-however-when-i-try-to-migrate-the-vms-i-only-see-vms-corresponding-to-one-of-the-appliance"></a>我部署了兩個（或更多）設備，以探索我的 vCenter Server 中的 Vm。 不過，當我嘗試遷移 Vm 時，只會看到對應到其中一個設備的 Vm。
 
-雖然這可能是很好的使用案例，但我們目前不支援。 部署兩個 (或多個) 設備，以探索相同的 Vm 集合會導致服務問題，其中 VM 擁有權會在兩個設備之間保持切換。 這是您看到 Vm 出現並消失的原因。 在這種情況下，若要解決此問題，您必須刪除一個設備，然後進行硬重新整理。
+如果已設定多個設備，則提供的 vCenter 帳戶上的 Vm 之間不會有任何重迭。 具有這類重迭的探索是不支援的案例。
 
 ## <a name="do-i-need-vmware-vcenter-to-migrate-vmware-vms"></a>我需要 VMware vCenter 才能遷移 VMware Vm 嗎？
 若要使用 VMware 代理程式型或無代理程式遷移來[遷移 Vmware vm](server-migrate-overview.md) ，ESXi vm 所在的主機必須由 vCenter Server 管理。 如果您沒有 vCenter Server，可以藉由將 VMware Vm 作為實體伺服器遷移來進行遷移。 [深入了解](migrate-support-matrix-physical-migration.md)。

@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/08/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 4481e62fb15b5ec21b48deb00f1438abf01aa27a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fffb83fe680572c2448323a61b767a401c9a4834
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87041467"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323701"
 ---
 # <a name="impact-analysis-with-application-insights"></a>使用 Application Insights 進行影響分析
 
@@ -28,7 +28,7 @@ ms.locfileid: "87041467"
 ![依瀏覽器的轉換螢幕擷取畫面](./media/usage-impact/0004-browsers.png)
 
 > [!NOTE]
-> 您的 Application Insights 資源必須包含頁面檢視或自訂事件，以便使用「影響」工具。 [了解如何設定應用程式以使用 Application Insights JavaScript SDK 自動收集分頁檢視](../../azure-monitor/app/javascript.md)。 也請記住，因為您是要分析相互關聯，所以樣本大小很重要。
+> 您的 Application Insights 資源必須包含頁面檢視或自訂事件，以便使用「影響」工具。 [了解如何設定應用程式以使用 Application Insights JavaScript SDK 自動收集分頁檢視](./javascript.md)。 也請記住，因為您是要分析相互關聯，所以樣本大小很重要。
 >
 >
 
@@ -85,5 +85,6 @@ ms.locfileid: "87041467"
     - [漏斗圖](usage-funnels.md)
     - [保留](usage-retention.md)
     - [使用者流程](usage-flows.md)
-    - [活頁簿](../../azure-monitor/platform/workbooks-overview.md)
+    - [活頁簿](../platform/workbooks-overview.md)
     - [新增使用者內容](usage-send-user-context.md)
+

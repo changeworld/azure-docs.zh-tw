@@ -4,15 +4,15 @@ description: 從 Cloud Partner 入口網站轉換供應專案到合作夥伴中�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-author: anbene
+author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: eafa6c4911e934d391a380e5eb494ca8f7766959
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 59f66b88c998a78f5bd3ccf3757cb791aea2521b
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87012054"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87279299"
 ---
 # <a name="frequently-asked-questions-about-transitioning-from-the-cloud-partner-portal-to-partner-center"></a>從 Cloud Partner 入口網站轉換到合作夥伴中心的常見問題
 
@@ -75,7 +75,7 @@ Cloud Partner 入口網站已轉換至合作夥伴中心。 合作夥伴中心�
 
 針對合作夥伴中心所支援的供應專案類型，不論其狀態為何，所有優惠都會移動;草稿、已取消列出及僅限預覽的供應專案也已移動。
 
-| 供應項目類型 <img src="" width=150px>| 已移至合作夥伴中心嗎？ <img src="" width=100px>| 接下來的步驟 |
+| 供應項目類型 <img src="" width=150px>| 已移至合作夥伴中心嗎？ <img src="" width=100px>| 後續步驟 |
 | --- | --- | --- |
 | SaaS | 是 | 登入合作夥伴中心以建立新的供應專案，並管理在 Cloud Partner 入口網站中建立的供應專案。 若要深入瞭解，請在[商業 marketplace 中建立新的 SaaS 供應](partner-center-portal/create-new-saas-offer.md)專案。 |
 | 虛擬機器 | 是 | 登入合作夥伴中心以建立新的供應專案，並管理在 Cloud Partner 入口網站中建立的供應專案。 若要深入瞭解，請在[Azure Marketplace 上建立 Azure 虛擬機器供應](partner-center-portal/azure-vm-create-offer.md)專案。 |
@@ -107,19 +107,19 @@ Cloud Partner 入口網站已轉換至合作夥伴中心。 合作夥伴中心�
 
     如果您在左側的流覽窗格中沒有看到 [商業 Marketplace] 方案，可能是您的帳戶錯誤。 請遵循下一節中的步驟來存取正確的帳戶。
 
-    [![](media/cpp-pc-faq/overview-menu.png "Shows the Partner Center Overview menu")](media/cpp-pc-faq/overview-menu.png#lightbox)
+    [![顯示合作夥伴中心 [總覽] 功能表的螢幕擷取畫面](media/cpp-pc-faq/overview-menu.png "顯示合作夥伴中心的 [總覽] 功能表")](media/cpp-pc-faq/overview-menu.png#lightbox)
 
 ### <a name="access-the-right-account-in-partner-center"></a>在合作夥伴中心存取正確的帳戶
 
 如果您是多個帳戶的一部分，在合作夥伴中心中，您會在左側的導覽功能表中看到以兩個箭號標示的帳戶選擇器按鈕。 選取 [帳戶選擇器] 按鈕，以查看您所屬帳戶的清單。 選取清單上的任何帳戶以切換至該帳戶，並查看與該帳戶相關的所有程式和資訊。 如果您在導覽功能表中看不到 [帳戶選擇器] 按鈕，則您是單一帳戶的成員。
 
-[![](media/cpp-pc-faq/picker-button.png "Shows the Partner Center account picker button")](media/cpp-pc-faq/picker-button.png#lightbox)
+[![螢幕擷取畫面：顯示 [合作夥伴中心帳戶選擇器] 按鈕。](media/cpp-pc-faq/picker-button.png "顯示合作夥伴中心帳戶選擇器按鈕")](media/cpp-pc-faq/picker-button.png#lightbox)
 
 ## <a name="how-do-i-create-new-offers"></a>如何? 建立新的供應專案嗎？
 
 存取[合作夥伴中心](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)的商業 marketplace 方案，以建立新的供應專案。 在 [總覽] 頁面上，選取 [ **+ 新增供應**專案]。
 
-[![](media/cpp-pc-faq/new-offer.png "Shows the Partner Center Overview menu")](media/cpp-pc-faq/new-offer.png#lightbox)
+[![螢幕擷取畫面顯示合作夥伴中心的 [總覽] 功能表。](media/cpp-pc-faq/new-offer.png "顯示合作夥伴中心的 [總覽] 功能表")](media/cpp-pc-faq/new-offer.png#lightbox)
 
 ## <a name="i-cant-sign-in-and-need-to-open-a-support-ticket"></a>我無法登入，且需要開啟支援票證
 
@@ -137,7 +137,7 @@ Cloud Partner 入口網站已轉換至合作夥伴中心。 合作夥伴中心�
 
 合作夥伴中心提供模組化的發佈選項，可讓您選取想要發佈的變更，而非一律同時發佈所有更新。 例如，下列畫面顯示選取要發佈的唯一變更是**屬性**和**供應專案清單**的變更。 您在預覽頁面中所做的變更將不會發行。
 
-[![](media/cpp-pc-faq/review-page.png "Shows the Partner Center Review and publish page")](media/cpp-pc-faq/review-page.png#lightbox)
+[![螢幕擷取畫面顯示合作夥伴中心的審查和發佈頁面。](media/cpp-pc-faq/review-page.png "顯示合作夥伴中心的審查和發佈頁面")](media/cpp-pc-faq/review-page.png#lightbox)
 
 您未發佈的更新會儲存為草稿。 繼續使用您的供應項目預覽，以在將供應項目公開上線之前加以驗證。
 
@@ -145,24 +145,24 @@ Cloud Partner 入口網站已轉換至合作夥伴中心。 合作夥伴中心�
 
 合作夥伴中心包含[比較功能](partner-center-portal/update-existing-offer.md#compare-changes-to-marketplace-offers) \(部分機器翻譯\)，其具備改善的篩選選項。 這可讓您比較供應項目的預覽及上線版本。
 
-[![](media/cpp-pc-faq/compare.png "Shows the Partner Center compare feature")](media/cpp-pc-faq/compare.png#lightbox)
+[![螢幕擷取畫面顯示合作夥伴中心比較功能。](media/cpp-pc-faq/compare.png "顯示合作夥伴中心比較功能")](media/cpp-pc-faq/compare.png#lightbox)
 
 ### <a name="branding-and-navigation-changes"></a>商標與導覽變更
 
 您將會注意到一些商標上的變更。 例如， *sku*的品牌為合作夥伴中心的*計畫*：
 
-[![](media/cpp-pc-faq/plans.png "Shows the Partner Center Plans page")](media/cpp-pc-faq/plans.png#lightbox)
+[![螢幕擷取畫面：顯示 [合作夥伴中心方案] 頁面。](media/cpp-pc-faq/plans.png "顯示 [合作夥伴中心方案] 頁面")](media/cpp-pc-faq/plans.png#lightbox)
 
 此外，您先前在 Cloud Partner 入口網站的**Marketplace**或**店面詳細資料**（諮詢服務、Power BI 應用程式）頁面中提供的資訊，現在會在 [合作夥伴中心] 的 [供應專案]**清單**頁面上收集：
 
-[![](media/cpp-pc-faq/offer-listing.png "Shows the Partner Center Offer listing page")](media/cpp-pc-faq/offer-listing.png#lightbox)
+[![螢幕擷取畫面顯示合作夥伴中心供應專案清單頁面。](media/cpp-pc-faq/offer-listing.png "顯示合作夥伴中心供應專案清單頁面")](media/cpp-pc-faq/offer-listing.png#lightbox)
 
 您先前在 Cloud Partner 入口網站的單一頁面中提供的 Sku 資訊，現在可能會在合作夥伴中心的數個頁面中收集：
 
 - [計劃設定] 頁面
 - [計劃清單] 頁面
 - 計劃 [可用性] 頁面
-- [規劃技術設定] 頁面，如下所示： ![ ！ []（media/cpp-pc-常見問題/technical-configuration.png "顯示合作夥伴中心技術設定頁面"）](media/cpp-pc-faq/technical-configuration.png#lightbox)
+- [規劃技術設定] 頁面，如下所示： ![ ！ [螢幕擷取畫面顯示 [合作夥伴中心技術設定] 頁面。]（media/cpp-pc-常見問題/technical-configuration.png "顯示合作夥伴中心技術設定頁面"）](media/cpp-pc-faq/technical-configuration.png#lightbox)
 
 您的供應專案識別碼現在會顯示在供應專案的左側導覽列上：
 
@@ -172,7 +172,7 @@ Cloud Partner 入口網站已轉換至合作夥伴中心。 合作夥伴中心�
 
 您可以直接從合作夥伴中心入口網站要求[停止在市集上銷售某個供應項目](partner-center-portal/update-existing-offer.md#stop-selling-an-offer-or-plan) \(部分機器翻譯\)。 該選項會在您供應項目的 [供應項目概觀] 頁面上提供。
 
-[![](media/cpp-pc-faq/stop-sell.png "Shows the Partner Center page to stop selling an offer")](media/cpp-pc-faq/stop-sell.png#lightbox)
+[![螢幕擷取畫面顯示停止銷售供應專案的 [合作夥伴中心] 頁面。](media/cpp-pc-faq/stop-sell.png "顯示停止銷售供應專案的合作夥伴中心頁面")](media/cpp-pc-faq/stop-sell.png#lightbox)
 <br><br>
 
 ## <a name="are-the-cloud-partner-portal-rest-apis-still-supported"></a>是否仍支援 Cloud Partner 入口網站 REST Api？

@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
-ms.openlocfilehash: e5dc290a40342e0797001dde6cab90e12dd5cf39
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dba058dce09e958a2ae769d927a5569fb3e42113
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77662173"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324551"
 ---
 # <a name="advanced-aggregations-in-azure-monitor-log-queries"></a>Azure 監視器記錄查詢中的進階彙總
 
@@ -183,7 +184,8 @@ WindowsFirewall
 - [字串作業](string-operations.md)
 - [日期和時間作業](datetime-operations.md)
 - [彙總函式](aggregations.md)
-- [進階彙總](advanced-aggregations.md)
+- [進階彙總]()
 - [JSON 與資料結構](json-data-structures.md)
 - [聯結](joins.md)
 - [圖表](charts.md)
+

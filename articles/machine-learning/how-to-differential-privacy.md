@@ -1,23 +1,24 @@
 ---
-title: 如何使用 WhiteNoise 套件 (預覽) 保留資料隱私權
+title: 如何使用 WhiteNoise 套件來保留資料隱私權（預覽）
 titleSuffix: Azure Machine Learning
 description: 了解如何使用 WhiteNoise 套件，將差異隱私權最佳做法套用至 Azure Machine Learning 模型。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
+ms.custom: how-to
 ms.author: slbird
 author: slbird
 ms.reviewer: luquinta
 ms.date: 07/09/2020
-ms.openlocfilehash: 0ef20eee7e73c3a73a2f2e895242d7c1fce307c9
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 2182c9bc7588947ece5a309018359a8bcfa3ff41
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206335"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320199"
 ---
-# <a name="use-differential-privacy-in-azure-machine-learning-preview"></a>在 Azure Machine Learning (preview 中使用差異隱私權) 
+# <a name="use-differential-privacy-in-azure-machine-learning-preview"></a>在 Azure Machine Learning 中使用差異隱私權（預覽）
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
@@ -28,7 +29,7 @@ ms.locfileid: "86206335"
 > [!NOTE]
 > 請注意，我們會重新命名此工具組，並會在接下來的幾周內引進新的名稱。 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - 如果您沒有 Azure 訂用帳戶，請在開始前先建立免費帳戶。 立即試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
 - [Python 3](https://www.python.org/downloads/) \(英文\)

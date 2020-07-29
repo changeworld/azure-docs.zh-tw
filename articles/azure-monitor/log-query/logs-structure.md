@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/09/2020
-ms.openlocfilehash: b4882ec9eb8b81ae27a1e8eed2e5b4349fbeac3f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4e36a21e9dbab6f9bf814cdeb86f175ded38ea8e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516187"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327288"
 ---
 # <a name="structure-of-azure-monitor-logs"></a>Azure 監視器記錄的結構
 使用[記錄查詢](log-query-overview.md)快速取得資料見解的能力，是 Azure 監視器的強大功能。 若要建立有效率且有用的查詢，您應該瞭解一些基本概念，例如您想要的資料位於何處，以及其結構化方式。 本文提供您開始使用所需的基本概念。
@@ -89,4 +89,5 @@ union withsource = table *
 
 ## <a name="next-steps"></a>後續步驟
 - 瞭解如何使用[Log Analytics 來建立和編輯記錄搜尋](./log-query-overview.md)。
-- 請參閱使用新的查詢語言[撰寫查詢的教學課程](../log-query/get-started-queries.md)。
+- 請參閱使用新的查詢語言[撰寫查詢的教學課程](./get-started-queries.md)。
+

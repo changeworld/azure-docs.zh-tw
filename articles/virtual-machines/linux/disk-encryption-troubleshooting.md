@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: abd802f19917b048f6d006b8e3097b08efaf22e2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0e83d53122b3f80d73a573f0eff8c13888cbee11
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86510475"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325197"
 ---
 # <a name="azure-disk-encryption-for-linux-vms-troubleshooting-guide"></a>Linux Vm 的 Azure 磁碟加密疑難排解指南
 
@@ -70,30 +70,54 @@ Microsoft.ostcextensions.customscriptforlinux. AzureDiskEncryptionForLinux 擴�
 
 Linux OS 磁碟加密順序會暫時取消掛接 OS 磁碟機。 然後會對整個 OS 磁碟執行逐區塊加密，再於它處於已加密狀態時重新掛接。 進行加密時，Linux 磁片加密不允許同時使用 VM。 VM 的效能特性在完成加密所需的時間上有顯著差異。 這些特性包括磁碟的大小以及儲存體帳戶是標準或進階 (SSD) 儲存體。
 
-若要檢查加密狀態，請輪詢[AzVmDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus)命令所傳回的**ProgressMessage**欄位。 加密 OS 磁碟機時，VM 會進入服務狀態且會停用 SSH，從而避免中斷進行中的流程。 **EncryptionInProgress** 訊息報告加密正在進行時的大部分時間。 數個小時之後，**VMRestartPending** 訊息會提示您重新啟動 VM。 例如：
-
+當 OS 磁片磁碟機正在加密時，VM 會進入服務狀態並停用 SSH，以避免中斷進行中的進程。  若要檢查加密狀態，請使用 Azure PowerShell [AzVmDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus)命令，並檢查**ProgressMessage**欄位。 **ProgressMessage**會報告一系列的狀態，因為資料和 OS 磁片已加密：
 
 ```azurepowershell
-PS > Get-AzVMDiskEncryptionStatus -ResourceGroupName "MyVirtualMachineResourceGroup" -VMName "VirtualMachineName"
+PS > Get-AzVMDiskEncryptionStatus -ResourceGroupName "MyResourceGroup" -VMName "myVM"
+
+OsVolumeEncrypted          : EncryptionInProgress
+DataVolumesEncrypted       : EncryptionInProgress
+OsVolumeEncryptionSettings :
+ProgressMessage            : Transitioning
+
+PS > Get-AzVMDiskEncryptionStatus -ResourceGroupName "MyResourceGroup" -VMName "myVM"
+
+OsVolumeEncrypted          : EncryptionInProgress
+DataVolumesEncrypted       : EncryptionInProgress
+OsVolumeEncryptionSettings : Microsoft.Azure.Management.Compute.Models.DiskEncryptionSettings
+ProgressMessage            : Encryption succeeded for data volumes
+
+PS > Get-AzVMDiskEncryptionStatus -ResourceGroupName "MyResourceGroup" -VMName "myVM"
+
+OsVolumeEncrypted          : EncryptionInProgress
+DataVolumesEncrypted       : EncryptionInProgress
+OsVolumeEncryptionSettings : Microsoft.Azure.Management.Compute.Models.DiskEncryptionSettings
+ProgressMessage            : Provisioning succeeded
+
+PS > Get-AzVMDiskEncryptionStatus -ResourceGroupName "MyResourceGroup" -VMName "myVM"
+
 OsVolumeEncrypted          : EncryptionInProgress
 DataVolumesEncrypted       : EncryptionInProgress
 OsVolumeEncryptionSettings : Microsoft.Azure.Management.Compute.Models.DiskEncryptionSettings
 ProgressMessage            : OS disk encryption started
-
-PS > Get-AzVMDiskEncryptionStatus -ResourceGroupName "MyVirtualMachineResourceGroup" -VMName "VirtualMachineName"
-OsVolumeEncrypted          : VMRestartPending
-DataVolumesEncrypted       : Encrypted
-OsVolumeEncryptionSettings : Microsoft.Azure.Management.Compute.Models.DiskEncryptionSettings
-ProgressMessage            : OS disk successfully encrypted, please reboot the VM
 ```
 
-系統提示您重新啟動 VM，且 VM 重新啟動之後，您必須等待 2-3 分鐘讓重新啟動和最後步驟在目標上執行。 加密最終完成時，狀態訊息會變更。 可以使用此訊息之後，加密的 OS 磁碟機應該會就緒可供使用，且 VM 也就緒可再次使用。
+在大部分的加密程式中， **ProgressMessage**將會保留在**OS 磁片加密中啟動**。  加密完成且成功時， **ProgressMessage**會傳回：
 
-在下列情況中，我們建議您將 VM 還原至加密前進行的快照集或備份：
-   - 如果先前所述的重新啟動順序未發生。
-   - 如果開機資訊、進度訊息或其他錯誤指標報告 OS 加密在此處理序中間失敗。 訊息的範本是本指南中所述的「無法取消掛接」錯誤。
+```azurepowershell
+PS > Get-AzVMDiskEncryptionStatus -ResourceGroupName "MyResourceGroup" -VMName "myVM"
 
-在下一次嘗試之前，請重新評估 VM 的特性，並確定所有必要條件都已滿足。
+OsVolumeEncrypted          : Encrypted
+DataVolumesEncrypted       : NotMounted
+OsVolumeEncryptionSettings : Microsoft.Azure.Management.Compute.Models.DiskEncryptionSettings
+ProgressMessage            : Encryption succeeded for all volumes
+```
+
+可以使用此訊息之後，加密的 OS 磁碟機應該會就緒可供使用，且 VM 也就緒可再次使用。
+
+如果開機資訊、進度訊息或錯誤報表在此程式中途發生 OS 加密失敗，請將 VM 還原至在加密之前立即建立的快照集或備份。 訊息的範本是本指南中所述的「無法取消掛接」錯誤。
+
+在重新嘗試加密之前，請重新評估 VM 的特性，並確定所有必要條件都已滿足。
 
 ## <a name="troubleshooting-azure-disk-encryption-behind-a-firewall"></a>針對防火牆後方的 Azure 磁碟加密進行疑難排解
 
@@ -101,11 +125,11 @@ ProgressMessage            : OS disk successfully encrypted, please reboot the V
 
 ## <a name="troubleshooting-encryption-status"></a>針對加密狀態進行疑難排解 
 
-即使已在 VM 內解密磁碟，入口網站也可能會將其顯示為加密。  當使用低層級命令直接從 VM 內解密磁碟，而不是使用較高層級的 Azure 磁碟加密管理命令時，就會發生這種情況。  較高層級的命令不只會從 VM 內解密磁碟，也會在 VM 外部更新與 VM 建立關聯的重要平台層級加密設定和延伸模組設定。  如果內外未保持一致，則平台將無法回報加密狀態或適當地佈建 VM。   
+即使已在 VM 內解密磁碟，入口網站也可能會將其顯示為加密。  當使用低層級命令直接從 VM 內解密磁碟，而不是使用較高層級的 Azure 磁碟加密管理命令時，就會發生這種情況。  較高層級的命令不只會從 VM 內解密磁碟，也會在 VM 外部更新與 VM 建立關聯的重要平台層級加密設定和延伸模組設定。  如果內外未保持一致，則平台將無法回報加密狀態或適當地佈建 VM。
 
 若要停用 PowerShell 的 Azure 磁碟加密，請於 [Remove-AzVMDiskEncryptionExtension](/powershell/module/az.compute/remove-azvmdiskencryptionextension) 後接著使用 [Disable-AzVMDiskEncryption](/powershell/module/az.compute/disable-azvmdiskencryption)。 若在停用加密之前執行 Remove-AzVMDiskEncryptionExtension 將會導致失敗。
 
-若要停用 CLI 的 Azure 磁碟加密，請使用 [az vm encryption disable](/cli/azure/vm/encryption)。 
+若要停用 CLI 的 Azure 磁碟加密，請使用 [az vm encryption disable](/cli/azure/vm/encryption)。
 
 ## <a name="next-steps"></a>後續步驟
 

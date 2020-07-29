@@ -1,6 +1,5 @@
 ---
-title: 啟用 web 服務記錄
-titleSuffix: ML Studio (classic) - Azure
+title: ML Studio （傳統）：啟用 web 服務記錄-Azure
 description: 瞭解如何啟用 Machine Learning Studio （傳統） web 服務的記錄功能。 記錄提供可協助疑難排解 API 的其他資訊。
 services: machine-learning
 author: likebupt
@@ -11,14 +10,17 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: how-to
 ms.date: 06/15/2017
-ms.openlocfilehash: 71516641ab5110511d58f7e453759271aff9885a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: baaad137e4a5bc5268642addb5779961b7be3b04
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84705826"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326234"
 ---
 # <a name="enable-logging-for-azure-machine-learning-studio-classic-web-services"></a>啟用 Azure Machine Learning Studio （傳統） web 服務的記錄功能
+
+**適用物件：** ![否](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![ 是 ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio （傳統） 
+
 
 本檔提供 Machine Learning Studio （傳統） web 服務之記錄功能的相關資訊。 記錄除了錯誤號碼和訊息以外，還提供額外的資訊，可協助您針對 Machine Learning Studio （傳統） Api 的呼叫進行疑難排解。  
 
@@ -42,7 +44,7 @@ ms.locfileid: "84705826"
 
    ![選取記錄等級](./media/web-services-logging/enable-logging.png)
 
-6. 按一下 [檔案] 。
+6. 按一下 [儲存]。
 
 7. 對於傳統 Web 服務，請建立 **ml-診斷**容器。
 
@@ -50,7 +52,7 @@ ms.locfileid: "84705826"
 
    1. 在 [Azure 入口網站](https://portal.azure.com)中，移至與 Web 服務相關聯的儲存體帳戶。
 
-   2. 在 [Blob 服務]**** 下，按一下 [容器]****。
+   2. 在 [ **Blob 服務**] 底下，按一下 [**容器**]。
 
    3. 如果容器 **ml-診斷**不存在，按一下 [+ 容器]****，將容器命名為「ml-診斷」，[存取型別]**** 選取「Blob」。 按一下 [確定]。
 

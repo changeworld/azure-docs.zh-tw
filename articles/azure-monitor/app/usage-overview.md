@@ -3,24 +3,24 @@ title: 使用 Azure Application Insights 進行使用量分析 | Microsoft Docs
 description: 了解您的使用者，以及他們如何運用您的應用程式。
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: 1acc803d66bef29a77266d4e38e1605ffd75f36f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bd0b95fe92171d2c5a1515941dbf86a0e31e04be
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87014060"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323548"
 ---
 # <a name="usage-analysis-with-application-insights"></a>使用 Application Insights 進行使用量分析
 
-Web 或行動應用程式的哪些功能最受歡迎？ 您的使用者是否利用您的應用程式達到其目標呢？ 他們會在特定點退出，並在稍後返回嗎？  [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) 可協助您深入了解使用者如何使用應用程式。 每次您更新應用程式時，都可以評估它適用於使用者的程度。 您可以透過了解這些來制定下一個開發週期的相關資料導向決策。
+Web 或行動應用程式的哪些功能最受歡迎？ 您的使用者是否利用您的應用程式達到其目標呢？ 他們會在特定點退出，並在稍後返回嗎？  [Azure Application Insights](./app-insights-overview.md) 可協助您深入了解使用者如何使用應用程式。 每次您更新應用程式時，都可以評估它適用於使用者的程度。 您可以透過了解這些來制定下一個開發週期的相關資料導向決策。
 
 ## <a name="send-telemetry-from-your-app"></a>傳送來自您應用程式的遙測
 
 若要獲得最佳體驗，請同時在您的應用程式伺服器程式碼和網頁中安裝 Application Insights。 您應用程式的用戶端和伺服器元件會將遙測資料傳送回 Azure 入口網站以供分析。
 
-1. **伺服器程式碼：** 為您的 [ASP.NET](../../azure-monitor/app/asp-net.md)、[Azure](../../azure-monitor/app/app-insights-overview.md)、[Java](../../azure-monitor/app/java-get-started.md)、[Node.js](../../azure-monitor/app/nodejs.md) 或[其他](../../azure-monitor/app/platforms.md)應用程式安裝適當的模組。
+1. **伺服器程式碼：** 為您的 [ASP.NET](./asp-net.md)、[Azure](./app-insights-overview.md)、[Java](./java-get-started.md)、[Node.js](./nodejs.md) 或[其他](./platforms.md)應用程式安裝適當的模組。
 
-    * *不想安裝伺服器程式碼嗎？請直接[建立 Azure Application Insights 資源](../../azure-monitor/app/create-new-resource.md )。*
+    * *不想安裝伺服器程式碼嗎？請直接[建立 Azure Application Insights 資源](./create-new-resource.md)。*
 
 2. **網頁程式碼：** 將下列指令碼新增至網頁的右 ``</head>`` 之前。 使用 Application Insights 資源的適當值來取代檢測金鑰：
     
@@ -36,7 +36,7 @@ Web 或行動應用程式的哪些功能最受歡迎？ 您的使用者是否利
 
     若要深入了解用於監視網站的進階組態，請參閱 [JavaScript SDK 參考](./javascript.md) \(部分機器翻譯\) 一文。
 
-3. **行動應用程式程式碼：** 使用 App Center SDK 從應用程式收集事件，然後將這些事件的複本傳送至 Application Insights，[按照此指南](../../azure-monitor/learn/mobile-center-quickstart.md)的指示進行分析。
+3. **行動應用程式程式碼：** 使用 App Center SDK 從應用程式收集事件，然後將這些事件的複本傳送至 Application Insights，[按照此指南](../learn/mobile-center-quickstart.md)的指示進行分析。
 
 4. **取得遙測資料：** 以偵錯模式執行您的專案幾分鐘，然後在 Application Insights 的 [概觀] 刀鋒視窗中尋找結果。
 
@@ -103,7 +103,7 @@ Web 或行動應用程式的哪些功能最受歡迎？ 您的使用者是否利
 
 您可以將屬性值附加至這些事件，當您在入口網站中檢查它們時，就可以將事件進行篩選或分割。 此外，會將一組標準的屬性附加至每個事件，例如匿名使用者識別碼，這可讓您追蹤個別使用者的活動順序。
 
-深入了解[自訂事件](../../azure-monitor/app/api-custom-events-metrics.md#trackevent)和[屬性](../../azure-monitor/app/api-custom-events-metrics.md#properties)。
+深入了解[自訂事件](./api-custom-events-metrics.md#trackevent)和[屬性](./api-custom-events-metrics.md#properties)。
 
 ### <a name="slice-and-dice-events"></a>將事件進行交叉分析
 
@@ -121,7 +121,7 @@ Web 或行動應用程式的哪些功能最受歡迎？ 您的使用者是否利
 
 在 Application Insights 入口網站中，將資料依屬性值篩選並分割，以便比較不同版本。
 
-若要這樣做，[請設定遙測初始設定式](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)：
+若要這樣做，[請設定遙測初始設定式](./api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)：
 
 **ASP.NET 應用程式**
 
@@ -175,5 +175,6 @@ Web 或行動應用程式的哪些功能最受歡迎？ 您的使用者是否利
    - [漏斗圖](usage-funnels.md)
    - [保留](usage-retention.md)
    - [使用者流程](usage-flows.md)
-   - [活頁簿](../../azure-monitor/platform/workbooks-overview.md)
+   - [活頁簿](../platform/workbooks-overview.md)
    - [新增使用者內容](usage-send-user-context.md)
+

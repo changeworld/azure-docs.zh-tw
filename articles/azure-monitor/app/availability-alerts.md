@@ -6,16 +6,16 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/19/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 19a0e94206691dc741020374bf5c827ba423515d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c53b43d811e5e2b9cd8d70e3c8e05af444895154
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87008348"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320641"
 ---
 # <a name="availability-alerts"></a>可用性警示
 
-[Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) 會將來自全球各地的 Web 要求定期傳送給您的應用程式。 如果您的應用程式沒有回應，或回應太慢，它會發出警示。
+[Azure Application Insights](./app-insights-overview.md) 會將來自全球各地的 Web 要求定期傳送給您的應用程式。 如果您的應用程式沒有回應，或回應太慢，它會發出警示。
 
 ## <a name="enable-alerts"></a>啟用警示
 
@@ -65,7 +65,7 @@ ms.locfileid: "87008348"
 
 ## <a name="automate-alerts"></a>自動化警示
 
-若要使用 Azure Resource Manager 範本將此程式自動化，請參閱[使用 Resource Manager 範本建立度量警示](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-an-availability-test-along-with-a-metric-alert)檔。
+若要使用 Azure Resource Manager 範本將此程式自動化，請參閱[使用 Resource Manager 範本建立度量警示](../platform/alerts-metric-create-templates.md#template-for-an-availability-test-along-with-a-metric-alert)檔。
 
 ## <a name="troubleshooting"></a>疑難排解
 
@@ -75,3 +75,4 @@ ms.locfileid: "87008348"
 
 * [多重步驟 Web 測試](availability-multistep.md)
 * [URL ping Web 測試](monitor-web-app-availability.md)
+

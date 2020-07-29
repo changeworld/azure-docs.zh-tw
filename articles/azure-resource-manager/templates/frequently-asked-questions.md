@@ -2,15 +2,15 @@
 title: ARM 範本的常見問題
 description: 關於 Azure Resource Manager 範本的常見問題（FAQ）。
 ms.topic: conceptual
-ms.date: 05/30/2020
+ms.date: 07/27/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: fb4bac00c4d971e7b056c18fe609d77b077dbcbb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e23334daf0f4f6d5a6917af49c786d47c4557375
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85296860"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327254"
 ---
 # <a name="frequently-asked-questions-about-arm-templates"></a>ARM 範本的相關常見問題
 
@@ -48,7 +48,7 @@ ms.locfileid: "85296860"
 
   若要瞭解新的範本語言，請[註冊通知](https://aka.ms/armLangUpdates)。
 
-  如需範本規格的預覽，請[加入等待清單](https://aka.ms/templateSpecsWaitlist)。
+  若要瞭解範本規格，請參閱[Azure Resource Manager 範本規格（預覽）](template-specs.md)。
 
 ## <a name="creating-and-testing-templates"></a>建立和測試範本
 
@@ -64,7 +64,7 @@ ms.locfileid: "85296860"
 
 * **我可以在 ARM 範本中建立資源群組，並對其部署資源嗎？**
 
-  是，當您在 Azure 訂用帳戶層級部署範本時，可以在範本中建立資源群組。 如需建立資源群組和部署資源的範例，請參閱[資源群組和資源](deploy-to-subscription.md#resource-group-and-resources)。
+  是，當您在 Azure 訂用帳戶層級部署範本時，可以在範本中建立資源群組。 如需建立資源群組和部署資源的範例，請參閱[資源群組和資源](deploy-to-subscription.md#resource-groups)。
 
 * **我可以在 ARM 範本中建立訂用帳戶嗎？**
 

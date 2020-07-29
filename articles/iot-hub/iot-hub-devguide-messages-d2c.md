@@ -8,12 +8,14 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: asrastog
-ms.openlocfilehash: 18a37731171be5894a1481fb35569c9c7cf307f2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom:
+- 'Role: Cloud Development'
+ms.openlocfilehash: a8c53dd2755f239763ff572e34dbdf7f73caa8a4
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84790512"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327713"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>使用 IoT 中樞訊息路由將裝置到雲端訊息傳送至不同的端點
 
@@ -53,7 +55,7 @@ IoT 中樞目前支援下列端點：
 
 有兩個儲存體服務 IoT 中樞可以將訊息路由至-- [Azure Blob 儲存體](../storage/blobs/storage-blobs-introduction.md)和[Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) （ADLS Gen2）帳戶。 Azure Data Lake Storage 帳戶是建置於 blob 儲存體之上的已啟用[階層命名空間](../storage/blobs/data-lake-storage-namespace.md)的儲存體帳戶。 這兩個都會使用 blob 來儲存其儲存體。
 
-IoT 中樞支援以[Apache Avro](https://avro.apache.org/)格式和 JSON 格式將資料寫入 Azure 儲存體。 預設值為 AVRO。 只有在設定 blob 儲存體端點時，才可以設定編碼格式。 無法編輯現有端點的格式。 使用 JSON 編碼時，您必須將 contentType 設定為**application/JSON** ，並在訊息[系統屬性](iot-hub-devguide-routing-query-syntax.md#system-properties)中 contentEncoding 為**utf-8** 。 這兩個值都不區分大小寫。 如果未設定內容編碼，則 IoT 中樞會以基底64編碼格式寫入訊息。 您可以使用 IoT 中樞建立或更新 REST API （特別是[RoutingStorageContainerProperties](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate#routingstoragecontainerproperties)、Azure 入口網站、 [Azure CLI](https://docs.microsoft.com/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest)或[Azure PowerShell](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubroutingendpoint?view=azps-1.3.0)）來選取編碼格式。 下圖顯示如何在 Azure 入口網站中選取編碼格式。
+IoT 中樞支援以[Apache Avro](https://avro.apache.org/)格式和 JSON 格式將資料寫入 Azure 儲存體。 預設值為 AVRO。 只有在設定 blob 儲存體端點時，才可以設定編碼格式。 無法編輯現有端點的格式。 使用 JSON 編碼時，您必須將 contentType 設定為**application/JSON** ，並在訊息[系統屬性](iot-hub-devguide-routing-query-syntax.md#system-properties)中 contentEncoding 為**utf-8** 。 這兩個值都不區分大小寫。 如果未設定內容編碼，則 IoT 中樞會以基底64編碼格式寫入訊息。 您可以使用 IoT 中樞建立或更新 REST API （特別是[RoutingStorageContainerProperties](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate#routingstoragecontainerproperties)、Azure 入口網站、 [Azure CLI](https://docs.microsoft.com/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest)或[Azure PowerShell](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubroutingendpoint)）來選取編碼格式。 下圖顯示如何在 Azure 入口網站中選取編碼格式。
 
 ![Blob 儲存體端點編碼](./media/iot-hub-devguide-messages-d2c/blobencoding.png)
 

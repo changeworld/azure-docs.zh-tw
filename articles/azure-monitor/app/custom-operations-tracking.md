@@ -4,12 +4,12 @@ description: 使用 Azure Application Insights .NET SDK 追蹤自訂作業
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: 49c2ad44dab5e4f57db2f11c17c269289e56d2d5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: bd30f60928df3644b215f185d620393d1edda8c7
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540038"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320369"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>使用 Application Insights .NET SDK 追蹤自訂作業
 
@@ -206,7 +206,7 @@ public async Task Process(BrokeredMessage message)
 下列範例示範如何追蹤 [Azure 儲存體佇列](../../storage/queues/storage-dotnet-how-to-use-queues.md)作業，並且讓產生者、取用者與 Azure 儲存體之間的遙測相互關聯。 
 
 儲存體佇列有 HTTP API。 HTTP 要求的 Application Insights 相依性收集器會追蹤對佇列的所有呼叫。
-根據預設，它是在 ASP.NET 和 ASP.NET Core 應用程式上設定，而在其他類型的應用程式中，您可以參考[主控台應用程式檔](../../azure-monitor/app/console.md)
+根據預設，它是在 ASP.NET 和 ASP.NET Core 應用程式上設定，而在其他類型的應用程式中，您可以參考[主控台應用程式檔](./console.md)
 
 您可能也想要相互關聯 Application Insights 作業識別碼與儲存體要求識別碼。 如需如何設定及取得儲存體要求用戶端和伺服器要求識別碼的詳細資訊，請參閱[監視、診斷 Azure 儲存體及進行移難排解](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md#end-to-end-tracing)。
 
@@ -478,8 +478,9 @@ public async Task RunAllTasks()
 ## <a name="next-steps"></a>後續步驟
 
 - 了解 Application Insights 中[遙測相互關聯](correlation.md)的基本概念。
-- 查看相互關聯的資料如何支援[交易診斷體驗](../../azure-monitor/app/transaction-diagnostics.md)和[應用程式對應](../../azure-monitor/app/app-map.md)。
-- 如需 Application Insights 類型和資料模型，請參閱[資料模型](../../azure-monitor/app/data-model.md)。
-- 向 Application Insights 報告自訂[事件和計量](../../azure-monitor/app/api-custom-events-metrics.md)。
+- 查看相互關聯的資料如何支援[交易診斷體驗](./transaction-diagnostics.md)和[應用程式對應](./app-map.md)。
+- 如需 Application Insights 類型和資料模型，請參閱[資料模型](./data-model.md)。
+- 向 Application Insights 報告自訂[事件和計量](./api-custom-events-metrics.md)。
 - 請查看內容屬性集合的標準[設定](configuration-with-applicationinsights-config.md#telemetry-initializers-aspnet)。
 - 查看 [System.Diagnostics.Activity 使用者指南](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md)以了解如何使遙測相互關聯。
+

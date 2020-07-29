@@ -5,17 +5,18 @@ description: 使用 Azure 私人連結，從虛擬網路安全地存取您的 Az
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
+ms.custom: how-to
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/14/2020
-ms.openlocfilehash: 4e76a7adf7435cc1bdee3bb4e64f8cc699a16724
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4a723c76f04c85bffd7ae4d1d1e8bf5b65ad4619
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87031213"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326489"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace-preview"></a>設定 Azure Machine Learning 工作區的 Azure 私人連結（預覽）
 
@@ -30,6 +31,8 @@ Azure 私人連結可讓您使用私人端點連接到您的工作區。 私人�
 > Azure 私用連結不會影響 Azure 控制平面（管理作業），例如刪除工作區或管理計算資源。 例如，建立、更新或刪除計算目標。 這些作業會在公用網際網路上正常執行。
 >
 > 已啟用 Private Link 的工作區不支援 Azure Machine Learning 計算執行個體預覽。
+>
+> 如果您使用 Mozilla Firefox，您可能會遇到嘗試存取工作區之私用端點的問題。 此問題可能與 Mozilla 中的 DNS over HTTPS 有關。 我們建議使用 Google Chrome 的 Microsoft Edge 做為因應措施。
 
 ## <a name="create-a-workspace-that-uses-a-private-endpoint"></a>建立使用私用端點的工作區
 
@@ -54,7 +57,7 @@ Azure 私人連結可讓您使用私人端點連接到您的工作區。 私人�
 
 提交範本並完成布建之後，包含您工作區的資源群組將會包含三個與私人連結相關的新成品類型：
 
-* 私用端點
+* 私人端點
 * 網路介面
 * 私人 DNS 區域
 

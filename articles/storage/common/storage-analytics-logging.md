@@ -5,15 +5,16 @@ author: normesta
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 07/23/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring
-ms.openlocfilehash: b1134f5538663f5b04e77270fee1a715b32a4f3e
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 061c7f6a45b8667b7fd03d62bee67c695bec5e68
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83675916"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87276783"
 ---
 # <a name="azure-storage-analytics-logging"></a>Azure 儲存體分析記錄
 
@@ -63,7 +64,7 @@ ms.locfileid: "83675916"
 大多數儲存體瀏覽工具可讓您檢視 Blob 的中繼資料；您可也以使用 PowerShell 或以程式設計方式讀取此資訊。 下列 PowerShell 程式碼片段示範如何依名稱篩選記錄 Blob 的清單來指定時間，以及如何依中繼資料進行篩選以識別包含**寫入**作業的那些記錄。  
 
  ```powershell
- Get-AzureStorageBlob -Container '$logs' |  
+ Get-AzStorageBlob -Container '$logs' |  
  Where-Object {  
      $_.Name -match 'table/2014/05/21/05' -and   
      $_.ICloudBlob.Metadata.LogType -match 'write'  
@@ -136,20 +137,20 @@ ms.locfileid: "83675916"
 
 ### <a name="enable-storage-logging-using-powershell"></a>使用 PowerShell 啟用儲存體記錄  
 
- 您可以使用 Azure PowerShell Cmdlet **Get-AzureStorageServiceLoggingProperty** 擷取目前的設定，以及使用 Cmdlet **Set-AzureStorageServiceLoggingProperty** 變更目前的設定，在本機電腦上使用 PowerShell 來設定儲存體帳戶的「儲存體記錄」。  
+ 您可以在本機電腦上使用 PowerShell 來設定儲存體帳戶中的儲存體記錄，方法是使用 Azure PowerShell Cmdlet **AzStorageServiceLoggingProperty**來取得目前的設定，並**設定 Cmdlet AzStorageServiceLoggingProperty**來變更目前的設定。  
 
  控制「儲存體記錄」的 Cmdlet 會使用 **LoggingOperations** 參數，該參數是一個包含所要記錄要求類型清單 (以逗號分隔) 的字串。 三個可能的要求類型包含**讀取**、**寫入**和**刪除**。 若要關閉記錄功能，請將值 **none** 使用於 **LoggingOperations** 參數。  
 
  下列命令針對預設儲存體帳戶中佇列服務的讀取、寫入和刪除要求開啟記錄功能 (保留期間設為五天)：  
 
 ```powershell
-Set-AzureStorageServiceLoggingProperty -ServiceType Queue -LoggingOperations read,write,delete -RetentionDays 5  
+Set-AzStorageServiceLoggingProperty -ServiceType Queue -LoggingOperations read,write,delete -RetentionDays 5  
 ```  
 
  下列命令針對預設儲存體帳戶中的資料表服務關閉記錄功能：  
 
 ```powershell
-Set-AzureStorageServiceLoggingProperty -ServiceType Table -LoggingOperations none  
+Set-AzStorageServiceLoggingProperty -ServiceType Table -LoggingOperations none  
 ```  
 
  如需如何設定 Azure PowerShell Cmdlet 以使用您的 Azure 訂用帳戶，以及如何選取要使用的預設儲存體帳戶的相關資訊，請參閱：[如何安裝和設定 Azure PowerShell](https://azure.microsoft.com/documentation/articles/install-configure-powershell/)。  

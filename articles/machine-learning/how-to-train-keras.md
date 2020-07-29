@@ -5,18 +5,18 @@ description: 瞭解如何使用 Azure Machine Learning 來定型和註冊在 Ten
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.author: maxluk
 author: maxluk
 ms.reviewer: peterlu
 ms.date: 08/01/2019
-ms.custom: seodec18
-ms.openlocfilehash: 61e92d33cf4ec54881ab7794e503cfaeb6397e8d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.topic: conceptual
+ms.custom: how-to
+ms.openlocfilehash: ab0b90e08d51602979e31486a1a446731f66e5ba
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87060750"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320930"
 ---
 # <a name="train-and-register-a-keras-classification-model-with-azure-machine-learning"></a>使用 Azure Machine Learning 定型和註冊 Keras 分類模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -29,7 +29,7 @@ Keras 是高階類神經網路 API，能夠執行其他熱門的 DNN 架構，�
 
 如需機器學習服務與深度學習之間差異的詳細資訊，請參閱[概念性文章](concept-deep-learning-vs-machine-learning.md)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 在下列任一環境中執行此程式碼：
 
@@ -208,7 +208,7 @@ for f in run.get_file_names():
         run.download_file(name=f, output_file_path=output_file_path)
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 在本文中，您已在 Azure Machine Learning 上訓練並註冊 Keras 模型。 若要瞭解如何部署模型，請繼續進行我們的模型部署一文。
 

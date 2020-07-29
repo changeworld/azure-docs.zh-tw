@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 07/16/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 03d0367b3794069908b31ee7af1250fd70f1bdf7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7319adfc88eedb007677a78693ab0b2e514e646f
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525206"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171649"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>使用 Azure 來裝載及執行 SAP 工作負載案例
 
@@ -104,6 +104,7 @@ ms.locfileid: "86525206"
 
 ## <a name="change-log"></a>變更記錄檔
 
+- 07/23/2020：已新增[儲存在 SAP Hana 大型實例上的 Azure 保留](../../../cost-management-billing/reservations/prepay-hana-large-instances-reserved-capacity.md)文章，說明購買 SAP Hana 的大型實例保留之前，您需要知道的事項，以及如何進行購買
 - 07/16/2020：描述如何使用 Azure PowerShell 在[部署指南](deployment-guide.md)中安裝適用于 SAP 的新 VM 擴充功能
 - 7/04/2020：[適用于 SAP 解決方案的 Azure 監視器版本（預覽）](./azure-monitor-overview.md)
 - 07/01/2020：根據 azure premium 儲存體在檔[SAP Hana azure 虛擬機器儲存體](./hana-vm-operations-storage.md)設定的高載功能來建議較便宜的儲存體設定 

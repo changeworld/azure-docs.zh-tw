@@ -8,15 +8,15 @@ ms.author: nilsp
 ms.service: machine-learning
 ms.subservice: core
 ms.workload: data-services
-ms.topic: how-to
 ms.date: 02/07/2020
-ms.custom: contperfq4
-ms.openlocfilehash: 7d6222b4ea0e30997b3b55adb887c839fef6e624
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.topic: conceptual
+ms.custom: how-to, contperfq4
+ms.openlocfilehash: 6d54945ce026f91b27ce31ba82ada1b0cc49a260
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207408"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324245"
 ---
 # <a name="trigger-a-run-of-a-machine-learning-pipeline-from-a-logic-app"></a>從邏輯應用程式觸發 Machine Learning 管線的執行
 
@@ -39,7 +39,7 @@ ms.locfileid: "86207408"
 
 ## <a name="create-a-logic-app"></a>建立邏輯應用程式
 
-現在，建立[Azure 邏輯應用程式](../logic-apps/logic-apps-overview.md)實例。 如有需要，請[使用整合服務環境 (ISE) ](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)並[設定客戶管理的金鑰](../logic-apps/customer-managed-keys-integration-service-environment.md)，以供邏輯應用程式使用。
+現在，建立[Azure 邏輯應用程式](../logic-apps/logic-apps-overview.md)實例。 如有需要，請[使用整合服務環境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)並[設定客戶管理的金鑰](../logic-apps/customer-managed-keys-integration-service-environment.md)，以供邏輯應用程式使用。
 
 一旦布建您的邏輯應用程式，請使用下列步驟來設定管線的觸發程式：
 
@@ -49,7 +49,7 @@ ms.locfileid: "86207408"
     > [!div class="mx-imgBorder"]
     > ![空白範本](media/how-to-trigger-published-pipeline/blank-template.png)
 
-1. 在設計工具中，搜尋 [ **blob**]。 選取 [**新增或修改 Blob 時] (屬性僅) **觸發程式，並將此觸發程式新增至邏輯應用程式。
+1. 在設計工具中，搜尋 [ **blob**]。 選取 [**新增或修改 Blob 時（僅限屬性）** ] 觸發程式，並將此觸發程式新增至您的邏輯應用程式。
     > [!div class="mx-imgBorder"]
     > ![新增觸發程序](media/how-to-trigger-published-pipeline/add-trigger.png)
 

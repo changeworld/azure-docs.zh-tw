@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d63cb1d7e2b0086a3d9ef6e3917ebefa11c7ccba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 60d72a98a22fa85e87eb8560ad968415ca70f9a5
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253370"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87275423"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Azure Active Directory 中的條件式存取最佳做法
 
@@ -33,15 +33,15 @@ ms.locfileid: "85253370"
 
 ![雲端應用程式](./media/best-practices/02.png)
 
-若要讓您的原則運作，您必須設定：
+若要讓原則正常執行，您必須設定：
 
-| 何事           | 方式                                  | 理由 |
+| 對象           | 方式                                  | 原因 |
 | :--            | :--                                  | :-- |
 | **雲端應用程式** |選取一或多個應用程式。  | 條件式存取原則的目標是要讓您控制授權使用者可以存取雲端應用程式的方式。|
-| **使用者和群組** | 選取至少一個已獲授權存取您所選雲端應用程式的使用者或群組。 | 不會觸發未指派使用者和群組的條件式存取原則。 |
-| **存取控制** | 選取至少一個存取控制。 | 如果滿足您的條件，您的原則處理器需要知道該怎麼辦。 |
+| **使用者和群組** | 選取至少一個已獲授權可存取所選雲端應用程式的使用者或群組。 | 不會觸發未指派使用者和群組的條件式存取原則。 |
+| **存取控制** | 選取至少一個存取控制。 | 如果滿足條件，則原則處理器必須知道該怎麼做。 |
 
-## <a name="what-you-should-know"></a>您應該知道的事情
+## <a name="what-you-should-know"></a>您應該知道的事項
 
 ### <a name="how-are-conditional-access-policies-applied"></a>條件式存取原則的套用方式為何？
 
@@ -49,14 +49,21 @@ ms.locfileid: "85253370"
 
 所有的原則都會在兩個階段強制執行：
 
-- 第 1 階段： 
-   - 詳細資料集合：收集詳細資料以識別已滿足的原則。
-   - 在此階段中，如果裝置合規性是條件式存取原則的一部分，使用者可能會看到憑證提示。 當裝置作業系統不是 Windows 10 時，瀏覽器應用程式可能會出現此提示。
-   - 原則評估的第1階段會針對所有已啟用的原則和原則，在[僅限報表模式](concept-conditional-access-report-only.md)中進行。
-- 第 2 階段：
-   - 強制：考慮在階段1中收集的詳細資料，要求使用者滿足尚未符合的任何其他需求。
-   - 將結果套用至會話。 
-   - 原則評估的第2階段會針對所有已啟用的原則進行。
+- 第1階段：收集會話詳細資料 
+   - 收集會話詳細資料，例如原則評估所需的使用者位置和裝置身分識別。 
+   - 在此階段中，如果裝置合規性是條件式存取原則的一部分，使用者可能會看到憑證提示。 當裝置作業系統不是 Windows 10 時，瀏覽器應用程式可能會出現此提示。 
+   - 原則評估的第1階段會針對已啟用的原則和原則，在[僅限報表模式](concept-conditional-access-report-only.md)中進行。
+- 第2階段：強制執行 
+   - 使用階段1中收集的會話詳細資料，識別任何尚未符合的需求。 
+   - 如果有設定為封鎖存取的原則，則使用封鎖授與控制時，強制將會在此停止，而且使用者將會遭到封鎖。 
+   - 接著，系統會提示使用者完成在階段1期間未符合下列順序的其他授與控制需求，直到符合原則為止：  
+      - Multi-Factor Authentication 
+      - 已核准的用戶端應用程式/應用程式保護原則 
+      - 受管理裝置（符合規範或混合式 Azure AD 聯結） 
+      - 使用規定 
+      - 自訂控制項  
+      - 滿足授與控制措施之後，套用會話控制項（強制執行應用程式、Microsoft Cloud App Security 和權杖存留期） 
+   - 原則評估的第2階段會針對所有已啟用的原則進行。 
 
 ### <a name="how-are-assignments-evaluated"></a>如何評估指派？
 
@@ -71,7 +78,7 @@ ms.locfileid: "85253370"
 
 如果您因為條件式存取原則中的設定不正確而鎖定了 Azure AD 入口網站：
 
-- 確認您的組織中是否有其他系統管理員尚未遭到封鎖。 具有 Azure 入口網站存取權的系統管理員可以停用會影響您的登入的原則。 
+- 確認您的組織中是否有其他系統管理員尚未遭到封鎖。 具有 Azure 入口網站存取權的系統管理員可以停用會影響您登入的原則。 
 - 如果您的組織中沒有任何系統管理員可以更新原則，您需要提交支援要求。 Microsoft 支援服務可以審查和更新防止存取的條件式存取原則。
 
 ### <a name="what-happens-if-you-have-policies-in-the-azure-classic-portal-and-azure-portal-configured"></a>如果您已在 Azure 傳統入口網站和 Azure 入口網站中設定一些原則，則會發生什麼情況？  

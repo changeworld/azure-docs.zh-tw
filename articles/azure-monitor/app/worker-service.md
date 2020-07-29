@@ -3,12 +3,12 @@ title: 背景工作服務應用程式的 Application Insights （非 HTTP 應用
 description: 使用 Azure 監視器 Application Insights 監視 .NET Core/NET Framework 非 HTTP 應用程式。
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 7ae146c6c010f067973c9fbae4c90bd1116d7c21
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d429a1e0515d24d1c9953af7815dadf2488be302
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499200"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325401"
 ---
 # <a name="application-insights-for-worker-service-applications-non-http-applications"></a>背景工作服務應用程式的 Application Insights （非 HTTP 應用程式）
 
@@ -20,7 +20,7 @@ Application Insights 發行新的 SDK，稱為 `Microsoft.ApplicationInsights.Wo
 
 適用于背景[工作角色服務的 APPLICATION INSIGHTS SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService)最適合非 HTTP 應用程式，不論其執行位置或方式為何。 如果您的應用程式正在執行，且具有與 Azure 的網路連線，則可以收集遙測。 支援 .NET Core 的任何位置都支援 Application Insights 監視。 此套件可用於新引進的[.Net Core 3.0 背景工作角色服務](https://devblogs.microsoft.com/aspnet/dotnet-core-workers-in-azure-container-instances)、 [Asp.Net Core 2.1/2.2 的背景](/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-2.2)工作、主控台應用程式（.net Core/.NET Framework）等。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 有效的 Application Insights 檢測金鑰。 必須要有此金鑰，才能將任何遙測資料傳送至 Application Insights。 如果您需要建立新的 Application Insights 資源來取得檢測金鑰，請參閱[建立 Application Insights 資源](./create-new-resource.md)。
 
@@ -123,7 +123,7 @@ Application Insights 發行新的 SDK，稱為 `Microsoft.ApplicationInsights.Wo
 或者，在下列其中一個環境變數中指定檢測金鑰。
 `APPINSIGHTS_INSTRUMENTATIONKEY` 或 `ApplicationInsights:InstrumentationKey`
 
-例如： `SET ApplicationInsights:InstrumentationKey=putinstrumentationkeyhere`
+例如：`SET ApplicationInsights:InstrumentationKey=putinstrumentationkeyhere`
 或`SET APPINSIGHTS_INSTRUMENTATIONKEY=putinstrumentationkeyhere`
 
 通常會 `APPINSIGHTS_INSTRUMENTATIONKEY` 針對部署至 Web Apps 做為 Web 作業的應用程式指定檢測金鑰。
@@ -503,7 +503,7 @@ using Microsoft.ApplicationInsights.Channel;
 
 ### <a name="can-i-enable-application-insights-monitoring-by-using-tools-like-status-monitor"></a>我可以使用狀態監視器之類的工具來啟用 Application Insights 監視嗎？
 
-否。 [狀態監視器](./monitor-performance-live-website-now.md)和[狀態監視器 v2](./status-monitor-v2-overview.md)目前僅支援 ASP.NET 4.x。
+不可以。 [狀態監視器](./monitor-performance-live-website-now.md)和[狀態監視器 v2](./status-monitor-v2-overview.md)目前僅支援 ASP.NET 4.x。
 
 ### <a name="if-i-run-my-application-in-linux-are-all-features-supported"></a>如果我在 Linux 中執行應用程式，是否支援所有功能？
 
@@ -542,7 +542,8 @@ using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
 
 ## <a name="next-steps"></a>後續步驟
 
-* [使用 API](../../azure-monitor/app/api-custom-events-metrics.md)來傳送您自己的事件和計量，以深入瞭解應用程式的效能和使用方式。
-* [追蹤不會自動追蹤的其他](../../azure-monitor/app/auto-collect-dependencies.md)相依性。
-* 擴充[或篩選自動收集的遙測](../../azure-monitor/app/api-filtering-sampling.md)。
+* [使用 API](./api-custom-events-metrics.md)來傳送您自己的事件和計量，以深入瞭解應用程式的效能和使用方式。
+* [追蹤不會自動追蹤的其他](./auto-collect-dependencies.md)相依性。
+* 擴充[或篩選自動收集的遙測](./api-filtering-sampling.md)。
 * [ASP.NET Core 中的](/aspnet/core/fundamentals/dependency-injection)相依性插入。
+

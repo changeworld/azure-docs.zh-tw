@@ -4,15 +4,16 @@ description: 例外狀況遙測的 Application Insights 資料模型
 ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: fa9bc4efd9549cbcb1d50439989c5dea79d9d60c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6732fb3dde79abd5c69e2b0a91710bdd2356d6aa
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77671931"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320590"
 ---
 # <a name="exception-telemetry-application-insights-data-model"></a>例外狀況遙測：Application Insights 資料模型
 
-在 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 中，例外狀況的執行個體代表受監視應用程式執行期間所發生的已處理或未處理例外狀況。
+在 [Application Insights](./app-insights-overview.md) 中，例外狀況的執行個體代表受監視應用程式執行期間所發生的已處理或未處理例外狀況。
 
 ## <a name="problem-id"></a>問題識別碼
 
@@ -39,5 +40,6 @@ ms.locfileid: "77671931"
 ## <a name="next-steps"></a>後續步驟
 
 - 如需 Application Insights 類型和資料模型，請參閱[資料模型](data-model.md)。
-- 了解如何[使用 Application Insights 在 Web Apps 中診斷例外狀況](../../azure-monitor/app/asp-net-exceptions.md)。
-- 查看 Application Insights 支援的[平台](../../azure-monitor/app/platforms.md)。
+- 了解如何[使用 Application Insights 在 Web Apps 中診斷例外狀況](./asp-net-exceptions.md)。
+- 查看 Application Insights 支援的[平台](./platforms.md)。
+

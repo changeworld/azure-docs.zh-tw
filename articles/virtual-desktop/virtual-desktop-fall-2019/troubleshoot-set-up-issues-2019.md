@@ -1,6 +1,6 @@
 ---
-title: Windows 虛擬桌面租使用者主機集區建立-Azure
-description: 如何在 Windows 虛擬桌面租使用者環境的安裝期間疑難排解和解決租使用者和主機集區的問題。
+title: Windows 虛擬桌面（傳統）租使用者主機集區建立-Azure
+description: 如何在 Windows 虛擬桌面（傳統）租使用者環境的安裝期間疑難排解和解決租使用者和主機集區的問題。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: aad3bffeba4395ba415fb99a3667d04d18769a47
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: bd9a6dd5d11ab69635d610eee3f92a90e942b576
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86026690"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87269592"
 ---
-# <a name="tenant-and-host-pool-creation"></a>建立租用戶和主機集區
+# <a name="tenant-and-host-pool-creation-in-windows-virtual-desktop-classic"></a>在 Windows 虛擬桌面中建立租使用者和主機集區（傳統）
 
 >[!IMPORTANT]
->此內容適用於不支援 Azure Resource Manager Windows 虛擬桌面物件的 2019 年秋季版本。 如果您嘗試管理 2020 年春季版更新中引進的 Azure Resource Manager Windows 虛擬桌面物件，請參閱[這篇文章](../troubleshoot-set-up-issues.md)。
+>此內容適用于 Windows 虛擬桌面（傳統），不支援 Azure Resource Manager Windows 虛擬桌面物件。 如果您正嘗試管理 Azure Resource Manager Windows 虛擬桌面物件，請參閱[這篇文章](../troubleshoot-set-up-issues.md)。
 
 本文涵蓋 Windows 虛擬桌面租使用者和相關工作階段主機集區基礎結構的初始設定期間的問題。
 

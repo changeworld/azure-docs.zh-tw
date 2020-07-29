@@ -4,12 +4,12 @@ description: 在 Azure 中自動調整 Web 應用程式、虛擬機器擴展集�
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: 47da813498ef2cd4d16aeaa5ab31eff24b1db267
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 414716fbbb36167e52c4f3b98c70ae7696ffea8f
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539528"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327050"
 ---
 # <a name="best-practices-for-autoscale"></a>自動調整規模的最佳做法
 Azure 監視器自動調整僅適用於[虛擬機器擴展集](https://azure.microsoft.com/services/virtual-machine-scale-sets/)、[雲端服務](https://azure.microsoft.com/services/cloud-services/)、[App Service - Web Apps](https://azure.microsoft.com/services/app-service/web/) 與 [API 管理服務](../../api-management/api-management-key-concepts.md)。
@@ -22,7 +22,7 @@ Azure 監視器自動調整僅適用於[虛擬機器擴展集](https://azure.mic
   自動調整設定可設定執行個體數的最大值、最小值及預設值。
 * 自動調整作業一律會讀取相關聯的度量作為調整依據，據此檢查其是否超過設定的臨界值，以執行相應放大或相應縮小。 您可以在 [Azure 監視器自動調整的常見度量](autoscale-common-metrics.md)中，檢視自動調整據以調整的度量清單。
 * 所有臨界值都是在執行個體層級計算。 例如，「當執行個體計數為 2 時，若平均 CPU > 80% ，即相應放大 1 個執行個體」表示當所有執行個體的平均 CPU 大於 80% 時即相應放大。
-* 所有自動調整規模失敗都會記錄到活動記錄中。 您接著可以設定[活動記錄警示](./../../azure-monitor/platform/activity-log-alerts.md)，讓您可以在自動調整規模失敗時，透過電子郵件、SMS 或 Webhook 方式收到通知。
+* 所有自動調整規模失敗都會記錄到活動記錄中。 您接著可以設定[活動記錄警示](./activity-log-alerts.md)，讓您可以在自動調整規模失敗時，透過電子郵件、SMS 或 Webhook 方式收到通知。
 * 同樣地，所有成功調整規模動作也都會張貼到活動記錄。 您接著可以設定活動記錄警示，讓您可以在自動調整規模動作成功時，透過電子郵件、SMS 或 Webhook 方式收到通知。 您也可以透過自動調整規模設定上的 [通知] 索引標籤來設定電子郵件或 Webhook 通知，在調整規模動作成功時收到通知。
 
 ## <a name="autoscale-best-practices"></a>自動調整最佳做法
@@ -151,3 +151,4 @@ Azure 監視器自動調整僅適用於[虛擬機器擴展集](https://azure.mic
 ## <a name="next-steps"></a>後續步驟
 - [建立活動記錄警示以監視訂用帳戶的所有自動調整引擎作業。](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)
 - [建立活動記錄警示以監視訂用帳戶中所有失敗的相應縮小/相應放大自動調整作業](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)
+

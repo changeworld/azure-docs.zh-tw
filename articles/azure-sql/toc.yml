@@ -78,6 +78,8 @@
                   href: database/authentication-mfa-ssms-configure.md
                 - name: 條件式存取
                   href: database/conditional-access-configure.md
+                - name: 服務主體 (應用程式)
+                  href: database/authentication-aad-service-principal.md
             - name: 透明資料加密 (TDE)
               items:
                 - name: 概觀
@@ -141,6 +143,8 @@
               href: database/long-term-backup-retention-configure.md
         - name: 安全性
           items:
+            - name: 建立 Azure AD 來賓使用者，並將其設定為 Azure AD 管理員
+              href: database/authentication-aad-guest-users.md
             - name: 使用 BYOK 設定 TDE
               href: database/transparent-data-encryption-byok-configure.md
             - name: 在儲存體中儲存弱點掃描
@@ -277,6 +281,8 @@
               href: database/transparent-data-encryption-byok-key-rotation.md
             - name: 移除 TDE 保護裝置
               href: database/transparent-data-encryption-byok-remove-tde-protector.md
+            - name: 使用服務主體建立使用者
+              href: database/authentication-aad-service-principal-tutorial.md
         - name: 移動資料
           items:
             - name: 使用 DMS 來移轉
@@ -866,7 +872,7 @@
       href: virtual-machines/index.yml
     - name: Windows
       items:
-        - name: 概觀
+        - name: 總覽
           items:
             - name: 什麼是 SQL Server 虛擬機器？
               href: virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md

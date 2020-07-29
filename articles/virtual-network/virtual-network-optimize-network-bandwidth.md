@@ -1,6 +1,6 @@
 ---
 title: 最佳化 VM 網路輸送量 | Microsoft Docs
-description: 了解如何最佳化 Azure 虛擬機器網路輸送量。
+description: 將 Microsoft Azure Windows 和 Linux Vm 的網路輸送量優化，包括主要發佈（例如 Ubuntu、CentOS 和 Red Hat）。
 services: virtual-network
 documentationcenter: na
 author: steveesp
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/15/2017
 ms.author: steveesp
-ms.openlocfilehash: 86785ada1d5b55a1eaa7c81243dd0b6c39087e1c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7b693d10b4e1925e9c07111982a616b56b77e5b6
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84695958"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87265138"
 ---
 # <a name="optimize-network-throughput-for-azure-virtual-machines"></a>最佳化 Azure 虛擬機器的網路輸送量
 

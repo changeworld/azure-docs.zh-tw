@@ -1,21 +1,21 @@
 ---
-title: '在設計工具中轉換資料 (預覽) '
+title: 在設計工具中轉換資料（預覽）
 titleSuffix: Azure Machine Learning
-description: 瞭解如何在 Azure Machine Learning 設計師 (預覽) 中轉換資料，以建立您自己的資料集。
+description: 瞭解如何在 Azure Machine Learning 設計工具（預覽）中轉換資料，以建立您自己的資料集。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 author: peterclu
 ms.author: peterlu
 ms.date: 06/28/2020
-ms.custom: designer
-ms.openlocfilehash: 68ed1b83b1e82daa9c4578a6b3bec24792a8268d
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.topic: conceptual
+ms.custom: how-to, designer
+ms.openlocfilehash: 3858a5a3b39c7ecaaad17a6bb6c313caf7bbc0ae
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203789"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326982"
 ---
 # <a name="transform-data-in-azure-machine-learning-designer-preview"></a>在 Azure Machine Learning 設計工具中轉換資料 (預覽)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -31,6 +31,8 @@ ms.locfileid: "86203789"
 1. 檢視結果。
 
 本操作指南是[如何重新定型設計工具模型](how-to-retrain-designer.md)一文章先決條件。 在本文中，您將會了解如何使用轉換後的資料集，以搭配管線參數來定型多個模型。
+
+[!INCLUDE [machine-learning-missing-ui](../../includes/machine-learning-missing-ui.md)]
 
 ## <a name="transform-a-dataset"></a>轉換資料集
 

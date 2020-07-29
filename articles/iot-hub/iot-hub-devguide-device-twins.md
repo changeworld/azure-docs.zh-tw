@@ -8,17 +8,19 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 02/01/2020
-ms.custom: mqtt
-ms.openlocfilehash: 1f61748a0a0d3d999670b6129e0e58758715ba3b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom:
+- mqtt
+- 'Role: Cloud Development'
+ms.openlocfilehash: 4887315ddef3f15ee3f6ef5ad80cf8df8b1dcd34
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85601848"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327764"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>了解和使用 Azure IoT 中樞的裝置對應項
 
-*裝置 twins*是儲存裝置狀態資訊的 JSON 檔，包括中繼資料、設定和條件。 Azure IoT 中樞會為連線到 IoT 中樞的每個裝置維持裝置對應項。 
+*裝置 twins*是儲存裝置狀態資訊的 JSON 檔，包括中繼資料、設定和條件。 Azure IoT 中樞會維持連線到 IoT 中樞的每部裝置其裝置對應項。 
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
@@ -199,7 +201,7 @@ ms.locfileid: "85601848"
 
   - 主體
         
-    本節包含所有對應項變更 (JSON 格式)。 它使用與修補程式相同的格式，其差異在於它可以包含所有對應項區段：標籤、屬性（property）、所需的屬性（property）和包含 "$metadata" 元素。 例如，
+    本節包含所有對應項變更 (JSON 格式)。 它使用與修補程式相同的格式，其差異在於它可以包含所有對應項區段：標籤、屬性（property）、所需的屬性（property）和包含 "$metadata" 元素。 例如
 
     ```json
     {
@@ -394,7 +396,7 @@ IoT 中樞開發人員指南中的其他參考主題包括︰
 
 * [IoT 中樞 MQTT 支援](iot-hub-mqtt-support.md)一文針對 MQTT 通訊協定提供 IoT 中樞支援的詳細資訊。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 現在您已了解裝置對應項，接下來您可能會對下列 IoT 中樞開發人員指南主題感興趣︰
 

@@ -1,46 +1,62 @@
 ---
 title: 適用於 VM 的 Azure 監視器是什麼？
-description: 概述除了自動探索和對應應用程式元件及其相依性之外，還會監視 Azure Vm 的健康情況和效能的適用於 VM 的 Azure 監視器。
+description: 概述適用於 VM 的 Azure 監視器，其會監視 Azure Vm 的健全狀況和效能，並自動探索和對應應用程式元件及其相依性。
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 06/25/2020
-ms.openlocfilehash: f058ce1ae5b7328c6864684994a74f2fd118ca6e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/22/2020
+ms.openlocfilehash: f9ad39b88ad2212ea2cdceb40e61fbc0a2d1a764
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85506985"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320488"
 ---
 # <a name="what-is-azure-monitor-for-vms"></a>適用於 VM 的 Azure 監視器是什麼？
 
-適用於 VM 的 Azure 監視器會大規模監視您的虛擬機器、虛擬機器擴展集和 Azure Arc 機器。 此服務會分析您 Windows 和 Linux VM 的效能與健康情況，並且在其他資源和外部處理序上監視其處理序及相依性。 包含針對在內部部署環境或其他雲端提供者上裝載的 VM，監視效能和應用程式相依性的支援。 下列主要功能提供深入的深入解析：
+適用於 VM 的 Azure 監視器會監視虛擬機器和虛擬機器擴展集的效能和健康情況，包括其執行中的進程和其他資源的相依性。 它可以藉由識別效能瓶頸和網路問題來協助提供重要應用程式的可預測效能和可用性，也可協助您瞭解問題是否與其他相依性有關。
 
-- **預先定義的趨勢效能圖表**：顯示來自來賓 VM 作業系統的核心效能計量。
+適用於 VM 的 Azure 監視器支援下列各項的 Windows 和 Linux 作業系統：
 
-- 相依性**對應**：顯示來自各種資源群組和訂用帳戶的互連元件與 VM。  
+- Azure 虛擬機器
+- Azure 虛擬機器擴展集
+- 與 Azure Arc 連線的混合式虛擬機器
+- 內部部署虛擬機器
+- 裝載于另一個雲端環境中的虛擬機器
+  
+
 
 >[!NOTE]
 >我們最近[宣佈](https://azure.microsoft.com/updates/updates-to-azure-monitor-for-virtual-machines-preview-before-general-availability-release/
 )根據我們從公開預覽客戶收到的意見反應，對健全狀況功能進行的變更。 由於我們將進行的變更數目，我們將停止為新客戶提供健康情況功能。 現有的客戶可以繼續使用健全狀況功能。 如需詳細資訊，請參閱我們的[一般可用性常見問題](vminsights-ga-release-faq.md)。  
 
-與 Azure 監視器記錄整合可提供強大的匯總和篩選，讓適用於 VM 的 Azure 監視器分析一段時間的資料趨勢。 您可以直接從虛擬機器在單一 VM 中查看這項資料，或者您可以使用 Azure 監視器來傳遞 Vm 的匯總視圖，其中此視圖支援 Azure 資源內容或工作區內容模式。 如需詳細資訊，請參閱[存取模式總覽](../platform/design-logs-deployment.md#access-mode)。
+
+適用於 VM 的 Azure 監視器會將其資料儲存在 Azure 監視器記錄中，讓它能夠傳遞強大的匯總和篩選，以及分析一段時間的資料趨勢。 您可以直接從虛擬機器在單一 VM 中查看這項資料，或者您可以使用 Azure 監視器來傳遞多個 Vm 的匯總視圖。
 
 ![Azure 入口網站中的虛擬機器深入解析檢視方塊](media/vminsights-overview/vminsights-azmon-directvm.png)
 
-適用於 VM 的 Azure 監視器可以提供重要應用程式的可預測效能與可用性。 它會識別效能瓶頸和網路問題，也可以協助您瞭解問題是否與其他相依性有關。  
 
-## <a name="data-usage"></a>資料使用量
+## <a name="pricing"></a>定價
+適用於 VM 的 Azure 監視器沒有直接成本，但您需支付其在 Log Analytics 工作區中的活動費用。 根據 [Azure 監視器價格頁面](https://azure.microsoft.com/pricing/details/monitor/)上所發佈的價格，適用於 VM 的 Azure 監視器會針對下列項目進行計費：
 
-當您部署適用於 VM 的 Azure 監視器時，您 VM 所收集的資料會內嵌並儲存於 Azure 監視器中。 收集的效能和相依性資料會儲存在 Log Analytics 工作區中。 根據 [Azure 監視器價格頁面](https://azure.microsoft.com/pricing/details/monitor/)上所發佈的價格，適用於 VM 的 Azure 監視器會針對下列項目進行計費：
+- 從代理程式內嵌資料，並將其儲存在工作區中。
+- 根據記錄和健康情況資料的警示規則。
+- 從警示規則傳送的通知。
 
-- 擷取並儲存的資料。
-- 已建立的警示規則。
-- 已傳送的通知。 
+記錄檔大小會因效能計數器的字串長度而異，而且可能會隨著配置給 VM 的邏輯磁片和網路介面卡數目增加。 如果您已經在使用服務對應，您會看到的唯一變更就是傳送至 Azure 監視器資料類型的其他效能資料 `InsightsMetrics` 。
 
-記錄檔大小會因效能計數器的字串長度而異，而且可能會隨著配置給 VM 的邏輯磁片和網路介面卡數目增加。 如果您已經擁有工作區，並且正在收集這些計數器，則不會收取任何重複費用。 如果您已經在使用服務對應，您會看到的唯一變更就是傳送至 Azure 監視器的其他連接資料。
+
+## <a name="configuring-azure-monitor-for-vms"></a>設定適用於 VM 的 Azure 監視器
+設定適用於 VM 的 Azure 監視器的步驟如下所示。 遵循每個連結以取得每個步驟的詳細指引：
+
+- [建立 Log Analytics 工作區。](vminsights-configure-workspace.md#create-log-analytics-workspace)
+- [將 VMInsights 解決方案新增至工作區。](vminsights-configure-workspace.md#add-vminsights-solution-to-workspace)
+- [在要監視的虛擬機器和虛擬機器擴展集上安裝代理程式。](vminsights-enable-overview.md)
+
+
 
 ## <a name="next-steps"></a>後續步驟
 
-若要了解有助於您監視虛擬機器的需求和方法，請檢閱[部署適用於 VM 的 Azure 監視器](vminsights-enable-overview.md)。
+- 如需為您的虛擬機器啟用監視的需求和方法，請參閱[部署適用於 VM 的 Azure 監視器](vminsights-enable-overview.md)。
+

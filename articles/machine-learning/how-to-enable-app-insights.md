@@ -5,18 +5,18 @@ description: 使用 Azure 應用程式 Insights 監視以 Azure Machine Learning
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.reviewer: jmartens
 ms.author: larryfr
 author: blackmist
-ms.date: 06/09/2020
-ms.custom: tracking-python
-ms.openlocfilehash: d28cd3b1d8722970505eb313bd8e80589ce9ff87
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/23/2020
+ms.topic: conceptual
+ms.custom: how-to, tracking-python
+ms.openlocfilehash: 2bc3eb72ff0c5d29fd72de848abf87dfe84e2a01
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84743501"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320216"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>從 ML Web 服務端點監視及收集資料
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -34,7 +34,7 @@ ms.locfileid: "84743501"
 [深入瞭解 Azure 應用程式 Insights](../azure-monitor/app/app-insights-overview.md)。 
 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * 如果您沒有 Azure 訂用帳戶，請在開始前先建立免費帳戶。 立即試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)
 
@@ -153,15 +153,20 @@ ms.locfileid: "84743501"
 1. 選取 [**啟用 Application Insights 診斷和資料收集**]
 
     ![啟用 App Insights](./media/how-to-enable-app-insights/enable-app-insights.png)
-## <a name="evaluate-data"></a>評估資料
+
+## <a name="view-metrics-and-logs"></a>查看計量和記錄
+
 您的服務資料會儲存在您的 Azure 應用程式 Insights 帳戶中，與 Azure Machine Learning 相同的資源群組中。
 若要檢視：
 
-1. 移至[Azure 入口網站](https://ms.portal.azure.com/)中的 Azure Machine Learning 工作區，然後按一下 [Application Insights] 連結
+1. 移至您在[studio](https://ml.azure.com/)中的 Azure Machine Learning 工作區。
+1. 選取 [端點]  。
+1. 選取您已部署的服務。
+1. 向下滾動以尋找**Application Insights url** ，然後按一下連結。
 
-    [![AppInsightsLoc](./media/how-to-enable-app-insights/AppInsightsLoc.png)](././media/how-to-enable-app-insights/AppInsightsLoc.png#lightbox)
+    [![找出 Application Insights url](./media/how-to-enable-app-insights/appinsightsloc.png)](././media/how-to-enable-app-insights/appinsightsloc.png#lightbox)
 
-1. 從左側清單中的 [**總覽**] 索引標籤或 [__監視__] 區段中，選取 [__記錄__]。
+1. 在 [應用程式 Isights] 中，從左側清單的 [**總覽**] 索引標籤或 [__監視__] 區段中，選取 [__記錄__]。
 
     [![監視的 [總覽] 索引標籤](./media/how-to-enable-app-insights/overview.png)](./media/how-to-enable-app-insights/overview.png#lightbox)
 
@@ -186,7 +191,7 @@ ms.locfileid: "84743501"
 
 Azure Data Factory、Azure ML 管線或其他資料處理工具可以視需要用來轉換資料。 當您轉換資料之後，您可以使用 Azure Machine Learning 工作區將它註冊為資料集。 若要這麼做，請參閱[如何建立及註冊資料集](how-to-create-register-datasets.md)。
 
-   [![連續匯出](./media/how-to-enable-app-insights/continuous-export-setup.png)](././media/how-to-enable-app-insights/continuous-export-setup.png)
+:::image type="content" source="media/how-to-enable-app-insights/continuous-export-setup.png" alt-text="連續匯出":::
 
 
 ## <a name="example-notebook"></a>範例筆記本

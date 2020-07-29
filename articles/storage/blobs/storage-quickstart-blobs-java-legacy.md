@@ -2,21 +2,25 @@
 title: 快速入門：適用于 JAVA 的 Azure Blob 儲存體用戶端程式庫 v8
 description: 在物件 (Blob) 儲存體中建立儲存體帳戶和容器。 然後使用適用于 JAVA 的 Azure 儲存體用戶端程式庫 v8，將 blob 上傳至 Azure 儲存體、下載 blob，以及列出容器中的 blob。
 author: mhopkins-msft
+ms.custom: devx-track-java
 ms.author: mhopkins
-ms.date: 01/24/2020
+ms.date: 07/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.openlocfilehash: e7986add466bc42b092763acfeceebc8a6523bbe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9ab45495283f8751912d93e9799958a8effc887a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80473981"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323735"
 ---
 # <a name="quickstart-manage-blobs-with-java-v8-sdk"></a>快速入門：使用 JAVA v8 SDK 管理 blob
 
 在本快速入門中，您將了解如何使用 Java 來管理 Blob。 Blob 是可保存大量文字或二進位資料的物件，包括影像、文件、串流媒體和封存資料。 您將上傳、下載及列出 blob。 您也會建立、設定和刪除容器的許可權。
+
+> [!NOTE]
+> 本快速入門會使用舊版的 Azure Blob 儲存體用戶端程式庫。 若要開始使用最新版本，請參閱[快速入門：使用 JAVA V12 SDK 管理 blob](storage-quickstart-blobs-java.md)。
 
 ## <a name="prerequisites"></a>必要條件
 

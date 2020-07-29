@@ -5,28 +5,28 @@ description: 瞭解如何使用在 FPGA 上執行的模型來部署 web 服務�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.reviewer: larryfr
 ms.author: jordane
 author: jpe316
 ms.date: 06/03/2020
-ms.custom: seodec18, contperfq4, tracking-python
-ms.openlocfilehash: ace657efaac323dcf48cfba95629abc59ca0cac3
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.topic: conceptual
+ms.custom: how-to, contperfq4, tracking-python
+ms.openlocfilehash: 9a2a40c97b67de7c76bff19cd0765618aaea42a0
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231755"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325809"
 ---
-# <a name="what-are-field-programmable-gate-arrays-fpga-and-how-to-deploy"></a>什麼是可現場程式化閘道陣列 (FPGA) 以及如何部署
+# <a name="what-are-field-programmable-gate-arrays-fpga-and-how-to-deploy"></a>什麼是可現場程式化閘道陣列（FPGA）和如何部署
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-本文提供可現場程式化閘道陣列 (FPGA) 的簡介，並說明如何使用[Azure Machine Learning](overview-what-is-azure-ml.md)將模型部署至 Azure FPGA。
+本文提供可現場程式化閘道陣列（FPGA）的簡介，並說明如何使用[Azure Machine Learning](overview-what-is-azure-ml.md)將模型部署至 Azure FPGA。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
-- Azure 訂用帳戶。 如果您沒有帳戶，您將需要建立[隨用隨付](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go)帳戶 (免費的 Azure 帳戶不符合 FPGA 配額) 的資格。
+- Azure 訂用帳戶。 如果您沒有帳戶，您將需要建立[隨用隨付](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go)帳戶（免費的 Azure 帳戶不符合 FPGA 配額的資格）。
 - [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 - FPGA 配額。 使用 [Azure CLI 檢查您是否有配額：
 
@@ -65,7 +65,7 @@ FPGA 包含可程式化邏輯區塊的陣列，以及可重新設定互連的階
 
 ![Azure Machine Learning FPGA 比較的圖表](./media/how-to-deploy-fpga-web-service/azure-machine-learning-fpga-comparison.png)
 
-|處理器| 縮寫 |描述|
+|處理器| 縮寫 |說明|
 |---|:-------:|------|
 |應用程式特定的積體電路|ASIC|自訂電路 (例如，Google 的 TensorFlow 處理器 (TPU)) 可提供最高效率。 它們無法隨著您需求的變更加以重新設定。|
 |現場可程式化閘陣列|FPGA|FPGA (例如 Azure 上所提供的那些陣列) 可提供接近 ASIC 的效能。 它們也會隨著時間而具有彈性且可重新設定，以實作新邏輯。|
@@ -74,7 +74,7 @@ FPGA 包含可程式化邏輯區塊的陣列，以及可重新設定互連的階
 
 Azure 上的 Fpga 是以 Intel 的 FPGA 裝置為基礎，而資料科學家和開發人員會使用它們來加速即時 AI 計算。 這個具有 FPGA 功能的架構可提供效能、彈性和擴展能力，並且可在 Azure 上使用。
 
-Fpga 可以讓即時推斷 (或模型計分) 要求達到低延遲。 不需要非同步要求 (批次處理)。 批次處理可能會造成延遲 (因為需要處理更多資料)。 類神經處理單元的實現不需要批次處理;因此，相較于 CPU 和 GPU 處理器，延遲的時間可能會更低。
+Fpga 可以讓即時推斷（或模型評分）要求達到低延遲。 不需要非同步要求 (批次處理)。 批次處理可能會造成延遲 (因為需要處理更多資料)。 類神經處理單元的實現不需要批次處理;因此，相較于 CPU 和 GPU 處理器，延遲的時間可能會更低。
 
 ### <a name="reconfigurable-power"></a>可重新設定的電源
 
@@ -84,12 +84,12 @@ Fpga 可以讓即時推斷 (或模型計分) 要求達到低延遲。 不需要�
 
 Microsoft Azure 是 FPGA 全球最大的雲端投資。 Microsoft 使用 FPGA 來評估 DNN、Bing 搜尋順位排序，以及軟體定義網路 (SDN) 加速來減少延遲，同時釋放 CPU 來執行其他工作。
 
-Azure Fpga 會與 Azure Machine Learning 整合。 Azure 可以平行處理預先定型的深度類神經網路 (DNN) 跨 Fpga，以相應放大您的服務。 DNN 可以預先定型為深度 Featurizer 以傳輸學習，也可以使用更新過的加權來微調。
+Azure Fpga 會與 Azure Machine Learning 整合。 Azure 可以跨 Fpga 平行處理預先定型的深度類神經網路（DNN），以相應放大您的服務。 DNN 可以預先定型為深度 Featurizer 以傳輸學習，也可以使用更新過的加權來微調。
 
 Azure 上的 Fpga 支援：
 
 + 影像分類和辨識案例
-+ TensorFlow 部署 (需要 Tensorflow 1.x) 
++ TensorFlow 部署（需要 Tensorflow 1.x）
 + Intel FPGA 硬體
 
 這些 DNN 模型目前可供使用：
@@ -108,7 +108,7 @@ Fpga 可在下列 Azure 區域中使用：
   - 美國西部 2
 
 > [!IMPORTANT]
-> 若要將延遲和輸送量優化，將資料傳送至 FPGA 模型的用戶端，應該位於您部署模型所要) 的其中一個區域中 (。
+> 若要將延遲和輸送量優化，將資料傳送至 FPGA 模型的用戶端應該位於上述其中一個區域（您已將模型部署至其中一個）。
 
 **Azure vm 的 PBS 系列**包含 Intel Arria 10 fpga。 當您檢查 Azure 配額配置時，它會顯示為「標準的 PBS 系列個 vcpu」。 PB6 VM 有六個個 vcpu 和一個 FPGA，而且它會在將模型部署至 FPGA 時，自動由 Azure ML 布建。 此檔案僅適用于 Azure ML，而且無法執行任意 bitstreams。 例如，您將無法使用 bitstreams 來快閃 FPGA 來執行加密、編碼等動作。
 
@@ -254,7 +254,7 @@ Fpga 可在下列 Azure 區域中使用：
          registered_model.version, sep='\t')
    ```
 
-1. 將 TensorFlow 圖形轉換成 ([ONNX](https://onnx.ai/)) 的 Open Neural Network Exchange 格式。  您將需要提供輸入和輸出 tensors 的名稱，而您的用戶端將會在取用 web 服務時使用這些名稱。
+1. 將 TensorFlow 圖形轉換成 Open Neural Network Exchange 格式（[ONNX](https://onnx.ai/)）。  您將需要提供輸入和輸出 tensors 的名稱，而您的用戶端將會在取用 web 服務時使用這些名稱。
 
    ```python
    from azureml.accel import AccelOnnxConverter
@@ -397,7 +397,7 @@ for top in sorted_results[:5]:
 
 ## <a name="clean-up-resources"></a>清除資源
 
-刪除您的 web 服務、映射和模型 (必須依照此順序完成，因為) 相依性。
+刪除您的 web 服務、映射和模型（必須依照此順序完成，因為有相依性）。
 
 ```python
 aks_service.delete()
@@ -416,7 +416,7 @@ converted_model.delete()
 查看這些筆記本、影片和 blog：
 
 + 數個[範例筆記本](https://aka.ms/aml-accel-models-notebooks)
-+ [超大規模資料庫硬體： Azure + FPGA 上大規模的 ML：組建 2018 (影片) ](https://channel9.msdn.com/events/Build/2018/BRK3202)
++ [超大規模資料庫硬體：大規模在 Azure + FPGA 上的 ML：組建2018（影片）](https://channel9.msdn.com/events/Build/2018/BRK3202)
 + [深入了解 Microsoft FPGA 架構的可設定雲端 (英文影片)](https://channel9.msdn.com/Events/Build/2017/B8063)
 + [適用於即時 AI 的 Project Brainwave：專案首頁](https://www.microsoft.com/research/project/project-brainwave/)
 + [自動化光學檢查系統](https://blogs.microsoft.com/ai/build-2018-project-brainwave/)

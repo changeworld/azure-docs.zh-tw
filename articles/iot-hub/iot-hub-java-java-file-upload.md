@@ -12,11 +12,13 @@ ms.date: 06/28/2017
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: f0753827fe5f7f2b866726683d4cb1f205da4599
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+- devx-track-java
+ms.openlocfilehash: 38816b616179ec16e06e987f82b498085c34ba3f
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81732473"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327577"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-java"></a>使用 IoT 中樞將檔案從裝置上傳至雲端 (Java)
 

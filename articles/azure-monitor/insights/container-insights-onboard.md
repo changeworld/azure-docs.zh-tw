@@ -3,12 +3,12 @@ title: 啟用容器的 Azure 監視器 |Microsoft Docs
 description: 本文說明如何啟用和設定容器的 Azure 監視器，讓您可以瞭解容器的執行方式，以及已識別出哪些效能相關問題。
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 5131d7b8a357075345b5165398d5fa9fc06b5ad8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1cb393faded714593ce635669f585d5979ee69b8
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499019"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320301"
 ---
 # <a name="enable-azure-monitor-for-containers"></a>啟用容器的 Azure 監視器
 
@@ -28,11 +28,11 @@ ms.locfileid: "86499019"
 - Azure 入口網站
 - Azure PowerShell
 - Azure CLI
-- [Terraform 和 AKS](../../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md)
+- [Terraform 和 AKS](/azure/developer/terraform/create-k8s-cluster-with-tf-and-aks)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 開始之前，請確定您已符合下列需求：
 
@@ -70,7 +70,7 @@ ms.locfileid: "86499019"
 
 下表列出容器化代理程式與容器的 Azure 監視器進行通訊所需的 proxy 和防火牆設定資訊。 來自代理程式的所有網路流量都會輸出到 Azure 監視器。
 
-|代理程式資源|Port |
+|代理程式資源|連接埠 |
 |--------------|------|
 | `*.ods.opinsights.azure.com` | 443 |
 | `*.oms.opinsights.azure.com` | 443 |
@@ -131,3 +131,4 @@ ms.locfileid: "86499019"
 ## <a name="next-steps"></a>後續步驟
 
 現在您已啟用監視，您可以開始分析 Azure Kubernetes Service （AKS）、Azure Stack 或其他環境上裝載的 Kubernetes 叢集效能。 若要瞭解如何使用容器的 Azure 監視器，請參閱[View Kubernetes cluster performance](container-insights-analyze.md)。
+

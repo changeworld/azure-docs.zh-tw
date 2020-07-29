@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/03/2019
 ms.reviewer: abgreg;mbullwin
-ms.openlocfilehash: a3a59b6658e6ea0229f65492b20b5f5f2882d12a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 46b7479df6d087915cfe81895a786a528da6b9bb
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499234"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327900"
 ---
 # <a name="send-user-context-ids-to-enable-usage-experiences-in-azure-application-insights"></a>傳送使用者內容識別碼以啟用 Azure Application Insights 中的使用體驗
 
@@ -30,7 +30,7 @@ Application Insights 可讓您透過一組產品使用量工具來監控並追�
 - 工作階段：包含工作階段識別碼。
 
 > [!NOTE]
-> 這是概述使用 Application Insights 追蹤使用者活動之手動步驟的進階文章。 在 Web 應用程式很多的情況下，**可能不必遵循這些步驟**，原因是預設伺服器端搭配[用戶端/伺服器端 JavaScript SDK](../../azure-monitor/app/website-monitoring.md ) 通常就足以自動追蹤使用者活動。 除了伺服器端 SDK 之外，若您尚未設定[用戶端監視](../../azure-monitor/app/website-monitoring.md )，請先予以設定並測試，確認使用者行為分析工具是否如預期般執行。
+> 這是概述使用 Application Insights 追蹤使用者活動之手動步驟的進階文章。 在 Web 應用程式很多的情況下，**可能不必遵循這些步驟**，原因是預設伺服器端搭配[用戶端/伺服器端 JavaScript SDK](./website-monitoring.md) 通常就足以自動追蹤使用者活動。 除了伺服器端 SDK 之外，若您尚未設定[用戶端監視](./website-monitoring.md)，請先予以設定並測試，確認使用者行為分析工具是否如預期般執行。
 
 ## <a name="choosing-user-ids"></a>選擇使用者識別碼
 
@@ -134,4 +134,5 @@ namespace MvcWebRole.Telemetry
     - [使用者、工作階段和事件](usage-segmentation.md)
     - [漏斗圖](usage-funnels.md)
     - [保留](usage-retention.md)
-    - [活頁簿](../../azure-monitor/platform/workbooks-overview.md)
+    - [活頁簿](../platform/workbooks-overview.md)
+

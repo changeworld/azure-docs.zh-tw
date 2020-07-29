@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 40bd39299380c400f945585651a7ad99e3eb3fa7
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: eafe13adb5b37de2de2bc4eb8bf15c775af0b039
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86114052"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171861"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>針對 Azure Migrate 設備和探索進行疑難排解
 
@@ -98,7 +98,7 @@ ms.locfileid: "86114052"
 - 如果發生驗證錯誤，請檢查補救指引以修正錯誤，然後再次嘗試 [**儲存並啟動探索**] 選項。
 
 ## <a name="error-60025-azure-ad-operation-failed"></a>錯誤60025： Azure AD 操作失敗 
-錯誤60025：「Azure AD 操作失敗。 當用來起始探索的 Azure 使用者帳戶不同于用來註冊應用裝置的帳戶時，建立或更新 Azure AD 應用程式時發生錯誤。 執行下列其中一個動作：
+錯誤60025：「Azure AD 操作失敗。 當用來起始探索的 Azure 使用者帳戶不同于用來註冊應用裝置的帳戶時，建立或更新 Azure AD 應用程式時發生錯誤。 請執行下列其中一項：
 
 - 確定起始探索的使用者帳戶與用來註冊應用裝置的帳戶相同。
 - 針對探索作業失敗的使用者帳戶，提供 Azure Active Directory 的應用程式存取權限。
@@ -164,6 +164,9 @@ ms.locfileid: "86114052"
 
 ## <a name="unable-to-export-application-inventory"></a>無法匯出應用程式清查
 請確定從入口網站下載清查的使用者具有訂用帳戶的參與者許可權。
+
+## <a name="no-suitable-authentication-method-found-to-complete-authentication-publickey"></a>找不到可完成驗證的適當驗證方法（publickey）
+以金鑰為基礎的驗證將無法使用密碼驗證。
 
 ## <a name="common-app-discovery-errors"></a>常見的應用程式探索錯誤
 

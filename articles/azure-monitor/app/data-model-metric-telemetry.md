@@ -4,16 +4,16 @@ description: 計量遙測的 Application Insights 資料模型
 ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: 44f0b070a7c0da416002d9bf7e509d643a96dc7a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f8e787b8a94987e7d68e12a0e4e69f4c63e21e19
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540004"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320573"
 ---
 # <a name="metric-telemetry-application-insights-data-model"></a>計量遙測：Application Insights 資料模型
 
-[Application Insights](../../azure-monitor/app/app-insights-overview.md) 支援兩種類型的計量遙測：單一測量和預先彙總的計量。 單一度量只有名稱與值。 預先彙總的計量會指定彙總間隔中計量的最小值和最大值以及它的標準差。
+[Application Insights](./app-insights-overview.md) 支援兩種類型的計量遙測：單一測量和預先彙總的計量。 單一度量只有名稱與值。 預先彙總的計量會指定彙總間隔中計量的最小值和最大值以及它的標準差。
 
 預先彙總的計量遙測會假設該彙總期間為一分鐘。
 
@@ -65,6 +65,7 @@ Application Insights 支援數個已知的計量名稱。 這些計量會置入 
 
 ## <a name="next-steps"></a>後續步驟
 
-- 了解如何使用[自訂事件和計量的 Application Insights API](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric)。
+- 了解如何使用[自訂事件和計量的 Application Insights API](./api-custom-events-metrics.md#trackmetric)。
 - 如需 Application Insights 類型和資料模型，請參閱[資料模型](data-model.md)。
-- 查看 Application Insights 支援的[平台](../../azure-monitor/app/platforms.md)。
+- 查看 Application Insights 支援的[平台](./platforms.md)。
+

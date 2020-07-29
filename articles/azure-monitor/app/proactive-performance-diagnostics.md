@@ -4,18 +4,18 @@ description: Application Insights 會執行您應用程式遙測的智慧型分�
 ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
-ms.openlocfilehash: 5152a3deb73c7069655ff016fbfc03f6b9cee16d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c817e2c7f609bbbec52eff1b898a8d7c53209a28
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87045793"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321304"
 ---
 # <a name="smart-detection---performance-anomalies"></a>智慧型偵測 - 效能異常
 
-[Application Insights](../../azure-monitor/app/app-insights-overview.md) 會自動分析 Web 應用程式的效能，並且可以警告您有關潛在的問題。 您會讀取到此訊息，可能是因為您收到一個我們的智慧型偵測通知。
+[Application Insights](./app-insights-overview.md) 會自動分析 Web 應用程式的效能，並且可以警告您有關潛在的問題。 您會讀取到此訊息，可能是因為您收到一個我們的智慧型偵測通知。
 
-除了針對[支援的語言](../../azure-monitor/app/platforms.md)設定 Application Insights 的應用程式以外，這項功能不需要進行任何特殊設定。 當您的應用程式產生足夠的遙測時，就會是在作用中。
+除了針對[支援的語言](./platforms.md)設定 Application Insights 的應用程式以外，這項功能不需要進行任何特殊設定。 當您的應用程式產生足夠的遙測時，就會是在作用中。
 
 ## <a name="when-would-i-get-a-smart-detection-notification"></a>何時會取得智慧型偵測通知？
 
@@ -43,7 +43,7 @@ Application Insights 偵測到您的應用程式以下列其中一種方式降�
 2. **範圍**。 此問題是否會影響所有流量，還是只會影響某些頁面？ 它是否限制為特定的瀏覽器或位置？ 可以從通知取得這項資訊。
 3. **診斷**。 通常，通知中的診斷資訊會建議問題的本質。 例如，如果要求率很高時回應時間變慢，表示您的伺服器或相依性已超載。 
 
-    否則，在 Application Insights 中開啟 [效能] 刀鋒視窗。 您可以在此處找到[分析工具](profiler.md)資料。 如果擲回例外狀況，則您也可以嘗試[快照集偵錯工具](../../azure-monitor/app/snapshot-debugger.md)。
+    否則，在 Application Insights 中開啟 [效能] 刀鋒視窗。 您可以在此處找到[分析工具](profiler.md)資料。 如果擲回例外狀況，則您也可以嘗試[快照集偵錯工具](./snapshot-debugger.md)。
 
 
 
@@ -60,18 +60,18 @@ Application Insights 偵測到您的應用程式以下列其中一種方式降�
 ## <a name="faq"></a>常見問題集
 
 * *Microsoft 人員會看到我的資料嗎？*
-  * 否。 服務完全是自動的。 只有您會收到通知。 您的資料是 [不公開的](../../azure-monitor/app/data-retention-privacy.md)。
+  * 否。 服務完全是自動的。 只有您會收到通知。 您的資料是 [不公開的](./data-retention-privacy.md)。
 * *你們會分析 Application Insights 收集的所有資料嗎？*
   * 目前尚未。 我們目前會分析要求回應時間、相依性回應時間和頁面載入時間。 我們後續的未來展望中將有其他計量的分析。
 
 * 這適用於哪些類型的應用程式？
-  * 會在產生適當遙測的任何應用程式中偵測到這些降低。 如果您在 Web 應用程式中安裝了 Application Insights，就會自動追蹤要求及相依性。 但在後端服務或其他應用程式中，如果您將呼叫插入 [TrackRequest()](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest) 或 [TrackDependency](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency)，則智慧型偵測會以相同的方式運作。
+  * 會在產生適當遙測的任何應用程式中偵測到這些降低。 如果您在 Web 應用程式中安裝了 Application Insights，就會自動追蹤要求及相依性。 但在後端服務或其他應用程式中，如果您將呼叫插入 [TrackRequest()](./api-custom-events-metrics.md#trackrequest) 或 [TrackDependency](./api-custom-events-metrics.md#trackdependency)，則智慧型偵測會以相同的方式運作。
 
 * 我可以建立自己的異常偵測規則或自訂現有的規則嗎？
 
   * 還不行，但是您可以︰
     * [設定警示](../platform/alerts-log.md)，使其在計量超出臨界值時通知您。
-    * [匯出遙測](../../azure-monitor/app/export-telemetry.md)至[資料庫](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md)或[至 Power BI](../../azure-monitor/app/export-power-bi.md )，您就能自行分析遙測。
+    * [匯出遙測](./export-telemetry.md)至[資料庫](./code-sample-export-sql-stream-analytics.md)或[至 Power BI](./export-power-bi.md)，您就能自行分析遙測。
 * *執行分析的頻率為何？*
 
   * 我們每天都會根據前一天的遙測執行分析 (UTC 時區中全天)。
@@ -92,16 +92,16 @@ Application Insights 偵測到您的應用程式以下列其中一種方式降�
 
 使用影響敘述 (受影響的使用者或流量的 %) 作為一般指南，但請留意該敘述並不是全部的詳情。 蒐集其他證據進行確認。
 
-請考慮這個問題的參數。 如果與地理位置有關，請設定包括該地區的 [可用性測試](../../azure-monitor/app/monitor-web-app-availability.md) ：該地區可能只有網路問題。
+請考慮這個問題的參數。 如果與地理位置有關，請設定包括該地區的 [可用性測試](./monitor-web-app-availability.md) ：該地區可能只有網路問題。
 
 ### <a name="diagnose-slow-page-loads"></a>診斷頁面載入緩慢
 問題出在哪裡？ 伺服器是否回應太慢、頁面是否很長，或瀏覽器必須執行很多工作才能顯示頁面？
 
 開啟 [瀏覽器] 計量刀鋒視窗。 分段顯示的瀏覽器頁面載入時間可顯示時間的進度。 
 
-* 如果 [傳送要求時間]  太久，不是伺服器回應速度緩慢，就是要求是含有大量資料的文章。 查看 [效能計量](../../azure-monitor/app/web-monitor-performance.md#metrics) 以調查回應時間。
-* 設定 [相依性追蹤](../../azure-monitor/app/asp-net-dependencies.md) 以查看速度慢是否是外部服務或您的資料庫所造成。
-* 如果 [接收回應]  是主導因素，您的頁面和其相依組件 (JavaScript、CSS 及影像等，而非以非同步方式載入的資料) 會很長。 設定 [可用性測試](../../azure-monitor/app/monitor-web-app-availability.md)，而且務必設定載入相依組件的選項。 當您取得一些結果時，請開啟結果的詳細資料並將它展開，以查看不同檔案的載入時間。
+* 如果 [傳送要求時間]  太久，不是伺服器回應速度緩慢，就是要求是含有大量資料的文章。 查看 [效能計量](./web-monitor-performance.md#metrics) 以調查回應時間。
+* 設定 [相依性追蹤](./asp-net-dependencies.md) 以查看速度慢是否是外部服務或您的資料庫所造成。
+* 如果 [接收回應]  是主導因素，您的頁面和其相依組件 (JavaScript、CSS 及影像等，而非以非同步方式載入的資料) 會很長。 設定 [可用性測試](./monitor-web-app-availability.md)，而且務必設定載入相依組件的選項。 當您取得一些結果時，請開啟結果的詳細資料並將它展開，以查看不同檔案的載入時間。
 * [用戶端處理時間]  過長表示指令碼執行速度很慢。 如果原因不明顯，請考慮加入一些時間計時程式碼並在 trackMetric 呼叫中傳送時間。
 
 ### <a name="improve-slow-pages"></a>改善慢速網頁
@@ -174,11 +174,12 @@ Application Insights 會尋找可能只會影響某部分使用者，或只在�
 這些診斷工具可協助您檢查來自您的應用程式的遙測︰
 
 * [分析工具](profiler.md) 
-* [快照集偵錯工具](../../azure-monitor/app/snapshot-debugger.md)
-* [分析](../../azure-monitor/log-query/get-started-portal.md)
+* [快照偵錯工具](./snapshot-debugger.md)
+* [分析](../log-query/get-started-portal.md)
 * [分析智慧型診斷](../log-query/log-query-overview.md)
 
 智慧型偵測是完全自動的。 但是，或許您會想要再設定一些警示？
 
 * [手動設定的度量警示](../platform/alerts-log.md)
-* [可用性 Web 測試](../../azure-monitor/app/monitor-web-app-availability.md)
+* [可用性 Web 測試](./monitor-web-app-availability.md)
+

@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 06/09/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 3d7085f54634ab1175fc0f916e24b7f03dc1bc9b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e50d6b6fe88cbad42d238ee2779abfe10e752f0e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073665"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327271"
 ---
 # <a name="azure-activity-log-event-schema"></a>Azure 活動記錄事件結構描述
 [Azure 活動記錄](platform-logs-overview.md)可讓您深入瞭解 azure 中發生的任何訂用帳戶層級事件。 本文說明每個的活動記錄類別和架構。 
@@ -24,7 +24,7 @@ ms.locfileid: "87073665"
 - 當您使用[診斷設定](diagnostic-settings.md)將活動記錄傳送至 log Analytics 工作區時，請參閱架構的[Azure 監視器資料參考](/azure/azure-monitor/reference/)。
 
 
-## <a name="categories"></a>Categories
+## <a name="categories"></a>類別
 活動記錄中的每個事件都具有下表所述的特定類別。 當您從入口網站、PowerShell、CLI 和 REST API 存取活動記錄時，請參閱下列各節，以取得每個類別目錄及其架構的詳細資料。 當您將[活動記錄串流至儲存體或事件中樞](./resource-logs.md#send-to-azure-event-hubs)時，架構會不同。 在本文的最後一節中，會提供屬性與[資源記錄架構](./resource-logs-schema.md)的對應。
 
 | 類別 | 描述 |
@@ -578,7 +578,7 @@ ms.locfileid: "87073665"
 | eventDataId |安全性事件的唯一識別碼。 |
 | eventName |安全性事件的易記名稱。 |
 | category | 一律為「安全性」 |
-| ID |安全性事件的唯一資源識別碼。 |
+| 識別碼 |安全性事件的唯一資源識別碼。 |
 | 等級 |事件的層級。 下列其中一個值：“Critical”、“Error”、“Warning” 和 “Informational” |
 | resourceGroupName |資源的資源群組名稱。 |
 | resourceProviderName |「Azure 資訊安全中心」的資源提供者名稱。 一律為 "Microsoft.Security"。 |
@@ -658,7 +658,7 @@ ms.locfileid: "87073665"
 | description |建議事件的靜態文字描述 |
 | eventDataId | 建議事件的唯一識別碼。 |
 | category | 一律為 "Recommendation" |
-| ID |建議事件的唯一資源識別碼。 |
+| 識別碼 |建議事件的唯一資源識別碼。 |
 | 等級 |事件的層級。 下列其中一個值：“Critical”、“Error”、“Warning” 和 “Informational” |
 | operationName |作業名稱。  一律為 "Microsoft.Advisor/generateRecommendations/action"|
 | resourceGroupName |資源的資源群組名稱。 |
@@ -773,7 +773,7 @@ ms.locfileid: "87073665"
 | eventName | 「BeginRequest」或「EndRequest」。 「BeginRequest」用於延遲的 auditIfNotExists 和 deployIfNotExists 評估，以及當 deployIfNotExists 效果開始範本部署時。 所有其他的作業都會傳回「EndRequest」。 |
 | category | 將活動記錄事件宣告為屬於「Policy」。 |
 | eventTimestamp | 處理與事件對應之要求的Azure 服務產生事件時的時間戳記。 |
-| ID | 特定資源上事件的唯一識別碼。 |
+| 識別碼 | 特定資源上事件的唯一識別碼。 |
 | 等級 | 事件的層級。 Audit 會使用「Warning」，Deny 會使用「Error」。 auditIfNotExists 或 deployIfNotExists 錯誤會根據嚴重性產生「Warning」或「Error」。 所有其他的原則事件會使用「Informational」。 |
 | operationId | 對應至單一作業的事件共用的 GUID。 |
 | operationName | 作業的名稱，且直接與「原則」效果相互關聯。 |
@@ -796,10 +796,10 @@ ms.locfileid: "87073665"
 將 Azure 活動記錄串流處理至儲存體帳戶或事件中樞時，資料會遵循[資源記錄架構](./resource-logs-schema.md)。 下表提供從上述架構到資源記錄架構的屬性對應。
 
 > [!IMPORTANT]
-> 寫入儲存體帳戶的活動記錄資料格式，在2018年11月1日變更為 JSON 行。 如需此格式變更的詳細資訊，請參閱[準備將格式變更 Azure 監視器封存到儲存體帳戶的資源記錄](./resource-logs-append-blobs.md)。
+> 寫入儲存體帳戶的活動記錄資料格式，在2018年11月1日變更為 JSON 行。 如需此格式變更的詳細資訊，請參閱[準備將格式變更 Azure 監視器封存到儲存體帳戶的資源記錄](/azure/azure-monitor/platform/resource-logs-blob-format)。
 
 
-| 資源記錄架構屬性 | 活動記錄 REST API 結構描述屬性 | 附註 |
+| 資源記錄架構屬性 | 活動記錄 REST API 結構描述屬性 | 注意 |
 | --- | --- | --- |
 | time | eventTimestamp |  |
 | resourceId | resourceId | subscriptionId、resourceType、resourceGroupName 全都推斷自 resourceId。 |
@@ -814,7 +814,7 @@ ms.locfileid: "87073665"
 | 身分識別 | 宣告和授權屬性 |  |
 | 層級 | 層級 |  |
 | location | 不適用 | 處理事件所在的位置。 *這不是資源的位置，而是事件的處理位置。在未來的更新中將會移除此屬性。* |
-| [內容] | properties.eventProperties |  |
+| 屬性 | properties.eventProperties |  |
 | properties.eventCategory | category | 如果 properties.eventCategory 不存在，則類別為 "Administrative" |
 | properties.eventName | eventName |  |
 | properties.operationId | operationId |  |
@@ -885,3 +885,4 @@ ms.locfileid: "87073665"
 ## <a name="next-steps"></a>後續步驟
 * [深入瞭解活動記錄](platform-logs-overview.md)
 * [建立診斷設定，以將活動記錄傳送至 Log Analytics 工作區、Azure 儲存體或事件中樞](diagnostic-settings.md)
+

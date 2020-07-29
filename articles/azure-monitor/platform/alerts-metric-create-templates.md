@@ -7,21 +7,21 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 7/9/2020
 ms.subservice: alerts
-ms.openlocfilehash: 043ecc07c521f9c1c79835bcd67ff1d81cacfa34
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 3b0215ea2f02441f93e6eb9b672744638ae93b11
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539460"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321134"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>使用 Resource Manager 範本建立度量警示
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-本文章將說明如何使用 [Azure Resource Manager 範本](../../azure-resource-manager/templates/template-syntax.md)在 Azure 監視器中設定[新版計量警示](../../azure-monitor/platform/alerts-metric-near-real-time.md)。 Resource Manager 範本可讓您以程式設計方式，在環境中以一致且可重現的方式設定警示。 新版計量警示目前可在[這組資源類型](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)上使用。
+本文章將說明如何使用 [Azure Resource Manager 範本](../../azure-resource-manager/templates/template-syntax.md)在 Azure 監視器中設定[新版計量警示](./alerts-metric-near-real-time.md)。 Resource Manager 範本可讓您以程式設計方式，在環境中以一致且可重現的方式設定警示。 新版計量警示目前可在[這組資源類型](./alerts-metric-near-real-time.md#metrics-and-dimensions-supported)上使用。
 
 > [!IMPORTANT]
-> 建立資源類型之計量警示的資源範本：Azure Log Analytics 工作區 (例如 `Microsoft.OperationalInsights/workspaces`)，需要其他步驟。 如需詳細資訊，請參閱[記錄的計量警示 - 資源範本](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs)上的文章。
+> 建立資源類型之計量警示的資源範本：Azure Log Analytics 工作區 (例如 `Microsoft.OperationalInsights/workspaces`)，需要其他步驟。 如需詳細資訊，請參閱[記錄的計量警示 - 資源範本](./alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs)上的文章。
 
 基本步驟如下：
 
@@ -3464,7 +3464,7 @@ az group deployment create \
 
 ## <a name="template-for-an-availability-test-along-with-a-metric-alert"></a>可用性測試和計量警示的範本
 
-[Application Insights 可用性測試](../../azure-monitor/app/monitor-web-app-availability.md)可協助您從全球各地的不同位置，監視您網站/應用程式的可用性。 可用性測試警示會在特定幾個位置中的可用性測試失敗時，向您發出通知。
+[Application Insights 可用性測試](../app/monitor-web-app-availability.md)可協助您從全球各地的不同位置，監視您網站/應用程式的可用性。 可用性測試警示會在特定幾個位置中的可用性測試失敗時，向您發出通知。
 可用性測試警示與計量警示 (Microsoft.Insights/metricAlerts) 屬於相同資源類型。 下列範例 Azure Resource Manager 範本可以用來設定簡單的可用性測試和相關聯的警示。
 
 基於本逐步解說的目的，請將以下的 json 儲存為 availabilityalert.js。
@@ -3628,3 +3628,4 @@ az group deployment create \
 - 深入了解 [Azure 中的警示](alerts-overview.md)
 - 了解如何[使用 Resource Manager 範本建立動作群組](action-groups-create-resource-manager-template.md)
 - 如需 JSON 語法和屬性的相關資訊，請參閱 [Microsoft.Insights/metricAlerts](/azure/templates/microsoft.insights/metricalerts) 範本參考。
+

@@ -8,19 +8,19 @@ ms.date: 10/28/2019
 ms.author: mbullwin
 ms.reviewer: Dale.Koetke
 ms.subservice: ''
-ms.openlocfilehash: 530ddf7af5b95cfec948270affbd13b6d61d08ff
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: eb96537f67c61fb31759da020068f784d0e89993
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081435"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323395"
 ---
 # <a name="monitoring-usage-and-estimated-costs-in-azure-monitor"></a>在 Azure 監視器中監視使用量和估計成本
 
 > [!NOTE]
 > 本文說明如何跨多項 Azure 監視功能來查看使用量和估計成本。 Azure 監視器特定元件的相關文章包括：
 > - [使用 Azure 監視器記錄來管理使用量和成本](manage-cost-storage.md)說明如何藉由變更資料保留期限來控制成本，以及如何分析和警示您的資料使用量。
-> - [管理 Application Insights 的使用量和成本](../../azure-monitor/app/pricing.md)說明如何分析 Application Insights 中的資料使用量。
+> - [管理 Application Insights 的使用量和成本](../app/pricing.md)說明如何分析 Application Insights 中的資料使用量。
 
 ## <a name="azure-monitor-pricing-model"></a>Azure 監視器計價模式
 
@@ -96,3 +96,4 @@ Azure 在 [Azure 成本管理 + 計費](../../cost-management-billing/costs/quic
 > [!WARNING]
 > 如果您的組織目前 Microsoft Operations Management Suite E1 和 E2，通常最好將您的 Log Analytics 工作區保留在「每節點（OMS）」定價層，並將您的 Application Insights 資源放在「企業」定價層中。 
 >
+

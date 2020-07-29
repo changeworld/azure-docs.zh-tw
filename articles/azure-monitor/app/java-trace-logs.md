@@ -3,11 +3,12 @@ title: 探索 Azure 應用程式 Insights 中的 JAVA 追蹤記錄
 description: 在 Application Insights 中搜尋 Log4J 或 Logback 追蹤
 ms.topic: conceptual
 ms.date: 05/18/2019
-ms.openlocfilehash: da1b76d52ab93f4d1be7196d6eb7286579481119
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 417462da431d8fe2ba878c93c6f4b467bdde2670
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77657209"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324160"
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>在 Application Insights 中探索 Java 追蹤記錄
 如果您使用 Logback 或 Log4J (v1.2 或 v2.0) 進行追蹤，您可以將追蹤記錄自動傳送到 Application Insights，您可以在其中探索及搜尋記錄。
@@ -192,7 +193,6 @@ Application Insights 附加器可由任何設定的記錄器參考，而不一�
 
 <!--Link references-->
 
-[diagnostic]: ../../azure-monitor/app/diagnostic-search.md
+[diagnostic]: ./diagnostic-search.md
 [java]: java-get-started.md
-
 

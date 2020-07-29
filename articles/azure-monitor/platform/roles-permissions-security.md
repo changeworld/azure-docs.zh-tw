@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: 4ffbe10a1f9a1629c74c144b8773a7de89890576
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 8e56c4da0eec3338de7863a2ee158e804cf406c0
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132002"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325554"
 ---
 # <a name="roles-permissions-and-security-in-azure-monitor"></a>Azure 監視器中的角色、權限與安全性
 
@@ -188,4 +188,5 @@ Azure 監視器需要存取您的 Azure 資源，才能提供您啟用的服務�
 
 ## <a name="next-steps"></a>後續步驟
 * [深入了解 RBAC 和 Resource Manager 中的權限](../../role-based-access-control/overview.md)
-* [閱讀 Azure 中的監視概觀](../../azure-monitor/overview.md)
+* [閱讀 Azure 中的監視概觀](../overview.md)
+
