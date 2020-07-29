@@ -7,12 +7,14 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: include
 ms.date: 08/16/2019
 ms.custom: include file
-ms.openlocfilehash: 86b16c92f7a9bd3f594b01820db6cbf7ef5ecb6b
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: mingshen-ms
+ms.author: mingshen
+ms.openlocfilehash: b2d4ce0de130942ccd52dc2894d91a4e4f667c99
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86104348"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326610"
 ---
 當您透過合作夥伴中心將供應專案發佈至 marketplace 時，您需要將您的供應專案連線到您的 CRM 系統。 如此一來，您就可以在客戶表示感興趣或部署您的產品之後，立即收到客戶連絡人資訊。
 

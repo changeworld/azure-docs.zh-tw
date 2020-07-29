@@ -1,7 +1,7 @@
 ---
 title: Azure CLI 腳本範例-設定 IPv6 前端-Standard Load Balancer
 titlesuffix: Azure Virtual Network
-description: 使用 Azure 虛擬網路中的 Azure CLI 啟用 IPv6 端點
+description: 瞭解如何使用 Standard Load Balancer 在虛擬網路腳本範例中設定 IPv6 端點。
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -12,12 +12,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: 5f5856a89a04b58b138ee23a5f289ceff0915acf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2509034abb37c7dc90b65569d14f228eadb746c8
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80235042"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281611"
 ---
 # <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-using-standard-load-balancerpreview"></a>使用 Standard Load Balancer 在虛擬網路中設定 IPv6 端點腳本範例（預覽）
 

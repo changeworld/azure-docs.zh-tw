@@ -3,12 +3,12 @@ title: 設定 Azure DevTest Labs 中的虛擬網路 | Microsoft Docs
 description: 了解如何設定現有的虛擬網路和子網路，並在具備 Azure DevTest Labs 的 VM 中使用它們
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 0819527cfc2a9dfd4e93226542acb7cb0c6d7273
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 21fe23b6be6fdc924c5502ff97f9c03a3f3e759d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482644"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283549"
 ---
 # <a name="configure-a-virtual-network-in-azure-devtest-labs"></a>設定 Azure DevTest Labs 中的虛擬網路
 如[將 VM 加入實驗室](devtest-lab-add-vm.md)一文中所述，當您在實驗室中建立 VM 時，可以指定已設定的虛擬網路。 例如，您可能需要使用以 ExpressRoute 或站台對站台 VPN 設定的虛擬網路從您的 VM 存取公司資源。
@@ -28,7 +28,7 @@ ms.locfileid: "85482644"
 
     ![存取實驗室的設定與原則](./media/devtest-lab-configure-vnet/policies-menu.png)
 1. 在 [外部資源]**** 區段中，選取 [虛擬網路]****。 隨即顯示針對目前實驗室設定的虛擬網路清單，以及為實驗室所建立的預設虛擬網路。 
-1. 選取 [+ 新增] 。
+1. 選取 [+ 新增]。
    
     ![將現有的虛擬網路加入至您的實驗室](./media/devtest-lab-configure-vnet/lab-settings-vnet-add.png)
 1. 在 [虛擬網路]**** 窗格上，選取 [選取虛擬網路]****。
@@ -53,10 +53,9 @@ ms.locfileid: "85482644"
 
 現在已設定虛擬網路，在建立 VM 時就能選取它。 若要查看如何建立虛擬機器並指定虛擬網路，請參閱[將虛擬機器加入實驗室](devtest-lab-add-vm.md)一文。 
 
-Azure 的[虛擬網路文件](https://docs.microsoft.com/azure/virtual-network)會提供更多有關 VNet 使用方法的資訊，包括如何設定及管理 VNet，以及如何將它連線到您的內部部署網路。
+Azure 的[虛擬網路文件](../virtual-network/index.yml)會提供更多有關 VNet 使用方法的資訊，包括如何設定及管理 VNet，以及如何將它連線到您的內部部署網路。
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ## <a name="next-steps"></a>後續步驟
 一旦您在實驗室中加入所需的虛擬網路之後，下一個步驟就是 [將 VM 加入至實驗室](devtest-lab-add-vm.md)。
-

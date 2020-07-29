@@ -3,13 +3,14 @@ author: trevorbye
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/13/2020
+ms.custom: devx-track-java
 ms.author: trbye
-ms.openlocfilehash: 60d5fb524d07590ed28641a6c91b87dbeb7dfc9f
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: d04a13dae78057dfca52ed82bed278a8b132ded1
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86035810"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87375277"
 ---
 ## <a name="prerequisites"></a>必要條件
 
@@ -101,7 +102,7 @@ static void translateSpeech() {
 }
 ```
 
-[`setSpeechRecognitionLanguage`][recognitionlang]函數需要語言地區設定格式字串。 您可以提供支援的[地區設定/語言](../../../language-support.md)清單中位於 [地區設定]  資料行內的任何值。
+[`setSpeechRecognitionLanguage`][recognitionlang]函數需要語言地區設定格式字串。 您可以提供支援的[地區設定/語言](../../../language-support.md)清單中位於 [地區設定] 資料行內的任何值。
 
 ## <a name="add-translation-language"></a>新增翻譯語言
 

@@ -5,17 +5,17 @@ author: cynthn
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
 ms.subservice: imaging
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 28cdc96020d085c6f44c8b6818aa76dd7eb29891
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d49bbebe4d38783342170693bd06f0dfc645f34d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82788976"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288396"
 ---
 # <a name="create-an-azure-shared-image-gallery-using-the-portal"></a>使用入口網站建立 Azure 共用映射資源庫
 
@@ -53,7 +53,7 @@ ms.locfileid: "82788976"
 1. 在映射定義的頁面上，從頁面頂端的功能表中選取 [**建立 VM** ]。
 1. 針對 [**資源群組**]，選取 [**建立新**的]，然後在 [名稱] 中輸入*myResourceGroup* 。
 1. 在 [**虛擬機器名稱**] 中，輸入*myVM*。
-1. 在 [區域]**** 中，選取 [美國東部]**。
+1. 在 [區域] 中，選取 [美國東部]。
 1. 針對 [**可用性選項**]，保留 [*不需要基礎結構冗余*] 的預設值。
 1. **Image** `latest` 如果您從影像定義的頁面啟動，影像的值會自動填入映射版本。
 1. 針對 [**大小**]，從可用的大小清單中選擇 VM 大小，然後選擇 [**選取**]。
@@ -65,7 +65,7 @@ ms.locfileid: "82788976"
 
 ## <a name="clean-up-resources"></a>清除資源
 
-若不再需要，您可以刪除資源群組、虛擬機器和所有相關資源。 若要這樣做，請選取虛擬機器的資源群組，選取 [刪除]  ，然後確認要刪除的資源群組名稱。
+若不再需要，您可以刪除資源群組、虛擬機器和所有相關資源。 若要這樣做，請選取虛擬機器的資源群組，選取 [刪除]，然後確認要刪除的資源群組名稱。
 
 如果您想要刪除個別的資源，您必須以相反順序刪除它們。 例如，若要刪除映射定義，您必須刪除所有從該映射建立的映射版本。
 

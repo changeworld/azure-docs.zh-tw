@@ -1,7 +1,7 @@
 ---
 title: Azure CLI 腳本範例-設定 IPv6 前端
 titlesuffix: Azure Virtual Network
-description: 使用 Azure 虛擬網路中的 Azure CLI 啟用 IPv6 端點
+description: 使用 Azure CLI 腳本範例來設定 IPv6 端點，並在 Azure 中部署雙重堆疊（IPv4 + IPv6）應用程式。
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -12,12 +12,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 04/23/2019
 ms.author: kumud
-ms.openlocfilehash: 1ef8742bc4f8de2d08d9bb4fc98b3df6f9420737
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5f5e741e972015820af2e0e33372eb41c9e78210
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80235033"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281594"
 ---
 # <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-preview"></a>在虛擬網路中設定 IPv6 端點腳本範例（預覽）
 
@@ -27,7 +27,7 @@ ms.locfileid: "80235033"
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 若要使用 IPv6 for Azure 虛擬網路功能，您必須只設定訂用帳戶一次，如下所示：
 
 ```azurecli

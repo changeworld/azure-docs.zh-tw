@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 19b7962462e5cdb03bad0c6004b8c19f781ccc69
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 723b8cf7a71e5af672c8665040645d55645fe9f7
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87005271"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281849"
 ---
 # <a name="create-a-group-managed-service-account-gmsa-in-azure-active-directory-domain-services"></a>在 Azure Active Directory Domain Services 中建立群組受管理的服務帳戶（gMSA）
 
@@ -76,7 +76,7 @@ New-ADOrganizationalUnit -Name "myNewOU" -Path "DC=aaddscontoso,DC=COM"
 * **-Name**設為*WebFarmSvc*
 * **-Path**參數會針對在上一個步驟中建立的 gMSA 指定自訂 OU。
 * 已針對*WebFarmSvc.aaddscontoso.com*設定 DNS 專案和服務主體名稱
-* *AADDSCONTOSO-SERVER $* 中的主體可讓您取得密碼，使用身分識別。
+* AADDSCONTOSO 中*的主體-伺服器 $* 可以抓取密碼並使用身分識別。
 
 指定您自己的名稱和功能變數名稱。
 
@@ -95,7 +95,7 @@ New-ADServiceAccount -Name WebFarmSvc `
 
 應用程式和服務現在可以設定為視需要使用 gMSA。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如需 Gmsa 的詳細資訊，請參閱[開始使用群組受管理的服務帳戶][gmsa-start]。
 

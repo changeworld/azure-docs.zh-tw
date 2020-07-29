@@ -4,16 +4,16 @@ description: 使用 Azure PowerSHell 來判斷 Marketplace VM 映像的發行者
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 01/25/2019
 ms.author: cynthn
-ms.openlocfilehash: d2d37e20ada2d1128f04d2df822da996338e0e6e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 96b5e3770a3f5e08237d61eab05cfeafbc72a5db
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86500866"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288350"
 ---
 # <a name="find-and-use-vm-images-in-the-azure-marketplace-with-azure-powershell"></a>使用 Azure PowerShell 在 Azure Marketplace 中尋找和使用 VM 映射
 
@@ -39,8 +39,8 @@ ms.locfileid: "86500866"
 | MicrosoftWindowsServer |WindowsServer |2012-R2-Datacenter |
 | MicrosoftWindowsServer |WindowsServer |2012-Datacenter |
 | MicrosoftSharePoint |MicrosoftSharePointServer |sp2019 |
-| MicrosoftSQLServer |SQL2019-WS2016 |Enterprise |
-| MicrosoftRServer |RServer-WS2016 |Enterprise |
+| MicrosoftSQLServer |SQL2019-WS2016 |企業 |
+| MicrosoftRServer |RServer-WS2016 |企業 |
 
 ## <a name="navigate-the-images"></a>瀏覽映像
 
