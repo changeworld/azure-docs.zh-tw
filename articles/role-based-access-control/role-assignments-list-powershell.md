@@ -11,14 +11,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/10/2020
+ms.date: 07/28/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 4ee6a3c09d24d6968227ef4215000888c5f4af05
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e27fe0589498de13f5eb6e17f8869bb9d7352a09
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791005"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372071"
 ---
 # <a name="list-azure-role-assignments-using-azure-powershell"></a>使用 Azure PowerShell 列出 Azure 角色指派
 
@@ -29,7 +30,7 @@ ms.locfileid: "84791005"
 > [!NOTE]
 > 如果您的組織具有外包管理功能給使用[Azure 委派資源管理](../lighthouse/concepts/azure-delegated-resource-management.md)的服務提供者，該服務提供者所授權的角色指派將不會顯示在這裡。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 - Azure Cloud Shell 或[Azure PowerShell](/powershell/azure/install-az-ps) [中的 PowerShell](/azure/cloud-shell/overview)
 
@@ -139,6 +140,26 @@ Get-AzRoleAssignment -Scope /providers/Microsoft.Management/managementGroups/<gr
 
 ```Example
 PS C:\> Get-AzRoleAssignment -Scope /providers/Microsoft.Management/managementGroups/marketing-group
+```
+
+## <a name="list-role-assignments-for-a-resource"></a>列出資源的角色指派
+
+若要列出特定資源的角色指派，請使用[new-azroleassignment](/powershell/module/az.resources/get-azroleassignment)和 `-Scope` 參數。 範圍會根據資源而有所不同。 若要取得範圍，您可以執行 `Get-AzRoleAssignment` 而不需要任何參數，以列出所有角色指派，然後尋找您想要列出的範圍。
+
+```azurepowershell
+Get-AzRoleAssignment -Scope "/subscriptions/<subscription_id>/resourcegroups/<resource_group_name>/providers/<provider_name>/<resource_type>/<resource>
+```
+
+下列範例顯示如何列出儲存體帳戶的角色指派。 請注意，此命令也會列出適用于此儲存體帳戶的較高範圍（例如資源群組和訂用帳戶）的角色指派。
+
+```Example
+PS C:\> Get-AzRoleAssignment -Scope "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/storage-test-rg/providers/Microsoft.Storage/storageAccounts/storagetest0122"
+```
+
+如果您只想列出直接指派給資源的角色指派，您可以使用[Where-Object](/powershell/module/microsoft.powershell.core/where-object)命令來篩選清單。
+
+```Example
+PS C:\> Get-AzRoleAssignment | Where-Object {$_.Scope -eq "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/storage-test-rg/providers/Microsoft.Storage/storageAccounts/storagetest0122"}
 ```
 
 ## <a name="list-role-assignments-for-classic-service-administrator-and-co-administrators"></a>列出傳統服務管理員和共同管理員的角色指派

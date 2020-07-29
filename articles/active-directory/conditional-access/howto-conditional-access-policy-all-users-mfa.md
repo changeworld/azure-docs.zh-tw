@@ -11,11 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7af1347ac57e1a5c5ae99744924ea04fe9757581
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e1e99556b0a0c5b7559cc03b152a19e78aeb58f6
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83995338"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283039"
 ---
 # <a name="conditional-access-require-mfa-for-all-users"></a>條件式存取：所有使用者都需要 MFA
 
@@ -52,7 +53,7 @@ ms.locfileid: "83995338"
    1. 選取 [完成] 。
 1. 在 [**雲端應用程式] 或 [動作**] 底下  >  ** **，選取 [**所有雲端應用程式**]。
    1. 在 [**排除**] 底下，選取不需要多重要素驗證的任何應用程式。
-1. 在**Conditions**  >  **[用戶端應用程式（預覽）**] 條件下，將 [設定] 設為 **[是** **Configure** 在 **[選取要套用此原則的用戶端應用程式**] 下，保留選取所有預設值，然後選取 [**完成**]。
+1. 在**Conditions**  >  **[條件用戶端應用程式（預覽）**] 底下**的 [選取用戶端應用程式] 下，將套用此原則以**保留所有預設值並選取 [**完成**]。
 1. 在 [存取控制] > [授與] 底下選取 [授與存取權] 和 [需要多重要素驗證]，然後選取 [選取]。
 1. 確認您的設定，並將 [啟用原則] 設定為 [開啟]。
 1. 選取 [建立] 以建立以啟用您的原則。
@@ -67,8 +68,8 @@ ms.locfileid: "83995338"
    1. 設定 [是]。
    1. 包含 [任何位置]。
    1. 排除 [所有信任的位置]。
-   1. 選取 [完成] 。
-1. 選取 [完成] 。
+   1. 選取 [完成]。
+1. 選取 [完成]。
 1. **儲存**原則變更。
 
 ## <a name="next-steps"></a>後續步驟

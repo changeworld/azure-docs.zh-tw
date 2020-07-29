@@ -11,12 +11,13 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/13/2020
 ms.author: iainfou
-ms.openlocfilehash: 7eaf8b6b5cddc8a01b59cda0cafc819e06a5ec7c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: fasttrack-edit
+ms.openlocfilehash: d01d961a5d5b86f74bb785c3fddfa09843aa060c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87004999"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283141"
 ---
 # <a name="join-an-ubuntu-linux-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>將 Ubuntu Linux 虛擬機器加入 Azure Active Directory Domain Services 受控網域
 
@@ -138,7 +139,7 @@ sudo apt-get install krb5-user samba sssd sssd-tools libnss-sss libpam-sss ntp n
     同樣地，必須以全部大寫輸入受控功能變數名稱。 在下列範例中，會使用名為的帳戶 `contosoadmin@aaddscontoso.com` 來初始化 Kerberos。 輸入屬於受控網域的使用者帳戶：
 
     ```console
-    kinit contosoadmin@AADDSCONTOSO.COM
+    kinit -V contosoadmin@AADDSCONTOSO.COM
     ```
 
 1. 最後，使用命令將 VM 加入受控網域 `realm join` 。 使用與您在上一個命令中指定的受控網域之一部分相同的使用者帳戶 `kinit` ，例如 `contosoadmin@AADDSCONTOSO.COM` ：
@@ -182,7 +183,7 @@ rdns=false
 1. 若要套用變更，請重新開機 SSSD 服務：
 
     ```console
-    sudo service sssd restart
+    sudo systemctl restart sssd
     ```
 
 ## <a name="configure-user-account-and-group-settings"></a>設定使用者帳戶和群組設定
@@ -282,7 +283,7 @@ rdns=false
     sudo apt-get update
     ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如果您在將 VM 連線到受控網域或使用網域帳戶登入時發生問題，請參閱針對[網域加入問題進行疑難排解](join-windows-vm.md#troubleshoot-domain-join-issues)。
 

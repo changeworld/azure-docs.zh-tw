@@ -4,16 +4,16 @@ description: 本文會針對各種案例提供可為 Linux VM 啟用 Microsoft A
 author: msmbaldwin
 ms.service: virtual-machines-linux
 ms.subservice: security
-ms.topic: article
+ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7664cebbd12e075e9b9ea7ea75021b61569a80cf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7452a08125008e3d25ffb7d0eff59f55ca9be0b1
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080279"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372649"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Linux VM 上的 Azure 磁碟加密案例
 
@@ -409,7 +409,7 @@ Azure 磁碟加密不適用於下列 Linux 案例、功能和技術：
 - 核心損毀傾印 (kdump)。
 - Oracle ACFS (ASM 叢集檔案系統)。
 - Gen2 VM (請參閱：[Azure 上第 2 代 VM 的支援](generation-2.md#generation-1-vs-generation-2-capabilities)。
-- Lsv2 系列 VM (請參閱：[Lsv2 系列](../lsv2-series.md))。
+- Lsv2 系列 Vm 的 NVMe 磁片（請參閱： [Lsv2 系列](../lsv2-series.md)）。
 - 具有「巢狀掛接點」的 VM；也就是在單一路徑中有多個掛接點 (例如 "/1stmountpoint/data/2stmountpoint")。
 - 將資料磁片磁碟機掛接在 OS 資料夾頂端的 VM。
 - 具有寫入加速器磁片的 M 系列 Vm。

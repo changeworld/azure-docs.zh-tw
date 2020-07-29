@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: rogarana
-ms.openlocfilehash: cb57606259fe674519015fd2de741d6c1d08c5e9
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 48441a48fe6f72e88e080967451d9904c3e586b2
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87127191"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372311"
 ---
 # <a name="overview-of-azure-files-identity-based-authentication-options-for-smb-access"></a>瞭解 SMB 存取的 Azure 檔案儲存體身分識別型驗證選項
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -21,7 +21,7 @@ ms.locfileid: "87127191"
 
 若要瞭解如何為 Azure 檔案共用啟用 Azure AD DS 驗證，請參閱[在 Azure 檔案儲存體上啟用 Azure Active Directory Domain Services 驗證](storage-files-identity-auth-active-directory-domain-service-enable.md)。
 
-## <a name="glossary"></a>字彙表 
+## <a name="glossary"></a>詞彙 
 瞭解 Azure 檔案共用的透過 SMB Azure AD 網域服務驗證的一些重要詞彙，會很有説明：
 
 -   **Kerberos 驗證**
@@ -123,7 +123,7 @@ Azure 檔案共用會利用 Kerberos 通訊協定，以內部部署 AD DS 或 Az
 
 ### <a name="configure-share-level-permissions-for-azure-files"></a>設定 Azure 檔案共用層級權限
 
-一旦啟用 Azure AD DS 或內部部署 AD DS authentication，您就可以使用內建的 RBAC 角色或設定自訂角色來進行 Azure AD 身分識別，並將存取權限指派給儲存體帳戶中的任何檔案共用。 指派的許可權可讓授與的身分識別僅取得共用的存取權，而不是任何其他內容，甚至是根目錄。 您仍然需要分別設定目錄或 Azure 檔案共用的檔案層級許可權。
+一旦啟用 Azure AD DS 或內部部署 AD DS authentication，您就可以使用 Azure 內建角色或設定自訂角色來進行 Azure AD 身分識別，並將存取權限指派給儲存體帳戶中的任何檔案共用。 指派的許可權可讓授與的身分識別僅取得共用的存取權，而不是任何其他內容，甚至是根目錄。 您仍然需要分別設定目錄或 Azure 檔案共用的檔案層級許可權。
 
 ### <a name="configure-directory-or-file-level-permissions-for-azure-files"></a>設定 Azure 檔案儲存體的目錄或檔案層級許可權
 

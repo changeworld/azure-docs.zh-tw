@@ -3,17 +3,17 @@ title: 驗證應用程式以存取 Azure 服務匯流排實體
 description: 本文提供的資訊說明如何使用 Azure Active Directory 來驗證應用程式，以存取 Azure 服務匯流排實體（佇列、主題等）
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 371fa42420c2cc90a581b05ac47d7a65f28fc473
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 3f94f17a538fc86615f4ffeb8f351beb99e0cb33
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87128483"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372343"
 ---
 # <a name="authenticate-and-authorize-an-application-with-azure-active-directory-to-access-azure-service-bus-entities"></a>使用 Azure Active Directory 來驗證和授權應用程式，以存取 Azure 服務匯流排實體
 Azure 服務匯流排支援使用 Azure Active Directory （Azure AD）來授權服務匯流排實體（佇列、主題、訂用帳戶或篩選器）的要求。 使用 Azure AD，您可以使用角色型存取控制（RBAC），將許可權授與安全性主體，這可能是使用者、群組或應用程式服務主體。 若要深入瞭解角色和角色指派，請參閱[瞭解不同的角色](../role-based-access-control/overview.md)。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 當安全性主體（使用者、群組或應用程式）嘗試存取服務匯流排實體時，要求必須獲得授權。 使用 Azure AD，對資源的存取是兩個步驟的程序。 
 
  1. 首先，安全性主體的身分識別已通過驗證，並傳回 OAuth 2.0 權杖。 要求權杖的資源名稱是 `https://servicebus.azure.net` 。
@@ -21,18 +21,18 @@ Azure 服務匯流排支援使用 Azure Active Directory （Azure AD）來授權
 
 驗證步驟要求應用程式要求在執行階段包含 OAuth 2.0 存取權杖。 如果應用程式是在 azure 實體（例如 Azure VM、虛擬機器擴展集或 Azure 函式應用程式）內執行，它可以使用受控識別來存取資源。 若要瞭解如何驗證受控識別對服務匯流排服務所提出的要求，請參閱[使用 Azure 資源的 Azure Active Directory 和受控識別來驗證 Azure 服務匯流排資源的存取權](service-bus-managed-service-identity.md)。 
 
-授權步驟需要將一或多個 RBAC 角色指派給安全性主體。 Azure 服務匯流排提供 RBAC 角色，其中包含服務匯流排資源的許可權集。 指派給安全性主體的角色會決定主體將擁有的許可權。 若要深入瞭解如何將 RBAC 角色指派給 Azure 服務匯流排，請參閱[Azure 服務匯流排的內建 rbac 角色](#built-in-rbac-roles-for-azure-service-bus)。 
+授權步驟需要將一或多個 RBAC 角色指派給安全性主體。 Azure 服務匯流排提供 RBAC 角色，其中包含服務匯流排資源的許可權集。 指派給安全性主體的角色會決定主體將擁有的許可權。 若要深入瞭解如何將 RBAC 角色指派給 Azure 服務匯流排，請參閱[適用于 Azure 服務匯流排的 Azure 內建角色](#azure-built-in-roles-for-azure-service-bus)。 
 
 向服務匯流排提出要求的原生應用程式和 web 應用程式也可以使用 Azure AD 進行授權。 本文說明如何要求存取權杖，並使用它來授權服務匯流排資源的要求。 
 
 
 ## <a name="assigning-rbac-roles-for-access-rights"></a>指派存取權限的 RBAC 角色
-Azure Active Directory (Azure AD) 會透過[角色型存取控制 (RBAC)](../role-based-access-control/overview.md)，來授與存取受保護資源的權限。 Azure 服務匯流排定義一組內建的 RBAC 角色，其中包含用來存取服務匯流排實體的常用許可權集，而且您也可以定義自訂角色來存取資料。
+Azure Active Directory (Azure AD) 會透過[角色型存取控制 (RBAC)](../role-based-access-control/overview.md)，來授與存取受保護資源的權限。 Azure 服務匯流排定義一組 Azure 內建角色，其中包含用來存取服務匯流排實體的常用許可權集，而且您也可以定義自訂角色來存取資料。
 
 當 RBAC 角色指派給 Azure AD 安全性主體時，Azure 會為該安全性主體授與這些資源的存取權。 存取權的範圍可以是訂用帳戶、資源群組或服務匯流排命名空間的層級。 Azure AD 的安全性主體可以是使用者、群組、應用程式服務主體，或[適用于 Azure 資源的受控識別](../active-directory/managed-identities-azure-resources/overview.md)。
 
-## <a name="built-in-rbac-roles-for-azure-service-bus"></a>Azure 服務匯流排的內建 RBAC 角色
-對於 Azure 服務匯流排來說，透過 Azure 入口網站和 Azure 資源管理 API 來的管理命名空間和所有相關資源的作業，已使用「角色型存取控制** (RBAC)」模型來加以保護。 Azure 提供下列內建的 RBAC 角色，以授權存取服務匯流排命名空間：
+## <a name="azure-built-in-roles-for-azure-service-bus"></a>適用于 Azure 服務匯流排的 Azure 內建角色
+對於 Azure 服務匯流排來說，透過 Azure 入口網站和 Azure 資源管理 API 來的管理命名空間和所有相關資源的作業，已使用「角色型存取控制** (RBAC)」模型來加以保護。 Azure 提供下列 Azure 內建角色，以授權存取服務匯流排命名空間：
 
 - [Azure 服務匯流排資料擁有](../role-based-access-control/built-in-roles.md#azure-service-bus-data-owner)者：啟用服務匯流排命名空間及其實體（佇列、主題、訂用帳戶和篩選器）的資料存取
 - [Azure 服務匯流排資料](../role-based-access-control/built-in-roles.md#azure-service-bus-data-sender)傳送者：使用此角色可授與服務匯流排命名空間及其實體的傳送存取權。

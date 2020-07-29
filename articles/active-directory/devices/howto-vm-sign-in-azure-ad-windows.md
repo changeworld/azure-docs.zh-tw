@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8c9fbf2d86c2e066566bab11b1701909be64a37
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 588e63e630caa4746b493d4530e301f72e5ccb5f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025841"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282937"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>使用 Azure Active Directory authentication （預覽）登入 Azure 中的 Windows 虛擬機器
 
@@ -208,7 +208,7 @@ az role assignment create \
 ## <a name="log-in-using-azure-ad-credentials-to-a-windows-vm"></a>使用 Azure AD 認證登入 Windows VM
 
 > [!IMPORTANT]
-> 只有已加入 Azure AD 的 Windows 10 電腦或混合式 Azure AD 加入與 VM**相同**的目錄，才允許從遠端連線至已加入 Azure AD 的 vm。 此外，若要使用 Azure AD 認證的 RDP，使用者必須屬於下列其中一個 RBAC 角色： [虛擬機器系統管理員登入] 或 [虛擬機器使用者登入]。 目前，Azure 防禦無法用來以 AADLoginForWindows 延伸模組的 Azure Active Directory 驗證進行登入。 僅支援直接 RDP。
+> 只有 Azure AD 已註冊的 Windows 10 電腦（20H1 的最小組建），或加入至與 VM**相同**目錄的 Azure AD 加入或混合式 Azure AD，才可從遠端連線至已加入 Azure AD 的 vm。 此外，若要使用 Azure AD 認證的 RDP，使用者必須屬於下列其中一個 RBAC 角色： [虛擬機器系統管理員登入] 或 [虛擬機器使用者登入]。 如果使用 Azure AD 已註冊的 Windows 10 電腦，您必須以 AzureAD\UPN 格式輸入認證（例如 AzureAD\john@contoso.com ）。 目前，您無法使用 Azure 防禦來登入 AADLoginForWindows 擴充功能的 Azure Active Directory authentication;僅支援直接 RDP。
 
 若要使用 Azure AD 登入您的 Windows Server 2019 虛擬機器： 
 
@@ -342,7 +342,7 @@ AADLoginForWindows 擴充功能必須成功安裝，VM 才能完成 Azure AD 聯
 請確認您用來起始遠端桌面連線的 Windows 10 電腦，是 Azure AD 已加入，或是已加入您 VM 加入之相同 Azure AD 目錄的混合式 Azure AD。 如需裝置身分識別的詳細資訊，請參閱[什麼是裝置身分識別一](/azure/active-directory/devices/overview)文。
 
 > [!NOTE]
-> Windows 10 20H1 會新增 Azure AD 已註冊電腦的支援，以起始對您 VM 的遠端桌面連線。 加入 Windows 測試人員計畫以試用並探索 Windows 10 的新功能。
+> Windows 10 Build 20H1 新增了 Azure AD 已註冊電腦的支援，以起始對您 VM 的 RDP 連線。 使用已註冊的 Azure AD （未 Azure AD 聯結或混合式 Azure AD 加入）電腦作為 RDP 用戶端以起始連線到您的 VM 時，您必須以 AzureAD\UPn 的格式輸入認證（例如 AzureAD\john@contoso.com ）。
 
 此外，請確認在 Azure AD 聯結完成後，尚未卸載 AADLoginForWindows 延伸模組。
  
@@ -365,6 +365,6 @@ AADLoginForWindows 擴充功能必須成功安裝，VM 才能完成 Azure AD 聯
 
 請在[Azure AD 意見反應論壇](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032)上，分享您對這項預覽功能的意見反應，或報告問題。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如需有關 Azure Active Directory 的詳細資訊，請參閱[什麼是 Azure Active Directory](/azure/active-directory/fundamentals/active-directory-whatis)

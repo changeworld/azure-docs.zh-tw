@@ -16,11 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 56132eae03a52af425e00bec93a63a697a2a55e6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ec4d91d90a952805781d6d38a0fc8a8fcef84f39
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84204730"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283464"
 ---
 # <a name="azure-operational-security-best-practices"></a>Azure 作業安全性最佳做法
 本文提供一組可在 Azure 中保護您的資料、應用程式和其他資產的操作最佳作法。
@@ -52,7 +53,7 @@ Azure 作業安全性是指使用者可在 Azure 中用來保護其資料、應�
 在 Azure 註冊入口網站中，您可以確保系統管理員連絡人資訊包含通知安全性作業的詳細資料。 連絡人資訊為電子郵件地址和電話號碼。
 
 ## <a name="organize-azure-subscriptions-into-management-groups"></a>將 Azure 訂用帳戶組織成管理群組
-如果貴組織有多個訂用帳戶，您可能需要一個方法來有效率地管理這些訂用帳戶的存取、原則和相容性。 [Azure 管理群組](/azure/governance/management-groups/create)可提供高於訂用帳戶的範圍層級。 您會將訂用帳戶組織成稱為「管理群組」的容器，並將您的治理條件套用至管理群組。 管理群組內的所有訂用帳戶都會自動繼承套用到管理群組的條件。
+如果您的組織有許多訂用帳戶，則可能需要有效管理這些訂用帳戶的存取權、原則與合規性方法。 [Azure 管理群組](/azure/governance/management-groups/create)可提供高於訂用帳戶的範圍層級。 您會將訂用帳戶組織成稱為「管理群組」的容器，並將您的治理條件套用至管理群組。 管理群組內的所有訂用帳戶都會自動繼承套用到管理群組的條件。
 
 您可以將管理群組和訂用帳戶的彈性結構建立到目錄中。 每個目錄都有一個最上層管理群組，稱為「根管理群組」。 這個根管理群組會建置於階層內，讓所有的管理群組和訂用帳戶摺疊於其中。 根管理群組可讓全域原則和 RBAC 指派在目錄層級套用。
 
@@ -181,7 +182,7 @@ Azure 作業安全性是指使用者可在 Azure 中用來保護其資料、應�
 
 對於 Azure 雲端服務，設定您的每個角色以使用[多個執行個體](../../cloud-services/cloud-services-choose-me.md)。
 
-對於 [Azure 虛擬機器](/azure/virtual-machines/windows/overview)，確保 VM 架構包含多個 VM，而且每個 VM 都包含於[可用性設定組](/azure/virtual-machines/virtual-machines-windows-manage-availability)中。 建議您使用虛擬機器擴展集，自動調整功能。
+對於 [Azure 虛擬機器](../../virtual-machines/windows/overview.md)，確保 VM 架構包含多個 VM，而且每個 VM 都包含於[可用性設定組](../../virtual-machines/windows/tutorial-availability-sets.md)中。 建議您使用虛擬機器擴展集，自動調整功能。
 
 **最佳做法**：將應用程式中的安全性防禦分層，可降低成功攻擊的機會。 使用 Azure 平台的內建功能，為您的應用程式實作安全設計。  
 **詳細資料**：攻擊的風險會隨著應用程式大小 (介面區) 而提高。 您可以使用允許清單來關閉負載平衡器 ([Azure Load Balancer](/azure/load-balancer/load-balancer-get-started-internet-portal) 和 [Azure 應用程式閘道](/azure/application-gateway/application-gateway-create-probe-portal)) 上不需要的公開 IP 位址空間和接聽連接埠，來減少介面區。
@@ -200,7 +201,7 @@ Azure 有兩個 DDoS [服務供應項目](../../virtual-network/ddos-protection-
 - 標準保護則針對網路攻擊，提供進階的 DDoS 防護功能。 其會自動調整以保護特定的 Azure 資源。 只需在建立虛擬網路時啟用保護即可。 您也可以在建立之後再啟用保護，而不需進行任何應用程式或資源變更。
 
 ## <a name="enable-azure-policy"></a>啟用 Azure 原則
-[Azure 原則](/azure/governance/policy/overview)是 Azure 中的一項服務，可讓您用來建立、指派和管理原則。 這些原則會對您的資源強制執行規則和效果，讓這些資源保持符合您的公司標準和服務等級協定。 Azure 原則會透過評估您的資源是否符合指派的策略來滿足此需求。
+[Azure 原則](/azure/governance/policy/overview)是 Azure 中的一項服務，可讓您用來建立、指派和管理原則。 這些原則會對您的資源強制執行規則和效果，讓這些資源保持符合您的公司標準和服務等級協定。 Azure 原則會透過評估您的資源是否符合指派的原則來滿足此需求。
 
 啟用 Azure 原則來監視和強制執行貴組織的書面原則。 這會藉由集中管理混合式雲端工作負載的安全性原則，確保符合公司或法規的安全性需求。 瞭解如何[建立和管理原則以強制執行合規性](../../governance/policy/tutorials/create-and-manage.md)。 如需原則元素的總覽，請參閱[Azure 原則定義結構](../../governance/policy/concepts/definition-structure.md)。
 

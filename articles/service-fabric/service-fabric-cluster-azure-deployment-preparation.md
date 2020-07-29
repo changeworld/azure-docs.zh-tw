@@ -3,12 +3,12 @@ title: 規劃 Azure Service Fabric 叢集部署
 description: 瞭解如何規劃和準備生產環境 Service Fabric 叢集部署至 Azure。
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: 462548d7f32a015701ef12e9777e8d9b1b1350f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1064e59491b7144aafade24bd50131478fe025eb
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610586"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281322"
 ---
 # <a name="plan-and-prepare-for-a-cluster-deployment"></a>規劃及準備叢集部署
 
@@ -51,7 +51,7 @@ Service Fabric 可讓您在執行 Windows Server 或 Linux 的任何 VM 或電�
 
 暫時性 OS 磁片不是特定的 Service Fabric 功能，而是對應至 Service Fabric 節點類型之 Azure*虛擬機器擴展集*的一項功能。 將它們與 Service Fabric 搭配使用時，您的叢集 Azure Resource Manager 範本中需要下列專案：
 
-1. 請確定您的節點類型指定暫時 OS 磁片[支援的 AZURE VM 大小](../virtual-machines/windows/ephemeral-os-disks.md)，而且 VM 大小具有足夠的快取大小來支援其 OS 磁片大小（請參閱下面的*附注*）。例如：
+1. 請確定您的節點類型指定暫時 OS 磁片[支援的 AZURE VM 大小](../virtual-machines/ephemeral-os-disks.md)，而且 VM 大小具有足夠的快取大小來支援其 OS 磁片大小（請參閱下面的*附注*）。例如：
 
     ```xml
     "vmNodeType1Size": {
@@ -97,7 +97,7 @@ Service Fabric 可讓您在執行 Windows Server 或 Linux 的任何 VM 或電�
 > 若要遷移，使用者[必須新增具有](./virtual-machine-scale-set-scale-node-type-scale-out.md)暫時磁片的 nodeType，將工作負載移至新的 nodetype &[移除](./service-fabric-how-to-remove-node-type.md)現有的 nodetype。
 >
 
-如需詳細資訊和其他設定選項，請參閱[Azure vm 的暫時 OS 磁片](../virtual-machines/windows/ephemeral-os-disks.md) 
+如需詳細資訊和其他設定選項，請參閱[Azure vm 的暫時 OS 磁片](../virtual-machines/ephemeral-os-disks.md) 
 
 
 ### <a name="select-the-durability-and-reliability-levels-for-the-cluster"></a>選取叢集的持久性和可靠性層級

@@ -8,12 +8,13 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 622aa41975fdec015e4ca4964309c5c4bf274ef2
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 704cb43a31ff1dfcaf287f9af467f7d6e7d6c50d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131441"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282801"
 ---
 # <a name="add-a-simple-data-layer"></a>新增簡單的資料圖層
 
@@ -113,7 +114,7 @@ Azure 地圖服務和 GitHub 樣式屬性是兩個主要的支援屬性名稱集
 
 群集也會使用反升層來轉譯。 根據預設，叢集的 radius 會設定為 `16` 。 叢集的色彩會根據叢集中的點數數目而有所不同，如下所示：
 
-| 點數 | 色彩    |
+| 點數 | Color    |
 |-------------|----------|
 | &gt;= 100   | `red`    |
 | &gt;= 10    | `yellow` |

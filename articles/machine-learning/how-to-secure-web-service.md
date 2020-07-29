@@ -5,17 +5,18 @@ description: 瞭解如何啟用 HTTPS，以保護透過 Azure Machine Learning �
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
 ms.date: 03/05/2020
-ms.custom: seodec18
-ms.openlocfilehash: cb766a81cda822377eeda09cab75d19111523bef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.topic: conceptual
+ms.custom: how-to
+ms.openlocfilehash: 3e10841852b8a89b344d3bfd9311db8abe15642a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84432866"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319536"
 ---
 # <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>使用 TLS 來透過 Azure Machine Learning 保護 Web 服務
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]

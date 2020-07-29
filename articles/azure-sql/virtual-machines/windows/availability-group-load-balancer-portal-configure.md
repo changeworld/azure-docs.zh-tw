@@ -3,7 +3,7 @@ title: 設定可用性群組接聽程式與負載平衡器 (Azure 入口網站)
 description: 在 Azure 虛擬機器中建立 SQL Server 的 AlwaysOn 可用性群組接聽程式的逐步指示
 services: virtual-machines
 documentationcenter: na
-author: MikeRayMSFT
+author: MashaMSFT
 editor: monicar
 ms.assetid: d1f291e9-9af2-41ba-9d29-9541e3adcfcf
 ms.service: virtual-machines-sql
@@ -11,13 +11,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/16/2017
-ms.author: mikeray
+ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a2eb6278a9e796c33178f895eede6fd8f2144e9a
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: a83755a08a3579484796cd56623cb3401d03d874
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921691"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284280"
 ---
 # <a name="configure-a-load-balancer-for-a-sql-server-always-on-availability-group-in-azure-virtual-machines"></a>在 Azure 中設定 SQL Server Always On 可用性群組的負載平衡器虛擬機器
 
@@ -122,7 +123,7 @@ Azure 更新後端位址集區的設定。 您的可用性設定組現在有包�
    | **間隔** |*5* |
    | **狀況不良臨界值** |*2* |
 
-4.  選取 [確定]。 
+4.  選取 [確定]  。 
 
 > [!NOTE]
 > 確定您指定的連接埠會在兩個 SQL Server 執行個體的防火牆上開啟。 這兩個執行個體需要您所用 TCP 通訊埠的輸入規則。 如需詳細資訊，請參閱[新增或編輯防火牆規則](https://technet.microsoft.com/library/cc753558.aspx)。 
@@ -155,7 +156,7 @@ Azure 會建立探查，然後使用它來測試那一個 SQL Server 執行個�
    > 您可能必須向下捲動刀鋒視窗，以檢視所有的設定。
    > 
 
-4. 選取 [確定]。 
+4. 選取 [確定]  。 
 
 5. Azure 會設定負載平衡規則。 負載平衡器現已設定成將流量路由傳送到裝載可用性群組接聽程式的 SQL Server 執行個體。 
 

@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: conceptual
-ms.date: 4/25/2019
+ms.date: 07/27/2020
 ms.author: victorh
-ms.openlocfilehash: a214dae7c80cbc520fc6aff5a492466a77261167
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c1f6cc21c7a45dbc5c7be7e3f3cc46b4ec4e8c39
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85255359"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282342"
 ---
 # <a name="tls-termination-with-key-vault-certificates"></a>Key Vault 憑證的 TLS 終止
 
@@ -43,7 +43,7 @@ Key Vault 整合為 TLS 終止提供兩種模型：
 
 1. **建立使用者指派的受控識別**
 
-   您建立或重複使用現有使用者指派的受控識別，應用程式閘道用來代表您取出 Key Vault 的憑證。 如需詳細資訊，請參閱[什麼是適用於 Azure 資源的受控識別？](../active-directory/managed-identities-azure-resources/overview.md)。 此步驟會在 Azure Active Directory 租使用者中建立新的身分識別。 身分識別受到用來建立身分識別的訂用帳戶所信任。
+   您建立或重複使用現有使用者指派的受控識別，應用程式閘道用來代表您取出 Key Vault 的憑證。 如需詳細資訊，請參閱[使用 Azure 入口網站建立、列出、刪除或指派角色給使用者指派的受控識別](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)。 此步驟會在 Azure Active Directory 租使用者中建立新的身分識別。 身分識別受到用來建立身分識別的訂用帳戶所信任。
 
 1. **設定您的金鑰保存庫**
 

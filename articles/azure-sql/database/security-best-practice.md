@@ -10,12 +10,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 02/20/2020
 ms.reviewer: ''
-ms.openlocfilehash: 00369ae45a13414ce46f324e37afe24be24a48e0
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 6a3a52c90187920be13628a6d2fa44159e1109d7
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132937"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371782"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>使用 Azure SQL Database 和 Azure SQL 受控執行個體解決常見安全性需求的腳本
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -324,7 +324,7 @@ SQL 驗證指的是使用使用者名稱和密碼連接到 Azure SQL Database �
 
 - 請一律確定有安全性相關動作的審核記錄。
 
-- 您可以取得內建 RBAC 角色的定義，以查看所使用的許可權，並根據這些透過 PowerShell 的摘錄和 cumulations 建立自訂角色。
+- 您可以取得 Azure 內建角色的定義，以查看所使用的許可權，並根據這些透過 PowerShell 的摘錄和 cumulations 建立自訂角色。
 
 - 由於 db_owner 資料庫角色的任何成員都可以變更透明資料加密（TDE）之類的安全性設定，或變更 SLO，因此應該謹慎授與此成員資格。 不過，有許多工需要 db_owner 許可權。 變更任何資料庫設定（例如變更 DB 選項）之類的工作。 「審核」在任何解決方案中扮演著重要的角色。
 

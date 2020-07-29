@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: fec93169a8c49422c9e310cddc08ae3412b89166
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: b8a53ae598130086a9009dbec891052e863cdf0f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132274"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281356"
 ---
 # <a name="manage-azure-digital-twins-models"></a>管理 Azure 數位 Twins 模型
 
@@ -65,8 +65,11 @@ Azure 數位 Twins 的模型是以 DTDL 撰寫，並儲存為*json*檔案。 另
 
 遵循此方法，您可以繼續為醫院的 wards、區域或醫院本身定義模型。
 
-> [!TIP]
-> 有一個用戶端程式庫可用來剖析和驗證 DTDL。 它會產生 DTDL 內容的 c # 物件模型，可用於模型驅動開發案例，例如產生 UI 元素。 您也可以使用此程式庫，確保您的模型在上傳之前不會有任何語法錯誤。 如需此程式庫的詳細資訊，以及針對 DTDL 驗證程式所建立之範例的存取權，請參閱[*如何：剖析和驗證模型*](how-to-use-parser.md)。
+### <a name="validate-syntax"></a>驗證語法
+
+有一個用戶端程式庫可用來剖析和驗證 DTDL。 它會產生 DTDL 內容的 c # 物件模型，可用於模型驅動開發案例，例如產生 UI 元素。 您也可以使用此程式庫，確保您的模型在上傳之前不會有任何語法錯誤。 
+
+如需此程式庫的詳細資訊，以及針對 DTDL 驗證程式所建立之範例的存取權，請參閱[*如何：剖析和驗證模型*](how-to-use-parser.md)。
 
 ## <a name="manage-models-with-apis"></a>使用 Api 管理模型。
 
@@ -82,7 +85,10 @@ Azure 數位 Twins 的模型是以 DTDL 撰寫，並儲存為*json*檔案。 另
 
 建立模型之後，您可以將其上傳至 Azure 數位 Twins 實例。
 
-以下程式碼片段顯示如何執行此動作：
+> [!TIP]
+> 建議您先離線驗證您的模型，再將其上傳至您的 Azure 數位 Twins 實例。 在您將模型上傳至服務之前，您可以使用[*如何：剖析和驗證模型*](how-to-use-parser.md)中所述的[DTDL 客戶](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/)端剖析器程式庫和[DTDL 驗證器範例](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator)來檢查您的模型。
+
+當您準備好上傳模型時，可以使用下列程式碼片段：
 
 ```csharp
 // 'client' is an instance of DigitalTwinsClient
@@ -109,7 +115,7 @@ foreach (string fileName in dtdlFiles)
 client.CreateModels(dtdlStrings);
 ```
 
-模型檔案可以包含多個單一模型。 在此情況下，模型必須放在 JSON 陣列中。 例如:
+模型檔案可以包含多個單一模型。 在此情況下，模型必須放在 JSON 陣列中。 例如：
 
 ```json
 [
@@ -126,10 +132,7 @@ client.CreateModels(dtdlStrings);
 ]
 ```
  
-上傳時，會驗證模型檔案。
-
-> [!TIP] 
-> 請注意，您也可以使用[DTDL 客戶](how-to-use-parser.md)端剖析器程式庫來驗證用戶端上的模型。
+上傳時，服務會驗證模型檔案。
 
 ### <a name="retrieve-models"></a>取出模型
 

@@ -6,20 +6,17 @@ ms.author: lcozzens
 ms.date: 02/18/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 32c4fe3e542135201a7bf4a23aeff94a0e2f902e
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: bcafdbdfd07456a01d956b622d9c5e6ed4b0b6f2
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86023562"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371850"
 ---
 # <a name="use-customer-managed-keys-to-encrypt-your-app-configuration-data"></a>使用客戶管理的金鑰來加密您的應用程式組態資料
 Azure 應用程式組態[加密待用的機密資訊](../security/fundamentals/encryption-atrest.md)。 使用客戶管理的金鑰可讓您管理您的加密金鑰，以提供增強的資料保護。  使用受控金鑰加密時，應用程式組態中的所有機密資訊都會以使用者提供的 Azure Key Vault 金鑰進行加密。  這可讓您視需要輪替加密金鑰。  它也會撤銷應用程式組態實例的存取權，以撤銷 Azure 應用程式組態對機密資訊存取權的能力。
 
-> [!NOTE]
-> 客戶管理的金鑰現在已在所有區域（印度中部*除外*）正式推出。 在**印度中部**地區，Azure 應用程式組態提供以客戶管理的金鑰做為公開預覽的使用方式。 公開預覽版供應項目可讓客戶在其正式發行前，先試驗新功能。  公開預覽功能和服務不適用於生產環境。
-
-## <a name="overview"></a>總覽 
+## <a name="overview"></a>概觀 
 Azure 應用程式組態使用 Microsoft 所提供的256位 AES 加密金鑰，加密待用的機密資訊。 每個應用程式組態實例都有其自己的加密金鑰（由服務管理），並用來加密機密資訊。 敏感性資訊包括在索引鍵/值組中找到的值。  啟用客戶管理的金鑰功能時，應用程式組態會使用指派給應用程式組態實例的受控識別，以 Azure Active Directory 進行驗證。 受控識別接著會呼叫 Azure Key Vault 並包裝應用程式組態實例的加密金鑰。 然後會儲存已包裝的加密金鑰，並在應用程式組態中快取已解除包裝的加密金鑰一小時。 應用程式組態會每小時重新整理應用程式組態實例之加密金鑰的未包裝版本。 這可確保在正常操作條件下的可用性。 
 
 >[!IMPORTANT]
@@ -30,7 +27,7 @@ Azure 應用程式組態使用 Microsoft 所提供的256位 AES 加密金鑰，�
 >[!NOTE]
 >所有 Azure 應用程式組態資料在隔離備份中最多儲存24小時。 這包括未包裝的加密金鑰。 此資料不會立即提供給服務或服務小組。 在緊急還原的事件中，Azure 應用程式組態會從受管理的金鑰資料重新撤銷其本身。
 
-## <a name="requirements"></a>規格需求
+## <a name="requirements"></a>需求
 若要成功啟用客戶管理的金鑰功能以進行 Azure 應用程式組態，需要下列元件：
 - 標準層 Azure 應用程式組態實例
 - 已啟用虛刪除和清除保護功能的 Azure Key Vault
@@ -81,7 +78,7 @@ Azure 應用程式組態使用 Microsoft 所提供的256位 AES 加密金鑰，�
     az appconfig identity assign --name contoso-app-config --resource-group contoso-resource-group --identities [system]
     ```
     
-    此命令的輸出包含系統指派之身分識別的主體識別碼（"principalId"）和租使用者識別碼（"tenandId"）。  這會用來授與受控金鑰的身分識別存取權。
+    此命令的輸出包含系統指派之身分識別的主體識別碼（"principalId"）和租使用者識別碼（"tenandId"）。  這些識別碼將用來授與受控金鑰的身分識別存取權。
 
     ```json
     {

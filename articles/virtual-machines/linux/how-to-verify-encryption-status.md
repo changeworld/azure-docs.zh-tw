@@ -3,15 +3,16 @@ title: 確認 Linux 加密狀態 - Azure 磁碟加密
 description: 本文提供從平台和 OS 層級驗證加密狀態的指示。
 author: kailashmsft
 ms.service: security
-ms.topic: article
+ms.topic: how-to
 ms.author: kaib
 ms.date: 03/11/2020
 ms.custom: seodec18
-ms.openlocfilehash: e2916a71f167c415f6bf1dde8ff82a38b0e0557c
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 58bb3f38938414f25551d0df47a50b6a8f386acc
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873993"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283328"
 ---
 # <a name="verify-encryption-status-for-linux"></a>驗證 Linux 加密狀態 
 
@@ -279,7 +280,7 @@ az storage account list --query [].[id] -o tsv
 ```
 儲存體帳戶識別碼會以下列形式列出：
 
-/subscriptions/\<subscription id>/resourceGroups/\<resource group name>/providers/Microsoft.Storage/storageAccounts/\<storage account name>
+/subscriptions/ \<subscription id> /ResourceGroups/ \<resource group name> /providers/Microsoft.Storage/storageAccounts/\<storage account name>
 
 選取適當的識別碼，並將其儲存在變數上：
 ```bash

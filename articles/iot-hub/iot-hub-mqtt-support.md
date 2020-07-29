@@ -10,12 +10,14 @@ ms.author: robinsh
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 72c012ba9ce28c0ca5dd5a315cf94b8895558a0b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+- 'Role: IoT Device'
+- 'Role: Cloud Development'
+ms.openlocfilehash: df6de62eefc0971ece0e0035299425689af5f784
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87001684"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87307619"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>使用 MQTT 通訊協定來與 IoT 中樞通訊
 
@@ -80,7 +82,7 @@ device_client = IoTHubDeviceClient.create_from_connection_string(deviceConnectio
 |Java     |    230 秒     |     否    |
 |C     | 240 秒 |  [是](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md#mqtt-transport)   |
 |C#     | 300 秒 |  [是](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/iothub/device/src/Transport/Mqtt/MqttTransportSettings.cs#L89)   |
-|Python (V2)   | 60 秒 |  否   |
+|Python   | 60 秒 |  否   |
 
 遵循 [MQTT 規格](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718081)，IoT 中樞的 keep-alive Ping 間隔是用戶端 keep-alive 值 1.5 倍。 不過，IoT 中樞會將最大伺服器端逾時限制為 29.45 分鐘 (1767秒)，因為所有 Azure 服務都會繫結至 Azure 負載平衡器 TCP 閒置逾時，這是 29.45 分鐘。 
 
@@ -308,7 +310,7 @@ IoT 中樞會附上**主題名稱**`devices/{device_id}/messages/devicebound/` �
 
 在雲端到裝置的訊息中，屬性包中的值表示如下表所示：
 
-| 屬性值 | 表示法 | 描述 |
+| 屬性值 | 表示法 | 說明 |
 |----|----|----|
 | `null` | `key` | 只有金鑰會出現在屬性包中 |
 | 空字串 | `key=` | 後面接著等號且不含值的索引鍵 |
@@ -366,7 +368,7 @@ IoT 中樞會附上**主題名稱**`devices/{device_id}/messages/devicebound/` �
 
 3. 服務接著會傳送回應訊息，其中包含`$iothub/twin/res/{status}/?$rid={request id}` 主題上報告之屬性集合的新 ETag 值。 這個回應訊息使用和要求相同的**要求 ID**。
 
-要求訊息本文會包含 JSON 文件，其包含已報告屬性的新值。 JSON 文件中的每個成員會在裝置對應項的文件中更新或新增對應的成員。 設定為 `null` 的成員會從包含的物件中刪除成員。 例如:
+要求訊息本文會包含 JSON 文件，其包含已報告屬性的新值。 JSON 文件中的每個成員會在裝置對應項的文件中更新或新增對應的成員。 設定為 `null` 的成員會從包含的物件中刪除成員。 例如：
 
 ```json
 {

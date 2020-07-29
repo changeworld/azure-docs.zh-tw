@@ -8,12 +8,13 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 261202173a0692c66a24091b2173f5d4fe271058
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 4c00639c02f8834a24a3828ac5b8ba828d0e1733
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87129503"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282818"
 ---
 # <a name="use-the-drawing-tools-module"></a>使用繪圖工具模組
 
@@ -30,7 +31,7 @@ Azure 地圖服務 Web SDK 提供*繪圖工具模組*。 此模組可讓您輕�
         <script src="https://atlas.microsoft.com/sdk/javascript/drawing/0/atlas-drawing.min.js"></script>
         ```
 
-    - 或者，您可以使用 npm，在本機載入適用于 Azure 地圖服務 Web SDK 原始程式碼的繪圖工具模組，然後將它裝載在[您的應用](https://www.npmjs.com/package/azure-maps-drawing-tools)程式中。 此套件也包含 TypeScript 定義。 請使用此命令：
+    - 或者，您可以使用 npm，在本機載入適用于 Azure 地圖服務 Web SDK 原始程式碼的繪圖工具模組，然後將它裝載在[您的應用](https://www.npmjs.com/package/azure-maps-drawing-tools)程式中。 此套件也包含 TypeScript 定義。 使用此命令：
     
         > **npm 安裝 azure-maps-繪圖-工具**
     

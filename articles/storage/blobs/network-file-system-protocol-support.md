@@ -9,12 +9,12 @@ ms.date: 07/21/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: b76e25b2961bf3fb268da6622cbfcce3a50a3396
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ab8d262e4eac08ce21b7ad01402c3608d52a1aab
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87097605"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372887"
 ---
 # <a name="network-file-system-nfs-30-protocol-support-in-azure-blob-storage-preview"></a>Azure Blob 儲存體中的網路檔案系統（NFS）3.0 通訊協定支援（預覽）
 
@@ -87,10 +87,8 @@ Blob 儲存體現在支援 Network File System （NFS）3.0 通訊協定。 這�
 
 - 在儲存體帳戶中停用 NFS 3.0 支援的功能（啟用之後）
 
-- 能夠使用 NFS 3.0 和其他 REST Api 或 Sdk 寫入 blob。 
-
-  如果您想要使用 REST Api 或 Sdk 來寫入 blob，請確定您只使用 NFS 3.0 來執行讀取作業，否則 blob 可能會損毀。
-
+- 能夠使用 REST Api 或 Sdk 寫入 blob。 
+  
 ## <a name="nfs-30-features-not-yet-supported"></a>尚未支援的 NFS 3.0 功能
 
 Azure Data Lake Storage Gen2 尚不支援下列 NFS 3.0 功能。

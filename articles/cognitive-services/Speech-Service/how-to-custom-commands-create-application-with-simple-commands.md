@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: 6552d13ab68d8028cd95b18f2d0895d53bba462c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d166257dd28773d89a4f1fd56de3cb1a22242523
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090955"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284161"
 ---
 # <a name="create-application-with-simple-commands"></a>使用簡單的命令建立應用程式
 
@@ -96,6 +96,7 @@ ms.locfileid: "87090955"
 1. 選取 [**儲存**] 以儲存動作。
 1. 回到 [**完成規則**] 區段中，選取 [**儲存**] 以儲存所有變更。 
 
+
     > [!NOTE]
     > 不需要使用命令隨附的預設完成規則。 如有需要，您可以刪除現有的預設完成規則，並新增您自己的規則。
 
@@ -124,7 +125,7 @@ ms.locfileid: "87090955"
 
 | 設定    | 建議的值                          |
 | ---------- | ---------------------------------------- |
-| 名稱  | ConfirmationResponse                  |
+| Name  | ConfirmationResponse                  |
 | 條件 | 無                                     |
 | 動作    | 傳送語音回應 > 簡單編輯器 > 第一次變化 >`Ok, setting temperature to 40 degrees` |
 

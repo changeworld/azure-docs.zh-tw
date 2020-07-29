@@ -5,17 +5,18 @@ description: 建立 Azure Machine Learning 資料集監視器（預覽）、監�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.reviewer: sgilley
 ms.author: copeters
 author: lostmygithubaccount
 ms.date: 06/25/2020
-ms.openlocfilehash: 7ee9d37b19d4796f826fbd9831f6e84a92a12e7c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.topic: conceptual
+ms.custom: how-to
+ms.openlocfilehash: 270e93302a90c458ccbdfdc4d2ced8f0d3c263af
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87031179"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319672"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>在資料集上偵測資料漂移（預覽）
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -40,7 +41,7 @@ ms.locfileid: "87031179"
 > [!Important]
 > 所有版本都提供與 SDK 的監視資料漂移。 不過，透過 web 上的 studio 監視資料漂移僅限 Enterprise edition。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 若要建立及使用資料集監視器，您需要：
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前先建立免費帳戶。 立即試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
@@ -79,7 +80,7 @@ Azure Machine Learning 藉由計算單一計量來抽象化比較資料集的複
 
 在概念上，在 Azure Machine Learning 中設定資料集監視器的主要案例有三種。
 
-案例 | 描述
+狀況 | 描述
 ---|---
 監視模型的服務資料，使其偏離定型資料 | 此案例的結果可以針對模型的精確度，解讀為監視 proxy，因為從定型資料偏離服務資料時，模型精確度會降低。
 監視時間序列資料集與上一個時間週期的漂移。 | 此案例較通用，而且可用來監視模型建立的上游或下游相關的資料集。  目標資料集必須有 timestamp 資料行。 基準資料集可以是具有與目標資料集共通之功能的任何表格式資料集。
@@ -228,8 +229,8 @@ monitor = monitor.enable_schedule()
 
     | 設定 | 說明 | 提示 | 可變動 | 
     | ------- | ----------- | ---- | ------- |
-    | 名稱 | 資料集監視器的名稱。 | | 否 |
-    | 功能 | 將分析一段時間內資料漂移的功能清單。 | 設定為模型的輸出功能，以測量概念漂移。 請勿包含在一段時間內自然漂移的功能（月、年、索引等等）。 調整功能清單之後，您可以回填和現有的資料漂移監視器。 | 是 | 
+    | Name | 資料集監視器的名稱。 | | 否 |
+    | 特性 | 將分析一段時間內資料漂移的功能清單。 | 設定為模型的輸出功能，以測量概念漂移。 請勿包含在一段時間內自然漂移的功能（月、年、索引等等）。 調整功能清單之後，您可以回填和現有的資料漂移監視器。 | 是 | 
     | 計算目標 | Azure Machine Learning 計算目標來執行資料集監視作業。 | | 是 | 
     | 啟用 | 啟用或停用資料集監視器管線上的排程 | 使用回填設定來停用排程來分析歷程記錄資料。 您可以在建立資料集監視器之後啟用它。 | 是 | 
     | 頻率 | 在執行回填時，用來排程管線作業和分析歷程記錄資料的頻率。 選項包括 [每日]、[每週] 或 [每月]。 | 每次執行都會根據頻率來比較目標資料集內的資料： <li>每日：比較目標資料集的最新完整日與基準 <li>每週：比較目標資料集的最新完整周（星期一-星期日）與基準 <li>每月：比較目標資料集的最新完整月份與基準 | 否 | 
@@ -310,7 +311,7 @@ monitor = monitor.enable_schedule()
 
 在左窗格中，選取 [監視] 下的 [記錄（分析）]：
 
-![Application Insights 概觀](./media/how-to-monitor-datasets/ai-overview.png)
+![Application insights 總覽](./media/how-to-monitor-datasets/ai-overview.png)
 
 資料集監視器計量會儲存為 `customMetrics` 。 您可以在設定資料集監視器之後撰寫並執行查詢來加以查看：
 

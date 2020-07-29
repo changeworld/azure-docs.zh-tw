@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 03/27/2020
 ms.author: anfeldma
-ms.openlocfilehash: bbddcb8627c78544d603e1ea3ca33bc410419da1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d145892c1fa0d71b462c5aab42ba89685d7a91a9
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85263617"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282291"
 ---
 # <a name="configure-time-to-live-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中設定存留時間
 
@@ -143,7 +143,7 @@ await client.GetDatabase("database").CreateContainerAsync(new ContainerPropertie
 {
     Id = "container",
     PartitionKeyPath = "/myPartitionKey",
-    DefaultTimeToLive = 90 * 60 * 60 * 24; // expire all documents after 90 days
+    DefaultTimeToLive = 90 * 60 * 60 * 24 // expire all documents after 90 days
 });
 ```
 ---
@@ -216,7 +216,7 @@ async function createcontainerWithTTL(db: Database, containerDefinition: Contain
    * 開啟 [規模與設定] 視窗。
    * 在 [設定]**** 底下，尋找 [存留時間]****。
    * 選取 **[開啟（無預設）** ]，或選取 [**開啟**] 並設定 TTL 值。 
-   * 按一下 [儲存]  儲存變更。
+   * 按一下 [儲存] 儲存變更。
 
 5. 接著瀏覽至您要設定存留時間的項目、新增 `ttl` 屬性，然後選取 [更新]****。 
 

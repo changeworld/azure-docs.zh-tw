@@ -7,11 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
-ms.openlocfilehash: 194f75fbb486d5c53a8e650631c16fcf2649f277
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 75f4cea0e5cd2b0bf42c28cbd81e199115834e11
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83826021"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283957"
 ---
 # <a name="monitor-and-manage-slack-with-azure-logic-apps"></a>使用 Azure Logic Apps 來監視及管理 Slack
 
@@ -69,9 +70,10 @@ ms.locfileid: "83826021"
 
 ## <a name="get-support"></a>取得支援
 
-* 如有任何問題，請瀏覽 [Microsoft 問與答的 Azure Logic Apps 問題頁面](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)。
+* 如有任何問題，請瀏覽 [Microsoft 問與答的 Azure Logic Apps 問題頁面](/answers/topics/azure-logic-apps.html)。
 * 若要提交或票選功能構想，請造訪 [Logic Apps 使用者意見反應網站](https://aka.ms/logicapps-wish)。
 
 ## <a name="next-steps"></a>後續步驟
 
 * 了解其他 [Logic Apps 連接器](../connectors/apis-list.md)
+

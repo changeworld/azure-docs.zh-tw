@@ -3,12 +3,13 @@ title: 疑難排解 Java Web 專案中的 Application Insights
 description: 疑難排解指南 - 使用 Application Insights 監視即時的 Java 應用程式。
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 74b4bc009158d826955f851f22458e9570a58e7c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: devx-track-java
+ms.openlocfilehash: 4b6a7070b6b1b76a3f763105f4dce795f3e5c4be
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324143"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372513"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>Application Insights for Java 的疑難排解和問答集
 [Java 中的 Azure Application Insights][java] 疑問或問題？ 以下是一些秘訣。

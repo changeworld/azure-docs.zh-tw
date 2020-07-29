@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/21/2020
 tags: connectors
-ms.openlocfilehash: eb943bfe36be10d1e95d569a5c1bf48563e909c1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 34608a085c0d60e0ce07e5d198622f80a43f8b38
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711284"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284076"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-by-using-azure-logic-apps"></a>使用 Azure Logic Apps 在 Azure Blob 儲存體中建立和管理 blob
 
@@ -20,7 +20,7 @@ ms.locfileid: "84711284"
 
 假設您有一個會在 Azure 網站上進行更新的工具。 並將它作為邏輯應用程式的觸發程序。 當此事件發生時，您可以讓邏輯應用程式更新 Blob 儲存體容器中的某些檔案，而這是邏輯應用程式中的其中一個動作。
 
-如果您不熟悉邏輯應用程式，請檢閱[什麼是 Azure Logic Apps](../logic-apps/logic-apps-overview.md) 和[快速入門：建立第一個邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 如需連接器專屬的技術資訊，請參閱 [Azure Blob 儲存體連接器參考](https://docs.microsoft.com/connectors/azureblobconnector/)。
+如果您不熟悉邏輯應用程式，請檢閱[什麼是 Azure Logic Apps](../logic-apps/logic-apps-overview.md) 和[快速入門：建立第一個邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 如需連接器專屬的技術資訊，請參閱 [Azure Blob 儲存體連接器參考](/connectors/azureblobconnector/)。
 
 > [!IMPORTANT]
 > 如果邏輯應用程式位於相同的區域，則無法直接存取位於防火牆後面的儲存體帳戶。 因應措施是，您可以將邏輯應用程式和儲存體帳戶放在不同的區域中。 如需啟用從 Azure Logic Apps 存取防火牆後方之儲存體帳戶的詳細資訊，請參閱本主題稍後的[存取防火牆後方的儲存體帳戶](#storage-firewalls)一節。
@@ -123,8 +123,8 @@ ms.locfileid: "84711284"
 
    | 屬性 | 必要 | 值 | 描述 |
    |----------|----------|-------|-------------|
-   | **連接名稱** | Yes | <*連接名稱*> | 要為連線建立的名稱 |
-   | **儲存體帳戶** | Yes | <*儲存體-帳戶*> | 從清單中選取您的儲存體帳戶。 |
+   | **連接名稱** | 是 | <*連接名稱*> | 要為連線建立的名稱 |
+   | **儲存體帳戶** | 是 | <*儲存體-帳戶*> | 從清單中選取您的儲存體帳戶。 |
    ||||
 
    例如：
@@ -137,7 +137,7 @@ ms.locfileid: "84711284"
 
 ## <a name="connector-reference"></a>連接器參考
 
-如需此連接器的更多技術詳細資料，例如連接器的 Swagger 檔案所描述的觸發程式、動作和限制，請參閱[連接器的參考頁面](https://docs.microsoft.com/connectors/azureblobconnector/)。
+如需此連接器的更多技術詳細資料，例如連接器的 Swagger 檔案所描述的觸發程式、動作和限制，請參閱[連接器的參考頁面](/connectors/azureblobconnector/)。
 
 > [!NOTE]
 > 對於[整合服務環境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的邏輯應用程式，此連接器的 ise 標記版本會使用[ISE 訊息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)。
@@ -194,7 +194,7 @@ ms.locfileid: "84711284"
 1. 在邏輯應用程式的工作流程中，新增並設定 HTTP 動作或觸發程式，以存取儲存體帳戶或實體。
 
    > [!IMPORTANT]
-   > 針對連出 HTTP 動作或 Azure 儲存體帳戶的觸發程式呼叫，請確定要求標頭包含 `x-ms-version` 您想要在儲存體帳戶上執行之作業的屬性和 API 版本。 如需詳細資訊，請參閱[使用受管理的身分識別驗證存取](../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity)和[Azure 儲存體服務的版本控制](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#specifying-service-versions-in-requests)。
+   > 針對連出 HTTP 動作或 Azure 儲存體帳戶的觸發程式呼叫，請確定要求標頭包含 `x-ms-version` 您想要在儲存體帳戶上執行之作業的屬性和 API 版本。 如需詳細資訊，請參閱[使用受管理的身分識別驗證存取](../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity)和[Azure 儲存體服務的版本控制](/rest/api/storageservices/versioning-for-the-azure-storage-services#specifying-service-versions-in-requests)。
 
 1. 在該動作上，選取要用於驗證的[受控識別](../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity)。
 
@@ -207,3 +207,4 @@ ms.locfileid: "84711284"
 ## <a name="next-steps"></a>後續步驟
 
 * 了解其他 [Logic Apps 連接器](../connectors/apis-list.md)
+

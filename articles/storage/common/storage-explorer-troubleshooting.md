@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: a49e5fbe9eac689b630a0f3b443729faf29cdb0d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 492f44353a9a43279afa4869640193f1baddd41c
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84974512"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372870"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure 儲存體總管疑難排解指南
 
@@ -67,9 +67,9 @@ RBAC 角色可以授與您管理或資料層存取權的許可權。 例如，�
 
 針對其他資源類型，我們目前沒有 RBAC 相關的解決方案。 因應措施是，您可以要求 SAS URI 以[附加至您的資源](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-shared-access-signature-uri)。
 
-### <a name="recommended-built-in-rbac-roles"></a>建議的內建 RBAC 角色
+### <a name="recommended-azure-built-in-roles"></a>建議的 Azure 內建角色
 
-有數個內建的 RBAC 角色可以提供使用儲存體總管所需的許可權。 其中一些角色如下：
+有數個 Azure 內建角色可提供使用儲存體總管所需的許可權。 其中一些角色如下：
 - [擁有](/azure/role-based-access-control/built-in-roles#owner)者：管理所有專案，包括資源的存取權。 **注意**：此角色將提供您金鑰存取權。
 - [參與者](/azure/role-based-access-control/built-in-roles#contributor)：管理所有專案，但不包括對資源的存取。 **注意**：此角色將提供您金鑰存取權。
 - [讀取器](/azure/role-based-access-control/built-in-roles#reader)：讀取和列出資源。

@@ -6,50 +6,41 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/05/2019
+ms.date: 07/27/2020
 ms.author: raynew
-ms.openlocfilehash: f42942d0e112aad147f78d62b5f5b43587eca9b3
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: aaf01dcd63c21e4741456f4f7fccaf22b8fbfffc
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135599"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281305"
 ---
 # <a name="about-migration"></a>關於移轉
 
-請閱讀本文，了解 [Azure Site Recovery](site-recovery-overview.md) 服務如何協助您移轉機器的快速概觀。 
-
-> [!TIP]
-> 您現在應該使用 Azure Migrate 服務，將 Vm 和伺服器遷移至 Azure，而不是 Azure Site Recovery 服務。 [深入了解](../migrate/migrate-services-overview.md)。
+使用 Azure Migrate 服務，將 Vm 和伺服器遷移至 Azure，而不是 Azure Site Recovery 服務。 [深入瞭解](../migrate/migrate-services-overview.md)Azure Migrate。
 
 
-以下是您可以使用 Site Recovery 移轉的項目：
+## <a name="why-use-azure-migrate"></a>為何使用 Azure Migrate？
 
-- **從內部部署移轉至 Azure**：將內部部署 Hyper-V VM、VMware VM 和實體伺服器移轉至 Azure。 移轉之後，內部部署機器上執行的工作負載將在 Azure VM 上執行。 
-- **在 Azure 中進行移轉**：在 Azure 區域之間移轉 Azure VM。 
-- **移轉 AWS**：將 AWS Windows 執行個體移轉至 Azure IaaS VM。 
+使用 Azure Migrate 進行遷移可提供許多優點：
+ 
+ 
+- Azure Migrate 提供用於探索、評估和遷移至 Azure 的集中式中樞。
+- 使用 Azure Migrate 透過 Azure Migrate 工具、其他 Azure 服務及協力廠商工具，提供互通性和未來的擴充性。
+- Azure Migrate：伺服器遷移工具是專為伺服器遷移至 Azure 而設計的用途。 它已針對遷移優化。 您不需要瞭解與遷移不直接相關的概念和案例。 
+- 從 VM 開始複寫時，沒有任何工具使用費用可供遷移180天。 這讓您有時間完成遷移。 您只需支付複寫所使用的儲存體和網路資源，以及在測試遷移期間所耗用的計算費用。
+- 針對 VMware Vm，除了代理程式型遷移之外，Azure Migrate 還提供無代理程式遷移。
+- 我們會為 Azure Migrate 的新遷移功能排定優先順序：僅限伺服器遷移工具。
 
-> [!NOTE]
-> 您現在可以使用 Azure Migrate 服務，從內部部署遷移至 Azure。 [深入了解](../migrate/migrate-services-overview.md)。
+## <a name="when-to-use-site-recovery"></a>何時使用 Site Recovery？
 
-## <a name="what-do-we-mean-by-migration"></a>移轉的意思為何？
+應該使用 Site Recovery：
 
-除了使用站台復原進行內部部署與 Azure VM 的災害復原，您還可以使用 Site Recovery 服務來加以移轉。 有什麼不同？
+- 針對內部部署機器到 Azure 的嚴重損壞修復。
+- 針對 Azure Vm 在 Azure 區域之間的嚴重損壞修復。
 
-- 對於災害復原，您需要定期將機器複寫至 Azure。 當發生運行中斷時，您就會將該機器從主要站台容錯移轉至 Azure 次要站台，並從該處進行存取。 當主要站台恢復可用狀態時，您就可以從 Azure 進行容錯回復。
-- 進行移轉時，您會將內部部署機器複寫至 Azure，或將 Azure VM 複寫至次要地區。 然後，將 VM 從主要站台容錯移轉至次要站台，並完成移轉流程。 其中不包含容錯回復。  
-
-
-## <a name="migration-scenarios"></a>移轉案例
-
-**案例** | **詳細資料**
---- | ---
-**從內部部署遷移至 Azure** | 您可以將內部部署 VMware VM、Hyper-V VM 和實體伺服器移轉至 Azure。 若要這樣做，就要完成與完整災害復原幾乎相同的步驟。 只是不要將機器從 Azure 容錯移轉回到內部部署站台。
-**在不同的 Azure 地區之間移轉** | 您可以將 Azure VM 從一個 Azure 區域移轉至另一個 Azure 區域。 完成移轉之後，現在您就可以在移轉前往的次要區域中，設定 Azure VM 的災害復原。
-**將 AWS 移轉至 Azure** | 您可以將 AWS 執行個體移轉至 Azure VM。 在進行移轉時，Site Recovery 會將 AWS 執行個體視為實體伺服器。 
+雖然我們建議使用 Azure Migrate 將內部部署伺服器遷移至 Azure，但如果您已經使用 Site Recovery 開始遷移旅程，您可以繼續使用它來完成您的遷移。  
 
 ## <a name="next-steps"></a>後續步驟
 
-- [將內部部署機器移轉至 Azure](migrate-tutorial-on-premises-azure.md)
-- [在 Azure 區域間移轉 VM](azure-to-azure-tutorial-migrate.md)
-- [將 AWS 移轉至 Azure](migrate-tutorial-aws-azure.md)
+> [查看](../migrate/resources-faq.md)有關 Azure Migrate 的常見問題。

@@ -3,15 +3,15 @@ title: 在 Azure 上部署 IBM DB2 pureScale
 description: 了解如何部署最近用來將企業從其 IBM DB2 環境 (在 z/OS 上執行) 遷移到 Azure 上的 IBM DB2 pureScale 的範例架構。
 author: njray
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/09/2018
 ms.author: edprice
-ms.openlocfilehash: 7e2ec4bfe04112d300a63e6326f0391968e385f7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 17ea965758150adb72d8e8f9fee9937bd5387a48
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86510721"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371918"
 ---
 # <a name="deploy-ibm-db2-purescale-on-azure"></a>在 Azure 上部署 IBM DB2 pureScale
 

@@ -3,12 +3,12 @@ title: 備份和還原已加密的 Azure Vm
 description: 說明如何使用 Azure 備份服務來備份和還原已加密的 Azure Vm。
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: 1689ff89f15248f6771ccdce525cc136221e5577
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 20310c6c51a2467e9389bc77dd9ada4848c69be4
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538899"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371748"
 ---
 # <a name="back-up-and-restore-encrypted-azure-vm"></a>備份和還原已加密的 Azure VM
 
@@ -41,22 +41,22 @@ Azure 備份可以使用具有和不含 Azure AD 應用程式的 ADE 來備份�
 - 加密的 VM 無法在檔案/資料夾層級復原。 您必須復原整個 VM，以還原檔案和資料夾。
 - 還原 VM 時，您無法使用已加密 Vm 的 [[取代現有 VM](backup-azure-arm-restore-vms.md#restore-options) ] 選項。 只有未加密的受控磁片才支援此選項。
 
-## <a name="before-you-start"></a>開始之前
+## <a name="before-you-start"></a>在您開始使用 Intune 之前
 
 開始之前，請執行下列作業：
 
 1. 請確定您有一或多個已啟用 ADE 的[Windows](../virtual-machines/linux/disk-encryption-overview.md)或[Linux](../virtual-machines/linux/disk-encryption-overview.md) vm。
 2. 審查 Azure VM 備份[的支援矩陣](backup-support-matrix-iaas.md)
-3. [建立](backup-azure-arm-vms-prepare.md#create-a-vault)復原服務備份保存庫（如果您沒有的話）。
+3. [建立](backup-create-rs-vault.md)復原服務備份保存庫（如果您沒有的話）。
 4. 如果您為已啟用備份的 Vm 啟用加密，您只需要提供備份許可權來存取 Key Vault，即可在不中斷的情況下繼續備份。 [深入瞭解](#provide-permissions)如何指派這些許可權。
 
 此外，在某些情況下，您可能還需要做幾件事：
 
-- **在 VM 上安裝 VM 代理程式**：為機器上執行的 Azure VM 代理程式安裝擴充功能，以 Azure 備份來備份 Azure VM。 如果您的 VM 是從 Azure 市集映像建立，則代理程式已安裝且正在執行。 如果您建立自訂 VM，或遷移內部部署機器，您可能需要[手動安裝代理程式](backup-azure-arm-vms-prepare.md#install-the-vm-agent)。
+- **在 VM 上安裝 VM 代理程式**：為機器上執行的 Azure VM 代理程式安裝擴充功能，以 Azure 備份來備份 Azure VM。 如果您的 VM 是從 Azure Marketplace 映像建立，則代理程式已安裝且正在執行。 如果您建立自訂 VM，或遷移內部部署機器，您可能需要[手動安裝代理程式](backup-azure-arm-vms-prepare.md#install-the-vm-agent)。
 
 ## <a name="configure-a-backup-policy"></a>設定備份原則
 
-1. 如果您尚未建立復原服務備份保存庫，請遵循[這些指示](backup-azure-arm-vms-prepare.md#create-a-vault)
+1. 如果您尚未建立復原服務備份保存庫，請遵循[這些指示](backup-create-rs-vault.md)
 2. 在入口網站中開啟保存庫，然後選取 [**消費者入門**] 區段中的 [**備份**]。
 
     ![備份刀鋒視窗](./media/backup-azure-vms-encryption/select-backup.png)

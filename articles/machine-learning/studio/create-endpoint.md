@@ -1,6 +1,5 @@
 ---
-title: 建立 Web 服務端點
-titleSuffix: ML Studio (classic) - Azure
+title: ML Studio （傳統）：建立 web 服務端點-Azure
 description: 在 Azure Machine Learning Studio （傳統）中建立 web 服務端點。 Web 服務的每個端點都是個別定址、節流以及管理。
 services: machine-learning
 ms.service: machine-learning
@@ -10,13 +9,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/15/2019
-ms.openlocfilehash: e465d739c485009f68d6d5c5ecbb0850d73a6e60
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ac5fa2a4eb534a4cc6e7bf9542bfb250f216401c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84696417"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282495"
 ---
 # <a name="create-endpoints-for-deployed-azure-machine-learning-studio-classic-web-services"></a>為已部署的 Azure Machine Learning Studio （傳統） web 服務建立端點
+
+**適用於：** ![否](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md)![是](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統版) 
+
 
 > [!NOTE]
 > 本主題描述適用于**傳統**Machine Learning web 服務的技術。

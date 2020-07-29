@@ -5,18 +5,18 @@ description: 瞭解如何在使用 Azure Machine Learning SDK 時，取得機器
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.author: mithigpe
 author: minthigpen
 ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
-ms.custom: tracking-python
-ms.openlocfilehash: 04d9e82c56979a459734b8732c127922361a1100
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.topic: conceptual
+ms.custom: how-to, tracking-python
+ms.openlocfilehash: 7f2ca2a84123d3bb7dd92a797d517a2490544efa
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072376"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87307007"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python-preview"></a>使用 interpretability 套件來說明 Python 中 & 預測的 ML 模型（預覽）
 
@@ -304,7 +304,7 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1],
 
 下圖提供定型模型的整體觀點，以及其預測和說明。
 
-|圖|描述|
+|圖|說明|
 |----|-----------|
 |資料探索| 顯示資料集和預測值的總覽。|
 |全球重要性|匯總個別資料點的特徵重要性值，以顯示模型的整體主要 K （可設定的 K）重要功能。 有助於瞭解基礎模型的整體行為。|
@@ -318,7 +318,7 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1],
 
 您可以按一下任何一種整體繪圖中的任何個別資料點，為任何資料點載入個別功能的重要性圖。
 
-|圖|描述|
+|圖|說明|
 |----|-----------|
 |本機重要性|顯示個別預測的前 K 個（可設定的 K）重要功能。 協助說明特定資料點上基礎模型的本機行為。|
 |Perturbation 探索（如果分析）|允許變更所選資料點的功能值，並觀察對預測值所產生的變更。|

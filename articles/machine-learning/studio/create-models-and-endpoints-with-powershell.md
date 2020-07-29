@@ -1,6 +1,5 @@
 ---
-title: 建立多個模型和端點
-titleSuffix: ML Studio (classic) - Azure
+title: ML Studio （傳統）：建立多個模型 & 端點-Azure
 description: 使用 PowerShell 以相同演算法但不同的訓練資料集，建立多個機器學習服務模型和 Web 服務端點。
 services: machine-learning
 ms.service: machine-learning
@@ -10,14 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 04/04/2017
-ms.openlocfilehash: 5b158c2fbdbfba91055d64f92f64c51dc6c3d391
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 9cb5b0b87b1d6adb8e0e5cda06049cfddba3d950
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955704"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283532"
 ---
 # <a name="create-multiple-web-service-endpoints-from-one-experiment-with-ml-studio-classic-and-powershell"></a>使用 ML Studio （傳統）和 PowerShell，從一個實驗建立多個 web 服務端點
+
+**適用於：** ![否](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md)![是](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統版) 
 
 以下是一個常見的機器學習服務問題︰您想要建立許多模型，這些模型具有相同的訓練工作流程，且使用相同的演算法。 但您想要以不同的訓練資料集作為輸入。 本文說明如何使用單一實驗，在 Azure Machine Learning Studio （傳統）中大規模執行此動作。
 

@@ -4,22 +4,22 @@ titleSuffix: Microsoft identity platform
 description: 本文說明 Azure Active Directory 中的單一登入 (SSO) SAML 通訊協定
 services: active-directory
 documentationcenter: .net
-author: rwike77
+author: kenwith
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.author: ryanwi
+ms.author: kenwith
 ms.custom: aaddev
-ms.reviewer: hirsin
-ms.openlocfilehash: a68c0248ce364be486610c406388586b69cbb3f4
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.reviewer: paulgarn
+ms.openlocfilehash: f3896bf795e3b1ca258f65fa2c6f4974f2115014
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86076941"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282988"
 ---
 # <a name="single-sign-on-saml-protocol"></a>單一登入 SAML 通訊協定
 
@@ -51,8 +51,8 @@ xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
 | ID | 必要 | Azure AD 使用這個屬性來填入所傳回回應的 `InResponseTo` 屬性。 識別碼的開頭不能是數字，因此常見的策略是在 GUID 的字串表示法前面加上 "id" 等字串。 例如， `id6c1c178c166d486687be4aaf5e482730` 便是有效的識別碼。 |
 | 版本 | 必要 | 此參數應該設定為 **2.0**。 |
 | IssueInstant | 必要 | 這是具有 UTC 值和 [來回行程格式 ("o")](https://msdn.microsoft.com/library/az4se3k1.aspx)的日期時間字串。 Azure AD 必須要有這種類型的日期時間值，但不會評估或使用此值。 |
-| AssertionConsumerServiceUrl | 選擇性 | 如果提供，此參數必須符合 Azure AD 中雲端服務的 `RedirectUri`。 |
-| ForceAuthn | 選擇性 | 這是布林值。 如果為 true，表示即使使用者在 Azure AD 中具有有效的工作階段，也會強制使用者重新驗證。 |
+| AssertionConsumerServiceUrl | 選用 | 如果提供，此參數必須符合 Azure AD 中雲端服務的 `RedirectUri`。 |
+| ForceAuthn | 選用 | 這是布林值。 如果為 true，表示即使使用者在 Azure AD 中具有有效的工作階段，也會強制使用者重新驗證。 |
 | IsPassive | 選用 | 這是布林值，指定 Azure AD 是否以無訊息模式驗證使用者，不需要使用者互動，如果有工作階段 cookie 的話則使用此 cookie。 如果是這種情況，Azure AD 會嘗試使用工作階段 cookie 驗證使用者。 |
 
 其他所有 `AuthnRequest` 屬性 (例如 Consent、Destination、AssertionConsumerServiceIndex、AttributeConsumerServiceIndex 和 ProviderName) 會 **遭到忽略**。

@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 06/17/2020
 ms.custom: azure-synapse
-ms.openlocfilehash: 7b8c6e09616f261c371b010b38d2c0f81376a6f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4f6a64cf30ecc684e05675d366ff5c9fc6642126
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84944758"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372156"
 ---
 # <a name="write-audit-to-a-storage-account-behind-vnet-and-firewall"></a>將 audit 寫入 VNet 和防火牆後方的儲存體帳戶
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -33,7 +33,7 @@ ms.locfileid: "84944758"
 
 若要深入瞭解如何建立虛擬網路，請參閱[快速入門：使用 Azure 入口網站建立虛擬網路](../../virtual-network/quick-create-portal.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 若要讓 audit 寫入 VNet 或防火牆後方的儲存體帳戶，需要下列必要條件：
 
@@ -61,7 +61,7 @@ ms.locfileid: "84944758"
   >
   >如果您看不到此訊息，則儲存體帳戶不在 VNet 後方。
 
-4. 選取保留週期的天數。 然後按一下 [確定] 。 早于保留期限的記錄會遭到刪除。
+4. 選取保留週期的天數。 然後按一下 [確定]。 早于保留期限的記錄會遭到刪除。
 
 5. 在您的 [審核設定] 上選取 [**儲存**]。
 
@@ -120,7 +120,7 @@ ms.locfileid: "84944758"
 2. 開啟 [Azure 入口網站](https://portal.azure.com)。 瀏覽至儲存體帳戶。 找出 **[存取控制（IAM）**]，然後按一下 [**新增角色指派**]。 將**儲存體 Blob 資料參與者**RBAC 角色指派給裝載您向 Azure Active Directory （Azure AD）註冊之資料庫的伺服器，如同上一個步驟所示。
 
    > [!NOTE]
-   > 僅有具備「擁有者」權限的成員才能執行此步驟。 如需 Azure 資源的各種內建角色，請參閱[azure 內建角色](../../role-based-access-control/built-in-roles.md)。
+   > 僅有具備「擁有者」權限的成員才能執行此步驟。 針對各種 Azure 內建角色，請參閱[Azure 內建角色](../../role-based-access-control/built-in-roles.md)。
 
 3. 設定[伺服器的 blob 稽核原則](/rest/api/sql/server%20auditing%20settings/createorupdate)，而不指定*storageAccountAccessKey*：
 

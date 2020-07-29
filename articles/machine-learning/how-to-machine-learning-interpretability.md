@@ -5,17 +5,18 @@ description: 瞭解如何使用 Azure Machine Learning SDK 來說明您的模型
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
+ms.custom: how-to
 ms.author: mithigpe
 author: minthigpen
 ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
-ms.openlocfilehash: deeb47b55253b9bf1659dd5eba7bc3465602583b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 533ecbaebc5d36f8a6660ce22e5cab3630e3655f
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072229"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87306395"
 ---
 # <a name="model-interpretability-in-azure-machine-learning-preview"></a>Azure Machine Learning 中的模型 interpretability （預覽）
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]

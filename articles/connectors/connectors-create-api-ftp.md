@@ -7,11 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 12/15/2019
 tags: connectors
-ms.openlocfilehash: 5b61b51e79c71736e18aaa63ab032c05c512c8d7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f4cad2b658547d56d00efdd5e1496110f8e4a5e6
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80656338"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284008"
 ---
 # <a name="create-monitor-and-manage-ftp-files-by-using-azure-logic-apps"></a>藉由使用 Azure Logic Apps 來建立、監視及管理 FTP 檔案
 
@@ -50,7 +51,7 @@ FTP 觸發程式的操作方式是輪詢 FTP 檔案系統，並尋找自上次�
 
 當觸發程序找到新檔案時，觸發程序會確認該新檔案是完整檔案，而不是部分寫入的檔案。 例如，當觸發程序檢查檔案伺服器時，檔案可能正在進行變更。 為避免傳回部分寫入的檔案，觸發程序會備註最近發生變更之檔案的時間戳記，但不會立即傳回該檔案。 觸發程序只有在再次輪詢伺服器時，才會傳回該檔案。 有時，此行為可能會導致最長可達觸發程序輪詢間隔兩倍的延遲。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
@@ -112,7 +113,7 @@ FTP 觸發程式的操作方式是輪詢 FTP 檔案系統，並尋找自上次�
 
    ![選取的資料夾會出現在 [資料夾] 屬性中](./media/connectors-create-api-ftp/selected-folder-ftp-trigger.png)
 
-1. 儲存您的邏輯應用程式。 在設計工具的工具列上，選取 [儲存]****。
+1. 儲存您的邏輯應用程式。 在設計工具的工具列上，選取 [儲存]。
 
 邏輯應用程式已具有觸發程序，接著請新增在邏輯應用程式發現新檔案或編輯過的檔案時，所要執行的動作。 針對此範例，您可以新增 FTP 動作，用以取得新內容或更新過的內容。
 
@@ -170,7 +171,7 @@ FTP 觸發程式的操作方式是輪詢 FTP 檔案系統，並尋找自上次�
 
 ## <a name="connector-reference"></a>連接器參考
 
-如需此連接器的更多技術詳細資料，例如連接器的 Swagger 檔案所描述的觸發程式、動作和限制，請參閱[連接器的參考頁面](https://docs.microsoft.com/connectors/ftpconnector/)。
+如需此連接器的更多技術詳細資料，例如連接器的 Swagger 檔案所描述的觸發程式、動作和限制，請參閱[連接器的參考頁面](/connectors/ftpconnector/)。
 
 > [!NOTE]
 > 對於[整合服務環境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的邏輯應用程式，此連接器的 ise 標記版本會使用[ISE 訊息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)。
@@ -178,3 +179,4 @@ FTP 觸發程式的操作方式是輪詢 FTP 檔案系統，並尋找自上次�
 ## <a name="next-steps"></a>後續步驟
 
 * 了解其他 [Logic Apps 連接器](../connectors/apis-list.md)
+

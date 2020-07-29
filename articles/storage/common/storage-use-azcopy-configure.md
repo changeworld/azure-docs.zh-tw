@@ -4,16 +4,16 @@ description: 設定、優化和疑難排解 AzCopy。
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 04/10/2020
+ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: acfe868f26d7509d1dd06554482b4fb3b29a5b22
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e79f186688f3b6531ac24df4e3ae4201cf1903c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85504350"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282427"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>對 AzCopy 進行設定、最佳化及疑難排解
 
@@ -23,14 +23,14 @@ AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製 Blob �
 > 如果您要尋找可協助您開始使用 AzCopy 的內容，請參閱下列文章：
 > - [開始使用 AzCopy](storage-use-azcopy-v10.md)
 > - [使用 AzCopy 和 Blob 儲存體轉送資料](storage-use-azcopy-blobs.md)
-> - [使用 AzCopy 和檔案儲存體轉送資料](storage-use-azcopy-files.md)
+> - [使用 AzCopy 和檔案儲存體傳輸資料](storage-use-azcopy-files.md) (機器翻譯)
 > - [使用 AzCopy 和 Amazon S3 貯體轉送資料](storage-use-azcopy-s3.md)
 
 ## <a name="configure-proxy-settings"></a>進行 Proxy 設定
 
-若要設定 AzCopy 的 proxy 設定，請設定 `https_proxy` 環境變數。 如果您在 Windows 上執行 AzCopy，AzCopy 會自動偵測 proxy 設定，因此您不需要在 Windows 中使用此設定。 如果您選擇在 Windows 中使用此設定，將會覆寫自動偵測。
+若要設定 AzCopy 的 proxy 設定，請設定 `https_proxy` 環境變數。 如果您在 Windows 上執行 AzCopy，AzCopy 會自動偵測 Proxy 設定，因此您不需要在 Windows 中使用此設定。 如果您選擇在 Windows 中使用此設定，其將會覆寫自動偵測。
 
-| 作業系統 | Command  |
+| 作業系統 | 命令  |
 |--------|-----------|
 | **Windows** | 在命令提示字元中，請使用：`set https_proxy=<proxy IP>:<proxy port>`<br> 在 PowerShell 中，請使用：`$env:https_proxy="<proxy IP>:<proxy port>"`|
 | **Linux** | `export https_proxy=<proxy IP>:<proxy port>` |
@@ -49,7 +49,7 @@ AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製 Blob �
 
 在其他作業系統上，如果您不想要使用任何 PROXY，只要將 HTTPS_PROXY 變數保留為未設定。
 
-## <a name="optimize-performance"></a>將效能最佳化
+## <a name="optimize-performance"></a>效能最佳化
 
 您可以基準效能，然後使用命令和環境變數來尋找效能和資源耗用量之間的最佳取捨。
 
@@ -63,7 +63,7 @@ AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製 Blob �
 
 ### <a name="run-benchmark-tests"></a>執行基準測試
 
-您可以在特定 blob 容器或檔案共用上執行效能基準測試，以查看一般效能統計資料和身分識別效能瓶頸。 
+您可以在特定 blob 容器或檔案共用上執行效能基準測試，以查看一般效能統計資料和身分識別效能瓶頸。 您可以藉由上傳或下載產生的測試資料來執行測試。 
 
 使用下列命令來執行效能基準測試。
 
@@ -77,9 +77,7 @@ AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製 Blob �
 
 此命令會將測試資料上傳至指定的目的地，以執行效能基準測試。 測試資料會在記憶體中產生、上傳至目的地，然後在測試完成後從目的地中刪除。 您可以使用選擇性的命令參數，指定要產生的檔案數目，以及您想要的大小。
 
-如需詳細的參考檔，請參閱[azcopy 基準測試](storage-ref-azcopy-bench.md)。
-
-若要查看此命令的詳細說明指引，請輸入， `azcopy benchmark -h` 然後按 enter 鍵。
+如果您想要藉由下載資料來執行這項測試，請將 `mode` 參數設定為 `download` 。 如需詳細的參考檔，請參閱[azcopy 基準測試](storage-ref-azcopy-bench.md)。 
 
 ### <a name="optimize-throughput"></a>輸送量最佳化
 
@@ -89,11 +87,11 @@ AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製 Blob �
 azcopy jobs resume <job-id> --cap-mbps 10
 ```
 
-傳輸小型檔案時，輸送量可能會降低。 您可以藉由設定環境變數來增加輸送量 `AZCOPY_CONCURRENCY_VALUE` 。 此變數會指定可能發生的並行要求數目。  
+傳輸小型檔案時，輸送量可能會降低。 您可以藉由設定環境變數來增加輸送量 `AZCOPY_CONCURRENCY_VALUE` 。 此變數會指定可發生的並行要求數。  
 
-如果您的電腦有少於5個 Cpu，則此變數的值會設定為 `32` 。 否則，預設值等於16乘以 Cpu 的數目。 此變數的最大預設值為 `3000` ，但您可以手動將此值設定為較高或較低。 
+如果您的電腦有少於5個 Cpu，則此變數的值會設定為 `32` 。 否則，預設值會等於 16 乘以 CPU 數目。 此變數的最大預設值為 `3000` ，但您可以手動將此值設定為較高或較低。 
 
-| 作業系統 | Command  |
+| 作業系統 | 命令  |
 |--------|-----------|
 | **Windows** | `set AZCOPY_CONCURRENCY_VALUE=<value>` |
 | **Linux** | `export AZCOPY_CONCURRENCY_VALUE=<value>` |
@@ -108,7 +106,7 @@ azcopy jobs resume <job-id> --cap-mbps 10
 設定 `AZCOPY_BUFFER_GB` 環境變數，以指定您想要 AzCopy 在下載和上傳檔案時使用的系統記憶體數量上限。
 以 gb 為單位表示此值。
 
-| 作業系統 | Command  |
+| 作業系統 | 命令  |
 |--------|-----------|
 | **Windows** | `set AZCOPY_BUFFER_GB=<value>` |
 | **Linux** | `export AZCOPY_BUFFER_GB=<value>` |
@@ -191,7 +189,7 @@ azcopy jobs resume <job-id> --destination-sas="<sas-token>"
 
 使用任何這些命令。
 
-| 作業系統 | Command  |
+| 作業系統 | 命令  |
 |--------|-----------|
 | **Windows** | PowerShell`$env:AZCOPY_JOB_PLAN_LOCATION="<value>"` <br> 在命令提示字元中，使用：：`set AZCOPY_JOB_PLAN_LOCATION=<value>` |
 | **Linux** | `export AZCOPY_JOB_PLAN_LOCATION=<value>` |
@@ -203,7 +201,7 @@ azcopy jobs resume <job-id> --destination-sas="<sas-token>"
 
 使用任何這些命令。
 
-| 作業系統 | Command  |
+| 作業系統 | 命令  |
 |--------|-----------|
 | **Windows** | PowerShell`$env:AZCOPY_LOG_LOCATION="<value>"` <br> 在命令提示字元中，使用：：`set AZCOPY_LOG_LOCATION=<value>`|
 | **Linux** | `export AZCOPY_LOG_LOCATION=<value>` |

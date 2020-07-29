@@ -4,21 +4,33 @@ description: 瞭解如何使用 SQL 查詢來查詢 Azure Cosmos DB 中的資料
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/21/2019
+ms.date: 07/24/2020
 ms.author: tisande
-ms.openlocfilehash: 1d24261edea843fa928ad00e3ce7babcb84acd3b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d292b7cfcda73cb4cd6ac2535c7e27fc675e1030
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74873330"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87308180"
 ---
 # <a name="getting-started-with-sql-queries"></a>開始使用 SQL 查詢
 
-Azure Cosmos DB SQL API 帳戶支援使用結構化查詢語言 (SQL) （SQL）當做 JSON 查詢語言來查詢專案。 Azure Cosmos DB 查詢語言的設計目標是：
+在 Azure Cosmos DB SQL API 帳戶中，有兩種方式可以讀取資料：
 
-* 支援 SQL，這是最熟悉且熱門的查詢語言之一，而不是發明新的查詢語言。 SQL 提供了正式的程式設計模型，可在 JSON 專案上進行豐富的查詢。  
+**點讀取**-您可以在單一*專案識別碼*和分割區索引鍵上執行索引鍵/值查閱。 *專案識別碼*和資料分割索引鍵組合是索引鍵，而專案本身則是值。 針對 1 KB 檔，點讀取通常是成本 1[要求單位](request-units.md)，延遲低於10毫秒。 點讀取會傳回單一專案。
 
-* 使用 JavaScript 的程式設計模型作為查詢語言的基礎。 JavaScript 的類型系統、運算式評估和函式呼叫都是 SQL API 的根。 這些根提供自然的程式設計模型，可用於關聯式投射、跨 JSON 專案的階層式導覽、自我聯結、空間查詢，以及叫用完全以 JavaScript 撰寫的使用者定義函數（Udf）。
+**SQL 查詢**-您可以使用結構化查詢語言 (SQL) （SQL）當做 JSON 查詢語言來撰寫查詢，以查詢資料。 查詢一律會產生至少2.3 個要求單位的成本，而且通常會有比點讀取更高和更多的變數延遲。 查詢可以傳回許多專案。
+
+Azure Cosmos DB 上大部分的大量讀取工作負載都使用點讀取和 SQL 查詢的組合。 如果您只需要讀取單一專案，則點讀取比查詢便宜且快速。 點讀取不需要使用查詢引擎來存取資料，而且可以直接讀取資料。 當然，並非所有工作負載都可以使用點讀取以獨佔方式讀取資料，因此支援 SQL 做為查詢語言，而不受[架構的索引編制](index-overview.md)則提供更有彈性的方式來存取您的資料。
+
+以下是如何使用每個 SDK 進行點讀取的一些範例：
+
+- [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.container.readitemasync?view=azure-dotnet)
+- [Java SDK](https://docs.microsoft.com/java/api/com.azure.cosmos.cosmoscontainer.readitem?view=azure-java-stable#com_azure_cosmos_CosmosContainer__T_readItem_java_lang_String_com_azure_cosmos_models_PartitionKey_com_azure_cosmos_models_CosmosItemRequestOptions_java_lang_Class_T__)
+- [Node.js SDK](https://docs.microsoft.com/javascript/api/@azure/cosmos/item?view=azure-node-latest#read-requestoptions-)
+- [Python SDK](https://docs.microsoft.com/python/api/azure-cosmos/azure.cosmos.containerproxy?view=azure-python#read-item-item--partition-key--populate-query-metrics-none--post-trigger-include-none----kwargs-)
+
+本檔的其餘部分說明如何開始在 Azure Cosmos DB 中撰寫 SQL 查詢。 您可以透過 SDK 或 Azure 入口網站執行 SQL 查詢。
 
 ## <a name="upload-sample-data"></a>上傳範例資料
 
@@ -27,7 +39,6 @@ Azure Cosmos DB SQL API 帳戶支援使用結構化查詢語言 (SQL) （SQL）�
 ### <a name="create-json-items"></a>建立 JSON 專案
 
 下列程式碼會建立兩個關於家族的簡單 JSON 專案。 Andersen 和 Wakefield 系列的簡單 JSON 專案包括父系、小孩及其寵物、位址和註冊資訊。 第一個專案具有字串、數位、布林值、陣列和嵌套屬性。
-
 
 ```json
 {
@@ -71,7 +82,7 @@ Azure Cosmos DB SQL API 帳戶支援使用結構化查詢語言 (SQL) （SQL）�
             { "givenName": "Shadow" }
         ]
       },
-      { 
+      {
         "familyName": "Miller",
          "givenName": "Lisa",
          "gender": "female",
@@ -87,7 +98,7 @@ Azure Cosmos DB SQL API 帳戶支援使用結構化查詢語言 (SQL) （SQL）�
 
 對 JSON 資料嘗試一些查詢，以瞭解 Azure Cosmos DB SQL 查詢語言的一些重要層面。
 
-下列查詢會傳回欄位符合的專案 `id` `AndersenFamily` 。 因為這是 `SELECT *` 查詢，所以查詢的輸出是完整的 JSON 專案。 如需 SELECT 語法的詳細資訊，請參閱[select 語句](sql-query-select.md)。 
+下列查詢會傳回欄位符合的專案 `id` `AndersenFamily` 。 因為這是 `SELECT *` 查詢，所以查詢的輸出是完整的 JSON 專案。 如需 SELECT 語法的詳細資訊，請參閱[select 語句](sql-query-select.md)。
 
 ```sql
     SELECT *
@@ -95,7 +106,7 @@ Azure Cosmos DB SQL API 帳戶支援使用結構化查詢語言 (SQL) （SQL）�
     WHERE f.id = "AndersenFamily"
 ```
 
-查詢結果如下： 
+查詢結果如下：
 
 ```json
     [{
@@ -146,7 +157,7 @@ Azure Cosmos DB SQL API 帳戶支援使用結構化查詢語言 (SQL) （SQL）�
     ORDER BY f.address.city ASC
 ```
 
-結果如下：
+結果為：
 
 ```json
     [

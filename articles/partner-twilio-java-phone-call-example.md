@@ -12,12 +12,13 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
-ms.openlocfilehash: 571fecde9a02dc667e89da1d3245e4d153500014
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.custom: devx-track-java
+ms.openlocfilehash: 9a28677063c6f6dd7bb7bcf6746dbc541308891f
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169505"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87305902"
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-java-application-on-azure"></a>如何在 Azure 上的 Java 應用程式中使用 Twilio 撥打電話
 下列範例將說明如何從 Azure 代管的網頁上使用 Twilio 撥打電話。 產生的應用程式會提示使用者提供通話值，如下列螢幕擷取畫面所示。
@@ -27,11 +28,11 @@ ms.locfileid: "86169505"
 您必須執行下列動作才能使用本主題中的程式碼：
 
 1. 取得 Twilio 帳戶和驗證權杖。 若要開始使用 Twilio，請評估的定價 [https://www.twilio.com/pricing][twilio_pricing] 。 您可以在註冊 [https://www.twilio.com/try-twilio][try_twilio] 。 如需 Twilio 所提供之 API 的相關資訊，請參閱 [https://www.twilio.com/api][twilio_api] 。
-2. 取得 Twilio JAR。 在 [https://github.com/twilio/twilio-java][twilio_java_github] 中，您可以下載 GitHub 來源並建立您自己的 jar，或下載預先建立的 jar (，而不需要相依性) 。
+2. 取得 Twilio JAR。 在 [https://github.com/twilio/twilio-java][twilio_java_github] 中，您可以下載 GitHub 來源並建立您自己的 jar，或下載預先建立的 jar （不論是否有相依性）。
    本主題中的程式碼是以預先建置的 TwilioJava-3.3.8-with-dependencies JAR 撰寫的。
 3. 將 JAR 新增至您的 Java 建置路徑。
 4. 如果您使用 Eclipse 建立此 Java 應用程式，請使用 Eclipse 的部署組件功能在應用程式部署檔案 (WAR) 中加入 Twilio JAR。 如果您並非使用 Eclipse 建立此 Java 應用程式，請確定 Twilio JAR 與您的 Java 應用程式包含在相同的 Azure 角色內，且已新增至應用程式的類別路徑。
-5. 確定您的 cacerts 金鑰存放區包含 Equifax Secure Certificate Authority 憑證，且具有 MD5 指模 67:CB:9D:C0:13:24:8A:82:9B:B2:17:1E:D1:1B:EC:D4 (序號為 35:DE:F4:CF，SHA1 指模為 D2:32:09:AD:23:D3:14:23:21:74:E4:0D:7F:9D:62:13:97:86:63:3A)。 這是服務的憑證授權單位單位 (CA) 憑證 [https://api.twilio.com][twilio_api_service] ，當您使用 Twilio api 時，會呼叫此憑證。 如需將此 CA 憑證新增至 JDK cacert 存放區的相關資訊，請參閱[新增憑證至 Java CA 憑證存放區][add_ca_cert]。
+5. 確定您的 cacerts 金鑰存放區包含 Equifax Secure Certificate Authority 憑證，且具有 MD5 指模 67:CB:9D:C0:13:24:8A:82:9B:B2:17:1E:D1:1B:EC:D4 (序號為 35:DE:F4:CF，SHA1 指模為 D2:32:09:AD:23:D3:14:23:21:74:E4:0D:7F:9D:62:13:97:86:63:3A)。 這是服務的憑證授權單位單位（CA）憑證 [https://api.twilio.com][twilio_api_service] ，會在您使用 Twilio api 時呼叫。 如需將此 CA 憑證新增至 JDK cacert 存放區的相關資訊，請參閱[新增憑證至 Java CA 憑證存放區][add_ca_cert]。
 
 此外，強烈建議您熟悉[使用 Eclipse 的 Azure 工具組建立 Hello World 應用程式][azure_java_eclipse_hello_world]上的資訊，或熟悉其他在 Azure 中代管 Java 應用程式的技術 (如果您未使用 Eclipse)。
 

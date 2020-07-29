@@ -4,16 +4,16 @@ description: 在 Application Insights 中設定 Web 測試。 如果網站無法
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 6daa2e4abb1b6580fd70f104e85f3a917f47dcdc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6f9c5fa691456195943f97419c1175fd5b586878
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87024583"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87310271"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>監視任何網站的可用性
 
-在您部署 web 應用程式/網站之後，您可以設定週期性測試來監視可用性和回應性。 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) 會將來自全球各地的 Web 要求定期傳送給您的應用程式。 如果您的應用程式沒有回應，或回應太慢，它會發出警示。
+在您部署 web 應用程式/網站之後，您可以設定週期性測試來監視可用性和回應性。 [Azure Application Insights](./app-insights-overview.md) 會將來自全球各地的 Web 要求定期傳送給您的應用程式。 如果您的應用程式沒有回應，或回應太慢，它會發出警示。
 
 您可以為公用網際網路可存取的任何 HTTP 或 HTTPS 端點設定可用性測試。 您不需要對正在測試的網站進行任何變更。 事實上，它甚至不需要是您擁有的網站。 您可以測試服務所依存之 REST API 的可用性。
 
@@ -107,9 +107,9 @@ ms.locfileid: "87024583"
 * 在 Git 或 Azure Boards 中記錄問題或工作項目來追蹤問題。 Bug 將包含此事件的連結。
 * 在 Visual Studio 中開啟 Web 測試結果。
 
-在[這裡](../../azure-monitor/app/transaction-diagnostics.md)深入了解端對端交易診斷體驗。
+在[這裡](./transaction-diagnostics.md)深入了解端對端交易診斷體驗。
 
-按一下例外狀況資料列，以查看造成綜合可用性測試失敗的伺服器端例外狀況的詳細資料。 您也可以取得[偵錯快照集](../../azure-monitor/app/snapshot-debugger.md)進行更多樣化的程式碼層級診斷。
+按一下例外狀況資料列，以查看造成綜合可用性測試失敗的伺服器端例外狀況的詳細資料。 您也可以取得[偵錯快照集](./snapshot-debugger.md)進行更多樣化的程式碼層級診斷。
 
 ![伺服器端診斷](./media/monitor-web-app-availability/open-instance-4.png)
 
@@ -120,8 +120,8 @@ ms.locfileid: "87024583"
 
 ## <a name="automation"></a>自動化
 
-* [使用 PowerShell 指令碼自動設定可用性測試](../../azure-monitor/app/powershell.md#add-an-availability-test)。
-* 設定會在產生警示時呼叫的 [webhook](../../azure-monitor/platform/alerts-webhooks.md)。
+* [使用 PowerShell 指令碼自動設定可用性測試](./powershell.md#add-an-availability-test)。
+* 設定會在產生警示時呼叫的 [webhook](../platform/alerts-webhooks.md)。
 
 ## <a name="troubleshooting"></a>疑難排解
 
@@ -131,3 +131,4 @@ ms.locfileid: "87024583"
 
 * [可用性警示](availability-alerts.md)
 * [多重步驟 Web 測試](availability-multistep.md)
+

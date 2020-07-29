@@ -9,12 +9,12 @@ ms.reviewer: estfan, valthom
 ms.topic: article
 ms.date: 03/06/2019
 tags: connectors
-ms.openlocfilehash: 808eef5424d678559ae94ffd04e41eacd0f16aee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 41e3f1ff430293ebc7b3828a0fd7090923fc209c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80371111"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281475"
 ---
 # <a name="integrate-3270-screen-driven-apps-on-ibm-mainframes-with-azure-by-using-azure-logic-apps-and-ibm-3270-connector"></a>使用 Azure Logic Apps 和 IBM 3270 連接器，整合 IBM 大型主機上的 3270 螢幕驅動應用程式與 Azure
 
@@ -39,7 +39,7 @@ ms.locfileid: "80371111"
 
 從設計工具產生中繼資料檔案之後，您可以將該檔案新增至 Azure 中的整合帳戶。 如此一來，當您新增3270連接器動作時，邏輯應用程式就可以存取您應用程式的中繼資料。 連接器會從您的整合帳戶讀取中繼資料檔案、處理3270畫面的流覽，並動態呈現3270連接器動作的參數。 接著，您可以將資料提供給主應用程式，連接器會將結果傳回您的邏輯應用程式。 如此一來，您就可以將繼承應用程式與 Azure、Microsoft 以及 Azure Logic Apps 支援的其他應用程式、服務和系統整合在一起。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
@@ -182,7 +182,7 @@ ms.locfileid: "80371111"
 
 1. 在 **[選擇新方案名稱**] 下，輸入方案的名稱。 從 [**類型**] 清單中，選取方案類型：
 
-   | 方案類型 | 描述 |
+   | 方案類型 | 說明 |
    |-----------|-------------|
    | **處理程序** | 適用于獨立或合併計畫 |
    | **[連接]** | 適用于連接計畫 |
@@ -292,7 +292,7 @@ ms.locfileid: "80371111"
    |---------------|-----------------|
    | **資料類型** | Byte、Date Time、Decimal、Int、Long、Short、String |
    | **欄位填滿技術** | 參數支援這些填滿類型，如有必要，請填妥空白： <p><p>- **類型**：在欄位中依序輸入字元。 <p>- **Fill**：以字元取代欄位的內容，如有必要，請以空格填滿。 <p>- **EraseEofType**：清除欄位，然後在欄位中依序輸入字元。 |
-   | **格式字串** | 某些參數資料類型使用格式字串，它會通知3270連接器如何將畫面中的文字轉換成 .NET 資料類型： <p><p>- **Datetime**： datetime 格式字串會遵循[.net 自訂日期和時間格式字串](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 例如，日期會 `06/30/2019` 使用格式字串 `MM/dd/yyyy` 。 <p>- **Decimal**： decimal 格式字串使用[COBOL Picture 子句](https://www.ibm.com/support/knowledgecenter/SS6SG3_5.2.0/com.ibm.cobol52.ent.doc/PGandLR/ref/rlddepic.html)。 例如，數位會 `100.35` 使用格式字串 `999V99` 。 |
+   | **格式字串** | 某些參數資料類型使用格式字串，它會通知3270連接器如何將畫面中的文字轉換成 .NET 資料類型： <p><p>- **Datetime**： datetime 格式字串會遵循[.net 自訂日期和時間格式字串](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 例如，日期會 `06/30/2019` 使用格式字串 `MM/dd/yyyy` 。 <p>- **Decimal**： decimal 格式字串使用[COBOL Picture 子句](https://www.ibm.com/support/knowledgecenter/SS6SG3_5.2.0/com.ibm.cobol52.ent.doc/PGandLR/ref/rlddepic.html)。 例如，數位會 `100.35` 使用格式字串 `999V99` 。 |
    |||
 
 ## <a name="save-and-view-metadata"></a>儲存及查看中繼資料
@@ -364,7 +364,7 @@ ms.locfileid: "80371111"
    | **整合帳戶識別碼** | 是 | <*整合-帳戶-名稱*> | 您的整合帳戶名稱 |
    | **整合帳戶 SAS URL** | 是 | <*整合-帳戶-SAS-URL*> | 您的整合帳戶的共用存取簽章（SAS） URL，您可以從 Azure 入口網站中整合帳戶的設定產生。 <p>1. 在您的整合帳戶功能表的 [**設定**] 底下，選取 [**回呼 URL**]。 <br>2. 在右側窗格中，複製產生的 [**回呼 URL** ] 值。 |
    | **Server** | 是 | <*TN3270-伺服器-名稱*> | TN3270 服務的伺服器名稱 |
-   | **通訊埠** | 否 | <*TN3270-伺服器-埠*> | TN3270 伺服器所使用的埠。 如果保留空白，連接器會使用 `23` 做為預設值。 |
+   | **連接埠** | 否 | <*TN3270-伺服器-埠*> | TN3270 伺服器所使用的埠。 如果保留空白，連接器會使用 `23` 做為預設值。 |
    | **裝置類型** | 否 | <*IBM-終端機模型*> | 要模擬之 IBM 終端機的型號名稱或編號。 如果保留空白，連接器會使用預設值。 |
    | **字碼頁** | 否 | <*字碼頁-編號*> | 主機的字碼頁編號。 如果保留空白，連接器會使用 `37` 做為預設值。 |
    | **邏輯單元名稱** | 否 | <*邏輯單位-名稱*> | 要向主機要求的特定邏輯單元名稱 |
@@ -378,7 +378,7 @@ ms.locfileid: "80371111"
 
 1. 提供動作的必要資訊：
 
-   | 屬性 | 必要 | 值 | 描述 |
+   | 屬性 | 必要 | 值 | 說明 |
    |----------|----------|-------|-------------|
    | **Hidx 名稱** | 是 | <*HIDX-檔案名*> | 選取您要使用的 3270 HIDX 檔案。 |
    | **方法名稱** | 是 | <*方法名稱*> | 在 HIDX 檔案中選取您想要使用的方法。 選取方法之後，就會出現 [**加入新的參數**] 清單，讓您可以選取要與該方法搭配使用的參數。 |
@@ -409,7 +409,7 @@ ms.locfileid: "80371111"
 
 ## <a name="connector-reference"></a>連接器參考
 
-如需此連接器的更多技術詳細資料，例如連接器的 Swagger 檔案所描述的觸發程式、動作和限制，請參閱[連接器的參考頁面](https://docs.microsoft.com/connectors/si3270/)。
+如需此連接器的更多技術詳細資料，例如連接器的 Swagger 檔案所描述的觸發程式、動作和限制，請參閱[連接器的參考頁面](/connectors/si3270/)。
 
 > [!NOTE]
 > 對於[整合服務環境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的邏輯應用程式，此連接器的 ise 標記版本會使用[ISE 訊息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)。
@@ -417,3 +417,4 @@ ms.locfileid: "80371111"
 ## <a name="next-steps"></a>後續步驟
 
 * 了解其他 [Logic Apps 連接器](../connectors/apis-list.md)
+

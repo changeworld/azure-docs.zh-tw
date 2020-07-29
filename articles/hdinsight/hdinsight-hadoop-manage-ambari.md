@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/16/2020
-ms.openlocfilehash: f3244ec3f85d5085d3dbc2e503eab59af5572c56
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: ce078a3dad645f592bb33ed55ce508f68ce8f30a
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86075751"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281376"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>使用 Apache Ambari Web UI 管理 HDInsight 叢集
 
@@ -49,7 +49,7 @@ Ambari Web UI 可在您的 HDInsight 叢集上使用 `https://CLUSTERNAME.azureh
 
 ![Apache Ambari 儀表板總覽](./media/hdinsight-hadoop-manage-ambari/apache-ambari-dashboard.png)
 
-|項目 |描述 |
+|項目 |說明 |
 |---|---|
 |Ambari 標誌|開啟 [儀表板]，可以用來監視叢集。|
 |叢集名稱 # ops|顯示進行中的 Ambari 作業數目。 選取叢集名稱或 [# 項作業]**** 會顯示背景作業清單。|
@@ -58,7 +58,7 @@ Ambari Web UI 可在您的 HDInsight 叢集上使用 `https://CLUSTERNAME.azureh
 |服務|叢集中服務的資訊和設定。|
 |主機|叢集中節點的資訊和設定。|
 |警示|資訊、警告和重要警示的記錄。|
-|系統管理員|安裝在叢集上的軟體堆疊/服務、服務帳戶資訊及 Kerberos 安全性。|
+|管理|安裝在叢集上的軟體堆疊/服務、服務帳戶資訊及 Kerberos 安全性。|
 |[系統管理] 按鈕|Ambari 管理、使用者設定和登出。|
 
 ## <a name="monitoring"></a>監視
@@ -108,6 +108,7 @@ Ambari Web UI 可在您的 HDInsight 叢集上使用 `https://CLUSTERNAME.azureh
 
 儀表板上的 [ **服務** ] 提要欄位可讓您快速了解叢集上執行之服務的狀態。 各種圖示用來指出狀態或應採取的動作。 例如，需要回收服務時會顯示黃色回收符號。
 
+
 ![Apache Ambari services 端列](./media/hdinsight-hadoop-manage-ambari/apache-ambari-service-bar.png)
 
 > [!NOTE]  
@@ -153,7 +154,7 @@ Ambari Web UI 可在您的 HDInsight 叢集上使用 `https://CLUSTERNAME.azureh
 
 2. 使用 [**動作**] 功能表來選取您想要執行的動作：
 
-    |項目 |描述 |
+    |項目 |說明 |
     |---|---|
     |啟動所有元件|啟動主機上的所有元件。|
     |停止所有元件|停止主機上的所有元件。|
@@ -170,10 +171,10 @@ Ambari Web UI 可在您的 HDInsight 叢集上使用 `https://CLUSTERNAME.azureh
 
 在 [儀表板]**** 或 [服務]**** 頁面中，使用服務清單底部的 [動作]**** 按鈕來停止和啟動所有服務。
 
-![Apache Ambari 服務動作清單](./media/hdinsight-hadoop-manage-ambari/ambari-service-actions.png)
+:::image type="content" source="./media/hdinsight-hadoop-manage-ambari/ambari-service-actions.png" alt-text="Apache Ambari 服務動作清單。" border="true":::
 
 > [!WARNING]  
-> 雖然 [新增服務]**** 列在此功能表中，但不應用來將服務新增 HDInsight 叢集。 您應該在叢集佈建期間，使用指令碼動作加入新服務。 如需使用指令碼動作的詳細資訊，請參閱 [使用指令碼動作自訂 HDInsight 叢集](hdinsight-hadoop-customize-cluster-linux.md)。
+> 您應該在叢集佈建期間，使用指令碼動作加入新服務。 如需使用指令碼動作的詳細資訊，請參閱 [使用指令碼動作自訂 HDInsight 叢集](hdinsight-hadoop-customize-cluster-linux.md)。
 
 雖然 [ **動作** ] 按鈕可以重新啟動所有服務，但您想要啟動、停止或重新啟動的往往是特定服務。 請使用下列步驟來對個別服務執行動作：
 

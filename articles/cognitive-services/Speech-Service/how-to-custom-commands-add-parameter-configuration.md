@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: sausin
-ms.openlocfilehash: 5417ff3b53526adbaeba2b9df58694ad495475d3
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 45dba3b7f46ec558c46b8505da26fd3ef4de4cbc
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85308029"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284178"
 ---
 # <a name="add-configurations-to-commands-parameters"></a>將設定新增至命令參數
 
@@ -24,7 +24,7 @@ ms.locfileid: "85308029"
  - 參數值如何屬於自訂命令應用程式外部定義的集合
  - 如何在參數值上新增驗證子句
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 您必須已完成下列文章中的步驟：
 
@@ -43,7 +43,7 @@ ms.locfileid: "85308029"
 
 | 設定 | 建議的值 |
 |----|----|
-| 名稱 | `getDevices` |
+| Name | `getDevices` |
 | URL | `https://aka.ms/speech/cc-sampledevices` |
 | 方法 | GET |
 
@@ -84,7 +84,7 @@ ms.locfileid: "85308029"
 > [!IMPORTANT]
 > 除非您已在左窗格的 [ **web 端點**] 區段中設定 web 端點，否則您不會看到設定參數以接受來自外部類別目錄之輸入的選項。
 
-### <a name="try-it-out"></a>試試看
+### <a name="try-it-out"></a>試做
 
 選取 [**定型**]，並等待定型完成。 定型完成之後，請選取 [**測試**]，然後嘗試一些互動。
 
@@ -112,12 +112,12 @@ ms.locfileid: "85308029"
     | ---- | ---- | ---- |
     | 最小值 | `60` | 對於 Number 參數，這個參數可以採用的最小值 |
     | 最大值 | `80` | 對於 Number 參數，這個參數可以採用的最大值 |
-    | 失敗回應 |  簡單編輯器 > 第一種變化 >`Sorry, I can only set temperature between 60 and 80 degrees` | 如果驗證失敗，提示要求輸入新值 |
+    | 失敗回應 |  簡單編輯器 > 第一種變化 >`Sorry, I can only set temperature between 60 and 80 degrees. What temperature do you want?` | 如果驗證失敗，提示要求輸入新值 |
 
     > [!div class="mx-imgBorder"]
     > ![新增範圍驗證](media/custom-commands/add-validations-temperature.png)
 
-### <a name="try-it-out"></a>試試看
+### <a name="try-it-out"></a>試做
 
 1. 選取右窗格頂端的 [**定型**] 圖示。
 

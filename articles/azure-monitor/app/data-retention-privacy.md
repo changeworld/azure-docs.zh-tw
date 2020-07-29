@@ -3,12 +3,13 @@ title: Azure Application Insights 中的資料保留和儲存 | Microsoft Docs
 description: 保留和隱私權原則聲明
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 039e86f964649441967dff82270a3a6c460612f0
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 772777c48c8d16197cd8a73586f6549837d7d080
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324466"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372394"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Application Insights 中的資料收集、保留和儲存
 
@@ -213,7 +214,7 @@ AzureLogHandler(
 | Windows Server 2012 - 2016 | 支援，而且已預設為啟用。 | 確認您仍在使用[預設設定](/windows-server/security/tls/tls-registry-settings) |
 | Windows 7 SP1 和 Windows Server 2008 R2 SP1 | 支援，但預設為不啟用。 | 請參閱[傳輸層安全性 (TLS) 登錄設定](/windows-server/security/tls/tls-registry-settings)頁面，了解詳細的啟用方式。  |
 | Windows Server 2008 SP2 | TLS 1.2 支援需要更新。 | 請在 Windows Server 2008 SP2 中參閱[新增 TLS 1.2 支援的更新](https://support.microsoft.com/help/4019276/update-to-add-support-for-tls-1-1-and-tls-1-2-in-windows-server-2008-s)。 |
-|Windows Vista | 不支援。 | N/A
+|Windows Vista | 不支援。 | 不適用
 
 ### <a name="check-what-version-of-openssl-your-linux-distribution-is-running"></a>請檢查您 Linux 發行版本所執行的 OpenSSL 版本
 

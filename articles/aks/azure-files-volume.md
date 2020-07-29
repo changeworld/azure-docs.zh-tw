@@ -5,12 +5,12 @@ description: 了解如何透過 Azure 檔案服務手動建立磁碟區，以搭
 services: container-service
 ms.topic: article
 ms.date: 03/01/2019
-ms.openlocfilehash: 144d93cbb3b66f260dbd9d92863ca5fb13ed00a5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e7f013d16b899418a5262f23dfcc595a1e270616
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82207661"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281203"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-files-share-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中手動建立和使用 Azure 檔案共用的磁碟區
 
@@ -234,6 +234,8 @@ azurefile   Bound    azurefile   5Gi        RWX            azurefile      5s
 如需相關的最佳做法，請參閱 [AKS 中的儲存和備份最佳做法][operator-best-practices-storage]。
 
 如需有關 AKS 叢集與 Azure 檔案服務互動的詳細資訊，請參閱[適用於 Azure 檔案服務的 Kubernetes 外掛程式][kubernetes-files]。
+
+如需儲存類別參數，請參閱靜態布建[（攜帶您自己的檔案共用）](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/docs/driver-parameters.md#static-provisionbring-your-own-file-share)。
 
 <!-- LINKS - external -->
 [kubectl-create]: https://kubernetes.io/docs/user-guide/kubectl/v1.8/#create

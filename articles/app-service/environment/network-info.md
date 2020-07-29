@@ -4,15 +4,15 @@ description: 瞭解 ASE 網路流量，以及如何使用 ASE 設定網路安全
 author: ccompy
 ms.assetid: 955a4d84-94ca-418d-aa79-b57a5eb8cb85
 ms.topic: article
-ms.date: 06/29/2020
+ms.date: 07/27/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 10cb1149880c70d991dd5ab49acceab3283372a7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6fde04be99eaa61287b486eaefdcb92d66d88bc7
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517848"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87280914"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>App Service Environment 的網路考量 #
 
@@ -158,13 +158,14 @@ NSG 中需要 ASE 才能運作的必要專案是允許流量：
 * 從 ASE 子網到所有埠上的 ASE 子網
 
 **輸出**
+* UDP 到埠53上的所有 Ip
 * UDP 到埠123上的所有 Ip
 * TCP 到埠80、443上的所有 Ip
 * TCP 到埠1433上的 IP 服務標記 AzureSQL
 * TCP 到埠12000上的所有 Ip
 * 所有埠上的 ASE 子網
 
-這些埠不包含應用程式成功使用所需的埠。 例如，您的應用程式可能需要呼叫通訊埠3306上的 MySQL 伺服器。 DNS 埠（埠53）不需要新增，因為 NSG 規則不會影響到 DNS 的流量。 埠123上的網路時間通訊協定（NTP）是作業系統所使用的時間同步處理通訊協定。 NTP 端點不是應用程式服務特有，會隨著作業系統而有所不同，而且不會在定義完善的地址清單中。 若要避免時間同步處理問題，您必須允許 UDP 流量連到埠123上的所有位址。 連到埠12000流量的輸出 TCP 適用于系統支援和分析。 端點是動態的，而且不是定義完善的位址集合。
+這些埠不包含應用程式成功使用所需的埠。 例如，您的應用程式可能需要在埠3306上呼叫 MySQL 伺服器。 埠123上的網路時間通訊協定（NTP）是作業系統所使用的時間同步處理通訊協定。 NTP 端點不是應用程式服務特有，會隨著作業系統而有所不同，而且不會在定義完善的地址清單中。 若要避免時間同步處理問題，您必須允許 UDP 流量連到埠123上的所有位址。 連到埠12000流量的輸出 TCP 適用于系統支援和分析。 端點是動態的，而且不是定義完善的位址集合。
 
 一般的應用程式存取連接埠為：
 
@@ -196,7 +197,7 @@ NSG 中需要 ASE 才能運作的必要專案是允許流量：
 當您在入口網站中建立 ASE 時，我們也會在隨著 ASE 建立的子網路上建立一組路由資料表。  這些路由只單純指示直接將輸出流量傳送至網際網路。  
 若要手動建立路由，請依照下列步驟執行︰
 
-1. 前往 Azure 入口網站。 選取 [**網路**  >  **] [路由表]**。
+1. 移至 Azure 入口網站。 選取 [**網路**  >  **] [路由表]**。
 
 2. 在和您 VNet 相同的區域內建立一個新的路由表。
 

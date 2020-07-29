@@ -2,17 +2,17 @@
 title: 建立及設定適用於 Azure 磁碟加密的金鑰保存庫
 description: 本文提供建立及設定金鑰保存庫，以與 Azure 磁碟加密搭配使用的步驟
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: conceptual
 author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: ce52c73752691693ff42832d37c222f95edd0d51
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ecbc44a3fe376d41b245c88ab11c5937f57155a9
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87069727"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372683"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption"></a>建立及設定適用於 Azure 磁碟加密的金鑰保存庫
 

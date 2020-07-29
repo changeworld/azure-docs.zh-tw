@@ -9,11 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: a33933e63cc7c15de7d60430521f810f8546988c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ad92f796205d84a372de610cb210bbf8878a6c9b
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84667874"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282767"
 ---
 # <a name="configure-replication-to-azure-sql-edge-preview"></a>設定複寫至 Azure SQL Edge (預覽) 
 
@@ -23,7 +24,7 @@ ms.locfileid: "84667874"
   
 - 「Azure SQL Edge」的實例必須是「發行者」的「發送訂閱者」。
 - 發行者和散發者可以是：
-   - SQL Server 在內部部署執行的實例，或是在 Azure 虛擬機器中執行 SQL Server 的實例。 如需詳細資訊，請參閱 [Azure 虛擬機器上的 SQL Server 概觀](https://azure.microsoft.com/documentation/articles/virtual-machines-sql-server-infrastructure-services/)。 SQL Server 實例必須使用晚于 SQL Server 2016 的版本。
+   - SQL Server 在內部部署執行的實例，或是在 Azure 虛擬機器中執行 SQL Server 的實例。 如需詳細資訊，請參閱 [Azure 虛擬機器上的 SQL Server 概觀](https://docs.microsoft.com/azure/azure-sql/virtual-machines/)。 SQL Server 實例必須使用晚于 SQL Server 2016 的版本。
    - Azure SQL 受控執行個體的實例。 SQL 受控執行個體可以裝載發行者、散發者和訂閱者資料庫。 如需詳細資訊，請參閱[使用 SQL Database 受控執行個體進行複寫](https://docs.microsoft.com/azure/sql-database/replication-with-sql-database-managed-instance/)。
 
 - 散發資料庫和複寫代理程式不能放在 Azure SQL Edge 的實例上。  
