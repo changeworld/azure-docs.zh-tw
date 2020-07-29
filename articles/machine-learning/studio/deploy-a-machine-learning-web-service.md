@@ -1,6 +1,5 @@
 ---
-title: 部署 Web 服務
-titleSuffix: ML Studio (classic) - Azure
+title: ML Studio （傳統）：部署 web 服務-Azure
 description: 如何將訓練實驗轉換成預測實驗、準備部署，然後將它部署為 Azure Machine Learning Studio （傳統） web 服務。
 services: machine-learning
 ms.service: machine-learning
@@ -10,13 +9,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 01/06/2017
-ms.openlocfilehash: 3fcf4e180233c6ceaa552b3505462639569ed974
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f85ef90520049aef2cb39da9c360013d6f11aca0
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84696383"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318703"
 ---
 # <a name="deploy-an-azure-machine-learning-studio-classic-web-service"></a>部署 Azure Machine Learning Studio （傳統） web 服務
+
+**適用於：** ![否](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md)![是](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統版) 
+
 
 Azure Machine Learning Studio （傳統）可讓您建立和測試預測性分析解決方案。 您接著可以將解決方案部署為 Web 服務。
 
@@ -209,7 +212,7 @@ RRS 測試頁面會顯示輸入、輸出以及任何您已為實驗定義的全�
 6. 從 [資源群組] **** 下拉式清單中，選取方案的資源群組。 如需資源群組的詳細資訊，請參閱 [Azure Resource Manager 概觀](../../azure-resource-manager/management/overview.md)。
 7. 在 [方案名稱] **** 中，輸入方案的名稱。
 8. 在 [方案選項] **** 下，按一下新方案的計費層級。
-9. 按一下 [建立]。
+9. 按一下 [建立]  。
 
 #### <a name="deploy-the-web-service-to-another-region"></a>將 Web 服務部署到另一個區域
 

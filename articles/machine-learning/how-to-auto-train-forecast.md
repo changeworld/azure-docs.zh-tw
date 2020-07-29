@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 03/09/2020
-ms.openlocfilehash: 4f27fc9542d6c4e9027c7a1a0d4daeb7cb079e81
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 9b81dbce9f73c76ceea0f7842d731d00f905fb01
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321542"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371510"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>將時間序列預測模型自動定型
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -130,7 +130,7 @@ automl_config = AutoMLConfig(task='forecasting',
 
 * 偵測時間序列取樣頻率 (例如，每小時、每天、每週)，並為不存在的時間點建立新記錄，使序列連續不斷。
 * 插補目標中的遺漏值 (透過向前填滿)，以及插補特徵資料行中的遺漏值 (使用中位數的資料行值)
-* 建立粒紋型特徵，以啟用跨不同序列的固定效果
+* 建立以時間序列識別碼為基礎的功能，以啟用跨不同系列的固定效果
 * 建立時間型特徵，以協助學習季節性模式
 * 將類別變數編碼為數值數量
 
@@ -139,21 +139,21 @@ automl_config = AutoMLConfig(task='forecasting',
 | 參數名稱&nbsp; | 描述 | 必要 |
 |-------|-------|-------|
 |`time_column_name`|用來指定輸入資料中用來建置時間序列並推斷其頻率的日期時間資料行。|✓|
-|`grain_column_names`|在輸入資料中定義個別序列群組的名稱。 如果未定義粒紋，則會假設資料集為一個時間序列。||
-|`max_horizon`|以時間序列頻率的單位，定義所需的預測範圍上限。 單位是以預測器應預測出的定型資料時間間隔為基礎，例如，每月、每週。|✓|
+|`time_series_id_column_names`|用來唯一識別資料中具有相同時間戳記的多個資料列之時間序列的資料行名稱。 如果未定義時間序列識別碼，則會假設資料集是一種時間序列。||
+|`forecast_horizon`|定義您想要預測的期間數。 水準是以時間序列頻率的單位來計算。 單位是以預測器應預測出的定型資料時間間隔為基礎，例如，每月、每週。|✓|
 |`target_lags`|要根據資料頻率延隔目標值的資料列數目。 延隔會以清單或單一整數來表示。 當獨立變數與相依變數之間的關聯性預設不相符或相互關聯時，應該使用延隔。 例如，當嘗試預測產品的需求時，任何月份中需求可能取決於之前 3 個月的特定商品價格。 在此範例中，建議讓目標 (需求) 延隔 3 個月，以供模型以正確的關聯性來定型。||
 |`target_rolling_window_size`|要用來產生預測值的 *n* 個歷程記錄週期，小於或等於定型集大小。 如果省略，則 *n* 就是完整的定型集大小。 若在將模型定型時只想考慮特定數量的歷程記錄，則請指定此參數。||
 |`enable_dnn`|啟用預測 DNN 功能。||
 
 如需詳細資訊，請參閱[參考文件](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)。
 
-將這些時間序列設定建立為字典物件。 將 `time_column_name` 設定為資料集內的 `day_datetime` 欄位。 定義 `grain_column_names` 參數，以確保為資料建立**兩個個別的時間序列群組**；一個用於儲存 A 和 B。最後，將 `max_horizon` 設定為 50，以針對整個測試集進行預測。 使用 `target_rolling_window_size` 將預測時段設定為 10 個週期，並使用 `target_lags` 參數對前面兩個週期的目標值指定單一延隔。 建議將 `max_horizon`、`target_rolling_window_size` 和 `target_lags` 設定為 "auto"，如此其即會自動偵測這些值。 在下列範例中，這些參數已使用 "auto" 設定。 
+將這些時間序列設定建立為字典物件。 將 `time_column_name` 設定為資料集內的 `day_datetime` 欄位。 定義 `time_series_id_column_names` 參數，以確保為資料建立**兩個個別的時間序列群組**；一個用於儲存 A 和 B。最後，將 `forecast_horizon` 設定為 50，以針對整個測試集進行預測。 使用 `target_rolling_window_size` 將預測時段設定為 10 個週期，並使用 `target_lags` 參數對前面兩個週期的目標值指定單一延隔。 建議將 `forecast_horizon`、`target_rolling_window_size` 和 `target_lags` 設定為 "auto"，如此其即會自動偵測這些值。 在下列範例中，這些參數已使用 "auto" 設定。 
 
 ```python
 time_series_settings = {
     "time_column_name": "day_datetime",
-    "grain_column_names": ["store"],
-    "max_horizon": "auto",
+    "time_series_id_column_names": ["store"],
+    "forecast_horizon": "auto",
     "target_lags": "auto",
     "target_rolling_window_size": "auto",
     "preprocess": True,
@@ -163,7 +163,7 @@ time_series_settings = {
 > [!NOTE]
 > 自動化機器學習前置處理步驟 (功能正規化、處理遺漏的資料、將文字轉換成數值等等) 會成為基礎模型的一部分。 使用模型進行預測時，定型期間所套用的相同前置處理步驟會自動套用至您的輸入資料。
 
-藉由在上述程式碼片段中定義 `grain_column_names`，AutoML 會建立兩個不同的時間序列群組，也稱為多個時間序列。 如果未定義任何粒紋，則 AutoML 會假設資料集為單一時間序列。 若要深入了解單一時間序列，請參閱 [energy_demand_notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand)。
+藉由在上述程式碼片段中定義 `time_series_id_column_names`，AutoML 會建立兩個不同的時間序列群組，也稱為多個時間序列。 如果未定義任何時間序列識別碼，則 AutoML 會假設資料集為單一時間序列。 若要深入了解單一時間序列，請參閱 [energy_demand_notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand)。
 
 現在，請建立標準 `AutoMLConfig` 物件，並指定 `forecasting` 工作類型，然後提交實驗。 在模型完成之後，請擷取最佳的執行反覆項目。
 
@@ -221,6 +221,32 @@ automl_config = AutoMLConfig(task='forecasting',
 
 如需運用 DNN 的詳細程式碼範例，請參閱[飲料生產預測筆記本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb)。
 
+### <a name="customize-featurization"></a>自訂特徵化
+您可以自訂特徵化設定，以確保用來將 ML 模型定型的資料和功能會產生相關的預測。 
+
+若要自訂 featurizations，請 `"featurization": FeaturizationConfig` 在您的物件中指定 `AutoMLConfig` 。 如果您要使用 Azure Machine Learning studio 進行實驗，請參閱操作[說明文章](how-to-use-automated-ml-for-ml-models.md#customize-featurization)。
+
+支援的自訂項目包含：
+
+|自訂|定義|
+|--|--|
+|**資料行用途更新**|針對指定的資料行覆寫自動偵測的功能類型。|
+|**轉換器參數更新** |更新指定之轉換器的參數。 目前支援*Imputer* （fill_value 和中位數）。|
+|**卸除資料行** |指定要從特徵化中捨棄的資料行。|
+
+藉 `FeaturizationConfig` 由定義您的特徵化設定來建立物件：
+```python
+featurization_config = FeaturizationConfig()
+# `logQuantity` is a leaky feature, so we remove it.
+featurization_config.drop_columns = ['logQuantitity']
+# Force the CPWVOL5 feature to be of numeric type.
+featurization_config.add_column_purpose('CPWVOL5', 'Numeric')
+# Fill missing values in the target column, Quantity, with zeroes.
+featurization_config.add_transformer_params('Imputer', ['Quantity'], {"strategy": "constant", "fill_value": 0})
+# Fill mising values in the `INCOME` column with median value.
+featurization_config.add_transformer_params('Imputer', ['INCOME'], {"strategy": "median"})
+```
+
 ### <a name="target-rolling-window-aggregation"></a>目標移動時段彙總
 預測器可擁有的最佳資訊通常是目標其最新值。 建立目標的累計統計資料可能會提高預測精確度。 目標移動時段彙總可供將資料值的移動彙總作為特徵新增。 若要啟用目標移動時段，請將 `target_rolling_window_size` 設為想要的整數時段大小。 
 
@@ -271,7 +297,7 @@ rmse = sqrt(mean_squared_error(actual_labels, predict_labels))
 rmse
 ```
 
-現在已決定整體模型精確度，接著下一個最實際步驟是使用模型來預測未知的未來值。 如果使用與測試集 `test_data` 相同的格式來提供資料集，但具有未來的日期時間，則所產生預測集是每個時間序列步驟的預測值。 假設資料集內的最後一個時間序列記錄是 2018 年 12 月 31 日。 若要預測隔天的需求 (或需要預測的週期數，小於或等於 `max_horizon`)，請為每間商店建立 2019 年 1 月 1 日的單一時間序列記錄。
+現在已決定整體模型精確度，接著下一個最實際步驟是使用模型來預測未知的未來值。 如果使用與測試集 `test_data` 相同的格式來提供資料集，但具有未來的日期時間，則所產生預測集是每個時間序列步驟的預測值。 假設資料集內的最後一個時間序列記錄是 2018 年 12 月 31 日。 若要預測隔天的需求 (或需要預測的週期數，小於或等於 `forecast_horizon`)，請為每間商店建立 2019 年 1 月 1 日的單一時間序列記錄。
 
 ```output
 day_datetime,store,week_of_year
@@ -282,7 +308,7 @@ day_datetime,store,week_of_year
 重複必要的步驟，將此未來資料載入至資料框架，然後執行 `best_run.predict(test_data)` 來預測未來值。
 
 > [!NOTE]
-> 週期數若大於 `max_horizon`，則無法預測值。 若要預測目前範圍以外的未來值，模型必須以較大的範圍來重新定型。
+> 週期數若大於 `forecast_horizon`，則無法預測值。 若要預測目前範圍以外的未來值，模型必須以較大的範圍來重新定型。
 
 ## <a name="next-steps"></a>後續步驟
 

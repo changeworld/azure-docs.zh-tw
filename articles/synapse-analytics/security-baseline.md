@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 34453dacd763b8b6a2bff3d977a7bc9b2ab78ca9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ef8c4754afc921eaeb68a84fbd8147f336a4940c
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089323"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87370269"
 ---
 # <a name="azure-security-baseline-for-synapse-analytics"></a>適用于 Synapse 分析的 Azure 安全性基準
 
@@ -314,7 +314,7 @@ ms.locfileid: "87089323"
 
 當您第一次部署 Azure SQL 時，您會為該登入指定管理員登入和相關聯的密碼。 此系統管理帳戶稱為伺服器管理員。您可以藉由開啟 Azure 入口網站並流覽至伺服器或受控實例的 [內容] 索引標籤，來識別資料庫的系統管理員帳戶。 您也可以設定具有完整系統管理許可權的 Azure AD 系統管理員帳戶，如果您想要啟用 Azure Active Directory 驗證，這是必要的。
 
-針對管理作業，請使用必須明確指派的內建 Azure 角色型存取控制（Azure RBAC）角色。 使用 Azure AD PowerShell 模組來執行臨機操作查詢，以探索屬於系統管理群組成員的帳戶。
+針對管理作業，請使用必須明確指派的 Azure 內建角色。 使用 Azure AD PowerShell 模組來執行臨機操作查詢，以探索屬於系統管理群組成員的帳戶。
 
 * [SQL Database 的驗證](https://docs.microsoft.com/azure/azure-sql/database/security-overview#authentication)
 
@@ -328,7 +328,7 @@ ms.locfileid: "87089323"
 
 * [如何管理 Azure SQL 中的現有登入和系統管理員帳戶](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage#existing-logins-and-user-accounts-after-creating-a-new-database)
 
-* [Azure RBAC 內建角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)
+* [Azure 內建角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) (機器翻譯)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -1026,7 +1026,7 @@ SQL Server 稽核可讓您建立伺服器稽核，其中可能包含伺服器等
 
 如果您使用客戶管理的金鑰來加密資料庫加密金鑰，請確定您的金鑰已備份。
 
-* [Azure Synapse SQL 集區中的備份與還原](https://docs.microsoft.coms/azure/synapse-analytics/sql-data-warehouse/backup-and-restore)
+* [Azure Synapse SQL 集區中的備份與還原](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/backup-and-restore)
 
 * [如何備份 Azure Key Vault 金鑰](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
 

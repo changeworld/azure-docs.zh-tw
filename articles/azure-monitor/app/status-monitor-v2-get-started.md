@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 05527ff456c70290a925befc9d30fb1eaf177199
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 66b0ba083dc05c10dbf001eebcbbdfa269285c2e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87008229"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318958"
 ---
 # <a name="get-started-with-azure-monitor-application-insights-agent-for-on-premises-servers"></a>開始使用適用于內部部署伺服器 Azure 監視器 Application Insights 代理程式
 
@@ -67,22 +67,23 @@ Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-xxxx-xxxx
 
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
  檢視遙測：
 
-- [探索計量](../../azure-monitor/platform/metrics-charts.md)以監視效能和使用量。
-- [搜尋事件和記錄](../../azure-monitor/app/diagnostic-search.md)以診斷問題。
+- [探索計量](../platform/metrics-charts.md)以監視效能和使用量。
+- [搜尋事件和記錄](./diagnostic-search.md)以診斷問題。
 - [流量分析](../log-query/log-query-overview.md)進行更先進的查詢。
-- [建立儀表板](../../azure-monitor/app/overview-dashboard.md)。
+- [建立儀表板](./overview-dashboard.md)。
 
  新增更多遙測：
 
 - [建立 Web 測試](monitor-web-app-availability.md)，確定您的網站保持即時狀態。
-- [新增 web 用戶端遙測](../../azure-monitor/app/javascript.md)，以查看來自網頁程式碼的例外狀況，並啟用追蹤呼叫。
-- [將 APPLICATION INSIGHTS SDK 新增至您的程式碼](../../azure-monitor/app/asp-net.md)，讓您可以插入追蹤和記錄呼叫。
+- [新增 web 用戶端遙測](./javascript.md)，以查看來自網頁程式碼的例外狀況，並啟用追蹤呼叫。
+- [將 APPLICATION INSIGHTS SDK 新增至您的程式碼](./asp-net.md)，讓您可以插入追蹤和記錄呼叫。
 
 使用 Application Insights 代理程式執行更多工具：
 
 - 如需相關命令的說明，請參閱這裡的[詳細指示](status-monitor-v2-detailed-instructions.md)。
 - 使用我們的指南來[疑難排解](status-monitor-v2-troubleshoot.md)Application Insights 代理程式。
+

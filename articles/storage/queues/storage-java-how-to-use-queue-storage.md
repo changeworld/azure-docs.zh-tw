@@ -2,18 +2,19 @@
 title: 如何使用 JAVA 的佇列儲存體-Azure 儲存體
 description: 瞭解如何使用佇列儲存體來建立和刪除佇列，以及使用適用于 JAVA 的 Azure 儲存體用戶端程式庫來插入、取得和刪除訊息。
 author: mhopkins-msft
+ms.custom: devx-track-java
 ms.author: mhopkins
 ms.date: 12/08/2016
 ms.service: storage
 ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
-ms.openlocfilehash: a0c94f3c9af9220bb3cf6476c50799d1f3313ffc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 17e5a542bc951df5b40144490f05e41aec1a09e8
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84809235"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319417"
 ---
 # <a name="how-to-use-queue-storage-from-java"></a>如何使用 Java 的佇列儲存體
 

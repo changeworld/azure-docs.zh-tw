@@ -3,12 +3,12 @@ title: 完整模式刪除
 description: 顯示資源類型如何處理 Azure Resource Manager 範本中的完整模式刪除。
 ms.topic: conceptual
 ms.date: 07/06/2020
-ms.openlocfilehash: 5e247fc20a128b3dd8b3fe646ef956388e0d2c2d
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 48a7758ce706612607b97647bc88238957b118d3
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027837"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371340"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>完整模式部署的 Azure 資源刪除
 
@@ -18,7 +18,7 @@ ms.locfileid: "86027837"
 
 當不在範本中時，標記為 [**否**] 的資源類型不會自動刪除;不過，如果刪除父資源，則會刪除它們。 如需行為的完整描述，請參閱 [Azure Resource Manager 部署模式](deployment-modes.md)。
 
-如果您[在範本中部署到一個以上的資源群組](cross-resource-group-deployment.md)，部署作業中指定的資源群組中的資源就有資格刪除。 不會刪除次要資源群組中的資源。
+如果您[在範本中部署到一個以上的資源群組](cross-scope-deployment.md)，部署作業中指定的資源群組中的資源就有資格刪除。 不會刪除次要資源群組中的資源。
 
 跳至資源提供者命名空間：
 > [!div class="op_single_selector"]
@@ -199,55 +199,55 @@ ms.locfileid: "86027837"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | DomainServices | Yes |
-> | DomainServices/oucontainer | No |
+> | DomainServices | 是 |
+> | DomainServices/oucontainer | 否 |
 
 ## <a name="microsoftaddons"></a>Microsoft.Addons
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | supportProviders | No |
+> | supportProviders | 否 |
 
 ## <a name="microsoftadhybridhealthservice"></a>Microsoft.ADHybridHealthService
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | aadsupportcases | No |
+> | aadsupportcases | 否 |
 > | addsservices | 否 |
-> | agents | No |
-> | anonymousapiusers | No |
-> | 組態 | No |
-> | 記錄 | No |
-> | reports | No |
-> | servicehealthmetrics | No |
-> | 服務 | No |
+> | agents | 否 |
+> | anonymousapiusers | 否 |
+> | 組態 | 否 |
+> | 記錄 | 否 |
+> | reports | 否 |
+> | servicehealthmetrics | 否 |
+> | 服務 | 否 |
 
 ## <a name="microsoftadvisor"></a>Microsoft.Advisor
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | 組態 | No |
-> | generateRecommendations | No |
-> | 中繼資料 | No |
-> | Mahout | No |
-> | suppressions | No |
+> | 組態 | 否 |
+> | generateRecommendations | 否 |
+> | 中繼資料 | 否 |
+> | Mahout | 否 |
+> | suppressions | 否 |
 
 ## <a name="microsoftalertsmanagement"></a>Microsoft.AlertsManagement
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | actionRules | Yes |
-> | alerts | No |
-> | alertsList | No |
-> | alertsMetaData | No |
-> | alertsSummary | No |
-> | alertsSummaryList | No |
-> | smartDetectorAlertRules | Yes |
-> | smartGroups | No |
+> | actionRules | 是 |
+> | alerts | 否 |
+> | alertsList | 否 |
+> | alertsMetaData | 否 |
+> | alertsSummary | 否 |
+> | alertsSummaryList | 否 |
+> | smartDetectorAlertRules | 是 |
+> | smartGroups | 否 |
 
 ## <a name="microsoftanalysisservices"></a>Microsoft.AnalysisServices
 
@@ -261,81 +261,81 @@ ms.locfileid: "86027837"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | reportFeedback | No |
+> | reportFeedback | 否 |
 > | 服務 | 是 |
-> | validateServiceName | No |
+> | validateServiceName | 否 |
 
 ## <a name="microsoftappconfiguration"></a>Microsoft.AppConfiguration
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | configurationStores | Yes |
-> | configurationStores / eventGridFilters | No |
+> | configurationStores | 是 |
+> | configurationStores / eventGridFilters | 否 |
 
 ## <a name="microsoftappplatform"></a>Microsoft.AppPlatform
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | Spring | Yes |
-> | 春季/應用程式 | No |
-> | 春季/apps/部署 | No |
+> | Spring | 是 |
+> | 春季/應用程式 | 否 |
+> | 春季/apps/部署 | 否 |
 
 ## <a name="microsoftattestation"></a>Microsoft.Attestation
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | attestationProviders | Yes |
-> | defaultProviders | No |
+> | attestationProviders | 是 |
+> | defaultProviders | 否 |
 
 ## <a name="microsoftauthorization"></a>Microsoft.Authorization
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | classicAdministrators | No |
-> | dataAliases | No |
-> | denyAssignments | No |
-> | elevateAccess | No |
-> | findOrphanRoleAssignments | No |
+> | classicAdministrators | 否 |
+> | dataAliases | 否 |
+> | denyAssignments | 否 |
+> | elevateAccess | 否 |
+> | findOrphanRoleAssignments | 否 |
 > | locks | 否 |
 > | 權限 | 否 |
-> | policyAssignments | No |
-> | policyDefinitions | No |
-> | policySetDefinitions | No |
-> | privateLinkAssociations | No |
-> | providerOperations | No |
-> | resourceManagementPrivateLinks | No |
-> | roleAssignments | No |
-> | roleAssignmentsUsageMetrics | No |
-> | roleDefinitions | No |
+> | policyAssignments | 否 |
+> | policyDefinitions | 否 |
+> | policySetDefinitions | 否 |
+> | privateLinkAssociations | 否 |
+> | providerOperations | 否 |
+> | resourceManagementPrivateLinks | 否 |
+> | roleAssignments | 否 |
+> | roleAssignmentsUsageMetrics | 否 |
+> | roleDefinitions | 否 |
 
 ## <a name="microsoftautomation"></a>Microsoft.Automation
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | automationAccounts | Yes |
-> | automationAccounts/設定 | Yes |
-> | automationAccounts/作業 | No |
-> | automationAccounts/privateEndpointConnectionProxies | No |
-> | automationAccounts/privateEndpointConnections | No |
-> | automationAccounts/privateLinkResources | No |
-> | automationAccounts / runbooks | Yes |
-> | automationAccounts/softwareUpdateConfigurations | No |
-> | automationAccounts / webhooks | No |
+> | automationAccounts | 是 |
+> | automationAccounts/設定 | 是 |
+> | automationAccounts/作業 | 否 |
+> | automationAccounts/privateEndpointConnectionProxies | 否 |
+> | automationAccounts/privateEndpointConnections | 否 |
+> | automationAccounts/privateLinkResources | 否 |
+> | automationAccounts / runbooks | 是 |
+> | automationAccounts/softwareUpdateConfigurations | 否 |
+> | automationAccounts / webhooks | 否 |
 
 ## <a name="microsoftavs"></a>Microsoft.AVS
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | privateClouds | Yes |
-> | privateClouds/授權 | No |
-> | privateClouds/叢集 | No |
-> | privateClouds / hcxEnterpriseSites | No |
+> | privateClouds | 是 |
+> | privateClouds/授權 | 否 |
+> | privateClouds/叢集 | 否 |
+> | privateClouds / hcxEnterpriseSites | 否 |
 
 ## <a name="microsoftazuregeneva"></a>Microsoft.Azure.Geneva
 
@@ -343,9 +343,9 @@ ms.locfileid: "86027837"
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
 > | environments | 否 |
-> | 環境/帳戶 | No |
-> | 環境/帳戶/命名空間 | No |
-> | 環境/帳戶/命名空間/設定 | No |
+> | 環境/帳戶 | 否 |
+> | 環境/帳戶/命名空間 | 否 |
+> | 環境/帳戶/命名空間/設定 | 否 |
 
 ## <a name="microsoftazureactivedirectory"></a>Microsoft.AzureActiveDirectory
 
@@ -353,31 +353,31 @@ ms.locfileid: "86027837"
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
 > | b2cDirectories | 是 |
-> | b2ctenants | No |
+> | b2ctenants | 否 |
 
 ## <a name="microsoftazuredata"></a>Microsoft.AzureData
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | dataControllers | Yes |
-> | hybridDataManagers | Yes |
-> | postgresInstances | Yes |
-> | sqlInstances | Yes |
-> | sqlManagedInstances | Yes |
-> | sqlServerInstances | Yes |
-> | sqlServerRegistrations | Yes |
-> | sqlServerRegistrations/sqlServers | No |
+> | dataControllers | 是 |
+> | hybridDataManagers | 是 |
+> | postgresInstances | 是 |
+> | sqlInstances | 是 |
+> | sqlManagedInstances | 是 |
+> | sqlServerInstances | 是 |
+> | sqlServerRegistrations | 是 |
+> | sqlServerRegistrations/sqlServers | 否 |
 
 ## <a name="microsoftazurestack"></a>Microsoft.AzureStack
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | cloudManifestFiles | No |
-> | edgeSubscriptions | Yes |
+> | cloudManifestFiles | 否 |
+> | edgeSubscriptions | 是 |
 > | registrations | 是 |
-> | 註冊/customerSubscriptions | No |
+> | 註冊/customerSubscriptions | 否 |
 > | registrations / products | 否 |
 
 ## <a name="microsoftazurestackhci"></a>Microsoft.AzureStackHCI
@@ -392,110 +392,110 @@ ms.locfileid: "86027837"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | batchAccounts | Yes |
+> | batchAccounts | 是 |
 
 ## <a name="microsoftbilling"></a>Microsoft.Billing
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | billingAccounts | No |
-> | billingAccounts/合約 | No |
-> | billingAccounts / billingPermissions | No |
-> | billingAccounts / billingProfiles | No |
-> | billingAccounts / billingProfiles / billingPermissions | No |
-> | billingAccounts / billingProfiles / billingRoleAssignments | No |
-> | billingAccounts / billingProfiles / billingRoleDefinitions | No |
-> | billingAccounts / billingProfiles / billingSubscriptions | No |
-> | billingAccounts / billingProfiles / createBillingRoleAssignment | No |
-> | billingAccounts/billingProfiles/客戶 | No |
-> | billingAccounts/billingProfiles/指示 | No |
-> | billingAccounts/billingProfiles/發票 | No |
-> | billingAccounts/billingProfiles/發票/pricesheet | No |
-> | billingAccounts/billingProfiles/發票/交易 | No |
-> | billingAccounts / billingProfiles / invoiceSections | No |
-> | billingAccounts / billingProfiles / invoiceSections / billingPermissions | No |
-> | billingAccounts / billingProfiles / invoiceSections / billingRoleAssignments | No |
-> | billingAccounts / billingProfiles / invoiceSections / billingRoleDefinitions | No |
-> | billingAccounts / billingProfiles / invoiceSections / billingSubscriptions | No |
-> | billingAccounts / billingProfiles / invoiceSections / createBillingRoleAssignment | No |
-> | billingAccounts / billingProfiles / invoiceSections / initiateTransfer | No |
-> | billingAccounts/billingProfiles/invoiceSections/products | No |
-> | billingAccounts/billingProfiles/invoiceSections/products/transfer | No |
-> | billingAccounts/billingProfiles/invoiceSections/products/updateAutoRenew | No |
-> | billingAccounts/billingProfiles/invoiceSections/筆交易 | No |
-> | billingAccounts/billingProfiles/invoiceSections/transfer | No |
-> | billingAccounts / BillingProfiles / patchOperations | No |
-> | billingAccounts / billingProfiles / paymentMethods | No |
-> | billingAccounts/billingProfiles/原則 | No |
-> | billingAccounts/billingProfiles/pricesheet | No |
-> | billingAccounts / billingProfiles / pricesheetDownloadOperations | No |
-> | billingAccounts/billingProfiles/products | No |
-> | billingAccounts/billingProfiles/筆交易 | No |
-> | billingAccounts / billingRoleAssignments | No |
-> | billingAccounts / billingRoleDefinitions | No |
-> | billingAccounts / billingSubscriptions | No |
-> | billingAccounts/billingSubscriptions/發票 | No |
-> | billingAccounts / createBillingRoleAssignment | No |
-> | billingAccounts / createInvoiceSectionOperations | No |
-> | billingAccounts/客戶 | No |
-> | billingAccounts/customers/billingPermissions | No |
-> | billingAccounts/customers/billingSubscriptions | No |
-> | billingAccounts/customers/initiateTransfer | No |
-> | billingAccounts/customers/原則 | No |
-> | billingAccounts/customers/products | No |
-> | billingAccounts/customers/交易所 | No |
-> | billingAccounts/客戶/傳輸 | No |
-> | billingAccounts/部門 | No |
-> | billingAccounts/部門/billingPermissions | No |
-> | billingAccounts/部門/billingRoleAssignments | No |
-> | billingAccounts/部門/billingRoleDefinitions | No |
-> | billingAccounts / enrollmentAccounts | No |
-> | billingAccounts / enrollmentAccounts / billingPermissions | No |
-> | billingAccounts / enrollmentAccounts / billingRoleAssignments | No |
-> | billingAccounts / enrollmentAccounts / billingRoleDefinitions | No |
-> | billingAccounts/發票 | No |
-> | billingAccounts/發票/交易 | No |
-> | billingAccounts / invoiceSections | No |
-> | billingAccounts / invoiceSections / billingSubscriptionMoveOperations | No |
-> | billingAccounts / invoiceSections / billingSubscriptions | No |
-> | billingAccounts/invoiceSections/billingSubscriptions/transfer | No |
-> | billingAccounts/invoiceSections/提升許可權 | No |
-> | billingAccounts / invoiceSections / initiateTransfer | No |
-> | billingAccounts / invoiceSections / patchOperations | No |
-> | billingAccounts / invoiceSections / productMoveOperations | No |
-> | billingAccounts/invoiceSections/products | No |
-> | billingAccounts/invoiceSections/products/transfer | No |
-> | billingAccounts/invoiceSections/products/updateAutoRenew | No |
-> | billingAccounts/invoiceSections/筆交易 | No |
-> | billingAccounts/invoiceSections/transfer | No |
-> | billingAccounts / lineOfCredit | No |
-> | billingAccounts / patchOperations | No |
-> | billingAccounts / paymentMethods | No |
-> | billingAccounts/products | No |
-> | billingAccounts/筆交易 | No |
-> | billingPeriods | No |
-> | billingPermissions | No |
-> | billingProperty | No |
-> | billingRoleAssignments | No |
-> | billingRoleDefinitions | No |
-> | createBillingRoleAssignment | No |
-> | departments | No |
-> | enrollmentAccounts | No |
-> | invoices | No |
+> | billingAccounts | 否 |
+> | billingAccounts/合約 | 否 |
+> | billingAccounts / billingPermissions | 否 |
+> | billingAccounts / billingProfiles | 否 |
+> | billingAccounts / billingProfiles / billingPermissions | 否 |
+> | billingAccounts / billingProfiles / billingRoleAssignments | 否 |
+> | billingAccounts / billingProfiles / billingRoleDefinitions | 否 |
+> | billingAccounts / billingProfiles / billingSubscriptions | 否 |
+> | billingAccounts / billingProfiles / createBillingRoleAssignment | 否 |
+> | billingAccounts/billingProfiles/客戶 | 否 |
+> | billingAccounts/billingProfiles/指示 | 否 |
+> | billingAccounts/billingProfiles/發票 | 否 |
+> | billingAccounts/billingProfiles/發票/pricesheet | 否 |
+> | billingAccounts/billingProfiles/發票/交易 | 否 |
+> | billingAccounts / billingProfiles / invoiceSections | 否 |
+> | billingAccounts / billingProfiles / invoiceSections / billingPermissions | 否 |
+> | billingAccounts / billingProfiles / invoiceSections / billingRoleAssignments | 否 |
+> | billingAccounts / billingProfiles / invoiceSections / billingRoleDefinitions | 否 |
+> | billingAccounts / billingProfiles / invoiceSections / billingSubscriptions | 否 |
+> | billingAccounts / billingProfiles / invoiceSections / createBillingRoleAssignment | 否 |
+> | billingAccounts / billingProfiles / invoiceSections / initiateTransfer | 否 |
+> | billingAccounts/billingProfiles/invoiceSections/products | 否 |
+> | billingAccounts/billingProfiles/invoiceSections/products/transfer | 否 |
+> | billingAccounts/billingProfiles/invoiceSections/products/updateAutoRenew | 否 |
+> | billingAccounts/billingProfiles/invoiceSections/筆交易 | 否 |
+> | billingAccounts/billingProfiles/invoiceSections/transfer | 否 |
+> | billingAccounts / BillingProfiles / patchOperations | 否 |
+> | billingAccounts / billingProfiles / paymentMethods | 否 |
+> | billingAccounts/billingProfiles/原則 | 否 |
+> | billingAccounts/billingProfiles/pricesheet | 否 |
+> | billingAccounts / billingProfiles / pricesheetDownloadOperations | 否 |
+> | billingAccounts/billingProfiles/products | 否 |
+> | billingAccounts/billingProfiles/筆交易 | 否 |
+> | billingAccounts / billingRoleAssignments | 否 |
+> | billingAccounts / billingRoleDefinitions | 否 |
+> | billingAccounts / billingSubscriptions | 否 |
+> | billingAccounts/billingSubscriptions/發票 | 否 |
+> | billingAccounts / createBillingRoleAssignment | 否 |
+> | billingAccounts / createInvoiceSectionOperations | 否 |
+> | billingAccounts/客戶 | 否 |
+> | billingAccounts/customers/billingPermissions | 否 |
+> | billingAccounts/customers/billingSubscriptions | 否 |
+> | billingAccounts/customers/initiateTransfer | 否 |
+> | billingAccounts/customers/原則 | 否 |
+> | billingAccounts/customers/products | 否 |
+> | billingAccounts/customers/交易所 | 否 |
+> | billingAccounts/客戶/傳輸 | 否 |
+> | billingAccounts/部門 | 否 |
+> | billingAccounts/部門/billingPermissions | 否 |
+> | billingAccounts/部門/billingRoleAssignments | 否 |
+> | billingAccounts/部門/billingRoleDefinitions | 否 |
+> | billingAccounts / enrollmentAccounts | 否 |
+> | billingAccounts / enrollmentAccounts / billingPermissions | 否 |
+> | billingAccounts / enrollmentAccounts / billingRoleAssignments | 否 |
+> | billingAccounts / enrollmentAccounts / billingRoleDefinitions | 否 |
+> | billingAccounts/發票 | 否 |
+> | billingAccounts/發票/交易 | 否 |
+> | billingAccounts / invoiceSections | 否 |
+> | billingAccounts / invoiceSections / billingSubscriptionMoveOperations | 否 |
+> | billingAccounts / invoiceSections / billingSubscriptions | 否 |
+> | billingAccounts/invoiceSections/billingSubscriptions/transfer | 否 |
+> | billingAccounts/invoiceSections/提升許可權 | 否 |
+> | billingAccounts / invoiceSections / initiateTransfer | 否 |
+> | billingAccounts / invoiceSections / patchOperations | 否 |
+> | billingAccounts / invoiceSections / productMoveOperations | 否 |
+> | billingAccounts/invoiceSections/products | 否 |
+> | billingAccounts/invoiceSections/products/transfer | 否 |
+> | billingAccounts/invoiceSections/products/updateAutoRenew | 否 |
+> | billingAccounts/invoiceSections/筆交易 | 否 |
+> | billingAccounts/invoiceSections/transfer | 否 |
+> | billingAccounts / lineOfCredit | 否 |
+> | billingAccounts / patchOperations | 否 |
+> | billingAccounts / paymentMethods | 否 |
+> | billingAccounts/products | 否 |
+> | billingAccounts/筆交易 | 否 |
+> | billingPeriods | 否 |
+> | billingPermissions | 否 |
+> | billingProperty | 否 |
+> | billingRoleAssignments | 否 |
+> | billingRoleDefinitions | 否 |
+> | createBillingRoleAssignment | 否 |
+> | departments | 否 |
+> | enrollmentAccounts | 否 |
+> | invoices | 否 |
 > | transfers | 否 |
-> | 傳輸/acceptTransfer | No |
-> | 傳輸/declineTransfer | No |
-> | 傳輸/operationStatus | No |
-> | 傳輸/validateTransfer | No |
-> | validateAddress | No |
+> | 傳輸/acceptTransfer | 否 |
+> | 傳輸/declineTransfer | 否 |
+> | 傳輸/operationStatus | 否 |
+> | 傳輸/validateTransfer | 否 |
+> | validateAddress | 否 |
 
 ## <a name="microsoftbingmaps"></a>Microsoft.BingMaps
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | mapApis | Yes |
+> | mapApis | 是 |
 > | updateCommunicationPreference | 否 |
 
 ## <a name="microsoftblockchain"></a>Microsoft.Blockchain
@@ -503,283 +503,283 @@ ms.locfileid: "86027837"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | blockchainMembers | Yes |
-> | cordaMembers | Yes |
-> | watchers | Yes |
+> | blockchainMembers | 是 |
+> | cordaMembers | 是 |
+> | watchers | 是 |
 
 ## <a name="microsoftblockchaintokens"></a>Microsoft.BlockchainTokens
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | TokenServices | Yes |
-> | TokenServices / BlockchainNetworks | No |
-> | TokenServices/群組 | No |
-> | TokenServices/群組/帳戶 | No |
-> | TokenServices / TokenTemplates | No |
+> | TokenServices | 是 |
+> | TokenServices / BlockchainNetworks | 否 |
+> | TokenServices/群組 | 否 |
+> | TokenServices/群組/帳戶 | 否 |
+> | TokenServices / TokenTemplates | 否 |
 
 ## <a name="microsoftblueprint"></a>Microsoft.Blueprint
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | blueprintAssignments | No |
-> | blueprintAssignments / assignmentOperations | No |
-> | blueprintAssignments/作業 | No |
-> | blueprints | No |
-> | blueprints / artifacts | No |
-> | blueprints / versions | No |
-> | blueprints / versions / artifacts | No |
+> | blueprintAssignments | 否 |
+> | blueprintAssignments / assignmentOperations | 否 |
+> | blueprintAssignments/作業 | 否 |
+> | blueprints | 否 |
+> | blueprints / artifacts | 否 |
+> | blueprints / versions | 否 |
+> | blueprints / versions / artifacts | 否 |
 
 ## <a name="microsoftbotservice"></a>Microsoft.BotService
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | botServices | Yes |
-> | botServices / channels | No |
-> | botServices/connections | No |
-> | 語言 | No |
-> | 範本 | No |
+> | botServices | 是 |
+> | botServices / channels | 否 |
+> | botServices/connections | 否 |
+> | 語言 | 否 |
+> | 範本 | 否 |
 
 ## <a name="microsoftcache"></a>Microsoft.Cache
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | Redis | Yes |
-> | Redis/EventGridFilters | No |
-> | Redis/privateEndpointConnectionProxies | No |
-> | Redis/privateEndpointConnectionProxies/validate | No |
-> | Redis/privateEndpointConnections | No |
-> | Redis/privateLinkResources | No |
-> | redisEnterprise | Yes |
+> | Redis | 是 |
+> | Redis/EventGridFilters | 否 |
+> | Redis/privateEndpointConnectionProxies | 否 |
+> | Redis/privateEndpointConnectionProxies/validate | 否 |
+> | Redis/privateEndpointConnections | 否 |
+> | Redis/privateLinkResources | 否 |
+> | redisEnterprise | 是 |
 
 ## <a name="microsoftcapacity"></a>Microsoft.Capacity
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | appliedReservations | No |
-> | autoQuotaIncrease | No |
-> | calculateExchange | No |
-> | calculatePrice | No |
-> | calculatePurchasePrice | No |
-> | catalogs | No |
+> | appliedReservations | 否 |
+> | autoQuotaIncrease | 否 |
+> | calculateExchange | 否 |
+> | calculatePrice | 否 |
+> | calculatePurchasePrice | 否 |
+> | catalogs | 否 |
 > | commercialReservationOrders | 否 |
 > | 兌換 | 否 |
-> | placePurchaseOrder | No |
-> | reservationOrders | No |
-> | reservationOrders / calculateRefund | No |
-> | reservationOrders/merge | No |
-> | reservationOrders/保留 | No |
-> | reservationOrders/保留/修訂 | No |
-> | reservationOrders/return | No |
-> | reservationOrders/split | No |
-> | reservationOrders/swap | No |
-> | reservations | No |
-> | resourceProviders | No |
-> | resources | No |
-> | validateReservationOrder | No |
+> | placePurchaseOrder | 否 |
+> | reservationOrders | 否 |
+> | reservationOrders / calculateRefund | 否 |
+> | reservationOrders/merge | 否 |
+> | reservationOrders/保留 | 否 |
+> | reservationOrders/保留/修訂 | 否 |
+> | reservationOrders/return | 否 |
+> | reservationOrders/split | 否 |
+> | reservationOrders/swap | 否 |
+> | reservations | 否 |
+> | resourceProviders | 否 |
+> | resources | 否 |
+> | validateReservationOrder | 否 |
 
 ## <a name="microsoftcdn"></a>Microsoft.Cdn
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | CdnWebApplicationFirewallManagedRuleSets | No |
-> | CdnWebApplicationFirewallPolicies | Yes |
-> | edgenodes | No |
-> | 設定檔 | Yes |
+> | CdnWebApplicationFirewallManagedRuleSets | 否 |
+> | CdnWebApplicationFirewallPolicies | 是 |
+> | edgenodes | 否 |
+> | 設定檔 | 是 |
 > | profiles / endpoints | 是 |
-> | profiles / endpoints / customdomains | No |
-> | profiles / endpoints / origingroups | No |
-> | profiles / endpoints / origins | No |
-> | validateProbe | No |
+> | profiles / endpoints / customdomains | 否 |
+> | profiles / endpoints / origingroups | 否 |
+> | profiles / endpoints / origins | 否 |
+> | validateProbe | 否 |
 
 ## <a name="microsoftcertificateregistration"></a>Microsoft.CertificateRegistration
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | certificateOrders | Yes |
-> | certificateOrders/憑證 | No |
-> | validateCertificateRegistrationInformation | No |
+> | certificateOrders | 是 |
+> | certificateOrders/憑證 | 否 |
+> | validateCertificateRegistrationInformation | 否 |
 
 ## <a name="microsoftchangeanalysis"></a>Microsoft.ChangeAnalysis
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | profile | No |
-> | resourceChanges | No |
+> | profile | 否 |
+> | resourceChanges | 否 |
 
 ## <a name="microsoftclassiccompute"></a>Microsoft.ClassicCompute
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | capabilities | No |
-> | domainNames | Yes |
-> | domainNames/功能 | No |
-> | domainNames/internalLoadBalancers | No |
-> | domainNames/serviceCertificates | No |
-> | domainNames/插槽 | No |
-> | domainNames/位置/角色 | No |
-> | domainNames/位置/角色/Metricdefinitions.listasync | No |
-> | domainNames/位置/角色/計量 | No |
-> | moveSubscriptionResources | No |
-> | operatingSystemFamilies | No |
+> | capabilities | 否 |
+> | domainNames | 是 |
+> | domainNames/功能 | 否 |
+> | domainNames/internalLoadBalancers | 否 |
+> | domainNames/serviceCertificates | 否 |
+> | domainNames/插槽 | 否 |
+> | domainNames/位置/角色 | 否 |
+> | domainNames/位置/角色/Metricdefinitions.listasync | 否 |
+> | domainNames/位置/角色/計量 | 否 |
+> | moveSubscriptionResources | 否 |
+> | operatingSystemFamilies | 否 |
 > | operatingSystems | 否 |
 > | quotas | 否 |
-> | resourceTypes | No |
-> | validateSubscriptionMoveAvailability | No |
-> | virtualMachines | Yes |
-> | virtualMachines/diagnosticSettings | No |
-> | virtualMachines/Metricdefinitions.listasync | No |
-> | virtualMachines/計量 | No |
+> | resourceTypes | 否 |
+> | validateSubscriptionMoveAvailability | 否 |
+> | virtualMachines | 是 |
+> | virtualMachines/diagnosticSettings | 否 |
+> | virtualMachines/Metricdefinitions.listasync | 否 |
+> | virtualMachines/計量 | 否 |
 
 ## <a name="microsoftclassicinfrastructuremigrate"></a>Microsoft.ClassicInfrastructureMigrate
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | classicInfrastructureResources | No |
+> | classicInfrastructureResources | 否 |
 
 ## <a name="microsoftclassicnetwork"></a>Microsoft.ClassicNetwork
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | capabilities | No |
-> | expressRouteCrossConnections | No |
-> | expressRouteCrossConnections/對等互連 | No |
-> | gatewaySupportedDevices | No |
-> | networkSecurityGroups | Yes |
-> | quotas | No |
-> | reservedIps | Yes |
-> | virtualNetworks | Yes |
-> | virtualNetworks/remoteVirtualNetworkPeeringProxies | No |
-> | virtualNetworks / virtualNetworkPeerings | No |
+> | capabilities | 否 |
+> | expressRouteCrossConnections | 否 |
+> | expressRouteCrossConnections/對等互連 | 否 |
+> | gatewaySupportedDevices | 否 |
+> | networkSecurityGroups | 是 |
+> | quotas | 否 |
+> | reservedIps | 是 |
+> | virtualNetworks | 是 |
+> | virtualNetworks/remoteVirtualNetworkPeeringProxies | 否 |
+> | virtualNetworks / virtualNetworkPeerings | 否 |
 
 ## <a name="microsoftclassicstorage"></a>Microsoft.ClassicStorage
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | capabilities | No |
-> | disks | No |
-> | images | No |
-> | osImages | No |
-> | osPlatformImages | No |
-> | publicImages | No |
-> | quotas | No |
-> | storageAccounts | Yes |
-> | storageAccounts / blobServices | No |
-> | storageAccounts / fileServices | No |
-> | storageAccounts/Metricdefinitions.listasync | No |
-> | storageAccounts/計量 | No |
-> | storageAccounts/queueServices | No |
-> | storageAccounts/服務 | No |
-> | storageAccounts/services/diagnosticSettings | No |
-> | storageAccounts/services/Metricdefinitions.listasync | No |
-> | storageAccounts/服務/計量 | No |
-> | storageAccounts/tableServices | No |
-> | storageAccounts/vmImages | No |
-> | vmImages | No |
+> | capabilities | 否 |
+> | disks | 否 |
+> | images | 否 |
+> | osImages | 否 |
+> | osPlatformImages | 否 |
+> | publicImages | 否 |
+> | quotas | 否 |
+> | storageAccounts | 是 |
+> | storageAccounts / blobServices | 否 |
+> | storageAccounts / fileServices | 否 |
+> | storageAccounts/Metricdefinitions.listasync | 否 |
+> | storageAccounts/計量 | 否 |
+> | storageAccounts/queueServices | 否 |
+> | storageAccounts/服務 | 否 |
+> | storageAccounts/services/diagnosticSettings | 否 |
+> | storageAccounts/services/Metricdefinitions.listasync | 否 |
+> | storageAccounts/服務/計量 | 否 |
+> | storageAccounts/tableServices | 否 |
+> | storageAccounts/vmImages | 否 |
+> | vmImages | 否 |
 
 ## <a name="microsoftcognitiveservices"></a>Microsoft.CognitiveServices
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | accounts | Yes |
+> | accounts | 是 |
 
 ## <a name="microsoftcommerce"></a>Microsoft.Commerce
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | RateCard | No |
-> | UsageAggregates | No |
+> | RateCard | 否 |
+> | UsageAggregates | 否 |
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | availabilitySets | Yes |
-> | diskAccesses | Yes |
-> | diskEncryptionSets | Yes |
+> | availabilitySets | 是 |
+> | diskAccesses | 是 |
+> | diskEncryptionSets | 是 |
 > | disks | 是 |
-> | galleries | Yes |
-> | galleries / applications | No |
-> | 資源庫/應用程式/版本 | No |
+> | galleries | 是 |
+> | galleries / applications | 否 |
+> | 資源庫/應用程式/版本 | 否 |
 > | galleries / images | 否 |
 > | galleries / images / versions | 否 |
-> | hostGroups | Yes |
-> | hostGroups/主機 | Yes |
-> | images | Yes |
-> | proximityPlacementGroups | Yes |
-> | restorePointCollections | Yes |
-> | restorePointCollections / restorePoints | No |
-> | sharedVMExtensions | Yes |
-> | sharedVMExtensions/版本 | No |
-> | sharedVMImages | Yes |
-> | sharedVMImages/版本 | No |
+> | hostGroups | 是 |
+> | hostGroups/主機 | 是 |
+> | images | 是 |
+> | proximityPlacementGroups | 是 |
+> | restorePointCollections | 是 |
+> | restorePointCollections / restorePoints | 否 |
+> | sharedVMExtensions | 是 |
+> | sharedVMExtensions/版本 | 否 |
+> | sharedVMImages | 是 |
+> | sharedVMImages/版本 | 否 |
 > | snapshots | 是 |
-> | sshPublicKeys | Yes |
-> | virtualMachines | Yes |
-> | virtualMachines/extensions | Yes |
-> | virtualMachines/Metricdefinitions.listasync | No |
-> | virtualMachines/runCommands | Yes |
-> | virtualMachineScaleSets | Yes |
-> | virtualMachineScaleSets/extensions | No |
-> | virtualMachineScaleSets/networkInterfaces | No |
-> | virtualMachineScaleSets/publicIPAddresses | No |
-> | virtualMachineScaleSets/virtualMachines | No |
-> | virtualMachineScaleSets/virtualMachines/networkInterfaces | No |
+> | sshPublicKeys | 是 |
+> | virtualMachines | 是 |
+> | virtualMachines/extensions | 是 |
+> | virtualMachines/Metricdefinitions.listasync | 否 |
+> | virtualMachines/runCommands | 是 |
+> | virtualMachineScaleSets | 是 |
+> | virtualMachineScaleSets/extensions | 否 |
+> | virtualMachineScaleSets/networkInterfaces | 否 |
+> | virtualMachineScaleSets/publicIPAddresses | 否 |
+> | virtualMachineScaleSets/virtualMachines | 否 |
+> | virtualMachineScaleSets/virtualMachines/networkInterfaces | 否 |
 
 ## <a name="microsoftconnectedcache"></a>ConnectedCache
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | CacheNodes | Yes |
+> | CacheNodes | 是 |
 
 ## <a name="microsoftconsumption"></a>Microsoft.Consumption
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | AggregatedCost | No |
-> | 餘額 | No |
-> | 預算 | No |
-> | Charges | No |
-> | CostTags | No |
-> | credits | No |
-> | 活動 | No |
-> | 預測 | No |
-> | lots | No |
-> | Marketplace | No |
-> | Pricesheets | No |
+> | AggregatedCost | 否 |
+> | 餘額 | 否 |
+> | 預算 | 否 |
+> | Charges | 否 |
+> | CostTags | 否 |
+> | credits | 否 |
+> | 活動 | 否 |
+> | 預測 | 否 |
+> | lots | 否 |
+> | Marketplace | 否 |
+> | Pricesheets | 否 |
 > | products | 否 |
-> | ReservationDetails | No |
-> | ReservationRecommendationDetails | No |
-> | ReservationRecommendations | No |
-> | ReservationSummaries | No |
-> | ReservationTransactions | No |
-> | 標籤 | No |
-> | tenants | No |
-> | 詞彙 | No |
-> | UsageDetails | No |
+> | ReservationDetails | 否 |
+> | ReservationRecommendationDetails | 否 |
+> | ReservationRecommendations | 否 |
+> | ReservationSummaries | 否 |
+> | ReservationTransactions | 否 |
+> | 標籤 | 否 |
+> | tenants | 否 |
+> | 詞彙 | 否 |
+> | UsageDetails | 否 |
 
 ## <a name="microsoftcontainerinstance"></a>Microsoft.ContainerInstance
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | containerGroups | Yes |
+> | containerGroups | 是 |
 > | serviceAssociationLinks | 否 |
 
 ## <a name="microsoftcontainerregistry"></a>Microsoft.ContainerRegistry
@@ -787,39 +787,39 @@ ms.locfileid: "86027837"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | registries | Yes |
-> | 登錄/agentPools | Yes |
-> | registries / builds | No |
-> | registries / builds / cancel | No |
-> | 登錄/組建/getLogLink | No |
-> | registries / buildTasks | Yes |
-> | 登錄/buildTasks/步驟 | No |
-> | 登錄/eventGridFilters | No |
-> | 登錄/exportPipelines | No |
-> | 登錄/generateCredentials | No |
-> | 登錄/getBuildSourceUploadUrl | No |
-> | 登錄/GetCredentials | No |
-> | 登錄/importImage | No |
-> | 登錄/importPipelines | No |
-> | 登錄/pipelineRuns | No |
-> | 登錄/privateEndpointConnectionProxies | No |
-> | 登錄/privateEndpointConnectionProxies/驗證 | No |
-> | 登錄/privateEndpointConnections | No |
-> | 登錄/privateLinkResources | No |
-> | 登錄/queueBuild | No |
-> | 登錄/regenerateCredential | No |
-> | 登錄/regenerateCredentials | No |
+> | registries | 是 |
+> | 登錄/agentPools | 是 |
+> | registries / builds | 否 |
+> | registries / builds / cancel | 否 |
+> | 登錄/組建/getLogLink | 否 |
+> | registries / buildTasks | 是 |
+> | 登錄/buildTasks/步驟 | 否 |
+> | 登錄/eventGridFilters | 否 |
+> | 登錄/exportPipelines | 否 |
+> | 登錄/generateCredentials | 否 |
+> | 登錄/getBuildSourceUploadUrl | 否 |
+> | 登錄/GetCredentials | 否 |
+> | 登錄/importImage | 否 |
+> | 登錄/importPipelines | 否 |
+> | 登錄/pipelineRuns | 否 |
+> | 登錄/privateEndpointConnectionProxies | 否 |
+> | 登錄/privateEndpointConnectionProxies/驗證 | 否 |
+> | 登錄/privateEndpointConnections | 否 |
+> | 登錄/privateLinkResources | 否 |
+> | 登錄/queueBuild | 否 |
+> | 登錄/regenerateCredential | 否 |
+> | 登錄/regenerateCredentials | 否 |
 > | registries / replications | 是 |
-> | registries / runs | No |
-> | registries / runs / cancel | No |
-> | 登錄/scheduleRun | No |
-> | registries / scopeMaps | No |
-> | 登錄/taskRuns | No |
-> | registries / tasks | Yes |
-> | registries / tokens | No |
-> | 登錄/updatePolicies | No |
+> | registries / runs | 否 |
+> | registries / runs / cancel | 否 |
+> | 登錄/scheduleRun | 否 |
+> | registries / scopeMaps | 否 |
+> | 登錄/taskRuns | 否 |
+> | registries / tasks | 是 |
+> | registries / tokens | 否 |
+> | 登錄/updatePolicies | 否 |
 > | registries / webhooks | 是 |
-> | 登錄/webhook/getCallbackConfig | No |
+> | 登錄/webhook/getCallbackConfig | 否 |
 > | registries / webhooks / ping | 否 |
 
 ## <a name="microsoftcontainerservice"></a>Microsoft.ContainerService
@@ -827,50 +827,50 @@ ms.locfileid: "86027837"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | containerServices | Yes |
-> | managedClusters | Yes |
-> | openShiftManagedClusters | Yes |
+> | containerServices | 是 |
+> | managedClusters | 是 |
+> | openShiftManagedClusters | 是 |
 
 ## <a name="microsoftcostmanagement"></a>Microsoft.CostManagement
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | 警示 | No |
-> | BillingAccounts | No |
-> | 預算 | No |
-> | CloudConnectors | No |
-> | 連接器 | Yes |
-> | costAllocationRules | No |
-> | 部門 | No |
-> | 維度 | No |
-> | EnrollmentAccounts | No |
-> | 多餘 | No |
-> | ExternalBillingAccounts | No |
-> | ExternalBillingAccounts/警示 | No |
-> | ExternalBillingAccounts/維度 | No |
-> | ExternalBillingAccounts/預測 | No |
-> | ExternalBillingAccounts/查詢 | No |
-> | ExternalSubscriptions | No |
-> | ExternalSubscriptions/警示 | No |
-> | ExternalSubscriptions/維度 | No |
-> | ExternalSubscriptions/預測 | No |
-> | ExternalSubscriptions/查詢 | No |
-> | 趨勢預測 | No |
-> | 查詢 | No |
-> | 註冊 | No |
-> | Reportconfigs | No |
-> | 報表 | No |
-> | 設定 | No |
-> | showbackRules | No |
-> | 檢視 | No |
+> | 警示 | 否 |
+> | BillingAccounts | 否 |
+> | 預算 | 否 |
+> | CloudConnectors | 否 |
+> | 連接器 | 是 |
+> | costAllocationRules | 否 |
+> | 部門 | 否 |
+> | 維度 | 否 |
+> | EnrollmentAccounts | 否 |
+> | 多餘 | 否 |
+> | ExternalBillingAccounts | 否 |
+> | ExternalBillingAccounts/警示 | 否 |
+> | ExternalBillingAccounts/維度 | 否 |
+> | ExternalBillingAccounts/預測 | 否 |
+> | ExternalBillingAccounts/查詢 | 否 |
+> | ExternalSubscriptions | 否 |
+> | ExternalSubscriptions/警示 | 否 |
+> | ExternalSubscriptions/維度 | 否 |
+> | ExternalSubscriptions/預測 | 否 |
+> | ExternalSubscriptions/查詢 | 否 |
+> | 趨勢預測 | 否 |
+> | 查詢 | 否 |
+> | 註冊 | 否 |
+> | Reportconfigs | 否 |
+> | 報表 | 否 |
+> | 設定 | 否 |
+> | showbackRules | 否 |
+> | 檢視 | 否 |
 
 ## <a name="microsoftcustomerlockbox"></a>Microsoft.CustomerLockbox
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | requests | No |
+> | requests | 否 |
 
 ## <a name="microsoftcustomproviders"></a>Microsoft.CustomProviders
 
@@ -892,40 +892,40 @@ ms.locfileid: "86027837"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | DataBoxEdgeDevices | Yes |
+> | DataBoxEdgeDevices | 是 |
 
 ## <a name="microsoftdatabricks"></a>Microsoft.Databricks
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | workspaces | Yes |
-> | 工作區/dbWorkspaces | No |
-> | 工作區/storageEncryption | No |
-> | 工作區/virtualNetworkPeerings | No |
+> | workspaces | 是 |
+> | 工作區/dbWorkspaces | 否 |
+> | 工作區/storageEncryption | 否 |
+> | 工作區/virtualNetworkPeerings | 否 |
 
 ## <a name="microsoftdatacatalog"></a>Microsoft.DataCatalog
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | catalogs | Yes |
-> | datacatalogs | Yes |
-> | datacatalogs/資料來源 | No |
-> | datacatalogs/資料來源/掃描 | No |
-> | datacatalogs/資料來源/掃描/資料集 | No |
-> | datacatalogs/資料來源/掃描/觸發程式 | No |
+> | catalogs | 是 |
+> | datacatalogs | 是 |
+> | datacatalogs/資料來源 | 否 |
+> | datacatalogs/資料來源/掃描 | 否 |
+> | datacatalogs/資料來源/掃描/資料集 | 否 |
+> | datacatalogs/資料來源/掃描/觸發程式 | 否 |
 
 ## <a name="microsoftdatafactory"></a>Microsoft.DataFactory
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | dataFactories | Yes |
-> | Microsoft.azure.management.datafactories/diagnosticSettings | No |
-> | Microsoft.azure.management.datafactories/Metricdefinitions.listasync | No |
-> | dataFactorySchema | No |
-> | factories | Yes |
+> | dataFactories | 是 |
+> | Microsoft.azure.management.datafactories/diagnosticSettings | 否 |
+> | Microsoft.azure.management.datafactories/Metricdefinitions.listasync | 否 |
+> | dataFactorySchema | 否 |
+> | factories | 是 |
 > | factories / integrationRuntimes | 否 |
 
 ## <a name="microsoftdatalakeanalytics"></a>Microsoft.DataLakeAnalytics
@@ -933,20 +933,20 @@ ms.locfileid: "86027837"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | accounts | Yes |
-> | accounts / dataLakeStoreAccounts | No |
-> | accounts / storageAccounts | No |
-> | 帳戶/storageAccounts/容器 | No |
-> | 帳戶/transferAnalyticsUnits | No |
+> | accounts | 是 |
+> | accounts / dataLakeStoreAccounts | 否 |
+> | accounts / storageAccounts | 否 |
+> | 帳戶/storageAccounts/容器 | 否 |
+> | 帳戶/transferAnalyticsUnits | 否 |
 
 ## <a name="microsoftdatalakestore"></a>Microsoft.DataLakeStore
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | accounts | Yes |
-> | 帳戶/eventGridFilters | No |
-> | accounts / firewallRules | No |
+> | accounts | 是 |
+> | 帳戶/eventGridFilters | 否 |
+> | accounts / firewallRules | 否 |
 
 ## <a name="microsoftdatamigration"></a>Microsoft.DataMigration
 
@@ -954,31 +954,31 @@ ms.locfileid: "86027837"
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
 > | 服務 | 是 |
-> | services / projects | Yes |
+> | services / projects | 是 |
 
 ## <a name="microsoftdataprotection"></a>Microsoft.DataProtection
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | BackupVaults | Yes |
-> | ResourceOperationGateKeepers | Yes |
+> | BackupVaults | 是 |
+> | ResourceOperationGateKeepers | 是 |
 
 ## <a name="microsoftdatashare"></a>Microsoft.DataShare
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | accounts | Yes |
-> | accounts / shares | No |
-> | accounts / shares / datasets | No |
-> | accounts / shares / invitations | No |
-> | accounts / shares / providersharesubscriptions | No |
-> | 帳戶/共用/synchronizationSettings | No |
-> | accounts / sharesubscriptions | No |
-> | accounts/sharesubscriptions/consumerSourceDataSets | No |
-> | accounts / sharesubscriptions / datasetmappings | No |
-> | accounts / sharesubscriptions / triggers | No |
+> | accounts | 是 |
+> | accounts / shares | 否 |
+> | accounts / shares / datasets | 否 |
+> | accounts / shares / invitations | 否 |
+> | accounts / shares / providersharesubscriptions | 否 |
+> | 帳戶/共用/synchronizationSettings | 否 |
+> | accounts / sharesubscriptions | 否 |
+> | accounts/sharesubscriptions/consumerSourceDataSets | 否 |
+> | accounts / sharesubscriptions / datasetmappings | 否 |
+> | accounts / sharesubscriptions / triggers | 否 |
 
 ## <a name="microsoftdbformariadb"></a>Microsoft.DBforMariaDB
 
@@ -988,14 +988,14 @@ ms.locfileid: "86027837"
 > | servers | 是 |
 > | servers / advisors | 否 |
 > | servers / keys | 否 |
-> | 伺服器/privateEndpointConnectionProxies | No |
-> | 伺服器/privateEndpointConnections | No |
-> | 伺服器/privateLinkResources | No |
-> | 伺服器/queryTexts | No |
-> | 伺服器/recoverableServers | No |
-> | 伺服器/topQueryStatistics | No |
-> | servers / virtualNetworkRules | No |
-> | 伺服器/waitStatistics | No |
+> | 伺服器/privateEndpointConnectionProxies | 否 |
+> | 伺服器/privateEndpointConnections | 否 |
+> | 伺服器/privateLinkResources | 否 |
+> | 伺服器/queryTexts | 否 |
+> | 伺服器/recoverableServers | 否 |
+> | 伺服器/topQueryStatistics | 否 |
+> | servers / virtualNetworkRules | 否 |
+> | 伺服器/waitStatistics | 否 |
 
 ## <a name="microsoftdbformysql"></a>Microsoft.DBforMySQL
 
@@ -1005,74 +1005,74 @@ ms.locfileid: "86027837"
 > | servers | 是 |
 > | servers / advisors | 否 |
 > | servers / keys | 否 |
-> | 伺服器/privateEndpointConnectionProxies | No |
-> | 伺服器/privateEndpointConnections | No |
-> | 伺服器/privateLinkResources | No |
-> | 伺服器/queryTexts | No |
-> | 伺服器/recoverableServers | No |
-> | 伺服器/topQueryStatistics | No |
-> | servers / virtualNetworkRules | No |
-> | 伺服器/waitStatistics | No |
+> | 伺服器/privateEndpointConnectionProxies | 否 |
+> | 伺服器/privateEndpointConnections | 否 |
+> | 伺服器/privateLinkResources | 否 |
+> | 伺服器/queryTexts | 否 |
+> | 伺服器/recoverableServers | 否 |
+> | 伺服器/topQueryStatistics | 否 |
+> | servers / virtualNetworkRules | 否 |
+> | 伺服器/waitStatistics | 否 |
 
 ## <a name="microsoftdbforpostgresql"></a>Microsoft.DBforPostgreSQL
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | serverGroups | Yes |
-> | servers | Yes |
-> | servers / advisors | No |
-> | servers / keys | No |
-> | 伺服器/privateEndpointConnectionProxies | No |
-> | 伺服器/privateEndpointConnections | No |
-> | 伺服器/privateLinkResources | No |
-> | 伺服器/queryTexts | No |
-> | 伺服器/recoverableServers | No |
-> | 伺服器/topQueryStatistics | No |
-> | servers / virtualNetworkRules | No |
-> | 伺服器/waitStatistics | No |
-> | serversv2 | Yes |
-> | singleServers | Yes |
+> | serverGroups | 是 |
+> | servers | 是 |
+> | servers / advisors | 否 |
+> | servers / keys | 否 |
+> | 伺服器/privateEndpointConnectionProxies | 否 |
+> | 伺服器/privateEndpointConnections | 否 |
+> | 伺服器/privateLinkResources | 否 |
+> | 伺服器/queryTexts | 否 |
+> | 伺服器/recoverableServers | 否 |
+> | 伺服器/topQueryStatistics | 否 |
+> | servers / virtualNetworkRules | 否 |
+> | 伺服器/waitStatistics | 否 |
+> | serversv2 | 是 |
+> | singleServers | 是 |
 
 ## <a name="microsoftdeploymentmanager"></a>Microsoft.DeploymentManager
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | artifactSources | Yes |
-> | rollouts | Yes |
-> | serviceTopologies | Yes |
-> | serviceTopologies/服務 | Yes |
-> | serviceTopologies/services/serviceUnits | Yes |
-> | steps | Yes |
+> | artifactSources | 是 |
+> | rollouts | 是 |
+> | serviceTopologies | 是 |
+> | serviceTopologies/服務 | 是 |
+> | serviceTopologies/services/serviceUnits | 是 |
+> | steps | 是 |
 
 ## <a name="microsoftdesktopvirtualization"></a>Microsoft.DesktopVirtualization
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | applicationgroups | Yes |
-> | applicationgroups / applications | No |
-> | applicationgroups / desktops | No |
-> | applicationgroups / startmenuitems | No |
-> | hostpools | Yes |
-> | hostpools / sessionhosts | No |
-> | hostpools / sessionhosts / usersessions | No |
-> | hostpools / usersessions | No |
-> | workspaces | Yes |
+> | applicationgroups | 是 |
+> | applicationgroups / applications | 否 |
+> | applicationgroups / desktops | 否 |
+> | applicationgroups / startmenuitems | 否 |
+> | hostpools | 是 |
+> | hostpools / sessionhosts | 否 |
+> | hostpools / sessionhosts / usersessions | 否 |
+> | hostpools / usersessions | 否 |
+> | workspaces | 是 |
 
 ## <a name="microsoftdevices"></a>Microsoft.Devices
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | ElasticPools | Yes |
-> | ElasticPools / IotHubTenants | Yes |
-> | ElasticPools/IotHubTenants/securitySettings | No |
-> | IotHubs | Yes |
-> | IotHubs/eventGridFilters | No |
-> | IotHubs/securitySettings | No |
-> | ProvisioningServices | Yes |
+> | ElasticPools | 是 |
+> | ElasticPools / IotHubTenants | 是 |
+> | ElasticPools/IotHubTenants/securitySettings | 否 |
+> | IotHubs | 是 |
+> | IotHubs/eventGridFilters | 否 |
+> | IotHubs/securitySettings | 否 |
+> | ProvisioningServices | 是 |
 > | usages | 否 |
 
 ## <a name="microsoftdevops"></a>Microsoft.DevOps
@@ -1087,102 +1087,102 @@ ms.locfileid: "86027837"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | controllers | Yes |
+> | controllers | 是 |
 
 ## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | labcenters | Yes |
-> | labs | Yes |
-> | labs / environments | Yes |
-> | 實驗室/serviceRunners | Yes |
-> | 實驗室/virtualMachines | Yes |
-> | schedules | Yes |
+> | labcenters | 是 |
+> | labs | 是 |
+> | labs / environments | 是 |
+> | 實驗室/serviceRunners | 是 |
+> | 實驗室/virtualMachines | 是 |
+> | schedules | 是 |
 
 ## <a name="microsoftdigitaltwins"></a>Microsoft.DigitalTwins
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | digitalTwinsInstances | Yes |
-> | digitalTwinsInstances/端點 | No |
+> | digitalTwinsInstances | 是 |
+> | digitalTwinsInstances/端點 | 否 |
 
 ## <a name="microsoftdocumentdb"></a>Microsoft.DocumentDB
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | databaseAccountNames | No |
-> | databaseAccounts | Yes |
+> | databaseAccountNames | 否 |
+> | databaseAccounts | 是 |
 
 ## <a name="microsoftdomainregistration"></a>Microsoft.DomainRegistration
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | domains | Yes |
-> | 網域/domainOwnershipIdentifiers | No |
-> | generateSsoRequest | No |
-> | topLevelDomains | No |
-> | validateDomainRegistrationInformation | No |
+> | domains | 是 |
+> | 網域/domainOwnershipIdentifiers | 否 |
+> | generateSsoRequest | 否 |
+> | topLevelDomains | 否 |
+> | validateDomainRegistrationInformation | 否 |
 
 ## <a name="microsoftdynamicslcs"></a>Microsoft.DynamicsLcs
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | lcsprojects | No |
-> | lcsprojects / clouddeployments | No |
-> | lcsprojects/連接器 | No |
+> | lcsprojects | 否 |
+> | lcsprojects / clouddeployments | 否 |
+> | lcsprojects/連接器 | 否 |
 
 ## <a name="microsoftenterpriseknowledgegraph"></a>Microsoft.EnterpriseKnowledgeGraph
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | 服務 | Yes |
+> | 服務 | 是 |
 
 ## <a name="microsofteventgrid"></a>Microsoft.EventGrid
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | domains | Yes |
-> | domains / topics | No |
-> | eventSubscriptions | No |
-> | extensionTopics | No |
-> | partnerNamespaces | Yes |
-> | partnerNamespaces/eventChannels | No |
-> | partnerRegistrations | Yes |
-> | partnerTopics | Yes |
-> | partnerTopics/eventSubscriptions | No |
-> | systemTopics | Yes |
-> | systemTopics/eventSubscriptions | No |
-> | topics | Yes |
-> | topicTypes | No |
+> | domains | 是 |
+> | domains / topics | 否 |
+> | eventSubscriptions | 否 |
+> | extensionTopics | 否 |
+> | partnerNamespaces | 是 |
+> | partnerNamespaces/eventChannels | 否 |
+> | partnerRegistrations | 是 |
+> | partnerTopics | 是 |
+> | partnerTopics/eventSubscriptions | 否 |
+> | systemTopics | 是 |
+> | systemTopics/eventSubscriptions | 否 |
+> | topics | 是 |
+> | topicTypes | 否 |
 
 ## <a name="microsofteventhub"></a>Microsoft.EventHub
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | clusters | Yes |
+> | clusters | 是 |
 > | 命名空間 | 是 |
-> | namespaces / authorizationrules | No |
+> | namespaces / authorizationrules | 否 |
 > | namespaces / disasterrecoveryconfigs | 否 |
-> | namespaces / eventhubs | No |
-> | namespaces / eventhubs / authorizationrules | No |
-> | namespaces / eventhubs / consumergroups | No |
-> | namespaces / networkrulesets | No |
+> | namespaces / eventhubs | 否 |
+> | namespaces / eventhubs / authorizationrules | 否 |
+> | namespaces / eventhubs / consumergroups | 否 |
+> | namespaces / networkrulesets | 否 |
 
 ## <a name="microsoftexperimentation"></a>Microsoft.Experimentation
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | experimentWorkspaces | Yes |
+> | experimentWorkspaces | 是 |
 
 ## <a name="microsoftfalcon"></a>Microsoft.Falcon
 
@@ -1196,47 +1196,47 @@ ms.locfileid: "86027837"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | featureProviders | No |
-> | 特性 | No |
-> | 提供者 | No |
-> | subscriptionFeatureRegistrations | No |
+> | featureProviders | 否 |
+> | 特性 | 否 |
+> | 提供者 | 否 |
+> | subscriptionFeatureRegistrations | 否 |
 
 ## <a name="microsoftgallery"></a>Microsoft.Gallery
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | enroll | No |
-> | galleryitems | No |
-> | generateartifactaccessuri | No |
-> | myareas | No |
-> | myareas/區域 | No |
-> | myareas/區域/區域 | No |
-> | myareas/區域/區域/galleryitem | No |
-> | myareas/areas/galleryitem | No |
-> | myareas/galleryitem | No |
-> | 註冊 | No |
-> | resources | No |
-> | retrieveresourcesbyid | No |
+> | enroll | 否 |
+> | galleryitems | 否 |
+> | generateartifactaccessuri | 否 |
+> | myareas | 否 |
+> | myareas/區域 | 否 |
+> | myareas/區域/區域 | 否 |
+> | myareas/區域/區域/galleryitem | 否 |
+> | myareas/areas/galleryitem | 否 |
+> | myareas/galleryitem | 否 |
+> | 註冊 | 否 |
+> | resources | 否 |
+> | retrieveresourcesbyid | 否 |
 
 ## <a name="microsoftgenomics"></a>Microsoft.Genomics
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | accounts | Yes |
+> | accounts | 是 |
 
 ## <a name="microsoftguestconfiguration"></a>Microsoft.GuestConfiguration
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | autoManagedAccounts | Yes |
-> | autoManagedVmConfigurationProfiles | Yes |
-> | configurationProfileAssignments | No |
-> | guestConfigurationAssignments | No |
-> | software | No |
-> | softwareUpdateProfile | No |
+> | autoManagedAccounts | 是 |
+> | autoManagedVmConfigurationProfiles | 是 |
+> | configurationProfileAssignments | 否 |
+> | guestConfigurationAssignments | 否 |
+> | software | 否 |
+> | softwareUpdateProfile | 否 |
 > | softwareUpdates | 否 |
 
 ## <a name="microsofthanaonazure"></a>Microsoft.HanaOnAzure
@@ -1244,15 +1244,15 @@ ms.locfileid: "86027837"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | hanaInstances | Yes |
-> | sapMonitors | Yes |
+> | hanaInstances | 是 |
+> | sapMonitors | 是 |
 
 ## <a name="microsofthardwaresecuritymodules"></a>Microsoft.HardwareSecurityModules
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | dedicatedHSMs | Yes |
+> | dedicatedHSMs | 是 |
 
 ## <a name="microsofthdinsight"></a>Microsoft.HDInsight
 
@@ -1267,13 +1267,13 @@ ms.locfileid: "86027837"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | 服務 | Yes |
-> | 服務/iomtconnectors | No |
-> | 服務/iomtconnectors/連線 | No |
-> | 服務/iomtconnectors/對應 | No |
-> | 服務/privateEndpointConnectionProxies | No |
-> | 服務/privateEndpointConnections | Yes |
-> | 服務/privateLinkResources | Yes |
+> | 服務 | 是 |
+> | 服務/iomtconnectors | 否 |
+> | 服務/iomtconnectors/連線 | 否 |
+> | 服務/iomtconnectors/對應 | 否 |
+> | 服務/privateEndpointConnectionProxies | 否 |
+> | 服務/privateEndpointConnections | 是 |
+> | 服務/privateLinkResources | 是 |
 
 ## <a name="microsofthybridcompute"></a>Microsoft.HybridCompute
 
@@ -1281,77 +1281,77 @@ ms.locfileid: "86027837"
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
 > | machines | 是 |
-> | machines / extensions | Yes |
+> | machines / extensions | 是 |
 
 ## <a name="microsofthybriddata"></a>Microsoft.HybridData
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | dataManagers | Yes |
+> | dataManagers | 是 |
 
 ## <a name="microsofthybridnetwork"></a>HybridNetwork
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | devices | Yes |
-> | registeredSubscriptions | No |
-> | 廠商 | No |
-> | 廠商/sku | No |
-> | 廠商/vnfs | No |
+> | devices | 是 |
+> | registeredSubscriptions | 否 |
+> | 廠商 | 否 |
+> | 廠商/sku | 否 |
+> | 廠商/vnfs | 否 |
 > | virtualNetworkFunctionSkus | 否 |
-> | vnfs | Yes |
+> | vnfs | 是 |
 
 ## <a name="microsofthydra"></a>Microsoft.Hydra
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | components | Yes |
-> | networkScopes | Yes |
+> | components | 是 |
+> | networkScopes | 是 |
 
 ## <a name="microsoftimportexport"></a>Microsoft.ImportExport
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | jobs | Yes |
+> | jobs | 是 |
 
 ## <a name="microsoftintune"></a>Microsoft.Intune
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | diagnosticSettings | No |
-> | diagnosticSettingsCategories | No |
+> | diagnosticSettings | 否 |
+> | diagnosticSettingsCategories | 否 |
 
 ## <a name="microsoftiotcentral"></a>Microsoft.IoTCentral
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | appTemplates | No |
-> | IoTApps | Yes |
+> | appTemplates | 否 |
+> | IoTApps | 是 |
 
 ## <a name="microsoftiotspaces"></a>Microsoft.IoTSpaces
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | 圖形 | Yes |
+> | 圖形 | 是 |
 
 ## <a name="microsoftkeyvault"></a>Microsoft.KeyVault
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | deletedVaults | No |
-> | hsmPools | Yes |
-> | managedHSMs | Yes |
+> | deletedVaults | 否 |
+> | hsmPools | 是 |
+> | managedHSMs | 是 |
 > | vaults | 是 |
-> | 保存庫/accessPolicies | No |
-> | 保存庫/eventGridFilters | No |
+> | 保存庫/accessPolicies | 否 |
+> | 保存庫/eventGridFilters | 否 |
 > | vaults / secrets | 否 |
 
 ## <a name="microsoftkubernetes"></a>Microsoft.Kubernetes
@@ -1359,49 +1359,49 @@ ms.locfileid: "86027837"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | connectedClusters | Yes |
-> | registeredSubscriptions | No |
+> | connectedClusters | 是 |
+> | registeredSubscriptions | 否 |
 
 ## <a name="microsoftkubernetesconfiguration"></a>Microsoft.KubernetesConfiguration
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | sourceControlConfigurations | No |
+> | sourceControlConfigurations | 否 |
 
 ## <a name="microsoftkusto"></a>Microsoft.Kusto
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | clusters | Yes |
-> | clusters / attacheddatabaseconfigurations | No |
-> | clusters / databases | No |
-> | clusters / databases / dataconnections | No |
-> | clusters / databases / eventhubconnections | No |
-> | clusters / databases / principalassignments | No |
-> | 叢集/dataconnections | No |
-> | clusters / principalassignments | No |
-> | 叢集/sharedidentities | No |
+> | clusters | 是 |
+> | clusters / attacheddatabaseconfigurations | 否 |
+> | clusters / databases | 否 |
+> | clusters / databases / dataconnections | 否 |
+> | clusters / databases / eventhubconnections | 否 |
+> | clusters / databases / principalassignments | 否 |
+> | 叢集/dataconnections | 否 |
+> | clusters / principalassignments | 否 |
+> | 叢集/sharedidentities | 否 |
 
 ## <a name="microsoftlabservices"></a>Microsoft.LabServices
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | labaccounts | Yes |
-> | users | No |
+> | labaccounts | 是 |
+> | users | 否 |
 
 ## <a name="microsoftlogic"></a>Microsoft.Logic
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | hostingEnvironments | Yes |
-> | integrationAccounts | Yes |
-> | integrationServiceEnvironments | Yes |
-> | integrationServiceEnvironments / managedApis | Yes |
-> | isolatedEnvironments | Yes |
+> | hostingEnvironments | 是 |
+> | integrationAccounts | 是 |
+> | integrationServiceEnvironments | 是 |
+> | integrationServiceEnvironments / managedApis | 是 |
+> | isolatedEnvironments | 是 |
 > | workflows | 是 |
 
 ## <a name="microsoftmachinelearning"></a>Microsoft.MachineLearning
@@ -1409,26 +1409,26 @@ ms.locfileid: "86027837"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | commitmentPlans | Yes |
-> | webServices | Yes |
-> | 工作區 | Yes |
+> | commitmentPlans | 是 |
+> | webServices | 是 |
+> | 工作區 | 是 |
 
 ## <a name="microsoftmachinelearningservices"></a>Microsoft.MachineLearningServices
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | workspaces | Yes |
-> | workspaces / computes | No |
-> | 工作區/eventGridFilters | No |
+> | workspaces | 是 |
+> | workspaces / computes | 否 |
+> | 工作區/eventGridFilters | 否 |
 
 ## <a name="microsoftmaintenance"></a>Microsoft.Maintenance
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | applyUpdates | No |
-> | configurationAssignments | No |
+> | applyUpdates | 否 |
+> | configurationAssignments | 否 |
 > | maintenanceConfigurations | 是 |
 > | updates | 否 |
 
@@ -1437,87 +1437,87 @@ ms.locfileid: "86027837"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | Identities | No |
-> | userAssignedIdentities | Yes |
+> | Identities | 否 |
+> | userAssignedIdentities | 是 |
 
 ## <a name="microsoftmanagednetwork"></a>Microsoft.ManagedNetwork
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | managedNetworks | Yes |
-> | managedNetworks / managedNetworkGroups | Yes |
-> | managedNetworks / managedNetworkPeeringPolicies | Yes |
-> | 通知 | Yes |
+> | managedNetworks | 是 |
+> | managedNetworks / managedNetworkGroups | 是 |
+> | managedNetworks / managedNetworkPeeringPolicies | 是 |
+> | 通知 | 是 |
 
 ## <a name="microsoftmanagedservices"></a>Microsoft.ManagedServices
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | marketplaceRegistrationDefinitions | No |
-> | registrationAssignments | No |
-> | registrationDefinitions | No |
+> | marketplaceRegistrationDefinitions | 否 |
+> | registrationAssignments | 否 |
+> | registrationDefinitions | 否 |
 
 ## <a name="microsoftmanagement"></a>Microsoft.Management
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | getEntities | No |
-> | managementGroups | No |
-> | managementGroups/設定 | No |
-> | resources | No |
-> | startTenantBackfill | No |
-> | tenantBackfillStatus | No |
+> | getEntities | 否 |
+> | managementGroups | 否 |
+> | managementGroups/設定 | 否 |
+> | resources | 否 |
+> | startTenantBackfill | 否 |
+> | tenantBackfillStatus | 否 |
 
 ## <a name="microsoftmaps"></a>Microsoft.Maps
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | accounts | Yes |
-> | 帳戶/eventGridFilters | No |
-> | 帳戶/privateAtlases | Yes |
+> | accounts | 是 |
+> | 帳戶/eventGridFilters | 否 |
+> | 帳戶/privateAtlases | 是 |
 
 ## <a name="microsoftmarketplace"></a>Microsoft.Marketplace
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | offers | No |
-> | offerTypes | No |
-> | offerTypes/發行者 | No |
-> | offerTypes/發行者/優惠 | No |
-> | offerTypes/發行者/優惠/方案 | No |
-> | offerTypes/發行者/優惠/方案/合約 | No |
-> | offerTypes/發行者/供應專案/方案/專案 | No |
-> | offerTypes/發行者/優惠/方案/importImage | No |
-> | privategalleryitems | No |
-> | privateStoreClient | No |
-> | privateStores | No |
-> | privateStores/優惠 | No |
-> | products | No |
-> | publishers | No |
-> | publishers / offers | No |
-> | publishers / offers / amendments | No |
-> | 註冊 | No |
+> | offers | 否 |
+> | offerTypes | 否 |
+> | offerTypes/發行者 | 否 |
+> | offerTypes/發行者/優惠 | 否 |
+> | offerTypes/發行者/優惠/方案 | 否 |
+> | offerTypes/發行者/優惠/方案/合約 | 否 |
+> | offerTypes/發行者/供應專案/方案/專案 | 否 |
+> | offerTypes/發行者/優惠/方案/importImage | 否 |
+> | privategalleryitems | 否 |
+> | privateStoreClient | 否 |
+> | privateStores | 否 |
+> | privateStores/優惠 | 否 |
+> | products | 否 |
+> | publishers | 否 |
+> | publishers / offers | 否 |
+> | publishers / offers / amendments | 否 |
+> | 註冊 | 否 |
 
 ## <a name="microsoftmarketplaceapps"></a>Microsoft.MarketplaceApps
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | classicDevServices | Yes |
-> | updateCommunicationPreference | No |
+> | classicDevServices | 是 |
+> | updateCommunicationPreference | 否 |
 
 ## <a name="microsoftmarketplaceordering"></a>Microsoft.MarketplaceOrdering
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | agreements | No |
-> | offertypes | No |
+> | agreements | 否 |
+> | offertypes | 否 |
 
 ## <a name="microsoftmedia"></a>Microsoft.Media
 
@@ -1527,49 +1527,49 @@ ms.locfileid: "86027837"
 > | mediaservices | 是 |
 > | windowsazure.mediaservices.extensions/accountFilters | 否 |
 > | mediaservices / assets | 否 |
-> | windowsazure.mediaservices.extensions/資產/Assetfilter | No |
-> | windowsazure.mediaservices.extensions/contentKeyPolicies | No |
-> | windowsazure.mediaservices.extensions/eventGridFilters | No |
-> | windowsazure.mediaservices.extensions/liveEventOperations | No |
-> | mediaservices / liveEvents | Yes |
-> | mediaservices / liveEvents / liveOutputs | No |
-> | windowsazure.mediaservices.extensions/Liveevent/privateEndpointConnectionProxies | No |
-> | windowsazure.mediaservices.extensions/liveOutputOperations | No |
-> | windowsazure.mediaservices.extensions/mediaGraphs | No |
-> | windowsazure.mediaservices.extensions/streamingEndpointOperations | No |
-> | mediaservices / streamingEndpoints | Yes |
-> | windowsazure.mediaservices.extensions/Streamingendpoint/privateEndpointConnectionProxies | No |
-> | windowsazure.mediaservices.extensions/Streaminglocator | No |
-> | windowsazure.mediaservices.extensions/streamingPolicies | No |
-> | windowsazure.mediaservices.extensions/streamingPrivateEndpointConnectionProxyOperations | No |
-> | mediaservices / transforms | No |
-> | mediaservices / transforms / jobs | No |
+> | windowsazure.mediaservices.extensions/資產/Assetfilter | 否 |
+> | windowsazure.mediaservices.extensions/contentKeyPolicies | 否 |
+> | windowsazure.mediaservices.extensions/eventGridFilters | 否 |
+> | windowsazure.mediaservices.extensions/liveEventOperations | 否 |
+> | mediaservices / liveEvents | 是 |
+> | mediaservices / liveEvents / liveOutputs | 否 |
+> | windowsazure.mediaservices.extensions/Liveevent/privateEndpointConnectionProxies | 否 |
+> | windowsazure.mediaservices.extensions/liveOutputOperations | 否 |
+> | windowsazure.mediaservices.extensions/mediaGraphs | 否 |
+> | windowsazure.mediaservices.extensions/streamingEndpointOperations | 否 |
+> | mediaservices / streamingEndpoints | 是 |
+> | windowsazure.mediaservices.extensions/Streamingendpoint/privateEndpointConnectionProxies | 否 |
+> | windowsazure.mediaservices.extensions/Streaminglocator | 否 |
+> | windowsazure.mediaservices.extensions/streamingPolicies | 否 |
+> | windowsazure.mediaservices.extensions/streamingPrivateEndpointConnectionProxyOperations | 否 |
+> | mediaservices / transforms | 否 |
+> | mediaservices / transforms / jobs | 否 |
 
 ## <a name="microsoftmicroservices4spring"></a>Microsoft.Microservices4Spring
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | appClusters | Yes |
+> | appClusters | 是 |
 
 ## <a name="microsoftmigrate"></a>Microsoft.Migrate
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | assessmentProjects | Yes |
-> | migrateprojects | Yes |
-> | moveCollections | Yes |
-> | projects | Yes |
+> | assessmentProjects | 是 |
+> | migrateprojects | 是 |
+> | moveCollections | 是 |
+> | projects | 是 |
 
 ## <a name="microsoftmixedreality"></a>Microsoft.MixedReality
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | holographicsBroadcastAccounts | Yes |
-> | objectUnderstandingAccounts | Yes |
-> | remoteRenderingAccounts | Yes |
+> | holographicsBroadcastAccounts | 是 |
+> | objectUnderstandingAccounts | 是 |
+> | remoteRenderingAccounts | 是 |
 > | spatialAnchorsAccounts | 是 |
 
 ## <a name="microsoftnetapp"></a>Microsoft.NetApp
@@ -1577,146 +1577,146 @@ ms.locfileid: "86027837"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | netAppAccounts | Yes |
-> | netAppAccounts / accountBackups | No |
-> | netAppAccounts / capacityPools | Yes |
-> | netAppAccounts/capacityPools/磁片區 | Yes |
-> | netAppAccounts/capacityPools/磁片區/快照集 | Yes |
+> | netAppAccounts | 是 |
+> | netAppAccounts / accountBackups | 否 |
+> | netAppAccounts / capacityPools | 是 |
+> | netAppAccounts/capacityPools/磁片區 | 是 |
+> | netAppAccounts/capacityPools/磁片區/快照集 | 是 |
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | applicationGateways | Yes |
-> | applicationGatewayWebApplicationFirewallPolicies | Yes |
-> | applicationSecurityGroups | Yes |
-> | azureFirewallFqdnTags | No |
-> | azureFirewalls | Yes |
-> | bastionHosts | Yes |
-> | bgpServiceCommunities | No |
-> | connections | Yes |
-> | ddosCustomPolicies | Yes |
-> | ddosProtectionPlans | Yes |
-> | dnsOperationStatuses | No |
+> | applicationGateways | 是 |
+> | applicationGatewayWebApplicationFirewallPolicies | 是 |
+> | applicationSecurityGroups | 是 |
+> | azureFirewallFqdnTags | 否 |
+> | azureFirewalls | 是 |
+> | bastionHosts | 是 |
+> | bgpServiceCommunities | 否 |
+> | connections | 是 |
+> | ddosCustomPolicies | 是 |
+> | ddosProtectionPlans | 是 |
+> | dnsOperationStatuses | 否 |
 > | dnszones | 是 |
-> | dnszones/A | No |
+> | dnszones/A | 否 |
 > | dnszones/AAAA | 否 |
 > | dnszones / all | 否 |
-> | dnszones/CAA | No |
-> | dnszones/CNAME | No |
-> | dnszones/MX | No |
-> | dnszones/NS | No |
-> | dnszones/PTR | No |
+> | dnszones/CAA | 否 |
+> | dnszones/CNAME | 否 |
+> | dnszones/MX | 否 |
+> | dnszones/NS | 否 |
+> | dnszones/PTR | 否 |
 > | dnszones / recordsets | 否 |
-> | dnszones/SOA | No |
-> | dnszones/SRV | No |
-> | dnszones/TXT | No |
-> | expressRouteCircuits | Yes |
-> | expressRouteCrossConnections | Yes |
-> | expressRouteGateways | Yes |
-> | expressRoutePorts | Yes |
-> | expressRouteServiceProviders | No |
-> | firewallPolicies | Yes |
-> | frontdoors | Yes |
-> | frontdoorWebApplicationFirewallManagedRuleSets | No |
-> | frontdoorWebApplicationFirewallPolicies | Yes |
-> | getDnsResourceReference | No |
-> | internalNotify | No |
-> | loadBalancers | Yes |
-> | localNetworkGateways | Yes |
-> | natGateways | Yes |
-> | networkIntentPolicies | Yes |
-> | networkInterfaces | Yes |
-> | networkProfiles | Yes |
-> | networkSecurityGroups | Yes |
-> | networkWatchers | Yes |
-> | networkWatchers / connectionMonitors | Yes |
-> | networkWatchers / flowLogs | Yes |
-> | networkWatchers/鏡頭 | Yes |
-> | networkWatchers / pingMeshes | Yes |
-> | p2sVpnGateways | Yes |
-> | privateDnsOperationStatuses | No |
-> | privateDnsZones | Yes |
-> | privateDnsZones/A | No |
-> | privateDnsZones/AAAA | No |
-> | privateDnsZones/全部 | No |
-> | privateDnsZones/CNAME | No |
-> | privateDnsZones/MX | No |
-> | privateDnsZones/PTR | No |
-> | privateDnsZones/SOA | No |
-> | privateDnsZones/SRV | No |
-> | privateDnsZones/TXT | No |
-> | privateDnsZones / virtualNetworkLinks | Yes |
-> | privateEndpoints | Yes |
-> | privateLinkServices | Yes |
-> | publicIPAddresses | Yes |
-> | publicIPPrefixes | Yes |
-> | routeFilters | Yes |
-> | routeTables | Yes |
-> | serviceEndpointPolicies | Yes |
+> | dnszones/SOA | 否 |
+> | dnszones/SRV | 否 |
+> | dnszones/TXT | 否 |
+> | expressRouteCircuits | 是 |
+> | expressRouteCrossConnections | 是 |
+> | expressRouteGateways | 是 |
+> | expressRoutePorts | 是 |
+> | expressRouteServiceProviders | 否 |
+> | firewallPolicies | 是 |
+> | frontdoors | 是 |
+> | frontdoorWebApplicationFirewallManagedRuleSets | 否 |
+> | frontdoorWebApplicationFirewallPolicies | 是 |
+> | getDnsResourceReference | 否 |
+> | internalNotify | 否 |
+> | loadBalancers | 是 |
+> | localNetworkGateways | 是 |
+> | natGateways | 是 |
+> | networkIntentPolicies | 是 |
+> | networkInterfaces | 是 |
+> | networkProfiles | 是 |
+> | networkSecurityGroups | 是 |
+> | networkWatchers | 是 |
+> | networkWatchers / connectionMonitors | 是 |
+> | networkWatchers / flowLogs | 是 |
+> | networkWatchers/鏡頭 | 是 |
+> | networkWatchers / pingMeshes | 是 |
+> | p2sVpnGateways | 是 |
+> | privateDnsOperationStatuses | 否 |
+> | privateDnsZones | 是 |
+> | privateDnsZones/A | 否 |
+> | privateDnsZones/AAAA | 否 |
+> | privateDnsZones/全部 | 否 |
+> | privateDnsZones/CNAME | 否 |
+> | privateDnsZones/MX | 否 |
+> | privateDnsZones/PTR | 否 |
+> | privateDnsZones/SOA | 否 |
+> | privateDnsZones/SRV | 否 |
+> | privateDnsZones/TXT | 否 |
+> | privateDnsZones / virtualNetworkLinks | 是 |
+> | privateEndpoints | 是 |
+> | privateLinkServices | 是 |
+> | publicIPAddresses | 是 |
+> | publicIPPrefixes | 是 |
+> | routeFilters | 是 |
+> | routeTables | 是 |
+> | serviceEndpointPolicies | 是 |
 > | trafficManagerGeographicHierarchies | 否 |
-> | trafficmanagerprofiles | Yes |
-> | trafficmanagerprofiles/熱度圖 | No |
-> | trafficManagerUserMetricsKeys | No |
-> | virtualHubs | Yes |
-> | virtualNetworkGateways | Yes |
-> | virtualNetworks | Yes |
-> | virtualNetworks/子網 | No |
-> | virtualNetworkTaps | Yes |
-> | virtualWans | Yes |
-> | vpnGateways | Yes |
-> | vpnSites | Yes |
-> | webApplicationFirewallPolicies | Yes |
+> | trafficmanagerprofiles | 是 |
+> | trafficmanagerprofiles/熱度圖 | 否 |
+> | trafficManagerUserMetricsKeys | 否 |
+> | virtualHubs | 是 |
+> | virtualNetworkGateways | 是 |
+> | virtualNetworks | 是 |
+> | virtualNetworks/子網 | 否 |
+> | virtualNetworkTaps | 是 |
+> | virtualWans | 是 |
+> | vpnGateways | 是 |
+> | vpnSites | 是 |
+> | webApplicationFirewallPolicies | 是 |
 
 ## <a name="microsoftnotebooks"></a>Microsoft 筆記本
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | NotebookProxies | No |
+> | NotebookProxies | 否 |
 
 ## <a name="microsoftnotificationhubs"></a>Microsoft.NotificationHubs
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | 命名空間 | Yes |
-> | namespaces / notificationHubs | Yes |
+> | 命名空間 | 是 |
+> | namespaces / notificationHubs | 是 |
 
 ## <a name="microsoftobjectstore"></a>Microsoft.ObjectStore
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | osNamespaces | Yes |
+> | osNamespaces | 是 |
 
 ## <a name="microsoftoffazure"></a>Microsoft.OffAzure
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | HyperVSites | Yes |
-> | ImportSites | Yes |
-> | ServerSites | Yes |
-> | VMwareSites | Yes |
+> | HyperVSites | 是 |
+> | ImportSites | 是 |
+> | ServerSites | 是 |
+> | VMwareSites | 是 |
 
 ## <a name="microsoftoperationalinsights"></a>Microsoft.OperationalInsights
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | clusters | Yes |
-> | deletedWorkspaces | No |
-> | linkTargets | No |
-> | storageInsightConfigs | No |
-> | workspaces | Yes |
-> | 工作區/dataExports | No |
-> | 工作區/資料來源 | No |
-> | 工作區/Linkedservices.json 和 datasets.json | No |
-> | 工作區/linkedStorageAccounts | No |
-> | workspaces / metadata | No |
-> | workspaces / query | No |
-> | 工作區/scopedPrivateLinkProxies | No |
+> | clusters | 是 |
+> | deletedWorkspaces | 否 |
+> | linkTargets | 否 |
+> | storageInsightConfigs | 否 |
+> | workspaces | 是 |
+> | 工作區/dataExports | 否 |
+> | 工作區/資料來源 | 否 |
+> | 工作區/Linkedservices.json 和 datasets.json | 否 |
+> | 工作區/linkedStorageAccounts | 否 |
+> | workspaces / metadata | 否 |
+> | workspaces / query | 否 |
+> | 工作區/scopedPrivateLinkProxies | 否 |
 
 ## <a name="microsoftoperationsmanagement"></a>Microsoft.OperationsManagement
 
@@ -1724,8 +1724,8 @@ ms.locfileid: "86027837"
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
 > | managementassociations | 否 |
-> | managementconfigurations | Yes |
-> | solutions | Yes |
+> | managementconfigurations | 是 |
+> | solutions | 是 |
 > | 檢視 | 是 |
 
 ## <a name="microsoftpeering"></a>Microsoft.Peering
@@ -1733,41 +1733,41 @@ ms.locfileid: "86027837"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | legacyPeerings | No |
+> | legacyPeerings | 否 |
 > | peerAsns | 否 |
 > | peerings | 是 |
-> | peeringServiceCountries | No |
-> | peeringServiceProviders | No |
-> | peeringServices | Yes |
+> | peeringServiceCountries | 否 |
+> | peeringServiceProviders | 否 |
+> | peeringServices | 是 |
 
 ## <a name="microsoftpolicyinsights"></a>Microsoft.PolicyInsights
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | policyEvents | No |
-> | policyMetadata | No |
-> | policyStates | No |
-> | policyTrackedResources | No |
-> | remediations | No |
+> | policyEvents | 否 |
+> | policyMetadata | 否 |
+> | policyStates | 否 |
+> | policyTrackedResources | 否 |
+> | remediations | 否 |
 
 ## <a name="microsoftportal"></a>Microsoft.Portal
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | consoles | No |
-> | dashboards | Yes |
-> | userSettings | No |
+> | consoles | 否 |
+> | dashboards | 是 |
+> | userSettings | 否 |
 
 ## <a name="microsoftpowerbi"></a>Microsoft.PowerBI
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | privateLinkServicesForPowerBI | Yes |
-> | tenants | Yes |
-> | 租使用者/工作區 | No |
+> | privateLinkServicesForPowerBI | 是 |
+> | tenants | 是 |
+> | 租使用者/工作區 | 否 |
 > | workspaceCollections | 是 |
 
 ## <a name="microsoftpowerbidedicated"></a>Microsoft.PowerBIDedicated
@@ -1775,58 +1775,58 @@ ms.locfileid: "86027837"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | capacities | Yes |
+> | capacities | 是 |
 
 ## <a name="microsoftprojectbabylon"></a>Microsoft.ProjectBabylon
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | accounts | Yes |
+> | accounts | 是 |
 
 ## <a name="microsoftproviderhub"></a>Microsoft.ProviderHub
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | providerRegistrations | No |
-> | providerRegistrations / defaultRollouts | No |
-> | providerRegistrations / resourceTypeRegistrations | No |
-> | rollouts | Yes |
+> | providerRegistrations | 否 |
+> | providerRegistrations / defaultRollouts | 否 |
+> | providerRegistrations / resourceTypeRegistrations | 否 |
+> | rollouts | 是 |
 
 ## <a name="microsoftquantum"></a>Microsoft.Quantum
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | 工作區 | Yes |
+> | 工作區 | 是 |
 
 ## <a name="microsoftrecoveryservices"></a>Microsoft.RecoveryServices
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | backupProtectedItems | No |
-> | vaults | Yes |
+> | backupProtectedItems | 否 |
+> | vaults | 是 |
 
 ## <a name="microsoftredhatopenshift"></a>Microsoft.RedHatOpenShift
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | OpenShiftClusters | Yes |
+> | OpenShiftClusters | 是 |
 
 ## <a name="microsoftrelay"></a>Microsoft.Relay
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | 命名空間 | Yes |
-> | namespaces / authorizationrules | No |
-> | namespaces / hybridconnections | No |
-> | namespaces / hybridconnections / authorizationrules | No |
-> | 命名空間/privateEndpointConnections | No |
-> | namespaces / wcfrelays | No |
+> | 命名空間 | 是 |
+> | namespaces / authorizationrules | 否 |
+> | namespaces / hybridconnections | 否 |
+> | namespaces / hybridconnections / authorizationrules | 否 |
+> | 命名空間/privateEndpointConnections | 否 |
+> | namespaces / wcfrelays | 否 |
 > | namespaces / wcfrelays / authorizationrules | 否 |
 
 ## <a name="microsoftresourcegraph"></a>Microsoft.ResourceGraph
@@ -1835,137 +1835,137 @@ ms.locfileid: "86027837"
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
 > | 查詢 | 是 |
-> | resourceChangeDetails | No |
-> | resourceChanges | No |
-> | resources | No |
-> | resourcesHistory | No |
-> | subscriptionsStatus | No |
+> | resourceChangeDetails | 否 |
+> | resourceChanges | 否 |
+> | resources | 否 |
+> | resourcesHistory | 否 |
+> | subscriptionsStatus | 否 |
 
 ## <a name="microsoftresourcehealth"></a>Microsoft.ResourceHealth
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | availabilityStatuses | No |
-> | childAvailabilityStatuses | No |
-> | childResources | No |
-> | emergingissues | No |
-> | 活動 | No |
-> | impactedResources | No |
-> | 中繼資料 | No |
-> | 通知 | No |
+> | availabilityStatuses | 否 |
+> | childAvailabilityStatuses | 否 |
+> | childResources | 否 |
+> | emergingissues | 否 |
+> | 活動 | 否 |
+> | impactedResources | 否 |
+> | 中繼資料 | 否 |
+> | 通知 | 否 |
 
 ## <a name="microsoftresources"></a>Microsoft.Resources
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | calculateTemplateHash | No |
-> | deployments | No |
-> | deployments / operations | No |
-> | deploymentScripts | Yes |
-> | deploymentScripts/記錄 | No |
-> | 連結 | No |
-> | notifyResourceJobs | No |
-> | 提供者 | No |
-> | resourceGroups | No |
-> | subscriptions | No |
-> | templateSpecs | Yes |
-> | templateSpecs/版本 | Yes |
-> | tenants | No |
+> | calculateTemplateHash | 否 |
+> | deployments | 否 |
+> | deployments / operations | 否 |
+> | deploymentScripts | 是 |
+> | deploymentScripts/記錄 | 否 |
+> | 連結 | 否 |
+> | notifyResourceJobs | 否 |
+> | 提供者 | 否 |
+> | resourceGroups | 否 |
+> | subscriptions | 否 |
+> | templateSpecs | 是 |
+> | templateSpecs/版本 | 是 |
+> | tenants | 否 |
 
 ## <a name="microsoftsaas"></a>Microsoft.SaaS
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | 應用程式所需 | Yes |
-> | saasresources | No |
+> | 應用程式所需 | 是 |
+> | saasresources | 否 |
 
 ## <a name="microsoftsearch"></a>Microsoft.Search
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | resourceHealthMetadata | No |
-> | searchServices | Yes |
+> | resourceHealthMetadata | 否 |
+> | searchServices | 是 |
 
 ## <a name="microsoftsecurity"></a>Microsoft.Security
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | adaptiveNetworkHardenings | No |
-> | advancedThreatProtectionSettings | No |
-> | alerts | No |
-> | alertsSuppressionRules | No |
-> | allowedConnections | No |
-> | applicationWhitelistings | No |
-> | assessmentMetadata | No |
+> | adaptiveNetworkHardenings | 否 |
+> | advancedThreatProtectionSettings | 否 |
+> | alerts | 否 |
+> | alertsSuppressionRules | 否 |
+> | allowedConnections | 否 |
+> | applicationWhitelistings | 否 |
+> | assessmentMetadata | 否 |
 > | assessments | 否 |
 > | autoDismissAlertsRules | 否 |
 > | automations | 是 |
-> | AutoProvisioningSettings | No |
-> | Compliances | No |
-> | dataCollectionAgents | No |
-> | deviceSecurityGroups | No |
-> | discoveredSecuritySolutions | No |
-> | externalSecuritySolutions | No |
-> | InformationProtectionPolicies | No |
-> | iotSecuritySolutions | Yes |
-> | iotSecuritySolutions / analyticsModels | No |
-> | iotSecuritySolutions / analyticsModels / aggregatedAlerts | No |
-> | iotSecuritySolutions / analyticsModels / aggregatedRecommendations | No |
-> | iotSecuritySolutions / iotAlerts | No |
-> | iotSecuritySolutions / iotAlertTypes | No |
-> | jitNetworkAccessPolicies | No |
-> | 原則 | No |
-> | pricings | No |
-> | regulatoryComplianceStandards | No |
-> | regulatoryComplianceStandards / regulatoryComplianceControls | No |
-> | regulatoryComplianceStandards / regulatoryComplianceControls / regulatoryComplianceAssessments | No |
-> | secureScoreControlDefinitions | No |
-> | secureScoreControls | No |
-> | secureScores | No |
-> | secureScores / secureScoreControls | No |
-> | securityContacts | No |
-> | securitySolutions | No |
-> | securitySolutionsReferenceData | No |
-> | securityStatuses | No |
-> | securityStatusesSummaries | No |
-> | serverVulnerabilityAssessments | No |
-> | settings | No |
-> | subAssessments | No |
-> | 工作 | No |
-> | topologies | No |
-> | workspaceSettings | No |
+> | AutoProvisioningSettings | 否 |
+> | Compliances | 否 |
+> | dataCollectionAgents | 否 |
+> | deviceSecurityGroups | 否 |
+> | discoveredSecuritySolutions | 否 |
+> | externalSecuritySolutions | 否 |
+> | InformationProtectionPolicies | 否 |
+> | iotSecuritySolutions | 是 |
+> | iotSecuritySolutions / analyticsModels | 否 |
+> | iotSecuritySolutions / analyticsModels / aggregatedAlerts | 否 |
+> | iotSecuritySolutions / analyticsModels / aggregatedRecommendations | 否 |
+> | iotSecuritySolutions / iotAlerts | 否 |
+> | iotSecuritySolutions / iotAlertTypes | 否 |
+> | jitNetworkAccessPolicies | 否 |
+> | 原則 | 否 |
+> | pricings | 否 |
+> | regulatoryComplianceStandards | 否 |
+> | regulatoryComplianceStandards / regulatoryComplianceControls | 否 |
+> | regulatoryComplianceStandards / regulatoryComplianceControls / regulatoryComplianceAssessments | 否 |
+> | secureScoreControlDefinitions | 否 |
+> | secureScoreControls | 否 |
+> | secureScores | 否 |
+> | secureScores / secureScoreControls | 否 |
+> | securityContacts | 否 |
+> | securitySolutions | 否 |
+> | securitySolutionsReferenceData | 否 |
+> | securityStatuses | 否 |
+> | securityStatusesSummaries | 否 |
+> | serverVulnerabilityAssessments | 否 |
+> | settings | 否 |
+> | subAssessments | 否 |
+> | 工作 | 否 |
+> | topologies | 否 |
+> | workspaceSettings | 否 |
 
 ## <a name="microsoftsecuritygraph"></a>Microsoft.SecurityGraph
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | diagnosticSettings | No |
-> | diagnosticSettingsCategories | No |
+> | diagnosticSettings | 否 |
+> | diagnosticSettingsCategories | 否 |
 
 ## <a name="microsoftsecurityinsights"></a>Microsoft.SecurityInsights
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | aggregations | No |
-> | alertRules | No |
-> | alertRuleTemplates | No |
-> | automationRules | No |
-> | bookmarks | No |
-> | 案例 | No |
-> | dataConnectors | No |
-> | dataConnectorsCheckRequirements | No |
-> | 實體 | No |
-> | entityQueries | No |
+> | aggregations | 否 |
+> | alertRules | 否 |
+> | alertRuleTemplates | 否 |
+> | automationRules | 否 |
+> | bookmarks | 否 |
+> | 案例 | 否 |
+> | dataConnectors | 否 |
+> | dataConnectorsCheckRequirements | 否 |
+> | 實體 | 否 |
+> | entityQueries | 否 |
 > | incidents | 否 |
-> | officeConsents | No |
-> | settings | No |
+> | officeConsents | 否 |
+> | settings | 否 |
 > | threatIntelligence | 否 |
 
 ## <a name="microsoftserialconsole"></a>Microsoft.SerialConsole
@@ -1973,44 +1973,44 @@ ms.locfileid: "86027837"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | consoleServices | No |
+> | consoleServices | 否 |
 
 ## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | 命名空間 | Yes |
-> | namespaces / authorizationrules | No |
-> | namespaces / disasterrecoveryconfigs | No |
-> | namespaces / eventgridfilters | No |
-> | namespaces / networkrulesets | No |
-> | namespaces / queues | No |
-> | namespaces / queues / authorizationrules | No |
-> | namespaces / topics | No |
-> | namespaces / topics / authorizationrules | No |
-> | namespaces / topics / subscriptions | No |
+> | 命名空間 | 是 |
+> | namespaces / authorizationrules | 否 |
+> | namespaces / disasterrecoveryconfigs | 否 |
+> | namespaces / eventgridfilters | 否 |
+> | namespaces / networkrulesets | 否 |
+> | namespaces / queues | 否 |
+> | namespaces / queues / authorizationrules | 否 |
+> | namespaces / topics | 否 |
+> | namespaces / topics / authorizationrules | 否 |
+> | namespaces / topics / subscriptions | 否 |
 > | namespaces / topics / subscriptions / rules | 否 |
-> | premiumMessagingRegions | No |
+> | premiumMessagingRegions | 否 |
 
 ## <a name="microsoftservicefabric"></a>Microsoft.ServiceFabric
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | 應用程式所需 | Yes |
-> | clusters | Yes |
-> | clusters / applications | No |
-> | containerGroups | Yes |
-> | containerGroupSets | Yes |
-> | edgeclusters | Yes |
-> | edgeclusters/應用程式 | No |
-> | managedclusters | Yes |
-> | managedclusters/nodetypes | No |
-> | networks | Yes |
-> | secretstores | Yes |
-> | secretstores/憑證 | No |
-> | secretstores/秘密 | No |
+> | 應用程式所需 | 是 |
+> | clusters | 是 |
+> | clusters / applications | 否 |
+> | containerGroups | 是 |
+> | containerGroupSets | 是 |
+> | edgeclusters | 是 |
+> | edgeclusters/應用程式 | 否 |
+> | managedclusters | 是 |
+> | managedclusters/nodetypes | 否 |
+> | networks | 是 |
+> | secretstores | 是 |
+> | secretstores/憑證 | 否 |
+> | secretstores/秘密 | 否 |
 > | 磁碟區 | 是 |
 
 ## <a name="microsoftservicefabricmesh"></a>Microsoft.ServiceFabricMesh
@@ -2018,11 +2018,11 @@ ms.locfileid: "86027837"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | 應用程式所需 | Yes |
-> | containerGroups | Yes |
-> | gateways | Yes |
-> | networks | Yes |
-> | 密碼 | Yes |
+> | 應用程式所需 | 是 |
+> | containerGroups | 是 |
+> | gateways | 是 |
+> | networks | 是 |
+> | 密碼 | 是 |
 > | 磁碟區 | 是 |
 
 ## <a name="microsoftservices"></a>Microsoft.Services
@@ -2030,17 +2030,17 @@ ms.locfileid: "86027837"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | providerRegistrations | No |
-> | providerRegistrations / resourceTypeRegistrations | No |
-> | rollouts | Yes |
+> | providerRegistrations | 否 |
+> | providerRegistrations / resourceTypeRegistrations | 否 |
+> | rollouts | 是 |
 
 ## <a name="microsoftsignalrservice"></a>Microsoft.SignalRService
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | SignalR | Yes |
-> | SignalR/eventGridFilters | No |
+> | SignalR | 是 |
+> | SignalR/eventGridFilters | 否 |
 
 ## <a name="microsoftsoftwareplan"></a>Microsoft.SoftwarePlan
 
@@ -2054,68 +2054,68 @@ ms.locfileid: "86027837"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | applicationDefinitions | Yes |
-> | 應用程式所需 | Yes |
-> | jitRequests | Yes |
+> | applicationDefinitions | 是 |
+> | 應用程式所需 | 是 |
+> | jitRequests | 是 |
 
 ## <a name="microsoftsql"></a>Microsoft.SQL
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | managedInstances | Yes |
-> | managedInstances/資料庫 | Yes |
-> | managedInstances/資料庫/backupShortTermRetentionPolicies | No |
-> | managedInstances/資料庫/架構/資料表/資料行/sensitivityLabels | No |
-> | managedInstances/資料庫/vulnerabilityAssessments | No |
-> | managedInstances/資料庫/vulnerabilityAssessments/規則/基準 | No |
-> | managedInstances/encryptionProtector | No |
-> | managedInstances/金鑰 | No |
-> | managedInstances/restorableDroppedDatabases/backupShortTermRetentionPolicies | No |
-> | managedInstances/vulnerabilityAssessments | No |
-> | servers | Yes |
-> | servers / administrators | No |
-> | 伺服器/communicationLinks | No |
+> | managedInstances | 是 |
+> | managedInstances/資料庫 | 是 |
+> | managedInstances/資料庫/backupShortTermRetentionPolicies | 否 |
+> | managedInstances/資料庫/架構/資料表/資料行/sensitivityLabels | 否 |
+> | managedInstances/資料庫/vulnerabilityAssessments | 否 |
+> | managedInstances/資料庫/vulnerabilityAssessments/規則/基準 | 否 |
+> | managedInstances/encryptionProtector | 否 |
+> | managedInstances/金鑰 | 否 |
+> | managedInstances/restorableDroppedDatabases/backupShortTermRetentionPolicies | 否 |
+> | managedInstances/vulnerabilityAssessments | 否 |
+> | servers | 是 |
+> | servers / administrators | 否 |
+> | 伺服器/communicationLinks | 否 |
 > | servers / databases | 是 |
-> | 伺服器/encryptionProtector | No |
-> | servers / firewallRules | No |
-> | servers / keys | No |
-> | 伺服器/restorableDroppedDatabases | No |
+> | 伺服器/encryptionProtector | 否 |
+> | servers / firewallRules | 否 |
+> | servers / keys | 否 |
+> | 伺服器/restorableDroppedDatabases | 否 |
 > | servers / serviceobjectives | 否 |
-> | 伺服器/tdeCertificates | No |
-> | virtualClusters | No |
+> | 伺服器/tdeCertificates | 否 |
+> | virtualClusters | 否 |
 
 ## <a name="microsoftsqlvirtualmachine"></a>Microsoft.SqlVirtualMachine
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | SqlVirtualMachineGroups | Yes |
-> | SqlVirtualMachineGroups/AvailabilityGroupListeners | No |
-> | SqlVirtualMachines | Yes |
+> | SqlVirtualMachineGroups | 是 |
+> | SqlVirtualMachineGroups/AvailabilityGroupListeners | 否 |
+> | SqlVirtualMachines | 是 |
 
 ## <a name="microsoftstorage"></a>Microsoft.Storage
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | storageAccounts | Yes |
-> | storageAccounts / blobServices | No |
-> | storageAccounts / fileServices | No |
-> | storageAccounts/queueServices | No |
-> | storageAccounts/服務 | No |
-> | storageAccounts/services/Metricdefinitions.listasync | No |
-> | storageAccounts/tableServices | No |
-> | usages | No |
+> | storageAccounts | 是 |
+> | storageAccounts / blobServices | 否 |
+> | storageAccounts / fileServices | 否 |
+> | storageAccounts/queueServices | 否 |
+> | storageAccounts/服務 | 否 |
+> | storageAccounts/services/Metricdefinitions.listasync | 否 |
+> | storageAccounts/tableServices | 否 |
+> | usages | 否 |
 
 ## <a name="microsoftstoragecache"></a>Microsoft.StorageCache
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | caches | Yes |
-> | 快取/storageTargets | No |
-> | usageModels | No |
+> | caches | 是 |
+> | 快取/storageTargets | 否 |
+> | usageModels | 否 |
 
 ## <a name="microsoftstoragereplication"></a>StorageReplication
 
@@ -2129,85 +2129,85 @@ ms.locfileid: "86027837"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | storageSyncServices | Yes |
-> | storageSyncServices / registeredServers | No |
-> | storageSyncServices / syncGroups | No |
-> | storageSyncServices / syncGroups / cloudEndpoints | No |
-> | storageSyncServices / syncGroups / serverEndpoints | No |
-> | storageSyncServices/工作流程 | No |
+> | storageSyncServices | 是 |
+> | storageSyncServices / registeredServers | 否 |
+> | storageSyncServices / syncGroups | 否 |
+> | storageSyncServices / syncGroups / cloudEndpoints | 否 |
+> | storageSyncServices / syncGroups / serverEndpoints | 否 |
+> | storageSyncServices/工作流程 | 否 |
 
 ## <a name="microsoftstoragesyncdev"></a>Microsoft.StorageSyncDev
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | storageSyncServices | Yes |
-> | storageSyncServices / registeredServers | No |
-> | storageSyncServices / syncGroups | No |
-> | storageSyncServices / syncGroups / cloudEndpoints | No |
-> | storageSyncServices / syncGroups / serverEndpoints | No |
-> | storageSyncServices/工作流程 | No |
+> | storageSyncServices | 是 |
+> | storageSyncServices / registeredServers | 否 |
+> | storageSyncServices / syncGroups | 否 |
+> | storageSyncServices / syncGroups / cloudEndpoints | 否 |
+> | storageSyncServices / syncGroups / serverEndpoints | 否 |
+> | storageSyncServices/工作流程 | 否 |
 
 ## <a name="microsoftstoragesyncint"></a>Microsoft.StorageSyncInt
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | storageSyncServices | Yes |
-> | storageSyncServices / registeredServers | No |
-> | storageSyncServices / syncGroups | No |
-> | storageSyncServices / syncGroups / cloudEndpoints | No |
-> | storageSyncServices / syncGroups / serverEndpoints | No |
-> | storageSyncServices/工作流程 | No |
+> | storageSyncServices | 是 |
+> | storageSyncServices / registeredServers | 否 |
+> | storageSyncServices / syncGroups | 否 |
+> | storageSyncServices / syncGroups / cloudEndpoints | 否 |
+> | storageSyncServices / syncGroups / serverEndpoints | 否 |
+> | storageSyncServices/工作流程 | 否 |
 
 ## <a name="microsoftstorsimple"></a>Microsoft.StorSimple
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | managers | Yes |
+> | managers | 是 |
 
 ## <a name="microsoftstreamanalytics"></a>Microsoft.StreamAnalytics
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | clusters | Yes |
-> | streamingjobs | Yes |
+> | clusters | 是 |
+> | streamingjobs | 是 |
 
 ## <a name="microsoftsubscription"></a>Microsoft.Subscription
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | cancel | No |
-> | CreateSubscription | No |
-> | enable | No |
-> | 重新命名 | No |
-> | SubscriptionDefinitions | No |
-> | SubscriptionOperations | No |
-> | subscriptions | No |
+> | cancel | 否 |
+> | CreateSubscription | 否 |
+> | enable | 否 |
+> | 重新命名 | 否 |
+> | SubscriptionDefinitions | 否 |
+> | SubscriptionOperations | 否 |
+> | subscriptions | 否 |
 
 ## <a name="microsoftsynapse"></a>Microsoft.Synapse
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | privateLinkHubs | Yes |
-> | workspaces | Yes |
-> | 工作區/bigDataPools | Yes |
-> | 工作區/operationStatuses | No |
-> | 工作區/sqlPools | Yes |
+> | privateLinkHubs | 是 |
+> | workspaces | 是 |
+> | 工作區/bigDataPools | 是 |
+> | 工作區/operationStatuses | 否 |
+> | 工作區/sqlPools | 是 |
 
 ## <a name="microsofttimeseriesinsights"></a>Microsoft.TimeSeriesInsights
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | environments | Yes |
-> | environments / accessPolicies | No |
-> | environments / eventsources | Yes |
-> | environments / referenceDataSets | Yes |
+> | environments | 是 |
+> | environments / accessPolicies | 否 |
+> | environments / eventsources | 是 |
+> | environments / referenceDataSets | 是 |
 
 ## <a name="microsofttoken"></a>Microsoft.Token
 
@@ -2215,7 +2215,7 @@ ms.locfileid: "86027837"
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
 > | stores | 是 |
-> | 存放區/accessPolicies | No |
+> | 存放區/accessPolicies | 否 |
 > | stores / services | 否 |
 > | stores / services / tokens | 否 |
 
@@ -2224,146 +2224,146 @@ ms.locfileid: "86027837"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | imageTemplates | Yes |
-> | imageTemplates / runOutputs | No |
+> | imageTemplates | 是 |
+> | imageTemplates / runOutputs | 否 |
 
 ## <a name="microsoftvmware"></a>Microsoft.VMware
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | ArcZones | Yes |
-> | ResourcePools | Yes |
-> | VCenters | Yes |
-> | VirtualMachines | Yes |
-> | VirtualMachineTemplates | Yes |
-> | VirtualNetworks | Yes |
+> | ArcZones | 是 |
+> | ResourcePools | 是 |
+> | VCenters | 是 |
+> | VirtualMachines | 是 |
+> | VirtualMachineTemplates | 是 |
+> | VirtualNetworks | 是 |
 
 ## <a name="microsoftvmwarecloudsimple"></a>Microsoft.VMwareCloudSimple
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | dedicatedCloudNodes | Yes |
-> | dedicatedCloudServices | Yes |
-> | virtualMachines | Yes |
+> | dedicatedCloudNodes | 是 |
+> | dedicatedCloudServices | 是 |
+> | virtualMachines | 是 |
 
 ## <a name="microsoftvmwareonazure"></a>VMwareOnAzure
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | privateClouds | Yes |
+> | privateClouds | 是 |
 
 ## <a name="microsoftvnfmanager"></a>Microsoft.VnfManager
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | devices | Yes |
-> | registeredSubscriptions | No |
-> | 廠商 | No |
-> | 廠商/sku | No |
-> | 廠商/vnfs | No |
-> | virtualNetworkFunctionSkus | No |
-> | vnfs | Yes |
+> | devices | 是 |
+> | registeredSubscriptions | 否 |
+> | 廠商 | 否 |
+> | 廠商/sku | 否 |
+> | 廠商/vnfs | 否 |
+> | virtualNetworkFunctionSkus | 否 |
+> | vnfs | 是 |
 
 ## <a name="microsoftvsonline"></a>Microsoft.VSOnline
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | accounts | Yes |
-> | plans | Yes |
-> | registeredSubscriptions | No |
+> | accounts | 是 |
+> | plans | 是 |
+> | registeredSubscriptions | 否 |
 
 ## <a name="microsoftweb"></a>Microsoft.Web
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | apiManagementAccounts | No |
-> | apiManagementAccounts/Apiacl | No |
-> | apiManagementAccounts/api | No |
-> | apiManagementAccounts/api/Apiacl | No |
-> | apiManagementAccounts/api/Connectionacl | No |
-> | apiManagementAccounts/api/連線 | No |
-> | apiManagementAccounts/api/connections/Connectionacl | No |
-> | apiManagementAccounts/api/localizedDefinitions | No |
-> | apiManagementAccounts/Connectionacl | No |
-> | apiManagementAccounts/connections | No |
+> | apiManagementAccounts | 否 |
+> | apiManagementAccounts/Apiacl | 否 |
+> | apiManagementAccounts/api | 否 |
+> | apiManagementAccounts/api/Apiacl | 否 |
+> | apiManagementAccounts/api/Connectionacl | 否 |
+> | apiManagementAccounts/api/連線 | 否 |
+> | apiManagementAccounts/api/connections/Connectionacl | 否 |
+> | apiManagementAccounts/api/localizedDefinitions | 否 |
+> | apiManagementAccounts/Connectionacl | 否 |
+> | apiManagementAccounts/connections | 否 |
 > | billingMeters | 否 |
-> | certificates | Yes |
+> | certificates | 是 |
 > | connectionGateways | 是 |
 > | connections | 是 |
-> | customApis | Yes |
-> | deletedSites | No |
-> | hostingEnvironments | Yes |
-> | hostingEnvironments/eventGridFilters | No |
-> | hostingEnvironments/multiRolePools | No |
-> | hostingEnvironments/workerPools | No |
-> | kubeEnvironments | Yes |
-> | publishingUsers | No |
-> | Mahout | No |
-> | resourceHealthMetadata | No |
-> | runtimes | No |
-> | serverFarms | Yes |
-> | serverFarms/eventGridFilters | No |
-> | sites | Yes |
-> | sites/config  | No |
-> | sites/eventGridFilters | No |
-> | sites/hostNameBindings | No |
-> | sites/Networkconfig.netcfg | No |
+> | customApis | 是 |
+> | deletedSites | 否 |
+> | hostingEnvironments | 是 |
+> | hostingEnvironments/eventGridFilters | 否 |
+> | hostingEnvironments/multiRolePools | 否 |
+> | hostingEnvironments/workerPools | 否 |
+> | kubeEnvironments | 是 |
+> | publishingUsers | 否 |
+> | Mahout | 否 |
+> | resourceHealthMetadata | 否 |
+> | runtimes | 否 |
+> | serverFarms | 是 |
+> | serverFarms/eventGridFilters | 否 |
+> | sites | 是 |
+> | sites/config  | 否 |
+> | sites/eventGridFilters | 否 |
+> | sites/hostNameBindings | 否 |
+> | sites/Networkconfig.netcfg | 否 |
 > | sites / premieraddons | 是 |
 > | sites / slots | 是 |
-> | sites/位置/eventGridFilters | No |
-> | sites/位置/hostNameBindings | No |
-> | sites/位置/Networkconfig.netcfg | No |
-> | sourceControls | No |
-> | staticSites | Yes |
-> | validate | No |
-> | verifyHostingEnvironmentVnet | No |
+> | sites/位置/eventGridFilters | 否 |
+> | sites/位置/hostNameBindings | 否 |
+> | sites/位置/Networkconfig.netcfg | 否 |
+> | sourceControls | 否 |
+> | staticSites | 是 |
+> | validate | 否 |
+> | verifyHostingEnvironmentVnet | 否 |
 
 ## <a name="microsoftwindowsdefenderatp"></a>Microsoft.WindowsDefenderATP
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | diagnosticSettings | No |
-> | diagnosticSettingsCategories | No |
+> | diagnosticSettings | 否 |
+> | diagnosticSettingsCategories | 否 |
 
 ## <a name="microsoftwindowsesu"></a>Microsoft.WindowsESU
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | multipleActivationKeys | Yes |
+> | multipleActivationKeys | 是 |
 
 ## <a name="microsoftwindowsiot"></a>Microsoft.WindowsIoT
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | DeviceServices | Yes |
+> | DeviceServices | 是 |
 
 ## <a name="microsoftworkloadbuilder"></a>WorkloadBuilder
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | 工作負載 | Yes |
-> | 工作負載/實例 | No |
-> | 工作負載/版本 | No |
-> | 工作負載/版本/構件 | No |
+> | 工作負載 | 是 |
+> | 工作負載/實例 | 否 |
+> | 工作負載/版本 | 否 |
+> | 工作負載/版本/構件 | 否 |
 
 ## <a name="microsoftworkloadmonitor"></a>Microsoft.WorkloadMonitor
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | components | No |
-> | componentsSummary | No |
-> | monitorInstances | No |
+> | components | 否 |
+> | componentsSummary | 否 |
+> | monitorInstances | 否 |
 > | monitorInstancesSummary | 否 |
 > | monitors | 否 |
 > | notificationSettings | 否 |

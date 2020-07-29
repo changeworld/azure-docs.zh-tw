@@ -11,12 +11,14 @@ ms.date: 01/29/2018
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: a1aab92bd192119f72bb057347f5a3ea2d980336
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+- 'Role: Cloud Development'
+- 'Role: IoT Device'
+ms.openlocfilehash: 10206aced4f38f4d157f46703aac2d28ec863274
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536845"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319145"
 ---
 # <a name="cloud-to-device-communications-guidance"></a>Cloud-to-device communications guidance
 
@@ -34,7 +36,7 @@ IoT 中樞提供三個選項以便裝置應用程式對後端應用程式公開�
 
 | 類別 | 直接方法 | 對應項的所需屬性 | 雲端到裝置的訊息 |
 | ---------- | -------------- | ------------------------- | ------------------------ |
-| 情節 | 需要立即確認的命令，例如開啟風扇。 | 可讓裝置進入特定所需狀態的長時間執行命令。 例如，將遙測傳送間隔設定為 30 分鐘。 | 對裝置應用程式的單向通知。 |
+| 狀況 | 需要立即確認的命令，例如開啟風扇。 | 可讓裝置進入特定所需狀態的長時間執行命令。 例如，將遙測傳送間隔設定為 30 分鐘。 | 對裝置應用程式的單向通知。 |
 | 資料流程 | 雙向。 裝置應用程式可以立即回應方法。 解決方案後端會接收到根據要求上下文的結果。 | 單向。 裝置應用程式會收到屬性變更的通知。 | 單向。 裝置應用程式接收訊息
 | 持久性 | 無法聯繫已中斷連接的裝置。 解決方案後端會收到裝置未連線的通知。 | 屬性值會保留在裝置對應項中。 裝置會在下一次重新連線時讀取它。 使用 [IoT 中樞查詢語言](iot-hub-devguide-query-language.md)可擷取屬性值。 | IoT 中樞可以保留訊息長達 48 小時。 |
 | Targets | 使用 **deviceId** 的單一裝置，或使用[作業](iot-hub-devguide-jobs.md)的多個裝置。 | 使用 **deviceId** 的單一裝置，或使用[作業](iot-hub-devguide-jobs.md)的多個裝置。 | 依照 **deviceId** 的單一裝置。 |

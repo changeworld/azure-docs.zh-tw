@@ -3,15 +3,16 @@ title: 連線至 Office 365 Outlook
 description: 使用 Azure Logic Apps，將管理 Office 365 Outlook 電子郵件、連絡人和行事曆的工作和工作流程自動化
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: logicappspm
 ms.topic: article
-ms.date: 01/08/2020
+ms.date: 07/27/2020
 tags: connectors
-ms.openlocfilehash: b0f2b8b9c369fdb42c7e0e7f77fc090424ae3729
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aa5be3d58ee1a0a40d0b817e1f5999ccd4bc423d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75732659"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319230"
 ---
 # <a name="manage-email-contacts-and-calendars-in-office-365-outlook-by-using-azure-logic-apps"></a>使用 Azure Logic Apps 在 Office 365 Outlook 中管理電子郵件、連絡人和行事曆
 
@@ -26,11 +27,11 @@ ms.locfileid: "75732659"
 > [!NOTE]
 > 若要自動執行 @outlook.com 或帳戶的工作 @hotmail.com ，請使用[Outlook.com 連接器](../connectors/connectors-create-api-outlook.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
+
+* Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
 
 * [Office 365 帳戶](https://www.office.com/)
-
-* Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。 
 
 * 您想要在其中存取 Office 365 Outlook 帳戶的邏輯應用程式。 若要使用 Office 365 Outlook 觸發程式啟動您的工作流程，您需要有[空白的邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 若要將 Office 365 Outlook 動作新增至您的工作流程，您的邏輯應用程式必須已經有觸發程式。
 
@@ -46,6 +47,9 @@ ms.locfileid: "75732659"
 
 1. 如果系統提示您登入，請提供您的 Office 365 認證，讓您的邏輯應用程式可以連線到您的帳戶。 否則，如果您的連接已經存在，請提供觸發程式屬性的資訊。
 
+   > [!NOTE]
+   > 即使您變更了登入認證，您的連線仍會在撤銷前過期。 如需詳細資訊，請參閱 [Azure Active Directory 中可設定的權杖存留期](../active-directory/active-directory-configurable-token-lifetimes.md)。
+
    這個範例會選取觸發程式檢查的行事曆，例如：
 
    ![設定觸發程式的屬性](./media/connectors-create-api-office365-outlook/select-calendar.png)
@@ -56,7 +60,7 @@ ms.locfileid: "75732659"
 
    ![設定觸發程式的頻率和間隔](./media/connectors-create-api-office365-outlook/calendar-settings.png)
 
-1. 在設計工具的工具列上，選取 [儲存]****。
+1. 在設計工具的工具列上，選取 [儲存]。
 
 現在，新增在觸發程式引發之後執行的動作。 例如，您可以新增 Twilio**傳送訊息**動作，這會在行事曆事件于15分鐘內開始時傳送文字。
 
@@ -76,17 +80,20 @@ ms.locfileid: "75732659"
 
 1. 如果系統提示您登入，請提供您的 Office 365 認證，讓您的邏輯應用程式可以連線到您的帳戶。 否則，如果您的連線已存在，請提供動作屬性的資訊。
 
+   > [!NOTE]
+   > 即使您變更了登入認證，您的連線仍會在撤銷前過期。 如需詳細資訊，請參閱 [Azure Active Directory 中可設定的權杖存留期](../active-directory/active-directory-configurable-token-lifetimes.md)。
+
    這個範例會選取動作建立新連絡人的 [連絡人] 資料夾，例如：
 
    ![設定動作的屬性](./media/connectors-create-api-office365-outlook/select-contacts-folder.png)
 
    若要新增其他可用的動作內容，請從 [**加入新的參數**] 清單中選取這些屬性。
 
-1. 在設計工具的工具列上，選取 [儲存]****。
+1. 在設計工具的工具列上，選取 [儲存]。
 
-## <a name="connector-specific-details"></a>連接器特定的詳細資料
+## <a name="connector-reference"></a>連接器參考
 
-如需有關觸發程式、動作和限制的技術詳細資料（如連接器的 Swagger 檔案中所述），請參閱[連接器的參考頁面](/connectors/office365connector/)。 
+如需此連接器的技術詳細資料（例如，觸發程式、動作和限制，如連接器的 Swagger 檔案所述），請參閱[連接器的參考頁面](/connectors/office365/)。 
 
 ## <a name="next-steps"></a>後續步驟
 

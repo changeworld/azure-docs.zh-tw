@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 04/03/2019
+ms.date: 07/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 63225f6e6daa6b3cdde7aa505c117b43305a4867
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 921dcb05401c61a9fb581595c20112e67f696c5e
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82569078"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371292"
 ---
 # <a name="azure-stack-edge-system-requirements"></a>Azure Stack Edge 系統需求
 
@@ -58,7 +58,7 @@ Azure IoT Edge 允許使用支援的 IoT Hub 通訊協定，進行從內部部�
 
 針對裝載 Azure IoT Edge 執行階段的伺服器，使用下表來進行連接埠設定：
 
-| 連接埠號碼 | 內或外 | 連接埠範圍 | 必要 | 指引 |
+| 連接埠號碼 | 內或外 | 連接埠範圍 | 必要 | 指導方針 |
 |----------|-----------|------------|----------|----------|
 | TCP 443 (HTTPS)| 外       | WAN        | 是      | 開啟來佈建 IoT Edge 的輸出。 使用手動指令碼或 Azure IoT 裝置佈建服務 (DPS) 時，就需要此設定。|
 
@@ -133,6 +133,6 @@ Azure IoT Edge 允許使用支援的 IoT Hub 通訊協定，進行從內部部�
 最後，請確定您在資料集上驗證您的解決方案，並在生產環境中部署之前，先量化 Azure Stack 邊緣的效能。
 
 
-## <a name="next-step"></a>下一步
+## <a name="next-step"></a>後續步驟
 
 - [部署您的 Azure Stack Edge](azure-stack-edge-deploy-prep.md)

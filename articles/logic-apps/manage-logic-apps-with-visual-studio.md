@@ -7,12 +7,12 @@ ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: article
 ms.custom: mvc
 ms.date: 04/29/2020
-ms.openlocfilehash: 9cf964b8b5ebbfe5f790a1e325b48cd4179cf4ee
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: cde8db5310e3ede2721ba327b28c789ccd0b7dd0
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87127667"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87280761"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>使用 Visual Studio 管理邏輯應用程式
 
@@ -71,7 +71,7 @@ ms.locfileid: "87127667"
 
 1. 開啟 Visual Studio。 在 [檢視]**** 功能表上選取 [Cloud Explorer]****。
 
-1. 在 Cloud Explorer 中，選取 [**帳戶管理**] 圖示。 選取與您的邏輯應用程式相關聯的 Azure 訂用帳戶，然後選取 [套用 **]。** 例如:
+1. 在 Cloud Explorer 中，選取 [**帳戶管理**] 圖示。 選取與您的邏輯應用程式相關聯的 Azure 訂用帳戶，然後選取 [套用 **]。** 例如：
 
    ![選取 [帳戶管理]](./media/manage-logic-apps-with-visual-studio/account-management-select-Azure-subscription.png)
 
@@ -100,7 +100,7 @@ ms.locfileid: "87127667"
 
 ## <a name="download-from-azure"></a>從 Azure 下載
 
-您可以從 [Azure 入口網站](https://portal.azure.com)下載邏輯應用程式，並將它們儲存為 [Azure Resource Manager](../azure-resource-manager/management/overview.md) 範本。 之後您可以在本機使用 Visual Studio 編輯範本，並針對不同部署環境自訂邏輯應用程式。  下載邏輯應用程式會自動將其在 [Resource Manager 範本](../azure-resource-manager/templates/overview.md)中的定義「參數化」**，這也會使用 JavaScript 物件標記法 (JSON)。
+您可以從[Azure 入口網站](https://portal.azure.com)[下載](../azure-resource-manager/templates/export-template-portal.md#export-template-from-a-resource)邏輯應用程式，並將它們儲存為[Azure Resource Manager](../azure-resource-manager/management/overview.md)範本。 之後您可以在本機使用 Visual Studio 編輯範本，並針對不同部署環境自訂邏輯應用程式。  下載邏輯應用程式會自動將其在 [Resource Manager 範本](../azure-resource-manager/templates/overview.md)中的定義「參數化」**，這也會使用 JavaScript 物件標記法 (JSON)。
 
 1. 在 Visual Studio 中，使用 Cloud Explorer，[開啟您想要從 Azure 下載的邏輯應用程式](#open-designer)。
 
@@ -230,7 +230,7 @@ ms.locfileid: "87127667"
 
    ![開啟邏輯應用程式的執行歷程記錄](./media/manage-logic-apps-with-visual-studio/open-run-history-for-logic-app.png)
 
-1. 若要檢閱特定執行的詳細資料，請對該執行按兩下。 例如:
+1. 若要檢閱特定執行的詳細資料，請對該執行按兩下。 例如：
 
    ![查看特定執行的相關資訊](./media/manage-logic-apps-with-visual-studio/view-run-history-details.png)
   

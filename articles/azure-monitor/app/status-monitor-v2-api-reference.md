@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 32fd0da0095c34c4ef199eb703881e048473f0a4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2f814c54aeca8a337f786beb8da1b98accbeef7e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499353"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318992"
 ---
 # <a name="azure-monitor-application-insights-agent-api-reference"></a>Azure 監視器 Application Insights 代理程式 API 參考
 
@@ -638,14 +638,15 @@ Timeout Reached. Stopping...
 
   檢視遙測：
  - [探索計量](../platform/metrics-charts.md)以監視效能和使用量。
-- [搜尋事件和記錄](../../azure-monitor/app/diagnostic-search.md)以診斷問題。
+- [搜尋事件和記錄](./diagnostic-search.md)以診斷問題。
 - 使用[分析](../log-query/log-query-overview.md)進行更先進的查詢。
-- [建立儀表板](../../azure-monitor/app/overview-dashboard.md)。
+- [建立儀表板](./overview-dashboard.md)。
  
  新增更多遙測：
  - [建立 Web 測試](monitor-web-app-availability.md)，確定您的網站保持即時狀態。
-- [新增 web 用戶端遙測](../../azure-monitor/app/javascript.md)，以查看來自網頁程式碼的例外狀況，並啟用追蹤呼叫。
-- [將 APPLICATION INSIGHTS SDK 新增至您的程式碼](../../azure-monitor/app/asp-net.md)，讓您可以插入追蹤和記錄呼叫。
+- [新增 web 用戶端遙測](./javascript.md)，以查看來自網頁程式碼的例外狀況，並啟用追蹤呼叫。
+- [將 APPLICATION INSIGHTS SDK 新增至您的程式碼](./asp-net.md)，讓您可以插入追蹤和記錄呼叫。
  
  使用 Application Insights 代理程式執行更多工具：
  - 使用我們的指南來[疑難排解](status-monitor-v2-troubleshoot.md)Application Insights 代理程式。
+

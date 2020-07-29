@@ -5,12 +5,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: 218a0624f7e4adc1aa188dbd62db217bf79202f8
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: mingshen-ms
+ms.author: mingshen
+ms.openlocfilehash: d9413deb99ce938429d05f7c6348c5914e7dd2b1
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86109292"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87304134"
 ---
 # <a name="saas-fulfillment-apis-in-microsoft-commercial-marketplace"></a>Microsoft 商業 marketplace 中的 SaaS 履行 Api
 
@@ -45,7 +47,7 @@ Isv 必須藉由將加入其 SaaS 服務程式代碼中，以維持與 Isv 和 M
 
 在此案例中，不需要發行者以不同的方式來執行任何 API 呼叫流程。
 
-如需 CSP 的詳細資訊，請參閱 https://partner.microsoft.com/en-us/licensing 。
+如需 CSP 的詳細資訊，請參閱 https://partner.microsoft.com/licensing 。
 
 >[!Warning]
 >此 API 的目前版本是第2版，應用於所有新的 SaaS 供應專案。 API 第1版已被取代，並加以維護以支援現有的供應專案。

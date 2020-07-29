@@ -5,12 +5,13 @@ ms.topic: conceptual
 author: Dawgfan
 ms.author: mmcc
 ms.date: 09/20/2019
-ms.openlocfilehash: 4b3d489477a0ee0cc201d4383b5ed960de515c7d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 8cd0c7c73ac4f5c531d91d7e458300ab1b0ad1af
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517105"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371476"
 ---
 # <a name="application-insights-for-web-pages"></a>適用於網頁的 Application Insights
 
@@ -104,7 +105,7 @@ SDK 載入失敗的報告在 IE 8 （或更少）上特別不受支援。 這有
 
 可用的設定選項為 
 
-| 名稱 | 類型 | 描述
+| 名稱 | 類型 | 說明
 |------|------|----------------
 | src | 字串 **[必要]** | 要從中載入 SDK 的完整 URL。 這個值會用於動態加入之腳本/標記的 "src" 屬性 &lt; &gt; 。 您可以使用公用 CDN 位置，或您自己的私人託管。
 | NAME | 字串 *[選擇性]* | 已初始化 SDK 的全域名稱，預設為 appInsights。 因此， ```window.appInsights``` 會參考初始化的實例。 注意：如果您提供名稱值或先前的實例會被指派（透過全域名稱 appInsightsSDK），則此名稱值也會在全域命名空間中定義為 ```window.appInsightsSDK=<name value>``` ，這是 SDK 初始化程式碼所需的，以確保它會初始化並更新正確的程式碼片段基本架構和 proxy 方法。
@@ -115,7 +116,7 @@ SDK 載入失敗的報告在 IE 8 （或更少）上特別不受支援。 這有
 
 ### <a name="sending-telemetry-to-the-azure-portal"></a>將遙測傳送至 Azure 入口網站
 
-根據預設，Application Insights JavaScript SDK 會 autocollects 一些遙測專案，這有助於判斷應用程式的健康情況和基礎使用者體驗。 其中包含：
+根據預設，Application Insights JavaScript SDK 會 autocollects 一些遙測專案，這有助於判斷應用程式的健康情況和基礎使用者體驗。 它們包括：
 
 - 應用程式中未攔截到的**例外**狀況，包括的相關資訊
     - 堆疊追蹤
@@ -185,7 +186,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 | isStorageUseDisabled | false | 若為 true，則 SDK 不會儲存或讀取本機和會話儲存體中的任何資料。 預設值為 false。 |
 | isBeaconApiDisabled | true | 若為 false，SDK 會使用指標[API](https://www.w3.org/TR/beacon)傳送所有遙測 |
 | onunloadDisableBeacon | false | 預設值為 false。 當索引標籤關閉時，SDK 會使用指標[API](https://www.w3.org/TR/beacon)傳送所有剩餘的遙測 |
-| sdkExtension | null | 設定 sdk 延伸模組名稱。 只允許字母字元。 擴充功能名稱會新增為 ' sdkVersion ' 標記的前置詞（例如 ' ext_javascript： 2.0.0 '）。 預設值為 null。 |
+| sdkExtension | null | 設定 sdk 延伸模組名稱。 只允許字母字元。 擴充功能名稱會新增為 ' sdkVersion ' 標記的前置詞（例如 ' ext_javascript： 2.0.0 '）。 預設為 Null。 |
 | isBrowserLinkTrackingEnabled | false | 預設值為 false。 若為 true，SDK 將會追蹤所有[瀏覽器連結](/aspnet/core/client-side/using-browserlink)要求。 |
 | appId | null | AppId 會用於用戶端上發生的 AJAX 相依性與伺服器端要求之間的相互關聯。 啟用「指標 API」時，無法自動使用它，但可在設定中手動設定。 預設值為 null |
 | enableCorsCorrelation | false | 若為 true，SDK 會將兩個標頭（「要求識別碼」和「要求-內容」）新增至所有 CORS 要求，以將外寄 AJAX 相依性與伺服器端上的對應要求相互關聯。 預設值為 false。 |

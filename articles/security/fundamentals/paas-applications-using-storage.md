@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/28/2018
 ms.author: tomsh
-ms.openlocfilehash: da59c0d54fa08194f9d77fc79754cbfbaca1a1e8
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 645d92a214f88985e1427ab24d350a6f85c0a076
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87128398"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371374"
 ---
 # <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-storage"></a>使用 Azure 儲存體保護 PaaS Web 與行動應用程式的最佳做法
 在此文章中，我們將討論用來保護平台即服務 (PaaS) Web 與行動應用程式的 Azure 儲存體安全性最佳做法。 這些最佳做法衍生自我們的 Azure 經驗和客戶 (例如您自己) 的經驗。
@@ -58,7 +58,7 @@ SAS 可讓您以您想要的方式來共用內容，而不必交出儲存體帳�
 ## <a name="use-role-based-access-control"></a>使用角色型存取控制
 另一種管理存取權的方式是使用[角色型存取控制](/azure/role-based-access-control/overview) (RBAC)。 若使用 RBAC，您就可以根據須知事項和最低權限安全性原則來專注在為員工提供確實符合其所需的權限。 權限太多可能會讓帳戶暴露在攻擊者的威脅下。 權限太少則會讓員工無法有效率地完成工作。 RBAC 可以為 Azure 提供更細緻的存取管理來協助解決這個問題。 對於想要強制執行資料存取安全性原則的組織，這是必須做的事。
 
-您可以利用 Azure 中內建的 RBAC 角色指派權限給使用者。 例如，將儲存體帳戶參與者用於需要管理儲存體帳戶的雲端操作者，並使用傳統儲存體帳戶參與者角色管理傳統儲存體帳戶。 對於需要管理 VM 而非其所連線的虛擬網路或儲存體帳戶的雲端操作者，您可以將他們新增至虛擬機器參與者角色。
+您可以在 Azure 中使用 Azure 內建角色，將許可權指派給使用者。 例如，將儲存體帳戶參與者用於需要管理儲存體帳戶的雲端操作者，並使用傳統儲存體帳戶參與者角色管理傳統儲存體帳戶。 對於需要管理 VM 而非其所連線的虛擬網路或儲存體帳戶的雲端操作者，您可以將他們新增至虛擬機器參與者角色。
 
 未利用諸如 RBAC 等功能來強制執行資料存取控制的組織，可能會對其使用者提供超過所需的權限。 這可能會讓某些使用者一開始就能存取他們不應能夠存取的資料，而導致資料外洩。
 

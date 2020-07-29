@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 07/28/2020
 ms.author: aahi
-ms.openlocfilehash: 3d9fb7f3fa01c06cc778e4062dd1d136e9c6e342
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: f2ce8f300ae7586fc16fd9170ec290b19875d01c
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103393"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371119"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>文字分析 API 有哪些新功能？
 
@@ -23,7 +23,7 @@ ms.locfileid: "86103393"
 
 ## <a name="july-2020"></a>2020 年 7 月
 
-### <a name="text-analytics-for-health-container-public-gated-preview"></a>健康情況容器公開閘道預覽的文字分析
+### <a name="text-analytics-for-health-container---public-gated-preview"></a>適用于健康情況容器的文字分析-公用網關預覽
 
 健康情況容器的文字分析現在位於公開閘道預覽中，可讓您從非結構化的英文文字（例如：患者進氣窗體、醫生的記事、研究論文和放電摘要）中解壓縮資訊。 目前，您不需要支付健康情況容器使用量的文字分析費用。 
 

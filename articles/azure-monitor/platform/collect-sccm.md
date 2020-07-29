@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/28/2019
-ms.openlocfilehash: 5984cbf8cf618a938ee85638d981f7867c6ec8b5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6d6431aa26637e4b956d5c334a2862f689f845bf
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539358"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319315"
 ---
 # <a name="connect-configuration-manager-to-azure-monitor"></a>將 Configuration Manager 連接到 Azure 監視器
 您可以將您的 Microsoft 端點 Configuration Manager 環境連接到 Azure 監視器，以同步處理裝置集合資料，並在 Azure 監視器和 Azure 自動化中參考這些集合。  
@@ -41,7 +41,7 @@ Azure 監視器支援 Configuration Manager 最新分支1606版和更高版本�
 
 ## <a name="grant-configuration-manager-with-permissions-to-log-analytics"></a>對 Configuration Manager 授與 Log Analytics 的權限
 
-在下列程序中，您會將 Log Analytics 工作區中的「參與者」** 角色授與給您稍早為 Configuration Manager 建立的 AD 應用程式和服務主體。 如果您還沒有工作區，請參閱[在 Azure 監視器中建立工作區](../../azure-monitor/learn/quick-create-workspace.md)，再繼續進行。 這可讓 Configuration Manager 進行驗證並連線到 Log Analytics 工作區。  
+在下列程序中，您會將 Log Analytics 工作區中的「參與者」** 角色授與給您稍早為 Configuration Manager 建立的 AD 應用程式和服務主體。 如果您還沒有工作區，請參閱[在 Azure 監視器中建立工作區](../learn/quick-create-workspace.md)，再繼續進行。 這可讓 Configuration Manager 進行驗證並連線到 Log Analytics 工作區。  
 
 > [!NOTE]
 > 您必須在 Log Analytics 工作區中指定 Configuration Manager 的許可權。 否則，當您在 Configuration Manager 中使用組態精靈時，將會收到錯誤訊息。
@@ -139,14 +139,15 @@ Azure 監視器支援 Configuration Manager 最新分支1606版和更高版本�
 
 ## <a name="view-data-from-configuration-manager"></a>從 Configuration Manager 檢視資料
 
-將 Log Analytics 連線新增至 Configuration Manager，並在執行 Configuration Manager 服務連線點網站系統角色的電腦上安裝代理程式之後，代理程式的資料會傳送至 Azure 監視器中的 Log Analytics 工作區。 在 Azure 監視器中，您的 Configuration Manager 集合會顯示為 [[電腦群組](../../azure-monitor/platform/computer-groups.md)]。 您可以從 [設定\電腦群組]**** 下的 [Configuration Manager]**** 頁面檢視群組。
+將 Log Analytics 連線新增至 Configuration Manager，並在執行 Configuration Manager 服務連線點網站系統角色的電腦上安裝代理程式之後，代理程式的資料會傳送至 Azure 監視器中的 Log Analytics 工作區。 在 Azure 監視器中，您的 Configuration Manager 集合會顯示為 [[電腦群組](./computer-groups.md)]。 您可以從 [設定\電腦群組]**** 下的 [Configuration Manager]**** 頁面檢視群組。
 
 匯入集合之後，您可以看到已偵測到多少部具有集合成員資格的電腦。 您也可以看到已匯入的集合數目。
 
 ![電腦群組 - SCCM 索引標籤](./media/collect-sccm/sccm-computer-groups02.png)
 
-當您按一下任一項時，記錄查詢編輯器會開啟，顯示所有匯入的群組或屬於每個群組的所有電腦。 使用[記錄搜尋](../../azure-monitor/log-query/log-query-overview.md)，您可以進一步深入分析集合成員資格資料。
+當您按一下任一項時，記錄查詢編輯器會開啟，顯示所有匯入的群組或屬於每個群組的所有電腦。 使用[記錄搜尋](../log-query/log-query-overview.md)，您可以進一步深入分析集合成員資格資料。
 
 ## <a name="next-steps"></a>後續步驟
 
-請使用 [記錄檔搜尋](../../azure-monitor/log-query/log-query-overview.md)，檢視有關 Configuration Manager 資料的詳細資訊。
+請使用 [記錄檔搜尋](../log-query/log-query-overview.md)，檢視有關 Configuration Manager 資料的詳細資訊。
+

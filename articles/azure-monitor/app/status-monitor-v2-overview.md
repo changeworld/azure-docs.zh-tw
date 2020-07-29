@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 09/16/2019
-ms.openlocfilehash: 6a51da4f4685d7d7b1c597d8a9b9dd78270f29b1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0fa0b0d5e3620fc45a104ea31fd3bcbedd673da1
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499268"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318941"
 ---
 # <a name="deploy-azure-monitor-application-insights-agent-for-on-premises-servers"></a>為內部部署伺服器部署 Azure 監視器 Application Insights 代理程式
 
@@ -31,7 +31,7 @@ Application Insights 代理程式位於此處： https://www.powershellgallery.c
 ![PowerShell 資源庫](https://img.shields.io/powershellgallery/v/Az.ApplicationMonitor.svg?color=Blue&label=Current%20Version&logo=PowerShell&style=for-the-badge)
 
 
-## <a name="instructions"></a>Instructions
+## <a name="instructions"></a>指示
 - 請參閱開始使用的[指示](status-monitor-v2-get-started.md)，以取得簡單的程式碼範例。
 - 如需深入瞭解如何開始使用，請參閱[詳細指示](status-monitor-v2-detailed-instructions.md)。
 
@@ -76,13 +76,14 @@ Application Insights 代理程式位於此處： https://www.powershellgallery.c
 
 檢視遙測：
 
-* [探索計量](../../azure-monitor/platform/metrics-charts.md)以監視效能和使用量。
-* [搜尋事件和記錄](../../azure-monitor/app/diagnostic-search.md)以診斷問題。
+* [探索計量](../platform/metrics-charts.md)以監視效能和使用量。
+* [搜尋事件和記錄](./diagnostic-search.md)以診斷問題。
 * [流量分析](../log-query/log-query-overview.md)進行更先進的查詢。
-* [建立儀表板](../../azure-monitor/app/overview-dashboard.md)。
+* [建立儀表板](./overview-dashboard.md)。
 
 新增更多遙測：
 
 * [建立 Web 測試](monitor-web-app-availability.md)，確定您的網站保持即時狀態。
-* [新增 web 用戶端遙測](../../azure-monitor/app/javascript.md)，以查看來自網頁程式碼的例外狀況，並啟用追蹤呼叫。
-* [將 APPLICATION INSIGHTS SDK 新增至您的程式碼](../../azure-monitor/app/asp-net.md)，讓您可以插入追蹤和記錄呼叫。
+* [新增 web 用戶端遙測](./javascript.md)，以查看來自網頁程式碼的例外狀況，並啟用追蹤呼叫。
+* [將 APPLICATION INSIGHTS SDK 新增至您的程式碼](./asp-net.md)，讓您可以插入追蹤和記錄呼叫。
+

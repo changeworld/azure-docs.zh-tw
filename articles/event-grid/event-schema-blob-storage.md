@@ -3,12 +3,12 @@ title: 做為事件方格來源 Azure Blob 儲存體
 description: 描述 Azure Event Grid blob 儲存體事件的屬性
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: a226a46dcc85e2bb4940364d2802397edb2c2397
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 792e4b24df5eb374d1e3589629fa8628d6680cf8
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86113746"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371272"
 ---
 # <a name="azure-blob-storage-as-an-event-grid-source"></a>做為事件方格來源 Azure Blob 儲存體
 
@@ -24,7 +24,10 @@ ms.locfileid: "86113746"
 
 當用戶端藉由呼叫 Blob REST Api 來建立、取代或刪除 blob 時，就會觸發這些事件。
 
- |事件名稱 |描述|
+> [!NOTE]
+> 使用 *`(abfss://URI) `* 未啟用階層命名空間之帳戶的 dfs 端點將不會產生事件。 對於這類帳戶，只有 blob 端點 *`(wasb:// URI)`* 會產生事件。
+
+ |事件名稱 |說明|
  |----------|-----------|
  |**Microsoft.Storage.BlobCreated** |建立或取代 blob 時觸發。 <br>具體而言，當用戶端使用 `PutBlob` `PutBlockList` `CopyBlob` 可在 Blob REST API 中取得的、或作業時，就會觸發此事件。   |
  |**Microsoft.Storage.BlobDeleted** |刪除 blob 時觸發。 <br>具體而言，當用戶端呼叫 `DeleteBlob` Blob REST API 中可用的作業時，就會觸發此事件。 |
@@ -36,7 +39,7 @@ ms.locfileid: "86113746"
 
 如果您在儲存體帳戶上啟用階層式命名空間，而且用戶端呼叫 Azure Data Lake Storage Gen2 REST Api，就會觸發這些事件。 如需 bout about Azure Data Lake Storage Gen2 的詳細資訊，請參閱[Azure Data Lake Storage Gen2 簡介](../storage/blobs/data-lake-storage-introduction.md)。
 
-|事件名稱|描述|
+|事件名稱|說明|
 |----------|-----------|
 |**Microsoft.Storage.BlobCreated** | 建立或取代 blob 時觸發。 <br>具體而言，當用戶端使用 `CreateFile` `FlushWithClose` Azure Data Lake Storage Gen2 REST API 中提供的和作業時，就會觸發此事件。 |
 |**Microsoft.Storage.BlobDeleted** |刪除 blob 時觸發。 <br>具體而言，當用戶端呼叫 `DeleteFile` Azure Data Lake Storage Gen2 REST API 中提供的作業時，也會觸發此事件。 |
@@ -291,13 +294,13 @@ ms.locfileid: "86113746"
 | 屬性 | 類型 | 描述 |
 | -------- | ---- | ----------- |
 | 主題 | 字串 | 事件來源的完整資源路徑。 此欄位不可寫入。 Event Grid 提供此值。 |
-| subject | 字串 | 發行者定義事件主體的路徑。 |
+| subject | 字串 | 發行者定義事件主旨的路徑。 |
 | eventType | 字串 | 此事件來源已註冊的事件類型之一。 |
 | eventTime | 字串 | 事件產生的時間，以提供者之 UTC 時間為準。 |
 | id | 字串 | 事件的唯一識別碼。 |
 | data | 物件 (object) | blob 儲存體帳戶。 |
 | dataVersion | 字串 | 資料物件的結構描述版本。 發行者會定義結構描述版本。 |
-| metadataVersion | 字串 | 事件中繼資料的結構描述版本。 Event Grid 會定義最上層屬性的結構描述。 Event Grid 提供此值。 |
+| metadataVersion | 字串 | 事件中繼資料的結構描述版本。 「事件方格」會定義最上層屬性的結構描述。 「事件方格」提供此值。 |
 
 資料物件具有下列屬性：
 
@@ -310,16 +313,16 @@ ms.locfileid: "86113746"
 | ContentType | 字串 | 為 blob 指定內容類型。 |
 | contentLength | integer | Blob 大小 (以位元組為單位)。 |
 | blobType | 字串 | Blob 的類型。 有效值為 "BlockBlob" 或 "PageBlob"。 |
-| contentOffset | number | 在事件觸發應用程式完成寫入檔案時，所採取之寫入作業的位移（以位元組為單位）。 <br>只有在具有階層命名空間的 blob 儲存體帳戶上觸發的事件才會出現。|
+| contentOffset | 數字 | 在事件觸發應用程式完成寫入檔案時，所採取之寫入作業的位移（以位元組為單位）。 <br>只有在具有階層命名空間的 blob 儲存體帳戶上觸發的事件才會出現。|
 | destinationUrl |字串 | 在作業完成之後，將會存在的檔案的 url。 例如，如果檔案已重新命名，則 `destinationUrl` 屬性會包含新檔案名的 url。 <br>只有在具有階層命名空間的 blob 儲存體帳戶上觸發的事件才會出現。|
 | sourceUrl |字串 | 作業之前存在之檔案的 url。 例如，如果檔案已重新命名，則會 `sourceUrl` 包含重新命名作業之前原始檔案名稱的 url。 <br>只有在具有階層命名空間的 blob 儲存體帳戶上觸發的事件才會出現。 |
 | url | 字串 | blob 的路徑。 <br>如果用戶端使用 Blob REST API，則 url 會有此結構： * \<storage-account-name\> . blob.core.windows.net/ \<container-name\> / \<file-name\> *。 <br>如果用戶端使用 Data Lake Storage REST API，則 url 會有此結構： * \<storage-account-name\> . dfs.core.windows.net/ \<file-system-name\> / \<file-name\> *。 |
 | 遞迴 | 字串 | `True`在所有子目錄上執行作業;否則為 `False` 。 <br>只有在具有階層命名空間的 blob 儲存體帳戶上觸發的事件才會出現。 |
 | 排序器 | 字串 | 不透明的字串值表示任何特定 Blob 名稱之事件的邏輯順序。  使用者可使用標準字串比較，以了解 Blob 名稱相同之兩個事件的相對順序。 |
-| storageDiagnostics | 物件 (object) | Azure 儲存體服務偶爾包含診斷資料。 出現時，事件消費者應該予以忽略。 |
+| storageDiagnostics | object | Azure 儲存體服務偶爾包含診斷資料。 出現時，事件消費者應該予以忽略。 |
 
 ## <a name="tutorials-and-how-tos"></a>教學課程和操作說明
-|Title  |描述  |
+|標題  |說明  |
 |---------|---------|
 | [快速入門：使用 Azure CLI 將 Blob 儲存體事件路由至自訂的 Web 端點](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json) | 示範如何使用 Azure CLI 將 Blob 儲存體事件傳送至 WebHook。 |
 | [快速入門：使用 PowerShell 將 Blob 儲存體事件路由至自訂的 Web 端點](../storage/blobs/storage-blob-event-quickstart-powershell.md?toc=%2fazure%2fevent-grid%2ftoc.json) | 示範如何使用 Azure PowerShell 將 Blob 儲存體事件傳送至 WebHook。 |

@@ -5,21 +5,22 @@ description: 在 Azure Machine Learning 中設定事件驅動的應用程式、�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
+ms.custom: how-to
 ms.author: shipatel
 author: shivp950
 ms.reviewer: larryfr
 ms.date: 05/11/2020
-ms.openlocfilehash: 5c4eae49b849b7dc5dbf7c27d50e241b2a4f36e4
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 3b6f115e27b5cf956a524bd1a610797c689b5d6c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135959"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319485"
 ---
 # <a name="trigger-applications-processes-or-cicd-workflows-based-on-azure-machine-learning-events-preview"></a>根據 Azure Machine Learning 事件來觸發應用程式、進程或 CI/CD 工作流程（預覽）
 
-在本文中，您將瞭解如何在 [Azure 事件方格](https://docs.microsoft.com/azure/event-grid/)偵測到特定條件時，根據 Azure Machine Learning 事件 (例如失敗通知電子郵件、ML 管線執行) 來設定事件驅動的應用程式、程序或 CI/CD 工作流程。 
+在本文中，您將瞭解如何在 [Azure 事件方格](https://docs.microsoft.com/azure/event-grid/)偵測到特定條件時，根據 Azure Machine Learning 事件 (例如失敗通知電子郵件、ML 管線執行) 來設定事件驅動的應用程式、程序或 CI/CD 工作流程。
 
 Azure Machine Learning 可管理機器學習程序的整個生命週期，包括模型定型、模型部署和監視。 使用新式無伺服器架構，您可以利用事件方格來回應 Azure Machine Learning 事件，例如定型執行完成、模型的註冊和部署、偵測到資料漂移等。 接著，您可以在工作區中訂閱和使用事件，例如執行狀態變更、執行完成、模型註冊、模型部署、資料漂移偵測。
 

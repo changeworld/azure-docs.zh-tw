@@ -4,11 +4,12 @@ description: Application Insights 端對端交易診斷
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.reviewer: sdash
-ms.openlocfilehash: 39c4c51a1bc84e06efac3674b1ee5b487f9e6729
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 552e80d6c90a18180ab41dce72e995b6804a91bc
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77671132"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318907"
 ---
 # <a name="unified-cross-component-transaction-diagnostics"></a>整合跨元件交易診斷
 
@@ -63,7 +64,7 @@ ms.locfileid: "77671132"
 
 ## <a name="profiler-and-snapshot-debugger"></a>分析工具和快照集偵錯工具
 
-[Application Insights 分析工具](../../azure-monitor/app/profiler.md)或[快照集偵錯工具](snapshot-debugger.md)能協助您從程式碼層級診斷效能和失敗問題。 透過這項體驗，只要按一下按鈕，您就可以查看任何元件的分析工具追蹤或快照集。
+[Application Insights 分析工具](./profiler.md)或[快照集偵錯工具](snapshot-debugger.md)能協助您從程式碼層級診斷效能和失敗問題。 透過這項體驗，只要按一下按鈕，您就可以查看任何元件的分析工具追蹤或快照集。
 
 如果您無法讓 Profiler 運作，請洽詢**serviceprofilerhelp \@ microsoft.com**
 
@@ -94,3 +95,4 @@ ms.locfileid: "77671132"
 *為什麼新體驗遺漏大部分的相關項目查詢？*
 
 這是原廠設定。 左側 (上方和下方區段) 已有全部元件的所有相關項目。 新體驗的左側未涵蓋兩項相關項目：此事件前後五分鐘的所有遙測資料和使用者時間軸。
+

@@ -4,16 +4,16 @@ description: 本文是 Linux Vm 的 Microsoft Azure 磁片加密附錄。
 author: msmbaldwin
 ms.service: virtual-machines-linux
 ms.subservice: security
-ms.topic: article
+ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5e7b22a8010d7dfbdeeaeae623a55c1aff9c006c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ab6ef302d2ac3cbca8bb91c05f994c1ddf19bd1e
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86510492"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87370252"
 ---
 # <a name="azure-disk-encryption-sample-scripts-for-linux-vms"></a>適用于 Linux Vm 的 Azure 磁碟加密範例腳本
 
@@ -43,7 +43,7 @@ ms.locfileid: "86510492"
 下表顯示可在 PowerShell 指令碼中使用的參數： 
 
 
-|參數|描述|是否為強制？|
+|參數|說明|是否為強制？|
 |------|------|------|
 |$resourceGroupName| 金鑰保存庫所屬資源群組的名稱。  如果不存在此名稱的應用程式，將會以此名稱建立新的資源群組。| True|
 |$keyVaultName|要用來放置加密金鑰的金鑰保存庫名稱。 如果不存在此名稱的應用程式，將會以此名稱建立新的保存庫。| True|
@@ -227,7 +227,7 @@ ms.locfileid: "86510492"
     fi
    ```
 
-2. 在 */etc/crypttab* 中變更 crypt 設定。 它看起來應該如下所示：
+2. 在 */etc/crypttab* 中變更 crypt 設定。 它看起來應該像這樣：
    ```
     xxx_crypt uuid=xxxxxxxxxxxxxxxxxxxxx none luks,discard,keyscript=/usr/local/sbin/azure_crypt_key.sh
     ```

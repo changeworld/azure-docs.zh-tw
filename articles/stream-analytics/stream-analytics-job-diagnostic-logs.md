@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 06/18/2020
-ms.openlocfilehash: 2fb1f22fd555e8ddbdc04842906cddb990956fb5
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 6d0a778dee31d93244479c08c7bb7b6f37cf49cb
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044510"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319349"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-resource-logs"></a>使用資源記錄對 Azure 串流分析進行疑難排解
 
@@ -59,13 +59,13 @@ ms.locfileid: "86044510"
 
 強烈建議您開啟資源記錄，並將它們傳送至 Azure 監視器記錄。 預設為**關閉**。 若要開啟它們，請完成下列步驟：
 
-1.  如果您還沒有[Log Analytics 工作區](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)，請建立一個。 建議您將 Log Analytics 工作區與串流分析作業位於相同的區域。
+1.  如果您還沒有 Log Analytics 工作區，請建立一個。 建議您將 Log Analytics 工作區與串流分析作業位於相同的區域。
 
 2.  登入 Azure 入口網站，然後瀏覽至您的 Stream Analytics 作業。 在 [監視]**** 下，選取 [診斷記錄]****。 然後選取 [開啟診斷]****。
 
     ![流覽至資源記錄的 Blade](./media/stream-analytics-job-diagnostic-logs/diagnostic-logs-monitoring.png)  
 
-2.  **在 [****診斷設定名稱**] 中提供**名稱**，並核取 [**記錄**] 底下的 [**執行**] 和 [**撰寫**中] 方塊，然後**AllMetrics** [計量] 然後選取 [**傳送至 Log Analytics** ]，然後選擇您的工作區。 按一下 [檔案] 。
+2.  **在 [****診斷設定名稱**] 中提供**名稱**，並核取 [**記錄**] 底下的 [**執行**] 和 [**撰寫**中] 方塊，然後**AllMetrics** [計量] 然後選取 [**傳送至 Log Analytics** ]，然後選擇您的工作區。 按一下 **[儲存]** 。
 
     ![資源記錄的設定](./media/stream-analytics-job-diagnostic-logs/logs-setup.png)
 
@@ -138,12 +138,9 @@ Name | 說明
 錯誤 | (選用) 錯誤資訊。 這通常是例外狀況資訊 (如果有的話)。
 訊息| 記錄訊息。
 類型 | 訊息類型。 對應至錯誤的內部分類。 例如，**JobValidationError**或 **BlobOutputAdapterInitializationFailure**。
-相互關連識別碼 | 唯一識別作業執行的 [GUID (英文)](https://en.wikipedia.org/wiki/Universally_unique_identifier)。 從作業開始直到作業停止的所有執行記錄項目皆具有同一個**相互關聯識別碼**值。
+相互關連識別碼 | 唯一識別作業執行的 GUID (英文)。 從作業開始直到作業停止的所有執行記錄項目皆具有同一個**相互關聯識別碼**值。
 
 ## <a name="next-steps"></a>後續步驟
 
-* [串流分析介紹](stream-analytics-introduction.md)
-* [開始使用串流分析](stream-analytics-real-time-fraud-detection.md)
-* [調整串流分析作業](stream-analytics-scale-jobs.md)
-* [串流分析查詢語言參考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [串流分析資料錯誤](https://docs.microsoft.com/azure/stream-analytics/data-errors)
+* [串流分析查詢語言參考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)

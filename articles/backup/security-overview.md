@@ -3,12 +3,12 @@ title: 安全性功能概觀
 description: 了解 Azure 備份中的安全性功能，協助保護您的備份資料，並符合您企業的安全性需求。
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: 750ad7b10969ef5f83e0b5058e350066d3f97351
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 944ef2e86ad8e56501692b29d0958bc4fc19bf0a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87062598"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319298"
 ---
 # <a name="overview-of-security-features-in-azure-backup"></a>Azure 備份中的安全性功能概觀
 
@@ -38,17 +38,21 @@ Azure 備份包括虛擬機器備份和虛擬機器備份中的 SQL 和 SAP HANA
 
 ## <a name="private-endpoints-for-azure-backup"></a>Azure 備份的私人端點
 
-您現在可以使用[私人端點](../private-link/private-endpoint-overview.md)，從虛擬網路內部的伺服器將資料安全地備份到復原服務保存庫。 私人端點會針對您的保存庫使用 VNET 位址空間中的 IP，因此，您不需要向任何公用 IP 公開虛擬網路。 私人端點可用於備份和還原在您的 Azure VM 中執行的 SQL 和 SAP Hana 資料庫， 也可以用於使用 MARS 代理程式的內部部署伺服器。
+您現在可以使用[私人端點](../private-link/private-endpoint-overview.md)，從虛擬網路內部的伺服器將資料安全地備份到復原服務保存庫。 私人端點會針對您的保存庫使用 VNET 位址空間中的 IP，因此您不需要向任何公用 Ip 公開虛擬網路。 私人端點可用於備份和還原在您的 Azure VM 中執行的 SQL 和 SAP Hana 資料庫， 也可以用於使用 MARS 代理程式的內部部署伺服器。
 
 請在[這裡](./private-endpoints.md)詳讀 Azure 備份的私人端點詳細資料。
 
-## <a name="encryption-of-data-in-transit-and-at-rest"></a>加密傳輸中資料和待用資料
+## <a name="encryption-of-data"></a>資料的加密
 
-加密可保護您的資料安全，並協助您符合組織安全性和合規性承諾。 在 Azure 中，會透過 HTTPS 保護 Azure 儲存體與保存庫之間的傳輸中資料。 此資料會保持在 Azure 中樞網路上。
+加密可保護您的資料安全，並協助您符合組織安全性和合規性承諾。 Azure 備份中的許多階段進行資料加密：
 
-* 備份資料會使用 Microsoft 受控金鑰自動加密。 您也可以使用存放在 Azure Key Vault 中的[客戶受控金鑰](backup-encryption.md#encryption-of-backup-data-using-customer-managed-keys)，在復原服務保存庫中加密您的備份受控磁碟 VM。 您不需要採取任何明確的動作，即可啟用此加密。 其適用於備份到復原服務保存庫的所有工作負載。
+* 在 Azure 中，Azure 儲存體與保存庫之間傳輸中的資料會受到[HTTPS 保護](backup-support-matrix.md#network-traffic-to-azure)。 此資料會保持在 Azure 中樞網路上。
 
-* Azure 備份支援備份和還原已使用 Azure 磁碟加密 (ADE) 加密其作業系統/資料磁碟的 Azure VM。 [深入了解加密的 Azure VM 和 Azure 備份](./backup-azure-vms-encryption.md)。
+* 備份資料會使用[Microsoft 管理的金鑰](backup-encryption.md#encryption-of-backup-data-using-platform-managed-keys)自動加密，而您不需要採取任何明確的動作來啟用它。 您也可以使用儲存在 Azure Key Vault 中[客戶管理的金鑰](encryption-at-rest-with-cmk.md)來加密備份的資料。 其適用於備份到復原服務保存庫的所有工作負載。
+
+* Azure 備份支援備份和還原已使用[Azure 磁碟加密（ADE）](backup-encryption.md#backup-of-vms-encrypted-using-ade)加密其 OS/資料磁片的 Azure vm，以及[具有 CMK 加密磁片的 vm](backup-encryption.md#backup-of-managed-disk-vms-encrypted-using-customer-managed-keys)。 如需詳細資訊，請[深入瞭解加密的 Azure vm 和 Azure 備份](./backup-azure-vms-encryption.md)。
+
+* 當使用 MARS 代理程式從內部部署伺服器備份資料時，會先使用複雜密碼加密資料，然後再上傳至 Azure 備份，而且只有在從 Azure 備份下載之後才會解密。 深入瞭解[安全性功能，以協助保護混合式備份](#security-features-to-help-protect-hybrid-backups)。
 
 ## <a name="protection-of-backup-data-from-unintentional-deletes"></a>保護不小心刪除的備份資料
 

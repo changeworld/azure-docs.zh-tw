@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 07/22/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: fa4610c925429ea59eae7399094230c1370bf2a0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6f5b6bfdb523a22fc4dd9593bfec556da7493aa9
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87096249"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371187"
 ---
 # <a name="tutorial-for-configuring-lexisnexis-with-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 設定 LexisNexis 的教學課程
 
@@ -49,7 +49,7 @@ ThreatMetrix 整合包含下列元件：
 
 ![lexisnexis 的螢幕擷取畫面-架構-圖表](media/partner-lexisnexis/lexisnexis-architecture-diagram.png)
 
-|步驟 | 描述 |
+|步驟 | 說明 |
 |:--------------|:-------------|
 |1. | 使用者抵達登入頁面。 使用者選取 [註冊] 來建立新的帳戶，並在頁面中輸入資訊。 Azure AD B2C 會收集使用者屬性。
 | 2. | Azure AD B2C 會呼叫仲介層 API，並在使用者屬性上傳遞。
@@ -82,7 +82,7 @@ ThreatMetrix 整合包含下列元件：
 
 應用程式設定可以[在 Azure 中的 App service 中設定](https://docs.microsoft.com/azure/app-service/configure-common#configure-app-settings)。  使用此方法時，可以安全地設定設定，而不需要將它們簽入存放庫。 您必須將下列設定提供給 Rest API：
 
-| 應用程式設定 | 來源 | 附註 |
+| 應用程式設定 | 來源 | 注意 |
 | :-------- | :------------| :-----------|
 |ThreatMetrix： Url | ThreatMetrix 帳戶設定 |     |
 |ThreatMetrix： OrgId | ThreatMetrix 帳戶設定 |     |
@@ -147,7 +147,7 @@ UI 是以海洋藍色頁面範本為基礎。 UI 中的所有連結都應該更�
 
 6. 完成登入流程  
 
-7. 當您進入 [**繼續**] 之後，CrossCore 謎題會隨即出現。
+7. 當您進入 [**繼續**] 之後，ThreatMetrix 謎題會隨即出現。
 
 ## <a name="next-steps"></a>後續步驟
 

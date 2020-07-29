@@ -1,5 +1,5 @@
 ---
-title: 設定實例和驗證（手動）
+title: 設定執行個體和驗證 (手動)
 titleSuffix: Azure Digital Twins
 description: 請參閱如何設定 Azure 數位 Twins 服務的實例，包括適當的驗證。 手動版本。
 author: baanders
@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 8d0e965360caab704bcf6c8f7d29e7bba421207e
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: d2d5ce0bc988badc6f25726206a953d87de7eaa2
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87125882"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371445"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-manual"></a>設定 Azure 數位 Twins 實例和驗證（手動）
 
@@ -35,7 +35,7 @@ ms.locfileid: "87125882"
     az group create --location <region> --name <name-for-your-resource-group>
     ```
 * 部署的區域。 若要查看哪些區域支援 Azure 數位 Twins，請造訪[*依區域提供的 azure 產品*](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins)。
-* 實例的名稱。 新實例的名稱在區域內必須是唯一的（也就是說，如果該區域中的另一個 Azure 數位 Twins 實例已經使用您選擇的名稱，系統會要求您挑選不同的名稱）。
+* 實例的名稱。 新實例的名稱在您訂用帳戶的區域中必須是唯一的（也就是說，如果您的訂用帳戶在已使用所選名稱的區域中有另一個 Azure 數位 Twins 實例，系統會要求您挑選不同的名稱）。
 
 在下列命令中使用這些值來建立實例：
 
@@ -68,9 +68,8 @@ Azure 數位 Twins 會使用[Azure Active Directory （Azure AD）](../active-di
 
 若要授與使用者管理 Azure 數位 Twins 實例的許可權，您必須將實例中的_**Azure 數位 Twins 擁有者（預覽）**_ 角色指派給他們。 
 
-請注意，此角色不同于 .。。
-* 整個 Azure 訂用帳戶的*擁有*者角色。 *Azure 數位 Twins 擁有者（預覽）* 是 Azure 數位 Twins 內的角色，其範圍限於此個別的 Azure 數位 Twins 實例。
-* Azure 數位 Twins 中的*擁有*者角色。 這些是兩個不同的 Azure 數位 Twins 管理角色，而*Azure 數位 Twins 擁有者（預覽）* 是在預覽期間應用來進行管理的角色。
+> [!NOTE]
+> 請注意，此角色不同于 Azure AD*擁有*者角色，也可以在 Azure 數位 Twins 實例的範圍中指派。 這些是兩個不同的管理角色，而 Azure AD*擁有*者並未授與*Azure 數位 Twins 擁有者（預覽）* 所授與之資料平面功能的存取權。
 
 使用下列命令來指派角色（必須由 Azure 訂用帳戶的擁有者執行）：
 
@@ -100,7 +99,7 @@ az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --ass
 此應用程式註冊可讓您設定[Azure 數位 Twins api](how-to-use-apis-sdks.md)的存取權限。 之後，用戶端應用程式會對應用程式註冊進行驗證，因此會授與對 Api 所設定的存取權限。
 
 >[!TIP]
-> 身為訂用帳戶擁有者，您可能會想要為每個新的 Azure 數位 Twins 實例設定新的應用程式註冊，*或*只執行這項操作一次，並建立將在訂用帳戶中的所有 Azure 數位 Twins 實例間共用的單一應用程式註冊。 這就是在 Microsoft 自己的租使用者中完成此作業的方式。
+> 身為訂用帳戶擁有者，您可能會想要為每個新的 Azure 數位 Twins 實例設定新的應用程式註冊，*或*只執行這項操作一次，並建立將在訂用帳戶中的所有 Azure 數位 Twins 實例間共用的單一應用程式註冊。
 
 ### <a name="create-the-registration"></a>建立註冊
 

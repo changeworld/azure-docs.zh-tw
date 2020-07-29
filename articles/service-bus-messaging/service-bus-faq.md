@@ -3,12 +3,12 @@ title: Azure 服務匯流排常見問題集 (FAQ) | Microsoft Docs
 description: 本文提供一些關於 Azure 服務匯流排的常見問題（FAQ）的解答。
 ms.topic: article
 ms.date: 07/15/2020
-ms.openlocfilehash: 01d7869a158a3c2b5418f38f2a5d88fc161796c4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 04ff12d28be1dd232c5666b17d8a121f8020ca89
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083849"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371238"
 ---
 # <a name="azure-service-bus---frequently-asked-questions-faq"></a>Azure 服務匯流排-常見問題（FAQ）
 
@@ -78,7 +78,7 @@ ms.locfileid: "87083849"
 3. 針對尾碼為 s1、s2 和 s3 的每個名稱執行 nslookup，以取得三個執行個體全都在三個可用性區域執行的 IP 位址。 
 
 ### <a name="where-can-i-find-the-ip-address-of-the-client-sendingreceiving-messages-tofrom-a-namespace"></a>哪裡可以找到用戶端在命名空間傳送/接收訊息的 IP 位址？ 
-我們不會記錄從您的命名空間傳送或接收訊息之用戶端的 IP 位址。 重新產生金鑰，讓所有現有的用戶端都無法驗證和審核角色型存取控制（[RBAC](authenticate-application.md#built-in-rbac-roles-for-azure-service-bus)）設定，以確保只有允許的使用者或應用程式可以存取命名空間。 
+我們不會記錄從您的命名空間傳送或接收訊息之用戶端的 IP 位址。 重新產生金鑰，讓所有現有的用戶端都無法驗證和審核角色型存取控制（[RBAC](authenticate-application.md#azure-built-in-roles-for-azure-service-bus)）設定，以確保只有允許的使用者或應用程式可以存取命名空間。 
 
 如果您使用**premium**命名空間，請使用[IP 篩選](service-bus-ip-filtering.md)、[虛擬網路服務端點](service-bus-service-endpoints.md)和[私人端點](private-link-service.md)來限制對命名空間的存取。 
 

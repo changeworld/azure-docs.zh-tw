@@ -3,12 +3,13 @@ title: JAVA web 應用程式效能監視-Azure 應用程式深入資訊
 description: 使用 Application Insights 延伸 Java 網站的效能和使用量監視。
 ms.topic: conceptual
 ms.date: 01/10/2019
-ms.openlocfilehash: f2ce02c3ec9fbbc762b7919ee31d9b69306a008a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: devx-track-java
+ms.openlocfilehash: 9cce87fa742df2e623217b5b0f72ad19814fd3b7
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322613"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371357"
 ---
 # <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>監視 JAVA web 應用程式中的相依性、攔截到的例外狀況和方法執行時間
 

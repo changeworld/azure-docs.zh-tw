@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/18/2020
-ms.openlocfilehash: cb9214dcd79e45b4c587c7ab47e425f2fdd8714c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d6fbfc7dced59580e91c3beceb6054f223a0a17d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85564425"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319043"
 ---
 # <a name="ai-enrichment-in-azure-cognitive-search"></a>Azure 認知搜尋中的 AI 擴充
 
@@ -59,7 +59,7 @@ Azure 認知搜尋中的內建技能是以認知服務 API：[電腦視覺](http
 
 自訂技能可支援更複雜的案例 (例如辨識表單) 或使用您在[自訂技能 Web 介面](cognitive-search-custom-skill-interface.md)中提供及包裝的模型來進行自訂實體偵測。 自訂技能的幾個範例包括[表單辨識器](/azure/cognitive-services/form-recognizer/overview)、[Bing 實體搜尋 API](https://docs.microsoft.com/azure/search/cognitive-search-create-custom-skill-example) 的整合，以及[自訂實體辨識](https://github.com/Microsoft/SkillsExtractorCognitiveSearch)。
 
-<a name="enrichment-steps"># # 擴充管線中的步驟</a>
+## <a name="steps-in-an-enrichment-pipeline"></a>擴充管線中的步驟<a name="enrichment-steps"></a>
 
 擴充管線是以[*索引子*](search-indexer-overview.md)為基礎。 索引子會根據索引和資料來源之間的欄位對欄位對應填入索引，以進行檔破解。 現在已附加至索引子的技能，會根據您定義的技能集來攔截和擴充檔。 完成索引編製後，您即可使用 [Azure 認知搜尋服務所支援的所有查詢類型](search-query-overview.md)，透過搜尋要求來存取內容。  如果您不熟悉索引子，本節將引導您逐步完成相關步驟。
 
@@ -123,4 +123,4 @@ Azure 認知搜尋中的內建技能是以認知服務 API：[電腦視覺](http
 + [教學課程：瞭解 AI 擴充 Api](cognitive-search-tutorial-blob.md)
 + [知識存放區](knowledge-store-concept-intro.md)
 + [在 REST 中建立知識存放區](knowledge-store-create-rest.md)
-+ [疑難排解秘訣](cognitive-search-concept-troubleshooting.md)
++ [疑難排解提示](cognitive-search-concept-troubleshooting.md)

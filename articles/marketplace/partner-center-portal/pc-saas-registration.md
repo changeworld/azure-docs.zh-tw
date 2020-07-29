@@ -5,12 +5,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.openlocfilehash: 85bd6f4192f5c1f47856851ab53521a101340007
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: mingshen-ms
+ms.author: mingshen
+ms.openlocfilehash: 52427cbaa418e0335797fe0a98c26c3fb84cf670
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86109258"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87304168"
 ---
 # <a name="register-a-saas-application"></a>註冊 SaaS 應用程式
 
@@ -87,7 +89,7 @@ Azure Marketplace 不會對您的 SaaS 服務針對使用者所使用的驗證�
 
 ##### <a name="response"></a>*回應*
 
-|  名稱     |  類型         |  Description |
+|  名稱     |  類型         |  說明 |
 |  ------   |  ---------------  | ------------ |
 |  200 確定   |  TokenResponse    |  要求成功。 |
 

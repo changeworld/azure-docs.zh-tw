@@ -7,11 +7,12 @@ ms.topic: conceptual
 ms.date: 1/3/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: d1d36c6f6413a9438063c6fe30403af095ed9a6b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e39ec197b0bbce5d963650abd5dc7811647fa01
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84659628"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87370354"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>規劃 Azure 檔案服務部署
 [Azure 檔案儲存體](storage-files-introduction.md)可以透過兩種主要方式來部署：直接裝載無伺服器 Azure 檔案共用，或使用 Azure 檔案同步快取內部部署的 Azure 檔案共用。您所選擇的部署選項會變更規劃部署時所需考慮的事項。 
@@ -75,11 +76,35 @@ Azure 檔案儲存體支援兩種不同的加密類型：傳輸中的加密，�
 ### <a name="encryption-at-rest"></a>待用加密
 [!INCLUDE [storage-files-encryption-at-rest](../../../includes/storage-files-encryption-at-rest.md)]
 
+## <a name="data-protection"></a>資料保護
+Azure 檔案儲存體具有多層式方法，可確保您的資料已備份、可復原，並受到保護，免于遭受安全性威脅。
+
+### <a name="soft-delete"></a>虛刪除
+檔案共用的虛刪除（預覽）是儲存體帳戶層級設定，可讓您在不小心刪除檔案共用時進行復原。 刪除檔案共用時，它會轉換成虛刪除狀態，而不是永久清除。 您可以設定虛刪除資料在永久刪除之前可復原的時間量，並在此保留期間內隨時取消刪除該共用。 
+
+我們建議您針對大部分的檔案共用開啟虛刪除。 如果您有一個工作流程，其中共用刪除是常見且預期的，您可能會決定有非常短的保留期限，或完全不啟用虛刪除。
+
+如需虛刪除的詳細資訊，請參閱[防止意外刪除資料](https://docs.microsoft.com/azure/storage/files/storage-files-prevent-file-share-deletion)。
+
+### <a name="backup"></a>Backup
+您可以透過[共用快照](https://docs.microsoft.com/azure/storage/files/storage-snapshots-files)集來備份 Azure 檔案共用，這是您共用的唯讀、時間點複本。 快照集是累加的，這表示它們所包含的資料量，會與上一個快照集以來變更的數量相同。 每個檔案共用最多可以有200個快照集，並保留最多10年。 您可以透過 PowerShell 或命令列介面（CLI），以手動方式在 Azure 入口網站中拍攝這些快照，也可以使用[Azure 備份](https://docs.microsoft.com/azure/backup/azure-file-share-backup-overview?toc=/azure/storage/files/toc.json)。 快照集會儲存在檔案共用中，這表示如果您刪除檔案共用，也會一併刪除您的快照集。 若要保護您的快照集備份不會遭到意外刪除，請確定已為您的共用啟用虛刪除。
+
+[適用于 Azure 檔案共用的 Azure 備份](https://docs.microsoft.com/azure/backup/azure-file-share-backup-overview?toc=/azure/storage/files/toc.json)會處理快照集的排程和保留期。 其祖父-父親（GFS）功能意味著您可以使用每日、每週、每月和每年快照集，每個都有各自不同的保留期間。 Azure 備份也會協調虛刪除的啟用，並在其中有任何檔案共用設定為備份時，立即在儲存體帳戶上取得刪除鎖定。 最後，Azure 備份提供特定的重要監視和警示功能，讓客戶能夠擁有其備份資產的匯總觀點。
+
+您可以使用 Azure 備份，在 Azure 入口網站中執行專案層級和共用層級的還原。 您只需要選擇還原點（特定的快照集）、特定的檔案或目錄（如果有的話），以及您想要還原的位置（原始或替代）。 備份服務會處理複製快照集資料，並在入口網站中顯示您的還原進度。
+
+如需有關備份的詳細資訊，請參閱[關於 Azure 檔案共用備份](https://docs.microsoft.com/azure/backup/azure-file-share-backup-overview?toc=/azure/storage/files/toc.json)。
+
+### <a name="advanced-threat-protection-for-azure-files-preview"></a>Azure 檔案儲存體的先進威脅防護（預覽）
+適用于 Azure 儲存體的先進威脅防護（ATP）提供一層額外的安全性情報，可在您的儲存體帳戶偵測到異常活動時提供警示，例如不尋常的存取儲存體帳戶的嘗試。 ATP 也會執行惡意程式碼雜湊信譽分析，並對已知的惡意程式碼發出警示。 您可以透過 Azure 資訊安全中心，在訂用帳戶或儲存體帳戶層級上設定 ATP。 
+
+如需詳細資訊，請參閱[Azure 儲存體的 Advanced 威脅防護](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection)。
+
 ## <a name="storage-tiers"></a>儲存層
 [!INCLUDE [storage-files-tiers-overview](../../../includes/storage-files-tiers-overview.md)]
 
 一般來說，高階檔案共用和標準檔案共用之間 Azure 檔案儲存體功能和與其他服務的互通性，不過有幾個重要的差異：
-- **計費模式**
+- **計費模型**
     - Premium 檔案共用會使用已布建的計費模型來計費，這表示您需支付所布建的儲存體數量，而不是您實際要求的儲存體數量。 
     - 標準檔案共用會使用隨用隨付模型來計費，其中包括您實際取用多少儲存體的基本儲存體成本，還有額外的交易成本（根據您使用該共用的方式而定）。 使用標準檔案共用時，如果您使用（讀取/寫入/掛接） Azure 檔案共用，您的帳單將會增加。
 - **冗余選項**
@@ -155,10 +180,10 @@ Azure 檔案儲存體支援兩種不同的加密類型：傳輸中的加密，�
 #### <a name="limitations"></a>限制
 [!INCLUDE [storage-files-tiers-large-file-share-availability](../../../includes/storage-files-tiers-large-file-share-availability.md)]
 
-## <a name="redundancy"></a>備援性
+## <a name="redundancy"></a>備援
 [!INCLUDE [storage-files-redundancy-overview](../../../includes/storage-files-redundancy-overview.md)]
 
-## <a name="migration"></a>移轉
+## <a name="migration"></a>遷移
 在許多情況下，您將不會為您的組織建立網路新的檔案共用，而是改為將現有的檔案共用從內部部署檔案伺服器或 NAS 裝置遷移到 Azure 檔案儲存體。 針對您的案例選擇適當的遷移策略和工具，對於您的遷移是否成功非常重要。 
 
 「[遷移總覽](storage-files-migration-overview.md)」一文簡要介紹了基本概念，並包含一個資料表，引導您進行可能涵蓋您案例的遷移指南。

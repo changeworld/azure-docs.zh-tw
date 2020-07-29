@@ -9,12 +9,12 @@ tags: azure-portal
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/24/2020
-ms.openlocfilehash: 45f9c56fce0c843d9f1ed069abf7d1ed6e2fa604
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 76eee4b0b029714a75b57e5d44e097a36de3181f
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565910"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371408"
 ---
 # <a name="service-administration-for-azure-cognitive-search-in-the-azure-portal"></a>Azure 入口網站中的 Azure 認知搜尋服務管理
 
@@ -123,7 +123,7 @@ Azure 認知搜尋會利用[Azure 監視器](https://docs.microsoft.com/azure/az
 
 新增複本較常見，但當儲存體受到限制時，您可以新增分割區以取得更多容量。 您布建服務的層級會決定是否可以新增資料分割。 基本層已鎖定于一個分割區。 標準層和更新版本支援額外的資料分割。
 
-分割區會以12的倍數（具體而言是1、2、3、4、6或12）新增。 這是分區化的構件。 索引會建立在 12 個分區中，並且可以全部儲存在 1 個資料分割中，或平均分配在 2、3、4、6 或 12 個資料分割中 (每個資料分割分配一個分區)。
+資料分割是以12的除數（特別是1、2、3、4、6或12）新增。 這是分區化的構件。 索引會建立在 12 個分區中，並且可以全部儲存在 1 個資料分割中，或平均分配在 2、3、4、6 或 12 個資料分割中 (每個資料分割分配一個分區)。
 
 ### <a name="remove-replicas"></a>移除複本
 

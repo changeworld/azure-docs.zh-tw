@@ -4,16 +4,16 @@ description: 如何在適用于 .NET 和 .NET Core 的 Azure 應用程式 Insigh
 ms.topic: conceptual
 ms.date: 05/14/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 6f9e93d477efeee7e1d8a0b0d8704f9c83d2a4f7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b5ae1ee1e4bf9f64eb4587f0ceb76972a4571b2e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539783"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318924"
 ---
 # <a name="telemetry-channels-in-application-insights"></a>Application Insights 中的遙測通道
 
-遙測通道是[Azure 應用程式 Insights sdk](../../azure-monitor/app/app-insights-overview.md)不可或缺的一部分。 它們會管理遙測的緩衝處理和傳輸到 Application Insights 服務。 .NET 和 .NET Core 版本的 Sdk 有兩個內建的遙測通道： `InMemoryChannel` 和 `ServerTelemetryChannel` 。 本文詳細說明每個通道，包括如何自訂通道行為。
+遙測通道是[Azure 應用程式 Insights sdk](./app-insights-overview.md)不可或缺的一部分。 它們會管理遙測的緩衝處理和傳輸到 Application Insights 服務。 .NET 和 .NET Core 版本的 Sdk 有兩個內建的遙測通道： `InMemoryChannel` 和 `ServerTelemetryChannel` 。 本文詳細說明每個通道，包括如何自訂通道行為。
 
 ## <a name="what-are-telemetry-channels"></a>什麼是遙測通道？
 
@@ -39,7 +39,7 @@ Application Insights .NET 和 .NET Core Sdk 隨附兩個內建的通道：
 
 您可以設定遙測通道，方法是將它設為作用中的遙測設定。 針對 ASP.NET 應用程式，設定牽涉到將遙測通道實例設為 `TelemetryConfiguration.Active` ，或藉由修改來進行 `ApplicationInsights.config` 。 針對 ASP.NET Core 的應用程式，設定牽涉到將通道加入至相依性插入容器。
 
-下列各節顯示 `StorageFolder` 在各種應用程式類型中設定通道之設定的範例。 `StorageFolder`只是其中一個可設定的設定。 如需完整的設定清單，請參閱本文稍後[的設定一節](telemetry-channels.md#configurable-settings-in-channels)。
+下列各節顯示 `StorageFolder` 在各種應用程式類型中設定通道之設定的範例。 `StorageFolder`只是其中一個可設定的設定。 如需完整的設定清單，請參閱本文稍後[的設定一節](#configurable-settings-in-channels)。
 
 ### <a name="configuration-by-using-applicationinsightsconfig-for-aspnet-applications"></a>使用適用于 ASP.NET 應用程式的 ApplicationInsights.config 進行設定
 
@@ -166,5 +166,6 @@ SDK 會在網路問題或節流期間，將遙測專案儲存在本機儲存體�
 
 ## <a name="next-steps"></a>後續步驟
 
-* [取樣](../../azure-monitor/app/sampling.md)
-* [SDK 疑難排解](../../azure-monitor/app/asp-net-troubleshoot-no-data.md)
+* [取樣](./sampling.md)
+* [SDK 疑難排解](./asp-net-troubleshoot-no-data.md)
+

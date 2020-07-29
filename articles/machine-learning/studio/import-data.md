@@ -1,6 +1,5 @@
 ---
-title: 匯入訓練資料
-titleSuffix: ML Studio (classic) - Azure
+title: ML Studio （傳統）：匯入訓練資料-Azure
 description: 如何將資料從各種資料來源匯入 Azure Machine Learning Studio （傳統）。 了解支援的資料類型和資料格式。
 services: machine-learning
 ms.service: machine-learning
@@ -10,14 +9,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 02/01/2019
-ms.openlocfilehash: fa031e6e23c218ff2ca8e2ef3e778768fabb1ebb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b04c9c1796491622a76e2c2a2fbfcdcc0c624dda
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85321470"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318533"
 ---
 # <a name="import-your-training-data-into-azure-machine-learning-studio-classic-from-various-data-sources"></a>從各種資料來源將定型資料匯入 Azure Machine Learning Studio （傳統）
+
+**適用於：** ![否](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md)![是](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統版) 
+
 
 若要在 Machine Learning Studio （傳統）中使用您自己的資料來開發和定型預測性分析解決方案，您可以使用來自下列來源的資料： 
 
