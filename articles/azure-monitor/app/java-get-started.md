@@ -3,14 +3,15 @@ title: 快速入門：使用 Azure 應用程式 Insights 的 JAVA web 應用程�
 description: '使用 Application Insights 針對 Java Web 應用程式進行應用程式效能監視。 '
 ms.topic: conceptual
 author: lgayhardt
+ms.custom: devx-track-java
 ms.author: lagayhar
 ms.date: 05/24/2019
-ms.openlocfilehash: d3835f88eb581693d10f68a9a495329466a657a2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 464bf650cbcaa99e947a21f5a87a5872f7b11178
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87014485"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326914"
 ---
 # <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>快速入門：在 JAVA Web 專案中開始使用 Application Insights
 
@@ -131,7 +132,7 @@ Application Insights SDK 會依此順序尋找此金鑰︰
 2. 環境變數： APPINSIGHTS_INSTRUMENTATIONKEY
 3. 設定檔： *ApplicationInsights.xml*
 
-您也可以 [在程式碼中設定](../../azure-monitor/app/api-custom-events-metrics.md#ikey)：
+您也可以 [在程式碼中設定](./api-custom-events-metrics.md#ikey)：
 
 ```java
     String instrumentationKey = "00000000-0000-0000-0000-000000000000";
@@ -303,20 +304,21 @@ Application Insights 可讓您定期測試網站，以檢查網站運作中且�
 ## <a name="questions-problems"></a>有任何問題嗎？ 有問題嗎？
 [疑難排解 Java](java-troubleshoot.md)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 * [監視相依性呼叫](java-agent.md)
 * [監視 Unix 效能計數器](java-collectd.md)
 * 新增[對網頁的監視](javascript.md)，以監視頁面載入時間、AJAX 呼叫、瀏覽器例外狀況。
-* 撰寫[自訂遙測](../../azure-monitor/app/api-custom-events-metrics.md)，以追蹤瀏覽器中或在伺服器上的使用情況。
+* 撰寫[自訂遙測](./api-custom-events-metrics.md)，以追蹤瀏覽器中或在伺服器上的使用情況。
 * 透過應用程式的遙測，使用[分析](../log-query/log-query-overview.md)進行強大的查詢
 * 如需詳細資訊，請瀏覽[適用於 Java 開發人員的 Azure](/java/azure)。
 
 <!--Link references-->
 
-[api]: ../../azure-monitor/app/api-custom-events-metrics.md
-[apiexceptions]: ../../azure-monitor/app/api-custom-events-metrics.md#trackexception
-[availability]: ../../azure-monitor/app/monitor-web-app-availability.md
-[diagnostic]: ../../azure-monitor/app/diagnostic-search.md
+[api]: ./api-custom-events-metrics.md
+[apiexceptions]: ./api-custom-events-metrics.md#trackexception
+[availability]: ./monitor-web-app-availability.md
+[diagnostic]: ./diagnostic-search.md
 [javalogs]: java-trace-logs.md
-[metrics]: ../../azure-monitor/platform/metrics-charts.md
+[metrics]: ../platform/metrics-charts.md
 [usage]: javascript.md
+

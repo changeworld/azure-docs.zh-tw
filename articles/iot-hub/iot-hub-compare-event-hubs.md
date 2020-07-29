@@ -11,15 +11,18 @@ ms.author: kgremban
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 7aa59f8181ad60b3d43846a3f4f1f471a050b238
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+- 'Role: Cloud Development'
+- 'Role: System Architecture'
+ms.openlocfilehash: 1b51e2338dabd34ec69d311a9eb1a5c4a644f628
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81733444"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322749"
 ---
 # <a name="connecting-iot-devices-to-azure-iot-hub-and-event-hubs"></a>將 IoT 裝置連接到 Azure：IoT 中樞和事件中樞
 
-Azure 提供專為不同連線和通訊類型所開發的服務，協助您連接資料與雲端的強大功能。 「Azure IoT 中樞」和「Azure 事件中樞」都是雲端服務，可擷取大量資料並處理或儲存該資料來獲得業務見解。 這兩種服務的共通點在於支援低延遲時間和高可靠性的資料擷取，不過它們是為不同目的而設計的服務。 IoT 中樞的開發目的是要解決將 IoT 裝置連線到 Azure 雲端的獨特需求，同時事件中樞是針對大型資料串流所設計。 Microsoft 建議使用 Azure IoT 中樞將 IoT 裝置連線到 Azure
+Azure 提供專為不同連線和通訊類型所開發的服務，協助您連接資料與雲端的強大功能。 Azure IoT 中樞與 Azure 事件中樞都是雲端服務，可以內嵌大量資料並處理或儲存那些資料以取得商業見解。 這兩個服務的相似之處在於其都支援以低延遲與高可靠性來內嵌資料，但兩者是針對不同目的而設計的。 IoT 中樞的開發目的是要解決將 IoT 裝置連線到 Azure 雲端的獨特需求，同時事件中樞是針對大型資料串流所設計。 Microsoft 建議使用 Azure IoT 中樞將 IoT 裝置連線到 Azure
 
 Azure IoT 中樞是雲端閘道，可連接 IoT 裝置來收集資料，並推動商業見解和自動化。 此外，IoT 中樞的功能還能讓裝置與後端系統之間的關係更豐富。 雙向通訊功能表示，當您收到來自裝置的資料時，您也可以將命令和原則傳送回裝置。 例如，使用雲端到裝置訊息來更新屬性或叫用裝置管理動作。 雲端到裝置的通訊也可讓您使用 Azure IoT Edge 將雲端智慧傳送到邊緣裝置。 IoT 中樞提供的獨特裝置層級身分識別，有助於進一步保護 IoT 解決方案，預防潛在攻擊。 
 

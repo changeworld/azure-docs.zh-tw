@@ -3,12 +3,12 @@ title: 在 Azure Application Insights 中監視 Docker 應用程式 | Microsoft 
 description: Docker 效能計數器、事件和例外狀況可以與來自容器化應用程式的遙測一起顯示在 Application Insights 上。
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 6af39db68c2020e578fe6fbd39870b2e00a16e07
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1cbb2968fec68eb750ce3c9b6cac09f23a1d36c5
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539919"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324415"
 ---
 # <a name="monitor-docker-applications-in-application-insights-deprecated"></a>監視 Application Insights 中的 Docker 應用程式（已淘汰）
 
@@ -23,15 +23,15 @@ ms.locfileid: "86539919"
 
 * 主機上執行之所有容器的相關週期遙測 - 啟動、停止等。
 * 所有容器的效能計數器。 CPU、記憶體、網路使用量等。
-* 如果您在於容器中執行的應用程式中[安裝了 Application Insights SDK for Java](../../azure-monitor/app/java-get-started.md)，則這些應用程式的所有遙測將會有可識別容器和主機電腦的額外屬性。 例如，如果您在多部主機上執行某個應用程式的多個執行個體，您可以輕鬆地依主機來篩選應用程式遙測。
+* 如果您在於容器中執行的應用程式中[安裝了 Application Insights SDK for Java](./java-get-started.md)，則這些應用程式的所有遙測將會有可識別容器和主機電腦的額外屬性。 例如，如果您在多部主機上執行某個應用程式的多個執行個體，您可以輕鬆地依主機來篩選應用程式遙測。
 
 ## <a name="set-up-your-application-insights-resource"></a>設定您的 Application Insights 資源
 
-1. 登入[Microsoft Azure 入口網站](https://azure.com)並開啟應用程式的 Application Insights 資源;或[建立一個新的](../../azure-monitor/app/create-new-resource.md )。 
+1. 登入[Microsoft Azure 入口網站](https://azure.com)並開啟應用程式的 Application Insights 資源;或[建立一個新的](./create-new-resource.md)。 
    
-    *我應該使用哪種資源？* 如果您在主機上執行的應用程式是由其他人所開發，則您需要[建立新的 Application Insights 資源](../../azure-monitor/app/create-new-resource.md )。 這是您檢視及分析遙測的位置 (針對應用程式類型選取 [一般])。
+    *我應該使用哪種資源？* 如果您在主機上執行的應用程式是由其他人所開發，則您需要[建立新的 Application Insights 資源](./create-new-resource.md)。 這是您檢視及分析遙測的位置 (針對應用程式類型選取 [一般])。
    
-    但如果您是應用程式的開發人員，我們希望您 [將 Application Insights SDK 加入](../../azure-monitor/app/java-get-started.md) 每個應用程式中。 如果這些應用程式其實全部都是單一商務應用程式的元件，則您可能會設定所有應用程式將遙測資料傳送至一個資源，再使用該相同的資源來顯示 Docker 週期和效能資料。 
+    但如果您是應用程式的開發人員，我們希望您 [將 Application Insights SDK 加入](./java-get-started.md) 每個應用程式中。 如果這些應用程式其實全部都是單一商務應用程式的元件，則您可能會設定所有應用程式將遙測資料傳送至一個資源，再使用該相同的資源來顯示 Docker 週期和效能資料。 
    
     第三種情況是您已開發大部分應用程式，但想要使用不同的資源來顯示其遙測。 在這種情況下，您可能也需要為 Docker 資料建立不同的資源。
 
@@ -54,7 +54,7 @@ ms.locfileid: "86539919"
 每部 Docker 主機只需要一個 Application Insights 映像。 如果您的應用程式部署在多部 Docker 主機上，請在每部主機上重複執行命令。
 
 ## <a name="update-your-app"></a>更新應用程式
-如果使用 [Application Insights SDK for Java](../../azure-monitor/app/java-get-started.md) 檢測您的應用程式，請將下行新增到您專案之 ApplicationInsights.xml 檔案中的 `<TelemetryInitializers>` 元素底下：
+如果使用 [Application Insights SDK for Java](./java-get-started.md) 檢測您的應用程式，請將下行新增到您專案之 ApplicationInsights.xml 檔案中的 `<TelemetryInitializers>` 元素底下：
 
 ```xml
 
@@ -73,7 +73,7 @@ ms.locfileid: "86539919"
 ### <a name="docker-container-events"></a>Docker 容器事件
 ![範例](./media/docker/13.png)
 
-若要調查個別事件，請按一下 [搜尋](../../azure-monitor/app/diagnostic-search.md)。 搜尋和篩選以尋找您想要的事件。 按一下任何事件以查看詳細資料。
+若要調查個別事件，請按一下 [搜尋](./diagnostic-search.md)。 搜尋和篩選以尋找您想要的事件。 按一下任何事件以查看詳細資料。
 
 ### <a name="exceptions-by-container-name"></a>依據容器名稱的例外狀況
 ![範例](./media/docker/14.png)
@@ -90,7 +90,7 @@ ms.locfileid: "86539919"
 
 *如何從應用程式本身取得遙測？*
 
-* 在應用程式中安裝 Application Insights SDK。 針對下列項目深入了解：[Java Web 應用程式](../../azure-monitor/app/java-get-started.md)、[Windows Web 應用程式](../../azure-monitor/app/asp-net.md)。
+* 在應用程式中安裝 Application Insights SDK。 針對下列項目深入了解：[Java Web 應用程式](./java-get-started.md)、[Windows Web 應用程式](./asp-net.md)。
 
 ## <a name="video"></a>影片
 
@@ -98,6 +98,7 @@ ms.locfileid: "86539919"
 
 ## <a name="next-steps"></a>後續步驟
 
-* [適用於 Java 的 Application Insights](../../azure-monitor/app/java-get-started.md)
-* [適用於 Node.js 的 Application Insights](../../azure-monitor/app/nodejs.md)
-* [適用於 ASP.NET 的 Application Insights](../../azure-monitor/app/asp-net.md)
+* [適用於 Java 的 Application Insights](./java-get-started.md)
+* [適用於 Node.js 的 Application Insights](./nodejs.md)
+* [適用於 ASP.NET 的 Application Insights](./asp-net.md)
+

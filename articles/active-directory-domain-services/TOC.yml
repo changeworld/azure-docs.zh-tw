@@ -31,6 +31,8 @@
       href: powershell-create-instance.md
     - name: 使用範本建立受控網域
       href: template-create-instance.md
+    - name: 使用 Azure AD PowerShell 設定保留範圍同步處理
+      href: powershell-scoped-synchronization.md
 - name: 概念
   items:
     - name: 管理基本概念

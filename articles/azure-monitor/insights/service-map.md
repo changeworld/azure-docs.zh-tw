@@ -6,27 +6,27 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
-ms.openlocfilehash: bfd25c2572e91c2984f2845e08941614fff65570
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 77684ffef6be988dbb6b7057ba8c56f5227007b6
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539766"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326064"
 ---
 # <a name="using-service-map-solution-in-azure"></a>在 Azure 中使用服務對應解決方案
 
 服務對應會自動在 Windows 及 Linux 系統上探索應用程式元件，並對應服務之間的通訊。 您可以藉由服務對應，將伺服器視為提供重要服務的互連系統，藉此來檢視伺服器。 不需要進行任何設定，只要安裝了代理程式，服務對應就會顯示橫跨任何 TCP 連線架構的伺服器、處理序、輸入和輸出連線的延遲，和連接埠之間的連線。
 
-本文說明上線和使用服務對應的詳細資訊。 如需設定此解決方案之必要條件的詳細資訊，請參閱[啟用適用於 VM 的 Azure 監視器總覽](vminsights-enable-overview.md#prerequisites)。 總而言之，您需要下列各項：
+本文說明上線和使用服務對應的詳細資訊。 解決方案的必要條件如下：
 
-* 啟用此解決方案的 Log Analytics 工作區。
+* [支援的區域](vminsights-configure-workspace.md#supported-regions)中的 Log Analytics 工作區。
 
-* 已將 Log Analytics 代理程式安裝在 Windows 電腦或 Linux 伺服器上，並將其設定為報告您啟用解決方案的相同工作區。
+* 安裝在 Windows 電腦或 Linux 伺服器上的[Log Analytics 代理程式](vminsights-enable-overview.md#agents)，已連接到您已啟用解決方案的相同工作區。
 
-* 相依性代理程式已安裝在 Windows 電腦或 Linux 伺服器上。
+* 相依性[代理程式](vminsights-enable-overview.md#agents)已安裝在 Windows 電腦或 Linux 伺服器上。
 
 >[!NOTE]
->如果您已部署服務對應，則現在還可以在適用於 VM 的 Azure 監視器中檢視您的對應，其中包括用於監視 VM 健康情況和效能的其他功能。 若要深入了解，請參閱[適用於 VM 的 Azure 監視器概觀](../../azure-monitor/insights/vminsights-overview.md)。 若要瞭解服務對應解決方案和適用於 VM 的 Azure 監視器對應] 功能之間的差異，請參閱下列[常見問題](../faq.md#azure-monitor-for-vms)。
+>如果您已部署服務對應，則現在還可以在適用於 VM 的 Azure 監視器中檢視您的對應，其中包括用於監視 VM 健康情況和效能的其他功能。 若要深入了解，請參閱[適用於 VM 的 Azure 監視器概觀](./vminsights-overview.md)。 若要瞭解服務對應解決方案和適用於 VM 的 Azure 監視器對應] 功能之間的差異，請參閱下列[常見問題](../faq.md#azure-monitor-for-vms)。
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
 
@@ -34,7 +34,7 @@ ms.locfileid: "86539766"
 
 ## <a name="enable-service-map"></a>啟用服務對應
 
-1. 從[Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ServiceMapOMS?tab=Overview)或使用[從方案庫新增監視解決方案](solutions.md)中所述的程式，啟用服務對應解決方案。
+1. 從[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ServiceMapOMS?tab=Overview)啟用服務對應解決方案，或使用[從方案庫新增監視解決方案](solutions.md)中所述的程式。
 1. 在[Windows 上安裝 dependency agent，](vminsights-enable-hybrid-cloud.md#install-the-dependency-agent-on-windows)或在您要取得資料的每部電腦上安裝相依性[代理程式](vminsights-enable-hybrid-cloud.md#install-the-dependency-agent-on-linux)。 相依性代理程式可以監視緊接鄰近點的連線，因此您可能不需要在每部電腦上都有代理程式。
 
 您可以在 Azure 入口網站中從 Log Analytics 工作區存取服務對應，然後從左窗格選取 [解決方案]**** 選項。<br><br> ![在工作區中選取 [解決方案] 選項](./media/service-map/select-solution-from-workspace.png)。<br> 從解決方案清單中，選取 [ServiceMap(workspaceName)]****，然後在 [服務對應解決方案概觀] 頁面中，按一下 [服務對應摘要] 圖格。<br><br> ![[服務對應摘要] 圖格](./media/service-map/service-map-summary-tile.png)。
@@ -154,7 +154,7 @@ ms.locfileid: "86539766"
 
 某些處理序在機器上扮演特殊角色︰Web 伺服器、應用程式伺服器及資料庫等。 服務對應會為程序和機器方塊加上角色圖示註解，以協助您一下就識別出程序或伺服器所扮演的角色。
 
-| 角色圖示 | 描述 |
+| 角色圖示 | 說明 |
 |:--|:--|
 | ![網頁伺服器](media/service-map/role-web-server.png) | 網頁伺服器 |
 | ![應用程式伺服器](media/service-map/role-application-server.png) | 應用程式伺服器 |
@@ -304,7 +304,7 @@ Linux：
 
 ## <a name="log-analytics-records"></a>Log Analytics 記錄
 
-服務對應的電腦和處理序清查資料可供在 Log Analytics 中進行[搜尋](../../azure-monitor/log-query/log-query-overview.md)。 您可以將此資料套用至各種案例，包括移轉規劃、容量分析、探索和隨選效能疑難排解。
+服務對應的電腦和處理序清查資料可供在 Log Analytics 中進行[搜尋](../log-query/log-query-overview.md)。 您可以將此資料套用至各種案例，包括移轉規劃、容量分析、探索和隨選效能疑難排解。
 
 除了當處理序或電腦啟動時或是新增到服務對應時所產生的記錄外，每小時還會為每個唯一的電腦和處理序產生一筆記錄。 這些記錄具有下表中的屬性。 ServiceMapComputer_CL 事件中的欄位和值對應到 ServiceMap Azure Resource Manager API 中的機器資源欄位。 ServiceMapProcess_CL 事件中的欄位和值對應到 ServiceMap Azure Resource Manager API 中的處理序資源欄位。 ResourceName_s 欄位會符合對應 Resource Manager 資源中的名稱欄位。 
 
@@ -326,7 +326,7 @@ Linux：
 
 為了管理成本和複雜度，連線記錄不代表個別的實體網路連線。 將多個實體網路連線群組為一個邏輯連線，其接著會反映於各自的資料表中。  這表示，*VMConnection* 資料表中的記錄代表一個邏輯群組，而非觀測到的個別實體連線。 在指定的一分鐘時間間隔內，共用下列屬性相同值的實體網路連線會彙總為 *VMConnection* 中的單一邏輯記錄。 
 
-| 屬性 | 描述 |
+| 屬性 | 說明 |
 |:--|:--|
 | `Direction` |連線的方向，值為 *inbound* 或 *outbound* |
 | `Machine` |電腦 FQDN |
@@ -338,7 +338,7 @@ Linux：
 
 為了說明群組的影響，會在記錄的下列屬性中提供群組實體連線數目的相關資訊：
 
-| 屬性 | 描述 |
+| 屬性 | 說明 |
 |:--|:--|
 | `LinksEstablished` |已在報告時間範圍內建立的實體網路連線數目 |
 | `LinksTerminated` |已在報告時間範圍內終止的實體網路連線數目 |
@@ -349,7 +349,7 @@ Linux：
 
 除了連線計數計量，在指定邏輯連線或網路連接埠上傳送與接收的資料量相關資訊也會包含於記錄的下列屬性中：
 
-| 屬性 | 描述 |
+| 屬性 | 說明 |
 |:--|:--|
 | `BytesSent` |已在報告時間範圍內傳送的位元組總數 |
 | `BytesReceived` |已在報告時間範圍內接收的位元組總數 |
@@ -377,7 +377,7 @@ Linux：
 
 *VMConnection* 也會在記錄的下列屬性中，包含每個連線記錄遠端的地理位置資訊： 
 
-| 屬性 | 描述 |
+| 屬性 | 說明 |
 |:--|:--|
 | `RemoteCountry` |主控 RemoteIp 的國家/地區名稱。  例如，*美國* |
 | `RemoteLatitude` |地理位置緯度。  例如，*47.68* |
@@ -387,7 +387,7 @@ Linux：
 
 *VMConnection* 資料表中的每個 RemoteIp 屬性均會根據一組具有已知惡意活動的 IP 進行檢查。 如果 RemoteIp 被識別為惡意的，將在記錄的下列屬性中填入下列屬性 (如果 IP 被視為不是惡意的，則它們是空的)：
 
-| 屬性 | 描述 |
+| 屬性 | 說明 |
 |:--|:--|
 | `MaliciousIp` |RemoteIp 位址 |
 | `IndicatorThreadType` |偵測到的威脅指標是下列值之一：*殭屍網路*、*C2*、*CryptoMining*、*Darknet*、*DDos*、*MaliciousUrl*、*惡意程式碼*、*網路釣魚*、*Proxy*、*PUA*、*關注清單*。   |
@@ -405,7 +405,7 @@ Linux：
 
 類型為 *ServiceMapComputer_CL* 的記錄會有伺服器 (具有服務對應代理程式) 的清查資料。 這些記錄具有下表中的屬性：
 
-| 屬性 | 描述 |
+| 屬性 | 說明 |
 |:--|:--|
 | `Type` | *ServiceMapComputer_CL* |
 | `SourceSystem` | *OpsManager* |
@@ -431,7 +431,7 @@ Linux：
 
 類型為 *ServiceMapProcess_CL* 的記錄會有伺服器 (具有服務對應代理程式) 上 TCP 連線處理程序的清查資料。 這些記錄具有下表中的屬性：
 
-| 屬性 | 描述 |
+| 屬性 | 說明 |
 |:--|:--|
 | `Type` | *ServiceMapProcess_CL* |
 | `SourceSystem` | *OpsManager* |
@@ -550,7 +550,7 @@ let remoteMachines = remote | summarize by RemoteMachine;
 
 ## <a name="next-steps"></a>後續步驟
 
-深入了解 Log Analytics 中的[記錄搜尋](../../azure-monitor/log-query/log-query-overview.md)，以擷取服務對應所收集的資料。
+深入了解 Log Analytics 中的[記錄搜尋](../log-query/log-query-overview.md)，以擷取服務對應所收集的資料。
 
 ## <a name="troubleshooting"></a>疑難排解
 
@@ -571,7 +571,7 @@ Microsoft Dependency Agent 建置於 Microsoft Visual Studio 執行階段程式�
 
 下表列出代碼和建議的解決方式。
 
-| 程式碼 | 描述 | 解決方案 |
+| 程式碼 | 說明 | 解決方案 |
 |:--|:--|:--|
 | 0x17 | 程式庫安裝程式會要求尚未安裝的 Windows 更新。 | 查看最新的程式庫安裝程式記錄。<br><br>如果的參考 `Windows8.1-KB2999226-x64.msu` 後面接著一行 `Error 0x80240017: Failed to execute MSU package,` ，表示您沒有安裝 KB2999226 的必要條件。 請依照 [Windows 中的通用 C 執行階段](https://support.microsoft.com/kb/2999226)一文中必要條件一節的指示進行。 您可能需要執行 Windows Update 並重新開機多次，才能安裝必要條件。<br><br>再次執行 Microsoft Dependency Agent 安裝程式。 |
 
@@ -603,3 +603,4 @@ Microsoft Dependency Agent 建置於 Microsoft Visual Studio 執行階段程式�
 ## <a name="suggestions"></a>建議
 
 您對「服務對應」或這份文件有任何意見反應要提供給我們嗎？  請瀏覽我們的[使用者意見頁面](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map) \(英文\)，您可以在此頁面提出功能建議或對現有的建議進行投票。
+

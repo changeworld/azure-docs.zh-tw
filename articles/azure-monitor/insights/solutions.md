@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/12/2020
-ms.openlocfilehash: 2da00b44be7018bef80e466231efb75a8eb99754
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a2ece33974e5bb4d8cb6257d3ca68a258f9b8c81
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081537"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325996"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Azure 監視器中的監視解決方案
 
@@ -125,7 +125,7 @@ az monitor log-analytics solution list --resource-group MyResourceGroup
 
 ### <a name="install-a-solution-with-the-azure-cli"></a>使用 Azure CLI 安裝解決方案
 
-當您安裝解決方案時，您必須選取將在其中安裝解決方案且將收集其資料的 [Log Analytics 工作區](/azure/azure-monitor/platform/manage-access)。  使用 Azure CLI，您可以使用[az monitor log analytics 工作區](/cli/azure/monitor/log-analytics/workspace)參考命令來管理工作區。  依照 [Log Analytics 工作區和自動化帳戶](#log-analytics-workspace-and-automation-account)中所述的程序來連結工作區和帳戶。
+當您安裝解決方案時，您必須選取將在其中安裝解決方案且將收集其資料的 [Log Analytics 工作區](../platform/manage-access.md)。  使用 Azure CLI，您可以使用[az monitor log analytics 工作區](/cli/azure/monitor/log-analytics/workspace)參考命令來管理工作區。  依照 [Log Analytics 工作區和自動化帳戶](#log-analytics-workspace-and-automation-account)中所述的程序來連結工作區和帳戶。
 
 使用[az monitor log analytics 解決方案 create](/cli/azure/ext/log-analytics-solution/monitor/log-analytics/solution)來安裝監視解決方案。  以方括弧括住的參數是選擇性的。
 
@@ -192,6 +192,7 @@ az monitor log-analytics solution delete --name
 
 ## <a name="next-steps"></a>後續步驟
 
-* 取得[來自 Microsoft 的監視解決方案清單](solutions-inventory.md)。
+* 取得[來自 Microsoft 的監視解決方案清單](/azure/azure-monitor/monitor-reference)。
 * 了解如何[建立查詢](../log-query/log-query-overview.md)，以分析監視解決方案所收集的資料。
 * 查看[Azure 監視器的所有 Azure CLI 命令](/cli/azure/azure-cli-reference-for-monitor)。
+

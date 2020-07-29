@@ -6,27 +6,27 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/13/2019
-ms.openlocfilehash: 0b18c34f8c0378d22d138b865d72fa4f351d7b8f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 80e87d6fdab6ecf15c241581f8c19d36b30d7e30
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073644"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327101"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Application Insights Connector 管理解決方案 (取代)
 
 ![Application Insights 符號](./media/app-insights-connector/app-insights-connector-symbol.png)
 
 >[!NOTE]
-> 因為[跨資源查詢](../../azure-monitor/log-query/cross-workspace-query.md)的支援，已不再需要 Application Insights Connector 管理解決方案。 此方案已被取代，並從 Azure Marketplace 中移除，連同 Azure 商業雲端的 OMS 入口網站也於 2019 年 1 月 15 日正式被取代。 Azure 美國政府雲端將於 2019 年 3 月 30 日淘汰該服務。
+> 因為[跨資源查詢](../log-query/cross-workspace-query.md)的支援，已不再需要 Application Insights Connector 管理解決方案。 此方案已被取代，並從 Azure Marketplace 中移除，連同 Azure 商業雲端的 OMS 入口網站也於 2019 年 1 月 15 日正式被取代。 Azure 美國政府雲端將於 2019 年 3 月 30 日淘汰該服務。
 >
 >現有的連線將繼續運作，直到 2019 年 6 月 30 日為止。  隨著 OMS 入口網站被淘汰，將無法從入口網站設定及移除現有連線。 請參閱下方的[使用 PowerShell 移除連接器](#removing-the-connector-with-powershell)，了解使用 PowerShell 來移除現有連線的指令碼。
 >
->如需查詢多個應用程式的 Application Insights 記錄資料的指引，請參閱[整合多個 Azure 監視器 Application Insights 資源](../log-query/unify-app-resource-data.md)。 如需 OMS 入口網站被取代的詳細資訊，請參閱[移至 Azure 的 OMS 入口網站](../../azure-monitor/platform/oms-portal-transition.md)。
+>如需查詢多個應用程式的 Application Insights 記錄資料的指引，請參閱[整合多個 Azure 監視器 Application Insights 資源](../log-query/unify-app-resource-data.md)。 如需 OMS 入口網站被取代的詳細資訊，請參閱[移至 Azure 的 OMS 入口網站](./oms-portal-transition.md)。
 >
 > 
 
-Applications Insights Connector 解決方案可協助您診斷效能問題，以及了解使用者如何使用 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 監視您的應用程式。 在 Log Analytics 中可使用開發人員在 Application Insights 中看見的相同應用程式遙測檢視。 不過，在整合 Application Insights 應用程式與 Log Analytics 時，將作業與應用程式資料放在一個地方可提高您應用程式的可見性。 具有相同的檢視，可協助您與您的應用程式開發人員共同作業。 常見的檢視可協助減少偵測及解決應用程式和平台問題的時間。
+Applications Insights Connector 解決方案可協助您診斷效能問題，以及了解使用者如何使用 [Application Insights](../app/app-insights-overview.md) 監視您的應用程式。 在 Log Analytics 中可使用開發人員在 Application Insights 中看見的相同應用程式遙測檢視。 不過，在整合 Application Insights 應用程式與 Log Analytics 時，將作業與應用程式資料放在一個地方可提高您應用程式的可見性。 具有相同的檢視，可協助您與您的應用程式開發人員共同作業。 常見的檢視可協助減少偵測及解決應用程式和平台問題的時間。
 
 當您使用解決方案時，您可以：
 
@@ -44,9 +44,9 @@ Applications Insights Connector 解決方案可協助您診斷效能問題，以
 
 | 連接的來源 | 支援 | 描述 |
 | --- | --- | --- |
-| [Windows 代理程式](../../azure-monitor/platform/agent-windows.md) | 否 | 解決方案不會收集來自 Windows 代理程式的資訊。 |
-| [Linux 代理程式](../../azure-monitor/learn/quick-collect-linux-computer.md) | 否 | 解決方案不會收集來自 Linux 代理程式的資訊。 |
-| [SCOM 管理群組](../../azure-monitor/platform/om-agents.md) | 否 | 解決方案不會收集來自連線 SCOM 管理群組的代理程式之中的資訊。 |
+| [Windows 代理程式](./agent-windows.md) | 否 | 解決方案不會收集來自 Windows 代理程式的資訊。 |
+| [Linux 代理程式](../learn/quick-collect-linux-computer.md) | 否 | 解決方案不會收集來自 Linux 代理程式的資訊。 |
+| [SCOM 管理群組](./om-agents.md) | 否 | 解決方案不會收集來自連線 SCOM 管理群組的代理程式之中的資訊。 |
 | [Azure 儲存體帳戶](./resource-logs.md#send-to-log-analytics-workspace) | 否 | 解決方案不會收集來自 Azure 儲存體的資訊。 |
 
 ## <a name="prerequisites"></a>必要條件
@@ -57,10 +57,10 @@ Applications Insights Connector 解決方案可協助您診斷效能問題，以
 
 ## <a name="configuration"></a>組態
 
-1. 從 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AppInsights?tab=Overview) 或使用[從方案庫新增 Log Analytics 方案](../../azure-monitor/insights/solutions.md)中所述的程序，啟用 Azure Web Apps 分析解決方案。
+1. 從 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AppInsights?tab=Overview) 或使用[從方案庫新增 Log Analytics 方案](../insights/solutions.md)中所述的程序，啟用 Azure Web Apps 分析解決方案。
 2. 瀏覽至 [Azure 入口網站](https://portal.azure.com)。 選取 [所有服務]**** 來開啟 Application Insights。 然後，搜尋 Application Insights。 
 3. 在 [訂用帳戶]**** 之下，選取擁有 Application Insights 資源的訂用帳戶，然後在 [名稱]**** 之下，選取一或多個應用程式。
-4. 按一下 [檔案] 。
+4. 按一下 [儲存]。
 
 大約 30 分鐘內，資料就會變成可用，而且 Application Insights 圖格資料會更新，如下圖所示：
 
@@ -90,7 +90,7 @@ Applications Insights Connector 解決方案可協助您診斷效能問題，以
 此儀表板包含下表所示的刀鋒視窗。 每個刀鋒視窗最多會列出 10 個與該刀鋒視窗中指定範圍和時間範圍的準則相符的項目。 當您按一下刀鋒視窗底部的 [查看全部]****，或按一下刀鋒視窗標頭時，您可以執行記錄搜尋來傳回所有記錄。
 
 
-| **資料行** | **描述** |
+| **資料行** | **說明** |
 | --- | --- |
 | 應用程式 - 應用程式的數目 | 顯示 [應用程式] 資源中的應用程式數目。 也會列出應用程式名稱以及各自的應用程式記錄計數。 按一下此數字可執行記錄搜尋，以搜尋 <code>ApplicationInsights &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName</code> <br><br>  按一下應用程式名稱，可執行應用程式的記錄搜尋，以顯示每個主機的應用程式記錄、各遙測類型的記錄，以及各類型的所有資料 (以最後一天為基礎)。 |
 | 資料量 - 傳送資料的主機 | 顯示傳送資料的電腦主機數目。 也會列出電腦主機和每部主機的記錄計數。 按一下此數字可執行記錄搜尋，以搜尋 <code>ApplicationInsights &#124; summarize AggregatedValue = sum(SampledCount) by Host</code> <br><br> 按一下電腦名稱，可執行主機的記錄搜尋，以顯示每個主機的應用程式記錄、各遙測類型的記錄，以及各類型的所有資料 (以最後一天為基礎)。 |
@@ -144,7 +144,7 @@ Applications Insights Connector 解決方案可協助您診斷效能問題，以
 
 ### <a name="sample-corrected-data"></a>取樣更正資料
 
-Application Insights 提供*[取樣更正](../../azure-monitor/app/sampling.md)* 來協助減少遙測流量。 當您在 Application Insights 應用程式上啟用取樣功能時，您取得之 Application Insights 和 Log Analytics 中儲存的項目數會減少。 雖然資料一致性會保留在 [Application Insights Connector]**** 頁面和檢視方塊中，您應針對您的自訂查詢手動更正取樣的資料。
+Application Insights 提供*[取樣更正](../app/sampling.md)* 來協助減少遙測流量。 當您在 Application Insights 應用程式上啟用取樣功能時，您取得之 Application Insights 和 Log Analytics 中儲存的項目數會減少。 雖然資料一致性會保留在 [Application Insights Connector]**** 頁面和檢視方塊中，您應針對您的自訂查詢手動更正取樣的資料。
 
 在記錄搜尋查詢中取樣更正的範例如下：
 
@@ -163,8 +163,8 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 - 可用性
 - 例外狀況
 - Requests
-- 頁面檢視 – 為了讓工作區接收頁面檢視，您必須設定您的應用程式來收集該資訊。 如需詳細資訊，請參閱 [PageViews](../../azure-monitor/app/api-custom-events-metrics.md#page-views)。
-- 自訂事件 – 為了讓工作區接收訂事件，您必須設定您的應用程式來收集該資訊。 如需詳細資訊，請參閱 [TrackEvent](../../azure-monitor/app/api-custom-events-metrics.md#trackevent)。
+- 頁面檢視 – 為了讓工作區接收頁面檢視，您必須設定您的應用程式來收集該資訊。 如需詳細資訊，請參閱 [PageViews](../app/api-custom-events-metrics.md#page-views)。
+- 自訂事件 – 為了讓工作區接收訂事件，您必須設定您的應用程式來收集該資訊。 如需詳細資訊，請參閱 [TrackEvent](../app/api-custom-events-metrics.md#trackevent)。
 
 資料可用時，是由 Log Analytics 從 Application Insights 接收。
 
@@ -318,4 +318,5 @@ ApplicationInsights | summarize by ApplicationName
 
 ## <a name="next-steps"></a>後續步驟
 
-- 使用[記錄搜尋](../../azure-monitor/log-query/log-query-overview.md)來檢視 Application Insights 應用程式的詳細資訊。
+- 使用[記錄搜尋](../log-query/log-query-overview.md)來檢視 Application Insights 應用程式的詳細資訊。
+

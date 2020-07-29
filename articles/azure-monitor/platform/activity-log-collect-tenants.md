@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/06/2019
-ms.openlocfilehash: 07c38cbd2d77a3cca594acd974705af35d8189b9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7718bd5cbc3c3fc3c9632818f769c05cd1617361
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516340"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321865"
 ---
 # <a name="collect-azure-activity-logs-into-azure-monitor-across-azure-active-directory-tenants-legacy"></a>將 Azure 活動記錄收集到 Azure Active Directory 租使用者之間的 Azure 監視器（舊版）
 
@@ -124,12 +124,12 @@ ms.locfileid: "86516340"
 
     ![建立邏輯應用程式](media/collect-activity-logs-subscriptions/create-logic-app.png)
 
-   |設定 | 描述  |
+   |設定 | 說明  |
    |:---|:---|
    | 名稱           | 邏輯應用程式的唯一名稱。 |
    | 訂用帳戶   | 選取將包含邏輯應用程式的 Azure 訂用帳戶。 |
    | 資源群組 | 選取現有 Azure 資源群組，或建立邏輯應用程式的新 Azure 資源群組。 |
-   | Location       | 選取資料中心區域，用於部署邏輯應用程式。 |
+   | 位置       | 選取資料中心區域，用於部署邏輯應用程式。 |
    | Log Analytics  | 如果您想要在 Log Analytics 工作區中記錄每個邏輯應用程式執行的狀態，請選取此項。  |
 
     
@@ -299,7 +299,7 @@ ms.locfileid: "86516340"
 
     ![設定傳送資料動作](media/collect-activity-logs-subscriptions/logic-apps-send-data-to-log-analytics-configuration.png)
 
-   |設定        | 值           | 描述  |
+   |設定        | 值           | 說明  |
    |---------------|---------------------------|--------------|
    |JSON 要求本文  | [撰寫]**** 動作的 [輸出]**** | 從 [撰寫] 動作的本文中擷取記錄。 |
    | 自訂記錄名稱 | AzureActivity | 要在 Log Analytics 工作區中建立以保存匯入資料的自訂記錄資料表名稱。 |
@@ -340,4 +340,5 @@ ms.locfileid: "86516340"
 在本文中，您已建立邏輯應用程式，以從事件中樞讀取 Azure 活動記錄，並將它們傳送至 Log Analytics 工作區進行分析。 若要深入瞭解如何將工作區中的資料視覺化，包括建立儀表板，請參閱將資料視覺化的教學課程。
 
 > [!div class="nextstepaction"]
-> [視覺化記錄搜尋資料教學課程](./../../azure-monitor/learn/tutorial-logs-dashboards.md)
+> [視覺化記錄搜尋資料教學課程](../learn/tutorial-logs-dashboards.md)
+

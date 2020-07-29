@@ -9,21 +9,22 @@ ms.reviewer: v-ching, estfan, logicappspm
 ms.topic: article
 ms.date: 02/21/2020
 tags: connectors
-ms.openlocfilehash: b4f51b192d1a7c0ee14a769321793753e8217dea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 337ecc6069211942a809f2bf3d793c5bccc08387
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77598828"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87277225"
 ---
 # <a name="improve-threat-protection-by-integrating-security-operations-with-microsoft-graph-security--azure-logic-apps"></a>使用 Microsoft Graph 安全性和 Azure Logic Apps 整合安全性作業，改善威脅防護功能
 
-使用 [Azure Logic Apps](../logic-apps/logic-apps-overview.md) 和 [Microsoft Graph 安全性](https://docs.microsoft.com/graph/security-concept-overview)連接器，您就可以建立整合 Microsoft 安全性產品、服務和合作夥伴的自動化工作流程，改善應用程式偵測、保護和回應威脅的方式。 例如，您可以建立 [Azure 資訊安全中心劇本](../security-center/security-center-playbooks.md)，用來監視和管理 Microsoft Graph 安全性實體 (例如警告)。 以下是 Microsoft Graph 安全性連接器所支援的一些案例：
+使用 [Azure Logic Apps](../logic-apps/logic-apps-overview.md) 和 [Microsoft Graph 安全性](/graph/security-concept-overview)連接器，您就可以建立整合 Microsoft 安全性產品、服務和合作夥伴的自動化工作流程，改善應用程式偵測、保護和回應威脅的方式。 例如，您可以建立 [Azure 資訊安全中心劇本](../security-center/workflow-automation.md)，用來監視和管理 Microsoft Graph 安全性實體 (例如警告)。 以下是 Microsoft Graph 安全性連接器所支援的一些案例：
 
 * 依據查詢或警示識別碼取得警示。 例如，您可以取得包含高嚴重性警示的清單。
 
 * 更新警示。 例如，您可以更新警示指派、新增警示的註解或標記警示。
 
-* 建立[警示訂閱 (Webhook)](https://docs.microsoft.com/graph/api/resources/webhooks) 監視警示建立或變更的時間。
+* 建立[警示訂閱 (Webhook)](/graph/api/resources/webhooks) 監視警示建立或變更的時間。
 
 * 管理您的警示訂閱。 例如，您可以取得有效的訂閱、延長訂閱的到期時間，或刪除訂閱。
 
@@ -90,10 +91,10 @@ ms.locfileid: "77598828"
 
 1.  在觸發程式中，提供您想要監視之警示的相關資訊。 如需更多屬性，請開啟 [**加入新的參數**] 清單，然後選取參數將該屬性加入至觸發程式。
 
-   | 屬性 | 屬性 (JSON) | 必要 | 類型 | Description |
+   | 屬性 | 屬性 (JSON) | 必要 | 類型 | 說明 |
    |----------|-----------------|----------|------|-------------|
    | **間隔** | `interval` | 是 | 整數 | 描述工作流程根據 frequency 多久執行一次的正整數。 以下是最小和最大間隔： <p><p>- 月：1-16 個月 <br>- 天：1-500 天 <br>- 小時：1-12,000 個小時 <br>- 分鐘：1-72,000 分鐘 <br>- 秒：1-9,999,999 秒 <p>例如，如果 interval 是 6，而 frequency 是「月」，則週期為每隔 6 個月。 |
-   | **頻率** | `frequency` | Yes | String | 重複的時間單位：**秒**、**分鐘**、**小時**、**天**、**週**或**月** |
+   | **頻率** | `frequency` | 是 | String | 重複的時間單位：**秒**、**分鐘**、**小時**、**天**、**週**或**月** |
    | **時區** | `timeZone` | 否 | String | 只有當您有指定開始時間時才適用，因為此觸發程序並不接受 [UTC 時差](https://en.wikipedia.org/wiki/UTC_offset)。 選取您要套用的時區。 |
    | **開始時間** | `startTime` | 否 | String | 提供此格式的開始日期和時間： <p><p>YYYY-MM-DDThh:mm:ss (如果您選取時區) <p>-或- <p>YYYY-MM-DDThh:mm:ssZ (如果您未選取時區) <p>例如，如果您想要2017年9月18日下午2:00，請指定 "2017-09-18T14：00： 00"，然後選取時區，例如太平洋標準時間。 或是指定 "2017-09-18T14:00:00Z"，但不指定時區。 <p>**注意：** 此開始時間在未來最多有49年，而且必須遵循[utc 日期時間格式](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)的[ISO 8601 日期時間規格](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)，但不含[utc 時差](https://en.wikipedia.org/wiki/UTC_offset)。 如果您不選取時區，就必須在結尾加上字母 "Z"，其中不含任何空格。 這個 "Z" 係指對等的[航海時間](https://en.wikipedia.org/wiki/Nautical_time)。 <p>就簡單排程來說，開始時間係指第一次發生的時間，而就複雜排程來說，觸發程序會在開始時間一到就立即引發。 [*我可以使用開始日期和時間的方式有哪些？*](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time) |
    ||||||
@@ -108,52 +109,52 @@ ms.locfileid: "77598828"
 
 ### <a name="manage-alerts"></a>管理警示
 
-若要篩選、排序或取得最近結果，只要** 提供 [Microsoft Graph 支援的 ODATA 查詢參數](https://docs.microsoft.com/graph/query-parameters)。 「請勿指定」** 完整的基底 URL 或 HTTP 動作，例如 `https://graph.microsoft.com/v1.0/security/alerts`，或是 `GET` 或 `PATCH` 作業。 以下具體範例顯示當您要列出高嚴重性警示時，適用於**取得警示**動作的參數：
+若要篩選、排序或取得最近結果，只要** 提供 [Microsoft Graph 支援的 ODATA 查詢參數](/graph/query-parameters)。 「請勿指定」** 完整的基底 URL 或 HTTP 動作，例如 `https://graph.microsoft.com/v1.0/security/alerts`，或是 `GET` 或 `PATCH` 作業。 以下具體範例顯示當您要列出高嚴重性警示時，適用於**取得警示**動作的參數：
 
 `Filter alerts value as Severity eq 'high'`
 
-如需您可搭配此連接器使用之查詢的詳細資訊，請參閱 [Microsoft Graph 安全性警示參考文件](https://docs.microsoft.com/graph/api/alert-list) \(英文\)。 若要建置含有此連接器的增強體驗，請深入了解連接器支援的[結構描述屬性警示](https://docs.microsoft.com/graph/api/resources/alert)。
+如需您可搭配此連接器使用之查詢的詳細資訊，請參閱 [Microsoft Graph 安全性警示參考文件](/graph/api/alert-list) \(英文\)。 若要建置含有此連接器的增強體驗，請深入了解連接器支援的[結構描述屬性警示](/graph/api/resources/alert)。
 
 | 動作 | 描述 |
 |--------|-------------|
-| **取得警示** | 取得根據一或多個[警示屬性](https://docs.microsoft.com/graph/api/resources/alert)篩選的警示，例如 `Provider eq 'Azure Security Center' or 'Palo Alto Networks'` 。 | 
+| **取得警示** | 取得根據一或多個[警示屬性](/graph/api/resources/alert)篩選的警示，例如 `Provider eq 'Azure Security Center' or 'Palo Alto Networks'` 。 | 
 | **依識別碼取得警示** | 依據警示識別碼取得特定警示。 | 
-| **更新警示** | 依據警示識別碼更新特定警示。 為確保您在要求中傳遞必要和可編輯的屬性，請參閱[警示的可編輯屬性](https://docs.microsoft.com/graph/api/alert-update) \(英文\)。 例如，若要指派警示給安全性分析師以讓他們可以進行調查，您可以更新警示的「指派給」**** 屬性。 |
+| **更新警示** | 依據警示識別碼更新特定警示。 為確保您在要求中傳遞必要和可編輯的屬性，請參閱[警示的可編輯屬性](/graph/api/alert-update) \(英文\)。 例如，若要指派警示給安全性分析師以讓他們可以進行調查，您可以更新警示的「指派給」**** 屬性。 |
 |||
 
 ### <a name="manage-alert-subscriptions"></a>管理警示訂閱
 
-Microsoft Graph 支援[*訂閱*](https://docs.microsoft.com/graph/api/resources/subscription)或 [*Webhook*](https://docs.microsoft.com/graph/api/resources/webhooks)。 若要取得、更新或刪除訂閱，請將 [Microsoft Graph 支援的 ODATA 查詢參數](https://docs.microsoft.com/graph/query-parameters)提供給 Microsoft Graph 實體，並在 ODATA 查詢後包含 `security/alerts`。 「請勿包含」** 基底 URL，例如：`https://graph.microsoft.com/v1.0`。 相反地，請使用此範例的格式：
+Microsoft Graph 支援[*訂閱*](/graph/api/resources/subscription)或 [*Webhook*](/graph/api/resources/webhooks)。 若要取得、更新或刪除訂閱，請將 [Microsoft Graph 支援的 ODATA 查詢參數](/graph/query-parameters)提供給 Microsoft Graph 實體，並在 ODATA 查詢後包含 `security/alerts`。 「請勿包含」** 基底 URL，例如：`https://graph.microsoft.com/v1.0`。 相反地，請使用此範例的格式：
 
 `security/alerts?$filter=status eq 'New'`
 
 | 動作 | 描述 |
 |--------|-------------|
-| **建立訂用帳戶** | [建立訂閱](https://docs.microsoft.com/graph/api/subscription-post-subscriptions)可通知您相關的任何變更。 您可以針對您想要的特定警示類型篩選此訂閱。 例如，您可以建立通知您有關高嚴重性警示的訂閱。 |
-| **取得有效的訂閱** | [取得未到期的訂閱](https://docs.microsoft.com/graph/api/subscription-list)。 | 
-| **更新訂閱** | 提供訂閱識別碼以[更新訂閱](https://docs.microsoft.com/graph/api/subscription-update)。 例如，若要延長訂閱，您可以更新訂閱的 `expirationDateTime` 屬性。 | 
-| **刪除訂用帳戶** | 提供訂閱識別碼以[刪除訂閱](https://docs.microsoft.com/graph/api/subscription-delete)。 | 
+| **建立訂用帳戶** | [建立訂閱](/graph/api/subscription-post-subscriptions)可通知您相關的任何變更。 您可以針對您想要的特定警示類型篩選此訂閱。 例如，您可以建立通知您有關高嚴重性警示的訂閱。 |
+| **取得有效的訂閱** | [取得未到期的訂閱](/graph/api/subscription-list)。 | 
+| **更新訂閱** | 提供訂閱識別碼以[更新訂閱](/graph/api/subscription-update)。 例如，若要延長訂閱，您可以更新訂閱的 `expirationDateTime` 屬性。 | 
+| **刪除訂用帳戶** | 提供訂閱識別碼以[刪除訂閱](/graph/api/subscription-delete)。 | 
 ||| 
 
 ### <a name="manage-threat-intelligence-indicators"></a>管理威脅情報指示器
 
-若要篩選、排序或取得最近結果，只要** 提供 [Microsoft Graph 支援的 ODATA 查詢參數](https://docs.microsoft.com/graph/query-parameters)。 「請勿指定」** 完整的基底 URL 或 HTTP 動作，例如 `https://graph.microsoft.com/beta/security/tiIndicators`，或是 `GET` 或 `PATCH` 作業。 以下是一個特定範例，當您想要具有威脅類型的清單時，會顯示**Get tiIndicators**動作的參數 `DDoS` ：
+若要篩選、排序或取得最近結果，只要** 提供 [Microsoft Graph 支援的 ODATA 查詢參數](/graph/query-parameters)。 「請勿指定」** 完整的基底 URL 或 HTTP 動作，例如 `https://graph.microsoft.com/beta/security/tiIndicators`，或是 `GET` 或 `PATCH` 作業。 以下是一個特定範例，當您想要具有威脅類型的清單時，會顯示**Get tiIndicators**動作的參數 `DDoS` ：
 
 `Filter threat intelligence indicator value as threatType eq 'DDoS'`
 
-如需可搭配此連接器使用之查詢的詳細資訊，請參閱[Microsoft Graph 安全性威脅情報指標參考檔中的「選擇性查詢參數](https://docs.microsoft.com/graph/api/tiindicators-list?view=graph-rest-beta&tabs=http)」。 若要使用此連接器建立增強的體驗，請深入瞭解連接器支援的[架構屬性威脅情報指示器](https://docs.microsoft.com/graph/api/resources/tiindicator?view=graph-rest-beta)。
+如需可搭配此連接器使用之查詢的詳細資訊，請參閱[Microsoft Graph 安全性威脅情報指標參考檔中的「選擇性查詢參數](/graph/api/tiindicators-list?tabs=http&view=graph-rest-beta)」。 若要使用此連接器建立增強的體驗，請深入瞭解連接器支援的[架構屬性威脅情報指示器](/graph/api/resources/tiindicator?view=graph-rest-beta)。
 
 | 動作 | 描述 |
 |--------|-------------|
-| **取得威脅情報指示器** | 取得根據一或多個[tiIndicator 屬性](https://docs.microsoft.com/graph/api/resources/tiindicator?view=graph-rest-beta)篩選的 tiIndicators，例如`threatType eq 'MaliciousUrl' or 'DDoS'` |
+| **取得威脅情報指示器** | 取得根據一或多個[tiIndicator 屬性](/graph/api/resources/tiindicator?view=graph-rest-beta)篩選的 tiIndicators，例如`threatType eq 'MaliciousUrl' or 'DDoS'` |
 | **依識別碼取得威脅情報指示器** | 根據 tiIndicator 識別碼取得特定的 tiIndicator。 | 
-| **建立威脅情報指標** | 張貼至 tiIndicators 集合，以建立新的 tiIndicator。 若要確保您在要求中傳遞必要的屬性，請參閱[建立 tiIndicator 所需的屬性](https://docs.microsoft.com/graph/api/tiindicators-post?view=graph-rest-beta&tabs=http)。 |
-| **提交多個威脅情報指示器** | 藉由張貼 tiIndicators 集合來建立多個新的 tiIndicators。 若要確保您在要求中傳遞必要的屬性，請參閱[提交多個 tiIndicators 的必要屬性](https://docs.microsoft.com/graph/api/tiindicator-submittiindicators?view=graph-rest-beta&tabs=http)。 |
-| **更新威脅情報指標** | 根據 tiIndicator 識別碼更新特定 tiIndicator。 若要確保您在要求中傳遞必要和可編輯的屬性，請參閱[tiIndicator 的可編輯屬性](https://docs.microsoft.com/graph/api/tiindicator-update?view=graph-rest-beta&tabs=http)。 例如，若要更新在 targetProduct 安全性工具內符合指標時要套用的動作，您可以更新 tiIndicator 的**action**屬性。 |
-| **更新多個威脅情報指示器** | 更新多個 tiIndicators。 為確保您在要求中傳遞必要的屬性，請參閱[更新多個 tiIndicators 的必要屬性](https://docs.microsoft.com/graph/api/tiindicator-updatetiindicators?view=graph-rest-beta&tabs=http)。 |
+| **建立威脅情報指標** | 張貼至 tiIndicators 集合，以建立新的 tiIndicator。 若要確保您在要求中傳遞必要的屬性，請參閱[建立 tiIndicator 所需的屬性](/graph/api/tiindicators-post?tabs=http&view=graph-rest-beta)。 |
+| **提交多個威脅情報指示器** | 藉由張貼 tiIndicators 集合來建立多個新的 tiIndicators。 若要確保您在要求中傳遞必要的屬性，請參閱[提交多個 tiIndicators 的必要屬性](/graph/api/tiindicator-submittiindicators?tabs=http&view=graph-rest-beta)。 |
+| **更新威脅情報指標** | 根據 tiIndicator 識別碼更新特定 tiIndicator。 若要確保您在要求中傳遞必要和可編輯的屬性，請參閱[tiIndicator 的可編輯屬性](/graph/api/tiindicator-update?tabs=http&view=graph-rest-beta)。 例如，若要更新在 targetProduct 安全性工具內符合指標時要套用的動作，您可以更新 tiIndicator 的**action**屬性。 |
+| **更新多個威脅情報指示器** | 更新多個 tiIndicators。 為確保您在要求中傳遞必要的屬性，請參閱[更新多個 tiIndicators 的必要屬性](/graph/api/tiindicator-updatetiindicators?tabs=http&view=graph-rest-beta)。 |
 | **依識別碼刪除威脅情報指示器** | 根據 tiIndicator 識別碼刪除特定的 tiIndicator。 |
-| **依識別碼刪除多個威脅情報指示器** | 依識別碼刪除多個 tiIndicators。 若要確定您在要求中傳遞必要的屬性，請參閱[依識別碼刪除多個 tiIndicators 的必要屬性](https://docs.microsoft.com/graph/api/tiindicator-deletetiindicators?view=graph-rest-beta&tabs=http)。 |
-| **依外部識別碼刪除多個威脅情報指示器** | 依外部識別碼刪除多個 tiIndicators。 若要確定您在要求中傳遞所需的屬性，請參閱[必要的屬性，以依據外部識別碼刪除多個 tiIndicators](https://docs.microsoft.com/graph/api/tiindicator-deletetiindicatorsbyexternalid?view=graph-rest-beta&tabs=http)。 |
+| **依識別碼刪除多個威脅情報指示器** | 依識別碼刪除多個 tiIndicators。 若要確定您在要求中傳遞必要的屬性，請參閱[依識別碼刪除多個 tiIndicators 的必要屬性](/graph/api/tiindicator-deletetiindicators?tabs=http&view=graph-rest-beta)。 |
+| **依外部識別碼刪除多個威脅情報指示器** | 依外部識別碼刪除多個 tiIndicators。 若要確定您在要求中傳遞所需的屬性，請參閱[必要的屬性，以依據外部識別碼刪除多個 tiIndicators](/graph/api/tiindicator-deletetiindicatorsbyexternalid?tabs=http&view=graph-rest-beta)。 |
 |||
 
 ## <a name="connector-reference"></a>連接器參考
@@ -163,3 +164,4 @@ Microsoft Graph 支援[*訂閱*](https://docs.microsoft.com/graph/api/resources/
 ## <a name="next-steps"></a>後續步驟
 
 了解其他 [Logic Apps 連接器](../connectors/apis-list.md)
+

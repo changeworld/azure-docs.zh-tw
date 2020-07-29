@@ -4,12 +4,12 @@ description: 了解哪些度量常用於自動調整您的雲端服務、虛擬�
 ms.topic: conceptual
 ms.date: 12/6/2016
 ms.subservice: autoscale
-ms.openlocfilehash: 57bffede3b6c6c137da2feea32ad467a13f71a37
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e1a77fc1b40faca0a339c5e1aaceb71dec8de8bd
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073519"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327033"
 ---
 # <a name="azure-monitor-autoscaling-common-metrics"></a>Azure 監視器自動調整的常用度量
 
@@ -33,8 +33,8 @@ Azure 監視器自動調整僅適用於[虛擬機器擴展集](https://azure.mic
 ### <a name="host-metrics-for-resource-manager-based-windows-and-linux-vms"></a>以 Resource Manager 為基礎的 Windows 和 Linux VM 的主機度量
 在 Windows 和 Linux 執行個體中，根據預設會針對 Azure VM 和 VMSS 發出下列的主機層級度量。 這些度量描述您的 Azure VM，然而是從 Azure VM 主機收集，而不是透過客體 VM 上安裝的代理程式收集。 您可以在自動調整規則中使用這些度量。
 
-- [以 Resource Manager 為基礎的 Windows 和 Linux VM 的主機度量](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines)
-- [以 Resource Manager 為基礎的 Windows 和 Linux VM 擴展集的主機度量](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachinescalesets)
+- [以 Resource Manager 為基礎的 Windows 和 Linux VM 的主機度量](./metrics-supported.md#microsoftcomputevirtualmachines)
+- [以 Resource Manager 為基礎的 Windows 和 Linux VM 擴展集的主機度量](./metrics-supported.md#microsoftcomputevirtualmachinescalesets)
 
 ### <a name="guest-os-metrics-for-resource-manager-based-windows-vms"></a>Resource Manager 為基礎的 Windows Vm 的客體作業系統計量
 在 Azure 中建立 VM 時會使用診斷擴充來啟用診斷。 診斷擴充會發出一組取自 VM 內的度量。 這表示您可以關閉自動調整依預設不發出的度量。
@@ -186,3 +186,4 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 > 若使用服務匯流排，資源群組的概念不存在，但 Azure Resource Manager 會建立每個區域的預設資源群組。 此資源群組通常是 'Default-ServiceBus-[region]' 的格式。 例如，'Default-ServiceBus-EastUS'、'Default-ServiceBus-WestUS'、'Default-ServiceBus-AustraliaEast' 等。
 >
 >
+

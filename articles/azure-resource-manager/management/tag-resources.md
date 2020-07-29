@@ -2,13 +2,13 @@
 title: 標記邏輯組織的資源、資源群組和訂用帳戶
 description: 示範如何套用標籤以針對計費及管理來組織 Azure 資源。
 ms.topic: conceptual
-ms.date: 07/01/2020
-ms.openlocfilehash: 9dd025818a64a8ece1f4218a8341a40ecc617829
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.date: 07/27/2020
+ms.openlocfilehash: fa56fac79855b438a0cd1c10ed1008d69ca3e2fe
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86056917"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323871"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>使用標記來組織您的 Azure 資源和管理階層
 
@@ -438,7 +438,7 @@ IFS=$origIFS
 
 ### <a name="apply-tags-from-resource-group"></a>從資源群組套用標記
 
-若要將標記從資源群組套用至資源，請使用[resourceGroup](../templates/template-functions-resource.md#resourcegroup)函數。 取得標記值時，請使用 `tags[tag-name]` 語法，而不是 `tags.tag-name` 語法，因為在點標記法中無法正確剖析某些字元。
+若要將標記從資源群組套用至資源，請使用[resourceGroup （）](../templates/template-functions-resource.md#resourcegroup)函數。 取得標記值時，請使用 `tags[tag-name]` 語法，而不是 `tags.tag-name` 語法，因為在點標記法中無法正確剖析某些字元。
 
 ```json
 {
@@ -576,9 +576,9 @@ az deployment sub create --name tagresourcegroup --location westus2 --template-u
 
 ## <a name="tags-and-billing"></a>標記與計費
 
-您可以使用標籤將您的計費資料分組。 例如，如果您針對不同組織執行多個 VM，請使用標籤依成本中心將使用量分組。 您也可以使用標籤來根據執行階段環境將成本分類。例如，在生產環境中執行之 VM 的計費使用量。
+您可以使用標籤將您的計費資料分組。 例如，如果您針對不同組織執行多個 VM，請使用標籤依成本中心將使用量分組。 您也可以使用標籤來根據執行階段環境將成本分類，例如在生產環境中執行之 VM 的計費使用量。
 
-您可以透過 [Azure 資源使用狀況和 RateCard API](../../cost-management-billing/manage/usage-rate-card-overview.md) 或使用狀況逗號分隔值 (CSV) 檔案，擷取關於標記的資訊。 您可以從 [Azure 帳戶中心](https://account.azure.com/Subscriptions)或 Azure 入口網站下載使用量檔案。 如需詳細資訊，請參閱[下載或檢視您的 Azure 帳單發票和每日使用量資料](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)。 從「Azure 帳戶中心」下載使用量檔案時，請選取 [版本 2]****。 針對支援在計費方面使用標籤的服務，標籤會顯示在 [標籤]**** 資料行中。
+您可以透過[Azure 資源使用量和費率卡片 api](../../cost-management-billing/manage/usage-rate-card-overview.md)或使用方式的逗號分隔值（CSV）檔案，來抓取標記的相關資訊。 您可以從 [Azure 帳戶中心](https://account.azure.com/Subscriptions)或 Azure 入口網站下載使用量檔案。 如需詳細資訊，請參閱[下載或檢視您的 Azure 帳單發票和每日使用量資料](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)。 從「Azure 帳戶中心」下載使用量檔案時，請選取 [版本 2]****。 針對支援在計費方面使用標籤的服務，標籤會顯示在 [標籤]**** 資料行中。
 
 若為 REST API 作業，請參閱 [Azure 計費 REST API 參考](/rest/api/billing/)。
 
@@ -596,6 +596,8 @@ az deployment sub create --name tagresourcegroup --location westus2 --template-u
    > 目前，Azure DNS 區域和流量管理員服務也不允許在標記中使用空格。
    >
    > Azure Front 門板不支援 `#` 在標記名稱中使用。
+   >
+   > Azure 自動化和 Azure CDN 僅支援在資源上有15個標記。
 
 ## <a name="next-steps"></a>後續步驟
 

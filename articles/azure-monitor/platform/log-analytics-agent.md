@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/04/2020
-ms.openlocfilehash: 9f8850b83b2af7f0d3007cd716f9e077361a02e2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 409a119804354b85e3af380d33a4801549ef8133
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091108"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325282"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics 代理程式概觀
 開發 Azure Log Analytics 代理程式是為了能夠全面管理任何雲端中的虛擬機器、內部部署機器，以及 [System Center Operations Manager](/system-center/scom/) 所監視的機器。 Windows 和 Linux 代理程式會將從不同來源收集而來的資料傳送至 Azure 監視器中的 Log Analytics 工作區，以及監視解決方案中所定義的任何唯一記錄或計量。 Log Analytics 代理程式也支援 Azure 監視器中的深入解析和其他服務，例如[適用於 VM 的 Azure 監視器](../insights/vminsights-enable-overview.md)、[Azure 資訊安全中心](../../security-center/index.yml)和 [Azure 自動化](../../automation/automation-intro.md)。
@@ -72,15 +72,15 @@ Log Analytics 代理程式會將資料傳送至 Azure 監視器中的 Log Analyt
 
 |來源 | 方法 | 描述|
 |-------|-------------|-------------|
-|Azure VM| [從 Azure 入口網站手動執行](../../azure-monitor/learn/quick-collect-azurevm.md?toc=/azure/azure-monitor/toc.json) | 指定要從 Log Analytics 工作區部署的 VM。 |
+|Azure VM| [從 Azure 入口網站手動執行](../learn/quick-collect-azurevm.md?toc=%2fazure%2fazure-monitor%2ftoc.json) | 指定要從 Log Analytics 工作區部署的 VM。 |
 | | 適用於 [Windows](../../virtual-machines/extensions/oms-windows.md) 或 [Linux](../../virtual-machines/extensions/oms-linux.md) 的 Log Analytics VM 擴充功能，使用 Azure CLI 或 Azure Resource Manager 範本 | 擴充功能會在 Azure 虛擬機器上安裝 Log Analytics 代理程式，並且在現有的 Azure 監視器工作區中註冊這些機器。 |
 | | [適用於 VM 的 Azure 監視器](../insights/vminsights-enable-overview.md) | 當您為適用於 VM 的 Azure 監視器啟用監視時，其會安裝 Log Analytics 擴充功能和代理程式。 |
 | | [Azure 資訊安全中心的自動佈建](../../security-center/security-center-enable-data-collection.md) | Azure 資訊安全中心可以將 Log Analytics 代理程式佈建在所有受支援的 Azure VM 上，以及任何新建立的 Azure VM 上 (如果您為其啟用監視安全性弱點和威脅的功能)。 若已啟用，則會佈建任何未安裝代理程式的全新或現有 VM。 |
 | 混合式 Windows 電腦| [手動安裝](agent-windows.md) | 從命令列安裝 Microsoft Monitoring Agent。 |
 | | [Azure 自動化 DSC](agent-windows.md#install-the-agent-using-dsc-in-azure-automation) | 使用 Azure 自動化 DSC 來自動安裝。 |
 | | [Resource Manager 範本搭配 Azure Stack](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/MicrosoftMonitoringAgent-ext-win) | 使用 Azure Resource Manager 範本 (如果您已在資料中心內部署 Microsoft Azure Stack)。| 
-| 混合式 Linux 電腦| [手動安裝](../../azure-monitor/learn/quick-collect-linux-computer.md)|安裝適用於 Linux 的代理程式需要 GitHub 上裝載的包裝函式指令碼。 | 
-| System Center Operations Manager|[將 Operations Manager 與 Log Analytics 整合](../../azure-monitor/platform/om-agents.md) | 設定 Operations Manager 與 Azure 監視器記錄之間的整合，以將從 Windows 電腦報告收集而來的資料轉送至管理群組。|  
+| 混合式 Linux 電腦| [手動安裝](../learn/quick-collect-linux-computer.md)|安裝適用於 Linux 的代理程式需要 GitHub 上裝載的包裝函式指令碼。 | 
+| System Center Operations Manager|[將 Operations Manager 與 Log Analytics 整合](./om-agents.md) | 設定 Operations Manager 與 Azure 監視器記錄之間的整合，以將從 Windows 電腦報告收集而來的資料轉送至管理群組。|  
 
 
 ## <a name="supported-windows-operating-systems"></a>支援的 Windows 作業系統
@@ -209,7 +209,7 @@ Windows 和 Linux 代理程式支援使用 HTTPS 通訊協定，透過 Proxy 伺
 > [!NOTE]
 > 若您的 Proxy 伺服器不要求您進行驗證，Linux 代理程式仍會要求提供虛擬使用者/密碼。 這可以是任何使用者名稱或密碼。
 
-|屬性| 描述 |
+|屬性| 說明 |
 |--------|-------------|
 |通訊協定 | https |
 |user | 用於驗證 Proxy 的選擇性使用者名稱 |
@@ -229,3 +229,4 @@ Windows 和 Linux 代理程式支援使用 HTTPS 通訊協定，透過 Proxy 伺
 * 檢閱[資料來源](agent-data-sources.md)以了解可用於從您的 Windows 或 Linux 系統收集資料的資料來源。 
 * 了解[記錄查詢](../log-query/log-query-overview.md)，以分析從資料來源和解決方案收集到的資料。 
 * 了解可將功能新增至 Azure 監視器，並會將資料收集到 Log Analytics 工作區的[監視解決方案](../insights/solutions.md)。
+

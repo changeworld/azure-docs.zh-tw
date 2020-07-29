@@ -8,13 +8,13 @@ ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
-ms.date: 05/19/2020
-ms.openlocfilehash: 2e1f98cffd17d0a8823cc5849830667fcdad1212
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 07/27/2020
+ms.openlocfilehash: 346a59f085e766fef09d73b9e7baa03dad510148
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86515218"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321712"
 ---
 # <a name="create-an-azure-stream-analytics-job-in-azure-sql-edge-preview"></a>在 Azure SQL Edge （預覽）中建立 Azure 串流分析作業 
 
@@ -39,11 +39,10 @@ T-sql 串流會使用 SQL Server 的外部資料源功能來定義與外部資�
 
 Azure SQL Edge 目前僅支援使用下列資料來源作為串流的輸入和輸出。
 
-| 資料來源類型 | 輸入 | 輸出 | 描述 |
+| 資料來源類型 | 輸入 | 輸出 | 說明 |
 |------------------|-------|--------|------------------|
 | Azure IoT Edge 中樞 | Y | Y | 用來讀取和寫入串流資料到 Azure IoT Edge 中樞的資料來源。 如需詳細資訊，請參閱[IoT Edge Hub](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub)。|
-| SQL Database | N | 是 | 用來將串流資料寫入到 SQL Database 的資料來源連線。 資料庫可以是 Azure SQL Edge 中的本機資料庫，或是 SQL Server 或 Azure SQL Database 中的遠端資料庫。|
-| Azure Blob 儲存體 | 否 | Y | 用來將資料寫入到 Azure 儲存體帳戶上 Blob 的資料來源。 |
+| SQL Database | N | Y | 用來將串流資料寫入到 SQL Database 的資料來源連線。 資料庫可以是 Azure SQL Edge 中的本機資料庫，或是 SQL Server 或 Azure SQL Database 中的遠端資料庫。|
 | Kafka | Y | N | 用來從 Kafka 主題讀取串流資料的資料來源。 此介面卡目前僅適用于 Intel 或 AMD 版本的 Azure SQL Edge。 不適用於 ARM64 版本的 Azure SQL Edge。|
 
 ### <a name="example-create-an-external-stream-inputoutput-object-for-azure-iot-edge-hub"></a>範例：建立 Azure IoT Edge 中樞的外部資料流輸入/輸出物件
@@ -54,7 +53,8 @@ Azure SQL Edge 目前僅支援使用下列資料來源作為串流的輸入和�
 
     ```sql
     Create External file format InputFileFormat
-    WITH (  
+    WITH 
+    (  
        format_type = JSON,
     )
     go
@@ -63,8 +63,10 @@ Azure SQL Edge 目前僅支援使用下列資料來源作為串流的輸入和�
 2. 建立 Azure IoT Edge 中樞的外部資料源。 下列 T-sql 腳本會建立與 Azure SQL Edge 在相同 Docker 主機上執行之 IoT Edge 中樞的資料來源連接。
 
     ```sql
-    CREATE EXTERNAL DATA SOURCE EdgeHubInput WITH (
-    LOCATION = 'edgehub://'
+    CREATE EXTERNAL DATA SOURCE EdgeHubInput 
+    WITH 
+    (
+        LOCATION = 'edgehub://'
     )
     go
     ```
@@ -72,13 +74,15 @@ Azure SQL Edge 目前僅支援使用下列資料來源作為串流的輸入和�
 3. 建立 Azure IoT Edge 中樞的外部資料流物件。 下列 T-sql 腳本會建立 IoT Edge 中樞的資料流程物件。 如果是 IoT Edge 中樞資料流程物件，LOCATION 參數就是要讀取或寫入的 IoT Edge 中樞主題或通道的名稱。
 
     ```sql
-    CREATE EXTERNAL STREAM MyTempSensors WITH (
-    DATA_SOURCE = EdgeHubInput,
-    FILE_FORMAT = InputFileFormat,
-    LOCATION = N'TemperatureSensors',
-    INPUT_OPTIONS = N'',
-    OUTPUT_OPTIONS = N''
-    )
+    CREATE EXTERNAL STREAM MyTempSensors 
+    WITH 
+    (
+        DATA_SOURCE = EdgeHubInput,
+        FILE_FORMAT = InputFileFormat,
+        LOCATION = N'TemperatureSensors',
+        INPUT_OPTIONS = N'',
+        OUTPUT_OPTIONS = N''
+    );
     go
     ```
 
@@ -107,9 +111,11 @@ Azure SQL Edge 目前僅支援使用下列資料來源作為串流的輸入和�
     * 使用先前建立的認證。
 
     ```sql
-    CREATE EXTERNAL DATA SOURCE LocalSQLOutput WITH (
-    LOCATION = 'sqlserver://tcp:.,1433'
-    ,CREDENTIAL = SQLCredential
+    CREATE EXTERNAL DATA SOURCE LocalSQLOutput 
+    WITH 
+    (
+        LOCATION = 'sqlserver://tcp:.,1433',
+        CREDENTIAL = SQLCredential
     )
     go
     ```
@@ -117,12 +123,52 @@ Azure SQL Edge 目前僅支援使用下列資料來源作為串流的輸入和�
 4. 建立外部資料流物件。 下列範例會建立指向資料表 dbo 的外部資料流物件 *。TemperatureMeasurements*，在資料庫*MySQLDatabase*中。
 
     ```sql
-    CREATE EXTERNAL STREAM TemperatureMeasurements WITH (
-    DATA_SOURCE = LocalSQLOutput,
-    LOCATION = N'MySQLDatabase.dbo.TemperatureMeasurements',
-    INPUT_OPTIONS = N'',
-    OUTPUT_OPTIONS = N''
+    CREATE EXTERNAL STREAM TemperatureMeasurements 
+    WITH 
+    (
+        DATA_SOURCE = LocalSQLOutput,
+        LOCATION = N'MySQLDatabase.dbo.TemperatureMeasurements',
+        INPUT_OPTIONS = N'',
+        OUTPUT_OPTIONS = N''
+    );
+    ```
+
+### <a name="example-create-an-external-stream-object-for-kafka"></a>範例：建立 Kafka 的外部資料流物件
+
+下列範例會在 Azure SQL Edge 中建立本機資料庫的外部資料流物件。 這個範例假設 kafka 伺服器已設定為匿名存取。 
+
+1. 使用 CREATE EXTERNAL DATA SOURCE 建立外部資料來源。 下列範例將：
+
+    ```sql
+    Create EXTERNAL DATA SOURCE [KafkaInput] 
+    With
+    (
+        LOCATION = N'kafka://<kafka_bootstrap_server_name_ip>:<port_number>'
     )
+    GO
+    ```
+2. 建立 kafka 輸入的外部檔案格式。 下列範例會建立具有 GZipped 壓縮的 JSON 檔案格式。 
+
+   ```sql
+   CREATE EXTERNAL FILE FORMAT JsonGzipped  
+    WITH 
+    (  
+        FORMAT_TYPE = JSON , 
+        DATA_COMPRESSION = 'org.apache.hadoop.io.compress.GzipCodec' 
+    )
+   ```
+    
+3. 建立外部資料流物件。 下列範例會建立指向 Kafka 主題的外部資料流物件 `*TemperatureMeasurement*` 。
+
+    ```sql
+    CREATE EXTERNAL STREAM TemperatureMeasurement 
+    WITH 
+    (  
+        DATA_SOURCE = KafkaInput, 
+        FILE_FORMAT = JsonGzipped,
+        LOCATION = 'TemperatureMeasurement',     
+        INPUT_OPTIONS = 'PARTITIONS: 10' 
+    ); 
     ```
 
 ## <a name="create-the-streaming-job-and-the-streaming-queries"></a>建立串流作業和串流查詢

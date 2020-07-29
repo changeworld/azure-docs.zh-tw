@@ -1,6 +1,5 @@
 ---
-title: REST API 錯誤碼
-titleSuffix: ML Studio (classic) - Azure
+title: ML Studio （傳統）： REST API 錯誤碼-Azure
 description: Azure Machine Learning Web 服務上的作業可以傳回這些錯誤碼。
 keywords: ''
 services: machine-learning
@@ -12,13 +11,17 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: reference
 ms.date: 11/16/2016
-ms.openlocfilehash: 8030e44e85958495714f441303461722b6b96bf4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6dd736428e6a3a24de382be34904d78af0168081
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84115443"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326268"
 ---
 # <a name="azure-machine-learning-studio-classic-rest-api-error-codes"></a>Azure Machine Learning Studio （傳統） REST API 錯誤代碼
+
+**適用物件：** ![否](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![ 是 ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio （傳統） 
+
 
 Azure Machine Learning Studio （傳統） web 服務上的作業可能會傳回下列錯誤碼。
  

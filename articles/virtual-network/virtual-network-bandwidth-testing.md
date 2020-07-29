@@ -1,7 +1,7 @@
 ---
 title: 測試 Azure VM 網路輸送量
 titlesuffix: Azure Virtual Network
-description: 了解如何測試 Azure 虛擬機器網路輸送量。
+description: 使用 NTTTCP 將目標設為網路以進行測試，並將可能影響效能的其他資源使用降至最低。
 services: virtual-network
 documentationcenter: na
 author: steveesp
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/21/2017
 ms.author: steveesp
-ms.openlocfilehash: 964b0bd543e887cce304d785d18a651f50bd4c45
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e5aa2c1c51fccddc3fb62d7ebdbadee19a2b093e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708241"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87265172"
 ---
 # <a name="bandwidththroughput-testing-ntttcp"></a>頻寬/輸送量測試 (NTTTCP)
 

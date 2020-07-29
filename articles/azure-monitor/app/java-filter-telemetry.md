@@ -3,11 +3,12 @@ title: 在您的 JAVA web 應用程式中篩選 Azure 應用程式 Insights 遙�
 description: 篩選出您不需要監視的事件，以減少遙測流量。
 ms.topic: conceptual
 ms.date: 3/14/2019
-ms.openlocfilehash: 020e54132e0ca0a9f9ccf0236f94515877015637
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cd53a0e02eb43bdf7cde4952ed4835c6d1cdd126
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77659912"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322579"
 ---
 # <a name="filter-telemetry-in-your-java-web-app"></a>在 Java Web 應用程式中篩選遙測
 
@@ -22,7 +23,7 @@ ms.locfileid: "77659912"
 
 > [!NOTE]
 > 篩選器會扭曲您應用程式的計量。 例如，您可能會決定，為了診斷緩慢回應，您將設定一個篩選器來捨棄快速回應時間。 但是，您必須留意，Application Insights 所回報的平均回應時間會比真實的速度慢，而且要求計數會小於實際計數。
-> 如果有此疑慮，請改用[取樣](../../azure-monitor/app/sampling.md)。
+> 如果有此疑慮，請改用[取樣](./sampling.md)。
 
 ## <a name="setting-filters"></a>設定篩選器
 
@@ -151,7 +152,7 @@ ms.locfileid: "77659912"
 
 ### <a name="telemetry-event-filter"></a>遙測事件篩選器
 
-篩選自訂事件 (使用 [TrackEvent()](../../azure-monitor/app/api-custom-events-metrics.md#trackevent) 記錄)。
+篩選自訂事件 (使用 [TrackEvent()](./api-custom-events-metrics.md#trackevent) 記錄)。
 
 
 ```XML
@@ -167,7 +168,7 @@ ms.locfileid: "77659912"
 
 ### <a name="trace-telemetry-filter"></a>追蹤遙測篩選器
 
-篩選記錄檔追蹤 (使用 [TrackTrace()](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace) 或[紀錄架構收集器](java-trace-logs.md)記錄)。
+篩選記錄檔追蹤 (使用 [TrackTrace()](./api-custom-events-metrics.md#tracktrace) 或[紀錄架構收集器](java-trace-logs.md)記錄)。
 
 ```XML
 
@@ -267,4 +268,5 @@ public TelemetryProcessor successFilter() {
 
 ## <a name="next-steps"></a>後續步驟
 
-* [取樣](../../azure-monitor/app/sampling.md) - 請考慮以取樣做為替代方式，因為它不會扭曲計量。
+* [取樣](./sampling.md) - 請考慮以取樣做為替代方式，因為它不會扭曲計量。
+

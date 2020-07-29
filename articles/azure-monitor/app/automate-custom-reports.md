@@ -4,12 +4,12 @@ description: 將含有 Azure Application Insights 資料的自訂每天/每週/�
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 4eb580b90c0bf9acafc4e8f805c2eef7eaae06d3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: abd87af1a9cf61aba21e9231350aabc661e5091b
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540072"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320403"
 ---
 # <a name="automate-custom-reports-with-azure-application-insights-data"></a>將含有 Azure Application Insights 資料的自訂報表自動化
 
@@ -150,7 +150,8 @@ availabilityResults
 
 ## <a name="next-steps"></a>後續步驟
 
-* 深入了解建立 [Analytics 查詢](../../azure-monitor/log-query/get-started-queries.md)。
+* 深入了解建立 [Analytics 查詢](../log-query/get-started-queries.md)。
 * 深入了解[以程式設計方式查詢 Application Insights 資料](https://dev.applicationinsights.io/)
 * 深入瞭解[Logic Apps](../../logic-apps/logic-apps-overview.md)。
 * 深入了解 [Microsoft Flow](https://ms.flow.microsoft.com)。
+

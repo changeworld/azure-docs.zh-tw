@@ -7,12 +7,12 @@ ms.author: lechen
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
 ms.custom: tracking-python
-ms.openlocfilehash: 35d56c5318046a0f9ffc52f61fac886c473cf0bc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: eec4a46596b9cd39a43b6bb1f8969d41e99916b6
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87024362"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322545"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application"></a>設定 Python 應用程式的 Azure 監視器
 
@@ -474,13 +474,14 @@ exporter = metrics_exporter.new_metrics_exporter(
 
 ## <a name="next-steps"></a>後續步驟
 
-* [追蹤連入要求](./../../azure-monitor/app/opencensus-python-dependency.md)
-* [追蹤不進入的要求](./../../azure-monitor/app/opencensus-python-request.md)
-* [應用程式對應](./../../azure-monitor/app/app-map.md)
-* [端對端效能監視](./../../azure-monitor/learn/tutorial-performance.md)
+* [追蹤連入要求](./opencensus-python-dependency.md)
+* [追蹤不進入的要求](./opencensus-python-request.md)
+* [應用程式對應](./app-map.md)
+* [端對端效能監視](../learn/tutorial-performance.md)
 
 ### <a name="alerts"></a>警示
 
-* [可用性測試](../../azure-monitor/app/monitor-web-app-availability.md)：建立測試，以確保網路上看得見您的網站。
-* [智慧型診斷](../../azure-monitor/app/proactive-diagnostics.md)︰這些測試會自動執行，您不需要採取任何動作來設定它們。 它們會讓您知道應用程式是否有不尋常的失敗要求率。
-* [計量警示](../../azure-monitor/platform/alerts-log.md)：設定警示以在計量超出臨界值時警告您。 您可以在撰寫於程式碼中的自訂度量上設定它們。
+* [可用性測試](./monitor-web-app-availability.md)：建立測試，以確保網路上看得見您的網站。
+* [智慧型診斷](./proactive-diagnostics.md)︰這些測試會自動執行，您不需要採取任何動作來設定它們。 它們會讓您知道應用程式是否有不尋常的失敗要求率。
+* [計量警示](../platform/alerts-log.md)：設定警示以在計量超出臨界值時警告您。 您可以在撰寫於程式碼中的自訂度量上設定它們。
+

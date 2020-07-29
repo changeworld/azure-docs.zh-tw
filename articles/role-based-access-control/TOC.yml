@@ -37,6 +37,11 @@
       href: best-practices.md
     - name: Azure 管理的條件式存取
       href: conditional-access-azure-management.md
+    - name: 安全性
+      items:
+        - name: Azure 原則的安全性控制
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
 - name: 操作指南
   items:
     - name: 列出角色定義

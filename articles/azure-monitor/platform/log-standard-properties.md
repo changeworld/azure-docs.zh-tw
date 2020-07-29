@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/01/2020
-ms.openlocfilehash: b0ec666f2cfadc3a1571f3ed1d26c92bcbbca3a2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9c7e6733a9149008f6ed98ae7a7e0103f92f79f5
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83196243"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325265"
 ---
 # <a name="standard-properties-in-azure-monitor-logs"></a>Azure 監視器記錄中的標準屬性
 Azure 監視器記錄檔中的資料會[儲存為 Log Analytics 工作區或 Application Insights 應用程式中的一組記錄](../log-query/logs-structure.md)，每一個都具有具有一組唯一屬性的特定資料類型。 有許多資料類型都具有多種類型之間通用的標準屬性。 本文將說明這些屬性，並提供在查詢中加以使用的範例。
@@ -210,5 +211,6 @@ union withsource = tt *
 ## <a name="next-steps"></a>後續步驟
 
 - 深入了解 [Azure 監視器記錄資料的儲存方式](../log-query/log-query-overview.md)。
-- 參與[撰寫記錄查詢](../../azure-monitor/log-query/get-started-queries.md)的課程。
-- 參與[在記錄查詢中聯結資料表](../../azure-monitor/log-query/joins.md)的課程。
+- 參與[撰寫記錄查詢](../log-query/get-started-queries.md)的課程。
+- 參與[在記錄查詢中聯結資料表](../log-query/joins.md)的課程。
+

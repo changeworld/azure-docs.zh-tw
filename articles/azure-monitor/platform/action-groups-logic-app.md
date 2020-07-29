@@ -6,12 +6,12 @@ ms.author: dukek
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.subservice: alerts
-ms.openlocfilehash: f592c42bc06c6bcd33ce6e10c506f8af0d8e0cf2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f6d5cbfc8d781e96a4d348f31f4a5d175ebd5a3d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87008382"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321882"
 ---
 # <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>如何透過「Azure 監視器」警示觸發複雜動作
 
@@ -19,7 +19,7 @@ ms.locfileid: "87008382"
 
 ## <a name="overview"></a>概觀
 
-Azure 監視器警示會在觸發時呼叫[動作群組](../../azure-monitor/platform/action-groups.md)。 動作群組可讓您觸發一個或多個動作，以通知他人發生警示並一併進行修復。
+Azure 監視器警示會在觸發時呼叫[動作群組](./action-groups.md)。 動作群組可讓您觸發一個或多個動作，以通知他人發生警示並一併進行修復。
 
 一般的程序如下：
 
@@ -293,7 +293,8 @@ Azure 監視器警示會在觸發時呼叫[動作群組](../../azure-monitor/pla
 ## <a name="calling-other-applications-besides-microsoft-teams"></a>呼叫 Microsoft Teams 以外的其他應用程式
 Logic Apps 有許多不同的連接器，可讓您在各種應用程式和資料庫中觸發動作。 Slack、SQL Server、Oracle、Salesforce 都只是一部分的範例。 如需有關連接器的詳細資訊，請參閱 [Logic App 連接器](../../connectors/apis-list.md)。  
 
-## <a name="next-steps"></a>接下來的步驟
-* 取得 [Azure 活動記錄警示的概觀](../../azure-monitor/platform/alerts-overview.md)，並了解如何接收警示。  
+## <a name="next-steps"></a>後續步驟
+* 取得 [Azure 活動記錄警示的概觀](./alerts-overview.md)，並了解如何接收警示。  
 * 了解如何[設定 Azure 服務健康狀態通知公佈時的警示](../../service-health/alerts-activity-log-service-notifications-portal.md)。
-* 深入了解[動作群組](../../azure-monitor/platform/action-groups.md)。
+* 深入了解[動作群組](./action-groups.md)。
+

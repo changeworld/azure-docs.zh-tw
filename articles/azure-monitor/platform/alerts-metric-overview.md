@@ -4,16 +4,16 @@ description: 取得計量警示有何用途以及其在 Azure 監視器中如何
 ms.date: 07/16/2020
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: 05e25a67279786ef4679552503e577b1b1a382ea
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9ac034eb144e5873f8f73ab7b1d7459394ce4775
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539426"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327135"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>了解計量警示在 Azure 監視器中的運作方式
 
-Azure 監視器中的計量警示以多維度計量為基礎運作。 這些計量可能是[平台計量](alerts-metric-near-real-time.md#metrics-and-dimensions-supported)、[自訂計量](../../azure-monitor/platform/metrics-custom-overview.md)、[來自 Azure 監視器並轉換為計量的常用記錄](../../azure-monitor/platform/alerts-metric-logs.md)，以及 Application Insights 計量。 計量警示會定期評估，檢查一或多個計量時間序列上的條件是否為真，並在評估符合時通知您。 計量警示具狀態，也就是說只會在狀態變更時傳送通知。
+Azure 監視器中的計量警示以多維度計量為基礎運作。 這些計量可能是[平台計量](alerts-metric-near-real-time.md#metrics-and-dimensions-supported)、[自訂計量](./metrics-custom-overview.md)、[來自 Azure 監視器並轉換為計量的常用記錄](./alerts-metric-logs.md)，以及 Application Insights 計量。 計量警示會定期評估，檢查一或多個計量時間序列上的條件是否為真，並在評估符合時通知您。 計量警示具狀態，也就是說只會在狀態變更時傳送通知。
 
 ## <a name="how-do-metric-alerts-work"></a>計量警示的運作方式為何？
 
@@ -135,7 +135,7 @@ Azure 監視器中的計量警示也支援以一個規則監視多個維度值�
 
 這項功能目前支援下列 Azure 雲端中下列服務的平臺計量（非自訂計量）：
 
-| 服務 | 公用 Azure | 政府機關 | 中國 |
+| 服務 | 公用 Azure | 政府 | 中國 |
 |:--------|:--------|:--------|:--------|
 | 虛擬機器  | **是** | 否 | 否 |
 | SQL server 資料庫 | **是** | **是** | 否 |
@@ -152,7 +152,7 @@ Azure 監視器中的計量警示也支援以一個規則監視多個維度值�
 >
 > 多資源計量警示規則的範圍必須至少包含一個所選資源類型的資源。
 
-建立監視多個資源的計量警示規則，類似於[建立監視單一資源的任何其他計量警示](alerts-metric.md)。 唯一的區別是您會選取要監視的所有資源。 您也可以透過 [Azure Resource Manager 範本](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-a-metric-alert-that-monitors-multiple-resources)建立這些規則。 您會收到每個受監視資源的個別通知。
+建立監視多個資源的計量警示規則，類似於[建立監視單一資源的任何其他計量警示](alerts-metric.md)。 唯一的區別是您會選取要監視的所有資源。 您也可以透過 [Azure Resource Manager 範本](./alerts-metric-create-templates.md#template-for-a-metric-alert-that-monitors-multiple-resources)建立這些規則。 您會收到每個受監視資源的個別通知。
 
 > [!NOTE]
 >
@@ -164,12 +164,13 @@ Azure 監視器中的計量警示也支援以一個規則監視多個維度值�
 
 ## <a name="supported-resource-types-for-metric-alerts"></a>計量警示支援的資源類型
 
-您可以在這[篇文章](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)中找到所支援資源類型的完整清單。
+您可以在這[篇文章](./alerts-metric-near-real-time.md#metrics-and-dimensions-supported)中找到所支援資源類型的完整清單。
 
 
 ## <a name="next-steps"></a>後續步驟
 
 - [瞭解如何在 Azure 中建立、查看及管理計量警示](alerts-metric.md)
-- [了解如何使用 Azure Resource Manager 範本部署計量警示](../../azure-monitor/platform/alerts-metric-create-templates.md)
+- [了解如何使用 Azure Resource Manager 範本部署計量警示](./alerts-metric-create-templates.md)
 - [深入瞭解動作群組](action-groups.md)
 - [深入了解動態閾值條件類型](alerts-dynamic-thresholds.md)
+

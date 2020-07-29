@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/11/2020
-ms.openlocfilehash: d71201da0c4af35720a309fe0dfa068cd2c69630
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7daba35b9247443c84cedad03f252ea6858da236
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081605"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327339"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage"></a>使用適用於儲存體的 Azure 監視器監視儲存體服務
 
@@ -242,7 +242,7 @@ ms.locfileid: "87081605"
 
 ### <a name="how-to-change-the-coloring-and-threshold-for-availability"></a>如何變更色彩設定和可用性閾值？
 
-請參閱[修改可用性閾值](storage-insights-overview.md#modify-the-availability-threshold)一節，以了解如何變更色彩設定和可用性閾值的詳細步驟。
+請參閱[修改可用性閾值](#modify-the-availability-threshold)一節，以了解如何變更色彩設定和可用性閾值的詳細步驟。
 
 ### <a name="how-to-analyze-and-troubleshoot-the-data-shown-in-azure-monitor-for-storage"></a>如何分析適用於儲存體的 Azure 監視器中所顯示的資料並進行疑難排解？
 
@@ -274,3 +274,4 @@ ms.locfileid: "87081605"
 * 檢閱[使用 Azure 監視器活頁簿建立互動式報表](../platform/workbooks-overview.md)，以了解設計活頁簿以提供支援、如何撰寫新報表和自訂現有報表等等的案例。
 
 * 如需使用儲存體分析和其他工具來識別、診斷及疑難排解 Azure 儲存體相關問題的深入指南，請參閱 [監視、診斷及疑難排解 Microsoft Azure 儲存體](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md)。
+

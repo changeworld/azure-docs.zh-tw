@@ -4,16 +4,16 @@ description: 本文提供 Windows VM 所適用 Microsoft Azure 磁碟加密的�
 author: msmbaldwin
 ms.service: virtual-machines-windows
 ms.subservice: security
-ms.topic: article
+ms.topic: troubleshooting
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: a4d16edae3b41bc9c3b4a849935fe8c6f94504ae
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b3b83899ad21cf125105881a7ffb526f5c607c6d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87088422"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322205"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Azure 磁碟加密疑難排解指南
 
@@ -24,8 +24,6 @@ ms.locfileid: "87088422"
 - [網路需求](disk-encryption-overview.md#networking-requirements)
 - [群組原則需求](disk-encryption-overview.md#group-policy-requirements)
 - [加密金鑰儲存體需求](disk-encryption-overview.md#encryption-key-storage-requirements)
-
- 
 
 ## <a name="troubleshooting-azure-disk-encryption-behind-a-firewall"></a>針對防火牆後方的 Azure 磁碟加密進行疑難排解
 
@@ -78,11 +76,15 @@ DISKPART> list vol
 
 ## <a name="troubleshooting-encryption-status"></a>針對加密狀態進行疑難排解 
 
-即使已在 VM 內解密磁碟，入口網站也可能會將其顯示為加密。  當使用低層級命令直接從 VM 內解密磁碟，而不是使用較高層級的 Azure 磁碟加密管理命令時，就會發生這種情況。  較高層級的命令不只會從 VM 內解密磁碟，也會在 VM 外部更新與 VM 建立關聯的重要平台層級加密設定和延伸模組設定。  如果內外未保持一致，則平台將無法回報加密狀態或適當地佈建 VM。   
+即使已在 VM 內解密磁碟，入口網站也可能會將其顯示為加密。  當使用低層級命令直接從 VM 內解密磁碟，而不是使用較高層級的 Azure 磁碟加密管理命令時，就會發生這種情況。  較高層級的命令不只會從 VM 內解密磁碟，也會在 VM 外部更新與 VM 建立關聯的重要平台層級加密設定和延伸模組設定。  如果內外未保持一致，則平台將無法回報加密狀態或適當地佈建 VM。
 
 若要停用 PowerShell 的 Azure 磁碟加密，請於 [Remove-AzVMDiskEncryptionExtension](/powershell/module/az.compute/remove-azvmdiskencryptionextension) 後接著使用 [Disable-AzVMDiskEncryption](/powershell/module/az.compute/disable-azvmdiskencryption)。 若在停用加密之前執行 Remove-AzVMDiskEncryptionExtension 將會導致失敗。
 
 若要停用 CLI 的 Azure 磁碟加密，請使用 [az vm encryption disable](/cli/azure/vm/encryption)。 
+
+## 
+
+
 
 ## <a name="next-steps"></a>後續步驟
 

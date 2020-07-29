@@ -302,6 +302,8 @@
         - name: 部署指令碼
           displayName: custom script
           href: deployment-script-template.md
+        - name: 建立部署指令碼開發環境
+          href: deployment-script-template-configure-dev.md
         - name: 範本模組化
           displayName: 'linked templates, nested templates'
           href: linked-templates.md

@@ -10,19 +10,19 @@
       items:
         - name: 簡介
           href: get-started.md
-        - name: 步驟 1 建立 Synapse 工作區
+        - name: 1 建立 Synapse 工作區
           href: get-started-create-workspace.md
-        - name: 步驟 2 使用 SQL 集區進行分析
+        - name: 2 使用 SQL 集區進行分析
           href: get-started-analyze-sql-pool.md
-        - name: 步驟 3 使用 Spark 進行分析
+        - name: 3 使用 Spark 進行分析
           href: get-started-analyze-spark.md
-        - name: 步驟 4 使用隨選 SQL 進行分析
+        - name: 4 使用隨選 SQL 進行分析
           href: get-started-analyze-sql-on-demand.md
-        - name: 步驟 5 分析儲存體帳戶中的資料
+        - name: 5 分析儲存體帳戶中的資料
           href: get-started-analyze-storage.md
-        - name: 步驟 6 - 使用管線進行協調
+        - name: 6 使用管線進行協調
           href: get-started-pipelines.md
-        - name: 步驟 7 - 使用 Power BI 進行視覺化
+        - name: 7 使用 Power BI 將資料視覺化
           href: get-started-visualize-power-bi.md
     - name: 功能提要
       href: overview-cheat-sheet.md
@@ -264,6 +264,8 @@
                   href: /sql/t-sql/statements/alter-materialized-view-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: 結果集設定快取
               href: /sql/t-sql/statements/set-result-set-caching-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: 機器學習預測
+              href: ./sql-data-warehouse/sql-data-warehouse-predict.md
             - name: 資料表
               items:
                 - name: 概觀

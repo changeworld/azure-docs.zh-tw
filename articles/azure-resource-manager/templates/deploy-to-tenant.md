@@ -2,13 +2,13 @@
 title: 將資源部署到租用戶
 description: 描述如何在 Azure Resource Manager 範本中的租用戶範圍部署資源。
 ms.topic: conceptual
-ms.date: 05/08/2020
-ms.openlocfilehash: 45541bcbea5a80e55dbc9f80e1eae8e17189bf6e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/27/2020
+ms.openlocfilehash: a6523ff70dc7307713bb6aecf90e2ea9f8e2bfdd
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84945438"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321746"
 ---
 # <a name="create-resources-at-the-tenant-level"></a>在租用戶層級建立資源
 
@@ -16,15 +16,32 @@ ms.locfileid: "84945438"
 
 ## <a name="supported-resources"></a>支援的資源
 
-您可以在租用戶層級部署下列資源類型：
+並非所有的資源類型都可以部署至租使用者層級。 本節列出支援的資源類型。
 
-* [部署](/azure/templates/microsoft.resources/deployments) - 適用於部署至管理群組或訂用帳戶的巢狀範本。
-* [managementGroups](/azure/templates/microsoft.management/managementgroups)
+針對 Azure 原則，請使用：
+
 * [policyAssignments](/azure/templates/microsoft.authorization/policyassignments)
 * [policyDefinitions](/azure/templates/microsoft.authorization/policydefinitions)
 * [policySetDefinitions](/azure/templates/microsoft.authorization/policysetdefinitions)
+
+若為角色型存取控制，請使用：
+
 * [roleAssignments](/azure/templates/microsoft.authorization/roleassignments)
 * [roleDefinitions](/azure/templates/microsoft.authorization/roledefinitions)
+
+針對部署至管理群組、訂用帳戶或資源群組的嵌套範本，請使用：
+
+* [部署](/azure/templates/microsoft.resources/deployments)
+
+若要建立管理群組，請使用：
+
+* [managementGroups](/azure/templates/microsoft.management/managementgroups)
+
+如需管理成本，請使用：
+
+* [billingProfiles](/azure/templates/microsoft.billing/billingaccounts/billingprofiles)
+* [螢幕](/azure/templates/microsoft.billing/billingaccounts/billingprofiles/instructions)
+* [invoiceSections](/azure/templates/microsoft.billing/billingaccounts/billingprofiles/invoicesections)
 
 ### <a name="schema"></a>結構描述
 
@@ -93,6 +110,56 @@ New-AzTenantDeployment `
 您可以提供部署的名稱，或使用預設的部署名稱。 預設名稱是範本檔案的名稱。 例如，部署名為 **azuredeploy.json** 的範本會建立預設的部署名稱 **azuredeploy**。
 
 對於每個部署名稱而言，此位置是不可變的。 當某個位置已經有名稱相同的現有部署時，您無法在其他位置建立部署。 如果您收到錯誤代碼 `InvalidDeploymentLocation`，請使用不同的名稱或與先前該名稱部署相同的位置。
+
+## <a name="deployment-scopes"></a>部署範圍
+
+部署至租使用者時，您可以將租使用者或管理群組、訂用帳戶和資源群組設為目標。 部署範本的使用者必須具有指定範圍的存取權。
+
+在範本的資源區段中定義的資源會套用至租使用者。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "resources": [
+        tenant-level-resources
+    ],
+    "outputs": {}
+}
+```
+
+若要將租使用者中的管理群組設為目標，請新增嵌套部署，並指定 `scope` 屬性。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "mgName": {
+            "type": "string"
+        }
+    },
+    "variables": {
+        "mgId": "[concat('Microsoft.Management/managementGroups/', parameters('mgName'))]"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2020-06-01",
+            "name": "nestedMG",
+            "scope": "[variables('mgId')]",
+            "location": "eastus",
+            "properties": {
+                "mode": "Incremental",
+                "template": {
+                    nested-template
+                }
+            }
+        }
+    ],
+    "outputs": {}
+}
+```
 
 ## <a name="use-template-functions"></a>使用範本函式
 

@@ -8,11 +8,14 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.author: wesmc
-ms.openlocfilehash: 03f9d58cab725335b0f4090ac1a7289c32c0af7f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom:
+- 'Role: Cloud Development'
+ms.openlocfilehash: 5b86803b763039846e2101b9caf0232aafa4fa24
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81640553"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327458"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-c"></a>將 Raspberry Pi 連接至 Azure IoT Hub (C)
 
@@ -44,9 +47,9 @@ ms.locfileid: "81640553"
 
 * 如何將感應器資料傳送至 IoT 中樞。
 
-## <a name="what-you-need"></a>您需要什麼
+## <a name="what-you-need"></a>必要條件
 
-![您需要什麼](./media/iot-hub-raspberry-pi-kit-c-get-started/0-starter-kit.png)
+![必要條件](./media/iot-hub-raspberry-pi-kit-c-get-started/0-starter-kit.png)
 
 * Raspberry Pi 2 或 Raspberry Pi 3 電路板。
 

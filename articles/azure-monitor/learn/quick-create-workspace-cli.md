@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/26/2020
-ms.openlocfilehash: d7c3613a0ddce217e9d07c3fc2eba55b78c53a1b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7421162ed68a879d9f935a3efd5c6267e159a648
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516510"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324296"
 ---
 # <a name="create-a-log-analytics-workspace-with-azure-cli-20"></a>使用 Azure CLI 2.0 建立 Log Analytics 工作區
 
@@ -24,8 +24,8 @@ Azure CLI 2.0 用於從命令列或在指令碼中建立和管理 Azure 資源�
 
 針對其他來源，例如環境中的 Azure VM 和 Windows 或 Linux VM，請參閱下列主題：
 
-* [從 Azure 虛擬機器收集資料](../learn/quick-collect-azurevm.md)
-* [從混合式 Linux 電腦收集資料](../learn/quick-collect-linux-computer.md)
+* [從 Azure 虛擬機器收集資料](./quick-collect-azurevm.md)
+* [從混合式 Linux 電腦收集資料](./quick-collect-linux-computer.md)
 * [從混合式 Windows 電腦收集資料](quick-collect-windows-computer.md)
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
@@ -133,3 +133,4 @@ Azure CLI 2.0 用於從命令列或在指令碼中建立和管理 Azure 資源�
 * [新增 System Center Operations Manager 作為資料來源](../platform/om-agents.md)，以從會報告 Operations Manager 管理群組的代理程式收集資料，並且將其儲存在 Log Analytics 工作區中。  
 * 連線 [Configuration Manager](../platform/collect-sccm.md) 以匯入階層中集合成員的電腦。  
 * 檢閱可用的[監視解決方案](../insights/solutions.md)，以及如何從您的工作區新增或移除解決方案。
+

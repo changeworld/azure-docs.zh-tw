@@ -4,13 +4,14 @@ description: 概述使用無狀態與具狀態服務來建立 Microsoft Azure Se
 author: suhuruli
 ms.topic: conceptual
 ms.date: 11/02/2017
+ms.custom: devx-track-java
 ms.author: suhuruli
-ms.openlocfilehash: f4cab376318bec471fa59614e5bcc716a31dc333
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 30797e68081e346ee0f31f77da15f820776337a0
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260932"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324500"
 ---
 # <a name="get-started-with-reliable-services-in-java"></a>開始使用 JAVA 中的 Reliable Services
 > [!div class="op_single_selector"]

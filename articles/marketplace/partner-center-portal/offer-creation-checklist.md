@@ -5,21 +5,23 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: c56295f1e56e4ba3b6af9caf8ba38ce1f0552eeb
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: mingshen-ms
+ms.author: mingshen
+ms.openlocfilehash: 11c1c307d00b9347081a313308ad2467086ec208
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86101703"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327390"
 ---
 # <a name="saas-offer-creation-checklist-in-partner-center"></a>合作夥伴中心的 SaaS 供應專案建立檢查清單
 
-SaaS 供應項目建立程序會帶您瀏覽多個頁面。  以下是您可以在每個頁面上提供的詳細資料，以及可深入瞭解每個項目的連結。
+SaaS 供應專案的建立程式會帶您流覽多個頁面。  本文說明您可以在每個頁面上提供的詳細資料，以及可深入瞭解每個專案的連結。
 
-您必須提供或指定的項目如下所示。  某些區域屬於選擇性，或有提供預設值，可視需要加以變更。  並不需要按照此處所列的順序來處理這些區段。
+> [!NOTE]
+> 如果您要建立 transactable SaaS 供應專案，請確定您已實施與[SaaS 履行 api](./pc-saas-fulfillment-apis.md)的整合。  與 Api 整合是 Marketplace 中銷售正常運作的唯一方式。 您也必須確定您的應用程式使用 Azure AD 驗證與單一登入（SSO）。 請參閱在[商業 marketplace 中 Azure AD 和 Transactable SaaS](../azure-ad-saas.md)供應專案。
 
->[!Note]
->如果您要建立 transactable SaaS 供應專案，請確定您已實施與[saas 履行 api](./pc-saas-fulfillment-apis.md)的整合。  與 Api 整合是 Marketplace 中銷售正常運作的唯一方式。
+您需要提供或指定的專案如下所示。  某些區域屬於選擇性，或有提供預設值，可視需要加以變更。  並不需要按照此處所列的順序來處理這些區段。
 
 | **Item**    | **目的**  |
 | :---------- | :-------------------|
@@ -28,7 +30,7 @@ SaaS 供應項目建立程序會帶您瀏覽多個頁面。  以下是您可以�
 | [屬性頁面](#properties-page) | 定義用來在市集上將供應項目分組的類別和產業、支援供應項目的法律合約，以及應用程式版本。 |
 | [供應項目清單頁面](#offer-listing-page) | 定義要在市集中顯示的供應項目詳細資料，包括供應項目和行銷資產的說明。|
 | [預覽頁面](#preview-page) | 定義受限的預覽對象，以便在將供應項目即時發行給範圍更廣的市集對象之前，先發行您的供應項目。|
-| [供應項目技術設定頁面](#technical-configuration-page)  |  只有在您選擇透過 Microsoft 銷售供應項目時才可使用。  定義 marketplace 用來連線到您的供應專案的技術詳細資料（登陸頁面 URL、連接 webhook URL、Azure AD 租使用者識別碼，以及 Azure AD 應用程式識別碼）。  需要這些參數，才能正確地與 SaaS 履行和 Marketplace 計量付費計費 Api 進行整合。|
+| [技術設定頁面](#technical-configuration-page)  |  只有在您選擇透過 Microsoft 銷售供應項目時才可使用。  定義 marketplace 用來連線到您的供應專案的技術詳細資料（登陸頁面 URL、連接 webhook URL、Azure AD 租使用者識別碼，以及 Azure AD 應用程式識別碼）。  需要這些參數，才能正確地與 SaaS 履行和 Marketplace 計量付費計費 Api 進行整合。|
 | [**新的方案強制回應**](#plan-identity-modal) | 收集方案身分識別資訊。  |
 | [方案清單頁面](#plan-listing-page)  | 只有在您選擇透過 Microsoft 銷售供應項目時才可使用。 定義用來在市集中列出方案的詳細資料。  |
 | [方案定價和可用性頁面](#plan-pricing--availability-page)  | 只有在您選擇透過 Microsoft 銷售供應項目時才可使用。  對於您供應項目的每個方案 (版本) 收集商務特性 (計價模式)、對象和市場可用性。  |
@@ -36,10 +38,9 @@ SaaS 供應項目建立程序會帶您瀏覽多個頁面。  以下是您可以�
 | 試用產品技術設定頁面  | 只有在您選擇提供供應項目的試用產品時才可使用。 定義示範 (或「試用產品」) 的技術詳細資料，這可讓客戶在承諾購買之前先試用您的供應項目。  |
 | [檢閱與發行頁面](#review-and-publish-page)  | 選取您想要發行的變更，並查看每個頁面的狀態，然後將附註提供給認證小組。  |
 
+## <a name="new-offer-modal"></a>新增供應項目強制回應
 
-## <a name="new-offer-modal"></a>新增供應項目強制回應 
-
-系統會要求您提供的第一項資訊是您供應項目的識別碼和別名。 
+系統會要求您提供的第一項資訊是您供應項目的識別碼和別名。
 
 | **欄位名稱**    | **注意事項**   |  
 | :---------------- | :-----------| 
@@ -106,6 +107,9 @@ SaaS 供應項目建立程序會帶您瀏覽多個頁面。  以下是您可以�
 ## <a name="technical-configuration-page"></a>技術設定頁面 
 
 [技術設定] 頁面可讓您指定 Microsoft 用來連接供應項目的技術詳細資料。 如果您決定不透過 Microsoft 銷售，則不會看到此頁面。
+
+> [!NOTE]
+> 針對 transactable 供應專案，您必須建立登陸頁面，而且您的應用程式必須使用 Azure AD 驗證與單一登入（SSO）。 如需詳細資訊，請參閱在[商業 marketplace 中 Azure AD 和 Transactable SaaS](../azure-ad-saas.md)供應專案。
 
 | **欄位名稱**    | **注意事項**   |  
 | :---------------- | :-----------| 

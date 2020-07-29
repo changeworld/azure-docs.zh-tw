@@ -11,15 +11,17 @@ ms.author: robinsh
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: a67d90a0888c39938f07c294f8e161ce98fd945a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+- 'Role: Cloud Development'
+ms.openlocfilehash: a5707ef266f3d49bdcbff9793a0b90e6c3f4cb68
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81732507"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327645"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>使用事件方格來觸發動作以回應 IoT 中樞事件
 
-「Azure IoT 中樞」與「Azure 事件格線」整合，讓您能夠將事件通知傳送給其他服務並觸發下游程序。 請設定您的商務應用程式來接聽「IoT 中樞」事件，以便以可靠、彈性且安全的方式回應重大事件。例如，建立一個應用程式來更新資料庫、建立工作票證，並在每次有新的 IoT 裝置註冊至 IoT 中樞時，傳遞電子郵件通知。
+Azure IoT 中樞與 Azure 事件格線整合，讓您可以將事件通知傳送到其他服務，並觸發下游處理程序。 將您的商務應用程式設定為接聽 IoT 中樞事件，讓您能夠以可靠、可擴充且安全的方式回應重大事件。例如，建置一個應用程式，此應用程式可更新資料庫、建立工作票證，並在每次有新的 IoT 裝置向 IoT 中樞註冊時，傳遞電子郵件通知。
 
 [Azure 事件方格](../event-grid/overview.md)是一個完全受控的事件路由服務，其使用發佈-訂閱模型。 「事件格線」針對 Azure 服務 (例如 [Azure Functions](../azure-functions/functions-overview.md) 和 [Azure Logic Apps](../logic-apps/logic-apps-what-are-logic-apps.md)) 內建支援，並可使用 Webhook 將事件警示傳遞給非 Azure 服務。 如需事件方格所支援的事件處理常式完整清單，請參閱 [Azure 事件方格簡介](../event-grid/overview.md)。
 
@@ -39,13 +41,13 @@ ms.locfileid: "81732507"
 | Microsoft.Devices.DeviceDeleted | 從 IoT 中樞刪除裝置時發佈。 |
 | Microsoft.Devices.DeviceConnected | 在裝置連線至 IoT 中樞時發佈。 |
 | Microsoft.Devices.DeviceDisconnected | 在裝置從 IoT 中樞中斷連線時發佈。 |
-| DeviceTelemetry | 在裝置遙測訊息傳送至 IoT 中樞時發佈 |
+| Microsoft.Devices.DeviceTelemetry | 裝置遙測訊息傳送至 IoT 中樞時發佈 |
 
 請使用 Azure 入口網站或 Azure CLI 來設定要從每個 IoT 中樞發佈哪些事件。 例如，請試試[使用 Logic Apps 來傳送 Azure IoT 中樞事件的相關電子郵件通知](../event-grid/publish-iot-hub-events-to-logic-apps.md)教學課程。
 
 ## <a name="event-schema"></a>結構描述
 
-「IoT 中樞」事件包含了回應裝置生命週期變更時所需的所有資訊。 您可以透過檢查 eventType 屬性的開頭是否為 **Microsoft.Devices** 來識別「IoT 中樞」事件。 如需有關如何使用「事件格線」事件屬性的詳細資訊，請參閱[事件格線事件結構描述](../event-grid/event-schema.md)。
+「IoT 中樞」事件包含了回應裝置生命週期變更時所需的所有資訊。 您可藉由檢查開頭為 Microsoft.Devices 的 **eventType** 屬性來識別 IoT 中樞事件。 如需有關如何使用「事件格線」事件屬性的詳細資訊，請參閱[事件格線事件結構描述](../event-grid/event-schema.md)。
 
 ### <a name="device-connected-schema"></a>裝置連線結構描述
 
@@ -192,15 +194,15 @@ devices/{deviceId}
 
 如果裝置連線閃爍，這表示裝置經常連線和中斷連線，我們將不會傳送每個單一連接狀態，但會發佈在定期快照集所建立的目前連接狀態，直到閃爍繼續為止。 接收具有不同序號或不同線上狀態事件的相同線上狀態事件，兩者都表示裝置線上狀態有變更。
 
-## <a name="tips-for-consuming-events"></a>取用事件的秘訣
+## <a name="tips-for-consuming-events"></a>取用事件的提示
 
-處理「IoT 中樞」事件的應用程式應該依循下列建議做法：
+處理 IoT 中樞事件的應用程式應遵循下列建議做法：
 
-* 您可以設定多個訂用帳戶，將事件路由傳送至相同的事件處理常式，因此請不要假設事件來自特定來源。 請一律檢查訊息主題，以確保訊息來自您預期的 IoT 中樞。
+* 您可以設定多個訂用帳戶，將事件路由傳送至相同的事件處理常式，因此請不要假設事件來自特定來源。 請務必檢查訊息主題，以確保其來自您預期的 IoT 中樞。
 
-* 請勿假設您收到的所有事件都是您預期的類型。 處理訊息之前，請一律先檢查 eventType。
+* 請不要假設您收到的所有事件都是所預期類型。 處理訊息之前，請一律先檢查 eventType。
 
-* 訊息的抵達可能會不按順序或有延遲。 使用 [etag] 欄位，瞭解您的物件相關資訊是否為已建立裝置或裝置刪除事件的最新狀態。
+* 訊息可能會不按順序抵達或在延遲之後抵達。 使用 [etag] 欄位，瞭解您的物件相關資訊是否為已建立裝置或裝置刪除事件的最新狀態。
 
 ## <a name="next-steps"></a>後續步驟
 

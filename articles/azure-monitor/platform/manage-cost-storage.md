@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 07/20/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 88856a16dbc197be29ddd88311063df4473a1e40
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bba634fa20c3bab6e3763f6cedcbeb77f4546098
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87007872"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327866"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>使用 Azure 監視器記錄來管理使用量和成本    
 
@@ -52,9 +52,9 @@ Log Analytics 專用叢集會將各工作區集合到單一的受控 Azure 資�
 
 在叢集上使用的計費模式有兩種。 設定叢集時，參數可以指定這些設定 `billingType` 。 [configuring your cluster](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys#cmk-manage) 兩種模式為： 
 
-1. 叢集 **：在**此情況下（這是預設值），內嵌資料的計費會在叢集層級完成。 與叢集相關聯的每個工作區所擷取的資料數量會彙總起來，以計算叢集的每日帳單。 請注意，系統會先在工作區層級套用來自 [Azure 資訊安全中心](https://docs.microsoft.com/azure/security-center/)的每一節點配置，然後才針對叢集中所有工作區的彙總資料進行此彙總。 
+1. 叢集 **：在**此情況下（這是預設值），內嵌資料的計費會在叢集層級完成。 與叢集相關聯的每個工作區所擷取的資料數量會彙總起來，以計算叢集的每日帳單。 請注意，系統會先在工作區層級套用來自 [Azure 資訊安全中心](../../security-center/index.yml)的每一節點配置，然後才針對叢集中所有工作區的彙總資料進行此彙總。 
 
-2. **工作區**：您叢集的容量保留成本會依照叢集中的工作區來按比例（在每個工作區的[Azure 資訊安全中心](https://docs.microsoft.com/azure/security-center/)中，從每個節點的配置開始計費）。如果一天內內嵌到工作區的總數據量小於容量保留，則每個工作區的內嵌資料會以有效的每 GB 容量保留費率計費，方法是以容量保留的分數來計費，而容量保留的未使用部分則會以叢集資源計費。 如果一天內的工作區內嵌總數據量超過容量保留，則每個工作區的費用會根據該日的內嵌資料部分，以及每個工作區的一小部分內嵌資料超過容量保留。 如果當天工作區中內嵌的總數據量已超過容量保留，叢集資源就不會有任何費用。
+2. **工作區**：您叢集的容量保留成本會依照叢集中的工作區來按比例（在每個工作區的[Azure 資訊安全中心](../../security-center/index.yml)中，從每個節點的配置開始計費）。如果一天內內嵌到工作區的總數據量小於容量保留，則每個工作區的內嵌資料會以有效的每 GB 容量保留費率計費，方法是以容量保留的分數來計費，而容量保留的未使用部分則會以叢集資源計費。 如果一天內的工作區內嵌總數據量超過容量保留，則每個工作區的費用會根據該日的內嵌資料部分，以及每個工作區的一小部分內嵌資料超過容量保留。 如果當天工作區中內嵌的總數據量已超過容量保留，叢集資源就不會有任何費用。
 
 在叢集計費選項中，資料保留會依工作區層級計費。 請注意，當叢集建立好時，無論是否已有工作區與叢集關聯，叢集都會開始計費。 另請注意，與叢集相關聯的工作區不再具有定價層。
 
@@ -78,9 +78,9 @@ Log Analytics 費用會新增到您的 Azure 帳單中。 您可以在 Azure 入
 
 ## <a name="viewing-log-analytics-usage-on-your-azure-bill"></a>在 Azure 帳單上檢視 Log Analytics 使用量 
 
-Azure 在 [Azure 成本管理 + 計費](https://docs.microsoft.com/azure/cost-management/quick-acm-cost-analysis?toc=/azure/billing/TOC.json)中樞內提供了大量實用功能。 例如，「成本分析」功能可讓您檢視 Azure 資源的花費。 首先，新增依「資源類型」的篩選器 (新增到 microsoft.operationalinsights/workspace for Log Analytics 和 microsoft.operationalinsights/workspace for Log Analytics Clusters) 可讓您追蹤 Log Analytics 的支出。 然後在 [群組依據] 中選取 [計量類別] 或 [計量]。  請注意，Azure 資訊安全中心和 Azure Sentinel 等其他服務也會對 Log Analytics 工作區資源收取使用費用。 若要查看服務名稱的對應，您可以選取 [資料表] 檢視而非圖表。 
+Azure 在 [Azure 成本管理 + 計費](../../cost-management-billing/costs/quick-acm-cost-analysis.md?toc=%2fazure%2fbilling%2fTOC.json)中樞內提供了大量實用功能。 例如，「成本分析」功能可讓您檢視 Azure 資源的花費。 首先，新增依「資源類型」的篩選器 (新增到 microsoft.operationalinsights/workspace for Log Analytics 和 microsoft.operationalinsights/workspace for Log Analytics Clusters) 可讓您追蹤 Log Analytics 的支出。 然後在 [群組依據] 中選取 [計量類別] 或 [計量]。  請注意，Azure 資訊安全中心和 Azure Sentinel 等其他服務也會對 Log Analytics 工作區資源收取使用費用。 若要查看服務名稱的對應，您可以選取 [資料表] 檢視而非圖表。 
 
-若要更加了解您的使用量，請[從 Azure 入口網站下載使用量](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-in-azure-portal)。 在下載的試算表中，您可以看到每天每一 Azure 資源 (例如 Log Analytics 工作區) 的使用量。 在此 Excel 試算表中，您可以先在 [計量類別] 資料行進行篩選以顯示「Log Analytics」、「深入解析與分析」(某些舊版定價層會使用) 和「Azure 監視器」(容量保留定價層會使用)，然後在 [執行個體識別碼] 資料行上新增篩選 (「包含工作區」或「包含叢集」，後者可包含 Log Analytics 叢集使用量)，藉此找到 Log Analytics 工作區的使用量。 使用量會顯示在 [已取用的數量] 資料行，每個項目的單位則會顯示在 [測量單位] 資料行。  有更多詳細資料可協助您[了解 Microsoft Azure 帳單](https://docs.microsoft.com/azure/billing/billing-understand-your-bill)。 
+若要更加了解您的使用量，請[從 Azure 入口網站下載使用量](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md#download-usage-in-azure-portal)。 在下載的試算表中，您可以看到每天每一 Azure 資源 (例如 Log Analytics 工作區) 的使用量。 在此 Excel 試算表中，您可以先在 [計量類別] 資料行進行篩選以顯示「Log Analytics」、「深入解析與分析」(某些舊版定價層會使用) 和「Azure 監視器」(容量保留定價層會使用)，然後在 [執行個體識別碼] 資料行上新增篩選 (「包含工作區」或「包含叢集」，後者可包含 Log Analytics 叢集使用量)，藉此找到 Log Analytics 工作區的使用量。 使用量會顯示在 [已取用的數量] 資料行，每個項目的單位則會顯示在 [測量單位] 資料行。  有更多詳細資料可協助您[了解 Microsoft Azure 帳單](../../cost-management-billing/understand/review-individual-bill.md)。 
 
 ## <a name="changing-pricing-tier"></a>正在變更定價層
 
@@ -98,7 +98,7 @@ Azure 在 [Azure 成本管理 + 計費](https://docs.microsoft.com/azure/cost-ma
 
 ## <a name="legacy-pricing-tiers"></a>舊版定價層
 
-在 2018 年 4 月 2 日之前擁有 Log Analytics 工作區或 Application Insights 資源的訂用帳戶，或所連結的 Enterprise 合約已在 2019 年 2 月 1 日之前啟動的訂用帳戶，將會繼續擁有使用舊版定價層的存取權：**免費**、**獨立 (每 GB)** 和**每一節點 (OMS)** 。  免費定價層中的工作區會將每日資料擷取量限制在 500 MB 內 ([Azure 資訊安全中心](https://docs.microsoft.com/azure/security-center/)所收集的安全性資料類型除外)，而且資料會限制為保留 7 天。 免費定價層僅供評估之用。 「獨立」或「每一節點」定價層中的工作區則會擁有 30 到 730 天的保留時間，此值可由使用者加以設定。
+在 2018 年 4 月 2 日之前擁有 Log Analytics 工作區或 Application Insights 資源的訂用帳戶，或所連結的 Enterprise 合約已在 2019 年 2 月 1 日之前啟動的訂用帳戶，將會繼續擁有使用舊版定價層的存取權：**免費**、**獨立 (每 GB)** 和**每一節點 (OMS)** 。  免費定價層中的工作區會將每日資料擷取量限制在 500 MB 內 ([Azure 資訊安全中心](../../security-center/index.yml)所收集的安全性資料類型除外)，而且資料會限制為保留 7 天。 免費定價層僅供評估之用。 「獨立」或「每一節點」定價層中的工作區則會擁有 30 到 730 天的保留時間，此值可由使用者加以設定。
 
 獨立定價層上的使用量是依內嵌資料量計費。 它會在**Log Analytics**服務中回報，而計量會命名為「分析的資料」。 
 
@@ -113,7 +113,7 @@ Azure 在 [Azure 成本管理 + 計費](https://docs.microsoft.com/azure/cost-ma
 
 在 2016 年 4 月前建立的工作區也可以存取原始的**標準**和**進階**定價層，兩者分別會固定保留資料 30 天和 365 天。 新的工作區則無法建立在**標準**或**進階**定價層，而且如果將工作區移出這兩層，就無法再將其移回。 這些舊版層的資料內嵌計量稱為「分析的資料」。
 
-舊版 Log Analytics 層的使用以及 [Azure 資訊安全中心](https://docs.microsoft.com/azure/security-center/)的使用量計費方式之間還有一些行為。 
+舊版 Log Analytics 層的使用以及 [Azure 資訊安全中心](../../security-center/index.yml)的使用量計費方式之間還有一些行為。 
 
 1. 如果工作區位於舊版的標準或進階層，Azure 資訊安全中心只會針對 Log Analytics 資料擷取來計費，而不會針對每一節點計費。
 2. 如果工作區位於舊版的每一節點層，Azure 資訊安全中心將會使用目前的 [Azure 資訊安全中心節點型定價模型](https://azure.microsoft.com/pricing/details/security-center/)來計費。 
@@ -150,7 +150,7 @@ Azure 在 [Azure 成本管理 + 計費](https://docs.microsoft.com/azure/cost-ma
 
 ### <a name="retention-by-data-type"></a>依資料類型的保留期
 
-您也可以為個別資料類型指定 30 天到 730 天不等的保留期設定 (舊版免費定價層中的工作區除外)。 每種資料類型都是工作區的子資源。 例如，SecurityEvent 資料表在 [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) 中可以稱為：
+您也可以為個別資料類型指定 30 天到 730 天不等的保留期設定 (舊版免費定價層中的工作區除外)。 每種資料類型都是工作區的子資源。 例如，SecurityEvent 資料表在 [Azure Resource Manager](/azure/azure-resource-manager/management/overview) 中可以稱為：
 
 ```
 /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/Microsoft.OperationalInsights/workspaces/MyWorkspaceName/Tables/SecurityEvent
@@ -221,7 +221,7 @@ armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/
 
     ![Log Analytics 設定資料限制](media/manage-cost-storage/set-daily-volume-cap-01.png)
     
-`dailyQuotaGb` `WorkspaceCapping` 如[這裡](https://docs.microsoft.com/rest/api/loganalytics/workspaces/createorupdate#workspacecapping)所述，您可以在底下設定參數，以透過 ARM 來設定每日上限。 
+`dailyQuotaGb` `WorkspaceCapping` 如[這裡](/rest/api/loganalytics/workspaces/createorupdate#workspacecapping)所述，您可以在底下設定參數，以透過 ARM 來設定每日上限。 
 
 ### <a name="alert-when-daily-cap-reached"></a>已達每日上限時發出警示
 
@@ -442,7 +442,7 @@ union *
 | 高資料量的來源 | 如何縮減資料量 |
 | -------------------------- | ------------------------- |
 | 容器深入解析         | [設定容器深入](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-cost#controlling-ingestion-to-reduce-cost)解析，只收集您需要的資料。 |
-| 安全性事件            | 選取[一般或最小安全性事件](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection#data-collection-tier) <br> 變更安全性稽核原則為只收集所需事件。 特別檢閱下列原則是否需要收集事件： <br> - [a稽核篩選平台](https://technet.microsoft.com/library/dd772749(WS.10).aspx) <br> - [稽核登錄](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941614(v%3dws.10))<br> - [稽核檔案系統](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772661(v%3dws.10))<br> - [稽核核心物件](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941615(v%3dws.10))<br> - [稽核控制代碼操作](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772626(v%3dws.10))<br> - 稽核抽取式存放裝置 |
+| 安全性事件            | 選取[一般或最小安全性事件](../../security-center/security-center-enable-data-collection.md#data-collection-tier) <br> 變更安全性稽核原則為只收集所需事件。 特別檢閱下列原則是否需要收集事件： <br> - [a稽核篩選平台](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772749(v=ws.10)) <br> - [稽核登錄](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941614(v=ws.10))<br> - [稽核檔案系統](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772661(v=ws.10))<br> - [稽核核心物件](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941615(v=ws.10))<br> - [稽核控制代碼操作](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772626(v=ws.10))<br> - 稽核抽取式存放裝置 |
 | 效能計數器       | 變更[效能計數器組態](data-sources-performance-counters.md)以： <br> - 減少收集頻率 <br> - 減少效能計數器的數目 |
 | 事件記錄                 | 變更[事件記錄組態](data-sources-windows-events.md)以： <br> - 減少所收集的事件記錄數目 <br> - 只收集必要的事件層級。 例如，不要收集「資訊」層級事件 |
 | syslog                     | 變更 [Syslog 組態](data-sources-syslog.md)以： <br> - 減少所收集的設施數目 <br> - 只收集必要的事件層級。 例如，不要收集「資訊」和「偵錯」層級事件 |
@@ -627,3 +627,4 @@ Log Analytics 還有一些限制，其中的某些限制取決於 Log Analytics 
 - 變更[效能計數器組態](data-sources-performance-counters.md)。
 - 若要修改事件收集設定，請檢閱[事件記錄組態](data-sources-windows-events.md)。
 - 若要修改 syslog 收集設定，請檢閱 [Syslog 組態](data-sources-syslog.md)。
+

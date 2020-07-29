@@ -3,15 +3,16 @@ title: 如何從容器的 Azure 監視器查詢記錄 |Microsoft Docs
 description: 適用于容器的 Azure 監視器會收集計量和記錄資料，而本文會描述記錄並包含範例查詢。
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: 392aac8f81ac3894fca8b6f70570834a5af16ade
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 12c32c84f2c2aef5d6d0817c11e1ef010f30ffcb
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84298298"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320284"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-containers"></a>如何從容器的 Azure 監視器查詢記錄
 
-容器的 Azure 監視器會從容器主機和容器收集效能計量、清查資料和健全狀況狀態資訊。 資料每三分鐘會收集一次，並轉送至 Azure 監視器中的 Log Analytics 工作區。 這項資料可用於 Azure 監視器中的[查詢](../../azure-monitor/log-query/log-query-overview.md)。 您可以將此資料套用至各種案例，包括移轉規劃、容量分析、探索和隨選效能疑難排解。
+容器的 Azure 監視器會從容器主機和容器收集效能計量、清查資料和健全狀況狀態資訊。 資料每三分鐘會收集一次，並轉送至 Azure 監視器中的 Log Analytics 工作區。 這項資料可用於 Azure 監視器中的[查詢](../log-query/log-query-overview.md)。 您可以將此資料套用至各種案例，包括移轉規劃、容量分析、探索和隨選效能疑難排解。
 
 ## <a name="container-records"></a>容器資料列
 
@@ -111,3 +112,4 @@ KubeMonAgentEvents | where Level != "Info"
 ## <a name="next-steps"></a>後續步驟
 
 容器的 Azure 監視器不包含預先定義的一組警示。 請參閱[使用適用于容器的 Azure 監視器建立效能警示](container-insights-alerts.md)，以瞭解如何建立建議的高 CPU 和記憶體使用率警示，以支援您的 DevOps 或作業程式和程式。 
+

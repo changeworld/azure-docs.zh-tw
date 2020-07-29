@@ -6,11 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 07/17/2017
 ms.reviewer: mbullwin
-ms.openlocfilehash: 09c1899004bd93d0f2365c3bbc000c37459e8d89
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: a81c4f32385cf06238f36ca0162923f93d682807
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83797822"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323718"
 ---
 # <a name="discover-how-customers-are-using-your-application-with-application-insights-funnels"></a>使用 Application Insights 漏斗圖來探索客戶如何使用您的應用程式
 
@@ -36,7 +37,7 @@ ms.locfileid: "83797822"
 ### <a name="funnels-features"></a>漏斗圖功能
 上述螢幕擷取畫面包含五個醒目顯示的區域。 這些是漏斗圖的功能。 下列清單進一步說明螢幕擷取畫面中的每個對應區域：
 1. 如果您的應用程式進行取樣，您會看到取樣橫幅。 選取橫幅會開啟內容窗格，說明要如何關閉取樣。 
-2. 您可以將漏斗圖匯出至 [Power BI](../../azure-monitor/app/export-power-bi.md )。
+2. 您可以將漏斗圖匯出至 [Power BI](./export-power-bi.md)。
 3. 選取步驟即可在右側查看詳細資料。 
 4. 歷程記錄轉換圖表會顯示過去 90 天的轉換率。 
 5. 存取使用者工具，以更加了解您的使用者。 您可以在每個步驟中使用篩選。 
@@ -45,7 +46,7 @@ ms.locfileid: "83797822"
   * [使用量概觀](usage-overview.md)
   * [使用者、工作階段和事件](usage-segmentation.md)
   * [保留](usage-retention.md)
-  * [活頁簿](../../azure-monitor/platform/workbooks-overview.md)
+  * [活頁簿](../platform/workbooks-overview.md)
   * [新增使用者內容](usage-send-user-context.md)
-  * [匯出至 Power BI](../../azure-monitor/app/export-power-bi.md )
+  * [匯出至 Power BI](./export-power-bi.md)
 

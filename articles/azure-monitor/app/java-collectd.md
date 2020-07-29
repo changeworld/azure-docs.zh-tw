@@ -3,21 +3,22 @@ title: 監視 Linux - Azure 上的 Java Web 應用程式效能 | Microsoft Docs
 description: 使用 Application Insights 的 CollectD 外掛程式擴充您的 Java 網站的應用程式效能監視功能。
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 62a723dad7e9f6c2bfdabde159968d507d2d5d41
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 648d0e5adc289dfeb83a54c3dcb9ab7d25fc1cc4
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81537520"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322596"
 ---
 # <a name="collectd-linux-performance-metrics-in-application-insights"></a>collectd：Application Insights 中的 Linux 效能計量
 
 
-若要在 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 中瀏覽 Linux 系統效能度量，請安裝 [collectd](https://collectd.org/) 以及其 Application Insights 外掛程式。 這個開放原始碼解決方案會收集各種系統和網路統計資料。
+若要在 [Application Insights](./app-insights-overview.md) 中瀏覽 Linux 系統效能度量，請安裝 [collectd](https://collectd.org/) 以及其 Application Insights 外掛程式。 這個開放原始碼解決方案會收集各種系統和網路統計資料。
 
 如果您已[使用 Application Insights 檢測您的 Java Web 服務][java]，通常您會使用 collectd。 提供給您更多資料來幫助您增強應用程式的效能或診斷問題。 
 
 ## <a name="get-your-instrumentation-key"></a>取得檢測金鑰
-在 [Microsoft Azure 入口網站](https://portal.azure.com)中，開啟您要顯示資料的 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 資源。 (或[建立新的資源](../../azure-monitor/app/create-new-resource.md )。)
+在 [Microsoft Azure 入口網站](https://portal.azure.com)中，開啟您要顯示資料的 [Application Insights](./app-insights-overview.md) 資源。 (或[建立新的資源](./create-new-resource.md)。)
 
 取得一份可識別資源的檢測金鑰。
 
@@ -104,7 +105,7 @@ ms.locfileid: "81537520"
 *我在入口網站中看不到任何資料*
 
 * 開啟[搜尋][diagnostic]以查看原始事件是否已抵達。 有時需要較長的時間才會在計量瀏覽器中顯示。
-* 您可能需要 [設定輸出資料的防火牆例外狀況](../../azure-monitor/app/ip-addresses.md)
+* 您可能需要 [設定輸出資料的防火牆例外狀況](./ip-addresses.md)
 * 在 Application Insights 外掛程式中啟用追蹤。 在 `<Plugin ApplicationInsightsWriter>`內加入這一行：
   * `SDKLogger true`
 * 開啟終端機，並以詳細資訊模式啟動 collectd，以查看所報告的任何問題：
@@ -120,13 +121,12 @@ Application Insights 的「寫入」外掛程式與某些「讀取」外掛程�
 
 <!--Link references-->
 
-[api]: ../../azure-monitor/app/api-custom-events-metrics.md
-[apiexceptions]: ../../azure-monitor/app/api-custom-events-metrics.md#track-exception
-[availability]: ../../azure-monitor/app/monitor-web-app-availability.md
-[diagnostic]: ../../azure-monitor/app/diagnostic-search.md
+[api]: ./api-custom-events-metrics.md
+[apiexceptions]: ./api-custom-events-metrics.md#track-exception
+[availability]: ./monitor-web-app-availability.md
+[diagnostic]: ./diagnostic-search.md
 [eclipse]: app-insights-java-eclipse.md
 [java]: java-get-started.md
 [javalogs]: java-trace-logs.md
-[metrics]: ../../azure-monitor/platform/metrics-charts.md
-
+[metrics]: ../platform/metrics-charts.md
 

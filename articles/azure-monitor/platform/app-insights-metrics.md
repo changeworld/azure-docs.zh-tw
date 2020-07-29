@@ -7,19 +7,19 @@ ms.topic: reference
 ms.date: 07/03/2019
 ms.author: vitalyg
 ms.subservice: application-insights
-ms.openlocfilehash: ca8aa62c4119b9b0b7bbed53cf722c694696ef5b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9ea98df4b6cd8572412e7082b451feac3736919c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073566"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327067"
 ---
 # <a name="application-insights-log-based-metrics"></a>Application Insights 以記錄為基礎的計量
 
 Application Insights 以記錄為基礎的計量可讓您分析受監視應用程式的健康情況、建立強大的儀表板，以及設定警示。 計量有兩種：
 
-* 場景後方以[記錄為基礎的度量](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#log-based-metrics)會從預存事件轉譯成[Kusto 查詢](/azure/kusto/query/)。
-* [標準計量](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#pre-aggregated-metrics)會儲存為預先匯總的時間序列。
+* 場景後方以[記錄為基礎的度量](../app/pre-aggregated-metrics-log-metrics.md#log-based-metrics)會從預存事件轉譯成[Kusto 查詢](/azure/kusto/query/)。
+* [標準計量](../app/pre-aggregated-metrics-log-metrics.md#pre-aggregated-metrics)會儲存為預先匯總的時間序列。
 
 由於*標準計量*會在集合期間預先匯總，因此在查詢時會有較佳的效能。 這讓它們成為儀表板管理和即時警示的較佳選擇。 以*記錄為基礎的度量*有更多維度，這使得它們成為資料分析和臨機操作診斷的絕佳選項。 使用[命名空間選取器](metrics-getting-started.md#create-your-first-metric-chart)，在[計量瀏覽器](metrics-getting-started.md)中切換記錄式和標準計量。
 
@@ -38,18 +38,18 @@ Application Insights 以記錄為基礎的計量可讓您分析受監視應用�
 - 選取的**分割圖表**維度會轉譯成額外的摘要屬性。 例如，如果您依*位置*分割您的圖表，並使用5分鐘的時間資料細微性繪製，則*摘要子句會*摘要*列出 .。。依 bin （時間戳記、5 m）、位置*。
 
 > [!NOTE]
-> 如果您不熟悉 Kusto 查詢語言，請從將 Kusto 語句複製並貼入 Log Analytics 查詢窗格開始，而不進行任何修改。 按一下 [**執行**] 以查看基本圖表。 當您開始瞭解查詢語言的語法時，您可以開始進行小型修改，並查看變更的影響。 探索您自己的資料是開始實現[Log Analytics](../../azure-monitor/log-query/get-started-portal.md)和[Azure 監視器](../../azure-monitor/overview.md)的完整威力的絕佳方式。
+> 如果您不熟悉 Kusto 查詢語言，請從將 Kusto 語句複製並貼入 Log Analytics 查詢窗格開始，而不進行任何修改。 按一下 [**執行**] 以查看基本圖表。 當您開始瞭解查詢語言的語法時，您可以開始進行小型修改，並查看變更的影響。 探索您自己的資料是開始實現[Log Analytics](../log-query/get-started-portal.md)和[Azure 監視器](../overview.md)的完整威力的絕佳方式。
 
 ## <a name="availability-metrics"></a>可用性度量
 
-[可用性] 類別中的計量可讓您查看 web 應用程式的健全狀況，如世界各地的觀點所觀察到的。 [設定可用性測試](../../azure-monitor/app/monitor-web-app-availability.md)，以開始使用此類別中的任何計量。
+[可用性] 類別中的計量可讓您查看 web 應用程式的健全狀況，如世界各地的觀點所觀察到的。 [設定可用性測試](../app/monitor-web-app-availability.md)，以開始使用此類別中的任何計量。
 
 ### <a name="availability-availabilityresultsavailabilitypercentage"></a>可用性（availabilityResults/availabilityPercentage）
 [*可用性*] 度量會顯示未偵測到任何問題的 web 測試回合百分比。 可能的最小值為0，表示所有 web 測試回合都已失敗。 100的值表示所有 web 測試執行都會通過驗證準則。
 
 |測量單位|支援的匯總|支援的維度|
 |---|---|---|---|---|---|
-|百分比|Average|執行位置，測試名稱|
+|百分比|平均|執行位置，測試名稱|
 
 ```Kusto
 availabilityResults 
@@ -59,7 +59,7 @@ availabilityResults
 
 ### <a name="availability-test-duration-availabilityresultsduration"></a>可用性測試持續時間（availabilityResults/duration）
 
-[*可用性測試持續時間*] 計量會顯示 web 測試執行所花的時間。 針對[多重步驟 web 測試](../../azure-monitor/app/availability-multistep.md)，度量會反映所有步驟的總執行時間。
+[*可用性測試持續時間*] 計量會顯示 web 測試執行所花的時間。 針對[多重步驟 web 測試](../app/availability-multistep.md)，度量會反映所有步驟的總執行時間。
 
 |測量單位|支援的匯總|支援的維度|
 |---|---|---|---|---|---|
@@ -92,7 +92,7 @@ availabilityResults
 瀏覽器計量會由 Application Insights JavaScript SDK 從實際的使用者瀏覽器收集。 它們可讓您深入瞭解您的 web 應用程式使用者體驗。 瀏覽器計量通常不會取樣，這表示它們會提供比伺服器端計量更高的使用號碼精確度，這可能會因取樣而扭曲。
 
 > [!NOTE]
-> 若要收集瀏覽器計量，您的應用程式必須使用[Application Insights JAVASCRIPT SDK](../../azure-monitor/app/javascript.md)進行檢測。
+> 若要收集瀏覽器計量，您的應用程式必須使用[Application Insights JAVASCRIPT SDK](../app/javascript.md)進行檢測。
 
 ### <a name="browser-page-load-time-browsertimingstotalduration"></a>瀏覽器頁面載入時間（browserTimings/totalDuration）
 
@@ -182,7 +182,7 @@ browserTimings
 
 此標準會反映在瀏覽器中執行的應用程式程式碼所擲回的例外狀況數目。 只有使用 Application Insights API 呼叫追蹤的例外狀況才 ```trackException()``` 會包含在度量中。
 
-|測量單位|支援的匯總|預先匯總的維度|附註|
+|測量單位|支援的匯總|預先匯總的維度|注意|
 |---|---|---|---|
 |Count|Count|無|以記錄為基礎的版本使用**Sum**匯總|
 
@@ -197,7 +197,7 @@ exceptions
 
 失敗的相依性呼叫數目。
 
-|測量單位|支援的匯總|預先匯總的維度|附註|
+|測量單位|支援的匯總|預先匯總的維度|注意|
 |---|---|---|---|
 |Count|Count|無|以記錄為基礎的版本使用**Sum**匯總|
 
@@ -210,9 +210,9 @@ dependencies
 
 ### <a name="exceptions-exceptionscount"></a>例外狀況（例外狀況/計數）
 
-每次當您將例外狀況記錄到 Application Insights 時，就會呼叫 SDK 的[trackException （）方法](../../azure-monitor/app/api-custom-events-metrics.md#trackexception)。 [例外狀況] 度量會顯示已記錄的例外狀況數目。
+每次當您將例外狀況記錄到 Application Insights 時，就會呼叫 SDK 的[trackException （）方法](../app/api-custom-events-metrics.md#trackexception)。 [例外狀況] 度量會顯示已記錄的例外狀況數目。
 
-|測量單位|支援的匯總|預先匯總的維度|附註|
+|測量單位|支援的匯總|預先匯總的維度|注意|
 |---|---|---|---|
 |Count|Count|雲端角色名稱、雲端角色實例、裝置類型|以記錄為基礎的版本使用**Sum**匯總|
 
@@ -224,9 +224,9 @@ exceptions
 
 ### <a name="failed-requests-requestsfailed"></a>失敗的要求（要求/失敗）
 
-標示為*失敗*的追蹤伺服器要求計數。 根據預設，Application Insights SDK 會自動將傳回 HTTP 回應碼5xx 或4xx 的每個伺服器要求標示為失敗的要求。 您可以在[自訂遙測初始化運算式](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)中修改要求遙測專案的*success*屬性，以自訂此邏輯。
+標示為*失敗*的追蹤伺服器要求計數。 根據預設，Application Insights SDK 會自動將傳回 HTTP 回應碼5xx 或4xx 的每個伺服器要求標示為失敗的要求。 您可以在[自訂遙測初始化運算式](../app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)中修改要求遙測專案的*success*屬性，以自訂此邏輯。
 
-|測量單位|支援的匯總|預先匯總的維度|附註|
+|測量單位|支援的匯總|預先匯總的維度|注意|
 |---|---|---|---|
 |Count|Count|雲端角色實例，雲端角色名稱，實際或綜合流量，要求效能，回應碼|以記錄為基礎的版本使用**Sum**匯總|
 
@@ -241,7 +241,7 @@ requests
 
 此度量會顯示伺服器例外狀況的數目。
 
-|測量單位|支援的匯總|預先匯總的維度|附註|
+|測量單位|支援的匯總|預先匯總的維度|注意|
 |---|---|---|---|
 |Count|Count|雲端角色名稱、雲端角色實例|以記錄為基礎的版本使用**Sum**匯總|
 
@@ -254,7 +254,7 @@ exceptions
 
 ## <a name="performance-counters"></a>效能計數器
 
-使用**效能計數器**類別中的計量來存取[Application Insights 所收集的系統效能計數器](../../azure-monitor/app/performance-counters.md)。
+使用**效能計數器**類別中的計量來存取[Application Insights 所收集的系統效能計數器](../app/performance-counters.md)。
 
 ### <a name="available-memory-performancecountersavailablememory"></a>可用的記憶體（performanceCounters/availableMemory）
 
@@ -492,3 +492,4 @@ union traces, requests, pageViews, dependencies, customEvents, availabilityResul
 | summarize dcount(user_AuthenticatedId) by bin(timestamp, 1h)
 | render barchart
 ```
+

@@ -7,15 +7,16 @@ services: monitoring
 ms.topic: conceptual
 ms.date: 02/16/2018
 ms.subservice: alerts
-ms.openlocfilehash: b75bda626f887f1224c1b0f18a80887983a2367d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ff3d055840d69623234a799c62b1d8a6efd96ec5
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77665301"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327084"
 ---
 # <a name="sms-alert-behavior-in-action-groups"></a>動作群組中的 SMS 警示行為
 
-## <a name="overview"></a>總覽 
+## <a name="overview"></a>概觀 
 動作群組可讓您設定動作清單。 定義警示時會使用這些群組；確保觸發警示時，特定動作群組可以收到通知。 SMS 是其中一個支援的動作；SMS 通知示支援雙向通訊。 使用者可以回應 SMS 以便：
 
 - **取消訂閱警示：** 使用者可取消訂閱所有動作群組或單一動作群組的 SMS 警示。
@@ -29,7 +30,7 @@ ms.locfileid: "77665301"
 * 會收到此警示的動作群組簡稱
 * 警示的標題
 
-| REPLY | Description |
+| REPLY | 說明 |
 | ----- | ----------- |
 | DISABLE `<Action Group Short name>` | 停用來自動作群組的其他 SMS |
 | ENABLE `<Action Group Short name>` | 重新啟用來自動作群組的 SMS |
@@ -43,5 +44,5 @@ ms.locfileid: "77665301"
 ## <a name="next-steps"></a>後續步驟
 取得[活動記錄警示的概觀](alerts-overview.md)，並了解如何收到警示  
 深入了解 [SMS 速率限制](alerts-rate-limiting.md)  
-深入瞭解[動作群組](../../azure-monitor/platform/action-groups.md)
+深入瞭解[動作群組](./action-groups.md)
 

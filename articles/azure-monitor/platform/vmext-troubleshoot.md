@@ -6,20 +6,20 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/06/2019
-ms.openlocfilehash: e16531484505f055c1383aff5adb40518719d98a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 873f6beaa88e1631397827a94161ce4427b5f0bb
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80054585"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323378"
 ---
 # <a name="troubleshooting-the-log-analytics-vm-extension-in-azure-monitor"></a>針對 Azure 監視器中的 Log Analytics VM 延伸模組進行疑難排解
 本文可協助您針對在使用執行 Microsoft Azure 之 Windows 與 Linux 虛擬機器的 Log Analytics VM 擴充功能時可能遇到的錯誤進行疑難排解，並建議可能的解決方法。
 
 若要確認擴充功能的狀態，請從 Azure 入口網站執行下列步驟。
 
-1. 登入[Azure 入口網站](https://portal.azure.com)。
-2. 在 Azure 入口網站中，按一下 [所有服務]。 在資源清單中，輸入**虛擬機器**。 當您開始輸入時，清單會根據您輸入的文字進行篩選。 選取 [虛擬機器]。
+1. 登入 [Azure 入口網站](https://portal.azure.com)。
+2. 在 Azure 入口網站中，按一下 [所有服務]。 在資源清單中，輸入**虛擬機器**。 當您開始輸入時，清單會根據您的輸入來篩選。 選取 [虛擬機器]。
 3. 在虛擬機器清單中，尋找目標虛擬機器並加以選取。
 3. 在虛擬機器上，按一下 [擴充功能]****。
 4. 檢查清單以查看是否已啟用 Log Analytics 擴充功能。  針對 Linux，代理程式將會被列為 **OMSAgentforLinux**。針對 Windows，代理程式將會被列為 **MicrosoftMonitoringAgent**。
@@ -37,7 +37,7 @@ ms.locfileid: "80054585"
 1. 使用 [KB 2965986](https://support.microsoft.com/kb/2965986#mt1) 中的步驟，檢查 Azure VM 代理程式是否已安裝且正確運作。
    * 您也可以檢閱 VM 代理程式記錄檔 `C:\WindowsAzure\logs\WaAppAgent.log`
    * 如果記錄檔不存在，則表示未安裝 VM 代理程式。
-   * [安裝 Azure VM 代理程式](../../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)
+   * [安裝 Azure VM 代理程式](../learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)
 2. 檢閱 `C:\Packages\Plugins\Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent` 中的 Microsoft Monitoring Agent VM 擴充記錄檔
 3. 確定虛擬機器可以執行 PowerShell 指令碼
 4. 確定 C:\Windows\temp 的權限未變更
@@ -52,7 +52,7 @@ ms.locfileid: "80054585"
 
 1. 如果擴充狀態是「未知」**，請檢閱 VM 代理程式記錄檔 `/var/log/waagent.log`，以檢查 Azure VM 代理程式是否已安裝且正常運作
    * 如果記錄檔不存在，則表示未安裝 VM 代理程式。
-   * [在 Linux VM 上安裝 Azure VM 代理程式](../../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)
+   * [在 Linux VM 上安裝 Azure VM 代理程式](../learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)
 2. 若是其他不良狀態，請檢閱 `/var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/*/extension.log` 和 `/var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/*/CommandExecution.log` 中的 Log Analytics Linux 代理程式 VM 擴充功能記錄
 3. 如果擴充狀態良好，但資料未上傳，請檢閱 `/var/opt/microsoft/omsagent/log/omsagent.log` 中的 Log Analytics Linux 代理程式記錄檔
 
@@ -61,3 +61,4 @@ ms.locfileid: "80054585"
 ## <a name="next-steps"></a>後續步驟
 
 如需與在 Azure 外部電腦上所裝載的 Log Analytics Linux 代理程式相關的其他疑難排解指引，請參閱[針對 Azure Log Analytics Linux 代理程式進行疑難排解](agent-linux-troubleshoot.md)。  
+

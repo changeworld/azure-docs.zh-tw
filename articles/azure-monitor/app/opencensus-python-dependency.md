@@ -6,18 +6,18 @@ author: lzchen
 ms.author: lechen
 ms.date: 10/15/2019
 ms.custom: tracking-python
-ms.openlocfilehash: e99ea1d5a90455a4c470346fbbe5d1095c426e81
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c5f78535a3bd5ab93d3020d14a6242257c492297
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499455"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321287"
 ---
 # <a name="track-dependencies-with-opencensus-python"></a>使用 OpenCensus Python 追蹤相依性
 
 相依性是由應用程式呼叫的外部元件。 使用 OpenCensus Python 和其各種整合來收集相依性資料。 然後，資料會傳送至 Azure 監視器的 Application Insights，作為 `dependencies` 遙測。
 
-首先，使用最新的[OpenCensus PYTHON SDK](../../azure-monitor/app/opencensus-python.md)檢測您的 python 應用程式。
+首先，使用最新的[OpenCensus PYTHON SDK](./opencensus-python.md)檢測您的 python 應用程式。
 
 ## <a name="in-process-dependencies"></a>同進程相依性
 
@@ -170,8 +170,9 @@ config_integration.trace_integrations(['sqlalchemy'])
 
 ## <a name="next-steps"></a>後續步驟
 
-* [應用程式對應](../../azure-monitor/app/app-map.md)
-* [可用性](../../azure-monitor/app/monitor-web-app-availability.md)
-* [搜尋](../../azure-monitor/app/diagnostic-search.md)
-* [記錄（分析）查詢](../../azure-monitor/log-query/log-query-overview.md)
-* [交易診斷](../../azure-monitor/app/transaction-diagnostics.md)
+* [應用程式對應](./app-map.md)
+* [可用性](./monitor-web-app-availability.md)
+* [搜尋](./diagnostic-search.md)
+* [記錄（分析）查詢](../log-query/log-query-overview.md)
+* [交易診斷](./transaction-diagnostics.md)
+

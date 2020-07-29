@@ -6,16 +6,16 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: 771cfa11375e97f2f6a94fc65cbd72306b12cd7e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 64884f07bc59e5ff2b29eac645ddb469ef3db465
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84803976"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325180"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms"></a>如何從適用於 VM 的 Azure 監視器查詢記錄
 
-適用於 VM 的 Azure 監視器會收集效能和連線計量、電腦和處理常式清查資料，以及健全狀況狀態資訊，並將其轉送至 Azure 監視器中的 Log Analytics 工作區。  這項資料可用於 Azure 監視器中的[查詢](../../azure-monitor/log-query/log-query-overview.md)。 您可以將此資料套用至各種案例，包括移轉規劃、容量分析、探索和隨選效能疑難排解。
+適用於 VM 的 Azure 監視器會收集效能和連線計量、電腦和處理常式清查資料，以及健全狀況狀態資訊，並將其轉送至 Azure 監視器中的 Log Analytics 工作區。  這項資料可用於 Azure 監視器中的[查詢](../log-query/log-query-overview.md)。 您可以將此資料套用至各種案例，包括移轉規劃、容量分析、探索和隨選效能疑難排解。
 
 ## <a name="map-records"></a>對應記錄
 
@@ -49,9 +49,9 @@ ms.locfileid: "84803976"
 
 | 屬性 | 說明 |
 |:--|:--|
-|Direction |連線的方向，值為 *inbound* 或 *outbound* |
+|方向 |連線的方向，值為 *inbound* 或 *outbound* |
 |電腦 |電腦 FQDN |
-|程序 |處理序或處理序群組的身分識別，會起始/接受連線 |
+|Process |處理序或處理序群組的身分識別，會起始/接受連線 |
 |SourceIp |來源的 IP 位址 |
 |DestinationIp |目的地的 IP 位址 |
 |DestinationPort |目的地的連接埠號碼 |
@@ -112,10 +112,10 @@ ms.locfileid: "84803976"
 |:--|:--|
 |MaliciousIP |RemoteIp 位址 |
 |IndicatorThreadType |偵測到的威脅指標是下列值之一：*殭屍網路*、*C2*、*CryptoMining*、*Darknet*、*DDos*、*MaliciousUrl*、*惡意程式碼*、*網路釣魚*、*Proxy*、*PUA*、*關注清單*。   |
-|Description |觀察到的威脅的說明。 |
+|說明 |觀察到的威脅的說明。 |
 |TLPLevel |號誌燈通訊協定 (TLP) 層級是已定義的值 (*白色*、*綠色*、*琥珀色*、*紅色*) 之一。 |
 |信賴度 |值為 *0 – 100*。 |
-|Severity |值為 *0 – 5*，其中 *5* 為最嚴重，*0* 為根本不嚴重。 預設值為*3*。  |
+|嚴重性 |值為 *0 – 5*，其中 *5* 為最嚴重，*0* 為根本不嚴重。 預設值為*3*。  |
 |FirstReportedDateTime |提供者第一次回報指標。 |
 |LastReportedDateTime |Interflow 最後一次看到指標。 |
 |IsActive |使用 *True* 或 *False* 值表示指標停用。 |
@@ -130,9 +130,9 @@ VMBoundPort 中的每筆記錄都是由下欄欄位所識別：
 
 | 屬性 | 說明 |
 |:--|:--|
-|程序 | 與埠相關聯的進程（或進程群組）的身分識別。|
+|Process | 與埠相關聯的進程（或進程群組）的身分識別。|
 |Ip | 埠 IP 位址（可以是萬用字元 IP， *0.0.0.0*） |
-|Port |埠號碼 |
+|連接埠 |埠號碼 |
 |通訊協定 | 通訊協定。  範例： *tcp*或*udp* （目前僅支援*tcp* ）。|
  
 識別埠衍生自上述五個欄位，並儲存在 PortId 屬性中。 這個屬性可用來快速尋找特定埠在一段時間內的記錄。 
@@ -226,14 +226,14 @@ VMBoundPort 中的每筆記錄都是由下欄欄位所識別：
 |電腦 | 電腦 FQDN | 
 |AgentId | Log Analytics 代理程式的唯一識別碼 |
 |電腦 | ServiceMap 所公開電腦的 Azure Resource Manager 資源名稱。 其格式為*m-{guid}*，其中*guid*與 AgentId 的 guid 相同。 | 
-|程序 | 服務對應進程的唯一識別碼。 其格式為*p-{GUID}*。 
+|Process | 服務對應進程的唯一識別碼。 其格式為*p-{GUID}*。 
 |ExecutableName | 處理序可執行檔的名稱 | 
 |DisplayName | 進程顯示名稱 |
 |角色 | 進程角色： *web*伺服器、 *appServer*、 *databaseServer*、 *ldapServer*、 *smbServer* |
 |群組 | 進程組名。 相同群組中的進程會以邏輯方式相互關聯，例如，屬於相同產品或系統元件的一部分。 |
 |StartTime | 處理序集區的開始時間 |
 |FirstPid | 處理序集區中的第一個 PID |
-|Description | 處理序的描述 |
+|說明 | 處理序的描述 |
 |公司名稱 | 公司的名稱 |
 |InternalName | 內部名稱 |
 |ProductName | 產品的名稱 |
@@ -442,7 +442,7 @@ let remoteMachines = remote | summarize by RemoteMachine;
 |電腦 | 電腦 FQDN | 
 |來源 | *vm.azm.ms* |
 |命名空間 | 效能計數器的類別 | 
-|Name | 效能計數器的名稱 |
+|名稱 | 效能計數器的名稱 |
 |Val | 收集的值 | 
 |Tags | 記錄的相關詳細資料。 請參閱下表，以瞭解用於不同記錄類型的標記。  |
 |AgentId | 每部電腦代理程式的唯一識別碼 |
@@ -451,9 +451,9 @@ let remoteMachines = remote | summarize by RemoteMachine;
 
 下表列出目前收集到*InsightsMetrics*資料表中的效能計數器：
 
-| 命名空間 | Name | 說明 | 單位 | Tags |
+| 命名空間 | 名稱 | 說明 | 單位 | Tags |
 |:---|:---|:---|:---|:---|
-| 電腦    | Heartbeat             | 電腦的心跳                        | | |
+| 電腦    | 活動訊號             | 電腦的心跳                        | | |
 | Memory      | AvailableMB           | 記憶體可用位元組數                    | MB      | memorySizeMB-總記憶體大小|
 | 網路     | WriteBytesPerSecond   | 每秒的網路寫入位元組數            | 每秒位元組 | NetworkDeviceId-裝置的識別碼<br>位元組-傳送的位元組總數 |
 | 網路     | ReadBytesPerSecond    | 網路讀取位元組/秒             | 每秒位元組 | networkDeviceId-裝置的識別碼<br>位元組-接收的位元組總數 |
@@ -473,6 +473,7 @@ let remoteMachines = remote | summarize by RemoteMachine;
 
 ## <a name="next-steps"></a>後續步驟
 
-* 如果您不熟悉在 Azure 監視器中撰寫記錄查詢，請參閱如何使用 Azure 入口網站中的[Log Analytics](../../azure-monitor/log-query/get-started-portal.md)來撰寫記錄查詢。
+* 如果您不熟悉在 Azure 監視器中撰寫記錄查詢，請參閱如何使用 Azure 入口網站中的[Log Analytics](../log-query/get-started-portal.md)來撰寫記錄查詢。
 
-* 瞭解如何[撰寫搜尋查詢](../../azure-monitor/log-query/search-queries.md)。
+* 瞭解如何[撰寫搜尋查詢](../log-query/search-queries.md)。
+

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/20/2020
-ms.openlocfilehash: acb96984a49e4ad8535f87a41da11b3b63ae207b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3227585b62583d0a05f8dbc0444ee5bb4a27df77
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80283849"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320505"
 ---
 # <a name="use-the-map-feature-of-azure-monitor-for-vms-to-understand-application-components"></a>使用適用於 VM 的 Azure 監視器的對應功能來瞭解應用程式元件
 在適用於 VM 的 Azure 監視器中，您可以在 Azure 或您的環境中執行的 Windows 和 Linux 虛擬機器（Vm）上，查看探索到的應用程式元件。 您可以透過兩種方式來觀察 Vm。 直接從 VM 觀看地圖，或從 Azure 監視器 view map，以查看跨 Vm 群組的元件。 本文將協助您瞭解這兩種視圖方法，以及如何使用對應功能。 
@@ -49,7 +49,7 @@ ms.locfileid: "80283849"
 - 包含子句，可依電腦將警示分組（例如，**依電腦間隔1分鐘**）。
 - 以計量為基礎的警示。
 
-如需 Azure 警示和建立警示規則的詳細資訊，請參閱[Azure 監視器中的整合警示](../../azure-monitor/platform/alerts-overview.md)。
+如需 Azure 警示和建立警示規則的詳細資訊，請參閱[Azure 監視器中的整合警示](../platform/alerts-overview.md)。
 
 在右上角，[**圖例**] 選項會描述地圖上的符號和角色。 若要進一步查看地圖並加以移動，請使用右下角的縮放控制項。 您可以設定縮放層級，並將地圖符合頁面的大小。  
 
@@ -128,10 +128,11 @@ ms.locfileid: "80283849"
 
 使用頁面頂端的 [**工作區**] 選取器來選擇工作區。 如果您有多個 Log Analytics 工作區，請選擇已使用解決方案啟用的工作區，並具有向其報告的 Vm。 
 
-**群組**選取器會傳回與所選工作區相關的訂用帳戶、資源群組、[電腦群組](../../azure-monitor/platform/computer-groups.md)，以及電腦的虛擬機器擴展集。 您的選擇僅適用于對應功能，並不會繼續執行效能或健全狀況。
+**群組**選取器會傳回與所選工作區相關的訂用帳戶、資源群組、[電腦群組](../platform/computer-groups.md)，以及電腦的虛擬機器擴展集。 您的選擇僅適用于對應功能，並不會繼續執行效能或健全狀況。
 
 根據預設，對應會顯示過去 30 分鐘。 如果您想要查看相依性過去的樣子，可以查詢最多一小時的歷程記錄時間範圍。 若要執行查詢，請使用**TimeRange**選取器。 例如，您可能會在事件期間執行查詢，或在變更之前查看狀態。  
 
 ## <a name="next-steps"></a>後續步驟
 
 若要找出瓶頸、檢查效能，並瞭解 Vm 的整體使用率，請參閱適用於 VM 的 Azure 監視器的 [[查看效能狀態](vminsights-performance.md)]。 
+

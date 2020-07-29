@@ -4,15 +4,15 @@ description: 瞭解您的物聯網（IoT） Edge 模組必須符合的技術和�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: anbene
-ms.author: mingshen
+author: keferna
+ms.author: keferna
 ms.date: 04/03/2020
-ms.openlocfilehash: 685ac2a383bcc0b85121112b9b5df4aa7650ab59
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: dec0711c4763983e520d247fd8b775b1810e0479
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86101166"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324636"
 ---
 # <a name="prepare-your-iot-edge-module-technical-assets"></a>準備 IoT Edge 模組的技術資產
 
@@ -64,7 +64,7 @@ IoT Edge 模組是在 IoT Edge 裝置上執行的 Docker 相容容器。
 <p><u>Minimum hardware requirements:</u> Linux x64 and arm32 OS, 1GB of RAM, 500 Mb of storage</p>
 ```
 
-### <a name="configuration"></a>設定
+### <a name="configuration"></a>組態
 
 您的模組必須包含預設的設定，才能以最簡單的方式將部署到 IoT Edge 裝置。 這項資訊可在[合作夥伴中心](https://partner.microsoft.com/dashboard/commercial-marketplace)內方案的 [**技術**設定] 頁面中提供。 容器也可以包含 IoT Edge 模組 SDK，以啟用與 Edge 中樞和 IoT 中樞的通訊。
 

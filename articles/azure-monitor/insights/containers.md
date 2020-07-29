@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 07/06/2020
-ms.openlocfilehash: 14fa6859a16dc173e75091983abee717bf813220
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b681e3fa4963a8fe899ccbad8dbf1bbdfbe452ce
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499015"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326897"
 ---
 # <a name="container-monitoring-solution-in-azure-monitor"></a>Azure 監視器中的容器監視解決方案
 
@@ -31,7 +31,7 @@ ms.locfileid: "86499015"
 
 如果您已在[Azure Service Fabric](../../service-fabric/service-fabric-overview.md)中部署容器，建議您同時啟用[Service Fabric 解決方案](../../service-fabric/service-fabric-diagnostics-oms-setup.md)和此解決方案，以包含監視叢集事件。 在啟用 Service Fabric 解決方案之前，請先參閱[使用 Service Fabric 解決方案](../../service-fabric/service-fabric-diagnostics-event-analysis-oms.md)，以瞭解其提供的內容和使用方式。
 
-對於部署到 Azure Container Service (AKS) 上所裝載 Kubernetes 環境的工作負載，若要監視其效能，請參閱[監視 Azure Kubernetes Service](../../azure-monitor/insights/container-insights-overview.md)。 容器監視解決方案不支援監視該平臺。  
+對於部署到 Azure Container Service (AKS) 上所裝載 Kubernetes 環境的工作負載，若要監視其效能，請參閱[監視 Azure Kubernetes Service](./container-insights-overview.md)。 容器監視解決方案不支援監視該平臺。  
 
 下圖顯示各種容器主機與具有 Azure 監視器之代理程式之間的關聯性。
 
@@ -92,11 +92,11 @@ ms.locfileid: "86499015"
 
 請使用下列資訊來安裝和設定方案。
 
-1. 從[Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ContainersOMS?tab=Overview) ，或使用[從方案庫新增監視解決方案](../../azure-monitor/insights/solutions.md)中所述的程式，將容器監視解決方案新增至您的 Log Analytics 工作區。
+1. 從[Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ContainersOMS?tab=Overview) ，或使用[從方案庫新增監視解決方案](./solutions.md)中所述的程式，將容器監視解決方案新增至您的 Log Analytics 工作區。
 
 2. 安裝和使用 Docker 搭配 Log Analytics 代理程式。 根據您的作業系統和 Docker Orchestrator，您可以使用下列方法來設定代理程式。
    - 若為獨立式主機：
-     - 在支援的 Linux 作業系統上，安裝和執行 Docker，然後再安裝和設定[適用於 Linux 的 Log Analytics 代理程式](../../azure-monitor/learn/quick-collect-linux-computer.md)。  
+     - 在支援的 Linux 作業系統上，安裝和執行 Docker，然後再安裝和設定[適用於 Linux 的 Log Analytics 代理程式](../learn/quick-collect-linux-computer.md)。  
      - 在 CoreOS 上，您無法執行適用於 Linux 的 Log Analytics 代理程式。 相反地，您可以執行適用於 Linx 的 Log Analytics 代理程式容器化版本。 檢閱 Linux 容器主機，包括 CoreOS 或 Azure Government Linux 容器主機，包括 CoreOS，如果您正在使用 Azure Government Cloud 中的容器。
      - 在 Windows Server 2016 和 Windows 10 上，安裝 Docker 引擎和用戶端，然後連接代理程式來收集資訊，並將其傳送至 Azure 監視器。 如果您有 Windows 環境，請檢閱[安裝和設定 Windows 容器主機](#install-and-configure-windows-container-hosts)。
    - 若為 Docker 多主機協調流程：
@@ -112,7 +112,7 @@ ms.locfileid: "86499015"
 檢閱 [Windows 上的 Docker 引擎](/virtualization/windowscontainers/manage-docker/configure-docker-daemon)文章，以取得有關如何在執行 Windows 的電腦上安裝和設定您 Docker 引擎的資訊。
 
 > [!IMPORTANT]
-> 在容器主機上安裝 [適用於 Linux 的 Log Analytics 代理程式](../../azure-monitor/learn/quick-collect-linux-computer.md)**之前**，Docker 必須已在執行中。 如果您在安裝 Docker 前，已安裝此代理程式，則必須重新安裝適用於 Linux 的 Log Analytics 代理程式。 如需 Docker 的詳細資訊，請參閱 [Docker 網站](https://www.docker.com)。
+> 在容器主機上安裝 [適用於 Linux 的 Log Analytics 代理程式](../learn/quick-collect-linux-computer.md)**之前**，Docker 必須已在執行中。 如果您在安裝 Docker 前，已安裝此代理程式，則必須重新安裝適用於 Linux 的 Log Analytics 代理程式。 如需 Docker 的詳細資訊，請參閱 [Docker 網站](https://www.docker.com)。
 
 ### <a name="install-and-configure-linux-container-hosts"></a>安裝和設定 Linux 容器主機
 
@@ -120,7 +120,7 @@ ms.locfileid: "86499015"
 
 **適用於 CoreOS 以外的所有 Linux 容器主機：**
 
-- 如需如何安裝適用於 Linux 的 Log Analytics 代理程式詳細資訊和步驟，請參閱 [Log Analytics 代理程式概觀](../../azure-monitor/platform/log-analytics-agent.md)。
+- 如需如何安裝適用於 Linux 的 Log Analytics 代理程式詳細資訊和步驟，請參閱 [Log Analytics 代理程式概觀](../platform/log-analytics-agent.md)。
 
 **適用於包含 CoreOS 的所有 Linux 容器主機：**
 
@@ -140,7 +140,7 @@ sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -v 
 
 **從使用已安裝的代理程式切換為使用容器中的 Linux 代理程式**
 
-如果您先前使用了直接安裝的代理程式，而且想要改為使用在容器中執行的代理程式，則必須先移除適用於 Linux 的 Log Analytics 代理程式。 請參閱[為混合式環境中的 Linux 電腦設定 Log Analytics 代理程式](../../azure-monitor/learn/quick-collect-linux-computer.md)，以了解如何順利解除安裝代理程式。  
+如果您先前使用了直接安裝的代理程式，而且想要改為使用在容器中執行的代理程式，則必須先移除適用於 Linux 的 Log Analytics 代理程式。 請參閱[為混合式環境中的 Linux 電腦設定 Log Analytics 代理程式](../learn/quick-collect-linux-computer.md)，以了解如何順利解除安裝代理程式。  
 
 #### <a name="configure-a-log-analytics-agent-for-docker-swarm"></a>為 Docker Swarm 設定 Log Analytics 代理程式
 
@@ -185,8 +185,8 @@ sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -v 
 
 有三種方式可將 Log Analytics 代理程式新增至 Red Hat OpenShift，以開始收集容器監視資料。
 
-* 直接在每個 OpenShift 節點上[安裝適用于 Linux 的 Log Analytics 代理程式](../../azure-monitor/learn/quick-collect-linux-computer.md)  
-* 在位於 Azure 中的每個 OpenShift 節點上[啟用記錄分析 VM 延伸模組](../../azure-monitor/learn/quick-collect-azurevm.md)  
+* 直接在每個 OpenShift 節點上[安裝適用于 Linux 的 Log Analytics 代理程式](../learn/quick-collect-linux-computer.md)  
+* 在位於 Azure 中的每個 OpenShift 節點上[啟用記錄分析 VM 延伸模組](../learn/quick-collect-azurevm.md)  
 * 將 Log Analytics 代理程式安裝為 OpenShift daemon-set  
 
 在本節中，我們會討論安裝 Log Analytics 代理程式作為 OpenShift 精靈集所需的步驟。  
@@ -509,9 +509,9 @@ Start-Service docker
 
 #### <a name="install-windows-agents"></a>安裝 Windows 代理程式
 
-若要啟用 Windows 和 Hyper-V 容器監視，請在容器主機的 Windows 電腦上安裝 Microsoft Monitoring Agent (MMA)。 針對在您的內部部署環境中執行 Windows 的電腦，請參閱[將 Windows 電腦連線到 Azure 監視器](../../azure-monitor/platform/agent-windows.md)。 針對在 Azure 中執行的虛擬機器，使用[虛擬機器擴充](../../azure-monitor/learn/quick-collect-azurevm.md)功能將它們連接到 Azure 監視器。
+若要啟用 Windows 和 Hyper-V 容器監視，請在容器主機的 Windows 電腦上安裝 Microsoft Monitoring Agent (MMA)。 針對在您的內部部署環境中執行 Windows 的電腦，請參閱[將 Windows 電腦連線到 Azure 監視器](../platform/agent-windows.md)。 針對在 Azure 中執行的虛擬機器，使用[虛擬機器擴充](../learn/quick-collect-azurevm.md)功能將它們連接到 Azure 監視器。
 
-您可以監視 Service Fabric 上執行的 Windows 容器。 不過，Service Fabric 目前只支援 [Azure 中執行的虛擬機器](../../azure-monitor/learn/quick-collect-azurevm.md)和[在內部部署環境中執行 Windows 的電腦](../../azure-monitor/platform/agent-windows.md)。
+您可以監視 Service Fabric 上執行的 Windows 容器。 不過，Service Fabric 目前只支援 [Azure 中執行的虛擬機器](../learn/quick-collect-azurevm.md)和[在內部部署環境中執行 Windows 的電腦](../platform/agent-windows.md)。
 
 您可以確認容器監視解決方案已針對 Windows 正確設定。 若要檢查管理組件是否正確下載，請找出 ContainerManagement.xxx**。 這些檔案應在 C:\Program Files\Microsoft Monitoring Agent\Agent\Health Service State\Management Packs 資料夾。
 
@@ -527,9 +527,9 @@ Start-Service docker
 
 每隔三分鐘會依下列代理程式類型收集資料。
 
-- [Log Analytics Linux 代理程式](../../azure-monitor/learn/quick-collect-linux-computer.md)
-- [Windows 代理程式](../../azure-monitor/platform/agent-windows.md)
-- [Log Analytics VM 擴充功能](../../azure-monitor/learn/quick-collect-azurevm.md)
+- [Log Analytics Linux 代理程式](../learn/quick-collect-linux-computer.md)
+- [Windows 代理程式](../platform/agent-windows.md)
+- [Log Analytics VM 擴充功能](../learn/quick-collect-azurevm.md)
 
 ### <a name="container-records"></a>容器資料列
 
@@ -640,3 +640,4 @@ Start-Service docker
 ## <a name="next-steps"></a>後續步驟
 
 [查詢記錄](../log-query/log-query-overview.md)以查看詳細的容器資料記錄。
+

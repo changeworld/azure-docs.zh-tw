@@ -4,15 +4,15 @@ description: 了解在合作夥伴中心的商業 Marketplace 入口網站中建
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-author: qianw211
-ms.author: dsindona
+author: AarathiN
+ms.author: aarathin
 ms.date: 07/14/2020
-ms.openlocfilehash: 6789e32cbbb1257a668e7be87a8b73a0511b6fb0
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: f9d7e88e78800df07dfe82d7336324eef38b92d5
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87127429"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326662"
 ---
 # <a name="create-an-azure-application-offer"></a>建立 Azure 應用程式供應項目
 
@@ -182,7 +182,7 @@ Azure 應用程式方法有兩種：解決方案範本和受控應用程式。
 #### <a name="call-out-descriptions"></a>向外撥說明
 
 1. 標誌
-2. Categories
+2. 類別
 3. 支援位址（連結）
 4. 使用規定
 5. 隱私權原則位址（連結）

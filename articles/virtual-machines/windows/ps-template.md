@@ -3,16 +3,16 @@ title: 從 Azure 中的範本建立 Windows VM
 description: 使用 Resource Manager 範本和 PowerShell 輕鬆地建立新的 Windows VM。
 author: cynthn
 ms.service: virtual-machines-windows
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/22/2019
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 58b8a22ff36f85f25bb6a4b22617029fe3858660
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6d0d3e6836e2f87c503ac5154a54aeb0dd1c0e26
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "86998862"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87266294"
 ---
 # <a name="create-a-windows-virtual-machine-from-a-resource-manager-template"></a>利用 Resource Manager 範本建立 Windows 虛擬機器
 

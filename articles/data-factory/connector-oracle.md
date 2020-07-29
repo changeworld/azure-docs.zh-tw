@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 04/09/2020
+ms.date: 07/24/2020
 ms.author: jingwang
-ms.openlocfilehash: d37a9bd4cc29ee60f9833ffbcb5a2701a19bbaa7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bac673f5c8c8d6a4e2b368938a0c08c893518022
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81416818"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171262"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 Oracle 複製資料及將資料複製到該處
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
@@ -76,6 +76,8 @@ Oracle 連結服務支援下列屬性：
 
 >[!TIP]
 >如果您收到錯誤「TNSNAMES.ORA-01025： UPI 參數超出範圍」，而您的 Oracle 版本為8i，請將新增 `WireProtocolMode=1` 至您的連接字串。 然後再試一次。
+
+如果您有多個 Oracle 實例來進行容錯移轉案例，您可以建立 Oracle 連結服務，並填入主要主機、埠、使用者名稱、密碼等，然後加入新的「**其他連接屬性**」，其屬性名稱為 `AlternateServers` ，而值為 `(HostName=<secondary host>:PortNumber=<secondary port>:ServiceName=<secondary service name>)` -不會遺漏括弧，並請注意冒號（ `:` ）做為分隔符號。 例如，下列替代伺服器的值會定義兩個用於連線容錯移轉的替代資料庫伺服器： `(HostName=AccountingOracleServer:PortNumber=1521:SID=Accounting,HostName=255.201.11.24:PortNumber=1522:ServiceName=ABackup.NA.MyCompany)` 。
 
 您可以在連接字串中，根據您的案例設定更多的連接屬性：
 
@@ -212,7 +214,7 @@ Oracle 連結服務支援下列屬性：
 
 若要從 Oracle 複製資料，請將複製活動中的來源類型設定為 `OracleSource` 。 複製活動的 [來源] 區段支援下列屬性。
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
 | type | 複製活動來源的類型屬性必須設定為 `OracleSource` 。 | 是 |
 | oracleReaderQuery | 使用自訂 SQL 查詢來讀取資料。 例如 `"SELECT * FROM MyTable"`。<br>當您啟用資料分割載入時，您必須在查詢中攔截任何對應的內建資料分割參數。 如需範例，請參閱[從 Oracle 平行複製](#parallel-copy-from-oracle)一節。 | 否 |
@@ -259,7 +261,7 @@ Oracle 連結服務支援下列屬性：
 
 若要將資料複製到 Oracle，請將複製活動中的接收類型設定為 `OracleSink` 。 複製活動的 [接收] 區段支援下列屬性。
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
 | type | 複製活動接收器的類型屬性必須設定為 `OracleSink` 。 | 是 |
 | writeBatchSize | 當緩衝區大小達到時，將資料插入 SQL 資料表中 `writeBatchSize` 。<br/>允許的值為整數 (資料列數目)。 |否 (預設值為 10000) |
