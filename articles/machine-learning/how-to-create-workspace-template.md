@@ -5,17 +5,17 @@ description: 了解如何使用 Azure Resource Manager 範本建立新的 Azure 
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
+ms.custom: how-to
 ms.author: larryfr
 author: Blackmist
-ms.date: 07/09/2020
-ms.custom: seoapril2019
-ms.openlocfilehash: 49a1b190ece4ae4e937757e88af325a29f4825c5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 07/27/2020
+ms.openlocfilehash: db0b87787e34796e9dd7c91d6e4b53738145a25a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87031111"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326370"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>使用 Azure Resource Manager 範本建立 Azure Machine Learning 的工作區
 
@@ -118,6 +118,9 @@ New-AzResourceGroupDeployment `
 ---
 
 根據預設，在範本中建立的所有資源都是新的。 不過，您也可以選擇使用現有的資源。 藉由提供範本的其他參數，您可以使用現有的資源。 例如，如果您想要使用現有的儲存體帳戶，請將**storageAccountOption**值設為 [**現有**]，並在**storageAccountName**參數中提供儲存體帳戶的名稱。
+
+> [!IMPORTANT]
+> 如果您想要使用現有的 Azure 儲存體帳戶，它不能是 premium 帳戶（Premium_LRS 和 Premium_GRS）。 它也不能有階層式命名空間（與 Azure Data Lake Storage Gen2 一起使用）。 工作區的預設儲存體帳戶不支援 premium 儲存體或階層式命名空間。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
@@ -374,7 +377,7 @@ New-AzResourceGroupDeployment `
 
 ### <a name="only-deploy-workspace-behind-private-endpoint"></a>僅在私人端點後方部署工作區
 
-如果相關聯的資源不在虛擬網路後方，您可以將**privateEndpointType**參數設定為 `AutoAproval` 或， `ManualApproval` 以將工作區部署在私人端點後方。
+如果相關聯的資源不在虛擬網路後方，您可以將**privateEndpointType**參數設定為 `AutoAproval` 或， `ManualApproval` 以將工作區部署在私人端點後方。 這可以針對新的和現有的工作區來完成。 更新現有的工作區時，請以現有工作區中的資訊填入範本參數。
 
 > [!IMPORTANT]
 > 部署僅適用于支援私用端點的區域。
@@ -753,3 +756,4 @@ New-AzResourceGroupDeployment `
 
 * [使用 Resource Manager 範本和 Resource Manager REST API 部署資源](../azure-resource-manager/templates/deploy-rest.md)。
 * [透過 Visual Studio 建立與部署 Azure 資源群組](../azure-resource-manager/templates/create-visual-studio-deployment-project.md)。
+* [如需與 Azure Machine Learning 相關的其他範本，請參閱 Azure 快速入門範本存放庫](https://github.com/Azure/azure-quickstart-templates)

@@ -5,18 +5,19 @@ description: 瞭解如何建立 Azure Machine Learning 資料集，以存取您�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
+ms.custom: how-to
 ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 06/29/2020
-ms.openlocfilehash: c082c74ab448fda0926b5aab52088bf00fb719bf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a220a7279cbb5ba75c8aa803cb4bd709442a52fe
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87031145"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326387"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>建立 Azure Machine Learning 資料集
 
@@ -53,7 +54,7 @@ ms.locfileid: "87031145"
  
 如果您使用 Pandas，則不會有超過1個 vCPU 的理由，因為這就是它將會使用的。 您可以透過 Modin 和 Dask/Ray 輕鬆地平行處理單一 Azure Machine Learning 計算實例/節點上的多個個 vcpu，並視需要向外延展至大型叢集，只要 `import pandas as pd` 將變更為即可 `import modin.pandas as pd` 。 
  
-如果您無法為數據取得夠大的虛擬，您有兩個選項：使用 Spark 或 Dask 之類的架構來執行資料「記憶體不足」的處理，亦即，資料框架會依分割區載入 RAM 分割並加以處理，最後的結果會在結尾收集。 如果此速度太慢，Spark 或 Dask 可讓您相應放大到仍然可以互動方式使用的叢集。 
+如果您無法為數據取得夠大的虛擬機器，您有兩個選項：使用 Spark 或 Dask 之類的架構來執行資料「記憶體不足」的處理，亦即，資料框架會依分割區載入 RAM 分割並加以處理，最後的結果會在結尾收集。 如果此速度太慢，Spark 或 Dask 可讓您相應放大到仍然可以互動方式使用的叢集。 
 
 ## <a name="dataset-types"></a>資料集類型
 
@@ -82,7 +83,7 @@ ms.locfileid: "87031145"
 
 #### <a name="create-a-tabulardataset"></a>建立 TabularDataset
 
-在 [`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none--support-multi-line-false-) 類別上使用方法 `TabularDatasetFactory` 來讀取 .csv 或 tsv 格式的檔案，並建立未註冊的 TabularDataset。 如果您要讀取多個檔案，結果會匯總成一個表格式表示。 
+在 [`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory) 類別上使用方法 `TabularDatasetFactory` 來讀取 .csv 或 tsv 格式的檔案，並建立未註冊的 TabularDataset。 如果您要讀取多個檔案，結果會匯總成一個表格式表示。 
 
 下列程式碼會依名稱取得工作區現有的工作區和所需的資料存放區。 然後將資料存放區和檔案位置傳遞給 `path` 參數，以建立新的 TabularDataset `weather_ds` 。
 
@@ -124,9 +125,9 @@ titanic_ds.take(3).to_pandas_dataframe()
 
 |指數|PassengerId|存活的|Pclass|名稱|性別|年齡|SibSp|Parch|票證|費用|插槽|著手
 -|-----------|--------|------|----|---|---|-----|-----|------|----|-----|--------|
-0|1|否|3|Braund，Mr. Owen Harris|male|22.0|1|0|A/5 21171|7.2500||S
-1|2|是|1|Cumings，Mrs John Bradley （Florence Briggs Th .。。|female|38.0|1|0|電腦17599|71.2833|C85|C
-2|3|是|3|Heikkinen，錯過。 Laina|female|26.0|0|0|STON/O2。 3101282|7.9250||S
+0|1|False|3|Braund，Mr. Owen Harris|male|22.0|1|0|A/5 21171|7.2500||S
+1|2|True|1|Cumings，Mrs John Bradley （Florence Briggs Th .。。|female|38.0|1|0|電腦17599|71.2833|C85|C
+2|3|True|3|Heikkinen，錯過。 Laina|female|26.0|0|0|STON/O2。 3101282|7.9250||S
 
 若要從記憶體中的 pandas 資料框架建立資料集，請將資料寫入本機檔案（例如 csv），然後從該檔案建立資料集。 下列程式碼示範此工作流程。
 

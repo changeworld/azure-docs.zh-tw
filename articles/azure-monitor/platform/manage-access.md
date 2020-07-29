@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/10/2019
-ms.openlocfilehash: 2fcf3b4c91e87453e2cf605eb717b75ed7d64d95
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b9ca2dc9d907e65b2679c08d8d2b6482f02ba53d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85105929"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327883"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>管理 Azure 監視器中記錄資料和工作區的存取
 
@@ -106,7 +106,7 @@ Set-AzResource -ResourceId $_.ResourceId -Properties $_.Properties -Force
 
 下列活動也需要 Azure 權限︰
 
-|動作 |所需的 Azure 權限 |備註 |
+|動作 |所需的 Azure 權限 |注意 |
 |-------|-------------------------|------|
 | 新增和移除監視解決方案 | `Microsoft.Resources/deployments/*` <br> `Microsoft.OperationalInsights/*` <br> `Microsoft.OperationsManagement/*` <br> `Microsoft.Automation/*` <br> `Microsoft.Resources/deployments/*/write` | 必須在資源群組或訂用帳戶層級授與這些權限。 |
 | 變更定價層 | `Microsoft.OperationalInsights/workspaces/*/write` | |
@@ -134,7 +134,7 @@ Azure 有兩個內建的 Log Analytics 工作區角色：
 
 Log Analytics 讀者角色包含下列 Azure 動作：
 
-| 類型    | 權限 | Description |
+| 類型    | 權限 | 描述 |
 | ------- | ---------- | ----------- |
 | 動作 | `*/read`   | 檢視所有 Azure 資源和資源組態的能力。 包括檢視： <br> 虛擬機器擴充功能 <br> 在資源上設定 Azure 診斷 <br> 所有資源的所有屬性和設定。 <br> 針對工作區，它允許完全不受限制的許可權來讀取工作區設定，並對資料執行查詢。 查看更多更細微的選項。 |
 | 動作 | `Microsoft.OperationalInsights/workspaces/analytics/query/action` | 已淘汰，不需要將它們指派給使用者。 |
@@ -162,7 +162,7 @@ Log Analytics 讀者角色包含下列 Azure 動作：
 
 Log Analytics 參與者角色包含下列 Azure 動作：
 
-| 權限 | Description |
+| 權限 | 說明 |
 | ---------- | ----------- |
 | `*/read`     | 檢視所有資源和資源組態的能力。 包括檢視： <br> 虛擬機器擴充功能 <br> 在資源上設定 Azure 診斷 <br> 所有資源的所有屬性和設定。 <br> 針對工作區，它允許完全不受限制的許可權來讀取工作區設定，並對資料執行查詢。 查看更多更細微的選項。 |
 | `Microsoft.Automation/automationAccounts/*` | 建立及設定 Azure 自動化帳戶的能力，包括新增和編輯 Runbook |
@@ -189,7 +189,7 @@ Log Analytics 參與者角色包含下列 Azure 動作：
 
 當使用者使用資源內容存取來查詢工作區中的記錄時，他們會在資源上擁有下列許可權：
 
-| 權限 | Description |
+| 權限 | 說明 |
 | ---------- | ----------- |
 | `Microsoft.Insights/logs/<tableName>/read`<br><br>範例：<br>`Microsoft.Insights/logs/*/read`<br>`Microsoft.Insights/logs/Heartbeat/read` | 能夠查看資源的所有記錄資料。  |
 | `Microsoft.Insights/diagnosticSettings/write` | 能夠設定診斷設定，以允許此資源的記錄檔。 |
@@ -310,6 +310,7 @@ Log Analytics 參與者角色包含下列 Azure 動作：
 
 ## <a name="next-steps"></a>後續步驟
 
-* 請參閱 [Log Analytics 代理程式概觀](../../azure-monitor/platform/log-analytics-agent.md)，從您資料中心或其他雲端環境中的電腦收集資料。
+* 請參閱 [Log Analytics 代理程式概觀](./log-analytics-agent.md)，從您資料中心或其他雲端環境中的電腦收集資料。
 
-* 請參閱[收集 azure 虛擬機器的相關資料](../../azure-monitor/learn/quick-collect-azurevm.md)，以設定從 azure vm 收集資料。
+* 請參閱[收集 azure 虛擬機器的相關資料](../learn/quick-collect-azurevm.md)，以設定從 azure vm 收集資料。
+

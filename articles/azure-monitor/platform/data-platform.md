@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 68e88ec90625f34e5bc8ae1b70c75e3cfe9a53ad
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e87ddd243aa248b896a26e6389ac1a219579a06d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86515524"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325571"
 ---
 # <a name="azure-monitor-data-platform"></a>Azure 監視器資料平台
 
@@ -36,7 +36,7 @@ Azure 資源會產生大量的監視資料。 Azure 監視器會將此資料及�
 
 Azure 監視器中的計量會儲存在時間序列資料庫中，其已進行最佳化而能分析具有時間戳記的資料。 這讓計量特別適用於警示和快速偵測問題。 這些計量可提供系統的執行效能資訊，但通常需要與記錄結合，以找出問題的根本原因。
 
-您可在 Azure 入口網站中使用 [Azure 計量瀏覽器](../platform/metrics-getting-started.md)來對計量互動式分析。 您可將其新增至 [Azure 儀表板](../learn/tutorial-app-dashboards.md)來與其他資料一起視覺化，並用於近乎即時的[警示](alerts-metric.md)。
+您可在 Azure 入口網站中使用 [Azure 計量瀏覽器](./metrics-getting-started.md)來對計量互動式分析。 您可將其新增至 [Azure 儀表板](../learn/tutorial-app-dashboards.md)來與其他資料一起視覺化，並用於近乎即時的[警示](alerts-metric.md)。
 
 若要深入了解 Azure 監視器計量 (包括其資料來源)，請參閱 [Azure 監視器中的計量](data-platform-metrics.md)。
 
@@ -90,3 +90,4 @@ Azure 監視器中的分散式追蹤是透過 [Application Insights SDK](../app/
 - 深入了解 [Azure 監視器中的計量](data-platform-metrics.md)。
 - 深入了解 [Azure 監視器中的記錄](data-platform-logs.md)。
 - 深入了解可用於 Azure 中不同資源的[監視資料](data-sources.md)。
+

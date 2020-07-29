@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.subservice: alerts
-ms.openlocfilehash: 57cc3624a38fbec1e5bef7bb281363d34acef2b1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 25604bde3afbbef0d541bc21996b59e98b3090f4
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505596"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327492"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>使用 Azure 監視器來建立、檢視及管理記錄警示
 
@@ -77,8 +77,8 @@ ms.locfileid: "86505596"
 1. 選擇警示以**頻率**執行的頻率。 
 
     **記錄警示**可以根據：
-    - 記錄數目[](../../azure-monitor/platform/alerts-unified-log.md#number-of-results-alert-rules)：如果查詢所傳回的記錄數目大於或小於所提供的值，則會建立警示。
-    - 計量測量[](../../azure-monitor/platform/alerts-unified-log.md#metric-measurement-alert-rules)：如果結果中的每個「彙總值」** 超過提供的閾值，而且彙總值依據選擇的值來「分組」**，則會建立警示。 警示的違規數是所選時段中超過閾值的次數。 您可以跨結果集針對任何違規組合指定 [違規數總計]，或指定 [連續違規] 以要求違規必須發生於連續取樣中。
+    - 記錄數目[](./alerts-unified-log.md#number-of-results-alert-rules)：如果查詢所傳回的記錄數目大於或小於所提供的值，則會建立警示。
+    - 計量測量[](./alerts-unified-log.md#metric-measurement-alert-rules)：如果結果中的每個「彙總值」** 超過提供的閾值，而且彙總值依據選擇的值來「分組」**，則會建立警示。 警示的違規數是所選時段中超過閾值的次數。 您可以跨結果集針對任何違規組合指定 [違規數總計]，或指定 [連續違規] 以要求違規必須發生於連續取樣中。
 
 
 1. 按一下 [完成] 。 
@@ -100,7 +100,7 @@ ms.locfileid: "86505596"
     有一些額外的功能可用來覆寫預設動作：
 
     - **電子郵件通知**：覆寫透過動作群組傳送之電子郵件中的*電子郵件*主旨。 您無法修改電子郵件的本文，且此欄位**不是**用於電子郵件地址。
-    - **包含自訂 Json**承載：覆寫動作群組所使用的 webhook Json （假設動作群組包含 webhook 類型）。 如需 webhook 格式的詳細資訊，請參閱[記錄警示的 webhook 動作](../../azure-monitor/platform/alerts-log-webhook.md)。 提供的 [檢視 Webhook] 選項可用來檢查使用 JSON 資料範例的格式。
+    - **包含自訂 Json**承載：覆寫動作群組所使用的 webhook Json （假設動作群組包含 webhook 類型）。 如需 webhook 格式的詳細資訊，請參閱[記錄警示的 webhook 動作](./alerts-log-webhook.md)。 提供的 [檢視 Webhook] 選項可用來檢查使用 JSON 資料範例的格式。
 
         ![記錄警示的動作覆寫](media/alerts-log/AlertsPreviewOverrideLog.png)
 
@@ -212,7 +212,7 @@ ms.locfileid: "86505596"
 
 ### <a name="log-alert-with-cross-resource-query-using-azure-resource-template"></a>使用 Azure 資源範本和跨資源查詢的記錄警示
 
-以下結構可用來根據資源範本使用[計量測量類型記錄警示](../../azure-monitor/log-query/cross-workspace-query.md)的[跨資源記錄搜尋查詢](../../azure-monitor/platform/alerts-unified-log.md#metric-measurement-alert-rules)[建立排程的查詢規則](/rest/api/monitor/scheduledqueryrules/createorupdate)，其中使用資料集範例作為變數。
+以下結構可用來根據資源範本使用[計量測量類型記錄警示](../log-query/cross-workspace-query.md)的[跨資源記錄搜尋查詢](./alerts-unified-log.md#metric-measurement-alert-rules)[建立排程的查詢規則](/rest/api/monitor/scheduledqueryrules/createorupdate)，其中使用資料集範例作為變數。
 
 ```json
 
@@ -319,7 +319,7 @@ Azure 監視器[排程的查詢規則 API](/rest/api/monitor/scheduledqueryrules
 - [AzScheduledQueryRuleAlertingAction](/powershell/module/az.monitor/new-azscheduledqueryrulealertingaction) ： PowerShell Cmdlet 可建立或更新指定記錄警示之動作參數的物件。 做為[AzScheduledQueryRule](/powershell/module/az.monitor/new-azscheduledqueryrule)和[AzScheduledQueryRule](/powershell/module/az.monitor/set-azscheduledqueryrule) Cmdlet 的輸入使用。
 - [AzScheduledQueryRuleAznsActionGroup](/powershell/module/az.monitor/new-azscheduledqueryruleaznsactiongroup) ： PowerShell Cmdlet 可建立或更新指定記錄警示之動作群組參數的物件。 用來做為[AzScheduledQueryRuleAlertingAction](/powershell/module/az.monitor/new-azscheduledqueryrulealertingaction) Cmdlet 的輸入。
 - [AzScheduledQueryRuleTriggerCondition](/powershell/module/az.monitor/new-azscheduledqueryruletriggercondition) ： PowerShell Cmdlet 可建立或更新指定記錄警示之觸發條件參數的物件。 用來做為[AzScheduledQueryRuleAlertingAction](/powershell/module/az.monitor/new-azscheduledqueryrulealertingaction) Cmdlet 的輸入。
-- [AzScheduledQueryRuleLogMetricTrigger](/powershell/module/az.monitor/new-azscheduledqueryrulelogmetrictrigger) ： PowerShell Cmdlet 可用於建立或更新物件，指定度量[量測類型記錄警示的計量](../../azure-monitor/platform/alerts-unified-log.md#metric-measurement-alert-rules)觸發條件參數。 用來做為[AzScheduledQueryRuleTriggerCondition](/powershell/module/az.monitor/new-azscheduledqueryruletriggercondition) Cmdlet 的輸入。
+- [AzScheduledQueryRuleLogMetricTrigger](/powershell/module/az.monitor/new-azscheduledqueryrulelogmetrictrigger) ： PowerShell Cmdlet 可用於建立或更新物件，指定度量[量測類型記錄警示的計量](./alerts-unified-log.md#metric-measurement-alert-rules)觸發條件參數。 用來做為[AzScheduledQueryRuleTriggerCondition](/powershell/module/az.monitor/new-azscheduledqueryruletriggercondition) Cmdlet 的輸入。
 - [AzScheduledQueryRule](/powershell/module/az.monitor/get-azscheduledqueryrule) ：用來列出現有記錄警示規則或特定記錄警示規則的 PowerShell Cmdlet
 - [AzScheduledQueryRule](/powershell/module/az.monitor/update-azscheduledqueryrule) ：用來啟用或停用記錄警示規則的 PowerShell Cmdlet
 - [AzScheduledQueryRule](/powershell/module/az.monitor/remove-azscheduledqueryrule)： PowerShell Cmdlet 刪除現有的記錄警示規則
@@ -363,7 +363,8 @@ az group deployment create --resource-group contosoRG --template-file sampleSche
 
 ## <a name="next-steps"></a>後續步驟
 
-* 瞭解[Azure 警示中的記錄警示](../../azure-monitor/platform/alerts-unified-log.md)
-* 了解 [Webhook 動作記錄警示](../../azure-monitor/platform/alerts-log-webhook.md)
+* 瞭解[Azure 警示中的記錄警示](./alerts-unified-log.md)
+* 了解 [Webhook 動作記錄警示](./alerts-log-webhook.md)
 * 深入瞭解[Application Insights](../log-query/log-query-overview.md)
 * 深入瞭解[記錄查詢](../log-query/log-query-overview.md)。
+

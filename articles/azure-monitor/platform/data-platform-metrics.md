@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 2f82d5d4dcb29504abbfa6881fa825b6d8efce0d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b05007e2ea7815afbba2a7a71368686cf7c049fb
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87049537"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325605"
 ---
 # <a name="metrics-in-azure-monitor"></a>Azure 監視器中的計量
 
@@ -32,7 +32,7 @@ Azure 監視器中的計量非常輕量，能夠支援近乎即時的案例，�
 |  | 說明 |
 |:---|:---|
 | **分析** | 使用[計量瀏覽器](metrics-charts.md)在圖表上分析所收集的計量，並比較來自不同資源的計量。 |
-| **視覺化** | 將圖表從計量瀏覽器釘選到 [Azure 儀表板](../learn/tutorial-app-dashboards.md)。<br>建立[活頁簿](../platform/workbooks-overview.md)，以在互動式報告中與多組資料結合。將查詢的結果匯出至 [Grafana](grafana-plugin.md) 以利用其儀表板功能，並與其他資料來源結合。 |
+| **視覺化** | 將圖表從計量瀏覽器釘選到 [Azure 儀表板](../learn/tutorial-app-dashboards.md)。<br>建立[活頁簿](./workbooks-overview.md)，以在互動式報告中與多組資料結合。將查詢的結果匯出至 [Grafana](grafana-plugin.md) 以利用其儀表板功能，並與其他資料來源結合。 |
 | **警示** | 設定[計量警示規則](alerts-metric.md)，在計量值超出閾值時，傳送通知或採取[自動化動作](action-groups.md)。 |
 | **自動化** |  使用[自動調整規模](autoscale-overview.md)，根據超出閾值的計量值來增加或減少資源。 |
 | **匯出** | [將計量路由傳送到記錄](./resource-logs.md#send-to-azure-storage)，來分析 Azure 監視器計量中的資料與 Azure 監視器記錄中的資料，以及儲存計量值超過 93 天。<br>將計量串流至[事件中樞](stream-monitoring-data-event-hubs.md)以將計量路由傳送至外部系統。 |
@@ -89,7 +89,7 @@ Azure 監視器所收集的計量有三個基本來源。 在 Azure 監視器計
 
 **平台計量**是由 Azure 資源所建立，讓您能夠掌握其健康情況和效能。 每個類型的資源都會建立[一組不同的計量](metrics-supported.md)，而不需進行任何必要的設定。 除非計量定義中另有指定，否則會以一分鐘的頻率從 Azure 資源收集平台計量。 
 
-系統會從虛擬機器的客體作業系統收集**客體 OS 計量**。 請為具有 [Windows 診斷擴充功能 (WAD)](../platform/diagnostics-extension-overview.md) 的 Windows 虛擬機器和具有 [InfluxData Telegraf 代理程式](https://www.influxdata.com/time-series-platform/telegraf/)的 Linux 虛擬機器，啟用客體 OS 計量。
+系統會從虛擬機器的客體作業系統收集**客體 OS 計量**。 請為具有 [Windows 診斷擴充功能 (WAD)](./diagnostics-extension-overview.md) 的 Windows 虛擬機器和具有 [InfluxData Telegraf 代理程式](https://www.influxdata.com/time-series-platform/telegraf/)的 Linux 虛擬機器，啟用客體 OS 計量。
 
 **應用程式計量**是由 Application Insights 為您受監視的應用程式所建立，可協助您偵測效能問題，以及追蹤應用程式的使用趨勢。 這包括像是「伺服器回應時間」和「瀏覽器例外狀況」之類的值。
 
@@ -99,7 +99,7 @@ Azure 監視器所收集的計量有三個基本來源。 在 Azure 監視器計
 針對 Azure 中的大部分資源，計量會儲存 93 天。 但有一些例外狀況：
 
 **客體 OS 計量**
--   **傳統的客體 OS 計量**。 這些是由 [Windows 診斷擴充功能 (WAD)](../platform/diagnostics-extension-overview.md) 或 [Linux 診斷擴充功能 (LAD)](../../virtual-machines/extensions/diagnostics-linux.md) 所收集並路由傳送至 Azure 儲存體帳戶的效能計數器。 這些計量的保留期為 14 天。
+-   **傳統的客體 OS 計量**。 這些是由 [Windows 診斷擴充功能 (WAD)](./diagnostics-extension-overview.md) 或 [Linux 診斷擴充功能 (LAD)](../../virtual-machines/extensions/diagnostics-linux.md) 所收集並路由傳送至 Azure 儲存體帳戶的效能計數器。 這些計量的保留期為 14 天。
 -   **傳送至 Azure 監視器計量的客體 OS 計量**。 這些是由 [Windows 診斷擴充功能 (WAD)](diagnostics-extension-overview.md) 所收集並傳送至 [Azure 監視器資料接收器](diagnostics-extension-overview.md#data-destinations)的效能計數器，而在 Linux 機器上，則是透過 [InfluxData Telegraf 代理程式](https://www.influxdata.com/time-series-platform/telegraf/)。 這些計量的保留期為 93 天。
 -   **Log Analytics 代理程式所收集的客體 OS 計量**。 這些是 Log Analytics 代理程式所收集並傳送至 Log Analytics 工作區的效能計數器。 這些計量的保留期為 31 天，最多可延長為 2 年。
 
@@ -119,3 +119,4 @@ Azure 監視器所收集的計量有三個基本來源。 在 Azure 監視器計
 - 深入了解 [Azure 監視器資料平台](data-platform.md)。
 - 了解 [Azure 監視器中的記錄資料](data-platform-logs.md)。
 - 深入了解可用於 Azure 中不同資源的[監視資料](data-sources.md)。
+

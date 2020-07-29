@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/15/2019
-ms.openlocfilehash: 013515e0608bf790ceef8dc13d9d547496306610
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ea060ec9ba755a197e2969c0bf58050eb1d62a03
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092842"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325962"
 ---
 # <a name="enable-azure-monitor-for-vms-for-a-hybrid-environment"></a>針對混合式環境啟用適用於 VM 的 Azure 監視器
 
@@ -24,7 +24,7 @@ ms.locfileid: "87092842"
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
 >[!NOTE]
->適用於 VM 的 Azure 監視器對應 Dependency Agent 本身不會傳輸任何資料，因此不需變更防火牆或連接埠。 如果您的 IT 安全性原則不允許網路上的電腦連線到網際網路，則對應資料一律會由 Log Analytics 代理程式直接傳輸到 Azure 監視器服務，或是透過[Operations Management Suite 閘道](../../azure-monitor/platform/gateway.md)來傳送。
+>適用於 VM 的 Azure 監視器對應 Dependency Agent 本身不會傳輸任何資料，因此不需變更防火牆或連接埠。 如果您的 IT 安全性原則不允許網路上的電腦連線到網際網路，則對應資料一律會由 Log Analytics 代理程式直接傳輸到 Azure 監視器服務，或是透過[Operations Management Suite 閘道](../platform/gateway.md)來傳送。
 
 完成這項工作的步驟摘要如下：
 
@@ -48,7 +48,7 @@ ms.locfileid: "87092842"
 
 下表將強調說明命令列中適用於代理程式的安裝程式所支援的參數。
 
-| 參數 | 說明 |
+| 參數 | 描述 |
 |:--|:--|
 | /? | 傳回命令列選項的清單。 |
 | /S | 執行無訊息安裝，而不需要與使用者互動。 |
@@ -79,7 +79,7 @@ Windows Dependency Agent 的檔案預設安裝在 *C:\Program Files\Microsoft De
 
 Dependency Agent 的檔案位於下列目錄：
 
-| 檔案儲存體 | Location |
+| 檔案 | 位置 |
 |:--|:--|
 | 核心檔案 | /opt/microsoft/dependency-agent |
 | 記錄檔 | /var/opt/microsoft/dependency-agent/log |
@@ -145,7 +145,7 @@ configuration VMInsights {
 ## <a name="enable-performance-counters"></a>啟用效能計數器
 
 如果解決方案所參考的 Log Analytics 工作區還未設定為收集此解決方案所需的效能計數器，則必須啟用這些效能計數器。 您可以透過下列兩種方式的其中一種來執行此動作：
-* 手動，如 [Log Analytics 中的 Windows 和 Linux 效能資料來源](../../azure-monitor/platform/data-sources-performance-counters.md)中所述
+* 手動，如 [Log Analytics 中的 Windows 和 Linux 效能資料來源](../platform/data-sources-performance-counters.md)中所述
 * 藉由下載並執行可從[Azure PowerShell 資源庫](https://www.powershellgallery.com/packages/Enable-VMInsightsPerfCounters/1.1)取得的 PowerShell 腳本
 
 ## <a name="deploy-azure-monitor-for-vms"></a>部署適用於 VM 的 Azure 監視器
@@ -259,3 +259,4 @@ configuration VMInsights {
 - 若要檢視探索到的應用程式相依性，請參閱[檢視適用於 VM 的 Azure 監視器對應](vminsights-maps.md)。
 
 - 若要找出 VM 效能的瓶頸和整體使用率，請參閱[查看 AZURE VM 效能](vminsights-performance.md)。
+

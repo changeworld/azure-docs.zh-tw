@@ -11,11 +11,14 @@ ms.date: 08/29/2018
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: e9d5eae4ef926a5c05265b91526d03a17ca57781
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+- 'Role: Cloud Development'
+- 'Role: IoT Device'
+ms.openlocfilehash: 675f25107a2e4f0ddedf468dc06afea36ffc6151
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84674949"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327747"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>了解 IoT 中樞的身分識別登錄
 
@@ -109,7 +112,7 @@ IoT 中樞在身分識別建立或刪除時，可透過傳送生命週期通知�
 
 裝置的通知訊息：
 
-| Name | 值 |
+| 名稱 | 值 |
 | --- | --- |
 |$content-type | application/json |
 |$iothub-enqueuedtime |  傳送通知的時間 |
@@ -121,7 +124,7 @@ IoT 中樞在身分識別建立或刪除時，可透過傳送生命週期通知�
 |operationTimestamp | 作業的 ISO8601 時間戳記 |
 |iothub-message-schema | deviceLifecycleNotification |
 
-主體：本節為 JSON 格式，它表示所建立裝置身分識別的對應項。 例如，
+主體：本節為 JSON 格式，它表示所建立裝置身分識別的對應項。 例如
 
 ```json
 {
@@ -145,7 +148,7 @@ IoT 中樞在身分識別建立或刪除時，可透過傳送生命週期通知�
 ```
 模組的通知訊息：
 
-| Name | 值 |
+| 名稱 | 值 |
 | --- | --- |
 $content-type | application/json |
 $iothub-enqueuedtime |  傳送通知的時間 |
@@ -157,7 +160,7 @@ moduleId | 模組的識別碼 |
 operationTimestamp | 作業的 ISO8601 時間戳記 |
 iothub-message-schema | moduleLifecycleNotification |
 
-主體：本節為 JSON 格式，它表示所建立模組身分識別的對應項。 例如，
+主體：本節為 JSON 格式，它表示所建立模組身分識別的對應項。 例如
 
 ```json
 {
@@ -185,7 +188,7 @@ iothub-message-schema | moduleLifecycleNotification |
 
 裝置身分識別會以具有下列屬性的 JSON 文件表示：
 
-| 屬性 | 選項 | Description |
+| 屬性 | 選項。 | 描述 |
 | --- | --- | --- |
 | deviceId |必要，只能讀取更新 |區分大小寫的字串，最長為 128 個字元，可使用 ASCII 7 位元英數字元和某些特殊字元：`- . + % _ # * ? ! ( ) , : = @ $ '`。 |
 | generationId |必要，唯讀 |IoT 中樞產生的區分大小寫字串，最長為 128 個字元。 此值可用來在刪除並重建裝置時，區分具有相同 **deviceId** 的裝置。 |
@@ -209,7 +212,7 @@ iothub-message-schema | moduleLifecycleNotification |
 
 模組身分識別會以具有下列屬性的 JSON 文件表示：
 
-| 屬性 | 選項 | Description |
+| 屬性 | 選項。 | 描述 |
 | --- | --- | --- |
 | deviceId |必要，只能讀取更新 |區分大小寫的字串，最長為 128 個字元，可使用 ASCII 7 位元英數字元和某些特殊字元：`- . + % _ # * ? ! ( ) , : = @ $ '`。 |
 | moduleId |必要，只能讀取更新 |區分大小寫的字串，最長為 128 個字元，可使用 ASCII 7 位元英數字元和某些特殊字元：`- . + % _ # * ? ! ( ) , : = @ $ '`。 |

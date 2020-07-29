@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: reference
 ms.date: 07/21/2020
 ms.subservice: alerts
-ms.openlocfilehash: 98cd7a4d31f4d7053426f44dd02a876759688cc7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b4a2329640387ab1c3cda93d18c6cb22c7d511cd
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87045229"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327475"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>針對 Azure 監視器計量警示中的問題進行疑難排解 
 
@@ -108,7 +108,7 @@ ms.locfileid: "87045229"
 
 ## <a name="define-an-alert-rule-on-a-custom-metric-that-isnt-emitted-yet"></a>針對尚未發出的自訂計量定義警示規則
 
-建立計量警示規則時，系統會根據計量[定義 API](https://docs.microsoft.com/rest/api/monitor/metricdefinitions/list)來驗證計量名稱，以確保它存在。 在某些情況下，您會想要建立自訂計量的警示規則，即使在發出之前也一樣。 例如，建立（使用 ARM 範本）時，會發出自訂計量的 Application Insights 資源，以及監視該度量的警示規則。
+建立計量警示規則時，系統會根據計量[定義 API](/rest/api/monitor/metricdefinitions/list)來驗證計量名稱，以確保它存在。 在某些情況下，您會想要建立自訂計量的警示規則，即使在發出之前也一樣。 例如，建立（使用 ARM 範本）時，會發出自訂計量的 Application Insights 資源，以及監視該度量的警示規則。
 
 若要避免在嘗試驗證自訂計量的定義時部署失敗，您可以在警示規則的 [準則] 區段中使用*skipMetricValidation*參數，這會導致略過計量驗證。 請參閱下列範例，以瞭解如何在 ARM 範本中使用此參數（如需建立計量警示規則的完整 ARM 範本範例，請參閱[這裡]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates)）。
 
@@ -236,7 +236,7 @@ ms.locfileid: "87045229"
 - 在每個條件中，您只能為每個維度選取一個值。
 - 您不能使用 [選取所有目前和未來的值] 選項（選取 \* ）。
 - 當不同條件中設定的計量支援相同的維度時，就必須以相同的方式，針對所有這些計量（在相關的條件中）明確設定已設定的維度值。
-例如:
+例如：
     - 請考慮在儲存體帳戶上定義的度量警示規則，並監視兩個條件：
         * 總**交易**數 > 5
         * 平均**SuccessE2ELatency** > 250 毫秒
@@ -247,3 +247,4 @@ ms.locfileid: "87045229"
 ## <a name="next-steps"></a>後續步驟
 
 - 如需有關警示和通知的一般疑難排解資訊，請參閱[疑難排解 Azure 監視器警示中的問題](alerts-troubleshoot.md)。
+

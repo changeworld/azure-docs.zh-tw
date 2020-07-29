@@ -1,6 +1,5 @@
 ---
-title: Web 服務參數
-titleSuffix: ML Studio (classic) - Azure
+title: ML Studio （傳統）： Web 服務參數-Azure
 description: 如何使用 Azure Machine Learning Web 服務參數來修改模型在 Web 服務受到存取時的行為。
 services: machine-learning
 author: likebupt
@@ -12,14 +11,17 @@ ms.subservice: studio
 ms.workload: data-services
 ms.topic: how-to
 ms.date: 01/12/2017
-ms.openlocfilehash: c274579e756b3c22920023d68501981d5b4a8b01
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: de3fb4a0dab08a13327c910d1e09ecbf0afcec8c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84705860"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326251"
 ---
 # <a name="use-azure-machine-learning-studio-classic-web-service-parameters"></a>使用 Azure Machine Learning Studio （傳統） web 服務參數
+
+**適用物件：** ![否](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![ 是 ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio （傳統） 
+
 
 藉由發行包含可設定參數模組的試驗，來建立 Azure Machine Learning Web 服務。 在某些情況下，您可能想要在執行 Web 服務時之際，變更模組的行為。 「Web 服務參數」** 可讓您執行這項工作。 
 
@@ -53,7 +55,7 @@ Web 服務的 API 文件會包含 Web 服務使用者在存取 Web 服務時，�
    * 在 **[請指定驗證類型]** 底下，選取 [帳戶]。
    * 輸入 Azure Blob 儲存體的帳戶資訊。 
 
-3.  按一下 **[以容器參數為開頭的 Blob 路徑]** 右邊的圖示。 它的外觀如下：
+3.  按一下 **[以容器參數為開頭的 Blob 路徑]** 右邊的圖示。 其看起來如下：
    
    ![Web 服務參數圖示](./media/web-service-parameters/icon.png)
    

@@ -3,14 +3,15 @@ title: 監視在內部部署執行的 Java 應用程式 - Azure 監視器 Applic
 description: 針對在內部部署執行的 Java 應用程式監視應用程式效能，而不檢測該應用程式。 分散式追蹤和應用程式對應。
 ms.topic: conceptual
 author: MS-jgol
+ms.custom: devx-track-java
 ms.author: jgol
 ms.date: 04/16/2020
-ms.openlocfilehash: 6c083e24ce44272ef9394b8418d3dc66771ceb8a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c2d35a6f379b0d7cf3c4c7d61e5e679553e5302f
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87014264"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326880"
 ---
 # <a name="java-codeless-application-monitoring-on-premises---azure-monitor-application-insights---public-preview"></a>在內部部署監視 Java 無程式碼應用程式 - Azure 監視器 Application Insights - 公開預覽
 

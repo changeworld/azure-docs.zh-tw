@@ -4,15 +4,15 @@ description: 在生產環境 .NET 應用程式中擲回例外狀況時，會自�
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.reviewer: cweining
-ms.openlocfilehash: c920ab019d5d802ea862ab923297670da766a456
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 58fbb0cee5e4f06c20d31b4b5011582957f6f6c3
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87049686"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325639"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>.NET 應用程式中的例外狀況偵錯快照集
-發生例外狀況時，您可以自動從即時 Web 應用程式收集偵錯快照集。 快照集會顯示擲回例外狀況時原始程式碼和變數的狀態。 [Azure 應用程式 Insights](../../azure-monitor/app/app-insights-overview.md)中的快照偵錯工具會監視來自 web 應用程式的例外狀況遙測。 它會收集前幾個擲回例外狀況的快照集，讓您取得診斷生產環境中問題所需的資訊。 在您的應用程式中包含[快照集收集器 NuGet 套件](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector)，並選擇性地在[ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md)中設定集合參數。快照集會出現在 Application Insights 入口網站的[例外](../../azure-monitor/app/asp-net-exceptions.md)狀況中。
+發生例外狀況時，您可以自動從即時 Web 應用程式收集偵錯快照集。 快照集會顯示擲回例外狀況時原始程式碼和變數的狀態。 [Azure 應用程式 Insights](./app-insights-overview.md)中的快照偵錯工具會監視來自 web 應用程式的例外狀況遙測。 它會收集前幾個擲回例外狀況的快照集，讓您取得診斷生產環境中問題所需的資訊。 在您的應用程式中包含[快照集收集器 NuGet 套件](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector)，並選擇性地在[ApplicationInsights.config](./configuration-with-applicationinsights-config.md)中設定集合參數。快照集會出現在 Application Insights 入口網站的[例外](./asp-net-exceptions.md)狀況中。
 
 您可以檢視入口網站中的偵錯快照集，以查看呼叫堆疊並檢查每個呼叫堆疊框架的變數。 若要使用原始程式碼取得更強大的偵錯工具體驗，請使用 Visual Studio 2019 Enterprise 開啟快照集。 在 Visual Studio 中，您也可以[設定貼齊點以互動方式建立快照集](https://aka.ms/snappoint)，而不需等待例外狀況。
 
@@ -62,7 +62,7 @@ ms.locfileid: "87049686"
 
 ![失敗頁面](./media/snapshot-debugger/failures-page.png)
 
-在右窗格中選取作業或例外狀況，以開啟 [**端對端交易詳細資料**] 窗格，然後選取 [例外狀況] 事件。 如果快照集可用於指定的例外狀況，則在右窗格上會出現 [**開啟的偵錯工具快照**集] 按鈕，其中包含[例外](../../azure-monitor/app/asp-net-exceptions.md)狀況的詳細資料。
+在右窗格中選取作業或例外狀況，以開啟 [**端對端交易詳細資料**] 窗格，然後選取 [例外狀況] 事件。 如果快照集可用於指定的例外狀況，則在右窗格上會出現 [**開啟的偵錯工具快照**集] 按鈕，其中包含[例外](./asp-net-exceptions.md)狀況的詳細資料。
 
 ![例外狀況的 [開啟偵錯快照集] 按鈕](./media/snapshot-debugger/e2e-transaction-page.png)
 
@@ -85,8 +85,8 @@ ms.locfileid: "87049686"
 
 ## <a name="how-snapshots-work"></a>快照集運作方式
 
-快照集收集器會實作為 [Application Insights 遙測處理器](../../azure-monitor/app/configuration-with-applicationinsights-config.md#telemetry-processors-aspnet)。 當您的應用程式執行時，快照集收集器的遙測處理器會新增至您應用程式的遙測管線中。
-每次應用程式呼叫 [TrackException](../../azure-monitor/app/asp-net-exceptions.md#exceptions) 時，快照集收集器會根據所擲回例外狀況的類型和擲回方法計算問題識別碼。
+快照集收集器會實作為 [Application Insights 遙測處理器](./configuration-with-applicationinsights-config.md#telemetry-processors-aspnet)。 當您的應用程式執行時，快照集收集器的遙測處理器會新增至您應用程式的遙測管線中。
+每次應用程式呼叫 [TrackException](./asp-net-exceptions.md#exceptions) 時，快照集收集器會根據所擲回例外狀況的類型和擲回方法計算問題識別碼。
 每次應用程式呼叫 TrackException 時，適當問題識別碼的計數器即會遞增。 當計數器達到 `ThresholdForSnapshotting` 值時，問題識別碼就會新增至收集計畫。
 
 快照集收集器還會藉由訂閱 [AppDomain.CurrentDomain.FirstChanceException](/dotnet/api/system.appdomain.firstchanceexception) 事件來監視擲回的例外狀況。 當該事件引發時，系統會計算例外狀況的問題識別碼，並將其與收集計畫中的問題識別碼進行比較。
@@ -139,5 +139,6 @@ Visual Studio 2017 的 15.2 版 (或更新版本) 在發佈至 App Service 時�
 除了 Application Insights 快照偵錯工具：
  
 * [在您的程式碼中設定 Snappoint](/visualstudio/debugger/debug-live-azure-applications) 以取得快照集，而不需等待例外狀況。
-* [診斷 Web Apps 中的例外狀況](../../azure-monitor/app/asp-net-exceptions.md)說明如何讓 Application Insights 看見更多的例外狀況。
-* [智慧型偵測](../../azure-monitor/app/proactive-diagnostics.md)會自動探索效能異常。
+* [診斷 Web Apps 中的例外狀況](./asp-net-exceptions.md)說明如何讓 Application Insights 看見更多的例外狀況。
+* [智慧型偵測](./proactive-diagnostics.md)會自動探索效能異常。
+

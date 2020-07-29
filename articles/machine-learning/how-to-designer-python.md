@@ -1,21 +1,21 @@
 ---
-title: '在設計工具中執行 Python 腳本 (預覽) '
+title: 在設計工具中執行 Python 腳本（預覽）
 titleSuffix: Azure Machine Learning
-description: 瞭解如何在 Azure Machine Learning 設計工具中使用 Python (preview) 來轉換資料。
+description: 瞭解如何在 Azure Machine Learning 設計工具（預覽）中使用 Python 來轉換資料。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 author: peterclu
 ms.author: peterlu
 ms.date: 02/28/2020
-ms.custom: designer, tracking-python
-ms.openlocfilehash: 61086bf8c215a09e457e931ffed157559b339a9b
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.topic: conceptual
+ms.custom: how-to, designer, tracking-python
+ms.openlocfilehash: c798fa3bdb6754b2d8b955efe49e208ea954f80a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206804"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326965"
 ---
 # <a name="run-python-code-in-azure-machine-learning-designer"></a>在 Azure Machine Learning 設計工具中執行 Python 程式碼
 
@@ -26,6 +26,8 @@ ms.locfileid: "86206804"
 預設執行環境會使用 Python 的 Anacondas 發行版本。 如需預先安裝套件的完整清單，請參閱[執行 Python 指令碼模組參考](algorithm-module-reference/execute-python-script.md)頁面。
 
 ![執行 Python 輸入對應](media/how-to-designer-python/execute-python-map.png)
+
+[!INCLUDE [machine-learning-missing-ui](../../includes/machine-learning-missing-ui.md)]
 
 ## <a name="execute-python-written-in-the-designer"></a>執行在設計工具中撰寫的 Python
 
