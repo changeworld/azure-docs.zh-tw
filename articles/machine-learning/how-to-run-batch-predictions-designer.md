@@ -12,6 +12,7 @@ ms.date: 02/24/2020
 ms.custom: Ignite2019, designer
 ms.openlocfilehash: a464ab001eec877ffc6dc0ab5e33e82493c226ff
 ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 07/02/2020
 ms.locfileid: "84429937"
