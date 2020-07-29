@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
-ms.date: 02/27/2020
+ms.date: 07/13/2020
 ms.author: iainfou
 author: iainfoulds
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4abb15462689470c87e9cf5ba8d5be8af2e45bfd
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 642082b3fe23e0d007e21409062fe8e777728cc3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78253118"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518534"
 ---
 # <a name="tutorial-configure-custom-banned-passwords-for-azure-active-directory-password-protection"></a>教學課程：設定 Azure Active Directory 密碼保護的自訂禁用密碼
 
@@ -36,12 +36,12 @@ ms.locfileid: "78253118"
     * 如有需要，[請建立免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * 具有「全域系統管理員」  權限的帳戶。
 * 具有已知密碼的非系統管理員使用者，例如 testuser  。 在本教學課程中，您會使用此帳戶來測試密碼變更事件。
-    * 如果您需要建立使用者，請參閱 [快速入門：將使用者新增至 Azure Active Directory](../add-users-azure-active-directory.md) 中的資訊。
+    * 如果您需要建立使用者，請參閱 [快速入門：將使用者新增至 Azure Active Directory](../fundamentals/add-users-azure-active-directory.md) 中的資訊。
     * 若要使用禁用密碼來測試密碼變更作業，Azure AD 租用戶必須先[設定為可進行自助式密碼重設](tutorial-enable-sspr.md)。
 
 ## <a name="what-are-banned-password-lists"></a>什麼是禁用密碼清單？
 
-Azure AD 包含全域禁用密碼清單。 全域禁用密碼清單的內容不是以任何外部資料來源為基礎。 相反地，全域禁用密碼清單是以 Azure AD 安全性遙測和分析的持續結果為基礎。 當使用者或系統管理員嘗試變更或重設其認證時，系統會根據禁止密碼清單來檢查所需的密碼。 如果全域禁用密碼清單中有相符項目，密碼變更要求就會失敗。
+Azure AD 包含全域禁用密碼清單。 全域禁用密碼清單的內容不是以任何外部資料來源為基礎。 相反地，全域禁用密碼清單是以 Azure AD 安全性遙測和分析的持續結果為基礎。 當使用者或系統管理員嘗試變更或重設其認證時，系統會根據禁止密碼清單來檢查所需的密碼。 如果全域禁用密碼清單中有相符項目，密碼變更要求就會失敗。 您無法編輯此預設全域禁用密碼清單。
 
 為了讓您有彈性決定允許的密碼，您也可以定義自訂禁用密碼清單。 自訂禁用密碼清單會與全域禁用密碼清單一起運作，以在組織中強制使用強式密碼。 您可將組織特有的字詞新增到自訂禁用密碼清單，例如下列範例：
 
@@ -64,11 +64,11 @@ Azure AD 包含全域禁用密碼清單。 全域禁用密碼清單的內容不�
 
 若要啟用自訂禁用密碼清單並在其中新增項目，請完成下列步驟：
 
-1. 使用具備「全域系統管理員」  權限的帳戶登入 [Azure 入口網站](https://portal.azure.com)。
-1. 搜尋並選取 **Azure Active Directory**，然後從左側功能表中選擇 [安全性]  。
-1. 在 [管理]  功能表標題底下，選取 [驗證方法]  ，然後選取 [密碼保護]  。
-1. 將 [強制使用自訂清單]  選項設定為 [是]  。
-1. 在 [自訂禁用密碼清單]  中新增字串 (每行一個字串)。 自訂禁用密碼清單適用下列考量與限制：
+1. 使用具備「全域系統管理員」權限的帳戶登入 [Azure 入口網站](https://portal.azure.com)。
+1. 搜尋並選取 **Azure Active Directory**，然後從左側功能表中選擇 [安全性]。
+1. 在 [管理] 功能表標題底下，選取 [驗證方法]，然後選取 [密碼保護]。
+1. 將 [強制使用自訂清單] 選項設定為 [是]。
+1. 在 [自訂禁用密碼清單] 中新增字串 (每行一個字串)。 自訂禁用密碼清單適用下列考量與限制：
 
     * 自訂禁用密碼清單最多可以包含 1000 個字詞。
     * 自訂禁用密碼清單不會區分大小寫。
@@ -79,8 +79,8 @@ Azure AD 包含全域禁用密碼清單。 全域禁用密碼清單的內容不�
 
     [![](media/tutorial-configure-custom-password-protection/enable-configure-custom-banned-passwords-cropped.png "Modify the custom banned password list under Authentication Methods in the Azure portal")](media/tutorial-configure-custom-password-protection/enable-configure-custom-banned-passwords.png#lightbox)
 
-1. 讓 [在 Windows Server Active Directory 上啟用密碼保護]  選項保留為 [否]  。
-1. 若要啟用自訂禁用密碼和您的項目，請選取 [儲存]  。
+1. 讓 [在 Windows Server Active Directory 上啟用密碼保護] 選項保留為 [否]。
+1. 若要啟用自訂禁用密碼和您的項目，請選取 [儲存]。
 
 可能需要數小時才會套用自訂禁用密碼清單的更新。
 
@@ -91,15 +91,15 @@ Azure AD 包含全域禁用密碼清單。 全域禁用密碼清單的內容不�
 若要查看作用中的自訂禁用密碼清單，請嘗試將密碼變更為在上一節中新增項目的變化。 當 Azure AD 嘗試處理密碼變更時，系統會將密碼與自訂禁用密碼清單中的項目進行比對。 接著會向使用者顯示錯誤。
 
 > [!NOTE]
-> Azure AD 租用戶必須先[設定為可進行自助式密碼重設](tutorial-enable-sspr.md)，使用者才能在 Web 架構入口網站中重設其密碼。
+> Azure AD 租用戶必須先[設定為可進行自助式密碼重設](tutorial-enable-sspr.md)，使用者才能在 Web 架構入口網站中重設其密碼。 如有需要，使用者可以在 [註冊 SSPR https://aka.ms/ssprsetup](https://aka.ms/ssprsetup)。
 
-1. 移至 [我的應用程式]  頁面 (位於 [https://myapps.microsoft.com](https://myapps.microsoft.com))。
-1. 在右上角選取您的名稱，然後從下拉式功能表中選擇 [設定檔]  。
+1. 移至 [我的應用程式] 頁面 (位於 [https://myapps.microsoft.com](https://myapps.microsoft.com))。
+1. 在右上角選取您的名稱，然後從下拉式功能表中選擇 [設定檔]。
 
     ![選取設定檔](media/tutorial-configure-custom-password-protection/myapps-profile.png)
 
-1. 在 [設定檔]  頁面上，選取 [變更密碼]  。
-1. 在 [變更密碼]  頁面上，輸入現有 (舊的) 密碼。 在上一節中定義的自訂禁用密碼清單上，輸入並確認新密碼，然後選取 [提交]  。
+1. 在 [設定檔] 頁面上，選取 [變更密碼]。
+1. 在 [變更密碼] 頁面上，輸入現有 (舊的) 密碼。 在上一節中定義的自訂禁用密碼清單上，輸入並確認新密碼，然後選取 [提交]。
 1. 系統會傳回一則錯誤訊息，告訴您系統管理員已封鎖該密碼，如下列範例所示：
 
     ![當您嘗試使用屬於自訂禁用密碼清單的密碼時顯示的錯誤訊息](media/tutorial-configure-custom-password-protection/password-change-error.png)
@@ -109,10 +109,10 @@ Azure AD 包含全域禁用密碼清單。 全域禁用密碼清單的內容不�
 如果您不想再使用您在本教學課程中所設定的自訂禁用密碼清單，請完成下列步驟：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-1. 搜尋並選取 **Azure Active Directory**，然後從左側功能表中選擇 [安全性]  。
-1. 在 [管理]  功能表標題底下，選取 [驗證方法]  ，然後選取 [密碼保護]  。
-1. 將 [強制使用自訂清單]  選項設定為 [否]  。
-1. 若要更新自訂禁用密碼組態，請選取 [儲存]  。
+1. 搜尋並選取 **Azure Active Directory**，然後從左側功能表中選擇 [安全性]。
+1. 在 [管理] 功能表標題底下，選取 [驗證方法]，然後選取 [密碼保護]。
+1. 將 [強制使用自訂清單] 選項設定為 [否]。
+1. 若要更新自訂禁用密碼組態，請選取 [儲存]。
 
 ## <a name="next-steps"></a>後續步驟
 
