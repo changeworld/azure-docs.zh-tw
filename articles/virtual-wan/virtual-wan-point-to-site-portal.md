@@ -2,17 +2,17 @@
 title: 使用 Azure 虛擬 WAN 來與 Azure 建立點對站連線 | Microsoft Docs
 description: 在本教學課程中，了解如何使用 Azure 虛擬 WAN 來與 Azure 建立點對站 VPN 連線。
 services: virtual-wan
-author: anzaman
+author: kumudD
 ms.service: virtual-wan
 ms.topic: tutorial
 ms.date: 06/29/2020
 ms.author: alzam
-ms.openlocfilehash: 9c93ad0357011008c45b2898260a655509b02dc2
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 27bb252b857fea2548e89471adcedcbd38b9f8ee
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85560677"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077361"
 ---
 # <a name="tutorial-create-a-user-vpn-connection-using-azure-virtual-wan"></a>教學課程：使用 Azure 虛擬 WAN 建立使用者 VPN 連線
 

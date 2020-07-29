@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: b6ad060939af0d79f93e15672af45e0224c1ca5c
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 5b8ca2f578881b3e8bd557fa5aaac618bcab1599
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84708545"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073449"
 ---
 # <a name="use-powershell-to-add-a-managed-instance-to-a-failover-group"></a>使用 PowerShell 將受控執行個體新增至容錯移轉群組 
 
@@ -76,6 +76,6 @@ Remove-AzResourceGroup -ResourceGroupName $resourceGroupName
 
 ## <a name="next-steps"></a>後續步驟
 
-如需有關 Azure PowerShell 的詳細資訊，請參閱 [Azure PowerShell 文件](/powershell/azure/overview)。
+如需有關 Azure PowerShell 的詳細資訊，請參閱 [Azure PowerShell 文件](/powershell/azure/)。
 
 您可以在 [Azure SQL 受控執行個體 PowerShell 指令碼](../../database/powershell-script-content-guide.md)中找到其他 SQL 受控執行個體的 PowerShell 指令碼範例。

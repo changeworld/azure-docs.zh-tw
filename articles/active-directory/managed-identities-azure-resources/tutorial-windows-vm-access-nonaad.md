@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 01/10/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd9f85e3bfd11ee655ce581c60a5b65e13f4497b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7648f0c41731968c6cf8d2b2b2e55fffd9b5f53d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75971852"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87018769"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-key-vault"></a>教學課程：使用 Windows VM 系統指派的受控識別來存取 Azure Key Vault 
 
@@ -75,7 +75,7 @@ ms.locfileid: "75971852"
  
 ## <a name="access-data"></a>存取資料  
 
-本節將說明如何使用 VM 身分識別取得存取權杖，並用其來擷取 Key Vault 的密碼。 如果您未安裝 PowerShell 4.3.1 或更新版本，則必須[下載並安裝最新版](https://docs.microsoft.com/powershell/azure/overview)。
+本節將說明如何使用 VM 身分識別取得存取權杖，並用其來擷取 Key Vault 的密碼。 如果您未安裝 PowerShell 4.3.1 或更新版本，則必須[下載並安裝最新版](https://docs.microsoft.com/powershell/azure/)。
 
 首先，我們會使用 VM 系統指派的受控識別來取得存取權杖，以向 Key Vault 進行驗證：
  

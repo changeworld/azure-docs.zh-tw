@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 06/06/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 229df5d2f5186ad7cec08952f2a44790f9220dfe
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c896e617346c9bab598044cedfc475b471466cd0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82100306"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86998845"
 ---
 # <a name="tutorial-create-and-manage-windows-vms-with-azure-powershell"></a>教學課程：使用 Azure PowerShell 建立和管理 Windows VM
 
@@ -34,7 +34,7 @@ Azure Cloud Shell 是免費的互動式 Shell，可讓您用來執行本文中�
 
 ## <a name="create-resource-group"></a>建立資源群組
 
-使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) 命令來建立資源群組。
+使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 命令來建立資源群組。
 
 Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 資源群組必須在虛擬機器之前建立。 在下列範例中，會在 *EastUS* 區域中建立名為 *myResourceGroupVM* 的資源群組：
 
@@ -50,13 +50,13 @@ New-AzResourceGroup `
 
 建立 VM 時，有數個選項可供使用，例如作業系統映像、網路組態和系統管理認證。 此範例會執行 Windows Server 2016 Datacenter 的預設版本，建立名為 *myVM* 的 VM。
 
-使用 [Get-Credential](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-credential?view=powershell-6) 來設定 VM 上系統管理員帳戶所需的使用者名稱和密碼：
+使用 [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-6) 來設定 VM 上系統管理員帳戶所需的使用者名稱和密碼：
 
 ```azurepowershell-interactive
 $cred = Get-Credential
 ```
 
-使用 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) 建立 VM。
+使用 [New-AzVM](/powershell/module/az.compute/new-azvm) 建立 VM。
 
 ```azurepowershell-interactive
 New-AzVm `
@@ -93,13 +93,13 @@ mstsc /v:<publicIpAddress>
 
 Azure Marketplace 包含許多可用來建立新 VM 的映像。 在先前步驟中，已使用 Windows Server 2016 Datacenter 映像建立 VM。 在此步驟中，PowerShell 模組用來搜尋 Marketplace 中的其他 Windows 映像，其也可用來作為新 VM 的基底。 這個程序包含尋找發行者、供應項目、SKU 和版本號碼 (選擇性) 來[識別](cli-ps-findimage.md#terminology)映像。
 
-使用 [Get-AzVMImagePublisher](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagepublisher) 命令傳回映像發行者清單：
+使用 [Get-AzVMImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) 命令傳回映像發行者清單：
 
 ```azurepowershell-interactive
 Get-AzVMImagePublisher -Location "EastUS"
 ```
 
-使用 [Get-AzVMImageOffer](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimageoffer) 傳回映像提供清單。 使用此命令時，會根據名為 `MicrosoftWindowsServer` 的指定發行者篩選傳回的清單：
+使用 [Get-AzVMImageOffer](/powershell/module/az.compute/get-azvmimageoffer) 傳回映像提供清單。 使用此命令時，會根據名為 `MicrosoftWindowsServer` 的指定發行者篩選傳回的清單：
 
 ```azurepowershell-interactive
 Get-AzVMImageOffer `
@@ -117,7 +117,7 @@ WindowsServer     MicrosoftWindowsServer EastUS
 WindowsServer-HUB MicrosoftWindowsServer EastUS
 ```
 
-[Get-AzVMImageSku](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagesku) 命令會接著根據發行者和供應項目名稱篩選，以傳回映像名稱清單。
+[Get-AzVMImageSku](/powershell/module/az.compute/get-azvmimagesku) 命令會接著根據發行者和供應項目名稱篩選，以傳回映像名稱清單。
 
 ```azurepowershell-interactive
 Get-AzVMImageSku `
@@ -175,16 +175,16 @@ VM 大小會決定可供 VM 使用的計算資源 (例如 CPU、GPU 和記憶體
 
 | 類型                     | 一般大小           |    描述       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
-| [一般用途](sizes-general.md)         |B, Dsv3, Dv3, DSv2, Dv2, Av2, DC| 平衡的 CPU 對記憶體。 適用於開發/測試及小型到中型應用程式和資料解決方案。  |
-| [計算最佳化](sizes-compute.md)   | Fsv2          | CPU 與記憶體的比例高。 適用於中流量應用程式、網路設備，以及批次處理。        |
-| [記憶體最佳化](sizes-memory.md)    | Esv3、Ev3、M、DSv2、Dv2  | 記憶體與核心的比例高。 適用於關聯式資料庫、中型到大型快取，以及記憶體內分析。                 |
-| [儲存體最佳化](sizes-storage.md)      | Lsv2、Ls              | 高磁碟輸送量及 IO。 適用於巨量資料、SQL 及 NoSQL 資料庫。                                                         |
-| [GPU](sizes-gpu.md)          | NV、NVv2、NC、NCv2、NCv3、ND            | 以大量圖形轉譯和視訊編輯為目標的特製化 VM。       |
-| [高效能](sizes-hpc.md) | H        | 我們的最強大 CPU VM，可搭配選用的高輸送量網路介面 (RDMA)。 |
+| [一般用途](../sizes-general.md)         |B, Dsv3, Dv3, DSv2, Dv2, Av2, DC| 平衡的 CPU 對記憶體。 適用於開發/測試及小型到中型應用程式和資料解決方案。  |
+| [計算最佳化](../sizes-compute.md)   | Fsv2          | CPU 與記憶體的比例高。 適用於中流量應用程式、網路設備，以及批次處理。        |
+| [記憶體最佳化](../sizes-memory.md)    | Esv3、Ev3、M、DSv2、Dv2  | 記憶體與核心的比例高。 適用於關聯式資料庫、中型到大型快取，以及記憶體內分析。                 |
+| [儲存體最佳化](../sizes-storage.md)      | Lsv2、Ls              | 高磁碟輸送量及 IO。 適用於巨量資料、SQL 及 NoSQL 資料庫。                                                         |
+| [GPU](../sizes-gpu.md)          | NV、NVv2、NC、NCv2、NCv3、ND            | 以大量圖形轉譯和視訊編輯為目標的特製化 VM。       |
+| [高效能](../sizes-hpc.md) | H        | 我們的最強大 CPU VM，可搭配選用的高輸送量網路介面 (RDMA)。 |
 
 ### <a name="find-available-vm-sizes"></a>尋找可用的 VM 大小
 
-若要查看特定區域中可用的 VM 大小清單，請使用 [Get-AzVMSize](https://docs.microsoft.com/powershell/module/az.compute/get-azvmsize) 命令。
+若要查看特定區域中可用的 VM 大小清單，請使用 [Get-AzVMSize](/powershell/module/az.compute/get-azvmsize) 命令。
 
 ```azurepowershell-interactive
 Get-AzVMSize -Location "EastUS"
@@ -194,7 +194,7 @@ Get-AzVMSize -Location "EastUS"
 
 在部署 VM 之後，可以調整其大小以增加或減少資源配置。
 
-在調整 VM 的大小之前，請檢查目前的 VM 叢集上是否有您所要的大小。 [Get-AzVMSize](https://docs.microsoft.com/powershell/module/az.compute/get-azvmsize) 命令會傳回大小清單。
+在調整 VM 的大小之前，請檢查目前的 VM 叢集上是否有您所要的大小。 [Get-AzVMSize](/powershell/module/az.compute/get-azvmsize) 命令會傳回大小清單。
 
 ```azurepowershell-interactive
 Get-AzVMSize -ResourceGroupName "myResourceGroupVM" -VMName "myVM"
@@ -245,7 +245,7 @@ Azure VM 的電源狀態可以是許多電源狀態的其中一種。
 | - | VM 的電源狀態不明。 |
 
 
-若要取得特定 VM 的狀態，請使用 [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) 命令。 請務必為 VM 和資源群組指定有效的名稱。
+若要取得特定 VM 的狀態，請使用 [Get-AzVM](/powershell/module/az.compute/get-azvm) 命令。 請務必為 VM 和資源群組指定有效的名稱。
 
 ```azurepowershell-interactive
 Get-AzVM `
@@ -268,7 +268,7 @@ PowerState/running
 
 ### <a name="stop-a-vm"></a>停止 VM
 
-使用 [Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) 停止及解除配置 VM：
+使用 [Stop-AzVM](/powershell/module/az.compute/stop-azvm) 停止及解除配置 VM：
 
 ```azurepowershell-interactive
 Stop-AzVM `

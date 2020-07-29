@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 08/19/2019
 ms.author: juliako
-ms.openlocfilehash: df4092ecc3f7d075f1a2821854cdb668ee2cebe5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0ba272d76cade53529b198876f0ad06c4ae79649
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77191212"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074515"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---net"></a>教學課程：編碼以 URL 為基礎的遠端檔案及串流處理影片 - .NET
 
@@ -34,8 +34,8 @@ ms.locfileid: "77191212"
 ## <a name="prerequisites"></a>Prerequisites
 
 - 如果沒有安裝 Visual Studio，您可以取得 [Visual Studio Community 2017](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15)。
-- [建立媒體服務帳戶](create-account-cli-how-to.md)。<br/>請務必記住您用於資源群組名稱和「媒體服務」帳戶名稱的值。
-- 請依照[使用 Azure CLI 存取 Azure 媒體服務 API](access-api-cli-how-to.md) 中的步驟，並儲存認證。 您必須使用這些認證來存取 API。
+- [建立媒體服務帳戶](./create-account-howto.md)。<br/>請務必記住您用於資源群組名稱和「媒體服務」帳戶名稱的值。
+- 請依照[使用 Azure CLI 存取 Azure 媒體服務 API](./access-api-howto.md) 中的步驟，並儲存認證。 您必須使用這些認證來存取 API。
 
 ## <a name="download-and-configure-the-sample"></a>下載並設定範例
 
@@ -47,7 +47,7 @@ ms.locfileid: "77191212"
 
 此範例位於 [EncodeAndStreamFiles](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/tree/master/AMSV3Quickstarts/EncodeAndStreamFiles) 資料夾。
 
-在您下載的專案中開啟 [appsettings.json](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/appsettings.json)。 將值取代為從[存取 API](access-api-cli-how-to.md) 中取得的認證。
+在您下載的專案中開啟 [appsettings.json](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/appsettings.json)。 將值取代為從[存取 API](./access-api-howto.md) 中取得的認證。
 
 此範例會執行下列動作：
 
@@ -105,7 +105,7 @@ az group delete --name amsResourceGroup
 
 ### <a name="job-error-codes"></a>作業錯誤碼
 
-請參閱[錯誤碼](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode) \(英文\)。
+請參閱[錯誤碼](/rest/api/media/jobs/get#joberrorcode) \(英文\)。
 
 ## <a name="multithreading"></a>多執行緒
 

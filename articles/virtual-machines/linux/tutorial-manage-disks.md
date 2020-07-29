@@ -15,12 +15,12 @@ ms.date: 11/14/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.subservice: disks
-ms.openlocfilehash: be2a52f1a9071e9d4bb77ab4439291fd58cd828b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c9165d1f539ea585ae1370b7651cda4b9336f85f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82129377"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87069412"
 ---
 # <a name="tutorial---manage-azure-disks-with-the-azure-cli"></a>教學課程 - 使用 Azure CLI 管理 Azure 磁碟
 
@@ -178,7 +178,7 @@ exit
 
 ## <a name="take-a-disk-snapshot"></a>擷取磁碟快照集
 
-當您建立磁碟快照集時，Azure 會建立磁碟的唯讀、時間點複本。 進行組態變更之前，Azure VM 快照集可用於快速儲存 VM 的狀態。 發生問題或錯誤時，便可使用快照集來還原 VM。 當 VM 有多個磁碟時，每個磁碟會各自產生快照集。 若要進行應用程式一致備份，請考慮在建立磁碟快照集之前停止 VM。 或者，使用 [Azure 備份服務](/azure/backup/)，其可讓您在 VM 執行時執行自動化備份。
+當您建立磁碟快照集時，Azure 會建立磁碟的唯讀、時間點複本。 進行組態變更之前，Azure VM 快照集可用於快速儲存 VM 的狀態。 發生問題或錯誤時，便可使用快照集來還原 VM。 當 VM 有多個磁碟時，每個磁碟會各自產生快照集。 若要進行應用程式一致備份，請考慮在建立磁碟快照集之前停止 VM。 或者，使用 [Azure 備份服務](../../backup/index.yml)，其可讓您在 VM 執行時執行自動化備份。
 
 ### <a name="create-snapshot"></a>建立快照集
 

@@ -3,12 +3,12 @@ title: Azure 事件中樞 - 處理 Apache Kafka 事件
 description: 教學課程：本文說明如何使用 Azure 串流分析，處理透過事件中樞擷取的 Kafka 事件。
 ms.topic: tutorial
 ms.date: 06/23/2020
-ms.openlocfilehash: 8fbc1ae326cc75603f5a86361e4bc79ecc461fd6
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 6dfca5b476dff1ee3367b5365c15869c8cff819b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85313277"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074911"
 ---
 # <a name="tutorial-process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>教學課程：使用串流分析處理適用於事件中樞的 Apache Kafka 
 本文說明如何將資料串流至事件中樞，以及使用 Azure 串流分析處理該資料。 本文將逐步引導您完成下列步驟： 
@@ -129,7 +129,7 @@ ms.locfileid: "85313277"
  
 
 ### <a name="define-a-query"></a>定義查詢
-在串流分析作業安裝程式讀取傳入資料流之後，下一個步驟是建立轉換以即時分析資料。 您可使用[串流分析查詢語言](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)來定義轉換查詢。 在本逐步解說中，您會定義可通過資料的查詢，而不需執行任何轉換。
+在串流分析作業安裝程式讀取傳入資料流之後，下一個步驟是建立轉換以即時分析資料。 您可使用[串流分析查詢語言](/stream-analytics-query/stream-analytics-query-language-reference)來定義轉換查詢。 在本逐步解說中，您會定義可通過資料的查詢，而不需執行任何轉換。
 
 1. 選取 [查詢]  。
 2. 在查詢視窗中，以您稍早建立的輸出別名取代 `[YourOutputAlias]`。

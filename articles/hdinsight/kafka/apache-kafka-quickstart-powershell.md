@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: d14d8f38ff8a2bed01584d5c5fec56d254cede05
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 57f9338841b599e10c8a1d7eec8fd4f371ceecb9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "73494758"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081010"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-powershell"></a>快速入門：使用 PowerShell 在 Azure HDInsight 中建立 Apache Spark 叢集
 
@@ -31,7 +31,7 @@ Kafka API 只能由同一個虛擬網路中的資源來存取。 在本快速入
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-* 安裝 PowerShell [Az 模組](https://docs.microsoft.com/powershell/azure/overview)。
+* 安裝 PowerShell [Az 模組](https://docs.microsoft.com/powershell/azure/)。
 
 * SSH 用戶端。 如需詳細資訊，請參閱[使用 SSH 連線至 HDInsight (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md)。
 

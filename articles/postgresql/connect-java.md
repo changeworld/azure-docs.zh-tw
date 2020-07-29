@@ -7,15 +7,16 @@ ms.service: postgresql
 ms.custom:
 - mvc
 - seo-java-august2019
+- devx-track-java
 ms.devlang: java
 ms.topic: quickstart
 ms.date: 05/06/2019
-ms.openlocfilehash: cf03cebcd69bd85a4cc94ceb7e99fd0edef99b58
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8b11147c5266be17d188e915bf73a999ea157d24
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80063119"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321406"
 ---
 # <a name="quickstart-use-java-to-connect-to-and-query-data-in-azure-database-for-postgresql---single-server"></a>快速入門：使用 Java 來連線和查詢適用於 PostgreSQL 的 Azure 資料庫中的資料 - 單一伺服器
 
@@ -35,7 +36,7 @@ ms.locfileid: "80063119"
 
 1. 在 **Azure 入口網站**中，搜尋並選取您所建立的伺服器 (例如 [mydemoserver](https://portal.azure.com/))。
 
-1. 從伺服器的 [概觀]  面板，記下 [伺服器名稱]  和 [管理員使用者名稱]  。 如果您忘記密碼，您也可以從此面板重設密碼。
+1. 從伺服器的 [概觀] 面板，記下 [伺服器名稱] 和 [管理員使用者名稱]。 如果您忘記密碼，您也可以從此面板重設密碼。
 
     ![適用於 PostgreSQL 的 Azure 資料庫連接字串](./media/connect-java/server-details-azure-database-postgresql.png)
 

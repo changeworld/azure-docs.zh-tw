@@ -6,18 +6,18 @@ ms.assetid: e4831bdc-2068-4883-9474-0b34c2e3e255
 ms.topic: sample
 ms.date: 03/20/2017
 ms.custom: mvc
-ms.openlocfilehash: d1c8951445c0be6a3d4b9c4763d719fc7d79d2d5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 2377c8536fa307f670e28f5ff3cf04f03b88325e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74685323"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083305"
 ---
 # <a name="connect-an-app-service-app-to-a-storage-account"></a>將 App Service 應用程式連線至儲存體帳戶
 
 在此案例中，您將了解如何建立 Azure 儲存體帳戶和 App Service 應用程式。 然後，您會使用應用程式設定來將儲存體帳戶連結到該應用程式。
 
-您可以視需要使用 [Azure PowerShell 指南](/powershell/azure/overview) \(英文\) 中的指示來安裝 Azure PowerShell，然後執行 `Connect-AzAccount` 來建立與 Azure 的連線。
+您可以視需要使用 [Azure PowerShell 指南](/powershell/azure/) \(英文\) 中的指示來安裝 Azure PowerShell，然後執行 `Connect-AzAccount` 來建立與 Azure 的連線。
 
 ## <a name="sample-script"></a>範例指令碼
 
@@ -48,6 +48,6 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 ## <a name="next-steps"></a>後續步驟
 
-如需有關 Azure PowerShell 模組的詳細資訊，請參閱 [Azure PowerShell 文件](/powershell/azure/overview)。
+如需有關 Azure PowerShell 模組的詳細資訊，請參閱 [Azure PowerShell 文件](/powershell/azure/)。
 
 您可以在 [Azure PowerShell 範例](../samples-powershell.md)中找到適用於 Azure App Service 的其他 Azure PowerShell 範例。

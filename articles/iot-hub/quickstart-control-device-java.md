@@ -13,13 +13,14 @@ ms.custom:
 - seo-java-august2019
 - seo-java-september2019
 - mqtt
+- devx-track-java
 ms.date: 06/21/2019
-ms.openlocfilehash: d73fab92535820186fcce997c2a5c72abf130c18
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3c6a8285c672e6683a259b2a65be4e6ecbd4aafa
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81770988"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322273"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-azure-iot-hub-with-java"></a>快速入門：使用 Java 來控制連線到 Azure IoT 中樞的裝置
 

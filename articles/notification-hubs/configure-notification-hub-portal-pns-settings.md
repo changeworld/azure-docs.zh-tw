@@ -11,18 +11,18 @@ ms.date: 06/22/2020
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 02/14/2019
-ms.openlocfilehash: af792ccfe8e00c26abc6aab2e4a96d7ef9ff5122
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: de135b57755919a1d312783409caf3e800e03fd5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85252044"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077989"
 ---
 # <a name="quickstart-set-up-push-notifications-in-a-notification-hub"></a>快速入門：設定通知中樞中的推播通知
 
 Azure 通知中樞提供易於使用並可相應放大的推播引擎。使用通知中樞將通知傳送至任何平台 (iOS、Android、Windows、百度)，以及任何後端 (雲端或內部部署)。 如需詳細資訊，請參閱[什麼是 Azure 通知中樞](notification-hubs-push-notification-overview.md)。
 
-在本快速入門中，您將使用通知中樞內的平台通知系統 (PNS) 設定，來設定多個平台的推播通知。 本快速入門會說明要在 Azure 入口網站中採取的步驟。  [Google Firebase 雲端通訊](/azure/notification-hubs/configure-notification-hub-portal-pns-settings?tabs=azure-cli#google-firebase-cloud-messaging-fcm)包含如何使用 Azure CLI 的指示。
+在本快速入門中，您將使用通知中樞內的平台通知系統 (PNS) 設定，來設定多個平台的推播通知。 本快速入門會說明要在 Azure 入口網站中採取的步驟。  [Google Firebase 雲端通訊](?tabs=azure-cli#google-firebase-cloud-messaging-fcm)包含如何使用 Azure CLI 的指示。
 
 如果您尚未建立通知中樞，立即建立一個。 如需詳細資訊，請參閱[在 Azure 入口網站中建立 Azure 通知中樞](create-notification-hub-portal.md)或[使用 Azure CLI 建立 Azure 通知中樞](create-notification-hub-azure-cli.md)
 

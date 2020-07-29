@@ -8,12 +8,12 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 11/19/2019
 ms.author: victorh
-ms.openlocfilehash: 6cb0eafce354ba54dd161fee52efe46677ad2765
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 87ca8591be42e34a52f15913e0ec4058505cc0b0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74195892"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079058"
 ---
 # <a name="create-an-azure-firewall-test-environment"></a>建立 Azure 防火牆測試環境
 
@@ -79,5 +79,5 @@ Remove-AzResourceGroup -Name AzfwSampleScriptEastUS -Force
 
 ## <a name="next-steps"></a>後續步驟
 
-如需有關 Azure PowerShell 的詳細資訊，請參閱 [Azure PowerShell 文件](/powershell/azure/overview)。
+如需有關 Azure PowerShell 的詳細資訊，請參閱 [Azure PowerShell 文件](/powershell/azure/)。
 

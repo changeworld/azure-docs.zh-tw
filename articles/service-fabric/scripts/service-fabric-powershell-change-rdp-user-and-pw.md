@@ -14,12 +14,12 @@ ms.topic: sample
 ms.date: 03/19/2018
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: b7f229162ed745408121d898f5af516d22a0c039
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: bcf619e2251f5c1b641190549da45f721835ce0e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984924"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076150"
 ---
 # <a name="update-the-admin-username-and-password-of-the-vms-in-a-cluster"></a>為叢集中的 VM 更新管理員使用者名稱和密碼
 
@@ -27,7 +27,7 @@ Service Fabric 叢集中的每個[節點類型](../service-fabric-cluster-nodety
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-您可以視需要使用 [Azure PowerShell 指南 (英文)](/powershell/azure/overview) 中的指示來安裝 Azure PowerShell。 
+您可以視需要使用 [Azure PowerShell 指南 (英文)](/powershell/azure/) 中的指示來安裝 Azure PowerShell。 
 
 ## <a name="sample-script"></a>範例指令碼
 
@@ -49,6 +49,6 @@ Service Fabric 叢集中的每個[節點類型](../service-fabric-cluster-nodety
 
 ## <a name="next-steps"></a>後續步驟
 
-如需有關 Azure PowerShell 模組的詳細資訊，請參閱 [Azure PowerShell 文件](/powershell/azure/overview)。
+如需有關 Azure PowerShell 模組的詳細資訊，請參閱 [Azure PowerShell 文件](/powershell/azure/)。
 
 您可以在 [Azure PowerShell 範例](../service-fabric-powershell-samples.md)中找到適用於 Azure Service Fabric 的其他 Azure PowerShell 範例。

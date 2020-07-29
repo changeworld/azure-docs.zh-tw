@@ -2,18 +2,19 @@
 title: 建立 Kubernetes 開發人員空間：Visual Studio Code 和 Java
 services: azure-dev-spaces
 author: stepro
+ms.custom: devx-track-java
 ms.author: stephpr
 ms.date: 09/26/2018
 ms.topic: tutorial
 description: 本教學課程說明如何使用 Azure Dev Spaces 和 Visual Studio Code 對 Azure Kubernetes Service 上的 Java 應用程式進行偵錯和快速反覆運算
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, 容器, Helm, 服務網格, 服務網格路由傳送, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 5616e92d64854d145c30aa3fd32bf61d65ca4221
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: e68b417365c1a68a159ea555e9261fe5418b828e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224310"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323616"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-code-and-java-with-azure-dev-spaces"></a>建立 Kubernetes 開發人員空間：搭配 Azure Dev Spaces 使用 Visual Studio Code 和 Java
 

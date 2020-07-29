@@ -8,18 +8,18 @@ ms.topic: sample
 ms.date: 11/21/2018
 ms.author: msangapu
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 4a22148d4151fd3c80c7be439b5dd281200e5456
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c9dda1f3e011006d1b5072c5b71accb28963aedb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80044583"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87004863"
 ---
 # <a name="restore-a-web-app-from-a-backup-in-another-subscription-using-powershell"></a>使用 PowerShell 從另一個訂用帳戶中的備份還原 Web 應用程式
 
 此範例指令碼會從現有的 Web 應用程式擷取先前完成的備份，並將它還原到另一個訂用帳戶中的 Web 應用程式。 
 
-您可以視需要使用 [Azure PowerShell 指南](/powershell/azure/overview) \(英文\) 中的指示來安裝 Azure PowerShell，然後執行 `Connect-AzAccount` 來建立與 Azure 的連線。 
+您可以視需要使用 [Azure PowerShell 指南](/powershell/azure/) \(英文\) 中的指示來安裝 Azure PowerShell，然後執行 `Connect-AzAccount` 來建立與 Azure 的連線。 
 
 ## <a name="sample-script"></a>範例指令碼
 
@@ -48,6 +48,6 @@ Remove-AzResourceGroup -Name $resourceGroupName -Force
 
 ## <a name="next-steps"></a>後續步驟
 
-如需有關 Azure PowerShell 模組的詳細資訊，請參閱 [Azure PowerShell 文件](/powershell/azure/overview)。
+如需有關 Azure PowerShell 模組的詳細資訊，請參閱 [Azure PowerShell 文件](/powershell/azure/)。
 
 您可以在 [Azure PowerShell 範例](../samples-powershell.md)中找到適用於 App Service Web Apps 的其他 Azure PowerShell 範例。

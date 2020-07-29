@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/01/2020
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: e8d68e5f2eeeb7363469535c027f258fbc9d7ed1
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: cf8fc9916384c9eef24c4c50f7647632c0e6b7a2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85480485"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077465"
 ---
 # <a name="tutorial-create-windows-vm-images-with-azure-powershell"></a>教學課程：使用 Azure PowerShell 建立 Windows VM 映像
 
@@ -54,7 +54,7 @@ Azure Cloud Shell 是免費的互動式 Shell，可讓您用來執行本文中�
 
 ## <a name="get-the-vm"></a>取得 VM
 
-您可以使用 [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) 來查看資源群組中的可用 VM 清單。 當您知道 VM 名稱和資源群組之後，您可以再次使用 `Get-AzVM` 來取得該 VM 物件，並將其儲存在變數中以供日後使用。 此範例會從 "myResourceGroup" 資源群組取得名為 sourceVM 的 VM，然後將其指派至 $sourceVM 變數。 
+您可以使用 [Get-AzVM](/powershell/module/az.compute/get-azvm) 來查看資源群組中的可用 VM 清單。 當您知道 VM 名稱和資源群組之後，您可以再次使用 `Get-AzVM` 來取得該 VM 物件，並將其儲存在變數中以供日後使用。 此範例會從 "myResourceGroup" 資源群組取得名為 sourceVM 的 VM，然後將其指派至 $sourceVM 變數。 
 
 ```azurepowershell-interactive
 $sourceVM = Get-AzVM `
@@ -64,7 +64,7 @@ $sourceVM = Get-AzVM `
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 
-使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) 命令來建立資源群組。
+使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 命令來建立資源群組。
 
 Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 在下列範例中，名為 myGalleryRG 的資源群組會建立在 EastUS 區域中：
 
@@ -78,7 +78,7 @@ $resourceGroup = New-AzResourceGroup `
 
 映像資源庫是用於啟用映像共用的主要資源。 資源庫名稱允許的字元為大寫或小寫字母、數字、點和句點。 資源庫名稱不能包含連字號。 資源庫名稱在您的訂用帳戶內必須是唯一的。 
 
-使用 [New-AzGallery](https://docs.microsoft.com/powershell/module/az.compute/new-azgallery) 建立映像資源庫。 下列範例會在 *myGalleryRG* 資源群組中建立名為 *myGallery* 的資源庫。
+使用 [New-AzGallery](/powershell/module/az.compute/new-azgallery) 建立映像資源庫。 下列範例會在 *myGalleryRG* 資源群組中建立名為 *myGallery* 的資源庫。
 
 ```azurepowershell-interactive
 $gallery = New-AzGallery `
@@ -91,9 +91,9 @@ $gallery = New-AzGallery `
 
 ## <a name="create-an-image-definition"></a>建立映像定義 
 
-映像定義會建立映像的邏輯群組。 並且可用來管理在其中建立的映像版本相關資訊。 映像定義名稱可以由大寫或小寫字母、數字、點、虛線和句點組成。 若要深入了解您可以為映像定義指定哪些值，請參閱[映像定義](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#image-definitions)。
+映像定義會建立映像的邏輯群組。 並且可用來管理在其中建立的映像版本相關資訊。 映像定義名稱可以由大寫或小寫字母、數字、點、虛線和句點組成。 若要深入了解您可以為映像定義指定哪些值，請參閱[映像定義](./shared-image-galleries.md#image-definitions)。
 
-使用 [New-AzGalleryImageDefinition](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion) 建立映像定義。 在此範例中，資源庫映像會命名為 myGalleryImage，並為特製化映像而建立。 
+使用 [New-AzGalleryImageDefinition](/powershell/module/az.compute/new-azgalleryimageversion) 建立映像定義。 在此範例中，資源庫映像會命名為 myGalleryImage，並為特製化映像而建立。 
 
 ```azurepowershell-interactive
 $galleryImage = New-AzGalleryImageDefinition `
@@ -111,7 +111,7 @@ $galleryImage = New-AzGalleryImageDefinition `
 
 ## <a name="create-an-image-version"></a>建立映像版本
 
-使用 [New-AzGalleryImageVersion](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion) 從 VM 建立映像版本。 
+使用 [New-AzGalleryImageVersion](/powershell/module/az.compute/new-azgalleryimageversion) 從 VM 建立映像版本。 
 
 映像版本允許的字元是數字及句點。 數字必須在 32 位元整數的範圍內。 格式：*MajorVersion*.*MinorVersion*.*Patch*。
 
@@ -140,7 +140,7 @@ New-AzGalleryImageVersion `
 
 ## <a name="create-a-vm"></a>建立 VM 
 
-當您擁有特製化映像之後，您就可以建立一個或多個新的 VM。 使用 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) Cmdlet。 若要使用映像，請使用 `Set-AzVMSourceImage`，並將 `-Id` 設為映像定義識別碼 (在此案例中為 $galleryImage.Id)，以永遠使用最新的映像版本。 
+當您擁有特製化映像之後，您就可以建立一個或多個新的 VM。 使用 [New-AzVM](/powershell/module/az.compute/new-azvm) Cmdlet。 若要使用映像，請使用 `Set-AzVMSourceImage`，並將 `-Id` 設為映像定義識別碼 (在此案例中為 $galleryImage.Id)，以永遠使用最新的映像版本。 
 
 視需要取代此範例中的資源名稱。 
 
@@ -195,7 +195,7 @@ New-AzRoleAssignment `
    
 ## <a name="clean-up-resources"></a>清除資源
 
-當不再需要時，您可以使用 [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) 命令來移除資源群組及所有相關資源：
+當不再需要時，您可以使用 [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) 命令來移除資源群組及所有相關資源：
 
 ```azurepowershell-interactive
 # Delete the gallery 
@@ -207,7 +207,7 @@ Remove-AzResourceGroup -Name myResoureceGroup
 
 ## <a name="azure-image-builder"></a>Azure Image Builder
 
-Azure 也提供以 Packer 為基礎的服務：[Azure VM Image Builder](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview)。 只要在範本中描述您的自訂，其就會處理映像建立作業。 
+Azure 也提供以 Packer 為基礎的服務：[Azure VM Image Builder](./image-builder-overview.md)。 只要在範本中描述您的自訂，其就會處理映像建立作業。 
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -224,6 +224,3 @@ Azure 也提供以 Packer 為基礎的服務：[Azure VM Image Builder](https://
 
 > [!div class="nextstepaction"]
 > [建立高可用性 VM](tutorial-availability-sets.md)
-
-
-

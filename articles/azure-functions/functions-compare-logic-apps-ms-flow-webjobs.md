@@ -4,12 +4,12 @@ description: 比較已針對整合工作最佳化的 Microsoft 雲端服務：Po
 ms.topic: overview
 ms.date: 04/09/2018
 ms.custom: mvc
-ms.openlocfilehash: 9d7531fac9610b357adb37d28f5d5e90a7e4b108
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 1e6d1462a4f94db424081ea1567e5926806d3e81
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169862"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082999"
 ---
 # <a name="choose-the-right-integration-and-automation-services-in-azure"></a>在 Azure 中選擇正確的整合和自動化服務
 
@@ -38,8 +38,8 @@ Power Automate 可讓任何辦公室工作人員有能力執行簡單的整合 (
 | --- | --- | --- |
 | **使用者** |辦公室員工、商務使用者、SharePoint 系統管理員 |專業的整合人員和開發人員，IT 專業人員 |
 | **案例** |自助服務 |進階整合 |
-| **設計工具** |瀏覽器內及行動裝置應用程式，僅限 UI |有瀏覽器內和 [Visual Studio](../logic-apps/logic-apps-deploy-from-vs.md)、[程式碼檢視](../logic-apps/logic-apps-author-definitions.md)可用 |
-| **應用程式生命週期管理 (ALM)** |在非生產環境中設計及測試，在就緒時升級到生產環境 |Azure DevOps：在 [Azure Resource Manager](../logic-apps/logic-apps-create-deploy-azure-resource-manager-templates.md) 中的原始檔控制、測試支援、自動化及管理性 |
+| **設計工具** |瀏覽器內及行動裝置應用程式，僅限 UI |有瀏覽器內和 [Visual Studio](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)、[程式碼檢視](../logic-apps/logic-apps-author-definitions.md)可用 |
+| **應用程式生命週期管理 (ALM)** |在非生產環境中設計及測試，在就緒時升級到生產環境 |Azure DevOps：在 [Azure Resource Manager](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md) 中的原始檔控制、測試支援、自動化及管理性 |
 | **管理員體驗** |管理 Power Automate 環境和資料外洩防護 (DLP) 原則，追蹤授權：[管理中心](https://admin.flow.microsoft.com) |管理資源群組、連線、存取管理和記錄：[Azure 入口網站](https://portal.azure.com) |
 | **安全性** |Office 365 安全性與相容性稽核記錄、DLP、敏感性資料[靜止時加密](https://wikipedia.org/wiki/Data_at_rest#Encryption) |Azure 的安全性保證︰[Azure 安全性](https://www.microsoft.com/en-us/trustcenter/Security/AzureSecurity)、[Azure 資訊安全中心](https://azure.microsoft.com/services/security-center/)、[稽核記錄](https://azure.microsoft.com/blog/azure-audit-logs-ux-refresh/) |
 
@@ -56,8 +56,8 @@ Functions 和 Logic Apps 都是可啟用無伺服器工作負載的 Azure 服務
 | **開發** | Code First (命令式) | Designer First (宣告式) |
 | **連線能力** | [約有十幾個內建繫結類型](functions-triggers-bindings.md#supported-bindings)、撰寫自訂繫結的程式碼 | [連接器的大型集合](../connectors/apis-list.md)、[適用於 B2B 的企業整合套件案例](../logic-apps/logic-apps-enterprise-integration-overview.md)、[建置自訂連接器](../logic-apps/custom-connector-overview.md) |
 | **動作** | 每個活動都是 Azure 函式；撰寫活動函式的程式碼 |[現成動作的大型集合](../logic-apps/logic-apps-workflow-actions-triggers.md)|
-| **監視** | [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) | [Azure 入口網站](../logic-apps/quickstart-create-first-logic-app-workflow.md)、[Azure 監視器記錄](../logic-apps/logic-apps-monitor-your-logic-apps.md)|
-| **管理** | [REST API](durable/durable-functions-http-api.md)、[Visual Studio](https://docs.microsoft.com/azure/vs-azure-tools-resources-managing-with-cloud-explorer) | [Azure 入口網站](../logic-apps/quickstart-create-first-logic-app-workflow.md)、[REST API](https://docs.microsoft.com/rest/api/logic/)[PowerShell](https://docs.microsoft.com/powershell/module/az.logicapp)[Visual Studio](https://docs.microsoft.com/azure/logic-apps/manage-logic-apps-with-visual-studio) |
+| **監視** | [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) | [Azure 入口網站](../logic-apps/quickstart-create-first-logic-app-workflow.md)、[Azure 監視器記錄](../logic-apps/monitor-logic-apps.md)|
+| **管理** | [REST API](durable/durable-functions-http-api.md)、[Visual Studio](/azure/vs-azure-tools-resources-managing-with-cloud-explorer) | [Azure 入口網站](../logic-apps/quickstart-create-first-logic-app-workflow.md)、[REST API](/rest/api/logic/)[PowerShell](/powershell/module/az.logicapp)[Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md) |
 | **執行內容** | 可以在[本機](functions-runtime-overview.md)或雲端中執行 | 只可在雲端中執行|
 
 <a name="function"></a>

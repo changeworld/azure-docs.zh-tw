@@ -2,18 +2,19 @@
 title: 在 Azure Dev Spaces 中使用 Java 和 Visual Studio Code 進行小組開發
 services: azure-dev-spaces
 author: stepro
+ms.custom: devx-track-java
 ms.author: stephpr
 ms.date: 08/01/2018
 ms.topic: tutorial
 description: 本教學課程說明如何使用 Azure Dev Spaces 和 Visual Studio Code，在 Azure Kubernetes Service 中 Java 應用程式上進行小組開發
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, 容器, Helm, 服務網格, 服務網格路由傳送, kubectl, k8s '
 manager: gwallace
-ms.openlocfilehash: 8bfcf16d3fcf685f946eb38b0b47fce4f2feba5b
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 80544b497caf39ee45acb82ff644a5c06ac3ff7e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86220230"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327186"
 ---
 # <a name="team-development-using-java-and-visual-studio-code-with-azure-dev-spaces"></a>在 Azure Dev Spaces 中使用 Java 和 Visual Studio Code 進行小組開發
 

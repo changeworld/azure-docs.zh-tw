@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 11/01/2017
-ms.openlocfilehash: 9d8b05a2268a122289c529050c75fd27dd73245b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 15c388336efc92381ac5ebd84df9145c1890cfcc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75438956"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87007209"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-data-factory-rest-api"></a>教學課程：使用 Data Factory REST API 建置您的第一個 Azure Data Factory
 > [!div class="op_single_selector"]
@@ -53,7 +53,7 @@ ms.locfileid: "75438956"
   2. 取得**用戶端識別碼**和**秘密金鑰**。
   3. 取得 **租用戶識別碼**。
   4. 將 **ADFGetStartedApp** 應用程式指派給 **Data Factory 參與者**角色。
-* 安裝 [Azure PowerShell](/powershell/azure/overview)。
+* 安裝 [Azure PowerShell](/powershell/azure/)。
 * 啟動 **PowerShell** 並執行下列命令。 將 Azure PowerShell 維持在開啟狀態，直到本教學課程結束為止。 如果您關閉並重新開啟，則需要再次執行這些命令。
   1. 執行 **Connect-AzAccount**，並輸入您用來登入 Azure 入口網站的使用者名稱和密碼。
   2. 執行 **Get-AzSubscription** 以檢視此帳戶的所有訂用帳戶。

@@ -10,12 +10,12 @@ author: peterclu
 ms.author: peterlu
 ms.date: 03/29/2020
 ms.custom: designer
-ms.openlocfilehash: d2ed9a605b19287c2ea693187c445dc8a4b3b932
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: c1d927583ecf0ac5684c607b7d203c3224fe87b1
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206330"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318822"
 ---
 # <a name="example-pipelines--datasets-for-azure-machine-learning-designer-preview"></a>Azure Machine Learning 設計工具的範例管線和資料集 (預覽)
 
@@ -25,6 +25,8 @@ ms.locfileid: "86206330"
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請建立[免費帳戶](https://aka.ms/AMLFree)。
 * 具備 Enterprise SKU 的 Azure Machine Learning 工作區。
+
+[!INCLUDE [machine-learning-missing-ui](../../includes/machine-learning-missing-ui.md)]
 
 ## <a name="use-sample-pipelines"></a>使用範例管線
 

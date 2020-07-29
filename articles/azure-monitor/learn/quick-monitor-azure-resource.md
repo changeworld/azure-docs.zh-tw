@@ -6,12 +6,12 @@ ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 12/15/2019
-ms.openlocfilehash: 597b12a584e7b4c17ec21635e18368f897ad168a
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.openlocfilehash: 0e29b25f5d846cae1563ea90271cf007d02e248c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85443871"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324262"
 ---
 # <a name="quickstart-monitor-an-azure-resource-with-azure-monitor"></a>快速入門：使用 Azure 監視器監視 Azure 資源
 [Azure 監視器](../overview.md)會在 Azure 資源建立時開始從中收集資料。 本快速入門會簡介自動收集的資源資料，以及如何在 Azure 入口網站中查看特定資源的這些資料。 稍後，您可以新增設定來收集其他資料，也可以移至 [Azure 監視器] 功能表，使用相同工具來存取針對您訂用帳戶中所有資源收集的資料。
@@ -70,4 +70,5 @@ ms.locfileid: "85443871"
 在本快速入門中，您已檢視了 Azure 監視器自動收集的 Azure 資源活動記錄和計量。 繼續進行下一個快速入門，其中會說明如何將活動記錄收集到 Log Analytics 工作區中，以便使用[記錄查詢](../log-query/log-query-overview.md)進行分析。
 
 > [!div class="nextstepaction"]
-> [將 Azure 活動記錄傳送至 Log Analytics 工作區](quick-monitor-azure-resource.md)
+> [將 Azure 活動記錄傳送至 Log Analytics 工作區]()
+

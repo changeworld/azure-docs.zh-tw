@@ -10,12 +10,12 @@ ms.workload: multiple
 ms.topic: sample
 ms.date: 03/19/2018
 ms.custom: sfrev
-ms.openlocfilehash: b3d922cb5a7cdf34e63731ab32f21c94d7b6bca0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5cc72423d7e901f82cdf7e40f5de72bd54e9cec1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76025012"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076175"
 ---
 # <a name="update-the-rdp-port-range-values"></a>更新 RDP 連接埠範圍值
 
@@ -23,7 +23,7 @@ ms.locfileid: "76025012"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-您可以視需要使用 [Azure PowerShell 指南 (英文)](/powershell/azure/overview) 中的指示來安裝 Azure PowerShell。
+您可以視需要使用 [Azure PowerShell 指南 (英文)](/powershell/azure/) 中的指示來安裝 Azure PowerShell。
 
 ## <a name="sample-script"></a>範例指令碼
 
@@ -40,6 +40,6 @@ ms.locfileid: "76025012"
 
 ## <a name="next-steps"></a>後續步驟
 
-如需有關 Azure PowerShell 模組的詳細資訊，請參閱 [Azure PowerShell 文件](/powershell/azure/overview)。
+如需有關 Azure PowerShell 模組的詳細資訊，請參閱 [Azure PowerShell 文件](/powershell/azure/)。
 
 您可以在 [Azure PowerShell 範例](../service-fabric-powershell-samples.md)中找到適用於 Azure Service Fabric 的其他 Azure PowerShell 範例。

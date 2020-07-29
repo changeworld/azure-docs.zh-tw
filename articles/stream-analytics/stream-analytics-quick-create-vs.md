@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.date: 06/11/2019
 ms.topic: quickstart
 ms.service: stream-analytics
-ms.openlocfilehash: 5e654fe5d31a225a855da8477e073ceeb1a68634
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: aff9bf83795043e0176d7a3f155844c8dbe0281a
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81767247"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337463"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-by-using-visual-studio"></a>快速入門：使用 Visual Studio 建立 Azure 串流分析作業
 
@@ -42,9 +42,9 @@ ms.locfileid: "81767247"
    
    |**設定**  |**建議的值**  |**說明**  |
    |---------|---------|---------|
-   |訂用帳戶  | \<您的訂用帳戶\> |  選取您要使用的 Azure 訂用帳戶。 |
+   |訂用帳戶  | \<Your subscription\> |  選取您要使用的 Azure 訂用帳戶。 |
    |資源群組   |   asaquickstart-resourcegroup  |   選取 [新建]  ，然後為您的帳戶輸入新的資源群組名稱。 |
-   |區域  |  \<選取最接近使用者的區域\> | 選取您可以在其中裝載 IoT 中樞的地理位置。 使用最靠近您的使用者的位置。 |
+   |區域  |  \<Select the region that is closest to your users\> | 選取您可以在其中裝載 IoT 中樞的地理位置。 使用最靠近您的使用者的位置。 |
    |IoT 中樞名稱  | MyASAIoTHub  |   選取您的 IoT 中樞名稱。   |
 
    ![建立 IoT 中樞](./media/stream-analytics-quick-create-vs/create-iot-hub.png)
@@ -116,7 +116,7 @@ ms.locfileid: "81767247"
    |來源類型   |  資料流 |  選擇適當的輸入來源：資料流或參考資料。   |
    |來源  |  IoT 中樞 |  選擇適當的輸入來源。   |
    |資源  | 選擇目前帳戶中的資料來源 | 選擇以手動方式輸入資料，或選取現有的帳戶。   |
-   |訂用帳戶  |  \<您的訂用帳戶\>   | 根據您建立的事件中樞，選取 IoT 中樞所在的 Azure 訂用帳戶。   |
+   |訂用帳戶  |  \<Your subscription\>   | 根據您建立的事件中樞，選取 IoT 中樞所在的 Azure 訂用帳戶。   |
    |IoT 中樞  |  MyASAIoTHub   |  選擇或輸入 IoT 中樞的名稱。 系統會自動偵測建立在相同訂用帳戶中的 IoT 中樞名稱。   |
    
 3. 其他選項保留為預設值，然後選取 [儲存]  以儲存設定。  
@@ -134,7 +134,7 @@ ms.locfileid: "81767247"
    |輸出別名  |  輸出   |  輸入名稱以識別作業的輸出。   |
    |接收   |  Blob 儲存體 |  選擇適當的接收。    |
    |資源  |  手動提供資料來源設定 |  選擇以手動方式輸入資料，或選取現有的帳戶。   |
-   |訂用帳戶  |  \<您的訂用帳戶\>   | 選取您在其中建立儲存體帳戶的 Azure 訂用帳戶。 儲存體帳戶可以位在相同或不同的訂用帳戶中。 此範例假設您已在相同的訂用帳戶中建立儲存體帳戶。   |
+   |訂用帳戶  |  \<Your subscription\>   | 選取您在其中建立儲存體帳戶的 Azure 訂用帳戶。 儲存體帳戶可以位在相同或不同的訂用帳戶中。 此範例假設您已在相同的訂用帳戶中建立儲存體帳戶。   |
    |儲存體帳戶  |  asaquickstartstorage   |  選擇或輸入儲存體帳戶的名稱。 系統會自動偵測建立在相同訂用帳戶中的儲存體帳戶名稱。   |
    |容器  |  container1   |  選取您在儲存體帳戶中建立的現有容器。   |
    |路徑格式  |  output   |  輸入要在容器內建立的檔案路徑名稱。   |
@@ -151,8 +151,8 @@ ms.locfileid: "81767247"
 
    ```sql
    SELECT *
-   INTO BlobOutput
-   FROM IoTHubInput
+   INTO Output
+   FROM Input
    HAVING Temperature > 27
    ```
 

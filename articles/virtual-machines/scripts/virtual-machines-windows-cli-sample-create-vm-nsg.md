@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 02/23/2017
 ms.author: rclaus
 ms.custom: mvc
-ms.openlocfilehash: 2cf571d0c965e308ef18cdc1be1eb9fc5797e782
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9c447fbeaebcb827a88d19a03dbede24712b678d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81459486"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082455"
 ---
 # <a name="secure-network-traffic-between-virtual-machines"></a>保護虛擬機器之間的網路流量
 
@@ -48,16 +48,16 @@ az group delete --name myResourceGroup --yes
 
 | Command | 注意 |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group) | 建立用來存放所有資源的資源群組。 |
-| [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet) | 建立 Azure 虛擬網路和子網路。 |
-| [az network vnet subnet create](https://docs.microsoft.com/cli/azure/network/vnet/subnet) | 建立子網路。 |
-| [az vm create](https://docs.microsoft.com/cli/azure/vm) | 建立虛擬機器，並將它連線到網路卡、虛擬網路、子網路及 NSG。 此命令也會指定要使用的虛擬機器映像和管理認證。  |
-| [az network nsg rule update](https://docs.microsoft.com/cli/azure/network/nsg/rule) | 更新 NSG 規則。 此範例會將後端規則更新為只傳遞來自前端子網路的流量。 |
-| [az network nsg rule list](https://docs.microsoft.com/cli/azure/network/nsg/rule) | 傳回網路安全性群組規則的相關資訊。 在此範例中，規則名稱會儲存在變數中，以供稍後在指令碼中使用。 |
-| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | 刪除資源群組，包括所有的巢狀資源。 |
+| [az group create](/cli/azure/group) | 建立用來存放所有資源的資源群組。 |
+| [az network vnet create](/cli/azure/network/vnet) | 建立 Azure 虛擬網路和子網路。 |
+| [az network vnet subnet create](/cli/azure/network/vnet/subnet) | 建立子網路。 |
+| [az vm create](/cli/azure/vm) | 建立虛擬機器，並將它連線到網路卡、虛擬網路、子網路及 NSG。 此命令也會指定要使用的虛擬機器映像和管理認證。  |
+| [az network nsg rule update](/cli/azure/network/nsg/rule) | 更新 NSG 規則。 此範例會將後端規則更新為只傳遞來自前端子網路的流量。 |
+| [az network nsg rule list](/cli/azure/network/nsg/rule) | 傳回網路安全性群組規則的相關資訊。 在此範例中，規則名稱會儲存在變數中，以供稍後在指令碼中使用。 |
+| [az group delete](/cli/azure/vm/extension) | 刪除資源群組，包括所有的巢狀資源。 |
 
 ## <a name="next-steps"></a>後續步驟
 
-如需 Azure CLI 的詳細資訊，請參閱 [Azure CLI 文件](https://docs.microsoft.com/cli/azure)。
+如需 Azure CLI 的詳細資訊，請參閱 [Azure CLI 文件](/cli/azure)。
 
 您可以在 [Azure Windows VM 文件](../windows/cli-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)中找到其他的虛擬機器 CLI 指令碼範例。
